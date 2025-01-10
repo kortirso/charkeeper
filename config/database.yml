@@ -1,0 +1,28 @@
+# frozen_string_literal: true
+
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch('RAILS_MAX_THREADS') { 20 } %>
+  host: localhost
+  port: 5432
+  username: postgres
+  password: postgres
+
+development:
+  <<: *default
+  database: characters_development
+
+local_production:
+  <<: *default
+  database: characters_development
+
+test:
+  <<: *default
+  database: characters_test
+
+production:
+  <<: *default
+  database: characters_production
+  username: characters
+  password: <%= Rails.application.credentials[:database_password] %>

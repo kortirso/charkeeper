@@ -1,0 +1,30 @@
+{
+  "name": "characters",
+  "private": "false",
+  "type": "module",
+  "browser": true,
+  "scripts": {
+    "watch": "node esbuild.watch.config.js",
+    "build": "node esbuild.config.js",
+    "lint": "eslint app/javascript"
+  },
+  "dependencies": {
+    "@babel/core": "^7.20.12",
+    "babel-preset-solid": "^1.6.9",
+    "solid-js": "^1.8.21"
+  },
+  "devDependencies": {
+    "esbuild": "^0.24.0",
+    "eslint": "^9.9.0",
+    "eslint-plugin-solid": "^0.14.2"
+  },
+  "eslintConfig": {
+    "globals": {
+      "window": true,
+      "document": true
+    }
+  },
+  "engines": {
+    "node": ">=18.20.4"
+  }
+}
