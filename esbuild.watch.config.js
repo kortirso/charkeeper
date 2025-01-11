@@ -30,7 +30,7 @@ function solidPlugin() {
 
 async function build() {
   let ctx = await context({
-    entryPoints: [path.join(process.cwd(), 'app/javascript/application.jsx')],
+    entryPoints: [path.join(process.cwd(), 'app/javascript/*.jsx')],
     bundle: true,
     minify: true,
     sourcemap: true,

@@ -73,6 +73,8 @@ GEM
       tzinfo (~> 2.0, >= 2.0.5)
       uri (>= 0.13.1)
     ast (2.4.2)
+    authkeeper (0.1.6)
+      rails (>= 7.2.2)
     awesome_print (1.9.2)
     base64 (0.2.0)
     benchmark (0.4.0)
@@ -97,11 +99,42 @@ GEM
     dry-auto_inject (1.1.0)
       dry-core (~> 1.1)
       zeitwerk (~> 2.6)
+    dry-configurable (1.3.0)
+      dry-core (~> 1.1)
+      zeitwerk (~> 2.6)
     dry-container (0.11.0)
       concurrent-ruby (~> 1.0)
     dry-core (1.1.0)
       concurrent-ruby (~> 1.0)
       logger
+      zeitwerk (~> 2.6)
+    dry-inflector (1.2.0)
+    dry-initializer (3.2.0)
+    dry-logic (1.6.0)
+      bigdecimal
+      concurrent-ruby (~> 1.0)
+      dry-core (~> 1.1)
+      zeitwerk (~> 2.6)
+    dry-schema (1.14.0)
+      concurrent-ruby (~> 1.0)
+      dry-configurable (~> 1.0, >= 1.0.1)
+      dry-core (~> 1.1)
+      dry-initializer (~> 3.2)
+      dry-logic (~> 1.5)
+      dry-types (~> 1.8)
+      zeitwerk (~> 2.6)
+    dry-types (1.8.0)
+      bigdecimal (~> 3.0)
+      concurrent-ruby (~> 1.0)
+      dry-core (~> 1.0)
+      dry-inflector (~> 1.0)
+      dry-logic (~> 1.4)
+      zeitwerk (~> 2.6)
+    dry-validation (1.11.0)
+      concurrent-ruby (~> 1.0)
+      dry-core (~> 1.1)
+      dry-initializer (~> 3.2)
+      dry-schema (~> 1.14)
       zeitwerk (~> 2.6)
     erubi (1.13.1)
     factory_bot (6.5.0)
@@ -124,6 +157,8 @@ GEM
     json_spec (1.1.5)
       multi_json (~> 1.0)
       rspec (>= 2.0, < 4.0)
+    jwt (2.10.1)
+      base64
     language_server-protocol (3.17.0.3)
     logger (1.6.5)
     loofah (2.24.0)
@@ -165,6 +200,13 @@ GEM
       racc (~> 1.4)
     nokogiri (1.18.1-x86_64-linux-musl)
       racc (~> 1.4)
+    oj (3.16.9)
+      bigdecimal (>= 3.0)
+      ostruct (>= 0.2)
+    ostruct (0.6.1)
+    panko_serializer (0.8.3)
+      activesupport
+      oj (> 3.11.0, < 4.0.0)
     parallel (1.26.3)
     parser (3.3.6.0)
       ast (~> 2.4.1)
@@ -326,15 +368,20 @@ PLATFORMS
   x86_64-linux-musl
 
 DEPENDENCIES
+  authkeeper (= 0.1.6)
   awesome_print
   bootsnap
   database_cleaner (~> 2.0)
   dry-auto_inject (~> 1.0)
   dry-container (~> 0.11.0)
+  dry-validation (~> 1.10)
   factory_bot_rails (~> 6.4)
   foreman
   jsbundling-rails
   json_spec (= 1.1.5)
+  jwt (~> 2.5)
+  oj
+  panko_serializer
   pg (~> 1.1)
   propshaft
   puma (>= 5.0)

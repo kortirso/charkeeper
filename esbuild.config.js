@@ -29,7 +29,7 @@ function solidPlugin() {
 }
 
 build({
-  entryPoints: [path.join(process.cwd(), 'app/javascript/application.jsx')],
+  entryPoints: [path.join(process.cwd(), 'app/javascript/*.jsx')],
   bundle: true,
   minify: true,
   sourcemap: true,

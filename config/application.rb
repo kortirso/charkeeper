@@ -25,6 +25,17 @@ module Characters
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 8.0
 
+    config.middleware.use Rack::Deflater
+    # Rack::Brotli goes directly under Rack::Deflater, if Rack::Deflater is present
+    config.middleware.use Rack::Brotli
+
+    I18n.available_locales = %i[en]
+    config.i18n.default_locale = :en
+
+    config.time_zone = 'UTC'
+
+    config.active_record.schema_format = :sql
+
     # Please, add to the `ignore` list any other `lib` subdirectories that do
     # not contain `.rb` files, or that should not be reloaded or eager loaded.
     # Common ones are `templates`, `generators`, or `middleware`, for example.
@@ -34,11 +45,26 @@ module Characters
     #
     # These settings can be overridden in specific environments using the files
     # in config/environments, which are processed later.
+
+    config.generators.system_tests = nil
+    config.generators do |g|
+      g.test_framework :rspec, fixtures: true, views: false, view_specs: false, helper_specs: false,
+                               routing_specs: false, controller_specs: false, request_specs: false
+      g.fixture_replacement :factory_bot, dir: 'spec/factories'
+      g.stylesheets false
+      g.javascripts false
+      g.helper false
+
+      g.orm :active_record, primary_key_type: :uuid
+    end
     #
     # config.time_zone = 'Central Time (US & Canada)'
     # config.eager_load_paths << Rails.root.join('extras')
 
     # Don't generate system test files.
     config.generators.system_tests = nil
+
+    # ngrok configuration
+    # config.hosts << "02ff-45-153-230-36.ngrok-free.app"
   end
 end

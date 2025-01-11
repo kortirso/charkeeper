@@ -26,6 +26,7 @@ gem 'bootsnap', require: false
 # dry-rb system
 gem 'dry-auto_inject', '~> 1.0'
 gem 'dry-container', '~> 0.11.0'
+gem 'dry-validation', '~> 1.10'
 
 # Catch unsafe migrations in development
 gem 'strong_migrations', '~> 2.0'
@@ -38,6 +39,14 @@ gem 'foreman'
 
 # randoms
 gem 'securerandom', '0.3.2'
+
+# api serializer
+gem 'oj'
+gem 'panko_serializer'
+
+# auth
+gem 'authkeeper', '0.1.6'
+gem 'jwt', '~> 2.5'
 
 group :development, :test do
   gem 'rubocop', '~> 1.35', require: false
