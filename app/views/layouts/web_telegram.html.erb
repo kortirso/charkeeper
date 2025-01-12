@@ -16,9 +16,7 @@
     <%= javascript_include_tag 'web_telegram' %>
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
   </head>
-  <body>
-    <main class="container mx-auto mt-28 px-5 flex">
-      <%= yield %>
-    </main>
+  <body class="relative flex flex-col m-0 p-0 min-h-screen">
+    <%= yield %>
   </body>
 </html>

@@ -65,6 +65,6 @@ module Characters
     config.generators.system_tests = nil
 
     # ngrok configuration
-    # config.hosts << "02ff-45-153-230-36.ngrok-free.app"
+    config.hosts << '143e-45-153-230-36.ngrok-free.app'
   end
 end

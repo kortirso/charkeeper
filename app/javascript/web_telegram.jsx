@@ -1,11 +1,11 @@
 import { render } from 'solid-js/web';
 
 import {
-  WebTelegram
-} from './components';
+  WebTelegramApp
+} from './applications';
 
 const components = {
-  WebTelegram
+  WebTelegramApp
 }
 
 document.addEventListener('DOMContentLoaded', () => {
