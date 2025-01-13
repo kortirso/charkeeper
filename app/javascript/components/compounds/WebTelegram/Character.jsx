@@ -2,11 +2,18 @@ import { Switch, Match } from 'solid-js';
 
 import { capitalize } from '../../../helpers';
 
+import { useAppState } from '../../../context/appState';
+
 export const Character = (props) => {
   const character = () => props.character;
 
+  const [_appState, { navigate }] = useAppState();
+
   return (
-    <div class="mb-4 pb-4 px-4 border-b border-gray flex">
+    <div
+      class="mb-4 pb-4 px-4 border-b border-gray flex"
+      onClick={() => navigate('characters', { id: character().id })}
+    >
       <Switch>
         <Match when={props.currentRule === 'D&D 5'}>
           <div class="mr-2">

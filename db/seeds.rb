@@ -15,9 +15,9 @@ dnd5.characters.create!(
   user: user,
   name: 'Kormak',
   data: {
-    race: 'dward',
+    race: 'dwarf',
     alignment: 'neutral',
     abilities: { str: 16, dex: 12, con: 14, int: 9, wis: 8, cha: 12 },
-    classes: { warrior: 1 }
+    classes: { fighter: 1 }
   }
 )

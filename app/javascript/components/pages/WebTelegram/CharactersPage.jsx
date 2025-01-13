@@ -1,7 +1,7 @@
-import { createEffect, For } from 'solid-js';
+import { createEffect, For, Switch, Match } from 'solid-js';
 import { createStore } from 'solid-js/store';
 
-import { Character } from '../../../components';
+import { Character, CharacterView } from '../../../components';
 
 import { useAppState } from '../../../context/appState';
 import { fetchCharactersRequest } from '../../../requests/fetchCharactersRequest';
@@ -9,23 +9,22 @@ import { fetchRulesRequest } from '../../../requests/fetchRulesRequest';
 
 export const CharactersPage = (props) => {
   const [pageState, setPageState] = createStore({
-    rules: [],
     characters: []
   });
 
-  const [appState] = useAppState();
+  const [appState, { setRules }] = useAppState();
 
   createEffect(() => {
-    if (pageState.rules.length !== 0) return;
+    if (appState.rules.length !== 0) return;
 
     const fetchRules = async () => await fetchRulesRequest(appState.accessToken);
     const fetchCharacters = async () => await fetchCharactersRequest(appState.accessToken);
 
     Promise.all([fetchRules(), fetchCharacters()]).then(
       ([rulesData, charactersData]) => {
+        setRules(rulesData.rules)
         setPageState({
           ...pageState,
-          rules: rulesData.rules,
           characters: charactersData.characters
         });
       }
@@ -35,15 +34,23 @@ export const CharactersPage = (props) => {
   // 453x750
   // 420x690
   return (
-    <div>
-      <For each={pageState.characters}>
-        {(character) =>
-          <Character
-            currentRule={pageState.rules.find((item) => item.id === character.rule_id).name}
-            character={character}
-          />
-        }
-      </For>
-    </div>
+    <Switch>
+      <Match when={Object.keys(appState.activePageParams).length === 0}>
+        <div class="w-full flex justify-between mb-4 py-4 border-b border-gray">
+          <p class="flex-1 text-center">Characters list</p>
+        </div>
+        <For each={pageState.characters}>
+          {(character) =>
+            <Character
+              currentRule={appState.rules.find((item) => item.id === character.rule_id).name}
+              character={character}
+            />
+          }
+        </For>
+      </Match>
+      <Match when={appState.activePageParams.id}>
+        <CharacterView />
+      </Match>
+    </Switch>
   );
 }

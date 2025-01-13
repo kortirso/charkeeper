@@ -9,7 +9,7 @@ import { fetchAccessTokenRequest } from '../requests/fetchAccessTokenRequest';
 
 export const WebTelegramAppContent = (props) => {
   const { webApp } = useTelegram();
-  const [appState, { setAccessToken, setActivePage }] = useAppState();
+  const [appState, { setAccessToken, navigate }] = useAppState();
 
   createEffect(() => {
     if (appState.accessToken !== undefined) return;
@@ -46,40 +46,37 @@ export const WebTelegramAppContent = (props) => {
     }>
       <Match when={appState.accessToken !== undefined && appState.accessToken !== null}>
         <div class="flex-1 flex flex-col justify-center items-center bg-white">
-          <div class="w-full flex justify-between mb-4 py-4 border-b border-gray">
-            <p class="flex-1 text-center">Page title</p>
-          </div>
           <section class="w-full flex-1">
             <Switch>
-              <Match when={appState.activePage === 'Characters'}>
+              <Match when={appState.activePage === 'characters'}>
                 {charactersPage()}
               </Match>
-              <Match when={appState.activePage === 'NPC'}>
+              <Match when={appState.activePage === 'npc'}>
                 {npcPage()}
               </Match>
-              <Match when={appState.activePage === 'Library'}>
+              <Match when={appState.activePage === 'library'}>
                 {libraryPage()}
               </Match>
-              <Match when={appState.activePage === 'Profile'}>
+              <Match when={appState.activePage === 'profile'}>
                 {profilePage()}
               </Match>
             </Switch>
           </section>
           <nav class="w-full flex p-4">
-            <div class="flex-1 flex flex-col items-center" onClick={() => setActivePage('Characters')}>
-              <div class={`w-8 h-8 border-2 ${appState.activePage === 'Characters' ? 'border-black' : 'border-gray'} rounded-lg mb-1`}></div>
+            <div class="flex-1 flex flex-col items-center" onClick={() => navigate('characters', {})}>
+              <div class={`w-8 h-8 border-2 ${appState.activePage === 'characters' ? 'border-black' : 'border-gray'} rounded-lg mb-1`}></div>
               <p class="text-center text-xs uppercase">Characters</p>
             </div>
-            <div class="flex-1 flex flex-col items-center" onClick={() => setActivePage('NPC')}>
-              <div class={`w-8 h-8 border-2 ${appState.activePage === 'NPC' ? 'border-black' : 'border-gray'} rounded-lg mb-1`}></div>
+            <div class="flex-1 flex flex-col items-center" onClick={() => navigate('npc', {})}>
+              <div class={`w-8 h-8 border-2 ${appState.activePage === 'npc' ? 'border-black' : 'border-gray'} rounded-lg mb-1`}></div>
               <p class="text-center text-xs uppercase">NPC</p>
             </div>
-            <div class="flex-1 flex flex-col items-center" onClick={() => setActivePage('Library')}>
-              <div class={`w-8 h-8 border-2 ${appState.activePage === 'Library' ? 'border-black' : 'border-gray'} rounded-lg mb-1`}></div>
+            <div class="flex-1 flex flex-col items-center" onClick={() => navigate('library', {})}>
+              <div class={`w-8 h-8 border-2 ${appState.activePage === 'library' ? 'border-black' : 'border-gray'} rounded-lg mb-1`}></div>
               <p class="text-center text-xs uppercase">Library</p>
             </div>
-            <div class="flex-1 flex flex-col items-center" onClick={() => setActivePage('Profile')}>
-              <div class={`w-8 h-8 border-2 ${appState.activePage === 'Profile' ? 'border-black' : 'border-gray'} rounded-lg mb-1`}></div>
+            <div class="flex-1 flex flex-col items-center" onClick={() => navigate('profile', {})}>
+              <div class={`w-8 h-8 border-2 ${appState.activePage === 'profile' ? 'border-black' : 'border-gray'} rounded-lg mb-1`}></div>
               <p class="text-center text-xs uppercase">Profile</p>
             </div>
           </nav>

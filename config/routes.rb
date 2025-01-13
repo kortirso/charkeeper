@@ -10,7 +10,7 @@ Rails.application.routes.draw do
       end
 
       resources :rules, only: %i[index]
-      resources :characters, only: %i[index]
+      resources :characters, only: %i[index show]
     end
   end
 
