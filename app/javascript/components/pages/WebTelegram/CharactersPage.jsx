@@ -1,12 +1,13 @@
-import { createEffect } from 'solid-js';
+import { createEffect, For } from 'solid-js';
 import { createStore } from 'solid-js/store';
 
-import { useAppState } from '../../../context/appState';
+import { Character } from '../../../components';
 
+import { useAppState } from '../../../context/appState';
 import { fetchCharactersRequest } from '../../../requests/fetchCharactersRequest';
 import { fetchRulesRequest } from '../../../requests/fetchRulesRequest';
 
-export const WebTelegram = (props) => {
+export const CharactersPage = (props) => {
   const [pageState, setPageState] = createStore({
     rules: [],
     characters: []
@@ -34,8 +35,15 @@ export const WebTelegram = (props) => {
   // 453x750
   // 420x690
   return (
-    <div class="flex-1 flex flex-col justify-center items-center bg-white">
-      123
+    <div>
+      <For each={pageState.characters}>
+        {(character) =>
+          <Character
+            currentRule={pageState.rules.find((item) => item.id === character.rule_id).name}
+            character={character}
+          />
+        }
+      </For>
     </div>
   );
 }

@@ -5,7 +5,8 @@ const AppStateContext = createContext();
 
 export function AppStateProvider(props) {
   const [appState, setAppState] = createStore({
-    accessToken: undefined
+    accessToken: undefined,
+    activePage: 'Characters'
   });
 
   const store = [
@@ -13,6 +14,9 @@ export function AppStateProvider(props) {
     {
       setAccessToken(value) {
         setAppState({ ...appState, accessToken: value });
+      },
+      setActivePage(value) {
+        setAppState({ ...appState, activePage: value });
       }
     }
   ];

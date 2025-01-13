@@ -1,6 +1,6 @@
-import { createEffect, Switch, Match } from 'solid-js';
+import { createEffect, Switch, Match, createMemo } from 'solid-js';
 
-import { WebTelegram } from '../components';
+import { CharactersPage, NpcPage, LibraryPage, ProfilePage } from '../components';
 
 import { useAppState } from '../context/appState';
 import { useTelegram } from '../hooks';
@@ -9,7 +9,7 @@ import { fetchAccessTokenRequest } from '../requests/fetchAccessTokenRequest';
 
 export const WebTelegramAppContent = (props) => {
   const { webApp } = useTelegram();
-  const [appState, { setAccessToken }] = useAppState();
+  const [appState, { setAccessToken, setActivePage }] = useAppState();
 
   createEffect(() => {
     if (appState.accessToken !== undefined) return;
@@ -31,6 +31,11 @@ export const WebTelegramAppContent = (props) => {
     );
   });
 
+  const charactersPage = createMemo(() => <CharactersPage />);
+  const npcPage = createMemo(() => <NpcPage />);
+  const libraryPage = createMemo(() => <LibraryPage />);
+  const profilePage = createMemo(() => <ProfilePage />);
+
   // 453x750
   // 420x690
   return (
@@ -40,7 +45,45 @@ export const WebTelegramAppContent = (props) => {
       </div>
     }>
       <Match when={appState.accessToken !== undefined && appState.accessToken !== null}>
-        <WebTelegram />
+        <div class="flex-1 flex flex-col justify-center items-center bg-white">
+          <div class="w-full flex justify-between mb-4 py-4 border-b border-gray">
+            <p class="flex-1 text-center">Page title</p>
+          </div>
+          <section class="w-full flex-1">
+            <Switch>
+              <Match when={appState.activePage === 'Characters'}>
+                {charactersPage()}
+              </Match>
+              <Match when={appState.activePage === 'NPC'}>
+                {npcPage()}
+              </Match>
+              <Match when={appState.activePage === 'Library'}>
+                {libraryPage()}
+              </Match>
+              <Match when={appState.activePage === 'Profile'}>
+                {profilePage()}
+              </Match>
+            </Switch>
+          </section>
+          <nav class="w-full flex p-4">
+            <div class="flex-1 flex flex-col items-center" onClick={() => setActivePage('Characters')}>
+              <div class={`w-8 h-8 border-2 ${appState.activePage === 'Characters' ? 'border-black' : 'border-gray'} rounded-lg mb-1`}></div>
+              <p class="text-center text-xs uppercase">Characters</p>
+            </div>
+            <div class="flex-1 flex flex-col items-center" onClick={() => setActivePage('NPC')}>
+              <div class={`w-8 h-8 border-2 ${appState.activePage === 'NPC' ? 'border-black' : 'border-gray'} rounded-lg mb-1`}></div>
+              <p class="text-center text-xs uppercase">NPC</p>
+            </div>
+            <div class="flex-1 flex flex-col items-center" onClick={() => setActivePage('Library')}>
+              <div class={`w-8 h-8 border-2 ${appState.activePage === 'Library' ? 'border-black' : 'border-gray'} rounded-lg mb-1`}></div>
+              <p class="text-center text-xs uppercase">Library</p>
+            </div>
+            <div class="flex-1 flex flex-col items-center" onClick={() => setActivePage('Profile')}>
+              <div class={`w-8 h-8 border-2 ${appState.activePage === 'Profile' ? 'border-black' : 'border-gray'} rounded-lg mb-1`}></div>
+              <p class="text-center text-xs uppercase">Profile</p>
+            </div>
+          </nav>
+        </div>
       </Match>
     </Switch>
   );
