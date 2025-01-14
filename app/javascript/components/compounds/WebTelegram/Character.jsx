@@ -11,13 +11,13 @@ export const Character = (props) => {
 
   return (
     <div
-      class="mb-4 pb-4 px-4 border-b border-gray flex"
+      class="mb-4 p-4 bg-white flex border border-gray rounded cursor-pointer"
       onClick={() => navigate('characters', { id: character().id })}
     >
       <Switch>
         <Match when={props.currentRule === 'D&D 5'}>
           <div class="mr-2">
-            <div class="w-16 h-16 border border-red rounded"></div>
+            <div class="w-16 h-16 border border-gray rounded"></div>
           </div>
           <div>
             <p class="mb-1 font-medium">{character().name}</p>

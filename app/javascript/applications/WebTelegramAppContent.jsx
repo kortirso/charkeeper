@@ -40,13 +40,13 @@ export const WebTelegramAppContent = (props) => {
   // 420x690
   return (
     <Switch fallback={
-      <div class="flex-1 flex flex-col justify-center items-center bg-white">
+      <div class="flex-1 flex flex-col justify-center items-center bg-gray-50">
         <div>Loading screen</div>
       </div>
     }>
       <Match when={appState.accessToken !== undefined && appState.accessToken !== null}>
-        <div class="flex-1 flex flex-col justify-center items-center bg-white">
-          <section class="w-full flex-1">
+        <div class="flex-1 flex flex-col justify-center items-center bg-gray-50 overflow-hidden">
+          <section class="w-full flex-1 overflow-hidden">
             <Switch>
               <Match when={appState.activePage === 'characters'}>
                 {charactersPage()}
@@ -62,7 +62,7 @@ export const WebTelegramAppContent = (props) => {
               </Match>
             </Switch>
           </section>
-          <nav class="w-full flex p-4">
+          <nav class="w-full flex p-4 bg-white border-t border-gray">
             <div class="flex-1 flex flex-col items-center" onClick={() => navigate('characters', {})}>
               <div class={`w-8 h-8 border-2 ${appState.activePage === 'characters' ? 'border-black' : 'border-gray'} rounded-lg mb-1`}></div>
               <p class="text-center text-xs uppercase">Characters</p>

@@ -28,7 +28,8 @@ module CharactersContext
         proficiency_bonus: proficiency_bonus,
         abilities: abilities,
         saving_throws: saving_throws,
-        class_saving_throws: class_saving_throws
+        class_saving_throws: class_saving_throws,
+        skills: skills
       }
     end
 
@@ -68,11 +69,38 @@ module CharactersContext
         cha: abilities.dig(:cha, :modifier) + (class_saving_throws.include?(:cha) ? proficiency_bonus : 0)
       }
     end
-    # rubocop: enable Metrics/AbcSize
 
     def class_saving_throws
       @class_saving_throws ||= CLASS_SAVING_THROWS[first_class]
     end
+
+    def skills
+      return @skills if defined?(@skills)
+
+      values = character.data['abilities']
+      @skills =
+        {
+          acrobatics: { ability: 'dex', modifier: modifier(values['dex']) },
+          animal: { ability: 'wis', modifier: modifier(values['wis']) },
+          arcana: { ability: 'int', modifier: modifier(values['int']) },
+          athletics: { ability: 'str', modifier: modifier(values['str']) },
+          deception: { ability: 'cha', modifier: modifier(values['cha']) },
+          history: { ability: 'int', modifier: modifier(values['int']) },
+          insight: { ability: 'wis', modifier: modifier(values['wis']) },
+          intimidation: { ability: 'cha', modifier: modifier(values['cha']) },
+          invastigation: { ability: 'int', modifier: modifier(values['int']) },
+          medicine: { ability: 'wis', modifier: modifier(values['wis']) },
+          nature: { ability: 'int', modifier: modifier(values['int']) },
+          perception: { ability: 'wis', modifier: modifier(values['wis']) },
+          performance: { ability: 'cha', modifier: modifier(values['cha']) },
+          persuasion: { ability: 'cha', modifier: modifier(values['cha']) },
+          religion: { ability: 'int', modifier: modifier(values['int']) },
+          sleight: { ability: 'dex', modifier: modifier(values['dex']) },
+          stealth: { ability: 'dex', modifier: modifier(values['dex']) },
+          survival: { ability: 'wis', modifier: modifier(values['wis']) }
+        }
+    end
+    # rubocop: enable Metrics/AbcSize
 
     def first_class
       character.data['classes'].keys.first

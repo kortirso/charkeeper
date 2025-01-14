@@ -36,17 +36,19 @@ export const CharactersPage = (props) => {
   return (
     <Switch>
       <Match when={Object.keys(appState.activePageParams).length === 0}>
-        <div class="w-full flex justify-between mb-4 py-4 border-b border-gray">
+        <div class="w-full flex justify-between py-4 bg-white border-b border-gray">
           <p class="flex-1 text-center">Characters list</p>
         </div>
-        <For each={pageState.characters}>
-          {(character) =>
-            <Character
-              currentRule={appState.rules.find((item) => item.id === character.rule_id).name}
-              character={character}
-            />
-          }
-        </For>
+        <div class="p-4">
+          <For each={pageState.characters}>
+            {(character) =>
+              <Character
+                currentRule={appState.rules.find((item) => item.id === character.rule_id).name}
+                character={character}
+              />
+            }
+          </For>
+        </div>
       </Match>
       <Match when={appState.activePageParams.id}>
         <CharacterView />
