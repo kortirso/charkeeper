@@ -9,9 +9,12 @@ export const Character = (props) => {
 
   const [_appState, { navigate }] = useAppState();
 
+  const overallLevel = () =>
+    Object.values(character().data.classes).reduce((acc, item) => acc + item, 0)
+
   return (
     <div
-      class="mb-4 p-4 bg-white flex border border-gray rounded cursor-pointer"
+      class="mb-4 p-4 flex white-box cursor-pointer"
       onClick={() => navigate('characters', { id: character().id })}
     >
       <Switch>
@@ -22,7 +25,7 @@ export const Character = (props) => {
           <div>
             <p class="mb-1 font-medium">{character().name}</p>
             <div class="mb-1">
-              <p class="text-xs">Lvl 1 | {capitalize(character().data.race)}</p>
+              <p class="text-xs">Lvl {overallLevel()} | {capitalize(character().data.race)}</p>
             </div>
             <p class="text-xs">
               {Object.keys(character().data.classes).map((item) => capitalize(item)).join(' * ')}

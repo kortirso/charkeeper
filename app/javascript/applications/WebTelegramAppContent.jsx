@@ -62,22 +62,22 @@ export const WebTelegramAppContent = (props) => {
               </Match>
             </Switch>
           </section>
-          <nav class="w-full flex p-4 bg-white border-t border-gray">
-            <div class="flex-1 flex flex-col items-center" onClick={() => navigate('characters', {})}>
-              <div class={`w-8 h-8 border-2 ${appState.activePage === 'characters' ? 'border-black' : 'border-gray'} rounded-lg mb-1`}></div>
-              <p class="text-center text-xs uppercase">Characters</p>
+          <nav class="w-full flex p-4 bg-white border-t border-gray-200">
+            <div class="nav-button" onClick={() => navigate('characters', {})}>
+              <div class={`nav-button-icon ${appState.activePage === 'characters' ? 'border-black' : 'border-gray'}`}></div>
+              <p class="nav-button-text">Characters</p>
             </div>
-            <div class="flex-1 flex flex-col items-center" onClick={() => navigate('npc', {})}>
-              <div class={`w-8 h-8 border-2 ${appState.activePage === 'npc' ? 'border-black' : 'border-gray'} rounded-lg mb-1`}></div>
-              <p class="text-center text-xs uppercase">NPC</p>
+            <div class="nav-button" onClick={() => navigate('npc', {})}>
+              <div class={`nav-button-icon ${appState.activePage === 'npc' ? 'border-black' : 'border-gray'}`}></div>
+              <p class="nav-button-text">NPC</p>
             </div>
-            <div class="flex-1 flex flex-col items-center" onClick={() => navigate('library', {})}>
-              <div class={`w-8 h-8 border-2 ${appState.activePage === 'library' ? 'border-black' : 'border-gray'} rounded-lg mb-1`}></div>
-              <p class="text-center text-xs uppercase">Library</p>
+            <div class="nav-button" onClick={() => navigate('library', {})}>
+              <div class={`nav-button-icon ${appState.activePage === 'library' ? 'border-black' : 'border-gray'}`}></div>
+              <p class="nav-button-text">Library</p>
             </div>
-            <div class="flex-1 flex flex-col items-center" onClick={() => navigate('profile', {})}>
-              <div class={`w-8 h-8 border-2 ${appState.activePage === 'profile' ? 'border-black' : 'border-gray'} rounded-lg mb-1`}></div>
-              <p class="text-center text-xs uppercase">Profile</p>
+            <div class="nav-button" onClick={() => navigate('profile', {})}>
+              <div class={`nav-button-icon ${appState.activePage === 'profile' ? 'border-black' : 'border-gray'}`}></div>
+              <p class="nav-button-text">Profile</p>
             </div>
           </nav>
         </div>

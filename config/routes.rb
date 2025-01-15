@@ -10,7 +10,9 @@ Rails.application.routes.draw do
       end
 
       resources :rules, only: %i[index]
-      resources :characters, only: %i[index show]
+      resources :characters, only: %i[index show] do
+        resources :items, only: %i[index], module: 'characters'
+      end
     end
   end
 

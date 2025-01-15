@@ -3,8 +3,40 @@
 @tailwind utilities;
 
 .modal {
-  @apply relative pt-8 p-4 bg-white rounded overflow-y-scroll w-full;
+  @apply relative pt-12 p-8 bg-gray-50 rounded overflow-y-scroll;
 
-  max-width: 95%;
+  max-width: 90%;
   max-height: 90%;
+}
+
+.white-box {
+  @apply bg-white border border-gray-200 rounded;
+}
+
+.nav-button {
+  @apply flex-1 flex flex-col items-center cursor-pointer;
+}
+
+.nav-button-icon {
+  @apply w-8 h-8 border-2 rounded-lg mb-1;
+}
+
+.nav-button-text {
+  @apply text-center text-xs uppercase;
+}
+
+.character-tab-select {
+  @apply cursor-pointer text-center mb-1 px-8 py-2 white-box;
+}
+
+.table thead tr td {
+  @apply uppercase pb-1 text-xs;
+}
+
+.table tbody tr {
+  @apply border-b border-gray-200;
+}
+
+.table tbody tr:last-of-type {
+  @apply border-0;
 }

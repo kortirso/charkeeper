@@ -55,6 +55,22 @@ CREATE TABLE public.ar_internal_metadata (
 
 
 --
+-- Name: character_items; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.character_items (
+    id uuid DEFAULT gen_random_uuid() NOT NULL,
+    character_id uuid NOT NULL,
+    item_id uuid NOT NULL,
+    quantity integer DEFAULT 1 NOT NULL,
+    ready_to_use boolean DEFAULT false NOT NULL,
+    data jsonb DEFAULT '{}'::jsonb NOT NULL,
+    created_at timestamp(6) without time zone NOT NULL,
+    updated_at timestamp(6) without time zone NOT NULL
+);
+
+
+--
 -- Name: characters; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -66,6 +82,23 @@ CREATE TABLE public.characters (
     created_at timestamp(6) without time zone NOT NULL,
     updated_at timestamp(6) without time zone NOT NULL,
     user_id uuid NOT NULL
+);
+
+
+--
+-- Name: items; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.items (
+    id uuid DEFAULT gen_random_uuid() NOT NULL,
+    rule_id uuid NOT NULL,
+    kind character varying NOT NULL,
+    weight numeric(7,2) DEFAULT 0.0 NOT NULL,
+    price integer,
+    name jsonb DEFAULT '{}'::jsonb NOT NULL,
+    data jsonb DEFAULT '{}'::jsonb NOT NULL,
+    created_at timestamp(6) without time zone NOT NULL,
+    updated_at timestamp(6) without time zone NOT NULL
 );
 
 
@@ -151,11 +184,27 @@ ALTER TABLE ONLY public.ar_internal_metadata
 
 
 --
+-- Name: character_items character_items_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.character_items
+    ADD CONSTRAINT character_items_pkey PRIMARY KEY (id);
+
+
+--
 -- Name: characters characters_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.characters
     ADD CONSTRAINT characters_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: items items_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.items
+    ADD CONSTRAINT items_pkey PRIMARY KEY (id);
 
 
 --
@@ -199,6 +248,13 @@ ALTER TABLE ONLY public.users
 
 
 --
+-- Name: index_character_items_on_character_id_and_item_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE UNIQUE INDEX index_character_items_on_character_id_and_item_id ON public.character_items USING btree (character_id, item_id);
+
+
+--
 -- Name: index_characters_on_rule_id; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -210,6 +266,13 @@ CREATE INDEX index_characters_on_rule_id ON public.characters USING btree (rule_
 --
 
 CREATE INDEX index_characters_on_user_id ON public.characters USING btree (user_id);
+
+
+--
+-- Name: index_items_on_rule_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_items_on_rule_id ON public.items USING btree (rule_id);
 
 
 --
@@ -240,6 +303,8 @@ CREATE INDEX index_user_sessions_on_user_id ON public.user_sessions USING btree 
 SET search_path TO "$user", public;
 
 INSERT INTO "schema_migrations" (version) VALUES
+('20250115083900'),
+('20250115082322'),
 ('20250111132233'),
 ('20250110162616'),
 ('20250110162012'),

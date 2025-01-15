@@ -6,12 +6,16 @@ class CharacterSerializer < ApplicationSerializer
   attributes :id, :name, :data, :represented_data, :rule_id
 
   def represented_data
-    presenter.new(character: object).present
+    presenter.represent_data
   end
 
   private
 
   def presenter
+    presenter_class.new(character: object)
+  end
+
+  def presenter_class
     case object.rule.name
     when 'D&D 5' then ::CharactersContext::Dnd5RulePresenter
     end
