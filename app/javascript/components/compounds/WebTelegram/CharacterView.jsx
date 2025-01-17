@@ -3,7 +3,7 @@ import { createStore } from 'solid-js/store';
 
 import { Dnd5 } from '../../../components';
 
-import { useAppState } from '../../../context/appState';
+import { useAppState } from '../../../context';
 
 import { fetchCharacterRequest } from '../../../requests/fetchCharacterRequest';
 import { fetchCharacterItemsRequest } from '../../../requests/fetchCharacterItemsRequest';

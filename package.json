@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@babel/core": "^7.20.12",
+    "@solid-primitives/i18n": "^2.1.1",
     "babel-preset-solid": "^1.6.9",
     "solid-js": "^1.8.21"
   },

@@ -6,10 +6,11 @@ module Characters
 
     attributes :id, :quantity, :ready_to_use, :name, :kind, :weight, :price
 
-    delegate :name, :kind, :weight, :price, to: :item
+    delegate :kind, :weight, :price, to: :item
+    delegate :item, to: :object
 
-    def item
-      object.item
+    def name
+      item.name[I18n.locale.to_s]
     end
   end
 end

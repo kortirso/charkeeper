@@ -1,9 +1,11 @@
 import { WebTelegramAppContent } from './WebTelegramAppContent';
 
-import { AppStateProvider } from '../context/appState';
+import { AppStateProvider, AppLocaleProvider } from '../context';
 
 export const WebTelegramApp = (props) => (
   <AppStateProvider>
-    <WebTelegramAppContent />
+    <AppLocaleProvider>
+      <WebTelegramAppContent />
+    </AppLocaleProvider>
   </AppStateProvider>
 );

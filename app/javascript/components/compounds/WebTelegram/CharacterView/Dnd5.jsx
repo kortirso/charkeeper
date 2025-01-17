@@ -12,14 +12,12 @@ export const Dnd5 = (props) => {
 
   const { Modal, openModal, closeModal } = createModal();
 
-  const character = () => props.character;
   const characterItems = () => props.characterItems;
-  const data = () => props.character.data;
-  const modifiers = () => props.character.represented_data.modifiers;
-  const savingThrows = () => props.character.represented_data.saving_throws;
-  const skills = () => props.character.represented_data.skills;
-  const combat = () => props.character.represented_data.combat;
-  const attacks = () => props.character.represented_data.attacks;
+  const modifiers = () => props.character.show_data.modifiers;
+  const savingThrows = () => props.character.show_data.saving_throws;
+  const skills = () => props.character.show_data.skills;
+  const combat = () => props.character.show_data.combat;
+  const attacks = () => props.character.show_data.attacks;
 
   const changeTab = (value) => {
     batch(() => {
@@ -32,7 +30,7 @@ export const Dnd5 = (props) => {
     <div class={`w-1/3 flex flex-col items-center ${isFirstLine ? 'mb-6' : ''}`}>
       <p class="uppercase text-sm mb-1">{title}</p>
       <p class="text-2xl mb-1">{modifier(modifiers()[ability])}</p>
-      <p class="text-sm">{data().abilities[ability]}</p>
+      <p class="text-sm">{props.character.show_data.abilities[ability]}</p>
     </div>
   );
 
@@ -43,14 +41,44 @@ export const Dnd5 = (props) => {
     </div>
   );
 
+  const renderAttack = (attack) => (
+    <tr>
+      <td class="py-1">
+        <p>{attack.name}</p>
+        <Show when={attack.hands == 2}><p class="text-xs">With two hands</p></Show>
+      </td>
+      <td class="py-1 text-center">{modifier(attack.attack_bonus)}</td>
+      <td class="py-1 text-center">
+        <p>{attack.damage}{modifier(attack.damage_bonus)}</p>
+        <p class="text-xs">{attack.damage_type}</p>
+      </td>
+      <td class="py-1 text-center">
+        <Show when={attack.melee_distance}><p>{attack.melee_distance}</p></Show>
+        <Show when={attack.range_distance}><p>{attack.range_distance}</p></Show>
+      </td>
+    </tr>
+  );
+
+  const renderItem = (characterItem) => (
+    <tr>
+      <td class="py-1">
+        <p>{characterItem.name}</p>
+        <p class="text-xs">{characterItem.kind}</p>
+      </td>
+      <td class="py-1 text-center">{characterItem.quantity}</td>
+      <td class="py-1 text-center">{characterItem.weight * characterItem.quantity}</td>
+      <td class="py-1 text-center">{characterItem.quantity * characterItem.price / 100}</td>
+    </tr>
+  );
+
   return (
     <div class="h-full flex flex-col">
       <div class="w-full flex justify-between items-center py-4 px-2 bg-white border-b border-gray-200">
         <div class="w-10"></div>
         <div class="flex-1 flex flex-col items-center">
-          <p>{character().name}</p>
+          <p>{props.character.name}</p>
           <p class="text-sm">
-            {capitalize(character().data.race)} | {Object.keys(character().data.classes).map((item) => capitalize(item)).join(' * ')}
+            {capitalize(props.character.show_data.race)} | {Object.keys(props.character.show_data.classes).map((item) => capitalize(item)).join(' * ')}
           </p>
         </div>
         <div class="w-10 h-8 p-2 flex flex-col justify-between cursor-pointer" onClick={openModal}>
@@ -126,17 +154,7 @@ export const Dnd5 = (props) => {
                 </thead>
                 <tbody>
                   <For each={characterItems().filter((item) => item.ready_to_use)}>
-                    {(characterItem) =>
-                      <tr>
-                        <td class="py-1">
-                          <p>{characterItem.name.en}</p>
-                          <p class="text-xs">{characterItem.kind}</p>
-                        </td>
-                        <td class="py-1 text-center">{characterItem.quantity}</td>
-                        <td class="py-1 text-center">{characterItem.weight * characterItem.quantity}</td>
-                        <td class="py-1 text-center">{characterItem.quantity * characterItem.price / 100}</td>
-                      </tr>
-                    }
+                    {(characterItem) => renderItem(characterItem)}
                   </For>
                 </tbody>
               </table>
@@ -154,17 +172,7 @@ export const Dnd5 = (props) => {
                 </thead>
                 <tbody>
                   <For each={characterItems().filter((item) => !item.ready_to_use)}>
-                    {(characterItem) =>
-                      <tr>
-                        <td class="py-1">
-                          <p>{characterItem.name.en}</p>
-                          <p class="text-xs">{characterItem.kind}</p>
-                        </td>
-                        <td class="py-1 text-center">{characterItem.quantity}</td>
-                        <td class="py-1 text-center">{characterItem.weight * characterItem.quantity}</td>
-                        <td class="py-1 text-center">{characterItem.quantity * characterItem.price / 100}</td>
-                      </tr>
-                    }
+                    {(characterItem) => renderItem(characterItem)}
                   </For>
                 </tbody>
               </table>
@@ -185,8 +193,22 @@ export const Dnd5 = (props) => {
                 <p class="text-2xl mb-1">{combat().speed}</p>
               </div>
             </div>
+            <div class="mb-4 p-4 flex white-box">
+              <div class="w-1/3 flex flex-col items-center">
+                <p class="uppercase text-sm mb-1">Health</p>
+                <p class="text-2xl mb-1">{combat().health.current}</p>
+              </div>
+              <div class="w-1/3 flex flex-col items-center">
+                <p class="uppercase text-sm mb-1">Max health</p>
+                <p class="text-2xl mb-1">{combat().health.max}</p>
+              </div>
+              <div class="w-1/3 flex flex-col items-center">
+                <p class="uppercase text-sm mb-1">Temp health</p>
+                <p class="text-2xl mb-1">{combat().health.temp}</p>
+              </div>
+            </div>
             <div class="p-4 white-box mb-4">
-              <h2 class="text-lg">Attacks</h2>
+              <h2 class="text-lg mb-2">Action attacks - {combat().attacks_per_action}</h2>
               <table class="w-full table">
                 <thead>
                   <tr>
@@ -197,24 +219,26 @@ export const Dnd5 = (props) => {
                   </tr>
                 </thead>
                 <tbody>
-                  <For each={attacks()}>
-                    {(attack) =>
-                      <tr>
-                        <td class="py-1">
-                          <p>{attack.name}</p>
-                          <Show when={attack.hands == 2}><p class="text-xs">With two hands</p></Show>
-                        </td>
-                        <td class="py-1 text-center">{modifier(attack.attack_bonus)}</td>
-                        <td class="py-1 text-center">
-                          <p>{attack.damage}{modifier(attack.damage_bonus)}</p>
-                          <p class="text-xs">{attack.damage_type}</p>
-                        </td>
-                        <td class="py-1 text-center">
-                          <Show when={attack.melee_distance}><p>{attack.melee_distance}</p></Show>
-                          <Show when={attack.range_distance}><p>{attack.range_distance}</p></Show>
-                        </td>
-                      </tr>
-                    }
+                  <For each={attacks().filter((item) => item.action_type === 'action')}>
+                    {(attack) => renderAttack(attack)}
+                  </For>
+                </tbody>
+              </table>
+            </div>
+            <div class="p-4 white-box mb-4">
+              <h2 class="text-lg mb-2">Bonus action attacks - 1</h2>
+              <table class="w-full table">
+                <thead>
+                  <tr>
+                    <td></td>
+                    <td class="text-center">Bonus</td>
+                    <td class="text-center">Damage</td>
+                    <td class="text-center">Dist</td>
+                  </tr>
+                </thead>
+                <tbody>
+                  <For each={attacks().filter((item) => item.action_type === 'bonus action')}>
+                    {(attack) => renderAttack(attack)}
                   </For>
                 </tbody>
               </table>
@@ -225,8 +249,8 @@ export const Dnd5 = (props) => {
       <Modal>
         <p class="character-tab-select" onClick={() => changeTab('abilities')}>Abilities</p>
         <p class="character-tab-select" onClick={() => changeTab('skills')}>Skills</p>
-        <p class="character-tab-select" onClick={() => changeTab('equipment')}>Equipment</p>
         <p class="character-tab-select" onClick={() => changeTab('combat')}>Combat</p>
+        <p class="character-tab-select" onClick={() => changeTab('equipment')}>Equipment</p>
       </Modal>
     </div>
   );

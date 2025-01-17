@@ -11,6 +11,9 @@ Rule.create!(name: 'Daggerheart')
 
 user = User.create!
 
+# языки
+# common, dwarvish, elvish, giant, gnomish, goblin, halfling, orc, draconic, undercommon
+
 kormak = dnd5.characters.create!(
   user: user,
   name: 'Кормак',
@@ -19,7 +22,12 @@ kormak = dnd5.characters.create!(
     alignment: 'neutral',
     abilities: { str: 16, dex: 11, con: 16, int: 8, wis: 13, cha: 12 },
     classes: { fighter: 3 },
-    health: { max: 30, current: 24 }
+    health: { current: 24, max: 30, temp: 0 },
+    speed: 25,
+    skills: [],
+    languages: ['common', 'dwarvish'],
+    weapon_skills: ['handaxe', 'battleaxe', 'light hammer', 'warhammer'],
+    armor_skills: ['light', 'medium']
   }
 )
 
@@ -31,16 +39,23 @@ grundar = dnd5.characters.create!(
     alignment: 'lawful neutral',
     abilities: { str: 13, dex: 16, con: 14, int: 11, wis: 16, cha: 10 },
     classes: { monk: 4 },
-    health: { max: 31, current: 27 }
+    health: { current: 27, max: 31, temp: 0 },
+    speed: 30,
+    skills: [],
+    languages: ['common', 'dwarvish'],
+    weapon_skills: ['light', 'shortsword'],
+    armor_skills: []
   }
 )
 
 torch = dnd5.items.create!(kind: 'item', name: { en: 'Torch', ru: 'Факел' }, weight: 1, price: 1)
 
+# виды урона оружия
 # колющий - pierce
 # рубящий - slash
 # дробящий - bludge
 
+# свойства оружия
 # метательное - thrown
 # фехтовальное - finesse
 # лёгкое - light
@@ -48,7 +63,6 @@ torch = dnd5.items.create!(kind: 'item', name: { en: 'Torch', ru: 'Факел' }
 # универсальное - versatile
 # двуручное - 2handed
 # досягаемость - reach
-
 
 sickle = dnd5.items.create!(kind: 'light melee weapon', name: { en: 'Sickle', ru: 'Серп' }, weight: 2, price: 100, data: { damage: '1d4', type: 'slash', caption: ['light'] })
 quarterstaff = dnd5.items.create!(kind: 'light melee weapon', name: { en: 'Quarterstaff', ru: 'Боевой посох' }, weight: 4, price: 20, data: { damage: '1d6', type: 'bludge', caption: ['versatile-1d8'] })

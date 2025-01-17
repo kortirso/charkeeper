@@ -1,8 +1,9 @@
-import { createEffect, Switch, Match, createMemo } from 'solid-js';
+import { createEffect, Switch, Match, createMemo, createResource, batch, Show } from 'solid-js';
+import * as i18n from '@solid-primitives/i18n';
 
-import { CharactersPage, NpcPage, LibraryPage, ProfilePage } from '../components';
+import { CharactersPage, NpcPage, ProfilePage } from '../components';
 
-import { useAppState } from '../context/appState';
+import { useAppState, useAppLocale } from '../context';
 import { useTelegram } from '../hooks';
 
 import { fetchAccessTokenRequest } from '../requests/fetchAccessTokenRequest';
@@ -10,12 +11,20 @@ import { fetchAccessTokenRequest } from '../requests/fetchAccessTokenRequest';
 export const WebTelegramAppContent = (props) => {
   const { webApp } = useTelegram();
   const [appState, { setAccessToken, navigate }] = useAppState();
+  const [_locale, dict, { setLocale }] = useAppLocale();
+
+  const charactersPage = createMemo(() => <CharactersPage />);
+  const npcPage = createMemo(() => <NpcPage />);
+  const profilePage = createMemo(() => <ProfilePage />);
+
+  const t = i18n.translator(dict);
 
   createEffect(() => {
     if (appState.accessToken !== undefined) return;
 
     const urlSearchParams = new URLSearchParams(webApp.initData);
     const data = Object.fromEntries(urlSearchParams.entries());
+
     const checkString = Object.keys(data).filter(key => key !== 'hash').map(key => `${key}=${data[key]}`).sort().join('\n');
 
     const fetchAccessToken = async () => await fetchAccessTokenRequest(checkString, data.hash);
@@ -23,25 +32,23 @@ export const WebTelegramAppContent = (props) => {
     Promise.all([fetchAccessToken()]).then(
       ([accessTokenData]) => {
         if (accessTokenData.access_token) {
-          setAccessToken(accessTokenData.access_token)
+          batch(() => {
+            setLocale('ru'); // webApp.initDataUnsafe.user.language_code
+            setAccessToken(accessTokenData.access_token);
+          });
         } else {
-          setAccessToken(null)
+          setAccessToken(null);
         }
       }
     );
   });
-
-  const charactersPage = createMemo(() => <CharactersPage />);
-  const npcPage = createMemo(() => <NpcPage />);
-  const libraryPage = createMemo(() => <LibraryPage />);
-  const profilePage = createMemo(() => <ProfilePage />);
 
   // 453x750
   // 420x690
   return (
     <Switch fallback={
       <div class="flex-1 flex flex-col justify-center items-center bg-gray-50">
-        <div>Loading screen</div>
+        <div>{t('loading')}</div>
       </div>
     }>
       <Match when={appState.accessToken !== undefined && appState.accessToken !== null}>
@@ -65,19 +72,15 @@ export const WebTelegramAppContent = (props) => {
           <nav class="w-full flex p-4 bg-white border-t border-gray-200">
             <div class="nav-button" onClick={() => navigate('characters', {})}>
               <div class={`nav-button-icon ${appState.activePage === 'characters' ? 'border-black' : 'border-gray'}`}></div>
-              <p class="nav-button-text">Characters</p>
+              <p class="nav-button-text">{t('nav.characters')}</p>
             </div>
             <div class="nav-button" onClick={() => navigate('npc', {})}>
               <div class={`nav-button-icon ${appState.activePage === 'npc' ? 'border-black' : 'border-gray'}`}></div>
-              <p class="nav-button-text">NPC</p>
-            </div>
-            <div class="nav-button" onClick={() => navigate('library', {})}>
-              <div class={`nav-button-icon ${appState.activePage === 'library' ? 'border-black' : 'border-gray'}`}></div>
-              <p class="nav-button-text">Library</p>
+              <p class="nav-button-text">{t('nav.npc')}</p>
             </div>
             <div class="nav-button" onClick={() => navigate('profile', {})}>
               <div class={`nav-button-icon ${appState.activePage === 'profile' ? 'border-black' : 'border-gray'}`}></div>
-              <p class="nav-button-text">Profile</p>
+              <p class="nav-button-text">{t('nav.profile')}</p>
             </div>
           </nav>
         </div>

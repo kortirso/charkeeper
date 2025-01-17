@@ -1,9 +1,10 @@
 import { createEffect, For, Switch, Match } from 'solid-js';
 import { createStore } from 'solid-js/store';
+import * as i18n from '@solid-primitives/i18n';
 
 import { Character, CharacterView } from '../../../components';
 
-import { useAppState } from '../../../context/appState';
+import { useAppState, useAppLocale } from '../../../context';
 import { fetchCharactersRequest } from '../../../requests/fetchCharactersRequest';
 import { fetchRulesRequest } from '../../../requests/fetchRulesRequest';
 
@@ -13,6 +14,9 @@ export const CharactersPage = (props) => {
   });
 
   const [appState, { setRules }] = useAppState();
+  const [_locale, dict] = useAppLocale();
+
+  const t = i18n.translator(dict);
 
   createEffect(() => {
     if (appState.rules.length !== 0) return;
@@ -37,7 +41,7 @@ export const CharactersPage = (props) => {
     <Switch>
       <Match when={Object.keys(appState.activePageParams).length === 0}>
         <div class="w-full flex justify-between py-4 bg-white border-b border-gray">
-          <p class="flex-1 text-center">Characters list</p>
+          <p class="flex-1 text-center">{t('characters.title')}</p>
         </div>
         <div class="p-4">
           <For each={pageState.characters}>

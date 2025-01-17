@@ -29,7 +29,7 @@ module Characters
     # Rack::Brotli goes directly under Rack::Deflater, if Rack::Deflater is present
     config.middleware.use Rack::Brotli
 
-    I18n.available_locales = %i[en]
+    I18n.available_locales = %i[en ru]
     config.i18n.default_locale = :en
 
     config.time_zone = 'UTC'
@@ -65,6 +65,6 @@ module Characters
     config.generators.system_tests = nil
 
     # ngrok configuration
-    config.hosts << '143e-45-153-230-36.ngrok-free.app'
+    config.hosts << '6e18-45-153-230-36.ngrok-free.app'
   end
 end

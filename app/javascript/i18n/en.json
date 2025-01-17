@@ -1,0 +1,11 @@
+{
+  "loading": "Loading screen",
+  "nav": {
+    "characters": "Characters",
+    "npc": "NPC",
+    "profile": "Profile"
+  },
+  "characters": {
+    "title": "Characters list"
+  }
+}

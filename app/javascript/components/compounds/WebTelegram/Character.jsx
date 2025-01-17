@@ -2,7 +2,7 @@ import { Switch, Match } from 'solid-js';
 
 import { capitalize } from '../../../helpers';
 
-import { useAppState } from '../../../context/appState';
+import { useAppState } from '../../../context';
 
 export const Character = (props) => {
   const character = () => props.character;
@@ -10,7 +10,7 @@ export const Character = (props) => {
   const [_appState, { navigate }] = useAppState();
 
   const overallLevel = () =>
-    Object.values(character().data.classes).reduce((acc, item) => acc + item, 0)
+    Object.values(character().index_data.classes).reduce((acc, item) => acc + item, 0)
 
   return (
     <div
@@ -25,10 +25,10 @@ export const Character = (props) => {
           <div>
             <p class="mb-1 font-medium">{character().name}</p>
             <div class="mb-1">
-              <p class="text-xs">Lvl {overallLevel()} | {capitalize(character().data.race)}</p>
+              <p class="text-xs">Lvl {overallLevel()} | {capitalize(character().index_data.race)}</p>
             </div>
             <p class="text-xs">
-              {Object.keys(character().data.classes).map((item) => capitalize(item)).join(' * ')}
+              {Object.keys(character().index_data.classes).map((item) => capitalize(item)).join(' * ')}
             </p>
           </div>
         </Match>

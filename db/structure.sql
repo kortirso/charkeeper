@@ -171,7 +171,8 @@ CREATE TABLE public.user_sessions (
 CREATE TABLE public.users (
     id uuid DEFAULT gen_random_uuid() NOT NULL,
     created_at timestamp(6) without time zone NOT NULL,
-    updated_at timestamp(6) without time zone NOT NULL
+    updated_at timestamp(6) without time zone NOT NULL,
+    locale character varying DEFAULT 'en'::character varying NOT NULL
 );
 
 
@@ -303,6 +304,7 @@ CREATE INDEX index_user_sessions_on_user_id ON public.user_sessions USING btree 
 SET search_path TO "$user", public;
 
 INSERT INTO "schema_migrations" (version) VALUES
+('20250116173157'),
 ('20250115083900'),
 ('20250115082322'),
 ('20250111132233'),

@@ -6,8 +6,8 @@ module Api
       include SerializeRelation
       include SerializeResource
 
-      INDEX_SERIALIZER_FIELDS = %i[id name data rule_id].freeze
-      SHOW_SERIALIZER_FIELDS = %i[id name data represented_data rule_id].freeze
+      INDEX_SERIALIZER_FIELDS = %i[id name index_data rule_id].freeze
+      SHOW_SERIALIZER_FIELDS = %i[id name show_data rule_id].freeze
 
       def index
         render json: serialize_relation(

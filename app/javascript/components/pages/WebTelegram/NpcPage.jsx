@@ -1,4 +1,4 @@
-import { useAppState } from '../../../context/appState';
+import { useAppState } from '../../../context';
 
 export const NpcPage = (props) => {
   const [appState] = useAppState();

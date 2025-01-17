@@ -6,8 +6,13 @@ module Api
       protect_from_forgery with: :null_session
 
       before_action :authenticate
+      before_action :set_locale
 
       private
+
+      def set_locale
+        I18n.locale = current_user&.locale || I18n.default_locale
+      end
 
       def serializer_fields(serializer_class, default_only_fields=[], forbidden_fields=[])
         @serializer_attributes = serializer_class::ATTRIBUTES
