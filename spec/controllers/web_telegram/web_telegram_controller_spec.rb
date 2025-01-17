@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-describe Api::V1::Auth::WebTelegramController do
+describe WebTelegram::AuthController do
   describe 'POST#create' do
     let(:request) { post :create, params: { check_string: check_string, hash: hash } }
     # rubocop: disable Layout/LineLength

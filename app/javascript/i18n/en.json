@@ -6,6 +6,76 @@
     "profile": "Profile"
   },
   "characters": {
-    "title": "Characters list"
+    "title": "Characters list",
+    "level": "Level"
+  },
+  "character": {
+    "abilities": "Abilities",
+    "combat": "Combat",
+    "equipment": "Equipment",
+    "backpack": "Backpack"
+  },
+  "attacks": {
+    "bonus": "Bonus",
+    "damage": "Damage",
+    "distance": "Dist"
+  },
+  "equipment": {
+    "quantity": "Qty",
+    "weight": "Weight",
+    "cost": "Cost gp"
+  },
+  "terms": {
+    "savingThrows": "Saving throws",
+    "armorClass": "Armor Class",
+    "initiative": "Initiative",
+    "speed": "Speed",
+    "health": "Health",
+    "maxHealth": "Max health",
+    "tempHealth": "Temp health",
+    "attackAction": "Action attacks",
+    "attackBonusAction": "Bonus action attacks"
+  },
+  "damage": {
+    "bludge": "Bludge",
+    "slash": "Slash",
+    "pierce": "Pierce",
+    "2hands": "Two handed"
+  },
+  "races": {
+    "dwarf": "Dwarf",
+    "human": "Human"
+  },
+  "classes": {
+    "fighter": "Fighter",
+    "monk": "Monk"
+  },
+  "abilities": {
+    "str": "Strength",
+    "dex": "Dexterity",
+    "con": "Constitution",
+    "int": "Intelligence",
+    "wis": "Wisdom",
+    "cha": "Charisma"
+  },
+  "skills": {
+    "acrobatics": "Acrobatics",
+    "animal": "Animal",
+    "arcana": "Arcana",
+    "athletics": "Athletics",
+    "deception": "Deception",
+    "history": "History",
+    "insight": "Insight",
+    "intimidation": "Intimidation",
+    "investigation": "Investigation",
+    "medicine": "Medicine",
+    "nature": "Nature",
+    "perception": "Perception",
+    "performance": "Performance",
+    "persuasion": "Persuasion",
+    "religion": "Religion",
+    "sleight": "Sleight of Hands",
+    "stealth": "Stealth",
+    "survival": "Survival"
   }
 }

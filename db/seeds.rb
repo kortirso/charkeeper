@@ -1,13 +1,6 @@
 # frozen_string_literal: true
 
-Rule.create!(name: 'D&D 3')
-Rule.create!(name: 'D&D 3.5')
-Rule.create!(name: 'D&D 4')
 dnd5 = Rule.create!(name: 'D&D 5')
-Rule.create!(name: 'D&D 5 2024')
-Rule.create!(name: 'Pathfinder')
-Rule.create!(name: 'Pathfinder 2')
-Rule.create!(name: 'Daggerheart')
 
 user = User.create!
 
@@ -22,12 +15,15 @@ kormak = dnd5.characters.create!(
     alignment: 'neutral',
     abilities: { str: 16, dex: 11, con: 16, int: 8, wis: 13, cha: 12 },
     classes: { fighter: 3 },
+    subclasses: { fighter: nil },
     health: { current: 24, max: 30, temp: 0 },
     speed: 25,
     skills: [],
     languages: ['common', 'dwarvish'],
+    weapon_core_skills: [],
     weapon_skills: ['handaxe', 'battleaxe', 'light hammer', 'warhammer'],
-    armor_skills: ['light', 'medium']
+    armor_skills: ['light', 'medium'],
+    class_features: []
   }
 )
 
@@ -39,12 +35,16 @@ grundar = dnd5.characters.create!(
     alignment: 'lawful neutral',
     abilities: { str: 13, dex: 16, con: 14, int: 11, wis: 16, cha: 10 },
     classes: { monk: 4 },
+    subclasses: { monk: nil },
+    energy: { monk: 4 } # для варвара, монаха и чародея, текущее состояние
     health: { current: 27, max: 31, temp: 0 },
     speed: 30,
-    skills: [],
-    languages: ['common', 'dwarvish'],
-    weapon_skills: ['light', 'shortsword'],
-    armor_skills: []
+    skills: [], # выбранные умения
+    languages: ['common', 'dwarvish'], # изученные языки
+    weapon_core_skills: ['light'], # навыки владения группой оружия
+    weapon_skills: ['shortsword'], # навыки владения оружием
+    armor_skills: [], # навыки владения броней
+    class_features: [] # выбранные классовые умения
   }
 )
 

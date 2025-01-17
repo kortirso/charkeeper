@@ -6,6 +6,76 @@
     "profile": "Профиль"
   },
   "characters": {
-    "title": "Персонажи"
+    "title": "Персонажи",
+    "level": "Уровень"
+  },
+  "character": {
+    "abilities": "Характеристики",
+    "combat": "Сражение",
+    "equipment": "Снаряжение",
+    "backpack": "Рюкзак"
+  },
+  "attacks": {
+    "bonus": "Бонус",
+    "damage": "Урон",
+    "distance": "Дист"
+  },
+  "equipment": {
+    "quantity": "Кол-во",
+    "weight": "Вес",
+    "cost": "Цена зм"
+  },
+  "terms": {
+    "savingThrows": "Спасброски",
+    "armorClass": "КД",
+    "initiative": "Инициатива",
+    "speed": "Скорость",
+    "health": "Хиты",
+    "maxHealth": "Макс хиты",
+    "tempHealth": "Врем хиты",
+    "attackAction": "Атаки за действие",
+    "attackBonusAction": "Атаки за бонус действие"
+  },
+  "damage": {
+    "bludge": "Дробящий",
+    "slash": "Рубящий",
+    "pierce": "Колющий",
+    "2hands": "Двуручная"
+  },
+  "races": {
+    "dwarf": "Дварф",
+    "human": "Человек"
+  },
+  "classes": {
+    "fighter": "Воин",
+    "monk": "Монах"
+  },
+  "abilities": {
+    "str": "Сила",
+    "dex": "Ловкость",
+    "con": "Телосложение",
+    "int": "Интеллект",
+    "wis": "Мудрость",
+    "cha": "Харизма"
+  },
+  "skills": {
+    "acrobatics": "Акробатика",
+    "animal": "Уход за хивотными",
+    "arcana": "Магия",
+    "athletics": "Атлетика",
+    "deception": "Обман",
+    "history": "История",
+    "insight": "Проницательность",
+    "intimidation": "Запугивание",
+    "investigation": "Анализ",
+    "medicine": "Медицина",
+    "nature": "Природа",
+    "perception": "Внимательность",
+    "performance": "Выступление",
+    "persuasion": "Убеждение",
+    "religion": "Религия",
+    "sleight": "Ловкость рук",
+    "stealth": "Скрытность",
+    "survival": "Выживание"
   }
 }

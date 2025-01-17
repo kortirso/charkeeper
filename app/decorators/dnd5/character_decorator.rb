@@ -15,8 +15,12 @@ module Dnd5
         classes: data['classes'],
         overall_level: data['classes'].values.sum,
         abilities: data['abilities'],
-        modifiers: modifiers
-      }
+        modifiers: modifiers,
+        class_features: [],
+        resistances: [],
+        immunities: [],
+        energy: data['energy']
+      }.compact
 
       result[:proficiency_bonus] = proficiency_bonus(result[:overall_level])
       result[:saving_throws] = result[:modifiers].clone
@@ -30,8 +34,7 @@ module Dnd5
       }
       result[:skills] = basis_skills(result[:modifiers])
       modify_selected_skills(result)
-      result[:class_features] = []
-      result[:attacks] = [arms_attack(result)] + weapon_attacks(result)
+      result[:attacks] = [unarmed_attack(result)] + weapon_attacks(result)
 
       result
     end
@@ -51,37 +54,42 @@ module Dnd5
     end
 
     def basis_skills(modifiers)
-      {
-        acrobatics: { ability: 'dex', modifier: modifiers[:dex] },
-        animal: { ability: 'wis', modifier: modifiers[:wis] },
-        arcana: { ability: 'int', modifier: modifiers[:int] },
-        athletics: { ability: 'str', modifier: modifiers[:str] },
-        deception: { ability: 'cha', modifier: modifiers[:cha] },
-        history: { ability: 'int', modifier: modifiers[:int] },
-        insight: { ability: 'wis', modifier: modifiers[:wis] },
-        intimidation: { ability: 'cha', modifier: modifiers[:cha] },
-        investigation: { ability: 'int', modifier: modifiers[:int] },
-        medicine: { ability: 'wis', modifier: modifiers[:wis] },
-        nature: { ability: 'int', modifier: modifiers[:int] },
-        perception: { ability: 'wis', modifier: modifiers[:wis] },
-        performance: { ability: 'cha', modifier: modifiers[:cha] },
-        persuasion: { ability: 'cha', modifier: modifiers[:cha] },
-        religion: { ability: 'int', modifier: modifiers[:int] },
-        sleight: { ability: 'dex', modifier: modifiers[:dex] },
-        stealth: { ability: 'dex', modifier: modifiers[:dex] },
-        survival: { ability: 'wis', modifier: modifiers[:wis] }
-      }
+      [
+        { name: 'acrobatics', ability: 'dex', modifier: modifiers[:dex] },
+        { name: 'animal', ability: 'wis', modifier: modifiers[:wis] },
+        { name: 'arcana', ability: 'int', modifier: modifiers[:int] },
+        { name: 'athletics', ability: 'str', modifier: modifiers[:str] },
+        { name: 'deception', ability: 'cha', modifier: modifiers[:cha] },
+        { name: 'history', ability: 'int', modifier: modifiers[:int] },
+        { name: 'insight', ability: 'wis', modifier: modifiers[:wis] },
+        { name: 'intimidation', ability: 'cha', modifier: modifiers[:cha] },
+        { name: 'investigation', ability: 'int', modifier: modifiers[:int] },
+        { name: 'medicine', ability: 'wis', modifier: modifiers[:wis] },
+        { name: 'nature', ability: 'int', modifier: modifiers[:int] },
+        { name: 'perception', ability: 'wis', modifier: modifiers[:wis] },
+        { name: 'performance', ability: 'cha', modifier: modifiers[:cha] },
+        { name: 'persuasion', ability: 'cha', modifier: modifiers[:cha] },
+        { name: 'religion', ability: 'int', modifier: modifiers[:int] },
+        { name: 'sleight', ability: 'dex', modifier: modifiers[:dex] },
+        { name: 'stealth', ability: 'dex', modifier: modifiers[:dex] },
+        { name: 'survival', ability: 'wis', modifier: modifiers[:wis] }
+      ]
     end
 
     def modify_selected_skills(result)
-      character.data['skills']&.each do |skill|
-        result[:skills][skill.to_sym][:modifier] += result[:proficiency_bonus]
+      return if character.data['skills'].blank?
+
+      result[:skills].map do |skill|
+        next skill if character.data['skills'].exclude?(skill[:name])
+
+        skill[:modifier] += result[:proficiency_bonus]
+        skill
       end
     end
 
-    def arms_attack(result)
+    def unarmed_attack(result)
       {
-        name: { en: 'Arms', ru: 'Рукопашная' }[I18n.locale],
+        name: { en: 'Unarmed', ru: 'Безоружная' }[I18n.locale],
         action_type: 'action', # action или bonus action
         hands: 1, # используется рук
         melee_distance: 5, # дальность
@@ -89,7 +97,7 @@ module Dnd5
         damage: 1,
         damage_bonus: result.dig(:modifiers, :str),
         damage_type: 'bludge',
-        kind: 'arms',
+        kind: 'unarmed',
         caption: []
       }
     end
@@ -141,7 +149,7 @@ module Dnd5
         ]
 
         # универсальное оружие двуручным хватом
-        versatile = item[:items_data]['caption'].find { |dam| dam.include?('versatile') }
+        versatile = item[:items_data]['caption'].find { |caption| caption.include?('versatile') }
         if versatile
           response << response[0].merge({
             hands: 2,

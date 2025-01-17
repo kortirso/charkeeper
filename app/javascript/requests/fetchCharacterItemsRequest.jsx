@@ -2,7 +2,7 @@ import { apiRequest } from '../helpers';
 
 export const fetchCharacterItemsRequest = async (accessToken, id) => {
   return await apiRequest({
-    url: `/api/v1/characters/${id}/items.json`,
+    url: `/web_telegram/characters/${id}/items.json`,
     options: {
       method: 'GET',
       headers: {

@@ -1,8 +1,11 @@
 import { Switch, Match, batch, For, Show } from 'solid-js';
 import { createStore } from 'solid-js/store';
+import * as i18n from '@solid-primitives/i18n';
 
+import { CollapseBox } from '../../../../components';
 import { createModal } from '../../../molecules';
 
+import { useAppLocale } from '../../../../context';
 import { capitalize, modifier } from '../../../../helpers';
 
 export const Dnd5 = (props) => {
@@ -11,13 +14,16 @@ export const Dnd5 = (props) => {
   });
 
   const { Modal, openModal, closeModal } = createModal();
+  const [_locale, dict] = useAppLocale();
+
+  const t = i18n.translator(dict);
 
   const characterItems = () => props.characterItems;
   const modifiers = () => props.character.show_data.modifiers;
   const savingThrows = () => props.character.show_data.saving_throws;
-  const skills = () => props.character.show_data.skills;
   const combat = () => props.character.show_data.combat;
   const attacks = () => props.character.show_data.attacks;
+  const skills = () => props.character.show_data.skills;
 
   const changeTab = (value) => {
     batch(() => {
@@ -26,31 +32,68 @@ export const Dnd5 = (props) => {
     });
   }
 
-  const renderAbility = (title, ability, isFirstLine=false) => (
-    <div class={`w-1/3 flex flex-col items-center ${isFirstLine ? 'mb-6' : ''}`}>
-      <p class="uppercase text-sm mb-1">{title}</p>
-      <p class="text-2xl mb-1">{modifier(modifiers()[ability])}</p>
-      <p class="text-sm">{props.character.show_data.abilities[ability]}</p>
+  const renderAbility = (ability) => (
+    <div class="flex items-start mb-2">
+      <div class="white-box flex flex-col items-center w-2/5 p-2">
+        <p class="text-sm mb-1">{t(`abilities.${ability}`)} {props.character.show_data.abilities[ability]}</p>
+        <p class="text-2xl mb-1">{modifier(modifiers()[ability])}</p>
+      </div>
+      <div class="w-3/5 pl-4">
+        <div class="white-box p-2">
+          <div class="flex justify-between">
+            <p>{t('terms.savingThrows')}</p>
+            <p>{modifier(savingThrows()[ability])}</p>
+          </div>
+          <div class="mt-2">
+            <For each={skills().filter((item) => item.ability === ability)}>
+              {(skill) =>
+                <div class="flex justify-between">
+                  <p>{t(`skills.${skill.name}`)}</p>
+                  <p>{modifier(skill.modifier)}</p>
+                </div>
+              }
+            </For>
+          </div>
+        </div>
+      </div>
     </div>
   );
 
-  const renderSavingThrow = (title, value) => (
-    <div class="flex justify-between items-center mb-1">
-      <p class="text-sm">{title}</p>
-      <p class="text-lg">{modifier(value)}</p>
-    </div>
-  );
+  const renderAttacksBox = (title, values) => {
+    if (values.length === 0) return <></>;
+
+    return (
+      <div class="p-4 white-box mb-2">
+        <h2 class="text-lg mb-2">{title}</h2>
+        <table class="w-full table">
+          <thead>
+            <tr>
+              <td></td>
+              <td class="text-center">{t('attacks.bonus')}</td>
+              <td class="text-center">{t('attacks.damage')}</td>
+              <td class="text-center">{t('attacks.distance')}</td>
+            </tr>
+          </thead>
+          <tbody>
+            <For each={values}>
+              {(attack) => renderAttack(attack)}
+            </For>
+          </tbody>
+        </table>
+      </div>
+    );
+  }
 
   const renderAttack = (attack) => (
     <tr>
       <td class="py-1">
         <p>{attack.name}</p>
-        <Show when={attack.hands == 2}><p class="text-xs">With two hands</p></Show>
+        <Show when={attack.hands == 2}><p class="text-xs">{t('damage.2hands')}</p></Show>
       </td>
       <td class="py-1 text-center">{modifier(attack.attack_bonus)}</td>
       <td class="py-1 text-center">
         <p>{attack.damage}{modifier(attack.damage_bonus)}</p>
-        <p class="text-xs">{attack.damage_type}</p>
+        <p class="text-xs">{t(`damage.${attack.damage_type}`)}</p>
       </td>
       <td class="py-1 text-center">
         <Show when={attack.melee_distance}><p>{attack.melee_distance}</p></Show>
@@ -59,17 +102,48 @@ export const Dnd5 = (props) => {
     </tr>
   );
 
+  const renderCombatStat = (title, value) => (
+    <div class="w-1/3 flex flex-col items-center">
+      <p class="uppercase text-sm mb-1">{title}</p>
+      <p class="text-2xl mb-1">{value}</p>
+    </div>
+  );
+
+  const renderItemsBox = (title, items) => (
+    <div class="p-4 white-box mb-2">
+      <h2 class="text-lg">{title}</h2>
+      <table class="w-full table">
+        <thead>
+          <tr>
+            <td></td>
+            <td class="text-center">{t('equipment.quantity')}</td>
+            <td class="text-center">{t('equipment.weight')}</td>
+            <td class="text-center">{t('equipment.cost')}</td>
+          </tr>
+        </thead>
+        <tbody>
+          <For each={items}>
+            {(characterItem) => renderItem(characterItem)}
+          </For>
+        </tbody>
+      </table>
+    </div>
+  );
+
   const renderItem = (characterItem) => (
     <tr>
       <td class="py-1">
         <p>{characterItem.name}</p>
-        <p class="text-xs">{characterItem.kind}</p>
       </td>
       <td class="py-1 text-center">{characterItem.quantity}</td>
       <td class="py-1 text-center">{characterItem.weight * characterItem.quantity}</td>
       <td class="py-1 text-center">{characterItem.quantity * characterItem.price / 100}</td>
     </tr>
   );
+
+  const energyName = (value) => {
+    if (value === 'monk') return 'Ki';
+  }
 
   return (
     <div class="h-full flex flex-col">
@@ -78,7 +152,7 @@ export const Dnd5 = (props) => {
         <div class="flex-1 flex flex-col items-center">
           <p>{props.character.name}</p>
           <p class="text-sm">
-            {capitalize(props.character.show_data.race)} | {Object.keys(props.character.show_data.classes).map((item) => capitalize(item)).join(' * ')}
+            {t(`races.${props.character.show_data.race}`)} | {Object.entries(props.character.show_data.classes).map(([item, value]) => `${t(`classes.${item}`)} ${value}`).join(' * ')}
           </p>
         </div>
         <div class="w-10 h-8 p-2 flex flex-col justify-between cursor-pointer" onClick={openModal}>
@@ -90,167 +164,40 @@ export const Dnd5 = (props) => {
       <div class="p-4 flex-1 overflow-y-scroll">
         <Switch>
           <Match when={pageState.activeTab === 'abilities'}>
-            <div class="mb-4 p-4 flex flex-wrap white-box">
-              {renderAbility('Strength', 'str', true)}
-              {renderAbility('Dexterity', 'dex', true)}
-              {renderAbility('Constitution', 'con', true)}
-              {renderAbility('Intelligence', 'int')}
-              {renderAbility('Wisdom', 'wis')}
-              {renderAbility('Charisma', 'cha')}
-            </div>
-            <div class="p-4 bg-white border border-gray rounded">
-              <h2 class="text-xl px-4 mb-2">Saving throws</h2>
-              <div class="flex">
-                <div class="flex-1 flex flex-col px-4">
-                  {renderSavingThrow('Strength', savingThrows().str)}
-                  {renderSavingThrow('Dexterity', savingThrows().dex)}
-                  {renderSavingThrow('Constitution', savingThrows().con)}
-                </div>
-                <div class="flex-1 flex flex-col px-4">
-                  {renderSavingThrow('Intelligence', savingThrows().int)}
-                  {renderSavingThrow('Wisdom', savingThrows().wis)}
-                  {renderSavingThrow('Charisma', savingThrows().cha)}
-                </div>
-              </div>
-            </div>
-          </Match>
-          <Match when={pageState.activeTab === 'skills'}>
-            <div class="p-4 white-box">
-              <table class="w-full table">
-                <thead>
-                  <tr>
-                    <td class="text-center">Prof</td>
-                    <td class="text-center">Ability</td>
-                    <td>Skill</td>
-                    <td class="text-center">Bonus</td>
-                  </tr>
-                </thead>
-                <tbody>
-                  <For each={Object.keys(skills())}>
-                    {(skill) =>
-                      <tr>
-                        <td class="py-1 text-center"></td>
-                        <td class="py-1 text-center uppercase">{skills()[skill].ability}</td>
-                        <td class="py-1">{capitalize(skill)}</td>
-                        <td class="py-1 text-center">{modifier(skills()[skill].modifier)}</td>
-                      </tr>
-                    }
-                  </For>
-                </tbody>
-              </table>
-            </div>
-          </Match>
-          <Match when={pageState.activeTab === 'equipment'}>
-            <div class="p-4 white-box mb-4">
-              <h2 class="text-lg">Equipment</h2>
-              <table class="w-full table">
-                <thead>
-                  <tr>
-                    <td></td>
-                    <td class="text-center">Qty</td>
-                    <td class="text-center">Weight</td>
-                    <td class="text-center">Cost</td>
-                  </tr>
-                </thead>
-                <tbody>
-                  <For each={characterItems().filter((item) => item.ready_to_use)}>
-                    {(characterItem) => renderItem(characterItem)}
-                  </For>
-                </tbody>
-              </table>
-            </div>
-            <div class="p-4 white-box">
-              <h2 class="text-lg">Backpack</h2>
-              <table class="w-full table">
-                <thead>
-                  <tr>
-                    <td></td>
-                    <td class="text-center">Qty</td>
-                    <td class="text-center">Weight</td>
-                    <td class="text-center">Cost</td>
-                  </tr>
-                </thead>
-                <tbody>
-                  <For each={characterItems().filter((item) => !item.ready_to_use)}>
-                    {(characterItem) => renderItem(characterItem)}
-                  </For>
-                </tbody>
-              </table>
-            </div>
+            {renderAbility('str')}
+            {renderAbility('dex')}
+            {renderAbility('con')}
+            {renderAbility('int')}
+            {renderAbility('wis')}
+            {renderAbility('cha')}
           </Match>
           <Match when={pageState.activeTab === 'combat'}>
-            <div class="mb-4 p-4 flex white-box">
-              <div class="w-1/3 flex flex-col items-center">
-                <p class="uppercase text-sm mb-1">Armor class</p>
-                <p class="text-2xl mb-1">{combat().armor_class}</p>
-              </div>
-              <div class="w-1/3 flex flex-col items-center">
-                <p class="uppercase text-sm mb-1">Initiative</p>
-                <p class="text-2xl mb-1">{modifier(combat().initiative)}</p>
-              </div>
-              <div class="w-1/3 flex flex-col items-center">
-                <p class="uppercase text-sm mb-1">Speed</p>
-                <p class="text-2xl mb-1">{combat().speed}</p>
-              </div>
+            <div class="mb-2 p-4 flex white-box">
+              {renderCombatStat(t('terms.armorClass'), combat().armor_class)}
+              {renderCombatStat(t('terms.initiative'), modifier(combat().initiative))}
+              {renderCombatStat(t('terms.speed'), combat().speed)}
             </div>
-            <div class="mb-4 p-4 flex white-box">
-              <div class="w-1/3 flex flex-col items-center">
-                <p class="uppercase text-sm mb-1">Health</p>
-                <p class="text-2xl mb-1">{combat().health.current}</p>
-              </div>
-              <div class="w-1/3 flex flex-col items-center">
-                <p class="uppercase text-sm mb-1">Max health</p>
-                <p class="text-2xl mb-1">{combat().health.max}</p>
-              </div>
-              <div class="w-1/3 flex flex-col items-center">
-                <p class="uppercase text-sm mb-1">Temp health</p>
-                <p class="text-2xl mb-1">{combat().health.temp}</p>
-              </div>
+            <div class="mb-2 p-4 flex white-box">
+              {renderCombatStat(t('terms.health'), combat().health.current)}
+              {renderCombatStat(t('terms.maxHealth'), combat().health.max)}
+              {renderCombatStat(t('terms.tempHealth'), combat().health.temp)}
             </div>
-            <div class="p-4 white-box mb-4">
-              <h2 class="text-lg mb-2">Action attacks - {combat().attacks_per_action}</h2>
-              <table class="w-full table">
-                <thead>
-                  <tr>
-                    <td></td>
-                    <td class="text-center">Bonus</td>
-                    <td class="text-center">Damage</td>
-                    <td class="text-center">Dist</td>
-                  </tr>
-                </thead>
-                <tbody>
-                  <For each={attacks().filter((item) => item.action_type === 'action')}>
-                    {(attack) => renderAttack(attack)}
-                  </For>
-                </tbody>
-              </table>
-            </div>
-            <div class="p-4 white-box mb-4">
-              <h2 class="text-lg mb-2">Bonus action attacks - 1</h2>
-              <table class="w-full table">
-                <thead>
-                  <tr>
-                    <td></td>
-                    <td class="text-center">Bonus</td>
-                    <td class="text-center">Damage</td>
-                    <td class="text-center">Dist</td>
-                  </tr>
-                </thead>
-                <tbody>
-                  <For each={attacks().filter((item) => item.action_type === 'bonus action')}>
-                    {(attack) => renderAttack(attack)}
-                  </For>
-                </tbody>
-              </table>
-            </div>
+            {renderAttacksBox(`${t('terms.attackAction')} - ${combat().attacks_per_action}`, attacks().filter((item) => item.action_type === 'action'))}
+            {renderAttacksBox(`${t('terms.attackBonusAction')} - 1`, attacks().filter((item) => item.action_type === 'bonus action'))}
+            <For each={props.character.show_data.class_features}>
+              {(class_feature) => <CollapseBox title={class_feature.title} description={class_feature.description} />}
+            </For>
+          </Match>
+          <Match when={pageState.activeTab === 'equipment'}>
+            {renderItemsBox(t('character.equipment'), characterItems().filter((item) => item.ready_to_use))}
+            {renderItemsBox(t('character.backpack'), characterItems().filter((item) => !item.ready_to_use))}
           </Match>
         </Switch>
       </div>
       <Modal>
-        <p class="character-tab-select" onClick={() => changeTab('abilities')}>Abilities</p>
-        <p class="character-tab-select" onClick={() => changeTab('skills')}>Skills</p>
-        <p class="character-tab-select" onClick={() => changeTab('combat')}>Combat</p>
-        <p class="character-tab-select" onClick={() => changeTab('equipment')}>Equipment</p>
+        <p class="character-tab-select" onClick={() => changeTab('abilities')}>{t('character.abilities')}</p>
+        <p class="character-tab-select" onClick={() => changeTab('combat')}>{t('character.combat')}</p>
+        <p class="character-tab-select" onClick={() => changeTab('equipment')}>{t('character.equipment')}</p>
       </Modal>
     </div>
   );

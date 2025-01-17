@@ -37,6 +37,10 @@
   @apply border-b border-gray-200;
 }
 
+.table tbody tr:nth-of-type(2n) {
+  @apply bg-gray-50;
+}
+
 .table tbody tr:last-of-type {
   @apply border-0;
 }

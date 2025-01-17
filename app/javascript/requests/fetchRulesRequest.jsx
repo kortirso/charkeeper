@@ -2,7 +2,7 @@ import { apiRequest } from '../helpers';
 
 export const fetchRulesRequest = async (accessToken) => {
   return await apiRequest({
-    url: '/api/v1/rules.json',
+    url: '/web_telegram/rules.json',
     options: {
       method: 'GET',
       headers: {

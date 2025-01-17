@@ -1,13 +1,15 @@
 import { Switch, Match } from 'solid-js';
+import * as i18n from '@solid-primitives/i18n';
 
-import { capitalize } from '../../../helpers';
-
-import { useAppState } from '../../../context';
+import { useAppState, useAppLocale } from '../../../context';
 
 export const Character = (props) => {
   const character = () => props.character;
 
   const [_appState, { navigate }] = useAppState();
+  const [_locale, dict] = useAppLocale();
+
+  const t = i18n.translator(dict);
 
   const overallLevel = () =>
     Object.values(character().index_data.classes).reduce((acc, item) => acc + item, 0)
@@ -25,10 +27,10 @@ export const Character = (props) => {
           <div>
             <p class="mb-1 font-medium">{character().name}</p>
             <div class="mb-1">
-              <p class="text-xs">Lvl {overallLevel()} | {capitalize(character().index_data.race)}</p>
+              <p class="text-xs">{t('characters.level')} {overallLevel()} | {t(`races.${character().index_data.race}`)}</p>
             </div>
             <p class="text-xs">
-              {Object.keys(character().index_data.classes).map((item) => capitalize(item)).join(' * ')}
+              {Object.keys(character().index_data.classes).map((item) => t(`classes.${item}`)).join(' * ')}
             </p>
           </div>
         </Match>
