@@ -1,29 +1,81 @@
-import { Switch, Match, batch, For, Show } from 'solid-js';
+import { Switch, Match, batch, For, Show, createEffect, createMemo } from 'solid-js';
 import { createStore } from 'solid-js/store';
 import * as i18n from '@solid-primitives/i18n';
 
 import { CollapseBox } from '../../../../components';
 import { createModal } from '../../../molecules';
+import { Checkbox, Select } from '../../../atoms';
 
-import { useAppLocale } from '../../../../context';
+import { useAppState, useAppLocale } from '../../../../context';
 import { capitalize, modifier } from '../../../../helpers';
+
+import { fetchCharacterItemsRequest } from '../../../../requests/fetchCharacterItemsRequest';
+import { fetchCharacterSpellsRequest } from '../../../../requests/fetchCharacterSpellsRequest';
 
 export const Dnd5 = (props) => {
   const [pageState, setPageState] = createStore({
-    activeTab: 'abilities'
+    activeTab: 'abilities',
+    characterItems: undefined,
+    characterSpells: undefined,
+    activeSpellClass: 'all',
+    preparedSpellFilter: false
   });
 
   const { Modal, openModal, closeModal } = createModal();
+  const [appState] = useAppState();
   const [_locale, dict] = useAppLocale();
 
   const t = i18n.translator(dict);
 
-  const characterItems = () => props.characterItems;
   const modifiers = () => props.character.show_data.modifiers;
   const savingThrows = () => props.character.show_data.saving_throws;
   const combat = () => props.character.show_data.combat;
   const attacks = () => props.character.show_data.attacks;
   const skills = () => props.character.show_data.skills;
+
+  const filteredSpells = createMemo(() => {
+    if (pageState.characterSpells === undefined) return [];
+
+    return pageState.characterSpells.filter((item) => {
+      if (pageState.activeSpellClass !== 'all' && item.data.class !== pageState.activeSpellClass) return false;
+      if (pageState.preparedSpellFilter ) return item.ready_to_use;
+      return true;
+    });
+  });
+
+  const manyActiveSpellClasses = createMemo(() => props.character.show_data.spell_classes.length > 1);
+
+  createEffect(() => {
+    if (pageState.activeTab !== 'equipment') return;
+    if (pageState.characterItems !== undefined) return;
+
+    const fetchCharacterItems = async () => await fetchCharacterItemsRequest(appState.accessToken, appState.activePageParams.id);
+
+    Promise.all([fetchCharacterItems()]).then(
+      ([characterItemsData]) => {
+        setPageState({
+          ...pageState,
+          characterItems: characterItemsData.items
+        });
+      }
+    );
+  });
+
+  createEffect(() => {
+    if (pageState.activeTab !== 'spells') return;
+    if (pageState.characterSpells !== undefined) return;
+
+    const fetchCharacterSpells = async () => await fetchCharacterSpellsRequest(appState.accessToken, appState.activePageParams.id);
+
+    Promise.all([fetchCharacterSpells()]).then(
+      ([characterSpellsData]) => {
+        setPageState({
+          ...pageState,
+          characterSpells: characterSpellsData.spells
+        });
+      }
+    );
+  });
 
   const changeTab = (value) => {
     batch(() => {
@@ -141,8 +193,43 @@ export const Dnd5 = (props) => {
     </tr>
   );
 
+  const renderLevelSpells = (level) => (
+    <div class="white-box mb-2 p-4">
+      <h2 class="text-lg">{level} level</h2>
+      <table class="w-full table first-column-full-width">
+        <thead>
+          <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+        </thead>
+        <tbody>
+          <For each={filteredSpells().filter((item) => item.level === level)}>
+            {(spell) =>
+              <tr>
+                <td class="py-1">
+                  <p>{spell.name}</p>
+                  <Show when={manyActiveSpellClasses()}>
+                    <p class="text-xs">{t(`classes.${spell.data.class}`)}</p>
+                  </Show>
+                </td>
+                <td class="py-1">{spell.ready_to_use ? 'Cast' : ''}</td>
+                <td class="py-1">{spell.comment}</td>
+              </tr>
+            }
+          </For>
+        </tbody>
+      </table>
+    </div>
+  );
+
   const energyName = (value) => {
-    if (value === 'monk') return 'Ki';
+    if (value === 'monk') return t('terms.energy.monk');
+  }
+
+  const calculateCurrentLoad = () => {
+    return pageState.characterItems.reduce((acc, item) => acc + item.quantity * item.weight, 0);
   }
 
   return (
@@ -184,13 +271,58 @@ export const Dnd5 = (props) => {
             </div>
             {renderAttacksBox(`${t('terms.attackAction')} - ${combat().attacks_per_action}`, attacks().filter((item) => item.action_type === 'action'))}
             {renderAttacksBox(`${t('terms.attackBonusAction')} - 1`, attacks().filter((item) => item.action_type === 'bonus action'))}
+            <div class="mb-2 p-4 flex white-box">
+              <For each={Object.entries(props.character.show_data.energy)}>
+                {([key, value]) =>
+                  <p>{energyName(key)} - {value} / {props.character.show_data.max_energy}</p>
+                }
+              </For>
+            </div>
             <For each={props.character.show_data.class_features}>
               {(class_feature) => <CollapseBox title={class_feature.title} description={class_feature.description} />}
             </For>
           </Match>
           <Match when={pageState.activeTab === 'equipment'}>
-            {renderItemsBox(t('character.equipment'), characterItems().filter((item) => item.ready_to_use))}
-            {renderItemsBox(t('character.backpack'), characterItems().filter((item) => !item.ready_to_use))}
+            <div class="mb-2 p-4 flex white-box">
+              {renderCombatStat(t('equipment.gold'), props.character.show_data.coins.gold)}
+              {renderCombatStat(t('equipment.silver'), props.character.show_data.coins.silver)}
+              {renderCombatStat(t('equipment.copper'), props.character.show_data.coins.copper)}
+            </div>
+            <Show when={pageState.characterItems !== undefined}>
+              {renderItemsBox(t('character.equipment'), pageState.characterItems.filter((item) => item.ready_to_use))}
+              {renderItemsBox(t('character.backpack'), pageState.characterItems.filter((item) => !item.ready_to_use))}
+              <div class="flex justify-end">
+                <div class="p-4 flex white-box">
+                  <p>{calculateCurrentLoad()} / {props.character.show_data.load}</p>
+                </div>
+              </div>
+            </Show>
+          </Match>
+          <Match when={pageState.activeTab === 'spells'}>
+            <Show when={pageState.characterSpells !== undefined}>
+              <div class="flex justify-between items-center mb-2">
+                <Checkbox
+                  left
+                  disabled={false}
+                  labelText={t('character.onlyPreparedSpells')}
+                  value={pageState.preparedSpellFilter}
+                  onToggle={() => setPageState({ ...pageState, preparedSpellFilter: !pageState.preparedSpellFilter })}
+                />
+                <Show when={manyActiveSpellClasses()}>
+                  <Select
+                    classList="w-40"
+                    items={props.character.show_data.spell_classes.reduce((acc, item) => { acc[item] = t(`classes.${item}`); return acc; }, { 'all': t('character.allSpells') })}
+                    selectedValue={pageState.activeSpellClass}
+                    onSelect={(value) => setPageState({ ...pageState, activeSpellClass: value })}
+                  />
+                </Show>
+              </div>
+              <For each={[0, 1]}>
+                {(level) => renderLevelSpells(level)}
+              </For>
+            </Show>
+          </Match>
+          <Match when={pageState.activeTab === 'conditions'}>
           </Match>
         </Switch>
       </div>
@@ -198,6 +330,8 @@ export const Dnd5 = (props) => {
         <p class="character-tab-select" onClick={() => changeTab('abilities')}>{t('character.abilities')}</p>
         <p class="character-tab-select" onClick={() => changeTab('combat')}>{t('character.combat')}</p>
         <p class="character-tab-select" onClick={() => changeTab('equipment')}>{t('character.equipment')}</p>
+        <p class="character-tab-select" onClick={() => changeTab('spells')}>{t('character.spells')}</p>
+        <p class="character-tab-select" onClick={() => changeTab('conditions')}>{t('character.conditions')}</p>
       </Modal>
     </div>
   );

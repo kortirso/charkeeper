@@ -13,7 +13,11 @@
     "abilities": "Abilities",
     "combat": "Combat",
     "equipment": "Equipment",
-    "backpack": "Backpack"
+    "backpack": "Backpack",
+    "spells": "Spells",
+    "conditions": "Conditions",
+    "onlyPreparedSpells": "Only prepared",
+    "allSpells": "All"
   },
   "attacks": {
     "bonus": "Bonus",
@@ -23,7 +27,10 @@
   "equipment": {
     "quantity": "Qty",
     "weight": "Weight",
-    "cost": "Cost gp"
+    "cost": "Cost gp",
+    "gold": "Gold",
+    "silver": "Silver",
+    "copper": "Copper"
   },
   "terms": {
     "savingThrows": "Saving throws",
@@ -34,7 +41,10 @@
     "maxHealth": "Max health",
     "tempHealth": "Temp health",
     "attackAction": "Action attacks",
-    "attackBonusAction": "Bonus action attacks"
+    "attackBonusAction": "Bonus action attacks",
+    "energy": {
+      "monk": "Ki energy"
+    }
   },
   "damage": {
     "bludge": "Bludge",
@@ -48,7 +58,8 @@
   },
   "classes": {
     "fighter": "Fighter",
-    "monk": "Monk"
+    "monk": "Monk",
+    "sorcerer": "Sorcerer"
   },
   "abilities": {
     "str": "Strength",

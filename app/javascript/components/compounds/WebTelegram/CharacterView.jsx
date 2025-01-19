@@ -6,12 +6,10 @@ import { Dnd5 } from '../../../components';
 import { useAppState } from '../../../context';
 
 import { fetchCharacterRequest } from '../../../requests/fetchCharacterRequest';
-import { fetchCharacterItemsRequest } from '../../../requests/fetchCharacterItemsRequest';
 
 export const CharacterView = (props) => {
   const [pageState, setPageState] = createStore({
     character: {},
-    characterItems: [],
     currentRule: null
   });
 
@@ -21,14 +19,12 @@ export const CharacterView = (props) => {
     if (appState.activePageParams.id === pageState.character.id) return;
 
     const fetchCharacter = async () => await fetchCharacterRequest(appState.accessToken, appState.activePageParams.id);
-    const fetchCharacterItems = async () => await fetchCharacterItemsRequest(appState.accessToken, appState.activePageParams.id);
 
-    Promise.all([fetchCharacter(), fetchCharacterItems()]).then(
+    Promise.all([fetchCharacter()]).then(
       ([characterData, characterItemsData]) => {
         setPageState({
           ...pageState,
           character: characterData.character,
-          characterItems: characterItemsData.items,
           currentRule: appState.rules.find((item) => item.id === characterData.character.rule_id).name
         });
       }
@@ -38,7 +34,7 @@ export const CharacterView = (props) => {
   return (
     <Switch>
       <Match when={pageState.currentRule === 'D&D 5'}>
-        <Dnd5 character={pageState.character} characterItems={pageState.characterItems} />
+        <Dnd5 character={pageState.character} />
       </Match>
     </Switch>
   );

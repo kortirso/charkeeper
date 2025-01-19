@@ -71,6 +71,21 @@ CREATE TABLE public.character_items (
 
 
 --
+-- Name: character_spells; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.character_spells (
+    id uuid DEFAULT gen_random_uuid() NOT NULL,
+    character_id uuid NOT NULL,
+    spell_id uuid NOT NULL,
+    ready_to_use boolean DEFAULT false NOT NULL,
+    created_at timestamp(6) without time zone NOT NULL,
+    updated_at timestamp(6) without time zone NOT NULL,
+    data jsonb DEFAULT '{}'::jsonb NOT NULL
+);
+
+
+--
 -- Name: characters; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -138,6 +153,37 @@ CREATE TABLE public.schema_migrations (
 
 
 --
+-- Name: spells; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.spells (
+    id uuid DEFAULT gen_random_uuid() NOT NULL,
+    rule_id uuid NOT NULL,
+    slug character varying NOT NULL,
+    name jsonb DEFAULT '{}'::jsonb NOT NULL,
+    level integer,
+    attacking boolean DEFAULT false NOT NULL,
+    comment jsonb DEFAULT '{}'::jsonb NOT NULL,
+    created_at timestamp(6) without time zone NOT NULL,
+    updated_at timestamp(6) without time zone NOT NULL
+);
+
+
+--
+-- Name: COLUMN spells.attacking; Type: COMMENT; Schema: public; Owner: -
+--
+
+COMMENT ON COLUMN public.spells.attacking IS 'Наносит урон';
+
+
+--
+-- Name: COLUMN spells.comment; Type: COMMENT; Schema: public; Owner: -
+--
+
+COMMENT ON COLUMN public.spells.comment IS 'Комментарий';
+
+
+--
 -- Name: user_identities; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -193,6 +239,14 @@ ALTER TABLE ONLY public.character_items
 
 
 --
+-- Name: character_spells character_spells_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.character_spells
+    ADD CONSTRAINT character_spells_pkey PRIMARY KEY (id);
+
+
+--
 -- Name: characters characters_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -222,6 +276,14 @@ ALTER TABLE ONLY public.rules
 
 ALTER TABLE ONLY public.schema_migrations
     ADD CONSTRAINT schema_migrations_pkey PRIMARY KEY (version);
+
+
+--
+-- Name: spells spells_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.spells
+    ADD CONSTRAINT spells_pkey PRIMARY KEY (id);
 
 
 --
@@ -256,6 +318,13 @@ CREATE UNIQUE INDEX index_character_items_on_character_id_and_item_id ON public.
 
 
 --
+-- Name: index_character_spells_on_character_id_and_spell_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE UNIQUE INDEX index_character_spells_on_character_id_and_spell_id ON public.character_spells USING btree (character_id, spell_id);
+
+
+--
 -- Name: index_characters_on_rule_id; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -274,6 +343,13 @@ CREATE INDEX index_characters_on_user_id ON public.characters USING btree (user_
 --
 
 CREATE INDEX index_items_on_rule_id ON public.items USING btree (rule_id);
+
+
+--
+-- Name: index_spells_on_rule_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_spells_on_rule_id ON public.spells USING btree (rule_id);
 
 
 --
@@ -304,6 +380,9 @@ CREATE INDEX index_user_sessions_on_user_id ON public.user_sessions USING btree 
 SET search_path TO "$user", public;
 
 INSERT INTO "schema_migrations" (version) VALUES
+('20250119095607'),
+('20250118183613'),
+('20250118183121'),
 ('20250116173157'),
 ('20250115083900'),
 ('20250115082322'),

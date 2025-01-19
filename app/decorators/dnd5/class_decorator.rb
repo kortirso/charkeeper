@@ -31,6 +31,7 @@ module Dnd5
       when 'barbarian' then Dnd5::Classes::BarbarianDecorator.new
       when 'fighter' then Dnd5::Classes::FighterDecorator.new
       when 'monk' then Dnd5::Classes::MonkDecorator.new
+      when 'sorcerer' then Dnd5::Classes::SorcererDecorator.new
       end
     end
   end

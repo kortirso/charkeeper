@@ -61,9 +61,6 @@ export const WebTelegramAppContent = (props) => {
               <Match when={appState.activePage === 'npc'}>
                 {npcPage()}
               </Match>
-              <Match when={appState.activePage === 'library'}>
-                {libraryPage()}
-              </Match>
               <Match when={appState.activePage === 'profile'}>
                 {profilePage()}
               </Match>

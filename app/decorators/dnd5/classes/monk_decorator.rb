@@ -44,7 +44,7 @@ module Dnd5
             description: I18n.t('dnd5.class_features.monk.slow_fall.description', value: class_level * 5)
           }
         end
-        result[:combat][:attacks_per_action] += 1 if class_level >= 5 # Extra Attack, 5 level
+        result[:combat][:attacks_per_action] = 2 if class_level >= 5 # Extra Attack, 5 level
         if class_level >= 5 # Stunning Strike, 5 level
           result[:class_features] << {
             title: I18n.t('dnd5.class_features.monk.stunning_strike.title'),

@@ -44,3 +44,72 @@
 .table tbody tr:last-of-type {
   @apply border-0;
 }
+
+.table.first-column-full-width tbody tr td:nth-of-type(n+2) {
+  @apply px-2;
+
+  width: 1%;
+  white-space: nowrap;
+}
+
+.toggle {
+  @apply relative inline-block select-none w-10;
+}
+
+.toggle .toggle-checkbox {
+  @apply transition-all absolute block cursor-pointer appearance-none rounded-full bg-white border-none w-5 h-5;
+
+  top: 2px;
+  left: 2px;
+}
+
+.toggle .toggle-checkbox:checked {
+  @apply bg-white;
+
+  left: calc(100% - 22px);
+}
+
+.toggle .toggle-checkbox + .toggle-label {
+  @apply block cursor-pointer overflow-hidden rounded-full bg-gray-200 border-2 border-gray-200 transition-colors w-10 h-6;
+}
+
+.toggle:hover .toggle-checkbox:enabled + .toggle-label {
+  @apply border-gray-200;
+}
+
+.toggle .toggle-checkbox:checked + .toggle-label,
+.toggle:hover .toggle-checkbox:checked + .toggle-label {
+  @apply bg-black border-black;
+}
+
+.toggle .toggle-checkbox:checked:disabled + .toggle-label {
+  @apply bg-black;
+}
+
+.form-field .form-value {
+  @apply px-4 leading-8 rounded-lg border border-gray-200 bg-white;
+
+  color: '#666';
+}
+
+.form-field .form-value::placeholder {
+  @apply text-gray-200 opacity-100;
+}
+
+.form-field .form-value.is-open {
+  @apply rounded-b-none;
+}
+
+.form-field .form-dropdown {
+  @apply absolute w-full border-r border-l border-gray-200 z-10 overflow-y-scroll;
+
+  max-height: 10rem;
+}
+
+.form-field .form-dropdown li {
+  @apply bg-white border-b border-gray-200 m-0 p-4;
+}
+
+.form-field .form-dropdown li:hover {
+  @apply bg-black text-white;
+}

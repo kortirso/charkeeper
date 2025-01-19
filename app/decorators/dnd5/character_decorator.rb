@@ -19,7 +19,10 @@ module Dnd5
         class_features: [],
         resistances: [],
         immunities: [],
-        energy: data['energy']
+        energy: data['energy'],
+        coins: data['coins'],
+        load: data.dig('abilities', 'str') * 15,
+        spell_classes: []
       }.compact
 
       result[:proficiency_bonus] = proficiency_bonus(result[:overall_level])

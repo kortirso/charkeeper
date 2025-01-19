@@ -13,7 +13,11 @@
     "abilities": "Характеристики",
     "combat": "Сражение",
     "equipment": "Снаряжение",
-    "backpack": "Рюкзак"
+    "backpack": "Рюкзак",
+    "spells": "Заклинания",
+    "conditions": "Состояния",
+    "onlyPreparedSpells": "Подготовленные",
+    "allSpells": "Все"
   },
   "attacks": {
     "bonus": "Бонус",
@@ -23,7 +27,10 @@
   "equipment": {
     "quantity": "Кол-во",
     "weight": "Вес",
-    "cost": "Цена зм"
+    "cost": "Цена зм",
+    "gold": "ЗМ",
+    "silver": "СМ",
+    "copper": "ММ"
   },
   "terms": {
     "savingThrows": "Спасброски",
@@ -34,7 +41,10 @@
     "maxHealth": "Макс хиты",
     "tempHealth": "Врем хиты",
     "attackAction": "Атаки за действие",
-    "attackBonusAction": "Атаки за бонус действие"
+    "attackBonusAction": "Атаки за бонус действие",
+    "energy": {
+      "monk": "Энергия Ци"
+    }
   },
   "damage": {
     "bludge": "Дробящий",
@@ -48,7 +58,8 @@
   },
   "classes": {
     "fighter": "Воин",
-    "monk": "Монах"
+    "monk": "Монах",
+    "sorcerer": "Чародей"
   },
   "abilities": {
     "str": "Сила",

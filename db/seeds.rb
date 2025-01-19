@@ -23,7 +23,8 @@ kormak = dnd5.characters.create!(
     weapon_core_skills: [],
     weapon_skills: ['handaxe', 'battleaxe', 'light hammer', 'warhammer'],
     armor_skills: ['light', 'medium'],
-    class_features: []
+    class_features: [],
+    coins: { gold: 0, silver: 0, copper: 0 }
   }
 )
 
@@ -36,15 +37,38 @@ grundar = dnd5.characters.create!(
     abilities: { str: 13, dex: 16, con: 14, int: 11, wis: 16, cha: 10 },
     classes: { monk: 4 },
     subclasses: { monk: nil },
-    energy: { monk: 4 } # для варвара, монаха и чародея, текущее состояние
+    energy: { monk: 4 }, # для варвара, монаха и чародея, текущее состояние
     health: { current: 27, max: 31, temp: 0 },
     speed: 30,
-    skills: [], # выбранные умения
+    skills: ['acrobatics', 'perception'], # выбранные умения
     languages: ['common', 'dwarvish'], # изученные языки
     weapon_core_skills: ['light'], # навыки владения группой оружия
     weapon_skills: ['shortsword'], # навыки владения оружием
     armor_skills: [], # навыки владения броней
-    class_features: [] # выбранные классовые умения
+    class_features: [], # выбранные классовые умения
+    coins: { gold: 250, silver: 0, copper: 0 }
+  }
+)
+
+vestra = dnd5.characters.create!(
+  user: user,
+  name: 'Вестра',
+  data: {
+    race: 'human',
+    alignment: 'chaotic good',
+    abilities: { str: 9, dex: 11, con: 11, int: 15, wis: 14, cha: 17 },
+    classes: { sorcerer: 2 },
+    subclasses: { sorcerer: nil },
+    energy: { sorcerer: 4 }, # для варвара, монаха и чародея, текущее состояние
+    health: { current: 7, max: 12, temp: 0 },
+    speed: 30,
+    skills: ['acrobatics', 'persuasion'], # выбранные умения
+    languages: ['common', 'orc', 'draconic'], # изученные языки
+    weapon_core_skills: ['light'], # навыки владения группой оружия
+    weapon_skills: ['staff, dagger'], # навыки владения оружием
+    armor_skills: [], # навыки владения броней
+    class_features: [], # выбранные классовые умения
+    coins: { gold: 325, silver: 0, copper: 0 }
   }
 )
 
@@ -81,3 +105,14 @@ grundar.items.create!(item: dart, quantity: 10, ready_to_use: true)
 kormak.items.create!(item: torch, quantity: 10)
 kormak.items.create!(item: shield, quantity: 1, ready_to_use: true)
 kormak.items.create!(item: scale_mail_armor, quantity: 1, ready_to_use: true)
+
+vestra.items.create!(item: torch, quantity: 9)
+
+ray_of_frost = dnd5.spells.create!(slug: 'ray_of_frost', name: { en: 'Ray of Frost', ru: 'Луч холода' }, level: 0, attacking: true, comment: { en: '', ru: 'PHB, 236' })
+vestra.spells.create!(spell: ray_of_frost, ready_to_use: true, data: { class: 'sorcerer' })
+
+sleep_spell = dnd5.spells.create!(slug: 'sleep_spell', name: { en: 'Sleep', ru: 'Усыпление' }, level: 1, attacking: false, comment: { en: '', ru: 'PHB, 286' })
+vestra.spells.create!(spell: sleep_spell, ready_to_use: true, data: { class: 'sorcerer' })
+
+magic_missile = dnd5.spells.create!(slug: 'magic_missile', name: { en: 'Magic Missile', ru: 'Волшебная стрела' }, level: 1, attacking: true, comment: { en: '', ru: 'PHB, 216' })
+vestra.spells.create!(spell: magic_missile, ready_to_use: true, data: { class: 'sorcerer' })
