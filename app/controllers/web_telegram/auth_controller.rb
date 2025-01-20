@@ -12,7 +12,6 @@ module WebTelegram
 
     def create
       if web_telegram_signature.valid?(check_string: params[:check_string], hash: params[:hash])
-      # if true
         access_token = generate_token.call(user_session: user_session)[:result]
         render json: { access_token: access_token }, status: :created
       else

@@ -33,7 +33,7 @@
     "copper": "Copper"
   },
   "terms": {
-    "savingThrows": "Saving throws",
+    "saveDC": "Save DC",
     "armorClass": "Armor Class",
     "initiative": "Initiative",
     "speed": "Speed",

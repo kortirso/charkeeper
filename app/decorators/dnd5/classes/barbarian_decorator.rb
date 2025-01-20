@@ -4,7 +4,7 @@ module Dnd5
   module Classes
     class BarbarianDecorator
       def decorate(result:, class_level:)
-        result[:class_saving_throws] = %i[str con] if result[:class_saving_throws].nil?
+        result[:class_save_dc] = %i[str con] if result[:class_save_dc].nil?
         result[:combat][:speed] += speed_modifier(class_level)
         if result.dig(:defense, :armor).nil?
           result[:combat][:armor_class] = [result[:combat][:armor_class], barbarian_armor_class(result)].max

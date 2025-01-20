@@ -5,4 +5,3 @@ export * from './pages/WebTelegram/ProfilePage';
 export * from './compounds/WebTelegram/Character';
 export * from './compounds/WebTelegram/CharacterView';
 export * from './compounds/WebTelegram/CharacterView/Dnd5';
-export * from './compounds/WebTelegram/CharacterView/CollapseBox';

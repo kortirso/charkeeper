@@ -3,16 +3,16 @@
 module Dnd5
   module Classes
     class MonkDecorator
-      # rubocop: disable Metrics/AbcSize, Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity
+      # rubocop: disable Metrics/AbcSize, Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity, Metrics/MethodLength
       def decorate(result:, class_level:)
         energy_dc = 8 + result[:proficiency_bonus] + result.dig(:modifiers, :wis)
         result[:max_energy] = class_level if class_level >= 2
-        result[:class_saving_throws] = %i[str dex] if result[:class_saving_throws].nil?
+        result[:class_save_dc] = %i[str dex] if result[:class_save_dc].nil?
 
-        no_armor = result[:defense_gear].values.all?(&:nil?)
+        no_armor = true # result[:defense_gear].values.all?(&:nil?)
         result[:combat][:speed] += speed_modifier(class_level) if no_armor
         result[:combat][:armor_class] = [result[:combat][:armor_class], monk_armor_class(result)].max if no_armor
- 
+
         martial_arts(result, class_level) if no_armor # Martial arts, 1 level
         if class_level >= 2 # Flurry of Blows, 2 level
           result[:class_features] << {
@@ -35,7 +35,10 @@ module Dnd5
         if class_level >= 3 # Deflect Missiles, 3 level
           result[:class_features] << {
             title: I18n.t('dnd5.class_features.monk.deflect_missiles.title'),
-            description: I18n.t('dnd5.class_features.monk.deflect_missiles.description', value: "1d10+#{result.dig(:modifiers, :dex) + class_level}")
+            description: I18n.t(
+              'dnd5.class_features.monk.deflect_missiles.description',
+              value: "1d10+#{result.dig(:modifiers, :dex) + class_level}"
+            )
           }
         end
         if class_level >= 4 # Slow Fall, 4 level
@@ -75,7 +78,7 @@ module Dnd5
             description: I18n.t('dnd5.class_features.monk.unarmored_movement.description')
           }
         end
-        result[:immunities] += ['poison', 'disease'] if class_level >= 10 # Purity of Body, 10 level
+        result[:immunities] += %w[poison disease] if class_level >= 10 # Purity of Body, 10 level
 
         result
       end
@@ -108,7 +111,7 @@ module Dnd5
         unarmed_attack = result[:attacks].find { |attack| attack[:kind] == 'unarmed' && attack[:action_type] == 'action' }
         result[:attacks] << unarmed_attack.merge({ action_type: 'bonus action' })
       end
-      # rubocop: enable Metrics/AbcSize, Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity
+      # rubocop: enable Metrics/AbcSize, Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity, Metrics/MethodLength
     end
   end
 end

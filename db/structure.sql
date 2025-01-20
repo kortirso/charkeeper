@@ -55,62 +55,176 @@ CREATE TABLE public.ar_internal_metadata (
 
 
 --
--- Name: character_items; Type: TABLE; Schema: public; Owner: -
+-- Name: dnd5_character_items; Type: TABLE; Schema: public; Owner: -
 --
 
-CREATE TABLE public.character_items (
+CREATE TABLE public.dnd5_character_items (
     id uuid DEFAULT gen_random_uuid() NOT NULL,
     character_id uuid NOT NULL,
     item_id uuid NOT NULL,
     quantity integer DEFAULT 1 NOT NULL,
-    ready_to_use boolean DEFAULT false NOT NULL,
-    data jsonb DEFAULT '{}'::jsonb NOT NULL,
     created_at timestamp(6) without time zone NOT NULL,
-    updated_at timestamp(6) without time zone NOT NULL
+    updated_at timestamp(6) without time zone NOT NULL,
+    ready_to_use boolean DEFAULT false NOT NULL
 );
 
 
 --
--- Name: character_spells; Type: TABLE; Schema: public; Owner: -
+-- Name: dnd5_character_spells; Type: TABLE; Schema: public; Owner: -
 --
 
-CREATE TABLE public.character_spells (
+CREATE TABLE public.dnd5_character_spells (
     id uuid DEFAULT gen_random_uuid() NOT NULL,
     character_id uuid NOT NULL,
     spell_id uuid NOT NULL,
+    created_at timestamp(6) without time zone NOT NULL,
+    updated_at timestamp(6) without time zone NOT NULL,
     ready_to_use boolean DEFAULT false NOT NULL,
-    created_at timestamp(6) without time zone NOT NULL,
-    updated_at timestamp(6) without time zone NOT NULL,
-    data jsonb DEFAULT '{}'::jsonb NOT NULL
+    prepared_by smallint NOT NULL
 );
 
 
 --
--- Name: characters; Type: TABLE; Schema: public; Owner: -
+-- Name: dnd5_characters; Type: TABLE; Schema: public; Owner: -
 --
 
-CREATE TABLE public.characters (
+CREATE TABLE public.dnd5_characters (
     id uuid DEFAULT gen_random_uuid() NOT NULL,
-    rule_id uuid NOT NULL,
     name character varying NOT NULL,
-    data jsonb DEFAULT '{}'::jsonb NOT NULL,
+    level smallint DEFAULT 1 NOT NULL,
+    race smallint NOT NULL,
+    subrace smallint,
+    alignment smallint NOT NULL,
+    classes jsonb DEFAULT '{}'::jsonb NOT NULL,
+    subclasses jsonb DEFAULT '{}'::jsonb NOT NULL,
+    abilities jsonb DEFAULT '{}'::jsonb NOT NULL,
     created_at timestamp(6) without time zone NOT NULL,
     updated_at timestamp(6) without time zone NOT NULL,
-    user_id uuid NOT NULL
+    energy jsonb DEFAULT '{}'::jsonb NOT NULL,
+    health jsonb DEFAULT '{}'::jsonb NOT NULL,
+    speed smallint NOT NULL,
+    selected_skills character varying[] DEFAULT '{}'::character varying[] NOT NULL,
+    languages character varying[] DEFAULT '{}'::character varying[] NOT NULL,
+    armor_proficiency character varying[] DEFAULT '{}'::character varying[] NOT NULL,
+    coins jsonb DEFAULT '{}'::jsonb NOT NULL
 );
 
 
 --
--- Name: items; Type: TABLE; Schema: public; Owner: -
+-- Name: TABLE dnd5_characters; Type: COMMENT; Schema: public; Owner: -
 --
 
-CREATE TABLE public.items (
+COMMENT ON TABLE public.dnd5_characters IS 'Персонажи для D&D 5';
+
+
+--
+-- Name: COLUMN dnd5_characters.level; Type: COMMENT; Schema: public; Owner: -
+--
+
+COMMENT ON COLUMN public.dnd5_characters.level IS 'Уровень персонажа';
+
+
+--
+-- Name: COLUMN dnd5_characters.race; Type: COMMENT; Schema: public; Owner: -
+--
+
+COMMENT ON COLUMN public.dnd5_characters.race IS 'Основная раса';
+
+
+--
+-- Name: COLUMN dnd5_characters.subrace; Type: COMMENT; Schema: public; Owner: -
+--
+
+COMMENT ON COLUMN public.dnd5_characters.subrace IS 'Подраса';
+
+
+--
+-- Name: COLUMN dnd5_characters.alignment; Type: COMMENT; Schema: public; Owner: -
+--
+
+COMMENT ON COLUMN public.dnd5_characters.alignment IS 'Мировоззрение';
+
+
+--
+-- Name: COLUMN dnd5_characters.classes; Type: COMMENT; Schema: public; Owner: -
+--
+
+COMMENT ON COLUMN public.dnd5_characters.classes IS 'Список классов и уровней/подклассов персонажа';
+
+
+--
+-- Name: COLUMN dnd5_characters.subclasses; Type: COMMENT; Schema: public; Owner: -
+--
+
+COMMENT ON COLUMN public.dnd5_characters.subclasses IS 'Список подклассов персонажа';
+
+
+--
+-- Name: COLUMN dnd5_characters.abilities; Type: COMMENT; Schema: public; Owner: -
+--
+
+COMMENT ON COLUMN public.dnd5_characters.abilities IS 'Основные характеристики';
+
+
+--
+-- Name: COLUMN dnd5_characters.energy; Type: COMMENT; Schema: public; Owner: -
+--
+
+COMMENT ON COLUMN public.dnd5_characters.energy IS 'Заряды энергии';
+
+
+--
+-- Name: COLUMN dnd5_characters.health; Type: COMMENT; Schema: public; Owner: -
+--
+
+COMMENT ON COLUMN public.dnd5_characters.health IS 'Данные о здоровье';
+
+
+--
+-- Name: COLUMN dnd5_characters.speed; Type: COMMENT; Schema: public; Owner: -
+--
+
+COMMENT ON COLUMN public.dnd5_characters.speed IS 'Скорость';
+
+
+--
+-- Name: COLUMN dnd5_characters.selected_skills; Type: COMMENT; Schema: public; Owner: -
+--
+
+COMMENT ON COLUMN public.dnd5_characters.selected_skills IS 'Выбранные умения';
+
+
+--
+-- Name: COLUMN dnd5_characters.languages; Type: COMMENT; Schema: public; Owner: -
+--
+
+COMMENT ON COLUMN public.dnd5_characters.languages IS 'Изученные языки';
+
+
+--
+-- Name: COLUMN dnd5_characters.armor_proficiency; Type: COMMENT; Schema: public; Owner: -
+--
+
+COMMENT ON COLUMN public.dnd5_characters.armor_proficiency IS 'Владение доспехами и щитами';
+
+
+--
+-- Name: COLUMN dnd5_characters.coins; Type: COMMENT; Schema: public; Owner: -
+--
+
+COMMENT ON COLUMN public.dnd5_characters.coins IS 'Данные о деньгах';
+
+
+--
+-- Name: dnd5_items; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.dnd5_items (
     id uuid DEFAULT gen_random_uuid() NOT NULL,
-    rule_id uuid NOT NULL,
     kind character varying NOT NULL,
-    weight numeric(7,2) DEFAULT 0.0 NOT NULL,
-    price integer,
     name jsonb DEFAULT '{}'::jsonb NOT NULL,
+    weight integer,
+    price integer,
     data jsonb DEFAULT '{}'::jsonb NOT NULL,
     created_at timestamp(6) without time zone NOT NULL,
     updated_at timestamp(6) without time zone NOT NULL
@@ -118,29 +232,61 @@ CREATE TABLE public.items (
 
 
 --
--- Name: rules; Type: TABLE; Schema: public; Owner: -
+-- Name: TABLE dnd5_items; Type: COMMENT; Schema: public; Owner: -
 --
 
-CREATE TABLE public.rules (
+COMMENT ON TABLE public.dnd5_items IS 'Предметы для D&D 5';
+
+
+--
+-- Name: COLUMN dnd5_items.kind; Type: COMMENT; Schema: public; Owner: -
+--
+
+COMMENT ON COLUMN public.dnd5_items.kind IS 'Тип предмета';
+
+
+--
+-- Name: COLUMN dnd5_items.weight; Type: COMMENT; Schema: public; Owner: -
+--
+
+COMMENT ON COLUMN public.dnd5_items.weight IS 'Вес в фунтах';
+
+
+--
+-- Name: COLUMN dnd5_items.price; Type: COMMENT; Schema: public; Owner: -
+--
+
+COMMENT ON COLUMN public.dnd5_items.price IS 'Цена в медных монетах';
+
+
+--
+-- Name: COLUMN dnd5_items.data; Type: COMMENT; Schema: public; Owner: -
+--
+
+COMMENT ON COLUMN public.dnd5_items.data IS 'Свойства предмета';
+
+
+--
+-- Name: dnd5_spells; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.dnd5_spells (
     id uuid DEFAULT gen_random_uuid() NOT NULL,
-    name character varying NOT NULL,
+    slug character varying NOT NULL,
+    name jsonb DEFAULT '{}'::jsonb NOT NULL,
+    level smallint DEFAULT 0 NOT NULL,
+    attacking boolean DEFAULT false NOT NULL,
+    comment jsonb DEFAULT '{}'::jsonb NOT NULL,
     created_at timestamp(6) without time zone NOT NULL,
     updated_at timestamp(6) without time zone NOT NULL
 );
 
 
 --
--- Name: TABLE rules; Type: COMMENT; Schema: public; Owner: -
+-- Name: TABLE dnd5_spells; Type: COMMENT; Schema: public; Owner: -
 --
 
-COMMENT ON TABLE public.rules IS 'Rules for role systems';
-
-
---
--- Name: COLUMN rules.name; Type: COMMENT; Schema: public; Owner: -
---
-
-COMMENT ON COLUMN public.rules.name IS 'Name of rules, D&D 5 / D&D 5.5 / Pathfinder';
+COMMENT ON TABLE public.dnd5_spells IS 'Заклинания D&D 5';
 
 
 --
@@ -153,34 +299,18 @@ CREATE TABLE public.schema_migrations (
 
 
 --
--- Name: spells; Type: TABLE; Schema: public; Owner: -
+-- Name: user_characters; Type: TABLE; Schema: public; Owner: -
 --
 
-CREATE TABLE public.spells (
+CREATE TABLE public.user_characters (
     id uuid DEFAULT gen_random_uuid() NOT NULL,
-    rule_id uuid NOT NULL,
-    slug character varying NOT NULL,
-    name jsonb DEFAULT '{}'::jsonb NOT NULL,
-    level integer,
-    attacking boolean DEFAULT false NOT NULL,
-    comment jsonb DEFAULT '{}'::jsonb NOT NULL,
+    user_id uuid NOT NULL,
+    characterable_id uuid NOT NULL,
+    characterable_type character varying NOT NULL,
+    provider integer DEFAULT 0 NOT NULL,
     created_at timestamp(6) without time zone NOT NULL,
     updated_at timestamp(6) without time zone NOT NULL
 );
-
-
---
--- Name: COLUMN spells.attacking; Type: COMMENT; Schema: public; Owner: -
---
-
-COMMENT ON COLUMN public.spells.attacking IS 'Наносит урон';
-
-
---
--- Name: COLUMN spells.comment; Type: COMMENT; Schema: public; Owner: -
---
-
-COMMENT ON COLUMN public.spells.comment IS 'Комментарий';
 
 
 --
@@ -231,43 +361,43 @@ ALTER TABLE ONLY public.ar_internal_metadata
 
 
 --
--- Name: character_items character_items_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: dnd5_character_items dnd5_character_items_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY public.character_items
-    ADD CONSTRAINT character_items_pkey PRIMARY KEY (id);
-
-
---
--- Name: character_spells character_spells_pkey; Type: CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.character_spells
-    ADD CONSTRAINT character_spells_pkey PRIMARY KEY (id);
+ALTER TABLE ONLY public.dnd5_character_items
+    ADD CONSTRAINT dnd5_character_items_pkey PRIMARY KEY (id);
 
 
 --
--- Name: characters characters_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: dnd5_character_spells dnd5_character_spells_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY public.characters
-    ADD CONSTRAINT characters_pkey PRIMARY KEY (id);
-
-
---
--- Name: items items_pkey; Type: CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.items
-    ADD CONSTRAINT items_pkey PRIMARY KEY (id);
+ALTER TABLE ONLY public.dnd5_character_spells
+    ADD CONSTRAINT dnd5_character_spells_pkey PRIMARY KEY (id);
 
 
 --
--- Name: rules rules_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: dnd5_characters dnd5_characters_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY public.rules
-    ADD CONSTRAINT rules_pkey PRIMARY KEY (id);
+ALTER TABLE ONLY public.dnd5_characters
+    ADD CONSTRAINT dnd5_characters_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: dnd5_items dnd5_items_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.dnd5_items
+    ADD CONSTRAINT dnd5_items_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: dnd5_spells dnd5_spells_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.dnd5_spells
+    ADD CONSTRAINT dnd5_spells_pkey PRIMARY KEY (id);
 
 
 --
@@ -279,11 +409,11 @@ ALTER TABLE ONLY public.schema_migrations
 
 
 --
--- Name: spells spells_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: user_characters user_characters_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY public.spells
-    ADD CONSTRAINT spells_pkey PRIMARY KEY (id);
+ALTER TABLE ONLY public.user_characters
+    ADD CONSTRAINT user_characters_pkey PRIMARY KEY (id);
 
 
 --
@@ -311,45 +441,31 @@ ALTER TABLE ONLY public.users
 
 
 --
--- Name: index_character_items_on_character_id_and_item_id; Type: INDEX; Schema: public; Owner: -
+-- Name: idx_on_characterable_id_characterable_type_f442989187; Type: INDEX; Schema: public; Owner: -
 --
 
-CREATE UNIQUE INDEX index_character_items_on_character_id_and_item_id ON public.character_items USING btree (character_id, item_id);
-
-
---
--- Name: index_character_spells_on_character_id_and_spell_id; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE UNIQUE INDEX index_character_spells_on_character_id_and_spell_id ON public.character_spells USING btree (character_id, spell_id);
+CREATE INDEX idx_on_characterable_id_characterable_type_f442989187 ON public.user_characters USING btree (characterable_id, characterable_type);
 
 
 --
--- Name: index_characters_on_rule_id; Type: INDEX; Schema: public; Owner: -
+-- Name: index_dnd5_character_items_on_character_id_and_item_id; Type: INDEX; Schema: public; Owner: -
 --
 
-CREATE INDEX index_characters_on_rule_id ON public.characters USING btree (rule_id);
-
-
---
--- Name: index_characters_on_user_id; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE INDEX index_characters_on_user_id ON public.characters USING btree (user_id);
+CREATE UNIQUE INDEX index_dnd5_character_items_on_character_id_and_item_id ON public.dnd5_character_items USING btree (character_id, item_id);
 
 
 --
--- Name: index_items_on_rule_id; Type: INDEX; Schema: public; Owner: -
+-- Name: index_dnd5_character_spells_on_character_id_and_spell_id; Type: INDEX; Schema: public; Owner: -
 --
 
-CREATE INDEX index_items_on_rule_id ON public.items USING btree (rule_id);
+CREATE UNIQUE INDEX index_dnd5_character_spells_on_character_id_and_spell_id ON public.dnd5_character_spells USING btree (character_id, spell_id);
 
 
 --
--- Name: index_spells_on_rule_id; Type: INDEX; Schema: public; Owner: -
+-- Name: index_user_characters_on_user_id; Type: INDEX; Schema: public; Owner: -
 --
 
-CREATE INDEX index_spells_on_rule_id ON public.spells USING btree (rule_id);
+CREATE INDEX index_user_characters_on_user_id ON public.user_characters USING btree (user_id);
 
 
 --
@@ -380,16 +496,17 @@ CREATE INDEX index_user_sessions_on_user_id ON public.user_sessions USING btree 
 SET search_path TO "$user", public;
 
 INSERT INTO "schema_migrations" (version) VALUES
-('20250119095607'),
-('20250118183613'),
-('20250118183121'),
+('20250120185611'),
+('20250120184143'),
+('20250120183317'),
+('20250120183310'),
+('20250120182638'),
+('20250120154201'),
+('20250120130703'),
+('20250120093511'),
 ('20250116173157'),
-('20250115083900'),
-('20250115082322'),
 ('20250111132233'),
 ('20250110162616'),
 ('20250110162012'),
-('20250110130703'),
-('20250110130120'),
 ('20250110121151');
 

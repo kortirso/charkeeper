@@ -21,8 +21,8 @@ module Dnd5
     private
 
     def modify_saving_throws(result)
-      result[:class_saving_throws].each do |class_saving_throw|
-        result[:saving_throws][class_saving_throw] += result[:proficiency_bonus]
+      result[:class_save_dc].each do |class_saving_throw|
+        result[:save_dc][class_saving_throw] += result[:proficiency_bonus]
       end
     end
 

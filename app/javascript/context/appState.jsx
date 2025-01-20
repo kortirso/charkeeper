@@ -8,7 +8,6 @@ export function AppStateProvider(props) {
     accessToken: undefined,
     activePage: 'characters',
     activePageParams: {},
-    rules: []
   });
 
   const store = [
@@ -19,9 +18,6 @@ export function AppStateProvider(props) {
       },
       navigate(page, params) {
         setAppState({ ...appState, activePage: page, activePageParams: params });
-      },
-      setRules(values) {
-        setAppState({ ...appState, rules: values })
       }
     }
   ];

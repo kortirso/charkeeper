@@ -2,9 +2,8 @@ import { Switch, Match, batch, For, Show, createEffect, createMemo } from 'solid
 import { createStore } from 'solid-js/store';
 import * as i18n from '@solid-primitives/i18n';
 
-import { CollapseBox } from '../../../../components';
 import { createModal } from '../../../molecules';
-import { Checkbox, Select } from '../../../atoms';
+import { Checkbox, Select, CollapseBox } from '../../../atoms';
 
 import { useAppState, useAppLocale } from '../../../../context';
 import { capitalize, modifier } from '../../../../helpers';
@@ -27,11 +26,11 @@ export const Dnd5 = (props) => {
 
   const t = i18n.translator(dict);
 
-  const modifiers = () => props.character.show_data.modifiers;
-  const savingThrows = () => props.character.show_data.saving_throws;
-  const combat = () => props.character.show_data.combat;
-  const attacks = () => props.character.show_data.attacks;
-  const skills = () => props.character.show_data.skills;
+  const modifiers = () => props.character.decorated_data.modifiers;
+  const saveDC = () => props.character.decorated_data.save_dc;
+  const combat = () => props.character.decorated_data.combat;
+  const attacks = () => props.character.decorated_data.attacks;
+  const skills = () => props.character.decorated_data.skills;
 
   const filteredSpells = createMemo(() => {
     if (pageState.characterSpells === undefined) return [];
@@ -43,7 +42,7 @@ export const Dnd5 = (props) => {
     });
   });
 
-  const manyActiveSpellClasses = createMemo(() => props.character.show_data.spell_classes.length > 1);
+  const manyActiveSpellClasses = createMemo(() => props.character.decorated_data.spell_classes.length > 1);
 
   createEffect(() => {
     if (pageState.activeTab !== 'equipment') return;
@@ -87,14 +86,14 @@ export const Dnd5 = (props) => {
   const renderAbility = (ability) => (
     <div class="flex items-start mb-2">
       <div class="white-box flex flex-col items-center w-2/5 p-2">
-        <p class="text-sm mb-1">{t(`abilities.${ability}`)} {props.character.show_data.abilities[ability]}</p>
+        <p class="text-sm mb-1">{t(`abilities.${ability}`)} {props.character.decorated_data.abilities[ability]}</p>
         <p class="text-2xl mb-1">{modifier(modifiers()[ability])}</p>
       </div>
       <div class="w-3/5 pl-4">
         <div class="white-box p-2">
           <div class="flex justify-between">
-            <p>{t('terms.savingThrows')}</p>
-            <p>{modifier(savingThrows()[ability])}</p>
+            <p>{t('terms.saveDC')}</p>
+            <p>{modifier(saveDC()[ability])}</p>
           </div>
           <div class="mt-2">
             <For each={skills().filter((item) => item.ability === ability)}>
@@ -239,7 +238,7 @@ export const Dnd5 = (props) => {
         <div class="flex-1 flex flex-col items-center">
           <p>{props.character.name}</p>
           <p class="text-sm">
-            {t(`races.${props.character.show_data.race}`)} | {Object.entries(props.character.show_data.classes).map(([item, value]) => `${t(`classes.${item}`)} ${value}`).join(' * ')}
+            {t(`races.${props.character.decorated_data.race}`)} | {Object.entries(props.character.decorated_data.classes).map(([item, value]) => `${t(`classes.${item}`)} ${value}`).join(' * ')}
           </p>
         </div>
         <div class="w-10 h-8 p-2 flex flex-col justify-between cursor-pointer" onClick={openModal}>
@@ -272,28 +271,28 @@ export const Dnd5 = (props) => {
             {renderAttacksBox(`${t('terms.attackAction')} - ${combat().attacks_per_action}`, attacks().filter((item) => item.action_type === 'action'))}
             {renderAttacksBox(`${t('terms.attackBonusAction')} - 1`, attacks().filter((item) => item.action_type === 'bonus action'))}
             <div class="mb-2 p-4 flex white-box">
-              <For each={Object.entries(props.character.show_data.energy)}>
+              <For each={Object.entries(props.character.decorated_data.energy)}>
                 {([key, value]) =>
-                  <p>{energyName(key)} - {value} / {props.character.show_data.max_energy}</p>
+                  <p>{energyName(key)} - {value} / {props.character.decorated_data.max_energy}</p>
                 }
               </For>
             </div>
-            <For each={props.character.show_data.class_features}>
+            <For each={props.character.decorated_data.class_features}>
               {(class_feature) => <CollapseBox title={class_feature.title} description={class_feature.description} />}
             </For>
           </Match>
           <Match when={pageState.activeTab === 'equipment'}>
             <div class="mb-2 p-4 flex white-box">
-              {renderCombatStat(t('equipment.gold'), props.character.show_data.coins.gold)}
-              {renderCombatStat(t('equipment.silver'), props.character.show_data.coins.silver)}
-              {renderCombatStat(t('equipment.copper'), props.character.show_data.coins.copper)}
+              {renderCombatStat(t('equipment.gold'), props.character.decorated_data.coins.gold)}
+              {renderCombatStat(t('equipment.silver'), props.character.decorated_data.coins.silver)}
+              {renderCombatStat(t('equipment.copper'), props.character.decorated_data.coins.copper)}
             </div>
             <Show when={pageState.characterItems !== undefined}>
               {renderItemsBox(t('character.equipment'), pageState.characterItems.filter((item) => item.ready_to_use))}
               {renderItemsBox(t('character.backpack'), pageState.characterItems.filter((item) => !item.ready_to_use))}
               <div class="flex justify-end">
                 <div class="p-4 flex white-box">
-                  <p>{calculateCurrentLoad()} / {props.character.show_data.load}</p>
+                  <p>{calculateCurrentLoad()} / {props.character.decorated_data.load}</p>
                 </div>
               </div>
             </Show>
@@ -311,7 +310,7 @@ export const Dnd5 = (props) => {
                 <Show when={manyActiveSpellClasses()}>
                   <Select
                     classList="w-40"
-                    items={props.character.show_data.spell_classes.reduce((acc, item) => { acc[item] = t(`classes.${item}`); return acc; }, { 'all': t('character.allSpells') })}
+                    items={props.character.decorated_data.spell_classes.reduce((acc, item) => { acc[item] = t(`classes.${item}`); return acc; }, { 'all': t('character.allSpells') })}
                     selectedValue={pageState.activeSpellClass}
                     onSelect={(value) => setPageState({ ...pageState, activeSpellClass: value })}
                   />

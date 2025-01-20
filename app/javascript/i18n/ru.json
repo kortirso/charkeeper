@@ -33,7 +33,7 @@
     "copper": "ММ"
   },
   "terms": {
-    "savingThrows": "Спасброски",
+    "saveDC": "Спасброски",
     "armorClass": "КД",
     "initiative": "Инициатива",
     "speed": "Скорость",

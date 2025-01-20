@@ -3,29 +3,29 @@
 module WebTelegram
   module Characters
     class ItemsController < WebTelegram::BaseController
-      include SerializeRelation
+      # include SerializeRelation
 
-      INDEX_SERIALIZER_FIELDS = %i[id quantity ready_to_use name kind weight price].freeze
+      # INDEX_SERIALIZER_FIELDS = %i[id quantity ready_to_use name kind weight price].freeze
 
-      def index
-        render json: serialize_relation(
-          items,
-          ::Characters::ItemSerializer,
-          :items,
-          { only: INDEX_SERIALIZER_FIELDS }
-        ), status: :ok
-      end
+      # def index
+      #   render json: serialize_relation(
+      #     items,
+      #     ::Characters::ItemSerializer,
+      #     :items,
+      #     { only: INDEX_SERIALIZER_FIELDS }
+      #   ), status: :ok
+      # end
 
-      private
+      # private
 
-      def items
-        current_user
-          .characters
-          .find_by(id: params[:character_id])
-          .items
-          .includes(:item)
-          .order('character_items.ready_to_use DESC')
-      end
+      # def items
+      #   current_user
+      #     .characters
+      #     .find_by(id: params[:character_id])
+      #     .items
+      #     .includes(:item)
+      #     .order('character_items.ready_to_use DESC')
+      # end
     end
   end
 end

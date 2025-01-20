@@ -5,7 +5,6 @@ Rails.application.routes.draw do
 
   namespace :web_telegram do
     resources :auth, only: %i[create]
-    resources :rules, only: %i[index]
     resources :characters, only: %i[index show] do
       resources :items, only: %i[index], module: 'characters'
       resources :spells, only: %i[index], module: 'characters'
