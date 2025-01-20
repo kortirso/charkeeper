@@ -62,6 +62,7 @@ export const Dnd5 = (props) => {
 
   createEffect(() => {
     if (pageState.activeTab !== 'spells') return;
+    if (props.character.decorated_data.spell_classes.length === 0) return;
     if (pageState.characterSpells !== undefined) return;
 
     const fetchCharacterSpells = async () => await fetchCharacterSpellsRequest(appState.accessToken, appState.activePageParams.id);
@@ -298,28 +299,35 @@ export const Dnd5 = (props) => {
             </Show>
           </Match>
           <Match when={pageState.activeTab === 'spells'}>
-            <Show when={pageState.characterSpells !== undefined}>
-              <div class="flex justify-between items-center mb-2">
-                <Checkbox
-                  left
-                  disabled={false}
-                  labelText={t('character.onlyPreparedSpells')}
-                  value={pageState.preparedSpellFilter}
-                  onToggle={() => setPageState({ ...pageState, preparedSpellFilter: !pageState.preparedSpellFilter })}
-                />
-                <Show when={manyActiveSpellClasses()}>
-                  <Select
-                    classList="w-40"
-                    items={props.character.decorated_data.spell_classes.reduce((acc, item) => { acc[item] = t(`classes.${item}`); return acc; }, { 'all': t('character.allSpells') })}
-                    selectedValue={pageState.activeSpellClass}
-                    onSelect={(value) => setPageState({ ...pageState, activeSpellClass: value })}
+            <Switch>
+              <Match when={props.character.decorated_data.spell_classes.length === 0}>
+                <div class="p-4 flex white-box">
+                  <p>{t('character.no_magic')}</p>
+                </div>
+              </Match>
+              <Match when={pageState.characterSpells !== undefined}>
+                <div class="flex justify-between items-center mb-2">
+                  <Checkbox
+                    left
+                    disabled={false}
+                    labelText={t('character.onlyPreparedSpells')}
+                    value={pageState.preparedSpellFilter}
+                    onToggle={() => setPageState({ ...pageState, preparedSpellFilter: !pageState.preparedSpellFilter })}
                   />
-                </Show>
-              </div>
-              <For each={[0, 1]}>
-                {(level) => renderLevelSpells(level)}
-              </For>
-            </Show>
+                  <Show when={manyActiveSpellClasses()}>
+                    <Select
+                      classList="w-40"
+                      items={props.character.decorated_data.spell_classes.reduce((acc, item) => { acc[item] = t(`classes.${item}`); return acc; }, { 'all': t('character.allSpells') })}
+                      selectedValue={pageState.activeSpellClass}
+                      onSelect={(value) => setPageState({ ...pageState, activeSpellClass: value })}
+                    />
+                  </Show>
+                </div>
+                <For each={[0, 1]}>
+                  {(level) => renderLevelSpells(level)}
+                </For>
+              </Match>
+            </Switch>
           </Match>
           <Match when={pageState.activeTab === 'conditions'}>
           </Match>

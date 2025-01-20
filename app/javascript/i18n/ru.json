@@ -17,7 +17,8 @@
     "spells": "Заклинания",
     "conditions": "Состояния",
     "onlyPreparedSpells": "Подготовленные",
-    "allSpells": "Все"
+    "allSpells": "Все",
+    "no_magic": "Персонаж не обладает магическими способностями"
   },
   "attacks": {
     "bonus": "Бонус",

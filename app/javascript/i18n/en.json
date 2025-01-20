@@ -17,7 +17,8 @@
     "spells": "Spells",
     "conditions": "Conditions",
     "onlyPreparedSpells": "Only prepared",
-    "allSpells": "All"
+    "allSpells": "All",
+    "no_magic": "Character does not have magic abilities"
   },
   "attacks": {
     "bonus": "Bonus",

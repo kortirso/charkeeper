@@ -35,7 +35,7 @@ module Dnd5
       }
       result[:skills] = basis_skills(result[:modifiers])
       modify_selected_skills(result)
-      result[:attacks] = [unarmed_attack(result)] # [unarmed_attack(result)] + weapon_attacks(result)
+      result[:attacks] = [unarmed_attack(result)] + weapon_attacks(result)
 
       result
     end
