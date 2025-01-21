@@ -12,37 +12,36 @@ import { fetchCharacterItemsRequest } from '../../../../requests/fetchCharacterI
 import { fetchCharacterSpellsRequest } from '../../../../requests/fetchCharacterSpellsRequest';
 
 export const Dnd5 = (props) => {
-  const [pageState, setPageState] = createStore({
-    activeTab: 'abilities',
-    characterItems: undefined,
-    characterSpells: undefined,
-    activeSpellClass: 'all',
-    preparedSpellFilter: false
-  });
-
-  const { Modal, openModal, closeModal } = createModal();
-  const [appState] = useAppState();
-  const [_locale, dict] = useAppLocale();
-
-  const t = i18n.translator(dict);
-
+  const spellClasses = () => Object.keys(props.character.decorated_data.spell_classes);
   const modifiers = () => props.character.decorated_data.modifiers;
   const saveDC = () => props.character.decorated_data.save_dc;
   const combat = () => props.character.decorated_data.combat;
   const attacks = () => props.character.decorated_data.attacks;
   const skills = () => props.character.decorated_data.skills;
 
+  const [pageState, setPageState] = createStore({
+    activeTab: 'abilities',
+    characterItems: undefined,
+    characterSpells: undefined,
+    activeSpellClass: spellClasses().length === 1 ? spellClasses()[0] : 'all',
+    preparedSpellFilter: false
+  });
+
+  const { Modal, openModal, closeModal } = createModal();
+  const [appState] = useAppState();
+  const [locale, dict] = useAppLocale();
+
+  const t = i18n.translator(dict);
+
   const filteredSpells = createMemo(() => {
     if (pageState.characterSpells === undefined) return [];
 
     return pageState.characterSpells.filter((item) => {
-      if (pageState.activeSpellClass !== 'all' && item.data.class !== pageState.activeSpellClass) return false;
-      if (pageState.preparedSpellFilter ) return item.ready_to_use;
+      if (pageState.activeSpellClass !== 'all' && item.prepared_by !== pageState.activeSpellClass) return false;
+      if (pageState.preparedSpellFilter) return item.ready_to_use;
       return true;
     });
   });
-
-  const manyActiveSpellClasses = createMemo(() => props.character.decorated_data.spell_classes.length > 1);
 
   createEffect(() => {
     if (pageState.activeTab !== 'equipment') return;
@@ -62,7 +61,7 @@ export const Dnd5 = (props) => {
 
   createEffect(() => {
     if (pageState.activeTab !== 'spells') return;
-    if (props.character.decorated_data.spell_classes.length === 0) return;
+    if (spellClasses().length === 0) return;
     if (pageState.characterSpells !== undefined) return;
 
     const fetchCharacterSpells = async () => await fetchCharacterSpellsRequest(appState.accessToken, appState.activePageParams.id);
@@ -139,12 +138,16 @@ export const Dnd5 = (props) => {
   const renderAttack = (attack) => (
     <tr>
       <td class="py-1">
-        <p>{attack.name}</p>
-        <Show when={attack.hands == 2}><p class="text-xs">{t('damage.2hands')}</p></Show>
+        <p>{attack.name[locale()]}</p>
+        <Show when={attack.hands == 2}>
+          <p class="text-xs">
+            {t('damage.2hands')}
+          </p>
+        </Show>
       </td>
       <td class="py-1 text-center">{modifier(attack.attack_bonus)}</td>
       <td class="py-1 text-center">
-        <p>{attack.damage}{modifier(attack.damage_bonus)}</p>
+        <p>{attack.damage}{attack.damage_bonus > 0 ? modifier(attack.damage_bonus) : ''}</p>
         <p class="text-xs">{t(`damage.${attack.damage_type}`)}</p>
       </td>
       <td class="py-1 text-center">
@@ -210,7 +213,7 @@ export const Dnd5 = (props) => {
               <tr>
                 <td class="py-1">
                   <p>{spell.name}</p>
-                  <Show when={manyActiveSpellClasses()}>
+                  <Show when={spellClasses().length > 1}>
                     <p class="text-xs">{t(`classes.${spell.data.class}`)}</p>
                   </Show>
                 </td>
@@ -224,10 +227,6 @@ export const Dnd5 = (props) => {
     </div>
   );
 
-  const energyName = (value) => {
-    if (value === 'monk') return t('terms.energy.monk');
-  }
-
   const calculateCurrentLoad = () => {
     return pageState.characterItems.reduce((acc, item) => acc + item.quantity * item.weight, 0);
   }
@@ -237,7 +236,7 @@ export const Dnd5 = (props) => {
       <div class="w-full flex justify-between items-center py-4 px-2 bg-white border-b border-gray-200">
         <div class="w-10"></div>
         <div class="flex-1 flex flex-col items-center">
-          <p>{props.character.name}</p>
+          <p>{props.character.object_data.name}</p>
           <p class="text-sm">
             {t(`races.${props.character.decorated_data.race}`)} | {Object.entries(props.character.decorated_data.classes).map(([item, value]) => `${t(`classes.${item}`)} ${value}`).join(' * ')}
           </p>
@@ -271,13 +270,15 @@ export const Dnd5 = (props) => {
             </div>
             {renderAttacksBox(`${t('terms.attackAction')} - ${combat().attacks_per_action}`, attacks().filter((item) => item.action_type === 'action'))}
             {renderAttacksBox(`${t('terms.attackBonusAction')} - 1`, attacks().filter((item) => item.action_type === 'bonus action'))}
-            <div class="mb-2 p-4 flex white-box">
-              <For each={Object.entries(props.character.decorated_data.energy)}>
-                {([key, value]) =>
-                  <p>{energyName(key)} - {value} / {props.character.decorated_data.max_energy}</p>
-                }
-              </For>
-            </div>
+            <Show when={Object.keys(props.character.decorated_data.energy).length > 0}>
+              <div class="mb-2 p-4 flex white-box">
+                <For each={Object.entries(props.character.decorated_data.energy)}>
+                  {([key, value]) =>
+                    <p>{t(`terms.energy.${key}`)} - {value} / {props.character.decorated_data.max_energy}</p>
+                  }
+                </For>
+              </div>
+            </Show>
             <For each={props.character.decorated_data.class_features}>
               {(class_feature) => <CollapseBox title={class_feature.title} description={class_feature.description} />}
             </For>
@@ -300,7 +301,7 @@ export const Dnd5 = (props) => {
           </Match>
           <Match when={pageState.activeTab === 'spells'}>
             <Switch>
-              <Match when={props.character.decorated_data.spell_classes.length === 0}>
+              <Match when={spellClasses().length === 0}>
                 <div class="p-4 flex white-box">
                   <p>{t('character.no_magic')}</p>
                 </div>
@@ -314,15 +315,31 @@ export const Dnd5 = (props) => {
                     value={pageState.preparedSpellFilter}
                     onToggle={() => setPageState({ ...pageState, preparedSpellFilter: !pageState.preparedSpellFilter })}
                   />
-                  <Show when={manyActiveSpellClasses()}>
+                  <Show when={spellClasses().length > 1}>
                     <Select
                       classList="w-40"
-                      items={props.character.decorated_data.spell_classes.reduce((acc, item) => { acc[item] = t(`classes.${item}`); return acc; }, { 'all': t('character.allSpells') })}
+                      items={spellClasses().reduce((acc, item) => { acc[item] = t(`classes.${item}`); return acc; }, { 'all': t('character.allSpells') })}
                       selectedValue={pageState.activeSpellClass}
                       onSelect={(value) => setPageState({ ...pageState, activeSpellClass: value })}
                     />
                   </Show>
                 </div>
+                <Show when={pageState.activeSpellClass !== 'all'}>
+                  <div class="mb-2 p-4 flex white-box">
+                    <div class="w-1/2 flex flex-col items-center">
+                      <p class="uppercase text-sm mb-1">{t('terms.spellAttack')}</p>
+                      <p class="text-2xl mb-1">
+                        {modifier(props.character.decorated_data.spell_classes[pageState.activeSpellClass].attack_bonus)}
+                      </p>
+                    </div>
+                    <div class="w-1/2 flex flex-col items-center">
+                      <p class="uppercase text-sm mb-1">{t('terms.saveDC')}</p>
+                      <p class="text-2xl mb-1">
+                        {props.character.decorated_data.spell_classes[pageState.activeSpellClass].save_dc}
+                      </p>
+                    </div>
+                  </div>
+                </Show>
                 <For each={[0, 1]}>
                   {(level) => renderLevelSpells(level)}
                 </For>

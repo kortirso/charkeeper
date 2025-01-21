@@ -15,10 +15,10 @@ grundar = Dnd5::Character.create!(
   speed: 30,
   selected_skills: ['acrobatics', 'perception'], # выбранные умения
   languages: ['common', 'dwarvish'], # изученные языки
-  # weapon_core_skills: ['light'], # навыки владения группой оружия
-  # weapon_skills: ['shortsword'], # навыки владения оружием
+  weapon_core_skills: ['light weapon'], # навыки владения группой оружия
+  weapon_skills: ['Shortsword'], # навыки владения отдельным оружием
   armor_proficiency: [], # навыки владения броней
-  # class_features: [], # выбранные классовые умения
+  class_features: [], # выбранные классовые умения
   coins: { gold: 250, silver: 0, copper: 0 }
 )
 
@@ -27,26 +27,25 @@ user.user_characters.create!(characterable: grundar)
 # языки
 # common, dwarvish, elvish, giant, gnomish, goblin, halfling, orc, draconic, undercommon
 
-# kormak = dnd5.characters.create!(
-#   user: user,
-#   name: 'Кормак',
-#   data: {
-#     race: 'dwarf',
-#     alignment: 'neutral',
-#     abilities: { str: 16, dex: 11, con: 16, int: 8, wis: 13, cha: 12 },
-#     classes: { fighter: 3 },
-#     subclasses: { fighter: nil },
-#     health: { current: 24, max: 30, temp: 0 },
-#     speed: 25,
-#     skills: [],
-#     languages: ['common', 'dwarvish'],
-#     weapon_core_skills: [],
-#     weapon_skills: ['handaxe', 'battleaxe', 'light hammer', 'warhammer'],
-#     armor_skills: ['light', 'medium'],
-#     class_features: [],
-#     coins: { gold: 0, silver: 0, copper: 0 }
-#   }
-# )
+kormak = Dnd5::Character.create!(
+  name: 'Кормак',
+  level: 3,
+  race: Dnd5::Character::DWARF,
+  alignment: Dnd5::Character::NEUTRAL,
+  abilities: { str: 16, dex: 11, con: 16, int: 8, wis: 13, cha: 12 },
+  classes: { fighter: 3 },
+  subclasses: { fighter: nil },
+  health: { current: 24, max: 30, temp: 0 },
+  speed: 25,
+  selected_skills: [],
+  languages: ['common', 'dwarvish'],
+  weapon_core_skills: ['light weapon', 'martial weapon'],
+  weapon_skills: ['Handaxe', 'Battleaxe', 'Light hammer', 'Warhammer'],
+  armor_proficiency: ['light armor', 'medium armor', 'heavy armor', 'shield'],
+  class_features: [],
+  coins: { gold: 0, silver: 0, copper: 0 }
+)
+user.user_characters.create!(characterable: kormak)
 
 vestra = Dnd5::Character.create!(
   name: 'Вестра',
@@ -61,10 +60,10 @@ vestra = Dnd5::Character.create!(
   speed: 30,
   selected_skills: ['acrobatics', 'persuasion'], # выбранные умения
   languages: ['common', 'orc', 'draconic'], # изученные языки
-  # weapon_core_skills: ['light'], # навыки владения группой оружия
-  # weapon_skills: ['staff, dagger'], # навыки владения оружием
+  weapon_core_skills: [], # навыки владения группой оружия
+  weapon_skills: ['Quarterstaff', 'Dagger', 'Dart', 'Sling'], # навыки владения оружием
   armor_proficiency: [], # навыки владения броней
-  # class_features: [], # выбранные классовые умения
+  class_features: [], # выбранные классовые умения
   coins: { gold: 325, silver: 0, copper: 0 }
 )
 user.user_characters.create!(characterable: vestra)
@@ -75,19 +74,25 @@ user.user_characters.create!(characterable: vestra)
 # дробящий - bludge
 
 # свойства оружия
+# ближний бой - melee
 # метательное - thrown
+# дальний бой - range
+
 # фехтовальное - finesse
 # лёгкое - light
 # тяжёлое - heavy
 # универсальное - versatile
 # двуручное - 2handed
 # досягаемость - reach
+# перезарядка - reload
 
 torch = Dnd5::Item.create!(kind: 'item', name: { en: 'Torch', ru: 'Факел' }, weight: 1, price: 1)
 
-sickle = Dnd5::Item.create!(kind: 'light melee weapon', name: { en: 'Sickle', ru: 'Серп' }, weight: 2, price: 100, data: { damage: '1d4', type: 'slash', caption: ['light'] })
-quarterstaff = Dnd5::Item.create!(kind: 'light melee weapon', name: { en: 'Quarterstaff', ru: 'Боевой посох' }, weight: 4, price: 20, data: { damage: '1d6', type: 'bludge', caption: ['versatile-1d8'] })
-dart = Dnd5::Item.create!(kind: 'light range weapon', name: { en: 'Dart', ru: 'Дротик' }, weight: 0.25, price: 5, data: { dist: '20/60', damage: '1d4', type: 'pierce', caption: ['finesse'] })
+sickle = Dnd5::Item.create!(kind: 'light weapon', name: { en: 'Sickle', ru: 'Серп' }, weight: 2, price: 100, data: { type: 'melee', damage: '1d4', damage_type: 'slash', caption: ['light'] })
+quarterstaff = Dnd5::Item.create!(kind: 'light weapon', name: { en: 'Quarterstaff', ru: 'Боевой посох' }, weight: 4, price: 20, data: { type: 'melee', damage: '1d6', damage_type: 'bludge', caption: ['versatile-1d8'] })
+dart = Dnd5::Item.create!(kind: 'light weapon', name: { en: 'Dart', ru: 'Дротик' }, weight: 0.25, price: 5, data: { type: 'range', dist: '20/60', damage: '1d4', damage_type: 'pierce', caption: ['finesse'] })
+spear = Dnd5::Item.create!(kind: 'light weapon', name: { en: 'Spear', ru: 'Копьё' }, weight: 3, price: 1, data: { type: 'thrown', dist: '20/60', damage: '1d4', damage_type: 'pierce', caption: ['versatile-1d8'] })
+light_crossbow = Dnd5::Item.create!(kind: 'light weapon', name: { en: 'Light crossbow', ru: 'Лёгкий арбалет' }, weight: 5, price: 25, data: { type: 'range', dist: '80/320', damage: '1d8', damage_type: 'pierce', caption: ['2handed', 'reload'] })
 
 shield = Dnd5::Item.create(kind: 'shield', name: { en: 'Shield', ru: 'Щит' }, weight: 6, price: 1_000, data: { ac: 2, str_req: nil, stealth: true })
 Dnd5::Item.create(kind: 'light armor', name: { en: 'Leather armor', ru: 'Кожаный' }, weight: 10, price: 1_000, data: { ac: 11, str_req: nil, stealth: true })
@@ -99,9 +104,11 @@ grundar.items.create!(item: sickle, quantity: 1, ready_to_use: true)
 grundar.items.create!(item: quarterstaff, quantity: 1, ready_to_use: true)
 grundar.items.create!(item: dart, quantity: 10, ready_to_use: true)
 
-# kormak.items.create!(item: torch, quantity: 10)
-# kormak.items.create!(item: shield, quantity: 1, ready_to_use: true)
-# kormak.items.create!(item: scale_mail_armor, quantity: 1, ready_to_use: true)
+kormak.items.create!(item: torch, quantity: 10)
+kormak.items.create!(item: shield, quantity: 1, ready_to_use: true)
+kormak.items.create!(item: scale_mail_armor, quantity: 1, ready_to_use: true)
+kormak.items.create!(item: spear, quantity: 1, ready_to_use: true)
+kormak.items.create!(item: light_crossbow, quantity: 1, ready_to_use: true)
 
 vestra.items.create!(item: torch, quantity: 9)
 

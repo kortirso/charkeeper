@@ -1,7 +1,6 @@
 SET statement_timeout = 0;
 SET lock_timeout = 0;
 SET idle_in_transaction_session_timeout = 0;
-SET transaction_timeout = 0;
 SET client_encoding = 'UTF8';
 SET standard_conforming_strings = on;
 SELECT pg_catalog.set_config('search_path', '', false);
@@ -106,7 +105,10 @@ CREATE TABLE public.dnd5_characters (
     selected_skills character varying[] DEFAULT '{}'::character varying[] NOT NULL,
     languages character varying[] DEFAULT '{}'::character varying[] NOT NULL,
     armor_proficiency character varying[] DEFAULT '{}'::character varying[] NOT NULL,
-    coins jsonb DEFAULT '{}'::jsonb NOT NULL
+    coins jsonb DEFAULT '{}'::jsonb NOT NULL,
+    weapon_core_skills character varying[] DEFAULT '{}'::character varying[] NOT NULL,
+    weapon_skills character varying[] DEFAULT '{}'::character varying[] NOT NULL,
+    class_features character varying[] DEFAULT '{}'::character varying[] NOT NULL
 );
 
 
@@ -213,6 +215,27 @@ COMMENT ON COLUMN public.dnd5_characters.armor_proficiency IS 'Владение 
 --
 
 COMMENT ON COLUMN public.dnd5_characters.coins IS 'Данные о деньгах';
+
+
+--
+-- Name: COLUMN dnd5_characters.weapon_core_skills; Type: COMMENT; Schema: public; Owner: -
+--
+
+COMMENT ON COLUMN public.dnd5_characters.weapon_core_skills IS 'Владение группами оружия';
+
+
+--
+-- Name: COLUMN dnd5_characters.weapon_skills; Type: COMMENT; Schema: public; Owner: -
+--
+
+COMMENT ON COLUMN public.dnd5_characters.weapon_skills IS 'Владение определенными видами оружия';
+
+
+--
+-- Name: COLUMN dnd5_characters.class_features; Type: COMMENT; Schema: public; Owner: -
+--
+
+COMMENT ON COLUMN public.dnd5_characters.class_features IS 'Выбранные классовые умения';
 
 
 --
@@ -496,6 +519,7 @@ CREATE INDEX index_user_sessions_on_user_id ON public.user_sessions USING btree 
 SET search_path TO "$user", public;
 
 INSERT INTO "schema_migrations" (version) VALUES
+('20250121113237'),
 ('20250120185611'),
 ('20250120184143'),
 ('20250120183317'),

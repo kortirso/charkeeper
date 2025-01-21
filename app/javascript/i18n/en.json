@@ -34,6 +34,7 @@
     "copper": "Copper"
   },
   "terms": {
+    "spellAttack": "Spell attack",
     "saveDC": "Save DC",
     "armorClass": "Armor Class",
     "initiative": "Initiative",
@@ -44,7 +45,8 @@
     "attackAction": "Action attacks",
     "attackBonusAction": "Bonus action attacks",
     "energy": {
-      "monk": "Ki energy"
+      "monk": "Ki energy",
+      "sorcerer": "Sorcery"
     }
   },
   "damage": {

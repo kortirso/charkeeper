@@ -54,14 +54,6 @@ module WebTelegram
       end
     end
 
-    # def character_ids
-    #   @character_ids ||= current_user.user_characters.pluck(:id)
-    # end
-
-    # def dnd5_characters
-    #   Dnd5::Character::Datum.where(character_id: character_ids)
-    # end
-
     def find_user_character
       @user_character = current_user.user_characters.find_by(id: params[:id])
     end

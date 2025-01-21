@@ -3,6 +3,8 @@
 module Dnd5
   module Classes
     class MonkDecorator
+      NOT_MONK_WEAPON_CAPTIONS = %w[2handed heavy].freeze
+
       # rubocop: disable Metrics/AbcSize, Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity, Metrics/MethodLength
       def decorate(result:, class_level:)
         energy_dc = 8 + result[:proficiency_bonus] + result.dig(:modifiers, :wis)
@@ -99,15 +101,13 @@ module Dnd5
         key_ability_bonus = [result.dig(:modifiers, :str), result.dig(:modifiers, :dex)].max
 
         result[:attacks].each do |attack|
-          next if attack[:caption].include?('2handed')
-          next if attack[:caption].include?('heavy')
-          next if attack[:kind].include?('martial') && attack.dig(:name, :en) != 'Shortsword'
+          next if attack[:caption].any? { |item| NOT_MONK_WEAPON_CAPTIONS.include?(item) }
+          next if attack[:kind] == 'martial' && attack.dig(:name, :en) != 'Shortsword'
 
           attack[:attack_bonus] = key_ability_bonus + result[:proficiency_bonus]
           attack[:damage_bonus] = key_ability_bonus if attack[:action_type] == 'action'
           attack[:damage] = "1d#{(((class_level + 1) / 6) + 2) * 2}" if attack[:kind] == 'unarmed'
         end
-
         unarmed_attack = result[:attacks].find { |attack| attack[:kind] == 'unarmed' && attack[:action_type] == 'action' }
         result[:attacks] << unarmed_attack.merge({ action_type: 'bonus action' })
       end

@@ -6,6 +6,7 @@ module Dnd5
 
     # races
     HUMAN = 'human'
+    DWARF = 'dwarf'
 
     # subraces
     # no data
@@ -18,7 +19,7 @@ module Dnd5
     has_many :spells, class_name: 'Dnd5::Character::Spell', foreign_key: :character_id, dependent: :destroy
     has_many :items, class_name: 'Dnd5::Character::Item', foreign_key: :character_id, dependent: :destroy
 
-    enum :race, { HUMAN => 0 }
+    enum :race, { HUMAN => 0, DWARF => 1 }
     enum :alignment, { NEUTRAL => 0 }
 
     def decorator
