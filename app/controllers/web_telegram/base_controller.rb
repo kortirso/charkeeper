@@ -7,7 +7,13 @@ module WebTelegram
     before_action :authenticate
     before_action :set_locale
 
+    rescue_from ActiveRecord::RecordNotFound, with: :page_not_found
+
     private
+
+    def page_not_found
+      render json: { errors: { base: ['Not found'] } }, status: :not_found
+    end
 
     def set_locale
       I18n.locale = current_user&.locale || I18n.default_locale

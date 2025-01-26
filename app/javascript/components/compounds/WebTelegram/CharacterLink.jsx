@@ -3,11 +3,11 @@ import * as i18n from '@solid-primitives/i18n';
 
 import { useAppState, useAppLocale } from '../../../context';
 
-export const Character = (props) => {
+export const CharacterLink = (props) => {
   const character = () => props.character;
 
-  const [_appState, { navigate }] = useAppState();
-  const [_locale, dict] = useAppLocale();
+  const [appState, { navigate }] = useAppState();
+  const [locale, dict] = useAppLocale();
 
   const t = i18n.translator(dict);
 
@@ -17,9 +17,9 @@ export const Character = (props) => {
       onClick={() => navigate('characters', { id: character().user_character_id })}
     >
       <Switch>
-        <Match when={character().provider === 'D&D 5'}>
+        <Match when={character().provider === 'DnD 5'}>
           <div class="mr-2">
-            <div class="w-16 h-16 border border-gray rounded"></div>
+            <div class="w-16 h-16 border border-gray rounded" />
           </div>
           <div>
             <p class="mb-1 font-medium">{character().object_data.name}</p>

@@ -1,33 +1,27 @@
-import { createEffect, For, Switch, Match, Show } from 'solid-js';
-import { createStore } from 'solid-js/store';
+import { createSignal, createEffect, For, Switch, Match, Show } from 'solid-js';
 import * as i18n from '@solid-primitives/i18n';
 
-import { Character, CharacterView } from '../../../components';
+import { CharacterLink, CharacterView } from '../../../components';
 
 import { useAppState, useAppLocale } from '../../../context';
 import { fetchCharactersRequest } from '../../../requests/fetchCharactersRequest';
 
-export const CharactersPage = (props) => {
-  const [pageState, setPageState] = createStore({
-    characters: undefined
-  });
+export const CharactersPage = () => {
+  const [characters, setCharacters] = createSignal(undefined);
 
   const [appState] = useAppState();
-  const [_locale, dict] = useAppLocale();
+  const [locale, dict] = useAppLocale();
 
   const t = i18n.translator(dict);
 
   createEffect(() => {
-    if (appState.characters !== undefined) return;
+    if (characters() !== undefined) return;
 
     const fetchCharacters = async () => await fetchCharactersRequest(appState.accessToken);
 
     Promise.all([fetchCharacters()]).then(
       ([charactersData]) => {
-        setPageState({
-          ...pageState,
-          characters: charactersData.characters
-        });
+        setCharacters(charactersData.characters);
       }
     );
   });
@@ -41,10 +35,10 @@ export const CharactersPage = (props) => {
           <p class="flex-1 text-center">{t('characters.title')}</p>
         </div>
         <div class="p-4">
-          <Show when={pageState.characters !== undefined}>
-            <For each={pageState.characters}>
+          <Show when={characters() !== undefined}>
+            <For each={characters()}>
               {(character) =>
-                <Character character={character} />
+                <CharacterLink character={character} />
               }
             </For>
           </Show>

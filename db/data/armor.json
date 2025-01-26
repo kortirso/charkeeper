@@ -1,0 +1,184 @@
+[
+  {
+    "kind": "light armor",
+    "name": {
+      "en": "Padded Armor",
+      "ru": "Стёганный доспех"
+    },
+    "weight": 8,
+    "price": 500,
+    "data": {
+      "ac": 11,
+      "str_req": null,
+      "stealth": false
+    }
+  },
+  {
+    "kind": "light armor",
+    "name": {
+      "en": "Leather Armor",
+      "ru": "Кожаный доспех"
+    },
+    "weight": 10,
+    "price": 1000,
+    "data": {
+      "ac": 11,
+      "str_req": null,
+      "stealth": true
+    }
+  },
+  {
+    "kind": "light armor",
+    "name": {
+      "en": "Studded Leather Armor",
+      "ru": "Проклёпанная кожа"
+    },
+    "weight": 13,
+    "price": 4500,
+    "data": {
+      "ac": 12,
+      "str_req": null,
+      "stealth": true
+    }
+  },
+  {
+    "kind": "medium armor",
+    "name": {
+      "en": "Hide Armor",
+      "ru": "Шкурный доспех"
+    },
+    "weight": 12,
+    "price": 1000,
+    "data": {
+      "ac": 12,
+      "str_req": null,
+      "stealth": true
+    }
+  },
+  {
+    "kind": "medium armor",
+    "name": {
+      "en": "Chain Shirt",
+      "ru": "Кольчужная рубаха"
+    },
+    "weight": 20,
+    "price": 5000,
+    "data": {
+      "ac": 13,
+      "str_req": null,
+      "stealth": true
+    }
+  },
+  {
+    "kind": "medium armor",
+    "name": {
+      "en": "Scale Mail Armor",
+      "ru": "Чешуйчатый доспех"
+    },
+    "weight": 45,
+    "price": 5000,
+    "data": {
+      "ac": 14,
+      "str_req": null,
+      "stealth": false
+    }
+  },
+  {
+    "kind": "medium armor",
+    "name": {
+      "en": "Breastplate",
+      "ru": "Кираса"
+    },
+    "weight": 20,
+    "price": 40000,
+    "data": {
+      "ac": 14,
+      "str_req": null,
+      "stealth": true
+    }
+  },
+  {
+    "kind": "medium armor",
+    "name": {
+      "en": "Half Plate Armor",
+      "ru": "Полулаты"
+    },
+    "weight": 40,
+    "price": 75000,
+    "data": {
+      "ac": 15,
+      "str_req": null,
+      "stealth": false
+    }
+  },
+  {
+    "kind": "heavy armor",
+    "name": {
+      "en": "Ring Mail Armor",
+      "ru": "Кольчатый доспех"
+    },
+    "weight": 40,
+    "price": 3000,
+    "data": {
+      "ac": 14,
+      "str_req": null,
+      "stealth": false
+    }
+  },
+  {
+    "kind": "heavy armor",
+    "name": {
+      "en": "Chain Mail",
+      "ru": "Кольчуга"
+    },
+    "weight": 55,
+    "price": 7500,
+    "data": {
+      "ac": 16,
+      "str_req": 13,
+      "stealth": false
+    }
+  },
+  {
+    "kind": "heavy armor",
+    "name": {
+      "en": "Splint Armor",
+      "ru": "Наборный доспех"
+    },
+    "weight": 60,
+    "price": 20000,
+    "data": {
+      "ac": 17,
+      "str_req": 15,
+      "stealth": false
+    }
+  },
+  {
+    "kind": "heavy armor",
+    "name": {
+      "en": "Plate Armor",
+      "ru": "Латы"
+    },
+    "weight": 65,
+    "price": 150000,
+    "data": {
+      "ac": 18,
+      "str_req": 15,
+      "stealth": false
+    }
+  },
+  {
+    "kind": "shield",
+    "name": {
+      "en": "Shield",
+      "ru": "Щит"
+    },
+    "weight": 6,
+    "price": 1000,
+    "data": {
+      "ac": 2,
+      "str_req": null,
+      "stealth": true
+    }
+  }
+]

@@ -1,14 +1,8 @@
-import { apiRequest } from '../helpers';
+import { apiRequest, options } from '../helpers';
 
-export const fetchCharacterItemsRequest = async (accessToken, id) => {
+export const fetchCharacterItemsRequest = async (accessToken, provider, id) => {
   return await apiRequest({
-    url: `/web_telegram/characters/${id}/items.json`,
-    options: {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${accessToken}`
-      }
-    }
+    url: `/web_telegram/${provider}/characters/${id}/items.json`,
+    options: options('GET', accessToken)
   });
 }

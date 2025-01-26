@@ -3,9 +3,9 @@
 module Dnd5
   module Characters
     class SpellSerializer < ApplicationSerializer
-      ATTRIBUTES = %i[id ready_to_use prepared_by name level comment].freeze
+      ATTRIBUTES = %i[id ready_to_use prepared_by name level comment spell_id].freeze
 
-      attributes :id, :ready_to_use, :prepared_by, :name, :level, :comment
+      attributes :id, :ready_to_use, :prepared_by, :name, :level, :comment, :spell_id
 
       delegate :level, to: :spell
       delegate :spell, to: :object

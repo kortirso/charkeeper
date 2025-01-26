@@ -1,0 +1,21 @@
+ru:
+  dry_schema:
+    rules:
+      dnd5_character: D&D5 персонаж
+    errors:
+      key?: Обязательный параметр
+      filled?: Отсутствует значение
+      gteq?: Значение отрицательное
+      dnd5_character:
+        rules:
+          classes:
+            invalid_class_name: Недопустимое название класса
+            invalid_level: Недопустимый уровень
+          energy:
+            invalid_class_name: Недопустимое название класса
+            invalid_level: Недопустимый уровень
+          character:
+            can_not_learn: Не может учить заклинания
+            can_not_prepare: Не может подготавливать заклинания
+          spell:
+            can_not_learn: Заклинание не может быть выучено

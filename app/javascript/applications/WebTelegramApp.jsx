@@ -2,7 +2,7 @@ import { WebTelegramAppContent } from './WebTelegramAppContent';
 
 import { AppStateProvider, AppLocaleProvider } from '../context';
 
-export const WebTelegramApp = (props) => (
+export const WebTelegramApp = () => (
   <AppStateProvider>
     <AppLocaleProvider>
       <WebTelegramAppContent />

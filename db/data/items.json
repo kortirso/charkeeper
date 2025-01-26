@@ -1,0 +1,11 @@
+[
+  {
+    "kind": "item",
+    "name": {
+      "en": "Torch",
+      "ru": "Факел"
+    },
+    "weight": 1,
+    "price": 1
+  }
+]

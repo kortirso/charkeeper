@@ -5,11 +5,15 @@ module Dnd5
   class CharacterDecorator
     extend Dry::Initializer
 
+    MELEE_ATTACK_TOOLTIPS = %w[2handed heavy].freeze
+    RANGE_ATTACK_TOOLTIPS = %w[2handed heavy reload].freeze
+
     option :data
 
     def decorate
       result = {
         race: data.race,
+        main_class: data.main_class,
         classes: data.classes,
         overall_level: data.level,
         proficiency_bonus: proficiency_bonus,
@@ -23,7 +27,8 @@ module Dnd5
         load: data.abilities['str'] * 15,
         spell_classes: {},
         weapon_core_skills: data.weapon_core_skills,
-        weapon_skills: data.weapon_skills
+        weapon_skills: data.weapon_skills,
+        spent_spell_slots: data.spent_spell_slots
       }.compact
 
       result[:save_dc] = result[:modifiers].clone
@@ -58,24 +63,24 @@ module Dnd5
 
     def basis_skills(modifiers)
       [
-        { name: 'acrobatics', ability: 'dex', modifier: modifiers[:dex] },
-        { name: 'animal', ability: 'wis', modifier: modifiers[:wis] },
-        { name: 'arcana', ability: 'int', modifier: modifiers[:int] },
-        { name: 'athletics', ability: 'str', modifier: modifiers[:str] },
-        { name: 'deception', ability: 'cha', modifier: modifiers[:cha] },
-        { name: 'history', ability: 'int', modifier: modifiers[:int] },
-        { name: 'insight', ability: 'wis', modifier: modifiers[:wis] },
-        { name: 'intimidation', ability: 'cha', modifier: modifiers[:cha] },
-        { name: 'investigation', ability: 'int', modifier: modifiers[:int] },
-        { name: 'medicine', ability: 'wis', modifier: modifiers[:wis] },
-        { name: 'nature', ability: 'int', modifier: modifiers[:int] },
-        { name: 'perception', ability: 'wis', modifier: modifiers[:wis] },
-        { name: 'performance', ability: 'cha', modifier: modifiers[:cha] },
-        { name: 'persuasion', ability: 'cha', modifier: modifiers[:cha] },
-        { name: 'religion', ability: 'int', modifier: modifiers[:int] },
-        { name: 'sleight', ability: 'dex', modifier: modifiers[:dex] },
-        { name: 'stealth', ability: 'dex', modifier: modifiers[:dex] },
-        { name: 'survival', ability: 'wis', modifier: modifiers[:wis] }
+        { name: 'acrobatics', ability: 'dex', modifier: modifiers[:dex], selected: false },
+        { name: 'animal', ability: 'wis', modifier: modifiers[:wis], selected: false },
+        { name: 'arcana', ability: 'int', modifier: modifiers[:int], selected: false },
+        { name: 'athletics', ability: 'str', modifier: modifiers[:str], selected: false },
+        { name: 'deception', ability: 'cha', modifier: modifiers[:cha], selected: false },
+        { name: 'history', ability: 'int', modifier: modifiers[:int], selected: false },
+        { name: 'insight', ability: 'wis', modifier: modifiers[:wis], selected: false },
+        { name: 'intimidation', ability: 'cha', modifier: modifiers[:cha], selected: false },
+        { name: 'investigation', ability: 'int', modifier: modifiers[:int], selected: false },
+        { name: 'medicine', ability: 'wis', modifier: modifiers[:wis], selected: false },
+        { name: 'nature', ability: 'int', modifier: modifiers[:int], selected: false },
+        { name: 'perception', ability: 'wis', modifier: modifiers[:wis], selected: false },
+        { name: 'performance', ability: 'cha', modifier: modifiers[:cha], selected: false },
+        { name: 'persuasion', ability: 'cha', modifier: modifiers[:cha], selected: false },
+        { name: 'religion', ability: 'int', modifier: modifiers[:int], selected: false },
+        { name: 'sleight', ability: 'dex', modifier: modifiers[:dex], selected: false },
+        { name: 'stealth', ability: 'dex', modifier: modifiers[:dex], selected: false },
+        { name: 'survival', ability: 'wis', modifier: modifiers[:wis], selected: false }
       ]
     end
 
@@ -86,6 +91,7 @@ module Dnd5
         next skill if data['selected_skills'].exclude?(skill[:name])
 
         skill[:modifier] += result[:proficiency_bonus]
+        skill[:selected] = true
         skill
       end
     end
@@ -101,12 +107,13 @@ module Dnd5
         damage_bonus: result.dig(:modifiers, :str),
         damage_type: 'bludge',
         kind: 'unarmed',
-        caption: []
+        caption: [],
+        tooltips: []
       }
     end
 
     def defense_gear
-      armor, shield = find_equiped_armor
+      armor, shield = equiped_armor
       {
         armor: armor.blank? ? nil : armor[0],
         shield: shield.blank? ? nil : shield[0]
@@ -118,11 +125,11 @@ module Dnd5
       equiped_shield = result.dig(:defense_gear, :shield)
       return 10 + result.dig(:modifiers, :dex) if equiped_armor.nil? && equiped_shield.nil?
 
-      equiped_armor.dig(:dnd5_items_data, 'ac').to_i + equiped_shield.dig(:dnd5_items_data, 'ac').to_i
+      equiped_armor&.dig(:dnd5_items_data, 'ac').to_i + equiped_shield&.dig(:dnd5_items_data, 'ac').to_i
     end
 
     def weapon_attacks(result)
-      equiped_weapons.flat_map do |item|
+      weapons.flat_map do |item|
         case item[:dnd5_items_data]['type']
         when 'melee' then melee_attack(result, item)
         when 'range' then range_attack(result, item)
@@ -148,7 +155,8 @@ module Dnd5
           damage_type: item[:dnd5_items_data]['damage_type'],
           # для будущих проверок
           kind: item[:dnd5_items_kind].split[0],
-          caption: captions
+          caption: captions,
+          tooltips: captions.select { |item| item.in?(MELEE_ATTACK_TOOLTIPS) }
         }
       ]
 
@@ -157,13 +165,14 @@ module Dnd5
       if versatile && item[:quantity] == 1
         response << response[0].merge({
           hands: '2',
-          damage: versatile.split('-')[1]
+          damage: versatile.split('-')[1],
+          tooltips: ['2handed']
         })
       end
 
       # два лёгких оружия
-      if captions.include?('light') && item[:quantity] == 2
-        response[0][:hands] << 'dual'
+      if captions.include?('light') && item[:quantity] > 1
+        response[0][:tooltips] << 'dual'
         response << response[0].merge({
           action_type: 'bonus action',
           damage_bonus: 0
@@ -190,7 +199,8 @@ module Dnd5
           damage_type: item[:dnd5_items_data]['damage_type'],
           # для будущих проверок
           kind: item[:dnd5_items_kind].split[0],
-          caption: captions
+          caption: captions,
+          tooltips: captions.select { |item| item.in?(RANGE_ATTACK_TOOLTIPS) }
         }
       ]
 
@@ -217,16 +227,15 @@ module Dnd5
         result[:weapon_skills].include?(item[:dnd5_items_name]['en'])
     end
 
-    def equiped_weapons
+    def weapons
       data
         .items
-        .where(ready_to_use: true)
         .joins(:item)
         .where(dnd5_items: { kind: ['light weapon', 'martial weapon'] })
         .hashable_pluck('dnd5_items.name', 'dnd5_items.kind', 'dnd5_items.data', :quantity)
     end
 
-    def find_equiped_armor
+    def equiped_armor
       data
         .items
         .where(ready_to_use: true)
@@ -235,15 +244,6 @@ module Dnd5
         .hashable_pluck('dnd5_items.kind', 'dnd5_items.data')
         .partition { |item| item[:dnd5_items_kind] != 'shield' }
     end
-
-    # def prepared_spells
-    #   data
-    #     .spells
-    #     .where(ready_to_use: true)
-    #     .joins(:spell)
-    #     .order('dnd5_spells.level ASC')
-    #     .hashable_pluck('dnd5_spells.name', 'dnd5_spells.comment', :prepared_by)
-    # end
   end
 end
 # rubocop: enable Metrics/AbcSize, Metrics/MethodLength, Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity

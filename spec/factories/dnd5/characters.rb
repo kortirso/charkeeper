@@ -6,6 +6,7 @@ FactoryBot.define do
     level { 4 }
     race { Dnd5::Character::HUMAN }
     alignment { Dnd5::Character::NEUTRAL }
+    main_class { Dnd5::Character::MONK }
     classes { { monk: 4 } }
     subclasses { { monk: nil } }
     abilities { { str: 13, dex: 16, con: 14, int: 11, wis: 16, cha: 10 } }

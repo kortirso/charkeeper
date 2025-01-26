@@ -4,9 +4,10 @@ module WebTelegram
   class CharactersController < WebTelegram::BaseController
     include SerializeResource
 
-    before_action :find_user_character, only: %i[show]
-
     INDEX_SERIALIZE_FIELDS = %i[object_data provider user_character_id].freeze
+    SHOW_SERIALIZE_FIELDS = %i[object_data decorated_data provider user_character_id].freeze
+
+    before_action :find_character, only: %i[show]
 
     def index
       render json: Panko::Response.new(
@@ -16,10 +17,10 @@ module WebTelegram
 
     def show
       render json: serialize_resource(
-        @user_character.characterable,
+        @character,
         show_serializer,
         :character,
-        only: %i[object_data decorated_data provider user_character_id]
+        only: SHOW_SERIALIZE_FIELDS
       ), status: :ok
     end
 
@@ -28,7 +29,7 @@ module WebTelegram
     def characters
       characters_by_provider.map do |character_class, ids|
         Panko::ArraySerializer.new(
-          relation(character_class).where(id: ids.pluck(:characterable_id)),
+          relation(character_class).where(id: ids.pluck(:characterable_id)).includes(:user_character),
           each_serializer: index_serializer(character_class),
           only: INDEX_SERIALIZE_FIELDS
         ).to_a
@@ -44,23 +45,27 @@ module WebTelegram
 
     def relation(character_class)
       case character_class
-      when 'Dnd5::Character' then Dnd5::Character
+      when 'Dnd5::Character' then ::Dnd5::Character
       end
     end
 
     def index_serializer(character_class)
       case character_class
-      when 'Dnd5::Character' then Dnd5::CharacterSerializer
+      when 'Dnd5::Character' then ::Dnd5::CharacterSerializer
       end
     end
 
-    def find_user_character
-      @user_character = current_user.user_characters.find_by(id: params[:id])
+    def find_character
+      @character =
+        current_user
+          .user_characters
+          .find(params[:id])
+          .characterable
     end
 
     def show_serializer
-      case @user_character.provider
-      when ::User::Character::DND5 then Dnd5::CharacterSerializer
+      case @character.user_character.provider
+      when ::User::Character::DND5 then ::Dnd5::CharacterSerializer
       end
     end
   end

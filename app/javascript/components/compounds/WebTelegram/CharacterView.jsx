@@ -1,5 +1,4 @@
-import { createEffect, Switch, Match } from 'solid-js';
-import { createStore } from 'solid-js/store';
+import { createSignal, createEffect, Switch, Match } from 'solid-js';
 
 import { Dnd5 } from '../../../components';
 
@@ -7,32 +6,36 @@ import { useAppState } from '../../../context';
 
 import { fetchCharacterRequest } from '../../../requests/fetchCharacterRequest';
 
-export const CharacterView = (props) => {
-  const [pageState, setPageState] = createStore({
-    character: {}
-  });
-
-  const [appState, { navigate }] = useAppState();
+export const CharacterView = () => {
+  const [character, setCharacter] = createSignal({});
+  const [appState] = useAppState();
 
   createEffect(() => {
-    if (appState.activePageParams.id === pageState.character.user_character_id) return;
+    if (appState.activePageParams.id === character().user_character_id) return;
 
     const fetchCharacter = async () => await fetchCharacterRequest(appState.accessToken, appState.activePageParams.id);
 
     Promise.all([fetchCharacter()]).then(
       ([characterData]) => {
-        setPageState({
-          ...pageState,
-          character: characterData.character
-        });
+        setCharacter(characterData.character);
       }
     );
   });
 
+  const reloadCharacter = async () => {
+    const characterData = await fetchCharacterRequest(appState.accessToken, appState.activePageParams.id);
+    setCharacter(characterData.character);
+  }
+
   return (
     <Switch>
-      <Match when={pageState.character.provider === 'D&D 5'}>
-        <Dnd5 character={pageState.character} />
+      <Match when={character().provider === 'DnD 5'}>
+        <Dnd5
+          objectData={character().object_data}
+          decoratedData={character().decorated_data}
+          userCharacterId={character().user_character_id}
+          onReloadCharacter={reloadCharacter}
+        />
       </Match>
     </Switch>
   );

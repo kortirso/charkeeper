@@ -2,7 +2,7 @@
 
 class User
   class Character < ApplicationRecord
-    DND5 = 'D&D 5'
+    DND5 = 'DnD 5'
 
     belongs_to :user, touch: true
     belongs_to :characterable, polymorphic: true

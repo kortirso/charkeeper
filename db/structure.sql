@@ -108,7 +108,9 @@ CREATE TABLE public.dnd5_characters (
     coins jsonb DEFAULT '{}'::jsonb NOT NULL,
     weapon_core_skills character varying[] DEFAULT '{}'::character varying[] NOT NULL,
     weapon_skills character varying[] DEFAULT '{}'::character varying[] NOT NULL,
-    class_features character varying[] DEFAULT '{}'::character varying[] NOT NULL
+    class_features character varying[] DEFAULT '{}'::character varying[] NOT NULL,
+    main_class smallint NOT NULL,
+    spent_spell_slots jsonb DEFAULT '{}'::jsonb NOT NULL
 );
 
 
@@ -239,6 +241,20 @@ COMMENT ON COLUMN public.dnd5_characters.class_features IS 'Выбранные �
 
 
 --
+-- Name: COLUMN dnd5_characters.main_class; Type: COMMENT; Schema: public; Owner: -
+--
+
+COMMENT ON COLUMN public.dnd5_characters.main_class IS 'Первый выбранный класс';
+
+
+--
+-- Name: COLUMN dnd5_characters.spent_spell_slots; Type: COMMENT; Schema: public; Owner: -
+--
+
+COMMENT ON COLUMN public.dnd5_characters.spent_spell_slots IS 'Потраченные слоты заклинаний по уровням';
+
+
+--
 -- Name: dnd5_items; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -301,7 +317,8 @@ CREATE TABLE public.dnd5_spells (
     attacking boolean DEFAULT false NOT NULL,
     comment jsonb DEFAULT '{}'::jsonb NOT NULL,
     created_at timestamp(6) without time zone NOT NULL,
-    updated_at timestamp(6) without time zone NOT NULL
+    updated_at timestamp(6) without time zone NOT NULL,
+    available_for character varying[] DEFAULT '{}'::character varying[] NOT NULL
 );
 
 
@@ -519,6 +536,9 @@ CREATE INDEX index_user_sessions_on_user_id ON public.user_sessions USING btree 
 SET search_path TO "$user", public;
 
 INSERT INTO "schema_migrations" (version) VALUES
+('20250124110858'),
+('20250123125805'),
+('20250122145857'),
 ('20250121113237'),
 ('20250120185611'),
 ('20250120184143'),

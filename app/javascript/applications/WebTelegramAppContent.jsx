@@ -1,4 +1,4 @@
-import { createEffect, Switch, Match, createMemo, createResource, batch, Show } from 'solid-js';
+import { createEffect, Switch, Match, createMemo, batch } from 'solid-js';
 import * as i18n from '@solid-primitives/i18n';
 
 import { CharactersPage, NpcPage, ProfilePage } from '../components';
@@ -8,10 +8,10 @@ import { useTelegram } from '../hooks';
 
 import { fetchAccessTokenRequest } from '../requests/fetchAccessTokenRequest';
 
-export const WebTelegramAppContent = (props) => {
+export const WebTelegramAppContent = () => {
   const { webApp } = useTelegram();
   const [appState, { setAccessToken, navigate }] = useAppState();
-  const [_locale, dict, { setLocale }] = useAppLocale();
+  const [locale, dict, { setLocale }] = useAppLocale();
 
   const charactersPage = createMemo(() => <CharactersPage />);
   const npcPage = createMemo(() => <NpcPage />);
@@ -68,15 +68,15 @@ export const WebTelegramAppContent = (props) => {
           </section>
           <nav class="w-full flex p-4 bg-white border-t border-gray-200">
             <div class="nav-button" onClick={() => navigate('characters', {})}>
-              <div class={`nav-button-icon ${appState.activePage === 'characters' ? 'border-black' : 'border-gray'}`}></div>
+              <div class={`nav-button-icon ${appState.activePage === 'characters' ? 'border-black' : 'border-gray'}`} />
               <p class="nav-button-text">{t('nav.characters')}</p>
             </div>
             <div class="nav-button" onClick={() => navigate('npc', {})}>
-              <div class={`nav-button-icon ${appState.activePage === 'npc' ? 'border-black' : 'border-gray'}`}></div>
+              <div class={`nav-button-icon ${appState.activePage === 'npc' ? 'border-black' : 'border-gray'}`} />
               <p class="nav-button-text">{t('nav.npc')}</p>
             </div>
             <div class="nav-button" onClick={() => navigate('profile', {})}>
-              <div class={`nav-button-icon ${appState.activePage === 'profile' ? 'border-black' : 'border-gray'}`}></div>
+              <div class={`nav-button-icon ${appState.activePage === 'profile' ? 'border-black' : 'border-gray'}`} />
               <p class="nav-button-text">{t('nav.profile')}</p>
             </div>
           </nav>

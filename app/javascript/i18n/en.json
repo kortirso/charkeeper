@@ -1,5 +1,8 @@
 {
   "loading": "Loading screen",
+  "buttons": {
+    "save": "Save"
+  },
   "nav": {
     "characters": "Characters",
     "npc": "NPC",
@@ -17,8 +20,16 @@
     "spells": "Spells",
     "conditions": "Conditions",
     "onlyPreparedSpells": "Only prepared",
+    "onlyAvailableSpells": "Only available",
     "allSpells": "All",
-    "no_magic": "Character does not have magic abilities"
+    "no_magic": "Character does not have magic abilities",
+    "changeLevels": "Change class levels",
+    "changeClasses": "Change character classes",
+    "knownSpells": "Known spells",
+    "items": "Add equipment",
+    "itemsList": "Items list",
+    "weaponsList": "Weapons list",
+    "armorList": "Armor list"
   },
   "attacks": {
     "bonus": "Bonus",
@@ -39,15 +50,20 @@
     "armorClass": "Armor Class",
     "initiative": "Initiative",
     "speed": "Speed",
-    "health": "Health",
-    "maxHealth": "Max health",
-    "tempHealth": "Temp health",
+    "health": {
+      "current": "Health",
+      "max": "Max health",
+      "temp": "Temp health"
+    },
     "attackAction": "Action attacks",
     "attackBonusAction": "Bonus action attacks",
     "energy": {
       "monk": "Ki energy",
       "sorcerer": "Sorcery"
-    }
+    },
+    "cantrips": "Cantrips",
+    "known": "Known",
+    "prepared": "Prepared"
   },
   "damage": {
     "bludge": "Bludge",
@@ -57,12 +73,22 @@
   },
   "races": {
     "dwarf": "Dwarf",
-    "human": "Human"
+    "human": "Human",
+    "elf": "Elf"
   },
   "classes": {
+    "barbarian": "Barbarian",
+    "bard": "Bard",
+    "cleric": "Cleric",
+    "druid": "Druid",
     "fighter": "Fighter",
     "monk": "Monk",
-    "sorcerer": "Sorcerer"
+    "paladin": "Paladin",
+    "ranger": "Ranger",
+    "rogue": "Rogue",
+    "sorcerer": "Sorcerer",
+    "warlock": "Warlock",
+    "wizard": "Wizard"
   },
   "abilities": {
     "str": "Strength",
@@ -91,5 +117,14 @@
     "sleight": "Sleight of Hands",
     "stealth": "Stealth",
     "survival": "Survival"
+  },
+  "attack": {
+    "tooltips": {
+      "2handed": "Two handed",
+      "dual": "Dual wild",
+      "heavy": "Heavy",
+      "reload": "Reload",
+      "flurry_of_blows": "Flurry of Blows"
+    }
   }
 }

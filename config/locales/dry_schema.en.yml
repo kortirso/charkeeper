@@ -1,0 +1,19 @@
+en:
+  dry_schema:
+    rules:
+      dnd5_character: D&D5 character
+    errors:
+      type?: Has invalid type
+      dnd5_character:
+        rules:
+          classes:
+            invalid_class_name: Invalid class name
+            invalid_level: Invalid level
+          energy:
+            invalid_class_name: Invalid class name
+            invalid_level: Invalid level
+          character:
+            can_not_learn: Can't learn spells
+            can_not_prepare: Can't prepare spells
+          spell:
+            can_not_learn: Can't be learned by class

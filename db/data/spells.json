@@ -1,0 +1,2328 @@
+[
+  {
+    "slug": "blade_ward",
+    "name": {
+      "en": "Blade ward",
+      "ru": "Защита от оружия"
+    },
+    "level": 0,
+    "attacking": false,
+    "available_for": ["sorcerer", "bard", "warlock", "wizard"]
+  },
+  {
+    "slug": "friends",
+    "name": {
+      "en": "Friends",
+      "ru": "Дружба"
+    },
+    "level": 0,
+    "attacking": false,
+    "available_for": ["sorcerer", "bard", "warlock", "wizard"]
+  },
+  {
+    "slug": "thorn_whip",
+    "name": {
+      "en": "Thorn Whip",
+      "ru": "Терновый кнут"
+    },
+    "level": 0,
+    "attacking": true,
+    "available_for": [
+      "druid"
+    ]
+  },
+  {
+    "slug": "guidance",
+    "name": {
+      "en": "Guidance",
+      "ru": "Указание"
+    },
+    "level": 0,
+    "attacking": false,
+    "available_for": [
+      "cleric",
+      "druid"
+    ]
+  },
+  {
+    "slug": "poison_spray",
+    "name": {
+      "en": "Poison Spray",
+      "ru": "Ядовитые брызги"
+    },
+    "level": 0,
+    "attacking": true,
+    "available_for": [
+      "sorcerer",
+      "warlock",
+      "wizard",
+      "druid"
+    ]
+  },
+  {
+    "slug": "minor_illusion",
+    "name": {
+      "en": "Minor Illusion",
+      "ru": "Малая иллюзия"
+    },
+    "level": 0,
+    "attacking": false,
+    "available_for": [
+      "bard",
+      "sorcerer",
+      "warlock",
+      "wizard"
+    ]
+  },
+  {
+    "slug": "mending",
+    "name": {
+      "en": "Mending",
+      "ru": "Починка"
+    },
+    "level": 0,
+    "attacking": false,
+    "available_for": [
+      "cleric",
+      "bard",
+      "druid",
+      "sorcerer",
+      "wizard"
+    ]
+  },
+  {
+    "slug": "message",
+    "name": {
+      "en": "Message",
+      "ru": "Сообщение"
+    },
+    "level": 0,
+    "attacking": false,
+    "available_for": [
+      "bard",
+      "sorcerer",
+      "wizard"
+    ]
+  },
+  {
+    "slug": "dancing_lights",
+    "name": {
+      "en": "Dancing Lights",
+      "ru": "Пляшущие огоньки"
+    },
+    "level": 0,
+    "attacking": false,
+    "available_for": [
+      "bard",
+      "sorcerer",
+      "wizard"
+    ]
+  },
+  {
+    "slug": "vicious_mockery",
+    "name": {
+      "en": "Vicious Mockery",
+      "ru": "Злая насмешка"
+    },
+    "level": 0,
+    "attacking": true,
+    "available_for": [
+      "bard"
+    ]
+  },
+  {
+    "slug": "true_strike",
+    "name": {
+      "en": "True Strike",
+      "ru": "Меткий удар"
+    },
+    "level": 0,
+    "attacking": false,
+    "available_for": [
+      "bard",
+      "sorcerer",
+      "warlock",
+      "wizard"
+    ]
+  },
+  {
+    "slug": "shocking_grasp",
+    "name": {
+      "en": "Shocking Grasp",
+      "ru": "Электрошок"
+    },
+    "level": 0,
+    "attacking": true,
+    "available_for": [
+      "sorcerer",
+      "wizard"
+    ]
+  },
+  {
+    "slug": "light",
+    "name": {
+      "en": "Light",
+      "ru": "Свет"
+    },
+    "level": 0,
+    "attacking": false,
+    "available_for": [
+      "bard",
+      "cleric",
+      "sorcerer",
+      "wizard"
+    ]
+  },
+  {
+    "slug": "mage_hand",
+    "name": {
+      "en": "Mage Hand",
+      "ru": "Волшебная рука"
+    },
+    "level": 0,
+    "attacking": false,
+    "available_for": [
+      "bard",
+      "sorcerer",
+      "warlock",
+      "wizard"
+    ]
+  },
+  {
+    "slug": "fire_bolt",
+    "name": {
+      "en": "Fire Bolt",
+      "ru": "Огненный снаряд"
+    },
+    "level": 0,
+    "attacking": true,
+    "available_for": [
+      "sorcerer",
+      "wizard"
+    ]
+  },
+  {
+    "slug": "produce_flame",
+    "name": {
+      "en": "Produce Flame",
+      "ru": "Сотворение пламени"
+    },
+    "level": 0,
+    "attacking": true,
+    "available_for": [
+      "druid"
+    ]
+  },
+  {
+    "slug": "thaumaturgy",
+    "name": {
+      "en": "Thaumaturgy",
+      "ru": "Чудотворство"
+    },
+    "level": 0,
+    "attacking": false,
+    "available_for": [
+      "cleric"
+    ]
+  },
+  {
+    "slug": "chill_touch",
+    "name": {
+      "en": "Chill Touch",
+      "ru": "Леденящее прикосновение"
+    },
+    "level": 0,
+    "attacking": true,
+    "available_for": [
+      "sorcerer",
+      "warlock",
+      "wizard"
+    ]
+  },
+  {
+    "slug": "ray_of_frost",
+    "name": {
+      "en": "Ray of Frost",
+      "ru": "Луч холода"
+    },
+    "level": 0,
+    "attacking": true,
+    "available_for": [
+      "sorcerer",
+      "wizard"
+    ]
+  },
+  {
+    "slug": "shillelagh",
+    "name": {
+      "en": "Shillelagh",
+      "ru": "Дубинка"
+    },
+    "level": 0,
+    "attacking": false,
+    "available_for": [
+      "druid"
+    ]
+  },
+  {
+    "slug": "spare_the_dying",
+    "name": {
+      "en": "Spare the Dying",
+      "ru": "Уход за умирающими"
+    },
+    "level": 0,
+    "attacking": false,
+    "available_for": [
+      "cleric"
+    ]
+  },
+  {
+    "slug": "sacred_flame",
+    "name": {
+      "en": "Sacred Flame",
+      "ru": "Священное пламя"
+    },
+    "level": 0,
+    "attacking": true,
+    "available_for": [
+      "cleric"
+    ]
+  },
+  {
+    "slug": "druidcraft",
+    "name": {
+      "en": "Druidcraft",
+      "ru": "Искусство друидов"
+    },
+    "level": 0,
+    "attacking": false,
+    "available_for": [
+      "druid"
+    ]
+  },
+  {
+    "slug": "resistance",
+    "name": {
+      "en": "Resistance",
+      "ru": "Сопротивление"
+    },
+    "level": 0,
+    "attacking": false,
+    "available_for": [
+      "cleric",
+      "druid"
+    ]
+  },
+  {
+    "slug": "eldritch_blast",
+    "name": {
+      "en": "Eldritch Blast",
+      "ru": "Мистический заряд"
+    },
+    "level": 0,
+    "attacking": true,
+    "available_for": [
+      "warlock"
+    ]
+  },
+  {
+    "slug": "acid_splash",
+    "name": {
+      "en": "Acid Splash",
+      "ru": "Брызги кислоты"
+    },
+    "level": 0,
+    "attacking": true,
+    "available_for": [
+      "sorcerer",
+      "wizard"
+    ]
+  },
+  {
+    "slug": "prestidigitation",
+    "name": {
+      "en": "Prestidigitation",
+      "ru": "Фокусы"
+    },
+    "level": 0,
+    "attacking": false,
+    "available_for": [
+      "bard",
+      "sorcerer",
+      "warlock",
+      "wizard"
+    ]
+  },
+  {
+    "slug": "detect_evil_and_good",
+    "name": {
+      "en": "Detect Evil and Good",
+      "ru": "Обнаружение добра и зла"
+    },
+    "level": 1,
+    "attacking": false,
+    "available_for": [
+      "cleric",
+      "paladin"
+    ]
+  },
+  {
+    "slug": "detect_magic",
+    "name": {
+      "en": "Detect Magic",
+      "ru": "Обнаружение магии"
+    },
+    "level": 1,
+    "attacking": false,
+    "available_for": [
+      "bard",
+      "cleric",
+      "druid",
+      "paladin",
+      "ranger",
+      "sorcerer",
+      "wizard"
+    ]
+  },
+  {
+    "slug": "detect_poison_and_disease",
+    "name": {
+      "en": "Detect Poison and Disease",
+      "ru": "Обнаружение болезней и яда"
+    },
+    "level": 1,
+    "attacking": false,
+    "available_for": [
+      "cleric",
+      "druid",
+      "paladin",
+      "ranger"
+    ]
+  },
+  {
+    "slug": "bless",
+    "name": {
+      "en": "Bless",
+      "ru": "Благословение"
+    },
+    "level": 1,
+    "attacking": false,
+    "available_for": [
+      "cleric",
+      "paladin"
+    ]
+  },
+  {
+    "slug": "disguise_self",
+    "name": {
+      "en": "Disguise Self",
+      "ru": "Маскировка"
+    },
+    "level": 1,
+    "attacking": false,
+    "available_for": [
+      "bard",
+      "sorcerer",
+      "wizard"
+    ]
+  },
+  {
+    "slug": "divine_favor",
+    "name": {
+      "en": "Divine Favor",
+      "ru": "Божественное благоволение"
+    },
+    "level": 1,
+    "attacking": true,
+    "available_for": [
+      "paladin"
+    ]
+  },
+  {
+    "slug": "thunderwave",
+    "name": {
+      "en": "Thunderwave",
+      "ru": "Волна грома"
+    },
+    "level": 1,
+    "attacking": true,
+    "available_for": [
+      "bard",
+      "druid",
+      "sorcerer",
+      "wizard"
+    ]
+  },
+  {
+    "slug": "entangle",
+    "name": {
+      "en": "Entangle",
+      "ru": "Опутывание"
+    },
+    "level": 1,
+    "attacking": false,
+    "available_for": [
+      "druid"
+    ]
+  },
+  {
+    "slug": "animal_friendship",
+    "name": {
+      "en": "Animal Friendship",
+      "ru": "Дружба с животными"
+    },
+    "level": 1,
+    "attacking": false,
+    "available_for": [
+      "bard",
+      "druid",
+      "ranger"
+    ]
+  },
+  {
+    "slug": "expeditious_retreat",
+    "name": {
+      "en": "Expeditious Retreat",
+      "ru": "Поспешное отступление"
+    },
+    "level": 1,
+    "attacking": false,
+    "available_for": [
+      "sorcerer",
+      "warlock",
+      "wizard"
+    ]
+  },
+  {
+    "slug": "faerie_fire",
+    "name": {
+      "en": "Faerie Fire",
+      "ru": "Огонь фей"
+    },
+    "level": 1,
+    "attacking": false,
+    "available_for": [
+      "druid"
+    ]
+  },
+  {
+    "slug": "false_life",
+    "name": {
+      "en": "False Life",
+      "ru": "Псевдожизнь"
+    },
+    "level": 1,
+    "attacking": false,
+    "available_for": [
+      "sorcerer",
+      "wizard"
+    ]
+  },
+  {
+    "slug": "shield_of_faith",
+    "name": {
+      "en": "Shield of Faith",
+      "ru": "Щит веры"
+    },
+    "level": 1,
+    "attacking": false,
+    "available_for": [
+      "cleric",
+      "paladin"
+    ]
+  },
+  {
+    "slug": "feather_fall",
+    "name": {
+      "en": "Feather Fall",
+      "ru": "Падение пёрышком"
+    },
+    "level": 1,
+    "attacking": false,
+    "available_for": [
+      "bard",
+      "sorcerer",
+      "wizard"
+    ]
+  },
+  {
+    "slug": "find_familiar",
+    "name": {
+      "en": "Find Familiar",
+      "ru": "Поиск фамильяра"
+    },
+    "level": 1,
+    "attacking": false,
+    "available_for": [
+      "wizard"
+    ]
+  },
+  {
+    "slug": "alarm",
+    "name": {
+      "en": "Alarm",
+      "ru": "Сигнал тревоги"
+    },
+    "level": 1,
+    "attacking": false,
+    "available_for": [
+      "ranger",
+      "wizard"
+    ]
+  },
+  {
+    "slug": "burning_hands",
+    "name": {
+      "en": "Burning Hands",
+      "ru": "Огненные ладони"
+    },
+    "level": 1,
+    "attacking": true,
+    "available_for": [
+      "sorcerer",
+      "wizard"
+    ]
+  },
+  {
+    "slug": "shield",
+    "name": {
+      "en": "Shield",
+      "ru": "Щит"
+    },
+    "level": 1,
+    "attacking": false,
+    "available_for": [
+      "sorcerer",
+      "wizard"
+    ]
+  },
+  {
+    "slug": "guiding_bolt",
+    "name": {
+      "en": "Guiding Bolt",
+      "ru": "Направленный снаряд"
+    },
+    "level": 1,
+    "attacking": true,
+    "available_for": [
+      "cleric"
+    ]
+  },
+  {
+    "slug": "floating_disk",
+    "name": {
+      "en": "Floating Disk",
+      "ru": "Парящий диск"
+    },
+    "level": 1,
+    "attacking": false,
+    "available_for": [
+      "wizard"
+    ]
+  },
+  {
+    "slug": "sanctuary",
+    "name": {
+      "en": "Sanctuary",
+      "ru": "Убежище"
+    },
+    "level": 1,
+    "attacking": false,
+    "available_for": [
+      "cleric"
+    ]
+  },
+  {
+    "slug": "fog_cloud",
+    "name": {
+      "en": "Fog Cloud",
+      "ru": "Туманное облако"
+    },
+    "level": 1,
+    "attacking": false,
+    "available_for": [
+      "druid",
+      "ranger",
+      "sorcerer",
+      "wizard"
+    ]
+  },
+  {
+    "slug": "charm_person",
+    "name": {
+      "en": "Charm Person",
+      "ru": "Очарование личности"
+    },
+    "level": 1,
+    "attacking": false,
+    "available_for": [
+      "bard",
+      "druid",
+      "sorcerer",
+      "warlock",
+      "wizard"
+    ]
+  },
+  {
+    "slug": "goodberry",
+    "name": {
+      "en": "Goodberry",
+      "ru": "Чудо-ягоды"
+    },
+    "level": 1,
+    "attacking": false,
+    "available_for": [
+      "druid",
+      "ranger"
+    ]
+  },
+  {
+    "slug": "grease",
+    "name": {
+      "en": "Grease",
+      "ru": "Скольжение"
+    },
+    "level": 1,
+    "attacking": false,
+    "available_for": [
+      "wizard"
+    ]
+  },
+  {
+    "slug": "bane",
+    "name": {
+      "en": "Bane",
+      "ru": "Порча"
+    },
+    "level": 1,
+    "attacking": false,
+    "available_for": [
+      "bard",
+      "cleric"
+    ]
+  },
+  {
+    "slug": "healing_word",
+    "name": {
+      "en": "Healing Word",
+      "ru": "Лечащее слово"
+    },
+    "level": 1,
+    "attacking": false,
+    "available_for": [
+      "bard",
+      "cleric",
+      "druid"
+    ]
+  },
+  {
+    "slug": "speak_with_animals",
+    "name": {
+      "en": "Speak with Animals",
+      "ru": "Разговор с животными"
+    },
+    "level": 1,
+    "attacking": false,
+    "available_for": [
+      "bard",
+      "druid",
+      "ranger"
+    ]
+  },
+  {
+    "slug": "hellish_rebuke",
+    "name": {
+      "en": "Hellish Rebuke",
+      "ru": "Адское возмездие"
+    },
+    "level": 1,
+    "attacking": true,
+    "available_for": [
+      "warlock"
+    ]
+  },
+  {
+    "slug": "heroism",
+    "name": {
+      "en": "Heroism",
+      "ru": "Героизм"
+    },
+    "level": 1,
+    "attacking": false,
+    "available_for": [
+      "bard",
+      "paladin"
+    ]
+  },
+  {
+    "slug": "hideous_laughter",
+    "name": {
+      "en": "Hideous Laughter",
+      "ru": "Жуткий смех"
+    },
+    "level": 1,
+    "attacking": false,
+    "available_for": [
+      "bard",
+      "wizard"
+    ]
+  },
+  {
+    "slug": "color_spray",
+    "name": {
+      "en": "Color Spray",
+      "ru": "Сверкающие брызги"
+    },
+    "level": 1,
+    "attacking": false,
+    "available_for": [
+      "sorcerer",
+      "wizard"
+    ]
+  },
+  {
+    "slug": "hunters_mark",
+    "name": {
+      "en": "Hunter's Mark",
+      "ru": "Метка охотника"
+    },
+    "level": 1,
+    "attacking": false,
+    "available_for": [
+      "ranger"
+    ]
+  },
+  {
+    "slug": "purify_food_and_drink",
+    "name": {
+      "en": "Purify Food and Drink",
+      "ru": "Очищение пищи и питья"
+    },
+    "level": 1,
+    "attacking": false,
+    "available_for": [
+      "cleric",
+      "druid",
+      "paladin"
+    ]
+  },
+  {
+    "slug": "identify",
+    "name": {
+      "en": "Identify",
+      "ru": "Опознание"
+    },
+    "level": 1,
+    "attacking": false,
+    "available_for": [
+      "bard",
+      "wizard"
+    ]
+  },
+  {
+    "slug": "illusory_script",
+    "name": {
+      "en": "Illusory Script",
+      "ru": "Невидимое письмо"
+    },
+    "level": 1,
+    "attacking": false,
+    "available_for": [
+      "bard",
+      "warlock",
+      "wizard"
+    ]
+  },
+  {
+    "slug": "inflict_wounds",
+    "name": {
+      "en": "Inflict Wounds",
+      "ru": "Нанесение ран"
+    },
+    "level": 1,
+    "attacking": true,
+    "available_for": [
+      "cleric"
+    ]
+  },
+  {
+    "slug": "command",
+    "name": {
+      "en": "Command",
+      "ru": "Приказ"
+    },
+    "level": 1,
+    "attacking": false,
+    "available_for": [
+      "cleric",
+      "paladin"
+    ]
+  },
+  {
+    "slug": "jump",
+    "name": {
+      "en": "Jump",
+      "ru": "Прыжок"
+    },
+    "level": 1,
+    "attacking": false,
+    "available_for": [
+      "druid",
+      "ranger",
+      "sorcerer",
+      "wizard"
+    ]
+  },
+  {
+    "slug": "comprehend_languages",
+    "name": {
+      "en": "Comprehend Languages",
+      "ru": "Понимание языков"
+    },
+    "level": 1,
+    "attacking": false,
+    "available_for": [
+      "bard",
+      "sorcerer",
+      "warlock",
+      "wizard"
+    ]
+  },
+  {
+    "slug": "protection_from_evil_and_good",
+    "name": {
+      "en": "Protection from Evil and Good",
+      "ru": "Защита от добра и зла"
+    },
+    "level": 1,
+    "attacking": false,
+    "available_for": [
+      "cleric",
+      "paladin",
+      "warlock",
+      "wizard"
+    ]
+  },
+  {
+    "slug": "sleep",
+    "name": {
+      "en": "Sleep",
+      "ru": "Усыпление"
+    },
+    "level": 1,
+    "attacking": true,
+    "available_for": [
+      "bard",
+      "sorcerer",
+      "wizard"
+    ]
+  },
+  {
+    "slug": "silent_image",
+    "name": {
+      "en": "Silent Image",
+      "ru": "Безмолвный образ"
+    },
+    "level": 1,
+    "attacking": false,
+    "available_for": [
+      "bard",
+      "sorcerer",
+      "wizard"
+    ]
+  },
+  {
+    "slug": "longstrider",
+    "name": {
+      "en": "Longstrider",
+      "ru": "Скороход"
+    },
+    "level": 1,
+    "attacking": false,
+    "available_for": [
+      "bard",
+      "druid",
+      "ranger",
+      "wizard"
+    ]
+  },
+  {
+    "slug": "mage_armor",
+    "name": {
+      "en": "Mage Armor",
+      "ru": "Доспехи мага"
+    },
+    "level": 1,
+    "attacking": false,
+    "available_for": [
+      "sorcerer",
+      "wizard"
+    ]
+  },
+  {
+    "slug": "magic_missile",
+    "name": {
+      "en": "Magic Missile",
+      "ru": "Волшебная стрела"
+    },
+    "level": 1,
+    "attacking": true,
+    "available_for": [
+      "sorcerer",
+      "wizard"
+    ]
+  },
+  {
+    "slug": "create_or_destroy_water",
+    "name": {
+      "en": "Create or Destroy Water",
+      "ru": "Сотворение или уничтожение воды"
+    },
+    "level": 1,
+    "attacking": false,
+    "available_for": [
+      "cleric",
+      "druid"
+    ]
+  },
+  {
+    "slug": "cure_wounds",
+    "name": {
+      "en": "Cure Wounds",
+      "ru": "Лечение ран"
+    },
+    "level": 1,
+    "attacking": false,
+    "available_for": [
+      "bard",
+      "cleric",
+      "druid",
+      "paladin",
+      "ranger"
+    ]
+  },
+  {
+    "slug": "unseen_servant",
+    "name": {
+      "en": "Unseen Servant",
+      "ru": "Невидимый слуга"
+    },
+    "level": 1,
+    "attacking": false,
+    "available_for": [
+      "bard",
+      "warlock",
+      "wizard"
+    ]
+  },
+  {
+    "slug": "acid_arrow",
+    "name": {
+      "en": "Acid Arrow",
+      "ru": "Кислотная стрела"
+    },
+    "level": 2,
+    "attacking": true,
+    "available_for": [
+      "wizard"
+    ]
+  },
+  {
+    "slug": "aid",
+    "name": {
+      "en": "Aid",
+      "ru": "Подмога"
+    },
+    "level": 2,
+    "attacking": false,
+    "available_for": [
+      "cleric",
+      "paladin"
+    ]
+  },
+  {
+    "slug": "alter_self",
+    "name": {
+      "en": "Alter Self",
+      "ru": "Смена обличья"
+    },
+    "level": 2,
+    "attacking": false,
+    "available_for": [
+      "sorcerer",
+      "wizard"
+    ]
+  },
+  {
+    "slug": "animal_messenger",
+    "name": {
+      "en": "Animal Messenger",
+      "ru": "Почтовое животное"
+    },
+    "level": 2,
+    "attacking": false,
+    "available_for": [
+      "bard",
+      "druid",
+      "ranger"
+    ]
+  },
+  {
+    "slug": "arcane_lock",
+    "name": {
+      "en": "Arcane Lock",
+      "ru": "Волшебный замок"
+    },
+    "level": 2,
+    "attacking": false,
+    "available_for": [
+      "wizard"
+    ]
+  },
+  {
+    "slug": "arcanists_magic_aura",
+    "name": {
+      "en": "Arcanist's Magic Aura",
+      "ru": "Ложная аура"
+    },
+    "level": 2,
+    "attacking": false,
+    "available_for": [
+      "wizard"
+    ]
+  },
+  {
+    "slug": "augury",
+    "name": {
+      "en": "Augury",
+      "ru": "Гадание"
+    },
+    "level": 2,
+    "attacking": false,
+    "available_for": [
+      "cleric"
+    ]
+  },
+  {
+    "slug": "barkskin",
+    "name": {
+      "en": "Barkskin",
+      "ru": "Дубовая кора"
+    },
+    "level": 2,
+    "attacking": false,
+    "available_for": [
+      "druid",
+      "ranger"
+    ]
+  },
+  {
+    "slug": "blindness_deafness",
+    "name": {
+      "en": "Blindness/Deafness",
+      "ru": "Глухота/Слепота"
+    },
+    "level": 2,
+    "attacking": false,
+    "available_for": [
+      "bard",
+      "cleric",
+      "sorcerer",
+      "wizard"
+    ]
+  },
+  {
+    "slug": "blur",
+    "name": {
+      "en": "Blur",
+      "ru": "Размытый образ"
+    },
+    "level": 2,
+    "attacking": false,
+    "available_for": [
+      "sorcerer",
+      "wizard"
+    ]
+  },
+  {
+    "slug": "branding_smite",
+    "name": {
+      "en": "Branding Smite",
+      "ru": "Клеймящая кара"
+    },
+    "level": 2,
+    "attacking": true,
+    "available_for": [
+      "paladin"
+    ]
+  },
+  {
+    "slug": "calm_emotions",
+    "name": {
+      "en": "Calm Emotions",
+      "ru": "Умиротворение"
+    },
+    "level": 2,
+    "attacking": false,
+    "available_for": [
+      "bard",
+      "cleric"
+    ]
+  },
+  {
+    "slug": "continual_flame",
+    "name": {
+      "en": "Continual Flame",
+      "ru": "Вечный огонь"
+    },
+    "level": 2,
+    "attacking": false,
+    "available_for": [
+      "cleric",
+      "wizard"
+    ]
+  },
+  {
+    "slug": "darkness",
+    "name": {
+      "en": "Darkness",
+      "ru": "Тьма"
+    },
+    "level": 2,
+    "attacking": false,
+    "available_for": [
+      "sorcerer",
+      "warlock",
+      "wizard"
+    ]
+  },
+  {
+    "slug": "darkvision",
+    "name": {
+      "en": "Darkvision",
+      "ru": "Тёмное зрение"
+    },
+    "level": 2,
+    "attacking": false,
+    "available_for": [
+      "druid",
+      "ranger",
+      "sorcerer",
+      "wizard"
+    ]
+  },
+  {
+    "slug": "detect_thoughts",
+    "name": {
+      "en": "Detect Thoughts",
+      "ru": "Обнаружение мыслей"
+    },
+    "level": 2,
+    "attacking": false,
+    "available_for": [
+      "bard",
+      "sorcerer",
+      "wizard"
+    ]
+  },
+  {
+    "slug": "enhance_ability",
+    "name": {
+      "en": "Enhance Ability",
+      "ru": "Улучшение характеристики"
+    },
+    "level": 2,
+    "attacking": false,
+    "available_for": [
+      "bard",
+      "cleric",
+      "druid",
+      "sorcerer"
+    ]
+  },
+  {
+    "slug": "enlarge_reduce",
+    "name": {
+      "en": "Enlarge/Reduce",
+      "ru": "Увеличение/Уменьшение"
+    },
+    "level": 2,
+    "attacking": false,
+    "available_for": [
+      "sorcerer",
+      "wizard"
+    ]
+  },
+  {
+    "slug": "enthrall",
+    "name": {
+      "en": "Enthrall",
+      "ru": "Речь златоуста"
+    },
+    "level": 2,
+    "attacking": false,
+    "available_for": [
+      "bard",
+      "warlock"
+    ]
+  },
+  {
+    "slug": "find_steed",
+    "name": {
+      "en": "Find Steed",
+      "ru": "Поиск скакуна"
+    },
+    "level": 2,
+    "attacking": false,
+    "available_for": [
+      "paladin"
+    ]
+  },
+  {
+    "slug": "find_traps",
+    "name": {
+      "en": "Find Traps",
+      "ru": "Поиск ловушек"
+    },
+    "level": 2,
+    "attacking": false,
+    "available_for": [
+      "cleric",
+      "druid",
+      "ranger"
+    ]
+  },
+  {
+    "slug": "flame_blade",
+    "name": {
+      "en": "Flame Blade",
+      "ru": "Горящий клинок"
+    },
+    "level": 2,
+    "attacking": true,
+    "available_for": [
+      "druid"
+    ]
+  },
+  {
+    "slug": "flaming_sphere",
+    "name": {
+      "en": "Flaming Sphere",
+      "ru": "Пылающий шар"
+    },
+    "level": 2,
+    "attacking": true,
+    "available_for": [
+      "druid",
+      "wizard"
+    ]
+  },
+  {
+    "slug": "gentle_repose",
+    "name": {
+      "en": "Gentle Repose",
+      "ru": "Нетленные останки"
+    },
+    "level": 2,
+    "attacking": false,
+    "available_for": [
+      "cleric",
+      "wizard"
+    ]
+  },
+  {
+    "slug": "gust_of_wind",
+    "name": {
+      "en": "Gust of Wind",
+      "ru": "Порыв ветра"
+    },
+    "level": 2,
+    "attacking": false,
+    "available_for": [
+      "druid",
+      "sorcerer",
+      "wizard"
+    ]
+  },
+  {
+    "slug": "heat_metal",
+    "name": {
+      "en": "Heat Metal",
+      "ru": "Раскалённый металл"
+    },
+    "level": 2,
+    "attacking": true,
+    "available_for": [
+      "bard",
+      "druid"
+    ]
+  },
+  {
+    "slug": "hold_person",
+    "name": {
+      "en": "Hold Person",
+      "ru": "Удержвание личности"
+    },
+    "level": 2,
+    "attacking": false,
+    "available_for": [
+      "bard",
+      "cleric",
+      "druid",
+      "sorcerer",
+      "warlock",
+      "wizard"
+    ]
+  },
+  {
+    "slug": "invisibility",
+    "name": {
+      "en": "Invisibility",
+      "ru": "Невидимость"
+    },
+    "level": 2,
+    "attacking": false,
+    "available_for": [
+      "bard",
+      "sorcerer",
+      "warlock",
+      "wizard"
+    ]
+  },
+  {
+    "slug": "knock",
+    "name": {
+      "en": "Knock",
+      "ru": "Открывание"
+    },
+    "level": 2,
+    "attacking": false,
+    "available_for": [
+      "bard",
+      "sorcerer",
+      "wizard"
+    ]
+  },
+  {
+    "slug": "lesser_restoration",
+    "name": {
+      "en": "Lesser Restoration",
+      "ru": "Малое восстановление"
+    },
+    "level": 2,
+    "attacking": false,
+    "available_for": [
+      "bard",
+      "cleric",
+      "druid",
+      "paladin",
+      "ranger"
+    ]
+  },
+  {
+    "slug": "levitate",
+    "name": {
+      "en": "Levitate",
+      "ru": "Левитация"
+    },
+    "level": 2,
+    "attacking": false,
+    "available_for": [
+      "sorcerer",
+      "wizard"
+    ]
+  },
+  {
+    "slug": "locate_animals_or_plants",
+    "name": {
+      "en": "Locate Animals or Plants",
+      "ru": "Поиск животных или растений"
+    },
+    "level": 2,
+    "attacking": false,
+    "available_for": [
+      "bard",
+      "druid",
+      "ranger"
+    ]
+  },
+  {
+    "slug": "locate_object",
+    "name": {
+      "en": "Locate Object",
+      "ru": "Поиск предмета"
+    },
+    "level": 2,
+    "attacking": false,
+    "available_for": [
+      "bard",
+      "cleric",
+      "druid",
+      "paladin",
+      "ranger",
+      "wizard"
+    ]
+  },
+  {
+    "slug": "magic_mouth",
+    "name": {
+      "en": "Magic Mouth",
+      "ru": "Волшебные уста"
+    },
+    "level": 2,
+    "attacking": false,
+    "available_for": [
+      "bard",
+      "wizard"
+    ]
+  },
+  {
+    "slug": "magic_weapon",
+    "name": {
+      "en": "Magic Weapon",
+      "ru": "Магическое оружие"
+    },
+    "level": 2,
+    "attacking": false,
+    "available_for": [
+      "paladin",
+      "wizard"
+    ]
+  },
+  {
+    "slug": "mirror_image",
+    "name": {
+      "en": "Mirror Image",
+      "ru": "Отражения"
+    },
+    "level": 2,
+    "attacking": false,
+    "available_for": [
+      "sorcerer",
+      "warlock",
+      "wizard"
+    ]
+  },
+  {
+    "slug": "misty_step",
+    "name": {
+      "en": "Misty Step",
+      "ru": "Туманный шаг"
+    },
+    "level": 2,
+    "attacking": false,
+    "available_for": [
+      "sorcerer",
+      "warlock",
+      "wizard"
+    ]
+  },
+  {
+    "slug": "moonbeam",
+    "name": {
+      "en": "Moonbeam",
+      "ru": "Лунный луч"
+    },
+    "level": 2,
+    "attacking": true,
+    "available_for": [
+      "druid"
+    ]
+  },
+  {
+    "slug": "pass_without_trace",
+    "name": {
+      "en": "Pass Without Trace",
+      "ru": "Бесследное передвижение"
+    },
+    "level": 2,
+    "attacking": false,
+    "available_for": [
+      "druid",
+      "ranger"
+    ]
+  },
+  {
+    "slug": "prayer_of_healing",
+    "name": {
+      "en": "Prayer of Healing",
+      "ru": "Молебен лечения"
+    },
+    "level": 2,
+    "attacking": false,
+    "available_for": [
+      "cleric"
+    ]
+  },
+  {
+    "slug": "protection_from_poison",
+    "name": {
+      "en": "Protection from Poison",
+      "ru": "Защита от яда"
+    },
+    "level": 2,
+    "attacking": false,
+    "available_for": [
+      "cleric",
+      "druid",
+      "paladin",
+      "ranger"
+    ]
+  },
+  {
+    "slug": "ray_of_enfeeblement",
+    "name": {
+      "en": "Ray of Enfeeblement",
+      "ru": "Луч слабости"
+    },
+    "level": 2,
+    "attacking": false,
+    "available_for": [
+      "warlock",
+      "wizard"
+    ]
+  },
+  {
+    "slug": "rope_trick",
+    "name": {
+      "en": "Rope Trick",
+      "ru": "Трюк с верёвкой"
+    },
+    "level": 2,
+    "attacking": false,
+    "available_for": [
+      "wizard"
+    ]
+  },
+  {
+    "slug": "scorching_ray",
+    "name": {
+      "en": "Scorching Ray",
+      "ru": "Палящий луч"
+    },
+    "level": 2,
+    "attacking": true,
+    "available_for": [
+      "sorcerer",
+      "wizard"
+    ]
+  },
+  {
+    "slug": "see_invisibility",
+    "name": {
+      "en": "See Invisibility",
+      "ru": "Видение невидимого"
+    },
+    "level": 2,
+    "attacking": false,
+    "available_for": [
+      "bard",
+      "sorcerer",
+      "wizard"
+    ]
+  },
+  {
+    "slug": "shatter",
+    "name": {
+      "en": "Shatter",
+      "ru": "Дребезги"
+    },
+    "level": 2,
+    "attacking": true,
+    "available_for": [
+      "bard",
+      "sorcerer",
+      "warlock",
+      "wizard"
+    ]
+  },
+  {
+    "slug": "silence",
+    "name": {
+      "en": "Silence",
+      "ru": "Тишина"
+    },
+    "level": 2,
+    "attacking": false,
+    "available_for": [
+      "bard",
+      "cleric",
+      "ranger"
+    ]
+  },
+  {
+    "slug": "spider_climb",
+    "name": {
+      "en": "Spider Climb",
+      "ru": "Паук"
+    },
+    "level": 2,
+    "attacking": false,
+    "available_for": [
+      "sorcerer",
+      "warlock",
+      "wizard"
+    ]
+  },
+  {
+    "slug": "spike_growth",
+    "name": {
+      "en": "Spike Growth",
+      "ru": "Шипы"
+    },
+    "level": 2,
+    "attacking": false,
+    "available_for": [
+      "druid",
+      "ranger"
+    ]
+  },
+  {
+    "slug": "spiritual_weapon",
+    "name": {
+      "en": "Spiritual Weapon",
+      "ru": "Божественное оружие"
+    },
+    "level": 2,
+    "attacking": true,
+    "available_for": [
+      "cleric"
+    ]
+  },
+  {
+    "slug": "suggestion",
+    "name": {
+      "en": "Suggestion",
+      "ru": "Внушение"
+    },
+    "level": 2,
+    "attacking": false,
+    "available_for": [
+      "bard",
+      "sorcerer",
+      "warlock",
+      "wizard"
+    ]
+  },
+  {
+    "slug": "warding_bond",
+    "name": {
+      "en": "Warding Bond",
+      "ru": "Охраняющая связь"
+    },
+    "level": 2,
+    "attacking": false,
+    "available_for": [
+      "cleric"
+    ]
+  },
+  {
+    "slug": "web",
+    "name": {
+      "en": "Web",
+      "ru": "Паутина"
+    },
+    "level": 2,
+    "attacking": false,
+    "available_for": [
+      "sorcerer",
+      "wizard"
+    ]
+  },
+  {
+    "slug": "zone_of_truth",
+    "name": {
+      "en": "Zone of Truth",
+      "ru": "Область истины"
+    },
+    "level": 2,
+    "attacking": false,
+    "available_for": [
+      "bard",
+      "cleric",
+      "paladin"
+    ]
+  },
+  {
+    "slug": "remove_curse",
+    "name": {
+      "en": "Remove Curse",
+      "ru": "Снятие проклятья"
+    },
+    "level": 3,
+    "attacking": false,
+    "available_for": [
+      "cleric",
+      "paladin",
+      "warlock",
+      "wizard"
+    ]
+  },
+  {
+    "slug": "revivify",
+    "name": {
+      "en": "Revivify",
+      "ru": "Возрождение"
+    },
+    "level": 3,
+    "attacking": false,
+    "available_for": [
+      "cleric",
+      "paladin"
+    ]
+  },
+  {
+    "slug": "tiny_hut",
+    "name": {
+      "en": "Tiny Hut",
+      "ru": "Хижина"
+    },
+    "level": 3,
+    "attacking": false,
+    "available_for": [
+      "bard",
+      "wizard"
+    ]
+  },
+  {
+    "slug": "gaseous_form",
+    "name": {
+      "en": "Gaseous Form",
+      "ru": "Газообразная форма"
+    },
+    "level": 3,
+    "attacking": false,
+    "available_for": [
+      "sorcerer",
+      "warlock",
+      "wizard"
+    ]
+  },
+  {
+    "slug": "fly",
+    "name": {
+      "en": "Fly",
+      "ru": "Полёт"
+    },
+    "level": 3,
+    "attacking": false,
+    "available_for": [
+      "sorcerer",
+      "warlock",
+      "wizard"
+    ]
+  },
+  {
+    "slug": "tongues",
+    "name": {
+      "en": "Tongues",
+      "ru": "Языки"
+    },
+    "level": 3,
+    "attacking": false,
+    "available_for": [
+      "bard",
+      "cleric",
+      "sorcerer",
+      "warlock",
+      "wizard"
+    ]
+  },
+  {
+    "slug": "bestow_curse",
+    "name": {
+      "en": "Bestow Curse",
+      "ru": "Проклятие"
+    },
+    "level": 3,
+    "attacking": false,
+    "available_for": [
+      "bard",
+      "cleric",
+      "wizard"
+    ]
+  },
+  {
+    "slug": "sending",
+    "name": {
+      "en": "Sending",
+      "ru": "Послание"
+    },
+    "level": 3,
+    "attacking": false,
+    "available_for": [
+      "bard",
+      "cleric",
+      "wizard"
+    ]
+  },
+  {
+    "slug": "beacon_of_hope",
+    "name": {
+      "en": "Beacon of Hope",
+      "ru": "Маяк надежды"
+    },
+    "level": 3,
+    "attacking": false,
+    "available_for": [
+      "cleric"
+    ]
+  },
+  {
+    "slug": "fireball",
+    "name": {
+      "en": "Fireball",
+      "ru": "Огненный шар"
+    },
+    "level": 3,
+    "attacking": true,
+    "available_for": [
+      "sorcerer",
+      "wizard"
+    ]
+  },
+  {
+    "slug": "fear",
+    "name": {
+      "en": "Fear",
+      "ru": "Ужас"
+    },
+    "level": 3,
+    "attacking": false,
+    "available_for": [
+      "bard",
+      "sorcerer",
+      "warlock",
+      "wizard"
+    ]
+  },
+  {
+    "slug": "dispel_magic",
+    "name": {
+      "en": "Dispel Magic",
+      "ru": "Рассеивание магии"
+    },
+    "level": 3,
+    "attacking": false,
+    "available_for": [
+      "bard",
+      "cleric",
+      "druid",
+      "paladin",
+      "sorcerer",
+      "warlock",
+      "wizard"
+    ]
+  },
+  {
+    "slug": "daylight",
+    "name": {
+      "en": "Daylight",
+      "ru": "Дневной свет"
+    },
+    "level": 3,
+    "attacking": false,
+    "available_for": [
+      "cleric",
+      "druid",
+      "paladin",
+      "ranger",
+      "sorcerer"
+    ]
+  },
+  {
+    "slug": "vampiric_touch",
+    "name": {
+      "en": "Vampiric Touch",
+      "ru": "Прикосновение вампира"
+    },
+    "level": 3,
+    "attacking": true,
+    "available_for": [
+      "warlock",
+      "wizard"
+    ]
+  },
+  {
+    "slug": "create_food_and_water",
+    "name": {
+      "en": "Create Food and Water",
+      "ru": "Сотворение пищи и воды"
+    },
+    "level": 3,
+    "attacking": false,
+    "available_for": [
+      "cleric",
+      "druid",
+      "paladin"
+    ]
+  },
+  {
+    "slug": "counterspell",
+    "name": {
+      "en": "Counterspell",
+      "ru": "Контрзаклинание"
+    },
+    "level": 3,
+    "attacking": false,
+    "available_for": [
+      "sorcerer",
+      "warlock",
+      "wizard"
+    ]
+  },
+  {
+    "slug": "sleet_storm",
+    "name": {
+      "en": "Sleet Storm",
+      "ru": "Метель"
+    },
+    "level": 3,
+    "attacking": false,
+    "available_for": [
+      "druid",
+      "sorcerer",
+      "wizard"
+    ]
+  },
+  {
+    "slug": "slow",
+    "name": {
+      "en": "Slow",
+      "ru": "Замедление"
+    },
+    "level": 3,
+    "attacking": false,
+    "available_for": [
+      "sorcerer",
+      "wizard"
+    ]
+  },
+  {
+    "slug": "conjure_animals",
+    "name": {
+      "en": "Conjure Animals",
+      "ru": "Вызов животных"
+    },
+    "level": 3,
+    "attacking": false,
+    "available_for": [
+      "druid",
+      "ranger"
+    ]
+  },
+  {
+    "slug": "clairvoyance",
+    "name": {
+      "en": "Clairvoyance",
+      "ru": "Подсматривание"
+    },
+    "level": 3,
+    "attacking": false,
+    "available_for": [
+      "bard",
+      "cleric",
+      "sorcerer",
+      "wizard"
+    ]
+  },
+  {
+    "slug": "speak_with_dead",
+    "name": {
+      "en": "Speak with Dead",
+      "ru": "Разговор с мёртвыми"
+    },
+    "level": 3,
+    "attacking": false,
+    "available_for": [
+      "bard",
+      "cleric"
+    ]
+  },
+  {
+    "slug": "speak_with_plants",
+    "name": {
+      "en": "Speak with Plants",
+      "ru": "Разговор с растениями"
+    },
+    "level": 3,
+    "attacking": false,
+    "available_for": [
+      "bard",
+      "druid",
+      "ranger"
+    ]
+  },
+  {
+    "slug": "animate_dead",
+    "name": {
+      "en": "Animate Dead",
+      "ru": "Восставший труп"
+    },
+    "level": 3,
+    "attacking": false,
+    "available_for": [
+      "cleric",
+      "wizard"
+    ]
+  },
+  {
+    "slug": "meld_into_stone",
+    "name": {
+      "en": "Meld Into Stone",
+      "ru": "Слияние с камнем"
+    },
+    "level": 3,
+    "attacking": false,
+    "available_for": [
+      "cleric"
+    ]
+  },
+  {
+    "slug": "wind_wall",
+    "name": {
+      "en": "Wind Wall",
+      "ru": "Стена ветров"
+    },
+    "level": 3,
+    "attacking": true,
+    "available_for": [
+      "druid",
+      "ranger"
+    ]
+  },
+  {
+    "slug": "spirit_guardians",
+    "name": {
+      "en": "Spirit Guardians",
+      "ru": "Духовные стражи"
+    },
+    "level": 3,
+    "attacking": false,
+    "available_for": [
+      "cleric"
+    ]
+  },
+  {
+    "slug": "water_breathing",
+    "name": {
+      "en": "Water Breathing",
+      "ru": "Подводное дыхание"
+    },
+    "level": 3,
+    "attacking": false,
+    "available_for": [
+      "druid",
+      "ranger",
+      "sorcerer",
+      "wizard"
+    ]
+  },
+  {
+    "slug": "nondetection",
+    "name": {
+      "en": "Nondetection",
+      "ru": "Необнаружимость"
+    },
+    "level": 3,
+    "attacking": false,
+    "available_for": [
+      "bard",
+      "ranger",
+      "wizard"
+    ]
+  },
+  {
+    "slug": "stinking_cloud",
+    "name": {
+      "en": "Stinking Cloud",
+      "ru": "Зловонное облако"
+    },
+    "level": 3,
+    "attacking": false,
+    "available_for": [
+      "bard",
+      "sorcerer",
+      "wizard"
+    ]
+  },
+  {
+    "slug": "phantom_steed",
+    "name": {
+      "en": "Phantom Steed",
+      "ru": "Призрачный скакун"
+    },
+    "level": 3,
+    "attacking": false,
+    "available_for": [
+      "wizard"
+    ]
+  },
+  {
+    "slug": "plant_growth",
+    "name": {
+      "en": "Plant Growth",
+      "ru": "Рост растений"
+    },
+    "level": 3,
+    "attacking": false,
+    "available_for": [
+      "bard",
+      "druid",
+      "ranger"
+    ]
+  },
+  {
+    "slug": "mass_healing_word",
+    "name": {
+      "en": "Mass Healing Word",
+      "ru": "Множественное лечащее слово"
+    },
+    "level": 3,
+    "attacking": false,
+    "available_for": [
+      "cleric"
+    ]
+  },
+  {
+    "slug": "water_walk",
+    "name": {
+      "en": "Water Walk",
+      "ru": "Хождение по воде"
+    },
+    "level": 3,
+    "attacking": false,
+    "available_for": [
+      "cleric",
+      "druid",
+      "ranger",
+      "sorcerer"
+    ]
+  },
+  {
+    "slug": "major_image",
+    "name": {
+      "en": "Major Image",
+      "ru": "Образ"
+    },
+    "level": 3,
+    "attacking": false,
+    "available_for": [
+      "bard",
+      "sorcerer",
+      "warlock",
+      "wizard"
+    ]
+  },
+  {
+    "slug": "magic_circle",
+    "name": {
+      "en": "Magic Circle",
+      "ru": "Магический круг"
+    },
+    "level": 3,
+    "attacking": false,
+    "available_for": [
+      "cleric",
+      "paladin",
+      "warlock",
+      "wizard"
+    ]
+  },
+  {
+    "slug": "protection_from_energy",
+    "name": {
+      "en": "Protection From Energy",
+      "ru": "Защита от энергии"
+    },
+    "level": 3,
+    "attacking": false,
+    "available_for": [
+      "cleric",
+      "druid",
+      "ranger",
+      "sorcerer",
+      "wizard"
+    ]
+  },
+  {
+    "slug": "lightning_bolt",
+    "name": {
+      "en": "Lightning Bolt",
+      "ru": "Молния"
+    },
+    "level": 3,
+    "attacking": true,
+    "available_for": [
+      "sorcerer",
+      "wizard"
+    ]
+  },
+  {
+    "slug": "call_lightning",
+    "name": {
+      "en": "Call Lightning",
+      "ru": "Призыв молнии"
+    },
+    "level": 3,
+    "attacking": true,
+    "available_for": [
+      "druid"
+    ]
+  },
+  {
+    "slug": "hypnotic_pattern",
+    "name": {
+      "en": "Hypnotic Pattern",
+      "ru": "Гипнотический узор"
+    },
+    "level": 3,
+    "attacking": false,
+    "available_for": [
+      "bard",
+      "sorcerer",
+      "warlock",
+      "wizard"
+    ]
+  },
+  {
+    "slug": "blink",
+    "name": {
+      "en": "Blink",
+      "ru": "Мерцание"
+    },
+    "level": 3,
+    "attacking": false,
+    "available_for": [
+      "sorcerer",
+      "wizard"
+    ]
+  },
+  {
+    "slug": "haste",
+    "name": {
+      "en": "Haste",
+      "ru": "Ускорение"
+    },
+    "level": 3,
+    "attacking": false,
+    "available_for": [
+      "sorcerer",
+      "wizard"
+    ]
+  },
+  {
+    "slug": "glyph_of_warding",
+    "name": {
+      "en": "Glyph of Warding",
+      "ru": "Охранные руны"
+    },
+    "level": 3,
+    "attacking": false,
+    "available_for": [
+      "bard",
+      "cleric",
+      "wizard"
+    ]
+  }
+]

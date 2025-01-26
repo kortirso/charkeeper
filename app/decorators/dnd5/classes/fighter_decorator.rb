@@ -3,8 +3,8 @@
 module Dnd5
   module Classes
     class FighterDecorator
-      def decorate(result:, class_level:)
-        result[:class_save_dc] = %i[str con] if result[:class_save_dc].nil?
+      def decorate(result:, class_level:) # rubocop: disable Lint/UnusedMethodArgument
+        result[:class_save_dc] = %i[str con] if result[:main_class] == 'fighter'
 
         result
       end

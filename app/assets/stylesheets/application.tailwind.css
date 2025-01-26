@@ -107,9 +107,17 @@
 }
 
 .form-field .form-dropdown li {
-  @apply bg-white border-b border-gray-200 m-0 p-4;
+  @apply bg-white border-b border-gray-200 m-0 py-2 px-4;
 }
 
 .form-field .form-dropdown li:hover {
   @apply bg-black text-white;
+}
+
+.checkbox-dummy {
+  @apply w-4 h-4 rounded border-2 border-gray-200;
+}
+
+.checkbox-dummy.selected {
+  @apply border-gray-400 bg-gray-200;
 }

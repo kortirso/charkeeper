@@ -5,7 +5,7 @@ module Dnd5
     class Item < ApplicationRecord
       self.table_name = :dnd5_character_items
 
-      belongs_to :character, class_name: '::Dnd5::Character'
+      belongs_to :character, class_name: '::Dnd5::Character', touch: true
       belongs_to :item, class_name: '::Dnd5::Item'
     end
   end

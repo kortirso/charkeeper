@@ -1,0 +1,570 @@
+[
+  {
+    "kind": "light weapon",
+    "name": {
+      "en": "Quarterstaff",
+      "ru": "Боевой посох"
+    },
+    "weight": 4,
+    "price": 20,
+    "data": {
+      "type": "melee",
+      "damage": "1d6",
+      "damage_type": "bludge",
+      "caption": ["versatile-1d8"]
+    }
+  },
+  {
+    "kind": "light weapon",
+    "name": {
+      "en": "Mace",
+      "ru": "Булава"
+    },
+    "weight": 4,
+    "price": 500,
+    "data": {
+      "type": "melee",
+      "damage": "1d6",
+      "damage_type": "bludge",
+      "caption": []
+    }
+  },
+  {
+    "kind": "light weapon",
+    "name": {
+      "en": "Club",
+      "ru": "Дубинка"
+    },
+    "weight": 2,
+    "price": 10,
+    "data": {
+      "type": "melee",
+      "damage": "1d4",
+      "damage_type": "bludge",
+      "caption": ["light"]
+    }
+  },
+  {
+    "kind": "light weapon",
+    "name": {
+      "en": "Dagger",
+      "ru": "Кинжал"
+    },
+    "weight": 1,
+    "price": 200,
+    "data": {
+      "type": "thrown",
+      "damage": "1d4",
+      "damage_type": "pierce",
+      "dist": "20/60",
+      "caption": ["light", "finesse"]
+    }
+  },
+  {
+    "kind": "light weapon",
+    "name": {
+      "en": "Spear",
+      "ru": "Копьё"
+    },
+    "weight": 3,
+    "price": 100,
+    "data": {
+      "type": "thrown",
+      "damage": "1d6",
+      "damage_type": "pierce",
+      "dist": "20/60",
+      "caption": ["versatile-1d8"]
+    }
+  },
+  {
+    "kind": "light weapon",
+    "name": {
+      "en": "Light Hammer",
+      "ru": "Лёгкий молот"
+    },
+    "weight": 2,
+    "price": 200,
+    "data": {
+      "type": "thrown",
+      "damage": "1d4",
+      "damage_type": "bludge",
+      "dist": "20/60",
+      "caption": ["light"]
+    }
+  },
+  {
+    "kind": "light weapon",
+    "name": {
+      "en": "Javelin",
+      "ru": "Метательное копьё"
+    },
+    "weight": 2,
+    "price": 50,
+    "data": {
+      "type": "thrown",
+      "damage": "1d6",
+      "damage_type": "pierce",
+      "dist": "30/120",
+      "caption": []
+    }
+  },
+  {
+    "kind": "light weapon",
+    "name": {
+      "en": "Greatclub",
+      "ru": "Палица"
+    },
+    "weight": 10,
+    "price": 20,
+    "data": {
+      "type": "melee",
+      "damage": "1d8",
+      "damage_type": "bludge",
+      "caption": ["2handed"]
+    }
+  },
+  {
+    "kind": "light weapon",
+    "name": {
+      "en": "Handaxe",
+      "ru": "Ручной топор"
+    },
+    "weight": 2,
+    "price": 500,
+    "data": {
+      "type": "thrown",
+      "damage": "1d6",
+      "damage_type": "slash",
+      "dist": "20/60",
+      "caption": ["light"]
+    }
+  },
+  {
+    "kind": "light weapon",
+    "name": {
+      "en": "Sickle",
+      "ru": "Серп"
+    },
+    "weight": 2,
+    "price": 100,
+    "data": {
+      "type": "melee",
+      "damage": "1d4",
+      "damage_type": "slash",
+      "caption": ["light"]
+    }
+  },
+  {
+    "kind": "light weapon",
+    "name": {
+      "en": "Light Crossbow",
+      "ru": "Лёгкий арбалет"
+    },
+    "weight": 5,
+    "price": 2500,
+    "data": {
+      "type": "range",
+      "damage": "1d8",
+      "damage_type": "pierce",
+      "dist": "80/320",
+      "caption": ["2handed", "reload"]
+    }
+  },
+  {
+    "kind": "light weapon",
+    "name": {
+      "en": "Dart",
+      "ru": "Дротик"
+    },
+    "weight": 0.25,
+    "price": 5,
+    "data": {
+      "type": "range",
+      "damage": "1d4",
+      "damage_type": "pierce",
+      "dist": "20/60",
+      "caption": ["finesse"]
+    }
+  },
+  {
+    "kind": "light weapon",
+    "name": {
+      "en": "Shortbow",
+      "ru": "Короткий лук"
+    },
+    "weight": 2,
+    "price": 2500,
+    "data": {
+      "type": "range",
+      "damage": "1d6",
+      "damage_type": "pierce",
+      "dist": "80/320",
+      "caption": ["2handed"]
+    }
+  },
+  {
+    "kind": "light weapon",
+    "name": {
+      "en": "Sling",
+      "ru": "Праща"
+    },
+    "weight": 0,
+    "price": 10,
+    "data": {
+      "type": "range",
+      "damage": "1d4",
+      "damage_type": "bludge",
+      "dist": "30/120",
+      "caption": ["2handed", "reload"]
+    }
+  },
+  {
+    "kind": "martial weapon",
+    "name": {
+      "en": "Halberd",
+      "ru": "Алебарда"
+    },
+    "weight": 6,
+    "price": 2000,
+    "data": {
+      "type": "melee",
+      "damage": "1d10",
+      "damage_type": "slash",
+      "caption": ["2handed", "heavy", "reach"]
+    }
+  },
+  {
+    "kind": "martial weapon",
+    "name": {
+      "en": "War Pick",
+      "ru": "Боевая кирка"
+    },
+    "weight": 2,
+    "price": 500,
+    "data": {
+      "type": "melee",
+      "damage": "1d8",
+      "damage_type": "pierce",
+      "caption": []
+    }
+  },
+  {
+    "kind": "martial weapon",
+    "name": {
+      "en": "Warhammer",
+      "ru": "Боевой молот"
+    },
+    "weight": 2,
+    "price": 1500,
+    "data": {
+      "type": "melee",
+      "damage": "1d8",
+      "damage_type": "bludge",
+      "caption": ["versatile-1d10"]
+    }
+  },
+  {
+    "kind": "martial weapon",
+    "name": {
+      "en": "Battleaxe",
+      "ru": "Боевой топор"
+    },
+    "weight": 4,
+    "price": 1000,
+    "data": {
+      "type": "melee",
+      "damage": "1d8",
+      "damage_type": "slash",
+      "caption": ["versatile-1d10"]
+    }
+  },
+  {
+    "kind": "martial weapon",
+    "name": {
+      "en": "Glaive",
+      "ru": "Глефа"
+    },
+    "weight": 6,
+    "price": 2000,
+    "data": {
+      "type": "melee",
+      "damage": "1d10",
+      "damage_type": "slash",
+      "caption": ["2handed", "heavy", "reach"]
+    }
+  },
+  {
+    "kind": "martial weapon",
+    "name": {
+      "en": "Greatsword",
+      "ru": "Двуручный меч"
+    },
+    "weight": 6,
+    "price": 5000,
+    "data": {
+      "type": "melee",
+      "damage": "2d6",
+      "damage_type": "slash",
+      "caption": ["2handed", "heavy"]
+    }
+  },
+  {
+    "kind": "martial weapon",
+    "name": {
+      "en": "Lance",
+      "ru": "Длинное копьё"
+    },
+    "weight": 6,
+    "price": 1000,
+    "data": {
+      "type": "melee",
+      "damage": "1d12",
+      "damage_type": "pierce",
+      "caption": ["reach"]
+    }
+  },
+  {
+    "kind": "martial weapon",
+    "name": {
+      "en": "Longsword",
+      "ru": "Длинный меч"
+    },
+    "weight": 3,
+    "price": 1500,
+    "data": {
+      "type": "melee",
+      "damage": "1d8",
+      "damage_type": "slash",
+      "caption": ["versatile-1d10"]
+    }
+  },
+  {
+    "kind": "martial weapon",
+    "name": {
+      "en": "Whip",
+      "ru": "Кнут"
+    },
+    "weight": 3,
+    "price": 200,
+    "data": {
+      "type": "melee",
+      "damage": "1d4",
+      "damage_type": "slash",
+      "caption": ["reach"]
+    }
+  },
+  {
+    "kind": "martial weapon",
+    "name": {
+      "en": "Shortsowrd",
+      "ru": "Короткий меч"
+    },
+    "weight": 2,
+    "price": 1000,
+    "data": {
+      "type": "melee",
+      "damage": "1d6",
+      "damage_type": "pierce",
+      "caption": ["light", "finesse"]
+    }
+  },
+  {
+    "kind": "martial weapon",
+    "name": {
+      "en": "Maul",
+      "ru": "Молот"
+    },
+    "weight": 10,
+    "price": 1000,
+    "data": {
+      "type": "melee",
+      "damage": "2d6",
+      "damage_type": "bludge",
+      "caption": ["2handed", "heavy"]
+    }
+  },
+  {
+    "kind": "martial weapon",
+    "name": {
+      "en": "Morningstar",
+      "ru": "Моргенштерн"
+    },
+    "weight": 4,
+    "price": 1500,
+    "data": {
+      "type": "melee",
+      "damage": "1d8",
+      "damage_type": "pierce",
+      "caption": []
+    }
+  },
+  {
+    "kind": "martial weapon",
+    "name": {
+      "en": "Pike",
+      "ru": "Пика"
+    },
+    "weight": 18,
+    "price": 500,
+    "data": {
+      "type": "melee",
+      "damage": "1d10",
+      "damage_type": "pierce",
+      "caption": ["2handed", "heavy", "reach"]
+    }
+  },
+  {
+    "kind": "martial weapon",
+    "name": {
+      "en": "Rapier",
+      "ru": "Рапира"
+    },
+    "weight": 2,
+    "price": 2500,
+    "data": {
+      "type": "melee",
+      "damage": "1d8",
+      "damage_type": "pierce",
+      "caption": ["finesse"]
+    }
+  },
+  {
+    "kind": "martial weapon",
+    "name": {
+      "en": "Greataxe",
+      "ru": "Секира"
+    },
+    "weight": 7,
+    "price": 3000,
+    "data": {
+      "type": "melee",
+      "damage": "1d12",
+      "damage_type": "slash",
+      "caption": ["2handed", "heavy"]
+    }
+  },
+  {
+    "kind": "martial weapon",
+    "name": {
+      "en": "Scimitar",
+      "ru": "Скимитар"
+    },
+    "weight": 3,
+    "price": 2500,
+    "data": {
+      "type": "melee",
+      "damage": "1d6",
+      "damage_type": "slash",
+      "caption": ["light", "finesse"]
+    }
+  },
+  {
+    "kind": "martial weapon",
+    "name": {
+      "en": "Trident",
+      "ru": "Трезубец"
+    },
+    "weight": 4,
+    "price": 500,
+    "data": {
+      "type": "thrown",
+      "damage": "1d6",
+      "damage_type": "pierce",
+      "dist": "20/60",
+      "caption": ["versatile-1d8"]
+    }
+  },
+  {
+    "kind": "martial weapon",
+    "name": {
+      "en": "Flail",
+      "ru": "Цеп"
+    },
+    "weight": 2,
+    "price": 1000,
+    "data": {
+      "type": "melee",
+      "damage": "1d8",
+      "damage_type": "bludge",
+      "caption": []
+    }
+  },
+  {
+    "kind": "martial weapon",
+    "name": {
+      "en": "Hand Crossbow",
+      "ru": "Ручной арбалет"
+    },
+    "weight": 3,
+    "price": 7500,
+    "data": {
+      "type": "range",
+      "damage": "1d6",
+      "damage_type": "pierce",
+      "dist": "30/120",
+      "caption": ["light", "reload"]
+    }
+  },
+  {
+    "kind": "martial weapon",
+    "name": {
+      "en": "Heavy Crossbow",
+      "ru": "Тяжёлый арбалет"
+    },
+    "weight": 18,
+    "price": 5000,
+    "data": {
+      "type": "range",
+      "damage": "1d10",
+      "damage_type": "pierce",
+      "dist": "100/400",
+      "caption": ["2handed", "reload", "heavy"]
+    }
+  },
+  {
+    "kind": "martial weapon",
+    "name": {
+      "en": "Longbow",
+      "ru": "Длинный лук"
+    },
+    "weight": 2,
+    "price": 5000,
+    "data": {
+      "type": "range",
+      "damage": "1d8",
+      "damage_type": "pierce",
+      "dist": "150/600",
+      "caption": ["2handed", "heavy"]
+    }
+  },
+  {
+    "kind": "martial weapon",
+    "name": {
+      "en": "Blowgun",
+      "ru": "Духовая трубка"
+    },
+    "weight": 1,
+    "price": 1000,
+    "data": {
+      "type": "range",
+      "damage": "1",
+      "damage_type": "pierce",
+      "dist": "25/100",
+      "caption": ["reload"]
+    }
+  },
+  {
+    "kind": "martial weapon",
+    "name": {
+      "en": "Net",
+      "ru": "Сеть"
+    },
+    "weight": 3,
+    "price": 100,
+    "data": {
+      "type": "range",
+      "dist": "5/15",
+      "caption": []
+    }
+  }
+]

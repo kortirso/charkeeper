@@ -1,5 +1,8 @@
 {
   "loading": "Загрузочный экран",
+  "buttons": {
+    "save": "Сохранить"
+  },
   "nav": {
     "characters": "Персонажи",
     "npc": "НИП",
@@ -17,8 +20,16 @@
     "spells": "Заклинания",
     "conditions": "Состояния",
     "onlyPreparedSpells": "Подготовленные",
+    "onlyAvailableSpells": "Доступные",
     "allSpells": "Все",
-    "no_magic": "Персонаж не обладает магическими способностями"
+    "no_magic": "Персонаж не обладает магическими способностями",
+    "changeLevels": "Изменить уровни классов",
+    "changeClasses": "Изменить классы персонажа",
+    "knownSpells": "Выученные заклинания",
+    "items": "Добавить снаряжение",
+    "itemsList": "Предметы",
+    "weaponsList": "Оружие",
+    "armorList": "Броня"
   },
   "attacks": {
     "bonus": "Бонус",
@@ -39,15 +50,20 @@
     "armorClass": "КД",
     "initiative": "Инициатива",
     "speed": "Скорость",
-    "health": "Хиты",
-    "maxHealth": "Макс хиты",
-    "tempHealth": "Врем хиты",
+    "health": {
+      "current": "Хиты",
+      "max": "Макс хиты",
+      "temp": "Врем хиты"
+    },
     "attackAction": "Атаки за действие",
     "attackBonusAction": "Атаки за бонус действие",
     "energy": {
       "monk": "Энергия Ци",
       "sorcerer": "Чародейство"
-    }
+    },
+    "cantrips": "Заговоры",
+    "known": "Известные",
+    "prepared": "Приготовленные"
   },
   "damage": {
     "bludge": "Дробящий",
@@ -57,12 +73,22 @@
   },
   "races": {
     "dwarf": "Дварф",
-    "human": "Человек"
+    "human": "Человек",
+    "elf": "Эльф"
   },
   "classes": {
+    "barbarian": "Варвар",
+    "bard": "Бард",
+    "cleric": "Жрец",
+    "druid": "Друид",
     "fighter": "Воин",
     "monk": "Монах",
-    "sorcerer": "Чародей"
+    "paladin": "Паладин",
+    "ranger": "Следопыт",
+    "rogue": "Плут",
+    "sorcerer": "Чародей",
+    "warlock": "Колдун",
+    "wizard": "Волшебник"
   },
   "abilities": {
     "str": "Сила",
@@ -74,7 +100,7 @@
   },
   "skills": {
     "acrobatics": "Акробатика",
-    "animal": "Уход за хивотными",
+    "animal": "Уход за животными",
     "arcana": "Магия",
     "athletics": "Атлетика",
     "deception": "Обман",
@@ -91,5 +117,14 @@
     "sleight": "Ловкость рук",
     "stealth": "Скрытность",
     "survival": "Выживание"
+  },
+  "attack": {
+    "tooltips": {
+      "2handed": "Двуручное",
+      "dual": "Двойное",
+      "heavy": "Тяжёлое",
+      "reload": "Перезарядка",
+      "flurry_of_blows": "Шквал ударов"
+    }
   }
 }

@@ -9,7 +9,7 @@ module Dnd5
       def decorate(result:, class_level:)
         energy_dc = 8 + result[:proficiency_bonus] + result.dig(:modifiers, :wis)
         result[:max_energy] = class_level if class_level >= 2
-        result[:class_save_dc] = %i[str dex] if result[:class_save_dc].nil?
+        result[:class_save_dc] = %i[str dex] if result[:main_class] == 'monk'
 
         no_armor = true # result[:defense_gear].values.all?(&:nil?)
         result[:combat][:speed] += speed_modifier(class_level) if no_armor
@@ -109,7 +109,7 @@ module Dnd5
           attack[:damage] = "1d#{(((class_level + 1) / 6) + 2) * 2}" if attack[:kind] == 'unarmed'
         end
         unarmed_attack = result[:attacks].find { |attack| attack[:kind] == 'unarmed' && attack[:action_type] == 'action' }
-        result[:attacks] << unarmed_attack.merge({ action_type: 'bonus action' })
+        result[:attacks] << unarmed_attack.merge({ action_type: 'bonus action', tooltips: ['flurry_of_blows'] })
       end
       # rubocop: enable Metrics/AbcSize, Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity, Metrics/MethodLength
     end
