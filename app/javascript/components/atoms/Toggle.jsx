@@ -1,7 +1,9 @@
-import { createSignal, Show } from 'solid-js';
+import { createSignal, Show, children } from 'solid-js';
 
-export const CollapseBox = (props) => {
+export const Toggle = (props) => {
   const [isOpen, setIsOpen] = createSignal(false);
+
+  const safeChildren = children(() => props.children);
 
   return (
     <div class="white-box mb-2">
@@ -10,7 +12,7 @@ export const CollapseBox = (props) => {
       </div>
       <Show when={isOpen()}>
         <div class="p-4 border-t border-gray-200">
-          <p>{props.description}</p>
+          {safeChildren()}
         </div>
       </Show>
     </div>

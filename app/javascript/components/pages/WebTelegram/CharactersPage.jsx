@@ -10,7 +10,7 @@ export const CharactersPage = () => {
   const [characters, setCharacters] = createSignal(undefined);
 
   const [appState] = useAppState();
-  const [locale, dict] = useAppLocale();
+  const [, dict] = useAppLocale();
 
   const t = i18n.translator(dict);
 

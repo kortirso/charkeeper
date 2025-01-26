@@ -6,8 +6,8 @@ import { useAppState, useAppLocale } from '../../../context';
 export const CharacterLink = (props) => {
   const character = () => props.character;
 
-  const [appState, { navigate }] = useAppState();
-  const [locale, dict] = useAppLocale();
+  const [, { navigate }] = useAppState();
+  const [, dict] = useAppLocale();
 
   const t = i18n.translator(dict);
 

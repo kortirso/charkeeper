@@ -11,7 +11,7 @@ import { fetchAccessTokenRequest } from '../requests/fetchAccessTokenRequest';
 export const WebTelegramAppContent = () => {
   const { webApp } = useTelegram();
   const [appState, { setAccessToken, navigate }] = useAppState();
-  const [locale, dict, { setLocale }] = useAppLocale();
+  const [, dict, { setLocale }] = useAppLocale();
 
   const charactersPage = createMemo(() => <CharactersPage />);
   const npcPage = createMemo(() => <NpcPage />);

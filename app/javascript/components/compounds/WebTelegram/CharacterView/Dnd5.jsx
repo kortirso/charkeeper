@@ -2,7 +2,7 @@ import { createSignal, Switch, Match, batch, For, Show, createEffect, createMemo
 import * as i18n from '@solid-primitives/i18n';
 
 import { createModal, StatsBlock } from '../../../molecules';
-import { Checkbox, Select, CollapseBox } from '../../../atoms';
+import { Checkbox, Select, Toggle } from '../../../atoms';
 
 import { useAppState, useAppLocale } from '../../../../context';
 import { modifier } from '../../../../helpers';
@@ -463,8 +463,7 @@ export const Dnd5 = (props) => {
   );
 
   const renderItems = (title, items) => (
-    <div class="p-4 white-box mb-2">
-      <h2 class="text-lg">{title}</h2>
+    <Toggle title={title}>
       <table class="w-full table first-column-full-width">
         <thead>
           <tr>
@@ -492,7 +491,7 @@ export const Dnd5 = (props) => {
           </For>
         </tbody>
       </table>
-    </div>
+    </Toggle>
   );
 
   return (
@@ -581,7 +580,7 @@ export const Dnd5 = (props) => {
               </div>
             </Show>
             <For each={decoratedData().class_features}>
-              {(class_feature) => <CollapseBox title={class_feature.title} description={class_feature.description} />}
+              {(class_feature) => <Toggle title={class_feature.title}><p>{class_feature.description}</p></Toggle>}
             </For>
           </Match>
           <Match when={activeTab() === 'equipment'}>
@@ -791,8 +790,7 @@ export const Dnd5 = (props) => {
               </div>
               <For each={filteredSpellsList()}>
                 {([level, spells]) =>
-                  <div class="white-box p-4 mb-2">
-                    <h2 class="text-lg">{level} level</h2>
+                  <Toggle title={level === '0' ? 'Cantrips' : `${level} level`}>
                     <table class="w-full table first-column-full-width">
                       <thead>
                         <tr>
@@ -837,7 +835,7 @@ export const Dnd5 = (props) => {
                         </For>
                       </tbody>
                     </table>
-                  </div>
+                  </Toggle>
                 }
               </For>
             </Show>
