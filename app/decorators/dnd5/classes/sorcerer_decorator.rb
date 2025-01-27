@@ -17,6 +17,19 @@ module Dnd5
         }
         result[:spells_slots] = spells_slots(class_level)
 
+        if class_level >= 2 # Creating Spell Slots, 2 level
+          result[:class_features] << {
+            title: I18n.t('dnd5.class_features.sorcerer.creating_spell_slots.title'),
+            description: I18n.t('dnd5.class_features.sorcerer.creating_spell_slots.description')
+          }
+        end
+        if class_level >= 2 # Converting a Spell Slot, 2 level
+          result[:class_features] << {
+            title: I18n.t('dnd5.class_features.sorcerer.converting_spell_slot.title'),
+            description: I18n.t('dnd5.class_features.sorcerer.converting_spell_slot.description')
+          }
+        end
+
         result
       end
       # rubocop: enable Metrics/AbcSize

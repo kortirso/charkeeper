@@ -1,6 +1,17 @@
 en:
   dnd5:
     class_features:
+      sorcerer:
+        creating_spell_slots:
+          title: Creating Spell Slots
+          description: "You can transform unexpended sorcery points into one spell slot as a bonus action on your turn. 1st - 2, 2nd - 3, 3rd - 5, 4th - 6, 5th - 7"
+        converting_spell_slot:
+          title: Converting a Spell Slot
+          description: "As a bonus action on your turn, you can expend one spell slot and gain a number of sorcery points equal to the slot's level."
+      druid:
+        wild_shape:
+          title: Wild Shape
+          description: "You can use your action to magically assume the shape of a beast (challenge rating - %{value}) that you have seen before, You can use this feature twice. You regain expended uses when you finish a short ar long rest."
       monk:
         unarmored_movement:
           title: "Unarmored Movement"
