@@ -7,6 +7,7 @@ ru:
       filled?: Отсутствует значение
       gteq?: Значение отрицательное
       type?: Неверный тип параметра
+      unexpected_key: Неизвестный параметр
       dnd5_character:
         rules:
           classes:

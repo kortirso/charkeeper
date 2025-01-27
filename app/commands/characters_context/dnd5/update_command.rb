@@ -20,22 +20,22 @@ module CharactersContext
           optional(:classes).hash
           optional(:subclasses).hash
           optional(:abilities).hash do
-            required(:str).filled(:int?, gteq?: 1, lteq?: 30)
-            required(:dex).filled(:int?, gteq?: 1, lteq?: 30)
-            required(:con).filled(:int?, gteq?: 1, lteq?: 30)
-            required(:int).filled(:int?, gteq?: 1, lteq?: 30)
-            required(:wis).filled(:int?, gteq?: 1, lteq?: 30)
-            required(:cha).filled(:int?, gteq?: 1, lteq?: 30)
+            required(:str).filled(:integer, gteq?: 1, lteq?: 30)
+            required(:dex).filled(:integer, gteq?: 1, lteq?: 30)
+            required(:con).filled(:integer, gteq?: 1, lteq?: 30)
+            required(:int).filled(:integer, gteq?: 1, lteq?: 30)
+            required(:wis).filled(:integer, gteq?: 1, lteq?: 30)
+            required(:cha).filled(:integer, gteq?: 1, lteq?: 30)
           end
           optional(:health).hash do
-            required(:current).filled(:int?, gteq?: 0)
-            required(:max).filled(:int?, gteq?: 0)
-            required(:temp).filled(:int?, gteq?: 0)
+            required(:current).filled(:integer, gteq?: 0)
+            required(:max).filled(:integer, gteq?: 0)
+            required(:temp).filled(:integer, gteq?: 0)
           end
           optional(:coins).hash do
-            required(:gold).filled(:int?, gteq?: 0)
-            required(:silver).filled(:int?, gteq?: 0)
-            required(:copper).filled(:int?, gteq?: 0)
+            required(:gold).filled(:integer, gteq?: 0)
+            required(:silver).filled(:integer, gteq?: 0)
+            required(:copper).filled(:integer, gteq?: 0)
           end
           optional(:selected_skills).value(:array, :filled?).each(included_in?: SKILLS)
           optional(:weapons_core_skills).value(:array, :filled?).each(included_in?: WEAPON_CORE_SKILLS)
