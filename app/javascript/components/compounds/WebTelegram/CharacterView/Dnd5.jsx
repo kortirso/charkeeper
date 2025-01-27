@@ -34,7 +34,6 @@ export const Dnd5 = (props) => {
   const [preparedSpellFilter, setPreparedSpellFilter] = createSignal(true);
   const [availableSpellFilter, setAvailableSpellFilter] = createSignal(true);
 
-  const objectData = () => props.objectData;
   const decoratedData = () => props.decoratedData;
   const spellClasses = () => Object.keys(decoratedData().spell_classes);
 
@@ -46,6 +45,7 @@ export const Dnd5 = (props) => {
   const [spentSpellSlots, setSpentSpellSlots] = createSignal(props.decoratedData.spent_spell_slots);
   const [changingCoins, setChangingCoins] = createSignal(props.decoratedData.coins);
   const [changingItem, setChangingItem] = createSignal(undefined);
+  const [subclasses, setSubclasses] = createSignal(props.decoratedData.subclasses)
 
   const { Modal, openModal, closeModal } = createModal();
   const [appState] = useAppState();
@@ -261,7 +261,7 @@ export const Dnd5 = (props) => {
   const updateCharacterAbilities = () => updateCharacter({ abilities: abilitiesFormData() });
   const updateCharacterHealth = () => updateCharacter({ health: healthFormData() });
   const updateCharacterSkills = () => updateCharacter({ selected_skills: skillsFormData() });
-  const updateCharacterClasses = () => updateCharacter({ classes: classesFormData() });
+  const updateCharacterClasses = () => updateCharacter({ classes: classesFormData(), subclasses: subclasses() });
 
   // sending requests
   const learnSpell = async (spellId) => {
@@ -939,19 +939,32 @@ export const Dnd5 = (props) => {
             <div class="white-box p-4 flex flex-col">
               <For each={Object.entries(classesFormData())}>
                 {([class_name, class_level]) =>
-                  <div class="mb-4 flex items-center">
-                    <p class="flex-1 text-sm text-left">{t(`classes.${class_name}`)}</p>
-                    <div class="flex justify-between items-center ml-4 w-32">
-                      <button
-                        class="white-box flex py-2 px-4 justify-center items-center"
-                        onClick={() => changeClass(class_name, 'down')}
-                      >-</button>
-                      <p>{class_level}</p>
-                      <button
-                        class="white-box flex py-2 px-4 justify-center items-center"
-                        onClick={() => changeClass(class_name, 'up')}
-                      >+</button>
+                  <div>
+                    <div class="mb-2 flex items-center">
+                      <p class="flex-1 text-sm text-left">{t(`classes.${class_name}`)}</p>
+                      <div class="flex justify-between items-center ml-4 w-32">
+                        <button
+                          class="white-box flex py-2 px-4 justify-center items-center"
+                          onClick={() => changeClass(class_name, 'down')}
+                        >-</button>
+                        <p>{class_level}</p>
+                        <button
+                          class="white-box flex py-2 px-4 justify-center items-center"
+                          onClick={() => changeClass(class_name, 'up')}
+                        >+</button>
+                      </div>
                     </div>
+                    <Show
+                      when={!decoratedData().subclasses[class_name]}
+                      fallback={<p class="mb-2">{dict().subclasses[class_name][decoratedData().subclasses[class_name]]}</p>}
+                    >
+                      <Select
+                        classList="w-full mb-2"
+                        items={dict().subclasses[class_name]}
+                        selectedValue={subclasses()[class_name]}
+                        onSelect={(value) => setSubclasses({ ...subclasses, [class_name]: value })}
+                      />
+                    </Show>
                   </div>
                 }
               </For>
@@ -963,7 +976,7 @@ export const Dnd5 = (props) => {
           </Match>
           <Match when={modalOpenMode() === 'changeClasses'}>
             <div class="white-box p-4 flex flex-col">
-              <For each={Object.entries(dict().classes).filter(([a, b]) => a !== decoratedData().main_class).sort((a, b) => a[1] > b[1])}>
+              <For each={Object.entries(dict().classes).filter(([a,]) => a !== decoratedData().main_class).sort((a, b) => a[1] > b[1])}>
                 {([slug, class_name]) =>
                   <div
                     class="flex flex-row justify-between items-center cursor-pointer"

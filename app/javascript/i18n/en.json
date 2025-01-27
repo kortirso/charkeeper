@@ -90,6 +90,22 @@
     "warlock": "Warlock",
     "wizard": "Wizard"
   },
+  "subclasses": {
+    "barbarian": {},
+    "bard": {},
+    "cleric": {},
+    "druid": {},
+    "fighter": {
+      "battle_master": "Battle master"
+    },
+    "monk": {},
+    "paladin": {},
+    "ranger": {},
+    "rogue": {},
+    "sorcerer": {},
+    "warlock": {},
+    "wizard": {}
+  },
   "abilities": {
     "str": "Strength",
     "dex": "Dexterity",

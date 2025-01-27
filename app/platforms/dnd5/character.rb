@@ -47,12 +47,17 @@ module Dnd5
     WARLOCK = 'warlock'
     WIZARD = 'wizard'
 
+    BATTLE_MASTER = 'battle_master'
+
     # alignment
     NEUTRAL = 'neutral'
 
     RACES = [HUMAN, DWARF, ELF].freeze
     ALIGNMENTS = [NEUTRAL].freeze
     CLASSES = [BARBARIAN, BARD, CLERIC, DRUID, FIGHTER, MONK, PALADIN, RANGER, ROGUE, SORCERER, WARLOCK, WIZARD].freeze
+    SUBCLASSES = {
+      FIGHTER: [BATTLE_MASTER]
+    }.freeze
 
     CLASSES_LEARN_SPELLS = [BARD, RANGER, SORCERER, WARLOCK, WIZARD].freeze
     CLASSES_PREPARE_SPELLS = [CLERIC, DRUID, PALADIN, WIZARD].freeze

@@ -15,6 +15,7 @@ module Dnd5
         race: data.race,
         main_class: data.main_class,
         classes: data.classes,
+        subclasses: data.subclasses,
         overall_level: data.level,
         proficiency_bonus: proficiency_bonus,
         abilities: data.abilities,

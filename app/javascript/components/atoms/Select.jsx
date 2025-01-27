@@ -21,7 +21,7 @@ export const Select = (props) => {
           class={[isOpen() ? 'is-open' : '', 'form-value flex justify-between items-center py-2'].join(' ')}
           onClick={() => setIsOpen(!isOpen())}
         >
-          {props.selectedValue ? props.items[props.selectedValue] : ''}
+          <span>{props.selectedValue ? props.items[props.selectedValue] : ''}</span>
           <Chevron rotated={isOpen()} />
         </div>
         <Show when={isOpen()}>

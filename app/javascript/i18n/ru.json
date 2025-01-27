@@ -90,6 +90,22 @@
     "warlock": "Колдун",
     "wizard": "Волшебник"
   },
+  "subclasses": {
+    "barbarian": {},
+    "bard": {},
+    "cleric": {},
+    "druid": {},
+    "fighter": {
+      "battle_master": "Мастер боевых искусств"
+    },
+    "monk": {},
+    "paladin": {},
+    "ranger": {},
+    "rogue": {},
+    "sorcerer": {},
+    "warlock": {},
+    "wizard": {}
+  },
   "abilities": {
     "str": "Сила",
     "dex": "Ловкость",

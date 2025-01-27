@@ -31,7 +31,6 @@ export const CharacterView = () => {
     <Switch>
       <Match when={character().provider === 'dnd5'}>
         <Dnd5
-          objectData={character().object_data}
           decoratedData={character().decorated_data}
           characterId={character().id}
           name={character().name}

@@ -3,7 +3,6 @@
 module CharactersContext
   module Dnd5
     class UpdateCommand < BaseCommand
-      CLASSES = %w[barbarian bard cleric druid fighter monk paladin ranger rogue sorcerer warlock wizard].freeze
       SKILLS = %w[
         acrobatics animal arcana athletics deception history insight intimidation investigation
         medicine nature perception performance persuasion religion sleight stealth survival
@@ -19,6 +18,7 @@ module CharactersContext
         params do
           required(:character).filled(type?: ::Dnd5::Character)
           optional(:classes).hash
+          optional(:subclasses).hash
           optional(:abilities).hash do
             required(:str).filled(:int?, gteq?: 1, lteq?: 30)
             required(:dex).filled(:int?, gteq?: 1, lteq?: 30)
@@ -52,15 +52,25 @@ module CharactersContext
           next if value.nil?
 
           # добавить проверку, что main_class присутствует в списке классов
-          key.failure(:invalid_class_name) unless value.keys.all? { |item| item.in?(CLASSES) }
+          key.failure(:invalid_class_name) unless value.keys.all? { |item| item.in?(::Dnd5::Character::CLASSES) }
           key.failure(:invalid_level) unless value.values.all? { |item| item.to_i.between?(1, 20) }
         end
 
         rule(:energy) do
           next if value.nil?
 
-          key.failure(:invalid_class_name) unless value.keys.all? { |item| item.in?(CLASSES) }
+          key.failure(:invalid_class_name) unless value.keys.all? { |item| item.in?(::Dnd5::Character::CLASSES) }
           key.failure(:invalid_level) unless value.values.all? { |item| item.to_i.between?(1, 40) }
+        end
+
+        rule(:subclasses) do
+          next if value.nil?
+
+          # добавить проверку, что подкласс еще не установлен
+          key.failure(:invalid_class_name) unless value.keys.all? { |item| item.in?(::Dnd5::Character::CLASSES) }
+          unless value.all? { |class_name, subclass| Dnd5::Character::SUBCLASSES[class_name].include?(subclass) }
+            key.failure(:invalid_subclass)
+          end
         end
       end
       # rubocop: enable Metrics/BlockLength
