@@ -3,7 +3,7 @@
 module Dnd5
   module Classes
     class SorcererDecorator
-      # rubocop: disable Metrics/AbcSize
+      # rubocop: disable Metrics/AbcSize, Metrics/MethodLength
       def decorate(result:, class_level:)
         result[:max_energy] = class_level if class_level >= 2
         result[:class_save_dc] = %i[con cha] if result[:main_class] == 'sorcerer'
@@ -32,7 +32,7 @@ module Dnd5
 
         result
       end
-      # rubocop: enable Metrics/AbcSize
+      # rubocop: enable Metrics/AbcSize, Metrics/MethodLength
 
       private
 

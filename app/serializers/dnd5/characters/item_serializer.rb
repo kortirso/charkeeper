@@ -7,7 +7,8 @@ module Dnd5
 
       attributes :id, :quantity, :ready_to_use, :name, :kind, :weight, :price
 
-      delegate :kind, :weight, :price, to: :item
+      delegate :weight, :price, to: :data
+      delegate :kind, :data, to: :item
       delegate :item, to: :object
 
       def name

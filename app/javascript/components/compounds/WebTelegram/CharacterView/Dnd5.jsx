@@ -232,18 +232,18 @@ export const Dnd5 = (props) => {
       newValue = { ...spentSpellSlots(), [level]: 1 };
     }
 
-    const result = await updateCharacterRequest(appState.accessToken, 'dnd5', props.userCharacterId, { spent_spell_slots: newValue });
+    const result = await updateCharacterRequest(appState.accessToken, 'dnd5', props.characterId, { character: { spent_spell_slots: newValue } });
     if (result.errors === undefined) setSpentSpellSlots(newValue);
   }
 
   const freeSpellSlot = async (level) => {
     const newValue = { ...spentSpellSlots(), [level]: spentSpellSlots()[level] - 1 };
-    const result = await updateCharacterRequest(appState.accessToken, 'dnd5', props.userCharacterId, { spent_spell_slots: newValue });
+    const result = await updateCharacterRequest(appState.accessToken, 'dnd5', props.characterId, { character: { spent_spell_slots: newValue } });
     if (result.errors === undefined) setSpentSpellSlots(newValue);
   }
 
   const updateCoins = async () => {
-    await updateCharacterRequest(appState.accessToken, 'dnd5', props.userCharacterId, { coins: changingCoins() });
+    await updateCharacterRequest(appState.accessToken, 'dnd5', props.characterId, { character: { coins: changingCoins() } });
 
     batch(() => {
       setModalOpenMode(null);
@@ -268,7 +268,7 @@ export const Dnd5 = (props) => {
     await createCharacterSpellRequest(
       appState.accessToken,
       'dnd5',
-      props.userCharacterId,
+      props.characterId,
       { spell_id: spellId, target_spell_class: activeSpellClass() }
     );
     reloadCharacterSpells();
@@ -278,7 +278,7 @@ export const Dnd5 = (props) => {
     await removeCharacterSpellRequest(
       appState.accessToken,
       'dnd5',
-      props.userCharacterId,
+      props.characterId,
       spellId
     );
     reloadCharacterSpells();
@@ -288,7 +288,7 @@ export const Dnd5 = (props) => {
     await updateCharacterSpellRequest(
       appState.accessToken,
       'dnd5',
-      props.userCharacterId,
+      props.characterId,
       spellId,
       { 'ready_to_use': 1 }
     );
@@ -299,7 +299,7 @@ export const Dnd5 = (props) => {
     await updateCharacterSpellRequest(
       appState.accessToken,
       'dnd5',
-      props.userCharacterId,
+      props.characterId,
       spellId,
       { 'ready_to_use': 0 }
     );
@@ -307,7 +307,7 @@ export const Dnd5 = (props) => {
   }
 
   const updateCharacter = async (payload) => {
-    const result = await updateCharacterRequest(appState.accessToken, 'dnd5', props.userCharacterId, payload);
+    const result = await updateCharacterRequest(appState.accessToken, 'dnd5', props.characterId, { character: payload });
 
     if (result.errors === undefined) {
       batch(() => {
@@ -319,7 +319,7 @@ export const Dnd5 = (props) => {
   }
 
   const buyItem = async (item) => {
-    const result = await createCharacterItemRequest(appState.accessToken, 'dnd5', props.userCharacterId, { item_id: item.id });
+    const result = await createCharacterItemRequest(appState.accessToken, 'dnd5', props.characterId, { item_id: item.id });
 
     if (result.errors === undefined) {
       reloadCharacterItems();
@@ -328,7 +328,7 @@ export const Dnd5 = (props) => {
   }
 
   const updateCharacterItem = async (item, payload) => {
-    const result = await updateCharacterItemRequest(appState.accessToken, 'dnd5', props.userCharacterId, item.id, payload);
+    const result = await updateCharacterItemRequest(appState.accessToken, 'dnd5', props.characterId, item.id, payload);
 
     if (result.errors === undefined) {
       if (item.kind !== 'item') reloadCharacterItems();
@@ -340,7 +340,7 @@ export const Dnd5 = (props) => {
     const result = await updateCharacterItemRequest(
       appState.accessToken,
       'dnd5',
-      props.userCharacterId,
+      props.characterId,
       changingItem().id,
       { character_item: { quantity: changingItem().quantity } }
     );
@@ -356,7 +356,7 @@ export const Dnd5 = (props) => {
   }
 
   const removeCharacterItem = async (item) => {
-    const result = await removeCharacterItemRequest(appState.accessToken, 'dnd5', props.userCharacterId, item.id);
+    const result = await removeCharacterItemRequest(appState.accessToken, 'dnd5', props.characterId, item.id);
 
     if (result.errors === undefined) {
       if (item.kind !== 'item') reloadCharacterItems();
@@ -480,8 +480,8 @@ export const Dnd5 = (props) => {
                 <td class="py-1">
                   <p>{item.name}</p>
                 </td>
-                <td class="py-1 text-center">{item.weight}</td>
-                <td class="py-1 text-center">{item.price / 100}</td>
+                <td class="py-1 text-center">{item.data.weight}</td>
+                <td class="py-1 text-center">{item.data.price / 100}</td>
                 <td
                   class="cursor-pointer"
                   onClick={() => buyItem(item)}
@@ -499,7 +499,7 @@ export const Dnd5 = (props) => {
       <div class="w-full flex justify-between items-center py-4 px-2 bg-white border-b border-gray-200">
         <div class="w-10" />
         <div class="flex-1 flex flex-col items-center">
-          <p>{objectData().name}</p>
+          <p>{props.name}</p>
           <p class="text-sm">
             {t(`races.${decoratedData().race}`)} | {Object.entries(decoratedData().classes).map(([item, value]) => `${t(`classes.${item}`)} ${value}`).join(' * ')}
           </p>

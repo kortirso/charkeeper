@@ -15,11 +15,7 @@ module WebTelegram
       private
 
       def character
-        current_user
-          .user_characters
-          .where(provider: User::Character::DND5)
-          .find(params[:id])
-          .characterable
+        current_user.characters.dnd5.find(params[:id])
       end
 
       def update_params

@@ -2,9 +2,12 @@
 
 module Dnd5
   class SpellSerializer < ApplicationSerializer
-    ATTRIBUTES = %i[id name level attacking available_for].freeze
+    ATTRIBUTES = %i[id name level available_for].freeze
 
-    attributes :id, :name, :level, :attacking, :available_for
+    attributes :id, :name, :level, :available_for
+
+    delegate :level, :available_for, to: :data
+    delegate :data, to: :object
 
     def name
       object.name[I18n.locale.to_s]

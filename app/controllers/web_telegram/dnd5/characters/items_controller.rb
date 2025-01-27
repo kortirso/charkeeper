@@ -46,12 +46,7 @@ module WebTelegram
         private
 
         def find_character
-          @character =
-            current_user
-              .user_characters
-              .where(provider: User::Character::DND5)
-              .find(params[:character_id])
-              .characterable
+          @character = current_user.characters.dnd5.find(params[:character_id])
         end
 
         def find_character_item
@@ -59,16 +54,13 @@ module WebTelegram
         end
 
         def items
-          @character
-            .items
-            .includes(:item)
-            .order('dnd5_character_items.ready_to_use DESC')
+          @character.items.includes(:item).order('character_items.ready_to_use DESC')
         end
 
         def create_params
           {
             character: @character,
-            item: ::Dnd5::Item.find(params[:item_id])
+            item: ::Item.dnd5.find(params[:item_id])
           }
         end
 

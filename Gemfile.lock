@@ -328,6 +328,8 @@ GEM
       simplecov_json_formatter (~> 0.1)
     simplecov-html (0.13.1)
     simplecov_json_formatter (0.1.4)
+    store_model (4.2.0)
+      activerecord (>= 7.0)
     stringio (3.1.2)
     strong_migrations (2.1.0)
       activerecord (>= 6.1)
@@ -400,6 +402,7 @@ DEPENDENCIES
   securerandom (= 0.3.2)
   shoulda-matchers (~> 6.0)
   simplecov
+  store_model
   strong_migrations (~> 2.0)
   tailwindcss-rails
 

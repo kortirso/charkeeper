@@ -7,7 +7,7 @@
     },
     "weight": 4,
     "price": 20,
-    "data": {
+    "info": {
       "type": "melee",
       "damage": "1d6",
       "damage_type": "bludge",
@@ -22,7 +22,7 @@
     },
     "weight": 4,
     "price": 500,
-    "data": {
+    "info": {
       "type": "melee",
       "damage": "1d6",
       "damage_type": "bludge",
@@ -37,7 +37,7 @@
     },
     "weight": 2,
     "price": 10,
-    "data": {
+    "info": {
       "type": "melee",
       "damage": "1d4",
       "damage_type": "bludge",
@@ -52,7 +52,7 @@
     },
     "weight": 1,
     "price": 200,
-    "data": {
+    "info": {
       "type": "thrown",
       "damage": "1d4",
       "damage_type": "pierce",
@@ -68,7 +68,7 @@
     },
     "weight": 3,
     "price": 100,
-    "data": {
+    "info": {
       "type": "thrown",
       "damage": "1d6",
       "damage_type": "pierce",
@@ -84,7 +84,7 @@
     },
     "weight": 2,
     "price": 200,
-    "data": {
+    "info": {
       "type": "thrown",
       "damage": "1d4",
       "damage_type": "bludge",
@@ -100,7 +100,7 @@
     },
     "weight": 2,
     "price": 50,
-    "data": {
+    "info": {
       "type": "thrown",
       "damage": "1d6",
       "damage_type": "pierce",
@@ -116,7 +116,7 @@
     },
     "weight": 10,
     "price": 20,
-    "data": {
+    "info": {
       "type": "melee",
       "damage": "1d8",
       "damage_type": "bludge",
@@ -131,7 +131,7 @@
     },
     "weight": 2,
     "price": 500,
-    "data": {
+    "info": {
       "type": "thrown",
       "damage": "1d6",
       "damage_type": "slash",
@@ -147,7 +147,7 @@
     },
     "weight": 2,
     "price": 100,
-    "data": {
+    "info": {
       "type": "melee",
       "damage": "1d4",
       "damage_type": "slash",
@@ -162,7 +162,7 @@
     },
     "weight": 5,
     "price": 2500,
-    "data": {
+    "info": {
       "type": "range",
       "damage": "1d8",
       "damage_type": "pierce",
@@ -178,7 +178,7 @@
     },
     "weight": 0.25,
     "price": 5,
-    "data": {
+    "info": {
       "type": "range",
       "damage": "1d4",
       "damage_type": "pierce",
@@ -194,7 +194,7 @@
     },
     "weight": 2,
     "price": 2500,
-    "data": {
+    "info": {
       "type": "range",
       "damage": "1d6",
       "damage_type": "pierce",
@@ -210,7 +210,7 @@
     },
     "weight": 0,
     "price": 10,
-    "data": {
+    "info": {
       "type": "range",
       "damage": "1d4",
       "damage_type": "bludge",
@@ -226,7 +226,7 @@
     },
     "weight": 6,
     "price": 2000,
-    "data": {
+    "info": {
       "type": "melee",
       "damage": "1d10",
       "damage_type": "slash",
@@ -241,7 +241,7 @@
     },
     "weight": 2,
     "price": 500,
-    "data": {
+    "info": {
       "type": "melee",
       "damage": "1d8",
       "damage_type": "pierce",
@@ -256,7 +256,7 @@
     },
     "weight": 2,
     "price": 1500,
-    "data": {
+    "info": {
       "type": "melee",
       "damage": "1d8",
       "damage_type": "bludge",
@@ -271,7 +271,7 @@
     },
     "weight": 4,
     "price": 1000,
-    "data": {
+    "info": {
       "type": "melee",
       "damage": "1d8",
       "damage_type": "slash",
@@ -286,7 +286,7 @@
     },
     "weight": 6,
     "price": 2000,
-    "data": {
+    "info": {
       "type": "melee",
       "damage": "1d10",
       "damage_type": "slash",
@@ -301,7 +301,7 @@
     },
     "weight": 6,
     "price": 5000,
-    "data": {
+    "info": {
       "type": "melee",
       "damage": "2d6",
       "damage_type": "slash",
@@ -316,7 +316,7 @@
     },
     "weight": 6,
     "price": 1000,
-    "data": {
+    "info": {
       "type": "melee",
       "damage": "1d12",
       "damage_type": "pierce",
@@ -331,7 +331,7 @@
     },
     "weight": 3,
     "price": 1500,
-    "data": {
+    "info": {
       "type": "melee",
       "damage": "1d8",
       "damage_type": "slash",
@@ -346,7 +346,7 @@
     },
     "weight": 3,
     "price": 200,
-    "data": {
+    "info": {
       "type": "melee",
       "damage": "1d4",
       "damage_type": "slash",
@@ -361,7 +361,7 @@
     },
     "weight": 2,
     "price": 1000,
-    "data": {
+    "info": {
       "type": "melee",
       "damage": "1d6",
       "damage_type": "pierce",
@@ -376,7 +376,7 @@
     },
     "weight": 10,
     "price": 1000,
-    "data": {
+    "info": {
       "type": "melee",
       "damage": "2d6",
       "damage_type": "bludge",
@@ -391,7 +391,7 @@
     },
     "weight": 4,
     "price": 1500,
-    "data": {
+    "info": {
       "type": "melee",
       "damage": "1d8",
       "damage_type": "pierce",
@@ -406,7 +406,7 @@
     },
     "weight": 18,
     "price": 500,
-    "data": {
+    "info": {
       "type": "melee",
       "damage": "1d10",
       "damage_type": "pierce",
@@ -421,7 +421,7 @@
     },
     "weight": 2,
     "price": 2500,
-    "data": {
+    "info": {
       "type": "melee",
       "damage": "1d8",
       "damage_type": "pierce",
@@ -436,7 +436,7 @@
     },
     "weight": 7,
     "price": 3000,
-    "data": {
+    "info": {
       "type": "melee",
       "damage": "1d12",
       "damage_type": "slash",
@@ -451,7 +451,7 @@
     },
     "weight": 3,
     "price": 2500,
-    "data": {
+    "info": {
       "type": "melee",
       "damage": "1d6",
       "damage_type": "slash",
@@ -466,7 +466,7 @@
     },
     "weight": 4,
     "price": 500,
-    "data": {
+    "info": {
       "type": "thrown",
       "damage": "1d6",
       "damage_type": "pierce",
@@ -482,7 +482,7 @@
     },
     "weight": 2,
     "price": 1000,
-    "data": {
+    "info": {
       "type": "melee",
       "damage": "1d8",
       "damage_type": "bludge",
@@ -497,7 +497,7 @@
     },
     "weight": 3,
     "price": 7500,
-    "data": {
+    "info": {
       "type": "range",
       "damage": "1d6",
       "damage_type": "pierce",
@@ -513,7 +513,7 @@
     },
     "weight": 18,
     "price": 5000,
-    "data": {
+    "info": {
       "type": "range",
       "damage": "1d10",
       "damage_type": "pierce",
@@ -529,7 +529,7 @@
     },
     "weight": 2,
     "price": 5000,
-    "data": {
+    "info": {
       "type": "range",
       "damage": "1d8",
       "damage_type": "pierce",
@@ -545,7 +545,7 @@
     },
     "weight": 1,
     "price": 1000,
-    "data": {
+    "info": {
       "type": "range",
       "damage": "1",
       "damage_type": "pierce",
@@ -561,7 +561,7 @@
     },
     "weight": 3,
     "price": 100,
-    "data": {
+    "info": {
       "type": "range",
       "dist": "5/15",
       "caption": []

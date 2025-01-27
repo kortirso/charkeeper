@@ -11,7 +11,7 @@ export const CharacterView = () => {
   const [appState] = useAppState();
 
   createEffect(() => {
-    if (appState.activePageParams.id === character().user_character_id) return;
+    if (appState.activePageParams.id === character().id) return;
 
     const fetchCharacter = async () => await fetchCharacterRequest(appState.accessToken, appState.activePageParams.id);
 
@@ -29,11 +29,12 @@ export const CharacterView = () => {
 
   return (
     <Switch>
-      <Match when={character().provider === 'DnD 5'}>
+      <Match when={character().provider === 'dnd5'}>
         <Dnd5
           objectData={character().object_data}
           decoratedData={character().decorated_data}
-          userCharacterId={character().user_character_id}
+          characterId={character().id}
+          name={character().name}
           onReloadCharacter={reloadCharacter}
         />
       </Match>

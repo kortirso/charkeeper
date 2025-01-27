@@ -5,11 +5,11 @@ module WebTelegram
     class ItemsController < WebTelegram::BaseController
       include SerializeRelation
 
-      INDEX_SERIALIZER_FIELDS = %i[id kind name weight price data].freeze
+      INDEX_SERIALIZER_FIELDS = %i[id kind name data].freeze
 
       def index
         render json: serialize_relation(
-          ::Dnd5::Item.order(kind: :asc),
+          ::Item.dnd5.order(kind: :asc),
           ::Dnd5::ItemSerializer,
           :items,
           only: INDEX_SERIALIZER_FIELDS

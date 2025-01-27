@@ -75,7 +75,8 @@ module CharactersContext
       end
 
       def do_persist(input)
-        input[:character].update!(input.except(:character))
+        input[:character].data = input[:character].data.attributes.merge(input.except(:character).stringify_keys)
+        input[:character].save!
 
         { result: input[:character].reload }
       end

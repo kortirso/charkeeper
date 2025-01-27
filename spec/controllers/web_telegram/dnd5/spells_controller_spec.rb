@@ -6,7 +6,7 @@ describe WebTelegram::Dnd5::SpellsController do
 
   describe 'GET#index' do
     context 'for logged users' do
-      before { create :dnd5_spell }
+      before { create :spell }
 
       it 'returns data', :aggregate_failures do
         get :index, params: { characters_access_token: access_token, format: :json }
@@ -15,7 +15,7 @@ describe WebTelegram::Dnd5::SpellsController do
 
         expect(response).to have_http_status :ok
         expect(response.parsed_body['spells'].size).to eq 1
-        expect(response_values.keys).to contain_exactly('id', 'level', 'name', 'attacking', 'available_for')
+        expect(response_values.keys).to contain_exactly('id', 'name', 'level', 'available_for')
       end
     end
   end

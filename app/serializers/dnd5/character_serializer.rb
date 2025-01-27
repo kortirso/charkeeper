@@ -2,12 +2,12 @@
 
 module Dnd5
   class CharacterSerializer < ApplicationSerializer
-    attributes :object_data, :decorated_data, :provider, :user_character_id
+    attributes :id, :name, :object_data, :decorated_data, :provider
 
     delegate :decorator, to: :object
 
     def object_data
-      object.slice('name', 'level', 'race', 'classes')
+      object.data.slice('level', 'race', 'classes')
     end
 
     def decorated_data
@@ -15,11 +15,7 @@ module Dnd5
     end
 
     def provider
-      ::User::Character::DND5
-    end
-
-    def user_character_id
-      object.user_character.id
+      'dnd5'
     end
   end
 end

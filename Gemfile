@@ -48,6 +48,9 @@ gem 'panko_serializer'
 gem 'authkeeper', '0.1.6'
 gem 'jwt', '~> 2.5'
 
+# Work with JSON-backed attributes
+gem 'store_model'
+
 group :development, :test do
   gem 'rubocop', '~> 1.35', require: false
   gem 'rubocop-factory_bot', '~> 2.0', require: false

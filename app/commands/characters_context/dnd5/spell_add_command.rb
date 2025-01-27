@@ -17,18 +17,20 @@ module CharactersContext
         end
 
         rule(:spell, :target_spell_class) do
-          key(:spell).failure(:can_not_learn) unless values[:spell].available_for.include?(values[:target_spell_class])
+          key(:spell).failure(:can_not_learn) unless values[:spell].data.available_for.include?(values[:target_spell_class])
         end
       end
 
       private
 
       def do_persist(input)
-        ::Dnd5::Character::Spell.create(
+        ::Dnd5::Character::Spell.create!(
           character: input[:character],
           spell: input[:spell],
-          prepared_by: input[:target_spell_class],
-          ready_to_use: input[:target_spell_class] != ::Dnd5::Character::WIZARD
+          data: {
+            prepared_by: input[:target_spell_class],
+            ready_to_use: input[:target_spell_class] != ::Dnd5::Character::WIZARD
+          }
         )
 
         { result: input[:character].reload }

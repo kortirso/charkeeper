@@ -5,11 +5,11 @@ module WebTelegram
     class SpellsController < WebTelegram::BaseController
       include SerializeRelation
 
-      INDEX_SERIALIZER_FIELDS = %i[id name level attacking available_for].freeze
+      INDEX_SERIALIZER_FIELDS = %i[id name level available_for].freeze
 
       def index
         render json: serialize_relation(
-          ::Dnd5::Spell.order(level: :asc),
+          ::Spell.dnd5,
           ::Dnd5::SpellSerializer,
           :spells,
           only: INDEX_SERIALIZER_FIELDS

@@ -6,16 +6,15 @@ describe WebTelegram::Dnd5::CharactersController do
 
   describe 'PATCH#update' do
     context 'for logged users' do
-      let!(:character) { create :dnd5_character }
-      let!(:user_character) { create :user_character, user: user_session.user, characterable: character }
+      let!(:character) { create :character, user: user_session.user }
 
       it 'updates character', :aggregate_failures do
         patch :update, params: {
-          id: user_character.id, character: { classes: { monk: 12 } }, characters_access_token: access_token
+          id: character.id, character: { classes: { monk: 12 } }, characters_access_token: access_token
         }
 
         expect(response).to have_http_status :ok
-        expect(character.reload.classes).to eq({ 'monk' => 12 })
+        expect(character.reload.data.classes).to eq({ 'monk' => 12 })
       end
 
       context 'for not existing character' do
@@ -32,7 +31,7 @@ describe WebTelegram::Dnd5::CharactersController do
       context 'for invalid request' do
         it 'returns error', :aggregate_failures do
           patch :update, params: {
-            id: user_character.id, character: { classes: { monk: 31 } }, characters_access_token: access_token
+            id: character.id, character: { classes: { monk: 31 } }, characters_access_token: access_token
           }
 
           expect(response).to have_http_status :unprocessable_entity

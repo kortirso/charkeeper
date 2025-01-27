@@ -6,16 +6,16 @@ describe WebTelegram::Dnd5::ItemsController do
 
   describe 'GET#index' do
     context 'for logged users' do
-      before { create :dnd5_item }
+      before { create :item }
 
       it 'returns data', :aggregate_failures do
-        get :index, params: { characters_access_token: access_token, format: :json }
+        get :index, params: { characters_access_token: access_token }
 
         response_values = response.parsed_body.dig('items', 0)
 
         expect(response).to have_http_status :ok
         expect(response.parsed_body['items'].size).to eq 1
-        expect(response_values.keys).to contain_exactly('id', 'kind', 'name', 'weight', 'price', 'data')
+        expect(response_values.keys).to contain_exactly('id', 'kind', 'name', 'data')
       end
     end
   end

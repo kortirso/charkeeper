@@ -1,22 +1,24 @@
 # frozen_string_literal: true
 
 describe Dnd5::CharacterDecorator do
-  subject(:decorate) { described_class.new(data: dnd5_character).decorate }
+  subject(:decorate) {
+    described_class.new(character: Character.find(character.id)).decorate
+  }
 
-  let!(:dnd5_character) { create :dnd5_character, selected_skills: %w[history] }
+  let!(:character) { create :character }
 
   before do
-    torch = create :dnd5_item
-    melee_weapon = create :dnd5_item, kind: 'light weapon', data: { type: 'melee', caption: [] }
-    thrown_weapon = create :dnd5_item, kind: 'light weapon', data: { type: 'thrown', caption: [] }
-    range_weapon = create :dnd5_item, kind: 'light weapon', data: { type: 'range', caption: [] }
-    armor = create :dnd5_item, kind: 'light armor', data: { ac: 10 }
+    torch = create :item
+    melee_weapon = create :item, data: { kind: 'light weapon', info: { type: 'melee', caption: [] } }
+    thrown_weapon = create :item, data: { kind: 'light weapon', info: { type: 'thrown', caption: [] } }
+    range_weapon = create :item, data: { kind: 'light weapon', info: { type: 'range', caption: [] } }
+    armor = create :item, data: { kind: 'light armor', info: { ac: 10 } }
 
-    create :dnd5_character_item, character: dnd5_character, item: torch
-    create :dnd5_character_item, character: dnd5_character, item: melee_weapon
-    create :dnd5_character_item, character: dnd5_character, item: thrown_weapon
-    create :dnd5_character_item, character: dnd5_character, item: range_weapon
-    create :dnd5_character_item, character: dnd5_character, item: armor, ready_to_use: true
+    create :character_item, character: character, item: torch
+    create :character_item, character: character, item: melee_weapon
+    create :character_item, character: character, item: thrown_weapon
+    create :character_item, character: character, item: range_weapon
+    create :character_item, character: character, item: armor, data: { ready_to_use: true }
   end
 
   it 'returns hash with decorated data of character', :aggregate_failures do

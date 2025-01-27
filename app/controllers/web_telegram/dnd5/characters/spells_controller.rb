@@ -11,7 +11,7 @@ module WebTelegram
         ]
         include SerializeRelation
 
-        INDEX_SERIALIZER_FIELDS = %i[id ready_to_use prepared_by name level comment spell_id].freeze
+        INDEX_SERIALIZER_FIELDS = %i[id ready_to_use prepared_by name level spell_id].freeze
 
         before_action :find_character
 
@@ -47,25 +47,17 @@ module WebTelegram
         private
 
         def find_character
-          @character =
-            current_user
-              .user_characters
-              .where(provider: User::Character::DND5)
-              .find(params[:character_id])
-              .characterable
+          @character = current_user.characters.dnd5.find(params[:character_id])
         end
 
         def spells
-          @character
-            .spells
-            .includes(:spell)
-            .order('dnd5_spells.level ASC', 'dnd5_character_spells.ready_to_use DESC')
+          @character.spells.includes(:spell)
         end
 
         def create_params
           {
             character: @character,
-            spell: ::Dnd5::Spell.find(params[:spell_id]),
+            spell: ::Spell.dnd5.find(params[:spell_id]),
             target_spell_class: params[:target_spell_class]
           }
         end
