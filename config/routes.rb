@@ -8,7 +8,7 @@ Rails.application.routes.draw do
     resources :characters, only: %i[index show]
 
     namespace :dnd5 do
-      resources :characters, only: %i[update] do
+      resources :characters, only: %i[create update] do
         resources :items, only: %i[index create update destroy], module: 'characters'
         resources :spells, only: %i[index create update destroy], module: 'characters'
       end
