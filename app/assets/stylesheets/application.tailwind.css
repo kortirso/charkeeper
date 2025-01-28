@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 .modal {
-  @apply relative pt-12 p-8 bg-gray-50 rounded overflow-y-scroll;
+  @apply relative pt-12 p-8 bg-gray-50 rounded;
 
   max-width: 90%;
   max-height: 90%;
@@ -87,7 +87,7 @@
 }
 
 .form-field .form-value {
-  @apply px-4 leading-8 rounded-lg border border-gray-200 bg-white;
+  @apply px-4 leading-8 rounded border border-gray-200 bg-white;
 
   color: '#666';
 }
@@ -103,7 +103,7 @@
 .form-field .form-dropdown {
   @apply absolute w-full border-r border-l border-gray-200 z-10 overflow-y-scroll;
 
-  max-height: 10rem;
+  max-height: 7.5rem;
 }
 
 .form-field .form-dropdown li {

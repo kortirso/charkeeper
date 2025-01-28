@@ -31,6 +31,14 @@
     "weaponsList": "Weapons list",
     "armorList": "Armor list"
   },
+  "newCharacter": {
+    "title": "Create new character",
+    "name": "Name",
+    "platform": "Platform",
+    "race": "Race",
+    "subrace": "Subrace",
+    "mainClass": "Main class"
+  },
   "attacks": {
     "bonus": "Bonus",
     "damage": "Damage",
@@ -74,7 +82,32 @@
   "races": {
     "dwarf": "Dwarf",
     "human": "Human",
-    "elf": "Elf"
+    "elf": "Elf",
+    "halfling": "Halfling",
+    "dragonborn": "Dragonborn",
+    "gnome": "Gnome",
+    "half_elf": "Half-Elf",
+    "half_orc": "Half-Orc",
+    "tiefling": "Tiefling"
+  },
+  "subraces": {
+    "dwarf": {
+      "mountain_dwarf": "Mountain Dwarf",
+      "hill_dwarf": "Hill Dwarf"
+    },
+    "elf": {
+      "high_elf": "High Elf",
+      "wood_elf": "Wood Elf",
+      "drow": "Drow"
+    },
+    "halfling": {
+      "lightfoot": "Lightfoot Halfling",
+      "stout": "Stout Halfling"
+    },
+    "gnome": {
+      "forest_gnome": "Forest Gnome",
+      "rock_gnome": "Rock Gnome"
+    }
   },
   "classes": {
     "barbarian": "Barbarian",
@@ -91,20 +124,70 @@
     "wizard": "Wizard"
   },
   "subclasses": {
-    "barbarian": {},
-    "bard": {},
-    "cleric": {},
-    "druid": {},
-    "fighter": {
-      "battle_master": "Battle master"
+    "barbarian": {
+      "path_of_the_berserker": "Path of the Berserker",
+      "path_of_the_totem_warrior": "Path of the Totem Warrior"
     },
-    "monk": {},
-    "paladin": {},
-    "ranger": {},
-    "rogue": {},
-    "sorcerer": {},
-    "warlock": {},
-    "wizard": {}
+    "bard": {
+      "college_of_lore": "College of Lore",
+      "college_of_valor": "College of Valor"
+    },
+    "cleric": {
+      "knowledge_domain": "Knowledge Domain",
+      "life_domain": "Life Domain",
+      "light_domain": "Light Domain",
+      "nature_domain": "Nature Domain",
+      "tempest_domain": "Tempest Domain",
+      "trickery_domain": "Trickery Domain",
+      "war_domain": "War Domain"
+    },
+    "druid": {
+      "circle_of_the_land": "Circle of the Land",
+      "circle_of_the_moon": "Circle of the Moon"
+    },
+    "fighter": {
+      "champion": "Champion",
+      "battle_master": "Battle master",
+      "eldritch_knight": "Eldtitch Knight"
+    },
+    "monk": {
+      "way_of_the_open_hand": "Way of the Open Hand",
+      "way_of_shadow": "Way of Shadow",
+      "way_of_the_four_elements": "Way of the Four Elements"
+    },
+    "paladin": {
+      "oath_of_devotion": "Oath of Devotion",
+      "oath_of_the_ancients": "Oath of the Ancients",
+      "oath_of_vengeance": "Oath of Vengeance"
+    },
+    "ranger": {
+      "hunter": "Hunter",
+      "beast_master": "Beast Master"
+    },
+    "rogue": {
+      "thief": "Thief",
+      "assassin": "Assassin",
+      "arcane_trickster": "Arcane Trickster"
+    },
+    "sorcerer": {
+      "draconic_bloodline": "Draconic Bloodline",
+      "wild_magic": "Wild Magic"
+    },
+    "warlock": {
+      "the_archfey": "The Archfey",
+      "the_fiend": "The Fiend",
+      "the_great_old_one": "The Great Old One"
+    },
+    "wizard": {
+      "school_of_abjuration": "School of Abjuration",
+      "school_of_conjuration": "School of Conjuration",
+      "school_of_divination": "School of Divination",
+      "school_of_enchantment": "School of Enchantment",
+      "school_of_evocation": "School of Evocation",
+      "school_of_illusion": "School of Illusion",
+      "school_of_necromancy": "School of Necromancy",
+      "school_of_transmutation": "School of Transmutation"
+    }
   },
   "abilities": {
     "str": "Strength",

@@ -14,21 +14,21 @@ export const Select = (props) => {
   return (
     <div class="form-field relative cursor-pointer" use:clickOutside={() => setIsOpen(false)}>
       <Show when={props.labelText}>
-        <label>{props.labelText}</label>
+        <label class="text-sm">{props.labelText}</label>
       </Show>
       <div class={[props.classList, 'relative'].join(' ')}>
         <div
           class={[isOpen() ? 'is-open' : '', 'form-value flex justify-between items-center py-2'].join(' ')}
           onClick={() => setIsOpen(!isOpen())}
         >
-          <span>{props.selectedValue ? props.items[props.selectedValue] : ''}</span>
+          <span class="text-sm">{props.selectedValue ? props.items[props.selectedValue] : ''}</span>
           <Chevron rotated={isOpen()} />
         </div>
         <Show when={isOpen()}>
           <ul class="form-dropdown">
             <For each={Object.entries(props.items)}>
               {([key, value]) =>
-                <li onClick={() => onSelect(key)}>
+                <li class="text-sm" onClick={() => onSelect(key)}>
                   {value}
                 </li>
               }

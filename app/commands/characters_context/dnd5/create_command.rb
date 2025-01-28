@@ -16,6 +16,16 @@ module CharactersContext
           required(:race).filled(Races)
           required(:main_class).filled(Classes)
           required(:alignment).filled(Alignments)
+          optional(:subrace).filled(:string)
+        end
+
+        rule(:race, :subrace) do
+          next if values[:subrace].nil?
+
+          subraces = ::Dnd5::Character::SUBRACES[values[:race]]
+          next if subraces&.include?(values[:subrace])
+
+          key(:subrace).failure(:invalid)
         end
       end
 
@@ -24,12 +34,14 @@ module CharactersContext
       def do_prepare(input)
         input[:classes] = { input[:main_class] => 1 }
         input[:subclasses] = { input[:main_class] => nil }
-        input[:health] = 8 # class based
-        input[:speed] = 30 # race based
-        input[:languages] = [] # race/class based
-        input[:weapon_core_skills] = [] # race/class based
-        input[:weapon_skills] = [] # race/class based
-        input[:armor_proficiency] = [] # race/class based
+        input[:health] = 8 # class base
+
+        base_decorator = Dnd5NewCharacter::BaseDecorator.new(**input.slice(:race, :subrace, :main_class).symbolize_keys)
+        race_decorator = Dnd5NewCharacter::RaceDecorator.new(decorator: base_decorator)
+        subrace_decorator = Dnd5NewCharacter::SubraceDecorator.new(decorator: race_decorator)
+        decorator = Dnd5NewCharacter::ClassDecorator.new(decorator: subrace_decorator)
+
+        input.merge!(decorator.decorate)
       end
 
       def do_persist(input)

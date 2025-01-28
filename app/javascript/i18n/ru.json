@@ -31,6 +31,14 @@
     "weaponsList": "Оружие",
     "armorList": "Броня"
   },
+  "newCharacter": {
+    "title": "Создание персонажа",
+    "name": "Имя персонажа",
+    "platform": "Платформа",
+    "race": "Раса",
+    "subrace": "Подраса",
+    "mainClass": "Основной класс"
+  },
   "attacks": {
     "bonus": "Бонус",
     "damage": "Урон",
@@ -74,7 +82,32 @@
   "races": {
     "dwarf": "Дварф",
     "human": "Человек",
-    "elf": "Эльф"
+    "elf": "Эльф",
+    "halfling": "Полурослик",
+    "dragonborn": "Драконорожденный",
+    "gnome": "Гном",
+    "half_elf": "Полуэльф",
+    "half_orc": "Полуорк",
+    "tiefling": "Тифлинг"
+  },
+  "subraces": {
+    "dwarf": {
+      "mountain_dwarf": "Горный дварф",
+      "hill_dwarf": "Холмовой дварф"
+    },
+    "elf": {
+      "high_elf": "Высший эльф",
+      "wood_elf": "Лесной эльф",
+      "drow": "Дроу"
+    },
+    "halfling": {
+      "lightfoot": "Легконогий полурослик",
+      "stout": "Коренастый полурослик"
+    },
+    "gnome": {
+      "forest_gnome": "Лесной гном",
+      "rock_gnome": "Скальный гном"
+    }
   },
   "classes": {
     "barbarian": "Варвар",
@@ -91,20 +124,70 @@
     "wizard": "Волшебник"
   },
   "subclasses": {
-    "barbarian": {},
-    "bard": {},
-    "cleric": {},
-    "druid": {},
-    "fighter": {
-      "battle_master": "Мастер боевых искусств"
+    "barbarian": {
+      "path_of_the_berserker": "Путь берсерка",
+      "path_of_the_totem_warrior": "Путь тотемного воина"
     },
-    "monk": {},
-    "paladin": {},
-    "ranger": {},
-    "rogue": {},
-    "sorcerer": {},
-    "warlock": {},
-    "wizard": {}
+    "bard": {
+      "college_of_lore": "Коллегия знаний",
+      "college_of_valor": "Коллегия доблести"
+    },
+    "cleric": {
+      "knowledge_domain": "Домен знаний",
+      "life_domain": "Домен жизни",
+      "light_domain": "Домен света",
+      "nature_domain": "Домен природы",
+      "tempest_domain": "Домен бури",
+      "trickery_domain": "Домен обмана",
+      "war_domain": "Домен войны"
+    },
+    "druid": {
+      "circle_of_the_land": "Круг земли",
+      "circle_of_the_moon": "Круг луны"
+    },
+    "fighter": {
+      "champion": "Чемпион",
+      "battle_master": "Мастер боевых искусств",
+      "eldritch_knight": "Мистический рыцарь"
+    },
+    "monk": {
+      "way_of_the_open_hand": "Путь открытой ладони",
+      "way_of_shadow": "Путь тени",
+      "way_of_the_four_elements": "Путь четырёх стихий"
+    },
+    "paladin": {
+      "oath_of_devotion": "Клятва преданности",
+      "oath_of_the_ancients": "Клятка древних",
+      "oath_of_vengeance": "Клятва мести"
+    },
+    "ranger": {
+      "hunter": "Охотник",
+      "beast_master": "Повелитель зверей"
+    },
+    "rogue": {
+      "thief": "Вор",
+      "assassin": "Убийца",
+      "arcane_trickster": "Мистический ловкач"
+    },
+    "sorcerer": {
+      "draconic_bloodline": "Наследие драконьей крови",
+      "wild_magic": "Дикая магия"
+    },
+    "warlock": {
+      "the_archfey": "Архифея",
+      "the_fiend": "Исчадие",
+      "the_great_old_one": "Великий древний"
+    },
+    "wizard": {
+      "school_of_abjuration": "Школа ограждения",
+      "school_of_conjuration": "Школа вызова",
+      "school_of_divination": "Школа прорицания",
+      "school_of_enchantment": "Школа очарования",
+      "school_of_evocation": "Школа воплощения",
+      "school_of_illusion": "Школа иллюзии",
+      "school_of_necromancy": "Школа некромантии",
+      "school_of_transmutation": "Школа преобразования"
+    }
   },
   "abilities": {
     "str": "Сила",

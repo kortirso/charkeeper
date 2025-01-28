@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module Dnd5
+module Dnd5Character
   module Classes
     class BarbarianDecorator
       def decorate(result:, class_level:)
@@ -20,7 +20,7 @@ module Dnd5
       end
 
       def barbarian_armor_class(result)
-        10 + result(:modifiers, :dex) + result(:modifiers, :con) + result.dig(:defense, :shield, :items_data, 'ac').to_i
+        10 + result.dig(:modifiers, :dex) + result.dig(:modifiers, :con) + result.dig(:defense, :shield, :items_data, 'ac').to_i
       end
     end
   end

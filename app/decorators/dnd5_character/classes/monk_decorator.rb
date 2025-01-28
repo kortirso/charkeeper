@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module Dnd5
+module Dnd5Character
   module Classes
     class MonkDecorator
       NOT_MONK_WEAPON_CAPTIONS = %w[2handed heavy].freeze

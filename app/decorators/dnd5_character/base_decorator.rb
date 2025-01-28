@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 # rubocop: disable Metrics/AbcSize, Metrics/MethodLength, Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity
-module Dnd5
-  class CharacterDecorator
+module Dnd5Character
+  class BaseDecorator
     extend Dry::Initializer
 
     MELEE_ATTACK_TOOLTIPS = %w[2handed heavy].freeze
@@ -13,6 +13,7 @@ module Dnd5
     def decorate
       result = {
         race: data.race,
+        subrace: data.subrace,
         main_class: data.main_class,
         classes: data.classes,
         subclasses: data.subclasses,

@@ -501,7 +501,7 @@ export const Dnd5 = (props) => {
         <div class="flex-1 flex flex-col items-center">
           <p>{props.name}</p>
           <p class="text-sm">
-            {t(`races.${decoratedData().race}`)} | {Object.entries(decoratedData().classes).map(([item, value]) => `${t(`classes.${item}`)} ${value}`).join(' * ')}
+            {decoratedData().subrace ? t(`subraces.${decoratedData().race}.${decoratedData().subrace}`) : t(`races.${decoratedData().race}`)} | {Object.entries(decoratedData().classes).map(([item, value]) => `${t(`classes.${item}`)} ${value}`).join(' * ')}
           </p>
         </div>
         <div class="w-10 h-8 p-2 flex flex-col justify-between cursor-pointer" onClick={() => openModalMode('switchTab')}>

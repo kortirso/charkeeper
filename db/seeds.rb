@@ -83,7 +83,7 @@ end
 )
 
 # языки
-# common, dwarvish, elvish, giant, gnomish, goblin, halfling, orc, draconic, undercommon
+# common, dwarvish, elvish, giant, gnomish, goblin, halfling, orc, draconic, undercommon, infernal, druidic
 
 ::Character.create!(
   type: 'Dnd5::Character',

@@ -25,7 +25,7 @@ export const CharacterLink = (props) => {
             <p class="mb-1 font-medium">{character().name}</p>
             <div class="mb-1">
               <p class="text-xs">
-                {t('characters.level')} {character().object_data.level} | {t(`races.${character().object_data.race}`)}
+                {t('characters.level')} {character().object_data.level} | {character().object_data.subrace ? t(`subraces.${character().object_data.race}.${character().object_data.subrace}`) : t(`races.${character().object_data.race}`)}
               </p>
             </div>
             <p class="text-xs">

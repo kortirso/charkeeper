@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module Dnd5
+module Dnd5Character
   class ClassDecorator
     extend Dry::Initializer
 
@@ -60,13 +60,13 @@ module Dnd5
 
     def class_decorator(class_name)
       case class_name
-      when 'barbarian' then Dnd5::Classes::BarbarianDecorator.new
-      when 'fighter' then Dnd5::Classes::FighterDecorator.new
-      when 'monk' then Dnd5::Classes::MonkDecorator.new
-      when 'sorcerer' then Dnd5::Classes::SorcererDecorator.new
-      when 'druid' then Dnd5::Classes::DruidDecorator.new
-      when 'wizard' then Dnd5::Classes::WizardDecorator.new
-      else Dnd5::Classes::DummyDecorator.new
+      when 'barbarian' then Dnd5Character::Classes::BarbarianDecorator.new
+      when 'fighter' then Dnd5Character::Classes::FighterDecorator.new
+      when 'monk' then Dnd5Character::Classes::MonkDecorator.new
+      when 'sorcerer' then Dnd5Character::Classes::SorcererDecorator.new
+      when 'druid' then Dnd5Character::Classes::DruidDecorator.new
+      when 'wizard' then Dnd5Character::Classes::WizardDecorator.new
+      else Dnd5Character::Classes::DummyDecorator.new
       end
     end
   end

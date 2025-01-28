@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-describe Dnd5::CharacterDecorator do
+describe Dnd5Character::BaseDecorator do
   subject(:decorate) {
     described_class.new(character: Character.find(character.id)).decorate
   }

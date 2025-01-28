@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module Dnd5
+module Dnd5Character
   module Classes
     class SorcererDecorator
       # rubocop: disable Metrics/AbcSize, Metrics/MethodLength

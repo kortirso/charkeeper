@@ -7,7 +7,7 @@ module Dnd5
     delegate :decorator, to: :object
 
     def object_data
-      object.data.slice('level', 'race', 'classes')
+      object.data.slice('level', 'race', 'subrace', 'classes')
     end
 
     def decorated_data
