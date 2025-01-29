@@ -7,8 +7,7 @@ module Dnd5Character
 
       # rubocop: disable Metrics/AbcSize, Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity, Metrics/MethodLength
       def decorate(result:, class_level:)
-        energy_dc = 8 + result[:proficiency_bonus] + result.dig(:modifiers, :wis)
-        result[:max_energy] = class_level if class_level >= 2
+        ki_dc = 8 + result[:proficiency_bonus] + result.dig(:modifiers, :wis)
         result[:class_save_dc] = %i[str dex] if result[:main_class] == 'monk'
 
         no_armor = result[:defense_gear].values.all?(&:nil?)
@@ -53,7 +52,7 @@ module Dnd5Character
         if class_level >= 5 # Stunning Strike, 5 level
           result[:class_features] << {
             title: I18n.t('dnd5.class_features.monk.stunning_strike.title'),
-            description: I18n.t('dnd5.class_features.monk.stunning_strike.description', value: energy_dc)
+            description: I18n.t('dnd5.class_features.monk.stunning_strike.description', value: ki_dc)
           }
         end
         if class_level >= 6 # Ki-Empowered Strikes, 6 level

@@ -17,7 +17,8 @@ module Dnd5NewCharacter
         weapon_skills: [],
         armor_proficiency: [],
         languages: [],
-        selected_skills: []
+        selected_skills: [],
+        health: { current: 10, max: 10, temp: 0 }
       }.compact
     end
   end

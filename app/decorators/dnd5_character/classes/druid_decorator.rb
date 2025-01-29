@@ -17,8 +17,10 @@ module Dnd5Character
 
         if class_level >= 2 # Wild Shape, 2 level
           result[:class_features] << {
+            slug: 'wild_shape',
             title: I18n.t('dnd5.class_features.druid.wild_shape.title'),
-            description: I18n.t('dnd5.class_features.druid.wild_shape.description', value: wild_shape_value(class_level))
+            description: I18n.t('dnd5.class_features.druid.wild_shape.description', value: wild_shape_value(class_level)),
+            limit: 2
           }
         end
 

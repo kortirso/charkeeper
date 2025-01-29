@@ -34,7 +34,6 @@ module CharactersContext
       def do_prepare(input)
         input[:classes] = { input[:main_class] => 1 }
         input[:subclasses] = { input[:main_class] => nil }
-        input[:health] = 8 # class base
 
         base_decorator = Dnd5NewCharacter::BaseDecorator.new(**input.slice(:race, :subrace, :main_class).symbolize_keys)
         race_decorator = Dnd5NewCharacter::RaceDecorator.new(decorator: base_decorator)

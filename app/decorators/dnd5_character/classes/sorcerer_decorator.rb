@@ -5,7 +5,6 @@ module Dnd5Character
     class SorcererDecorator
       # rubocop: disable Metrics/AbcSize, Metrics/MethodLength
       def decorate(result:, class_level:)
-        result[:max_energy] = class_level if class_level >= 2
         result[:class_save_dc] = %i[con cha] if result[:main_class] == 'sorcerer'
         result[:spell_classes][:sorcerer] = {
           save_dc: 8 + result[:proficiency_bonus] + result.dig(:modifiers, :cha),

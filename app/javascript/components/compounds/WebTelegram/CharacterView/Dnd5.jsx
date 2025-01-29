@@ -38,7 +38,7 @@ export const Dnd5 = (props) => {
 
   const decoratedData = () => props.decoratedData;
   const spellClasses = () => Object.keys(decoratedData().spell_classes);
-  console.log(decoratedData())
+
   // forms for change user data
   const [abilitiesFormData, setAbilitiesFormData] = createSignal(props.decoratedData.abilities);
   const [healthFormData, setHealthFormData] = createSignal(props.decoratedData.combat.health);
@@ -49,6 +49,7 @@ export const Dnd5 = (props) => {
   const [changingItem, setChangingItem] = createSignal(undefined);
   const [subclasses, setSubclasses] = createSignal(props.decoratedData.subclasses)
   const [featuresFormData, setFeaturesFormData] = createSignal(props.decoratedData.selected_features);
+  const [energyFormData, setEnergyFormData] = createSignal(props.decoratedData.energy);
 
   const { Modal, openModal, closeModal } = createModal();
   const [appState] = useAppState();
@@ -266,6 +267,34 @@ export const Dnd5 = (props) => {
       setModalOpenMode(null);
       closeModal();
     });
+  }
+
+  const spendEnergy = async (event, slug) => {
+    event.stopPropagation();
+
+    let newValue;
+    if (energyFormData()[slug]) {
+      newValue = { ...energyFormData(), [slug]: energyFormData()[slug] + 1 };
+    } else {
+      newValue = { ...energyFormData(), [slug]: 1 };
+    }
+
+    const result = await updateCharacterRequest(appState.accessToken, 'dnd5', props.characterId, { character: { energy: newValue } });
+    if (result.errors === undefined) setEnergyFormData(newValue);
+  }
+
+  const restoreEnergy = async (event, slug) => {
+    event.stopPropagation();
+
+    let newValue;
+    if (energyFormData()[slug]) {
+      newValue = { ...energyFormData(), [slug]: energyFormData()[slug] - 1 };
+    } else {
+      newValue = { ...energyFormData(), [slug]: 0 };
+    }
+
+    const result = await updateCharacterRequest(appState.accessToken, 'dnd5', props.characterId, { character: { energy: newValue } });
+    if (result.errors === undefined) setEnergyFormData(newValue);
   }
 
   const changeQuantity = (item) => {
@@ -528,6 +557,27 @@ export const Dnd5 = (props) => {
     </Toggle>
   );
 
+  const renderClassFeatureTitle = (class_feature) => {
+    if (class_feature.limit === undefined) return class_feature.title;
+
+    return (
+      <div class="flex items-center">
+        <p class="flex-1">{class_feature.title}</p>
+        <div class="flex items-center">
+          <button
+            class="py-1 px-2 border border-gray-200 rounded flex justify-center items-center"
+            onClick={(event) => energyFormData()[class_feature.slug] !== class_feature.limit ? spendEnergy(event, class_feature.slug) : event.stopPropagation()}
+          >-</button>
+          <p class="w-12 text-center">{class_feature.limit - (energyFormData()[class_feature.slug] || 0)} / {class_feature.limit}</p>
+          <button
+            class="py-1 px-2 border border-gray-200 rounded flex justify-center items-center"
+            onClick={(event) => (energyFormData()[class_feature.slug] || 0) > 0 ? restoreEnergy(event, class_feature.slug) : event.stopPropagation()}
+          >+</button>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div class="h-full flex flex-col">
       <div class="w-full flex justify-between items-center py-4 px-2 bg-white border-b border-gray-200">
@@ -604,17 +654,12 @@ export const Dnd5 = (props) => {
             />
             {renderAttacksBox(`${t('terms.attackAction')} - ${decoratedData().combat.attacks_per_action}`, decoratedData().attacks.filter((item) => item.action_type === 'action'))}
             {renderAttacksBox(`${t('terms.attackBonusAction')} - 1`, decoratedData().attacks.filter((item) => item.action_type === 'bonus action'))}
-            <Show when={Object.keys(decoratedData().energy).length > 0}>
-              <div class="mb-2 p-4 flex white-box">
-                <For each={Object.entries(decoratedData().energy)}>
-                  {([key, value]) =>
-                    <p>{t(`terms.energy.${key}`)} - {value} / {decoratedData().max_energy}</p>
-                  }
-                </For>
-              </div>
-            </Show>
             <For each={decoratedData().class_features}>
-              {(class_feature) => <Toggle title={class_feature.title}><p>{class_feature.description}</p></Toggle>}
+              {(class_feature) =>
+                <Toggle title={renderClassFeatureTitle(class_feature)}>
+                  <p class="text-sm">{class_feature.description}</p>
+                </Toggle>
+              }
             </For>
           </Match>
           <Match when={activeTab() === 'equipment'}>
@@ -910,7 +955,7 @@ export const Dnd5 = (props) => {
                           <Select
                             classList="w-full mb-2"
                             items={[]}
-                            selectedValue={featuresFormData()[feature.slug]?.includes(option)}
+                            selectedValue={null}
                             onSelect={(option) => setFeaturesFormData({ ...featuresFormData(), [feature.slug]: [option] })}
                           />
                         </Match>

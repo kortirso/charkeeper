@@ -152,7 +152,8 @@ module Dnd5
     def decorator
       base_decorator = Dnd5Character::BaseDecorator.new(character: self)
       race_decorator = Dnd5Character::RaceDecorator.new(decorator: base_decorator)
-      Dnd5Character::ClassDecorator.new(decorator: race_decorator)
+      class_decorator = Dnd5Character::ClassDecorator.new(decorator: race_decorator)
+      Dnd5Character::SubclassDecorator.new(decorator: class_decorator)
     end
 
     def can_learn_spell?(target_spell_class)

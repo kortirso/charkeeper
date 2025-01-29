@@ -21,11 +21,12 @@ module Dnd5Character
         proficiency_bonus: proficiency_bonus,
         abilities: data.abilities,
         modifiers: modifiers,
-        class_features: [],
-        selected_features: data.selected_features,
+        class_features: [], # неизменные классовые способности
+        selected_features: data.selected_features, # выбранные классовые способности
+        static_spells: [], # врожденные заклинания от расы/класса
         resistances: [],
         immunities: [],
-        energy: data.energy || {},
+        energy: data.energy || {}, # потраченные заряды способностей
         coins: data.coins,
         load: data.abilities['str'] * 15,
         spell_classes: {},

@@ -57,12 +57,13 @@ module CharactersContext
           key.failure(:invalid_level) unless value.values.all? { |item| item.to_i.between?(1, 20) }
         end
 
-        rule(:energy) do
-          next if value.nil?
+        # ключами должны быть class features, значениями - число использований
+        # rule(:energy) do
+        #   next if value.nil?
 
-          key.failure(:invalid_class_name) unless value.keys.all? { |item| item.in?(::Dnd5::Character::CLASSES) }
-          key.failure(:invalid_level) unless value.values.all? { |item| item.to_i.between?(1, 40) }
-        end
+        #   key.failure(:invalid_class_name) unless value.keys.all? { |item| item.in?(::Dnd5::Character::CLASSES) }
+        #   key.failure(:invalid_level) unless value.values.all? { |item| item.to_i.between?(1, 40) }
+        # end
 
         rule(:subclasses) do
           next if value.nil?
