@@ -15,6 +15,7 @@ module Dnd5NewCharacter
 
     private
 
+    # rubocop: disable Metrics/CyclomaticComplexity
     def race_decorator(race)
       case race
       when ::Dnd5::Character::DWARF then ::Dnd5NewCharacter::Races::DwarfDecorator.new
@@ -28,5 +29,6 @@ module Dnd5NewCharacter
       when ::Dnd5::Character::TIEFLING then ::Dnd5NewCharacter::Races::TieflingDecorator.new
       end
     end
+    # rubocop: enable Metrics/CyclomaticComplexity
   end
 end

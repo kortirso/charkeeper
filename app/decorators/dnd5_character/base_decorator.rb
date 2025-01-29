@@ -22,6 +22,7 @@ module Dnd5Character
         abilities: data.abilities,
         modifiers: modifiers,
         class_features: [],
+        selected_features: data.selected_features,
         resistances: [],
         immunities: [],
         energy: data.energy || {},
@@ -100,6 +101,7 @@ module Dnd5Character
 
     def unarmed_attack(result)
       {
+        type: 'unarmed',
         name: { en: 'Unarmed', ru: 'Безоружная' },
         action_type: 'action', # action или bonus action
         hands: '1', # используется рук
@@ -127,15 +129,15 @@ module Dnd5Character
       equiped_shield = result.dig(:defense_gear, :shield)
       return 10 + result.dig(:modifiers, :dex) if equiped_armor.nil? && equiped_shield.nil?
 
-      equiped_armor&.dig(:items_data, 'ac').to_i + equiped_shield&.dig(:items_data, 'ac').to_i
+      equiped_armor&.dig(:items_data, 'info', 'ac').to_i + equiped_shield&.dig(:items_data, 'info', 'ac').to_i
     end
 
     def weapon_attacks(result)
       weapons.flat_map do |item|
         case item[:items_data]['info']['type']
         when 'melee' then melee_attack(result, item)
-        when 'range' then range_attack(result, item)
-        when 'thrown' then [melee_attack(result, item), range_attack(result, item)].flatten
+        when 'range' then range_attack(result, item, 'range')
+        when 'thrown' then [melee_attack(result, item), range_attack(result, item, 'thrown')].flatten
         end
       end
     end
@@ -147,6 +149,7 @@ module Dnd5Character
       # обычная атака
       response = [
         {
+          type: 'melee',
           name: item[:items_name],
           action_type: 'action',
           hands: captions.include?('2handed') ? '2' : '1',
@@ -184,13 +187,14 @@ module Dnd5Character
       response
     end
 
-    def range_attack(result, item)
+    def range_attack(result, item, type)
       captions = item[:items_data]['info']['caption']
 
       key_ability_bonus = find_key_ability_bonus('range', result, captions)
       # обычная атака
       response = [
         {
+          type: type,
           name: item[:items_name],
           action_type: 'action',
           hands: captions.include?('2handed') ? '2' : '1',

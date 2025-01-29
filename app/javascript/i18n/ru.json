@@ -19,6 +19,7 @@
     "backpack": "Рюкзак",
     "spells": "Заклинания",
     "conditions": "Состояния",
+    "features": "Выбираемые способности",
     "onlyPreparedSpells": "Подготовленные",
     "onlyAvailableSpells": "Доступные",
     "allSpells": "Все",

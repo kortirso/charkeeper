@@ -7,6 +7,7 @@ import { Checkbox, Select, Toggle } from '../../../atoms';
 import { useAppState, useAppLocale } from '../../../../context';
 import { modifier } from '../../../../helpers';
 
+import { fetchCharacterFeaturesRequest } from '../../../../requests/fetchCharacterFeaturesRequest';
 import { fetchCharacterItemsRequest } from '../../../../requests/fetchCharacterItemsRequest';
 import { fetchCharacterSpellsRequest } from '../../../../requests/fetchCharacterSpellsRequest';
 import { updateCharacterRequest } from '../../../../requests/updateCharacterRequest';
@@ -29,6 +30,7 @@ export const Dnd5 = (props) => {
   const [characterSpells, setCharacterSpells] = createSignal(undefined);
   const [spells, setSpells] = createSignal(undefined);
   const [items, setItems] = createSignal(undefined);
+  const [features, setFeatures] = createSignal(undefined);
   const [modalOpenMode, setModalOpenMode] = createSignal(null);
   const [activeSpellClass, setActiveSpellClass] = createSignal('all');
   const [preparedSpellFilter, setPreparedSpellFilter] = createSignal(true);
@@ -36,7 +38,7 @@ export const Dnd5 = (props) => {
 
   const decoratedData = () => props.decoratedData;
   const spellClasses = () => Object.keys(decoratedData().spell_classes);
-
+  console.log(decoratedData())
   // forms for change user data
   const [abilitiesFormData, setAbilitiesFormData] = createSignal(props.decoratedData.abilities);
   const [healthFormData, setHealthFormData] = createSignal(props.decoratedData.combat.health);
@@ -46,6 +48,7 @@ export const Dnd5 = (props) => {
   const [changingCoins, setChangingCoins] = createSignal(props.decoratedData.coins);
   const [changingItem, setChangingItem] = createSignal(undefined);
   const [subclasses, setSubclasses] = createSignal(props.decoratedData.subclasses)
+  const [featuresFormData, setFeaturesFormData] = createSignal(props.decoratedData.selected_features);
 
   const { Modal, openModal, closeModal } = createModal();
   const [appState] = useAppState();
@@ -80,6 +83,20 @@ export const Dnd5 = (props) => {
           setCharacterSpells(characterSpellsData.spells);
           setActiveSpellClass(spellClasses()[0]);
         });
+      }
+    );
+  });
+
+  createEffect(() => {
+    if (activeTab() !== 'features') return;
+    if (features() !== undefined) return;
+
+    const fetchCharacterFeatures = async () => await fetchCharacterFeaturesRequest(appState.accessToken, 'dnd5', appState.activePageParams.id);
+
+    Promise.all([fetchCharacterFeatures()]).then(
+      ([characterFeaturesData]) => {
+        console.log(characterFeaturesData);
+        setFeatures(characterFeaturesData.features);
       }
     );
   });
@@ -258,10 +275,27 @@ export const Dnd5 = (props) => {
     });
   }
 
+  const toggleFeatureOption = (feature, option) => {
+    const selectedOptions = featuresFormData()[feature.slug];
+
+    if (selectedOptions) {
+      let newOptions;
+      if (selectedOptions.includes(option)) {
+        newOptions = selectedOptions.filter((item) => item !== option);
+      } else {
+        newOptions = selectedOptions.concat(option);
+      }
+      setFeaturesFormData({ ...featuresFormData(), [feature.slug]: newOptions });
+    } else {
+      setFeaturesFormData({ ...featuresFormData(), [feature.slug]: [option] });
+    }
+  }
+
   const updateCharacterAbilities = () => updateCharacter({ abilities: abilitiesFormData() });
   const updateCharacterHealth = () => updateCharacter({ health: healthFormData() });
   const updateCharacterSkills = () => updateCharacter({ selected_skills: skillsFormData() });
   const updateCharacterClasses = () => updateCharacter({ classes: classesFormData(), subclasses: subclasses() });
+  const updateCharacterFeatures = () => updateCharacter({ selected_features: featuresFormData() });
 
   // sending requests
   const learnSpell = async (spellId) => {
@@ -847,6 +881,50 @@ export const Dnd5 = (props) => {
               {renderItems(t('character.armorList'), items().filter((item) => item.kind.includes('armor') || item.kind.includes('shield')))}
             </Show>
           </Match>
+          <Match when={activeTab() === 'features'}>
+            <div class="p-4 flex flex-col white-box">
+              <Show
+                when={features() !== undefined && features().length > 0}
+                fallback={<p>{t('character.no_features')}</p>}
+              >
+                <For each={features()}>
+                  {(feature) =>
+                    <Toggle title={feature.slug}>
+                      <Switch>
+                        <Match when={feature.options_type === 'static' && feature.limit === undefined}>
+                          <For each={feature.options}>
+                            {(option) =>
+                              <div class="mb-2">
+                                <Checkbox
+                                  right
+                                  disabled={false}
+                                  labelText={option}
+                                  value={featuresFormData()[feature.slug]?.includes(option)}
+                                  onToggle={() => toggleFeatureOption(feature, option)}
+                                />
+                              </div>
+                            }
+                          </For>
+                        </Match>
+                        <Match when={feature.options_type === 'static' && feature.limit !== undefined}>
+                          <Select
+                            classList="w-full mb-2"
+                            items={[]}
+                            selectedValue={featuresFormData()[feature.slug]?.includes(option)}
+                            onSelect={(option) => setFeaturesFormData({ ...featuresFormData(), [feature.slug]: [option] })}
+                          />
+                        </Match>
+                      </Switch>
+                    </Toggle>
+                  }
+                </For>
+                <button
+                  class="mt-2 py-2 px-4 bg-gray-200 rounded"
+                  onClick={updateCharacterFeatures}
+                >{t('buttons.save')}</button>
+              </Show>
+            </div>
+          </Match>
         </Switch>
       </div>
       <Modal>
@@ -856,6 +934,7 @@ export const Dnd5 = (props) => {
             <p class="character-tab-select" onClick={() => changeTab('combat')}>{t('character.combat')}</p>
             <p class="character-tab-select" onClick={() => changeTab('equipment')}>{t('character.equipment')}</p>
             <p class="character-tab-select" onClick={() => changeTab('spells')}>{t('character.spells')}</p>
+            <p class="character-tab-select" onClick={() => changeTab('features')}>{t('character.features')}</p>
             <p class="character-tab-select" onClick={() => changeTab('conditions')}>{t('character.conditions')}</p>
             <p class="character-tab-select" onClick={() => openModalMode('changeLevels')}>{t('character.changeLevels')}</p>
             <p class="character-tab-select" onClick={() => openModalMode('changeClasses')}>{t('character.changeClasses')}</p>

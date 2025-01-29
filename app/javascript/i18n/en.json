@@ -19,6 +19,7 @@
     "backpack": "Backpack",
     "spells": "Spells",
     "conditions": "Conditions",
+    "features": "Optional features",
     "onlyPreparedSpells": "Only prepared",
     "onlyAvailableSpells": "Only available",
     "allSpells": "All",

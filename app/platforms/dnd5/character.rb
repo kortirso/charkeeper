@@ -15,8 +15,8 @@ module Dnd5
     attribute :health, array: true
     attribute :energy, array: true, default: {}
     attribute :speed, :integer
-    attribute :selected_skills, array: true, default: []
-    attribute :class_features, array: true, default: []
+    attribute :selected_skills, array: true, default: [] # ['history']
+    attribute :selected_features, array: true, default: {} # { 'fighting_style' => ['defense'] }
     attribute :languages, array: true
     attribute :weapon_core_skills, array: true
     attribute :weapon_skills, array: true

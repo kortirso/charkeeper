@@ -38,6 +38,7 @@ module CharactersContext
             required(:copper).filled(:integer, gteq?: 0)
           end
           optional(:selected_skills).value(:array, :filled?).each(included_in?: SKILLS)
+          optional(:selected_features).hash
           optional(:weapons_core_skills).value(:array, :filled?).each(included_in?: WEAPON_CORE_SKILLS)
           optional(:weapons_skills).value(:array, :filled?).each(
             included_in?: ::Dnd5::Item.where(kind: ['light weapon', 'martial weapon']).pluck(:name).map { |item| item['en'] }.sort
@@ -68,7 +69,7 @@ module CharactersContext
 
           # добавить проверку, что подкласс еще не установлен
           key.failure(:invalid_class_name) unless value.keys.all? { |item| item.in?(::Dnd5::Character::CLASSES) }
-          unless value.all? { |class_name, subclass| Dnd5::Character::SUBCLASSES[class_name].include?(subclass) }
+          unless value.all? { |class_name, subclass| ::Dnd5::Character::SUBCLASSES[class_name].include?(subclass) }
             key.failure(:invalid_subclass)
           end
         end

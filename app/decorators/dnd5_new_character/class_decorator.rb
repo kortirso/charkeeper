@@ -15,6 +15,7 @@ module Dnd5NewCharacter
 
     private
 
+    # rubocop: disable Metrics/CyclomaticComplexity
     def class_decorator(main_class)
       case main_class
       when ::Dnd5::Character::BARBARIAN then ::Dnd5NewCharacter::Classes::BarbarianDecorator.new
@@ -31,5 +32,6 @@ module Dnd5NewCharacter
       when ::Dnd5::Character::WIZARD then ::Dnd5NewCharacter::Classes::WizardDecorator.new
       end
     end
+    # rubocop: enable Metrics/CyclomaticComplexity
   end
 end

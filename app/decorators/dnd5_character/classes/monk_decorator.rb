@@ -11,7 +11,7 @@ module Dnd5Character
         result[:max_energy] = class_level if class_level >= 2
         result[:class_save_dc] = %i[str dex] if result[:main_class] == 'monk'
 
-        no_armor = true # result[:defense_gear].values.all?(&:nil?)
+        no_armor = result[:defense_gear].values.all?(&:nil?)
         result[:combat][:speed] += speed_modifier(class_level) if no_armor
         result[:combat][:armor_class] = [result[:combat][:armor_class], monk_armor_class(result)].max if no_armor
 
