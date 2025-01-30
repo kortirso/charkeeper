@@ -1,9 +1,7 @@
 # frozen_string_literal: true
 
 module Dnd5Character
-  class ClassDecorator
-    extend Dry::Initializer
-
+  class ClassDecorateWrapper
     SPELL_SLOTS = {
       1 => { 1 => 2 },
       2 => { 1 => 3 },
@@ -27,15 +25,14 @@ module Dnd5Character
       20 => { 1 => 4, 2 => 3, 3 => 3, 4 => 3, 5 => 3, 6 => 2, 7 => 2, 8 => 1, 9 => 1 }
     }.freeze
 
-    option :decorator
+    def decorate_fresh_character(result:)
+      class_decorator(result[:main_class]).decorate_fresh_character(result: result)
+    end
 
     # rubocop: disable Metrics/AbcSize
-    def decorate
-      result = decorator.decorate
-
-      # дополнить result
+    def decorate_character_abilities(result:)
       result[:classes].each do |class_name, class_level|
-        result = class_decorator(class_name).decorate(result: result, class_level: class_level)
+        result = class_decorator(class_name).decorate_character_abilities(result: result, class_level: class_level)
       end
       modify_saving_throws(result)
       if result[:spell_classes].keys.size > 1
@@ -58,16 +55,8 @@ module Dnd5Character
       end
     end
 
-    def class_decorator(class_name)
-      case class_name
-      when 'barbarian' then Dnd5Character::Classes::BarbarianDecorator.new
-      when 'fighter' then Dnd5Character::Classes::FighterDecorator.new
-      when 'monk' then Dnd5Character::Classes::MonkDecorator.new
-      when 'sorcerer' then Dnd5Character::Classes::SorcererDecorator.new
-      when 'druid' then Dnd5Character::Classes::DruidDecorator.new
-      when 'wizard' then Dnd5Character::Classes::WizardDecorator.new
-      else Dnd5Character::Classes::DummyDecorator.new
-      end
+    def class_decorator(main_class)
+      Characters::Container.resolve("decorators.dnd5_character.classes.#{main_class}")
     end
   end
 end

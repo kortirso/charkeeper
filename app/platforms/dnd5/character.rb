@@ -13,8 +13,8 @@ module Dnd5
     attribute :subclasses, array: true
     attribute :abilities, array: true, default: { str: 10, dex: 10, con: 10, int: 10, wis: 10, cha: 10 }
     attribute :health, array: true
-    attribute :energy, array: true, default: {}
     attribute :speed, :integer
+    attribute :energy, array: true, default: {}
     attribute :selected_skills, array: true, default: [] # ['history']
     attribute :selected_features, array: true, default: {} # { 'fighting_style' => ['defense'] }
     attribute :languages, array: true
@@ -144,16 +144,23 @@ module Dnd5
       ]
     }.freeze
 
+    # учат заклинания при получении уровня, сразу подготовлены
     CLASSES_LEARN_SPELLS = [BARD, RANGER, SORCERER, WARLOCK, WIZARD].freeze
+
+    # сразу известен весь классовый список заклинаний
+    CLASSES_KNOW_SPELLS_LIST = [CLERIC, DRUID, PALADIN].freeze
+
+    # подготавливают список к использованию после сна
     CLASSES_PREPARE_SPELLS = [CLERIC, DRUID, PALADIN, WIZARD].freeze
 
     attribute :data, Dnd5::CharacterData.to_type
 
-    def decorator
-      base_decorator = Dnd5Character::BaseDecorator.new(character: self)
-      race_decorator = Dnd5Character::RaceDecorator.new(decorator: base_decorator)
-      class_decorator = Dnd5Character::ClassDecorator.new(decorator: race_decorator)
-      Dnd5Character::SubclassDecorator.new(decorator: class_decorator)
+    def decorate
+      base_decorator.decorate_character_abilities(character: self)
+        .then { |result| race_decorator.decorate_character_abilities(result: result) }
+        .then { |result| subrace_decorator.decorate_character_abilities(result: result) }
+        .then { |result| class_decorator.decorate_character_abilities(result: result) }
+        .then { |result| subclass_decorator.decorate_character_abilities(result: result) }
     end
 
     def can_learn_spell?(target_spell_class)
@@ -169,5 +176,13 @@ module Dnd5
 
       true
     end
+
+    private
+
+    def base_decorator = ::Characters::Container.resolve('decorators.dnd5_character.base_decorator')
+    def race_decorator = ::Characters::Container.resolve('decorators.dnd5_character.race_wrapper')
+    def subrace_decorator = ::Characters::Container.resolve('decorators.dnd5_character.subrace_wrapper')
+    def class_decorator = ::Characters::Container.resolve('decorators.dnd5_character.class_wrapper')
+    def subclass_decorator = ::Characters::Container.resolve('decorators.dnd5_character.subclass_wrapper')
   end
 end

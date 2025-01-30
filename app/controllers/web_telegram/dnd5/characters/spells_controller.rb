@@ -11,7 +11,7 @@ module WebTelegram
         ]
         include SerializeRelation
 
-        INDEX_SERIALIZER_FIELDS = %i[id ready_to_use prepared_by name level spell_id].freeze
+        INDEX_SERIALIZER_FIELDS = %i[id ready_to_use prepared_by slug name level spell_id].freeze
 
         before_action :find_character
 

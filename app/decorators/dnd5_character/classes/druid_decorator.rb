@@ -3,8 +3,20 @@
 module Dnd5Character
   module Classes
     class DruidDecorator
+      LANGUAGES = %w[druidic].freeze
+      DEFAULT_WEAPON_SKILLS = %w[Quarterstaff Mace Dart Club Dagger Spear Javelin Sling Sickle Scimitar].freeze
+      ARMOR = ['light armor'].freeze
+
+      def decorate_fresh_character(result:)
+        result[:languages] = result[:languages].concat(LANGUAGES)
+        result[:weapon_skills] = result[:weapon_skills].concat(DEFAULT_WEAPON_SKILLS)
+        result[:armor_proficiency] = result[:armor_proficiency].concat(ARMOR)
+
+        result
+      end
+
       # rubocop: disable Metrics/AbcSize
-      def decorate(result:, class_level:)
+      def decorate_character_abilities(result:, class_level:)
         result[:class_save_dc] = %i[int wis] if result[:main_class] == 'druid'
         result[:spell_classes][:druid] = {
           save_dc: 8 + result[:proficiency_bonus] + result.dig(:modifiers, :wis),

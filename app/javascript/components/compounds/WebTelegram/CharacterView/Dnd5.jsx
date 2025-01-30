@@ -24,6 +24,9 @@ const CLASSES_LEARN_SPELLS = ['bard', 'ranger', 'sorcerer', 'warlock', 'wizard']
 const CLASSES_PREPARE_SPELLS = ['cleric', 'druid', 'paladin', 'wizard'];
 
 export const Dnd5 = (props) => {
+  const decoratedData = () => props.decoratedData;
+  const spellClasses = () => Object.keys(decoratedData().spell_classes);
+
   // page state
   const [activeTab, setActiveTab] = createSignal('abilities');
   const [characterItems, setCharacterItems] = createSignal(undefined);
@@ -32,12 +35,9 @@ export const Dnd5 = (props) => {
   const [items, setItems] = createSignal(undefined);
   const [features, setFeatures] = createSignal(undefined);
   const [modalOpenMode, setModalOpenMode] = createSignal(null);
-  const [activeSpellClass, setActiveSpellClass] = createSignal('all');
+  const [activeSpellClass, setActiveSpellClass] = createSignal(spellClasses().length == 0 ? 'all' : spellClasses()[0]);
   const [preparedSpellFilter, setPreparedSpellFilter] = createSignal(true);
   const [availableSpellFilter, setAvailableSpellFilter] = createSignal(true);
-
-  const decoratedData = () => props.decoratedData;
-  const spellClasses = () => Object.keys(decoratedData().spell_classes);
 
   // forms for change user data
   const [abilitiesFormData, setAbilitiesFormData] = createSignal(props.decoratedData.abilities);
@@ -96,7 +96,6 @@ export const Dnd5 = (props) => {
 
     Promise.all([fetchCharacterFeatures()]).then(
       ([characterFeaturesData]) => {
-        console.log(characterFeaturesData);
         setFeatures(characterFeaturesData.features);
       }
     );
@@ -116,7 +115,8 @@ export const Dnd5 = (props) => {
   });
 
   createEffect(() => {
-    if (activeTab() !== 'knownSpells') return;
+    if (activeTab() !== 'spells') return;
+    if (spellClasses().length === 0) return;
     if (spells() !== undefined) return;
 
     const fetchSpells = async () => await fetchSpellsRequest(appState.accessToken, 'dnd5');
@@ -154,18 +154,31 @@ export const Dnd5 = (props) => {
   const filteredSpells = createMemo(() => {
     if (characterSpells() === undefined) return [];
 
-    return characterSpells().filter((item) => {
+    const list = decoratedData().static_spells;
+    const result = characterSpells().filter((item) => {
       if (activeSpellClass() !== 'all' && item.prepared_by !== activeSpellClass()) return false;
       if (preparedSpellFilter()) return item.ready_to_use;
+      if (list.includes(item.slug)) return false;
       return true;
     });
+    return Object.groupBy(result, ({ level }) => level);
+  });
+
+  const staticSpells = createMemo(() => {
+    if (spells() === undefined) return [];
+    if (decoratedData().static_spells.length === 0) return [];
+
+    const list = decoratedData().static_spells;
+    const result = spells().filter((item, index) => list.includes(item.slug));
+    return Object.groupBy(result, ({ level }) => level);
   });
 
   const filteredSpellsList = createMemo(() => {
     if (spells() === undefined) return [];
 
+    const maxSpellLevel = decoratedData().spell_classes[activeSpellClass()].max_spell_level;
     const result = spells().filter((item) => {
-      if (item.level > decoratedData().spell_classes[activeSpellClass()].max_spell_level) return false;
+      if (item.level > maxSpellLevel) return false;
       if (!availableSpellFilter()) return true;
 
       return item.available_for.includes(activeSpellClass());
@@ -756,7 +769,20 @@ export const Dnd5 = (props) => {
                       </tr>
                     </thead>
                     <tbody>
-                      <For each={filteredSpells().filter((item) => item.level === 0)}>
+                      <For each={staticSpells()['0']}>
+                        {(spell) =>
+                          <tr>
+                            <td class="py-1">
+                              <p>
+                                {spell}
+                              </p>
+                              <p class="text-xs">{t('character.staticSpell')}</p>
+                            </td>
+                            <td></td>
+                          </tr>
+                        }
+                      </For>
+                      <For each={filteredSpells()[0]}>
                         {(spell) =>
                           <tr>
                             <td class="py-1">
@@ -815,7 +841,20 @@ export const Dnd5 = (props) => {
                           </tr>
                         </thead>
                         <tbody>
-                          <For each={filteredSpells().filter((item) => item.level === Number(level))}>
+                          <For each={staticSpells()[level]}>
+                            {(spell) =>
+                              <tr>
+                                <td class="py-1">
+                                  <p>
+                                    {spell.name}
+                                  </p>
+                                  <p class="text-xs">{t('character.staticSpell')}</p>
+                                </td>
+                                <td></td>
+                              </tr>
+                            }
+                          </For>
+                          <For each={filteredSpells()[level]}>
                             {(spell) =>
                               <tr>
                                 <td class="py-1">

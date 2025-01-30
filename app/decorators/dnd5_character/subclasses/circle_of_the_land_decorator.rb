@@ -4,11 +4,11 @@ module Dnd5Character
   module Subclasses
     class CircleOfTheLandDecorator
       LAND_SPELLS_3 = {
-        'arctic' => ['Hold person', 'Spike growth'],
-        'forest' => ['Barkskin', 'Spider Climb']
+        'arctic' => %w[hold_person spike_growth],
+        'forest' => %w[barkskin spider_climb]
       }.freeze
 
-      def decorate(result:, class_level:)
+      def decorate_character_abilities(result:, class_level:)
         result[:spell_classes][:druid][:cantrips_amount] += 1 if class_level >= 2
 
         if class_level >= 2 # Natural recovery, 2 level
@@ -24,7 +24,7 @@ module Dnd5Character
         end
 
         selected_land = result.dig(:selected_features, 'land')
-        result[:static_spells] << LAND_SPELLS_3[selected_land] if selected_land && class_level >= 3 # Circle spells, 3 level
+        result[:static_spells].concat(LAND_SPELLS_3[selected_land]) if selected_land && class_level >= 3 # Circle spells, 3 level
 
         result
       end

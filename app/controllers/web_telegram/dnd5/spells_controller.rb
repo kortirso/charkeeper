@@ -5,7 +5,7 @@ module WebTelegram
     class SpellsController < WebTelegram::BaseController
       include SerializeRelation
 
-      INDEX_SERIALIZER_FIELDS = %i[id name level available_for].freeze
+      INDEX_SERIALIZER_FIELDS = %i[id slug name level available_for].freeze
 
       def index
         render json: serialize_relation(

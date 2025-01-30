@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_01_20_183317) do
+ActiveRecord::Schema[8.0].define(version: 2025_01_29_151359) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
   enable_extension "pgcrypto"
@@ -53,6 +53,8 @@ ActiveRecord::Schema[8.0].define(version: 2025_01_20_183317) do
     t.jsonb "data", default: {}, null: false, comment: "Свойства предмета"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "slug", null: false
+    t.index ["slug"], name: "index_items_on_slug"
   end
 
   create_table "spells", id: :uuid, default: -> { "gen_random_uuid()" }, comment: "Заклинания", force: :cascade do |t|
@@ -61,6 +63,8 @@ ActiveRecord::Schema[8.0].define(version: 2025_01_20_183317) do
     t.jsonb "data", default: {}, null: false, comment: "Свойства заклинания"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "slug", null: false
+    t.index ["slug"], name: "index_spells_on_slug"
   end
 
   create_table "user_identities", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|

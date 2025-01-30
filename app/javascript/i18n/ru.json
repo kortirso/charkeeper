@@ -30,7 +30,8 @@
     "items": "Добавить снаряжение",
     "itemsList": "Предметы",
     "weaponsList": "Оружие",
-    "armorList": "Броня"
+    "armorList": "Броня",
+    "staticSpell": "Постоянное"
   },
   "newCharacter": {
     "title": "Создание персонажа",

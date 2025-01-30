@@ -3,7 +3,17 @@
 module Dnd5Character
   module Classes
     class BarbarianDecorator
-      def decorate(result:, class_level:)
+      WEAPON_CORE = ['light weapon', 'martial weapon'].freeze
+      ARMOR = ['light armor', 'medium armor', 'shield'].freeze
+
+      def decorate_fresh_character(result:)
+        result[:weapon_core_skills] = result[:weapon_core_skills].concat(WEAPON_CORE)
+        result[:armor_proficiency] = result[:armor_proficiency].concat(ARMOR)
+
+        result
+      end
+
+      def decorate_character_abilities(result:, class_level:)
         result[:class_save_dc] = %i[str con] if result[:main_class] == 'barbarian'
         result[:combat][:speed] += speed_modifier(class_level)
         if result.dig(:defense_gear, :armor).nil?

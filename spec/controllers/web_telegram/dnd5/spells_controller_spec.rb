@@ -15,7 +15,7 @@ describe WebTelegram::Dnd5::SpellsController do
 
         expect(response).to have_http_status :ok
         expect(response.parsed_body['spells'].size).to eq 1
-        expect(response_values.keys).to contain_exactly('id', 'name', 'level', 'available_for')
+        expect(response_values.keys).to contain_exactly('id', 'slug', 'name', 'level', 'available_for')
       end
     end
   end

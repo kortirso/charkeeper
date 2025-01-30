@@ -2,7 +2,7 @@
 
 describe Dnd5Character::BaseDecorator do
   subject(:decorate) {
-    described_class.new(character: Character.find(character.id)).decorate
+    described_class.new.decorate_character_abilities(character: Character.find(character.id))
   }
 
   let!(:character) { create :character }

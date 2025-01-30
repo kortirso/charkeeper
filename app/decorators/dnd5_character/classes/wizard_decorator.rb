@@ -3,8 +3,16 @@
 module Dnd5Character
   module Classes
     class WizardDecorator
+      DEFAULT_WEAPON_SKILLS = ['Quarterstaff', 'Dart', 'Dagger', 'Sling', 'Light Crossbow'].freeze
+
+      def decorate_fresh_character(result:)
+        result[:weapon_skills] = result[:weapon_skills].concat(DEFAULT_WEAPON_SKILLS)
+
+        result
+      end
+
       # rubocop: disable Metrics/AbcSize
-      def decorate(result:, class_level:)
+      def decorate_character_abilities(result:, class_level:)
         result[:class_save_dc] = %i[int wis] if result[:main_class] == 'wizard'
         result[:spell_classes][:wizard] = {
           save_dc: 8 + result[:proficiency_bonus] + result.dig(:modifiers, :int),

@@ -70,7 +70,7 @@ module CharactersContext
 
           # добавить проверку, что подкласс еще не установлен
           key.failure(:invalid_class_name) unless value.keys.all? { |item| item.in?(::Dnd5::Character::CLASSES) }
-          unless value.all? { |class_name, subclass| ::Dnd5::Character::SUBCLASSES[class_name].include?(subclass) }
+          unless value.all? { |class_name, sub| sub.nil? || ::Dnd5::Character::SUBCLASSES[class_name].include?(sub) }
             key.failure(:invalid_subclass)
           end
         end

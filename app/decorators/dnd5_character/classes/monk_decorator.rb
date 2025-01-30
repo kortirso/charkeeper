@@ -3,10 +3,19 @@
 module Dnd5Character
   module Classes
     class MonkDecorator
+      WEAPON_CORE = ['light weapon'].freeze
+      DEFAULT_WEAPON_SKILLS = ['Shortsword'].freeze
       NOT_MONK_WEAPON_CAPTIONS = %w[2handed heavy].freeze
 
+      def decorate_fresh_character(result:)
+        result[:weapon_core_skills] = result[:weapon_core_skills].concat(WEAPON_CORE)
+        result[:weapon_skills] = result[:weapon_skills].concat(DEFAULT_WEAPON_SKILLS)
+
+        result
+      end
+
       # rubocop: disable Metrics/AbcSize, Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity, Metrics/MethodLength
-      def decorate(result:, class_level:)
+      def decorate_character_abilities(result:, class_level:)
         ki_dc = 8 + result[:proficiency_bonus] + result.dig(:modifiers, :wis)
         result[:class_save_dc] = %i[str dex] if result[:main_class] == 'monk'
 
@@ -15,6 +24,14 @@ module Dnd5Character
         result[:combat][:armor_class] = [result[:combat][:armor_class], monk_armor_class(result)].max if no_armor
 
         martial_arts(result, class_level) if no_armor # Martial arts, 1 level
+        if class_level >= 2 # Ki, 2 level
+          result[:class_features] << {
+            slug: 'ki',
+            title: I18n.t('dnd5.class_features.monk.ki.title'),
+            description: I18n.t('dnd5.class_features.monk.ki.description'),
+            limit: class_level
+          }
+        end
         if class_level >= 2 # Flurry of Blows, 2 level
           result[:class_features] << {
             title: I18n.t('dnd5.class_features.monk.flurry_of_blows.title'),

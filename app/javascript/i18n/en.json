@@ -30,7 +30,8 @@
     "items": "Add equipment",
     "itemsList": "Items list",
     "weaponsList": "Weapons list",
-    "armorList": "Armor list"
+    "armorList": "Armor list",
+    "staticSpell": "Static spell"
   },
   "newCharacter": {
     "title": "Create new character",

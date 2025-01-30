@@ -1,16 +1,28 @@
 # frozen_string_literal: true
 
-# rubocop: disable Metrics/AbcSize, Metrics/MethodLength, Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity
 module Dnd5Character
   class BaseDecorator
-    extend Dry::Initializer
-
     MELEE_ATTACK_TOOLTIPS = %w[2handed heavy].freeze
     RANGE_ATTACK_TOOLTIPS = %w[2handed heavy reload].freeze
 
-    option :character
+    # rubocop: disable Metrics/AbcSize, Metrics/MethodLength, Metrics/PerceivedComplexity, Metrics/CyclomaticComplexity
+    def decorate_fresh_character(race:, main_class:, subrace: nil)
+      {
+        race: race,
+        subrace: subrace,
+        main_class: main_class,
+        weapon_core_skills: [],
+        weapon_skills: [],
+        armor_proficiency: [],
+        languages: [],
+        selected_skills: [],
+        health: { current: 10, max: 10, temp: 0 }
+      }.compact
+    end
 
-    def decorate
+    def decorate_character_abilities(character:)
+      data = character.data
+
       result = {
         race: data.race,
         subrace: data.subrace,
@@ -18,9 +30,9 @@ module Dnd5Character
         classes: data.classes,
         subclasses: data.subclasses,
         overall_level: data.level,
-        proficiency_bonus: proficiency_bonus,
+        proficiency_bonus: proficiency_bonus(data),
         abilities: data.abilities,
-        modifiers: modifiers,
+        modifiers: modifiers(data),
         class_features: [], # неизменные классовые способности
         selected_features: data.selected_features, # выбранные классовые способности
         static_spells: [], # врожденные заклинания от расы/класса
@@ -36,7 +48,7 @@ module Dnd5Character
       }.compact
 
       result[:save_dc] = result[:modifiers].clone
-      result[:defense_gear] = defense_gear
+      result[:defense_gear] = defense_gear(character)
       result[:combat] = {
         armor_class: armor_class(result),
         initiative: result.dig(:modifiers, :dex) + result[:proficiency_bonus],
@@ -45,19 +57,19 @@ module Dnd5Character
         health: data['health']
       }
       result[:skills] = basis_skills(result[:modifiers])
-      modify_selected_skills(result)
-      result[:attacks] = [unarmed_attack(result)] + weapon_attacks(result)
+      modify_selected_skills(result, data)
+      result[:attacks] = [unarmed_attack(result)] + weapon_attacks(result, character)
 
       result
     end
 
     private
 
-    def proficiency_bonus
+    def proficiency_bonus(data)
       2 + ((data.level - 1) / 4)
     end
 
-    def modifiers
+    def modifiers(data)
       data.abilities.transform_values { |value| calc_ability_modifier(value) }.symbolize_keys
     end
 
@@ -88,7 +100,7 @@ module Dnd5Character
       ]
     end
 
-    def modify_selected_skills(result)
+    def modify_selected_skills(result, data)
       return if data['selected_skills'].blank?
 
       result[:skills].map do |skill|
@@ -117,8 +129,8 @@ module Dnd5Character
       }
     end
 
-    def defense_gear
-      armor, shield = equiped_armor
+    def defense_gear(character)
+      armor, shield = equiped_armor(character)
       {
         armor: armor.blank? ? nil : armor[0],
         shield: shield.blank? ? nil : shield[0]
@@ -133,8 +145,8 @@ module Dnd5Character
       equiped_armor&.dig(:items_data, 'info', 'ac').to_i + equiped_shield&.dig(:items_data, 'info', 'ac').to_i
     end
 
-    def weapon_attacks(result)
-      weapons.flat_map do |item|
+    def weapon_attacks(result, character)
+      weapons(character).flat_map do |item|
         case item[:items_data]['info']['type']
         when 'melee' then melee_attack(result, item)
         when 'range' then range_attack(result, item, 'range')
@@ -234,7 +246,7 @@ module Dnd5Character
         result[:weapon_skills].include?(item[:items_name]['en'])
     end
 
-    def weapons
+    def weapons(character)
       character
         .items
         .joins(:item)
@@ -242,7 +254,7 @@ module Dnd5Character
         .hashable_pluck('items.name', 'items.kind', 'items.data', :quantity)
     end
 
-    def equiped_armor
+    def equiped_armor(character)
       character
         .items
         .where(ready_to_use: true)
@@ -251,10 +263,6 @@ module Dnd5Character
         .hashable_pluck('items.kind', 'items.data')
         .partition { |item| item[:items_kind] != 'shield' }
     end
-
-    def data
-      @data ||= character.data
-    end
+    # rubocop: enable Metrics/AbcSize, Metrics/MethodLength, Metrics/PerceivedComplexity, Metrics/CyclomaticComplexity
   end
 end
-# rubocop: enable Metrics/AbcSize, Metrics/MethodLength, Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity

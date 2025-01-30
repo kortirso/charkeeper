@@ -3,6 +3,7 @@
 FactoryBot.define do
   factory :item do
     type { 'Dnd5::Item' }
+    slug { 'torch' }
     name { { en: 'Torch', ru: 'Факел' } }
     kind { 'item' }
     data {

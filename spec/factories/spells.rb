@@ -3,6 +3,7 @@
 FactoryBot.define do
   factory :spell do
     type { 'Dnd5::Spell' }
+    slug { 'magic_missile' }
     name { { en: 'Magic Missile', ru: 'Волшебная стрела' } }
     data {
       {

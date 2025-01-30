@@ -1,12 +1,11 @@
 # frozen_string_literal: true
 
-module Dnd5NewCharacter
+module Dnd5Character
   module Subraces
-    class WoodElfDecorator
+    class HighElfDecorator
       WEAPONS = %w[Longsword Shortsword Longbow Shortbow].freeze
 
-      def decorate(result:)
-        result[:speed] = 35
+      def decorate_fresh_character(result:)
         result[:weapon_skills] = result[:weapon_skills].concat(WEAPONS)
 
         result

@@ -3,6 +3,13 @@
 module CharactersContext
   module Dnd5
     class CreateCommand < BaseCommand
+      include Deps[
+        base_decorator: 'decorators.dnd5_character.base_decorator',
+        race_decorator: 'decorators.dnd5_character.race_wrapper',
+        subrace_decorator: 'decorators.dnd5_character.subrace_wrapper',
+        class_decorator: 'decorators.dnd5_character.class_wrapper'
+      ]
+
       use_contract do
         config.messages.namespace = :dnd5_character
 
@@ -34,22 +41,38 @@ module CharactersContext
       def do_prepare(input)
         input[:classes] = { input[:main_class] => 1 }
         input[:subclasses] = { input[:main_class] => nil }
-
-        base_decorator = Dnd5NewCharacter::BaseDecorator.new(**input.slice(:race, :subrace, :main_class).symbolize_keys)
-        race_decorator = Dnd5NewCharacter::RaceDecorator.new(decorator: base_decorator)
-        subrace_decorator = Dnd5NewCharacter::SubraceDecorator.new(decorator: race_decorator)
-        decorator = Dnd5NewCharacter::ClassDecorator.new(decorator: subrace_decorator)
-
-        input.merge!(decorator.decorate)
+        input[:data] = decorate_fresh_character(input.slice(:race, :subrace, :main_class).symbolize_keys)
       end
 
       def do_persist(input)
-        character = input[:user].characters.dnd5.build
-        character.name = input[:name]
-        character.data = input.except(:user, :name)
-        character.save!
+        character = ::Dnd5::Character.create!(input.slice(:user, :name, :data))
+
+        learn_spells_list(character, input)
 
         { result: character }
+      end
+
+      def decorate_fresh_character(data)
+        base_decorator.decorate_fresh_character(**data)
+          .then { |result| race_decorator.decorate_fresh_character(result: result) }
+          .then { |result| subrace_decorator.decorate_fresh_character(result: result) }
+          .then { |result| class_decorator.decorate_fresh_character(result: result) }
+      end
+
+      def learn_spells_list(character, input)
+        return if ::Dnd5::Character::CLASSES_KNOW_SPELLS_LIST.exclude?(input[:main_class])
+
+        spells = ::Dnd5::Spell.all.filter_map do |spell|
+          next if spell.data.available_for.exclude?(input[:main_class])
+
+          {
+            character_id: character.id,
+            spell_id: spell.id,
+            data: { ready_to_use: false, prepared_by: input[:main_class] }
+          }
+        end
+
+        ::Character::Spell.upsert_all(spells)
       end
     end
   end
