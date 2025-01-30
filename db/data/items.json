@@ -1,5 +1,6 @@
 [
   {
+    "slug": "torch",
     "kind": "item",
     "name": {
       "en": "Torch",

@@ -6,11 +6,14 @@ module Dnd5Character
     RANGE_ATTACK_TOOLTIPS = %w[2handed heavy reload].freeze
 
     # rubocop: disable Metrics/AbcSize, Metrics/MethodLength, Metrics/PerceivedComplexity, Metrics/CyclomaticComplexity
-    def decorate_fresh_character(race:, main_class:, subrace: nil)
+    def decorate_fresh_character(race:, main_class:, alignment:, subrace: nil)
       {
         race: race,
         subrace: subrace,
         main_class: main_class,
+        alignment: alignment,
+        classes: { main_class => 1 },
+        subclasses: { main_class => nil },
         weapon_core_skills: [],
         weapon_skills: [],
         armor_proficiency: [],
@@ -115,7 +118,7 @@ module Dnd5Character
     def unarmed_attack(result)
       {
         type: 'unarmed',
-        name: { en: 'Unarmed', ru: 'Безоружная' },
+        name: { en: 'Unarmed', ru: 'Безоружная' }[I18n.locale.to_sym],
         action_type: 'action', # action или bonus action
         hands: '1', # используется рук
         melee_distance: 5, # дальность
@@ -163,7 +166,8 @@ module Dnd5Character
       response = [
         {
           type: 'melee',
-          name: item[:items_name],
+          slug: item[:items_slug],
+          name: item[:items_name][I18n.locale.to_sym],
           action_type: 'action',
           hands: captions.include?('2handed') ? '2' : '1',
           melee_distance: captions.include?('reach') ? 10 : 5,
@@ -208,7 +212,8 @@ module Dnd5Character
       response = [
         {
           type: type,
-          name: item[:items_name],
+          slug: item[:items_slug],
+          name: item[:items_name][I18n.locale.to_sym],
           action_type: 'action',
           hands: captions.include?('2handed') ? '2' : '1',
           range_distance: item[:items_data]['info']['dist'],
@@ -251,7 +256,7 @@ module Dnd5Character
         .items
         .joins(:item)
         .where(items: { kind: ['light weapon', 'martial weapon'] })
-        .hashable_pluck('items.name', 'items.kind', 'items.data', :quantity)
+        .hashable_pluck('items.slug', 'items.name', 'items.kind', 'items.data', :quantity)
     end
 
     def equiped_armor(character)

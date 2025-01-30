@@ -1,5 +1,6 @@
 [
   {
+    "slug": "padded_armor",
     "kind": "light armor",
     "name": {
       "en": "Padded Armor",
@@ -14,6 +15,7 @@
     }
   },
   {
+    "slug": "leather_armor",
     "kind": "light armor",
     "name": {
       "en": "Leather Armor",
@@ -28,6 +30,7 @@
     }
   },
   {
+    "slug": "studded_leather_armor",
     "kind": "light armor",
     "name": {
       "en": "Studded Leather Armor",
@@ -42,6 +45,7 @@
     }
   },
   {
+    "slug": "hide_armor",
     "kind": "medium armor",
     "name": {
       "en": "Hide Armor",
@@ -56,6 +60,7 @@
     }
   },
   {
+    "slug": "chain_shirt",
     "kind": "medium armor",
     "name": {
       "en": "Chain Shirt",
@@ -70,6 +75,7 @@
     }
   },
   {
+    "slug": "scale_mail_armor",
     "kind": "medium armor",
     "name": {
       "en": "Scale Mail Armor",
@@ -84,6 +90,7 @@
     }
   },
   {
+    "slug": "breastplate",
     "kind": "medium armor",
     "name": {
       "en": "Breastplate",
@@ -98,6 +105,7 @@
     }
   },
   {
+    "slug": "half_plate_armor",
     "kind": "medium armor",
     "name": {
       "en": "Half Plate Armor",
@@ -112,6 +120,7 @@
     }
   },
   {
+    "slug": "ring_mail_armor",
     "kind": "heavy armor",
     "name": {
       "en": "Ring Mail Armor",
@@ -126,6 +135,7 @@
     }
   },
   {
+    "slug": "chain_mail",
     "kind": "heavy armor",
     "name": {
       "en": "Chain Mail",
@@ -140,6 +150,7 @@
     }
   },
   {
+    "slug": "splint_armor",
     "kind": "heavy armor",
     "name": {
       "en": "Splint Armor",
@@ -154,6 +165,7 @@
     }
   },
   {
+    "slug": "plate_armor",
     "kind": "heavy armor",
     "name": {
       "en": "Plate Armor",
@@ -168,6 +180,7 @@
     }
   },
   {
+    "slug": "shield",
     "kind": "shield",
     "name": {
       "en": "Shield",

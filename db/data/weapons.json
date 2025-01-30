@@ -1,5 +1,6 @@
 [
   {
+    "slug": "quarterstaff",
     "kind": "light weapon",
     "name": {
       "en": "Quarterstaff",
@@ -15,6 +16,7 @@
     }
   },
   {
+    "slug": "mace",
     "kind": "light weapon",
     "name": {
       "en": "Mace",
@@ -30,6 +32,7 @@
     }
   },
   {
+    "slug": "club",
     "kind": "light weapon",
     "name": {
       "en": "Club",
@@ -45,6 +48,7 @@
     }
   },
   {
+    "slug": "dagger",
     "kind": "light weapon",
     "name": {
       "en": "Dagger",
@@ -61,6 +65,7 @@
     }
   },
   {
+    "slug": "spear",
     "kind": "light weapon",
     "name": {
       "en": "Spear",
@@ -77,6 +82,7 @@
     }
   },
   {
+    "slug": "light_hammer",
     "kind": "light weapon",
     "name": {
       "en": "Light Hammer",
@@ -93,6 +99,7 @@
     }
   },
   {
+    "slug": "javelin",
     "kind": "light weapon",
     "name": {
       "en": "Javelin",
@@ -109,6 +116,7 @@
     }
   },
   {
+    "slug": "greatclub",
     "kind": "light weapon",
     "name": {
       "en": "Greatclub",
@@ -124,6 +132,7 @@
     }
   },
   {
+    "slug": "handaxe",
     "kind": "light weapon",
     "name": {
       "en": "Handaxe",
@@ -140,6 +149,7 @@
     }
   },
   {
+    "slug": "sickle",
     "kind": "light weapon",
     "name": {
       "en": "Sickle",
@@ -155,6 +165,7 @@
     }
   },
   {
+    "slug": "light_crossbow",
     "kind": "light weapon",
     "name": {
       "en": "Light Crossbow",
@@ -171,6 +182,7 @@
     }
   },
   {
+    "slug": "dart",
     "kind": "light weapon",
     "name": {
       "en": "Dart",
@@ -187,6 +199,7 @@
     }
   },
   {
+    "slug": "shortbow",
     "kind": "light weapon",
     "name": {
       "en": "Shortbow",
@@ -203,6 +216,7 @@
     }
   },
   {
+    "slug": "sling",
     "kind": "light weapon",
     "name": {
       "en": "Sling",
@@ -219,6 +233,7 @@
     }
   },
   {
+    "slug": "halberd",
     "kind": "martial weapon",
     "name": {
       "en": "Halberd",
@@ -234,6 +249,7 @@
     }
   },
   {
+    "slug": "war_pick",
     "kind": "martial weapon",
     "name": {
       "en": "War Pick",
@@ -249,6 +265,7 @@
     }
   },
   {
+    "slug": "warhammer",
     "kind": "martial weapon",
     "name": {
       "en": "Warhammer",
@@ -264,6 +281,7 @@
     }
   },
   {
+    "slug": "battleaxe",
     "kind": "martial weapon",
     "name": {
       "en": "Battleaxe",
@@ -279,6 +297,7 @@
     }
   },
   {
+    "slug": "glaive",
     "kind": "martial weapon",
     "name": {
       "en": "Glaive",
@@ -294,6 +313,7 @@
     }
   },
   {
+    "slug": "greatsword",
     "kind": "martial weapon",
     "name": {
       "en": "Greatsword",
@@ -309,6 +329,7 @@
     }
   },
   {
+    "slug": "lance",
     "kind": "martial weapon",
     "name": {
       "en": "Lance",
@@ -324,6 +345,7 @@
     }
   },
   {
+    "slug": "longsword",
     "kind": "martial weapon",
     "name": {
       "en": "Longsword",
@@ -339,6 +361,7 @@
     }
   },
   {
+    "slug": "whip",
     "kind": "martial weapon",
     "name": {
       "en": "Whip",
@@ -354,6 +377,7 @@
     }
   },
   {
+    "slug": "shortsword",
     "kind": "martial weapon",
     "name": {
       "en": "Shortsowrd",
@@ -369,6 +393,7 @@
     }
   },
   {
+    "slug": "maul",
     "kind": "martial weapon",
     "name": {
       "en": "Maul",
@@ -384,6 +409,7 @@
     }
   },
   {
+    "slug": "morningstar",
     "kind": "martial weapon",
     "name": {
       "en": "Morningstar",
@@ -399,6 +425,7 @@
     }
   },
   {
+    "slug": "pike",
     "kind": "martial weapon",
     "name": {
       "en": "Pike",
@@ -414,6 +441,7 @@
     }
   },
   {
+    "slug": "rapier",
     "kind": "martial weapon",
     "name": {
       "en": "Rapier",
@@ -429,6 +457,7 @@
     }
   },
   {
+    "slug": "greataxe",
     "kind": "martial weapon",
     "name": {
       "en": "Greataxe",
@@ -444,6 +473,7 @@
     }
   },
   {
+    "slug": "scimitar",
     "kind": "martial weapon",
     "name": {
       "en": "Scimitar",
@@ -459,6 +489,7 @@
     }
   },
   {
+    "slug": "trident",
     "kind": "martial weapon",
     "name": {
       "en": "Trident",
@@ -475,6 +506,7 @@
     }
   },
   {
+    "slug": "flail",
     "kind": "martial weapon",
     "name": {
       "en": "Flail",
@@ -490,6 +522,7 @@
     }
   },
   {
+    "slug": "hand_crossbow",
     "kind": "martial weapon",
     "name": {
       "en": "Hand Crossbow",
@@ -506,6 +539,7 @@
     }
   },
   {
+    "slug": "heavy_crossbow",
     "kind": "martial weapon",
     "name": {
       "en": "Heavy Crossbow",
@@ -522,6 +556,7 @@
     }
   },
   {
+    "slug": "longbow",
     "kind": "martial weapon",
     "name": {
       "en": "Longbow",
@@ -538,6 +573,7 @@
     }
   },
   {
+    "slug": "blowgun",
     "kind": "martial weapon",
     "name": {
       "en": "Blowgun",
@@ -554,6 +590,7 @@
     }
   },
   {
+    "slug": "net",
     "kind": "martial weapon",
     "name": {
       "en": "Net",

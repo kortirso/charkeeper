@@ -39,9 +39,8 @@ module CharactersContext
       private
 
       def do_prepare(input)
-        input[:classes] = { input[:main_class] => 1 }
-        input[:subclasses] = { input[:main_class] => nil }
-        input[:data] = decorate_fresh_character(input.slice(:race, :subrace, :main_class).symbolize_keys)
+        input[:data] =
+          decorate_fresh_character(input.slice(:race, :subrace, :main_class, :alignment).symbolize_keys)
       end
 
       def do_persist(input)

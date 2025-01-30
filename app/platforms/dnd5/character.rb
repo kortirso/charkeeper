@@ -114,6 +114,9 @@ module Dnd5
     CHAOTIC_NEUTRAL = 'chaotic_neutral'
     CHAOTIC_EVIL = 'chaotic_evil'
 
+    # languages
+    # common, dwarvish, elvish, giant, gnomish, goblin, halfling, orc, draconic, undercommon, infernal, druidic
+
     RACES = [HUMAN, DWARF, ELF, HALFLING, DRAGONBORN, GNOME, HALF_ELF, HALF_ORC, TIEFLING].freeze
     SUBRACES = {
       DWARF => [MOUNTAIN_DWARF, HILL_DWARF],

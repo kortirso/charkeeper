@@ -118,7 +118,7 @@ module Dnd5Character
 
         result[:attacks].each do |attack|
           next if attack[:caption].any? { |item| NOT_MONK_WEAPON_CAPTIONS.include?(item) }
-          next if attack[:kind] == 'martial' && attack.dig(:name, :en) != 'Shortsword'
+          next if attack[:kind] == 'martial' && attack[:slug] != 'shortsword'
 
           attack[:attack_bonus] = key_ability_bonus + result[:proficiency_bonus]
           attack[:damage_bonus] = key_ability_bonus if attack[:action_type] == 'action'

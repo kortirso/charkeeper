@@ -53,7 +53,7 @@ export const Dnd5 = (props) => {
 
   const { Modal, openModal, closeModal } = createModal();
   const [appState] = useAppState();
-  const [locale, dict] = useAppLocale();
+  const [, dict] = useAppLocale();
 
   const t = i18n.translator(dict);
 
@@ -169,7 +169,7 @@ export const Dnd5 = (props) => {
     if (decoratedData().static_spells.length === 0) return [];
 
     const list = decoratedData().static_spells;
-    const result = spells().filter((item, index) => list.includes(item.slug));
+    const result = spells().filter((item) => list.includes(item.slug));
     return Object.groupBy(result, ({ level }) => level);
   });
 
@@ -461,7 +461,7 @@ export const Dnd5 = (props) => {
               {(attack) =>
                 <tr>
                   <td class="py-1">
-                    <p>{attack.name[locale()]}</p>
+                    <p>{attack.name}</p>
                     <Show when={attack.tooltips.length > 0}>
                       <p class="text-xs">
                         {attack.tooltips.map((item) => t(`attack.tooltips.${item}`)).join(', ')}
@@ -778,7 +778,7 @@ export const Dnd5 = (props) => {
                               </p>
                               <p class="text-xs">{t('character.staticSpell')}</p>
                             </td>
-                            <td></td>
+                            <td />
                           </tr>
                         }
                       </For>
@@ -850,7 +850,7 @@ export const Dnd5 = (props) => {
                                   </p>
                                   <p class="text-xs">{t('character.staticSpell')}</p>
                                 </td>
-                                <td></td>
+                                <td />
                               </tr>
                             }
                           </For>

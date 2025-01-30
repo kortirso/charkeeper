@@ -60,11 +60,11 @@ module Dnd5Character
       end
 
       def max_spell_level(class_level)
-        ::Dnd5Character::ClassDecorator::SPELL_SLOTS[class_level].keys.max
+        ::Dnd5Character::ClassDecorateWrapper::SPELL_SLOTS[class_level].keys.max
       end
 
       def spells_slots(class_level)
-        ::Dnd5Character::ClassDecorator::SPELL_SLOTS[class_level]
+        ::Dnd5Character::ClassDecorateWrapper::SPELL_SLOTS[class_level]
       end
     end
   end
