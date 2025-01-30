@@ -16,8 +16,8 @@ module Dnd5Character
     private
 
     def subclass_decorator(subclass_name)
-      return Characters::Container.resolve("decorators.dnd5_character.subclasses.#{subclass_name}") if subclass_name
-
+      Characters::Container.resolve("decorators.dnd5_character.subclasses.#{subclass_name}")
+    rescue Dry::Container::KeyError => _e
       Characters::Container.resolve('decorators.dnd5_character.dummy_decorator')
     end
   end

@@ -157,6 +157,14 @@
       "mountain": "Гора",
       "swamp": "Болото",
       "underdark": "Подземье"
+    },
+    "fighting_style": {
+      "archery": "Стрельба",
+      "defense": "Оборона",
+      "dueling": "Дуэлянт",
+      "great_weapon_fighting": "Сражение большим оружием",
+      "protection": "Защита",
+      "two_weapon_fighting": "Сражение двумя оружиями"
     }
   },
   "subclasses": {

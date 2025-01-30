@@ -127,36 +127,44 @@
   },
   "selectedFeatures": {
     "metamagic": {
-      "careful_spell": "",
-      "distant_spell": "",
-      "empowered_spell": "",
-      "extended_spell": "",
-      "heightened_spell": "",
-      "quickened_spell": "",
-      "subtle_spell": "",
-      "twinned_spell": ""
+      "careful_spell": "Careful spell",
+      "distant_spell": "Distant spell",
+      "empowered_spell": "Empowered spell",
+      "extended_spell": "Extended spell",
+      "heightened_spell": "Heightened spell",
+      "quickened_spell": "Quickened spell",
+      "subtle_spell": "Subtle spell",
+      "twinned_spell": "Twinned spell"
     },
     "draconic_ancestry": {
-      "black": "",
-      "blue": "",
-      "brass": "",
-      "bronze": "",
-      "copper": "",
-      "gold": "",
-      "green": "",
-      "red": "",
-      "silver": "",
-      "white": ""
+      "black": "Black",
+      "blue": "Blue",
+      "brass": "Brass",
+      "bronze": "Bronze",
+      "copper": "Copper",
+      "gold": "Gold",
+      "green": "Green",
+      "red": "Red",
+      "silver": "Silver",
+      "white": "White"
     },
     "land": {
-      "arctic": "",
-      "coast": "",
-      "desert": "",
-      "forest": "",
-      "grassland": "",
-      "mountain": "",
-      "swamp": "",
-      "underdark": ""
+      "arctic": "Arctic",
+      "coast": "Coast",
+      "desert": "Desert",
+      "forest": "Forest",
+      "grassland": "Grassland",
+      "mountain": "Mountain",
+      "swamp": "Swamp",
+      "underdark": "Underdark"
+    },
+    "fighting_style": {
+      "archery": "Archery",
+      "defense": "Defense",
+      "dueling": "Dueling",
+      "great_weapon_fighting": "Great weapon fighting",
+      "protection": "Protection",
+      "two_weapon_fighting": "Two weapon fighting"
     }
   },
   "subclasses": {

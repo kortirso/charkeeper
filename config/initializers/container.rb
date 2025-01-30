@@ -35,7 +35,7 @@ module Characters
     register('decorators.dnd5_character.subclass_wrapper') { Dnd5Character::SubclassDecorateWrapper.new }
 
     register('decorators.dnd5_character.races.dragonborn') { Dnd5Character::Races::DragonbornDecorator.new }
-    register('decorators.dnd5_character.races.dwarf') { Dnd5Character::Races::DwardDecorator.new }
+    register('decorators.dnd5_character.races.dwarf') { Dnd5Character::Races::DwarfDecorator.new }
     register('decorators.dnd5_character.races.elf') { Dnd5Character::Races::ElfDecorator.new }
     register('decorators.dnd5_character.races.gnome') { Dnd5Character::Races::GnomeDecorator.new }
     register('decorators.dnd5_character.races.half_elf') { Dnd5Character::Races::HalfElfDecorator.new }
@@ -68,6 +68,7 @@ module Characters
     register('decorators.dnd5_character.subclasses.draconic_bloodline') {
       Dnd5Character::Subclasses::DraconicBloodlineDecorator.new
     }
+    register('decorators.dnd5_character.subclasses.champion') { Dnd5Character::Subclasses::ChampionDecorator.new }
 
     # services
     register('services.auth_context.validate_web_telegram_signature') { AuthContext::WebTelegramSignatureValidateService.new }

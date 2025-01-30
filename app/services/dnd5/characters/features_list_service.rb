@@ -21,16 +21,16 @@ module Dnd5
             heightened_spell quickened_spell subtle_spell twinned_spell
           ]
         },
-        # {
-        #   slug: 'fighting_style',
-        #   name: { en: '', ru: '' },
-        #   description: { en: '', ru: '' },
-        #   origin: 'class',
-        #   origin_value: 'fighter',
-        #   level: 1,
-        #   options_type: 'static', # выбрать из списка
-        #   options: %w[archery defense dueling great_weapon_fighting protection two_weapon_fighting]
-        # },
+        {
+          slug: 'fighting_style',
+          name: { en: 'Fighting style', ru: 'Боевой стиль' },
+          description: { en: 'You adopt a particular style of fighting as your specialty.', ru: 'Вы выбираете боевой стиль, соответствующий вашей специализации.' },
+          origin: 'class',
+          origin_value: 'fighter',
+          level: 1,
+          options_type: 'static', # выбрать из списка
+          options: %w[archery defense dueling great_weapon_fighting protection two_weapon_fighting]
+        },
         {
           slug: 'draconic_ancestry',
           name: { en: 'Dragon Ancestor', ru: 'Драконий предок' },

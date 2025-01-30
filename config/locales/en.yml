@@ -1,6 +1,34 @@
 en:
   dnd5:
     class_features:
+      fighter:
+        fighting_style_great_weapon_fighting:
+          title: Great Weapon Fighting
+          description: When you roll a 1 or 2 on a damage die for an attack you make with a melee weapon that you are wielding with two hands, you can reroll the die and must use the new roll, even if the new roll is a 1 or a 2. The weapon must have the two-handed or versatile property for you to gain this benefit.
+        fighting_style_protection:
+          title: Protection
+          description: When a creature you can see attacks a target other than you that is within 5 feet of you, you can use your reaction to impose disadvantage on the attack roll. You must be wielding a shield.
+        second_wind:
+          title: Second wind
+          description: You can use a bonus action to regain %{value} hit points.
+        action_surge:
+          title: Action surge
+          description: On your turn, you can take one additional action on top of your regular action and a possible bonus action, only once on the same turn.
+        improved_critical:
+          title: Improved crtical
+          description: Your weapon attacks score a critical hit on a roll of 19-20.
+        remarkable_athlete:
+          title: Remarkable athlete
+          description: You can add %{value} to any Strength, Dexterity, or Constitution check you make that doesn't already use your proficiency bonus. When you make a running long jump, the distance you can cover increases by a %{distance}.
+        superiod_critical:
+          title: Superior critical
+          description: Your weapon attacks score a critical hit on a roll of 18-20.
+        survivor:
+          title: Survivor
+          description: At the start of each of your turns, you regain %{value} hit points if you have no more than half of your hit points left. You don't gain this benefit if you have O hit points.
+        indomitable:
+          title: Indomitable
+          description: You can reroll a saving throw that you fail. If you do so, you must use the new roll.
       sorcerer:
         sorcery_points:
           title: Sorcery Points
