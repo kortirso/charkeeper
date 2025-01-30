@@ -174,7 +174,8 @@
     },
     "bard": {
       "college_of_lore": "Коллегия знаний",
-      "college_of_valor": "Коллегия доблести"
+      "college_of_valor": "Коллегия доблести",
+      "college_of_whispers": "Коллегия шёпотов"
     },
     "cleric": {
       "knowledge_domain": "Домен знаний",

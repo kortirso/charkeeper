@@ -17,7 +17,7 @@ module Dnd5Character
             description: I18n.t(
               'dnd5.class_features.fighter.remarkable_athlete.description',
               value: (result[:proficiency_bonus] / 2.0).round,
-              distance: result.dig(:modifiers, 'str')
+              distance: result.dig(:modifiers, :str)
             )
           }
         end
@@ -32,7 +32,7 @@ module Dnd5Character
             title: I18n.t('dnd5.class_features.fighter.survivor.title'),
             description: I18n.t(
               'dnd5.class_features.fighter.survivor.description',
-              value: 5 + result.dig(:modifiers, 'con')
+              value: 5 + result.dig(:modifiers, :con)
             )
           }
         end

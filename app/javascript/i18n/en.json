@@ -174,7 +174,8 @@
     },
     "bard": {
       "college_of_lore": "College of Lore",
-      "college_of_valor": "College of Valor"
+      "college_of_valor": "College of Valor",
+      "college_of_whispers": "College of Whispers"
     },
     "cleric": {
       "knowledge_domain": "Knowledge Domain",

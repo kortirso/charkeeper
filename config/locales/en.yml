@@ -1,6 +1,22 @@
 en:
   dnd5:
     class_features:
+      bard:
+        bardic_inspiration:
+          title: Bardic inspiration
+          description: You can inspire others through stirring words or music. To do so, you use a bonus action on your turn to choose one creature other than yourself within 60 feet of you who can hear you. That creature gains one Bardic inspiration die, a %{value}. Once within the next 10 minutes, the creature can roll the die and add the number rolled to one ability check, attack roll, or saving throw it makes. 
+        jask_of_all_trades:
+          title: Jack of all trades
+          description: You can add %{value} to any ability check you make that doesn't already include your proficiency bonus.
+        song_of_rest:
+          title: Song of rest
+          description: You can use soothing music or oration to help revitalize your wounded allies during a short rest. If you or any friendly creatures who can hear your performance regain hit points at the end of the short rest, each of those creatures regains an extra %{value} hit points.
+        words_of_terror:
+          title: Words of terror
+          description: If you speak to a Humanoid in private for at least 1 minute, you can attempt to plant a seed of paranoia in its mind. At the end of the conversation, the target must succeed on a Wisdom saving throw (DC %{value}) or be frightened of you or another creature of your choice. The target is frightened in this manner for 1 hour until it is attacked or takes damage, or until it notices that its allies are attacked or take damage. If the target succeeds on the save, it does not notice any signs that you tried to frighten it.
+        psychic_blades:
+          title: Psychic blades
+          description: Whenever you hit a creature with a weapon attack, you can spend one Bardic Inspiration to deal an additional %{value} psychic damage to the target. You can use this feature once per round on your turn.
       fighter:
         fighting_style_great_weapon_fighting:
           title: Great Weapon Fighting

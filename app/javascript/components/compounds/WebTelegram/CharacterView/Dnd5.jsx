@@ -971,15 +971,12 @@ export const Dnd5 = (props) => {
                 when={features() !== undefined && features().length > 0}
                 fallback={<p>{t('character.no_features')}</p>}
               >
-                {console.log(features())}
                 <For each={features()}>
                   {(feature) =>
                     <Toggle title={feature.name[locale()]}>
                       <p class="text-sm mb-2">{feature.description[locale()]}</p>
                       <Switch>
                         <Match when={feature.options_type === 'static' && feature.limit === undefined}>
-                          {console.log(feature)}
-                          {console.log(feature.options)}
                           <For each={feature.options}>
                             {(option) =>
                               <div class="mb-2">
@@ -1001,6 +998,21 @@ export const Dnd5 = (props) => {
                             selectedValue={featuresFormData()[feature.slug]}
                             onSelect={(option) => setFeaturesFormData({ ...featuresFormData(), [feature.slug]: [option] })}
                           />
+                        </Match>
+                        <Match when={feature.options_type === 'choose_from' && feature.options === 'selected_skills'}>
+                          <For each={decoratedData().skills.filter((item) => item.selected).map((item) => item.name)}>
+                            {(option) =>
+                              <div class="mb-2">
+                                <Checkbox
+                                  right
+                                  disabled={false}
+                                  labelText={t(`skills.${option}`)}
+                                  value={featuresFormData()[feature.slug]?.includes(option)}
+                                  onToggle={() => toggleFeatureOption(feature, option)}
+                                />
+                              </div>
+                            }
+                          </For>
                         </Match>
                       </Switch>
                     </Toggle>

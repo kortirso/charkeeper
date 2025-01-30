@@ -45,16 +45,19 @@ module Dnd5
           options: %w[black blue brass bronze copper gold green red silver white],
           limit: 1
         },
-        # {
-        #   slug: 'expertise',
-        #   name: { en: '', ru: '' },
-        #   description: { en: '', ru: '' },
-        #   origin: 'class',
-        #   origin_value: 'bard',
-        #   level: 3,
-        #   options_type: 'choose_from', # выбрать из списка выбранных умений
-        #   options: 'selected_skills'
-        # },
+        {
+          slug: 'expertise',
+          name: { en: 'Expertise', ru: 'Компетентность' },
+          description: {
+            en: 'Choose 2 of your skill proficiencies. Your proficiency bonus is doubled for these skill proficiencies. At 10th level, you can choose another two skill proficiencies.',
+            ru: 'Выберите 2 навыка из тех, которыми вы владеете. Ваш бонус мастерства для этих навыков удваивается. На 10 уровне вы можете выбрать ещё 2 навыка.'
+          },
+          origin: 'class',
+          origin_value: 'bard',
+          level: 3,
+          options_type: 'choose_from', # выбрать из списка выбранных умений
+          options: 'selected_skills'
+        },
         {
           slug: 'land',
           name: { en: 'Circle spells', ru: 'Заклинания круга' },

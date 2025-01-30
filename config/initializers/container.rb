@@ -69,6 +69,9 @@ module Characters
       Dnd5Character::Subclasses::DraconicBloodlineDecorator.new
     }
     register('decorators.dnd5_character.subclasses.champion') { Dnd5Character::Subclasses::ChampionDecorator.new }
+    register('decorators.dnd5_character.subclasses.college_of_whispers') {
+      Dnd5Character::Subclasses::CollegeOfWhispersDecorator.new
+    }
 
     # services
     register('services.auth_context.validate_web_telegram_signature') { AuthContext::WebTelegramSignatureValidateService.new }
