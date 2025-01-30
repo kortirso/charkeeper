@@ -3,10 +3,10 @@
 module Dnd5Character
   module Classes
     class WizardDecorator
-      DEFAULT_WEAPON_SKILLS = ['Quarterstaff', 'Dart', 'Dagger', 'Sling', 'Light Crossbow'].freeze
+      DEFAULT_WEAPON_SKILLS = %w[quarterstaff dart dagger sling light_crossbow].freeze
 
       def decorate_fresh_character(result:)
-        result[:weapon_skills] = result[:weapon_skills].concat(DEFAULT_WEAPON_SKILLS)
+        result[:weapon_skills] = result[:weapon_skills].concat(DEFAULT_WEAPON_SKILLS).uniq
 
         result
       end

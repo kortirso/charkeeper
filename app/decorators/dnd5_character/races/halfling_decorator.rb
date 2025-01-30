@@ -7,7 +7,7 @@ module Dnd5Character
 
       def decorate_fresh_character(result:)
         result[:speed] = 25
-        result[:languages] = result[:languages].concat(LANGUAGES)
+        result[:languages] = result[:languages].concat(LANGUAGES).uniq
 
         result
       end

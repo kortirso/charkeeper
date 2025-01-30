@@ -125,6 +125,40 @@
     "warlock": "Колдун",
     "wizard": "Волшебник"
   },
+  "selectedFeatures": {
+    "metamagic": {
+      "careful_spell": "Аккуратное заклинание",
+      "distant_spell": "Далёкое заклинание",
+      "empowered_spell": "Усиленное заклинание",
+      "extended_spell": "Продлённое заклинание",
+      "heightened_spell": "Непреодолимое заклинание",
+      "quickened_spell": "Ускоренное заклинание",
+      "subtle_spell": "Неуловимое заклинание",
+      "twinned_spell": "Удвоенное заклинание"
+    },
+    "draconic_ancestry": {
+      "black": "Чёрный",
+      "blue": "Синий",
+      "brass": "Латунный",
+      "bronze": "Бронзовый",
+      "copper": "Медный",
+      "gold": "Золотой",
+      "green": "Зелёный",
+      "red": "Красный",
+      "silver": "Серебряный",
+      "white": "Белый"
+    },
+    "land": {
+      "arctic": "Тундра",
+      "coast": "Побережье",
+      "desert": "Пустыня",
+      "forest": "Лес",
+      "grassland": "Луг",
+      "mountain": "Гора",
+      "swamp": "Болото",
+      "underdark": "Подземье"
+    }
+  },
   "subclasses": {
     "barbarian": {
       "path_of_the_berserker": "Путь берсерка",

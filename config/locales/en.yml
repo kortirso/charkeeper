@@ -2,12 +2,42 @@ en:
   dnd5:
     class_features:
       sorcerer:
+        sorcery_points:
+          title: Sorcery Points
+          description: You tap into a deep wellspring of magic within yourself.
         creating_spell_slots:
           title: Creating Spell Slots
           description: "You can transform unexpended sorcery points into one spell slot as a bonus action on your turn. 1st - 2, 2nd - 3, 3rd - 5, 4th - 6, 5th - 7"
         converting_spell_slot:
           title: Converting a Spell Slot
           description: "As a bonus action on your turn, you can expend one spell slot and gain a number of sorcery points equal to the slot's level."
+        metamagic_careful_spell:
+          title: Careful spell
+          description: When you cast a spell that forces other creatures to make a saving throw, you can protect some of those creatures from the spell's full force. To do so, you spend 1 sorcery point and choose a number of those creatures up to your Charisma modifier (minimum of one creature). A chosen creature automatically succeeds on its saving throw against the spell.
+        metamagic_distant_spell:
+          title: Distant spell
+          description: When you cast a spell that has a range of 5 feet or greater, you can spend 1 sorcery point to double the range of the spell. When you cast a spell that has a range of touch, you can spend 1 sorcery point to make the range of the spell 30 feel.
+        metamagic_empowered_spell:
+          title: Empowered spell
+          description: When you roll damage for a spell, you can spend 1 sorcery point to reroll a number of the damage dice up to your Charisma modifier (minimum of one). You must use the new rolls. You can use Empowered Spell even if you have already used a different Metamagic option during the casting of the spell.
+        metamagic_extended_spell:
+          title: Extended spell
+          description: When you cast a spell that has a duration of 1 minute or longer, you can spend 1 sorcery point to double its duration, to a maximum duration of 24 hours.
+        metamagic_heightened_spell:
+          title: Heightened spell
+          description: When you cast a spell that forces a creature to make a saving throw to resist its effects, you can spend 3 sorcery points to give one target of the spell disadvantage on its first saving throw made against the spell.
+        metamagic_quickened_spell:
+          title: Quickened spell
+          description: When you cast a spell that has a casting time of 1 action, you can spend 2 sorcery points to change the casting time to 1 bonus action for this casting.
+        metamagic_subtle_spell:
+          title: Subtle spell
+          description: When you cast a spell, you can spend 1 sorcery point to cast it without any somatic ar verbal components.
+        metamagic_twinned_spell:
+          title: Twinned spell
+          description: When you cast a spell that targets only one creature and doesn't have a range of self, you can spend a number of sorcery points equal to the spell's level to target a second creature in range with the same spell (1 sorcery point if the spell is a cantrip).
+        draconic_resilience:
+          title: Draconic resilience
+          description: At 1st level, your hit point maximum increases by 1 and increases by 1 again whenever you gain a level in this c1ass.
       druid:
         wild_shape:
           title: Wild Shape

@@ -4,13 +4,13 @@ module Dnd5Character
   module Classes
     class DruidDecorator
       LANGUAGES = %w[druidic].freeze
-      DEFAULT_WEAPON_SKILLS = %w[Quarterstaff Mace Dart Club Dagger Spear Javelin Sling Sickle Scimitar].freeze
+      DEFAULT_WEAPON_SKILLS = %w[quarterstaff mace dart club dagger spear javelin sling sickle scimitar].freeze
       ARMOR = ['light armor'].freeze
 
       def decorate_fresh_character(result:)
-        result[:languages] = result[:languages].concat(LANGUAGES)
-        result[:weapon_skills] = result[:weapon_skills].concat(DEFAULT_WEAPON_SKILLS)
-        result[:armor_proficiency] = result[:armor_proficiency].concat(ARMOR)
+        result[:languages] = result[:languages].concat(LANGUAGES).uniq
+        result[:weapon_skills] = result[:weapon_skills].concat(DEFAULT_WEAPON_SKILLS).uniq
+        result[:armor_proficiency] = result[:armor_proficiency].concat(ARMOR).uniq
 
         result
       end

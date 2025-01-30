@@ -3,10 +3,10 @@
 module Dnd5Character
   module Subraces
     class DrowDecorator
-      WEAPONS = ['Shortsword', 'Rapier', 'Hand Crossbow'].freeze
+      WEAPONS = %w[shortsword rapier hand_crossbow].freeze
 
       def decorate_fresh_character(result:)
-        result[:weapon_skills] = result[:weapon_skills].concat(WEAPONS)
+        result[:weapon_skills] = result[:weapon_skills].concat(WEAPONS).uniq
 
         result
       end

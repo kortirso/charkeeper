@@ -16,9 +16,9 @@ module Dnd5Character
     private
 
     def subclass_decorator(subclass_name)
-      decorator = Characters::Container.resolve("decorators.dnd5_character.subclasses.#{subclass_name}") if subclass_name
-      decorator ||= Characters::Container.resolve('decorators.dnd5_character.dummy_decorator')
-      decorator
+      return Characters::Container.resolve("decorators.dnd5_character.subclasses.#{subclass_name}") if subclass_name
+
+      Characters::Container.resolve('decorators.dnd5_character.dummy_decorator')
     end
   end
 end

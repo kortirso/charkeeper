@@ -53,7 +53,7 @@ export const Dnd5 = (props) => {
 
   const { Modal, openModal, closeModal } = createModal();
   const [appState] = useAppState();
-  const [, dict] = useAppLocale();
+  const [locale, dict] = useAppLocale();
 
   const t = i18n.translator(dict);
 
@@ -966,23 +966,27 @@ export const Dnd5 = (props) => {
             </Show>
           </Match>
           <Match when={activeTab() === 'features'}>
-            <div class="p-4 flex flex-col white-box">
+            <div class="flex flex-col">
               <Show
                 when={features() !== undefined && features().length > 0}
                 fallback={<p>{t('character.no_features')}</p>}
               >
+                {console.log(features())}
                 <For each={features()}>
                   {(feature) =>
-                    <Toggle title={feature.slug}>
+                    <Toggle title={feature.name[locale()]}>
+                      <p class="text-sm mb-2">{feature.description[locale()]}</p>
                       <Switch>
                         <Match when={feature.options_type === 'static' && feature.limit === undefined}>
+                          {console.log(feature)}
+                          {console.log(feature.options)}
                           <For each={feature.options}>
                             {(option) =>
                               <div class="mb-2">
                                 <Checkbox
                                   right
                                   disabled={false}
-                                  labelText={option}
+                                  labelText={t(`selectedFeatures.${feature.slug}.${option}`)}
                                   value={featuresFormData()[feature.slug]?.includes(option)}
                                   onToggle={() => toggleFeatureOption(feature, option)}
                                 />
@@ -990,11 +994,11 @@ export const Dnd5 = (props) => {
                             }
                           </For>
                         </Match>
-                        <Match when={feature.options_type === 'static' && feature.limit !== undefined}>
+                        <Match when={feature.options_type === 'static' && feature.limit === 1}>
                           <Select
                             classList="w-full mb-2"
-                            items={[]}
-                            selectedValue={null}
+                            items={feature.options.reduce((acc, option) => { acc[option] = t(`selectedFeatures.${feature.slug}.${option}`); return acc; }, {})}
+                            selectedValue={featuresFormData()[feature.slug]}
                             onSelect={(option) => setFeaturesFormData({ ...featuresFormData(), [feature.slug]: [option] })}
                           />
                         </Match>
@@ -1003,7 +1007,7 @@ export const Dnd5 = (props) => {
                   }
                 </For>
                 <button
-                  class="mt-2 py-2 px-4 bg-gray-200 rounded"
+                  class="py-2 px-4 bg-gray-200 rounded"
                   onClick={updateCharacterFeatures}
                 >{t('buttons.save')}</button>
               </Show>

@@ -6,7 +6,7 @@ module Dnd5Character
       ARMOR = ['light armor', 'medium armor'].freeze
 
       def decorate_fresh_character(result:)
-        result[:armor_proficiency] = result[:armor_proficiency].concat(ARMOR)
+        result[:armor_proficiency] = result[:armor_proficiency].concat(ARMOR).uniq
 
         result
       end

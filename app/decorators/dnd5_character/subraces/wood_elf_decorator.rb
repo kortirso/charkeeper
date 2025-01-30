@@ -3,11 +3,11 @@
 module Dnd5Character
   module Subraces
     class WoodElfDecorator
-      WEAPONS = %w[Longsword Shortsword Longbow Shortbow].freeze
+      WEAPONS = %w[longsword shortsword longbow shortbow].freeze
 
       def decorate_fresh_character(result:)
         result[:speed] = 35
-        result[:weapon_skills] = result[:weapon_skills].concat(WEAPONS)
+        result[:weapon_skills] = result[:weapon_skills].concat(WEAPONS).uniq
 
         result
       end

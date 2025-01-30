@@ -125,6 +125,40 @@
     "warlock": "Warlock",
     "wizard": "Wizard"
   },
+  "selectedFeatures": {
+    "metamagic": {
+      "careful_spell": "",
+      "distant_spell": "",
+      "empowered_spell": "",
+      "extended_spell": "",
+      "heightened_spell": "",
+      "quickened_spell": "",
+      "subtle_spell": "",
+      "twinned_spell": ""
+    },
+    "draconic_ancestry": {
+      "black": "",
+      "blue": "",
+      "brass": "",
+      "bronze": "",
+      "copper": "",
+      "gold": "",
+      "green": "",
+      "red": "",
+      "silver": "",
+      "white": ""
+    },
+    "land": {
+      "arctic": "",
+      "coast": "",
+      "desert": "",
+      "forest": "",
+      "grassland": "",
+      "mountain": "",
+      "swamp": "",
+      "underdark": ""
+    }
+  },
   "subclasses": {
     "barbarian": {
       "path_of_the_berserker": "Path of the Berserker",

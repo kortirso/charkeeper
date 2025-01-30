@@ -65,6 +65,9 @@ module Characters
     register('decorators.dnd5_character.subclasses.circle_of_the_land') {
       Dnd5Character::Subclasses::CircleOfTheLandDecorator.new
     }
+    register('decorators.dnd5_character.subclasses.draconic_bloodline') {
+      Dnd5Character::Subclasses::DraconicBloodlineDecorator.new
+    }
 
     # services
     register('services.auth_context.validate_web_telegram_signature') { AuthContext::WebTelegramSignatureValidateService.new }
