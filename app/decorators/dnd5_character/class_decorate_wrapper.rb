@@ -37,8 +37,9 @@ module Dnd5Character
       modify_saving_throws(result)
       if result[:spell_classes].keys.size > 1
         multiclass_spell_class =
-          result[:classes].slice('bard', 'wizard', 'druid', 'cleric', 'sorcerer').values.sum +
-            result[:classes].slice('paladin', 'ranger').values.sum { |item| item / 2 }
+          result[:classes].slice('bard', 'wizard', 'druid', 'cleric', 'sorcerer').values.sum + # full level
+            result[:classes].slice('paladin', 'ranger').values.sum { |item| item / 2 } + # half round down
+            result[:classes].slice('artificer').values.sum { |item| (item / 2.0).round } # half round up
 
         result[:spells_slots] = SPELL_SLOTS[multiclass_spell_class]
       end

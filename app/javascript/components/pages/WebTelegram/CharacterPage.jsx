@@ -3,10 +3,9 @@ import { createSignal, createEffect, Switch, Match } from 'solid-js';
 import { Dnd5 } from '../../../components';
 
 import { useAppState } from '../../../context';
-
 import { fetchCharacterRequest } from '../../../requests/fetchCharacterRequest';
 
-export const CharacterView = () => {
+export const CharacterPage = () => {
   const [character, setCharacter] = createSignal({});
   const [appState] = useAppState();
 

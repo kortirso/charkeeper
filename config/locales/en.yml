@@ -1,6 +1,15 @@
 en:
   dnd5:
     class_features:
+      artificer:
+        infuse_item:
+          title: Infuse Item
+        magical_tinkering:
+          title: Magical Tinkering
+          description: To use this feature, you must be holding thieves' tools or artisan's tools. Then, as an Action, you touch a Tiny nonmagical object and imbue it with one magical property of your choice.
+        the_right_tool_for_the_job:
+          title: The Right Tool for the Job
+          description: Using thieves' tools or artisan's tools, you can magically create one set of artisan's tools in an unoccupied space within 5 feet of you. This requires 1 hour of uninterrupted work, which can be done during a short or long rest. Although created through magic, the tools themselves are nonmagical and disappear when you use this feature again.
       bard:
         bardic_inspiration:
           title: Bardic inspiration

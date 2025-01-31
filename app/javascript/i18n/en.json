@@ -14,7 +14,7 @@
   },
   "character": {
     "abilities": "Abilities",
-    "combat": "Combat",
+    "combat": "Combat & Features",
     "equipment": "Equipment",
     "backpack": "Backpack",
     "spells": "Spells",
@@ -123,7 +123,8 @@
     "rogue": "Rogue",
     "sorcerer": "Sorcerer",
     "warlock": "Warlock",
-    "wizard": "Wizard"
+    "wizard": "Wizard",
+    "artificer": "Artificer"
   },
   "selectedFeatures": {
     "metamagic": {

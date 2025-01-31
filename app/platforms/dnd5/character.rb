@@ -61,6 +61,7 @@ module Dnd5
     SORCERER = 'sorcerer'
     WARLOCK = 'warlock'
     WIZARD = 'wizard'
+    ARTIFICER = 'artificer'
 
     PATH_OF_THE_BERSERKER = 'path_of_the_berserker'
     PATH_OF_THE_TOTEM_WARRIOR = 'path_of_the_totem_warrior'
@@ -129,7 +130,10 @@ module Dnd5
       LAWFUL_GOOD, LAWFUL_NEUTRAL, LAWFUL_EVIL, NEUTRAL_GOOD, NEUTRAL,
       NEUTRAL_EVIL, CHAOTIC_GOOD, CHAOTIC_NEUTRAL, CHAOTIC_EVIL
     ].freeze
-    CLASSES = [BARBARIAN, BARD, CLERIC, DRUID, FIGHTER, MONK, PALADIN, RANGER, ROGUE, SORCERER, WARLOCK, WIZARD].freeze
+    CLASSES = [
+      BARBARIAN, BARD, CLERIC, DRUID, FIGHTER, MONK, PALADIN,
+      RANGER, ROGUE, SORCERER, WARLOCK, WIZARD, ARTIFICER
+    ].freeze
     SUBCLASSES = {
       BARBARIAN => [PATH_OF_THE_BERSERKER, PATH_OF_THE_TOTEM_WARRIOR],
       BARD => [COLLEGE_OF_LORE, COLLEGE_OF_VALOR, COLLEGE_OF_WHISPERS],
@@ -145,17 +149,18 @@ module Dnd5
       WIZARD => [
         SCHOOL_OF_ABJURATION, SCHOOL_OF_CONJURATION, SCHOOL_OF_DIVINATION, SCHOOL_OF_ENCHANTMENT,
         SCHOOL_OF_EVOCATION, SCHOOL_OF_ILLUSION, SCHOOL_OF_NECROMANCY, SCHOOL_OF_TRANSMUTATION
-      ]
+      ],
+      ARTIFICER => []
     }.freeze
 
     # учат заклинания при получении уровня, сразу подготовлены
     CLASSES_LEARN_SPELLS = [BARD, RANGER, SORCERER, WARLOCK, WIZARD].freeze
 
     # сразу известен весь классовый список заклинаний
-    CLASSES_KNOW_SPELLS_LIST = [CLERIC, DRUID, PALADIN].freeze
+    CLASSES_KNOW_SPELLS_LIST = [CLERIC, DRUID, PALADIN, ARTIFICER].freeze
 
     # подготавливают список к использованию после сна
-    CLASSES_PREPARE_SPELLS = [CLERIC, DRUID, PALADIN, WIZARD].freeze
+    CLASSES_PREPARE_SPELLS = [CLERIC, DRUID, PALADIN, ARTIFICER, WIZARD].freeze
 
     attribute :data, Dnd5::CharacterData.to_type
 
