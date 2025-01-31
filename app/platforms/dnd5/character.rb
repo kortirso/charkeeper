@@ -104,6 +104,7 @@ module Dnd5
     SCHOOL_OF_ILLUSION = 'school_of_illusion'
     SCHOOL_OF_NECROMANCY = 'school_of_necromancy'
     SCHOOL_OF_TRANSMUTATION = 'school_of_transmutation'
+    ALCHEMIST = 'alchemist'
 
     # alignment
     LAWFUL_GOOD = 'lawful_good'
@@ -150,7 +151,7 @@ module Dnd5
         SCHOOL_OF_ABJURATION, SCHOOL_OF_CONJURATION, SCHOOL_OF_DIVINATION, SCHOOL_OF_ENCHANTMENT,
         SCHOOL_OF_EVOCATION, SCHOOL_OF_ILLUSION, SCHOOL_OF_NECROMANCY, SCHOOL_OF_TRANSMUTATION
       ],
-      ARTIFICER => []
+      ARTIFICER => [ALCHEMIST]
     }.freeze
 
     # учат заклинания при получении уровня, сразу подготовлены

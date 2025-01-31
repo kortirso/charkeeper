@@ -233,6 +233,9 @@
       "school_of_illusion": "Школа иллюзии",
       "school_of_necromancy": "Школа некромантии",
       "school_of_transmutation": "Школа преобразования"
+    },
+    "artificer": {
+      "alchemist": "Алхимик"
     }
   },
   "abilities": {

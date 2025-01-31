@@ -56,47 +56,45 @@ export const CharactersPage = () => {
   // 420x690
   return (
     <>
-      <div class="h-full flex flex-col">
-        <div class="w-full flex justify-between items-center py-4 px-2 bg-white border-b border-gray">
-          <div class="w-10" />
-          <p class="flex-1 text-center">{t('characters.title')}</p>
-          <div class="w-10 h-8 p-2 flex flex-col justify-between cursor-pointer" onClick={openModal}>
-            <p class="w-full border border-black" />
-            <p class="w-full border border-black" />
-            <p class="w-full border border-black" />
-          </div>
+      <div class="w-full flex justify-between items-center py-4 px-2 bg-white border-b border-gray-200">
+        <div class="w-10" />
+        <p class="flex-1 text-center">{t('characters.title')}</p>
+        <div class="w-10 h-8 p-2 flex flex-col justify-between cursor-pointer" onClick={openModal}>
+          <p class="w-full border border-black" />
+          <p class="w-full border border-black" />
+          <p class="w-full border border-black" />
         </div>
-        <div class="p-4 flex-1 overflow-y-scroll">
-          <Show when={characters() !== undefined}>
-            <For each={characters()}>
-              {(character) =>
-                <div
-                  class="mb-4 p-4 flex white-box cursor-pointer"
-                  onClick={() => navigate('characters', { id: character.id })}
-                >
-                  <Switch>
-                    <Match when={character.provider === 'dnd5'}>
-                      <div class="mr-2">
-                        <div class="w-16 h-16 border border-gray rounded" />
-                      </div>
-                      <div>
-                        <p class="mb-1 font-medium">{character.name}</p>
-                        <div class="mb-1">
-                          <p class="text-xs">
-                            {t('characters.level')} {character.object_data.level} | {character.object_data.subrace ? t(`subraces.${character.object_data.race}.${character.object_data.subrace}`) : t(`races.${character.object_data.race}`)}
-                          </p>
-                        </div>
+      </div>
+      <div class="p-4 flex-1 overflow-y-scroll">
+        <Show when={characters() !== undefined}>
+          <For each={characters()}>
+            {(character) =>
+              <div
+                class="mb-4 p-4 flex white-box cursor-pointer"
+                onClick={() => navigate('characters', { id: character.id })}
+              >
+                <Switch>
+                  <Match when={character.provider === 'dnd5'}>
+                    <div class="mr-2">
+                      <div class="w-16 h-16 border border-gray rounded" />
+                    </div>
+                    <div>
+                      <p class="mb-1 font-medium">{character.name}</p>
+                      <div class="mb-1">
                         <p class="text-xs">
-                          {Object.keys(character.object_data.classes).map((item) => t(`classes.${item}`)).join(' * ')}
+                          {t('characters.level')} {character.object_data.level} | {character.object_data.subrace ? t(`subraces.${character.object_data.race}.${character.object_data.subrace}`) : t(`races.${character.object_data.race}`)}
                         </p>
                       </div>
-                    </Match>
-                  </Switch>
-                </div>
-              }
-            </For>
-          </Show>
-        </div>
+                      <p class="text-xs">
+                        {Object.keys(character.object_data.classes).map((item) => t(`classes.${item}`)).join(' * ')}
+                      </p>
+                    </div>
+                  </Match>
+                </Switch>
+              </div>
+            }
+          </For>
+        </Show>
       </div>
       <Modal>
         <div class="flex flex-col">

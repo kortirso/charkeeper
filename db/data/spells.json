@@ -28,7 +28,8 @@
     "level": 0,
     "attacking": true,
     "available_for": [
-      "druid"
+      "druid",
+      "artificer"
     ]
   },
   {
@@ -41,7 +42,8 @@
     "attacking": false,
     "available_for": [
       "cleric",
-      "druid"
+      "druid",
+      "artificer"
     ]
   },
   {
@@ -56,7 +58,8 @@
       "sorcerer",
       "warlock",
       "wizard",
-      "druid"
+      "druid",
+      "artificer"
     ]
   },
   {
@@ -87,7 +90,8 @@
       "bard",
       "druid",
       "sorcerer",
-      "wizard"
+      "wizard",
+      "artificer"
     ]
   },
   {
@@ -101,7 +105,8 @@
     "available_for": [
       "bard",
       "sorcerer",
-      "wizard"
+      "wizard",
+      "artificer"
     ]
   },
   {
@@ -115,7 +120,8 @@
     "available_for": [
       "bard",
       "sorcerer",
-      "wizard"
+      "wizard",
+      "artificer"
     ]
   },
   {
@@ -155,7 +161,8 @@
     "attacking": true,
     "available_for": [
       "sorcerer",
-      "wizard"
+      "wizard",
+      "artificer"
     ]
   },
   {
@@ -170,7 +177,8 @@
       "bard",
       "cleric",
       "sorcerer",
-      "wizard"
+      "wizard",
+      "artificer"
     ]
   },
   {
@@ -185,7 +193,8 @@
       "bard",
       "sorcerer",
       "warlock",
-      "wizard"
+      "wizard",
+      "artificer"
     ]
   },
   {
@@ -198,7 +207,8 @@
     "attacking": true,
     "available_for": [
       "sorcerer",
-      "wizard"
+      "wizard",
+      "artificer"
     ]
   },
   {
@@ -249,7 +259,8 @@
     "attacking": true,
     "available_for": [
       "sorcerer",
-      "wizard"
+      "wizard",
+      "artificer"
     ]
   },
   {
@@ -273,7 +284,8 @@
     "level": 0,
     "attacking": false,
     "available_for": [
-      "cleric"
+      "cleric",
+      "artificer"
     ]
   },
   {
@@ -310,7 +322,8 @@
     "attacking": false,
     "available_for": [
       "cleric",
-      "druid"
+      "druid",
+      "artificer"
     ]
   },
   {
@@ -335,7 +348,8 @@
     "attacking": true,
     "available_for": [
       "sorcerer",
-      "wizard"
+      "wizard",
+      "artificer"
     ]
   },
   {
@@ -350,7 +364,8 @@
       "bard",
       "sorcerer",
       "warlock",
-      "wizard"
+      "wizard",
+      "artificer"
     ]
   },
   {
@@ -381,7 +396,8 @@
       "paladin",
       "ranger",
       "sorcerer",
-      "wizard"
+      "wizard",
+      "artificer"
     ]
   },
   {
@@ -423,7 +439,8 @@
     "available_for": [
       "bard",
       "sorcerer",
-      "wizard"
+      "wizard",
+      "artificer"
     ]
   },
   {
@@ -490,7 +507,8 @@
     "available_for": [
       "sorcerer",
       "warlock",
-      "wizard"
+      "wizard",
+      "artificer"
     ]
   },
   {
@@ -502,7 +520,8 @@
     "level": 1,
     "attacking": false,
     "available_for": [
-      "druid"
+      "druid",
+      "artificer"
     ]
   },
   {
@@ -515,7 +534,8 @@
     "attacking": false,
     "available_for": [
       "sorcerer",
-      "wizard"
+      "wizard",
+      "artificer"
     ]
   },
   {
@@ -542,7 +562,8 @@
     "available_for": [
       "bard",
       "sorcerer",
-      "wizard"
+      "wizard",
+      "artificer"
     ]
   },
   {
@@ -567,7 +588,8 @@
     "attacking": false,
     "available_for": [
       "ranger",
-      "wizard"
+      "wizard",
+      "artificer"
     ]
   },
   {
@@ -629,7 +651,8 @@
     "level": 1,
     "attacking": false,
     "available_for": [
-      "cleric"
+      "cleric",
+      "artificer"
     ]
   },
   {
@@ -685,7 +708,9 @@
     "level": 1,
     "attacking": false,
     "available_for": [
-      "wizard"
+      "wizard",
+      "sorcerer",
+      "artificer"
     ]
   },
   {
@@ -803,7 +828,8 @@
     "available_for": [
       "cleric",
       "druid",
-      "paladin"
+      "paladin",
+      "artificer"
     ]
   },
   {
@@ -816,7 +842,8 @@
     "attacking": false,
     "available_for": [
       "bard",
-      "wizard"
+      "wizard",
+      "artificer"
     ]
   },
   {
@@ -870,7 +897,8 @@
       "druid",
       "ranger",
       "sorcerer",
-      "wizard"
+      "wizard",
+      "artificer"
     ]
   },
   {
@@ -943,7 +971,8 @@
       "bard",
       "druid",
       "ranger",
-      "wizard"
+      "wizard",
+      "artificer"
     ]
   },
   {
@@ -998,7 +1027,8 @@
       "cleric",
       "druid",
       "paladin",
-      "ranger"
+      "ranger",
+      "artificer"
     ]
   },
   {
@@ -1037,7 +1067,8 @@
     "attacking": false,
     "available_for": [
       "cleric",
-      "paladin"
+      "paladin",
+      "artificer"
     ]
   },
   {
@@ -1050,7 +1081,8 @@
     "attacking": false,
     "available_for": [
       "sorcerer",
-      "wizard"
+      "wizard",
+      "artificer"
     ]
   },
   {
@@ -1076,7 +1108,8 @@
     "level": 2,
     "attacking": false,
     "available_for": [
-      "wizard"
+      "wizard",
+      "artificer"
     ]
   },
   {
@@ -1141,7 +1174,8 @@
     "attacking": false,
     "available_for": [
       "sorcerer",
-      "wizard"
+      "wizard",
+      "artificer"
     ]
   },
   {
@@ -1179,7 +1213,9 @@
     "attacking": false,
     "available_for": [
       "cleric",
-      "wizard"
+      "wizard",
+      "artificer",
+      "druid"
     ]
   },
   {
@@ -1208,7 +1244,8 @@
       "druid",
       "ranger",
       "sorcerer",
-      "wizard"
+      "wizard",
+      "artificer"
     ]
   },
   {
@@ -1237,7 +1274,8 @@
       "bard",
       "cleric",
       "druid",
-      "sorcerer"
+      "sorcerer",
+      "artificer"
     ]
   },
   {
@@ -1250,7 +1288,8 @@
     "attacking": false,
     "available_for": [
       "sorcerer",
-      "wizard"
+      "wizard",
+      "artificer"
     ]
   },
   {
@@ -1354,7 +1393,8 @@
     "attacking": true,
     "available_for": [
       "bard",
-      "druid"
+      "druid",
+      "artificer"
     ]
   },
   {
@@ -1386,7 +1426,8 @@
       "bard",
       "sorcerer",
       "warlock",
-      "wizard"
+      "wizard",
+      "artificer"
     ]
   },
   {
@@ -1416,7 +1457,8 @@
       "cleric",
       "druid",
       "paladin",
-      "ranger"
+      "ranger",
+      "artificer"
     ]
   },
   {
@@ -1429,7 +1471,8 @@
     "attacking": false,
     "available_for": [
       "sorcerer",
-      "wizard"
+      "wizard",
+      "artificer"
     ]
   },
   {
@@ -1473,7 +1516,8 @@
     "attacking": false,
     "available_for": [
       "bard",
-      "wizard"
+      "wizard",
+      "artificer"
     ]
   },
   {
@@ -1486,7 +1530,8 @@
     "attacking": false,
     "available_for": [
       "paladin",
-      "wizard"
+      "wizard",
+      "artificer"
     ]
   },
   {
@@ -1566,7 +1611,8 @@
       "cleric",
       "druid",
       "paladin",
-      "ranger"
+      "ranger",
+      "artificer"
     ]
   },
   {
@@ -1591,7 +1637,8 @@
     "level": 2,
     "attacking": false,
     "available_for": [
-      "wizard"
+      "wizard",
+      "artificer"
     ]
   },
   {
@@ -1618,7 +1665,8 @@
     "available_for": [
       "bard",
       "sorcerer",
-      "wizard"
+      "wizard",
+      "artificer"
     ]
   },
   {
@@ -1661,7 +1709,8 @@
     "available_for": [
       "sorcerer",
       "warlock",
-      "wizard"
+      "wizard",
+      "artificer"
     ]
   },
   {
@@ -1726,7 +1775,8 @@
     "attacking": false,
     "available_for": [
       "sorcerer",
-      "wizard"
+      "wizard",
+      "artificer"
     ]
   },
   {

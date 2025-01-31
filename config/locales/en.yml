@@ -10,6 +10,12 @@ en:
         the_right_tool_for_the_job:
           title: The Right Tool for the Job
           description: Using thieves' tools or artisan's tools, you can magically create one set of artisan's tools in an unoccupied space within 5 feet of you. This requires 1 hour of uninterrupted work, which can be done during a short or long rest. Although created through magic, the tools themselves are nonmagical and disappear when you use this feature again.
+        experimental_elixir:
+          title: Experimental Elixir
+          description: Roll on the Experimental Elixir table to determine the effect that occurs when someone drinks the elixir.
+        alchemical_savant:
+          title: Alchemical Savant
+          description: Whenever you cast a spell using alchemist's tools as a focus, you gain a %{value} bonus to one of your spell rolls. That roll must restore hit points or deal acid, fire, necrotic, or poison damage.
       bard:
         bardic_inspiration:
           title: Bardic inspiration

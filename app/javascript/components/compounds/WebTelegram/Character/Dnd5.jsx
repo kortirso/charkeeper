@@ -224,7 +224,7 @@ export const Dnd5 = (props) => {
     setClassesFormData({ ...classesFormData(), [class_name]: newValue });
   }
 
-  const addOrRemoveClass = (class_name) => {
+  const toggleClass = (class_name) => {
     if (classesFormData()[class_name]) {
       const result = Object.keys(classesFormData())
         .filter(item => item !== class_name)
@@ -576,7 +576,7 @@ export const Dnd5 = (props) => {
   }
 
   return (
-    <div class="h-full flex flex-col">
+    <>
       <div class="w-full flex justify-between items-center py-4 px-2 bg-white border-b border-gray-200">
         <div class="w-10" />
         <div class="flex-1 flex flex-col items-center">
@@ -623,7 +623,7 @@ export const Dnd5 = (props) => {
             <For each={decoratedData().class_features}>
               {(class_feature) =>
                 <Toggle title={renderClassFeatureTitle(class_feature)}>
-                  <p class="text-sm" innerHTML={class_feature.description}></p>
+                  <p class="text-sm" innerHTML={class_feature.description} />
                 </Toggle>
               }
             </For>
@@ -658,10 +658,10 @@ export const Dnd5 = (props) => {
               <Match when={characterSpells() !== undefined}>
                 <div class="flex justify-between items-center mb-2">
                   <Checkbox
-                    left
-                    disabled={false}
                     labelText={t('character.onlyPreparedSpells')}
-                    value={preparedSpellFilter()}
+                    labelPosition="right"
+                    labelClassList="ml-2"
+                    checked={preparedSpellFilter()}
                     onToggle={() => setPreparedSpellFilter(!preparedSpellFilter())}
                   />
                   <Show when={spellClasses().length > 1}>
@@ -844,10 +844,10 @@ export const Dnd5 = (props) => {
             <Show when={spells() !== undefined}>
               <div class="flex justify-between items-center mb-2">
                 <Checkbox
-                  left
-                  disabled={false}
                   labelText={t('character.onlyAvailableSpells')}
-                  value={availableSpellFilter()}
+                  labelPosition="right"
+                  labelClassList="ml-2"
+                  checked={availableSpellFilter()}
                   onToggle={() => setAvailableSpellFilter(!availableSpellFilter())}
                 />
                 <Show when={spellClasses().length > 1}>
@@ -863,12 +863,6 @@ export const Dnd5 = (props) => {
                 {([level, spells]) =>
                   <Toggle title={level === '0' ? 'Cantrips' : `${level} level`}>
                     <table class="w-full table first-column-full-width">
-                      <thead>
-                        <tr>
-                          <td />
-                          <td />
-                        </tr>
-                      </thead>
                       <tbody>
                         <For each={spells}>
                           {(spell) =>
@@ -1074,16 +1068,14 @@ export const Dnd5 = (props) => {
             <div class="white-box p-4 flex flex-col">
               <For each={Object.entries(dict().classes).filter(([a,]) => a !== decoratedData().main_class).sort((a, b) => a[1] > b[1])}>
                 {([slug, class_name]) =>
-                  <div
-                    class="flex flex-row justify-between items-center cursor-pointer"
-                    onClick={() => addOrRemoveClass(slug)}
-                  >
-                    <p
-                      class={`${classesFormData()[slug] ? '' : 'opacity-50'}`}
-                    >{class_name}</p>
-                    <div class="w-16 flex justify-end">
-                      <p class={`checkbox-dummy ${classesFormData()[slug] ? 'selected' : ''}`} />
-                    </div>
+                  <div class="mb-1">
+                    <Checkbox
+                      labelText={class_name}
+                      labelPosition="right"
+                      labelClassList="text-sm ml-4"
+                      checked={classesFormData()[slug]}
+                      onToggle={() => toggleClass(slug)}
+                    />
                   </div>
                 }
               </For>
@@ -1137,6 +1129,6 @@ export const Dnd5 = (props) => {
           </Match>
         </Switch>
       </Modal>
-    </div>
+    </>
   );
 }

@@ -73,6 +73,7 @@ module Characters
     register('decorators.dnd5_character.subclasses.college_of_whispers') {
       Dnd5Character::Subclasses::CollegeOfWhispersDecorator.new
     }
+    register('decorators.dnd5_character.subclasses.alchemist') { Dnd5Character::Subclasses::AlchemistDecorator.new }
 
     # services
     register('services.auth_context.validate_web_telegram_signature') { AuthContext::WebTelegramSignatureValidateService.new }

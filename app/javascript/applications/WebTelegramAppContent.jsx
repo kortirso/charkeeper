@@ -47,8 +47,8 @@ export const WebTelegramAppContent = () => {
       </div>
     }>
       <Match when={appState.accessToken !== undefined && appState.accessToken !== null}>
-        <div class="flex-1 flex flex-col justify-center items-center bg-gray-50 overflow-hidden">
-          <section class="w-full flex-1 overflow-hidden">
+        <div class="flex-1 flex flex-col bg-gray-50 h-screen">
+          <section class="w-full flex-1 flex flex-col overflow-hidden">
             <Switch>
               <Match when={appState.activePage === 'characters' && Object.keys(appState.activePageParams).length === 0}>
                 <CharactersPage />

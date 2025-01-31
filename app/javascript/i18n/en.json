@@ -233,6 +233,9 @@
       "school_of_illusion": "School of Illusion",
       "school_of_necromancy": "School of Necromancy",
       "school_of_transmutation": "School of Transmutation"
+    },
+    "artificer": {
+      "alchemist": "Alchemist"
     }
   },
   "abilities": {
