@@ -61,6 +61,7 @@ module Characters
     register('decorators.dnd5_character.classes.sorcerer') { Dnd5Character::Classes::SorcererDecorator.new }
     register('decorators.dnd5_character.classes.warlock') { Dnd5Character::Classes::WarlockDecorator.new }
     register('decorators.dnd5_character.classes.wizard') { Dnd5Character::Classes::WizardDecorator.new }
+    register('decorators.dnd5_character.classes.artificer') { Dnd5Character::Classes::ArtificerDecorator.new }
 
     register('decorators.dnd5_character.subclasses.circle_of_the_land') {
       Dnd5Character::Subclasses::CircleOfTheLandDecorator.new

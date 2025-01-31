@@ -9,8 +9,8 @@ module Dnd5
           slug: 'metamagic',
           name: { en: 'Metamagic', ru: 'Метамагия' },
           description: {
-            en: 'You gain two of the following Metamagic options of your choice. You gain another one at 10th and 17th level. You can use only one Metamagic option on a spell when you cast it, unless otherwise noted.',
-            ru: 'Вы выбираете два варианта метамагии из перечисленных ниже. На 10 и 17 уровне вы получаете ещё по одному варианту. При сотворении заклинания может быть использован только один метамагический вариант, если в его описании не указано обратное.'
+            en: 'You can use only one Metamagic option on a spell when you cast it, unless otherwise noted.',
+            ru: 'При сотворении заклинания может быть использован только один метамагический вариант, если в его описании не указано обратное.'
           },
           origin: 'class',
           origin_value: 'sorcerer',
@@ -24,7 +24,10 @@ module Dnd5
         {
           slug: 'fighting_style',
           name: { en: 'Fighting style', ru: 'Боевой стиль' },
-          description: { en: 'You adopt a particular style of fighting as your specialty.', ru: 'Вы выбираете боевой стиль, соответствующий вашей специализации.' },
+          description: {
+            en: 'You adopt a particular style of fighting as your specialty.',
+            ru: 'Вы выбираете боевой стиль, соответствующий вашей специализации.'
+          },
           origin: 'class',
           origin_value: 'fighter',
           level: 1,
@@ -49,8 +52,8 @@ module Dnd5
           slug: 'expertise',
           name: { en: 'Expertise', ru: 'Компетентность' },
           description: {
-            en: 'Choose 2 of your skill proficiencies. Your proficiency bonus is doubled for these skill proficiencies. At 10th level, you can choose another two skill proficiencies.',
-            ru: 'Выберите 2 навыка из тех, которыми вы владеете. Ваш бонус мастерства для этих навыков удваивается. На 10 уровне вы можете выбрать ещё 2 навыка.'
+            en: 'Your proficiency bonus is doubled for selected skill proficiencies.',
+            ru: 'Ваш бонус мастерства для выбранных навыков удваивается.'
           },
           origin: 'class',
           origin_value: 'bard',
@@ -71,6 +74,18 @@ module Dnd5
           options_type: 'static',
           options: %w[arctic coast desert forest grassland mountain swamp underdark],
           limit: 1
+        },
+        {
+          slug: 'infuse_item',
+          name: { en: 'Infuse Item', ru: 'Инфузирование предметов' },
+          description: {
+            en: 'The ability to infuse certain magic into ordinary objects and turn them into magical ones.',
+            ru: 'Способность вливать в обычные предметы определённую магию и превращать их в магические.'
+          },
+          origin: 'class',
+          origin_value: 'artificer',
+          level: 2,
+          options_type: 'text' # вручную заполнить
         }
       ].freeze
       # rubocop: enable Layout/LineLength

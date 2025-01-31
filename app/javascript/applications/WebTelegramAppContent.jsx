@@ -1,7 +1,7 @@
 import { createEffect, Switch, Match, createMemo, batch } from 'solid-js';
 import * as i18n from '@solid-primitives/i18n';
 
-import { CharactersPage, NpcPage, ProfilePage } from '../components';
+import { CharactersPage, CharacterPage, NpcPage, ProfilePage } from '../components';
 
 import { useAppState, useAppLocale } from '../context';
 import { useTelegram } from '../hooks';
@@ -14,6 +14,7 @@ export const WebTelegramAppContent = () => {
   const [, dict, { setLocale }] = useAppLocale();
 
   const charactersPage = createMemo(() => <CharactersPage />);
+  const characterPage = createMemo(() => <CharacterPage />);
   const npcPage = createMemo(() => <NpcPage />);
   const profilePage = createMemo(() => <ProfilePage />);
 
@@ -55,8 +56,11 @@ export const WebTelegramAppContent = () => {
         <div class="flex-1 flex flex-col justify-center items-center bg-gray-50 overflow-hidden">
           <section class="w-full flex-1 overflow-hidden">
             <Switch>
-              <Match when={appState.activePage === 'characters'}>
+              <Match when={appState.activePage === 'characters' && Object.keys(appState.activePageParams).length === 0}>
                 {charactersPage()}
+              </Match>
+              <Match when={appState.activePage === 'characters' && appState.activePageParams.id}>
+                {characterPage()}
               </Match>
               <Match when={appState.activePage === 'npc'}>
                 {npcPage()}

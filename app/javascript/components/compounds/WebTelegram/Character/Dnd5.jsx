@@ -1,6 +1,7 @@
 import { createSignal, Switch, Match, batch, For, Show, createEffect, createMemo } from 'solid-js';
 import * as i18n from '@solid-primitives/i18n';
 
+import { Dnd5Abilities as Abilities } from '../../../../components';
 import { createModal, StatsBlock } from '../../../molecules';
 import { Checkbox, Select, Toggle } from '../../../atoms';
 
@@ -40,9 +41,7 @@ export const Dnd5 = (props) => {
   const [availableSpellFilter, setAvailableSpellFilter] = createSignal(true);
 
   // forms for change user data
-  const [abilitiesFormData, setAbilitiesFormData] = createSignal(props.decoratedData.abilities);
   const [healthFormData, setHealthFormData] = createSignal(props.decoratedData.combat.health);
-  const [skillsFormData, setSkillsFormData] = createSignal(props.decoratedData.skills.filter((item) => item.selected).map((item) => item.name));
   const [classesFormData, setClassesFormData] = createSignal(props.decoratedData.classes);
   const [spentSpellSlots, setSpentSpellSlots] = createSignal(props.decoratedData.spent_spell_slots);
   const [changingCoins, setChangingCoins] = createSignal(props.decoratedData.coins);
@@ -215,11 +214,6 @@ export const Dnd5 = (props) => {
     });
   }
 
-  const changeAbility = (ability, direction) => {
-    const newValue = direction === 'up' ? (abilitiesFormData()[ability] + 1) : (abilitiesFormData()[ability] - 1);
-    setAbilitiesFormData({ ...abilitiesFormData(), [ability]: newValue });
-  }
-
   const changeHealth = (health, direction) => {
     const newValue = direction === 'up' ? (healthFormData()[health] + 1) : (healthFormData()[health] - 1);
     setHealthFormData({ ...healthFormData(), [health]: newValue });
@@ -244,14 +238,6 @@ export const Dnd5 = (props) => {
       setClassesFormData(result);
     } else {
       setClassesFormData({ ...classesFormData(), [class_name]: 1 });
-    }
-  }
-
-  const changeSkill = (slug) => {
-    if (skillsFormData().includes(slug)) {
-      setSkillsFormData(skillsFormData().filter((item) => item !== slug));
-    } else {
-      setSkillsFormData(skillsFormData().concat(slug));
     }
   }
 
@@ -333,9 +319,7 @@ export const Dnd5 = (props) => {
     }
   }
 
-  const updateCharacterAbilities = () => updateCharacter({ abilities: abilitiesFormData() });
   const updateCharacterHealth = () => updateCharacter({ health: healthFormData() });
-  const updateCharacterSkills = () => updateCharacter({ selected_skills: skillsFormData() });
   const updateCharacterClasses = () => updateCharacter({ classes: classesFormData(), subclasses: subclasses() });
   const updateCharacterFeatures = () => updateCharacter({ selected_features: featuresFormData() });
 
@@ -386,10 +370,10 @@ export const Dnd5 = (props) => {
     const result = await updateCharacterRequest(appState.accessToken, 'dnd5', props.characterId, { character: payload });
 
     if (result.errors === undefined) {
-      batch(() => {
-        setModalOpenMode(null);
-        closeModal();
-      });
+      // batch(() => {
+      //   setModalOpenMode(null);
+      //   closeModal();
+      // });
       props.onReloadCharacter();
     }
   }
@@ -570,21 +554,21 @@ export const Dnd5 = (props) => {
     </Toggle>
   );
 
-  const renderClassFeatureTitle = (class_feature) => {
-    if (class_feature.limit === undefined) return class_feature.title;
+  const renderClassFeatureTitle = (classFeature) => {
+    if (classFeature.limit === undefined) return classFeature.title;
 
     return (
       <div class="flex items-center">
-        <p class="flex-1">{class_feature.title}</p>
+        <p class="flex-1">{classFeature.title}</p>
         <div class="flex items-center">
           <button
             class="py-1 px-2 border border-gray-200 rounded flex justify-center items-center"
-            onClick={(event) => energyFormData()[class_feature.slug] !== class_feature.limit ? spendEnergy(event, class_feature.slug) : event.stopPropagation()}
+            onClick={(event) => energyFormData()[classFeature.slug] !== classFeature.limit ? spendEnergy(event, classFeature.slug) : event.stopPropagation()}
           >-</button>
-          <p class="w-12 text-center">{class_feature.limit - (energyFormData()[class_feature.slug] || 0)} / {class_feature.limit}</p>
+          <p class="w-12 text-center">{classFeature.limit - (energyFormData()[classFeature.slug] || 0)} / {classFeature.limit}</p>
           <button
             class="py-1 px-2 border border-gray-200 rounded flex justify-center items-center"
-            onClick={(event) => (energyFormData()[class_feature.slug] || 0) > 0 ? restoreEnergy(event, class_feature.slug) : event.stopPropagation()}
+            onClick={(event) => (energyFormData()[classFeature.slug] || 0) > 0 ? restoreEnergy(event, classFeature.slug) : event.stopPropagation()}
           >+</button>
         </div>
       </div>
@@ -610,44 +594,13 @@ export const Dnd5 = (props) => {
       <div class="p-4 flex-1 overflow-y-scroll">
         <Switch>
           <Match when={activeTab() === 'abilities'}>
-            <For each={Object.entries(dict().abilities)}>
-              {([slug, ability]) =>
-                <div class="flex items-start mb-2">
-                  <div
-                    class="white-box flex flex-col items-center w-2/5 p-2 cursor-pointer"
-                    onClick={() => openModalMode('changeAbilities')}
-                  >
-                    <p class="text-sm mb-1">{ability} {decoratedData().abilities[slug]}</p>
-                    <p class="text-2xl mb-1">{modifier(decoratedData().modifiers[slug])}</p>
-                  </div>
-                  <div class="w-3/5 pl-4">
-                    <div
-                      class="white-box p-2 cursor-pointer"
-                      onClick={() => openModalMode('changeSkills')}
-                    >
-                      <div class="flex justify-between">
-                        <p>{t('terms.saveDC')}</p>
-                        <p>{modifier(decoratedData().save_dc[slug])}</p>
-                      </div>
-                      <div class="mt-2">
-                        <For each={decoratedData().skills.filter((item) => item.ability === slug)}>
-                          {(skill) =>
-                            <div class="flex justify-between">
-                              <p class={`${skill.selected ? 'font-medium' : 'opacity-50'}`}>
-                                {t(`skills.${skill.name}`)}
-                              </p>
-                              <p class={`${skill.selected ? 'font-medium' : 'opacity-50'}`}>
-                                {modifier(skill.modifier)}
-                              </p>
-                            </div>
-                          }
-                        </For>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              }
-            </For>
+            <Abilities
+              initialAbilities={props.decoratedData.abilities}
+              initialSkills={props.decoratedData.skills}
+              modifiers={props.decoratedData.modifiers}
+              saveDc={props.decoratedData.save_dc}
+              onReloadCharacter={updateCharacter}
+            />
           </Match>
           <Match when={activeTab() === 'combat'}>
             <StatsBlock
@@ -1039,32 +992,6 @@ export const Dnd5 = (props) => {
             <p class="character-tab-select" onClick={() => openModalMode('changeLevels')}>{t('character.changeLevels')}</p>
             <p class="character-tab-select" onClick={() => openModalMode('changeClasses')}>{t('character.changeClasses')}</p>
           </Match>
-          <Match when={modalOpenMode() === 'changeAbilities'}>
-            <div class="white-box p-4 flex flex-col">
-              <For each={Object.entries(dict().abilities)}>
-                {([slug, ability]) =>
-                  <div class="mb-4 flex items-center">
-                    <p class="flex-1 text-sm text-left">{ability}</p>
-                    <div class="flex justify-between items-center ml-4 w-32">
-                      <button
-                        class="white-box flex py-2 px-4 justify-center items-center"
-                        onClick={() => changeAbility(slug, 'down')}
-                      >-</button>
-                      <p>{abilitiesFormData()[slug]}</p>
-                      <button
-                        class="white-box flex py-2 px-4 justify-center items-center"
-                        onClick={() => changeAbility(slug, 'up')}
-                      >+</button>
-                    </div>
-                  </div>
-                }
-              </For>
-              <button
-                class="py-2 px-4 bg-gray-200 rounded"
-                onClick={updateCharacterAbilities}
-              >{t('buttons.save')}</button>
-            </div>
-          </Match>
           <Match when={modalOpenMode() === 'changeHealth'}>
             <div class="white-box p-4 flex flex-col">
               <For each={['current', 'max', 'temp']}>
@@ -1088,29 +1015,6 @@ export const Dnd5 = (props) => {
               <button
                 class="py-2 px-4 bg-gray-200 rounded"
                 onClick={updateCharacterHealth}
-              >{t('buttons.save')}</button>
-            </div>
-          </Match>
-          <Match when={modalOpenMode() === 'changeSkills'}>
-            <div class="white-box p-4 flex flex-col">
-              <For each={Object.entries(dict().skills).sort((a, b) => a[1] > b[1])}>
-                {([slug, skill]) =>
-                  <div
-                    class="flex flex-row justify-between items-center cursor-pointer"
-                    onClick={() => changeSkill(slug)}
-                  >
-                    <p
-                      class={`${skillsFormData().includes(slug) ? '' : 'opacity-50'}`}
-                    >{skill}</p>
-                    <div class="w-16 flex justify-end">
-                      <p class={`checkbox-dummy ${skillsFormData().includes(slug) ? 'selected' : ''}`} />
-                    </div>
-                  </div>
-                }
-              </For>
-              <button
-                class="mt-2 py-2 px-4 bg-gray-200 rounded"
-                onClick={updateCharacterSkills}
               >{t('buttons.save')}</button>
             </div>
           </Match>

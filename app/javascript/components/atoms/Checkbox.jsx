@@ -1,27 +1,27 @@
-import { Show } from 'solid-js';
+import { Show, splitProps } from 'solid-js';
 
-export const Checkbox = (props) => (
-  <div class="flex items-center">
-    <Show when={props.labelText && props.left}>
-      <label
-        class="mr-2 cursor-pointer"
-        onClick={() => props.disabled ? null : props.onToggle()}
-      >{props.labelText}</label>
-    </Show>
-    <div class="toggle" onClick={() => props.disabled ? null : props.onToggle()}>
-      <input
-        checked={props.value}
-        disabled={props.disabled}
-        class="toggle-checkbox"
-        type="checkbox"
-      />
-      <label class="toggle-label" />
+import { CheckboxLabel } from './CheckboxLabel';
+
+export const Checkbox = (props) => {
+  const [labelProps] = splitProps(props, ['labelText', 'labelClassList']);
+
+  return (
+    <div class="flex items-center" onClick={() => props.disabled ? null : props.onToggle()}>
+      <Show when={props.labelPosition === 'left'}>
+        <CheckboxLabel { ...labelProps } />
+      </Show>
+      <div class="toggle">
+        <input
+          checked={props.checked}
+          disabled={props.disabled}
+          class="toggle-checkbox"
+          type="checkbox"
+        />
+        <label class="toggle-label" />
+      </div>
+      <Show when={props.labelPosition === 'right'}>
+        <CheckboxLabel { ...labelProps } />
+      </Show>
     </div>
-    <Show when={props.labelText && props.right}>
-      <label
-        class="ml-2 cursor-pointer"
-        onClick={() => props.disabled ? null : props.onToggle()}
-      >{props.labelText}</label>
-    </Show>
-  </div>
-)
+  );
+}
