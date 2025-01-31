@@ -1,4 +1,4 @@
-import { createEffect, Switch, Match, createMemo, batch } from 'solid-js';
+import { createEffect, Switch, Match, batch } from 'solid-js';
 import * as i18n from '@solid-primitives/i18n';
 
 import { CharactersPage, CharacterPage, NpcPage, ProfilePage } from '../components';
@@ -13,11 +13,6 @@ export const WebTelegramAppContent = () => {
   const [appState, { setAccessToken, navigate }] = useAppState();
   const [, dict, { setLocale }] = useAppLocale();
 
-  const charactersPage = createMemo(() => <CharactersPage />);
-  const characterPage = createMemo(() => <CharacterPage />);
-  const npcPage = createMemo(() => <NpcPage />);
-  const profilePage = createMemo(() => <ProfilePage />);
-
   const t = i18n.translator(dict);
 
   createEffect(() => {
@@ -25,7 +20,6 @@ export const WebTelegramAppContent = () => {
 
     const urlSearchParams = new URLSearchParams(webApp.initData);
     const data = Object.fromEntries(urlSearchParams.entries());
-
     const checkString = Object.keys(data).filter(key => key !== 'hash').map(key => `${key}=${data[key]}`).sort().join('\n');
 
     const fetchAccessToken = async () => await fetchAccessTokenRequest(checkString, data.hash);
@@ -57,16 +51,16 @@ export const WebTelegramAppContent = () => {
           <section class="w-full flex-1 overflow-hidden">
             <Switch>
               <Match when={appState.activePage === 'characters' && Object.keys(appState.activePageParams).length === 0}>
-                {charactersPage()}
+                <CharactersPage />
               </Match>
               <Match when={appState.activePage === 'characters' && appState.activePageParams.id}>
-                {characterPage()}
+                <CharacterPage />
               </Match>
               <Match when={appState.activePage === 'npc'}>
-                {npcPage()}
+                <NpcPage />
               </Match>
               <Match when={appState.activePage === 'profile'}>
-                {profilePage()}
+                <ProfilePage />
               </Match>
             </Switch>
           </section>

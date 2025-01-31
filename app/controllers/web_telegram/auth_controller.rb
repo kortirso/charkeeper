@@ -11,8 +11,8 @@ module WebTelegram
     skip_before_action :authenticate
 
     def create
-      if true
-      # if web_telegram_signature.valid?(check_string: params[:check_string], hash: params[:hash])
+      # if true
+      if web_telegram_signature.valid?(check_string: params[:check_string], hash: params[:hash])
         access_token = generate_token.call(user_session: user_session)[:result]
         render json: { access_token: access_token }, status: :created
       else
@@ -23,7 +23,7 @@ module WebTelegram
     private
 
     def user_session
-      return User::Session.last
+      # return User::Session.last
       ActiveRecord::Base.transaction do
         identity = find_identity || create_identity
         User::Session.create!(user: identity.user)

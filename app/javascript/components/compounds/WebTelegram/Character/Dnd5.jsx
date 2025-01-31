@@ -22,7 +22,7 @@ import { updateCharacterSpellRequest } from '../../../../requests/updateCharacte
 import { createCharacterItemRequest } from '../../../../requests/createCharacterItemRequest';
 
 const CLASSES_LEARN_SPELLS = ['bard', 'ranger', 'sorcerer', 'warlock', 'wizard'];
-const CLASSES_PREPARE_SPELLS = ['cleric', 'druid', 'paladin', 'wizard'];
+const CLASSES_PREPARE_SPELLS = ['cleric', 'druid', 'paladin', 'artificer', 'wizard'];
 
 export const Dnd5 = (props) => {
   const decoratedData = () => props.decoratedData;
@@ -623,7 +623,7 @@ export const Dnd5 = (props) => {
             <For each={decoratedData().class_features}>
               {(class_feature) =>
                 <Toggle title={renderClassFeatureTitle(class_feature)}>
-                  <p class="text-sm">{class_feature.description}</p>
+                  <p class="text-sm" innerHTML={class_feature.description}></p>
                 </Toggle>
               }
             </For>
@@ -967,6 +967,14 @@ export const Dnd5 = (props) => {
                             }
                           </For>
                         </Match>
+                        <Match when={feature.options_type === 'text'}>
+                          <textarea
+                            rows="5"
+                            class="w-full border border-gray-200 rounded p-1 text-sm"
+                            onInput={(e) => setFeaturesFormData({ ...featuresFormData(), [feature.slug]: e.target.value })}
+                            value={featuresFormData()[feature.slug] || ''}
+                          />
+                        </Match>
                       </Switch>
                     </Toggle>
                   }
@@ -1037,17 +1045,22 @@ export const Dnd5 = (props) => {
                         >+</button>
                       </div>
                     </div>
-                    <Show
-                      when={!decoratedData().subclasses[class_name]}
-                      fallback={<p class="mb-2">{dict().subclasses[class_name][decoratedData().subclasses[class_name]]}</p>}
-                    >
-                      <Select
-                        classList="w-full mb-2"
-                        items={dict().subclasses[class_name]}
-                        selectedValue={subclasses()[class_name]}
-                        onSelect={(value) => setSubclasses({ ...subclasses, [class_name]: value })}
-                      />
-                    </Show>
+                    <Switch>
+                      <Match when={dict().subclasses[class_name] === undefined}>
+                        <></>
+                      </Match>
+                      <Match when={decoratedData().subclasses[class_name]}>
+                        <p class="mb-2">{dict().subclasses[class_name][decoratedData().subclasses[class_name]]}</p>
+                      </Match>
+                      <Match when={!decoratedData().subclasses[class_name]}>
+                        <Select
+                          classList="w-full mb-2"
+                          items={dict().subclasses[class_name]}
+                          selectedValue={subclasses()[class_name]}
+                          onSelect={(value) => setSubclasses({ ...subclasses, [class_name]: value })}
+                        />
+                      </Match>
+                    </Switch>
                   </div>
                 }
               </For>

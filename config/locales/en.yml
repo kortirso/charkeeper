@@ -2,6 +2,8 @@ en:
   dnd5:
     class_features:
       artificer:
+        infuse_item:
+          title: Infuse Item
         magical_tinkering:
           title: Magical Tinkering
           description: To use this feature, you must be holding thieves' tools or artisan's tools. Then, as an Action, you touch a Tiny nonmagical object and imbue it with one magical property of your choice.
