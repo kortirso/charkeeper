@@ -5,8 +5,6 @@ class ApplicationController < ActionController::Base
 
   append_view_path Rails.root.join('app/views/controllers')
 
-  before_action :authenticate
-
   # rubocop: disable Lint/UselessMethodDefinition, Style/RedundantInitialize
   # https://github.com/dry-rb/dry-auto_inject/issues/91
   def initialize = super
