@@ -13,9 +13,9 @@ module Dnd5Character
     private
 
     def subrace_decorator(subrace)
-      Characters::Container.resolve("decorators.dnd5_character.subraces.#{subrace}")
+      Charkeeper::Container.resolve("decorators.dnd5_character.subraces.#{subrace}")
     rescue Dry::Container::KeyError => _e
-      Characters::Container.resolve('decorators.dnd5_character.dummy_decorator')
+      Charkeeper::Container.resolve('decorators.dnd5_character.dummy_decorator')
     end
   end
 end

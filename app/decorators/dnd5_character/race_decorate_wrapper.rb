@@ -13,7 +13,7 @@ module Dnd5Character
     private
 
     def race_decorator(race)
-      Characters::Container.resolve("decorators.dnd5_character.races.#{race}")
+      Charkeeper::Container.resolve("decorators.dnd5_character.races.#{race}")
     end
   end
 end

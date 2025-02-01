@@ -11,7 +11,7 @@ describe WebTelegram::Dnd5::Characters::SpellsController do
     context 'for logged users' do
       context 'for unexisting character' do
         it 'returns error' do
-          get :index, params: { character_id: 'unexisting', characters_access_token: access_token }
+          get :index, params: { character_id: 'unexisting', charkeeper_access_token: access_token }
 
           expect(response).to have_http_status :not_found
         end
@@ -21,7 +21,7 @@ describe WebTelegram::Dnd5::Characters::SpellsController do
         before { create :character_spell, character: character, data: { prepared_by: Dnd5::Character::WIZARD } }
 
         it 'returns error' do
-          get :index, params: { character_id: character.id, characters_access_token: access_token }
+          get :index, params: { character_id: character.id, charkeeper_access_token: access_token }
 
           expect(response).to have_http_status :not_found
         end
@@ -31,7 +31,7 @@ describe WebTelegram::Dnd5::Characters::SpellsController do
         before { create :character_spell, character: user_character, data: { prepared_by: Dnd5::Character::WIZARD } }
 
         it 'returns data', :aggregate_failures do
-          get :index, params: { character_id: user_character.id, characters_access_token: access_token }
+          get :index, params: { character_id: user_character.id, charkeeper_access_token: access_token }
 
           response_values = response.parsed_body.dig('spells', 0)
 
@@ -49,7 +49,7 @@ describe WebTelegram::Dnd5::Characters::SpellsController do
     context 'for logged users' do
       context 'for unexisting character' do
         it 'returns error' do
-          post :create, params: { character_id: 'unexisting', characters_access_token: access_token }
+          post :create, params: { character_id: 'unexisting', charkeeper_access_token: access_token }
 
           expect(response).to have_http_status :not_found
         end
@@ -59,7 +59,7 @@ describe WebTelegram::Dnd5::Characters::SpellsController do
         before { create :character_spell, character: character, data: { prepared_by: Dnd5::Character::WIZARD } }
 
         it 'returns error' do
-          post :create, params: { character_id: character.id, characters_access_token: access_token }
+          post :create, params: { character_id: character.id, charkeeper_access_token: access_token }
 
           expect(response).to have_http_status :not_found
         end
@@ -71,7 +71,7 @@ describe WebTelegram::Dnd5::Characters::SpellsController do
         context 'for unexisting spell' do
           let(:request) {
             post :create, params: {
-              character_id: user_character.id, spell_id: 'unexisting', characters_access_token: access_token
+              character_id: user_character.id, spell_id: 'unexisting', charkeeper_access_token: access_token
             }
           }
 
@@ -87,7 +87,7 @@ describe WebTelegram::Dnd5::Characters::SpellsController do
               character_id: user_character.id,
               spell_id: spell.id,
               target_spell_class: Dnd5::Character::WIZARD,
-              characters_access_token: access_token
+              charkeeper_access_token: access_token
             }
           }
 
@@ -105,7 +105,7 @@ describe WebTelegram::Dnd5::Characters::SpellsController do
     context 'for logged users' do
       context 'for unexisting character' do
         it 'returns error' do
-          patch :update, params: { character_id: 'unexisting', id: 'unexisting', characters_access_token: access_token }
+          patch :update, params: { character_id: 'unexisting', id: 'unexisting', charkeeper_access_token: access_token }
 
           expect(response).to have_http_status :not_found
         end
@@ -115,7 +115,7 @@ describe WebTelegram::Dnd5::Characters::SpellsController do
         before { create :character_spell, character: character, data: { prepared_by: Dnd5::Character::WIZARD } }
 
         it 'returns error' do
-          patch :update, params: { character_id: character.id, id: 'unexisting', characters_access_token: access_token }
+          patch :update, params: { character_id: character.id, id: 'unexisting', charkeeper_access_token: access_token }
 
           expect(response).to have_http_status :not_found
         end
@@ -130,7 +130,7 @@ describe WebTelegram::Dnd5::Characters::SpellsController do
               character_id: user_character.id,
               id: 'unexisting',
               ready_to_use: true,
-              characters_access_token: access_token
+              charkeeper_access_token: access_token
             }
           }
 
@@ -150,7 +150,7 @@ describe WebTelegram::Dnd5::Characters::SpellsController do
               character_id: user_character.id,
               id: character_spell.id,
               ready_to_use: true,
-              characters_access_token: access_token
+              charkeeper_access_token: access_token
             }
           }
 
@@ -170,7 +170,7 @@ describe WebTelegram::Dnd5::Characters::SpellsController do
     context 'for logged users' do
       context 'for unexisting character' do
         it 'returns error' do
-          delete :destroy, params: { character_id: 'unexisting', id: 'unexisting', characters_access_token: access_token }
+          delete :destroy, params: { character_id: 'unexisting', id: 'unexisting', charkeeper_access_token: access_token }
 
           expect(response).to have_http_status :not_found
         end
@@ -178,7 +178,7 @@ describe WebTelegram::Dnd5::Characters::SpellsController do
 
       context 'for not user character' do
         it 'returns error' do
-          delete :destroy, params: { character_id: character.id, id: 'unexisting', characters_access_token: access_token }
+          delete :destroy, params: { character_id: character.id, id: 'unexisting', charkeeper_access_token: access_token }
 
           expect(response).to have_http_status :not_found
         end
@@ -190,7 +190,7 @@ describe WebTelegram::Dnd5::Characters::SpellsController do
             delete :destroy, params: {
               character_id: user_character.id,
               id: 'unexisting',
-              characters_access_token: access_token
+              charkeeper_access_token: access_token
             }
           }
 
@@ -205,7 +205,7 @@ describe WebTelegram::Dnd5::Characters::SpellsController do
             delete :destroy, params: {
               character_id: user_character.id,
               id: spell.id,
-              characters_access_token: access_token
+              charkeeper_access_token: access_token
             }
           }
 

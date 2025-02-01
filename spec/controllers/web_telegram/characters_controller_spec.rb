@@ -11,7 +11,7 @@ describe WebTelegram::CharactersController do
       end
 
       it 'returns data', :aggregate_failures do
-        get :index, params: { characters_access_token: access_token }
+        get :index, params: { charkeeper_access_token: access_token }
 
         response_values = response.parsed_body.dig('characters', 0)
 
@@ -27,7 +27,7 @@ describe WebTelegram::CharactersController do
       let!(:character) { create :character, user: user_session.user }
 
       it 'returns data', :aggregate_failures do
-        get :show, params: { id: character.id, characters_access_token: access_token }
+        get :show, params: { id: character.id, charkeeper_access_token: access_token }
 
         response_values = response.parsed_body['character']
 
@@ -37,7 +37,7 @@ describe WebTelegram::CharactersController do
 
       context 'for not existing character' do
         it 'returns error', :aggregate_failures do
-          get :show, params: { id: 'unexisting', characters_access_token: access_token }
+          get :show, params: { id: 'unexisting', charkeeper_access_token: access_token }
 
           expect(response).to have_http_status :not_found
           expect(response.parsed_body['errors']).to eq({ 'base' => ['Not found'] })

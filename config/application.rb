@@ -20,7 +20,7 @@ require 'action_view/railtie'
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
-module Characters
+module Charkeeper
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 8.0
@@ -61,8 +61,5 @@ module Characters
 
     # Don't generate system test files.
     config.generators.system_tests = nil
-
-    # ngrok configuration
-    config.hosts << '6e18-45-153-230-36.ngrok-free.app'
   end
 end

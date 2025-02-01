@@ -23,6 +23,6 @@ test:
 
 production:
   <<: *default
-  database: characters_production
-  username: characters
+  database: charkeeper
+  username: charkeeper
   password: <%= Rails.application.credentials[:database_password] %>

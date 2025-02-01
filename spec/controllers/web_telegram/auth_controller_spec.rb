@@ -9,7 +9,7 @@ describe WebTelegram::AuthController do
     let(:hash) { 'c501b71e775f74ce10e377dea85a7ea24ecd640b223ea86dfe453e0eaed2e2b2' }
 
     before do
-      allow(Characters::Container.resolve('services.auth_context.validate_web_telegram_signature')).to(
+      allow(Charkeeper::Container.resolve('services.auth_context.validate_web_telegram_signature')).to(
         receive(:valid?).and_return(web_telegram_signature_valid)
       )
     end

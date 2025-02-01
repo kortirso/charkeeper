@@ -57,7 +57,7 @@ module Dnd5Character
     end
 
     def class_decorator(main_class)
-      Characters::Container.resolve("decorators.dnd5_character.classes.#{main_class}")
+      Charkeeper::Container.resolve("decorators.dnd5_character.classes.#{main_class}")
     end
   end
 end

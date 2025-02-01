@@ -9,7 +9,7 @@ describe WebTelegram::Dnd5::SpellsController do
       before { create :spell }
 
       it 'returns data', :aggregate_failures do
-        get :index, params: { characters_access_token: access_token, format: :json }
+        get :index, params: { charkeeper_access_token: access_token, format: :json }
 
         response_values = response.parsed_body.dig('spells', 0)
 

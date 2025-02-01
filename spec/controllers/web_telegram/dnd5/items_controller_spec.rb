@@ -9,7 +9,7 @@ describe WebTelegram::Dnd5::ItemsController do
       before { create :item }
 
       it 'returns data', :aggregate_failures do
-        get :index, params: { characters_access_token: access_token }
+        get :index, params: { charkeeper_access_token: access_token }
 
         response_values = response.parsed_body.dig('items', 0)
 

@@ -3,7 +3,7 @@
 require 'dry/auto_inject'
 require 'dry/container'
 
-module Characters
+module Charkeeper
   class Container
     extend Dry::Container::Mixin
 
@@ -80,4 +80,4 @@ module Characters
   end
 end
 
-Deps = Dry::AutoInject(Characters::Container)
+Deps = Dry::AutoInject(Charkeeper::Container)

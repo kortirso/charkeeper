@@ -10,7 +10,7 @@ describe WebTelegram::Dnd5::CharactersController do
         post :create, params: {
           character: {
             name: 'Грундар', race: 'human', main_class: 'monk', alignment: 'neutral'
-          }, characters_access_token: access_token
+          }, charkeeper_access_token: access_token
         }
       }
 
@@ -24,7 +24,7 @@ describe WebTelegram::Dnd5::CharactersController do
           post :create, params: {
             character: {
               name: 'Грундар', race: 'argh', main_class: 'monk', alignment: 'neutral'
-            }, characters_access_token: access_token
+            }, charkeeper_access_token: access_token
           }
         }
 
@@ -43,7 +43,7 @@ describe WebTelegram::Dnd5::CharactersController do
 
       it 'updates character', :aggregate_failures do
         patch :update, params: {
-          id: character.id, character: { classes: { monk: 12 } }, characters_access_token: access_token
+          id: character.id, character: { classes: { monk: 12 } }, charkeeper_access_token: access_token
         }
 
         expect(response).to have_http_status :ok
@@ -53,7 +53,7 @@ describe WebTelegram::Dnd5::CharactersController do
       context 'for not existing character' do
         it 'returns error', :aggregate_failures do
           patch :update, params: {
-            id: 'unexisting', character: { classes: { monk: 12 } }, characters_access_token: access_token
+            id: 'unexisting', character: { classes: { monk: 12 } }, charkeeper_access_token: access_token
           }
 
           expect(response).to have_http_status :not_found
@@ -64,7 +64,7 @@ describe WebTelegram::Dnd5::CharactersController do
       context 'for invalid request' do
         it 'returns error', :aggregate_failures do
           patch :update, params: {
-            id: character.id, character: { classes: { monk: 31 } }, characters_access_token: access_token
+            id: character.id, character: { classes: { monk: 31 } }, charkeeper_access_token: access_token
           }
 
           expect(response).to have_http_status :unprocessable_entity

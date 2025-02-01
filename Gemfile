@@ -60,6 +60,16 @@ group :development, :test do
   gem 'rubocop-rspec_rails', '~> 2.0', require: false
 end
 
+group :development do
+  # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]
+  # gem 'rack-mini-profiler', '>= 2.3.3'
+
+  gem 'capistrano', '~> 3.17', require: false
+  gem 'capistrano-bundler', require: false
+  gem 'capistrano-rails', '~> 1.6', require: false
+  gem 'capistrano-rvm', require: false
+end
+
 group :test do
   gem 'database_cleaner', '~> 2.0'
   gem 'factory_bot_rails', '~> 6.4'

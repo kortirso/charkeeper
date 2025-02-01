@@ -189,10 +189,10 @@ module Dnd5
 
     private
 
-    def base_decorator = ::Characters::Container.resolve('decorators.dnd5_character.base_decorator')
-    def race_decorator = ::Characters::Container.resolve('decorators.dnd5_character.race_wrapper')
-    def subrace_decorator = ::Characters::Container.resolve('decorators.dnd5_character.subrace_wrapper')
-    def class_decorator = ::Characters::Container.resolve('decorators.dnd5_character.class_wrapper')
-    def subclass_decorator = ::Characters::Container.resolve('decorators.dnd5_character.subclass_wrapper')
+    def base_decorator = ::Charkeeper::Container.resolve('decorators.dnd5_character.base_decorator')
+    def race_decorator = ::Charkeeper::Container.resolve('decorators.dnd5_character.race_wrapper')
+    def subrace_decorator = ::Charkeeper::Container.resolve('decorators.dnd5_character.subrace_wrapper')
+    def class_decorator = ::Charkeeper::Container.resolve('decorators.dnd5_character.class_wrapper')
+    def subclass_decorator = ::Charkeeper::Container.resolve('decorators.dnd5_character.subclass_wrapper')
   end
 end
