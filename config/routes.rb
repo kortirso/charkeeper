@@ -18,9 +18,5 @@ Rails.application.routes.draw do
     end
   end
 
-  scope module: :web do
-    resources :characters, only: %i[index]
-  end
-
   root 'web/welcome#index'
 end

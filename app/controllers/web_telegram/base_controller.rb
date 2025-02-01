@@ -2,11 +2,8 @@
 
 module WebTelegram
   class BaseController < ApplicationController
-    include Authkeeper::Controllers::Authentication
-
     protect_from_forgery with: :null_session
 
-    before_action :authenticate
     before_action :set_locale
 
     rescue_from ActiveRecord::RecordNotFound, with: :page_not_found

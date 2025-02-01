@@ -1,7 +1,11 @@
 # frozen_string_literal: true
 
 class ApplicationController < ActionController::Base
+  include Authkeeper::Controllers::Authentication
+
   append_view_path Rails.root.join('app/views/controllers')
+
+  before_action :authenticate
 
   # rubocop: disable Lint/UselessMethodDefinition, Style/RedundantInitialize
   # https://github.com/dry-rb/dry-auto_inject/issues/91
