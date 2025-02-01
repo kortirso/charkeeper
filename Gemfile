@@ -51,6 +51,9 @@ gem 'jwt', '~> 2.5'
 # Work with JSON-backed attributes
 gem 'store_model'
 
+# http client
+gem 'faraday', '~> 2.0'
+
 group :development, :test do
   gem 'rubocop', '~> 1.35', require: false
   gem 'rubocop-factory_bot', '~> 2.0', require: false
