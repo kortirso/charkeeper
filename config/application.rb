@@ -15,6 +15,7 @@ require 'action_controller/railtie'
 require 'action_view/railtie'
 # require 'action_cable/engine'
 # require 'rails/test_unit/railtie'
+require 'sprockets/railtie'
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
@@ -23,7 +24,7 @@ Bundler.require(*Rails.groups)
 module Charkeeper
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
-    config.load_defaults 8.0
+    config.load_defaults 7.2
 
     config.middleware.use Rack::Deflater
     # Rack::Brotli goes directly under Rack::Deflater, if Rack::Deflater is present

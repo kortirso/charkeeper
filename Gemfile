@@ -7,11 +7,11 @@ gem 'rack', '~> 3.0'
 gem 'rack-brotli'
 gem 'rack-session', '~> 2.0'
 gem 'rackup', '~> 2.1'
-gem 'rails', '~> 8.0.1'
+gem 'rails', '7.2.2'
 
 # The modern asset pipeline for Rails [https://github.com/rails/propshaft]
 gem 'jsbundling-rails'
-gem 'propshaft'
+gem 'sprockets-rails'
 gem 'tailwindcss-rails'
 
 # Use postgresql as the database for Active Record
