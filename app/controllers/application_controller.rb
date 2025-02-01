@@ -1,8 +1,6 @@
 # frozen_string_literal: true
 
 class ApplicationController < ActionController::Base
-  include Authkeeper::Controllers::Authentication
-
   append_view_path Rails.root.join('app/views/controllers')
 
   # rubocop: disable Lint/UselessMethodDefinition, Style/RedundantInitialize
