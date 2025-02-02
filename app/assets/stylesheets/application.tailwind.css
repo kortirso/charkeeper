@@ -2,6 +2,25 @@
 @tailwind components;
 @tailwind utilities;
 
+#web_telegram_html {
+  overflow: hidden;
+}
+
+#web_telegram_body {
+  overflow-x: hidden;
+}
+
+#web_telegram_html,
+#web_telegram_body {
+  overscroll-behavior-y: contain; /* Предотвращает перетягивание на iOS */
+  height: -webkit-fill-available;
+  min-height: 100%;
+}
+
+#web_telegram_body::-webkit-scrollbar {
+  display: none; /* Скрыть скроллбар в Webkit (например, Safari, Chrome) */
+}
+
 .modal {
   @apply relative pt-12 p-8 bg-gray-50 rounded;
 
