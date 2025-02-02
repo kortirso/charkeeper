@@ -3,7 +3,7 @@ import { createStore } from 'solid-js/store';
 import * as i18n from '@solid-primitives/i18n';
 
 import { createModal } from '../../molecules';
-import { Select } from '../../atoms';
+import { Select, Input } from '../../atoms';
 
 import { useAppState, useAppLocale } from '../../../context';
 import { fetchCharactersRequest } from '../../../requests/fetchCharactersRequest';
@@ -76,7 +76,7 @@ export const CharactersPage = () => {
                 <Switch>
                   <Match when={character.provider === 'dnd5'}>
                     <div class="mr-2">
-                      <div class="w-16 h-16 border border-gray rounded" />
+                      <div class="w-16 h-16 bordered" />
                     </div>
                     <div>
                       <p class="mb-1 font-medium">{character.name}</p>
@@ -97,27 +97,25 @@ export const CharactersPage = () => {
         </Show>
       </div>
       <Modal>
-        <div class="flex flex-col">
+        <div class="flex flex-col w-52">
           <h2 class="mb-2 text-center">{t('newCharacter.title')}</h2>
           <Select
-            classList="w-52 mb-2"
+            classList="w-full mb-2"
             labelText={t('newCharacter.platform')}
             items={{ 'dnd5': 'D&D 5' }}
             selectedValue={platform()}
             onSelect={(value) => setPlatform(value)}
           />
-          <div class="mb-2 w-52">
-            <label class="text-sm">{t('newCharacter.name')}</label>
-            <input
-              class="border border-gray-200 rounded py-2.5 px-2 text-sm"
-              onInput={(e) => setCharacterForm({ ...characterForm, name: e.target.value })}
-              value={characterForm.name}
-            />
-          </div>
+          <Input
+            classList="mb-2"
+            title={t('newCharacter.name')}
+            value={characterForm.name}
+            onInput={(value) => setCharacterForm({ ...characterForm, name: value })}
+          />
           <Switch>
             <Match when={platform() === 'dnd5'}>
               <Select
-                classList="w-52 mb-2"
+                classList="mb-2"
                 labelText={t('newCharacter.race')}
                 items={dict().races}
                 selectedValue={characterForm.race}
@@ -125,7 +123,7 @@ export const CharactersPage = () => {
               />
               <Show when={dict().subraces[characterForm.race]}>
                 <Select
-                  classList="w-52 mb-2"
+                  classList="mb-2"
                   labelText={t('newCharacter.subrace')}
                   items={dict().subraces[characterForm.race]}
                   selectedValue={characterForm.subrace}
@@ -133,7 +131,7 @@ export const CharactersPage = () => {
                 />
               </Show>
               <Select
-                classList="w-52"
+                classList=""
                 labelText={t('newCharacter.mainClass')}
                 items={dict().classes}
                 selectedValue={characterForm.main_class}
@@ -141,10 +139,7 @@ export const CharactersPage = () => {
               />
             </Match>
           </Switch>
-          <button
-            class="mt-4 py-2 px-4 bg-gray-200 rounded"
-            onClick={saveCharacter}
-          >{t('buttons.save')}</button>
+          <button class="btn mt-4" onClick={saveCharacter}>{t('buttons.save')}</button>
         </div>
       </Modal>
     </>

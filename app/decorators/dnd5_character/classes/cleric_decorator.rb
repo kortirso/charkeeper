@@ -15,6 +15,8 @@ module Dnd5Character
 
       def decorate_character_abilities(result:, class_level:) # rubocop: disable Lint/UnusedMethodArgument
         result[:class_save_dc] = %i[wis cha] if result[:main_class] == 'cleric'
+
+        result
       end
     end
   end

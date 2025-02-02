@@ -28,8 +28,16 @@
   max-height: 90%;
 }
 
+.btn {
+  @apply py-2 px-4 bg-gray-200 rounded;
+}
+
+.bordered {
+  @apply border border-gray-200 rounded;
+}
+
 .white-box {
-  @apply bg-white border border-gray-200 rounded;
+  @apply bg-white bordered;
 }
 
 .nav-button {
@@ -106,7 +114,7 @@
 }
 
 .form-field .form-value {
-  @apply px-4 leading-8 rounded border border-gray-200 bg-white;
+  @apply bordered px-4 leading-8 bg-white;
 
   color: '#666';
 }
