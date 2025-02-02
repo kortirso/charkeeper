@@ -118,7 +118,7 @@ module Dnd5Character
     def unarmed_attack(result)
       {
         type: 'unarmed',
-        name: { en: 'Unarmed', ru: 'Безоружная' }[I18n.locale.to_sym],
+        name: { en: 'Unarmed', ru: 'Безоружная' }[I18n.locale],
         action_type: 'action', # action или bonus action
         hands: '1', # используется рук
         melee_distance: 5, # дальность
@@ -167,7 +167,7 @@ module Dnd5Character
         {
           type: 'melee',
           slug: item[:items_slug],
-          name: item[:items_name][I18n.locale.to_sym],
+          name: item[:items_name][I18n.locale.to_s],
           action_type: 'action',
           hands: captions.include?('2handed') ? '2' : '1',
           melee_distance: captions.include?('reach') ? 10 : 5,
@@ -213,7 +213,7 @@ module Dnd5Character
         {
           type: type,
           slug: item[:items_slug],
-          name: item[:items_name][I18n.locale.to_sym],
+          name: item[:items_name][I18n.locale.to_s],
           action_type: 'action',
           hands: captions.include?('2handed') ? '2' : '1',
           range_distance: item[:items_data]['info']['dist'],
