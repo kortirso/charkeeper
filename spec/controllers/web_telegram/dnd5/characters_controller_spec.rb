@@ -68,7 +68,7 @@ describe WebTelegram::Dnd5::CharactersController do
           }
 
           expect(response).to have_http_status :unprocessable_entity
-          expect(response.parsed_body['errors']).to eq({ 'classes' => ['Invalid level'] })
+          expect(response.parsed_body['errors']).to eq({ 'classes' => ['Недопустимый уровень'] })
         end
       end
     end

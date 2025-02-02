@@ -10,10 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2025_01_29_151359) do
+ActiveRecord::Schema[7.2].define(version: 2025_02_02_133958) do
   # These are extensions that must be enabled in order to support this database
-  enable_extension "pg_catalog.plpgsql"
   enable_extension "pgcrypto"
+  enable_extension "plpgsql"
   enable_extension "uuid-ossp"
 
   create_table "character_items", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
@@ -88,6 +88,6 @@ ActiveRecord::Schema[7.2].define(version: 2025_01_29_151359) do
   create_table "users", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "locale", default: "en", null: false
+    t.string "locale", default: "ru", null: false
   end
 end
