@@ -7,7 +7,7 @@ gem 'rack', '~> 3.0'
 gem 'rack-brotli'
 gem 'rack-session', '~> 2.0'
 gem 'rackup', '~> 2.1'
-gem 'rails', '7.2.2'
+gem 'rails', '~> 8.0'
 
 # The modern asset pipeline for Rails [https://github.com/rails/propshaft]
 gem 'jsbundling-rails'
@@ -53,6 +53,9 @@ gem 'store_model'
 
 # http client
 gem 'faraday', '~> 2.0'
+
+# performance metrics
+gem 'skylight'
 
 group :development, :test do
   gem 'rubocop', '~> 1.35', require: false
