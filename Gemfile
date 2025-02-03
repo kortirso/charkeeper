@@ -57,6 +57,9 @@ gem 'faraday', '~> 2.0'
 # performance metrics
 gem 'skylight'
 
+# bugs tracking
+gem 'bugsnag'
+
 group :development, :test do
   gem 'rubocop', '~> 1.35', require: false
   gem 'rubocop-factory_bot', '~> 2.0', require: false

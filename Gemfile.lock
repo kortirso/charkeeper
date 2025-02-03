@@ -84,6 +84,8 @@ GEM
     bootsnap (1.18.4)
       msgpack (~> 1.2)
     brotli (0.6.0)
+    bugsnag (6.27.1)
+      concurrent-ruby (~> 1.0)
     builder (3.3.0)
     capistrano (3.19.2)
       airbrussh (>= 1.0.0)
@@ -415,6 +417,7 @@ DEPENDENCIES
   authkeeper (= 0.1.6)
   awesome_print
   bootsnap
+  bugsnag
   capistrano (~> 3.17)
   capistrano-bundler
   capistrano-rails (~> 1.6)
