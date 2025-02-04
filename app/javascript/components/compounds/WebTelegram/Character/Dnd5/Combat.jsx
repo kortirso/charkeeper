@@ -1,4 +1,4 @@
-import { createSignal, For, Show } from 'solid-js';
+import { createSignal, For, Show, batch } from 'solid-js';
 import * as i18n from '@solid-primitives/i18n';
 
 import { createModal, StatsBlock } from '../../../../molecules';
@@ -11,6 +11,7 @@ export const Dnd5Combat = (props) => {
   // changeable data
   const [healthData, setHealthData] = createSignal(props.initialHealth);
   const [energyData, setEnergyData] = createSignal(props.initialEnergy);
+  const [damageHealValue, setDamageHealValue] = createSignal(0);
 
   const { Modal, openModal, closeModal } = createModal();
   const [, dict] = useAppLocale();
@@ -49,6 +50,36 @@ export const Dnd5Combat = (props) => {
   const changeHealth = (health, direction) => {
     const newValue = direction === 'up' ? (healthData()[health] + 1) : (healthData()[health] - 1);
     setHealthData({ ...healthData(), [health]: newValue });
+  }
+
+  const makeHeal = async () => {
+    const missingHealth = healthData().max - healthData().current;
+
+    let newValue;
+    if (damageHealValue() >= missingHealth) newValue = { ...healthData(), current: healthData().max }
+    else newValue = { ...healthData(), current: healthData().current + damageHealValue() }
+
+    const result = await props.onRefreshCharacter({ health: newValue });
+    if (result.errors === undefined) {
+      batch(() => {
+        setDamageHealValue(0);
+        setHealthData(newValue);
+      })
+    }
+  }
+
+  const dealDamage = async () => {
+    const damageToTempHealth = damageHealValue() >= healthData().temp ? healthData().temp : damageHealValue();
+    const damageToHealth = damageHealValue() - damageToTempHealth;
+
+    let newValue = { ...healthData(), current: healthData().current - damageToHealth, temp: healthData().temp - damageToTempHealth }
+    const result = await props.onRefreshCharacter({ health: newValue });
+    if (result.errors === undefined) {
+      batch(() => {
+        setDamageHealValue(0);
+        setHealthData(newValue);
+      })
+    }
   }
 
   // submits
@@ -141,7 +172,17 @@ export const Dnd5Combat = (props) => {
           { title: t('terms.health.temp'), value: healthData().temp }
         ]}
         onClick={openModal}
-      />
+      >
+        <div class="flex items-center pt-2 p-4">
+          <button class="w-20 cursor-pointer" onClick={dealDamage}>Damage</button>
+          <div class="flex-1 flex justify-center items-center">
+            <button class="btn-light" onClick={() => damageHealValue() > 0 ? setDamageHealValue(damageHealValue() - 1) : null}>-</button>
+            <p class="w-10 text-center">{damageHealValue()}</p>
+            <button class="btn-light" onClick={() => setDamageHealValue(damageHealValue() + 1)}>+</button>
+          </div>
+          <button class="w-20 cursor-pointer" onClick={makeHeal}>Heal</button>
+        </div>
+      </StatsBlock>
       {renderAttacksBox(`${t('terms.attackAction')} - ${props.combat.attacks_per_action}`, props.attacks.filter((item) => item.action_type === 'action'))}
       {renderAttacksBox(`${t('terms.attackBonusAction')} - 1`, props.attacks.filter((item) => item.action_type === 'bonus action'))}
       <For each={props.classFeatures}>
