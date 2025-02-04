@@ -18,8 +18,7 @@ module Dnd5Character
         weapon_skills: [],
         armor_proficiency: [],
         languages: [],
-        selected_skills: [],
-        health: { current: 10, max: 10, temp: 0 }
+        selected_skills: []
       }.compact
     end
 
@@ -92,7 +91,7 @@ module Dnd5Character
         { name: 'intimidation', ability: 'cha', modifier: modifiers[:cha], selected: false },
         { name: 'investigation', ability: 'int', modifier: modifiers[:int], selected: false },
         { name: 'medicine', ability: 'wis', modifier: modifiers[:wis], selected: false },
-        { name: 'nature', ability: 'wis', modifier: modifiers[:wis], selected: false },
+        { name: 'nature', ability: 'int', modifier: modifiers[:int], selected: false },
         { name: 'perception', ability: 'wis', modifier: modifiers[:wis], selected: false },
         { name: 'performance', ability: 'cha', modifier: modifiers[:cha], selected: false },
         { name: 'persuasion', ability: 'cha', modifier: modifiers[:cha], selected: false },

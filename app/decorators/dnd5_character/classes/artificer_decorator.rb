@@ -31,6 +31,8 @@ module Dnd5Character
       def decorate_fresh_character(result:)
         result[:weapon_core_skills] = result[:weapon_core_skills].concat(WEAPON_CORE).uniq
         result[:armor_proficiency] = result[:armor_proficiency].concat(ARMOR).uniq
+        result[:abilities] = { str: 11, dex: 12, con: 14, int: 15, wis: 13, cha: 10 }
+        result[:health] = { current: 10, max: 10, temp: 0 }
 
         result
       end
