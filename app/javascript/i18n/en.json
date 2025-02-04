@@ -51,7 +51,9 @@
     "armorList": "Armor list",
     "staticSpell": "Static spell",
     "damage": "Damage",
-    "heal": "Heal"
+    "heal": "Heal",
+    "learn": "Learn",
+    "forget": "Forget"
   },
   "attacks": {
     "bonus": "Bonus",

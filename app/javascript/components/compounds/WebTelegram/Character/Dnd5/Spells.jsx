@@ -73,10 +73,10 @@ export const Dnd5Spells = (props) => {
                         <Show
                           when={props.knownSpellIds.includes(spell.id)}
                           fallback={
-                            <p class="cursor-pointer" onClick={() => props.onLearnSpell(spell.id, activeSpellClass())}>Learn</p>
+                            <p class="cursor-pointer" onClick={() => props.onLearnSpell(spell.id, activeSpellClass())}>{t('character.learn')}</p>
                           }
                         >
-                          <p class="cursor-pointer" onClick={() => props.onForgetSpell(spell.id)}>Forget</p>
+                          <p class="cursor-pointer" onClick={() => props.onForgetSpell(spell.id)}>{t('character.forget')}</p>
                         </Show>
                       </td>
                     </tr>

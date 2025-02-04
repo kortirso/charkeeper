@@ -51,7 +51,9 @@
     "armorList": "Броня",
     "staticSpell": "Постоянное",
     "damage": "Урон",
-    "heal": "Лечение"
+    "heal": "Лечение",
+    "learn": "Изучить",
+    "forget": "Забыть"
   },
   "attacks": {
     "bonus": "Бонус",

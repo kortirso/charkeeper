@@ -70,10 +70,12 @@ export const Dnd5Equipment = (props) => {
                 <td class="py-1">
                   <p>{item.name}</p>
                 </td>
-                <td
-                  class="py-1 text-center cursor-pointer"
-                  onClick={() => changeItemQuantity(item)}
-                >{item.quantity}</td>
+                <td class="py-1">
+                  <p
+                    class="p-1 text-center cursor-pointer bordered"
+                    onClick={() => changeItemQuantity(item)}
+                  >{item.quantity}</p>
+                </td>
                 <td>
                   <Switch>
                     <Match when={item.ready_to_use}>
