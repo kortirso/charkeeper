@@ -55,10 +55,10 @@ module Dnd5Character
       result[:combat] = {
         armor_class: armor_class(result),
         initiative: result.dig(:modifiers, :dex) + result[:proficiency_bonus],
-        speed: data['speed'],
-        attacks_per_action: 1,
-        health: data['health']
+        speed: data.speed,
+        attacks_per_action: 1
       }
+      result[:health] = data.health
       result[:skills] = basis_skills(result[:modifiers])
       modify_selected_skills(result, data)
       result[:attacks] = [unarmed_attack(result)] + weapon_attacks(result, character)

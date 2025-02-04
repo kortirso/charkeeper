@@ -42,18 +42,17 @@ export const Dnd5Abilities = (props) => {
     }
   }
 
-  const updateAbilities = () => {
-    batch(() => {
-      props.onReloadCharacter({ abilities: abilitiesData() });
-      closeModal();
-    });
+  // submits
+  const updateAbilities = async () => {
+    const result = await props.onReloadCharacter({ abilities: abilitiesData() });
+
+    if (result.errors === undefined) closeModal();
   }
 
-  const updateSkills = () => {
-    batch(() => {
-      props.onReloadCharacter({ selected_skills: skillsData() });
-      closeModal();
-    });
+  const updateSkills = async () => {
+    const result = await props.onReloadCharacter({ selected_skills: skillsData() });
+
+    if (result.errors === undefined) closeModal();
   }
 
   return (
@@ -106,22 +105,19 @@ export const Dnd5Abilities = (props) => {
                     <p class="flex-1 text-sm text-left">{ability}</p>
                     <div class="flex justify-between items-center ml-4 w-32">
                       <button
-                        class="white-box flex py-2 px-4 justify-center items-center"
+                        class="btn-light flex justify-center items-center"
                         onClick={() => decreaseAbilityValue(slug)}
                       >-</button>
                       <p>{abilitiesData()[slug]}</p>
                       <button
-                        class="white-box flex py-2 px-4 justify-center items-center"
+                        class="btn-light flex justify-center items-center"
                         onClick={() => increaseAbilityValue(slug)}
                       >+</button>
                     </div>
                   </div>
                 }
               </For>
-              <button
-                class="py-2 px-4 bg-gray-200 rounded"
-                onClick={updateAbilities}
-              >{t('buttons.save')}</button>
+              <button class="btn" onClick={updateAbilities}>{t('save')}</button>
             </div>
           </Match>
           <Match when={modalOpenMode() === 'changeSkills'}>
@@ -139,10 +135,7 @@ export const Dnd5Abilities = (props) => {
                   </div>
                 }
               </For>
-              <button
-                class="mt-2 py-2 px-4 bg-gray-200 rounded"
-                onClick={updateSkills}
-              >{t('buttons.save')}</button>
+              <button class="btn mt-2" onClick={updateSkills}>{t('save')}</button>
             </div>
           </Match>
         </Switch>

@@ -165,13 +165,16 @@ module Dnd5
 
     attribute :data, Dnd5::CharacterData.to_type
 
+    # rubocop: disable Metrics/AbcSize
     def decorate
       base_decorator.decorate_character_abilities(character: self)
         .then { |result| race_decorator.decorate_character_abilities(result: result) }
         .then { |result| subrace_decorator.decorate_character_abilities(result: result) }
         .then { |result| class_decorator.decorate_character_abilities(result: result) }
         .then { |result| subclass_decorator.decorate_character_abilities(result: result) }
+        .then { |result| selected_features_decorator.decorate_character_abilities(result: result) }
     end
+    # rubocop: enable Metrics/AbcSize
 
     def can_learn_spell?(target_spell_class)
       return false if data.classes.keys.exclude?(target_spell_class)
@@ -194,5 +197,6 @@ module Dnd5
     def subrace_decorator = ::Charkeeper::Container.resolve('decorators.dnd5_character.subrace_wrapper')
     def class_decorator = ::Charkeeper::Container.resolve('decorators.dnd5_character.class_wrapper')
     def subclass_decorator = ::Charkeeper::Container.resolve('decorators.dnd5_character.subclass_wrapper')
+    def selected_features_decorator = ::Charkeeper::Container.resolve('decorators.dnd5_character.selected_features')
   end
 end

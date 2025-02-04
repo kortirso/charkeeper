@@ -28,12 +28,6 @@ module Dnd5Character
         }
         result[:spells_slots] = spells_slots(class_level)
 
-        result[:selected_features].each do |feature_slug, options|
-          next expertise_bonuses(options, result) if feature_slug == 'expertise'
-
-          options.each { |option| send(:"#{feature_slug}_#{option}", result) }
-        end
-
         result[:class_features] << {
           slug: 'bardic_inspiration',
           title: I18n.t('dnd5.class_features.bard.bardic_inspiration.title'),
@@ -115,14 +109,6 @@ module Dnd5Character
         return '1d8' if class_level >= 9
 
         '1d6'
-      end
-
-      def expertise_bonuses(options, result)
-        result[:skills].each do |skill|
-          next skill if options.exclude?(skill[:name])
-
-          skill[:modifier] += result[:proficiency_bonus]
-        end
       end
     end
   end

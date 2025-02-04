@@ -1,5 +1,5 @@
 @tailwind base;
-@tailwind components;
+/*@tailwind components;*/
 @tailwind utilities;
 
 #web_telegram_html {
@@ -22,14 +22,18 @@
 }
 
 .modal {
-  @apply relative pt-12 p-8 bg-gray-50 rounded;
+  @apply relative pt-12 p-4 bg-gray-50 rounded;
 
   max-width: 90%;
   max-height: 90%;
 }
 
 .btn {
-  @apply py-2 px-4 bg-gray-200 rounded;
+  @apply py-2 px-4 rounded bg-blue-50 text-blue-600 border border-blue-600 font-medium;
+}
+
+.btn-light {
+  @apply py-2 px-4 rounded bg-blue-50 text-blue-300 border border-blue-300 font-medium;
 }
 
 .bordered {
@@ -45,11 +49,11 @@
 }
 
 .nav-button-icon {
-  @apply w-8 h-8 border-2 rounded-lg mb-1;
+  @apply w-8 h-8 border-2 border-black rounded-lg mb-1;
 }
 
 .nav-button-text {
-  @apply text-center text-xs uppercase;
+  @apply text-center text-xs uppercase text-black;
 }
 
 .character-tab-select {
@@ -97,20 +101,20 @@
 }
 
 .toggle .toggle-checkbox + .toggle-label {
-  @apply block cursor-pointer overflow-hidden rounded-full bg-gray-200 border-2 border-gray-200 transition-colors w-8 h-5;
+  @apply block cursor-pointer overflow-hidden rounded-full bg-blue-200 border-2 border-blue-200 transition-colors w-8 h-5;
 }
 
 .toggle:hover .toggle-checkbox:enabled + .toggle-label {
-  @apply border-gray-200;
+  @apply border-blue-200;
 }
 
 .toggle .toggle-checkbox:checked + .toggle-label,
 .toggle:hover .toggle-checkbox:checked + .toggle-label {
-  @apply bg-black border-black;
+  @apply bg-blue-600 border-blue-600;
 }
 
 .toggle .toggle-checkbox:checked:disabled + .toggle-label {
-  @apply bg-black;
+  @apply bg-blue-200;
 }
 
 .form-field .form-value {

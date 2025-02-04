@@ -1,20 +1,38 @@
 {
   "loading": "Loading screen",
-  "buttons": {
-    "save": "Save"
-  },
+  "back": "Back",
+  "save": "Save",
   "nav": {
     "characters": "Characters",
     "npc": "NPC",
     "profile": "Profile"
   },
-  "characters": {
+  "charactersPage": {
     "title": "Characters list",
-    "level": "Level"
+    "level": "Level",
+    "new": "Create new character"
+  },
+  "newCharacterPage": {
+    "title": "Create new character",
+    "name": "Name",
+    "platform": "Platform",
+    "race": "Race",
+    "subrace": "Subrace",
+    "mainClass": "Main class"
+  },
+  "itemsPage": {
+    "title": "Items"
+  },
+  "spellbookPage": {
+    "level": "level"
+  },
+  "spellsPage": {
+    "title": "Spells"
   },
   "character": {
     "abilities": "Abilities",
     "combat": "Combat & Features",
+    "classLevels": "Classes & Levels",
     "equipment": "Equipment",
     "backpack": "Backpack",
     "spells": "Spells",
@@ -26,20 +44,12 @@
     "no_magic": "Character does not have magic abilities",
     "changeLevels": "Change class levels",
     "changeClasses": "Change character classes",
-    "knownSpells": "Known spells",
+    "knownSpells": "Learning spells",
     "items": "Add equipment",
     "itemsList": "Items list",
     "weaponsList": "Weapons list",
     "armorList": "Armor list",
     "staticSpell": "Static spell"
-  },
-  "newCharacter": {
-    "title": "Create new character",
-    "name": "Name",
-    "platform": "Platform",
-    "race": "Race",
-    "subrace": "Subrace",
-    "mainClass": "Main class"
   },
   "attacks": {
     "bonus": "Bonus",

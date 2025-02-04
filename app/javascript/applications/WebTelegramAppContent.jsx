@@ -42,7 +42,7 @@ export const WebTelegramAppContent = () => {
   // 420x690
   return (
     <Switch fallback={
-      <div class="flex-1 flex flex-col justify-center items-center bg-gray-50">
+      <div class="h-screen flex justify-center items-center">
         <div>{t('loading')}</div>
       </div>
     }>

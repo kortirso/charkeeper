@@ -49,6 +49,7 @@ module CharactersContext
           optional(:spent_spell_slots).hash
         end
 
+        # ключи classes и subclasses должны быть одинаковые
         rule(:classes) do
           next if value.nil?
 

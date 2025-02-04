@@ -29,6 +29,7 @@ module Charkeeper
     # decorators
     register('decorators.dnd5_character.dummy_decorator') { DummyDecorator.new }
     register('decorators.dnd5_character.base_decorator') { Dnd5Character::BaseDecorator.new }
+    register('decorators.dnd5_character.selected_features') { Dnd5Character::SelectedFeaturesDecorator.new }
     register('decorators.dnd5_character.race_wrapper') { Dnd5Character::RaceDecorateWrapper.new }
     register('decorators.dnd5_character.subrace_wrapper') { Dnd5Character::SubraceDecorateWrapper.new }
     register('decorators.dnd5_character.class_wrapper') { Dnd5Character::ClassDecorateWrapper.new }

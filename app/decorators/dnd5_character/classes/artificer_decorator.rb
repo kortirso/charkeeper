@@ -3,8 +3,6 @@
 module Dnd5Character
   module Classes
     class ArtificerDecorator
-      include ActionView::Helpers::SanitizeHelper
-
       WEAPON_CORE = ['light weapon'].freeze
       ARMOR = ['light armor', 'medium armor', 'shield'].freeze
       SPELL_SLOTS = {
@@ -63,12 +61,6 @@ module Dnd5Character
           }
         end
 
-        result[:selected_features].each do |feature_slug, options|
-          next infuse_item(options, result) if feature_slug == 'infuse_item'
-
-          options.each { |option| send(:"#{feature_slug}_#{option}", result) }
-        end
-
         result
       end
       # rubocop: enable Metrics/AbcSize, Metrics/MethodLength
@@ -88,13 +80,6 @@ module Dnd5Character
 
       def spells_slots(class_level)
         SPELL_SLOTS[class_level]
-      end
-
-      def infuse_item(value, result)
-        result[:class_features] << {
-          title: I18n.t('dnd5.class_features.artificer.infuse_item.title'),
-          description: sanitize(value.split("\n").join('<br />'))
-        }
       end
     end
   end

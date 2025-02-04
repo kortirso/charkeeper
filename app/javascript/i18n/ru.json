@@ -1,20 +1,38 @@
 {
   "loading": "Загрузочный экран",
-  "buttons": {
-    "save": "Сохранить"
-  },
+  "back": "Назад",
+  "save": "Сохранить",
   "nav": {
     "characters": "Персонажи",
     "npc": "НИП",
     "profile": "Профиль"
   },
-  "characters": {
+  "charactersPage": {
     "title": "Персонажи",
-    "level": "Уровень"
+    "level": "Уровень",
+    "new": "Добавить нового персонажа"
+  },
+  "newCharacterPage": {
+    "title": "Создание персонажа",
+    "name": "Имя персонажа",
+    "platform": "Платформа",
+    "race": "Раса",
+    "subrace": "Подраса",
+    "mainClass": "Основной класс"
+  },
+  "itemsPage": {
+    "title": "Предметы"
+  },
+  "spellbookPage": {
+    "level": "уровень"
+  },
+  "spellsPage": {
+    "title": "Заклинания"
   },
   "character": {
     "abilities": "Характеристики",
     "combat": "Сражение и способности",
+    "classLevels": "Классы и Уровни",
     "equipment": "Снаряжение",
     "backpack": "Рюкзак",
     "spells": "Заклинания",
@@ -26,20 +44,12 @@
     "no_magic": "Персонаж не обладает магическими способностями",
     "changeLevels": "Изменить уровни классов",
     "changeClasses": "Изменить классы персонажа",
-    "knownSpells": "Выученные заклинания",
+    "knownSpells": "Изучение заклинаний",
     "items": "Добавить снаряжение",
     "itemsList": "Предметы",
     "weaponsList": "Оружие",
     "armorList": "Броня",
     "staticSpell": "Постоянное"
-  },
-  "newCharacter": {
-    "title": "Создание персонажа",
-    "name": "Имя персонажа",
-    "platform": "Платформа",
-    "race": "Раса",
-    "subrace": "Подраса",
-    "mainClass": "Основной класс"
   },
   "attacks": {
     "bonus": "Бонус",
