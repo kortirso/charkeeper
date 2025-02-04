@@ -60,7 +60,6 @@ export const Dnd5Equipment = (props) => {
           <tr>
             <td />
             <td class="text-center text-nowrap px-2">{t('equipment.quantity')}</td>
-            <td class="text-center text-nowrap px-2">{t('equipment.cost')}</td>
             <td />
           </tr>
         </thead>
@@ -75,7 +74,6 @@ export const Dnd5Equipment = (props) => {
                   class="py-1 text-center cursor-pointer"
                   onClick={() => changeItemQuantity(item)}
                 >{item.quantity}</td>
-                <td class="py-1 text-center">{item.quantity * item.price / 100}</td>
                 <td>
                   <Switch>
                     <Match when={item.ready_to_use}>
@@ -88,7 +86,7 @@ export const Dnd5Equipment = (props) => {
                       <span
                         class="text-sm cursor-pointer"
                         onClick={() => props.onUpdateCharacterItem(item, { character_item: { ready_to_use: true } })}
-                      >Unpack</span>
+                      >Equip</span>
                     </Match>
                   </Switch>
                   <span
@@ -134,12 +132,13 @@ export const Dnd5Equipment = (props) => {
               <For each={['gold', 'silver', 'copper']}>
                 {(coin) =>
                   <div class="mb-4 flex justify-between items-center">
+                    <p class="flex-1 text-sm">{t(`equipment.${coin}`)}</p>
                     <Input
-                      classList="text-right w-20 mr-4"
+                      numeric
+                      classList="w-20 ml-4"
                       value={coinsData()[coin]}
                       onInput={(value) => setCoinsData({ ...coinsData(), [coin]: Number(value) })}
                     />
-                    <p class="flex-1 text-sm">{t(`equipment.${coin}`)}</p>
                   </div>
                 }
               </For>
@@ -148,17 +147,12 @@ export const Dnd5Equipment = (props) => {
             <Match when={modalOpenMode() === 'changeItemQuantity'}>
               <div class="mb-4 flex items-center">
                 <p class="flex-1 text-sm text-left">{changingItem().name}</p>
-                <div class="flex justify-between items-center ml-4 w-32">
-                  <button
-                    class="btn-light flex justify-center items-center"
-                    onClick={() => setChangingItem({ ...changingItem(), quantity: changingItem().quantity - 1 })}
-                  >-</button>
-                  <p>{changingItem().quantity}</p>
-                  <button
-                    class="btn-light flex justify-center items-center"
-                    onClick={() => setChangingItem({ ...changingItem(), quantity: changingItem().quantity + 1 })}
-                  >+</button>
-                </div>
+                <Input
+                  numeric
+                  classList="w-20 ml-8"
+                  value={changingItem().quantity}
+                  onInput={(value) => setChangingItem({ ...changingItem(), quantity: Number(value) })}
+                />
               </div>
               <button class="btn" onClick={updateItemQuantity}>{t('save')}</button>
             </Match>

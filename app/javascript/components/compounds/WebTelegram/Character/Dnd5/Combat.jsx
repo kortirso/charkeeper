@@ -2,7 +2,7 @@ import { createSignal, For, Show, batch } from 'solid-js';
 import * as i18n from '@solid-primitives/i18n';
 
 import { createModal, StatsBlock } from '../../../../molecules';
-import { Toggle } from '../../../../atoms';
+import { Input, Toggle } from '../../../../atoms';
 
 import { useAppLocale } from '../../../../../context';
 import { modifier } from '../../../../../helpers';
@@ -45,11 +45,6 @@ export const Dnd5Combat = (props) => {
 
     const result = await props.onRefreshCharacter({ energy: newValue });
     if (result.errors === undefined) setEnergyData(newValue);
-  }
-
-  const changeHealth = (health, direction) => {
-    const newValue = direction === 'up' ? (healthData()[health] + 1) : (healthData()[health] - 1);
-    setHealthData({ ...healthData(), [health]: newValue });
   }
 
   const makeHeal = async () => {
@@ -174,13 +169,14 @@ export const Dnd5Combat = (props) => {
         onClick={openModal}
       >
         <div class="flex items-center pt-2 p-4">
-          <button class="w-20 cursor-pointer" onClick={dealDamage}>Damage</button>
-          <div class="flex-1 flex justify-center items-center">
-            <button class="btn-light" onClick={() => damageHealValue() > 0 ? setDamageHealValue(damageHealValue() - 1) : null}>-</button>
-            <p class="w-10 text-center">{damageHealValue()}</p>
-            <button class="btn-light" onClick={() => setDamageHealValue(damageHealValue() + 1)}>+</button>
-          </div>
-          <button class="w-20 cursor-pointer" onClick={makeHeal}>Heal</button>
+          <button class="btn flex-1" onClick={dealDamage}>{t('character.damage')}</button>
+          <Input
+            numeric
+            classList="w-20 mx-4"
+            value={damageHealValue()}
+            onInput={(value) => setDamageHealValue(Number(value))}
+          />
+          <button class="btn flex-1" onClick={makeHeal}>{t('character.heal')}</button>
         </div>
       </StatsBlock>
       {renderAttacksBox(`${t('terms.attackAction')} - ${props.combat.attacks_per_action}`, props.attacks.filter((item) => item.action_type === 'action'))}
@@ -197,21 +193,16 @@ export const Dnd5Combat = (props) => {
       </For>
       <Modal>
         <div class="white-box p-4 flex flex-col">
-          <For each={['current', 'max', 'temp']}>
+          <For each={['max', 'temp']}>
             {(health) =>
               <div class="mb-4 flex items-center">
                 <p class="flex-1 text-sm text-left">{t(`terms.health.${health}`)}</p>
-                <div class="flex justify-between items-center ml-4 w-32">
-                  <button
-                    class="btn-light flex justify-center items-center"
-                    onClick={() => changeHealth(health, 'down')}
-                  >-</button>
-                  <p>{healthData()[health]}</p>
-                  <button
-                    class="btn-light flex justify-center items-center"
-                    onClick={() => changeHealth(health, 'up')}
-                  >+</button>
-                </div>
+                <Input
+                  numeric
+                  classList="w-20 ml-8"
+                  value={healthData()[health]}
+                  onInput={(value) => setHealthData({ ...healthData(), [health]: Number(value) })}
+                />
               </div>
             }
           </For>

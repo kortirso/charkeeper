@@ -92,7 +92,7 @@ module Dnd5Character
         { name: 'intimidation', ability: 'cha', modifier: modifiers[:cha], selected: false },
         { name: 'investigation', ability: 'int', modifier: modifiers[:int], selected: false },
         { name: 'medicine', ability: 'wis', modifier: modifiers[:wis], selected: false },
-        { name: 'nature', ability: 'int', modifier: modifiers[:int], selected: false },
+        { name: 'nature', ability: 'wis', modifier: modifiers[:wis], selected: false },
         { name: 'perception', ability: 'wis', modifier: modifiers[:wis], selected: false },
         { name: 'performance', ability: 'cha', modifier: modifiers[:cha], selected: false },
         { name: 'persuasion', ability: 'cha', modifier: modifiers[:cha], selected: false },

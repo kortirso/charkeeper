@@ -49,7 +49,9 @@
     "itemsList": "Items list",
     "weaponsList": "Weapons list",
     "armorList": "Armor list",
-    "staticSpell": "Static spell"
+    "staticSpell": "Static spell",
+    "damage": "Damage",
+    "heal": "Heal"
   },
   "attacks": {
     "bonus": "Bonus",

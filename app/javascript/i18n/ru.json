@@ -49,7 +49,9 @@
     "itemsList": "Предметы",
     "weaponsList": "Оружие",
     "armorList": "Броня",
-    "staticSpell": "Постоянное"
+    "staticSpell": "Постоянное",
+    "damage": "Урон",
+    "heal": "Лечение"
   },
   "attacks": {
     "bonus": "Бонус",
@@ -268,7 +270,7 @@
     "investigation": "Анализ",
     "medicine": "Медицина",
     "nature": "Природа",
-    "perception": "Внимательность",
+    "perception": "Восприятие",
     "performance": "Выступление",
     "persuasion": "Убеждение",
     "religion": "Религия",

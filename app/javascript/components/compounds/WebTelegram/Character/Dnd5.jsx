@@ -143,10 +143,12 @@ export const Dnd5 = (props) => {
     if (result.errors === undefined) {
       batch(() => {
         if (item.kind !== 'item') props.onReloadCharacter(); // weapon/armor
-        
-        const oldCharacterItems = characterItems().slice();
-        oldCharacterItems[characterItems().indexOf(item)] = { ...item, ...payload.character_item };
-        setCharacterItems(oldCharacterItems);
+        const result = characterItems().slice().map((element) => {
+          if (element.id !== item.id) return element;
+
+          return { ...element, ...payload.character_item } 
+        });
+        setCharacterItems(result);
       });
     }
     return result;

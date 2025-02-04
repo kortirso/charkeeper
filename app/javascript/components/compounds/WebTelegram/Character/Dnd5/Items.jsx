@@ -30,10 +30,12 @@ export const Dnd5Items = (props) => {
                 </td>
                 <td class="py-1 text-center">{item.data.weight}</td>
                 <td class="py-1 text-center">{item.data.price / 100}</td>
-                <td
-                  class="cursor-pointer"
-                  onClick={() => props.onBuyItem(item)}
-                >+</td>
+                <td>
+                  <p
+                    class="btn btn-small"
+                    onClick={() => props.onBuyItem(item)}
+                  >+</p>
+                </td>
               </tr>
             }
           </For>
