@@ -2,7 +2,7 @@ import { createSignal, Switch, Match, batch, Show, createEffect, createMemo } fr
 import * as i18n from '@solid-primitives/i18n';
 
 import {
-  Dnd5Abilities, Dnd5Combat, Dnd5ClassLevels, Dnd5Conditions, Dnd5Equipment, Dnd5Items,
+  Dnd5Abilities, Dnd5Combat, Dnd5ClassLevels, Dnd5Professions, Dnd5Equipment, Dnd5Items,
   Dnd5Spellbook, Dnd5Spells, Dnd5Features
 } from '../../../../components';
 import { createModal, PageHeader } from '../../../molecules';
@@ -35,7 +35,6 @@ export const Dnd5 = (props) => {
   // page data
   const [items, setItems] = createSignal(undefined);
   const [spells, setSpells] = createSignal(undefined);
-
   const [characterItems, setCharacterItems] = createSignal(undefined);
   const [characterSpells, setCharacterSpells] = createSignal(undefined);  
   const [features, setFeatures] = createSignal(undefined);
@@ -61,7 +60,7 @@ export const Dnd5 = (props) => {
   });
 
   createEffect(() => {
-    if (activeItemsTab()) return;
+    if (!activeItemsTab() && activeTab() === 'professions') return;
     if (items() !== undefined) return;
 
     const fetchItems = async () => await fetchItemsRequest(appState.accessToken, 'dnd5');
@@ -252,6 +251,7 @@ export const Dnd5 = (props) => {
               combat={props.decoratedData.combat}
               attacks={props.decoratedData.attacks}
               classFeatures={props.decoratedData.class_features}
+              initialConditions={props.decoratedData.conditions}
               onRefreshCharacter={refreshCharacter}
             />
           </Match>
@@ -323,8 +323,18 @@ export const Dnd5 = (props) => {
               onReloadCharacter={updateCharacter}
             />
           </Match>
-          <Match when={activeTab() === 'conditions'}>
-            <Dnd5Conditions />
+          <Match when={activeTab() === 'professions'}>
+            <Dnd5Professions
+              initialTools={props.decoratedData.tools}
+              initialMusic={props.decoratedData.music}
+              initialLanguages={props.decoratedData.languages}
+              weaponCoreSkills={props.decoratedData.weapon_core_skills}
+              weaponSkills={props.decoratedData.weapon_skills}
+              armorSkills={props.decoratedData.armor_proficiency}
+              items={items()}
+              onRefreshCharacter={refreshCharacter}
+              onReloadCharacter={updateCharacter}
+            />
           </Match>
           <Match when={activeTab() === 'features'}>
             <Dnd5Features
@@ -342,7 +352,7 @@ export const Dnd5 = (props) => {
         <p class="character-tab-select" onClick={() => changeTab('equipment')}>{t('character.equipment')}</p>
         <p class="character-tab-select" onClick={() => changeTab('spells')}>{t('character.spells')}</p>
         <p class="character-tab-select" onClick={() => changeTab('features')}>{t('character.features')}</p>
-        <p class="character-tab-select" onClick={() => changeTab('conditions')}>{t('character.conditions')}</p>
+        <p class="character-tab-select" onClick={() => changeTab('professions')}>{t('character.professions')}</p>
         <p class="character-tab-select" onClick={() => changeTab('classLevels')}>{t('character.classLevels')}</p>
       </Modal>
     </>

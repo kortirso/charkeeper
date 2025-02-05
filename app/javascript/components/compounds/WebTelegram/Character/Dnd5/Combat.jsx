@@ -2,7 +2,7 @@ import { createSignal, For, Show, batch } from 'solid-js';
 import * as i18n from '@solid-primitives/i18n';
 
 import { createModal, StatsBlock } from '../../../../molecules';
-import { Input, Toggle } from '../../../../atoms';
+import { Input, Toggle, Checkbox } from '../../../../atoms';
 
 import { useAppLocale } from '../../../../../context';
 import { modifier } from '../../../../../helpers';
@@ -11,6 +11,7 @@ export const Dnd5Combat = (props) => {
   // changeable data
   const [healthData, setHealthData] = createSignal(props.initialHealth);
   const [energyData, setEnergyData] = createSignal(props.initialEnergy);
+  const [damageConditions, setDamageConditions] = createSignal(props.initialConditions);
   const [damageHealValue, setDamageHealValue] = createSignal(0);
 
   const { Modal, openModal, closeModal } = createModal();
@@ -77,6 +78,18 @@ export const Dnd5Combat = (props) => {
     }
   }
 
+  const toggleDamageCondition = async (damageType, slug) => {
+    const newValue = damageConditions();
+    if (newValue[damageType].includes(slug)) {
+      newValue[damageType] = newValue[damageType].filter((item) => item !== slug)
+    } else {
+      newValue[damageType] = newValue[damageType].concat(slug)
+    }
+
+    const result = await props.onRefreshCharacter(newValue);
+    if (result.errors === undefined) setDamageConditions(newValue);
+  }
+
   // submits
   const updateHealth = async () => {
     const result = await props.onRefreshCharacter({ health: healthData() });
@@ -115,7 +128,7 @@ export const Dnd5Combat = (props) => {
                   <td class="py-1 text-center">{modifier(attack.attack_bonus)}</td>
                   <td class="py-1 text-center">
                     <p>{attack.damage}{attack.damage_bonus > 0 ? modifier(attack.damage_bonus) : ''}</p>
-                    <p class="text-xs">{t(`damage.${attack.damage_type}`)}</p>
+                    <p class="text-xs">{t(`weaponDamageType.${attack.damage_type}`)}</p>
                   </td>
                   <td class="py-1 text-center">
                     <Show when={attack.melee_distance}><p>{attack.melee_distance}</p></Show>
@@ -179,6 +192,45 @@ export const Dnd5Combat = (props) => {
           <button class="btn-primary flex-1" onClick={makeHeal}>{t('character.heal')}</button>
         </div>
       </StatsBlock>
+      <Toggle title={t('character.damageConditions')}>
+        <table class="table w-full first-column-full-width">
+          <thead>
+            <tr>
+              <td />
+              <td class="text-sm uppercase px-1">{t('character.vulnerability')}</td>
+              <td class="text-sm uppercase px-1">{t('character.resistance')}</td>
+              <td class="text-sm uppercase px-1">{t('character.immunity')}</td>
+            </tr>
+          </thead>
+          <tbody>
+            <For each={Object.entries(dict().damage)}>
+              {([slug, damage]) =>
+                <tr>
+                  <td>{damage}</td>
+                  <td>
+                    <Checkbox
+                      checked={damageConditions().vulnerability.includes(slug)}
+                      onToggle={() => toggleDamageCondition('vulnerability', slug)}
+                    />
+                  </td>
+                  <td>
+                    <Checkbox
+                      checked={damageConditions().resistance.includes(slug)}
+                      onToggle={() => toggleDamageCondition('resistance', slug)}
+                    />
+                  </td>
+                  <td>
+                    <Checkbox
+                      checked={damageConditions().immunity.includes(slug)}
+                      onToggle={() => toggleDamageCondition('immunity', slug)}
+                    />
+                  </td>
+                </tr>
+              }
+            </For>
+          </tbody>
+        </table>
+      </Toggle>
       {renderAttacksBox(`${t('terms.attackAction')} - ${props.combat.attacks_per_action}`, props.attacks.filter((item) => item.action_type === 'action'))}
       {renderAttacksBox(`${t('terms.attackBonusAction')} - 1`, props.attacks.filter((item) => item.action_type === 'bonus action'))}
       <For each={props.classFeatures}>

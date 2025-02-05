@@ -2,9 +2,9 @@
 
 module Dnd5
   class ItemSerializer < ApplicationSerializer
-    ATTRIBUTES = %i[id kind name data].freeze
+    ATTRIBUTES = %i[id slug kind name data].freeze
 
-    attributes :id, :kind, :name, :data
+    attributes :id, :slug, :kind, :name, :data
 
     delegate :data, to: :object
 

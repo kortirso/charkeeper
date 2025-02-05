@@ -39,7 +39,7 @@
     "equipment": "Снаряжение",
     "backpack": "Рюкзак",
     "spells": "Заклинания",
-    "conditions": "Состояния",
+    "professions": "Владение оружием и инструментами",
     "features": "Выбираемые способности",
     "onlyPreparedSpells": "Подготовленные",
     "onlyAvailableSpells": "Доступные",
@@ -56,7 +56,20 @@
     "damage": "Урон",
     "heal": "Лечение",
     "learn": "Изучить",
-    "forget": "Забыть"
+    "forget": "Забыть",
+    "damageConditions": "Сопротивление урону",
+    "vulnerability": "Уязвим",
+    "resistance": "Сопр",
+    "immunity": "Иммун"
+  },
+  "professionsPage": {
+    "languages": "Известные языки",
+    "weaponCoreSkill": "Базовые оружейные навыки",
+    "weaponSkills": "Оружейные навыки",
+    "lightWeaponSkills": "Простое оружие",
+    "martialWeaponSkills": "Воинское оружие",
+    "tools": "Инструменты ремесленников",
+    "music": "Музыкальные инструменты"
   },
   "attacks": {
     "bonus": "Бонус",
@@ -92,11 +105,26 @@
     "known": "Известные",
     "prepared": "Приготовленные"
   },
+  "weaponDamageType": {
+    "2hands": "Двуручная",
+    "bludge": "Дробящий",
+    "pierce": "Колющий",
+    "slash": "Рубящий"
+  },
   "damage": {
     "bludge": "Дробящий",
-    "slash": "Рубящий",
     "pierce": "Колющий",
-    "2hands": "Двуручная"
+    "slash": "Рубящий",
+    "acid": "Кислота",
+    "cold": "Холод",
+    "fire": "Огонь",
+    "force": "Силовое поле",
+    "lighting": "Электричество",
+    "necrotic": "Некротическая энергия",
+    "poison": "Яд",
+    "psychic": "Психическая энергия",
+    "radiant": "Излучение",
+    "thunder": "Звук"
   },
   "races": {
     "dwarf": "Дварф",
@@ -291,5 +319,29 @@
       "reload": "Перезарядка",
       "flurry_of_blows": "Шквал ударов"
     }
+  },
+  "languages": {
+    "common": "Общий",
+    "dwarvish": "Дварфский",
+    "elvish": "Эльфийский",
+    "giant": "Великаний",
+    "gnomish": "Гномий",
+    "goblin": "Гоблинский",
+    "halfling": "Полуросликов",
+    "orc": "Орочий",
+    "draconic": "Драконий",
+    "undercommon": "Подземный",
+    "infernal": "Инфернальный",
+    "druidic": "Друидический"
+  },
+  "coreWeaponSkills": {
+    "light weapon": "Простое оружие",
+    "martial weapon": "Воинское оружие"
+  },
+  "coreArmorSkills": {
+    "light armor": "Лёгкий доспех",
+    "medium armor": "Средний доспех",
+    "heavy armor": "Тяжёлый доспех",
+    "shield": "Щит"
   }
 }

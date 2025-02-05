@@ -39,7 +39,7 @@
     "equipment": "Equipment",
     "backpack": "Backpack",
     "spells": "Spells",
-    "conditions": "Conditions",
+    "professions": "Weapons and tools mastery",
     "features": "Optional features",
     "onlyPreparedSpells": "Only prepared",
     "onlyAvailableSpells": "Only available",
@@ -56,7 +56,20 @@
     "damage": "Damage",
     "heal": "Heal",
     "learn": "Learn",
-    "forget": "Forget"
+    "forget": "Forget",
+    "damageConditions": "Damage resistances",
+    "vulnerability": "Vuln",
+    "resistance": "Resist",
+    "immunity": "Immune"
+  },
+  "professionsPage": {
+    "languages": "Languages",
+    "weaponCoreSkill": "Weapon code skills",
+    "weaponSkills": "Weapon skills",
+    "lightWeaponSkills": "Light weapon",
+    "martialWeaponSkills": "Martial weapon",
+    "tools": "Artisan's tools",
+    "music": "Musical instruments"
   },
   "attacks": {
     "bonus": "Bonus",
@@ -92,11 +105,26 @@
     "known": "Known",
     "prepared": "Prepared"
   },
-  "damage": {
+  "weaponDamageType": {
+    "2hands": "Two handed",
     "bludge": "Bludge",
-    "slash": "Slash",
     "pierce": "Pierce",
-    "2hands": "Two handed"
+    "slash": "Slash"
+  },
+  "damage": {
+    "bludge": "Bludgeoning",
+    "pierce": "Piercing",
+    "slash": "Slashing",
+    "acid": "Acid",
+    "cold": "Cold",
+    "fire": "Fire",
+    "force": "Force",
+    "lighting": "Lightning",
+    "necrotic": "Necrotic",
+    "poison": "Poison",
+    "psychic": "Psychic",
+    "radiant": "Radiant",
+    "thunder": "Thunder"
   },
   "races": {
     "dwarf": "Dwarf",
@@ -291,5 +319,29 @@
       "reload": "Reload",
       "flurry_of_blows": "Flurry of Blows"
     }
+  },
+  "languages": {
+    "common": "Common",
+    "dwarvish": "Dwarvish",
+    "elvish": "Elvish",
+    "giant": "Giant",
+    "gnomish": "Gnomish",
+    "goblin": "Goblin",
+    "halfling": "Halfling",
+    "orc": "Orc",
+    "draconic": "Draconic",
+    "undercommon": "Undercommon",
+    "infernal": "Infernal",
+    "druidic": "Druidic"
+  },
+  "coreWeaponSkills": {
+    "light weapon": "Light Weapon",
+    "martial weapon": "Martial Weapon"
+  },
+  "coreArmorSkills": {
+    "light armor": "Light Armor",
+    "medium armor": "Medium Armor",
+    "heavy armor": "Heavy Armor",
+    "shield": "Shield"
   }
 }

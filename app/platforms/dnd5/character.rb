@@ -23,6 +23,11 @@ module Dnd5
     attribute :armor_proficiency, array: true
     attribute :coins, array: true, default: { gold: 0, silver: 0, copper: 0 }
     attribute :spent_spell_slots, array: true, default: {}
+    attribute :tools, array: true, default: [] # владение инструментами
+    attribute :music, array: true, default: [] # владение музыкальными инструментами
+    attribute :resistance, array: true, default: [] # сопротивления
+    attribute :immunity, array: true, default: [] # иммунитеты
+    attribute :vulnerability, array: true, default: [] # уязвимости
   end
 
   class Character < Character

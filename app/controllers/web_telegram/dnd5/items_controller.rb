@@ -5,7 +5,7 @@ module WebTelegram
     class ItemsController < WebTelegram::BaseController
       include SerializeRelation
 
-      INDEX_SERIALIZER_FIELDS = %i[id kind name data].freeze
+      INDEX_SERIALIZER_FIELDS = %i[id slug kind name data].freeze
 
       def index
         render json: serialize_relation(
