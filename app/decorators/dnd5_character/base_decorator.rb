@@ -52,7 +52,8 @@ module Dnd5Character
         armor_proficiency: data.armor_proficiency,
         languages: data.languages,
         tools: data.tools,
-        music: data.music
+        music: data.music,
+        spent_spell_slots: data.spent_spell_slots
       }.compact
 
       result[:save_dc] = result[:modifiers].clone

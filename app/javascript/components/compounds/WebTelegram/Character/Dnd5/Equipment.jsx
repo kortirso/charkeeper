@@ -144,7 +144,7 @@ export const Dnd5Equipment = (props) => {
                   </div>
                 }
               </For>
-              <button class="btn" onClick={updateCoins}>{t('save')}</button>
+              <button class="btn-primary" onClick={updateCoins}>{t('save')}</button>
             </Match>
             <Match when={modalOpenMode() === 'changeItemQuantity'}>
               <div class="mb-4 flex items-center">
