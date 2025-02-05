@@ -61,7 +61,11 @@
     "damageConditions": "Сопротивление урону",
     "vulnerability": "Уязвим",
     "resistance": "Сопр",
-    "immunity": "Иммун"
+    "immunity": "Иммун",
+    "ammoList": "Боеприпасы",
+    "focusList": "Фокусировка",
+    "toolsList": "Инструменты",
+    "musicList": "Музыкальные инструменты"
   },
   "professionsPage": {
     "languages": "Известные языки",

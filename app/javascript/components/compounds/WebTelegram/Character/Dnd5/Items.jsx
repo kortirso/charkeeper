@@ -49,6 +49,10 @@ export const Dnd5Items = (props) => {
       {renderItems(t('character.itemsList'), props.items.filter((item) => item.kind === 'item'))}
       {renderItems(t('character.weaponsList'), props.items.filter((item) => item.kind.includes('weapon')))}
       {renderItems(t('character.armorList'), props.items.filter((item) => item.kind.includes('armor') || item.kind.includes('shield')))}
+      {renderItems(t('character.ammoList'), props.items.filter((item) => item.kind === 'ammo'))}
+      {renderItems(t('character.focusList'), props.items.filter((item) => item.kind === 'focus'))}
+      {renderItems(t('character.toolsList'), props.items.filter((item) => item.kind === 'tools'))}
+      {renderItems(t('character.musicList'), props.items.filter((item) => item.kind === 'music'))}
     </Show>
   );
 }

@@ -61,7 +61,11 @@
     "damageConditions": "Damage resistances",
     "vulnerability": "Vuln",
     "resistance": "Resist",
-    "immunity": "Immune"
+    "immunity": "Immune",
+    "ammoList": "Ammo",
+    "focusList": "Focus",
+    "toolsList": "Artisan's tools",
+    "musicList": "Musical instruments"
   },
   "professionsPage": {
     "languages": "Languages",

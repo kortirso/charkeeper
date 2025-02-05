@@ -130,7 +130,7 @@ export const Dnd5Professions = (props) => {
         </div>
       </Toggle>
       <Toggle title={t('professionsPage.tools')}>
-        <For each={props.items.filter((item) => item.kind === 'tool').sort((a, b) => a.name > b.name)}>
+        <For each={props.items.filter((item) => item.kind === 'tools').sort((a, b) => a.name > b.name)}>
           {(tool) =>
             <div class="mb-1">
               <Checkbox

@@ -4,7 +4,7 @@ module Dnd5
   class ItemData
     include StoreModel::Model
 
-    attribute :weight, :integer
+    attribute :weight, :float
     attribute :price, :integer
   end
 end

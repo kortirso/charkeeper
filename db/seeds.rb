@@ -21,6 +21,23 @@ spells.map! do |spell|
 end
 Dnd5::Spell.upsert_all(spells)
 
+items = CSV.parse(File.read(Rails.root.join('db/data/dnd5_items.csv')), headers: false, col_sep: ';')
+items.map! do |item|
+  {
+    kind: item[0],
+    slug: item[1],
+    name: {
+      en: item[2],
+      ru: item[3]
+    },
+    data: {
+      price: item[4].to_i,
+      weight: item[5].to_f
+    }
+  }
+end
+Dnd5::Item.upsert_all(items)
+
 # виды урона оружия
 # колющий - pierce
 # рубящий - slash
@@ -48,12 +65,6 @@ end
 armor_file = File.read(Rails.root.join('db/data/armor.json'))
 armor = JSON.parse(armor_file)
 armor.each do |item|
-  ::Item.create!({ slug: item['slug'], type: 'Dnd5::Item', kind: item['kind'], name: item['name'], data: item.except('name', 'kind', 'slug') })
-end
-
-items_file = File.read(Rails.root.join('db/data/items.json'))
-items = JSON.parse(items_file)
-items.each do |item|
   ::Item.create!({ slug: item['slug'], type: 'Dnd5::Item', kind: item['kind'], name: item['name'], data: item.except('name', 'kind', 'slug') })
 end
 
