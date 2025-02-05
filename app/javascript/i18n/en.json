@@ -21,7 +21,8 @@
     "platform": "Platform",
     "race": "Race",
     "subrace": "Subrace",
-    "mainClass": "Main class"
+    "mainClass": "Main class",
+    "alignment": "Alignment"
   },
   "itemsPage": {
     "title": "Items"
@@ -343,5 +344,16 @@
     "medium armor": "Medium Armor",
     "heavy armor": "Heavy Armor",
     "shield": "Shield"
+  },
+  "alignments": {
+    "lawful_good": "Lawful good",
+    "lawful_neutral": "Lawful neutral",
+    "lawful_evil": "Lawful evil",
+    "neutral_good": "Neutral good",
+    "neutral": "Neutral",
+    "neutral_evil": "Neutral evil",
+    "chaotic_good": "Chaotic good",
+    "chaotic_neutral": "Chaotic neutral",
+    "chaotic_evil": "Chaotic evil"
   }
 }

@@ -163,11 +163,17 @@ export const CharactersPage = () => {
                       />
                     </Show>
                     <Select
-                      classList=""
+                      classList="mb-2"
                       labelText={t('newCharacterPage.mainClass')}
                       items={dict().classes}
                       selectedValue={characterForm.main_class}
                       onSelect={(value) => setCharacterForm({ ...characterForm, main_class: value })}
+                    />
+                    <Select
+                      labelText={t('newCharacterPage.alignment')}
+                      items={dict().alignments}
+                      selectedValue={characterForm.alignment}
+                      onSelect={(value) => setCharacterForm({ ...characterForm, alignment: value })}
                     />
                   </Match>
                 </Switch>
