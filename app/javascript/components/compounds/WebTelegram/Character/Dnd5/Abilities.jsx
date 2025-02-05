@@ -117,7 +117,7 @@ export const Dnd5Abilities = (props) => {
                   </div>
                 }
               </For>
-              <button class="btn" onClick={updateAbilities}>{t('save')}</button>
+              <button class="btn-primary" onClick={updateAbilities}>{t('save')}</button>
             </div>
           </Match>
           <Match when={modalOpenMode() === 'changeSkills'}>
@@ -135,7 +135,7 @@ export const Dnd5Abilities = (props) => {
                   </div>
                 }
               </For>
-              <button class="btn mt-2" onClick={updateSkills}>{t('save')}</button>
+              <button class="btn-primary mt-2" onClick={updateSkills}>{t('save')}</button>
             </div>
           </Match>
         </Switch>

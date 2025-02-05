@@ -96,7 +96,7 @@ export const Dnd5Features = (props) => {
               </Toggle>
             }
           </For>
-          <button class="btn" onClick={updateCharacterFeatures}>{t('save')}</button>
+          <button class="btn-primary" onClick={updateCharacterFeatures}>{t('save')}</button>
         </Show>
       </div>
     </>

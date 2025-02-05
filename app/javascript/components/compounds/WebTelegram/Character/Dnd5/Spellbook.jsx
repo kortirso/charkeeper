@@ -118,7 +118,7 @@ export const Dnd5Spellbook = (props) => {
       </Show>
       <Show when={CLASSES_LEARN_SPELLS.includes(activeSpellClass())}>
         <button
-          class="btn mb-2"
+          class="btn-primary mb-2"
           onClick={props.onNavigatoToSpells} // eslint-disable-line solid/reactivity
         >{t('character.knownSpells')}</button>
       </Show>
