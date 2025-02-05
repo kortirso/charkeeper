@@ -18,7 +18,10 @@ module Dnd5Character
         weapon_skills: [],
         armor_proficiency: [],
         languages: [],
-        selected_skills: []
+        selected_skills: [],
+        resistance: [],
+        immunity: [],
+        vulnerability: []
       }.compact
     end
 

@@ -21,7 +21,8 @@
     "platform": "Платформа",
     "race": "Раса",
     "subrace": "Подраса",
-    "mainClass": "Основной класс"
+    "mainClass": "Основной класс",
+    "alignment": "Мировоззрение"
   },
   "itemsPage": {
     "title": "Предметы"
@@ -343,5 +344,16 @@
     "medium armor": "Средний доспех",
     "heavy armor": "Тяжёлый доспех",
     "shield": "Щит"
+  },
+  "alignments": {
+    "lawful_good": "Законопослушно добрый",
+    "lawful_neutral": "Законопослушно нейтральный",
+    "lawful_evil": "Законопослушно злой",
+    "neutral_good": "Нейтрально добрый",
+    "neutral": "Нейтральный",
+    "neutral_evil": "Нейтрально злой",
+    "chaotic_good": "Хаотично добрый",
+    "chaotic_neutral": "Хаотично нейтральный",
+    "chaotic_evil": "Хаотично злой"
   }
 }
