@@ -9,7 +9,11 @@ module CharactersContext
       ].freeze
       WEAPON_CORE_SKILLS = ['light weapon', 'martial weapon'].freeze
       ARMOR_PROFICIENCY = ['light armor', 'medium armor', 'heavy armor', 'shield'].freeze
-      LANGUAGES = %w[common dwarvish elvish giant gnomish goblin halfling orc draconic undercommon].freeze
+      LANGUAGES = %w[common dwarvish elvish giant gnomish goblin halfling orc draconic undercommon infernal druidic].freeze
+      DAMAGE_TYPES = %w[
+        bludge pierce slash acid cold fire force lighting necrotic
+        poison psychic radiant thunder
+      ].freeze
 
       # rubocop: disable Metrics/BlockLength
       use_contract do
@@ -37,16 +41,21 @@ module CharactersContext
             required(:silver).filled(:integer, gteq?: 0)
             required(:copper).filled(:integer, gteq?: 0)
           end
-          optional(:selected_skills).value(:array, :filled?).each(included_in?: SKILLS)
+          optional(:selected_skills).value(:array).each(included_in?: SKILLS)
           optional(:selected_features).hash
-          optional(:weapons_core_skills).value(:array, :filled?).each(included_in?: WEAPON_CORE_SKILLS)
-          optional(:weapons_skills).value(:array, :filled?).each(
-            included_in?: ::Dnd5::Item.where(kind: ['light weapon', 'martial weapon']).pluck(:name).map { |item| item['en'] }.sort
+          optional(:weapon_core_skills).value(:array).each(included_in?: WEAPON_CORE_SKILLS)
+          optional(:weapon_skills).value(:array).each(
+            included_in?: ::Dnd5::Item.where(kind: ['light weapon', 'martial weapon']).pluck(:slug).sort
           )
-          optional(:armor_proficiency).value(:array, :filled?).each(included_in?: ARMOR_PROFICIENCY)
-          optional(:languages).value(:array, :filled?).each(included_in?: LANGUAGES)
+          optional(:armor_proficiency).value(:array).each(included_in?: ARMOR_PROFICIENCY)
+          optional(:languages).value(:array).each(included_in?: LANGUAGES)
           optional(:energy).hash
           optional(:spent_spell_slots).hash
+          optional(:tools).value(:array).each(:string)
+          optional(:music).value(:array).each(:string)
+          optional(:resistance).value(:array).each(included_in?: DAMAGE_TYPES)
+          optional(:immunity).value(:array).each(included_in?: DAMAGE_TYPES)
+          optional(:vulnerability).value(:array).each(included_in?: DAMAGE_TYPES)
         end
 
         # ключи classes и subclasses должны быть одинаковые

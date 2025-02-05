@@ -38,15 +38,21 @@ module Dnd5Character
         class_features: [], # неизменные классовые способности
         selected_features: data.selected_features, # выбранные классовые способности
         static_spells: [], # врожденные заклинания от расы/класса
-        resistances: [],
-        immunities: [],
+        conditions: {
+          resistance: data.resistance,
+          immunity: data.immunity,
+          vulnerability: data.vulnerability
+        },
         energy: data.energy || {}, # потраченные заряды способностей
         coins: data.coins,
         load: data.abilities['str'] * 15,
         spell_classes: {},
         weapon_core_skills: data.weapon_core_skills,
         weapon_skills: data.weapon_skills,
-        spent_spell_slots: data.spent_spell_slots
+        armor_proficiency: data.armor_proficiency,
+        languages: data.languages,
+        tools: data.tools,
+        music: data.music
       }.compact
 
       result[:save_dc] = result[:modifiers].clone

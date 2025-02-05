@@ -15,7 +15,7 @@ describe WebTelegram::Dnd5::ItemsController do
 
         expect(response).to have_http_status :ok
         expect(response.parsed_body['items'].size).to eq 1
-        expect(response_values.keys).to contain_exactly('id', 'kind', 'name', 'data')
+        expect(response_values.keys).to contain_exactly('id', 'slug', 'kind', 'name', 'data')
       end
     end
   end
