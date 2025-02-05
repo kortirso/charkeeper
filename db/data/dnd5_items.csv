@@ -1,0 +1,133 @@
+item;abacus;Abacus;Абак;200;2
+item;acid;Acid;Кислота;2500;1
+item;alchemist_fire;Alchemist's Fire;Алхимический огонь;5000;1
+item;antitoxin;Antitoxin;Противоядие;5000;0
+item;backpack;Backpack;Рюкзак;200;5
+item;ball_bearings;Ball bearings (bag of 1000);Металлические шарики (1000 в сумке);100;2
+item;barrel;Barrel;Бочка;200;70
+item;basket;Basket;Корзина;40;2
+item;bedroll;Bedroll;Спальник;100;7
+item;bell;Bell;Колокольчик;100;0
+item;blanket;Blanket;Одеяло;50;3
+item;block_tackle;Block and Tackle;Блок и лебёдка;100;5
+item;book;Book;Книга;2500;5
+item;bottle_glass;Bottle, glass;Бутылка, стеклянная;200;2
+item;bucket;Bucket;Ведро;5;2
+item;caltrops;Caltrops (bag of 20);Калтропы (20 штук);100;2
+item;candle;Candle;Свеча;1;0
+item;case_bolt;Case, crossbow bolt;Контейнер для арбалетных болтов;100;1
+item;case_scroll;Case, map or scroll;Контейнер для карт и свитков;100;1
+item;chain;Chain (10 feet);Цепь (10 футов);500;10
+item;chalk;Chalk (1 piece);Мел;1;0
+item;chest;Chest;Сундук;500;25
+item;climber_kit;Climber's Kit;Комплект для лазания;2500;12
+item;clothes_common;Clothes, common;Одежда, обычная;50;3
+item;clothes_costume;Clothes, costume;Одежда, костюм;500;4
+item;clothes_fine;Clothes, fine;Одежда, отличная;1500;6
+item;clothes_traveler;Clothes, traveler's;Одежда, дорожная;200;4
+item;component_pouch;Component Pouch;Мешочек с компонентами;2500;2
+item;crowbar;Crowbar;Ломик;200;5
+item;fishing_tackle;Fishing Tackle;Комплект для рыбалки;100;4
+item;flask;Flask;Фляга;2;1
+item;tankard;Tankard;Большая кружка;2;1
+item;grappling_hook;Grappling Hook;Крюк-кошка;200;4
+item;hammer;Hammer;Молоток;100;3
+item;hammer_sledge;Hammer, sledge;Молот, кузнечный;200;10
+item;healer_kit;Healer's Kit;Комплект целителя;500;3
+item;holy_water;Holy water;Святая вода;2500;1
+item;hourglass;Hourglass;Песочные часы;2500;1
+item;hunting_trap;Hunting trap;Охотничий капкан;500;25
+item;ink;Ink;Чернила;1000;0
+item;ink_pen;Ink pen;Писчее перо;2;0
+item;jug;Jug;Кувшин;2;4
+item;ladder;Ladder (10-foot);Лестница (10 футов);10;25
+item;lamp;Lamp;Лампа;50;1
+item;lantern_bullseye;Lantern, bullseye;Фонарь, направленный;1000;2
+item;lantern_hooded;Lantern, hooded;Фонарь, закрытый;500;2
+item;lock;Lock;Замок;1000;1
+item;magnifying_glass;Magnifying glass;Увеличительное стекло;10000;0
+item;manacles;Manacles;Кандалы;200;6
+item;mess_kit;Mess kit;Столовый набор;20;1
+item;mirror_steel;Mirror, steel;Зеркало, стальное;500;0.5
+item;oil_flask;Oil;Масло;10;1
+item;paper;Paper;Бумага;20;0
+item;parchment;Parchment;Пергамент;10;0
+item;perfume;Perfume;Духи;500;0
+item;pick_miner;Pick, miner's;Кирка, горняцкая;200;10
+item;piton;Piton;Шлямбур;5;0.25
+item;poison_basic;Poison, basic;Яд, простой;10000;0
+item;pole;Pole (10-foot);Шест (10 футов);5;7
+item;pot_iron;Pot,iron;Горшок, железный;200;10
+item;pouch;Pouch;Кошель;50;1
+item;quiver;Quiver;Колчан;100;1
+item;ram_portable;Ram, portable;таран, портативный;400;35
+item;rations;Rations (1 day);Рацион (1 день);50;2
+item;robes;Robes;Ряса;100;4
+item;rope_hempen;Rope, hempen (50 feet);Верёвка, пеньковая (50 футов);100;10
+item;rope_silk;Rope, silk (50 feet);Верёвка, шёлковая (50 футов);1000;5
+item;sack;Sack;Мешок;1;0.5
+item;scale_merchant;Scale, merchant's;Весы, торговые;500;3
+item;sealing_wax;Sealing wax;Воск;50;0
+item;shovel;Shovel;Лопата;200;5
+item;signal_whistle;Signal whistle;Сигнальный свисток;5;0
+item;signet_ring;Signet ring;Кольцо-печатка;500;0
+item;soap;Soap;Мыло;2;0
+item;spellbook;Spellbook;Книга заклинаний;5000;3
+item;spike_iron;Spike, iron;Шип, железный;10;0.5
+item;spyglass;Spyglass;Подзорная труба;100000;1
+item;tent;Tent;Палатка;200;20
+item;tinderbox;Tinderbox;Трутница;50;1
+item;torch;Torch;Факел;1;1
+item;vial;Vial;Флакон;100;0
+item;waterskin;Waterskin;Бурдюк;20;5
+item;whetstone;Whetstone;Точильный камень;1;1
+ammo;arrow;Arrow;Стрела;5;0.05
+ammo;blowgun_needle;Blowgun needle;Игла для трубки;2;0.02
+ammo;crossbow_bolt;Crossbow bolt;Арбалетный болт;5;0.1
+ammo;sling_bullet;Sling bullet;Снаряд для пращи;1;0.1
+focus;crystal;Crystal;Кристалл;1000;1
+focus;orb;Orb;Сфера;2000;3
+focus;rod;Rod;Жезл;1000;2
+focus;staff;Staff;Посох;500;4
+focus;wand;Wand;Волшебная палочка;1000;1
+focus;sprig;Sprig of mistletoe;Веточка омелы;100;0
+focus;totem;Totem;Тотем;100;0
+focus;wooden_staff;Wooden staff;Деревянный посох;500;4
+focus;yew_wand;Yew wand;Тисовая палочка;1000;1
+focus;amulet;Amulet;Амулет;500;1
+focus;emblem;Emblem;Эмблема;500;0
+focus;reliquary;Reliquary;Реликварий;500;2
+potion;potion_healing;Potion of Healing;Зелье лечения;5000;0.5
+tools;alchemist;Alchemist's supplies;Инструменты алхимика;5000;8
+tools;brewer;Brewer's supplies;Инструменты пивовара;2000;9
+tools;calligrapher;Calligrapher's supplies;Инструменты каллиграфа;1000;5
+tools;carpenter;Carpenter's tools;Инструменты плотника;800;6
+tools;cartographer;Cartographer's tools;Инструменты картографа;1500;6
+tools;cobbler;Cobbler's tools;Инструменты сапожника;500;5
+tools;cook_utensils;Cook's utensils;Инструменты повара;100;8
+tools;glassblower;Glassblower's tools;Инструменты стеклодува;3000;5
+tools;jeweler;Jeweler's tools;Инструменты ювелира;2500;2
+tools;leatherworker;Leatherworker's tools;Инструменты кожевника;500;5
+tools;mason;Mason's tools;Инструменты каменщика;1000;8
+tools;painter;Painter's supplies;Инструменты художника;1000;5
+tools;potter;Potter's tools;Инструменты гончара;1000;3
+tools;smith;Smith's tools;Инструменты кузнеца;2000;8
+tools;tinker;Tinker's tools;Инструменты жестянщика;5000;10
+tools;weaver;Weaver's tools;Инструменты ткача;100;5
+tools;woodcarver;Woodcarver's tools;Инструменты резчика по дереву;100;5
+tools;diguise;Disguise kit;Набор для грима;2500;3
+tools;forgery;Forgery kit;Набор для фальсификаций;1500;5
+tools;herbalism;Herbalism kit;Набор травника;500;3
+tools;navigator;Navigator's tools;Инструменты навигатора;2500;2
+tools;poisoner;Poisoner's kit;Инструменты отравителя;5000;2
+tools;thieves;Thieves' tools;Воровские инструменты;2500;1
+music;bagpipes;Bagpipes;Волынка;3000;6
+music;drum;Drum;Барабан;600;3
+music;dulcimer;Dulcimer;Цимбалы;2500;10
+music;flute;Flute;Флейта;200;1
+music;lute;Lute;Лютня;3500;2
+music;lyre;Lyre;Лира;3000;2
+music;horn;Horn;Рожок;300;2
+music;pan_flute;Pan flute;Свирель;1200;2
+music;shawm;Shawm;Шалмей;200;1
+music;viol;Viol;Виола;3000;1

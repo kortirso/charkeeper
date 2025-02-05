@@ -67,7 +67,7 @@ export const Dnd5 = (props) => {
 
     Promise.all([fetchItems()]).then(
       ([itemsData]) => {
-        setItems(itemsData.items);
+        setItems(itemsData.items.sort((a, b) => a.name > b.name));
       }
     );
   });
