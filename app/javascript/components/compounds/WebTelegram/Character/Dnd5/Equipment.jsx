@@ -116,7 +116,7 @@ export const Dnd5Equipment = (props) => {
       />
       <Show when={props.characterItems !== undefined}>
         <button
-          class="btn mb-2"
+          class="btn-primary mb-2"
           onClick={props.onNavigatoToItems} // eslint-disable-line solid/reactivity
         >{t('character.items')}</button>
         {renderItemsBox(t('character.equipment'), props.characterItems.filter((item) => item.ready_to_use))}
@@ -156,7 +156,7 @@ export const Dnd5Equipment = (props) => {
                   onInput={(value) => setChangingItem({ ...changingItem(), quantity: Number(value) })}
                 />
               </div>
-              <button class="btn" onClick={updateItemQuantity}>{t('save')}</button>
+              <button class="btn-primary" onClick={updateItemQuantity}>{t('save')}</button>
             </Match>
           </Switch>
         </div>

@@ -7,7 +7,7 @@ module WebTelegram
     INDEX_SERIALIZE_FIELDS = %i[id name object_data provider].freeze
     SHOW_SERIALIZE_FIELDS = %i[id name object_data decorated_data provider].freeze
 
-    before_action :find_character, only: %i[show]
+    before_action :find_character, only: %i[show destroy]
 
     def index
       render json: Panko::Response.new(
@@ -22,6 +22,11 @@ module WebTelegram
         :character,
         only: SHOW_SERIALIZE_FIELDS
       ), status: :ok
+    end
+
+    def destroy
+      @character.destroy
+      render json: { result: :ok }, status: :ok
     end
 
     private

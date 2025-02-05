@@ -169,14 +169,14 @@ export const Dnd5Combat = (props) => {
         onClick={openModal}
       >
         <div class="flex items-center pt-2 p-4">
-          <button class="btn flex-1" onClick={dealDamage}>{t('character.damage')}</button>
+          <button class="btn-primary flex-1" onClick={dealDamage}>{t('character.damage')}</button>
           <Input
             numeric
             classList="w-20 mx-4"
             value={damageHealValue()}
             onInput={(value) => setDamageHealValue(Number(value))}
           />
-          <button class="btn flex-1" onClick={makeHeal}>{t('character.heal')}</button>
+          <button class="btn-primary flex-1" onClick={makeHeal}>{t('character.heal')}</button>
         </div>
       </StatsBlock>
       {renderAttacksBox(`${t('terms.attackAction')} - ${props.combat.attacks_per_action}`, props.attacks.filter((item) => item.action_type === 'action'))}
@@ -206,7 +206,7 @@ export const Dnd5Combat = (props) => {
               </div>
             }
           </For>
-          <button class="btn" onClick={updateHealth}>{t('save')}</button>
+          <button class="btn-primary" onClick={updateHealth}>{t('save')}</button>
         </div>
       </Modal>
     </>

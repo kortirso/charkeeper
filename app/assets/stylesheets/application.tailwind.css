@@ -29,15 +29,23 @@
 }
 
 .btn {
-  @apply py-2 px-4 rounded bg-blue-50 text-blue-600 border border-blue-600 font-medium cursor-pointer;
+  @apply py-2 px-4 rounded border font-medium cursor-pointer;
+}
+
+.btn-primary {
+  @apply btn bg-blue-50 text-blue-600 border-blue-600;
 }
 
 .btn-light {
-  @apply py-2 px-4 rounded bg-blue-50 text-blue-300 border border-blue-300 font-medium cursor-pointer;
+  @apply btn bg-blue-50 text-blue-300 border-blue-300;
+}
+
+.btn-warning {
+  @apply btn bg-red-50 text-red-600 border-red-600;
 }
 
 .btn-small {
-  @apply py-1 px-2;
+  @apply p-1;
 }
 
 .bordered {

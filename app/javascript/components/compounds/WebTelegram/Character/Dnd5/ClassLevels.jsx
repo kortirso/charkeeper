@@ -121,7 +121,7 @@ export const Dnd5ClassLevels = (props) => {
           </div>
         }
       </For>
-      <button class="btn mt-2" onClick={updateClasses}>{t('save')}</button>
+      <button class="btn-primary mt-2" onClick={updateClasses}>{t('save')}</button>
     </div>
   );
 }

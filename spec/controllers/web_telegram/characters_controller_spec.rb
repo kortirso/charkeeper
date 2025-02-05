@@ -45,4 +45,37 @@ describe WebTelegram::CharactersController do
       end
     end
   end
+
+  describe 'DELETE#destroy' do
+    context 'for logged users' do
+      let!(:character) { create :character }
+
+      context 'for existing character' do
+        let(:request) { delete :destroy, params: { id: character.id, charkeeper_access_token: access_token } }
+
+        context 'for user character' do
+          before { character.update!(user: user_session.user) }
+
+          it 'destroys character', :aggregate_failures do
+            expect { request }.to change(Character, :count).by(-1)
+            expect(Character.find_by(id: character.id)).to be_nil
+          end
+        end
+
+        context 'for not user character' do
+          it 'does not destroy any character' do
+            expect { request }.not_to change(Character, :count)
+          end
+        end
+      end
+
+      context 'for not existing character' do
+        let(:request) { delete :destroy, params: { id: 'unexisting', charkeeper_access_token: access_token } }
+
+        it 'does not destroy any character' do
+          expect { request }.not_to change(Character, :count)
+        end
+      end
+    end
+  end
 end

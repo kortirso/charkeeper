@@ -2,6 +2,9 @@
   "loading": "Loading screen",
   "back": "Back",
   "save": "Save",
+  "deleteCharacterConfirm": "Are you sure need to remove this character?",
+  "cancel": "Cancel",
+  "delete": "Delete",
   "nav": {
     "characters": "Characters",
     "npc": "NPC",
