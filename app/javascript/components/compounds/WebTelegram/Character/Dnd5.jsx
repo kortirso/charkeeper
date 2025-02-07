@@ -60,7 +60,7 @@ export const Dnd5 = (props) => {
   });
 
   createEffect(() => {
-    if (!activeItemsTab() && activeTab() === 'professions') return;
+    if (!activeItemsTab() && activeTab() !== 'professions') return;
     if (items() !== undefined) return;
 
     const fetchItems = async () => await fetchItemsRequest(appState.accessToken, 'dnd5');
@@ -323,7 +323,7 @@ export const Dnd5 = (props) => {
               onReloadCharacter={updateCharacter}
             />
           </Match>
-          <Match when={activeTab() === 'professions'}>
+          <Match when={activeTab() === 'professions' && items() !== undefined}>
             <Dnd5Professions
               initialTools={props.decoratedData.tools}
               initialMusic={props.decoratedData.music}
