@@ -65,7 +65,11 @@
     "ammoList": "Ammo",
     "focusList": "Focus",
     "toolsList": "Artisan's tools",
-    "musicList": "Musical instruments"
+    "musicList": "Musical instruments",
+    "notes": "Notes",
+    "newNote": "Add new note",
+    "newNoteTitle": "Title",
+    "newNoteValue": "Note text"
   },
   "professionsPage": {
     "languages": "Languages",

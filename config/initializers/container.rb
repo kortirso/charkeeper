@@ -25,6 +25,7 @@ module Charkeeper
     register('commands.characters_context.dnd5.item_add') { CharactersContext::Dnd5::ItemAddCommand.new }
     register('commands.characters_context.dnd5.spell_update') { CharactersContext::Dnd5::SpellUpdateCommand.new }
     register('commands.characters_context.dnd5.spell_add') { CharactersContext::Dnd5::SpellAddCommand.new }
+    register('commands.characters_context.add_note') { CharactersContext::NoteAddCommand.new }
 
     # decorators
     register('decorators.dnd5_character.dummy_decorator') { DummyDecorator.new }

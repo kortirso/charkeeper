@@ -65,7 +65,11 @@
     "ammoList": "Боеприпасы",
     "focusList": "Фокусировка",
     "toolsList": "Инструменты",
-    "musicList": "Музыкальные инструменты"
+    "musicList": "Музыкальные инструменты",
+    "notes": "Заметки",
+    "newNote": "Добавить новую заметку",
+    "newNoteTitle": "Заголовок",
+    "newNoteValue": "Текст заметки"
   },
   "professionsPage": {
     "languages": "Известные языки",

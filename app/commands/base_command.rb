@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class BaseCommand
+  include ActionView::Helpers::SanitizeHelper
+
   class_attribute :contract
 
   def self.use_contract(&block)
