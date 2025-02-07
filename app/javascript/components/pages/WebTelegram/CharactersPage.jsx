@@ -6,7 +6,7 @@ import { createModal, PageHeader } from '../../molecules';
 import { Select, Input } from '../../atoms';
 
 import { Close } from '../../../assets';
-import { useAppState, useAppLocale } from '../../../context';
+import { useAppState, useAppLocale, useAppAlert } from '../../../context';
 import { fetchCharactersRequest } from '../../../requests/fetchCharactersRequest';
 import { createCharacterRequest } from '../../../requests/createCharacterRequest';
 import { removeCharacterRequest } from '../../../requests/removeCharacterRequest';
@@ -26,6 +26,7 @@ export const CharactersPage = () => {
 
   const { Modal, openModal, closeModal } = createModal();
   const [appState, { navigate }] = useAppState();
+  const [{ renderAlerts }] = useAppAlert();
   const [, dict] = useAppLocale();
 
   const t = i18n.translator(dict);
@@ -53,7 +54,7 @@ export const CharactersPage = () => {
         setCharacterForm({ name: '', race: undefined, subrace: undefined, main_class: undefined, alignment: 'neutral' });
         setCurrentTab('characters');
       });
-    }
+    } else renderAlerts(result.errors);
   }
 
   const deleteCharacter = (event, characterId) => {
@@ -73,7 +74,7 @@ export const CharactersPage = () => {
         setCharacters(characters().filter((item) => item.id !== deletingCharacterId()));
         closeModal();
       });
-    }
+    } else renderAlerts(result.errors);
   }
 
   // 453x750

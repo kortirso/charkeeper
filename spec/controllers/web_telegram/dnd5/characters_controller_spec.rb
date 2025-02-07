@@ -31,7 +31,7 @@ describe WebTelegram::Dnd5::CharactersController do
         it 'returns error', :aggregate_failures do
           expect { request }.not_to change(Character, :count)
           expect(response).to have_http_status :unprocessable_entity
-          expect(response.parsed_body.dig('errors', 'race')).not_to be_nil
+          expect(response.parsed_body['errors']).not_to be_nil
         end
       end
     end
@@ -57,7 +57,7 @@ describe WebTelegram::Dnd5::CharactersController do
           }
 
           expect(response).to have_http_status :not_found
-          expect(response.parsed_body['errors']).to eq({ 'base' => ['Not found'] })
+          expect(response.parsed_body['errors']).to eq(['Not found'])
         end
       end
 
@@ -68,7 +68,7 @@ describe WebTelegram::Dnd5::CharactersController do
           }
 
           expect(response).to have_http_status :unprocessable_entity
-          expect(response.parsed_body['errors']).to eq({ 'classes' => ['Недопустимый уровень'] })
+          expect(response.parsed_body['errors']).to eq(['Недопустимый уровень'])
         end
       end
     end

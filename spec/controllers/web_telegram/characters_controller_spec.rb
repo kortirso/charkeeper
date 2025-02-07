@@ -40,7 +40,7 @@ describe WebTelegram::CharactersController do
           get :show, params: { id: 'unexisting', charkeeper_access_token: access_token }
 
           expect(response).to have_http_status :not_found
-          expect(response.parsed_body['errors']).to eq({ 'base' => ['Not found'] })
+          expect(response.parsed_body['errors']).to eq(['Not found'])
         end
       end
     end
