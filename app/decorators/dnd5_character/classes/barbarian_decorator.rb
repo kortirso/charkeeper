@@ -21,6 +21,7 @@ module Dnd5Character
         if result.dig(:defense_gear, :armor).nil?
           result[:combat][:armor_class] = [result[:combat][:armor_class], barbarian_armor_class(result)].max
         end
+        result[:hit_dice][12] += class_level
 
         result
       end

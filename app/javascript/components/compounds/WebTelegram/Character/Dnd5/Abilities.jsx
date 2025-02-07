@@ -13,6 +13,7 @@ export const Dnd5Abilities = (props) => {
 
   // changeable data
   const [abilitiesData, setAbilitiesData] = createSignal(props.initialAbilities);
+  const [spentHitDiceData, setSpentHitDiceData] = createSignal(props.initialSpentHitDice);
   const [skillsData, setSkillsData] = createSignal(props.initialSkills.filter((item) => item.selected).map((item) => item.name));
 
   const { Modal, openModal, closeModal } = createModal();
@@ -25,6 +26,30 @@ export const Dnd5Abilities = (props) => {
       setModalOpenMode(value);
       openModal();
     });
+  }
+
+  const spendDice = async (dice, limit) => {
+    let newValue;
+    if (spentHitDiceData()[dice] && spentHitDiceData()[dice] < limit) {
+      newValue = { ...spentHitDiceData(), [dice]: spentHitDiceData()[dice] + 1 };
+    } else {
+      newValue = { ...spentHitDiceData(), [dice]: 1 };
+    }
+
+    const result = await props.onRefreshCharacter({ spent_hit_dice: newValue });
+    if (result.errors === undefined) setSpentHitDiceData(newValue);
+  }
+
+  const restoreDice = async (dice) => {
+    let newValue;
+    if (spentHitDiceData()[dice] && spentHitDiceData()[dice] > 0) {
+      newValue = { ...spentHitDiceData(), [dice]: spentHitDiceData()[dice] - 1 };
+    } else {
+      newValue = { ...spentHitDiceData(), [dice]: 0 };
+    }
+
+    const result = await props.onRefreshCharacter({ spent_hit_dice: newValue });
+    if (result.errors === undefined) setSpentHitDiceData(newValue);
   }
 
   const decreaseAbilityValue = (slug) => {
@@ -57,6 +82,35 @@ export const Dnd5Abilities = (props) => {
 
   return (
     <>
+      <div class="flex items-start mb-2">
+        <div class="white-box flex flex-col items-center w-2/5 p-2">
+          <p class="text-sm mb-1">{t('terms.proficiencyBonus')}</p>
+          <p class="text-2xl mb-1">{modifier(props.proficiencyBonus)}</p>
+        </div>
+        <div class="w-3/5 pl-4">
+          <div class="white-box p-2">
+            <p class="text-center text-sm">{t('terms.hitDices')}</p>
+            <For each={Object.entries(props.hitDice).filter(([, value]) => value > 0)}>
+              {([dice, maxValue]) =>
+                <div class="flex justify-center items-center mt-1">
+                  <p class="w-8 mr-4">d{dice}</p>
+                  <button
+                    class="py-1 px-2 border border-gray-200 rounded flex justify-center items-center"
+                    onClick={() => spentHitDiceData()[dice] !== maxValue ? spendDice(dice, maxValue) : null}
+                  >-</button>
+                  <p class="w-12 mx-1 text-center">
+                    {spentHitDiceData()[dice] ? (maxValue - spentHitDiceData()[dice]) : maxValue}/{maxValue}
+                  </p>
+                  <button
+                    class="py-1 px-2 border border-gray-200 rounded flex justify-center items-center"
+                    onClick={() => (spentHitDiceData()[dice] || 0) > 0 ? restoreDice(dice) : null}
+                  >+</button>
+                </div>
+              }
+            </For>
+          </div>
+        </div>
+      </div>
       <For each={Object.entries(dict().abilities)}>
         {([slug, ability]) =>
           <div class="flex items-start mb-2">

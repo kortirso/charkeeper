@@ -108,7 +108,9 @@
     },
     "cantrips": "Cantrips",
     "known": "Known",
-    "prepared": "Prepared"
+    "prepared": "Prepared",
+    "proficiencyBonus": "Proficiency bonus",
+    "hitDices": "Hit dices"
   },
   "weaponDamageType": {
     "2hands": "Two handed",

@@ -15,8 +15,9 @@ module Dnd5Character
         result
       end
 
-      def decorate_character_abilities(result:, class_level:) # rubocop: disable Lint/UnusedMethodArgument
+      def decorate_character_abilities(result:, class_level:)
         result[:class_save_dc] = %i[str dex] if result[:main_class] == 'ranger'
+        result[:hit_dice][10] += class_level
 
         result
       end
