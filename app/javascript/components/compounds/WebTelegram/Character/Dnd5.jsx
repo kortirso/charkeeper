@@ -3,7 +3,7 @@ import * as i18n from '@solid-primitives/i18n';
 
 import {
   Dnd5Abilities, Dnd5Combat, Dnd5ClassLevels, Dnd5Professions, Dnd5Equipment, Dnd5Items,
-  Dnd5Spellbook, Dnd5Spells, Dnd5Features
+  Dnd5Spellbook, Dnd5Spells, Dnd5Features, Dnd5Notes
 } from '../../../../components';
 import { createModal, PageHeader } from '../../../molecules';
 import { Hamburger } from '../../../../assets';
@@ -319,6 +319,9 @@ export const Dnd5 = (props) => {
               </Match>
             </Switch>
           </Match>
+          <Match when={activeTab() === 'notes'}>
+            <Dnd5Notes />
+          </Match>
           <Match when={activeTab() === 'classLevels'}>
             <Dnd5ClassLevels
               initialClasses={props.decoratedData.classes}
@@ -355,6 +358,7 @@ export const Dnd5 = (props) => {
         <p class="character-tab-select" onClick={() => changeTab('combat')}>{t('character.combat')}</p>
         <p class="character-tab-select" onClick={() => changeTab('equipment')}>{t('character.equipment')}</p>
         <p class="character-tab-select" onClick={() => changeTab('spells')}>{t('character.spells')}</p>
+        <p class="character-tab-select" onClick={() => changeTab('notes')}>{t('character.notes')}</p>
         <p class="character-tab-select" onClick={() => changeTab('features')}>{t('character.features')}</p>
         <p class="character-tab-select" onClick={() => changeTab('professions')}>{t('character.professions')}</p>
         <p class="character-tab-select" onClick={() => changeTab('classLevels')}>{t('character.classLevels')}</p>
