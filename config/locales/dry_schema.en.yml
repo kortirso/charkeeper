@@ -3,9 +3,24 @@ en:
     rules:
       dnd5_character: D&D5 character
     errors:
-      type?: Has invalid type
+      unexpected_key: Unknown param
       dnd5_character:
         rules:
+          name:
+            key?: Name is required
+            filled?: Name must be filled
+          race:
+            key?: Race is required
+            filled?: Race must be filled
+            included_in?: Invalid race value
+          main_class:
+            key?: Class is required
+            filled?: Class must be filled
+            included_in?: Invalid class value
+          Alignment:
+            key?: Alignment is required
+            filled?: Alignment must be filled
+            included_in?: Invalid Alignment value
           classes:
             invalid_class_name: Invalid class name
             invalid_level: Invalid level
