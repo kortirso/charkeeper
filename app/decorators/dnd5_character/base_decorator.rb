@@ -56,7 +56,9 @@ module Dnd5Character
         languages: data.languages,
         tools: data.tools,
         music: data.music,
-        spent_spell_slots: data.spent_spell_slots
+        spent_spell_slots: data.spent_spell_slots,
+        hit_dice: { 6 => 0, 8 => 0, 10 => 0, 12 => 0 },
+        spent_hit_dice: data.spent_hit_dice
       }.compact
 
       result[:save_dc] = result[:modifiers].clone

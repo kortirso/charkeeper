@@ -51,6 +51,7 @@ module CharactersContext
           optional(:languages).value(:array).each(included_in?: LANGUAGES)
           optional(:energy).hash
           optional(:spent_spell_slots).hash
+          optional(:spent_hit_dice).hash
           optional(:tools).value(:array).each(:string)
           optional(:music).value(:array).each(:string)
           optional(:resistance).value(:array).each(included_in?: DAMAGE_TYPES)
@@ -91,7 +92,7 @@ module CharactersContext
 
       def do_prepare(input)
         input[:level] = input[:classes].values.sum(&:to_i) if input[:classes]
-        %i[classes abilities health coins energy spent_spell_slots].each do |key|
+        %i[classes abilities health coins energy spent_spell_slots spent_hit_dice].each do |key|
           input[key]&.transform_values!(&:to_i)
         end
       end

@@ -241,7 +241,11 @@ export const Dnd5 = (props) => {
               initialSkills={props.decoratedData.skills}
               modifiers={props.decoratedData.modifiers}
               saveDc={props.decoratedData.save_dc}
+              proficiencyBonus={props.decoratedData.proficiency_bonus}
+              hitDice={props.decoratedData.hit_dice}
+              initialSpentHitDice={props.decoratedData.spent_hit_dice}
               onReloadCharacter={updateCharacter}
+              onRefreshCharacter={refreshCharacter}
             />
           </Match>
           <Match when={activeTab() === 'combat'}>

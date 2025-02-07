@@ -20,6 +20,7 @@ module Dnd5Character
       def decorate_character_abilities(result:, class_level:)
         ki_dc = 8 + result[:proficiency_bonus] + result.dig(:modifiers, :wis)
         result[:class_save_dc] = %i[str dex] if result[:main_class] == 'monk'
+        result[:hit_dice][8] += class_level
 
         no_armor = result[:defense_gear].values.all?(&:nil?)
         result[:combat][:speed] += speed_modifier(class_level) if no_armor

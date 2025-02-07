@@ -108,7 +108,9 @@
     },
     "cantrips": "Заговоры",
     "known": "Известные",
-    "prepared": "Приготовленные"
+    "prepared": "Приготовленные",
+    "proficiencyBonus": "Бонус мастерства",
+    "hitDices": "Кости хитов"
   },
   "weaponDamageType": {
     "2hands": "Двуручная",
