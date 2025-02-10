@@ -197,5 +197,35 @@
     "options": null,
     "visible": "result.dig(:selected_features, 'metamagic')&.include?('metamagic_twinned_spell')",
     "eval_variables": {}
+  },
+  {
+    "slug": "draconic_ancestry",
+    "title": { "en": "Dragon Ancestor", "ru": "Драконий предок" },
+    "description": {
+      "en": "You choose one type of dragon as your ancestor.",
+      "ru": "Вы выбираете вид вашего дракона-предка."
+    },
+    "origin": "subclass",
+    "origin_value": "draconic_bloodline",
+    "level": 1,
+    "kind": "static_list",
+    "options": [
+      "black", "blue", "brass", "bronze", "copper", "gold", "green", "red", "silver", "white"
+    ],
+    "visible": "true"
+  },
+  {
+    "slug": "draconic_resilience",
+    "title": { "en": "Draconic resilience", "ru": "Драконья устойчивость" },
+    "description": {
+      "en": "At 1st level, your hit point maximum increases by 1 and increases by 1 again whenever you gain a level in this c1ass.",
+      "ru": "Максимум ваших хитов увеличивается на 1 на 1 уровне и на 1 на каждом уровне, полученном в данном классе."
+    },
+    "origin": "subclass",
+    "origin_value": "draconic_bloodline",
+    "level": 1,
+    "kind": "static",
+    "options": null,
+    "visible": "true"
   }
 ]
