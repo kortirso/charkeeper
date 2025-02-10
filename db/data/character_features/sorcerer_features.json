@@ -1,0 +1,231 @@
+[
+  {
+    "slug": "sorcery_points",
+    "title": { "en": "Sorcery Points", "ru": "Единицы чародейства" },
+    "description": {
+      "en": "You tap into a deep wellspring of magic within yourself.",
+      "ru": "Вы получаете доступ к внутреннему источнику магии."
+    },
+    "origin": "class",
+    "origin_value": "sorcerer",
+    "level": 2,
+    "kind": "static",
+    "options_type": null,
+    "options": null,
+    "visible": "true",
+    "eval_variables": {
+      "limit": "result.dig(:classes, 'sorcerer')"
+    }
+  },
+  {
+    "slug": "creating_spell_slots",
+    "title": { "en": "Creating Spell Slots", "ru": "Создание ячеек заклинаний" },
+    "description": {
+      "en": "You can transform unexpended sorcery points into one spell slot as a bonus action on your turn. 1st - 2, 2nd - 3, 3rd - 5, 4th - 6, 5th - 7",
+      "ru": "В свой ход вы можете бонусным действием превратить оставшиеся единицы чародейства в дополнительные ячейки заклинаний. 1ый - 2, 2ой - 3, 3-ий - 5, 4ый - 6, 5ый - 7."
+    },
+    "origin": "class",
+    "origin_value": "sorcerer",
+    "level": 2,
+    "kind": "static",
+    "options_type": null,
+    "options": null,
+    "visible": "true",
+    "eval_variables": {}
+  },
+  {
+    "slug": "converting_spell_slot",
+    "title": { "en": "Converting a Spell Slot", "ru": "Преобразование ячейки заклинания" },
+    "description": {
+      "en": "As a bonus action on your turn, you can expend one spell slot and gain a number of sorcery points equal to the slot's level.",
+      "ru": "Вы можете в свой ход бонусным действием преобразовать одну ячейку заклинаний в единицы чародейства, количество которых равно уровню ячейки."
+    },
+    "origin": "class",
+    "origin_value": "sorcerer",
+    "level": 2,
+    "kind": "static",
+    "options_type": null,
+    "options": null,
+    "visible": "true",
+    "eval_variables": {}
+  },
+  {
+    "slug": "metamagic",
+    "title": { "en": "Metamagic", "ru": "Метамагия" },
+    "description": {
+      "en": "You can use only one Metamagic option on a spell when you cast it, unless otherwise noted.",
+      "ru": "При сотворении заклинания может быть использован только один метамагический вариант, если в его описании не указано обратное."
+    },
+    "origin": "class",
+    "origin_value": "sorcerer",
+    "level": 3,
+    "kind": "dynamic_list",
+    "options": [
+      "metamagic_careful_spell", "metamagic_distant_spell", "metamagic_empowered_spell", "metamagic_extended_spell",
+      "metamagic_heightened_spell", "metamagic_quickened_spell", "metamagic_subtle_spell", "metamagic_twinned_spell"
+    ],
+    "visible": "true"
+  },
+  {
+    "slug": "metamagic_careful_spell",
+    "title": { "en": "Careful spell", "ru": "Аккуратное заклинание" },
+    "description": {
+      "en": "When you cast a spell that forces other creatures to make a saving throw, you can protect some of those creatures from the spell's full force. To do so, you spend 1 sorcery point and choose a number of those creatures up to {{value}}. A chosen creature automatically succeeds on its saving throw against the spell.",
+      "ru": "Когда вы накладываете заклинание, которое вынуждает других существ совершить спасбросок, вы можете защитить некоторых из них от магического воздействия. Для этого вы тратите 1 единицу чародейства и выбираете существ в количестве, равном {{value}}. Указанные существа автоматически преуспевают в спасброске от данного заклинания."
+    },
+    "origin": "class",
+    "origin_value": "sorcerer",
+    "level": 3,
+    "kind": "static",
+    "options_type": null,
+    "options": null,
+    "visible": "result[:selected_features].keys.include?('metamagic_careful_spell')",
+    "eval_variables": {
+      "value": "[1, result.dig(:modifiers, :cha)].max"
+    }
+  },
+  {
+    "slug": "metamagic_distant_spell",
+    "title": { "en": "Distant spell", "ru": "Далёкое заклинание" },
+    "description": {
+      "en": "When you cast a spell that has a range of 5 feet or greater, you can spend 1 sorcery point to double the range of the spell. When you cast a spell that has a range of touch, you can spend 1 sorcery point to make the range of the spell 30 feel.",
+      "ru": "При накладывании заклинания, дистанция которого 5 футов и более, вы можете потратить 1 единицу чародейства, чтобы удвоить это расстояние. При накладывании заклинания с дистанцией «прикосновение», вы можете потратить 1 единицу чародейства, чтобы увеличить это расстояние до 30 футов."
+    },
+    "origin": "class",
+    "origin_value": "sorcerer",
+    "level": 3,
+    "kind": "static",
+    "options_type": null,
+    "options": null,
+    "visible": "result[:selected_features].keys.include?('metamagic_distant_spell')",
+    "eval_variables": {}
+  },
+  {
+    "slug": "metamagic_empowered_spell",
+    "title": { "en": "Empowered spell", "ru": "Усиленное заклинание" },
+    "description": {
+      "en": "When you roll damage for a spell, you can spend 1 sorcery point to reroll a number of the damage dice up to {{value}}. You must use the new rolls. You can use Empowered Spell even if you have already used a different Metamagic option during the casting of the spell.",
+      "ru": "При совершении броска урона от заклинания вы можете потратить 1 единицу чародейства, чтобы перебросить несколько костей урона (максимум {{value}}). Вы должны использовать новое выпавшее значение. Вы можете воспользоваться вариантом «усиленное заклинание» даже если вы уже использовали другой вариант метамагии для этого заклинания."
+    },
+    "origin": "class",
+    "origin_value": "sorcerer",
+    "level": 3,
+    "kind": "static",
+    "options_type": null,
+    "options": null,
+    "visible": "result[:selected_features].keys.include?('metamagic_empowered_spell')",
+    "eval_variables": {
+      "value": "[1, result.dig(:modifiers, :cha)].max"
+    }
+  },
+  {
+    "slug": "metamagic_extended_spell",
+    "title": { "en": "Extended spell", "ru": "Продлённое заклинание" },
+    "description": {
+      "en": "When you cast a spell that has a duration of 1 minute or longer, you can spend 1 sorcery point to double its duration, to a maximum duration of 24 hours.",
+      "ru": "При накладывании заклинания с длительностью 1 минута или более, вы можете потратить 1 единицу чародейства, чтобы удвоить это время, вплоть до максимального в 24 часа."
+    },
+    "origin": "class",
+    "origin_value": "sorcerer",
+    "level": 3,
+    "kind": "static",
+    "options_type": null,
+    "options": null,
+    "visible": "result[:selected_features].keys.include?('metamagic_extended_spell')",
+    "eval_variables": {}
+  },
+  {
+    "slug": "metamagic_heightened_spell",
+    "title": { "en": "Heightened spell", "ru": "Непреодолимое заклинание" },
+    "description": {
+      "en": "When you cast a spell that forces a creature to make a saving throw to resist its effects, you can spend 3 sorcery points to give one target of the spell disadvantage on its first saving throw made against the spell.",
+      "ru": "Когда вы накладываете заклинание, которое вынуждает существо совершить спасбросок для защиты от его эффектов, вы можете потратить 3 единицы чародейства, чтобы одна из целей заклинания совершила первый спасбросок от этого заклинания с помехой."
+    },
+    "origin": "class",
+    "origin_value": "sorcerer",
+    "level": 3,
+    "kind": "static",
+    "options_type": null,
+    "options": null,
+    "visible": "result[:selected_features].keys.include?('metamagic_heightened_spell')",
+    "eval_variables": {}
+  },
+  {
+    "slug": "metamagic_quickened_spell",
+    "title": { "en": "Quickened spell", "ru": "Ускоренное заклинание" },
+    "description": {
+      "en": "When you cast a spell that has a casting time of 1 action, you can spend 2 sorcery points to change the casting time to 1 bonus action for this casting.",
+      "ru": "Если вы используете заклинание со временем накладывания «1 действие», вы можете потратить 2 единицы чародейства, чтобы сотворить это заклинание бонусным действием."
+    },
+    "origin": "class",
+    "origin_value": "sorcerer",
+    "level": 3,
+    "kind": "static",
+    "options_type": null,
+    "options": null,
+    "visible": "result[:selected_features].keys.include?('metamagic_quickened_spell')",
+    "eval_variables": {}
+  },
+  {
+    "slug": "metamagic_subtle_spell",
+    "title": { "en": "Subtle spell", "ru": "Неуловимое заклинание" },
+    "description": {
+      "en": "When you cast a spell, you can spend 1 sorcery point to cast it without any somatic ar verbal components.",
+      "ru": "Во время использования заклинания вы можете потратить 1 единицу чародейства, чтоб сотворить его без вербальных и соматических компонентов."
+    },
+    "origin": "class",
+    "origin_value": "sorcerer",
+    "level": 3,
+    "kind": "static",
+    "options_type": null,
+    "options": null,
+    "visible": "result[:selected_features].keys.include?('metamagic_subtle_spell')",
+    "eval_variables": {}
+  },
+  {
+    "slug": "metamagic_twinned_spell",
+    "title": { "en": "Twinned spell", "ru": "Удвоенное заклинание" },
+    "description": {
+      "en": "When you cast a spell that targets only one creature and doesn't have a range of self, you can spend a number of sorcery points equal to the spell's level to target a second creature in range with the same spell (1 sorcery point if the spell is a cantrip).",
+      "ru": "Если вы используете заклинание, нацеливаемое на текущем накладываемом уровне только на одно существо и не имеющее дальность «на себя», вы можете потратить количество единиц чародейства, равное уровню заклинания (1 для заговоров), чтобы нацелиться им на второе существо-цель в пределах дистанции этого заклинания."
+    },
+    "origin": "class",
+    "origin_value": "sorcerer",
+    "level": 3,
+    "kind": "static",
+    "options_type": null,
+    "options": null,
+    "visible": "result[:selected_features].keys.include?('metamagic_twinned_spell')",
+    "eval_variables": {}
+  },
+  {
+    "slug": "draconic_ancestry",
+    "title": { "en": "Dragon Ancestor", "ru": "Драконий предок" },
+    "description": {
+      "en": "You choose one type of dragon as your ancestor.",
+      "ru": "Вы выбираете вид вашего дракона-предка."
+    },
+    "origin": "subclass",
+    "origin_value": "draconic_bloodline",
+    "level": 1,
+    "kind": "static_list",
+    "options": [
+      "black", "blue", "brass", "bronze", "copper", "gold", "green", "red", "silver", "white"
+    ],
+    "visible": "true"
+  },
+  {
+    "slug": "draconic_resilience",
+    "title": { "en": "Draconic resilience", "ru": "Драконья устойчивость" },
+    "description": {
+      "en": "At 1st level, your hit point maximum increases by 1 and increases by 1 again whenever you gain a level in this c1ass.",
+      "ru": "Максимум ваших хитов увеличивается на 1 на 1 уровне и на 1 на каждом уровне, полученном в данном классе."
+    },
+    "origin": "subclass",
+    "origin_value": "draconic_bloodline",
+    "level": 1,
+    "kind": "static",
+    "options": null,
+    "visible": "true"
+  }
+]

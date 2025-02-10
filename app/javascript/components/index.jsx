@@ -12,5 +12,4 @@ export * from './compounds/WebTelegram/Character/Dnd5/Equipment';
 export * from './compounds/WebTelegram/Character/Dnd5/Items';
 export * from './compounds/WebTelegram/Character/Dnd5/Spellbook';
 export * from './compounds/WebTelegram/Character/Dnd5/Spells';
-export * from './compounds/WebTelegram/Character/Dnd5/Features';
 export * from './compounds/WebTelegram/Character/Dnd5/Notes';

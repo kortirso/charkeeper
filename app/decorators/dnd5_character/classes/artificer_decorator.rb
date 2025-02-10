@@ -37,7 +37,7 @@ module Dnd5Character
         result
       end
 
-      # rubocop: disable Metrics/AbcSize, Metrics/MethodLength
+      # rubocop: disable Metrics/AbcSize
       def decorate_character_abilities(result:, class_level:)
         result[:class_save_dc] = %i[con int] if result[:main_class] == 'artificer'
         result[:spell_classes][:artificer] = {
@@ -50,23 +50,9 @@ module Dnd5Character
         result[:spells_slots] = spells_slots(class_level)
         result[:hit_dice][8] += class_level
 
-        result[:class_features] << {
-          slug: 'magical_tinkering',
-          title: I18n.t('dnd5.class_features.artificer.magical_tinkering.title'),
-          description: I18n.t('dnd5.class_features.artificer.magical_tinkering.description'),
-          limit: [result.dig(:modifiers, :int), 1].max
-        }
-        if class_level >= 3 # The Right Tool for the Job, 3 level
-          result[:class_features] << {
-            slug: 'the_right_tool_for_the_job',
-            title: I18n.t('dnd5.class_features.artificer.the_right_tool_for_the_job.title'),
-            description: I18n.t('dnd5.class_features.artificer.the_right_tool_for_the_job.description')
-          }
-        end
-
         result
       end
-      # rubocop: enable Metrics/AbcSize, Metrics/MethodLength
+      # rubocop: enable Metrics/AbcSize
 
       private
 

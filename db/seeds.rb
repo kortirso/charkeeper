@@ -56,6 +56,13 @@ Dnd5::Item.upsert_all(items)
 # досягаемость - reach
 # перезарядка - reload
 
+Dir[File.join(Rails.root.join('db/data/character_features/*.json'))].each do |filename|
+  puts "seeding - #{filename}"
+  JSON.parse(File.read(filename)).each do |character_feature|
+    ::Dnd5::Character::Feature.create!(character_feature)
+  end
+end
+
 weapons_file = File.read(Rails.root.join('db/data/weapons.json'))
 weapons = JSON.parse(weapons_file)
 weapons.each do |weapon|

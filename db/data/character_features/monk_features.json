@@ -1,0 +1,186 @@
+[
+  {
+    "slug": "ki",
+    "title": { "en": "Ki", "ru": "Ци" },
+    "description": {
+      "en": "Your training allows you to harness the mystic energy of ki.",
+      "ru": "Ваши тренировки позволяют вам управлять мистической энергией ци."
+    },
+    "origin": "class",
+    "origin_value": "monk",
+    "level": 2,
+    "kind": "static",
+    "options_type": null,
+    "options": null,
+    "visible": "true",
+    "eval_variables": {
+      "limit": "result.dig(:classes, 'monk')"
+    }
+  },
+  {
+    "slug": "flurry_of_blows",
+    "title": { "en": "Flurry of Blows", "ru": "Шквал ударов" },
+    "description": {
+      "en": "Immediately after you take the Attack action on your turn, you can spend 1 ki point to make two unarmed strikes as a bonus action.",
+      "ru": "Сразу же после того, как вы в свой ход совершили действие Атака, вы можете потратить 1 очко ци, чтобы совершить бонусным действием две безоружные атаки."
+    },
+    "origin": "class",
+    "origin_value": "monk",
+    "level": 2,
+    "kind": "static",
+    "options_type": null,
+    "options": null,
+    "visible": "true",
+    "eval_variables": {}
+  },
+  {
+    "slug": "patient_defense",
+    "title": { "en": "Patient Defense", "ru": "Терпеливая оборона" },
+    "description": {
+      "en": "You can spend 1 ki point to take the Dodge action as a bonus action on your turn.",
+      "ru": "Вы тратите 1 очко ци в свой ход, чтобы совершить бонусным действием Уклонение."
+    },
+    "origin": "class",
+    "origin_value": "monk",
+    "level": 2,
+    "kind": "static",
+    "options_type": null,
+    "options": null,
+    "visible": "true",
+    "eval_variables": {}
+  },
+  {
+    "slug": "step_of_the_wind",
+    "title": { "en": "Step of the Wind", "ru": "Поступь ветра" },
+    "description": {
+      "en": "You can spend 1 ki point to take the Disengage or Dash action as a bonus action on your turn, and your jump distance is doubled for the turn.",
+      "ru": "Вы можете потратить 1 очко ци в свой ход, чтобы совершить бонусным действием Отход или Рывок. В этот ход дальность ваших прыжков удваивается."
+    },
+    "origin": "class",
+    "origin_value": "monk",
+    "level": 2,
+    "kind": "static",
+    "options_type": null,
+    "options": null,
+    "visible": "true",
+    "eval_variables": {}
+  },
+  {
+    "slug": "deflect_missiles",
+    "title": { "en": "Deflect Missiles", "ru": "Отражение снарядов" },
+    "description": {
+      "en": "You can use your reaction to deflect or catch the missile when you are hit by a ranged weapon attack. When you do so, the damage you take from the attack is reduced by {{value}}. If you reduce the damage to 0, you can catch the missile if it is small enough for you to hold in one hand and you have at least one hand free. If you catch a missile in this way, you can spend 1 ki point to make a ranged attack with the weapon or piece of ammunition you just caught, as part of the same reaction. You make this attack with proficiency, regardless of your weapon proficiencies, and the missile counts as a monk weapon for the attack, which has a normal range of 20 feet and a long range of 60 feet.",
+      "ru": "Вы можете реакцией отразить или поймать снаряд, если по вам попали атакой дальнобойным оружием. Если вы делаете это, урон снижается на {{value}}. Если вы снизили урон до 0, вы можете поймать снаряд в случае, если он достаточно мал, чтоб держать его одной рукой, и одна из ваших рук свободна. Если вы поймали снаряд с помощью этого умения, вы можете потратить одно очко ци, чтобы частью реакции совершить дальнобойную атаку пойманным оружием или боеприпасом с дистанцией 20/60 футов. Вы совершаете эту атаку с владением, вне зависимости от владения данным оружием, и этот снаряд считается для данной атаки монашеским оружием."
+    },
+    "origin": "class",
+    "origin_value": "monk",
+    "level": 3,
+    "kind": "static",
+    "options_type": null,
+    "options": null,
+    "visible": "true",
+    "eval_variables": {
+      "value": "'1d10+' + (result.dig(:modifiers, :dex) + result.dig(:classes, 'monk')).to_s"
+    }
+  },
+  {
+    "slug": "slow_fall",
+    "title": { "en": "Slow Fall", "ru": "Медленное падение" },
+    "description": {
+      "en": "You can use your reaction when you fall to reduce any falling damage you take by {{value}}.",
+      "ru": "Если вы упали, вы можете реакцией уменьшить урон от падения на {{value}}."
+    },
+    "origin": "class",
+    "origin_value": "monk",
+    "level": 4,
+    "kind": "static",
+    "options_type": null,
+    "options": null,
+    "visible": "true",
+    "eval_variables": {
+      "value": "result.dig(:classes, 'monk') * 5"
+    }
+  },
+  {
+    "slug": "stunning_strike",
+    "title": { "en": "Stunning Strike", "ru": "Ошеломляющий удар" },
+    "description": {
+      "en": "When you hit another creature with a melee weapon attack, you can spend 1 ki point to attempt a stunning strike. The target must succeed on a Constitution saving throw (DC {{value}}) or be stunned until the end of your next turn.",
+      "ru": "Если вы попали по другому существу атакой рукопашным оружием, вы можете потратить 1 очко ци, чтобы нанести ошеломляющий удар. Цель должна преуспеть в спасброске Телосложения (УС {{value}}), иначе она станет ошеломлённой до конца вашего следующего хода."
+    },
+    "origin": "class",
+    "origin_value": "monk",
+    "level": 5,
+    "kind": "static",
+    "options_type": null,
+    "options": null,
+    "visible": "true",
+    "eval_variables": {
+      "value": "8 + result[:proficiency_bonus] + result.dig(:modifiers, :wis)"
+    }
+  },
+  {
+    "slug": "empowered_strikes",
+    "title": { "en": "Ki-Empowered Strikes", "ru": "Энергетические удары" },
+    "description": {
+      "en": "Your unarmed strikes count as magical for the purpose of overcoming resistance and immunity to nonmagical attacks and damage.",
+      "ru": "Ваши безоружные удары считаются магическими при определении преодоления сопротивления и иммунитета к немагическим атакам и урону."
+    },
+    "origin": "class",
+    "origin_value": "monk",
+    "level": 6,
+    "kind": "static",
+    "options_type": null,
+    "options": null,
+    "visible": "true",
+    "eval_variables": {}
+  },
+  {
+    "slug": "evasion",
+    "title": { "en": "Evasion", "ru": "Увёртливость" },
+    "description": {
+      "en": "When you are subjected to an effect that allows you to make a Dexterity saving throw to take only half damage, you instead take no damage if you succeed on the saving throw, and only half damage if you fail.",
+      "ru": "Если вы попадаете под действие эффекта, позволяющего совершить спасбросок Ловкости, чтобы получить только половину урона, вы вместо этого не получаете урона при успешном спасброске и получаете только половину урона при проваленном."
+    },
+    "origin": "class",
+    "origin_value": "monk",
+    "level": 7,
+    "kind": "static",
+    "options_type": null,
+    "options": null,
+    "visible": "true",
+    "eval_variables": {}
+  },
+  {
+    "slug": "stillness_of_mind",
+    "title": { "en": "Stillness of Mind", "ru": "Спокойствие разума" },
+    "description": {
+      "en": "You can use your action to end one effect on yourself that is causing you to be charmed or frightened.",
+      "ru": "Вы можете действием окончить один из действующих на вас эффектов, делающих вас очарованным или испуганным."
+    },
+    "origin": "class",
+    "origin_value": "monk",
+    "level": 7,
+    "kind": "static",
+    "options_type": null,
+    "options": null,
+    "visible": "true",
+    "eval_variables": {}
+  },
+  {
+    "slug": "unarmored_movement",
+    "title": { "en": "Unarmored Movement", "ru": "Движение без доспехов" },
+    "description": {
+      "en": "You gain the ability to move along vertical surfaces and across liquids on your turn without falling during your move.",
+      "ru": "Вы получаете возможность в свой ход перемещаться по вертикальным поверхностям и по поверхности жидкости, не падая во время движения."
+    },
+    "origin": "class",
+    "origin_value": "monk",
+    "level": 9,
+    "kind": "static",
+    "options_type": null,
+    "options": null,
+    "visible": "true",
+    "eval_variables": {}
+  }
+]

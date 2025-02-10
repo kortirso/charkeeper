@@ -13,7 +13,7 @@ module Dnd5Character
         result
       end
 
-      # rubocop: disable Metrics/AbcSize, Metrics/MethodLength
+      # rubocop: disable Metrics/AbcSize
       def decorate_character_abilities(result:, class_level:)
         result[:class_save_dc] = %i[con cha] if result[:main_class] == 'sorcerer'
         result[:spell_classes][:sorcerer] = {
@@ -27,30 +27,9 @@ module Dnd5Character
         result[:spells_slots] = spells_slots(class_level)
         result[:hit_dice][6] += class_level
 
-        if class_level >= 2 # Sorcery Points, 2 level
-          result[:class_features] << {
-            slug: 'sorcery_points',
-            title: I18n.t('dnd5.class_features.sorcerer.sorcery_points.title'),
-            description: I18n.t('dnd5.class_features.sorcerer.sorcery_points.description'),
-            limit: class_level
-          }
-        end
-        if class_level >= 2 # Creating Spell Slots, 2 level
-          result[:class_features] << {
-            title: I18n.t('dnd5.class_features.sorcerer.creating_spell_slots.title'),
-            description: I18n.t('dnd5.class_features.sorcerer.creating_spell_slots.description')
-          }
-        end
-        if class_level >= 2 # Converting a Spell Slot, 2 level
-          result[:class_features] << {
-            title: I18n.t('dnd5.class_features.sorcerer.converting_spell_slot.title'),
-            description: I18n.t('dnd5.class_features.sorcerer.converting_spell_slot.description')
-          }
-        end
-
         result
       end
-      # rubocop: enable Metrics/AbcSize, Metrics/MethodLength
+      # rubocop: enable Metrics/AbcSize
 
       private
 

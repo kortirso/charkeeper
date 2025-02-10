@@ -30,15 +30,6 @@ module Dnd5Character
         result[:spells_slots] = spells_slots(class_level)
         result[:hit_dice][8] += class_level
 
-        if class_level >= 2 # Wild Shape, 2 level
-          result[:class_features] << {
-            slug: 'wild_shape',
-            title: I18n.t('dnd5.class_features.druid.wild_shape.title'),
-            description: I18n.t('dnd5.class_features.druid.wild_shape.description', value: wild_shape_value(class_level)),
-            limit: 2
-          }
-        end
-
         result
       end
       # rubocop: enable Metrics/AbcSize
@@ -58,13 +49,6 @@ module Dnd5Character
 
       def spells_slots(class_level)
         ::Dnd5Character::ClassDecorateWrapper::SPELL_SLOTS[class_level]
-      end
-
-      def wild_shape_value(class_level)
-        return 1 if class_level >= 8
-        return 0.5 if class_level >= 4
-
-        0.25
       end
     end
   end

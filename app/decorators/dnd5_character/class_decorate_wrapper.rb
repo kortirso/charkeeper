@@ -35,6 +35,8 @@ module Dnd5Character
         result = class_decorator(class_name).decorate_character_abilities(result: result, class_level: class_level)
       end
       modify_saving_throws(result)
+
+      # spell slots for multiclass
       if result[:spell_classes].keys.size > 1
         multiclass_spell_class =
           result[:classes].slice('bard', 'wizard', 'druid', 'cleric', 'sorcerer').values.sum + # full level

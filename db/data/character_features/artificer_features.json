@@ -1,0 +1,88 @@
+[
+  {
+    "slug": "magical_tinkering",
+    "title": { "en": "Magical Tinkering", "ru": "Магический мастеровой" },
+    "description": {
+      "en": "To use this feature, you must be holding thieves' tools or artisan's tools. Then, as an Action, you touch a Tiny nonmagical object and imbue it with one magical property of your choice.",
+      "ru": "Чтобы использовать это умение, вы должны держать в руках воровские инструменты или инструменты ремесленника. Затем Действием вы касаетесь Крошечного немагического объекта и наделяете его одним из магических свойств на ваш выбор."
+    },
+    "origin": "class",
+    "origin_value": "artificer",
+    "level": 1,
+    "kind": "static",
+    "options_type": null,
+    "options": null,
+    "visible": "true",
+    "eval_variables": {
+      "limit": "[1, result.dig(:modifiers, :int)].max"
+    }
+  },
+  {
+    "slug": "infuse_item",
+    "title": { "en": "Infuse Item", "ru": "Инфузирование предмета" },
+    "description": {
+      "en": "The ability to infuse certain magic into ordinary objects and turn them into magical ones.",
+      "ru": "Способность вливать в обычные предметы определённую магию и превращать их в магические."
+    },
+    "origin": "class",
+    "origin_value": "artificer",
+    "level": 2,
+    "kind": "text",
+    "options_type": null,
+    "options": null,
+    "visible": "true",
+    "eval_variables": {}
+  },
+  {
+    "slug": "the_right_tool_for_the_job",
+    "title": { "en": "The Right Tool for the Job", "ru": "Подходящий инструмент" },
+    "description": {
+      "en": "Using thieves' tools or artisan's tools, you can magically create one set of artisan's tools in an unoccupied space within 5 feet of you. This requires 1 hour of uninterrupted work, which can be done during a short or long rest. Although created through magic, the tools themselves are nonmagical and disappear when you use this feature again.",
+      "ru": "С помощью воровских инструментов или инструментов ремесленника вы можете волшебным образом создать один набор инструментов ремесленника в незанятом пространстве в пределах 5 футов от вас. Это потребует 1 часа непрерывной работы, которая может быть проведена во время короткого или продолжительного отдыха. Хотя они и созданы с помощью магии, сами инструменты немагические и исчезают, когда вы снова используете это умение."
+    },
+    "origin": "class",
+    "origin_value": "artificer",
+    "level": 3,
+    "kind": "static",
+    "options_type": null,
+    "options": null,
+    "visible": "true",
+    "eval_variables": {}
+  },
+  {
+    "slug": "experimental_elixir",
+    "title": { "en": "Experimental Elixir", "ru": "Экспериментальный эликсир" },
+    "description": {
+      "en": "Roll on the Experimental Elixir table to determine the effect that occurs when someone drinks the elixir.",
+      "ru": "Совершите бросок по таблице «Экспериментальный эликсир» для определения эффекта, который возникнет, когда кто-то выпьет эликсир."
+    },
+    "origin": "subclass",
+    "origin_value": "alchemist",
+    "level": 3,
+    "kind": "static",
+    "options_type": null,
+    "options": null,
+    "visible": "true",
+    "eval_variables": {
+      "limit": "class_level = result.dig(:classes, 'artificer'); class_level >= 15 ? 3 : (class_level >= 6 ? 2 : 1)"
+    }
+  },
+  {
+    "slug": "alchemical_savant",
+    "title": { "en": "Alchemical Savant", "ru": "Учёный-алхимик" },
+    "description": {
+      "en": "Whenever you cast a spell using alchemist's tools as a focus, you gain a {{value}} bonus to one of your spell rolls. That roll must restore hit points or deal acid, fire, necrotic, or poison damage.",
+      "ru": "Каждый раз, когда вы накладываете заклинание, используя инструменты алхимика в качестве фокусировки, вы получаете бонус {{value}} к одному из бросков этого заклинания. Этот бросок должен восстанавливать хиты или наносить урон кислотой, огнём, некротической энергией или ядом."
+    },
+    "origin": "subclass",
+    "origin_value": "alchemist",
+    "level": 5,
+    "kind": "static",
+    "options_type": null,
+    "options": null,
+    "visible": "true",
+    "eval_variables": {
+      "value": "result.dig(:modifiers, :int)"
+    }
+  }
+]

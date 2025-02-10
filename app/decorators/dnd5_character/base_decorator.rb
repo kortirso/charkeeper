@@ -38,7 +38,7 @@ module Dnd5Character
         proficiency_bonus: proficiency_bonus(data),
         abilities: data.abilities,
         modifiers: modifiers(data),
-        class_features: [], # неизменные классовые способности
+        features: [], # неизменные классовые способности
         selected_features: data.selected_features, # выбранные классовые способности
         static_spells: [], # врожденные заклинания от расы/класса
         conditions: {
