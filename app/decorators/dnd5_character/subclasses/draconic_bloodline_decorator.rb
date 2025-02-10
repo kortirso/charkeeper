@@ -7,10 +7,6 @@ module Dnd5Character
         if result.dig(:defense_gear, :armor).nil?
           result[:combat][:armor_class] = [result[:combat][:armor_class], modified_armor_class(result)].max
         end
-        result[:class_features] << {
-          title: I18n.t('dnd5.class_features.sorcerer.draconic_resilience.title'),
-          description: I18n.t('dnd5.class_features.sorcerer.draconic_resilience.description')
-        }
 
         result
       end

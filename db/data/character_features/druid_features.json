@@ -1,0 +1,56 @@
+[
+  {
+    "slug": "wild_shape",
+    "title": { "en": "Wild Shape", "ru": "Дикий облик" },
+    "description": {
+      "en": "You can use your action to magically assume the shape of a beast (challenge rating - {{value}}) that you have seen before.",
+      "ru": "Вы можете действием принять при помощи магии облик любого зверя (показатель опасности - {{value}}), которого вы видели."
+    },
+    "origin": "class",
+    "origin_value": "druid",
+    "level": 1,
+    "kind": "static",
+    "options_type": null,
+    "options": null,
+    "visible": "true",
+    "eval_variables": {
+      "value": "class_level = result.dig(:classes, 'druid'); class_level >= 8 ? 1 : (class_level >= 4 ? 0.5 : 0.25)",
+      "limit": "2"
+    }
+  },
+  {
+    "slug": "natural_recovery",
+    "title": { "en": "Natural recovery", "ru": "Естественное восстановление" },
+    "description": {
+      "en": "During a short rest, you choose expended spell slots to recover. Total sum level of slots - {{value}}. None of the slots can be 6th level or higher.",
+      "ru": "Во время короткого отдыха можно восстановить потраченные ячейки заклинаний. Сумма уровней {{value}}. Ни одна ячейка не может быть 6 уровня или выше."
+    },
+    "origin": "subclass",
+    "origin_value": "circle_of_the_land",
+    "level": 2,
+    "kind": "static",
+    "options_type": null,
+    "options": null,
+    "visible": "true",
+    "eval_variables": {
+      "value": "(result.dig(:classes, 'druid') / 2.0).round",
+      "limit": "1"
+    }
+  },
+  {
+    "slug": "land",
+    "title": { "en": "Circle spells", "ru": "Заклинания круга" },
+    "description": {
+      "en": "Your mystical connection to the land infuses you with the ability to cast certain spells.",
+      "ru": "Духовная связь друида с землёй наделяет его некоторыми заклинаниями."
+    },
+    "origin": "subclass",
+    "origin_value": "circle_of_the_land",
+    "level": 3,
+    "kind": "static_list",
+    "options_type": null,
+    "options": ["arctic", "coast", "desert", "forest", "grassland", "mountain", "swamp", "underdark"],
+    "visible": "true",
+    "eval_variables": {}
+  }
+]

@@ -1,8 +1,8 @@
-import { createSignal, For, Show, batch } from 'solid-js';
+import { createSignal, For, Show, batch, Switch, Match } from 'solid-js';
 import * as i18n from '@solid-primitives/i18n';
 
 import { createModal, StatsBlock } from '../../../../molecules';
-import { Input, Toggle, Checkbox } from '../../../../atoms';
+import { Input, Toggle, Checkbox, Select } from '../../../../atoms';
 
 import { useAppLocale } from '../../../../../context';
 import { modifier } from '../../../../../helpers';
@@ -12,6 +12,7 @@ export const Dnd5Combat = (props) => {
   const [healthData, setHealthData] = createSignal(props.initialHealth);
   const [energyData, setEnergyData] = createSignal(props.initialEnergy);
   const [damageConditions, setDamageConditions] = createSignal(props.initialConditions);
+  const [selectedFeaturesData, setSelectedFeaturesData] = createSignal(props.initialSelectedFeatures);
   const [damageHealValue, setDamageHealValue] = createSignal(0);
 
   const { Modal, openModal, closeModal } = createModal();
@@ -90,6 +91,30 @@ export const Dnd5Combat = (props) => {
     if (result.errors === undefined) setDamageConditions(newValue);
   }
 
+  const toggleSelectedFeatureOption = async (feature, option) => {
+    const selectedOptions = selectedFeaturesData()[feature.slug];
+
+    let newData;
+    if (selectedOptions) {
+      if (selectedOptions.includes(option)) {
+        newData = { ...selectedFeaturesData(), [feature.slug]: selectedOptions.filter((item) => item !== option) }
+      } else {
+        newData = { ...selectedFeaturesData(), [feature.slug]: selectedOptions.concat(option) }
+      }
+    } else {
+      newData = { ...selectedFeaturesData(), [feature.slug]: [option] }
+    }
+
+    const result = await props.onReloadCharacter({ selected_features: newData });
+    if (result.errors === undefined) setSelectedFeaturesData(newData);
+  }
+
+  const setSelectedFeatureOption = async (feature, value) => {
+    const newData = { ...selectedFeaturesData(), [feature.slug]: value }
+    const result = await props.onReloadCharacter({ selected_features: newData });
+    if (result.errors === undefined) setSelectedFeaturesData(newData);
+  }
+
   // submits
   const updateHealth = async () => {
     const result = await props.onRefreshCharacter({ health: healthData() });
@@ -143,21 +168,21 @@ export const Dnd5Combat = (props) => {
     );
   }
 
-  const renderClassFeatureTitle = (classFeature) => {
-    if (classFeature.limit === undefined) return classFeature.title;
+  const renderFeatureTitle = (feature) => {
+    if (feature.limit === undefined) return feature.title;
 
     return (
       <div class="flex items-center">
-        <p class="flex-1">{classFeature.title}</p>
+        <p class="flex-1">{feature.title}</p>
         <div class="flex items-center">
           <button
             class="py-1 px-2 border border-gray-200 rounded flex justify-center items-center"
-            onClick={(event) => energyData()[classFeature.slug] !== classFeature.limit ? spendEnergy(event, classFeature.slug, classFeature.limit) : event.stopPropagation()}
+            onClick={(event) => energyData()[feature.slug] !== feature.limit ? spendEnergy(event, feature.slug, feature.limit) : event.stopPropagation()}
           >-</button>
-          <p class="w-12 text-center">{classFeature.limit - (energyData()[classFeature.slug] || 0)} / {classFeature.limit}</p>
+          <p class="w-12 text-center">{feature.limit - (energyData()[feature.slug] || 0)} / {feature.limit}</p>
           <button
             class="py-1 px-2 border border-gray-200 rounded flex justify-center items-center"
-            onClick={(event) => (energyData()[classFeature.slug] || 0) > 0 ? restoreEnergy(event, classFeature.slug) : event.stopPropagation()}
+            onClick={(event) => (energyData()[feature.slug] || 0) > 0 ? restoreEnergy(event, feature.slug) : event.stopPropagation()}
           >+</button>
         </div>
       </div>
@@ -233,13 +258,63 @@ export const Dnd5Combat = (props) => {
       </Toggle>
       {renderAttacksBox(`${t('terms.attackAction')} - ${props.combat.attacks_per_action}`, props.attacks.filter((item) => item.action_type === 'action'))}
       {renderAttacksBox(`${t('terms.attackBonusAction')} - 1`, props.attacks.filter((item) => item.action_type === 'bonus action'))}
-      <For each={props.classFeatures}>
-        {(classFeature) =>
-          <Toggle title={renderClassFeatureTitle(classFeature)}>
-            <p
-              class="text-sm"
-              innerHTML={classFeature.description} // eslint-disable-line solid/no-innerhtml
-            />
+      <For each={props.features}>
+        {(feature) =>
+          <Toggle title={renderFeatureTitle(feature)}>
+            <Switch>
+              <Match when={feature.kind === 'static'}>
+                <p
+                  class="text-sm"
+                  innerHTML={feature.description} // eslint-disable-line solid/no-innerhtml
+                />
+              </Match>
+              <Match when={feature.kind === 'dynamic_list'}>
+                <For each={feature.options}>
+                  {(option) =>
+                    <div class="mb-2">
+                      <Checkbox
+                        labelText={t(`selectedFeatures.${option}`)}
+                        labelPosition="right"
+                        labelClassList="text-sm ml-4"
+                        checked={selectedFeaturesData()[feature.slug]?.includes(option)}
+                        onToggle={() => toggleSelectedFeatureOption(feature, option)}
+                      />
+                    </div>
+                  }
+                </For>
+              </Match>
+              <Match when={feature.kind === 'static_list'}>
+                <Select
+                  classList="w-full mb-2"
+                  items={feature.options.reduce((acc, option) => { acc[option] = t(`selectedFeatures.${option}`); return acc; }, {})}
+                  selectedValue={selectedFeaturesData()[feature.slug]}
+                  onSelect={(option) => setSelectedFeatureOption(feature, option)}
+                />
+              </Match>
+              <Match when={feature.kind === 'choose_from' && feature.options_type === 'selected_skills'}>
+                <For each={props.skills.filter((item) => item.selected).map((item) => item.name)}>
+                  {(option) =>
+                    <div class="mb-2">
+                      <Checkbox
+                        labelText={t(`skills.${option}`)}
+                        labelPosition="right"
+                        labelClassList="text-sm ml-4"
+                        checked={selectedFeaturesData()[feature.slug]?.includes(option)}
+                        onToggle={() => toggleSelectedFeatureOption(feature, option)}
+                      />
+                    </div>
+                  }
+                </For>
+              </Match>
+              <Match when={feature.kind === 'text'}>
+                <textarea
+                  rows="5"
+                  class="w-full border border-gray-200 rounded p-1 text-sm"
+                  onInput={(e) => setSelectedFeatureOption(feature, e.target.value)}
+                  value={selectedFeaturesData()[feature.slug] || ''}
+                />
+              </Match>
+            </Switch>
           </Toggle>
         }
       </For>

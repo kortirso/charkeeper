@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_02_07_151953) do
+ActiveRecord::Schema[8.0].define(version: 2025_02_09_140215) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
   enable_extension "pgcrypto"
@@ -52,6 +52,22 @@ ActiveRecord::Schema[8.0].define(version: 2025_02_07_151953) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_characters_on_user_id"
+  end
+
+  create_table "dnd5_character_features", id: :uuid, default: -> { "gen_random_uuid()" }, comment: "Расовые/классовые особенности", force: :cascade do |t|
+    t.string "slug", null: false
+    t.jsonb "title", default: {}, null: false
+    t.jsonb "description", default: {}, null: false
+    t.integer "origin", limit: 2, null: false, comment: "Тип применимости особенности, раса/подраса/класс/подкласс"
+    t.string "origin_value", null: false, comment: "Значение применимости особенности"
+    t.integer "level", limit: 2, null: false
+    t.integer "kind", limit: 2, null: false
+    t.string "options_type", comment: "Данные для выбора при kind CHOOSE_FROM"
+    t.string "options", comment: "Список опций для выбора", array: true
+    t.string "visible", null: false, comment: "Доступен ли бонус особенности"
+    t.jsonb "eval_variables", default: {}, null: false, comment: "Вычисляемые переменные"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "items", id: :uuid, default: -> { "gen_random_uuid()" }, comment: "Предметы", force: :cascade do |t|
