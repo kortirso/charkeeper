@@ -244,7 +244,6 @@ export const Dnd5 = (props) => {
               skills={props.decoratedData.skills}
               initialConditions={props.decoratedData.conditions}
               onRefreshCharacter={refreshCharacter}
-              onReloadCharacter={updateCharacter}
             />
           </Match>
           <Match when={activeTab() === 'equipment'}>

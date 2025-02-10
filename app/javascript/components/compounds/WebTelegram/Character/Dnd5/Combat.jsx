@@ -105,14 +105,18 @@ export const Dnd5Combat = (props) => {
       newData = { ...selectedFeaturesData(), [feature.slug]: [option] }
     }
 
-    const result = await props.onReloadCharacter({ selected_features: newData });
+    const result = await props.onRefreshCharacter({ selected_features: newData });
     if (result.errors === undefined) setSelectedFeaturesData(newData);
   }
 
   const setSelectedFeatureOption = async (feature, value) => {
     const newData = { ...selectedFeaturesData(), [feature.slug]: value }
-    const result = await props.onReloadCharacter({ selected_features: newData });
+    const result = await props.onRefreshCharacter({ selected_features: newData });
     if (result.errors === undefined) setSelectedFeaturesData(newData);
+  }
+
+  const setTextFeatureOption = (feature, value) => {
+    setSelectedFeaturesData({ ...selectedFeaturesData(), [feature.slug]: value });
   }
 
   // submits
@@ -120,6 +124,10 @@ export const Dnd5Combat = (props) => {
     const result = await props.onRefreshCharacter({ health: healthData() });
 
     if (result.errors === undefined) closeModal();
+  }
+
+  const updateTextFeature = async () => {
+    await props.onRefreshCharacter({ selected_features: selectedFeaturesData() });
   }
 
   // rendering
@@ -269,6 +277,10 @@ export const Dnd5Combat = (props) => {
                 />
               </Match>
               <Match when={feature.kind === 'dynamic_list'}>
+                <p
+                  class="text-sm mb-2"
+                  innerHTML={feature.description} // eslint-disable-line solid/no-innerhtml
+                />
                 <For each={feature.options}>
                   {(option) =>
                     <div class="mb-2">
@@ -284,6 +296,10 @@ export const Dnd5Combat = (props) => {
                 </For>
               </Match>
               <Match when={feature.kind === 'static_list'}>
+                <p
+                  class="text-sm mb-2"
+                  innerHTML={feature.description} // eslint-disable-line solid/no-innerhtml
+                />
                 <Select
                   classList="w-full mb-2"
                   items={feature.options.reduce((acc, option) => { acc[option] = t(`selectedFeatures.${option}`); return acc; }, {})}
@@ -292,6 +308,10 @@ export const Dnd5Combat = (props) => {
                 />
               </Match>
               <Match when={feature.kind === 'choose_from' && feature.options_type === 'selected_skills'}>
+                <p
+                  class="text-sm mb-2"
+                  innerHTML={feature.description} // eslint-disable-line solid/no-innerhtml
+                />
                 <For each={props.skills.filter((item) => item.selected).map((item) => item.name)}>
                   {(option) =>
                     <div class="mb-2">
@@ -307,12 +327,21 @@ export const Dnd5Combat = (props) => {
                 </For>
               </Match>
               <Match when={feature.kind === 'text'}>
+                <p
+                  class="text-sm mb-2"
+                  innerHTML={feature.description} // eslint-disable-line solid/no-innerhtml
+                />
                 <textarea
                   rows="5"
                   class="w-full border border-gray-200 rounded p-1 text-sm"
-                  onInput={(e) => setSelectedFeatureOption(feature, e.target.value)}
+                  onInput={(e) => setTextFeatureOption(feature, e.target.value)}
                   value={selectedFeaturesData()[feature.slug] || ''}
                 />
+                <div class="flex justify-end">
+                  <button class="btn-primary mt-2" onClick={() => updateTextFeature(feature)}>
+                    {t('save')}
+                  </button>
+                </div>
               </Match>
             </Switch>
           </Toggle>
