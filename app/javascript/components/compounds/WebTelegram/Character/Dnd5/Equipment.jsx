@@ -39,8 +39,11 @@ export const Dnd5Equipment = (props) => {
     if (result.errors === undefined) closeModal();
   }
 
-  const updateItemQuantity = async () => {
-    const result = await props.onUpdateCharacterItem(changingItem(), { character_item: { quantity: changingItem().quantity } });
+  const updateItem = async () => {
+    const result = await props.onUpdateCharacterItem(
+      changingItem(),
+      { character_item: { quantity: changingItem().quantity, notes: changingItem().notes } }
+    );
 
     if (result.errors === undefined) closeModal();
   }
@@ -69,6 +72,9 @@ export const Dnd5Equipment = (props) => {
               <tr>
                 <td class="py-1">
                   <p>{item.name}</p>
+                  <Show when={item.notes}>
+                    <p class="text-sm mt-1">{item.notes}</p>
+                  </Show>
                 </td>
                 <td class="py-1">
                   <p
@@ -147,16 +153,24 @@ export const Dnd5Equipment = (props) => {
               <button class="btn-primary" onClick={updateCoins}>{t('save')}</button>
             </Match>
             <Match when={modalOpenMode() === 'changeItemQuantity'}>
-              <div class="mb-4 flex items-center">
-                <p class="flex-1 text-sm text-left">{changingItem().name}</p>
-                <Input
-                  numeric
-                  classList="w-20 ml-8"
-                  value={changingItem().quantity}
-                  onInput={(value) => setChangingItem({ ...changingItem(), quantity: Number(value) })}
+              <div>
+                <div class="mb-2 flex items-center">
+                  <p class="flex-1 text-sm text-left">{changingItem().name}</p>
+                  <Input
+                    numeric
+                    classList="w-20 ml-8"
+                    value={changingItem().quantity}
+                    onInput={(value) => setChangingItem({ ...changingItem(), quantity: Number(value) })}
+                  />
+                </div>
+                <textarea
+                  rows="2"
+                  class="w-full border border-gray-200 rounded p-1 text-sm mb-2"
+                  onInput={(e) => setChangingItem({ ...changingItem(), notes: e.target.value })}
+                  value={changingItem().notes}
                 />
               </div>
-              <button class="btn-primary" onClick={updateItemQuantity}>{t('save')}</button>
+              <button class="btn-primary" onClick={updateItem}>{t('save')}</button>
             </Match>
           </Switch>
         </div>

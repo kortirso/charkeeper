@@ -3,9 +3,9 @@
 module Dnd5
   module Characters
     class ItemSerializer < ApplicationSerializer
-      ATTRIBUTES = %i[id quantity ready_to_use name kind weight price].freeze
+      ATTRIBUTES = %i[id quantity ready_to_use notes name kind weight price].freeze
 
-      attributes :id, :quantity, :ready_to_use, :name, :kind, :weight, :price
+      attributes :id, :quantity, :ready_to_use, :notes, :name, :kind, :weight, :price
 
       delegate :weight, :price, to: :data
       delegate :kind, :data, to: :item
