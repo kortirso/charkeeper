@@ -9,6 +9,10 @@ export function AppAlertProvider(props) {
 
   const store = [
     {
+      renderNotice(message) {
+        setAlerts([{ type: 'notice', message: message }]);
+        clearAlerts();
+      },
       renderAlert(message) {
         setAlerts([{ type: 'alert', message: message }]);
         clearAlerts();

@@ -10,6 +10,9 @@
     "npc": "NPC",
     "profile": "Profile"
   },
+  "alerts": {
+    "restIsFinished": "Rest is finished"
+  },
   "charactersPage": {
     "title": "Characters list",
     "level": "Level",

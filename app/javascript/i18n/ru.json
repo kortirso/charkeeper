@@ -10,6 +10,9 @@
     "npc": "НИП",
     "profile": "Профиль"
   },
+  "alerts": {
+    "restIsFinished": "Отдых проведён"
+  },
   "charactersPage": {
     "title": "Персонажи",
     "level": "Уровень",

@@ -8,7 +8,7 @@ import {
 import { createModal, PageHeader } from '../../../molecules';
 import { Hamburger } from '../../../../assets';
 
-import { useAppState, useAppLocale } from '../../../../context';
+import { useAppState, useAppLocale, useAppAlert } from '../../../../context';
 
 import { fetchCharacterItemsRequest } from '../../../../requests/fetchCharacterItemsRequest';
 import { fetchCharacterSpellsRequest } from '../../../../requests/fetchCharacterSpellsRequest';
@@ -38,8 +38,15 @@ export const Dnd5 = (props) => {
   const [characterItems, setCharacterItems] = createSignal(undefined);
   const [characterSpells, setCharacterSpells] = createSignal(undefined);
 
+  // shared state
+  const [spentHitDiceData, setSpentHitDiceData] = createSignal(decoratedData().spent_hit_dice);
+  const [healthData, setHealthData] = createSignal(decoratedData().health);
+  const [energyData, setEnergyData] = createSignal(decoratedData().energy);
+  const [spentSpellSlots, setSpentSpellSlots] = createSignal(decoratedData().spent_spell_slots);
+
   const { Modal, openModal, closeModal } = createModal();
   const [appState] = useAppState();
+  const [{ renderNotice }] = useAppAlert();
   const [, dict] = useAppLocale();
 
   const t = i18n.translator(dict);
@@ -100,7 +107,7 @@ export const Dnd5 = (props) => {
   const updateCharacter = async (payload) => {
     const result = await updateCharacterRequest(appState.accessToken, 'dnd5', props.characterId, { character: payload });
 
-    if (result.errors === undefined) props.onReloadCharacter();
+    if (result.errors === undefined) return await props.onReloadCharacter();
     return result;
   }
 
@@ -152,7 +159,18 @@ export const Dnd5 = (props) => {
 
   const restCharacter = async (payload) => {
     const result = await createCharacterRestRequest(appState.accessToken, 'dnd5', props.characterId, payload);
-    if (result.errors === undefined) props.onReloadCharacter();
+    if (result.errors === undefined) {
+      const decoratedData = await props.onReloadCharacter();
+
+      batch(() => {
+        setSpentHitDiceData(decoratedData.spent_hit_dice);
+        setHealthData(decoratedData.health);
+        setEnergyData(decoratedData.energy);
+        setSpentSpellSlots(decoratedData.spent_spell_slots);
+      });
+
+      renderNotice(t('alerts.restIsFinished'));
+    }
   }
 
   // additional data change for spells
@@ -184,6 +202,98 @@ export const Dnd5 = (props) => {
   const updateCharacterSpell = async (spellId, payload) => {
     const result = await updateCharacterSpellRequest(appState.accessToken, 'dnd5', props.characterId, spellId, payload);
     return result;
+  }
+
+  // shared data
+  const spendDice = async (dice, limit) => {
+    let newValue;
+    if (spentHitDiceData()[dice] && spentHitDiceData()[dice] < limit) {
+      newValue = { ...spentHitDiceData(), [dice]: spentHitDiceData()[dice] + 1 };
+    } else {
+      newValue = { ...spentHitDiceData(), [dice]: 1 };
+    }
+
+    const result = await refreshCharacter({ spent_hit_dice: newValue });
+    if (result.errors === undefined) setSpentHitDiceData(newValue);
+  }
+
+  const restoreDice = async (dice) => {
+    let newValue;
+    if (spentHitDiceData()[dice] && spentHitDiceData()[dice] > 0) {
+      newValue = { ...spentHitDiceData(), [dice]: spentHitDiceData()[dice] - 1 };
+    } else {
+      newValue = { ...spentHitDiceData(), [dice]: 0 };
+    }
+
+    const result = await refreshCharacter({ spent_hit_dice: newValue });
+    if (result.errors === undefined) setSpentHitDiceData(newValue);
+  }
+
+  const spendEnergy = async (event, slug, limit) => {
+    event.stopPropagation();
+
+    let newValue;
+    if (energyData()[slug] && energyData()[slug] < limit) {
+      newValue = { ...energyData(), [slug]: energyData()[slug] + 1 };
+    } else {
+      newValue = { ...energyData(), [slug]: 1 };
+    }
+
+    const result = await refreshCharacter({ energy: newValue });
+    if (result.errors === undefined) setEnergyData(newValue);
+  }
+
+  const restoreEnergy = async (event, slug) => {
+    event.stopPropagation();
+
+    let newValue;
+    if (energyData()[slug] && energyData()[slug] > 0) {
+      newValue = { ...energyData(), [slug]: energyData()[slug] - 1 };
+    } else {
+      newValue = { ...energyData(), [slug]: 0 };
+    }
+
+    const result = await refreshCharacter({ energy: newValue });
+    if (result.errors === undefined) setEnergyData(newValue);
+  }
+
+  const makeHeal = async (damageHealValue) => {
+    const missingHealth = healthData().max - healthData().current;
+
+    let newValue;
+    if (damageHealValue >= missingHealth) newValue = { ...healthData(), current: healthData().max }
+    else newValue = { ...healthData(), current: healthData().current + damageHealValue }
+
+    const result = await refreshCharacter({ health: newValue });
+    if (result.errors === undefined) setHealthData(newValue);
+  }
+
+  const dealDamage = async (damageHealValue) => {
+    const damageToTempHealth = damageHealValue >= healthData().temp ? healthData().temp : damageHealValue;
+    const damageToHealth = damageHealValue - damageToTempHealth;
+
+    let newValue = { ...healthData(), current: healthData().current - damageToHealth, temp: healthData().temp - damageToTempHealth }
+    const result = await refreshCharacter({ health: newValue });
+    if (result.errors === undefined) setHealthData(newValue);
+  }
+
+  const spendSpellSlot = async (level) => {
+    let newValue;
+    if (spentSpellSlots()[level]) {
+      newValue = { ...spentSpellSlots(), [level]: spentSpellSlots()[level] + 1 };
+    } else {
+      newValue = { ...spentSpellSlots(), [level]: 1 };
+    }
+
+    const result = await refreshCharacter({ spent_spell_slots: newValue });
+    if (result.errors === undefined) setSpentSpellSlots(newValue);
+  }
+
+  const freeSpellSlot = async (level) => {
+    const newValue = { ...spentSpellSlots(), [level]: spentSpellSlots()[level] - 1 };
+
+    const result = await refreshCharacter({ spent_spell_slots: newValue });
+    if (result.errors === undefined) setSpentSpellSlots(newValue);
   }
 
   // memos
@@ -234,21 +344,28 @@ export const Dnd5 = (props) => {
               saveDc={props.decoratedData.save_dc}
               proficiencyBonus={props.decoratedData.proficiency_bonus}
               hitDice={props.decoratedData.hit_dice}
-              initialSpentHitDice={props.decoratedData.spent_hit_dice}
+              spentHitDiceData={spentHitDiceData()}
+              onSpendDice={spendDice}
+              onRestoreDice={restoreDice}
               onReloadCharacter={updateCharacter}
               onRefreshCharacter={refreshCharacter}
             />
           </Match>
           <Match when={activeTab() === 'combat'}>
             <Dnd5Combat
-              initialHealth={props.decoratedData.health}
-              initialEnergy={props.decoratedData.energy}
               combat={props.decoratedData.combat}
               attacks={props.decoratedData.attacks}
               features={props.decoratedData.features}
               initialSelectedFeatures={props.decoratedData.selected_features}
               skills={props.decoratedData.skills}
               initialConditions={props.decoratedData.conditions}
+              healthData={healthData()}
+              energyData={energyData()}
+              onSpendEnergy={spendEnergy}
+              onRestoreEnergy={restoreEnergy}
+              onMakeHeal={makeHeal}
+              onDealDamage={dealDamage}
+              onSetHealthData={setHealthData}
               onRefreshCharacter={refreshCharacter}
               onRestCharacter={restCharacter}
             />
@@ -297,13 +414,15 @@ export const Dnd5 = (props) => {
               </Match>
               <Match when={!activeSpellsTab()}>
                 <Dnd5Spellbook
-                  initialSpentSpellSlots={props.decoratedData.spent_spell_slots}
                   spells={spells()}
                   characterSpells={characterSpells()}
                   staticCharacterSpells={props.decoratedData.static_spells} // eslint-disable-line solid/reactivity
                   spellSlots={props.decoratedData.spells_slots}
                   initialSpellClassesList={spellClassesList()}
                   spellClasses={props.decoratedData.spell_classes}
+                  spentSpellSlots={spentSpellSlots()}
+                  onSpendSpellSlot={spendSpellSlot}
+                  onFreeSpellSlot={freeSpellSlot}
                   onNavigatoToSpells={() => setActiveSpellsTab(true)}
                   onRefreshCharacter={refreshCharacter}
                   onUpdateCharacterSpell={updateCharacterSpell}

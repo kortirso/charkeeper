@@ -24,6 +24,8 @@ export const CharacterPage = () => {
   const reloadCharacter = async () => {
     const characterData = await fetchCharacterRequest(appState.accessToken, appState.activePageParams.id);
     setCharacter(characterData.character);
+
+    return characterData.character.decorated_data;
   }
 
   return (

@@ -13,7 +13,7 @@ export const Dnd5Abilities = (props) => {
 
   // changeable data
   const [abilitiesData, setAbilitiesData] = createSignal(props.initialAbilities);
-  const [spentHitDiceData, setSpentHitDiceData] = createSignal(props.initialSpentHitDice);
+  // const [spentHitDiceData, setSpentHitDiceData] = createSignal(props.initialSpentHitDice);
   const [skillsData, setSkillsData] = createSignal(props.initialSkills.filter((item) => item.selected).map((item) => item.name));
 
   const { Modal, openModal, closeModal } = createModal();
@@ -26,30 +26,6 @@ export const Dnd5Abilities = (props) => {
       setModalOpenMode(value);
       openModal();
     });
-  }
-
-  const spendDice = async (dice, limit) => {
-    let newValue;
-    if (spentHitDiceData()[dice] && spentHitDiceData()[dice] < limit) {
-      newValue = { ...spentHitDiceData(), [dice]: spentHitDiceData()[dice] + 1 };
-    } else {
-      newValue = { ...spentHitDiceData(), [dice]: 1 };
-    }
-
-    const result = await props.onRefreshCharacter({ spent_hit_dice: newValue });
-    if (result.errors === undefined) setSpentHitDiceData(newValue);
-  }
-
-  const restoreDice = async (dice) => {
-    let newValue;
-    if (spentHitDiceData()[dice] && spentHitDiceData()[dice] > 0) {
-      newValue = { ...spentHitDiceData(), [dice]: spentHitDiceData()[dice] - 1 };
-    } else {
-      newValue = { ...spentHitDiceData(), [dice]: 0 };
-    }
-
-    const result = await props.onRefreshCharacter({ spent_hit_dice: newValue });
-    if (result.errors === undefined) setSpentHitDiceData(newValue);
   }
 
   const decreaseAbilityValue = (slug) => {
@@ -70,13 +46,11 @@ export const Dnd5Abilities = (props) => {
   // submits
   const updateAbilities = async () => {
     const result = await props.onReloadCharacter({ abilities: abilitiesData() });
-
     if (result.errors === undefined) closeModal();
   }
 
   const updateSkills = async () => {
     const result = await props.onReloadCharacter({ selected_skills: skillsData() });
-
     if (result.errors === undefined) closeModal();
   }
 
@@ -96,14 +70,14 @@ export const Dnd5Abilities = (props) => {
                   <p class="w-8 mr-4">d{dice}</p>
                   <button
                     class="py-1 px-2 border border-gray-200 rounded flex justify-center items-center"
-                    onClick={() => spentHitDiceData()[dice] !== maxValue ? spendDice(dice, maxValue) : null}
+                    onClick={() => props.spentHitDiceData[dice] !== maxValue ? props.onSpendDice(dice, maxValue) : null}
                   >-</button>
                   <p class="w-12 mx-1 text-center">
-                    {spentHitDiceData()[dice] ? (maxValue - spentHitDiceData()[dice]) : maxValue}/{maxValue}
+                    {props.spentHitDiceData[dice] ? (maxValue - props.spentHitDiceData[dice]) : maxValue}/{maxValue}
                   </p>
                   <button
                     class="py-1 px-2 border border-gray-200 rounded flex justify-center items-center"
-                    onClick={() => (spentHitDiceData()[dice] || 0) > 0 ? restoreDice(dice) : null}
+                    onClick={() => (props.spentHitDiceData[dice] || 0) > 0 ? props.onRestoreDice(dice) : null}
                   >+</button>
                 </div>
               }

@@ -13,7 +13,6 @@ const CLASSES_PREPARE_SPELLS = ['cleric', 'druid', 'paladin', 'artificer', 'wiza
 export const Dnd5Spellbook = (props) => {
   const [preparedSpellFilter, setPreparedSpellFilter] = createSignal(true);
   const [activeSpellClass, setActiveSpellClass] = createSignal(props.initialSpellClassesList[0]);
-  const [spentSpellSlots, setSpentSpellSlots] = createSignal(props.initialSpentSpellSlots);
 
   const [, dict] = useAppLocale();
 
@@ -41,28 +40,8 @@ export const Dnd5Spellbook = (props) => {
   });
 
   // actions
-  const spendSpellSlot = async (level) => {
-    let newValue;
-    if (spentSpellSlots()[level]) {
-      newValue = { ...spentSpellSlots(), [level]: spentSpellSlots()[level] + 1 };
-    } else {
-      newValue = { ...spentSpellSlots(), [level]: 1 };
-    }
-
-    const result = await props.onRefreshCharacter({ spent_spell_slots: newValue });
-    if (result.errors === undefined) setSpentSpellSlots(newValue);
-  }
-
-  const freeSpellSlot = async (level) => {
-    const newValue = { ...spentSpellSlots(), [level]: spentSpellSlots()[level] - 1 };
-
-    const result = await props.onRefreshCharacter({ spent_spell_slots: newValue });
-    if (result.errors === undefined) setSpentSpellSlots(newValue);
-  }
 
   // rendering
-  
-
   return (
     <>
       <div class="flex justify-between items-center mb-2">
@@ -180,19 +159,19 @@ export const Dnd5Spellbook = (props) => {
             <div class="flex justify-between items-center">
               <h2 class="text-lg">{level} {t('spellbookPage.level')}</h2>
               <div class="flex">
-                <For each={[...Array((spentSpellSlots()[level] || 0)).keys()]}>
+                <For each={[...Array((props.spentSpellSlots[level] || 0)).keys()]}>
                   {() =>
                     <p
                       class="w-6 h-6 rounded bg-black mr-1 cursor-pointer"
-                      onClick={() => freeSpellSlot(level)}
+                      onClick={() => props.onFreeSpellSlot(level)}
                     />
                   }
                 </For>
-                <For each={[...Array(slotsAmount - (spentSpellSlots()[level] || 0)).keys()]}>
+                <For each={[...Array(slotsAmount - (props.spentSpellSlots[level] || 0)).keys()]}>
                   {() =>
                     <p
                       class="w-6 h-6 rounded border-2 border-black mr-1 cursor-pointer"
-                      onClick={() => spendSpellSlot(level)}
+                      onClick={() => props.onSpendSpellSlot(level)}
                     />
                   }
                 </For>
