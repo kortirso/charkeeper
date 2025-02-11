@@ -10,7 +10,7 @@ module WebTelegram
         ]
         include SerializeRelation
 
-        INDEX_SERIALIZER_FIELDS = %i[id quantity ready_to_use name kind weight price].freeze
+        INDEX_SERIALIZER_FIELDS = %i[id quantity ready_to_use notes name kind weight price].freeze
 
         before_action :find_character
         before_action :find_character_item, only: %i[update destroy]
@@ -65,7 +65,7 @@ module WebTelegram
         end
 
         def update_params
-          params.require(:character_item).permit!.to_h
+          params.expect(character_item: %i[quantity ready_to_use notes]).to_h
         end
       end
     end
