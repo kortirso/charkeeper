@@ -68,7 +68,9 @@
     "notes": "Заметки",
     "newNote": "Добавить новую заметку",
     "newNoteTitle": "Заголовок",
-    "newNoteValue": "Текст заметки"
+    "newNoteValue": "Текст заметки",
+    "shortRest": "Короткий отдых",
+    "longRest": "Длительный отдых"
   },
   "professionsPage": {
     "languages": "Известные языки",

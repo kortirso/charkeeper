@@ -21,6 +21,7 @@ import { createCharacterSpellRequest } from '../../../../requests/createCharacte
 import { removeCharacterSpellRequest } from '../../../../requests/removeCharacterSpellRequest';
 import { updateCharacterSpellRequest } from '../../../../requests/updateCharacterSpellRequest';
 import { createCharacterItemRequest } from '../../../../requests/createCharacterItemRequest';
+import { createCharacterRestRequest } from '../../../../requests/createCharacterRestRequest';
 
 export const Dnd5 = (props) => {
   const decoratedData = () => props.decoratedData;
@@ -149,6 +150,11 @@ export const Dnd5 = (props) => {
     }
   }
 
+  const restCharacter = async (payload) => {
+    const result = await createCharacterRestRequest(appState.accessToken, 'dnd5', props.characterId, payload);
+    if (result.errors === undefined) props.onReloadCharacter();
+  }
+
   // additional data change for spells
   const reloadCharacterSpells = async () => {
     const characterSpellsData = await fetchCharacterSpellsRequest(appState.accessToken, 'dnd5', appState.activePageParams.id);
@@ -244,6 +250,7 @@ export const Dnd5 = (props) => {
               skills={props.decoratedData.skills}
               initialConditions={props.decoratedData.conditions}
               onRefreshCharacter={refreshCharacter}
+              onRestCharacter={restCharacter}
             />
           </Match>
           <Match when={activeTab() === 'equipment'}>

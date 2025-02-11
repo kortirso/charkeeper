@@ -3,8 +3,8 @@
     "slug": "magical_tinkering",
     "title": { "en": "Magical Tinkering", "ru": "Магический мастеровой" },
     "description": {
-      "en": "To use this feature, you must be holding thieves' tools or artisan's tools. Then, as an Action, you touch a Tiny nonmagical object and imbue it with one magical property of your choice.",
-      "ru": "Чтобы использовать это умение, вы должны держать в руках воровские инструменты или инструменты ремесленника. Затем Действием вы касаетесь Крошечного немагического объекта и наделяете его одним из магических свойств на ваш выбор."
+      "en": "To use this feature, you must be holding thieves' tools or artisan's tools. Then, as an Action, you touch a Tiny nonmagical object and imbue it with one magical property of your choice. Maximum - {{value}}",
+      "ru": "Чтобы использовать это умение, вы должны держать в руках воровские инструменты или инструменты ремесленника. Затем Действием вы касаетесь Крошечного немагического объекта и наделяете его одним из магических свойств на ваш выбор. Максимум - {{value}}"
     },
     "origin": "class",
     "origin_value": "artificer",
@@ -14,7 +14,7 @@
     "options": null,
     "visible": "true",
     "eval_variables": {
-      "limit": "[1, result.dig(:modifiers, :int)].max"
+      "value": "[1, result.dig(:modifiers, :int)].max"
     }
   },
   {
@@ -65,7 +65,8 @@
     "visible": "true",
     "eval_variables": {
       "limit": "class_level = result.dig(:classes, 'artificer'); class_level >= 15 ? 3 : (class_level >= 6 ? 2 : 1)"
-    }
+    },
+    "limit_refresh": "long_rest"
   },
   {
     "slug": "alchemical_savant",

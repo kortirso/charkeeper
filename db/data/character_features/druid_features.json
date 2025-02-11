@@ -16,7 +16,8 @@
     "eval_variables": {
       "value": "class_level = result.dig(:classes, 'druid'); class_level >= 8 ? 1 : (class_level >= 4 ? 0.5 : 0.25)",
       "limit": "2"
-    }
+    },
+    "limit_refresh": "short_rest"
   },
   {
     "slug": "natural_recovery",
@@ -35,7 +36,8 @@
     "eval_variables": {
       "value": "(result.dig(:classes, 'druid') / 2.0).round",
       "limit": "1"
-    }
+    },
+    "limit_refresh": "short_rest"
   },
   {
     "slug": "land",

@@ -28,6 +28,7 @@ FactoryBot.define do
           limit: '[1, result.dig(:modifiers, :wis)].max'
         }
       }
+      limit_refresh { 'long_rest' }
       # rubocop: enable Layout/LineLength
     end
   end
