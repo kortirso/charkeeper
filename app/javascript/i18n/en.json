@@ -68,7 +68,9 @@
     "notes": "Notes",
     "newNote": "Add new note",
     "newNoteTitle": "Title",
-    "newNoteValue": "Note text"
+    "newNoteValue": "Note text",
+    "shortRest": "Short rest",
+    "longRest": "Long rest"
   },
   "professionsPage": {
     "languages": "Languages",

@@ -117,7 +117,8 @@
     "eval_variables": {
       "value": "'1d10+' + result.dig(:classes, 'fighter')",
       "limit": "1"
-    }
+    },
+    "limit_refresh": "short_rest"
   },
   {
     "slug": "action_surge",
@@ -135,7 +136,8 @@
     "visible": "true",
     "eval_variables": {
       "limit": "result.dig(:classes, 'fighter') >= 17 ? 2 : 1"
-    }
+    },
+    "limit_refresh": "short_rest"
   },
   {
     "slug": "additional_attack",
@@ -166,7 +168,8 @@
     "visible": "true",
     "eval_variables": {
       "limit": "class_level = result.dig(:classes, 'fighter'); class_level >= 17 ? 3 : (class_level >= 13 ? 2 : 1)"
-    }
+    },
+    "limit_refresh": "long_rest"
   },
   {
     "slug": "improved_critical",

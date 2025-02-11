@@ -214,7 +214,7 @@ export const Dnd5Combat = (props) => {
         ]}
         onClick={openModal}
       >
-        <div class="flex items-center pt-2 p-4">
+        <div class="flex items-center pt-0 p-4">
           <button class="btn-primary flex-1" onClick={dealDamage}>{t('character.damage')}</button>
           <Input
             numeric
@@ -223,6 +223,10 @@ export const Dnd5Combat = (props) => {
             onInput={(value) => setDamageHealValue(Number(value))}
           />
           <button class="btn-primary flex-1" onClick={makeHeal}>{t('character.heal')}</button>
+        </div>
+        <div class="flex justify-end items-center pt-0 p-4">
+          <button class="btn-primary btn-small text-sm mr-4" onClick={() => props.onRestCharacter({ type: 'short_rest' })}>{t('character.shortRest')}</button>
+          <button class="btn-primary btn-small text-sm" onClick={() => props.onRestCharacter({ type: 'long_rest' })}>{t('character.longRest')}</button>
         </div>
       </StatsBlock>
       <Toggle title={t('character.damageConditions')}>

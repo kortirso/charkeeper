@@ -15,7 +15,8 @@
     "visible": "true",
     "eval_variables": {
       "limit": "result.dig(:classes, 'monk')"
-    }
+    },
+    "limit_refresh": "short_rest"
   },
   {
     "slug": "flurry_of_blows",

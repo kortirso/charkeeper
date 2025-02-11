@@ -15,7 +15,8 @@
     "visible": "true",
     "eval_variables": {
       "limit": "result.dig(:classes, 'sorcerer')"
-    }
+    },
+    "limit_refresh": "long_rest"
   },
   {
     "slug": "creating_spell_slots",
