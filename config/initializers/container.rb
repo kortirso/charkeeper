@@ -52,6 +52,8 @@ module Charkeeper
     register('decorators.dnd5_character.subraces.high_elf') { Dnd5Character::Subraces::HighElfDecorator.new }
     register('decorators.dnd5_character.subraces.mountain_dwarf') { Dnd5Character::Subraces::MountainDwarfDecorator.new }
     register('decorators.dnd5_character.subraces.wood_elf') { Dnd5Character::Subraces::WoodElfDecorator.new }
+    register('decorators.dnd5_character.subraces.stout') { Dnd5Character::Subraces::StoudDecorator.new }
+    register('decorators.dnd5_character.subraces.rock_gnome') { Dnd5Character::Subraces::RockGnomeDecorator.new }
 
     register('decorators.dnd5_character.classes.barbarian') { Dnd5Character::Classes::BarbarianDecorator.new }
     register('decorators.dnd5_character.classes.bard') { Dnd5Character::Classes::BardDecorator.new }

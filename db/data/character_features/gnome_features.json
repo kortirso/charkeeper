@@ -1,0 +1,65 @@
+[
+  {
+    "slug": "gnome_cunning",
+    "title": { "en": "Gnome Cunning", "ru": "Гномья хитрость" },
+    "description": {
+      "en": "You have advantage on all Intelligence, Wisdom, and Charisma saving throws against magic.",
+      "ru": "Вы совершаете с преимуществом спасброски Интеллекта, Мудрости и Харизмы против магии."
+    },
+    "origin": "race",
+    "origin_value": "gnome",
+    "level": 0,
+    "kind": "static",
+    "options_type": null,
+    "options": null,
+    "visible": "true",
+    "eval_variables": {}
+  },
+  {
+    "slug": "natural_illusionist",
+    "title": { "en": "", "ru": "" },
+    "description": { "en": "", "ru": "" },
+    "origin": "subrace",
+    "origin_value": "forest_gnome",
+    "level": 0,
+    "kind": "update_result",
+    "options_type": null,
+    "options": null,
+    "visible": "true",
+    "eval_variables": {
+      "value": "result[:static_spells].merge!({ 'minor_illusion' => { 'attack_bonus' => result[:proficiency_bonus] + result.dig(:modifiers, :int), 'save_dc' => 8 + result[:proficiency_bonus] + result.dig(:modifiers, :int) } })"
+    }
+  },
+  {
+    "slug": "speak_with_small_beasts",
+    "title": { "en": "Speak with Small Beasts", "ru": "Общение с маленькими зверями" },
+    "description": {
+      "en": "Through sounds and gestures, you can communicate simple ideas with Small ar smaller beasts.",
+      "ru": "С помощью звуков и жестов вы можете передавать простые понятия Маленьким или ещё меньшим зверям."
+    },
+    "origin": "subrace",
+    "origin_value": "forest_gnome",
+    "level": 0,
+    "kind": "static",
+    "options_type": null,
+    "options": null,
+    "visible": "true",
+    "eval_variables": {}
+  },
+  {
+    "slug": "artificer_lore",
+    "title": { "en": "Artificer's Lore", "ru": "Ремесленные знания" },
+    "description": {
+      "en": "Whenever you make an Intelligence (History) check related to magic items, alchemical objects, ar technological devices, you can add twice your proficiency bonus, instead of any proficiency bonus you normally apply.",
+      "ru": "При совершении проверки Интеллекта (История) применительно к магическому, алхимическому или технологическому объекту, вы можете добавить к проверке удвоенный бонус мастерства вместо обычного."
+    },
+    "origin": "subrace",
+    "origin_value": "rock_gnome",
+    "level": 0,
+    "kind": "static",
+    "options_type": null,
+    "options": null,
+    "visible": "true",
+    "eval_variables": {}
+  }
+]

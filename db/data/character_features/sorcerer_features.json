@@ -23,7 +23,7 @@
     "title": { "en": "Creating Spell Slots", "ru": "Создание ячеек заклинаний" },
     "description": {
       "en": "You can transform unexpended sorcery points into one spell slot as a bonus action on your turn. 1st - 2, 2nd - 3, 3rd - 5, 4th - 6, 5th - 7",
-      "ru": "В свой ход вы можете бонусным действием превратить оставшиеся единицы чародейства в дополнительные ячейки заклинаний. 1ый - 2, 2ой - 3, 3-ий - 5, 4ый - 6, 5ый - 7."
+      "ru": "В свой ход вы можете бонусным действием превратить оставшиеся единицы чародейства в дополнительные ячейки заклинаний. 1ый - 2, 2ой - 3, 3ий - 5, 4ый - 6, 5ый - 7."
     },
     "origin": "class",
     "origin_value": "sorcerer",
@@ -200,7 +200,7 @@
     "eval_variables": {}
   },
   {
-    "slug": "draconic_ancestry",
+    "slug": "dragon_ancestor",
     "title": { "en": "Dragon Ancestor", "ru": "Драконий предок" },
     "description": {
       "en": "You choose one type of dragon as your ancestor.",
@@ -211,7 +211,8 @@
     "level": 1,
     "kind": "static_list",
     "options": [
-      "black", "blue", "brass", "bronze", "copper", "gold", "green", "red", "silver", "white"
+      "dragon_ancestor_black", "dragon_ancestor_blue", "dragon_ancestor_brass", "dragon_ancestor_bronze", "dragon_ancestor_copper",
+      "dragon_ancestor_gold", "dragon_ancestor_green", "dragon_ancestor_red", "dragon_ancestor_silver", "dragon_ancestor_white"
     ],
     "visible": "true"
   },

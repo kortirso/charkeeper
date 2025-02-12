@@ -1,0 +1,50 @@
+[
+  {
+    "slug": "dwarven_resilience",
+    "title": { "en": "Dwarven Resilience", "ru": "Дварфийская устойчивость" },
+    "description": {
+      "en": "You have advantage on saving throws against poison.",
+      "ru": "Вы совершаете с преимуществом спасброски от яда."
+    },
+    "origin": "race",
+    "origin_value": "dwarf",
+    "level": 0,
+    "kind": "static",
+    "options_type": null,
+    "options": null,
+    "visible": "true",
+    "eval_variables": {}
+  },
+  {
+    "slug": "stoneсunning",
+    "title": { "en": "Stoneсunning", "ru": "Знание камня" },
+    "description": {
+      "en": "Whenever you make an Intelligence (History) check related to the origin of stonework, you are considered proficient in the History skill and add double your proficiency bonus to the check, instead of your normal proficiency bonus.",
+      "ru": "Если вы совершаете проверку Интеллекта (История), связанную с происхождением работы по камню, вы считаетесь владеющим навыком История, и добавляете к проверке удвоенный бонус мастерства вместо обычного."
+    },
+    "origin": "race",
+    "origin_value": "dwarf",
+    "level": 0,
+    "kind": "static",
+    "options_type": null,
+    "options": null,
+    "visible": "true",
+    "eval_variables": {}
+  },
+  {
+    "slug": "dwarven_toughness",
+    "title": { "en": "Dwarven Toughness", "ru": "Дварфская выдержка" },
+    "description": {
+      "en": "Your hit point maximum increases by 1, and it increases by 1 every time you gain a level.",
+      "ru": "Максимальное значение ваших хитов увеличивается на 1, и вы получаете 1 дополнительный хит с каждым новым уровнем."
+    },
+    "origin": "subrace",
+    "origin_value": "hill_dwarf",
+    "level": 0,
+    "kind": "static",
+    "options_type": null,
+    "options": null,
+    "visible": "true",
+    "eval_variables": {}
+  }
+]

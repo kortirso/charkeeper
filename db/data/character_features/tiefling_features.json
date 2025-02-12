@@ -1,0 +1,47 @@
+[
+  {
+    "slug": "tiefling_magic_0",
+    "title": { "en": "", "ru": "" },
+    "description": { "en": "", "ru": "" },
+    "origin": "subrace",
+    "origin_value": "drow",
+    "level": 0,
+    "kind": "update_result",
+    "options_type": null,
+    "options": null,
+    "visible": "true",
+    "eval_variables": {
+      "value": "result[:static_spells].merge!({ 'thaumaturgy' => { 'attack_bonus' => result[:proficiency_bonus] + result.dig(:modifiers, :cha), 'save_dc' => 8 + result[:proficiency_bonus] + result.dig(:modifiers, :cha) } })"
+    }
+  },
+  {
+    "slug": "tiefling_magic_1",
+    "title": { "en": "", "ru": "" },
+    "description": { "en": "", "ru": "" },
+    "origin": "subrace",
+    "origin_value": "drow",
+    "level": 3,
+    "kind": "update_result",
+    "options_type": null,
+    "options": null,
+    "visible": "true",
+    "eval_variables": {
+      "value": "result[:static_spells].merge!({ 'hellish_rebuke' => { 'limit' => 1, 'level' => 2, 'attack_bonus' => result[:proficiency_bonus] + result.dig(:modifiers, :cha), 'save_dc' => 8 + result[:proficiency_bonus] + result.dig(:modifiers, :cha) } })"
+    }
+  },
+  {
+    "slug": "tiefling_magic_2",
+    "title": { "en": "", "ru": "" },
+    "description": { "en": "", "ru": "" },
+    "origin": "subrace",
+    "origin_value": "drow",
+    "level": 5,
+    "kind": "update_result",
+    "options_type": null,
+    "options": null,
+    "visible": "true",
+    "eval_variables": {
+      "value": "result[:static_spells].merge!({ 'darkness' => { 'limit' => 1, 'attack_bonus' => result[:proficiency_bonus] + result.dig(:modifiers, :cha), 'save_dc' => 8 + result[:proficiency_bonus] + result.dig(:modifiers, :cha) } })"
+    }
+  }
+]

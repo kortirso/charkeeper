@@ -26,7 +26,7 @@ export const Dnd5Spellbook = (props) => {
     const result = props.characterSpells.filter((item) => {
       if (activeSpellClass() !== 'all' && item.prepared_by !== activeSpellClass()) return false;
       if (preparedSpellFilter()) return item.ready_to_use;
-      if (props.staticCharacterSpells.includes(item.slug)) return false;
+      if (Object.keys(props.staticCharacterSpells).includes(item.slug)) return false;
       return true;
     });
     return Object.groupBy(result, ({ level }) => level);
@@ -36,13 +36,27 @@ export const Dnd5Spellbook = (props) => {
     if (props.spells === undefined) return [];
     if (props.staticCharacterSpells.length === 0) return [];
 
-    const result = props.spells.filter((item) => props.staticCharacterSpells.includes(item.slug));
+    const statisSpells = props.spells.filter((item) => Object.keys(props.staticCharacterSpells).includes(item.slug));
+    const result = Object.entries(props.staticCharacterSpells).map(([slug, item]) => {
+      const spell = statisSpells.find((item) => item.slug === slug);
+
+      return { slug: slug, name: spell.name, level: spell.level, data: item }
+    });
+
     return Object.groupBy(result, ({ level }) => level);
   });
 
-  // actions
-
   // rendering
+  const renderStaticSpellDescription = (spell) => {
+    const result = [t('character.staticSpell')];
+    if (spell.data.limit) result.push(`${spell.data.limit} ${t('character.staticSpellPerDay')}`);
+    if (spell.data.level) result.push(`${t('character.staticSpellLevel')} ${spell.data.level}`);
+    if (spell.data.attack_bonus) result.push(`${t('character.staticSpellAttackBonus')} ${modifier(spell.data.attack_bonus)}`);
+    if (spell.data.save_dc) result.push(`${t('character.staticSpellSaveDC')} ${spell.data.save_dc}`);
+
+    return result.join(', ');
+  }
+
   return (
     <>
       <div class="flex justify-between items-center mb-2">
@@ -119,9 +133,9 @@ export const Dnd5Spellbook = (props) => {
                 <tr>
                   <td class="py-1">
                     <p>
-                      {spell}
+                      {spell.name}
                     </p>
-                    <p class="text-xs">{t('character.staticSpell')}</p>
+                    <p class="text-xs">{renderStaticSpellDescription(spell)}</p>
                   </td>
                   <td />
                 </tr>
@@ -193,7 +207,7 @@ export const Dnd5Spellbook = (props) => {
                         <p>
                           {spell.name}
                         </p>
-                        <p class="text-xs">{t('character.staticSpell')}</p>
+                        <p class="text-xs">{renderStaticSpellDescription(spell)}</p>
                       </td>
                       <td />
                     </tr>

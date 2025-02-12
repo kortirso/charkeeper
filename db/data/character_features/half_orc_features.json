@@ -1,0 +1,37 @@
+[
+  {
+    "slug": "relentless_endurance",
+    "title": { "en": "Relentless Endurance", "ru": "Непоколебимая стойкость" },
+    "description": {
+      "en": "When you are reduced to O hit points but not killed outright, you can drop to 1 hit point instead.",
+      "ru": "Если ваши хиты опустились до нуля, но вы при этом не убиты, ваши хиты вместо этого опускаются до 1."
+    },
+    "origin": "race",
+    "origin_value": "half_orc",
+    "level": 0,
+    "kind": "static",
+    "options_type": null,
+    "options": null,
+    "visible": "true",
+    "eval_variables": {
+      "limit": "1"
+    },
+    "limit_refresh": "long_rest"
+  },
+  {
+    "slug": "savage_attacks",
+    "title": { "en": "Savage Attacks", "ru": "Свирепые атаки" },
+    "description": {
+      "en": "When you score a critical hit with a melee weapon attack, you can roll one of the weapon's damage dice one additional time and add it to the extra damage of the critical hit.",
+      "ru": "Если вы совершили критическое попадание рукопашной атакой оружием, вы можете добавить к урону ещё одну кость урона оружия."
+    },
+    "origin": "race",
+    "origin_value": "half_orc",
+    "level": 0,
+    "kind": "static",
+    "options_type": null,
+    "options": null,
+    "visible": "true",
+    "eval_variables": {}
+  }
+]
