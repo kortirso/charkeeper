@@ -7,7 +7,7 @@ module Dnd5Character
     end
 
     def decorate_character_abilities(result:)
-      result
+      race_decorator(result[:race]).decorate_character_abilities(result: result)
     end
 
     private

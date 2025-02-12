@@ -1,0 +1,19 @@
+[
+  {
+    "slug": "draconic_ancestry",
+    "title": { "en": "Draconic Ancestry", "ru": "Наследие драконов" },
+    "description": {
+      "en": "You have draconic ancestry.",
+      "ru": "Вы получаете драконье наследие."
+    },
+    "origin": "race",
+    "origin_value": "dragonborn",
+    "level": 1,
+    "kind": "static_list",
+    "options": [
+      "draconic_ancestry_black", "draconic_ancestry_blue", "draconic_ancestry_brass", "draconic_ancestry_bronze", "draconic_ancestry_copper",
+      "draconic_ancestry_gold", "draconic_ancestry_green", "draconic_ancestry_red", "draconic_ancestry_silver", "draconic_ancestry_white"
+    ],
+    "visible": "true"
+  }
+]

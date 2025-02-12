@@ -1,13 +1,12 @@
 # frozen_string_literal: true
 
 module Dnd5Character
-  module Races
-    class HalflingDecorator
-      LANGUAGES = %w[common halfling].freeze
+  module Subraces
+    class RockGnomeDecorator
+      TOOLS = %w[tinker].freeze
 
       def decorate_fresh_character(result:)
-        result[:speed] = 25
-        result[:languages] = result[:languages].concat(LANGUAGES).uniq
+        result[:tools] = result[:tools].concat(TOOLS).uniq
 
         result
       end

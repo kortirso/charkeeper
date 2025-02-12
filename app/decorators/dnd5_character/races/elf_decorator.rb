@@ -13,6 +13,12 @@ module Dnd5Character
 
         result
       end
+
+      def decorate_character_abilities(result:)
+        result[:darkvision] = 60
+
+        result
+      end
     end
   end
 end

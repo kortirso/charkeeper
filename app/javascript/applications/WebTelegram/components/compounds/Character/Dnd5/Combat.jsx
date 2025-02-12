@@ -271,6 +271,18 @@ export const Dnd5Combat = (props) => {
                   }
                 </For>
               </Match>
+              <Match when={feature.kind === 'choose_one_from' && feature.options_type === 'spell_wizard_0'}>
+                <p
+                  class="text-sm mb-2"
+                  innerHTML={feature.description} // eslint-disable-line solid/no-innerhtml
+                />
+                <Select
+                  classList="w-full mb-2"
+                  items={{}}
+                  selectedValue={selectedFeaturesData()[feature.slug]}
+                  onSelect={(option) => setSelectedFeatureOption(feature, option)}
+                />
+              </Match>
               <Match when={feature.kind === 'text'}>
                 <p
                   class="text-sm mb-2"

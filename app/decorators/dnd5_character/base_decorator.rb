@@ -40,7 +40,7 @@ module Dnd5Character
         modifiers: modifiers(data),
         features: [], # неизменные классовые способности
         selected_features: data.selected_features, # выбранные классовые способности
-        static_spells: [], # врожденные заклинания от расы/класса
+        static_spells: {}, # врожденные заклинания от расы/класса
         conditions: {
           resistance: data.resistance,
           immunity: data.immunity,
