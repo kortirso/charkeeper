@@ -40,6 +40,8 @@ export const Dnd5Spellbook = (props) => {
     const result = Object.entries(props.staticCharacterSpells).map(([slug, item]) => {
       const spell = statisSpells.find((item) => item.slug === slug);
 
+      console.log(spell)
+
       return { slug: slug, name: spell.name, level: spell.level, data: item }
     });
 
