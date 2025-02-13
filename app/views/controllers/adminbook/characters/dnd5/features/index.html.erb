@@ -1,3 +1,6 @@
+<div class="mb-4">
+  <%= link_to 'New feature', new_adminbook_characters_dnd5_feature_path, class: 'btn-primary' %>
+</div>
 <table class="table">
   <thead>
     <tr>
@@ -10,6 +13,7 @@
       <td>Kind</td>
       <td>Eval variables</td>
       <td>Limit refresh</td>
+      <td></td>
     </tr>
   </thead>
   <tbody>
@@ -42,6 +46,9 @@
           <% end %>
         </td>
         <td class="pr-4"><%= feature.limit_refresh %></td>
+        <td>
+          <%= button_to 'X', adminbook_characters_dnd5_feature_path(feature.id), method: :delete, class: 'btn-warning btn-small text-sm' %>
+        </td>
       </tr>
     <% end %>
   </tbody>
