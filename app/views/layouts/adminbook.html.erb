@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= content_for(:title) || 'CharKeeper' %></title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= yield :head %>
+    <link rel="icon" href="/icon.png" type="image/png">
+    <link rel="icon" href="/icon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="/icon.png">
+    <%= stylesheet_link_tag 'tailwind' %>
+    <%= stylesheet_link_tag :application %>
+  </head>
+  <body class="w-full h-screen flex flex-col">
+    <nav class="border-b border-black flex py-2">
+      <%= link_to 'Main', adminbook_path, class: 'px-4' %>
+      <%= link_to 'Users', adminbook_users_path, class: 'px-4' %>
+      <%= link_to 'Characters', adminbook_characters_path, class: 'px-4' %>
+      <p class="pl-8">D&D 5</p>
+      <%= link_to 'Character features', adminbook_characters_dnd5_features_path, class: 'px-4' %>
+      <p class="pl-8">D&D 2024</p>
+      <%= link_to 'Character features', adminbook_characters_dnd2024_features_path, class: 'px-4' %>
+    </nav>
+    <main class="flex-1 overflow-y-scroll p-4">
+      <%= yield %>
+    </main>
+  </body>
+</html>

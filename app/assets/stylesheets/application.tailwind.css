@@ -135,6 +135,18 @@
   color: '#666';
 }
 
+.form-field .form-label {
+  @apply text-sm;
+}
+
+.form-field .form-text {
+  @apply bordered py-2 px-4;
+}
+
+.form-field select {
+  @apply py-2 px-4 rounded;
+}
+
 .form-field .form-value::placeholder {
   @apply text-gray-200 opacity-100;
 }
@@ -147,7 +159,6 @@
   @apply absolute w-full bg-white border-r border-l border-gray-200 z-10 overflow-y-scroll shadow;
 
   max-height: 7.5rem;
-
 }
 
 .form-field .form-dropdown li {

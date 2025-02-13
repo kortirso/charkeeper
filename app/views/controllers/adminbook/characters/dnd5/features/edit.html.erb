@@ -1,0 +1,63 @@
+<%= form_with model: @feature, url: adminbook_characters_dnd5_feature_path(@feature), method: 'patch' do |form| %>
+  <div class="form-field mb-2">
+    <div><%= form.label 'Псевдоним', class: 'form-label' %></div>
+    <div><%= form.text_field :slug, class: 'form-value' %></div>
+  </div>
+  <%= form.fields_for :title, @feature.title do |title_form| %>
+    <div class="form-field mb-2">
+      <div><%= title_form.label 'Заголовок (en)', class: 'form-label' %></div>
+      <div><%= title_form.text_field :en, value: @feature.title['en'], class: 'form-value' %></div>
+    </div>
+    <div class="form-field mb-2">
+      <div><%= title_form.label 'Заголовок (ru)', class: 'form-label' %></div>
+      <div><%= title_form.text_field :ru, value: @feature.title['ru'], class: 'form-value' %></div>
+    </div>
+  <% end %>
+  <%= form.fields_for :description, @feature.description do |description_form| %>
+    <div class="form-field mb-2">
+      <div><%= description_form.label 'Описание (en)', class: 'form-label' %></div>
+      <div><%= description_form.textarea :en, value: @feature.description['en'], class: 'form-text text-sm', size: '100x7' %></div>
+    </div>
+    <div class="form-field mb-2">
+      <div><%= description_form.label 'Описание (ru)', class: 'form-label' %></div>
+      <div><%= description_form.textarea :ru, value: @feature.description['ru'], class: 'form-text text-sm', size: '100x7' %></div>
+    </div>
+  <% end %>
+  <div class="form-field mb-2">
+    <div><%= form.label 'Раса', class: 'form-label' %></div>
+    <div><%= form.select :race, Dnd5::Character::RACES %></div>
+  </div>
+  <div class="form-field mb-2">
+    <div><%= form.label 'Подраса', class: 'form-label' %></div>
+    <div><%= form.select :subrace, Dnd5::Character::SUBRACES %></div>
+  </div>
+  <div class="form-field mb-2">
+    <div><%= form.label :level, class: 'form-label' %></div>
+    <div><%= form.text_field :level, class: 'form-value' %></div>
+  </div>
+  <div class="form-field mb-2">
+    <div><%= form.label 'Тип', class: 'form-label' %></div>
+    <div><%= form.select :kind, Dnd5::Character::Feature.kinds %></div>
+  </div>
+  <div class="form-field mb-2">
+    <div><%= form.label 'Обновление после', class: 'form-label' %></div>
+    <div><%= form.select :limit_refresh, Dnd5::Character::Feature.limit_refreshes %></div>
+  </div>
+  <div class="form-field mb-2">
+    <div><%= form.label 'Список опций для выбора', class: 'form-label' %></div>
+    <div><%= form.textarea :options, value: @feature.options, class: 'form-text text-sm', size: '100x7' %></div>
+  </div>
+  <%= form.fields_for :eval_variables do |evals_form| %>
+    <% @feature.eval_variables.each do |key, value| %>
+      <div class="form-field mb-2">
+        <div><%= evals_form.label key, class: 'form-label' %></div>
+        <div><%= evals_form.textarea key, value: value, class: 'form-text text-sm', size: '100x5' %></div>
+      </div>
+    <% end %>
+    <div class="form-field mb-2">
+      <div><%= evals_form.label 'Новая переменная', class: 'form-label' %></div>
+      <div><%= evals_form.textarea :new_variable, value: '', class: 'form-text text-sm', size: '100x5' %></div>
+    </div>
+  <% end %>
+  <%= form.submit 'Update', class: 'btn-primary' %>
+<% end %>
