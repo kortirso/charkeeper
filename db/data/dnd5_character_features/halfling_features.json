@@ -64,7 +64,7 @@
     "eval_variables": {}
   },
   {
-    "slug": "Stout Resilience",
+    "slug": "stout_resilience",
     "title": { "en": "Stout Resilience", "ru": "Устойчивость коренастых" },
     "description": {
       "en": "You have advantage on saving throws against poison.",

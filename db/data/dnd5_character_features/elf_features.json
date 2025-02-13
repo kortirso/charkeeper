@@ -25,8 +25,15 @@
     "origin": "subrace",
     "origin_value": "wood_elf",
     "level": 0,
-    "kind": "choose_one_from",
+    "kind": "static_list",
     "options_type": "spell_wizard_0",
+    "options": [
+      "toll_the_dead", "infestation", "shape_water", "create_bonfire","blade_ward","chill_touch","dancing_lights",
+      "fire_bolt", "friends", "light", "mage_hand", "mending", "message", "minor_illusion", "poison_spray",
+      "prestidigitation", "ray_of_frost", "shocking_grasp", "true_strike", "control_flames", "mold_earth",
+      "acid_splash", "thunderclap", "gust", "sword_burst", "mind_sliver", "lightning_lure", "green_flame_blade",
+      "booming_blade", "frostbite"
+    ],
     "visible": "true",
     "eval_variables": {
       "result": "spell_name = result.dig(:selected_features, 'cantrip'); result[:static_spells].merge!({ spell_name => { 'attack_bonus' => result[:proficiency_bonus] + result.dig(:modifiers, :int), 'save_dc' => 8 + result[:proficiency_bonus] + result.dig(:modifiers, :int) } }) if spell_name"

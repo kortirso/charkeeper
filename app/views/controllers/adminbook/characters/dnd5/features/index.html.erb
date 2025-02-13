@@ -1,0 +1,48 @@
+<table class="table">
+  <thead>
+    <tr>
+      <td>Slug</td>
+      <td>Level</td>
+      <td>Title</td>
+      <td>Options type</td>
+      <td>Options</td>
+      <td>Visible</td>
+      <td>Kind</td>
+      <td>Eval variables</td>
+      <td>Limit refresh</td>
+    </tr>
+  </thead>
+  <tbody>
+    <% @features.each do |feature| %>
+      <tr>
+        <td class="pr-4">
+          <p><%= link_to feature.slug, edit_adminbook_characters_dnd5_feature_path(feature.id) %><p>
+          <p class="text-sm"><%= feature.origin %></p>
+          <p class="text-sm"><%= feature.origin_value %></p>
+        </td>
+        <td class="pr-4"><%= feature.level %></td>
+        <td class="pr-4">
+          <p><%= feature.title['ru'] %></p>
+          <p><%= feature.title['en'] %></p>
+        </td>
+        <td class="pr-4"><%= feature.options_type %></td>
+        <td class="pr-4">
+          <p class="text-xs"><%= feature.options %></p>
+        </td>
+        <td class="pr-4">
+          <p class="text-xs"><%= feature.visible %></p>
+        </td>
+        <td class="pr-4">
+          <p class="text-xs"><%= feature.kind %></p>
+        </td>
+        <td class="pr-4">
+          <% feature.eval_variables.each do |key, variable| %>
+            <p class="text-xs mb-1"><%= key %></p>
+            <p class="text-xs mb-2"><%= variable %></p>
+          <% end %>
+        </td>
+        <td class="pr-4"><%= feature.limit_refresh %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

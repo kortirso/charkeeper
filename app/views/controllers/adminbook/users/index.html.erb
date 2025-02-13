@@ -1,0 +1,22 @@
+<table class="table">
+  <thead>
+    <tr>
+      <td>ID</td>
+      <td>Providers</td>
+    </tr>
+  </thead>
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td class="pr-4"><%= user.id %></td>
+        <td>
+          <% user.identities.each do |identity| %>
+            <p><%= identity.uid %></p>
+            <p><%= identity.provider %></p>
+            <p><%= identity.username %></p>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
