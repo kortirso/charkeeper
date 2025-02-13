@@ -18,5 +18,9 @@ FactoryBot.define do
       }
     }
     user
+
+    trait :dnd2024 do
+      type { 'Dnd2024::Character' }
+    end
   end
 end

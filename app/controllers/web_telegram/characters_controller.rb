@@ -51,6 +51,7 @@ module WebTelegram
     def relation(character_type)
       case character_type
       when 'Dnd5::Character' then ::Dnd5::Character
+      when 'Dnd2024::Character' then ::Dnd2024::Character
       end
     end
 
@@ -61,6 +62,7 @@ module WebTelegram
     def serializer(character_type)
       case character_type
       when 'Dnd5::Character' then ::Dnd5::CharacterSerializer
+      when 'Dnd2024::Character' then ::Dnd2024::CharacterSerializer
       end
     end
   end

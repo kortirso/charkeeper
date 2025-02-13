@@ -51,7 +51,7 @@ export const Dnd5Professions = (props) => {
   return (
     <>
       <Toggle title={t('professionsPage.languages')}>
-        <For each={Object.entries(dict().languages)}>
+        <For each={Object.entries(dict().dnd.languages)}>
           {([slug, language]) =>
             <div class="mb-1">
               <Checkbox
@@ -66,7 +66,7 @@ export const Dnd5Professions = (props) => {
         </For>
       </Toggle>
       <Toggle title={t('professionsPage.weaponCoreSkill')}>
-        <For each={Object.entries(dict().coreWeaponSkills)}>
+        <For each={Object.entries(dict().dnd.coreWeaponSkills)}>
           {([slug, skill]) =>
             <div class="mb-1">
               <Checkbox
@@ -79,7 +79,7 @@ export const Dnd5Professions = (props) => {
             </div>
           }
         </For>
-        <For each={Object.entries(dict().coreArmorSkills)}>
+        <For each={Object.entries(dict().dnd.coreArmorSkills)}>
           {([slug, skill]) =>
             <div class="mb-1">
               <Checkbox

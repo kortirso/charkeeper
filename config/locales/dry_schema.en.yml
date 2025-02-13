@@ -13,11 +13,15 @@ en:
             key?: Race is required
             filled?: Race must be filled
             included_in?: Invalid race value
+          species:
+            key?: Species is required
+            filled?: Species must be filled
+            included_in?: Invalid species value
           main_class:
             key?: Class is required
             filled?: Class must be filled
             included_in?: Invalid class value
-          Alignment:
+          alignment:
             key?: Alignment is required
             filled?: Alignment must be filled
             included_in?: Invalid Alignment value

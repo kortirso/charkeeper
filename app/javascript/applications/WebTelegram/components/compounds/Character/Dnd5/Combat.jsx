@@ -230,7 +230,7 @@ export const Dnd5Combat = (props) => {
                   {(option) =>
                     <div class="mb-2">
                       <Checkbox
-                        labelText={t(`selectedFeatures.${option}`)}
+                        labelText={t(`dnd5.selectedFeatures.${option}`)}
                         labelPosition="right"
                         labelClassList="text-sm ml-4"
                         checked={selectedFeaturesData()[feature.slug]?.includes(option)}
@@ -247,7 +247,7 @@ export const Dnd5Combat = (props) => {
                 />
                 <Select
                   classList="w-full mb-2"
-                  items={feature.options.reduce((acc, option) => { acc[option] = t(`selectedFeatures.${option}`); return acc; }, {})}
+                  items={feature.options.reduce((acc, option) => { acc[option] = t(`dnd5.selectedFeatures.${option}`); return acc; }, {})}
                   selectedValue={selectedFeaturesData()[feature.slug]}
                   onSelect={(option) => setSelectedFeatureOption(feature, option)}
                 />

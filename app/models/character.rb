@@ -8,6 +8,7 @@ class Character < ApplicationRecord
   has_many :notes, class_name: '::Character::Note', dependent: :destroy
 
   scope :dnd5, -> { where(type: 'Dnd5::Character') }
+  scope :dnd2024, -> { where(type: 'Dnd2024::Character') }
 
   def decorator = raise NotImplementedError
 end

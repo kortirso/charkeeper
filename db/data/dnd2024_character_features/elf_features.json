@@ -1,0 +1,18 @@
+[
+  {
+    "slug": "fey_ancestry",
+    "title": { "en": "Fey Ancestry", "ru": "Наследие фей" },
+    "description": {
+      "en": "You have advantage on saving throws to prevent or end being charmed.",
+      "ru": "Вы получаете Преимущество на спасброски, которые совершаете, чтобы избежать или прекратить состояние Очарованный."
+    },
+    "origin": "species",
+    "origin_value": "elf",
+    "level": 0,
+    "kind": "static",
+    "options_type": null,
+    "options": null,
+    "visible": "true",
+    "eval_variables": {}
+  }
+]

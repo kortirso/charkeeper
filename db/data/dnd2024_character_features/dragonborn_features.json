@@ -1,0 +1,236 @@
+[
+  {
+    "slug": "draconic_ancestry",
+    "title": { "en": "Draconic Ancestry", "ru": "Наследие драконов" },
+    "description": {
+      "en": "You have draconic ancestry.",
+      "ru": "Вы получаете драконье наследие."
+    },
+    "origin": "species",
+    "origin_value": "dragonborn",
+    "level": 1,
+    "kind": "static_list",
+    "options": [
+      "draconic_ancestry_black", "draconic_ancestry_blue", "draconic_ancestry_brass", "draconic_ancestry_bronze", "draconic_ancestry_copper",
+      "draconic_ancestry_gold", "draconic_ancestry_green", "draconic_ancestry_red", "draconic_ancestry_silver", "draconic_ancestry_white"
+    ],
+    "visible": "true"
+  },
+  {
+    "slug": "draconic_flight",
+    "title": { "en": "Draconic Flight", "ru": "Драконий полёт" },
+    "description": {
+      "en": "As a bonus action, you gain flight for up to ten minutes.",
+      "ru": "Бонусным действием вы можете вырастить на спине призрачные крылья, которые существуют в течение 10 минут."
+    },
+    "origin": "species",
+    "origin_value": "dragonborn",
+    "level": 5,
+    "kind": "static",
+    "visible": "true",
+    "eval_variables": {
+      "limit": "1"
+    },
+    "limit_refresh": "long_rest"
+  },
+  {
+    "slug": "draconic_ancestry_black",
+    "title": { "en": "Breath Weapon", "ru": "Оружие дыхания" },
+    "description": {
+      "en": "Each creature in the area of the exhalation (line 30 or cone 15) must make a saving throw Dex (DC {{save_dc}}). A creature takes {{damage}} acid damage on a failed save, and half as much damage on a successful one.",
+      "ru": "Все существа в зоне выдоха (линия 30 или конус 15) должны совершить спасбросок Лов (УС {{save_dc}}). Существа получают {{damage}} урона кислотой в случае проваленного спасброска, или половину этого урона, если спасбросок был успешен."
+    },
+    "origin": "species",
+    "origin_value": "dragonborn",
+    "level": 1,
+    "kind": "static",
+    "visible": "result[:selected_features].keys.include?('draconic_ancestry_black')",
+    "eval_variables": {
+      "result": "result[:conditions][:resistance] = result[:conditions][:resistance].push('acid').uniq",
+      "save_dc": "8 + result.dig(:modifiers, :con) + result[:proficiency_bonus]",
+      "damage": "overall_level = result[:overall_level]; overall_level >= 17 ? '4d10' : (overall_level >= 11 ? '3d10' : (overall_level >= 5 ? '2d10' : '1d10'))",
+      "limit": "result[:proficiency_bonus]"
+    },
+    "limit_refresh": "long_rest"
+  },
+  {
+    "slug": "draconic_ancestry_blue",
+    "title": { "en": "Breath Weapon", "ru": "Оружие дыхания" },
+    "description": {
+      "en": "Each creature in the area of the exhalation (line 30 or cone 15) must make a saving throw Dex (DC {{save_dc}}). A creature takes {{damage}} lightning damage on a failed save, and half as much damage on a successful one.",
+      "ru": "Все существа в зоне выдоха (линия 30 или конус 15) должны совершить спасбросок Лов (УС {{save_dc}}). Существа получают {{damage}} урона электричеством в случае проваленного спасброска, или половину этого урона, если спасбросок был успешен."
+    },
+    "origin": "species",
+    "origin_value": "dragonborn",
+    "level": 1,
+    "kind": "static",
+    "visible": "result[:selected_features].keys.include?('draconic_ancestry_blue')",
+    "eval_variables": {
+      "result": "result[:conditions][:resistance] = result[:conditions][:resistance].push('lightning').uniq",
+      "save_dc": "8 + result.dig(:modifiers, :con) + result[:proficiency_bonus]",
+      "damage": "overall_level = result[:overall_level]; overall_level >= 17 ? '4d10' : (overall_level >= 11 ? '3d10' : (overall_level >= 5 ? '2d10' : '1d10'))",
+      "limit": "result[:proficiency_bonus]"
+    },
+    "limit_refresh": "long_rest"
+  },
+  {
+    "slug": "draconic_ancestry_brass",
+    "title": { "en": "Breath Weapon", "ru": "Оружие дыхания" },
+    "description": {
+      "en": "Each creature in the area of the exhalation (line 30 or cone 15) must make a saving throw Dex (DC {{save_dc}}). A creature takes {{damage}} fire damage on a failed save, and half as much damage on a successful one.",
+      "ru": "Все существа в зоне выдоха (линия 30 или конус 15) должны совершить спасбросок Лов (УС {{save_dc}}). Существа получают {{damage}} урона огнём в случае проваленного спасброска, или половину этого урона, если спасбросок был успешен."
+    },
+    "origin": "species",
+    "origin_value": "dragonborn",
+    "level": 1,
+    "kind": "static",
+    "visible": "result[:selected_features].keys.include?('draconic_ancestry_brass')",
+    "eval_variables": {
+      "result": "result[:conditions][:resistance] = result[:conditions][:resistance].push('fire').uniq",
+      "save_dc": "8 + result.dig(:modifiers, :con) + result[:proficiency_bonus]",
+      "damage": "overall_level = result[:overall_level]; overall_level >= 17 ? '4d10' : (overall_level >= 11 ? '3d10' : (overall_level >= 5 ? '2d10' : '1d10'))",
+      "limit": "result[:proficiency_bonus]"
+    },
+    "limit_refresh": "long_rest"
+  },
+  {
+    "slug": "draconic_ancestry_bronze",
+    "title": { "en": "Breath Weapon", "ru": "Оружие дыхания" },
+    "description": {
+      "en": "Each creature in the area of the exhalation (line 30 or cone 15) must make a saving throw Dex (DC {{save_dc}}). A creature takes {{damage}} lightning damage on a failed save, and half as much damage on a successful one.",
+      "ru": "Все существа в зоне выдоха (линия 30 или конус 15) должны совершить спасбросок Лов (УС {{save_dc}}). Существа получают {{damage}} урона электричеством в случае проваленного спасброска, или половину этого урона, если спасбросок был успешен."
+    },
+    "origin": "species",
+    "origin_value": "dragonborn",
+    "level": 1,
+    "kind": "static",
+    "visible": "result[:selected_features].keys.include?('draconic_ancestry_bronze')",
+    "eval_variables": {
+      "result": "result[:conditions][:resistance] = result[:conditions][:resistance].push('lightning').uniq",
+      "save_dc": "8 + result.dig(:modifiers, :con) + result[:proficiency_bonus]",
+      "damage": "overall_level = result[:overall_level]; overall_level >= 17 ? '4d10' : (overall_level >= 11 ? '3d10' : (overall_level >= 5 ? '2d10' : '1d10'))",
+      "limit": "result[:proficiency_bonus]"
+    },
+    "limit_refresh": "long_rest"
+  },
+  {
+    "slug": "draconic_ancestry_copper",
+    "title": { "en": "Breath Weapon", "ru": "Оружие дыхания" },
+    "description": {
+      "en": "Each creature in the area of the exhalation (line 30 or cone 15) must make a saving throw Dex (DC {{save_dc}}). A creature takes {{damage}} acid damage on a failed save, and half as much damage on a successful one.",
+      "ru": "Все существа в зоне выдоха (линия 30 или конус 15) должны совершить спасбросок Лов (УС {{save_dc}}). Существа получают {{damage}} урона кислотой в случае проваленного спасброска, или половину этого урона, если спасбросок был успешен."
+    },
+    "origin": "species",
+    "origin_value": "dragonborn",
+    "level": 1,
+    "kind": "static",
+    "visible": "result[:selected_features].keys.include?('draconic_ancestry_copper')",
+    "eval_variables": {
+      "result": "result[:conditions][:resistance] = result[:conditions][:resistance].push('acid').uniq",
+      "save_dc": "8 + result.dig(:modifiers, :con) + result[:proficiency_bonus]",
+      "damage": "overall_level = result[:overall_level]; overall_level >= 17 ? '4d10' : (overall_level >= 11 ? '3d10' : (overall_level >= 5 ? '2d10' : '1d10'))",
+      "limit": "result[:proficiency_bonus]"
+    },
+    "limit_refresh": "long_rest"
+  },
+  {
+    "slug": "draconic_ancestry_gold",
+    "title": { "en": "Breath Weapon", "ru": "Оружие дыхания" },
+    "description": {
+      "en": "Each creature in the area of the exhalation (line 30 or cone 15) must make a saving throw Dex (DC {{save_dc}}). A creature takes {{damage}} fire damage on a failed save, and half as much damage on a successful one.",
+      "ru": "Все существа в зоне выдоха (линия 30 или конус 15) должны совершить спасбросок Лов (УС {{save_dc}}). Существа получают {{damage}} урона огнём в случае проваленного спасброска, или половину этого урона, если спасбросок был успешен."
+    },
+    "origin": "species",
+    "origin_value": "dragonborn",
+    "level": 1,
+    "kind": "static",
+    "visible": "result[:selected_features].keys.include?('draconic_ancestry_gold')",
+    "eval_variables": {
+      "result": "result[:conditions][:resistance] = result[:conditions][:resistance].push('fire').uniq",
+      "save_dc": "8 + result.dig(:modifiers, :con) + result[:proficiency_bonus]",
+      "damage": "overall_level = result[:overall_level]; overall_level >= 17 ? '4d10' : (overall_level >= 11 ? '3d10' : (overall_level >= 5 ? '2d10' : '1d10'))",
+      "limit": "result[:proficiency_bonus]"
+    },
+    "limit_refresh": "long_rest"
+  },
+  {
+    "slug": "draconic_ancestry_green",
+    "title": { "en": "Breath Weapon", "ru": "Оружие дыхания" },
+    "description": {
+      "en": "Each creature in the area of the exhalation (line 30 or cone 15) must make a saving throw Dex (DC {{save_dc}}). A creature takes {{damage}} poison damage on a failed save, and half as much damage on a successful one.",
+      "ru": "Все существа в зоне выдоха (линия 30 или конус 15) должны совершить спасбросок Лов (УС {{save_dc}}). Существа получают {{damage}} урона ядом в случае проваленного спасброска, или половину этого урона, если спасбросок был успешен."
+    },
+    "origin": "species",
+    "origin_value": "dragonborn",
+    "level": 1,
+    "kind": "static",
+    "visible": "result[:selected_features].keys.include?('draconic_ancestry_green')",
+    "eval_variables": {
+      "result": "result[:conditions][:resistance] = result[:conditions][:resistance].push('poison').uniq",
+      "save_dc": "8 + result.dig(:modifiers, :con) + result[:proficiency_bonus]",
+      "damage": "overall_level = result[:overall_level]; overall_level >= 17 ? '4d10' : (overall_level >= 11 ? '3d10' : (overall_level >= 5 ? '2d10' : '1d10'))",
+      "limit": "result[:proficiency_bonus]"
+    },
+    "limit_refresh": "long_rest"
+  },
+  {
+    "slug": "draconic_ancestry_red",
+    "title": { "en": "Breath Weapon", "ru": "Оружие дыхания" },
+    "description": {
+      "en": "Each creature in the area of the exhalation (line 30 or cone 15) must make a saving throw Dex (DC {{save_dc}}). A creature takes {{damage}} fire damage on a failed save, and half as much damage on a successful one.",
+      "ru": "Все существа в зоне выдоха (линия 30 или конус 15) должны совершить спасбросок Лов (УС {{save_dc}}). Существа получают {{damage}} урона огнём в случае проваленного спасброска, или половину этого урона, если спасбросок был успешен."
+    },
+    "origin": "species",
+    "origin_value": "dragonborn",
+    "level": 1,
+    "kind": "static",
+    "visible": "result[:selected_features].keys.include?('draconic_ancestry_red')",
+    "eval_variables": {
+      "result": "result[:conditions][:resistance] = result[:conditions][:resistance].push('fire').uniq",
+      "save_dc": "8 + result.dig(:modifiers, :con) + result[:proficiency_bonus]",
+      "damage": "overall_level = result[:overall_level]; overall_level >= 17 ? '4d10' : (overall_level >= 11 ? '3d10' : (overall_level >= 5 ? '2d10' : '1d10'))",
+      "limit": "result[:proficiency_bonus]"
+    },
+    "limit_refresh": "long_rest"
+  },
+  {
+    "slug": "draconic_ancestry_silver",
+    "title": { "en": "Breath Weapon", "ru": "Оружие дыхания" },
+    "description": {
+      "en": "Each creature in the area of the exhalation (line 30 or cone 15) must make a saving throw Dex (DC {{save_dc}}). A creature takes {{damage}} cold damage on a failed save, and half as much damage on a successful one.",
+      "ru": "Все существа в зоне выдоха (линия 30 или конус 15) должны совершить спасбросок Лов (УС {{save_dc}}). Существа получают {{damage}} урона холодом в случае проваленного спасброска, или половину этого урона, если спасбросок был успешен."
+    },
+    "origin": "species",
+    "origin_value": "dragonborn",
+    "level": 1,
+    "kind": "static",
+    "visible": "result[:selected_features].keys.include?('draconic_ancestry_silver')",
+    "eval_variables": {
+      "result": "result[:conditions][:resistance] = result[:conditions][:resistance].push('cold').uniq",
+      "save_dc": "8 + result.dig(:modifiers, :con) + result[:proficiency_bonus]",
+      "damage": "overall_level = result[:overall_level]; overall_level >= 17 ? '4d10' : (overall_level >= 11 ? '3d10' : (overall_level >= 5 ? '2d10' : '1d10'))",
+      "limit": "result[:proficiency_bonus]"
+    },
+    "limit_refresh": "long_rest"
+  },
+  {
+    "slug": "draconic_ancestry_white",
+    "title": { "en": "Breath Weapon", "ru": "Оружие дыхания" },
+    "description": {
+      "en": "Each creature in the area of the exhalation (line 30 or cone 15) must make a saving throw Dex (DC {{save_dc}}). A creature takes {{damage}} cold damage on a failed save, and half as much damage on a successful one.",
+      "ru": "Все существа в зоне выдоха (линия 30 или конус 15) должны совершить спасбросок Лов (УС {{save_dc}}). Существа получают {{damage}} урона холодом в случае проваленного спасброска, или половину этого урона, если спасбросок был успешен."
+    },
+    "origin": "species",
+    "origin_value": "dragonborn",
+    "level": 1,
+    "kind": "static",
+    "visible": "result[:selected_features].keys.include?('draconic_ancestry_white')",
+    "eval_variables": {
+      "result": "result[:conditions][:resistance] = result[:conditions][:resistance].push('cold').uniq",
+      "save_dc": "8 + result.dig(:modifiers, :con) + result[:proficiency_bonus]",
+      "damage": "overall_level = result[:overall_level]; overall_level >= 17 ? '4d10' : (overall_level >= 11 ? '3d10' : (overall_level >= 5 ? '2d10' : '1d10'))",
+      "limit": "result[:proficiency_bonus]"
+    },
+    "limit_refresh": "long_rest"
+  }
+]

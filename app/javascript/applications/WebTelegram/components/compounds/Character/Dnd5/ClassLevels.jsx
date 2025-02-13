@@ -50,7 +50,7 @@ export const Dnd5ClassLevels = (props) => {
   return (
     <div class="white-box p-4 flex flex-col">
       <div class="mb-1">
-        <p>{props.initialSubclasses[props.mainClass] ? `${dict().classes[props.mainClass]} - ${dict().subclasses[props.mainClass][props.initialSubclasses[props.mainClass]]}` : dict().classes[props.mainClass]}</p>
+        <p>{props.initialSubclasses[props.mainClass] ? `${dict().dnd5.classes[props.mainClass]} - ${dict().dnd5.subclasses[props.mainClass][props.initialSubclasses[props.mainClass]]}` : dict().dnd5.classes[props.mainClass]}</p>
         <div class="my-2 flex items-center">
           <div class="flex justify-between items-center mr-4 w-32">
             <button
@@ -65,12 +65,12 @@ export const Dnd5ClassLevels = (props) => {
           </div>
           <div class="flex-1">
             <Show
-              when={dict().subclasses[props.mainClass] !== undefined && !props.initialSubclasses[props.mainClass]}
+              when={dict().dnd5.subclasses[props.mainClass] !== undefined && !props.initialSubclasses[props.mainClass]}
               fallback={<></>}
             >
               <Select
                 classList="w-full"
-                items={dict().subclasses[props.mainClass]}
+                items={dict().dnd5.subclasses[props.mainClass]}
                 selectedValue={subclassesData()[props.mainClass]}
                 onSelect={(value) => setSubclassesData({ ...subclassesData(), [props.mainClass]: value })}
               />
@@ -78,11 +78,11 @@ export const Dnd5ClassLevels = (props) => {
           </div>
         </div>
       </div>
-      <For each={Object.entries(dict().classes).filter((item) => item[0] !== props.mainClass).sort((a,) => !Object.keys(classesData()).includes(a[0]))}>
+      <For each={Object.entries(dict().dnd5.classes).filter((item) => item[0] !== props.mainClass).sort((a,) => !Object.keys(classesData()).includes(a[0]))}>
         {([slug, className]) =>
           <div class="mb-1">
             <Checkbox
-              labelText={props.initialSubclasses[slug] ? `${className} - ${dict().subclasses[slug][props.initialSubclasses[slug]]}` : className}
+              labelText={props.initialSubclasses[slug] ? `${className} - ${dict().dnd5.subclasses[slug][props.initialSubclasses[slug]]}` : className}
               labelPosition="right"
               labelClassList="ml-4"
               checked={classesData()[slug]}
@@ -104,12 +104,12 @@ export const Dnd5ClassLevels = (props) => {
                   </div>
                   <div class="flex-1">
                     <Show
-                      when={dict().subclasses[slug] !== undefined && !props.initialSubclasses[slug]}
+                      when={dict().dnd5.subclasses[slug] !== undefined && !props.initialSubclasses[slug]}
                       fallback={<></>}
                     >
                       <Select
                         classList="w-full"
-                        items={dict().subclasses[slug]}
+                        items={dict().dnd5.subclasses[slug]}
                         selectedValue={subclassesData()[slug]}
                         onSelect={(value) => setSubclassesData({ ...subclassesData(), [slug]: value })}
                       />

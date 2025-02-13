@@ -18,6 +18,12 @@ Rails.application.routes.draw do
       resources :items, only: %i[index]
       resources :spells, only: %i[index]
     end
+
+    namespace :dnd2024 do
+      resources :characters, only: %i[create update] do
+        resources :rest, only: %i[create], module: 'characters'
+      end
+    end
   end
 
   root 'web/welcome#index'

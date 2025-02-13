@@ -22,10 +22,17 @@
     "title": "Create new character",
     "name": "Name",
     "platform": "Platform",
-    "race": "Race",
-    "subrace": "Subrace",
-    "mainClass": "Main class",
-    "alignment": "Alignment"
+    "dnd5": {
+      "race": "Race",
+      "subrace": "Subrace",
+      "mainClass": "Main class",
+      "alignment": "Alignment"
+    },
+    "dnd2024": {
+      "species": "Species",
+      "mainClass": "Main class",
+      "alignment": "Alignment"
+    }
   },
   "itemsPage": {
     "title": "Items"
@@ -114,10 +121,6 @@
     },
     "attackAction": "Action attacks",
     "attackBonusAction": "Bonus action attacks",
-    "energy": {
-      "monk": "Ki energy",
-      "sorcerer": "Sorcery"
-    },
     "cantrips": "Cantrips",
     "known": "Known",
     "prepared": "Prepared",
@@ -145,193 +148,6 @@
     "radiant": "Radiant",
     "thunder": "Thunder"
   },
-  "races": {
-    "dwarf": "Dwarf",
-    "human": "Human",
-    "elf": "Elf",
-    "halfling": "Halfling",
-    "dragonborn": "Dragonborn",
-    "gnome": "Gnome",
-    "half_elf": "Half-Elf",
-    "half_orc": "Half-Orc",
-    "tiefling": "Tiefling"
-  },
-  "subraces": {
-    "dwarf": {
-      "mountain_dwarf": "Mountain Dwarf",
-      "hill_dwarf": "Hill Dwarf"
-    },
-    "elf": {
-      "high_elf": "High Elf",
-      "wood_elf": "Wood Elf",
-      "drow": "Drow"
-    },
-    "halfling": {
-      "lightfoot": "Lightfoot Halfling",
-      "stout": "Stout Halfling"
-    },
-    "gnome": {
-      "forest_gnome": "Forest Gnome",
-      "rock_gnome": "Rock Gnome"
-    }
-  },
-  "classes": {
-    "barbarian": "Barbarian",
-    "bard": "Bard",
-    "cleric": "Cleric",
-    "druid": "Druid",
-    "fighter": "Fighter",
-    "monk": "Monk",
-    "paladin": "Paladin",
-    "ranger": "Ranger",
-    "rogue": "Rogue",
-    "sorcerer": "Sorcerer",
-    "warlock": "Warlock",
-    "wizard": "Wizard",
-    "artificer": "Artificer"
-  },
-  "selectedFeatures": {
-    "metamagic_careful_spell": "Careful spell",
-    "metamagic_distant_spell": "Distant spell",
-    "metamagic_empowered_spell": "Empowered spell",
-    "metamagic_extended_spell": "Extended spell",
-    "metamagic_heightened_spell": "Heightened spell",
-    "metamagic_quickened_spell": "Quickened spell",
-    "metamagic_subtle_spell": "Subtle spell",
-    "metamagic_twinned_spell": "Twinned spell",
-    "draconic_ancestry_black": "Black",
-    "draconic_ancestry_blue": "Blue",
-    "draconic_ancestry_brass": "Brass",
-    "draconic_ancestry_bronze": "Bronze",
-    "draconic_ancestry_copper": "Copper",
-    "draconic_ancestry_gold": "Gold",
-    "draconic_ancestry_green": "Green",
-    "draconic_ancestry_red": "Red",
-    "draconic_ancestry_silver": "Silver",
-    "draconic_ancestry_white": "White",
-    "dragon_ancestor_black": "Black",
-    "dragon_ancestor_blue": "Blue",
-    "dragon_ancestor_brass": "Brass",
-    "dragon_ancestor_bronze": "Bronze",
-    "dragon_ancestor_copper": "Copper",
-    "dragon_ancestor_gold": "Gold",
-    "dragon_ancestor_green": "Green",
-    "dragon_ancestor_red": "Red",
-    "dragon_ancestor_silver": "Silver",
-    "dragon_ancestor_white": "White",
-    "arctic": "Arctic",
-    "coast": "Coast",
-    "desert": "Desert",
-    "forest": "Forest",
-    "grassland": "Grassland",
-    "mountain": "Mountain",
-    "swamp": "Swamp",
-    "underdark": "Underdark",
-    "fighting_style_archery": "Archery",
-    "fighting_style_defense": "Defense",
-    "fighting_style_dueling": "Dueling",
-    "fighting_style_great_weapon_fighting": "Great weapon fighting",
-    "fighting_style_protection": "Protection",
-    "fighting_style_two_weapon_fighting": "Two weapon fighting"
-  },
-  "subclasses": {
-    "barbarian": {
-      "path_of_the_berserker": "Path of the Berserker",
-      "path_of_the_totem_warrior": "Path of the Totem Warrior"
-    },
-    "bard": {
-      "college_of_lore": "College of Lore",
-      "college_of_valor": "College of Valor",
-      "college_of_whispers": "College of Whispers"
-    },
-    "cleric": {
-      "knowledge_domain": "Knowledge Domain",
-      "life_domain": "Life Domain",
-      "light_domain": "Light Domain",
-      "nature_domain": "Nature Domain",
-      "tempest_domain": "Tempest Domain",
-      "trickery_domain": "Trickery Domain",
-      "war_domain": "War Domain"
-    },
-    "druid": {
-      "circle_of_the_land": "Circle of the Land",
-      "circle_of_the_moon": "Circle of the Moon"
-    },
-    "fighter": {
-      "champion": "Champion",
-      "battle_master": "Battle master",
-      "eldritch_knight": "Eldtitch Knight"
-    },
-    "monk": {
-      "way_of_the_open_hand": "Way of the Open Hand",
-      "way_of_shadow": "Way of Shadow",
-      "way_of_the_four_elements": "Way of the Four Elements"
-    },
-    "paladin": {
-      "oath_of_devotion": "Oath of Devotion",
-      "oath_of_the_ancients": "Oath of the Ancients",
-      "oath_of_vengeance": "Oath of Vengeance"
-    },
-    "ranger": {
-      "hunter": "Hunter",
-      "beast_master": "Beast Master"
-    },
-    "rogue": {
-      "thief": "Thief",
-      "assassin": "Assassin",
-      "arcane_trickster": "Arcane Trickster"
-    },
-    "sorcerer": {
-      "draconic_bloodline": "Draconic Bloodline",
-      "wild_magic": "Wild Magic"
-    },
-    "warlock": {
-      "the_archfey": "The Archfey",
-      "the_fiend": "The Fiend",
-      "the_great_old_one": "The Great Old One"
-    },
-    "wizard": {
-      "school_of_abjuration": "School of Abjuration",
-      "school_of_conjuration": "School of Conjuration",
-      "school_of_divination": "School of Divination",
-      "school_of_enchantment": "School of Enchantment",
-      "school_of_evocation": "School of Evocation",
-      "school_of_illusion": "School of Illusion",
-      "school_of_necromancy": "School of Necromancy",
-      "school_of_transmutation": "School of Transmutation"
-    },
-    "artificer": {
-      "alchemist": "Alchemist"
-    }
-  },
-  "abilities": {
-    "str": "Strength",
-    "dex": "Dexterity",
-    "con": "Constitution",
-    "int": "Intelligence",
-    "wis": "Wisdom",
-    "cha": "Charisma"
-  },
-  "skills": {
-    "acrobatics": "Acrobatics",
-    "animal": "Animal",
-    "arcana": "Arcana",
-    "athletics": "Athletics",
-    "deception": "Deception",
-    "history": "History",
-    "insight": "Insight",
-    "intimidation": "Intimidation",
-    "investigation": "Investigation",
-    "medicine": "Medicine",
-    "nature": "Nature",
-    "perception": "Perception",
-    "performance": "Performance",
-    "persuasion": "Persuasion",
-    "religion": "Religion",
-    "sleight": "Sleight of Hands",
-    "stealth": "Stealth",
-    "survival": "Survival"
-  },
   "attack": {
     "tooltips": {
       "2handed": "Two handed",
@@ -341,39 +157,259 @@
       "flurry_of_blows": "Flurry of Blows"
     }
   },
-  "languages": {
-    "common": "Common",
-    "dwarvish": "Dwarvish",
-    "elvish": "Elvish",
-    "giant": "Giant",
-    "gnomish": "Gnomish",
-    "goblin": "Goblin",
-    "halfling": "Halfling",
-    "orc": "Orc",
-    "draconic": "Draconic",
-    "undercommon": "Undercommon",
-    "infernal": "Infernal",
-    "druidic": "Druidic"
+  "dnd": {
+    "alignments": {
+      "lawful_good": "Lawful good",
+      "lawful_neutral": "Lawful neutral",
+      "lawful_evil": "Lawful evil",
+      "neutral_good": "Neutral good",
+      "neutral": "Neutral",
+      "neutral_evil": "Neutral evil",
+      "chaotic_good": "Chaotic good",
+      "chaotic_neutral": "Chaotic neutral",
+      "chaotic_evil": "Chaotic evil"
+    },
+    "abilities": {
+      "str": "Strength",
+      "dex": "Dexterity",
+      "con": "Constitution",
+      "int": "Intelligence",
+      "wis": "Wisdom",
+      "cha": "Charisma"
+    },
+    "skills": {
+      "acrobatics": "Acrobatics",
+      "animal": "Animal",
+      "arcana": "Arcana",
+      "athletics": "Athletics",
+      "deception": "Deception",
+      "history": "History",
+      "insight": "Insight",
+      "intimidation": "Intimidation",
+      "investigation": "Investigation",
+      "medicine": "Medicine",
+      "nature": "Nature",
+      "perception": "Perception",
+      "performance": "Performance",
+      "persuasion": "Persuasion",
+      "religion": "Religion",
+      "sleight": "Sleight of Hands",
+      "stealth": "Stealth",
+      "survival": "Survival"
+    },
+    "languages": {
+      "common": "Common",
+      "dwarvish": "Dwarvish",
+      "elvish": "Elvish",
+      "giant": "Giant",
+      "gnomish": "Gnomish",
+      "goblin": "Goblin",
+      "halfling": "Halfling",
+      "orc": "Orc",
+      "draconic": "Draconic",
+      "undercommon": "Undercommon",
+      "infernal": "Infernal",
+      "druidic": "Druidic"
+    },
+    "coreWeaponSkills": {
+      "light weapon": "Light Weapon",
+      "martial weapon": "Martial Weapon"
+    },
+    "coreArmorSkills": {
+      "light armor": "Light Armor",
+      "medium armor": "Medium Armor",
+      "heavy armor": "Heavy Armor",
+      "shield": "Shield"
+    }
   },
-  "coreWeaponSkills": {
-    "light weapon": "Light Weapon",
-    "martial weapon": "Martial Weapon"
+  "dnd5": {
+    "races": {
+      "dwarf": "Dwarf",
+      "human": "Human",
+      "elf": "Elf",
+      "halfling": "Halfling",
+      "dragonborn": "Dragonborn",
+      "gnome": "Gnome",
+      "half_elf": "Half-Elf",
+      "half_orc": "Half-Orc",
+      "tiefling": "Tiefling"
+    },
+    "subraces": {
+      "dwarf": {
+        "mountain_dwarf": "Mountain Dwarf",
+        "hill_dwarf": "Hill Dwarf"
+      },
+      "elf": {
+        "high_elf": "High Elf",
+        "wood_elf": "Wood Elf",
+        "drow": "Drow"
+      },
+      "halfling": {
+        "lightfoot": "Lightfoot Halfling",
+        "stout": "Stout Halfling"
+      },
+      "gnome": {
+        "forest_gnome": "Forest Gnome",
+        "rock_gnome": "Rock Gnome"
+      }
+    },
+    "classes": {
+      "barbarian": "Barbarian",
+      "bard": "Bard",
+      "cleric": "Cleric",
+      "druid": "Druid",
+      "fighter": "Fighter",
+      "monk": "Monk",
+      "paladin": "Paladin",
+      "ranger": "Ranger",
+      "rogue": "Rogue",
+      "sorcerer": "Sorcerer",
+      "warlock": "Warlock",
+      "wizard": "Wizard",
+      "artificer": "Artificer"
+    },
+    "selectedFeatures": {
+      "metamagic_careful_spell": "Careful spell",
+      "metamagic_distant_spell": "Distant spell",
+      "metamagic_empowered_spell": "Empowered spell",
+      "metamagic_extended_spell": "Extended spell",
+      "metamagic_heightened_spell": "Heightened spell",
+      "metamagic_quickened_spell": "Quickened spell",
+      "metamagic_subtle_spell": "Subtle spell",
+      "metamagic_twinned_spell": "Twinned spell",
+      "draconic_ancestry_black": "Black",
+      "draconic_ancestry_blue": "Blue",
+      "draconic_ancestry_brass": "Brass",
+      "draconic_ancestry_bronze": "Bronze",
+      "draconic_ancestry_copper": "Copper",
+      "draconic_ancestry_gold": "Gold",
+      "draconic_ancestry_green": "Green",
+      "draconic_ancestry_red": "Red",
+      "draconic_ancestry_silver": "Silver",
+      "draconic_ancestry_white": "White",
+      "dragon_ancestor_black": "Black",
+      "dragon_ancestor_blue": "Blue",
+      "dragon_ancestor_brass": "Brass",
+      "dragon_ancestor_bronze": "Bronze",
+      "dragon_ancestor_copper": "Copper",
+      "dragon_ancestor_gold": "Gold",
+      "dragon_ancestor_green": "Green",
+      "dragon_ancestor_red": "Red",
+      "dragon_ancestor_silver": "Silver",
+      "dragon_ancestor_white": "White",
+      "arctic": "Arctic",
+      "coast": "Coast",
+      "desert": "Desert",
+      "forest": "Forest",
+      "grassland": "Grassland",
+      "mountain": "Mountain",
+      "swamp": "Swamp",
+      "underdark": "Underdark",
+      "fighting_style_archery": "Archery",
+      "fighting_style_defense": "Defense",
+      "fighting_style_dueling": "Dueling",
+      "fighting_style_great_weapon_fighting": "Great weapon fighting",
+      "fighting_style_protection": "Protection",
+      "fighting_style_two_weapon_fighting": "Two weapon fighting"
+    },
+    "subclasses": {
+      "barbarian": {
+        "path_of_the_berserker": "Path of the Berserker",
+        "path_of_the_totem_warrior": "Path of the Totem Warrior"
+      },
+      "bard": {
+        "college_of_lore": "College of Lore",
+        "college_of_valor": "College of Valor",
+        "college_of_whispers": "College of Whispers"
+      },
+      "cleric": {
+        "knowledge_domain": "Knowledge Domain",
+        "life_domain": "Life Domain",
+        "light_domain": "Light Domain",
+        "nature_domain": "Nature Domain",
+        "tempest_domain": "Tempest Domain",
+        "trickery_domain": "Trickery Domain",
+        "war_domain": "War Domain"
+      },
+      "druid": {
+        "circle_of_the_land": "Circle of the Land",
+        "circle_of_the_moon": "Circle of the Moon"
+      },
+      "fighter": {
+        "champion": "Champion",
+        "battle_master": "Battle master",
+        "eldritch_knight": "Eldtitch Knight"
+      },
+      "monk": {
+        "way_of_the_open_hand": "Way of the Open Hand",
+        "way_of_shadow": "Way of Shadow",
+        "way_of_the_four_elements": "Way of the Four Elements"
+      },
+      "paladin": {
+        "oath_of_devotion": "Oath of Devotion",
+        "oath_of_the_ancients": "Oath of the Ancients",
+        "oath_of_vengeance": "Oath of Vengeance"
+      },
+      "ranger": {
+        "hunter": "Hunter",
+        "beast_master": "Beast Master"
+      },
+      "rogue": {
+        "thief": "Thief",
+        "assassin": "Assassin",
+        "arcane_trickster": "Arcane Trickster"
+      },
+      "sorcerer": {
+        "draconic_bloodline": "Draconic Bloodline",
+        "wild_magic": "Wild Magic"
+      },
+      "warlock": {
+        "the_archfey": "The Archfey",
+        "the_fiend": "The Fiend",
+        "the_great_old_one": "The Great Old One"
+      },
+      "wizard": {
+        "school_of_abjuration": "School of Abjuration",
+        "school_of_conjuration": "School of Conjuration",
+        "school_of_divination": "School of Divination",
+        "school_of_enchantment": "School of Enchantment",
+        "school_of_evocation": "School of Evocation",
+        "school_of_illusion": "School of Illusion",
+        "school_of_necromancy": "School of Necromancy",
+        "school_of_transmutation": "School of Transmutation"
+      },
+      "artificer": {
+        "alchemist": "Alchemist"
+      }
+    }
   },
-  "coreArmorSkills": {
-    "light armor": "Light Armor",
-    "medium armor": "Medium Armor",
-    "heavy armor": "Heavy Armor",
-    "shield": "Shield"
-  },
-  "alignments": {
-    "lawful_good": "Lawful good",
-    "lawful_neutral": "Lawful neutral",
-    "lawful_evil": "Lawful evil",
-    "neutral_good": "Neutral good",
-    "neutral": "Neutral",
-    "neutral_evil": "Neutral evil",
-    "chaotic_good": "Chaotic good",
-    "chaotic_neutral": "Chaotic neutral",
-    "chaotic_evil": "Chaotic evil"
+  "dnd2024": {
+    "species": {
+      "dwarf": "Dwarf",
+      "human": "Human",
+      "elf": "Elf",
+      "halfling": "Halfling",
+      "dragonborn": "Dragonborn",
+      "gnome": "Gnome",
+      "orc": "Orc",
+      "tiefling": "Tiefling",
+      "aasimar": "Aasimar",
+      "goliath": "Goliath"
+    },
+    "classes": {
+      "barbarian": "Barbarian",
+      "bard": "Bard",
+      "cleric": "Cleric",
+      "druid": "Druid",
+      "fighter": "Fighter",
+      "monk": "Monk",
+      "paladin": "Paladin",
+      "ranger": "Ranger",
+      "rogue": "Rogue",
+      "sorcerer": "Sorcerer",
+      "warlock": "Warlock",
+      "wizard": "Wizard",
+      "artificer": "Artificer"
+    }
   }
 }

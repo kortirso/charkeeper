@@ -38,7 +38,7 @@ export const Dnd5Spells = (props) => {
         <Show when={props.initialSpellClassesList.length > 1}>
           <Select
             classList="w-40"
-            items={props.initialSpellClassesList.reduce((acc, item) => { acc[item] = t(`classes.${item}`); return acc; }, {})}
+            items={props.initialSpellClassesList.reduce((acc, item) => { acc[item] = t(`ddn5.classes.${item}`); return acc; }, {})}
             selectedValue={activeSpellClass()}
             onSelect={(value) => setActiveSpellClass(value)}
           />
@@ -59,13 +59,13 @@ export const Dnd5Spells = (props) => {
                           fallback={
                             <Show when={props.knownSpellIds.includes(spell.id)}>
                               <p class="text-xs mt-1">
-                                {t(`classes.${props.characterSpells.find((item) => item.spell_id === spell.id).prepared_by}`)}
+                                {t(`dnd5.classes.${props.characterSpells.find((item) => item.spell_id === spell.id).prepared_by}`)}
                               </p>
                             </Show>
                           }
                         >
                           <p class="text-xs text-wrap">
-                            {spell.available_for.map((item) => dict().classes[item]).join(' * ')}
+                            {spell.available_for.map((item) => dict().dnd5.classes[item]).join(' * ')}
                           </p>
                         </Show>
                       </td>

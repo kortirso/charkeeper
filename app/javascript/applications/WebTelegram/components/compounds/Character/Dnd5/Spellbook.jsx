@@ -70,7 +70,7 @@ export const Dnd5Spellbook = (props) => {
         <Show when={props.initialSpellClassesList.length > 1}>
           <Select
             classList="w-40"
-            items={props.initialSpellClassesList.reduce((acc, item) => { acc[item] = t(`classes.${item}`); return acc; }, { 'all': t('character.allSpells') })}
+            items={props.initialSpellClassesList.reduce((acc, item) => { acc[item] = t(`dnd5.classes.${item}`); return acc; }, { 'all': t('character.allSpells') })}
             selectedValue={activeSpellClass()}
             onSelect={(value) => setActiveSpellClass(value)}
           />
@@ -149,7 +149,7 @@ export const Dnd5Spellbook = (props) => {
                       {spell.name}
                     </p>
                     <Show when={props.spellClasses.length > 1 && activeSpellClass() === 'all'}>
-                      <p class="text-xs">{t(`classes.${spell.prepared_by}`)}</p>
+                      <p class="text-xs">{t(`dnd5.classes.${spell.prepared_by}`)}</p>
                     </Show>
                   </td>
                   <td>
@@ -221,7 +221,7 @@ export const Dnd5Spellbook = (props) => {
                           {spell.name}
                         </p>
                         <Show when={props.initialSpellClassesList.length > 1 && activeSpellClass() === 'all'}>
-                          <p class="text-xs">{t(`classes.${spell.prepared_by}`)}</p>
+                          <p class="text-xs">{t(`dnd5.classes.${spell.prepared_by}`)}</p>
                         </Show>
                       </td>
                       <td>
