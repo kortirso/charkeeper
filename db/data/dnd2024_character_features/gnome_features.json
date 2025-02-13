@@ -1,0 +1,18 @@
+[
+  {
+    "slug": "gnomish_cunning",
+    "title": { "en": "Gnomish Cunning", "ru": "Гномья хитрость" },
+    "description": {
+      "en": "You have advantage on all Intelligence, Wisdom, and Charisma saving throws.",
+      "ru": "Вы совершаете с преимуществом спасброски Интеллекта, Мудрости и Харизмы."
+    },
+    "origin": "species",
+    "origin_value": "gnome",
+    "level": 0,
+    "kind": "static",
+    "options_type": null,
+    "options": null,
+    "visible": "true",
+    "eval_variables": {}
+  }
+]

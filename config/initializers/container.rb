@@ -29,8 +29,14 @@ module Charkeeper
     register('commands.characters_context.dnd5.make_long_rest') { CharactersContext::Dnd5::MakeLongRestCommand.new }
     register('commands.characters_context.add_note') { CharactersContext::NoteAddCommand.new }
 
+    register('commands.characters_context.dnd2024.create') { CharactersContext::Dnd2024::CreateCommand.new }
+    register('commands.characters_context.dnd2024.update') { CharactersContext::Dnd2024::UpdateCommand.new }
+    register('commands.characters_context.dnd2024.make_short_rest') { CharactersContext::Dnd2024::MakeShortRestCommand.new }
+    register('commands.characters_context.dnd2024.make_long_rest') { CharactersContext::Dnd2024::MakeLongRestCommand.new }
+
     # decorators
-    register('decorators.dnd5_character.dummy_decorator') { DummyDecorator.new }
+    register('decorators.dummy_decorator') { DummyDecorator.new }
+
     register('decorators.dnd5_character.base_decorator') { Dnd5Character::BaseDecorator.new }
     register('decorators.dnd5_character.features') { Dnd5Character::FeaturesDecorator.new }
     register('decorators.dnd5_character.race_wrapper') { Dnd5Character::RaceDecorateWrapper.new }
@@ -76,6 +82,36 @@ module Charkeeper
       Dnd5Character::Subclasses::DraconicBloodlineDecorator.new
     }
     register('decorators.dnd5_character.subclasses.alchemist') { Dnd5Character::Subclasses::AlchemistDecorator.new }
+
+    register('decorators.dnd2024_character.base_decorator') { Dnd2024Character::BaseDecorator.new }
+    register('decorators.dnd2024_character.species_wrapper') { Dnd2024Character::SpeciesDecorateWrapper.new }
+    register('decorators.dnd2024_character.class_wrapper') { Dnd2024Character::ClassDecorateWrapper.new }
+    register('decorators.dnd2024_character.features') { Dnd2024Character::FeaturesDecorator.new }
+
+    register('decorators.dnd2024_character.species.dragonborn') { Dnd2024Character::Species::DragonbornDecorator.new }
+    register('decorators.dnd2024_character.species.dwarf') { Dnd2024Character::Species::DwarfDecorator.new }
+    register('decorators.dnd2024_character.species.elf') { Dnd2024Character::Species::ElfDecorator.new }
+    register('decorators.dnd2024_character.species.gnome') { Dnd2024Character::Species::GnomeDecorator.new }
+    register('decorators.dnd2024_character.species.orc') { Dnd2024Character::Species::OrcDecorator.new }
+    register('decorators.dnd2024_character.species.halfling') { Dnd2024Character::Species::HalflingDecorator.new }
+    register('decorators.dnd2024_character.species.human') { Dnd2024Character::Species::HumanDecorator.new }
+    register('decorators.dnd2024_character.species.tiefling') { Dnd2024Character::Species::TieflingDecorator.new }
+    register('decorators.dnd2024_character.species.aasimar') { Dnd2024Character::Species::AasimarDecorator.new }
+    register('decorators.dnd2024_character.species.goliath') { Dnd2024Character::Species::GoliathDecorator.new }
+
+    register('decorators.dnd2024_character.classes.barbarian') { Dnd2024Character::Classes::BarbarianDecorator.new }
+    register('decorators.dnd2024_character.classes.bard') { Dnd2024Character::Classes::BardDecorator.new }
+    register('decorators.dnd2024_character.classes.cleric') { Dnd2024Character::Classes::ClericDecorator.new }
+    register('decorators.dnd2024_character.classes.druid') { Dnd2024Character::Classes::DruidDecorator.new }
+    register('decorators.dnd2024_character.classes.fighter') { Dnd2024Character::Classes::FighterDecorator.new }
+    register('decorators.dnd2024_character.classes.monk') { Dnd2024Character::Classes::MonkDecorator.new }
+    register('decorators.dnd2024_character.classes.paladin') { Dnd2024Character::Classes::PaladinDecorator.new }
+    register('decorators.dnd2024_character.classes.ranger') { Dnd2024Character::Classes::RangerDecorator.new }
+    register('decorators.dnd2024_character.classes.rogue') { Dnd2024Character::Classes::RogueDecorator.new }
+    register('decorators.dnd2024_character.classes.sorcerer') { Dnd2024Character::Classes::SorcererDecorator.new }
+    register('decorators.dnd2024_character.classes.warlock') { Dnd2024Character::Classes::WarlockDecorator.new }
+    register('decorators.dnd2024_character.classes.wizard') { Dnd2024Character::Classes::WizardDecorator.new }
+    register('decorators.dnd2024_character.classes.artificer') { Dnd2024Character::Classes::ArtificerDecorator.new }
 
     # services
     register('services.auth_context.validate_web_telegram_signature') { AuthContext::WebTelegramSignatureValidateService.new }

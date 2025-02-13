@@ -22,10 +22,17 @@
     "title": "Создание персонажа",
     "name": "Имя персонажа",
     "platform": "Платформа",
-    "race": "Раса",
-    "subrace": "Подраса",
-    "mainClass": "Основной класс",
-    "alignment": "Мировоззрение"
+    "dnd5": {
+      "race": "Раса",
+      "subrace": "Подраса",
+      "mainClass": "Основной класс",
+      "alignment": "Мировоззрение"
+    },
+    "dnd2024": {
+      "species": "Вид",
+      "mainClass": "Основной класс",
+      "alignment": "Мировоззрение"
+    }
   },
   "itemsPage": {
     "title": "Предметы"
@@ -114,10 +121,6 @@
     },
     "attackAction": "Атаки за действие",
     "attackBonusAction": "Атаки за бонус действие",
-    "energy": {
-      "monk": "Энергия Ци",
-      "sorcerer": "Чародейство"
-    },
     "cantrips": "Заговоры",
     "known": "Известные",
     "prepared": "Приготовленные",
@@ -145,193 +148,6 @@
     "radiant": "Излучение",
     "thunder": "Звук"
   },
-  "races": {
-    "dwarf": "Дварф",
-    "human": "Человек",
-    "elf": "Эльф",
-    "halfling": "Полурослик",
-    "dragonborn": "Драконорожденный",
-    "gnome": "Гном",
-    "half_elf": "Полуэльф",
-    "half_orc": "Полуорк",
-    "tiefling": "Тифлинг"
-  },
-  "subraces": {
-    "dwarf": {
-      "mountain_dwarf": "Горный дварф",
-      "hill_dwarf": "Холмовой дварф"
-    },
-    "elf": {
-      "high_elf": "Высший эльф",
-      "wood_elf": "Лесной эльф",
-      "drow": "Дроу"
-    },
-    "halfling": {
-      "lightfoot": "Легконогий полурослик",
-      "stout": "Коренастый полурослик"
-    },
-    "gnome": {
-      "forest_gnome": "Лесной гном",
-      "rock_gnome": "Скальный гном"
-    }
-  },
-  "classes": {
-    "barbarian": "Варвар",
-    "bard": "Бард",
-    "cleric": "Жрец",
-    "druid": "Друид",
-    "fighter": "Воин",
-    "monk": "Монах",
-    "paladin": "Паладин",
-    "ranger": "Следопыт",
-    "rogue": "Плут",
-    "sorcerer": "Чародей",
-    "warlock": "Колдун",
-    "wizard": "Волшебник",
-    "artificer": "Изобретатель"
-  },
-  "selectedFeatures": {
-    "metamagic_careful_spell": "Аккуратное заклинание",
-    "metamagic_distant_spell": "Далёкое заклинание",
-    "metamagic_empowered_spell": "Усиленное заклинание",
-    "metamagic_extended_spell": "Продлённое заклинание",
-    "metamagic_heightened_spell": "Непреодолимое заклинание",
-    "metamagic_quickened_spell": "Ускоренное заклинание",
-    "metamagic_subtle_spell": "Неуловимое заклинание",
-    "metamagic_twinned_spell": "Удвоенное заклинание",
-    "draconic_ancestry_black": "Чёрный",
-    "draconic_ancestry_blue": "Синий",
-    "draconic_ancestry_brass": "Латунный",
-    "draconic_ancestry_bronze": "Бронзовый",
-    "draconic_ancestry_copper": "Медный",
-    "draconic_ancestry_gold": "Золотой",
-    "draconic_ancestry_green": "Зелёный",
-    "draconic_ancestry_red": "Красный",
-    "draconic_ancestry_silver": "Серебряный",
-    "draconic_ancestry_white": "Белый",
-    "dragon_ancestor_black": "Чёрный",
-    "dragon_ancestor_blue": "Синий",
-    "dragon_ancestor_brass": "Латунный",
-    "dragon_ancestor_bronze": "Бронзовый",
-    "dragon_ancestor_copper": "Медный",
-    "dragon_ancestor_gold": "Золотой",
-    "dragon_ancestor_green": "Зелёный",
-    "dragon_ancestor_red": "Красный",
-    "dragon_ancestor_silver": "Серебряный",
-    "dragon_ancestor_white": "Белый",
-    "arctic": "Тундра",
-    "coast": "Побережье",
-    "desert": "Пустыня",
-    "forest": "Лес",
-    "grassland": "Луг",
-    "mountain": "Гора",
-    "swamp": "Болото",
-    "underdark": "Подземье",
-    "fighting_style_archery": "Стрельба",
-    "fighting_style_defense": "Оборона",
-    "fighting_style_dueling": "Дуэлянт",
-    "fighting_style_great_weapon_fighting": "Сражение большим оружием",
-    "fighting_style_protection": "Защита",
-    "fighting_style_two_weapon_fighting": "Сражение двумя оружиями"
-  },
-  "subclasses": {
-    "barbarian": {
-      "path_of_the_berserker": "Путь берсерка",
-      "path_of_the_totem_warrior": "Путь тотемного воина"
-    },
-    "bard": {
-      "college_of_lore": "Коллегия знаний",
-      "college_of_valor": "Коллегия доблести",
-      "college_of_whispers": "Коллегия шёпотов"
-    },
-    "cleric": {
-      "knowledge_domain": "Домен знаний",
-      "life_domain": "Домен жизни",
-      "light_domain": "Домен света",
-      "nature_domain": "Домен природы",
-      "tempest_domain": "Домен бури",
-      "trickery_domain": "Домен обмана",
-      "war_domain": "Домен войны"
-    },
-    "druid": {
-      "circle_of_the_land": "Круг земли",
-      "circle_of_the_moon": "Круг луны"
-    },
-    "fighter": {
-      "champion": "Чемпион",
-      "battle_master": "Мастер боевых искусств",
-      "eldritch_knight": "Мистический рыцарь"
-    },
-    "monk": {
-      "way_of_the_open_hand": "Путь открытой ладони",
-      "way_of_shadow": "Путь тени",
-      "way_of_the_four_elements": "Путь четырёх стихий"
-    },
-    "paladin": {
-      "oath_of_devotion": "Клятва преданности",
-      "oath_of_the_ancients": "Клятка древних",
-      "oath_of_vengeance": "Клятва мести"
-    },
-    "ranger": {
-      "hunter": "Охотник",
-      "beast_master": "Повелитель зверей"
-    },
-    "rogue": {
-      "thief": "Вор",
-      "assassin": "Убийца",
-      "arcane_trickster": "Мистический ловкач"
-    },
-    "sorcerer": {
-      "draconic_bloodline": "Наследие драконьей крови",
-      "wild_magic": "Дикая магия"
-    },
-    "warlock": {
-      "the_archfey": "Архифея",
-      "the_fiend": "Исчадие",
-      "the_great_old_one": "Великий древний"
-    },
-    "wizard": {
-      "school_of_abjuration": "Школа ограждения",
-      "school_of_conjuration": "Школа вызова",
-      "school_of_divination": "Школа прорицания",
-      "school_of_enchantment": "Школа очарования",
-      "school_of_evocation": "Школа воплощения",
-      "school_of_illusion": "Школа иллюзии",
-      "school_of_necromancy": "Школа некромантии",
-      "school_of_transmutation": "Школа преобразования"
-    },
-    "artificer": {
-      "alchemist": "Алхимик"
-    }
-  },
-  "abilities": {
-    "str": "Сила",
-    "dex": "Ловкость",
-    "con": "Телосложение",
-    "int": "Интеллект",
-    "wis": "Мудрость",
-    "cha": "Харизма"
-  },
-  "skills": {
-    "acrobatics": "Акробатика",
-    "animal": "Уход за животными",
-    "arcana": "Магия",
-    "athletics": "Атлетика",
-    "deception": "Обман",
-    "history": "История",
-    "insight": "Проницательность",
-    "intimidation": "Запугивание",
-    "investigation": "Анализ",
-    "medicine": "Медицина",
-    "nature": "Природа",
-    "perception": "Внимательность",
-    "performance": "Выступление",
-    "persuasion": "Убеждение",
-    "religion": "Религия",
-    "sleight": "Ловкость рук",
-    "stealth": "Скрытность",
-    "survival": "Выживание"
-  },
   "attack": {
     "tooltips": {
       "2handed": "Двуручное",
@@ -341,39 +157,259 @@
       "flurry_of_blows": "Шквал ударов"
     }
   },
-  "languages": {
-    "common": "Общий",
-    "dwarvish": "Дварфский",
-    "elvish": "Эльфийский",
-    "giant": "Великаний",
-    "gnomish": "Гномий",
-    "goblin": "Гоблинский",
-    "halfling": "Полуросликов",
-    "orc": "Орочий",
-    "draconic": "Драконий",
-    "undercommon": "Подземный",
-    "infernal": "Инфернальный",
-    "druidic": "Друидический"
+  "dnd": {
+    "alignments": {
+      "lawful_good": "Законопослушно добрый",
+      "lawful_neutral": "Законопослушно нейтральный",
+      "lawful_evil": "Законопослушно злой",
+      "neutral_good": "Нейтрально добрый",
+      "neutral": "Нейтральный",
+      "neutral_evil": "Нейтрально злой",
+      "chaotic_good": "Хаотично добрый",
+      "chaotic_neutral": "Хаотично нейтральный",
+      "chaotic_evil": "Хаотично злой"
+    },
+    "abilities": {
+      "str": "Сила",
+      "dex": "Ловкость",
+      "con": "Телосложение",
+      "int": "Интеллект",
+      "wis": "Мудрость",
+      "cha": "Харизма"
+    },
+    "skills": {
+      "acrobatics": "Акробатика",
+      "animal": "Уход за животными",
+      "arcana": "Магия",
+      "athletics": "Атлетика",
+      "deception": "Обман",
+      "history": "История",
+      "insight": "Проницательность",
+      "intimidation": "Запугивание",
+      "investigation": "Анализ",
+      "medicine": "Медицина",
+      "nature": "Природа",
+      "perception": "Внимательность",
+      "performance": "Выступление",
+      "persuasion": "Убеждение",
+      "religion": "Религия",
+      "sleight": "Ловкость рук",
+      "stealth": "Скрытность",
+      "survival": "Выживание"
+    },
+    "languages": {
+      "common": "Общий",
+      "dwarvish": "Дварфский",
+      "elvish": "Эльфийский",
+      "giant": "Великаний",
+      "gnomish": "Гномий",
+      "goblin": "Гоблинский",
+      "halfling": "Полуросликов",
+      "orc": "Орочий",
+      "draconic": "Драконий",
+      "undercommon": "Подземный",
+      "infernal": "Инфернальный",
+      "druidic": "Друидический"
+    },
+    "coreWeaponSkills": {
+      "light weapon": "Простое оружие",
+      "martial weapon": "Воинское оружие"
+    },
+    "coreArmorSkills": {
+      "light armor": "Лёгкий доспех",
+      "medium armor": "Средний доспех",
+      "heavy armor": "Тяжёлый доспех",
+      "shield": "Щит"
+    }
   },
-  "coreWeaponSkills": {
-    "light weapon": "Простое оружие",
-    "martial weapon": "Воинское оружие"
+  "dnd5": {
+    "races": {
+      "dwarf": "Дварф",
+      "human": "Человек",
+      "elf": "Эльф",
+      "halfling": "Полурослик",
+      "dragonborn": "Драконорожденный",
+      "gnome": "Гном",
+      "half_elf": "Полуэльф",
+      "half_orc": "Полуорк",
+      "tiefling": "Тифлинг"
+    },
+    "subraces": {
+      "dwarf": {
+        "mountain_dwarf": "Горный дварф",
+        "hill_dwarf": "Холмовой дварф"
+      },
+      "elf": {
+        "high_elf": "Высший эльф",
+        "wood_elf": "Лесной эльф",
+        "drow": "Дроу"
+      },
+      "halfling": {
+        "lightfoot": "Легконогий полурослик",
+        "stout": "Коренастый полурослик"
+      },
+      "gnome": {
+        "forest_gnome": "Лесной гном",
+        "rock_gnome": "Скальный гном"
+      }
+    },
+    "classes": {
+      "barbarian": "Варвар",
+      "bard": "Бард",
+      "cleric": "Жрец",
+      "druid": "Друид",
+      "fighter": "Воин",
+      "monk": "Монах",
+      "paladin": "Паладин",
+      "ranger": "Следопыт",
+      "rogue": "Плут",
+      "sorcerer": "Чародей",
+      "warlock": "Колдун",
+      "wizard": "Волшебник",
+      "artificer": "Изобретатель"
+    },
+    "selectedFeatures": {
+      "metamagic_careful_spell": "Аккуратное заклинание",
+      "metamagic_distant_spell": "Далёкое заклинание",
+      "metamagic_empowered_spell": "Усиленное заклинание",
+      "metamagic_extended_spell": "Продлённое заклинание",
+      "metamagic_heightened_spell": "Непреодолимое заклинание",
+      "metamagic_quickened_spell": "Ускоренное заклинание",
+      "metamagic_subtle_spell": "Неуловимое заклинание",
+      "metamagic_twinned_spell": "Удвоенное заклинание",
+      "draconic_ancestry_black": "Чёрный",
+      "draconic_ancestry_blue": "Синий",
+      "draconic_ancestry_brass": "Латунный",
+      "draconic_ancestry_bronze": "Бронзовый",
+      "draconic_ancestry_copper": "Медный",
+      "draconic_ancestry_gold": "Золотой",
+      "draconic_ancestry_green": "Зелёный",
+      "draconic_ancestry_red": "Красный",
+      "draconic_ancestry_silver": "Серебряный",
+      "draconic_ancestry_white": "Белый",
+      "dragon_ancestor_black": "Чёрный",
+      "dragon_ancestor_blue": "Синий",
+      "dragon_ancestor_brass": "Латунный",
+      "dragon_ancestor_bronze": "Бронзовый",
+      "dragon_ancestor_copper": "Медный",
+      "dragon_ancestor_gold": "Золотой",
+      "dragon_ancestor_green": "Зелёный",
+      "dragon_ancestor_red": "Красный",
+      "dragon_ancestor_silver": "Серебряный",
+      "dragon_ancestor_white": "Белый",
+      "arctic": "Тундра",
+      "coast": "Побережье",
+      "desert": "Пустыня",
+      "forest": "Лес",
+      "grassland": "Луг",
+      "mountain": "Гора",
+      "swamp": "Болото",
+      "underdark": "Подземье",
+      "fighting_style_archery": "Стрельба",
+      "fighting_style_defense": "Оборона",
+      "fighting_style_dueling": "Дуэлянт",
+      "fighting_style_great_weapon_fighting": "Сражение большим оружием",
+      "fighting_style_protection": "Защита",
+      "fighting_style_two_weapon_fighting": "Сражение двумя оружиями"
+    },
+    "subclasses": {
+      "barbarian": {
+        "path_of_the_berserker": "Путь берсерка",
+        "path_of_the_totem_warrior": "Путь тотемного воина"
+      },
+      "bard": {
+        "college_of_lore": "Коллегия знаний",
+        "college_of_valor": "Коллегия доблести",
+        "college_of_whispers": "Коллегия шёпотов"
+      },
+      "cleric": {
+        "knowledge_domain": "Домен знаний",
+        "life_domain": "Домен жизни",
+        "light_domain": "Домен света",
+        "nature_domain": "Домен природы",
+        "tempest_domain": "Домен бури",
+        "trickery_domain": "Домен обмана",
+        "war_domain": "Домен войны"
+      },
+      "druid": {
+        "circle_of_the_land": "Круг земли",
+        "circle_of_the_moon": "Круг луны"
+      },
+      "fighter": {
+        "champion": "Чемпион",
+        "battle_master": "Мастер боевых искусств",
+        "eldritch_knight": "Мистический рыцарь"
+      },
+      "monk": {
+        "way_of_the_open_hand": "Путь открытой ладони",
+        "way_of_shadow": "Путь тени",
+        "way_of_the_four_elements": "Путь четырёх стихий"
+      },
+      "paladin": {
+        "oath_of_devotion": "Клятва преданности",
+        "oath_of_the_ancients": "Клятка древних",
+        "oath_of_vengeance": "Клятва мести"
+      },
+      "ranger": {
+        "hunter": "Охотник",
+        "beast_master": "Повелитель зверей"
+      },
+      "rogue": {
+        "thief": "Вор",
+        "assassin": "Убийца",
+        "arcane_trickster": "Мистический ловкач"
+      },
+      "sorcerer": {
+        "draconic_bloodline": "Наследие драконьей крови",
+        "wild_magic": "Дикая магия"
+      },
+      "warlock": {
+        "the_archfey": "Архифея",
+        "the_fiend": "Исчадие",
+        "the_great_old_one": "Великий древний"
+      },
+      "wizard": {
+        "school_of_abjuration": "Школа ограждения",
+        "school_of_conjuration": "Школа вызова",
+        "school_of_divination": "Школа прорицания",
+        "school_of_enchantment": "Школа очарования",
+        "school_of_evocation": "Школа воплощения",
+        "school_of_illusion": "Школа иллюзии",
+        "school_of_necromancy": "Школа некромантии",
+        "school_of_transmutation": "Школа преобразования"
+      },
+      "artificer": {
+        "alchemist": "Алхимик"
+      }
+    }
   },
-  "coreArmorSkills": {
-    "light armor": "Лёгкий доспех",
-    "medium armor": "Средний доспех",
-    "heavy armor": "Тяжёлый доспех",
-    "shield": "Щит"
-  },
-  "alignments": {
-    "lawful_good": "Законопослушно добрый",
-    "lawful_neutral": "Законопослушно нейтральный",
-    "lawful_evil": "Законопослушно злой",
-    "neutral_good": "Нейтрально добрый",
-    "neutral": "Нейтральный",
-    "neutral_evil": "Нейтрально злой",
-    "chaotic_good": "Хаотично добрый",
-    "chaotic_neutral": "Хаотично нейтральный",
-    "chaotic_evil": "Хаотично злой"
+  "dnd2024": {
+    "species": {
+      "dwarf": "Дварф",
+      "human": "Человек",
+      "elf": "Эльф",
+      "halfling": "Полурослик",
+      "dragonborn": "Драконорожденный",
+      "gnome": "Гном",
+      "orc": "Орк",
+      "tiefling": "Тифлинг",
+      "aasimar": "Аасимар",
+      "goliath": "Голиаф"
+    },
+    "classes": {
+      "barbarian": "Варвар",
+      "bard": "Бард",
+      "cleric": "Жрец",
+      "druid": "Друид",
+      "fighter": "Воин",
+      "monk": "Монах",
+      "paladin": "Паладин",
+      "ranger": "Следопыт",
+      "rogue": "Плут",
+      "sorcerer": "Чародей",
+      "warlock": "Колдун",
+      "wizard": "Волшебник",
+      "artificer": "Изобретатель"
+    }
   }
 }

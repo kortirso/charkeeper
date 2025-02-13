@@ -144,13 +144,14 @@
 }
 
 .form-field .form-dropdown {
-  @apply absolute w-full border-r border-l border-gray-200 z-10 overflow-y-scroll;
+  @apply absolute w-full bg-white border-r border-l border-gray-200 z-10 overflow-y-scroll shadow;
 
   max-height: 7.5rem;
+
 }
 
 .form-field .form-dropdown li {
-  @apply bg-white border-b border-gray-200 m-0 py-2 px-4;
+  @apply border-b border-gray-200 m-0 py-2 px-4;
 }
 
 .form-field .form-dropdown li:hover {

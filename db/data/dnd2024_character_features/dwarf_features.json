@@ -1,0 +1,53 @@
+[
+  {
+    "slug": "dwarven_resilience",
+    "title": { "en": "Dwarven Resilience", "ru": "Дварфийская устойчивость" },
+    "description": {
+      "en": "You have advantage on saving throws to avoid or end the poisoned condition.",
+      "ru": "Вы получаете преимущество на спасброски, которые вы совершаете, чтобы избежать или прекратить состояние Отравлен."
+    },
+    "origin": "species",
+    "origin_value": "dwarf",
+    "level": 0,
+    "kind": "static",
+    "options_type": null,
+    "options": null,
+    "visible": "true",
+    "eval_variables": {}
+  },
+  {
+    "slug": "stoneсunning",
+    "title": { "en": "Stoneсunning", "ru": "Знание камня" },
+    "description": {
+      "en": "You gain Tremorsense for ten minutes, but you must be on a stone surface to gain the benefits.",
+      "ru": "Бонусным действием вы можете получить Чувство вибрации в пределах 60 футов на 10 минут. Вы должны находиться на каменной поверхности или касаться её, чтобы пользоваться этим Чувством вибрации."
+    },
+    "origin": "species",
+    "origin_value": "dwarf",
+    "level": 0,
+    "kind": "static",
+    "options_type": null,
+    "options": null,
+    "visible": "true",
+    "eval_variables": {
+      "limit": "result[:proficiency_bonus]"
+    },
+    "limit_refresh": "long_rest"
+  },
+  {
+    "slug": "dwarven_toughness",
+    "title": { "en": "Dwarven Toughness", "ru": "Дварфская выдержка" },
+    "description": {
+      "en": "Your hit point maximum increases by 1, and it increases by 1 every time you gain a level.",
+      "ru": "Максимальное значение ваших хитов увеличивается на 1, и вы получаете 1 дополнительный хит с каждым новым уровнем."
+    },
+    "origin": "species",
+    "origin_value": "dwarf",
+    "level": 0,
+    "kind": "static",
+    "options_type": null,
+    "options": null,
+    "visible": "true",
+    "eval_variables": {}
+  }
+]

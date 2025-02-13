@@ -318,7 +318,7 @@ export const Dnd5 = (props) => {
           <PageHeader rightContent={<Hamburger onClick={openModal} />}>
             <p>{props.name}</p>
             <p class="text-sm">
-              {decoratedData().subrace ? t(`subraces.${decoratedData().race}.${decoratedData().subrace}`) : t(`races.${decoratedData().race}`)} | {Object.entries(decoratedData().classes).map(([item, value]) => `${t(`classes.${item}`)} ${value}`).join(' * ')}
+              {decoratedData().subrace ? t(`dnd5.subraces.${decoratedData().race}.${decoratedData().subrace}`) : t(`dnd5.races.${decoratedData().race}`)} | {Object.entries(decoratedData().classes).map(([item, value]) => `${t(`dnd5.classes.${item}`)} ${value}`).join(' * ')}
             </p>
           </PageHeader>
         }

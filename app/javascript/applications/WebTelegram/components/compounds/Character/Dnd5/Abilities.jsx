@@ -86,7 +86,7 @@ export const Dnd5Abilities = (props) => {
           </div>
         </div>
       </div>
-      <For each={Object.entries(dict().abilities)}>
+      <For each={Object.entries(dict().dnd.abilities)}>
         {([slug, ability]) =>
           <div class="flex items-start mb-2">
             <div
@@ -110,7 +110,7 @@ export const Dnd5Abilities = (props) => {
                     {(skill) =>
                       <div class="flex justify-between">
                         <p class={`${skill.selected ? 'font-medium' : 'opacity-50'}`}>
-                          {t(`skills.${skill.name}`)}
+                          {t(`dnd.skills.${skill.name}`)}
                         </p>
                         <p class={`${skill.selected ? 'font-medium' : 'opacity-50'}`}>
                           {modifier(skill.modifier)}
@@ -128,7 +128,7 @@ export const Dnd5Abilities = (props) => {
         <Switch>
           <Match when={modalOpenMode() === 'changeAbilities'}>
             <div class="white-box p-4 flex flex-col">
-              <For each={Object.entries(dict().abilities)}>
+              <For each={Object.entries(dict().dnd.abilities)}>
                 {([slug, ability]) =>
                   <div class="mb-4 flex items-center">
                     <p class="flex-1 text-sm text-left">{ability}</p>
@@ -151,7 +151,7 @@ export const Dnd5Abilities = (props) => {
           </Match>
           <Match when={modalOpenMode() === 'changeSkills'}>
             <div class="white-box p-4 flex flex-col">
-              <For each={Object.entries(dict().skills).sort((a, b) => a[1] > b[1])}>
+              <For each={Object.entries(dict().dnd.skills).sort((a, b) => a[1] > b[1])}>
                 {([slug, skill]) =>
                   <div class="mb-1">
                     <Checkbox
