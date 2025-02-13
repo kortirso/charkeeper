@@ -14,18 +14,17 @@ module Adminbook
 
         def update
           @feature = ::Dnd5::Character::Feature.find(params[:id])
-
-          ap update_params
         end
 
         private
 
         def update_params
           params
-            .require(:dnd5_character_feature)
-            .permit(
-              :slug, :race, :subrace, :level, :kind, :limit_refresh, :options,
-              title: [:en, :ru], description: [:en, :ru], eval_variables: {}
+            .expect(
+              dnd5_character_feature: [
+                :slug, :race, :subrace, :level, :kind, :limit_refresh, :options,
+                { title: %i[en ru], description: %i[en ru], eval_variables: {} }
+              ]
             )
         end
       end
