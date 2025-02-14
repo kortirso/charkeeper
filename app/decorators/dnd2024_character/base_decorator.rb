@@ -6,9 +6,10 @@ module Dnd2024Character
     RANGE_ATTACK_TOOLTIPS = %w[2handed heavy reload].freeze
 
     # rubocop: disable Metrics/AbcSize, Metrics/MethodLength, Metrics/PerceivedComplexity, Metrics/CyclomaticComplexity
-    def decorate_fresh_character(species:, main_class:, alignment:)
+    def decorate_fresh_character(species:, size:, main_class:, alignment:)
       {
         species: species,
+        size: size,
         main_class: main_class,
         alignment: alignment,
         classes: { main_class => 1 },

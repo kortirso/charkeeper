@@ -6,6 +6,7 @@ module Dnd2024
 
     attribute :level, :integer, default: 1
     attribute :species, :string
+    attribute :size, :string
     attribute :alignment, :string
     attribute :main_class, :string
     attribute :classes, array: true
@@ -43,6 +44,10 @@ module Dnd2024
     AASIMAR = 'aasimar'
     GOLIATH = 'goliath'
 
+    # sizes
+    SMALL = 'small'
+    MEDIUM = 'medium'
+
     # classes
     BARBARIAN = 'barbarian'
     BARD = 'bard'
@@ -73,6 +78,18 @@ module Dnd2024
     # common, dwarvish, elvish, giant, gnomish, goblin, halfling, orc, draconic, undercommon, infernal, druidic
 
     SPECIES = [HUMAN, DWARF, ELF, HALFLING, DRAGONBORN, GNOME, ORC, TIEFLING, AASIMAR, GOLIATH].freeze
+    SIZES = {
+      HUMAN => [MEDIUM, SMALL],
+      DWARF => [MEDIUM],
+      ELF => [MEDIUM],
+      HALFLING => [SMALL],
+      DRAGONBORN => [MEDIUM],
+      GNOME => [SMALL],
+      ORC => [MEDIUM],
+      TIEFLING => [MEDIUM, SMALL],
+      AASIMAR => [MEDIUM, SMALL],
+      GOLIATH => [MEDIUM]
+    }.freeze
     ALIGNMENTS = [
       LAWFUL_GOOD, LAWFUL_NEUTRAL, LAWFUL_EVIL, NEUTRAL_GOOD, NEUTRAL,
       NEUTRAL_EVIL, CHAOTIC_GOOD, CHAOTIC_NEUTRAL, CHAOTIC_EVIL
