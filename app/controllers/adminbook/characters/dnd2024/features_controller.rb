@@ -49,7 +49,7 @@ module Adminbook
           params
             .expect(
               dnd5_character_feature: [
-                :slug, :origin, :origin_value, :level, :kind, :limit_refresh, :options, :options_type, :visible,
+                :slug, :origin, :origin_value, :level, :kind, :limit_refresh, :options, :options_type, :visible, :choose_once,
                 { title: %i[en ru], description: %i[en ru], eval_variables: {} }
               ]
             )

@@ -18,7 +18,8 @@ module Dnd5Character
           description: update_feature_description(feature),
           limit: feature.eval_variables['limit'],
           options_type: feature.options_type,
-          options: feature.options
+          options: feature.options,
+          choose_once: feature.choose_once
         }.compact
       end
 

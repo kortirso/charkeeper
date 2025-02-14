@@ -26,7 +26,7 @@
     "origin_value": "wood_elf",
     "level": 0,
     "kind": "static_list",
-    "options_type": "spell_wizard_0",
+    "options_type": "spells",
     "options": [
       "toll_the_dead", "infestation", "shape_water", "create_bonfire","blade_ward","chill_touch","dancing_lights",
       "fire_bolt", "friends", "light", "mage_hand", "mending", "message", "minor_illusion", "poison_spray",

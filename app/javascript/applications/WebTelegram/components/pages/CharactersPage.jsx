@@ -188,14 +188,14 @@ export const CharactersPage = () => {
                   selectedValue={platform()}
                   onSelect={(value) => setPlatform(value)}
                 />
-                <Input
-                  classList="mb-2"
-                  labelText={t('newCharacterPage.name')}
-                  value={characterDnd5Form.name}
-                  onInput={(value) => setCharacterDnd2024Form({ ...characterDnd5Form, name: value })}
-                />
                 <Switch>
                   <Match when={platform() === 'dnd5'}>
+                    <Input
+                      classList="mb-2"
+                      labelText={t('newCharacterPage.name')}
+                      value={characterDnd5Form.name}
+                      onInput={(value) => setCharacterDnd5Form({ ...characterDnd5Form, name: value })}
+                    />
                     <Select
                       classList="mb-2"
                       labelText={t('newCharacterPage.dnd5.race')}
@@ -227,6 +227,12 @@ export const CharactersPage = () => {
                     />
                   </Match>
                   <Match when={platform() === 'dnd2024'}>
+                    <Input
+                      classList="mb-2"
+                      labelText={t('newCharacterPage.name')}
+                      value={characterDnd2024Form.name}
+                      onInput={(value) => setCharacterDnd2024Form({ ...characterDnd2024Form, name: value })}
+                    />
                     <Select
                       classList="mb-2"
                       labelText={t('newCharacterPage.dnd2024.species')}

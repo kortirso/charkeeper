@@ -173,7 +173,7 @@ export const Dnd2024 = (props) => {
               combat={props.decoratedData.combat}
               attacks={props.decoratedData.attacks}
               features={props.decoratedData.features}
-              initialSelectedFeatures={props.decoratedData.selected_features}
+              selectedFeatures={props.decoratedData.selected_features}
               skills={props.decoratedData.skills}
               initialConditions={props.decoratedData.conditions}
               healthData={healthData()}
@@ -183,6 +183,7 @@ export const Dnd2024 = (props) => {
               onMakeHeal={makeHeal}
               onDealDamage={dealDamage}
               onSetHealthData={setHealthData}
+              onReloadCharacter={updateCharacter}
               onRefreshCharacter={refreshCharacter}
               onRestCharacter={restCharacter}
             />

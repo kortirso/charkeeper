@@ -1,4 +1,4 @@
-import { createSignal, For, Show } from 'solid-js';
+import { createSignal, For, Show, batch } from 'solid-js';
 import * as i18n from '@solid-primitives/i18n';
 
 import { Select, Checkbox, Button, IconButton } from '../../../atoms';
@@ -27,11 +27,15 @@ export const Dnd5ClassLevels = (props) => {
         .filter(item => item !== className)
         .reduce((acc, item) => { acc[item] = subclassesData()[item]; return acc; }, {} );
 
-      setClassesData(classesResult);
-      setSubclassesData(subclassesResult);
+      batch(() => {
+        setClassesData(classesResult);
+        setSubclassesData(subclassesResult);
+      });
     } else {
-      setClassesData({ ...classesData(), [className]: 1 });
-      setSubclassesData({ ...subclassesData(), [className]: null })
+      batch(() => {
+        setClassesData({ ...classesData(), [className]: 1 });
+        setSubclassesData({ ...subclassesData(), [className]: null });
+      });
     }
   }
   /* eslint-enable solid/reactivity */
