@@ -339,7 +339,7 @@ export const Dnd5 = (props) => {
           <Match when={activeTab() === 'abilities'}>
             <Dnd5Abilities
               initialAbilities={props.decoratedData.abilities}
-              initialSkills={props.decoratedData.skills}
+              skills={props.decoratedData.skills}
               modifiers={props.decoratedData.modifiers}
               saveDc={props.decoratedData.save_dc}
               proficiencyBonus={props.decoratedData.proficiency_bonus}

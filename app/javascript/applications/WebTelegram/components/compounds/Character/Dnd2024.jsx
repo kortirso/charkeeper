@@ -32,8 +32,6 @@ export const Dnd2024 = (props) => {
 
   const t = i18n.translator(dict);
 
-  // initial data fetching
-
   // only sends request
   const refreshCharacter = async (payload) => {
     const result = await updateCharacterRequest(appState.accessToken, 'dnd2024', props.characterId, { character: payload });
@@ -158,7 +156,7 @@ export const Dnd2024 = (props) => {
           <Match when={activeTab() === 'abilities'}>
             <Dnd5Abilities
               initialAbilities={props.decoratedData.abilities}
-              initialSkills={props.decoratedData.skills}
+              skills={props.decoratedData.skills}
               modifiers={props.decoratedData.modifiers}
               saveDc={props.decoratedData.save_dc}
               proficiencyBonus={props.decoratedData.proficiency_bonus}

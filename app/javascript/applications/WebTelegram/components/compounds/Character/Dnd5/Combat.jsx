@@ -2,9 +2,10 @@ import { createSignal, For, Show, Switch, Match } from 'solid-js';
 import * as i18n from '@solid-primitives/i18n';
 
 import { createModal, StatsBlock } from '../../../molecules';
-import { Input, Toggle, Checkbox, Select } from '../../../atoms';
+import { Input, Toggle, Checkbox, Select, Button, IconButton } from '../../../atoms';
 
 import { useAppLocale } from '../../../../context';
+import { Plus, Minus } from '../../../../assets';
 
 import { modifier } from '../../../../../../helpers';
 
@@ -21,7 +22,7 @@ export const Dnd5Combat = (props) => {
 
   // actions
   const toggleDamageCondition = async (damageType, slug) => {
-    const newValue = damageConditions();
+    const newValue = { ...damageConditions() };
     if (newValue[damageType].includes(slug)) {
       newValue[damageType] = newValue[damageType].filter((item) => item !== slug)
     } else {
@@ -124,15 +125,15 @@ export const Dnd5Combat = (props) => {
       <div class="flex items-center">
         <p class="flex-1">{feature.title}</p>
         <div class="flex items-center">
-          <button
-            class="py-1 px-2 border border-gray-200 rounded flex justify-center items-center"
-            onClick={(event) => props.energyData[feature.slug] !== feature.limit ? props.onSpendEnergy(event, feature.slug, feature.limit) : event.stopPropagation()}
-          >-</button>
-          <p class="w-12 text-center">{feature.limit - (props.energyData[feature.slug] || 0)} / {feature.limit}</p>
-          <button
-            class="py-1 px-2 border border-gray-200 rounded flex justify-center items-center"
-            onClick={(event) => (props.energyData[feature.slug] || 0) > 0 ? props.onRestoreEnergy(event, feature.slug) : event.stopPropagation()}
-          >+</button>
+          <IconButton onClick={(event) => props.energyData[feature.slug] !== feature.limit ? props.onSpendEnergy(event, feature.slug, feature.limit) : event.stopPropagation()}>
+            <Minus />
+          </IconButton>
+          <p class="w-12 text-center">
+            {feature.limit - (props.energyData[feature.slug] || 0)} / {feature.limit}
+          </p>
+          <IconButton onClick={(event) => (props.energyData[feature.slug] || 0) > 0 ? props.onRestoreEnergy(event, feature.slug) : event.stopPropagation()}>
+            <Plus />
+          </IconButton>
         </div>
       </div>
     );
@@ -156,18 +157,18 @@ export const Dnd5Combat = (props) => {
         onClick={openModal}
       >
         <div class="flex items-center pt-0 p-4">
-          <button class="btn-primary flex-1" onClick={() => props.onDealDamage(damageHealValue())}>{t('character.damage')}</button>
+          <Button primary smallSize classList="flex-1" text={t('character.damage')} onClick={() => props.onDealDamage(damageHealValue())} />
           <Input
             numeric
             classList="w-20 mx-4"
             value={damageHealValue()}
             onInput={(value) => setDamageHealValue(Number(value))}
           />
-          <button class="btn-primary flex-1" onClick={() => props.onMakeHeal(damageHealValue())}>{t('character.heal')}</button>
+          <Button primary smallSize classList="flex-1" text={t('character.heal')} onClick={() => props.onMakeHeal(damageHealValue())} />
         </div>
         <div class="flex justify-end items-center pt-0 p-4">
-          <button class="btn-primary btn-small text-sm mr-4" onClick={() => props.onRestCharacter({ type: 'short_rest' })}>{t('character.shortRest')}</button>
-          <button class="btn-primary btn-small text-sm" onClick={() => props.onRestCharacter({ type: 'long_rest' })}>{t('character.longRest')}</button>
+          <Button primary smallSize classList="text-sm mr-4" text={t('character.shortRest')} onClick={() => props.onRestCharacter({ type: 'short_rest' })} />
+          <Button primary smallSize classList="text-sm" text={t('character.longRest')} onClick={() => props.onRestCharacter({ type: 'long_rest' })} />
         </div>
       </StatsBlock>
       <Toggle title={t('character.damageConditions')}>
@@ -319,7 +320,7 @@ export const Dnd5Combat = (props) => {
               </div>
             }
           </For>
-          <button class="btn-primary" onClick={updateHealth}>{t('save')}</button>
+          <Button primary text={t('save')} onClick={updateHealth} />
         </div>
       </Modal>
     </>

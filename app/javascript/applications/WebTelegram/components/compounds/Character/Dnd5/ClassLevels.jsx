@@ -1,9 +1,10 @@
 import { createSignal, For, Show } from 'solid-js';
 import * as i18n from '@solid-primitives/i18n';
 
-import { Select, Checkbox } from '../../../atoms';
+import { Select, Checkbox, Button, IconButton } from '../../../atoms';
 
 import { useAppLocale } from '../../../../context';
+import { Plus, Minus } from '../../../../assets';
 
 export const Dnd5ClassLevels = (props) => {
   // changeable data
@@ -52,16 +53,14 @@ export const Dnd5ClassLevels = (props) => {
       <div class="mb-1">
         <p>{props.initialSubclasses[props.mainClass] ? `${dict().dnd5.classes[props.mainClass]} - ${dict().dnd5.subclasses[props.mainClass][props.initialSubclasses[props.mainClass]]}` : dict().dnd5.classes[props.mainClass]}</p>
         <div class="my-2 flex items-center">
-          <div class="flex justify-between items-center mr-4 w-32">
-            <button
-              class="btn-light flex justify-center items-center"
-              onClick={() => changeClassLevel(props.mainClass, 'down')}
-            >-</button>
+          <div class="flex justify-between items-center mr-4 w-24">
+            <IconButton onClick={() => changeClassLevel(props.mainClass, 'down')}>
+              <Minus />
+            </IconButton>
             <p>{classesData()[props.mainClass]}</p>
-            <button
-              class="btn-light flex justify-center items-center"
-              onClick={() => changeClassLevel(props.mainClass, 'up')}
-            >+</button>
+            <IconButton onClick={() => changeClassLevel(props.mainClass, 'up')}>
+              <Plus />
+            </IconButton>
           </div>
           <div class="flex-1">
             <Show
@@ -91,16 +90,14 @@ export const Dnd5ClassLevels = (props) => {
             <Show when={classesData()[slug]}>
               <>
                 <div class="my-2 flex items-center">
-                  <div class="flex justify-between items-center mr-4 w-32">
-                    <button
-                      class="btn-light flex justify-center items-center"
-                      onClick={() => changeClassLevel(slug, 'down')}
-                    >-</button>
+                  <div class="flex justify-between items-center mr-4 w-24">
+                    <IconButton onClick={() => changeClassLevel(slug, 'down')}>
+                      <Minus />
+                    </IconButton>
                     <p>{classesData()[slug]}</p>
-                    <button
-                      class="btn-light flex justify-center items-center"
-                      onClick={() => changeClassLevel(slug, 'up')}
-                    >+</button>
+                    <IconButton onClick={() => changeClassLevel(slug, 'up')}>
+                      <Plus />
+                    </IconButton>
                   </div>
                   <div class="flex-1">
                     <Show
@@ -121,7 +118,7 @@ export const Dnd5ClassLevels = (props) => {
           </div>
         }
       </For>
-      <button class="btn-primary mt-2" onClick={updateClasses}>{t('save')}</button>
+      <Button primary classList="mt-2" text={t('save')} onClick={updateClasses} />
     </div>
   );
 }

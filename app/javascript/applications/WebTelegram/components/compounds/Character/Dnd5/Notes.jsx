@@ -2,7 +2,7 @@ import { createSignal, createEffect, For, Show, batch } from 'solid-js';
 import { createStore } from 'solid-js/store';
 import * as i18n from '@solid-primitives/i18n';
 
-import { Input, Toggle } from '../../../atoms';
+import { Input, Toggle, Button, IconButton } from '../../../atoms';
 
 import { useAppState, useAppLocale } from '../../../../context';
 import { Close } from '../../../../assets';
@@ -79,28 +79,27 @@ export const Dnd5Notes = () => {
               />
             </div>
             <div class="flex justify-end mt-4">
-              <button class="btn-primary mr-4" onClick={cancelNote}>{t('cancel')}</button>
-              <button class="btn-primary" onClick={saveNote}>{t('save')}</button>
+              <Button primary smallSize classList="mr-4" text={t('cancel')} onClick={cancelNote} />
+              <Button primary smallSize text={t('save')} onClick={saveNote} />
             </div>
           </div>
         }
       >
-        <button
-          class="btn-primary mb-4 w-full uppercase"
+        <Button
+          primary
+          classList="mb-4 w-full uppercase"
+          text={t('character.newNote')}
           onClick={() => setActiveNewNoteTab(true)}
-        >{t('character.newNote')}</button>
+        />
         <Show when={notes() !== undefined}>
           <For each={notes()}>
             {(note) =>
               <Toggle title={
                 <div class="flex items-center">
                   <p class="flex-1">{note.title}</p>
-                  <button
-                    class="btn-light btn-small"
-                    onClick={(event) => removeNote(event, note.id)}
-                  >
+                  <IconButton onClick={(e) => removeNote(e, note.id)}>
                     <Close />
-                  </button>
+                  </IconButton>
                 </div>
               }>
                 <p

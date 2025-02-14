@@ -2,9 +2,10 @@ import { createSignal, For, Show, createMemo, batch, Switch, Match } from 'solid
 import * as i18n from '@solid-primitives/i18n';
 
 import { createModal, StatsBlock } from '../../../molecules';
-import { Input } from '../../../atoms';
+import { Input, Button, IconButton } from '../../../atoms';
 
 import { useAppLocale } from '../../../../context';
+import { Close } from '../../../../assets';
 
 export const Dnd5Equipment = (props) => {
   const [coinsData, setCoinsData] = createSignal(props.initialCoins);
@@ -83,24 +84,25 @@ export const Dnd5Equipment = (props) => {
                   >{item.quantity}</p>
                 </td>
                 <td>
-                  <Switch>
-                    <Match when={item.ready_to_use}>
-                      <span
-                        class="text-sm cursor-pointer"
-                        onClick={() => props.onUpdateCharacterItem(item, { character_item: { ready_to_use: false } })}
-                      >Pack</span>
-                    </Match>
-                    <Match when={!item.ready_to_use}>
-                      <span
-                        class="text-sm cursor-pointer"
-                        onClick={() => props.onUpdateCharacterItem(item, { character_item: { ready_to_use: true } })}
-                      >Equip</span>
-                    </Match>
-                  </Switch>
-                  <span
-                    class="ml-2 text-sm cursor-pointer"
-                    onClick={() => props.onRemoveCharacterItem(item)}
-                  >X</span>
+                  <div class="flex items-center">
+                    <Switch>
+                      <Match when={item.ready_to_use}>
+                        <span
+                          class="text-sm cursor-pointer"
+                          onClick={() => props.onUpdateCharacterItem(item, { character_item: { ready_to_use: false } })}
+                        >Pack</span>
+                      </Match>
+                      <Match when={!item.ready_to_use}>
+                        <span
+                          class="text-sm cursor-pointer"
+                          onClick={() => props.onUpdateCharacterItem(item, { character_item: { ready_to_use: true } })}
+                        >Equip</span>
+                      </Match>
+                    </Switch>
+                    <IconButton classList="ml-2 text-sm" onClick={() => props.onRemoveCharacterItem(item)}>
+                      <Close />
+                    </IconButton>
+                  </div>
                 </td>
               </tr>
             }
@@ -121,10 +123,7 @@ export const Dnd5Equipment = (props) => {
         onClick={changeCoins}
       />
       <Show when={props.characterItems !== undefined}>
-        <button
-          class="btn-primary mb-2"
-          onClick={props.onNavigatoToItems} // eslint-disable-line solid/reactivity
-        >{t('character.items')}</button>
+        <Button primary classList="mb-2" text={t('character.items')} onClick={props.onNavigatoToItems} />
         {renderItemsBox(t('character.equipment'), props.characterItems.filter((item) => item.ready_to_use))}
         {renderItemsBox(t('character.backpack'), props.characterItems.filter((item) => !item.ready_to_use))}
         <div class="flex justify-end">
@@ -150,7 +149,7 @@ export const Dnd5Equipment = (props) => {
                   </div>
                 }
               </For>
-              <button class="btn-primary" onClick={updateCoins}>{t('save')}</button>
+              <Button primary text={t('save')} onClick={updateCoins} />
             </Match>
             <Match when={modalOpenMode() === 'changeItemQuantity'}>
               <div>
@@ -170,7 +169,7 @@ export const Dnd5Equipment = (props) => {
                   value={changingItem().notes}
                 />
               </div>
-              <button class="btn-primary" onClick={updateItem}>{t('save')}</button>
+              <Button primary text={t('save')} onClick={updateItem} />
             </Match>
           </Switch>
         </div>

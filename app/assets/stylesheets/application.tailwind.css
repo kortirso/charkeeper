@@ -28,24 +28,24 @@
   max-height: 90%;
 }
 
-.btn {
-  @apply py-2 px-4 rounded border font-medium cursor-pointer;
-}
-
 .btn-primary {
-  @apply btn bg-blue-50 text-blue-600 border-blue-600;
+  @apply rounded border bg-blue-50 text-blue-600 border-blue-600;
 }
 
 .btn-light {
-  @apply btn bg-blue-50 text-blue-300 border-blue-300;
+  @apply rounded border bg-blue-50 text-blue-300 border-blue-300;
 }
 
 .btn-warning {
-  @apply btn bg-red-50 text-red-600 border-red-600;
+  @apply rounded border bg-red-50 text-red-600 border-red-600;
+}
+
+.btn {
+  @apply py-2 px-4 font-medium cursor-pointer;
 }
 
 .btn-small {
-  @apply p-1;
+  @apply btn p-1;
 }
 
 .bordered {
@@ -96,37 +96,11 @@
 }
 
 .toggle {
-  @apply relative inline-block select-none w-8;
+  @apply w-6 h-6 border border-blue-400 bg-white rounded flex justify-center items-center cursor-pointer;
 }
 
-.toggle .toggle-checkbox {
-  @apply transition-all absolute block cursor-pointer appearance-none rounded-full bg-white border-none w-4 h-4;
-
-  top: 2px;
-  left: 2px;
-}
-
-.toggle .toggle-checkbox:checked {
-  @apply bg-white;
-
-  left: calc(100% - 18px);
-}
-
-.toggle .toggle-checkbox + .toggle-label {
-  @apply block cursor-pointer overflow-hidden rounded-full bg-blue-200 border-2 border-blue-200 transition-colors w-8 h-5;
-}
-
-.toggle:hover .toggle-checkbox:enabled + .toggle-label {
-  @apply border-blue-200;
-}
-
-.toggle .toggle-checkbox:checked + .toggle-label,
-.toggle:hover .toggle-checkbox:checked + .toggle-label {
-  @apply bg-blue-600 border-blue-600;
-}
-
-.toggle .toggle-checkbox:checked:disabled + .toggle-label {
-  @apply bg-blue-200;
+.toggle.checked {
+  @apply bg-blue-400 text-white;
 }
 
 .form-field .form-value {

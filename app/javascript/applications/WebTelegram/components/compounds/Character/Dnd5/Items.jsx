@@ -1,9 +1,10 @@
 import { For, Show } from 'solid-js';
 import * as i18n from '@solid-primitives/i18n';
 
-import { Toggle } from '../../../atoms';
+import { Toggle, IconButton } from '../../../atoms';
 
 import { useAppLocale } from '../../../../context';
+import { Plus } from '../../../../assets';
 
 export const Dnd5Items = (props) => {
   const [, dict] = useAppLocale();
@@ -31,10 +32,9 @@ export const Dnd5Items = (props) => {
                 <td class="py-1 text-center">{item.data.weight}</td>
                 <td class="py-1 text-center">{item.data.price / 100}</td>
                 <td>
-                  <p
-                    class="btn-primary btn-small"
-                    onClick={() => props.onBuyItem(item)}
-                  >+</p>
+                  <IconButton onClick={() => props.onBuyItem(item)}>
+                    <Plus />
+                  </IconButton>
                 </td>
               </tr>
             }

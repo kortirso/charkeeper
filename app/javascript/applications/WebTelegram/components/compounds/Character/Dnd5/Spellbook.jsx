@@ -2,7 +2,7 @@ import { createSignal, For, Show, createMemo } from 'solid-js';
 import * as i18n from '@solid-primitives/i18n';
 
 import { StatsBlock } from '../../../molecules';
-import { Select, Checkbox } from '../../../atoms';
+import { Select, Checkbox, Button } from '../../../atoms';
 
 import { useAppLocale } from '../../../../context';
 
@@ -39,9 +39,6 @@ export const Dnd5Spellbook = (props) => {
     const statisSpells = props.spells.filter((item) => Object.keys(props.staticCharacterSpells).includes(item.slug));
     const result = Object.entries(props.staticCharacterSpells).map(([slug, item]) => {
       const spell = statisSpells.find((item) => item.slug === slug);
-
-      console.log(spell)
-
       return { slug: slug, name: spell.name, level: spell.level, data: item }
     });
 
@@ -113,10 +110,7 @@ export const Dnd5Spellbook = (props) => {
         </div>
       </Show>
       <Show when={CLASSES_LEARN_SPELLS.includes(activeSpellClass())}>
-        <button
-          class="btn-primary mb-2"
-          onClick={props.onNavigatoToSpells} // eslint-disable-line solid/reactivity
-        >{t('character.knownSpells')}</button>
+        <Button primary classList="mb-2" text={t('character.knownSpells')} onClick={props.onNavigatoToSpells} />
       </Show>
       <div class="white-box mb-2 p-4">
         <div class="flex justify-between items-center">
@@ -178,17 +172,18 @@ export const Dnd5Spellbook = (props) => {
               <div class="flex">
                 <For each={[...Array((props.spentSpellSlots[level] || 0)).keys()]}>
                   {() =>
-                    <p
-                      class="w-6 h-6 rounded bg-black mr-1 cursor-pointer"
-                      onClick={() => props.onFreeSpellSlot(level)}
+                    <Checkbox
+                      checked
+                      classList="mr-1"
+                      onToggle={() => props.onFreeSpellSlot(level)}
                     />
                   }
                 </For>
                 <For each={[...Array(slotsAmount - (props.spentSpellSlots[level] || 0)).keys()]}>
                   {() =>
-                    <p
-                      class="w-6 h-6 rounded border-2 border-black mr-1 cursor-pointer"
-                      onClick={() => props.onSpendSpellSlot(level)}
+                    <Checkbox
+                      classList="mr-1"
+                      onToggle={() => props.onSpendSpellSlot(level)}
                     />
                   }
                 </For>

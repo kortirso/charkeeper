@@ -3,7 +3,7 @@ import { createStore } from 'solid-js/store';
 import * as i18n from '@solid-primitives/i18n';
 
 import { createModal, PageHeader } from '../molecules';
-import { Select, Input } from '../atoms';
+import { Select, Input, IconButton, Button } from '../atoms';
 
 import { Close } from '../../assets';
 import { useAppState, useAppLocale, useAppAlert } from '../../context';
@@ -53,7 +53,6 @@ export const CharactersPage = () => {
     if (platform() === undefined) return;
 
     const formData = platform() === 'dnd5' ? characterDnd5Form : characterDnd2024Form;
-
     const result = await createCharacterRequest(appState.accessToken, platform(), { character: formData });
     
     if (result.errors === undefined) {
@@ -96,10 +95,12 @@ export const CharactersPage = () => {
             {t('charactersPage.title')}
           </PageHeader>
           <div class="p-4 flex-1 overflow-y-scroll">
-            <button
-              class="btn-primary mb-4 w-full uppercase"
+            <Button
+              primary
+              classList='mb-4 w-full uppercase'
+              text={t('charactersPage.new')}
               onClick={() => setCurrentTab('newCharacter')}
-            >{t('charactersPage.new')}</button>
+            />
             <Show when={characters() !== undefined}>
               <For each={characters()}>
                 {(character) =>
@@ -126,9 +127,9 @@ export const CharactersPage = () => {
                             {Object.keys(character.object_data.classes).map((item) => t(`dnd5.classes.${item}`)).join(' * ')}
                           </p>
                         </div>
-                        <div>
-                          <p class="btn-light btn-small" onClick={(e) => deleteCharacter(e, character.id)}><Close /></p>
-                        </div>
+                        <IconButton big onClick={(e) => deleteCharacter(e, character.id)}>
+                          <Close />
+                        </IconButton>
                       </Match>
                       <Match when={character.provider === 'dnd2024'}>
                         <div class="mr-2">
@@ -148,9 +149,9 @@ export const CharactersPage = () => {
                             {Object.keys(character.object_data.classes).map((item) => t(`dnd2024.classes.${item}`)).join(' * ')}
                           </p>
                         </div>
-                        <div>
-                          <p class="btn-light btn-small" onClick={(e) => deleteCharacter(e, character.id)}><Close /></p>
-                        </div>
+                        <IconButton big onClick={(e) => deleteCharacter(e, character.id)}>
+                          <Close />
+                        </IconButton>
                       </Match>
                     </Switch>
                   </div>
@@ -235,7 +236,9 @@ export const CharactersPage = () => {
                   </Match>
                 </Switch>
               </div>
-              <button class="btn-primary mt-4" onClick={saveCharacter}>{t('save')}</button>
+              <div class="flex justify-end">
+                <Button primary classList='mt-4' text={t('save')} onClick={saveCharacter} />
+              </div>
             </div>
           </div>
         </Match>
@@ -243,8 +246,8 @@ export const CharactersPage = () => {
       <Modal>
         <p class="mb-4 text-center">{t('deleteCharacterConfirm')}</p>
         <div class="flex w-full">
-          <button class="flex-1 btn-primary mr-4" onClick={closeModal}>{t('cancel')}</button>
-          <button class="flex-1 btn-warning ml-4" onClick={confirmCharacterDeleting}>{t('delete')}</button>
+          <Button primary classList='flex-1 mr-4' text={t('cancel')} onClick={closeModal} />
+          <Button warning classList='flex-1 ml-4' text={t('delete')} onClick={confirmCharacterDeleting} />
         </div>
       </Modal>
     </>
