@@ -18,12 +18,13 @@ module Dnd2024
 
       SHORT_REST = 'short_rest'
       LONG_REST = 'long_rest'
+      ONE_AT_SHORT_REST = 'one_at_short_rest' # 1 заряд восстанавливается при коротком отдыхе
 
       enum :origin, { SPECIES_ORIGIN => 0, CLASS_ORIGIN => 1 }
       enum :kind, {
         STATIC => 0, STATIC_LIST => 1, DYNAMIC_LIST => 2, CHOOSE_FROM => 3, TEXT => 4, UPDATE_RESULT => 5, CHOOSE_ONE_FROM => 6
       }
-      enum :limit_refresh, { SHORT_REST => 0, LONG_REST => 1 }
+      enum :limit_refresh, { SHORT_REST => 0, LONG_REST => 1, ONE_AT_SHORT_REST => 2 }
     end
   end
 end

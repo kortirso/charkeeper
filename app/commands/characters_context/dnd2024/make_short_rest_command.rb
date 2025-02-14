@@ -16,6 +16,10 @@ module CharactersContext
           ::Dnd2024::Character::Feature
             .where(slug: input[:character].data.energy.keys, limit_refresh: 'short_rest')
             .pluck(:slug)
+        # input[:refresh_one_energy_slugs] =
+        #   ::Dnd2024::Character::Feature
+        #     .where(slug: input[:character].data.energy.keys, limit_refresh: 'one_at_short_rest')
+        #     .pluck(:slug)
       end
 
       def do_persist(input)
