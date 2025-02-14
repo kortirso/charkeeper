@@ -17,6 +17,10 @@ en:
             key?: Species is required
             filled?: Species must be filled
             included_in?: Invalid species value
+          size:
+            key?: Size is required
+            filled?: Size must be filled
+            included_in?: Invalid size value
           main_class:
             key?: Class is required
             filled?: Class must be filled

@@ -11,6 +11,19 @@ import { fetchCharactersRequest } from '../../requests/fetchCharactersRequest';
 import { createCharacterRequest } from '../../requests/createCharacterRequest';
 import { removeCharacterRequest } from '../../requests/removeCharacterRequest';
 
+const CHARACTER_SIZES = {
+  'human': ['medium', 'small'],
+  'dwarf': ['medium'],
+  'elf': ['medium'],
+  'halfling': ['small'],
+  'dragonborn': ['medium'],
+  'gnome': ['small'],
+  'orc': ['medium'],
+  'tiefling': ['medium', 'small'],
+  'aasimar': ['medium', 'small'],
+  'goliath': ['medium']
+}
+
 export const CharactersPage = () => {
   const [currentTab, setCurrentTab] = createSignal('characters');
   const [characters, setCharacters] = createSignal(undefined);
@@ -26,6 +39,7 @@ export const CharactersPage = () => {
   const [characterDnd2024Form, setCharacterDnd2024Form] = createStore({
     name: '',
     species: undefined,
+    size: undefined,
     main_class: undefined,
     alignment: 'neutral'
   });
@@ -59,7 +73,7 @@ export const CharactersPage = () => {
       batch(() => {
         setCharacters(characters().concat(result.character));
         setCharacterDnd5Form({ name: '', race: undefined, subrace: undefined, main_class: undefined, alignment: 'neutral' });
-        setCharacterDnd2024Form({ name: '', species: undefined, main_class: undefined, alignment: 'neutral' });
+        setCharacterDnd2024Form({ name: '', species: undefined, size: undefined, main_class: undefined, alignment: 'neutral' });
         setCurrentTab('characters');
       });
     } else renderAlerts(result.errors);
@@ -218,7 +232,14 @@ export const CharactersPage = () => {
                       labelText={t('newCharacterPage.dnd2024.species')}
                       items={dict().dnd2024.species}
                       selectedValue={characterDnd2024Form.species}
-                      onSelect={(value) => setCharacterDnd2024Form({ ...characterDnd2024Form, species: value })}
+                      onSelect={(value) => setCharacterDnd2024Form({ ...characterDnd2024Form, species: value, size: CHARACTER_SIZES[value][0] })}
+                    />
+                    <Select
+                      classList="mb-2"
+                      labelText={t('newCharacterPage.dnd2024.size')}
+                      items={characterDnd2024Form.species ? CHARACTER_SIZES[characterDnd2024Form.species].reduce((acc, item) => { acc[item] = t(`dnd2024.sizes.${item}`); return acc; }, {}) : {}}
+                      selectedValue={characterDnd2024Form.size}
+                      onSelect={(value) => setCharacterDnd2024Form({ ...characterDnd2024Form, size: value })}
                     />
                     <Select
                       classList="mb-2"

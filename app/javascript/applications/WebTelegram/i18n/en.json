@@ -30,6 +30,7 @@
     },
     "dnd2024": {
       "species": "Species",
+      "size": "Size",
       "mainClass": "Main class",
       "alignment": "Alignment"
     }
@@ -395,6 +396,10 @@
       "tiefling": "Tiefling",
       "aasimar": "Aasimar",
       "goliath": "Goliath"
+    },
+    "sizes": {
+      "medium": "Medium",
+      "small": "Small"
     },
     "classes": {
       "barbarian": "Barbarian",

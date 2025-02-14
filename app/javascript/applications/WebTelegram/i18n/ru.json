@@ -30,6 +30,7 @@
     },
     "dnd2024": {
       "species": "Вид",
+      "size": "Размер",
       "mainClass": "Основной класс",
       "alignment": "Мировоззрение"
     }
@@ -395,6 +396,10 @@
       "tiefling": "Тифлинг",
       "aasimar": "Аасимар",
       "goliath": "Голиаф"
+    },
+    "sizes": {
+      "medium": "Средний",
+      "small": "Маленький"
     },
     "classes": {
       "barbarian": "Варвар",

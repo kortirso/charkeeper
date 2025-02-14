@@ -20,8 +20,18 @@ module CharactersContext
           required(:user).filled(type?: User)
           required(:name).filled(:string)
           required(:species).filled(Species)
+          required(:size).filled(:string)
           required(:main_class).filled(Classes)
           required(:alignment).filled(Alignments)
+        end
+
+        rule(:species, :size) do
+          next if values[:species].nil?
+
+          species_sizes = ::Dnd2024::Character::SIZES[values[:species]]
+          next if species_sizes&.include?(values[:size])
+
+          key(:size).failure(:invalid)
         end
       end
 
@@ -29,7 +39,7 @@ module CharactersContext
 
       def do_prepare(input)
         input[:data] =
-          decorate_fresh_character(input.slice(:species, :main_class, :alignment).symbolize_keys)
+          decorate_fresh_character(input.slice(:species, :size, :main_class, :alignment).symbolize_keys)
       end
 
       def do_persist(input)
