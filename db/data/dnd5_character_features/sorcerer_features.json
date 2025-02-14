@@ -214,7 +214,8 @@
       "dragon_ancestor_black", "dragon_ancestor_blue", "dragon_ancestor_brass", "dragon_ancestor_bronze", "dragon_ancestor_copper",
       "dragon_ancestor_gold", "dragon_ancestor_green", "dragon_ancestor_red", "dragon_ancestor_silver", "dragon_ancestor_white"
     ],
-    "visible": "true"
+    "visible": "true",
+    "choose_once": true
   },
   {
     "slug": "draconic_resilience",

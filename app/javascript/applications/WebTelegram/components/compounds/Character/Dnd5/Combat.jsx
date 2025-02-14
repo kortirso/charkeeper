@@ -12,8 +12,11 @@ import { modifier } from '../../../../../../helpers';
 export const Dnd5Combat = (props) => {
   // changeable data
   const [damageConditions, setDamageConditions] = createSignal(props.initialConditions);
-  const [selectedFeaturesData, setSelectedFeaturesData] = createSignal(props.initialSelectedFeatures);
   const [damageHealValue, setDamageHealValue] = createSignal(0);
+  const [onceSelectedFeaturesData, setOnceSelectedFeaturesData] = createSignal({});
+  const [textFeaturesData, setTextFeaturesData] = createSignal(
+    props.features.filter((item) => item.kind === 'text').reduce((acc, item) => { acc[item.slug] = props.selectedFeatures[item.slug]; return acc; }, {}) // eslint-disable-line solid/reactivity
+  );
 
   const { Modal, openModal, closeModal } = createModal();
   const [, dict] = useAppLocale();
@@ -34,31 +37,25 @@ export const Dnd5Combat = (props) => {
   }
 
   const toggleSelectedFeatureOption = async (feature, option) => {
-    const selectedOptions = selectedFeaturesData()[feature.slug];
+    const selectedOptions = props.selectedFeatures[feature.slug];
 
     let newData;
     if (selectedOptions) {
       if (selectedOptions.includes(option)) {
-        newData = { ...selectedFeaturesData(), [feature.slug]: selectedOptions.filter((item) => item !== option) }
+        newData = { ...props.selectedFeatures, [feature.slug]: selectedOptions.filter((item) => item !== option) }
       } else {
-        newData = { ...selectedFeaturesData(), [feature.slug]: selectedOptions.concat(option) }
+        newData = { ...props.selectedFeatures, [feature.slug]: selectedOptions.concat(option) }
       }
     } else {
-      newData = { ...selectedFeaturesData(), [feature.slug]: [option] }
+      newData = { ...props.selectedFeatures, [feature.slug]: [option] }
     }
 
-    const result = await props.onRefreshCharacter({ selected_features: newData });
-    if (result.errors === undefined) setSelectedFeaturesData(newData);
+    await props.onReloadCharacter({ selected_features: newData });
   }
 
   const setSelectedFeatureOption = async (feature, value) => {
-    const newData = { ...selectedFeaturesData(), [feature.slug]: value }
-    const result = await props.onRefreshCharacter({ selected_features: newData });
-    if (result.errors === undefined) setSelectedFeaturesData(newData);
-  }
-
-  const setTextFeatureOption = (feature, value) => {
-    setSelectedFeaturesData({ ...selectedFeaturesData(), [feature.slug]: value });
+    const newData = { ...props.selectedFeatures, [feature.slug]: value }
+    await props.onReloadCharacter({ selected_features: newData });
   }
 
   // submits
@@ -68,8 +65,14 @@ export const Dnd5Combat = (props) => {
     if (result.errors === undefined) closeModal();
   }
 
-  const updateTextFeature = async () => {
-    await props.onRefreshCharacter({ selected_features: selectedFeaturesData() });
+  const updateTextFeature = async (slug) => {
+    const newData = { ...props.selectedFeatures, [slug]: textFeaturesData()[slug] }
+    await props.onRefreshCharacter({ selected_features: newData });
+  }
+
+  const confirmOnceSelectedFeaturesData = async (slug) => {
+    const newData = { ...props.selectedFeatures, [slug]: onceSelectedFeaturesData()[slug] }
+    await props.onReloadCharacter({ selected_features: newData });
   }
 
   // rendering
@@ -167,8 +170,8 @@ export const Dnd5Combat = (props) => {
           <Button primary smallSize classList="flex-1" text={t('character.heal')} onClick={() => props.onMakeHeal(damageHealValue())} />
         </div>
         <div class="flex justify-end items-center pt-0 p-4">
-          <Button primary smallSize classList="text-sm mr-4" text={t('character.shortRest')} onClick={() => props.onRestCharacter({ type: 'short_rest' })} />
-          <Button primary smallSize classList="text-sm" text={t('character.longRest')} onClick={() => props.onRestCharacter({ type: 'long_rest' })} />
+          <Button primary smallSize classList="mr-4" text={t('character.shortRest')} onClick={() => props.onRestCharacter({ type: 'short_rest' })} />
+          <Button primary smallSize text={t('character.longRest')} onClick={() => props.onRestCharacter({ type: 'long_rest' })} />
         </div>
       </StatsBlock>
       <Toggle title={t('character.damageConditions')}>
@@ -231,10 +234,10 @@ export const Dnd5Combat = (props) => {
                   {(option) =>
                     <div class="mb-2">
                       <Checkbox
-                        labelText={t(`dnd5.selectedFeatures.${option}`)}
+                        labelText={t(`dnd.selectedFeatures.${option}`)}
                         labelPosition="right"
                         labelClassList="text-sm ml-4"
-                        checked={selectedFeaturesData()[feature.slug]?.includes(option)}
+                        checked={props.selectedFeatures[feature.slug]?.includes(option)}
                         onToggle={() => toggleSelectedFeatureOption(feature, option)}
                       />
                     </div>
@@ -246,12 +249,33 @@ export const Dnd5Combat = (props) => {
                   class="text-sm mb-2"
                   innerHTML={feature.description} // eslint-disable-line solid/no-innerhtml
                 />
-                <Select
-                  classList="w-full mb-2"
-                  items={feature.options.reduce((acc, option) => { acc[option] = t(`dnd5.selectedFeatures.${option}`); return acc; }, {})}
-                  selectedValue={selectedFeaturesData()[feature.slug]}
-                  onSelect={(option) => setSelectedFeatureOption(feature, option)}
-                />
+                <Switch>
+                  <Match when={feature.choose_once && !props.selectedFeatures[feature.slug]}>
+                    <Select
+                      classList="w-full mb-2"
+                      items={feature.options.reduce((acc, option) => { acc[option] = t(`dnd.${feature.options_type || 'selectedFeatures'}.${option}`); return acc; }, {})}
+                      selectedValue={onceSelectedFeaturesData()[feature.slug]}
+                      onSelect={(option) => setOnceSelectedFeaturesData({ ...onceSelectedFeaturesData(), [feature.slug]: option })}
+                    />
+                    <Button
+                      primary
+                      smallSize
+                      text={t('character.confirmChooseOnceFeature')}
+                      onClick={() => confirmOnceSelectedFeaturesData(feature.slug)}
+                    />
+                  </Match>
+                  <Match when={feature.choose_once && props.selectedFeatures[feature.slug]}>
+                    <p>{t(`dnd.selectedFeatures.${props.selectedFeatures[feature.slug]}`)}</p>
+                  </Match>
+                  <Match when={!feature.choose_once}>
+                    <Select
+                      classList="w-full mb-2"
+                      items={feature.options.reduce((acc, option) => { acc[option] = t(`dnd.selectedFeatures.${option}`); return acc; }, {})}
+                      selectedValue={props.selectedFeatures[feature.slug]}
+                      onSelect={(option) => setSelectedFeatureOption(feature, option)}
+                    />
+                  </Match>
+                </Switch>
               </Match>
               <Match when={feature.kind === 'choose_from' && feature.options_type === 'selected_skills'}>
                 <p
@@ -265,24 +289,12 @@ export const Dnd5Combat = (props) => {
                         labelText={t(`skills.${option}`)}
                         labelPosition="right"
                         labelClassList="text-sm ml-4"
-                        checked={selectedFeaturesData()[feature.slug]?.includes(option)}
+                        checked={props.selectedFeatures[feature.slug]?.includes(option)}
                         onToggle={() => toggleSelectedFeatureOption(feature, option)}
                       />
                     </div>
                   }
                 </For>
-              </Match>
-              <Match when={feature.kind === 'choose_one_from' && feature.options_type === 'spell_wizard_0'}>
-                <p
-                  class="text-sm mb-2"
-                  innerHTML={feature.description} // eslint-disable-line solid/no-innerhtml
-                />
-                <Select
-                  classList="w-full mb-2"
-                  items={{}}
-                  selectedValue={selectedFeaturesData()[feature.slug]}
-                  onSelect={(option) => setSelectedFeatureOption(feature, option)}
-                />
               </Match>
               <Match when={feature.kind === 'text'}>
                 <p
@@ -292,13 +304,11 @@ export const Dnd5Combat = (props) => {
                 <textarea
                   rows="5"
                   class="w-full border border-gray-200 rounded p-1 text-sm"
-                  onInput={(e) => setTextFeatureOption(feature, e.target.value)}
-                  value={selectedFeaturesData()[feature.slug] || ''}
+                  onInput={(e) => setTextFeaturesData({ ...textFeaturesData(), [feature.slug]: e.target.value })}
+                  value={textFeaturesData()[feature.slug] || ''}
                 />
-                <div class="flex justify-end">
-                  <button class="btn-primary mt-2" onClick={() => updateTextFeature(feature)}>
-                    {t('save')}
-                  </button>
+                <div class="flex justify-end mt-2">
+                  <Button primary smallSize text={t('save')} onClick={() => updateTextFeature(feature.slug)} />
                 </div>
               </Match>
             </Switch>

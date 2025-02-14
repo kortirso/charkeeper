@@ -53,6 +53,7 @@
     "options_type": null,
     "options": ["arctic", "coast", "desert", "forest", "grassland", "mountain", "swamp", "underdark"],
     "visible": "true",
-    "eval_variables": {}
+    "eval_variables": {},
+    "choose_once": true
   }
 ]
