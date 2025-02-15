@@ -13,6 +13,7 @@ item;block_tackle;Block and Tackle;Блок и лебёдка;100;5
 item;book;Book;Книга;2500;5
 item;bottle_glass;Bottle, glass;Бутылка, стеклянная;200;2
 item;bucket;Bucket;Ведро;5;2
+item;burglar_pack;Burglar's Pack;Набор взломщика;1600;42
 item;caltrops;Caltrops (bag of 20);Калтропы (20 штук);100;2
 item;candle;Candle;Свеча;1;0
 item;case_bolt;Case, crossbow bolt;Контейнер для арбалетных болтов;100;1
@@ -27,6 +28,10 @@ item;clothes_fine;Clothes, fine;Одежда, отличная;1500;6
 item;clothes_traveler;Clothes, traveler's;Одежда, дорожная;200;4
 item;component_pouch;Component Pouch;Мешочек с компонентами;2500;2
 item;crowbar;Crowbar;Ломик;200;5
+item;diplomat_pack;Diplomat's Pack;Набор дипломата;3900;39
+item;dungeoneer_pack;Dungeoneer's Pack;Набор исследователя подземелий;1200;55
+item;entertainer_pack;Entertainer's Pack;Набор артиста;4000;58.5
+item;explorer_pack;Explorer's Pack;Набор путешественника;1000;55
 item;fishing_tackle;Fishing Tackle;Комплект для рыбалки;100;4
 item;flask;Flask;Фляга;2;1
 item;tankard;Tankard;Большая кружка;2;1
@@ -47,8 +52,10 @@ item;lantern_hooded;Lantern, hooded;Фонарь, закрытый;500;2
 item;lock;Lock;Замок;1000;1
 item;magnifying_glass;Magnifying glass;Увеличительное стекло;10000;0
 item;manacles;Manacles;Кандалы;200;6
+item;map;Map;Карта;100;0
 item;mess_kit;Mess kit;Столовый набор;20;1
 item;mirror_steel;Mirror, steel;Зеркало, стальное;500;0.5
+item;net;Net;Сеть;100;3
 item;oil_flask;Oil;Масло;10;1
 item;paper;Paper;Бумага;20;0
 item;parchment;Parchment;Пергамент;10;0
@@ -59,6 +66,7 @@ item;poison_basic;Poison, basic;Яд, простой;10000;0
 item;pole;Pole (10-foot);Шест (10 футов);5;7
 item;pot_iron;Pot,iron;Горшок, железный;200;10
 item;pouch;Pouch;Кошель;50;1
+item;priest_pack;Priest's Pack;Набор священника;3300;29
 item;quiver;Quiver;Колчан;100;1
 item;ram_portable;Ram, portable;таран, портативный;400;35
 item;rations;Rations (1 day);Рацион (1 день);50;2
@@ -67,12 +75,15 @@ item;rope_hempen;Rope, hempen (50 feet);Верёвка, пеньковая (50 �
 item;rope_silk;Rope, silk (50 feet);Верёвка, шёлковая (50 футов);1000;5
 item;sack;Sack;Мешок;1;0.5
 item;scale_merchant;Scale, merchant's;Весы, торговые;500;3
+item;scholar_pack;Scholar's Pack;Набор учёного;4000;22
 item;sealing_wax;Sealing wax;Воск;50;0
 item;shovel;Shovel;Лопата;200;5
 item;signal_whistle;Signal whistle;Сигнальный свисток;5;0
 item;signet_ring;Signet ring;Кольцо-печатка;500;0
 item;soap;Soap;Мыло;2;0
 item;spellbook;Spellbook;Книга заклинаний;5000;3
+item;spell_scroll_cantrip;Spell scroll, cantrip;Свиток заклинания, заговор;3000;0
+item;spell_scroll;Spell scroll;Свиток заклинания;5000;0
 item;spike_iron;Spike, iron;Шип, железный;10;0.5
 item;spyglass;Spyglass;Подзорная труба;100000;1
 item;tent;Tent;Палатка;200;20
@@ -85,6 +96,7 @@ ammo;arrow;Arrow;Стрела;5;0.05
 ammo;blowgun_needle;Blowgun needle;Игла для трубки;2;0.02
 ammo;crossbow_bolt;Crossbow bolt;Арбалетный болт;5;0.1
 ammo;sling_bullet;Sling bullet;Снаряд для пращи;1;0.1
+ammo;firearm_bullet;Firearm bullet;Пуля;30;0.2
 focus;crystal;Crystal;Кристалл;1000;1
 focus;orb;Orb;Сфера;2000;3
 focus;rod;Rod;Жезл;1000;2
