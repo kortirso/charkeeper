@@ -183,5 +183,102 @@
     "options": null,
     "visible": "true",
     "eval_variables": {}
+  },
+  {
+    "slug": "purity_of_body",
+    "title": { "en": "Purity of Body", "ru": "Чистота тела" },
+    "description": { "en": "", "ru": "" },
+    "origin": "class",
+    "origin_value": "monk",
+    "level": 10,
+    "kind": "update_result",
+    "options_type": null,
+    "options": null,
+    "visible": "true",
+    "eval_variables": {
+      "result": "result[:immunities] = result[:immunities].concat(%w[poison disease]).uniq"
+    }
+  },
+  {
+    "slug": "tongue_of_the_sun_and_moon",
+    "title": { "en": "Tongue of the Sun and Moon", "ru": "Язык солнца и луны" },
+    "description": {
+      "en": "You understand all spoken languages.",
+      "ru": "Вы понимаете речь на любом языке."
+    },
+    "origin": "class",
+    "origin_value": "monk",
+    "level": 13,
+    "kind": "static",
+    "options_type": null,
+    "options": null,
+    "visible": "true",
+    "eval_variables": {}
+  },
+  {
+    "slug": "tongue_of_the_sun_and_moon",
+    "title": { "en": "Tongue of the Sun and Moon", "ru": "Язык солнца и луны" },
+    "description": {
+      "en": "Whenever you make a saving throw and fail, you can spend 1 ki point to reroll it and take the second result.",
+      "ru": "Если вы провалили спасбросок, вы можете повторить его, потратив 1 очко ци, и должны использовать второй результат."
+    },
+    "origin": "class",
+    "origin_value": "monk",
+    "level": 14,
+    "kind": "static",
+    "options_type": null,
+    "options": null,
+    "visible": "true",
+    "eval_variables": {
+      "result": "result[:class_save_dc] = %i[str dex con int wis cha]"
+    }
+  },
+  {
+    "slug": "timeless_body",
+    "title": { "en": "Timeless Body", "ru": "Безвременное тело" },
+    "description": {
+      "en": "You suffer none of the frailty of old age, you no longer need food or water.",
+      "ru": "Ваше тело больше не подвержено признакам старения и вам больше не требуется еда и вода."
+    },
+    "origin": "class",
+    "origin_value": "monk",
+    "level": 15,
+    "kind": "static",
+    "options_type": null,
+    "options": null,
+    "visible": "true",
+    "eval_variables": {}
+  },
+  {
+    "slug": "empty_body",
+    "title": { "en": "Empty Body", "ru": "Пустое тело" },
+    "description": {
+      "en": "You can use your action to spend 4 ki points to become invisible for 1 minute. You can spend 8 ki points to cast the astral projection spell, without needing material components.",
+      "ru": "Вы можете действием потратить 4 очка ци, чтобы стать невидимым на 1 минуту. Вы можете потратить 8 очков ци, чтобы использовать заклинание проекция в астрал без применения материальных компонентов."
+    },
+    "origin": "class",
+    "origin_value": "monk",
+    "level": 18,
+    "kind": "static",
+    "options_type": null,
+    "options": null,
+    "visible": "true",
+    "eval_variables": {}
+  },
+  {
+    "slug": "perfect_self",
+    "title": { "en": "Perfect Self", "ru": "Совершенство" },
+    "description": {
+      "en": "When you roll for initiative and have no ki points remaining, you regain 4 ki points.",
+      "ru": "Если при броске инициативы у вас нет очков ци, вы получаете 4 таких очка."
+    },
+    "origin": "class",
+    "origin_value": "monk",
+    "level": 20,
+    "kind": "static",
+    "options_type": null,
+    "options": null,
+    "visible": "true",
+    "eval_variables": {}
   }
 ]

@@ -78,9 +78,6 @@ module Charkeeper
     register('decorators.dnd5_character.subclasses.circle_of_the_land') {
       Dnd5Character::Subclasses::CircleOfTheLandDecorator.new
     }
-    register('decorators.dnd5_character.subclasses.draconic_bloodline') {
-      Dnd5Character::Subclasses::DraconicBloodlineDecorator.new
-    }
     register('decorators.dnd5_character.subclasses.alchemist') { Dnd5Character::Subclasses::AlchemistDecorator.new }
 
     register('decorators.dnd2024_character.base_decorator') { Dnd2024Character::BaseDecorator.new }

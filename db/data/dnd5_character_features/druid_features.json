@@ -15,9 +15,51 @@
     "visible": "true",
     "eval_variables": {
       "value": "class_level = result.dig(:classes, 'druid'); class_level >= 8 ? 1 : (class_level >= 4 ? 0.5 : 0.25)",
-      "limit": "2"
+      "limit": "result.dig(:classes, 'druid') == 20 ? nil : 2"
     },
     "limit_refresh": "short_rest"
+  },
+  {
+    "slug": "timeless_body",
+    "title": { "en": "Timeless Body", "ru": "Безвременное тело" },
+    "description": {
+      "en": "For every 10 years that pass, your body ages only 1 year.",
+      "ru": "За каждые 10 лет ваше тело стареет только на 1 год."
+    },
+    "origin": "class",
+    "origin_value": "druid",
+    "level": 18,
+    "kind": "static",
+    "visible": "true",
+    "eval_variables": {}
+  },
+  {
+    "slug": "beast spells",
+    "title": { "en": "Beast Spells", "ru": "Заклинания зверя" },
+    "description": {
+      "en": "You can cast many of your druid spells in any shape you assume using Wild Shape (but you aren't able to provide material components).",
+      "ru": "Вы можете творить в диком облике заклинания друида (кроме требующих материальные компоненты)."
+    },
+    "origin": "class",
+    "origin_value": "druid",
+    "level": 18,
+    "kind": "static",
+    "visible": "true",
+    "eval_variables": {}
+  },
+  {
+    "slug": "archdruid",
+    "title": { "en": "Archdruid", "ru": "Архидруид" },
+    "description": {
+      "en": "You can ignore the verbal and somatic components of your druid spells, as well as any material components that lack a cost and aren't consumed by a spell. You gain this benefit in both your normal shape and your beast shape from Wild Shape.",
+      "ru": "Вы можете игнорировать соматический и вербальный компоненты заклинаний друида, а также материальные компоненты без указанной цены и не поглощаемые заклинанием. Это действует как в нормальном облике, так и в облике зверя."
+    },
+    "origin": "class",
+    "origin_value": "druid",
+    "level": 20,
+    "kind": "static",
+    "visible": "true",
+    "eval_variables": {}
   },
   {
     "slug": "natural_recovery",

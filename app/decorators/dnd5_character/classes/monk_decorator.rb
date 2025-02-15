@@ -6,7 +6,6 @@ module Dnd5Character
       WEAPON_CORE = ['light weapon'].freeze
       DEFAULT_WEAPON_SKILLS = %w[shortsword].freeze
       NOT_MONK_WEAPON_CAPTIONS = %w[2handed heavy].freeze
-      IMMUNITIES = %w[poison disease].freeze
 
       def decorate_fresh_character(result:)
         result[:weapon_core_skills] = result[:weapon_core_skills].concat(WEAPON_CORE).uniq
@@ -28,7 +27,6 @@ module Dnd5Character
 
         martial_arts(result, class_level) if no_armor # Martial arts, 1 level
         result[:combat][:attacks_per_action] = 2 if class_level >= 5 # Extra Attack, 5 level
-        result[:immunities] = result[:immunities].concat(IMMUNITIES).uniq if class_level >= 10 # Purity of Body, 10 level
 
         result
       end

@@ -200,6 +200,22 @@
     "eval_variables": {}
   },
   {
+    "slug": "sorcerous_restoration",
+    "title": { "en": "Sorcerous Restoration", "ru": "Чародейское восстановление" },
+    "description": {
+      "en": "You regain 4 expended sorcery points whenever you finish a short rest.",
+      "ru": "Вы восстанавливаете 4 единицы чародейства по окончании короткого отдыха."
+    },
+    "origin": "class",
+    "origin_value": "sorcerer",
+    "level": 20,
+    "kind": "static",
+    "options_type": null,
+    "options": null,
+    "visible": "true",
+    "eval_variables": {}
+  },
+  {
     "slug": "dragon_ancestor",
     "title": { "en": "Dragon Ancestor", "ru": "Драконий предок" },
     "description": {
@@ -229,6 +245,213 @@
     "level": 1,
     "kind": "static",
     "options": null,
-    "visible": "true"
+    "visible": "true",
+    "eval_variables": {
+      "result": "result.dig(:defense_gear, :armor).nil? ? result[:combat][:armor_class] = [result[:combat][:armor_class], 13 + result.dig(:modifiers, :dex) + result.dig(:defense_gear, :shield, :items_data, 'info', 'ac').to_i].max : nil"
+    }
+  },
+  {
+    "slug": "dragon_ancestor_black",
+    "title": { "en": "Elemental Affinity", "ru": "Родство со стихией" },
+    "description": {
+      "en": "When you cast a spell thal deals acid damage, add your {{value}} to that damage. At the same time, you can spend 1 sorcery point to gain resistance to acid damage for 1 hour.",
+      "ru": "Когда вы накладываете заклинание, причиняющее урон кислотой, вы добавляете {{value}} к одному броску урона этого заклинания. Вы можете потратить 1 единицу чародейства, чтобы получить сопротивление к кислоте на 1 час."
+    },
+    "origin": "subclass",
+    "origin_value": "draconic_bloodline",
+    "level": 6,
+    "kind": "static",
+    "options": null,
+    "visible": "result[:selected_features].keys.include?('dragon_ancestor_black')",
+    "eval_variables": {
+      "value": "result.dig(:modifiers, :cha)"
+    }
+  },
+  {
+    "slug": "dragon_ancestor_blue",
+    "title": { "en": "Elemental Affinity", "ru": "Родство со стихией" },
+    "description": {
+      "en": "When you cast a spell thal deals lightning damage, add your {{value}} to that damage. At the same time, you can spend 1 sorcery point to gain resistance to lightning damage for 1 hour.",
+      "ru": "Когда вы накладываете заклинание, причиняющее урон электричеством, вы добавляете {{value}} к одному броску урона этого заклинания. Вы можете потратить 1 единицу чародейства, чтобы получить сопротивление к электричеству на 1 час."
+    },
+    "origin": "subclass",
+    "origin_value": "draconic_bloodline",
+    "level": 6,
+    "kind": "static",
+    "options": null,
+    "visible": "result[:selected_features].keys.include?('dragon_ancestor_blue')",
+    "eval_variables": {
+      "value": "result.dig(:modifiers, :cha)"
+    }
+  },
+  {
+    "slug": "dragon_ancestor_brass",
+    "title": { "en": "Elemental Affinity", "ru": "Родство со стихией" },
+    "description": {
+      "en": "When you cast a spell thal deals fire damage, add your {{value}} to that damage. At the same time, you can spend 1 sorcery point to gain resistance to fire damage for 1 hour.",
+      "ru": "Когда вы накладываете заклинание, причиняющее урон огнём, вы добавляете {{value}} к одному броску урона этого заклинания. Вы можете потратить 1 единицу чародейства, чтобы получить сопротивление к огню на 1 час."
+    },
+    "origin": "subclass",
+    "origin_value": "draconic_bloodline",
+    "level": 6,
+    "kind": "static",
+    "options": null,
+    "visible": "result[:selected_features].keys.include?('dragon_ancestor_brass')",
+    "eval_variables": {
+      "value": "result.dig(:modifiers, :cha)"
+    }
+  },
+  {
+    "slug": "dragon_ancestor_bronze",
+    "title": { "en": "Elemental Affinity", "ru": "Родство со стихией" },
+    "description": {
+      "en": "When you cast a spell thal deals lightning damage, add your {{value}} to that damage. At the same time, you can spend 1 sorcery point to gain resistance to lightning damage for 1 hour.",
+      "ru": "Когда вы накладываете заклинание, причиняющее урон электричеством, вы добавляете {{value}} к одному броску урона этого заклинания. Вы можете потратить 1 единицу чародейства, чтобы получить сопротивление к электричеству на 1 час."
+    },
+    "origin": "subclass",
+    "origin_value": "draconic_bloodline",
+    "level": 6,
+    "kind": "static",
+    "options": null,
+    "visible": "result[:selected_features].keys.include?('dragon_ancestor_bronze')",
+    "eval_variables": {
+      "value": "result.dig(:modifiers, :cha)"
+    }
+  },
+  {
+    "slug": "dragon_ancestor_copper",
+    "title": { "en": "Elemental Affinity", "ru": "Родство со стихией" },
+    "description": {
+      "en": "When you cast a spell thal deals acid damage, add your {{value}} to that damage. At the same time, you can spend 1 sorcery point to gain resistance to acid damage for 1 hour.",
+      "ru": "Когда вы накладываете заклинание, причиняющее урон кислотой, вы добавляете {{value}} к одному броску урона этого заклинания. Вы можете потратить 1 единицу чародейства, чтобы получить сопротивление к кислоте на 1 час."
+    },
+    "origin": "subclass",
+    "origin_value": "draconic_bloodline",
+    "level": 6,
+    "kind": "static",
+    "options": null,
+    "visible": "result[:selected_features].keys.include?('dragon_ancestor_copper')",
+    "eval_variables": {
+      "value": "result.dig(:modifiers, :cha)"
+    }
+  },
+  {
+    "slug": "dragon_ancestor_gold",
+    "title": { "en": "Elemental Affinity", "ru": "Родство со стихией" },
+    "description": {
+      "en": "When you cast a spell thal deals fire damage, add your {{value}} to that damage. At the same time, you can spend 1 sorcery point to gain resistance to fire damage for 1 hour.",
+      "ru": "Когда вы накладываете заклинание, причиняющее урон огнём, вы добавляете {{value}} к одному броску урона этого заклинания. Вы можете потратить 1 единицу чародейства, чтобы получить сопротивление к огню на 1 час."
+    },
+    "origin": "subclass",
+    "origin_value": "draconic_bloodline",
+    "level": 6,
+    "kind": "static",
+    "options": null,
+    "visible": "result[:selected_features].keys.include?('dragon_ancestor_gold')",
+    "eval_variables": {
+      "value": "result.dig(:modifiers, :cha)"
+    }
+  },
+  {
+    "slug": "dragon_ancestor_green",
+    "title": { "en": "Elemental Affinity", "ru": "Родство со стихией" },
+    "description": {
+      "en": "When you cast a spell thal deals poison damage, add your {{value}} to that damage. At the same time, you can spend 1 sorcery point to gain resistance to poison damage for 1 hour.",
+      "ru": "Когда вы накладываете заклинание, причиняющее урон ядом, вы добавляете {{value}} к одному броску урона этого заклинания. Вы можете потратить 1 единицу чародейства, чтобы получить сопротивление к яду на 1 час."
+    },
+    "origin": "subclass",
+    "origin_value": "draconic_bloodline",
+    "level": 6,
+    "kind": "static",
+    "options": null,
+    "visible": "result[:selected_features].keys.include?('dragon_ancestor_green')",
+    "eval_variables": {
+      "value": "result.dig(:modifiers, :cha)"
+    }
+  },
+  {
+    "slug": "dragon_ancestor_red",
+    "title": { "en": "Elemental Affinity", "ru": "Родство со стихией" },
+    "description": {
+      "en": "When you cast a spell thal deals fire damage, add your {{value}} to that damage. At the same time, you can spend 1 sorcery point to gain resistance to fire damage for 1 hour.",
+      "ru": "Когда вы накладываете заклинание, причиняющее урон огнём, вы добавляете {{value}} к одному броску урона этого заклинания. Вы можете потратить 1 единицу чародейства, чтобы получить сопротивление к огню на 1 час."
+    },
+    "origin": "subclass",
+    "origin_value": "draconic_bloodline",
+    "level": 6,
+    "kind": "static",
+    "options": null,
+    "visible": "result[:selected_features].keys.include?('dragon_ancestor_red')",
+    "eval_variables": {
+      "value": "result.dig(:modifiers, :cha)"
+    }
+  },
+  {
+    "slug": "dragon_ancestor_silver",
+    "title": { "en": "Elemental Affinity", "ru": "Родство со стихией" },
+    "description": {
+      "en": "When you cast a spell thal deals cold damage, add your {{value}} to that damage. At the same time, you can spend 1 sorcery point to gain resistance to cold damage for 1 hour.",
+      "ru": "Когда вы накладываете заклинание, причиняющее урон холодом, вы добавляете {{value}} к одному броску урона этого заклинания. Вы можете потратить 1 единицу чародейства, чтобы получить сопротивление к холоду на 1 час."
+    },
+    "origin": "subclass",
+    "origin_value": "draconic_bloodline",
+    "level": 6,
+    "kind": "static",
+    "options": null,
+    "visible": "result[:selected_features].keys.include?('dragon_ancestor_silver')",
+    "eval_variables": {
+      "value": "result.dig(:modifiers, :cha)"
+    }
+  },
+  {
+    "slug": "dragon_ancestor_white",
+    "title": { "en": "Elemental Affinity", "ru": "Родство со стихией" },
+    "description": {
+      "en": "When you cast a spell thal deals cold damage, add your {{value}} to that damage. At the same time, you can spend 1 sorcery point to gain resistance to cold damage for 1 hour.",
+      "ru": "Когда вы накладываете заклинание, причиняющее урон холодом, вы добавляете {{value}} к одному броску урона этого заклинания. Вы можете потратить 1 единицу чародейства, чтобы получить сопротивление к холоду на 1 час."
+    },
+    "origin": "subclass",
+    "origin_value": "draconic_bloodline",
+    "level": 6,
+    "kind": "static",
+    "options": null,
+    "visible": "result[:selected_features].keys.include?('dragon_ancestor_white')",
+    "eval_variables": {
+      "value": "result.dig(:modifiers, :cha)"
+    }
+  },
+  {
+    "slug": "dragon_wings",
+    "title": { "en": "Dragon Wings", "ru": "Крылья дракона" },
+    "description": {
+      "en": "You gain the ability to sprout a pair of dragon wings from your back, gaining a flying speed equal to your current speed.",
+      "ru": "Вы получаете способность расправить драконьи крылья у себя за спиной, получая при этом скорость полёта, равную вашей текущей скорости."
+    },
+    "origin": "subclass",
+    "origin_value": "draconic_bloodline",
+    "level": 14,
+    "kind": "static",
+    "options_type": null,
+    "options": null,
+    "visible": "true",
+    "eval_variables": {}
+  },
+  {
+    "slug": "dragon_wings",
+    "title": { "en": "Dragon Wings", "ru": "Образ дракона" },
+    "description": {
+      "en": "As an action, you can spend 5 sorcery points to draw on this power and exude an aura of awe or fear to a distance of 60 feel. For 1 minute each hostile creature that starts its turn in this aura must succeed on a Wisdom saving throw (DC {{value}}) or be charmed (if you chose awe) or frightened (if you chose fear) until the aura ends. A creature that succeeds on this saving throw is immune to your aura for 24 hours.",
+      "ru": "Вы можете действием потратить 5 единиц чародейства, чтобы окружить себя аурой страха или трепета, радиусом 60 футов. В течение 1 минуты все враждебные существа, начинающие ход в этой ауре, должны преуспеть в спасброске Мудрости (УС {{value}}), иначе они станут очарованными (если вы выбрали трепет) или испуганными (если вы выбрали страх) до окончания действия ауры. Существо, преуспевшее в спасброске, получает иммунитет к вашей ауре на 24 часа."
+    },
+    "origin": "subclass",
+    "origin_value": "draconic_bloodline",
+    "level": 18,
+    "kind": "static",
+    "options_type": null,
+    "options": null,
+    "visible": "true",
+    "eval_variables": {
+      "value": "result.dig(:spell_classes, :sorcerer, :save_dc)"
+    }
   }
 ]
