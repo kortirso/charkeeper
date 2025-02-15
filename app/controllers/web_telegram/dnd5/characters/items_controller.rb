@@ -46,7 +46,7 @@ module WebTelegram
         private
 
         def find_character
-          @character = current_user.characters.dnd5.find(params[:character_id])
+          @character = current_user.characters.dnd.find(params[:character_id])
         end
 
         def find_character_item

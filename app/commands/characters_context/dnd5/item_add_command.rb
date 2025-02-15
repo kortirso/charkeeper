@@ -5,7 +5,7 @@ module CharactersContext
     class ItemAddCommand < BaseCommand
       use_contract do
         params do
-          required(:character).filled(type?: ::Dnd5::Character)
+          required(:character).filled(type_included_in?: [::Dnd5::Character, ::Dnd2024::Character])
           required(:item).filled(type?: ::Dnd5::Item)
         end
       end
