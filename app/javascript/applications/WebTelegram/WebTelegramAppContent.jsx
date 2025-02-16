@@ -20,14 +20,14 @@ export const WebTelegramAppContent = () => {
     const urlSearchParams = new URLSearchParams(webApp.initData);
     const data = Object.fromEntries(urlSearchParams.entries());
     const checkString = Object.keys(data).filter(key => key !== 'hash').map(key => `${key}=${data[key]}`).sort().join('\n');
-
+    console.log(webApp.initDataUnsafe);
     const fetchAccessToken = async () => await fetchAccessTokenRequest(checkString, data.hash);
 
     Promise.all([fetchAccessToken()]).then(
       ([accessTokenData]) => {
         if (accessTokenData.access_token) {
           batch(() => {
-            setLocale('ru'); // webApp.initDataUnsafe.user.language_code
+            setLocale('ru');
             setAccessToken(accessTokenData.access_token);
           });
         } else {
