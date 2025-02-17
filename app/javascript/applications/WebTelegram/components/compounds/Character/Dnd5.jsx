@@ -84,7 +84,7 @@ export const Dnd5 = (props) => {
     if (characterSpells() !== undefined) return;
 
     const fetchCharacterSpells = async () => await fetchCharacterSpellsRequest(appState.accessToken, props.provider, appState.activePageParams.id);
-    const fetchSpells = async () => await fetchSpellsRequest(appState.accessToken, props.provider);
+    const fetchSpells = async () => await fetchSpellsRequest(appState.accessToken, props.provider, Math.max(...Object.keys(decoratedData().spells_slots)));
 
     Promise.all([fetchCharacterSpells(), fetchSpells()]).then(
       ([characterSpellsData, spellsData]) => {
