@@ -152,7 +152,7 @@ export const Dnd5Professions = (props) => {
                 labelText={music.name}
                 labelPosition="right"
                 labelClassList="text-sm ml-4"
-                checked={toolsData().includes(music.slug)}
+                checked={musicData().includes(music.slug)}
                 onToggle={() => toggleMusic(music.slug)}
               />
             </div>
