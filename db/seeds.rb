@@ -2,6 +2,25 @@
 
 require 'csv'
 
+spells = CSV.parse(File.read(Rails.root.join('db/data/dnd2024_spells.csv')), headers: false, col_sep: ';')
+spells.map! do |spell|
+  {
+    type: 'Dnd2024::Spell',
+    slug: spell[1],
+    name: {
+      en: spell[2],
+      ru: spell[3]
+    },
+    data: {
+      level: spell[0].to_i,
+      school: spell[4],
+      available_for: spell[6].split(','),
+      source: spell[5]
+    }
+  }
+end
+Dnd2024::Spell.upsert_all(spells)
+
 spells = CSV.parse(File.read(Rails.root.join('db/data/dnd5_spells.csv')), headers: false, col_sep: ';')
 spells.map! do |spell|
   {

@@ -126,17 +126,11 @@ module Dnd2024
     end
 
     def can_learn_spell?(target_spell_class)
-      return false if data.classes.keys.exclude?(target_spell_class)
-      return false if CLASSES_LEARN_SPELLS.exclude?(target_spell_class)
-
-      true
+      target_spell_class == WIZARD
     end
 
     def can_prepare_spell?(target_spell_class)
-      return false if data.classes.keys.exclude?(target_spell_class)
-      return false if CLASSES_PREPARE_SPELLS.exclude?(target_spell_class)
-
-      true
+      data.classes.key?(target_spell_class)
     end
 
     private
