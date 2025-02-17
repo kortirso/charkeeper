@@ -20,14 +20,25 @@ export const WebTelegramAppContent = () => {
     const urlSearchParams = new URLSearchParams(webApp.initData);
     const data = Object.fromEntries(urlSearchParams.entries());
     const checkString = Object.keys(data).filter(key => key !== 'hash').map(key => `${key}=${data[key]}`).sort().join('\n');
-    console.log(webApp.initDataUnsafe);
+
+    // webApp.initDataUnsafe.user
+    // {
+    //   "id": 11110000,
+    //   "first_name": "",
+    //   "last_name": "",
+    //   "username": "kortirso",
+    //   "language_code": "ru",
+    //   "allows_write_to_pm": true,
+    //   "photo_url": ""
+    // }
+
     const fetchAccessToken = async () => await fetchAccessTokenRequest(checkString, data.hash);
 
     Promise.all([fetchAccessToken()]).then(
       ([accessTokenData]) => {
         if (accessTokenData.access_token) {
           batch(() => {
-            setLocale('ru');
+            setLocale(accessTokenData.locale);
             setAccessToken(accessTokenData.access_token);
           });
         } else {

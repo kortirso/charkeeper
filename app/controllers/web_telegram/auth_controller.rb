@@ -14,7 +14,7 @@ module WebTelegram
       # if true
       if web_telegram_signature.valid?(check_string: params[:check_string], hash: params[:hash])
         access_token = generate_token.call(user_session: user_session)[:result]
-        render json: { access_token: access_token }, status: :created
+        render json: { access_token: access_token, locale: user_session.user.locale }, status: :created
       else
         render json: { errors: { signature: ['Invalid'] } }, status: :unprocessable_entity
       end
@@ -38,7 +38,8 @@ module WebTelegram
       add_identity.call({
         provider: User::Identity::TELEGRAM,
         uid: user_data['id'].to_s,
-        username: user_data['username']
+        username: user_data['username'],
+        locale: user_data['language_code']
       })[:result]
     end
 
