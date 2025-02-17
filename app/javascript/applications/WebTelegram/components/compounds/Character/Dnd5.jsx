@@ -83,8 +83,8 @@ export const Dnd5 = (props) => {
     if (spellClassesList().length === 0) return;
     if (characterSpells() !== undefined) return;
 
-    const fetchCharacterSpells = async () => await fetchCharacterSpellsRequest(appState.accessToken, 'dnd5', appState.activePageParams.id);
-    const fetchSpells = async () => await fetchSpellsRequest(appState.accessToken, 'dnd5');
+    const fetchCharacterSpells = async () => await fetchCharacterSpellsRequest(appState.accessToken, props.provider, appState.activePageParams.id);
+    const fetchSpells = async () => await fetchSpellsRequest(appState.accessToken, props.provider);
 
     Promise.all([fetchCharacterSpells(), fetchSpells()]).then(
       ([characterSpellsData, spellsData]) => {
@@ -98,14 +98,14 @@ export const Dnd5 = (props) => {
 
   // only sends request
   const refreshCharacter = async (payload) => {
-    const result = await updateCharacterRequest(appState.accessToken, 'dnd5', props.characterId, { character: payload });
+    const result = await updateCharacterRequest(appState.accessToken, props.provider, props.characterId, { character: payload });
 
     return result;
   }
 
   // sends request and reload character data
   const updateCharacter = async (payload) => {
-    const result = await updateCharacterRequest(appState.accessToken, 'dnd5', props.characterId, { character: payload });
+    const result = await updateCharacterRequest(appState.accessToken, props.provider, props.characterId, { character: payload });
 
     if (result.errors === undefined) return await props.onReloadCharacter();
     return result;
@@ -158,7 +158,7 @@ export const Dnd5 = (props) => {
   }
 
   const restCharacter = async (payload) => {
-    const result = await createCharacterRestRequest(appState.accessToken, 'dnd5', props.characterId, payload);
+    const result = await createCharacterRestRequest(appState.accessToken, props.provider, props.characterId, payload);
     if (result.errors === undefined) {
       const decoratedData = await props.onReloadCharacter();
 
@@ -175,17 +175,17 @@ export const Dnd5 = (props) => {
 
   // additional data change for spells
   const reloadCharacterSpells = async () => {
-    const characterSpellsData = await fetchCharacterSpellsRequest(appState.accessToken, 'dnd5', appState.activePageParams.id);
+    const characterSpellsData = await fetchCharacterSpellsRequest(appState.accessToken, props.provider, appState.activePageParams.id);
     setCharacterSpells(characterSpellsData.spells);
   }
 
   const learnSpell = async (spellId, targetSpellClass) => {
-    const result = await createCharacterSpellRequest(appState.accessToken, 'dnd5', props.characterId, { spell_id: spellId, target_spell_class: targetSpellClass });
+    const result = await createCharacterSpellRequest(appState.accessToken, props.provider, props.characterId, { spell_id: spellId, target_spell_class: targetSpellClass });
     if (result.errors === undefined) reloadCharacterSpells();
   }
 
   const forgetSpell = async (spellId) => {
-    const result = await removeCharacterSpellRequest(appState.accessToken, 'dnd5', props.characterId, spellId);
+    const result = await removeCharacterSpellRequest(appState.accessToken, props.provider, props.characterId, spellId);
     if (result.errors === undefined) reloadCharacterSpells();
   }
 
@@ -200,7 +200,7 @@ export const Dnd5 = (props) => {
   }
 
   const updateCharacterSpell = async (spellId, payload) => {
-    const result = await updateCharacterSpellRequest(appState.accessToken, 'dnd5', props.characterId, spellId, payload);
+    const result = await updateCharacterSpellRequest(appState.accessToken, props.provider, props.characterId, spellId, payload);
     return result;
   }
 
@@ -317,9 +317,18 @@ export const Dnd5 = (props) => {
         fallback={
           <PageHeader rightContent={<Hamburger onClick={openModal} />}>
             <p>{props.name}</p>
-            <p class="text-sm">
-              {decoratedData().subrace ? t(`dnd5.subraces.${decoratedData().race}.${decoratedData().subrace}`) : t(`dnd5.races.${decoratedData().race}`)} | {Object.entries(decoratedData().classes).map(([item, value]) => `${t(`dnd5.classes.${item}`)} ${value}`).join(' * ')}
-            </p>
+            <Switch>
+              <Match when={props.provider === 'dnd5'}>
+                <p class="text-sm">
+                  {decoratedData().subrace ? t(`dnd5.subraces.${decoratedData().race}.${decoratedData().subrace}`) : t(`dnd5.races.${decoratedData().race}`)} | {Object.entries(decoratedData().classes).map(([item, value]) => `${t(`dnd5.classes.${item}`)} ${value}`).join(' * ')}
+                </p>
+              </Match>
+              <Match when={props.provider === 'dnd2024'}>
+                <p class="text-sm">
+                  {t(`dnd2024.species.${decoratedData().species}`)} | {Object.entries(decoratedData().classes).map(([item, value]) => `${t(`dnd2024.classes.${item}`)} ${value}`).join(' * ')}
+                </p>
+              </Match>
+            </Switch>
           </PageHeader>
         }
       >
@@ -415,6 +424,7 @@ export const Dnd5 = (props) => {
               </Match>
               <Match when={!activeSpellsTab()}>
                 <Dnd5Spellbook
+                  provider={props.provider}
                   spells={spells()}
                   characterSpells={characterSpells()}
                   staticCharacterSpells={props.decoratedData.static_spells} // eslint-disable-line solid/reactivity
@@ -465,8 +475,10 @@ export const Dnd5 = (props) => {
         <p class="character-tab-select" onClick={() => changeTab('equipment')}>{t('character.equipment')}</p>
         <p class="character-tab-select" onClick={() => changeTab('spells')}>{t('character.spells')}</p>
         <p class="character-tab-select" onClick={() => changeTab('notes')}>{t('character.notes')}</p>
-        <p class="character-tab-select" onClick={() => changeTab('professions')}>{t('character.professions')}</p>
-        <p class="character-tab-select" onClick={() => changeTab('classLevels')}>{t('character.classLevels')}</p>
+        <Show when={props.provider === 'dnd5'}>
+          <p class="character-tab-select" onClick={() => changeTab('professions')}>{t('character.professions')}</p>
+          <p class="character-tab-select" onClick={() => changeTab('classLevels')}>{t('character.classLevels')}</p>
+        </Show>
       </Modal>
     </>
   );

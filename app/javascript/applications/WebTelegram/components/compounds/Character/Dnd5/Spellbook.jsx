@@ -8,8 +8,12 @@ import { useAppLocale } from '../../../../context';
 
 import { modifier } from '../../../../../../helpers';
 
-const CLASSES_LEARN_SPELLS = ['bard', 'ranger', 'sorcerer', 'warlock', 'wizard'];
-const CLASSES_PREPARE_SPELLS = ['cleric', 'druid', 'paladin', 'artificer', 'wizard'];
+const DND5_CLASSES_LEARN_SPELLS = ['bard', 'ranger', 'sorcerer', 'warlock', 'wizard'];
+const DND5_CLASSES_PREPARE_SPELLS = ['cleric', 'druid', 'paladin', 'artificer', 'wizard'];
+const DND2024_CLASSES_LEARN_SPELLS = ['wizard'];
+const DND2024_CLASSES_PREPARE_SPELLS = [
+  'bard', 'ranger', 'sorcerer', 'warlock', 'cleric', 'druid', 'paladin', 'artificer', 'wizard'
+];
 
 export const Dnd5Spellbook = (props) => {
   const [preparedSpellFilter, setPreparedSpellFilter] = createSignal(true);
@@ -89,18 +93,20 @@ export const Dnd5Spellbook = (props) => {
               {props.spellClasses[activeSpellClass()].cantrips_amount}
             </p>
           </div>
-          <div class="flex-1 flex flex-col items-center">
-            <p class="uppercase text-xs mb-1">{t('terms.known')}</p>
-            <p class="text-2xl mb-1 flex gap-2 items-start">
-              <Show
-                when={props.spellClasses[activeSpellClass()].spells_amount}
-                fallback={<span>-</span>}
-              >
-                <span>{props.spellClasses[activeSpellClass()].spells_amount}</span>
-              </Show>
-              <span class="text-sm">{props.spellClasses[activeSpellClass()].max_spell_level} {t('spellbookPage.level')}</span>
-            </p>
-          </div>
+          <Show when={props.provider === 'dnd5'}>
+            <div class="flex-1 flex flex-col items-center">
+              <p class="uppercase text-xs mb-1">{t('terms.known')}</p>
+              <p class="text-2xl mb-1 flex gap-2 items-start">
+                <Show
+                  when={props.spellClasses[activeSpellClass()].spells_amount}
+                  fallback={<span>-</span>}
+                >
+                  <span>{props.spellClasses[activeSpellClass()].spells_amount}</span>
+                </Show>
+                <span class="text-sm">{props.spellClasses[activeSpellClass()].max_spell_level} {t('spellbookPage.level')}</span>
+              </p>
+            </div>
+          </Show>
           <div class="flex-1 flex flex-col items-center">
             <p class="uppercase text-xs mb-1">{t('terms.prepared')}</p>
             <p class="text-2xl mb-1">
@@ -109,7 +115,7 @@ export const Dnd5Spellbook = (props) => {
           </div>
         </div>
       </Show>
-      <Show when={CLASSES_LEARN_SPELLS.includes(activeSpellClass())}>
+      <Show when={props.provider === 'dnd5' ? DND5_CLASSES_LEARN_SPELLS.includes(activeSpellClass()) : DND2024_CLASSES_LEARN_SPELLS.includes(activeSpellClass())}>
         <Button primary classList="mb-2" text={t('character.knownSpells')} onClick={props.onNavigatoToSpells} />
       </Show>
       <div class="white-box mb-2 p-4">
@@ -149,7 +155,7 @@ export const Dnd5Spellbook = (props) => {
                     </Show>
                   </td>
                   <td>
-                    <Show when={CLASSES_PREPARE_SPELLS.includes(activeSpellClass())}>
+                    <Show when={props.provider === 'dnd5' ? DND5_CLASSES_PREPARE_SPELLS.includes(activeSpellClass()) : DND2024_CLASSES_PREPARE_SPELLS.includes(activeSpellClass())}>
                       <Show
                         when={spell.ready_to_use}
                         fallback={<span class="cursor-pointer" onClick={() => props.onPrepareSpell(spell.id)}>Prepare</span>}
@@ -222,7 +228,7 @@ export const Dnd5Spellbook = (props) => {
                         </Show>
                       </td>
                       <td>
-                        <Show when={CLASSES_PREPARE_SPELLS.includes(activeSpellClass())}>
+                        <Show when={props.provider === 'dnd5' ? DND5_CLASSES_PREPARE_SPELLS.includes(activeSpellClass()) : DND2024_CLASSES_PREPARE_SPELLS.includes(activeSpellClass())}>
                           <Show
                             when={spell.ready_to_use}
                             fallback={<span class="cursor-pointer" onClick={() => props.onPrepareSpell(spell.id)}>Prepare</span>}
