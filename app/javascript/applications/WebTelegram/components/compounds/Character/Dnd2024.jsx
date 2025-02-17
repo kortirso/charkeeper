@@ -1,8 +1,8 @@
-import { createSignal, createEffect, Switch, Match, Show, batch } from 'solid-js';
+import { createSignal, createEffect, createMemo, Switch, Match, Show, batch } from 'solid-js';
 import * as i18n from '@solid-primitives/i18n';
 
 import {
-  Dnd5Abilities, Dnd5Combat, Dnd5Equipment, Dnd5Items, Dnd5Notes
+  Dnd5Abilities, Dnd5Combat, Dnd5Equipment, Dnd5Items, Dnd5Spellbook, Dnd5Spells, Dnd5Notes
 } from '../../../components';
 import { createModal, PageHeader } from '../../molecules';
 
@@ -10,28 +10,38 @@ import { Hamburger } from '../../../assets';
 import { useAppState, useAppLocale, useAppAlert } from '../../../context';
 
 import { fetchCharacterItemsRequest } from '../../../requests/fetchCharacterItemsRequest';
+import { fetchCharacterSpellsRequest } from '../../../requests/fetchCharacterSpellsRequest';
 import { updateCharacterRequest } from '../../../requests/updateCharacterRequest';
 import { updateCharacterItemRequest } from '../../../requests/updateCharacterItemRequest';
 import { removeCharacterItemRequest } from '../../../requests/removeCharacterItemRequest';
+import { fetchSpellsRequest } from '../../../requests/fetchSpellsRequest';
 import { fetchItemsRequest } from '../../../requests/fetchItemsRequest';
+import { createCharacterSpellRequest } from '../../../requests/createCharacterSpellRequest';
+import { removeCharacterSpellRequest } from '../../../requests/removeCharacterSpellRequest';
+import { updateCharacterSpellRequest } from '../../../requests/updateCharacterSpellRequest';
 import { createCharacterItemRequest } from '../../../requests/createCharacterItemRequest';
 import { createCharacterRestRequest } from '../../../requests/createCharacterRestRequest';
 
 export const Dnd2024 = (props) => {
   const decoratedData = () => props.decoratedData;
+  const spellClassesList = () => Object.keys(decoratedData().spell_classes);
 
   // page state
   const [activeTab, setActiveTab] = createSignal('abilities');
   const [activeItemsTab, setActiveItemsTab] = createSignal(false);
+  const [activeSpellsTab, setActiveSpellsTab] = createSignal(false);
 
   // page data
   const [items, setItems] = createSignal(undefined);
   const [characterItems, setCharacterItems] = createSignal(undefined);
+  const [spells, setSpells] = createSignal(undefined);
+  const [characterSpells, setCharacterSpells] = createSignal(undefined);
 
   // shared state
   const [spentHitDiceData, setSpentHitDiceData] = createSignal(decoratedData().spent_hit_dice);
   const [healthData, setHealthData] = createSignal(decoratedData().health);
   const [energyData, setEnergyData] = createSignal(decoratedData().energy);
+  const [spentSpellSlots, setSpentSpellSlots] = createSignal(decoratedData().spent_spell_slots);
 
   const { Modal, openModal, closeModal } = createModal();
   const [appState] = useAppState();
@@ -62,6 +72,24 @@ export const Dnd2024 = (props) => {
     Promise.all([fetchItems()]).then(
       ([itemsData]) => {
         setItems(itemsData.items.sort((a, b) => a.name > b.name));
+      }
+    );
+  });
+
+  createEffect(() => {
+    if (activeTab() !== 'spells') return;
+    if (spellClassesList().length === 0) return;
+    if (characterSpells() !== undefined) return;
+
+    const fetchCharacterSpells = async () => await fetchCharacterSpellsRequest(appState.accessToken, 'dnd2024', appState.activePageParams.id);
+    const fetchSpells = async () => await fetchSpellsRequest(appState.accessToken, 'dnd2024');
+
+    Promise.all([fetchCharacterSpells(), fetchSpells()]).then(
+      ([characterSpellsData, spellsData]) => {
+        batch(() => {
+          setCharacterSpells(characterSpellsData.spells);
+          setSpells(spellsData.spells);
+        });
       }
     );
   });
@@ -125,6 +153,37 @@ export const Dnd2024 = (props) => {
         else setCharacterItems(characterItems().filter((element) => element !== item));
       });
     }
+  }
+
+  // additional data change for spells
+  const reloadCharacterSpells = async () => {
+    const characterSpellsData = await fetchCharacterSpellsRequest(appState.accessToken, 'dnd2024', appState.activePageParams.id);
+    setCharacterSpells(characterSpellsData.spells);
+  }
+
+  const learnSpell = async (spellId, targetSpellClass) => {
+    const result = await createCharacterSpellRequest(appState.accessToken, 'dnd2024', props.characterId, { spell_id: spellId, target_spell_class: targetSpellClass });
+    if (result.errors === undefined) reloadCharacterSpells();
+  }
+
+  const forgetSpell = async (spellId) => {
+    const result = await removeCharacterSpellRequest(appState.accessToken, 'dnd2024', props.characterId, spellId);
+    if (result.errors === undefined) reloadCharacterSpells();
+  }
+
+  const prepareSpell = async (spellId) => {
+    const result = await updateCharacterSpell(spellId, { 'ready_to_use': 1 });
+    if (result.errors === undefined) reloadCharacterSpells();
+  }
+
+  const disableSpell = async (spellId) => {
+    const result = await updateCharacterSpell(spellId, { 'ready_to_use': 0 });
+    if (result.errors === undefined) reloadCharacterSpells();
+  }
+
+  const updateCharacterSpell = async (spellId, payload) => {
+    const result = await updateCharacterSpellRequest(appState.accessToken, 'dnd5', props.characterId, spellId, payload);
+    return result;
   }
 
   const restCharacter = async (payload) => {
@@ -215,6 +274,32 @@ export const Dnd2024 = (props) => {
     if (result.errors === undefined) setHealthData(newValue);
   }
 
+  const spendSpellSlot = async (level) => {
+    let newValue;
+    if (spentSpellSlots()[level]) {
+      newValue = { ...spentSpellSlots(), [level]: spentSpellSlots()[level] + 1 };
+    } else {
+      newValue = { ...spentSpellSlots(), [level]: 1 };
+    }
+
+    const result = await refreshCharacter({ spent_spell_slots: newValue });
+    if (result.errors === undefined) setSpentSpellSlots(newValue);
+  }
+
+  const freeSpellSlot = async (level) => {
+    const newValue = { ...spentSpellSlots(), [level]: spentSpellSlots()[level] - 1 };
+
+    const result = await refreshCharacter({ spent_spell_slots: newValue });
+    if (result.errors === undefined) setSpentSpellSlots(newValue);
+  }
+
+  // memos
+  const knownSpellIds = createMemo(() => {
+    if (characterSpells() === undefined) return [];
+
+    return characterSpells().map(({ spell_id }) => spell_id);
+  });
+
   // user actions
   const changeTab = (value) => {
     batch(() => {
@@ -238,6 +323,11 @@ export const Dnd2024 = (props) => {
         <Match when={activeItemsTab()}>
           <PageHeader leftContent={<p class="cursor-pointer" onClick={() => setActiveItemsTab(false)}>{t('back')}</p>}>
             <p>{t('itemsPage.title')}</p>
+          </PageHeader>
+        </Match>
+        <Match when={activeSpellsTab()}>
+          <PageHeader leftContent={<p class="cursor-pointer" onClick={() => setActiveSpellsTab(false)}>{t('back')}</p>}>
+            <p>{t('spellsPage.title')}</p>
           </PageHeader>
         </Match>
       </Switch>
@@ -299,6 +389,47 @@ export const Dnd2024 = (props) => {
               />
             </Show>
           </Match>
+          <Match when={activeTab() === 'spells'}>
+            <Switch>
+              <Match when={spellClassesList().length === 0}>
+                <div class="p-4 flex white-box">
+                  <p>{t('character.no_magic')}</p>
+                </div>
+              </Match>
+              <Match when={spells() === undefined || characterSpells() === undefined}>
+                <></>
+              </Match>
+              <Match when={activeSpellsTab()}>
+                <Dnd5Spells
+                  spells={spells()}
+                  characterSpells={characterSpells()}
+                  initialSpellClassesList={spellClassesList()}
+                  spellClasses={props.decoratedData.spell_classes}
+                  knownSpellIds={knownSpellIds()}
+                  onLearnSpell={learnSpell}
+                  onForgetSpell={forgetSpell}
+                />
+              </Match>
+              <Match when={!activeSpellsTab()}>
+                <Dnd5Spellbook
+                  spells={spells()}
+                  characterSpells={characterSpells()}
+                  staticCharacterSpells={props.decoratedData.static_spells} // eslint-disable-line solid/reactivity
+                  spellSlots={props.decoratedData.spells_slots}
+                  initialSpellClassesList={spellClassesList()}
+                  spellClasses={props.decoratedData.spell_classes}
+                  spentSpellSlots={spentSpellSlots()}
+                  onSpendSpellSlot={spendSpellSlot}
+                  onFreeSpellSlot={freeSpellSlot}
+                  onNavigatoToSpells={() => setActiveSpellsTab(true)}
+                  onRefreshCharacter={refreshCharacter}
+                  onUpdateCharacterSpell={updateCharacterSpell}
+                  onPrepareSpell={prepareSpell}
+                  onDisableSpell={disableSpell}
+                />
+              </Match>
+            </Switch>
+          </Match>
           <Match when={activeTab() === 'notes'}>
             <Dnd5Notes />
           </Match>
@@ -308,6 +439,7 @@ export const Dnd2024 = (props) => {
         <p class="character-tab-select" onClick={() => changeTab('abilities')}>{t('character.abilities')}</p>
         <p class="character-tab-select" onClick={() => changeTab('combat')}>{t('character.combat')}</p>
         <p class="character-tab-select" onClick={() => changeTab('equipment')}>{t('character.equipment')}</p>
+        <p class="character-tab-select" onClick={() => changeTab('spells')}>{t('character.spells')}</p>
         <p class="character-tab-select" onClick={() => changeTab('notes')}>{t('character.notes')}</p>
       </Modal>
     </>

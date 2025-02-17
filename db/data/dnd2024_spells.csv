@@ -1,0 +1,391 @@
+0;toll_the_dead;Toll the Dead;Погребальный звон;necromancy;PHB;wizard,cleric,warlock
+0;eldritch_blast;Eldritch Blast;Мистический заряд;evocation;PHB;warlock
+0;blade_ward;Blade Ward;Защита от оружия;abjuration;PHB;bard,wizard,warlock,sorcerer
+0;chill_touch;Chill Touch;Леденящее прикосновение;necromancy;PHB;wizard,warlock,sorcerer
+0;dancing_lights;Dancing Lights;Пляшущие огоньки;illusion;PHB;bard,wizard,sorcerer
+0;fire_bolt;Fire Bolt;Огненный снаряд;evocation;PHB;wizard,sorcerer
+0;friends;Friends;Дружба;enchantment;PHB;bard,wizard,warlock,sorcerer
+0;light;Light;Свет;evocation;PHB;bard,wizard,cleric,sorcerer
+0;mage_hand;Mage Hand;Волшебная рука;conjuration;PHB;bard,wizard,warlock,sorcerer
+0;mending;Mending;Починка;transmutation;PHB;bard,wizard,druid,cleric,sorcerer
+0;message;Message;Сообщение;transmutation;PHB;bard,wizard,sorcerer,druid
+0;minor_illusion;Minor Illusion;Малая иллюзия;illusion;PHB;bard,wizard,warlock,sorcerer
+0;poison_spray;Poison Spray;Ядовитые брызги;conjuration;PHB;wizard,druid,warlock,sorcerer
+0;prestidigitation;Prestidigitation;Фокусы;transmutation;PHB;bard,wizard,warlock,sorcerer
+0;ray_of_frost;Ray of Frost;Луч холода;evocation;PHB;wizard,sorcerer
+0;shocking_grasp;Shocking Grasp;Электрошок;evocation;PHB;wizard,sorcerer
+0;true_strike;True Strike;Меткий удар;divination;PHB;bard,wizard,warlock,sorcerer
+0;spare_the_dying;Spare the Dying;Уход за умирающим;necromancy;PHB;cleric
+0;acid_splash;Acid Splash;Брызги кислоты;conjuration;PHB;wizard,sorcerer
+0;vicious_mockery;Vicious Mockery;Злая насмешка;enchantment;PHB;bard
+0;sacred_flame;Sacred Flame;Священное пламя;evocation;PHB;cleric
+0;resistance;Resistance;Сопротивление;abjuration;PHB;druid,cleric
+0;guidance;Guidance;Указание;divination;PHB;druid,cleric
+0;thaumaturgy;Thaumaturgy;Чудотворство;transmutation;PHB;cleric
+0;thunderclap;Thunderclap;Раскат грома;evocation;PHB;bard,wizard,druid,warlock,sorcerer
+0;thorn_whip;Thorn Whip;Терновый кнут;transmutation;PHB;druid
+0;shillelagh;Shillelagh;Дубинка;transmutation;PHB;druid
+0;produce_flame;Produce Flame;Сотворение пламени;conjuration;PHB;druid
+0;mind_sliver;Mind Sliver;Расщепление разума;enchantment;PHB;wizard,warlock,sorcerer
+0;druidcraft;Druidcraft;Искусство друидов;transmutation;PHB;druid
+0;word_of_radiance;Word of Radiance;Слово Сияния;evocation;PHB;cleric
+0;elementalism;Elementalism;Элементализм;transmutation;PHB;druid,sorcerer,wizard
+0;sorcerous_burst;Sorcerous Burst;Чародейская вспышка;evocation;PHB;sorcerer
+0;starry_wisp;Starry Wisp;Звёздный огонёк;evocation;PHB;bard,druid
+1;longstrider;Longstrider;Скороход;transmutation;PHB;bard,wizard,druid,ranger
+1;wrathful_smite;Wrathful Smite;Гневная кара;necromancy;PHB;paladin
+1;mage_armor;Mage Armor;Доспехи мага;abjuration;PHB;wizard,sorcerer
+1;magic_missile;Magic Missile;Волшебная стрела;evocation;PHB;wizard,sorcerer
+1;protection_from_evil_and_good;Protection from Evil and Good;Защита от добра и зла;abjuration;PHB;wizard,druid,cleric,warlock,paladin
+1;goodberry;Goodberry;Чудо-ягоды;conjuration;PHB;druid,ranger
+1;entangle;Entangle;Опутывание;conjuration;PHB;druid,ranger
+1;ray_of_sickness;Ray of Sickness;Луч болезни;necromancy;PHB;wizard,sorcerer
+1;shield;Shield;Щит;abjuration;PHB;wizard,sorcerer
+1;silent_image;Silent Image;Безмолвный образ;illusion;PHB;bard,wizard,sorcerer
+1;sleep;Sleep;Усыпление;enchantment;PHB;bard,wizard,sorcerer
+1;tasha_hideous_laughter;Tasha's Hideous Laughter;Жуткий смех Таши;enchantment;PHB;bard,wizard,warlock
+1;tenser_floating_disk;Tenser's Floating Disk;Тензеров парящий диск;conjuration;PHB;wizard
+1;alarm;Alarm;Сигнал тревоги;abjuration;PHB;wizard,ranger
+1;burning_hands;Burning Hands;Огненные ладони;evocation;PHB;wizard,sorcerer
+1;charm_person;Charm Person;Очарование личности;enchantment;PHB;bard,wizard,druid,warlock,sorcerer
+1;chromatic_orb;Chromatic Orb;Цветной шарик;evocation;PHB;wizard,sorcerer
+1;color_spray;Color Spray;Сверкающие брызги;illusion;PHB;bard,wizard,sorcerer
+1;comprehend_languages;Comprehend Languages;Понимание языков;divination;PHB;bard,wizard,warlock,sorcerer
+1;detect_magic;Detect Magic;Обнаружение магии;divination;PHB;bard,wizard,druid,cleric,paladin,ranger,sorcerer,warlock
+1;disguise_self;Disguise Self;Маскировка;illusion;PHB;bard,wizard,sorcerer
+1;expeditious_retreat;Expeditious Retreat;Поспешное отступление;transmutation;PHB;wizard,warlock,sorcerer
+1;false_life;False Life;Псевдожизнь;necromancy;PHB;wizard,sorcerer
+1;feather_fall;Feather Fall;Падение пёрышком;transmutation;PHB;bard,wizard,sorcerer
+1;find_familiar;Find Familiar;Поиск фамильяра;conjuration;PHB;wizard
+1;thunderwave;Thunderwave;Волна грома;evocation;PHB;bard,wizard,druid,sorcerer
+1;unseen_servant;Unseen Servant;Невидимый слуга;conjuration;PHB;bard,wizard,warlock
+1;hunter_mark;Hunter's Mark;Метка охотника;divination;PHB;ranger
+1;witch_bolt;Witch Bolt;Ведьмин снаряд;evocation;PHB;wizard,warlock,sorcerer
+1;create_or_destroy_water;Create or Destroy Water;Сотворение или уничтожение воды;transmutation;PHB;druid,cleric
+1;command;Command;Приказ;enchantment;PHB;bard,cleric,paladin
+1;bless;Bless;Благословение;enchantment;PHB;cleric,paladin
+1;shield_of_faith;Shield of Faith;Щит веры;abjuration;PHB;cleric,paladin
+1;sanctuary;Sanctuary;Убежище;abjuration;PHB;cleric
+1;purify_food_and_drink;Purify Food and Drink;Очищение пищи и питья;transmutation;PHB;druid,cleric,paladin
+1;inflict_wounds;Inflict Wounds;Нанесение ран;necromancy;PHB;cleric
+1;ice_knife;Ice Knife;Ледяной кинжал;conjuration;PHB;wizard,druid,sorcerer
+1;guiding_bolt;Guiding Bolt;Направленный снаряд;evocation;PHB;cleric
+1;detect_poison_and_disease;Detect Poison and Disease;Обнаружение болезней и яда;divination;PHB;druid,cleric,paladin,ranger
+1;animal_friendship;Animal Friendship;Дружба с животными;enchantment;PHB;bard,druid,ranger
+1;cure_wounds;Cure Wounds;Лечение ран;abjuration;PHB;bard,druid,cleric,paladin,ranger
+1;ensnaring_strike;Ensnaring Strike;Опутывающий удар;conjuration;PHB;ranger
+1;thunderous_smite;Thunderous Smite;Громовая кара;evocation;PHB;paladin
+1;searing_smite;Searing Smite;Палящая кара;evocation;PHB;paladin
+1;divine_favor;Divine Favor;Божественное благоволение;transmutation;PHB;paladin
+1;compelled_duel;Compelled Duel;Вызов на дуэль;enchantment;PHB;paladin
+1;dissonant_whispers;Dissonant Whispers;Диссонирующий шёпот;enchantment;PHB;bard
+1;faerie_fire;Faerie Fire;Огонь фей;evocation;PHB;bard,druid
+1;healing_word;Healing Word;Лечащее слово;abjuration;PHB;bard,druid,cleric
+1;speak_with_animals;Speak with Animals;Разговор с животными;divination;PHB;bard,druid,ranger,warlock
+1;fog_cloud;Fog Cloud;Туманное облако;conjuration;PHB;wizard,druid,ranger,sorcerer
+1;detect_evil_and_good;Detect Evil and Good;Обнаружение добра и зла;divination;PHB;cleric,paladin
+1;grease;Grease;Скольжение;conjuration;PHB;wizard,sorcerer
+1;identify;Identify;Опознание;divination;PHB;bard,wizard
+1;illusory_script;Illusory Script;Невидимое письмо;illusion;PHB;bard,wizard,warlock
+1;heroism;Heroism;Героизм;enchantment;PHB;bard,paladin
+1;bane;Bane;Порча;enchantment;PHB;bard,cleric,warlock
+1;hex;Hex;Сглаз;enchantment;PHB;warlock
+1;arms_of_hadar;Arms of Hadar;Руки Хадара;conjuration;PHB;warlock
+1;armor_of_agathys;Armor of Agathys;Доспех Агатиса;abjuration;PHB;warlock
+1;hail_of_thorns;Hail of Thorns;Град шипов;conjuration;PHB;ranger
+1;hellish_rebuke;Hellish Rebuke;Адское возмездие;evocation;PHB;warlock
+1;jump;Jump;Прыжок;transmutation;PHB;wizard,druid,ranger,sorcerer
+1;divine_smite;Divine Smite;Божественная кара;evocation;PHB;paladin
+2;pass_without_trace;Pass without Trace;Бесследное передвижение;abjuration;PHB;druid,ranger
+2;prayer_of_healing;Prayer of Healing;Молебен лечения;abjuration;PHB;cleric,paladin
+2;find_traps;Find Traps;Поиск ловушек;divination;PHB;druid,cleric,ranger
+2;augury;Augury;Гадание;divination;PHB;wizard,druid,cleric
+2;zone_of_truth;Zone of Truth;Область истины;enchantment;PHB;bard,cleric,paladin
+2;silence;Silence;Тишина;illusion;PHB;bard,cleric,ranger
+2;locate_animals_or_plants;Locate Animals or Plants;Поиск животных или растений;divination;PHB;bard,druid,ranger
+2;heat_metal;Heat Metal;Раскалённый металл;transmutation;PHB;bard,druid
+2;enhance_ability;Enhance Ability;Улучшение характеристики;transmutation;PHB;bard,wizard,druid,cleric,ranger,sorcerer
+2;animal_messenger;Animal Messenger;Почтовое животное;enchantment;PHB;bard,druid,ranger
+2;arcane_lock;Arcane Lock;Волшебный замок;abjuration;PHB;wizard
+2;arcane_vigor;Arcane Vigor;Магическое здоровье;abjuration;PHB;sorcerer,wizard
+2;blindness_or_deafness;Blindness or Deafness;Глухота/слепота;necromancy;PHB;bard,wizard,cleric,sorcerer
+2;blur;Blur;Размытый образ;illusion;PHB;wizard,sorcerer
+2;cloud_of_daggers;Cloud of Daggers;Облако кинжалов;conjuration;PHB;bard,wizard,warlock,sorcerer
+2;continual_flame;Continual Flame;Вечный огонь;evocation;PHB;wizard,druid,cleric
+2;crown_of_madness;Crown of Madness;Корона безумия;enchantment;PHB;bard,wizard,warlock,sorcerer
+2;darkness;Darkness;Тьма;evocation;PHB;wizard,warlock,sorcerer
+2;darkvision;Darkvision;Тёмное зрение;transmutation;PHB;wizard,druid,ranger,sorcerer
+2;detect_thoughts;Detect Thoughts;Обнаружение мыслей;divination;PHB;bard,wizard,sorcerer
+2;enlarge_or_reduce;Enlarge or Reduce;Увеличение/уменьшение;transmutation;PHB;bard,wizard,druid,sorcerer
+2;flaming_sphere;Flaming Sphere;Пылающий шар;conjuration;PHB;wizard,druid,sorcerer
+2;gentle_repose;Gentle Repose;Нетленные останки;necromancy;PHB;wizard,cleric,paladin
+2;gust_of_wind;Gust of Wind;Порыв ветра;evocation;PHB;wizard,druid,ranger,sorcerer
+2;hold_person;Hold Person;Удержание личности;enchantment;PHB;bard,wizard,druid,cleric,warlock,sorcerer
+2;invisibility;Invisibility;Невидимость;illusion;PHB;bard,wizard,warlock,sorcerer
+2;knock;Knock;Открывание;transmutation;PHB;bard,wizard,sorcerer
+2;levitate;Levitate;Левитация;transmutation;PHB;wizard,sorcerer
+2;locate_object;Locate Object;Поиск предмета;divination;PHB;bard,wizard,druid,cleric,paladin,ranger
+2;magic_mouth;Magic Mouth;Волшебные уста;illusion;PHB;bard,wizard
+2;magic_weapon;Magic Weapon;Магическое оружие;transmutation;PHB;wizard,paladin,ranger,sorcerer
+2;melf_acid_arrow;Melf's Acid Arrow;Мельфова кислотная стрела;evocation;PHB;wizard
+2;mirror_image;Mirror Image;Отражения;illusion;PHB;bard,wizard,warlock,sorcerer
+2;misty_step;Misty Step;Туманный шаг;conjuration;PHB;wizard,warlock,sorcerer
+2;nystul_magic_aura;Nystul's Magic Aura;Нистулова ложная магия;illusion;PHB;wizard
+2;phantasmal_force;Phantasmal Force;Воображаемая сила;illusion;PHB;bard,wizard,sorcerer
+2;ray_of_enfeeblement;Ray of Enfeeblement;Луч слабости;necromancy;PHB;wizard,warlock
+2;rope_trick;Rope Trick;Трюк с верёвкой;transmutation;PHB;wizard
+2;scorching_ray;Scorching Ray;Палящий луч;evocation;PHB;wizard,sorcerer
+2;see_invisibility;See Invisibility;Видение невидимого;divination;PHB;bard,wizard,sorcerer
+2;shatter;Shatter;Дребезги;evocation;PHB;bard,wizard,sorcerer
+2;spider_climb;Spider Climb;Паук;transmutation;PHB;wizard,warlock,sorcerer
+2;suggestion;Suggestion;Внушение;enchantment;PHB;bard,wizard,warlock,sorcerer
+2;web;Web;Паутина;conjuration;PHB;wizard,sorcerer
+2;summon_beast;Summon Beast;Призыв духа зверя;conjuration;PHB;druid,ranger
+2;mind_spike;Mind Spike;Пронзание разума;divination;PHB;wizard,warlock,sorcerer
+2;dragon_breath;Dragon's Breath;Дыхание дракона;transmutation;PHB;wizard,sorcerer
+2;alter_self;Alter Self;Смена обличья;transmutation;PHB;wizard,sorcerer
+2;cordon_of_arrows;Cordon of Arrows;Завеса стрел;transmutation;PHB;ranger
+2;spike_growth;Spike Growth;Шипы;transmutation;PHB;druid,ranger
+2;barkskin;Barkskin;Дубовая кора;transmutation;PHB;druid,ranger
+2;warding_bond;Warding Bond;Охраняющая связь;abjuration;PHB;cleric,paladin
+2;protection_from_poison;Protection from Poison;Защита от яда;abjuration;PHB;druid,cleric,paladin,ranger
+2;aid;Aid;Подмога;divination;PHB;bard,cleric,paladin,ranger,druid
+2;lesser_restoration;Lesser Restoration;Малое восстановление;abjuration;PHB;bard,druid,cleric,paladin,ranger
+2;enthrall;Enthrall;Речь златоуста;enchantment;PHB;bard,warlock
+2;calm_emotions;Calm Emotions;Умиротворение;enchantment;PHB;bard,cleric
+2;find_steed;Find Steed;Поиск скакуна;conjuration;PHB;paladin
+2;moonbeam;Moonbeam;Лунный луч;evocation;PHB;druid
+2;flame_blade;Flame Blade;Горящий клинок;evocation;PHB;druid,sorcerer
+2;beast_sense;Beast Sense;Животные чувства;divination;PHB;druid,ranger
+2;spiritual_weapon;Spiritual Weapon;Божественное оружие;evocation;PHB;cleric
+2;shining_smite;Shining Smite;Клеймящая кара;transmutation;PHB;paladin
+3;blinding_smite;Blinding Smite;Ослепляющая кара;evocation;PHB;paladin
+3;blink;Blink;Мерцание;transmutation;PHB;wizard,sorcerer
+3;clairvoyance;Clairvoyance;Подсматривание;divination;PHB;bard,wizard,cleric,sorcerer
+3;counterspell;Counterspell;Контрзаклинание;abjuration;PHB;wizard,warlock,sorcerer
+3;dispel_magic;Dispel Magic;Рассеивание магии;abjuration;PHB;bard,wizard,druid,cleric,warlock,paladin,sorcerer,warlock
+3;fear;Fear;Ужас;illusion;PHB;bard,wizard,warlock,sorcerer
+3;feign_death;Feign Death;Притворная смерть;necromancy;PHB;bard,wizard,druid,cleric
+3;fireball;Fireball;Огненный шар;evocation;PHB;wizard,sorcerer
+3;fly;Fly;Полёт;transmutation;PHB;wizard,warlock,sorcerer
+3;gaseous_form;Gaseous Form;Газообразная форма;transmutation;PHB;wizard,warlock,sorcerer
+3;glyph_of_warding;Glyph of Warding;Охранные руны;abjuration;PHB;bard,wizard,cleric
+3;haste;Haste;Ускорение;transmutation;PHB;wizard,sorcerer
+3;hypnotic_pattern;Hypnotic Pattern;Гипнотический узор;illusion;PHB;bard,wizard,warlock,sorcerer
+3;leomund_tiny_hut;Leomund's Tiny Hut;Леомундова хижина;evocation;PHB;bard,wizard
+3;lightning_bolt;Lightning Bolt;Молния;evocation;PHB;wizard,sorcerer
+3;magic_circle;Magic Circle;Магический круг;abjuration;PHB;wizard,cleric,warlock,paladin
+3;major_image;Major Image;Образ;illusion;PHB;bard,wizard,warlock,sorcerer
+3;nondetection;Nondetection;Необнаружимость;abjuration;PHB;bard,wizard,ranger
+3;phantom_steed;Phantom Steed;Призрачный скакун;illusion;PHB;wizard
+3;protection_from_energy;Protection from Energy;Защита от энергии;abjuration;PHB;wizard,druid,cleric,ranger,sorcerer
+3;remove_curse;Remove Curse;Снятие проклятья;abjuration;PHB;wizard,cleric,warlock,paladin
+3;sending;Sending;Послание;evocation;PHB;bard,wizard,cleric
+3;sleet_storm;Sleet Storm;Метель;conjuration;PHB;wizard,druid,sorcerer
+3;slow;Slow;Замедление;transmutation;PHB;bard,wizard,sorcerer
+3;stinking_cloud;Stinking Cloud;Зловонное облако;conjuration;PHB;bard,wizard,sorcerer
+3;tongues;Tongues;Языки;divination;PHB;bard,wizard,cleric,warlock,sorcerer
+3;vampiric_touch;Vampiric Touch;Прикосновение вампира;necromancy;PHB;wizard,warlock,sorcerer
+3;water_breathing;Water Breathing;Подводное дыхание;transmutation;PHB;wizard,druid,ranger,sorcerer
+3;speak_with_dead;Speak with Dead;Разговор с мёртвыми;necromancy;PHB;bard,wizard,cleric
+3;speak_with_plants;Speak with Plants;Разговор с растениями;transmutation;PHB;bard,druid,ranger
+3;create_food_and_water;Create Food and Water;Сотворение пищи и воды;conjuration;PHB;cleric,paladin
+3;daylight;Daylight;Дневной свет;evocation;PHB;druid,cleric,paladin,ranger,sorcerer
+3;mass_healing_word;Mass Healing Word;Множественное лечащее слово;abjuration;PHB;bard,cleric
+3;meld_into_stone;Meld Into Stone;Слияние с камнем;transmutation;PHB;druid,cleric,ranger
+3;revivify;Revivify;Возрождение;necromancy;PHB;druid,cleric,paladin,ranger
+3;spirit_guardians;Spirit Guardians;Духовные стражи;conjuration;PHB;cleric
+3;water_walk;Water Walk;Хождение по воде;transmutation;PHB;druid,cleric,ranger,sorcerer
+3;plant_growth;Plant Growth;Рост растений;transmutation;PHB;bard,druid,ranger
+3;wind_wall;Wind Wall;Стена ветров;evocation;PHB;druid,ranger
+3;crusader_mantle;Crusader's Mantle;Мантия крестоносца;evocation;PHB;paladin
+3;conjure_animals;Conjure Animals;Вызов животных;conjuration;PHB;druid,ranger
+3;aura_of_vitality;Aura of Vitality;Аура живучести;evocation;PHB;druid,cleric,paladin
+3;elemental_weapon;Elemental Weapon;Стихийное оружие;transmutation;PHB;druid,paladin,ranger
+3;lightning_arrow;Lightning Arrow;Молниевая стрела;transmutation;PHB;ranger
+3;hunger_of_hadar;Hunger of Hadar;Голод Хадара;conjuration;PHB;warlock
+3;bestow_curse;Bestow Curse;Проклятие;necromancy;PHB;bard,wizard,cleric
+3;animate_dead;Animate Dead;Восставший труп;necromancy;PHB;wizard,cleric
+3;beacon_of_hope;Beacon of Hope;Маяк надежды;abjuration;PHB;cleric
+3;call_lightning;Call Lightning;Призыв молнии;conjuration;PHB;druid
+3;conjure_barrage;Conjure Barrage;Вызов заграждения;conjuration;PHB;ranger
+3;summon_fey;Summon Fey;Призыв духа феи;conjuration;PHB;wizard,druid,warlock,ranger
+3;summon_undead;Summon Undead;Призыв духа нежити;necromancy;PHB;wizard,warlock
+4;giant_insect;Giant Insect;Гигантское насекомое;transmutation;PHB;druid
+4;death_ward;Death Ward;Защита от смерти;abjuration;PHB;cleric,paladin
+4;evard_black_tentacles;Evard's Black Tentacles;Эвардовы чёрные щупальца;conjuration;PHB;wizard
+4;freedom_of_movement;Freedom of Movement;Свобода перемещения;abjuration;PHB;bard,druid,cleric,ranger
+4;compulsion;Compulsion;Принуждение;enchantment;PHB;bard
+4;ice_storm;Ice Storm;Град;evocation;PHB;wizard,druid,sorcerer
+4;fabricate;Fabricate;Изготовление;transmutation;PHB;wizard
+4;leomund_secret_chest;Leomund's Secret Chest;Леомундов потайной сундук;conjuration;PHB;wizard
+4;locate_creature;Locate Creature;Поиск существа;divination;PHB;bard,wizard,druid,cleric,paladin,ranger
+4;summon_elemental;Summon Elemental;Призыв духа элементалей;conjuration;PHB;wizard,druid,ranger
+4;mordenkainen_faithful_hound;Mordenkainen's Faithful Hound;Верный пёс Морденкайнена;conjuration;PHB;wizard
+4;mordenkainen_private_sanctum;Mordenkainen's Private Sanctum;Кабинет Морденкайнена;abjuration;PHB;wizard
+4;dominate_beast;Dominate Beast;Подчинение зверя;enchantment;PHB;druid,ranger,sorcerer
+4;grasping_vine;Grasping Vine;Цепкая лоза;conjuration;PHB;druid,ranger
+4;guardian_of_faith;Guardian of Faith;Страж веры;conjuration;PHB;cleric
+4;arcane_eye;Arcane Eye;Магический глаз;divination;PHB;wizard
+4;summon_construct;Summon Construct;Призыв духа конструкта;conjuration;PHB;wizard
+4;otiluke_resilient_sphere;Otiluke's Resilient Sphere;Отилюков упругий шар;evocation;PHB;wizard
+4;charm_monster;Charm Monster;Очарование монстра;enchantment;PHB;bard,wizard,druid,warlock,sorcerer
+4;phantasmal_killer;Phantasmal Killer;Воображаемый убийца;illusion;PHB;bard,wizard
+4;polymorph;Polymorph;Превращение;transmutation;PHB;bard,wizard,druid,sorcerer
+4;stone_shape;Stone Shape;Изменение формы камня;transmutation;PHB;wizard,druid,cleric
+4;stoneskin;Stoneskin;Каменная кожа;transmutation;PHB;wizard,druid,ranger,sorcerer
+4;confusion;Confusion;Смятение;enchantment;PHB;bard,wizard,druid,sorcerer
+4;greater_invisibility;Greater Invisibility;Высшая невидимость;illusion;PHB;bard,wizard,sorcerer
+4;conjure_woodland_beings;Conjure Woodland Beings;Вызов лесных обитателей;conjuration;PHB;druid,ranger
+4;divination;Divination;Предсказание;divination;PHB;wizard,druid,cleric
+4;wall_of_fire;Wall of Fire;Огненная стена;evocation;PHB;wizard,druid,sorcerer
+4;vitriolic_sphere;Vitriolic Sphere;Едкий шар;evocation;PHB;wizard,sorcerer
+4;summon_aberration;Summon Aberration;Призыв духа аберрации;conjuration;PHB;wizard,warlock
+4;conjure_minor_elementals;Conjure Minor Elementals;Вызов малых элементалей;conjuration;PHB;wizard,druid
+4;banishment;Banishment;Изгнание;abjuration;PHB;wizard,cleric,warlock,paladin,sorcerer
+4;control_water;Control Water;Власть над водами;transmutation;PHB;wizard,druid,cleric
+4;dimension_door;Dimension Door;Переносящая дверь;conjuration;PHB;bard,wizard,warlock,sorcerer
+4;aura_of_life;Aura of Life;Аура жизни;abjuration;PHB;cleric,paladin
+4;aura_of_purity;Aura of Purity;Аура очищения;abjuration;PHB;cleric,paladin
+4;staggering_smite;Staggering Smite;Оглушающая кара;enchantment;PHB;paladin
+4;hallucinatory_terrain;Hallucinatory Terrain;Мираж;illusion;PHB;bard,wizard,druid,warlock
+4;blight;Blight;Усыхание;necromancy;PHB;wizard,druid,warlock,sorcerer
+4;fire_shield;Fire Shield;Огненный щит;evocation;PHB;wizard,druid,sorcerer
+4;fount_of_moonlight;Fount of Moonlight;Источник Лунного Света;evocation;PHB;bard,druid
+5;tree_stride;Tree Stride;Древесный путь;conjuration;PHB;druid,ranger
+5;commune_with_nature;Commune with Nature;Общение с природой;divination;PHB;druid,ranger
+5;banishing_smite;Banishing Smite;Изгоняющая кара;abjuration;PHB;paladin
+5;circle_of_power;Circle of Power;Круг силы;abjuration;PHB;paladin
+5;conjure_volley;Conjure Volley;Вызов залпа;conjuration;PHB;ranger
+5;swift_quiver;Swift Quiver;Быстрый колчан;transmutation;PHB;ranger
+5;awaken;Awaken;Пробуждение разума;transmutation;PHB;bard,druid
+5;greater_restoration;Greater Restoration;Высшее восстановление;abjuration;PHB;bard,druid,cleric,ranger,paladin
+5;dispel_evil_and_good;Dispel Evil and Good;Рассеивание добра и зла;abjuration;PHB;cleric,paladin
+5;hallow;Hallow;Святилище;abjuration;PHB;cleric
+5;insect_plague;Insect Plague;Нашествие насекомых;conjuration;PHB;druid,cleric,sorcerer
+5;antilife_shell;Antilife Shell;Преграда жизни;abjuration;PHB;druid
+5;reincarnate;Reincarnate;Реинкарнация;necromancy;PHB;druid
+5;destructive_wave;Destructive Wave;Разрушительная волна;evocation;PHB;paladin
+5;wall_of_stone;Wall of Stone;Каменная стена;evocation;PHB;wizard,druid,sorcerer
+5;wall_of_force;Wall of Force;Силовая стена;evocation;PHB;wizard
+5;teleportation_circle;Teleportation Circle;Круг телепортации;conjuration;PHB;bard,wizard,warlock,sorcerer
+5;telekinesis;Telekinesis;Телекинез;transmutation;PHB;wizard,sorcerer
+5;seeming;Seeming;Притворство;illusion;PHB;bard,wizard,sorcerer
+5;scrying;Scrying;Наблюдение;divination;PHB;bard,wizard,druid,cleric,warlock
+5;rary_telepathic_bond;Rary's Telepathic Bond;Ментальная связь Рэри;divination;PHB;bard,wizard
+5;planar_binding;Planar Binding;Планарные узы;abjuration;PHB;bard,wizard,druid,cleric,warlock
+5;passwall;Passwall;Создание прохода;transmutation;PHB;wizard
+5;modify_memory;Modify Memory;Изменение памяти;enchantment;PHB;bard,wizard
+5;mislead;Mislead;Фальшивый двойник;illusion;PHB;bard,wizard,warlock
+5;legend_lore;Legend Lore;Знание легенд;divination;PHB;bard,wizard,cleric
+5;hold_monster;Hold Monster;Удержание чудовища;enchantment;PHB;bard,wizard,warlock,sorcerer
+5;geas;Geas;Обет;enchantment;PHB;bard,wizard,druid,cleric,paladin
+5;dream;Dream;Вещий сон;illusion;PHB;bard,wizard,warlock
+5;dominate_person;Dominate Person;Подчинение личности;enchantment;PHB;bard,wizard,sorcerer
+5;creation;Creation;Сотворение;illusion;PHB;wizard,sorcerer
+5;contact_other_plane;Contact Other Plane;Связь с иным миром;divination;PHB;wizard,warlock
+5;conjure_elemental;Conjure Elemental;Вызов элементаля;conjuration;PHB;wizard,druid
+5;cone_of_cold;Cone of Cold;Конус холода;evocation;PHB;wizard,druid,sorcerer
+5;cloudkill;Cloudkill;Облако смерти;conjuration;PHB;wizard,sorcerer
+5;bigby_hand;Bigby's Hand;Длань Бигби;evocation;PHB;wizard,sorcerer
+5;animate_objects;Animate Objects;Оживление вещей;transmutation;PHB;bard,wizard,sorcerer
+5;summon_celestial;Summon Celestial;Призыв духа небожителей;conjuration;PHB;cleric,paladin
+5;flame_strike;Flame Strike;Небесный огонь;evocation;PHB;cleric
+5;mass_cure_wounds;Mass Cure Wounds;Множественное лечение ран;abjuration;PHB;bard,druid,cleric
+5;raise_dead;Raise Dead;Оживление;necromancy;PHB;bard,cleric,paladin
+5;steel_wind_strike;Steel Wind Strike;Удар стального ветра;conjuration;PHB;wizard,ranger
+5;synaptic_static;Synaptic Static;Синаптический разряд;enchantment;PHB;bard,wizard,warlock,sorcerer
+5;commune;Commune;Общение;divination;PHB;cleric
+5;contagion;Contagion;Заражение;necromancy;PHB;druid,cleric
+5;jallarzi_storm_of_radiance;Jallarzi's Storm of Radiance;Шторм излучения Джалларзи;evocation;PHB;warlock,wizard
+5;summon_dragon;Summon Dragon;Призыв духа дракона;conjuration;PHB;wizard
+5;yolande_regal_presence;Yolande's Regal Presence;Королевское величие Йоланды;enchantment;PHB;bard,wizard
+6;wind_walk;Wind Walk;Хождение по ветру;transmutation;PHB;druid
+6;mass_suggestion;Mass Suggestion;Множественное внушение;enchantment;PHB;bard,wizard,sorcerer
+6;find_the_path;Find the Path;Поиск пути;divination;PHB;bard,druid,cleric
+6;wall_of_ice;Wall of Ice;Ледяная стена;evocation;PHB;wizard
+6;word_of_recall;Word of Recall;Слово возврата;conjuration;PHB;cleric
+6;true_seeing;True Seeing;Истинное зрение;divination;PHB;bard,wizard,cleric,warlock,sorcerer
+6;summon_fiend;Summon Fiend;Призыв духа исчадия;conjuration;PHB;wizard,warlock
+6;sunbeam;Sunbeam;Солнечный луч;evocation;PHB;wizard,druid,cleric,sorcerer
+6;forbiddance;Forbiddance;Запрет;abjuration;PHB;cleric
+6;move_earth;Move Earth;Движение почвы;transmutation;PHB;wizard,druid,sorcerer
+6;otiluke_freezing_sphere;Otiluke's Freezing Sphere;Отилюков ледяной шар;evocation;PHB;wizard,sorcerer
+6;otto_irresistible_dance;Otto's Irresistible Dance;Неудержимая пляска Отто;enchantment;PHB;bard,wizard
+6;programmed_illusion;Programmed Illusion;Заданная иллюзия;illusion;PHB;bard,wizard
+6;conjure_fey;Conjure Fey;Вызов феи;conjuration;PHB;druid
+6;create_undead;Create Undead;Сотворение нежити;necromancy;PHB;wizard,cleric,warlock
+6;arcane_gate;Arcane Gate;Магические врата;conjuration;PHB;wizard,warlock,sorcerer
+6;disintegrate;Disintegrate;Распад;transmutation;PHB;wizard,sorcerer
+6;heroes_feast;Heroes' Feast;Пир героев;conjuration;PHB;bard,druid,cleric
+6;heal;Heal;Полное исцеление;evocation;PHB;druid,cleric
+6;planar_ally;Planar Ally;Планарный союзник;conjuration;PHB;cleric
+6;drawmij_instant_summons;Drawmij's Instant Summons;Дромиджево появление;conjuration;PHB;wizard
+6;eyebite;Eyebite;Разящее око;necromancy;PHB;bard,wizard,warlock,sorcerer
+6;chain_lightning;Chain Lightning;Пляшущая молния;evocation;PHB;wizard,sorcerer
+6;flesh_to_stone;Flesh to Stone;Окаменение;transmutation;PHB;wizard,druid,sorcerer
+6;wall_of_thorns;Wall of Thorns;Терновая стена;conjuration;PHB;druid
+6;transport_via_plants;Transport via Plants;Путешествие через растения;conjuration;PHB;druid
+6;tasha_bubbling_cauldron;Tasha's Bubbling Cauldron;Булькающий котёл Таши;conjuration;PHB;warlock,wizard
+6;harm;Harm;Поражение;necromancy;PHB;cleric
+6;blade_barrier;Blade Barrier;Стена клинков;evocation;PHB;cleric
+6;globe_of_invulnerability;Globe of Invulnerability;Сфера неуязвимости;abjuration;PHB;wizard,sorcerer
+6;circle_of_death;Circle of Death;Круг смерти;necromancy;PHB;wizard,warlock,sorcerer
+6;contingency;Contingency;Предосторожность;abjuration;PHB;wizard
+6;guards_and_wards;Guards and Wards;Стражи;abjuration;PHB;bard,wizard
+6;magic_jar;Magic Jar;Волшебный сосуд;necromancy;PHB;wizard
+7;plane_shift;Plane Shift;Уход в иной мир;conjuration;PHB;wizard,druid,cleric,warlock,sorcerer
+7;conjure_celestial;Conjure Celestial;Вызов небожителя;conjuration;PHB;cleric
+7;mirage_arcane;Mirage Arcane;Таинственный мираж;illusion;PHB;bard,wizard,druid
+7;mordenkainen_magnificent_mansion;Mordenkainen's Magnificent Mansion;Великолепный особняк Морденкайнена;conjuration;PHB;bard,wizard
+7;regenerate;Regenerate;Регенерация;transmutation;PHB;bard,druid,cleric
+7;resurrection;Resurrection;Воскрешение;necromancy;PHB;bard,cleric
+7;mordenkainen_sword;Mordenkainen's Sword;Меч Морденкайнена;evocation;PHB;bard,wizard
+7;prismatic_spray;Prismatic Spray;Радужные брызги;evocation;PHB;bard,wizard,sorcerer
+7;project_image;Project Image;Проекция;illusion;PHB;bard,wizard
+7;reverse_gravity;Reverse Gravity;Изменение тяготения;transmutation;PHB;wizard,druid,sorcerer
+7;sequester;Sequester;Изоляция;transmutation;PHB;wizard
+7;simulacrum;Simulacrum;Подобие;illusion;PHB;wizard
+7;symbol;Symbol;Знак;abjuration;PHB;bard,wizard,druid,cleric
+7;teleport;Teleport;Телепортация;conjuration;PHB;bard,wizard,sorcerer
+7;delayed_blast_fireball;Delayed Blast Fireball;Замедленный огненный шар;evocation;PHB;wizard,sorcerer
+7;etherealness;Etherealness;Эфирность;transmutation;PHB;bard,wizard,cleric,warlock,sorcerer
+7;finger_of_death;Finger of Death;Перст смерти;necromancy;PHB;wizard,warlock,sorcerer
+7;fire_storm;Fire Storm;Огненная буря;evocation;PHB;druid,cleric,sorcerer
+7;forcecage;Forcecage;Узилище;evocation;PHB;bard,wizard,warlock
+7;divine_word;Divine Word;Божественное слово;evocation;PHB;cleric
+7;power_word_fortify;Power Word Fortify;Слово Силы: Укрепление;enchantment;PHB;bard,cleric
+8;clone;Clone;Двойник;necromancy;PHB;wizard
+8;antipathy_or_sympathy;Antipathy or Sympathy;Антипатия/симпатия;enchantment;PHB;bard,wizard,druid
+8;glibness;Glibness;Находчивость;enchantment;PHB;bard,warlock
+8;dominate_monster;Dominate Monster;Подчинение чудовища;enchantment;PHB;bard,wizard,warlock,sorcerer
+8;antimagic_field;Antimagic Field;Преграда магии;abjuration;PHB;wizard,cleric
+8;incendiary_cloud;Incendiary Cloud;Воспламеняющаяся туча;conjuration;PHB;druid,sorcerer,wizard
+8;maze;Maze;Лабиринт;conjuration;PHB;wizard
+8;mind_blank;Mind Blank;Сокрытие разума;abjuration;PHB;bard,wizard
+8;power_word_stun;Power Word Stun;Слово силы: Оглушение;enchantment;PHB;bard,wizard,warlock,sorcerer
+8;holy_aura;Holy Aura;Аура святости;abjuration;PHB;cleric
+8;sunburst;Sunburst;Солнечный ожог;evocation;PHB;wizard,druid,cleric,sorcerer
+8;telepathy;Telepathy;Телепатия;divination;PHB;wizard
+8;earthquake;Earthquake;Землетрясение;transmutation;PHB;druid,cleric,sorcerer
+8;animal_shapes;Animal Shapes;Превращение в животных;transmutation;PHB;druid
+8;tsunami;Tsunami;Цунами;conjuration;PHB;druid
+8;control_weather;Control Weather;Власть над погодой;transmutation;PHB;wizard,druid,cleric
+8;demiplane;Demiplane;Демиплан;conjuration;PHB;wizard,warlock,sorcerer
+8;befuddlement;Befuddlenent;Озадачивание;enchantment;PHB;bard,druid,warlock,wizard
+9;true_polymorph;True Polymorph;Истинное превращение;transmutation;PHB;bard,wizard,warlock
+9;mass_heal;Mass Heal;Множественное полное исцеление;abjuration;PHB;cleric
+9;imprisonment;Imprisonment;Заточение;abjuration;PHB;wizard,warlock
+9;meteor_swarm;Meteor Swarm;Метеоритный дождь;evocation;PHB;wizard,sorcerer
+9;true_resurrection;True Resurrection;Истинное воскрешение;necromancy;PHB;druid,cleric
+9;storm_of_vengeance;Storm of Vengeance;Гроза гнева;conjuration;PHB;druid
+9;power_word_kill;Power Word Kill;Слово силы: Смерть;enchantment;PHB;bard,wizard,warlock,sorcerer
+9;time_stop;Time Stop;Остановка времени;transmutation;PHB;wizard,sorcerer
+9;wish;Wish;Исполнение желаний;conjuration;PHB;wizard,sorcerer
+9;power_word_heal;Power Word Heal;Слово силы: Исцеление;evocation;PHB;bard,cleric
+9;prismatic_wall;Prismatic Wall;Радужная стена;abjuration;PHB;bard,wizard
+9;shapechange;Shapechange;Полное превращение;transmutation;PHB;wizard,druid
+9;astral_projection;Astral Projection;Проекция в астрал;necromancy;PHB;wizard,cleric,warlock
+9;foresight;Foresight;Предвидение;divination;PHB;bard,wizard,druid,warlock
+9;gate;Gate;Врата;conjuration;PHB;wizard,cleric,warlock,sorcerer
+9;weird;Weird;Смертный ужас;illusion;PHB;wizard,warlock

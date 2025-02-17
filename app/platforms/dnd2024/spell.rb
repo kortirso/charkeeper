@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module Dnd5
+module Dnd2024
   class SpellData
     include StoreModel::Model
 
@@ -11,8 +11,8 @@ module Dnd5
   end
 end
 
-module Dnd5
+module Dnd2024
   class Spell < Spell
-    attribute :data, Dnd5::SpellData.to_type
+    attribute :data, Dnd2024::SpellData.to_type
   end
 end

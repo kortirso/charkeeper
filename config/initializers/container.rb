@@ -31,6 +31,8 @@ module Charkeeper
 
     register('commands.characters_context.dnd2024.create') { CharactersContext::Dnd2024::CreateCommand.new }
     register('commands.characters_context.dnd2024.update') { CharactersContext::Dnd2024::UpdateCommand.new }
+    register('commands.characters_context.dnd2024.spell_update') { CharactersContext::Dnd2024::SpellUpdateCommand.new }
+    register('commands.characters_context.dnd2024.spell_add') { CharactersContext::Dnd2024::SpellAddCommand.new }
     register('commands.characters_context.dnd2024.make_short_rest') { CharactersContext::Dnd2024::MakeShortRestCommand.new }
     register('commands.characters_context.dnd2024.make_long_rest') { CharactersContext::Dnd2024::MakeLongRestCommand.new }
 
