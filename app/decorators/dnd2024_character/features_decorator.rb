@@ -30,6 +30,7 @@ module Dnd2024Character
 
     def available_features(result)
       Dnd2024::Character::Feature.where(origin: 'species', origin_value: result[:species])
+        .or(Dnd2024::Character::Feature.where(origin: 'legacy', origin_value: result[:legacy]))
         .or(Dnd2024::Character::Feature.where(origin: 'class', origin_value: result[:classes].keys))
         .order(level: :asc)
         .select do |feature|

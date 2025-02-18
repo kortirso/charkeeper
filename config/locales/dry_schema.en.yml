@@ -42,3 +42,5 @@ en:
             can_not_learn: Can't be learned by class
           subrace:
             invalid: Invalid subrace
+          legacy:
+            invalid: Invalid legacy

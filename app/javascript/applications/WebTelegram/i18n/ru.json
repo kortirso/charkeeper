@@ -30,6 +30,7 @@
     },
     "dnd2024": {
       "species": "Вид",
+      "legacy": "Наследие",
       "size": "Размер",
       "mainClass": "Основной класс",
       "alignment": "Мировоззрение"
@@ -397,6 +398,30 @@
       "tiefling": "Тифлинг",
       "aasimar": "Аасимар",
       "goliath": "Голиаф"
+    },
+    "legacies": {
+      "elf": {
+        "high_elf": "Высший эльф",
+        "wood_elf": "Лесной эльф",
+        "drow": "Дроу"
+      },
+      "gnome": {
+        "forest_gnome": "Лесной гном",
+        "rock_gnome": "Скальный гном"
+      },
+      "tiefling": {
+        "abyssal": "Наследие бездны",
+        "chthonic": "Хтоническое наследие",
+        "infernal": "Инфернальное наследие"
+      },
+      "goliath": {
+        "cloud_giant": "Облачный великан",
+        "fire_giant": "Огненный великан",
+        "frost_giant": "Ледяной великан",
+        "hill_giant": "Холмовой великан",
+        "stone_giant": "Каменный великан",
+        "storm_giant": "Штормовой великан"
+      }
     },
     "sizes": {
       "medium": "Средний",

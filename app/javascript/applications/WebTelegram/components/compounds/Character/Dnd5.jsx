@@ -325,7 +325,7 @@ export const Dnd5 = (props) => {
               </Match>
               <Match when={props.provider === 'dnd2024'}>
                 <p class="text-sm">
-                  {t(`dnd2024.species.${decoratedData().species}`)} | {Object.entries(decoratedData().classes).map(([item, value]) => `${t(`dnd2024.classes.${item}`)} ${value}`).join(' * ')}
+                  {decoratedData().legacy ? t(`dnd2024.legacies.${decoratedData().species}.${decoratedData().legacy}`) : t(`dnd2024.species.${decoratedData().species}`)} | {Object.entries(decoratedData().classes).map(([item, value]) => `${t(`dnd2024.classes.${item}`)} ${value}`).join(' * ')}
                 </p>
               </Match>
             </Switch>

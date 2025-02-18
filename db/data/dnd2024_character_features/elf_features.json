@@ -14,5 +14,148 @@
     "options": null,
     "visible": "true",
     "eval_variables": {}
+  },
+  {
+    "slug": "elven_spellcasting",
+    "title": { "en": "Elven lineage", "ru": "Эльфийское происхождение" },
+    "description": {
+      "en": "Choose species spellcasting ability.",
+      "ru": "Выберите заклинательную характеристику вида."
+    },
+    "origin": "species",
+    "origin_value": "elf",
+    "level": 0,
+    "kind": "static_list",
+    "options_type": null,
+    "options": ["int", "wis", "cha"],
+    "visible": "true",
+    "eval_variables": {}
+  },
+  {
+    "slug": "drow_legacy_0",
+    "title": { "en": "", "ru": "" },
+    "description": { "en": "", "ru": "" },
+    "origin": "legacy",
+    "origin_value": "drow",
+    "level": 0,
+    "kind": "update_result",
+    "visible": "result[:selected_features].keys.include?('elven_spellcasting')",
+    "eval_variables": {
+      "result": "result[:darkvision] = [120, result[:darkvision]].max",
+      "value": "ability = result.dig(:selected_features, 'elven_spellcasting').to_sym; result[:static_spells].merge!({ 'dancing_lights' => { 'attack_bonus' => result[:proficiency_bonus] + result.dig(:modifiers, ability), 'save_dc' => 8 + result[:proficiency_bonus] + result.dig(:modifiers, ability) } })"
+    }
+  },
+  {
+    "slug": "drow_legacy_1",
+    "title": { "en": "", "ru": "" },
+    "description": { "en": "", "ru": "" },
+    "origin": "legacy",
+    "origin_value": "drow",
+    "level": 3,
+    "kind": "update_result",
+    "visible": "result[:selected_features].keys.include?('elven_spellcasting')",
+    "eval_variables": {
+      "result": "ability = result.dig(:selected_features, 'elven_spellcasting').to_sym; result[:static_spells].merge!({ 'faerie_fire' => { 'attack_bonus' => result[:proficiency_bonus] + result.dig(:modifiers, ability), 'save_dc' => 8 + result[:proficiency_bonus] + result.dig(:modifiers, ability) } })"
+    }
+  },
+  {
+    "slug": "drow_legacy_2",
+    "title": { "en": "", "ru": "" },
+    "description": { "en": "", "ru": "" },
+    "origin": "legacy",
+    "origin_value": "drow",
+    "level": 5,
+    "kind": "update_result",
+    "visible": "result[:selected_features].keys.include?('elven_spellcasting')",
+    "eval_variables": {
+      "result": "ability = result.dig(:selected_features, 'elven_spellcasting').to_sym; result[:static_spells].merge!({ 'darkness' => { 'attack_bonus' => result[:proficiency_bonus] + result.dig(:modifiers, ability), 'save_dc' => 8 + result[:proficiency_bonus] + result.dig(:modifiers, ability) } })"
+    }
+  },
+  {
+    "slug": "wood_elf_legacy_0",
+    "title": { "en": "", "ru": "" },
+    "description": { "en": "", "ru": "" },
+    "origin": "legacy",
+    "origin_value": "wood_elf",
+    "level": 0,
+    "kind": "update_result",
+    "visible": "result[:selected_features].keys.include?('elven_spellcasting')",
+    "eval_variables": {
+      "result": "result[:speed] = [35, result[:speed]].max",
+      "value": "ability = result.dig(:selected_features, 'elven_spellcasting').to_sym; result[:static_spells].merge!({ 'druidcraft' => { 'attack_bonus' => result[:proficiency_bonus] + result.dig(:modifiers, ability), 'save_dc' => 8 + result[:proficiency_bonus] + result.dig(:modifiers, ability) } })"
+    }
+  },
+  {
+    "slug": "wood_elf_legacy_1",
+    "title": { "en": "", "ru": "" },
+    "description": { "en": "", "ru": "" },
+    "origin": "legacy",
+    "origin_value": "wood_elf",
+    "level": 3,
+    "kind": "update_result",
+    "visible": "result[:selected_features].keys.include?('elven_spellcasting')",
+    "eval_variables": {
+      "result": "ability = result.dig(:selected_features, 'elven_spellcasting').to_sym; result[:static_spells].merge!({ 'longstrider' => { 'attack_bonus' => result[:proficiency_bonus] + result.dig(:modifiers, ability), 'save_dc' => 8 + result[:proficiency_bonus] + result.dig(:modifiers, ability) } })"
+    }
+  },
+  {
+    "slug": "wood_elf_legacy_2",
+    "title": { "en": "", "ru": "" },
+    "description": { "en": "", "ru": "" },
+    "origin": "legacy",
+    "origin_value": "wood_elf",
+    "level": 5,
+    "kind": "update_result",
+    "visible": "result[:selected_features].keys.include?('elven_spellcasting')",
+    "eval_variables": {
+      "result": "ability = result.dig(:selected_features, 'elven_spellcasting').to_sym; result[:static_spells].merge!({ 'pass_without_trace' => { 'attack_bonus' => result[:proficiency_bonus] + result.dig(:modifiers, ability), 'save_dc' => 8 + result[:proficiency_bonus] + result.dig(:modifiers, ability) } })"
+    }
+  },
+  {
+    "slug": "high_elf_legacy_0",
+    "title": { "en": "Cantrip", "ru": "Заговор" },
+    "description": {
+      "en": "You know one Cantrip of your choice from the wizard spelllist.",
+      "ru": "Вы знаете один заговор из списка заклинаний волшебника."
+    },
+    "origin": "legacy",
+    "origin_value": "high_elf",
+    "level": 0,
+    "kind": "static_list",
+    "options": [
+      "toll_the_dead", "blade_ward", "chill_touch", "dancing_lights", "fire_bolt", "friends", "light", "mage_hand", "mending",
+      "message", "minor_illusion", "poison_spray", "prestidigitation", "ray_of_frost", "shocking_grasp", "true_strike",
+      "acid_splash", "thunderclap", "mind_sliver", "elementalism"
+    ],
+    "visible": "result[:selected_features].keys.include?('elven_spellcasting')",
+    "eval_variables": {
+      "result": "spell_name = result.dig(:selected_features, 'high_elf_legacy_0'); ability = result.dig(:selected_features, 'elven_spellcasting').to_sym; result[:static_spells].merge!({ spell_name => { 'attack_bonus' => result[:proficiency_bonus] + result.dig(:modifiers, ability), 'save_dc' => 8 + result[:proficiency_bonus] + result.dig(:modifiers, ability) } }) if spell_name"
+    }
+  },
+  {
+    "slug": "high_elf_legacy_1",
+    "title": { "en": "", "ru": "" },
+    "description": { "en": "", "ru": "" },
+    "origin": "legacy",
+    "origin_value": "high_elf",
+    "level": 3,
+    "kind": "update_result",
+    "visible": "result[:selected_features].keys.include?('elven_spellcasting')",
+    "eval_variables": {
+      "result": "ability = result.dig(:selected_features, 'elven_spellcasting').to_sym; result[:static_spells].merge!({ 'detect_magic' => { 'attack_bonus' => result[:proficiency_bonus] + result.dig(:modifiers, ability), 'save_dc' => 8 + result[:proficiency_bonus] + result.dig(:modifiers, ability) } })"
+    }
+  },
+  {
+    "slug": "high_elf_legacy_2",
+    "title": { "en": "", "ru": "" },
+    "description": { "en": "", "ru": "" },
+    "origin": "legacy",
+    "origin_value": "high_elf",
+    "level": 5,
+    "kind": "update_result",
+    "visible": "result[:selected_features].keys.include?('elven_spellcasting')",
+    "eval_variables": {
+      "result": "ability = result.dig(:selected_features, 'elven_spellcasting').to_sym; result[:static_spells].merge!({ 'misty_step' => { 'attack_bonus' => result[:proficiency_bonus] + result.dig(:modifiers, ability), 'save_dc' => 8 + result[:proficiency_bonus] + result.dig(:modifiers, ability) } })"
+    }
   }
 ]
