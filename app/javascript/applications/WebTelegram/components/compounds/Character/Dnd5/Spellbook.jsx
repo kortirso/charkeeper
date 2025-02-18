@@ -27,26 +27,23 @@ export const Dnd5Spellbook = (props) => {
   const filteredCharacterSpells = createMemo(() => {
     if (props.characterSpells === undefined) return [];
 
-    const result = props.characterSpells.filter((item) => {
+    return props.characterSpells.filter((item) => {
       if (activeSpellClass() !== 'all' && item.prepared_by !== activeSpellClass()) return false;
       if (preparedSpellFilter()) return item.ready_to_use;
       if (Object.keys(props.staticCharacterSpells).includes(item.slug)) return false;
       return true;
     });
-    return Object.groupBy(result, ({ level }) => level);
   });
 
   const staticCharacterSpells = createMemo(() => {
     if (props.spells === undefined) return [];
     if (props.staticCharacterSpells.length === 0) return [];
 
-    const statisSpells = props.spells.filter((item) => Object.keys(props.staticCharacterSpells).includes(item.slug));
-    const result = Object.entries(props.staticCharacterSpells).map(([slug, item]) => {
-      const spell = statisSpells.find((item) => item.slug === slug);
+    const staticSpells = props.spells.filter((item) => Object.keys(props.staticCharacterSpells).includes(item.slug));
+    return Object.entries(props.staticCharacterSpells).map(([slug, item]) => {
+      const spell = staticSpells.find((item) => item.slug === slug);
       return { slug: slug, name: spell.name, level: spell.level, data: item }
     });
-
-    return Object.groupBy(result, ({ level }) => level);
   });
 
   // rendering
@@ -130,7 +127,7 @@ export const Dnd5Spellbook = (props) => {
             </tr>
           </thead>
           <tbody>
-            <For each={staticCharacterSpells()['0']}>
+            <For each={staticCharacterSpells().filter((item) => item.level === 0)}>
               {(spell) =>
                 <tr>
                   <td class="py-1">
@@ -143,7 +140,7 @@ export const Dnd5Spellbook = (props) => {
                 </tr>
               }
             </For>
-            <For each={filteredCharacterSpells()[0]}>
+            <For each={filteredCharacterSpells().filter((item) => item.level === 0)}>
               {(spell) =>
                 <tr>
                   <td class="py-1">
@@ -203,7 +200,7 @@ export const Dnd5Spellbook = (props) => {
                 </tr>
               </thead>
               <tbody>
-                <For each={staticCharacterSpells()[level]}>
+                <For each={staticCharacterSpells().filter((item) => item.level === parseInt(level))}>
                   {(spell) =>
                     <tr>
                       <td class="py-1">
@@ -216,7 +213,7 @@ export const Dnd5Spellbook = (props) => {
                     </tr>
                   }
                 </For>
-                <For each={filteredCharacterSpells()[level]}>
+                <For each={filteredCharacterSpells().filter((item) => item.level === parseInt(level))}>
                   {(spell) =>
                     <tr>
                       <td class="py-1">

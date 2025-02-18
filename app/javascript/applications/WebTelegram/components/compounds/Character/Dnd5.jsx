@@ -415,6 +415,7 @@ export const Dnd5 = (props) => {
                 <Dnd5Spells
                   spells={spells()}
                   characterSpells={characterSpells()}
+                  spellSlots={props.decoratedData.spells_slots}
                   initialSpellClassesList={spellClassesList()}
                   spellClasses={props.decoratedData.spell_classes}
                   knownSpellIds={knownSpellIds()}

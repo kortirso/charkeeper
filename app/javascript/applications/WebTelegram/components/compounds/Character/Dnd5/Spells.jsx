@@ -15,14 +15,13 @@ export const Dnd5Spells = (props) => {
 
   const filteredSpellsList = createMemo(() => {
     const maxSpellLevel = props.spellClasses[activeSpellClass()].max_spell_level;
-    const result = props.spells.filter((item) => {
+
+    return props.spells.filter((item) => {
       if (item.level > maxSpellLevel) return false;
       if (!availableSpellFilter()) return true;
 
       return item.available_for.includes(activeSpellClass());
     });
-
-    return Object.entries(Object.groupBy(result, ({ level }) => level));
   });
 
   return (
@@ -38,18 +37,18 @@ export const Dnd5Spells = (props) => {
         <Show when={props.initialSpellClassesList.length > 1}>
           <Select
             classList="w-40"
-            items={props.initialSpellClassesList.reduce((acc, item) => { acc[item] = t(`ddn5.classes.${item}`); return acc; }, {})}
+            items={props.initialSpellClassesList.reduce((acc, item) => { acc[item] = t(`dnd5.classes.${item}`); return acc; }, {})}
             selectedValue={activeSpellClass()}
             onSelect={(value) => setActiveSpellClass(value)}
           />
         </Show>
       </div>
-      <For each={filteredSpellsList()}>
-        {([level, spells]) =>
-          <Toggle title={level === '0' ? t('terms.cantrips') : `${level} ${t('spellbookPage.level')}`}>
+      <For each={[0].concat(Object.keys(props.spellSlots).map((item) => parseInt(item)))}>
+        {(level) =>
+          <Toggle title={level === 0 ? t('terms.cantrips') : `${level} ${t('spellbookPage.level')}`}>
             <table class="w-full table first-column-full-width">
               <tbody>
-                <For each={spells}>
+                <For each={filteredSpellsList().filter((item) => item.level === level)}>
                   {(spell) =>
                     <tr>
                       <td class="py-1">
