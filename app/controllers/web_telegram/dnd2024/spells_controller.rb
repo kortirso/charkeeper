@@ -9,11 +9,19 @@ module WebTelegram
 
       def index
         render json: serialize_relation(
-          ::Spell.dnd2024,
+          relation,
           ::Dnd2024::SpellSerializer,
           :spells,
           only: INDEX_SERIALIZER_FIELDS
         ), status: :ok
+      end
+
+      private
+
+      def relation
+        relation = ::Spell.dnd2024
+        relation = relation.where("data ->> 'level' <= ?", params[:max_level]) if params[:max_level]
+        relation
       end
     end
   end
