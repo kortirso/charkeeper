@@ -1,16 +1,21 @@
 <!DOCTYPE html>
-<html>
+<html lang="en" prefix="og: https://ogp.me/ns#">
   <head>
     <title><%= content_for(:title) || 'CharKeeper' %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="mobile-web-app-capable" content="yes">
+    <meta name="Keywords" content="Digital, character sheet, dungeon & dragons">
+    <meta name="Description" content="Digital character sheets for tabletop roleplaying games">
+    <meta property="og:title" content="Digital character sheets for tabletop roleplaying games" />
+    <meta property="og:description" content="Digital character sheets for tabletop roleplaying games" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://charkeeper.org" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <%= yield :head %>
-    <link rel="icon" href="/icon.png" type="image/png">
-    <link rel="icon" href="/icon.svg" type="image/svg+xml">
-    <link rel="apple-touch-icon" href="/icon.png">
     <%= stylesheet_link_tag 'tailwind' %>
     <%= stylesheet_link_tag :application %>
     <%= javascript_include_tag 'application', type: 'module' %>

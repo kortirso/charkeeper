@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html id="web_telegram_html">
+<html lang="en" id="web_telegram_html">
   <head>
     <title><%= content_for(:title) || 'CharKeeper' %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -8,9 +8,6 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <%= yield :head %>
-    <link rel="icon" href="/icon.png" type="image/png">
-    <link rel="icon" href="/icon.svg" type="image/svg+xml">
-    <link rel="apple-touch-icon" href="/icon.png">
     <%= stylesheet_link_tag 'tailwind' %>
     <%= stylesheet_link_tag :application %>
     <%= javascript_include_tag 'web_telegram' %>
