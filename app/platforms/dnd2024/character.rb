@@ -6,6 +6,7 @@ module Dnd2024
 
     attribute :level, :integer, default: 1
     attribute :species, :string
+    attribute :legacy, :string
     attribute :size, :string
     attribute :alignment, :string
     attribute :main_class, :string
@@ -44,6 +45,22 @@ module Dnd2024
     AASIMAR = 'aasimar'
     GOLIATH = 'goliath'
 
+    # legacies
+    HIGH_ELF = 'high_elf'
+    WOOD_ELF = 'wood_elf'
+    DROW = 'drow'
+    FOREST_GNOME = 'forest_gnome'
+    ROCK_GNOME = 'rock_gnome'
+    CLOUD_GIANT = 'cloud_giant'
+    FIRE_GIANT = 'fire_giant'
+    FROST_GIANT = 'frost_giant'
+    HILL_GIANT = 'hill_giant'
+    STONE_GIANT = 'stone_giant'
+    STORM_GIANT = 'storm_giant'
+    ABYSSAL = 'abyssal'
+    CHTHONIC = 'chthonic'
+    INFERNAL = 'infernal'
+
     # sizes
     SMALL = 'small'
     MEDIUM = 'medium'
@@ -78,6 +95,12 @@ module Dnd2024
     # common, dwarvish, elvish, giant, gnomish, goblin, halfling, orc, draconic, undercommon, infernal, druidic
 
     SPECIES = [HUMAN, DWARF, ELF, HALFLING, DRAGONBORN, GNOME, ORC, TIEFLING, AASIMAR, GOLIATH].freeze
+    LEGACIES = {
+      ELF => [HIGH_ELF, WOOD_ELF, DROW],
+      GNOME => [FOREST_GNOME, ROCK_GNOME],
+      TIEFLING => [ABYSSAL, CHTHONIC, INFERNAL],
+      GOLIATH => [CLOUD_GIANT, FIRE_GIANT, FROST_GIANT, HILL_GIANT, STONE_GIANT, STORM_GIANT]
+    }.freeze
     SIZES = {
       HUMAN => [MEDIUM, SMALL],
       DWARF => [MEDIUM],
