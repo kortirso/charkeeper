@@ -183,7 +183,6 @@ module Dnd5
     # rubocop: enable Metrics/AbcSize
 
     def can_learn_spell?(target_spell_class)
-      return false if data.classes.keys.exclude?(target_spell_class)
       return false if CLASSES_LEARN_SPELLS.exclude?(target_spell_class)
 
       true

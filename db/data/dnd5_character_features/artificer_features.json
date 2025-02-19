@@ -3,8 +3,8 @@
     "slug": "magical_tinkering",
     "title": { "en": "Magical Tinkering", "ru": "Магический мастеровой" },
     "description": {
-      "en": "To use this feature, you must be holding thieves' tools or artisan's tools. Then, as an Action, you touch a Tiny nonmagical object and imbue it with one magical property of your choice. Maximum - {{value}}",
-      "ru": "Чтобы использовать это умение, вы должны держать в руках воровские инструменты или инструменты ремесленника. Затем Действием вы касаетесь Крошечного немагического объекта и наделяете его одним из магических свойств на ваш выбор. Максимум - {{value}}"
+      "en": "To use this feature, you must be holding thieves' tools or artisan's tools. Then, as an Action, you touch a Tiny nonmagical object and imbue it with one magical property of your choice. Maximum - {{value}}.",
+      "ru": "Чтобы использовать это умение, вы должны держать в руках воровские инструменты или инструменты ремесленника. Затем Действием вы касаетесь Крошечного немагического объекта и наделяете его одним из магических свойств на ваш выбор. Максимум - {{value}}."
     },
     "origin": "class",
     "origin_value": "artificer",

@@ -115,7 +115,7 @@
     "options": null,
     "visible": "true",
     "eval_variables": {
-      "value": "'1d10+' + result.dig(:classes, 'fighter')",
+      "value": "'1d10+' + result.dig(:classes, 'fighter').to_s",
       "limit": "1"
     },
     "limit_refresh": "short_rest"
