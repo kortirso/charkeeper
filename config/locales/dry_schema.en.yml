@@ -32,6 +32,9 @@ en:
           classes:
             invalid_class_name: Invalid class name
             invalid_level: Invalid level
+          subclasses:
+            invalid_class_name: Invalid class name
+            invalid_subclass: Invalid subclass name
           energy:
             invalid_class_name: Invalid class name
             invalid_level: Invalid level
@@ -44,3 +47,9 @@ en:
             invalid: Invalid subrace
           legacy:
             invalid: Invalid legacy
+          abilities:
+            invalid_value: Ability value should be positive and less than 30
+          coins:
+            invalid_value: Coins values should not be negative
+          health:
+            invalid_value: Health values should not be negative

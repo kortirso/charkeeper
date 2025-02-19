@@ -24,22 +24,22 @@ module CharactersContext
           optional(:classes).hash
           optional(:subclasses).hash
           optional(:abilities).hash do
-            required(:str).filled(:integer, gteq?: 1, lteq?: 30)
-            required(:dex).filled(:integer, gteq?: 1, lteq?: 30)
-            required(:con).filled(:integer, gteq?: 1, lteq?: 30)
-            required(:int).filled(:integer, gteq?: 1, lteq?: 30)
-            required(:wis).filled(:integer, gteq?: 1, lteq?: 30)
-            required(:cha).filled(:integer, gteq?: 1, lteq?: 30)
+            required(:str).filled(:integer)
+            required(:dex).filled(:integer)
+            required(:con).filled(:integer)
+            required(:int).filled(:integer)
+            required(:wis).filled(:integer)
+            required(:cha).filled(:integer)
           end
           optional(:health).hash do
-            required(:current).filled(:integer, gteq?: 0)
-            required(:max).filled(:integer, gteq?: 0)
-            required(:temp).filled(:integer, gteq?: 0)
+            required(:current).filled(:integer)
+            required(:max).filled(:integer)
+            required(:temp).filled(:integer)
           end
           optional(:coins).hash do
-            required(:gold).filled(:integer, gteq?: 0)
-            required(:silver).filled(:integer, gteq?: 0)
-            required(:copper).filled(:integer, gteq?: 0)
+            required(:gold).filled(:integer)
+            required(:silver).filled(:integer)
+            required(:copper).filled(:integer)
           end
           optional(:selected_skills).value(:array).each(included_in?: SKILLS)
           optional(:selected_features).hash
@@ -84,6 +84,27 @@ module CharactersContext
           unless value.all? { |class_name, sub| sub.nil? || ::Dnd5::Character::SUBCLASSES[class_name].include?(sub) }
             key.failure(:invalid_subclass)
           end
+        end
+
+        rule(:abilities) do
+          next if value.nil?
+          next if value.values.all? { |item| item.positive? && item <= 30 }
+
+          key.failure(:invalid_value)
+        end
+
+        rule(:coins) do
+          next if value.nil?
+          next if value.values.all? { |item| !item.negative? }
+
+          key.failure(:invalid_value)
+        end
+
+        rule(:health) do
+          next if value.nil?
+          next if value.values.all? { |item| !item.negative? }
+
+          key.failure(:invalid_value)
         end
       end
       # rubocop: enable Metrics/BlockLength

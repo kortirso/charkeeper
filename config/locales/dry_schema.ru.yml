@@ -32,6 +32,9 @@ ru:
           classes:
             invalid_class_name: Недопустимое название класса
             invalid_level: Недопустимый уровень
+          subclasses:
+            invalid_class_name: Недопустимое название класса
+            invalid_subclass: Недопустимое название подкласса
           energy:
             invalid_class_name: Недопустимое название класса
             invalid_level: Недопустимый уровень
@@ -44,3 +47,9 @@ ru:
             invalid: Недопустимая подраса
           legacy:
             invalid: Недопустимое происхождение
+          abilities:
+            invalid_value: Значения характеристик должны быть больше 0 и меньше 30
+          coins:
+            invalid_value: Значения монет не должны быть меньше 0
+          health:
+            invalid_value: Значения здоровья не должны быть меньше 0

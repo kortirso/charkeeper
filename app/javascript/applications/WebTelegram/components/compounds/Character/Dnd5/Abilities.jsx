@@ -4,7 +4,7 @@ import * as i18n from '@solid-primitives/i18n';
 import { createModal } from '../../../molecules';
 import { Checkbox, IconButton, Button } from '../../../atoms';
 
-import { useAppLocale } from '../../../../context';
+import { useAppLocale, useAppAlert } from '../../../../context';
 import { Plus, Minus } from '../../../../assets';
 
 import { modifier } from '../../../../../../helpers';
@@ -16,6 +16,7 @@ export const Dnd5Abilities = (props) => {
   const [abilitiesData, setAbilitiesData] = createSignal(props.initialAbilities);
 
   const { Modal, openModal, closeModal } = createModal();
+  const [{ renderAlerts }] = useAppAlert();
   const [, dict] = useAppLocale();
 
   const t = i18n.translator(dict);
@@ -31,12 +32,13 @@ export const Dnd5Abilities = (props) => {
   const updateAbilities = async () => {
     const result = await props.onReloadCharacter({ abilities: abilitiesData() });
     if (result.errors === undefined) closeModal();
+    else renderAlerts(result.errors);
   }
 
   const updateSkill = async (slug) => {
     const newValue = selectedSkillsSlugs().includes(slug) ? selectedSkillsSlugs().filter((item) => item !== slug) : selectedSkillsSlugs().concat(slug);
-
-    await props.onReloadCharacter({ selected_skills: newValue });
+    const result = await props.onReloadCharacter({ selected_skills: newValue });
+    if (result.errors) renderAlerts(result.errors);
   }
 
   return (
