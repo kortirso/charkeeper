@@ -3,7 +3,7 @@
     "slug": "fighting_style",
     "title": { "en": "Fighting style", "ru": "Боевой стиль" },
     "description": {
-      "en": "You adopt a particular style of fighting as your specialty.",
+      "en": "You adopt a particular style of fighting as your speciality.",
       "ru": "Вы выбираете боевой стиль, соответствующий вашей специализации."
     },
     "origin": "class",

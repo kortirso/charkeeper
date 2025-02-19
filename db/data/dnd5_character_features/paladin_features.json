@@ -1,0 +1,185 @@
+[
+  {
+    "slug": "divine_sense",
+    "title": { "en": "Divine Sense", "ru": "Божественный канал" },
+    "description": {
+      "en": "As an action, you can open your awareness to detect good or/and evil. Until the end of your next turn, you know the location of any celestial, fiend, or undead within 60 feet of you that is not behind total cover.",
+      "ru": "Вы можете действием открыть своё сознание для обнаружения добра и/или зла. Вы до конца своего следующего хода знаете местоположение всех исчадий, небожителей и нежити в пределах 60 футов, не имеющих полного укрытия."
+    },
+    "origin": "class",
+    "origin_value": "paladin",
+    "level": 0,
+    "kind": "static",
+    "visible": "true",
+    "eval_variables": {
+      "limit": "1 + result.dig(:modifiers, :cha)"
+    },
+    "limit_refresh": "long_rest"
+  },
+  {
+    "slug": "lay_on_hands",
+    "title": { "en": "Lay on Hands", "ru": "Наложение рук" },
+    "description": {
+      "en": "As an action, you can touch a creature and restore a number of hit points to that creature, up to the maximum amount remaining in your pool. You can expend 5 hit points from your pool of healing to cure the target of one disease or neutralize one poison affecting it.",
+      "ru": "Вы можете действием коснуться существа и восстановить количество хитов этого существа на любое число, вплоть до максимума. Вы можете потрать 5 хитов из вашего запаса хитов для излечения цели от одной болезни или одного действующего на неё яда."
+    },
+    "origin": "class",
+    "origin_value": "paladin",
+    "level": 0,
+    "kind": "static",
+    "visible": "true",
+    "eval_variables": {
+      "limit": "5 * result.dig(:classes, 'paladin')"
+    },
+    "limit_refresh": "long_rest"
+  },
+  {
+    "slug": "fighting_style",
+    "title": { "en": "Fighting style", "ru": "Боевой стиль" },
+    "description": {
+      "en": "You adopt a particular style of fighting as your speciality.",
+      "ru": "Вы выбираете боевой стиль, соответствующий вашей специализации."
+    },
+    "origin": "class",
+    "origin_value": "paladin",
+    "level": 2,
+    "kind": "dynamic_list",
+    "options": [
+      "fighting_style_defense", "fighting_style_dueling",
+      "fighting_style_great_weapon_fighting", "fighting_style_protection"
+    ],
+    "visible": "true"
+  },
+  {
+    "slug": "fighting_style_defense",
+    "title": { "en": "", "ru": "" },
+    "description": { "en": "", "ru": "" },
+    "origin": "class",
+    "origin_value": "paladin",
+    "level": 2,
+    "kind": "update_result",
+    "visible": "result[:selected_features].keys.include?('fighting_style_defense')",
+    "eval_variables": {
+      "result": "result[:combat][:armor_class] += 1 if result.dig(:defense_gear, :armor).present?"
+    }
+  },
+  {
+    "slug": "fighting_style_dueling",
+    "title": { "en": "", "ru": "" },
+    "description": { "en": "", "ru": "" },
+    "origin": "class",
+    "origin_value": "paladin",
+    "level": 2,
+    "kind": "update_result",
+    "visible": "result[:selected_features].keys.include?('fighting_style_dueling')",
+    "eval_variables": {
+      "result": "result[:attacks].each { |attack| next if attack[:type] != 'melee'; next if attack[:hands] != '1'; next if attack[:tooltips].include?('dual'); attack[:damage_bonus] += 2 }"
+    }
+  },
+  {
+    "slug": "fighting_style_great_weapon_fighting",
+    "title": { "en": "Great Weapon Fighting", "ru": "Сражение большим оружием" },
+    "description": {
+      "en": "When you roll a 1 or 2 on a damage die for an attack you make with a melee weapon that you are wielding with two hands, you can reroll the die and must use the new roll, even if the new roll is a 1 or a 2. The weapon must have the two-handed or versatile property for you to gain this benefit.",
+      "ru": "Если у вас выпало «1» или «2» на кости урона оружия при атаке, которую вы совершали рукопашным оружием, удерживая его двумя руками, то вы можете перебросить эту кость, и должны использовать новый результат, даже если снова выпало «1» или «2». Чтобы воспользоваться этим преимуществом, ваше оружие должно иметь свойство «двуручное» или «универсальное»."
+    },
+    "origin": "class",
+    "origin_value": "paladin",
+    "level": 2,
+    "kind": "static",
+    "visible": "result[:selected_features].keys.include?('fighting_style_great_weapon_fighting')",
+    "eval_variables": {}
+  },
+  {
+    "slug": "fighting_style_protection",
+    "title": { "en": "Protection", "ru": "Защита" },
+    "description": {
+      "en": "When a creature you can see attacks a target other than you that is within 5 feet of you, you can use your reaction to impose disadvantage on the attack roll. You must be wielding a shield.",
+      "ru": "Если существо, которое вы видите, атакует не вас, а другое существо, находящееся в пределах 5 футов от вас, вы можете реакцией создать помеху его броску атаки. Для этого вы должны использовать щит."
+    },
+    "origin": "class",
+    "origin_value": "paladin",
+    "level": 2,
+    "kind": "static",
+    "visible": "result[:selected_features].keys.include?('fighting_style_protection')",
+    "eval_variables": {}
+  },
+  {
+    "slug": "divine_smite",
+    "title": { "en": "Divine Smite", "ru": "Божественная кара" },
+    "description": {
+      "en": "When you hit a creature with a melee weapon attack, you can expend one spell slot of any your class to deal radiant damage to the target, in addition to the weapon's damage. The extra damage is 2d8 for a 1st-levei spell slot, plus 1d8 for each spelllevel higher than 1st, to a maximum of 5d8. The damage increases by 1d8 if the target is an undead or a fiend.",
+      "ru": "Если вы попадаете по существу атакой рукопашным оружием, вы можете потратить одну ячейку заклинания любого своего класса для причинения цели урона излучением, который добавится к урону от оружия. Дополнительный урон равен 2к8 за ячейку 1 уровня, плюс 1к8 за каждый уровень ячейки выше первого, до максимума 5к8. Урон увеличивается на 1к8, если цель — нежить или исчадие до максимума 6к8."
+    },
+    "origin": "class",
+    "origin_value": "paladin",
+    "level": 2,
+    "kind": "static",
+    "visible": "true",
+    "eval_variables": {}
+  },
+  {
+    "slug": "aura_of_protection",
+    "title": { "en": "Aura of Protection", "ru": "Аура защиты" },
+    "description": {
+      "en": "Whenever you or a friendly creature within {{range}} feet of you must make a saving throw, the creature gains a bonus to the saving throw equal to {{value}}. You must be conscious to grant this bonus.",
+      "ru": "Если вы или дружественное существо в пределах {{range}} футов от вас должны совершить спасбросок, это существо получает бонус к спасброску, равный {{value}}. Вы должны находиться в сознании, чтобы предоставлять этот бонус."
+    },
+    "origin": "class",
+    "origin_value": "paladin",
+    "level": 6,
+    "kind": "static",
+    "visible": "true",
+    "eval_variables": {
+      "range": "result.dig(:classes, 'paladin') >= 18 ? 30 : 10",
+      "value": "[1, result.dig(:modifiers, :cha)].max"
+    }
+  },
+  {
+    "slug": "aura_of_courage",
+    "title": { "en": "Aura of Courage", "ru": "Аура отваги" },
+    "description": {
+      "en": "You and friendly creatures within {{range}} feet of you can't be frightened while you are conscious.",
+      "ru": "Вы и дружественные существа в пределах {{range}} футов от вас не можете быть испуганы, пока вы находитесь в сознании."
+    },
+    "origin": "class",
+    "origin_value": "paladin",
+    "level": 10,
+    "kind": "static",
+    "visible": "true",
+    "eval_variables": {
+      "range": "result.dig(:classes, 'paladin') >= 18 ? 30 : 10"
+    }
+  },
+  {
+    "slug": "improved_divine_smite",
+    "title": { "en": "Improved Divine Smite", "ru": "Улучшенная божественная кара" },
+    "description": {
+      "en": "Whenever you hit a creature with a melee weapon, the creature takes an extra 1d8 radiant damage.",
+      "ru": "Каждый раз, когда вы попадаете по существу рукопашным оружием, это существо получает дополнительный урон излучением 1к8."
+    },
+    "origin": "class",
+    "origin_value": "paladin",
+    "level": 11,
+    "kind": "static",
+    "visible": "true",
+    "eval_variables": {}
+  },
+  {
+    "slug": "cleansing_touch",
+    "title": { "en": "Cleansing Touch", "ru": "ОЧИЩАЮЩЕЕ КАСАНИЕ" },
+    "description": {
+      "en": "You can use your action to end one spell on yourself ar on one willing creature that you touch.",
+      "ru": "Вы можете действием окончить действие заклинания на себе или на одном согласном существе, которого вы касаетесь."
+    },
+    "origin": "class",
+    "origin_value": "paladin",
+    "level": 14,
+    "kind": "static",
+    "visible": "true",
+    "eval_variables": {
+      "limit": "[1, result.dig(:modifiers, :cha)].max"
+    },
+    "limit_refresh": "long_rest"
+  }
+]

@@ -437,8 +437,8 @@
     "eval_variables": {}
   },
   {
-    "slug": "dragon_wings",
-    "title": { "en": "Dragon Wings", "ru": "Образ дракона" },
+    "slug": "draconic_presence",
+    "title": { "en": "Draconic Presence", "ru": "Образ дракона" },
     "description": {
       "en": "As an action, you can spend 5 sorcery points to draw on this power and exude an aura of awe or fear to a distance of 60 feel. For 1 minute each hostile creature that starts its turn in this aura must succeed on a Wisdom saving throw (DC {{value}}) or be charmed (if you chose awe) or frightened (if you chose fear) until the aura ends. A creature that succeeds on this saving throw is immune to your aura for 24 hours.",
       "ru": "Вы можете действием потратить 5 единиц чародейства, чтобы окружить себя аурой страха или трепета, радиусом 60 футов. В течение 1 минуты все враждебные существа, начинающие ход в этой ауре, должны преуспеть в спасброске Мудрости (УС {{value}}), иначе они станут очарованными (если вы выбрали трепет) или испуганными (если вы выбрали страх) до окончания действия ауры. Существо, преуспевшее в спасброске, получает иммунитет к вашей ауре на 24 часа."
