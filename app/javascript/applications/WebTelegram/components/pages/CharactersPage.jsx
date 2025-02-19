@@ -156,7 +156,7 @@ export const CharactersPage = () => {
                           </div>
                           <div class="mb-1">
                             <p class="text-xs">
-                              {t('charactersPage.level')} {character.object_data.level} | {t(`dnd2024.species.${character.object_data.species}`)}
+                              {t('charactersPage.level')} {character.object_data.level} | {character.object_data.legacy ? t(`dnd2024.legacies.${character.object_data.species}.${character.object_data.legacy}`) : t(`dnd2024.species.${character.object_data.species}`)}
                             </p>
                           </div>
                           <p class="text-xs">
@@ -240,6 +240,15 @@ export const CharactersPage = () => {
                       selectedValue={characterDnd2024Form.species}
                       onSelect={(value) => setCharacterDnd2024Form({ ...characterDnd2024Form, species: value, size: CHARACTER_SIZES[value][0] })}
                     />
+                    <Show when={dict().dnd2024.legacies[characterDnd2024Form.species]}>
+                      <Select
+                        classList="mb-2"
+                        labelText={t('newCharacterPage.dnd2024.legacy')}
+                        items={dict().dnd2024.legacies[characterDnd2024Form.species]}
+                        selectedValue={characterDnd2024Form.legacy}
+                        onSelect={(value) => setCharacterDnd2024Form({ ...characterDnd2024Form, legacy: value })}
+                      />
+                    </Show>
                     <Select
                       classList="mb-2"
                       labelText={t('newCharacterPage.dnd2024.size')}

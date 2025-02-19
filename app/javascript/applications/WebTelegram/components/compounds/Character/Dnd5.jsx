@@ -325,7 +325,7 @@ export const Dnd5 = (props) => {
               </Match>
               <Match when={props.provider === 'dnd2024'}>
                 <p class="text-sm">
-                  {t(`dnd2024.species.${decoratedData().species}`)} | {Object.entries(decoratedData().classes).map(([item, value]) => `${t(`dnd2024.classes.${item}`)} ${value}`).join(' * ')}
+                  {decoratedData().legacy ? t(`dnd2024.legacies.${decoratedData().species}.${decoratedData().legacy}`) : t(`dnd2024.species.${decoratedData().species}`)} | {Object.entries(decoratedData().classes).map(([item, value]) => `${t(`dnd2024.classes.${item}`)} ${value}`).join(' * ')}
                 </p>
               </Match>
             </Switch>
@@ -476,8 +476,8 @@ export const Dnd5 = (props) => {
         <p class="character-tab-select" onClick={() => changeTab('equipment')}>{t('character.equipment')}</p>
         <p class="character-tab-select" onClick={() => changeTab('spells')}>{t('character.spells')}</p>
         <p class="character-tab-select" onClick={() => changeTab('notes')}>{t('character.notes')}</p>
+        <p class="character-tab-select" onClick={() => changeTab('professions')}>{t('character.professions')}</p>
         <Show when={props.provider === 'dnd5'}>
-          <p class="character-tab-select" onClick={() => changeTab('professions')}>{t('character.professions')}</p>
           <p class="character-tab-select" onClick={() => changeTab('classLevels')}>{t('character.classLevels')}</p>
         </Show>
       </Modal>

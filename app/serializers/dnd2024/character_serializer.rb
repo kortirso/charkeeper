@@ -5,7 +5,7 @@ module Dnd2024
     attributes :id, :name, :object_data, :decorated_data, :provider
 
     def object_data
-      object.data.slice('level', 'species', 'classes')
+      object.data.slice('level', 'species', 'legacy', 'classes')
     end
 
     def decorated_data

@@ -23,6 +23,7 @@ module CharactersContext
           required(:size).filled(:string)
           required(:main_class).filled(Classes)
           required(:alignment).filled(Alignments)
+          optional(:legacy).filled(:string)
         end
 
         rule(:species, :size) do
@@ -33,13 +34,22 @@ module CharactersContext
 
           key(:size).failure(:invalid)
         end
+
+        rule(:species, :legacy) do
+          next if values[:legacy].nil?
+
+          legacies = ::Dnd2024::Character::LEGACIES[values[:species]]
+          next if legacies&.include?(values[:legacy])
+
+          key(:legacy).failure(:invalid)
+        end
       end
 
       private
 
       def do_prepare(input)
         input[:data] =
-          decorate_fresh_character(input.slice(:species, :size, :main_class, :alignment).symbolize_keys)
+          decorate_fresh_character(input.slice(:species, :legacy, :size, :main_class, :alignment).symbolize_keys)
       end
 
       def do_persist(input)

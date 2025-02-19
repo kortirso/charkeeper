@@ -30,6 +30,7 @@
     },
     "dnd2024": {
       "species": "Species",
+      "legacy": "Legacy",
       "size": "Size",
       "mainClass": "Main class",
       "alignment": "Alignment"
@@ -397,6 +398,30 @@
       "tiefling": "Tiefling",
       "aasimar": "Aasimar",
       "goliath": "Goliath"
+    },
+    "legacies": {
+      "elf": {
+        "high_elf": "High Elf",
+        "wood_elf": "Wood Elf",
+        "drow": "Drow"
+      },
+      "gnome": {
+        "forest_gnome": "Forest Gnome",
+        "rock_gnome": "Rock Gnome"
+      },
+      "tiefling": {
+        "abyssal": "Abyssal legacy",
+        "chthonic": "Chthonic legacy",
+        "infernal": "Infernal legacy"
+      },
+      "goliath": {
+        "cloud_giant": "Cloud Giant",
+        "fire_giant": "Fire Giant",
+        "frost_giant": "Frost Giant",
+        "hill_giant": "Hill Giant",
+        "stone_giant": "Stone Giant",
+        "storm_giant": "Storm Giant"
+      }
     },
     "sizes": {
       "medium": "Medium",

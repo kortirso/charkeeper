@@ -14,5 +14,60 @@
     "options": null,
     "visible": "true",
     "eval_variables": {}
+  },
+  {
+    "slug": "gnome_spellcasting",
+    "title": { "en": "Gnomish lineage", "ru": "Гномье происхождение" },
+    "description": {
+      "en": "Choose species spellcasting ability.",
+      "ru": "Выберите заклинательную характеристику вида."
+    },
+    "origin": "species",
+    "origin_value": "gnome",
+    "level": 0,
+    "kind": "static_list",
+    "options_type": null,
+    "options": ["int", "wis", "cha"],
+    "visible": "true",
+    "eval_variables": {}
+  },
+  {
+    "slug": "forest_gnome_legacy_0",
+    "title": { "en": "", "ru": "" },
+    "description": { "en": "", "ru": "" },
+    "origin": "legacy",
+    "origin_value": "forest_gnome",
+    "level": 0,
+    "kind": "update_result",
+    "visible": "result[:selected_features].keys.include?('gnome_spellcasting')",
+    "eval_variables": {
+      "result": "ability = result.dig(:selected_features, 'gnome_spellcasting').to_sym; result[:static_spells].merge!({ 'minor_illusion' => { 'attack_bonus' => result[:proficiency_bonus] + result.dig(:modifiers, ability), 'save_dc' => 8 + result[:proficiency_bonus] + result.dig(:modifiers, ability) } })"
+    }
+  },
+  {
+    "slug": "forest_gnome_legacy_1",
+    "title": { "en": "", "ru": "" },
+    "description": { "en": "", "ru": "" },
+    "origin": "legacy",
+    "origin_value": "forest_gnome",
+    "level": 0,
+    "kind": "update_result",
+    "visible": "result[:selected_features].keys.include?('gnome_spellcasting')",
+    "eval_variables": {
+      "result": "ability = result.dig(:selected_features, 'gnome_spellcasting').to_sym; result[:static_spells].merge!({ 'speak_with_animals' => { 'limit' => result[:proficiency_bonus], 'attack_bonus' => result[:proficiency_bonus] + result.dig(:modifiers, ability), 'save_dc' => 8 + result[:proficiency_bonus] + result.dig(:modifiers, ability) } })"
+    }
+  },
+  {
+    "slug": "rock_gnome_legacy_0",
+    "title": { "en": "", "ru": "" },
+    "description": { "en": "", "ru": "" },
+    "origin": "legacy",
+    "origin_value": "rock_gnome",
+    "level": 0,
+    "kind": "update_result",
+    "visible": "result[:selected_features].keys.include?('gnome_spellcasting')",
+    "eval_variables": {
+      "result": "ability = result.dig(:selected_features, 'gnome_spellcasting').to_sym; result[:static_spells].merge!({ 'mending' => { 'attack_bonus' => result[:proficiency_bonus] + result.dig(:modifiers, ability), 'save_dc' => 8 + result[:proficiency_bonus] + result.dig(:modifiers, ability) }, 'prestidigitation' => { 'attack_bonus' => result[:proficiency_bonus] + result.dig(:modifiers, ability), 'save_dc' => 8 + result[:proficiency_bonus] + result.dig(:modifiers, ability) } })"
+    }
   }
 ]

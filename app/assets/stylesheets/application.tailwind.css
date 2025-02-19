@@ -45,7 +45,7 @@
 }
 
 .btn-small {
-  @apply btn p-1;
+  @apply py-1 px-1 cursor-pointer;
 }
 
 .bordered {
