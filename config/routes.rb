@@ -24,6 +24,7 @@ Rails.application.routes.draw do
     resources :characters, only: %i[index show destroy] do
       resources :notes, only: %i[index create destroy], module: 'characters'
     end
+    resource :users, only: %i[update]
 
     namespace :dnd5 do
       resources :characters, only: %i[create update] do
