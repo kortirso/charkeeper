@@ -4,6 +4,7 @@
       <td>ID</td>
       <td>Name</td>
       <td>Type</td>
+      <td>Data</td>
       <td>User ID</td>
     </tr>
   </thead>
@@ -13,6 +14,17 @@
         <td class="pr-4"><%= character.id %></td>
         <td class="pr-4"><%= character.name %></td>
         <td class="pr-4"><%= character.type %></td>
+        <td class="pr-4">
+          <% if character.is_a?(Dnd5::Character) %>
+            <% character.data.slice('level', 'race', 'subrace', 'classes', 'subclasses').each do |key, value| %>
+              <p class="text-xs"><%= key %> - <%= value %></p>
+            <% end %>
+          <% elsif character.is_a?(Dnd2024::Character) %>
+            <% character.data.slice('level', 'species', 'legacy', 'classes').each do |key, value| %>
+              <p class="text-xs"><%= key %> - <%= value %></p>
+            <% end %>
+          <% end %>
+        </td>
         <td><%= character.user_id %></td>
       </tr>
     <% end %>
