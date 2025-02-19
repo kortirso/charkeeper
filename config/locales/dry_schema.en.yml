@@ -4,6 +4,11 @@ en:
       dnd5_character: D&D5 character
     errors:
       unexpected_key: Unknown param
+      user:
+        rules:
+          locale:
+            filled?: Locale must be filled
+            included_in?: Invalid locale value
       dnd5_character:
         rules:
           name:

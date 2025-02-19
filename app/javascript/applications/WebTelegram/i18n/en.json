@@ -13,6 +13,10 @@
   "alerts": {
     "restIsFinished": "Rest is finished"
   },
+  "profilePage": {
+    "title": "Profile",
+    "changeLocale": "Current locale"
+  },
   "charactersPage": {
     "title": "Characters list",
     "level": "Level",

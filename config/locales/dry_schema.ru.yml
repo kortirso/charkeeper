@@ -4,6 +4,11 @@ ru:
       dnd5_character: D&D5 персонаж
     errors:
       unexpected_key: Неизвестный параметр
+      user:
+        rules:
+          locale:
+            filled?: Необходимо указать локаль
+            included_in?: Недопустимое значение локали
       dnd5_character:
         rules:
           name:
