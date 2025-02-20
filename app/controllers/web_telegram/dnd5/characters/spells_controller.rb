@@ -11,7 +11,7 @@ module WebTelegram
         ]
         include SerializeRelation
 
-        INDEX_SERIALIZER_FIELDS = %i[id ready_to_use prepared_by slug name level spell_id].freeze
+        INDEX_SERIALIZER_FIELDS = %i[id ready_to_use prepared_by notes slug name level spell_id].freeze
 
         before_action :find_character
 
@@ -63,11 +63,12 @@ module WebTelegram
         end
 
         def update_params
-          {
-            character: @character,
-            character_spell: @character.spells.find(params[:id]),
-            ready_to_use: to_bool.call(params[:ready_to_use])
-          }
+          result =
+            params
+              .permit(:notes).to_h
+              .merge({ character: @character, character_spell: @character.spells.find(params[:id]) })
+          result[:ready_to_use] = to_bool.call(params[:ready_to_use]) if params[:ready_to_use]
+          result
         end
       end
     end

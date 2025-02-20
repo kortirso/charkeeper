@@ -91,7 +91,9 @@
     "newNoteValue": "Note text",
     "shortRest": "Short rest",
     "longRest": "Long rest",
-    "confirmChooseOnceFeature": "Confirm"
+    "confirmChooseOnceFeature": "Confirm",
+    "itemNote": "Item note",
+    "spellNote": "Spell note"
   },
   "professionsPage": {
     "languages": "Languages",

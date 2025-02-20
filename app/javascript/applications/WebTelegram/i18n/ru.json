@@ -91,7 +91,9 @@
     "newNoteValue": "Текст заметки",
     "shortRest": "Короткий отдых",
     "longRest": "Длительный отдых",
-    "confirmChooseOnceFeature": "Подтвердить"
+    "confirmChooseOnceFeature": "Подтвердить",
+    "itemNote": "Заметка о предмете",
+    "spellNote": "Заметка о заклинании"
   },
   "professionsPage": {
     "languages": "Известные языки",

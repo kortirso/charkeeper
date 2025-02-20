@@ -162,6 +162,7 @@ export const Dnd5Equipment = (props) => {
                     onInput={(value) => setChangingItem({ ...changingItem(), quantity: Number(value) })}
                   />
                 </div>
+                <label class="text-sm">{t('character.itemNote')}</label>
                 <textarea
                   rows="2"
                   class="w-full border border-gray-200 rounded p-1 text-sm mb-2"
