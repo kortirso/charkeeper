@@ -18,7 +18,9 @@ module Dnd5Character
       end
 
       def decorate_character_abilities(result:, class_level:)
-        result[:class_save_dc] = %i[dex int] if result[:main_class] == 'rogue'
+        if result[:main_class] == 'rogue'
+          result[:class_save_dc] = class_level >= 15 ? %i[dex int wis] : %i[dex int]
+        end
         result[:hit_dice][8] += class_level
 
         result

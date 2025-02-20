@@ -1,0 +1,92 @@
+[
+  {
+    "slug": "eldritch_invocations",
+    "title": { "en": "Eldritch Invocations", "ru": "Таинственные воззвания" },
+    "description": {
+      "en": "You gain {{value}} eldritch invocations of your choice.",
+      "ru": "Вы получаете несколько воззваний (кол-во {{value}}) на свой выбор."
+    },
+    "origin": "class",
+    "origin_value": "warlock",
+    "level": 2,
+    "kind": "text",
+    "visible": "true",
+    "eval_variables": {
+      "value": "class_level = result.dig(:classes, 'warlock'); return 8 if class_level >= 18; return 7 if class_level >= 15; return 6 if class_level >= 12; return 5 if class_level >= 9; return 4 if class_level >= 7; return 3 if class_level >= 5; 2"
+    }
+  },
+  {
+    "slug": "pact_boon",
+    "title": { "en": "Pact Boon", "ru": "Предмет договора" },
+    "description": {
+      "en": "Your otherworldly patron bestows a gift upon you for your loyal service.",
+      "ru": "Потусторонний покровитель дарует вам подарок за верную службу."
+    },
+    "origin": "class",
+    "origin_value": "warlock",
+    "level": 3,
+    "kind": "static_list",
+    "options": ["pact_of_the_chain", "pact_of_the_blade", "pact_of_the_tome"],
+    "visible": "true",
+    "eval_variables": {}
+  },
+  {
+    "slug": "pact_of_the_tome",
+    "title": { "en": "", "ru": "" },
+    "description": { "en": "", "ru": "" },
+    "origin": "class",
+    "origin_value": "warlock",
+    "level": 3,
+    "kind": "update_result",
+    "visible": "true",
+    "eval_variables": {
+      "result": "result[:spell_classes][:warlock][:cantrips_amount] += 3"
+    }
+  },
+  {
+    "slug": "pact_of_the_chain",
+    "title": { "en": "", "ru": "" },
+    "description": { "en": "", "ru": "" },
+    "origin": "class",
+    "origin_value": "warlock",
+    "level": 3,
+    "kind": "update_result",
+    "visible": "true",
+    "eval_variables": {
+      "value": "result[:static_spells].merge!({ 'find_familiar' => { 'attack_bonus' => result[:proficiency_bonus] + result.dig(:modifiers, :cha), 'save_dc' => 8 + result[:proficiency_bonus] + result.dig(:modifiers, :cha) } })"
+    }
+  },
+  {
+    "slug": "mystic_arcanum",
+    "title": { "en": "Mystic Arcanum", "ru": "Таинственный арканум" },
+    "description": {
+      "en": "Learn 1 spell per specific level ({{value}}). You can use it once per day without spending spell slot.",
+      "ru": "Выучите по одному заклинанию указанных уровней ({{value}}). Можно применить 1 раз в день без использования ячейки заклинаний."
+    },
+    "origin": "class",
+    "origin_value": "warlock",
+    "level": 11,
+    "kind": "text",
+    "visible": "true",
+    "eval_variables": {
+      "value": "class_level = result.dig(:classes, 'warlock'); return '6, 7, 8, 9' if class_level >= 17; return '6, 7, 8' if class_level >= 15; return '6, 7' if class_level >= 13; '6'"
+    }
+  },
+  {
+    "slug": "eldritch_master",
+    "title": { "en": "Eldritch Master", "ru": "Таинственный мастер" },
+    "description": {
+      "en": "Restore all spell slots.",
+      "ru": "Восстановление всех ячеек заклинаний."
+    },
+    "origin": "class",
+    "origin_value": "warlock",
+    "level": 20,
+    "kind": "static",
+    "visible": "true",
+    "eval_variables": {
+      "limit": "1"
+    },
+    "limit_refresh": "long_rest"
+  },
+]

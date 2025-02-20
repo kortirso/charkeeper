@@ -40,7 +40,7 @@ module Dnd2024Character
       # rubocop: disable Metrics/AbcSize
       def decorate_character_abilities(result:, class_level:)
         result[:class_save_dc] = %i[wis cha] if result[:main_class] == 'warlock'
-        result[:spell_classes][:wizard] = {
+        result[:spell_classes][:warlock] = {
           save_dc: 8 + result[:proficiency_bonus] + result.dig(:modifiers, :cha),
           attack_bonus: result[:proficiency_bonus] + result.dig(:modifiers, :cha),
           cantrips_amount: cantrips_amount(class_level),
