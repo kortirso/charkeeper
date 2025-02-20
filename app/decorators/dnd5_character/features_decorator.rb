@@ -42,6 +42,7 @@ module Dnd5Character
         .or(Dnd5::Character::Feature.where(origin: 'subclass', origin_value: result[:subclasses].values))
         .order(level: :asc)
         .select do |feature|
+          next true if feature.origin_value == 'all'
           next result[:overall_level] >= feature.level if feature.origin.in?(%w[race subrace])
           next result[:classes][feature.origin_value] >= feature.level if feature.origin == 'class'
 
