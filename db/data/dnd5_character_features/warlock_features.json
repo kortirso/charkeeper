@@ -88,5 +88,5 @@
       "limit": "1"
     },
     "limit_refresh": "long_rest"
-  },
+  }
 ]

@@ -28,7 +28,7 @@
     "options": ["arctic", "coast", "desert", "forest", "grassland", "mountain", "swamp", "underdark"],
     "visible": "true",
     "eval_variables": {}
-  }
+  },
   {
     "slug": "fighting_style",
     "title": { "en": "Fighting style", "ru": "Боевой стиль" },
