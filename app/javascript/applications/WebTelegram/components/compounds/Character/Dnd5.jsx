@@ -124,6 +124,7 @@ export const Dnd5 = (props) => {
       batch(() => {
         if (item.kind.includes('weapon')) props.onReloadCharacter();
         reloadCharacterItems();
+        renderNotice(t('alerts.itemIsAdded'));
       });
     }
     return result;

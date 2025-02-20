@@ -11,7 +11,8 @@
     "profile": "Профиль"
   },
   "alerts": {
-    "restIsFinished": "Отдых проведён"
+    "restIsFinished": "Отдых проведён",
+    "itemIsAdded": "Предмет добавлен"
   },
   "profilePage": {
     "title": "Профиль",

@@ -65,6 +65,20 @@
     "eval_variables": {}
   },
   {
+    "slug": "divine_health",
+    "title": { "en": "Divine Health", "ru": "Божественное здоровье" },
+    "description": {
+      "en": "Immunity to deseases.",
+      "ru": "Иммунитет к болезням."
+    },
+    "origin": "class",
+    "origin_value": "paladin",
+    "level": 3,
+    "kind": "static",
+    "visible": "true",
+    "eval_variables": {}
+  },
+  {
     "slug": "aura_of_protection",
     "title": { "en": "Aura of Protection", "ru": "Аура защиты" },
     "description": {

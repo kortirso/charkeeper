@@ -11,7 +11,8 @@
     "profile": "Profile"
   },
   "alerts": {
-    "restIsFinished": "Rest is finished"
+    "restIsFinished": "Rest is finished",
+    "itemIsAdded": "Item is added"
   },
   "profilePage": {
     "title": "Profile",

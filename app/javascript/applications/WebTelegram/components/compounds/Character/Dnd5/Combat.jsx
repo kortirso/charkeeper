@@ -286,7 +286,7 @@ export const Dnd5Combat = (props) => {
                   {(option) =>
                     <div class="mb-2">
                       <Checkbox
-                        labelText={t(`skills.${option}`)}
+                        labelText={t(`dnd.skills.${option}`)}
                         labelPosition="right"
                         labelClassList="text-sm ml-4"
                         checked={props.selectedFeatures[feature.slug]?.includes(option)}
