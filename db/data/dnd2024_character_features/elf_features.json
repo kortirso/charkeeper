@@ -121,12 +121,7 @@
     "origin": "legacy",
     "origin_value": "high_elf",
     "level": 0,
-    "kind": "static_list",
-    "options": [
-      "toll_the_dead", "blade_ward", "chill_touch", "dancing_lights", "fire_bolt", "friends", "light", "mage_hand", "mending",
-      "message", "minor_illusion", "poison_spray", "prestidigitation", "ray_of_frost", "shocking_grasp", "true_strike",
-      "acid_splash", "thunderclap", "mind_sliver", "elementalism"
-    ],
+    "kind": "text",
     "visible": "result[:selected_features].keys.include?('elven_spellcasting')",
     "eval_variables": {
       "result": "spell_name = result.dig(:selected_features, 'high_elf_legacy_0'); ability = result.dig(:selected_features, 'elven_spellcasting').to_sym; result[:static_spells].merge!({ spell_name => { 'attack_bonus' => result[:proficiency_bonus] + result.dig(:modifiers, ability), 'save_dc' => 8 + result[:proficiency_bonus] + result.dig(:modifiers, ability) } }) if spell_name"
