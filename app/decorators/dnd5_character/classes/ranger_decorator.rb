@@ -19,6 +19,8 @@ module Dnd5Character
         result[:class_save_dc] = %i[str dex] if result[:main_class] == 'ranger'
         result[:hit_dice][10] += class_level
 
+        result[:combat][:attacks_per_action] = 2 if class_level >= 5 # Extra Attack, 5 level
+
         result
       end
     end

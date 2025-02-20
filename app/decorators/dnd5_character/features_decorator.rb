@@ -38,6 +38,7 @@ module Dnd5Character
       Dnd5::Character::Feature.where(origin: 'race', origin_value: result[:race])
         .or(Dnd5::Character::Feature.where(origin: 'subrace', origin_value: result[:subrace]))
         .or(Dnd5::Character::Feature.where(origin: 'class', origin_value: result[:classes].keys))
+        .or(Dnd5::Character::Feature.where(origin: 'class', origin_value: 'all'))
         .or(Dnd5::Character::Feature.where(origin: 'subclass', origin_value: result[:subclasses].values))
         .order(level: :asc)
         .select do |feature|
