@@ -1,7 +1,7 @@
-import { createSignal, For, Show, createMemo } from 'solid-js';
+import { createSignal, For, Show, createMemo, batch } from 'solid-js';
 import * as i18n from '@solid-primitives/i18n';
 
-import { StatsBlock } from '../../../molecules';
+import { createModal, StatsBlock } from '../../../molecules';
 import { Select, Checkbox, Button } from '../../../atoms';
 
 import { useAppLocale } from '../../../../context';
@@ -18,10 +18,20 @@ const DND2024_CLASSES_PREPARE_SPELLS = [
 export const Dnd5Spellbook = (props) => {
   const [preparedSpellFilter, setPreparedSpellFilter] = createSignal(true);
   const [activeSpellClass, setActiveSpellClass] = createSignal(props.initialSpellClassesList[0]);
+  const [changingSpell, setChangingSpell] = createSignal(null);
 
+  const { Modal, openModal, closeModal } = createModal();
   const [, dict] = useAppLocale();
 
   const t = i18n.translator(dict);
+
+  // actions
+  const changeSpell = (item) => {
+    batch(() => {
+      setChangingSpell(item);
+      openModal();
+    });
+  }
 
   // memos
   const filteredCharacterSpells = createMemo(() => {
@@ -45,6 +55,15 @@ export const Dnd5Spellbook = (props) => {
       return { slug: slug, name: spell.name, level: spell.level, data: item }
     });
   });
+
+  const updateSpell = async () => {
+    const result = await props.onUpdateSpellNotes(
+      changingSpell().id,
+      changingSpell().notes
+    );
+
+    if (result.errors === undefined) closeModal();
+  }
 
   // rendering
   const renderStaticSpellDescription = (spell) => {
@@ -144,11 +163,17 @@ export const Dnd5Spellbook = (props) => {
               {(spell) =>
                 <tr>
                   <td class="py-1">
-                    <p class={`${spell.ready_to_use ? '' : 'opacity-50'}`}>
+                    <p
+                      class={`cursor-pointer ${spell.ready_to_use ? '' : 'opacity-50'}`}
+                      onClick={() => changeSpell(spell)}
+                    >
                       {spell.name}
                     </p>
                     <Show when={props.spellClasses.length > 1 && activeSpellClass() === 'all'}>
                       <p class="text-xs">{t(`dnd5.classes.${spell.prepared_by}`)}</p>
+                    </Show>
+                    <Show when={spell.notes !== null}>
+                      <p class="text-xs">{spell.notes}</p>
                     </Show>
                   </td>
                   <td>
@@ -217,11 +242,17 @@ export const Dnd5Spellbook = (props) => {
                   {(spell) =>
                     <tr>
                       <td class="py-1">
-                        <p class={`${spell.ready_to_use ? '' : 'opacity-50'}`}>
+                        <p
+                          class={`cursor-pointer ${spell.ready_to_use ? '' : 'opacity-50'}`}
+                          onClick={() => changeSpell(spell)}
+                        >
                           {spell.name}
                         </p>
                         <Show when={props.initialSpellClassesList.length > 1 && activeSpellClass() === 'all'}>
                           <p class="text-xs">{t(`dnd5.classes.${spell.prepared_by}`)}</p>
+                        </Show>
+                        <Show when={spell.notes !== null}>
+                          <p class="text-xs">{spell.notes}</p>
                         </Show>
                       </td>
                       <td>
@@ -242,6 +273,18 @@ export const Dnd5Spellbook = (props) => {
           </div>
         }
       </For>
+      <Modal>
+        <div class="white-box p-4 flex flex-col">
+          <label class="text-sm">{t('character.spellNote')}</label>
+          <textarea
+            rows="3"
+            class="w-full border border-gray-200 rounded p-1 text-sm mb-2"
+            onInput={(e) => setChangingSpell({ ...changingSpell(), notes: e.target.value })}
+            value={changingSpell()?.notes}
+          />
+          <Button primary text={t('save')} onClick={updateSpell} />
+        </div>
+      </Modal>
     </>
   );
 }

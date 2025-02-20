@@ -199,9 +199,14 @@ export const Dnd5 = (props) => {
     if (result.errors === undefined) reloadCharacterSpells();
   }
 
-  const updateCharacterSpell = async (spellId, payload) => {
-    const result = await updateCharacterSpellRequest(appState.accessToken, props.provider, props.characterId, spellId, payload);
+  const updateSpellNotes = async (spellId, notes) => {
+    const result = await updateCharacterSpell(spellId, { 'notes': notes });
+    if (result.errors === undefined) reloadCharacterSpells();
     return result;
+  }
+
+  const updateCharacterSpell = async (spellId, payload) => {
+    return await updateCharacterSpellRequest(appState.accessToken, props.provider, props.characterId, spellId, payload);
   }
 
   // shared data
@@ -436,8 +441,7 @@ export const Dnd5 = (props) => {
                   onSpendSpellSlot={spendSpellSlot}
                   onFreeSpellSlot={freeSpellSlot}
                   onNavigatoToSpells={() => setActiveSpellsTab(true)}
-                  onRefreshCharacter={refreshCharacter}
-                  onUpdateCharacterSpell={updateCharacterSpell}
+                  onUpdateSpellNotes={updateSpellNotes}
                   onPrepareSpell={prepareSpell}
                   onDisableSpell={disableSpell}
                 />

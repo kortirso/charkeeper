@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_02_14_180046) do
+ActiveRecord::Schema[8.0].define(version: 2025_02_20_095812) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
   enable_extension "pgcrypto"
@@ -42,6 +42,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_02_14_180046) do
     t.jsonb "data", default: {}, null: false, comment: "Свойства подготовленных заклинания"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text "notes"
     t.index ["character_id", "spell_id"], name: "index_character_spells_on_character_id_and_spell_id", unique: true
   end
 
