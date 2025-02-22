@@ -189,7 +189,8 @@ module Dnd5Character
           # для будущих проверок
           kind: item[:items_kind].split[0],
           caption: captions,
-          tooltips: captions.select { |item| item.in?(MELEE_ATTACK_TOOLTIPS) }
+          tooltips: captions.select { |item| item.in?(MELEE_ATTACK_TOOLTIPS) },
+          notes: item[:notes]
         }
       ]
 
@@ -235,7 +236,8 @@ module Dnd5Character
           # для будущих проверок
           kind: item[:items_kind].split[0],
           caption: captions,
-          tooltips: captions.select { |item| item.in?(RANGE_ATTACK_TOOLTIPS) }
+          tooltips: captions.select { |item| item.in?(RANGE_ATTACK_TOOLTIPS) },
+          notes: item[:notes]
         }
       ]
 
@@ -267,7 +269,7 @@ module Dnd5Character
         .items
         .joins(:item)
         .where(items: { kind: ['light weapon', 'martial weapon'] })
-        .hashable_pluck('items.slug', 'items.name', 'items.kind', 'items.data', :quantity)
+        .hashable_pluck('items.slug', 'items.name', 'items.kind', 'items.data', :quantity, :notes)
     end
 
     def equiped_armor(character)
