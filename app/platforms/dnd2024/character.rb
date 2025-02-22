@@ -80,6 +80,59 @@ module Dnd2024
     WIZARD = 'wizard'
     ARTIFICER = 'artificer'
 
+    PATH_OF_THE_BERSERKER = 'path_of_the_berserker'
+    PATH_OF_THE_WILD_HEART = 'path_of_the_wild_heart'
+    PATH_OF_THE_WORLD_TREE = 'path_of_the_world_tree'
+    PATH_OF_THE_ZEALOT = 'path_of_the_zealot'
+    COLLEGE_OF_DANCE = 'college_of_dance'
+    COLLEGE_OF_GLAMOUR = 'college_of_glamour'
+    COLLEGE_OF_LORE = 'college_of_lore'
+    COLLEGE_OF_VALOR = 'college_of_valor'
+    LIFE_DOMAIN = 'life_domain'
+    LIGHT_DOMAIN = 'light_domain'
+    TRICKERY_DOMAIN = 'trickery_domain'
+    WAR_DOMAIN = 'war_domain'
+    CIRCLE_OF_THE_LAND = 'circle_of_the_land'
+    CIRCLE_OF_THE_MOON = 'circle_of_the_moon'
+    CIRCLE_OF_THE_SEA = 'circle_of_the_sea'
+    CIRCLE_OF_THE_STARS = 'circle_of_the_stars'
+    CHAMPION = 'champion'
+    ELDRITCH_KNIGHT = 'eldritch_knight'
+    PSI_WARRIOR = 'psi_warrior'
+    BATTLE_MASTER = 'battle_master'
+    WARRIOR_OF_MERCY = 'warrior_of_mercy'
+    WARRIOR_OF_SHADOW = 'warrior_of_shadow'
+    WARRIOR_OF_THE_ELEMENTS = 'warrior_of_the_elements'
+    WARRIOR_OF_THE_OPEN_HAND = 'warrior_of_the_open_hand'
+    OATH_OF_DEVOTION = 'oath_of_devotion'
+    OATH_OF_GLORY = 'oath_of_glory'
+    OATH_OF_THE_ANCIENTS = 'oath_of_the_ancients'
+    OATH_OF_VENGEANCE = 'oath_of_vengeance'
+    BEAST_MASTER = 'beast_master'
+    FEY_WANDERER = 'fey_wanderer'
+    GLOOM_STALKER = 'gloom_stalker'
+    HUNTER = 'hunter'
+    ARCANE_TRICKSTER = 'arcane_trickster'
+    ASSASIN = 'assasin'
+    SOULKNIFE = 'soulknife'
+    THIEF = 'thief'
+    ABERRANT_SORCERY = 'aberrant_sorcery'
+    CLOCKWORK_SORCERY = 'clockwork_sorcery'
+    DRACONIC_SORCERY = 'draconic_sorcery'
+    WILD_MAGIC_SORCERY = 'wild_magic_sorcery'
+    ARCHFEY_PATRON = 'archfey_patron'
+    CELESTIAL_PATRON = 'celestial_patron'
+    FIEND_PATRON = 'fiend_patron'
+    GREAT_OLD_ONE_PATRON = 'great_old_one_patron'
+    ABJURER = 'abjurer'
+    DIVINER = 'diviner'
+    EVOKER = 'evoker'
+    ILLUSIONIST = 'illusionist'
+    ALCHEMIST = 'alchemist'
+    ARMORER = 'armorer'
+    ARTILLERIST = 'artillerist'
+    BATTLE_SMITH = 'battle_smith'
+
     # alignment
     LAWFUL_GOOD = 'lawful_good'
     LAWFUL_NEUTRAL = 'lawful_neutral'
@@ -121,6 +174,21 @@ module Dnd2024
       BARBARIAN, BARD, CLERIC, DRUID, FIGHTER, MONK, PALADIN,
       RANGER, ROGUE, SORCERER, WARLOCK, WIZARD, ARTIFICER
     ].freeze
+    SUBCLASSES = {
+      BARBARIAN => [PATH_OF_THE_BERSERKER, PATH_OF_THE_WILD_HEART, PATH_OF_THE_WORLD_TREE, PATH_OF_THE_ZEALOT],
+      BARD => [COLLEGE_OF_DANCE, COLLEGE_OF_GLAMOUR, COLLEGE_OF_LORE, COLLEGE_OF_VALOR],
+      CLERIC => [LIFE_DOMAIN, LIGHT_DOMAIN, TRICKERY_DOMAIN, WAR_DOMAIN],
+      DRUID => [CIRCLE_OF_THE_LAND, CIRCLE_OF_THE_MOON, CIRCLE_OF_THE_SEA, CIRCLE_OF_THE_STARS],
+      FIGHTER => [CHAMPION, ELDRITCH_KNIGHT, PSI_WARRIOR, BATTLE_MASTER],
+      MONK => [WARRIOR_OF_MERCY, WARRIOR_OF_SHADOW, WARRIOR_OF_THE_ELEMENTS, WARRIOR_OF_THE_OPEN_HAND],
+      PALADIN => [OATH_OF_DEVOTION, OATH_OF_GLORY, OATH_OF_THE_ANCIENTS, OATH_OF_VENGEANCE],
+      RANGER => [BEAST_MASTER, FEY_WANDERER, GLOOM_STALKER, HUNTER],
+      ROGUE => [ARCANE_TRICKSTER, ASSASIN, SOULKNIFE, THIEF],
+      SORCERER => [ABERRANT_SORCERY, CLOCKWORK_SORCERY, DRACONIC_SORCERY, WILD_MAGIC_SORCERY],
+      WARLOCK => [ARCHFEY_PATRON, CELESTIAL_PATRON, FIEND_PATRON, GREAT_OLD_ONE_PATRON],
+      WIZARD => [ABJURER, DIVINER, EVOKER, ILLUSIONIST],
+      ARTIFICER => [ALCHEMIST, ARMORER, ARTILLERIST, BATTLE_SMITH]
+    }.freeze
 
     # бард знает все заклинания, подготавливает новое и/или меняет подготовленное после получения уровня
     # колдун знает все заклинания, подготавливает новое и/или меняет подготовленное после получения уровня

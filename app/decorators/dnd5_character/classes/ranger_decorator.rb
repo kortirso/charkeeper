@@ -37,6 +37,7 @@ module Dnd5Character
         result
       end
 
+      # rubocop: disable Metrics/AbcSize
       def decorate_character_abilities(result:, class_level:)
         result[:class_save_dc] = %i[str dex] if result[:main_class] == 'ranger'
         result[:spell_classes][:ranger] = {
@@ -54,6 +55,7 @@ module Dnd5Character
 
         result
       end
+      # rubocop: enable Metrics/AbcSize
 
       private
 

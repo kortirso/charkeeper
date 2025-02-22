@@ -448,6 +448,86 @@
       "warlock": "Колдун",
       "wizard": "Волшебник",
       "artificer": "Изобретатель"
+    },
+    "subclasses": {
+      "barbarian": {
+        "path_of_the_berserker": "Путь берсерка",
+        "path_of_the_wild_heart": "Путь дикого сердца",
+        "path_of_the_world_tree": "Путь мирового древа",
+        "path_of_the_zealot": "Путь фанатика"
+      },
+      "bard": {
+        "college_of_dance": "Коллегия танцев",
+        "college_of_glamour": "Коллегия очарования",
+        "college_of_lore": "Коллегия знаний",
+        "college_of_valor": "Коллегия доблести"
+      },
+      "cleric": {
+        "life_domain": "Домен жизни",
+        "light_domain": "Домен света",
+        "trickery_domain": "Домен обмана",
+        "war_domain": "Домен войны"
+      },
+      "druid": {
+        "circle_of_the_land": "Круг земли",
+        "circle_of_the_moon": "Круг луны",
+        "circle_of_the_sea": "Круг моря",
+        "circle_of_the_stars": "Круг звёзд"
+      },
+      "fighter": {
+        "champion": "Чемпион",
+        "eldritch_knight": "Мистический рыцарь",
+        "psi_warrior": "Пси-Воин",
+        "battle_master": "Мастер боевых искусств"
+      },
+      "monk": {
+        "warrior_of_mercy": "Мастер милосердия",
+        "warrior_of_shadow": "Мастер тени",
+        "warrior_of_the_elements": "Мастер стихий",
+        "warrior_of_the_open_hand": "Мастер открытой ладони"
+      },
+      "paladin": {
+        "oath_of_devotion": "Клятва преданности",
+        "oath_of_glory": "Клятва славы",
+        "oath_of_the_ancients": "Клятва древних",
+        "oath_of_vengeance": "Клятва мести"
+      },
+      "ranger": {
+        "hunter": "Охотник",
+        "beast_master": "Повелитель зверей",
+        "fey_wanderer": "Фейский странник",
+        "gloom_stalker": "Сумрачнй охотник"
+      },
+      "rogue": {
+        "thief": "Вор",
+        "assassin": "Убийца",
+        "arcane_trickster": "Мистический ловкач",
+        "soulknife": "Клинок души"
+      },
+      "sorcerer": {
+        "aberrant_sorcery": "Аберрантный разум",
+        "clockwork_sorcery": "Заводная душа",
+        "draconic_sorcery": "Драконья кровь",
+        "wild_magic_sorcery": "Дикая магия"
+      },
+      "warlock": {
+        "archfey_patron": "Покровитель Архифея",
+        "celestial_patron": "Покровитель Небожитель",
+        "fiend_patron": "Покровитель Исчадие",
+        "great_old_one_patron": "Покровитель Великий Древний"
+      },
+      "wizard": {
+        "abjurer": "Оградитель",
+        "diviner": "Прорицатель",
+        "evoker": "Воплотитель",
+        "illusionist": "Иллюзионист"
+      },
+      "artificer": {
+        "alchemist": "Алхимик",
+        "armorer": "Бронник",
+        "artillerist": "Артиллерист",
+        "battle_smith": "Боевой кузнец"
+      }
     }
   }
 }
