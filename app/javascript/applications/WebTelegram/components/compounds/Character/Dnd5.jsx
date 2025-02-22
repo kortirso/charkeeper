@@ -454,6 +454,7 @@ export const Dnd5 = (props) => {
           </Match>
           <Match when={activeTab() === 'classLevels'}>
             <Dnd5ClassLevels
+              provider={props.provider}
               initialClasses={props.decoratedData.classes}
               initialSubclasses={props.decoratedData.subclasses}
               mainClass={props.decoratedData.main_class}
@@ -482,9 +483,7 @@ export const Dnd5 = (props) => {
         <p class="character-tab-select" onClick={() => changeTab('spells')}>{t('character.spells')}</p>
         <p class="character-tab-select" onClick={() => changeTab('notes')}>{t('character.notes')}</p>
         <p class="character-tab-select" onClick={() => changeTab('professions')}>{t('character.professions')}</p>
-        <Show when={props.provider === 'dnd5'}>
-          <p class="character-tab-select" onClick={() => changeTab('classLevels')}>{t('character.classLevels')}</p>
-        </Show>
+        <p class="character-tab-select" onClick={() => changeTab('classLevels')}>{t('character.classLevels')}</p>
       </Modal>
     </>
   );

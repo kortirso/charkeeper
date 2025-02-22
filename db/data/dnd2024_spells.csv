@@ -159,7 +159,7 @@
 2;beast_sense;Beast Sense;Животные чувства;divination;PHB;druid,ranger
 2;spiritual_weapon;Spiritual Weapon;Божественное оружие;evocation;PHB;cleric
 2;shining_smite;Shining Smite;Клеймящая кара;transmutation;PHB;paladin
-2;homunculus_servant;Homunculus Servant;Гомункул-прислужник;conjuration;UA;artificer
+2;homunculus_servant;Homunculus Servant;Слуга-гомункул;conjuration;UA;artificer
 3;blinding_smite;Blinding Smite;Ослепляющая кара;evocation;PHB;paladin
 3;blink;Blink;Мерцание;transmutation;PHB;wizard,sorcerer,artificer
 3;clairvoyance;Clairvoyance;Подсматривание;divination;PHB;bard,wizard,cleric,sorcerer
