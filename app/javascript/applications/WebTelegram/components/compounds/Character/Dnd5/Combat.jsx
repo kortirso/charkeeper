@@ -102,6 +102,9 @@ export const Dnd5Combat = (props) => {
                         {attack.tooltips.map((item) => t(`attack.tooltips.${item}`)).join(', ')}
                       </p>
                     </Show>
+                    <Show when={attack.notes}>
+                      <p class="text-xs">{attack.notes}</p>
+                    </Show>
                   </td>
                   <td class="py-1 text-center">{modifier(attack.attack_bonus)}</td>
                   <td class="py-1 text-center">
