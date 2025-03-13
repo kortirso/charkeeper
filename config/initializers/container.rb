@@ -16,6 +16,8 @@ module Charkeeper
     end
 
     register('to_bool') { ToBool.new }
+    register('monitoring.providers.bugsnag') { Monitoring::Providers::Bugsnag.new }
+    register('monitoring.client') { Monitoring::Client.new }
 
     # commands
     register('commands.auth_context.add_identity') { AuthContext::AddIdentityCommand.new }

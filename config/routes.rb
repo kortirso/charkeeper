@@ -45,5 +45,9 @@ Rails.application.routes.draw do
     end
   end
 
+  namespace :webhooks do
+    resource :telegram, only: %i[create]
+  end
+
   root 'web/welcome#index'
 end
