@@ -4,8 +4,11 @@ module TelegramApi
   module Requests
     module Messages
       def send_message(bot_secret:, chat_id:, text:)
-        get(
-          path: "bot#{bot_secret}/sendMessage?chat_id=#{chat_id}&text=#{text}",
+        post(
+          path: "bot#{bot_secret}/sendMessage?chat_id=#{chat_id}",
+          body: {
+            text: text
+          }.to_json,
           headers: headers
         )
       end
