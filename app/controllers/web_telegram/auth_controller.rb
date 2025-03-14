@@ -39,12 +39,17 @@ module WebTelegram
         provider: User::Identity::TELEGRAM,
         uid: user_data['id'].to_s,
         username: user_data['username'],
-        locale: user_data['language_code']
+        locale: locale.to_s
       })[:result]
     end
 
     def user_data
       @user_data ||= JSON.parse(params[:check_string].split("\n").to_h { |item| item.split('=') }['user'])
+    end
+
+    def locale
+      user_locale = user_data['language_code'].to_sym
+      I18n.available_locales.include?(user_locale) ? user_locale : I18n.default_locale
     end
   end
 end
