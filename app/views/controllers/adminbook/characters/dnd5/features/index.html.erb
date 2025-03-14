@@ -1,7 +1,7 @@
 <div class="mb-4">
   <%= link_to 'New feature', new_adminbook_characters_dnd5_feature_path, class: 'btn btn-primary' %>
 </div>
-<table class="table w-full">
+<table class="table w-full text-sm">
   <thead>
     <tr>
       <td>Slug</td>
@@ -21,8 +21,8 @@
       <tr>
         <td class="pr-4">
           <p><%= link_to feature.slug, edit_adminbook_characters_dnd5_feature_path(feature.id) %><p>
-          <p class="text-sm"><%= feature.origin %></p>
-          <p class="text-sm"><%= feature.origin_value %></p>
+          <p><%= feature.origin %></p>
+          <p><%= feature.origin_value %></p>
         </td>
         <td class="pr-4"><%= feature.level %></td>
         <td class="pr-4">

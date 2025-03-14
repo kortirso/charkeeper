@@ -1,21 +1,21 @@
-<table class="table w-full">
+<table class="table w-full text-sm">
   <thead>
     <tr>
       <td>ID</td>
-      <td>Providers</td>
+      <td>Provider UID</td>
+      <td>Provider</td>
+      <td>Provider username</td>
     </tr>
   </thead>
   <tbody>
     <% @users.each do |user| %>
       <tr>
         <td class="pr-4"><%= user.id %></td>
-        <td>
-          <% user.identities.each do |identity| %>
-            <p><%= identity.uid %></p>
-            <p><%= identity.provider %></p>
-            <p><%= identity.username %></p>
-          <% end %>
-        </td>
+        <% user.identities.each do |identity| %>
+          <td><%= identity.uid %></td>
+          <td><%= identity.provider %></td>
+          <td><%= identity.username %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>

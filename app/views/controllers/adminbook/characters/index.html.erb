@@ -1,10 +1,14 @@
-<table class="table w-full">
+<table class="table w-full text-sm">
   <thead>
     <tr>
       <td>ID</td>
       <td>Name</td>
       <td>Type</td>
-      <td>Data</td>
+      <td>Level</td>
+      <td>Race</td>
+      <td>Subrace</td>
+      <td>Classes</td>
+      <td>Subclasses</td>
       <td>User ID</td>
     </tr>
   </thead>
@@ -13,18 +17,17 @@
       <tr>
         <td class="pr-4"><%= character.id %></td>
         <td class="pr-4"><%= character.name %></td>
-        <td class="pr-4"><%= character.type %></td>
-        <td class="pr-4">
-          <% if character.is_a?(Dnd5::Character) %>
-            <% character.data.slice('level', 'race', 'subrace', 'classes', 'subclasses').each do |key, value| %>
-              <p class="text-xs"><%= key %> - <%= value %></p>
-            <% end %>
-          <% elsif character.is_a?(Dnd2024::Character) %>
-            <% character.data.slice('level', 'species', 'legacy', 'classes').each do |key, value| %>
-              <p class="text-xs"><%= key %> - <%= value %></p>
-            <% end %>
+        <% if character.is_a?(Dnd5::Character) %>
+          <td class="pr-4">D&D 5</td>
+          <% character.data.slice('level', 'race', 'subrace', 'classes', 'subclasses').each_value do |value| %>
+            <td class="pr-4"><%= value %></td>
           <% end %>
-        </td>
+        <% elsif character.is_a?(Dnd2024::Character) %>
+          <td class="pr-4">D&D 2024</td>
+          <% character.data.slice('level', 'species', 'legacy', 'classes', 'subclasses').each_value do |value| %>
+            <td class="pr-4"><%= value %></td>
+          <% end %>
+        <% end %>
         <td><%= character.user_id %></td>
       </tr>
     <% end %>
