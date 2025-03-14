@@ -18,6 +18,7 @@ module Charkeeper
     register('to_bool') { ToBool.new }
     register('monitoring.providers.bugsnag') { Monitoring::Providers::Bugsnag.new }
     register('monitoring.client') { Monitoring::Client.new }
+    register('api.telegram.client') { TelegramApi::Client.new }
 
     # commands
     register('commands.auth_context.add_identity') { AuthContext::AddIdentityCommand.new }
@@ -117,6 +118,7 @@ module Charkeeper
 
     # services
     register('services.auth_context.validate_web_telegram_signature') { AuthContext::WebTelegramSignatureValidateService.new }
+    register('services.telegram_webhooks.handler') { TelegramWebhooks::HandleService.new }
   end
 end
 

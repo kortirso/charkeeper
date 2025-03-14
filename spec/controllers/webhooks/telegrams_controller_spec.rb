@@ -2,17 +2,25 @@
 
 describe Webhooks::TelegramsController do
   describe 'POST#create' do
+    let(:handler) { Charkeeper::Container.resolve('services.telegram_webhooks.handler') }
+
     before do
       allow(Charkeeper::Container.resolve('monitoring.client')).to receive(:notify)
+      allow(handler).to receive(:call)
     end
 
     context 'when message present in payload', :aggregate_failures do
       it 'calls monitoring' do
         post :create, params: {
-          message: { from: { first_name: 'First', last_name: 'Last' }, chat: { id: 'id' }, text: 'text' }
+          message: {
+            from: { first_name: 'First', last_name: 'Last', username: 'User', language_code: 'en' },
+            chat: { id: 'id' },
+            text: 'text'
+          }
         }
 
         expect(Charkeeper::Container.resolve('monitoring.client')).to have_received(:notify)
+        expect(handler).to have_received(:call)
         expect(response).to have_http_status :ok
       end
     end
