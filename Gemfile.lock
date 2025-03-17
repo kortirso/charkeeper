@@ -463,7 +463,7 @@ DEPENDENCIES
   sprockets-rails
   store_model
   strong_migrations (~> 2.0)
-  tailwindcss-rails
+  tailwindcss-rails (< 4.0)
 
 BUNDLED WITH
    2.5.23

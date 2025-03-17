@@ -12,7 +12,7 @@ gem 'rails', '~> 8.0'
 # The modern asset pipeline for Rails [https://github.com/rails/propshaft]
 gem 'jsbundling-rails'
 gem 'sprockets-rails'
-gem 'tailwindcss-rails'
+gem 'tailwindcss-rails', '< 4.0'
 
 # Use postgresql as the database for Active Record
 gem 'pg', '~> 1.1'
