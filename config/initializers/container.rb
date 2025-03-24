@@ -40,8 +40,20 @@ module Charkeeper
     register('commands.characters_context.dnd2024.make_short_rest') { CharactersContext::Dnd2024::MakeShortRestCommand.new }
     register('commands.characters_context.dnd2024.make_long_rest') { CharactersContext::Dnd2024::MakeLongRestCommand.new }
 
+    register('commands.characters_context.pathfinder2.create') { CharactersContext::Pathfinder2::CreateCommand.new }
+    register('commands.characters_context.pathfinder2.update') { CharactersContext::Pathfinder2::UpdateCommand.new }
+
     # decorators
     register('decorators.dummy_decorator') { DummyDecorator.new }
+
+    register('decorators.pathfinder2_character.base_decorator') { Pathfinder2Character::BaseDecorator.new }
+    register('decorators.pathfinder2_character.race_wrapper') { Pathfinder2Character::RaceDecorateWrapper.new }
+    register('decorators.pathfinder2_character.subrace_wrapper') { Pathfinder2Character::SubraceDecorateWrapper.new }
+    register('decorators.pathfinder2_character.class_wrapper') { Pathfinder2Character::ClassDecorateWrapper.new }
+
+    register('decorators.pathfinder2_character.races.dwarf') { Pathfinder2Character::Races::DwarfDecorator.new }
+
+    register('decorators.pathfinder2_character.classes.fighter') { Pathfinder2Character::Classes::FighterDecorator.new }
 
     register('decorators.dnd5_character.base_decorator') { Dnd5Character::BaseDecorator.new }
     register('decorators.dnd5_character.features') { Dnd5Character::FeaturesDecorator.new }

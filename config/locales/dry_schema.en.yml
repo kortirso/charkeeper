@@ -1,7 +1,8 @@
 en:
   dry_schema:
     rules:
-      dnd5_character: D&D5 character
+      dnd5_character: D&D 5 character
+      pathfinder2_character: Pathfinder 2 character
     errors:
       unexpected_key: Unknown param
       user:
@@ -56,5 +57,25 @@ en:
             invalid_value: Ability value should be positive and less than 30
           coins:
             invalid_value: Coins values should not be negative
+          health:
+            invalid_value: Health values should not be negative
+      pathfinder2_character:
+        rules:
+          name:
+            key?: Name is required
+            filled?: Name must be filled
+          race:
+            key?: Race is required
+            filled?: Race must be filled
+            included_in?: Invalid race value
+          main_class:
+            key?: Class is required
+            filled?: Class must be filled
+            included_in?: Invalid class value
+          classes:
+            invalid_class_name: Invalid class name
+            invalid_level: Invalid level
+          subrace:
+            invalid: Invalid subrace
           health:
             invalid_value: Health values should not be negative

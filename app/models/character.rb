@@ -10,6 +10,7 @@ class Character < ApplicationRecord
   scope :dnd, -> { where(type: %w[Dnd5::Character Dnd2024::Character]) }
   scope :dnd5, -> { where(type: 'Dnd5::Character') }
   scope :dnd2024, -> { where(type: 'Dnd2024::Character') }
+  scope :pathfinder2, -> { where(type: 'Pathfinder2::Character') }
 
   def decorator = raise NotImplementedError
 end
