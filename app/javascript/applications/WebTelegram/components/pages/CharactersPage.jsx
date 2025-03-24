@@ -49,6 +49,11 @@ export const CharactersPage = () => {
     subrace: undefined,
     main_class: undefined
   });
+  const [characterDaggerheartForm, setCharacterDaggerheartForm] = createStore({
+    name: '',
+    heritage: undefined,
+    main_class: undefined
+  });
 
   const { Modal, openModal, closeModal } = createModal();
   const [appState, { navigate }] = useAppState();
@@ -81,6 +86,9 @@ export const CharactersPage = () => {
       case 'pathfinder2':
         formData = characterPathfinder2Form; // eslint-disable-line solid/reactivity
         break;
+      case 'daggerheart':
+        formData = characterDaggerheartForm; // eslint-disable-line solid/reactivity
+        break;
     }
     if (platform() === undefined) return;
 
@@ -92,6 +100,7 @@ export const CharactersPage = () => {
         setCharacterDnd5Form({ name: '', race: undefined, subrace: undefined, main_class: undefined, alignment: 'neutral' });
         setCharacterDnd2024Form({ name: '', species: undefined, size: undefined, main_class: undefined, alignment: 'neutral' });
         setCharacterPathfinder2Form({ name: '', race: undefined, subrace: undefined, main_class: undefined });
+        setCharacterDaggerheartForm({ name: '', heritage: undefined, main_class: undefined });
         setCurrentTab('characters');
       });
     } else renderAlerts(result.errors);
@@ -207,6 +216,28 @@ export const CharactersPage = () => {
                           <Close />
                         </IconButton>
                       </Match>
+                      <Match when={character.provider === 'daggerheart'}>
+                        <div class="mr-2">
+                          <div class="w-16 h-16 bordered" />
+                        </div>
+                        <div class="flex-1">
+                          <div class="flex mb-1">
+                            <p class="font-medium">{character.name}</p>
+                            <span class="text-xs ml-2">Daggerheart</span>
+                          </div>
+                          <div class="mb-1">
+                            <p class="text-xs">
+                              {t('charactersPage.level')} {character.object_data.level} | {t(`daggerheart.heritages.${character.object_data.heritage}`)}
+                            </p>
+                          </div>
+                          <p class="text-xs">
+                            {Object.keys(character.object_data.classes).map((item) => t(`daggerheart.classes.${item}`)).join(' * ')}
+                          </p>
+                        </div>
+                        <IconButton big onClick={(e) => deleteCharacter(e, character.id)}>
+                          <Close />
+                        </IconButton>
+                      </Match>
                     </Switch>
                   </div>
                 }
@@ -224,7 +255,7 @@ export const CharactersPage = () => {
                 <Select
                   classList="w-full mb-2"
                   labelText={t('newCharacterPage.platform')}
-                  items={{ 'dnd5': 'D&D 5', 'dnd2024': 'D&D 2024', 'pathfinder2': 'Pathfinder 2' }}
+                  items={{ 'dnd5': 'D&D 5', 'dnd2024': 'D&D 2024', 'pathfinder2': 'Pathfinder 2', 'daggerheart': 'Daggerheart' }}
                   selectedValue={platform()}
                   onSelect={(value) => setPlatform(value)}
                 />
@@ -338,6 +369,27 @@ export const CharactersPage = () => {
                       items={dict().pathfinder2.classes}
                       selectedValue={characterPathfinder2Form.main_class}
                       onSelect={(value) => setCharacterPathfinder2Form({ ...characterPathfinder2Form, main_class: value })}
+                    />
+                  </Match>
+                  <Match when={platform() === 'daggerheart'}>
+                    <Input
+                      classList="mb-2"
+                      labelText={t('newCharacterPage.name')}
+                      value={characterDaggerheartForm.name}
+                      onInput={(value) => setCharacterDaggerheartForm({ ...characterDaggerheartForm, name: value })}
+                    />
+                    <Select
+                      classList="mb-2"
+                      labelText={t('newCharacterPage.daggerheart.heritage')}
+                      items={dict().daggerheart.heritages}
+                      selectedValue={characterDaggerheartForm.heritage}
+                      onSelect={(value) => setCharacterDaggerheartForm({ ...characterDaggerheartForm, heritage: value })}
+                    />
+                    <Select
+                      labelText={t('newCharacterPage.daggerheart.mainClass')}
+                      items={dict().daggerheart.classes}
+                      selectedValue={characterDaggerheartForm.main_class}
+                      onSelect={(value) => setCharacterDaggerheartForm({ ...characterDaggerheartForm, main_class: value })}
                     />
                   </Match>
                 </Switch>

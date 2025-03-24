@@ -1,6 +1,6 @@
 import { createSignal, createEffect, Switch, Match } from 'solid-js';
 
-import { Dnd5, Pathfinder2 } from '../../components';
+import { Dnd5, Pathfinder2, Daggerheart } from '../../components';
 import { useAppState } from '../../context';
 import { fetchCharacterRequest } from '../../requests/fetchCharacterRequest';
 
@@ -40,6 +40,15 @@ export const CharacterPage = () => {
       </Match>
       <Match when={character().provider === 'pathfinder2'}>
         <Pathfinder2
+          provider={character().provider}
+          decoratedData={character().decorated_data}
+          characterId={character().id}
+          name={character().name}
+          onReloadCharacter={reloadCharacter}
+        />
+      </Match>
+      <Match when={character().provider === 'daggerheart'}>
+        <Daggerheart
           provider={character().provider}
           decoratedData={character().decorated_data}
           characterId={character().id}

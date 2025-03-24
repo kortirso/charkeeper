@@ -3,6 +3,7 @@ en:
     rules:
       dnd5_character: D&D 5 character
       pathfinder2_character: Pathfinder 2 character
+      daggerheart_character: Daggerheart character
     errors:
       unexpected_key: Unknown param
       user:
@@ -79,3 +80,19 @@ en:
             invalid: Invalid subrace
           health:
             invalid_value: Health values should not be negative
+      daggerheart_character:
+        rules:
+          name:
+            key?: Name is required
+            filled?: Name must be filled
+          heritage:
+            key?: Heritage is required
+            filled?: Heritage must be filled
+            included_in?: Invalid heritage value
+          main_class:
+            key?: Class is required
+            filled?: Class must be filled
+            included_in?: Invalid class value
+          classes:
+            invalid_class_name: Invalid class name
+            invalid_level: Invalid level

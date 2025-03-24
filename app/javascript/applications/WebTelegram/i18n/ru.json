@@ -44,6 +44,10 @@
       "race": "Раса",
       "subrace": "Подраса",
       "mainClass": "Основной класс"
+    },
+    "daggerheart": {
+      "heritage": "Раса",
+      "mainClass": "Основной класс"
     }
   },
   "itemsPage": {
@@ -550,6 +554,22 @@
     },
     "classes": {
       "fighter": "Воин"
+    }
+  },
+  "daggerheart": {
+    "traits": {
+      "str": "Сила",
+      "agi": "Ловкость",
+      "fin": "Точность",
+      "ins": "Инстинкты",
+      "pre": "Наружность",
+      "know": "Знания"
+    },
+    "heritages": {
+      "elf": "Эльф"
+    },
+    "classes": {
+      "warrior": "Воин"
     }
   }
 }

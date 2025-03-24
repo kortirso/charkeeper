@@ -16,3 +16,6 @@ export * from './compounds/Character/Dnd5/Notes';
 
 export * from './compounds/Character/Pathfinder2';
 export * from './compounds/Character/Pathfinder2/Abilities';
+
+export * from './compounds/Character/Daggerheart';
+export * from './compounds/Character/Daggerheart/Traits';
