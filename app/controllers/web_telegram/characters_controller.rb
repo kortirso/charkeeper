@@ -52,6 +52,7 @@ module WebTelegram
       case character_type
       when 'Dnd5::Character' then ::Dnd5::Character
       when 'Dnd2024::Character' then ::Dnd2024::Character
+      when 'Pathfinder2::Character' then ::Pathfinder2::Character
       end
     end
 
@@ -63,6 +64,7 @@ module WebTelegram
       case character_type
       when 'Dnd5::Character' then ::Dnd5::CharacterSerializer
       when 'Dnd2024::Character' then ::Dnd2024::CharacterSerializer
+      when 'Pathfinder2::Character' then ::Pathfinder2::CharacterSerializer
       end
     end
   end

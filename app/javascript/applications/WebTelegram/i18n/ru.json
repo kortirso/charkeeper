@@ -39,6 +39,11 @@
       "size": "Размер",
       "mainClass": "Основной класс",
       "alignment": "Мировоззрение"
+    },
+    "pathfinder2": {
+      "race": "Раса",
+      "subrace": "Подраса",
+      "mainClass": "Основной класс"
     }
   },
   "itemsPage": {
@@ -528,6 +533,23 @@
         "artillerist": "Артиллерист",
         "battle_smith": "Боевой кузнец"
       }
+    }
+  },
+  "pathfinder2": {
+    "races": {
+      "dwarf": "Дварф"
+    },
+    "subraces": {
+      "dwarf": {
+        "ancient_blooded_dwarf": "Дварф древней крови",
+        "death_warden_dwarf": "Дварф страж гробниц",
+        "forge_dwarf": "Дварф кузницы",
+        "rock_dwarf": "Каменный дварф",
+        "strong_blooded_dwarf": "Дварф сильной крови"
+      }
+    },
+    "classes": {
+      "fighter": "Воин"
     }
   }
 }

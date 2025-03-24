@@ -39,6 +39,11 @@
       "size": "Size",
       "mainClass": "Main class",
       "alignment": "Alignment"
+    },
+    "pathfinder2": {
+      "race": "Race",
+      "subrace": "Subrace",
+      "mainClass": "Main class"
     }
   },
   "itemsPage": {
@@ -528,6 +533,23 @@
         "artillerist": "Artillerist",
         "battle_smith": "Battle Smith"
       }
+    }
+  },
+  "pathfinder2": {
+    "races": {
+      "dwarf": "Dwarf"
+    },
+    "subraces": {
+      "dwarf": {
+        "ancient_blooded_dwarf": "Ancient-Blooded Dwarf",
+        "death_warden_dwarf": "Death Warden Dwarf",
+        "forge_dwarf": "Forge Dwarf",
+        "rock_dwarf": "Rock Dwarf",
+        "strong_blooded_dwarf": "Strong-Blooded Dwarf"
+      }
+    },
+    "classes": {
+      "fighter": "Fighter"
     }
   }
 }

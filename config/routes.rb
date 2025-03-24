@@ -43,6 +43,10 @@ Rails.application.routes.draw do
       end
       resources :spells, only: %i[index]
     end
+
+    namespace :pathfinder2 do
+      resources :characters, only: %i[create update]
+    end
   end
 
   namespace :webhooks do

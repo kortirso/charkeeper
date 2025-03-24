@@ -43,6 +43,12 @@ export const CharactersPage = () => {
     main_class: undefined,
     alignment: 'neutral'
   });
+  const [characterPathfinder2Form, setCharacterPathfinder2Form] = createStore({
+    name: '',
+    race: undefined,
+    subrace: undefined,
+    main_class: undefined
+  });
 
   const { Modal, openModal, closeModal } = createModal();
   const [appState, { navigate }] = useAppState();
@@ -64,9 +70,20 @@ export const CharactersPage = () => {
   });
 
   const saveCharacter = async () => {
+    let formData = null;
+    switch (platform()) {
+      case 'dnd5':
+        formData = characterDnd5Form; // eslint-disable-line solid/reactivity
+        break;
+      case 'dnd2024':
+        formData = characterDnd2024Form; // eslint-disable-line solid/reactivity
+        break;
+      case 'pathfinder2':
+        formData = characterPathfinder2Form; // eslint-disable-line solid/reactivity
+        break;
+    }
     if (platform() === undefined) return;
 
-    const formData = platform() === 'dnd5' ? characterDnd5Form : characterDnd2024Form;
     const result = await createCharacterRequest(appState.accessToken, platform(), { character: formData });
     
     if (result.errors === undefined) {
@@ -74,6 +91,7 @@ export const CharactersPage = () => {
         setCharacters(characters().concat(result.character));
         setCharacterDnd5Form({ name: '', race: undefined, subrace: undefined, main_class: undefined, alignment: 'neutral' });
         setCharacterDnd2024Form({ name: '', species: undefined, size: undefined, main_class: undefined, alignment: 'neutral' });
+        setCharacterPathfinder2Form({ name: '', race: undefined, subrace: undefined, main_class: undefined });
         setCurrentTab('characters');
       });
     } else renderAlerts(result.errors);
@@ -167,6 +185,28 @@ export const CharactersPage = () => {
                           <Close />
                         </IconButton>
                       </Match>
+                      <Match when={character.provider === 'pathfinder2'}>
+                        <div class="mr-2">
+                          <div class="w-16 h-16 bordered" />
+                        </div>
+                        <div class="flex-1">
+                          <div class="flex mb-1">
+                            <p class="font-medium">{character.name}</p>
+                            <span class="text-xs ml-2">Pathfinder 2</span>
+                          </div>
+                          <div class="mb-1">
+                            <p class="text-xs">
+                              {t('charactersPage.level')} {character.object_data.level} | {character.object_data.subrace ? t(`pathfinder2.subraces.${character.object_data.race}.${character.object_data.subrace}`) : t(`pathfinder2.races.${character.object_data.race}`)}
+                            </p>
+                          </div>
+                          <p class="text-xs">
+                            {Object.keys(character.object_data.classes).map((item) => t(`pathfinder2.classes.${item}`)).join(' * ')}
+                          </p>
+                        </div>
+                        <IconButton big onClick={(e) => deleteCharacter(e, character.id)}>
+                          <Close />
+                        </IconButton>
+                      </Match>
                     </Switch>
                   </div>
                 }
@@ -184,7 +224,7 @@ export const CharactersPage = () => {
                 <Select
                   classList="w-full mb-2"
                   labelText={t('newCharacterPage.platform')}
-                  items={{ 'dnd5': 'D&D 5', 'dnd2024': 'D&D 2024' }}
+                  items={{ 'dnd5': 'D&D 5', 'dnd2024': 'D&D 2024', 'pathfinder2': 'Pathfinder 2' }}
                   selectedValue={platform()}
                   onSelect={(value) => setPlatform(value)}
                 />
@@ -268,6 +308,36 @@ export const CharactersPage = () => {
                       items={dict().dnd.alignments}
                       selectedValue={characterDnd2024Form.alignment}
                       onSelect={(value) => setCharacterDnd2024Form({ ...characterDnd2024Form, alignment: value })}
+                    />
+                  </Match>
+                  <Match when={platform() === 'pathfinder2'}>
+                    <Input
+                      classList="mb-2"
+                      labelText={t('newCharacterPage.name')}
+                      value={characterPathfinder2Form.name}
+                      onInput={(value) => setCharacterPathfinder2Form({ ...characterPathfinder2Form, name: value })}
+                    />
+                    <Select
+                      classList="mb-2"
+                      labelText={t('newCharacterPage.pathfinder2.race')}
+                      items={dict().pathfinder2.races}
+                      selectedValue={characterPathfinder2Form.race}
+                      onSelect={(value) => setCharacterPathfinder2Form({ ...characterPathfinder2Form, race: value })}
+                    />
+                    <Show when={dict().pathfinder2.subraces[characterPathfinder2Form.race]}>
+                      <Select
+                        classList="mb-2"
+                        labelText={t('newCharacterPage.pathfinder2.subrace')}
+                        items={dict().pathfinder2.subraces[characterPathfinder2Form.race]}
+                        selectedValue={characterPathfinder2Form.subrace}
+                        onSelect={(value) => setCharacterPathfinder2Form({ ...characterPathfinder2Form, subrace: value })}
+                      />
+                    </Show>
+                    <Select
+                      labelText={t('newCharacterPage.pathfinder2.mainClass')}
+                      items={dict().pathfinder2.classes}
+                      selectedValue={characterPathfinder2Form.main_class}
+                      onSelect={(value) => setCharacterPathfinder2Form({ ...characterPathfinder2Form, main_class: value })}
                     />
                   </Match>
                 </Switch>

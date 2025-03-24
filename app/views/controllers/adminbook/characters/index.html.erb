@@ -27,6 +27,11 @@
           <% character.data.slice('level', 'species', 'legacy', 'classes', 'subclasses').each_value do |value| %>
             <td class="pr-4"><%= value %></td>
           <% end %>
+        <% elsif character.is_a?(Pathfinder2::Character) %>
+          <td class="pr-4">Pathfinder 2</td>
+          <% character.data.slice('level', 'race', 'subrace', 'classes').each_value do |value| %>
+            <td class="pr-4"><%= value %></td>
+          <% end %>
         <% end %>
         <td><%= character.user_id %></td>
       </tr>
