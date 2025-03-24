@@ -53,6 +53,7 @@ module WebTelegram
       when 'Dnd5::Character' then ::Dnd5::Character
       when 'Dnd2024::Character' then ::Dnd2024::Character
       when 'Pathfinder2::Character' then ::Pathfinder2::Character
+      when 'Daggerheart::Character' then ::Daggerheart::Character
       end
     end
 
@@ -65,6 +66,7 @@ module WebTelegram
       when 'Dnd5::Character' then ::Dnd5::CharacterSerializer
       when 'Dnd2024::Character' then ::Dnd2024::CharacterSerializer
       when 'Pathfinder2::Character' then ::Pathfinder2::CharacterSerializer
+      when 'Daggerheart::Character' then ::Daggerheart::CharacterSerializer
       end
     end
   end

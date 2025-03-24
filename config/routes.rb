@@ -47,6 +47,10 @@ Rails.application.routes.draw do
     namespace :pathfinder2 do
       resources :characters, only: %i[create update]
     end
+
+    namespace :daggerheart do
+      resources :characters, only: %i[create update]
+    end
   end
 
   namespace :webhooks do

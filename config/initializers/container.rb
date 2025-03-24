@@ -43,6 +43,9 @@ module Charkeeper
     register('commands.characters_context.pathfinder2.create') { CharactersContext::Pathfinder2::CreateCommand.new }
     register('commands.characters_context.pathfinder2.update') { CharactersContext::Pathfinder2::UpdateCommand.new }
 
+    register('commands.characters_context.daggerheart.create') { CharactersContext::Daggerheart::CreateCommand.new }
+    register('commands.characters_context.daggerheart.update') { CharactersContext::Daggerheart::UpdateCommand.new }
+
     # decorators
     register('decorators.dummy_decorator') { DummyDecorator.new }
 
@@ -54,6 +57,14 @@ module Charkeeper
     register('decorators.pathfinder2_character.races.dwarf') { Pathfinder2Character::Races::DwarfDecorator.new }
 
     register('decorators.pathfinder2_character.classes.fighter') { Pathfinder2Character::Classes::FighterDecorator.new }
+
+    register('decorators.daggerheart_character.base_decorator') { DaggerheartCharacter::BaseDecorator.new }
+    register('decorators.daggerheart_character.heritage_wrapper') { DaggerheartCharacter::HeritageDecorateWrapper.new }
+    register('decorators.daggerheart_character.class_wrapper') { DaggerheartCharacter::ClassDecorateWrapper.new }
+
+    register('decorators.daggerheart_character.heritages.elf') { DaggerheartCharacter::Heritages::ElfDecorator.new }
+
+    register('decorators.daggerheart_character.classes.warrior') { DaggerheartCharacter::Classes::WarriorDecorator.new }
 
     register('decorators.dnd5_character.base_decorator') { Dnd5Character::BaseDecorator.new }
     register('decorators.dnd5_character.features') { Dnd5Character::FeaturesDecorator.new }

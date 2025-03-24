@@ -3,6 +3,7 @@ ru:
     rules:
       dnd5_character: D&D 5 персонаж
       pathfinder2_character: Pathfinder 2 персонаж
+      daggerheart_character: Daggerheart персонаж
     errors:
       unexpected_key: Неизвестный параметр
       user:
@@ -79,3 +80,19 @@ ru:
             invalid: Недопустимая подраса
           health:
             invalid_value: Значения здоровья не должны быть меньше 0
+      daggerheart_character:
+        rules:
+          name:
+            key?: Необходимо указать имя персонажа
+            filled?: Необходимо указать имя персонажа
+          heritage:
+            key?: Необходимо указать расу персонажа
+            filled?: Необходимо указать расу персонажа
+            included_in?: Недопустимая раса персонажа
+          main_class:
+            key?: Необходимо указать класс персонажа
+            filled?: Необходимо указать класс персонажа
+            included_in?: Недопустимый класс персонажа
+          classes:
+            invalid_class_name: Недопустимое название класса
+            invalid_level: Недопустимый уровень

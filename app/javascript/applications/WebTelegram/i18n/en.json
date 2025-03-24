@@ -44,6 +44,10 @@
       "race": "Race",
       "subrace": "Subrace",
       "mainClass": "Main class"
+    },
+    "daggerheart": {
+      "heritage": "Heritage",
+      "mainClass": "Main class"
     }
   },
   "itemsPage": {
@@ -550,6 +554,22 @@
     },
     "classes": {
       "fighter": "Fighter"
+    }
+  },
+  "daggerheart": {
+    "traits": {
+      "str": "Strength",
+      "agi": "Agility",
+      "fin": "Finesse",
+      "ins": "Instinct",
+      "per": "Presence",
+      "know": "Knowledge"
+    },
+    "heritages": {
+      "elf": "Elf"
+    },
+    "classes": {
+      "warrior": "Warrior"
     }
   }
 }

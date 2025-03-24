@@ -32,6 +32,11 @@
           <% character.data.slice('level', 'race', 'subrace', 'classes').each_value do |value| %>
             <td class="pr-4"><%= value %></td>
           <% end %>
+        <% elsif character.is_a?(Daggerheart::Character) %>
+          <td class="pr-4">Daggerheart</td>
+          <% character.data.slice('level', 'heritage', 'classes').each_value do |value| %>
+            <td class="pr-4"><%= value %></td>
+          <% end %>
         <% end %>
         <td><%= character.user_id %></td>
       </tr>
