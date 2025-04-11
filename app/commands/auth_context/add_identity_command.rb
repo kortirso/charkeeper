@@ -9,7 +9,7 @@ module AuthContext
         required(:provider).filled(Providers)
         required(:uid).filled(:string)
         optional(:user).filled(type?: User)
-        optional(:username).filled(:string)
+        optional(:username).maybe(:string)
         optional(:locale).filled(:string)
       end
     end
