@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class Character < ApplicationRecord
+  has_one_attached :avatar
+
   belongs_to :user
 
   has_many :spells, class_name: '::Character::Spell', dependent: :destroy

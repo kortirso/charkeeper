@@ -4,7 +4,7 @@ module WebTelegram
   class CharactersController < WebTelegram::BaseController
     include SerializeResource
 
-    INDEX_SERIALIZE_FIELDS = %i[id name object_data provider].freeze
+    INDEX_SERIALIZE_FIELDS = %i[id name object_data provider avatar].freeze
     SHOW_SERIALIZE_FIELDS = %i[id name object_data decorated_data provider].freeze
 
     before_action :find_character, only: %i[show destroy]
@@ -34,7 +34,7 @@ module WebTelegram
     def characters
       characters_by_provider.map do |character_type, ids|
         Panko::ArraySerializer.new(
-          relation(character_type).where(id: ids.pluck(:id)),
+          relation(character_type).where(id: ids.pluck(:id)).includes(avatar_attachment: :blob),
           each_serializer: serializer(character_type),
           only: INDEX_SERIALIZE_FIELDS
         ).to_a

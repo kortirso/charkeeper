@@ -7,6 +7,8 @@ Rails.application.configure do
 
   config.i18n.fallbacks = false
 
+  config.active_storage.service = :local
+
   # Code is not reloaded between requests.
   config.enable_reloading = false
 

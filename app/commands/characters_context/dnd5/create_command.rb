@@ -7,7 +7,8 @@ module CharactersContext
         base_decorator: 'decorators.dnd5_character.base_decorator',
         race_decorator: 'decorators.dnd5_character.race_wrapper',
         subrace_decorator: 'decorators.dnd5_character.subrace_wrapper',
-        class_decorator: 'decorators.dnd5_character.class_wrapper'
+        class_decorator: 'decorators.dnd5_character.class_wrapper',
+        attach_avatar: 'commands.image_processing.attach_avatar'
       ]
 
       use_contract do
@@ -24,6 +25,9 @@ module CharactersContext
           required(:main_class).filled(Classes)
           required(:alignment).filled(Alignments)
           optional(:subrace).filled(:string)
+          optional(:avatar_params).hash do
+            optional(:url).filled(:string)
+          end
         end
 
         rule(:race, :subrace) do
@@ -47,6 +51,7 @@ module CharactersContext
         character = ::Dnd5::Character.create!(input.slice(:user, :name, :data))
 
         learn_spells_list(character, input)
+        attach_avatar.call({ character: character, params: input[:avatar_params] }) if input[:avatar_params]
 
         { result: character }
       end

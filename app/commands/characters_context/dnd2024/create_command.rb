@@ -6,9 +6,11 @@ module CharactersContext
       include Deps[
         base_decorator: 'decorators.dnd2024_character.base_decorator',
         species_decorator: 'decorators.dnd2024_character.species_wrapper',
-        class_decorator: 'decorators.dnd2024_character.class_wrapper'
+        class_decorator: 'decorators.dnd2024_character.class_wrapper',
+        attach_avatar: 'commands.image_processing.attach_avatar'
       ]
 
+      # rubocop: disable Metrics/BlockLength
       use_contract do
         config.messages.namespace = :dnd5_character
 
@@ -24,6 +26,9 @@ module CharactersContext
           required(:main_class).filled(Classes)
           required(:alignment).filled(Alignments)
           optional(:legacy).filled(:string)
+          optional(:avatar_params).hash do
+            optional(:url).filled(:string)
+          end
         end
 
         rule(:species, :size) do
@@ -44,6 +49,7 @@ module CharactersContext
           key(:legacy).failure(:invalid)
         end
       end
+      # rubocop: enable Metrics/BlockLength
 
       private
 
@@ -56,6 +62,7 @@ module CharactersContext
         character = ::Dnd2024::Character.create!(input.slice(:user, :name, :data))
 
         learn_spells_list(character, input)
+        attach_avatar.call({ character: character, params: input[:avatar_params] }) if input[:avatar_params]
 
         { result: character }
       end

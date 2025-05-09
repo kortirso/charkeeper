@@ -2,7 +2,11 @@
 
 module Dnd5
   class CharacterSerializer < ApplicationSerializer
-    attributes :id, :name, :object_data, :decorated_data, :provider
+    include Rails.application.routes.url_helpers
+
+    default_url_options[:host] = 'localhost'
+
+    attributes :id, :name, :object_data, :decorated_data, :provider, :avatar
 
     def object_data
       object.data.slice('level', 'race', 'subrace', 'classes')
@@ -14,6 +18,10 @@ module Dnd5
 
     def provider
       'dnd5'
+    end
+
+    def avatar
+      url_for(object.avatar) if object.avatar.attached?
     end
   end
 end

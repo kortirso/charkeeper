@@ -19,6 +19,7 @@ module Charkeeper
     register('monitoring.providers.bugsnag') { Monitoring::Providers::Bugsnag.new }
     register('monitoring.client') { Monitoring::Client.new }
     register('api.telegram.client') { TelegramApi::Client.new }
+    register('api.imgproxy.client') { ImgproxyApi::Client.new }
 
     # commands
     register('commands.auth_context.add_identity') { AuthContext::AddIdentityCommand.new }
@@ -45,6 +46,8 @@ module Charkeeper
 
     register('commands.characters_context.daggerheart.create') { CharactersContext::Daggerheart::CreateCommand.new }
     register('commands.characters_context.daggerheart.update') { CharactersContext::Daggerheart::UpdateCommand.new }
+
+    register('commands.image_processing.attach_avatar') { ImageProcessingContext::AttachAvatarCommand.new }
 
     # decorators
     register('decorators.dummy_decorator') { DummyDecorator.new }
