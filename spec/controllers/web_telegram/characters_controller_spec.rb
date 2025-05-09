@@ -17,7 +17,7 @@ describe WebTelegram::CharactersController do
 
         expect(response).to have_http_status :ok
         expect(response.parsed_body['characters'].size).to eq 1
-        expect(response_values.keys).to contain_exactly('id', 'name', 'object_data', 'provider')
+        expect(response_values.keys).to contain_exactly('id', 'name', 'object_data', 'provider', 'avatar')
       end
     end
   end
