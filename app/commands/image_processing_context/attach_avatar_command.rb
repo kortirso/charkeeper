@@ -23,7 +23,7 @@ module ImageProcessingContext
       Tempfile.open('temp_avatar', encoding: 'ascii-8bit') do |file|
         file.write(
           imgproxy_client.process_image(
-            processing_options: %w[rs:fill:200:200 g:sm],
+            processing_options: %w[resize:fill:200:200 gravity:sm format:jpg],
             url: input.dig(:params, :url),
             extension: 'jpg'
           )
@@ -33,10 +33,12 @@ module ImageProcessingContext
         input[:character].avatar.attach(
           io: file,
           filename: 'avatar.jpg',
-          key: "avatars/avatar-#{SecureRandom.uuid}.jpg",
+          key: "avatars/avatar-#{input[:character].id}-#{SecureRandom.alphanumeric(10)}.jpg",
           identify: false
         )
       end
+    rescue Faraday::ConnectionFailed => _e
+      nil
     end
   end
 end
