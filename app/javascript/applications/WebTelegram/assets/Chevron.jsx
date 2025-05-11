@@ -8,7 +8,7 @@ export const Chevron = (props) => (
     class={props.rotated ? 'transition-transform rotate-0' : 'transition-transform rotate-180'}
   >
     <g clip-path="url(#clip0_44_281)">
-      <path d="M7.41 15.41L12 10.83L16.59 15.41L18 14L12 8L6 14L7.41 15.41Z" fill="#63B3CE" />
+      <path d="M7.41 15.41L12 10.83L16.59 15.41L18 14L12 8L6 14L7.41 15.41Z" fill="#9ca3af" />
     </g>
     <defs>
       <clipPath id="clip0_44_281">

@@ -5,11 +5,6 @@
   "deleteCharacterConfirm": "Are you sure need to remove this character?",
   "cancel": "Cancel",
   "delete": "Delete",
-  "nav": {
-    "characters": "Characters",
-    "npc": "NPC",
-    "profile": "Profile"
-  },
   "alerts": {
     "restIsFinished": "Rest is finished",
     "itemIsAdded": "Item is added"
@@ -21,7 +16,9 @@
   "charactersPage": {
     "title": "Characters list",
     "level": "Level",
-    "new": "Create new character"
+    "new": "Create new character",
+    "onDeleteCharacter": "Delete",
+    "deleteCharacterTitle": "Deleting character"
   },
   "newCharacterPage": {
     "title": "Create new character",

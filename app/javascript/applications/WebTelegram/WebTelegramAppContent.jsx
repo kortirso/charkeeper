@@ -1,7 +1,7 @@
 import { createEffect, Switch, Match, batch } from 'solid-js';
 import * as i18n from '@solid-primitives/i18n';
 
-import { CharactersPage, CharacterPage, NpcPage, ProfilePage } from './components';
+import { CharactersPage, CharacterPage, ProfilePage } from './components';
 import { useAppState, useAppLocale } from './context';
 import { useTelegram } from './hooks';
 
@@ -61,33 +61,20 @@ export const WebTelegramAppContent = () => {
           <section class="w-full flex-1 flex flex-col overflow-hidden">
             <Switch>
               <Match when={appState.activePage === 'characters' && Object.keys(appState.activePageParams).length === 0}>
-                <CharactersPage />
+                <CharactersPage
+                  onNavigate={() => navigate('profile', {})}
+                />
               </Match>
               <Match when={appState.activePage === 'characters' && appState.activePageParams.id}>
                 <CharacterPage />
               </Match>
-              <Match when={appState.activePage === 'npc'}>
-                <NpcPage />
-              </Match>
               <Match when={appState.activePage === 'profile'}>
-                <ProfilePage />
+                <ProfilePage
+                  onNavigate={() => navigate('characters', {})}
+                />
               </Match>
             </Switch>
           </section>
-          <nav class="w-full flex p-4 bg-white border-t border-gray-200">
-            <div class="nav-button" onClick={() => navigate('characters', {})}>
-              <div class={`nav-button-icon ${appState.activePage === 'characters' ? 'border-black' : 'border-gray'}`} />
-              <p class="nav-button-text">{t('nav.characters')}</p>
-            </div>
-            <div class="nav-button" onClick={() => navigate('npc', {})}>
-              <div class={`nav-button-icon ${appState.activePage === 'npc' ? 'border-black' : 'border-gray'}`} />
-              <p class="nav-button-text">{t('nav.npc')}</p>
-            </div>
-            <div class="nav-button" onClick={() => navigate('profile', {})}>
-              <div class={`nav-button-icon ${appState.activePage === 'profile' ? 'border-black' : 'border-gray'}`} />
-              <p class="nav-button-text">{t('nav.profile')}</p>
-            </div>
-          </nav>
         </div>
       </Match>
     </Switch>

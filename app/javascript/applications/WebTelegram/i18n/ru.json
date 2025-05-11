@@ -5,11 +5,6 @@
   "deleteCharacterConfirm": "Вы точно хотите избавиться от этого персонажа?",
   "cancel": "Отменить",
   "delete": "Удалить",
-  "nav": {
-    "characters": "Персонажи",
-    "npc": "НИП",
-    "profile": "Профиль"
-  },
   "alerts": {
     "restIsFinished": "Отдых проведён",
     "itemIsAdded": "Предмет добавлен"
@@ -21,7 +16,9 @@
   "charactersPage": {
     "title": "Персонажи",
     "level": "Уровень",
-    "new": "Добавить нового персонажа"
+    "new": "Добавить нового персонажа",
+    "onDeleteCharacter": "Удалить",
+    "deleteCharacterTitle": "Удаление персонажа"
   },
   "newCharacterPage": {
     "title": "Создание персонажа",

@@ -2,10 +2,11 @@ import { createSignal, createEffect, For, Switch, Match, Show, batch } from 'sol
 import { createStore } from 'solid-js/store';
 import * as i18n from '@solid-primitives/i18n';
 
+import { Item } from '../../components';
 import { createModal, PageHeader } from '../molecules';
 import { Select, Input, IconButton, Button } from '../atoms';
 
-import { Close } from '../../assets';
+import { Plus, Profile } from '../../assets';
 import { useAppState, useAppLocale, useAppAlert } from '../../context';
 import { fetchCharactersRequest } from '../../requests/fetchCharactersRequest';
 import { createCharacterRequest } from '../../requests/createCharacterRequest';
@@ -24,7 +25,7 @@ const CHARACTER_SIZES = {
   'goliath': ['medium']
 }
 
-export const CharactersPage = () => {
+export const CharactersPage = (props) => {
   const [currentTab, setCurrentTab] = createSignal('characters');
   const [characters, setCharacters] = createSignal(undefined);
   const [platform, setPlatform] = createSignal(undefined);
@@ -142,132 +143,87 @@ export const CharactersPage = () => {
   // 420x690
   return (
     <>
+      <PageHeader rightContent={<IconButton onClick={props.onNavigate}><Profile /></IconButton>}>
+        <Switch>
+          <Match when={currentTab() === 'characters'}>
+            {t('charactersPage.title')}
+          </Match>
+          <Match when={currentTab() === 'newCharacter'}>
+            {t('newCharacterPage.title')}
+          </Match>
+        </Switch>
+      </PageHeader>
       <Switch>
         <Match when={currentTab() === 'characters'}>
-          <PageHeader>
-            {t('charactersPage.title')}
-          </PageHeader>
-          <div class="p-4 flex-1 overflow-y-scroll">
+          <div class="p-3 pb-0 flex-1 overflow-y-scroll">
             <Button
-              primary
-              classList='mb-4 w-full uppercase'
-              text={t('charactersPage.new')}
+              default
+              classList='absolute right-3 bottom-3 rounded-full min-w-12 min-h-12 z-10'
               onClick={() => setCurrentTab('newCharacter')}
-            />
+            >
+              <Plus />
+            </Button>
             <Show when={characters() !== undefined}>
               <For each={characters()}>
                 {(character) =>
-                  <div
-                    class="mb-4 p-4 flex white-box cursor-pointer"
-                    onClick={() => navigate('characters', { id: character.id })}
-                  >
-                    <Switch>
-                      <Match when={character.provider === 'dnd5'}>
-                        <div class="mr-2">
-                          <Show when={character.avatar} fallback={<div class="w-16 h-16 bordered" />}>
-                            <img src={character.avatar} class="w-16 h-16 rounded-full" />
-                          </Show>
-                        </div>
-                        <div class="flex-1">
-                          <div class="flex mb-1">
-                            <p class="font-medium">{character.name}</p>
-                            <span class="text-xs ml-2">D&D 5</span>
-                          </div>
-                          <div class="mb-1">
-                            <p class="text-xs">
-                              {t('charactersPage.level')} {character.object_data.level} | {character.object_data.subrace ? t(`dnd5.subraces.${character.object_data.race}.${character.object_data.subrace}`) : t(`dnd5.races.${character.object_data.race}`)}
-                            </p>
-                          </div>
-                          <p class="text-xs">
-                            {Object.keys(character.object_data.classes).map((item) => t(`dnd5.classes.${item}`)).join(' * ')}
-                          </p>
-                        </div>
-                        <IconButton big onClick={(e) => deleteCharacter(e, character.id)}>
-                          <Close />
-                        </IconButton>
-                      </Match>
-                      <Match when={character.provider === 'dnd2024'}>
-                        <div class="mr-2">
-                          <div class="w-16 h-16 bordered" />
-                        </div>
-                        <div class="flex-1">
-                          <div class="flex mb-1">
-                            <p class="font-medium">{character.name}</p>
-                            <span class="text-xs ml-2">D&D 2024</span>
-                          </div>
-                          <div class="mb-1">
-                            <p class="text-xs">
-                              {t('charactersPage.level')} {character.object_data.level} | {character.object_data.legacy ? t(`dnd2024.legacies.${character.object_data.species}.${character.object_data.legacy}`) : t(`dnd2024.species.${character.object_data.species}`)}
-                            </p>
-                          </div>
-                          <p class="text-xs">
-                            {Object.keys(character.object_data.classes).map((item) => t(`dnd2024.classes.${item}`)).join(' * ')}
-                          </p>
-                        </div>
-                        <IconButton big onClick={(e) => deleteCharacter(e, character.id)}>
-                          <Close />
-                        </IconButton>
-                      </Match>
-                      <Match when={character.provider === 'pathfinder2'}>
-                        <div class="mr-2">
-                          <div class="w-16 h-16 bordered" />
-                        </div>
-                        <div class="flex-1">
-                          <div class="flex mb-1">
-                            <p class="font-medium">{character.name}</p>
-                            <span class="text-xs ml-2">Pathfinder 2</span>
-                          </div>
-                          <div class="mb-1">
-                            <p class="text-xs">
-                              {t('charactersPage.level')} {character.object_data.level} | {character.object_data.subrace ? t(`pathfinder2.subraces.${character.object_data.race}.${character.object_data.subrace}`) : t(`pathfinder2.races.${character.object_data.race}`)}
-                            </p>
-                          </div>
-                          <p class="text-xs">
-                            {Object.keys(character.object_data.classes).map((item) => t(`pathfinder2.classes.${item}`)).join(' * ')}
-                          </p>
-                        </div>
-                        <IconButton big onClick={(e) => deleteCharacter(e, character.id)}>
-                          <Close />
-                        </IconButton>
-                      </Match>
-                      <Match when={character.provider === 'daggerheart'}>
-                        <div class="mr-2">
-                          <div class="w-16 h-16 bordered" />
-                        </div>
-                        <div class="flex-1">
-                          <div class="flex mb-1">
-                            <p class="font-medium">{character.name}</p>
-                            <span class="text-xs ml-2">Daggerheart</span>
-                          </div>
-                          <div class="mb-1">
-                            <p class="text-xs">
-                              {t('charactersPage.level')} {character.object_data.level} | {t(`daggerheart.heritages.${character.object_data.heritage}`)}
-                            </p>
-                          </div>
-                          <p class="text-xs">
-                            {Object.keys(character.object_data.classes).map((item) => t(`daggerheart.classes.${item}`)).join(' * ')}
-                          </p>
-                        </div>
-                        <IconButton big onClick={(e) => deleteCharacter(e, character.id)}>
-                          <Close />
-                        </IconButton>
-                      </Match>
-                    </Switch>
-                  </div>
+                  <Switch>
+                    <Match when={character.provider === 'dnd5'}>
+                      <Item
+                        avatar={character.avatar}
+                        name={character.name}
+                        provider='D&D 5'
+                        firstText={`${t('charactersPage.level')} ${character.object_data.level} | ${character.object_data.subrace ? t(`dnd5.subraces.${character.object_data.race}.${character.object_data.subrace}`) : t(`dnd5.races.${character.object_data.race}`)}`}
+                        secondText={Object.keys(character.object_data.classes).map((item) => t(`dnd5.classes.${item}`)).join(' * ')}
+                        onClick={() => navigate('characters', { id: character.id })}
+                        onDeleteCharacter={(e) => deleteCharacter(e, character.id)}
+                      />
+                    </Match>
+                    <Match when={character.provider === 'dnd2024'}>
+                      <Item
+                        avatar={character.avatar}
+                        name={character.name}
+                        provider='D&D 2024'
+                        firstText={`${t('charactersPage.level')} ${character.object_data.level} | ${character.object_data.legacy ? t(`dnd2024.legacies.${character.object_data.species}.${character.object_data.legacy}`) : t(`dnd2024.species.${character.object_data.species}`)}`}
+                        secondText={Object.keys(character.object_data.classes).map((item) => t(`dnd2024.classes.${item}`)).join(' * ')}
+                        onClick={() => navigate('characters', { id: character.id })}
+                        onDeleteCharacter={(e) => deleteCharacter(e, character.id)}
+                      />
+                    </Match>
+                    <Match when={character.provider === 'pathfinder2'}>
+                      <Item
+                        avatar={character.avatar}
+                        name={character.name}
+                        provider='Pathfinder 2'
+                        firstText={`${t('charactersPage.level')} ${character.object_data.level} | ${character.object_data.subrace ? t(`pathfinder2.subraces.${character.object_data.race}.${character.object_data.subrace}`) : t(`pathfinder2.races.${character.object_data.race}`)}`}
+                        secondText={Object.keys(character.object_data.classes).map((item) => t(`pathfinder2.classes.${item}`)).join(' * ')}
+                        onClick={() => navigate('characters', { id: character.id })}
+                        onDeleteCharacter={(e) => deleteCharacter(e, character.id)}
+                      />
+                    </Match>
+                    <Match when={character.provider === 'daggerheart'}>
+                      <Item
+                        avatar={character.avatar}
+                        name={character.name}
+                        provider='Daggerheart'
+                        firstText={`${t('charactersPage.level')} ${character.object_data.level} | ${t(`daggerheart.heritages.${character.object_data.heritage}`)}`}
+                        secondText={Object.keys(character.object_data.classes).map((item) => t(`daggerheart.classes.${item}`)).join(' * ')}
+                        onClick={() => navigate('characters', { id: character.id })}
+                        onDeleteCharacter={(e) => deleteCharacter(e, character.id)}
+                      />
+                    </Match>
+                  </Switch>
                 }
               </For>
             </Show>
           </div>
         </Match>
         <Match when={currentTab() === 'newCharacter'}>
-          <PageHeader leftContent={<p class="cursor-pointer" onClick={() => setCurrentTab('characters')}>{t('back')}</p>}>
-            {t('newCharacterPage.title')}
-          </PageHeader>
-          <div class="p-4 flex-1 flex flex-col overflow-y-scroll">
-            <div class="p-4 flex-1 flex flex-col white-box">
+          <div class="p-3 flex-1 flex flex-col overflow-y-scroll">
+            <div class="p-3 flex-1 flex flex-col white-box">
               <div class="flex-1">
                 <Select
-                  classList="w-full mb-2"
+                  containerClassList="mb-2"
+                  classList="w-full"
                   labelText={t('newCharacterPage.platform')}
                   items={{ 'dnd5': 'D&D 5', 'dnd2024': 'D&D 2024', 'pathfinder2': 'Pathfinder 2', 'daggerheart': 'Daggerheart' }}
                   selectedValue={platform()}
@@ -276,13 +232,13 @@ export const CharactersPage = () => {
                 <Switch>
                   <Match when={platform() === 'dnd5'}>
                     <Input
-                      classList="mb-2"
+                      containerClassList="mb-2"
                       labelText={t('newCharacterPage.name')}
                       value={characterDnd5Form.name}
                       onInput={(value) => setCharacterDnd5Form({ ...characterDnd5Form, name: value })}
                     />
                     <Select
-                      classList="mb-2"
+                      containerClassList="mb-2"
                       labelText={t('newCharacterPage.dnd5.race')}
                       items={dict().dnd5.races}
                       selectedValue={characterDnd5Form.race}
@@ -290,7 +246,7 @@ export const CharactersPage = () => {
                     />
                     <Show when={dict().dnd5.subraces[characterDnd5Form.race]}>
                       <Select
-                        classList="mb-2"
+                        containerClassList="mb-2"
                         labelText={t('newCharacterPage.dnd5.subrace')}
                         items={dict().dnd5.subraces[characterDnd5Form.race]}
                         selectedValue={characterDnd5Form.subrace}
@@ -298,7 +254,7 @@ export const CharactersPage = () => {
                       />
                     </Show>
                     <Select
-                      classList="mb-2"
+                      containerClassList="mb-2"
                       labelText={t('newCharacterPage.dnd5.mainClass')}
                       items={dict().dnd5.classes}
                       selectedValue={characterDnd5Form.main_class}
@@ -313,13 +269,13 @@ export const CharactersPage = () => {
                   </Match>
                   <Match when={platform() === 'dnd2024'}>
                     <Input
-                      classList="mb-2"
+                      containerClassList="mb-2"
                       labelText={t('newCharacterPage.name')}
                       value={characterDnd2024Form.name}
                       onInput={(value) => setCharacterDnd2024Form({ ...characterDnd2024Form, name: value })}
                     />
                     <Select
-                      classList="mb-2"
+                      containerClassList="mb-2"
                       labelText={t('newCharacterPage.dnd2024.species')}
                       items={dict().dnd2024.species}
                       selectedValue={characterDnd2024Form.species}
@@ -327,7 +283,7 @@ export const CharactersPage = () => {
                     />
                     <Show when={dict().dnd2024.legacies[characterDnd2024Form.species]}>
                       <Select
-                        classList="mb-2"
+                        containerClassList="mb-2"
                         labelText={t('newCharacterPage.dnd2024.legacy')}
                         items={dict().dnd2024.legacies[characterDnd2024Form.species]}
                         selectedValue={characterDnd2024Form.legacy}
@@ -335,14 +291,14 @@ export const CharactersPage = () => {
                       />
                     </Show>
                     <Select
-                      classList="mb-2"
+                      containerClassList="mb-2"
                       labelText={t('newCharacterPage.dnd2024.size')}
                       items={characterDnd2024Form.species ? CHARACTER_SIZES[characterDnd2024Form.species].reduce((acc, item) => { acc[item] = t(`dnd2024.sizes.${item}`); return acc; }, {}) : {}}
                       selectedValue={characterDnd2024Form.size}
                       onSelect={(value) => setCharacterDnd2024Form({ ...characterDnd2024Form, size: value })}
                     />
                     <Select
-                      classList="mb-2"
+                      containerClassList="mb-2"
                       labelText={t('newCharacterPage.dnd2024.mainClass')}
                       items={dict().dnd2024.classes}
                       selectedValue={characterDnd2024Form.main_class}
@@ -357,13 +313,13 @@ export const CharactersPage = () => {
                   </Match>
                   <Match when={platform() === 'pathfinder2'}>
                     <Input
-                      classList="mb-2"
+                      containerClassList="mb-2"
                       labelText={t('newCharacterPage.name')}
                       value={characterPathfinder2Form.name}
                       onInput={(value) => setCharacterPathfinder2Form({ ...characterPathfinder2Form, name: value })}
                     />
                     <Select
-                      classList="mb-2"
+                      containerClassList="mb-2"
                       labelText={t('newCharacterPage.pathfinder2.race')}
                       items={dict().pathfinder2.races}
                       selectedValue={characterPathfinder2Form.race}
@@ -371,7 +327,7 @@ export const CharactersPage = () => {
                     />
                     <Show when={dict().pathfinder2.subraces[characterPathfinder2Form.race]}>
                       <Select
-                        classList="mb-2"
+                        containerClassList="mb-2"
                         labelText={t('newCharacterPage.pathfinder2.subrace')}
                         items={dict().pathfinder2.subraces[characterPathfinder2Form.race]}
                         selectedValue={characterPathfinder2Form.subrace}
@@ -387,13 +343,13 @@ export const CharactersPage = () => {
                   </Match>
                   <Match when={platform() === 'daggerheart'}>
                     <Input
-                      classList="mb-2"
+                      containerClassList="mb-2"
                       labelText={t('newCharacterPage.name')}
                       value={characterDaggerheartForm.name}
                       onInput={(value) => setCharacterDaggerheartForm({ ...characterDaggerheartForm, name: value })}
                     />
                     <Select
-                      classList="mb-2"
+                      containerClassList="mb-2"
                       labelText={t('newCharacterPage.daggerheart.heritage')}
                       items={dict().daggerheart.heritages}
                       selectedValue={characterDaggerheartForm.heritage}
@@ -408,18 +364,32 @@ export const CharactersPage = () => {
                   </Match>
                 </Switch>
               </div>
-              <div class="flex justify-end">
-                <Button primary classList='mt-4' text={t('save')} onClick={saveCharacter} />
+              <div class="flex mt-4">
+                <Button
+                  outlined
+                  size='default'
+                  classList='w-full mr-2'
+                  onClick={() => setCurrentTab('characters')}>
+                  {t('back')}
+                </Button>
+                <Button
+                  default
+                  size='default'
+                  classList='w-full ml-2'
+                  onClick={saveCharacter}>
+                  {t('save')}
+                </Button>
               </div>
             </div>
           </div>
         </Match>
       </Switch>
       <Modal>
-        <p class="mb-4 text-center">{t('deleteCharacterConfirm')}</p>
+        <p class="mb-3 text-xl">{t('charactersPage.deleteCharacterTitle')}</p>
+        <p class="mb-3 font-cascadia-light">{t('deleteCharacterConfirm')}</p>
         <div class="flex w-full">
-          <Button primary classList='flex-1 mr-4' text={t('cancel')} onClick={closeModal} />
-          <Button warning classList='flex-1 ml-4' text={t('delete')} onClick={confirmCharacterDeleting} />
+          <Button outlined classList='flex-1 mr-2' onClick={closeModal}>{t('cancel')}</Button>
+          <Button default classList='flex-1 ml-2' onClick={confirmCharacterDeleting}>{t('delete')}</Button>
         </div>
       </Modal>
     </>

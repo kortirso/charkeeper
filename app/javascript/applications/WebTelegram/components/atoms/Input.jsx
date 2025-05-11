@@ -1,15 +1,15 @@
 import { Show } from 'solid-js';
 
 export const Input = (props) => (
-  <div class={props.classList}>
+  <div class={props.containerClassList}>
     <Show when={props.labelText}>
-      <label class="text-sm">{props.labelText}</label>
+      <label class="text-sm/4 font-cascadia-light text-gray-400">{props.labelText}</label>
     </Show>
     <Show
       when={props.numeric}
       fallback={
         <input
-          class="w-full bordered py-2.5 px-2 text-sm"
+          class="w-full h-12 bordered px-2"
           onInput={(e) => props.onInput(e.target.value)}
           value={props.value}
         />
@@ -19,7 +19,7 @@ export const Input = (props) => (
         type="number"
         pattern="[0-9]*"
         inputmode="numeric"
-        class="w-full bordered py-2.5 px-2 text-sm text-center"
+        class="w-full h-12 bordered px-2 text-center"
         onInput={(e) => props.onInput(e.target.value)}
         value={props.value}
       />

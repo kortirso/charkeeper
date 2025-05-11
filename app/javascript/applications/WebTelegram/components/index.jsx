@@ -1,6 +1,5 @@
 export * from './pages/CharactersPage';
 export * from './pages/CharacterPage';
-export * from './pages/NpcPage';
 export * from './pages/ProfilePage';
 
 export * from './compounds/Character/Dnd5';
@@ -19,3 +18,5 @@ export * from './compounds/Character/Pathfinder2/Abilities';
 
 export * from './compounds/Character/Daggerheart';
 export * from './compounds/Character/Daggerheart/Traits';
+
+export * from './compounds/Characters/Item';

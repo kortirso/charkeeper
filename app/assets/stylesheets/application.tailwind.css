@@ -37,7 +37,7 @@
 }
 
 .modal {
-  @apply relative pt-12 p-4 bg-gray-50 rounded;
+  @apply relative p-4 bg-white rounded;
 
   max-width: 90%;
   max-height: 90%;
@@ -69,18 +69,6 @@
 
 .white-box {
   @apply bg-white bordered;
-}
-
-.nav-button {
-  @apply flex-1 flex flex-col items-center cursor-pointer;
-}
-
-.nav-button-icon {
-  @apply w-8 h-8 border-2 border-black rounded-lg mb-1;
-}
-
-.nav-button-text {
-  @apply text-center text-xs uppercase text-black;
 }
 
 .character-tab-select {
@@ -119,7 +107,7 @@
 }
 
 .form-field .form-value {
-  @apply bordered px-4 leading-8 bg-white;
+  @apply bordered px-3 leading-8 bg-white;
 
   color: '#666';
 }

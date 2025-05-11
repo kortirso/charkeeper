@@ -1,12 +1,13 @@
 import * as i18n from '@solid-primitives/i18n';
 
 import { PageHeader } from '../molecules';
-import { Select } from '../atoms';
+import { Select, IconButton } from '../atoms';
 
+import { Hamburger } from '../../assets';
 import { useAppState, useAppLocale, useAppAlert } from '../../context';
 import { updateUserRequest } from '../../requests/updateUserRequest';
 
-export const ProfilePage = () => {
+export const ProfilePage = (props) => {
   const [appState] = useAppState();
   const [{ renderAlerts }] = useAppAlert();
   const [locale, dict, { setLocale }] = useAppLocale();
@@ -23,13 +24,12 @@ export const ProfilePage = () => {
   // 420x690
   return (
     <>
-      <PageHeader>
+      <PageHeader rightContent={<IconButton onClick={props.onNavigate}><Hamburger /></IconButton>}>
         {t('profilePage.title')}
       </PageHeader>
-      <div class="p-4 flex-1 overflow-y-scroll">
-        <div class="p-4 flex-1 flex flex-col white-box">
+      <div class="p-3 flex-1 overflow-y-scroll">
+        <div class="p-3 flex-1 flex flex-col white-box">
           <Select
-            classList="w-full"
             labelText={t('profilePage.changeLocale')}
             items={{ 'en': 'English', 'ru': 'Русский' }}
             selectedValue={locale()}

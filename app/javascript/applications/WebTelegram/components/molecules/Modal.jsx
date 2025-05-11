@@ -1,7 +1,6 @@
 import { Portal } from 'solid-js/web';
 import { createSignal, Show, children } from 'solid-js';
 
-import { Close } from '../../assets';
 import { clickOutside } from '../../../../helpers';
 
 export const createModal = () => {
@@ -22,15 +21,7 @@ export const createModal = () => {
           <Show when={isOpen()}>
             <div class="fixed top-0 left-0 w-full h-full z-40 bg-black/75 flex items-center justify-center">
               <div class="modal" use:clickOutside={() => setIsOpen(false)}>
-                <div>
-                  <button
-                    class="absolute top-2 right-2"
-                    onClick={() => setIsOpen(false)}
-                  >
-                    <Close />
-                  </button>
-                  {safeChildren()}
-                </div>
+                {safeChildren()}
               </div>
             </div>
           </Show>

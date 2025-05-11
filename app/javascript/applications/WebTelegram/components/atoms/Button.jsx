@@ -1,19 +1,20 @@
+import { children } from 'solid-js';
+
 export const Button = (props) => {
-  const defaultSize = () => !props.smallSize;
+  const safeChildren = children(() => props.children);
 
   return (
     <p
-      class={[props.classList, 'rounded border font-medium cursor-pointer text-center'].join(' ')}
+      class={[props.classList, 'rounded cursor-pointer flex justify-center items-center'].join(' ')}
       classList={{
-        'py-2 px-4': defaultSize(),
-        'p-1 text-sm': props.smallSize,
-        'bg-blue-50 text-blue-600 border-blue-600': props.primary,
-        'bg-blue-50 text-blue-300 border-blue-300': props.light,
-        'bg-red-50 text-red-600 border-red-600': props.warning
+        'min-h-10 min-w-10': props.size === undefined || props.size === 'default',
+        'min-h-6 min-w-6 text-sm': props.size === 'small',
+        'bg-blue-400 text-white': props.default,
+        'bg-white text-blue-400 border border-blue-400': props.outlined
       }}
       onClick={props.onClick} // eslint-disable-line solid/reactivity
     >
-      {props.text}
+      {safeChildren()}
     </p>
   );
 }
