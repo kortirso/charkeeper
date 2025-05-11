@@ -145,3 +145,21 @@
 .form-field .form-dropdown li:hover {
   @apply bg-black text-white;
 }
+
+#character-navigation {
+  @apply flex w-full overflow-x-scroll bg-white border-b border-gray-200;
+
+  scrollbar-width: none;
+}
+
+#character-navigation::-webkit-scrollbar { 
+  display: none; /* Safari and Chrome */
+}
+
+#character-navigation p {
+  @apply text-xs/6 font-cascadia mx-2 py-2 text-gray-400 cursor-pointer;
+}
+
+#character-navigation p.active {
+  @apply text-black border-b-2 border-blue-400;
+}

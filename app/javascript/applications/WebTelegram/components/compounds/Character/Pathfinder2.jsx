@@ -1,23 +1,18 @@
-import { createSignal, Switch, Match, batch } from 'solid-js';
+import { createSignal, Switch, Match } from 'solid-js';
 import * as i18n from '@solid-primitives/i18n';
 
 import {
   Pathfinder2Abilities, Dnd5Notes
 } from '../../../components';
-import { createModal, PageHeader } from '../../molecules';
 
-import { Hamburger } from '../../../assets';
 import { useAppState, useAppLocale } from '../../../context';
 
 import { updateCharacterRequest } from '../../../requests/updateCharacterRequest';
 
 export const Pathfinder2 = (props) => {
-  const decoratedData = () => props.decoratedData;
-
   // page state
   const [activeTab, setActiveTab] = createSignal('abilities');
 
-  const { Modal, openModal, closeModal } = createModal();
   const [appState] = useAppState();
   const [, dict] = useAppLocale();
 
@@ -31,26 +26,22 @@ export const Pathfinder2 = (props) => {
     return result;
   }
 
-  // user actions
-  const changeTab = (value) => {
-    batch(() => {
-      setActiveTab(value);
-      closeModal();
-    });
-  }
-
   return (
     <>
-      <PageHeader rightContent={<Hamburger onClick={openModal} />}>
-        <p>{props.name}</p>
-        <Switch>
-          <Match when={props.provider === 'pathfinder2'}>
-            <p class="text-sm">
-              {decoratedData().subrace ? t(`pathfinder2.subraces.${decoratedData().race}.${decoratedData().subrace}`) : t(`pathfinder2.races.${decoratedData().race}`)} | {Object.entries(decoratedData().classes).map(([item, value]) => `${t(`pathfinder2.classes.${item}`)} ${value}`).join(' * ')}
-            </p>
-          </Match>
-        </Switch>
-      </PageHeader>
+      <div id="character-navigation">
+        <p
+          classList={{ 'active': activeTab() === 'abilities' }}
+          onClick={() => setActiveTab('abilities')}
+        >
+          {t('character.abilities')}
+        </p>
+        <p
+          classList={{ 'active': activeTab() === 'notes' }}
+          onClick={() => setActiveTab('notes')}
+        >
+          {t('character.notes')}
+        </p>
+      </div>
       <div class="p-4 flex-1 overflow-y-scroll">
         <Switch>
           <Match when={activeTab() === 'abilities'}>
@@ -65,10 +56,6 @@ export const Pathfinder2 = (props) => {
           </Match>
         </Switch>
       </div>
-      <Modal>
-        <p class="character-tab-select" onClick={() => changeTab('abilities')}>{t('character.abilities')}</p>
-        <p class="character-tab-select" onClick={() => changeTab('notes')}>{t('character.notes')}</p>
-      </Modal>
     </>
   );
 }

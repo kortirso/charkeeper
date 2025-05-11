@@ -1,23 +1,18 @@
-import { createSignal, Switch, Match, batch } from 'solid-js';
+import { createSignal, Switch, Match } from 'solid-js';
 import * as i18n from '@solid-primitives/i18n';
 
 import {
   DaggerheartTraits, Dnd5Notes
 } from '../../../components';
-import { createModal, PageHeader } from '../../molecules';
 
-import { Hamburger } from '../../../assets';
 import { useAppState, useAppLocale } from '../../../context';
 
 import { updateCharacterRequest } from '../../../requests/updateCharacterRequest';
 
 export const Daggerheart = (props) => {
-  const decoratedData = () => props.decoratedData;
-
   // page state
   const [activeTab, setActiveTab] = createSignal('traits');
 
-  const { Modal, openModal, closeModal } = createModal();
   const [appState] = useAppState();
   const [, dict] = useAppLocale();
 
@@ -31,26 +26,22 @@ export const Daggerheart = (props) => {
     return result;
   }
 
-  // user actions
-  const changeTab = (value) => {
-    batch(() => {
-      setActiveTab(value);
-      closeModal();
-    });
-  }
-
   return (
     <>
-      <PageHeader rightContent={<Hamburger onClick={openModal} />}>
-        <p>{props.name}</p>
-        <Switch>
-          <Match when={props.provider === 'daggerheart'}>
-            <p class="text-sm">
-              {t(`daggerheart.heritages.${decoratedData().heritage}`)} | {Object.entries(decoratedData().classes).map(([item, value]) => `${t(`daggerheart.classes.${item}`)} ${value}`).join(' * ')}
-            </p>
-          </Match>
-        </Switch>
-      </PageHeader>
+      <div id="character-navigation">
+        <p
+          classList={{ 'active': activeTab() === 'traits' }}
+          onClick={() => setActiveTab('traits')}
+        >
+          {t('character.abilities')}
+        </p>
+        <p
+          classList={{ 'active': activeTab() === 'notes' }}
+          onClick={() => setActiveTab('notes')}
+        >
+          {t('character.notes')}
+        </p>
+      </div>
       <div class="p-4 flex-1 overflow-y-scroll">
         <Switch>
           <Match when={activeTab() === 'traits'}>
@@ -64,10 +55,6 @@ export const Daggerheart = (props) => {
           </Match>
         </Switch>
       </div>
-      <Modal>
-        <p class="character-tab-select" onClick={() => changeTab('traits')}>{t('character.abilities')}</p>
-        <p class="character-tab-select" onClick={() => changeTab('notes')}>{t('character.notes')}</p>
-      </Modal>
     </>
   );
 }

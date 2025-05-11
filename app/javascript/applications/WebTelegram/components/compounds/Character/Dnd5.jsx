@@ -5,9 +5,7 @@ import {
   Dnd5Abilities, Dnd5Combat, Dnd5ClassLevels, Dnd5Professions, Dnd5Equipment, Dnd5Items,
   Dnd5Spellbook, Dnd5Spells, Dnd5Notes
 } from '../../../components';
-import { createModal, PageHeader } from '../../molecules';
 
-import { Hamburger } from '../../../assets';
 import { useAppState, useAppLocale, useAppAlert } from '../../../context';
 
 import { fetchCharacterItemsRequest } from '../../../requests/fetchCharacterItemsRequest';
@@ -44,7 +42,6 @@ export const Dnd5 = (props) => {
   const [energyData, setEnergyData] = createSignal(decoratedData().energy);
   const [spentSpellSlots, setSpentSpellSlots] = createSignal(decoratedData().spent_spell_slots);
 
-  const { Modal, openModal, closeModal } = createModal();
   const [appState] = useAppState();
   const [{ renderNotice }] = useAppAlert();
   const [, dict] = useAppLocale();
@@ -309,46 +306,52 @@ export const Dnd5 = (props) => {
     return characterSpells().map(({ spell_id }) => spell_id);
   });
 
-  // user actions
-  const changeTab = (value) => {
-    batch(() => {
-      setActiveTab(value);
-      closeModal();
-    });
-  }
-
   return (
     <>
-      <Switch
-        fallback={
-          <PageHeader rightContent={<Hamburger onClick={openModal} />}>
-            <p>{props.name}</p>
-            <Switch>
-              <Match when={props.provider === 'dnd5'}>
-                <p class="text-sm">
-                  {decoratedData().subrace ? t(`dnd5.subraces.${decoratedData().race}.${decoratedData().subrace}`) : t(`dnd5.races.${decoratedData().race}`)} | {Object.entries(decoratedData().classes).map(([item, value]) => `${t(`dnd5.classes.${item}`)} ${value}`).join(' * ')}
-                </p>
-              </Match>
-              <Match when={props.provider === 'dnd2024'}>
-                <p class="text-sm">
-                  {decoratedData().legacy ? t(`dnd2024.legacies.${decoratedData().species}.${decoratedData().legacy}`) : t(`dnd2024.species.${decoratedData().species}`)} | {Object.entries(decoratedData().classes).map(([item, value]) => `${t(`dnd2024.classes.${item}`)} ${value}`).join(' * ')}
-                </p>
-              </Match>
-            </Switch>
-          </PageHeader>
-        }
-      >
-        <Match when={activeItemsTab()}>
-          <PageHeader leftContent={<p class="cursor-pointer" onClick={() => setActiveItemsTab(false)}>{t('back')}</p>}>
-            <p>{t('itemsPage.title')}</p>
-          </PageHeader>
-        </Match>
-        <Match when={activeSpellsTab()}>
-          <PageHeader leftContent={<p class="cursor-pointer" onClick={() => setActiveSpellsTab(false)}>{t('back')}</p>}>
-            <p>{t('spellsPage.title')}</p>
-          </PageHeader>
-        </Match>
-      </Switch>
+      <div id="character-navigation">
+        <p
+          classList={{ 'active': activeTab() === 'abilities' }}
+          onClick={() => setActiveTab('abilities')}
+        >
+          {t('character.abilities')}
+        </p>
+        <p
+          classList={{ 'active': activeTab() === 'combat' }}
+          onClick={() => setActiveTab('combat')}
+        >
+          {t('character.combat')}
+        </p>
+        <p
+          classList={{ 'active': activeTab() === 'equipment' }}
+          onClick={() => setActiveTab('equipment')}
+        >
+          {t('character.equipment')}
+        </p>
+        <p
+          classList={{ 'active': activeTab() === 'spells' }}
+          onClick={() => setActiveTab('spells')}
+        >
+          {t('character.spells')}
+        </p>
+        <p
+          classList={{ 'active': activeTab() === 'notes' }}
+          onClick={() => setActiveTab('notes')}
+        >
+          {t('character.notes')}
+        </p>
+        <p
+          classList={{ 'active': activeTab() === 'professions' }}
+          onClick={() => setActiveTab('professions')}
+        >
+          {t('character.professions')}
+        </p>
+        <p
+          classList={{ 'active': activeTab() === 'classLevels' }}
+          onClick={() => setActiveTab('classLevels')}
+        >
+          {t('character.classLevels')}
+        </p>
+      </div>
       <div class="p-4 flex-1 overflow-y-scroll">
         <Switch>
           <Match when={activeTab() === 'abilities'}>
@@ -476,15 +479,6 @@ export const Dnd5 = (props) => {
           </Match>
         </Switch>
       </div>
-      <Modal>
-        <p class="character-tab-select" onClick={() => changeTab('abilities')}>{t('character.abilities')}</p>
-        <p class="character-tab-select" onClick={() => changeTab('combat')}>{t('character.combat')}</p>
-        <p class="character-tab-select" onClick={() => changeTab('equipment')}>{t('character.equipment')}</p>
-        <p class="character-tab-select" onClick={() => changeTab('spells')}>{t('character.spells')}</p>
-        <p class="character-tab-select" onClick={() => changeTab('notes')}>{t('character.notes')}</p>
-        <p class="character-tab-select" onClick={() => changeTab('professions')}>{t('character.professions')}</p>
-        <p class="character-tab-select" onClick={() => changeTab('classLevels')}>{t('character.classLevels')}</p>
-      </Modal>
     </>
   );
 }

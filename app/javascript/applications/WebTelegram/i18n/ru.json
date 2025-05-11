@@ -57,13 +57,13 @@
     "title": "Заклинания"
   },
   "character": {
-    "abilities": "Характеристики",
-    "combat": "Сражение и способности",
-    "classLevels": "Классы и Уровни",
+    "abilities": "Способности",
+    "combat": "Сражение",
+    "classLevels": "Классы",
     "equipment": "Снаряжение",
     "backpack": "Рюкзак",
     "spells": "Заклинания",
-    "professions": "Владение оружием и инструментами",
+    "professions": "Владения",
     "onlyPreparedSpells": "Подготовленные",
     "onlyAvailableSpells": "Доступные",
     "allSpells": "Все",

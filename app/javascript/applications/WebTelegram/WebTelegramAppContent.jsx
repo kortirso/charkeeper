@@ -66,7 +66,9 @@ export const WebTelegramAppContent = () => {
                 />
               </Match>
               <Match when={appState.activePage === 'characters' && appState.activePageParams.id}>
-                <CharacterPage />
+                <CharacterPage
+                  onBack={() => navigate('characters', {})}
+                />
               </Match>
               <Match when={appState.activePage === 'profile'}>
                 <ProfilePage
