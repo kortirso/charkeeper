@@ -132,7 +132,9 @@ export const Dnd5Spellbook = (props) => {
         </div>
       </Show>
       <Show when={props.provider === 'dnd5' ? DND5_CLASSES_LEARN_SPELLS.includes(activeSpellClass()) : DND2024_CLASSES_LEARN_SPELLS.includes(activeSpellClass())}>
-        <Button primary classList="mb-2" text={t('character.knownSpells')} onClick={props.onNavigatoToSpells} />
+        <Button default textable classList="mb-2" onClick={props.onNavigatoToSpells}>
+          {t('character.knownSpells')}
+        </Button>
       </Show>
       <div class="white-box mb-2 p-4">
         <div class="flex justify-between items-center">
@@ -275,14 +277,14 @@ export const Dnd5Spellbook = (props) => {
       </For>
       <Modal>
         <div class="white-box p-4 flex flex-col">
-          <label class="text-sm">{t('character.spellNote')}</label>
+          <label class="text-sm/4 font-cascadia-light text-gray-400">{t('character.spellNote')}</label>
           <textarea
             rows="3"
             class="w-full border border-gray-200 rounded p-1 text-sm mb-2"
             onInput={(e) => setChangingSpell({ ...changingSpell(), notes: e.target.value })}
             value={changingSpell()?.notes}
           />
-          <Button primary text={t('save')} onClick={updateSpell} />
+          <Button default textable onClick={updateSpell}>{t('save')}</Button>
         </div>
       </Modal>
     </>

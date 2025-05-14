@@ -1,7 +1,7 @@
 import { createSignal, For, Show, createMemo } from 'solid-js';
 import * as i18n from '@solid-primitives/i18n';
 
-import { Select, Checkbox, Toggle } from '../../../atoms';
+import { Select, Checkbox, Toggle, Button } from '../../../atoms';
 
 import { useAppLocale } from '../../../../context';
 
@@ -86,6 +86,7 @@ export const Dnd5Spells = (props) => {
           </Toggle>
         }
       </For>
+      <Button default textable onClick={props.onNavigatoToSpellbook}>{t('back')}</Button>
     </>
   );
 }

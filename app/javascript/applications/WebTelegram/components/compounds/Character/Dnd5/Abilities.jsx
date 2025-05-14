@@ -2,10 +2,10 @@ import { createSignal, For } from 'solid-js';
 import * as i18n from '@solid-primitives/i18n';
 
 import { createModal } from '../../../molecules';
-import { Checkbox, IconButton, Button } from '../../../atoms';
+import { Checkbox, Button } from '../../../atoms';
 
 import { useAppLocale, useAppAlert } from '../../../../context';
-import { Plus, Minus } from '../../../../assets';
+import { PlusSmall, Minus } from '../../../../assets';
 
 import { modifier } from '../../../../../../helpers';
 
@@ -55,15 +55,15 @@ export const Dnd5Abilities = (props) => {
               {([dice, maxValue]) =>
                 <div class="flex justify-center items-center mt-1">
                   <p class="w-8 mr-4">d{dice}</p>
-                  <IconButton onClick={() => props.spentHitDiceData[dice] !== maxValue ? props.onSpendDice(dice, maxValue) : null}>
+                  <Button default size="small" onClick={() => props.spentHitDiceData[dice] !== maxValue ? props.onSpendDice(dice, maxValue) : null}>
                     <Minus />
-                  </IconButton>
+                  </Button>
                   <p class="w-12 mx-1 text-center">
                     {props.spentHitDiceData[dice] ? (maxValue - props.spentHitDiceData[dice]) : maxValue}/{maxValue}
                   </p>
-                  <IconButton onClick={() => (props.spentHitDiceData[dice] || 0) > 0 ? props.onRestoreDice(dice) : null}>
-                    <Plus />
-                  </IconButton>
+                  <Button default size="small" onClick={() => (props.spentHitDiceData[dice] || 0) > 0 ? props.onRestoreDice(dice) : null}>
+                    <PlusSmall />
+                  </Button>
                 </div>
               }
             </For>
@@ -114,18 +114,18 @@ export const Dnd5Abilities = (props) => {
               <div class="mb-4 flex items-center">
                 <p class="flex-1 text-sm text-left">{ability}</p>
                 <div class="flex justify-between items-center ml-4 w-32">
-                  <IconButton big onClick={() => decreaseAbilityValue(slug)}>
+                  <Button default size="small" big onClick={() => decreaseAbilityValue(slug)}>
                     <Minus />
-                  </IconButton>
+                  </Button>
                   <p>{abilitiesData()[slug]}</p>
-                  <IconButton big onClick={() => increaseAbilityValue(slug)}>
-                    <Plus />
-                  </IconButton>
+                  <Button default size="small" big onClick={() => increaseAbilityValue(slug)}>
+                    <PlusSmall />
+                  </Button>
                 </div>
               </div>
             }
           </For>
-          <Button primary text={t('save')} onClick={updateAbilities} />
+          <Button default textable onClick={updateAbilities}>{t('save')}</Button>
         </div>
       </Modal>
     </>

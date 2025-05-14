@@ -396,6 +396,7 @@ export const Dnd5 = (props) => {
                 <Dnd5Items
                   items={items()}
                   onBuyItem={buyItem}
+                  onNavigatoToEquipment={() => setActiveItemsTab(false)}
                 />
               }
             >
@@ -430,6 +431,7 @@ export const Dnd5 = (props) => {
                   knownSpellIds={knownSpellIds()}
                   onLearnSpell={learnSpell}
                   onForgetSpell={forgetSpell}
+                  onNavigatoToSpellbook={() => setActiveSpellsTab(false)}
                 />
               </Match>
               <Match when={!activeSpellsTab()}>

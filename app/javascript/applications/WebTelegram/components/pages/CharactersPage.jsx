@@ -36,9 +36,9 @@ export const CharactersPage = (props) => {
     subrace: undefined,
     main_class: undefined,
     alignment: 'neutral',
-    avatar_params: {
-      url: 'https://m.media-amazon.com/images/M/MV5BYTcxNjhkZjgtNDkwOC00MzQyLThlZDUtNmNiMThkYzNkOGJlXkEyXkFqcGc@._V1_FMjpg_UX2160_.jpg'
-    }
+    // avatar_params: {
+    //   url: 'https://m.media-amazon.com/images/M/MV5BYTcxNjhkZjgtNDkwOC00MzQyLThlZDUtNmNiMThkYzNkOGJlXkEyXkFqcGc@._V1_FMjpg_UX2160_.jpg'
+    // }
   });
   const [characterDnd2024Form, setCharacterDnd2024Form] = createStore({
     name: '',
@@ -46,26 +46,26 @@ export const CharactersPage = (props) => {
     size: undefined,
     main_class: undefined,
     alignment: 'neutral',
-    avatar_params: {
-      url: 'https://m.media-amazon.com/images/M/MV5BYTcxNjhkZjgtNDkwOC00MzQyLThlZDUtNmNiMThkYzNkOGJlXkEyXkFqcGc@._V1_FMjpg_UX2160_.jpg'
-    }
+    // avatar_params: {
+    //   url: 'https://m.media-amazon.com/images/M/MV5BYTcxNjhkZjgtNDkwOC00MzQyLThlZDUtNmNiMThkYzNkOGJlXkEyXkFqcGc@._V1_FMjpg_UX2160_.jpg'
+    // }
   });
   const [characterPathfinder2Form, setCharacterPathfinder2Form] = createStore({
     name: '',
     race: undefined,
     subrace: undefined,
     main_class: undefined,
-    avatar_params: {
-      url: 'https://m.media-amazon.com/images/M/MV5BYTcxNjhkZjgtNDkwOC00MzQyLThlZDUtNmNiMThkYzNkOGJlXkEyXkFqcGc@._V1_FMjpg_UX2160_.jpg'
-    }
+    // avatar_params: {
+    //   url: 'https://m.media-amazon.com/images/M/MV5BYTcxNjhkZjgtNDkwOC00MzQyLThlZDUtNmNiMThkYzNkOGJlXkEyXkFqcGc@._V1_FMjpg_UX2160_.jpg'
+    // }
   });
   const [characterDaggerheartForm, setCharacterDaggerheartForm] = createStore({
     name: '',
     heritage: undefined,
     main_class: undefined,
-    avatar_params: {
-      url: 'https://m.media-amazon.com/images/M/MV5BYTcxNjhkZjgtNDkwOC00MzQyLThlZDUtNmNiMThkYzNkOGJlXkEyXkFqcGc@._V1_FMjpg_UX2160_.jpg'
-    }
+    // avatar_params: {
+    //   url: 'https://m.media-amazon.com/images/M/MV5BYTcxNjhkZjgtNDkwOC00MzQyLThlZDUtNmNiMThkYzNkOGJlXkEyXkFqcGc@._V1_FMjpg_UX2160_.jpg'
+    // }
   });
 
   const { Modal, openModal, closeModal } = createModal();

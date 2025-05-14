@@ -2,10 +2,10 @@ import { createSignal, For, Show, Switch, Match } from 'solid-js';
 import * as i18n from '@solid-primitives/i18n';
 
 import { createModal, StatsBlock } from '../../../molecules';
-import { Input, Toggle, Checkbox, Select, Button, IconButton } from '../../../atoms';
+import { Input, Toggle, Checkbox, Select, Button } from '../../../atoms';
 
 import { useAppLocale } from '../../../../context';
-import { Plus, Minus } from '../../../../assets';
+import { PlusSmall, Minus } from '../../../../assets';
 
 import { modifier } from '../../../../../../helpers';
 
@@ -131,15 +131,15 @@ export const Dnd5Combat = (props) => {
       <div class="flex items-center">
         <p class="flex-1">{feature.title}</p>
         <div class="flex items-center">
-          <IconButton onClick={(event) => props.energyData[feature.slug] !== feature.limit ? props.onSpendEnergy(event, feature.slug, feature.limit) : event.stopPropagation()}>
+          <Button default size="small" onClick={(event) => props.energyData[feature.slug] !== feature.limit ? props.onSpendEnergy(event, feature.slug, feature.limit) : event.stopPropagation()}>
             <Minus />
-          </IconButton>
-          <p class="w-12 text-center">
+          </Button>
+          <p class="w-12 mx-2 text-center">
             {feature.limit - (props.energyData[feature.slug] || 0)} / {feature.limit}
           </p>
-          <IconButton onClick={(event) => (props.energyData[feature.slug] || 0) > 0 ? props.onRestoreEnergy(event, feature.slug) : event.stopPropagation()}>
-            <Plus />
-          </IconButton>
+          <Button default size="small" onClick={(event) => (props.energyData[feature.slug] || 0) > 0 ? props.onRestoreEnergy(event, feature.slug) : event.stopPropagation()}>
+            <PlusSmall />
+          </Button>
         </div>
       </div>
     );
@@ -163,18 +163,26 @@ export const Dnd5Combat = (props) => {
         onClick={openModal}
       >
         <div class="flex items-center pt-0 p-4">
-          <Button primary smallSize classList="flex-1" text={t('character.damage')} onClick={() => props.onDealDamage(damageHealValue())} />
+          <Button default textable classList="flex-1" onClick={() => props.onDealDamage(damageHealValue())}>
+            {t('character.damage')}
+          </Button>
           <Input
             numeric
-            classList="w-20 mx-4"
+            containerClassList="w-20 mx-4"
             value={damageHealValue()}
             onInput={(value) => setDamageHealValue(Number(value))}
           />
-          <Button primary smallSize classList="flex-1" text={t('character.heal')} onClick={() => props.onMakeHeal(damageHealValue())} />
+          <Button default textable classList="flex-1" onClick={() => props.onMakeHeal(damageHealValue())}>
+            {t('character.heal')}
+          </Button>
         </div>
-        <div class="flex justify-end items-center pt-0 p-4">
-          <Button primary smallSize classList="mr-4" text={t('character.shortRest')} onClick={() => props.onRestCharacter({ type: 'short_rest' })} />
-          <Button primary smallSize text={t('character.longRest')} onClick={() => props.onRestCharacter({ type: 'long_rest' })} />
+        <div class="flex justify-center items-center pt-0 p-4">
+          <Button default textable classList="flex-1 mr-2" onClick={() => props.onRestCharacter({ type: 'short_rest' })}>
+            {t('character.shortRest')}
+          </Button>
+          <Button default textable classList="flex-1 ml-2" onClick={() => props.onRestCharacter({ type: 'long_rest' })}>
+            {t('character.longRest')}
+          </Button>
         </div>
       </StatsBlock>
       <Toggle title={t('character.damageConditions')}>
@@ -255,24 +263,21 @@ export const Dnd5Combat = (props) => {
                 <Switch>
                   <Match when={feature.choose_once && !props.selectedFeatures[feature.slug]}>
                     <Select
-                      classList="w-full mb-2"
+                      containerClassList="w-full mb-2"
                       items={feature.options.reduce((acc, option) => { acc[option] = t(`dnd.${feature.options_type || 'selectedFeatures'}.${option}`); return acc; }, {})}
                       selectedValue={onceSelectedFeaturesData()[feature.slug]}
                       onSelect={(option) => setOnceSelectedFeaturesData({ ...onceSelectedFeaturesData(), [feature.slug]: option })}
                     />
-                    <Button
-                      primary
-                      smallSize
-                      text={t('character.confirmChooseOnceFeature')}
-                      onClick={() => confirmOnceSelectedFeaturesData(feature.slug)}
-                    />
+                    <Button default size="small" onClick={() => confirmOnceSelectedFeaturesData(feature.slug)}>
+                      {t('character.confirmChooseOnceFeature')}
+                    </Button>
                   </Match>
                   <Match when={feature.choose_once && props.selectedFeatures[feature.slug]}>
                     <p>{t(`dnd.selectedFeatures.${props.selectedFeatures[feature.slug]}`)}</p>
                   </Match>
                   <Match when={!feature.choose_once}>
                     <Select
-                      classList="w-full mb-2"
+                      containerClassList="w-full mb-2"
                       items={feature.options.reduce((acc, option) => { acc[option] = t(`dnd.selectedFeatures.${option}`); return acc; }, {})}
                       selectedValue={props.selectedFeatures[feature.slug]}
                       onSelect={(option) => setSelectedFeatureOption(feature, option)}
@@ -311,7 +316,7 @@ export const Dnd5Combat = (props) => {
                   value={textFeaturesData()[feature.slug] || ''}
                 />
                 <div class="flex justify-end mt-2">
-                  <Button primary smallSize text={t('save')} onClick={() => updateTextFeature(feature.slug)} />
+                  <Button default textable size="small" onClick={() => updateTextFeature(feature.slug)}>{t('save')}</Button>
                 </div>
               </Match>
             </Switch>
@@ -326,14 +331,14 @@ export const Dnd5Combat = (props) => {
                 <p class="flex-1 text-sm text-left">{t(`terms.health.${health}`)}</p>
                 <Input
                   numeric
-                  classList="w-20 ml-8"
+                  containerClassList="w-20 ml-8"
                   value={props.healthData[health]}
                   onInput={(value) => props.onSetHealthData({ ...props.healthData, [health]: Number(value) })}
                 />
               </div>
             }
           </For>
-          <Button primary text={t('save')} onClick={updateHealth} />
+          <Button default textable onClick={updateHealth}>{t('save')}</Button>
         </div>
       </Modal>
     </>

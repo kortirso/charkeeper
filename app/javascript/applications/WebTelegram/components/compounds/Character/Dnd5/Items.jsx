@@ -1,10 +1,10 @@
 import { For, Show } from 'solid-js';
 import * as i18n from '@solid-primitives/i18n';
 
-import { Toggle, IconButton } from '../../../atoms';
+import { Toggle, Button } from '../../../atoms';
 
 import { useAppLocale } from '../../../../context';
-import { Plus } from '../../../../assets';
+import { PlusSmall } from '../../../../assets';
 
 export const Dnd5Items = (props) => {
   const [, dict] = useAppLocale();
@@ -32,9 +32,9 @@ export const Dnd5Items = (props) => {
                 <td class="py-1 text-center">{item.data.weight}</td>
                 <td class="py-1 text-center">{item.data.price / 100}</td>
                 <td>
-                  <IconButton onClick={() => props.onBuyItem(item)}>
-                    <Plus />
-                  </IconButton>
+                  <Button default size="small" onClick={() => props.onBuyItem(item)}>
+                    <PlusSmall />
+                  </Button>
                 </td>
               </tr>
             }
@@ -53,6 +53,7 @@ export const Dnd5Items = (props) => {
       {renderItems(t('character.focusList'), props.items.filter((item) => item.kind === 'focus'))}
       {renderItems(t('character.toolsList'), props.items.filter((item) => item.kind === 'tools'))}
       {renderItems(t('character.musicList'), props.items.filter((item) => item.kind === 'music'))}
+      <Button default textable onClick={props.onNavigatoToEquipment}>{t('back')}</Button>
     </Show>
   );
 }

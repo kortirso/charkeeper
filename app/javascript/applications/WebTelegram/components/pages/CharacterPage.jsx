@@ -1,17 +1,16 @@
 import { createSignal, createEffect, Switch, Match } from 'solid-js';
-import * as i18n from '@solid-primitives/i18n';
 
 import { Dnd5, Pathfinder2, Daggerheart } from '../../components';
 import { PageHeader } from '../molecules';
-import { useAppState, useAppLocale } from '../../context';
+import { IconButton } from '../atoms';
+
+import { Hamburger } from '../../assets';
+import { useAppState } from '../../context';
 import { fetchCharacterRequest } from '../../requests/fetchCharacterRequest';
 
 export const CharacterPage = (props) => {
   const [character, setCharacter] = createSignal({});
   const [appState] = useAppState();
-  const [, dict] = useAppLocale();
-
-  const t = i18n.translator(dict);
 
   createEffect(() => {
     if (appState.activePageParams.id === character().id) return;
@@ -34,7 +33,7 @@ export const CharacterPage = (props) => {
 
   return (
     <>
-      <PageHeader leftContent={<p class="cursor-pointer" onClick={props.onBack}>{t('back')}</p>}>
+      <PageHeader rightContent={<IconButton onClick={props.onNavigate}><Hamburger /></IconButton>}>
         <p>{character().name}</p>
       </PageHeader>
       <Switch>

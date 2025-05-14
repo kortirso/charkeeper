@@ -10,7 +10,8 @@ export const Button = (props) => {
         'min-h-10 min-w-10': props.size === undefined || props.size === 'default',
         'min-h-6 min-w-6 text-sm': props.size === 'small',
         'bg-blue-400 text-white': props.default,
-        'bg-white text-blue-400 border border-blue-400': props.outlined
+        'bg-white text-blue-400 border border-blue-400': props.outlined,
+        'px-2 py-1': props.textable
       }}
       onClick={props.onClick} // eslint-disable-line solid/reactivity
     >

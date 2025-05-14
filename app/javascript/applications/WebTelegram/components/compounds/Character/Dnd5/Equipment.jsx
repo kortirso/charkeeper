@@ -123,7 +123,7 @@ export const Dnd5Equipment = (props) => {
         onClick={changeCoins}
       />
       <Show when={props.characterItems !== undefined}>
-        <Button primary classList="mb-2" text={t('character.items')} onClick={props.onNavigatoToItems} />
+        <Button default textable classList="mb-2" onClick={props.onNavigatoToItems}>{t('character.items')}</Button>
         {renderItemsBox(t('character.equipment'), props.characterItems.filter((item) => item.ready_to_use))}
         {renderItemsBox(t('character.backpack'), props.characterItems.filter((item) => !item.ready_to_use))}
         <div class="flex justify-end">
@@ -142,14 +142,14 @@ export const Dnd5Equipment = (props) => {
                     <p class="flex-1 text-sm">{t(`equipment.${coin}`)}</p>
                     <Input
                       numeric
-                      classList="w-20 ml-4"
+                      containerClassList="w-20 ml-4"
                       value={coinsData()[coin]}
                       onInput={(value) => setCoinsData({ ...coinsData(), [coin]: Number(value) })}
                     />
                   </div>
                 }
               </For>
-              <Button primary text={t('save')} onClick={updateCoins} />
+              <Button default textable onClick={updateCoins}>{t('save')}</Button>
             </Match>
             <Match when={modalOpenMode() === 'changeItemQuantity'}>
               <div>
@@ -157,7 +157,7 @@ export const Dnd5Equipment = (props) => {
                   <p class="flex-1 text-sm text-left">{changingItem().name}</p>
                   <Input
                     numeric
-                    classList="w-20 ml-8"
+                    containerClassList="w-20 ml-8"
                     value={changingItem().quantity}
                     onInput={(value) => setChangingItem({ ...changingItem(), quantity: Number(value) })}
                   />
@@ -170,7 +170,7 @@ export const Dnd5Equipment = (props) => {
                   value={changingItem().notes}
                 />
               </div>
-              <Button primary text={t('save')} onClick={updateItem} />
+              <Button default textable onClick={updateItem}>{t('save')}</Button>
             </Match>
           </Switch>
         </div>

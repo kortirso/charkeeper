@@ -65,12 +65,12 @@ export const Dnd5Notes = () => {
           <div class="p-4 flex-1 flex flex-col white-box">
             <div class="flex-1">
               <Input
-                classList="mb-2"
+                containerClassList="mb-2"
                 labelText={t('character.newNoteTitle')}
                 value={noteForm.title}
                 onInput={(value) => setNoteForm({ ...noteForm, title: value })}
               />
-              <label class="text-sm">{t('character.newNoteValue')}</label>
+              <label class="text-sm/4 font-cascadia-light text-gray-400">{t('character.newNoteValue')}</label>
               <textarea
                 rows="5"
                 class="w-full border border-gray-200 rounded p-1 text-sm"
@@ -79,18 +79,15 @@ export const Dnd5Notes = () => {
               />
             </div>
             <div class="flex justify-end mt-4">
-              <Button primary smallSize classList="mr-4" text={t('cancel')} onClick={cancelNote} />
-              <Button primary smallSize text={t('save')} onClick={saveNote} />
+              <Button default textable size="small" classList="mr-4" onClick={cancelNote}>{t('cancel')}</Button>
+              <Button default textable size="small" onClick={saveNote}>{t('save')}</Button>
             </div>
           </div>
         }
       >
-        <Button
-          primary
-          classList="mb-4 w-full uppercase"
-          text={t('character.newNote')}
-          onClick={() => setActiveNewNoteTab(true)}
-        />
+        <Button default textable classList="mb-4 w-full uppercase" onClick={() => setActiveNewNoteTab(true)}>
+          {t('character.newNote')}
+        </Button>
         <Show when={notes() !== undefined}>
           <For each={notes()}>
             {(note) =>

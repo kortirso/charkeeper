@@ -2,10 +2,10 @@ import { createSignal, For } from 'solid-js';
 import * as i18n from '@solid-primitives/i18n';
 
 import { createModal } from '../../../molecules';
-import { IconButton, Button } from '../../../atoms';
+import { Button } from '../../../atoms';
 
 import { useAppLocale, useAppAlert } from '../../../../context';
-import { Plus, Minus } from '../../../../assets';
+import { PlusSmall, Minus } from '../../../../assets';
 
 import { modifier } from '../../../../../../helpers';
 
@@ -56,18 +56,18 @@ export const Pathfinder2Abilities = (props) => {
               <div class="mb-4 flex items-center">
                 <p class="flex-1 text-sm text-left">{ability}</p>
                 <div class="flex justify-between items-center ml-4 w-32">
-                  <IconButton big onClick={() => decreaseAbilityValue(slug)}>
+                  <Button default size="small" onClick={() => decreaseAbilityValue(slug)}>
                     <Minus />
-                  </IconButton>
+                  </Button>
                   <p>{abilitiesData()[slug]}</p>
-                  <IconButton big onClick={() => increaseAbilityValue(slug)}>
-                    <Plus />
-                  </IconButton>
+                  <Button default size="small" onClick={() => increaseAbilityValue(slug)}>
+                    <PlusSmall />
+                  </Button>
                 </div>
               </div>
             }
           </For>
-          <Button primary text={t('save')} onClick={updateAbilities} />
+          <Button default textable onClick={updateAbilities}>{t('save')}</Button>
         </div>
       </Modal>
     </>
