@@ -22,7 +22,8 @@ module Dnd2024Character
         selected_skills: [],
         resistance: [],
         immunity: [],
-        vulnerability: []
+        vulnerability: [],
+        tools: []
       }.compact
     end
 
