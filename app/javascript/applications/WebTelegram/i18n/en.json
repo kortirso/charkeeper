@@ -59,6 +59,7 @@
   "character": {
     "abilities": "Abilities",
     "combat": "Combat",
+    "rest": "Rest",
     "classLevels": "Classes",
     "equipment": "Equipment",
     "backpack": "Backpack",
@@ -100,7 +101,12 @@
     "longRest": "Long rest",
     "confirmChooseOnceFeature": "Confirm",
     "itemNote": "Item note",
-    "spellNote": "Spell note"
+    "spellNote": "Spell note",
+    "shortRestDescription": "At the end of a short rest, a character may spend one or more Hit Dice. Each die spent allows the character to roll the corresponding die, add the character's Constitution modifier to it, and regain the resulting number of hit points.",
+    "longRestDescription": "At the end of a long rest, the character regains all expended hit points, plus half of the maximum Hit Dice and all expended spell slots.",
+    "deathSavingThrows": "Death saving throws",
+    "deathSuccess": "Success",
+    "deathFailure": "Failure"
   },
   "professionsPage": {
     "languages": "Languages",

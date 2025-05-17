@@ -31,6 +31,7 @@ Rails.application.routes.draw do
         resources :items, only: %i[index create update destroy], module: 'characters'
         resources :spells, only: %i[index create update destroy], module: 'characters'
         resources :rest, only: %i[create], module: 'characters'
+        resources :health, only: %i[create], module: 'characters'
       end
       resources :items, only: %i[index]
       resources :spells, only: %i[index]

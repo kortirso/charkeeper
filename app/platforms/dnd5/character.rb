@@ -13,6 +13,7 @@ module Dnd5
     attribute :subclasses, array: true
     attribute :abilities, array: true, default: { str: 10, dex: 10, con: 10, int: 10, wis: 10, cha: 10 }
     attribute :health, array: true
+    attribute :death_saving_throws, array: true, default: { success: 0, failure: 0 }
     attribute :speed, :integer
     attribute :energy, array: true, default: {}
     attribute :selected_skills, array: true, default: [] # ['history']

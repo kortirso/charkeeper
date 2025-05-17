@@ -79,7 +79,7 @@ export const Dnd5Notes = () => {
               />
             </div>
             <div class="flex justify-end mt-4">
-              <Button default textable size="small" classList="mr-4" onClick={cancelNote}>{t('cancel')}</Button>
+              <Button outlined textable size="small" classList="mr-4" onClick={cancelNote}>{t('cancel')}</Button>
               <Button default textable size="small" onClick={saveNote}>{t('save')}</Button>
             </div>
           </div>

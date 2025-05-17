@@ -36,6 +36,10 @@ module CharactersContext
             required(:max).filled(:integer)
             required(:temp).filled(:integer)
           end
+          optional(:death_saving_throws).hash do
+            required(:success).filled(:integer)
+            required(:failure).filled(:integer)
+          end
           optional(:coins).hash do
             required(:gold).filled(:integer)
             required(:silver).filled(:integer)
