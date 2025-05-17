@@ -8,7 +8,6 @@ module Dnd2024Character
       ARMOR = ['light armor', 'shield'].freeze
       TOOLS = %w[herbalism].freeze
 
-      # rubocop: disable Metrics/AbcSize
       def decorate_fresh_character(result:)
         result[:languages] = result[:languages].concat(LANGUAGES).uniq
         result[:weapon_core_skills] = result[:weapon_core_skills].concat(WEAPON_CORE).uniq
@@ -30,7 +29,6 @@ module Dnd2024Character
           prepared_spells_amount: prepared_spells_amount(class_level)
         }
         result[:spells_slots] = spells_slots(class_level)
-        result[:hit_dice][8] += class_level
 
         result
       end
@@ -53,7 +51,6 @@ module Dnd2024Character
 
         class_level + 3
       end
-      # rubocop: enable Metrics/AbcSize
 
       def max_spell_level(class_level)
         ::Dnd2024Character::ClassDecorateWrapper::SPELL_SLOTS[class_level].keys.max

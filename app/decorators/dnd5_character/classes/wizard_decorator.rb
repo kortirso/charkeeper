@@ -13,7 +13,6 @@ module Dnd5Character
         result
       end
 
-      # rubocop: disable Metrics/AbcSize
       def decorate_character_abilities(result:, class_level:)
         result[:class_save_dc] = %i[int wis] if result[:main_class] == 'wizard'
         result[:spell_classes][:wizard] = {
@@ -24,11 +23,9 @@ module Dnd5Character
           prepared_spells_amount: [result.dig(:modifiers, :int) + class_level, 1].max
         }
         result[:spells_slots] = spells_slots(class_level)
-        result[:hit_dice][6] += class_level
 
         result
       end
-      # rubocop: enable Metrics/AbcSize
 
       private
 

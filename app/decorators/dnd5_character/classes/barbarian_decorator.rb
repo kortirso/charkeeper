@@ -15,20 +15,17 @@ module Dnd5Character
         result
       end
 
-      # rubocop: disable Metrics/AbcSize
       def decorate_character_abilities(result:, class_level:)
         result[:class_save_dc] = %i[str con] if result[:main_class] == 'barbarian'
         result[:combat][:speed] += speed_modifier(class_level)
         if result.dig(:defense_gear, :armor).nil?
           result[:combat][:armor_class] = [result[:combat][:armor_class], barbarian_armor_class(result)].max
         end
-        result[:hit_dice][12] += class_level
 
         result[:combat][:attacks_per_action] = 2 if class_level >= 5 # Extra Attack, 5 level
 
         result
       end
-      # rubocop: enable Metrics/AbcSize
 
       private
 

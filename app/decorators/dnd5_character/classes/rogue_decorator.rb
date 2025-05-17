@@ -21,7 +21,6 @@ module Dnd5Character
         if result[:main_class] == 'rogue'
           result[:class_save_dc] = class_level >= 15 ? %i[dex int wis] : %i[dex int]
         end
-        result[:hit_dice][8] += class_level
 
         result
       end

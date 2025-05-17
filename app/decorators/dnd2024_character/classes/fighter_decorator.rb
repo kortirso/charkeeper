@@ -15,9 +15,8 @@ module Dnd2024Character
         result
       end
 
-      def decorate_character_abilities(result:, class_level:)
+      def decorate_character_abilities(result:, class_level:) # rubocop: disable Lint/UnusedMethodArgument
         result[:class_save_dc] = %i[str con] if result[:main_class] == 'fighter'
-        result[:hit_dice][10] += class_level
 
         result
       end

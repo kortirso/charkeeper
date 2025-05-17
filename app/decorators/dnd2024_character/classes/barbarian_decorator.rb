@@ -15,12 +15,11 @@ module Dnd2024Character
         result
       end
 
-      def decorate_character_abilities(result:, class_level:)
+      def decorate_character_abilities(result:, class_level:) # rubocop: disable Lint/UnusedMethodArgument
         result[:class_save_dc] = %i[str con] if result[:main_class] == 'barbarian'
         if result.dig(:defense_gear, :armor).nil?
           result[:combat][:armor_class] = [result[:combat][:armor_class], barbarian_armor_class(result)].max
         end
-        result[:hit_dice][12] += class_level
 
         result
       end

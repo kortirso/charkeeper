@@ -39,7 +39,6 @@ module Dnd2024Character
         result
       end
 
-      # rubocop: disable Metrics/AbcSize
       def decorate_character_abilities(result:, class_level:)
         result[:class_save_dc] = %i[con int] if result[:main_class] == 'artificer'
         result[:spell_classes][:artificer] = {
@@ -50,11 +49,9 @@ module Dnd2024Character
           prepared_spells_amount: prepared_spells_amount(class_level)
         }
         result[:spells_slots] = spells_slots(class_level)
-        result[:hit_dice][8] += class_level
 
         result
       end
-      # rubocop: enable Metrics/AbcSize
 
       private
 
@@ -65,7 +62,7 @@ module Dnd2024Character
         2
       end
 
-      # rubocop: disable Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity
+      # rubocop: disable Metrics/PerceivedComplexity
       def prepared_spells_amount(class_level)
         return 15 if class_level >= 19
         return 14 if class_level >= 17
@@ -78,7 +75,7 @@ module Dnd2024Character
 
         class_level + 1
       end
-      # rubocop: enable Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity
+      # rubocop: enable Metrics/PerceivedComplexity
 
       def max_spell_level(class_level)
         SPELL_SLOTS[class_level].keys.max

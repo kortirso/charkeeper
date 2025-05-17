@@ -37,7 +37,7 @@ module Dnd2024Character
         result
       end
 
-      # rubocop: disable Metrics/AbcSize, Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity
+      # rubocop: disable Metrics/PerceivedComplexity
       def decorate_character_abilities(result:, class_level:)
         result[:class_save_dc] = %i[wis cha] if result[:main_class] == 'paladin'
         result[:spell_classes][:ranger] = {
@@ -47,7 +47,6 @@ module Dnd2024Character
           prepared_spells_amount: prepared_spells_amount(class_level)
         }
         result[:spells_slots] = spells_slots(class_level)
-        result[:hit_dice][10] += class_level
 
         result
       end
@@ -66,7 +65,7 @@ module Dnd2024Character
 
         class_level + 1
       end
-      # rubocop: enable Metrics/AbcSize, Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity
+      # rubocop: enable Metrics/PerceivedComplexity
 
       def max_spell_level(class_level)
         SPELL_SLOTS[class_level].keys.max

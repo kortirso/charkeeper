@@ -37,7 +37,6 @@ module Dnd5Character
         result
       end
 
-      # rubocop: disable Metrics/AbcSize
       def decorate_character_abilities(result:, class_level:)
         result[:class_save_dc] = %i[str dex] if result[:main_class] == 'ranger'
         result[:spell_classes][:ranger] = {
@@ -49,13 +48,11 @@ module Dnd5Character
           prepared_spells_amount: spells_amount(class_level)
         }
         result[:spells_slots] = spells_slots(class_level)
-        result[:hit_dice][10] += class_level
 
         result[:combat][:attacks_per_action] = 2 if class_level >= 5 # Extra Attack, 5 level
 
         result
       end
-      # rubocop: enable Metrics/AbcSize
 
       private
 

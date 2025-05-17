@@ -48,7 +48,6 @@ module Dnd5Character
           prepared_spells_amount: [result.dig(:modifiers, :cha) + (class_level / 2), 1].max
         }
         result[:spells_slots] = spells_slots(class_level)
-        result[:hit_dice][10] += class_level
 
         result[:combat][:attacks_per_action] = 2 if class_level >= 5 # Extra Attack, 5 level
 

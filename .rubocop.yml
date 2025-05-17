@@ -25,6 +25,12 @@ Metrics/MethodLength:
 Metrics/ClassLength:
   Max: 1500
 
+Metrics/AbcSize:
+  Max: 20
+
+Metrics/CyclomaticComplexity:
+  Max: 10
+
 # No space makes the method definition shorter and differentiates
 # from a regular assignment.
 Layout/SpaceAroundEqualsInParameterDefault:
