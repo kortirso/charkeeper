@@ -116,6 +116,13 @@ module CharactersContext
         %i[classes abilities health coins energy spent_spell_slots spent_hit_dice].each do |key|
           input[key]&.transform_values!(&:to_i)
         end
+
+        if input[:classes].present?
+          input[:hit_dice] = { 6 => 0, 8 => 0, 10 => 0, 12 => 0 }
+          input[:classes].each do |key, class_level|
+            input[:hit_dice][::Dnd5::Character::HIT_DICES[key]] += class_level
+          end
+        end
       end
 
       def do_persist(input)

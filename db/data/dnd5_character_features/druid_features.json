@@ -6,18 +6,26 @@
       "en": "You can use your action to magically assume the shape of a beast (challenge rating - {{value}}) that you have seen before.",
       "ru": "Вы можете действием принять при помощи магии облик любого зверя (показатель опасности - {{value}}), которого вы видели."
     },
-    "origin": "class",
+    "origin": "class", // class, subclass, race, subrace
     "origin_value": "druid",
     "level": 1,
+    // 'static' # рендерится текст
+    // 'static_list' # рендерится список, выбирается одно значение
+    // 'dynamic_list' # рендерится список, выбирается несколько значений
+    // 'choose_from' # рендерится динамический список, выбирается несколько значений
+    // 'choose_one_from' # рендерится динамический список, выбирается одно значение
+    // 'text' # рендерится текст, вводится текст
+    // 'update_result' # не рендерится, обновляются данные декоратора
     "kind": "static",
     "options_type": null,
     "options": null,
-    "visible": "true",
+    "visible": "true", // дополнительное условие для скрытия
     "eval_variables": {
+      // значение переменной попадает в description
       "value": "class_level = result.dig(:classes, 'druid'); class_level >= 8 ? 1 : (class_level >= 4 ? 0.5 : 0.25)",
-      "limit": "result.dig(:classes, 'druid') == 20 ? nil : 2"
+      "limit": "result.dig(:classes, 'druid') == 20 ? nil : 2" // кол-во использований до отдыха
     },
-    "limit_refresh": "short_rest"
+    "limit_refresh": "short_rest" // при каком отдыхе сбрасывается кол-во использований
   },
   {
     "slug": "timeless_body",

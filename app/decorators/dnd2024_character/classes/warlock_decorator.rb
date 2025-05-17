@@ -37,7 +37,6 @@ module Dnd2024Character
         result
       end
 
-      # rubocop: disable Metrics/AbcSize
       def decorate_character_abilities(result:, class_level:)
         result[:class_save_dc] = %i[wis cha] if result[:main_class] == 'warlock'
         result[:spell_classes][:warlock] = {
@@ -48,7 +47,6 @@ module Dnd2024Character
           prepared_spells_amount: prepared_spells_amount(class_level)
         }
         result[:spells_slots] = spells_slots(class_level)
-        result[:hit_dice][8] += class_level
 
         result
       end
@@ -67,7 +65,6 @@ module Dnd2024Character
 
         10 + ((class_level - 9) / 2)
       end
-      # rubocop: enable Metrics/AbcSize
 
       def max_spell_level(class_level)
         SPELL_SLOTS[class_level].keys.max

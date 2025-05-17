@@ -39,7 +39,6 @@ module Dnd2024Character
         result
       end
 
-      # rubocop: disable Metrics/AbcSize
       def decorate_character_abilities(result:, class_level:)
         result[:class_save_dc] = %i[con int] if result[:main_class] == 'artificer'
         result[:spell_classes][:artificer] = {
@@ -50,11 +49,9 @@ module Dnd2024Character
           prepared_spells_amount: prepared_spells_amount(class_level)
         }
         result[:spells_slots] = spells_slots(class_level)
-        result[:hit_dice][8] += class_level
 
         result
       end
-      # rubocop: enable Metrics/AbcSize
 
       private
 

@@ -28,7 +28,6 @@ module Dnd5Character
           prepared_spells_amount: [result.dig(:modifiers, :wis) + class_level, 1].max
         }
         result[:spells_slots] = spells_slots(class_level)
-        result[:hit_dice][8] += class_level
 
         result
       end

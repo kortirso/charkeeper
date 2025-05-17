@@ -25,7 +25,6 @@ module Dnd5Character
           prepared_spells_amount: spells_amount(class_level)
         }
         result[:spells_slots] = spells_slots(class_level)
-        result[:hit_dice][6] += class_level
 
         result
       end

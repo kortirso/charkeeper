@@ -56,6 +56,9 @@ module CharactersContext
       def do_prepare(input)
         input[:data] =
           decorate_fresh_character(input.slice(:species, :legacy, :size, :main_class, :alignment).symbolize_keys)
+
+        input[:hit_dice] = { 6 => 0, 8 => 0, 10 => 0, 12 => 0 }
+        input[:hit_dice][::Dnd2024::Character::HIT_DICES[input[:main_class]]] = 1
       end
 
       def do_persist(input)

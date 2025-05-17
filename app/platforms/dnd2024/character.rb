@@ -24,6 +24,7 @@ module Dnd2024
     attribute :armor_proficiency, array: true
     attribute :coins, array: true, default: { gold: 0, silver: 0, copper: 0 }
     attribute :spent_spell_slots, array: true, default: {}
+    attribute :hit_dice, array: true, default: {} # максимальные кости хитов
     attribute :spent_hit_dice, array: true, default: {} # потраченные кости хитов
     attribute :tools, array: true, default: [] # владение инструментами
     attribute :music, array: true, default: [] # владение музыкальными инструментами
@@ -188,6 +189,10 @@ module Dnd2024
       WARLOCK => [ARCHFEY_PATRON, CELESTIAL_PATRON, FIEND_PATRON, GREAT_OLD_ONE_PATRON],
       WIZARD => [ABJURER, DIVINER, EVOKER, ILLUSIONIST],
       ARTIFICER => [ALCHEMIST, ARMORER, ARTILLERIST, BATTLE_SMITH]
+    }.freeze
+    HIT_DICES = {
+      BARBARIAN => 12, BARD => 8, CLERIC => 8, DRUID => 8, FIGHTER => 10, MONK => 8,
+      PALADIN => 10, RANGER => 10, ROGUE => 8, SORCERER => 6, WARLOCK => 8, WIZARD => 6, ARTIFICER => 8
     }.freeze
 
     # бард знает все заклинания, подготавливает новое и/или меняет подготовленное после получения уровня

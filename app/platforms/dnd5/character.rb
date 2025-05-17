@@ -23,6 +23,7 @@ module Dnd5
     attribute :armor_proficiency, array: true
     attribute :coins, array: true, default: { gold: 0, silver: 0, copper: 0 }
     attribute :spent_spell_slots, array: true, default: {}
+    attribute :hit_dice, array: true, default: {} # максимальные кости хитов
     attribute :spent_hit_dice, array: true, default: {} # потраченные кости хитов
     attribute :tools, array: true, default: [] # владение инструментами
     attribute :music, array: true, default: [] # владение музыкальными инструментами
@@ -158,6 +159,10 @@ module Dnd5
         SCHOOL_OF_EVOCATION, SCHOOL_OF_ILLUSION, SCHOOL_OF_NECROMANCY, SCHOOL_OF_TRANSMUTATION
       ],
       ARTIFICER => [ALCHEMIST]
+    }.freeze
+    HIT_DICES = {
+      BARBARIAN => 12, BARD => 8, CLERIC => 8, DRUID => 8, FIGHTER => 10, MONK => 8,
+      PALADIN => 10, RANGER => 10, ROGUE => 8, SORCERER => 6, WARLOCK => 8, WIZARD => 6, ARTIFICER => 8
     }.freeze
 
     # учат заклинания при получении уровня, сразу подготовлены
