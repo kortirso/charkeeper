@@ -59,7 +59,8 @@ module Dnd5Character
         music: data.music,
         spent_spell_slots: data.spent_spell_slots,
         hit_dice: data.hit_dice,
-        spent_hit_dice: data.spent_hit_dice
+        spent_hit_dice: data.spent_hit_dice,
+        death_saving_throws: data.death_saving_throws
       }.compact
 
       result[:save_dc] = result[:modifiers].clone

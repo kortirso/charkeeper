@@ -32,7 +32,7 @@ export function AppAlertProvider(props) {
             {(alert) =>
               <p
                 class="relative py-2 px-4 mb-2 rounded text-sm"
-                classList={{ 'bg-red-500 text-white': alert.type === 'alert', 'bg-green-500': alert.type === 'notice' }}
+                classList={{ 'bg-red-400 text-white': alert.type === 'alert', 'bg-green-400 text-white': alert.type === 'notice' }}
               >
                 {alert.message}
               </p>

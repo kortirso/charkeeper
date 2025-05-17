@@ -2,7 +2,7 @@ import { createSignal, Switch, Match, batch, Show, createEffect, createMemo } fr
 import * as i18n from '@solid-primitives/i18n';
 
 import {
-  Dnd5Abilities, Dnd5Combat, Dnd5ClassLevels, Dnd5Professions, Dnd5Equipment, Dnd5Items,
+  Dnd5Abilities, Dnd5Combat, Dnd5Rest, Dnd5ClassLevels, Dnd5Professions, Dnd5Equipment, Dnd5Items,
   Dnd5Spellbook, Dnd5Spells, Dnd5Notes
 } from '../../../components';
 
@@ -20,6 +20,7 @@ import { removeCharacterSpellRequest } from '../../../requests/removeCharacterSp
 import { updateCharacterSpellRequest } from '../../../requests/updateCharacterSpellRequest';
 import { createCharacterItemRequest } from '../../../requests/createCharacterItemRequest';
 import { createCharacterRestRequest } from '../../../requests/createCharacterRestRequest';
+import { createCharacterHealthRequest } from '../../../requests/createCharacterHealthRequest';
 
 export const Dnd5 = (props) => {
   const decoratedData = () => props.decoratedData;
@@ -41,6 +42,7 @@ export const Dnd5 = (props) => {
   const [healthData, setHealthData] = createSignal(decoratedData().health);
   const [energyData, setEnergyData] = createSignal(decoratedData().energy);
   const [spentSpellSlots, setSpentSpellSlots] = createSignal(decoratedData().spent_spell_slots);
+  const [death, setDeath] = createSignal(decoratedData().death_saving_throws);
 
   const [appState] = useAppState();
   const [{ renderNotice }] = useAppAlert();
@@ -261,23 +263,27 @@ export const Dnd5 = (props) => {
   }
 
   const makeHeal = async (damageHealValue) => {
-    const missingHealth = healthData().max - healthData().current;
+    const result = await createCharacterHealthRequest(appState.accessToken, 'dnd5', props.characterId, { value: damageHealValue });
+    if (result.errors === undefined) {
+      const decoratedData = await props.onReloadCharacter();
 
-    let newValue;
-    if (damageHealValue >= missingHealth) newValue = { ...healthData(), current: healthData().max }
-    else newValue = { ...healthData(), current: healthData().current + damageHealValue }
-
-    const result = await refreshCharacter({ health: newValue });
-    if (result.errors === undefined) setHealthData(newValue);
+      batch(() => {
+        setHealthData(decoratedData.health);
+        setDeath(decoratedData.death_saving_throws);
+      });
+    }
   }
 
   const dealDamage = async (damageHealValue) => {
-    const damageToTempHealth = damageHealValue >= healthData().temp ? healthData().temp : damageHealValue;
-    const damageToHealth = damageHealValue - damageToTempHealth;
+    const result = await createCharacterHealthRequest(appState.accessToken, 'dnd5', props.characterId, { value: -damageHealValue });
+    if (result.errors === undefined) {
+      const decoratedData = await props.onReloadCharacter();
 
-    let newValue = { ...healthData(), current: healthData().current - damageToHealth, temp: healthData().temp - damageToTempHealth }
-    const result = await refreshCharacter({ health: newValue });
-    if (result.errors === undefined) setHealthData(newValue);
+      batch(() => {
+        setHealthData(decoratedData.health);
+        setDeath(decoratedData.death_saving_throws);
+      });
+    }
   }
 
   const spendSpellSlot = async (level) => {
@@ -297,6 +303,25 @@ export const Dnd5 = (props) => {
 
     const result = await refreshCharacter({ spent_spell_slots: newValue });
     if (result.errors === undefined) setSpentSpellSlots(newValue);
+  }
+
+  const gainDeath = async (type) => {
+    let newValue;
+    if (death()[type]) {
+      newValue = { ...death(), [type]: death()[type] + 1 };
+    } else {
+      newValue = { ...death(), [type]: 1 };
+    }
+
+    const result = await refreshCharacter({ death_saving_throws: newValue });
+    if (result.errors === undefined) setDeath(newValue);
+  }
+
+  const freeDeath = async (type) => {
+    const newValue = { ...death(), [type]: death()[type] - 1 };
+
+    const result = await refreshCharacter({ death_saving_throws: newValue });
+    if (result.errors === undefined) setDeath(newValue);
   }
 
   // memos
@@ -320,6 +345,12 @@ export const Dnd5 = (props) => {
           onClick={() => setActiveTab('combat')}
         >
           {t('character.combat')}
+        </p>
+        <p
+          classList={{ 'active': activeTab() === 'rest' }}
+          onClick={() => setActiveTab('rest')}
+        >
+          {t('character.rest')}
         </p>
         <p
           classList={{ 'active': activeTab() === 'equipment' }}
@@ -370,6 +401,7 @@ export const Dnd5 = (props) => {
             />
           </Match>
           <Match when={activeTab() === 'combat'}>
+            {console.log(props.decoratedData)}
             <Dnd5Combat
               combat={props.decoratedData.combat}
               attacks={props.decoratedData.attacks}
@@ -377,6 +409,7 @@ export const Dnd5 = (props) => {
               selectedFeatures={props.decoratedData.selected_features}
               skills={props.decoratedData.skills}
               initialConditions={props.decoratedData.conditions}
+              deathSavingThrows={death()}
               healthData={healthData()}
               energyData={energyData()}
               onSpendEnergy={spendEnergy}
@@ -386,6 +419,12 @@ export const Dnd5 = (props) => {
               onSetHealthData={setHealthData}
               onReloadCharacter={updateCharacter}
               onRefreshCharacter={refreshCharacter}
+              onFreeDeath={freeDeath}
+              onGainDeath={gainDeath}
+            />
+          </Match>
+          <Match when={activeTab() === 'rest'}>
+            <Dnd5Rest
               onRestCharacter={restCharacter}
             />
           </Match>

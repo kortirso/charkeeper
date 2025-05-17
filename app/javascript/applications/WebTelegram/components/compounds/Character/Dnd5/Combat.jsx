@@ -176,13 +176,52 @@ export const Dnd5Combat = (props) => {
             {t('character.heal')}
           </Button>
         </div>
-        <div class="flex justify-center items-center pt-0 p-4">
-          <Button default textable classList="flex-1 mr-2" onClick={() => props.onRestCharacter({ type: 'short_rest' })}>
-            {t('character.shortRest')}
-          </Button>
-          <Button default textable classList="flex-1 ml-2" onClick={() => props.onRestCharacter({ type: 'long_rest' })}>
-            {t('character.longRest')}
-          </Button>
+        <div class="pt-0 p-4">
+          <p class="mb-2">{t('character.deathSavingThrows')}</p>
+          <div class="flex mb-2">
+            <p class="font-cascadia-light w-20">{t('character.deathSuccess')}</p>
+            <div class="flex">
+              <For each={[...Array((props.deathSavingThrows.success || 0))]}>
+                {() =>
+                  <Checkbox
+                    checked
+                    classList="mr-1"
+                    onToggle={() => props.onFreeDeath('success')}
+                  />
+                }
+              </For>
+              <For each={[...Array(3 - (props.deathSavingThrows.success || 0))]}>
+                {() =>
+                  <Checkbox
+                    classList="mr-1"
+                    onToggle={() => props.onGainDeath('success')}
+                  />
+                }
+              </For>
+            </div>
+          </div>
+          <div class="flex">
+            <p class="font-cascadia-light w-20">{t('character.deathFailure')}</p>
+            <div class="flex">
+              <For each={[...Array((props.deathSavingThrows.failure || 0))]}>
+                {() =>
+                  <Checkbox
+                    checked
+                    classList="mr-1"
+                    onToggle={() => props.onFreeDeath('failure')}
+                  />
+                }
+              </For>
+              <For each={[...Array(3 - (props.deathSavingThrows.failure || 0))]}>
+                {() =>
+                  <Checkbox
+                    classList="mr-1"
+                    onToggle={() => props.onGainDeath('failure')}
+                  />
+                }
+              </For>
+            </div>
+          </div>
         </div>
       </StatsBlock>
       <Toggle title={t('character.damageConditions')}>
