@@ -37,7 +37,7 @@ module Dnd2024Character
         result
       end
 
-      # rubocop: disable Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity
+      # rubocop: disable Metrics/PerceivedComplexity
       def decorate_character_abilities(result:, class_level:)
         result[:class_save_dc] = %i[wis cha] if result[:main_class] == 'paladin'
         result[:spell_classes][:ranger] = {
@@ -65,7 +65,7 @@ module Dnd2024Character
 
         class_level + 1
       end
-      # rubocop: enable Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity
+      # rubocop: enable Metrics/PerceivedComplexity
 
       def max_spell_level(class_level)
         SPELL_SLOTS[class_level].keys.max

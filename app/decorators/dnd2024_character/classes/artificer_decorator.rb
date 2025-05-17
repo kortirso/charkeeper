@@ -62,7 +62,7 @@ module Dnd2024Character
         2
       end
 
-      # rubocop: disable Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity
+      # rubocop: disable Metrics/PerceivedComplexity
       def prepared_spells_amount(class_level)
         return 15 if class_level >= 19
         return 14 if class_level >= 17
@@ -75,7 +75,7 @@ module Dnd2024Character
 
         class_level + 1
       end
-      # rubocop: enable Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity
+      # rubocop: enable Metrics/PerceivedComplexity
 
       def max_spell_level(class_level)
         SPELL_SLOTS[class_level].keys.max

@@ -11,7 +11,6 @@ module CharactersContext
 
       private
 
-      # rubocop: disable Metrics/AbcSize
       def do_prepare(input)
         data = input[:character].data
 
@@ -33,7 +32,6 @@ module CharactersContext
         # полное восстановление здоровья
         data.health['current'] = data.health['max']
       end
-      # rubocop: enable Metrics/AbcSize
 
       def do_persist(input)
         input[:character].save!

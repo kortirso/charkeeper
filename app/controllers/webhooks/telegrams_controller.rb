@@ -33,7 +33,6 @@ module Webhooks
       validate_params_with_schema(params: params, schema: schema)
     end
 
-    # rubocop: disable Metrics/AbcSize
     def schema
       Dry::Schema.Params do
         required(:message).hash do
@@ -50,6 +49,5 @@ module Webhooks
         end
       end
     end
-    # rubocop: enable Metrics/AbcSize
   end
 end

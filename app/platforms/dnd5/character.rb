@@ -176,7 +176,6 @@ module Dnd5
 
     attribute :data, Dnd5::CharacterData.to_type
 
-    # rubocop: disable Metrics/AbcSize
     def decorate
       base_decorator.decorate_character_abilities(character: self)
         .then { |result| race_decorator.decorate_character_abilities(result: result) }
@@ -185,7 +184,6 @@ module Dnd5
         .then { |result| subclass_decorator.decorate_character_abilities(result: result) }
         .then { |result| features_decorator.decorate_character_abilities(result: result) }
     end
-    # rubocop: enable Metrics/AbcSize
 
     def can_learn_spell?(target_spell_class)
       return false if CLASSES_LEARN_SPELLS.exclude?(target_spell_class)

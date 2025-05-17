@@ -13,7 +13,6 @@ module Dnd5Character
         result
       end
 
-      # rubocop: disable Metrics/AbcSize
       def decorate_character_abilities(result:, class_level:)
         result[:class_save_dc] = %i[con cha] if result[:main_class] == 'sorcerer'
         result[:spell_classes][:sorcerer] = {
@@ -28,7 +27,6 @@ module Dnd5Character
 
         result
       end
-      # rubocop: enable Metrics/AbcSize
 
       private
 

@@ -5,7 +5,7 @@ module Dnd2024Character
     MELEE_ATTACK_TOOLTIPS = %w[2handed heavy].freeze
     RANGE_ATTACK_TOOLTIPS = %w[2handed heavy reload].freeze
 
-    # rubocop: disable Metrics/AbcSize, Metrics/MethodLength, Metrics/PerceivedComplexity, Metrics/CyclomaticComplexity
+    # rubocop: disable Metrics/AbcSize, Metrics/MethodLength, Metrics/PerceivedComplexity
     def decorate_fresh_character(species:, size:, main_class:, alignment:, legacy: nil)
       {
         species: species,
@@ -284,6 +284,6 @@ module Dnd2024Character
         .hashable_pluck('items.kind', 'items.data')
         .partition { |item| item[:items_kind] != 'shield' }
     end
-    # rubocop: enable Metrics/AbcSize, Metrics/MethodLength, Metrics/PerceivedComplexity, Metrics/CyclomaticComplexity
+    # rubocop: enable Metrics/AbcSize, Metrics/MethodLength, Metrics/PerceivedComplexity
   end
 end

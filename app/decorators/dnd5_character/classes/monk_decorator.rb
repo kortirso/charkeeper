@@ -16,7 +16,7 @@ module Dnd5Character
         result
       end
 
-      # rubocop: disable Metrics/AbcSize, Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity
+      # rubocop: disable Metrics/AbcSize, Metrics/PerceivedComplexity
       def decorate_character_abilities(result:, class_level:)
         result[:class_save_dc] = %i[str dex] if result[:main_class] == 'monk'
 
@@ -56,7 +56,7 @@ module Dnd5Character
         unarmed_attack = result[:attacks].find { |attack| attack[:kind] == 'unarmed' && attack[:action_type] == 'action' }
         result[:attacks] << unarmed_attack.merge({ action_type: 'bonus action', tooltips: ['flurry_of_blows'] })
       end
-      # rubocop: enable Metrics/AbcSize, Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity
+      # rubocop: enable Metrics/AbcSize, Metrics/PerceivedComplexity
     end
   end
 end
