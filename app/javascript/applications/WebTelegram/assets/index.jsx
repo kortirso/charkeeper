@@ -6,3 +6,5 @@ export * from './PlusSmall';
 export * from './Minus';
 export * from './Dots';
 export * from './Profile';
+export * from './Campfire';
+export * from './LongCampfire';

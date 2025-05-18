@@ -5,7 +5,7 @@ import { createModal, StatsBlock } from '../../../molecules';
 import { Input, Toggle, Checkbox, Select, Button } from '../../../atoms';
 
 import { useAppLocale } from '../../../../context';
-import { PlusSmall, Minus } from '../../../../assets';
+import { PlusSmall, Minus, Campfire, LongCampfire } from '../../../../assets';
 
 import { modifier } from '../../../../../../helpers';
 
@@ -134,8 +134,14 @@ export const Dnd5Combat = (props) => {
           <Button default size="small" onClick={(event) => props.energyData[feature.slug] !== feature.limit ? props.onSpendEnergy(event, feature.slug, feature.limit) : event.stopPropagation()}>
             <Minus />
           </Button>
-          <p class="w-12 mx-2 text-center">
-            {feature.limit - (props.energyData[feature.slug] || 0)} / {feature.limit}
+          <p class="flex items-center justify-center mx-2">
+            <span class="w-6 text-center">{feature.limit - (props.energyData[feature.slug] || 0)}</span>
+            <Show
+              when={feature.limit_refresh === 'short_rest'}
+              fallback={<span title={t('character.longRest')}><LongCampfire /></span>}
+            >
+              <span title={t('character.shortRest')}><Campfire /></span>
+            </Show>
           </p>
           <Button default size="small" onClick={(event) => (props.energyData[feature.slug] || 0) > 0 ? props.onRestoreEnergy(event, feature.slug) : event.stopPropagation()}>
             <PlusSmall />
