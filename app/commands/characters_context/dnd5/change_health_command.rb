@@ -24,10 +24,12 @@ module CharactersContext
         health = input[:character].data.health
 
         if input[:value].negative?
+          damage_value = input[:value].abs
           current_health = health['current'] + health['temp']
+          return letal_damage(input) if damage_value - current_health >= health['max']
+
           if current_health.positive?
-            damage_value = input[:value].abs
-            damage_value - current_health >= health['max'] ? letal_damage(input) : simple_damage(input, health, damage_value)
+            simple_damage(input, health, damage_value)
           else
             letal_hit(input, input[:character].data.death_saving_throws)
           end
