@@ -19,7 +19,8 @@ module Dnd5Character
           limit: feature.eval_variables['limit'],
           options_type: feature.options_type,
           options: feature.options,
-          choose_once: feature.choose_once
+          choose_once: feature.choose_once,
+          limit_refresh: feature.limit_refresh
         }.compact
       end
 
