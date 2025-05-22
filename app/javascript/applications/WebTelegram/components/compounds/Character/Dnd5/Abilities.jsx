@@ -10,10 +10,11 @@ import { PlusSmall, Minus } from '../../../../assets';
 import { modifier } from '../../../../../../helpers';
 
 export const Dnd5Abilities = (props) => {
-  const selectedSkillsSlugs = () => props.skills.filter((item) => item.selected).map((item) => item.name);
+  const character = () => props.character;
+  const selectedSkillsSlugs = () => character().skills.filter((item) => item.selected).map((item) => item.slug);
 
   // changeable data
-  const [abilitiesData, setAbilitiesData] = createSignal(props.initialAbilities);
+  const [abilitiesData, setAbilitiesData] = createSignal(character().abilities);
 
   const { Modal, openModal, closeModal } = createModal();
   const [{ renderAlerts }] = useAppAlert();
@@ -46,12 +47,12 @@ export const Dnd5Abilities = (props) => {
       <div class="flex items-start mb-2">
         <div class="white-box flex flex-col items-center w-2/5 p-2">
           <p class="text-sm mb-1">{t('terms.proficiencyBonus')}</p>
-          <p class="text-2xl mb-1">{modifier(props.proficiencyBonus)}</p>
+          <p class="text-2xl mb-1">{modifier(character().proficiency_bonus)}</p>
         </div>
         <div class="w-3/5 pl-4">
           <div class="white-box p-2">
             <p class="text-center text-sm">{t('terms.hitDices')}</p>
-            <For each={Object.entries(props.hitDice).filter(([, value]) => value > 0)}>
+            <For each={Object.entries(character().hit_dice).filter(([, value]) => value > 0)}>
               {([dice, maxValue]) =>
                 <div class="flex justify-center items-center mt-1">
                   <p class="w-8 mr-4">d{dice}</p>
@@ -77,25 +78,25 @@ export const Dnd5Abilities = (props) => {
               class="white-box flex flex-col items-center w-2/5 p-2 cursor-pointer"
               onClick={openModal}
             >
-              <p class="text-sm mb-1">{ability} {props.initialAbilities[slug]}</p>
-              <p class="text-2xl mb-1">{modifier(props.modifiers[slug])}</p>
+              <p class="text-sm mb-1">{ability} {character().abilities[slug]}</p>
+              <p class="text-2xl mb-1">{modifier(character().modifiers[slug])}</p>
             </div>
             <div class="w-3/5 pl-4">
               <div class="white-box p-2">
                 <div class="flex justify-between">
                   <p>{t('terms.saveDC')}</p>
-                  <p>{modifier(props.saveDc[slug])}</p>
+                  <p>{modifier(character().save_dc[slug])}</p>
                 </div>
                 <div class="mt-2">
-                  <For each={props.skills.filter((item) => item.ability === slug)}>
+                  <For each={character().skills.filter((item) => item.ability === slug)}>
                     {(skill) =>
                       <div class="flex justify-between mb-1">
                         <Checkbox
-                          checked={selectedSkillsSlugs().includes(skill.name)}
-                          onToggle={() => updateSkill(skill.name)}
+                          checked={selectedSkillsSlugs().includes(skill.slug)}
+                          onToggle={() => updateSkill(skill.slug)}
                         />
-                        <p class={`${selectedSkillsSlugs().includes(skill.name) ? 'font-medium flex items-center' : 'opacity-50 flex items-center'}`}>
-                          <span class="text-sm mr-2">{t(`dnd.skills.${skill.name}`)}</span>
+                        <p class={`${selectedSkillsSlugs().includes(skill.slug) ? 'font-medium flex items-center' : 'opacity-50 flex items-center'}`}>
+                          <span class="text-sm mr-2">{t(`dnd.skills.${skill.slug}`)}</span>
                           <span>{modifier(skill.modifier)}</span>
                         </p>
                       </div>

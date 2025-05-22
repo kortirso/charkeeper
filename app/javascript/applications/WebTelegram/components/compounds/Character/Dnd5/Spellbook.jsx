@@ -16,6 +16,8 @@ const DND2024_CLASSES_PREPARE_SPELLS = [
 ];
 
 export const Dnd5Spellbook = (props) => {
+  const character = () => props.character;
+
   const [preparedSpellFilter, setPreparedSpellFilter] = createSignal(true);
   const [activeSpellClass, setActiveSpellClass] = createSignal(props.initialSpellClassesList[0]);
   const [changingSpell, setChangingSpell] = createSignal(null);
@@ -40,17 +42,17 @@ export const Dnd5Spellbook = (props) => {
     return props.characterSpells.filter((item) => {
       if (activeSpellClass() !== 'all' && item.prepared_by !== activeSpellClass()) return false;
       if (preparedSpellFilter()) return item.ready_to_use;
-      if (Object.keys(props.staticCharacterSpells).includes(item.slug)) return false;
+      if (Object.keys(character().static_spells).includes(item.slug)) return false;
       return true;
     });
   });
 
   const staticCharacterSpells = createMemo(() => {
     if (props.spells === undefined) return [];
-    if (props.staticCharacterSpells.length === 0) return [];
+    if (character().static_spells.length === 0) return [];
 
-    const staticSpells = props.spells.filter((item) => Object.keys(props.staticCharacterSpells).includes(item.slug));
-    return Object.entries(props.staticCharacterSpells).map(([slug, item]) => {
+    const staticSpells = props.spells.filter((item) => Object.keys(character().static_spells).includes(item.slug));
+    return Object.entries(character().static_spells).map(([slug, item]) => {
       const spell = staticSpells.find((item) => item.slug === slug);
       return { slug: slug, name: spell.name, level: spell.level, data: item }
     });
@@ -98,40 +100,40 @@ export const Dnd5Spellbook = (props) => {
       <Show when={activeSpellClass() !== 'all'}>
         <StatsBlock
           items={[
-            { title: t('terms.spellAttack'), value: modifier(props.spellClasses[activeSpellClass()].attack_bonus) },
-            { title: t('terms.saveDC'), value: props.spellClasses[activeSpellClass()].save_dc }
+            { title: t('terms.spellAttack'), value: modifier(character().spell_classes[activeSpellClass()].attack_bonus) },
+            { title: t('terms.saveDC'), value: character().spell_classes[activeSpellClass()].save_dc }
           ]}
         />
         <div class="mb-2 p-4 flex white-box">
           <div class="flex-1 flex flex-col items-center">
             <p class="uppercase text-xs mb-1">{t('terms.cantrips')}</p>
             <p class="text-2xl mb-1">
-              {props.spellClasses[activeSpellClass()].cantrips_amount}
+              {character().spell_classes[activeSpellClass()].cantrips_amount}
             </p>
           </div>
-          <Show when={props.provider === 'dnd5'}>
+          <Show when={character().provider === 'dnd5'}>
             <div class="flex-1 flex flex-col items-center">
               <p class="uppercase text-xs mb-1">{t('terms.known')}</p>
               <p class="text-2xl mb-1 flex gap-2 items-start">
                 <Show
-                  when={props.spellClasses[activeSpellClass()].spells_amount}
+                  when={character().spell_classes[activeSpellClass()].spells_amount}
                   fallback={<span>-</span>}
                 >
-                  <span>{props.spellClasses[activeSpellClass()].spells_amount}</span>
+                  <span>{character().spell_classes[activeSpellClass()].spells_amount}</span>
                 </Show>
-                <span class="text-sm">{props.spellClasses[activeSpellClass()].max_spell_level} {t('spellbookPage.level')}</span>
+                <span class="text-sm">{character().spell_classes[activeSpellClass()].max_spell_level} {t('spellbookPage.level')}</span>
               </p>
             </div>
           </Show>
           <div class="flex-1 flex flex-col items-center">
             <p class="uppercase text-xs mb-1">{t('terms.prepared')}</p>
             <p class="text-2xl mb-1">
-              {props.spellClasses[activeSpellClass()].prepared_spells_amount}
+              {character().spell_classes[activeSpellClass()].prepared_spells_amount}
             </p>
           </div>
         </div>
       </Show>
-      <Show when={props.provider === 'dnd5' ? DND5_CLASSES_LEARN_SPELLS.includes(activeSpellClass()) : DND2024_CLASSES_LEARN_SPELLS.includes(activeSpellClass())}>
+      <Show when={character().provider === 'dnd5' ? DND5_CLASSES_LEARN_SPELLS.includes(activeSpellClass()) : DND2024_CLASSES_LEARN_SPELLS.includes(activeSpellClass())}>
         <Button default textable classList="mb-2" onClick={props.onNavigatoToSpells}>
           {t('character.knownSpells')}
         </Button>
@@ -171,7 +173,7 @@ export const Dnd5Spellbook = (props) => {
                     >
                       {spell.name}
                     </p>
-                    <Show when={props.spellClasses.length > 1 && activeSpellClass() === 'all'}>
+                    <Show when={character().spell_classes.length > 1 && activeSpellClass() === 'all'}>
                       <p class="text-xs">{t(`dnd5.classes.${spell.prepared_by}`)}</p>
                     </Show>
                     <Show when={spell.notes !== null}>
@@ -179,7 +181,7 @@ export const Dnd5Spellbook = (props) => {
                     </Show>
                   </td>
                   <td>
-                    <Show when={props.provider === 'dnd5' ? DND5_CLASSES_PREPARE_SPELLS.includes(activeSpellClass()) : DND2024_CLASSES_PREPARE_SPELLS.includes(activeSpellClass())}>
+                    <Show when={character().provider === 'dnd5' ? DND5_CLASSES_PREPARE_SPELLS.includes(activeSpellClass()) : DND2024_CLASSES_PREPARE_SPELLS.includes(activeSpellClass())}>
                       <Show
                         when={spell.ready_to_use}
                         fallback={<span class="cursor-pointer" onClick={() => props.onPrepareSpell(spell.id)}>Prepare</span>}
@@ -194,7 +196,7 @@ export const Dnd5Spellbook = (props) => {
           </tbody>
         </table>
       </div>
-      <For each={Object.entries(props.spellSlots)}>
+      <For each={Object.entries(character().spells_slots)}>
         {([level, slotsAmount]) =>
           <div class="white-box mb-2 p-4">
             <div class="flex justify-between items-center">
@@ -258,7 +260,7 @@ export const Dnd5Spellbook = (props) => {
                         </Show>
                       </td>
                       <td>
-                        <Show when={props.provider === 'dnd5' ? DND5_CLASSES_PREPARE_SPELLS.includes(activeSpellClass()) : DND2024_CLASSES_PREPARE_SPELLS.includes(activeSpellClass())}>
+                        <Show when={character().provider === 'dnd5' ? DND5_CLASSES_PREPARE_SPELLS.includes(activeSpellClass()) : DND2024_CLASSES_PREPARE_SPELLS.includes(activeSpellClass())}>
                           <Show
                             when={spell.ready_to_use}
                             fallback={<span class="cursor-pointer" onClick={() => props.onPrepareSpell(spell.id)}>Prepare</span>}

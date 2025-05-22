@@ -25,16 +25,10 @@ module Daggerheart
 
     attribute :data, Daggerheart::CharacterData.to_type
 
-    def decorate
-      base_decorator.decorate_character_abilities(character: self)
-        .then { |result| heritage_decorator.decorate_character_abilities(result: result) }
-        .then { |result| class_decorator.decorate_character_abilities(result: result) }
+    def decorator
+      base_decorator = ::DaggerheartCharacter::BaseDecorator.new(self)
+      heritage_decorator = ::DaggerheartCharacter::HeritageDecorateWrapper.new(base_decorator)
+      ::DaggerheartCharacter::ClassDecorateWrapper.new(heritage_decorator)
     end
-
-    private
-
-    def base_decorator = ::Charkeeper::Container.resolve('decorators.daggerheart_character.base_decorator')
-    def heritage_decorator = ::Charkeeper::Container.resolve('decorators.daggerheart_character.heritage_wrapper')
-    def class_decorator = ::Charkeeper::Container.resolve('decorators.daggerheart_character.class_wrapper')
   end
 end

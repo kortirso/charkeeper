@@ -265,3 +265,6 @@ Gemspec/RequireMFA:
 
 Style/SafeNavigationChainLength:
   Enabled: false
+
+Style/MissingRespondToMissing:
+  Enabled: false

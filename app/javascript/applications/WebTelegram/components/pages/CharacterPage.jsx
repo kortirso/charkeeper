@@ -28,8 +28,10 @@ export const CharacterPage = (props) => {
     const characterData = await fetchCharacterRequest(appState.accessToken, appState.activePageParams.id);
     setCharacter(characterData.character);
 
-    return characterData.character.decorated_data;
+    return characterData.character;
   }
+
+  const replaceCharacter = (data) => setCharacter({ ...character(), ...data });
 
   return (
     <>
@@ -39,26 +41,20 @@ export const CharacterPage = (props) => {
       <Switch>
         <Match when={character().provider === 'dnd5' || character().provider === 'dnd2024'}>
           <Dnd5
-            provider={character().provider}
-            decoratedData={character().decorated_data}
-            characterId={character().id}
+            character={character()}
             onReloadCharacter={reloadCharacter}
           />
         </Match>
         <Match when={character().provider === 'pathfinder2'}>
           <Pathfinder2
-            provider={character().provider}
-            decoratedData={character().decorated_data}
-            characterId={character().id}
-            onReloadCharacter={reloadCharacter}
+            character={character()}
+            onReplaceCharacter={replaceCharacter}
           />
         </Match>
         <Match when={character().provider === 'daggerheart'}>
           <Daggerheart
-            provider={character().provider}
-            decoratedData={character().decorated_data}
-            characterId={character().id}
-            onReloadCharacter={reloadCharacter}
+            character={character()}
+            onReplaceCharacter={replaceCharacter}
           />
         </Match>
       </Switch>

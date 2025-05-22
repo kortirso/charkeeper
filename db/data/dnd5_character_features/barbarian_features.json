@@ -11,9 +11,10 @@
     "level": 1,
     "kind": "static",
     "visible": "true",
-    "eval_variables": {
-      "limit": "class_level = result.dig(:classes, 'barbarian'); return 100 if class_level == 20; return 6 if class_level >= 17; return 5 if class_level >= 12; return 4 if class_level >= 6; return 3 if class_level >= 3; 2"
+    "description_eval_variables": {
+      "limit": "class_level = classes['barbarian']; return 100 if class_level == 20; return 6 if class_level >= 17; return 5 if class_level >= 12; return 4 if class_level >= 6; return 3 if class_level >= 3; 2"
     },
+    "eval_variables": {},
     "limit_refresh": "long_rest"
   },
   {
@@ -28,6 +29,7 @@
     "level": 2,
     "kind": "static",
     "visible": "true",
+    "description_eval_variables": {},
     "eval_variables": {}
   },
   {
@@ -42,6 +44,7 @@
     "level": 2,
     "kind": "static",
     "visible": "true",
+    "description_eval_variables": {},
     "eval_variables": {}
   },
   {
@@ -56,6 +59,7 @@
     "level": 7,
     "kind": "static",
     "visible": "true",
+    "description_eval_variables": {},
     "eval_variables": {}
   },
   {
@@ -70,9 +74,10 @@
     "level": 9,
     "kind": "static",
     "visible": "true",
-    "eval_variables": {
-      "value": "class_level = result.dig(:classes, 'barbarian'); return 3 if class_level >= 17; return 2 if class_level >= 13; 1"
-    }
+    "description_eval_variables": {
+      "value": "class_level = classes['barbarian']; return 3 if class_level >= 17; return 2 if class_level >= 13; 1"
+    },
+    "eval_variables": {}
   },
   {
     "slug": "relentless_rage",
@@ -86,6 +91,7 @@
     "level": 11,
     "kind": "static",
     "visible": "true",
+    "description_eval_variables": {},
     "eval_variables": {}
   },
   {
@@ -114,6 +120,7 @@
     "level": 18,
     "kind": "static",
     "visible": "true",
+    "description_eval_variables": {},
     "eval_variables": {}
   }
 ]

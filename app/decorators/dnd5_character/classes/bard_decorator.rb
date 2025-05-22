@@ -2,46 +2,47 @@
 
 module Dnd5Character
   module Classes
-    class BardDecorator
-      WEAPON_CORE = ['light weapon'].freeze
-      DEFAULT_WEAPON_SKILLS = %w[longsword shortsword rapier hand_crossbow].freeze
-      ARMOR = ['light armor'].freeze
+    class BardDecorator < ApplicationDecorator
+      CLASS_SAVE_DC = %w[dex cha].freeze
 
-      def decorate_fresh_character(result:)
-        result[:weapon_core_skills] = result[:weapon_core_skills].concat(WEAPON_CORE).uniq
-        result[:weapon_skills] = result[:weapon_skills].concat(DEFAULT_WEAPON_SKILLS).uniq
-        result[:armor_proficiency] = result[:armor_proficiency].concat(ARMOR).uniq
-        result[:abilities] = { str: 10, dex: 14, con: 11, int: 12, wis: 13, cha: 15 }
-        result[:health] = { current: 8, max: 8, temp: 0 }
-
-        result
+      def class_save_dc
+        @class_save_dc ||= main_class == 'bard' ? CLASS_SAVE_DC : __getobj__.class_save_dc
       end
 
-      def decorate_character_abilities(result:, class_level:)
-        result[:class_save_dc] = %i[dex cha] if result[:main_class] == 'bard'
-        result[:spell_classes][:bard] = {
-          save_dc: 8 + result[:proficiency_bonus] + result.dig(:modifiers, :cha),
-          attack_bonus: result[:proficiency_bonus] + result.dig(:modifiers, :cha),
-          cantrips_amount: cantrips_amount(class_level),
-          spells_amount: spells_amount(class_level),
-          max_spell_level: max_spell_level(class_level),
-          prepared_spells_amount: spells_amount(class_level)
-        }
-        result[:spells_slots] = spells_slots(class_level)
+      def spell_classes
+        @spell_classes ||= begin
+          result = __getobj__.spell_classes
+          result[:bard] = {
+            save_dc: 8 + proficiency_bonus + modifiers['cha'],
+            attack_bonus: proficiency_bonus + modifiers['cha'],
+            cantrips_amount: cantrips_amount,
+            spells_amount: spells_amount,
+            max_spell_level: max_spell_level,
+            prepared_spells_amount: spells_amount,
+            multiclass_spell_level: class_level # full level
+          }
+          result
+        end
+      end
 
-        result
+      def spells_slots
+        @spells_slots ||= ::Dnd5Character::ClassDecorateWrapper::SPELL_SLOTS[class_level]
       end
 
       private
 
-      def cantrips_amount(class_level)
+      def class_level
+        @class_level ||= classes['bard']
+      end
+
+      def cantrips_amount
         return 4 if class_level >= 10
         return 3 if class_level >= 4
 
         2
       end
 
-      def spells_amount(class_level)
+      def spells_amount
         return 22 if class_level >= 18
         return 20 if class_level >= 17
         return 19 if class_level >= 15
@@ -53,12 +54,8 @@ module Dnd5Character
         class_level + 3
       end
 
-      def max_spell_level(class_level)
+      def max_spell_level
         ::Dnd5Character::ClassDecorateWrapper::SPELL_SLOTS[class_level].keys.max
-      end
-
-      def spells_slots(class_level)
-        ::Dnd5Character::ClassDecorateWrapper::SPELL_SLOTS[class_level]
       end
     end
   end

@@ -13,8 +13,8 @@
     "options_type": null,
     "options": null,
     "visible": "true",
-    "eval_variables": {
-      "limit": "result.dig(:classes, 'monk')"
+    "description_eval_variables": {
+      "limit": "classes['monk']"
     },
     "limit_refresh": "short_rest"
   },
@@ -29,8 +29,6 @@
     "origin_value": "monk",
     "level": 2,
     "kind": "static",
-    "options_type": null,
-    "options": null,
     "visible": "true",
     "eval_variables": {}
   },
@@ -45,8 +43,6 @@
     "origin_value": "monk",
     "level": 2,
     "kind": "static",
-    "options_type": null,
-    "options": null,
     "visible": "true",
     "eval_variables": {}
   },
@@ -61,8 +57,6 @@
     "origin_value": "monk",
     "level": 2,
     "kind": "static",
-    "options_type": null,
-    "options": null,
     "visible": "true",
     "eval_variables": {}
   },
@@ -77,11 +71,9 @@
     "origin_value": "monk",
     "level": 3,
     "kind": "static",
-    "options_type": null,
-    "options": null,
     "visible": "true",
-    "eval_variables": {
-      "value": "'1d10+' + (result.dig(:modifiers, :dex) + result.dig(:classes, 'monk')).to_s"
+    "description_eval_variables": {
+      "value": "'1d10+' + (modifiers['dex'] + classes['monk']).to_s"
     }
   },
   {
@@ -95,11 +87,9 @@
     "origin_value": "monk",
     "level": 4,
     "kind": "static",
-    "options_type": null,
-    "options": null,
     "visible": "true",
-    "eval_variables": {
-      "value": "result.dig(:classes, 'monk') * 5"
+    "description_eval_variables": {
+      "value": "classes['monk'] * 5"
     }
   },
   {
@@ -113,11 +103,9 @@
     "origin_value": "monk",
     "level": 5,
     "kind": "static",
-    "options_type": null,
-    "options": null,
     "visible": "true",
-    "eval_variables": {
-      "value": "8 + result[:proficiency_bonus] + result.dig(:modifiers, :wis)"
+    "description_eval_variables": {
+      "value": "8 + proficiency_bonus + modifiers['wis']"
     }
   },
   {
@@ -131,8 +119,6 @@
     "origin_value": "monk",
     "level": 6,
     "kind": "static",
-    "options_type": null,
-    "options": null,
     "visible": "true",
     "eval_variables": {}
   },
@@ -147,8 +133,6 @@
     "origin_value": "monk",
     "level": 7,
     "kind": "static",
-    "options_type": null,
-    "options": null,
     "visible": "true",
     "eval_variables": {}
   },
@@ -163,8 +147,6 @@
     "origin_value": "monk",
     "level": 7,
     "kind": "static",
-    "options_type": null,
-    "options": null,
     "visible": "true",
     "eval_variables": {}
   },
@@ -179,8 +161,6 @@
     "origin_value": "monk",
     "level": 9,
     "kind": "static",
-    "options_type": null,
-    "options": null,
     "visible": "true",
     "eval_variables": {}
   },
@@ -192,11 +172,9 @@
     "origin_value": "monk",
     "level": 10,
     "kind": "update_result",
-    "options_type": null,
-    "options": null,
     "visible": "true",
     "eval_variables": {
-      "result": "result[:immunities] = result[:immunities].concat(%w[poison disease]).uniq"
+      "conditions": "conditions.merge({ immunity: conditions[:immunity].concat(%w[poison disease]).uniq })"
     }
   },
   {
@@ -210,8 +188,6 @@
     "origin_value": "monk",
     "level": 13,
     "kind": "static",
-    "options_type": null,
-    "options": null,
     "visible": "true",
     "eval_variables": {}
   },
@@ -226,11 +202,9 @@
     "origin_value": "monk",
     "level": 14,
     "kind": "static",
-    "options_type": null,
-    "options": null,
     "visible": "true",
     "eval_variables": {
-      "result": "result[:class_save_dc] = %i[str dex con int wis cha]"
+      "class_save_dc": "%i[str dex con int wis cha]"
     }
   },
   {
@@ -244,8 +218,6 @@
     "origin_value": "monk",
     "level": 15,
     "kind": "static",
-    "options_type": null,
-    "options": null,
     "visible": "true",
     "eval_variables": {}
   },
@@ -260,8 +232,6 @@
     "origin_value": "monk",
     "level": 18,
     "kind": "static",
-    "options_type": null,
-    "options": null,
     "visible": "true",
     "eval_variables": {}
   },
@@ -276,8 +246,6 @@
     "origin_value": "monk",
     "level": 20,
     "kind": "static",
-    "options_type": null,
-    "options": null,
     "visible": "true",
     "eval_variables": {}
   }

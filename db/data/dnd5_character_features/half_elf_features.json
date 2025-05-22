@@ -10,8 +10,6 @@
     "origin_value": "half_elf",
     "level": 0,
     "kind": "static",
-    "options_type": null,
-    "options": null,
     "visible": "true",
     "eval_variables": {}
   }

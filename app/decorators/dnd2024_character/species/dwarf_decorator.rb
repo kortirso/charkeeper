@@ -2,20 +2,9 @@
 
 module Dnd2024Character
   module Species
-    class DwarfDecorator
-      RESISTANCES = %w[poison].freeze
-
-      def decorate_fresh_character(result:)
-        result[:speed] = 30
-        result[:resistance] = result[:resistance].concat(RESISTANCES).uniq
-
-        result
-      end
-
-      def decorate_character_abilities(result:)
-        result[:darkvision] = 120
-
-        result
+    class DwarfDecorator < ApplicationDecorator
+      def darkvision
+        120
       end
     end
   end

@@ -13,8 +13,8 @@
     "options_type": null,
     "options": null,
     "visible": "true",
-    "eval_variables": {
-      "limit": "result.dig(:classes, 'sorcerer')"
+    "description_eval_variables": {
+      "limit": "classes['sorcerer']"
     },
     "limit_refresh": "long_rest"
   },
@@ -29,8 +29,6 @@
     "origin_value": "sorcerer",
     "level": 2,
     "kind": "static",
-    "options_type": null,
-    "options": null,
     "visible": "true",
     "eval_variables": {}
   },
@@ -45,8 +43,6 @@
     "origin_value": "sorcerer",
     "level": 2,
     "kind": "static",
-    "options_type": null,
-    "options": null,
     "visible": "true",
     "eval_variables": {}
   },
@@ -78,11 +74,9 @@
     "origin_value": "sorcerer",
     "level": 3,
     "kind": "static",
-    "options_type": null,
-    "options": null,
-    "visible": "result.dig(:selected_features, 'metamagic')&.include?('metamagic_careful_spell')",
-    "eval_variables": {
-      "value": "[1, result.dig(:modifiers, :cha)].max"
+    "visible": "selected_features['metamagic']&.include?('metamagic_careful_spell')",
+    "description_eval_variables": {
+      "value": "[1, modifiers['cha']].max"
     }
   },
   {
@@ -116,7 +110,7 @@
     "options": null,
     "visible": "result.dig(:selected_features, 'metamagic')&.include?('metamagic_empowered_spell')",
     "eval_variables": {
-      "value": "[1, result.dig(:modifiers, :cha)].max"
+      "value": "[1, modifiers['cha']].max"
     }
   },
   {
@@ -247,7 +241,7 @@
     "options": null,
     "visible": "true",
     "eval_variables": {
-      "result": "result.dig(:defense_gear, :armor).nil? ? result[:combat][:armor_class] = [result[:combat][:armor_class], 13 + result.dig(:modifiers, :dex) + result.dig(:defense_gear, :shield, :items_data, 'info', 'ac').to_i].max : nil"
+      "result": "result.dig(:defense_gear, :armor).nil? ? result[:combat][:armor_class] = [result[:combat][:armor_class], 13 + modifiers['dex'] + result.dig(:defense_gear, :shield, :items_data, 'info', 'ac').to_i].max : nil"
     }
   },
   {
@@ -264,7 +258,7 @@
     "options": null,
     "visible": "result[:selected_features].keys.include?('dragon_ancestor_black')",
     "eval_variables": {
-      "value": "result.dig(:modifiers, :cha)"
+      "value": "modifiers['cha']"
     }
   },
   {
@@ -281,7 +275,7 @@
     "options": null,
     "visible": "result[:selected_features].keys.include?('dragon_ancestor_blue')",
     "eval_variables": {
-      "value": "result.dig(:modifiers, :cha)"
+      "value": "modifiers['cha']"
     }
   },
   {
@@ -298,7 +292,7 @@
     "options": null,
     "visible": "result[:selected_features].keys.include?('dragon_ancestor_brass')",
     "eval_variables": {
-      "value": "result.dig(:modifiers, :cha)"
+      "value": "modifiers['cha']"
     }
   },
   {
@@ -315,7 +309,7 @@
     "options": null,
     "visible": "result[:selected_features].keys.include?('dragon_ancestor_bronze')",
     "eval_variables": {
-      "value": "result.dig(:modifiers, :cha)"
+      "value": "modifiers['cha']"
     }
   },
   {
@@ -332,7 +326,7 @@
     "options": null,
     "visible": "result[:selected_features].keys.include?('dragon_ancestor_copper')",
     "eval_variables": {
-      "value": "result.dig(:modifiers, :cha)"
+      "value": "modifiers['cha']"
     }
   },
   {
@@ -349,7 +343,7 @@
     "options": null,
     "visible": "result[:selected_features].keys.include?('dragon_ancestor_gold')",
     "eval_variables": {
-      "value": "result.dig(:modifiers, :cha)"
+      "value": "modifiers['cha']"
     }
   },
   {
@@ -366,7 +360,7 @@
     "options": null,
     "visible": "result[:selected_features].keys.include?('dragon_ancestor_green')",
     "eval_variables": {
-      "value": "result.dig(:modifiers, :cha)"
+      "value": "modifiers['cha']"
     }
   },
   {
@@ -383,7 +377,7 @@
     "options": null,
     "visible": "result[:selected_features].keys.include?('dragon_ancestor_red')",
     "eval_variables": {
-      "value": "result.dig(:modifiers, :cha)"
+      "value": "modifiers['cha']"
     }
   },
   {
@@ -400,7 +394,7 @@
     "options": null,
     "visible": "result[:selected_features].keys.include?('dragon_ancestor_silver')",
     "eval_variables": {
-      "value": "result.dig(:modifiers, :cha)"
+      "value": "modifiers['cha']"
     }
   },
   {
@@ -417,7 +411,7 @@
     "options": null,
     "visible": "result[:selected_features].keys.include?('dragon_ancestor_white')",
     "eval_variables": {
-      "value": "result.dig(:modifiers, :cha)"
+      "value": "modifiers['cha']"
     }
   },
   {

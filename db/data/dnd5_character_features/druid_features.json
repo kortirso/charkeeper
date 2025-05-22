@@ -20,10 +20,10 @@
     "options_type": null,
     "options": null,
     "visible": "true", // дополнительное условие для скрытия
-    "eval_variables": {
+    "description_eval_variables": {
       // значение переменной попадает в description
-      "value": "class_level = result.dig(:classes, 'druid'); class_level >= 8 ? 1 : (class_level >= 4 ? 0.5 : 0.25)",
-      "limit": "result.dig(:classes, 'druid') == 20 ? nil : 2" // кол-во использований до отдыха
+      "value": "class_level = classes['druid']; class_level >= 8 ? 1 : (class_level >= 4 ? 0.5 : 0.25)",
+      "limit": "classes['druid'] == 20 ? nil : 2" // кол-во использований до отдыха
     },
     "limit_refresh": "short_rest" // при каком отдыхе сбрасывается кол-во использований
   },
@@ -83,8 +83,8 @@
     "options_type": null,
     "options": null,
     "visible": "true",
-    "eval_variables": {
-      "value": "(result.dig(:classes, 'druid') / 2.0).round",
+    "description_eval_variables": {
+      "value": "(classes['druid'] / 2.0).round",
       "limit": "1"
     },
     "limit_refresh": "short_rest"

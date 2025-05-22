@@ -21,6 +21,87 @@ module Charkeeper
     register('api.telegram.client') { TelegramApi::Client.new }
     register('api.imgproxy.client') { ImgproxyApi::Client.new }
 
+    # builders
+    register('builders.dummy') { DummyBuilder.new }
+
+    register('builders.daggerheart_character.base') { DaggerheartCharacter::BaseBuilder.new }
+    register('builders.daggerheart_character.heritage') { DaggerheartCharacter::HeritageBuilder.new }
+    register('builders.daggerheart_character.class') { DaggerheartCharacter::ClassBuilder.new }
+    register('builders.daggerheart_character.heritages.elf') { DaggerheartCharacter::Heritages::ElfBuilder.new }
+    register('builders.daggerheart_character.classes.warrior') { DaggerheartCharacter::Classes::WarriorBuilder.new }
+
+    register('builders.pathfinder2_character.base') { Pathfinder2Character::BaseBuilder.new }
+    register('builders.pathfinder2_character.race') { Pathfinder2Character::RaceBuilder.new }
+    register('builders.pathfinder2_character.subrace') { Pathfinder2Character::SubraceBuilder.new }
+    register('builders.pathfinder2_character.class') { Pathfinder2Character::ClassBuilder.new }
+    register('builders.pathfinder2_character.races.dwarf') { Pathfinder2Character::Races::DwarfBuilder.new }
+    register('builders.pathfinder2_character.classes.fighter') { Pathfinder2Character::Classes::FighterBuilder.new }
+
+    register('builders.dnd5_character.base') { Dnd5Character::BaseBuilder.new }
+    register('builders.dnd5_character.race') { Dnd5Character::RaceBuilder.new }
+    register('builders.dnd5_character.subrace') { Dnd5Character::SubraceBuilder.new }
+    register('builders.dnd5_character.class') { Dnd5Character::ClassBuilder.new }
+
+    register('builders.dnd5_character.races.dragonborn') { Dnd5Character::Races::DragonbornBuilder.new }
+    register('builders.dnd5_character.races.dwarf') { Dnd5Character::Races::DwarfBuilder.new }
+    register('builders.dnd5_character.races.elf') { Dnd5Character::Races::ElfBuilder.new }
+    register('builders.dnd5_character.races.gnome') { Dnd5Character::Races::GnomeBuilder.new }
+    register('builders.dnd5_character.races.half_elf') { Dnd5Character::Races::HalfElfBuilder.new }
+    register('builders.dnd5_character.races.half_orc') { Dnd5Character::Races::HalfOrcBuilder.new }
+    register('builders.dnd5_character.races.halfling') { Dnd5Character::Races::HalflingBuilder.new }
+    register('builders.dnd5_character.races.human') { Dnd5Character::Races::HumanBuilder.new }
+    register('builders.dnd5_character.races.tiefling') { Dnd5Character::Races::TieflingBuilder.new }
+
+    register('builders.dnd5_character.subraces.drow') { Dnd5Character::Subraces::DrowBuilder.new }
+    register('builders.dnd5_character.subraces.high_elf') { Dnd5Character::Subraces::HighElfBuilder.new }
+    register('builders.dnd5_character.subraces.mountain_dwarf') { Dnd5Character::Subraces::MountainDwarfBuilder.new }
+    register('builders.dnd5_character.subraces.wood_elf') { Dnd5Character::Subraces::WoodElfBuilder.new }
+    register('builders.dnd5_character.subraces.stout') { Dnd5Character::Subraces::StoudBuilder.new }
+    register('builders.dnd5_character.subraces.rock_gnome') { Dnd5Character::Subraces::RockGnomeBuilder.new }
+
+    register('builders.dnd5_character.classes.barbarian') { Dnd5Character::Classes::BarbarianBuilder.new }
+    register('builders.dnd5_character.classes.bard') { Dnd5Character::Classes::BardBuilder.new }
+    register('builders.dnd5_character.classes.cleric') { Dnd5Character::Classes::ClericBuilder.new }
+    register('builders.dnd5_character.classes.druid') { Dnd5Character::Classes::DruidBuilder.new }
+    register('builders.dnd5_character.classes.fighter') { Dnd5Character::Classes::FighterBuilder.new }
+    register('builders.dnd5_character.classes.monk') { Dnd5Character::Classes::MonkBuilder.new }
+    register('builders.dnd5_character.classes.paladin') { Dnd5Character::Classes::PaladinBuilder.new }
+    register('builders.dnd5_character.classes.ranger') { Dnd5Character::Classes::RangerBuilder.new }
+    register('builders.dnd5_character.classes.rogue') { Dnd5Character::Classes::RogueBuilder.new }
+    register('builders.dnd5_character.classes.sorcerer') { Dnd5Character::Classes::SorcererBuilder.new }
+    register('builders.dnd5_character.classes.warlock') { Dnd5Character::Classes::WarlockBuilder.new }
+    register('builders.dnd5_character.classes.wizard') { Dnd5Character::Classes::WizardBuilder.new }
+    register('builders.dnd5_character.classes.artificer') { Dnd5Character::Classes::ArtificerBuilder.new }
+
+    register('builders.dnd2024_character.base') { Dnd2024Character::BaseBuilder.new }
+    register('builders.dnd2024_character.species') { Dnd2024Character::SpeciesBuilder.new }
+    register('builders.dnd2024_character.class') { Dnd2024Character::ClassBuilder.new }
+
+    register('builders.dnd2024_character.species.aasimar') { Dnd2024Character::Species::AasimarBuilder.new }
+    register('builders.dnd2024_character.species.dragonborn') { Dnd2024Character::Species::DragonbornBuilder.new }
+    register('builders.dnd2024_character.species.dwarf') { Dnd2024Character::Species::DwarfBuilder.new }
+    register('builders.dnd2024_character.species.elf') { Dnd2024Character::Species::ElfBuilder.new }
+    register('builders.dnd2024_character.species.gnome') { Dnd2024Character::Species::GnomeBuilder.new }
+    register('builders.dnd2024_character.species.goliath') { Dnd2024Character::Species::GoliathBuilder.new }
+    register('builders.dnd2024_character.species.halfling') { Dnd2024Character::Species::HalflingBuilder.new }
+    register('builders.dnd2024_character.species.human') { Dnd2024Character::Species::HumanBuilder.new }
+    register('builders.dnd2024_character.species.orc') { Dnd2024Character::Species::OrcBuilder.new }
+    register('builders.dnd2024_character.species.tiefling') { Dnd2024Character::Species::TieflingBuilder.new }
+
+    register('builders.dnd2024_character.classes.barbarian') { Dnd2024Character::Classes::BarbarianBuilder.new }
+    register('builders.dnd2024_character.classes.bard') { Dnd2024Character::Classes::BardBuilder.new }
+    register('builders.dnd2024_character.classes.cleric') { Dnd2024Character::Classes::ClericBuilder.new }
+    register('builders.dnd2024_character.classes.druid') { Dnd2024Character::Classes::DruidBuilder.new }
+    register('builders.dnd2024_character.classes.fighter') { Dnd2024Character::Classes::FighterBuilder.new }
+    register('builders.dnd2024_character.classes.monk') { Dnd2024Character::Classes::MonkBuilder.new }
+    register('builders.dnd2024_character.classes.paladin') { Dnd2024Character::Classes::PaladinBuilder.new }
+    register('builders.dnd2024_character.classes.ranger') { Dnd2024Character::Classes::RangerBuilder.new }
+    register('builders.dnd2024_character.classes.rogue') { Dnd2024Character::Classes::RogueBuilder.new }
+    register('builders.dnd2024_character.classes.sorcerer') { Dnd2024Character::Classes::SorcererBuilder.new }
+    register('builders.dnd2024_character.classes.warlock') { Dnd2024Character::Classes::WarlockBuilder.new }
+    register('builders.dnd2024_character.classes.wizard') { Dnd2024Character::Classes::WizardBuilder.new }
+    register('builders.dnd2024_character.classes.artificer') { Dnd2024Character::Classes::ArtificerBuilder.new }
+
     # commands
     register('commands.auth_context.add_identity') { AuthContext::AddIdentityCommand.new }
     register('commands.users_context.update') { UsersContext::UpdateCommand.new }
@@ -49,99 +130,6 @@ module Charkeeper
     register('commands.characters_context.daggerheart.update') { CharactersContext::Daggerheart::UpdateCommand.new }
 
     register('commands.image_processing.attach_avatar') { ImageProcessingContext::AttachAvatarCommand.new }
-
-    # decorators
-    register('decorators.dummy_decorator') { DummyDecorator.new }
-
-    register('decorators.pathfinder2_character.base_decorator') { Pathfinder2Character::BaseDecorator.new }
-    register('decorators.pathfinder2_character.race_wrapper') { Pathfinder2Character::RaceDecorateWrapper.new }
-    register('decorators.pathfinder2_character.subrace_wrapper') { Pathfinder2Character::SubraceDecorateWrapper.new }
-    register('decorators.pathfinder2_character.class_wrapper') { Pathfinder2Character::ClassDecorateWrapper.new }
-
-    register('decorators.pathfinder2_character.races.dwarf') { Pathfinder2Character::Races::DwarfDecorator.new }
-
-    register('decorators.pathfinder2_character.classes.fighter') { Pathfinder2Character::Classes::FighterDecorator.new }
-
-    register('decorators.daggerheart_character.base_decorator') { DaggerheartCharacter::BaseDecorator.new }
-    register('decorators.daggerheart_character.heritage_wrapper') { DaggerheartCharacter::HeritageDecorateWrapper.new }
-    register('decorators.daggerheart_character.class_wrapper') { DaggerheartCharacter::ClassDecorateWrapper.new }
-
-    register('decorators.daggerheart_character.heritages.elf') { DaggerheartCharacter::Heritages::ElfDecorator.new }
-
-    register('decorators.daggerheart_character.classes.warrior') { DaggerheartCharacter::Classes::WarriorDecorator.new }
-
-    register('decorators.dnd5_character.base_decorator') { Dnd5Character::BaseDecorator.new }
-    register('decorators.dnd5_character.features') { Dnd5Character::FeaturesDecorator.new }
-    register('decorators.dnd5_character.race_wrapper') { Dnd5Character::RaceDecorateWrapper.new }
-    register('decorators.dnd5_character.subrace_wrapper') { Dnd5Character::SubraceDecorateWrapper.new }
-    register('decorators.dnd5_character.class_wrapper') { Dnd5Character::ClassDecorateWrapper.new }
-    register('decorators.dnd5_character.subclass_wrapper') { Dnd5Character::SubclassDecorateWrapper.new }
-
-    register('decorators.dnd5_character.races.dragonborn') { Dnd5Character::Races::DragonbornDecorator.new }
-    register('decorators.dnd5_character.races.dwarf') { Dnd5Character::Races::DwarfDecorator.new }
-    register('decorators.dnd5_character.races.elf') { Dnd5Character::Races::ElfDecorator.new }
-    register('decorators.dnd5_character.races.gnome') { Dnd5Character::Races::GnomeDecorator.new }
-    register('decorators.dnd5_character.races.half_elf') { Dnd5Character::Races::HalfElfDecorator.new }
-    register('decorators.dnd5_character.races.half_orc') { Dnd5Character::Races::HalfOrcDecorator.new }
-    register('decorators.dnd5_character.races.halfling') { Dnd5Character::Races::HalflingDecorator.new }
-    register('decorators.dnd5_character.races.human') { Dnd5Character::Races::HumanDecorator.new }
-    register('decorators.dnd5_character.races.tiefling') { Dnd5Character::Races::TieflingDecorator.new }
-
-    register('decorators.dnd5_character.subraces.drow') { Dnd5Character::Subraces::DrowDecorator.new }
-    register('decorators.dnd5_character.subraces.high_elf') { Dnd5Character::Subraces::HighElfDecorator.new }
-    register('decorators.dnd5_character.subraces.mountain_dwarf') { Dnd5Character::Subraces::MountainDwarfDecorator.new }
-    register('decorators.dnd5_character.subraces.wood_elf') { Dnd5Character::Subraces::WoodElfDecorator.new }
-    register('decorators.dnd5_character.subraces.stout') { Dnd5Character::Subraces::StoudDecorator.new }
-    register('decorators.dnd5_character.subraces.rock_gnome') { Dnd5Character::Subraces::RockGnomeDecorator.new }
-
-    register('decorators.dnd5_character.classes.barbarian') { Dnd5Character::Classes::BarbarianDecorator.new }
-    register('decorators.dnd5_character.classes.bard') { Dnd5Character::Classes::BardDecorator.new }
-    register('decorators.dnd5_character.classes.cleric') { Dnd5Character::Classes::ClericDecorator.new }
-    register('decorators.dnd5_character.classes.druid') { Dnd5Character::Classes::DruidDecorator.new }
-    register('decorators.dnd5_character.classes.fighter') { Dnd5Character::Classes::FighterDecorator.new }
-    register('decorators.dnd5_character.classes.monk') { Dnd5Character::Classes::MonkDecorator.new }
-    register('decorators.dnd5_character.classes.paladin') { Dnd5Character::Classes::PaladinDecorator.new }
-    register('decorators.dnd5_character.classes.ranger') { Dnd5Character::Classes::RangerDecorator.new }
-    register('decorators.dnd5_character.classes.rogue') { Dnd5Character::Classes::RogueDecorator.new }
-    register('decorators.dnd5_character.classes.sorcerer') { Dnd5Character::Classes::SorcererDecorator.new }
-    register('decorators.dnd5_character.classes.warlock') { Dnd5Character::Classes::WarlockDecorator.new }
-    register('decorators.dnd5_character.classes.wizard') { Dnd5Character::Classes::WizardDecorator.new }
-    register('decorators.dnd5_character.classes.artificer') { Dnd5Character::Classes::ArtificerDecorator.new }
-
-    register('decorators.dnd5_character.subclasses.circle_of_the_land') {
-      Dnd5Character::Subclasses::CircleOfTheLandDecorator.new
-    }
-    register('decorators.dnd5_character.subclasses.alchemist') { Dnd5Character::Subclasses::AlchemistDecorator.new }
-
-    register('decorators.dnd2024_character.base_decorator') { Dnd2024Character::BaseDecorator.new }
-    register('decorators.dnd2024_character.species_wrapper') { Dnd2024Character::SpeciesDecorateWrapper.new }
-    register('decorators.dnd2024_character.class_wrapper') { Dnd2024Character::ClassDecorateWrapper.new }
-    register('decorators.dnd2024_character.features') { Dnd2024Character::FeaturesDecorator.new }
-
-    register('decorators.dnd2024_character.species.dragonborn') { Dnd2024Character::Species::DragonbornDecorator.new }
-    register('decorators.dnd2024_character.species.dwarf') { Dnd2024Character::Species::DwarfDecorator.new }
-    register('decorators.dnd2024_character.species.elf') { Dnd2024Character::Species::ElfDecorator.new }
-    register('decorators.dnd2024_character.species.gnome') { Dnd2024Character::Species::GnomeDecorator.new }
-    register('decorators.dnd2024_character.species.orc') { Dnd2024Character::Species::OrcDecorator.new }
-    register('decorators.dnd2024_character.species.halfling') { Dnd2024Character::Species::HalflingDecorator.new }
-    register('decorators.dnd2024_character.species.human') { Dnd2024Character::Species::HumanDecorator.new }
-    register('decorators.dnd2024_character.species.tiefling') { Dnd2024Character::Species::TieflingDecorator.new }
-    register('decorators.dnd2024_character.species.aasimar') { Dnd2024Character::Species::AasimarDecorator.new }
-    register('decorators.dnd2024_character.species.goliath') { Dnd2024Character::Species::GoliathDecorator.new }
-
-    register('decorators.dnd2024_character.classes.barbarian') { Dnd2024Character::Classes::BarbarianDecorator.new }
-    register('decorators.dnd2024_character.classes.bard') { Dnd2024Character::Classes::BardDecorator.new }
-    register('decorators.dnd2024_character.classes.cleric') { Dnd2024Character::Classes::ClericDecorator.new }
-    register('decorators.dnd2024_character.classes.druid') { Dnd2024Character::Classes::DruidDecorator.new }
-    register('decorators.dnd2024_character.classes.fighter') { Dnd2024Character::Classes::FighterDecorator.new }
-    register('decorators.dnd2024_character.classes.monk') { Dnd2024Character::Classes::MonkDecorator.new }
-    register('decorators.dnd2024_character.classes.paladin') { Dnd2024Character::Classes::PaladinDecorator.new }
-    register('decorators.dnd2024_character.classes.ranger') { Dnd2024Character::Classes::RangerDecorator.new }
-    register('decorators.dnd2024_character.classes.rogue') { Dnd2024Character::Classes::RogueDecorator.new }
-    register('decorators.dnd2024_character.classes.sorcerer') { Dnd2024Character::Classes::SorcererDecorator.new }
-    register('decorators.dnd2024_character.classes.warlock') { Dnd2024Character::Classes::WarlockDecorator.new }
-    register('decorators.dnd2024_character.classes.wizard') { Dnd2024Character::Classes::WizardDecorator.new }
-    register('decorators.dnd2024_character.classes.artificer') { Dnd2024Character::Classes::ArtificerDecorator.new }
 
     # services
     register('services.auth_context.validate_web_telegram_signature') { AuthContext::WebTelegramSignatureValidateService.new }

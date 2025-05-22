@@ -2,50 +2,49 @@
 
 module Dnd5Character
   module Classes
-    class DruidDecorator
-      LANGUAGES = %w[druidic].freeze
-      DEFAULT_WEAPON_SKILLS = %w[quarterstaff mace dart club dagger spear javelin sling sickle scimitar].freeze
-      ARMOR = ['light armor', 'medium armor', 'shield'].freeze
+    class DruidDecorator < ApplicationDecorator
+      CLASS_SAVE_DC = %w[int wis].freeze
 
-      def decorate_fresh_character(result:)
-        result[:languages] = result[:languages].concat(LANGUAGES).uniq
-        result[:weapon_skills] = result[:weapon_skills].concat(DEFAULT_WEAPON_SKILLS).uniq
-        result[:armor_proficiency] = result[:armor_proficiency].concat(ARMOR).uniq
-        result[:abilities] = { str: 11, dex: 13, con: 12, int: 14, wis: 15, cha: 10 }
-        result[:health] = { current: 9, max: 9, temp: 0 }
-
-        result
+      def class_save_dc
+        @class_save_dc ||= main_class == 'druid' ? CLASS_SAVE_DC : __getobj__.class_save_dc
       end
 
-      def decorate_character_abilities(result:, class_level:)
-        result[:class_save_dc] = %i[int wis] if result[:main_class] == 'druid'
-        result[:spell_classes][:druid] = {
-          save_dc: 8 + result[:proficiency_bonus] + result.dig(:modifiers, :wis),
-          attack_bonus: result[:proficiency_bonus] + result.dig(:modifiers, :wis),
-          cantrips_amount: cantrips_amount(class_level),
-          max_spell_level: max_spell_level(class_level),
-          prepared_spells_amount: [result.dig(:modifiers, :wis) + class_level, 1].max
-        }
-        result[:spells_slots] = spells_slots(class_level)
+      # rubocop: disable Metrics/AbcSize
+      def spell_classes
+        @spell_classes ||= begin
+          result = __getobj__.spell_classes
+          result[:druid] = {
+            save_dc: 8 + proficiency_bonus + modifiers['wis'],
+            attack_bonus: proficiency_bonus + modifiers['wis'],
+            cantrips_amount: cantrips_amount,
+            max_spell_level: max_spell_level,
+            prepared_spells_amount: [modifiers['wis'] + class_level, 1].max,
+            multiclass_spell_level: class_level # full level
+          }
+          result
+        end
+      end
+      # rubocop: enable Metrics/AbcSize
 
-        result
+      def spells_slots
+        @spells_slots ||= ::Dnd5Character::ClassDecorateWrapper::SPELL_SLOTS[class_level]
       end
 
       private
 
-      def cantrips_amount(class_level)
+      def class_level
+        @class_level ||= classes['druid']
+      end
+
+      def cantrips_amount
         return 4 if class_level >= 10
         return 3 if class_level >= 4
 
         2
       end
 
-      def max_spell_level(class_level)
+      def max_spell_level
         ::Dnd5Character::ClassDecorateWrapper::SPELL_SLOTS[class_level].keys.max
-      end
-
-      def spells_slots(class_level)
-        ::Dnd5Character::ClassDecorateWrapper::SPELL_SLOTS[class_level]
       end
     end
   end

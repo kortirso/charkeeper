@@ -2,58 +2,82 @@
 
 module Dnd2024Character
   class FeaturesDecorator
-    # rubocop: disable Metrics/AbcSize
-    def decorate_character_abilities(result:)
-      available_features(result).each do |feature|
-        visible = eval_variable(feature.visible, result)
-        next unless visible
+    attr_accessor :wrapped
 
-        feature.eval_variables.transform_values! { |value| eval_variable(value, result) }
-        next if feature.kind == 'update_result'
+    def initialize(obj)
+      @wrapped = obj
+    end
 
-        result[:features] << {
-          slug: feature.slug,
-          kind: feature.kind,
-          title: feature.title[I18n.locale.to_s],
-          description: update_feature_description(feature),
-          limit: feature.eval_variables['limit'],
-          options_type: feature.options_type,
-          options: feature.options,
-          choose_once: feature.choose_once
-        }.compact
+    def method_missing(method, *_args)
+      if instance_variable_defined?(:"@#{method}")
+        instance_variable_get(:"@#{method}")
+      else
+        wrapped.public_send(method)
       end
+    end
 
-      result
+    # rubocop: disable Metrics/AbcSize, Metrics/MethodLength
+    def features
+      @features ||= begin
+        result = wrapped.features
+        available_features.each do |feature|
+          visible = eval_variable(feature.visible)
+          next unless visible
+
+          feature.eval_variables.each do |method_name, variable|
+            instance_variable_set(:"@#{method_name}", eval_variable(variable))
+          end
+
+          feature.eval_variables.transform_values! { |value| eval_variable(value) }
+          next if feature.kind == 'update_result'
+
+          feature.description_eval_variables.transform_values! { |value| eval_variable(value) }
+
+          result << {
+            slug: feature.slug,
+            kind: feature.kind,
+            title: feature.title[I18n.locale.to_s],
+            description: update_feature_description(feature),
+            options_type: feature.options_type,
+            options: feature.options,
+            choose_once: feature.choose_once,
+            limit: feature.description_eval_variables['limit'],
+            limit_refresh: feature.limit_refresh
+          }.compact
+        end
+        result
+      end
     end
 
     private
 
-    def available_features(result)
-      Dnd2024::Character::Feature.where(origin: 'species', origin_value: result[:species])
-        .or(Dnd2024::Character::Feature.where(origin: 'legacy', origin_value: result[:legacy]))
-        .or(Dnd2024::Character::Feature.where(origin: 'class', origin_value: result[:classes].keys))
+    def available_features
+      Dnd2024::Character::Feature.where(origin: 'species', origin_value: species)
+        .or(Dnd2024::Character::Feature.where(origin: 'legacy', origin_value: legacy))
+        .or(Dnd2024::Character::Feature.where(origin: 'class', origin_value: classes.keys))
         .order(level: :asc)
+        .to_a
         .select do |feature|
-          next result[:overall_level] >= feature.level if feature.origin == 'species'
-          next result[:classes][feature.origin_value] >= feature.level if feature.origin == 'class'
+          next level >= feature.level if feature.origin == 'species'
+          next classes[feature.origin_value] >= feature.level if feature.origin == 'class'
 
           false
         end
     end
-    # rubocop: enable Metrics/AbcSize
+    # rubocop: enable Metrics/AbcSize, Metrics/MethodLength
 
     def update_feature_description(feature)
       result = feature.description[I18n.locale.to_s]
-      feature.eval_variables.each { |key, value| result.gsub!("{{#{key}}}", value.to_s) }
+      feature.description_eval_variables.each { |key, value| result.gsub!("{{#{key}}}", value.to_s) }
       result
     end
 
-    # rubocop: disable Security/Eval, Lint/UnusedMethodArgument, Style/MethodCalledOnDoEndBlock
-    def eval_variable(variable, result)
+    # rubocop: disable Security/Eval, Style/MethodCalledOnDoEndBlock
+    def eval_variable(variable)
       lambda do
         eval(variable)
       end.call
     end
-    # rubocop: enable Security/Eval, Lint/UnusedMethodArgument, Style/MethodCalledOnDoEndBlock
+    # rubocop: enable Security/Eval, Style/MethodCalledOnDoEndBlock
   end
 end

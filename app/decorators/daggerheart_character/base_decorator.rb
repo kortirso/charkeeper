@@ -1,25 +1,10 @@
 # frozen_string_literal: true
 
 module DaggerheartCharacter
-  class BaseDecorator
-    def decorate_fresh_character(heritage:, main_class:)
-      {
-        heritage: heritage,
-        main_class: main_class,
-        classes: { main_class => 1 }
-      }.compact
-    end
+  class BaseDecorator < SimpleDelegator
+    delegate :id, :name, :data, to: :__getobj__
+    delegate :heritage, :main_class, :classes, :level, :traits, to: :data
 
-    def decorate_character_abilities(character:)
-      data = character.data
-
-      {
-        heritage: data.heritage,
-        main_class: data.main_class,
-        classes: data.classes,
-        overall_level: data.level,
-        traits: data.traits
-      }.compact
-    end
+    def method_missing(_method, *args); end
   end
 end

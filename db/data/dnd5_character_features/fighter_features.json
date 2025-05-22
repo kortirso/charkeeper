@@ -27,11 +27,9 @@
     "origin_value": "fighter",
     "level": 1,
     "kind": "static",
-    "options_type": null,
-    "options": null,
     "visible": "true",
-    "eval_variables": {
-      "value": "'1d10+' + result.dig(:classes, 'fighter').to_s",
+    "description_eval_variables": {
+      "value": "'1d10+' + classes['fighter'].to_s",
       "limit": "1"
     },
     "limit_refresh": "short_rest"
@@ -47,11 +45,9 @@
     "origin_value": "fighter",
     "level": 2,
     "kind": "static",
-    "options_type": null,
-    "options": null,
     "visible": "true",
-    "eval_variables": {
-      "limit": "result.dig(:classes, 'fighter') >= 17 ? 2 : 1"
+    "description_eval_variables": {
+      "limit": "classes['fighter'] >= 17 ? 2 : 1"
     },
     "limit_refresh": "short_rest"
   },
@@ -65,7 +61,7 @@
     "kind": "update_result",
     "visible": "true",
     "eval_variables": {
-      "result": "class_level = result.dig(:classes, 'fighter'); result[:combat][:attacks_per_action] = class_level == 20 ? 4 : (class_level >= 11 ? 3 : (class_level >= 5 ? 2 : 1))"
+      "attacks_per_action": "class_level = classes['fighter']; class_level == 20 ? 4 : (class_level >= 11 ? 3 : (class_level >= 5 ? 2 : 1))"
     }
   },
   {
@@ -82,8 +78,8 @@
     "options_type": null,
     "options": null,
     "visible": "true",
-    "eval_variables": {
-      "limit": "class_level = result.dig(:classes, 'fighter'); class_level >= 17 ? 3 : (class_level >= 13 ? 2 : 1)"
+    "description_eval_variables": {
+      "limit": "class_level = classes['fighter']; class_level >= 17 ? 3 : (class_level >= 13 ? 2 : 1)"
     },
     "limit_refresh": "long_rest"
   },
@@ -98,9 +94,7 @@
     "origin_value": "champion",
     "level": 3,
     "kind": "static",
-    "options_type": null,
-    "options": null,
-    "visible": "result.dig(:classes, 'fighter') < 15",
+    "visible": "classes['fighter'] < 15",
     "eval_variables": {}
   },
   {
@@ -114,12 +108,10 @@
     "origin_value": "champion",
     "level": 7,
     "kind": "static",
-    "options_type": null,
-    "options": null,
     "visible": "true",
-    "eval_variables": {
-      "value": "(result[:proficiency_bonus] / 2.0).round",
-      "distance": "result.dig(:modifiers, :str)"
+    "description_eval_variables": {
+      "value": "(proficiency_bonus / 2.0).round",
+      "distance": "modifiers['str']"
     }
   },
   {
@@ -133,8 +125,6 @@
     "origin_value": "champion",
     "level": 15,
     "kind": "static",
-    "options_type": null,
-    "options": null,
     "visible": "true",
     "eval_variables": {}
   },
@@ -149,11 +139,9 @@
     "origin_value": "champion",
     "level": 18,
     "kind": "static",
-    "options_type": null,
-    "options": null,
     "visible": "true",
-    "eval_variables": {
-      "value": "5 + result.dig(:modifiers, :con)"
+    "description_eval_variables": {
+      "value": "5 + modifiers['con']"
     }
   }
 ]

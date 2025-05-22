@@ -2,46 +2,49 @@
 
 module Dnd5Character
   module Classes
-    class WizardDecorator
-      DEFAULT_WEAPON_SKILLS = %w[quarterstaff dart dagger sling light_crossbow].freeze
+    class WizardDecorator < ApplicationDecorator
+      CLASS_SAVE_DC = %w[int wis].freeze
 
-      def decorate_fresh_character(result:)
-        result[:weapon_skills] = result[:weapon_skills].concat(DEFAULT_WEAPON_SKILLS).uniq
-        result[:abilities] = { str: 10, dex: 12, con: 11, int: 15, wis: 14, cha: 13 }
-        result[:health] = { current: 6, max: 6, temp: 0 }
-
-        result
+      def class_save_dc
+        @class_save_dc ||= main_class == 'wizard' ? CLASS_SAVE_DC : __getobj__.class_save_dc
       end
 
-      def decorate_character_abilities(result:, class_level:)
-        result[:class_save_dc] = %i[int wis] if result[:main_class] == 'wizard'
-        result[:spell_classes][:wizard] = {
-          save_dc: 8 + result[:proficiency_bonus] + result.dig(:modifiers, :int),
-          attack_bonus: result[:proficiency_bonus] + result.dig(:modifiers, :int),
-          cantrips_amount: cantrips_amount(class_level),
-          max_spell_level: max_spell_level(class_level),
-          prepared_spells_amount: [result.dig(:modifiers, :int) + class_level, 1].max
-        }
-        result[:spells_slots] = spells_slots(class_level)
+      # rubocop: disable Metrics/AbcSize
+      def spell_classes
+        @spell_classes ||= begin
+          result = __getobj__.spell_classes
+          result[:wizard] = {
+            save_dc: 8 + proficiency_bonus + modifiers['int'],
+            attack_bonus: proficiency_bonus + modifiers['int'],
+            cantrips_amount: cantrips_amount,
+            max_spell_level: max_spell_level,
+            prepared_spells_amount: [modifiers['int'] + class_level, 1].max,
+            multiclass_spell_level: class_level # full level
+          }
+          result
+        end
+      end
+      # rubocop: enable Metrics/AbcSize
 
-        result
+      def spells_slots
+        @spells_slots ||= ::Dnd5Character::ClassDecorateWrapper::SPELL_SLOTS[class_level]
       end
 
       private
 
-      def cantrips_amount(class_level)
+      def class_level
+        @class_level ||= classes['wizard']
+      end
+
+      def cantrips_amount
         return 5 if class_level >= 10
         return 4 if class_level >= 4
 
         3
       end
 
-      def max_spell_level(class_level)
+      def max_spell_level
         ::Dnd5Character::ClassDecorateWrapper::SPELL_SLOTS[class_level].keys.max
-      end
-
-      def spells_slots(class_level)
-        ::Dnd5Character::ClassDecorateWrapper::SPELL_SLOTS[class_level]
       end
     end
   end

@@ -7,9 +7,10 @@
     "origin_value": "all",
     "level": 1,
     "kind": "update_result",
-    "visible": "result[:selected_features].keys.include?('fighting_style_defense')",
+    "visible": "selected_features.keys.include?('fighting_style_defense')",
+    "description_eval_variables": {},
     "eval_variables": {
-      "result": "result[:combat][:armor_class] += 1 if result.dig(:defense_gear, :armor).present?"
+      "armor_class": "defense_gear[:armor].present? ? (armor_class += 1) : armor_class"
     }
   },
   {
@@ -20,9 +21,10 @@
     "origin_value": "all",
     "level": 1,
     "kind": "update_result",
-    "visible": "result[:selected_features].keys.include?('fighting_style_archery')",
+    "visible": "selected_features.keys.include?('fighting_style_archery')",
+    "description_eval_variables": {},
     "eval_variables": {
-      "result": "result[:attacks].each { |attack| next if attack[:type] != 'range'; attack[:attack_bonus] += 2 }"
+      "attacks": "attacks.each { |attack| next if attack[:type] != 'range'; attack[:attack_bonus] += 2 }"
     }
   },
   {
@@ -33,9 +35,10 @@
     "origin_value": "all",
     "level": 1,
     "kind": "update_result",
-    "visible": "result[:selected_features].keys.include?('fighting_style_dueling')",
+    "visible": "selected_features.keys.include?('fighting_style_dueling')",
+    "description_eval_variables": {},
     "eval_variables": {
-      "result": "result[:attacks].each { |attack| next if attack[:type] != 'melee'; next if attack[:hands] != '1'; next if attack[:tooltips].include?('dual'); attack[:damage_bonus] += 2 }"
+      "attacks": "attacks.each { |attack| next if attack[:type] != 'melee'; next if attack[:hands] != '1'; next if attack[:tooltips].include?('dual'); attack[:damage_bonus] += 2 }"
     }
   },
   {
@@ -46,9 +49,10 @@
     "origin_value": "all",
     "level": 1,
     "kind": "update_result",
-    "visible": "result[:selected_features].keys.include?('fighting_style_two_weapon_fighting')",
+    "visible": "selected_features.keys.include?('fighting_style_two_weapon_fighting')",
+    "description_eval_variables": {},
     "eval_variables": {
-      "result": "result[:attacks].each { |attack| next if attack[:action_type] != 'bonus action'; next if attack[:tooltips].exclude?('dual'); attack[:damage_bonus] += result[:attacks].find { |i| i[:hands] == 1 && i[:action_type] == 'action' && i[:slug] == attack[:slug] }[:damage_bonus] }"
+      "attacks": "attacks.each { |attack| next if attack[:action_type] != 'bonus action'; next if attack[:tooltips].exclude?('dual'); attack[:damage_bonus] += result[:attacks].find { |i| i[:hands] == 1 && i[:action_type] == 'action' && i[:slug] == attack[:slug] }[:damage_bonus] }"
     }
   },
   {
@@ -62,9 +66,8 @@
     "origin_value": "all",
     "level": 1,
     "kind": "static",
-    "options_type": null,
-    "options": null,
-    "visible": "result[:selected_features].keys.include?('fighting_style_great_weapon_fighting')",
+    "visible": "selected_features.keys.include?('fighting_style_great_weapon_fighting')",
+    "description_eval_variables": {},
     "eval_variables": {}
   },
   {
@@ -78,9 +81,8 @@
     "origin_value": "all",
     "level": 1,
     "kind": "static",
-    "options_type": null,
-    "options": null,
-    "visible": "result[:selected_features].keys.include?('fighting_style_protection')",
+    "visible": "selected_features.keys.include?('fighting_style_protection')",
+    "description_eval_variables": {},
     "eval_variables": {}
   }
 ]

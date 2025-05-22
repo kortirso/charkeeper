@@ -10,8 +10,6 @@
     "origin_value": "dwarf",
     "level": 0,
     "kind": "static",
-    "options_type": null,
-    "options": null,
     "visible": "true",
     "eval_variables": {}
   },
@@ -26,8 +24,6 @@
     "origin_value": "dwarf",
     "level": 0,
     "kind": "static",
-    "options_type": null,
-    "options": null,
     "visible": "true",
     "eval_variables": {}
   },
@@ -42,8 +38,6 @@
     "origin_value": "hill_dwarf",
     "level": 0,
     "kind": "static",
-    "options_type": null,
-    "options": null,
     "visible": "true",
     "eval_variables": {}
   }

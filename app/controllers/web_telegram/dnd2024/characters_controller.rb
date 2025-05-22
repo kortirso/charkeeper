@@ -9,7 +9,7 @@ module WebTelegram
       ]
       include SerializeResource
 
-      CREATE_SERIALIZE_FIELDS = %i[id name object_data provider].freeze
+      CREATE_SERIALIZE_FIELDS = %i[id name level species legacy classes provider avatar].freeze
 
       def create
         case character_create.call(request_params.merge({ user: current_user }))

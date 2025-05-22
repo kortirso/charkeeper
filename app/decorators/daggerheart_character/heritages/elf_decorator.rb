@@ -2,14 +2,7 @@
 
 module DaggerheartCharacter
   module Heritages
-    class ElfDecorator
-      def decorate_fresh_character(result:)
-        result
-      end
-
-      def decorate_character_abilities(result:)
-        result
-      end
+    class ElfDecorator < ApplicationDecorator
     end
   end
 end

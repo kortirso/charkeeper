@@ -11,9 +11,9 @@
     "level": 2,
     "kind": "static",
     "visible": "true",
-    "eval_variables": {
+    "description_eval_variables": {
       "limit": "1",
-      "value": "(result.dig(:classes, 'wizard') / 2.0).round"
+      "value": "(classes['wizard'] / 2.0).round"
     },
     "limit_refresh": "long_rest"
   },

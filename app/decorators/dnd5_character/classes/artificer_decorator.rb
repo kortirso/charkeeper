@@ -2,9 +2,7 @@
 
 module Dnd5Character
   module Classes
-    class ArtificerDecorator
-      WEAPON_CORE = ['light weapon'].freeze
-      ARMOR = ['light armor', 'medium armor', 'shield'].freeze
+    class ArtificerDecorator < ApplicationDecorator
       SPELL_SLOTS = {
         1 => { 1 => 2 },
         2 => { 1 => 2 },
@@ -27,45 +25,48 @@ module Dnd5Character
         19 => { 1 => 4, 2 => 3, 3 => 3, 4 => 3, 5 => 2 },
         20 => { 1 => 4, 2 => 3, 3 => 3, 4 => 3, 5 => 2 }
       }.freeze
+      CLASS_SAVE_DC = %w[con int].freeze
 
-      def decorate_fresh_character(result:)
-        result[:weapon_core_skills] = result[:weapon_core_skills].concat(WEAPON_CORE).uniq
-        result[:armor_proficiency] = result[:armor_proficiency].concat(ARMOR).uniq
-        result[:abilities] = { str: 11, dex: 12, con: 14, int: 15, wis: 13, cha: 10 }
-        result[:health] = { current: 10, max: 10, temp: 0 }
-
-        result
+      def class_save_dc
+        @class_save_dc ||= main_class == 'artificer' ? CLASS_SAVE_DC : __getobj__.class_save_dc
       end
 
-      def decorate_character_abilities(result:, class_level:)
-        result[:class_save_dc] = %i[con int] if result[:main_class] == 'artificer'
-        result[:spell_classes][:artificer] = {
-          save_dc: 8 + result[:proficiency_bonus] + result.dig(:modifiers, :int),
-          attack_bonus: result[:proficiency_bonus] + result.dig(:modifiers, :int),
-          cantrips_amount: cantrips_amount(class_level),
-          max_spell_level: max_spell_level(class_level),
-          prepared_spells_amount: [result.dig(:modifiers, :int) + (class_level / 2), 1].max
-        }
-        result[:spells_slots] = spells_slots(class_level)
+      # rubocop: disable Metrics/AbcSize
+      def spell_classes
+        @spell_classes ||= begin
+          result = __getobj__.spell_classes
+          result[:artificer] = {
+            save_dc: 8 + proficiency_bonus + modifiers['int'],
+            attack_bonus: proficiency_bonus + modifiers['int'],
+            cantrips_amount: cantrips_amount,
+            max_spell_level: max_spell_level,
+            prepared_spells_amount: [modifiers['int'] + (class_level / 2), 1].max,
+            multiclass_spell_level: (class_level / 2.0).round # half round up
+          }
+          result
+        end
+      end
+      # rubocop: enable Metrics/AbcSize
 
-        result
+      def spells_slots
+        @spells_slots ||= SPELL_SLOTS[class_level]
       end
 
       private
 
-      def cantrips_amount(class_level)
+      def class_level
+        @class_level ||= classes['artificer']
+      end
+
+      def cantrips_amount
         return 4 if class_level >= 14
         return 3 if class_level >= 10
 
         2
       end
 
-      def max_spell_level(class_level)
+      def max_spell_level
         SPELL_SLOTS[class_level].keys.max
-      end
-
-      def spells_slots(class_level)
-        SPELL_SLOTS[class_level]
       end
     end
   end

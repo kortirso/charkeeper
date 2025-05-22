@@ -5,26 +5,14 @@ import {
   DaggerheartTraits, Dnd5Notes
 } from '../../../components';
 
-import { useAppState, useAppLocale } from '../../../context';
-
-import { updateCharacterRequest } from '../../../requests/updateCharacterRequest';
+import { useAppLocale } from '../../../context';
 
 export const Daggerheart = (props) => {
-  // page state
   const [activeTab, setActiveTab] = createSignal('traits');
 
-  const [appState] = useAppState();
   const [, dict] = useAppLocale();
 
   const t = i18n.translator(dict);
-
-  // sends request and reload character data
-  const updateCharacter = async (payload) => {
-    const result = await updateCharacterRequest(appState.accessToken, props.provider, props.characterId, { character: payload });
-
-    if (result.errors === undefined) await props.onReloadCharacter();
-    return result;
-  }
 
   return (
     <>
@@ -46,8 +34,9 @@ export const Daggerheart = (props) => {
         <Switch>
           <Match when={activeTab() === 'traits'}>
             <DaggerheartTraits
-              initialTraits={props.decoratedData.traits}
-              onReloadCharacter={updateCharacter}
+              id={props.character.id}
+              initialTraits={props.character.traits}
+              onReplaceCharacter={props.onReplaceCharacter}
             />
           </Match>
           <Match when={activeTab() === 'notes'}>

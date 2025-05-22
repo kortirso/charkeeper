@@ -10,8 +10,6 @@
     "origin_value": "gnome",
     "level": 0,
     "kind": "static",
-    "options_type": null,
-    "options": null,
     "visible": "true",
     "eval_variables": {}
   },
@@ -39,9 +37,9 @@
     "origin_value": "forest_gnome",
     "level": 0,
     "kind": "update_result",
-    "visible": "result[:selected_features].keys.include?('gnome_spellcasting')",
+    "visible": "selected_features.keys.include?('gnome_spellcasting')",
     "eval_variables": {
-      "result": "ability = result.dig(:selected_features, 'gnome_spellcasting').to_sym; result[:static_spells].merge!({ 'minor_illusion' => { 'attack_bonus' => result[:proficiency_bonus] + result.dig(:modifiers, ability), 'save_dc' => 8 + result[:proficiency_bonus] + result.dig(:modifiers, ability) } })"
+      "static_spells": "ability = selected_features['gnome_spellcasting']; static_spells.merge({ 'minor_illusion' => { 'attack_bonus' => proficiency_bonus + modifiers[ability], 'save_dc' => 8 + proficiency_bonus + modifiers[ability] } })"
     }
   },
   {
@@ -52,9 +50,9 @@
     "origin_value": "forest_gnome",
     "level": 0,
     "kind": "update_result",
-    "visible": "result[:selected_features].keys.include?('gnome_spellcasting')",
+    "visible": "selected_features.keys.include?('gnome_spellcasting')",
     "eval_variables": {
-      "result": "ability = result.dig(:selected_features, 'gnome_spellcasting').to_sym; result[:static_spells].merge!({ 'speak_with_animals' => { 'limit' => result[:proficiency_bonus], 'attack_bonus' => result[:proficiency_bonus] + result.dig(:modifiers, ability), 'save_dc' => 8 + result[:proficiency_bonus] + result.dig(:modifiers, ability) } })"
+      "static_spells": "ability = selected_features['gnome_spellcasting']; static_spells.merge({ 'speak_with_animals' => { 'limit' => proficiency_bonus, 'attack_bonus' => proficiency_bonus + modifiers[ability], 'save_dc' => 8 + proficiency_bonus + modifiers[ability] } })"
     }
   },
   {
@@ -65,9 +63,9 @@
     "origin_value": "rock_gnome",
     "level": 0,
     "kind": "update_result",
-    "visible": "result[:selected_features].keys.include?('gnome_spellcasting')",
+    "visible": "selected_features.keys.include?('gnome_spellcasting')",
     "eval_variables": {
-      "result": "ability = result.dig(:selected_features, 'gnome_spellcasting').to_sym; result[:static_spells].merge!({ 'mending' => { 'attack_bonus' => result[:proficiency_bonus] + result.dig(:modifiers, ability), 'save_dc' => 8 + result[:proficiency_bonus] + result.dig(:modifiers, ability) }, 'prestidigitation' => { 'attack_bonus' => result[:proficiency_bonus] + result.dig(:modifiers, ability), 'save_dc' => 8 + result[:proficiency_bonus] + result.dig(:modifiers, ability) } })"
+      "static_spells": "ability = selected_features['gnome_spellcasting']; static_spells.merge({ 'mending' => { 'attack_bonus' => proficiency_bonus + modifiers[ability], 'save_dc' => 8 + proficiency_bonus + modifiers[ability] }, 'prestidigitation' => { 'attack_bonus' => proficiency_bonus + modifiers[ability], 'save_dc' => 8 + proficiency_bonus + modifiers[ability] } })"
     }
   }
 ]

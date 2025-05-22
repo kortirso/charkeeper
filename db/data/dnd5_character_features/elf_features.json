@@ -10,9 +10,8 @@
     "origin_value": "elf",
     "level": 0,
     "kind": "static",
-    "options_type": null,
-    "options": null,
     "visible": "true",
+    "description_eval_variables": {},
     "eval_variables": {}
   },
   {
@@ -27,8 +26,9 @@
     "level": 0,
     "kind": "text",
     "visible": "true",
+    "description_eval_variables": {},
     "eval_variables": {
-      "result": "spell_name = result.dig(:selected_features, 'cantrip'); result[:static_spells].merge!({ spell_name => { 'attack_bonus' => result[:proficiency_bonus] + result.dig(:modifiers, :int), 'save_dc' => 8 + result[:proficiency_bonus] + result.dig(:modifiers, :int) } }) if spell_name"
+      "static_spells": "spell_name = selected_features['cantrip']; static_spells.merge({ spell_name => { 'attack_bonus' => proficiency_bonus + modifiers['int'], 'save_dc' => 8 + proficiency_bonus + modifiers['int'] } }) if spell_name; static_spells"
     }
   },
   {
@@ -42,9 +42,8 @@
     "origin_value": "wood_elf",
     "level": 0,
     "kind": "static",
-    "options_type": null,
-    "options": null,
     "visible": "true",
+    "description_eval_variables": {},
     "eval_variables": {}
   },
   {
@@ -58,9 +57,8 @@
     "origin_value": "drow",
     "level": 0,
     "kind": "static",
-    "options_type": null,
-    "options": null,
     "visible": "true",
+    "description_eval_variables": {},
     "eval_variables": {}
   },
   {
@@ -71,11 +69,10 @@
     "origin_value": "drow",
     "level": 0,
     "kind": "update_result",
-    "options_type": null,
-    "options": null,
     "visible": "true",
+    "description_eval_variables": {},
     "eval_variables": {
-      "value": "result[:static_spells].merge!({ 'dancing_lights' => { 'attack_bonus' => result[:proficiency_bonus] + result.dig(:modifiers, :cha), 'save_dc' => 8 + result[:proficiency_bonus] + result.dig(:modifiers, :cha) } })"
+      "static_spells": "static_spells.merge({ 'dancing_lights' => { 'attack_bonus' => proficiency_bonus + modifiers['cha'], 'save_dc' => 8 + proficiency_bonus + modifiers['cha'] } })"
     }
   },
   {
@@ -86,11 +83,10 @@
     "origin_value": "drow",
     "level": 3,
     "kind": "update_result",
-    "options_type": null,
-    "options": null,
     "visible": "true",
+    "description_eval_variables": {},
     "eval_variables": {
-      "value": "result[:static_spells].merge!({ 'faerie_fire' => { 'limit' => 1, 'attack_bonus' => result[:proficiency_bonus] + result.dig(:modifiers, :cha), 'save_dc' => 8 + result[:proficiency_bonus] + result.dig(:modifiers, :cha) } })"
+      "static_spells": "static_spells.merge({ 'faerie_fire' => { 'limit' => 1, 'attack_bonus' => proficiency_bonus + modifiers['cha'], 'save_dc' => 8 + proficiency_bonus + modifiers['cha'] } })"
     }
   },
   {
@@ -101,11 +97,10 @@
     "origin_value": "drow",
     "level": 5,
     "kind": "update_result",
-    "options_type": null,
-    "options": null,
     "visible": "true",
+    "description_eval_variables": {},
     "eval_variables": {
-      "value": "result[:static_spells].merge!({ 'darkness' => { 'limit' => 1, 'attack_bonus' => result[:proficiency_bonus] + result.dig(:modifiers, :cha), 'save_dc' => 8 + result[:proficiency_bonus] + result.dig(:modifiers, :cha) } })"
+      "static_spells": "static_spells.merge({ 'darkness' => { 'limit' => 1, 'attack_bonus' => proficiency_bonus + modifiers['cha'], 'save_dc' => 8 + proficiency_bonus + modifiers['cha'] } })"
     }
   }
 ]

@@ -5,26 +5,14 @@ import {
   Pathfinder2Abilities, Dnd5Notes
 } from '../../../components';
 
-import { useAppState, useAppLocale } from '../../../context';
-
-import { updateCharacterRequest } from '../../../requests/updateCharacterRequest';
+import { useAppLocale } from '../../../context';
 
 export const Pathfinder2 = (props) => {
-  // page state
   const [activeTab, setActiveTab] = createSignal('abilities');
 
-  const [appState] = useAppState();
   const [, dict] = useAppLocale();
 
   const t = i18n.translator(dict);
-
-  // sends request and reload character data
-  const updateCharacter = async (payload) => {
-    const result = await updateCharacterRequest(appState.accessToken, props.provider, props.characterId, { character: payload });
-
-    if (result.errors === undefined) await props.onReloadCharacter();
-    return result;
-  }
 
   return (
     <>
@@ -46,9 +34,11 @@ export const Pathfinder2 = (props) => {
         <Switch>
           <Match when={activeTab() === 'abilities'}>
             <Pathfinder2Abilities
-              initialAbilities={props.decoratedData.abilities}
-              modifiers={props.decoratedData.modifiers}
-              onReloadCharacter={updateCharacter}
+              id={props.character.id}
+              initialAbilities={props.character.abilities}
+              initialSkills={props.character.skills}
+              modifiers={props.character.modifiers}
+              onReplaceCharacter={props.onReplaceCharacter}
             />
           </Match>
           <Match when={activeTab() === 'notes'}>

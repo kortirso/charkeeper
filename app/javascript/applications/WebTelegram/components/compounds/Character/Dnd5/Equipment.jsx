@@ -8,7 +8,9 @@ import { useAppLocale } from '../../../../context';
 import { Close } from '../../../../assets';
 
 export const Dnd5Equipment = (props) => {
-  const [coinsData, setCoinsData] = createSignal(props.initialCoins);
+  const character = () => props.character;
+
+  const [coinsData, setCoinsData] = createSignal(character().coins);
   const [modalOpenMode, setModalOpenMode] = createSignal(null);
   const [changingItem, setChangingItem] = createSignal(null);
 
@@ -128,7 +130,7 @@ export const Dnd5Equipment = (props) => {
         {renderItemsBox(t('character.backpack'), props.characterItems.filter((item) => !item.ready_to_use))}
         <div class="flex justify-end">
           <div class="p-4 flex white-box">
-            <p>{calculateCurrentLoad()} / {props.load}</p>
+            <p>{calculateCurrentLoad()} / {character().load}</p>
           </div>
         </div>
       </Show>

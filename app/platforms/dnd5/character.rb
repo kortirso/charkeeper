@@ -177,13 +177,15 @@ module Dnd5
 
     attribute :data, Dnd5::CharacterData.to_type
 
-    def decorate
-      base_decorator.decorate_character_abilities(character: self)
-        .then { |result| race_decorator.decorate_character_abilities(result: result) }
-        .then { |result| subrace_decorator.decorate_character_abilities(result: result) }
-        .then { |result| class_decorator.decorate_character_abilities(result: result) }
-        .then { |result| subclass_decorator.decorate_character_abilities(result: result) }
-        .then { |result| features_decorator.decorate_character_abilities(result: result) }
+    def decorator(simple: false)
+      base_decorator = ::Dnd5Character::BaseDecorator.new(self)
+      race_decorator = ::Dnd5Character::RaceDecorateWrapper.new(base_decorator)
+      subrace_decorator = ::Dnd5Character::SubraceDecorateWrapper.new(race_decorator)
+      class_decorator = ::Dnd5Character::ClassDecorateWrapper.new(subrace_decorator)
+      subclass_decorator = ::Dnd5Character::SubclassDecorateWrapper.new(class_decorator)
+      full_decorator = ::Dnd5Character::FeaturesDecorator.new(subclass_decorator)
+      full_decorator.features unless simple
+      full_decorator
     end
 
     def can_learn_spell?(target_spell_class)
@@ -198,14 +200,5 @@ module Dnd5
 
       true
     end
-
-    private
-
-    def base_decorator = ::Charkeeper::Container.resolve('decorators.dnd5_character.base_decorator')
-    def race_decorator = ::Charkeeper::Container.resolve('decorators.dnd5_character.race_wrapper')
-    def subrace_decorator = ::Charkeeper::Container.resolve('decorators.dnd5_character.subrace_wrapper')
-    def class_decorator = ::Charkeeper::Container.resolve('decorators.dnd5_character.class_wrapper')
-    def subclass_decorator = ::Charkeeper::Container.resolve('decorators.dnd5_character.subclass_wrapper')
-    def features_decorator = ::Charkeeper::Container.resolve('decorators.dnd5_character.features')
   end
 end
