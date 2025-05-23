@@ -285,7 +285,10 @@
       "fighting_style_dueling": "Dueling",
       "fighting_style_great_weapon_fighting": "Great weapon fighting",
       "fighting_style_protection": "Protection",
-      "fighting_style_two_weapon_fighting": "Two weapon fighting"
+      "fighting_style_two_weapon_fighting": "Two weapon fighting",
+      "int": "Intellect",
+      "wis": "Wisdom",
+      "cha": "Charisma"
     }
   },
   "dnd5": {

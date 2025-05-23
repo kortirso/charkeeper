@@ -24,14 +24,14 @@ export const Select = (props) => {
           class={[isOpen() ? 'is-open' : '', 'form-value flex justify-between items-center h-12'].join(' ')}
           onClick={() => setIsOpen(!isOpen())}
         >
-          <span>{props.selectedValue ? props.items[props.selectedValue] : ''}</span>
+          <span class="font-cascadia-light">{props.selectedValue ? props.items[props.selectedValue] : ''}</span>
           <Chevron rotated={isOpen()} />
         </div>
         <Show when={isOpen()}>
           <ul class="form-dropdown">
             <For each={Object.entries(props.items)}>
               {([key, value]) =>
-                <li onClick={() => onSelect(key)}>
+                <li class="font-cascadia-light" onClick={() => onSelect(key)}>
                   {value}
                 </li>
               }

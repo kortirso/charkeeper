@@ -285,7 +285,10 @@
       "fighting_style_dueling": "Дуэлянт",
       "fighting_style_great_weapon_fighting": "Сражение большим оружием",
       "fighting_style_protection": "Защита",
-      "fighting_style_two_weapon_fighting": "Сражение двумя оружиями"
+      "fighting_style_two_weapon_fighting": "Сражение двумя оружиями",
+      "int": "Интеллект",
+      "wis": "Мудрость",
+      "cha": "Обаяние"
     }
   },
   "dnd5": {

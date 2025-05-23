@@ -11,7 +11,6 @@ module Dnd5Character
         result[:armor_proficiency] = result[:armor_proficiency].concat(ARMOR).uniq
         result[:abilities] = { str: 15, dex: 14, con: 13, int: 12, wis: 11, cha: 10 }
         result[:health] = { current: 9, max: 9, temp: 0 }
-        result[:hit_dice][10] = 1
 
         result
       end

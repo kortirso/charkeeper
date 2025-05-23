@@ -11,7 +11,6 @@ module Dnd2024Character
         result[:armor_proficiency] = result[:armor_proficiency].concat(ARMOR).uniq
         result[:abilities] = { str: 10, dex: 14, con: 11, int: 12, wis: 13, cha: 15 }
         result[:health] = { current: 8, max: 8, temp: 0 }
-        result[:hit_dice][8] = 1
 
         result
       end

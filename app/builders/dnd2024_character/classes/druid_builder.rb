@@ -8,7 +8,6 @@ module Dnd2024Character
       ARMOR = ['light armor', 'shield'].freeze
       TOOLS = %w[herbalism].freeze
 
-      # rubocop: disable Metrics/AbcSize
       def call(result:)
         result[:languages] = result[:languages].concat(LANGUAGES).uniq
         result[:weapon_core_skills] = result[:weapon_core_skills].concat(WEAPON_CORE).uniq
@@ -16,11 +15,9 @@ module Dnd2024Character
         result[:tools] = result[:tools].concat(TOOLS).uniq
         result[:abilities] = { str: 11, dex: 13, con: 12, int: 14, wis: 15, cha: 10 }
         result[:health] = { current: 9, max: 9, temp: 0 }
-        result[:hit_dice][8] = 1
 
         result
       end
-      # rubocop: enable Metrics/AbcSize
     end
   end
 end

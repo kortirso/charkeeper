@@ -3,7 +3,9 @@
 module Dnd5Character
   class ClassBuilder
     def call(result:)
-      class_builder(result[:main_class]).call(result: result)
+      result = class_builder(result[:main_class]).call(result: result)
+      result[:hit_dice][::Dnd5::Character::HIT_DICES[result[:main_class]]] = 1
+      result
     end
 
     private

@@ -13,7 +13,10 @@ module Pathfinder2
     end
 
     def decorator
-      @decorator ||= object.decorator
+      @decorator ||= {}
+      @decorator.fetch(object.id) do |key|
+        @decorator[key] = object.decorator
+      end
     end
   end
 end
