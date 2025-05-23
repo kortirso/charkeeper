@@ -10,10 +10,8 @@
     "origin_value": "human",
     "level": 1,
     "kind": "static",
-    "options_type": null,
-    "options": null,
     "visible": "true",
-    "eval_variables": {
+    "description_eval_variables": {
       "limit": "1"
     },
     "limit_refresh": "long_rest"

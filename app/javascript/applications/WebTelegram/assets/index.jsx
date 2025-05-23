@@ -8,3 +8,4 @@ export * from './Dots';
 export * from './Profile';
 export * from './Campfire';
 export * from './LongCampfire';
+export * from './Edit';

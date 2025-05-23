@@ -2,9 +2,7 @@
 
 module Dnd5Character
   module Classes
-    class RangerDecorator
-      WEAPON_CORE = ['light weapon', 'martial weapon'].freeze
-      ARMOR = ['light armor', 'medium armor', 'shield'].freeze
+    class RangerDecorator < ApplicationDecorator
       SPELL_SLOTS = {
         1 => {},
         2 => { 1 => 2 },
@@ -27,47 +25,50 @@ module Dnd5Character
         19 => { 1 => 4, 2 => 3, 3 => 3, 4 => 3, 5 => 2 },
         20 => { 1 => 4, 2 => 3, 3 => 3, 4 => 3, 5 => 2 }
       }.freeze
+      CLASS_SAVE_DC = %w[str dex].freeze
 
-      def decorate_fresh_character(result:)
-        result[:weapon_core_skills] = result[:weapon_core_skills].concat(WEAPON_CORE).uniq
-        result[:armor_proficiency] = result[:armor_proficiency].concat(ARMOR).uniq
-        result[:abilities] = { str: 15, dex: 14, con: 13, int: 12, wis: 11, cha: 10 }
-        result[:health] = { current: 9, max: 9, temp: 0 }
-
-        result
+      def class_save_dc
+        @class_save_dc ||= main_class == 'ranger' ? CLASS_SAVE_DC : __getobj__.class_save_dc
       end
 
-      def decorate_character_abilities(result:, class_level:)
-        result[:class_save_dc] = %i[str dex] if result[:main_class] == 'ranger'
-        result[:spell_classes][:ranger] = {
-          save_dc: 8 + result[:proficiency_bonus] + result.dig(:modifiers, :wis),
-          attack_bonus: result[:proficiency_bonus] + result.dig(:modifiers, :wis),
-          cantrips_amount: 0,
-          spells_amount: spells_amount(class_level),
-          max_spell_level: max_spell_level(class_level),
-          prepared_spells_amount: spells_amount(class_level)
-        }
-        result[:spells_slots] = spells_slots(class_level)
+      def spell_classes
+        @spell_classes ||= begin
+          result = __getobj__.spell_classes
+          result[:ranger] = {
+            save_dc: 8 + proficiency_bonus + modifiers['wis'],
+            attack_bonus: proficiency_bonus + modifiers['wis'],
+            cantrips_amount: 0,
+            spells_amount: spells_amount,
+            max_spell_level: max_spell_level,
+            prepared_spells_amount: spells_amount,
+            multiclass_spell_level: class_level / 2 # half round down
+          }
+          result
+        end
+      end
 
-        result[:combat][:attacks_per_action] = 2 if class_level >= 5 # Extra Attack, 5 level
+      def spells_slots
+        @spells_slots ||= SPELL_SLOTS[class_level]
+      end
 
-        result
+      def attacks_per_action
+        @attacks_per_action ||= class_level >= 5 ? 2 : 1
       end
 
       private
 
-      def spells_amount(class_level)
+      def class_level
+        @class_level ||= classes['ranger']
+      end
+
+      def spells_amount
         return 0 if class_level == 1
 
         ((class_level + 1) / 2) + 1
       end
 
-      def max_spell_level(class_level)
+      def max_spell_level
         SPELL_SLOTS[class_level].keys.max
-      end
-
-      def spells_slots(class_level)
-        SPELL_SLOTS[class_level]
       end
     end
   end

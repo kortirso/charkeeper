@@ -4,15 +4,20 @@ import * as i18n from '@solid-primitives/i18n';
 import { createModal, StatsBlock } from '../../../molecules';
 import { Input, Button, IconButton } from '../../../atoms';
 
-import { useAppLocale } from '../../../../context';
+import { useAppState, useAppLocale, useAppAlert } from '../../../../context';
 import { Close } from '../../../../assets';
+import { updateCharacterRequest } from '../../../../requests/updateCharacterRequest';
 
 export const Dnd5Equipment = (props) => {
-  const [coinsData, setCoinsData] = createSignal(props.initialCoins);
+  const character = () => props.character;
+
+  const [coinsData, setCoinsData] = createSignal(character().coins);
   const [modalOpenMode, setModalOpenMode] = createSignal(null);
   const [changingItem, setChangingItem] = createSignal(null);
 
   const { Modal, openModal, closeModal } = createModal();
+  const [appState] = useAppState();
+  const [{ renderAlerts }] = useAppAlert();
   const [, dict] = useAppLocale();
 
   const t = i18n.translator(dict);
@@ -35,9 +40,14 @@ export const Dnd5Equipment = (props) => {
 
   // submits
   const updateCoins = async () => {
-    const result = await props.onRefreshCharacter({ coins: coinsData() });
+    const result = await updateCharacterRequest(appState.accessToken, character().provider, character().id, { character: { coins: coinsData() }, only_head: true });
 
-    if (result.errors === undefined) closeModal();
+    if (result.errors === undefined) {
+      batch(() => {
+        props.onReplaceCharacter({ coins: coinsData() });
+        closeModal();
+      });
+    } else renderAlerts(result.errors);
   }
 
   const updateItem = async () => {
@@ -116,9 +126,9 @@ export const Dnd5Equipment = (props) => {
     <>
       <StatsBlock
         items={[
-          { title: t('equipment.gold'), value: coinsData().gold },
-          { title: t('equipment.silver'), value: coinsData().silver },
-          { title: t('equipment.copper'), value: coinsData().copper }
+          { title: t('equipment.gold'), value: character().coins.gold },
+          { title: t('equipment.silver'), value: character().coins.silver },
+          { title: t('equipment.copper'), value: character().coins.copper }
         ]}
         onClick={changeCoins}
       />
@@ -128,7 +138,7 @@ export const Dnd5Equipment = (props) => {
         {renderItemsBox(t('character.backpack'), props.characterItems.filter((item) => !item.ready_to_use))}
         <div class="flex justify-end">
           <div class="p-4 flex white-box">
-            <p>{calculateCurrentLoad()} / {props.load}</p>
+            <p>{calculateCurrentLoad()} / {character().load}</p>
           </div>
         </div>
       </Show>

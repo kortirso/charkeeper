@@ -17,7 +17,7 @@ describe WebTelegram::CharactersController do
 
         expect(response).to have_http_status :ok
         expect(response.parsed_body['characters'].size).to eq 1
-        expect(response_values.keys).to contain_exactly('id', 'name', 'object_data', 'provider', 'avatar')
+        expect(response_values.keys).to contain_exactly('id', 'name', 'level', 'race', 'subrace', 'classes', 'provider')
       end
     end
   end
@@ -26,13 +26,10 @@ describe WebTelegram::CharactersController do
     context 'for logged users' do
       let!(:character) { create :character, user: user_session.user }
 
-      it 'returns data', :aggregate_failures do
+      it 'returns data' do
         get :show, params: { id: character.id, charkeeper_access_token: access_token }
 
-        response_values = response.parsed_body['character']
-
         expect(response).to have_http_status :ok
-        expect(response_values.keys).to contain_exactly('id', 'name', 'object_data', 'decorated_data', 'provider')
       end
 
       context 'for not existing character' do

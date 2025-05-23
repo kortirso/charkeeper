@@ -10,8 +10,6 @@
     "origin_value": "elf",
     "level": 0,
     "kind": "static",
-    "options_type": null,
-    "options": null,
     "visible": "true",
     "eval_variables": {}
   },
@@ -26,7 +24,6 @@
     "origin_value": "elf",
     "level": 0,
     "kind": "static_list",
-    "options_type": null,
     "options": ["int", "wis", "cha"],
     "visible": "true",
     "eval_variables": {}
@@ -39,10 +36,10 @@
     "origin_value": "drow",
     "level": 0,
     "kind": "update_result",
-    "visible": "result[:selected_features].keys.include?('elven_spellcasting')",
+    "visible": "selected_features.keys.include?('elven_spellcasting')",
     "eval_variables": {
-      "result": "result[:darkvision] = [120, result[:darkvision]].max",
-      "value": "ability = result.dig(:selected_features, 'elven_spellcasting').to_sym; result[:static_spells].merge!({ 'dancing_lights' => { 'attack_bonus' => result[:proficiency_bonus] + result.dig(:modifiers, ability), 'save_dc' => 8 + result[:proficiency_bonus] + result.dig(:modifiers, ability) } })"
+      "darkvision": "[120, darkvision].max",
+      "static_spells": "ability = selected_features['elven_spellcasting']; static_spells.merge({ 'dancing_lights' => { 'attack_bonus' => proficiency_bonus + modifiers[ability], 'save_dc' => 8 + proficiency_bonus + modifiers[ability] } })"
     }
   },
   {
@@ -53,9 +50,9 @@
     "origin_value": "drow",
     "level": 3,
     "kind": "update_result",
-    "visible": "result[:selected_features].keys.include?('elven_spellcasting')",
+    "visible": "selected_features.keys.include?('elven_spellcasting')",
     "eval_variables": {
-      "result": "ability = result.dig(:selected_features, 'elven_spellcasting').to_sym; result[:static_spells].merge!({ 'faerie_fire' => { 'attack_bonus' => result[:proficiency_bonus] + result.dig(:modifiers, ability), 'save_dc' => 8 + result[:proficiency_bonus] + result.dig(:modifiers, ability) } })"
+      "static_spells": "ability = selected_features['elven_spellcasting']; static_spells.merge({ 'faerie_fire' => { 'attack_bonus' => proficiency_bonus + modifiers[ability], 'save_dc' => 8 + proficiency_bonus + modifiers[ability] } })"
     }
   },
   {
@@ -66,9 +63,9 @@
     "origin_value": "drow",
     "level": 5,
     "kind": "update_result",
-    "visible": "result[:selected_features].keys.include?('elven_spellcasting')",
+    "visible": "selected_features.keys.include?('elven_spellcasting')",
     "eval_variables": {
-      "result": "ability = result.dig(:selected_features, 'elven_spellcasting').to_sym; result[:static_spells].merge!({ 'darkness' => { 'attack_bonus' => result[:proficiency_bonus] + result.dig(:modifiers, ability), 'save_dc' => 8 + result[:proficiency_bonus] + result.dig(:modifiers, ability) } })"
+      "static_spells": "ability = selected_features['elven_spellcasting']; static_spells.merge({ 'darkness' => { 'attack_bonus' => proficiency_bonus + modifiers[ability], 'save_dc' => 8 + proficiency_bonus + modifiers[ability] } })"
     }
   },
   {
@@ -79,10 +76,10 @@
     "origin_value": "wood_elf",
     "level": 0,
     "kind": "update_result",
-    "visible": "result[:selected_features].keys.include?('elven_spellcasting')",
+    "visible": "selected_features.keys.include?('elven_spellcasting')",
     "eval_variables": {
-      "result": "result[:speed] = [35, result[:speed]].max",
-      "value": "ability = result.dig(:selected_features, 'elven_spellcasting').to_sym; result[:static_spells].merge!({ 'druidcraft' => { 'attack_bonus' => result[:proficiency_bonus] + result.dig(:modifiers, ability), 'save_dc' => 8 + result[:proficiency_bonus] + result.dig(:modifiers, ability) } })"
+      "speed": "[35, speed].max",
+      "static_spells": "ability = selected_features['elven_spellcasting']; static_spells.merge({ 'druidcraft' => { 'attack_bonus' => proficiency_bonus + modifiers[ability], 'save_dc' => 8 + proficiency_bonus + modifiers[ability] } })"
     }
   },
   {
@@ -93,9 +90,9 @@
     "origin_value": "wood_elf",
     "level": 3,
     "kind": "update_result",
-    "visible": "result[:selected_features].keys.include?('elven_spellcasting')",
+    "visible": "selected_features.keys.include?('elven_spellcasting')",
     "eval_variables": {
-      "result": "ability = result.dig(:selected_features, 'elven_spellcasting').to_sym; result[:static_spells].merge!({ 'longstrider' => { 'attack_bonus' => result[:proficiency_bonus] + result.dig(:modifiers, ability), 'save_dc' => 8 + result[:proficiency_bonus] + result.dig(:modifiers, ability) } })"
+      "static_spells": "ability = selected_features['elven_spellcasting']; static_spells.merge({ 'longstrider' => { 'attack_bonus' => proficiency_bonus + modifiers[ability], 'save_dc' => 8 + proficiency_bonus + modifiers[ability] } })"
     }
   },
   {
@@ -106,9 +103,9 @@
     "origin_value": "wood_elf",
     "level": 5,
     "kind": "update_result",
-    "visible": "result[:selected_features].keys.include?('elven_spellcasting')",
+    "visible": "selected_features.keys.include?('elven_spellcasting')",
     "eval_variables": {
-      "result": "ability = result.dig(:selected_features, 'elven_spellcasting').to_sym; result[:static_spells].merge!({ 'pass_without_trace' => { 'attack_bonus' => result[:proficiency_bonus] + result.dig(:modifiers, ability), 'save_dc' => 8 + result[:proficiency_bonus] + result.dig(:modifiers, ability) } })"
+      "static_spells": "ability = selected_features['elven_spellcasting']; static_spells.merge({ 'pass_without_trace' => { 'attack_bonus' => proficiency_bonus + modifiers[ability], 'save_dc' => 8 + proficiency_bonus + modifiers[ability] } })"
     }
   },
   {
@@ -122,9 +119,9 @@
     "origin_value": "high_elf",
     "level": 0,
     "kind": "text",
-    "visible": "result[:selected_features].keys.include?('elven_spellcasting')",
+    "visible": "selected_features.keys.include?('elven_spellcasting')",
     "eval_variables": {
-      "result": "spell_name = result.dig(:selected_features, 'high_elf_legacy_0'); ability = result.dig(:selected_features, 'elven_spellcasting').to_sym; result[:static_spells].merge!({ spell_name => { 'attack_bonus' => result[:proficiency_bonus] + result.dig(:modifiers, ability), 'save_dc' => 8 + result[:proficiency_bonus] + result.dig(:modifiers, ability) } }) if spell_name"
+      "static_spells": "spell_name = selected_features['high_elf_legacy_0']; ability = selected_features['elven_spellcasting']; spell_name ? static_spells.merge({ spell_name => { 'attack_bonus' => proficiency_bonus + modifiers[ability], 'save_dc' => 8 + proficiency_bonus + modifiers[ability] } }) : static_spells"
     }
   },
   {
@@ -135,9 +132,9 @@
     "origin_value": "high_elf",
     "level": 3,
     "kind": "update_result",
-    "visible": "result[:selected_features].keys.include?('elven_spellcasting')",
+    "visible": "selected_features.keys.include?('elven_spellcasting')",
     "eval_variables": {
-      "result": "ability = result.dig(:selected_features, 'elven_spellcasting').to_sym; result[:static_spells].merge!({ 'detect_magic' => { 'attack_bonus' => result[:proficiency_bonus] + result.dig(:modifiers, ability), 'save_dc' => 8 + result[:proficiency_bonus] + result.dig(:modifiers, ability) } })"
+      "static_spells": "ability = selected_features['elven_spellcasting']; static_spells.merge({ 'detect_magic' => { 'attack_bonus' => proficiency_bonus + modifiers[ability], 'save_dc' => 8 + proficiency_bonus + modifiers[ability] } })"
     }
   },
   {
@@ -148,9 +145,9 @@
     "origin_value": "high_elf",
     "level": 5,
     "kind": "update_result",
-    "visible": "result[:selected_features].keys.include?('elven_spellcasting')",
+    "visible": "selected_features.keys.include?('elven_spellcasting')",
     "eval_variables": {
-      "result": "ability = result.dig(:selected_features, 'elven_spellcasting').to_sym; result[:static_spells].merge!({ 'misty_step' => { 'attack_bonus' => result[:proficiency_bonus] + result.dig(:modifiers, ability), 'save_dc' => 8 + result[:proficiency_bonus] + result.dig(:modifiers, ability) } })"
+      "static_spells": "ability = selected_features['elven_spellcasting']; static_spells.merge({ 'misty_step' => { 'attack_bonus' => proficiency_bonus + modifiers[ability], 'save_dc' => 8 + proficiency_bonus + modifiers[ability] } })"
     }
   }
 ]

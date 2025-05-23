@@ -4,8 +4,8 @@ module WebTelegram
   class CharactersController < WebTelegram::BaseController
     include SerializeResource
 
-    INDEX_SERIALIZE_FIELDS = %i[id name object_data provider avatar].freeze
-    SHOW_SERIALIZE_FIELDS = %i[id name object_data decorated_data provider].freeze
+    DND_SERIALIZE_FIELDS = %i[id name level race subrace species legacy classes provider avatar].freeze
+    DAGGERHEART_SERIALIZE_FIELDS = %i[id name level heritage classes provider avatar].freeze
 
     before_action :find_character, only: %i[show destroy]
 
@@ -19,8 +19,7 @@ module WebTelegram
       render json: serialize_resource(
         @character,
         serializer(@character.type),
-        :character,
-        only: SHOW_SERIALIZE_FIELDS
+        :character
       ), status: :ok
     end
 
@@ -36,7 +35,8 @@ module WebTelegram
         Panko::ArraySerializer.new(
           relation(character_type).where(id: ids.pluck(:id)).includes(avatar_attachment: :blob),
           each_serializer: serializer(character_type),
-          only: INDEX_SERIALIZE_FIELDS
+          only: serialize_fields(character_type),
+          context: { simple: true }
         ).to_a
       end
     end
@@ -67,6 +67,13 @@ module WebTelegram
       when 'Dnd2024::Character' then ::Dnd2024::CharacterSerializer
       when 'Pathfinder2::Character' then ::Pathfinder2::CharacterSerializer
       when 'Daggerheart::Character' then ::Daggerheart::CharacterSerializer
+      end
+    end
+
+    def serialize_fields(character_type)
+      case character_type
+      when 'Dnd5::Character', 'Dnd2024::Character', 'Pathfinder2::Character' then DND_SERIALIZE_FIELDS
+      when 'Daggerheart::Character' then DAGGERHEART_SERIALIZE_FIELDS
       end
     end
   end

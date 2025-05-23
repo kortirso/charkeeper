@@ -10,12 +10,10 @@
     "origin_value": "bard",
     "level": 1,
     "kind": "static",
-    "options_type": null,
-    "options": null,
     "visible": "result.dig(:classes, 'bard') < 5",
-    "eval_variables": {
+    "description_eval_variables": {
       "value": "'d6'",
-      "limit": "[1, result.dig(:modifiers, :wis)].max"
+      "limit": "[1, modifiers['wis']].max"
     },
     "limit_refresh": "long_rest"
   },
@@ -30,11 +28,9 @@
     "origin_value": "bard",
     "level": 2,
     "kind": "static",
-    "options_type": null,
-    "options": null,
     "visible": "true",
-    "eval_variables": {
-      "value": "result[:proficiency_bonus] / 2"
+    "description_eval_variables": {
+      "value": "proficiency_bonus / 2"
     }
   },
   {
@@ -48,11 +44,9 @@
     "origin_value": "bard",
     "level": 2,
     "kind": "static",
-    "options_type": null,
-    "options": null,
     "visible": "true",
-    "eval_variables": {
-      "value": "class_level = result.dig(:classes, 'bard'); return '1d12' if class_level >= 17; return '1d10' if class_level >= 13; return '1d8' if class_level >= 9; '1d6'"
+    "description_eval_variables": {
+      "value": "class_level = classes['bard']; return '1d12' if class_level >= 17; return '1d10' if class_level >= 13; return '1d8' if class_level >= 9; '1d6'"
     }
   },
   {
@@ -69,7 +63,7 @@
     "options_type": "selected_skills",
     "visible": "true",
     "eval_variables": {
-      "result": "expertises = result.dig(:selected_features, 'expertise'); result[:skills].each { |skill| next if expertises.nil?; next if expertises.exclude?(skill[:name]); skill[:modifier] += result[:proficiency_bonus] }"
+      "skills": "expertises = selected_features['expertise']; skills.each { |skill| next if expertises.nil?; next if expertises.exclude?(skill[:slug]); skill[:modifier] += proficiency_bonus }"
     }
   },
   {
@@ -83,10 +77,10 @@
     "origin_value": "bard",
     "level": 5,
     "kind": "static",
-    "visible": "result.dig(:classes, 'bard') >= 5",
-    "eval_variables": {
-      "value": "class_level = result.dig(:classes, 'bard'); return 'd12' if class_level >= 15; return 'd10' if class_level >= 10; 'd8'",
-      "limit": "[1, result.dig(:modifiers, :wis)].max"
+    "visible": "classes['bard'] >= 5",
+    "description_eval_variables": {
+      "value": "class_level = classes['bard']; return 'd12' if class_level >= 15; return 'd10' if class_level >= 10; 'd8'",
+      "limit": "[1, modifiers['wis']].max"
     },
     "limit_refresh": "short_rest"
   },
@@ -130,8 +124,8 @@
     "level": 3,
     "kind": "static",
     "visible": "true",
-    "eval_variables": {
-      "value": "result.dig(:spell_classes, :bard, :save_dc)",
+    "description_eval_variables": {
+      "value": "spell_classes.dig(:bard, :save_dc)",
       "limit": "1"
     },
     "limit_refresh": "short_rest"
@@ -148,8 +142,8 @@
     "level": 3,
     "kind": "static",
     "visible": "true",
-    "eval_variables": {
-      "value": "class_level = result.dig(:classes, 'bard'); return '8d6' if class_level >= 15; return '5d6' if class_level >= 10; return '3d6' if class_level >= 5; '2d6'"
+    "description_eval_variables": {
+      "value": "class_level = classes['bard']; return '8d6' if class_level >= 15; return '5d6' if class_level >= 10; return '3d6' if class_level >= 5; '2d6'"
     }
   }
 ]

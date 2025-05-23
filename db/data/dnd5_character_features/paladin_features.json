@@ -11,8 +11,8 @@
     "level": 0,
     "kind": "static",
     "visible": "true",
-    "eval_variables": {
-      "limit": "1 + result.dig(:modifiers, :cha)"
+    "description_eval_variables": {
+      "limit": "1 + modifiers['cha']"
     },
     "limit_refresh": "long_rest"
   },
@@ -28,7 +28,7 @@
     "level": 0,
     "kind": "static",
     "visible": "true",
-    "eval_variables": {
+    "description_eval_variables": {
       "limit": "5 * result.dig(:classes, 'paladin')"
     },
     "limit_refresh": "long_rest"
@@ -76,7 +76,9 @@
     "level": 3,
     "kind": "static",
     "visible": "true",
-    "eval_variables": {}
+    "eval_variables": {
+      "conditions": "conditions.merge({ immunity: conditions[:immunity].push('disease').uniq })"
+    }
   },
   {
     "slug": "aura_of_protection",
@@ -90,9 +92,9 @@
     "level": 6,
     "kind": "static",
     "visible": "true",
-    "eval_variables": {
-      "range": "result.dig(:classes, 'paladin') >= 18 ? 30 : 10",
-      "value": "[1, result.dig(:modifiers, :cha)].max"
+    "description_eval_variables": {
+      "range": "classes['paladin'] >= 18 ? 30 : 10",
+      "value": "[1, modifiers['cha']].max"
     }
   },
   {
@@ -107,8 +109,8 @@
     "level": 10,
     "kind": "static",
     "visible": "true",
-    "eval_variables": {
-      "range": "result.dig(:classes, 'paladin') >= 18 ? 30 : 10"
+    "description_eval_variables": {
+      "range": "classes['paladin'] >= 18 ? 30 : 10"
     }
   },
   {
@@ -137,8 +139,8 @@
     "level": 14,
     "kind": "static",
     "visible": "true",
-    "eval_variables": {
-      "limit": "[1, result.dig(:modifiers, :cha)].max"
+    "description_eval_variables": {
+      "limit": "[1, modifiers['cha']].max"
     },
     "limit_refresh": "long_rest"
   }

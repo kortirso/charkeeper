@@ -2,18 +2,16 @@
 
 module Daggerheart
   class CharacterSerializer < ApplicationSerializer
-    attributes :id, :name, :object_data, :decorated_data, :provider
+    attributes :provider, :id, :name, :level, :heritage, :main_class, :classes, :traits
 
-    def object_data
-      object.data.slice('level', 'heritage', 'classes')
-    end
-
-    def decorated_data
-      object.decorate
-    end
+    delegate :id, :name, :level, :heritage, :main_class, :classes, :traits, to: :decorator
 
     def provider
       'daggerheart'
+    end
+
+    def decorator
+      @decorator ||= object.decorator
     end
   end
 end

@@ -6,6 +6,8 @@ import { Select, Checkbox, Toggle, Button } from '../../../atoms';
 import { useAppLocale } from '../../../../context';
 
 export const Dnd5Spells = (props) => {
+  const character = () => props.character;
+
   const [availableSpellFilter, setAvailableSpellFilter] = createSignal(true);
   const [activeSpellClass, setActiveSpellClass] = createSignal(props.initialSpellClassesList[0]);
 
@@ -14,7 +16,7 @@ export const Dnd5Spells = (props) => {
   const t = i18n.translator(dict);
 
   const filteredSpellsList = createMemo(() => {
-    const maxSpellLevel = props.spellClasses[activeSpellClass()].max_spell_level;
+    const maxSpellLevel = character().spell_classes[activeSpellClass()].max_spell_level;
 
     return props.spells.filter((item) => {
       if (item.level > maxSpellLevel) return false;
@@ -43,7 +45,7 @@ export const Dnd5Spells = (props) => {
           />
         </Show>
       </div>
-      <For each={[0].concat(Object.keys(props.spellSlots).map((item) => parseInt(item)))}>
+      <For each={[0].concat(Object.keys(character().spells_slots).map((item) => parseInt(item)))}>
         {(level) =>
           <Toggle title={level === 0 ? t('terms.cantrips') : `${level} ${t('spellbookPage.level')}`}>
             <table class="w-full table first-column-full-width">

@@ -2,16 +2,12 @@
 
 module Dnd5Character
   module Subraces
-    class StoutDecorator
+    class StoutBuilder
       RESISTANCES = %w[poison].freeze
 
-      def decorate_fresh_character(result:)
+      def call(result:)
         result[:resistance] = result[:resistance].concat(RESISTANCES).uniq
 
-        result
-      end
-
-      def decorate_character_abilities(result:)
         result
       end
     end

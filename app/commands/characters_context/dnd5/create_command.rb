@@ -4,10 +4,10 @@ module CharactersContext
   module Dnd5
     class CreateCommand < BaseCommand
       include Deps[
-        base_decorator: 'decorators.dnd5_character.base_decorator',
-        race_decorator: 'decorators.dnd5_character.race_wrapper',
-        subrace_decorator: 'decorators.dnd5_character.subrace_wrapper',
-        class_decorator: 'decorators.dnd5_character.class_wrapper',
+        base_builder: 'builders.dnd5_character.base',
+        race_builder: 'builders.dnd5_character.race',
+        subrace_builder: 'builders.dnd5_character.subrace',
+        class_builder: 'builders.dnd5_character.class',
         attach_avatar: 'commands.image_processing.attach_avatar'
       ]
 
@@ -44,7 +44,7 @@ module CharactersContext
 
       def do_prepare(input)
         input[:data] =
-          decorate_fresh_character(input.slice(:race, :subrace, :main_class, :alignment).symbolize_keys)
+          build_fresh_character(input.slice(:race, :subrace, :main_class, :alignment).symbolize_keys)
 
         input[:hit_dice] = { 6 => 0, 8 => 0, 10 => 0, 12 => 0 }
         input[:hit_dice][::Dnd5::Character::HIT_DICES[input[:main_class]]] = 1
@@ -59,11 +59,11 @@ module CharactersContext
         { result: character }
       end
 
-      def decorate_fresh_character(data)
-        base_decorator.decorate_fresh_character(**data)
-          .then { |result| race_decorator.decorate_fresh_character(result: result) }
-          .then { |result| subrace_decorator.decorate_fresh_character(result: result) }
-          .then { |result| class_decorator.decorate_fresh_character(result: result) }
+      def build_fresh_character(data)
+        base_builder.call(result: data)
+          .then { |result| race_builder.call(result: result) }
+          .then { |result| subrace_builder.call(result: result) }
+          .then { |result| class_builder.call(result: result) }
       end
 
       def learn_spells_list(character, input)

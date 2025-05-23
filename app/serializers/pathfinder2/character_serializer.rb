@@ -2,18 +2,18 @@
 
 module Pathfinder2
   class CharacterSerializer < ApplicationSerializer
-    attributes :id, :name, :object_data, :decorated_data, :provider
+    attributes :provider, :id, :name, :level, :race, :subrace, :main_class, :classes, :languages, :health, :abilities,
+               :modifiers, :skills
 
-    def object_data
-      object.data.slice('level', 'race', 'subrace', 'classes')
-    end
-
-    def decorated_data
-      object.decorate
-    end
+    delegate :id, :name, :level, :race, :subrace, :main_class, :classes, :languages, :health, :abilities,
+             :modifiers, :skills, to: :decorator
 
     def provider
       'pathfinder2'
+    end
+
+    def decorator
+      @decorator ||= object.decorator
     end
   end
 end

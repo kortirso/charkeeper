@@ -158,7 +158,7 @@ export const CharactersPage = (props) => {
           <div class="p-3 pb-0 flex-1 overflow-y-scroll">
             <Button
               default
-              classList='absolute right-3 bottom-3 rounded-full min-w-12 min-h-12 z-10'
+              classList='absolute right-4 bottom-4 rounded-full min-w-12 min-h-12 z-10'
               onClick={() => setCurrentTab('newCharacter')}
             >
               <Plus />
@@ -172,8 +172,8 @@ export const CharactersPage = (props) => {
                         avatar={character.avatar}
                         name={character.name}
                         provider='D&D 5'
-                        firstText={`${t('charactersPage.level')} ${character.object_data.level} | ${character.object_data.subrace ? t(`dnd5.subraces.${character.object_data.race}.${character.object_data.subrace}`) : t(`dnd5.races.${character.object_data.race}`)}`}
-                        secondText={Object.keys(character.object_data.classes).map((item) => t(`dnd5.classes.${item}`)).join(' * ')}
+                        firstText={`${t('charactersPage.level')} ${character.level} | ${character.subrace ? t(`dnd5.subraces.${character.race}.${character.subrace}`) : t(`dnd5.races.${character.race}`)}`}
+                        secondText={Object.keys(character.classes).map((item) => t(`dnd5.classes.${item}`)).join(' * ')}
                         onClick={() => navigate('characters', { id: character.id })}
                         onDeleteCharacter={(e) => deleteCharacter(e, character.id)}
                       />
@@ -183,8 +183,8 @@ export const CharactersPage = (props) => {
                         avatar={character.avatar}
                         name={character.name}
                         provider='D&D 2024'
-                        firstText={`${t('charactersPage.level')} ${character.object_data.level} | ${character.object_data.legacy ? t(`dnd2024.legacies.${character.object_data.species}.${character.object_data.legacy}`) : t(`dnd2024.species.${character.object_data.species}`)}`}
-                        secondText={Object.keys(character.object_data.classes).map((item) => t(`dnd2024.classes.${item}`)).join(' * ')}
+                        firstText={`${t('charactersPage.level')} ${character.level} | ${character.legacy ? t(`dnd2024.legacies.${character.species}.${character.legacy}`) : t(`dnd2024.species.${character.species}`)}`}
+                        secondText={Object.keys(character.classes).map((item) => t(`dnd2024.classes.${item}`)).join(' * ')}
                         onClick={() => navigate('characters', { id: character.id })}
                         onDeleteCharacter={(e) => deleteCharacter(e, character.id)}
                       />
@@ -194,8 +194,8 @@ export const CharactersPage = (props) => {
                         avatar={character.avatar}
                         name={character.name}
                         provider='Pathfinder 2'
-                        firstText={`${t('charactersPage.level')} ${character.object_data.level} | ${character.object_data.subrace ? t(`pathfinder2.subraces.${character.object_data.race}.${character.object_data.subrace}`) : t(`pathfinder2.races.${character.object_data.race}`)}`}
-                        secondText={Object.keys(character.object_data.classes).map((item) => t(`pathfinder2.classes.${item}`)).join(' * ')}
+                        firstText={`${t('charactersPage.level')} ${character.level} | ${character.subrace ? t(`pathfinder2.subraces.${character.race}.${character.subrace}`) : t(`pathfinder2.races.${character.race}`)}`}
+                        secondText={Object.keys(character.classes).map((item) => t(`pathfinder2.classes.${item}`)).join(' * ')}
                         onClick={() => navigate('characters', { id: character.id })}
                         onDeleteCharacter={(e) => deleteCharacter(e, character.id)}
                       />
@@ -205,8 +205,8 @@ export const CharactersPage = (props) => {
                         avatar={character.avatar}
                         name={character.name}
                         provider='Daggerheart'
-                        firstText={`${t('charactersPage.level')} ${character.object_data.level} | ${t(`daggerheart.heritages.${character.object_data.heritage}`)}`}
-                        secondText={Object.keys(character.object_data.classes).map((item) => t(`daggerheart.classes.${item}`)).join(' * ')}
+                        firstText={`${t('charactersPage.level')} ${character.level} | ${t(`daggerheart.heritages.${character.heritage}`)}`}
+                        secondText={Object.keys(character.classes).map((item) => t(`daggerheart.classes.${item}`)).join(' * ')}
                         onClick={() => navigate('characters', { id: character.id })}
                         onDeleteCharacter={(e) => deleteCharacter(e, character.id)}
                       />

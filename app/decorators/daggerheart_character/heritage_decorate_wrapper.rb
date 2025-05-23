@@ -1,21 +1,14 @@
 # frozen_string_literal: true
 
 module DaggerheartCharacter
-  class HeritageDecorateWrapper
-    def decorate_fresh_character(result:)
-      heritage_decorator(result[:heritage]).decorate_fresh_character(result: result)
-    end
-
-    def decorate_character_abilities(result:)
-      heritage_decorator(result[:heritage]).decorate_character_abilities(result: result)
-    end
-
+  class HeritageDecorateWrapper < ApplicationDecorateWrapper
     private
 
-    def heritage_decorator(heritage)
-      Charkeeper::Container.resolve("decorators.daggerheart_character.heritages.#{heritage}")
-    rescue Dry::Container::KeyError => _e
-      Charkeeper::Container.resolve('decorators.dummy_decorator')
+    def wrap_classes(obj)
+      case obj.heritage
+      when Daggerheart::Character::ELF then DaggerheartCharacter::Heritages::ElfDecorator.new(obj)
+      else ApplicationDecorator.new(obj)
+      end
     end
   end
 end

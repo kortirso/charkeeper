@@ -2,9 +2,7 @@
 
 module Dnd2024Character
   module Classes
-    class PaladinDecorator
-      WEAPON_CORE = ['light weapon', 'martial weapon'].freeze
-      ARMOR = ['light armor', 'medium armor', 'heavy armor', 'shield'].freeze
+    class PaladinDecorator < ApplicationDecorator
       SPELL_SLOTS = {
         1 => { 1 => 2 },
         2 => { 1 => 2 },
@@ -27,33 +25,39 @@ module Dnd2024Character
         19 => { 1 => 4, 2 => 3, 3 => 3, 4 => 3, 5 => 2 },
         20 => { 1 => 4, 2 => 3, 3 => 3, 4 => 3, 5 => 2 }
       }.freeze
+      CLASS_SAVE_DC = %w[wis cha].freeze
 
-      def decorate_fresh_character(result:)
-        result[:weapon_core_skills] = result[:weapon_core_skills].concat(WEAPON_CORE).uniq
-        result[:armor_proficiency] = result[:armor_proficiency].concat(ARMOR).uniq
-        result[:abilities] = { str: 13, dex: 10, con: 12, int: 11, wis: 14, cha: 15 }
-        result[:health] = { current: 11, max: 11, temp: 0 }
-
-        result
+      def class_save_dc
+        @class_save_dc ||= main_class == 'paladin' ? CLASS_SAVE_DC : __getobj__.class_save_dc
       end
 
-      # rubocop: disable Metrics/PerceivedComplexity
-      def decorate_character_abilities(result:, class_level:)
-        result[:class_save_dc] = %i[wis cha] if result[:main_class] == 'paladin'
-        result[:spell_classes][:ranger] = {
-          save_dc: 8 + result[:proficiency_bonus] + result.dig(:modifiers, :wis),
-          attack_bonus: result[:proficiency_bonus] + result.dig(:modifiers, :wis),
-          max_spell_level: max_spell_level(class_level),
-          prepared_spells_amount: prepared_spells_amount(class_level)
-        }
-        result[:spells_slots] = spells_slots(class_level)
+      def spell_classes
+        @spell_classes ||= begin
+          result = __getobj__.spell_classes
+          result[:paladin] = {
+            save_dc: 8 + proficiency_bonus + modifiers['cha'],
+            attack_bonus: proficiency_bonus + modifiers['cha'],
+            cantrips_amount: 0,
+            max_spell_level: max_spell_level,
+            prepared_spells_amount: prepared_spells_amount,
+            multiclass_spell_level: class_level / 2 # half round down
+          }
+          result
+        end
+      end
 
-        result
+      def spells_slots
+        @spells_slots ||= SPELL_SLOTS[class_level]
       end
 
       private
 
-      def prepared_spells_amount(class_level)
+      def class_level
+        @class_level ||= classes['paladin']
+      end
+
+      # rubocop: disable Metrics/PerceivedComplexity
+      def prepared_spells_amount
         return 15 if class_level >= 19
         return 14 if class_level >= 17
         return 12 if class_level >= 15
@@ -67,12 +71,8 @@ module Dnd2024Character
       end
       # rubocop: enable Metrics/PerceivedComplexity
 
-      def max_spell_level(class_level)
+      def max_spell_level
         SPELL_SLOTS[class_level].keys.max
-      end
-
-      def spells_slots(class_level)
-        SPELL_SLOTS[class_level]
       end
     end
   end

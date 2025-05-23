@@ -29,7 +29,7 @@
     "level": 5,
     "kind": "static",
     "visible": "true",
-    "eval_variables": {
+    "description_eval_variables": {
       "limit": "1"
     },
     "limit_refresh": "long_rest"
@@ -45,12 +45,14 @@
     "origin_value": "dragonborn",
     "level": 1,
     "kind": "static",
-    "visible": "result[:selected_features].keys.include?('draconic_ancestry_black')",
+    "visible": "selected_features.keys.include?('draconic_ancestry_black')",
+    "description_eval_variables": {
+      "save_dc": "8 + modifiers['con'] + proficiency_bonus",
+      "damage": " >= 17 ? '4d10' : (level >= 11 ? '3d10' : (level >= 5 ? '2d10' : '1d10'))",
+      "limit": "proficiency_bonus"
+    },
     "eval_variables": {
-      "result": "result[:conditions][:resistance] = result[:conditions][:resistance].push('acid').uniq",
-      "save_dc": "8 + result.dig(:modifiers, :con) + result[:proficiency_bonus]",
-      "damage": "overall_level = result[:overall_level]; overall_level >= 17 ? '4d10' : (overall_level >= 11 ? '3d10' : (overall_level >= 5 ? '2d10' : '1d10'))",
-      "limit": "result[:proficiency_bonus]"
+      "conditions": "conditions.merge({ resistance: conditions[:resistance].push('acid').uniq })"
     },
     "limit_refresh": "long_rest"
   },
@@ -65,12 +67,14 @@
     "origin_value": "dragonborn",
     "level": 1,
     "kind": "static",
-    "visible": "result[:selected_features].keys.include?('draconic_ancestry_blue')",
+    "visible": "selected_features.keys.include?('draconic_ancestry_blue')",
+    "description_eval_variables": {
+      "save_dc": "8 + modifiers['con'] + proficiency_bonus",
+      "damage": "level >= 17 ? '4d10' : (level >= 11 ? '3d10' : (level >= 5 ? '2d10' : '1d10'))",
+      "limit": "proficiency_bonus"
+    },
     "eval_variables": {
-      "result": "result[:conditions][:resistance] = result[:conditions][:resistance].push('lightning').uniq",
-      "save_dc": "8 + result.dig(:modifiers, :con) + result[:proficiency_bonus]",
-      "damage": "overall_level = result[:overall_level]; overall_level >= 17 ? '4d10' : (overall_level >= 11 ? '3d10' : (overall_level >= 5 ? '2d10' : '1d10'))",
-      "limit": "result[:proficiency_bonus]"
+      "conditions": "conditions.merge({ resistance: conditions[:resistance].push('lightning').uniq })"
     },
     "limit_refresh": "long_rest"
   },
@@ -85,12 +89,14 @@
     "origin_value": "dragonborn",
     "level": 1,
     "kind": "static",
-    "visible": "result[:selected_features].keys.include?('draconic_ancestry_brass')",
+    "visible": "selected_features.keys.include?('draconic_ancestry_brass')",
+    "description_eval_variables": {
+      "save_dc": "8 + modifiers['con'] + proficiency_bonus",
+      "damage": "level >= 17 ? '4d10' : (level >= 11 ? '3d10' : (level >= 5 ? '2d10' : '1d10'))",
+      "limit": "proficiency_bonus"
+    },
     "eval_variables": {
-      "result": "result[:conditions][:resistance] = result[:conditions][:resistance].push('fire').uniq",
-      "save_dc": "8 + result.dig(:modifiers, :con) + result[:proficiency_bonus]",
-      "damage": "overall_level = result[:overall_level]; overall_level >= 17 ? '4d10' : (overall_level >= 11 ? '3d10' : (overall_level >= 5 ? '2d10' : '1d10'))",
-      "limit": "result[:proficiency_bonus]"
+      "conditions": "conditions.merge({ resistance: conditions[:resistance].push('fire').uniq })"
     },
     "limit_refresh": "long_rest"
   },
@@ -105,12 +111,14 @@
     "origin_value": "dragonborn",
     "level": 1,
     "kind": "static",
-    "visible": "result[:selected_features].keys.include?('draconic_ancestry_bronze')",
+    "visible": "selected_features.keys.include?('draconic_ancestry_bronze')",
+    "description_eval_variables": {
+      "save_dc": "8 + modifiers['con'] + proficiency_bonus",
+      "damage": "level >= 17 ? '4d10' : (level >= 11 ? '3d10' : (level >= 5 ? '2d10' : '1d10'))",
+      "limit": "proficiency_bonus"
+    },
     "eval_variables": {
-      "result": "result[:conditions][:resistance] = result[:conditions][:resistance].push('lightning').uniq",
-      "save_dc": "8 + result.dig(:modifiers, :con) + result[:proficiency_bonus]",
-      "damage": "overall_level = result[:overall_level]; overall_level >= 17 ? '4d10' : (overall_level >= 11 ? '3d10' : (overall_level >= 5 ? '2d10' : '1d10'))",
-      "limit": "result[:proficiency_bonus]"
+      "conditions": "conditions.merge({ resistance: conditions[:resistance].push('lightning').uniq })"
     },
     "limit_refresh": "long_rest"
   },
@@ -125,12 +133,14 @@
     "origin_value": "dragonborn",
     "level": 1,
     "kind": "static",
-    "visible": "result[:selected_features].keys.include?('draconic_ancestry_copper')",
+    "visible": "selected_features.keys.include?('draconic_ancestry_copper')",
+    "description_eval_variables": {
+      "save_dc": "8 + modifiers['con'] + proficiency_bonus",
+      "damage": "level >= 17 ? '4d10' : (level >= 11 ? '3d10' : (level >= 5 ? '2d10' : '1d10'))",
+      "limit": "proficiency_bonus"
+    },
     "eval_variables": {
-      "result": "result[:conditions][:resistance] = result[:conditions][:resistance].push('acid').uniq",
-      "save_dc": "8 + result.dig(:modifiers, :con) + result[:proficiency_bonus]",
-      "damage": "overall_level = result[:overall_level]; overall_level >= 17 ? '4d10' : (overall_level >= 11 ? '3d10' : (overall_level >= 5 ? '2d10' : '1d10'))",
-      "limit": "result[:proficiency_bonus]"
+      "conditions": "conditions.merge({ resistance: conditions[:resistance].push('acid').uniq })"
     },
     "limit_refresh": "long_rest"
   },
@@ -145,12 +155,14 @@
     "origin_value": "dragonborn",
     "level": 1,
     "kind": "static",
-    "visible": "result[:selected_features].keys.include?('draconic_ancestry_gold')",
+    "visible": "selected_features.keys.include?('draconic_ancestry_gold')",
+    "description_eval_variables": {
+      "save_dc": "8 + modifiers['con'] + proficiency_bonus",
+      "damage": "level >= 17 ? '4d10' : (level >= 11 ? '3d10' : (level >= 5 ? '2d10' : '1d10'))",
+      "limit": "proficiency_bonus"
+    },
     "eval_variables": {
-      "result": "result[:conditions][:resistance] = result[:conditions][:resistance].push('fire').uniq",
-      "save_dc": "8 + result.dig(:modifiers, :con) + result[:proficiency_bonus]",
-      "damage": "overall_level = result[:overall_level]; overall_level >= 17 ? '4d10' : (overall_level >= 11 ? '3d10' : (overall_level >= 5 ? '2d10' : '1d10'))",
-      "limit": "result[:proficiency_bonus]"
+      "conditions": "conditions.merge({ resistance: conditions[:resistance].push('fire').uniq })"
     },
     "limit_refresh": "long_rest"
   },
@@ -165,12 +177,15 @@
     "origin_value": "dragonborn",
     "level": 1,
     "kind": "static",
-    "visible": "result[:selected_features].keys.include?('draconic_ancestry_green')",
+    "visible": "selected_features.keys.include?('draconic_ancestry_green')",
+    "description_eval_variables": {
+      "result": "conditions[:resistance] = conditions[:resistance].push('poison').uniq",
+      "save_dc": "8 + modifiers['con'] + proficiency_bonus",
+      "damage": "level >= 17 ? '4d10' : (level >= 11 ? '3d10' : (level >= 5 ? '2d10' : '1d10'))",
+      "limit": "proficiency_bonus"
+    },
     "eval_variables": {
-      "result": "result[:conditions][:resistance] = result[:conditions][:resistance].push('poison').uniq",
-      "save_dc": "8 + result.dig(:modifiers, :con) + result[:proficiency_bonus]",
-      "damage": "overall_level = result[:overall_level]; overall_level >= 17 ? '4d10' : (overall_level >= 11 ? '3d10' : (overall_level >= 5 ? '2d10' : '1d10'))",
-      "limit": "result[:proficiency_bonus]"
+      "conditions": "conditions.merge({ resistance: conditions[:resistance].push('poison').uniq })"
     },
     "limit_refresh": "long_rest"
   },
@@ -185,12 +200,14 @@
     "origin_value": "dragonborn",
     "level": 1,
     "kind": "static",
-    "visible": "result[:selected_features].keys.include?('draconic_ancestry_red')",
+    "visible": "selected_features.keys.include?('draconic_ancestry_red')",
+    "description_eval_variables": {
+      "save_dc": "8 + modifiers['con'] + proficiency_bonus",
+      "damage": "level >= 17 ? '4d10' : (level >= 11 ? '3d10' : (level >= 5 ? '2d10' : '1d10'))",
+      "limit": "proficiency_bonus"
+    },
     "eval_variables": {
-      "result": "result[:conditions][:resistance] = result[:conditions][:resistance].push('fire').uniq",
-      "save_dc": "8 + result.dig(:modifiers, :con) + result[:proficiency_bonus]",
-      "damage": "overall_level = result[:overall_level]; overall_level >= 17 ? '4d10' : (overall_level >= 11 ? '3d10' : (overall_level >= 5 ? '2d10' : '1d10'))",
-      "limit": "result[:proficiency_bonus]"
+      "conditions": "conditions.merge({ resistance: conditions[:resistance].push('fire').uniq })"
     },
     "limit_refresh": "long_rest"
   },
@@ -205,12 +222,14 @@
     "origin_value": "dragonborn",
     "level": 1,
     "kind": "static",
-    "visible": "result[:selected_features].keys.include?('draconic_ancestry_silver')",
+    "visible": "selected_features.keys.include?('draconic_ancestry_silver')",
+    "description_eval_variables": {
+      "save_dc": "8 + modifiers['con'] + proficiency_bonus",
+      "damage": "level >= 17 ? '4d10' : (level >= 11 ? '3d10' : (level >= 5 ? '2d10' : '1d10'))",
+      "limit": "proficiency_bonus"
+    },
     "eval_variables": {
-      "result": "result[:conditions][:resistance] = result[:conditions][:resistance].push('cold').uniq",
-      "save_dc": "8 + result.dig(:modifiers, :con) + result[:proficiency_bonus]",
-      "damage": "overall_level = result[:overall_level]; overall_level >= 17 ? '4d10' : (overall_level >= 11 ? '3d10' : (overall_level >= 5 ? '2d10' : '1d10'))",
-      "limit": "result[:proficiency_bonus]"
+      "conditions": "conditions.merge({ resistance: conditions[:resistance].push('cold').uniq })"
     },
     "limit_refresh": "long_rest"
   },
@@ -225,12 +244,14 @@
     "origin_value": "dragonborn",
     "level": 1,
     "kind": "static",
-    "visible": "result[:selected_features].keys.include?('draconic_ancestry_white')",
+    "visible": "selected_features.keys.include?('draconic_ancestry_white')",
+    "description_eval_variables": {
+      "save_dc": "8 + modifiers['con'] + proficiency_bonus",
+      "damage": "level >= 17 ? '4d10' : (level >= 11 ? '3d10' : (level >= 5 ? '2d10' : '1d10'))",
+      "limit": "proficiency_bonus"
+    },
     "eval_variables": {
-      "result": "result[:conditions][:resistance] = result[:conditions][:resistance].push('cold').uniq",
-      "save_dc": "8 + result.dig(:modifiers, :con) + result[:proficiency_bonus]",
-      "damage": "overall_level = result[:overall_level]; overall_level >= 17 ? '4d10' : (overall_level >= 11 ? '3d10' : (overall_level >= 5 ? '2d10' : '1d10'))",
-      "limit": "result[:proficiency_bonus]"
+      "conditions": "conditions.merge({ resistance: conditions[:resistance].push('cold').uniq })"
     },
     "limit_refresh": "long_rest"
   }

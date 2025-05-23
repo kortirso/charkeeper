@@ -2,16 +2,12 @@
 
 module Dnd5Character
   module Subraces
-    class HighElfDecorator
+    class HighElfBuilder
       WEAPONS = %w[longsword shortsword longbow shortbow].freeze
 
-      def decorate_fresh_character(result:)
+      def call(result:)
         result[:weapon_skills] = result[:weapon_skills].concat(WEAPONS).uniq
 
-        result
-      end
-
-      def decorate_character_abilities(result:)
         result
       end
     end

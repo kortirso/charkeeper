@@ -4,10 +4,10 @@ module CharactersContext
   module Pathfinder2
     class CreateCommand < BaseCommand
       include Deps[
-        base_decorator: 'decorators.pathfinder2_character.base_decorator',
-        race_decorator: 'decorators.pathfinder2_character.race_wrapper',
-        subrace_decorator: 'decorators.pathfinder2_character.subrace_wrapper',
-        class_decorator: 'decorators.pathfinder2_character.class_wrapper',
+        base_builder: 'builders.pathfinder2_character.base',
+        race_builder: 'builders.pathfinder2_character.race',
+        subrace_builder: 'builders.pathfinder2_character.subrace',
+        class_builder: 'builders.pathfinder2_character.class',
         attach_avatar: 'commands.image_processing.attach_avatar'
       ]
 
@@ -42,7 +42,7 @@ module CharactersContext
 
       def do_prepare(input)
         input[:data] =
-          decorate_fresh_character(input.slice(:race, :subrace, :main_class).symbolize_keys)
+          build_fresh_character(input.slice(:race, :subrace, :main_class).symbolize_keys)
       end
 
       def do_persist(input)
@@ -53,11 +53,11 @@ module CharactersContext
         { result: character }
       end
 
-      def decorate_fresh_character(data)
-        base_decorator.decorate_fresh_character(**data)
-          .then { |result| race_decorator.decorate_fresh_character(result: result) }
-          .then { |result| subrace_decorator.decorate_fresh_character(result: result) }
-          .then { |result| class_decorator.decorate_fresh_character(result: result) }
+      def build_fresh_character(data)
+        base_builder.call(result: data)
+          .then { |result| race_builder.call(result: result) }
+          .then { |result| subrace_builder.call(result: result) }
+          .then { |result| class_builder.call(result: result) }
       end
     end
   end

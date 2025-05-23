@@ -11,8 +11,8 @@
     "level": 2,
     "kind": "text",
     "visible": "true",
-    "eval_variables": {
-      "value": "class_level = result.dig(:classes, 'warlock'); return 8 if class_level >= 18; return 7 if class_level >= 15; return 6 if class_level >= 12; return 5 if class_level >= 9; return 4 if class_level >= 7; return 3 if class_level >= 5; 2"
+    "description_eval_variables": {
+      "value": "class_level = classes['warlock']; return 8 if class_level >= 18; return 7 if class_level >= 15; return 6 if class_level >= 12; return 5 if class_level >= 9; return 4 if class_level >= 7; return 3 if class_level >= 5; 2"
     }
   },
   {
@@ -40,7 +40,7 @@
     "kind": "update_result",
     "visible": "true",
     "eval_variables": {
-      "result": "result[:spell_classes][:warlock][:cantrips_amount] += 3"
+      "spell_classes": "spell_classes[:warlock][:cantrips_amount] += 3; spell_classes"
     }
   },
   {
@@ -53,7 +53,7 @@
     "kind": "update_result",
     "visible": "true",
     "eval_variables": {
-      "value": "result[:static_spells].merge!({ 'find_familiar' => { 'attack_bonus' => result[:proficiency_bonus] + result.dig(:modifiers, :cha), 'save_dc' => 8 + result[:proficiency_bonus] + result.dig(:modifiers, :cha) } })"
+      "static_spells": "static_spells.merge({ 'find_familiar' => { 'attack_bonus' => proficiency_bonus + modifiers['cha'], 'save_dc' => 8 + proficiency_bonus + modifiers['cha'] } })"
     }
   },
   {
@@ -68,8 +68,8 @@
     "level": 11,
     "kind": "text",
     "visible": "true",
-    "eval_variables": {
-      "value": "class_level = result.dig(:classes, 'warlock'); return '6, 7, 8, 9' if class_level >= 17; return '6, 7, 8' if class_level >= 15; return '6, 7' if class_level >= 13; '6'"
+    "description_eval_variables": {
+      "value": "class_level = classes['warlock']; return '6, 7, 8, 9' if class_level >= 17; return '6, 7, 8' if class_level >= 15; return '6, 7' if class_level >= 13; '6'"
     }
   },
   {
@@ -84,7 +84,7 @@
     "level": 20,
     "kind": "static",
     "visible": "true",
-    "eval_variables": {
+    "description_eval_variables": {
       "limit": "1"
     },
     "limit_refresh": "long_rest"

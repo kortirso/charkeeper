@@ -4,9 +4,9 @@ module CharactersContext
   module Daggerheart
     class CreateCommand < BaseCommand
       include Deps[
-        base_decorator: 'decorators.daggerheart_character.base_decorator',
-        heritage_decorator: 'decorators.daggerheart_character.heritage_wrapper',
-        class_decorator: 'decorators.daggerheart_character.class_wrapper',
+        base_builder: 'builders.daggerheart_character.base',
+        heritage_builder: 'builders.daggerheart_character.heritage',
+        class_builder: 'builders.daggerheart_character.class',
         attach_avatar: 'commands.image_processing.attach_avatar'
       ]
 
@@ -43,9 +43,9 @@ module CharactersContext
       end
 
       def decorate_fresh_character(data)
-        base_decorator.decorate_fresh_character(**data)
-          .then { |result| heritage_decorator.decorate_fresh_character(result: result) }
-          .then { |result| class_decorator.decorate_fresh_character(result: result) }
+        base_builder.call(result: data)
+          .then { |result| heritage_builder.call(result: result) }
+          .then { |result| class_builder.call(result: result) }
       end
     end
   end

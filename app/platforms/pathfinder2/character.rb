@@ -13,6 +13,8 @@ module Pathfinder2
     attribute :health, array: true
     attribute :speed, :integer
     attribute :languages, array: true
+    attribute :selected_skills, array: true, default: {} # { acrobatics: 2, arcana: 1, crafting: 3 }
+    attribute :lore_skills, array: true, default: { 'lore1' => { name: 'Lore', level: 0 }, 'lore2' => { name: 'Lore', level: 0 } }
   end
 
   class Character < Character
@@ -42,18 +44,11 @@ module Pathfinder2
 
     attribute :data, Pathfinder2::CharacterData.to_type
 
-    def decorate
-      base_decorator.decorate_character_abilities(character: self)
-        .then { |result| race_decorator.decorate_character_abilities(result: result) }
-        .then { |result| subrace_decorator.decorate_character_abilities(result: result) }
-        .then { |result| class_decorator.decorate_character_abilities(result: result) }
+    def decorator
+      base_decorator = ::Pathfinder2Character::BaseDecorator.new(self)
+      race_decorator = ::Pathfinder2Character::RaceDecorateWrapper.new(base_decorator)
+      subrace_decorator = ::Pathfinder2Character::SubraceDecorateWrapper.new(race_decorator)
+      ::Pathfinder2Character::ClassDecorateWrapper.new(subrace_decorator)
     end
-
-    private
-
-    def base_decorator = ::Charkeeper::Container.resolve('decorators.pathfinder2_character.base_decorator')
-    def race_decorator = ::Charkeeper::Container.resolve('decorators.pathfinder2_character.race_wrapper')
-    def subrace_decorator = ::Charkeeper::Container.resolve('decorators.pathfinder2_character.subrace_wrapper')
-    def class_decorator = ::Charkeeper::Container.resolve('decorators.pathfinder2_character.class_wrapper')
   end
 end

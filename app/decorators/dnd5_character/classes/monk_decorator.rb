@@ -2,59 +2,64 @@
 
 module Dnd5Character
   module Classes
-    class MonkDecorator
-      WEAPON_CORE = ['light weapon'].freeze
-      DEFAULT_WEAPON_SKILLS = %w[shortsword].freeze
+    class MonkDecorator < ApplicationDecorator
       NOT_MONK_WEAPON_CAPTIONS = %w[2handed heavy].freeze
+      CLASS_SAVE_DC = %w[str dex].freeze
 
-      def decorate_fresh_character(result:)
-        result[:weapon_core_skills] = result[:weapon_core_skills].concat(WEAPON_CORE).uniq
-        result[:weapon_skills] = result[:weapon_skills].concat(DEFAULT_WEAPON_SKILLS).uniq
-        result[:abilities] = { str: 12, dex: 15, con: 13, int: 11, wis: 14, cha: 10 }
-        result[:health] = { current: 9, max: 9, temp: 0 }
-
-        result
+      def class_save_dc
+        @class_save_dc ||= main_class == 'monk' ? CLASS_SAVE_DC : __getobj__.class_save_dc
       end
 
-      # rubocop: disable Metrics/AbcSize, Metrics/PerceivedComplexity
-      def decorate_character_abilities(result:, class_level:)
-        result[:class_save_dc] = %i[str dex] if result[:main_class] == 'monk'
+      def speed
+        @speed ||= no_armor ? (__getobj__.speed + speed_modifier) : __getobj__.speed
+      end
 
-        no_armor = result[:defense_gear].values.all?(&:nil?)
-        result[:combat][:speed] += speed_modifier(class_level) if no_armor
-        result[:combat][:armor_class] = [result[:combat][:armor_class], monk_armor_class(result)].max if no_armor
+      def armor_class
+        @armor_class ||= no_armor ? [__getobj__.armor_class, monk_armor_class].max : __getobj__.armor_class
+      end
 
-        martial_arts(result, class_level) if no_armor # Martial arts, 1 level
-        result[:combat][:attacks_per_action] = 2 if class_level >= 5 # Extra Attack, 5 level
+      def attacks
+        @attacks ||= no_armor ? with_martial_arts(__getobj__.attacks) : __getobj__.attacks
+      end
 
-        result
+      def attacks_per_action
+        @attacks_per_action ||= class_level >= 5 ? 2 : 1
       end
 
       private
 
-      def speed_modifier(class_level)
+      def class_level
+        @class_level ||= classes['monk']
+      end
+
+      def speed_modifier
         return 0 if class_level < 2
 
         (((class_level + 2) / 4) + 1) * 5
       end
 
-      def monk_armor_class(result)
-        10 + result.dig(:modifiers, :dex) + result.dig(:modifiers, :wis)
+      def monk_armor_class
+        10 + modifiers['dex'] + modifiers['wis']
       end
 
-      def martial_arts(result, class_level)
-        key_ability_bonus = [result.dig(:modifiers, :str), result.dig(:modifiers, :dex)].max
+      def no_armor
+        @no_armor ||= defense_gear.values.all?(&:nil?)
+      end
 
-        result[:attacks].each do |attack|
+      # rubocop: disable Metrics/AbcSize, Metrics/PerceivedComplexity
+      def with_martial_arts(result)
+        key_ability_bonus = [modifiers['str'], modifiers['dex']].max
+
+        result.each do |attack|
           next if attack[:caption].any? { |item| NOT_MONK_WEAPON_CAPTIONS.include?(item) }
           next if attack[:kind] == 'martial' && attack[:slug] != 'shortsword'
 
-          attack[:attack_bonus] = key_ability_bonus + result[:proficiency_bonus]
+          attack[:attack_bonus] = key_ability_bonus + proficiency_bonus
           attack[:damage_bonus] = key_ability_bonus if attack[:action_type] == 'action'
           attack[:damage] = "1d#{(((class_level + 1) / 6) + 2) * 2}" if attack[:kind] == 'unarmed'
         end
-        unarmed_attack = result[:attacks].find { |attack| attack[:kind] == 'unarmed' && attack[:action_type] == 'action' }
-        result[:attacks] << unarmed_attack.merge({ action_type: 'bonus action', tooltips: ['flurry_of_blows'] })
+        unarmed_attack = result.find { |attack| attack[:kind] == 'unarmed' && attack[:action_type] == 'action' }
+        result << unarmed_attack.merge({ action_type: 'bonus action', tooltips: ['flurry_of_blows'] })
       end
       # rubocop: enable Metrics/AbcSize, Metrics/PerceivedComplexity
     end

@@ -2,22 +2,9 @@
 
 module Dnd5Character
   module Races
-    class TieflingDecorator
-      LANGUAGES = %w[common infernal].freeze
-      RESISTANCES = %w[fire].freeze
-
-      def decorate_fresh_character(result:)
-        result[:speed] = 30
-        result[:languages] = result[:languages].concat(LANGUAGES).uniq
-        result[:resistance] = result[:resistance].concat(RESISTANCES).uniq
-
-        result
-      end
-
-      def decorate_character_abilities(result:)
-        result[:darkvision] = 60
-
-        result
+    class TieflingDecorator < ApplicationDecorator
+      def darkvision
+        60
       end
     end
   end

@@ -13,7 +13,7 @@
     "options_type": "selected_skills",
     "visible": "true",
     "eval_variables": {
-      "result": "expertises = result.dig(:selected_features, 'rogue_expertise'); result[:skills].each { |skill| next if expertises.nil?; next if expertises.exclude?(skill[:name]); skill[:modifier] += result[:proficiency_bonus] }"
+      "result": "expertises = result.dig(:selected_features, 'rogue_expertise'); result[:skills].each { |skill| next if expertises.nil?; next if expertises.exclude?(skill[:slug]); skill[:modifier] += proficiency_bonus }"
     }
   },
   {

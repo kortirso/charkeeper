@@ -6,10 +6,12 @@ import { Toggle, Checkbox } from '../../../atoms';
 import { useAppLocale } from '../../../../context';
 
 export const Dnd5Professions = (props) => {
+  const character = () => props.character;
+
   // changeable data
-  const [languagesData, setLanguagesData] = createSignal(props.initialLanguages);
-  const [toolsData, setToolsData] = createSignal(props.initialTools);
-  const [musicData, setMusicData] = createSignal(props.initialMusic);
+  const [languagesData, setLanguagesData] = createSignal(character().languages);
+  const [toolsData, setToolsData] = createSignal(character().tools);
+  const [musicData, setMusicData] = createSignal(character().music);
 
   const [, dict] = useAppLocale();
 
@@ -34,17 +36,17 @@ export const Dnd5Professions = (props) => {
   }
 
   const toggleWeaponCoreSkill = async (slug) => {
-    const newValue = props.weaponCoreSkills.includes(slug) ? props.weaponCoreSkills.filter((item) => item !== slug) : props.weaponCoreSkills.concat(slug);
+    const newValue = character().weapon_core_skills.includes(slug) ? character().weapon_core_skills.filter((item) => item !== slug) : character().weapon_core_skills.concat(slug);
     await props.onReloadCharacter({ weapon_core_skills: newValue });
   }
 
   const toggleArmorCoreSkill = async (slug) => {
-    const newValue = props.armorSkills.includes(slug) ? props.armorSkills.filter((item) => item !== slug) : props.armorSkills.concat(slug);
+    const newValue = character().armor_proficiency.includes(slug) ? character().armor_proficiency.filter((item) => item !== slug) : character().armor_proficiency.concat(slug);
     await props.onReloadCharacter({ armor_proficiency: newValue });
   }
 
   const toggleWeaponSkill = async (slug) => {
-    const newValue = props.weaponSkills.includes(slug) ? props.weaponSkills.filter((item) => item !== slug) : props.weaponSkills.concat(slug);
+    const newValue = character().weapon_skills.includes(slug) ? character().weapon_skills.filter((item) => item !== slug) : character().weapon_skills.concat(slug);
     await props.onReloadCharacter({ weapon_skills: newValue });
   }
 
@@ -73,7 +75,7 @@ export const Dnd5Professions = (props) => {
                 labelText={skill}
                 labelPosition="right"
                 labelClassList="text-sm ml-4 font-cascadia-light"
-                checked={props.weaponCoreSkills.includes(slug)}
+                checked={character().weapon_core_skills.includes(slug)}
                 onToggle={() => toggleWeaponCoreSkill(slug)}
               />
             </div>
@@ -86,7 +88,7 @@ export const Dnd5Professions = (props) => {
                 labelText={skill}
                 labelPosition="right"
                 labelClassList="text-sm ml-4 font-cascadia-light"
-                checked={props.armorSkills.includes(slug)}
+                checked={character().armor_proficiency.includes(slug)}
                 onToggle={() => toggleArmorCoreSkill(slug)}
               />
             </div>
@@ -104,7 +106,7 @@ export const Dnd5Professions = (props) => {
                     labelText={weapon.name}
                     labelPosition="right"
                     labelClassList="text-sm ml-4 font-cascadia-light"
-                    checked={props.weaponSkills.includes(weapon.slug)}
+                    checked={character().weapon_skills.includes(weapon.slug)}
                     onToggle={() => toggleWeaponSkill(weapon.slug)}
                   />
                 </div>
@@ -120,7 +122,7 @@ export const Dnd5Professions = (props) => {
                     labelText={weapon.name}
                     labelPosition="right"
                     labelClassList="text-sm ml-4 font-cascadia-light"
-                    checked={props.weaponSkills.includes(weapon.slug)}
+                    checked={character().weapon_skills.includes(weapon.slug)}
                     onToggle={() => toggleWeaponSkill(weapon.slug)}
                   />
                 </div>

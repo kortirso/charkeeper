@@ -1,143 +1,110 @@
 # frozen_string_literal: true
 
 module Dnd5Character
-  class BaseDecorator
+  class BaseDecorator < SimpleDelegator
     MELEE_ATTACK_TOOLTIPS = %w[2handed heavy].freeze
     RANGE_ATTACK_TOOLTIPS = %w[2handed heavy reload].freeze
 
-    # rubocop: disable Metrics/AbcSize, Metrics/MethodLength, Metrics/PerceivedComplexity
-    def decorate_fresh_character(race:, main_class:, alignment:, subrace: nil)
-      {
-        race: race,
-        subrace: subrace,
-        main_class: main_class,
-        alignment: alignment,
-        classes: { main_class => 1 },
-        subclasses: { main_class => nil },
-        weapon_core_skills: [],
-        weapon_skills: [],
-        armor_proficiency: [],
-        languages: [],
-        selected_skills: [],
-        resistance: [],
-        immunity: [],
-        vulnerability: [],
-        hit_dice: { 6 => 0, 8 => 0, 10 => 0, 12 => 0 }
-      }.compact
+    delegate :id, :name, :data, to: :__getobj__
+    delegate :race, :subrace, :main_class, :classes, :subclasses, :level, :languages, :health, :abilities, :selected_skills,
+             :selected_features, :resistance, :immunity, :vulnerability, :energy, :coins,
+             :weapon_core_skills, :weapon_skills, :armor_proficiency, :tools, :music, :spent_spell_slots,
+             :hit_dice, :spent_hit_dice, :death_saving_throws, :speed, to: :data
+
+    def method_missing(_method, *args); end
+
+    def proficiency_bonus
+      @proficiency_bonus ||= 2 + ((level - 1) / 4)
     end
 
-    def decorate_character_abilities(character:)
-      data = character.data
+    def modifiers
+      @modifiers ||= abilities.transform_values { |value| calc_ability_modifier(value) }
+    end
 
-      result = {
-        race: data.race,
-        subrace: data.subrace,
-        main_class: data.main_class,
-        classes: data.classes,
-        subclasses: data.subclasses,
-        overall_level: data.level,
-        proficiency_bonus: proficiency_bonus(data),
-        abilities: data.abilities,
-        modifiers: modifiers(data),
-        features: [], # неизменные классовые способности
-        selected_features: data.selected_features, # выбранные классовые способности
-        static_spells: {}, # врожденные заклинания от расы/класса
-        conditions: {
-          resistance: data.resistance,
-          immunity: data.immunity,
-          vulnerability: data.vulnerability
-        },
-        energy: data.energy || {}, # потраченные заряды способностей
-        coins: data.coins,
-        load: data.abilities['str'] * 15,
-        spell_classes: {},
-        weapon_core_skills: data.weapon_core_skills,
-        weapon_skills: data.weapon_skills,
-        armor_proficiency: data.armor_proficiency,
-        languages: data.languages,
-        tools: data.tools,
-        music: data.music,
-        spent_spell_slots: data.spent_spell_slots,
-        hit_dice: data.hit_dice,
-        spent_hit_dice: data.spent_hit_dice,
-        death_saving_throws: data.death_saving_throws
-      }.compact
+    def skills
+      @skills ||= [
+        %w[acrobatics dex], %w[animal wis], %w[arcana int], %w[athletics str],
+        %w[deception cha], %w[history int], %w[insight wis], %w[intimidation cha],
+        %w[investigation int], %w[medicine wis], %w[nature wis], %w[perception wis],
+        %w[performance cha], %w[persuasion cha], %w[religion int], %w[sleight dex],
+        %w[stealth dex], %w[survival wis]
+      ].map { |item| skill_payload(item[0], item[1]) }
+    end
 
-      result[:save_dc] = result[:modifiers].clone
-      result[:defense_gear] = defense_gear(character)
-      result[:combat] = {
-        armor_class: armor_class(result),
-        initiative: result.dig(:modifiers, :dex) + result[:proficiency_bonus],
-        speed: data.speed,
-        attacks_per_action: 1
+    def features
+      []
+    end
+
+    def static_spells
+      {}
+    end
+
+    def load
+      @load ||= abilities['str'] * 15
+    end
+
+    def spell_classes
+      {}
+    end
+
+    def save_dc
+      @save_dc ||= modifiers.clone
+    end
+
+    def defense_gear
+      @defense_gear ||= calc_defense_gear
+    end
+
+    def armor_class
+      @armor_class ||= calc_armor_class
+    end
+
+    def initiative
+      @initiative ||= modifiers['dex'] + proficiency_bonus
+    end
+
+    def attacks_per_action
+      @attacks_per_action ||= 1
+    end
+
+    def attacks
+      @attacks ||= [unarmed_attack] + weapon_attacks(character)
+    end
+
+    def conditions
+      {
+        resistance: resistance,
+        immunity: immunity,
+        vulnerability: vulnerability
       }
-      result[:health] = data.health
-      result[:skills] = basis_skills(result[:modifiers])
-      modify_selected_skills(result, data)
-      result[:attacks] = [unarmed_attack(result)] + weapon_attacks(result, character)
-
-      result
     end
 
     private
-
-    def proficiency_bonus(data)
-      2 + ((data.level - 1) / 4)
-    end
-
-    def modifiers(data)
-      data.abilities.transform_values { |value| calc_ability_modifier(value) }.symbolize_keys
-    end
 
     def calc_ability_modifier(value)
       (value / 2) - 5
     end
 
-    def basis_skills(modifiers)
-      [
-        { name: 'acrobatics', ability: 'dex', modifier: modifiers[:dex], selected: false },
-        { name: 'animal', ability: 'wis', modifier: modifiers[:wis], selected: false },
-        { name: 'arcana', ability: 'int', modifier: modifiers[:int], selected: false },
-        { name: 'athletics', ability: 'str', modifier: modifiers[:str], selected: false },
-        { name: 'deception', ability: 'cha', modifier: modifiers[:cha], selected: false },
-        { name: 'history', ability: 'int', modifier: modifiers[:int], selected: false },
-        { name: 'insight', ability: 'wis', modifier: modifiers[:wis], selected: false },
-        { name: 'intimidation', ability: 'cha', modifier: modifiers[:cha], selected: false },
-        { name: 'investigation', ability: 'int', modifier: modifiers[:int], selected: false },
-        { name: 'medicine', ability: 'wis', modifier: modifiers[:wis], selected: false },
-        { name: 'nature', ability: 'int', modifier: modifiers[:int], selected: false },
-        { name: 'perception', ability: 'wis', modifier: modifiers[:wis], selected: false },
-        { name: 'performance', ability: 'cha', modifier: modifiers[:cha], selected: false },
-        { name: 'persuasion', ability: 'cha', modifier: modifiers[:cha], selected: false },
-        { name: 'religion', ability: 'int', modifier: modifiers[:int], selected: false },
-        { name: 'sleight', ability: 'dex', modifier: modifiers[:dex], selected: false },
-        { name: 'stealth', ability: 'dex', modifier: modifiers[:dex], selected: false },
-        { name: 'survival', ability: 'wis', modifier: modifiers[:wis], selected: false }
-      ]
+    def skill_payload(slug, ability)
+      selected = selected_skills.include?(slug)
+      {
+        slug: slug,
+        ability: ability,
+        modifier: selected ? (modifiers[ability] + proficiency_bonus) : modifiers[ability],
+        selected: selected
+      }
     end
 
-    def modify_selected_skills(result, data)
-      return if data['selected_skills'].blank?
-
-      result[:skills].map do |skill|
-        next skill if data['selected_skills'].exclude?(skill[:name])
-
-        skill[:modifier] += result[:proficiency_bonus]
-        skill[:selected] = true
-        skill
-      end
-    end
-
-    def unarmed_attack(result)
+    def unarmed_attack
       {
         type: 'unarmed',
         name: { en: 'Unarmed', ru: 'Безоружная' }[I18n.locale],
         action_type: 'action', # action или bonus action
         hands: '1', # используется рук
         melee_distance: 5, # дальность
-        attack_bonus: result.dig(:modifiers, :str) + result[:proficiency_bonus],
+        attack_bonus: modifiers['str'] + proficiency_bonus,
         damage: 1,
-        damage_bonus: result.dig(:modifiers, :str),
+        damage_bonus: modifiers['str'],
         damage_type: 'bludge',
         kind: 'unarmed',
         caption: [],
@@ -145,36 +112,37 @@ module Dnd5Character
       }
     end
 
-    def defense_gear(character)
-      armor, shield = equiped_armor(character)
+    def calc_armor_class
+      equiped_armor = defense_gear[:armor]
+      equiped_shield = defense_gear[:shield]
+      return 10 + modifiers['dex'] if equiped_armor.nil? && equiped_shield.nil?
+
+      equiped_armor&.dig(:items_data, 'info', 'ac').to_i + equiped_shield&.dig(:items_data, 'info', 'ac').to_i
+    end
+
+    def calc_defense_gear
+      armor, shield = equiped_armor_items
       {
         armor: armor.blank? ? nil : armor[0],
         shield: shield.blank? ? nil : shield[0]
       }
     end
 
-    def armor_class(result)
-      equiped_armor = result.dig(:defense_gear, :armor)
-      equiped_shield = result.dig(:defense_gear, :shield)
-      return 10 + result.dig(:modifiers, :dex) if equiped_armor.nil? && equiped_shield.nil?
-
-      equiped_armor&.dig(:items_data, 'info', 'ac').to_i + equiped_shield&.dig(:items_data, 'info', 'ac').to_i
-    end
-
-    def weapon_attacks(result, character)
-      weapons(character).flat_map do |item|
+    def weapon_attacks(_character)
+      weapons.flat_map do |item|
         case item[:items_data]['info']['type']
-        when 'melee' then melee_attack(result, item)
-        when 'range' then range_attack(result, item, 'range')
-        when 'thrown' then [melee_attack(result, item), range_attack(result, item, 'thrown')].flatten
+        when 'melee' then melee_attack(item)
+        when 'range' then range_attack(item, 'range')
+        when 'thrown' then [melee_attack(item), range_attack(item, 'thrown')].flatten
         end
       end
     end
 
-    def melee_attack(result, item)
+    # rubocop: disable Metrics/AbcSize, Metrics/MethodLength, Metrics/PerceivedComplexity
+    def melee_attack(item)
       captions = item[:items_data]['info']['caption']
 
-      key_ability_bonus = find_key_ability_bonus('melee', result, captions)
+      key_ability_bonus = find_key_ability_bonus('melee', captions)
       # обычная атака
       response = [
         {
@@ -184,7 +152,7 @@ module Dnd5Character
           action_type: 'action',
           hands: captions.include?('2handed') ? '2' : '1',
           melee_distance: captions.include?('reach') ? 10 : 5,
-          attack_bonus: weapon_proficiency(result, item) ? (key_ability_bonus + result[:proficiency_bonus]) : key_ability_bonus,
+          attack_bonus: weapon_proficiency(item) ? (key_ability_bonus + proficiency_bonus) : key_ability_bonus,
           damage: item[:items_data]['info']['damage'],
           damage_bonus: key_ability_bonus,
           damage_type: item[:items_data]['info']['damage_type'],
@@ -218,10 +186,10 @@ module Dnd5Character
       response
     end
 
-    def range_attack(result, item, type)
+    def range_attack(item, type)
       captions = item[:items_data]['info']['caption']
 
-      key_ability_bonus = find_key_ability_bonus('range', result, captions)
+      key_ability_bonus = find_key_ability_bonus('range', captions)
       # обычная атака
       response = [
         {
@@ -231,7 +199,7 @@ module Dnd5Character
           action_type: 'action',
           hands: captions.include?('2handed') ? '2' : '1',
           range_distance: item[:items_data]['info']['dist'],
-          attack_bonus: weapon_proficiency(result, item) ? (key_ability_bonus + result[:proficiency_bonus]) : key_ability_bonus,
+          attack_bonus: weapon_proficiency(item) ? (key_ability_bonus + proficiency_bonus) : key_ability_bonus,
           damage: item[:items_data]['info']['damage'],
           damage_bonus: key_ability_bonus,
           damage_type: item[:items_data]['info']['damage_type'],
@@ -253,29 +221,31 @@ module Dnd5Character
 
       response
     end
+    # rubocop: enable Metrics/AbcSize, Metrics/MethodLength, Metrics/PerceivedComplexity
 
-    def find_key_ability_bonus(type, result, captions)
-      return [result.dig(:modifiers, :str), result.dig(:modifiers, :dex)].max if captions.include?('finesse')
-      return result.dig(:modifiers, :str) if type == 'melee'
+    def find_key_ability_bonus(type, captions)
+      return [modifiers['str'], modifiers['dex']].max if captions.include?('finesse')
+      return modifiers['str'] if type == 'melee'
 
-      result.dig(:modifiers, :dex)
+      modifiers['dex']
     end
 
-    def weapon_proficiency(result, item)
-      result[:weapon_core_skills].include?(item[:items_kind]) ||
-        result[:weapon_skills].include?(item[:items_slug])
+    def weapon_proficiency(item)
+      weapon_core_skills.include?(item[:items_kind]) ||
+        weapon_skills.include?(item[:items_slug])
     end
 
-    def weapons(character)
-      character
+    def weapons
+      __getobj__
         .items
         .joins(:item)
         .where(items: { kind: ['light weapon', 'martial weapon'] })
         .hashable_pluck('items.slug', 'items.name', 'items.kind', 'items.data', :quantity, :notes)
     end
 
-    def equiped_armor(character)
-      character
+    def equiped_armor_items
+      @equiped_armor_items ||=
+        __getobj__
         .items
         .where(ready_to_use: true)
         .joins(:item)
@@ -283,6 +253,5 @@ module Dnd5Character
         .hashable_pluck('items.kind', 'items.data')
         .partition { |item| item[:items_kind] != 'shield' }
     end
-    # rubocop: enable Metrics/AbcSize, Metrics/MethodLength, Metrics/PerceivedComplexity
   end
 end

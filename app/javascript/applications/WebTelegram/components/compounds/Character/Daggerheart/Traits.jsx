@@ -1,71 +1,96 @@
-import { createSignal, For } from 'solid-js';
-import * as i18n from '@solid-primitives/i18n';
+import { createSignal, For, Show, batch } from 'solid-js';
 
-import { createModal } from '../../../molecules';
 import { Button } from '../../../atoms';
 
-import { useAppLocale, useAppAlert } from '../../../../context';
-import { PlusSmall, Minus } from '../../../../assets';
+import { useAppState, useAppLocale, useAppAlert } from '../../../../context';
+import { PlusSmall, Minus, Edit, Plus } from '../../../../assets';
+import { updateCharacterRequest } from '../../../../requests/updateCharacterRequest';
 
 import { modifier } from '../../../../../../helpers';
 
 export const DaggerheartTraits = (props) => {
-  // changeable data
+  const [editMode, setEditMode] = createSignal(false);
   const [traitsData, setTraitsData] = createSignal(props.initialTraits);
 
-  const { Modal, openModal, closeModal } = createModal();
+  const [appState] = useAppState();
   const [{ renderAlerts }] = useAppAlert();
   const [, dict] = useAppLocale();
 
-  const t = i18n.translator(dict);
-
-  const decreaseAbilityValue = (slug) => {
-    if (traitsData[slug] === 1) return;
+  const decreaseTraitValue = (slug) => {
     setTraitsData({ ...traitsData(), [slug]: traitsData()[slug] - 1 });
   }
 
-  const increaseAbilityValue = (slug) => setTraitsData({ ...traitsData(), [slug]: traitsData()[slug] + 1 });
+  const increaseTraitValue = (slug) => setTraitsData({ ...traitsData(), [slug]: traitsData()[slug] + 1 });
 
-  // submits
-  const updateAbilities = async () => {
-    const result = await props.onReloadCharacter({ traits: traitsData() });
-    if (result.errors === undefined) closeModal();
-    else renderAlerts(result.errors);
+  const cancelEditing = () => {
+    batch(() => {
+      setTraitsData(props.initialTraits)
+      setEditMode(false);
+    });
+  }
+
+  const updateCharacter = async () => {
+    const payload = {
+      traits: traitsData()
+    }
+    const result = await updateCharacterRequest(appState.accessToken, 'daggerheart', props.id, { character: payload });
+
+    if (result.errors === undefined) {
+      batch(() => {
+        props.onReplaceCharacter(result.character);
+        setTraitsData(result.character.traits);
+        setEditMode(false);
+      });
+    } else renderAlerts(result.errors);
   }
 
   return (
     <>
-      <div class="white-box flex flex-wrap cursor-pointer p-2" onClick={openModal}>
+      <div class="white-box flex flex-wrap p-4 pb-0">
         <For each={Object.entries(dict().daggerheart.traits)}>
           {([slug, ability]) =>
-            <div class="flex flex-col items-center w-1/3 p-2">
-              <p class="text-sm mb-1">{ability}</p>
-              <p class="text-2xl mb-1">{modifier(props.initialTraits[slug])}</p>
+            <div class="w-1/3 mb-4">
+              <p class="uppercase text-center mb-4">{ability}</p>
+              <div class="w-32 mr-8">
+                <div class="h-20 relative">
+                  <div class="mx-auto w-20 h-20 rounded-full border border-gray-200 flex items-center justify-center">
+                    <p class="text-4xl">{editMode() ? modifier(traitsData()[slug]) : modifier(props.initialTraits[slug])}</p>
+                  </div>
+                </div>
+                <Show when={editMode()}>
+                  <div class="mt-2 flex justify-center gap-2">
+                    <Button default size="small" onClick={() => decreaseTraitValue(slug)}>
+                      <Minus />
+                    </Button>
+                    <Button default size="small" onClick={() => increaseTraitValue(slug)}>
+                      <PlusSmall />
+                    </Button>
+                  </div>
+                </Show>
+              </div>
             </div>
           }
         </For>
       </div>
-      <Modal>
-        <div class="white-box p-4 flex flex-col">
-          <For each={Object.entries(dict().daggerheart.traits)}>
-            {([slug, ability]) =>
-              <div class="mb-4 flex items-center">
-                <p class="flex-1 text-sm text-left">{ability}</p>
-                <div class="flex justify-between items-center ml-4 w-32">
-                  <Button default size="small" onClick={() => decreaseAbilityValue(slug)}>
-                    <Minus />
-                  </Button>
-                  <p>{modifier(traitsData()[slug])}</p>
-                  <Button default size="small" onClick={() => increaseAbilityValue(slug)}>
-                    <PlusSmall />
-                  </Button>
-                </div>
-              </div>
-            }
-          </For>
-          <Button default textable onClick={updateAbilities}>{t('save')}</Button>
-        </div>
-      </Modal>
+      <div class="absolute right-4 bottom-4 z-10">
+        <Show
+          when={editMode()}
+          fallback={
+            <Button default classList='rounded-full min-w-12 min-h-12 opacity-75' onClick={() => setEditMode(true)}>
+              <Edit />
+            </Button>
+          }
+        >
+          <div class="flex">
+            <Button outlined classList='rounded-full min-w-12 min-h-12 mr-2' onClick={cancelEditing}>
+              <Minus />
+            </Button>
+            <Button default classList='rounded-full min-w-12 min-h-12' onClick={updateCharacter}>
+              <Plus />
+            </Button>
+          </div>
+        </Show>
+      </div>
     </>
   );
 }

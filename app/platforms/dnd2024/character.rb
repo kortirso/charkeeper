@@ -215,11 +215,13 @@ module Dnd2024
 
     attribute :data, Dnd2024::CharacterData.to_type
 
-    def decorate
-      base_decorator.decorate_character_abilities(character: self)
-        .then { |result| species_decorator.decorate_character_abilities(result: result) }
-        .then { |result| class_decorator.decorate_character_abilities(result: result) }
-        .then { |result| features_decorator.decorate_character_abilities(result: result) }
+    def decorator(simple: false)
+      base_decorator = ::Dnd2024Character::BaseDecorator.new(self)
+      species_decorator = ::Dnd2024Character::SpeciesDecorateWrapper.new(base_decorator)
+      class_decorator = ::Dnd2024Character::ClassDecorateWrapper.new(species_decorator)
+      full_decorator = ::Dnd2024Character::FeaturesDecorator.new(class_decorator)
+      full_decorator.features unless simple
+      full_decorator
     end
 
     def can_learn_spell?(target_spell_class)
@@ -229,12 +231,5 @@ module Dnd2024
     def can_prepare_spell?(target_spell_class)
       data.classes.key?(target_spell_class)
     end
-
-    private
-
-    def base_decorator = ::Charkeeper::Container.resolve('decorators.dnd2024_character.base_decorator')
-    def species_decorator = ::Charkeeper::Container.resolve('decorators.dnd2024_character.species_wrapper')
-    def class_decorator = ::Charkeeper::Container.resolve('decorators.dnd2024_character.class_wrapper')
-    def features_decorator = ::Charkeeper::Container.resolve('decorators.dnd2024_character.features')
   end
 end

@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Dnd5Character
-  class ClassDecorateWrapper
+  class ClassDecorateWrapper < ApplicationDecorateWrapper
     SPELL_SLOTS = {
       1 => { 1 => 2 },
       2 => { 1 => 3 },
@@ -25,41 +25,36 @@ module Dnd5Character
       20 => { 1 => 4, 2 => 3, 3 => 3, 4 => 3, 5 => 3, 6 => 2, 7 => 2, 8 => 1, 9 => 1 }
     }.freeze
 
-    def decorate_fresh_character(result:)
-      class_decorator(result[:main_class]).decorate_fresh_character(result: result)
+    def save_dc
+      @save_dc ||= begin
+        result = __getobj__.save_dc
+        class_save_dc.each do |class_saving_throw|
+          result[class_saving_throw] += proficiency_bonus
+        end
+        result
+      end
     end
 
-    # rubocop: disable Metrics/AbcSize
-    def decorate_character_abilities(result:)
-      result[:classes].each do |class_name, class_level|
-        result = class_decorator(class_name).decorate_character_abilities(result: result, class_level: class_level)
-      end
-      modify_saving_throws(result)
-
-      # spell slots for multiclass
-      if result[:spell_classes].keys.size > 1
-        multiclass_spell_class =
-          result[:classes].slice('bard', 'wizard', 'druid', 'cleric', 'sorcerer').values.sum + # full level
-            result[:classes].slice('paladin', 'ranger').values.sum { |item| item / 2 } + # half round down
-            result[:classes].slice('artificer').values.sum { |item| (item / 2.0).round } # half round up
-
-        result[:spells_slots] = SPELL_SLOTS[multiclass_spell_class]
-      end
-
-      result
+    def spells_slots
+      @spells_slots ||=
+        if spell_classes.keys.size > 1
+          SPELL_SLOTS[spell_classes.values.pluck(:multiclass_spell_level).sum]
+        else
+          wrapped.spells_slots
+        end
     end
-    # rubocop: enable Metrics/AbcSize
 
     private
 
-    def modify_saving_throws(result)
-      result[:class_save_dc].each do |class_saving_throw|
-        result[:save_dc][class_saving_throw] += result[:proficiency_bonus]
+    def wrap_classes(obj)
+      obj.classes.keys.inject(obj) do |acc, class_name|
+        acc = class_decorator(class_name).new(acc)
+        acc
       end
     end
 
-    def class_decorator(main_class)
-      Charkeeper::Container.resolve("decorators.dnd5_character.classes.#{main_class}")
+    def class_decorator(class_name)
+      "Dnd5Character::Classes::#{class_name.capitalize}Decorator".constantize
     end
   end
 end

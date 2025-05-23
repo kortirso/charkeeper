@@ -7,11 +7,9 @@
     "origin_value": "tiefling",
     "level": 0,
     "kind": "update_result",
-    "options_type": null,
-    "options": null,
     "visible": "true",
     "eval_variables": {
-      "value": "result[:static_spells].merge!({ 'thaumaturgy' => { 'attack_bonus' => result[:proficiency_bonus] + result.dig(:modifiers, :cha), 'save_dc' => 8 + result[:proficiency_bonus] + result.dig(:modifiers, :cha) } })"
+      "static_spells": "static_spells.merge({ 'thaumaturgy' => { 'attack_bonus' => proficiency_bonus + modifiers['cha'], 'save_dc' => 8 + proficiency_bonus + modifiers['cha'] } })"
     }
   },
   {
@@ -22,11 +20,9 @@
     "origin_value": "tiefling",
     "level": 3,
     "kind": "update_result",
-    "options_type": null,
-    "options": null,
     "visible": "true",
     "eval_variables": {
-      "value": "result[:static_spells].merge!({ 'hellish_rebuke' => { 'limit' => 1, 'level' => 2, 'attack_bonus' => result[:proficiency_bonus] + result.dig(:modifiers, :cha), 'save_dc' => 8 + result[:proficiency_bonus] + result.dig(:modifiers, :cha) } })"
+      "static_spells": "static_spells.merge({ 'hellish_rebuke' => { 'limit' => 1, 'level' => 2, 'attack_bonus' => proficiency_bonus + modifiers['cha'], 'save_dc' => 8 + proficiency_bonus + modifiers['cha'] } })"
     }
   },
   {
@@ -37,11 +33,9 @@
     "origin_value": "tiefling",
     "level": 5,
     "kind": "update_result",
-    "options_type": null,
-    "options": null,
     "visible": "true",
     "eval_variables": {
-      "value": "result[:static_spells].merge!({ 'darkness' => { 'limit' => 1, 'attack_bonus' => result[:proficiency_bonus] + result.dig(:modifiers, :cha), 'save_dc' => 8 + result[:proficiency_bonus] + result.dig(:modifiers, :cha) } })"
+      "static_spells": "static_spells.merge({ 'darkness' => { 'limit' => 1, 'attack_bonus' => proficiency_bonus + modifiers['cha'], 'save_dc' => 8 + proficiency_bonus + modifiers['cha'] } })"
     }
   }
 ]

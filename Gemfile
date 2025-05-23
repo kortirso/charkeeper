@@ -63,6 +63,9 @@ gem 'bugsnag'
 # Uploading to S3
 gem 'aws-sdk-s3', require: false
 
+# using csv
+gem 'csv'
+
 group :development, :test do
   gem 'rubocop', '~> 1.35', require: false
   gem 'rubocop-factory_bot', '~> 2.0', require: false

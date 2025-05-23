@@ -2,17 +2,9 @@
 
 module Dnd2024Character
   module Species
-    class ElfDecorator
-      def decorate_fresh_character(result:)
-        result[:speed] = 30
-
-        result
-      end
-
-      def decorate_character_abilities(result:)
-        result[:darkvision] = 60
-
-        result
+    class ElfDecorator < ApplicationDecorator
+      def darkvision
+        60
       end
     end
   end

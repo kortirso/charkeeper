@@ -10,8 +10,6 @@
     "origin_value": "gnome",
     "level": 0,
     "kind": "static",
-    "options_type": null,
-    "options": null,
     "visible": "true",
     "eval_variables": {}
   },
@@ -23,11 +21,9 @@
     "origin_value": "forest_gnome",
     "level": 0,
     "kind": "update_result",
-    "options_type": null,
-    "options": null,
     "visible": "true",
     "eval_variables": {
-      "value": "result[:static_spells].merge!({ 'minor_illusion' => { 'attack_bonus' => result[:proficiency_bonus] + result.dig(:modifiers, :int), 'save_dc' => 8 + result[:proficiency_bonus] + result.dig(:modifiers, :int) } })"
+      "static_spells": "static_spells.merge({ 'minor_illusion' => { 'attack_bonus' => proficiency_bonus + modifiers['int'], 'save_dc' => 8 + proficiency_bonus + modifiers['int'] } })"
     }
   },
   {

@@ -1,25 +1,21 @@
 # frozen_string_literal: true
 
 module Pathfinder2Character
-  class ClassDecorateWrapper
-    def decorate_fresh_character(result:)
-      class_decorator(result[:main_class]).decorate_fresh_character(result: result)
-    end
-
-    def decorate_character_abilities(result:)
-      result[:classes].each do |class_name, class_level|
-        result = class_decorator(class_name).decorate_character_abilities(result: result, class_level: class_level)
-      end
-
-      result
-    end
-
+  class ClassDecorateWrapper < ApplicationDecorateWrapper
     private
 
-    def class_decorator(main_class)
-      Charkeeper::Container.resolve("decorators.pathfinder2_character.classes.#{main_class}")
-    rescue Dry::Container::KeyError => _e
-      Charkeeper::Container.resolve('decorators.dummy_decorator')
+    def wrap_classes(obj)
+      obj.classes.keys.inject(obj) do |acc, class_name|
+        acc = class_decorator(class_name).new(acc)
+        acc
+      end
+    end
+
+    def class_decorator(class_name)
+      case class_name
+      when Pathfinder2::Character::FIGHTER then Pathfinder2Character::Classes::FighterDecorator
+      else ApplicationDecorator
+      end
     end
   end
 end

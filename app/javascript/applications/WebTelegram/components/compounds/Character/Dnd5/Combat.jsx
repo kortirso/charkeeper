@@ -10,12 +10,14 @@ import { PlusSmall, Minus, Campfire, LongCampfire } from '../../../../assets';
 import { modifier } from '../../../../../../helpers';
 
 export const Dnd5Combat = (props) => {
+  const character = () => props.character;
+
   // changeable data
-  const [damageConditions, setDamageConditions] = createSignal(props.initialConditions);
+  const [damageConditions, setDamageConditions] = createSignal(character().conditions);
   const [damageHealValue, setDamageHealValue] = createSignal(0);
   const [onceSelectedFeaturesData, setOnceSelectedFeaturesData] = createSignal({});
   const [textFeaturesData, setTextFeaturesData] = createSignal(
-    props.features.filter((item) => item.kind === 'text').reduce((acc, item) => { acc[item.slug] = props.selectedFeatures[item.slug]; return acc; }, {}) // eslint-disable-line solid/reactivity
+    character().features.filter((item) => item.kind === 'text').reduce((acc, item) => { acc[item.slug] = character().selected_features[item.slug]; return acc; }, {})
   );
 
   const { Modal, openModal, closeModal } = createModal();
@@ -37,24 +39,24 @@ export const Dnd5Combat = (props) => {
   }
 
   const toggleSelectedFeatureOption = async (feature, option) => {
-    const selectedOptions = props.selectedFeatures[feature.slug];
+    const selectedOptions = character().selected_features[feature.slug];
 
     let newData;
     if (selectedOptions) {
       if (selectedOptions.includes(option)) {
-        newData = { ...props.selectedFeatures, [feature.slug]: selectedOptions.filter((item) => item !== option) }
+        newData = { ...character().selected_features, [feature.slug]: selectedOptions.filter((item) => item !== option) }
       } else {
-        newData = { ...props.selectedFeatures, [feature.slug]: selectedOptions.concat(option) }
+        newData = { ...character().selected_features, [feature.slug]: selectedOptions.concat(option) }
       }
     } else {
-      newData = { ...props.selectedFeatures, [feature.slug]: [option] }
+      newData = { ...character().selected_features, [feature.slug]: [option] }
     }
 
     await props.onReloadCharacter({ selected_features: newData });
   }
 
   const setSelectedFeatureOption = async (feature, value) => {
-    const newData = { ...props.selectedFeatures, [feature.slug]: value }
+    const newData = { ...character().selected_features, [feature.slug]: value }
     await props.onReloadCharacter({ selected_features: newData });
   }
 
@@ -66,12 +68,12 @@ export const Dnd5Combat = (props) => {
   }
 
   const updateTextFeature = async (slug) => {
-    const newData = { ...props.selectedFeatures, [slug]: textFeaturesData()[slug] }
+    const newData = { ...character().selected_features, [slug]: textFeaturesData()[slug] }
     await props.onRefreshCharacter({ selected_features: newData });
   }
 
   const confirmOnceSelectedFeaturesData = async (slug) => {
-    const newData = { ...props.selectedFeatures, [slug]: onceSelectedFeaturesData()[slug] }
+    const newData = { ...character().selected_features, [slug]: onceSelectedFeaturesData()[slug] }
     await props.onReloadCharacter({ selected_features: newData });
   }
 
@@ -155,9 +157,9 @@ export const Dnd5Combat = (props) => {
     <>
       <StatsBlock
         items={[
-          { title: t('terms.armorClass'), value: props.combat.armor_class },
-          { title: t('terms.initiative'), value: modifier(props.combat.initiative) },
-          { title: t('terms.speed'), value: props.combat.speed }
+          { title: t('terms.armorClass'), value: character().armor_class },
+          { title: t('terms.initiative'), value: modifier(character().initiative) },
+          { title: t('terms.speed'), value: character().speed }
         ]}
       />
       <StatsBlock
@@ -244,7 +246,7 @@ export const Dnd5Combat = (props) => {
             <For each={Object.entries(dict().damage)}>
               {([slug, damage]) =>
                 <tr>
-                  <td>{damage}</td>
+                  <td class="font-cascadia-light">{damage}</td>
                   <td>
                     <Checkbox
                       checked={damageConditions().vulnerability.includes(slug)}
@@ -269,21 +271,21 @@ export const Dnd5Combat = (props) => {
           </tbody>
         </table>
       </Toggle>
-      {renderAttacksBox(`${t('terms.attackAction')} - ${props.combat.attacks_per_action}`, props.attacks.filter((item) => item.action_type === 'action'))}
-      {renderAttacksBox(`${t('terms.attackBonusAction')} - 1`, props.attacks.filter((item) => item.action_type === 'bonus action'))}
-      <For each={props.features}>
+      {renderAttacksBox(`${t('terms.attackAction')} - ${character().attacks_per_action}`, character().attacks.filter((item) => item.action_type === 'action'))}
+      {renderAttacksBox(`${t('terms.attackBonusAction')} - 1`, character().attacks.filter((item) => item.action_type === 'bonus action'))}
+      <For each={character().features}>
         {(feature) =>
           <Toggle title={renderFeatureTitle(feature)}>
             <Switch>
               <Match when={feature.kind === 'static'}>
                 <p
-                  class="text-sm"
+                  class="text-sm font-cascadia-light"
                   innerHTML={feature.description} // eslint-disable-line solid/no-innerhtml
                 />
               </Match>
               <Match when={feature.kind === 'dynamic_list'}>
                 <p
-                  class="text-sm mb-2"
+                  class="text-sm font-cascadia-light mb-2"
                   innerHTML={feature.description} // eslint-disable-line solid/no-innerhtml
                 />
                 <For each={feature.options}>
@@ -293,7 +295,7 @@ export const Dnd5Combat = (props) => {
                         labelText={t(`dnd.selectedFeatures.${option}`)}
                         labelPosition="right"
                         labelClassList="text-sm ml-4"
-                        checked={props.selectedFeatures[feature.slug]?.includes(option)}
+                        checked={character().selected_features[feature.slug]?.includes(option)}
                         onToggle={() => toggleSelectedFeatureOption(feature, option)}
                       />
                     </div>
@@ -302,11 +304,11 @@ export const Dnd5Combat = (props) => {
               </Match>
               <Match when={feature.kind === 'static_list'}>
                 <p
-                  class="text-sm mb-2"
+                  class="text-sm font-cascadia-light mb-2"
                   innerHTML={feature.description} // eslint-disable-line solid/no-innerhtml
                 />
                 <Switch>
-                  <Match when={feature.choose_once && !props.selectedFeatures[feature.slug]}>
+                  <Match when={feature.choose_once && !character().selected_features[feature.slug]}>
                     <Select
                       containerClassList="w-full mb-2"
                       items={feature.options.reduce((acc, option) => { acc[option] = t(`dnd.${feature.options_type || 'selectedFeatures'}.${option}`); return acc; }, {})}
@@ -317,14 +319,14 @@ export const Dnd5Combat = (props) => {
                       {t('character.confirmChooseOnceFeature')}
                     </Button>
                   </Match>
-                  <Match when={feature.choose_once && props.selectedFeatures[feature.slug]}>
-                    <p>{t(`dnd.selectedFeatures.${props.selectedFeatures[feature.slug]}`)}</p>
+                  <Match when={feature.choose_once && character().selected_features[feature.slug]}>
+                    <p>{t(`dnd.selectedFeatures.${character().selected_features[feature.slug]}`)}</p>
                   </Match>
                   <Match when={!feature.choose_once}>
                     <Select
                       containerClassList="w-full mb-2"
                       items={feature.options.reduce((acc, option) => { acc[option] = t(`dnd.selectedFeatures.${option}`); return acc; }, {})}
-                      selectedValue={props.selectedFeatures[feature.slug]}
+                      selectedValue={character().selected_features[feature.slug]}
                       onSelect={(option) => setSelectedFeatureOption(feature, option)}
                     />
                   </Match>
@@ -332,17 +334,17 @@ export const Dnd5Combat = (props) => {
               </Match>
               <Match when={feature.kind === 'choose_from' && feature.options_type === 'selected_skills'}>
                 <p
-                  class="text-sm mb-2"
+                  class="text-sm font-cascadia-light mb-2"
                   innerHTML={feature.description} // eslint-disable-line solid/no-innerhtml
                 />
-                <For each={props.skills.filter((item) => item.selected).map((item) => item.name)}>
+                <For each={character().skills.filter((item) => item.selected).map((item) => item.name)}>
                   {(option) =>
                     <div class="mb-2">
                       <Checkbox
                         labelText={t(`dnd.skills.${option}`)}
                         labelPosition="right"
                         labelClassList="text-sm ml-4"
-                        checked={props.selectedFeatures[feature.slug]?.includes(option)}
+                        checked={character().selected_features[feature.slug]?.includes(option)}
                         onToggle={() => toggleSelectedFeatureOption(feature, option)}
                       />
                     </div>
@@ -351,7 +353,7 @@ export const Dnd5Combat = (props) => {
               </Match>
               <Match when={feature.kind === 'text'}>
                 <p
-                  class="text-sm mb-2"
+                  class="text-sm font-cascadia-light mb-2"
                   innerHTML={feature.description} // eslint-disable-line solid/no-innerhtml
                 />
                 <textarea

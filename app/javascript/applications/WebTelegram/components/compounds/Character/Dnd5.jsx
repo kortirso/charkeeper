@@ -23,8 +23,8 @@ import { createCharacterRestRequest } from '../../../requests/createCharacterRes
 import { createCharacterHealthRequest } from '../../../requests/createCharacterHealthRequest';
 
 export const Dnd5 = (props) => {
-  const decoratedData = () => props.decoratedData;
-  const spellClassesList = () => Object.keys(decoratedData().spell_classes);
+  const character = () => props.character;
+  const spellClassesList = () => Object.keys(character().spell_classes);
 
   // page state
   const [activeTab, setActiveTab] = createSignal('abilities');
@@ -38,11 +38,11 @@ export const Dnd5 = (props) => {
   const [characterSpells, setCharacterSpells] = createSignal(undefined);
 
   // shared state
-  const [spentHitDiceData, setSpentHitDiceData] = createSignal(decoratedData().spent_hit_dice);
-  const [healthData, setHealthData] = createSignal(decoratedData().health);
-  const [energyData, setEnergyData] = createSignal(decoratedData().energy);
-  const [spentSpellSlots, setSpentSpellSlots] = createSignal(decoratedData().spent_spell_slots);
-  const [death, setDeath] = createSignal(decoratedData().death_saving_throws);
+  const [spentHitDiceData, setSpentHitDiceData] = createSignal(character().spent_hit_dice);
+  const [healthData, setHealthData] = createSignal(character().health);
+  const [energyData, setEnergyData] = createSignal(character().energy);
+  const [spentSpellSlots, setSpentSpellSlots] = createSignal(character().spent_spell_slots);
+  const [death, setDeath] = createSignal(character().death_saving_throws);
 
   const [appState] = useAppState();
   const [{ renderNotice }] = useAppAlert();
@@ -82,8 +82,8 @@ export const Dnd5 = (props) => {
     if (spellClassesList().length === 0) return;
     if (characterSpells() !== undefined) return;
 
-    const fetchCharacterSpells = async () => await fetchCharacterSpellsRequest(appState.accessToken, props.provider, appState.activePageParams.id);
-    const fetchSpells = async () => await fetchSpellsRequest(appState.accessToken, props.provider, Math.max(...Object.keys(decoratedData().spells_slots)));
+    const fetchCharacterSpells = async () => await fetchCharacterSpellsRequest(appState.accessToken, props.character.provider, appState.activePageParams.id);
+    const fetchSpells = async () => await fetchSpellsRequest(appState.accessToken, props.character.provider, Math.max(...Object.keys(character().spells_slots)));
 
     Promise.all([fetchCharacterSpells(), fetchSpells()]).then(
       ([characterSpellsData, spellsData]) => {
@@ -97,14 +97,14 @@ export const Dnd5 = (props) => {
 
   // only sends request
   const refreshCharacter = async (payload) => {
-    const result = await updateCharacterRequest(appState.accessToken, props.provider, props.characterId, { character: payload });
+    const result = await updateCharacterRequest(appState.accessToken, props.character.provider, props.character.id, { character: payload });
 
     return result;
   }
 
   // sends request and reload character data
   const updateCharacter = async (payload) => {
-    const result = await updateCharacterRequest(appState.accessToken, props.provider, props.characterId, { character: payload });
+    const result = await updateCharacterRequest(appState.accessToken, props.character.provider, props.character.id, { character: payload });
 
     if (result.errors === undefined) await props.onReloadCharacter();
     return result;
@@ -117,7 +117,7 @@ export const Dnd5 = (props) => {
   }
 
   const buyItem = async (item) => {
-    const result = await createCharacterItemRequest(appState.accessToken, 'dnd5', props.characterId, { item_id: item.id });
+    const result = await createCharacterItemRequest(appState.accessToken, 'dnd5', props.character.id, { item_id: item.id });
 
     if (result.errors === undefined) {
       batch(() => {
@@ -130,7 +130,7 @@ export const Dnd5 = (props) => {
   }
 
   const updateCharacterItem = async (item, payload) => {
-    const result = await updateCharacterItemRequest(appState.accessToken, 'dnd5', props.characterId, item.id, payload);
+    const result = await updateCharacterItemRequest(appState.accessToken, 'dnd5', props.character.id, item.id, payload);
 
     if (result.errors === undefined) {
       batch(() => {
@@ -147,7 +147,7 @@ export const Dnd5 = (props) => {
   }
 
   const removeCharacterItem = async (item) => {
-    const result = await removeCharacterItemRequest(appState.accessToken, 'dnd5', props.characterId, item.id);
+    const result = await removeCharacterItemRequest(appState.accessToken, 'dnd5', props.character.id, item.id);
 
     if (result.errors === undefined) {
       batch(() => {
@@ -158,7 +158,7 @@ export const Dnd5 = (props) => {
   }
 
   const restCharacter = async (payload) => {
-    const result = await createCharacterRestRequest(appState.accessToken, props.provider, props.characterId, payload);
+    const result = await createCharacterRestRequest(appState.accessToken, props.character.provider, props.character.id, payload);
     if (result.errors === undefined) {
       const decoratedData = await props.onReloadCharacter();
 
@@ -175,17 +175,17 @@ export const Dnd5 = (props) => {
 
   // additional data change for spells
   const reloadCharacterSpells = async () => {
-    const characterSpellsData = await fetchCharacterSpellsRequest(appState.accessToken, props.provider, appState.activePageParams.id);
+    const characterSpellsData = await fetchCharacterSpellsRequest(appState.accessToken, props.character.provider, appState.activePageParams.id);
     setCharacterSpells(characterSpellsData.spells);
   }
 
   const learnSpell = async (spellId, targetSpellClass) => {
-    const result = await createCharacterSpellRequest(appState.accessToken, props.provider, props.characterId, { spell_id: spellId, target_spell_class: targetSpellClass });
+    const result = await createCharacterSpellRequest(appState.accessToken, props.character.provider, props.character.id, { spell_id: spellId, target_spell_class: targetSpellClass });
     if (result.errors === undefined) reloadCharacterSpells();
   }
 
   const forgetSpell = async (spellId) => {
-    const result = await removeCharacterSpellRequest(appState.accessToken, props.provider, props.characterId, spellId);
+    const result = await removeCharacterSpellRequest(appState.accessToken, props.character.provider, props.character.id, spellId);
     if (result.errors === undefined) reloadCharacterSpells();
   }
 
@@ -206,7 +206,7 @@ export const Dnd5 = (props) => {
   }
 
   const updateCharacterSpell = async (spellId, payload) => {
-    return await updateCharacterSpellRequest(appState.accessToken, props.provider, props.characterId, spellId, payload);
+    return await updateCharacterSpellRequest(appState.accessToken, props.character.provider, props.character.id, spellId, payload);
   }
 
   // shared data
@@ -263,7 +263,7 @@ export const Dnd5 = (props) => {
   }
 
   const makeHeal = async (damageHealValue) => {
-    const result = await createCharacterHealthRequest(appState.accessToken, 'dnd5', props.characterId, { value: damageHealValue });
+    const result = await createCharacterHealthRequest(appState.accessToken, 'dnd5', props.character.id, { value: damageHealValue });
     if (result.errors === undefined) {
       const decoratedData = await props.onReloadCharacter();
 
@@ -275,7 +275,7 @@ export const Dnd5 = (props) => {
   }
 
   const dealDamage = async (damageHealValue) => {
-    const result = await createCharacterHealthRequest(appState.accessToken, 'dnd5', props.characterId, { value: -damageHealValue });
+    const result = await createCharacterHealthRequest(appState.accessToken, 'dnd5', props.character.id, { value: -damageHealValue });
     if (result.errors === undefined) {
       const decoratedData = await props.onReloadCharacter();
 
@@ -387,12 +387,7 @@ export const Dnd5 = (props) => {
         <Switch>
           <Match when={activeTab() === 'abilities'}>
             <Dnd5Abilities
-              initialAbilities={props.decoratedData.abilities}
-              skills={props.decoratedData.skills}
-              modifiers={props.decoratedData.modifiers}
-              saveDc={props.decoratedData.save_dc}
-              proficiencyBonus={props.decoratedData.proficiency_bonus}
-              hitDice={props.decoratedData.hit_dice}
+              character={character()}
               spentHitDiceData={spentHitDiceData()}
               onSpendDice={spendDice}
               onRestoreDice={restoreDice}
@@ -401,14 +396,8 @@ export const Dnd5 = (props) => {
             />
           </Match>
           <Match when={activeTab() === 'combat'}>
-            {console.log(props.decoratedData)}
             <Dnd5Combat
-              combat={props.decoratedData.combat}
-              attacks={props.decoratedData.attacks}
-              features={props.decoratedData.features}
-              selectedFeatures={props.decoratedData.selected_features}
-              skills={props.decoratedData.skills}
-              initialConditions={props.decoratedData.conditions}
+              character={character()}
               deathSavingThrows={death()}
               healthData={healthData()}
               energyData={energyData()}
@@ -440,13 +429,13 @@ export const Dnd5 = (props) => {
               }
             >
               <Dnd5Equipment
-                initialCoins={props.decoratedData.coins}
+                character={character()}
                 characterItems={characterItems()}
-                load={props.decoratedData.load}
                 onNavigatoToItems={() => setActiveItemsTab(true)}
                 onUpdateCharacterItem={updateCharacterItem}
                 onRefreshCharacter={refreshCharacter}
                 onRemoveCharacterItem={removeCharacterItem}
+                onReplaceCharacter={props.onReplaceCharacter}
               />
             </Show>
           </Match>
@@ -462,11 +451,10 @@ export const Dnd5 = (props) => {
               </Match>
               <Match when={activeSpellsTab()}>
                 <Dnd5Spells
+                  character={character()}
                   spells={spells()}
                   characterSpells={characterSpells()}
-                  spellSlots={props.decoratedData.spells_slots}
                   initialSpellClassesList={spellClassesList()}
-                  spellClasses={props.decoratedData.spell_classes}
                   knownSpellIds={knownSpellIds()}
                   onLearnSpell={learnSpell}
                   onForgetSpell={forgetSpell}
@@ -475,13 +463,10 @@ export const Dnd5 = (props) => {
               </Match>
               <Match when={!activeSpellsTab()}>
                 <Dnd5Spellbook
-                  provider={props.provider}
+                  character={character()}
                   spells={spells()}
                   characterSpells={characterSpells()}
-                  staticCharacterSpells={props.decoratedData.static_spells} // eslint-disable-line solid/reactivity
-                  spellSlots={props.decoratedData.spells_slots}
                   initialSpellClassesList={spellClassesList()}
-                  spellClasses={props.decoratedData.spell_classes}
                   spentSpellSlots={spentSpellSlots()}
                   onSpendSpellSlot={spendSpellSlot}
                   onFreeSpellSlot={freeSpellSlot}
@@ -498,21 +483,13 @@ export const Dnd5 = (props) => {
           </Match>
           <Match when={activeTab() === 'classLevels'}>
             <Dnd5ClassLevels
-              provider={props.provider}
-              initialClasses={props.decoratedData.classes}
-              initialSubclasses={props.decoratedData.subclasses}
-              mainClass={props.decoratedData.main_class}
+              character={character()}
               onReloadCharacter={updateCharacter}
             />
           </Match>
           <Match when={activeTab() === 'professions' && items() !== undefined}>
             <Dnd5Professions
-              initialTools={props.decoratedData.tools}
-              initialMusic={props.decoratedData.music}
-              initialLanguages={props.decoratedData.languages}
-              weaponCoreSkills={props.decoratedData.weapon_core_skills}
-              weaponSkills={props.decoratedData.weapon_skills}
-              armorSkills={props.decoratedData.armor_proficiency}
+              character={character()}
               items={items()}
               onRefreshCharacter={refreshCharacter}
               onReloadCharacter={updateCharacter}

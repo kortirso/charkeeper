@@ -7,12 +7,14 @@ import { useAppLocale } from '../../../../context';
 import { PlusSmall, Minus } from '../../../../assets';
 
 export const Dnd5ClassLevels = (props) => {
-  const classes = () => props.provider === 'dnd5' ? dict().dnd5.classes : dict().dnd2024.classes;
-  const subclasses = () => props.provider === 'dnd5' ? dict().dnd5.subclasses : dict().dnd2024.subclasses;
+  const character = () => props.character;
+
+  const classes = () => character().provider === 'dnd5' ? dict().dnd5.classes : dict().dnd2024.classes;
+  const subclasses = () => character().provider === 'dnd5' ? dict().dnd5.subclasses : dict().dnd2024.subclasses;
 
   // changeable data
-  const [classesData, setClassesData] = createSignal(props.initialClasses);
-  const [subclassesData, setSubclassesData] = createSignal(props.initialSubclasses);
+  const [classesData, setClassesData] = createSignal(character().classes);
+  const [subclassesData, setSubclassesData] = createSignal(character().subclasses);
 
   const [, dict] = useAppLocale();
 
@@ -58,37 +60,37 @@ export const Dnd5ClassLevels = (props) => {
   return (
     <div class="white-box p-4 flex flex-col">
       <div class="mb-1">
-        <p>{props.initialSubclasses[props.mainClass] ? `${classes()[props.mainClass]} - ${subclasses()[props.mainClass][props.initialSubclasses[props.mainClass]]}` : classes()[props.mainClass]}</p>
+        <p>{character().subclasses[character().main_class] ? `${classes()[character().main_class]} - ${subclasses()[character().main_class][character().subclasses[character().main_class]]}` : classes()[character().main_class]}</p>
         <div class="my-2 flex items-center">
           <div class="flex justify-between items-center mr-4 w-24">
-            <Button default size="small" onClick={() => changeClassLevel(props.mainClass, 'down')}>
+            <Button default size="small" onClick={() => changeClassLevel(character().main_class, 'down')}>
               <Minus />
             </Button>
-            <p>{classesData()[props.mainClass]}</p>
-            <Button default size="small" onClick={() => changeClassLevel(props.mainClass, 'up')}>
+            <p>{classesData()[character().main_class]}</p>
+            <Button default size="small" onClick={() => changeClassLevel(character().main_class, 'up')}>
               <PlusSmall />
             </Button>
           </div>
           <div class="flex-1">
             <Show
-              when={subclasses()[props.mainClass] !== undefined && !props.initialSubclasses[props.mainClass]}
+              when={subclasses()[character().main_class] !== undefined && !character().subclasses[character().main_class]}
               fallback={<></>}
             >
               <Select
                 containerClassList="w-full"
-                items={subclasses()[props.mainClass]}
-                selectedValue={subclassesData()[props.mainClass]}
-                onSelect={(value) => setSubclassesData({ ...subclassesData(), [props.mainClass]: value })}
+                items={subclasses()[character().main_class]}
+                selectedValue={subclassesData()[character().main_class]}
+                onSelect={(value) => setSubclassesData({ ...subclassesData(), [character().main_class]: value })}
               />
             </Show>
           </div>
         </div>
       </div>
-      <For each={Object.entries(classes()).filter((item) => item[0] !== props.mainClass).sort((a,) => !Object.keys(classesData()).includes(a[0]))}>
+      <For each={Object.entries(classes()).filter((item) => item[0] !== character().main_class).sort((a,) => !Object.keys(classesData()).includes(a[0]))}>
         {([slug, className]) =>
           <div class="mb-1">
             <Checkbox
-              labelText={props.initialSubclasses[slug] ? `${className} - ${subclasses()[slug][props.initialSubclasses[slug]]}` : className}
+              labelText={character().subclasses[slug] ? `${className} - ${subclasses()[slug][character().subclasses[slug]]}` : className}
               labelPosition="right"
               labelClassList="ml-4"
               checked={classesData()[slug]}
@@ -108,7 +110,7 @@ export const Dnd5ClassLevels = (props) => {
                   </div>
                   <div class="flex-1">
                     <Show
-                      when={subclasses()[slug] !== undefined && !props.initialSubclasses[slug]}
+                      when={subclasses()[slug] !== undefined && !character().subclasses[slug]}
                       fallback={<></>}
                     >
                       <Select

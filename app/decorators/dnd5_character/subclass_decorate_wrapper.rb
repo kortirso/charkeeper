@@ -1,24 +1,22 @@
 # frozen_string_literal: true
 
 module Dnd5Character
-  class SubclassDecorateWrapper
-    def decorate_character_abilities(result:)
-      result[:subclasses].each do |class_name, subclass_name|
-        result = subclass_decorator(subclass_name).decorate_character_abilities(
-          result: result,
-          class_level: result.dig(:classes, class_name)
-        )
-      end
-
-      result
-    end
-
+  class SubclassDecorateWrapper < ApplicationDecorateWrapper
     private
 
+    def wrap_classes(obj)
+      obj.subclasses.keys.inject(obj) do |acc, (_class_name, subclass_name)|
+        next acc if subclass_name.nil?
+
+        acc = subclass_decorator(subclass_name).new(acc)
+        acc
+      end
+    end
+
     def subclass_decorator(subclass_name)
-      Charkeeper::Container.resolve("decorators.dnd5_character.subclasses.#{subclass_name}")
-    rescue Dry::Container::KeyError => _e
-      Charkeeper::Container.resolve('decorators.dummy_decorator')
+      "Dnd5Character::Subclasses::#{subclass_name.capitalize}Decorator".constantize
+    rescue NameError => _e
+      ApplicationDecorator
     end
   end
 end

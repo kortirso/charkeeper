@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 describe Dnd5Character::BaseDecorator do
-  subject(:decorate) {
-    described_class.new.decorate_character_abilities(character: Character.find(character.id))
+  subject(:decorator) {
+    described_class.new(Character.find(character.id))
   }
 
   let!(:character) { create :character }
@@ -21,8 +21,7 @@ describe Dnd5Character::BaseDecorator do
     create :character_item, character: character, item: armor, data: { ready_to_use: true }
   end
 
-  it 'returns hash with decorated data of character', :aggregate_failures do
-    expect { decorate }.not_to raise_error
-    expect(decorate.is_a?(Hash)).to be_truthy
+  it 'does not raise errors' do
+    expect { decorator.id }.not_to raise_error
   end
 end

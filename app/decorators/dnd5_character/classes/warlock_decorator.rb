@@ -2,9 +2,7 @@
 
 module Dnd5Character
   module Classes
-    class WarlockDecorator
-      WEAPON_CORE = ['light weapon'].freeze
-      ARMOR = ['light armor'].freeze
+    class WarlockDecorator < ApplicationDecorator
       SPELL_SLOTS = {
         1 => { 1 => 1 },
         2 => { 1 => 2 },
@@ -27,52 +25,53 @@ module Dnd5Character
         19 => { 5 => 4 },
         20 => { 5 => 4 }
       }.freeze
+      CLASS_SAVE_DC = %w[wis cha].freeze
 
-      def decorate_fresh_character(result:)
-        result[:weapon_core_skills] = result[:weapon_core_skills].concat(WEAPON_CORE).uniq
-        result[:armor_proficiency] = result[:armor_proficiency].concat(ARMOR).uniq
-        result[:abilities] = { str: 10, dex: 12, con: 11, int: 13, wis: 15, cha: 14 }
-        result[:health] = { current: 8, max: 8, temp: 0 }
-
-        result
+      def class_save_dc
+        @class_save_dc ||= main_class == 'warlock' ? CLASS_SAVE_DC : __getobj__.class_save_dc
       end
 
-      def decorate_character_abilities(result:, class_level:)
-        result[:class_save_dc] = %i[wis cha] if result[:main_class] == 'warlock'
-        result[:spell_classes][:warlock] = {
-          save_dc: 8 + result[:proficiency_bonus] + result.dig(:modifiers, :cha),
-          attack_bonus: result[:proficiency_bonus] + result.dig(:modifiers, :cha),
-          cantrips_amount: cantrips_amount(class_level),
-          spells_amount: spells_amount(class_level),
-          max_spell_level: max_spell_level(class_level),
-          prepared_spells_amount: spells_amount(class_level)
-        }
-        result[:spells_slots] = spells_slots(class_level)
+      def spell_classes
+        @spell_classes ||= begin
+          result = __getobj__.spell_classes
+          result[:warlock] = {
+            save_dc: 8 + proficiency_bonus + modifiers['cha'],
+            attack_bonus: proficiency_bonus + modifiers['cha'],
+            cantrips_amount: cantrips_amount,
+            spells_amount: spells_amount,
+            max_spell_level: max_spell_level,
+            prepared_spells_amount: spells_amount,
+            multiclass_spell_level: class_level # full level
+          }
+          result
+        end
+      end
 
-        result
+      def spells_slots
+        @spells_slots ||= SPELL_SLOTS[class_level]
       end
 
       private
 
-      def cantrips_amount(class_level)
+      def class_level
+        @class_level ||= classes['warlock']
+      end
+
+      def cantrips_amount
         return 4 if class_level >= 10
         return 3 if class_level >= 4
 
         2
       end
 
-      def spells_amount(class_level)
+      def spells_amount
         return class_level + 1 if class_level < 9
 
         10 + ((class_level - 9) / 2)
       end
 
-      def max_spell_level(class_level)
+      def max_spell_level
         SPELL_SLOTS[class_level].keys.max
-      end
-
-      def spells_slots(class_level)
-        SPELL_SLOTS[class_level]
       end
     end
   end

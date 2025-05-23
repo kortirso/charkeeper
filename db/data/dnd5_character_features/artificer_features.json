@@ -11,8 +11,9 @@
     "level": 1,
     "kind": "static",
     "visible": "true",
-    "eval_variables": {
-      "value": "[1, result.dig(:modifiers, :int)].max"
+    "eval_variables": {},
+    "description_eval_variables": {
+      "value": "[1, modifiers['int']].max"
     }
   },
   {
@@ -27,7 +28,8 @@
     "level": 2,
     "kind": "text",
     "visible": "true",
-    "eval_variables": {
+    "eval_variables": {},
+    "description_eval_variables": {
       "infusions": "(((result.dig(:classes, 'artificer') + 2) / 4) + 1) * 2",
       "items": "((result.dig(:classes, 'artificer') + 2) / 4) + 1"
     }
@@ -74,9 +76,9 @@
     "level": 7,
     "kind": "static",
     "visible": "true",
-    "eval_variables": {
-      "value": "result.dig(:modifiers, :int)",
-      "limit": "[1, result.dig(:modifiers, :int)].max"
+    "description_eval_variables": {
+      "value": "modifiers['int']",
+      "limit": "[1, modifiers['int']].max"
     },
     "limit_refresh": "long_rest"
   },
@@ -106,10 +108,10 @@
     "level": 11,
     "kind": "static",
     "visible": "true",
-    "eval_variables": {
-      "attack": "result.dig(:spell_classes, :artificer, :attack_bonus)",
-      "dc": "result.dig(:spell_classes, :artificer, :save_dc)",
-      "uses": "[2, result.dig(:modifiers, :int) * 2].max",
+    "description_eval_variables": {
+      "attack": "spell_classes.dig(:artificer, :attack_bonus)",
+      "dc": "spell_classes.dig(:artificer, :save_dc)",
+      "uses": "[2, modifiers['int'] * 2].max",
       "limit": "1"
     },
     "limit_refresh": "long_rest"
@@ -154,8 +156,8 @@
     "level": 3,
     "kind": "static",
     "visible": "true",
-    "eval_variables": {
-      "limit": "class_level = result.dig(:classes, 'artificer'); class_level >= 15 ? 3 : (class_level >= 6 ? 2 : 1)"
+    "description_eval_variables": {
+      "limit": "class_level = classes['artificer']; class_level >= 15 ? 3 : (class_level >= 6 ? 2 : 1)"
     },
     "limit_refresh": "long_rest"
   },
@@ -171,8 +173,8 @@
     "level": 5,
     "kind": "static",
     "visible": "true",
-    "eval_variables": {
-      "value": "result.dig(:modifiers, :int)"
+    "description_eval_variables": {
+      "value": "modifiers['int']"
     }
   }
 ]
