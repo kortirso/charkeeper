@@ -2,6 +2,10 @@
 
 class ApplicationDecorator < SimpleDelegator
   def method_missing(method, *_args)
-    __getobj__.public_send(method)
+    if instance_variable_defined?(:"@#{method}")
+      instance_variable_get(:"@#{method}")
+    else
+      instance_variable_set(:"@#{method}", __getobj__.public_send(method))
+    end
   end
 end

@@ -7,8 +7,12 @@ class ApplicationDecorateWrapper
     @wrapped = wrap_classes(obj)
   end
 
-  def method_missing(method)
-    wrapped.public_send(method)
+  def method_missing(method, *_args)
+    if instance_variable_defined?(:"@#{method}")
+      instance_variable_get(:"@#{method}")
+    else
+      instance_variable_set(:"@#{method}", wrapped.public_send(method))
+    end
   end
 
   private

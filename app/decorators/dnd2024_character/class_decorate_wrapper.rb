@@ -25,16 +25,6 @@ module Dnd2024Character
       20 => { 1 => 4, 2 => 3, 3 => 3, 4 => 3, 5 => 3, 6 => 2, 7 => 2, 8 => 1, 9 => 1 }
     }.freeze
 
-    def save_dc
-      @save_dc ||= begin
-        result = __getobj__.save_dc
-        class_save_dc.each do |class_saving_throw|
-          result[class_saving_throw] += proficiency_bonus
-        end
-        result
-      end
-    end
-
     def spells_slots
       @spells_slots ||=
         if spell_classes.keys.size > 1

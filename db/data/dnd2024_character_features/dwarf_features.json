@@ -25,7 +25,7 @@
     "level": 0,
     "kind": "static",
     "visible": "true",
-    "eval_variables": {
+    "description_eval_variables": {
       "limit": "proficiency_bonus"
     },
     "limit_refresh": "long_rest"

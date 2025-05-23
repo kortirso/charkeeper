@@ -29,7 +29,7 @@
     "kind": "static",
     "visible": "true",
     "description_eval_variables": {
-      "limit": "5 * result.dig(:classes, 'paladin')"
+      "limit": "5 * classes['paladin']"
     },
     "limit_refresh": "long_rest"
   },

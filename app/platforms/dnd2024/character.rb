@@ -219,9 +219,9 @@ module Dnd2024
       base_decorator = ::Dnd2024Character::BaseDecorator.new(self)
       species_decorator = ::Dnd2024Character::SpeciesDecorateWrapper.new(base_decorator)
       class_decorator = ::Dnd2024Character::ClassDecorateWrapper.new(species_decorator)
-      full_decorator = ::Dnd2024Character::FeaturesDecorator.new(class_decorator)
-      full_decorator.features unless simple
-      full_decorator
+      features_decorator = ::Dnd2024Character::FeaturesDecorator.new(class_decorator)
+      features_decorator.features unless simple
+      ::Dnd2024Character::OverallDecorator.new(features_decorator)
     end
 
     def can_learn_spell?(target_spell_class)

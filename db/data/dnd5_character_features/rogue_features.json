@@ -13,7 +13,7 @@
     "options_type": "selected_skills",
     "visible": "true",
     "eval_variables": {
-      "result": "expertises = result.dig(:selected_features, 'rogue_expertise'); result[:skills].each { |skill| next if expertises.nil?; next if expertises.exclude?(skill[:slug]); skill[:modifier] += proficiency_bonus }"
+      "skills": "expertises = selected_features['rogue_expertise']; skills.each { |skill| next if expertises.nil?; next if expertises.exclude?(skill[:slug]); skill[:modifier] += proficiency_bonus }; skills"
     }
   },
   {
@@ -28,8 +28,8 @@
     "level": 1,
     "kind": "static",
     "visible": "true",
-    "eval_variables": {
-      "value": "((result.dig(:classes, 'rogue') + 1) / 2).to_s + 'd6'"
+    "description_eval_variables": {
+      "value": "((classes['rogue'] + 1) / 2).to_s + 'd6'"
     }
   },
   {
@@ -142,7 +142,7 @@
     "level": 20,
     "kind": "static",
     "visible": "true",
-    "eval_variables": {
+    "description_eval_variables": {
       "limit": "1"
     },
     "limit_refresh": "long_rest"

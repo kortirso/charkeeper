@@ -12,9 +12,7 @@
     "kind": "static",
     "visible": "true",
     "description_eval_variables": {
-      "limit": "1"
-    },
-    "eval_variables": {
+      "limit": "1",
       "value": "proficiency_bonus.to_s + 'd4'"
     },
     "limit_refresh": "long_rest"
@@ -45,11 +43,10 @@
     "kind": "static",
     "visible": "true",
     "description_eval_variables": {
-      "limit": "1"
-    },
-    "eval_variables": {
+      "limit": "1",
       "value": "proficiency_bonus"
     },
+    "eval_variables": {},
     "limit_refresh": "long_rest"
   }
 ]

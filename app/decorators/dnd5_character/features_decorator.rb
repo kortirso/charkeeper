@@ -12,7 +12,7 @@ module Dnd5Character
       if instance_variable_defined?(:"@#{method}")
         instance_variable_get(:"@#{method}")
       else
-        wrapped.public_send(method)
+        instance_variable_set(:"@#{method}", wrapped.public_send(method))
       end
     end
 

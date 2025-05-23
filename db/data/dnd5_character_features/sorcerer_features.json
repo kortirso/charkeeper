@@ -92,7 +92,7 @@
     "kind": "static",
     "options_type": null,
     "options": null,
-    "visible": "result.dig(:selected_features, 'metamagic')&.include?('metamagic_distant_spell')",
+    "visible": "selected_features['metamagic']&.include?('metamagic_distant_spell')",
     "eval_variables": {}
   },
   {
@@ -108,7 +108,7 @@
     "kind": "static",
     "options_type": null,
     "options": null,
-    "visible": "result.dig(:selected_features, 'metamagic')&.include?('metamagic_empowered_spell')",
+    "visible": "selected_features['metamagic']&.include?('metamagic_empowered_spell')",
     "eval_variables": {
       "value": "[1, modifiers['cha']].max"
     }
@@ -126,7 +126,7 @@
     "kind": "static",
     "options_type": null,
     "options": null,
-    "visible": "result.dig(:selected_features, 'metamagic')&.include?('metamagic_extended_spell')",
+    "visible": "selected_features['metamagic']&.include?('metamagic_extended_spell')",
     "eval_variables": {}
   },
   {
@@ -142,7 +142,7 @@
     "kind": "static",
     "options_type": null,
     "options": null,
-    "visible": "result.dig(:selected_features, 'metamagic')&.include?('metamagic_heightened_spell')",
+    "visible": "selected_features['metamagic']&.include?('metamagic_heightened_spell')",
     "eval_variables": {}
   },
   {
@@ -158,7 +158,7 @@
     "kind": "static",
     "options_type": null,
     "options": null,
-    "visible": "result.dig(:selected_features, 'metamagic')&.include?('metamagic_quickened_spell')",
+    "visible": "selected_features['metamagic']&.include?('metamagic_quickened_spell')",
     "eval_variables": {}
   },
   {
@@ -174,7 +174,7 @@
     "kind": "static",
     "options_type": null,
     "options": null,
-    "visible": "result.dig(:selected_features, 'metamagic')&.include?('metamagic_subtle_spell')",
+    "visible": "selected_features['metamagic']&.include?('metamagic_subtle_spell')",
     "eval_variables": {}
   },
   {
@@ -190,7 +190,7 @@
     "kind": "static",
     "options_type": null,
     "options": null,
-    "visible": "result.dig(:selected_features, 'metamagic')&.include?('metamagic_twinned_spell')",
+    "visible": "selected_features['metamagic']&.include?('metamagic_twinned_spell')",
     "eval_variables": {}
   },
   {
@@ -256,8 +256,8 @@
     "level": 6,
     "kind": "static",
     "options": null,
-    "visible": "result[:selected_features].keys.include?('dragon_ancestor_black')",
-    "eval_variables": {
+    "visible": "selected_features.keys.include?('dragon_ancestor_black')",
+    "description_eval_variables": {
       "value": "modifiers['cha']"
     }
   },
@@ -273,8 +273,8 @@
     "level": 6,
     "kind": "static",
     "options": null,
-    "visible": "result[:selected_features].keys.include?('dragon_ancestor_blue')",
-    "eval_variables": {
+    "visible": "selected_features.keys.include?('dragon_ancestor_blue')",
+    "description_eval_variables": {
       "value": "modifiers['cha']"
     }
   },
@@ -290,8 +290,8 @@
     "level": 6,
     "kind": "static",
     "options": null,
-    "visible": "result[:selected_features].keys.include?('dragon_ancestor_brass')",
-    "eval_variables": {
+    "visible": "selected_features.keys.include?('dragon_ancestor_brass')",
+    "description_eval_variables": {
       "value": "modifiers['cha']"
     }
   },
@@ -307,8 +307,8 @@
     "level": 6,
     "kind": "static",
     "options": null,
-    "visible": "result[:selected_features].keys.include?('dragon_ancestor_bronze')",
-    "eval_variables": {
+    "visible": "selected_features.keys.include?('dragon_ancestor_bronze')",
+    "description_eval_variables": {
       "value": "modifiers['cha']"
     }
   },
@@ -324,8 +324,8 @@
     "level": 6,
     "kind": "static",
     "options": null,
-    "visible": "result[:selected_features].keys.include?('dragon_ancestor_copper')",
-    "eval_variables": {
+    "visible": "selected_features.keys.include?('dragon_ancestor_copper')",
+    "description_eval_variables": {
       "value": "modifiers['cha']"
     }
   },
@@ -341,8 +341,8 @@
     "level": 6,
     "kind": "static",
     "options": null,
-    "visible": "result[:selected_features].keys.include?('dragon_ancestor_gold')",
-    "eval_variables": {
+    "visible": "selected_features.keys.include?('dragon_ancestor_gold')",
+    "description_eval_variables": {
       "value": "modifiers['cha']"
     }
   },
@@ -358,8 +358,8 @@
     "level": 6,
     "kind": "static",
     "options": null,
-    "visible": "result[:selected_features].keys.include?('dragon_ancestor_green')",
-    "eval_variables": {
+    "visible": "selected_features.keys.include?('dragon_ancestor_green')",
+    "description_eval_variables": {
       "value": "modifiers['cha']"
     }
   },
@@ -375,8 +375,8 @@
     "level": 6,
     "kind": "static",
     "options": null,
-    "visible": "result[:selected_features].keys.include?('dragon_ancestor_red')",
-    "eval_variables": {
+    "visible": "selected_features.keys.include?('dragon_ancestor_red')",
+    "description_eval_variables": {
       "value": "modifiers['cha']"
     }
   },
@@ -392,8 +392,8 @@
     "level": 6,
     "kind": "static",
     "options": null,
-    "visible": "result[:selected_features].keys.include?('dragon_ancestor_silver')",
-    "eval_variables": {
+    "visible": "selected_features.keys.include?('dragon_ancestor_silver')",
+    "description_eval_variables": {
       "value": "modifiers['cha']"
     }
   },
@@ -409,8 +409,8 @@
     "level": 6,
     "kind": "static",
     "options": null,
-    "visible": "result[:selected_features].keys.include?('dragon_ancestor_white')",
-    "eval_variables": {
+    "visible": "selected_features.keys.include?('dragon_ancestor_white')",
+    "description_eval_variables": {
       "value": "modifiers['cha']"
     }
   },
@@ -425,8 +425,6 @@
     "origin_value": "draconic_bloodline",
     "level": 14,
     "kind": "static",
-    "options_type": null,
-    "options": null,
     "visible": "true",
     "eval_variables": {}
   },
@@ -441,11 +439,9 @@
     "origin_value": "draconic_bloodline",
     "level": 18,
     "kind": "static",
-    "options_type": null,
-    "options": null,
     "visible": "true",
-    "eval_variables": {
-      "value": "result.dig(:spell_classes, :sorcerer, :save_dc)"
+    "description_eval_variables": {
+      "value": "spell_classes.dig(:sorcerer, :save_dc)"
     }
   }
 ]

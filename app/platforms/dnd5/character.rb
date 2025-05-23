@@ -183,9 +183,9 @@ module Dnd5
       subrace_decorator = ::Dnd5Character::SubraceDecorateWrapper.new(race_decorator)
       class_decorator = ::Dnd5Character::ClassDecorateWrapper.new(subrace_decorator)
       subclass_decorator = ::Dnd5Character::SubclassDecorateWrapper.new(class_decorator)
-      full_decorator = ::Dnd5Character::FeaturesDecorator.new(subclass_decorator)
-      full_decorator.features unless simple
-      full_decorator
+      features_decorator = ::Dnd5Character::FeaturesDecorator.new(subclass_decorator)
+      features_decorator.features unless simple
+      ::Dnd5Character::OverallDecorator.new(features_decorator)
     end
 
     def can_learn_spell?(target_spell_class)

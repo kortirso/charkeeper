@@ -192,8 +192,8 @@
     "eval_variables": {}
   },
   {
-    "slug": "tongue_of_the_sun_and_moon",
-    "title": { "en": "Tongue of the Sun and Moon", "ru": "Язык солнца и луны" },
+    "slug": "diamond_soul",
+    "title": { "en": "Diamond Soul", "ru": "Алмазная душа" },
     "description": {
       "en": "Whenever you make a saving throw and fail, you can spend 1 ki point to reroll it and take the second result.",
       "ru": "Если вы провалили спасбросок, вы можете повторить его, потратив 1 очко ци, и должны использовать второй результат."
@@ -204,7 +204,7 @@
     "kind": "static",
     "visible": "true",
     "eval_variables": {
-      "class_save_dc": "%i[str dex con int wis cha]"
+      "class_save_dc": "%w[str dex con int wis cha]"
     }
   },
   {
