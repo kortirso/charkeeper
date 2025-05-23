@@ -6,7 +6,7 @@ module TelegramWebhooks
 
     def call(message:)
       define_locale(message)
-      process_message(message)
+      route_message(message)
     end
 
     private
@@ -16,9 +16,10 @@ module TelegramWebhooks
       I18n.locale = I18n.available_locales.include?(message_locale) ? message_locale : I18n.default_locale
     end
 
-    def process_message(message)
+    def route_message(message)
       case message[:text]
       when '/start' then send_start_message(message[:from], message[:chat])
+      when '/contacts' then send_contacts_message(message[:chat])
       else send_unknown_message(message[:chat])
       end
     end
@@ -28,6 +29,14 @@ module TelegramWebhooks
         bot_secret: bot_secret,
         chat_id: chat[:id],
         text: I18n.t('telegram_webhook.start', sender: sender[:username])
+      )
+    end
+
+    def send_contacts_message(chat)
+      telegram_api.send_message(
+        bot_secret: bot_secret,
+        chat_id: chat[:id],
+        text: I18n.t('telegram_webhook.contacts')
       )
     end
 
