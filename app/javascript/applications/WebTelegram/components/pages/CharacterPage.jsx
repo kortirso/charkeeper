@@ -43,6 +43,7 @@ export const CharacterPage = (props) => {
           <Dnd5
             character={character()}
             onReloadCharacter={reloadCharacter}
+            onReplaceCharacter={replaceCharacter}
           />
         </Match>
         <Match when={character().provider === 'pathfinder2'}>

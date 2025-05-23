@@ -8,7 +8,7 @@
     },
     "origin": "class", // class, subclass, race, subrace
     "origin_value": "druid",
-    "level": 1,
+    "level": 2,
     // 'static' # рендерится текст
     // 'static_list' # рендерится список, выбирается одно значение
     // 'dynamic_list' # рендерится список, выбирается несколько значений

@@ -21,7 +21,8 @@ module WebTelegram
       def update
         case character_update.call(request_params.merge({ character: character }))
         in { errors: errors } then render json: { errors: errors }, status: :unprocessable_entity
-        else render_character(character.reload, {}, :ok)
+        else
+          params[:only_head] ? render(json: { result: :ok }, status: :ok) : render_character(character.reload, {}, :ok)
         end
       end
 

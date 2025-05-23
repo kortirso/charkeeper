@@ -132,7 +132,7 @@ module CharactersContext
         input[:character].data = input[:character].data.attributes.merge(input.except(:character).stringify_keys)
         input[:character].save!
 
-        { result: input[:character].reload }
+        { result: input[:character] }
       end
     end
   end

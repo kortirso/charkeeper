@@ -435,6 +435,7 @@ export const Dnd5 = (props) => {
                 onUpdateCharacterItem={updateCharacterItem}
                 onRefreshCharacter={refreshCharacter}
                 onRemoveCharacterItem={removeCharacterItem}
+                onReplaceCharacter={props.onReplaceCharacter}
               />
             </Show>
           </Match>

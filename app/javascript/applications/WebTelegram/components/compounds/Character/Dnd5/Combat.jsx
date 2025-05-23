@@ -246,7 +246,7 @@ export const Dnd5Combat = (props) => {
             <For each={Object.entries(dict().damage)}>
               {([slug, damage]) =>
                 <tr>
-                  <td>{damage}</td>
+                  <td class="font-cascadia-light">{damage}</td>
                   <td>
                     <Checkbox
                       checked={damageConditions().vulnerability.includes(slug)}
@@ -279,13 +279,13 @@ export const Dnd5Combat = (props) => {
             <Switch>
               <Match when={feature.kind === 'static'}>
                 <p
-                  class="text-sm"
+                  class="text-sm font-cascadia-light"
                   innerHTML={feature.description} // eslint-disable-line solid/no-innerhtml
                 />
               </Match>
               <Match when={feature.kind === 'dynamic_list'}>
                 <p
-                  class="text-sm mb-2"
+                  class="text-sm font-cascadia-light mb-2"
                   innerHTML={feature.description} // eslint-disable-line solid/no-innerhtml
                 />
                 <For each={feature.options}>
@@ -304,7 +304,7 @@ export const Dnd5Combat = (props) => {
               </Match>
               <Match when={feature.kind === 'static_list'}>
                 <p
-                  class="text-sm mb-2"
+                  class="text-sm font-cascadia-light mb-2"
                   innerHTML={feature.description} // eslint-disable-line solid/no-innerhtml
                 />
                 <Switch>
@@ -334,7 +334,7 @@ export const Dnd5Combat = (props) => {
               </Match>
               <Match when={feature.kind === 'choose_from' && feature.options_type === 'selected_skills'}>
                 <p
-                  class="text-sm mb-2"
+                  class="text-sm font-cascadia-light mb-2"
                   innerHTML={feature.description} // eslint-disable-line solid/no-innerhtml
                 />
                 <For each={character().skills.filter((item) => item.selected).map((item) => item.name)}>
@@ -353,7 +353,7 @@ export const Dnd5Combat = (props) => {
               </Match>
               <Match when={feature.kind === 'text'}>
                 <p
-                  class="text-sm mb-2"
+                  class="text-sm font-cascadia-light mb-2"
                   innerHTML={feature.description} // eslint-disable-line solid/no-innerhtml
                 />
                 <textarea
