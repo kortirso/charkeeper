@@ -10,7 +10,7 @@
     "origin_value": "bard",
     "level": 1,
     "kind": "static",
-    "visible": "result.dig(:classes, 'bard') < 5",
+    "visible": "classes['bard'] < 5",
     "description_eval_variables": {
       "value": "'d6'",
       "limit": "[1, modifiers['wis']].max"
