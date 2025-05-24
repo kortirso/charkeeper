@@ -2,9 +2,10 @@
 
 module Daggerheart
   class CharacterSerializer < ApplicationSerializer
-    attributes :provider, :id, :name, :level, :heritage, :main_class, :classes, :traits
+    attributes :provider, :id, :name, :level, :heritage, :main_class, :classes, :traits, :created_at
 
     delegate :id, :name, :level, :heritage, :main_class, :classes, :traits, to: :decorator
+    delegate :created_at, to: :object
 
     def provider
       'daggerheart'

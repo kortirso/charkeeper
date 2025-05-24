@@ -4,14 +4,14 @@ module WebTelegram
   class CharactersController < WebTelegram::BaseController
     include SerializeResource
 
-    DND_SERIALIZE_FIELDS = %i[id name level race subrace species legacy classes provider avatar].freeze
-    DAGGERHEART_SERIALIZE_FIELDS = %i[id name level heritage classes provider avatar].freeze
+    DND_SERIALIZE_FIELDS = %i[id name level race subrace species legacy classes provider avatar created_at].freeze
+    DAGGERHEART_SERIALIZE_FIELDS = %i[id name level heritage classes provider avatar created_at].freeze
 
     before_action :find_character, only: %i[show destroy]
 
     def index
       render json: Panko::Response.new(
-        characters: characters.flatten
+        characters: characters.flatten.sort_by { |item| item['created_at'] }.reverse
       ), status: :ok
     end
 

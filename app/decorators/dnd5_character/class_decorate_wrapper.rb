@@ -44,7 +44,7 @@ module Dnd5Character
     end
 
     def class_decorator(class_name)
-      "Dnd5Character::Classes::#{class_name.capitalize}Decorator".constantize
+      "Dnd5Character::Classes::#{class_name.camelize}Decorator".constantize
     end
   end
 end

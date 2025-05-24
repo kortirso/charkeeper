@@ -14,7 +14,7 @@ module Dnd5Character
     end
 
     def subclass_decorator(subclass_name)
-      "Dnd5Character::Subclasses::#{subclass_name.capitalize}Decorator".constantize
+      "Dnd5Character::Subclasses::#{subclass_name.camelize}Decorator".constantize
     rescue NameError => _e
       ApplicationDecorator
     end

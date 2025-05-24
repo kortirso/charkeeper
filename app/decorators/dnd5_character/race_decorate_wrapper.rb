@@ -5,7 +5,7 @@ module Dnd5Character
     private
 
     def wrap_classes(obj)
-      "Dnd5Character::Races::#{obj.race.capitalize}Decorator".constantize.new(obj)
+      "Dnd5Character::Races::#{obj.race.camelize}Decorator".constantize.new(obj)
     end
   end
 end

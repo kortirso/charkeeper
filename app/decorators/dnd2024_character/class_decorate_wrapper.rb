@@ -44,7 +44,7 @@ module Dnd2024Character
     end
 
     def class_decorator(class_name)
-      "Dnd2024Character::Classes::#{class_name.capitalize}Decorator".constantize
+      "Dnd2024Character::Classes::#{class_name.camelize}Decorator".constantize
     end
   end
 end

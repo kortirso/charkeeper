@@ -5,7 +5,7 @@ module Dnd2024Character
     private
 
     def wrap_classes(obj)
-      "Dnd2024Character::Species::#{obj.species.capitalize}Decorator".constantize.new(obj)
+      "Dnd2024Character::Species::#{obj.species.camelize}Decorator".constantize.new(obj)
     rescue NameError => _e
       ApplicationDecorator.new(obj)
     end

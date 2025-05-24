@@ -5,7 +5,7 @@ module Dnd5Character
     private
 
     def wrap_classes(obj)
-      "Dnd5Character::Subraces::#{obj.subrace&.capitalize}Decorator".constantize.new(obj)
+      "Dnd5Character::Subraces::#{obj.subrace&.camelize}Decorator".constantize.new(obj)
     rescue NameError => _e
       ApplicationDecorator.new(obj)
     end
