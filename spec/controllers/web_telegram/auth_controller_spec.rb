@@ -12,6 +12,7 @@ describe WebTelegram::AuthController do
       allow(Charkeeper::Container.resolve('services.auth_context.validate_web_telegram_signature')).to(
         receive(:valid?).and_return(web_telegram_signature_valid)
       )
+      allow(Charkeeper::Container.resolve('monitoring.client')).to receive(:notify)
     end
 
     context 'for invalid params' do
@@ -21,6 +22,7 @@ describe WebTelegram::AuthController do
         expect { request }.not_to change(User::Identity, :count)
         expect(response).to have_http_status :unprocessable_entity
         expect(response.parsed_body['errors']).to eq({ 'signature' => ['Invalid'] })
+        expect(Charkeeper::Container.resolve('monitoring.client')).not_to have_received(:notify)
       end
     end
 
@@ -31,6 +33,7 @@ describe WebTelegram::AuthController do
         expect { request }.to change(User::Identity, :count).by(1)
         expect(response).to have_http_status :created
         expect(response.parsed_body['access_token']).not_to be_nil
+        expect(Charkeeper::Container.resolve('monitoring.client')).to have_received(:notify)
       end
     end
   end

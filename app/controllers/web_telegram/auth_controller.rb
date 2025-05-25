@@ -4,6 +4,7 @@ module WebTelegram
   class AuthController < WebTelegram::BaseController
     include AuthkeeperDeps[generate_token: 'services.generate_token']
     include Deps[
+      monitoring: 'monitoring.client',
       add_identity: 'commands.auth_context.add_identity',
       web_telegram_signature: 'services.auth_context.validate_web_telegram_signature'
     ]
@@ -13,6 +14,8 @@ module WebTelegram
     def create
       # if true
       if web_telegram_signature.valid?(check_string: params[:check_string], hash: params[:hash])
+        user_session = start_user_session
+        monitoring_telegram_auth(user_session.user)
         access_token = generate_token.call(user_session: user_session)[:result]
         render json: { access_token: access_token, locale: user_session.user.locale }, status: :created
       else
@@ -22,7 +25,7 @@ module WebTelegram
 
     private
 
-    def user_session
+    def start_user_session
       # return User::Session.last
       ActiveRecord::Base.transaction do
         identity = find_identity || create_identity
@@ -50,6 +53,16 @@ module WebTelegram
     def locale
       user_locale = user_data['language_code'].to_sym
       I18n.available_locales.include?(user_locale) ? user_locale : I18n.default_locale
+    end
+
+    def monitoring_telegram_auth(user)
+      monitoring.notify(
+        exception: 'Telegram auth',
+        metadata: {
+          user_id: user.id
+        },
+        severity: :info
+      )
     end
   end
 end
