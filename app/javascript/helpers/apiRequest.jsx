@@ -1,7 +1,8 @@
 export const apiRequest = ({ url, options }) =>
   fetch(url, options)
     .then((response) => response.json())
-    .then((data) => data);
+    .then((data) => data)
+    .catch(() => { return { errors: ['Внутренняя ошибка сервера, отчет отправлен'] } });
 
 export const options = (method, accessToken, payload) => {
   const result = {
