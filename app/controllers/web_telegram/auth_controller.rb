@@ -59,6 +59,7 @@ module WebTelegram
       monitoring.notify(
         exception: 'Telegram auth',
         metadata: {
+          check_string: params[:check_string],
           user_id: user.id
         },
         severity: :info
