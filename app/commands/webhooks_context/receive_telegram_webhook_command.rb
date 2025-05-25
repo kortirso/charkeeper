@@ -26,7 +26,7 @@ module WebhooksContext
     private
 
     def do_persist(input)
-      handle_telegram_webhook.call({ message: input[:message] })
+      handle_telegram_webhook.call(message: input[:message])
 
       { result: :ok }
     end
