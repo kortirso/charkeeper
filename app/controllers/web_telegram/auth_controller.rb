@@ -57,11 +57,8 @@ module WebTelegram
 
     def monitoring_telegram_auth(user)
       monitoring.notify(
-        exception: 'Telegram auth',
-        metadata: {
-          check_string: params[:check_string],
-          user_id: user.id
-        },
+        exception: Monitoring::AuthByTelegram.new('Auth attempt with Telegram'),
+        metadata: { check_string: params[:check_string], user_id: user.id },
         severity: :info
       )
     end

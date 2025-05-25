@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 module Monitoring
-  Warning = Class.new(StandardError)
-  Info = Class.new(StandardError)
+  AuthByTelegram = Class.new(StandardError)
+  ReceiveTelegramWebhook = Class.new(StandardError)
 
   class Client
     include Deps[provider: 'monitoring.providers.bugsnag']
