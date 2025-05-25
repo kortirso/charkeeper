@@ -21,10 +21,8 @@ module Webhooks
 
     def monitoring_telegram_webhook
       monitoring.notify(
-        exception: 'Telegram webhook',
-        metadata: {
-          params: params.permit!.to_h
-        },
+        exception: Monitoring::ReceiveTelegramWebhook.new('Telegram webhook is received'),
+        metadata: { params: params.permit!.to_h },
         severity: :info
       )
     end
