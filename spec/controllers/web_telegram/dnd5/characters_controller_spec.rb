@@ -57,7 +57,7 @@ describe WebTelegram::Dnd5::CharactersController do
           }
 
           expect(response).to have_http_status :not_found
-          expect(response.parsed_body['errors']).to eq(['Not found'])
+          expect(response.parsed_body['errors']).to eq(['Запись не найдена'])
         end
       end
 
