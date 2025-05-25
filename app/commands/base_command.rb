@@ -52,6 +52,14 @@ class BaseCommand
   def do_persist(input) = raise NotImplementedError
 
   def validate(input)
-    contract.call(input).errors(locale: I18n.locale).to_h.values.flatten.map(&:capitalize)
+    validate_items(contract.call(input).errors(locale: I18n.locale).to_h.values.flatten)
+  end
+
+  def validate_items(items)
+    items.flat_map do |item|
+      next item.capitalize if item.is_a?(String)
+
+      validate_items(item.values.flatten)
+    end
   end
 end

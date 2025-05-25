@@ -4,16 +4,15 @@ module Webhooks
   class TelegramsController < ApplicationController
     include Deps[
       monitoring: 'monitoring.client',
-      webhook_handler: 'services.telegram_webhooks.handler'
+      receive_telegram_webhook: 'commands.webhooks_context.receive_telegram_webhook'
     ]
-    include Schemable
 
     skip_before_action :verify_authenticity_token
     skip_before_action :authenticate
 
     def create
       monitoring_telegram_webhook
-      webhook_handler.call(message: create_params[:message])
+      receive_telegram_webhook.call({ message: params[:message].to_h.deep_symbolize_keys }) if params[:message]
       head :ok
     end
 
@@ -25,27 +24,6 @@ module Webhooks
         metadata: { params: params.permit!.to_h },
         severity: :info
       )
-    end
-
-    def create_params
-      validate_params_with_schema(params: params, schema: schema)
-    end
-
-    def schema
-      Dry::Schema.Params do
-        required(:message).hash do
-          required(:from).hash do
-            required(:first_name).filled(:string)
-            required(:last_name).filled(:string)
-            required(:username).filled(:string)
-            required(:language_code).filled(:string)
-          end
-          required(:chat).hash do
-            required(:id).filled
-          end
-          required(:text).filled(:string)
-        end
-      end
     end
   end
 end

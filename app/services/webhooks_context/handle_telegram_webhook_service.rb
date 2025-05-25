@@ -1,8 +1,11 @@
 # frozen_string_literal: true
 
-module TelegramWebhooks
-  class HandleService
-    include Deps[telegram_api: 'api.telegram.client']
+module WebhooksContext
+  class HandleTelegramWebhookService
+    include Deps[
+      telegram_api: 'api.telegram.client',
+      add_identity: 'commands.auth_context.add_identity'
+    ]
 
     def call(message:)
       define_locale(message)
@@ -18,10 +21,27 @@ module TelegramWebhooks
 
     def route_message(message)
       case message[:text]
-      when '/start' then send_start_message(message[:from], message[:chat])
+      when '/start'
+        find_identity(message) || create_identity(message)
+        send_start_message(message[:from], message[:chat])
       when '/contacts' then send_contacts_message(message[:chat])
       else send_unknown_message(message[:chat])
       end
+    end
+
+    def find_identity(message)
+      User::Identity.find_by(provider: User::Identity::TELEGRAM, uid: message.dig(:chat, :id).to_s)
+    end
+
+    def create_identity(message)
+      add_identity.call({
+        provider: User::Identity::TELEGRAM,
+        uid: message.dig(:chat, :id).to_s,
+        first_name: message.dig(:from, :first_name),
+        last_name: message.dig(:from, :last_name),
+        username: message.dig(:from, :username),
+        locale: I18n.locale
+      })[:result]
     end
 
     def send_start_message(sender, chat)

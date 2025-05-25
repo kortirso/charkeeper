@@ -41,6 +41,8 @@ module WebTelegram
       add_identity.call({
         provider: User::Identity::TELEGRAM,
         uid: user_data['id'].to_s,
+        first_name: user_data['first_name'],
+        last_name: user_data['last_name'],
         username: user_data['username'],
         locale: locale.to_s
       })[:result]
