@@ -10,6 +10,7 @@ module Webhooks
 
     skip_before_action :verify_authenticity_token
     skip_before_action :authenticate
+    before_action :check_telegram_bot_secret
 
     def create
       monitoring_telegram_webhook
@@ -19,6 +20,16 @@ module Webhooks
     end
 
     private
+
+    def check_telegram_bot_secret
+      return if request.headers['X-Telegram-Bot-Api-Secret-Token'] == web_telegram_bot_secret
+
+      head :ok
+    end
+
+    def web_telegram_bot_secret
+      Rails.application.credentials.dig(Rails.env.to_sym, :web_telegram_bot_secret)
+    end
 
     def monitoring_telegram_webhook
       monitoring.notify(
