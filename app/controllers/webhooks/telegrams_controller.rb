@@ -4,7 +4,8 @@ module Webhooks
   class TelegramsController < ApplicationController
     include Deps[
       monitoring: 'monitoring.client',
-      receive_telegram_webhook: 'commands.webhooks_context.receive_telegram_webhook'
+      message_webhook: 'commands.webhooks_context.receive_telegram_message_webhook',
+      chat_member_webhook: 'commands.webhooks_context.receive_telegram_chat_member_webhook'
     ]
 
     skip_before_action :verify_authenticity_token
@@ -12,7 +13,8 @@ module Webhooks
 
     def create
       monitoring_telegram_webhook
-      receive_telegram_webhook.call({ message: params[:message].to_h.deep_symbolize_keys }) if params[:message]
+      message_webhook.call({ message: params[:message].to_h.deep_symbolize_keys }) if params[:message]
+      chat_member_webhook.call({ chat_member: params[:my_chat_member].to_h.deep_symbolize_keys }) if params[:my_chat_member]
       head :ok
     end
 

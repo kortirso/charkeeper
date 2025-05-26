@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
 module WebhooksContext
-  class ReceiveTelegramWebhookCommand < BaseCommand
+  class ReceiveTelegramMessageWebhookCommand < BaseCommand
     include Deps[
-      handle_telegram_webhook: 'services.webhooks_context.handle_telegram_webhook'
+      handle_telegram_webhook: 'services.webhooks_context.handle_telegram_message_webhook'
     ]
 
     use_contract do

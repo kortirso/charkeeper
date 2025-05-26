@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module WebhooksContext
-  class HandleTelegramWebhookService
+  class HandleTelegramMessageWebhookService
     include Deps[
       telegram_api: 'api.telegram.client',
       add_identity: 'commands.auth_context.add_identity'
@@ -22,9 +22,13 @@ module WebhooksContext
     def route_message(message)
       case message[:text]
       when '/start'
-        find_identity(message) || create_identity(message)
+        identity = find_identity(message) || create_identity(message)
+        identity.update(active: true) unless identity&.active?
         send_start_message(message[:from], message[:chat])
       when '/contacts' then send_contacts_message(message[:chat])
+      when '/unsubscribe'
+        identity = find_identity(message)
+        identity.update(active: false)
       else send_unknown_message(message[:chat])
       end
     end
@@ -40,7 +44,7 @@ module WebhooksContext
         first_name: message.dig(:from, :first_name),
         last_name: message.dig(:from, :last_name),
         username: message.dig(:from, :username),
-        locale: I18n.locale
+        locale: I18n.locale.to_s
       })[:result]
     end
 

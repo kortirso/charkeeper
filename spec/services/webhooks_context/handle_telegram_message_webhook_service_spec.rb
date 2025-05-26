@@ -1,12 +1,12 @@
 # frozen_string_literal: true
 
-describe WebhooksContext::HandleTelegramWebhookService do
+describe WebhooksContext::HandleTelegramMessageWebhookService do
   subject(:service_call) { described_class.new.call(message: message) }
 
   let(:message) do
     {
       from: { first_name: 'First', last_name: 'Last', username: 'User', language_code: 'en' },
-      chat: { id: 'id' },
+      chat: { id: 1 },
       text: text
     }
   end
