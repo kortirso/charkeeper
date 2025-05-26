@@ -131,11 +131,21 @@ module Charkeeper
 
     register('commands.image_processing.attach_avatar') { ImageProcessingContext::AttachAvatarCommand.new }
 
-    register('commands.webhooks_context.receive_telegram_webhook') { WebhooksContext::ReceiveTelegramWebhookCommand.new }
+    register('commands.webhooks_context.receive_telegram_message_webhook') {
+      WebhooksContext::ReceiveTelegramMessageWebhookCommand.new
+    }
+    register('commands.webhooks_context.receive_telegram_chat_member_webhook') {
+      WebhooksContext::ReceiveTelegramChatMemberWebhookCommand.new
+    }
 
     # services
     register('services.auth_context.validate_web_telegram_signature') { AuthContext::WebTelegramSignatureValidateService.new }
-    register('services.webhooks_context.handle_telegram_webhook') { WebhooksContext::HandleTelegramWebhookService.new }
+    register('services.webhooks_context.handle_telegram_message_webhook') {
+      WebhooksContext::HandleTelegramMessageWebhookService.new
+    }
+    register('services.webhooks_context.handle_telegram_chat_member_webhook') {
+      WebhooksContext::HandleTelegramChatMemberWebhookService.new
+    }
   end
 end
 
