@@ -6,8 +6,10 @@
       "en": "Padded Armor",
       "ru": "Стёганный доспех"
     },
-    "weight": 8,
-    "price": 500,
+    "data": {
+      "weight": 8,
+      "price": 500
+    },
     "info": {
       "ac": 11,
       "str_req": null,
@@ -21,8 +23,10 @@
       "en": "Leather Armor",
       "ru": "Кожаный доспех"
     },
-    "weight": 10,
-    "price": 1000,
+    "data": {
+      "weight": 10,
+      "price": 1000
+    },
     "info": {
       "ac": 11,
       "str_req": null,
@@ -36,8 +40,10 @@
       "en": "Studded Leather Armor",
       "ru": "Проклёпанная кожа"
     },
-    "weight": 13,
-    "price": 4500,
+    "data": {
+      "weight": 13,
+      "price": 4500
+    },
     "info": {
       "ac": 12,
       "str_req": null,
@@ -51,8 +57,10 @@
       "en": "Hide Armor",
       "ru": "Шкурный доспех"
     },
-    "weight": 12,
-    "price": 1000,
+    "data": {
+      "weight": 12,
+      "price": 1000
+    },
     "info": {
       "ac": 12,
       "str_req": null,
@@ -66,8 +74,10 @@
       "en": "Chain Shirt",
       "ru": "Кольчужная рубаха"
     },
-    "weight": 20,
-    "price": 5000,
+    "data": {
+      "weight": 20,
+      "price": 5000
+    },
     "info": {
       "ac": 13,
       "str_req": null,
@@ -81,8 +91,10 @@
       "en": "Scale Mail Armor",
       "ru": "Чешуйчатый доспех"
     },
-    "weight": 45,
-    "price": 5000,
+    "data": {
+      "weight": 45,
+      "price": 5000
+    },
     "info": {
       "ac": 14,
       "str_req": null,
@@ -96,8 +108,10 @@
       "en": "Breastplate",
       "ru": "Кираса"
     },
-    "weight": 20,
-    "price": 40000,
+    "data": {
+      "weight": 20,
+      "price": 40000
+    },
     "info": {
       "ac": 14,
       "str_req": null,
@@ -111,8 +125,10 @@
       "en": "Half Plate Armor",
       "ru": "Полулаты"
     },
-    "weight": 40,
-    "price": 75000,
+    "data": {
+      "weight": 40,
+      "price": 75000
+    },
     "info": {
       "ac": 15,
       "str_req": null,
@@ -126,8 +142,10 @@
       "en": "Ring Mail Armor",
       "ru": "Кольчатый доспех"
     },
-    "weight": 40,
-    "price": 3000,
+    "data": {
+      "weight": 40,
+      "price": 3000
+    },
     "info": {
       "ac": 14,
       "str_req": null,
@@ -141,8 +159,10 @@
       "en": "Chain Mail",
       "ru": "Кольчуга"
     },
-    "weight": 55,
-    "price": 7500,
+    "data": {
+      "weight": 55,
+      "price": 7500
+    },
     "info": {
       "ac": 16,
       "str_req": 13,
@@ -156,8 +176,10 @@
       "en": "Splint Armor",
       "ru": "Наборный доспех"
     },
-    "weight": 60,
-    "price": 20000,
+    "data": {
+      "weight": 60,
+      "price": 20000
+    },
     "info": {
       "ac": 17,
       "str_req": 15,
@@ -171,8 +193,10 @@
       "en": "Plate Armor",
       "ru": "Латы"
     },
-    "weight": 65,
-    "price": 150000,
+    "data": {
+      "weight": 65,
+      "price": 150000
+    },
     "info": {
       "ac": 18,
       "str_req": 15,
@@ -186,8 +210,10 @@
       "en": "Shield",
       "ru": "Щит"
     },
-    "weight": 6,
-    "price": 1000,
+    "data": {
+      "weight": 6,
+      "price": 1000
+    },
     "info": {
       "ac": 2,
       "str_req": null,

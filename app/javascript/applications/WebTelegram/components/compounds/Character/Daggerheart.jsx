@@ -2,12 +2,14 @@ import { createSignal, Switch, Match } from 'solid-js';
 import * as i18n from '@solid-primitives/i18n';
 
 import {
-  DaggerheartTraits, Dnd5Notes
+  DaggerheartTraits, DaggerheartCombat, DaggerheartEquipment, Dnd5Notes
 } from '../../../components';
 
 import { useAppLocale } from '../../../context';
 
 export const Daggerheart = (props) => {
+  const character = () => props.character;
+
   const [activeTab, setActiveTab] = createSignal('traits');
 
   const [, dict] = useAppLocale();
@@ -24,6 +26,18 @@ export const Daggerheart = (props) => {
           {t('character.abilities')}
         </p>
         <p
+          classList={{ 'active': activeTab() === 'combat' }}
+          onClick={() => setActiveTab('combat')}
+        >
+          {t('character.combat')}
+        </p>
+        <p
+          classList={{ 'active': activeTab() === 'equipment' }}
+          onClick={() => setActiveTab('equipment')}
+        >
+          {t('character.equipment')}
+        </p>
+        <p
           classList={{ 'active': activeTab() === 'notes' }}
           onClick={() => setActiveTab('notes')}
         >
@@ -34,8 +48,19 @@ export const Daggerheart = (props) => {
         <Switch>
           <Match when={activeTab() === 'traits'}>
             <DaggerheartTraits
-              id={props.character.id}
-              initialTraits={props.character.traits}
+              character={character()}
+              onReplaceCharacter={props.onReplaceCharacter}
+            />
+          </Match>
+          <Match when={activeTab() === 'combat'}>
+            <DaggerheartCombat
+              character={character()}
+              onReplaceCharacter={props.onReplaceCharacter}
+            />
+          </Match>
+          <Match when={activeTab() === 'equipment'}>
+            <DaggerheartEquipment
+              character={character()}
               onReplaceCharacter={props.onReplaceCharacter}
             />
           </Match>

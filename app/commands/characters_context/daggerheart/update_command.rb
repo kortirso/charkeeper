@@ -3,8 +3,10 @@
 module CharactersContext
   module Daggerheart
     class UpdateCommand < BaseCommand
+      # rubocop: disable Metrics/BlockLength
       use_contract do
         config.messages.namespace = :daggerheart_character
+        config.validate_keys = true
 
         params do
           required(:character).filled(type?: ::Daggerheart::Character)
@@ -17,6 +19,24 @@ module CharactersContext
             required(:pre).filled(:integer)
             required(:know).filled(:integer)
           end
+          optional(:health).hash do
+            required(:marked).filled(:integer)
+            required(:max).filled(:integer)
+          end
+          optional(:stress).hash do
+            required(:marked).filled(:integer)
+            required(:max).filled(:integer)
+          end
+          optional(:hope).hash do
+            required(:marked).filled(:integer) # TODO: marked не может быть больше max
+            required(:max).filled(:integer)
+          end
+          optional(:gold).hash do
+            required(:coins).filled(:integer) # TODO: если значение 10, то увеличивать на 1 нижестоящий
+            required(:handfuls).filled(:integer)
+            required(:bags).filled(:integer)
+            required(:chests).filled(:integer)
+          end
         end
 
         rule(:traits) do
@@ -26,6 +46,7 @@ module CharactersContext
           key.failure(:invalid_value)
         end
       end
+      # rubocop: enable Metrics/BlockLength
 
       private
 

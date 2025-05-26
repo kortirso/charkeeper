@@ -19,5 +19,7 @@ export * from './compounds/Character/Pathfinder2/Abilities';
 
 export * from './compounds/Character/Daggerheart';
 export * from './compounds/Character/Daggerheart/Traits';
+export * from './compounds/Character/Daggerheart/Combat';
+export * from './compounds/Character/Daggerheart/Equipment';
 
 export * from './compounds/Characters/Item';

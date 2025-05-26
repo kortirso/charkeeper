@@ -91,15 +91,15 @@ end
 
 weapons_file = File.read(Rails.root.join('db/data/weapons.json'))
 weapons = JSON.parse(weapons_file)
-weapons.each do |weapon|
-  ::Item.create!({ slug: weapon['slug'], type: 'Dnd5::Item', kind: weapon['kind'], name: weapon['name'], data: weapon.except('name', 'kind', 'slug') })
-end
+Dnd5::Item.upsert_all(weapons) if weapons.any?
 
 armor_file = File.read(Rails.root.join('db/data/armor.json'))
 armor = JSON.parse(armor_file)
-armor.each do |item|
-  ::Item.create!({ slug: item['slug'], type: 'Dnd5::Item', kind: item['kind'], name: item['name'], data: item.except('name', 'kind', 'slug') })
-end
+Dnd5::Item.upsert_all(armor) if armor.any?
+
+armor_file = File.read(Rails.root.join('db/data/daggerheart_armor.json'))
+armor = JSON.parse(armor_file)
+Daggerheart::Item.upsert_all(armor) if armor.any?
 
 user = User.create! locale: 'ru'
 user.sessions.create!

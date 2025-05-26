@@ -1,0 +1,72 @@
+[
+  {
+    "slug": "gambeson_armor",
+    "kind": "armor",
+    "name": {
+      "en": "Gambeson Armor",
+      "ru": "Стёганый доспех"
+    },
+    "info": {
+      "tier": 1,
+      "base_score": 3,
+      "evasion": 1,
+      "thresholds": {
+        "major": 5,
+        "severe": 11
+      }
+    }
+  },
+  {
+    "slug": "leather_armor",
+    "kind": "armor",
+    "name": {
+      "en": "Leather Armor",
+      "ru": "Кожаный доспех"
+    },
+    "info": {
+      "tier": 1,
+      "base_score": 3,
+      "thresholds": {
+        "major": 6,
+        "severe": 13
+      }
+    }
+  },
+  {
+    "slug": "chainmail_armor",
+    "kind": "armor",
+    "name": {
+      "en": "Chainmail Armor",
+      "ru": "Кольчуга"
+    },
+    "info": {
+      "tier": 1,
+      "base_score": 4,
+      "evasion": -1,
+      "thresholds": {
+        "major": 7,
+        "severe": 15
+      }
+    }
+  },
+  {
+    "slug": "full_plate_armor",
+    "kind": "armor",
+    "name": {
+      "en": "Full Plate Armor",
+      "ru": "Латы"
+    },
+    "info": {
+      "tier": 1,
+      "base_score": 4,
+      "evasion": -2,
+      "traits": {
+        "agi": -1
+      },
+      "thresholds": {
+        "major": 8,
+        "severe": 17
+      }
+    }
+  }
+]

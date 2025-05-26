@@ -6,8 +6,10 @@
       "en": "Quarterstaff",
       "ru": "Боевой посох"
     },
-    "weight": 4,
-    "price": 20,
+    "data": {
+      "weight": 4,
+      "price": 20
+    },
     "info": {
       "type": "melee",
       "damage": "1d6",
@@ -23,8 +25,10 @@
       "en": "Mace",
       "ru": "Булава"
     },
-    "weight": 4,
-    "price": 500,
+    "data": {
+      "weight": 4,
+      "price": 500
+    },
     "info": {
       "type": "melee",
       "damage": "1d6",
@@ -40,8 +44,10 @@
       "en": "Club",
       "ru": "Дубинка"
     },
-    "weight": 2,
-    "price": 10,
+    "data": {
+      "weight": 2,
+      "price": 10
+    },
     "info": {
       "type": "melee",
       "damage": "1d4",
@@ -57,8 +63,10 @@
       "en": "Dagger",
       "ru": "Кинжал"
     },
-    "weight": 1,
-    "price": 200,
+    "data": {
+      "weight": 1,
+      "price": 200
+    },
     "info": {
       "type": "thrown",
       "damage": "1d4",
@@ -75,8 +83,10 @@
       "en": "Spear",
       "ru": "Копьё"
     },
-    "weight": 3,
-    "price": 100,
+    "data": {
+      "weight": 3,
+      "price": 100
+    },
     "info": {
       "type": "thrown",
       "damage": "1d6",
@@ -93,8 +103,10 @@
       "en": "Light Hammer",
       "ru": "Лёгкий молот"
     },
-    "weight": 2,
-    "price": 200,
+    "data": {
+      "weight": 2,
+      "price": 200
+    },
     "info": {
       "type": "thrown",
       "damage": "1d4",
@@ -111,8 +123,10 @@
       "en": "Javelin",
       "ru": "Метательное копьё"
     },
-    "weight": 2,
-    "price": 50,
+    "data": {
+      "weight": 2,
+      "price": 50
+    },
     "info": {
       "type": "thrown",
       "damage": "1d6",
@@ -129,8 +143,10 @@
       "en": "Greatclub",
       "ru": "Палица"
     },
-    "weight": 10,
-    "price": 20,
+    "data": {
+      "weight": 10,
+      "price": 20
+    },
     "info": {
       "type": "melee",
       "damage": "1d8",
@@ -146,8 +162,10 @@
       "en": "Handaxe",
       "ru": "Ручной топор"
     },
-    "weight": 2,
-    "price": 500,
+    "data": {
+      "weight": 2,
+      "price": 500
+    },
     "info": {
       "type": "thrown",
       "damage": "1d6",
@@ -164,8 +182,10 @@
       "en": "Sickle",
       "ru": "Серп"
     },
-    "weight": 2,
-    "price": 100,
+    "data": {
+      "weight": 2,
+      "price": 100
+    },
     "info": {
       "type": "melee",
       "damage": "1d4",
@@ -181,8 +201,10 @@
       "en": "Light Crossbow",
       "ru": "Лёгкий арбалет"
     },
-    "weight": 5,
-    "price": 2500,
+    "data": {
+      "weight": 5,
+      "price": 2500
+    },
     "info": {
       "type": "range",
       "damage": "1d8",
@@ -199,8 +221,10 @@
       "en": "Dart",
       "ru": "Дротик"
     },
-    "weight": 0.25,
-    "price": 5,
+    "data": {
+      "weight": 0.25,
+      "price": 5
+    },
     "info": {
       "type": "range",
       "damage": "1d4",
@@ -217,8 +241,10 @@
       "en": "Shortbow",
       "ru": "Короткий лук"
     },
-    "weight": 2,
-    "price": 2500,
+    "data": {
+      "weight": 2,
+      "price": 2500
+    },
     "info": {
       "type": "range",
       "damage": "1d6",
@@ -235,8 +261,10 @@
       "en": "Sling",
       "ru": "Праща"
     },
-    "weight": 0,
-    "price": 10,
+    "data": {
+      "weight": 0,
+      "price": 10
+    },
     "info": {
       "type": "range",
       "damage": "1d4",
@@ -253,8 +281,10 @@
       "en": "Halberd",
       "ru": "Алебарда"
     },
-    "weight": 6,
-    "price": 2000,
+    "data": {
+      "weight": 6,
+      "price": 2000
+    },
     "info": {
       "type": "melee",
       "damage": "1d10",
@@ -270,8 +300,10 @@
       "en": "War Pick",
       "ru": "Боевая кирка"
     },
-    "weight": 2,
-    "price": 500,
+    "data": {
+      "weight": 2,
+      "price": 500
+    },
     "info": {
       "type": "melee",
       "damage": "1d8",
@@ -287,8 +319,10 @@
       "en": "Warhammer",
       "ru": "Боевой молот"
     },
-    "weight": 2,
-    "price": 1500,
+    "data": {
+      "weight": 2,
+      "price": 1500
+    },
     "info": {
       "type": "melee",
       "damage": "1d8",
@@ -304,8 +338,10 @@
       "en": "Battleaxe",
       "ru": "Боевой топор"
     },
-    "weight": 4,
-    "price": 1000,
+    "data": {
+      "weight": 4,
+      "price": 1000
+    },
     "info": {
       "type": "melee",
       "damage": "1d8",
@@ -321,8 +357,10 @@
       "en": "Glaive",
       "ru": "Глефа"
     },
-    "weight": 6,
-    "price": 2000,
+    "data": {
+      "weight": 6,
+      "price": 2000
+    },
     "info": {
       "type": "melee",
       "damage": "1d10",
@@ -338,8 +376,10 @@
       "en": "Greatsword",
       "ru": "Двуручный меч"
     },
-    "weight": 6,
-    "price": 5000,
+    "data": {
+      "weight": 6,
+      "price": 5000
+    },
     "info": {
       "type": "melee",
       "damage": "2d6",
@@ -355,8 +395,10 @@
       "en": "Lance",
       "ru": "Длинное копьё"
     },
-    "weight": 6,
-    "price": 1000,
+    "data": {
+      "weight": 6,
+      "price": 1000
+    },
     "info": {
       "type": "melee",
       "damage": "1d12",
@@ -372,8 +414,10 @@
       "en": "Longsword",
       "ru": "Длинный меч"
     },
-    "weight": 3,
-    "price": 1500,
+    "data": {
+      "weight": 3,
+      "price": 1500
+    },
     "info": {
       "type": "melee",
       "damage": "1d8",
@@ -389,8 +433,10 @@
       "en": "Whip",
       "ru": "Кнут"
     },
-    "weight": 3,
-    "price": 200,
+    "data": {
+      "weight": 3,
+      "price": 200
+    },
     "info": {
       "type": "melee",
       "damage": "1d4",
@@ -406,8 +452,10 @@
       "en": "Shortsowrd",
       "ru": "Короткий меч"
     },
-    "weight": 2,
-    "price": 1000,
+    "data": {
+      "weight": 2,
+      "price": 1000
+    },
     "info": {
       "type": "melee",
       "damage": "1d6",
@@ -423,8 +471,10 @@
       "en": "Maul",
       "ru": "Молот"
     },
-    "weight": 10,
-    "price": 1000,
+    "data": {
+      "weight": 10,
+      "price": 1000
+    },
     "info": {
       "type": "melee",
       "damage": "2d6",
@@ -440,8 +490,10 @@
       "en": "Morningstar",
       "ru": "Моргенштерн"
     },
-    "weight": 4,
-    "price": 1500,
+    "data": {
+      "weight": 4,
+      "price": 1500
+    },
     "info": {
       "type": "melee",
       "damage": "1d8",
@@ -457,8 +509,10 @@
       "en": "Pike",
       "ru": "Пика"
     },
-    "weight": 18,
-    "price": 500,
+    "data": {
+      "weight": 18,
+      "price": 500
+    },
     "info": {
       "type": "melee",
       "damage": "1d10",
@@ -474,8 +528,10 @@
       "en": "Rapier",
       "ru": "Рапира"
     },
-    "weight": 2,
-    "price": 2500,
+    "data": {
+      "weight": 2,
+      "price": 2500
+    },
     "info": {
       "type": "melee",
       "damage": "1d8",
@@ -491,8 +547,10 @@
       "en": "Greataxe",
       "ru": "Секира"
     },
-    "weight": 7,
-    "price": 3000,
+    "data": {
+      "weight": 7,
+      "price": 3000
+    },
     "info": {
       "type": "melee",
       "damage": "1d12",
@@ -508,8 +566,10 @@
       "en": "Scimitar",
       "ru": "Скимитар"
     },
-    "weight": 3,
-    "price": 2500,
+    "data": {
+      "weight": 3,
+      "price": 2500
+    },
     "info": {
       "type": "melee",
       "damage": "1d6",
@@ -525,8 +585,10 @@
       "en": "Trident",
       "ru": "Трезубец"
     },
-    "weight": 4,
-    "price": 500,
+    "data": {
+      "weight": 4,
+      "price": 500
+    },
     "info": {
       "type": "thrown",
       "damage": "1d6",
@@ -543,8 +605,10 @@
       "en": "Flail",
       "ru": "Цеп"
     },
-    "weight": 2,
-    "price": 1000,
+    "data": {
+      "weight": 2,
+      "price": 1000
+    },
     "info": {
       "type": "melee",
       "damage": "1d8",
@@ -560,8 +624,10 @@
       "en": "Hand Crossbow",
       "ru": "Ручной арбалет"
     },
-    "weight": 3,
-    "price": 7500,
+    "data": {
+      "weight": 3,
+      "price": 7500
+    },
     "info": {
       "type": "range",
       "damage": "1d6",
@@ -578,8 +644,10 @@
       "en": "Heavy Crossbow",
       "ru": "Тяжёлый арбалет"
     },
-    "weight": 18,
-    "price": 5000,
+    "data": {
+      "weight": 18,
+      "price": 5000
+    },
     "info": {
       "type": "range",
       "damage": "1d10",
@@ -596,8 +664,10 @@
       "en": "Longbow",
       "ru": "Длинный лук"
     },
-    "weight": 2,
-    "price": 5000,
+    "data": {
+      "weight": 2,
+      "price": 5000
+    },
     "info": {
       "type": "range",
       "damage": "1d8",
@@ -614,8 +684,10 @@
       "en": "Blowgun",
       "ru": "Духовая трубка"
     },
-    "weight": 1,
-    "price": 1000,
+    "data": {
+      "weight": 1,
+      "price": 1000
+    },
     "info": {
       "type": "range",
       "damage": "1",
@@ -632,8 +704,10 @@
       "en": "Net",
       "ru": "Сеть"
     },
-    "weight": 3,
-    "price": 100,
+    "data": {
+      "weight": 3,
+      "price": 100
+    },
     "info": {
       "type": "range",
       "dist": "5/15",
@@ -647,8 +721,10 @@
       "en": "Musket",
       "ru": "Мушкет"
     },
-    "weight": 10,
-    "price": 50000,
+    "data": {
+      "weight": 10,
+      "price": 50000
+    },
     "info": {
       "type": "range",
       "damage": "1d12",
@@ -665,8 +741,10 @@
       "en": "Pistol",
       "ru": "Пистоль"
     },
-    "weight": 3,
-    "price": 25000,
+    "data": {
+      "weight": 3,
+      "price": 25000
+    },
     "info": {
       "type": "range",
       "damage": "1d10",

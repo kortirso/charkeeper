@@ -594,6 +594,27 @@
     },
     "classes": {
       "warrior": "Воин"
+    },
+    "gold": {
+      "coins": "Монеты",
+      "handfuls": "Горсти",
+      "bags": "Мешочки",
+      "chests": "Сундучки",
+      "total": "Всего монет"
+    },
+    "combat": {
+      "evasion": "Уклонение",
+      "armorScore": "Очки Доспеха",
+      "armorSlots": "Слоты Доспеха",
+      "minor": "Малый",
+      "major": "Большой",
+      "severe": "Серьёзный",
+      "minorDamage": "Отметить 1 ХП",
+      "majorDamage": "Отметить 2 ХП",
+      "severeDamage": "Отметить 3 ХП",
+      "health": "Здоровье",
+      "stress": "Стресс",
+      "hope": "Надежда"
     }
   }
 }

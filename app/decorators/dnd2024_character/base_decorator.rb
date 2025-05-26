@@ -117,7 +117,7 @@ module Dnd2024Character
       equiped_shield = defense_gear[:shield]
       return 10 + modifiers['dex'] if equiped_armor.nil? && equiped_shield.nil?
 
-      equiped_armor&.dig(:items_data, 'info', 'ac').to_i + equiped_shield&.dig(:items_data, 'info', 'ac').to_i
+      equiped_armor&.dig(:items_info, 'ac').to_i + equiped_shield&.dig(:items_info, 'ac').to_i
     end
 
     def calc_defense_gear
@@ -130,7 +130,7 @@ module Dnd2024Character
 
     def weapon_attacks
       weapons.flat_map do |item|
-        case item[:items_data]['info']['type']
+        case item[:items_info]['type']
         when 'melee' then melee_attack(item)
         when 'range' then range_attack(item, 'range')
         when 'thrown' then [melee_attack(item), range_attack(item, 'thrown')].flatten
@@ -140,7 +140,7 @@ module Dnd2024Character
 
     # rubocop: disable Metrics/AbcSize, Metrics/MethodLength, Metrics/PerceivedComplexity
     def melee_attack(item)
-      captions = item[:items_data]['info']['caption']
+      captions = item[:items_info]['caption']
 
       key_ability_bonus = find_key_ability_bonus('melee', captions)
       # обычная атака
@@ -153,9 +153,9 @@ module Dnd2024Character
           hands: captions.include?('2handed') ? '2' : '1',
           melee_distance: captions.include?('reach') ? 10 : 5,
           attack_bonus: weapon_proficiency(item) ? (key_ability_bonus + proficiency_bonus) : key_ability_bonus,
-          damage: item[:items_data]['info']['damage'],
+          damage: item[:items_info]['damage'],
           damage_bonus: key_ability_bonus,
-          damage_type: item[:items_data]['info']['damage_type'],
+          damage_type: item[:items_info]['damage_type'],
           # для будущих проверок
           kind: item[:items_kind].split[0],
           caption: captions,
@@ -187,7 +187,7 @@ module Dnd2024Character
     end
 
     def range_attack(item, type)
-      captions = item[:items_data]['info']['caption']
+      captions = item[:items_info]['caption']
 
       key_ability_bonus = find_key_ability_bonus('range', captions)
       # обычная атака
@@ -198,11 +198,11 @@ module Dnd2024Character
           name: item[:items_name][I18n.locale.to_s],
           action_type: 'action',
           hands: captions.include?('2handed') ? '2' : '1',
-          range_distance: item[:items_data]['info']['dist'],
+          range_distance: item[:items_info]['dist'],
           attack_bonus: weapon_proficiency(item) ? (key_ability_bonus + proficiency_bonus) : key_ability_bonus,
-          damage: item[:items_data]['info']['damage'],
+          damage: item[:items_info]['damage'],
           damage_bonus: key_ability_bonus,
-          damage_type: item[:items_data]['info']['damage_type'],
+          damage_type: item[:items_info]['damage_type'],
           # для будущих проверок
           kind: item[:items_kind].split[0],
           caption: captions,
@@ -240,7 +240,7 @@ module Dnd2024Character
         .items
         .joins(:item)
         .where(items: { kind: ['light weapon', 'martial weapon'] })
-        .hashable_pluck('items.slug', 'items.name', 'items.kind', 'items.data', :quantity, :notes)
+        .hashable_pluck('items.slug', 'items.name', 'items.kind', 'items.data', 'items.info', :quantity, :notes)
     end
 
     def equiped_armor_items
@@ -250,7 +250,7 @@ module Dnd2024Character
         .where(ready_to_use: true)
         .joins(:item)
         .where(items: { kind: ['shield', 'light armor', 'medium armor', 'heavy armor'] })
-        .hashable_pluck('items.kind', 'items.data')
+        .hashable_pluck('items.kind', 'items.data', 'items.info')
         .partition { |item| item[:items_kind] != 'shield' }
     end
   end

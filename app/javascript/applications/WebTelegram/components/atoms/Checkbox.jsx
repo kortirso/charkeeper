@@ -14,10 +14,10 @@ export const Checkbox = (props) => {
       </Show>
       <div
         class="toggle"
-        classList={{ 'checked': props.checked }}
+        classList={{ 'checked': props.checked, 'border-dashed': props.outlined, 'bg-blue-400': props.checked && props.filled }}
         onClick={() => props.disabled ? null : props.onToggle()}
       >
-        <Show when={props.checked}>
+        <Show when={props.checked && !props.filled}>
           <Close />
         </Show>
       </div>

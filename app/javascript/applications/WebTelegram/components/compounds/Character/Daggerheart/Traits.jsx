@@ -9,8 +9,10 @@ import { updateCharacterRequest } from '../../../../requests/updateCharacterRequ
 import { modifier } from '../../../../../../helpers';
 
 export const DaggerheartTraits = (props) => {
+  const character = () => props.character;
+
   const [editMode, setEditMode] = createSignal(false);
-  const [traitsData, setTraitsData] = createSignal(props.initialTraits);
+  const [traitsData, setTraitsData] = createSignal(character().traits);
 
   const [appState] = useAppState();
   const [{ renderAlerts }] = useAppAlert();
@@ -24,7 +26,7 @@ export const DaggerheartTraits = (props) => {
 
   const cancelEditing = () => {
     batch(() => {
-      setTraitsData(props.initialTraits)
+      setTraitsData(character().traits)
       setEditMode(false);
     });
   }
@@ -33,7 +35,7 @@ export const DaggerheartTraits = (props) => {
     const payload = {
       traits: traitsData()
     }
-    const result = await updateCharacterRequest(appState.accessToken, 'daggerheart', props.id, { character: payload });
+    const result = await updateCharacterRequest(appState.accessToken, 'daggerheart', character().id, { character: payload });
 
     if (result.errors === undefined) {
       batch(() => {
@@ -51,23 +53,19 @@ export const DaggerheartTraits = (props) => {
           {([slug, ability]) =>
             <div class="w-1/3 mb-4">
               <p class="uppercase text-center mb-4">{ability}</p>
-              <div class="w-32 mr-8">
-                <div class="h-20 relative">
-                  <div class="mx-auto w-20 h-20 rounded-full border border-gray-200 flex items-center justify-center">
-                    <p class="text-4xl">{editMode() ? modifier(traitsData()[slug]) : modifier(props.initialTraits[slug])}</p>
-                  </div>
-                </div>
-                <Show when={editMode()}>
-                  <div class="mt-2 flex justify-center gap-2">
-                    <Button default size="small" onClick={() => decreaseTraitValue(slug)}>
-                      <Minus />
-                    </Button>
-                    <Button default size="small" onClick={() => increaseTraitValue(slug)}>
-                      <PlusSmall />
-                    </Button>
-                  </div>
-                </Show>
+              <div class="mx-auto w-20 h-20 rounded-full border border-gray-200 flex items-center justify-center">
+                <p class="text-4xl">{editMode() ? modifier(traitsData()[slug]) : modifier(character().modified_traits[slug])}</p>
               </div>
+              <Show when={editMode()}>
+                <div class="mt-2 flex justify-center gap-2">
+                  <Button default size="small" onClick={() => decreaseTraitValue(slug)}>
+                    <Minus />
+                  </Button>
+                  <Button default size="small" onClick={() => increaseTraitValue(slug)}>
+                    <PlusSmall />
+                  </Button>
+                </div>
+              </Show>
             </div>
           }
         </For>

@@ -33,7 +33,7 @@ module Dnd5Character
       end
 
       def barbarian_armor_class
-        10 + modifiers['dex'] + modifiers['con'] + defense_gear.dig(:shield, :items_data, 'info', 'ac').to_i
+        10 + modifiers['dex'] + modifiers['con'] + defense_gear.dig(:shield, :items_info, 'ac').to_i
       end
     end
   end
