@@ -2,7 +2,7 @@ import { createSignal, Switch, Match } from 'solid-js';
 import * as i18n from '@solid-primitives/i18n';
 
 import {
-  Pathfinder2Abilities, Dnd5Notes
+  Pathfinder2Abilities, Pathfinder2Combat, Dnd5Notes
 } from '../../../components';
 
 import { useAppLocale } from '../../../context';
@@ -26,6 +26,12 @@ export const Pathfinder2 = (props) => {
           {t('character.abilities')}
         </p>
         <p
+          classList={{ 'active': activeTab() === 'combat' }}
+          onClick={() => setActiveTab('combat')}
+        >
+          {t('character.combat')}
+        </p>
+        <p
           classList={{ 'active': activeTab() === 'notes' }}
           onClick={() => setActiveTab('notes')}
         >
@@ -36,6 +42,12 @@ export const Pathfinder2 = (props) => {
         <Switch>
           <Match when={activeTab() === 'abilities'}>
             <Pathfinder2Abilities
+              character={character()}
+              onReplaceCharacter={props.onReplaceCharacter}
+            />
+          </Match>
+          <Match when={activeTab() === 'combat'}>
+            <Pathfinder2Combat
               character={character()}
               onReplaceCharacter={props.onReplaceCharacter}
             />

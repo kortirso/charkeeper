@@ -44,6 +44,7 @@ module Charkeeper
 
     register('commands.characters_context.pathfinder2.create') { CharactersContext::Pathfinder2::CreateCommand.new }
     register('commands.characters_context.pathfinder2.update') { CharactersContext::Pathfinder2::UpdateCommand.new }
+    register('commands.characters_context.pathfinder2.change_health') { CharactersContext::Pathfinder2::ChangeHealthCommand.new }
 
     register('commands.characters_context.daggerheart.create') { CharactersContext::Daggerheart::CreateCommand.new }
     register('commands.characters_context.daggerheart.update') { CharactersContext::Daggerheart::UpdateCommand.new }

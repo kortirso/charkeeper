@@ -46,7 +46,9 @@ Rails.application.routes.draw do
     end
 
     namespace :pathfinder2 do
-      resources :characters, only: %i[create update]
+      resources :characters, only: %i[create update] do
+        resources :health, only: %i[create], module: 'characters'
+      end
     end
 
     namespace :daggerheart do

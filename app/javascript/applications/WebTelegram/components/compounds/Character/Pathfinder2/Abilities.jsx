@@ -3,7 +3,6 @@ import * as i18n from '@solid-primitives/i18n';
 
 import { Levelbox, Button } from '../../../atoms';
 
-import platformConfig from '../../../../data/pathfinder2.json';
 import { useAppState, useAppLocale, useAppAlert } from '../../../../context';
 import { PlusSmall, Minus, Edit, Plus } from '../../../../assets';
 import { updateCharacterRequest } from '../../../../requests/updateCharacterRequest';
@@ -22,10 +21,7 @@ export const Pathfinder2Abilities = (props) => {
 
   const [appState] = useAppState();
   const [{ renderAlerts }] = useAppAlert();
-  const [locale, dict] = useAppLocale();
-
-  console.log(platformConfig);
-  console.log(locale());
+  const [, dict] = useAppLocale();
 
   const t = i18n.translator(dict);
 

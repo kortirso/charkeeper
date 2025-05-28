@@ -107,7 +107,8 @@
     "longRestDescription": "At the end of a long rest, the character regains all expended hit points, plus half of the maximum Hit Dice and all expended spell slots.",
     "deathSavingThrows": "Death saving throws",
     "deathSuccess": "Success",
-    "deathFailure": "Failure"
+    "deathFailure": "Failure",
+    "dyingConditionValue": "Dying condition value"
   },
   "professionsPage": {
     "languages": "Languages",

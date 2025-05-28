@@ -30,6 +30,7 @@ module CharactersContext
             required(:max).filled(:integer)
             required(:temp).filled(:integer)
           end
+          optional(:dying_condition_value).filled(:integer)
           optional(:languages).value(:array).each(:string)
           optional(:saving_throws).hash do
             required(:fortitude).filled(:integer)
