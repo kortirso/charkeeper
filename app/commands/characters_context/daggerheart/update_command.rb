@@ -6,7 +6,6 @@ module CharactersContext
       # rubocop: disable Metrics/BlockLength
       use_contract do
         config.messages.namespace = :daggerheart_character
-        config.validate_keys = true
 
         params do
           required(:character).filled(type?: ::Daggerheart::Character)

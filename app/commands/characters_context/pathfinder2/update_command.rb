@@ -3,9 +3,9 @@
 module CharactersContext
   module Pathfinder2
     class UpdateCommand < BaseCommand
-      LANGUAGES = %w[
-        common draconic dwarven elven gnomish goblin halfling jotun orcish sylvan undercommon
-        aklo gnoll abyssal infernal celestial necril shadowtongue aquan auran terran ignan druidic
+      SKILLS = %w[
+        acrobatics arcana athletics crafting deception diplomacy intimidation medicine nature
+        occultism performance religion society stealth survival thievery
       ].freeze
 
       # rubocop: disable Metrics/BlockLength
@@ -15,6 +15,8 @@ module CharactersContext
         params do
           required(:character).filled(type?: ::Pathfinder2::Character)
           optional(:classes).hash
+          # TODO: проверить кол-во переданных навыков
+          # TODO: вычесть из ability_boosts
           optional(:abilities).hash do
             required(:str).filled(:integer)
             required(:dex).filled(:integer)
@@ -28,7 +30,25 @@ module CharactersContext
             required(:max).filled(:integer)
             required(:temp).filled(:integer)
           end
-          optional(:languages).value(:array).each(included_in?: LANGUAGES)
+          optional(:languages).value(:array).each(:string)
+          optional(:saving_throws).hash do
+            required(:fortitude).filled(:integer)
+            required(:reflex).filled(:integer)
+            required(:will).filled(:integer)
+          end
+          # TODO: проверить кол-во переданных навыков
+          # TODO: вычесть из skill_boosts
+          optional(:selected_skills).hash
+          optional(:lore_skills).hash do
+            required(:lore1).hash do
+              optional(:name).maybe(:string)
+              optional(:level).filled(:integer)
+            end
+            required(:lore2).hash do
+              optional(:name).maybe(:string)
+              optional(:level).filled(:integer)
+            end
+          end
         end
 
         rule(:abilities) do
@@ -44,6 +64,13 @@ module CharactersContext
 
           key.failure(:invalid_value)
         end
+
+        rule(:selected_skills) do
+          next if value.nil?
+          next if (value.keys - SKILLS).empty?
+
+          key.failure(:invalid_value)
+        end
       end
       # rubocop: enable Metrics/BlockLength
 
@@ -51,7 +78,7 @@ module CharactersContext
 
       def do_prepare(input)
         input[:level] = input[:classes].values.sum(&:to_i) if input[:classes]
-        %i[classes abilities health].each do |key|
+        %i[classes abilities health saving_throws selected_skills].each do |key|
           input[key]&.transform_values!(&:to_i)
         end
       end

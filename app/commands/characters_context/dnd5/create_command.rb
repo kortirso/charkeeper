@@ -4,10 +4,6 @@ module CharactersContext
   module Dnd5
     class CreateCommand < BaseCommand
       include Deps[
-        base_builder: 'builders.dnd5_character.base',
-        race_builder: 'builders.dnd5_character.race',
-        subrace_builder: 'builders.dnd5_character.subrace',
-        class_builder: 'builders.dnd5_character.class',
         attach_avatar: 'commands.image_processing.attach_avatar'
       ]
 
@@ -57,10 +53,10 @@ module CharactersContext
       end
 
       def build_fresh_character(data)
-        base_builder.call(result: data)
-          .then { |result| race_builder.call(result: result) }
-          .then { |result| subrace_builder.call(result: result) }
-          .then { |result| class_builder.call(result: result) }
+        Dnd5Character::BaseBuilder.new.call(result: data)
+          .then { |result| Dnd5Character::RaceBuilder.new.call(result: result) }
+          .then { |result| Dnd5Character::SubraceBuilder.new.call(result: result) }
+          .then { |result| Dnd5Character::ClassBuilder.new.call(result: result) }
       end
 
       def learn_spells_list(character, input)

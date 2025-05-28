@@ -9,7 +9,9 @@ module Dnd2024Character
     private
 
     def species_builder(species)
-      Charkeeper::Container.resolve("builders.dnd2024_character.species.#{species}")
+      "Dnd2024Character::Species::#{species.camelize}Builder".constantize.new
+    rescue NameError => _e
+      DummyBuilder.new
     end
   end
 end

@@ -12,10 +12,9 @@ module Pathfinder2Character
     end
 
     def class_decorator(class_name)
-      case class_name
-      when Pathfinder2::Character::FIGHTER then Pathfinder2Character::Classes::FighterDecorator
-      else ApplicationDecorator
-      end
+      "Pathfinder2Character::Classes::#{class_name.camelize}Decorator".constantize
+    rescue NameError => _e
+      ApplicationDecorator
     end
   end
 end

@@ -4,9 +4,6 @@ module CharactersContext
   module Daggerheart
     class CreateCommand < BaseCommand
       include Deps[
-        base_builder: 'builders.daggerheart_character.base',
-        heritage_builder: 'builders.daggerheart_character.heritage',
-        class_builder: 'builders.daggerheart_character.class',
         attach_avatar: 'commands.image_processing.attach_avatar'
       ]
 
@@ -43,9 +40,9 @@ module CharactersContext
       end
 
       def decorate_fresh_character(data)
-        base_builder.call(result: data)
-          .then { |result| heritage_builder.call(result: result) }
-          .then { |result| class_builder.call(result: result) }
+        DaggerheartCharacter::BaseBuilder.new.call(result: data)
+          .then { |result| DaggerheartCharacter::HeritageBuilder.new.call(result: result) }
+          .then { |result| DaggerheartCharacter::ClassBuilder.new.call(result: result) }
       end
     end
   end

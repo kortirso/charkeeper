@@ -40,7 +40,8 @@
     "pathfinder2": {
       "race": "Раса",
       "subrace": "Подраса",
-      "mainClass": "Основной класс"
+      "mainClass": "Основной класс",
+      "background": "Происхождение"
     },
     "daggerheart": {
       "heritage": "Раса",
@@ -546,21 +547,6 @@
     }
   },
   "pathfinder2": {
-    "races": {
-      "dwarf": "Дварф"
-    },
-    "subraces": {
-      "dwarf": {
-        "ancient_blooded_dwarf": "Дварф древней крови",
-        "death_warden_dwarf": "Дварф страж гробниц",
-        "forge_dwarf": "Дварф кузницы",
-        "rock_dwarf": "Каменный дварф",
-        "strong_blooded_dwarf": "Дварф сильной крови"
-      }
-    },
-    "classes": {
-      "fighter": "Воин"
-    },
     "skills": {
       "acrobatics": "Акробатика",
       "arcana": "Мистицизм",
@@ -578,6 +564,11 @@
       "stealth": "Скрытность",
       "survival": "Выживание",
       "thievery": "Воровство"
+    },
+    "savingThrows": {
+      "fortitude": "Стойкость",
+      "reflex": "Рефлексы",
+      "will": "Воля"
     }
   },
   "daggerheart": {

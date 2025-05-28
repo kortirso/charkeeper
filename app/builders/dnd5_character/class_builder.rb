@@ -11,7 +11,9 @@ module Dnd5Character
     private
 
     def class_builder(main_class)
-      Charkeeper::Container.resolve("builders.dnd5_character.classes.#{main_class}")
+      "Dnd5Character::Classes::#{main_class.camelize}Builder".constantize.new
+    rescue NameError => _e
+      DummyBuilder.new
     end
   end
 end

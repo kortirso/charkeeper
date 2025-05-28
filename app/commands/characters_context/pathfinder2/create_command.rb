@@ -4,25 +4,26 @@ module CharactersContext
   module Pathfinder2
     class CreateCommand < BaseCommand
       include Deps[
-        base_builder: 'builders.pathfinder2_character.base',
-        race_builder: 'builders.pathfinder2_character.race',
-        subrace_builder: 'builders.pathfinder2_character.subrace',
-        class_builder: 'builders.pathfinder2_character.class',
         attach_avatar: 'commands.image_processing.attach_avatar'
       ]
 
+      # rubocop: disable Metrics/BlockLength
       use_contract do
         config.messages.namespace = :pathfinder2_character
 
-        Races = Dry::Types['strict.string'].enum(*::Pathfinder2::Character::RACES)
-        Classes = Dry::Types['strict.string'].enum(*::Pathfinder2::Character::CLASSES)
+        Races = Dry::Types['strict.string'].enum(*::Pathfinder2::Character.races.keys)
+        Backgrounds = Dry::Types['strict.string'].enum(*::Pathfinder2::Character.backgrounds.keys)
+        Classes = Dry::Types['strict.string'].enum(*::Pathfinder2::Character.classes_info.keys)
 
         params do
           required(:user).filled(type?: User)
           required(:name).filled(:string)
           required(:race).filled(Races)
+          required(:background).filled(Backgrounds)
           required(:main_class).filled(Classes)
           optional(:subrace).filled(:string)
+          optional(:subclass).filled(:string)
+          optional(:main_ability).filled(:string)
           optional(:avatar_params).hash do
             optional(:url).filled(:string)
           end
@@ -31,18 +32,37 @@ module CharactersContext
         rule(:race, :subrace) do
           next if values[:subrace].nil?
 
-          subraces = ::Pathfinder2::Character::SUBRACES[values[:race]]
+          subraces = ::Pathfinder2::Character.subraces(values[:race]).keys
           next if subraces&.include?(values[:subrace])
 
           key(:subrace).failure(:invalid)
         end
+
+        rule(:main_class, :subclass) do
+          next if values[:subclass].nil?
+
+          subclasses = ::Pathfinder2::Character.subclasses_info(values[:main_class]).keys
+          next if subclasses&.include?(values[:subclass])
+
+          key(:subclass).failure(:invalid)
+        end
+
+        rule(:main_class, :main_ability) do
+          next if values[:main_ability].nil?
+
+          abilities = ::Pathfinder2::Character.main_ability_options(values[:main_class]).keys
+          next if abilities&.include?(values[:main_ability])
+
+          key(:main_ability).failure(:invalid)
+        end
       end
+      # rubocop: enable Metrics/BlockLength
 
       private
 
       def do_prepare(input)
         input[:data] =
-          build_fresh_character(input.slice(:race, :subrace, :main_class).symbolize_keys)
+          build_fresh_character(input.slice(:race, :subrace, :background, :main_class, :subclass, :main_ability).symbolize_keys)
       end
 
       def do_persist(input)
@@ -54,10 +74,11 @@ module CharactersContext
       end
 
       def build_fresh_character(data)
-        base_builder.call(result: data)
-          .then { |result| race_builder.call(result: result) }
-          .then { |result| subrace_builder.call(result: result) }
-          .then { |result| class_builder.call(result: result) }
+        Pathfinder2Character::BaseBuilder.new.call(result: data)
+          .then { |result| Pathfinder2Character::RaceBuilder.new.call(result: result) }
+          .then { |result| Pathfinder2Character::BackgroundBuilder.new.call(result: result) }
+          .then { |result| Pathfinder2Character::ClassBuilder.new.call(result: result) }
+          .then { |result| Pathfinder2Character::SubclassBuilder.new.call(result: result) }
       end
     end
   end

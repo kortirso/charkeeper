@@ -9,7 +9,9 @@ module Dnd5Character
     private
 
     def race_builder(race)
-      Charkeeper::Container.resolve("builders.dnd5_character.races.#{race}")
+      "Dnd5Character::Classes::#{race.camelize}Builder".constantize.new
+    rescue NameError => _e
+      DummyBuilder.new
     end
   end
 end

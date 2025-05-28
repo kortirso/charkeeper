@@ -11,7 +11,9 @@ module Dnd2024Character
     private
 
     def class_builder(main_class)
-      Charkeeper::Container.resolve("builders.dnd2024_character.classes.#{main_class}")
+      "Dnd2024Character::Classes::#{main_class.camelize}Builder".constantize.new
+    rescue NameError => _e
+      DummyBuilder.new
     end
   end
 end

@@ -8,6 +8,8 @@ import {
 import { useAppLocale } from '../../../context';
 
 export const Pathfinder2 = (props) => {
+  const character = () => props.character;
+
   const [activeTab, setActiveTab] = createSignal('abilities');
 
   const [, dict] = useAppLocale();
@@ -34,10 +36,7 @@ export const Pathfinder2 = (props) => {
         <Switch>
           <Match when={activeTab() === 'abilities'}>
             <Pathfinder2Abilities
-              id={props.character.id}
-              initialAbilities={props.character.abilities}
-              initialSkills={props.character.skills}
-              modifiers={props.character.modifiers}
+              character={character()}
               onReplaceCharacter={props.onReplaceCharacter}
             />
           </Match>

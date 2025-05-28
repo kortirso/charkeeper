@@ -2,13 +2,13 @@
 
 module Pathfinder2Character
   module Races
-    class DwarfBuilder
-      LANGUAGES = %w[common dwarven].freeze
+    class HalflingBuilder
+      LANGUAGES = %w[common halfling].freeze
 
       def call(result:)
-        result[:health] = 10
+        result[:health] = 6
         result[:languages] = result[:languages].concat(LANGUAGES).uniq
-        result[:abilities] = result[:abilities].merge({ cha: -2, con: 2, wis: 2 }) { |_, oldval, newval| oldval + newval }
+        result[:abilities] = result[:abilities].merge({ str: -2, dex: 2, wis: 2 }) { |_, oldval, newval| oldval + newval }
         result[:ability_boosts] = result[:ability_boosts].merge({ free: 1 }) { |_, oldval, newval| oldval + newval }
 
         result

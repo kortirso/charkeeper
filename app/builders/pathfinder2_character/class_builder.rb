@@ -9,7 +9,9 @@ module Pathfinder2Character
     private
 
     def class_builder(main_class)
-      Charkeeper::Container.resolve("builders.pathfinder2_character.classes.#{main_class}")
+      "Pathfinder2Character::Classes::#{main_class.camelize}Builder".constantize.new
+    rescue NameError => _e
+      DummyBuilder.new
     end
   end
 end

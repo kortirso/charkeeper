@@ -3,10 +3,10 @@
 module Pathfinder2
   class CharacterSerializer < ApplicationSerializer
     attributes :provider, :id, :name, :level, :race, :subrace, :main_class, :classes, :languages, :health, :abilities,
-               :modifiers, :skills, :created_at
+               :skills, :created_at, :subclasses, :background, :saving_throws_value, :saving_throws
 
     delegate :id, :name, :level, :race, :subrace, :main_class, :classes, :languages, :health, :abilities,
-             :modifiers, :skills, to: :decorator
+             :skills, :subclasses, :background, :saving_throws_value, :saving_throws, to: :decorator
     delegate :created_at, to: :object
 
     def provider

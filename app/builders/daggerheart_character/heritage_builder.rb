@@ -9,7 +9,9 @@ module DaggerheartCharacter
     private
 
     def heritage_builder(heritage)
-      Charkeeper::Container.resolve("builders.daggerheart_character.heritages.#{heritage}")
+      "DaggerheartCharacter::Heritages::#{heritage.camelize}Builder".constantize.new
+    rescue NameError => _e
+      DummyBuilder.new
     end
   end
 end

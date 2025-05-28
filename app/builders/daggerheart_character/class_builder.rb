@@ -9,7 +9,9 @@ module DaggerheartCharacter
     private
 
     def class_builder(main_class)
-      Charkeeper::Container.resolve("builders.daggerheart_character.classes.#{main_class}")
+      "DaggerheartCharacter::Classes::#{main_class.camelize}Builder".constantize.new
+    rescue NameError => _e
+      DummyBuilder.new
     end
   end
 end

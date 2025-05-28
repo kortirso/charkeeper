@@ -11,7 +11,11 @@ class BaseCommand
 
   def call(input={})
     lockable(input) do
-      errors = validate_contract(input).presence || validate_content(input)
+      contract_result = validate_contract(input)
+      return { errors: contract_result[:errors] } if contract_result[:errors].present?
+
+      input = contract_result[:result]
+      errors = validate_content(input)
       return { errors: errors } if errors.present?
 
       do_prepare(input)
@@ -35,7 +39,7 @@ class BaseCommand
   def lock_key(input); end
 
   def validate_contract(input)
-    return if contract.nil?
+    return { result: input, errors: {} } if contract.nil?
 
     validate(input)
   end
@@ -52,14 +56,17 @@ class BaseCommand
   def do_persist(input) = raise NotImplementedError
 
   def validate(input)
-    validate_items(contract.call(input).errors(locale: I18n.locale).to_h.values.flatten)
+    result = contract.call(input)
+    { result: result.to_h, errors: flatten_hash_from(contract.call(input).errors(locale: I18n.locale).to_h) }
   end
 
-  def validate_items(items)
-    items.flat_map do |item|
-      next item.capitalize if item.is_a?(String)
+  def flatten_hash_from(hash)
+    hash.each_with_object({}) do |(key, value), acc|
+      next acc[key] = value unless value.is_a?(Hash)
 
-      validate_items(item.values.flatten)
+      flatten_hash_from(value).each do |k, v|
+        acc[:"#{key}.#{k}"] = v
+      end
     end
   end
 end

@@ -26,7 +26,6 @@ describe WebhooksContext::ReceiveTelegramChatMemberWebhookCommand do
   context 'with valid message' do
     let(:chat_member) do
       {
-        from: { first_name: 'First', last_name: 'Last', username: 'User', language_code: 'en' },
         chat: { id: 1 },
         new_chat_member: { status: 'kicked' }
       }

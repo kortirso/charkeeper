@@ -4,9 +4,6 @@ module CharactersContext
   module Dnd2024
     class CreateCommand < BaseCommand
       include Deps[
-        base_builder: 'builders.dnd2024_character.base',
-        species_builder: 'builders.dnd2024_character.species',
-        class_builder: 'builders.dnd2024_character.class',
         attach_avatar: 'commands.image_processing.attach_avatar'
       ]
 
@@ -68,9 +65,9 @@ module CharactersContext
       end
 
       def build_fresh_character(data)
-        base_builder.call(result: data)
-          .then { |result| species_builder.call(result: result) }
-          .then { |result| class_builder.call(result: result) }
+        Dnd2024Character::BaseBuilder.new.call(result: data)
+          .then { |result| Dnd2024Character::SpeciesBuilder.new.call(result: result) }
+          .then { |result| Dnd2024Character::ClassBuilder.new.call(result: result) }
       end
 
       def learn_spells_list(character, input)

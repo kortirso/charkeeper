@@ -3,25 +3,33 @@ import * as i18n from '@solid-primitives/i18n';
 
 import { Levelbox, Button } from '../../../atoms';
 
+import platformConfig from '../../../../data/pathfinder2.json';
 import { useAppState, useAppLocale, useAppAlert } from '../../../../context';
 import { PlusSmall, Minus, Edit, Plus } from '../../../../assets';
 import { updateCharacterRequest } from '../../../../requests/updateCharacterRequest';
 
 import { modifier } from '../../../../../../helpers';
 
+const SAVING_THROWS = { con: 'fortitude', dex: 'reflex', wis: 'will' }
+
 export const Pathfinder2Abilities = (props) => {
+  const character = () => props.character;
+
   const [editMode, setEditMode] = createSignal(false);
-  const [abilitiesData, setAbilitiesData] = createSignal(props.initialAbilities);
-  const [skillsData, setSkillsData] = createSignal(props.initialSkills);
+  const [abilitiesData, setAbilitiesData] = createSignal(character().abilities);
+  const [skillsData, setSkillsData] = createSignal(character().skills);
+  const [savingThrowsData, setSavingThrowsData] = createSignal(character().saving_throws);
 
   const [appState] = useAppState();
   const [{ renderAlerts }] = useAppAlert();
-  const [, dict] = useAppLocale();
+  const [locale, dict] = useAppLocale();
+
+  console.log(platformConfig);
+  console.log(locale());
 
   const t = i18n.translator(dict);
 
   const decreaseAbilityValue = (slug) => {
-    if (abilitiesData()[slug] === 1) return;
     setAbilitiesData({ ...abilitiesData(), [slug]: abilitiesData()[slug] - 1 });
   }
 
@@ -37,17 +45,26 @@ export const Pathfinder2Abilities = (props) => {
     setSkillsData(result);
   }
 
+  const updateSavingThrow = (slug) => {
+    const newValue = savingThrowsData()[slug] === 4 ? 0 : (savingThrowsData()[slug] + 1);
+    setSavingThrowsData({ ...savingThrowsData(), [slug]: newValue });
+  }
+
   const cancelEditing = () => {
     batch(() => {
-      setAbilitiesData(props.initialAbilities);
-      setSkillsData(props.initialSkills);
+      setAbilitiesData(character().abilities);
+      setSkillsData(character().skills);
       setEditMode(false);
     });
   }
 
   const updateCharacter = async () => {
+    const transformedAbilities = Object.fromEntries(
+      Object.entries(abilitiesData()).map(([key, value]) => [key, (value * 2) + 10])
+    );
     const payload = {
-      abilities: abilitiesData(),
+      abilities: transformedAbilities,
+      saving_throws: savingThrowsData(),
       selected_skills: skillsData()
         .filter((item) => item.slug !== 'lore1' && item.slug !== 'lore2' && item.level > 0)
         .reduce((acc, item) => {
@@ -63,13 +80,14 @@ export const Pathfinder2Abilities = (props) => {
           return acc
         }, {}),
     }
-    const result = await updateCharacterRequest(appState.accessToken, 'pathfinder2', props.id, { character: payload });
+    const result = await updateCharacterRequest(appState.accessToken, 'pathfinder2', character().id, { character: payload });
 
     if (result.errors === undefined) {
       batch(() => {
         props.onReplaceCharacter(result.character);
         setAbilitiesData(result.character.abilities);
         setSkillsData(result.character.skills);
+        setSavingThrowsData(result.character.saving_throws);
         setEditMode(false);
       });
     } else renderAlerts(result.errors);
@@ -85,10 +103,7 @@ export const Pathfinder2Abilities = (props) => {
               <div class="w-32 mr-8">
                 <div class="h-20 relative">
                   <div class="mx-auto w-20 h-20 rounded-full border border-gray-200 flex items-center justify-center">
-                    <p class="text-4xl">{editMode() ? abilitiesData()[slug] : props.initialAbilities[slug]}</p>
-                  </div>
-                  <div class="absolute right-0 bottom-0 w-10 h-10 rounded-full border border-gray-200 flex items-center justify-center bg-white">
-                    <p class="text-2xl">{editMode() ? '-' : modifier(props.modifiers[slug])}</p>
+                    <p class="text-4xl">{editMode() ? abilitiesData()[slug] : character().abilities[slug]}</p>
                   </div>
                 </div>
                 <Show when={editMode()}>
@@ -103,7 +118,25 @@ export const Pathfinder2Abilities = (props) => {
                 </Show>
               </div>
               <div class="flex-1">
-                <For each={(editMode() ? skillsData() : props.initialSkills).filter((item) => item.ability === slug)}>
+                <For each={Object.entries(SAVING_THROWS)}>
+                  {([savingAbility, savingName]) =>
+                    <Show when={savingAbility === slug}>
+                      <div class="flex justify-between items-center mb-2">
+                        <Show when={editMode()} fallback={<p />}>
+                          <Levelbox
+                            value={savingThrowsData()[savingName]}
+                            onToggle={() => updateSavingThrow(savingName)}
+                          />
+                        </Show>
+                        <p class="flex items-center">
+                          <span class="mr-2">{t(`pathfinder2.savingThrows.${savingName}`)}</span>
+                          <span>{modifier(character().saving_throws_value[savingName])}</span>
+                        </p>
+                      </div>
+                    </Show>
+                  }
+                </For>
+                <For each={(editMode() ? skillsData() : character().skills).filter((item) => item.ability === slug)}>
                   {(skill) =>
                     <div class="flex justify-between items-center mb-1">
                       <Show when={editMode()} fallback={<p />}>

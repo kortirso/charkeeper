@@ -18,7 +18,7 @@ describe WebTelegram::UsersController do
           patch :update, params: { user: { locale: '' }, charkeeper_access_token: access_token }
 
           expect(response).to have_http_status :unprocessable_entity
-          expect(response.parsed_body['errors']).to eq(['Необходимо указать локаль'])
+          expect(response.parsed_body['errors']['locale']).to eq(['Необходимо указать локаль'])
         end
       end
 
@@ -27,7 +27,7 @@ describe WebTelegram::UsersController do
           patch :update, params: { user: { locale: 'it' }, charkeeper_access_token: access_token }
 
           expect(response).to have_http_status :unprocessable_entity
-          expect(response.parsed_body['errors']).to eq(['Недопустимое значение локали'])
+          expect(response.parsed_body['errors']['locale']).to eq(['Недопустимое значение локали'])
         end
       end
     end

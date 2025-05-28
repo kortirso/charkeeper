@@ -18,7 +18,10 @@ export function AppAlertProvider(props) {
         clearAlerts();
       },
       renderAlerts(messages) {
-        setAlerts(messages.map((item) => { return { type: 'alert', message: item } }));
+        setAlerts(
+          Object.entries(messages)
+            .flatMap(([, values]) => { return values.map((value) => { return { type: 'alert', message: value } }) })
+        );
         clearAlerts();
       }
     }

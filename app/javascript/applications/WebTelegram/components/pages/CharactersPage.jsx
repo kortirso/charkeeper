@@ -7,10 +7,13 @@ import { createModal, PageHeader } from '../molecules';
 import { Select, Input, IconButton, Button } from '../atoms';
 
 import { Plus, Profile } from '../../assets';
+import pathfinder2Config from '../../data/pathfinder2.json';
 import { useAppState, useAppLocale, useAppAlert } from '../../context';
 import { fetchCharactersRequest } from '../../requests/fetchCharactersRequest';
 import { createCharacterRequest } from '../../requests/createCharacterRequest';
 import { removeCharacterRequest } from '../../requests/removeCharacterRequest';
+
+import { translate } from '../../../../helpers';
 
 const CHARACTER_SIZES = {
   'human': ['medium', 'small'],
@@ -55,6 +58,7 @@ export const CharactersPage = (props) => {
     race: undefined,
     subrace: undefined,
     main_class: undefined,
+    background: undefined,
     // avatar_params: {
     //   url: 'https://m.media-amazon.com/images/M/MV5BYTcxNjhkZjgtNDkwOC00MzQyLThlZDUtNmNiMThkYzNkOGJlXkEyXkFqcGc@._V1_FMjpg_UX2160_.jpg'
     // }
@@ -71,7 +75,7 @@ export const CharactersPage = (props) => {
   const { Modal, openModal, closeModal } = createModal();
   const [appState, { navigate }] = useAppState();
   const [{ renderAlerts }] = useAppAlert();
-  const [, dict] = useAppLocale();
+  const [locale, dict] = useAppLocale();
 
   const t = i18n.translator(dict);
 
@@ -112,7 +116,7 @@ export const CharactersPage = (props) => {
         setCharacters(characters().concat(result.character));
         setCharacterDnd5Form({ name: '', race: undefined, subrace: undefined, main_class: undefined, alignment: 'neutral' });
         setCharacterDnd2024Form({ name: '', species: undefined, size: undefined, main_class: undefined, alignment: 'neutral' });
-        setCharacterPathfinder2Form({ name: '', race: undefined, subrace: undefined, main_class: undefined });
+        setCharacterPathfinder2Form({ name: '', race: undefined, subrace: undefined, main_class: undefined, background: undefined });
         setCharacterDaggerheartForm({ name: '', heritage: undefined, main_class: undefined });
         setCurrentTab('characters');
       });
@@ -194,8 +198,8 @@ export const CharactersPage = (props) => {
                         avatar={character.avatar}
                         name={character.name}
                         provider='Pathfinder 2'
-                        firstText={`${t('charactersPage.level')} ${character.level} | ${character.subrace ? t(`pathfinder2.subraces.${character.race}.${character.subrace}`) : t(`pathfinder2.races.${character.race}`)}`}
-                        secondText={Object.keys(character.classes).map((item) => t(`pathfinder2.classes.${item}`)).join(' * ')}
+                        firstText={`${t('charactersPage.level')} ${character.level} | ${character.subrace ? pathfinder2Config.races[character.race].subraces[character.subrace].name[locale()] : pathfinder2Config.races[character.race].name[locale]}`}
+                        secondText={Object.keys(character.classes).map((item) => pathfinder2Config.classes[item].name[locale]).join(' * ')}
                         onClick={() => navigate('characters', { id: character.id })}
                         onDeleteCharacter={(e) => deleteCharacter(e, character.id)}
                       />
@@ -242,7 +246,7 @@ export const CharactersPage = (props) => {
                       labelText={t('newCharacterPage.dnd5.race')}
                       items={dict().dnd5.races}
                       selectedValue={characterDnd5Form.race}
-                      onSelect={(value) => setCharacterDnd5Form({ ...characterDnd5Form, race: value })}
+                      onSelect={(value) => setCharacterDnd5Form({ ...characterDnd5Form, race: value, subrace: undefined })}
                     />
                     <Show when={dict().dnd5.subraces[characterDnd5Form.race]}>
                       <Select
@@ -279,7 +283,7 @@ export const CharactersPage = (props) => {
                       labelText={t('newCharacterPage.dnd2024.species')}
                       items={dict().dnd2024.species}
                       selectedValue={characterDnd2024Form.species}
-                      onSelect={(value) => setCharacterDnd2024Form({ ...characterDnd2024Form, species: value, size: CHARACTER_SIZES[value][0] })}
+                      onSelect={(value) => setCharacterDnd2024Form({ ...characterDnd2024Form, species: value, size: CHARACTER_SIZES[value][0], legacy: undefined })}
                     />
                     <Show when={dict().dnd2024.legacies[characterDnd2024Form.species]}>
                       <Select
@@ -321,22 +325,29 @@ export const CharactersPage = (props) => {
                     <Select
                       containerClassList="mb-2"
                       labelText={t('newCharacterPage.pathfinder2.race')}
-                      items={dict().pathfinder2.races}
+                      items={translate(pathfinder2Config.races, locale())}
                       selectedValue={characterPathfinder2Form.race}
-                      onSelect={(value) => setCharacterPathfinder2Form({ ...characterPathfinder2Form, race: value })}
+                      onSelect={(value) => setCharacterPathfinder2Form({ ...characterPathfinder2Form, race: value, subrace: undefined })}
                     />
-                    <Show when={dict().pathfinder2.subraces[characterPathfinder2Form.race]}>
+                    <Show when={pathfinder2Config.races[characterPathfinder2Form.race]?.subraces}>
                       <Select
                         containerClassList="mb-2"
                         labelText={t('newCharacterPage.pathfinder2.subrace')}
-                        items={dict().pathfinder2.subraces[characterPathfinder2Form.race]}
+                        items={translate(pathfinder2Config.races[characterPathfinder2Form.race].subraces, locale())}
                         selectedValue={characterPathfinder2Form.subrace}
                         onSelect={(value) => setCharacterPathfinder2Form({ ...characterPathfinder2Form, subrace: value })}
                       />
                     </Show>
                     <Select
+                      containerClassList="mb-2"
+                      labelText={t('newCharacterPage.pathfinder2.background')}
+                      items={translate(pathfinder2Config.backgrounds, locale())}
+                      selectedValue={characterPathfinder2Form.background}
+                      onSelect={(value) => setCharacterPathfinder2Form({ ...characterPathfinder2Form, background: value })}
+                    />
+                    <Select
                       labelText={t('newCharacterPage.pathfinder2.mainClass')}
-                      items={dict().pathfinder2.classes}
+                      items={translate(pathfinder2Config.classes, locale())}
                       selectedValue={characterPathfinder2Form.main_class}
                       onSelect={(value) => setCharacterPathfinder2Form({ ...characterPathfinder2Form, main_class: value })}
                     />
@@ -365,18 +376,10 @@ export const CharactersPage = (props) => {
                 </Switch>
               </div>
               <div class="flex mt-4">
-                <Button
-                  outlined
-                  size='default'
-                  classList='w-full mr-2'
-                  onClick={() => setCurrentTab('characters')}>
+                <Button outlined size='default' classList='w-full mr-2' onClick={() => setCurrentTab('characters')}>
                   {t('back')}
                 </Button>
-                <Button
-                  default
-                  size='default'
-                  classList='w-full ml-2'
-                  onClick={saveCharacter}>
+                <Button default size='default' classList='w-full ml-2' onClick={saveCharacter}>
                   {t('save')}
                 </Button>
               </div>

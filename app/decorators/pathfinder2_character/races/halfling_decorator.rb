@@ -2,9 +2,9 @@
 
 module Pathfinder2Character
   module Races
-    class DwarfDecorator < ApplicationDecorator
+    class HalflingDecorator < ApplicationDecorator
       def speed
-        20
+        25
       end
     end
   end

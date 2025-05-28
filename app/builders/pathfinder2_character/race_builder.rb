@@ -9,7 +9,9 @@ module Pathfinder2Character
     private
 
     def race_builder(race)
-      Charkeeper::Container.resolve("builders.pathfinder2_character.races.#{race}")
+      "Pathfinder2Character::Races::#{race.camelize}Builder".constantize.new
+    rescue NameError => _e
+      DummyBuilder.new
     end
   end
 end

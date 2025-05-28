@@ -5,10 +5,9 @@ module Pathfinder2Character
     private
 
     def wrap_classes(obj)
-      case obj.race
-      when Pathfinder2::Character::DWARF then Pathfinder2Character::Races::DwarfDecorator.new(obj)
-      else ApplicationDecorator.new(obj)
-      end
+      "Pathfinder2Character::Races::#{obj.race.camelize}Decorator".constantize.new(obj)
+    rescue NameError => _e
+      ApplicationDecorator.new(obj)
     end
   end
 end

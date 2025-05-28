@@ -1,0 +1,62 @@
+{
+  "races": {
+    "dwarf": {
+      "name": { "en": "Dwarf", "ru": "Дварф" },
+      "subraces": {
+        "ancient_blooded_dwarf": {
+          "name": { "en": "Ancient-Blooded Dwarf", "ru": "Дварф древней крови" }
+        },
+        "death_warden_dwarf": {
+          "name": { "en": "Death Warden Dwarf", "ru": "Дварф страж гробниц" }
+        },
+        "forge_dwarf": {
+          "name": { "en": "Forge Dwarf", "ru": "Дварф кузницы" }
+        },
+        "rock_dwarf": {
+          "name": { "en": "Rock Dwarf", "ru": "Каменный дварф" }
+        },
+        "strong_blooded_dwarf": {
+          "name": { "en": "Strong-Blooded Dwarf", "ru": "Дварф сильной крови" }
+        }
+      }
+    },
+    "halfling": {
+      "name": { "en": "Halfling", "ru": "Полурослик" },
+      "subraces": {
+        "gutsy_halfling": {
+          "name": { "en": "Gutsy Halfling", "ru": "Отважный полурослик" }
+        },
+        "hillock_halfling": {
+          "name": { "en": "Hillock Halfling", "ru": "Холмовой полурослик" }
+        },
+        "jinxed_halfling": {
+          "name": { "en": "Jinxed Halfling", "ru": "Треклятый полурослик" }
+        },
+        "nomadic_halfling": {
+          "name": { "en": "Nomadic Halfling", "ru": "Странствующий полурослик" }
+        },
+        "twilight_halfling": {
+          "name": { "en": "Twilight Halfling", "ru": "Сумеречный полурослик" }
+        },
+        "wildwood_halfling": {
+          "name": { "en": "Wildwood Halfling", "ru": "Чащобный полурослик" }
+        }
+      }
+    }
+  },
+  "classes": {
+    "fighter": {
+      "name": { "en": "Fighter", "ru": "Воин" },
+      "main_ability_options": ["str", "dex"]
+    },
+    "witch": {
+      "name": { "en": "Witch", "ru": "Ведьма" },
+      "main_ability_options": ["int"]
+    }
+  },
+  "backgrounds": {
+    "herbalist": {
+      "name": { "en": "Herbalist", "ru": "Травник" }
+    }
+  }
+}
