@@ -199,7 +199,7 @@ export const CharactersPage = (props) => {
                         name={character.name}
                         provider='Pathfinder 2'
                         firstText={`${t('charactersPage.level')} ${character.level} | ${character.subrace ? pathfinder2Config.races[character.race].subraces[character.subrace].name[locale()] : pathfinder2Config.races[character.race].name[locale]}`}
-                        secondText={Object.keys(character.classes).map((item) => pathfinder2Config.classes[item].name[locale]).join(' * ')}
+                        secondText={Object.keys(character.classes).map((item) => pathfinder2Config.classes[item].name[locale()]).join(' * ')}
                         onClick={() => navigate('characters', { id: character.id })}
                         onDeleteCharacter={(e) => deleteCharacter(e, character.id)}
                       />

@@ -21,7 +21,7 @@
     "deleteCharacterTitle": "Deleting character"
   },
   "newCharacterPage": {
-    "title": "Create new character",
+    "title": "Create character",
     "name": "Name",
     "platform": "Platform",
     "dnd5": {
@@ -578,7 +578,7 @@
       "agi": "Agility",
       "fin": "Finesse",
       "ins": "Instinct",
-      "per": "Presence",
+      "pre": "Presence",
       "know": "Knowledge"
     },
     "heritages": {
