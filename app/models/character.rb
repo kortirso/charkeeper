@@ -2,6 +2,7 @@
 
 class Character < ApplicationRecord
   has_one_attached :avatar
+  has_one_attached :temp_avatar
 
   belongs_to :user
 

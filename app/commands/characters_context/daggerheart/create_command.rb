@@ -4,7 +4,8 @@ module CharactersContext
   module Daggerheart
     class CreateCommand < BaseCommand
       include Deps[
-        attach_avatar: 'commands.image_processing.attach_avatar'
+        attach_avatar_by_url: 'commands.image_processing.attach_avatar_by_url',
+        attach_avatar_by_file: 'commands.image_processing.attach_avatar_by_file'
       ]
 
       use_contract do
@@ -18,10 +19,14 @@ module CharactersContext
           required(:name).filled(:string)
           required(:heritage).filled(Heritages)
           required(:main_class).filled(Classes)
-          optional(:avatar_params).hash do
-            optional(:url).filled(:string)
+          optional(:avatar_file).hash do
+            required(:file_content).filled(:string)
+            required(:file_name).filled(:string)
           end
+          optional(:avatar_url).filled(:string)
         end
+
+        rule(:avatar_file, :avatar_url).validate(:check_only_one_present)
       end
 
       private
@@ -34,7 +39,8 @@ module CharactersContext
       def do_persist(input)
         character = ::Daggerheart::Character.create!(input.slice(:user, :name, :data))
 
-        attach_avatar.call({ character: character, params: input[:avatar_params] }) if input[:avatar_params]
+        attach_avatar_by_file.call({ character: character, file: input[:avatar_file] }) if input[:avatar_file]
+        attach_avatar_by_url.call({ character: character, url: input[:avatar_url] }) if input[:avatar_url]
 
         { result: character }
       end

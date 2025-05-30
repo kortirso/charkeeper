@@ -49,7 +49,8 @@ module Charkeeper
     register('commands.characters_context.daggerheart.create') { CharactersContext::Daggerheart::CreateCommand.new }
     register('commands.characters_context.daggerheart.update') { CharactersContext::Daggerheart::UpdateCommand.new }
 
-    register('commands.image_processing.attach_avatar') { ImageProcessingContext::AttachAvatarCommand.new }
+    register('commands.image_processing.attach_avatar_by_file') { ImageProcessingContext::AttachAvatarByFileCommand.new }
+    register('commands.image_processing.attach_avatar_by_url') { ImageProcessingContext::AttachAvatarByUrlCommand.new }
 
     register('commands.webhooks_context.receive_telegram_message_webhook') {
       WebhooksContext::ReceiveTelegramMessageWebhookCommand.new

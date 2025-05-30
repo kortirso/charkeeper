@@ -2,6 +2,7 @@
   "loading": "Loading screen",
   "back": "Back",
   "save": "Save",
+  "saving": "Saving",
   "deleteCharacterConfirm": "Are you sure need to remove this character?",
   "cancel": "Cancel",
   "delete": "Delete",
@@ -21,6 +22,9 @@
     "deleteCharacterTitle": "Deleting character"
   },
   "newCharacterPage": {
+    "avatarFile": "Select avatar file",
+    "avatarUrl": "or paste link to image",
+    "avatarTransform": "Image will be converted to square format",
     "title": "Create character",
     "name": "Name",
     "platform": "Platform",

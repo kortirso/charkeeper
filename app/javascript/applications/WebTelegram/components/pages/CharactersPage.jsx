@@ -29,9 +29,12 @@ const CHARACTER_SIZES = {
 }
 
 export const CharactersPage = (props) => {
+  const [loading, setLoading] = createSignal(false);
+  const [selectedFile, setSelectedFile] = createSignal(null);
   const [currentTab, setCurrentTab] = createSignal('characters');
   const [characters, setCharacters] = createSignal(undefined);
   const [platform, setPlatform] = createSignal(undefined);
+  const [avatarUrl, setAvatarUrl] = createSignal('');
   const [deletingCharacterId, setDeletingCharacterId] = createSignal(undefined);
   const [characterDnd5Form, setCharacterDnd5Form] = createStore({
     name: '',
@@ -39,9 +42,8 @@ export const CharactersPage = (props) => {
     subrace: undefined,
     main_class: undefined,
     alignment: 'neutral',
-    // avatar_params: {
-    //   url: 'https://m.media-amazon.com/images/M/MV5BYTcxNjhkZjgtNDkwOC00MzQyLThlZDUtNmNiMThkYzNkOGJlXkEyXkFqcGc@._V1_FMjpg_UX2160_.jpg'
-    // }
+    avatar_file: undefined,
+    avatar_url: undefined
   });
   const [characterDnd2024Form, setCharacterDnd2024Form] = createStore({
     name: '',
@@ -49,9 +51,8 @@ export const CharactersPage = (props) => {
     size: undefined,
     main_class: undefined,
     alignment: 'neutral',
-    // avatar_params: {
-    //   url: 'https://m.media-amazon.com/images/M/MV5BYTcxNjhkZjgtNDkwOC00MzQyLThlZDUtNmNiMThkYzNkOGJlXkEyXkFqcGc@._V1_FMjpg_UX2160_.jpg'
-    // }
+    avatar_file: undefined,
+    avatar_url: undefined
   });
   const [characterPathfinder2Form, setCharacterPathfinder2Form] = createStore({
     name: '',
@@ -59,22 +60,20 @@ export const CharactersPage = (props) => {
     subrace: undefined,
     main_class: undefined,
     background: undefined,
-    // avatar_params: {
-    //   url: 'https://m.media-amazon.com/images/M/MV5BYTcxNjhkZjgtNDkwOC00MzQyLThlZDUtNmNiMThkYzNkOGJlXkEyXkFqcGc@._V1_FMjpg_UX2160_.jpg'
-    // }
+    avatar_file: undefined,
+    avatar_url: undefined
   });
   const [characterDaggerheartForm, setCharacterDaggerheartForm] = createStore({
     name: '',
     heritage: undefined,
     main_class: undefined,
-    // avatar_params: {
-    //   url: 'https://m.media-amazon.com/images/M/MV5BYTcxNjhkZjgtNDkwOC00MzQyLThlZDUtNmNiMThkYzNkOGJlXkEyXkFqcGc@._V1_FMjpg_UX2160_.jpg'
-    // }
+    avatar_file: undefined,
+    avatar_url: undefined
   });
 
   const { Modal, openModal, closeModal } = createModal();
   const [appState, { navigate }] = useAppState();
-  const [{ renderAlerts }] = useAppAlert();
+  const [{ renderAlert, renderAlerts }] = useAppAlert();
   const [locale, dict] = useAppLocale();
 
   const t = i18n.translator(dict);
@@ -91,36 +90,81 @@ export const CharactersPage = (props) => {
     );
   });
 
+  const handleFileChange = (event) => {
+    const target = event.target;
+    if (target.files && target.files.length > 0) {
+      const file = target.files[0];
+      setSelectedFile(file);
+      if (file.size > 1000000) renderAlert('File size should be less than 1 MB');
+    }
+  }
+
+  const imageToBase64 = (file) => {
+    if (file === null) return;
+
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onload = () => {
+        const base64String = reader.result.replace(/^data:image\/[a-z]+;base64,/, "");
+        resolve(base64String);
+      };
+      reader.onerror = reject;
+      reader.readAsDataURL(file);
+    });
+  }
+
   const saveCharacter = async () => {
-    let formData = null;
+    if (platform() === undefined) return;
+    if (selectedFile() && selectedFile().size > 1000000) {
+      return renderAlert('File size should be less than 1 MB');
+    }
+
+    setLoading(true);
+
+    let characterFormData = null;
     switch (platform()) {
       case 'dnd5':
-        formData = characterDnd5Form; // eslint-disable-line solid/reactivity
+        characterFormData = characterDnd5Form; // eslint-disable-line solid/reactivity
         break;
       case 'dnd2024':
-        formData = characterDnd2024Form; // eslint-disable-line solid/reactivity
+        characterFormData = characterDnd2024Form; // eslint-disable-line solid/reactivity
         break;
       case 'pathfinder2':
-        formData = characterPathfinder2Form; // eslint-disable-line solid/reactivity
+        characterFormData = characterPathfinder2Form; // eslint-disable-line solid/reactivity
         break;
       case 'daggerheart':
-        formData = characterDaggerheartForm; // eslint-disable-line solid/reactivity
+        characterFormData = characterDaggerheartForm; // eslint-disable-line solid/reactivity
         break;
     }
-    if (platform() === undefined) return;
 
-    const result = await createCharacterRequest(appState.accessToken, platform(), { character: formData });
+    const fileContent = await imageToBase64(selectedFile());
+    if (fileContent) {
+      const avatarFile = { file_content: fileContent, file_name: selectedFile().name }
+      characterFormData = { ...characterFormData, avatar_file: avatarFile }
+    }
+    if (avatarUrl().length > 0) {
+      characterFormData = { ...characterFormData, avatar_url: avatarUrl() }
+    }
+
+    const result = await createCharacterRequest(appState.accessToken, platform(), { character: characterFormData });
     
     if (result.errors === undefined) {
       batch(() => {
         setCharacters(characters().concat(result.character));
-        setCharacterDnd5Form({ name: '', race: undefined, subrace: undefined, main_class: undefined, alignment: 'neutral' });
-        setCharacterDnd2024Form({ name: '', species: undefined, size: undefined, main_class: undefined, alignment: 'neutral' });
-        setCharacterPathfinder2Form({ name: '', race: undefined, subrace: undefined, main_class: undefined, background: undefined });
-        setCharacterDaggerheartForm({ name: '', heritage: undefined, main_class: undefined });
+        setPlatform(undefined);
+        setCharacterDnd5Form({ name: '', race: undefined, subrace: undefined, main_class: undefined, alignment: 'neutral', avatar_file: undefined, avatar_url: undefined });
+        setCharacterDnd2024Form({ name: '', species: undefined, size: undefined, main_class: undefined, alignment: 'neutral', avatar_file: undefined, avatar_url: undefined });
+        setCharacterPathfinder2Form({ name: '', race: undefined, subrace: undefined, main_class: undefined, background: undefined, avatar_file: undefined, avatar_url: undefined });
+        setCharacterDaggerheartForm({ name: '', heritage: undefined, main_class: undefined, avatar_file: undefined, avatar_url: undefined });
         setCurrentTab('characters');
+        setLoading(false);
       });
-    } else renderAlerts(result.errors);
+    } else {
+      batch(() => {
+        renderAlerts(result.errors);
+        setLoading(false);
+      })
+    }
   }
 
   const deleteCharacter = (event, characterId) => {
@@ -225,6 +269,16 @@ export const CharactersPage = (props) => {
           <div class="p-3 flex-1 flex flex-col overflow-y-scroll">
             <div class="p-3 flex-1 flex flex-col white-box">
               <div class="flex-1">
+                <div class="mb-4">
+                  <label class="text-sm/4 font-cascadia-light text-gray-400">{t('newCharacterPage.avatarFile')}</label>
+                  <input class="block mb-2" type="file" accept="image/jpeg, image/png" onChange={handleFileChange} />
+                  <Input
+                    labelText={t('newCharacterPage.avatarUrl')}
+                    value={avatarUrl()}
+                    onInput={(value) => setAvatarUrl(value)}
+                  />
+                  <label class="text-sm/4 font-cascadia-light text-gray-400">{t('newCharacterPage.avatarTransform')}</label>
+                </div>
                 <Select
                   containerClassList="mb-2"
                   classList="w-full"
@@ -376,11 +430,21 @@ export const CharactersPage = (props) => {
                 </Switch>
               </div>
               <div class="flex mt-4">
-                <Button outlined size='default' classList='w-full mr-2' onClick={() => setCurrentTab('characters')}>
+                <Button
+                  outlined
+                  size='default'
+                  classList='w-full mr-2'
+                  onClick={() => loading() ? null : setCurrentTab('characters')}
+                >
                   {t('back')}
                 </Button>
-                <Button default size='default' classList='w-full ml-2' onClick={saveCharacter}>
-                  {t('save')}
+                <Button
+                  default
+                  size='default'
+                  classList='w-full ml-2'
+                  onClick={() => loading() ? null : saveCharacter()}
+                >
+                  {loading() ? t('saving') : t('save')}
                 </Button>
               </div>
             </div>

@@ -2,8 +2,9 @@
 
 module Daggerheart
   class CharacterSerializer < ApplicationSerializer
-    attributes :provider, :id, :name, :level, :heritage, :main_class, :classes, :traits, :created_at, :gold, :spent_armor_slots,
-               :health, :stress, :hope, :modified_traits, :damage_thresholds, :evasion, :armor_score, :armor_slots
+    attributes :provider, :avatar, :id, :name, :level, :heritage, :main_class, :classes, :traits, :created_at, :gold,
+               :spent_armor_slots, :health, :stress, :hope, :modified_traits, :damage_thresholds, :evasion, :armor_score,
+               :armor_slots
 
     delegate :id, :name, :level, :heritage, :main_class, :classes, :traits, :gold, :spent_armor_slots, :health, :stress, :hope,
              :modified_traits, :damage_thresholds, :evasion, :armor_score, :armor_slots, to: :decorator
@@ -11,6 +12,10 @@ module Daggerheart
 
     def provider
       'daggerheart'
+    end
+
+    def avatar
+      object.avatar.blob.url if object.avatar.attached?
     end
 
     def decorator

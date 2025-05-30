@@ -28,7 +28,7 @@ export const Item = (props) => {
     >
       <div class="mr-3">
         <Show when={props.avatar} fallback={<div class="w-16 h-16 bordered" />}>
-          <img src={props.avatar} class="w-16 h-16 rounded-full" />
+          <img src={props.avatar} class="w-16 h-16 rounded" />
         </Show>
       </div>
       <div class="flex-1">
