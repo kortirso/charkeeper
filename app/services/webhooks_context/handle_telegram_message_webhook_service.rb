@@ -19,6 +19,7 @@ module WebhooksContext
       I18n.locale = I18n.available_locales.include?(message_locale) ? message_locale : I18n.default_locale
     end
 
+    # rubocop: disable Metrics/AbcSize
     def route_message(message)
       case message[:text]
       when '/start'
@@ -27,11 +28,15 @@ module WebhooksContext
         send_start_message(message[:from], message[:chat])
       when '/contacts' then send_contacts_message(message[:chat])
       when '/unsubscribe'
-        identity = find_identity(message)
-        identity.update(active: false)
+        find_identity(message)&.update(active: false)
+        send_unsubscribe_message(message[:chat])
+      when '/subscribe'
+        find_identity(message)&.update(active: true)
+        send_subscribe_message(message[:chat])
       else send_unknown_message(message[:chat])
       end
     end
+    # rubocop: enable Metrics/AbcSize
 
     def find_identity(message)
       User::Identity.find_by(provider: User::Identity::TELEGRAM, uid: message.dig(:chat, :id).to_s)
@@ -61,6 +66,22 @@ module WebhooksContext
         bot_secret: bot_secret,
         chat_id: chat[:id],
         text: I18n.t('telegram_webhook.contacts')
+      )
+    end
+
+    def send_unsubscribe_message(chat)
+      telegram_api.send_message(
+        bot_secret: bot_secret,
+        chat_id: chat[:id],
+        text: I18n.t('telegram_webhook.unsubscribe')
+      )
+    end
+
+    def send_subscribe_message(chat)
+      telegram_api.send_message(
+        bot_secret: bot_secret,
+        chat_id: chat[:id],
+        text: I18n.t('telegram_webhook.subscribe')
       )
     end
 
