@@ -3,6 +3,11 @@
 module CharactersContext
   module Dnd2024
     class UpdateCommand < BaseCommand
+      include Deps[
+        attach_avatar_by_url: 'commands.image_processing.attach_avatar_by_url',
+        attach_avatar_by_file: 'commands.image_processing.attach_avatar_by_file'
+      ]
+
       SKILLS = %w[
         acrobatics animal arcana athletics deception history insight intimidation investigation
         medicine nature perception performance persuasion religion sleight stealth survival
@@ -61,7 +66,15 @@ module CharactersContext
           optional(:resistance).value(:array).each(included_in?: DAMAGE_TYPES)
           optional(:immunity).value(:array).each(included_in?: DAMAGE_TYPES)
           optional(:vulnerability).value(:array).each(included_in?: DAMAGE_TYPES)
+          optional(:name).filled(:string)
+          optional(:avatar_file).hash do
+            required(:file_content).filled(:string)
+            required(:file_name).filled(:string)
+          end
+          optional(:avatar_url).filled(:string)
         end
+
+        rule(:avatar_file, :avatar_url).validate(:check_only_one_present)
 
         # ключи classes и subclasses должны быть одинаковые
         rule(:classes) do
@@ -120,12 +133,19 @@ module CharactersContext
         end
       end
 
+      # rubocop: disable Metrics/AbcSize
       def do_persist(input)
-        input[:character].data = input[:character].data.attributes.merge(input.except(:character).stringify_keys)
+        input[:character].data =
+          input[:character].data.attributes.merge(input.except(:character, :avatar_file, :avatar_url, :name).stringify_keys)
+        input[:character].assign_attributes(input.slice(:name))
         input[:character].save!
+
+        attach_avatar_by_file.call({ character: input[:character], file: input[:avatar_file] }) if input[:avatar_file]
+        attach_avatar_by_url.call({ character: input[:character], url: input[:avatar_url] }) if input[:avatar_url]
 
         { result: input[:character] }
       end
+      # rubocop: enable Metrics/AbcSize
     end
   end
 end

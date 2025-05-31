@@ -3,7 +3,7 @@ import * as i18n from '@solid-primitives/i18n';
 
 import {
   Dnd5Abilities, Dnd5Combat, Dnd5Rest, Dnd5ClassLevels, Dnd5Professions, Dnd5Equipment, Dnd5Items,
-  Dnd5Spellbook, Dnd5Spells, Dnd5Notes
+  Dnd5Spellbook, Dnd5Spells, Notes, Avatar, CharacterNavigation
 } from '../../../components';
 
 import { useAppState, useAppLocale, useAppAlert } from '../../../context';
@@ -333,56 +333,11 @@ export const Dnd5 = (props) => {
 
   return (
     <>
-      <div id="character-navigation">
-        <p
-          classList={{ 'active': activeTab() === 'abilities' }}
-          onClick={() => setActiveTab('abilities')}
-        >
-          {t('character.abilities')}
-        </p>
-        <p
-          classList={{ 'active': activeTab() === 'combat' }}
-          onClick={() => setActiveTab('combat')}
-        >
-          {t('character.combat')}
-        </p>
-        <p
-          classList={{ 'active': activeTab() === 'rest' }}
-          onClick={() => setActiveTab('rest')}
-        >
-          {t('character.rest')}
-        </p>
-        <p
-          classList={{ 'active': activeTab() === 'equipment' }}
-          onClick={() => setActiveTab('equipment')}
-        >
-          {t('character.equipment')}
-        </p>
-        <p
-          classList={{ 'active': activeTab() === 'spells' }}
-          onClick={() => setActiveTab('spells')}
-        >
-          {t('character.spells')}
-        </p>
-        <p
-          classList={{ 'active': activeTab() === 'notes' }}
-          onClick={() => setActiveTab('notes')}
-        >
-          {t('character.notes')}
-        </p>
-        <p
-          classList={{ 'active': activeTab() === 'professions' }}
-          onClick={() => setActiveTab('professions')}
-        >
-          {t('character.professions')}
-        </p>
-        <p
-          classList={{ 'active': activeTab() === 'classLevels' }}
-          onClick={() => setActiveTab('classLevels')}
-        >
-          {t('character.classLevels')}
-        </p>
-      </div>
+      <CharacterNavigation
+        tabsList={['abilities', 'combat', 'rest', 'equipment', 'spells', 'notes', 'professions', 'classLevels', 'avatar']}
+        activeTab={activeTab()}
+        setActiveTab={setActiveTab}
+      />
       <div class="p-4 flex-1 overflow-y-scroll">
         <Switch>
           <Match when={activeTab() === 'abilities'}>
@@ -479,7 +434,7 @@ export const Dnd5 = (props) => {
             </Switch>
           </Match>
           <Match when={activeTab() === 'notes'}>
-            <Dnd5Notes />
+            <Notes />
           </Match>
           <Match when={activeTab() === 'classLevels'}>
             <Dnd5ClassLevels
@@ -493,6 +448,12 @@ export const Dnd5 = (props) => {
               items={items()}
               onRefreshCharacter={refreshCharacter}
               onReloadCharacter={updateCharacter}
+            />
+          </Match>
+          <Match when={activeTab() === 'avatar'}>
+            <Avatar
+              character={character()}
+              onReplaceCharacter={props.onReplaceCharacter}
             />
           </Match>
         </Switch>

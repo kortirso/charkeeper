@@ -12,7 +12,6 @@ export * from './compounds/Character/Dnd5/Equipment';
 export * from './compounds/Character/Dnd5/Items';
 export * from './compounds/Character/Dnd5/Spellbook';
 export * from './compounds/Character/Dnd5/Spells';
-export * from './compounds/Character/Dnd5/Notes';
 
 export * from './compounds/Character/Pathfinder2';
 export * from './compounds/Character/Pathfinder2/Abilities';
@@ -22,5 +21,9 @@ export * from './compounds/Character/Daggerheart';
 export * from './compounds/Character/Daggerheart/Traits';
 export * from './compounds/Character/Daggerheart/Combat';
 export * from './compounds/Character/Daggerheart/Equipment';
+
+export * from './compounds/Character/shared/Avatar';
+export * from './compounds/Character/shared/CharacterNavigation';
+export * from './compounds/Character/shared/Notes';
 
 export * from './compounds/Characters/Item';

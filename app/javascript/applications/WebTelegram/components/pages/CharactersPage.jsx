@@ -95,7 +95,7 @@ export const CharactersPage = (props) => {
     if (target.files && target.files.length > 0) {
       const file = target.files[0];
       setSelectedFile(file);
-      if (file.size > 1000000) renderAlert('File size should be less than 1 MB');
+      if (file.size > 1000000) renderAlert(t('alerts.fileSizeLimit'));
     }
   }
 
@@ -116,7 +116,7 @@ export const CharactersPage = (props) => {
   const saveCharacter = async () => {
     if (platform() === undefined) return;
     if (selectedFile() && selectedFile().size > 1000000) {
-      return renderAlert('File size should be less than 1 MB');
+      return renderAlert(t('alerts.fileSizeLimit'));
     }
 
     setLoading(true);

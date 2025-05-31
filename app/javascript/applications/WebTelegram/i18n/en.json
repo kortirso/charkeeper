@@ -8,7 +8,9 @@
   "delete": "Delete",
   "alerts": {
     "restIsFinished": "Rest is finished",
-    "itemIsAdded": "Item is added"
+    "itemIsAdded": "Item is added",
+    "characterIsUpdated": "Character is updated",
+    "fileSizeLimit": "File size should be less than 1 MB"
   },
   "profilePage": {
     "title": "Profile",
@@ -112,7 +114,8 @@
     "deathSavingThrows": "Death saving throws",
     "deathSuccess": "Success",
     "deathFailure": "Failure",
-    "dyingConditionValue": "Dying condition value"
+    "dyingConditionValue": "Dying condition value",
+    "avatar": "Avatar"
   },
   "professionsPage": {
     "languages": "Languages",

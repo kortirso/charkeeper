@@ -8,7 +8,9 @@
   "delete": "Удалить",
   "alerts": {
     "restIsFinished": "Отдых проведён",
-    "itemIsAdded": "Предмет добавлен"
+    "itemIsAdded": "Предмет добавлен",
+    "characterIsUpdated": "Персонаж обновлён",
+    "fileSizeLimit": "Размер файла должен быть меньше 1 МБ"
   },
   "profilePage": {
     "title": "Профиль",
@@ -112,7 +114,8 @@
     "deathSavingThrows": "Спасброски от смерти",
     "deathSuccess": "Успехи",
     "deathFailure": "Провалы",
-    "dyingConditionValue": "Состояние при смерти"
+    "dyingConditionValue": "Состояние при смерти",
+    "avatar": "Аватар"
   },
   "professionsPage": {
     "languages": "Известные языки",
