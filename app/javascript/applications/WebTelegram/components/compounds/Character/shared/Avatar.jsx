@@ -97,7 +97,7 @@ export const Avatar = (props) => {
         value={name()}
         onInput={(value) => setName(value)}
       />
-      <Button default onClick={() => loading() ? null : updateCharacter}>{loading() ? t('saving') : t('save')}</Button>
+      <Button default onClick={() => loading() ? null : updateCharacter()}>{loading() ? t('saving') : t('save')}</Button>
     </div>
   );
 }
