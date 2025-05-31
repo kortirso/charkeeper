@@ -57,6 +57,12 @@
   "backgrounds": {
     "herbalist": {
       "name": { "en": "Herbalist", "ru": "Травник" }
+    },
+    "teacher": {
+      "name": { "en": "Teacher", "ru": "Учитель" }
+    },
+    "hermit": {
+      "name": { "en": "Hermit", "ru": "Отшельник" }
     }
   }
 }
