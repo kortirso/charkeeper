@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="mobile-web-app-capable" content="yes">
-    <meta name="Keywords" content="Digital, character sheet, dungeon & dragons">
+    <meta name="Keywords" content="Digital, character sheet, dungeon & dragons, pathfinder, daggerheart">
     <meta name="Description" content="Digital character sheets for tabletop roleplaying games">
     <meta property="og:title" content="Digital character sheets for tabletop roleplaying games" />
     <meta property="og:description" content="Digital character sheets for tabletop roleplaying games" />
@@ -21,8 +21,28 @@
     <%= javascript_include_tag 'application', type: 'module' %>
   </head>
   <body>
-    <main class="container mx-auto mt-28 px-5 flex">
-      <%= yield %>
+    <main class="relative flex flex-col m-0 p-0 min-h-screen">
+      <div class="flex flex-col flex-1 h-full overflow-x-hidden">
+        <%= yield %>
+      </div>
+      <footer class="px-8 py-4 border-t border-gray-200">
+        <div class="flex justify-between items-center w-full max-w-7xl mx-auto">
+          <p>
+            <span>&copy;</span> Since 2025, CharKeeper,
+            <% I18n.available_locales.each do |locale| %>
+              <%= link_to locale, change_locale(locale), class: 'ml-2', aria: { label: t('change_locale') } %>
+            <% end %>
+          </p>
+          <div class="flex">
+            <a href="https://vk.com/char_keeper" target="_blank" rel="noopener noreferrer" class="opacity-75 hover:opacity-100">
+              <%= image_tag 'vk.svg', class: 'w-6 h-6 mr-2', alt: 'vk', width: 24, height: 24 %>
+            </a>
+            <a href="https://t.me/charkeeper" target="_blank" rel="noopener noreferrer" class="opacity-75 hover:opacity-100">
+              <%= image_tag 'telegram.svg', class: 'w-6 h-6 mr-2', alt: 'telegram', width: 24, height: 24 %>
+            </a>
+          </div>
+        </div>
+      </footer>
     </main>
   </body>
 </html>

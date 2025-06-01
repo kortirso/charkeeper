@@ -64,5 +64,13 @@ module Charkeeper
     config.generators.system_tests = nil
 
     config.active_support.to_time_preserves_timezone = :zone
+
+    # Catch 404s
+    config.after_initialize do |app|
+      app.routes.append do
+        match 'web_telegram/*path', to: 'frontend/base#not_found', via: :all
+        match '*path', to: 'application#not_found', via: :all
+      end
+    end
   end
 end

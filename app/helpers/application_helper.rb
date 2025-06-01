@@ -1,6 +1,10 @@
 # frozen_string_literal: true
 
 module ApplicationHelper
+  def change_locale(locale)
+    url_for(request.params.merge(switch_locale: locale.to_s))
+  end
+
   def js_component(component_name, **props)
     content_tag(
       'div',

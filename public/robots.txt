@@ -1,1 +1,4 @@
-# See https://www.robotstxt.org/robotstxt.html for documentation on how to use the robots.txt file
+User-agent: *
+Disallow: /web_telegram/
+Disallow: /adminbook/
+Sitemap: https://charkeeper.org/sitemap.xml

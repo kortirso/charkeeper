@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Web
-  class WelcomeController < ApplicationController
+  class WelcomeController < Web::BaseController
     skip_before_action :authenticate
 
     def index; end

@@ -60,5 +60,7 @@ Rails.application.routes.draw do
     resource :telegram, only: %i[create]
   end
 
-  root 'web/welcome#index'
+  scope '(:locale)', locale: /#{I18n.available_locales.join('|')}/, defaults: { locale: nil } do
+    root 'web/welcome#index'
+  end
 end

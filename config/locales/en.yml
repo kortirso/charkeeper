@@ -1,5 +1,25 @@
 en:
   not_found: Object is not found
+  change_locale: Change locale
+  web:
+    welcome:
+      index:
+        title: Interactive mobile character sheets
+        description: Create characters for D&D, Pathfinder and/or Daggerheart tabletop games. Charkeeper has automatic calculations of different character attributes and allows to track available features, spells, attacks of your characters.
+        features_title: Charkeeper features
+        feature_1: Saving characters compatible with D&D 5, Pathfinder 2 and Daggerheart rules.
+        feature_2: Account information and saved characters are shared between all devices.
+        feature_3: Easy tracking of health, equipment, spells.
+        feature_4: Automatic calculation of abilities, skills, available attacks, features.
+        feature_5: And a lot of additional features.
+        work_on: Working on
+        telegram: Telegram mini app
+        telegram_description: Simply run %{href} in Telegram messenger
+        telegram_link: web view application
+        will_work_on: Will work on
+        web: Web application in browsers
+        mobile: iOS and Android mobile applications
+        in_progress: In progress
   telegram_webhook:
     unknown: "I don't know what to say, sorry :("
     start: "Hello, %{sender}! I'm Charkeeper - an electronic character sheet! I'll help you keep track of your characters that you play tabletop role-playing games with. You can find the mini-app launcher button at the bottom left.\n\nWhat I can do now: create characters according to D&D 5 and D&D 2024 rules, take into account equipment and known spells, display current racial and class abilities available to the character depending on the level, take into account spent spell slots, refresh available abilities after rest, display all possible attack abilities and help with keeping the character sheet in every possible way.\n\nI'm still in the process of development, you can send your comments, questions and suggestions to @kortirso.\n\nTo unsubscribe from the bot's news list, enter the /unsubscribe command or delete this chat with the blocking bot."
