@@ -206,7 +206,7 @@ export const CharactersPage = (props) => {
       </PageHeader>
       <Switch>
         <Match when={currentTab() === 'characters'}>
-          <div class="p-3 pb-0 flex-1 overflow-y-scroll">
+          <div class="p-4 pb-0 flex-1 overflow-y-scroll">
             <Button
               default
               classList='absolute right-4 bottom-4 rounded-full min-w-12 min-h-12 z-10'
@@ -269,19 +269,9 @@ export const CharactersPage = (props) => {
           </div>
         </Match>
         <Match when={currentTab() === 'newCharacter'}>
-          <div class="p-3 flex-1 flex flex-col overflow-y-scroll">
-            <div class="p-3 flex-1 flex flex-col white-box">
+          <div class="p-4 flex-1 flex flex-col overflow-y-scroll">
+            <div class="p-4 flex-1 flex flex-col white-box">
               <div class="flex-1">
-                <div class="mb-4">
-                  <label class="text-sm/4 font-cascadia-light text-gray-400">{t('newCharacterPage.avatarFile')}</label>
-                  <input class="block mb-2" type="file" accept="image/jpeg, image/png" onChange={handleFileChange} />
-                  <Input
-                    labelText={t('newCharacterPage.avatarUrl')}
-                    value={avatarUrl()}
-                    onInput={(value) => setAvatarUrl(value)}
-                  />
-                  <label class="text-sm/4 font-cascadia-light text-gray-400">{t('newCharacterPage.avatarTransform')}</label>
-                </div>
                 <Select
                   containerClassList="mb-2"
                   classList="w-full"
@@ -290,164 +280,174 @@ export const CharactersPage = (props) => {
                   selectedValue={platform()}
                   onSelect={(value) => setPlatform(value)}
                 />
-                <Switch>
-                  <Match when={platform() === 'dnd5'}>
-                    <Input
-                      containerClassList="mb-2"
-                      labelText={t('newCharacterPage.name')}
-                      value={characterDnd5Form.name}
-                      onInput={(value) => setCharacterDnd5Form({ ...characterDnd5Form, name: value })}
-                    />
-                    <Select
-                      containerClassList="mb-2"
-                      labelText={t('newCharacterPage.dnd5.race')}
-                      items={dict().dnd5.races}
-                      selectedValue={characterDnd5Form.race}
-                      onSelect={(value) => setCharacterDnd5Form({ ...characterDnd5Form, race: value, subrace: undefined })}
-                    />
-                    <Show when={dict().dnd5.subraces[characterDnd5Form.race]}>
+                <div class="mb-8">
+                  <Switch>
+                    <Match when={platform() === 'dnd5'}>
+                      <Input
+                        containerClassList="mb-2"
+                        labelText={t('newCharacterPage.name')}
+                        value={characterDnd5Form.name}
+                        onInput={(value) => setCharacterDnd5Form({ ...characterDnd5Form, name: value })}
+                      />
                       <Select
                         containerClassList="mb-2"
-                        labelText={t('newCharacterPage.dnd5.subrace')}
-                        items={dict().dnd5.subraces[characterDnd5Form.race]}
-                        selectedValue={characterDnd5Form.subrace}
-                        onSelect={(value) => setCharacterDnd5Form({ ...characterDnd5Form, subrace: value })}
+                        labelText={t('newCharacterPage.dnd5.race')}
+                        items={dict().dnd5.races}
+                        selectedValue={characterDnd5Form.race}
+                        onSelect={(value) => setCharacterDnd5Form({ ...characterDnd5Form, race: value, subrace: undefined })}
                       />
-                    </Show>
-                    <Select
-                      containerClassList="mb-2"
-                      labelText={t('newCharacterPage.dnd5.mainClass')}
-                      items={dict().dnd5.classes}
-                      selectedValue={characterDnd5Form.main_class}
-                      onSelect={(value) => setCharacterDnd5Form({ ...characterDnd5Form, main_class: value })}
-                    />
-                    <Select
-                      labelText={t('newCharacterPage.dnd5.alignment')}
-                      items={dict().dnd.alignments}
-                      selectedValue={characterDnd5Form.alignment}
-                      onSelect={(value) => setCharacterDnd5Form({ ...characterDnd5Form, alignment: value })}
-                    />
-                  </Match>
-                  <Match when={platform() === 'dnd2024'}>
-                    <Input
-                      containerClassList="mb-2"
-                      labelText={t('newCharacterPage.name')}
-                      value={characterDnd2024Form.name}
-                      onInput={(value) => setCharacterDnd2024Form({ ...characterDnd2024Form, name: value })}
-                    />
-                    <Select
-                      containerClassList="mb-2"
-                      labelText={t('newCharacterPage.dnd2024.species')}
-                      items={dict().dnd2024.species}
-                      selectedValue={characterDnd2024Form.species}
-                      onSelect={(value) => setCharacterDnd2024Form({ ...characterDnd2024Form, species: value, size: CHARACTER_SIZES[value][0], legacy: undefined })}
-                    />
-                    <Show when={dict().dnd2024.legacies[characterDnd2024Form.species]}>
+                      <Show when={dict().dnd5.subraces[characterDnd5Form.race]}>
+                        <Select
+                          containerClassList="mb-2"
+                          labelText={t('newCharacterPage.dnd5.subrace')}
+                          items={dict().dnd5.subraces[characterDnd5Form.race]}
+                          selectedValue={characterDnd5Form.subrace}
+                          onSelect={(value) => setCharacterDnd5Form({ ...characterDnd5Form, subrace: value })}
+                        />
+                      </Show>
                       <Select
                         containerClassList="mb-2"
-                        labelText={t('newCharacterPage.dnd2024.legacy')}
-                        items={dict().dnd2024.legacies[characterDnd2024Form.species]}
-                        selectedValue={characterDnd2024Form.legacy}
-                        onSelect={(value) => setCharacterDnd2024Form({ ...characterDnd2024Form, legacy: value })}
+                        labelText={t('newCharacterPage.dnd5.mainClass')}
+                        items={dict().dnd5.classes}
+                        selectedValue={characterDnd5Form.main_class}
+                        onSelect={(value) => setCharacterDnd5Form({ ...characterDnd5Form, main_class: value })}
                       />
-                    </Show>
-                    <Select
-                      containerClassList="mb-2"
-                      labelText={t('newCharacterPage.dnd2024.size')}
-                      items={characterDnd2024Form.species ? CHARACTER_SIZES[characterDnd2024Form.species].reduce((acc, item) => { acc[item] = t(`dnd2024.sizes.${item}`); return acc; }, {}) : {}}
-                      selectedValue={characterDnd2024Form.size}
-                      onSelect={(value) => setCharacterDnd2024Form({ ...characterDnd2024Form, size: value })}
-                    />
-                    <Select
-                      containerClassList="mb-2"
-                      labelText={t('newCharacterPage.dnd2024.mainClass')}
-                      items={dict().dnd2024.classes}
-                      selectedValue={characterDnd2024Form.main_class}
-                      onSelect={(value) => setCharacterDnd2024Form({ ...characterDnd2024Form, main_class: value })}
-                    />
-                    <Select
-                      labelText={t('newCharacterPage.dnd2024.alignment')}
-                      items={dict().dnd.alignments}
-                      selectedValue={characterDnd2024Form.alignment}
-                      onSelect={(value) => setCharacterDnd2024Form({ ...characterDnd2024Form, alignment: value })}
-                    />
-                  </Match>
-                  <Match when={platform() === 'pathfinder2'}>
-                    <Input
-                      containerClassList="mb-2"
-                      labelText={t('newCharacterPage.name')}
-                      value={characterPathfinder2Form.name}
-                      onInput={(value) => setCharacterPathfinder2Form({ ...characterPathfinder2Form, name: value })}
-                    />
-                    <Select
-                      containerClassList="mb-2"
-                      labelText={t('newCharacterPage.pathfinder2.race')}
-                      items={translate(pathfinder2Config.races, locale())}
-                      selectedValue={characterPathfinder2Form.race}
-                      onSelect={(value) => setCharacterPathfinder2Form({ ...characterPathfinder2Form, race: value, subrace: undefined })}
-                    />
-                    <Show when={pathfinder2Config.races[characterPathfinder2Form.race]?.subraces}>
+                      <Select
+                        labelText={t('newCharacterPage.dnd5.alignment')}
+                        items={dict().dnd.alignments}
+                        selectedValue={characterDnd5Form.alignment}
+                        onSelect={(value) => setCharacterDnd5Form({ ...characterDnd5Form, alignment: value })}
+                      />
+                    </Match>
+                    <Match when={platform() === 'dnd2024'}>
+                      <Input
+                        containerClassList="mb-2"
+                        labelText={t('newCharacterPage.name')}
+                        value={characterDnd2024Form.name}
+                        onInput={(value) => setCharacterDnd2024Form({ ...characterDnd2024Form, name: value })}
+                      />
                       <Select
                         containerClassList="mb-2"
-                        labelText={t('newCharacterPage.pathfinder2.subrace')}
-                        items={translate(pathfinder2Config.races[characterPathfinder2Form.race].subraces, locale())}
-                        selectedValue={characterPathfinder2Form.subrace}
-                        onSelect={(value) => setCharacterPathfinder2Form({ ...characterPathfinder2Form, subrace: value })}
+                        labelText={t('newCharacterPage.dnd2024.species')}
+                        items={dict().dnd2024.species}
+                        selectedValue={characterDnd2024Form.species}
+                        onSelect={(value) => setCharacterDnd2024Form({ ...characterDnd2024Form, species: value, size: CHARACTER_SIZES[value][0], legacy: undefined })}
                       />
-                    </Show>
-                    <Select
-                      containerClassList="mb-2"
-                      labelText={t('newCharacterPage.pathfinder2.background')}
-                      items={translate(pathfinder2Config.backgrounds, locale())}
-                      selectedValue={characterPathfinder2Form.background}
-                      onSelect={(value) => setCharacterPathfinder2Form({ ...characterPathfinder2Form, background: value })}
-                    />
-                    <Select
-                      labelText={t('newCharacterPage.pathfinder2.mainClass')}
-                      items={translate(pathfinder2Config.classes, locale())}
-                      selectedValue={characterPathfinder2Form.main_class}
-                      onSelect={(value) => setCharacterPathfinder2Form({ ...characterPathfinder2Form, main_class: value })}
-                    />
-                  </Match>
-                  <Match when={platform() === 'daggerheart'}>
-                    <Input
-                      containerClassList="mb-2"
-                      labelText={t('newCharacterPage.name')}
-                      value={characterDaggerheartForm.name}
-                      onInput={(value) => setCharacterDaggerheartForm({ ...characterDaggerheartForm, name: value })}
-                    />
-                    <Select
-                      containerClassList="mb-2"
-                      labelText={t('newCharacterPage.daggerheart.heritage')}
-                      items={translate(daggerheartConfig.heritages, locale())}
-                      selectedValue={characterDaggerheartForm.heritage}
-                      onSelect={(value) => setCharacterDaggerheartForm({ ...characterDaggerheartForm, heritage: value })}
-                    />
-                    <Select
-                      containerClassList="mb-2"
-                      labelText={t('newCharacterPage.daggerheart.community')}
-                      items={translate(daggerheartConfig.communities, locale())}
-                      selectedValue={characterDaggerheartForm.community}
-                      onSelect={(value) => setCharacterDaggerheartForm({ ...characterDaggerheartForm, community: value })}
-                    />
-                    <Select
-                      containerClassList="mb-2"
-                      labelText={t('newCharacterPage.daggerheart.mainClass')}
-                      items={translate(daggerheartConfig.classes, locale())}
-                      selectedValue={characterDaggerheartForm.main_class}
-                      onSelect={(value) => setCharacterDaggerheartForm({ ...characterDaggerheartForm, main_class: value })}
-                    />
-                    <Show when={daggerheartConfig.classes[characterDaggerheartForm.main_class]?.subclasses}>
+                      <Show when={dict().dnd2024.legacies[characterDnd2024Form.species]}>
+                        <Select
+                          containerClassList="mb-2"
+                          labelText={t('newCharacterPage.dnd2024.legacy')}
+                          items={dict().dnd2024.legacies[characterDnd2024Form.species]}
+                          selectedValue={characterDnd2024Form.legacy}
+                          onSelect={(value) => setCharacterDnd2024Form({ ...characterDnd2024Form, legacy: value })}
+                        />
+                      </Show>
                       <Select
                         containerClassList="mb-2"
-                        labelText={t('newCharacterPage.daggerheart.subclass')}
-                        items={translate(daggerheartConfig.classes[characterDaggerheartForm.main_class].subclasses, locale())}
-                        selectedValue={characterDaggerheartForm.subclass}
-                        onSelect={(value) => setCharacterDaggerheartForm({ ...characterDaggerheartForm, subclass: value })}
+                        labelText={t('newCharacterPage.dnd2024.size')}
+                        items={characterDnd2024Form.species ? CHARACTER_SIZES[characterDnd2024Form.species].reduce((acc, item) => { acc[item] = t(`dnd2024.sizes.${item}`); return acc; }, {}) : {}}
+                        selectedValue={characterDnd2024Form.size}
+                        onSelect={(value) => setCharacterDnd2024Form({ ...characterDnd2024Form, size: value })}
                       />
-                    </Show>
-                  </Match>
-                </Switch>
+                      <Select
+                        containerClassList="mb-2"
+                        labelText={t('newCharacterPage.dnd2024.mainClass')}
+                        items={dict().dnd2024.classes}
+                        selectedValue={characterDnd2024Form.main_class}
+                        onSelect={(value) => setCharacterDnd2024Form({ ...characterDnd2024Form, main_class: value })}
+                      />
+                      <Select
+                        labelText={t('newCharacterPage.dnd2024.alignment')}
+                        items={dict().dnd.alignments}
+                        selectedValue={characterDnd2024Form.alignment}
+                        onSelect={(value) => setCharacterDnd2024Form({ ...characterDnd2024Form, alignment: value })}
+                      />
+                    </Match>
+                    <Match when={platform() === 'pathfinder2'}>
+                      <Input
+                        containerClassList="mb-2"
+                        labelText={t('newCharacterPage.name')}
+                        value={characterPathfinder2Form.name}
+                        onInput={(value) => setCharacterPathfinder2Form({ ...characterPathfinder2Form, name: value })}
+                      />
+                      <Select
+                        containerClassList="mb-2"
+                        labelText={t('newCharacterPage.pathfinder2.race')}
+                        items={translate(pathfinder2Config.races, locale())}
+                        selectedValue={characterPathfinder2Form.race}
+                        onSelect={(value) => setCharacterPathfinder2Form({ ...characterPathfinder2Form, race: value, subrace: undefined })}
+                      />
+                      <Show when={pathfinder2Config.races[characterPathfinder2Form.race]?.subraces}>
+                        <Select
+                          containerClassList="mb-2"
+                          labelText={t('newCharacterPage.pathfinder2.subrace')}
+                          items={translate(pathfinder2Config.races[characterPathfinder2Form.race].subraces, locale())}
+                          selectedValue={characterPathfinder2Form.subrace}
+                          onSelect={(value) => setCharacterPathfinder2Form({ ...characterPathfinder2Form, subrace: value })}
+                        />
+                      </Show>
+                      <Select
+                        containerClassList="mb-2"
+                        labelText={t('newCharacterPage.pathfinder2.background')}
+                        items={translate(pathfinder2Config.backgrounds, locale())}
+                        selectedValue={characterPathfinder2Form.background}
+                        onSelect={(value) => setCharacterPathfinder2Form({ ...characterPathfinder2Form, background: value })}
+                      />
+                      <Select
+                        labelText={t('newCharacterPage.pathfinder2.mainClass')}
+                        items={translate(pathfinder2Config.classes, locale())}
+                        selectedValue={characterPathfinder2Form.main_class}
+                        onSelect={(value) => setCharacterPathfinder2Form({ ...characterPathfinder2Form, main_class: value })}
+                      />
+                    </Match>
+                    <Match when={platform() === 'daggerheart'}>
+                      <Input
+                        containerClassList="mb-2"
+                        labelText={t('newCharacterPage.name')}
+                        value={characterDaggerheartForm.name}
+                        onInput={(value) => setCharacterDaggerheartForm({ ...characterDaggerheartForm, name: value })}
+                      />
+                      <Select
+                        containerClassList="mb-2"
+                        labelText={t('newCharacterPage.daggerheart.heritage')}
+                        items={translate(daggerheartConfig.heritages, locale())}
+                        selectedValue={characterDaggerheartForm.heritage}
+                        onSelect={(value) => setCharacterDaggerheartForm({ ...characterDaggerheartForm, heritage: value })}
+                      />
+                      <Select
+                        containerClassList="mb-2"
+                        labelText={t('newCharacterPage.daggerheart.community')}
+                        items={translate(daggerheartConfig.communities, locale())}
+                        selectedValue={characterDaggerheartForm.community}
+                        onSelect={(value) => setCharacterDaggerheartForm({ ...characterDaggerheartForm, community: value })}
+                      />
+                      <Select
+                        containerClassList="mb-2"
+                        labelText={t('newCharacterPage.daggerheart.mainClass')}
+                        items={translate(daggerheartConfig.classes, locale())}
+                        selectedValue={characterDaggerheartForm.main_class}
+                        onSelect={(value) => setCharacterDaggerheartForm({ ...characterDaggerheartForm, main_class: value, subclass: undefined })}
+                      />
+                      <Show when={daggerheartConfig.classes[characterDaggerheartForm.main_class]?.subclasses}>
+                        <Select
+                          containerClassList="mb-2"
+                          labelText={t('newCharacterPage.daggerheart.subclass')}
+                          items={translate(daggerheartConfig.classes[characterDaggerheartForm.main_class].subclasses, locale())}
+                          selectedValue={characterDaggerheartForm.subclass}
+                          onSelect={(value) => setCharacterDaggerheartForm({ ...characterDaggerheartForm, subclass: value })}
+                        />
+                      </Show>
+                    </Match>
+                  </Switch>
+                </div>
+                <label class="text-sm/4 font-cascadia-light text-gray-400">{t('newCharacterPage.avatarFile')}</label>
+                <input class="block mb-2" type="file" accept="image/jpeg, image/png" onChange={handleFileChange} />
+                <Input
+                  labelText={t('newCharacterPage.avatarUrl')}
+                  value={avatarUrl()}
+                  onInput={(value) => setAvatarUrl(value)}
+                />
+                <label class="text-xs font-cascadia-light text-gray-400">{t('newCharacterPage.avatarTransform')}</label>
               </div>
               <div class="flex mt-4">
                 <Button

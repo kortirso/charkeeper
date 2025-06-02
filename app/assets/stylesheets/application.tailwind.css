@@ -135,11 +135,11 @@
 }
 
 .form-field .form-dropdown li:hover {
-  @apply bg-black text-white;
+  @apply bg-gray-400 text-white;
 }
 
 #character-navigation {
-  @apply flex w-full overflow-x-scroll bg-white border-b border-gray-200;
+  @apply flex w-full overflow-x-scroll bg-white border-b border-gray-200 px-2;
 
   scrollbar-width: none;
 }
