@@ -12,10 +12,9 @@ module DaggerheartCharacter
     end
 
     def class_decorator(class_name)
-      case class_name
-      when Daggerheart::Character::WARRIOR then DaggerheartCharacter::Classes::WarriorDecorator
-      else ApplicationDecorator
-      end
+      "DaggerheartCharacter::Classes::#{class_name.camelize}Decorator".constantize
+    rescue NameError => _e
+      ApplicationDecorator
     end
   end
 end

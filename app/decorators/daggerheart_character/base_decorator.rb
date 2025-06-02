@@ -9,37 +9,37 @@ module DaggerheartCharacter
     def method_missing(_method, *args); end
 
     def modified_traits
-      @modified_traits ||= traits.merge(equiped_armor_item&.info&.dig('traits') || {}) { |_key, oldval, newval| newval + oldval }
+      @modified_traits ||= traits.merge(equiped_armor_item_info&.dig('traits') || {}) { |_key, oldval, newval| newval + oldval }
     end
 
     def damage_thresholds
       @damage_thresholds ||=
         { 'minor' => level, 'major' => level, 'severe' => level }
-          .merge(equiped_armor_item&.info&.dig('thresholds') || {}) { |_key, oldval, newval| newval + oldval }
+          .merge(equiped_armor_item_info&.dig('thresholds') || {}) { |_key, oldval, newval| newval + oldval }
     end
 
     def evasion
-      @evasion ||= data.evasion + equiped_armor_item&.info&.dig('evasion').to_i
+      @evasion ||= data.evasion + equiped_armor_item_info&.dig('evasion').to_i
     end
 
     def armor_score
-      @armor_score ||= equiped_armor_item&.info&.dig('base_score').to_i
+      @armor_score ||= equiped_armor_item_info&.dig('base_score').to_i
     end
 
     def armor_slots
-      @armor_slots ||= equiped_armor_item&.info&.dig('base_score').to_i
+      @armor_slots ||= equiped_armor_item_info&.dig('base_score').to_i
     end
 
     private
 
-    def equiped_armor_item
-      @equiped_armor_item ||=
+    def equiped_armor_item_info
+      @equiped_armor_item_info ||=
         __getobj__
         .items
         .where(ready_to_use: true)
         .joins(:item)
         .where(items: { kind: 'armor' })
-        .first&.item
+        .first&.item || {}
     end
   end
 end

@@ -5,10 +5,9 @@ module DaggerheartCharacter
     private
 
     def wrap_classes(obj)
-      case obj.heritage
-      when Daggerheart::Character::ELF then DaggerheartCharacter::Heritages::ElfDecorator.new(obj)
-      else ApplicationDecorator.new(obj)
-      end
+      "DaggerheartCharacter::Heritages::#{obj.heritage.camelize}Decorator".constantize.new(obj)
+    rescue NameError => _e
+      ApplicationDecorator.new(obj)
     end
   end
 end

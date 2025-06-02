@@ -51,7 +51,9 @@
     },
     "daggerheart": {
       "heritage": "Раса",
-      "mainClass": "Основной класс"
+      "community": "Общество",
+      "mainClass": "Основной класс",
+      "subclass": "Подкласс"
     }
   },
   "itemsPage": {
@@ -64,6 +66,7 @@
     "title": "Заклинания"
   },
   "character": {
+    "traits": "Способности",
     "abilities": "Способности",
     "combat": "Сражение",
     "rest": "Отдых",
@@ -587,12 +590,6 @@
       "ins": "Инстинкты",
       "pre": "Наружность",
       "know": "Знания"
-    },
-    "heritages": {
-      "elf": "Эльф"
-    },
-    "classes": {
-      "warrior": "Воин"
     },
     "gold": {
       "coins": "Монеты",

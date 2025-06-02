@@ -8,6 +8,7 @@ import { Select, Input, IconButton, Button } from '../atoms';
 
 import { Plus, Profile } from '../../assets';
 import pathfinder2Config from '../../data/pathfinder2.json';
+import daggerheartConfig from '../../data/daggerheart.json';
 import { useAppState, useAppLocale, useAppAlert } from '../../context';
 import { fetchCharactersRequest } from '../../requests/fetchCharactersRequest';
 import { createCharacterRequest } from '../../requests/createCharacterRequest';
@@ -66,7 +67,9 @@ export const CharactersPage = (props) => {
   const [characterDaggerheartForm, setCharacterDaggerheartForm] = createStore({
     name: '',
     heritage: undefined,
+    community: undefined,
     main_class: undefined,
+    subclass: undefined,
     avatar_file: undefined,
     avatar_url: undefined
   });
@@ -155,7 +158,7 @@ export const CharactersPage = (props) => {
         setCharacterDnd5Form({ name: '', race: undefined, subrace: undefined, main_class: undefined, alignment: 'neutral', avatar_file: undefined, avatar_url: undefined });
         setCharacterDnd2024Form({ name: '', species: undefined, size: undefined, main_class: undefined, alignment: 'neutral', avatar_file: undefined, avatar_url: undefined });
         setCharacterPathfinder2Form({ name: '', race: undefined, subrace: undefined, main_class: undefined, background: undefined, avatar_file: undefined, avatar_url: undefined });
-        setCharacterDaggerheartForm({ name: '', heritage: undefined, main_class: undefined, avatar_file: undefined, avatar_url: undefined });
+        setCharacterDaggerheartForm({ name: '', heritage: undefined, community: undefined, main_class: undefined, subclass: undefined, avatar_file: undefined, avatar_url: undefined });
         setCurrentTab('characters');
         setLoading(false);
       });
@@ -242,7 +245,7 @@ export const CharactersPage = (props) => {
                         avatar={character.avatar}
                         name={character.name}
                         provider='Pathfinder 2'
-                        firstText={`${t('charactersPage.level')} ${character.level} | ${character.subrace ? pathfinder2Config.races[character.race].subraces[character.subrace].name[locale()] : pathfinder2Config.races[character.race].name[locale]}`}
+                        firstText={`${t('charactersPage.level')} ${character.level} | ${character.subrace ? pathfinder2Config.races[character.race].subraces[character.subrace].name[locale()] : pathfinder2Config.races[character.race].name[locale()]}`}
                         secondText={Object.keys(character.classes).map((item) => pathfinder2Config.classes[item].name[locale()]).join(' * ')}
                         onClick={() => navigate('characters', { id: character.id })}
                         onDeleteCharacter={(e) => deleteCharacter(e, character.id)}
@@ -253,8 +256,8 @@ export const CharactersPage = (props) => {
                         avatar={character.avatar}
                         name={character.name}
                         provider='Daggerheart'
-                        firstText={`${t('charactersPage.level')} ${character.level} | ${t(`daggerheart.heritages.${character.heritage}`)}`}
-                        secondText={Object.keys(character.classes).map((item) => t(`daggerheart.classes.${item}`)).join(' * ')}
+                        firstText={`${t('charactersPage.level')} ${character.level} | ${daggerheartConfig.heritages[character.heritage].name[locale()]}`}
+                        secondText={Object.keys(character.classes).map((item) => daggerheartConfig.classes[item].name[locale()]).join(' * ')}
                         onClick={() => navigate('characters', { id: character.id })}
                         onDeleteCharacter={(e) => deleteCharacter(e, character.id)}
                       />
@@ -416,16 +419,33 @@ export const CharactersPage = (props) => {
                     <Select
                       containerClassList="mb-2"
                       labelText={t('newCharacterPage.daggerheart.heritage')}
-                      items={dict().daggerheart.heritages}
+                      items={translate(daggerheartConfig.heritages, locale())}
                       selectedValue={characterDaggerheartForm.heritage}
                       onSelect={(value) => setCharacterDaggerheartForm({ ...characterDaggerheartForm, heritage: value })}
                     />
                     <Select
+                      containerClassList="mb-2"
+                      labelText={t('newCharacterPage.daggerheart.community')}
+                      items={translate(daggerheartConfig.communities, locale())}
+                      selectedValue={characterDaggerheartForm.community}
+                      onSelect={(value) => setCharacterDaggerheartForm({ ...characterDaggerheartForm, community: value })}
+                    />
+                    <Select
+                      containerClassList="mb-2"
                       labelText={t('newCharacterPage.daggerheart.mainClass')}
-                      items={dict().daggerheart.classes}
+                      items={translate(daggerheartConfig.classes, locale())}
                       selectedValue={characterDaggerheartForm.main_class}
                       onSelect={(value) => setCharacterDaggerheartForm({ ...characterDaggerheartForm, main_class: value })}
                     />
+                    <Show when={daggerheartConfig.classes[characterDaggerheartForm.main_class]?.subclasses}>
+                      <Select
+                        containerClassList="mb-2"
+                        labelText={t('newCharacterPage.daggerheart.subclass')}
+                        items={translate(daggerheartConfig.classes[characterDaggerheartForm.main_class].subclasses, locale())}
+                        selectedValue={characterDaggerheartForm.subclass}
+                        onSelect={(value) => setCharacterDaggerheartForm({ ...characterDaggerheartForm, subclass: value })}
+                      />
+                    </Show>
                   </Match>
                 </Switch>
               </div>

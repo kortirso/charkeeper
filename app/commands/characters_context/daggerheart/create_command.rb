@@ -11,14 +11,17 @@ module CharactersContext
       use_contract do
         config.messages.namespace = :daggerheart_character
 
-        Heritages = Dry::Types['strict.string'].enum(*::Daggerheart::Character::HERITAGES)
-        Classes = Dry::Types['strict.string'].enum(*::Daggerheart::Character::CLASSES)
+        Heritages = Dry::Types['strict.string'].enum(*::Daggerheart::Character.heritages.keys)
+        Communities = Dry::Types['strict.string'].enum(*::Daggerheart::Character.communities.keys)
+        Classes = Dry::Types['strict.string'].enum(*::Daggerheart::Character.classes_info.keys)
 
         params do
           required(:user).filled(type?: User)
           required(:name).filled(:string)
           required(:heritage).filled(Heritages)
+          required(:community).filled(Communities)
           required(:main_class).filled(Classes)
+          required(:subclass).filled(:string)
           optional(:avatar_file).hash do
             required(:file_content).filled(:string)
             required(:file_name).filled(:string)
@@ -27,13 +30,22 @@ module CharactersContext
         end
 
         rule(:avatar_file, :avatar_url).validate(:check_only_one_present)
+
+        rule(:main_class, :subclass) do
+          next if values[:subclass].nil?
+
+          subclasses = ::Daggerheart::Character.subclasses_info(values[:main_class]).keys
+          next if subclasses&.include?(values[:subclass])
+
+          key(:subclass).failure(:invalid)
+        end
       end
 
       private
 
       def do_prepare(input)
         input[:data] =
-          decorate_fresh_character(input.slice(:heritage, :main_class).symbolize_keys)
+          decorate_fresh_character(input.slice(:heritage, :community, :main_class, :subclass).symbolize_keys)
       end
 
       def do_persist(input)

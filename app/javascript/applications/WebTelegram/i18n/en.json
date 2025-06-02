@@ -51,7 +51,9 @@
     },
     "daggerheart": {
       "heritage": "Heritage",
-      "mainClass": "Main class"
+      "community": "Community",
+      "mainClass": "Main class",
+      "subclass": "Subclass"
     }
   },
   "itemsPage": {
@@ -64,6 +66,7 @@
     "title": "Spells"
   },
   "character": {
+    "traits": "Traits",
     "abilities": "Abilities",
     "combat": "Combat",
     "rest": "Rest",
@@ -587,12 +590,6 @@
       "ins": "Instinct",
       "pre": "Presence",
       "know": "Knowledge"
-    },
-    "heritages": {
-      "elf": "Elf"
-    },
-    "classes": {
-      "warrior": "Warrior"
     },
     "gold": {
       "coins": "Coins",

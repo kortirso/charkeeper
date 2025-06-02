@@ -19,7 +19,8 @@ module WebTelegram
       render json: serialize_resource(
         @character,
         serializer(@character.type),
-        :character
+        :character,
+        except: %i[avatar]
       ), status: :ok
     end
 

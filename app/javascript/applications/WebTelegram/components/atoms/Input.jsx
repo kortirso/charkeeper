@@ -9,7 +9,7 @@ export const Input = (props) => (
       when={props.numeric}
       fallback={
         <input
-          class="w-full h-12 bordered px-2"
+          class="w-full h-12 bordered px-2 font-cascadia-light"
           onInput={(e) => props.onInput(e.target.value)}
           value={props.value}
         />

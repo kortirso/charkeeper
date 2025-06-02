@@ -1,0 +1,98 @@
+{
+  "heritages": {
+    "clank": { "name": { "en": "Clank", "ru": "Кланк" }, "comment": "Механические существа" },
+    "drakona": { "name": { "en": "Drakona", "ru": "Драконид" }, "comment": "Антропоморфные драконы" },
+    "dwarf": { "name": { "en": "Dwarf", "ru": "Дварф" } },
+    "elf": { "name": { "en": "Elf", "ru": "Эльф" } },
+    "faerie": { "name": { "en": "Faerie", "ru": "Фея" } },
+    "faun": { "name": { "en": "Faun", "ru": "Фавн" } },
+    "firbolg": { "name": { "en": "Firbolg", "ru": "Фирболг" } },
+    "fungril": { "name": { "en": "Fungril", "ru": "Фунгрил" }, "comment": "Антропоморфные грибы" },
+    "galapa": { "name": { "en": "Galapa", "ru": "Галапа" }, "comment": "Антропоморфные черепахи" },
+    "giant": { "name": { "en": "Giant", "ru": "Гигант" } },
+    "goblin": { "name": { "en": "Goblin", "ru": "Гоблин" } },
+    "halfling": { "name": { "en": "Halfling", "ru": "Полурослик" } },
+    "human": { "name": { "en": "Human", "ru": "Человек" } },
+    "infernis": { "name": { "en": "Infernis", "ru": "Инфернал" } },
+    "katari": { "name": { "en": "Katari", "ru": "Катари" }, "comment": "Антропоморфные кошки" },
+    "orc": { "name": { "en": "Orc", "ru": "Орк" } },
+    "ribbet": { "name": { "en": "Ribbet", "ru": "Риббет" }, "comment": "Антропоморфные жабы" },
+    "simiah": { "name": { "en": "Simiah", "ru": "Симия" }, "comment": "Антропоморфные обезьяны" }
+  },
+  "communities": {
+    "highborne": { "name": { "en": "Highborne", "ru": "Высокородное общество" } },
+    "loreborne": { "name": { "en": "Loreborne", "ru": "Общество знаний" } },
+    "orderborne": { "name": { "en": "Orderborne", "ru": "Общество порядка" } },
+    "ridgeborne": { "name": { "en": "Ridgeborne", "ru": "Горное общество" } },
+    "seaborne": { "name": { "en": "Seaborne", "ru": "Морское общество" } },
+    "slyborne": { "name": { "en": "Slyborne", "ru": "Криминальное общество" } },
+    "underborne": { "name": { "en": "Underborne", "ru": "Подземное общество" } },
+    "wanderborne": { "name": { "en": "Wanderborne", "ru": "Общество странников" } },
+    "wildborne": { "name": { "en": "Wildborne", "ru": "Дикое общество" } }
+  },
+  "classes": {
+    "bard": {
+      "name": { "en": "Bard", "ru": "Бард" },
+      "subclasses": {
+        "troubadour": { "name": { "en": "Troubadour", "ru": "Трубадур" } },
+        "wordsmith": { "name": { "en": "Wordsmith", "ru": "Мастер слова" } }
+      }
+    },
+    "druid": {
+      "name": { "en": "Druid", "ru": "Друид" },
+      "subclasses": {
+        "warden_of_the_elements": { "name": { "en": "Warden of the Elements", "ru": "Хранитель элементалей" } },
+        "warden_of_renewal": { "name": { "en": "Warden of Renewal", "ru": "Хранитель обновления" } }
+      }
+    },
+    "guardian": {
+      "name": { "en": "Guardian", "ru": "Защитник" },
+      "subclasses": {
+        "stalwart": { "name": { "en": "Stalwart", "ru": "Стойкий" } },
+        "vengeance": { "name": { "en": "Vengeance", "ru": "Мститель" } }
+      }
+    },
+    "ranger": {
+      "name": { "en": "Ranger", "ru": "Рейнджер" },
+      "subclasses": {
+        "beastbound": { "name": { "en": "Beastbound", "ru": "Зверобой" } },
+        "wayfinder": { "name": { "en": "Wayfinder", "ru": "Следопыт" } }
+      }
+    },
+    "rogue": {
+      "name": { "en": "Rogue", "ru": "Плут" },
+      "subclasses": {
+        "nightwalker": { "name": { "en": "Nightwalker", "ru": "Мастер теней" } },
+        "syndicate": { "name": { "en": "Syndicate", "ru": "Член синдиката" } }
+      }
+    },
+    "seraph": {
+      "name": { "en": "Seraph", "ru": "Серафим" },
+      "subclasses": {
+        "divine_wielder": { "name": { "en": "Divine Wielder", "ru": "Носитель божественности" } },
+        "winged_sentinel": { "name": { "en": "Winged Sentinel", "ru": "Крылатый страж" } }
+      }
+    },
+    "sorcerer": {
+      "name": { "en": "Sorcerer", "ru": "Чародей" },
+      "subclasses": {
+        "elemental_origin": { "name": { "en": "Elemental Origin", "ru": "Эламентальное происхождение" } },
+        "Primal_origin": { "name": { "en": "Primal Origin", "ru": "Первобытное происхождение" } }
+      }
+    },
+    "warrior": {
+      "name": { "en": "Warrior", "ru": "Воин" },
+      "subclasses": {
+        "call_of_the_brave": { "name": { "en": "Call of the Brave", "ru": "Зов храбреца" } },
+        "call_of_the_slayer": { "name": { "en": "Call of the Slayer", "ru": "Зов убийцы" } }
+      }
+    },
+    "wizard": {
+      "name": { "en": "Wizard", "ru": "Волшебник" },
+      "subclasses": {
+        "school_of_knowledge": { "name": { "en": "School of Knowledge", "ru": "Школа знаний" } },
+        "school_of_war": { "name": { "en": "School of War", "ru": "Школа войны" } }
+      }
+    }
+  }
+}

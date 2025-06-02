@@ -6,8 +6,10 @@ module Daggerheart
 
     attribute :level, :integer, default: 1
     attribute :heritage, :string
+    attribute :community, :string
     attribute :main_class, :string
     attribute :classes, array: true
+    attribute :subclasses, array: true
     attribute :traits, array: true, default: { str: 1, agi: 2, fin: 1, ins: 0, pre: 0, know: -1 }
     attribute :health, array: true, default: { marked: 0, max: 6 }
     attribute :stress, array: true, default: { marked: 0, max: 6 }
@@ -18,16 +20,33 @@ module Daggerheart
   end
 
   class Character < Character
-    # heritages
-    ELF = 'elf'
+    def self.config
+      @config ||= PlatformConfig.data('daggerheart')
+    end
 
-    # classes
-    WARRIOR = 'warrior'
+    def self.heritages
+      config['heritages']
+    end
 
-    HERITAGES = [ELF].freeze
-    CLASSES = [
-      WARRIOR
-    ].freeze
+    def self.heritage_info(race_value)
+      config.dig('heritages', race_value)
+    end
+
+    def self.classes_info
+      config['classes']
+    end
+
+    def self.class_info(class_value)
+      config.dig('classes', class_value)
+    end
+
+    def self.subclasses_info(class_value)
+      config.dig('classes', class_value, 'subclasses')
+    end
+
+    def self.communities
+      config['communities']
+    end
 
     attribute :data, Daggerheart::CharacterData.to_type
 
