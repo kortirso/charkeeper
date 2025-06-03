@@ -89,6 +89,13 @@ Dir[File.join(Rails.root.join('db/data/dnd2024_character_features/*.json'))].eac
   end
 end
 
+Dir[File.join(Rails.root.join('db/data/daggerheart_character_features/*.json'))].each do |filename|
+  puts "seeding - #{filename}"
+  JSON.parse(File.read(filename)).each do |character_feature|
+    ::Daggerheart::Character::Feature.create!(character_feature)
+  end
+end
+
 weapons_file = File.read(Rails.root.join('db/data/weapons.json'))
 weapons = JSON.parse(weapons_file)
 Dnd5::Item.upsert_all(weapons) if weapons.any?

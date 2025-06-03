@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_05_26_115423) do
+ActiveRecord::Schema[8.0].define(version: 2025_06_03_120252) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
   enable_extension "pgcrypto"
@@ -82,6 +82,21 @@ ActiveRecord::Schema[8.0].define(version: 2025_05_26_115423) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_characters_on_user_id"
+  end
+
+  create_table "daggerheart_character_features", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "slug", null: false
+    t.jsonb "title", default: {}, null: false
+    t.jsonb "description", default: {}, null: false
+    t.integer "origin", limit: 2, null: false, comment: "Тип применимости особенности"
+    t.string "origin_value", null: false, comment: "Значение применимости особенности"
+    t.integer "kind", limit: 2, null: false
+    t.string "visible", null: false, comment: "Доступен ли бонус особенности"
+    t.jsonb "description_eval_variables", default: {}, null: false, comment: "Вычисляемые переменные для описания"
+    t.integer "limit_refresh", limit: 2, comment: "Событие для обновления лимита"
+    t.string "exclude", comment: "Заменяемые способности", array: true
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "dnd2024_character_features", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|

@@ -3,8 +3,8 @@
 module DaggerheartCharacter
   class BaseDecorator < SimpleDelegator
     delegate :id, :name, :data, to: :__getobj__
-    delegate :heritage, :main_class, :classes, :level, :gold, :spent_armor_slots, :health, :stress, :hope, :traits,
-             :total_gold, to: :data
+    delegate :heritage, :main_class, :classes, :subclasses, :level, :gold, :spent_armor_slots, :health, :stress, :hope, :traits,
+             :total_gold, :subclasses_mastery, :experiences, :energy, to: :data
 
     def method_missing(_method, *args); end
 

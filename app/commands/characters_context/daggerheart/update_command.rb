@@ -41,6 +41,7 @@ module CharactersContext
             required(:bags).filled(:integer)
             required(:chests).filled(:integer)
           end
+          optional(:energy).hash
           optional(:name).filled(:string)
           optional(:avatar_file).hash do
             required(:file_content).filled(:string)
@@ -64,7 +65,7 @@ module CharactersContext
 
       def do_prepare(input)
         input[:level] = input[:classes].values.sum(&:to_i) if input[:classes]
-        %i[classes traits].each do |key|
+        %i[classes traits energy].each do |key|
           input[key]&.transform_values!(&:to_i)
         end
       end

@@ -1,0 +1,223 @@
+[
+  {
+    "slug": "make_a_scene",
+    "title": { "en": "Make a Scene", "ru": "Make a Scene" },
+    "description": {
+      "en": "Spend 3 Hope to temporarily Distract a target within Close range, giving them a -2 penalty to their Difficulty.",
+      "ru": "Spend 3 Hope to temporarily Distract a target within Close range, giving them a -2 penalty to their Difficulty."
+    },
+    "origin": "class",
+    "origin_value": "bard",
+    "kind": "static",
+    "visible": "true"
+  },
+  {
+    "slug": "rally",
+    "title": { "en": "Rally", "ru": "Rally" },
+    "description": {
+      "en": "Describe how you rally the party and give yourself and each of your allies a Rally Die {{value}}. A PC can spend their Rally Die to roll it, adding the result to their action roll, reaction roll, damage roll, or to clear a number of Stress equal to the result. At the end of each session, clear all unspent Rally Dice.",
+      "ru": "Describe how you rally the party and give yourself and each of your allies a Rally Die {{value}}. A PC can spend their Rally Die to roll it, adding the result to their action roll, reaction roll, damage roll, or to clear a number of Stress equal to the result. At the end of each session, clear all unspent Rally Dice."
+    },
+    "origin": "class",
+    "origin_value": "bard",
+    "kind": "static",
+    "visible": "true",
+    "description_eval_variables": {
+      "value": "level >= 5 ? 'd8' : 'd6'",
+      "limit": "1"
+    },
+    "limit_refresh": "session"
+  },
+  {
+    "slug": "relaxing_song",
+    "title": { "en": "Relaxing Song", "ru": "Relaxing Song" },
+    "description": {
+      "en": "You and all allies within Close range clear a Hit Point.",
+      "ru": "You and all allies within Close range clear a Hit Point."
+    },
+    "origin": "subclass",
+    "origin_value": "troubadour",
+    "kind": "static",
+    "visible": "true",
+    "description_eval_variables": {
+      "limit": "1"
+    },
+    "limit_refresh": "long_rest"
+  },
+  {
+    "slug": "epic_song",
+    "title": { "en": "Epic Song", "ru": "Epic Song" },
+    "description": {
+      "en": "Make a target within Close range temporarily Vulnerable.",
+      "ru": "Make a target within Close range temporarily Vulnerable."
+    },
+    "origin": "subclass",
+    "origin_value": "troubadour",
+    "kind": "static",
+    "visible": "true",
+    "description_eval_variables": {
+      "limit": "1"
+    },
+    "limit_refresh": "long_rest"
+  },
+  {
+    "slug": "heartbreaking_song",
+    "title": { "en": "Heartbreaking Song", "ru": "Heartbreaking Song" },
+    "description": {
+      "en": "You and all allies within Close range gain a Hope.",
+      "ru": "You and all allies within Close range gain a Hope."
+    },
+    "origin": "subclass",
+    "origin_value": "troubadour",
+    "kind": "static",
+    "visible": "true",
+    "description_eval_variables": {
+      "limit": "1"
+    },
+    "limit_refresh": "long_rest"
+  },
+  {
+    "slug": "rally_maestro",
+    "title": { "en": "Rally", "ru": "Rally" },
+    "exclude": ["rally"],
+    "description": {
+      "en": "Describe how you rally the party and give yourself and each of your allies a Rally Die {{value}}. A PC can spend their Rally Die to roll it, adding the result to their action roll, reaction roll, damage roll, or to clear a number of Stress equal to the result. At the end of each session, clear all unspent Rally Dice. When you give a Rally Die to an ally, they can gain a Hope or clear a Stress.",
+      "ru": "Describe how you rally the party and give yourself and each of your allies a Rally Die {{value}}. A PC can spend their Rally Die to roll it, adding the result to their action roll, reaction roll, damage roll, or to clear a number of Stress equal to the result. At the end of each session, clear all unspent Rally Dice. When you give a Rally Die to an ally, they can gain a Hope or clear a Stress."
+    },
+    "origin": "subclass",
+    "origin_value": "troubadour",
+    "kind": "static",
+    "visible": "subclasses_mastery['troubadour'].to_i >= 2",
+    "description_eval_variables": {
+      "value": "level >= 5 ? 'd8' : 'd6'",
+      "limit": "1"
+    },
+    "limit_refresh": "session"
+  },
+  {
+    "slug": "relaxing_song_virtuoso",
+    "title": { "en": "Relaxing Song", "ru": "Relaxing Song" },
+    "exclude": ["relaxing_song"],
+    "description": {
+      "en": "You and all allies within Close range clear a Hit Point.",
+      "ru": "You and all allies within Close range clear a Hit Point."
+    },
+    "origin": "subclass",
+    "origin_value": "troubadour",
+    "kind": "static",
+    "visible": "subclasses_mastery['troubadour'].to_i >= 3",
+    "description_eval_variables": {
+      "limit": "2"
+    },
+    "limit_refresh": "long_rest"
+  },
+  {
+    "slug": "epic_song_virtuoso",
+    "title": { "en": "Epic Song", "ru": "Epic Song" },
+    "exclude": ["epic_song"],
+    "description": {
+      "en": "Make a target within Close range temporarily Vulnerable.",
+      "ru": "Make a target within Close range temporarily Vulnerable."
+    },
+    "origin": "subclass",
+    "origin_value": "troubadour",
+    "kind": "static",
+    "visible": "subclasses_mastery['troubadour'].to_i >= 3",
+    "description_eval_variables": {
+      "limit": "2"
+    },
+    "limit_refresh": "long_rest"
+  },
+  {
+    "slug": "heartbreaking_song_virtuoso",
+    "title": { "en": "Heartbreaking Song", "ru": "Heartbreaking Song" },
+    "exclude": ["heartbreaking_song"],
+    "description": {
+      "en": "You and all allies within Close range gain a Hope.",
+      "ru": "You and all allies within Close range gain a Hope."
+    },
+    "origin": "subclass",
+    "origin_value": "troubadour",
+    "kind": "static",
+    "visible": "subclasses_mastery['troubadour'].to_i >= 3",
+    "description_eval_variables": {
+      "limit": "2"
+    },
+    "limit_refresh": "long_rest"
+  },
+  {
+    "slug": "rousing_speech",
+    "title": { "en": "Rousing Speech", "ru": "Rousing Speech" },
+    "description": {
+      "en": "All allies within Far range clear 2 Stress.",
+      "ru": "All allies within Far range clear 2 Stress."
+    },
+    "origin": "subclass",
+    "origin_value": "wordsmith",
+    "kind": "static",
+    "visible": "true",
+    "description_eval_variables": {
+      "limit": "1"
+    },
+    "limit_refresh": "long_rest"
+  },
+  {
+    "slug": "heart_of_a_poet",
+    "title": { "en": "Heart of a Poet", "ru": "Heart of a Poet" },
+    "description": {
+      "en": "After you make an action roll to impress, persuade, or offend someone, you can spend a Hope to add a d4 to the roll.",
+      "ru": "After you make an action roll to impress, persuade, or offend someone, you can spend a Hope to add a d4 to the roll."
+    },
+    "origin": "subclass",
+    "origin_value": "wordsmith",
+    "kind": "static",
+    "visible": "true"
+  },
+  {
+    "slug": "eloquent",
+    "title": { "en": "Eloquent", "ru": "Eloquent" },
+    "exclude": ["rally"],
+    "description": {
+      "en": "When you encourage an ally, you can do one of the following: 1) allow them to find a mundane object or tool they need, 2) help an Ally without spending Hope, 3) give them an additional downtime move during their next rest.",
+      "ru": "When you encourage an ally, you can do one of the following: 1) allow them to find a mundane object or tool they need, 2) help an Ally without spending Hope, 3) give them an additional downtime move during their next rest."
+    },
+    "origin": "subclass",
+    "origin_value": "wordsmith",
+    "kind": "static",
+    "visible": "subclasses_mastery['wordsmith'].to_i >= 2",
+    "description_eval_variables": {
+      "limit": "1"
+    },
+    "limit_refresh": "session"
+  },
+  {
+    "slug": "rally_epic_poetry",
+    "title": { "en": "Rally", "ru": "Rally" },
+    "exclude": ["rally"],
+    "description": {
+      "en": "Describe how you rally the party and give yourself and each of your allies a Rally Die {{value}}. A PC can spend their Rally Die to roll it, adding the result to their action roll, reaction roll, damage roll, or to clear a number of Stress equal to the result. At the end of each session, clear all unspent Rally Dice.",
+      "ru": "Describe how you rally the party and give yourself and each of your allies a Rally Die {{value}}. A PC can spend their Rally Die to roll it, adding the result to their action roll, reaction roll, damage roll, or to clear a number of Stress equal to the result. At the end of each session, clear all unspent Rally Dice."
+    },
+    "origin": "subclass",
+    "origin_value": "wordsmith",
+    "kind": "static",
+    "visible": "subclasses_mastery['wordsmith'].to_i >= 2",
+    "description_eval_variables": {
+      "value": "'d10'",
+      "limit": "1"
+    },
+    "limit_refresh": "session"
+  },
+  {
+    "slug": "epic_poetry",
+    "title": { "en": "Epic Poetry", "ru": "Epic Poetry" },
+    "description": {
+      "en": "When you Help an Ally, you can narrate the moment as if you were writing the tale of their heroism in a memoir. When you do, roll a d10 as your advantage die.",
+      "ru": "When you Help an Ally, you can narrate the moment as if you were writing the tale of their heroism in a memoir. When you do, roll a d10 as your advantage die."
+    },
+    "origin": "subclass",
+    "origin_value": "wordsmith",
+    "kind": "static",
+    "visible": "subclasses_mastery['wordsmith'].to_i >= 3"
+  }
+]

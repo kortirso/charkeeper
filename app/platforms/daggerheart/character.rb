@@ -9,7 +9,10 @@ module Daggerheart
     attribute :community, :string
     attribute :main_class, :string
     attribute :classes, array: true
-    attribute :subclasses, array: true
+    attribute :subclasses, array: true, default: {}
+    attribute :subclasses_mastery, array: true, default: {}
+    attribute :experiences, array: true, default: {}
+    attribute :energy, array: true, default: {}
     attribute :traits, array: true, default: { str: 1, agi: 2, fin: 1, ins: 0, pre: 0, know: -1 }
     attribute :health, array: true, default: { marked: 0, max: 6 }
     attribute :stress, array: true, default: { marked: 0, max: 6 }
@@ -53,7 +56,8 @@ module Daggerheart
     def decorator
       base_decorator = ::DaggerheartCharacter::BaseDecorator.new(self)
       heritage_decorator = ::DaggerheartCharacter::HeritageDecorateWrapper.new(base_decorator)
-      ::DaggerheartCharacter::ClassDecorateWrapper.new(heritage_decorator)
+      class_decorator = ::DaggerheartCharacter::ClassDecorateWrapper.new(heritage_decorator)
+      ::DaggerheartCharacter::FeaturesDecorator.new(class_decorator)
     end
   end
 end

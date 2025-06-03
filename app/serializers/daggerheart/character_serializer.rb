@@ -4,10 +4,10 @@ module Daggerheart
   class CharacterSerializer < ApplicationSerializer
     attributes :provider, :avatar, :id, :name, :level, :heritage, :main_class, :classes, :traits, :created_at, :gold,
                :spent_armor_slots, :health, :stress, :hope, :modified_traits, :damage_thresholds, :evasion, :armor_score,
-               :armor_slots
+               :armor_slots, :features, :energy
 
     delegate :id, :name, :level, :heritage, :main_class, :classes, :traits, :gold, :spent_armor_slots, :health, :stress, :hope,
-             :modified_traits, :damage_thresholds, :evasion, :armor_score, :armor_slots, to: :decorator
+             :modified_traits, :damage_thresholds, :evasion, :armor_score, :armor_slots, :features, :energy, to: :decorator
     delegate :created_at, to: :object
 
     def provider
