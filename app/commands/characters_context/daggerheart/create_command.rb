@@ -59,7 +59,6 @@ module CharactersContext
 
       def decorate_fresh_character(data)
         DaggerheartCharacter::BaseBuilder.new.call(result: data)
-          .then { |result| DaggerheartCharacter::HeritageBuilder.new.call(result: result) }
           .then { |result| DaggerheartCharacter::ClassBuilder.new.call(result: result) }
       end
     end
