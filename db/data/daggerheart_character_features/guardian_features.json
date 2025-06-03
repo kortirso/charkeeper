@@ -1,0 +1,163 @@
+[
+  {
+    "slug": "frontline_tank",
+    "title": { "en": "Frontline Tank", "ru": "Frontline Tank" },
+    "description": {
+      "en": "Spend 3 Hope to clear 2 Armor Slots.",
+      "ru": "Spend 3 Hope to clear 2 Armor Slots."
+    },
+    "origin": "class",
+    "origin_value": "guardian",
+    "kind": "static",
+    "visible": "true"
+  },
+  {
+    "slug": "unstoppable",
+    "title": { "en": "Unstoppable", "ru": "Unstoppable" },
+    "description": {
+      "en": "You can become Unstoppable. You gain an Unstoppable Die - {{value}}, starting with the 1 value facing up. After you make a damage roll that deals 1 or more Hit Points to a target, increase the Unstoppable Die value by one. When the die's value would exceed its maximum value or when the scene ends, remove the die and drop out of Unstoppable. While Unstoppable: you reduce the severity of physical damage by one threshold, you add {{value}} to your damage roll, you can't be Restrained or Vulnerable.",
+      "ru": "You can become Unstoppable. You gain an Unstoppable Die - {{value}}, starting with the 1 value facing up. After you make a damage roll that deals 1 or more Hit Points to a target, increase the Unstoppable Die value by one. When the die's value would exceed its maximum value or when the scene ends, remove the die and drop out of Unstoppable. While Unstoppable: you reduce the severity of physical damage by one threshold, you add {{value}} to your damage roll, you can't be Restrained or Vulnerable."
+    },
+    "origin": "class",
+    "origin_value": "guardian",
+    "kind": "text",
+    "visible": "true",
+    "description_eval_variables": {
+      "value": "level >= 5 ? 'd6' : 'd4'",
+      "limit": "1"
+    },
+    "limit_refresh": "long_rest"
+  },
+  {
+    "slug": "unwavering",
+    "title": { "en": "Unwavering", "ru": "Unwavering" },
+    "description": {
+      "en": "",
+      "ru": ""
+    },
+    "origin": "subclass",
+    "origin_value": "stalwart",
+    "kind": "update_result",
+    "visible": "true",
+    "eval_variables": {
+      "damage_thresholds": "damage_thresholds.transform_values { |item| item + 1 }"
+    }
+  },
+  {
+    "slug": "iron_will",
+    "title": { "en": "Iron Will", "ru": "Iron Will" },
+    "description": {
+      "en": "When you take physical damage, you can mark an additional Armor Slot to reduce the severity.",
+      "ru": "When you take physical damage, you can mark an additional Armor Slot to reduce the severity."
+    },
+    "origin": "subclass",
+    "origin_value": "stalwart",
+    "kind": "static",
+    "visible": "true"
+  },
+  {
+    "slug": "unrelenting",
+    "title": { "en": "Unrelenting", "ru": "Unrelenting" },
+    "description": {
+      "en": "",
+      "ru": ""
+    },
+    "origin": "subclass",
+    "origin_value": "stalwart",
+    "kind": "update_result",
+    "visible": "subclasses_mastery['stalwart'].to_i >= 2",
+    "eval_variables": {
+      "damage_thresholds": "damage_thresholds.transform_values { |item| item + 2 }"
+    }
+  },
+  {
+    "slug": "partners_in_arms",
+    "title": { "en": "Partners-in-Arms", "ru": "Partners-in-Arms" },
+    "description": {
+      "en": "When an ally within Very Close range takes damage, you can mark an Armor Slot to reduce the severity by one threshold.",
+      "ru": "When an ally within Very Close range takes damage, you can mark an Armor Slot to reduce the severity by one threshold."
+    },
+    "origin": "subclass",
+    "origin_value": "stalwart",
+    "kind": "static",
+    "visible": "subclasses_mastery['stalwart'].to_i >= 2"
+  },
+  {
+    "slug": "undaunted",
+    "title": { "en": "Undaunted", "ru": "Undaunted" },
+    "description": {
+      "en": "",
+      "ru": ""
+    },
+    "origin": "subclass",
+    "origin_value": "stalwart",
+    "kind": "update_result",
+    "visible": "subclasses_mastery['stalwart'].to_i >= 3",
+    "eval_variables": {
+      "damage_thresholds": "damage_thresholds.transform_values { |item| item + 3 }"
+    }
+  },
+  {
+    "slug": "loyal_protector",
+    "title": { "en": "Loyal Protector", "ru": "Loyal Protector" },
+    "description": {
+      "en": "When an ally within Close range has 2 or fewer Hit Points and would take damage, you can mark a Stress to sprint to their side and take the damage instead.",
+      "ru": "When an ally within Close range has 2 or fewer Hit Points and would take damage, you can mark a Stress to sprint to their side and take the damage instead."
+    },
+    "origin": "subclass",
+    "origin_value": "stalwart",
+    "kind": "static",
+    "visible": "subclasses_mastery['stalwart'].to_i >= 3"
+  },
+  {
+    "slug": "at_ease",
+    "title": { "en": "At Ease", "ru": "At Ease" },
+    "description": {
+      "en": "",
+      "ru": ""
+    },
+    "origin": "subclass",
+    "origin_value": "vengeance",
+    "kind": "update_result",
+    "visible": "true",
+    "eval_variables": {
+      "stress": "stress.merge({ 'max' => stress['max'] + 1 })"
+    }
+  },
+  {
+    "slug": "revenge",
+    "title": { "en": "Revenge", "ru": "Revenge" },
+    "description": {
+      "en": "When an adversary within Melee range succeeds on an attack against you, you can mark 2 Stress to force the attacker to mark a Hit Point.",
+      "ru": "When an adversary within Melee range succeeds on an attack against you, you can mark 2 Stress to force the attacker to mark a Hit Point."
+    },
+    "origin": "subclass",
+    "origin_value": "vengeance",
+    "kind": "static",
+    "visible": "true"
+  },
+  {
+    "slug": "act_of_reprisal",
+    "title": { "en": "Act of Reprisal", "ru": "Act of Reprisal" },
+    "description": {
+      "en": "When an adversary damages an ally within Melee range, you gain a +1 bonus to your Proficiency for the next successful attack you make against that adversary.",
+      "ru": "When an adversary damages an ally within Melee range, you gain a +1 bonus to your Proficiency for the next successful attack you make against that adversary."
+    },
+    "origin": "subclass",
+    "origin_value": "vengeance",
+    "kind": "static",
+    "visible": "subclasses_mastery['vengeance'].to_i >= 2"
+  },
+  {
+    "slug": "nemesis",
+    "title": { "en": "Nemesis", "ru": "Nemesis" },
+    "description": {
+      "en": "Spend 2 Hope to Prioritize an adversary until your next rest. When you make an attack against your Prioritized adversary, you can swap the results of your Hope and Fear Dice. You can only Prioritize one adversary at a time.",
+      "ru": "Spend 2 Hope to Prioritize an adversary until your next rest. When you make an attack against your Prioritized adversary, you can swap the results of your Hope and Fear Dice. You can only Prioritize one adversary at a time."
+    },
+    "origin": "subclass",
+    "origin_value": "vengeance",
+    "kind": "static",
+    "visible": "subclasses_mastery['vengeance'].to_i >= 3"
+  }
+]

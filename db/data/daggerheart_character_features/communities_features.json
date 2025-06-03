@@ -1,0 +1,110 @@
+[
+  {
+    "slug": "privilege",
+    "title": { "en": "Privilege", "ru": "Privilege" },
+    "description": {
+      "en": "You have advantage on rolls to consort with nobles, negotiate prices, or leverage your reputation to get what you want.",
+      "ru": "You have advantage on rolls to consort with nobles, negotiate prices, or leverage your reputation to get what you want."
+    },
+    "origin": "community",
+    "origin_value": "highborne",
+    "kind": "static",
+    "visible": "true"
+  },
+  {
+    "slug": "well_read",
+    "title": { "en": "Well-Read", "ru": "Well-Read" },
+    "description": {
+      "en": "You have advantage on rolls that involve the history, culture, or politics of a prominent person or place.",
+      "ru": "You have advantage on rolls that involve the history, culture, or politics of a prominent person or place."
+    },
+    "origin": "community",
+    "origin_value": "loreborne",
+    "kind": "static",
+    "visible": "true"
+  },
+  {
+    "slug": "dedicated",
+    "title": { "en": "Dedicated", "ru": "Dedicated" },
+    "description": {
+      "en": "Record three sayings or values your upbringing instilled in you. Once per rest, when you describe how you're embodying one of these principles through your current action, you can roll a d20 as your Hope Die.",
+      "ru": "Record three sayings or values your upbringing instilled in you. Once per rest, when you describe how you're embodying one of these principles through your current action, you can roll a d20 as your Hope Die."
+    },
+    "origin": "community",
+    "origin_value": "orderborne",
+    "kind": "text",
+    "visible": "true"
+  },
+  {
+    "slug": "steady",
+    "title": { "en": "Steady", "ru": "Steady" },
+    "description": {
+      "en": "You have advantage on rolls to traverse dangerous cliffs and ledges, navigate harsh environments, and use your survival knowledge.",
+      "ru": "You have advantage on rolls to traverse dangerous cliffs and ledges, navigate harsh environments, and use your survival knowledge."
+    },
+    "origin": "community",
+    "origin_value": "ridgeborne",
+    "kind": "static",
+    "visible": "true"
+  },
+  {
+    "slug": "know_the_tide",
+    "title": { "en": "Know the Tide", "ru": "Know the Tide" },
+    "description": {
+      "en": "When you roll with Fear, place a token on your community card. You can hold a number of tokens equal to your level. Before you make an action roll, you can spend any number of these tokens to gain a +1 bonus to the roll for each token spent. At the end of each session, clear all unspent tokens.",
+      "ru": "When you roll with Fear, place a token on your community card. You can hold a number of tokens equal to your level. Before you make an action roll, you can spend any number of these tokens to gain a +1 bonus to the roll for each token spent. At the end of each session, clear all unspent tokens."
+    },
+    "origin": "community",
+    "origin_value": "seaborne",
+    "kind": "static",
+    "visible": "true"
+  },
+  {
+    "slug": "scoundrel",
+    "title": { "en": "Scoundrel", "ru": "Scoundrel" },
+    "description": {
+      "en": "You have advantage on rolls to negotiate with criminals, detect lies, or find a safe place to hide.",
+      "ru": "You have advantage on rolls to negotiate with criminals, detect lies, or find a safe place to hide."
+    },
+    "origin": "community",
+    "origin_value": "slyborne",
+    "kind": "static",
+    "visible": "true"
+  },
+  {
+    "slug": "low_light_living",
+    "title": { "en": "Low-Light Living", "ru": "Low-Light Living" },
+    "description": {
+      "en": "When you're in an area with low light or heavy shadow, you have advantage on rolls to hide, investigate, or perceive details within that area.",
+      "ru": "When you're in an area with low light or heavy shadow, you have advantage on rolls to hide, investigate, or perceive details within that area."
+    },
+    "origin": "community",
+    "origin_value": "underborne",
+    "kind": "static",
+    "visible": "true"
+  },
+  {
+    "slug": "nomadic_pack",
+    "title": { "en": "Nomadic Pack", "ru": "Nomadic Pack" },
+    "description": {
+      "en": "Add a Nomadic Pack to your inventory. Once per session, you can spend a Hope to reach into this pack and pull out a mundane item that's useful to your situation. Work with the GM to figure out what item you take out.",
+      "ru": "Add a Nomadic Pack to your inventory. Once per session, you can spend a Hope to reach into this pack and pull out a mundane item that's useful to your situation. Work with the GM to figure out what item you take out."
+    },
+    "origin": "community",
+    "origin_value": "wanderborne",
+    "kind": "static",
+    "visible": "true"
+  },
+  {
+    "slug": "lightfoot",
+    "title": { "en": "Lightfoot", "ru": "Lightfoot" },
+    "description": {
+      "en": "Your movement is naturally silent. You have advantage on rolls to move without being heard.",
+      "ru": "Your movement is naturally silent. You have advantage on rolls to move without being heard."
+    },
+    "origin": "community",
+    "origin_value": "wildborne",
+    "kind": "static",
+    "visible": "true"
+  }
+]

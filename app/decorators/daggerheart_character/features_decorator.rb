@@ -16,11 +16,24 @@ module DaggerheartCharacter
       end
     end
 
+    # rubocop: disable Metrics/AbcSize, Metrics/MethodLength, Metrics/PerceivedComplexity
     def features
-      @features ||=
-        available_features.filter_map do |feature|
+      @features ||= begin
+        visible_features = available_features.filter_map do |feature|
           visible = eval_variable(feature.visible)
           next unless visible
+
+          feature
+        end
+
+        excludes = visible_features.pluck(:exclude).flatten.compact.uniq
+        visible_features.filter_map do |feature|
+          next if feature.slug.in?(excludes)
+
+          feature.eval_variables.each do |method_name, variable|
+            instance_variable_set(:"@#{method_name}", eval_variable(variable))
+          end
+          next if feature.kind == 'update_result'
 
           feature.description_eval_variables.transform_values! { |value| eval_variable(value) }
           {
@@ -32,7 +45,9 @@ module DaggerheartCharacter
             limit_refresh: feature.limit_refresh
           }.compact
         end
+      end
     end
+    # rubocop: enable Metrics/AbcSize, Metrics/MethodLength, Metrics/PerceivedComplexity
 
     private
 
@@ -41,6 +56,7 @@ module DaggerheartCharacter
         .or(Daggerheart::Character::Feature.where(origin: 'community', origin_value: community))
         .or(Daggerheart::Character::Feature.where(origin: 'class', origin_value: classes.keys))
         .or(Daggerheart::Character::Feature.where(origin: 'subclass', origin_value: subclasses.values))
+        .to_a
     end
 
     def update_feature_description(feature)

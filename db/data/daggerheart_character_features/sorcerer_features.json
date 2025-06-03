@@ -1,0 +1,130 @@
+[
+  {
+    "slug": "volatile_magic",
+    "title": { "en": "Volatile Magic", "ru": "Volatile Magic" },
+    "description": {
+      "en": "Spend 3 Hope to reroll any number of your damage dice on an attack that deals magic damage.",
+      "ru": "Spend 3 Hope to reroll any number of your damage dice on an attack that deals magic damage."
+    },
+    "origin": "class",
+    "origin_value": "sorcerer",
+    "kind": "static",
+    "visible": "true"
+  },
+  {
+    "slug": "arcane_sense",
+    "title": { "en": "Arcane Sense", "ru": "Arcane Sense" },
+    "description": {
+      "en": "You can sense the presence of magical people and objects within Close range.",
+      "ru": "You can sense the presence of magical people and objects within Close range."
+    },
+    "origin": "class",
+    "origin_value": "sorcerer",
+    "kind": "static",
+    "visible": "true"
+  },
+  {
+    "slug": "minor_illusion",
+    "title": { "en": "Minor Illusion", "ru": "Minor Illusion" },
+    "description": {
+      "en": "Make a Spellcast Roll (10). On a success, you create a minor visual illusion no larger than yourself within Close range. This illusion is convincing to anyone at Close range or farther.",
+      "ru": "Make a Spellcast Roll (10). On a success, you create a minor visual illusion no larger than yourself within Close range. This illusion is convincing to anyone at Close range or farther."
+    },
+    "origin": "class",
+    "origin_value": "sorcerer",
+    "kind": "static",
+    "visible": "true"
+  },
+  {
+    "slug": "channel_raw_power",
+    "title": { "en": "Channel Raw Power", "ru": "Channel Raw Power" },
+    "description": {
+      "en": "You can place a domain card from your loadout into your vault and choose to either: 1) gain Hope equal to the level of the card, 2) enhance a spell that deals damage, gaining a bonus to your damage roll equal to twice the level of the card.",
+      "ru": "You can place a domain card from your loadout into your vault and choose to either: 1) gain Hope equal to the level of the card, 2) enhance a spell that deals damage, gaining a bonus to your damage roll equal to twice the level of the card."
+    },
+    "origin": "class",
+    "origin_value": "sorcerer",
+    "kind": "static",
+    "visible": "true",
+    "description_eval_variables": {
+      "limit": "1"
+    },
+    "limit_refresh": "long_rest"
+  },
+  {
+    "slug": "elementalist",
+    "title": { "en": "Elementalist", "ru": "Elementalist" },
+    "description": {
+      "en": "Choose one of the following elements at character creation: air, earth, fire, lightning, water. You can shape this element into harmless effects. Additionally, spend a Hope and describe how your control over this element helps an action roll you're about to make, then either gain a +2 bonus to the roll or a +3 bonus to the roll's damage.",
+      "ru": "Choose one of the following elements at character creation: air, earth, fire, lightning, water. You can shape this element into harmless effects. Additionally, spend a Hope and describe how your control over this element helps an action roll you're about to make, then either gain a +2 bonus to the roll or a +3 bonus to the roll's damage."
+    },
+    "origin": "subclass",
+    "origin_value": "elemental_origin",
+    "kind": "text",
+    "visible": "true"
+  },
+  {
+    "slug": "natural_evasion",
+    "title": { "en": "Natural Evasion", "ru": "Natural Evasion" },
+    "description": {
+      "en": "You can call forth your element to protect you from harm. When an attack roll against you succeeds, you can mark a Stress and describe how you use your element to defend you. When you do, roll a d6 and add its result to your Evasion against the attack.",
+      "ru": "You can call forth your element to protect you from harm. When an attack roll against you succeeds, you can mark a Stress and describe how you use your element to defend you. When you do, roll a d6 and add its result to your Evasion against the attack."
+    },
+    "origin": "subclass",
+    "origin_value": "elemental_origin",
+    "kind": "static",
+    "visible": "subclasses_mastery['elemental_origin'].to_i >= 2"
+  },
+  {
+    "slug": "transcendence",
+    "title": { "en": "Transcendence", "ru": "Transcendence" },
+    "description": {
+      "en": "You can transform into a physical manifestation of your element. When you do, describe your transformation and choose two of the following benefits to gain until your next rest: 1) +4 bonus to your Severe threshold, 2) +1 bonus to a character trait of your choice, 3) +1 bonus to your Proficiency, 4) +2 bonus to your Evasion.",
+      "ru": "You can transform into a physical manifestation of your element. When you do, describe your transformation and choose two of the following benefits to gain until your next rest: 1) +4 bonus to your Severe threshold, 2) +1 bonus to a character trait of your choice, 3) +1 bonus to your Proficiency, 4) +2 bonus to your Evasion."
+    },
+    "origin": "subclass",
+    "origin_value": "elemental_origin",
+    "kind": "static",
+    "visible": "subclasses_mastery['elemental_origin'].to_i >= 3",
+    "description_eval_variables": {
+      "limit": "1"
+    },
+    "limit_refresh": "long_rest"
+  },
+  {
+    "slug": "manipulate_magic",
+    "title": { "en": "Manipulate Magic", "ru": "Manipulate Magic" },
+    "description": {
+      "en": "After you cast a spell or make an attack using a weapon that deals magic damage, you can mark a Stress to do one of the following: 1) extend the spell or attack's reach by one range, 2) gain a +2 bonus to the action roll's result, 3) double a damage die of your choice, 4) hit an additional target within range.",
+      "ru": "After you cast a spell or make an attack using a weapon that deals magic damage, you can mark a Stress to do one of the following: 1) extend the spell or attack's reach by one range, 2) gain a +2 bonus to the action roll's result, 3) double a damage die of your choice, 4) hit an additional target within range."
+    },
+    "origin": "subclass",
+    "origin_value": "primal_origin",
+    "kind": "text",
+    "visible": "true"
+  },
+  {
+    "slug": "enchanted_aid",
+    "title": { "en": "Enchanted Aid", "ru": "Enchanted Aid" },
+    "description": {
+      "en": "When you Help an Ally with a Spellcast Roll, you can roll a d8 as your advantage die. Once per long rest, after an ally has made a Spellcast Roll with your help, you can swap the results of their Duality Dice.",
+      "ru": "When you Help an Ally with a Spellcast Roll, you can roll a d8 as your advantage die. Once per long rest, after an ally has made a Spellcast Roll with your help, you can swap the results of their Duality Dice."
+    },
+    "origin": "subclass",
+    "origin_value": "primal_origin",
+    "kind": "static",
+    "visible": "subclasses_mastery['primal_origin'].to_i >= 2"
+  },
+  {
+    "slug": "arcane_charge",
+    "title": { "en": "Arcane Charge", "ru": "Arcane Charge" },
+    "description": {
+      "en": "When you take magic damage, you become Charged. Alternatively, you can spend 2 Hope to become Charged. When you successfully make an attack that deals magic damage while Charged, you can clear your Charge to either gain a +10 bonus to the damage roll or gain a +3 bonus to the Difficulty of a reaction roll the spell causes the target to make. You stop being Charged at your next long rest.",
+      "ru": "When you take magic damage, you become Charged. Alternatively, you can spend 2 Hope to become Charged. When you successfully make an attack that deals magic damage while Charged, you can clear your Charge to either gain a +10 bonus to the damage roll or gain a +3 bonus to the Difficulty of a reaction roll the spell causes the target to make. You stop being Charged at your next long rest."
+    },
+    "origin": "subclass",
+    "origin_value": "primal_origin",
+    "kind": "static",
+    "visible": "subclasses_mastery['primal_origin'].to_i >= 3"
+  }
+]

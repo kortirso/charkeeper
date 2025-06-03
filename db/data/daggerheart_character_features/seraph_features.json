@@ -1,0 +1,147 @@
+[
+  {
+    "slug": "life_support",
+    "title": { "en": "Life Support", "ru": "Life Support" },
+    "description": {
+      "en": "Spend 3 Hope to clear a Hit Point on an ally within Close range.",
+      "ru": "Spend 3 Hope to clear a Hit Point on an ally within Close range."
+    },
+    "origin": "class",
+    "origin_value": "seraph",
+    "kind": "static",
+    "visible": "true"
+  },
+  {
+    "slug": "prayer_dice",
+    "title": { "en": "Prayer Dice", "ru": "Prayer Dice" },
+    "description": {
+      "en": "At the beginning of each session, roll a number of d4s equal to your subclass's Spellcast trait. These are your Prayer Dice. You can spend any number of Prayer Dice to aid yourself or an ally within Far range. You can use a spent die's value to reduce incoming damage, add to a roll's result after the roll is made, or gain Hope equal to the result. At the end of each session, clear all unspent Prayer Dice.",
+      "ru": "At the beginning of each session, roll a number of d4s equal to your subclass's Spellcast trait. These are your Prayer Dice. You can spend any number of Prayer Dice to aid yourself or an ally within Far range. You can use a spent die's value to reduce incoming damage, add to a roll's result after the roll is made, or gain Hope equal to the result. At the end of each session, clear all unspent Prayer Dice."
+    },
+    "origin": "class",
+    "origin_value": "seraph",
+    "kind": "text",
+    "visible": "true"
+  },
+  {
+    "slug": "spirit_weapon",
+    "title": { "en": "Spirit Weapon", "ru": "Spirit Weapon" },
+    "description": {
+      "en": "When you have an equipped weapon with a range of Melee or Very Close, it can fly from your hand to attack an adversary within Close range and then return to you. You can mark a Stress to target an additional adversary within range with the same attack roll.",
+      "ru": "When you have an equipped weapon with a range of Melee or Very Close, it can fly from your hand to attack an adversary within Close range and then return to you. You can mark a Stress to target an additional adversary within range with the same attack roll."
+    },
+    "origin": "subclass",
+    "origin_value": "divine_wielder",
+    "kind": "static",
+    "visible": "true"
+  },
+  {
+    "slug": "sparing_touch",
+    "title": { "en": "Sparing Touch", "ru": "Sparing Touch" },
+    "description": {
+      "en": "Touch a creature and clear 2 Hit Points or 2 Stress from them.",
+      "ru": "Touch a creature and clear 2 Hit Points or 2 Stress from them."
+    },
+    "origin": "subclass",
+    "origin_value": "divine_wielder",
+    "kind": "static",
+    "visible": "true",
+    "description_eval_variables": {
+      "limit": "1"
+    },
+    "limit_refresh": "long_rest"
+  },
+  {
+    "slug": "devout",
+    "title": { "en": "Devout", "ru": "Devout" },
+    "description": {
+      "en": "When you roll your Prayer Dice, you can roll an additional die and discard the lowest result.",
+      "ru": "When you roll your Prayer Dice, you can roll an additional die and discard the lowest result."
+    },
+    "origin": "subclass",
+    "origin_value": "divine_wielder",
+    "kind": "static",
+    "visible": "subclasses_mastery['syndicate'].to_i >= 2"
+  },
+  {
+    "slug": "sparing_touch_devout",
+    "title": { "en": "Sparing Touch", "ru": "Sparing Touch" },
+    "exclude": ["sparing_touch"],
+    "description": {
+      "en": "Touch a creature and clear 2 Hit Points or 2 Stress from them.",
+      "ru": "Touch a creature and clear 2 Hit Points or 2 Stress from them."
+    },
+    "origin": "subclass",
+    "origin_value": "divine_wielder",
+    "kind": "static",
+    "visible": "subclasses_mastery['syndicate'].to_i >= 2",
+    "description_eval_variables": {
+      "limit": "2"
+    },
+    "limit_refresh": "long_rest"
+  },
+  {
+    "slug": "sacred_resonance",
+    "title": { "en": "Sacred Resonance", "ru": "Sacred Resonance" },
+    "description": {
+      "en": "When you roll damage for your “Spirit Weapon” feature, if any of the die results match, double the value of each matching die.",
+      "ru": "When you roll damage for your “Spirit Weapon” feature, if any of the die results match, double the value of each matching die."
+    },
+    "origin": "subclass",
+    "origin_value": "divine_wielder",
+    "kind": "static",
+    "visible": "subclasses_mastery['syndicate'].to_i >= 3"
+  },
+  {
+    "slug": "wings_of_light",
+    "title": { "en": "Wings of Light", "ru": "Wings of Light" },
+    "description": {
+      "en": "You can fly, and: 1) mark a Stress to pick up and carry another willing creature approximately your size or smaller, 2) spend a Hope to deal an extra 1d8 damage on a successful attack.",
+      "ru": "You can fly, and: 1) mark a Stress to pick up and carry another willing creature approximately your size or smaller, 2) spend a Hope to deal an extra 1d8 damage on a successful attack."
+    },
+    "origin": "subclass",
+    "origin_value": "winged_sentinel",
+    "kind": "static",
+    "visible": "true"
+  },
+  {
+    "slug": "ethereal_visage",
+    "title": { "en": "Ethereal Visage", "ru": "Ethereal Visage" },
+    "description": {
+      "en": "While flying, you have advantage on Presence Rolls. When you succeed with Hope on a Presence Roll, you can remove a Fear from the GM's Fear pool instead of gaining Hope.",
+      "ru": "While flying, you have advantage on Presence Rolls. When you succeed with Hope on a Presence Roll, you can remove a Fear from the GM's Fear pool instead of gaining Hope."
+    },
+    "origin": "subclass",
+    "origin_value": "winged_sentinel",
+    "kind": "static",
+    "visible": "subclasses_mastery['syndicate'].to_i >= 2"
+  },
+  {
+    "slug": "ascendant",
+    "title": { "en": "Ascendant", "ru": "Ascendant" },
+    "description": {
+      "en": "",
+      "ru": ""
+    },
+    "origin": "subclass",
+    "origin_value": "winged_sentinel",
+    "kind": "update_result",
+    "visible": "subclasses_mastery['syndicate'].to_i >= 3",
+    "eval_variables": {
+      "damage_thresholds": "damage_thresholds.merge({ 'severe' => damage_thresholds['severe'] + 4 })"
+    }
+  },
+  {
+    "slug": "power_of_the_gods",
+    "title": { "en": "Power of the Gods", "ru": "Power of the Gods" },
+    "exclude": ["wings_of_light"],
+    "description": {
+      "en": "You can fly, and: 1) mark a Stress to pick up and carry another willing creature approximately your size or smaller, 2) spend a Hope to deal an extra 1d12 damage on a successful attack.",
+      "ru": "You can fly, and: 1) mark a Stress to pick up and carry another willing creature approximately your size or smaller, 2) spend a Hope to deal an extra 1d12 damage on a successful attack."
+    },
+    "origin": "subclass",
+    "origin_value": "winged_sentinel",
+    "kind": "static",
+    "visible": "subclasses_mastery['syndicate'].to_i >= 3"
+  }
+]

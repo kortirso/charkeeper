@@ -1,0 +1,150 @@
+[
+  {
+    "slug": "evolution",
+    "title": { "en": "Evolution", "ru": "Evolution" },
+    "description": {
+      "en": "Spend 3 Hope to transform into a Beastform without marking a Stress. When you do, choose one trait to raise by +1 until you drop out of that Beastform.",
+      "ru": "Spend 3 Hope to transform into a Beastform without marking a Stress. When you do, choose one trait to raise by +1 until you drop out of that Beastform."
+    },
+    "origin": "class",
+    "origin_value": "druid",
+    "kind": "text",
+    "visible": "true"
+  },
+  {
+    "slug": "beastform",
+    "title": { "en": "Beastform", "ru": "Beastform" },
+    "description": {
+      "en": "Mark a Stress to magically transform into a creature of your tier or lower from the Beastform list. You can drop out of this form at any time.",
+      "ru": "Mark a Stress to magically transform into a creature of your tier or lower from the Beastform list. You can drop out of this form at any time."
+    },
+    "origin": "class",
+    "origin_value": "druid",
+    "kind": "text",
+    "visible": "true"
+  },
+  {
+    "slug": "wildtouch",
+    "title": { "en": "Wildtouch", "ru": "Wildtouch" },
+    "description": {
+      "en": "You can perform harmless, subtle effects that involve nature — such as causing a flower to rapidly grow, summoning a slight gust of wind, or starting a campfire — at will.",
+      "ru": "You can perform harmless, subtle effects that involve nature — such as causing a flower to rapidly grow, summoning a slight gust of wind, or starting a campfire — at will."
+    },
+    "origin": "class",
+    "origin_value": "druid",
+    "kind": "static",
+    "visible": "true"
+  },
+  {
+    "slug": "elemental_incarnation",
+    "title": { "en": "Elemental Incarnation", "ru": "Elemental Incarnation" },
+    "description": {
+      "en": "Mark a Stress to Channel one of the following elements until you take Severe damage or until your next rest: 1) fire - When an adversary within Melee range deals damage to you, they take 1d10 magic damage, 2) earth - Gain a bonus to your damage thresholds equal to your Proficiency, 3) water - When you deal damage to an adversary within Melee range, all other adversaries within Very Close range must mark a Stress, 4) air - You can hover, gaining advantage on Agility Rolls.",
+      "ru": "Mark a Stress to Channel one of the following elements until you take Severe damage or until your next rest: 1) fire - When an adversary within Melee range deals damage to you, they take 1d10 magic damage, 2) earth - Gain a bonus to your damage thresholds equal to your Proficiency, 3) water - When you deal damage to an adversary within Melee range, all other adversaries within Very Close range must mark a Stress, 4) air - You can hover, gaining advantage on Agility Rolls."
+    },
+    "origin": "subclass",
+    "origin_value": "warden_of_the_elements",
+    "kind": "text",
+    "visible": "true"
+  },
+  {
+    "slug": "elemental_aura",
+    "title": { "en": "Elemental Aura", "ru": "Elemental Aura" },
+    "description": {
+      "en": "You can assume an aura matching your element. The aura affects targets within Close range until your Channeling ends. 1) fire - When an adversary marks 1 or more Hit Points, they must also mark a Stress, 2) earth - Your allies gain a +1 bonus to Strength, 3) water - When an adversary deals damage to you, you can mark a Stress to move them anywhere within Very Close range of where they are, 4) air - When you or an ally takes damage from an attack beyond Melee range, reduce the damage by 1d8.",
+      "ru": "You can assume an aura matching your element. The aura affects targets within Close range until your Channeling ends. 1) fire - When an adversary marks 1 or more Hit Points, they must also mark a Stress, 2) earth - Your allies gain a +1 bonus to Strength, 3) water - When an adversary deals damage to you, you can mark a Stress to move them anywhere within Very Close range of where they are, 4) air - When you or an ally takes damage from an attack beyond Melee range, reduce the damage by 1d8."
+    },
+    "origin": "subclass",
+    "origin_value": "warden_of_the_elements",
+    "kind": "static",
+    "visible": "subclasses_mastery['warden_of_the_elements'].to_i >= 2",
+    "description_eval_variables": {
+      "limit": "1"
+    },
+    "limit_refresh": "short_rest"
+  },
+  {
+    "slug": "elemental_dominion",
+    "title": { "en": "Elemental Dominion", "ru": "Elemental Dominion" },
+    "exclude": ["elemental_incarnation"],
+    "description": {
+      "en": "Mark a Stress to Channel one of the following elements until you take Severe damage or until your next rest: 1) fire - When an adversary within Melee range deals damage to you, they take 1d10 magic damage; you gain a +1 bonus to your Proficiency for attacks and spells that deal damage, 2) earth - Gain a bonus to your damage thresholds equal to your Proficiency; when you would mark Hit Points, roll a d6 per Hit Point marked. For each result of 6, reduce the number of Hit Points you mark by 1, 3) water - When you deal damage to an adversary within Melee range, all other adversaries within Very Close range must mark a Stress; when an attack against you succeeds, you can mark a Stress to make the attacker temporarily Vulnerable, 4) air - You can hover, gaining advantage on Agility Rolls; you gain a +1 bonus to your Evasion and can fly.",
+      "ru": "Mark a Stress to Channel one of the following elements until you take Severe damage or until your next rest: 1) fire - When an adversary within Melee range deals damage to you, they take 1d10 magic damage; you gain a +1 bonus to your Proficiency for attacks and spells that deal damage, 2) earth - Gain a bonus to your damage thresholds equal to your Proficiency; when you would mark Hit Points, roll a d6 per Hit Point marked. For each result of 6, reduce the number of Hit Points you mark by 1, 3) water - When you deal damage to an adversary within Melee range, all other adversaries within Very Close range must mark a Stress; when an attack against you succeeds, you can mark a Stress to make the attacker temporarily Vulnerable, 4) air - You can hover, gaining advantage on Agility Rolls; you gain a +1 bonus to your Evasion and can fly."
+    },
+    "origin": "subclass",
+    "origin_value": "warden_of_the_elements",
+    "kind": "text",
+    "visible": "subclasses_mastery['warden_of_the_elements'].to_i >= 3"
+  },
+  {
+    "slug": "clarity_of_nature",
+    "title": { "en": "Clarity of Nature", "ru": "Clarity of Nature" },
+    "description": {
+      "en": "You can create a space of natural serenity within Close range. When you spend a few minutes resting within the space, clear Stress equal to your Instinct, distributed as you choose between you and your allies.",
+      "ru": "You can create a space of natural serenity within Close range. When you spend a few minutes resting within the space, clear Stress equal to your Instinct, distributed as you choose between you and your allies."
+    },
+    "origin": "subclass",
+    "origin_value": "warden_of_renewal",
+    "kind": "static",
+    "visible": "true",
+    "description_eval_variables": {
+      "limit": "1"
+    },
+    "limit_refresh": "long_rest"
+  },
+  {
+    "slug": "regeneration",
+    "title": { "en": "Regeneration", "ru": "Regeneration" },
+    "description": {
+      "en": "Touch a creature and spend 3 Hope. That creature clears 1d4 Hit Points.",
+      "ru": "Touch a creature and spend 3 Hope. That creature clears 1d4 Hit Points."
+    },
+    "origin": "subclass",
+    "origin_value": "warden_of_renewal",
+    "kind": "static",
+    "visible": "true"
+  },
+  {
+    "slug": "regenerative_reach",
+    "title": { "en": "Regeneration", "ru": "Regeneration" },
+    "exclude": ["regeneration"],
+    "description": {
+      "en": "You can target creatures within Very Close range and spend 3 Hope. That creature clears 1d4 Hit Points.",
+      "ru": "You can target creatures within Very Close range and spend 3 Hope. That creature clears 1d4 Hit Points."
+    },
+    "origin": "subclass",
+    "origin_value": "warden_of_renewal",
+    "kind": "static",
+    "visible": "subclasses_mastery['warden_of_renewal'].to_i >= 2"
+  },
+  {
+    "slug": "warden_protection",
+    "title": { "en": "Warden's Protection", "ru": "Warden's Protection" },
+    "exclude": ["regeneration"],
+    "description": {
+      "en": "Spend 2 Hope to clear 2 Hit Points on 1d4 allies within Close range.",
+      "ru": "Spend 2 Hope to clear 2 Hit Points on 1d4 allies within Close range."
+    },
+    "origin": "subclass",
+    "origin_value": "warden_of_renewal",
+    "kind": "static",
+    "visible": "subclasses_mastery['warden_of_renewal'].to_i >= 2",
+    "description_eval_variables": {
+      "limit": "1"
+    },
+    "limit_refresh": "long_rest"
+  },
+  {
+    "slug": "defender",
+    "title": { "en": "Defender", "ru": "Defender" },
+    "exclude": ["regeneration"],
+    "description": {
+      "en": "When you're in Beastform and an ally within Close range marks 2 or more Hit Points, you can mark a Stress to reduce the number of Hit Points they mark by 1.",
+      "ru": "When you're in Beastform and an ally within Close range marks 2 or more Hit Points, you can mark a Stress to reduce the number of Hit Points they mark by 1."
+    },
+    "origin": "subclass",
+    "origin_value": "warden_of_renewal",
+    "kind": "static",
+    "visible": "subclasses_mastery['warden_of_renewal'].to_i >= 3"
+  }
+]

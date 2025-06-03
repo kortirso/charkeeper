@@ -27,8 +27,6 @@ module Dnd5Character
           feature.eval_variables.each do |method_name, variable|
             instance_variable_set(:"@#{method_name}", eval_variable(variable))
           end
-
-          feature.eval_variables.transform_values! { |value| eval_variable(value) }
           next if feature.kind == 'update_result'
 
           feature.description_eval_variables.transform_values! { |value| eval_variable(value) }

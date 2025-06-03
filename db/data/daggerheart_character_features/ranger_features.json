@@ -1,0 +1,114 @@
+[
+  {
+    "slug": "hold_them_off",
+    "title": { "en": "Hold Them Off", "ru": "Hold Them Off" },
+    "description": {
+      "en": "Spend 3 Hope when you succeed on an attack with a weapon to use that same roll against two additional adversaries within range of the attack.",
+      "ru": "Spend 3 Hope when you succeed on an attack with a weapon to use that same roll against two additional adversaries within range of the attack."
+    },
+    "origin": "class",
+    "origin_value": "ranger",
+    "kind": "static",
+    "visible": "true"
+  },
+  {
+    "slug": "ranger_focus",
+    "title": { "en": "Ranger's Focus", "ru": "Ranger's Focus" },
+    "description": {
+      "en": "Spend a Hope and make an attack against a target. On a success, deal your attack's normal damage and temporarily make the attack's target your Focus. Until this feature ends or you make a different creature your Focus: 1) you know precisely what direction they are in, 2) when you deal damage to them, they must mark a Stress, 3) when you fail an attack against them, you can end your Ranger's Focus feature to reroll your Duality Dice.",
+      "ru": "Spend a Hope and make an attack against a target. On a success, deal your attack's normal damage and temporarily make the attack's target your Focus. Until this feature ends or you make a different creature your Focus: 1) you know precisely what direction they are in, 2) when you deal damage to them, they must mark a Stress, 3) when you fail an attack against them, you can end your Ranger's Focus feature to reroll your Duality Dice."
+    },
+    "origin": "class",
+    "origin_value": "ranger",
+    "kind": "static",
+    "visible": "true"
+  },
+  {
+    "slug": "companion",
+    "title": { "en": "Companion", "ru": "Companion" },
+    "description": {
+      "en": "You have an animal companion of your choice.",
+      "ru": "You have an animal companion of your choice."
+    },
+    "origin": "subclass",
+    "origin_value": "beastbound",
+    "kind": "text",
+    "visible": "true"
+  },
+  {
+    "slug": "battle_bonded",
+    "title": { "en": "Battle-Bonded", "ru": "Battle-Bonded" },
+    "description": {
+      "en": "When an adversary attacks you while they're within your companion's Melee range, you gain a +2 bonus to your Evasion against the attack.",
+      "ru": "When an adversary attacks you while they're within your companion's Melee range, you gain a +2 bonus to your Evasion against the attack."
+    },
+    "origin": "subclass",
+    "origin_value": "beastbound",
+    "kind": "static",
+    "visible": "subclasses_mastery['beastbound'].to_i >= 2"
+  },
+  {
+    "slug": "loyal_friend",
+    "title": { "en": "Loyal Friend", "ru": "Loyal Friend" },
+    "description": {
+      "en": "When the damage from an attack would mark your companion's last Stress or your last Hit Point and you're within Close range of each other, you or your companion can rush to the other's side and take that damage instead.",
+      "ru": "When the damage from an attack would mark your companion's last Stress or your last Hit Point and you're within Close range of each other, you or your companion can rush to the other's side and take that damage instead."
+    },
+    "origin": "subclass",
+    "origin_value": "beastbound",
+    "kind": "static",
+    "visible": "subclasses_mastery['beastbound'].to_i >= 3",
+    "description_eval_variables": {
+      "limit": "1"
+    },
+    "limit_refresh": "long_rest"
+  },
+  {
+    "slug": "ruthless_predator",
+    "title": { "en": "Ruthless Predator", "ru": "Ruthless Predator" },
+    "description": {
+      "en": "When you make a damage roll, you can mark a Stress to gain a +1 bonus to your Proficiency. Additionally, when you deal Severe damage to an adversary, they must mark a Stress.",
+      "ru": "When you make a damage roll, you can mark a Stress to gain a +1 bonus to your Proficiency. Additionally, when you deal Severe damage to an adversary, they must mark a Stress."
+    },
+    "origin": "subclass",
+    "origin_value": "wayfinder",
+    "kind": "static",
+    "visible": "true"
+  },
+  {
+    "slug": "path_forward",
+    "title": { "en": "Path Forward", "ru": "Path Forward" },
+    "description": {
+      "en": "When you're traveling to a place you've previously visited or you carry an object that has been at the location before, you can identify the shortest, most direct path to your destination.",
+      "ru": "When you're traveling to a place you've previously visited or you carry an object that has been at the location before, you can identify the shortest, most direct path to your destination."
+    },
+    "origin": "subclass",
+    "origin_value": "wayfinder",
+    "kind": "static",
+    "visible": "true"
+  },
+  {
+    "slug": "elusive_predator",
+    "title": { "en": "Elusive Predator", "ru": "Elusive Predator" },
+    "description": {
+      "en": "When your Focus makes an attack against you, you gain a +2 bonus to your Evasion against the attack.",
+      "ru": "When your Focus makes an attack against you, you gain a +2 bonus to your Evasion against the attack."
+    },
+    "origin": "subclass",
+    "origin_value": "wayfinder",
+    "kind": "static",
+    "visible": "subclasses_mastery['wayfinder'].to_i >= 2"
+  },
+  {
+    "slug": "apex_predator",
+    "title": { "en": "Apex Predator", "ru": "Apex Predator" },
+    "description": {
+      "en": "Before you make an attack roll against your Focus, you can spend a Hope. On a successful attack, you remove a Fear from the GM's Fear pool.",
+      "ru": "Before you make an attack roll against your Focus, you can spend a Hope. On a successful attack, you remove a Fear from the GM's Fear pool."
+    },
+    "origin": "subclass",
+    "origin_value": "wayfinder",
+    "kind": "static",
+    "visible": "subclasses_mastery['wayfinder'].to_i >= 3"
+  }
+]

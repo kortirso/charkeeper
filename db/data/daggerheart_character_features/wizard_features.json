@@ -1,0 +1,155 @@
+[
+  {
+    "slug": "not_this_time",
+    "title": { "en": "Not This Time", "ru": "Not This Time" },
+    "description": {
+      "en": "Spend 3 Hope to force an adversary within Far range to reroll an attack or damage roll.",
+      "ru": "Spend 3 Hope to force an adversary within Far range to reroll an attack or damage roll."
+    },
+    "origin": "class",
+    "origin_value": "wizard",
+    "kind": "static",
+    "visible": "true"
+  },
+  {
+    "slug": "prestidigitation",
+    "title": { "en": "Prestidigitation", "ru": "Prestidigitation" },
+    "description": {
+      "en": "You can perform harmless, subtle magical effects at will.",
+      "ru": "You can perform harmless, subtle magical effects at will."
+    },
+    "origin": "class",
+    "origin_value": "wizard",
+    "kind": "static",
+    "visible": "true"
+  },
+  {
+    "slug": "strange_patterns",
+    "title": { "en": "Strange Patterns", "ru": "Strange Patterns" },
+    "description": {
+      "en": "Choose a number between 1 and 12. When you roll that number on a Duality Die, gain a Hope or clear a Stress. You can change this number when you take a long rest.",
+      "ru": "Choose a number between 1 and 12. When you roll that number on a Duality Die, gain a Hope or clear a Stress. You can change this number when you take a long rest."
+    },
+    "origin": "class",
+    "origin_value": "wizard",
+    "kind": "text",
+    "visible": "true"
+  },
+  {
+    "slug": "adept",
+    "title": { "en": "Adept", "ru": "Adept" },
+    "description": {
+      "en": "When you Utilize an Experience, you can mark a Stress instead of spending a Hope. If you do, double your Experience modifier for that roll.",
+      "ru": "When you Utilize an Experience, you can mark a Stress instead of spending a Hope. If you do, double your Experience modifier for that roll."
+    },
+    "origin": "subclass",
+    "origin_value": "school_of_knowledge",
+    "kind": "static",
+    "visible": "true"
+  },
+  {
+    "slug": "perfect_recall",
+    "title": { "en": "Perfect Recall", "ru": "Perfect Recall" },
+    "description": {
+      "en": "When you recall a domain card in your vault, you can reduce its Recall Cost by 1.",
+      "ru": "When you recall a domain card in your vault, you can reduce its Recall Cost by 1."
+    },
+    "origin": "subclass",
+    "origin_value": "school_of_knowledge",
+    "kind": "static",
+    "visible": "subclasses_mastery['school_of_knowledge'].to_i >= 2",
+    "description_eval_variables": {
+      "limit": "1"
+    },
+    "limit_refresh": "long_rest"
+  },
+  {
+    "slug": "honed_expertise",
+    "title": { "en": "Honed Expertise", "ru": "Honed Expertise" },
+    "description": {
+      "en": "When you use an Experience, roll a d6. On a result of 5 or higher, you can use it without spending Hope.",
+      "ru": "When you use an Experience, roll a d6. On a result of 5 or higher, you can use it without spending Hope."
+    },
+    "origin": "subclass",
+    "origin_value": "school_of_knowledge",
+    "kind": "static",
+    "visible": "subclasses_mastery['school_of_knowledge'].to_i >= 3"
+  },
+  {
+    "slug": "adept",
+    "title": { "en": "Battlemage", "ru": "Battlemage" },
+    "description": {
+      "en": "",
+      "ru": ""
+    },
+    "origin": "subclass",
+    "origin_value": "school_of_war",
+    "kind": "update_result",
+    "visible": "true",
+    "description_eval_variables": {
+      "health": "health.merge({ 'max' => health['max'] + 1 })"
+    }
+  },
+  {
+    "slug": "face_your_fear",
+    "title": { "en": "Face Your Fear", "ru": "Face Your Fear" },
+    "description": {
+      "en": "When you succeed with Fear on an attack roll, you deal an extra 1d10 magic damage.",
+      "ru": "When you succeed with Fear on an attack roll, you deal an extra 1d10 magic damage."
+    },
+    "origin": "subclass",
+    "origin_value": "school_of_war",
+    "kind": "static",
+    "visible": "true"
+  },
+  {
+    "slug": "conjure_shield",
+    "title": { "en": "Conjure Shield", "ru": "Conjure Shield" },
+    "description": {
+      "en": "While you have at least 2 Hope, you add your Proficiency to your Evasion.",
+      "ru": "While you have at least 2 Hope, you add your Proficiency to your Evasion."
+    },
+    "origin": "subclass",
+    "origin_value": "school_of_war",
+    "kind": "static",
+    "visible": "subclasses_mastery['school_of_war'].to_i >= 2"
+  },
+  {
+    "slug": "fueled_by_fear",
+    "title": { "en": "Face Your Fear", "ru": "Face Your Fear" },
+    "exclude": ["face_your_fear"],
+    "description": {
+      "en": "When you succeed with Fear on an attack roll, you deal an extra 2d10 magic damage.",
+      "ru": "When you succeed with Fear on an attack roll, you deal an extra 2d10 magic damage."
+    },
+    "origin": "subclass",
+    "origin_value": "school_of_war",
+    "kind": "static",
+    "visible": "subclasses_mastery['school_of_war'].to_i >= 2"
+  },
+  {
+    "slug": "thrive_in_chaos",
+    "title": { "en": "Thrive in Chaos", "ru": "Thrive in Chaos" },
+    "description": {
+      "en": "When you succeed on an attack, you can mark a Stress after rolling damage to force the target to mark an additional Hit Point.",
+      "ru": "When you succeed on an attack, you can mark a Stress after rolling damage to force the target to mark an additional Hit Point."
+    },
+    "origin": "subclass",
+    "origin_value": "school_of_war",
+    "kind": "static",
+    "visible": "subclasses_mastery['school_of_war'].to_i >= 3"
+  },
+  {
+    "slug": "have_no_fear",
+    "title": { "en": "Face Your Fear", "ru": "Face Your Fear" },
+    "exclude": ["fueled_by_fear"],
+    "description": {
+      "en": "When you succeed with Fear on an attack roll, you deal an extra 3d10 magic damage.",
+      "ru": "When you succeed with Fear on an attack roll, you deal an extra 3d10 magic damage."
+    },
+    "origin": "subclass",
+    "origin_value": "school_of_war",
+    "kind": "static",
+    "visible": "subclasses_mastery['school_of_war'].to_i >= 3"
+  }
+]

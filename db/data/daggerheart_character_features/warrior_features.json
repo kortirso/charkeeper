@@ -1,0 +1,126 @@
+[
+  {
+    "slug": "no_mercy",
+    "title": { "en": "No Mercy", "ru": "No Mercy" },
+    "description": {
+      "en": "Spend 3 Hope to gain a +1 bonus to your attack rolls until your next rest.",
+      "ru": "Spend 3 Hope to gain a +1 bonus to your attack rolls until your next rest."
+    },
+    "origin": "class",
+    "origin_value": "warrior",
+    "kind": "static",
+    "visible": "true"
+  },
+  {
+    "slug": "attack_of_opportunity",
+    "title": { "en": "Attack of Opportunity", "ru": "Attack of Opportunity" },
+    "description": {
+      "en": "If an adversary within Melee range attempts to leave that range, make a reaction roll using a trait of your choice against their Difficulty. Choose one effect on a success, or two if you critically succeed: 1) they can't move from where they are, 2) you deal damage to them equal to your primary weapon's damage, 3) you move with them.",
+      "ru": "If an adversary within Melee range attempts to leave that range, make a reaction roll using a trait of your choice against their Difficulty. Choose one effect on a success, or two if you critically succeed: 1) they can't move from where they are, 2) you deal damage to them equal to your primary weapon's damage, 3) you move with them."
+    },
+    "origin": "class",
+    "origin_value": "warrior",
+    "kind": "static",
+    "visible": "true"
+  },
+  {
+    "slug": "combat_training",
+    "title": { "en": "Combat Training", "ru": "Combat Training" },
+    "description": {
+      "en": "You ignore burden when equipping weapons. When you deal physical damage, you gain a bonus to your damage roll equal to your level.",
+      "ru": "You ignore burden when equipping weapons. When you deal physical damage, you gain a bonus to your damage roll equal to your level."
+    },
+    "origin": "class",
+    "origin_value": "warrior",
+    "kind": "static",
+    "visible": "true"
+  },
+  {
+    "slug": "courage",
+    "title": { "en": "Courage", "ru": "Courage" },
+    "description": {
+      "en": "When you fail a roll with Fear, you gain a Hope.",
+      "ru": "When you fail a roll with Fear, you gain a Hope."
+    },
+    "origin": "subclass",
+    "origin_value": "call_of_the_brave",
+    "kind": "static",
+    "visible": "true"
+  },
+  {
+    "slug": "battle_ritual",
+    "title": { "en": "Battle Ritual", "ru": "Battle Ritual" },
+    "description": {
+      "en": "Before you attempt something incredibly dangerous or face off against a foe who clearly outmatches you, describe what ritual you perform or preparations you make. When you do, clear 2 Stress and gain 2 Hope.",
+      "ru": "Before you attempt something incredibly dangerous or face off against a foe who clearly outmatches you, describe what ritual you perform or preparations you make. When you do, clear 2 Stress and gain 2 Hope."
+    },
+    "origin": "subclass",
+    "origin_value": "call_of_the_brave",
+    "kind": "static",
+    "visible": "true",
+    "description_eval_variables": {
+      "limit": "1"
+    },
+    "limit_refresh": "long_rest"
+  },
+  {
+    "slug": "rise_to_the_challenge",
+    "title": { "en": "Rise to the Challenge", "ru": "Rise to the Challenge" },
+    "description": {
+      "en": "While you have 2 or fewer Hit Points unmarked, you can roll a d20 as your Hope Die.",
+      "ru": "While you have 2 or fewer Hit Points unmarked, you can roll a d20 as your Hope Die."
+    },
+    "origin": "subclass",
+    "origin_value": "call_of_the_brave",
+    "kind": "static",
+    "visible": "subclasses_mastery['call_of_the_brave'].to_i >= 2"
+  },
+  {
+    "slug": "camaraderie",
+    "title": { "en": "Camaraderie", "ru": "Camaraderie" },
+    "description": {
+      "en": "You can initiate a Tag Team Roll one additional time per session. Additionally, when an ally initiates a Tag Team Roll with you, they only need to spend 2 Hope to do so.",
+      "ru": "You can initiate a Tag Team Roll one additional time per session. Additionally, when an ally initiates a Tag Team Roll with you, they only need to spend 2 Hope to do so."
+    },
+    "origin": "subclass",
+    "origin_value": "call_of_the_brave",
+    "kind": "static",
+    "visible": "subclasses_mastery['call_of_the_brave'].to_i >= 3"
+  },
+  {
+    "slug": "slayer",
+    "title": { "en": "Slayer", "ru": "Slayer" },
+    "description": {
+      "en": "You gain a pool of dice called Slayer Dice. On a roll with Hope, you can place a d6 on this card instead of gaining a Hope, adding the die to the pool. You can store a number of Slayer Dice equal to your Proficiency. When you make an attack roll or damage roll, you can spend any number of these Slayer Dice, rolling them and adding their result to the roll. At the end of each session, clear any unspent Slayer Dice on this card and gain a Hope per die cleared.",
+      "ru": "You gain a pool of dice called Slayer Dice. On a roll with Hope, you can place a d6 on this card instead of gaining a Hope, adding the die to the pool. You can store a number of Slayer Dice equal to your Proficiency. When you make an attack roll or damage roll, you can spend any number of these Slayer Dice, rolling them and adding their result to the roll. At the end of each session, clear any unspent Slayer Dice on this card and gain a Hope per die cleared."
+    },
+    "origin": "subclass",
+    "origin_value": "call_of_the_slayer",
+    "kind": "text",
+    "visible": "true"
+  },
+  {
+    "slug": "weapon_specialist",
+    "title": { "en": "Weapon Specialist", "ru": "Weapon Specialist" },
+    "description": {
+      "en": "You can wield multiple weapons with dangerous ease. When you succeed on an attack, you can spend a Hope to add one of the damage dice from your secondary weapon to the damage roll. Additionally, once per long rest when you roll your Slayer Dice, reroll any 1s.",
+      "ru": "You can wield multiple weapons with dangerous ease. When you succeed on an attack, you can spend a Hope to add one of the damage dice from your secondary weapon to the damage roll. Additionally, once per long rest when you roll your Slayer Dice, reroll any 1s."
+    },
+    "origin": "subclass",
+    "origin_value": "call_of_the_slayer",
+    "kind": "static",
+    "visible": "subclasses_mastery['call_of_the_slayer'].to_i >= 2"
+  },
+  {
+    "slug": "martial_preparation",
+    "title": { "en": "Martial Preparation", "ru": "Martial Preparation" },
+    "description": {
+      "en": "Your party gains access to the Martial Preparation downtime move. To use this move during a rest, describe how you instruct and train with your party. You and each ally who chooses this downtime move gain a d6 Slayer Die. A PC with a Slayer Die can spend it to roll the die and add the result to an attack or damage roll of their choice.",
+      "ru": "Your party gains access to the Martial Preparation downtime move. To use this move during a rest, describe how you instruct and train with your party. You and each ally who chooses this downtime move gain a d6 Slayer Die. A PC with a Slayer Die can spend it to roll the die and add the result to an attack or damage roll of their choice."
+    },
+    "origin": "subclass",
+    "origin_value": "call_of_the_slayer",
+    "kind": "static",
+    "visible": "subclasses_mastery['call_of_the_slayer'].to_i >= 3"
+  }
+]

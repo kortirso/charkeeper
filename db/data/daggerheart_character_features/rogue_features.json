@@ -1,0 +1,153 @@
+[
+  {
+    "slug": "rogue_dodge",
+    "title": { "en": "Rogue's Dodge", "ru": "Rogue's Dodge" },
+    "description": {
+      "en": "Spend 3 Hope to gain a +2 bonus to your Evasion until the next time an attack succeeds against you. Otherwise, this bonus lasts until your next rest.",
+      "ru": "Spend 3 Hope to gain a +2 bonus to your Evasion until the next time an attack succeeds against you. Otherwise, this bonus lasts until your next rest."
+    },
+    "origin": "class",
+    "origin_value": "rogue",
+    "kind": "static",
+    "visible": "true"
+  },
+  {
+    "slug": "cloaked",
+    "title": { "en": "Cloaked", "ru": "Cloaked" },
+    "description": {
+      "en": "Any time you would be Hidden, you are instead Cloaked. In addition to the benefits of the Hidden condition, while Cloaked you remain unseen if you are stationary when an adversary moves to where they would normally see you. After you make an attack or end a move within line of sight of an adversary, you are no longer Cloaked.",
+      "ru": "Any time you would be Hidden, you are instead Cloaked. In addition to the benefits of the Hidden condition, while Cloaked you remain unseen if you are stationary when an adversary moves to where they would normally see you. After you make an attack or end a move within line of sight of an adversary, you are no longer Cloaked."
+    },
+    "origin": "class",
+    "origin_value": "rogue",
+    "kind": "static",
+    "visible": "true"
+  },
+  {
+    "slug": "rogue_dodge",
+    "title": { "en": "Rogue's Dodge", "ru": "Rogue's Dodge" },
+    "description": {
+      "en": "When you succeed on an attack while Cloaked or while an ally is within Melee range of your target, add a {{value}} to your damage roll.",
+      "ru": "When you succeed on an attack while Cloaked or while an ally is within Melee range of your target, add a {{value}} to your damage roll."
+    },
+    "origin": "class",
+    "origin_value": "rogue",
+    "kind": "static",
+    "visible": "true",
+    "description_eval_variables": {
+      "value": "level >= 8 ? '4d6' : (level >= 5 ? '3d6' : (level >= 2 ? '2d6' : 'd6'))"
+    }
+  },
+  {
+    "slug": "shadow_stepper",
+    "title": { "en": "Shadow Stepper", "ru": "Shadow Stepper" },
+    "description": {
+      "en": "When you move into an area of darkness or a shadow cast by another creature or object, you can mark a Stress to disappear from where you are and reappear inside another shadow within Far range. When you reappear, you are Cloaked.",
+      "ru": "When you move into an area of darkness or a shadow cast by another creature or object, you can mark a Stress to disappear from where you are and reappear inside another shadow within Far range. When you reappear, you are Cloaked."
+    },
+    "origin": "subclass",
+    "origin_value": "nightwalker",
+    "kind": "static",
+    "visible": "true"
+  },
+  {
+    "slug": "dark_cloud",
+    "title": { "en": "Dark Cloud", "ru": "Dark Cloud" },
+    "description": {
+      "en": "Make a Spellcast Roll (15). On a success, create a temporary dark cloud that covers any area within Close range. Anyone in this cloud can't see outside of it, and anyone outside of it can't see in. You're considered Cloaked from any adversary for whom the cloud blocks line of sight.",
+      "ru": "Make a Spellcast Roll (15). On a success, create a temporary dark cloud that covers any area within Close range. Anyone in this cloud can't see outside of it, and anyone outside of it can't see in. You're considered Cloaked from any adversary for whom the cloud blocks line of sight."
+    },
+    "origin": "subclass",
+    "origin_value": "nightwalker",
+    "kind": "static",
+    "visible": "subclasses_mastery['nightwalker'].to_i >= 2"
+  },
+  {
+    "slug": "adrenaline",
+    "title": { "en": "Adrenaline", "ru": "Adrenaline" },
+    "description": {
+      "en": "While you're Vulnerable, add +{{value}} to your damage rolls.",
+      "ru": "While you're Vulnerable, add +{{value}} to your damage rolls."
+    },
+    "origin": "subclass",
+    "origin_value": "nightwalker",
+    "kind": "static",
+    "visible": "subclasses_mastery['nightwalker'].to_i >= 2",
+    "description_eval_variables": {
+      "value": "level"
+    }
+  },
+  {
+    "slug": "fleeting_shadow",
+    "title": { "en": "Shadow Stepper", "ru": "Shadow Stepper" },
+    "exclude": ["shadow_stepper"],
+    "description": {
+      "en": "When you move into an area of darkness or a shadow cast by another creature or object, you can mark a Stress to disappear from where you are and reappear inside another shadow within Very Far range. When you reappear, you are Cloaked.",
+      "ru": "When you move into an area of darkness or a shadow cast by another creature or object, you can mark a Stress to disappear from where you are and reappear inside another shadow within Very Far range. When you reappear, you are Cloaked."
+    },
+    "origin": "subclass",
+    "origin_value": "nightwalker",
+    "kind": "static",
+    "visible": "subclasses_mastery['nightwalker'].to_i >= 3",
+    "eval_variables": {
+      "evasion": "evasion += 1"
+    }
+  },
+  {
+    "slug": "vanishing_act",
+    "title": { "en": "Vanishing Act", "ru": "Vanishing Act" },
+    "description": {
+      "en": "Mark a Stress to become Cloaked at any time. When Cloaked from this feature, you automatically clear the Restrained condition if you have it. You remain Cloaked in this way until you roll with Fear or until your next rest.",
+      "ru": "Mark a Stress to become Cloaked at any time. When Cloaked from this feature, you automatically clear the Restrained condition if you have it. You remain Cloaked in this way until you roll with Fear or until your next rest."
+    },
+    "origin": "subclass",
+    "origin_value": "nightwalker",
+    "kind": "static",
+    "visible": "subclasses_mastery['nightwalker'].to_i >= 3"
+  },
+  {
+    "slug": "well_connected",
+    "title": { "en": "Well-Connected", "ru": "Well-Connected" },
+    "description": {
+      "en": "When you arrive in a prominent town or environment, you know somebody who calls this place home.",
+      "ru": "When you arrive in a prominent town or environment, you know somebody who calls this place home."
+    },
+    "origin": "subclass",
+    "origin_value": "syndicate",
+    "kind": "static",
+    "visible": "true"
+  },
+  {
+    "slug": "contacts_everywhere",
+    "title": { "en": "Contacts Everywhere", "ru": "Contacts Everywhere" },
+    "description": {
+      "en": "You can briefly call on a shady contact. Choose one of the following benefits: 1) they provide 1 handful of gold, a unique tool, or a mundane object that the situation requires, 2) on your next action roll, their help provides a +3 bonus to the result of your Hope or Fear Die, 3) The next time you deal damage, they snipe from the shadows, adding 2d8 to your damage roll.",
+      "ru": "You can briefly call on a shady contact. Choose one of the following benefits: 1) they provide 1 handful of gold, a unique tool, or a mundane object that the situation requires, 2) on your next action roll, their help provides a +3 bonus to the result of your Hope or Fear Die, 3) The next time you deal damage, they snipe from the shadows, adding 2d8 to your damage roll."
+    },
+    "origin": "subclass",
+    "origin_value": "syndicate",
+    "kind": "static",
+    "visible": "subclasses_mastery['syndicate'].to_i >= 2",
+    "description_eval_variables": {
+      "limit": "1"
+    },
+    "limit_refresh": "session"
+  },
+  {
+    "slug": "reliable_backup",
+    "title": { "en": "Contacts Everywhere", "ru": "Contacts Everywhere" },
+    "exclude": ["contacts_everywhere"],
+    "description": {
+      "en": "You can briefly call on a shady contact. Choose one of the following benefits: 1) they provide 1 handful of gold, a unique tool, or a mundane object that the situation requires, 2) on your next action roll, their help provides a +3 bonus to the result of your Hope or Fear Die, 3) The next time you deal damage, they snipe from the shadows, adding 2d8 to your damage roll, 4) When you mark 1 or more Hit Points, they can rush out to shield you, reducing the Hit Points marked by 1, 5) when you make a Presence Roll in conversation, they back you up. You can roll a d20 as your Hope Die.",
+      "ru": "You can briefly call on a shady contact. Choose one of the following benefits: 1) they provide 1 handful of gold, a unique tool, or a mundane object that the situation requires, 2) on your next action roll, their help provides a +3 bonus to the result of your Hope or Fear Die, 3) The next time you deal damage, they snipe from the shadows, adding 2d8 to your damage roll, 4) When you mark 1 or more Hit Points, they can rush out to shield you, reducing the Hit Points marked by 1, 5) when you make a Presence Roll in conversation, they back you up. You can roll a d20 as your Hope Die."
+    },
+    "origin": "subclass",
+    "origin_value": "syndicate",
+    "kind": "static",
+    "visible": "subclasses_mastery['syndicate'].to_i >= 3",
+    "description_eval_variables": {
+      "limit": "3"
+    },
+    "limit_refresh": "session"
+  }
+]
