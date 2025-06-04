@@ -20,6 +20,7 @@ module Daggerheart
     attribute :evasion, :integer, default: 10
     attribute :spent_armor_slots, :integer, default: 0
     attribute :gold, array: true, default: { coins: 0, handfuls: 0, bags: 0, chests: 0 }
+    attribute :selected_features, array: true, default: {}
   end
 
   class Character < Character

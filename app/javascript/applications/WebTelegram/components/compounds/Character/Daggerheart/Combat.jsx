@@ -1,7 +1,7 @@
-import { For, Switch, Match } from 'solid-js';
+import { createSignal, For, Switch, Match } from 'solid-js';
 import * as i18n from '@solid-primitives/i18n';
 
-import { Checkbox, Toggle } from '../../../atoms';
+import { Checkbox, Toggle, Button } from '../../../atoms';
 
 import { FeatureTitle } from '../../../../components';
 import { useAppState, useAppLocale, useAppAlert } from '../../../../context';
@@ -9,6 +9,10 @@ import { updateCharacterRequest } from '../../../../requests/updateCharacterRequ
 
 export const DaggerheartCombat = (props) => {
   const character = () => props.character;
+
+  const [textFeaturesData, setTextFeaturesData] = createSignal(
+    character().features.filter((item) => item.kind === 'text').reduce((acc, item) => { acc[item.slug] = character().selected_features[item.slug]; return acc; }, {})
+  );
 
   const [appState] = useAppState();
   const [{ renderAlerts }] = useAppAlert();
@@ -69,6 +73,17 @@ export const DaggerheartCombat = (props) => {
     );
 
     if (result.errors === undefined) props.onReplaceCharacter({ energy: payload });
+    else renderAlerts(result.errors);
+  }
+
+  const updateTextFeature = async (slug) => {
+    const payload = { ...character().selected_features, [slug]: textFeaturesData()[slug] }
+
+    const result = await updateCharacterRequest(
+      appState.accessToken, 'daggerheart', character().id, { character: { selected_features: payload }, only: 'selected_features' }
+    );
+
+    if (result.errors === undefined) props.onReplaceCharacter({ selected_features: payload });
     else renderAlerts(result.errors);
   }
 
@@ -181,6 +196,21 @@ export const DaggerheartCombat = (props) => {
                   class="text-sm font-cascadia-light"
                   innerHTML={feature.description} // eslint-disable-line solid/no-innerhtml
                 />
+              </Match>
+              <Match when={feature.kind === 'text'}>
+                <p
+                  class="text-sm font-cascadia-light mb-2"
+                  innerHTML={feature.description} // eslint-disable-line solid/no-innerhtml
+                />
+                <textarea
+                  rows="5"
+                  class="w-full border border-gray-200 rounded p-1 text-sm"
+                  onInput={(e) => setTextFeaturesData({ ...textFeaturesData(), [feature.slug]: e.target.value })}
+                  value={textFeaturesData()[feature.slug] || ''}
+                />
+                <div class="flex justify-end mt-2">
+                  <Button default textable size="small" onClick={() => updateTextFeature(feature.slug)}>{t('save')}</Button>
+                </div>
               </Match>
             </Switch>
           </Toggle>
