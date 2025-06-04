@@ -20,17 +20,15 @@ export const DaggerheartCombat = (props) => {
 
   const t = i18n.translator(dict);
 
-  const updateAttribute = async (attribute, key, value) => {
-    const currentValue = character()[attribute][key];
+  const updateAttribute = async (attribute, value) => {
+    const currentValue = character()[attribute];
     const newValue = currentValue === value ? (value - 1) : value;
 
-    const payload = { ...character()[attribute], [key]: newValue };
-
     const result = await updateCharacterRequest(
-      appState.accessToken, 'daggerheart', character().id, { character: { [attribute]: payload }, only_head: true }
+      appState.accessToken, 'daggerheart', character().id, { character: { [attribute]: newValue }, only_head: true }
     );
 
-    if (result.errors === undefined) props.onReplaceCharacter({ [attribute]: payload });
+    if (result.errors === undefined) props.onReplaceCharacter({ [attribute]: newValue });
     else renderAlerts(result.errors);
   }
 
@@ -126,22 +124,13 @@ export const DaggerheartCombat = (props) => {
         <div class="px-4 mb-2">
           <p class="text-sm/4 font-cascadia-light uppercase mb-1">{t('daggerheart.combat.health')}</p>
           <div class="flex">
-            <For each={Array.from([...Array(character().health.max).keys()], (x) => x + 1)}>
+            <For each={Array.from([...Array(character().health_max).keys()], (x) => x + 1)}>
               {(index) =>
                 <Checkbox
                   filled
-                  checked={character().health.marked >= index}
+                  checked={character().health_marked >= index}
                   classList="mr-1"
-                  onToggle={() => updateAttribute('health', 'marked', index)}
-                />
-              }
-            </For>
-            <For each={Array.from([...Array(12 - character().health.max).keys()], (x) => x + character().health.max + 1)}>
-              {(index) =>
-                <Checkbox
-                  outlined
-                  classList="mr-1"
-                  onToggle={() => updateAttribute('health', 'max', index)}
+                  onToggle={() => updateAttribute('health_marked', index)}
                 />
               }
             </For>
@@ -150,22 +139,13 @@ export const DaggerheartCombat = (props) => {
         <div class="px-4 mb-2">
           <p class="text-sm/4 font-cascadia-light uppercase mb-1">{t('daggerheart.combat.stress')}</p>
           <div class="flex">
-            <For each={Array.from([...Array(character().stress.max).keys()], (x) => x + 1)}>
+            <For each={Array.from([...Array(character().stress_max).keys()], (x) => x + 1)}>
               {(index) =>
                 <Checkbox
                   filled
-                  checked={character().stress.marked >= index}
+                  checked={character().stress_marked >= index}
                   classList="mr-1"
-                  onToggle={() => updateAttribute('stress', 'marked', index)}
-                />
-              }
-            </For>
-            <For each={Array.from([...Array(12 - character().stress.max).keys()], (x) => x + character().stress.max + 1)}>
-              {(index) =>
-                <Checkbox
-                  outlined
-                  classList="mr-1"
-                  onToggle={() => updateAttribute('stress', 'max', index)}
+                  onToggle={() => updateAttribute('stress_marked', index)}
                 />
               }
             </For>
@@ -174,13 +154,13 @@ export const DaggerheartCombat = (props) => {
         <div class="px-4 mb-4">
           <p class="text-sm/4 font-cascadia-light uppercase mb-1">{t('daggerheart.combat.hope')}</p>
           <div class="flex">
-            <For each={Array.from([...Array(character().hope.max).keys()], (x) => x + 1)}>
+            <For each={Array.from([...Array(character().hope_max).keys()], (x) => x + 1)}>
               {(index) =>
                 <Checkbox
                   filled
-                  checked={character().hope.marked >= index}
+                  checked={character().hope_marked >= index}
                   classList="mr-1"
-                  onToggle={() => updateAttribute('hope', 'marked', index)}
+                  onToggle={() => updateAttribute('hope_marked', index)}
                 />
               }
             </For>

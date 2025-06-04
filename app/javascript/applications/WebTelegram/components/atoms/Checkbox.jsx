@@ -2,7 +2,7 @@ import { Show, splitProps } from 'solid-js';
 
 import { CheckboxLabel } from './CheckboxLabel';
 
-import { Close } from '../../assets';
+import { Stroke } from '../../assets';
 
 export const Checkbox = (props) => {
   const [labelProps] = splitProps(props, ['labelText', 'labelClassList']);
@@ -18,7 +18,7 @@ export const Checkbox = (props) => {
         onClick={() => props.disabled ? null : props.onToggle()}
       >
         <Show when={props.checked && !props.filled}>
-          <Close />
+          <Stroke />
         </Show>
       </div>
       <Show when={props.labelPosition === 'right'}>

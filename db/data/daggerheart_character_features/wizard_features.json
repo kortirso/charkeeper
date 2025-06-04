@@ -111,8 +111,11 @@
     },
     "origin": "subclass",
     "origin_value": "school_of_war",
-    "kind": "static",
-    "visible": "subclasses_mastery['school_of_war'].to_i >= 2"
+    "kind": "update_result",
+    "visible": "subclasses_mastery['school_of_war'].to_i >= 2 && hope['marked'] >= 2",
+    "eval_variables": {
+      "evasion": "evasion + 2"
+    }
   },
   {
     "slug": "fueled_by_fear",

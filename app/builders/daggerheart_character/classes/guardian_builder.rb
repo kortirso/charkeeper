@@ -5,9 +5,9 @@ module DaggerheartCharacter
     class GuardianBuilder
       def call(result:)
         result[:evasion] = 9
-        result[:health] = { marked: 0, max: 7 }
-        result[:stress] = { marked: 0, max: 6 }
-        result[:hope] = { marked: 2, max: 6 }
+        result[:health_max] = 7
+        result[:stress_max] = 6
+        result[:hope_max] = 6
         result
       end
     end

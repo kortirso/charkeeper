@@ -13,14 +13,18 @@ module Daggerheart
     attribute :subclasses_mastery, array: true, default: {}
     attribute :experiences, array: true, default: {}
     attribute :energy, array: true, default: {}
-    attribute :traits, array: true, default: { str: 1, agi: 2, fin: 1, ins: 0, pre: 0, know: -1 }
-    attribute :health, array: true, default: { marked: 0, max: 6 }
-    attribute :stress, array: true, default: { marked: 0, max: 6 }
-    attribute :hope, array: true, default: { marked: 2, max: 6 }
+    attribute :traits, array: true, default: { 'str' => 1, 'agi' => 2, 'fin' => 1, 'ins' => 0, 'pre' => 0, 'know' => -1 }
+    attribute :health_marked, :integer, default: 0
+    attribute :health_max, :integer, default: 5
+    attribute :stress_marked, :integer, default: 0
+    attribute :stress_max, :integer, default: 6
+    attribute :hope_marked, :integer, default: 2
+    attribute :hope_max, :integer, default: 6
     attribute :evasion, :integer, default: 10
     attribute :spent_armor_slots, :integer, default: 0
-    attribute :gold, array: true, default: { coins: 0, handfuls: 0, bags: 0, chests: 0 }
+    attribute :gold, array: true, default: { 'coins' => 0, 'handfuls' => 0, 'bags' => 0, 'chests' => 0 }
     attribute :selected_features, array: true, default: {}
+    attribute :leveling, array: true, default: { 'health' => 0, 'stress' => 0, 'evasion' => 0, 'proficiency' => 0 }
   end
 
   class Character < Character

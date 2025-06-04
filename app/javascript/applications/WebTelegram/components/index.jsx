@@ -21,6 +21,7 @@ export * from './compounds/Character/Daggerheart';
 export * from './compounds/Character/Daggerheart/Traits';
 export * from './compounds/Character/Daggerheart/Combat';
 export * from './compounds/Character/Daggerheart/Equipment';
+export * from './compounds/Character/Daggerheart/Leveling';
 
 export * from './compounds/Character/shared/Avatar';
 export * from './compounds/Character/shared/CharacterNavigation';

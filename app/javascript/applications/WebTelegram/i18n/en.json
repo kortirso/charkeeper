@@ -10,7 +10,8 @@
     "restIsFinished": "Rest is finished",
     "itemIsAdded": "Item is added",
     "characterIsUpdated": "Character is updated",
-    "fileSizeLimit": "File size should be less than 1 MB"
+    "fileSizeLimit": "File size should be less than 1 MB",
+    "invalidSubclassesList": "You need to select subclasses for all classes"
   },
   "profilePage": {
     "title": "Profile",
@@ -611,6 +612,14 @@
       "health": "Health",
       "stress": "Stress",
       "hope": "Hope"
+    },
+    "leveling": {
+      "level": "Class level",
+      "mastery": "Subclass mastery",
+      "health": "Permanent Hit Point slots",
+      "stress": "Permanent Stress slots",
+      "evasion": "Permanent +1 bonus to Evasion",
+      "proficiency": "Permanent +1 bonus to Proficiency"
     }
   }
 }

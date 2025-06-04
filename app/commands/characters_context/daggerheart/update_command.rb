@@ -15,6 +15,8 @@ module CharactersContext
         params do
           required(:character).filled(type?: ::Daggerheart::Character)
           optional(:classes).hash
+          optional(:subclasses).hash
+          optional(:subclasses_mastery).hash
           optional(:traits).hash do
             required(:str).filled(:integer)
             required(:agi).filled(:integer)
@@ -23,18 +25,9 @@ module CharactersContext
             required(:pre).filled(:integer)
             required(:know).filled(:integer)
           end
-          optional(:health).hash do
-            required(:marked).filled(:integer)
-            required(:max).filled(:integer)
-          end
-          optional(:stress).hash do
-            required(:marked).filled(:integer)
-            required(:max).filled(:integer)
-          end
-          optional(:hope).hash do
-            required(:marked).filled(:integer) # TODO: marked не может быть больше max
-            required(:max).filled(:integer)
-          end
+          optional(:health_marked).filled(:integer)
+          optional(:stress_marked).filled(:integer)
+          optional(:hope_marked).filled(:integer)
           optional(:gold).hash do
             required(:coins).filled(:integer) # TODO: если значение 10, то увеличивать на 1 нижестоящий
             required(:handfuls).filled(:integer)
@@ -42,6 +35,13 @@ module CharactersContext
             required(:chests).filled(:integer)
           end
           optional(:energy).hash
+          optional(:selected_features).hash
+          optional(:leveling).hash do
+            required(:health).filled(:integer)
+            required(:stress).filled(:integer)
+            required(:evasion).filled(:integer)
+            required(:proficiency).filled(:integer)
+          end
           optional(:name).filled(:string)
           optional(:avatar_file).hash do
             required(:file_content).filled(:string)

@@ -1,7 +1,7 @@
 import { createSignal, Switch, Match } from 'solid-js';
 
 import {
-  DaggerheartTraits, DaggerheartCombat, DaggerheartEquipment, Notes, Avatar, CharacterNavigation
+  DaggerheartTraits, DaggerheartCombat, DaggerheartEquipment, Notes, Avatar, CharacterNavigation, DaggerheartLeveling
 } from '../../../components';
 
 export const Daggerheart = (props) => {
@@ -12,7 +12,7 @@ export const Daggerheart = (props) => {
   return (
     <>
       <CharacterNavigation
-        tabsList={['traits', 'combat', 'equipment', 'notes', 'avatar']}
+        tabsList={['traits', 'combat', 'equipment', 'notes', 'classLevels', 'avatar']}
         activeTab={activeTab()}
         setActiveTab={setActiveTab}
       />
@@ -38,6 +38,12 @@ export const Daggerheart = (props) => {
           </Match>
           <Match when={activeTab() === 'notes'}>
             <Notes />
+          </Match>
+          <Match when={activeTab() === 'classLevels'}>
+            <DaggerheartLeveling
+              character={character()}
+              onReplaceCharacter={props.onReplaceCharacter}
+            />
           </Match>
           <Match when={activeTab() === 'avatar'}>
             <Avatar
