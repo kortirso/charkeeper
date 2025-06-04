@@ -1,10 +1,10 @@
-import { For, Switch, Match, Show } from 'solid-js';
+import { For, Switch, Match } from 'solid-js';
 import * as i18n from '@solid-primitives/i18n';
 
-import { Checkbox, Toggle, Button } from '../../../atoms';
+import { Checkbox, Toggle } from '../../../atoms';
 
+import { FeatureTitle } from '../../../../components';
 import { useAppState, useAppLocale, useAppAlert } from '../../../../context';
-import { PlusSmall, Minus, Campfire, LongCampfire } from '../../../../assets';
 import { updateCharacterRequest } from '../../../../requests/updateCharacterRequest';
 
 export const DaggerheartCombat = (props) => {
@@ -30,17 +30,17 @@ export const DaggerheartCombat = (props) => {
     else renderAlerts(result.errors);
   }
 
-  const spendEnergy = async (event, slug, limit) => {
+  const spendEnergy = async (event, feature) => {
     event.stopPropagation();
 
     let payload;
-    const currentValue = character().energy[slug];
+    const currentValue = character().energy[feature.slug];
 
-    if (currentValue === limit) return;
+    if (currentValue === feature.limit) return;
     if (currentValue) {
-      payload = { ...character().energy, [slug]: currentValue + 1 };
+      payload = { ...character().energy, [feature.slug]: currentValue + 1 };
     } else {
-      payload = { ...character().energy, [slug]: 1 };
+      payload = { ...character().energy, [feature.slug]: 1 };
     }
 
     const result = await updateCharacterRequest(
@@ -51,17 +51,17 @@ export const DaggerheartCombat = (props) => {
     else renderAlerts(result.errors);
   }
 
-  const restoreEnergy = async (event, slug) => {
+  const restoreEnergy = async (event, feature) => {
     event.stopPropagation();
 
     let payload;
-    const currentValue = character().energy[slug];
+    const currentValue = character().energy[feature.slug];
 
     if (currentValue === 0) return;
     if (currentValue) {
-      payload = { ...character().energy, [slug]: currentValue - 1 };
+      payload = { ...character().energy, [feature.slug]: currentValue - 1 };
     } else {
-      payload = { ...character().energy, [slug]: 0 };
+      payload = { ...character().energy, [feature.slug]: 0 };
     }
 
     const result = await updateCharacterRequest(
@@ -70,33 +70,6 @@ export const DaggerheartCombat = (props) => {
 
     if (result.errors === undefined) props.onReplaceCharacter({ energy: payload });
     else renderAlerts(result.errors);
-  }
-
-  const renderFeatureTitle = (feature) => {
-    if (feature.limit === undefined) return feature.title;
-
-    return (
-      <div class="flex items-center">
-        <p class="flex-1">{feature.title}</p>
-        <div class="flex items-center">
-          <Button default size="small" onClick={(event) => character().energy[feature.slug] !== feature.limit ? spendEnergy(event, feature.slug, feature.limit) : event.stopPropagation()}>
-            <Minus />
-          </Button>
-          <p class="flex items-center justify-center mx-2">
-            <span class="w-6 text-center">{feature.limit - (character().energy[feature.slug] || 0)}</span>
-            <Show
-              when={feature.limit_refresh === 'short_rest'}
-              fallback={<span title={t('character.longRest')}><LongCampfire /></span>}
-            >
-              <span title={t('character.shortRest')}><Campfire /></span>
-            </Show>
-          </p>
-          <Button default size="small" onClick={(event) => (character().energy[feature.slug] || 0) > 0 ? restoreEnergy(event, feature.slug) : event.stopPropagation()}>
-            <PlusSmall />
-          </Button>
-        </div>
-      </div>
-    );
   }
 
   return (
@@ -199,10 +172,9 @@ export const DaggerheartCombat = (props) => {
           </div>
         </div>
       </div>
-
       <For each={character().features}>
         {(feature) =>
-          <Toggle title={renderFeatureTitle(feature)}>
+          <Toggle title={<FeatureTitle feature={feature} character={character()} onSpendEnergy={spendEnergy} onRestoreEnergy={restoreEnergy} />}>
             <Switch>
               <Match when={feature.kind === 'static'}>
                 <p

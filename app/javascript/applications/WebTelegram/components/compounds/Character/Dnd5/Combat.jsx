@@ -4,8 +4,8 @@ import * as i18n from '@solid-primitives/i18n';
 import { createModal, StatsBlock } from '../../../molecules';
 import { Input, Toggle, Checkbox, Select, Button } from '../../../atoms';
 
+import { FeatureTitle } from '../../../../components';
 import { useAppLocale } from '../../../../context';
-import { PlusSmall, Minus, Campfire, LongCampfire } from '../../../../assets';
 
 import { modifier } from '../../../../../../helpers';
 
@@ -122,33 +122,6 @@ export const Dnd5Combat = (props) => {
             </For>
           </tbody>
         </table>
-      </div>
-    );
-  }
-
-  const renderFeatureTitle = (feature) => {
-    if (feature.limit === undefined) return feature.title;
-
-    return (
-      <div class="flex items-center">
-        <p class="flex-1">{feature.title}</p>
-        <div class="flex items-center">
-          <Button default size="small" onClick={(event) => props.energyData[feature.slug] !== feature.limit ? props.onSpendEnergy(event, feature.slug, feature.limit) : event.stopPropagation()}>
-            <Minus />
-          </Button>
-          <p class="flex items-center justify-center mx-2">
-            <span class="w-6 text-center">{feature.limit - (props.energyData[feature.slug] || 0)}</span>
-            <Show
-              when={feature.limit_refresh === 'short_rest'}
-              fallback={<span title={t('character.longRest')}><LongCampfire /></span>}
-            >
-              <span title={t('character.shortRest')}><Campfire /></span>
-            </Show>
-          </p>
-          <Button default size="small" onClick={(event) => (props.energyData[feature.slug] || 0) > 0 ? props.onRestoreEnergy(event, feature.slug) : event.stopPropagation()}>
-            <PlusSmall />
-          </Button>
-        </div>
       </div>
     );
   }
@@ -275,7 +248,7 @@ export const Dnd5Combat = (props) => {
       {renderAttacksBox(`${t('terms.attackBonusAction')} - 1`, character().attacks.filter((item) => item.action_type === 'bonus action'))}
       <For each={character().features}>
         {(feature) =>
-          <Toggle title={renderFeatureTitle(feature)}>
+          <Toggle title={<FeatureTitle feature={feature} character={character()} onSpendEnergy={props.onSpendEnergy} onRestoreEnergy={props.onRestoreEnergy} />}>
             <Switch>
               <Match when={feature.kind === 'static'}>
                 <p

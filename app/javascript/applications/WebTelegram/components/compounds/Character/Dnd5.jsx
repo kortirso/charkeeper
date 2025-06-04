@@ -45,7 +45,7 @@ export const Dnd5 = (props) => {
   const [death, setDeath] = createSignal(character().death_saving_throws);
 
   const [appState] = useAppState();
-  const [{ renderNotice }] = useAppAlert();
+  const [{ renderAlerts, renderNotice }] = useAppAlert();
   const [, dict] = useAppLocale();
 
   const t = i18n.translator(dict);
@@ -234,32 +234,46 @@ export const Dnd5 = (props) => {
     if (result.errors === undefined) setSpentHitDiceData(newValue);
   }
 
-  const spendEnergy = async (event, slug, limit) => {
+  const spendEnergy = async (event, feature) => {
     event.stopPropagation();
 
-    let newValue;
-    if (energyData()[slug] && energyData()[slug] < limit) {
-      newValue = { ...energyData(), [slug]: energyData()[slug] + 1 };
+    let payload;
+    const currentValue = character().energy[feature.slug];
+
+    if (currentValue === feature.limit) return;
+    if (currentValue) {
+      payload = { ...energyData(), [feature.slug]: currentValue + 1 };
     } else {
-      newValue = { ...energyData(), [slug]: 1 };
+      payload = { ...energyData(), [feature.slug]: 1 };
     }
 
-    const result = await refreshCharacter({ energy: newValue });
-    if (result.errors === undefined) setEnergyData(newValue);
+    const result = await updateCharacterRequest(
+      appState.accessToken, character().provider, character().id, { character: { energy: payload }, only_head: true }
+    );
+
+    if (result.errors === undefined) props.onReplaceCharacter({ energy: payload });
+    else renderAlerts(result.errors);
   }
 
-  const restoreEnergy = async (event, slug) => {
+  const restoreEnergy = async (event, feature) => {
     event.stopPropagation();
 
-    let newValue;
-    if (energyData()[slug] && energyData()[slug] > 0) {
-      newValue = { ...energyData(), [slug]: energyData()[slug] - 1 };
+    let payload;
+    const currentValue = character().energy[feature.slug];
+
+    if (currentValue === 0) return;
+    if (currentValue) {
+      payload = { ...character().energy, [feature.slug]: currentValue - 1 };
     } else {
-      newValue = { ...energyData(), [slug]: 0 };
+      payload = { ...character().energy, [feature.slug]: 0 };
     }
 
-    const result = await refreshCharacter({ energy: newValue });
-    if (result.errors === undefined) setEnergyData(newValue);
+    const result = await updateCharacterRequest(
+      appState.accessToken, character().provider, character().id, { character: { energy: payload }, only_head: true }
+    );
+
+    if (result.errors === undefined) props.onReplaceCharacter({ energy: payload });
+    else renderAlerts(result.errors);
   }
 
   const makeHeal = async (damageHealValue) => {
