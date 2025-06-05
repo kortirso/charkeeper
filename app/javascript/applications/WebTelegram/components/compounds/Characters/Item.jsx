@@ -50,7 +50,7 @@ export const Item = (props) => {
         <Show when={isOpen()}>
           <div class="absolute right-0 border border-gray-200 rounded">
             <p
-              class="px-2 py-1 text-sm hover:bg-gray-200"
+              class="px-2 py-1 text-sm bg-white hover:bg-gray-200"
               onClick={props.onDeleteCharacter} // eslint-disable-line solid/reactivity
             >{t('charactersPage.onDeleteCharacter')}</p>
           </div>

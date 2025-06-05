@@ -9,7 +9,7 @@ module Dnd5Character
     private
 
     def race_builder(race)
-      "Dnd5Character::Classes::#{race.camelize}Builder".constantize.new
+      "Dnd5Character::Races::#{race.camelize}Builder".constantize.new
     rescue NameError => _e
       DummyBuilder.new
     end

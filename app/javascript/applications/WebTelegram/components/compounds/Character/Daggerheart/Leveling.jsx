@@ -156,15 +156,33 @@ export const DaggerheartLeveling = (props) => {
                   />
                 </Show>
                 <Show when={classesData()[classSlug]}>
-                  <div class="flex items-center my-1 ml-4">
-                    <span class="font-cascadia-light w-40">{t('daggerheart.leveling.level')}</span>
-                    <Button default size="small" onClick={() => changeClassLevel(classSlug, 'down')}>
-                      <Minus />
-                    </Button>
-                    <p class="w-10 text-center">{classesData()[classSlug]}</p>
-                    <Button default size="small" onClick={() => changeClassLevel(classSlug, 'up')}>
-                      <PlusSmall />
-                    </Button>
+                  <div class="flex mt-2">
+                    <div>
+                      <div class="flex items-center">
+                        <Button default size="small" onClick={() => changeClassLevel(classSlug, 'down')}>
+                          <Minus />
+                        </Button>
+                        <p class="w-10 text-center">{classesData()[classSlug]}</p>
+                        <Button default size="small" onClick={() => changeClassLevel(classSlug, 'up')}>
+                          <PlusSmall />
+                        </Button>
+                      </div>
+                      <span class="font-cascadia-light text-xs">{t('daggerheart.leveling.level')}</span>
+                    </div>
+                    <Show when={classesData()[classSlug] && character().subclasses[classSlug]}>
+                      <div class="ml-8">
+                        <div class="flex items-center">
+                          <Button default size="small" onClick={() => changeMastery(character().subclasses[classSlug], 'down')}>
+                            <Minus />
+                          </Button>
+                          <p class="w-10 text-center">{subclassesMasteryData()[character().subclasses[classSlug]]}</p>
+                          <Button default size="small" onClick={() => changeMastery(character().subclasses[classSlug], 'up')}>
+                            <PlusSmall />
+                          </Button>
+                        </div>
+                        <span class="font-cascadia-light text-xs">{t('daggerheart.leveling.mastery')}</span>
+                      </div>
+                    </Show>
                   </div>
                 </Show>
                 <Show when={classesData()[classSlug] && !character().subclasses[classSlug]}>
@@ -174,18 +192,6 @@ export const DaggerheartLeveling = (props) => {
                     selectedValue={subclassesData()[classSlug]}
                     onSelect={(value) => selectSubclass(classSlug, value)}
                   />
-                </Show>
-                <Show when={classesData()[classSlug] && character().subclasses[classSlug]}>
-                  <div class="flex items-center ml-4">
-                    <span class="font-cascadia-light w-40">{t('daggerheart.leveling.mastery')}</span>
-                    <Button default size="small" onClick={() => changeMastery(character().subclasses[classSlug], 'down')}>
-                      <Minus />
-                    </Button>
-                    <p class="w-10 text-center">{subclassesMasteryData()[character().subclasses[classSlug]]}</p>
-                    <Button default size="small" onClick={() => changeMastery(character().subclasses[classSlug], 'up')}>
-                      <PlusSmall />
-                    </Button>
-                  </div>
                 </Show>
               </div>
             }

@@ -81,8 +81,14 @@ export const Dnd5 = (props) => {
     if (spellClassesList().length === 0) return;
     if (characterSpells() !== undefined) return;
 
+    const spellLevels = Object.keys(character().spells_slots);
+
     const fetchCharacterSpells = async () => await fetchCharacterSpellsRequest(appState.accessToken, props.character.provider, appState.activePageParams.id);
-    const fetchSpells = async () => await fetchSpellsRequest(appState.accessToken, props.character.provider, Math.max(...Object.keys(character().spells_slots)));
+    const fetchSpells = async () => await fetchSpellsRequest(
+      appState.accessToken,
+      props.character.provider,
+      spellLevels.length === 0 ? 0 : Math.max(...spellLevels)
+    );
 
     Promise.all([fetchCharacterSpells(), fetchSpells()]).then(
       ([characterSpellsData, spellsData]) => {

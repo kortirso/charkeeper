@@ -60,9 +60,9 @@ module Daggerheart
 
     def decorator
       base_decorator = ::DaggerheartCharacter::BaseDecorator.new(self)
-      heritage_decorator = ::DaggerheartCharacter::HeritageDecorateWrapper.new(base_decorator)
-      class_decorator = ::DaggerheartCharacter::ClassDecorateWrapper.new(heritage_decorator)
-      ::DaggerheartCharacter::FeaturesDecorator.new(class_decorator)
+      features_decorator = ::DaggerheartCharacter::FeaturesDecorator.new(base_decorator)
+      features_decorator.features
+      features_decorator
     end
   end
 end

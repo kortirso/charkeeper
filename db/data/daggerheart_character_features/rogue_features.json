@@ -90,7 +90,7 @@
     "kind": "static",
     "visible": "subclasses_mastery['nightwalker'].to_i >= 3",
     "eval_variables": {
-      "evasion": "evasion += 1"
+      "evasion": "evasion + 1"
     }
   },
   {
