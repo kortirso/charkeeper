@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-describe WebTelegram::Dnd5::ItemsController do
+describe WebTelegram::ItemsController do
   let!(:user_session) { create :user_session }
   let(:access_token) { Authkeeper::GenerateTokenService.new.call(user_session: user_session)[:result] }
 
@@ -9,7 +9,7 @@ describe WebTelegram::Dnd5::ItemsController do
       before { create :item }
 
       it 'returns data', :aggregate_failures do
-        get :index, params: { charkeeper_access_token: access_token }
+        get :index, params: { provider: 'dnd5', charkeeper_access_token: access_token }
 
         response_values = response.parsed_body.dig('items', 0)
 

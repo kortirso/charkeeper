@@ -72,7 +72,7 @@
     "combat": "Сражение",
     "rest": "Отдых",
     "classLevels": "Классы",
-    "equipment": "Снаряжение",
+    "equipment": "Экипировка",
     "backpack": "Рюкзак",
     "spells": "Заклинания",
     "professions": "Владения",
@@ -136,9 +136,9 @@
     "distance": "Дист"
   },
   "equipment": {
-    "quantity": "Кол-во",
+    "quantity": "Число",
     "weight": "Вес",
-    "cost": "Цена зм",
+    "cost": "Цена",
     "gold": "ЗМ",
     "silver": "СМ",
     "copper": "ММ"

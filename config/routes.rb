@@ -23,17 +23,20 @@ Rails.application.routes.draw do
     resources :auth, only: %i[create]
     resources :characters, only: %i[index show destroy] do
       resources :notes, only: %i[index create destroy], module: 'characters'
+
+      scope ':provider' do
+        resources :items, only: %i[index create update destroy], module: 'characters'
+      end
     end
+    get ':provider/items', to: 'items#index'
     resource :users, only: %i[update]
 
     namespace :dnd5 do
       resources :characters, only: %i[create update] do
-        resources :items, only: %i[index create update destroy], module: 'characters'
         resources :spells, only: %i[index create update destroy], module: 'characters'
         resources :rest, only: %i[create], module: 'characters'
         resources :health, only: %i[create], module: 'characters'
       end
-      resources :items, only: %i[index]
       resources :spells, only: %i[index]
     end
 

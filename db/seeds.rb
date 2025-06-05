@@ -108,5 +108,9 @@ armor_file = File.read(Rails.root.join('db/data/daggerheart_armor.json'))
 armor = JSON.parse(armor_file)
 Daggerheart::Item.upsert_all(armor) if armor.any?
 
+weapons_file = File.read(Rails.root.join('db/data/daggerheart_weapons.json'))
+weapons = JSON.parse(weapons_file)
+Daggerheart::Item.upsert_all(weapons) if weapons.any?
+
 user = User.create! locale: 'ru'
 user.sessions.create!

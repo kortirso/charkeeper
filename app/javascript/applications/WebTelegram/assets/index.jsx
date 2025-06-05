@@ -10,3 +10,4 @@ export * from './Campfire';
 export * from './LongCampfire';
 export * from './Edit';
 export * from './Stroke';
+export * from './Arrow';

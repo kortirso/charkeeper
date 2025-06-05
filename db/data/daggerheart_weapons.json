@@ -1,0 +1,98 @@
+[
+  {
+    "slug": "broadsword",
+    "kind": "weapon",
+    "name": { "en": "Broadsword", "ru": "" },
+    "info": {
+      "tier": 1,
+      "trait": "agi",
+      "range": "melee",
+      "damage": "d8",
+      "damage_bonus": 0,
+      "damage_type": "physical",
+      "burden": 1,
+      "bonuses": { "attack": 1 },
+      "features": []
+    }
+  },
+  {
+    "slug": "longsword",
+    "kind": "weapon",
+    "name": { "en": "Longsword", "ru": "" },
+    "info": {
+      "tier": 1,
+      "trait": "agi",
+      "range": "melee",
+      "damage": "d8",
+      "damage_bonus": 3,
+      "damage_type": "physical",
+      "burden": 2,
+      "bonuses": {},
+      "features": []
+    }
+  },
+  {
+    "slug": "battleaxe",
+    "kind": "weapon",
+    "name": { "en": "Battleaxe", "ru": "" },
+    "info": {
+      "tier": 1,
+      "trait": "str",
+      "range": "melee",
+      "damage": "d10",
+      "damage_bonus": 3,
+      "damage_type": "physical",
+      "burden": 2,
+      "bonuses": {},
+      "features": []
+    }
+  },
+  {
+    "slug": "greatsword",
+    "kind": "weapon",
+    "name": { "en": "Greatsword", "ru": "" },
+    "info": {
+      "tier": 1,
+      "trait": "str",
+      "range": "melee",
+      "damage": "d10",
+      "damage_bonus": 3,
+      "damage_type": "physical",
+      "burden": 2,
+      "bonuses": { "evasion": -1 },
+      "features": ["On a successful attack, roll an additional damage die and discard the lowest result."]
+    }
+  },
+  {
+    "slug": "mace",
+    "kind": "weapon",
+    "name": { "en": "Mace", "ru": "" },
+    "info": {
+      "tier": 1,
+      "trait": "str",
+      "range": "melee",
+      "damage": "d8",
+      "damage_bonus": 1,
+      "damage_type": "physical",
+      "burden": 1,
+      "bonuses": {},
+      "features": []
+    }
+  },
+  {
+    "slug": "warhammer",
+    "kind": "weapon",
+    "name": { "en": "Warhammer", "ru": "" },
+    "info": {
+      "tier": 1,
+      "trait": "str",
+      "range": "melee",
+      "damage": "d12",
+      "damage_bonus": 3,
+      "damage_type": "physical",
+      "burden": 2,
+      "bonuses": { "evasion": -1 },
+      "features": []
+    }
+  }
+]

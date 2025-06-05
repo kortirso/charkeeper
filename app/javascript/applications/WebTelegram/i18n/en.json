@@ -138,7 +138,7 @@
   "equipment": {
     "quantity": "Qty",
     "weight": "Weight",
-    "cost": "Cost gp",
+    "cost": "Cost",
     "gold": "Gold",
     "silver": "Silver",
     "copper": "Copper"

@@ -1,19 +1,41 @@
-import { For } from 'solid-js';
+import { createSignal, For, Show, batch } from 'solid-js';
 import * as i18n from '@solid-primitives/i18n';
 
-import { Checkbox } from '../../../atoms';
+import { Input, Button, Checkbox } from '../../../atoms';
+import { createModal } from '../../../molecules';
 
+import { ItemsTable } from '../../../../components';
 import { useAppState, useAppLocale, useAppAlert } from '../../../../context';
 import { updateCharacterRequest } from '../../../../requests/updateCharacterRequest';
 
 export const DaggerheartEquipment = (props) => {
   const character = () => props.character;
+  const characterItems = () => props.characterItems;
 
+  const [changingItem, setChangingItem] = createSignal(null);
+
+  const { Modal, openModal, closeModal } = createModal();
   const [appState] = useAppState();
   const [{ renderAlerts }] = useAppAlert();
   const [, dict] = useAppLocale();
 
   const t = i18n.translator(dict);
+
+  const changeItem = (item) => {
+    batch(() => {
+      setChangingItem(item);
+      openModal();
+    });
+  }
+
+  const updateItem = async () => {
+    const result = await props.onUpdateCharacterItem(
+      changingItem(),
+      { character_item: { quantity: changingItem().quantity, notes: changingItem().notes } }
+    );
+
+    if (result.errors === undefined) closeModal();
+  }
 
   const updateAttribute = async (attribute, key, value) => {
     const currentValue = character()[attribute][key];
@@ -96,6 +118,44 @@ export const DaggerheartEquipment = (props) => {
           {t('daggerheart.gold.total')} - {character().gold.chests * 1000 + character().gold.bags * 100 + character().gold.handfuls * 10 + character().gold.coins}
         </p>
       </div>
+      <Show when={characterItems() !== undefined}>
+        <Button default textable classList="mb-2" onClick={props.onNavigatoToItems}>{t('character.items')}</Button>
+        <ItemsTable
+          title={t('character.equipment')}
+          items={characterItems().filter((item) => item.ready_to_use)}
+          onChangeItem={changeItem}
+          onUpdateCharacterItem={props.onUpdateCharacterItem}
+          onRemoveCharacterItem={props.onRemoveCharacterItem}
+        />
+        <ItemsTable
+          title={t('character.backpack')}
+          items={characterItems().filter((item) => !item.ready_to_use)}
+          onChangeItem={changeItem}
+          onUpdateCharacterItem={props.onUpdateCharacterItem}
+          onRemoveCharacterItem={props.onRemoveCharacterItem}
+        />
+      </Show>
+      <Modal>
+        <Show when={changingItem()}>
+          <div class="mb-2 flex items-center">
+            <p class="flex-1 text-sm text-left font-cascadia-light">{changingItem().name}</p>
+            <Input
+              numeric
+              containerClassList="w-20 ml-8"
+              value={changingItem().quantity}
+              onInput={(value) => setChangingItem({ ...changingItem(), quantity: Number(value) })}
+            />
+          </div>
+          <label class="text-sm/4 font-cascadia-light text-gray-400">{t('character.itemNote')}</label>
+          <textarea
+            rows="2"
+            class="w-full border border-gray-200 rounded p-1 text-sm mb-2"
+            onInput={(e) => setChangingItem({ ...changingItem(), notes: e.target.value })}
+            value={changingItem().notes}
+          />
+          <Button default textable onClick={updateItem}>{t('save')}</Button>
+        </Show>
+      </Modal>
     </>
   );
 }

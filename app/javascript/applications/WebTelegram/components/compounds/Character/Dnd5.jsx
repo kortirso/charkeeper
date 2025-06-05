@@ -5,7 +5,6 @@ import {
   Dnd5Abilities, Dnd5Combat, Dnd5Rest, Dnd5ClassLevels, Dnd5Professions, Dnd5Equipment, Dnd5Items,
   Dnd5Spellbook, Dnd5Spells, Notes, Avatar, CharacterNavigation
 } from '../../../components';
-
 import { useAppState, useAppLocale, useAppAlert } from '../../../context';
 
 import { fetchCharacterItemsRequest } from '../../../requests/fetchCharacterItemsRequest';

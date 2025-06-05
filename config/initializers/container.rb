@@ -24,10 +24,12 @@ module Charkeeper
     # commands
     register('commands.auth_context.add_identity') { AuthContext::AddIdentityCommand.new }
     register('commands.users_context.update') { UsersContext::UpdateCommand.new }
+
+    register('commands.characters_context.item_update') { CharactersContext::ItemUpdateCommand.new }
+    register('commands.characters_context.item_add') { CharactersContext::ItemAddCommand.new }
+
     register('commands.characters_context.dnd5.create') { CharactersContext::Dnd5::CreateCommand.new }
     register('commands.characters_context.dnd5.update') { CharactersContext::Dnd5::UpdateCommand.new }
-    register('commands.characters_context.dnd5.item_update') { CharactersContext::Dnd5::ItemUpdateCommand.new }
-    register('commands.characters_context.dnd5.item_add') { CharactersContext::Dnd5::ItemAddCommand.new }
     register('commands.characters_context.dnd5.spell_update') { CharactersContext::Dnd5::SpellUpdateCommand.new }
     register('commands.characters_context.dnd5.spell_add') { CharactersContext::Dnd5::SpellAddCommand.new }
     register('commands.characters_context.dnd5.make_short_rest') { CharactersContext::Dnd5::MakeShortRestCommand.new }

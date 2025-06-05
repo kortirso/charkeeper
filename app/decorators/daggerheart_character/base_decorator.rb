@@ -64,7 +64,7 @@ module DaggerheartCharacter
         .where(ready_to_use: true)
         .joins(:item)
         .where(items: { kind: 'armor' })
-        .first&.item || {}
+        .first&.item&.info || {}
     end
   end
 end

@@ -55,6 +55,7 @@ export const CharacterPage = (props) => {
         <Match when={character().provider === 'daggerheart'}>
           <Daggerheart
             character={character()}
+            onReloadCharacter={reloadCharacter}
             onReplaceCharacter={replaceCharacter}
           />
         </Match>
