@@ -1,4 +1,4 @@
-import { createSignal, For, Switch, Match } from 'solid-js';
+import { createSignal, For, Switch, Match, Show } from 'solid-js';
 import * as i18n from '@solid-primitives/i18n';
 
 import { Checkbox, Toggle, Button } from '../../../atoms';
@@ -6,6 +6,8 @@ import { Checkbox, Toggle, Button } from '../../../atoms';
 import { FeatureTitle } from '../../../../components';
 import { useAppState, useAppLocale, useAppAlert } from '../../../../context';
 import { updateCharacterRequest } from '../../../../requests/updateCharacterRequest';
+
+import { modifier } from '../../../../../../helpers';
 
 export const DaggerheartCombat = (props) => {
   const character = () => props.character;
@@ -83,6 +85,53 @@ export const DaggerheartCombat = (props) => {
 
     if (result.errors === undefined) props.onReplaceCharacter({ selected_features: payload });
     else renderAlerts(result.errors);
+  }
+
+  const renderAttacksBox = (title, values) => {
+    if (values.length === 0) return <></>;
+
+    return (
+      <div class="p-4 white-box mb-2">
+        <h2 class="text-lg mb-2">{title}</h2>
+        <table class="w-full table first-column-full-width">
+          <thead>
+            <tr>
+              <td />
+              <td class="text-center">{t('attacks.bonus')}</td>
+              <td class="text-center">{t('attacks.damage')}</td>
+              <td class="text-center">{t('attacks.distance')}</td>
+            </tr>
+          </thead>
+          <tbody>
+            <For each={values}>
+              {(attack) =>
+                <tr>
+                  <td class="py-1">
+                    <p>{attack.name}</p>
+                    <Show when={attack.features.length > 0}>
+                      <p class="text-xs">
+                        {attack.tooltips.join(', ')}
+                      </p>
+                    </Show>
+                    <Show when={attack.notes}>
+                      <p class="text-xs">{attack.notes}</p>
+                    </Show>
+                  </td>
+                  <td class="py-1 text-center">{modifier(attack.attack_bonus)}</td>
+                  <td class="py-1 text-center">
+                    <p>{attack.damage}{attack.damage_bonus > 0 ? modifier(attack.damage_bonus) : ''}</p>
+                    <p class="text-xs">{attack.damage_type}</p>
+                  </td>
+                  <td class="py-1 text-center">
+                    <p>{attack.range}</p>
+                  </td>
+                </tr>
+              }
+            </For>
+          </tbody>
+        </table>
+      </div>
+    );
   }
 
   return (
@@ -167,6 +216,8 @@ export const DaggerheartCombat = (props) => {
           </div>
         </div>
       </div>
+      {renderAttacksBox(t('character.equipment'), character().attacks.filter((item) => item.ready_to_use))}
+      {renderAttacksBox(t('character.backpack'), character().attacks.filter((item) => !item.ready_to_use))}
       <For each={character().features}>
         {(feature) =>
           <Toggle title={<FeatureTitle feature={feature} character={character()} onSpendEnergy={spendEnergy} onRestoreEnergy={restoreEnergy} />}>

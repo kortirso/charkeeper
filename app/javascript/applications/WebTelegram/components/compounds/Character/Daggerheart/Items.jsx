@@ -42,6 +42,8 @@ export const DaggerheartItems = (props) => {
 
   return (
     <Show when={props.items !== undefined}>
+      {renderItems(t('character.primaryWeapon'), props.items.filter((item) => item.kind.includes('primary weapon')))}
+      {renderItems(t('character.secondaryWeapon'), props.items.filter((item) => item.kind.includes('secondary weapon')))}
       {renderItems(t('character.armorList'), props.items.filter((item) => item.kind.includes('armor')))}
       <Button default textable onClick={props.onNavigatoToEquipment}>{t('back')}</Button>
     </Show>

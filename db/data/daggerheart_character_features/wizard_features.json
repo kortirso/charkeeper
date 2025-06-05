@@ -87,7 +87,7 @@
     "kind": "update_result",
     "visible": "true",
     "description_eval_variables": {
-      "health": "health.merge({ 'max' => health['max'] + 1 })"
+      "health_max": "health_max + 1"
     }
   },
   {
@@ -112,7 +112,7 @@
     "origin": "subclass",
     "origin_value": "school_of_war",
     "kind": "update_result",
-    "visible": "subclasses_mastery['school_of_war'].to_i >= 2 && hope['marked'] >= 2",
+    "visible": "subclasses_mastery['school_of_war'].to_i >= 2 && hope_marked >= 2",
     "eval_variables": {
       "evasion": "evasion + 2"
     }

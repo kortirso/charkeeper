@@ -9,10 +9,12 @@
     "info": {
       "tier": 1,
       "base_score": 3,
-      "evasion": 1,
-      "thresholds": {
-        "major": 5,
-        "severe": 11
+      "bonuses": {
+        "evasion": 1,
+        "thresholds": {
+          "major": 5,
+          "severe": 11
+        }
       }
     }
   },
@@ -26,9 +28,11 @@
     "info": {
       "tier": 1,
       "base_score": 3,
-      "thresholds": {
-        "major": 6,
-        "severe": 13
+      "bonuses": {
+        "thresholds": {
+          "major": 6,
+          "severe": 13
+        }
       }
     }
   },
@@ -42,10 +46,12 @@
     "info": {
       "tier": 1,
       "base_score": 4,
-      "evasion": -1,
-      "thresholds": {
-        "major": 7,
-        "severe": 15
+      "bonuses": {
+        "evasion": -1,
+        "thresholds": {
+          "major": 7,
+          "severe": 15
+        }
       }
     }
   },
@@ -59,13 +65,15 @@
     "info": {
       "tier": 1,
       "base_score": 4,
-      "evasion": -2,
-      "traits": {
-        "agi": -1
-      },
-      "thresholds": {
-        "major": 8,
-        "severe": 17
+      "bonuses": {
+        "evasion": -2,
+        "traits": {
+          "agi": -1
+        },
+        "thresholds": {
+          "major": 8,
+          "severe": 17
+        }
       }
     }
   }

@@ -1,8 +1,8 @@
 [
   {
     "slug": "broadsword",
-    "kind": "weapon",
-    "name": { "en": "Broadsword", "ru": "" },
+    "kind": "primary weapon",
+    "name": { "en": "Broadsword", "ru": "Палаш" },
     "info": {
       "tier": 1,
       "trait": "agi",
@@ -17,8 +17,8 @@
   },
   {
     "slug": "longsword",
-    "kind": "weapon",
-    "name": { "en": "Longsword", "ru": "" },
+    "kind": "primary weapon",
+    "name": { "en": "Longsword", "ru": "Длинный меч" },
     "info": {
       "tier": 1,
       "trait": "agi",
@@ -33,8 +33,8 @@
   },
   {
     "slug": "battleaxe",
-    "kind": "weapon",
-    "name": { "en": "Battleaxe", "ru": "" },
+    "kind": "primary weapon",
+    "name": { "en": "Battleaxe", "ru": "Боевой топор" },
     "info": {
       "tier": 1,
       "trait": "str",
@@ -49,8 +49,8 @@
   },
   {
     "slug": "greatsword",
-    "kind": "weapon",
-    "name": { "en": "Greatsword", "ru": "" },
+    "kind": "primary weapon",
+    "name": { "en": "Greatsword", "ru": "Двуручный меч" },
     "info": {
       "tier": 1,
       "trait": "str",
@@ -65,8 +65,8 @@
   },
   {
     "slug": "mace",
-    "kind": "weapon",
-    "name": { "en": "Mace", "ru": "" },
+    "kind": "primary weapon",
+    "name": { "en": "Mace", "ru": "Булава" },
     "info": {
       "tier": 1,
       "trait": "str",
@@ -81,8 +81,8 @@
   },
   {
     "slug": "warhammer",
-    "kind": "weapon",
-    "name": { "en": "Warhammer", "ru": "" },
+    "kind": "primary weapon",
+    "name": { "en": "Warhammer", "ru": "Боевой молот" },
     "info": {
       "tier": 1,
       "trait": "str",
@@ -92,6 +92,428 @@
       "damage_type": "physical",
       "burden": 2,
       "bonuses": { "evasion": -1 },
+      "features": []
+    }
+  },
+  {
+    "slug": "dagger",
+    "kind": "primary weapon",
+    "name": { "en": "Dagger", "ru": "Кинжал" },
+    "info": {
+      "tier": 1,
+      "trait": "fin",
+      "range": "melee",
+      "damage": "d8",
+      "damage_bonus": 1,
+      "damage_type": "physical",
+      "burden": 1,
+      "bonuses": {},
+      "features": []
+    }
+  },
+  {
+    "slug": "quarterstaff",
+    "kind": "primary weapon",
+    "name": { "en": "Quarterstaff", "ru": "Боевой посох" },
+    "info": {
+      "tier": 1,
+      "trait": "ins",
+      "range": "melee",
+      "damage": "d10",
+      "damage_bonus": 3,
+      "damage_type": "physical",
+      "burden": 2,
+      "bonuses": {},
+      "features": []
+    }
+  },
+  {
+    "slug": "cutlass",
+    "kind": "primary weapon",
+    "name": { "en": "Cutlass", "ru": "Сабля" },
+    "info": {
+      "tier": 1,
+      "trait": "pre",
+      "range": "melee",
+      "damage": "d8",
+      "damage_bonus": 1,
+      "damage_type": "physical",
+      "burden": 1,
+      "bonuses": {},
+      "features": []
+    }
+  },
+  {
+    "slug": "rapier",
+    "kind": "primary weapon",
+    "name": { "en": "Rapier", "ru": "Рапира" },
+    "info": {
+      "tier": 1,
+      "trait": "pre",
+      "range": "melee",
+      "damage": "d8",
+      "damage_bonus": 0,
+      "damage_type": "physical",
+      "burden": 1,
+      "bonuses": {},
+      "features": ["When you make an attack, you can mark a Stress to target another creature within range."]
+    }
+  },
+  {
+    "slug": "halberd",
+    "kind": "primary weapon",
+    "name": { "en": "Halberd", "ru": "Алебарда" },
+    "info": {
+      "tier": 1,
+      "trait": "str",
+      "range": "very close",
+      "damage": "d10",
+      "damage_bonus": 2,
+      "damage_type": "physical",
+      "burden": 2,
+      "bonuses": { "traits": { "finesse": -1 } },
+      "features": []
+    }
+  },
+  {
+    "slug": "spear",
+    "kind": "primary weapon",
+    "name": { "en": "Spear", "ru": "Копьё" },
+    "info": {
+      "tier": 1,
+      "trait": "fin",
+      "range": "very close",
+      "damage": "d10",
+      "damage_bonus": 2,
+      "damage_type": "physical",
+      "burden": 2,
+      "bonuses": { "traits": { "finesse": -1 } },
+      "features": []
+    }
+  },
+  {
+    "slug": "shortbow",
+    "kind": "primary weapon",
+    "name": { "en": "Shortbow", "ru": "Короткий лук" },
+    "info": {
+      "tier": 1,
+      "trait": "agi",
+      "range": "far",
+      "damage": "d6",
+      "damage_bonus": 3,
+      "damage_type": "physical",
+      "burden": 2,
+      "bonuses": {},
+      "features": []
+    }
+  },
+  {
+    "slug": "crossbow",
+    "kind": "primary weapon",
+    "name": { "en": "Crossbow", "ru": "Арбалет" },
+    "info": {
+      "tier": 1,
+      "trait": "fin",
+      "range": "far",
+      "damage": "d6",
+      "damage_bonus": 1,
+      "damage_type": "physical",
+      "burden": 1,
+      "bonuses": {},
+      "features": []
+    }
+  },
+  {
+    "slug": "longbow",
+    "kind": "primary weapon",
+    "name": { "en": "Longbow", "ru": "Длинный лук" },
+    "info": {
+      "tier": 1,
+      "trait": "agi",
+      "range": "very far",
+      "damage": "d8",
+      "damage_bonus": 3,
+      "damage_type": "physical",
+      "burden": 2,
+      "bonuses": { "traits": { "finesse": -1 } },
+      "features": []
+    }
+  },
+  {
+    "slug": "arcane_gauntlets",
+    "kind": "primary weapon",
+    "name": { "en": "Arcane Gauntlets", "ru": "Волшебные рукавицы" },
+    "info": {
+      "tier": 1,
+      "trait": "str",
+      "range": "melee",
+      "damage": "d10",
+      "damage_bonus": 3,
+      "damage_type": "magic",
+      "burden": 2,
+      "bonuses": {},
+      "features": []
+    }
+  },
+  {
+    "slug": "hallowed_axe",
+    "kind": "primary weapon",
+    "name": { "en": "Hallowed Axe", "ru": "Священный топор" },
+    "info": {
+      "tier": 1,
+      "trait": "str",
+      "range": "melee",
+      "damage": "d8",
+      "damage_bonus": 1,
+      "damage_type": "magic",
+      "burden": 1,
+      "bonuses": {},
+      "features": []
+    }
+  },
+  {
+    "slug": "glowing_rings",
+    "kind": "primary weapon",
+    "name": { "en": "Glowing Rings", "ru": "Светящиеся кольца" },
+    "info": {
+      "tier": 1,
+      "trait": "agi",
+      "range": "very close",
+      "damage": "d10",
+      "damage_bonus": 1,
+      "damage_type": "magic",
+      "burden": 2,
+      "bonuses": {},
+      "features": []
+    }
+  },
+  {
+    "slug": "hand_runes",
+    "kind": "primary weapon",
+    "name": { "en": "Hand Runes", "ru": "Руны на руках" },
+    "info": {
+      "tier": 1,
+      "trait": "ins",
+      "range": "very close",
+      "damage": "d10",
+      "damage_bonus": 0,
+      "damage_type": "magic",
+      "burden": 1,
+      "bonuses": {},
+      "features": []
+    }
+  },
+  {
+    "slug": "returning_blade",
+    "kind": "primary weapon",
+    "name": { "en": "Returning Blade", "ru": "Возвращающееся лезвие" },
+    "info": {
+      "tier": 1,
+      "trait": "fin",
+      "range": "close",
+      "damage": "d8",
+      "damage_bonus": 0,
+      "damage_type": "magic",
+      "burden": 1,
+      "bonuses": {},
+      "features": ["When this weapon is thrown within its range, it appears in your hand immediately after the attack."]
+    }
+  },
+  {
+    "slug": "shortstaff",
+    "kind": "primary weapon",
+    "name": { "en": "Shortstaff", "ru": "Короткий посох" },
+    "info": {
+      "tier": 1,
+      "trait": "ins",
+      "range": "close",
+      "damage": "d8",
+      "damage_bonus": 1,
+      "damage_type": "magic",
+      "burden": 1,
+      "bonuses": {},
+      "features": []
+    }
+  },
+  {
+    "slug": "dualstaff",
+    "kind": "primary weapon",
+    "name": { "en": "Dualstaff", "ru": "Двойной посох" },
+    "info": {
+      "tier": 1,
+      "trait": "ins",
+      "range": "far",
+      "damage": "d6",
+      "damage_bonus": 3,
+      "damage_type": "magic",
+      "burden": 2,
+      "bonuses": {},
+      "features": []
+    }
+  },
+  {
+    "slug": "scepter",
+    "kind": "primary weapon",
+    "name": { "en": "Scepter", "ru": "Скипетр" },
+    "info": {
+      "tier": 1,
+      "trait": "pre",
+      "range": "far",
+      "damage": "d6",
+      "damage_bonus": 0,
+      "damage_type": "magic",
+      "burden": 2,
+      "bonuses": {},
+      "features": [],
+      "versatile": {
+        "trait": "pre",
+        "range": "melee",
+        "damage": "d8",
+        "damage_bonus": 0
+      }
+    }
+  },
+  {
+    "slug": "wand",
+    "kind": "primary weapon",
+    "name": { "en": "Wand", "ru": "Палочка" },
+    "info": {
+      "tier": 1,
+      "trait": "know",
+      "range": "far",
+      "damage": "d6",
+      "damage_bonus": 1,
+      "damage_type": "magic",
+      "burden": 1,
+      "bonuses": {},
+      "features": []
+    }
+  },
+  {
+    "slug": "greatstaff",
+    "kind": "primary weapon",
+    "name": { "en": "Greatstaff", "ru": "Двуручный посох" },
+    "info": {
+      "tier": 1,
+      "trait": "know",
+      "range": "very far",
+      "damage": "d6",
+      "damage_bonus": 0,
+      "damage_type": "magic",
+      "burden": 2,
+      "bonuses": {},
+      "features": ["On a successful attack, roll an additional damage die and discard the lowest result."]
+    }
+  },
+  {
+    "slug": "shortsword",
+    "kind": "secondary weapon",
+    "name": { "en": "Shortsword", "ru": "Короткий меч" },
+    "info": {
+      "tier": 1,
+      "trait": "agi",
+      "range": "melee",
+      "damage": "d8",
+      "damage_bonus": 0,
+      "damage_type": "physical",
+      "burden": 1,
+      "bonuses": {},
+      "features": ["+2 to primary weapon damage to targets within Melee range."]
+    }
+  },
+  {
+    "slug": "round_shield",
+    "kind": "secondary weapon",
+    "name": { "en": "Round Shield", "ru": "Круглый щит" },
+    "info": {
+      "tier": 1,
+      "trait": "str",
+      "range": "melee",
+      "damage": "d4",
+      "damage_bonus": 0,
+      "damage_type": "physical",
+      "burden": 1,
+      "bonuses": { "armor_score": 1 },
+      "features": []
+    }
+  },
+  {
+    "slug": "tower_shield",
+    "kind": "secondary weapon",
+    "name": { "en": "Tower Shield", "ru": "Башенный щит" },
+    "info": {
+      "tier": 1,
+      "trait": "str",
+      "range": "melee",
+      "damage": "d8",
+      "damage_bonus": 0,
+      "damage_type": "physical",
+      "burden": 1,
+      "bonuses": { "armor_score": 2, "evasion": -1 },
+      "features": []
+    }
+  },
+  {
+    "slug": "small_dagger",
+    "kind": "secondary weapon",
+    "name": { "en": "Small Dagger", "ru": "Маленький кинжал" },
+    "info": {
+      "tier": 1,
+      "trait": "fin",
+      "range": "melee",
+      "damage": "d8",
+      "damage_bonus": 0,
+      "damage_type": "physical",
+      "burden": 1,
+      "bonuses": {},
+      "features": ["+2 to primary weapon damage to targets within Melee range."]
+    }
+  },
+  {
+    "slug": "whip",
+    "kind": "secondary weapon",
+    "name": { "en": "Whip", "ru": "Кнут" },
+    "info": {
+      "tier": 1,
+      "trait": "pre",
+      "range": "very close",
+      "damage": "d6",
+      "damage_bonus": 0,
+      "damage_type": "physical",
+      "burden": 1,
+      "bonuses": {},
+      "features": ["Mark a Stress to crack the whip and force all adversaries within Melee range back to Close range."]
+    }
+  },
+  {
+    "slug": "grappler",
+    "kind": "secondary weapon",
+    "name": { "en": "Grappler", "ru": "Гарпун" },
+    "info": {
+      "tier": 1,
+      "trait": "fin",
+      "range": "close",
+      "damage": "d6",
+      "damage_bonus": 0,
+      "damage_type": "physical",
+      "burden": 1,
+      "bonuses": {},
+      "features": ["On a successful attack, you can pull the target into Melee range."]
+    }
+  },
+  {
+    "slug": "hand_crossbow",
+    "kind": "secondary weapon",
+    "name": { "en": "Hand Crossbow", "ru": "Ручной арбалет" },
+    "info": {
+      "tier": 1,
+      "trait": "fin",
+      "range": "far",
+      "damage": "d6",
+      "damage_bonus": 1,
+      "damage_type": "physical",
+      "burden": 1,
+      "bonuses": {},
       "features": []
     }
   }

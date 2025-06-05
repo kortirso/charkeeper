@@ -119,7 +119,9 @@
     "deathSuccess": "Успехи",
     "deathFailure": "Провалы",
     "dyingConditionValue": "Состояние при смерти",
-    "avatar": "Аватар"
+    "avatar": "Аватар",
+    "primaryWeapon": "Основное оружие",
+    "secondaryWeapon": "Запасное оружие"
   },
   "professionsPage": {
     "languages": "Известные языки",

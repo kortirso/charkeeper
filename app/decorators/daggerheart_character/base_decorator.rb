@@ -10,25 +10,27 @@ module DaggerheartCharacter
     def method_missing(_method, *args); end
 
     def modified_traits
-      @modified_traits ||= traits.merge(equiped_armor_item_info&.dig('traits') || {}) { |_key, oldval, newval| newval + oldval }
+      @modified_traits ||= traits.merge(equiped_traits_bonuses) { |_key, oldval, newval| newval + oldval }
     end
 
     def damage_thresholds
       @damage_thresholds ||=
-        { 'minor' => level, 'major' => level, 'severe' => level }
-          .merge(equiped_armor_item_info&.dig('thresholds') || {}) { |_key, oldval, newval| newval + oldval }
+        { 'minor' => level, 'major' => level, 'severe' => equiped_thresholds_bonuses.any? ? level : (2 * level) }
+          .merge(equiped_thresholds_bonuses) { |_key, oldval, newval| newval + oldval }
     end
 
     def evasion
-      @evasion ||= data.evasion + equiped_armor_item_info&.dig('evasion').to_i + leveling['evasion']
+      @evasion ||= data.evasion + leveling['evasion'] + bonuses.pluck('evasion').compact.sum
     end
 
     def armor_score
-      @armor_score ||= equiped_armor_item_info&.dig('base_score').to_i
+      @armor_score ||=
+        equiped_items_info.pluck('base_score').compact.sum + bonuses.pluck('armor_score').compact.sum
     end
 
     def armor_slots
-      @armor_slots ||= equiped_armor_item_info&.dig('base_score').to_i
+      @armor_slots ||=
+        equiped_items_info.pluck('base_score').compact.sum + bonuses.pluck('armor_score').compact.sum
     end
 
     def health_max
@@ -47,6 +49,10 @@ module DaggerheartCharacter
       @proficiency ||= 1 + leveling['proficiency'] + proficiency_by_level
     end
 
+    def attacks
+      @attacks ||= [unarmed_attack] + weapons.flat_map { |item| calculate_attack(item) }
+    end
+
     private
 
     def proficiency_by_level
@@ -57,14 +63,79 @@ module DaggerheartCharacter
       0
     end
 
-    def equiped_armor_item_info
-      @equiped_armor_item_info ||=
+    def unarmed_attack
+      {
+        name: { en: 'Unarmed', ru: 'Безоружная' }[I18n.locale],
+        burden: 2,
+        range: 'melee',
+        attack_bonus: [modified_traits['str'], modified_traits['fin']].max,
+        damage: "#{(proficiency / 2.0).round}d4",
+        damage_bonus: 0,
+        damage_type: 'physical',
+        kind: 'primary weapon',
+        features: [],
+        notes: [],
+        ready_to_use: false
+      }
+    end
+
+    # rubocop: disable Metrics/AbcSize, Metrics/MethodLength
+    def calculate_attack(item)
+      response = [{
+        name: item[:items_name][I18n.locale.to_s],
+        burden: item[:items_info]['burden'],
+        range: item[:items_info]['range'],
+        attack_bonus: modified_traits[item[:items_info]['trait']],
+        damage: "#{proficiency}#{item[:items_info]['damage']}",
+        damage_bonus: item[:items_info]['damage_bonus'],
+        damage_type: item[:items_info]['damage_type'],
+        kind: item[:items_kind],
+        features: item[:items_info]['features'],
+        notes: item[:notes],
+        ready_to_use: item[:ready_to_use]
+      }]
+
+      versatile = item[:items_info]['versatile']
+      if versatile
+        response << response[0].merge({
+          range: versatile['range'],
+          attack_bonus: modified_traits[versatile['trait']],
+          damage: "#{proficiency}#{versatile['damage']}",
+          damage_bonus: versatile['damage_bonus']
+        })
+      end
+
+      response
+    end
+    # rubocop: enable Metrics/AbcSize, Metrics/MethodLength
+
+    def bonuses
+      @bonuses ||= equiped_items_info.pluck('bonuses')
+    end
+
+    def equiped_thresholds_bonuses
+      @equiped_thresholds_bonuses ||= bonuses.pluck('thresholds').compact.first || {}
+    end
+
+    def equiped_traits_bonuses
+      bonuses.pluck('traits').compact.first || {}
+    end
+
+    def equiped_items_info
+      @equiped_items_info ||=
         __getobj__
         .items
         .where(ready_to_use: true)
         .joins(:item)
-        .where(items: { kind: 'armor' })
-        .first&.item&.info || {}
+        .pluck('items.info')
+    end
+
+    def weapons
+      __getobj__
+        .items
+        .joins(:item)
+        .where(items: { kind: ['primary weapon', 'secondary weapon'] })
+        .hashable_pluck('items.slug', 'items.name', 'items.kind', 'items.data', 'items.info', :notes, :ready_to_use)
     end
   end
 end

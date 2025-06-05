@@ -119,7 +119,9 @@
     "deathSuccess": "Success",
     "deathFailure": "Failure",
     "dyingConditionValue": "Dying condition value",
-    "avatar": "Avatar"
+    "avatar": "Avatar",
+    "primaryWeapon": "Primary weapon",
+    "secondaryWeapon": "Secondary weapon"
   },
   "professionsPage": {
     "languages": "Languages",

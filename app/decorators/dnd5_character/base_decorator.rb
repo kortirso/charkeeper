@@ -68,7 +68,7 @@ module Dnd5Character
     end
 
     def attacks
-      @attacks ||= [unarmed_attack] + weapon_attacks(character)
+      @attacks ||= [unarmed_attack] + weapon_attacks
     end
 
     def conditions
@@ -128,7 +128,7 @@ module Dnd5Character
       }
     end
 
-    def weapon_attacks(_character)
+    def weapon_attacks
       weapons.flat_map do |item|
         case item[:items_info]['type']
         when 'melee' then melee_attack(item)

@@ -195,7 +195,7 @@
     "kind": "update_result",
     "visible": "true",
     "eval_variables": {
-      "health": "health.merge({ 'max' => health['max'] + 1 })"
+      "health_max": "health_max + 1"
     }
   },
   {
@@ -274,7 +274,7 @@
     "kind": "update_result",
     "visible": "true",
     "eval_variables": {
-      "stress": "stress.merge({ 'max' => stress['max'] + 1 })"
+      "stress_max": "stress_max + 1"
     }
   },
   {
