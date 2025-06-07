@@ -4,6 +4,15 @@ require 'simplecov'
 
 SimpleCov.start do
   nocov_token 'skippit'
+
+  add_group 'Builders', 'app/builders'
+  add_group 'Controllers', 'app/controllers'
+  add_group 'Commands', 'app/commands'
+  add_group 'Decorators', 'app/decorators'
+  add_group 'Models', 'app/models'
+  add_group 'Services', 'app/services'
+  add_group 'Jobs', 'app/jobs'
+  add_group 'Serializers', 'app/serializers'
 end
 
 RSpec.configure do |config|

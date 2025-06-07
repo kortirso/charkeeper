@@ -18,8 +18,6 @@ import { createCharacterSpellRequest } from '../../../requests/createCharacterSp
 import { removeCharacterSpellRequest } from '../../../requests/removeCharacterSpellRequest';
 import { updateCharacterSpellRequest } from '../../../requests/updateCharacterSpellRequest';
 import { createCharacterItemRequest } from '../../../requests/createCharacterItemRequest';
-import { createCharacterRestRequest } from '../../../requests/createCharacterRestRequest';
-import { createCharacterHealthRequest } from '../../../requests/createCharacterHealthRequest';
 
 export const Dnd5 = (props) => {
   const character = () => props.character;
@@ -37,11 +35,8 @@ export const Dnd5 = (props) => {
   const [characterSpells, setCharacterSpells] = createSignal(undefined);
 
   // shared state
-  const [spentHitDiceData, setSpentHitDiceData] = createSignal(character().spent_hit_dice);
-  const [healthData, setHealthData] = createSignal(character().health);
   const [energyData, setEnergyData] = createSignal(character().energy);
   const [spentSpellSlots, setSpentSpellSlots] = createSignal(character().spent_spell_slots);
-  const [death, setDeath] = createSignal(character().death_saving_throws);
 
   const [appState] = useAppState();
   const [{ renderAlerts, renderNotice }] = useAppAlert();
@@ -162,22 +157,6 @@ export const Dnd5 = (props) => {
     }
   }
 
-  const restCharacter = async (payload) => {
-    const result = await createCharacterRestRequest(appState.accessToken, props.character.provider, props.character.id, payload);
-    if (result.errors === undefined) {
-      const decoratedData = await props.onReloadCharacter();
-
-      batch(() => {
-        setSpentHitDiceData(decoratedData.spent_hit_dice);
-        setHealthData(decoratedData.health);
-        setEnergyData(decoratedData.energy);
-        setSpentSpellSlots(decoratedData.spent_spell_slots);
-      });
-
-      renderNotice(t('alerts.restIsFinished'));
-    }
-  }
-
   // additional data change for spells
   const reloadCharacterSpells = async () => {
     const characterSpellsData = await fetchCharacterSpellsRequest(appState.accessToken, props.character.provider, appState.activePageParams.id);
@@ -215,30 +194,6 @@ export const Dnd5 = (props) => {
   }
 
   // shared data
-  const spendDice = async (dice, limit) => {
-    let newValue;
-    if (spentHitDiceData()[dice] && spentHitDiceData()[dice] < limit) {
-      newValue = { ...spentHitDiceData(), [dice]: spentHitDiceData()[dice] + 1 };
-    } else {
-      newValue = { ...spentHitDiceData(), [dice]: 1 };
-    }
-
-    const result = await refreshCharacter({ spent_hit_dice: newValue });
-    if (result.errors === undefined) setSpentHitDiceData(newValue);
-  }
-
-  const restoreDice = async (dice) => {
-    let newValue;
-    if (spentHitDiceData()[dice] && spentHitDiceData()[dice] > 0) {
-      newValue = { ...spentHitDiceData(), [dice]: spentHitDiceData()[dice] - 1 };
-    } else {
-      newValue = { ...spentHitDiceData(), [dice]: 0 };
-    }
-
-    const result = await refreshCharacter({ spent_hit_dice: newValue });
-    if (result.errors === undefined) setSpentHitDiceData(newValue);
-  }
-
   const spendEnergy = async (event, feature) => {
     event.stopPropagation();
 
@@ -281,30 +236,6 @@ export const Dnd5 = (props) => {
     else renderAlerts(result.errors);
   }
 
-  const makeHeal = async (damageHealValue) => {
-    const result = await createCharacterHealthRequest(appState.accessToken, 'dnd5', props.character.id, { value: damageHealValue });
-    if (result.errors === undefined) {
-      const decoratedData = await props.onReloadCharacter();
-
-      batch(() => {
-        setHealthData(decoratedData.health);
-        setDeath(decoratedData.death_saving_throws);
-      });
-    }
-  }
-
-  const dealDamage = async (damageHealValue) => {
-    const result = await createCharacterHealthRequest(appState.accessToken, 'dnd5', props.character.id, { value: -damageHealValue });
-    if (result.errors === undefined) {
-      const decoratedData = await props.onReloadCharacter();
-
-      batch(() => {
-        setHealthData(decoratedData.health);
-        setDeath(decoratedData.death_saving_throws);
-      });
-    }
-  }
-
   const spendSpellSlot = async (level) => {
     let newValue;
     if (spentSpellSlots()[level]) {
@@ -322,25 +253,6 @@ export const Dnd5 = (props) => {
 
     const result = await refreshCharacter({ spent_spell_slots: newValue });
     if (result.errors === undefined) setSpentSpellSlots(newValue);
-  }
-
-  const gainDeath = async (type) => {
-    let newValue;
-    if (death()[type]) {
-      newValue = { ...death(), [type]: death()[type] + 1 };
-    } else {
-      newValue = { ...death(), [type]: 1 };
-    }
-
-    const result = await refreshCharacter({ death_saving_throws: newValue });
-    if (result.errors === undefined) setDeath(newValue);
-  }
-
-  const freeDeath = async (type) => {
-    const newValue = { ...death(), [type]: death()[type] - 1 };
-
-    const result = await refreshCharacter({ death_saving_throws: newValue });
-    if (result.errors === undefined) setDeath(newValue);
   }
 
   // memos
@@ -362,33 +274,24 @@ export const Dnd5 = (props) => {
           <Match when={activeTab() === 'abilities'}>
             <Dnd5Abilities
               character={character()}
-              spentHitDiceData={spentHitDiceData()}
-              onSpendDice={spendDice}
-              onRestoreDice={restoreDice}
-              onReloadCharacter={updateCharacter}
-              onRefreshCharacter={refreshCharacter}
+              onReplaceCharacter={props.onReplaceCharacter}
             />
           </Match>
           <Match when={activeTab() === 'combat'}>
             <Dnd5Combat
               character={character()}
-              deathSavingThrows={death()}
-              healthData={healthData()}
               energyData={energyData()}
               onSpendEnergy={spendEnergy}
               onRestoreEnergy={restoreEnergy}
-              onMakeHeal={makeHeal}
-              onDealDamage={dealDamage}
-              onSetHealthData={setHealthData}
               onReloadCharacter={updateCharacter}
               onRefreshCharacter={refreshCharacter}
-              onFreeDeath={freeDeath}
-              onGainDeath={gainDeath}
+              onReplaceCharacter={props.onReplaceCharacter}
             />
           </Match>
           <Match when={activeTab() === 'rest'}>
             <Dnd5Rest
-              onRestCharacter={restCharacter}
+              character={character()}
+              onReplaceCharacter={props.onReplaceCharacter}
             />
           </Match>
           <Match when={activeTab() === 'equipment'}>

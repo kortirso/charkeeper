@@ -51,11 +51,11 @@ module Pathfinder2Character
     private
 
     def skill_payload(slug, ability, armor=nil)
-      proficiency_level = (lore_skills[slug] ? lore_skills[slug]['level'] : selected_skills[slug]).to_i
+      proficiency_level = (lore_skills[slug] ? lore_skills.dig(slug, 'level') : selected_skills[slug]).to_i
 
       {
         slug: slug,
-        name: lore_skills[slug] ? lore_skills[slug]['name'] : nil,
+        name: lore_skills[slug] ? lore_skills.dig(slug, 'name') : nil,
         ability: ability,
         level: proficiency_level,
         modifier: abilities[ability],

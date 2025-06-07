@@ -24,7 +24,8 @@ module WebTelegram
       def create
         case add_note.call(create_params.merge({ character: character }))
         in { errors: errors } then render json: { errors: errors }, status: :unprocessable_entity
-        in { result: result } then render_note(result)
+        in { result: result }
+          serialize_resource(result, ::Characters::NoteSerializer, :note, { only: CREATE_SERIALIZE_FIELDS }, :created)
         end
       end
 
@@ -41,15 +42,6 @@ module WebTelegram
 
       def character
         current_user.characters.find(params[:character_id])
-      end
-
-      def render_note(result)
-        render json: serialize_resource(
-          result,
-          ::Characters::NoteSerializer,
-          :note,
-          only: CREATE_SERIALIZE_FIELDS
-        ), status: :created
       end
 
       def create_params

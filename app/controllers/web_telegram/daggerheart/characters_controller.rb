@@ -21,26 +21,20 @@ module WebTelegram
       def update
         case character_update.call(request_params.merge({ character: character }))
         in { errors: errors } then render json: { errors: errors }, status: :unprocessable_entity
-        else update_result(character)
+        else render_character(character, {}, :ok)
         end
       end
 
       private
 
-      def update_result(character)
-        return render json: { result: :ok }, status: :ok if params[:only_head]
-        return render_character(character.reload, {}, :ok) if params[:only].blank?
-
-        render_character(character.reload, { only: params[:only].split(',').map(&:to_sym) }, :ok)
-      end
-
       def render_character(result, fields, status)
-        render json: serialize_resource(
+        serialize_resource(
           result,
           ::Daggerheart::CharacterSerializer,
           :character,
-          fields
-        ), status: status
+          fields,
+          status
+        )
       end
 
       def character

@@ -97,7 +97,7 @@ export const Pathfinder2Abilities = (props) => {
             <p class="uppercase text-center mb-4">{ability}</p>
             <div class="flex">
               <div class="w-32 mr-8">
-                <div class="h-20 relative">
+                <div class="h-20">
                   <div class="mx-auto w-20 h-20 rounded-full border border-gray-200 flex items-center justify-center">
                     <p class="text-4xl">{editMode() ? abilitiesData()[slug] : character().abilities[slug]}</p>
                   </div>

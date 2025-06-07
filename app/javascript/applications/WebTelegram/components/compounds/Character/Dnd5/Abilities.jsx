@@ -1,26 +1,57 @@
-import { createSignal, For } from 'solid-js';
+import { createSignal, For, Show, batch } from 'solid-js';
 import * as i18n from '@solid-primitives/i18n';
 
-import { createModal } from '../../../molecules';
 import { Checkbox, Button } from '../../../atoms';
 
-import { useAppLocale, useAppAlert } from '../../../../context';
-import { PlusSmall, Minus } from '../../../../assets';
+import { useAppLocale, useAppAlert, useAppState } from '../../../../context';
+import { PlusSmall, Minus, Edit, Plus } from '../../../../assets';
+import { updateCharacterRequest } from '../../../../requests/updateCharacterRequest';
 
 import { modifier } from '../../../../../../helpers';
 
 export const Dnd5Abilities = (props) => {
   const character = () => props.character;
-  const selectedSkillsSlugs = () => character().skills.filter((item) => item.selected).map((item) => item.slug);
 
   // changeable data
+  const [editMode, setEditMode] = createSignal(false);
   const [abilitiesData, setAbilitiesData] = createSignal(character().abilities);
+  const [skillsData, setSkillsData] = createSignal(character().skills);
 
-  const { Modal, openModal, closeModal } = createModal();
+  const [appState] = useAppState();
   const [{ renderAlerts }] = useAppAlert();
   const [, dict] = useAppLocale();
 
   const t = i18n.translator(dict);
+
+  const spendDice = async (dice, limit) => {
+    let newValue;
+    if (character().spent_hit_dice[dice] && character().spent_hit_dice[dice] < limit) {
+      newValue = { ...character().spent_hit_dice, [dice]: character().spent_hit_dice[dice] + 1 };
+    } else {
+      newValue = { ...character().spent_hit_dice, [dice]: 1 };
+    }
+
+    const payload = { spent_hit_dice: newValue };
+    const result = await updateCharacterRequest(appState.accessToken, 'dnd5', character().id, { character: payload, only_head: true });
+
+    if (result.errors === undefined) props.onReplaceCharacter(payload);
+    else renderAlerts(result.errors);
+  }
+
+  const restoreDice = async (dice) => {
+    let newValue;
+    if (character().spent_hit_dice[dice] && character().spent_hit_dice[dice] > 0) {
+      newValue = { ...character().spent_hit_dice, [dice]: character().spent_hit_dice[dice] - 1 };
+    } else {
+      newValue = { ...character().spent_hit_dice, [dice]: 0 };
+    }
+
+    const payload = { spent_hit_dice: newValue };
+    const result = await updateCharacterRequest(appState.accessToken, 'dnd5', character().id, { character: payload, only_head: true });
+
+    if (result.errors === undefined) props.onReplaceCharacter(payload);
+    else renderAlerts(result.errors);
+  }
 
   const decreaseAbilityValue = (slug) => {
     if (abilitiesData[slug] === 1) return;
@@ -30,105 +61,135 @@ export const Dnd5Abilities = (props) => {
   const increaseAbilityValue = (slug) => setAbilitiesData({ ...abilitiesData(), [slug]: abilitiesData()[slug] + 1 });
 
   // submits
-  const updateAbilities = async () => {
-    const result = await props.onReloadCharacter({ abilities: abilitiesData() });
-    if (result.errors === undefined) closeModal();
-    else renderAlerts(result.errors);
+  const toggleSkill = async (slug) => {
+    const result = skillsData().slice().map((item) => {
+      if (item.slug !== slug) return item;
+
+      return { ...item, selected: !item.selected } 
+    });
+    setSkillsData(result);
   }
 
-  const updateSkill = async (slug) => {
-    const newValue = selectedSkillsSlugs().includes(slug) ? selectedSkillsSlugs().filter((item) => item !== slug) : selectedSkillsSlugs().concat(slug);
-    const result = await props.onReloadCharacter({ selected_skills: newValue });
-    if (result.errors) renderAlerts(result.errors);
+  const cancelEditing = () => {
+    batch(() => {
+      setAbilitiesData(character().abilities);
+      setSkillsData(character().skills);
+      setEditMode(false);
+    });
+  }
+
+  const updateCharacter = async () => {
+    const payload = {
+      abilities: abilitiesData(),
+      selected_skills: skillsData().filter((item) => item.selected).map((item) => item.slug)
+    }
+    const result = await updateCharacterRequest(appState.accessToken, 'dnd5', character().id, { character: payload });
+
+    if (result.errors === undefined) {
+      batch(() => {
+        props.onReplaceCharacter(result.character);
+        setEditMode(false);
+      });
+    } else renderAlerts(result.errors);
   }
 
   return (
     <>
-      <div class="flex items-start mb-2">
-        <div class="white-box flex flex-col items-center w-2/5 p-2">
+      <div class="white-box flex mb-4 p-4">
+        <div class="flex-1 flex flex-col items-center">
           <p class="text-sm mb-1">{t('terms.proficiencyBonus')}</p>
           <p class="text-2xl mb-1">{modifier(character().proficiency_bonus)}</p>
         </div>
-        <div class="w-3/5 pl-4">
-          <div class="white-box p-2">
-            <p class="text-center text-sm">{t('terms.hitDices')}</p>
-            <For each={Object.entries(character().hit_dice).filter(([, value]) => value > 0)}>
-              {([dice, maxValue]) =>
-                <div class="flex justify-center items-center mt-1">
-                  <p class="w-8 mr-4">d{dice}</p>
-                  <Button default size="small" onClick={() => props.spentHitDiceData[dice] !== maxValue ? props.onSpendDice(dice, maxValue) : null}>
-                    <Minus />
-                  </Button>
-                  <p class="w-12 mx-1 text-center">
-                    {props.spentHitDiceData[dice] ? (maxValue - props.spentHitDiceData[dice]) : maxValue}/{maxValue}
-                  </p>
-                  <Button default size="small" onClick={() => (props.spentHitDiceData[dice] || 0) > 0 ? props.onRestoreDice(dice) : null}>
-                    <PlusSmall />
-                  </Button>
-                </div>
-              }
-            </For>
-          </div>
+        <div class="flex-1">
+          <p class="text-center text-sm">{t('terms.hitDices')}</p>
+          <For each={Object.entries(character().hit_dice).filter(([, value]) => value > 0)}>
+            {([dice, maxValue]) =>
+              <div class="flex justify-center items-center mt-1">
+                <p class="w-8 mr-4">d{dice}</p>
+                <Button default size="small" onClick={() => character().spent_hit_dice[dice] !== maxValue ? spendDice(dice, maxValue) : null}>
+                  <Minus />
+                </Button>
+                <p class="w-12 mx-1 text-center">
+                  {character().spent_hit_dice[dice] ? (maxValue - character().spent_hit_dice[dice]) : maxValue}/{maxValue}
+                </p>
+                <Button default size="small" onClick={() => (character().spent_hit_dice[dice] || 0) > 0 ? restoreDice(dice) : null}>
+                  <PlusSmall />
+                </Button>
+              </div>
+            }
+          </For>
         </div>
       </div>
       <For each={Object.entries(dict().dnd.abilities)}>
         {([slug, ability]) =>
-          <div class="flex items-start mb-2">
-            <div
-              class="white-box flex flex-col items-center w-2/5 p-2 cursor-pointer"
-              onClick={openModal}
-            >
-              <p class="text-sm mb-1">{ability} {character().abilities[slug]}</p>
-              <p class="text-2xl mb-1">{modifier(character().modifiers[slug])}</p>
-            </div>
-            <div class="w-3/5 pl-4">
-              <div class="white-box p-2">
-                <div class="flex justify-between">
-                  <p>{t('terms.saveDC')}</p>
-                  <p>{modifier(character().save_dc[slug])}</p>
+          <div class="white-box p-4 mb-4">
+            <p class="uppercase text-center mb-4">{ability}</p>
+            <div class="flex">
+              <div class="mr-4">
+                <div class="h-20 relative pr-8">
+                  <div class="w-20 h-20 rounded-full border border-gray-200 flex items-center justify-center">
+                    <p class="text-4xl">{modifier(character().modifiers[slug])}</p>
+                  </div>
+                  <div class="absolute right-0 bottom-0 w-12 h-12 rounded-full border border-gray-200 bg-white flex items-center justify-center">
+                    <p class="text-2xl">{editMode() ? abilitiesData()[slug] : character().abilities[slug]}</p>
+                  </div>
                 </div>
-                <div class="mt-2">
-                  <For each={character().skills.filter((item) => item.ability === slug)}>
-                    {(skill) =>
-                      <div class="flex justify-between mb-1">
+                <Show when={editMode()}>
+                  <div class="mt-2 flex justify-center gap-2">
+                    <Button default size="small" onClick={() => decreaseAbilityValue(slug)}>
+                      <Minus />
+                    </Button>
+                    <Button default size="small" onClick={() => increaseAbilityValue(slug)}>
+                      <PlusSmall />
+                    </Button>
+                  </div>
+                </Show>
+              </div>
+              <div class="flex-1">
+                <div class="flex justify-end items-center mb-2">
+                  <span class="mr-2">{t('terms.saveDC')}</span>
+                  <span>{modifier(character().save_dc[slug])}</span>
+                </div>
+                <For each={(editMode() ? skillsData() : character().skills).filter((item) => item.ability === slug)}>
+                  {(skill) =>
+                    <div class="flex justify-between items-center mb-1">
+                      <Show when={editMode()} fallback={<p />}>
                         <Checkbox
-                          checked={selectedSkillsSlugs().includes(skill.slug)}
-                          onToggle={() => updateSkill(skill.slug)}
+                          checked={skill.selected}
+                          onToggle={() => toggleSkill(skill.slug)}
                         />
-                        <p class={`${selectedSkillsSlugs().includes(skill.slug) ? 'font-medium flex items-center' : 'opacity-50 flex items-center'}`}>
-                          <span class="text-sm mr-2">{t(`dnd.skills.${skill.slug}`)}</span>
-                          <span>{modifier(skill.modifier)}</span>
-                        </p>
-                      </div>
-                    }
-                  </For>
-                </div>
+                      </Show>
+                      <p class={`flex items-center ${skill.selected ? '' : 'font-cascadia-light'}`}>
+                        <span class="mr-2 text-sm">{t(`dnd.skills.${skill.slug}`)}</span>
+                        <span>{modifier(skill.modifier)}</span>
+                      </p>
+                    </div>
+                  }
+                </For>
               </div>
             </div>
           </div>
         }
       </For>
-      <Modal>
-        <div class="white-box p-4 flex flex-col">
-          <For each={Object.entries(dict().dnd.abilities)}>
-            {([slug, ability]) =>
-              <div class="mb-4 flex items-center">
-                <p class="flex-1 text-sm text-left">{ability}</p>
-                <div class="flex justify-between items-center ml-4 w-32">
-                  <Button default size="small" big onClick={() => decreaseAbilityValue(slug)}>
-                    <Minus />
-                  </Button>
-                  <p>{abilitiesData()[slug]}</p>
-                  <Button default size="small" big onClick={() => increaseAbilityValue(slug)}>
-                    <PlusSmall />
-                  </Button>
-                </div>
-              </div>
-            }
-          </For>
-          <Button default textable onClick={updateAbilities}>{t('save')}</Button>
-        </div>
-      </Modal>
+      <div class="absolute right-4 bottom-4 z-10">
+        <Show
+          when={editMode()}
+          fallback={
+            <Button default classList='rounded-full min-w-12 min-h-12 opacity-75' onClick={() => setEditMode(true)}>
+              <Edit />
+            </Button>
+          }
+        >
+          <div class="flex">
+            <Button outlined classList='rounded-full min-w-12 min-h-12 mr-2' onClick={cancelEditing}>
+              <Minus />
+            </Button>
+            <Button default classList='rounded-full min-w-12 min-h-12' onClick={updateCharacter}>
+              <Plus />
+            </Button>
+          </div>
+        </Show>
+      </div>
     </>
   );
 }

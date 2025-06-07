@@ -16,12 +16,12 @@ module WebTelegram
     end
 
     def show
-      render json: serialize_resource(
+      serialize_resource(
         @character,
         serializer(@character.type),
         :character,
-        except: %i[avatar]
-      ), status: :ok
+        { except: %i[avatar] }
+      )
     end
 
     def destroy

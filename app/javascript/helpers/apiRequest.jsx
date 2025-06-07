@@ -12,7 +12,7 @@ export const options = (method, accessToken, payload) => {
       'Authorization': `Bearer ${accessToken}`
     }
   }
-  if (payload !== undefined) result.body = JSON.stringify(payload)
+  if (method !== 'GET' && payload !== undefined) result.body = JSON.stringify(payload)
 
   return result;
 }

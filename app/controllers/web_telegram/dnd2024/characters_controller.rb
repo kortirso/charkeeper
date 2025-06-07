@@ -21,20 +21,20 @@ module WebTelegram
       def update
         case character_update.call(request_params.merge({ character: character }))
         in { errors: errors } then render json: { errors: errors }, status: :unprocessable_entity
-        else
-          params[:only_head] ? render(json: { result: :ok }, status: :ok) : render_character(character.reload, {}, :ok)
+        else render_character(character, {}, :ok)
         end
       end
 
       private
 
       def render_character(result, fields, status)
-        render json: serialize_resource(
+        serialize_resource(
           result,
           ::Dnd2024::CharacterSerializer,
           :character,
-          fields
-        ), status: status
+          fields,
+          status
+        )
       end
 
       def character
