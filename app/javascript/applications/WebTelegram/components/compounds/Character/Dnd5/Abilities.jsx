@@ -32,7 +32,7 @@ export const Dnd5Abilities = (props) => {
     }
 
     const payload = { spent_hit_dice: newValue };
-    const result = await updateCharacterRequest(appState.accessToken, 'dnd5', character().id, { character: payload, only_head: true });
+    const result = await updateCharacterRequest(appState.accessToken, character().provider, character().id, { character: payload, only_head: true });
 
     if (result.errors === undefined) props.onReplaceCharacter(payload);
     else renderAlerts(result.errors);
@@ -47,7 +47,7 @@ export const Dnd5Abilities = (props) => {
     }
 
     const payload = { spent_hit_dice: newValue };
-    const result = await updateCharacterRequest(appState.accessToken, 'dnd5', character().id, { character: payload, only_head: true });
+    const result = await updateCharacterRequest(appState.accessToken, character().provider, character().id, { character: payload, only_head: true });
 
     if (result.errors === undefined) props.onReplaceCharacter(payload);
     else renderAlerts(result.errors);
@@ -83,7 +83,7 @@ export const Dnd5Abilities = (props) => {
       abilities: abilitiesData(),
       selected_skills: skillsData().filter((item) => item.selected).map((item) => item.slug)
     }
-    const result = await updateCharacterRequest(appState.accessToken, 'dnd5', character().id, { character: payload });
+    const result = await updateCharacterRequest(appState.accessToken, character().provider, character().id, { character: payload });
 
     if (result.errors === undefined) {
       batch(() => {
@@ -152,17 +152,18 @@ export const Dnd5Abilities = (props) => {
                 </div>
                 <For each={(editMode() ? skillsData() : character().skills).filter((item) => item.ability === slug)}>
                   {(skill) =>
-                    <div class="flex justify-between items-center mb-1">
-                      <Show when={editMode()} fallback={<p />}>
-                        <Checkbox
-                          checked={skill.selected}
-                          onToggle={() => toggleSkill(skill.slug)}
-                        />
-                      </Show>
+                    <div class="flex justify-end items-center mb-1">
                       <p class={`flex items-center ${skill.selected ? '' : 'font-cascadia-light'}`}>
                         <span class="mr-2 text-sm">{t(`dnd.skills.${skill.slug}`)}</span>
                         <span>{modifier(skill.modifier)}</span>
                       </p>
+                      <Show when={editMode()} fallback={<p />}>
+                        <Checkbox
+                          classList="ml-2"
+                          checked={skill.selected}
+                          onToggle={() => toggleSkill(skill.slug)}
+                        />
+                      </Show>
                     </div>
                   }
                 </For>

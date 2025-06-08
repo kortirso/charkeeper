@@ -4,80 +4,80 @@
     "drakona": { "name": { "en": "Drakona", "ru": "Драконид" }, "comment": "Антропоморфные драконы" },
     "dwarf": { "name": { "en": "Dwarf", "ru": "Дварф" } },
     "elf": { "name": { "en": "Elf", "ru": "Эльф" } },
-    "faerie": { "name": { "en": "Faerie", "ru": "Фея" } },
+    "faerie": { "name": { "en": "Faerie", "ru": "Фейри" } },
     "faun": { "name": { "en": "Faun", "ru": "Фавн" } },
     "firbolg": { "name": { "en": "Firbolg", "ru": "Фирболг" } },
-    "fungril": { "name": { "en": "Fungril", "ru": "Фунгрил" }, "comment": "Антропоморфные грибы" },
+    "fungril": { "name": { "en": "Fungril", "ru": "Фангрил" }, "comment": "Антропоморфные грибы" },
     "galapa": { "name": { "en": "Galapa", "ru": "Галапа" }, "comment": "Антропоморфные черепахи" },
     "giant": { "name": { "en": "Giant", "ru": "Гигант" } },
     "goblin": { "name": { "en": "Goblin", "ru": "Гоблин" } },
     "halfling": { "name": { "en": "Halfling", "ru": "Полурослик" } },
     "human": { "name": { "en": "Human", "ru": "Человек" } },
-    "infernis": { "name": { "en": "Infernis", "ru": "Инфернал" } },
+    "infernis": { "name": { "en": "Infernis", "ru": "Инфернис" } },
     "katari": { "name": { "en": "Katari", "ru": "Катари" }, "comment": "Антропоморфные кошки" },
     "orc": { "name": { "en": "Orc", "ru": "Орк" } },
     "ribbet": { "name": { "en": "Ribbet", "ru": "Риббет" }, "comment": "Антропоморфные жабы" },
-    "simiah": { "name": { "en": "Simiah", "ru": "Симия" }, "comment": "Антропоморфные обезьяны" }
+    "simiah": { "name": { "en": "Simiah", "ru": "Симиан" }, "comment": "Антропоморфные обезьяны" }
   },
   "communities": {
-    "highborne": { "name": { "en": "Highborne", "ru": "Высокородное общество" } },
-    "loreborne": { "name": { "en": "Loreborne", "ru": "Общество знаний" } },
-    "orderborne": { "name": { "en": "Orderborne", "ru": "Общество порядка" } },
-    "ridgeborne": { "name": { "en": "Ridgeborne", "ru": "Горное общество" } },
-    "seaborne": { "name": { "en": "Seaborne", "ru": "Морское общество" } },
-    "slyborne": { "name": { "en": "Slyborne", "ru": "Криминальное общество" } },
-    "underborne": { "name": { "en": "Underborne", "ru": "Подземное общество" } },
-    "wanderborne": { "name": { "en": "Wanderborne", "ru": "Общество странников" } },
-    "wildborne": { "name": { "en": "Wildborne", "ru": "Дикое общество" } }
+    "highborne": { "name": { "en": "Highborne", "ru": "Высокородные" } },
+    "loreborne": { "name": { "en": "Loreborne", "ru": "Научные" } },
+    "orderborne": { "name": { "en": "Orderborne", "ru": "Догматичное" } },
+    "ridgeborne": { "name": { "en": "Ridgeborne", "ru": "Горные" } },
+    "seaborne": { "name": { "en": "Seaborne", "ru": "Морские" } },
+    "slyborne": { "name": { "en": "Slyborne", "ru": "Криминальные" } },
+    "underborne": { "name": { "en": "Underborne", "ru": "Подземные" } },
+    "wanderborne": { "name": { "en": "Wanderborne", "ru": "Кочевые" } },
+    "wildborne": { "name": { "en": "Wildborne", "ru": "Лесные" } }
   },
   "classes": {
     "bard": {
       "name": { "en": "Bard", "ru": "Бард" },
       "subclasses": {
-        "troubadour": { "name": { "en": "Troubadour", "ru": "Трубадур" } },
-        "wordsmith": { "name": { "en": "Wordsmith", "ru": "Мастер слова" } }
+        "troubadour": { "name": { "en": "Troubadour", "ru": "Менестрель" } },
+        "wordsmith": { "name": { "en": "Wordsmith", "ru": "Оратор" } }
       }
     },
     "druid": {
       "name": { "en": "Druid", "ru": "Друид" },
       "subclasses": {
-        "warden_of_the_elements": { "name": { "en": "Warden of the Elements", "ru": "Хранитель элементалей" } },
-        "warden_of_renewal": { "name": { "en": "Warden of Renewal", "ru": "Хранитель обновления" } }
+        "warden_of_the_elements": { "name": { "en": "Warden of the Elements", "ru": "Хранитель стихий" } },
+        "warden_of_renewal": { "name": { "en": "Warden of Renewal", "ru": "Хранитель жизни" } }
       }
     },
     "guardian": {
-      "name": { "en": "Guardian", "ru": "Защитник" },
+      "name": { "en": "Guardian", "ru": "Страж" },
       "subclasses": {
-        "stalwart": { "name": { "en": "Stalwart", "ru": "Стойкий" } },
+        "stalwart": { "name": { "en": "Stalwart", "ru": "Заступник" } },
         "vengeance": { "name": { "en": "Vengeance", "ru": "Мститель" } }
       }
     },
     "ranger": {
-      "name": { "en": "Ranger", "ru": "Рейнджер" },
+      "name": { "en": "Ranger", "ru": "Следопыт" },
       "subclasses": {
-        "beastbound": { "name": { "en": "Beastbound", "ru": "Зверобой" } },
-        "wayfinder": { "name": { "en": "Wayfinder", "ru": "Следопыт" } }
+        "beastbound": { "name": { "en": "Beastbound", "ru": "Зверинные узы" } },
+        "wayfinder": { "name": { "en": "Wayfinder", "ru": "Путевод" } }
       }
     },
     "rogue": {
       "name": { "en": "Rogue", "ru": "Плут" },
       "subclasses": {
-        "nightwalker": { "name": { "en": "Nightwalker", "ru": "Мастер теней" } },
-        "syndicate": { "name": { "en": "Syndicate", "ru": "Член синдиката" } }
+        "nightwalker": { "name": { "en": "Nightwalker", "ru": "Тень" } },
+        "syndicate": { "name": { "en": "Syndicate", "ru": "Синдикат" } }
       }
     },
     "seraph": {
       "name": { "en": "Seraph", "ru": "Серафим" },
       "subclasses": {
-        "divine_wielder": { "name": { "en": "Divine Wielder", "ru": "Носитель божественности" } },
+        "divine_wielder": { "name": { "en": "Divine Wielder", "ru": "Божественный воитель" } },
         "winged_sentinel": { "name": { "en": "Winged Sentinel", "ru": "Крылатый страж" } }
       }
     },
     "sorcerer": {
       "name": { "en": "Sorcerer", "ru": "Чародей" },
       "subclasses": {
-        "elemental_origin": { "name": { "en": "Elemental Origin", "ru": "Эламентальное происхождение" } },
-        "Primal_origin": { "name": { "en": "Primal Origin", "ru": "Первобытное происхождение" } }
+        "elemental_origin": { "name": { "en": "Elemental Origin", "ru": "Стихийное начало" } },
+        "Primal_origin": { "name": { "en": "Primal Origin", "ru": "Первозданное начало" } }
       }
     },
     "warrior": {

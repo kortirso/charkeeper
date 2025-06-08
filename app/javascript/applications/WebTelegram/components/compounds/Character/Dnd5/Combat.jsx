@@ -95,7 +95,7 @@ export const Dnd5Combat = (props) => {
   const changeHealth = async (coefficient) => {
     const result = await createCharacterHealthRequest(
       appState.accessToken,
-      character().provider,
+      'dnd5',
       character().id,
       { value: damageHealValue() * coefficient, only: 'health,death_saving_throws' }
     );

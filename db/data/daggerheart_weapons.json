@@ -242,7 +242,7 @@
   {
     "slug": "arcane_gauntlets",
     "kind": "primary weapon",
-    "name": { "en": "Arcane Gauntlets", "ru": "Волшебные рукавицы" },
+    "name": { "en": "Arcane Gauntlets", "ru": "Магические наручи" },
     "info": {
       "tier": 1,
       "trait": "str",
@@ -258,7 +258,7 @@
   {
     "slug": "hallowed_axe",
     "kind": "primary weapon",
-    "name": { "en": "Hallowed Axe", "ru": "Священный топор" },
+    "name": { "en": "Hallowed Axe", "ru": "Освященный топор" },
     "info": {
       "tier": 1,
       "trait": "str",
@@ -290,7 +290,7 @@
   {
     "slug": "hand_runes",
     "kind": "primary weapon",
-    "name": { "en": "Hand Runes", "ru": "Руны на руках" },
+    "name": { "en": "Hand Runes", "ru": "Наручные руны" },
     "info": {
       "tier": 1,
       "trait": "ins",
@@ -306,7 +306,7 @@
   {
     "slug": "returning_blade",
     "kind": "primary weapon",
-    "name": { "en": "Returning Blade", "ru": "Возвращающееся лезвие" },
+    "name": { "en": "Returning Blade", "ru": "Возвращающийся клинок" },
     "info": {
       "tier": 1,
       "trait": "fin",
@@ -376,7 +376,7 @@
   {
     "slug": "wand",
     "kind": "primary weapon",
-    "name": { "en": "Wand", "ru": "Палочка" },
+    "name": { "en": "Wand", "ru": "Волшебная палочка" },
     "info": {
       "tier": 1,
       "trait": "know",
