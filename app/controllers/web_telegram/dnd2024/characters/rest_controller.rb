@@ -15,7 +15,7 @@ module WebTelegram
 
         def create
           @perform_command.call(character: @character)
-          render json: { result: :ok }, status: :ok
+          only_head_response
         end
 
         private

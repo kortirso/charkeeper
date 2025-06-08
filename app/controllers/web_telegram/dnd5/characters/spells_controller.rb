@@ -16,32 +16,27 @@ module WebTelegram
         before_action :find_character
 
         def index
-          render json: serialize_relation(
-            spells,
-            ::Dnd5::Characters::SpellSerializer,
-            :spells,
-            only: INDEX_SERIALIZER_FIELDS
-          ), status: :ok
+          serialize_relation(spells, ::Dnd5::Characters::SpellSerializer, :spells, only: INDEX_SERIALIZER_FIELDS)
         end
 
         def create
           case character_spell_add.call(create_params)
-          in { errors: errors } then render json: { errors: errors }, status: :unprocessable_entity
-          else render json: { result: :ok }, status: :ok
+          in { errors: errors } then unprocessable_response(errors)
+          else only_head_response
           end
         end
 
         def update
           case character_spell_update.call(update_params)
-          in { errors: errors } then render json: { errors: errors }, status: :unprocessable_entity
-          else render json: { result: :ok }, status: :ok
+          in { errors: errors } then unprocessable_response(errors)
+          else only_head_response
           end
         end
 
         def destroy
           character_spell = @character.spells.find_by!(spell_id: params[:id])
           character_spell.destroy
-          render json: { result: :ok }, status: :ok
+          only_head_response
         end
 
         private

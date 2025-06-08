@@ -16,17 +16,12 @@ module WebTelegram
     end
 
     def show
-      serialize_resource(
-        @character,
-        serializer(@character.type),
-        :character,
-        { except: %i[avatar] }
-      )
+      serialize_resource(@character, serializer(@character.type), :character, { except: %i[avatar] })
     end
 
     def destroy
       @character.destroy
-      render json: { result: :ok }, status: :ok
+      only_head_response
     end
 
     private
@@ -43,10 +38,7 @@ module WebTelegram
     end
 
     def characters_by_provider
-      current_user
-        .characters
-        .hashable_pluck(:id, :type)
-        .group_by { |item| item[:type] }
+      current_user.characters.hashable_pluck(:id, :type).group_by { |item| item[:type] }
     end
 
     def relation(character_type)

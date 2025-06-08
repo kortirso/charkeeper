@@ -8,8 +8,8 @@ module WebTelegram
 
     def update
       case update_service.call(update_params.merge({ user: current_user }))
-      in { errors: errors } then render json: { errors: errors }, status: :unprocessable_entity
-      else render json: { result: :ok }, status: :ok
+      in { errors: errors } then unprocessable_response(errors)
+      else only_head_response
       end
     end
 

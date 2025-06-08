@@ -6,7 +6,7 @@ module SerializeResource
   private
 
   def serialize_resource(resource, serializer, key, serialized_fields={}, status=:ok)
-    return render json: { result: :ok }, status: :ok if params[:only_head]
+    return only_head_response if params[:only_head]
 
     data =
       if params[:only].blank?

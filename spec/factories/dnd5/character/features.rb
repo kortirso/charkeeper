@@ -22,10 +22,10 @@ FactoryBot.define do
       level { 1 }
       kind { Dnd5::Character::Feature::STATIC }
       visible { 'true' }
-      eval_variables {
+      description_eval_variables {
         {
-          value: "class_level = result.dig(:classes, 'bard'); return 'd12' if class_level >= 15; return 'd10' if class_level >= 10; return 'd8' if class_level >= 5; 'd6'",
-          limit: '[1, result.dig(:modifiers, :wis)].max'
+          value: "class_level = classes['bard']; return 'd12' if class_level >= 15; return 'd10' if class_level >= 10; return 'd8' if class_level >= 5; 'd6'",
+          limit: "[1, modifiers['wis']].max"
         }
       }
       limit_refresh { 'long_rest' }

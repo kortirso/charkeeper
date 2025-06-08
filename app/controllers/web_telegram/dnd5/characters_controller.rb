@@ -13,14 +13,14 @@ module WebTelegram
 
       def create
         case character_create.call(request_params.merge({ user: current_user }))
-        in { errors: errors } then render json: { errors: errors }, status: :unprocessable_entity
+        in { errors: errors } then unprocessable_response(errors)
         in { result: result } then render_character(result, { only: CREATE_SERIALIZE_FIELDS }, :created)
         end
       end
 
       def update
         case character_update.call(request_params.merge({ character: character }))
-        in { errors: errors } then render json: { errors: errors }, status: :unprocessable_entity
+        in { errors: errors } then unprocessable_response(errors)
         else render_character(character, {}, :ok)
         end
       end
@@ -28,13 +28,7 @@ module WebTelegram
       private
 
       def render_character(result, fields, status)
-        serialize_resource(
-          result,
-          ::Dnd5::CharacterSerializer,
-          :character,
-          fields,
-          status
-        )
+        serialize_resource(result, ::Dnd5::CharacterSerializer, :character, fields, status)
       end
 
       def character

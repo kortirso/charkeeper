@@ -8,12 +8,7 @@ module WebTelegram
       INDEX_SERIALIZER_FIELDS = %i[id slug name level available_for].freeze
 
       def index
-        render json: serialize_relation(
-          relation,
-          ::Dnd2024::SpellSerializer,
-          :spells,
-          only: INDEX_SERIALIZER_FIELDS
-        ), status: :ok
+        serialize_relation(relation, ::Dnd2024::SpellSerializer, :spells, only: INDEX_SERIALIZER_FIELDS)
       end
 
       private

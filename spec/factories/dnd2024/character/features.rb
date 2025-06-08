@@ -17,15 +17,15 @@ FactoryBot.define do
           ru: 'Вы можете бонусным действием выбрать одно существо, отличное от вас, в пределах 60 футов, которое может вас слышать. Это существо получает кость бардовского вдохновения — {{value}}. В течение следующих 10 минут это существо может один раз бросить эту кость и добавить результат к проверке характеристики, броску атаки или спасброску, который оно совершает.'
         }
       }
-      origin { Dnd5::Character::Feature::CLASS_ORIGIN }
+      origin { 'class' }
       origin_value { 'bard' }
       level { 1 }
-      kind { Dnd5::Character::Feature::STATIC }
+      kind { 'static' }
       visible { 'true' }
-      eval_variables {
+      description_eval_variables {
         {
-          value: "class_level = result.dig(:classes, 'bard'); return 'd12' if class_level >= 15; return 'd10' if class_level >= 10; return 'd8' if class_level >= 5; 'd6'",
-          limit: '[1, result.dig(:modifiers, :wis)].max'
+          value: "class_level = classes['bard']; return 'd12' if class_level >= 15; return 'd10' if class_level >= 10; return 'd8' if class_level >= 5; 'd6'",
+          limit: "[1, modifiers['wis']].max"
         }
       }
       limit_refresh { 'long_rest' }

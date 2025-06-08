@@ -13,17 +13,17 @@ module WebTelegram
       before_action :find_note, only: %i[destroy]
 
       def index
-        render json: serialize_relation(
+        serialize_relation(
           character.notes.order(created_at: :desc),
           ::Characters::NoteSerializer,
           :notes,
           only: INDEX_SERIALIZER_FIELDS
-        ), status: :ok
+        )
       end
 
       def create
         case add_note.call(create_params.merge({ character: character }))
-        in { errors: errors } then render json: { errors: errors }, status: :unprocessable_entity
+        in { errors: errors } then unprocessable_response(errors)
         in { result: result }
           serialize_resource(result, ::Characters::NoteSerializer, :note, { only: CREATE_SERIALIZE_FIELDS }, :created)
         end
@@ -31,7 +31,7 @@ module WebTelegram
 
       def destroy
         @note.destroy
-        render json: { result: :ok }, status: :ok
+        only_head_response
       end
 
       private

@@ -5,7 +5,7 @@ module WebTelegram
     include SerializeRelation
 
     def index
-      render json: serialize_relation(relation, ::ItemSerializer, :items), status: :ok
+      serialize_relation(relation, ::ItemSerializer, :items)
     end
 
     private

@@ -19,6 +19,22 @@ FactoryBot.define do
     }
     user
 
+    trait :bard do
+      data {
+        {
+          level: 4,
+          race: Dnd5::Character::HUMAN,
+          alignment: Dnd5::Character::NEUTRAL,
+          main_class: Dnd5::Character::BARD,
+          classes: { bard: 4 },
+          subclasses: { bard: nil },
+          abilities: { str: 13, dex: 16, con: 14, int: 11, wis: 16, cha: 10 },
+          speed: 30,
+          selected_skills: %w[history]
+        }
+      }
+    end
+
     trait :dnd2024 do
       type { 'Dnd2024::Character' }
     end
@@ -36,6 +52,22 @@ FactoryBot.define do
           abilities: { str: 13, dex: 16, con: 14, int: 11, wis: 16, cha: 10 },
           speed: 30,
           saving_throws: { fortitude: 0, reflex: 0, will: 0 }
+        }
+      }
+    end
+
+    trait :daggerheart do
+      type { 'Daggerheart::Character' }
+      data {
+        {
+          level: 4,
+          race: 'halfling',
+          community: 'highborne',
+          main_class: 'bard',
+          classes: { bard: 4 },
+          subclasses: { bard: 'wordsmith' },
+          subclasses_mastery: { wordsmith: 2 },
+          traits: { str: 1, agi: 2, fin: 1, ins: 0, pre: 0, know: -1 }
         }
       }
     end

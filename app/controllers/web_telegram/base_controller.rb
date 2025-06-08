@@ -10,8 +10,16 @@ module WebTelegram
 
     private
 
+    def only_head_response
+      render json: { result: :ok }, status: :ok
+    end
+
     def page_not_found
       render json: { errors: [t('not_found')] }, status: :not_found
+    end
+
+    def unprocessable_response(errors)
+      render json: { errors: errors }, status: :unprocessable_entity
     end
 
     def set_locale

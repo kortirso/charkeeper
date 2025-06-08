@@ -231,8 +231,8 @@ module Dnd5Character
     end
 
     def weapon_proficiency(item)
-      weapon_core_skills.include?(item[:items_kind]) ||
-        weapon_skills.include?(item[:items_slug])
+      weapon_core_skills&.include?(item[:items_kind]) ||
+        weapon_skills&.include?(item[:items_slug])
     end
 
     def weapons
