@@ -11,7 +11,7 @@ module WebTelegram
 
         def create
           change_health.call({ character: character, value: params[:value] })
-          serialize_resource(result, ::Pathfinder2::CharacterSerializer, :character, {})
+          serialize_resource(character, ::Pathfinder2::CharacterSerializer, :character, {})
         end
 
         private
