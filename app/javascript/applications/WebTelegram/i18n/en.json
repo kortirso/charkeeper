@@ -191,7 +191,9 @@
       "dual": "Dual wild",
       "heavy": "Heavy",
       "reload": "Reload",
-      "flurry_of_blows": "Flurry of Blows"
+      "flurry_of_blows": "Flurry of Blows",
+      "monk": "Monk",
+      "martial_arts": "Martial arts"
     }
   },
   "dnd": {

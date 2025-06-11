@@ -103,7 +103,7 @@ module Dnd2024Character
         hands: '1', # используется рук
         melee_distance: 5, # дальность
         attack_bonus: modifiers['str'] + proficiency_bonus,
-        damage: 1,
+        damage: '1',
         damage_bonus: modifiers['str'],
         damage_type: 'bludge',
         kind: 'unarmed',

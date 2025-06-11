@@ -19,7 +19,7 @@ module Dnd5Character
       end
 
       def attacks
-        @attacks ||= no_armor ? with_martial_arts(__getobj__.attacks) : __getobj__.attacks
+        @attacks ||= no_armor ? with_martial_arts : __getobj__.attacks
       end
 
       def attacks_per_action
@@ -47,7 +47,8 @@ module Dnd5Character
       end
 
       # rubocop: disable Metrics/AbcSize, Metrics/PerceivedComplexity
-      def with_martial_arts(result)
+      def with_martial_arts
+        result = __getobj__.attacks
         key_ability_bonus = [modifiers['str'], modifiers['dex']].max
 
         result.each do |attack|
@@ -56,10 +57,13 @@ module Dnd5Character
 
           attack[:attack_bonus] = key_ability_bonus + proficiency_bonus
           attack[:damage_bonus] = key_ability_bonus if attack[:action_type] == 'action'
-          attack[:damage] = "1d#{(((class_level + 1) / 6) + 2) * 2}" if attack[:kind] == 'unarmed'
+          attack[:damage] = "1d#{[attack[:damage].split('d')[-1].to_i, (((class_level + 1) / 6) + 2) * 2].max}"
+          attack[:tooltips] = attack[:tooltips].push('monk')
         end
         unarmed_attack = result.find { |attack| attack[:kind] == 'unarmed' && attack[:action_type] == 'action' }
-        result << unarmed_attack.merge({ action_type: 'bonus action', tooltips: ['flurry_of_blows'] })
+        result << unarmed_attack.merge({ action_type: 'bonus action', tooltips: ['flurry_of_blows'], damage_bonus: 0 })
+        result << unarmed_attack.merge({ action_type: 'bonus action', tooltips: ['martial_arts'], damage_bonus: 0 })
+        result
       end
       # rubocop: enable Metrics/AbcSize, Metrics/PerceivedComplexity
     end
