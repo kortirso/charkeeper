@@ -21,6 +21,9 @@ ru:
         mobile: Мобильные приложения
         in_progress: В разработке
     users:
+      auth:
+        notice: Вход выполнен
+        alert: Ошибка аутентификации
       signup:
         title: Регистрация
         username: Имя пользователя

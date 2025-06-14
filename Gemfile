@@ -45,7 +45,7 @@ gem 'oj'
 gem 'panko_serializer'
 
 # auth
-gem 'authkeeper', '0.1.8'
+gem 'authkeeper', '0.1.9'
 gem 'jwt', '~> 2.5'
 
 # Work with JSON-backed attributes

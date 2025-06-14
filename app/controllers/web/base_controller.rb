@@ -12,6 +12,7 @@ module Web
       return if switch_locale.blank?
       return if I18n.available_locales.exclude?(switch_locale.to_sym)
 
+      current_user&.update(locale: switch_locale)
       cookies[:charkeeper_locale] = {
         value: switch_locale,
         domain: Rails.env.production? ? 'charkeeper.org' : nil
@@ -24,8 +25,12 @@ module Web
         if I18n.available_locales.include?(locale)
           locale
         else
-          cookies[:charkeeper_locale].presence&.to_sym || I18n.default_locale
+          current_locale
         end
+    end
+
+    def current_locale
+      current_user&.locale.presence&.to_sym || cookies[:charkeeper_locale].presence&.to_sym || I18n.default_locale
     end
   end
 end
