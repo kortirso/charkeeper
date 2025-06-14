@@ -28,7 +28,7 @@ module AuthContext
     end
 
     def do_persist(input)
-      result = User::Identity.create!(input.except(:locale))
+      result = User::Identity.create!(input.except(:locale, :login))
 
       { result: result }
     rescue ActiveRecord::RecordNotUnique => _e

@@ -21,6 +21,9 @@ en:
         mobile: iOS and Android mobile applications
         in_progress: In progress
     users:
+      auth:
+        notice: Authentication succeeds
+        alert: Authentication failed
       signup:
         title: Sign up
         username: Username
