@@ -1,0 +1,11 @@
+<div class="alert-box">
+  <% flash.to_h.each do |key, errors| %>
+    <% if errors.is_a?(Hash) %>
+      <% errors.values.flatten.each do |value| %>
+        <div class="alert-text <%= key %>">
+          <p><%= value %></p>
+        </div>
+      <% end %>
+    <% end %>
+  <% end %>
+</div>

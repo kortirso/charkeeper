@@ -7,7 +7,18 @@ en:
     errors:
       unexpected_key: Unknown param
       user:
+        password_length: Password must be greater or equal %{length} characters
+        exists: Username already exists
+        invalid: Invalid credentials
         rules:
+          password:
+            filled?: can't be blank
+          password_confirmation:
+            filled?: can't be blank
+          passwords:
+            different: must be equal
+          username:
+            invalid: has invalid format
           locale:
             filled?: Locale must be filled
             included_in?: Invalid locale value

@@ -23,6 +23,7 @@ module Charkeeper
 
     # commands
     register('commands.auth_context.add_identity') { AuthContext::AddIdentityCommand.new }
+    register('commands.auth_context.add_user') { AuthContext::AddUserCommand.new }
     register('commands.users_context.update') { UsersContext::UpdateCommand.new }
 
     register('commands.characters_context.item_update') { CharactersContext::ItemUpdateCommand.new }

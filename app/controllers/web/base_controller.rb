@@ -24,7 +24,7 @@ module Web
         if I18n.available_locales.include?(locale)
           locale
         else
-          cookies[:charkeeper_locale].presence || I18n.default_locale
+          cookies[:charkeeper_locale].presence&.to_sym || I18n.default_locale
         end
     end
   end

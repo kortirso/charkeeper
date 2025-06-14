@@ -1,0 +1,22 @@
+<div class="max-w-7xl flex-1 flex flex-col justify-center items-center">
+  <%= form_with model: @user, url: signup_index_path, method: :post do |form| %>
+    <h2 class="text-2xl mb-4"><%= t('web.users.signup.title') %></h2>
+    <div class="form-field mb-2">
+      <%= form.label :username, t('web.users.signup.username'), class: 'form-label' %>
+      <%= form.text_field :username, class: 'form-value w-full' %>
+    </div>
+    <div class="form-field mb-2">
+      <%= form.label :password, t('web.users.signup.password'), class: 'form-label' %>
+      <%= form.password_field :password, class: 'form-value w-full' %>
+    </div>
+    <div class="form-field mb-2">
+      <%= form.label :password_confirmation, t('web.users.signup.confirmation'), class: 'form-label' %>
+      <%= form.password_field :password_confirmation, class: 'form-value w-full' %>
+    </div>
+    <div class="mb-2">
+      <%= t('web.users.signup.have') %>
+      <%= link_to t('web.users.signup.login'), new_signin_path, class: 'underline text-blue-600' %>
+    </div>
+    <%= form.submit t('web.users.signup.create'), class: 'btn btn-primary' %>
+  <% end %>
+</div>

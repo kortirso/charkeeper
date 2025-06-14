@@ -7,7 +7,18 @@ ru:
     errors:
       unexpected_key: Неизвестный параметр
       user:
+        password_length: Пароль должен быть не меньше %{length} символов
+        exists: Имя пользователя уже используется
+        invalid: Неверные данные
         rules:
+          password:
+            filled?: Необходимо указать пароль
+          password_confirmation:
+            filled?: Необходимо подтвердить пароль
+          passwords:
+            different: Пароли должны совпадать
+          username:
+            invalid: Имя пользователя имеет неверный формат
           locale:
             filled?: Необходимо указать локаль
             included_in?: Недопустимое значение локали

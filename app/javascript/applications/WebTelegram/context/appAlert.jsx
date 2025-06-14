@@ -30,13 +30,10 @@ export function AppAlertProvider(props) {
   return (
     <AppAlertContext.Provider value={store}>
       <Show when={alerts() !== undefined}>
-        <div class="fixed top-4 right-4 z-50">
+        <div class="alert-box">
           <For each={alerts()}>
             {(alert) =>
-              <p
-                class="relative py-2 px-4 mb-2 rounded text-sm"
-                classList={{ 'bg-red-400 text-white': alert.type === 'alert', 'bg-green-400 text-white': alert.type === 'notice' }}
-              >
+              <p class={`alert-text ${alert.type}`}>
                 {alert.message}
               </p>
             }
