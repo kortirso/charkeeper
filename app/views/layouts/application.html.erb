@@ -22,7 +22,18 @@
   </head>
   <body>
     <main class="relative flex flex-col m-0 p-0 min-h-screen">
-      <div class="flex flex-col flex-1 h-full overflow-x-hidden">
+      <%= render 'controllers/web/shared/flash' %>
+      <div class="fixed w-full bg-white border-b border-gray-200 py-2">
+        <div class="max-w-7xl mx-auto flex flex-row justify-end">
+          <% if current_user %>
+            <%= link_to t('web.users.signin.logout'), logout_path, class: 'underline' %>
+          <% else %>
+            <%= link_to t('web.users.signin.title'), new_signin_path, class: 'mr-4 underline' %>
+            <%= link_to t('web.users.signup.title'), new_signup_path, class: 'underline' %>
+          <% end %>
+        </div>
+      </div>
+      <div class="flex flex-col flex-1 overflow-x-hidden">
         <%= yield %>
       </div>
       <footer class="px-8 py-4 border-t border-gray-200">

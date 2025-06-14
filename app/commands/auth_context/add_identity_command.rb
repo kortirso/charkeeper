@@ -2,6 +2,10 @@
 
 module AuthContext
   class AddIdentityCommand < BaseCommand
+    include Deps[
+      add_user: 'commands.auth_context.add_user'
+    ]
+
     use_contract do
       Providers = Dry::Types['strict.string'].enum(*User::Identity.providers.keys)
 
@@ -12,15 +16,15 @@ module AuthContext
         optional(:first_name).maybe(:string)
         optional(:last_name).maybe(:string)
         optional(:username).maybe(:string)
-        optional(:locale).filled(:string)
+        optional(:locale).maybe(:string)
       end
     end
 
     private
 
     def do_prepare(input)
-      input[:user] = add_user(input) if input[:user].nil?
-      input[:locale] = I18n.default_locale if I18n.available_locales.exclude?(input[:locale])
+      input[:user] = create_user(input) if input[:user].nil?
+      input[:locale] = I18n.default_locale if input[:locale].blank? || I18n.available_locales.exclude?(input[:locale])
     end
 
     def do_persist(input)
@@ -31,8 +35,14 @@ module AuthContext
       { errors: { identity: ['Already exists'] } }
     end
 
-    def add_user(input)
-      User.create!(input.slice(:locale))
+    def create_user(input)
+      password = SecureRandom.alphanumeric(24)
+      add_user.call({
+        username: SecureRandom.alphanumeric(12),
+        locale: input[:locale],
+        password: password,
+        password_confirmation: password
+      })[:result]
     end
   end
 end

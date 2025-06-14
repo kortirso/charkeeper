@@ -45,7 +45,7 @@ gem 'oj'
 gem 'panko_serializer'
 
 # auth
-gem 'authkeeper', '0.1.6'
+gem 'authkeeper', '0.1.8'
 gem 'jwt', '~> 2.5'
 
 # Work with JSON-backed attributes
@@ -65,6 +65,9 @@ gem 'aws-sdk-s3', require: false
 
 # using csv
 gem 'csv'
+
+# Use Active Model has_secure_password [https://guides.rubyonrails.org/active_model_basics.html#securepassword]
+gem 'bcrypt', '~> 3.1.7'
 
 group :development, :test do
   gem 'rubocop', '~> 1.35', require: false
@@ -89,6 +92,7 @@ group :test do
   gem 'database_cleaner', '~> 2.0'
   gem 'factory_bot_rails', '~> 6.4'
   gem 'json_spec', '1.1.5'
+  gem 'rails-controller-testing', '1.0.5'
   gem 'rspec-rails', '~> 7.0'
   gem 'shoulda-matchers', '~> 6.0'
   gem 'simplecov', require: false

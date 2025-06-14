@@ -20,6 +20,21 @@ en:
         web: Web application in browsers
         mobile: iOS and Android mobile applications
         in_progress: In progress
+    users:
+      signup:
+        title: Sign up
+        username: Username
+        password: Password
+        confirmation: Password confirmation
+        have: Already have account?
+        login: Sign in
+        create: Create
+      signin:
+        title: Sign in
+        have_not: Don't have account?
+        signup: Sign up
+        create: Login
+        logout: Logout
   telegram_webhook:
     unknown: "I don't know what to say, sorry :("
     start: "Hello, %{sender}! I'm Charkeeper - an electronic character sheet! I'll help you keep track of your characters that you play tabletop role-playing games with. You can find the mini-app launcher button at the bottom left.\n\nWhat I can do now: create characters according to D&D 5 and D&D 2024 rules, take into account equipment and known spells, display current racial and class abilities available to the character depending on the level, take into account spent spell slots, refresh available abilities after rest, display all possible attack abilities and help with keeping the character sheet in every possible way.\n\nI'm still in the process of development, you can send your comments, questions and suggestions to @kortirso.\n\nTo unsubscribe from the bot's news list, enter the /unsubscribe command or delete this chat with the blocking bot."

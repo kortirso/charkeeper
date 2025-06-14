@@ -105,7 +105,7 @@
 }
 
 .form-field .form-label {
-  @apply text-sm;
+  @apply text-sm font-cascadia-light text-gray-400;
 }
 
 .form-field .form-text {
@@ -154,4 +154,20 @@
 
 #character-navigation p.active {
   @apply text-black border-b-2 border-blue-400;
+}
+
+.alert-box {
+  @apply fixed top-4 right-4 z-50;
+}
+
+.alert-text {
+  @apply relative py-2 px-4 mb-2 rounded text-sm;
+}
+
+.alert-text.alert {
+  @apply bg-red-400 text-white;
+}
+
+.alert-text.notice {
+  @apply bg-green-400 text-white;
 }

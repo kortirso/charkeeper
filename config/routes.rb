@@ -64,6 +64,17 @@ Rails.application.routes.draw do
   end
 
   scope '(:locale)', locale: /#{I18n.available_locales.join('|')}/, defaults: { locale: nil } do
+    scope module: :web do
+      # get 'auth/:provider/callback', to: 'users/omniauth_callbacks#create'
+
+      scope module: :users do
+        resources :signin, only: %i[new create]
+        resources :signup, only: %i[new create]
+
+        get 'logout', to: 'signin#destroy'
+      end
+    end
+
     root 'web/welcome#index'
   end
 end

@@ -1,0 +1,32 @@
+# frozen_string_literal: true
+
+module Web
+  module Users
+    class SignupController < Web::BaseController
+      include Deps[
+        add_user: 'commands.auth_context.add_user'
+      ]
+
+      skip_before_action :authenticate
+
+      def new
+        @user = User.new
+      end
+
+      def create
+        case add_user.call(create_params)
+        in { errors: errors } then redirect_to new_signup_path, alert: errors
+        in { result: result }
+          sign_in(result)
+          redirect_to root_path
+        end
+      end
+
+      private
+
+      def create_params
+        params.require(:user).permit!.to_h
+      end
+    end
+  end
+end
