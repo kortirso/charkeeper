@@ -1,14 +1,20 @@
 export const Arrow = (props) => (
   <svg
-    width="24"
-    height="24"
-    viewBox="0 0 24 24"
-    fill="none"
+    width={props.width || 24}
+    height={props.height || 24}
+    viewBox="0 0 448 512"
     xmlns="http://www.w3.org/2000/svg"
-    class={props.rotated ? 'transition-transform rotate-180' : 'transition-transform rotate-0'}
+    class="transition-transform"
+    classList={{
+      'rotate-0': props.forward,
+      'rotate-90': props.bottom,
+      'rotate-180': props.back,
+      '-rotate-90': props.top
+    }}
   >
-    <line x1="12" y1="4" x2="12" y2="18.6" stroke="currentColor" stroke-width="2" />
-    <line x1="6" y1="12" x2="11.9" y2="18" stroke="currentColor" stroke-width="2" />
-    <line x1="12.1" y1="18" x2="18" y2="12" stroke="currentColor" stroke-width="2" />
+    <path
+      d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z"
+      fill="currentColor"
+    />
   </svg>
 );

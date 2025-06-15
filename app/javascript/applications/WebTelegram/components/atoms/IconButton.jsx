@@ -5,8 +5,11 @@ export const IconButton = (props) => {
 
   return (
     <div
-      class={[props.classList, 'w-6 h-6 flex justify-center items-center cursor-pointer'].join(' ')}
-      classList={{ 'w-8 h-8': props.size === 'big' }}
+      class={[props.classList, 'flex justify-center items-center cursor-pointer rounded-full hover:bg-gray-100'].join(' ')}
+      classList={{
+        'w-6 h-6': props.size === undefined,
+        'w-10 h-10': props.size === 'xl'
+      }}
       onClick={props.onClick} // eslint-disable-line solid/reactivity
     >
       {safeChildren()}

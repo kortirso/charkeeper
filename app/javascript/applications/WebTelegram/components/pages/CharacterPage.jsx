@@ -5,7 +5,7 @@ import { Dnd5, Pathfinder2, Daggerheart } from '../../components';
 import { PageHeader } from '../molecules';
 import { IconButton } from '../atoms';
 
-import { ChevronHorizontal } from '../../assets';
+import { Arrow } from '../../assets';
 import { useAppState } from '../../context';
 import { fetchCharacterRequest } from '../../requests/fetchCharacterRequest';
 
@@ -38,7 +38,13 @@ export const CharacterPage = (props) => {
   return (
     <div class="flex flex-col flex-1 w-full">
       <Show when={size.width < 768}>
-        <PageHeader leftContent={<IconButton onClick={props.onNavigate}><ChevronHorizontal /></IconButton>}>
+        <PageHeader
+          leftContent={
+            <IconButton size="xl" onClick={props.onNavigate}>
+              <Arrow back />
+            </IconButton>
+          }
+        >
           <p>{character().name}</p>
         </PageHeader>
       </Show>

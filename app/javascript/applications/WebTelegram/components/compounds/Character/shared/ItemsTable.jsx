@@ -46,12 +46,12 @@ export const ItemsTable = (props) => {
                       <Switch>
                         <Match when={item.ready_to_use}>
                           <Button default size="small" onClick={() => props.onUpdateCharacterItem(item, { character_item: { ready_to_use: false } })}>
-                            <Arrow />
+                            <Arrow bottom width={16} height={16} />
                           </Button>
                         </Match>
                         <Match when={!item.ready_to_use}>
                           <Button default size="small" onClick={() => props.onUpdateCharacterItem(item, { character_item: { ready_to_use: true } })}>
-                            <Arrow rotated />
+                            <Arrow top width={16} height={16} />
                           </Button>
                         </Match>
                       </Switch>
