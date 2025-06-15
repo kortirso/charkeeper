@@ -18,12 +18,12 @@
     <%= yield :head %>
     <%= stylesheet_link_tag 'tailwind' %>
     <%= stylesheet_link_tag :application %>
-    <%= javascript_include_tag 'application', type: 'module' %>
+    <%= javascript_include_tag 'application' %>
   </head>
   <body>
     <main class="relative flex flex-col m-0 p-0 min-h-screen">
       <%= render 'controllers/web/shared/flash' %>
-      <div class="fixed w-full bg-white border-b border-gray-200 py-2">
+      <div class="w-full bg-white border-b border-gray-200 py-2">
         <div class="max-w-7xl mx-auto flex flex-row justify-end">
           <% if current_user %>
             <%= link_to t('web.users.signin.logout'), logout_path, class: 'underline' %>

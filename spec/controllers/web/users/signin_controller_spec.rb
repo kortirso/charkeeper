@@ -30,10 +30,10 @@ describe Web::Users::SigninController do
       end
 
       context 'for valid password' do
-        it 'redirects to root path' do
+        it 'redirects to dashboard_path' do
           post :create, params: { user: { username: user.username, password: user.password } }
 
-          expect(response).to redirect_to root_path
+          expect(response).to redirect_to dashboard_path
         end
       end
     end

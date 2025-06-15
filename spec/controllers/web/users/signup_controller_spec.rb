@@ -77,7 +77,7 @@ describe Web::Users::SignupController do
         it 'creates new user', :aggregate_failures do
           expect { request }.to change(User, :count).by(1)
           expect(User.last.username).to eq 'user-name'
-          expect(response).to redirect_to root_path
+          expect(response).to redirect_to dashboard_path
         end
       end
     end

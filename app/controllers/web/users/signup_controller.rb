@@ -18,7 +18,7 @@ module Web
         in { errors: errors } then redirect_to new_signup_path, alert: errors
         in { result: result }
           sign_in(result)
-          redirect_to root_path
+          redirect_to dashboard_path
         end
       end
 

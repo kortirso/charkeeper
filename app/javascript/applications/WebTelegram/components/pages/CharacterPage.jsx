@@ -1,14 +1,16 @@
-import { createSignal, createEffect, Switch, Match } from 'solid-js';
+import { createSignal, createEffect, Switch, Match, Show } from 'solid-js';
+import { createWindowSize } from '@solid-primitives/resize-observer';
 
 import { Dnd5, Pathfinder2, Daggerheart } from '../../components';
 import { PageHeader } from '../molecules';
 import { IconButton } from '../atoms';
 
-import { Hamburger } from '../../assets';
+import { ChevronHorizontal } from '../../assets';
 import { useAppState } from '../../context';
 import { fetchCharacterRequest } from '../../requests/fetchCharacterRequest';
 
 export const CharacterPage = (props) => {
+  const size = createWindowSize();
   const [character, setCharacter] = createSignal({});
   const [appState] = useAppState();
 
@@ -34,10 +36,12 @@ export const CharacterPage = (props) => {
   const replaceCharacter = (data) => setCharacter({ ...character(), ...data });
 
   return (
-    <>
-      <PageHeader rightContent={<IconButton onClick={props.onNavigate}><Hamburger /></IconButton>}>
-        <p>{character().name}</p>
-      </PageHeader>
+    <div class="flex flex-col flex-1 w-full">
+      <Show when={size.width < 768}>
+        <PageHeader leftContent={<IconButton onClick={props.onNavigate}><ChevronHorizontal /></IconButton>}>
+          <p>{character().name}</p>
+        </PageHeader>
+      </Show>
       <Switch>
         <Match when={character().provider === 'dnd5' || character().provider === 'dnd2024'}>
           <Dnd5
@@ -60,6 +64,6 @@ export const CharacterPage = (props) => {
           />
         </Match>
       </Switch>
-    </>
+    </div>
   );
 }

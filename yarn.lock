@@ -429,10 +429,46 @@
     "@nodelib/fs.scandir" "2.1.5"
     fastq "^1.6.0"
 
+"@solid-primitives/event-listener@^2.4.1":
+  version "2.4.1"
+  resolved "https://registry.yarnpkg.com/@solid-primitives/event-listener/-/event-listener-2.4.1.tgz#d71b068bad49f0cbf06ca3ae6869b4ea2a84a9b9"
+  integrity sha512-Xc/lBCeuh9LwzR4lYbMDtopwWK7N9b4o+FmI4uoI8DOtVGYi0Ip20DG8PtwHk+g31lHgvwtFFVKfnUx2UaqZJg==
+  dependencies:
+    "@solid-primitives/utils" "^6.3.1"
+
 "@solid-primitives/i18n@^2.1.1":
   version "2.1.1"
   resolved "https://registry.yarnpkg.com/@solid-primitives/i18n/-/i18n-2.1.1.tgz#19826dabafa10b94abcd06f6c2a1b2b9bf6c5b91"
   integrity sha512-1p9B8hveu+gzFRWfXcRtdzzEdr7gw3c8uLXm+2bU33JHgiI8kYJsWvG128sE6vU1ZtYGPrGq980Jd6hxYupyZQ==
+
+"@solid-primitives/resize-observer@^2.1.1":
+  version "2.1.1"
+  resolved "https://registry.yarnpkg.com/@solid-primitives/resize-observer/-/resize-observer-2.1.1.tgz#88d5de0f5de7860ea9cc6eeb14737535c9605d90"
+  integrity sha512-vb/VS9+YdUdVZ2V92JimFmFuaJ2MSyKOGnUay/mQvoQ0R+mtdT7FSylfQlVslCzm0ecx8Jkvsm1Sk2lopvMAdg==
+  dependencies:
+    "@solid-primitives/event-listener" "^2.4.1"
+    "@solid-primitives/rootless" "^1.5.1"
+    "@solid-primitives/static-store" "^0.1.1"
+    "@solid-primitives/utils" "^6.3.1"
+
+"@solid-primitives/rootless@^1.5.1":
+  version "1.5.1"
+  resolved "https://registry.yarnpkg.com/@solid-primitives/rootless/-/rootless-1.5.1.tgz#f1ae18c4d01a2b7951abd8ec8debd04e9aa2fc8c"
+  integrity sha512-G4eNC6F3ufRT2Mjbodl7rSOH7uq/Emqs3S7/BIBWgh+V/IFUtvu6WELeqSrk4FJX3T/kKKvC+T8gXhepExSWyg==
+  dependencies:
+    "@solid-primitives/utils" "^6.3.1"
+
+"@solid-primitives/static-store@^0.1.1":
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/@solid-primitives/static-store/-/static-store-0.1.1.tgz#6bbfd1757b71d9058b08b761d644655c52b90261"
+  integrity sha512-daXWvpLjd+4hbYdGaaEJ2kKFuFhshvfIBFLveW7mfk2BWHl9lGQVwUuExp3qllkK9ONA9p+5D2cpwBQosv8odQ==
+  dependencies:
+    "@solid-primitives/utils" "^6.3.1"
+
+"@solid-primitives/utils@^6.3.1":
+  version "6.3.1"
+  resolved "https://registry.yarnpkg.com/@solid-primitives/utils/-/utils-6.3.1.tgz#d6fcffdadf885e731b459f05a563d8c1ac0c5a4d"
+  integrity sha512-4/Z59nnwu4MPR//zWZmZm2yftx24jMqQ8CSd/JobL26TPfbn4Ph8GKNVJfGJWShg1QB98qObJSskqizbTvcLLA==
 
 "@types/estree@^1.0.6":
   version "1.0.6"

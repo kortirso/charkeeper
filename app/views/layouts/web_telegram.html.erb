@@ -11,7 +11,9 @@
     <%= stylesheet_link_tag 'tailwind' %>
     <%= stylesheet_link_tag :application %>
     <%= javascript_include_tag 'web_telegram' %>
-    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <% unless current_page?(dashboard_path) %>
+      <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <% end %>
   </head>
   <body id="web_telegram_body">
     <%= yield %>

@@ -93,7 +93,7 @@ export const Pathfinder2Abilities = (props) => {
     <>
       <For each={Object.entries(dict().dnd.abilities)}>
         {([slug, ability]) =>
-          <div class="white-box p-4 mb-4">
+          <div class="white-box p-4 mb-2">
             <p class="uppercase text-center mb-4">{ability}</p>
             <div class="flex">
               <div class="w-32 mr-8">

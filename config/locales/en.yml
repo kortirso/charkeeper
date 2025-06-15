@@ -4,12 +4,12 @@ en:
   web:
     welcome:
       index:
-        title: Interactive mobile character sheets
-        description: Create characters for D&D, Pathfinder and/or Daggerheart tabletop games. Charkeeper has automatic calculations of different character attributes and allows to track available features, spells, attacks of your characters.
+        title: Characters for any tabletop games in one place
+        description: Create characters for D&D, Pathfinder and/or Daggerheart tabletop games and store them in one place. Charkeeper - mobile character sheets agregator, has automatic calculations of different character attributes and allows to track available features, spells, attacks of your characters.
         features_title: Charkeeper features
         feature_1: Saving characters compatible with D&D 5, Pathfinder 2 and Daggerheart rules.
         feature_2: Account information and saved characters are shared between all devices.
-        feature_3: Easy tracking of health, equipment, spells.
+        feature_3: Easy tracking of health, stress, using equipment and spells.
         feature_4: Automatic calculation of abilities, skills, available attacks, features.
         feature_5: And a lot of additional features.
         work_on: Working on
@@ -18,6 +18,9 @@ en:
         telegram_link: web view application
         will_work_on: Will work on
         web: Web application in browsers
+        web_description: Simply run %{href} (works but in development)
+        web_link: dashboard
+        dashboard_link: Dashboard
         mobile: iOS and Android mobile applications
         in_progress: In progress
     users:

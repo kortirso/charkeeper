@@ -73,6 +73,8 @@ Rails.application.routes.draw do
 
         get 'logout', to: 'signin#destroy'
       end
+
+      resource :dashboard, only: %i[show]
     end
 
     root 'web/welcome#index'

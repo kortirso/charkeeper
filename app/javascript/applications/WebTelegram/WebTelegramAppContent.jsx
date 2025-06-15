@@ -1,14 +1,17 @@
-import { createEffect, Switch, Match, batch } from 'solid-js';
+import { createEffect, Show, batch, Switch, Match } from 'solid-js';
 import * as i18n from '@solid-primitives/i18n';
+import { createWindowSize } from '@solid-primitives/resize-observer';
 
-import { CharactersPage, CharacterPage, ProfilePage } from './components';
+import { CharactersPage, CharacterPage } from './components';
 import { useAppState, useAppLocale } from './context';
 import { useTelegram } from './hooks';
 
 import { fetchAccessTokenRequest } from './requests/fetchAccessTokenRequest';
 
 export const WebTelegramAppContent = () => {
+  const size = createWindowSize();
   const { webApp } = useTelegram();
+
   const [appState, { setAccessToken, navigate }] = useAppState();
   const [, dict, { setLocale }] = useAppLocale();
 
@@ -51,34 +54,34 @@ export const WebTelegramAppContent = () => {
   // 453x750
   // 420x690
   return (
-    <Switch fallback={
-      <div class="h-screen flex justify-center items-center">
-        <div>{t('loading')}</div>
-      </div>
-    }>
-      <Match when={appState.accessToken !== undefined && appState.accessToken !== null}>
-        <div class="flex-1 flex flex-col bg-gray-50 h-screen">
-          <section class="w-full flex-1 flex flex-col overflow-hidden">
-            <Switch>
-              <Match when={appState.activePage === 'characters' && Object.keys(appState.activePageParams).length === 0}>
-                <CharactersPage
-                  onNavigate={() => navigate('profile', {})}
-                />
-              </Match>
-              <Match when={appState.activePage === 'characters' && appState.activePageParams.id}>
-                <CharacterPage
-                  onNavigate={() => navigate('characters', {})}
-                />
-              </Match>
-              <Match when={appState.activePage === 'profile'}>
-                <ProfilePage
-                  onNavigate={() => navigate('characters', {})}
-                />
-              </Match>
-            </Switch>
-          </section>
+    <Show
+      when={appState.accessToken !== undefined && appState.accessToken !== null}
+      fallback={
+        <div class="h-screen flex justify-center items-center">
+          <div>{t('loading')}</div>
         </div>
-      </Match>
-    </Switch>
+      }
+    >
+      <div class="flex-1 flex flex-col bg-gray-50 h-screen">
+        <section class="w-full flex-1 flex overflow-hidden">
+          <Switch
+            fallback={<CharacterPage onNavigate={() => navigate('characters', {})} />}
+          >
+            <Match when={size.width >= 768}>
+              <CharactersPage onNavigate={() => navigate('profile', {})} />
+              <CharacterPage onNavigate={() => navigate('characters', {})} />
+            </Match>
+            <Match when={Object.keys(appState.activePageParams).length === 0}>
+              <CharactersPage onNavigate={() => navigate('profile', {})} />
+            </Match>
+          </Switch>
+          {/*<Match when={appState.activePage === 'profile'}>
+            <ProfilePage
+              onNavigate={() => navigate('characters', {})}
+            />
+          </Match>*/}
+        </section>
+      </div>
+    </Show>
   );
 }

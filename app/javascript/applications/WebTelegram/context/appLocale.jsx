@@ -9,7 +9,7 @@ const fetchDictionary = async (locale) => {
 }
 
 export function AppLocaleProvider(props) {
-  const [locale, setLocale] = createSignal('en');
+  const [locale, setLocale] = createSignal(props.locale); // eslint-disable-line solid/reactivity
   const [dict] = createResource(locale, fetchDictionary);
 
   const store = [

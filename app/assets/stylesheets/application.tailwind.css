@@ -59,6 +59,10 @@
   @apply py-1 px-1 cursor-pointer;
 }
 
+.btn-big {
+  @apply py-4 px-6 cursor-pointer text-xl;
+}
+
 .bordered {
   @apply border border-gray-200 rounded;
 }
@@ -135,7 +139,7 @@
 }
 
 .form-field .form-dropdown li:hover {
-  @apply bg-gray-400 text-white;
+  @apply bg-blue-400 text-white;
 }
 
 #character-navigation {

@@ -1,13 +1,11 @@
 import * as i18n from '@solid-primitives/i18n';
 
-import { PageHeader } from '../molecules';
-import { Select, IconButton } from '../atoms';
+import { Select } from '../atoms';
 
-import { Hamburger } from '../../assets';
 import { useAppState, useAppLocale, useAppAlert } from '../../context';
 import { updateUserRequest } from '../../requests/updateUserRequest';
 
-export const ProfilePage = (props) => {
+export const ProfilePage = () => {
   const [appState] = useAppState();
   const [{ renderAlerts }] = useAppAlert();
   const [locale, dict, { setLocale }] = useAppLocale();
@@ -24,9 +22,6 @@ export const ProfilePage = (props) => {
   // 420x690
   return (
     <>
-      <PageHeader rightContent={<IconButton onClick={props.onNavigate}><Hamburger /></IconButton>}>
-        {t('profilePage.title')}
-      </PageHeader>
       <div class="p-3 flex-1 overflow-y-scroll">
         <div class="p-3 flex-1 flex flex-col white-box">
           <Select

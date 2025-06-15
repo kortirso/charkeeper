@@ -95,7 +95,7 @@ export const Dnd5Abilities = (props) => {
 
   return (
     <>
-      <div class="white-box flex mb-4 p-4">
+      <div class="white-box flex mb-2 p-4">
         <div class="flex-1 flex flex-col items-center">
           <p class="text-sm mb-1">{t('terms.proficiencyBonus')}</p>
           <p class="text-2xl mb-1">{modifier(character().proficiency_bonus)}</p>
@@ -122,7 +122,7 @@ export const Dnd5Abilities = (props) => {
       </div>
       <For each={Object.entries(dict().dnd.abilities)}>
         {([slug, ability]) =>
-          <div class="white-box p-4 mb-4">
+          <div class="white-box p-4 mb-2">
             <p class="uppercase text-center mb-4">{ability}</p>
             <div class="flex">
               <div class="mr-4">

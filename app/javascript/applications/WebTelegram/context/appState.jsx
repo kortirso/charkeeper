@@ -3,9 +3,9 @@ import { createStore } from 'solid-js/store';
 
 const AppStateContext = createContext();
 
-export function AppStateProvider(props) {
+export const AppStateProvider = (props) => {
   const [appState, setAppState] = createStore({
-    accessToken: undefined,
+    accessToken: props.accessToken, // eslint-disable-line solid/reactivity
     activePage: 'characters',
     activePageParams: {},
   });

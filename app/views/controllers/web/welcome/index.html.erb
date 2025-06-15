@@ -2,6 +2,9 @@
   <div class="flex-1">
     <h1 class="text-6xl font-cascadia-light mb-4"><%= t('web.welcome.index.title') %></h1>
     <p class="text-xl font-cascadia-light"><%= t('web.welcome.index.description') %></p>
+    <% if current_user %>
+      <div class="mt-4"><%= link_to t('web.welcome.index.dashboard_link'), dashboard_path, class: 'btn-big btn-primary inline-block' %></div>
+    <% end %>
   </div>
   <div class="flex-1">
   </div>
@@ -18,12 +21,14 @@
   <div class="flex-1 pr-4">
     <h2 class="text-4xl font-cascadia-light mb-4"><%= t('web.welcome.index.work_on') %></h2>
     <p class="text-lg font-cascadia"><%= t('web.welcome.index.telegram') %></p>
-    <p class="font-cascadia-light mb-8">
+    <p class="font-cascadia-light mb-4">
       <%= t('web.welcome.index.telegram_description', href: link_to(t('web.welcome.index.telegram_link'), 'https://t.me/charkeeper_bot', class: 'underline', target: '_blank', rel: 'noopener noreferrer')).html_safe %>
     </p>
-    <h2 class="text-4xl font-cascadia-light mb-4"><%= t('web.welcome.index.will_work_on') %></h2>
     <p class="text-lg font-cascadia"><%= t('web.welcome.index.web') %></p>
-    <p class="font-cascadia-light mb-4"><%= t('web.welcome.index.in_progress') %></p>
+    <p class="font-cascadia-light mb-4">
+      <%= t('web.welcome.index.web_description', href: link_to(t('web.welcome.index.web_link'), dashboard_path, class: 'underline')).html_safe %>
+    </p>
+    <h2 class="text-4xl font-cascadia-light mb-4"><%= t('web.welcome.index.will_work_on') %></h2>
     <p class="text-lg font-cascadia"><%= t('web.welcome.index.mobile') %></p>
     <p class="font-cascadia-light mb-4"><%= t('web.welcome.index.in_progress') %></p>
   </div>

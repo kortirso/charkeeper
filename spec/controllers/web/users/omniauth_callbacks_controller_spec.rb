@@ -66,9 +66,9 @@ describe Web::Users::OmniauthCallbacksController do
                 }
               end
 
-              it 'redirects to root path', :aggregate_failures do
+              it 'redirects to dashboard_path', :aggregate_failures do
                 expect { request }.to change(User, :count)
-                expect(response).to redirect_to root_path
+                expect(response).to redirect_to dashboard_path
               end
             end
           end
@@ -85,9 +85,9 @@ describe Web::Users::OmniauthCallbacksController do
                 }
               end
 
-              it 'redirects to profile path', :aggregate_failures do
+              it 'redirects to dashboard_path', :aggregate_failures do
                 expect { request }.to change(User::Identity, :count).by(1)
-                expect(response).to redirect_to root_path
+                expect(response).to redirect_to dashboard_path
               end
             end
           end

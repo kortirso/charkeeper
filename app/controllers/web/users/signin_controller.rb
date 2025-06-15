@@ -13,7 +13,7 @@ module Web
 
       def create
         sign_in(@user)
-        redirect_to root_path
+        redirect_to dashboard_path
       end
 
       def destroy

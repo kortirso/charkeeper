@@ -269,7 +269,7 @@ export const Dnd5 = (props) => {
         activeTab={activeTab()}
         setActiveTab={setActiveTab}
       />
-      <div class="p-4 flex-1 overflow-y-scroll">
+      <div class="p-2 flex-1 overflow-y-scroll">
         <Switch>
           <Match when={activeTab() === 'abilities'}>
             <Dnd5Abilities

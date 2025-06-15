@@ -4,9 +4,9 @@ import * as i18n from '@solid-primitives/i18n';
 
 import { Item } from '../../components';
 import { createModal, PageHeader } from '../molecules';
-import { Select, Input, IconButton, Button } from '../atoms';
+import { Select, Input, Button } from '../atoms';
 
-import { Plus, Profile } from '../../assets';
+import { Plus } from '../../assets';
 import pathfinder2Config from '../../data/pathfinder2.json';
 import daggerheartConfig from '../../data/daggerheart.json';
 import { useAppState, useAppLocale, useAppAlert } from '../../context';
@@ -29,7 +29,7 @@ const CHARACTER_SIZES = {
   'goliath': ['medium']
 }
 
-export const CharactersPage = (props) => {
+export const CharactersPage = () => {
   const [loading, setLoading] = createSignal(false);
   const [selectedFile, setSelectedFile] = createSignal(null);
   const [currentTab, setCurrentTab] = createSignal('characters');
@@ -193,8 +193,8 @@ export const CharactersPage = (props) => {
   // 453x750
   // 420x690
   return (
-    <>
-      <PageHeader rightContent={<IconButton onClick={props.onNavigate}><Profile /></IconButton>}>
+    <div class="flex flex-col w-full sm:w-96 md:border-r border-gray-200">
+      <PageHeader>
         <Switch>
           <Match when={currentTab() === 'characters'}>
             {t('charactersPage.title')}
@@ -206,7 +206,7 @@ export const CharactersPage = (props) => {
       </PageHeader>
       <Switch>
         <Match when={currentTab() === 'characters'}>
-          <div class="p-4 pb-0 flex-1 overflow-y-scroll">
+          <div class="relative flex-1 overflow-y-scroll bg-white">
             <Button
               default
               classList='absolute right-4 bottom-4 rounded-full min-w-12 min-h-12 z-10'
@@ -220,6 +220,7 @@ export const CharactersPage = (props) => {
                   <Switch>
                     <Match when={character.provider === 'dnd5'}>
                       <Item
+                        isActive={character.id == appState.activePageParams.id}
                         avatar={character.avatar}
                         name={character.name}
                         provider='D&D 5'
@@ -231,6 +232,7 @@ export const CharactersPage = (props) => {
                     </Match>
                     <Match when={character.provider === 'dnd2024'}>
                       <Item
+                        isActive={character.id == appState.activePageParams.id}
                         avatar={character.avatar}
                         name={character.name}
                         provider='D&D 2024'
@@ -242,6 +244,7 @@ export const CharactersPage = (props) => {
                     </Match>
                     <Match when={character.provider === 'pathfinder2'}>
                       <Item
+                        isActive={character.id == appState.activePageParams.id}
                         avatar={character.avatar}
                         name={character.name}
                         provider='Pathfinder 2'
@@ -253,6 +256,7 @@ export const CharactersPage = (props) => {
                     </Match>
                     <Match when={character.provider === 'daggerheart'}>
                       <Item
+                        isActive={character.id == appState.activePageParams.id}
                         avatar={character.avatar}
                         name={character.name}
                         provider='Daggerheart'
@@ -269,7 +273,7 @@ export const CharactersPage = (props) => {
           </div>
         </Match>
         <Match when={currentTab() === 'newCharacter'}>
-          <div class="p-4 flex-1 flex flex-col overflow-y-scroll">
+          <div class="p-2 flex-1 flex flex-col overflow-y-scroll">
             <div class="p-4 flex-1 flex flex-col white-box">
               <div class="flex-1">
                 <Select
@@ -479,6 +483,6 @@ export const CharactersPage = (props) => {
           <Button default classList='flex-1 ml-2' onClick={confirmCharacterDeleting}>{t('delete')}</Button>
         </div>
       </Modal>
-    </>
+    </div>
   );
 }

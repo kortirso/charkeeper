@@ -1,6 +1,5 @@
 export * from './Close';
 export * from './Chevron';
-export * from './Hamburger';
 export * from './Plus';
 export * from './PlusSmall';
 export * from './Minus';
@@ -11,3 +10,4 @@ export * from './LongCampfire';
 export * from './Edit';
 export * from './Stroke';
 export * from './Arrow';
+export * from './ChevronHorizontal';

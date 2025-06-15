@@ -34,7 +34,7 @@ module Web
 
         return fall_back_url if fall_back_url
 
-        root_path
+        dashboard_path
       end
     end
   end

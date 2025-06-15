@@ -1,5 +1,5 @@
 export function useTelegram() {
-  const webApp = window.Telegram.WebApp;
+  const webApp = window.Telegram?.WebApp;
 
-  return { webApp: webApp, user: webApp.initDataUnsafe?.user }
+  return { webApp: webApp, user: webApp?.initDataUnsafe?.user }
 }
