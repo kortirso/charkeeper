@@ -175,3 +175,7 @@
 .alert-text.notice {
   @apply bg-green-400 text-white;
 }
+
+.uneditable-field {
+  display: none;
+}

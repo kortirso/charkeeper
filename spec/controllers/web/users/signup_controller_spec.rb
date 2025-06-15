@@ -79,6 +79,17 @@ describe Web::Users::SignupController do
           expect(User.last.username).to eq 'user-name'
           expect(response).to redirect_to dashboard_path
         end
+
+        context 'with honeypot field' do
+          let(:user_params) do
+            { username: 'user-name', password: '1234567890', password_confirmation: '1234567890', bonus: '1' }
+          end
+
+          it 'does not create new user', :aggregate_failures do
+            expect { request }.not_to change(User, :count)
+            expect(response).to redirect_to new_signup_path
+          end
+        end
       end
     end
   end

@@ -27,6 +27,7 @@ en:
       auth:
         notice: Authentication succeeds
         alert: Authentication failed
+        spam: Spam alert
       signup:
         title: Sign up
         username: Username

@@ -3,15 +3,18 @@
     <h2 class="text-2xl mb-4"><%= t('web.users.signup.title') %></h2>
     <div class="form-field mb-2">
       <%= form.label :username, t('web.users.signup.username'), class: 'form-label' %>
-      <%= form.text_field :username, class: 'form-value w-full' %>
+      <%= form.text_field :username, class: 'form-value w-full', required: true %>
     </div>
     <div class="form-field mb-2">
       <%= form.label :password, t('web.users.signup.password'), class: 'form-label' %>
-      <%= form.password_field :password, class: 'form-value w-full' %>
+      <%= form.password_field :password, class: 'form-value w-full', required: true %>
     </div>
     <div class="form-field mb-2">
       <%= form.label :password_confirmation, t('web.users.signup.confirmation'), class: 'form-label' %>
-      <%= form.password_field :password_confirmation, class: 'form-value w-full' %>
+      <%= form.password_field :password_confirmation, class: 'form-value w-full', required: true %>
+    </div>
+    <div class="form-field uneditable-field">
+      <%= form.text_field :bonus, class: 'form-value w-full' %>
     </div>
     <div class="mb-2">
       <script

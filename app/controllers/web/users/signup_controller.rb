@@ -8,6 +8,7 @@ module Web
       ]
 
       skip_before_action :authenticate
+      before_action :honeypot_check, only: %i[create]
 
       def new
         @user = User.new
@@ -23,6 +24,12 @@ module Web
       end
 
       private
+
+      def honeypot_check
+        return if params[:user][:bonus].blank?
+
+        redirect_to new_signup_path, alert: { spam: t('web.users.auth.spam') }
+      end
 
       def create_params
         params.require(:user).permit!.to_h
