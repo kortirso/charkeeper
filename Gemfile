@@ -58,7 +58,7 @@ gem 'faraday', '~> 2.0'
 gem 'skylight'
 
 # bugs tracking
-gem 'bugsnag'
+gem 'solid_errors'
 
 # Uploading to S3
 gem 'aws-sdk-s3', require: false

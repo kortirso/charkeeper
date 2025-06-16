@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  mount SolidErrors::Engine, at: '/solid_errors'
+
   get 'web_telegram', to: 'web_telegram#index'
 
   namespace :adminbook do

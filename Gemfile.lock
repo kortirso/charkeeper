@@ -103,8 +103,6 @@ GEM
     bootsnap (1.18.6)
       msgpack (~> 1.2)
     brotli (0.6.0)
-    bugsnag (6.27.1)
-      concurrent-ruby (~> 1.0)
     builder (3.3.0)
     capistrano (3.19.2)
       airbrussh (>= 1.0.0)
@@ -395,6 +393,12 @@ GEM
     simplecov_json_formatter (0.1.4)
     skylight (6.0.4)
       activesupport (>= 5.2.0)
+    solid_errors (0.7.0)
+      actionpack (>= 7.0)
+      actionview (>= 7.0)
+      activerecord (>= 7.0)
+      activesupport (>= 7.0)
+      railties (>= 7.0)
     sprockets (4.2.2)
       concurrent-ruby (~> 1.0)
       logger
@@ -457,7 +461,6 @@ DEPENDENCIES
   aws-sdk-s3
   bcrypt (~> 3.1.7)
   bootsnap
-  bugsnag
   capistrano (~> 3.17)
   capistrano-bundler
   capistrano-rails (~> 1.6)
@@ -494,6 +497,7 @@ DEPENDENCIES
   shoulda-matchers (~> 6.0)
   simplecov
   skylight
+  solid_errors
   sprockets-rails
   store_model
   strong_migrations (~> 2.0)

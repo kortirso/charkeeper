@@ -16,7 +16,7 @@ module Charkeeper
     end
 
     register('to_bool') { ToBool.new }
-    register('monitoring.providers.bugsnag') { Monitoring::Providers::Bugsnag.new }
+    register('monitoring.providers.rails') { Monitoring::Providers::Rails.new }
     register('monitoring.client') { Monitoring::Client.new }
     register('api.telegram.client') { TelegramApi::Client.new }
     register('api.imgproxy.client') { ImgproxyApi::Client.new }

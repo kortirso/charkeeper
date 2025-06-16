@@ -5,7 +5,7 @@ module Monitoring
   ReceiveTelegramWebhook = Class.new(StandardError)
 
   class Client
-    include Deps[provider: 'monitoring.providers.bugsnag']
+    include Deps[provider: 'monitoring.providers.rails']
 
     def notify(exception:, metadata: {}, severity: nil)
       provider.notify(exception: exception, metadata: metadata, severity: severity)

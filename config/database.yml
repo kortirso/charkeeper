@@ -10,8 +10,13 @@ default: &default
   password: postgres
 
 development:
-  <<: *default
-  database: characters_development
+  primary: &primary_development
+    <<: *default
+    database: characters_development
+  errors:
+    <<: *primary_development
+    database: characters_development_errors
+    migrations_paths: db/errors_migrate
 
 local_production:
   <<: *default
@@ -22,7 +27,12 @@ test:
   database: characters_test
 
 production:
-  <<: *default
-  database: charkeeper
-  username: charkeeper
-  password: <%= Rails.application.credentials[:database_password] %>
+  primary: &primary_production
+    <<: *default
+    database: charkeeper
+    username: charkeeper
+    password: <%= Rails.application.credentials[:database_password] %>
+  errors:
+    <<: *primary_production
+    database: charkeeper_errors
+    migrations_paths: db/errors_migrate
