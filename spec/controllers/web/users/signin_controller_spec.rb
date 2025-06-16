@@ -40,10 +40,18 @@ describe Web::Users::SigninController do
   end
 
   describe 'GET#destroy' do
-    it 'redirects to root path' do
-      get :destroy
-
+    it 'redirects to root path', :aggregate_failures do
+      expect { get :destroy }.not_to change(User::Session, :count)
       expect(response).to redirect_to root_path
+    end
+
+    context 'for logged user' do
+      sign_in_user
+
+      it 'redirects to root path', :aggregate_failures do
+        expect { get :destroy }.to change(User::Session, :count).by(-1)
+        expect(response).to redirect_to root_path
+      end
     end
   end
 end
