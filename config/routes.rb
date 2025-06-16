@@ -7,15 +7,24 @@ Rails.application.routes.draw do
 
   namespace :adminbook do
     resources :users, only: %i[index]
-    resources :characters, only: %i[index]
 
-    namespace :characters do
-      namespace :dnd5 do
+    namespace :dnd5 do
+      resources :characters, only: %i[index]
+      namespace :characters do
         resources :features, except: %i[show]
       end
-      namespace :dnd2024 do
+    end
+    namespace :dnd2024 do
+      resources :characters, only: %i[index]
+      namespace :characters do
         resources :features, except: %i[show]
       end
+    end
+    namespace :pathfinder2 do
+      resources :characters, only: %i[index]
+    end
+    namespace :daggerheart do
+      resources :characters, only: %i[index]
     end
 
     get '/', to: 'welcome#index'

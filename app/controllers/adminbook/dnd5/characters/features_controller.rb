@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 module Adminbook
-  module Characters
-    module Dnd5
+  module Dnd5
+    module Characters
       class FeaturesController < Adminbook::BaseController
         def index
           @features = ::Dnd5::Character::Feature.order(origin: :asc, origin_value: :asc, level: :asc)

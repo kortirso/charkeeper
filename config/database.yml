@@ -12,23 +12,23 @@ default: &default
 development:
   primary: &primary_development
     <<: *default
-    database: characters_development
+    database: charkeeper_development
   errors:
     <<: *primary_development
-    database: characters_development_errors
+    database: charkeeper_development_errors
     migrations_paths: db/errors_migrate
 
 local_production:
   <<: *default
-  database: characters_development
+  database: charkeeper_development
 
 test:
   primary: &primary_test
     <<: *default
-    database: characters_test
+    database: charkeeper_test
   errors:
     <<: *primary_test
-    database: characters_test_errors
+    database: charkeeper_test_errors
     migrations_paths: db/errors_migrate
 
 production:

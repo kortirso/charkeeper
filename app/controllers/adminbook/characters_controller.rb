@@ -3,7 +3,8 @@
 module Adminbook
   class CharactersController < Adminbook::BaseController
     def index
-      @characters = Character.order(type: :desc, created_at: :desc)
+      @characters = Character.where(type: character_type).order(created_at: :desc)
+      render template: "adminbook/#{provider}/characters/index"
     end
   end
 end

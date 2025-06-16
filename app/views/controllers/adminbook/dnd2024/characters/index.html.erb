@@ -1,0 +1,38 @@
+<table class="table w-full text-sm">
+  <thead>
+    <tr>
+      <td></td>
+      <td>ID</td>
+      <td>Name</td>
+      <td>Level</td>
+      <td>Species</td>
+      <td>Legacy</td>
+      <td>Classes</td>
+      <td>Subclasses</td>
+      <td>User ID</td>
+    </tr>
+  </thead>
+  <tbody>
+    <% @characters.each_with_index do |character, index| %>
+      <tr>
+        <td><%= index + 1 %></td>
+        <td class="pr-4"><%= character.id %></td>
+        <td class="pr-4"><%= character.name %></td>
+        <td class="pr-4"><%= character.data.level %></td>
+        <td class="pr-4"><%= character.data.species %></td>
+        <td class="pr-4"><%= character.data.legacy %></td>
+        <td class="pr-4">
+          <% character.data.classes.each do |key, value| %>
+            <p class="text-sm"><%= key %> - <%= value %></p>
+          <% end %>
+        </td>
+        <td class="pr-4">
+          <% character.data.subclasses.select { |key, value| value }.each do |key, value| %>
+            <p class="text-sm"><%= key %> - <%= value %></p>
+          <% end %>
+        </td>
+        <td><%= character.user_id %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
