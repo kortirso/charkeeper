@@ -6,6 +6,13 @@ class ApplicationController < ActionController::Base
   append_view_path Rails.root.join('app/views/controllers')
 
   before_action :authenticate, except: %i[not_found]
+  before_action do
+    Rails.error.set_context(
+      request_url: request.original_url,
+      params: request.filtered_parameters.inspect,
+      session: session.inspect
+    )
+  end
 
   def not_found = page_not_found
 

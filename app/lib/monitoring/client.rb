@@ -2,6 +2,7 @@
 
 module Monitoring
   AuthByTelegram = Class.new(StandardError)
+  AuthByUsername = Class.new(StandardError)
   ReceiveTelegramWebhook = Class.new(StandardError)
 
   class Client

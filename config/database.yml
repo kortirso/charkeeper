@@ -23,8 +23,13 @@ local_production:
   database: characters_development
 
 test:
-  <<: *default
-  database: characters_test
+  primary: &primary_test
+    <<: *default
+    database: characters_test
+  errors:
+    <<: *primary_test
+    database: characters_test_errors
+    migrations_paths: db/errors_migrate
 
 production:
   primary: &primary_production

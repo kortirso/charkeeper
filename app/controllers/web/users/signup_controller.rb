@@ -4,10 +4,12 @@ module Web
   module Users
     class SignupController < Web::BaseController
       include Deps[
+        monitoring: 'monitoring.client',
         add_user: 'commands.auth_context.add_user'
       ]
 
       skip_before_action :authenticate
+      before_action :monitoring_signup, only: %i[create]
       before_action :honeypot_check, only: %i[create]
 
       def new
@@ -24,6 +26,13 @@ module Web
       end
 
       private
+
+      def monitoring_signup
+        monitoring.notify(
+          exception: Monitoring::AuthByUsername.new('Signup attempt with username'),
+          severity: :info
+        )
+      end
 
       def honeypot_check
         return if params[:user][:bonus].blank?
