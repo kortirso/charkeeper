@@ -4,7 +4,7 @@ module Monitoring
   module Providers
     class Rails
       def notify(exception:, metadata: {}, severity: nil)
-        ::Rails.error.handle(context: metadata, severity: severity) { raise exception }
+        ::Rails.error.report(exception, context: metadata, severity: severity)
       end
     end
   end
