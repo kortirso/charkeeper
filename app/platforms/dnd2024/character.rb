@@ -19,6 +19,7 @@ module Dnd2024
     attribute :energy, array: true, default: {}
     attribute :selected_skills, array: true, default: [] # ['history']
     attribute :selected_features, array: true, default: {} # { 'fighting_style' => ['fighting_style_defense'] }
+    attribute :selected_feats, array: true, default: []
     attribute :languages, array: true
     attribute :weapon_core_skills, array: true
     attribute :weapon_skills, array: true

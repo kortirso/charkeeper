@@ -10,7 +10,7 @@
     "visible": "selected_features.keys.include?('fighting_style_defense')",
     "description_eval_variables": {},
     "eval_variables": {
-      "armor_class": "defense_gear[:armor].present? ? (armor_class += 1) : armor_class"
+      "armor_class": "defense_gear[:armor].present? ? (armor_class + 1) : armor_class"
     }
   },
   {

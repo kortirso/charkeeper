@@ -124,6 +124,10 @@
     "secondaryWeapon": "Запасное оружие"
   },
   "professionsPage": {
+    "feats": "Черты",
+    "originFeats": "Происхождение",
+    "generalFeats": "Общие",
+    "fightingFeats": "Боевые стили",
     "languages": "Известные языки",
     "weaponCoreSkill": "Базовые оружейные навыки",
     "weaponSkills": "Оружейные навыки",
