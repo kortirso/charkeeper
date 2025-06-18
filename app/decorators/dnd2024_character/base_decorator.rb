@@ -9,7 +9,7 @@ module Dnd2024Character
     delegate :species, :legacy, :main_class, :classes, :subclasses, :level, :languages, :health, :abilities, :selected_skills,
              :selected_features, :resistance, :immunity, :vulnerability, :energy, :coins,
              :weapon_core_skills, :weapon_skills, :armor_proficiency, :tools, :music, :spent_spell_slots,
-             :hit_dice, :spent_hit_dice, :death_saving_throws, :speed, to: :data
+             :hit_dice, :spent_hit_dice, :death_saving_throws, :speed, :selected_feats, to: :data
 
     def method_missing(_method, *args); end
 
@@ -60,7 +60,7 @@ module Dnd2024Character
     end
 
     def initiative
-      @initiative ||= modifiers['dex'] + proficiency_bonus
+      @initiative ||= modifiers['dex']
     end
 
     def attacks_per_action

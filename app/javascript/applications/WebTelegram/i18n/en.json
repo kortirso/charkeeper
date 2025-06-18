@@ -124,6 +124,10 @@
     "secondaryWeapon": "Secondary weapon"
   },
   "professionsPage": {
+    "feats": "Feats",
+    "originFeats": "Origin feats",
+    "generalFeats": "General feats",
+    "fightingFeats": "Fighting style",
     "languages": "Languages",
     "weaponCoreSkill": "Weapon code skills",
     "weaponSkills": "Weapon skills",
