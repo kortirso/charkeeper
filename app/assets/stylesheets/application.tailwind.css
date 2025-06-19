@@ -153,11 +153,15 @@
 }
 
 #character-navigation p {
-  @apply text-xs/6 font-cascadia mx-2 py-2 text-gray-400 cursor-pointer;
+  @apply text-xs/6 font-cascadia mx-2 py-2 text-gray-400 cursor-pointer text-nowrap;
 }
 
 #character-navigation p.active {
   @apply text-black border-b-2 border-blue-400;
+}
+
+#character-navigation p.disabled {
+  @apply text-gray-200;
 }
 
 .alert-box {

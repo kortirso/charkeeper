@@ -1,8 +1,8 @@
-import { createSignal, createEffect, For, Switch, Match, Show, batch } from 'solid-js';
+import { createSignal, createEffect, createMemo, For, Switch, Match, Show, batch } from 'solid-js';
 import { createStore } from 'solid-js/store';
 import * as i18n from '@solid-primitives/i18n';
 
-import { Item } from '../../components';
+import { Item, CharacterNavigation } from '../../components';
 import { createModal, PageHeader } from '../molecules';
 import { Select, Input, Button } from '../atoms';
 
@@ -33,6 +33,7 @@ export const CharactersPage = () => {
   const [loading, setLoading] = createSignal(false);
   const [selectedFile, setSelectedFile] = createSignal(null);
   const [currentTab, setCurrentTab] = createSignal('characters');
+  const [activeFilter, setActiveFilter] = createSignal('allFilter');
   const [characters, setCharacters] = createSignal(undefined);
   const [platform, setPlatform] = createSignal(undefined);
   const [avatarUrl, setAvatarUrl] = createSignal('');
@@ -91,6 +92,19 @@ export const CharactersPage = () => {
         setCharacters(charactersData.characters);
       }
     );
+  });
+
+  const characterProviders = createMemo(() => {
+    if (characters() === undefined) return [];
+
+    return characters().map((item) => item.provider);
+  });
+
+  const filteredCharacters = createMemo(() => {
+    if (characters() === undefined) return [];
+    if (activeFilter() === 'allFilter') return characters();
+
+    return characters().filter((item) => item.provider === activeFilter());
   });
 
   const handleFileChange = (event) => {
@@ -194,16 +208,21 @@ export const CharactersPage = () => {
   // 420x690
   return (
     <div class="flex flex-col w-full sm:w-96 md:border-r border-gray-200">
-      <PageHeader>
-        <Switch>
-          <Match when={currentTab() === 'characters'}>
-            {t('charactersPage.title')}
-          </Match>
-          <Match when={currentTab() === 'newCharacter'}>
+      <Switch>
+        <Match when={currentTab() === 'newCharacter'}>
+          <PageHeader>
             {t('newCharacterPage.title')}
-          </Match>
-        </Switch>
-      </PageHeader>
+          </PageHeader>
+        </Match>
+        <Match when={currentTab() === 'characters'}>
+          <CharacterNavigation
+            tabsList={['allFilter'].concat(characterProviders())}
+            disableTabsList={['dnd5', 'dnd2024', 'pathfinder2', 'daggerheart'].filter((item) => !characterProviders().includes(item))}
+            activeTab={activeFilter()}
+            setActiveTab={setActiveFilter}
+          />
+        </Match>
+      </Switch>
       <Switch>
         <Match when={currentTab() === 'characters'}>
           <div class="relative flex-1 overflow-y-scroll bg-white">
@@ -215,7 +234,7 @@ export const CharactersPage = () => {
               <Plus />
             </Button>
             <Show when={characters() !== undefined}>
-              <For each={characters()}>
+              <For each={filteredCharacters()}>
                 {(character) =>
                   <Switch>
                     <Match when={character.provider === 'dnd5'}>

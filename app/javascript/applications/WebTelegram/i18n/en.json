@@ -121,7 +121,12 @@
     "dyingConditionValue": "Dying condition value",
     "avatar": "Avatar",
     "primaryWeapon": "Primary weapon",
-    "secondaryWeapon": "Secondary weapon"
+    "secondaryWeapon": "Secondary weapon",
+    "allFilter": "All",
+    "dnd5": "D&D 5",
+    "dnd2024": "D&D 2024",
+    "pathfinder2": "Pathfinder 2",
+    "daggerheart": "Daggerheart"
   },
   "professionsPage": {
     "feats": "Feats",
