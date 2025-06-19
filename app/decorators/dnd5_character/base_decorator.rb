@@ -60,7 +60,7 @@ module Dnd5Character
     end
 
     def initiative
-      @initiative ||= modifiers['dex'] + proficiency_bonus
+      @initiative ||= modifiers['dex']
     end
 
     def attacks_per_action
