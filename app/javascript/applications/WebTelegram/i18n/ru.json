@@ -121,7 +121,12 @@
     "dyingConditionValue": "Состояние при смерти",
     "avatar": "Аватар",
     "primaryWeapon": "Основное оружие",
-    "secondaryWeapon": "Запасное оружие"
+    "secondaryWeapon": "Запасное оружие",
+    "allFilter": "Все",
+    "dnd5": "D&D 5",
+    "dnd2024": "D&D 2024",
+    "pathfinder2": "Pathfinder 2",
+    "daggerheart": "Daggerheart"
   },
   "professionsPage": {
     "feats": "Черты",
