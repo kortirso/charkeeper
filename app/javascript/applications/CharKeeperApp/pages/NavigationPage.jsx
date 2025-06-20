@@ -27,17 +27,17 @@ export const NavigationPage = () => {
       </div>
       <div class="flex p-2 border-t border-gray-200">
         <div class="flex-1">
-          <IconButton size="xl" classList="mx-auto" onClick={() => setCurrentTab('characters')}>
+          <IconButton size="xl" classList="mx-auto" inactive={currentTab() !== 'characters'} onClick={() => setCurrentTab('characters')}>
             <List />
           </IconButton>
         </div>
         <div class="flex-1">
-          <IconButton size="xl" classList="mx-auto" onClick={() => setCurrentTab('homebrew')}>
+          <IconButton size="xl" classList="mx-auto" inactive={currentTab() !== 'homebrew'} onClick={() => setCurrentTab('homebrew')}>
             <Homebrew width={28} height={28} />
           </IconButton>
         </div>
         <div class="flex-1">
-          <IconButton size="xl" classList="mx-auto" onClick={() => setCurrentTab('settings')}>
+          <IconButton size="xl" classList="mx-auto" inactive={currentTab() !== 'settings'} onClick={() => setCurrentTab('settings')}>
             <Edit width={28} height={28} />
           </IconButton>
         </div>
