@@ -30,7 +30,7 @@ Rails.application.routes.draw do
     get '/', to: 'welcome#index'
   end
 
-  namespace :web_telegram do
+  namespace :frontend do
     resources :auth, only: %i[create]
     resources :characters, only: %i[index show destroy] do
       resources :notes, only: %i[index create destroy], module: 'characters'

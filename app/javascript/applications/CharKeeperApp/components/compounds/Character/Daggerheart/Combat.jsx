@@ -1,0 +1,252 @@
+import { createSignal, For, Switch, Match, Show } from 'solid-js';
+import * as i18n from '@solid-primitives/i18n';
+
+import { Checkbox, Toggle, Button } from '../../../atoms';
+
+import { FeatureTitle } from '../../../../components';
+import { useAppState, useAppLocale, useAppAlert } from '../../../../context';
+import { updateCharacterRequest } from '../../../../requests/updateCharacterRequest';
+
+import { modifier } from '../../../../helpers';
+
+export const DaggerheartCombat = (props) => {
+  const character = () => props.character;
+
+  const [textFeaturesData, setTextFeaturesData] = createSignal(
+    character().features.filter((item) => item.kind === 'text').reduce((acc, item) => { acc[item.slug] = character().selected_features[item.slug]; return acc; }, {})
+  );
+
+  const [appState] = useAppState();
+  const [{ renderAlerts }] = useAppAlert();
+  const [, dict] = useAppLocale();
+
+  const t = i18n.translator(dict);
+
+  const updateAttribute = async (attribute, value) => {
+    const currentValue = character()[attribute];
+    const newValue = currentValue === value ? (value - 1) : value;
+
+    const result = await updateCharacterRequest(
+      appState.accessToken, 'daggerheart', character().id, { character: { [attribute]: newValue }, only_head: true }
+    );
+
+    if (result.errors === undefined) props.onReplaceCharacter({ [attribute]: newValue });
+    else renderAlerts(result.errors);
+  }
+
+  const spendEnergy = async (event, feature) => {
+    event.stopPropagation();
+
+    let payload;
+    const currentValue = character().energy[feature.slug];
+
+    if (currentValue === feature.limit) return;
+    if (currentValue) {
+      payload = { ...character().energy, [feature.slug]: currentValue + 1 };
+    } else {
+      payload = { ...character().energy, [feature.slug]: 1 };
+    }
+
+    const result = await updateCharacterRequest(
+      appState.accessToken, 'daggerheart', character().id, { character: { energy: payload }, only_head: true }
+    );
+
+    if (result.errors === undefined) props.onReplaceCharacter({ energy: payload });
+    else renderAlerts(result.errors);
+  }
+
+  const restoreEnergy = async (event, feature) => {
+    event.stopPropagation();
+
+    let payload;
+    const currentValue = character().energy[feature.slug];
+
+    if (currentValue === 0) return;
+    if (currentValue) {
+      payload = { ...character().energy, [feature.slug]: currentValue - 1 };
+    } else {
+      payload = { ...character().energy, [feature.slug]: 0 };
+    }
+
+    const result = await updateCharacterRequest(
+      appState.accessToken, 'daggerheart', character().id, { character: { energy: payload }, only_head: true }
+    );
+
+    if (result.errors === undefined) props.onReplaceCharacter({ energy: payload });
+    else renderAlerts(result.errors);
+  }
+
+  const updateTextFeature = async (slug) => {
+    const payload = { ...character().selected_features, [slug]: textFeaturesData()[slug] }
+
+    const result = await updateCharacterRequest(
+      appState.accessToken, 'daggerheart', character().id, { character: { selected_features: payload }, only: 'selected_features' }
+    );
+
+    if (result.errors === undefined) props.onReplaceCharacter({ selected_features: payload });
+    else renderAlerts(result.errors);
+  }
+
+  const renderAttacksBox = (title, values) => {
+    if (values.length === 0) return <></>;
+
+    return (
+      <div class="p-4 white-box mb-2">
+        <h2 class="text-lg mb-2">{title}</h2>
+        <table class="w-full table first-column-full-width">
+          <thead>
+            <tr>
+              <td />
+              <td class="text-center">{t('attacks.bonus')}</td>
+              <td class="text-center">{t('attacks.damage')}</td>
+              <td class="text-center">{t('attacks.distance')}</td>
+            </tr>
+          </thead>
+          <tbody>
+            <For each={values}>
+              {(attack) =>
+                <tr>
+                  <td class="py-1">
+                    <p>{attack.name}</p>
+                    <Show when={attack.features.length > 0}>
+                      <p class="text-xs">
+                        {attack.tooltips.join(', ')}
+                      </p>
+                    </Show>
+                    <Show when={attack.notes}>
+                      <p class="text-xs">{attack.notes}</p>
+                    </Show>
+                  </td>
+                  <td class="py-1 text-center">{modifier(attack.attack_bonus)}</td>
+                  <td class="py-1 text-center">
+                    <p>{attack.damage}{attack.damage_bonus > 0 ? modifier(attack.damage_bonus) : ''}</p>
+                    <p class="text-xs">{attack.damage_type}</p>
+                  </td>
+                  <td class="py-1 text-center">
+                    <p>{attack.range}</p>
+                  </td>
+                </tr>
+              }
+            </For>
+          </tbody>
+        </table>
+      </div>
+    );
+  }
+
+  return (
+    <>
+      <div class="white-box mb-2">
+        <div class="p-4 flex">
+          <div class="flex-1 flex flex-col items-center">
+            <p class="uppercase text-xs mb-1">{t('daggerheart.combat.evasion')}</p>
+            <p class="text-2xl mb-1">{character().evasion}</p>
+          </div>
+          <div class="flex-1 flex flex-col items-center">
+            <p class="uppercase text-xs mb-1">{t('daggerheart.combat.armorScore')}</p>
+            <p class="text-2xl mb-1">{character().armor_score}</p>
+          </div>
+          <div class="flex-1 flex flex-col items-center">
+            <p class="uppercase text-xs mb-1">{t('daggerheart.combat.armorSlots')}</p>
+            <p class="text-2xl mb-1">{character().spent_armor_slots} / {character().armor_slots}</p>
+          </div>
+        </div>
+      </div>
+      <div class="white-box mb-2">
+        <div class="p-4 flex mb-2">
+          <div class="flex-1 flex flex-col items-center">
+            <p class="uppercase text-xs mb-1">{t('daggerheart.combat.minor')}</p>
+            <p class="text-2xl mb-1">{character().damage_thresholds.minor}</p>
+            <p class="font-cascadia-light text-xs mb-1">{t('daggerheart.combat.minorDamage')}</p>
+          </div>
+          <div class="flex-1 flex flex-col items-center">
+            <p class="uppercase text-xs mb-1">{t('daggerheart.combat.major')}</p>
+            <p class="text-2xl mb-1">{character().damage_thresholds.major}</p>
+            <p class="font-cascadia-light text-xs mb-1">{t('daggerheart.combat.majorDamage')}</p>
+          </div>
+          <div class="flex-1 flex flex-col items-center">
+            <p class="uppercase text-xs mb-1">{t('daggerheart.combat.severe')}</p>
+            <p class="text-2xl mb-1">{character().damage_thresholds.severe}</p>
+            <p class="font-cascadia-light text-xs mb-1">{t('daggerheart.combat.severeDamage')}</p>
+          </div>
+        </div>
+        <div class="px-4 mb-2">
+          <p class="text-sm/4 font-cascadia-light uppercase mb-1">{t('daggerheart.combat.health')}</p>
+          <div class="flex">
+            <For each={Array.from([...Array(character().health_max).keys()], (x) => x + 1)}>
+              {(index) =>
+                <Checkbox
+                  filled
+                  checked={character().health_marked >= index}
+                  classList="mr-1"
+                  onToggle={() => updateAttribute('health_marked', index)}
+                />
+              }
+            </For>
+          </div>
+        </div>
+        <div class="px-4 mb-2">
+          <p class="text-sm/4 font-cascadia-light uppercase mb-1">{t('daggerheart.combat.stress')}</p>
+          <div class="flex">
+            <For each={Array.from([...Array(character().stress_max).keys()], (x) => x + 1)}>
+              {(index) =>
+                <Checkbox
+                  filled
+                  checked={character().stress_marked >= index}
+                  classList="mr-1"
+                  onToggle={() => updateAttribute('stress_marked', index)}
+                />
+              }
+            </For>
+          </div>
+        </div>
+        <div class="px-4 mb-4">
+          <p class="text-sm/4 font-cascadia-light uppercase mb-1">{t('daggerheart.combat.hope')}</p>
+          <div class="flex">
+            <For each={Array.from([...Array(character().hope_max).keys()], (x) => x + 1)}>
+              {(index) =>
+                <Checkbox
+                  filled
+                  checked={character().hope_marked >= index}
+                  classList="mr-1"
+                  onToggle={() => updateAttribute('hope_marked', index)}
+                />
+              }
+            </For>
+          </div>
+        </div>
+      </div>
+      {renderAttacksBox(t('character.equipment'), character().attacks.filter((item) => item.ready_to_use))}
+      {renderAttacksBox(t('character.backpack'), character().attacks.filter((item) => !item.ready_to_use))}
+      <For each={character().features}>
+        {(feature) =>
+          <Toggle title={<FeatureTitle feature={feature} character={character()} onSpendEnergy={spendEnergy} onRestoreEnergy={restoreEnergy} />}>
+            <Switch>
+              <Match when={feature.kind === 'static'}>
+                <p
+                  class="text-sm font-cascadia-light"
+                  innerHTML={feature.description} // eslint-disable-line solid/no-innerhtml
+                />
+              </Match>
+              <Match when={feature.kind === 'text'}>
+                <p
+                  class="text-sm font-cascadia-light mb-2"
+                  innerHTML={feature.description} // eslint-disable-line solid/no-innerhtml
+                />
+                <textarea
+                  rows="5"
+                  class="w-full border border-gray-200 rounded p-1 text-sm"
+                  onInput={(e) => setTextFeaturesData({ ...textFeaturesData(), [feature.slug]: e.target.value })}
+                  value={textFeaturesData()[feature.slug] || ''}
+                />
+                <div class="flex justify-end mt-2">
+                  <Button default textable size="small" onClick={() => updateTextFeature(feature.slug)}>{t('save')}</Button>
+                </div>
+              </Match>
+            </Switch>
+          </Toggle>
+        }
+      </For>
+    </>
+  );
+}

@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class WebTelegramController < ApplicationController
-  layout 'web_telegram'
+  layout 'charkeeper_app'
 
   skip_before_action :authenticate
 

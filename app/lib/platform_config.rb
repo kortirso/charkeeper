@@ -18,6 +18,6 @@ module PlatformConfig
   end
 
   def data_path(provider)
-    Rails.root.join("app/javascript/applications/WebTelegram/data/#{provider}.json")
+    Rails.root.join("app/javascript/applications/CharKeeperApp/data/#{provider}.json")
   end
 end

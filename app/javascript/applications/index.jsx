@@ -1,1 +1,1 @@
-export * from './WebTelegram/WebTelegramApp';
+export * from './CharKeeperApp/CharKeeperApp';

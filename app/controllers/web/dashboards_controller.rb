@@ -2,7 +2,7 @@
 
 module Web
   class DashboardsController < Web::BaseController
-    layout 'web_telegram'
+    layout 'charkeeper_app'
 
     def show
       @access_token = cookies[Authkeeper.configuration.access_token_name]
