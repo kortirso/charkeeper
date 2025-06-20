@@ -62,6 +62,7 @@ export const CharactersTab = () => {
     subrace: undefined,
     main_class: undefined,
     background: undefined,
+    main_ability: undefined,
     avatar_file: undefined,
     avatar_url: undefined
   });
@@ -171,7 +172,7 @@ export const CharactersTab = () => {
         setPlatform(undefined);
         setCharacterDnd5Form({ name: '', race: undefined, subrace: undefined, main_class: undefined, alignment: 'neutral', avatar_file: undefined, avatar_url: undefined });
         setCharacterDnd2024Form({ name: '', species: undefined, size: undefined, main_class: undefined, alignment: 'neutral', avatar_file: undefined, avatar_url: undefined });
-        setCharacterPathfinder2Form({ name: '', race: undefined, subrace: undefined, main_class: undefined, background: undefined, avatar_file: undefined, avatar_url: undefined });
+        setCharacterPathfinder2Form({ name: '', race: undefined, subrace: undefined, main_class: undefined, background: undefined, avatar_file: undefined, avatar_url: undefined, main_ability: undefined });
         setCharacterDaggerheartForm({ name: '', heritage: undefined, community: undefined, main_class: undefined, subclass: undefined, avatar_file: undefined, avatar_url: undefined });
         setCurrentTab('characters');
         setLoading(false);
@@ -419,8 +420,17 @@ export const CharactersTab = () => {
                       labelText={t('newCharacterPage.pathfinder2.mainClass')}
                       items={translate(pathfinder2Config.classes, locale())}
                       selectedValue={characterPathfinder2Form.main_class}
-                      onSelect={(value) => setCharacterPathfinder2Form({ ...characterPathfinder2Form, main_class: value })}
+                      onSelect={(value) => setCharacterPathfinder2Form({ ...characterPathfinder2Form, main_class: value, main_ability: pathfinder2Config.classes[value].main_ability_options[0] })}
                     />
+                    <Show when={pathfinder2Config.classes[characterPathfinder2Form.main_class]?.main_ability_options.length > 1}>
+                      <Select
+                        containerClassList="mt-2"
+                        labelText={t('newCharacterPage.pathfinder2.mainAbility')}
+                        items={Object.fromEntries(Object.entries(dict().dnd.abilities).filter(([key,]) => pathfinder2Config.classes[characterPathfinder2Form.main_class]?.main_ability_options.includes(key)))}
+                        selectedValue={characterPathfinder2Form.main_ability}
+                        onSelect={(value) => setCharacterPathfinder2Form({ ...characterPathfinder2Form, main_ability: value })}
+                      />
+                    </Show>
                   </Match>
                   <Match when={platform() === 'daggerheart'}>
                     <Input

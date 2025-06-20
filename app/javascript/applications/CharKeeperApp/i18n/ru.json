@@ -51,7 +51,8 @@
       "race": "Раса",
       "subrace": "Подраса",
       "mainClass": "Основной класс",
-      "background": "Происхождение"
+      "background": "Происхождение",
+      "mainAbility": "Основная характеристика"
     },
     "daggerheart": {
       "heritage": "Раса",
