@@ -13,9 +13,12 @@
     "fileSizeLimit": "Размер файла должен быть меньше 1 МБ",
     "invalidSubclassesList": "Необходимо выбрать все подклассы для классов"
   },
-  "profilePage": {
-    "title": "Профиль",
-    "changeLocale": "Язык"
+  "settingsPage": {
+    "title": "Настройки",
+    "changeLocale": "Локаль"
+  },
+  "homebrewPage": {
+    "title": "Homebrew"
   },
   "charactersPage": {
     "title": "Персонажи",

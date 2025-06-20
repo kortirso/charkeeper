@@ -9,7 +9,7 @@ import { Arrow } from '../assets';
 import { useAppState } from '../context';
 import { fetchCharacterRequest } from '../requests/fetchCharacterRequest';
 
-export const CharacterPage = (props) => {
+export const ContentPage = (props) => {
   const size = createWindowSize();
   const [character, setCharacter] = createSignal({});
   const [appState] = useAppState();

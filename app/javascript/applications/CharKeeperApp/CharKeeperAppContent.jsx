@@ -2,7 +2,7 @@ import { createEffect, Show, batch, Switch, Match } from 'solid-js';
 import * as i18n from '@solid-primitives/i18n';
 import { createWindowSize } from '@solid-primitives/resize-observer';
 
-import { CharactersPage, CharacterPage } from './pages';
+import { NavigationPage, ContentPage } from './pages';
 import { useAppState, useAppLocale } from './context';
 import { useTelegram } from './hooks';
 
@@ -65,21 +65,16 @@ export const CharKeeperAppContent = () => {
       <div class="flex-1 flex flex-col bg-gray-50 h-screen">
         <section class="w-full flex-1 flex overflow-hidden">
           <Switch
-            fallback={<CharacterPage onNavigate={() => navigate('characters', {})} />}
+            fallback={<ContentPage onNavigate={() => navigate('characters', {})} />}
           >
             <Match when={size.width >= 768}>
-              <CharactersPage onNavigate={() => navigate('profile', {})} />
-              <CharacterPage onNavigate={() => navigate('characters', {})} />
+              <NavigationPage />
+              <ContentPage />
             </Match>
             <Match when={Object.keys(appState.activePageParams).length === 0}>
-              <CharactersPage onNavigate={() => navigate('profile', {})} />
+              <NavigationPage />
             </Match>
           </Switch>
-          {/*<Match when={appState.activePage === 'profile'}>
-            <ProfilePage
-              onNavigate={() => navigate('characters', {})}
-            />
-          </Match>*/}
         </section>
       </div>
     </Show>

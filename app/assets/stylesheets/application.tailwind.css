@@ -17,22 +17,22 @@
   src: url('CascadiaMono-Light.otf');
 }
 
-#web_telegram_html {
+#charkeeper_app_html {
   overflow: hidden;
 }
 
-#web_telegram_body {
+#charkeeper_app_body {
   overflow-x: hidden;
 }
 
-#web_telegram_html,
-#web_telegram_body {
+#charkeeper_app_html,
+#charkeeper_app_body {
   overscroll-behavior-y: contain; /* Предотвращает перетягивание на iOS */
   height: -webkit-fill-available;
   min-height: 100%;
 }
 
-#web_telegram_body::-webkit-scrollbar {
+#charkeeper_app_body::-webkit-scrollbar {
   display: none; /* Скрыть скроллбар в Webkit (например, Safari, Chrome) */
 }
 

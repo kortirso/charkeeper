@@ -13,9 +13,12 @@
     "fileSizeLimit": "File size should be less than 1 MB",
     "invalidSubclassesList": "You need to select subclasses for all classes"
   },
-  "profilePage": {
-    "title": "Profile",
-    "changeLocale": "Current locale"
+  "settingsPage": {
+    "title": "Settings",
+    "changeLocale": "Locale"
+  },
+  "homebrewPage": {
+    "title": "Homebrew"
   },
   "charactersPage": {
     "title": "Characters list",

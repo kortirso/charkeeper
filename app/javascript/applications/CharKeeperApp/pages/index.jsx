@@ -1,3 +1,2 @@
-export * from './CharactersPage';
-export * from './CharacterPage';
-export * from './ProfilePage';
+export * from './NavigationPage';
+export * from './ContentPage';
