@@ -51,7 +51,8 @@
       "race": "Race",
       "subrace": "Subrace",
       "mainClass": "Main class",
-      "background": "Background"
+      "background": "Background",
+      "mainAbility": "Main ability"
     },
     "daggerheart": {
       "heritage": "Heritage",

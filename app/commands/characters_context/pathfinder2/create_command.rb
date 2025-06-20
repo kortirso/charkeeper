@@ -55,7 +55,7 @@ module CharactersContext
         rule(:main_class, :main_ability) do
           next if values[:main_ability].nil?
 
-          abilities = ::Pathfinder2::Character.main_ability_options(values[:main_class]).keys
+          abilities = ::Pathfinder2::Character.main_ability_options(values[:main_class])
           next if abilities&.include?(values[:main_ability])
 
           key(:main_ability).failure(:invalid)
