@@ -25,6 +25,7 @@ module CharactersContext
             required(:pre).filled(:integer)
             required(:know).filled(:integer)
           end
+          optional(:spent_armor_slots).filled(:integer)
           optional(:health_marked).filled(:integer)
           optional(:stress_marked).filled(:integer)
           optional(:hope_marked).filled(:integer)
