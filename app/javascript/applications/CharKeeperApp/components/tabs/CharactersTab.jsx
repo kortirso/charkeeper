@@ -98,7 +98,8 @@ export const CharactersTab = () => {
   const characterProviders = createMemo(() => {
     if (characters() === undefined) return [];
 
-    return characters().map((item) => item.provider);
+    const uniqProviders = new Set(characters().map((item) => item.provider));
+    return [...uniqProviders];
   });
 
   const filteredCharacters = createMemo(() => {
