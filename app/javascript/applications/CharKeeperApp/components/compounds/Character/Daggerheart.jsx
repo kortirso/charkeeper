@@ -81,7 +81,7 @@ export const Daggerheart = (props) => {
         const result = characterItems().slice().map((element) => {
           if (element.id !== item.id) return element;
 
-          return { ...element, ...payload.character_item } 
+          return { ...element, ...payload.character_item }
         });
         setCharacterItems(result);
       });

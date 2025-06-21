@@ -1,9 +1,10 @@
 import { createSignal, For, Show, batch } from 'solid-js';
+import * as i18n from '@solid-primitives/i18n';
 
-import { Button } from '../../../atoms';
+import { Button, Input } from '../../../atoms';
 
 import { useAppState, useAppLocale, useAppAlert } from '../../../../context';
-import { PlusSmall, Minus, Edit, Plus } from '../../../../assets';
+import { PlusSmall, Minus, Edit, Plus, Close } from '../../../../assets';
 import { updateCharacterRequest } from '../../../../requests/updateCharacterRequest';
 
 import { modifier } from '../../../../helpers';
@@ -13,10 +14,13 @@ export const DaggerheartTraits = (props) => {
 
   const [editMode, setEditMode] = createSignal(false);
   const [traitsData, setTraitsData] = createSignal(character().traits);
+  const [experienceData, setExperienceData] = createSignal(character().experience);
 
   const [appState] = useAppState();
   const [{ renderAlerts }] = useAppAlert();
   const [, dict] = useAppLocale();
+
+  const t = i18n.translator(dict);
 
   const decreaseTraitValue = (slug) => {
     setTraitsData({ ...traitsData(), [slug]: traitsData()[slug] - 1 });
@@ -26,29 +30,49 @@ export const DaggerheartTraits = (props) => {
 
   const cancelEditing = () => {
     batch(() => {
-      setTraitsData(character().traits)
+      setTraitsData(character().traits);
+      setExperienceData(character().experience);
       setEditMode(false);
     });
   }
 
   const updateCharacter = async () => {
     const payload = {
-      traits: traitsData()
+      traits: traitsData(),
+      experience: experienceData()
     }
     const result = await updateCharacterRequest(appState.accessToken, 'daggerheart', character().id, { character: payload });
 
     if (result.errors === undefined) {
       batch(() => {
         props.onReplaceCharacter(result.character);
-        setTraitsData(result.character.traits);
         setEditMode(false);
       });
     } else renderAlerts(result.errors);
   }
 
+  const addDraftExperience = () => {
+    setExperienceData(
+      experienceData().concat({ id: Math.floor(Math.random() * 1000), exp_name: '', exp_level: 1 })
+    );
+  }
+
+  const removeExperience = (exp) => {
+    setExperienceData(experienceData().filter((item) => item.id !== exp.id));
+  }
+
+  const changeExperience = (exp, attribute, value) => {
+    const result = experienceData().slice().map((item) => {
+      if (exp.id !== item.id) return item;
+
+      return { ...item, [attribute]: value }
+    });
+    setExperienceData(result);
+  }
+
   return (
     <>
-      <div class="white-box flex flex-wrap p-4 pb-0">
+      <div class="white-box flex flex-wrap p-4 pb-0 mb-2">
         <For each={Object.entries(dict().daggerheart.traits)}>
           {([slug, ability]) =>
             <div class="w-1/3 mb-4">
@@ -69,6 +93,50 @@ export const DaggerheartTraits = (props) => {
             </div>
           }
         </For>
+      </div>
+      <div class="white-box p-4">
+        <h2 class="text-lg mb-2">{t('character.experience')}</h2>
+        <Show
+          when={editMode()}
+          fallback={
+            <For each={character().experience}>
+              {(exp) =>
+                <div class="flex mb-2">
+                  <p class="text-lg flex-1">{exp.exp_name}</p>
+                  <p class="text-lg w-10">{modifier(exp.exp_level)}</p>
+                </div>
+              }
+            </For>
+          }
+        >
+          <For each={experienceData()}>
+            {(exp) =>
+              <div class="flex mb-2">
+                <Input
+                  containerClassList="flex-1 mr-4"
+                  value={exp.exp_name}
+                  onInput={(value) => changeExperience(exp, 'exp_name', value)}
+                />
+                <Input
+                  numeric
+                  containerClassList="w-1/4"
+                  value={exp.exp_level}
+                  onInput={(value) => changeExperience(exp, 'exp_level', value)}
+                />
+                <div class="flex flex-col justify-center">
+                  <Button default size="small" classList="ml-4" onClick={() => removeExperience(exp)}>
+                    <Close />
+                  </Button>
+                </div>
+              </div>
+            }
+          </For>
+          <div class="flex">
+            <Button default size="small" onClick={addDraftExperience}>
+              <PlusSmall />
+            </Button>
+          </div>
+        </Show>
       </div>
       <div class="absolute right-4 bottom-4 z-10">
         <Show

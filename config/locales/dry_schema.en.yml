@@ -107,3 +107,9 @@ en:
           classes:
             invalid_class_name: Invalid class name
             invalid_level: Invalid level
+          exp_name:
+            key?: Experience name is required
+            filled?: Experience name must be filled
+          exp_level:
+            key?: Experience level is required
+            filled?: Experience level must be filled

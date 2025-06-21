@@ -49,6 +49,11 @@ module CharactersContext
             required(:file_name).filled(:string)
           end
           optional(:avatar_url).filled(:string)
+          optional(:experience).filled(:array).each(:hash) do
+            required(:id).filled(:integer)
+            required(:exp_name).filled(:string)
+            required(:exp_level).filled(:integer)
+          end
         end
 
         rule(:avatar_file, :avatar_url).validate(:check_only_one_present)
