@@ -441,6 +441,11 @@
   resolved "https://registry.yarnpkg.com/@solid-primitives/i18n/-/i18n-2.1.1.tgz#19826dabafa10b94abcd06f6c2a1b2b9bf6c5b91"
   integrity sha512-1p9B8hveu+gzFRWfXcRtdzzEdr7gw3c8uLXm+2bU33JHgiI8kYJsWvG128sE6vU1ZtYGPrGq980Jd6hxYupyZQ==
 
+"@solid-primitives/keyed@^1.5.1":
+  version "1.5.1"
+  resolved "https://registry.yarnpkg.com/@solid-primitives/keyed/-/keyed-1.5.1.tgz#7d360230de1ba904d1c8a8c0db040e47e660de2f"
+  integrity sha512-lAgQ1Jou8nxywifWsWjDTla9MI7Pfr46JRTC40K81fqz8dw4E8t/4gYuIwqP1EHVG0mItfIb3XqDw0wEQh+QYA==
+
 "@solid-primitives/resize-observer@^2.1.1":
   version "2.1.1"
   resolved "https://registry.yarnpkg.com/@solid-primitives/resize-observer/-/resize-observer-2.1.1.tgz#88d5de0f5de7860ea9cc6eeb14737535c9605d90"

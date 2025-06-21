@@ -1,5 +1,6 @@
 import { createSignal, For, Show, batch } from 'solid-js';
 import * as i18n from '@solid-primitives/i18n';
+import { Key } from "@solid-primitives/keyed";
 
 import { Button, Input } from '../../../atoms';
 
@@ -57,13 +58,13 @@ export const DaggerheartTraits = (props) => {
     );
   }
 
-  const removeExperience = (exp) => {
-    setExperienceData(experienceData().filter((item) => item.id !== exp.id));
+  const removeExperience = (expId) => {
+    setExperienceData(experienceData().filter((item) => item.id !== expId));
   }
 
-  const changeExperience = (exp, attribute, value) => {
+  const changeExperience = (expId, attribute, value) => {
     const result = experienceData().slice().map((item) => {
-      if (exp.id !== item.id) return item;
+      if (expId !== item.id) return item;
 
       return { ...item, [attribute]: value }
     });
@@ -109,28 +110,28 @@ export const DaggerheartTraits = (props) => {
             </For>
           }
         >
-          <For each={experienceData()}>
+          <Key each={experienceData()} by={item => item.id}>
             {(exp) =>
               <div class="flex mb-2">
                 <Input
                   containerClassList="flex-1 mr-4"
-                  value={exp.exp_name}
-                  onInput={(value) => changeExperience(exp, 'exp_name', value)}
+                  value={exp().exp_name}
+                  onInput={(value) => changeExperience(exp().id, 'exp_name', value)}
                 />
                 <Input
                   numeric
                   containerClassList="w-1/4"
-                  value={exp.exp_level}
-                  onInput={(value) => changeExperience(exp, 'exp_level', value)}
+                  value={exp().exp_level}
+                  onInput={(value) => changeExperience(exp().id, 'exp_level', value)}
                 />
                 <div class="flex flex-col justify-center">
-                  <Button default size="small" classList="ml-4" onClick={() => removeExperience(exp)}>
+                  <Button default size="small" classList="ml-4" onClick={() => removeExperience(exp().id)}>
                     <Close />
                   </Button>
                 </div>
               </div>
             }
-          </For>
+          </Key>
           <div class="flex">
             <Button default size="small" onClick={addDraftExperience}>
               <PlusSmall />
