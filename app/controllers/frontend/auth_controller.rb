@@ -12,7 +12,6 @@ module Frontend
     skip_before_action :authenticate
 
     def create
-      # if true
       if web_telegram_signature.valid?(check_string: params[:check_string], hash: params[:hash])
         user_session = start_user_session
         monitoring_telegram_auth(user_session.user)
@@ -26,7 +25,6 @@ module Frontend
     private
 
     def start_user_session
-      # return User::Session.last
       ActiveRecord::Base.transaction do
         identity = find_identity || create_identity
         User::Session.create!(user: identity.user)

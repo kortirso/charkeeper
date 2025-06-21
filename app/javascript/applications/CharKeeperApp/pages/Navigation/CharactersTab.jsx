@@ -247,7 +247,7 @@ export const CharactersTab = () => {
                         provider='D&D 5'
                         firstText={`${t('charactersPage.level')} ${character.level} | ${character.subrace ? t(`dnd5.subraces.${character.race}.${character.subrace}`) : t(`dnd5.races.${character.race}`)}`}
                         secondText={Object.keys(character.classes).map((item) => t(`dnd5.classes.${item}`)).join(' * ')}
-                        onClick={() => navigate('characters', { id: character.id })}
+                        onClick={() => navigate('character', { id: character.id })}
                         onDeleteCharacter={(e) => deleteCharacter(e, character.id)}
                       />
                     </Match>
@@ -259,7 +259,7 @@ export const CharactersTab = () => {
                         provider='D&D 2024'
                         firstText={`${t('charactersPage.level')} ${character.level} | ${character.legacy ? t(`dnd2024.legacies.${character.species}.${character.legacy}`) : t(`dnd2024.species.${character.species}`)}`}
                         secondText={Object.keys(character.classes).map((item) => t(`dnd2024.classes.${item}`)).join(' * ')}
-                        onClick={() => navigate('characters', { id: character.id })}
+                        onClick={() => navigate('character', { id: character.id })}
                         onDeleteCharacter={(e) => deleteCharacter(e, character.id)}
                       />
                     </Match>
@@ -271,7 +271,7 @@ export const CharactersTab = () => {
                         provider='Pathfinder 2'
                         firstText={`${t('charactersPage.level')} ${character.level} | ${character.subrace ? pathfinder2Config.races[character.race].subraces[character.subrace].name[locale()] : pathfinder2Config.races[character.race].name[locale()]}`}
                         secondText={Object.keys(character.classes).map((item) => pathfinder2Config.classes[item].name[locale()]).join(' * ')}
-                        onClick={() => navigate('characters', { id: character.id })}
+                        onClick={() => navigate('character', { id: character.id })}
                         onDeleteCharacter={(e) => deleteCharacter(e, character.id)}
                       />
                     </Match>
@@ -283,7 +283,7 @@ export const CharactersTab = () => {
                         provider='Daggerheart'
                         firstText={`${t('charactersPage.level')} ${character.level} | ${daggerheartConfig.heritages[character.heritage].name[locale()]}`}
                         secondText={Object.keys(character.classes).map((item) => daggerheartConfig.classes[item].name[locale()]).join(' * ')}
-                        onClick={() => navigate('characters', { id: character.id })}
+                        onClick={() => navigate('character', { id: character.id })}
                         onDeleteCharacter={(e) => deleteCharacter(e, character.id)}
                       />
                     </Match>

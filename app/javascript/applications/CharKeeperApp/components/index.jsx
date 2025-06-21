@@ -1,7 +1,3 @@
-export * from './tabs/CharactersTab';
-export * from './tabs/HomebrewTab';
-export * from './tabs/SettingsTab';
-
 export * from './compounds/Character/Dnd5';
 export * from './compounds/Character/Dnd5/Abilities';
 export * from './compounds/Character/Dnd5/Combat';

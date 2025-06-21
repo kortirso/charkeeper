@@ -11,11 +11,13 @@
     "itemIsAdded": "Item is added",
     "characterIsUpdated": "Character is updated",
     "fileSizeLimit": "File size should be less than 1 MB",
-    "invalidSubclassesList": "You need to select subclasses for all classes"
+    "invalidSubclassesList": "You need to select subclasses for all classes",
+    "feedbackIsAdded": "Feedback is added, thank you very much for using CharKeeper!"
   },
   "settingsPage": {
     "title": "Settings",
-    "changeLocale": "Locale"
+    "changeLocale": "Locale",
+    "feedback": "Feedback"
   },
   "homebrewPage": {
     "title": "Homebrew"

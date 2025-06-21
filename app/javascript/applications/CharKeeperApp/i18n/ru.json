@@ -11,11 +11,13 @@
     "itemIsAdded": "Предмет добавлен",
     "characterIsUpdated": "Персонаж обновлён",
     "fileSizeLimit": "Размер файла должен быть меньше 1 МБ",
-    "invalidSubclassesList": "Необходимо выбрать все подклассы для классов"
+    "invalidSubclassesList": "Необходимо выбрать все подклассы для классов",
+    "feedbackIsAdded": "Отзыв отправлен, большое спасибо за использование ЧарКипера!"
   },
   "settingsPage": {
     "title": "Настройки",
-    "changeLocale": "Локаль"
+    "changeLocale": "Язык",
+    "feedback": "Отзыв"
   },
   "homebrewPage": {
     "title": "Homebrew"

@@ -1,4 +1,4 @@
-import { createEffect, Show, batch, Switch, Match } from 'solid-js';
+import { createEffect, createMemo, Show, batch, Switch, Match } from 'solid-js';
 import * as i18n from '@solid-primitives/i18n';
 import { createWindowSize } from '@solid-primitives/resize-observer';
 
@@ -51,6 +51,12 @@ export const CharKeeperAppContent = () => {
     );
   });
 
+  const navigationPage = createMemo(() => {
+    if (appState.accessToken === undefined) return <></>;
+
+    return <NavigationPage />;
+  });
+
   // 453x750
   // 420x690
   return (
@@ -65,14 +71,14 @@ export const CharKeeperAppContent = () => {
       <div class="flex-1 flex flex-col bg-gray-50 h-screen">
         <section class="w-full flex-1 flex overflow-hidden">
           <Switch
-            fallback={<ContentPage onNavigate={() => navigate('characters', {})} />}
+            fallback={<ContentPage onNavigate={() => navigate(null, {})} />}
           >
             <Match when={size.width >= 768}>
-              <NavigationPage />
+              {navigationPage()}
               <ContentPage />
             </Match>
-            <Match when={Object.keys(appState.activePageParams).length === 0}>
-              <NavigationPage />
+            <Match when={appState.activePage === null}>
+              {navigationPage()}
             </Match>
           </Switch>
         </section>
