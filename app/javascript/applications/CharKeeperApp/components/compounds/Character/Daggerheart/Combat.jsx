@@ -134,6 +134,24 @@ export const DaggerheartCombat = (props) => {
     );
   }
 
+  const renderAttribute = (title, maxValue, slug) => (
+    <div class="px-4 mb-2">
+      <p class="text-sm/4 font-cascadia-light uppercase mb-1">{title}</p>
+      <div class="flex">
+        <For each={Array.from([...Array(maxValue).keys()], (x) => x + 1)}>
+          {(index) =>
+            <Checkbox
+              filled
+              checked={character()[slug] >= index}
+              classList="mr-1"
+              onToggle={() => updateAttribute(slug, index)}
+            />
+          }
+        </For>
+      </div>
+    </div>
+  );
+
   return (
     <>
       <div class="white-box mb-2">
@@ -152,7 +170,7 @@ export const DaggerheartCombat = (props) => {
           </div>
         </div>
       </div>
-      <div class="white-box mb-2">
+      <div class="white-box mb-2 pb-2">
         <div class="p-4 flex mb-2">
           <div class="flex-1 flex flex-col items-center">
             <p class="uppercase text-xs mb-1">{t('daggerheart.combat.minor')}</p>
@@ -170,51 +188,10 @@ export const DaggerheartCombat = (props) => {
             <p class="font-cascadia-light text-xs mb-1">{t('daggerheart.combat.severeDamage')}</p>
           </div>
         </div>
-        <div class="px-4 mb-2">
-          <p class="text-sm/4 font-cascadia-light uppercase mb-1">{t('daggerheart.combat.health')}</p>
-          <div class="flex">
-            <For each={Array.from([...Array(character().health_max).keys()], (x) => x + 1)}>
-              {(index) =>
-                <Checkbox
-                  filled
-                  checked={character().health_marked >= index}
-                  classList="mr-1"
-                  onToggle={() => updateAttribute('health_marked', index)}
-                />
-              }
-            </For>
-          </div>
-        </div>
-        <div class="px-4 mb-2">
-          <p class="text-sm/4 font-cascadia-light uppercase mb-1">{t('daggerheart.combat.stress')}</p>
-          <div class="flex">
-            <For each={Array.from([...Array(character().stress_max).keys()], (x) => x + 1)}>
-              {(index) =>
-                <Checkbox
-                  filled
-                  checked={character().stress_marked >= index}
-                  classList="mr-1"
-                  onToggle={() => updateAttribute('stress_marked', index)}
-                />
-              }
-            </For>
-          </div>
-        </div>
-        <div class="px-4 mb-4">
-          <p class="text-sm/4 font-cascadia-light uppercase mb-1">{t('daggerheart.combat.hope')}</p>
-          <div class="flex">
-            <For each={Array.from([...Array(character().hope_max).keys()], (x) => x + 1)}>
-              {(index) =>
-                <Checkbox
-                  filled
-                  checked={character().hope_marked >= index}
-                  classList="mr-1"
-                  onToggle={() => updateAttribute('hope_marked', index)}
-                />
-              }
-            </For>
-          </div>
-        </div>
+        {renderAttribute(t('daggerheart.combat.armorSlots'), character().armor_slots, 'spent_armor_slots')}
+        {renderAttribute(t('daggerheart.combat.health'), character().health_max, 'health_marked')}
+        {renderAttribute(t('daggerheart.combat.stress'), character().stress_max, 'stress_marked')}
+        {renderAttribute(t('daggerheart.combat.hope'), character().hope_max, 'hope_marked')}
       </div>
       {renderAttacksBox(t('character.equipment'), character().attacks.filter((item) => item.ready_to_use))}
       {renderAttacksBox(t('character.backpack'), character().attacks.filter((item) => !item.ready_to_use))}
