@@ -25,6 +25,7 @@ module Charkeeper
     register('commands.auth_context.add_identity') { AuthContext::AddIdentityCommand.new }
     register('commands.auth_context.add_user') { AuthContext::AddUserCommand.new }
     register('commands.users_context.update') { UsersContext::UpdateCommand.new }
+    register('commands.users_context.add_feedback') { UsersContext::AddFeedbackCommand.new }
 
     register('commands.characters_context.item_update') { CharactersContext::ItemUpdateCommand.new }
     register('commands.characters_context.item_add') { CharactersContext::ItemAddCommand.new }

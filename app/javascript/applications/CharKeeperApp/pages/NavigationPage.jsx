@@ -1,6 +1,6 @@
 import { createSignal, Switch, Match } from 'solid-js'; 
 
-import { CharactersTab, HomebrewTab, SettingsTab } from '../components';
+import { CharactersTab, HomebrewTab, SettingsTab } from '../pages';
 import { IconButton } from '../components/atoms';
 
 import { List, Edit, Homebrew } from '../assets';
@@ -27,17 +27,17 @@ export const NavigationPage = () => {
       </div>
       <div class="flex p-2 border-t border-gray-200">
         <div class="flex-1">
-          <IconButton size="xl" classList="mx-auto" inactive={currentTab() !== 'characters'} onClick={() => setCurrentTab('characters')}>
+          <IconButton colored size="xl" classList="mx-auto" active={currentTab() === 'characters'} onClick={() => setCurrentTab('characters')}>
             <List />
           </IconButton>
         </div>
         <div class="flex-1">
-          <IconButton size="xl" classList="mx-auto" inactive={currentTab() !== 'homebrew'} onClick={() => setCurrentTab('homebrew')}>
+          <IconButton colored size="xl" classList="mx-auto" active={currentTab() === 'homebrew'} onClick={() => setCurrentTab('homebrew')}>
             <Homebrew width={28} height={28} />
           </IconButton>
         </div>
         <div class="flex-1">
-          <IconButton size="xl" classList="mx-auto" inactive={currentTab() !== 'settings'} onClick={() => setCurrentTab('settings')}>
+          <IconButton colored size="xl" classList="mx-auto" active={currentTab() === 'settings'} onClick={() => setCurrentTab('settings')}>
             <Edit width={28} height={28} />
           </IconButton>
         </div>

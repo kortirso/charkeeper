@@ -9,7 +9,8 @@ export const IconButton = (props) => {
       classList={{
         'w-6 h-6': props.size === undefined,
         'w-10 h-10': props.size === 'xl',
-        'text-gray-400': props.inactive
+        'text-blue-600 hover:bg-white': props.colored && props.active,
+        'text-gray-400 hover:bg-white': props.colored && !props.active
       }}
       onClick={props.onClick} // eslint-disable-line solid/reactivity
     >

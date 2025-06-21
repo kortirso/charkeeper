@@ -7,6 +7,7 @@ Rails.application.routes.draw do
 
   namespace :adminbook do
     resources :users, only: %i[index]
+    resources :feedbacks, only: %i[index]
 
     namespace :dnd5 do
       resources :characters, only: %i[index]
@@ -40,7 +41,9 @@ Rails.application.routes.draw do
       end
     end
     get ':provider/items', to: 'items#index'
-    resource :users, only: %i[update]
+    resource :users, only: %i[update] do
+      resources :feedbacks, only: %i[create], module: 'users'
+    end
 
     namespace :dnd5 do
       resources :characters, only: %i[create update] do

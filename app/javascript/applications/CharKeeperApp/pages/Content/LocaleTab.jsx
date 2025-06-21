@@ -1,12 +1,17 @@
+import { Show } from 'solid-js';
 import * as i18n from '@solid-primitives/i18n';
+import { createWindowSize } from '@solid-primitives/resize-observer';
 
 import { PageHeader } from '../../components/molecules';
-import { Select } from '../../components/atoms';
+import { IconButton, Select } from '../../components/atoms';
+import { Arrow } from '../../assets';
 
 import { useAppState, useAppLocale, useAppAlert } from '../../context';
 import { updateUserRequest } from '../../requests/updateUserRequest';
 
-export const SettingsTab = () => {
+export const LocaleTab = (props) => {
+  const size = createWindowSize();
+
   const [appState] = useAppState();
   const [{ renderAlerts }] = useAppAlert();
   const [locale, dict, { setLocale }] = useAppLocale();
@@ -23,9 +28,17 @@ export const SettingsTab = () => {
   // 420x690
   return (
     <>
-      <PageHeader>
-        {t('settingsPage.title')}
-      </PageHeader>
+      <Show when={size.width < 768}>
+        <PageHeader
+          leftContent={
+            <IconButton size="xl" onClick={props.onNavigate}>
+              <Arrow back />
+            </IconButton>
+          }
+        >
+          <p>{t('settingsPage.changeLocale')}</p>
+        </PageHeader>
+      </Show>
       <div class="p-4 flex-1 flex flex-col overflow-y-scroll">
         <Select
           labelText={t('settingsPage.changeLocale')}

@@ -15,18 +15,19 @@
   </head>
   <body class="w-full h-screen flex">
     <nav class="border-b border-black p-2 w-92 flex flex-col">
-      <%= link_to 'Main', adminbook_path, class: '' %>
-      <%= link_to 'Users', adminbook_users_path, class: '' %>
+      <%= link_to 'Main', adminbook_path %>
+      <%= link_to 'Users', adminbook_users_path %>
+      <%= link_to 'Feedbacks', adminbook_feedbacks_path %>
       <p class="mt-4 text-gray-400">D&D 5</p>
-      <%= link_to 'Characters', adminbook_dnd5_characters_path, class: '' %>
-      <%= link_to 'Character features', adminbook_dnd5_characters_features_path, class: '' %>
+      <%= link_to 'Characters', adminbook_dnd5_characters_path %>
+      <%= link_to 'Character features', adminbook_dnd5_characters_features_path %>
       <p class="mt-4 text-gray-400">D&D 2024</p>
-      <%= link_to 'Characters', adminbook_dnd2024_characters_path, class: '' %>
-      <%= link_to 'Character features', adminbook_dnd2024_characters_features_path, class: '' %>
+      <%= link_to 'Characters', adminbook_dnd2024_characters_path %>
+      <%= link_to 'Character features', adminbook_dnd2024_characters_features_path %>
       <p class="mt-4 text-gray-400">Pathfinder 2</p>
-      <%= link_to 'Characters', adminbook_pathfinder2_characters_path, class: '' %>
+      <%= link_to 'Characters', adminbook_pathfinder2_characters_path %>
       <p class="mt-4 text-gray-400">Daggerheart</p>
-      <%= link_to 'Characters', adminbook_daggerheart_characters_path, class: '' %>
+      <%= link_to 'Characters', adminbook_daggerheart_characters_path %>
     </nav>
     <main class="flex-1 overflow-y-scroll p-4">
       <%= yield %>

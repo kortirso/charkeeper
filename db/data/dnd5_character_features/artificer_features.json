@@ -30,8 +30,8 @@
     "visible": "true",
     "eval_variables": {},
     "description_eval_variables": {
-      "infusions": "(((result.dig(:classes, 'artificer') + 2) / 4) + 1) * 2",
-      "items": "((result.dig(:classes, 'artificer') + 2) / 4) + 1"
+      "infusions": "(((classes['artificer'] + 2) / 4) + 1) * 2",
+      "items": "((classes['artificer'] + 2) / 4) + 1"
     }
   },
   {

@@ -6,7 +6,7 @@ const AppStateContext = createContext();
 export const AppStateProvider = (props) => {
   const [appState, setAppState] = createStore({
     accessToken: props.accessToken, // eslint-disable-line solid/reactivity
-    activePage: 'characters',
+    activePage: null,
     activePageParams: {},
   });
 
