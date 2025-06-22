@@ -6,6 +6,8 @@ module Daggerheart
 
     attribute :level, :integer, default: 1
     attribute :heritage, :string
+    attribute :heritage_name, :string
+    attribute :heritage_features, array: true, default: []
     attribute :community, :string
     attribute :main_class, :string
     attribute :classes, array: true

@@ -8,6 +8,7 @@ module CharactersContext
         attach_avatar_by_file: 'commands.image_processing.attach_avatar_by_file'
       ]
 
+      # rubocop: disable Metrics/BlockLength
       use_contract do
         config.messages.namespace = :daggerheart_character
 
@@ -18,10 +19,12 @@ module CharactersContext
         params do
           required(:user).filled(type?: User)
           required(:name).filled(:string)
-          required(:heritage).filled(Heritages)
           required(:community).filled(Communities)
           required(:main_class).filled(Classes)
           required(:subclass).filled(:string)
+          optional(:heritage).filled(Heritages)
+          optional(:heritage_name).filled(:string)
+          optional(:heritage_features).filled(:array).each(:string)
           optional(:avatar_file).hash do
             required(:file_content).filled(:string)
             required(:file_name).filled(:string)
@@ -29,6 +32,8 @@ module CharactersContext
           optional(:avatar_url).filled(:string)
         end
 
+        rule(:heritage, :heritage_name).validate(:check_at_least_one_present)
+        rule(:heritage, :heritage_name).validate(:check_only_one_present)
         rule(:avatar_file, :avatar_url).validate(:check_only_one_present)
 
         rule(:main_class, :subclass) do
@@ -40,12 +45,15 @@ module CharactersContext
           key(:subclass).failure(:invalid)
         end
       end
+      # rubocop: enable Metrics/BlockLength
 
       private
 
       def do_prepare(input)
         input[:data] =
-          decorate_fresh_character(input.slice(:heritage, :community, :main_class, :subclass).symbolize_keys)
+          decorate_fresh_character(
+            input.slice(:heritage, :heritage_name, :heritage_features, :community, :main_class, :subclass).symbolize_keys
+          )
       end
 
       def do_persist(input)

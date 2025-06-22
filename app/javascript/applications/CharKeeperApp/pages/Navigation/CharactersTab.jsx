@@ -4,7 +4,7 @@ import * as i18n from '@solid-primitives/i18n';
 
 import { Item, CharacterNavigation } from '../../components';
 import { createModal, PageHeader } from '../../components/molecules';
-import { Select, Input, Button } from '../../components/atoms';
+import { Select, Input, Button, Checkbox } from '../../components/atoms';
 
 import { Plus } from '../../assets';
 import pathfinder2Config from '../../data/pathfinder2.json';
@@ -15,6 +15,12 @@ import { createCharacterRequest } from '../../requests/createCharacterRequest';
 import { removeCharacterRequest } from '../../requests/removeCharacterRequest';
 
 import { translate } from '../../helpers';
+
+DAGGERHEART_DEFAULT_FORM = {
+  name: '', heritage: undefined, heritage_name: '', heritage_features: [], main_feature: undefined,
+  secondary_feature: undefined, community: undefined, main_class: undefined, subclass: undefined,
+  avatar_file: undefined, avatar_url: undefined
+}
 
 const CHARACTER_SIZES = {
   'human': ['medium', 'small'],
@@ -66,15 +72,8 @@ export const CharactersTab = () => {
     avatar_file: undefined,
     avatar_url: undefined
   });
-  const [characterDaggerheartForm, setCharacterDaggerheartForm] = createStore({
-    name: '',
-    heritage: undefined,
-    community: undefined,
-    main_class: undefined,
-    subclass: undefined,
-    avatar_file: undefined,
-    avatar_url: undefined
-  });
+  const [characterDaggerheartForm, setCharacterDaggerheartForm] = createStore(DAGGERHEART_DEFAULT_FORM);
+  const [customHeritage, setCustomHeritage] = createSignal(false);
 
   const { Modal, openModal, closeModal } = createModal();
   const [appState, { navigate }] = useAppState();
@@ -93,6 +92,18 @@ export const CharactersTab = () => {
         setCharacters(charactersData.characters);
       }
     );
+  });
+
+  const heritageFeatures = createMemo(() => {
+    const mainFeatures = {};
+    const secondaryFeatures = {};
+
+    Object.values(daggerheartConfig.heritages).forEach((item) => {
+      mainFeatures[item.main_feature.slug] = `${item.name[locale()]} - ${item.main_feature.name[locale()]}`;
+      secondaryFeatures[item.secondary_feature.slug] = `${item.name[locale()]} - ${item.secondary_feature.name[locale()]}`;
+    })
+
+    return [mainFeatures, secondaryFeatures];
   });
 
   const characterProviders = createMemo(() => {
@@ -153,8 +164,23 @@ export const CharactersTab = () => {
         break;
       case 'daggerheart':
         characterFormData = characterDaggerheartForm; // eslint-disable-line solid/reactivity
+
+        if (customHeritage()) {
+          characterFormData = {
+            ...characterFormData, heritage_features: [characterFormData.main_feature, characterFormData.secondary_feature]
+          }
+          characterFormData = {
+            ...characterFormData, heritage: undefined, main_feature: undefined, secondary_feature: undefined
+          }
+        } else {
+          characterFormData = {
+            ...characterFormData, heritage_features: undefined, heritage_name: undefined, main_feature: undefined, secondary_feature: undefined
+          }
+        }
         break;
     }
+
+    characterFormData = Object.fromEntries(Object.entries(characterFormData).filter(([, value]) => value !== undefined))
 
     const fileContent = await imageToBase64(selectedFile());
     if (fileContent) {
@@ -174,7 +200,7 @@ export const CharactersTab = () => {
         setCharacterDnd5Form({ name: '', race: undefined, subrace: undefined, main_class: undefined, alignment: 'neutral', avatar_file: undefined, avatar_url: undefined });
         setCharacterDnd2024Form({ name: '', species: undefined, size: undefined, main_class: undefined, alignment: 'neutral', avatar_file: undefined, avatar_url: undefined });
         setCharacterPathfinder2Form({ name: '', race: undefined, subrace: undefined, main_class: undefined, background: undefined, avatar_file: undefined, avatar_url: undefined, main_ability: undefined });
-        setCharacterDaggerheartForm({ name: '', heritage: undefined, community: undefined, main_class: undefined, subclass: undefined, avatar_file: undefined, avatar_url: undefined });
+        setCharacterDaggerheartForm(DAGGERHEART_DEFAULT_FORM);
         setCurrentTab('characters');
         setLoading(false);
       });
@@ -206,8 +232,6 @@ export const CharactersTab = () => {
     } else renderAlerts(result.errors);
   }
 
-  // 453x750
-  // 420x690
   return (
     <>
       <Switch>
@@ -281,7 +305,7 @@ export const CharactersTab = () => {
                         avatar={character.avatar}
                         name={character.name}
                         provider='Daggerheart'
-                        firstText={`${t('charactersPage.level')} ${character.level} | ${daggerheartConfig.heritages[character.heritage].name[locale()]}`}
+                        firstText={`${t('charactersPage.level')} ${character.level} | ${character.heritage ? daggerheartConfig.heritages[character.heritage].name[locale()] : character.heritage_name}`}
                         secondText={Object.keys(character.classes).map((item) => daggerheartConfig.classes[item].name[locale()]).join(' * ')}
                         onClick={() => navigate('character', { id: character.id })}
                         onDeleteCharacter={(e) => deleteCharacter(e, character.id)}
@@ -295,6 +319,7 @@ export const CharactersTab = () => {
         </Match>
         <Match when={currentTab() === 'newCharacter'}>
           <div class="p-4 flex-1 flex flex-col overflow-y-scroll">
+            {console.log(heritageFeatures())}
             <div class="flex-1">
               <Select
                 containerClassList="mb-2"
@@ -440,13 +465,47 @@ export const CharactersTab = () => {
                       value={characterDaggerheartForm.name}
                       onInput={(value) => setCharacterDaggerheartForm({ ...characterDaggerheartForm, name: value })}
                     />
-                    <Select
-                      containerClassList="mb-2"
-                      labelText={t('newCharacterPage.daggerheart.heritage')}
-                      items={translate(daggerheartConfig.heritages, locale())}
-                      selectedValue={characterDaggerheartForm.heritage}
-                      onSelect={(value) => setCharacterDaggerheartForm({ ...characterDaggerheartForm, heritage: value })}
+                    <Checkbox
+                      labelText={t('newCharacterPage.daggerheart.customHeritage')}
+                      labelPosition="right"
+                      labelClassList="ml-2"
+                      checked={customHeritage()}
+                      classList="mr-1"
+                      onToggle={() => setCustomHeritage(!customHeritage())}
                     />
+                    <Show
+                      when={customHeritage()}
+                      fallback={
+                        <Select
+                          containerClassList="mb-2"
+                          labelText={t('newCharacterPage.daggerheart.heritage')}
+                          items={translate(daggerheartConfig.heritages, locale())}
+                          selectedValue={characterDaggerheartForm.heritage}
+                          onSelect={(value) => setCharacterDaggerheartForm({ ...characterDaggerheartForm, heritage: value })}
+                        />
+                      }
+                    >
+                      <Input
+                        containerClassList="mb-2"
+                        labelText={t('newCharacterPage.daggerheart.heritageName')}
+                        value={characterDaggerheartForm.heritage_name}
+                        onInput={(value) => setCharacterDaggerheartForm({ ...characterDaggerheartForm, heritage_name: value })}
+                      />
+                      <Select
+                        containerClassList="mb-2"
+                        labelText={t('newCharacterPage.daggerheart.mainFeature')}
+                        items={heritageFeatures()[0]}
+                        selectedValue={characterDaggerheartForm.main_feature}
+                        onSelect={(value) => setCharacterDaggerheartForm({ ...characterDaggerheartForm, main_feature: value })}
+                      />
+                      <Select
+                        containerClassList="mb-2"
+                        labelText={t('newCharacterPage.daggerheart.secondaryFeature')}
+                        items={heritageFeatures()[0]}
+                        selectedValue={characterDaggerheartForm.secondary_feature}
+                        onSelect={(value) => setCharacterDaggerheartForm({ ...characterDaggerheartForm, secondary_feature: value })}
+                      />
+                    </Show>
                     <Select
                       containerClassList="mb-2"
                       labelText={t('newCharacterPage.daggerheart.community')}

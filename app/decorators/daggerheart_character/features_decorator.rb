@@ -53,6 +53,7 @@ module DaggerheartCharacter
 
     def available_features
       Daggerheart::Character::Feature.where(origin: 'ancestry', origin_value: heritage)
+        .or(Daggerheart::Character::Feature.where(origin: 'ancestry', slug: heritage_features))
         .or(Daggerheart::Character::Feature.where(origin: 'community', origin_value: community))
         .or(Daggerheart::Character::Feature.where(origin: 'class', origin_value: classes.keys))
         .or(Daggerheart::Character::Feature.where(origin: 'subclass', origin_value: subclasses.values))

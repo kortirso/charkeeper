@@ -1,6 +1,7 @@
 en:
   not_found: Object is not found
   change_locale: Change locale
+  validation_error: Validation error
   web:
     welcome:
       index:

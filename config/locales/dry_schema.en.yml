@@ -100,10 +100,17 @@ en:
             key?: Heritage is required
             filled?: Heritage must be filled
             included_in?: Invalid heritage value
+            only_one_present: Too many heritages
+            at_least_one_present: Should be at least 1 heritage
+          heritage_name:
+            only_one_present: Too many heritages
+            at_least_one_present: Should be at least 1 heritage
           main_class:
             key?: Class is required
             filled?: Class must be filled
             included_in?: Invalid class value
+          subclass:
+            invalid: Invalid subclass name
           classes:
             invalid_class_name: Invalid class name
             invalid_level: Invalid level
@@ -113,3 +120,7 @@ en:
           exp_level:
             key?: Experience level is required
             filled?: Experience level must be filled
+          avatar_file:
+            only_one_present: Too many avatars
+          avatar_url:
+            only_one_present: Too many avatars

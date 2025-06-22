@@ -2,6 +2,9 @@
 
 class BaseCommand
   include ActionView::Helpers::SanitizeHelper
+  include Deps[
+    monitoring: 'monitoring.client'
+  ]
 
   class_attribute :contract
 
@@ -58,6 +61,9 @@ class BaseCommand
   def validate(input)
     result = contract.call(input)
     { result: result.to_h, errors: flatten_hash_from(contract.call(input).errors(locale: I18n.locale).to_h) }
+  rescue Dry::Validation::MissingMessageError => _e
+    monitoring_validation_error(input)
+    { errors: { base: [I18n.t('validation_error')] } }
   end
 
   def flatten_hash_from(hash)
@@ -68,5 +74,13 @@ class BaseCommand
         acc[:"#{key}.#{k}"] = v
       end
     end
+  end
+
+  def monitoring_validation_error(input)
+    monitoring.notify(
+      exception: Monitoring::ValidationError.new('Validation error'),
+      metadata: { input: input },
+      severity: :info
+    )
   end
 end

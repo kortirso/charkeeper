@@ -49,7 +49,7 @@ module CharactersContext
             required(:file_name).filled(:string)
           end
           optional(:avatar_url).filled(:string)
-          optional(:experience).filled(:array).each(:hash) do
+          optional(:experience).maybe(:array).each(:hash) do
             required(:id).filled(:integer)
             required(:exp_name).filled(:string)
             required(:exp_level).filled(:integer)

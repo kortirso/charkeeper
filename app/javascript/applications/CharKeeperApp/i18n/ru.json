@@ -60,7 +60,11 @@
       "heritage": "Раса",
       "community": "Общество",
       "mainClass": "Основной класс",
-      "subclass": "Подкласс"
+      "subclass": "Подкласс",
+      "customHeritage": "Мультираса",
+      "heritageName": "Название расы",
+      "mainFeature": "Главная способность",
+      "secondaryFeature": "Дополнительная способность"
     }
   },
   "itemsPage": {

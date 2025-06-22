@@ -60,7 +60,11 @@
       "heritage": "Heritage",
       "community": "Community",
       "mainClass": "Main class",
-      "subclass": "Subclass"
+      "subclass": "Subclass",
+      "customHeritage": "Mixed heritage",
+      "heritageName": "Heritage name",
+      "mainFeature": "Main feature",
+      "secondaryFeature": "Secondary feature"
     }
   },
   "itemsPage": {
