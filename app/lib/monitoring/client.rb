@@ -4,6 +4,7 @@ module Monitoring
   AuthByTelegram = Class.new(StandardError)
   AuthByUsername = Class.new(StandardError)
   ReceiveTelegramWebhook = Class.new(StandardError)
+  ValidationError = Class.new(StandardError)
 
   class Client
     include Deps[provider: 'monitoring.providers.rails']

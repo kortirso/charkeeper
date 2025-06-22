@@ -5,7 +5,7 @@ module Frontend
     include SerializeResource
 
     DND_SERIALIZE_FIELDS = %i[id name level race subrace species legacy classes provider avatar created_at].freeze
-    DAGGERHEART_SERIALIZE_FIELDS = %i[id name level heritage classes provider avatar created_at].freeze
+    DAGGERHEART_SERIALIZE_FIELDS = %i[id name level heritage heritage_name classes provider avatar created_at].freeze
 
     before_action :find_character, only: %i[show destroy]
 

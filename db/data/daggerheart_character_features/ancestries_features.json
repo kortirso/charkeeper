@@ -184,6 +184,33 @@
     "visible": "true"
   },
   {
+    "slug": "shell",
+    "title": { "en": "Shell", "ru": "Shell" },
+    "description": {
+      "en": "",
+      "ru": ""
+    },
+    "origin": "ancestry",
+    "origin_value": "galapa",
+    "kind": "update_result",
+    "visible": "true",
+    "eval_variables": {
+      "damage_thresholds": "damage_thresholds.transform_values { |item| item + proficiency }"
+    }
+  },
+  {
+    "slug": "retract",
+    "title": { "en": "Retract", "ru": "Retract" },
+    "description": {
+      "en": "Mark a Stress to retract into your shell. While in your shell, you have resistance to physical damage, you have disadvantage on action rolls, and you can’t move.",
+      "ru": "Mark a Stress to retract into your shell. While in your shell, you have resistance to physical damage, you have disadvantage on action rolls, and you can’t move."
+    },
+    "origin": "ancestry",
+    "origin_value": "galapa",
+    "kind": "static",
+    "visible": "true"
+  },
+  {
     "slug": "endurance",
     "title": { "en": "Endurance", "ru": "Endurance" },
     "description": {
@@ -252,7 +279,7 @@
   },
   {
     "slug": "internal_compass",
-    "title": { "en": "Danger Sensen", "ru": "Danger Sense" },
+    "title": { "en": "Internal compass", "ru": "Internal compass" },
     "description": {
       "en": "When you roll a 1 on your Hope Die, you can reroll it.",
       "ru": "When you roll a 1 on your Hope Die, you can reroll it."
