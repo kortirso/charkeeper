@@ -67,7 +67,12 @@ FactoryBot.define do
           classes: { bard: 4 },
           subclasses: { bard: 'wordsmith' },
           subclasses_mastery: { wordsmith: 2 },
-          traits: { str: 1, agi: 2, fin: 1, ins: 0, pre: 0, know: -1 }
+          traits: { str: 1, agi: 2, fin: 1, ins: 0, pre: 0, know: -1 },
+          evasion: 10,
+          health_max: 5,
+          stress_max: 6,
+          hope_max: 6,
+          leveling: { evasion: 1, health: 1 }
         }
       }
     end

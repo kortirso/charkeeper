@@ -65,7 +65,7 @@ module Frontend
         when 'dnd5', 'dnd2024' then current_user.characters.dnd
         when 'pathfinder2' then current_user.characters.pathfinder2
         when 'daggerheart' then current_user.characters.daggerheart
-        else []
+        else Character.none
         end
       end
 
