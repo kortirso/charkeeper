@@ -7,7 +7,7 @@ export const Toggle = (props) => {
 
   return (
     <div class="white-box mb-2">
-      <div class="py-2 px-4 cursor-pointer" onClick={() => setIsOpen(!isOpen())}>
+      <div class="py-2 px-4 cursor-pointer" onClick={() => props.disabled ? null : setIsOpen(!isOpen())}>
         {props.title}
       </div>
       <Show when={isOpen()}>

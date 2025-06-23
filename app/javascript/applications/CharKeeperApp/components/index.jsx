@@ -25,5 +25,6 @@ export * from './compounds/Character/shared/CharacterNavigation';
 export * from './compounds/Character/shared/Notes';
 export * from './compounds/Character/shared/FeatureTitle';
 export * from './compounds/Character/shared/ItemsTable';
+export * from './compounds/Character/shared/Bonuses';
 
 export * from './compounds/Characters/Item';

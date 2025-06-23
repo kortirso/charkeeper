@@ -6,6 +6,11 @@ en:
       daggerheart_character: Daggerheart character
     errors:
       unexpected_key: Unknown param
+      character_bonus:
+        rules:
+          comment:
+            key?: Comment is required
+            filled?: Comment is required
       user:
         password_length: Password must be greater or equal %{length} characters
         exists: Username already exists

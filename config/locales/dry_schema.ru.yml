@@ -6,6 +6,11 @@ ru:
       daggerheart_character: Daggerheart персонаж
     errors:
       unexpected_key: Неизвестный параметр
+      character_bonus:
+        rules:
+          comment:
+            key?: Необходимо указать комментарий
+            filled?: Необходимо указать комментарий
       user:
         password_length: Пароль должен быть не меньше %{length} символов
         exists: Имя пользователя уже используется

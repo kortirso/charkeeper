@@ -99,15 +99,14 @@ describe Frontend::Characters::BonusesController do
             post :create, params: {
               character_id: user_character.id,
               provider: 'daggerheart',
-              bonus: { value: { health: 1 } },
+              bonus: { value: { health: 1 }, comment: 'Comment' },
               charkeeper_access_token: access_token
             }
           }
 
           it 'creates character bonus', :aggregate_failures do
             expect { request }.to change(user_character.bonuses, :count).by(1)
-            expect(response).to have_http_status :ok
-            expect(response.parsed_body).to eq({ 'result' => 'ok' })
+            expect(response).to have_http_status :created
           end
         end
       end

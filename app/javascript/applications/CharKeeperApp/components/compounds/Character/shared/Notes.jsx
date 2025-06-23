@@ -85,7 +85,7 @@ export const Notes = () => {
           </div>
         }
       >
-        <Button default textable classList="mb-4 w-full uppercase" onClick={() => setActiveNewNoteTab(true)}>
+        <Button default textable classList="mb-2 w-full uppercase" onClick={() => setActiveNewNoteTab(true)}>
           {t('character.newNote')}
         </Button>
         <Show when={notes() !== undefined}>

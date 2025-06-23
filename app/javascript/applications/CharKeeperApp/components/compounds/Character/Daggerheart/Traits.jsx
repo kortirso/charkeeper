@@ -96,13 +96,13 @@ export const DaggerheartTraits = (props) => {
         </For>
       </div>
       <div class="white-box p-4">
-        <h2 class="text-lg mb-2">{t('character.experience')}</h2>
+        <h2 class="text-lg">{t('character.experience')}</h2>
         <Show
           when={editMode()}
           fallback={
             <For each={character().experience}>
               {(exp) =>
-                <div class="flex mb-2">
+                <div class="flex mt-2">
                   <p class="text-lg flex-1">{exp.exp_name}</p>
                   <p class="text-lg w-10">{modifier(exp.exp_level)}</p>
                 </div>
@@ -112,7 +112,7 @@ export const DaggerheartTraits = (props) => {
         >
           <Key each={experienceData()} by={item => item.id}>
             {(exp) =>
-              <div class="flex mb-2">
+              <div class="flex mt-2">
                 <Input
                   containerClassList="flex-1 mr-4"
                   value={exp().exp_name}
@@ -132,7 +132,7 @@ export const DaggerheartTraits = (props) => {
               </div>
             }
           </Key>
-          <div class="flex">
+          <div class="flex mt-2">
             <Button default size="small" onClick={addDraftExperience}>
               <PlusSmall />
             </Button>

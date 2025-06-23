@@ -7,19 +7,20 @@ module Frontend
         add_daggerheart_bonus: 'commands.characters_context.daggerheart.add_bonus'
       ]
       include SerializeRelation
+      include SerializeResource
 
       before_action :find_character
       before_action :find_character_bonus, only: %i[destroy]
 
       def index
-        # ap Charkeeper::Container.resolve('commands.characters_context.daggerheart.add_bonus').call
         serialize_relation(bonuses, ::Characters::BonusSerializer, :bonuses)
       end
 
       def create
         case add_bonus_command.call(create_params.merge(character: @character))
         in { errors: errors } then unprocessable_response(errors)
-        else only_head_response
+        in { result: result }
+          serialize_resource(result, ::Characters::BonusSerializer, :bonus, {}, :created)
         end
       end
 

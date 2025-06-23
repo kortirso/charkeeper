@@ -9,6 +9,7 @@ module CharactersContext
 
         params do
           required(:character).filled(type?: ::Daggerheart::Character)
+          required(:comment).filled(:string)
           required(:value).hash do
             optional(:traits).hash do
               optional(:str).filled(:integer)
@@ -30,7 +31,6 @@ module CharactersContext
             optional(:attack).filled(:integer)
             optional(:proficiency).filled(:integer)
           end
-          optional(:comment).maybe(:string)
         end
       end
       # rubocop: enable Metrics/BlockLength
