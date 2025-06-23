@@ -9,6 +9,7 @@ class Character < ApplicationRecord
   has_many :spells, class_name: '::Character::Spell', dependent: :destroy
   has_many :items, class_name: '::Character::Item', dependent: :destroy
   has_many :notes, class_name: '::Character::Note', dependent: :destroy
+  has_many :bonuses, class_name: '::Character::Bonus', dependent: :destroy
 
   scope :dnd, -> { where(type: %w[Dnd5::Character Dnd2024::Character]) }
   scope :dnd5, -> { where(type: 'Dnd5::Character') }
