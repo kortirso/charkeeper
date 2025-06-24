@@ -12,7 +12,7 @@ export const CharKeeperAppContent = () => {
   const size = createWindowSize();
   const { webApp } = useTelegram();
 
-  const [appState, { setAccessToken, setUsername, navigate }] = useAppState();
+  const [appState, { setAccessToken, changeUsername, navigate }] = useAppState();
   const [, dict, { setLocale }] = useAppLocale();
 
   const t = i18n.translator(dict);
@@ -43,7 +43,7 @@ export const CharKeeperAppContent = () => {
           batch(() => {
             setLocale(accessTokenData.locale);
             setAccessToken(accessTokenData.access_token);
-            setUsername(accessTokenData.username);
+            changeUsername(accessTokenData.username);
           });
         } else {
           setAccessToken(null);
