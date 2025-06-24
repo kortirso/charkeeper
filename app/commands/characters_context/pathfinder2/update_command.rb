@@ -47,12 +47,12 @@ module CharactersContext
           optional(:selected_skills).hash
           optional(:lore_skills).hash do
             required(:lore1).hash do
-              optional(:name).maybe(:string)
-              optional(:level).filled(:integer)
+              required(:name).maybe(:string)
+              required(:level).filled(:integer)
             end
             required(:lore2).hash do
-              optional(:name).maybe(:string)
-              optional(:level).filled(:integer)
+              required(:name).maybe(:string)
+              required(:level).filled(:integer)
             end
           end
           optional(:name).filled(:string)

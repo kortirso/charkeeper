@@ -1,7 +1,8 @@
 import { createSignal, For, Show, batch } from 'solid-js';
 import * as i18n from '@solid-primitives/i18n';
+import { Key } from '@solid-primitives/keyed';
 
-import { Levelbox, Button } from '../../../atoms';
+import { Levelbox, Button, Input } from '../../../atoms';
 
 import { useAppState, useAppLocale, useAppAlert } from '../../../../context';
 import { PlusSmall, Minus, Edit, Plus } from '../../../../assets';
@@ -54,6 +55,15 @@ export const Pathfinder2Abilities = (props) => {
     });
   }
 
+  const changeLoreSkill = (slug, value) => {
+    const result = skillsData().slice().map((item) => {
+      if (slug !== item.slug) return item;
+
+      return { ...item, name: value }
+    });
+    setSkillsData(result);
+  }
+
   const updateCharacter = async () => {
     const transformedAbilities = Object.fromEntries(
       Object.entries(abilitiesData()).map(([key, value]) => [key, (value * 2) + 10])
@@ -74,7 +84,7 @@ export const Pathfinder2Abilities = (props) => {
           acc[item.slug] = { name: item.name, level: item.level }
 
           return acc
-        }, {}),
+        }, {})
     }
     const result = await updateCharacterRequest(appState.accessToken, 'pathfinder2', character().id, { character: payload });
 
@@ -132,22 +142,36 @@ export const Pathfinder2Abilities = (props) => {
                     </Show>
                   }
                 </For>
-                <For each={(editMode() ? skillsData() : character().skills).filter((item) => item.ability === slug)}>
+                <Key
+                  each={(editMode() ? skillsData() : character().skills).filter((item) => item.ability === slug)}
+                  by={item => item.slug}
+                >
                   {(skill) =>
                     <div class="flex justify-between items-center mb-1">
                       <Show when={editMode()} fallback={<p />}>
                         <Levelbox
-                          value={skill.level}
-                          onToggle={() => updateSkill(skill.slug)}
+                          value={skill().level}
+                          onToggle={() => updateSkill(skill().slug)}
                         />
                       </Show>
-                      <p class={`flex items-center ${skill.level > 0 ? '' : 'font-cascadia-light'}`}>
-                        <span class="mr-2">{skill.name || t(`pathfinder2.skills.${skill.slug}`)}</span>
-                        <span>{modifier(skill.modifier + skill.prof + skill.item + (skill.armor || 0))}</span>
+                      <p class={`flex items-center ${skill().level > 0 ? '' : 'font-cascadia-light'}`}>
+                        <span class="mr-2">
+                          <Show
+                            when={editMode() && (skill().slug === 'lore1' || skill().slug === 'lore2')}
+                            fallback={skill().name || t(`pathfinder2.skills.${skill().slug}`)}
+                          >
+                            <Input
+                              containerClassList="ml-2"
+                              value={skill().name}
+                              onInput={(value) => changeLoreSkill(skill().slug, value)}
+                            />
+                          </Show>
+                        </span>
+                        <span>{modifier(skill().modifier + skill().prof + skill().item + (skill().armor || 0))}</span>
                       </p>
                     </div>
                   }
-                </For>
+                </Key>
               </div>
             </div>
           </div>
