@@ -16,7 +16,7 @@ import { removeCharacterRequest } from '../../requests/removeCharacterRequest';
 
 import { translate } from '../../helpers';
 
-DAGGERHEART_DEFAULT_FORM = {
+const DAGGERHEART_DEFAULT_FORM = {
   name: '', heritage: undefined, heritage_name: '', heritage_features: [], main_feature: undefined,
   secondary_feature: undefined, community: undefined, main_class: undefined, subclass: undefined,
   avatar_file: undefined, avatar_url: undefined

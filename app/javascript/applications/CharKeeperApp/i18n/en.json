@@ -78,6 +78,7 @@
   },
   "character": {
     "traits": "Traits",
+    "thresholds": "Damage thresholds",
     "abilities": "Abilities",
     "combat": "Combat",
     "rest": "Rest",
@@ -137,7 +138,10 @@
     "dnd2024": "D&D 2024",
     "pathfinder2": "Pathfinder 2",
     "daggerheart": "Daggerheart",
-    "experience": "Experience"
+    "experience": "Experience",
+    "bonuses": "Bonuses",
+    "newBonus": "New bonus",
+    "newBonusComment": "Comment"
   },
   "professionsPage": {
     "feats": "Feats",
@@ -626,6 +630,7 @@
     "combat": {
       "evasion": "Evasion",
       "armorScore": "Armor Score",
+      "armor_score": "Armor Score",
       "armorSlots": "Armor Slots",
       "minor": "Minor",
       "major": "Major",
@@ -635,7 +640,9 @@
       "severeDamage": "Mark 3 HP",
       "health": "Health",
       "stress": "Stress",
-      "hope": "Hope"
+      "hope": "Hope",
+      "attack": "Attack",
+      "proficiency": "Proficiency"
     },
     "leveling": {
       "level": "Class level",

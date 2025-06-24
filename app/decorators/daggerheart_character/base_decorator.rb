@@ -10,35 +10,44 @@ module DaggerheartCharacter
     def method_missing(_method, *args); end
 
     def modified_traits
-      @modified_traits ||= traits.merge(equiped_traits_bonuses) { |_key, oldval, newval| newval + oldval }
+      @modified_traits ||=
+        traits.merge(*[equiped_traits_bonuses, *bonuses.pluck('traits')].compact) { |_key, oldval, newval| newval + oldval }
     end
 
     def damage_thresholds
       @damage_thresholds ||=
         { 'minor' => level, 'major' => level, 'severe' => equiped_thresholds_bonuses.any? ? level : (2 * level) }
-          .merge(equiped_thresholds_bonuses) { |_key, oldval, newval| newval + oldval }
+          .merge(*[equiped_thresholds_bonuses, *bonuses.pluck('thresholds')].compact) { |_key, oldval, newval| newval + oldval }
     end
 
     def evasion
-      @evasion ||= data.evasion + leveling['evasion'] + bonuses.pluck('evasion').compact.sum
+      @evasion ||=
+        data.evasion +
+        leveling['evasion'].to_i +
+        item_bonuses.pluck('evasion').compact.sum +
+        sum(bonuses.pluck('evasion'))
     end
 
     def armor_score
       @armor_score ||=
-        equiped_items_info.pluck('base_score').compact.sum + bonuses.pluck('armor_score').compact.sum
+        equiped_items_info.pluck('base_score').compact.sum +
+        item_bonuses.pluck('armor_score').compact.sum +
+        sum(bonuses.pluck('armor_score'))
     end
 
     def armor_slots
       @armor_slots ||=
-        equiped_items_info.pluck('base_score').compact.sum + bonuses.pluck('armor_score').compact.sum
+        equiped_items_info.pluck('base_score').compact.sum +
+        item_bonuses.pluck('armor_score').compact.sum +
+        sum(bonuses.pluck('armor_score'))
     end
 
     def health_max
-      @health_max ||= data.health_max + leveling['health']
+      @health_max ||= data.health_max + leveling['health'].to_i + sum(bonuses.pluck('health'))
     end
 
     def stress_max
-      @stress_max ||= data.stress_max + leveling['stress']
+      @stress_max ||= data.stress_max + leveling['stress'].to_i + sum(bonuses.pluck('stress'))
     end
 
     def hope_max
@@ -46,7 +55,7 @@ module DaggerheartCharacter
     end
 
     def proficiency
-      @proficiency ||= 1 + leveling['proficiency'] + proficiency_by_level
+      @proficiency ||= 1 + leveling['proficiency'].to_i + proficiency_by_level + sum(bonuses.pluck('proficiency'))
     end
 
     def attacks
@@ -68,7 +77,7 @@ module DaggerheartCharacter
         name: { en: 'Unarmed', ru: 'Безоружная' }[I18n.locale],
         burden: 2,
         range: 'melee',
-        attack_bonus: [modified_traits['str'], modified_traits['fin']].max,
+        attack_bonus: [modified_traits['str'], modified_traits['fin']].max + attack_bonuses,
         damage: "#{(proficiency / 2.0).round}d4",
         damage_bonus: 0,
         damage_type: 'physical',
@@ -85,7 +94,7 @@ module DaggerheartCharacter
         name: item[:items_name][I18n.locale.to_s],
         burden: item[:items_info]['burden'],
         range: item[:items_info]['range'],
-        attack_bonus: modified_traits[item[:items_info]['trait']],
+        attack_bonus: modified_traits[item[:items_info]['trait']] + attack_bonuses,
         damage: "#{proficiency}#{item[:items_info]['damage']}",
         damage_bonus: item[:items_info]['damage_bonus'],
         damage_type: item[:items_info]['damage_type'],
@@ -109,16 +118,20 @@ module DaggerheartCharacter
     end
     # rubocop: enable Metrics/AbcSize, Metrics/MethodLength
 
-    def bonuses
-      @bonuses ||= equiped_items_info.pluck('bonuses')
+    def attack_bonuses
+      @attack_bonuses ||= sum(bonuses.pluck('attack'))
+    end
+
+    def item_bonuses
+      @item_bonuses ||= equiped_items_info.pluck('bonuses')
     end
 
     def equiped_thresholds_bonuses
-      @equiped_thresholds_bonuses ||= bonuses.pluck('thresholds').compact.first || {}
+      @equiped_thresholds_bonuses ||= item_bonuses.pluck('thresholds').compact.first || {}
     end
 
     def equiped_traits_bonuses
-      bonuses.pluck('traits').compact.first || {}
+      item_bonuses.pluck('traits').compact.first || {}
     end
 
     def equiped_items_info
@@ -136,6 +149,14 @@ module DaggerheartCharacter
         .joins(:item)
         .where(items: { kind: ['primary weapon', 'secondary weapon'] })
         .hashable_pluck('items.slug', 'items.name', 'items.kind', 'items.data', 'items.info', :notes, :ready_to_use)
+    end
+
+    def bonuses
+      @bonuses ||= __getobj__.bonuses.pluck(:value)
+    end
+
+    def sum(values)
+      values.sum(&:to_i)
     end
   end
 end

@@ -78,6 +78,7 @@
   },
   "character": {
     "traits": "Способности",
+    "thresholds": "Пороги урона",
     "abilities": "Способности",
     "combat": "Сражение",
     "rest": "Отдых",
@@ -137,7 +138,10 @@
     "dnd2024": "D&D 2024",
     "pathfinder2": "Pathfinder 2",
     "daggerheart": "Daggerheart",
-    "experience": "Опытность"
+    "experience": "Опытность",
+    "bonuses": "Бонусы",
+    "newBonus": "Новый бонус",
+    "newBonusComment": "Комментарий"
   },
   "professionsPage": {
     "feats": "Черты",
@@ -626,6 +630,7 @@
     "combat": {
       "evasion": "Уклонение",
       "armorScore": "Очки Доспеха",
+      "armor_score": "Очки Доспеха",
       "armorSlots": "Слоты Доспеха",
       "minor": "Малый",
       "major": "Большой",
@@ -635,7 +640,9 @@
       "severeDamage": "Отметить 3 ХП",
       "health": "Здоровье",
       "stress": "Стресс",
-      "hope": "Надежда"
+      "hope": "Надежда",
+      "attack": "Атака",
+      "proficiency": "Мастерство"
     },
     "leveling": {
       "level": "Уровень класса",

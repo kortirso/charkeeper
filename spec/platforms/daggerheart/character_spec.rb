@@ -8,8 +8,8 @@ describe Daggerheart::Character do
 
     before do
       torch = create :item, type: 'Daggerheart::Item'
-      primary_weapon = create :item, type: 'Daggerheart::Item', kind: 'primary weapon', info: { bonuses: {} }
-      secondary_weapon = create :item, type: 'Daggerheart::Item', kind: 'secondary weapon', info: { bonuses: {} }
+      primary_weapon = create :item, type: 'Daggerheart::Item', kind: 'primary weapon', info: { trait: 'agi', bonuses: {} }
+      secondary_weapon = create :item, type: 'Daggerheart::Item', kind: 'secondary weapon', info: { trait: 'agi', bonuses: {} }
       armor = create :item, type: 'Daggerheart::Item', kind: 'light armor', info: { bonuses: {} }
 
       create :character_item, character: character, item: torch

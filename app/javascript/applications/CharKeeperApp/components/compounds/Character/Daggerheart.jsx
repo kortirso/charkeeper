@@ -3,7 +3,7 @@ import * as i18n from '@solid-primitives/i18n';
 
 import {
   DaggerheartTraits, DaggerheartCombat, DaggerheartEquipment, Notes, Avatar, CharacterNavigation, DaggerheartLeveling,
-  DaggerheartItems
+  DaggerheartItems, Bonuses
 } from '../../../components';
 import { useAppState, useAppAlert, useAppLocale } from '../../../context';
 
@@ -103,7 +103,7 @@ export const Daggerheart = (props) => {
   return (
     <>
       <CharacterNavigation
-        tabsList={['traits', 'combat', 'equipment', 'notes', 'classLevels', 'avatar']}
+        tabsList={['traits', 'combat', 'equipment', 'bonuses', 'notes', 'classLevels', 'avatar']}
         activeTab={activeTab()}
         setActiveTab={setActiveTab}
       />
@@ -141,6 +141,9 @@ export const Daggerheart = (props) => {
                 onReplaceCharacter={props.onReplaceCharacter}
               />
             </Show>
+          </Match>
+          <Match when={activeTab() === 'bonuses'}>
+            <Bonuses character={character()} onReloadCharacter={props.onReloadCharacter} />
           </Match>
           <Match when={activeTab() === 'notes'}>
             <Notes />
