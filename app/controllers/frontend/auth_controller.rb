@@ -16,7 +16,11 @@ module Frontend
         user_session = start_user_session
         monitoring_telegram_auth(user_session.user)
         access_token = generate_token.call(user_session: user_session)[:result]
-        render json: { access_token: access_token, locale: user_session.user.locale }, status: :created
+        render json: {
+          access_token: access_token,
+          locale: user_session.user.locale,
+          username: user_session.user.username
+        }, status: :created
       else
         unprocessable_response({ signature: ['Invalid'] })
       end

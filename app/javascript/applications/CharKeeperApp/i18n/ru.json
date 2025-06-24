@@ -17,7 +17,9 @@
   "settingsPage": {
     "title": "Настройки",
     "changeLocale": "Язык",
-    "feedback": "Отзыв"
+    "feedback": "Отзыв",
+    "profile": "Профиль",
+    "username": "Имя пользователя"
   },
   "homebrewPage": {
     "title": "Homebrew"

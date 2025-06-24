@@ -107,7 +107,7 @@ export const DaggerheartCombat = (props) => {
               {(attack) =>
                 <tr>
                   <td class="py-1">
-                    <p>{attack.name}</p>
+                    <p class="font-cascadia-light">{attack.name}</p>
                     <Show when={attack.features.length > 0}>
                       <p class="text-xs">
                         {attack.tooltips.join(', ')}
