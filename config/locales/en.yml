@@ -2,6 +2,10 @@ en:
   not_found: Object is not found
   change_locale: Change locale
   validation_error: Validation error
+  decorators:
+    pathfinder2:
+      boosts: "You can improve abilities: %{ability_boosts_text}.\nYou can learn skills: %{skill_boosts_text}"
+      free: Free
   web:
     welcome:
       index:

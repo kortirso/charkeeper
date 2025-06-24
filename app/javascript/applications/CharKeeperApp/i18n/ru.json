@@ -589,24 +589,6 @@
     }
   },
   "pathfinder2": {
-    "skills": {
-      "acrobatics": "Акробатика",
-      "arcana": "Мистицизм",
-      "athletics": "Атлетика",
-      "crafting": "Ремесло",
-      "deception": "Обман",
-      "diplomacy": "Дипломатия",
-      "intimidation": "Запугивание",
-      "medicine": "Медицина",
-      "nature": "Природа",
-      "occultism": "Оккультизм",
-      "performance": "Исполнение",
-      "religion": "Религия",
-      "society": "Общество",
-      "stealth": "Скрытность",
-      "survival": "Выживание",
-      "thievery": "Воровство"
-    },
     "savingThrows": {
       "fortitude": "Стойкость",
       "reflex": "Рефлексы",

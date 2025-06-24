@@ -589,24 +589,6 @@
     }
   },
   "pathfinder2": {
-    "skills": {
-      "acrobatics": "Acrobatics",
-      "arcana": "Arcana",
-      "athletics": "Athletics",
-      "crafting": "Crafting",
-      "deception": "Deception",
-      "diplomacy": "Diplomacy",
-      "intimidation": "Intimidation",
-      "medicine": "Medicine",
-      "nature": "Nature",
-      "occultism": "Occultism",
-      "performance": "Performance",
-      "religion": "Religion",
-      "society": "Society",
-      "stealth": "Stealth",
-      "survival": "Survival",
-      "thievery": "Thievery"
-    },
     "savingThrows": {
       "fortitude": "Fortitude",
       "reflex": "Reflex",

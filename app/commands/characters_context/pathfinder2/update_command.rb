@@ -20,8 +20,6 @@ module CharactersContext
         params do
           required(:character).filled(type?: ::Pathfinder2::Character)
           optional(:classes).hash
-          # TODO: проверить кол-во переданных навыков
-          # TODO: вычесть из ability_boosts
           optional(:abilities).hash do
             required(:str).filled(:integer)
             required(:dex).filled(:integer)
@@ -42,8 +40,6 @@ module CharactersContext
             required(:reflex).filled(:integer)
             required(:will).filled(:integer)
           end
-          # TODO: проверить кол-во переданных навыков
-          # TODO: вычесть из skill_boosts
           optional(:selected_skills).hash
           optional(:lore_skills).hash do
             required(:lore1).hash do
@@ -95,6 +91,9 @@ module CharactersContext
         %i[classes abilities health saving_throws selected_skills].each do |key|
           input[key]&.transform_values!(&:to_i)
         end
+
+        input[:ability_boosts] = nil if input.key?(:abilities)
+        input[:skill_boosts] = nil if input.key?(:selected_skills)
       end
 
       # rubocop: disable Metrics/AbcSize
