@@ -1,6 +1,6 @@
 import { createSignal, For, Show, batch } from 'solid-js';
 import * as i18n from '@solid-primitives/i18n';
-import { Key } from "@solid-primitives/keyed";
+import { Key } from '@solid-primitives/keyed';
 
 import { Button, Input } from '../../../atoms';
 
