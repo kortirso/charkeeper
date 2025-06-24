@@ -19,8 +19,7 @@ module Frontend
       def create
         case add_bonus_command.call(create_params.merge(character: @character))
         in { errors: errors } then unprocessable_response(errors)
-        in { result: result }
-          serialize_resource(result, ::Characters::BonusSerializer, :bonus, {}, :created)
+        else only_head_response
         end
       end
 

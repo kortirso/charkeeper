@@ -143,7 +143,7 @@ export const Daggerheart = (props) => {
             </Show>
           </Match>
           <Match when={activeTab() === 'bonuses'}>
-            <Bonuses character={character()} />
+            <Bonuses character={character()} onReloadCharacter={props.onReloadCharacter} />
           </Match>
           <Match when={activeTab() === 'notes'}>
             <Notes />

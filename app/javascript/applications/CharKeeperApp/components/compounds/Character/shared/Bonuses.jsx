@@ -10,6 +10,8 @@ import { fetchCharacterBonusesRequest } from '../../../../requests/fetchCharacte
 import { createCharacterBonusRequest } from '../../../../requests/createCharacterBonusRequest';
 import { removeCharacterBonusRequest } from '../../../../requests/removeCharacterBonusRequest';
 
+import { modifier } from '../../../../helpers';
+
 export const Bonuses = (props) => {
   const character = () => props.character;
 
@@ -66,9 +68,9 @@ export const Bonuses = (props) => {
 
     if (result.errors === undefined) {
       batch(() => {
-        setBonuses([result.bonus].concat(bonuses()));
         setCreateMode(false);
         setBonusComment('');
+        props.onReloadCharacter();
       })
     } else renderAlerts(result.errors);
   }
@@ -79,7 +81,7 @@ export const Bonuses = (props) => {
     event.stopPropagation();
 
     const result = await removeCharacterBonusRequest(appState.accessToken, character().provider, character().id, bonusId);
-    if (result.errors === undefined) setBonuses(bonuses().filter((item) => item.id !== bonusId));
+    if (result.errors === undefined) props.onReloadCharacter();
   }
 
   return (
@@ -149,7 +151,7 @@ export const Bonuses = (props) => {
         <Show when={bonuses() !== undefined}>
           <For each={bonuses()}>
             {(bonus) =>
-              <Toggle disabled title={
+              <Toggle title={
                 <div class="flex items-center">
                   <p class="flex-1">{bonus.comment}</p>
                   <IconButton onClick={(e) => removeBonus(e, bonus.id)}>
@@ -157,7 +159,40 @@ export const Bonuses = (props) => {
                   </IconButton>
                 </div>
               }>
-                <p />
+                <div class="grid grid-cols-2 lg:grid-cols-3">
+                  <Show when={bonus.value.traits}>
+                    <div>
+                      <p class="mb-2">{t('character.traits')}</p>
+                      <For each={Object.entries(bonus.value.traits)}>
+                        {([slug, value]) =>
+                          <p class="font-cascadia-light">{t(`daggerheart.traits.${slug}`)} - {modifier(value)}</p>
+                        }
+                      </For>
+                    </div>
+                  </Show>
+                  <Show when={bonus.value.thresholds}>
+                    <div>
+                      <p class="mb-2">{t('character.thresholds')}</p>
+                      <For each={['minor', 'major', 'severe']}>
+                        {(slug) =>
+                          <Show when={bonus.value.thresholds[slug]}>
+                            <p class="font-cascadia-light">{t(`daggerheart.combat.${slug}`)} - {modifier(bonus.value.thresholds[slug])}</p>
+                          </Show>
+                        }
+                      </For>
+                    </div>
+                  </Show>
+                  <div>
+                    <p class="mb-2">{t('character.bonuses')}</p>
+                    <For each={['health', 'stress', 'evasion', 'armor_score', 'attack', 'proficiency']}>
+                      {(slug) =>
+                        <Show when={bonus.value[slug]}>
+                          <p class="font-cascadia-light">{t(`daggerheart.combat.${slug}`)} - {modifier(bonus.value[slug])}</p>
+                        </Show>
+                      }
+                    </For>
+                  </div>
+                </div>
               </Toggle>
             }
           </For>

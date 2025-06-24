@@ -100,7 +100,7 @@ export const Notes = () => {
                 </div>
               }>
                 <p
-                  class="text-sm"
+                  class="text-sm font-cascadia-light"
                   innerHTML={note.value} // eslint-disable-line solid/no-innerhtml
                 />
               </Toggle>
