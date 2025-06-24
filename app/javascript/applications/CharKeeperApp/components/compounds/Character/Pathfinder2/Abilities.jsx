@@ -4,6 +4,7 @@ import { Key } from '@solid-primitives/keyed';
 
 import { Levelbox, Button, Input } from '../../../atoms';
 
+import config from '../../../../data/pathfinder2.json';
 import { useAppState, useAppLocale, useAppAlert } from '../../../../context';
 import { PlusSmall, Minus, Edit, Plus } from '../../../../assets';
 import { updateCharacterRequest } from '../../../../requests/updateCharacterRequest';
@@ -22,7 +23,7 @@ export const Pathfinder2Abilities = (props) => {
 
   const [appState] = useAppState();
   const [{ renderAlerts }] = useAppAlert();
-  const [, dict] = useAppLocale();
+  const [locale, dict] = useAppLocale();
 
   const t = i18n.translator(dict);
 
@@ -101,10 +102,18 @@ export const Pathfinder2Abilities = (props) => {
 
   return (
     <>
-      <For each={Object.entries(dict().dnd.abilities)}>
+      <Show when={character().boosts}>
+        <div class="bg-blue-200 rounded p-4 mb-2">
+          <p
+            class="font-cascadia-light text-sm"
+            innerHTML={character().boosts} // eslint-disable-line solid/no-innerhtml
+          />
+        </div>
+      </Show>
+      <For each={Object.entries(config.abilities)}>
         {([slug, ability]) =>
           <div class="white-box p-4 mb-2">
-            <p class="uppercase text-center mb-4">{ability}</p>
+            <p class="uppercase text-center mb-4">{ability.name[locale()]}</p>
             <div class="flex">
               <div class="w-32 mr-8">
                 <div class="h-20">
@@ -158,7 +167,7 @@ export const Pathfinder2Abilities = (props) => {
                         <span class="mr-2">
                           <Show
                             when={editMode() && (skill().slug === 'lore1' || skill().slug === 'lore2')}
-                            fallback={skill().name || t(`pathfinder2.skills.${skill().slug}`)}
+                            fallback={skill().name || config.skills[skill().slug].name[locale()]}
                           >
                             <Input
                               containerClassList="ml-2"
