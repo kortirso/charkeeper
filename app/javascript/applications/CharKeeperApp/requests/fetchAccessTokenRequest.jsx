@@ -5,9 +5,7 @@ export const fetchAccessTokenRequest = async (checkString, hash) => {
     url: '/frontend/auth.json',
     options: {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ check_string: checkString, hash: hash })
     }
   });

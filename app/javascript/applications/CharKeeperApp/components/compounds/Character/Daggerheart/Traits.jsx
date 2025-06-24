@@ -103,7 +103,7 @@ export const DaggerheartTraits = (props) => {
             <For each={character().experience}>
               {(exp) =>
                 <div class="flex mt-2">
-                  <p class="text-lg flex-1">{exp.exp_name}</p>
+                  <p class="text-lg flex-1 font-cascadia-light">{exp.exp_name}</p>
                   <p class="text-lg w-10">{modifier(exp.exp_level)}</p>
                 </div>
               }

@@ -31,6 +31,7 @@ export const SettingsTab = () => {
         {t('settingsPage.title')}
       </PageHeader>
       <div class="p-4 flex-1 overflow-y-scroll">
+        {renderSettingsLink(t('settingsPage.profile'), 'profile')}
         {renderSettingsLink(t('settingsPage.changeLocale'), 'locale')}
         {renderSettingsLink(t('settingsPage.feedback'), 'feedback')}
       </div>

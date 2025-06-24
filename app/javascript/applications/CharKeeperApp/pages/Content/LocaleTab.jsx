@@ -24,8 +24,6 @@ export const LocaleTab = (props) => {
     else renderAlerts(result.errors);
   }
 
-  // 453x750
-  // 420x690
   return (
     <>
       <Show when={size.width < 768}>
