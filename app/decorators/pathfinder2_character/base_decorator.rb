@@ -5,7 +5,7 @@ module Pathfinder2Character
     delegate :id, :name, :data, to: :__getobj__
     delegate :race, :subrace, :main_class, :classes, :subclasses, :level, :languages, :health, :selected_skills,
              :lore_skills, :background, :weapon_skills, :armor_skills, :main_ability, :perception, :class_dc,
-             :saving_throws, :dying_condition_value, :ability_boosts, :skill_boosts, to: :data
+             :saving_throws, :dying_condition_value, :ability_boosts, :skill_boosts, :coins, to: :data
 
     def method_missing(_method, *args); end
 
@@ -52,6 +52,10 @@ module Pathfinder2Character
 
     def class_dc_value
       @class_dc_value ||= abilities[main_ability] + class_dc
+    end
+
+    def load
+      @load ||= abilities['str'] + 5
     end
 
     private

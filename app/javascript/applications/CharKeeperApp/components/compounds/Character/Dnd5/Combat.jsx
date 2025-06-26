@@ -5,7 +5,7 @@ import { createModal, StatsBlock } from '../../../molecules';
 import { Input, Toggle, Checkbox, Select, Button } from '../../../atoms';
 
 import { FeatureTitle } from '../../../../components';
-import { useAppState, useAppLocale } from '../../../../context';
+import { useAppState, useAppLocale, useAppAlert } from '../../../../context';
 import { updateCharacterRequest } from '../../../../requests/updateCharacterRequest';
 import { createCharacterHealthRequest } from '../../../../requests/createCharacterHealthRequest';
 
@@ -26,11 +26,54 @@ export const Dnd5Combat = (props) => {
 
   const { Modal, openModal, closeModal } = createModal();
   const [appState] = useAppState();
+  const [{ renderAlerts }] = useAppAlert();
   const [, dict] = useAppLocale();
 
   const t = i18n.translator(dict);
 
   // actions
+  const spendEnergy = async (event, feature) => {
+    event.stopPropagation();
+
+    let payload;
+    const currentValue = character().energy[feature.slug];
+
+    if (currentValue === feature.limit) return;
+    if (currentValue) {
+      payload = { ...character().energy, [feature.slug]: currentValue + 1 };
+    } else {
+      payload = { ...character().energy, [feature.slug]: 1 };
+    }
+
+    const result = await updateCharacterRequest(
+      appState.accessToken, character().provider, character().id, { character: { energy: payload }, only_head: true }
+    );
+
+    if (result.errors === undefined) props.onReplaceCharacter({ energy: payload });
+    else renderAlerts(result.errors);
+  }
+
+  const restoreEnergy = async (event, feature) => {
+    event.stopPropagation();
+
+    let payload;
+    const currentValue = character().energy[feature.slug];
+
+    if (currentValue === 0) return;
+    if (currentValue) {
+      payload = { ...character().energy, [feature.slug]: currentValue - 1 };
+    } else {
+      payload = { ...character().energy, [feature.slug]: 0 };
+    }
+
+    const result = await updateCharacterRequest(
+      appState.accessToken, character().provider, character().id, { character: { energy: payload }, only_head: true }
+    );
+
+    if (result.errors === undefined) props.onReplaceCharacter({ energy: payload });
+    else renderAlerts(result.errors);
+  }
+
   const toggleDamageCondition = async (damageType, slug) => {
     const newValue = { ...damageConditions() };
     if (newValue[damageType].includes(slug)) {
@@ -304,7 +347,7 @@ export const Dnd5Combat = (props) => {
       {renderAttacksBox(`${t('terms.attackBonusAction')} - 1`, character().attacks.filter((item) => item.action_type === 'bonus action'))}
       <For each={character().features}>
         {(feature) =>
-          <Toggle title={<FeatureTitle feature={feature} character={character()} onSpendEnergy={props.onSpendEnergy} onRestoreEnergy={props.onRestoreEnergy} />}>
+          <Toggle title={<FeatureTitle feature={feature} character={character()} onSpendEnergy={spendEnergy} onRestoreEnergy={restoreEnergy} />}>
             <Switch>
               <Match when={feature.kind === 'static'}>
                 <p

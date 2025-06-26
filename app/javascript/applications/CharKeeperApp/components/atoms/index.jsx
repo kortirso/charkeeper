@@ -5,3 +5,6 @@ export * from './Input';
 export * from './Toggle';
 export * from './IconButton';
 export * from './Button';
+
+export * from './TextArea';
+export * from './Label';

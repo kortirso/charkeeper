@@ -24,9 +24,7 @@ export const Pathfinder2Combat = (props) => {
 
   // submits
   const updateHealth = () => {
-    const payload = { health: healthData() };
-
-    replaceCharacter(payload);
+    replaceCharacter({ health: healthData() });
   }
 
   const changeHealth = async (coefficient) => {
@@ -39,7 +37,6 @@ export const Pathfinder2Combat = (props) => {
 
     if (result.errors === undefined) {
       props.onReplaceCharacter({
-        ...character(),
         health: result.character.health,
         dying_condition_value: result.character.dying_condition_value
       });
@@ -47,9 +44,7 @@ export const Pathfinder2Combat = (props) => {
   }
 
   const gainDying = () => {
-    const payload = { dying_condition_value: character().dying_condition_value + 1 };
-
-    replaceCharacter(payload);
+    replaceCharacter({ dying_condition_value: character().dying_condition_value + 1 });
   }
 
   const restoreDying = () => {
@@ -66,7 +61,7 @@ export const Pathfinder2Combat = (props) => {
 
     if (result.errors === undefined) {
       batch(() => {
-        props.onReplaceCharacter({ ...character(), ...payload });
+        props.onReplaceCharacter(payload);
         closeModal();
       });
     } else renderAlerts(result.errors);

@@ -59,6 +59,11 @@ module CharactersContext
           optional(:avatar_url).filled(:string)
           optional(:weapon_skills).hash
           optional(:armor_skills).hash
+          optional(:coins).hash do
+            required(:gold).filled(:integer)
+            required(:silver).filled(:integer)
+            required(:copper).filled(:integer)
+          end
         end
 
         rule(:avatar_file, :avatar_url).validate(:check_only_one_present)
@@ -83,6 +88,13 @@ module CharactersContext
 
           key.failure(:invalid_value)
         end
+
+        rule(:coins) do
+          next if value.nil?
+          next if value.values.all? { |item| !item.negative? }
+
+          key.failure(:invalid_value)
+        end
       end
       # rubocop: enable Metrics/BlockLength
 
@@ -90,7 +102,7 @@ module CharactersContext
 
       def do_prepare(input)
         input[:level] = input[:classes].values.sum(&:to_i) if input[:classes]
-        %i[classes abilities health saving_throws selected_skills].each do |key|
+        %i[classes abilities health saving_throws selected_skills coins].each do |key|
           input[key]&.transform_values!(&:to_i)
         end
 

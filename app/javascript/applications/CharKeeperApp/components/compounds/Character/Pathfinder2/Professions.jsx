@@ -28,7 +28,7 @@ export const Pathfinder2Professions = (props) => {
     );
 
     if (result.errors === undefined) {
-      props.onReplaceCharacter({ ...character(), languages: languagesData() });
+      props.onReplaceCharacter({ languages: languagesData() });
       renderNotice(t('alerts.characterIsUpdated'));
     } else renderAlerts(result.errors);
   }
@@ -48,7 +48,7 @@ export const Pathfinder2Professions = (props) => {
       { character: { [skills_name]: newSkillValue }, only_head: true }
     );
 
-    if (result.errors === undefined) props.onReplaceCharacter({ ...character(), [skills_name]: newSkillValue });
+    if (result.errors === undefined) props.onReplaceCharacter({ [skills_name]: newSkillValue });
     else renderAlerts(result.errors);
   }
 

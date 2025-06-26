@@ -1,0 +1,266 @@
+[
+  {
+    "slug": "explorer_clothing",
+    "kind": "armor",
+    "name": {
+      "en": "Explorer's clothing",
+      "ru": "Одежда исследователя"
+    },
+    "data": {
+      "weight": 0,
+      "price": 10
+    },
+    "info": {
+      "group": "cloth",
+      "armor_skill": "unarmored",
+      "ac": 0,
+      "str_req": null,
+      "dex_max": 5,
+      "skills_penalty": null,
+      "speed_penalty": null,
+      "tooltips": ["comfort"]
+    }
+  },
+  {
+    "slug": "leather_armor",
+    "kind": "armor",
+    "name": {
+      "en": "Leather armor",
+      "ru": "Кожаный доспех"
+    },
+    "data": {
+      "weight": 1,
+      "price": 200
+    },
+    "info": {
+      "group": "leather",
+      "armor_skill": "light",
+      "ac": 1,
+      "str_req": 0,
+      "dex_max": 4,
+      "skills_penalty": -1,
+      "speed_penalty": null,
+      "tooltips": []
+    }
+  },
+  {
+    "slug": "padded_armor",
+    "kind": "armor",
+    "name": {
+      "en": "Padded armor",
+      "ru": "Стёганый доспех"
+    },
+    "data": {
+      "weight": 0,
+      "price": 20
+    },
+    "info": {
+      "group": "cloth",
+      "armor_skill": "light",
+      "ac": 1,
+      "str_req": 0,
+      "dex_max": 3,
+      "skills_penalty": null,
+      "speed_penalty": null,
+      "tooltips": ["comfort"]
+    }
+  },
+  {
+    "slug": "studded_leather_armor",
+    "kind": "armor",
+    "name": {
+      "en": "Studded leather armor",
+      "ru": "Клёпаный кожаный доспех"
+    },
+    "data": {
+      "weight": 1,
+      "price": 300
+    },
+    "info": {
+      "group": "leather",
+      "armor_skill": "light",
+      "ac": 2,
+      "str_req": 1,
+      "dex_max": 3,
+      "skills_penalty": -1,
+      "speed_penalty": null,
+      "tooltips": []
+    }
+  },
+  {
+    "slug": "chain_shirt",
+    "kind": "armor",
+    "name": {
+      "en": "Chain shirt",
+      "ru": "Кольчужная рубаха"
+    },
+    "data": {
+      "weight": 1,
+      "price": 500
+    },
+    "info": {
+      "group": "chain",
+      "armor_skill": "light",
+      "ac": 2,
+      "str_req": 1,
+      "dex_max": 3,
+      "skills_penalty": -1,
+      "speed_penalty": null,
+      "tooltips": ["flexible", "noisy"]
+    }
+  },
+  {
+    "slug": "hide_armor",
+    "kind": "armor",
+    "name": {
+      "en": "Hide armor",
+      "ru": "Сыромятный доспех"
+    },
+    "data": {
+      "weight": 2,
+      "price": 200
+    },
+    "info": {
+      "group": "leather",
+      "armor_skill": "medium",
+      "ac": 3,
+      "str_req": 2,
+      "dex_max": 2,
+      "skills_penalty": -2,
+      "speed_penalty": -5,
+      "tooltips": []
+    }
+  },
+  {
+    "slug": "scale_mail",
+    "kind": "armor",
+    "name": {
+      "en": "Scale mail",
+      "ru": "Чешуйчатый доспех"
+    },
+    "data": {
+      "weight": 2,
+      "price": 400
+    },
+    "info": {
+      "group": "composite",
+      "armor_skill": "medium",
+      "ac": 3,
+      "str_req": 2,
+      "dex_max": 2,
+      "skills_penalty": -2,
+      "speed_penalty": -5,
+      "tooltips": []
+    }
+  },
+  {
+    "slug": "chain_mail",
+    "kind": "armor",
+    "name": {
+      "en": "Chain mail",
+      "ru": "Кольчуга"
+    },
+    "data": {
+      "weight": 2,
+      "price": 600
+    },
+    "info": {
+      "group": "chain",
+      "armor_skill": "medium",
+      "ac": 4,
+      "str_req": 3,
+      "dex_max": 1,
+      "skills_penalty": -2,
+      "speed_penalty": -5,
+      "tooltips": ["flexible", "noisy"]
+    }
+  },
+  {
+    "slug": "breastplate",
+    "kind": "armor",
+    "name": {
+      "en": "Breastplate",
+      "ru": "Нагрудник"
+    },
+    "data": {
+      "weight": 2,
+      "price": 800
+    },
+    "info": {
+      "group": "plate",
+      "armor_skill": "medium",
+      "ac": 4,
+      "str_req": 3,
+      "dex_max": 1,
+      "skills_penalty": -2,
+      "speed_penalty": -5,
+      "tooltips": []
+    }
+  },
+  {
+    "slug": "half_plate",
+    "kind": "armor",
+    "name": {
+      "en": "Half plate",
+      "ru": "Кольчужно-латный доспех"
+    },
+    "data": {
+      "weight": 3,
+      "price": 1800
+    },
+    "info": {
+      "group": "plate",
+      "armor_skill": "heavy",
+      "ac": 5,
+      "str_req": 3,
+      "dex_max": 1,
+      "skills_penalty": -3,
+      "speed_penalty": -10,
+      "tooltips": []
+    }
+  },
+  {
+    "slug": "splint_mail",
+    "kind": "armor",
+    "name": {
+      "en": "Splint mail",
+      "ru": "Пластинчатый доспех"
+    },
+    "data": {
+      "weight": 3,
+      "price": 1300
+    },
+    "info": {
+      "group": "composite",
+      "armor_skill": "heavy",
+      "ac": 5,
+      "str_req": 3,
+      "dex_max": 1,
+      "skills_penalty": -3,
+      "speed_penalty": -10,
+      "tooltips": []
+    }
+  },
+  {
+    "slug": "full_plate",
+    "kind": "armor",
+    "name": {
+      "en": "Full plate",
+      "ru": "Полный латный доспех"
+    },
+    "data": {
+      "weight": 4,
+      "price": 3000
+    },
+    "info": {
+      "group": "plate",
+      "armor_skill": "heavy",
+      "ac": 6,
+      "str_req": 4,
+      "dex_max": 0,
+      "skills_penalty": -3,
+      "speed_penalty": -10,
+      "tooltips": ["bulwark"]
+    }
+  }
+]

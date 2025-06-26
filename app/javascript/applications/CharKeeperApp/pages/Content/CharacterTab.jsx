@@ -49,24 +49,13 @@ export const CharacterTab = (props) => {
       </Show>
       <Switch>
         <Match when={character().provider === 'dnd5' || character().provider === 'dnd2024'}>
-          <Dnd5
-            character={character()}
-            onReloadCharacter={reloadCharacter}
-            onReplaceCharacter={replaceCharacter}
-          />
+          <Dnd5 character={character()} onReloadCharacter={reloadCharacter} onReplaceCharacter={replaceCharacter} />
         </Match>
         <Match when={character().provider === 'pathfinder2'}>
-          <Pathfinder2
-            character={character()}
-            onReplaceCharacter={replaceCharacter}
-          />
+          <Pathfinder2 character={character()} onReloadCharacter={reloadCharacter} onReplaceCharacter={replaceCharacter} />
         </Match>
         <Match when={character().provider === 'daggerheart'}>
-          <Daggerheart
-            character={character()}
-            onReloadCharacter={reloadCharacter}
-            onReplaceCharacter={replaceCharacter}
-          />
+          <Daggerheart character={character()} onReloadCharacter={reloadCharacter} onReplaceCharacter={replaceCharacter} />
         </Match>
       </Switch>
     </>

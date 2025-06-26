@@ -23,6 +23,7 @@ module Pathfinder2
     attribute :perception, :integer, default: 0
     attribute :class_dc, :integer, default: 0
     attribute :dying_condition_value, :integer, default: 0
+    attribute :coins, array: true, default: { gold: 0, silver: 0, copper: 0 }
     # только для 1 уровня
     attribute :ability_boosts, array: true # дополнительные повышения характеристик
     attribute :skill_boosts, array: true # дополнительные повышения навыков

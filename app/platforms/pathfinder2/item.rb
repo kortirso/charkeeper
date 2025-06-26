@@ -3,6 +3,9 @@
 module Pathfinder2
   class ItemData
     include StoreModel::Model
+
+    attribute :weight, :integer
+    attribute :price, :integer
   end
 end
 

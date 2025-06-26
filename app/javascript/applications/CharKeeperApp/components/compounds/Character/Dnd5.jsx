@@ -1,23 +1,18 @@
-import { createSignal, Switch, Match, batch, Show, createEffect, createMemo } from 'solid-js';
+import { createSignal, Switch, Match, batch, createEffect, createMemo } from 'solid-js';
 import * as i18n from '@solid-primitives/i18n';
 
 import {
-  Dnd5Abilities, Dnd5Combat, Dnd5Rest, Dnd5ClassLevels, Dnd5Professions, Dnd5Equipment, Dnd5Items,
-  Dnd5Spellbook, Dnd5Spells, Notes, Avatar, CharacterNavigation
+  Dnd5Abilities, Dnd5Combat, Dnd5Rest, Dnd5ClassLevels, Dnd5Professions, Dnd5Spellbook, Dnd5Spells,
+  Notes, Avatar, CharacterNavigation, Equipment, DndGold
 } from '../../../components';
-import { useAppState, useAppLocale, useAppAlert } from '../../../context';
+import { useAppState, useAppLocale } from '../../../context';
 
-import { fetchCharacterItemsRequest } from '../../../requests/fetchCharacterItemsRequest';
 import { fetchCharacterSpellsRequest } from '../../../requests/fetchCharacterSpellsRequest';
 import { updateCharacterRequest } from '../../../requests/updateCharacterRequest';
-import { updateCharacterItemRequest } from '../../../requests/updateCharacterItemRequest';
-import { removeCharacterItemRequest } from '../../../requests/removeCharacterItemRequest';
 import { fetchSpellsRequest } from '../../../requests/fetchSpellsRequest';
-import { fetchItemsRequest } from '../../../requests/fetchItemsRequest';
 import { createCharacterSpellRequest } from '../../../requests/createCharacterSpellRequest';
 import { removeCharacterSpellRequest } from '../../../requests/removeCharacterSpellRequest';
 import { updateCharacterSpellRequest } from '../../../requests/updateCharacterSpellRequest';
-import { createCharacterItemRequest } from '../../../requests/createCharacterItemRequest';
 
 export const Dnd5 = (props) => {
   const character = () => props.character;
@@ -25,52 +20,21 @@ export const Dnd5 = (props) => {
 
   // page state
   const [activeTab, setActiveTab] = createSignal('abilities');
-  const [activeItemsTab, setActiveItemsTab] = createSignal(false);
   const [activeSpellsTab, setActiveSpellsTab] = createSignal(false);
 
   // page data
-  const [items, setItems] = createSignal(undefined);
   const [spells, setSpells] = createSignal(undefined);
-  const [characterItems, setCharacterItems] = createSignal(undefined);
   const [characterSpells, setCharacterSpells] = createSignal(undefined);
 
   // shared state
-  const [energyData, setEnergyData] = createSignal(character().energy);
   const [spentSpellSlots, setSpentSpellSlots] = createSignal(character().spent_spell_slots);
 
   const [appState] = useAppState();
-  const [{ renderAlerts, renderNotice }] = useAppAlert();
   const [, dict] = useAppLocale();
 
   const t = i18n.translator(dict);
 
   // initial data fetching
-  createEffect(() => {
-    if (activeTab() !== 'equipment') return;
-    if (characterItems() !== undefined) return;
-
-    const fetchCharacterItems = async () => await fetchCharacterItemsRequest(appState.accessToken, 'dnd5', appState.activePageParams.id);
-
-    Promise.all([fetchCharacterItems()]).then(
-      ([characterItemsData]) => {
-        setCharacterItems(characterItemsData.items);
-      }
-    );
-  });
-
-  createEffect(() => {
-    if (!activeItemsTab() && activeTab() !== 'professions') return;
-    if (items() !== undefined) return;
-
-    const fetchItems = async () => await fetchItemsRequest(appState.accessToken, 'dnd5');
-
-    Promise.all([fetchItems()]).then(
-      ([itemsData]) => {
-        setItems(itemsData.items.sort((a, b) => a.name > b.name));
-      }
-    );
-  });
-
   createEffect(() => {
     if (activeTab() !== 'spells') return;
     if (spellClassesList().length === 0) return;
@@ -110,53 +74,6 @@ export const Dnd5 = (props) => {
     return result;
   }
 
-  // additional data change for items
-  const reloadCharacterItems = async () => {
-    const characterItemsData = await fetchCharacterItemsRequest(appState.accessToken, 'dnd5', appState.activePageParams.id);
-    setCharacterItems(characterItemsData.items);
-  }
-
-  const buyItem = async (item) => {
-    const result = await createCharacterItemRequest(appState.accessToken, 'dnd5', props.character.id, { item_id: item.id });
-
-    if (result.errors === undefined) {
-      batch(() => {
-        if (item.kind.includes('weapon')) props.onReloadCharacter();
-        reloadCharacterItems();
-        renderNotice(t('alerts.itemIsAdded'));
-      });
-    }
-    return result;
-  }
-
-  const updateCharacterItem = async (item, payload) => {
-    const result = await updateCharacterItemRequest(appState.accessToken, 'dnd5', props.character.id, item.id, payload);
-
-    if (result.errors === undefined) {
-      batch(() => {
-        if (item.kind !== 'item') props.onReloadCharacter(); // weapon/armor
-        const result = characterItems().slice().map((element) => {
-          if (element.id !== item.id) return element;
-
-          return { ...element, ...payload.character_item } 
-        });
-        setCharacterItems(result);
-      });
-    }
-    return result;
-  }
-
-  const removeCharacterItem = async (item) => {
-    const result = await removeCharacterItemRequest(appState.accessToken, 'dnd5', props.character.id, item.id);
-
-    if (result.errors === undefined) {
-      batch(() => {
-        if (item.kind !== 'item') reloadCharacterItems();
-        else setCharacterItems(characterItems().filter((element) => element !== item));
-      });
-    }
-  }
-
   // additional data change for spells
   const reloadCharacterSpells = async () => {
     const characterSpellsData = await fetchCharacterSpellsRequest(appState.accessToken, props.character.provider, appState.activePageParams.id);
@@ -194,48 +111,6 @@ export const Dnd5 = (props) => {
   }
 
   // shared data
-  const spendEnergy = async (event, feature) => {
-    event.stopPropagation();
-
-    let payload;
-    const currentValue = character().energy[feature.slug];
-
-    if (currentValue === feature.limit) return;
-    if (currentValue) {
-      payload = { ...energyData(), [feature.slug]: currentValue + 1 };
-    } else {
-      payload = { ...energyData(), [feature.slug]: 1 };
-    }
-
-    const result = await updateCharacterRequest(
-      appState.accessToken, character().provider, character().id, { character: { energy: payload }, only_head: true }
-    );
-
-    if (result.errors === undefined) props.onReplaceCharacter({ energy: payload });
-    else renderAlerts(result.errors);
-  }
-
-  const restoreEnergy = async (event, feature) => {
-    event.stopPropagation();
-
-    let payload;
-    const currentValue = character().energy[feature.slug];
-
-    if (currentValue === 0) return;
-    if (currentValue) {
-      payload = { ...character().energy, [feature.slug]: currentValue - 1 };
-    } else {
-      payload = { ...character().energy, [feature.slug]: 0 };
-    }
-
-    const result = await updateCharacterRequest(
-      appState.accessToken, character().provider, character().id, { character: { energy: payload }, only_head: true }
-    );
-
-    if (result.errors === undefined) props.onReplaceCharacter({ energy: payload });
-    else renderAlerts(result.errors);
-  }
-
   const spendSpellSlot = async (level) => {
     let newValue;
     if (spentSpellSlots()[level]) {
@@ -262,6 +137,14 @@ export const Dnd5 = (props) => {
     return characterSpells().map(({ spell_id }) => spell_id);
   });
 
+  const itemFilter = (item) => item.kind === 'item';
+  const weaponFilter = (item) => item.kind.includes('weapon');
+  const armorFilter = (item) => item.kind.includes('armor') || item.kind.includes('shield');
+  const ammoFilter = (item) => item.kind === 'ammo';
+  const focusFilter = (item) => item.kind === 'focus';
+  const toolsFilter = (item) => item.kind === 'tools';
+  const musicFilter = (item) => item.kind === 'music';
+
   return (
     <>
       <CharacterNavigation
@@ -280,9 +163,6 @@ export const Dnd5 = (props) => {
           <Match when={activeTab() === 'combat'}>
             <Dnd5Combat
               character={character()}
-              energyData={energyData()}
-              onSpendEnergy={spendEnergy}
-              onRestoreEnergy={restoreEnergy}
               onReloadCharacter={updateCharacter}
               onRefreshCharacter={refreshCharacter}
               onReplaceCharacter={props.onReplaceCharacter}
@@ -295,26 +175,24 @@ export const Dnd5 = (props) => {
             />
           </Match>
           <Match when={activeTab() === 'equipment'}>
-            <Show
-              when={!activeItemsTab()}
-              fallback={
-                <Dnd5Items
-                  items={items()}
-                  onBuyItem={buyItem}
-                  onNavigatoToEquipment={() => setActiveItemsTab(false)}
-                />
-              }
+            <Equipment
+              withWeight
+              withPrice
+              character={character()}
+              itemFilters={[
+                { title: t('character.itemsList'), callback: itemFilter },
+                { title: t('character.weaponsList'), callback: weaponFilter },
+                { title: t('character.armorList'), callback: armorFilter },
+                { title: t('character.ammoList'), callback: ammoFilter },
+                { title: t('character.focusList'), callback: focusFilter },
+                { title: t('character.toolsList'), callback: toolsFilter },
+                { title: t('character.musicList'), callback: musicFilter},
+              ]}
+              onReplaceCharacter={props.onReplaceCharacter}
+              onReloadCharacter={props.onReloadCharacter}
             >
-              <Dnd5Equipment
-                character={character()}
-                characterItems={characterItems()}
-                onNavigatoToItems={() => setActiveItemsTab(true)}
-                onUpdateCharacterItem={updateCharacterItem}
-                onRefreshCharacter={refreshCharacter}
-                onRemoveCharacterItem={removeCharacterItem}
-                onReplaceCharacter={props.onReplaceCharacter}
-              />
-            </Show>
+              <DndGold character={character()} onReplaceCharacter={props.onReplaceCharacter} />
+            </Equipment>
           </Match>
           <Match when={activeTab() === 'spells'}>
             <Switch>
@@ -364,10 +242,9 @@ export const Dnd5 = (props) => {
               onReloadCharacter={updateCharacter}
             />
           </Match>
-          <Match when={activeTab() === 'professions' && items() !== undefined}>
+          <Match when={activeTab() === 'professions'}>
             <Dnd5Professions
               character={character()}
-              items={items()}
               onRefreshCharacter={refreshCharacter}
               onReloadCharacter={updateCharacter}
             />

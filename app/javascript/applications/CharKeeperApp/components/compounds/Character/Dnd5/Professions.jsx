@@ -1,23 +1,39 @@
-import { createSignal, For, Show } from 'solid-js';
+import { createSignal, createEffect, For, Show } from 'solid-js';
 import * as i18n from '@solid-primitives/i18n';
 
 import { Toggle, Checkbox } from '../../../atoms';
 
-import dnd2024Config from '../../../../data/dnd2024.json';
-import { useAppLocale } from '../../../../context';
+import config from '../../../../data/dnd2024.json';
+import { useAppLocale, useAppState } from '../../../../context';
+
+import { fetchItemsRequest } from '../../../../requests/fetchItemsRequest';
 
 export const Dnd5Professions = (props) => {
   const character = () => props.character;
-  const feats = () => dnd2024Config.feats;
+  const feats = () => config.feats;
 
   // changeable data
+  const [items, setItems] = createSignal(undefined);
   const [languagesData, setLanguagesData] = createSignal(character().languages);
   const [toolsData, setToolsData] = createSignal(character().tools);
   const [musicData, setMusicData] = createSignal(character().music);
 
+  const [appState] = useAppState();
   const [locale, dict] = useAppLocale();
 
   const t = i18n.translator(dict);
+
+  createEffect(() => {
+    if (items() !== undefined) return;
+
+    const fetchItems = async () => await fetchItemsRequest(appState.accessToken, character().provider);
+
+    Promise.all([fetchItems()]).then(
+      ([itemsData]) => {
+        setItems(itemsData.items.sort((a, b) => a.name > b.name));
+      }
+    );
+  });
 
   const toggleFeat = async (slug) => {
     const newValue = character().selected_feats.includes(slug) ? character().selected_feats.filter((item) => item !== slug) : character().selected_feats.concat(slug);
@@ -160,7 +176,7 @@ export const Dnd5Professions = (props) => {
         <div class="flex">
           <div class="w-1/2">
             <p class="mb-2">{t('professionsPage.lightWeaponSkills')}</p>
-            <For each={props.items.filter((item) => item.kind === 'light weapon').sort((a, b) => a.name > b.name)}>
+            <For each={items().filter((item) => item.kind === 'light weapon').sort((a, b) => a.name > b.name)}>
               {(weapon) =>
                 <div class="mb-1">
                   <Checkbox
@@ -176,7 +192,7 @@ export const Dnd5Professions = (props) => {
           </div>
           <div class="w-1/2">
             <p class="mb-2">{t('professionsPage.martialWeaponSkills')}</p>
-            <For each={props.items.filter((item) => item.kind === 'martial weapon').sort((a, b) => a.name > b.name)}>
+            <For each={items().filter((item) => item.kind === 'martial weapon').sort((a, b) => a.name > b.name)}>
               {(weapon) =>
                 <div class="mb-1">
                   <Checkbox
@@ -193,7 +209,7 @@ export const Dnd5Professions = (props) => {
         </div>
       </Toggle>
       <Toggle title={t('professionsPage.tools')}>
-        <For each={props.items.filter((item) => item.kind === 'tools').sort((a, b) => a.name > b.name)}>
+        <For each={items().filter((item) => item.kind === 'tools').sort((a, b) => a.name > b.name)}>
           {(tool) =>
             <div class="mb-1">
               <Checkbox
@@ -208,7 +224,7 @@ export const Dnd5Professions = (props) => {
         </For>
       </Toggle>
       <Toggle title={t('professionsPage.music')}>
-        <For each={props.items.filter((item) => item.kind === 'music').sort((a, b) => a.name > b.name)}>
+        <For each={items().filter((item) => item.kind === 'music').sort((a, b) => a.name > b.name)}>
           {(music) =>
             <div class="mb-1">
               <Checkbox
