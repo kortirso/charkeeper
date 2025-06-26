@@ -6,7 +6,7 @@ module Pathfinder2Character
       result.merge({
         classes: { result[:main_class] => 1 },
         subclasses: { result[:main_class] => result[:subclass] },
-        languages: [],
+        languages: '',
         abilities: { str: 10, dex: 10, con: 10, int: 10, wis: 10, cha: 10 },
         selected_skills: {},
         lore_skills: { lore1: { name: 'Unknown', level: 0 }, lore2: { name: 'Unknown', level: 0 } },

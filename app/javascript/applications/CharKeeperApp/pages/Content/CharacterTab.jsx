@@ -40,7 +40,7 @@ export const CharacterTab = (props) => {
         <PageHeader
           leftContent={
             <IconButton size="xl" onClick={props.onNavigate}>
-              <Arrow back />
+              <Arrow back width={20} height={20} />
             </IconButton>
           }
         >

@@ -1,7 +1,7 @@
 import { createSignal, Switch, Match } from 'solid-js';
 
 import {
-  Pathfinder2Abilities, Pathfinder2Combat, Notes, Avatar, CharacterNavigation
+  Pathfinder2Abilities, Pathfinder2Combat, Notes, Avatar, CharacterNavigation, Pathfinder2Professions
 } from '../../../components';
 
 export const Pathfinder2 = (props) => {
@@ -12,7 +12,7 @@ export const Pathfinder2 = (props) => {
   return (
     <>
       <CharacterNavigation
-        tabsList={['abilities', 'combat', 'notes', 'avatar']}
+        tabsList={['abilities', 'combat', 'notes', 'professions', 'avatar']}
         activeTab={activeTab()}
         setActiveTab={setActiveTab}
       />
@@ -32,6 +32,9 @@ export const Pathfinder2 = (props) => {
           </Match>
           <Match when={activeTab() === 'notes'}>
             <Notes />
+          </Match>
+          <Match when={activeTab() === 'professions'}>
+            <Pathfinder2Professions character={character()} onReplaceCharacter={props.onReplaceCharacter} />
           </Match>
           <Match when={activeTab() === 'avatar'}>
             <Avatar

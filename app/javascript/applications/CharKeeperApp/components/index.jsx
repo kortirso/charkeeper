@@ -12,6 +12,7 @@ export * from './compounds/Character/Dnd5/Spells';
 export * from './compounds/Character/Pathfinder2';
 export * from './compounds/Character/Pathfinder2/Abilities';
 export * from './compounds/Character/Pathfinder2/Combat';
+export * from './compounds/Character/Pathfinder2/Professions';
 
 export * from './compounds/Character/Daggerheart';
 export * from './compounds/Character/Daggerheart/Traits';

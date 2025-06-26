@@ -319,7 +319,6 @@ export const CharactersTab = () => {
         </Match>
         <Match when={currentTab() === 'newCharacter'}>
           <div class="p-4 flex-1 flex flex-col overflow-y-scroll">
-            {console.log(heritageFeatures())}
             <div class="flex-1">
               <Select
                 containerClassList="mb-2"

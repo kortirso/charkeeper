@@ -90,5 +90,17 @@
     "stealth": { "name": { "en": "Stealth", "ru": "Скрытность" } },
     "survival": { "name": { "en": "Survival", "ru": "Выживание" } },
     "thievery": { "name": { "en": "Thievery", "ru": "Воровство" } }
+  },
+  "weaponSkills": {
+    "unarmed": { "name": { "en": "Unarmed", "ru": "Без оружия" } },
+    "simple": { "name": { "en": "Simple", "ru": "Простое" } },
+    "martial": { "name": { "en": "Martial", "ru": "Воинское" } },
+    "advanced": { "name": { "en": "Advanced", "ru": "Экзотическое" } }
+  },
+  "armorSkills": {
+    "unarmored": { "name": { "en": "Unarmored", "ru": "Без доспехов" } },
+    "light": { "name": { "en": "Light", "ru": "Лёгкие" } },
+    "medium": { "name": { "en": "Medium", "ru": "Средние" } },
+    "heavy": { "name": { "en": "Heavy", "ru": "Тяжёлые" } }
   }
 }

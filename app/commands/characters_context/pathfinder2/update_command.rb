@@ -34,7 +34,7 @@ module CharactersContext
             required(:temp).filled(:integer)
           end
           optional(:dying_condition_value).filled(:integer)
-          optional(:languages).value(:array).each(:string)
+          optional(:languages).filled(:string)
           optional(:saving_throws).hash do
             required(:fortitude).filled(:integer)
             required(:reflex).filled(:integer)
@@ -57,6 +57,8 @@ module CharactersContext
             required(:file_name).filled(:string)
           end
           optional(:avatar_url).filled(:string)
+          optional(:weapon_skills).hash
+          optional(:armor_skills).hash
         end
 
         rule(:avatar_file, :avatar_url).validate(:check_only_one_present)
