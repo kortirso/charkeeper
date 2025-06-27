@@ -6,6 +6,10 @@ en:
       daggerheart_character: Daggerheart character
     errors:
       unexpected_key: Unknown param
+      character_item:
+        rules:
+          ready_to_use:
+            only_one: Active armor should be only 1
       character_bonus:
         rules:
           comment:

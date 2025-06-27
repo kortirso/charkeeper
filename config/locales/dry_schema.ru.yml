@@ -6,6 +6,10 @@ ru:
       daggerheart_character: Daggerheart персонаж
     errors:
       unexpected_key: Неизвестный параметр
+      character_item:
+        rules:
+          ready_to_use:
+            only_one: Активная броня может быть только 1
       character_bonus:
         rules:
           comment:
