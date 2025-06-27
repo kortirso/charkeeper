@@ -1,0 +1,218 @@
+[
+  {
+    "slug": "mace",
+    "kind": "weapon",
+    "name": {
+      "en": "Mace",
+      "ru": "Булава"
+    },
+    "data": {
+      "weight": 1,
+      "price": 100
+    },
+    "info": {
+      "group": "club",
+      "weapon_skill": "simple",
+      "type": "melee",
+      "damage": "1d6",
+      "damage_type": "bludge",
+      "burden": 1,
+      "tooltips": ["shove"]
+    }
+  },
+  {
+    "slug": "sickle",
+    "kind": "weapon",
+    "name": {
+      "en": "Sickle",
+      "ru": "Серп"
+    },
+    "data": {
+      "weight": 0,
+      "price": 20
+    },
+    "info": {
+      "group": "knife",
+      "weapon_skill": "simple",
+      "type": "melee",
+      "damage": "1d4",
+      "damage_type": "slash",
+      "burden": 1,
+      "tooltips": ["agile", "finesse", "trip"]
+    }
+  },
+  {
+    "slug": "longspear",
+    "kind": "weapon",
+    "name": {
+      "en": "Longspear",
+      "ru": "Длинное копьё"
+    },
+    "data": {
+      "weight": 2,
+      "price": 50
+    },
+    "info": {
+      "group": "spear",
+      "weapon_skill": "simple",
+      "type": "melee",
+      "damage": "1d8",
+      "damage_type": "pierce",
+      "burden": 2,
+      "tooltips": ["reach"]
+    }
+  },
+  {
+    "slug": "battle_axe",
+    "kind": "weapon",
+    "name": {
+      "en": "Battle axe",
+      "ru": "Боевой топор"
+    },
+    "data": {
+      "weight": 1,
+      "price": 100
+    },
+    "info": {
+      "group": "axe",
+      "weapon_skill": "martial",
+      "type": "melee",
+      "damage": "1d8",
+      "damage_type": "slash",
+      "burden": 1,
+      "tooltips": ["sweep"]
+    }
+  },
+  {
+    "slug": "longsword",
+    "kind": "weapon",
+    "name": {
+      "en": "Longsword",
+      "ru": "Длинный меч"
+    },
+    "data": {
+      "weight": 1,
+      "price": 100
+    },
+    "info": {
+      "group": "sword",
+      "weapon_skill": "martial",
+      "type": "melee",
+      "damage": "1d8",
+      "damage_type": "slash-pierce",
+      "burden": 1,
+      "tooltips": []
+    }
+  },
+  {
+    "slug": "shortsword",
+    "kind": "weapon",
+    "name": {
+      "en": "Shortsword",
+      "ru": "Короткий меч"
+    },
+    "data": {
+      "weight": 0,
+      "price": 90
+    },
+    "info": {
+      "group": "sword",
+      "weapon_skill": "martial",
+      "type": "melee",
+      "damage": "1d6",
+      "damage_type": "pierce-slash",
+      "burden": 1,
+      "tooltips": ["agile", "finesse"]
+    }
+  },
+  {
+    "slug": "dwarven_waraxe",
+    "kind": "weapon",
+    "name": {
+      "en": "Dwarven waraxe",
+      "ru": "Дварфийская секира"
+    },
+    "data": {
+      "weight": 2,
+      "price": 300
+    },
+    "info": {
+      "group": "axe",
+      "weapon_skill": "advanced",
+      "type": "melee",
+      "damage": "1d8-1d12",
+      "damage_type": "slash",
+      "burden": 1,
+      "tooltips": ["sweep"]
+    }
+  },
+  {
+    "slug": "crossbow",
+    "kind": "weapon",
+    "name": {
+      "en": "Crossbow",
+      "ru": "Арбалет"
+    },
+    "data": {
+      "weight": 1,
+      "price": 300
+    },
+    "info": {
+      "group": "crossbow",
+      "weapon_skill": "simple",
+      "type": "range",
+      "damage": "1d8",
+      "damage_type": "pierce",
+      "burden": 2,
+      "tooltips": [],
+      "dist": 120,
+      "reload": 1
+    }
+  },
+  {
+    "slug": "longbow",
+    "kind": "weapon",
+    "name": {
+      "en": "Longbow",
+      "ru": "Длинный лук"
+    },
+    "data": {
+      "weight": 2,
+      "price": 600
+    },
+    "info": {
+      "group": "bow",
+      "weapon_skill": "martial",
+      "type": "range",
+      "damage": "1d8",
+      "damage_type": "pierce",
+      "burden": 2,
+      "tooltips": ["deadly-1d10", "volley-30"],
+      "dist": 100,
+      "reload": 0
+    }
+  },
+  {
+    "slug": "shortbow",
+    "kind": "weapon",
+    "name": {
+      "en": "Shortbow",
+      "ru": "Короткий лук"
+    },
+    "data": {
+      "weight": 1,
+      "price": 300
+    },
+    "info": {
+      "group": "bow",
+      "weapon_skill": "martial",
+      "type": "range",
+      "damage": "1d6",
+      "damage_type": "pierce",
+      "burden": 2,
+      "tooltips": ["deadly-1d10"],
+      "dist": 60,
+      "reload": 0
+    }
+  }
+]

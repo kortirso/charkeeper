@@ -16,6 +16,7 @@ export const Pathfinder2 = (props) => {
 
   const t = i18n.translator(dict);
 
+  const weaponFilter = (item) => item.kind === 'weapon';
   const armorFilter = (item) => item.kind === 'armor';
 
   return (
@@ -38,7 +39,10 @@ export const Pathfinder2 = (props) => {
               withWeight
               withPrice
               character={character()}
-              itemFilters={[{ title: t('character.armorList'), callback: armorFilter }]}
+              itemFilters={[
+                { title: t('character.weaponsList'), callback: weaponFilter },
+                { title: t('character.armorList'), callback: armorFilter }
+              ]}
               onReplaceCharacter={props.onReplaceCharacter}
               onReloadCharacter={props.onReloadCharacter}
             >
