@@ -277,13 +277,13 @@
       "druidic": "Druidic"
     },
     "coreWeaponSkills": {
-      "light weapon": "Light Weapon",
-      "martial weapon": "Martial Weapon"
+      "light": "Light Weapon",
+      "martial": "Martial Weapon"
     },
     "coreArmorSkills": {
-      "light armor": "Light Armor",
-      "medium armor": "Medium Armor",
-      "heavy armor": "Heavy Armor",
+      "light": "Light Armor",
+      "medium": "Medium Armor",
+      "heavy": "Heavy Armor",
       "shield": "Shield"
     },
     "selectedFeatures": {

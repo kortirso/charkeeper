@@ -231,7 +231,7 @@ module Dnd5Character
     end
 
     def weapon_proficiency(item)
-      weapon_core_skills&.include?(item[:items_kind]) ||
+      weapon_core_skills&.include?(item[:items_info]['weapon_skill']) ||
         weapon_skills&.include?(item[:items_slug])
     end
 
@@ -239,7 +239,7 @@ module Dnd5Character
       __getobj__
         .items
         .joins(:item)
-        .where(items: { kind: ['light weapon', 'martial weapon'] })
+        .where(items: { kind: 'weapon' })
         .hashable_pluck('items.slug', 'items.name', 'items.kind', 'items.data', 'items.info', :quantity, :notes)
     end
 
@@ -249,7 +249,7 @@ module Dnd5Character
         .items
         .where(ready_to_use: true)
         .joins(:item)
-        .where(items: { kind: ['shield', 'light armor', 'medium armor', 'heavy armor'] })
+        .where(items: { kind: %w[shield armor] })
         .hashable_pluck('items.kind', 'items.data', 'items.info')
         .partition { |item| item[:items_kind] != 'shield' }
     end

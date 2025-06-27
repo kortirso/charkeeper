@@ -144,100 +144,102 @@ export const Dnd5Professions = (props) => {
           }
         </For>
       </Toggle>
-      <Toggle title={t('professionsPage.weaponCoreSkill')}>
-        <For each={Object.entries(dict().dnd.coreWeaponSkills)}>
-          {([slug, skill]) =>
-            <div class="mb-1">
-              <Checkbox
-                labelText={skill}
-                labelPosition="right"
-                labelClassList="text-sm ml-4 font-cascadia-light"
-                checked={character().weapon_core_skills.includes(slug)}
-                onToggle={() => toggleWeaponCoreSkill(slug)}
-              />
+      <Show when={items() !== undefined}>
+        <Toggle title={t('professionsPage.weaponCoreSkill')}>
+          <For each={Object.entries(dict().dnd.coreWeaponSkills)}>
+            {([slug, skill]) =>
+              <div class="mb-1">
+                <Checkbox
+                  labelText={skill}
+                  labelPosition="right"
+                  labelClassList="text-sm ml-4 font-cascadia-light"
+                  checked={character().weapon_core_skills.includes(slug)}
+                  onToggle={() => toggleWeaponCoreSkill(slug)}
+                />
+              </div>
+            }
+          </For>
+          <For each={Object.entries(dict().dnd.coreArmorSkills)}>
+            {([slug, skill]) =>
+              <div class="mb-1">
+                <Checkbox
+                  labelText={skill}
+                  labelPosition="right"
+                  labelClassList="text-sm ml-4 font-cascadia-light"
+                  checked={character().armor_proficiency.includes(slug)}
+                  onToggle={() => toggleArmorCoreSkill(slug)}
+                />
+              </div>
+            }
+          </For>
+        </Toggle>
+        <Toggle title={t('professionsPage.weaponSkills')}>
+          <div class="flex">
+            <div class="w-1/2">
+              <p class="mb-2">{t('professionsPage.lightWeaponSkills')}</p>
+              <For each={items().filter((item) => item.info.weapon_skill === 'light').sort((a, b) => a.name > b.name)}>
+                {(weapon) =>
+                  <div class="mb-1">
+                    <Checkbox
+                      labelText={weapon.name}
+                      labelPosition="right"
+                      labelClassList="text-sm ml-4 font-cascadia-light"
+                      checked={character().weapon_skills.includes(weapon.slug)}
+                      onToggle={() => toggleWeaponSkill(weapon.slug)}
+                    />
+                  </div>
+                }
+              </For>
             </div>
-          }
-        </For>
-        <For each={Object.entries(dict().dnd.coreArmorSkills)}>
-          {([slug, skill]) =>
-            <div class="mb-1">
-              <Checkbox
-                labelText={skill}
-                labelPosition="right"
-                labelClassList="text-sm ml-4 font-cascadia-light"
-                checked={character().armor_proficiency.includes(slug)}
-                onToggle={() => toggleArmorCoreSkill(slug)}
-              />
+            <div class="w-1/2">
+              <p class="mb-2">{t('professionsPage.martialWeaponSkills')}</p>
+              <For each={items().filter((item) => item.info.weapon_skill === 'martial').sort((a, b) => a.name > b.name)}>
+                {(weapon) =>
+                  <div class="mb-1">
+                    <Checkbox
+                      labelText={weapon.name}
+                      labelPosition="right"
+                      labelClassList="text-sm ml-4 font-cascadia-light"
+                      checked={character().weapon_skills.includes(weapon.slug)}
+                      onToggle={() => toggleWeaponSkill(weapon.slug)}
+                    />
+                  </div>
+                }
+              </For>
             </div>
-          }
-        </For>
-      </Toggle>
-      <Toggle title={t('professionsPage.weaponSkills')}>
-        <div class="flex">
-          <div class="w-1/2">
-            <p class="mb-2">{t('professionsPage.lightWeaponSkills')}</p>
-            <For each={items().filter((item) => item.kind === 'light weapon').sort((a, b) => a.name > b.name)}>
-              {(weapon) =>
-                <div class="mb-1">
-                  <Checkbox
-                    labelText={weapon.name}
-                    labelPosition="right"
-                    labelClassList="text-sm ml-4 font-cascadia-light"
-                    checked={character().weapon_skills.includes(weapon.slug)}
-                    onToggle={() => toggleWeaponSkill(weapon.slug)}
-                  />
-                </div>
-              }
-            </For>
           </div>
-          <div class="w-1/2">
-            <p class="mb-2">{t('professionsPage.martialWeaponSkills')}</p>
-            <For each={items().filter((item) => item.kind === 'martial weapon').sort((a, b) => a.name > b.name)}>
-              {(weapon) =>
-                <div class="mb-1">
-                  <Checkbox
-                    labelText={weapon.name}
-                    labelPosition="right"
-                    labelClassList="text-sm ml-4 font-cascadia-light"
-                    checked={character().weapon_skills.includes(weapon.slug)}
-                    onToggle={() => toggleWeaponSkill(weapon.slug)}
-                  />
-                </div>
-              }
-            </For>
-          </div>
-        </div>
-      </Toggle>
-      <Toggle title={t('professionsPage.tools')}>
-        <For each={items().filter((item) => item.kind === 'tools').sort((a, b) => a.name > b.name)}>
-          {(tool) =>
-            <div class="mb-1">
-              <Checkbox
-                labelText={tool.name}
-                labelPosition="right"
-                labelClassList="text-sm ml-4 font-cascadia-light"
-                checked={toolsData().includes(tool.slug)}
-                onToggle={() => toggleTool(tool.slug)}
-              />
-            </div>
-          }
-        </For>
-      </Toggle>
-      <Toggle title={t('professionsPage.music')}>
-        <For each={items().filter((item) => item.kind === 'music').sort((a, b) => a.name > b.name)}>
-          {(music) =>
-            <div class="mb-1">
-              <Checkbox
-                labelText={music.name}
-                labelPosition="right"
-                labelClassList="text-sm ml-4 font-cascadia-light"
-                checked={musicData().includes(music.slug)}
-                onToggle={() => toggleMusic(music.slug)}
-              />
-            </div>
-          }
-        </For>
-      </Toggle>
+        </Toggle>
+        <Toggle title={t('professionsPage.tools')}>
+          <For each={items().filter((item) => item.kind === 'tools').sort((a, b) => a.name > b.name)}>
+            {(tool) =>
+              <div class="mb-1">
+                <Checkbox
+                  labelText={tool.name}
+                  labelPosition="right"
+                  labelClassList="text-sm ml-4 font-cascadia-light"
+                  checked={toolsData().includes(tool.slug)}
+                  onToggle={() => toggleTool(tool.slug)}
+                />
+              </div>
+            }
+          </For>
+        </Toggle>
+        <Toggle title={t('professionsPage.music')}>
+          <For each={items().filter((item) => item.kind === 'music').sort((a, b) => a.name > b.name)}>
+            {(music) =>
+              <div class="mb-1">
+                <Checkbox
+                  labelText={music.name}
+                  labelPosition="right"
+                  labelClassList="text-sm ml-4 font-cascadia-light"
+                  checked={musicData().includes(music.slug)}
+                  onToggle={() => toggleMusic(music.slug)}
+                />
+              </div>
+            }
+          </For>
+        </Toggle>
+      </Show>
     </>
   );
 }

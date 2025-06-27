@@ -3,8 +3,8 @@
 module Dnd5Character
   module Classes
     class ArtificerBuilder
-      WEAPON_CORE = ['light weapon'].freeze
-      ARMOR = ['light armor', 'medium armor', 'shield'].freeze
+      WEAPON_CORE = ['light'].freeze
+      ARMOR = %w[light medium shield].freeze
 
       def call(result:)
         result[:weapon_core_skills] = result[:weapon_core_skills].concat(WEAPON_CORE).uniq

@@ -3,8 +3,8 @@
 module Dnd2024Character
   module Classes
     class RangerBuilder
-      WEAPON_CORE = ['light weapon', 'martial weapon'].freeze
-      ARMOR = ['light armor', 'medium armor', 'shield'].freeze
+      WEAPON_CORE = %w[light martial].freeze
+      ARMOR = %w[light medium shield].freeze
 
       def call(result:)
         result[:weapon_core_skills] = result[:weapon_core_skills].concat(WEAPON_CORE).uniq

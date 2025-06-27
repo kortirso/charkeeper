@@ -3,8 +3,8 @@
 module Dnd2024Character
   module Classes
     class BardBuilder
-      WEAPON_CORE = ['light weapon'].freeze
-      ARMOR = ['light armor'].freeze
+      WEAPON_CORE = ['light'].freeze
+      ARMOR = ['light'].freeze
 
       def call(result:)
         result[:weapon_core_skills] = result[:weapon_core_skills].concat(WEAPON_CORE).uniq

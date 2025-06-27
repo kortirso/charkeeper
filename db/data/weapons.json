@@ -1,7 +1,7 @@
 [
   {
     "slug": "quarterstaff",
-    "kind": "light weapon",
+    "kind": "weapon",
     "name": {
       "en": "Quarterstaff",
       "ru": "Боевой посох"
@@ -11,6 +11,7 @@
       "price": 20
     },
     "info": {
+      "weapon_skill": "light",
       "type": "melee",
       "damage": "1d6",
       "damage_type": "bludge",
@@ -20,7 +21,7 @@
   },
   {
     "slug": "mace",
-    "kind": "light weapon",
+    "kind": "weapon",
     "name": {
       "en": "Mace",
       "ru": "Булава"
@@ -30,6 +31,7 @@
       "price": 500
     },
     "info": {
+      "weapon_skill": "light",
       "type": "melee",
       "damage": "1d6",
       "damage_type": "bludge",
@@ -39,7 +41,7 @@
   },
   {
     "slug": "club",
-    "kind": "light weapon",
+    "kind": "weapon",
     "name": {
       "en": "Club",
       "ru": "Дубинка"
@@ -49,6 +51,7 @@
       "price": 10
     },
     "info": {
+      "weapon_skill": "light",
       "type": "melee",
       "damage": "1d4",
       "damage_type": "bludge",
@@ -58,7 +61,7 @@
   },
   {
     "slug": "dagger",
-    "kind": "light weapon",
+    "kind": "weapon",
     "name": {
       "en": "Dagger",
       "ru": "Кинжал"
@@ -68,6 +71,7 @@
       "price": 200
     },
     "info": {
+      "weapon_skill": "light",
       "type": "thrown",
       "damage": "1d4",
       "damage_type": "pierce",
@@ -78,7 +82,7 @@
   },
   {
     "slug": "spear",
-    "kind": "light weapon",
+    "kind": "weapon",
     "name": {
       "en": "Spear",
       "ru": "Копьё"
@@ -88,6 +92,7 @@
       "price": 100
     },
     "info": {
+      "weapon_skill": "light",
       "type": "thrown",
       "damage": "1d6",
       "damage_type": "pierce",
@@ -98,7 +103,7 @@
   },
   {
     "slug": "light_hammer",
-    "kind": "light weapon",
+    "kind": "weapon",
     "name": {
       "en": "Light Hammer",
       "ru": "Лёгкий молот"
@@ -108,6 +113,7 @@
       "price": 200
     },
     "info": {
+      "weapon_skill": "light",
       "type": "thrown",
       "damage": "1d4",
       "damage_type": "bludge",
@@ -118,7 +124,7 @@
   },
   {
     "slug": "javelin",
-    "kind": "light weapon",
+    "kind": "weapon",
     "name": {
       "en": "Javelin",
       "ru": "Метательное копьё"
@@ -128,6 +134,7 @@
       "price": 50
     },
     "info": {
+      "weapon_skill": "light",
       "type": "thrown",
       "damage": "1d6",
       "damage_type": "pierce",
@@ -138,7 +145,7 @@
   },
   {
     "slug": "greatclub",
-    "kind": "light weapon",
+    "kind": "weapon",
     "name": {
       "en": "Greatclub",
       "ru": "Палица"
@@ -148,6 +155,7 @@
       "price": 20
     },
     "info": {
+      "weapon_skill": "light",
       "type": "melee",
       "damage": "1d8",
       "damage_type": "bludge",
@@ -157,7 +165,7 @@
   },
   {
     "slug": "handaxe",
-    "kind": "light weapon",
+    "kind": "weapon",
     "name": {
       "en": "Handaxe",
       "ru": "Ручной топор"
@@ -167,6 +175,7 @@
       "price": 500
     },
     "info": {
+      "weapon_skill": "light",
       "type": "thrown",
       "damage": "1d6",
       "damage_type": "slash",
@@ -177,7 +186,7 @@
   },
   {
     "slug": "sickle",
-    "kind": "light weapon",
+    "kind": "weapon",
     "name": {
       "en": "Sickle",
       "ru": "Серп"
@@ -187,6 +196,7 @@
       "price": 100
     },
     "info": {
+      "weapon_skill": "light",
       "type": "melee",
       "damage": "1d4",
       "damage_type": "slash",
@@ -196,7 +206,7 @@
   },
   {
     "slug": "light_crossbow",
-    "kind": "light weapon",
+    "kind": "weapon",
     "name": {
       "en": "Light Crossbow",
       "ru": "Лёгкий арбалет"
@@ -206,6 +216,7 @@
       "price": 2500
     },
     "info": {
+      "weapon_skill": "light",
       "type": "range",
       "damage": "1d8",
       "damage_type": "pierce",
@@ -216,7 +227,7 @@
   },
   {
     "slug": "dart",
-    "kind": "light weapon",
+    "kind": "weapon",
     "name": {
       "en": "Dart",
       "ru": "Дротик"
@@ -226,6 +237,7 @@
       "price": 5
     },
     "info": {
+      "weapon_skill": "light",
       "type": "range",
       "damage": "1d4",
       "damage_type": "pierce",
@@ -236,7 +248,7 @@
   },
   {
     "slug": "shortbow",
-    "kind": "light weapon",
+    "kind": "weapon",
     "name": {
       "en": "Shortbow",
       "ru": "Короткий лук"
@@ -246,6 +258,7 @@
       "price": 2500
     },
     "info": {
+      "weapon_skill": "light",
       "type": "range",
       "damage": "1d6",
       "damage_type": "pierce",
@@ -256,7 +269,7 @@
   },
   {
     "slug": "sling",
-    "kind": "light weapon",
+    "kind": "weapon",
     "name": {
       "en": "Sling",
       "ru": "Праща"
@@ -266,6 +279,7 @@
       "price": 10
     },
     "info": {
+      "weapon_skill": "light",
       "type": "range",
       "damage": "1d4",
       "damage_type": "bludge",
@@ -276,7 +290,7 @@
   },
   {
     "slug": "halberd",
-    "kind": "martial weapon",
+    "kind": "weapon",
     "name": {
       "en": "Halberd",
       "ru": "Алебарда"
@@ -286,6 +300,7 @@
       "price": 2000
     },
     "info": {
+      "weapon_skill": "martial",
       "type": "melee",
       "damage": "1d10",
       "damage_type": "slash",
@@ -295,7 +310,7 @@
   },
   {
     "slug": "war_pick",
-    "kind": "martial weapon",
+    "kind": "weapon",
     "name": {
       "en": "War Pick",
       "ru": "Боевая кирка"
@@ -305,6 +320,7 @@
       "price": 500
     },
     "info": {
+      "weapon_skill": "martial",
       "type": "melee",
       "damage": "1d8",
       "damage_type": "pierce",
@@ -314,7 +330,7 @@
   },
   {
     "slug": "warhammer",
-    "kind": "martial weapon",
+    "kind": "weapon",
     "name": {
       "en": "Warhammer",
       "ru": "Боевой молот"
@@ -324,6 +340,7 @@
       "price": 1500
     },
     "info": {
+      "weapon_skill": "martial",
       "type": "melee",
       "damage": "1d8",
       "damage_type": "bludge",
@@ -333,7 +350,7 @@
   },
   {
     "slug": "battleaxe",
-    "kind": "martial weapon",
+    "kind": "weapon",
     "name": {
       "en": "Battleaxe",
       "ru": "Боевой топор"
@@ -343,6 +360,7 @@
       "price": 1000
     },
     "info": {
+      "weapon_skill": "martial",
       "type": "melee",
       "damage": "1d8",
       "damage_type": "slash",
@@ -352,7 +370,7 @@
   },
   {
     "slug": "glaive",
-    "kind": "martial weapon",
+    "kind": "weapon",
     "name": {
       "en": "Glaive",
       "ru": "Глефа"
@@ -362,6 +380,7 @@
       "price": 2000
     },
     "info": {
+      "weapon_skill": "martial",
       "type": "melee",
       "damage": "1d10",
       "damage_type": "slash",
@@ -371,7 +390,7 @@
   },
   {
     "slug": "greatsword",
-    "kind": "martial weapon",
+    "kind": "weapon",
     "name": {
       "en": "Greatsword",
       "ru": "Двуручный меч"
@@ -381,6 +400,7 @@
       "price": 5000
     },
     "info": {
+      "weapon_skill": "martial",
       "type": "melee",
       "damage": "2d6",
       "damage_type": "slash",
@@ -390,7 +410,7 @@
   },
   {
     "slug": "lance",
-    "kind": "martial weapon",
+    "kind": "weapon",
     "name": {
       "en": "Lance",
       "ru": "Длинное копьё"
@@ -400,6 +420,7 @@
       "price": 1000
     },
     "info": {
+      "weapon_skill": "martial",
       "type": "melee",
       "damage": "1d12",
       "damage_type": "pierce",
@@ -409,7 +430,7 @@
   },
   {
     "slug": "longsword",
-    "kind": "martial weapon",
+    "kind": "weapon",
     "name": {
       "en": "Longsword",
       "ru": "Длинный меч"
@@ -419,6 +440,7 @@
       "price": 1500
     },
     "info": {
+      "weapon_skill": "martial",
       "type": "melee",
       "damage": "1d8",
       "damage_type": "slash",
@@ -428,7 +450,7 @@
   },
   {
     "slug": "whip",
-    "kind": "martial weapon",
+    "kind": "weapon",
     "name": {
       "en": "Whip",
       "ru": "Кнут"
@@ -438,6 +460,7 @@
       "price": 200
     },
     "info": {
+      "weapon_skill": "martial",
       "type": "melee",
       "damage": "1d4",
       "damage_type": "slash",
@@ -447,7 +470,7 @@
   },
   {
     "slug": "shortsword",
-    "kind": "martial weapon",
+    "kind": "weapon",
     "name": {
       "en": "Shortsowrd",
       "ru": "Короткий меч"
@@ -457,6 +480,7 @@
       "price": 1000
     },
     "info": {
+      "weapon_skill": "martial",
       "type": "melee",
       "damage": "1d6",
       "damage_type": "pierce",
@@ -466,7 +490,7 @@
   },
   {
     "slug": "maul",
-    "kind": "martial weapon",
+    "kind": "weapon",
     "name": {
       "en": "Maul",
       "ru": "Молот"
@@ -476,6 +500,7 @@
       "price": 1000
     },
     "info": {
+      "weapon_skill": "martial",
       "type": "melee",
       "damage": "2d6",
       "damage_type": "bludge",
@@ -485,7 +510,7 @@
   },
   {
     "slug": "morningstar",
-    "kind": "martial weapon",
+    "kind": "weapon",
     "name": {
       "en": "Morningstar",
       "ru": "Моргенштерн"
@@ -495,6 +520,7 @@
       "price": 1500
     },
     "info": {
+      "weapon_skill": "martial",
       "type": "melee",
       "damage": "1d8",
       "damage_type": "pierce",
@@ -504,7 +530,7 @@
   },
   {
     "slug": "pike",
-    "kind": "martial weapon",
+    "kind": "weapon",
     "name": {
       "en": "Pike",
       "ru": "Пика"
@@ -514,6 +540,7 @@
       "price": 500
     },
     "info": {
+      "weapon_skill": "martial",
       "type": "melee",
       "damage": "1d10",
       "damage_type": "pierce",
@@ -523,7 +550,7 @@
   },
   {
     "slug": "rapier",
-    "kind": "martial weapon",
+    "kind": "weapon",
     "name": {
       "en": "Rapier",
       "ru": "Рапира"
@@ -533,6 +560,7 @@
       "price": 2500
     },
     "info": {
+      "weapon_skill": "martial",
       "type": "melee",
       "damage": "1d8",
       "damage_type": "pierce",
@@ -542,7 +570,7 @@
   },
   {
     "slug": "greataxe",
-    "kind": "martial weapon",
+    "kind": "weapon",
     "name": {
       "en": "Greataxe",
       "ru": "Секира"
@@ -552,6 +580,7 @@
       "price": 3000
     },
     "info": {
+      "weapon_skill": "martial",
       "type": "melee",
       "damage": "1d12",
       "damage_type": "slash",
@@ -561,7 +590,7 @@
   },
   {
     "slug": "scimitar",
-    "kind": "martial weapon",
+    "kind": "weapon",
     "name": {
       "en": "Scimitar",
       "ru": "Скимитар"
@@ -571,6 +600,7 @@
       "price": 2500
     },
     "info": {
+      "weapon_skill": "martial",
       "type": "melee",
       "damage": "1d6",
       "damage_type": "slash",
@@ -580,7 +610,7 @@
   },
   {
     "slug": "trident",
-    "kind": "martial weapon",
+    "kind": "weapon",
     "name": {
       "en": "Trident",
       "ru": "Трезубец"
@@ -590,6 +620,7 @@
       "price": 500
     },
     "info": {
+      "weapon_skill": "martial",
       "type": "thrown",
       "damage": "1d6",
       "damage_type": "pierce",
@@ -600,7 +631,7 @@
   },
   {
     "slug": "flail",
-    "kind": "martial weapon",
+    "kind": "weapon",
     "name": {
       "en": "Flail",
       "ru": "Цеп"
@@ -610,6 +641,7 @@
       "price": 1000
     },
     "info": {
+      "weapon_skill": "martial",
       "type": "melee",
       "damage": "1d8",
       "damage_type": "bludge",
@@ -619,7 +651,7 @@
   },
   {
     "slug": "hand_crossbow",
-    "kind": "martial weapon",
+    "kind": "weapon",
     "name": {
       "en": "Hand Crossbow",
       "ru": "Ручной арбалет"
@@ -629,6 +661,7 @@
       "price": 7500
     },
     "info": {
+      "weapon_skill": "martial",
       "type": "range",
       "damage": "1d6",
       "damage_type": "pierce",
@@ -639,7 +672,7 @@
   },
   {
     "slug": "heavy_crossbow",
-    "kind": "martial weapon",
+    "kind": "weapon",
     "name": {
       "en": "Heavy Crossbow",
       "ru": "Тяжёлый арбалет"
@@ -649,6 +682,7 @@
       "price": 5000
     },
     "info": {
+      "weapon_skill": "martial",
       "type": "range",
       "damage": "1d10",
       "damage_type": "pierce",
@@ -659,7 +693,7 @@
   },
   {
     "slug": "longbow",
-    "kind": "martial weapon",
+    "kind": "weapon",
     "name": {
       "en": "Longbow",
       "ru": "Длинный лук"
@@ -669,6 +703,7 @@
       "price": 5000
     },
     "info": {
+      "weapon_skill": "martial",
       "type": "range",
       "damage": "1d8",
       "damage_type": "pierce",
@@ -679,7 +714,7 @@
   },
   {
     "slug": "blowgun",
-    "kind": "martial weapon",
+    "kind": "weapon",
     "name": {
       "en": "Blowgun",
       "ru": "Духовая трубка"
@@ -689,6 +724,7 @@
       "price": 1000
     },
     "info": {
+      "weapon_skill": "martial",
       "type": "range",
       "damage": "1",
       "damage_type": "pierce",
@@ -699,7 +735,7 @@
   },
   {
     "slug": "net",
-    "kind": "martial weapon",
+    "kind": "weapon",
     "name": {
       "en": "Net",
       "ru": "Сеть"
@@ -709,6 +745,7 @@
       "price": 100
     },
     "info": {
+      "weapon_skill": "martial",
       "type": "range",
       "dist": "5/15",
       "caption": []
@@ -716,7 +753,7 @@
   },
   {
     "slug": "musket",
-    "kind": "martial weapon",
+    "kind": "weapon",
     "name": {
       "en": "Musket",
       "ru": "Мушкет"
@@ -726,6 +763,7 @@
       "price": 50000
     },
     "info": {
+      "weapon_skill": "martial",
       "type": "range",
       "damage": "1d12",
       "damage_type": "pierce",
@@ -736,7 +774,7 @@
   },
   {
     "slug": "pistol",
-    "kind": "martial weapon",
+    "kind": "weapon",
     "name": {
       "en": "Pistol",
       "ru": "Пистоль"
@@ -746,6 +784,7 @@
       "price": 25000
     },
     "info": {
+      "weapon_skill": "martial",
       "type": "range",
       "damage": "1d10",
       "damage_type": "pierce",

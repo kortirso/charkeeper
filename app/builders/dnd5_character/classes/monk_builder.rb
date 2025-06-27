@@ -3,7 +3,7 @@
 module Dnd5Character
   module Classes
     class MonkBuilder
-      WEAPON_CORE = ['light weapon'].freeze
+      WEAPON_CORE = ['light'].freeze
       DEFAULT_WEAPON_SKILLS = %w[shortsword].freeze
 
       def call(result:)

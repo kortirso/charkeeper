@@ -12,8 +12,8 @@ module CharactersContext
         acrobatics animal arcana athletics deception history insight intimidation investigation
         medicine nature perception performance persuasion religion sleight stealth survival
       ].freeze
-      WEAPON_CORE_SKILLS = ['light weapon', 'martial weapon'].freeze
-      ARMOR_PROFICIENCY = ['light armor', 'medium armor', 'heavy armor', 'shield'].freeze
+      WEAPON_CORE_SKILLS = %w[light martial].freeze
+      ARMOR_PROFICIENCY = %w[light medium heavy shield].freeze
       LANGUAGES = %w[common dwarvish elvish giant gnomish goblin halfling orc draconic undercommon infernal druidic].freeze
       DAMAGE_TYPES = %w[
         bludge pierce slash acid cold fire force lighting necrotic
@@ -54,7 +54,7 @@ module CharactersContext
           optional(:selected_features).hash
           optional(:weapon_core_skills).value(:array).each(included_in?: WEAPON_CORE_SKILLS)
           optional(:weapon_skills).value(:array).each(
-            included_in?: ::Dnd5::Item.where(kind: ['light weapon', 'martial weapon']).pluck(:slug).sort
+            included_in?: ::Dnd5::Item.where(kind: %w[light martial]).pluck(:slug).sort
           )
           optional(:armor_proficiency).value(:array).each(included_in?: ARMOR_PROFICIENCY)
           optional(:languages).value(:array).each(included_in?: LANGUAGES)

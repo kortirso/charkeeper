@@ -4,8 +4,8 @@ module Dnd2024Character
   module Classes
     class DruidBuilder
       LANGUAGES = %w[druidic].freeze
-      WEAPON_CORE = ['light weapon'].freeze
-      ARMOR = ['light armor', 'shield'].freeze
+      WEAPON_CORE = ['light'].freeze
+      ARMOR = %w[light shield].freeze
       TOOLS = %w[herbalism].freeze
 
       def call(result:)

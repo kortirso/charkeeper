@@ -3,8 +3,8 @@
 module Dnd2024Character
   module Classes
     class ArtificerBuilder
-      WEAPON_CORE = ['light weapon'].freeze
-      ARMOR = ['light armor', 'medium armor', 'shield'].freeze
+      WEAPON_CORE = ['light'].freeze
+      ARMOR = %w[light medium shield].freeze
       TOOLS = %w[thieves tinker].freeze
 
       def call(result:)

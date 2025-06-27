@@ -1,7 +1,7 @@
 [
   {
     "slug": "padded_armor",
-    "kind": "light armor",
+    "kind": "armor",
     "name": {
       "en": "Padded Armor",
       "ru": "Стёганный доспех"
@@ -12,13 +12,14 @@
     },
     "info": {
       "ac": 11,
+      "armor_skill": "light",
       "str_req": null,
       "stealth": false
     }
   },
   {
     "slug": "leather_armor",
-    "kind": "light armor",
+    "kind": "armor",
     "name": {
       "en": "Leather Armor",
       "ru": "Кожаный доспех"
@@ -29,13 +30,14 @@
     },
     "info": {
       "ac": 11,
+      "armor_skill": "light",
       "str_req": null,
       "stealth": true
     }
   },
   {
     "slug": "studded_leather_armor",
-    "kind": "light armor",
+    "kind": "armor",
     "name": {
       "en": "Studded Leather Armor",
       "ru": "Проклёпанная кожа"
@@ -46,13 +48,14 @@
     },
     "info": {
       "ac": 12,
+      "armor_skill": "light",
       "str_req": null,
       "stealth": true
     }
   },
   {
     "slug": "hide_armor",
-    "kind": "medium armor",
+    "kind": "armor",
     "name": {
       "en": "Hide Armor",
       "ru": "Шкурный доспех"
@@ -63,13 +66,14 @@
     },
     "info": {
       "ac": 12,
+      "armor_skill": "medium",
       "str_req": null,
       "stealth": true
     }
   },
   {
     "slug": "chain_shirt",
-    "kind": "medium armor",
+    "kind": "armor",
     "name": {
       "en": "Chain Shirt",
       "ru": "Кольчужная рубаха"
@@ -80,13 +84,14 @@
     },
     "info": {
       "ac": 13,
+      "armor_skill": "medium",
       "str_req": null,
       "stealth": true
     }
   },
   {
     "slug": "scale_mail_armor",
-    "kind": "medium armor",
+    "kind": "armor",
     "name": {
       "en": "Scale Mail Armor",
       "ru": "Чешуйчатый доспех"
@@ -97,13 +102,14 @@
     },
     "info": {
       "ac": 14,
+      "armor_skill": "medium",
       "str_req": null,
       "stealth": false
     }
   },
   {
     "slug": "breastplate",
-    "kind": "medium armor",
+    "kind": "armor",
     "name": {
       "en": "Breastplate",
       "ru": "Кираса"
@@ -114,13 +120,14 @@
     },
     "info": {
       "ac": 14,
+      "armor_skill": "medium",
       "str_req": null,
       "stealth": true
     }
   },
   {
     "slug": "half_plate_armor",
-    "kind": "medium armor",
+    "kind": "armor",
     "name": {
       "en": "Half Plate Armor",
       "ru": "Полулаты"
@@ -131,13 +138,14 @@
     },
     "info": {
       "ac": 15,
+      "armor_skill": "medium",
       "str_req": null,
       "stealth": false
     }
   },
   {
     "slug": "ring_mail_armor",
-    "kind": "heavy armor",
+    "kind": "armor",
     "name": {
       "en": "Ring Mail Armor",
       "ru": "Кольчатый доспех"
@@ -148,13 +156,14 @@
     },
     "info": {
       "ac": 14,
+      "armor_skill": "heavy",
       "str_req": null,
       "stealth": false
     }
   },
   {
     "slug": "chain_mail",
-    "kind": "heavy armor",
+    "kind": "armor",
     "name": {
       "en": "Chain Mail",
       "ru": "Кольчуга"
@@ -165,13 +174,14 @@
     },
     "info": {
       "ac": 16,
+      "armor_skill": "heavy",
       "str_req": 13,
       "stealth": false
     }
   },
   {
     "slug": "splint_armor",
-    "kind": "heavy armor",
+    "kind": "armor",
     "name": {
       "en": "Splint Armor",
       "ru": "Наборный доспех"
@@ -182,13 +192,14 @@
     },
     "info": {
       "ac": 17,
+      "armor_skill": "heavy",
       "str_req": 15,
       "stealth": false
     }
   },
   {
     "slug": "plate_armor",
-    "kind": "heavy armor",
+    "kind": "armor",
     "name": {
       "en": "Plate Armor",
       "ru": "Латы"
@@ -199,6 +210,7 @@
     },
     "info": {
       "ac": 18,
+      "armor_skill": "heavy",
       "str_req": 15,
       "stealth": false
     }

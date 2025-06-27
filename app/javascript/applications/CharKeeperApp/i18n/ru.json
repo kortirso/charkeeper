@@ -277,13 +277,13 @@
       "druidic": "Друидический"
     },
     "coreWeaponSkills": {
-      "light weapon": "Простое оружие",
-      "martial weapon": "Воинское оружие"
+      "light": "Простое оружие",
+      "martial": "Воинское оружие"
     },
     "coreArmorSkills": {
-      "light armor": "Лёгкий доспех",
-      "medium armor": "Средний доспех",
-      "heavy armor": "Тяжёлый доспех",
+      "light": "Лёгкий доспех",
+      "medium": "Средний доспех",
+      "heavy": "Тяжёлый доспех",
       "shield": "Щит"
     },
     "selectedFeatures": {

@@ -3,8 +3,8 @@
 module Dnd2024Character
   module Classes
     class RogueBuilder
-      WEAPON_CORE = ['light weapon'].freeze
-      ARMOR = ['light armor'].freeze
+      WEAPON_CORE = ['light'].freeze
+      ARMOR = ['light'].freeze
       TOOLS = %w[thieves].freeze
 
       def call(result:)

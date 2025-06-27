@@ -3,7 +3,7 @@
 module Dnd2024Character
   module Classes
     class WizardBuilder
-      WEAPON_CORE = ['light weapon'].freeze
+      WEAPON_CORE = ['light'].freeze
 
       def call(result:)
         result[:weapon_core_skills] = result[:weapon_core_skills].concat(WEAPON_CORE).uniq
