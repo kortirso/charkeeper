@@ -71,6 +71,13 @@ export const Pathfinder2Combat = (props) => {
     <>
       <StatsBlock
         items={[
+          { title: t('terms.armorClass'), value: character().armor_class },
+          { title: t('terms.perception'), value: character().perception },
+          { title: t('terms.speed'), value: character().speed }
+        ]}
+      />
+      <StatsBlock
+        items={[
           { title: t('terms.health.current'), value: character().health.current },
           { title: t('terms.health.max'), value: character().health.max },
           { title: t('terms.health.temp'), value: character().health.temp }

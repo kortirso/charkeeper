@@ -174,8 +174,9 @@
   "terms": {
     "spellAttack": "Бонус атаки",
     "saveDC": "Спасброски",
-    "armorClass": "КД",
+    "armorClass": "Класс брони",
     "initiative": "Инициатива",
+    "perception": "Восприятие",
     "speed": "Скорость",
     "health": {
       "current": "Хиты",

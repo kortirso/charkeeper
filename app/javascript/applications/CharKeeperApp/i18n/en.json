@@ -176,6 +176,7 @@
     "saveDC": "Save DC",
     "armorClass": "Armor Class",
     "initiative": "Initiative",
+    "perception": "Perception",
     "speed": "Speed",
     "health": {
       "current": "Health",

@@ -5,6 +5,7 @@ module Pathfinder2
     include StoreModel::Model
 
     attribute :level, :integer, default: 1
+    attribute :speed, :integer, default: 25
     attribute :main_ability, :string
     attribute :race, :string
     attribute :subrace, :string
