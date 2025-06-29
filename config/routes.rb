@@ -74,7 +74,10 @@ Rails.application.routes.draw do
     end
 
     namespace :daggerheart do
-      resources :characters, only: %i[create update]
+      resources :characters, only: %i[create update] do
+        resources :spells, only: %i[index create update destroy], module: 'characters'
+      end
+      resources :spells, only: %i[index]
     end
   end
 

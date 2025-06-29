@@ -11,6 +11,7 @@ module Daggerheart
     attribute :community, :string
     attribute :main_class, :string
     attribute :classes, array: true
+    attribute :domains, array: true, default: {} # домены выбранные для вторичных классов
     attribute :subclasses, array: true, default: {}
     attribute :subclasses_mastery, array: true, default: {}
     attribute :experiences, array: true, default: {}
@@ -53,6 +54,14 @@ module Daggerheart
 
     def self.subclasses_info(class_value)
       config.dig('classes', class_value, 'subclasses')
+    end
+
+    def self.subclass_info(class_value, subclass_value)
+      config.dig('classes', class_value, 'subclasses', subclass_value)
+    end
+
+    def self.domains_info(class_value)
+      config.dig('classes', class_value, 'domains')
     end
 
     def self.communities

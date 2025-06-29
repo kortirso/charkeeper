@@ -5,7 +5,7 @@ module DaggerheartCharacter
     delegate :id, :name, :data, to: :__getobj__
     delegate :heritage, :main_class, :classes, :subclasses, :level, :gold, :spent_armor_slots, :health_marked, :stress_marked,
              :hope_marked, :traits, :total_gold, :subclasses_mastery, :experiences, :energy, :community, :selected_features,
-             :leveling, :experience, :heritage_name, :heritage_features, to: :data
+             :leveling, :experience, :heritage_name, :heritage_features, :domains, to: :data
 
     def method_missing(_method, *args); end
 
@@ -60,6 +60,19 @@ module DaggerheartCharacter
 
     def attacks
       @attacks ||= [unarmed_attack] + weapons.flat_map { |item| calculate_attack(item) }
+    end
+
+    def selected_domains
+      @selected_domains ||= (Daggerheart::Character.domains_info(main_class) + domains.values).uniq
+    end
+
+    def domain_cards_max
+      @domain_cards_max ||= 1 + level + leveling['domain_cards'].to_i
+    end
+
+    def spellcast_traits
+      @spellcast_traits ||=
+        subclasses.filter_map { |key, value| Daggerheart::Character.subclass_info(key, value)['spellcast'] }.uniq
     end
 
     private

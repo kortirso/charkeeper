@@ -86,7 +86,7 @@ describe Frontend::CharactersController do
       end
 
       context 'for daggerheart' do
-        let!(:character) { create :character, type: 'Daggerheart::Character', user: user_session.user }
+        let!(:character) { create :character, :daggerheart, user: user_session.user }
 
         it 'returns data' do
           get :show, params: { id: character.id, charkeeper_access_token: access_token }

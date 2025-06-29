@@ -53,6 +53,8 @@ module Charkeeper
     register('commands.characters_context.daggerheart.create') { CharactersContext::Daggerheart::CreateCommand.new }
     register('commands.characters_context.daggerheart.update') { CharactersContext::Daggerheart::UpdateCommand.new }
     register('commands.characters_context.daggerheart.add_bonus') { CharactersContext::Daggerheart::AddBonusCommand.new }
+    register('commands.characters_context.daggerheart.add_spell') { CharactersContext::Daggerheart::AddSpellCommand.new }
+    register('commands.characters_context.daggerheart.change_spell') { CharactersContext::Daggerheart::ChangeSpellCommand.new }
 
     register('commands.image_processing.attach_avatar_by_file') { ImageProcessingContext::AttachAvatarByFileCommand.new }
     register('commands.image_processing.attach_avatar_by_url') { ImageProcessingContext::AttachAvatarByUrlCommand.new }
