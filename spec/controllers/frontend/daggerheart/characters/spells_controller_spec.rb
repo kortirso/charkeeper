@@ -133,7 +133,7 @@ describe Frontend::Daggerheart::Characters::SpellsController do
             patch :update, params: {
               character_id: user_character.id,
               id: 'unexisting',
-              ready_to_use: true,
+              character_spell: { ready_to_use: true },
               charkeeper_access_token: access_token
             }
           }
@@ -151,7 +151,7 @@ describe Frontend::Daggerheart::Characters::SpellsController do
             patch :update, params: {
               character_id: user_character.id,
               id: character_spell.id,
-              ready_to_use: true,
+              character_spell: { ready_to_use: true },
               charkeeper_access_token: access_token
             }
           }

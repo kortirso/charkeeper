@@ -46,7 +46,7 @@ export const Dnd5 = (props) => {
     const fetchSpells = async () => await fetchSpellsRequest(
       appState.accessToken,
       props.character.provider,
-      spellLevels.length === 0 ? 0 : Math.max(...spellLevels)
+      { max_level: spellLevels.length === 0 ? 0 : Math.max(...spellLevels) }
     );
 
     Promise.all([fetchCharacterSpells(), fetchSpells()]).then(

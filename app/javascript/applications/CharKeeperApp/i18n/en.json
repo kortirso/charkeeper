@@ -9,6 +9,7 @@
   "alerts": {
     "restIsFinished": "Rest is finished",
     "itemIsAdded": "Item is added",
+    "domainCardIsAdded": "Domain card is added to vault",
     "characterIsUpdated": "Character is updated",
     "fileSizeLimit": "File size should be less than 1 MB",
     "invalidSubclassesList": "You need to select subclasses for all classes",
@@ -143,7 +144,10 @@
     "experience": "Experience",
     "bonuses": "Bonuses",
     "newBonus": "New bonus",
-    "newBonusComment": "Comment"
+    "newBonusComment": "Comment",
+    "domainCards": "Domain cards",
+    "loadout": "Loadout",
+    "vault": "Vault"
   },
   "professionsPage": {
     "feats": "Feats",
@@ -189,7 +193,9 @@
     "known": "Known",
     "prepared": "Prepared",
     "proficiencyBonus": "Proficiency bonus",
-    "hitDices": "Hit dices"
+    "hitDices": "Hit dices",
+    "domainCardsLimit": "Domain cards",
+    "spellcastTraits": "Spellcast traits"
   },
   "weaponDamageType": {
     "2hands": "Two handed",

@@ -3,15 +3,14 @@ import * as i18n from '@solid-primitives/i18n';
 
 import { Select, Checkbox, Button } from '../../../atoms';
 
-import daggerheartConfig from '../../../../data/daggerheart.json';
+import config from '../../../../data/daggerheart.json';
 import { useAppState, useAppLocale, useAppAlert } from '../../../../context';
 import { PlusSmall, Minus } from '../../../../assets';
 import { updateCharacterRequest } from '../../../../requests/updateCharacterRequest';
 
 export const DaggerheartLeveling = (props) => {
   const character = () => props.character;
-
-  const classes = () => daggerheartConfig.classes;
+  const classes = () => config.classes;
 
   // changeable data
   const [classesData, setClassesData] = createSignal(character().classes);

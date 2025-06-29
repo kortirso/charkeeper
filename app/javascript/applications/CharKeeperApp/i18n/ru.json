@@ -9,6 +9,7 @@
   "alerts": {
     "restIsFinished": "Отдых проведён",
     "itemIsAdded": "Предмет добавлен",
+    "domainCardIsAdded": "Карта домена добавлена в хранилище",
     "characterIsUpdated": "Персонаж обновлён",
     "fileSizeLimit": "Размер файла должен быть меньше 1 МБ",
     "invalidSubclassesList": "Необходимо выбрать все подклассы для классов",
@@ -143,7 +144,10 @@
     "experience": "Опытность",
     "bonuses": "Бонусы",
     "newBonus": "Новый бонус",
-    "newBonusComment": "Комментарий"
+    "newBonusComment": "Комментарий",
+    "domainCards": "Карты доменов",
+    "loadout": "Инвентарь",
+    "vault": "Хранилище"
   },
   "professionsPage": {
     "feats": "Черты",
@@ -189,7 +193,9 @@
     "known": "Известные",
     "prepared": "Приготовленные",
     "proficiencyBonus": "Бонус мастерства",
-    "hitDices": "Кости хитов"
+    "hitDices": "Кости хитов",
+    "domainCardsLimit": "Макс карт",
+    "spellcastTraits": "Способности"
   },
   "weaponDamageType": {
     "2hands": "Двуручная",

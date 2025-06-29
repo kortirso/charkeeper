@@ -254,5 +254,16 @@
       },
       "domains": ["codex", "splendor"]
     }
+  },
+  "domains": {
+    "arcana": { "name": { "en": "Arcana", "ru": "Arcana" } },
+    "blade": { "name": { "en": "Blade", "ru": "Blade" } },
+    "bone": { "name": { "en": "Bone", "ru": "Bone" } },
+    "codex": { "name": { "en": "Codex", "ru": "Codex" } },
+    "grace": { "name": { "en": "Grace", "ru": "Grace" } },
+    "midnight": { "name": { "en": "Midnight", "ru": "Midnight" } },
+    "sage": { "name": { "en": "Sage", "ru": "Sage" } },
+    "splendor": { "name": { "en": "Splendor", "ru": "Splendor" } },
+    "valor": { "name": { "en": "Valor", "ru": "Valor" } }
   }
 }

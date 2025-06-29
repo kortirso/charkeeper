@@ -59,8 +59,10 @@ module Frontend
         end
 
         def update_params
-          result = params.permit(:notes).to_h
-          result[:ready_to_use] = to_bool.call(params[:ready_to_use]) if params[:ready_to_use]
+          result = params.require(:character_spell).permit!.to_h
+          return result unless params.dig(:character_spell, :ready_to_use)
+
+          result[:ready_to_use] = to_bool.call(params.dig(:character_spell, :ready_to_use))
           result
         end
       end
