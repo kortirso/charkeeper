@@ -138,7 +138,7 @@ module Dnd2024Character
       end
     end
 
-    # rubocop: disable Metrics/AbcSize, Metrics/MethodLength, Metrics/PerceivedComplexity
+    # rubocop: disable Metrics/AbcSize, Metrics/MethodLength
     def melee_attack(item)
       captions = item[:items_info]['caption']
 
@@ -150,32 +150,31 @@ module Dnd2024Character
           slug: item[:items_slug],
           name: item[:items_name][I18n.locale.to_s],
           action_type: 'action',
-          hands: captions.include?('2handed') ? '2' : '1',
-          melee_distance: captions.include?('reach') ? 10 : 5,
+          hands: captions.key?('2handed') ? '2' : '1',
+          melee_distance: captions.key?('reach') ? 10 : 5,
           attack_bonus: weapon_proficiency(item) ? (key_ability_bonus + proficiency_bonus) : key_ability_bonus,
           damage: item[:items_info]['damage'],
           damage_bonus: key_ability_bonus,
           damage_type: item[:items_info]['damage_type'],
           # для будущих проверок
           kind: item[:items_kind].split[0],
-          caption: captions,
-          tooltips: captions.select { |item| item.in?(MELEE_ATTACK_TOOLTIPS) },
+          caption: captions.keys,
+          tooltips: captions.slice(MELEE_ATTACK_TOOLTIPS).keys,
           notes: item[:notes]
         }
       ]
 
       # универсальное оружие двуручным хватом
-      versatile = captions.find { |caption| caption.include?('versatile') }
-      if versatile && item[:quantity] == 1
+      if captions.key?('versatile') && item[:quantity] == 1
         response << response[0].merge({
           hands: '2',
-          damage: versatile.split('-')[1],
+          damage: captions['versatile'],
           tooltips: ['2handed']
         })
       end
 
       # два лёгких оружия
-      if captions.include?('light') && item[:quantity] > 1
+      if captions.key?('light') && item[:quantity] > 1
         response[0][:tooltips] << 'dual'
         response << response[0].merge({
           action_type: 'bonus action',
@@ -197,7 +196,7 @@ module Dnd2024Character
           slug: item[:items_slug],
           name: item[:items_name][I18n.locale.to_s],
           action_type: 'action',
-          hands: captions.include?('2handed') ? '2' : '1',
+          hands: captions.key?('2handed') ? '2' : '1',
           range_distance: item[:items_info]['dist'],
           attack_bonus: weapon_proficiency(item) ? (key_ability_bonus + proficiency_bonus) : key_ability_bonus,
           damage: item[:items_info]['damage'],
@@ -205,14 +204,14 @@ module Dnd2024Character
           damage_type: item[:items_info]['damage_type'],
           # для будущих проверок
           kind: item[:items_kind].split[0],
-          caption: captions,
-          tooltips: captions.select { |item| item.in?(RANGE_ATTACK_TOOLTIPS) },
+          caption: captions.keys,
+          tooltips: captions.slice(RANGE_ATTACK_TOOLTIPS).keys,
           notes: item[:notes]
         }
       ]
 
       # два лёгких оружия
-      if captions.include?('light') && item[:quantity] == 2
+      if captions.key?('light') && item[:quantity] == 2
         response << response[0].merge({
           action_type: 'bonus action',
           damage_bonus: 0
@@ -221,10 +220,10 @@ module Dnd2024Character
 
       response
     end
-    # rubocop: enable Metrics/AbcSize, Metrics/MethodLength, Metrics/PerceivedComplexity
+    # rubocop: enable Metrics/AbcSize, Metrics/MethodLength
 
     def find_key_ability_bonus(type, captions)
-      return [modifiers['str'], modifiers['dex']].max if captions.include?('finesse')
+      return [modifiers['str'], modifiers['dex']].max if captions.key?('finesse')
       return modifiers['str'] if type == 'melee'
 
       modifiers['dex']

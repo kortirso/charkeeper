@@ -58,7 +58,7 @@ module Dnd5Character
           attack[:attack_bonus] = key_ability_bonus + proficiency_bonus
           attack[:damage_bonus] = key_ability_bonus if attack[:action_type] == 'action'
           attack[:damage] = "1d#{[attack[:damage].split('d')[-1].to_i, (((class_level + 1) / 6) + 2) * 2].max}"
-          attack[:tooltips] = attack[:tooltips].push('monk')
+          attack[:tooltips] = attack[:tooltips].push('monk').uniq
         end
         unarmed_attack = result.find { |attack| attack[:kind] == 'unarmed' && attack[:action_type] == 'action' }
         result << unarmed_attack.merge({ action_type: 'bonus action', tooltips: ['flurry_of_blows'], damage_bonus: 0 })

@@ -99,8 +99,8 @@ module Pathfinder2Character
         strength_enough: equiped_armor.nil? ||
                          equiped_armor.dig(:items_info, 'str_req').nil? ||
                          abilities['str'] >= equiped_armor.dig(:items_info, 'str_req'),
-        flexible: equiped_armor.nil? || equiped_armor.dig(:items_info, 'tooltips').include?('flexible'),
-        noisy: equiped_armor&.dig(:items_info, 'tooltips')&.include?('noisy')
+        flexible: equiped_armor.nil? || equiped_armor.dig(:items_info, 'tooltips', 'flexible') || false,
+        noisy: equiped_armor&.dig(:items_info, 'tooltips', 'noisy') || false
       }
     end
 

@@ -197,14 +197,14 @@ export const Dnd5Combat = (props) => {
               {(attack) =>
                 <tr>
                   <td class="py-1">
-                    <p>{attack.name}</p>
+                    <p class="font-cascadia-light">{attack.name}</p>
                     <Show when={attack.tooltips.length > 0}>
-                      <p class="text-xs">
+                      <p class="text-xs font-cascadia-light">
                         {attack.tooltips.map((item) => t(`attack.tooltips.${item}`)).join(', ')}
                       </p>
                     </Show>
                     <Show when={attack.notes}>
-                      <p class="text-xs">{attack.notes}</p>
+                      <p class="text-xs font-cascadia-light">{attack.notes}</p>
                     </Show>
                   </td>
                   <td class="py-1 text-center">{modifier(attack.attack_bonus)}</td>

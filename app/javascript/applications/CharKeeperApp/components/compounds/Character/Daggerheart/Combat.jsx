@@ -109,12 +109,12 @@ export const DaggerheartCombat = (props) => {
                   <td class="py-1">
                     <p class="font-cascadia-light">{attack.name}</p>
                     <Show when={attack.features.length > 0}>
-                      <p class="text-xs">
+                      <p class="text-xs font-cascadia-light">
                         {attack.tooltips.join(', ')}
                       </p>
                     </Show>
                     <Show when={attack.notes}>
-                      <p class="text-xs">{attack.notes}</p>
+                      <p class="text-xs font-cascadia-light">{attack.notes}</p>
                     </Show>
                   </td>
                   <td class="py-1 text-center">{modifier(attack.attack_bonus)}</td>
