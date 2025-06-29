@@ -15,6 +15,7 @@ module CharactersContext
         params do
           required(:character).filled(type?: ::Daggerheart::Character)
           optional(:classes).hash
+          optional(:domains).hash
           optional(:subclasses).hash
           optional(:subclasses_mastery).hash
           optional(:traits).hash do
@@ -42,6 +43,7 @@ module CharactersContext
             required(:stress).filled(:integer)
             required(:evasion).filled(:integer)
             required(:proficiency).filled(:integer)
+            required(:domain_cards).filled(:integer)
           end
           optional(:name).filled(:string)
           optional(:avatar_file).hash do

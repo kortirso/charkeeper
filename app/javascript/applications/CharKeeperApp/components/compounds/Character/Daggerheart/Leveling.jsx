@@ -8,6 +8,8 @@ import { useAppState, useAppLocale, useAppAlert } from '../../../../context';
 import { PlusSmall, Minus } from '../../../../assets';
 import { updateCharacterRequest } from '../../../../requests/updateCharacterRequest';
 
+import { translate } from '../../../../helpers';
+
 export const DaggerheartLeveling = (props) => {
   const character = () => props.character;
   const classes = () => config.classes;
@@ -15,6 +17,7 @@ export const DaggerheartLeveling = (props) => {
   // changeable data
   const [classesData, setClassesData] = createSignal(character().classes);
   const [subclassesData, setSubclassesData] = createSignal(character().subclasses);
+  const [domainsData, setDomainsData] = createSignal(character().domains);
   const [subclassesMasteryData, setSubclassesMasteryData] = createSignal(character().subclasses_mastery);
   const [levelingData, setLevelingData] = createSignal(character().leveling);
 
@@ -47,6 +50,8 @@ export const DaggerheartLeveling = (props) => {
 
     return 0;
   });
+
+  const classDomains = createMemo(() => translate(config.domains, locale()));
 
   // actions
   /* eslint-disable solid/reactivity */
@@ -100,6 +105,8 @@ export const DaggerheartLeveling = (props) => {
     });
   }
 
+  const selectDomain = (classSlug, value) => setDomainsData({ ...domainsData(), [classSlug]: value });
+
   const updateLeveling = async (key, value) => {
     const newValue = levelingData()[key] === value ? (value - 1) : value;
     setLevelingData({ ...levelingData(), [key]: newValue });
@@ -120,7 +127,8 @@ export const DaggerheartLeveling = (props) => {
           classes: classesData(),
           subclasses: subclassesData(),
           subclasses_mastery: subclassesMasteryData(),
-          leveling: levelingData()
+          leveling: levelingData(),
+          domains: domainsData()
         }
       }
     );
@@ -184,13 +192,25 @@ export const DaggerheartLeveling = (props) => {
                     </Show>
                   </div>
                 </Show>
-                <Show when={classesData()[classSlug] && !character().subclasses[classSlug]}>
-                  <Select
-                    containerClassList="w-full"
-                    items={Object.entries(classes()[classSlug].subclasses).reduce((acc, [key, values]) => { acc[key] = values.name[locale()]; return acc; }, {} )}
-                    selectedValue={subclassesData()[classSlug]}
-                    onSelect={(value) => selectSubclass(classSlug, value)}
-                  />
+                <Show when={classesData()[classSlug]}>
+                  <Show when={classSlug !== character().main_class && !character().domains[classSlug]}>
+                    <Select
+                      containerClassList="w-full"
+                      labelText={t('newCharacterPage.daggerheart.domain')}
+                      items={Object.fromEntries(Object.entries(classDomains()).filter(([key,]) => classes()[classSlug].domains.includes(key)))}
+                      selectedValue={domainsData()[classSlug]}
+                      onSelect={(value) => selectDomain(classSlug, value)}
+                    />
+                  </Show>
+                  <Show when={!character().subclasses[classSlug]}>
+                    <Select
+                      containerClassList="w-full"
+                      labelText={t('newCharacterPage.daggerheart.subclass')}
+                      items={Object.entries(classes()[classSlug].subclasses).reduce((acc, [key, values]) => { acc[key] = values.name[locale()]; return acc; }, {} )}
+                      selectedValue={subclassesData()[classSlug]}
+                      onSelect={(value) => selectSubclass(classSlug, value)}
+                    />
+                  </Show>
                 </Show>
               </div>
             }
@@ -198,51 +218,32 @@ export const DaggerheartLeveling = (props) => {
         }
       </For>
       <Show when={tier() > 0}>
-        <div class="mt-4 mb-2">
-          <p class="text-sm/4 font-cascadia-light uppercase mb-1">{t('daggerheart.leveling.health')}</p>
-          <div class="flex">
-            <For each={Array.from([...Array(tier() * 2).keys()], (x) => x + 1)}>
-              {(index) =>
-                <Checkbox
-                  filled
-                  checked={levelingData().health >= index}
-                  classList="mr-1"
-                  onToggle={() => updateLeveling('health', index)}
-                />
-              }
-            </For>
-          </div>
-        </div>
-        <div class="mb-2">
-          <p class="text-sm/4 font-cascadia-light uppercase mb-1">{t('daggerheart.leveling.stress')}</p>
-          <div class="flex">
-            <For each={Array.from([...Array(tier() * 2).keys()], (x) => x + 1)}>
-              {(index) =>
-                <Checkbox
-                  filled
-                  checked={levelingData().stress >= index}
-                  classList="mr-1"
-                  onToggle={() => updateLeveling('stress', index)}
-                />
-              }
-            </For>
-          </div>
-        </div>
-        <div class="mb-2">
-          <p class="text-sm/4 font-cascadia-light uppercase mb-1">{t('daggerheart.leveling.evasion')}</p>
-          <div class="flex">
-            <For each={Array.from([...Array(tier()).keys()], (x) => x + 1)}>
-              {(index) =>
-                <Checkbox
-                  filled
-                  checked={levelingData().evasion >= index}
-                  classList="mr-1"
-                  onToggle={() => updateLeveling('evasion', index)}
-                />
-              }
-            </For>
-          </div>
-        </div>
+        <For
+          each={[
+            { css: 'mt-4 mb-2', title: t('daggerheart.leveling.health'), coef: 2, attribute: 'health' },
+            { css: 'mb-2', title: t('daggerheart.leveling.stress'), coef: 2, attribute: 'stress' },
+            { css: 'mb-2', title: t('daggerheart.leveling.evasion'), coef: 1, attribute: 'evasion' },
+            { css: 'mb-2', title: t('daggerheart.leveling.domainCards'), coef: 1, attribute: 'domain_cards' }
+          ]}
+        >
+          {(item) =>
+            <div class={item.css}>
+              <p class="text-sm/4 font-cascadia-light uppercase mb-1">{item.title}</p>
+              <div class="flex">
+                <For each={Array.from([...Array(tier() * item.coef).keys()], (x) => x + 1)}>
+                  {(index) =>
+                    <Checkbox
+                      filled
+                      checked={levelingData()[item.attribute] >= index}
+                      classList="mr-1"
+                      onToggle={() => updateLeveling(item.attribute, index)}
+                    />
+                  }
+                </For>
+              </div>
+            </div>
+          }
+        </For>
         <Show when={tier() > 1}>
           <div class="mb-2">
             <p class="text-sm/4 font-cascadia-light uppercase mb-1">{t('daggerheart.leveling.proficiency')}</p>

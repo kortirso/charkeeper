@@ -67,7 +67,8 @@
       "customHeritage": "Mixed heritage",
       "heritageName": "Heritage name",
       "mainFeature": "Main feature",
-      "secondaryFeature": "Secondary feature"
+      "secondaryFeature": "Secondary feature",
+      "domain": "Domain"
     }
   },
   "itemsPage": {
@@ -641,7 +642,8 @@
       "health": "Permanent Hit Point slots",
       "stress": "Permanent Stress slots",
       "evasion": "Permanent +1 bonus to Evasion",
-      "proficiency": "Permanent +1 bonus to Proficiency"
+      "proficiency": "Permanent +1 bonus to Proficiency",
+      "domainCards": "Additional domain card"
     }
   }
 }

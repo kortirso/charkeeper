@@ -67,7 +67,8 @@
       "customHeritage": "Мультираса",
       "heritageName": "Название расы",
       "mainFeature": "Главная способность",
-      "secondaryFeature": "Дополнительная способность"
+      "secondaryFeature": "Дополнительная способность",
+      "domain": "Домен"
     }
   },
   "itemsPage": {
@@ -641,7 +642,8 @@
       "health": "Бонус к ХП",
       "stress": "Бонус к стрессу",
       "evasion": "Бонус к уклонению",
-      "proficiency": "Бонус с мастерству"
+      "proficiency": "Бонус с мастерству",
+      "domainCards": "Дополнительная карта домена"
     }
   }
 }

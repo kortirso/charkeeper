@@ -116,13 +116,11 @@ export const DaggerheartDomainCards = (props) => {
   }
 
   const renderSpellcastTraits = (spellcastTraits) => (
-    <div class="">
-      <For each={spellcastTraits}>
-        {(trait) =>
-          <span class="text-sm">{t(`daggerheart.traits.${trait}`)} {modifier(character().modified_traits[trait])}</span>
-        }
-      </For>
-    </div>
+    <For each={spellcastTraits}>
+      {(trait) =>
+        <p class="text-sm">{t(`daggerheart.traits.${trait}`)} {modifier(character().modified_traits[trait])}</p>
+      }
+    </For>
   );
 
   return (
