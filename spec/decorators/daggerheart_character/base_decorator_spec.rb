@@ -21,4 +21,23 @@ describe DaggerheartCharacter::BaseDecorator do
     expect(decorator.attacks.dig(0, :attack_bonus)).to eq 2
     expect(decorator.attacks.dig(0, :damage)).to eq '2d4'
   end
+
+  context 'for beastform' do
+    before do
+      character.data = character.data.merge({ beastform: 'agile_scout' })
+      character.save
+    end
+
+    it 'does not raise errors', :aggregate_failures do
+      expect { decorator.id }.not_to raise_error
+      expect(decorator.proficiency).to eq 3
+      expect(decorator.traits).to eq({ 'str' => 1, 'agi' => 2, 'fin' => 1, 'ins' => 0, 'pre' => 0, 'know' => -1 })
+      expect(decorator.modified_traits).to eq({ 'str' => 1, 'agi' => 3, 'fin' => 1, 'ins' => 0, 'pre' => 0, 'know' => 0 })
+      expect(decorator.damage_thresholds).to eq({ 'minor' => 4, 'major' => 4, 'severe' => 8 })
+      expect(decorator.evasion).to eq 14
+      expect(decorator.health_max).to eq 8
+      expect(decorator.attacks.dig(0, :attack_bonus)).to eq 4
+      expect(decorator.attacks.dig(0, :damage)).to eq '2d8'
+    end
+  end
 end

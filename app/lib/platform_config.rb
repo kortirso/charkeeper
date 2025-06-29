@@ -13,8 +13,7 @@ module PlatformConfig
   private
 
   def load_data(provider)
-    file = File.read(data_path(provider))
-    @data = JSON.parse(file)
+    JSON.parse(File.read(data_path(provider)))
   end
 
   def data_path(provider)

@@ -5,13 +5,15 @@ module DaggerheartCharacter
     delegate :id, :name, :data, to: :__getobj__
     delegate :heritage, :main_class, :classes, :subclasses, :level, :gold, :spent_armor_slots, :health_marked, :stress_marked,
              :hope_marked, :traits, :total_gold, :subclasses_mastery, :experiences, :energy, :community, :selected_features,
-             :leveling, :experience, :heritage_name, :heritage_features, :domains, to: :data
+             :leveling, :experience, :heritage_name, :heritage_features, :domains, :beastform, to: :data
 
     def method_missing(_method, *args); end
 
     def modified_traits
       @modified_traits ||=
-        traits.merge(*[equiped_traits_bonuses, *bonuses.pluck('traits')].compact) { |_key, oldval, newval| newval + oldval }
+        traits.merge(
+          *[equiped_traits_bonuses, *bonuses.pluck('traits'), beastform_config['traits']].compact
+        ) { |_key, oldval, newval| newval + oldval }
     end
 
     def damage_thresholds
@@ -25,7 +27,8 @@ module DaggerheartCharacter
         data.evasion +
         leveling['evasion'].to_i +
         item_bonuses.pluck('evasion').compact.sum +
-        sum(bonuses.pluck('evasion'))
+        sum(bonuses.pluck('evasion')) +
+        beastform_config['evasion']
     end
 
     def armor_score
@@ -59,7 +62,8 @@ module DaggerheartCharacter
     end
 
     def attacks
-      @attacks ||= [unarmed_attack] + weapons.flat_map { |item| calculate_attack(item) }
+      @attacks ||=
+        beastform.blank? ? ([unarmed_attack] + weapons.flat_map { |item| calculate_attack(item) }) : [beastform_attack]
     end
 
     def selected_domains
@@ -83,6 +87,24 @@ module DaggerheartCharacter
       return 1 if level >= 2
 
       0
+    end
+
+    def beastform_attack
+      beast_attack = beastform_config['attack']
+
+      {
+        name: { en: 'Best attack', ru: 'Атака' }[I18n.locale],
+        burden: 2,
+        range: beast_attack['range'],
+        attack_bonus: modified_traits[beast_attack['trait']] + attack_bonuses,
+        damage: "#{(proficiency / 2.0).round}#{beast_attack['damage']}",
+        damage_bonus: beast_attack['damage_bonus'],
+        damage_type: beast_attack['damage_type'],
+        kind: 'primary weapon',
+        features: [],
+        notes: [],
+        ready_to_use: true
+      }
     end
 
     def unarmed_attack
@@ -170,6 +192,10 @@ module DaggerheartCharacter
 
     def sum(values)
       values.sum(&:to_i)
+    end
+
+    def beastform_config
+      @beastform_config ||= beastform.blank? ? { 'traits' => {}, 'evasion' => 0 } : BeastformConfig.data[beastform]
     end
   end
 end

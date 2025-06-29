@@ -265,5 +265,8 @@
     "sage": { "name": { "en": "Sage", "ru": "Sage" } },
     "splendor": { "name": { "en": "Splendor", "ru": "Splendor" } },
     "valor": { "name": { "en": "Valor", "ru": "Valor" } }
+  },
+  "beastforms": {
+    "agile_scout": { "name": { "en": "Agile scout", "ru": "Agile scout" } }
   }
 }

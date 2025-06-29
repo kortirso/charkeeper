@@ -31,6 +31,7 @@ module Daggerheart
               array: true,
               default: { 'health' => 0, 'stress' => 0, 'evasion' => 0, 'proficiency' => 0, 'domain_cards' => 0 }
     attribute :experience, array: true, default: []
+    attribute :beastform, :string
   end
 
   class Character < Character
@@ -68,6 +69,10 @@ module Daggerheart
 
     def self.communities
       config['communities']
+    end
+
+    def self.beastforms
+      config['beastforms']
     end
 
     attribute :data, Daggerheart::CharacterData.to_type

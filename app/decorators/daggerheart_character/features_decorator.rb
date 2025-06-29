@@ -57,6 +57,7 @@ module DaggerheartCharacter
         .or(Daggerheart::Character::Feature.where(origin: 'community', origin_value: community))
         .or(Daggerheart::Character::Feature.where(origin: 'class', origin_value: classes.keys))
         .or(Daggerheart::Character::Feature.where(origin: 'subclass', origin_value: subclasses.values))
+        .or(Daggerheart::Character::Feature.where(origin: 'beastform', origin_value: beastform))
         .to_a
     end
 

@@ -1,0 +1,8 @@
+{
+  "agile_scout": {
+    "tier": 1,
+    "traits": { "agi": 1 },
+    "evasion": 2,
+    "attack": { "trait": "agi", "range": "melee", "damage": "d8", "damage_bonus": 0, "damage_type": "physical" }
+  }
+}

@@ -1,0 +1,26 @@
+[
+  {
+    "slug": "agile",
+    "title": { "en": "Agile", "ru": "Agile" },
+    "description": {
+      "en": "Your movement is silent, and you can spend a Hope to move up to Far range without rolling.",
+      "ru": "Your movement is silent, and you can spend a Hope to move up to Far range without rolling."
+    },
+    "origin": "beastform",
+    "origin_value": "agile_scout",
+    "kind": "static",
+    "visible": "true"
+  },
+  {
+    "slug": "fragile",
+    "title": { "en": "Fragile", "ru": "Fragile" },
+    "description": {
+      "en": "When you take Major or greater damage, you drop out of Beastform.",
+      "ru": "When you take Major or greater damage, you drop out of Beastform."
+    },
+    "origin": "beastform",
+    "origin_value": "agile_scout",
+    "kind": "static",
+    "visible": "true"
+  }
+]

@@ -12,6 +12,8 @@ module CharactersContext
       use_contract do
         config.messages.namespace = :daggerheart_character
 
+        Beastforms = Dry::Types['strict.string'].enum(*::Daggerheart::Character.beastforms.keys)
+
         params do
           required(:character).filled(type?: ::Daggerheart::Character)
           optional(:classes).hash
@@ -56,6 +58,7 @@ module CharactersContext
             required(:exp_name).filled(:string)
             required(:exp_level).filled(:integer)
           end
+          optional(:beastform).maybe(Beastforms)
         end
 
         rule(:avatar_file, :avatar_url).validate(:check_only_one_present)
