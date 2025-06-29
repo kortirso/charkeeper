@@ -27,7 +27,9 @@ module Daggerheart
     attribute :spent_armor_slots, :integer, default: 0
     attribute :gold, array: true, default: { 'coins' => 0, 'handfuls' => 0, 'bags' => 0, 'chests' => 0 }
     attribute :selected_features, array: true, default: {}
-    attribute :leveling, array: true, default: { 'health' => 0, 'stress' => 0, 'evasion' => 0, 'proficiency' => 0 }
+    attribute :leveling,
+              array: true,
+              default: { 'health' => 0, 'stress' => 0, 'evasion' => 0, 'proficiency' => 0, 'domain_cards' => 0 }
     attribute :experience, array: true, default: []
   end
 

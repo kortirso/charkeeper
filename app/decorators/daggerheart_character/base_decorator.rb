@@ -67,7 +67,7 @@ module DaggerheartCharacter
     end
 
     def domain_cards_max
-      @domain_cards_max ||= 1 + level + leveling['domain_cards'].to_i
+      @domain_cards_max ||= 1 + level + leveling['domain_cards'].to_i + subclasses_mastery['school_of_knowledge'].to_i
     end
 
     def spellcast_traits

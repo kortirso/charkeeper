@@ -76,7 +76,7 @@
     "visible": "subclasses_mastery['school_of_knowledge'].to_i >= 3"
   },
   {
-    "slug": "adept",
+    "slug": "battlemage",
     "title": { "en": "Battlemage", "ru": "Battlemage" },
     "description": {
       "en": "",
