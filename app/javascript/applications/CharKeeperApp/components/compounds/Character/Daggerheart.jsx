@@ -2,7 +2,7 @@ import { createSignal, Switch, Match } from 'solid-js';
 import * as i18n from '@solid-primitives/i18n';
 
 import {
-  DaggerheartTraits, DaggerheartCombat, DaggerheartGold, DaggerheartLeveling,
+  DaggerheartTraits, DaggerheartCombat, DaggerheartGold, DaggerheartLeveling, DaggerheartDomainCards,
   Notes, Avatar, CharacterNavigation, Bonuses, Equipment
 } from '../../../components';
 import { useAppLocale } from '../../../context';
@@ -23,7 +23,7 @@ export const Daggerheart = (props) => {
   return (
     <>
       <CharacterNavigation
-        tabsList={['traits', 'combat', 'equipment', 'bonuses', 'notes', 'classLevels', 'avatar']}
+        tabsList={['traits', 'combat', 'equipment', 'domainCards', 'bonuses', 'notes', 'classLevels', 'avatar']}
         activeTab={activeTab()}
         setActiveTab={setActiveTab}
       />
@@ -54,6 +54,13 @@ export const Daggerheart = (props) => {
             >
               <DaggerheartGold character={character()} onReplaceCharacter={props.onReplaceCharacter} />
             </Equipment>
+          </Match>
+          <Match when={activeTab() === 'domainCards'}>
+            <DaggerheartDomainCards
+              character={character()}
+              onReplaceCharacter={props.onReplaceCharacter}
+              onReloadCharacter={props.onReloadCharacter}
+            />
           </Match>
           <Match when={activeTab() === 'bonuses'}>
             <Bonuses character={character()} onReloadCharacter={props.onReloadCharacter} />

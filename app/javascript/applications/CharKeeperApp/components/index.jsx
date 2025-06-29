@@ -19,6 +19,8 @@ export * from './compounds/Character/Daggerheart/Traits';
 export * from './compounds/Character/Daggerheart/Combat';
 export * from './compounds/Character/Daggerheart/Leveling';
 export * from './compounds/Character/Daggerheart/Gold';
+export * from './compounds/Character/Daggerheart/DomainCards';
+export * from './compounds/Character/Daggerheart/DomainCardsTable';
 
 export * from './compounds/Character/shared/Avatar';
 export * from './compounds/Character/shared/CharacterNavigation';
