@@ -82,8 +82,11 @@ module DaggerheartCharacter
     def beastforms
       return [] if classes.keys.exclude?('druid')
 
-      tier = proficiency_by_level + 1
       BeastformConfig.data.select { |_, values| values['tier'] <= tier }.keys
+    end
+
+    def tier
+      @tier ||= proficiency_by_level + 1
     end
 
     private

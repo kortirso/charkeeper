@@ -135,21 +135,23 @@ export const DaggerheartCombat = (props) => {
   }
 
   const renderAttribute = (title, maxValue, slug) => (
-    <div class="px-4 mb-2">
-      <p class="text-sm/4 font-cascadia-light uppercase mb-1">{title}</p>
-      <div class="flex">
-        <For each={Array.from([...Array(maxValue).keys()], (x) => x + 1)}>
-          {(index) =>
-            <Checkbox
-              filled
-              checked={character()[slug] >= index}
-              classList="mr-1"
-              onToggle={() => updateAttribute(slug, index)}
-            />
-          }
-        </For>
+    <Show when={maxValue !== 0} fallback={<></>}>
+      <div class="px-4 mb-2">
+        <p class="text-sm/4 font-cascadia-light uppercase mb-1">{title}</p>
+        <div class="flex">
+          <For each={Array.from([...Array(maxValue).keys()], (x) => x + 1)}>
+            {(index) =>
+              <Checkbox
+                filled
+                checked={character()[slug] >= index}
+                classList="mr-1"
+                onToggle={() => updateAttribute(slug, index)}
+              />
+            }
+          </For>
+        </div>
       </div>
-    </div>
+    </Show>
   );
 
   return (
@@ -165,8 +167,8 @@ export const DaggerheartCombat = (props) => {
             <p class="text-2xl mb-1">{character().armor_score}</p>
           </div>
           <div class="flex-1 flex flex-col items-center">
-            <p class="uppercase text-xs mb-1">{t('daggerheart.combat.armorSlots')}</p>
-            <p class="text-2xl mb-1">{character().spent_armor_slots} / {character().armor_slots}</p>
+            <p class="uppercase text-xs mb-1">{t('daggerheart.combat.proficiency')}</p>
+            <p class="text-2xl mb-1">{character().proficiency}</p>
           </div>
         </div>
       </div>

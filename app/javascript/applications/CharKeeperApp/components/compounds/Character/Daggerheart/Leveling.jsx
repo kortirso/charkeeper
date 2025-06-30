@@ -43,14 +43,6 @@ export const DaggerheartLeveling = (props) => {
     return result;
   });
 
-  const tier = createMemo(() => {
-    if (character().level >= 8) return 3;
-    if (character().level >= 5) return 2;
-    if (character().level >= 2) return 1;
-
-    return 0;
-  });
-
   const classDomains = createMemo(() => translate(config.domains, locale()));
 
   // actions
@@ -217,7 +209,7 @@ export const DaggerheartLeveling = (props) => {
           </For>
         }
       </For>
-      <Show when={tier() > 0}>
+      <Show when={character().tier > 1}>
         <For
           each={[
             { css: 'mt-4 mb-2', title: t('daggerheart.leveling.health'), coef: 2, attribute: 'health' },
@@ -230,7 +222,7 @@ export const DaggerheartLeveling = (props) => {
             <div class={item.css}>
               <p class="text-sm/4 font-cascadia-light uppercase mb-1">{item.title}</p>
               <div class="flex">
-                <For each={Array.from([...Array(tier() * item.coef).keys()], (x) => x + 1)}>
+                <For each={Array.from([...Array((character().tier - 1) * item.coef).keys()], (x) => x + 1)}>
                   {(index) =>
                     <Checkbox
                       filled
@@ -244,11 +236,11 @@ export const DaggerheartLeveling = (props) => {
             </div>
           }
         </For>
-        <Show when={tier() > 1}>
+        <Show when={character().tier > 2}>
           <div class="mb-2">
             <p class="text-sm/4 font-cascadia-light uppercase mb-1">{t('daggerheart.leveling.proficiency')}</p>
             <div class="flex">
-              <For each={Array.from([...Array(tier() - 1).keys()], (x) => x + 1)}>
+              <For each={Array.from([...Array(character().tier - 2).keys()], (x) => x + 1)}>
                 {(index) =>
                   <Checkbox
                     filled

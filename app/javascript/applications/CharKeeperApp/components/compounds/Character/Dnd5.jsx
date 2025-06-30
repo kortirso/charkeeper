@@ -148,7 +148,7 @@ export const Dnd5 = (props) => {
   return (
     <>
       <CharacterNavigation
-        tabsList={['abilities', 'combat', 'rest', 'equipment', 'spells', 'notes', 'professions', 'classLevels', 'avatar']}
+        tabsList={['abilities', 'combat', 'equipment', 'spells', 'rest', 'notes', 'professions', 'classLevels', 'avatar']}
         activeTab={activeTab()}
         setActiveTab={setActiveTab}
       />
