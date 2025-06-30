@@ -20,7 +20,7 @@
     },
     "origin": "class",
     "origin_value": "druid",
-    "kind": "text",
+    "kind": "static",
     "visible": "true"
   },
   {

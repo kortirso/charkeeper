@@ -148,7 +148,9 @@
     "newBonusComment": "Comment",
     "domainCards": "Domains",
     "loadout": "Loadout",
-    "vault": "Vault"
+    "vault": "Vault",
+    "beastTransformation": "Transformation to beast",
+    "naturalForm": "Natural form"
   },
   "professionsPage": {
     "feats": "Feats",
