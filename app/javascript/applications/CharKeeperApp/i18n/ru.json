@@ -148,7 +148,9 @@
     "newBonusComment": "Комментарий",
     "domainCards": "Домены",
     "loadout": "Инвентарь",
-    "vault": "Хранилище"
+    "vault": "Хранилище",
+    "beastTransformation": "Превращение в зверя",
+    "naturalForm": "Естественная форма"
   },
   "professionsPage": {
     "feats": "Черты",

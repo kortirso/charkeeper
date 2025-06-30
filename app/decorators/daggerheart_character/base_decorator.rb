@@ -79,6 +79,13 @@ module DaggerheartCharacter
         subclasses.filter_map { |key, value| Daggerheart::Character.subclass_info(key, value)['spellcast'] }.uniq
     end
 
+    def beastforms
+      return [] if classes.keys.exclude?('druid')
+
+      tier = proficiency_by_level + 1
+      BeastformConfig.data.select { |_, values| values['tier'] <= tier }.keys
+    end
+
     private
 
     def proficiency_by_level
@@ -119,7 +126,7 @@ module DaggerheartCharacter
         kind: 'primary weapon',
         features: [],
         notes: [],
-        ready_to_use: false
+        ready_to_use: true
       }
     end
 
