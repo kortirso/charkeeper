@@ -16,6 +16,7 @@ module Frontend
       def relation
         relation = ::Spell.daggerheart
         relation = relation.where("data ->> 'domain' IN (?)", params[:domains].split(',')) if params[:domains]
+        relation = relation.where("data ->> 'level' <= ?", params[:max_level]) if params[:max_level]
         relation
       end
     end

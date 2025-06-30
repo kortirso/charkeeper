@@ -42,7 +42,7 @@ export const DaggerheartDomainCards = (props) => {
     const fetchSpells = async () => await fetchSpellsRequest(
       appState.accessToken,
       character().provider,
-      { domains: character().selected_domains.join(',') }
+      { domains: character().selected_domains.join(','), max_level: character().level }
     );
 
     Promise.all([fetchCharacterSpells(), fetchSpells()]).then(

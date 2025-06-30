@@ -4,5 +4,71 @@
     "traits": { "agi": 1 },
     "evasion": 2,
     "attack": { "trait": "agi", "range": "melee", "damage": "d8", "damage_bonus": 0, "damage_type": "physical" }
+  },
+  "household_friend": {
+    "tier": 1,
+    "traits": { "ins": 1 },
+    "evasion": 1,
+    "attack": { "trait": "ins", "range": "melee", "damage": "d6", "damage_bonus": 0, "damage_type": "physical" }
+  },
+  "nimble_grazer": {
+    "tier": 1,
+    "traits": { "agi": 1 },
+    "evasion": 3,
+    "attack": { "trait": "agi", "range": "melee", "damage": "d6", "damage_bonus": 0, "damage_type": "physical" }
+  },
+  "pack_predator": {
+    "tier": 1,
+    "traits": { "str": 2 },
+    "evasion": 1,
+    "attack": { "trait": "str", "range": "melee", "damage": "d8", "damage_bonus": 2, "damage_type": "physical" }
+  },
+  "aquatic_scout": {
+    "tier": 1,
+    "traits": { "agi": 1 },
+    "evasion": 2,
+    "attack": { "trait": "agi", "range": "melee", "damage": "d4", "damage_bonus": 0, "damage_type": "physical" }
+  },
+  "stalking_arachnid": {
+    "tier": 1,
+    "traits": { "fin": 1 },
+    "evasion": 2,
+    "attack": { "trait": "fin", "range": "melee", "damage": "d6", "damage_bonus": 1, "damage_type": "physical" }
+  },
+  "armored_sentry": {
+    "tier": 2,
+    "traits": { "str": 1 },
+    "evasion": 1,
+    "attack": { "trait": "str", "range": "melee", "damage": "d8", "damage_bonus": 2, "damage_type": "physical" }
+  },
+  "powerful_beast": {
+    "tier": 2,
+    "traits": { "str": 1 },
+    "evasion": 3,
+    "attack": { "trait": "str", "range": "melee", "damage": "d10", "damage_bonus": 4, "damage_type": "physical" }
+  },
+  "mighty_strider": {
+    "tier": 2,
+    "traits": { "agi": 1 },
+    "evasion": 2,
+    "attack": { "trait": "agi", "range": "melee", "damage": "d8", "damage_bonus": 1, "damage_type": "physical" }
+  },
+  "striking_serpent": {
+    "tier": 2,
+    "traits": { "fin": 1 },
+    "evasion": 2,
+    "attack": { "trait": "fin", "range": "melee", "damage": "d8", "damage_bonus": 4, "damage_type": "physical" }
+  },
+  "pouncing_predator": {
+    "tier": 2,
+    "traits": { "ins": 1 },
+    "evasion": 3,
+    "attack": { "trait": "ins", "range": "melee", "damage": "d8", "damage_bonus": 6, "damage_type": "physical" }
+  },
+  "winged_beast": {
+    "tier": 2,
+    "traits": { "fin": 1 },
+    "evasion": 3,
+    "attack": { "trait": "fin", "range": "melee", "damage": "d4", "damage_bonus": 2, "damage_type": "physical" }
   }
 }

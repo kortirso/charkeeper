@@ -22,5 +22,275 @@
     "origin_value": "agile_scout",
     "kind": "static",
     "visible": "true"
+  },
+  {
+    "slug": "companion",
+    "title": { "en": "Companion", "ru": "Companion" },
+    "description": {
+      "en": "When you Help an Ally, you can roll a d8 as your advantage die.",
+      "ru": "When you Help an Ally, you can roll a d8 as your advantage die."
+    },
+    "origin": "beastform",
+    "origin_value": "household_friend",
+    "kind": "static",
+    "visible": "true"
+  },
+  {
+    "slug": "household_friend_fragile",
+    "title": { "en": "Fragile", "ru": "Fragile" },
+    "description": {
+      "en": "When you take Major or greater damage, you drop out of Beastform.",
+      "ru": "When you take Major or greater damage, you drop out of Beastform."
+    },
+    "origin": "beastform",
+    "origin_value": "household_friend",
+    "kind": "static",
+    "visible": "true"
+  },
+  {
+    "slug": "elusive_prey",
+    "title": { "en": "Elusive Prey", "ru": "Elusive Prey" },
+    "description": {
+      "en": "When an attack roll against you would succeed, you can mark a Stress and roll a d4. Add the result to your Evasion against this attack.",
+      "ru": "When an attack roll against you would succeed, you can mark a Stress and roll a d4. Add the result to your Evasion against this attack."
+    },
+    "origin": "beastform",
+    "origin_value": "nimble_grazer",
+    "kind": "static",
+    "visible": "true"
+  },
+  {
+    "slug": "nimble_grazer_fragile",
+    "title": { "en": "Fragile", "ru": "Fragile" },
+    "description": {
+      "en": "When you take Major or greater damage, you drop out of Beastform.",
+      "ru": "When you take Major or greater damage, you drop out of Beastform."
+    },
+    "origin": "beastform",
+    "origin_value": "nimble_grazer",
+    "kind": "static",
+    "visible": "true"
+  },
+  {
+    "slug": "hobbling_strike",
+    "title": { "en": "Hobbling Strike", "ru": "Hobbling Strike" },
+    "description": {
+      "en": "When you succeed on an attack against a target within Melee range, you can mark a Stress to make the target temporarily Vulnerable.",
+      "ru": "When you succeed on an attack against a target within Melee range, you can mark a Stress to make the target temporarily Vulnerable."
+    },
+    "origin": "beastform",
+    "origin_value": "pack_predator",
+    "kind": "static",
+    "visible": "true"
+  },
+  {
+    "slug": "pack_hunting",
+    "title": { "en": "Pack Hunting", "ru": "Pack Hunting" },
+    "description": {
+      "en": "When you succeed on an attack against the same target as an ally who acts immediately before you, add a d8 to your damage roll.",
+      "ru": "When you succeed on an attack against the same target as an ally who acts immediately before you, add a d8 to your damage roll."
+    },
+    "origin": "beastform",
+    "origin_value": "pack_predator",
+    "kind": "static",
+    "visible": "true"
+  },
+  {
+    "slug": "aquatic",
+    "title": { "en": "Aquatic", "ru": "Aquatic" },
+    "description": {
+      "en": "You can breathe and move naturally underwater.",
+      "ru": "You can breathe and move naturally underwater."
+    },
+    "origin": "beastform",
+    "origin_value": "aquatic_scout",
+    "kind": "static",
+    "visible": "true"
+  },
+  {
+    "slug": "aquatic_scout_fragile",
+    "title": { "en": "Fragile", "ru": "Fragile" },
+    "description": {
+      "en": "When you take Major or greater damage, you drop out of Beastform.",
+      "ru": "When you take Major or greater damage, you drop out of Beastform."
+    },
+    "origin": "beastform",
+    "origin_value": "aquatic_scout",
+    "kind": "static",
+    "visible": "true"
+  },
+  {
+    "slug": "venomous_bite",
+    "title": { "en": "Venomous Bite", "ru": "Venomous Bite" },
+    "description": {
+      "en": "When you succeed on an attack against a target within Melee range, the target becomes temporarily Poisoned. A Poisoned creature takes 1d10 direct physical damage each time they act.",
+      "ru": "When you succeed on an attack against a target within Melee range, the target becomes temporarily Poisoned. A Poisoned creature takes 1d10 direct physical damage each time they act."
+    },
+    "origin": "beastform",
+    "origin_value": "stalking_arachnid",
+    "kind": "static",
+    "visible": "true"
+  },
+  {
+    "slug": "webslinger",
+    "title": { "en": "Webslinger", "ru": "Webslinger" },
+    "description": {
+      "en": "You can create a strong web material useful for both adventuring and battle. The web is resilient enough to support one creature. You can temporarily Restrain a target within Close range by succeeding on a Finesse Roll against them.",
+      "ru": "You can create a strong web material useful for both adventuring and battle. The web is resilient enough to support one creature. You can temporarily Restrain a target within Close range by succeeding on a Finesse Roll against them."
+    },
+    "origin": "beastform",
+    "origin_value": "stalking_arachnid",
+    "kind": "static",
+    "visible": "true"
+  },
+  {
+    "slug": "armored_shell",
+    "title": { "en": "Armored Shell", "ru": "Armored Shell" },
+    "description": {
+      "en": "Your hardened exterior gives you resistance to physical damage. Additionally, mark an Armor Slot to retract into your shell. While in your shell, physical damage is reduced by a number equal to your Armor Score (after applying resistance), but you can’t perform other actions without leaving this form.",
+      "ru": "Your hardened exterior gives you resistance to physical damage. Additionally, mark an Armor Slot to retract into your shell. While in your shell, physical damage is reduced by a number equal to your Armor Score (after applying resistance), but you can’t perform other actions without leaving this form."
+    },
+    "origin": "beastform",
+    "origin_value": "armored_sentry",
+    "kind": "static",
+    "visible": "true"
+  },
+  {
+    "slug": "cannonball",
+    "title": { "en": "Cannonball", "ru": "Cannonball" },
+    "description": {
+      "en": "Mark a Stress to allow an ally to throw or launch you at an adversary. To do so, the ally makes an attack roll using Agility or Strength (their choice) against a target within Close range. On a success, the adversary takes d12+2 physical damage using the thrower’s Proficiency. You can spend a Hope to target an additional adversary within Very Close range of the first. The second target takes half the damage dealt to the first target.",
+      "ru": "Mark a Stress to allow an ally to throw or launch you at an adversary. To do so, the ally makes an attack roll using Agility or Strength (their choice) against a target within Close range. On a success, the adversary takes d12+2 physical damage using the thrower’s Proficiency. You can spend a Hope to target an additional adversary within Very Close range of the first. The second target takes half the damage dealt to the first target."
+    },
+    "origin": "beastform",
+    "origin_value": "armored_sentry",
+    "kind": "static",
+    "visible": "true"
+  },
+  {
+    "slug": "rampage",
+    "title": { "en": "Rampage", "ru": "Rampage" },
+    "description": {
+      "en": "When you roll a 1 on a damage die, you can roll a d10 and add the result to the damage roll. Additionally, before you make an attack roll, you can mark a Stress to gain a +1 bonus to your Proficiency for that attack.",
+      "ru": "When you roll a 1 on a damage die, you can roll a d10 and add the result to the damage roll. Additionally, before you make an attack roll, you can mark a Stress to gain a +1 bonus to your Proficiency for that attack."
+    },
+    "origin": "beastform",
+    "origin_value": "powerful_beast",
+    "kind": "static",
+    "visible": "true"
+  },
+  {
+    "slug": "thick_hide",
+    "title": { "en": "Thick Hide", "ru": "Thick Hide" },
+    "description": {
+      "en": "",
+      "ru": ""
+    },
+    "origin": "beastform",
+    "origin_value": "powerful_beast",
+    "kind": "update_result",
+    "visible": "true",
+    "eval_variables": {
+      "damage_thresholds": "damage_thresholds.transform_values { |item| item + 2 }"
+    }
+  },
+  {
+    "slug": "carrier",
+    "title": { "en": "Carrier", "ru": "Carrier" },
+    "description": {
+      "en": "You can carry up to two willing allies with you when you move.",
+      "ru": "You can carry up to two willing allies with you when you move."
+    },
+    "origin": "beastform",
+    "origin_value": "mighty_strider",
+    "kind": "static",
+    "visible": "true"
+  },
+  {
+    "slug": "trample",
+    "title": { "en": "Trample", "ru": "Trample" },
+    "description": {
+      "en": "Mark a Stress to move up to Close range in a straight line and make an attack against all targets within Melee range of the line. Targets you succeed against take d8+1 physical damage using your Proficiency and are temporarily Vulnerable.",
+      "ru": "Mark a Stress to move up to Close range in a straight line and make an attack against all targets within Melee range of the line. Targets you succeed against take d8+1 physical damage using your Proficiency and are temporarily Vulnerable."
+    },
+    "origin": "beastform",
+    "origin_value": "mighty_strider",
+    "kind": "static",
+    "visible": "true"
+  },
+  {
+    "slug": "venomous_strike",
+    "title": { "en": "Venomous Strike", "ru": "Venomous Strike" },
+    "description": {
+      "en": "Make an attack against any number of targets within Very Close range. On a success, a target is temporarily Poisoned. A Poisoned creature takes 1d10 direct physical damage each time they act.",
+      "ru": "Make an attack against any number of targets within Very Close range. On a success, a target is temporarily Poisoned. A Poisoned creature takes 1d10 direct physical damage each time they act."
+    },
+    "origin": "beastform",
+    "origin_value": "striking_serpent",
+    "kind": "static",
+    "visible": "true"
+  },
+  {
+    "slug": "warning_hiss",
+    "title": { "en": "Warning Hiss", "ru": "Warning Hiss" },
+    "description": {
+      "en": "Mark a Stress to force any number of targets within Melee range to move back to Very Close range.",
+      "ru": "Mark a Stress to force any number of targets within Melee range to move back to Very Close range."
+    },
+    "origin": "beastform",
+    "origin_value": "striking_serpent",
+    "kind": "static",
+    "visible": "true"
+  },
+  {
+    "slug": "fleet",
+    "title": { "en": "Fleet", "ru": "Fleet" },
+    "description": {
+      "en": "Spend a Hope to move up to Far range without rolling.",
+      "ru": "Spend a Hope to move up to Far range without rolling."
+    },
+    "origin": "beastform",
+    "origin_value": "pouncing_predator",
+    "kind": "static",
+    "visible": "true"
+  },
+  {
+    "slug": "takedown",
+    "title": { "en": "Takedown", "ru": "Takedown" },
+    "description": {
+      "en": "Mark a Stress to move into Melee range of a target and make an attack roll against them. On a success, you gain a +2 bonus to your Proficiency for this attack and the target must mark a Stress.",
+      "ru": "Mark a Stress to move into Melee range of a target and make an attack roll against them. On a success, you gain a +2 bonus to your Proficiency for this attack and the target must mark a Stress."
+    },
+    "origin": "beastform",
+    "origin_value": "pouncing_predator",
+    "kind": "static",
+    "visible": "true"
+  },
+  {
+    "slug": "bird_eye_view",
+    "title": { "en": "Bird's-Eye View", "ru": "Bird's-Eye View" },
+    "description": {
+      "en": "You can fly at will. Once per rest while you are airborne, you can ask the GM a question about the scene below you without needing to roll. The first time a character makes a roll to act on this information, they gain advantage on the roll.",
+      "ru": "You can fly at will. Once per rest while you are airborne, you can ask the GM a question about the scene below you without needing to roll. The first time a character makes a roll to act on this information, they gain advantage on the roll."
+    },
+    "origin": "beastform",
+    "origin_value": "winged_beast",
+    "kind": "static",
+    "visible": "true"
+  },
+  {
+    "slug": "hollow_bones",
+    "title": { "en": "Hollow Bones", "ru": "Hollow Bones" },
+    "description": {
+      "en": "",
+      "ru": ""
+    },
+    "origin": "beastform",
+    "origin_value": "winged_beast",
+    "kind": "update_result",
+    "visible": "true",
+    "eval_variables": {
+      "damage_thresholds": "damage_thresholds.transform_values { |item| item - 2 }"
+    }
   }
 ]

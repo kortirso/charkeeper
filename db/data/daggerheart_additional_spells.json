@@ -1,0 +1,794 @@
+[
+  {
+    "slug": "unleash_chaos",
+    "name": {
+      "en": "Unleash chaos",
+      "ru": "Unleash chaos"
+    },
+    "data": {
+      "domain": "arcana",
+      "level": 1
+    }
+  },
+  {
+    "slug": "wall_walk",
+    "name": {
+      "en": "Wall walk",
+      "ru": "Wall walk"
+    },
+    "data": {
+      "domain": "arcana",
+      "level": 1
+    }
+  },
+  {
+    "slug": "cinder_grasp",
+    "name": {
+      "en": "Cinder grasp",
+      "ru": "Cinder grasp"
+    },
+    "data": {
+      "domain": "arcana",
+      "level": 2
+    }
+  },
+  {
+    "slug": "floating_eye",
+    "name": {
+      "en": "Floating eye",
+      "ru": "Floating eye"
+    },
+    "data": {
+      "domain": "arcana",
+      "level": 2
+    }
+  },
+  {
+    "slug": "counterspell",
+    "name": {
+      "en": "Counterspell",
+      "ru": "Counterspell"
+    },
+    "data": {
+      "domain": "arcana",
+      "level": 3
+    }
+  },
+  {
+    "slug": "flight",
+    "name": {
+      "en": "Flight",
+      "ru": "Flight"
+    },
+    "data": {
+      "domain": "arcana",
+      "level": 3
+    }
+  },
+  {
+    "slug": "blink_out",
+    "name": {
+      "en": "Blink out",
+      "ru": "Blink out"
+    },
+    "data": {
+      "domain": "arcana",
+      "level": 4
+    }
+  },
+  {
+    "slug": "reservation_blast",
+    "name": {
+      "en": "Reservation blast",
+      "ru": "Reservation blast"
+    },
+    "data": {
+      "domain": "arcana",
+      "level": 4
+    }
+  },
+  {
+    "slug": "not_good_enough",
+    "name": {
+      "en": "Not good enough",
+      "ru": "Not good enough"
+    },
+    "data": {
+      "domain": "blade",
+      "level": 1
+    }
+  },
+  {
+    "slug": "whirlwind",
+    "name": {
+      "en": "Whirlwind",
+      "ru": "Whirlwind"
+    },
+    "data": {
+      "domain": "blade",
+      "level": 1
+    }
+  },
+  {
+    "slug": "soldier_bond",
+    "name": {
+      "en": "A soldier's bond",
+      "ru": "A soldier's bond"
+    },
+    "data": {
+      "domain": "blade",
+      "level": 2
+    }
+  },
+  {
+    "slug": "reckless",
+    "name": {
+      "en": "Reckless",
+      "ru": "Reckless"
+    },
+    "data": {
+      "domain": "blade",
+      "level": 2
+    }
+  },
+  {
+    "slug": "scramble",
+    "name": {
+      "en": "Scramble",
+      "ru": "Scramble"
+    },
+    "data": {
+      "domain": "blade",
+      "level": 3
+    }
+  },
+  {
+    "slug": "versatile_fighter",
+    "name": {
+      "en": "Versatile fighter",
+      "ru": "Versatile fighter"
+    },
+    "data": {
+      "domain": "blade",
+      "level": 3
+    }
+  },
+  {
+    "slug": "deadly_focus",
+    "name": {
+      "en": "Deadly focus",
+      "ru": "Deadly focus"
+    },
+    "data": {
+      "domain": "blade",
+      "level": 4
+    }
+  },
+  {
+    "slug": "fortified_armor",
+    "name": {
+      "en": "Fortified armor",
+      "ru": "Fortified armor"
+    },
+    "data": {
+      "domain": "blade",
+      "level": 4
+    }
+  },
+  {
+    "slug": "i_see_it_coming",
+    "name": {
+      "en": "I see it coming",
+      "ru": "I see it coming"
+    },
+    "data": {
+      "domain": "bone",
+      "level": 1
+    }
+  },
+  {
+    "slug": "untouchable",
+    "name": {
+      "en": "Untouchable",
+      "ru": "Untouchable"
+    },
+    "data": {
+      "domain": "bone",
+      "level": 1
+    }
+  },
+  {
+    "slug": "ferocity",
+    "name": {
+      "en": "Ferocity",
+      "ru": "Ferocity"
+    },
+    "data": {
+      "domain": "bone",
+      "level": 2
+    }
+  },
+  {
+    "slug": "strategic_approach",
+    "name": {
+      "en": "Strategic approach",
+      "ru": "Strategic approach"
+    },
+    "data": {
+      "domain": "bone",
+      "level": 2
+    }
+  },
+  {
+    "slug": "brace",
+    "name": {
+      "en": "Brace",
+      "ru": "Brace"
+    },
+    "data": {
+      "domain": "bone",
+      "level": 3
+    }
+  },
+  {
+    "slug": "tactician",
+    "name": {
+      "en": "Tactician",
+      "ru": "Tactician"
+    },
+    "data": {
+      "domain": "bone",
+      "level": 3
+    }
+  },
+  {
+    "slug": "boost",
+    "name": {
+      "en": "Boost",
+      "ru": "Boost"
+    },
+    "data": {
+      "domain": "bone",
+      "level": 4
+    }
+  },
+  {
+    "slug": "redirect",
+    "name": {
+      "en": "Redirect",
+      "ru": "Redirect"
+    },
+    "data": {
+      "domain": "bone",
+      "level": 4
+    }
+  },
+  {
+    "slug": "book_of_illiat",
+    "name": {
+      "en": "Book of Illiat",
+      "ru": "Book of Illiat"
+    },
+    "data": {
+      "domain": "codex",
+      "level": 1
+    }
+  },
+  {
+    "slug": "book_of_tyfar",
+    "name": {
+      "en": "Book of Tyfar",
+      "ru": "Book of Tyfar"
+    },
+    "data": {
+      "domain": "codex",
+      "level": 1
+    }
+  },
+  {
+    "slug": "book_of_sitil",
+    "name": {
+      "en": "Book of Sitil",
+      "ru": "Book of Sitil"
+    },
+    "data": {
+      "domain": "codex",
+      "level": 2
+    }
+  },
+  {
+    "slug": "book_of_vagras",
+    "name": {
+      "en": "Book of Vagras",
+      "ru": "Book of Vagras"
+    },
+    "data": {
+      "domain": "codex",
+      "level": 2
+    }
+  },
+  {
+    "slug": "book_of_korvax",
+    "name": {
+      "en": "Book of Korvax",
+      "ru": "Book of Korvax"
+    },
+    "data": {
+      "domain": "codex",
+      "level": 3
+    }
+  },
+  {
+    "slug": "book_of_norai",
+    "name": {
+      "en": "Book of Norai",
+      "ru": "Book of Norai"
+    },
+    "data": {
+      "domain": "codex",
+      "level": 3
+    }
+  },
+  {
+    "slug": "book_of_exota",
+    "name": {
+      "en": "Book of Exota",
+      "ru": "Book of Exota"
+    },
+    "data": {
+      "domain": "codex",
+      "level": 4
+    }
+  },
+  {
+    "slug": "book_of_grynn",
+    "name": {
+      "en": "Book of Grynn",
+      "ru": "Book of Grynn"
+    },
+    "data": {
+      "domain": "codex",
+      "level": 4
+    }
+  },
+  {
+    "slug": "enrapture",
+    "name": {
+      "en": "Enrapture",
+      "ru": "Enrapture"
+    },
+    "data": {
+      "domain": "grace",
+      "level": 1
+    }
+  },
+  {
+    "slug": "inspirational_words",
+    "name": {
+      "en": "Inspirational words",
+      "ru": "Inspirational words"
+    },
+    "data": {
+      "domain": "grace",
+      "level": 1
+    }
+  },
+  {
+    "slug": "tell_no_lies",
+    "name": {
+      "en": "Tell no lies",
+      "ru": "Tell no lies"
+    },
+    "data": {
+      "domain": "grace",
+      "level": 2
+    }
+  },
+  {
+    "slug": "troublemaker",
+    "name": {
+      "en": "Troublemaker",
+      "ru": "Troublemaker"
+    },
+    "data": {
+      "domain": "grace",
+      "level": 2
+    }
+  },
+  {
+    "slug": "hypnotic_shimmer",
+    "name": {
+      "en": "Hypnotic shimmer",
+      "ru": "Hypnotic shimmer"
+    },
+    "data": {
+      "domain": "grace",
+      "level": 3
+    }
+  },
+  {
+    "slug": "invisibility",
+    "name": {
+      "en": "Invisibility",
+      "ru": "Invisibility"
+    },
+    "data": {
+      "domain": "grace",
+      "level": 3
+    }
+  },
+  {
+    "slug": "soothing_speech",
+    "name": {
+      "en": "Soothing speech",
+      "ru": "Soothing speech"
+    },
+    "data": {
+      "domain": "grace",
+      "level": 4
+    }
+  },
+  {
+    "slug": "through_your_eyes",
+    "name": {
+      "en": "Through your eyes",
+      "ru": "Through your eyes"
+    },
+    "data": {
+      "domain": "grace",
+      "level": 4
+    }
+  },
+  {
+    "slug": "rain_of_blades",
+    "name": {
+      "en": "Rain of blades",
+      "ru": "Rain of blades"
+    },
+    "data": {
+      "domain": "midnight",
+      "level": 1
+    }
+  },
+  {
+    "slug": "uncanny_disguise",
+    "name": {
+      "en": "Uncanny disguise",
+      "ru": "Uncanny disguise"
+    },
+    "data": {
+      "domain": "midnight",
+      "level": 1
+    }
+  },
+  {
+    "slug": "midnight_spirit",
+    "name": {
+      "en": "Midnight spirit",
+      "ru": "Midnight spirit"
+    },
+    "data": {
+      "domain": "midnight",
+      "level": 2
+    }
+  },
+  {
+    "slug": "shadowbind",
+    "name": {
+      "en": "Shadowbind",
+      "ru": "Shadowbind"
+    },
+    "data": {
+      "domain": "midnight",
+      "level": 2
+    }
+  },
+  {
+    "slug": "chokehold",
+    "name": {
+      "en": "Chokehold",
+      "ru": "Chokehold"
+    },
+    "data": {
+      "domain": "midnight",
+      "level": 3
+    }
+  },
+  {
+    "slug": "veil_of_night",
+    "name": {
+      "en": "Veil of night",
+      "ru": "Veil of night"
+    },
+    "data": {
+      "domain": "midnight",
+      "level": 3
+    }
+  },
+  {
+    "slug": "stealth_expertise",
+    "name": {
+      "en": "Stealth expertise",
+      "ru": "Stealth expertise"
+    },
+    "data": {
+      "domain": "midnight",
+      "level": 4
+    }
+  },
+  {
+    "slug": "glyph_of_nightfall",
+    "name": {
+      "en": "Glyph of nightfall",
+      "ru": "Glyph of nightfall"
+    },
+    "data": {
+      "domain": "midnight",
+      "level": 4
+    }
+  },
+  {
+    "slug": "nature_tongue",
+    "name": {
+      "en": "Nature's tongue",
+      "ru": "Nature's tongue"
+    },
+    "data": {
+      "domain": "sage",
+      "level": 1
+    }
+  },
+  {
+    "slug": "vicious_entangle",
+    "name": {
+      "en": "Vicious entangle",
+      "ru": "Vicious entangle"
+    },
+    "data": {
+      "domain": "sage",
+      "level": 1
+    }
+  },
+  {
+    "slug": "conjure_swarm",
+    "name": {
+      "en": "Conjure swarm",
+      "ru": "Conjure swarm"
+    },
+    "data": {
+      "domain": "sage",
+      "level": 2
+    }
+  },
+  {
+    "slug": "natural_familiar",
+    "name": {
+      "en": "Natural familiar",
+      "ru": "Natural familiar"
+    },
+    "data": {
+      "domain": "sage",
+      "level": 2
+    }
+  },
+  {
+    "slug": "corrosive_projectile",
+    "name": {
+      "en": "Corrosive projectile",
+      "ru": "Corrosive projectile"
+    },
+    "data": {
+      "domain": "sage",
+      "level": 3
+    }
+  },
+  {
+    "slug": "towering_stalk",
+    "name": {
+      "en": "Towering stalk",
+      "ru": "Towering stalk"
+    },
+    "data": {
+      "domain": "sage",
+      "level": 3
+    }
+  },
+  {
+    "slug": "death_grip",
+    "name": {
+      "en": "Death grip",
+      "ru": "Death grip"
+    },
+    "data": {
+      "domain": "sage",
+      "level": 4
+    }
+  },
+  {
+    "slug": "healing_field",
+    "name": {
+      "en": "Healing field",
+      "ru": "Healing field"
+    },
+    "data": {
+      "domain": "sage",
+      "level": 4
+    }
+  },
+  {
+    "slug": "mending_touch",
+    "name": {
+      "en": "Mending touch",
+      "ru": "Mending touch"
+    },
+    "data": {
+      "domain": "splendor",
+      "level": 1
+    }
+  },
+  {
+    "slug": "reassurance",
+    "name": {
+      "en": "Reassurance",
+      "ru": "Reassurance"
+    },
+    "data": {
+      "domain": "splendor",
+      "level": 1
+    }
+  },
+  {
+    "slug": "final_words",
+    "name": {
+      "en": "Final words",
+      "ru": "Final words"
+    },
+    "data": {
+      "domain": "splendor",
+      "level": 2
+    }
+  },
+  {
+    "slug": "healing_hands",
+    "name": {
+      "en": "Healing hands",
+      "ru": "Healing hands"
+    },
+    "data": {
+      "domain": "splendor",
+      "level": 2
+    }
+  },
+  {
+    "slug": "second_wind",
+    "name": {
+      "en": "Second wind",
+      "ru": "Second wind"
+    },
+    "data": {
+      "domain": "splendor",
+      "level": 3
+    }
+  },
+  {
+    "slug": "voice_of_reason",
+    "name": {
+      "en": "Voice of reason",
+      "ru": "Voice of reason"
+    },
+    "data": {
+      "domain": "splendor",
+      "level": 3
+    }
+  },
+  {
+    "slug": "divination",
+    "name": {
+      "en": "Divination",
+      "ru": "Divination"
+    },
+    "data": {
+      "domain": "splendor",
+      "level": 4
+    }
+  },
+  {
+    "slug": "life_ward",
+    "name": {
+      "en": "Life ward",
+      "ru": "Life ward"
+    },
+    "data": {
+      "domain": "splendor",
+      "level": 4
+    }
+  },
+  {
+    "slug": "forceful_push",
+    "name": {
+      "en": "Forceful push",
+      "ru": "Forceful push"
+    },
+    "data": {
+      "domain": "valor",
+      "level": 1
+    }
+  },
+  {
+    "slug": "i_am_your_shield",
+    "name": {
+      "en": "I am your shield",
+      "ru": "I am your shield"
+    },
+    "data": {
+      "domain": "valor",
+      "level": 1
+    }
+  },
+  {
+    "slug": "body_basher",
+    "name": {
+      "en": "Body basher",
+      "ru": "Body basher"
+    },
+    "data": {
+      "domain": "valor",
+      "level": 2
+    }
+  },
+  {
+    "slug": "bold_presence",
+    "name": {
+      "en": "Bold presence",
+      "ru": "Bold presence"
+    },
+    "data": {
+      "domain": "valor",
+      "level": 2
+    }
+  },
+  {
+    "slug": "critical_inspiration",
+    "name": {
+      "en": "Critical inspiration",
+      "ru": "Critical inspiration"
+    },
+    "data": {
+      "domain": "valor",
+      "level": 3
+    }
+  },
+  {
+    "slug": "lean_on_me",
+    "name": {
+      "en": "Lean on me",
+      "ru": "Lean on me"
+    },
+    "data": {
+      "domain": "valor",
+      "level": 3
+    }
+  },
+  {
+    "slug": "goad_them_on",
+    "name": {
+      "en": "Goad them on",
+      "ru": "Goad them on"
+    },
+    "data": {
+      "domain": "valor",
+      "level": 4
+    }
+  },
+  {
+    "slug": "support_tank",
+    "name": {
+      "en": "Support tank",
+      "ru": "Support tank"
+    },
+    "data": {
+      "domain": "valor",
+      "level": 4
+    }
+  }
+]

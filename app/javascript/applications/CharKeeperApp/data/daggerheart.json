@@ -267,6 +267,17 @@
     "valor": { "name": { "en": "Valor", "ru": "Valor" } }
   },
   "beastforms": {
-    "agile_scout": { "name": { "en": "Agile scout", "ru": "Agile scout" } }
+    "agile_scout": { "name": { "en": "Agile scout", "ru": "Agile scout" } },
+    "household_friend": { "name": { "en": "Household friend", "ru": "Household friend" } },
+    "nimble_grazer": { "name": { "en": "Nimble grazer", "ru": "Nimble grazer" } },
+    "pack_predator": { "name": { "en": "Pack predator", "ru": "Pack predator" } },
+    "aquatic_scout": { "name": { "en": "Aquatic scout", "ru": "Aquatic scout" } },
+    "stalking_arachnid": { "name": { "en": "Stalking arachnid", "ru": "Stalking arachnid" } },
+    "armored_sentry": { "name": { "en": "Armored sentry", "ru": "Armored sentry" } },
+    "powerful_beast": { "name": { "en": "Powerful beast", "ru": "Powerful beast" } },
+    "mighty_strider": { "name": { "en": "Mighty strider", "ru": "Mighty strider" } },
+    "striking_serpent": { "name": { "en": "Striking serpent", "ru": "Striking serpent" } },
+    "pouncing_predator": { "name": { "en": "Pouncing predator", "ru": "Pouncing predator" } },
+    "winged_beast": { "name": { "en": "Winged beast", "ru": "Winged beast" } }
   }
 }
