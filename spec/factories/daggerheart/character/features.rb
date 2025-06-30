@@ -3,7 +3,7 @@
 FactoryBot.define do
   factory :daggerheart_character_feature, class: 'Daggerheart::Character::Feature' do
     trait :rally do
-      slug { 'rally' }
+      sequence(:slug) { |i| "rally-#{i}" }
       title { { en: 'Rally', ru: 'Rally' } }
       # rubocop: disable Layout/LineLength
       description {

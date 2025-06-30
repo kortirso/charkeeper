@@ -6,6 +6,7 @@ en:
       daggerheart_character: Daggerheart character
     errors:
       unexpected_key: Unknown param
+      included_in?: Unknown value
       character_item:
         rules:
           ready_to_use:

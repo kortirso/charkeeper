@@ -6,6 +6,7 @@ ru:
       daggerheart_character: Daggerheart персонаж
     errors:
       unexpected_key: Неизвестный параметр
+      included_in?: Неизвестное значение
       character_item:
         rules:
           ready_to_use:
