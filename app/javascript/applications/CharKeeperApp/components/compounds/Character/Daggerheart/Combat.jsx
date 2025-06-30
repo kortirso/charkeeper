@@ -110,7 +110,7 @@ export const DaggerheartCombat = (props) => {
                     <p class="font-cascadia-light">{attack.name}</p>
                     <Show when={attack.features.length > 0}>
                       <p class="text-xs font-cascadia-light">
-                        {attack.tooltips.join(', ')}
+                        {attack.features.join(', ')}
                       </p>
                     </Show>
                     <Show when={attack.notes}>
