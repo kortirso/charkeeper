@@ -6,6 +6,7 @@ class ApplicationController < ActionController::Base
   append_view_path Rails.root.join('app/views/controllers')
 
   before_action :authenticate, except: %i[not_found]
+  before_action :set_locale
   before_action do
     Rails.error.set_context(
       request_url: request.original_url,
@@ -25,5 +26,9 @@ class ApplicationController < ActionController::Base
 
   def page_not_found
     render template: 'web/shared/404', status: :not_found, formats: [:html]
+  end
+
+  def set_locale
+    I18n.locale = current_user&.locale || I18n.default_locale
   end
 end
