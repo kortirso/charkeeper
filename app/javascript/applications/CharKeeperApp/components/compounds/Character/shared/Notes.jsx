@@ -3,6 +3,7 @@ import { createStore } from 'solid-js/store';
 import * as i18n from '@solid-primitives/i18n';
 
 import { Input, Toggle, Button, IconButton } from '../../../atoms';
+import { ErrorWrapper } from '../../../molecules';
 
 import { useAppState, useAppLocale } from '../../../../context';
 import { Close } from '../../../../assets';
@@ -58,7 +59,7 @@ export const Notes = () => {
   }
 
   return (
-    <>
+    <ErrorWrapper payload={{ character_id: appState.activePageParams.id, key: 'Notes' }}>
       <Show
         when={!activeNewNoteTab()}
         fallback={
@@ -108,6 +109,6 @@ export const Notes = () => {
           </For>
         </Show>
       </Show>
-    </>
+    </ErrorWrapper>
   );
 }

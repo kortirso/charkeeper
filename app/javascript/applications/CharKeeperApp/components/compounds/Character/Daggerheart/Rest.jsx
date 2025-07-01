@@ -2,6 +2,7 @@ import { batch } from 'solid-js';
 import * as i18n from '@solid-primitives/i18n';
 
 import { Button } from '../../../atoms';
+import { ErrorWrapper } from '../../../molecules';
 
 import { useAppState, useAppLocale, useAppAlert } from '../../../../context';
 import { fetchCharacterRequest } from '../../../../requests/fetchCharacterRequest';
@@ -30,20 +31,22 @@ export const DaggerheartRest = (props) => {
   }
 
   return (
-    <div class="white-box p-4">
-      <p class="font-cascadia-light mb-4">{replace(t('daggerheart.shortRestDescription'), { tier: character().tier })}</p>
-      <p class="font-cascadia-light mb-4">{t('daggerheart.longRestDescription')}</p>
-      <div class="grid grid-cols-1 lg:grid-cols-3 lg:gap-4">
-        <Button default textable classList="mb-2 lg:mb-0" onClick={() => restCharacter({ rest: 'short' })}>
-          <span class="font-cascadia-light">{t('character.shortRest')}</span>
-        </Button>
-        <Button default textable classList="mb-2 lg:mb-0" onClick={() => restCharacter({ rest: 'long' })}>
-          <span class="font-cascadia-light">{t('character.longRest')}</span>
-        </Button>
-        <Button default textable classList="" onClick={() => restCharacter({ rest: 'session' })}>
-          <span class="font-cascadia-light">{t('character.sessionRest')}</span>
-        </Button>
+    <ErrorWrapper payload={{ character_id: character().id, key: 'DaggerheartRest' }}>
+      <div class="white-box p-4">
+        <p class="font-cascadia-light mb-4">{replace(t('daggerheart.shortRestDescription'), { tier: character().tier })}</p>
+        <p class="font-cascadia-light mb-4">{t('daggerheart.longRestDescription')}</p>
+        <div class="grid grid-cols-1 lg:grid-cols-3 lg:gap-4">
+          <Button default textable classList="mb-2 lg:mb-0" onClick={() => restCharacter({ rest: 'short' })}>
+            <span class="font-cascadia-light">{t('character.shortRest')}</span>
+          </Button>
+          <Button default textable classList="mb-2 lg:mb-0" onClick={() => restCharacter({ rest: 'long' })}>
+            <span class="font-cascadia-light">{t('character.longRest')}</span>
+          </Button>
+          <Button default textable classList="" onClick={() => restCharacter({ rest: 'session' })}>
+            <span class="font-cascadia-light">{t('character.sessionRest')}</span>
+          </Button>
+        </div>
       </div>
-    </div>
+    </ErrorWrapper>
   );
 }

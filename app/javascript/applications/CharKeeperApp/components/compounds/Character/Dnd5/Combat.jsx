@@ -1,7 +1,7 @@
 import { createSignal, For, Show, Switch, Match, batch } from 'solid-js';
 import * as i18n from '@solid-primitives/i18n';
 
-import { createModal, StatsBlock } from '../../../molecules';
+import { createModal, StatsBlock, ErrorWrapper } from '../../../molecules';
 import { Input, Toggle, Checkbox, Select, Button } from '../../../atoms';
 
 import { FeatureTitle } from '../../../../components';
@@ -226,7 +226,7 @@ export const Dnd5Combat = (props) => {
   }
 
   return (
-    <>
+    <ErrorWrapper payload={{ character_id: character().id, key: 'Dnd5Combat' }}>
       <StatsBlock
         items={[
           { title: t('terms.armorClass'), value: character().armor_class },
@@ -460,6 +460,6 @@ export const Dnd5Combat = (props) => {
           <Button default textable onClick={updateHealth}>{t('save')}</Button>
         </div>
       </Modal>
-    </>
+    </ErrorWrapper>
   );
 }

@@ -2,6 +2,7 @@ import { createSignal, For, Switch, Match, Show } from 'solid-js';
 import * as i18n from '@solid-primitives/i18n';
 
 import { Checkbox, Toggle, Button } from '../../../atoms';
+import { ErrorWrapper } from '../../../molecules';
 
 import { FeatureTitle } from '../../../../components';
 import { useAppState, useAppLocale, useAppAlert } from '../../../../context';
@@ -155,7 +156,7 @@ export const DaggerheartCombat = (props) => {
   );
 
   return (
-    <>
+    <ErrorWrapper payload={{ character_id: character().id, key: 'DaggerheartCombat' }}>
       <div class="white-box mb-2">
         <div class="p-4 flex">
           <div class="flex-1 flex flex-col items-center">
@@ -226,6 +227,6 @@ export const DaggerheartCombat = (props) => {
           </Toggle>
         }
       </For>
-    </>
+    </ErrorWrapper>
   );
 }

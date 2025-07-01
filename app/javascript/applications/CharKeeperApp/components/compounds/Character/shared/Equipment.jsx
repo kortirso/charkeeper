@@ -1,7 +1,7 @@
 import { createSignal, createEffect, For, Show, createMemo, batch, children } from 'solid-js';
 import * as i18n from '@solid-primitives/i18n';
 
-import { createModal } from '../../../molecules';
+import { createModal, ErrorWrapper } from '../../../molecules';
 import { Input, Button, Toggle, TextArea } from '../../../atoms';
 
 import { ItemsTable } from '../../../../components';
@@ -158,7 +158,7 @@ export const Equipment = (props) => {
   );
 
   return (
-    <>
+    <ErrorWrapper payload={{ character_id: character().id, key: 'Equipment' }}>
       <Show
         when={!itemsSelectingMode()}
         fallback={
@@ -218,6 +218,6 @@ export const Equipment = (props) => {
           <Button default textable onClick={updateItem}>{t('save')}</Button>
         </Show>
       </Modal>
-    </>
+    </ErrorWrapper>
   );
 }

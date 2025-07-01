@@ -2,7 +2,7 @@ import { createSignal, createEffect, For, Show, createMemo, batch } from 'solid-
 import * as i18n from '@solid-primitives/i18n';
 
 import { DomainCardsTable } from '../../../../components';
-import { createModal, StatsBlock } from '../../../molecules';
+import { createModal, StatsBlock, ErrorWrapper } from '../../../molecules';
 import { Button, Toggle, TextArea } from '../../../atoms';
 
 import config from '../../../../data/daggerheart.json';
@@ -124,7 +124,7 @@ export const DaggerheartDomainCards = (props) => {
   );
 
   return (
-    <>
+    <ErrorWrapper payload={{ character_id: character().id, key: 'DaggerheartDomainCards' }}>
       <Show
         when={!spellsSelectingMode()}
         fallback={
@@ -212,6 +212,6 @@ export const DaggerheartDomainCards = (props) => {
           <Button default textable onClick={updateSpell}>{t('save')}</Button>
         </Show>
       </Modal>
-    </>
+    </ErrorWrapper>
   );
 }

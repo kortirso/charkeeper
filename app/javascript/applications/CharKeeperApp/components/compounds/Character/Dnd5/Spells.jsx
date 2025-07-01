@@ -2,6 +2,7 @@ import { createSignal, For, Show, createMemo } from 'solid-js';
 import * as i18n from '@solid-primitives/i18n';
 
 import { Select, Checkbox, Toggle, Button } from '../../../atoms';
+import { ErrorWrapper } from '../../../molecules';
 
 import { useAppLocale } from '../../../../context';
 
@@ -27,7 +28,7 @@ export const Dnd5Spells = (props) => {
   });
 
   return (
-    <>
+    <ErrorWrapper payload={{ character_id: character().id, key: 'Dnd5Spells' }}>
       <div class="flex justify-between items-center mb-2">
         <Checkbox
           labelText={t('character.onlyAvailableSpells')}
@@ -89,6 +90,6 @@ export const Dnd5Spells = (props) => {
         }
       </For>
       <Button default textable onClick={props.onNavigatoToSpellbook}>{t('back')}</Button>
-    </>
+    </ErrorWrapper>
   );
 }

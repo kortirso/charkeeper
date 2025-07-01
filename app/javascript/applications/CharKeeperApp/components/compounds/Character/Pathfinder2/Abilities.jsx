@@ -3,6 +3,7 @@ import * as i18n from '@solid-primitives/i18n';
 import { Key } from '@solid-primitives/keyed';
 
 import { Levelbox, Button, Input } from '../../../atoms';
+import { ErrorWrapper } from '../../../molecules';
 
 import config from '../../../../data/pathfinder2.json';
 import { useAppState, useAppLocale, useAppAlert } from '../../../../context';
@@ -101,7 +102,7 @@ export const Pathfinder2Abilities = (props) => {
   }
 
   return (
-    <>
+    <ErrorWrapper payload={{ character_id: character().id, key: 'Pathfinder2Abilities' }}>
       <Show when={character().boosts}>
         <div class="bg-blue-200 rounded p-4 mb-2">
           <p
@@ -205,6 +206,6 @@ export const Pathfinder2Abilities = (props) => {
           </div>
         </Show>
       </div>
-    </>
+    </ErrorWrapper>
   );
 }

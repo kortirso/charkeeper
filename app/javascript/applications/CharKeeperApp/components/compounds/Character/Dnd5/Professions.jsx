@@ -2,6 +2,7 @@ import { createSignal, createEffect, For, Show } from 'solid-js';
 import * as i18n from '@solid-primitives/i18n';
 
 import { Toggle, Checkbox } from '../../../atoms';
+import { ErrorWrapper } from '../../../molecules';
 
 import config from '../../../../data/dnd2024.json';
 import { useAppLocale, useAppState } from '../../../../context';
@@ -74,7 +75,7 @@ export const Dnd5Professions = (props) => {
   }
 
   return (
-    <>
+    <ErrorWrapper payload={{ character_id: character().id, key: 'Dnd5Professions' }}>
       <Show when={character().provider === 'dnd2024'}>
         <Toggle title={t('professionsPage.feats')}>
           <div class="flex flex-wrap">
@@ -240,6 +241,6 @@ export const Dnd5Professions = (props) => {
           </For>
         </Toggle>
       </Show>
-    </>
+    </ErrorWrapper>
   );
 }

@@ -2,6 +2,7 @@ import { createSignal, For } from 'solid-js';
 import * as i18n from '@solid-primitives/i18n';
 
 import { Toggle, Levelbox, Button } from '../../../atoms';
+import { ErrorWrapper } from '../../../molecules';
 
 import config from '../../../../data/pathfinder2.json';
 import { useAppLocale, useAppState, useAppAlert } from '../../../../context';
@@ -53,7 +54,7 @@ export const Pathfinder2Professions = (props) => {
   }
 
   return (
-    <>
+    <ErrorWrapper payload={{ character_id: character().id, key: 'Pathfinder2Professions' }}>
       <Toggle title={t('professionsPage.languages')}>
         <label class="text-sm/4 font-cascadia-light text-gray-400">{t('professionsPage.languages')}</label>
         <textarea
@@ -98,6 +99,6 @@ export const Pathfinder2Professions = (props) => {
           </div>
         </div>
       </Toggle>
-    </>
+    </ErrorWrapper>
   );
 }

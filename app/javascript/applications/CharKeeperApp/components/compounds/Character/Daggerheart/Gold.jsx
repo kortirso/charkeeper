@@ -2,6 +2,7 @@ import { For } from 'solid-js';
 import * as i18n from '@solid-primitives/i18n';
 
 import { Checkbox } from '../../../atoms';
+import { ErrorWrapper } from '../../../molecules';
 
 import { useAppState, useAppLocale, useAppAlert } from '../../../../context';
 
@@ -31,7 +32,7 @@ export const DaggerheartGold = (props) => {
   }
 
   return (
-    <>
+    <ErrorWrapper payload={{ character_id: character().id, key: 'DaggerheartGold' }}>
       <div class="white-box mb-2 p-4">
         <For each={['coins', 'handfuls', 'bags', 'chests']}>
           {(item) =>
@@ -56,6 +57,6 @@ export const DaggerheartGold = (props) => {
           {t('daggerheart.gold.total')} - {character().gold.chests * 1000 + character().gold.bags * 100 + character().gold.handfuls * 10 + character().gold.coins}
         </p>
       </div>
-    </>
+    </ErrorWrapper>
   );
 }

@@ -2,6 +2,7 @@ import { createMemo, createSignal, For, Show, batch } from 'solid-js';
 import * as i18n from '@solid-primitives/i18n';
 
 import { Select, Checkbox, Button } from '../../../atoms';
+import { ErrorWrapper } from '../../../molecules';
 
 import config from '../../../../data/daggerheart.json';
 import { useAppState, useAppLocale, useAppAlert } from '../../../../context';
@@ -134,127 +135,129 @@ export const DaggerheartLeveling = (props) => {
   }
 
   return (
-    <div class="white-box p-4 flex flex-col">
-      <For each={sortedClasses()}>
-        {(classDataElement) =>
-          <For each={Object.entries(classDataElement)}>
-            {([classSlug, classData]) =>
-              <div class="mb-2">
-                <Show
-                  when={classSlug !== character().main_class}
-                  fallback={
-                    <p>{character().subclasses[character().main_class] ? `${classes()[character().main_class].name[locale()]} - ${classes()[character().main_class].subclasses[character().subclasses[character().main_class]].name[locale()]}` : classes()[character().main_class].name[locale()]}</p>
-                  }
-                >
-                  <Checkbox
-                    labelText={character().subclasses[classSlug] ? `${classData.name[locale()]} - ${classes()[classSlug].subclasses[character().subclasses[classSlug]].name[locale()]}` : classData.name[locale()]}
-                    labelPosition="right"
-                    labelClassList="ml-4"
-                    checked={classesData()[classSlug]}
-                    onToggle={() => toggleClass(classSlug)}
-                  />
-                </Show>
-                <Show when={classesData()[classSlug]}>
-                  <div class="flex mt-2">
-                    <div>
-                      <div class="flex items-center">
-                        <Button default size="small" onClick={() => changeClassLevel(classSlug, 'down')}>
-                          <Minus />
-                        </Button>
-                        <p class="w-10 text-center">{classesData()[classSlug]}</p>
-                        <Button default size="small" onClick={() => changeClassLevel(classSlug, 'up')}>
-                          <PlusSmall />
-                        </Button>
-                      </div>
-                      <span class="font-cascadia-light text-xs">{t('daggerheart.leveling.level')}</span>
-                    </div>
-                    <Show when={classesData()[classSlug] && character().subclasses[classSlug]}>
-                      <div class="ml-8">
+    <ErrorWrapper payload={{ character_id: character().id, key: 'DaggerheartLeveling' }}>
+      <div class="white-box p-4 flex flex-col">
+        <For each={sortedClasses()}>
+          {(classDataElement) =>
+            <For each={Object.entries(classDataElement)}>
+              {([classSlug, classData]) =>
+                <div class="mb-2">
+                  <Show
+                    when={classSlug !== character().main_class}
+                    fallback={
+                      <p>{character().subclasses[character().main_class] ? `${classes()[character().main_class].name[locale()]} - ${classes()[character().main_class].subclasses[character().subclasses[character().main_class]].name[locale()]}` : classes()[character().main_class].name[locale()]}</p>
+                    }
+                  >
+                    <Checkbox
+                      labelText={character().subclasses[classSlug] ? `${classData.name[locale()]} - ${classes()[classSlug].subclasses[character().subclasses[classSlug]].name[locale()]}` : classData.name[locale()]}
+                      labelPosition="right"
+                      labelClassList="ml-4"
+                      checked={classesData()[classSlug]}
+                      onToggle={() => toggleClass(classSlug)}
+                    />
+                  </Show>
+                  <Show when={classesData()[classSlug]}>
+                    <div class="flex mt-2">
+                      <div>
                         <div class="flex items-center">
-                          <Button default size="small" onClick={() => changeMastery(character().subclasses[classSlug], 'down')}>
+                          <Button default size="small" onClick={() => changeClassLevel(classSlug, 'down')}>
                             <Minus />
                           </Button>
-                          <p class="w-10 text-center">{subclassesMasteryData()[character().subclasses[classSlug]]}</p>
-                          <Button default size="small" onClick={() => changeMastery(character().subclasses[classSlug], 'up')}>
+                          <p class="w-10 text-center">{classesData()[classSlug]}</p>
+                          <Button default size="small" onClick={() => changeClassLevel(classSlug, 'up')}>
                             <PlusSmall />
                           </Button>
                         </div>
-                        <span class="font-cascadia-light text-xs">{t('daggerheart.leveling.mastery')}</span>
+                        <span class="font-cascadia-light text-xs">{t('daggerheart.leveling.level')}</span>
                       </div>
+                      <Show when={classesData()[classSlug] && character().subclasses[classSlug]}>
+                        <div class="ml-8">
+                          <div class="flex items-center">
+                            <Button default size="small" onClick={() => changeMastery(character().subclasses[classSlug], 'down')}>
+                              <Minus />
+                            </Button>
+                            <p class="w-10 text-center">{subclassesMasteryData()[character().subclasses[classSlug]]}</p>
+                            <Button default size="small" onClick={() => changeMastery(character().subclasses[classSlug], 'up')}>
+                              <PlusSmall />
+                            </Button>
+                          </div>
+                          <span class="font-cascadia-light text-xs">{t('daggerheart.leveling.mastery')}</span>
+                        </div>
+                      </Show>
+                    </div>
+                  </Show>
+                  <Show when={classesData()[classSlug]}>
+                    <Show when={classSlug !== character().main_class && !character().domains[classSlug]}>
+                      <Select
+                        containerClassList="w-full"
+                        labelText={t('newCharacterPage.daggerheart.domain')}
+                        items={Object.fromEntries(Object.entries(classDomains()).filter(([key,]) => classes()[classSlug].domains.includes(key)))}
+                        selectedValue={domainsData()[classSlug]}
+                        onSelect={(value) => selectDomain(classSlug, value)}
+                      />
                     </Show>
-                  </div>
-                </Show>
-                <Show when={classesData()[classSlug]}>
-                  <Show when={classSlug !== character().main_class && !character().domains[classSlug]}>
-                    <Select
-                      containerClassList="w-full"
-                      labelText={t('newCharacterPage.daggerheart.domain')}
-                      items={Object.fromEntries(Object.entries(classDomains()).filter(([key,]) => classes()[classSlug].domains.includes(key)))}
-                      selectedValue={domainsData()[classSlug]}
-                      onSelect={(value) => selectDomain(classSlug, value)}
-                    />
+                    <Show when={!character().subclasses[classSlug]}>
+                      <Select
+                        containerClassList="w-full"
+                        labelText={t('newCharacterPage.daggerheart.subclass')}
+                        items={Object.entries(classes()[classSlug].subclasses).reduce((acc, [key, values]) => { acc[key] = values.name[locale()]; return acc; }, {} )}
+                        selectedValue={subclassesData()[classSlug]}
+                        onSelect={(value) => selectSubclass(classSlug, value)}
+                      />
+                    </Show>
                   </Show>
-                  <Show when={!character().subclasses[classSlug]}>
-                    <Select
-                      containerClassList="w-full"
-                      labelText={t('newCharacterPage.daggerheart.subclass')}
-                      items={Object.entries(classes()[classSlug].subclasses).reduce((acc, [key, values]) => { acc[key] = values.name[locale()]; return acc; }, {} )}
-                      selectedValue={subclassesData()[classSlug]}
-                      onSelect={(value) => selectSubclass(classSlug, value)}
-                    />
-                  </Show>
-                </Show>
+                </div>
+              }
+            </For>
+          }
+        </For>
+        <Show when={character().tier > 1}>
+          <For
+            each={[
+              { css: 'mt-4 mb-2', title: t('daggerheart.leveling.health'), coef: 2, attribute: 'health' },
+              { css: 'mb-2', title: t('daggerheart.leveling.stress'), coef: 2, attribute: 'stress' },
+              { css: 'mb-2', title: t('daggerheart.leveling.evasion'), coef: 1, attribute: 'evasion' },
+              { css: 'mb-2', title: t('daggerheart.leveling.domainCards'), coef: 1, attribute: 'domain_cards' }
+            ]}
+          >
+            {(item) =>
+              <div class={item.css}>
+                <p class="text-sm/4 font-cascadia-light uppercase mb-1">{item.title}</p>
+                <div class="flex">
+                  <For each={Array.from([...Array((character().tier - 1) * item.coef).keys()], (x) => x + 1)}>
+                    {(index) =>
+                      <Checkbox
+                        filled
+                        checked={levelingData()[item.attribute] >= index}
+                        classList="mr-1"
+                        onToggle={() => updateLeveling(item.attribute, index)}
+                      />
+                    }
+                  </For>
+                </div>
               </div>
             }
           </For>
-        }
-      </For>
-      <Show when={character().tier > 1}>
-        <For
-          each={[
-            { css: 'mt-4 mb-2', title: t('daggerheart.leveling.health'), coef: 2, attribute: 'health' },
-            { css: 'mb-2', title: t('daggerheart.leveling.stress'), coef: 2, attribute: 'stress' },
-            { css: 'mb-2', title: t('daggerheart.leveling.evasion'), coef: 1, attribute: 'evasion' },
-            { css: 'mb-2', title: t('daggerheart.leveling.domainCards'), coef: 1, attribute: 'domain_cards' }
-          ]}
-        >
-          {(item) =>
-            <div class={item.css}>
-              <p class="text-sm/4 font-cascadia-light uppercase mb-1">{item.title}</p>
+          <Show when={character().tier > 2}>
+            <div class="mb-2">
+              <p class="text-sm/4 font-cascadia-light uppercase mb-1">{t('daggerheart.leveling.proficiency')}</p>
               <div class="flex">
-                <For each={Array.from([...Array((character().tier - 1) * item.coef).keys()], (x) => x + 1)}>
+                <For each={Array.from([...Array(character().tier - 2).keys()], (x) => x + 1)}>
                   {(index) =>
                     <Checkbox
                       filled
-                      checked={levelingData()[item.attribute] >= index}
+                      checked={levelingData().proficiency >= index}
                       classList="mr-1"
-                      onToggle={() => updateLeveling(item.attribute, index)}
+                      onToggle={() => updateLeveling('proficiency', index)}
                     />
                   }
                 </For>
               </div>
             </div>
-          }
-        </For>
-        <Show when={character().tier > 2}>
-          <div class="mb-2">
-            <p class="text-sm/4 font-cascadia-light uppercase mb-1">{t('daggerheart.leveling.proficiency')}</p>
-            <div class="flex">
-              <For each={Array.from([...Array(character().tier - 2).keys()], (x) => x + 1)}>
-                {(index) =>
-                  <Checkbox
-                    filled
-                    checked={levelingData().proficiency >= index}
-                    classList="mr-1"
-                    onToggle={() => updateLeveling('proficiency', index)}
-                  />
-                }
-              </For>
-            </div>
-          </div>
+          </Show>
         </Show>
-      </Show>
-      <Button default textable classList="mt-2" onClick={updateClasses}>{t('save')}</Button>
-    </div>
+        <Button default textable classList="mt-2" onClick={updateClasses}>{t('save')}</Button>
+      </div>
+    </ErrorWrapper>
   );
 }

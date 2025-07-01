@@ -2,6 +2,7 @@ import { batch } from 'solid-js';
 import * as i18n from '@solid-primitives/i18n';
 
 import { Button } from '../../../atoms';
+import { ErrorWrapper } from '../../../molecules';
 
 import { useAppState, useAppLocale, useAppAlert } from '../../../../context';
 import { fetchCharacterRequest } from '../../../../requests/fetchCharacterRequest';
@@ -33,17 +34,19 @@ export const Dnd5Rest = (props) => {
   }
 
   return (
-    <div class="white-box p-4">
-      <p class="font-cascadia-light mb-4">{t('character.shortRestDescription')}</p>
-      <p class="font-cascadia-light mb-4">{t('character.longRestDescription')}</p>
-      <div class="flex justify-center items-center">
-        <Button default textable classList="flex-1 mr-2" onClick={() => restCharacter({ type: 'short_rest' })}>
-          <span class="font-cascadia-light">{t('character.shortRest')}</span>
-        </Button>
-        <Button default textable classList="flex-1 ml-2" onClick={() => restCharacter({ type: 'long_rest' })}>
-          <span class="font-cascadia-light">{t('character.longRest')}</span>
-        </Button>
+    <ErrorWrapper payload={{ character_id: character().id, key: 'Dnd5Rest' }}>
+      <div class="white-box p-4">
+        <p class="font-cascadia-light mb-4">{t('character.shortRestDescription')}</p>
+        <p class="font-cascadia-light mb-4">{t('character.longRestDescription')}</p>
+        <div class="flex justify-center items-center">
+          <Button default textable classList="flex-1 mr-2" onClick={() => restCharacter({ type: 'short_rest' })}>
+            <span class="font-cascadia-light">{t('character.shortRest')}</span>
+          </Button>
+          <Button default textable classList="flex-1 ml-2" onClick={() => restCharacter({ type: 'long_rest' })}>
+            <span class="font-cascadia-light">{t('character.longRest')}</span>
+          </Button>
+        </div>
       </div>
-    </div>
+    </ErrorWrapper>
   );
 }

@@ -3,6 +3,7 @@ import * as i18n from '@solid-primitives/i18n';
 import { Key } from '@solid-primitives/keyed';
 
 import { Button, Input, Select } from '../../../atoms';
+import { ErrorWrapper } from '../../../molecules';
 
 import config from '../../../../data/daggerheart.json';
 import { useAppState, useAppLocale, useAppAlert } from '../../../../context';
@@ -89,7 +90,7 @@ export const DaggerheartTraits = (props) => {
   }
 
   return (
-    <>
+    <ErrorWrapper payload={{ character_id: character().id, key: 'DaggerheartTraits' }}>
       <div class="white-box flex flex-wrap p-4 pb-0">
         <For each={Object.entries(dict().daggerheart.traits)}>
           {([slug, ability]) =>
@@ -186,6 +187,6 @@ export const DaggerheartTraits = (props) => {
           </div>
         </Show>
       </div>
-    </>
+    </ErrorWrapper>
   );
 }

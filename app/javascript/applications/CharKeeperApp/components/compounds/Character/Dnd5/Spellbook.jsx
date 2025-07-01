@@ -1,7 +1,7 @@
 import { createSignal, For, Show, createMemo, batch } from 'solid-js';
 import * as i18n from '@solid-primitives/i18n';
 
-import { createModal, StatsBlock } from '../../../molecules';
+import { createModal, StatsBlock, ErrorWrapper } from '../../../molecules';
 import { Select, Checkbox, Button } from '../../../atoms';
 
 import { useAppLocale } from '../../../../context';
@@ -79,7 +79,7 @@ export const Dnd5Spellbook = (props) => {
   }
 
   return (
-    <>
+    <ErrorWrapper payload={{ character_id: character().id, key: 'Dnd5Spellbook' }}>
       <div class="flex justify-between items-center mb-2">
         <Checkbox
           labelText={t('character.onlyPreparedSpells')}
@@ -289,6 +289,6 @@ export const Dnd5Spellbook = (props) => {
           <Button default textable onClick={updateSpell}>{t('save')}</Button>
         </div>
       </Modal>
-    </>
+    </ErrorWrapper>
   );
 }

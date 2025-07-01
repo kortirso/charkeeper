@@ -2,6 +2,7 @@ import { createSignal, For, Show, batch } from 'solid-js';
 import * as i18n from '@solid-primitives/i18n';
 
 import { Checkbox, Button } from '../../../atoms';
+import { ErrorWrapper } from '../../../molecules';
 
 import { useAppLocale, useAppAlert, useAppState } from '../../../../context';
 import { PlusSmall, Minus, Edit, Plus } from '../../../../assets';
@@ -94,7 +95,7 @@ export const Dnd5Abilities = (props) => {
   }
 
   return (
-    <>
+    <ErrorWrapper payload={{ character_id: character().id, key: 'Dnd5Abilities' }}>
       <div class="white-box flex mb-2 p-4">
         <div class="flex-1 flex flex-col items-center">
           <p class="text-sm mb-1">{t('terms.proficiencyBonus')}</p>
@@ -191,6 +192,6 @@ export const Dnd5Abilities = (props) => {
           </div>
         </Show>
       </div>
-    </>
+    </ErrorWrapper>
   );
 }

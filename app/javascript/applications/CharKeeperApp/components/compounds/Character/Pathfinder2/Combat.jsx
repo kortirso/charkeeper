@@ -1,7 +1,7 @@
 import { createSignal, For, batch } from 'solid-js';
 import * as i18n from '@solid-primitives/i18n';
 
-import { createModal, StatsBlock } from '../../../molecules';
+import { createModal, StatsBlock, ErrorWrapper } from '../../../molecules';
 import { Input, Checkbox, Button } from '../../../atoms';
 
 import { useAppState, useAppLocale, useAppAlert } from '../../../../context';
@@ -68,7 +68,7 @@ export const Pathfinder2Combat = (props) => {
   }
 
   return (
-    <>
+    <ErrorWrapper payload={{ character_id: character().id, key: 'Pathfinder2Combat' }}>
       <StatsBlock
         items={[
           { title: t('terms.armorClass'), value: character().armor_class },
@@ -134,6 +134,6 @@ export const Pathfinder2Combat = (props) => {
           <Button default textable onClick={updateHealth}>{t('save')}</Button>
         </div>
       </Modal>
-    </>
+    </ErrorWrapper>
   );
 }

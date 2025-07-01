@@ -48,6 +48,7 @@ Rails.application.routes.draw do
     get ':provider/items', to: 'items#index'
     resource :users, only: %i[update] do
       resources :feedbacks, only: %i[create], module: 'users'
+      resources :monitoring, only: %i[create], module: 'users'
     end
 
     namespace :dnd5 do
