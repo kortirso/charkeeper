@@ -29,7 +29,7 @@
   </div>
   <div class="form-field mb-2">
     <div><%= form.label 'Значение источника', class: 'form-label' %></div>
-    <div><%= form.select :origin_value, Dnd2024::Character::SPECIES + Dnd2024::Character::CLASSES, required: true %></div>
+    <div><%= form.text_field :origin_value, value: @feature.origin_value, class: 'form-value', required: true %></div>
   </div>
   <div class="form-field mb-2">
     <div><%= form.label :level, class: 'form-label' %></div>
@@ -55,17 +55,13 @@
     <div><%= form.label 'Расчет видимости', class: 'form-label' %></div>
     <div><%= form.text_field :visible, class: 'form-text', required: true %></div>
   </div>
-  <%= form.fields_for :eval_variables do |evals_form| %>
-    <% @feature.eval_variables.each do |key, value| %>
-      <div class="form-field mb-2">
-        <div><%= evals_form.label key, class: 'form-label' %></div>
-        <div><%= evals_form.textarea key, value: value, class: 'form-text text-sm', size: '100x5' %></div>
-      </div>
-    <% end %>
-    <div class="form-field mb-2">
-      <div><%= evals_form.label 'Новая переменная', class: 'form-label' %></div>
-      <div><%= evals_form.textarea :new_variable, value: '', placeholder: 'something-->calculations', class: 'form-text text-sm', size: '100x5' %></div>
-    </div>
-  <% end %>
+  <div class="form-field mb-2">
+    <div><%= form.label 'Переменные для описания', class: 'form-label' %></div>
+    <div><%= form.textarea :description_eval_variables, class: 'form-text text-sm', required: true, size: '100x7' %></div>
+  </div>
+  <div class="form-field mb-2">
+    <div><%= form.label 'Переменные для расчетов', class: 'form-label' %></div>
+    <div><%= form.textarea :eval_variables, class: 'form-text text-sm', required: true, size: '100x7' %></div>
+  </div>
   <%= form.submit 'Update', class: 'btn btn-primary' %>
 <% end %>

@@ -35,11 +35,8 @@ module Adminbook
         private
 
         def transform_params(updating_params)
-          new_variable = updating_params['eval_variables'].delete('new_variable')
-          if new_variable.present?
-            key, value = new_variable.split('-->')
-            updating_params['eval_variables'][key] = value
-          end
+          updating_params['description_eval_variables'] = JSON.parse(updating_params['description_eval_variables'])
+          updating_params['eval_variables'] = JSON.parse(updating_params['eval_variables'])
           updating_params['limit_refresh'] = nil if updating_params['limit_refresh'].blank?
           updating_params['options'] = updating_params['options'].blank? ? nil : JSON.parse(updating_params['options'])
           updating_params
@@ -50,7 +47,7 @@ module Adminbook
             .expect(
               dnd5_character_feature: [
                 :slug, :origin, :origin_value, :level, :kind, :limit_refresh, :options, :options_type, :visible, :choose_once,
-                { title: %i[en ru], description: %i[en ru], eval_variables: {} }
+                :description_eval_variables, :eval_variables, { title: %i[en ru], description: %i[en ru] }
               ]
             )
         end
