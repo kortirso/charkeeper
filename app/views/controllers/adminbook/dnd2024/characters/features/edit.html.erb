@@ -25,7 +25,7 @@
   <% end %>
   <div class="form-field mb-2">
     <div><%= form.label 'Исключение способностей', class: 'form-label' %></div>
-    <div><%= form.text_field :exclude, value: @feature.exclude.join(','), class: 'form-text text-sm' %></div>
+    <div><%= form.text_field :exclude, value: (@feature.exclude&.join(',') || ''), class: 'form-text text-sm' %></div>
   </div>
   <div class="form-field mb-2">
     <div><%= form.label 'Источник', class: 'form-label' %></div>
