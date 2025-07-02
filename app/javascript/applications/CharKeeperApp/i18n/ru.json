@@ -21,7 +21,8 @@
     "changeLocale": "Язык",
     "feedback": "Отзыв",
     "profile": "Профиль",
-    "username": "Имя пользователя"
+    "username": "Имя пользователя",
+    "socials": "Общество"
   },
   "homebrewPage": {
     "title": "Homebrew"

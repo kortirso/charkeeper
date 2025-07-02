@@ -21,7 +21,8 @@
     "changeLocale": "Locale",
     "feedback": "Feedback",
     "profile": "Profile",
-    "username": "Username"
+    "username": "Username",
+    "socials": "Community links"
   },
   "homebrewPage": {
     "title": "Homebrew"

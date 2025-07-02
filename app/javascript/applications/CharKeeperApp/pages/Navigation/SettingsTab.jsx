@@ -1,6 +1,7 @@
 import * as i18n from '@solid-primitives/i18n';
 
 import { PageHeader } from '../../components/molecules';
+import { Telegram, Discord, Vk } from '../../assets';
 
 import { useAppState, useAppLocale } from '../../context';
 
@@ -34,6 +35,18 @@ export const SettingsTab = () => {
         {renderSettingsLink(t('settingsPage.profile'), 'profile')}
         {renderSettingsLink(t('settingsPage.changeLocale'), 'locale')}
         {renderSettingsLink(t('settingsPage.feedback'), 'feedback')}
+        <div class="flex py-3 px-4 gap-4">
+          <p>{t('settingsPage.socials')}</p>
+          <a href="https://discord.gg/NFqWPkuZ" target="_blank" rel="noopener noreferrer" class="opacity-75 hover:opacity-100">
+            <Discord />
+          </a>
+          <a href="https://vk.com/char_keeper" target="_blank" rel="noopener noreferrer" class="opacity-75 hover:opacity-100">
+            <Vk />
+          </a>
+          <a href="https://t.me/charkeeper" target="_blank" rel="noopener noreferrer" class="opacity-75 hover:opacity-100">
+            <Telegram />
+          </a>
+        </div>
       </div>
     </>
   );
