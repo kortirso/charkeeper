@@ -17,19 +17,19 @@ module Adminbook
         def create
           feature = ::Dnd2024::Character::Feature.new(transform_params(feature_params))
           feature.save
-          redirect_to adminbook_characters_dnd2024_features_path
+          redirect_to adminbook_dnd2024_characters_features_path
         end
 
         def update
           feature = ::Dnd2024::Character::Feature.find(params[:id])
           feature.update(transform_params(feature_params))
-          redirect_to adminbook_characters_dnd2024_features_path
+          redirect_to adminbook_dnd2024_characters_features_path
         end
 
         def destroy
           feature = ::Dnd2024::Character::Feature.find(params[:id])
           feature.destroy
-          redirect_to adminbook_characters_dnd2024_features_path
+          redirect_to adminbook_dnd2024_characters_features_path
         end
 
         private
@@ -47,7 +47,7 @@ module Adminbook
         def feature_params
           params
             .expect(
-              dnd5_character_feature: [
+              dnd2024_character_feature: [
                 :slug, :origin, :origin_value, :level, :kind, :limit_refresh, :options, :options_type, :visible, :choose_once,
                 :description_eval_variables, :eval_variables, { title: %i[en ru], description: %i[en ru] }
               ]

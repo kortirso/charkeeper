@@ -17,19 +17,19 @@ module Adminbook
         def create
           feature = ::Dnd5::Character::Feature.new(transform_params(feature_params))
           feature.save
-          redirect_to adminbook_characters_dnd5_features_path
+          redirect_to adminbook_dnd5_characters_features_path
         end
 
         def update
           feature = ::Dnd5::Character::Feature.find(params[:id])
           feature.update(transform_params(feature_params))
-          redirect_to adminbook_characters_dnd5_features_path
+          redirect_to adminbook_dnd5_characters_features_path
         end
 
         def destroy
           feature = ::Dnd5::Character::Feature.find(params[:id])
           feature.destroy
-          redirect_to adminbook_characters_dnd5_features_path
+          redirect_to adminbook_dnd5_characters_features_path
         end
 
         private

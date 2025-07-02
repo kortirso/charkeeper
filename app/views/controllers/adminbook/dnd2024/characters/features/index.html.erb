@@ -18,7 +18,7 @@
     <% @features.each do |feature| %>
       <tr>
         <td class="pr-4">
-          <p><%= link_to feature.slug, edit_adminbook_dnd2024_characters_feature_path(feature.id) %><p>
+          <p><%= link_to feature.slug, edit_adminbook_dnd2024_characters_feature_path(feature.id), class: 'underline text-blue-400' %><p>
           <p><%= feature.origin %></p>
           <p><%= feature.origin_value %></p>
         </td>
