@@ -35,8 +35,10 @@ module Adminbook
         private
 
         def transform_params(updating_params)
-          updating_params['description_eval_variables'] = JSON.parse(updating_params['description_eval_variables'])
-          updating_params['eval_variables'] = JSON.parse(updating_params['eval_variables'])
+          updating_params['description_eval_variables'] =
+            JSON.parse(updating_params['description_eval_variables'].gsub(' =>', ':').gsub('nil', 'null'))
+          updating_params['eval_variables'] =
+            JSON.parse(updating_params['eval_variables'].gsub(' =>', ':').gsub('nil', 'null'))
           updating_params['limit_refresh'] = nil if updating_params['limit_refresh'].blank?
           updating_params['options'] = updating_params['options'].blank? ? nil : JSON.parse(updating_params['options'])
           updating_params

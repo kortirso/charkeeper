@@ -1,18 +1,27 @@
-<table class="table w-full text-sm">
+<div class="mb-4">
+  <%= link_to 'New item', new_adminbook_item_path(provider: params[:provider]), class: 'btn btn-primary font-cascadia-light' %>
+</div>
+<table class="table w-full text-sm font-cascadia-light">
   <thead>
     <tr>
+      <td></td>
       <td>ID</td>
       <td>Slug</td>
       <td>Kind</td>
       <td>Name</td>
       <td>Data</td>
       <td>Info</td>
+      <td></td>
     </tr>
   </thead>
   <tbody>
-    <% @items.each do |item| %>
+    <% @items.each_with_index do |item, index| %>
       <tr>
-        <td class="pr-4"><%= item.id %></td>
+        <td><%= index + 1 %></td>
+        <td class="pr-4">
+          <%= link_to edit_adminbook_item_path(item.id, provider: params[:provider]), class: 'underline text-blue-400' do %>
+            <%= item.id %></td>
+          <% end %>
         <td class="pr-4"><%= item.slug %></td>
         <td class="pr-4"><%= item.kind %></td>
         <td class="pr-4">
@@ -29,6 +38,9 @@
           <% item.info.each do |key, value| %>
             <p class="text-sm"><%= key %> - <%= value %></p>
           <% end %>
+        </td>
+        <td>
+          <%= button_to 'X', adminbook_item_path(item.id, provider: params[:provider]), method: :delete, class: 'btn-warning btn-small text-sm' %>
         </td>
       </tr>
     <% end %>
