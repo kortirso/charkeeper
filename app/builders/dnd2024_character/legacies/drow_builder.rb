@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
 module Dnd2024Character
-  module Species
-    class HalflingBuilder
+  module Legacies
+    class DrowBuilder
       def call(result:)
-        result[:speed] = 30
+        result[:darkvision] = 120
 
         result
       end

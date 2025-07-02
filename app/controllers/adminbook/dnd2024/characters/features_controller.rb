@@ -34,6 +34,7 @@ module Adminbook
 
         private
 
+        # rubocop: disable Metrics/AbcSize
         def transform_params(updating_params)
           updating_params['description_eval_variables'] =
             JSON.parse(updating_params['description_eval_variables'].gsub(' =>', ':').gsub('nil', 'null'))
@@ -44,6 +45,7 @@ module Adminbook
           updating_params['options'] = updating_params['options'].blank? ? nil : JSON.parse(updating_params['options'])
           updating_params
         end
+        # rubocop: enable Metrics/AbcSize
 
         def feature_params
           params

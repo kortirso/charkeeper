@@ -6,9 +6,9 @@ module Dnd2024Character
     RANGE_ATTACK_TOOLTIPS = %w[2handed heavy reload].freeze
 
     delegate :id, :name, :data, to: :__getobj__
-    delegate :species, :legacy, :main_class, :classes, :subclasses, :level, :languages, :health, :abilities, :selected_skills,
-             :selected_features, :resistance, :immunity, :vulnerability, :energy, :coins,
-             :weapon_core_skills, :weapon_skills, :armor_proficiency, :tools, :music, :spent_spell_slots,
+    delegate :species, :legacy, :main_class, :classes, :subclasses, :level, :languages, :health, :abilities,
+             :selected_features, :resistance, :immunity, :vulnerability, :energy, :coins, :darkvision,
+             :weapon_core_skills, :weapon_skills, :armor_proficiency, :music, :spent_spell_slots,
              :hit_dice, :spent_hit_dice, :death_saving_throws, :speed, :selected_feats, to: :data
 
     def method_missing(_method, *args); end
@@ -77,6 +77,14 @@ module Dnd2024Character
         immunity: immunity,
         vulnerability: vulnerability
       }
+    end
+
+    def selected_skills
+      @selected_skills ||= data.selected_skills
+    end
+
+    def tools
+      @tools ||= data.tools
     end
 
     private

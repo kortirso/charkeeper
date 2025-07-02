@@ -1,7 +1,134 @@
 {
-  "species": {},
+  "species": {
+    "human": {
+      "name": { "en": "Human", "ru": "Человек" },
+      "legacies": {},
+      "sizes": ["medium", "small"]
+    },
+    "dwarf": {
+      "name": { "en": "Dwarf", "ru": "Дварф" },
+      "legacies": {},
+      "sizes": ["small"]
+    },
+    "elf": {
+      "name": { "en": "Elf", "ru": "Эльф" },
+      "legacies": {
+        "high_elf": { "name": { "en": "High elf", "ru": "Высший эльф" } },
+        "wood_elf": { "name": { "en": "Wood elf", "ru": "Лесной эльф" } },
+        "drow": { "name": { "en": "Drow", "ru": "Дроу" } }
+      },
+      "sizes": ["medium"]
+    },
+    "halfling": {
+      "name": { "en": "Halfling", "ru": "Полурослик" },
+      "legacies": {},
+      "sizes": ["small"]
+    },
+    "dragonborn": {
+      "name": { "en": "Dragonborn", "ru": "Драконорожденный" },
+      "legacies": {},
+      "sizes": ["medium"]
+    },
+    "gnome": {
+      "name": { "en": "Gnome", "ru": "Гном" },
+      "legacies": {
+        "forest_gnome": { "name": { "en": "Forest gnome", "ru": "Лесной гном" } },
+        "rock_gnome": { "name": { "en": "Rock gnome", "ru": "Скальный гном" } }
+      },
+      "sizes": ["small"]
+    },
+    "orc": {
+      "name": { "en": "Orc", "ru": "Орк" },
+      "legacies": {},
+      "sizes": ["medium"]
+    },
+    "tiefling": {
+      "name": { "en": "Tiefling", "ru": "Тифлинг" },
+      "legacies": {
+        "abyssal": { "name": { "en": "Abyssal", "ru": "Наследие бездны" } },
+        "chthonic": { "name": { "en": "Chthonic", "ru": "Хтоническое наследие" } },
+        "infernal": { "name": { "en": "Infernal", "ru": "Инфернальное наследие" } }
+      },
+      "sizes": ["medium", "small"]
+    },
+    "aasimar": {
+      "name": { "en": "Aasimar", "ru": "Аасимар" },
+      "legacies": {},
+      "sizes": ["medium", "small"]
+    },
+    "goliath": {
+      "name": { "en": "Goliath", "ru": "Голиаф" },
+      "legacies": {
+        "cloud_giant": { "name": { "en": "Cloud giant", "ru": "Облачный великан" } },
+        "fire_giant": { "name": { "en": "Fire giant", "ru": "Огненный великан" } },
+        "frost_giant": { "name": { "en": "Frost giant", "ru": "ледяной великан" } },
+        "hill_giant": { "name": { "en": "Hill giant", "ru": "Холмовой великан" } },
+        "stone_giant": { "name": { "en": "Stone giant", "ru": "Каменный великан" } },
+        "storm_giant": { "name": { "en": "Storm giant", "ru": "Штормовой великан" } }
+      },
+      "sizes": ["medium"]
+    }
+  },
   "backgrounds": {},
-  "classes": {},
+  "classes": {
+    "barbarian": {
+      "name": { "en": "Barbarian", "ru": "Варвар" },
+      "subclasses": {}
+    },
+    "bard": {
+      "name": { "en": "Bard", "ru": "Бард" },
+      "subclasses": {}
+    },
+    "cleric": {
+      "name": { "en": "Cleric", "ru": "Жрец" },
+      "subclasses": {}
+    },
+    "druid": {
+      "name": { "en": "Druid", "ru": "Друид" },
+      "subclasses": {}
+    },
+    "fighter": {
+      "name": { "en": "Fighter", "ru": "Воин" },
+      "subclasses": {}
+    },
+    "monk": {
+      "name": { "en": "Monk", "ru": "Монах" },
+      "subclasses": {
+        "warrior_of_mercy": { "name": { "en": "Warrior of mercy", "ru": "Мастер милосердия" } },
+        "warrior_of_shadow": { "name": { "en": "Warrior of shadow", "ru": "Мастер тени" } },
+        "warrior_of_the_elements": { "name": { "en": "Warrior of the elements", "ru": "Мастер стихий" } },
+        "warrior_of_the_open_hand": { "name": { "en": "Warrior of the open hand", "ru": "Мастер открытой ладони" } }
+      }
+    },
+    "paladin": {
+      "name": { "en": "Paladin", "ru": "Паладин" },
+      "subclasses": {}
+    },
+    "ranger": {
+      "name": { "en": "Ranger", "ru": "Следопыт" },
+      "subclasses": {}
+    },
+    "rogue": {
+      "name": { "en": "Rogue", "ru": "Плут" },
+      "subclasses": {}
+    },
+    "sorcerer": {
+      "name": { "en": "Sorcerer", "ru": "Чародей" },
+      "subclasses": {}
+    },
+    "warlock": {
+      "name": { "en": "Warlock", "ru": "Колдун" },
+      "subclasses": {}
+    },
+    "wizard": {
+      "name": { "en": "Wizard", "ru": "Волшебник" },
+      "subclasses": {}
+    },
+    "artificer": {
+      "name": { "en": "Artificer", "ru": "Изобретатель" },
+      "subclasses": {}
+    }
+  },
   "feats": {
     "origin": {
       "alert": { "name": { "en": "Alert", "ru": "Бдительный" } },

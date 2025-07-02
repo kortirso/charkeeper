@@ -240,9 +240,7 @@
     "kind": "static",
     "options": null,
     "visible": "true",
-    "eval_variables": {
-      "result": "result.dig(:defense_gear, :armor).nil? ? result[:combat][:armor_class] = [result[:combat][:armor_class], 13 + modifiers['dex'] + result.dig(:defense_gear, :shield, :items_data, 'info', 'ac').to_i].max : nil"
-    }
+    "eval_variables": {}
   },
   {
     "slug": "dragon_ancestor_black",

@@ -237,10 +237,7 @@ export const Dnd5 = (props) => {
             <Notes />
           </Match>
           <Match when={activeTab() === 'classLevels'}>
-            <Dnd5ClassLevels
-              character={character()}
-              onReloadCharacter={updateCharacter}
-            />
+            <Dnd5ClassLevels character={character()} onReplaceCharacter={props.onReplaceCharacter} />
           </Match>
           <Match when={activeTab() === 'professions'}>
             <Dnd5Professions

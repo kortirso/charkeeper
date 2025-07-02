@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
 module Dnd2024Character
-  module Species
-    class GnomeBuilder
+  module Legacies
+    class WoodElfBuilder
       def call(result:)
-        result[:speed] = 30
+        result[:speed] = 35
 
         result
       end

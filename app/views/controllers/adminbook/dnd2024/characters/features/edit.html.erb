@@ -1,7 +1,7 @@
 <%= form_with model: @feature, url: adminbook_dnd2024_characters_feature_path(@feature), method: 'patch' do |form| %>
   <div class="form-field mb-2">
     <div><%= form.label 'Псевдоним', class: 'form-label' %></div>
-    <div><%= form.text_field :slug, class: 'form-value w-80', required: true %></div>
+    <div><%= form.text_field :slug, value: @feature.slug, class: 'form-value w-80', required: true %></div>
   </div>
   <%= form.fields_for :title, @feature.title do |title_form| %>
     <div class="form-field mb-2">
@@ -29,7 +29,7 @@
   </div>
   <div class="form-field mb-2">
     <div><%= form.label 'Источник', class: 'form-label' %></div>
-    <div><%= form.select :origin, %w[species class], required: true %></div>
+    <div><%= form.select :origin, value: @feature.origin, ::Dnd2024::Character::Feature.origins.keys, required: true %></div>
   </div>
   <div class="form-field mb-2">
     <div><%= form.label 'Значение источника', class: 'form-label' %></div>
@@ -37,7 +37,7 @@
   </div>
   <div class="form-field mb-2">
     <div><%= form.label :level, class: 'form-label' %></div>
-    <div><%= form.text_field :level, class: 'form-value', required: true %></div>
+    <div><%= form.text_field :level, value: @feature.level, class: 'form-value', required: true %></div>
   </div>
   <div class="form-field mb-2">
     <div><%= form.label 'Тип', class: 'form-label' %></div>

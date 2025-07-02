@@ -12,18 +12,18 @@ module CharactersContext
       use_contract do
         config.messages.namespace = :dnd5_character
 
-        Species = Dry::Types['strict.string'].enum(*::Dnd2024::Character::SPECIES)
-        Classes = Dry::Types['strict.string'].enum(*::Dnd2024::Character::CLASSES)
+        Species = Dry::Types['strict.string'].enum(*::Dnd2024::Character.species.keys)
+        Classes = Dry::Types['strict.string'].enum(*::Dnd2024::Character.classes_info.keys)
         Alignments = Dry::Types['strict.string'].enum(*::Dnd2024::Character::ALIGNMENTS)
 
         params do
           required(:user).filled(type?: User)
           required(:name).filled(:string)
           required(:species).filled(Species)
+          optional(:legacy).filled(:string)
           required(:size).filled(:string)
           required(:main_class).filled(Classes)
           required(:alignment).filled(Alignments)
-          optional(:legacy).filled(:string)
           optional(:avatar_file).hash do
             required(:file_content).filled(:string)
             required(:file_name).filled(:string)
@@ -36,7 +36,7 @@ module CharactersContext
         rule(:species, :size) do
           next if values[:species].nil?
 
-          species_sizes = ::Dnd2024::Character::SIZES[values[:species]]
+          species_sizes = ::Dnd2024::Character.sizes_info(values[:species])
           next if species_sizes&.include?(values[:size])
 
           key(:size).failure(:invalid)
@@ -45,7 +45,7 @@ module CharactersContext
         rule(:species, :legacy) do
           next if values[:legacy].nil?
 
-          legacies = ::Dnd2024::Character::LEGACIES[values[:species]]
+          legacies = ::Dnd2024::Character.legacies_info(values[:species]).keys
           next if legacies&.include?(values[:legacy])
 
           key(:legacy).failure(:invalid)
@@ -73,6 +73,7 @@ module CharactersContext
       def build_fresh_character(data)
         Dnd2024Character::BaseBuilder.new.call(result: data)
           .then { |result| Dnd2024Character::SpeciesBuilder.new.call(result: result) }
+          .then { |result| Dnd2024Character::LegaciesBuilder.new.call(result: result) }
           .then { |result| Dnd2024Character::ClassBuilder.new.call(result: result) }
       end
 

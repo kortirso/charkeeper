@@ -5,9 +5,15 @@ module Dnd2024Character
     class MonkDecorator < ApplicationDecorator
       NOT_MONK_WEAPON_TYPES = %w[range thrown].freeze
       CLASS_SAVE_DC = %w[str dex].freeze
+      EXTENDED_CLASS_SAVE_DC = %w[str dex con int wis cha].freeze
 
       def class_save_dc
-        @class_save_dc ||= main_class == 'monk' ? CLASS_SAVE_DC : __getobj__.class_save_dc
+        @class_save_dc ||=
+          if main_class == 'monk'
+            class_level >= 14 ? EXTENDED_CLASS_SAVE_DC : CLASS_SAVE_DC
+          else
+            __getobj__.class_save_dc
+          end
       end
 
       def speed

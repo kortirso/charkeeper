@@ -6,7 +6,6 @@ module Dnd2024Character
       RESISTANCES = %w[poison].freeze
 
       def call(result:)
-        result[:speed] = 30
         result[:resistance] = result[:resistance].concat(RESISTANCES).uniq
 
         result

@@ -9,6 +9,7 @@ import { Select, Input, Button, Checkbox } from '../../components/atoms';
 import { Plus } from '../../assets';
 import pathfinder2Config from '../../data/pathfinder2.json';
 import daggerheartConfig from '../../data/daggerheart.json';
+import dnd2024Config from '../../data/dnd2024.json';
 import { useAppState, useAppLocale, useAppAlert } from '../../context';
 import { fetchCharactersRequest } from '../../requests/fetchCharactersRequest';
 import { createCharacterRequest } from '../../requests/createCharacterRequest';
@@ -21,18 +22,9 @@ const DAGGERHEART_DEFAULT_FORM = {
   secondary_feature: undefined, community: undefined, main_class: undefined, subclass: undefined,
   avatar_file: undefined, avatar_url: undefined
 }
-
-const CHARACTER_SIZES = {
-  'human': ['medium', 'small'],
-  'dwarf': ['medium'],
-  'elf': ['medium'],
-  'halfling': ['small'],
-  'dragonborn': ['medium'],
-  'gnome': ['small'],
-  'orc': ['medium'],
-  'tiefling': ['medium', 'small'],
-  'aasimar': ['medium', 'small'],
-  'goliath': ['medium']
+const DND2024_DEFAULT_FORM = {
+  name: '', species: undefined, legacy: undefined, size: undefined,
+  main_class: undefined, alignment: 'neutral', avatar_file: undefined, avatar_url: undefined
 }
 
 export const CharactersTab = () => {
@@ -53,15 +45,7 @@ export const CharactersTab = () => {
     avatar_file: undefined,
     avatar_url: undefined
   });
-  const [characterDnd2024Form, setCharacterDnd2024Form] = createStore({
-    name: '',
-    species: undefined,
-    size: undefined,
-    main_class: undefined,
-    alignment: 'neutral',
-    avatar_file: undefined,
-    avatar_url: undefined
-  });
+  const [characterDnd2024Form, setCharacterDnd2024Form] = createStore(DND2024_DEFAULT_FORM);
   const [characterPathfinder2Form, setCharacterPathfinder2Form] = createStore({
     name: '',
     race: undefined,
@@ -198,7 +182,7 @@ export const CharactersTab = () => {
         setCharacters(characters().concat(result.character));
         setPlatform(undefined);
         setCharacterDnd5Form({ name: '', race: undefined, subrace: undefined, main_class: undefined, alignment: 'neutral', avatar_file: undefined, avatar_url: undefined });
-        setCharacterDnd2024Form({ name: '', species: undefined, size: undefined, main_class: undefined, alignment: 'neutral', avatar_file: undefined, avatar_url: undefined });
+        setCharacterDnd2024Form(DND2024_DEFAULT_FORM);
         setCharacterPathfinder2Form({ name: '', race: undefined, subrace: undefined, main_class: undefined, background: undefined, avatar_file: undefined, avatar_url: undefined, main_ability: undefined });
         setCharacterDaggerheartForm(DAGGERHEART_DEFAULT_FORM);
         setCurrentTab('characters');
@@ -281,8 +265,8 @@ export const CharactersTab = () => {
                         avatar={character.avatar}
                         name={character.name}
                         provider='D&D 2024'
-                        firstText={`${t('charactersPage.level')} ${character.level} | ${character.legacy ? t(`dnd2024.legacies.${character.species}.${character.legacy}`) : t(`dnd2024.species.${character.species}`)}`}
-                        secondText={Object.keys(character.classes).map((item) => t(`dnd2024.classes.${item}`)).join(' * ')}
+                        firstText={`${t('charactersPage.level')} ${character.level} | ${character.legacy ? dnd2024Config.species[character.species].legacies[character.legacy].name[locale()] : dnd2024Config.species[character.species].name[locale()]}`}
+                        secondText={Object.keys(character.classes).map((item) => dnd2024Config.classes[item].name[locale()]).join(' * ')}
                         onClick={() => navigate('character', { id: character.id })}
                         onDeleteCharacter={(e) => deleteCharacter(e, character.id)}
                       />
@@ -377,30 +361,32 @@ export const CharactersTab = () => {
                     <Select
                       containerClassList="mb-2"
                       labelText={t('newCharacterPage.dnd2024.species')}
-                      items={dict().dnd2024.species}
+                      items={translate(dnd2024Config.species, locale())}
                       selectedValue={characterDnd2024Form.species}
-                      onSelect={(value) => setCharacterDnd2024Form({ ...characterDnd2024Form, species: value, size: CHARACTER_SIZES[value][0], legacy: undefined })}
+                      onSelect={(value) => setCharacterDnd2024Form({ ...characterDnd2024Form, species: value, size: dnd2024Config.species[value].sizes[0], legacy: undefined })}
                     />
-                    <Show when={dict().dnd2024.legacies[characterDnd2024Form.species]}>
+                    <Show when={characterDnd2024Form.species !== undefined}>
+                      <Show when={Object.keys(dnd2024Config.species[characterDnd2024Form.species].legacies).length > 0}>
+                        <Select
+                          containerClassList="mb-2"
+                          labelText={t('newCharacterPage.dnd2024.legacy')}
+                          items={translate(dnd2024Config.species[characterDnd2024Form.species].legacies, locale())}
+                          selectedValue={characterDnd2024Form.legacy}
+                          onSelect={(value) => setCharacterDnd2024Form({ ...characterDnd2024Form, legacy: value })}
+                        />
+                      </Show>
                       <Select
                         containerClassList="mb-2"
-                        labelText={t('newCharacterPage.dnd2024.legacy')}
-                        items={dict().dnd2024.legacies[characterDnd2024Form.species]}
-                        selectedValue={characterDnd2024Form.legacy}
-                        onSelect={(value) => setCharacterDnd2024Form({ ...characterDnd2024Form, legacy: value })}
+                        labelText={t('newCharacterPage.dnd2024.size')}
+                        items={dnd2024Config.species[characterDnd2024Form.species].sizes.reduce((acc, item) => { acc[item] = t(`dnd2024.sizes.${item}`); return acc; }, {})}
+                        selectedValue={characterDnd2024Form.size}
+                        onSelect={(value) => setCharacterDnd2024Form({ ...characterDnd2024Form, size: value })}
                       />
                     </Show>
                     <Select
                       containerClassList="mb-2"
-                      labelText={t('newCharacterPage.dnd2024.size')}
-                      items={characterDnd2024Form.species ? CHARACTER_SIZES[characterDnd2024Form.species].reduce((acc, item) => { acc[item] = t(`dnd2024.sizes.${item}`); return acc; }, {}) : {}}
-                      selectedValue={characterDnd2024Form.size}
-                      onSelect={(value) => setCharacterDnd2024Form({ ...characterDnd2024Form, size: value })}
-                    />
-                    <Select
-                      containerClassList="mb-2"
                       labelText={t('newCharacterPage.dnd2024.mainClass')}
-                      items={dict().dnd2024.classes}
+                      items={translate(dnd2024Config.classes, locale())}
                       selectedValue={characterDnd2024Form.main_class}
                       onSelect={(value) => setCharacterDnd2024Form({ ...characterDnd2024Form, main_class: value })}
                     />
