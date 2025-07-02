@@ -39,6 +39,7 @@ module Adminbook
             JSON.parse(updating_params['description_eval_variables'].gsub(' =>', ':').gsub('nil', 'null'))
           updating_params['eval_variables'] =
             JSON.parse(updating_params['eval_variables'].gsub(' =>', ':').gsub('nil', 'null'))
+          updating_params['exclude'] = updating_params['exclude'].split(',')
           updating_params['limit_refresh'] = nil if updating_params['limit_refresh'].blank?
           updating_params['options'] = updating_params['options'].blank? ? nil : JSON.parse(updating_params['options'])
           updating_params
@@ -49,7 +50,7 @@ module Adminbook
             .expect(
               dnd2024_character_feature: [
                 :slug, :origin, :origin_value, :level, :kind, :limit_refresh, :options, :options_type, :visible, :choose_once,
-                :description_eval_variables, :eval_variables, { title: %i[en ru], description: %i[en ru] }
+                :description_eval_variables, :eval_variables, :exclude, { title: %i[en ru], description: %i[en ru] }
               ]
             )
         end

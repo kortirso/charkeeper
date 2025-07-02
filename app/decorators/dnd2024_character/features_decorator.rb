@@ -16,13 +16,18 @@ module Dnd2024Character
       end
     end
 
-    # rubocop: disable Metrics/AbcSize, Metrics/MethodLength
+    # rubocop: disable Metrics/AbcSize, Metrics/MethodLength, Metrics/PerceivedComplexity
     def features
       @features ||= begin
-        result = wrapped.features
-        available_features.each do |feature|
+        visible_features = available_features.filter_map do |feature|
           visible = eval_variable(feature.visible)
           next unless visible
+
+          feature
+        end
+        excludes = visible_features.pluck(:exclude).flatten.compact.uniq
+        visible_features.filter_map do |feature|
+          next if feature.slug.in?(excludes)
 
           feature.eval_variables.each do |method_name, variable|
             instance_variable_set(:"@#{method_name}", eval_variable(variable))
@@ -30,8 +35,7 @@ module Dnd2024Character
           next if feature.kind == 'update_result'
 
           feature.description_eval_variables.transform_values! { |value| eval_variable(value) }
-
-          result << {
+          {
             slug: feature.slug,
             kind: feature.kind,
             title: feature.title[I18n.locale.to_s],
@@ -43,7 +47,6 @@ module Dnd2024Character
             limit_refresh: feature.limit_refresh
           }.compact
         end
-        result
       end
     end
 
@@ -64,7 +67,7 @@ module Dnd2024Character
           false
         end
     end
-    # rubocop: enable Metrics/AbcSize, Metrics/MethodLength
+    # rubocop: enable Metrics/AbcSize, Metrics/MethodLength, Metrics/PerceivedComplexity
 
     def update_feature_description(feature)
       result = feature.description[I18n.locale.to_s]

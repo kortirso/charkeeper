@@ -24,6 +24,10 @@
     </div>
   <% end %>
   <div class="form-field mb-2">
+    <div><%= form.label 'Исключение способностей', class: 'form-label' %></div>
+    <div><%= form.text_field :exclude, class: 'form-text text-sm' %></div>
+  </div>
+  <div class="form-field mb-2">
     <div><%= form.label 'Источник', class: 'form-label' %></div>
     <div><%= form.select :origin, %w[race subrace class subclass], required: true %></div>
   </div>
