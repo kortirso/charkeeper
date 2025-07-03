@@ -56,6 +56,7 @@ module Dnd2024Character
       Dnd2024::Character::Feature.where(origin: 'species', origin_value: species)
         .or(Dnd2024::Character::Feature.where(origin: 'legacy', origin_value: legacy))
         .or(Dnd2024::Character::Feature.where(origin: 'class', origin_value: classes.keys))
+        .or(Dnd2024::Character::Feature.where(origin: 'subclass', origin_value: subclasses.values))
         .or(Dnd2024::Character::Feature.where(origin: 'feat', slug: selected_feats))
         .order(level: :asc)
         .to_a
