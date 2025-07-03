@@ -29,7 +29,7 @@
   </div>
   <div class="form-field mb-2">
     <div><%= form.label 'Источник', class: 'form-label' %></div>
-    <div><%= form.select :origin, value: @feature.origin, ::Dnd2024::Character::Feature.origins.keys, required: true %></div>
+    <div><%= form.select :origin, ::Dnd2024::Character::Feature.origins.keys, required: true %></div>
   </div>
   <div class="form-field mb-2">
     <div><%= form.label 'Значение источника', class: 'form-label' %></div>
