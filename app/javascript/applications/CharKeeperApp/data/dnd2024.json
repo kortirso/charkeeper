@@ -122,7 +122,12 @@
     },
     "wizard": {
       "name": { "en": "Wizard", "ru": "Волшебник" },
-      "subclasses": {}
+      "subclasses": {
+        "abjurer": { "name": { "en": "Anjurer", "ru": "Оградитель" } },
+        "diviner": { "name": { "en": "Diviner", "ru": "Прорицатель" } },
+        "evoker": { "name": { "en": "Evoker", "ru": "Воплотитель" } },
+        "illusionist": { "name": { "en": "Illusionist", "ru": "Иллюзионист" } }
+      }
     },
     "artificer": {
       "name": { "en": "Artificer", "ru": "Изобретатель" },
