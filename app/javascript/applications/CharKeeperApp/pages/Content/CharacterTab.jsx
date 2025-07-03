@@ -48,7 +48,10 @@ export const CharacterTab = (props) => {
         </PageHeader>
       </Show>
       <Switch>
-        <Match when={character().provider === 'dnd5' || character().provider === 'dnd2024'}>
+        <Match when={character().provider === 'dnd5'}>
+          <Dnd5 character={character()} onReloadCharacter={reloadCharacter} onReplaceCharacter={replaceCharacter} />
+        </Match>
+        <Match when={character().provider === 'dnd2024'}>
           <Dnd5 character={character()} onReloadCharacter={reloadCharacter} onReplaceCharacter={replaceCharacter} />
         </Match>
         <Match when={character().provider === 'pathfinder2'}>

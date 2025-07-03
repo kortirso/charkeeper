@@ -94,12 +94,13 @@ module Dnd2024Character
     end
 
     def skill_payload(slug, ability)
-      selected = selected_skills.include?(slug)
+      level = selected_skills[slug].to_i
       {
         slug: slug,
         ability: ability,
-        modifier: selected ? (modifiers[ability] + proficiency_bonus) : modifiers[ability],
-        selected: selected
+        modifier: modifiers[ability] + level * proficiency_bonus,
+        level: level,
+        selected: level.positive?
       }
     end
 

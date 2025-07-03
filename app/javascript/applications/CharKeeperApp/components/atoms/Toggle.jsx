@@ -4,7 +4,7 @@ export const Toggle = (props) => {
   const isOpenByDefault = () => props.isOpen;
   const safeChildren = children(() => props.children);
 
-  const [isOpen, setIsOpen] = createSignal(isOpenByDefault === undefined ? false : isOpenByDefault);
+  const [isOpen, setIsOpen] = createSignal(isOpenByDefault() === undefined ? false : isOpenByDefault());
 
   return (
     <div class="white-box mb-2">

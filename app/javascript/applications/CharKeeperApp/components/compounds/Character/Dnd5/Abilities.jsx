@@ -1,7 +1,7 @@
 import { createSignal, For, Show, batch } from 'solid-js';
 import * as i18n from '@solid-primitives/i18n';
 
-import { Checkbox, Button } from '../../../atoms';
+import { Checkbox, Button, Levelbox } from '../../../atoms';
 import { ErrorWrapper } from '../../../molecules';
 
 import { useAppLocale, useAppAlert, useAppState } from '../../../../context';
@@ -62,11 +62,21 @@ export const Dnd5Abilities = (props) => {
   const increaseAbilityValue = (slug) => setAbilitiesData({ ...abilitiesData(), [slug]: abilitiesData()[slug] + 1 });
 
   // submits
-  const toggleSkill = async (slug) => {
+  const toggleSkill = (slug) => {
     const result = skillsData().slice().map((item) => {
       if (item.slug !== slug) return item;
 
       return { ...item, selected: !item.selected } 
+    });
+    setSkillsData(result);
+  }
+
+  const updateSkill = (slug) => {
+    const result = skillsData().slice().map((item) => {
+      if (item.slug !== slug) return item;
+
+      const newValue = item.level === 2 ? 0 : (item.level === undefined ? 1 : (item.level + 1));
+      return { ...item, level: newValue } 
     });
     setSkillsData(result);
   }
@@ -80,15 +90,26 @@ export const Dnd5Abilities = (props) => {
   }
 
   const updateCharacter = async () => {
+    let selectedSkills;
+    if (character().provider === 'dnd2024') {
+      selectedSkills = skillsData().reduce((acc, item) => { acc[item.slug] = item.level; return acc }, {})
+    } else {
+      selectedSkills = skillsData().filter((item) => item.selected).map((item) => item.slug)
+    }
+
     const payload = {
       abilities: abilitiesData(),
-      selected_skills: skillsData().filter((item) => item.selected).map((item) => item.slug)
+      selected_skills: selectedSkills
     }
-    const result = await updateCharacterRequest(appState.accessToken, character().provider, character().id, { character: payload });
+    const result = await updateCharacterRequest(
+      appState.accessToken, character().provider, character().id, { character: payload }
+    );
 
     if (result.errors === undefined) {
       batch(() => {
         props.onReplaceCharacter(result.character);
+        setSkillsData(result.character.skills);
+        setAbilitiesData(result.character.abilities);
         setEditMode(false);
       });
     } else renderAlerts(result.errors);
@@ -158,11 +179,18 @@ export const Dnd5Abilities = (props) => {
                         <span class="mr-2 text-sm">{t(`dnd.skills.${skill.slug}`)}</span>
                         <span>{modifier(skill.modifier)}</span>
                       </p>
-                      <Show when={editMode()} fallback={<p />}>
+                      <Show when={editMode() && character().provider === 'dnd5'} fallback={<p />}>
                         <Checkbox
                           classList="ml-2"
                           checked={skill.selected}
                           onToggle={() => toggleSkill(skill.slug)}
+                        />
+                      </Show>
+                      <Show when={editMode() && character().provider === 'dnd2024'} fallback={<p />}>
+                        <Levelbox
+                          classList="ml-2"
+                          value={skill.level}
+                          onToggle={() => updateSkill(skill.slug)}
                         />
                       </Show>
                     </div>
