@@ -55,6 +55,12 @@ module Dnd2024Character
     private
 
     def available_features
+      subclass_levels = subclasses.each_with_object({}) do |(class_slug, subclass_slug), acc|
+        next if subclass_slug.nil?
+
+        acc[subclass_slug] = classes[class_slug]
+      end
+
       Dnd2024::Character::Feature.where(origin: 'species', origin_value: species)
         .or(Dnd2024::Character::Feature.where(origin: 'legacy', origin_value: legacy))
         .or(Dnd2024::Character::Feature.where(origin: 'class', origin_value: classes.keys))
