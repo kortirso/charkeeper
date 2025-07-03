@@ -4,6 +4,8 @@ module Dnd5Character
   class FeaturesDecorator
     attr_accessor :wrapped
 
+    LEVEL_LIMITED_ORIGINS = %w[race subrace].freeze
+
     def initialize(obj)
       @wrapped = obj
     end
@@ -64,7 +66,7 @@ module Dnd5Character
         .order(level: :asc)
         .select do |feature|
           next true if feature.origin_value == 'all'
-          next level >= feature.level if feature.origin.in?(%w[race subrace])
+          next level >= feature.level if feature.origin.in?(LEVEL_LIMITED_ORIGINS)
           next classes[feature.origin_value] >= feature.level if feature.origin == 'class'
 
           subclass_levels[feature.origin_value].to_i >= feature.level

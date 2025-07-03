@@ -4,6 +4,8 @@ module Dnd2024Character
   class FeaturesDecorator
     attr_accessor :wrapped
 
+    LEVEL_LIMITED_ORIGINS = %w[feat species legacy].freeze
+
     def initialize(obj)
       @wrapped = obj
     end
@@ -61,11 +63,10 @@ module Dnd2024Character
         .order(level: :asc)
         .to_a
         .select do |feature|
-          next level >= feature.level if feature.origin == 'feat'
-          next level >= feature.level if feature.origin == 'species'
+          next level >= feature.level if feature.origin.in?(LEVEL_LIMITED_ORIGINS)
           next classes[feature.origin_value] >= feature.level if feature.origin == 'class'
 
-          false
+          subclass_levels[feature.origin_value].to_i >= feature.level
         end
     end
     # rubocop: enable Metrics/AbcSize, Metrics/MethodLength, Metrics/PerceivedComplexity
