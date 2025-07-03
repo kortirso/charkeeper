@@ -43,11 +43,11 @@ describe Frontend::Dnd2024::CharactersController do
 
       it 'updates character', :aggregate_failures do
         patch :update, params: {
-          id: character.id, character: { classes: { monk: 12 } }, charkeeper_access_token: access_token
+          id: character.id, character: { classes: { bard: 12 } }, charkeeper_access_token: access_token
         }
 
         expect(response).to have_http_status :ok
-        expect(character.reload.data.classes).to eq({ 'monk' => 12 })
+        expect(character.reload.data.classes).to eq({ 'bard' => 12 })
       end
 
       context 'for not existing character' do

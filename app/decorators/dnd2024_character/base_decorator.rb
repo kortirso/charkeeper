@@ -98,7 +98,7 @@ module Dnd2024Character
       {
         slug: slug,
         ability: ability,
-        modifier: modifiers[ability] + level * proficiency_bonus,
+        modifier: modifiers[ability] + (level * proficiency_bonus),
         level: level,
         selected: level.positive?
       }
