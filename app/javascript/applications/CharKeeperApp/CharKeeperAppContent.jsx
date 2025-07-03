@@ -7,12 +7,13 @@ import { useAppState, useAppLocale } from './context';
 import { useTelegram } from './hooks';
 
 import { fetchAccessTokenRequest } from './requests/fetchAccessTokenRequest';
+import { fetchUnreadNotificationsCountRequest } from './requests/fetchUnreadNotificationsCountRequest';
 
 export const CharKeeperAppContent = () => {
   const size = createWindowSize();
   const { webApp } = useTelegram();
 
-  const [appState, { setAccessToken, changeUsername, navigate }] = useAppState();
+  const [appState, { setAccessToken, changeUsername, navigate, changeUnreadNotificationsCount }] = useAppState();
   const [, dict, { setLocale }] = useAppLocale();
 
   const t = i18n.translator(dict);
@@ -48,6 +49,19 @@ export const CharKeeperAppContent = () => {
         } else {
           setAccessToken(null);
         }
+      }
+    );
+  });
+
+  createEffect(() => {
+    if (appState.accessToken === undefined) return;
+    if (appState.unreadNotificationsCount !== undefined) return;
+
+    const fetchUnreadNotificationsCount = async () => await fetchUnreadNotificationsCountRequest(appState.accessToken);
+
+    Promise.all([fetchUnreadNotificationsCount()]).then(
+      ([notificationsCountData]) => {
+        if (notificationsCountData.unread !== undefined) changeUnreadNotificationsCount(notificationsCountData.unread);
       }
     );
   });

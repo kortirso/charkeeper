@@ -9,6 +9,7 @@ export const AppStateProvider = (props) => {
     username: props.username, // eslint-disable-line solid/reactivity
     activePage: null,
     activePageParams: {},
+    unreadNotificationsCount: undefined
   });
 
   const store = [
@@ -22,6 +23,9 @@ export const AppStateProvider = (props) => {
       },
       navigate(page, params) {
         setAppState({ ...appState, activePage: page, activePageParams: params });
+      },
+      changeUnreadNotificationsCount(value) {
+        setAppState({ ...appState, unreadNotificationsCount: value });
       }
     }
   ];

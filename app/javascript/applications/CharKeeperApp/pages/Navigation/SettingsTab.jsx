@@ -1,6 +1,7 @@
+import { Show } from 'solid-js'; 
 import * as i18n from '@solid-primitives/i18n';
 
-import { PageHeader } from '../../components/molecules';
+import { PageHeader, NotificationsBudge } from '../../components/molecules';
 import { Telegram, Discord, Vk } from '../../assets';
 
 import { useAppState, useAppLocale } from '../../context';
@@ -13,13 +14,16 @@ export const SettingsTab = () => {
 
   const renderSettingsLink = (title, link) => (
     <p
-      class="py-3 px-4 cursor-pointer rounded"
+      class="relative py-3 px-4 cursor-pointer rounded"
       classList={{
         'bg-blue-400 text-white': appState.activePage === link,
         'bg-white text-black hover:bg-gray-100': appState.activePage !== link
       }}
       onClick={() => navigate(link, {})}
     >
+      <Show when={link === 'notifications'}>
+        <NotificationsBudge positionStyle="top-1 left-0" />
+      </Show>
       {title}
     </p>
   );
@@ -34,6 +38,7 @@ export const SettingsTab = () => {
       <div class="p-4 flex-1 overflow-y-scroll">
         {renderSettingsLink(t('settingsPage.profile'), 'profile')}
         {renderSettingsLink(t('settingsPage.changeLocale'), 'locale')}
+        {renderSettingsLink(t('settingsPage.notifications'), 'notifications')}
         {renderSettingsLink(t('settingsPage.feedback'), 'feedback')}
         <div class="flex py-3 px-4 gap-4">
           <p>{t('settingsPage.socials')}</p>

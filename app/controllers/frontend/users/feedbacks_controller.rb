@@ -6,7 +6,6 @@ module Frontend
       include Deps[
         add_feedback: 'commands.users_context.add_feedback'
       ]
-      include SerializeRelation
 
       def create
         case add_feedback.call(feedback_params.merge(user: current_user))
