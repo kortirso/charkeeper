@@ -22,7 +22,8 @@
     "feedback": "Feedback",
     "profile": "Profile",
     "username": "Username",
-    "socials": "Community links"
+    "socials": "Community links",
+    "notifications": "Notifications"
   },
   "homebrewPage": {
     "title": "Homebrew"

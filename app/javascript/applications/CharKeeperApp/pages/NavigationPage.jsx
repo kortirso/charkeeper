@@ -2,6 +2,7 @@ import { createSignal, Switch, Match } from 'solid-js';
 
 import { CharactersTab, HomebrewTab, SettingsTab } from '../pages';
 import { IconButton } from '../components/atoms';
+import { NotificationsBudge } from '../components/molecules';
 
 import { List, Edit, Homebrew } from '../assets';
 
@@ -37,7 +38,9 @@ export const NavigationPage = () => {
           </IconButton>
         </div>
         <div class="flex-1">
-          <IconButton colored size="xl" classList="mx-auto" active={currentTab() === 'settings'} onClick={() => setCurrentTab('settings')}>
+          <IconButton colored size="xl" classList="relative mx-auto" active={currentTab() === 'settings'} onClick={() => setCurrentTab('settings')}
+          >
+            <NotificationsBudge positionStyle="-top-0.5 -right-0.5" />
             <Edit width={28} height={28} />
           </IconButton>
         </div>

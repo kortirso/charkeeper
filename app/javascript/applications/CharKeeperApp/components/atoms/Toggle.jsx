@@ -1,9 +1,10 @@
 import { createSignal, Show, children } from 'solid-js';
 
 export const Toggle = (props) => {
-  const [isOpen, setIsOpen] = createSignal(false);
-
+  const isOpenByDefault = () => props.isOpen;
   const safeChildren = children(() => props.children);
+
+  const [isOpen, setIsOpen] = createSignal(isOpenByDefault === undefined ? false : isOpenByDefault);
 
   return (
     <div class="white-box mb-2">

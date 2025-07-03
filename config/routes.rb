@@ -6,6 +6,9 @@ Rails.application.routes.draw do
   get 'web_telegram', to: 'web_telegram#index'
 
   namespace :adminbook do
+    namespace :users do
+      resources :notifications, except: %i[show]
+    end
     resources :users, only: %i[index]
     resources :feedbacks, only: %i[index]
 
@@ -44,9 +47,13 @@ Rails.application.routes.draw do
         resources :bonuses, only: %i[index create destroy], module: 'characters'
       end
     end
+
     get ':provider/items', to: 'items#index'
     resource :users, only: %i[update] do
       resources :feedbacks, only: %i[create], module: 'users'
+      resources :notifications, only: %i[index], module: 'users' do
+        get 'unread', on: :collection
+      end
       resources :monitoring, only: %i[create], module: 'users'
     end
 

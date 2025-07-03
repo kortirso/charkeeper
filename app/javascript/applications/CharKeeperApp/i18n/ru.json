@@ -22,7 +22,8 @@
     "feedback": "Отзыв",
     "profile": "Профиль",
     "username": "Имя пользователя",
-    "socials": "Общество"
+    "socials": "Общество",
+    "notifications": "Уведомления"
   },
   "homebrewPage": {
     "title": "Homebrew"
