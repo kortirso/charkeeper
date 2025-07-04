@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 module ApplicationHelper
+  include Authkeeper::ApplicationHelper
+
   def change_locale(locale)
     url_for(request.params.merge(switch_locale: locale.to_s))
   end

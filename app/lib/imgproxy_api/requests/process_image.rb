@@ -9,7 +9,7 @@ module ImgproxyApi
       def process_image(url:, extension:, processing_options: [])
         process_url = "/#{processing_options.join('/')}/#{Base64.urlsafe_encode64(url, padding: false)}.#{extension}"
         digest = credentials.nil? ? 'unsafe' : generate_digest(process_url)
-        get(path: "#{digest}#{process_url}")
+        get(path: "#{digest}#{process_url}")[:body]
       end
 
       private

@@ -13,15 +13,28 @@ module HttpService
       raise StandardError, 'please stub request in test env' if Rails.env.test? && connection.adapter != 'Faraday::Adapter::Test'
 
       response = connection.get(path, params, headers)
-      response.body if response.success?
+      {
+        success: response.success?,
+        body: response.body
+      }
     end
 
-    def post(path:, body: nil, headers: nil)
+    # rubocop: disable Metrics/AbcSize
+    def post(path:, body: {}, params: {}, headers: {})
       raise StandardError, 'please stub request in test env' if Rails.env.test? && connection.adapter != 'Faraday::Adapter::Test'
 
-      response = connection.post(path, body, headers)
+      response = connection.post(path) do |request|
+        params.each do |param, value|
+          request.params[param] = value
+        end
+        headers.each do |header, value|
+          request.headers[header] = value
+        end
+        request.body = body.to_json
+      end
       response.body if response.success?
     end
+    # rubocop: enable Metrics/AbcSize
 
     private
 
