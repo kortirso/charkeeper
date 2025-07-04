@@ -10,7 +10,7 @@ module Dnd2024Character
         weapon_skills: [],
         armor_proficiency: [],
         languages: [],
-        selected_skills: [],
+        selected_skills: {},
         resistance: [],
         immunity: [],
         vulnerability: [],
