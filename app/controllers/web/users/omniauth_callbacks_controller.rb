@@ -24,7 +24,7 @@ module Web
         identity = User::Identity.find_by(uid: auth[:uid], provider: auth[:provider])
         return identity.user if identity.present?
 
-        identity = add_identity.call(auth.merge(user: user, username: auth[:login]).compact)[:result]
+        identity = add_identity.call(auth.merge(user: user, username: auth[:login] || auth[:email]).compact)[:result]
         identity.user
       end
 

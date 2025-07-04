@@ -7,10 +7,15 @@ Authkeeper.configure do |config|
   config.domain = 'charkeeper.org' if Rails.env.production?
   config.fallback_url_session_name = :charkeeper_fallback_url
 
-  config.omniauth_providers = %w[telegram]
+  config.omniauth_providers = %w[telegram google]
 
   config.omniauth :telegram,
                   bot_name: credentials.dig(:telegram, :bot_name),
                   bot_secret: credentials.dig(:telegram, :bot_secret),
                   redirect_url: credentials.dig(:telegram, :redirect_url)
+
+  config.omniauth :google,
+                  client_id: credentials.dig(:google, :client_id),
+                  client_secret: credentials.dig(:google, :client_secret),
+                  redirect_url: credentials.dig(:google, :redirect_url)
 end

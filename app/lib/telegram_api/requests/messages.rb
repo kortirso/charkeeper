@@ -8,7 +8,7 @@ module TelegramApi
           path: "bot#{bot_secret}/sendMessage?chat_id=#{chat_id}",
           body: {
             text: text
-          }.to_json,
+          },
           headers: headers
         )
       end
