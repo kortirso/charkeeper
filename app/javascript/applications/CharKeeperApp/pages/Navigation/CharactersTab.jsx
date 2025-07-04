@@ -12,6 +12,7 @@ import daggerheartConfig from '../../data/daggerheart.json';
 import dnd2024Config from '../../data/dnd2024.json';
 import { useAppState, useAppLocale, useAppAlert } from '../../context';
 import { fetchCharactersRequest } from '../../requests/fetchCharactersRequest';
+import { fetchCharacterRequest } from '../../requests/fetchCharacterRequest';
 import { createCharacterRequest } from '../../requests/createCharacterRequest';
 import { removeCharacterRequest } from '../../requests/removeCharacterRequest';
 
@@ -36,6 +37,7 @@ export const CharactersTab = () => {
   const [platform, setPlatform] = createSignal(undefined);
   const [avatarUrl, setAvatarUrl] = createSignal('');
   const [deletingCharacterId, setDeletingCharacterId] = createSignal(undefined);
+  const [adminCharacterId, setAdminCharacterId] = createSignal('');
   const [characterDnd5Form, setCharacterDnd5Form] = createStore({
     name: '',
     race: undefined,
@@ -77,6 +79,11 @@ export const CharactersTab = () => {
       }
     );
   });
+
+  const findAdminCharacter = async () => {
+    const characterData = await fetchCharacterRequest(appState.accessToken, adminCharacterId());
+    if (characterData.errors == undefined) setCharacters(characters().concat(characterData.character));
+  }
 
   const heritageFeatures = createMemo(() => {
     const mainFeatures = {};
@@ -299,6 +306,26 @@ export const CharactersTab = () => {
                 }
               </For>
             </Show>
+
+            <Show when={appState.isAdmin}>
+              <div class="absolute bottom-0 left-0 w-full flex p-2">
+                <Button
+                  default
+                  size="small"
+                  classList="px-2"
+                  onClick={findAdminCharacter}
+                >
+                  {t('find')}
+                </Button>
+                <Input
+                  containerClassList="ml-4 flex-1"
+                  labelText={t('newCharacterPage.adminCharacterId')}
+                  value={adminCharacterId()}
+                  onInput={(value) => setAdminCharacterId(value)}
+                />
+              </div>
+            </Show>
+
           </div>
         </Match>
         <Match when={currentTab() === 'newCharacter'}>

@@ -32,7 +32,7 @@ module Frontend
       end
 
       def character
-        current_user.characters.pathfinder2.find(params[:id])
+        authorized_scope(Character.all).pathfinder2.find(params[:id])
       end
 
       def request_params

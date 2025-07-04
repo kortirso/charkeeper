@@ -32,7 +32,7 @@ module Frontend
       end
 
       def character
-        current_user.characters.dnd2024.find(params[:id])
+        authorized_scope(Character.all).dnd2024.find(params[:id])
       end
 
       def request_params

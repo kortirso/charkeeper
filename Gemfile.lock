@@ -1,6 +1,8 @@
 GEM
   remote: https://rubygems.org/
   specs:
+    action_policy (0.7.5)
+      ruby-next-core (>= 1.0)
     actioncable (8.0.2)
       actionpack (= 8.0.2)
       activesupport (= 8.0.2)
@@ -381,6 +383,7 @@ GEM
       lint_roller (~> 1.1)
       rubocop (~> 1.72, >= 1.72.1)
       rubocop-rspec (~> 3.5)
+    ruby-next-core (1.1.2)
     ruby-progressbar (1.13.0)
     securerandom (0.3.2)
     shoulda-matchers (6.5.0)
@@ -456,6 +459,7 @@ PLATFORMS
   x86_64-linux-musl
 
 DEPENDENCIES
+  action_policy
   authkeeper (= 0.1.9)
   awesome_print
   aws-sdk-s3

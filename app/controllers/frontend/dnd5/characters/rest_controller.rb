@@ -21,7 +21,7 @@ module Frontend
         private
 
         def find_character
-          @character = current_user.characters.dnd5.find(params[:character_id])
+          @character = authorized_scope(Character.all).dnd5.find(params[:character_id])
         end
 
         def find_perform_command

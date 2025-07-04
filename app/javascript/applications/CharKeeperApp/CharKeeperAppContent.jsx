@@ -1,4 +1,4 @@
-import { createEffect, createMemo, Show, batch, Switch, Match } from 'solid-js';
+import { createEffect, createMemo, Show, Switch, Match, batch } from 'solid-js';
 import * as i18n from '@solid-primitives/i18n';
 import { createWindowSize } from '@solid-primitives/resize-observer';
 
@@ -13,7 +13,8 @@ export const CharKeeperAppContent = () => {
   const size = createWindowSize();
   const { webApp } = useTelegram();
 
-  const [appState, { setAccessToken, changeUsername, navigate, changeUnreadNotificationsCount }] = useAppState();
+  const [appState, { setAccessToken, navigate, changeUnreadNotificationsCount, changePayload }] = useAppState();
+
   const [, dict, { setLocale }] = useAppLocale();
 
   const t = i18n.translator(dict);
@@ -43,8 +44,11 @@ export const CharKeeperAppContent = () => {
         if (accessTokenData.access_token) {
           batch(() => {
             setLocale(accessTokenData.locale);
-            setAccessToken(accessTokenData.access_token);
-            changeUsername(accessTokenData.username);
+            changePayload({
+              accessToken: accessTokenData.access_token,
+              username: accessTokenData.username,
+              isAdmin: accessTokenData.admin
+            });
           });
         } else {
           setAccessToken(null);

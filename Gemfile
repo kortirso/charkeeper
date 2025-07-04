@@ -45,6 +45,7 @@ gem 'oj'
 gem 'panko_serializer'
 
 # auth
+gem 'action_policy'
 gem 'authkeeper', '0.1.9'
 gem 'jwt', '~> 2.5'
 

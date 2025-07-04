@@ -41,7 +41,7 @@ module Frontend
       end
 
       def character
-        current_user.characters.find(params[:character_id])
+        authorized_scope(Character.all).find(params[:character_id])
       end
 
       def create_params

@@ -42,7 +42,7 @@ module Frontend
         private
 
         def find_character
-          @character = current_user.characters.dnd2024.find(params[:character_id])
+          @character = authorized_scope(Character.all).dnd2024.find(params[:character_id])
         end
 
         def spells

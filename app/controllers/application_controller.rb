@@ -5,6 +5,8 @@ class ApplicationController < ActionController::Base
 
   append_view_path Rails.root.join('app/views/controllers')
 
+  authorize :user, through: :current_user
+
   before_action :authenticate, except: %i[not_found]
   before_action :set_locale
   before_action do

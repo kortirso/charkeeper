@@ -15,12 +15,7 @@ module Frontend
       if web_telegram_signature.valid?(check_string: params[:check_string], hash: params[:hash])
         user_session = start_user_session
         monitoring_telegram_auth(user_session.user)
-        access_token = generate_token.call(user_session: user_session)[:result]
-        render json: {
-          access_token: access_token,
-          locale: user_session.user.locale,
-          username: user_session.user.username
-        }, status: :created
+        auth_response(user_session)
       else
         unprocessable_response({ signature: ['Invalid'] })
       end
@@ -33,6 +28,16 @@ module Frontend
         identity = find_identity || create_identity
         User::Session.create!(user: identity.user)
       end
+    end
+
+    def auth_response(user_session)
+      access_token = generate_token.call(user_session: user_session)[:result]
+      render json: {
+        access_token: access_token,
+        locale: user_session.user.locale,
+        username: user_session.user.username,
+        admin: user_session.user.admin?
+      }, status: :created
     end
 
     def find_identity

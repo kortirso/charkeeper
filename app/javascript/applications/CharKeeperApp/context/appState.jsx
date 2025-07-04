@@ -5,6 +5,7 @@ const AppStateContext = createContext();
 
 export const AppStateProvider = (props) => {
   const [appState, setAppState] = createStore({
+    isAdmin: props.isAdmin || false, // eslint-disable-line solid/reactivity
     accessToken: props.accessToken, // eslint-disable-line solid/reactivity
     username: props.username, // eslint-disable-line solid/reactivity
     activePage: null,
@@ -15,6 +16,9 @@ export const AppStateProvider = (props) => {
   const store = [
     appState,
     {
+      changePayload(payload) {
+        setAppState({ ...appState, ...payload });
+      },
       setAccessToken(value) {
         setAppState({ ...appState, accessToken: value });
       },

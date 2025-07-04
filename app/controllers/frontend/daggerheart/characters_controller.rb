@@ -32,7 +32,7 @@ module Frontend
       end
 
       def character
-        current_user.characters.daggerheart.find(params[:id])
+        authorized_scope(Character.all).daggerheart.find(params[:id])
       end
 
       def request_params
