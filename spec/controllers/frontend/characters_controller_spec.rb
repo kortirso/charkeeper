@@ -73,6 +73,26 @@ describe Frontend::CharactersController do
 
           expect(response).to have_http_status :ok
         end
+
+        context 'for not user character' do
+          let!(:another_character) { create :character, :dnd2024 }
+
+          it 'returns error' do
+            get :show, params: { id: another_character.id, charkeeper_access_token: access_token }
+
+            expect(response).to have_http_status :not_found
+          end
+
+          context 'when user is admin' do
+            before { user_session.user.update!(admin: true) }
+
+            it 'returns data' do
+              get :show, params: { id: another_character.id, charkeeper_access_token: access_token }
+
+              expect(response).to have_http_status :ok
+            end
+          end
+        end
       end
 
       context 'for pathfinder 2' do

@@ -51,7 +51,7 @@ module Frontend
     end
 
     def find_character
-      @character = current_user.characters.find(params[:id])
+      @character = authorized_scope(Character.all).find(params[:id])
     end
 
     def serializer(character_type)

@@ -17,7 +17,7 @@ module Frontend
         private
 
         def character
-          @character ||= current_user.characters.pathfinder2.find(params[:character_id])
+          @character ||= authorized_scope(Character.all).pathfinder2.find(params[:character_id])
         end
       end
     end
