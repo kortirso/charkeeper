@@ -7,7 +7,7 @@ describe CharactersContext::Pathfinder2::CreateCommand do
   let(:user) { create :user }
   let(:valid_params) do
     {
-      user: user, name: 'Char', main_class: 'witch', race: 'halfling', background: 'hermit'
+      user: user, name: 'Char', main_class: 'witch', subclass: 'the_inscribed_one', race: 'halfling', background: 'hermit'
     }
   end
 
@@ -25,7 +25,7 @@ describe CharactersContext::Pathfinder2::CreateCommand do
   end
 
   context 'for invalid params' do
-    context 'without heritages' do
+    context 'without race' do
       let(:params) { valid_params.merge(race: nil).compact }
 
       it 'does not create character', :aggregate_failures do

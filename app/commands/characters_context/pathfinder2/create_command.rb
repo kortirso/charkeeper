@@ -51,15 +51,6 @@ module CharactersContext
 
           key(:subclass).failure(:invalid)
         end
-
-        rule(:main_class, :main_ability) do
-          next if values[:main_ability].nil?
-
-          abilities = ::Pathfinder2::Character.main_ability_options(values[:main_class])
-          next if abilities&.include?(values[:main_ability])
-
-          key(:main_ability).failure(:invalid)
-        end
       end
       # rubocop: enable Metrics/BlockLength
 
@@ -67,7 +58,9 @@ module CharactersContext
 
       def do_prepare(input)
         input[:data] =
-          build_fresh_character(input.slice(:race, :subrace, :background, :main_class, :subclass, :main_ability).symbolize_keys)
+          build_fresh_character(
+            input.slice(:race, :subrace, :background, :main_class, :subclass, :main_ability).symbolize_keys
+          )
       end
 
       def do_persist(input)

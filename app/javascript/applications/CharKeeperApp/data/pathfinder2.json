@@ -45,13 +45,89 @@
     }
   },
   "classes": {
+    "bard": {
+      "name": { "en": "Bard", "ru": "Бард" },
+      "main_ability_options": ["cha"],
+      "subclass_title": { "en": "Muse", "ru": "Муза" },
+      "subclasses": {
+        "warrior": { "name": { "en": "Warrior", "ru": "Воитель" } },
+        "maestro": { "name": { "en": "Maestro", "ru": "Маэстро" } },
+        "enigma": { "name": { "en": "Enigma", "ru": "Энигма" } },
+        "polymath": { "name": { "en": "Polymath", "ru": "Эрудит" } }
+      }
+    },
+    "cleric": {
+      "name": { "en": "Cleric", "ru": "Жрец" },
+      "main_ability_options": ["wis"],
+      "subclass_title": { "en": "Doctrine", "ru": "Доктрина" },
+      "subclasses": {
+        "cloistered_cleric": { "name": { "en": "Cloistered cleric", "ru": "Жрец-затворник" } },
+        "warpriest": { "name": { "en": "Warpriest", "ru": "Капеллан" } }
+      }
+    },
+    "druid": {
+      "name": { "en": "Druid", "ru": "Друид" },
+      "main_ability_options": ["wis"],
+      "subclass_title": { "en": "Order", "ru": "Орден" },
+      "subclasses": {
+        "untamed": { "name": { "en": "Untamed", "ru": "Дикий орден" } },
+        "storm": { "name": { "en": "Storm", "ru": "Орден бури" } },
+        "animal": { "name": { "en": "Animal", "ru": "Орден зверя" } },
+        "leaf": { "name": { "en": "Leaf", "ru": "Орден листа" } }
+      }
+    },
     "fighter": {
       "name": { "en": "Fighter", "ru": "Воин" },
       "main_ability_options": ["str", "dex"]
     },
+    "ranger": {
+      "name": { "en": "Ranger", "ru": "Следопыт" },
+      "main_ability_options": ["str", "dex"],
+      "subclass_title": { "en": "Hunter's edge", "ru": "Преимущество охотника" },
+      "subclasses": {
+        "precision": { "name": { "en": "Precision", "ru": "Меткость" } },
+        "outwit": { "name": { "en": "Outwit", "ru": "Хитрость" } },
+        "flurry": { "name": { "en": "Flurry", "ru": "Шквал" } }
+      }
+    },
+    "rogue": {
+      "name": { "en": "Rogue", "ru": "Плут" },
+      "main_ability_options": ["dex"],
+      "subclass_title": { "en": "Racket", "ru": "Стиль" },
+      "subclasses": {
+        "thief": { "name": { "en": "Thief", "ru": "Вор" } },
+        "ruffian": { "name": { "en": "Ruffian", "ru": "Головорез" }, "main_ability_options": ["str"] },
+        "mastermind": { "name": { "en": "Mastermind", "ru": "Организатор" }, "main_ability_options": ["int"] },
+        "scoundrel": { "name": { "en": "Scoundrel", "ru": "Пройдоха" }, "main_ability_options": ["cha"] }
+      }
+    },
     "witch": {
       "name": { "en": "Witch", "ru": "Ведьма" },
-      "main_ability_options": ["int"]
+      "main_ability_options": ["int"],
+      "subclass_title": { "en": "Patron", "ru": "Покровитель" },
+      "subclasses": {
+        "starless_shadow": { "name": { "en": "Starless shadow", "ru": "Беззвёздная тень" } },
+        "the_resentment": { "name": { "en": "The resentment", "ru": "Горечь" } },
+        "silence_in_snow": { "name": { "en": "Silence in snow", "ru": "Молчание снегов" } },
+        "the_inscribed_one": { "name": { "en": "The inscribed one", "ru": "Носитель писания" } },
+        "wilding_steward": { "name": { "en": "Wilding steward", "ru": "Служитель природы" } },
+        "spinner_of_threads": { "name": { "en": "Spinner of threads", "ru": "Ткач судеб" } },
+        "faith_flamekeeper": { "name": { "en": "Faith's flamekeeper", "ru": "Хранитель пламени веры" } }
+      }
+    },
+    "wizard": {
+      "name": { "en": "Wizard", "ru": "Волшебник" },
+      "main_ability_options": ["int"],
+      "subclass_title": { "en": "Arcane school", "ru": "Школа магии" },
+      "subclasses": {
+        "ars_grammatica": { "name": { "en": "School of arc grammatica", "ru": "Школа Арс грамматика" } },
+        "battle_magic": { "name": { "en": "School of battle magic", "ru": "Школа боевой магии" } },
+        "unified_magical_theory": { "name": { "en": "School of unified magical theory", "ru": "Школа единой магической теории" } },
+        "protean_form": { "name": { "en": "School of protean form", "ru": "Школа изменчивого облика" } },
+        "the_boundary": { "name": { "en": "School of the boundary", "ru": "Школа межевой магии" } },
+        "mentalism": { "name": { "en": "School of mentalism", "ru": "Школа ментализма" } },
+        "civic_wizardary": { "name": { "en": "School of civic wizardary", "ru": "Школа прикладного волшебства" } }
+      }
     }
   },
   "backgrounds": {

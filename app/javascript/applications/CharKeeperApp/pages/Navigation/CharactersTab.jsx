@@ -27,6 +27,10 @@ const DND2024_DEFAULT_FORM = {
   name: '', species: undefined, legacy: undefined, size: undefined,
   main_class: undefined, alignment: 'neutral', avatar_file: undefined, avatar_url: undefined
 }
+const PATHFINDER2_DEFAULT_FORM = {
+  name: '', race: undefined, subrace: undefined, main_class: undefined, subclass: undefined,
+  background: undefined, main_ability: undefined, avatar_file: undefined, avatar_url: undefined
+}
 
 export const CharactersTab = () => {
   const [loading, setLoading] = createSignal(false);
@@ -48,16 +52,7 @@ export const CharactersTab = () => {
     avatar_url: undefined
   });
   const [characterDnd2024Form, setCharacterDnd2024Form] = createStore(DND2024_DEFAULT_FORM);
-  const [characterPathfinder2Form, setCharacterPathfinder2Form] = createStore({
-    name: '',
-    race: undefined,
-    subrace: undefined,
-    main_class: undefined,
-    background: undefined,
-    main_ability: undefined,
-    avatar_file: undefined,
-    avatar_url: undefined
-  });
+  const [characterPathfinder2Form, setCharacterPathfinder2Form] = createStore(PATHFINDER2_DEFAULT_FORM);
   const [characterDaggerheartForm, setCharacterDaggerheartForm] = createStore(DAGGERHEART_DEFAULT_FORM);
   const [customHeritage, setCustomHeritage] = createSignal(false);
 
@@ -84,6 +79,20 @@ export const CharactersTab = () => {
     const characterData = await fetchCharacterRequest(appState.accessToken, adminCharacterId());
     if (characterData.errors == undefined) setCharacters(characters().concat(characterData.character));
   }
+
+  const mainAbilityOptions = createMemo(() => {
+    if (characterPathfinder2Form.main_class === undefined) return {};
+
+    const classOptions = pathfinder2Config.classes[characterPathfinder2Form.main_class].main_ability_options;
+
+    let subclassOptions = [];
+    if (characterPathfinder2Form.subclass !== undefined) {
+      subclassOptions = pathfinder2Config.classes[characterPathfinder2Form.main_class].subclasses[characterPathfinder2Form.subclass].main_ability_options || [];
+    }
+    const allOptions = subclassOptions.concat(classOptions);
+
+    return Object.fromEntries(Object.entries(dict().dnd.abilities).filter(([key,]) => allOptions.includes(key)));
+  });
 
   const heritageFeatures = createMemo(() => {
     const mainFeatures = {};
@@ -190,7 +199,7 @@ export const CharactersTab = () => {
         setPlatform(undefined);
         setCharacterDnd5Form({ name: '', race: undefined, subrace: undefined, main_class: undefined, alignment: 'neutral', avatar_file: undefined, avatar_url: undefined });
         setCharacterDnd2024Form(DND2024_DEFAULT_FORM);
-        setCharacterPathfinder2Form({ name: '', race: undefined, subrace: undefined, main_class: undefined, background: undefined, avatar_file: undefined, avatar_url: undefined, main_ability: undefined });
+        setCharacterPathfinder2Form(PATHFINDER2_DEFAULT_FORM);
         setCharacterDaggerheartForm(DAGGERHEART_DEFAULT_FORM);
         setCurrentTab('characters');
         setLoading(false);
@@ -306,7 +315,6 @@ export const CharactersTab = () => {
                 }
               </For>
             </Show>
-
             <Show when={appState.isAdmin}>
               <div class="absolute bottom-0 left-0 w-full flex p-2">
                 <Button
@@ -325,7 +333,6 @@ export const CharactersTab = () => {
                 />
               </div>
             </Show>
-
           </div>
         </Match>
         <Match when={currentTab() === 'newCharacter'}>
@@ -455,16 +462,26 @@ export const CharactersTab = () => {
                       onSelect={(value) => setCharacterPathfinder2Form({ ...characterPathfinder2Form, background: value })}
                     />
                     <Select
+                      containerClassList="mb-2"
                       labelText={t('newCharacterPage.pathfinder2.mainClass')}
                       items={translate(pathfinder2Config.classes, locale())}
                       selectedValue={characterPathfinder2Form.main_class}
-                      onSelect={(value) => setCharacterPathfinder2Form({ ...characterPathfinder2Form, main_class: value, main_ability: pathfinder2Config.classes[value].main_ability_options[0] })}
+                      onSelect={(value) => setCharacterPathfinder2Form({ ...characterPathfinder2Form, main_class: value, main_ability: pathfinder2Config.classes[value].main_ability_options[0], subclass: undefined })}
                     />
-                    <Show when={pathfinder2Config.classes[characterPathfinder2Form.main_class]?.main_ability_options.length > 1}>
+                    <Show when={pathfinder2Config.classes[characterPathfinder2Form.main_class]?.subclasses}>
+                      <Select
+                        containerClassList="mb-2"
+                        labelText={pathfinder2Config.classes[characterPathfinder2Form.main_class].subclass_title[locale()]}
+                        items={translate(pathfinder2Config.classes[characterPathfinder2Form.main_class].subclasses, locale())}
+                        selectedValue={characterPathfinder2Form.subclass}
+                        onSelect={(value) => setCharacterPathfinder2Form({ ...characterPathfinder2Form, subclass: value, main_ability: pathfinder2Config.classes[characterPathfinder2Form.main_class].main_ability_options[0] })}
+                      />
+                    </Show>
+                    <Show when={Object.keys(mainAbilityOptions()).length > 1}>
                       <Select
                         containerClassList="mt-2"
                         labelText={t('newCharacterPage.pathfinder2.mainAbility')}
-                        items={Object.fromEntries(Object.entries(dict().dnd.abilities).filter(([key,]) => pathfinder2Config.classes[characterPathfinder2Form.main_class]?.main_ability_options.includes(key)))}
+                        items={mainAbilityOptions()}
                         selectedValue={characterPathfinder2Form.main_ability}
                         onSelect={(value) => setCharacterPathfinder2Form({ ...characterPathfinder2Form, main_ability: value })}
                       />

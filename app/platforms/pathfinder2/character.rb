@@ -7,6 +7,7 @@ module Pathfinder2
     attribute :level, :integer, default: 1
     attribute :speed, :integer, default: 25
     attribute :main_ability, :string
+    attribute :spell_list, :string # occult, primal, arcane, divine
     attribute :race, :string
     attribute :subrace, :string
     attribute :background, :string
