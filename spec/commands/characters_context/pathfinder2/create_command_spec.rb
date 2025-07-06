@@ -7,7 +7,13 @@ describe CharactersContext::Pathfinder2::CreateCommand do
   let(:user) { create :user }
   let(:valid_params) do
     {
-      user: user, name: 'Char', main_class: 'witch', subclass: 'the_inscribed_one', race: 'halfling', background: 'hermit'
+      user: user,
+      name: 'Char',
+      main_class: 'witch',
+      subclass: 'the_inscribed_one',
+      race: 'halfling',
+      subrace: 'twilight_halfling',
+      background: 'hermit'
     }
   end
 

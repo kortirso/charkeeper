@@ -2,7 +2,7 @@
 
 module Pathfinder2Character
   module Subclasses
-    class UntamedBuilder
+    class StormBuilder
       def call(result:)
         result[:skill_boosts].merge!({ acrobatics: 1 }) { |_, oldval, newval| oldval + newval }
 

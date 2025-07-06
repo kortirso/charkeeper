@@ -1,46 +1,88 @@
 {
   "races": {
+    "gnome": {
+      "name": { "en": "Gnome", "ru": "Гном" },
+      "subraces": {
+        "wellspring": { "name": { "en": "Wellspring gnome", "ru": "Гном истока" } },
+        "sensate": { "name": { "en": "Sensate gnome", "ru": "Гном-сенсат" } },
+        "chameleon": { "name": { "en": "Chameleon gnome", "ru": "Гном-хамелеон" } },
+        "umbral": { "name": { "en": "Umbral gnome", "ru": "Теневой гном" } },
+        "fey_touched": { "name": { "en": "Fey-touched gnome", "ru": "Фееподобный гном" } }
+      }
+    },
+    "goblin": {
+      "name": { "en": "Goblin", "ru": "Гоблин" },
+      "subraces": {
+        "irongut": { "name": { "en": "Irongut goblin", "ru": "Железнобрюхий гоблин" } },
+        "unbreakable": { "name": { "en": "Unbreakable goblin", "ru": "Небьющийся гоблин" } },
+        "razortooth": { "name": { "en": "Razortooth goblin", "ru": "Острозубый гоблин" } },
+        "charhide": { "name": { "en": "Charhide goblin", "ru": "Палёный гоблин" } },
+        "snow": { "name": { "en": "Snow goblin", "ru": "Снежный гоблин" } }
+      }
+    },
     "dwarf": {
       "name": { "en": "Dwarf", "ru": "Дварф" },
       "subraces": {
-        "ancient_blooded_dwarf": {
-          "name": { "en": "Ancient-Blooded Dwarf", "ru": "Дварф древней крови" }
-        },
-        "death_warden_dwarf": {
-          "name": { "en": "Death Warden Dwarf", "ru": "Дварф страж гробниц" }
-        },
-        "forge_dwarf": {
-          "name": { "en": "Forge Dwarf", "ru": "Дварф кузницы" }
-        },
-        "rock_dwarf": {
-          "name": { "en": "Rock Dwarf", "ru": "Каменный дварф" }
-        },
-        "strong_blooded_dwarf": {
-          "name": { "en": "Strong-Blooded Dwarf", "ru": "Дварф сильной крови" }
-        }
+        "ancient_blooded_dwarf": { "name": { "en": "Ancient-Blooded Dwarf", "ru": "Дварф древней крови" } },
+        "death_warden_dwarf": { "name": { "en": "Death Warden Dwarf", "ru": "Дварф страж гробниц" } },
+        "forge_dwarf": { "name": { "en": "Forge Dwarf", "ru": "Дварф кузницы" } },
+        "rock_dwarf": { "name": { "en": "Rock Dwarf", "ru": "Каменный дварф" } },
+        "strong_blooded_dwarf": { "name": { "en": "Strong-Blooded Dwarf", "ru": "Дварф сильной крови" } }
+      }
+    },
+    "leshy": {
+      "name": { "en": "Leshy", "ru": "Леший" },
+      "subraces": {
+        "seeweed_leshy": { "name": { "en": "Seeweed leshy", "ru": "Водорослевый леший" } },
+        "fungus_leshy": { "name": { "en": "Fungus leshy", "ru": "Грибной леший" } },
+        "cactus_leshy": { "name": { "en": "Cactus leshy", "ru": "Кактусовый леший" } },
+        "root_leshy": { "name": { "en": "Root leshy", "ru": "Корневой леший" } },
+        "vine_leshy": { "name": { "en": "Vine leshy", "ru": "Лианный леший" } },
+        "leaf_leshy": { "name": { "en": "Leaf leshy", "ru": "Лиственный леший" } },
+        "lotus_leshy": { "name": { "en": "Lotus leshy", "ru": "Лотосовый леший" } },
+        "gourd_leshy": { "name": { "en": "Gourd leshy", "ru": "Персиковый леший" } },
+        "fruit_leshy": { "name": { "en": "Fruid leshy", "ru": "Тыквенный леший" } }
+      }
+    },
+    "orc": {
+      "name": { "en": "Orc", "ru": "Орк" },
+      "subraces": {
+        "battle_ready_orc": { "name": { "en": "Battle-ready orc", "ru": "Воинственный орк" } },
+        "deep_orc": { "name": { "en": "Deep orc", "ru": "Глубинный орк" } },
+        "winter_orc": { "name": { "en": "Winter orc", "ru": "Зимний орк" } },
+        "rainfall_orc": { "name": { "en": "Rainfall orc", "ru": "Ливневый орк" } },
+        "grave_orc": { "name": { "en": "Grave orc", "ru": "Могильный орк" } },
+        "badlands_orc": { "name": { "en": "Badlands orc", "ru": "Орк пустошей" } },
+        "hold_scarred_orc": { "name": { "en": "Hold-scarred orc", "ru": "Шрамированный орк" } }
       }
     },
     "halfling": {
       "name": { "en": "Halfling", "ru": "Полурослик" },
       "subraces": {
-        "gutsy_halfling": {
-          "name": { "en": "Gutsy Halfling", "ru": "Отважный полурослик" }
-        },
-        "hillock_halfling": {
-          "name": { "en": "Hillock Halfling", "ru": "Холмовой полурослик" }
-        },
-        "jinxed_halfling": {
-          "name": { "en": "Jinxed Halfling", "ru": "Треклятый полурослик" }
-        },
-        "nomadic_halfling": {
-          "name": { "en": "Nomadic Halfling", "ru": "Странствующий полурослик" }
-        },
-        "twilight_halfling": {
-          "name": { "en": "Twilight Halfling", "ru": "Сумеречный полурослик" }
-        },
-        "wildwood_halfling": {
-          "name": { "en": "Wildwood Halfling", "ru": "Чащобный полурослик" }
-        }
+        "gutsy_halfling": { "name": { "en": "Gutsy Halfling", "ru": "Отважный полурослик" } },
+        "hillock_halfling": { "name": { "en": "Hillock Halfling", "ru": "Холмовой полурослик" } },
+        "jinxed_halfling": { "name": { "en": "Jinxed Halfling", "ru": "Треклятый полурослик" } },
+        "nomadic_halfling": { "name": { "en": "Nomadic Halfling", "ru": "Странствующий полурослик" } },
+        "twilight_halfling": { "name": { "en": "Twilight Halfling", "ru": "Сумеречный полурослик" } },
+        "wildwood_halfling": { "name": { "en": "Wildwood Halfling", "ru": "Чащобный полурослик" } }
+      }
+    },
+    "human": {
+      "name": { "en": "Human", "ru": "Человек" },
+      "subraces": {
+        "versatile_human": { "name": { "en": "Versatile human", "ru": "Разносторонний человек" } },
+        "skilled_human": { "name": { "en": "Skilled human", "ru": "Умелый человек" } }
+      }
+    },
+    "elf": {
+      "name": { "en": "Elf", "ru": "Эльф" },
+      "subraces": {
+        "ancient_elf": { "name": { "en": "Ancient elf", "ru": "Древний эльф" } },
+        "woodland_elf": { "name": { "en": "Woodland elf", "ru": "Лесной эльф" } },
+        "cavern_elf": { "name": { "en": "Cavern elf", "ru": "Пецерный эльф" } },
+        "arctic_elf": { "name": { "en": "Arctic elf", "ru": "Полярный эльф" } },
+        "whisper_elf": { "name": { "en": "Whisper elf", "ru": "Шепчущий эльф" } },
+        "seer_elf": { "name": { "en": "Seer elf", "ru": "Эльф-провидец" } }
       }
     }
   },
@@ -131,15 +173,46 @@
     }
   },
   "backgrounds": {
-    "herbalist": {
-      "name": { "en": "Herbalist", "ru": "Травник" }
-    },
-    "teacher": {
-      "name": { "en": "Teacher", "ru": "Учитель" }
-    },
-    "hermit": {
-      "name": { "en": "Hermit", "ru": "Отшельник" }
-    }
+    "barrister": { "name": { "en": "Barrister", "ru": "Адвокат" } },
+    "martial_disciple": { "name": { "en": "Martial disciple", "ru": "Адепт боевых искусств" } },
+    "gambler": { "name": { "en": "Gambler", "ru": "Азартный игрок" } },
+    "acrobat": { "name": { "en": "Acrobat", "ru": "Акробат" } },
+    "entertainer": { "name": { "en": "Entertainer", "ru": "Артист" } },
+    "noble": { "name": { "en": "Noble", "ru": "Благородный" } },
+    "warrior": { "name": { "en": "Warrior", "ru": "Боец" } },
+    "street_urchin": { "name": { "en": "Street urchin", "ru": "Бродяга" } },
+    "raised_by_belief": { "name": { "en": "Raised by belief", "ru": "Воспитанный в вере" } },
+    "fortune_teller": { "name": { "en": "Fortune teller", "ru": "Гадатель" } },
+    "gladiator": { "name": { "en": "Gladiator", "ru": "Гладиатор" } },
+    "animal_whisperer": { "name": { "en": "Animal whisperer", "ru": "Друг животных" } },
+    "prisoner": { "name": { "en": "Prisoner", "ru": "Заключённый" } },
+    "farmhand": { "name": { "en": "Farmhand", "ru": "Землепашец" } },
+    "nomad": { "name": { "en": "Nomad", "ru": "Кочевник" } },
+    "cultist": { "name": { "en": "Cultist", "ru": "Культист" } },
+    "merchant": { "name": { "en": "Merchant", "ru": "Купец" } },
+    "tinker": { "name": { "en": "Tinker", "ru": "Механик" } },
+    "sailor": { "name": { "en": "Sailor", "ru": "Моряк" } },
+    "hermit": { "name": { "en": "Hermit", "ru": "Отшельник" } },
+    "hunter": { "name": { "en": "Hunter", "ru": "Охотник" } },
+    "bounty_hunter": { "name": { "en": "Bounty hunter", "ru": "Охотник за головами" } },
+    "cook": { "name": { "en": "Cook", "ru": "Повар" } },
+    "field_medic": { "name": { "en": "Field medic", "ru": "Полевой медик" } },
+    "emissary": { "name": { "en": "Emissary", "ru": "Посланник" } },
+    "acolyte": { "name": { "en": "Acolyte", "ru": "Послушник" } },
+    "criminal": { "name": { "en": "Criminal", "ru": "Преступник" } },
+    "bandit": { "name": { "en": "Bandit", "ru": "Разбойник" } },
+    "scout": { "name": { "en": "Scout", "ru": "Разведчик" } },
+    "laborer": { "name": { "en": "Laborer", "ru": "Разнорабочий" } },
+    "artisan": { "name": { "en": "Artisan", "ru": "Ремесленник" } },
+    "miner": { "name": { "en": "Miner", "ru": "Рудокоп" } },
+    "guard": { "name": { "en": "Guard", "ru": "Стражник" } },
+    "detective": { "name": { "en": "Detective", "ru": "Сыщик" } },
+    "herbalist": { "name": { "en": "Herbalist", "ru": "Травник" } },
+    "barkeep": { "name": { "en": "Barkeep", "ru": "Трактирщик" } },
+    "scholar": { "name": { "en": "Scholar", "ru": "Учёный" } },
+    "teacher": { "name": { "en": "Teacher", "ru": "Учитель" } },
+    "artist": { "name": { "en": "Artist", "ru": "Художник" } },
+    "charlatan": { "name": { "en": "Charlatan", "ru": "Шарлатан" } }
   },
   "abilities": {
     "str": { "name": { "en": "Strength", "ru": "Сила" } },

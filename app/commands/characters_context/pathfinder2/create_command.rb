@@ -75,6 +75,7 @@ module CharactersContext
       def build_fresh_character(data)
         Pathfinder2Character::BaseBuilder.new.call(result: data)
           .then { |result| Pathfinder2Character::RaceBuilder.new.call(result: result) }
+          .then { |result| Pathfinder2Character::SubraceBuilder.new.call(result: result) }
           .then { |result| Pathfinder2Character::BackgroundBuilder.new.call(result: result) }
           .then { |result| Pathfinder2Character::ClassBuilder.new.call(result: result) }
           .then { |result| Pathfinder2Character::SubclassBuilder.new.call(result: result) }

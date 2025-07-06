@@ -124,7 +124,11 @@ module Pathfinder2Character
 
     def transform_boosts(boosts, key)
       boosts.map do |slug, value|
-        next "#{I18n.t('decorators.pathfinder2.free')} - #{value}" if slug == 'free'
+        if slug == 'free'
+          next "#{I18n.t('decorators.pathfinder2.free')} - #{value} (#{I18n.t('decorators.pathfinder2.int')})" if key == 'skills'
+
+          next "#{I18n.t('decorators.pathfinder2.free')} - #{value}"
+        end
 
         slugs = slug.split('_').map { |item| config.dig(key, item, 'name', I18n.locale.to_s) }.join('/')
         "#{slugs} - #{value}"

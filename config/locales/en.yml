@@ -6,6 +6,7 @@ en:
     pathfinder2:
       boosts: "You can improve abilities: %{ability_boosts_text}.\nYou can learn skills: %{skill_boosts_text}"
       free: Free
+      int: + Int modifier
   web:
     welcome:
       index:
