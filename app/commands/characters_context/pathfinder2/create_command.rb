@@ -22,8 +22,8 @@ module CharactersContext
           required(:race).filled(Races)
           required(:background).filled(Backgrounds)
           required(:main_class).filled(Classes)
-          optional(:subrace).filled(:string)
-          optional(:subclass).filled(:string)
+          required(:subrace).filled(:string)
+          required(:subclass).filled(:string)
           optional(:main_ability).filled(:string)
           optional(:avatar_file).hash do
             required(:file_content).filled(:string)
