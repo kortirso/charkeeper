@@ -8,8 +8,7 @@
     },
     "origin": "class",
     "origin_value": "seraph",
-    "kind": "static",
-    "visible": "true"
+    "kind": "static"
   },
   {
     "slug": "prayer_dice",
@@ -20,8 +19,7 @@
     },
     "origin": "class",
     "origin_value": "seraph",
-    "kind": "text",
-    "visible": "true"
+    "kind": "text"
   },
   {
     "slug": "spirit_weapon",
@@ -32,8 +30,7 @@
     },
     "origin": "subclass",
     "origin_value": "divine_wielder",
-    "kind": "static",
-    "visible": "true"
+    "kind": "static"
   },
   {
     "slug": "sparing_touch",
@@ -45,7 +42,6 @@
     "origin": "subclass",
     "origin_value": "divine_wielder",
     "kind": "static",
-    "visible": "true",
     "description_eval_variables": {
       "limit": "1"
     },
@@ -61,7 +57,7 @@
     "origin": "subclass",
     "origin_value": "divine_wielder",
     "kind": "static",
-    "visible": "subclasses_mastery['syndicate'].to_i >= 2"
+    "conditions": { "subclass_mastery": 2 }
   },
   {
     "slug": "sparing_touch_devout",
@@ -74,23 +70,23 @@
     "origin": "subclass",
     "origin_value": "divine_wielder",
     "kind": "static",
-    "visible": "subclasses_mastery['syndicate'].to_i >= 2",
     "description_eval_variables": {
       "limit": "2"
     },
-    "limit_refresh": "long_rest"
+    "limit_refresh": "long_rest",
+    "conditions": { "subclass_mastery": 2 }
   },
   {
     "slug": "sacred_resonance",
     "title": { "en": "Sacred Resonance", "ru": "Sacred Resonance" },
     "description": {
-      "en": "When you roll damage for your “Spirit Weapon” feature, if any of the die results match, double the value of each matching die.",
-      "ru": "When you roll damage for your “Spirit Weapon” feature, if any of the die results match, double the value of each matching die."
+      "en": "When you roll damage for your 'Spirit Weapon' feature, if any of the die results match, double the value of each matching die.",
+      "ru": "When you roll damage for your 'Spirit Weapon' feature, if any of the die results match, double the value of each matching die."
     },
     "origin": "subclass",
     "origin_value": "divine_wielder",
     "kind": "static",
-    "visible": "subclasses_mastery['syndicate'].to_i >= 3"
+    "conditions": { "subclass_mastery": 3 }
   },
   {
     "slug": "wings_of_light",
@@ -101,8 +97,7 @@
     },
     "origin": "subclass",
     "origin_value": "winged_sentinel",
-    "kind": "static",
-    "visible": "true"
+    "kind": "static"
   },
   {
     "slug": "ethereal_visage",
@@ -114,7 +109,7 @@
     "origin": "subclass",
     "origin_value": "winged_sentinel",
     "kind": "static",
-    "visible": "subclasses_mastery['syndicate'].to_i >= 2"
+    "conditions": { "subclass_mastery": 2 }
   },
   {
     "slug": "ascendant",
@@ -126,10 +121,10 @@
     "origin": "subclass",
     "origin_value": "winged_sentinel",
     "kind": "update_result",
-    "visible": "subclasses_mastery['syndicate'].to_i >= 3",
     "eval_variables": {
       "damage_thresholds": "damage_thresholds.merge({ 'severe' => damage_thresholds['severe'] + 4 })"
-    }
+    },
+    "conditions": { "subclass_mastery": 3 }
   },
   {
     "slug": "power_of_the_gods",
@@ -142,6 +137,6 @@
     "origin": "subclass",
     "origin_value": "winged_sentinel",
     "kind": "static",
-    "visible": "subclasses_mastery['syndicate'].to_i >= 3"
+    "conditions": { "subclass_mastery": 3 }
   }
 ]

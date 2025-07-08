@@ -6,6 +6,8 @@ describe Daggerheart::Character do
   describe '#decorator' do
     subject(:decorator) { described_class.find(character.id).decorator }
 
+    let!(:feat) { create :feat, :rally }
+
     before do
       torch = create :item, type: 'Daggerheart::Item'
       primary_weapon = create :item, type: 'Daggerheart::Item', kind: 'primary weapon', info: { trait: 'agi', bonuses: {} }
@@ -17,13 +19,13 @@ describe Daggerheart::Character do
       create :character_item, character: character, item: secondary_weapon, ready_to_use: true
       create :character_item, character: character, item: armor, ready_to_use: true
 
-      create :daggerheart_character_feature, :rally
+      create :character_feat, character: character, feat: feat
     end
 
     it 'calculates everything without errors', :aggregate_failures do
       expect(decorator.id).to eq character.id
       expect(decorator.features.size).to eq 1
-      expect(decorator.features.dig(0, :slug)).to eq 'rally-1'
+      expect(decorator.features.dig(0, :slug)).to eq feat.slug
       expect(decorator.attacks).not_to be_nil
     end
   end

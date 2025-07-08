@@ -7,6 +7,7 @@ import { ErrorWrapper } from '../../../molecules';
 import { FeatureTitle } from '../../../../components';
 import { useAppState, useAppLocale, useAppAlert } from '../../../../context';
 import { updateCharacterRequest } from '../../../../requests/updateCharacterRequest';
+import { updateCharacterFeatRequest } from '../../../../requests/updateCharacterFeatRequest';
 
 import { modifier } from '../../../../helpers';
 
@@ -38,42 +39,40 @@ export const DaggerheartCombat = (props) => {
   const spendEnergy = async (event, feature) => {
     event.stopPropagation();
 
-    let payload;
-    const currentValue = character().energy[feature.slug];
-
-    if (currentValue === feature.limit) return;
-    if (currentValue) {
-      payload = { ...character().energy, [feature.slug]: currentValue + 1 };
-    } else {
-      payload = { ...character().energy, [feature.slug]: 1 };
-    }
-
-    const result = await updateCharacterRequest(
-      appState.accessToken, 'daggerheart', character().id, { character: { energy: payload }, only_head: true }
+    const result = await updateCharacterFeatRequest(
+      appState.accessToken,
+      character().provider,
+      character().id,
+      feature.id,
+      { character_feat: { used_count: feature.used_count + 1 }, only_head: true }
     );
 
-    if (result.errors === undefined) props.onReplaceCharacter({ energy: payload });
+    const newFeatures = character().features.slice().map((element) => {
+      if (element.id !== feature.id) return element;
+      return { ...element, used_count: feature.used_count + 1 }
+    });
+
+    if (result.errors === undefined) props.onReplaceCharacter({ features: newFeatures });
     else renderAlerts(result.errors);
   }
 
   const restoreEnergy = async (event, feature) => {
     event.stopPropagation();
 
-    let payload;
-    const currentValue = character().energy[feature.slug];
-
-    if (currentValue === 0) return;
-    if (currentValue) {
-      payload = { ...character().energy, [feature.slug]: currentValue - 1 };
-    } else {
-      payload = { ...character().energy, [feature.slug]: 0 };
-    }
-
-    const result = await updateCharacterRequest(
-      appState.accessToken, 'daggerheart', character().id, { character: { energy: payload }, only_head: true }
+    const result = await updateCharacterFeatRequest(
+      appState.accessToken,
+      character().provider,
+      character().id,
+      feature.id,
+      { character_feat: { used_count: feature.used_count - 1 }, only_head: true }
     );
 
-    if (result.errors === undefined) props.onReplaceCharacter({ energy: payload });
+    const newFeatures = character().features.slice().map((element) => {
+      if (element.id !== feature.id) return element;
+      return { ...element, used_count: feature.used_count - 1 }
+    });
+
+    if (result.errors === undefined) props.onReplaceCharacter({ features: newFeatures });
     else renderAlerts(result.errors);
   }
 
@@ -200,7 +199,7 @@ export const DaggerheartCombat = (props) => {
       {renderAttacksBox(t('character.backpack'), character().attacks.filter((item) => !item.ready_to_use))}
       <For each={character().features}>
         {(feature) =>
-          <Toggle title={<FeatureTitle feature={feature} character={character()} onSpendEnergy={spendEnergy} onRestoreEnergy={restoreEnergy} />}>
+          <Toggle title={<FeatureTitle feature={feature} onSpendEnergy={spendEnergy} onRestoreEnergy={restoreEnergy} />}>
             <Switch>
               <Match when={feature.kind === 'static'}>
                 <p

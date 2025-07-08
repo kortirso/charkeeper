@@ -8,8 +8,7 @@
     },
     "origin": "class",
     "origin_value": "wizard",
-    "kind": "static",
-    "visible": "true"
+    "kind": "static"
   },
   {
     "slug": "prestidigitation",
@@ -20,8 +19,7 @@
     },
     "origin": "class",
     "origin_value": "wizard",
-    "kind": "static",
-    "visible": "true"
+    "kind": "static"
   },
   {
     "slug": "strange_patterns",
@@ -32,8 +30,7 @@
     },
     "origin": "class",
     "origin_value": "wizard",
-    "kind": "text",
-    "visible": "true"
+    "kind": "text"
   },
   {
     "slug": "adept",
@@ -44,8 +41,7 @@
     },
     "origin": "subclass",
     "origin_value": "school_of_knowledge",
-    "kind": "static",
-    "visible": "true"
+    "kind": "static"
   },
   {
     "slug": "perfect_recall",
@@ -57,11 +53,11 @@
     "origin": "subclass",
     "origin_value": "school_of_knowledge",
     "kind": "static",
-    "visible": "subclasses_mastery['school_of_knowledge'].to_i >= 2",
     "description_eval_variables": {
       "limit": "1"
     },
-    "limit_refresh": "long_rest"
+    "limit_refresh": "long_rest",
+    "conditions": { "subclass_mastery": 2 }
   },
   {
     "slug": "honed_expertise",
@@ -73,7 +69,7 @@
     "origin": "subclass",
     "origin_value": "school_of_knowledge",
     "kind": "static",
-    "visible": "subclasses_mastery['school_of_knowledge'].to_i >= 3"
+    "conditions": { "subclass_mastery": 3 }
   },
   {
     "slug": "battlemage",
@@ -85,8 +81,7 @@
     "origin": "subclass",
     "origin_value": "school_of_war",
     "kind": "update_result",
-    "visible": "true",
-    "description_eval_variables": {
+    "eval_variables": {
       "health_max": "health_max + 1"
     }
   },
@@ -94,13 +89,15 @@
     "slug": "face_your_fear",
     "title": { "en": "Face Your Fear", "ru": "Face Your Fear" },
     "description": {
-      "en": "When you succeed with Fear on an attack roll, you deal an extra 1d10 magic damage.",
-      "ru": "When you succeed with Fear on an attack roll, you deal an extra 1d10 magic damage."
+      "en": "When you succeed with Fear on an attack roll, you deal an extra {{value}}d10 magic damage.",
+      "ru": "When you succeed with Fear on an attack roll, you deal an extra {{value}}d10 magic damage."
     },
     "origin": "subclass",
     "origin_value": "school_of_war",
     "kind": "static",
-    "visible": "true"
+    "description_eval_variables": {
+      "value": "subclasses_mastery['school_of_war'].to_i"
+    }
   },
   {
     "slug": "conjure_shield",
@@ -112,23 +109,10 @@
     "origin": "subclass",
     "origin_value": "school_of_war",
     "kind": "update_result",
-    "visible": "subclasses_mastery['school_of_war'].to_i >= 2 && hope_marked >= 2",
     "eval_variables": {
-      "evasion": "evasion + 2"
-    }
-  },
-  {
-    "slug": "fueled_by_fear",
-    "title": { "en": "Face Your Fear", "ru": "Face Your Fear" },
-    "exclude": ["face_your_fear"],
-    "description": {
-      "en": "When you succeed with Fear on an attack roll, you deal an extra 2d10 magic damage.",
-      "ru": "When you succeed with Fear on an attack roll, you deal an extra 2d10 magic damage."
+      "evasion": "hope_marked >= 2 ? (evasion + proficiency) : evasion"
     },
-    "origin": "subclass",
-    "origin_value": "school_of_war",
-    "kind": "static",
-    "visible": "subclasses_mastery['school_of_war'].to_i >= 2"
+    "conditions": { "subclass_mastery": 2 }
   },
   {
     "slug": "thrive_in_chaos",
@@ -140,19 +124,6 @@
     "origin": "subclass",
     "origin_value": "school_of_war",
     "kind": "static",
-    "visible": "subclasses_mastery['school_of_war'].to_i >= 3"
-  },
-  {
-    "slug": "have_no_fear",
-    "title": { "en": "Face Your Fear", "ru": "Face Your Fear" },
-    "exclude": ["fueled_by_fear"],
-    "description": {
-      "en": "When you succeed with Fear on an attack roll, you deal an extra 3d10 magic damage.",
-      "ru": "When you succeed with Fear on an attack roll, you deal an extra 3d10 magic damage."
-    },
-    "origin": "subclass",
-    "origin_value": "school_of_war",
-    "kind": "static",
-    "visible": "subclasses_mastery['school_of_war'].to_i >= 3"
+    "conditions": { "subclass_mastery": 3 }
   }
 ]

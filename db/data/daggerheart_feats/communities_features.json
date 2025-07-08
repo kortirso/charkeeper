@@ -8,8 +8,7 @@
     },
     "origin": "community",
     "origin_value": "highborne",
-    "kind": "static",
-    "visible": "true"
+    "kind": "static"
   },
   {
     "slug": "well_read",
@@ -20,8 +19,7 @@
     },
     "origin": "community",
     "origin_value": "loreborne",
-    "kind": "static",
-    "visible": "true"
+    "kind": "static"
   },
   {
     "slug": "dedicated",
@@ -32,8 +30,7 @@
     },
     "origin": "community",
     "origin_value": "orderborne",
-    "kind": "text",
-    "visible": "true"
+    "kind": "text"
   },
   {
     "slug": "steady",
@@ -44,8 +41,7 @@
     },
     "origin": "community",
     "origin_value": "ridgeborne",
-    "kind": "static",
-    "visible": "true"
+    "kind": "static"
   },
   {
     "slug": "know_the_tide",
@@ -56,8 +52,7 @@
     },
     "origin": "community",
     "origin_value": "seaborne",
-    "kind": "static",
-    "visible": "true"
+    "kind": "static"
   },
   {
     "slug": "scoundrel",
@@ -68,8 +63,7 @@
     },
     "origin": "community",
     "origin_value": "slyborne",
-    "kind": "static",
-    "visible": "true"
+    "kind": "static"
   },
   {
     "slug": "low_light_living",
@@ -80,8 +74,7 @@
     },
     "origin": "community",
     "origin_value": "underborne",
-    "kind": "static",
-    "visible": "true"
+    "kind": "static"
   },
   {
     "slug": "nomadic_pack",
@@ -92,8 +85,7 @@
     },
     "origin": "community",
     "origin_value": "wanderborne",
-    "kind": "static",
-    "visible": "true"
+    "kind": "static"
   },
   {
     "slug": "lightfoot",
@@ -104,7 +96,6 @@
     },
     "origin": "community",
     "origin_value": "wildborne",
-    "kind": "static",
-    "visible": "true"
+    "kind": "static"
   }
 ]

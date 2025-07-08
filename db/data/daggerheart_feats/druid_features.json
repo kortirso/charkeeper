@@ -8,8 +8,7 @@
     },
     "origin": "class",
     "origin_value": "druid",
-    "kind": "text",
-    "visible": "true"
+    "kind": "text"
   },
   {
     "slug": "beastform",
@@ -20,8 +19,7 @@
     },
     "origin": "class",
     "origin_value": "druid",
-    "kind": "static",
-    "visible": "true"
+    "kind": "static"
   },
   {
     "slug": "wildtouch",
@@ -32,8 +30,7 @@
     },
     "origin": "class",
     "origin_value": "druid",
-    "kind": "static",
-    "visible": "true"
+    "kind": "static"
   },
   {
     "slug": "elemental_incarnation",
@@ -44,8 +41,7 @@
     },
     "origin": "subclass",
     "origin_value": "warden_of_the_elements",
-    "kind": "text",
-    "visible": "true"
+    "kind": "text"
   },
   {
     "slug": "elemental_aura",
@@ -56,12 +52,12 @@
     },
     "origin": "subclass",
     "origin_value": "warden_of_the_elements",
-    "kind": "static",
-    "visible": "subclasses_mastery['warden_of_the_elements'].to_i >= 2",
+    "kind": "text",
     "description_eval_variables": {
       "limit": "1"
     },
-    "limit_refresh": "short_rest"
+    "limit_refresh": "short_rest",
+    "conditions": { "subclass_mastery": 2 }
   },
   {
     "slug": "elemental_dominion",
@@ -74,7 +70,7 @@
     "origin": "subclass",
     "origin_value": "warden_of_the_elements",
     "kind": "text",
-    "visible": "subclasses_mastery['warden_of_the_elements'].to_i >= 3"
+    "conditions": { "subclass_mastery": 3 }
   },
   {
     "slug": "clarity_of_nature",
@@ -86,7 +82,6 @@
     "origin": "subclass",
     "origin_value": "warden_of_renewal",
     "kind": "static",
-    "visible": "true",
     "description_eval_variables": {
       "limit": "1"
     },
@@ -101,8 +96,7 @@
     },
     "origin": "subclass",
     "origin_value": "warden_of_renewal",
-    "kind": "static",
-    "visible": "true"
+    "kind": "static"
   },
   {
     "slug": "regenerative_reach",
@@ -115,7 +109,7 @@
     "origin": "subclass",
     "origin_value": "warden_of_renewal",
     "kind": "static",
-    "visible": "subclasses_mastery['warden_of_renewal'].to_i >= 2"
+    "conditions": { "subclass_mastery": 2 }
   },
   {
     "slug": "warden_protection",
@@ -128,11 +122,11 @@
     "origin": "subclass",
     "origin_value": "warden_of_renewal",
     "kind": "static",
-    "visible": "subclasses_mastery['warden_of_renewal'].to_i >= 2",
     "description_eval_variables": {
       "limit": "1"
     },
-    "limit_refresh": "long_rest"
+    "limit_refresh": "long_rest",
+    "conditions": { "subclass_mastery": 2 }
   },
   {
     "slug": "defender",
@@ -145,6 +139,6 @@
     "origin": "subclass",
     "origin_value": "warden_of_renewal",
     "kind": "static",
-    "visible": "subclasses_mastery['warden_of_renewal'].to_i >= 3"
+    "conditions": { "subclass_mastery": 3 }
   }
 ]

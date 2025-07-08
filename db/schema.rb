@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_07_04_064701) do
+ActiveRecord::Schema[8.0].define(version: 2025_07_08_154840) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
   enable_extension "pgcrypto"
@@ -50,6 +50,17 @@ ActiveRecord::Schema[8.0].define(version: 2025_07_04_064701) do
     t.string "comment"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "character_feats", id: :uuid, default: -> { "gen_random_uuid()" }, comment: "Навыки персонажа", force: :cascade do |t|
+    t.uuid "character_id", null: false
+    t.uuid "feat_id", null: false
+    t.jsonb "value", comment: "Выбранные опции навыка, либо введенный текст"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "limit_refresh", limit: 2, comment: "Событие для обновления лимита"
+    t.integer "used_count", comment: "Кол-во использований"
+    t.index ["character_id", "feat_id"], name: "index_character_feats_on_character_id_and_feat_id", unique: true
   end
 
   create_table "character_items", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
@@ -145,6 +156,24 @@ ActiveRecord::Schema[8.0].define(version: 2025_07_04_064701) do
     t.integer "limit_refresh", limit: 2
     t.boolean "choose_once", default: false, null: false
     t.jsonb "description_eval_variables", default: {}, null: false
+  end
+
+  create_table "feats", id: :uuid, default: -> { "gen_random_uuid()" }, comment: "Навыки", force: :cascade do |t|
+    t.string "type", null: false
+    t.string "slug", null: false
+    t.jsonb "title", default: {}, null: false
+    t.jsonb "description", default: {}, null: false
+    t.integer "origin", limit: 2, null: false, comment: "Тип применимости навыка"
+    t.string "origin_value", null: false, comment: "Значение применимости навыка"
+    t.integer "kind", limit: 2, null: false
+    t.integer "limit_refresh", limit: 2, comment: "Событие для обновления лимита"
+    t.string "exclude", comment: "Заменяемые навыки", array: true
+    t.jsonb "options", comment: "Опции для выбора"
+    t.jsonb "conditions", default: {}, null: false, comment: "Условия доступности навыка"
+    t.jsonb "description_eval_variables", default: {}, null: false, comment: "Вычисляемые переменные для описания"
+    t.jsonb "eval_variables", default: {}, null: false, comment: "Вычисляемые переменные"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "items", id: :uuid, default: -> { "gen_random_uuid()" }, comment: "Предметы", force: :cascade do |t|

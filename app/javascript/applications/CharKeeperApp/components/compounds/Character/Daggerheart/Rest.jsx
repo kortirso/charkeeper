@@ -22,7 +22,7 @@ export const DaggerheartRest = (props) => {
   const restCharacter = async (payload) => {
     const result = await createCharacterRestRequest(appState.accessToken, character().provider, character().id, payload);
     if (result.errors === undefined) {
-      const characterData = await fetchCharacterRequest(appState.accessToken, character().id, { only: 'energy' });
+      const characterData = await fetchCharacterRequest(appState.accessToken, character().id, { only: 'features' });
       batch(() => {
         props.onReplaceCharacter(characterData.character);
         renderNotice(t('alerts.restIsFinished'));

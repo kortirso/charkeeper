@@ -8,8 +8,7 @@
     },
     "origin": "ancestry",
     "origin_value": "clank",
-    "kind": "static",
-    "visible": "true"
+    "kind": "static"
   },
   {
     "slug": "scales",
@@ -20,8 +19,7 @@
     },
     "origin": "ancestry",
     "origin_value": "drakona",
-    "kind": "static",
-    "visible": "true"
+    "kind": "static"
   },
   {
     "slug": "elemental_breath",
@@ -32,8 +30,7 @@
     },
     "origin": "ancestry",
     "origin_value": "drakona",
-    "kind": "text",
-    "visible": "true"
+    "kind": "text"
   },
   {
     "slug": "thick_skin",
@@ -44,8 +41,7 @@
     },
     "origin": "ancestry",
     "origin_value": "dwarf",
-    "kind": "static",
-    "visible": "true"
+    "kind": "static"
   },
   {
     "slug": "increased_fortitude",
@@ -56,8 +52,7 @@
     },
     "origin": "ancestry",
     "origin_value": "dwarf",
-    "kind": "static",
-    "visible": "true"
+    "kind": "static"
   },
   {
     "slug": "quick_reactions",
@@ -68,8 +63,7 @@
     },
     "origin": "ancestry",
     "origin_value": "elf",
-    "kind": "static",
-    "visible": "true"
+    "kind": "static"
   },
   {
     "slug": "celestial_trance",
@@ -80,8 +74,7 @@
     },
     "origin": "ancestry",
     "origin_value": "elf",
-    "kind": "static",
-    "visible": "true"
+    "kind": "static"
   },
   {
     "slug": "luckbender",
@@ -93,7 +86,6 @@
     "origin": "ancestry",
     "origin_value": "faerie",
     "kind": "static",
-    "visible": "true",
     "description_eval_variables": {
       "limit": "1"
     },
@@ -108,8 +100,7 @@
     },
     "origin": "ancestry",
     "origin_value": "faerie",
-    "kind": "static",
-    "visible": "true"
+    "kind": "static"
   },
   {
     "slug": "caprine_leap",
@@ -120,8 +111,7 @@
     },
     "origin": "ancestry",
     "origin_value": "faun",
-    "kind": "static",
-    "visible": "true"
+    "kind": "static"
   },
   {
     "slug": "kick",
@@ -132,8 +122,7 @@
     },
     "origin": "ancestry",
     "origin_value": "faun",
-    "kind": "static",
-    "visible": "true"
+    "kind": "static"
   },
   {
     "slug": "charge",
@@ -144,8 +133,7 @@
     },
     "origin": "ancestry",
     "origin_value": "firbolg",
-    "kind": "static",
-    "visible": "true"
+    "kind": "static"
   },
   {
     "slug": "unshakable",
@@ -156,8 +144,7 @@
     },
     "origin": "ancestry",
     "origin_value": "firbolg",
-    "kind": "static",
-    "visible": "true"
+    "kind": "static"
   },
   {
     "slug": "fungril_network",
@@ -168,8 +155,7 @@
     },
     "origin": "ancestry",
     "origin_value": "fungril",
-    "kind": "static",
-    "visible": "true"
+    "kind": "static"
   },
   {
     "slug": "death_connection",
@@ -180,8 +166,7 @@
     },
     "origin": "ancestry",
     "origin_value": "fungril",
-    "kind": "static",
-    "visible": "true"
+    "kind": "static"
   },
   {
     "slug": "shell",
@@ -193,7 +178,6 @@
     "origin": "ancestry",
     "origin_value": "galapa",
     "kind": "update_result",
-    "visible": "true",
     "eval_variables": {
       "damage_thresholds": "damage_thresholds.transform_values { |item| item + proficiency }"
     }
@@ -207,8 +191,7 @@
     },
     "origin": "ancestry",
     "origin_value": "galapa",
-    "kind": "static",
-    "visible": "true"
+    "kind": "static"
   },
   {
     "slug": "endurance",
@@ -220,7 +203,6 @@
     "origin": "ancestry",
     "origin_value": "giant",
     "kind": "update_result",
-    "visible": "true",
     "eval_variables": {
       "health_max": "health_max + 1"
     }
@@ -234,8 +216,7 @@
     },
     "origin": "ancestry",
     "origin_value": "giant",
-    "kind": "static",
-    "visible": "true"
+    "kind": "static"
   },
   {
     "slug": "surefooted",
@@ -246,8 +227,7 @@
     },
     "origin": "ancestry",
     "origin_value": "goblin",
-    "kind": "static",
-    "visible": "true"
+    "kind": "static"
   },
   {
     "slug": "danger_sense",
@@ -259,7 +239,6 @@
     "origin": "ancestry",
     "origin_value": "goblin",
     "kind": "static",
-    "visible": "true",
     "description_eval_variables": {
       "limit": "1"
     },
@@ -274,8 +253,7 @@
     },
     "origin": "ancestry",
     "origin_value": "halfling",
-    "kind": "static",
-    "visible": "true"
+    "kind": "static"
   },
   {
     "slug": "internal_compass",
@@ -286,8 +264,7 @@
     },
     "origin": "ancestry",
     "origin_value": "halfling",
-    "kind": "static",
-    "visible": "true"
+    "kind": "static"
   },
   {
     "slug": "high_stamina",
@@ -299,7 +276,6 @@
     "origin": "ancestry",
     "origin_value": "human",
     "kind": "update_result",
-    "visible": "true",
     "eval_variables": {
       "stress_max": "stress_max + 1"
     }
@@ -313,8 +289,7 @@
     },
     "origin": "ancestry",
     "origin_value": "human",
-    "kind": "static",
-    "visible": "true"
+    "kind": "static"
   },
   {
     "slug": "fearless",
@@ -325,8 +300,7 @@
     },
     "origin": "ancestry",
     "origin_value": "infernis",
-    "kind": "static",
-    "visible": "true"
+    "kind": "static"
   },
   {
     "slug": "dread_visage",
@@ -337,8 +311,7 @@
     },
     "origin": "ancestry",
     "origin_value": "infernis",
-    "kind": "static",
-    "visible": "true"
+    "kind": "static"
   },
   {
     "slug": "feline_instincts",
@@ -349,8 +322,7 @@
     },
     "origin": "ancestry",
     "origin_value": "katari",
-    "kind": "static",
-    "visible": "true"
+    "kind": "static"
   },
   {
     "slug": "retracting_claws",
@@ -361,8 +333,7 @@
     },
     "origin": "ancestry",
     "origin_value": "katari",
-    "kind": "static",
-    "visible": "true"
+    "kind": "static"
   },
   {
     "slug": "sturdy",
@@ -373,8 +344,7 @@
     },
     "origin": "ancestry",
     "origin_value": "orc",
-    "kind": "static",
-    "visible": "true"
+    "kind": "static"
   },
   {
     "slug": "tusks",
@@ -385,8 +355,7 @@
     },
     "origin": "ancestry",
     "origin_value": "orc",
-    "kind": "static",
-    "visible": "true"
+    "kind": "static"
   },
   {
     "slug": "amphibious",
@@ -397,8 +366,7 @@
     },
     "origin": "ancestry",
     "origin_value": "ribbet",
-    "kind": "static",
-    "visible": "true"
+    "kind": "static"
   },
   {
     "slug": "long_tongue",
@@ -409,8 +377,7 @@
     },
     "origin": "ancestry",
     "origin_value": "ribbet",
-    "kind": "static",
-    "visible": "true"
+    "kind": "static"
   },
   {
     "slug": "natural_climber",
@@ -421,8 +388,7 @@
     },
     "origin": "ancestry",
     "origin_value": "simiah",
-    "kind": "static",
-    "visible": "true"
+    "kind": "static"
   },
   {
     "slug": "nimble",
@@ -434,7 +400,6 @@
     "origin": "ancestry",
     "origin_value": "simiah",
     "kind": "update_result",
-    "visible": "true",
     "eval_variables": {
       "evasion": "evasion + 1"
     }

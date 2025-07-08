@@ -14,25 +14,17 @@ module CharactersContext
 
       private
 
-      def do_prepare(input)
-        refresh_energy_slugs =
-          ::Daggerheart::Character::Feature
-            .where(slug: input[:character].data.energy.keys, limit_refresh: limit_refresh(input))
-            .pluck(:slug)
-        input[:character].data.energy.merge!(refresh_energy_slugs.index_with { 0 })
-      end
-
       def do_persist(input)
-        input[:character].save!
+        input[:character].feats.where(limit_refresh: limit_refresh(input)).update_all(used_count: 0)
 
         { result: input[:character] }
       end
 
       def limit_refresh(input)
         case input[:value]
-        when 'long' then %w[short_rest long_rest]
-        when 'short' then 'short_rest'
-        when 'session' then 'session'
+        when 'long' then [0, 1]
+        when 'short' then 0
+        when 'session' then 2
         end
       end
     end

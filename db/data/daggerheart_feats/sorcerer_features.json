@@ -8,8 +8,7 @@
     },
     "origin": "class",
     "origin_value": "sorcerer",
-    "kind": "static",
-    "visible": "true"
+    "kind": "static"
   },
   {
     "slug": "arcane_sense",
@@ -20,8 +19,7 @@
     },
     "origin": "class",
     "origin_value": "sorcerer",
-    "kind": "static",
-    "visible": "true"
+    "kind": "static"
   },
   {
     "slug": "minor_illusion",
@@ -32,8 +30,7 @@
     },
     "origin": "class",
     "origin_value": "sorcerer",
-    "kind": "static",
-    "visible": "true"
+    "kind": "static"
   },
   {
     "slug": "channel_raw_power",
@@ -45,7 +42,6 @@
     "origin": "class",
     "origin_value": "sorcerer",
     "kind": "static",
-    "visible": "true",
     "description_eval_variables": {
       "limit": "1"
     },
@@ -55,13 +51,19 @@
     "slug": "elementalist",
     "title": { "en": "Elementalist", "ru": "Elementalist" },
     "description": {
-      "en": "Choose one of the following elements at character creation: air, earth, fire, lightning, water. You can shape this element into harmless effects. Additionally, spend a Hope and describe how your control over this element helps an action roll you're about to make, then either gain a +2 bonus to the roll or a +3 bonus to the roll's damage.",
-      "ru": "Choose one of the following elements at character creation: air, earth, fire, lightning, water. You can shape this element into harmless effects. Additionally, spend a Hope and describe how your control over this element helps an action roll you're about to make, then either gain a +2 bonus to the roll or a +3 bonus to the roll's damage."
+      "en": "Choose one of the following elements at character creation. Spend a Hope and describe how your control over this element helps an action roll you're about to make, then either gain a +2 bonus to the roll or a +3 bonus to the roll's damage.",
+      "ru": "Choose one of the following elements at character creation. Spend a Hope and describe how your control over this element helps an action roll you're about to make, then either gain a +2 bonus to the roll or a +3 bonus to the roll's damage."
     },
     "origin": "subclass",
     "origin_value": "elemental_origin",
-    "kind": "text",
-    "visible": "true"
+    "kind": "static_list",
+    "options": {
+      "air": { "en": "Air", "ru": "Воздух" },
+      "earth": { "en": "Earth", "ru": "Земля" },
+      "fire": { "en": "Fire", "ru": "Огонь" },
+      "lightning": { "en": "Lightning", "ru": "Электричество" },
+      "water": { "en": "Water", "ru": "Вода" }
+    }
   },
   {
     "slug": "natural_evasion",
@@ -73,7 +75,7 @@
     "origin": "subclass",
     "origin_value": "elemental_origin",
     "kind": "static",
-    "visible": "subclasses_mastery['elemental_origin'].to_i >= 2"
+    "conditions": { "subclass_mastery": 2 }
   },
   {
     "slug": "transcendence",
@@ -85,11 +87,11 @@
     "origin": "subclass",
     "origin_value": "elemental_origin",
     "kind": "static",
-    "visible": "subclasses_mastery['elemental_origin'].to_i >= 3",
     "description_eval_variables": {
       "limit": "1"
     },
-    "limit_refresh": "long_rest"
+    "limit_refresh": "long_rest",
+    "conditions": { "subclass_mastery": 3 }
   },
   {
     "slug": "manipulate_magic",
@@ -100,8 +102,7 @@
     },
     "origin": "subclass",
     "origin_value": "primal_origin",
-    "kind": "text",
-    "visible": "true"
+    "kind": "text"
   },
   {
     "slug": "enchanted_aid",
@@ -113,7 +114,7 @@
     "origin": "subclass",
     "origin_value": "primal_origin",
     "kind": "static",
-    "visible": "subclasses_mastery['primal_origin'].to_i >= 2"
+    "conditions": { "subclass_mastery": 2 }
   },
   {
     "slug": "arcane_charge",
@@ -125,6 +126,6 @@
     "origin": "subclass",
     "origin_value": "primal_origin",
     "kind": "static",
-    "visible": "subclasses_mastery['primal_origin'].to_i >= 3"
+    "conditions": { "subclass_mastery": 3 }
   }
 ]

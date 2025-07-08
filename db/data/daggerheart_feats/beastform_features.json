@@ -8,8 +8,7 @@
     },
     "origin": "beastform",
     "origin_value": "agile_scout",
-    "kind": "static",
-    "visible": "true"
+    "kind": "static"
   },
   {
     "slug": "fragile",
@@ -20,8 +19,7 @@
     },
     "origin": "beastform",
     "origin_value": "agile_scout",
-    "kind": "static",
-    "visible": "true"
+    "kind": "static"
   },
   {
     "slug": "companion",
@@ -32,8 +30,7 @@
     },
     "origin": "beastform",
     "origin_value": "household_friend",
-    "kind": "static",
-    "visible": "true"
+    "kind": "static"
   },
   {
     "slug": "household_friend_fragile",
@@ -44,8 +41,7 @@
     },
     "origin": "beastform",
     "origin_value": "household_friend",
-    "kind": "static",
-    "visible": "true"
+    "kind": "static"
   },
   {
     "slug": "elusive_prey",
@@ -56,8 +52,7 @@
     },
     "origin": "beastform",
     "origin_value": "nimble_grazer",
-    "kind": "static",
-    "visible": "true"
+    "kind": "static"
   },
   {
     "slug": "nimble_grazer_fragile",
@@ -68,8 +63,7 @@
     },
     "origin": "beastform",
     "origin_value": "nimble_grazer",
-    "kind": "static",
-    "visible": "true"
+    "kind": "static"
   },
   {
     "slug": "hobbling_strike",
@@ -80,8 +74,7 @@
     },
     "origin": "beastform",
     "origin_value": "pack_predator",
-    "kind": "static",
-    "visible": "true"
+    "kind": "static"
   },
   {
     "slug": "pack_hunting",
@@ -92,8 +85,7 @@
     },
     "origin": "beastform",
     "origin_value": "pack_predator",
-    "kind": "static",
-    "visible": "true"
+    "kind": "static"
   },
   {
     "slug": "aquatic",
@@ -104,8 +96,7 @@
     },
     "origin": "beastform",
     "origin_value": "aquatic_scout",
-    "kind": "static",
-    "visible": "true"
+    "kind": "static"
   },
   {
     "slug": "aquatic_scout_fragile",
@@ -116,8 +107,7 @@
     },
     "origin": "beastform",
     "origin_value": "aquatic_scout",
-    "kind": "static",
-    "visible": "true"
+    "kind": "static"
   },
   {
     "slug": "venomous_bite",
@@ -128,8 +118,7 @@
     },
     "origin": "beastform",
     "origin_value": "stalking_arachnid",
-    "kind": "static",
-    "visible": "true"
+    "kind": "static"
   },
   {
     "slug": "webslinger",
@@ -140,8 +129,7 @@
     },
     "origin": "beastform",
     "origin_value": "stalking_arachnid",
-    "kind": "static",
-    "visible": "true"
+    "kind": "static"
   },
   {
     "slug": "armored_shell",
@@ -152,8 +140,7 @@
     },
     "origin": "beastform",
     "origin_value": "armored_sentry",
-    "kind": "static",
-    "visible": "true"
+    "kind": "static"
   },
   {
     "slug": "cannonball",
@@ -164,8 +151,7 @@
     },
     "origin": "beastform",
     "origin_value": "armored_sentry",
-    "kind": "static",
-    "visible": "true"
+    "kind": "static"
   },
   {
     "slug": "rampage",
@@ -176,8 +162,7 @@
     },
     "origin": "beastform",
     "origin_value": "powerful_beast",
-    "kind": "static",
-    "visible": "true"
+    "kind": "static"
   },
   {
     "slug": "thick_hide",
@@ -189,7 +174,6 @@
     "origin": "beastform",
     "origin_value": "powerful_beast",
     "kind": "update_result",
-    "visible": "true",
     "eval_variables": {
       "damage_thresholds": "damage_thresholds.transform_values { |item| item + 2 }"
     }
@@ -203,8 +187,7 @@
     },
     "origin": "beastform",
     "origin_value": "mighty_strider",
-    "kind": "static",
-    "visible": "true"
+    "kind": "static"
   },
   {
     "slug": "trample",
@@ -215,8 +198,7 @@
     },
     "origin": "beastform",
     "origin_value": "mighty_strider",
-    "kind": "static",
-    "visible": "true"
+    "kind": "static"
   },
   {
     "slug": "venomous_strike",
@@ -227,8 +209,7 @@
     },
     "origin": "beastform",
     "origin_value": "striking_serpent",
-    "kind": "static",
-    "visible": "true"
+    "kind": "static"
   },
   {
     "slug": "warning_hiss",
@@ -239,8 +220,7 @@
     },
     "origin": "beastform",
     "origin_value": "striking_serpent",
-    "kind": "static",
-    "visible": "true"
+    "kind": "static"
   },
   {
     "slug": "fleet",
@@ -251,8 +231,7 @@
     },
     "origin": "beastform",
     "origin_value": "pouncing_predator",
-    "kind": "static",
-    "visible": "true"
+    "kind": "static"
   },
   {
     "slug": "takedown",
@@ -263,8 +242,7 @@
     },
     "origin": "beastform",
     "origin_value": "pouncing_predator",
-    "kind": "static",
-    "visible": "true"
+    "kind": "static"
   },
   {
     "slug": "bird_eye_view",
@@ -275,8 +253,7 @@
     },
     "origin": "beastform",
     "origin_value": "winged_beast",
-    "kind": "static",
-    "visible": "true"
+    "kind": "static"
   },
   {
     "slug": "hollow_bones",
@@ -288,7 +265,6 @@
     "origin": "beastform",
     "origin_value": "winged_beast",
     "kind": "update_result",
-    "visible": "true",
     "eval_variables": {
       "damage_thresholds": "damage_thresholds.transform_values { |item| item - 2 }"
     }

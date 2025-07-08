@@ -29,6 +29,7 @@ module Charkeeper
 
     register('commands.characters_context.item_update') { CharactersContext::ItemUpdateCommand.new }
     register('commands.characters_context.item_add') { CharactersContext::ItemAddCommand.new }
+    register('commands.characters_context.change_feat') { CharactersContext::ChangeFeatCommand.new }
 
     register('commands.characters_context.dnd5.create') { CharactersContext::Dnd5::CreateCommand.new }
     register('commands.characters_context.dnd5.update') { CharactersContext::Dnd5::UpdateCommand.new }
@@ -75,6 +76,8 @@ module Charkeeper
     register('services.webhooks_context.handle_telegram_chat_member_webhook') {
       WebhooksContext::HandleTelegramChatMemberWebhookService.new
     }
+
+    register('services.characters_context.daggerheart.refresh_feats') { CharactersContext::Daggerheart::RefreshFeats.new }
   end
 end
 

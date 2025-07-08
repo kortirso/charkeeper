@@ -5,7 +5,8 @@ module CharactersContext
     class UpdateCommand < BaseCommand
       include Deps[
         attach_avatar_by_url: 'commands.image_processing.attach_avatar_by_url',
-        attach_avatar_by_file: 'commands.image_processing.attach_avatar_by_file'
+        attach_avatar_by_file: 'commands.image_processing.attach_avatar_by_file',
+        refresh_feats: 'services.characters_context.daggerheart.refresh_feats'
       ]
 
       # rubocop: disable Metrics/BlockLength
@@ -87,6 +88,8 @@ module CharactersContext
           input[:character].data.attributes.merge(input.except(:character, :avatar_file, :avatar_url, :name).stringify_keys)
         input[:character].assign_attributes(input.slice(:name))
         input[:character].save!
+
+        refresh_feats.call(character: input[:character]) if %i[classes subclasses subclasses_mastery].intersect?(input.keys)
 
         attach_avatar_by_file.call({ character: input[:character], file: input[:avatar_file] }) if input[:avatar_file]
         attach_avatar_by_url.call({ character: input[:character], url: input[:avatar_url] }) if input[:avatar_url]

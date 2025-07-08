@@ -8,8 +8,7 @@
     },
     "origin": "class",
     "origin_value": "rogue",
-    "kind": "static",
-    "visible": "true"
+    "kind": "static"
   },
   {
     "slug": "cloaked",
@@ -20,8 +19,7 @@
     },
     "origin": "class",
     "origin_value": "rogue",
-    "kind": "static",
-    "visible": "true"
+    "kind": "static"
   },
   {
     "slug": "rogue_dodge",
@@ -33,7 +31,6 @@
     "origin": "class",
     "origin_value": "rogue",
     "kind": "static",
-    "visible": "true",
     "description_eval_variables": {
       "value": "level >= 8 ? '4d6' : (level >= 5 ? '3d6' : (level >= 2 ? '2d6' : 'd6'))"
     }
@@ -47,8 +44,7 @@
     },
     "origin": "subclass",
     "origin_value": "nightwalker",
-    "kind": "static",
-    "visible": "true"
+    "kind": "static"
   },
   {
     "slug": "dark_cloud",
@@ -60,7 +56,7 @@
     "origin": "subclass",
     "origin_value": "nightwalker",
     "kind": "static",
-    "visible": "subclasses_mastery['nightwalker'].to_i >= 2"
+    "conditions": { "subclass_mastery": 2 }
   },
   {
     "slug": "adrenaline",
@@ -72,10 +68,10 @@
     "origin": "subclass",
     "origin_value": "nightwalker",
     "kind": "static",
-    "visible": "subclasses_mastery['nightwalker'].to_i >= 2",
     "description_eval_variables": {
       "value": "level"
-    }
+    },
+    "conditions": { "subclass_mastery": 2 }
   },
   {
     "slug": "fleeting_shadow",
@@ -88,10 +84,10 @@
     "origin": "subclass",
     "origin_value": "nightwalker",
     "kind": "static",
-    "visible": "subclasses_mastery['nightwalker'].to_i >= 3",
     "eval_variables": {
       "evasion": "evasion + 1"
-    }
+    },
+    "conditions": { "subclass_mastery": 3 }
   },
   {
     "slug": "vanishing_act",
@@ -103,7 +99,7 @@
     "origin": "subclass",
     "origin_value": "nightwalker",
     "kind": "static",
-    "visible": "subclasses_mastery['nightwalker'].to_i >= 3"
+    "conditions": { "subclass_mastery": 3 }
   },
   {
     "slug": "well_connected",
@@ -114,8 +110,7 @@
     },
     "origin": "subclass",
     "origin_value": "syndicate",
-    "kind": "static",
-    "visible": "true"
+    "kind": "static"
   },
   {
     "slug": "contacts_everywhere",
@@ -127,11 +122,11 @@
     "origin": "subclass",
     "origin_value": "syndicate",
     "kind": "static",
-    "visible": "subclasses_mastery['syndicate'].to_i >= 2",
     "description_eval_variables": {
       "limit": "1"
     },
-    "limit_refresh": "session"
+    "limit_refresh": "session",
+    "conditions": { "subclass_mastery": 2 }
   },
   {
     "slug": "reliable_backup",
@@ -144,10 +139,10 @@
     "origin": "subclass",
     "origin_value": "syndicate",
     "kind": "static",
-    "visible": "subclasses_mastery['syndicate'].to_i >= 3",
     "description_eval_variables": {
       "limit": "3"
     },
-    "limit_refresh": "session"
+    "limit_refresh": "session",
+    "conditions": { "subclass_mastery": 3 }
   }
 ]

@@ -8,8 +8,7 @@
     },
     "origin": "class",
     "origin_value": "ranger",
-    "kind": "static",
-    "visible": "true"
+    "kind": "static"
   },
   {
     "slug": "ranger_focus",
@@ -20,8 +19,7 @@
     },
     "origin": "class",
     "origin_value": "ranger",
-    "kind": "static",
-    "visible": "true"
+    "kind": "static"
   },
   {
     "slug": "companion",
@@ -32,8 +30,7 @@
     },
     "origin": "subclass",
     "origin_value": "beastbound",
-    "kind": "text",
-    "visible": "true"
+    "kind": "text"
   },
   {
     "slug": "battle_bonded",
@@ -45,7 +42,7 @@
     "origin": "subclass",
     "origin_value": "beastbound",
     "kind": "static",
-    "visible": "subclasses_mastery['beastbound'].to_i >= 2"
+    "conditions": { "subclass_mastery": 2 }
   },
   {
     "slug": "loyal_friend",
@@ -57,11 +54,11 @@
     "origin": "subclass",
     "origin_value": "beastbound",
     "kind": "static",
-    "visible": "subclasses_mastery['beastbound'].to_i >= 3",
     "description_eval_variables": {
       "limit": "1"
     },
-    "limit_refresh": "long_rest"
+    "limit_refresh": "long_rest",
+    "conditions": { "subclass_mastery": 3 }
   },
   {
     "slug": "ruthless_predator",
@@ -72,8 +69,7 @@
     },
     "origin": "subclass",
     "origin_value": "wayfinder",
-    "kind": "static",
-    "visible": "true"
+    "kind": "static"
   },
   {
     "slug": "path_forward",
@@ -84,8 +80,7 @@
     },
     "origin": "subclass",
     "origin_value": "wayfinder",
-    "kind": "static",
-    "visible": "true"
+    "kind": "static"
   },
   {
     "slug": "elusive_predator",
@@ -97,7 +92,7 @@
     "origin": "subclass",
     "origin_value": "wayfinder",
     "kind": "static",
-    "visible": "subclasses_mastery['wayfinder'].to_i >= 2"
+    "conditions": { "subclass_mastery": 2 }
   },
   {
     "slug": "apex_predator",
@@ -109,6 +104,6 @@
     "origin": "subclass",
     "origin_value": "wayfinder",
     "kind": "static",
-    "visible": "subclasses_mastery['wayfinder'].to_i >= 3"
+    "conditions": { "subclass_mastery": 3 }
   }
 ]

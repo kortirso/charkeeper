@@ -8,8 +8,7 @@
     },
     "origin": "class",
     "origin_value": "bard",
-    "kind": "static",
-    "visible": "true"
+    "kind": "static"
   },
   {
     "slug": "rally",
@@ -21,7 +20,6 @@
     "origin": "class",
     "origin_value": "bard",
     "kind": "static",
-    "visible": "true",
     "description_eval_variables": {
       "value": "level >= 5 ? 'd8' : 'd6'",
       "limit": "1"
@@ -38,7 +36,6 @@
     "origin": "subclass",
     "origin_value": "troubadour",
     "kind": "static",
-    "visible": "true",
     "description_eval_variables": {
       "limit": "1"
     },
@@ -54,7 +51,6 @@
     "origin": "subclass",
     "origin_value": "troubadour",
     "kind": "static",
-    "visible": "true",
     "description_eval_variables": {
       "limit": "1"
     },
@@ -70,7 +66,6 @@
     "origin": "subclass",
     "origin_value": "troubadour",
     "kind": "static",
-    "visible": "true",
     "description_eval_variables": {
       "limit": "1"
     },
@@ -87,12 +82,12 @@
     "origin": "subclass",
     "origin_value": "troubadour",
     "kind": "static",
-    "visible": "subclasses_mastery['troubadour'].to_i >= 2",
     "description_eval_variables": {
       "value": "level >= 5 ? 'd8' : 'd6'",
       "limit": "1"
     },
-    "limit_refresh": "session"
+    "limit_refresh": "session",
+    "conditions": { "subclass_mastery": 2 }
   },
   {
     "slug": "relaxing_song_virtuoso",
@@ -105,11 +100,11 @@
     "origin": "subclass",
     "origin_value": "troubadour",
     "kind": "static",
-    "visible": "subclasses_mastery['troubadour'].to_i >= 3",
     "description_eval_variables": {
       "limit": "2"
     },
-    "limit_refresh": "long_rest"
+    "limit_refresh": "long_rest",
+    "conditions": { "subclass_mastery": 3 }
   },
   {
     "slug": "epic_song_virtuoso",
@@ -122,11 +117,11 @@
     "origin": "subclass",
     "origin_value": "troubadour",
     "kind": "static",
-    "visible": "subclasses_mastery['troubadour'].to_i >= 3",
     "description_eval_variables": {
       "limit": "2"
     },
-    "limit_refresh": "long_rest"
+    "limit_refresh": "long_rest",
+    "conditions": { "subclass_mastery": 3 }
   },
   {
     "slug": "heartbreaking_song_virtuoso",
@@ -139,11 +134,11 @@
     "origin": "subclass",
     "origin_value": "troubadour",
     "kind": "static",
-    "visible": "subclasses_mastery['troubadour'].to_i >= 3",
     "description_eval_variables": {
       "limit": "2"
     },
-    "limit_refresh": "long_rest"
+    "limit_refresh": "long_rest",
+    "conditions": { "subclass_mastery": 3 }
   },
   {
     "slug": "rousing_speech",
@@ -155,7 +150,6 @@
     "origin": "subclass",
     "origin_value": "wordsmith",
     "kind": "static",
-    "visible": "true",
     "description_eval_variables": {
       "limit": "1"
     },
@@ -170,8 +164,7 @@
     },
     "origin": "subclass",
     "origin_value": "wordsmith",
-    "kind": "static",
-    "visible": "true"
+    "kind": "static"
   },
   {
     "slug": "eloquent",
@@ -184,11 +177,11 @@
     "origin": "subclass",
     "origin_value": "wordsmith",
     "kind": "static",
-    "visible": "subclasses_mastery['wordsmith'].to_i >= 2",
     "description_eval_variables": {
       "limit": "1"
     },
-    "limit_refresh": "session"
+    "limit_refresh": "session",
+    "conditions": { "subclass_mastery": 2 }
   },
   {
     "slug": "rally_epic_poetry",
@@ -201,12 +194,12 @@
     "origin": "subclass",
     "origin_value": "wordsmith",
     "kind": "static",
-    "visible": "subclasses_mastery['wordsmith'].to_i >= 2",
     "description_eval_variables": {
       "value": "'d10'",
       "limit": "1"
     },
-    "limit_refresh": "session"
+    "limit_refresh": "session",
+    "conditions": { "subclass_mastery": 2 }
   },
   {
     "slug": "epic_poetry",
@@ -218,6 +211,6 @@
     "origin": "subclass",
     "origin_value": "wordsmith",
     "kind": "static",
-    "visible": "subclasses_mastery['wordsmith'].to_i >= 3"
+    "conditions": { "subclass_mastery": 3 }
   }
 ]

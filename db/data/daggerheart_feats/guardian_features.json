@@ -8,8 +8,7 @@
     },
     "origin": "class",
     "origin_value": "guardian",
-    "kind": "static",
-    "visible": "true"
+    "kind": "static"
   },
   {
     "slug": "unstoppable",
@@ -21,7 +20,6 @@
     "origin": "class",
     "origin_value": "guardian",
     "kind": "text",
-    "visible": "true",
     "description_eval_variables": {
       "value": "level >= 5 ? 'd6' : 'd4'",
       "limit": "1"
@@ -38,9 +36,8 @@
     "origin": "subclass",
     "origin_value": "stalwart",
     "kind": "update_result",
-    "visible": "true",
     "eval_variables": {
-      "damage_thresholds": "damage_thresholds.transform_values { |item| item + 1 }"
+      "damage_thresholds": "subclass_level = subclasses_mastery['stalwart']; damage_thresholds.transform_values { |item| item + (subclass_level == 3 ? 6 : (subclass_level == 2 ? 3 : 1)) }"
     }
   },
   {
@@ -52,23 +49,7 @@
     },
     "origin": "subclass",
     "origin_value": "stalwart",
-    "kind": "static",
-    "visible": "true"
-  },
-  {
-    "slug": "unrelenting",
-    "title": { "en": "Unrelenting", "ru": "Unrelenting" },
-    "description": {
-      "en": "",
-      "ru": ""
-    },
-    "origin": "subclass",
-    "origin_value": "stalwart",
-    "kind": "update_result",
-    "visible": "subclasses_mastery['stalwart'].to_i >= 2",
-    "eval_variables": {
-      "damage_thresholds": "damage_thresholds.transform_values { |item| item + 2 }"
-    }
+    "kind": "static"
   },
   {
     "slug": "partners_in_arms",
@@ -80,22 +61,7 @@
     "origin": "subclass",
     "origin_value": "stalwart",
     "kind": "static",
-    "visible": "subclasses_mastery['stalwart'].to_i >= 2"
-  },
-  {
-    "slug": "undaunted",
-    "title": { "en": "Undaunted", "ru": "Undaunted" },
-    "description": {
-      "en": "",
-      "ru": ""
-    },
-    "origin": "subclass",
-    "origin_value": "stalwart",
-    "kind": "update_result",
-    "visible": "subclasses_mastery['stalwart'].to_i >= 3",
-    "eval_variables": {
-      "damage_thresholds": "damage_thresholds.transform_values { |item| item + 3 }"
-    }
+    "conditions": { "subclass_mastery": 2 }
   },
   {
     "slug": "loyal_protector",
@@ -107,7 +73,7 @@
     "origin": "subclass",
     "origin_value": "stalwart",
     "kind": "static",
-    "visible": "subclasses_mastery['stalwart'].to_i >= 3"
+    "conditions": { "subclass_mastery": 3 }
   },
   {
     "slug": "at_ease",
@@ -119,7 +85,6 @@
     "origin": "subclass",
     "origin_value": "vengeance",
     "kind": "update_result",
-    "visible": "true",
     "eval_variables": {
       "stress_max": "stress_max + 1"
     }
@@ -133,8 +98,7 @@
     },
     "origin": "subclass",
     "origin_value": "vengeance",
-    "kind": "static",
-    "visible": "true"
+    "kind": "static"
   },
   {
     "slug": "act_of_reprisal",
@@ -146,7 +110,7 @@
     "origin": "subclass",
     "origin_value": "vengeance",
     "kind": "static",
-    "visible": "subclasses_mastery['vengeance'].to_i >= 2"
+    "conditions": { "subclass_mastery": 2 }
   },
   {
     "slug": "nemesis",
@@ -158,6 +122,6 @@
     "origin": "subclass",
     "origin_value": "vengeance",
     "kind": "static",
-    "visible": "subclasses_mastery['vengeance'].to_i >= 3"
+    "conditions": { "subclass_mastery": 3 }
   }
 ]

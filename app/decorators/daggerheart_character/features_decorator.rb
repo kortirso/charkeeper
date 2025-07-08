@@ -16,54 +16,43 @@ module DaggerheartCharacter
       end
     end
 
-    # rubocop: disable Metrics/AbcSize, Metrics/MethodLength, Metrics/PerceivedComplexity
+    # rubocop: disable Metrics/AbcSize, Metrics/MethodLength
     def features
       @features ||= begin
-        visible_features = available_features.filter_map do |feature|
-          visible = eval_variable(feature.visible)
-          next unless visible
+        excludes = available_features.flat_map { |item| item.feat.exclude }.compact.uniq
+        available_features.filter_map do |feature|
+          next if feature.feat.slug.in?(excludes)
 
-          feature
-        end
-
-        excludes = visible_features.pluck(:exclude).flatten.compact.uniq
-        visible_features.filter_map do |feature|
-          next if feature.slug.in?(excludes)
-
-          feature.eval_variables.each do |method_name, variable|
+          feature.feat.eval_variables.each do |method_name, variable|
             instance_variable_set(:"@#{method_name}", eval_variable(variable))
           end
-          next if feature.kind == 'update_result'
+          next if feature.feat.kind == 'update_result'
 
-          feature.description_eval_variables.transform_values! { |value| eval_variable(value) }
+          feature.feat.description_eval_variables.transform_values! { |value| eval_variable(value) }
           {
-            slug: feature.slug,
-            kind: feature.kind,
-            title: feature.title[I18n.locale.to_s],
+            id: feature.id,
+            slug: feature.feat.slug,
+            kind: feature.feat.kind,
+            title: feature.feat.title[I18n.locale.to_s],
             description: update_feature_description(feature),
-            limit: feature.description_eval_variables['limit'],
-            limit_refresh: feature.limit_refresh
+            limit: feature.feat.description_eval_variables['limit'],
+            used_count: feature.used_count,
+            limit_refresh: feature.feat.limit_refresh
           }.compact
         end
       end
     end
-    # rubocop: enable Metrics/AbcSize, Metrics/MethodLength, Metrics/PerceivedComplexity
+    # rubocop: enable Metrics/AbcSize, Metrics/MethodLength
 
     private
 
     def available_features
-      Daggerheart::Character::Feature.where(origin: 'ancestry', origin_value: heritage)
-        .or(Daggerheart::Character::Feature.where(origin: 'ancestry', slug: heritage_features))
-        .or(Daggerheart::Character::Feature.where(origin: 'community', origin_value: community))
-        .or(Daggerheart::Character::Feature.where(origin: 'class', origin_value: classes.keys))
-        .or(Daggerheart::Character::Feature.where(origin: 'subclass', origin_value: subclasses.values))
-        .or(Daggerheart::Character::Feature.where(origin: 'beastform', origin_value: beastform))
-        .to_a
+      @available_features ||= __getobj__.feats.includes(:feat).order('feats.origin ASC, feats.created_at ASC')
     end
 
     def update_feature_description(feature)
-      result = feature.description[I18n.locale.to_s]
-      feature.description_eval_variables.each { |key, value| result.gsub!("{{#{key}}}", value.to_s) }
+      result = feature.feat.description[I18n.locale.to_s]
+      feature.feat.description_eval_variables.each { |key, value| result.gsub!("{{#{key}}}", value.to_s) }
       result
     end
 

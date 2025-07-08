@@ -8,8 +8,7 @@
     },
     "origin": "class",
     "origin_value": "warrior",
-    "kind": "static",
-    "visible": "true"
+    "kind": "static"
   },
   {
     "slug": "attack_of_opportunity",
@@ -20,20 +19,21 @@
     },
     "origin": "class",
     "origin_value": "warrior",
-    "kind": "static",
-    "visible": "true"
+    "kind": "static"
   },
   {
     "slug": "combat_training",
     "title": { "en": "Combat Training", "ru": "Combat Training" },
     "description": {
-      "en": "You ignore burden when equipping weapons. When you deal physical damage, you gain a bonus to your damage roll equal to your level.",
-      "ru": "You ignore burden when equipping weapons. When you deal physical damage, you gain a bonus to your damage roll equal to your level."
+      "en": "You ignore burden when equipping weapons. You gain a +{{value}} to your physical damage rolls.",
+      "ru": "You ignore burden when equipping weapons. You gain a +{{value}} to your physical damage rolls."
     },
     "origin": "class",
     "origin_value": "warrior",
     "kind": "static",
-    "visible": "true"
+    "description_eval_variables": {
+      "value": "level"
+    }
   },
   {
     "slug": "courage",
@@ -44,8 +44,7 @@
     },
     "origin": "subclass",
     "origin_value": "call_of_the_brave",
-    "kind": "static",
-    "visible": "true"
+    "kind": "static"
   },
   {
     "slug": "battle_ritual",
@@ -57,7 +56,6 @@
     "origin": "subclass",
     "origin_value": "call_of_the_brave",
     "kind": "static",
-    "visible": "true",
     "description_eval_variables": {
       "limit": "1"
     },
@@ -73,7 +71,7 @@
     "origin": "subclass",
     "origin_value": "call_of_the_brave",
     "kind": "static",
-    "visible": "subclasses_mastery['call_of_the_brave'].to_i >= 2"
+    "conditions": { "subclass_mastery": 2 }
   },
   {
     "slug": "camaraderie",
@@ -85,7 +83,7 @@
     "origin": "subclass",
     "origin_value": "call_of_the_brave",
     "kind": "static",
-    "visible": "subclasses_mastery['call_of_the_brave'].to_i >= 3"
+    "conditions": { "subclass_mastery": 3 }
   },
   {
     "slug": "slayer",
@@ -96,8 +94,7 @@
     },
     "origin": "subclass",
     "origin_value": "call_of_the_slayer",
-    "kind": "text",
-    "visible": "true"
+    "kind": "text"
   },
   {
     "slug": "weapon_specialist",
@@ -109,7 +106,7 @@
     "origin": "subclass",
     "origin_value": "call_of_the_slayer",
     "kind": "static",
-    "visible": "subclasses_mastery['call_of_the_slayer'].to_i >= 2"
+    "conditions": { "subclass_mastery": 2 }
   },
   {
     "slug": "martial_preparation",
@@ -121,6 +118,6 @@
     "origin": "subclass",
     "origin_value": "call_of_the_slayer",
     "kind": "static",
-    "visible": "subclasses_mastery['call_of_the_slayer'].to_i >= 3"
+    "conditions": { "subclass_mastery": 3 }
   }
 ]

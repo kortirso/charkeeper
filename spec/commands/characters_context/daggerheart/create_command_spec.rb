@@ -14,8 +14,13 @@ describe CharactersContext::Daggerheart::CreateCommand do
   context 'for valid params' do
     let(:params) { valid_params }
 
+    before { create :feat, :rally }
+
     it 'creates character and successfuly serialize', :aggregate_failures do
-      expect { command_call }.to change(user.characters, :count).by(1)
+      expect { command_call }.to(
+        change(user.characters, :count).by(1)
+          .and(change(Character::Feat, :count).by(1))
+      )
 
       json = Panko::Response.create do |response|
         { 'character' => response.serializer(command_call[:result], Daggerheart::CharacterSerializer) }

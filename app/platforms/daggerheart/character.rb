@@ -15,7 +15,6 @@ module Daggerheart
     attribute :subclasses, array: true, default: {}
     attribute :subclasses_mastery, array: true, default: {}
     attribute :experiences, array: true, default: {}
-    attribute :energy, array: true, default: {}
     attribute :traits, array: true, default: { 'str' => 1, 'agi' => 2, 'fin' => 1, 'ins' => 0, 'pre' => 0, 'know' => -1 }
     attribute :health_marked, :integer, default: 0
     attribute :health_max, :integer, default: 5
@@ -26,7 +25,6 @@ module Daggerheart
     attribute :evasion, :integer, default: 10
     attribute :spent_armor_slots, :integer, default: 0
     attribute :gold, array: true, default: { 'coins' => 0, 'handfuls' => 0, 'bags' => 0, 'chests' => 0 }
-    attribute :selected_features, array: true, default: {}
     attribute :leveling,
               array: true,
               default: { 'health' => 0, 'stress' => 0, 'evasion' => 0, 'proficiency' => 0, 'domain_cards' => 0 }

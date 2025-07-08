@@ -5,7 +5,8 @@ module CharactersContext
     class CreateCommand < BaseCommand
       include Deps[
         attach_avatar_by_url: 'commands.image_processing.attach_avatar_by_url',
-        attach_avatar_by_file: 'commands.image_processing.attach_avatar_by_file'
+        attach_avatar_by_file: 'commands.image_processing.attach_avatar_by_file',
+        refresh_feats: 'services.characters_context.daggerheart.refresh_feats'
       ]
 
       # rubocop: disable Metrics/BlockLength
@@ -58,6 +59,7 @@ module CharactersContext
 
       def do_persist(input)
         character = ::Daggerheart::Character.create!(input.slice(:user, :name, :data))
+        refresh_feats.call(character: character)
 
         attach_avatar_by_file.call({ character: character, file: input[:avatar_file] }) if input[:avatar_file]
         attach_avatar_by_url.call({ character: character, url: input[:avatar_url] }) if input[:avatar_url]

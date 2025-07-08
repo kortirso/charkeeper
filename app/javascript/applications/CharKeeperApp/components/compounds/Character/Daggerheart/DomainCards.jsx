@@ -98,7 +98,7 @@ export const DaggerheartDomainCards = (props) => {
       batch(() => {
         const newValue = characterSpells().slice().map((element) => {
           if (element.id !== spell.id) return element;
-          return { ...element, ...payload.character_spell } 
+          return { ...element, ...payload.character_spell }
         });
         setCharacterSpells(newValue);
         closeModal();
