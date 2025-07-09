@@ -37,7 +37,9 @@ module DaggerheartCharacter
             description: update_feature_description(feature),
             limit: feature.feat.description_eval_variables['limit'],
             used_count: feature.used_count,
-            limit_refresh: feature.feat.limit_refresh
+            limit_refresh: feature.feat.limit_refresh,
+            options: feature.feat.options,
+            value: feature.value
           }.compact
         end
       end

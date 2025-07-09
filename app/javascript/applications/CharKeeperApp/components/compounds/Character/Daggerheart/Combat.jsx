@@ -1,7 +1,7 @@
 import { createSignal, For, Switch, Match, Show } from 'solid-js';
 import * as i18n from '@solid-primitives/i18n';
 
-import { Checkbox, Toggle, Button } from '../../../atoms';
+import { Checkbox, Toggle, Button, Select } from '../../../atoms';
 import { ErrorWrapper } from '../../../molecules';
 
 import { FeatureTitle } from '../../../../components';
@@ -14,13 +14,13 @@ import { modifier } from '../../../../helpers';
 export const DaggerheartCombat = (props) => {
   const character = () => props.character;
 
-  const [textFeaturesData, setTextFeaturesData] = createSignal(
-    character().features.filter((item) => item.kind === 'text').reduce((acc, item) => { acc[item.slug] = character().selected_features[item.slug]; return acc; }, {})
+  const [featValues, setFeatValues] = createSignal(
+    character().features.reduce((acc, item) => { acc[item.slug] = item.value; return acc; }, {})
   );
 
   const [appState] = useAppState();
   const [{ renderAlerts }] = useAppAlert();
-  const [, dict] = useAppLocale();
+  const [locale, dict] = useAppLocale();
 
   const t = i18n.translator(dict);
 
@@ -29,62 +29,45 @@ export const DaggerheartCombat = (props) => {
     const newValue = currentValue === value ? (value - 1) : value;
 
     const result = await updateCharacterRequest(
-      appState.accessToken, 'daggerheart', character().id, { character: { [attribute]: newValue }, only_head: true }
+      appState.accessToken, character().provider, character().id, { character: { [attribute]: newValue }, only_head: true }
     );
 
     if (result.errors === undefined) props.onReplaceCharacter({ [attribute]: newValue });
     else renderAlerts(result.errors);
   }
 
-  const spendEnergy = async (event, feature) => {
+  const spendEnergy = (event, feature) => {
     event.stopPropagation();
+    refreshFeatures(feature.id, { used_count: feature.used_count + 1 });
+  }
 
+  const restoreEnergy = (event, feature) => {
+    event.stopPropagation();
+    refreshFeatures(feature.id, { used_count: feature.used_count - 1 });
+  }
+
+  const updateFeatureValue = (feature, value) => {
+    setFeatValues({ ...featValues(), [feature.slug]: value })
+    refreshFeatures(feature.id, { value: value }, false);
+  }
+
+  const refreshFeatures = async (featureId, payload, refresh = true) => {
     const result = await updateCharacterFeatRequest(
       appState.accessToken,
       character().provider,
       character().id,
-      feature.id,
-      { character_feat: { used_count: feature.used_count + 1 }, only_head: true }
+      featureId,
+      { character_feat: payload, only_head: true }
     );
 
     const newFeatures = character().features.slice().map((element) => {
-      if (element.id !== feature.id) return element;
-      return { ...element, used_count: feature.used_count + 1 }
+      if (element.id !== featureId) return element;
+      return { ...element, ...payload }
     });
 
-    if (result.errors === undefined) props.onReplaceCharacter({ features: newFeatures });
-    else renderAlerts(result.errors);
-  }
-
-  const restoreEnergy = async (event, feature) => {
-    event.stopPropagation();
-
-    const result = await updateCharacterFeatRequest(
-      appState.accessToken,
-      character().provider,
-      character().id,
-      feature.id,
-      { character_feat: { used_count: feature.used_count - 1 }, only_head: true }
-    );
-
-    const newFeatures = character().features.slice().map((element) => {
-      if (element.id !== feature.id) return element;
-      return { ...element, used_count: feature.used_count - 1 }
-    });
-
-    if (result.errors === undefined) props.onReplaceCharacter({ features: newFeatures });
-    else renderAlerts(result.errors);
-  }
-
-  const updateTextFeature = async (slug) => {
-    const payload = { ...character().selected_features, [slug]: textFeaturesData()[slug] }
-
-    const result = await updateCharacterRequest(
-      appState.accessToken, 'daggerheart', character().id, { character: { selected_features: payload }, only: 'selected_features' }
-    );
-
-    if (result.errors === undefined) props.onReplaceCharacter({ selected_features: payload });
-    else renderAlerts(result.errors);
+    if (result.errors === undefined) {
+      if (refresh) props.onReplaceCharacter({ features: newFeatures });
+    } else renderAlerts(result.errors);
   }
 
   const renderAttacksBox = (title, values) => {
@@ -200,27 +183,36 @@ export const DaggerheartCombat = (props) => {
       <For each={character().features}>
         {(feature) =>
           <Toggle title={<FeatureTitle feature={feature} onSpendEnergy={spendEnergy} onRestoreEnergy={restoreEnergy} />}>
-            <Switch>
-              <Match when={feature.kind === 'static'}>
-                <p
-                  class="text-sm font-cascadia-light"
-                  innerHTML={feature.description} // eslint-disable-line solid/no-innerhtml
-                />
-              </Match>
+            <p
+              class="text-sm font-cascadia-light"
+              innerHTML={feature.description} // eslint-disable-line solid/no-innerhtml
+            />
+            <Switch fallback={<></>}>
               <Match when={feature.kind === 'text'}>
-                <p
-                  class="text-sm font-cascadia-light mb-2"
-                  innerHTML={feature.description} // eslint-disable-line solid/no-innerhtml
-                />
                 <textarea
                   rows="5"
-                  class="w-full border border-gray-200 rounded p-1 text-sm"
-                  onInput={(e) => setTextFeaturesData({ ...textFeaturesData(), [feature.slug]: e.target.value })}
-                  value={textFeaturesData()[feature.slug] || ''}
+                  class="w-full border border-gray-200 rounded p-1 text-sm mt-2 font-cascadia-light"
+                  onInput={(e) => setFeatValues({ ...featValues(), [feature.slug]: e.target.value })}
+                  value={featValues()[feature.slug] || ''}
                 />
                 <div class="flex justify-end mt-2">
-                  <Button default textable size="small" onClick={() => updateTextFeature(feature.slug)}>{t('save')}</Button>
+                  <Button
+                    default
+                    textable
+                    size="small"
+                    onClick={() => updateFeatureValue(feature, featValues()[feature.slug])}
+                  >
+                    {t('save')}
+                  </Button>
                 </div>
+              </Match>
+              <Match when={feature.kind === 'static_list'}>
+                <Select
+                  containerClassList="w-full mt-2"
+                  items={Object.entries(feature.options).reduce((acc, [key, value]) => { acc[key] = value[locale()]; return acc; }, {})}
+                  selectedValue={featValues()[feature.slug]}
+                  onSelect={(option) => updateFeatureValue(feature, option)}
+                />
               </Match>
             </Switch>
           </Toggle>
