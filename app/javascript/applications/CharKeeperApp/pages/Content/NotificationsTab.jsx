@@ -43,7 +43,7 @@ export const NotificationsTab = (props) => {
       <Show when={size.width < 768}>
         <PageHeader
           leftContent={
-            <IconButton size="xl" onClick={props.onNavigate}>
+            <IconButton onClick={props.onNavigate}>
               <Arrow back width={20} height={20} />
             </IconButton>
           }
