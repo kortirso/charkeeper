@@ -1,0 +1,63 @@
+<%= form_with model: @feat, scope: :feat, url: adminbook_feat_path(@feat, provider: params[:provider]), method: 'patch', class: 'font-cascadia-light' do |form| %>
+  <div class="form-field mb-2">
+    <div><%= form.label 'Псевдоним', class: 'form-label' %></div>
+    <div><%= form.text_field :slug, class: 'form-value w-80', required: true %></div>
+  </div>
+  <%= form.fields_for :title, @feat.title do |title_form| %>
+    <div class="form-field mb-2">
+      <div><%= title_form.label 'Заголовок (en)', class: 'form-label' %></div>
+      <div><%= title_form.text_field :en, value: @feat.title['en'], class: 'form-value w-80' %></div>
+    </div>
+    <div class="form-field mb-2">
+      <div><%= title_form.label 'Заголовок (ru)', class: 'form-label' %></div>
+      <div><%= title_form.text_field :ru, value: @feat.title['ru'], class: 'form-value w-80' %></div>
+    </div>
+  <% end %>
+  <%= form.fields_for :description, @feat.description do |description_form| %>
+    <div class="form-field mb-2">
+      <div><%= description_form.label 'Описание (en)', class: 'form-label' %></div>
+      <div><%= description_form.textarea :en, value: @feat.description['en'], class: 'form-text text-sm', size: '100x7' %></div>
+    </div>
+    <div class="form-field mb-2">
+      <div><%= description_form.label 'Описание (ru)', class: 'form-label' %></div>
+      <div><%= description_form.textarea :ru, value: @feat.description['ru'], class: 'form-text text-sm', size: '100x7' %></div>
+    </div>
+  <% end %>
+  <div class="form-field mb-2">
+    <div><%= form.label 'Исключение способностей', class: 'form-label' %></div>
+    <div><%= form.text_field :exclude, value: (@feat.exclude&.join(',') || ''), class: 'form-text text-sm' %></div>
+  </div>
+  <div class="form-field mb-2">
+    <div><%= form.label 'Источник', class: 'form-label' %></div>
+    <div><%= form.select :origin, @feat_class.origins.keys, required: true %></div>
+  </div>
+  <div class="form-field mb-2">
+    <div><%= form.label 'Значение источника', class: 'form-label' %></div>
+    <div><%= form.text_field :origin_value, class: 'form-value', required: true %></div>
+  </div>
+  <div class="form-field mb-2">
+    <div><%= form.label 'Тип', class: 'form-label' %></div>
+    <div><%= form.select :kind, @feat_class.kinds.keys, required: true %></div>
+  </div>
+  <div class="form-field mb-2">
+    <div><%= form.label 'Обновление после', class: 'form-label' %></div>
+    <div><%= form.select :limit_refresh, @feat_class.limit_refreshes.keys, include_blank: true %></div>
+  </div>
+  <div class="form-field mb-2">
+    <div><%= form.label 'Список опций для выбора', class: 'form-label' %></div>
+    <div><%= form.textarea :options, class: 'form-text text-sm', size: '100x7' %></div>
+  </div>
+  <div class="form-field mb-2">
+    <div><%= form.label 'Условия', class: 'form-label' %></div>
+    <div><%= form.textarea :conditions, class: 'form-text text-sm', size: '100x7' %></div>
+  </div>
+  <div class="form-field mb-2">
+    <div><%= form.label 'Переменные для описания', class: 'form-label' %></div>
+    <div><%= form.textarea :description_eval_variables, class: 'form-text text-sm', required: true, size: '100x7' %></div>
+  </div>
+  <div class="form-field mb-2">
+    <div><%= form.label 'Переменные для расчетов', class: 'form-label' %></div>
+    <div><%= form.textarea :eval_variables, class: 'form-text text-sm', required: true, size: '100x7' %></div>
+  </div>
+  <%= form.submit 'Update', class: 'btn btn-primary' %>
+<% end %>

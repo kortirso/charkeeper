@@ -20,8 +20,9 @@
         <td><%= index + 1 %></td>
         <td class="pr-4">
           <%= link_to edit_adminbook_item_path(item.id, provider: params[:provider]), class: 'underline text-blue-400' do %>
-            <%= item.id %></td>
+            <%= item.id %>
           <% end %>
+        </td>
         <td class="pr-4"><%= item.slug %></td>
         <td class="pr-4"><%= item.kind %></td>
         <td class="pr-4">

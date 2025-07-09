@@ -33,6 +33,7 @@ Rails.application.routes.draw do
 
     resources :items, except: %i[show]
     resources :spells, except: %i[show]
+    resources :feats, except: %i[show]
 
     get '/', to: 'welcome#index'
   end

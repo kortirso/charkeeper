@@ -10,6 +10,7 @@
       <td>Classes</td>
       <td>Subclasses</td>
       <td>User ID</td>
+      <td></td>
     </tr>
   </thead>
   <tbody>
@@ -32,6 +33,7 @@
           <% end %>
         </td>
         <td><%= character.user_id %></td>
+        <td><%= character.created_at.strftime('%d-%m-%Y') %></td>
       </tr>
     <% end %>
   </tbody>
