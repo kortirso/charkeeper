@@ -241,6 +241,13 @@ export const CharactersTab = () => {
           </PageHeader>
         </Match>
         <Match when={currentTab() === 'characters'}>
+          <Button
+            default
+            classList='absolute right-4 bottom-4 rounded-full w-12 h-12 z-10'
+            onClick={() => setCurrentTab('newCharacter')}
+          >
+            <Plus />
+          </Button>
           <CharacterNavigation
             tabsList={['allFilter'].concat(characterProviders())}
             disableTabsList={['dnd5', 'dnd2024', 'pathfinder2', 'daggerheart'].filter((item) => !characterProviders().includes(item))}
@@ -252,13 +259,6 @@ export const CharactersTab = () => {
       <Switch>
         <Match when={currentTab() === 'characters'}>
           <div class="relative flex-1 overflow-y-scroll">
-            <Button
-              default
-              classList='fixed right-4 bottom-16 rounded-full w-12 h-12 z-10'
-              onClick={() => setCurrentTab('newCharacter')}
-            >
-              <Plus />
-            </Button>
             <Show when={characters() !== undefined}>
               <For each={filteredCharacters()}>
                 {(character) =>

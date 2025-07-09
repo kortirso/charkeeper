@@ -1,6 +1,8 @@
-@tailwind base;
-/*@tailwind components;*/
-@tailwind utilities;
+@import 'tailwindcss';
+
+@utility bordered {
+  @apply border border-gray-200 rounded;
+}
 
 @font-face {
   font-family: 'CascadiaMono';
@@ -15,6 +17,13 @@
 @font-face {
   font-family: 'CascadiaMono-Light';
   src: url('CascadiaMono-Light.otf');
+}
+
+@theme {
+  --font-sans: 'CascadiaMono-SemiLight', 'sans-serif';
+  --font-cascadia-light: 'CascadiaMono-Light', 'sans-serif';
+  --font-cascadia: 'CascadiaMono-SemiLight', 'sans-serif';
+  --font-cascadia-bold: 'CascadiaMono', 'sans-serif';
 }
 
 #charkeeper_app_html {
@@ -61,10 +70,6 @@
 
 .btn-big {
   @apply py-4 px-6 cursor-pointer text-xl;
-}
-
-.bordered {
-  @apply border border-gray-200 rounded;
 }
 
 .white-box {

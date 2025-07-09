@@ -81,18 +81,18 @@ GEM
       rails (>= 7.2.2)
     awesome_print (1.9.2)
     aws-eventstream (1.4.0)
-    aws-partitions (1.1116.0)
-    aws-sdk-core (3.225.2)
+    aws-partitions (1.1125.0)
+    aws-sdk-core (3.226.2)
       aws-eventstream (~> 1, >= 1.3.0)
       aws-partitions (~> 1, >= 1.992.0)
       aws-sigv4 (~> 1.9)
       base64
       jmespath (~> 1, >= 1.6.1)
       logger
-    aws-sdk-kms (1.105.0)
+    aws-sdk-kms (1.106.0)
       aws-sdk-core (~> 3, >= 3.225.0)
       aws-sigv4 (~> 1.5)
-    aws-sdk-s3 (1.189.1)
+    aws-sdk-s3 (1.192.0)
       aws-sdk-core (~> 3, >= 3.225.0)
       aws-sdk-kms (~> 1)
       aws-sigv4 (~> 1.5)
@@ -104,7 +104,7 @@ GEM
     bigdecimal (3.2.2)
     bootsnap (1.18.6)
       msgpack (~> 1.2)
-    brotli (0.6.0)
+    brotli (0.7.0)
     builder (3.3.0)
     capistrano (3.19.2)
       airbrussh (>= 1.0.0)
@@ -180,11 +180,11 @@ GEM
     factory_bot_rails (6.5.0)
       factory_bot (~> 6.5)
       railties (>= 6.1.0)
-    faraday (2.13.1)
+    faraday (2.13.2)
       faraday-net_http (>= 2.0, < 3.5)
       json
       logger
-    faraday-net_http (3.4.0)
+    faraday-net_http (3.4.1)
       net-http (>= 0.5.0)
     foreman (0.88.1)
     globalid (1.2.1)
@@ -203,7 +203,7 @@ GEM
     json_spec (1.1.5)
       multi_json (~> 1.0)
       rspec (>= 2.0, < 4.0)
-    jwt (2.10.1)
+    jwt (2.10.2)
       base64
     language_server-protocol (3.17.0.5)
     lint_roller (1.1.0)
@@ -223,7 +223,7 @@ GEM
     multi_json (1.15.0)
     net-http (0.6.0)
       uri
-    net-imap (0.5.8)
+    net-imap (0.5.9)
       date
       net-protocol
     net-pop (0.1.2)
@@ -257,7 +257,7 @@ GEM
     oj (3.16.11)
       bigdecimal (>= 3.0)
       ostruct (>= 0.2)
-    ostruct (0.6.1)
+    ostruct (0.6.2)
     panko_serializer (0.8.3)
       activesupport
       oj (> 3.11.0, < 4.0.0)
@@ -280,6 +280,9 @@ GEM
     rack-brotli (2.0.0)
       brotli (>= 0.3)
       rack (>= 3)
+    rack-cors (3.0.0)
+      logger
+      rack (>= 3.0.14)
     rack-session (2.1.1)
       base64 (>= 0.1.0)
       rack (>= 3.0.0)
@@ -322,7 +325,7 @@ GEM
       zeitwerk (~> 2.6)
     rainbow (3.1.1)
     rake (13.3.0)
-    rdoc (6.14.0)
+    rdoc (6.14.2)
       erb
       psych (>= 4.0.0)
     regexp_parser (2.10.0)
@@ -332,7 +335,7 @@ GEM
       rspec-core (~> 3.13.0)
       rspec-expectations (~> 3.13.0)
       rspec-mocks (~> 3.13.0)
-    rspec-core (3.13.4)
+    rspec-core (3.13.5)
       rspec-support (~> 3.13.0)
     rspec-expectations (3.13.5)
       diff-lcs (>= 1.2.0, < 2.0)
@@ -349,7 +352,7 @@ GEM
       rspec-mocks (~> 3.13)
       rspec-support (~> 3.13)
     rspec-support (3.13.4)
-    rubocop (1.76.1)
+    rubocop (1.78.0)
       json (~> 2.3)
       language_server-protocol (~> 3.17.0.2)
       lint_roller (~> 1.1.0)
@@ -357,7 +360,7 @@ GEM
       parser (>= 3.3.0.2)
       rainbow (>= 2.2.2, < 4.0)
       regexp_parser (>= 2.9.3, < 3.0)
-      rubocop-ast (>= 1.45.0, < 2.0)
+      rubocop-ast (>= 1.45.1, < 2.0)
       ruby-progressbar (~> 1.7)
       unicode-display_width (>= 2.4.0, < 4.0)
     rubocop-ast (1.45.1)
@@ -420,16 +423,18 @@ GEM
     store_model (4.2.2)
       activerecord (>= 7.0)
     stringio (3.1.7)
-    strong_migrations (2.3.0)
-      activerecord (>= 7)
-    tailwindcss-rails (3.3.2)
+    strong_migrations (2.4.0)
+      activerecord (>= 7.1)
+    tailwindcss-rails (4.3.0)
       railties (>= 7.0.0)
-      tailwindcss-ruby (~> 3.0)
-    tailwindcss-ruby (3.4.17-aarch64-linux)
-    tailwindcss-ruby (3.4.17-arm-linux)
-    tailwindcss-ruby (3.4.17-arm64-darwin)
-    tailwindcss-ruby (3.4.17-x86_64-darwin)
-    tailwindcss-ruby (3.4.17-x86_64-linux)
+      tailwindcss-ruby (~> 4.0)
+    tailwindcss-ruby (4.1.11)
+    tailwindcss-ruby (4.1.11-aarch64-linux-gnu)
+    tailwindcss-ruby (4.1.11-aarch64-linux-musl)
+    tailwindcss-ruby (4.1.11-arm64-darwin)
+    tailwindcss-ruby (4.1.11-x86_64-darwin)
+    tailwindcss-ruby (4.1.11-x86_64-linux-gnu)
+    tailwindcss-ruby (4.1.11-x86_64-linux-musl)
     thor (1.3.2)
     timeout (0.4.3)
     tzinfo (2.0.6)
@@ -486,6 +491,7 @@ DEPENDENCIES
   puma (= 6.5.0)
   rack (~> 3.0)
   rack-brotli
+  rack-cors
   rack-session (~> 2.0)
   rackup (~> 2.1)
   rails (~> 8.0)
@@ -505,7 +511,7 @@ DEPENDENCIES
   sprockets-rails
   store_model
   strong_migrations (~> 2.0)
-  tailwindcss-rails (< 4.0)
+  tailwindcss-rails (> 4.0)
 
 BUNDLED WITH
    2.5.23

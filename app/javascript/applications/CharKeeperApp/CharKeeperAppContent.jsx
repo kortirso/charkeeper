@@ -21,6 +21,7 @@ export const CharKeeperAppContent = () => {
 
   createEffect(() => {
     if (appState.accessToken !== undefined) return;
+    if (webApp === undefined) return;
 
     const urlSearchParams = new URLSearchParams(webApp.initData);
     const data = Object.fromEntries(urlSearchParams.entries());

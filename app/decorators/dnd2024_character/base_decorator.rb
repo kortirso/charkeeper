@@ -161,7 +161,7 @@ module Dnd2024Character
           action_type: 'action',
           hands: captions.key?('2handed') ? '2' : '1',
           melee_distance: captions.key?('reach') ? 10 : 5,
-          attack_bonus: weapon_proficiency(item) ? (key_ability_bonus + proficiency_bonus) : key_ability_bonus,
+          attack_bonus: weapon_proficiency?(item) ? (key_ability_bonus + proficiency_bonus) : key_ability_bonus,
           damage: item[:items_info]['damage'],
           damage_bonus: key_ability_bonus,
           damage_type: item[:items_info]['damage_type'],
@@ -207,7 +207,7 @@ module Dnd2024Character
           action_type: 'action',
           hands: captions.key?('2handed') ? '2' : '1',
           range_distance: item[:items_info]['dist'],
-          attack_bonus: weapon_proficiency(item) ? (key_ability_bonus + proficiency_bonus) : key_ability_bonus,
+          attack_bonus: weapon_proficiency?(item) ? (key_ability_bonus + proficiency_bonus) : key_ability_bonus,
           damage: item[:items_info]['damage'],
           damage_bonus: key_ability_bonus,
           damage_type: item[:items_info]['damage_type'],
@@ -238,7 +238,7 @@ module Dnd2024Character
       modifiers['dex']
     end
 
-    def weapon_proficiency(item)
+    def weapon_proficiency?(item)
       weapon_core_skills&.include?(item[:items_info]['weapon_skill']) ||
         weapon_skills&.include?(item[:items_slug])
     end

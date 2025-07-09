@@ -5,6 +5,7 @@ source 'https://rubygems.org'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
 gem 'rack', '~> 3.0'
 gem 'rack-brotli'
+gem 'rack-cors'
 gem 'rack-session', '~> 2.0'
 gem 'rackup', '~> 2.1'
 gem 'rails', '~> 8.0'
@@ -12,7 +13,7 @@ gem 'rails', '~> 8.0'
 # The modern asset pipeline for Rails [https://github.com/rails/propshaft]
 gem 'jsbundling-rails'
 gem 'sprockets-rails'
-gem 'tailwindcss-rails', '< 4.0'
+gem 'tailwindcss-rails', '> 4.0'
 
 # Use postgresql as the database for Active Record
 gem 'pg', '~> 1.1'
