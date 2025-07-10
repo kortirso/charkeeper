@@ -20,13 +20,13 @@ module Frontend
         @user = User.find_by(username: user_params[:username])
         return if @user.present?
 
-        unprocessable_response(t('dry_schema.errors.user.invalid'))
+        unprocessable_response({ base: [t('dry_schema.errors.user.invalid')] })
       end
 
       def authenticate_user
         return if @user.authenticate(user_params[:password])
 
-        unprocessable_response(t('dry_schema.errors.user.invalid'))
+        unprocessable_response({ base: [t('dry_schema.errors.user.invalid')] })
       end
 
       def user_params
