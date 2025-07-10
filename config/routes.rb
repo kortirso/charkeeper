@@ -39,6 +39,11 @@ Rails.application.routes.draw do
   end
 
   namespace :frontend do
+    scope module: :users do
+      resources :signin, only: %i[create]
+      resources :signup, only: %i[create]
+    end
+
     resources :auth, only: %i[create]
     resources :characters, only: %i[index show destroy] do
       resources :notes, only: %i[index create destroy], module: 'characters'

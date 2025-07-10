@@ -7,7 +7,7 @@ import { Telegram, Discord, Vk } from '../../assets';
 import { useAppState, useAppLocale } from '../../context';
 
 export const SettingsTab = () => {
-  const [appState, { navigate }] = useAppState();
+  const [appState, { navigate, setAccessToken }] = useAppState();
   const [, dict] = useAppLocale();
 
   const t = i18n.translator(dict);
@@ -52,6 +52,12 @@ export const SettingsTab = () => {
             <Telegram />
           </a>
         </div>
+        <p
+          class="relative py-3 px-4 cursor-pointer rounded hover:bg-gray-100"
+          onClick={() => setAccessToken(null)}
+        >
+          {t('pages.settingsPage.logout')}
+        </p>
       </div>
     </>
   );

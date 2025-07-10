@@ -1,5 +1,6 @@
 export * from './NavigationPage';
 export * from './ContentPage';
+export * from './LoginPage';
 
 export * from './Navigation/CharactersTab';
 export * from './Navigation/HomebrewTab';

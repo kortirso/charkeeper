@@ -1,0 +1,103 @@
+import { createSignal, Switch, Match, batch } from 'solid-js';
+import * as i18n from '@solid-primitives/i18n';
+
+import { Input } from '../components/atoms';
+import { useAppState, useAppLocale, useAppAlert } from '../context';
+
+import { signUpRequest } from '../requests/signUpRequest';
+import { signInRequest } from '../requests/signInRequest';
+
+export const LoginPage = () => {
+  const [page, setPage] = createSignal('signin');
+  const [username, setUsername] = createSignal('');
+  const [password, setPassword] = createSignal('');
+  const [passwordConfirmation, setPasswordConfirmation] = createSignal('');
+
+  const [, { changePayload }] = useAppState();
+  const [{ renderAlerts }] = useAppAlert();
+  const [, dict, { setLocale }] = useAppLocale();
+
+  const t = i18n.translator(dict);
+
+  const signUp = async () => {
+    const result = await signUpRequest(
+      { user: { username: username(), password: password(), password_confirmation: passwordConfirmation() } }
+    );
+    checkSignResult(result);
+  }
+
+  const signIn = async () => {
+    const result = await signInRequest({ user: { username: username(), password: password() } });
+    checkSignResult(result);
+  }
+
+  const checkSignResult = (result) => {
+    if (result.errors === undefined) {
+      batch(() => {
+        setLocale(result.locale);
+        changePayload({
+          accessToken: result.access_token,
+          username: result.username,
+          isAdmin: result.admin
+        });
+      });
+    } else {
+      renderAlerts(result.errors);
+    }
+  }
+
+  return (
+    <div class="min-h-screen flex flex-col justify-center items-center">
+      <div class="max-w-sm w-full">
+        <Switch>
+          <Match when={page() === 'signin'}>
+            <h2 class="text-2xl mb-4">{t('pages.loginPage.signin')}</h2>
+          </Match>
+          <Match when={page() === 'signup'}>
+            <h2 class="text-2xl mb-4">{t('pages.loginPage.signup')}</h2>
+          </Match>
+        </Switch>
+        <Input
+          containerClassList="form-field mb-2"
+          labelText={t('pages.loginPage.username')}
+          value={username()}
+          onInput={(value) => setUsername(value)}
+        />
+        <Input
+          password
+          containerClassList="form-field mb-2"
+          labelText={t('pages.loginPage.password')}
+          value={password()}
+          onInput={(value) => setPassword(value)}
+        />
+        <Switch>
+          <Match when={page() === 'signin'}>
+            <p>
+              {t('pages.loginPage.noAccount')}
+              <span class="ml-4 underline text-blue-600 cursor-pointer" onClick={() => setPage('signup')}>
+                {t('pages.loginPage.signup')}
+              </span>
+            </p>
+            <button class="btn btn-primary mt-2" onClick={signIn}>{t('pages.loginPage.signin')}</button>
+          </Match>
+          <Match when={page() === 'signup'}>
+            <Input
+              password
+              containerClassList="form-field mb-2"
+              labelText={t('pages.loginPage.passwordConfirmation')}
+              value={passwordConfirmation()}
+              onInput={(value) => setPasswordConfirmation(value)}
+            />
+            <p>
+              {t('pages.loginPage.haveAccount')}
+              <span class="ml-4 underline text-blue-600 cursor-pointer" onClick={() => setPage('signin')}>
+                {t('pages.loginPage.signin')}
+              </span>
+            </p>
+            <button class="btn btn-primary mt-2" onClick={signUp}>{t('pages.loginPage.signup')}</button>
+          </Match>
+        </Switch>
+      </div>
+    </div>
+  );
+}

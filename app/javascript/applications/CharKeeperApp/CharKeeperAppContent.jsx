@@ -1,8 +1,8 @@
-import { createEffect, createMemo, Show, Switch, Match, batch } from 'solid-js';
+import { createEffect, createMemo, Switch, Match, batch } from 'solid-js';
 import * as i18n from '@solid-primitives/i18n';
 import { createWindowSize } from '@solid-primitives/resize-observer';
 
-import { NavigationPage, ContentPage } from './pages';
+import { NavigationPage, ContentPage, LoginPage } from './pages';
 import { useAppState, useAppLocale } from './context';
 import { useTelegram } from './hooks';
 
@@ -22,6 +22,7 @@ export const CharKeeperAppContent = () => {
   createEffect(() => {
     if (appState.accessToken !== undefined) return;
     if (webApp === undefined) return;
+    if (webApp.initData === '') return setAccessToken(null);
 
     const urlSearchParams = new URLSearchParams(webApp.initData);
     const data = Object.fromEntries(urlSearchParams.entries());
@@ -59,7 +60,7 @@ export const CharKeeperAppContent = () => {
   });
 
   createEffect(() => {
-    if (appState.accessToken === undefined) return;
+    if (appState.accessToken === undefined || appState.accessToken === null) return;
     if (appState.unreadNotificationsCount !== undefined) return;
 
     const fetchUnreadNotificationsCount = async () => await fetchUnreadNotificationsCountRequest(appState.accessToken);
@@ -72,7 +73,7 @@ export const CharKeeperAppContent = () => {
   });
 
   const navigationPage = createMemo(() => {
-    if (appState.accessToken === undefined) return <></>;
+    if (!appState.accessToken) return <></>;
 
     return <NavigationPage />;
   });
@@ -80,29 +81,30 @@ export const CharKeeperAppContent = () => {
   // 453x750
   // 420x690
   return (
-    <Show
-      when={appState.accessToken !== undefined && appState.accessToken !== null}
-      fallback={
+    <Switch>
+      <Match when={appState.accessToken}>
+        <div class="flex-1 flex flex-col bg-gray-50 h-screen">
+          <section class="w-full flex-1 flex overflow-hidden">
+            <Switch fallback={<ContentPage onNavigate={() => navigate(null, {})} />}>
+              <Match when={size.width >= 768}>
+                {navigationPage()}
+                <ContentPage />
+              </Match>
+              <Match when={appState.activePage === null}>
+                {navigationPage()}
+              </Match>
+            </Switch>
+          </section>
+        </div>
+      </Match>
+      <Match when={appState.accessToken === undefined}>
         <div class="h-screen flex justify-center items-center">
           <div>{t('loading')}</div>
         </div>
-      }
-    >
-      <div class="flex-1 flex flex-col bg-gray-50 h-screen">
-        <section class="w-full flex-1 flex overflow-hidden">
-          <Switch
-            fallback={<ContentPage onNavigate={() => navigate(null, {})} />}
-          >
-            <Match when={size.width >= 768}>
-              {navigationPage()}
-              <ContentPage />
-            </Match>
-            <Match when={appState.activePage === null}>
-              {navigationPage()}
-            </Match>
-          </Switch>
-        </section>
-      </div>
-    </Show>
+      </Match>
+      <Match when={appState.accessToken === null}>
+        <LoginPage />
+      </Match>
+    </Switch>
   );
 }

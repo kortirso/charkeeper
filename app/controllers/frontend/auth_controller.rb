@@ -2,12 +2,12 @@
 
 module Frontend
   class AuthController < Frontend::BaseController
-    include AuthkeeperDeps[generate_token: 'services.generate_token']
     include Deps[
       monitoring: 'monitoring.client',
       add_identity: 'commands.auth_context.add_identity',
       web_telegram_signature: 'services.auth_context.validate_web_telegram_signature'
     ]
+    include Signable
 
     skip_before_action :authenticate
 
@@ -28,16 +28,6 @@ module Frontend
         identity = find_identity || create_identity
         User::Session.create!(user: identity.user)
       end
-    end
-
-    def auth_response(user_session)
-      access_token = generate_token.call(user_session: user_session)[:result]
-      render json: {
-        access_token: access_token,
-        locale: user_session.user.locale,
-        username: user_session.user.username,
-        admin: user_session.user.admin?
-      }, status: :created
     end
 
     def find_identity

@@ -1,5 +1,19 @@
 {
   "loading": "Loading screen",
+  "pages": {
+    "loginPage": {
+      "signin": "Sign in",
+      "signup": "Sign up",
+      "username": "Username",
+      "password": "Password (minimum 10 characters)",
+      "passwordConfirmation": "Password confirmation",
+      "haveAccount": "Already have account?",
+      "noAccount": "Don't have account?"
+    },
+    "settingsPage": {
+      "logout": "Logout"
+    }
+  },
   "back": "Back",
   "save": "Save",
   "find": "Find",
