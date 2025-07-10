@@ -1,8 +1,11 @@
-export const apiRequest = ({ url, options }) =>
-  fetch(url, options)
+export const apiRequest = ({ url, options }) => {
+  if (window.__TAURI_INTERNALS__) url = `https://charkeeper.org${url}`;
+
+  return fetch(url, options)
     .then((response) => response.json())
     .then((data) => data)
     .catch(() => { return { errors: ['Internal server error, an error report has been sent to the developer!'] } });
+}
 
 export const options = (method, accessToken, payload) => {
   const result = {

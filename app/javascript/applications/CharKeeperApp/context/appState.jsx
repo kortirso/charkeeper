@@ -15,20 +15,41 @@ export const AppStateProvider = (props) => {
     unreadNotificationsCount: undefined
   });
 
-  createEffect(() => {
+  createEffect(async () => {
     if (appState.accessToken) return;
 
-    const stateDataString = localStorage.getItem(CHARKEEPER_STATE_DATA_KEY);
+    const stateDataString = window.__TAURI_INTERNALS__ ? await readStore() : localStorage.getItem(CHARKEEPER_STATE_DATA_KEY);
     if (stateDataString === null) return;
 
     setAppState({ ...appState, ...JSON.parse(stateDataString) });
   });
 
+  const readStore = async () => {
+    try {
+      const Store = require('@tauri-apps/plugin-store').Store;
+      const store = await Store.load('settings.json');
+      const value = await store.get(CHARKEEPER_STATE_DATA_KEY);
+      return value;
+    } catch(e) {
+      return null;
+    }
+  }
+
+  const updateStore = async (payload) => {
+    try {
+      const Store = require('@tauri-apps/plugin-store').Store
+      const store = await Store.load('settings.json')
+      await store.set(CHARKEEPER_STATE_DATA_KEY, JSON.stringify(payload))
+    } catch(e) {}
+  }
+
   const store = [
     appState,
     {
       changePayload(payload) {
-        localStorage.setItem(CHARKEEPER_STATE_DATA_KEY, JSON.stringify(payload));
+        if (window.__TAURI_INTERNALS__ === undefined) localStorage.setItem(CHARKEEPER_STATE_DATA_KEY, JSON.stringify(payload));
+        else updateStore(payload);
+
         setAppState({ ...appState, ...payload });
       },
       setAccessToken(value) {
