@@ -112,7 +112,7 @@ export const Daggerheart = (props) => {
             activeTab={activeTab()}
             setActiveTab={setActiveTab}
           />
-          <div class="p-2 flex-1 overflow-y-scroll">
+          <div class="p-2 flex-1 overflow-y-scroll emd:overflow-y-hidden">
             <Switch>
               <Match when={activeTab() === 'combat'}>
                 <DaggerheartHealth character={character()} onReplaceCharacter={props.onReplaceCharacter} />

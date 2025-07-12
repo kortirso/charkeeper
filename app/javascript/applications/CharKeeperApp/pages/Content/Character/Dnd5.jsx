@@ -2,7 +2,8 @@ import { createSignal, Switch, Match, batch, createEffect, createMemo } from 'so
 import * as i18n from '@solid-primitives/i18n';
 
 import {
-  Dnd5Abilities, Dnd5Combat, Dnd5Rest, Dnd5ClassLevels, Dnd5Professions, Dnd5Spellbook, Dnd5Spells, DndGold
+  Dnd5Abilities, Dnd5Combat, Dnd5Rest, Dnd5ClassLevels, Dnd5Professions, Dnd5Spellbook, Dnd5Spells, DndGold,
+  Dnd5Skills, Dnd5SavingThrows
 } from '../../../pages';
 import { CharacterNavigation, Equipment, Notes, Avatar, ContentWrapper } from '../../../components';
 import { useAppState, useAppLocale } from '../../../context';
@@ -160,6 +161,12 @@ export const Dnd5 = (props) => {
             <Switch>
               <Match when={activeMobileTab() === 'abilities'}>
                 <Dnd5Abilities character={character()} onReplaceCharacter={props.onReplaceCharacter} />
+                <div class="mt-4">
+                  <Dnd5SavingThrows character={character()} />
+                </div>
+                <div class="mt-4">
+                  <Dnd5Skills character={character()} onReplaceCharacter={props.onReplaceCharacter} />
+                </div>
               </Match>
               <Match when={activeMobileTab() === 'combat'}>
                 <Dnd5Combat
@@ -252,7 +259,17 @@ export const Dnd5 = (props) => {
         </>
       }
       leftView={
-        <Dnd5Abilities character={character()} onReplaceCharacter={props.onReplaceCharacter} />
+        <>
+          <Dnd5Abilities character={character()} onReplaceCharacter={props.onReplaceCharacter} />
+          <div class="flex flex-col emd:flex-row emd:gap-4 emd:mt-4">
+            <div class="mt-4 emd:mt-0 flex-1">
+              <Dnd5SavingThrows character={character()} />
+            </div>
+            <div class="mt-4 emd:mt-0 flex-1">
+              <Dnd5Skills character={character()} onReplaceCharacter={props.onReplaceCharacter} />
+            </div>
+          </div>
+        </>
       }
       rightView={
         <>
@@ -261,7 +278,7 @@ export const Dnd5 = (props) => {
             activeTab={activeTab()}
             setActiveTab={setActiveTab}
           />
-          <div class="p-2 flex-1 overflow-y-scroll">
+          <div class="p-2 flex-1 overflow-y-scroll emd:overflow-y-hidden">
             <Switch>
               <Match when={activeTab() === 'combat'}>
                 <Dnd5Combat

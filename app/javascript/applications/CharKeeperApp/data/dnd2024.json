@@ -151,5 +151,33 @@
     "fighting": {
       "defense": { "name": { "en": "Defense", "ru": "Оборона" } }
     }
+  },
+  "abilities": {
+    "str": { "name": { "en": "Strength", "ru": "Сила" } },
+    "dex": { "name": { "en": "Dexterity", "ru": "Ловкость" } },
+    "con": { "name": { "en": "Constitution", "ru": "Телосложение" } },
+    "int": { "name": { "en": "Intelligence", "ru": "Интеллект" } },
+    "wis": { "name": { "en": "Wisdom", "ru": "Мудрость" } },
+    "cha": { "name": { "en": "Charisma", "ru": "Харизма" } }
+  },
+  "skills": {
+    "acrobatics": { "name": { "en": "Acrobatics", "ru": "Акробатика" } },
+    "animal": { "name": { "en": "Animal", "ru": "Уход за животными" } },
+    "arcana": { "name": { "en": "Arcana", "ru": "Магия" } },
+    "athletics": { "name": { "en": "Athletics", "ru": "Атлетика" } },
+    "deception": { "name": { "en": "Deception", "ru": "Обмен" } },
+    "history": { "name": { "en": "History", "ru": "История" } },
+    "insight": { "name": { "en": "Insight", "ru": "Проницательность" } },
+    "intimidation": { "name": { "en": "Intimidation", "ru": "Запугивание" } },
+    "investigation": { "name": { "en": "Investigation", "ru": "Анализ" } },
+    "medicine": { "name": { "en": "Medicine", "ru": "Медицина" } },
+    "nature": { "name": { "en": "Nature", "ru": "Природа" } },
+    "perception": { "name": { "en": "Perception", "ru": "Внимательность" } },
+    "performance": { "name": { "en": "Performance", "ru": "Выступление" } },
+    "persuasion": { "name": { "en": "Persuasion", "ru": "Убеждение" } },
+    "religion": { "name": { "en": "Religion", "ru": "Религия" } },
+    "sleight": { "name": { "en": "Sleight of Hands", "ru": "Ловкость рук" } },
+    "stealth": { "name": { "en": "Stealth", "ru": "Скрытность" } },
+    "survival": { "name": { "en": "Survival", "ru": "Выживание" } }
   }
 }

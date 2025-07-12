@@ -42,10 +42,10 @@ export const ContentWrapper = (props) => {
       </Match>
       <Match when={size.width >= 1408}>
         <div class="flex-1 flex overflow-y-scroll">
-          <div class="flex-1 p-2">
+          <div class="w-1/2 p-2">
             {props.leftView}
           </div>
-          <div class="flex-1 p-2">
+          <div class="w-1/2 p-2">
             {props.rightView}
           </div>
         </div>

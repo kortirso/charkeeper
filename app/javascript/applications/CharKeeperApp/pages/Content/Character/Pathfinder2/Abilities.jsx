@@ -48,7 +48,7 @@ export const Pathfinder2Abilities = (props) => {
       <Show when={character().boosts}>
         <div class="bg-blue-200 rounded p-4 mb-2">
           <p
-            class="font-cascadia-light text-sm"
+            class="text-sm"
             innerHTML={character().boosts} // eslint-disable-line solid/no-innerhtml
           />
         </div>

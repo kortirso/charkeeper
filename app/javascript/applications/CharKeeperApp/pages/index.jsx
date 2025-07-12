@@ -20,6 +20,8 @@ export * from './Content/Character/Dnd5/ClassLevels';
 export * from './Content/Character/Dnd5/Professions';
 export * from './Content/Character/Dnd5/Spellbook';
 export * from './Content/Character/Dnd5/Spells';
+export * from './Content/Character/Dnd5/Skills';
+export * from './Content/Character/Dnd5/SavingThrows';
 
 export * from './Content/Character/Pathfinder2';
 export * from './Content/Character/Pathfinder2/Abilities';

@@ -116,6 +116,9 @@
     "rest": {
       "shortRestDescription": "At the end of a short rest, a character may spend one or more Hit Dice. Each die spent allows the character to roll the corresponding die, add the character's Constitution modifier to it, and regain the resulting number of hit points.",
       "longRestDescription": "At the end of a long rest, the character regains all expended hit points, plus half of the maximum Hit Dice and all expended spell slots."
+    },
+    "savings": {
+      "title": "Saving throws"
     }
   },
   "combat": {
@@ -360,34 +363,6 @@
       "chaotic_good": "Chaotic good",
       "chaotic_neutral": "Chaotic neutral",
       "chaotic_evil": "Chaotic evil"
-    },
-    "abilities": {
-      "str": "Strength",
-      "dex": "Dexterity",
-      "con": "Constitution",
-      "int": "Intelligence",
-      "wis": "Wisdom",
-      "cha": "Charisma"
-    },
-    "skills": {
-      "acrobatics": "Acrobatics",
-      "animal": "Animal",
-      "arcana": "Arcana",
-      "athletics": "Athletics",
-      "deception": "Deception",
-      "history": "History",
-      "insight": "Insight",
-      "intimidation": "Intimidation",
-      "investigation": "Investigation",
-      "medicine": "Medicine",
-      "nature": "Nature",
-      "perception": "Perception",
-      "performance": "Performance",
-      "persuasion": "Persuasion",
-      "religion": "Religion",
-      "sleight": "Sleight of Hands",
-      "stealth": "Stealth",
-      "survival": "Survival"
     },
     "languages": {
       "common": "Common",
