@@ -45,5 +45,6 @@ export * from './Content/Character/Daggerheart/Gold';
 export * from './Content/Character/Daggerheart/DomainCards';
 export * from './Content/Character/Daggerheart/DomainCardsTable';
 export * from './Content/Character/Daggerheart/Rest';
+export * from './Content/Character/Daggerheart/Beastform';
 
 export * from './Navigation/Characters/ListItem';

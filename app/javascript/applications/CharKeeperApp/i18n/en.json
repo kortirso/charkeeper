@@ -99,6 +99,10 @@
       "armor_score": "Armor",
       "attack": "Attack",
       "proficiency": "Proficiency"
+    },
+    "beast": {
+      "transformation": "Transformation to beast",
+      "naturalForm": "Natural form"
     }
   },
   "pathfinder2": {
@@ -284,9 +288,7 @@
     "avatar": "Avatar",
     "bonuses": "Bonuses",
     "newBonus": "New bonus",
-    "newBonusComment": "Comment",
-    "beastTransformation": "Transformation to beast",
-    "naturalForm": "Natural form"
+    "newBonusComment": "Comment"
   },
   "professionsPage": {
     "feats": "Feats",

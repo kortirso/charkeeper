@@ -99,6 +99,10 @@
       "armor_score": "Доспех",
       "attack": "Атака",
       "proficiency": "Мастерство"
+    },
+    "beast": {
+      "transformation": "Превращение в зверя",
+      "naturalForm": "Естественная форма"
     }
   },
   "pathfinder2": {
@@ -287,9 +291,7 @@
     "deathFailure": "Провалы",
     "dyingConditionValue": "Состояние при смерти",
     "newBonus": "Новый бонус",
-    "newBonusComment": "Комментарий",
-    "beastTransformation": "Превращение в зверя",
-    "naturalForm": "Естественная форма"
+    "newBonusComment": "Комментарий"
   },
   "professionsPage": {
     "feats": "Черты",

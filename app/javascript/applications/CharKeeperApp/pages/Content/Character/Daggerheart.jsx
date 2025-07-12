@@ -2,7 +2,7 @@ import { createSignal, Switch, Match } from 'solid-js';
 import * as i18n from '@solid-primitives/i18n';
 
 import {
-  DaggerheartTraits, DaggerheartStatic, DaggerheartHealth, DaggerheartCombat,
+  DaggerheartTraits, DaggerheartStatic, DaggerheartHealth, DaggerheartCombat, DaggerheartBeastform,
   DaggerheartDomainCards, DaggerheartRest, DaggerheartLeveling, DaggerheartExperience, DaggerheartGold, DaggerheartFeats
 } from '../../../pages';
 import { CharacterNavigation, Equipment, Bonuses, Notes, Avatar, ContentWrapper } from '../../../components';
@@ -37,6 +37,9 @@ export const Daggerheart = (props) => {
                 <DaggerheartTraits character={character()} onReplaceCharacter={props.onReplaceCharacter} />
                 <div class="mt-4">
                   <DaggerheartExperience character={character()} onReplaceCharacter={props.onReplaceCharacter} />
+                </div>
+                <div class="mt-4">
+                  <DaggerheartBeastform character={character()} onReplaceCharacter={props.onReplaceCharacter} />
                 </div>
                 <div class="mt-4">
                   <DaggerheartFeats character={character()} onReplaceCharacter={props.onReplaceCharacter} />
@@ -99,6 +102,9 @@ export const Daggerheart = (props) => {
           </div>
           <div class="mt-4">
             <DaggerheartExperience character={character()} onReplaceCharacter={props.onReplaceCharacter} />
+          </div>
+          <div class="mt-4">
+            <DaggerheartBeastform character={character()} onReplaceCharacter={props.onReplaceCharacter} />
           </div>
           <div class="mt-4">
             <DaggerheartFeats character={character()} onReplaceCharacter={props.onReplaceCharacter} />
