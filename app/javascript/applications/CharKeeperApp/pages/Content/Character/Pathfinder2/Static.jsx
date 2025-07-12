@@ -13,7 +13,7 @@ export const Pathfinder2Static = (props) => {
 
   return (
     <ErrorWrapper payload={{ character_id: character().id, key: 'Pathfinder2Static' }}>
-      <div class="flex flex-wrap justify-center gap-4">
+      <div class="flex flex-wrap justify-center gap-2">
         <For each={['armor_class', 'perception', 'speed']}>
           {(slug) =>
             <div class="flex-1 emd:w-1/4">

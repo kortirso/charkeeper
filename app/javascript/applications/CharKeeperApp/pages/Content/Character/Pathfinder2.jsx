@@ -34,8 +34,8 @@ export const Pathfinder2 = (props) => {
             <Switch>
               <Match when={activeMobileTab() === 'abilities'}>
                 <Pathfinder2Abilities character={character()} onReplaceCharacter={props.onReplaceCharacter} />
-                <div class="mt-2">
-                  <Pathfinder2SavingThrows character={character()} />
+                <div class="mt-4">
+                  <Pathfinder2SavingThrows character={character()} onReplaceCharacter={props.onReplaceCharacter} />
                 </div>
                 <div class="mt-4">
                   <Pathfinder2Skills character={character()} onReplaceCharacter={props.onReplaceCharacter} />
@@ -78,11 +78,13 @@ export const Pathfinder2 = (props) => {
       leftView={
         <>
           <Pathfinder2Abilities character={character()} onReplaceCharacter={props.onReplaceCharacter} />
-          <div class="mt-4">
-            <Pathfinder2SavingThrows character={character()} />
-          </div>
-          <div class="mt-4">
-            <Pathfinder2Skills character={character()} onReplaceCharacter={props.onReplaceCharacter} />
+          <div class="flex flex-col emd:flex-row emd:gap-4 emd:mt-4">
+            <div class="mt-4 emd:mt-0 flex-1">
+              <Pathfinder2SavingThrows character={character()} />
+            </div>
+            <div class="mt-4 emd:mt-0 flex-1">
+              <Pathfinder2Skills character={character()} onReplaceCharacter={props.onReplaceCharacter} />
+            </div>
           </div>
         </>
       }

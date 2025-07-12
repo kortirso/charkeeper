@@ -14,6 +14,7 @@ export * from './molecules/PageHeader';
 export * from './molecules/ErrorWrapper';
 export * from './molecules/NotificationsBudge';
 export * from './molecules/ContentWrapper';
+export * from './molecules/EditWrapper';
 
 export * from './substances/Avatar';
 export * from './substances/CharacterNavigation';

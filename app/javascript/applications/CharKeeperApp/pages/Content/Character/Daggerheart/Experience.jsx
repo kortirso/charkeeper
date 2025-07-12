@@ -2,9 +2,9 @@ import { createSignal, For, Show, batch } from 'solid-js';
 import * as i18n from '@solid-primitives/i18n';
 import { Key } from '@solid-primitives/keyed';
 
-import { Button, Input, ErrorWrapper } from '../../../../components';
+import { Button, Input, ErrorWrapper, EditWrapper } from '../../../../components';
 import { useAppState, useAppLocale, useAppAlert } from '../../../../context';
-import { Minus, Edit, Plus, Close } from '../../../../assets';
+import { Plus, Close } from '../../../../assets';
 import { updateCharacterRequest } from '../../../../requests/updateCharacterRequest';
 import { modifier } from '../../../../helpers';
 
@@ -58,7 +58,12 @@ export const DaggerheartExperience = (props) => {
 
   return (
     <ErrorWrapper payload={{ character_id: character().id, key: 'DaggerheartExperience' }}>
-      <div class="relative">
+      <EditWrapper
+        editMode={editMode()}
+        onSetEditMode={setEditMode}
+        onCancelEditing={cancelEditing}
+        onSaveChanges={updateCharacter}
+      >
         <div class="blockable p-4 mt-2">
           <h2 class="text-lg dark:text-snow">{t('daggerheart.experience.title')}</h2>
           <Show
@@ -103,25 +108,7 @@ export const DaggerheartExperience = (props) => {
             </div>
           </Show>
         </div>
-
-        <Show
-          when={editMode()}
-          fallback={
-            <Button default classList='absolute bottom-0 right-0 rounded min-w-6 min-h-6 opacity-50' onClick={() => setEditMode(true)}>
-              <Edit />
-            </Button>
-          }
-        >
-          <div class="absolute -bottom-6 right-0 flex justify-end z-10">
-            <Button outlined classList='rounded min-w-6 min-h-6 mr-2' onClick={cancelEditing}>
-              <Minus />
-            </Button>
-            <Button default classList='rounded min-w-6 min-h-6' onClick={updateCharacter}>
-              <Plus />
-            </Button>
-          </div>
-        </Show>
-      </div>
+      </EditWrapper>
     </ErrorWrapper>
   );
 }

@@ -18,7 +18,7 @@
       "dex_max": 5,
       "skills_penalty": null,
       "speed_penalty": null,
-      "tooltips": ["comfort"]
+      "tooltips": { "comfort": true }
     }
   },
   {
@@ -40,7 +40,7 @@
       "dex_max": 4,
       "skills_penalty": -1,
       "speed_penalty": null,
-      "tooltips": []
+      "tooltips": {}
     }
   },
   {
@@ -62,7 +62,7 @@
       "dex_max": 3,
       "skills_penalty": null,
       "speed_penalty": null,
-      "tooltips": ["comfort"]
+      "tooltips": { "comfort": true }
     }
   },
   {
@@ -84,7 +84,7 @@
       "dex_max": 3,
       "skills_penalty": -1,
       "speed_penalty": null,
-      "tooltips": []
+      "tooltips": {}
     }
   },
   {
@@ -106,7 +106,7 @@
       "dex_max": 3,
       "skills_penalty": -1,
       "speed_penalty": null,
-      "tooltips": ["flexible", "noisy"]
+      "tooltips": { "flexible": true, "noisy": true }
     }
   },
   {
@@ -128,7 +128,7 @@
       "dex_max": 2,
       "skills_penalty": -2,
       "speed_penalty": -5,
-      "tooltips": []
+      "tooltips": {}
     }
   },
   {
@@ -150,7 +150,7 @@
       "dex_max": 2,
       "skills_penalty": -2,
       "speed_penalty": -5,
-      "tooltips": []
+      "tooltips": {}
     }
   },
   {
@@ -172,7 +172,7 @@
       "dex_max": 1,
       "skills_penalty": -2,
       "speed_penalty": -5,
-      "tooltips": ["flexible", "noisy"]
+      "tooltips": { "flexible": true, "noisy": true }
     }
   },
   {
@@ -194,7 +194,7 @@
       "dex_max": 1,
       "skills_penalty": -2,
       "speed_penalty": -5,
-      "tooltips": []
+      "tooltips": {}
     }
   },
   {
@@ -216,7 +216,7 @@
       "dex_max": 1,
       "skills_penalty": -3,
       "speed_penalty": -10,
-      "tooltips": []
+      "tooltips": {}
     }
   },
   {
@@ -238,7 +238,7 @@
       "dex_max": 1,
       "skills_penalty": -3,
       "speed_penalty": -10,
-      "tooltips": []
+      "tooltips": {}
     }
   },
   {
@@ -260,7 +260,7 @@
       "dex_max": 0,
       "skills_penalty": -3,
       "speed_penalty": -10,
-      "tooltips": ["bulwark"]
+      "tooltips": { "bulwark": true }
     }
   }
 ]

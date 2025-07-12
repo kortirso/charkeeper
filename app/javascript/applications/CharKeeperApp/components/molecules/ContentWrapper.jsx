@@ -1,6 +1,9 @@
 import { createSignal, Switch, Match } from 'solid-js';
 import { createWindowSize } from '@solid-primitives/resize-observer';
 
+import { Button } from '../../components';
+import { Arrow } from '../../assets';
+
 export const ContentWrapper = (props) => {
   const size = createWindowSize();
 
@@ -12,12 +15,26 @@ export const ContentWrapper = (props) => {
         {props.mobileView}
       </Match>
       <Match when={size.width >= 1152 && size.width <= 1407}>
-        <div class="p-2 flex-1 overflow-y-scroll">
+        <div class="p-2 pt-4 flex-1 overflow-y-scroll relative">
           <Switch>
             <Match when={activeView() === 'left'}>
+              <Button
+                default
+                classList='absolute z-10 top-0 right-0 rounded min-w-6 min-h-6 opacity-75'
+                onClick={() => setActiveView('right')}
+              >
+                <Arrow forward />
+              </Button>
               {props.leftView}
             </Match>
             <Match when={activeView() === 'right'}>
+              <Button
+                default
+                classList='absolute z-10 top-0 left-0 rounded min-w-6 min-h-6 opacity-75'
+                onClick={() => setActiveView('left')}
+              >
+                <Arrow back />
+              </Button>
               {props.rightView}
             </Match>
           </Switch>
