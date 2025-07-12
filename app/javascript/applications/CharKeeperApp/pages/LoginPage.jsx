@@ -37,7 +37,8 @@ export const LoginPage = () => {
         changePayload({
           accessToken: result.access_token,
           username: result.username,
-          isAdmin: result.admin
+          isAdmin: result.admin,
+          colorSchema: result.color_schema
         });
       });
     } else {
