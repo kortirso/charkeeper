@@ -48,7 +48,8 @@ export const CharKeeperAppContent = () => {
             changePayload({
               accessToken: accessTokenData.access_token,
               username: accessTokenData.username,
-              isAdmin: accessTokenData.admin
+              isAdmin: accessTokenData.admin,
+              colorSchema: accessTokenData.color_schema
             });
           });
         } else {
