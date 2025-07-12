@@ -1,7 +1,6 @@
 import { Show, splitProps } from 'solid-js';
 
-import { CheckboxLabel } from './CheckboxLabel';
-
+import { Label } from './Label';
 import { Stroke } from '../../assets';
 
 export const Checkbox = (props) => {
@@ -10,11 +9,11 @@ export const Checkbox = (props) => {
   return (
     <div class={[props.classList, 'flex items-center'].join(' ')}>
       <Show when={props.labelPosition === 'left'}>
-        <CheckboxLabel { ...labelProps } onClick={() => props.disabled ? null : props.onToggle()} />
+        <Label { ...labelProps } onClick={() => props.disabled ? null : props.onToggle()} />
       </Show>
       <div
         class="toggle"
-        classList={{ 'checked': props.checked, 'border-dashed': props.outlined, 'bg-blue-400': props.checked && props.filled }}
+        classList={{ 'checked': props.checked, 'outlined': props.outlined }}
         onClick={() => props.disabled ? null : props.onToggle()}
       >
         <Show when={props.checked && !props.filled}>
@@ -22,7 +21,7 @@ export const Checkbox = (props) => {
         </Show>
       </div>
       <Show when={props.labelPosition === 'right'}>
-        <CheckboxLabel { ...labelProps } onClick={() => props.disabled ? null : props.onToggle()} />
+        <Label { ...labelProps } onClick={() => props.disabled ? null : props.onToggle()} />
       </Show>
     </div>
   );

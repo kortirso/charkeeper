@@ -1,7 +1,6 @@
 import * as i18n from '@solid-primitives/i18n';
 
-import { PageHeader } from '../../components/molecules';
-
+import { PageHeader } from '../../components';
 import { useAppLocale } from '../../context';
 
 export const HomebrewTab = () => {

@@ -2,10 +2,8 @@ import { createSignal, createEffect, createMemo, For, Switch, Match, Show, batch
 import { createStore } from 'solid-js/store';
 import * as i18n from '@solid-primitives/i18n';
 
-import { Item, CharacterNavigation } from '../../components';
-import { createModal, PageHeader } from '../../components/molecules';
-import { Select, Input, Button, Checkbox } from '../../components/atoms';
-
+import { CharactersListItem } from '../../pages';
+import { CharacterNavigation, createModal, PageHeader, Select, Input, Button, Checkbox, Label } from '../../components';
 import { Plus } from '../../assets';
 import pathfinder2Config from '../../data/pathfinder2.json';
 import daggerheartConfig from '../../data/daggerheart.json';
@@ -264,7 +262,7 @@ export const CharactersTab = () => {
                 {(character) =>
                   <Switch>
                     <Match when={character.provider === 'dnd5'}>
-                      <Item
+                      <CharactersListItem
                         isActive={character.id == appState.activePageParams.id}
                         avatar={character.avatar}
                         name={character.name}
@@ -276,7 +274,7 @@ export const CharactersTab = () => {
                       />
                     </Match>
                     <Match when={character.provider === 'dnd2024'}>
-                      <Item
+                      <CharactersListItem
                         isActive={character.id == appState.activePageParams.id}
                         avatar={character.avatar}
                         name={character.name}
@@ -288,7 +286,7 @@ export const CharactersTab = () => {
                       />
                     </Match>
                     <Match when={character.provider === 'pathfinder2'}>
-                      <Item
+                      <CharactersListItem
                         isActive={character.id == appState.activePageParams.id}
                         avatar={character.avatar}
                         name={character.name}
@@ -300,7 +298,7 @@ export const CharactersTab = () => {
                       />
                     </Match>
                     <Match when={character.provider === 'daggerheart'}>
-                      <Item
+                      <CharactersListItem
                         isActive={character.id == appState.activePageParams.id}
                         avatar={character.avatar}
                         name={character.name}
@@ -561,14 +559,14 @@ export const CharactersTab = () => {
                   </Match>
                 </Switch>
               </div>
-              <label class="text-sm/4 font-cascadia-light text-gray-400">{t('newCharacterPage.avatarFile')}</label>
-              <input class="block mb-2" type="file" accept="image/jpeg, image/png" onChange={handleFileChange} />
+              <Label labelText={t('newCharacterPage.avatarFile')} />
+              <input class="block mb-2 dark:text-gray-200" type="file" accept="image/jpeg, image/png" onChange={handleFileChange} />
               <Input
                 labelText={t('newCharacterPage.avatarUrl')}
                 value={avatarUrl()}
                 onInput={(value) => setAvatarUrl(value)}
               />
-              <label class="text-xs font-cascadia-light text-gray-400">{t('newCharacterPage.avatarTransform')}</label>
+              <Label labelText={t('newCharacterPage.avatarTransform')} />
             </div>
             <div class="flex mt-4">
               <Button

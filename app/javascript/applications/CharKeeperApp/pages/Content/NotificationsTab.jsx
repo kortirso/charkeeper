@@ -2,10 +2,8 @@ import { createEffect, createSignal, Show, For, batch } from 'solid-js';
 import * as i18n from '@solid-primitives/i18n';
 import { createWindowSize } from '@solid-primitives/resize-observer';
 
-import { PageHeader } from '../../components/molecules';
-import { Toggle, IconButton } from '../../components/atoms';
+import { PageHeader, Toggle, IconButton } from '../../components';
 import { Arrow } from '../../assets';
-
 import { useAppState, useAppLocale, useAppAlert } from '../../context';
 import { fetchUserNotificationsRequest } from '../../requests/fetchUserNotificationsRequest';
 
@@ -59,12 +57,12 @@ export const NotificationsTab = (props) => {
                 isOpen={!notification.read}
                 title={
                   <div class="flex justify-between items-center">
-                    <span>{notification.title}</span>
-                    <span class="font-cascadia-light text-sm">{notification.created_at}</span>
+                    <span class="dark:text-snow">{notification.title}</span>
+                    <span class="text-sm dark:text-snow">{notification.created_at}</span>
                   </div>
                 }
               >
-                <p class="font-cascadia-light">{notification.value}</p>
+                <p class="dark:text-snow">{notification.value}</p>
               </Toggle>
             }
           </For>

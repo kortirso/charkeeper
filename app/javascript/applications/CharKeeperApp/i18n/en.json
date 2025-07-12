@@ -11,9 +11,145 @@
       "noAccount": "Don't have account?"
     },
     "settingsPage": {
-      "logout": "Logout"
+      "logout": "Logout",
+      "colorSchema": "Color schema"
+    },
+    "characterNavigation": {
+      "allFilter": "All",
+      "dnd5": "D&D 5",
+      "dnd2024": "D&D 2024",
+      "pathfinder2": "Pathfinder 2",
+      "daggerheart": "Daggerheart",
+      "traits": "Traits",
+      "combat": "Combat",
+      "equipment": "Equipment",
+      "domainCards": "Domains",
+      "bonuses": "Bonuses",
+      "rest": "Rest",
+      "notes": "Notes",
+      "classLevels": "Leveling",
+      "avatar": "Avatar",
+      "abilities": "Abilities",
+      "professions": "Mastery",
+      "spells": "Spells"
     }
   },
+  "daggerheart": {
+    "static": {
+      "proficiency": "Proficiency",
+      "evasion": "Evasion",
+      "armor_score": "Armor Score"
+    },
+    "health": {
+      "armorScore": "Armor Score",
+      "armorSlots": "Armor Slots",
+      "minor": "Minor",
+      "major": "Major",
+      "severe": "Severe",
+      "minorDamage": "Mark 1 HP",
+      "majorDamage": "Mark 2 HP",
+      "severeDamage": "Mark 3 HP",
+      "health": "Health",
+      "stress": "Stress",
+      "hope": "Hope"
+    },
+    "rest": {
+      "shortRestDescription": "At short rest player can move domain cards between its loadout and vault for free, then choose twice from the list of downtime moves: 1) Clear 1d4+{{tier}} Hit Points for yourself or an ally, 2) Clear 1d4+{{tier}} Stress, 3) Clear 1d4+{{tier}} Armor Slots from your or an ally's armor, 4) Describe how you prepare yourself for the path ahead, then gain a Hope. If you choose to Prepare with one or more members of your party, you each gain 2 Hope.",
+      "longRestDescription": "At long rest player can move domain cards between its loadout and vault for free, then choose twice from the list of downtime moves: 1) Clear all Hit Points for yourself or an ally, 2) Clear all Stress, 3) Clear all Armor Slots from your or an ally's armor, 4) Describe how you prepare for the next day's adventure, then gain a Hope. If you choose to Prepare with one or more members of your party, you each gain 2 Hope."
+    },
+    "gold": {
+      "coins": "Coins",
+      "handfuls": "Handfuls",
+      "bags": "Bags",
+      "chests": "Chests",
+      "total": "Total coins"
+    },
+    "leveling": {
+      "level": "Class level",
+      "mastery": "Subclass mastery",
+      "health": "Permanent Hit Point slots",
+      "stress": "Permanent Stress slots",
+      "evasion": "Permanent +1 bonus to Evasion",
+      "proficiency": "Permanent +1 bonus to Proficiency",
+      "domainCards": "Additional domain card",
+      "domain": "Domain",
+      "subclass": "Subclass"
+    },
+    "domainCards": {
+      "limit": "Cards limit",
+      "spellcastTraits": "Spellcast traits",
+      "loadout": "Loadout",
+      "vault": "Vault",
+      "select": "Add domain cards",
+      "cardNote": "Domain card note"
+    },
+    "experience": {
+      "title": "Experience"
+    }
+  },
+  "pathfinder2": {
+    "static": {
+      "armor_class": "Armor Class",
+      "perception": "Perception",
+      "speed": "Speed"
+    },
+    "savingThrows": {
+      "fortitude": "Fortitude",
+      "reflex": "Reflex",
+      "will": "Will"
+    }
+  },
+  "dndV2": {
+    "rest": {
+      "shortRestDescription": "At the end of a short rest, a character may spend one or more Hit Dice. Each die spent allows the character to roll the corresponding die, add the character's Constitution modifier to it, and regain the resulting number of hit points.",
+      "longRestDescription": "At the end of a long rest, the character regains all expended hit points, plus half of the maximum Hit Dice and all expended spell slots."
+    }
+  },
+  "combat": {
+    "table": {
+      "bonus": "Bonus",
+      "damage": "Damage",
+      "distance": "Dist"
+    },
+    "list": {
+      "equipment": "Equipment",
+      "backpack": "Backpack"
+    }
+  },
+  "notes": {
+    "newNote": "Add new note",
+    "newNoteTitle": "Title",
+    "newNoteValue": "Note text"
+  },
+  "equipment": {
+    "quantity": "Qty",
+    "weight": "Weight",
+    "cost": "Cost",
+    "addItems": "Add items",
+    "equipedItems": "Equiped",
+    "backpackItems": "Backpacked",
+    "itemNote": "Item note",
+    "weaponsList": "Weapon",
+    "primaryWeapon": "Primary weapon",
+    "secondaryWeapon": "Secondary weapon",
+    "armorList": "Armor list",
+    "gold": "Gold",
+    "silver": "Silver",
+    "copper": "Copper",
+    "itemsList": "Items",
+    "ammoList": "Ammo",
+    "focusList": "Focus",
+    "toolsList": "Artisan's tools",
+    "musicList": "Musical instruments"
+  },
+  "rest": {
+    "shortRest": "Short rest",
+    "longRest": "Long rest",
+    "sessionRest": "Session rest"
+  },
+
+
+
   "back": "Back",
   "save": "Save",
   "find": "Find",
@@ -85,8 +221,7 @@
       "customHeritage": "Mixed heritage",
       "heritageName": "Heritage name",
       "mainFeature": "Main feature",
-      "secondaryFeature": "Secondary feature",
-      "domain": "Domain"
+      "secondaryFeature": "Secondary feature"
     }
   },
   "itemsPage": {
@@ -99,16 +234,7 @@
     "title": "Spells"
   },
   "character": {
-    "traits": "Traits",
     "thresholds": "Damage thresholds",
-    "abilities": "Abilities",
-    "combat": "Combat",
-    "rest": "Rest",
-    "classLevels": "Classes",
-    "equipment": "Equipment",
-    "backpack": "Backpack",
-    "spells": "Spells",
-    "professions": "Mastery",
     "onlyPreparedSpells": "Only prepared",
     "onlyAvailableSpells": "Only available",
     "allSpells": "All",
@@ -117,9 +243,6 @@
     "changeClasses": "Change character classes",
     "knownSpells": "Learning spells",
     "items": "Add equipment",
-    "itemsList": "Items list",
-    "weaponsList": "Weapons list",
-    "armorList": "Armor list",
     "staticSpell": "Static spell",
     "staticSpellPerDay": "per day",
     "staticSpellLevel": "as level",
@@ -134,40 +257,17 @@
     "resistance": "Resist",
     "immunity": "Immune", 
     "ammoList": "Ammo",
-    "focusList": "Focus",
-    "toolsList": "Artisan's tools",
-    "musicList": "Musical instruments",
-    "notes": "Notes",
-    "newNote": "Add new note",
-    "newNoteTitle": "Title",
-    "newNoteValue": "Note text",
-    "shortRest": "Short rest",
-    "longRest": "Long rest",
-    "sessionRest": "Session rest",
     "confirmChooseOnceFeature": "Confirm",
     "itemNote": "Item note",
     "spellNote": "Spell note",
-    "shortRestDescription": "At the end of a short rest, a character may spend one or more Hit Dice. Each die spent allows the character to roll the corresponding die, add the character's Constitution modifier to it, and regain the resulting number of hit points.",
-    "longRestDescription": "At the end of a long rest, the character regains all expended hit points, plus half of the maximum Hit Dice and all expended spell slots.",
     "deathSavingThrows": "Death saving throws",
     "deathSuccess": "Success",
     "deathFailure": "Failure",
     "dyingConditionValue": "Dying condition value",
     "avatar": "Avatar",
-    "primaryWeapon": "Primary weapon",
-    "secondaryWeapon": "Secondary weapon",
-    "allFilter": "All",
-    "dnd5": "D&D 5",
-    "dnd2024": "D&D 2024",
-    "pathfinder2": "Pathfinder 2",
-    "daggerheart": "Daggerheart",
-    "experience": "Experience",
     "bonuses": "Bonuses",
     "newBonus": "New bonus",
     "newBonusComment": "Comment",
-    "domainCards": "Domains",
-    "loadout": "Loadout",
-    "vault": "Vault",
     "beastTransformation": "Transformation to beast",
     "naturalForm": "Natural form"
   },
@@ -183,19 +283,6 @@
     "martialWeaponSkills": "Martial weapon",
     "tools": "Artisan's tools",
     "music": "Musical instruments"
-  },
-  "attacks": {
-    "bonus": "Bonus",
-    "damage": "Damage",
-    "distance": "Dist"
-  },
-  "equipment": {
-    "quantity": "Qty",
-    "weight": "Weight",
-    "cost": "Cost",
-    "gold": "Gold",
-    "silver": "Silver",
-    "copper": "Copper"
   },
   "terms": {
     "spellAttack": "Spell attack",
@@ -215,9 +302,7 @@
     "known": "Known",
     "prepared": "Prepared",
     "proficiencyBonus": "Proficiency bonus",
-    "hitDices": "Hit dices",
-    "domainCardsLimit": "Domain cards",
-    "spellcastTraits": "Spellcast traits"
+    "hitDices": "Hit dices"
   },
   "weaponDamageType": {
     "2hands": "Two handed",
@@ -478,64 +563,6 @@
       "artificer": {
         "alchemist": "Alchemist"
       }
-    }
-  },
-  "dnd2024": {
-    "sizes": {
-      "medium": "Medium",
-      "small": "Small"
-    }
-  },
-  "pathfinder2": {
-    "savingThrows": {
-      "fortitude": "Fortitude",
-      "reflex": "Reflex",
-      "will": "Will"
-    }
-  },
-  "daggerheart": {
-    "shortRestDescription": "At short rest player can move domain cards between its loadout and vault for free, then choose twice from the list of downtime moves: 1) Clear 1d4+{{tier}} Hit Points for yourself or an ally, 2) Clear 1d4+{{tier}} Stress, 3) Clear 1d4+{{tier}} Armor Slots from your or an ally's armor, 4) Describe how you prepare yourself for the path ahead, then gain a Hope. If you choose to Prepare with one or more members of your party, you each gain 2 Hope.",
-    "longRestDescription": "At long rest player can move domain cards between its loadout and vault for free, then choose twice from the list of downtime moves: 1) Clear all Hit Points for yourself or an ally, 2) Clear all Stress, 3) Clear all Armor Slots from your or an ally's armor, 4) Describe how you prepare for the next day's adventure, then gain a Hope. If you choose to Prepare with one or more members of your party, you each gain 2 Hope.",
-    "traits": {
-      "str": "Strength",
-      "agi": "Agility",
-      "fin": "Finesse",
-      "ins": "Instinct",
-      "pre": "Presence",
-      "know": "Knowledge"
-    },
-    "gold": {
-      "coins": "Coins",
-      "handfuls": "Handfuls",
-      "bags": "Bags",
-      "chests": "Chests",
-      "total": "Total coins"
-    },
-    "combat": {
-      "evasion": "Evasion",
-      "armorScore": "Armor Score",
-      "armor_score": "Armor Score",
-      "armorSlots": "Armor Slots",
-      "minor": "Minor",
-      "major": "Major",
-      "severe": "Severe",
-      "minorDamage": "Mark 1 HP",
-      "majorDamage": "Mark 2 HP",
-      "severeDamage": "Mark 3 HP",
-      "health": "Health",
-      "stress": "Stress",
-      "hope": "Hope",
-      "attack": "Attack",
-      "proficiency": "Proficiency"
-    },
-    "leveling": {
-      "level": "Class level",
-      "mastery": "Subclass mastery",
-      "health": "Permanent Hit Point slots",
-      "stress": "Permanent Stress slots",
-      "evasion": "Permanent +1 bonus to Evasion",
-      "proficiency": "Permanent +1 bonus to Proficiency",
-      "domainCards": "Additional domain card"
     }
   }
 }

@@ -2,10 +2,8 @@ import { Show } from 'solid-js';
 import * as i18n from '@solid-primitives/i18n';
 import { createWindowSize } from '@solid-primitives/resize-observer';
 
-import { PageHeader } from '../../components/molecules';
-import { IconButton, Select } from '../../components/atoms';
+import { PageHeader, IconButton, Select } from '../../components';
 import { Arrow } from '../../assets';
-
 import { useAppState, useAppLocale, useAppAlert } from '../../context';
 import { updateUserRequest } from '../../requests/updateUserRequest';
 

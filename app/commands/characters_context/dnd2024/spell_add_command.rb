@@ -29,7 +29,7 @@ module CharactersContext
           spell: input[:spell],
           data: {
             prepared_by: input[:target_spell_class],
-            ready_to_use: input[:target_spell_class] != ::Dnd2024::Character::WIZARD
+            ready_to_use: input[:target_spell_class] != 'wizard'
           }
         )
 

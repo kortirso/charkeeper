@@ -33,10 +33,11 @@ module AuthContext
 
     def do_prepare(input)
       input[:locale] = I18n.locale if input[:locale].blank?
+      input[:color_schema] = User.color_schemas.keys.sample
     end
 
     def do_persist(input)
-      result = User.create!(input.except(:locale))
+      result = User.create!(input)
 
       { result: result }
     rescue ActiveRecord::RecordNotUnique => _e

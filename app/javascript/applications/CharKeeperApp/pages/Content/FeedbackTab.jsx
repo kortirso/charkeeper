@@ -2,10 +2,8 @@ import { createSignal, Show, batch } from 'solid-js';
 import * as i18n from '@solid-primitives/i18n';
 import { createWindowSize } from '@solid-primitives/resize-observer';
 
-import { PageHeader } from '../../components/molecules';
-import { IconButton, Button } from '../../components/atoms';
+import { PageHeader, IconButton, Button, TextArea } from '../../components';
 import { Arrow } from '../../assets';
-
 import { useAppState, useAppLocale, useAppAlert } from '../../context';
 import { createUserFeedbackRequest } from '../../requests/createUserFeedbackRequest';
 
@@ -46,16 +44,13 @@ export const FeedbackTab = (props) => {
         </PageHeader>
       </Show>
       <div class="p-4 flex-1 flex flex-col overflow-y-scroll">
-        <div class="form-field">
-          <label class="text-sm/4 font-cascadia-light text-gray-400">{t('settingsPage.feedback')}</label>
-          <textarea
-            rows="10"
-            class="w-full border border-gray-200 rounded p-1 text-sm mb-2"
-            onInput={(e) => setFeedback(e.target.value)}
-            value={feedback()}
-          />
-        </div>
-        <Button default textable onClick={saveFeedback}>{t('save')}</Button>
+        <TextArea
+          rows="10"
+          labelText={t('settingsPage.feedback')}
+          value={feedback()}
+          onChange={(value) => setFeedback(value)}
+        />
+        <Button default textable classList="mt-2" onClick={saveFeedback}>{t('save')}</Button>
       </div>
     </>
   );

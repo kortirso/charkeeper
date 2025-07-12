@@ -9,6 +9,7 @@ export default [
       globals: {
         ...globals.document,
         ...globals.browser,
+        ...globals.node
       }
     }
   },

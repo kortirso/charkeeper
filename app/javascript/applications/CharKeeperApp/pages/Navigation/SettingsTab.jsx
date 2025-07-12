@@ -1,9 +1,8 @@
 import { Show } from 'solid-js'; 
 import * as i18n from '@solid-primitives/i18n';
 
-import { PageHeader, NotificationsBudge } from '../../components/molecules';
+import { PageHeader, NotificationsBudge } from '../../components';
 import { Telegram, Discord, Vk } from '../../assets';
-
 import { useAppState, useAppLocale } from '../../context';
 
 export const SettingsTab = () => {
@@ -16,8 +15,8 @@ export const SettingsTab = () => {
     <p
       class="relative py-3 px-4 cursor-pointer rounded"
       classList={{
-        'bg-blue-400 text-white': appState.activePage === link,
-        'bg-white text-black hover:bg-gray-100': appState.activePage !== link
+        'bg-blue-400 text-white dark:bg-red': appState.activePage === link,
+        'bg-white text-black hover:bg-gray-100 dark:text-snow dark:bg-neutral-800 dark:hover:bg-dusty': appState.activePage !== link
       }}
       onClick={() => navigate(link, {})}
     >
@@ -41,7 +40,7 @@ export const SettingsTab = () => {
         {renderSettingsLink(t('settingsPage.notifications'), 'notifications')}
         {renderSettingsLink(t('settingsPage.feedback'), 'feedback')}
         <div class="flex py-3 px-4 gap-4">
-          <p>{t('settingsPage.socials')}</p>
+          <p class="dark:text-snow">{t('settingsPage.socials')}</p>
           <a href="https://discord.gg/NFqWPkuZ" target="_blank" rel="noopener noreferrer" class="opacity-75 hover:opacity-100">
             <Discord />
           </a>
@@ -53,7 +52,7 @@ export const SettingsTab = () => {
           </a>
         </div>
         <p
-          class="relative py-3 px-4 cursor-pointer rounded hover:bg-gray-100"
+          class="relative py-3 px-4 cursor-pointer rounded hover:bg-gray-100 dark:text-snow dark:bg-neutral-800 dark:hover:bg-dusty"
           onClick={() => setAccessToken(null)}
         >
           {t('pages.settingsPage.logout')}
