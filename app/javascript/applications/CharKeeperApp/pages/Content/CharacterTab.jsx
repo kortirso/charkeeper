@@ -1,9 +1,8 @@
 import { createSignal, createEffect, Switch, Match, Show } from 'solid-js';
 import { createWindowSize } from '@solid-primitives/resize-observer';
 
-import { Dnd5, Pathfinder2, Daggerheart } from '../../components';
-import { PageHeader } from '../../components/molecules';
-import { IconButton } from '../../components/atoms';
+import { Dnd5, Pathfinder2, Daggerheart } from '../../pages';
+import { PageHeader, IconButton } from '../../components';
 import { Arrow } from '../../assets';
 import { useAppState } from '../../context';
 import { fetchCharacterRequest } from '../../requests/fetchCharacterRequest';

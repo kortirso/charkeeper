@@ -1,9 +1,8 @@
 import { createSignal, Switch, Match, batch } from 'solid-js';
 import * as i18n from '@solid-primitives/i18n';
 
-import { Input } from '../components/atoms';
+import { Input, Button } from '../components';
 import { useAppState, useAppLocale, useAppAlert } from '../context';
-
 import { signUpRequest } from '../requests/signUpRequest';
 import { signInRequest } from '../requests/signInRequest';
 
@@ -78,7 +77,7 @@ export const LoginPage = () => {
                 {t('pages.loginPage.signup')}
               </span>
             </p>
-            <button class="btn btn-primary mt-2" onClick={signIn}>{t('pages.loginPage.signin')}</button>
+            <Button default textable classList="mt-2" onClick={signIn}>{t('pages.loginPage.signin')}</Button>
           </Match>
           <Match when={page() === 'signup'}>
             <Input
@@ -94,7 +93,7 @@ export const LoginPage = () => {
                 {t('pages.loginPage.signin')}
               </span>
             </p>
-            <button class="btn btn-primary mt-2" onClick={signUp}>{t('pages.loginPage.signup')}</button>
+            <Button default textable classList="mt-2" onClick={signUp}>{t('pages.loginPage.signup')}</Button>
           </Match>
         </Switch>
       </div>

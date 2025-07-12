@@ -1,8 +1,6 @@
 @import 'tailwindcss';
 
-@utility bordered {
-  @apply border border-gray-200 rounded;
-}
+@custom-variant dark (&:where(.dark, .dark *));
 
 @font-face {
   font-family: 'CascadiaMono';
@@ -20,10 +18,28 @@
 }
 
 @theme {
-  --font-sans: 'CascadiaMono-SemiLight', 'sans-serif';
+  --font-sans: 'CascadiaMono-Light', 'sans-serif';
   --font-cascadia-light: 'CascadiaMono-Light', 'sans-serif';
   --font-cascadia: 'CascadiaMono-SemiLight', 'sans-serif';
   --font-cascadia-bold: 'CascadiaMono', 'sans-serif';
+
+  --breakpoint-emd: 72rem;
+  --breakpoint-elg: 88rem;
+  --breakpoint-exl: 104rem;
+
+  --color-dusty: #474747;
+  --color-lava: #F56F10;
+  --color-snow: #FBFBFB;
+  --color-red: #C6515C;
+}
+
+@utility bordered {
+  @apply border border-gray-200 rounded;
+}
+
+@utility blockable {
+  @apply bg-white border-2 border-gray-200 rounded-t-lg;
+  @apply dark:bg-dusty border dark:border-gray-500;
 }
 
 #charkeeper_app_html {
@@ -46,7 +62,7 @@
 }
 
 .modal {
-  @apply relative p-4 bg-white rounded;
+  @apply relative p-4 blockable dark:text-snow;
 
   max-width: 90%;
   max-height: 90%;
@@ -72,20 +88,16 @@
   @apply py-4 px-6 cursor-pointer text-xl;
 }
 
-.white-box {
-  @apply bg-white bordered;
-}
-
 .table thead tr td {
-  @apply uppercase pb-1 text-xs;
+  @apply uppercase pb-1 text-xs dark:text-snow;
 }
 
 .table tbody tr {
-  @apply border-b border-gray-200;
+  @apply border-b border-gray-200 dark:border-neutral-800;
 }
 
 .table tbody tr:nth-of-type(2n) {
-  @apply bg-gray-50;
+  @apply bg-gray-50 dark:bg-neutral-700;
 }
 
 .table tbody tr:last-of-type {
@@ -101,20 +113,25 @@
 
 .toggle {
   @apply w-6 h-6 border border-blue-400 bg-white rounded flex justify-center items-center cursor-pointer;
+  @apply dark:border-red dark:text-dusty;
 }
 
 .toggle.checked {
-  @apply bg-blue-400 text-white;
+  @apply bg-blue-400 text-snow;
+  @apply dark:bg-red dark:text-snow;
+}
+
+.toggle.outlined {
+  @apply border-dashed;
 }
 
 .form-field .form-value {
-  @apply bordered px-3 leading-8 bg-white;
-
-  color: '#666';
+  @apply bordered px-3 leading-8 bg-white text-black;
+  @apply dark:bg-neutral-700 dark:border-gray-500 dark:text-snow;
 }
 
 .form-field .form-label {
-  @apply text-sm font-cascadia-light text-gray-400;
+  @apply text-sm text-gray-400;
 }
 
 .form-field .form-text {
@@ -135,20 +152,23 @@
 
 .form-field .form-dropdown {
   @apply absolute w-full bg-white border-r border-l border-gray-200 z-10 overflow-y-scroll shadow;
+  @apply dark:bg-neutral-800 dark:border-gray-500;
 
   max-height: 7.5rem;
 }
 
 .form-field .form-dropdown li {
   @apply border-b border-gray-200 m-0 py-2 px-4;
+  @apply dark:text-snow dark:border-gray-500;
 }
 
 .form-field .form-dropdown li:hover {
   @apply bg-blue-400 text-white;
+  @apply dark:bg-dusty dark:text-snow;
 }
 
 #character-navigation {
-  @apply flex w-full overflow-x-scroll bg-white border-b border-gray-200 px-2;
+  @apply flex overflow-x-scroll bg-white border-b border-gray-200 px-2 dark:bg-neutral-800 dark:border-black;
 
   scrollbar-width: none;
 }
@@ -158,15 +178,15 @@
 }
 
 #character-navigation p {
-  @apply text-xs/6 font-cascadia mx-2 py-2 text-gray-400 cursor-pointer text-nowrap;
+  @apply text-xs/6 font-cascadia mx-2 py-2 text-gray-400 cursor-pointer text-nowrap dark:text-gray-300;
 }
 
 #character-navigation p.active {
-  @apply text-black border-b-2 border-blue-400;
+  @apply text-black border-b-2 border-blue-400 dark:text-snow dark:border-gray-500;
 }
 
 #character-navigation p.disabled {
-  @apply text-gray-200;
+  @apply text-gray-200 dark:text-gray-400;
 }
 
 .alert-box {

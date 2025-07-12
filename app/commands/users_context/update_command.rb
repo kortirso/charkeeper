@@ -6,11 +6,13 @@ module UsersContext
       config.messages.namespace = :user
 
       Locales = Dry::Types['strict.string'].enum(*I18n.available_locales.map(&:to_s))
+      ColorSchemas = Dry::Types['strict.string'].enum(*User.color_schemas.keys)
 
       params do
         required(:user).filled(type?: ::User)
         optional(:locale).filled(Locales)
         optional(:username).filled(:string)
+        optional(:color_schema).filled(ColorSchemas)
       end
 
       rule(:username) do
@@ -25,7 +27,7 @@ module UsersContext
     def do_persist(input)
       input[:user].update!(input.except(:user))
 
-      { result: input[:user].reload }
+      { result: input[:user] }
     end
   end
 end

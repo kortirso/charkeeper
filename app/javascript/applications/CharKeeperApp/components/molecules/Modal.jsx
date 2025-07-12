@@ -1,10 +1,13 @@
 import { Portal } from 'solid-js/web';
 import { createSignal, Show, children } from 'solid-js';
 
+import { useAppState, useAppLocale } from '../../context';
 import { clickOutside } from '../../helpers';
 
 export const createModal = () => {
   const [isOpen, setIsOpen] = createSignal(false);
+
+  const [appState] = useAppState();
 
   return {
     openModal() {
@@ -19,7 +22,10 @@ export const createModal = () => {
       return (
         <Portal>
           <Show when={isOpen()}>
-            <div class="fixed top-0 left-0 w-full h-full z-40 bg-black/75 flex items-center justify-center">
+            <div
+              class="fixed top-0 left-0 w-full h-full z-40 bg-black/75 flex items-center justify-center"
+              classList={{ 'dark': appState.colorSchema === 'dark' }}
+            >
               <div class="modal" use:clickOutside={() => setIsOpen(false)}>
                 {safeChildren()}
               </div>

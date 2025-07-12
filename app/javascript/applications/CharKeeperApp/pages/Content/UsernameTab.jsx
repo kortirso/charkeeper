@@ -2,10 +2,8 @@ import { Show, createEffect, createSignal } from 'solid-js';
 import * as i18n from '@solid-primitives/i18n';
 import { createWindowSize } from '@solid-primitives/resize-observer';
 
-import { PageHeader } from '../../components/molecules';
-import { IconButton, Input, Button } from '../../components/atoms';
+import { PageHeader, IconButton, Input, Button, Select } from '../../components';
 import { Arrow } from '../../assets';
-
 import { useAppState, useAppLocale, useAppAlert } from '../../context';
 import { updateUserRequest } from '../../requests/updateUserRequest';
 
@@ -13,8 +11,9 @@ export const UsernameTab = (props) => {
   const size = createWindowSize();
 
   const [username, setUsername] = createSignal('');
+  const [colorSchema, setColorSchema] = createSignal('');
 
-  const [appState, { changeUsername }] = useAppState();
+  const [appState, { changeUsername, changeColorSchema }] = useAppState();
   const [{ renderAlerts }] = useAppAlert();
   const [, dict] = useAppLocale();
 
@@ -22,13 +21,19 @@ export const UsernameTab = (props) => {
 
   createEffect(() => {
     setUsername(appState.username);
+    setColorSchema(appState.colorSchema);
   });
 
-  const updateUsername = async () => {
-    const result = await updateUserRequest(appState.accessToken, { username: username() });
+  const updateProfile = async () => {
+    let payload = { color_schema: colorSchema() };
+    if (username() !== appState.username) payload = { ...payload, username: username() };
 
-    if (result.errors === undefined) changeUsername(username());
-    else renderAlerts(result.errors);
+    const result = await updateUserRequest(appState.accessToken, payload);
+
+    if (result.errors === undefined) {
+      changeUsername(username());
+      changeColorSchema(colorSchema());
+    } else renderAlerts(result.errors);
   }
 
   return (
@@ -45,15 +50,20 @@ export const UsernameTab = (props) => {
         </PageHeader>
       </Show>
       <div class="p-4 flex-1 flex flex-col overflow-y-scroll">
-        <div class="form-field">
-          <Input
-            containerClassList="mb-2"
-            labelText={t('settingsPage.username')}
-            value={username()}
-            onInput={(value) => setUsername(value)}
-          />
-        </div>
-        <Button default textable onClick={updateUsername}>{t('save')}</Button>
+        <Input
+          containerClassList="mb-2"
+          labelText={t('settingsPage.username')}
+          value={username()}
+          onInput={(value) => setUsername(value)}
+        />
+        <Select
+          containerClassList="mb-4"
+          labelText={t('pages.settingsPage.colorSchema')}
+          items={{ 'light': 'Light', 'dark': 'Dark' }}
+          selectedValue={colorSchema()}
+          onSelect={(value) => setColorSchema(value)}
+        />
+        <Button default textable onClick={updateProfile}>{t('save')}</Button>
       </div>
     </>
   );

@@ -1,9 +1,12 @@
-import { createSignal, Show, For } from 'solid-js';
+import { createSignal, Show, For, splitProps } from 'solid-js';
 
+import { Label } from './Label';
 import { Chevron } from '../../assets';
 import { clickOutside } from '../../helpers';
 
 export const Select = (props) => {
+  const [labelProps] = splitProps(props, ['labelText', 'labelClassList']);
+
   const [isOpen, setIsOpen] = createSignal(false);
 
   const onSelect = (value) => {
@@ -16,22 +19,20 @@ export const Select = (props) => {
       class={[props.containerClassList, 'form-field'].join(' ')}
       use:clickOutside={() => setIsOpen(false)}
     >
-      <Show when={props.labelText}>
-        <label class="text-sm/4 font-cascadia-light text-gray-400">{props.labelText}</label>
-      </Show>
+      <Label { ...labelProps } />
       <div class={[props.classList, 'relative cursor-pointer'].join(' ')}>
         <div
           class={[isOpen() ? 'is-open' : '', 'form-value flex justify-between items-center h-12'].join(' ')}
           onClick={() => setIsOpen(!isOpen())}
         >
-          <span class="font-cascadia-light">{props.selectedValue ? props.items[props.selectedValue] : ''}</span>
+          <span>{props.selectedValue ? props.items[props.selectedValue] : ''}</span>
           <Chevron rotated={isOpen()} />
         </div>
         <Show when={isOpen()}>
           <ul class="form-dropdown">
             <For each={Object.entries(props.items)}>
               {([key, value]) =>
-                <li class="font-cascadia-light" onClick={() => onSelect(key)}>
+                <li onClick={() => onSelect(key)}>
                   {value}
                 </li>
               }

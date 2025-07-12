@@ -7,6 +7,7 @@ const CHARKEEPER_STATE_DATA_KEY = 'CharKeeperStateData';
 
 export const AppStateProvider = (props) => {
   const [appState, setAppState] = createStore({
+    colorSchema: props.colorSchema || 'light', // eslint-disable-line solid/reactivity
     isAdmin: props.isAdmin || false, // eslint-disable-line solid/reactivity
     accessToken: props.accessToken, // eslint-disable-line solid/reactivity
     username: props.username, // eslint-disable-line solid/reactivity
@@ -30,9 +31,7 @@ export const AppStateProvider = (props) => {
       const store = await Store.load('settings.json');
       const value = await store.get(CHARKEEPER_STATE_DATA_KEY);
       return value;
-    } catch(e) {
-      return null;
-    }
+    } catch(e) { return null } // eslint-disable-line no-unused-vars
   }
 
   const updateStore = async (payload) => {
@@ -40,7 +39,7 @@ export const AppStateProvider = (props) => {
       const Store = require('@tauri-apps/plugin-store').Store
       const store = await Store.load('settings.json')
       await store.set(CHARKEEPER_STATE_DATA_KEY, JSON.stringify(payload))
-    } catch(e) {}
+    } catch(e) { return null } // eslint-disable-line no-unused-vars
   }
 
   const store = [
@@ -58,6 +57,9 @@ export const AppStateProvider = (props) => {
       },
       changeUsername(value) {
         setAppState({ ...appState, username: value });
+      },
+      changeColorSchema(value) {
+        setAppState({ ...appState, colorSchema: value });
       },
       navigate(page, params) {
         setAppState({ ...appState, activePage: page, activePageParams: params });
