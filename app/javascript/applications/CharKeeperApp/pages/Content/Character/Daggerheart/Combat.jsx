@@ -30,24 +30,24 @@ export const DaggerheartCombat = (props) => {
           <tbody>
             <For each={values}>
               {(attack) =>
-                <tr>
+                <tr class="dark:text-snow">
                   <td class="py-1 pl-1">
-                    <p class="dark:text-snow">{attack.name}</p>
+                    <p>{attack.name}</p>
                     <Show when={attack.features.length > 0}>
-                      <p class="text-xs dark:text-snow">
+                      <p class="text-xs">
                         {attack.features.join(', ')}
                       </p>
                     </Show>
                     <Show when={attack.notes}>
-                      <p class="text-xs dark:text-snow">{attack.notes}</p>
+                      <p class="text-xs">{attack.notes}</p>
                     </Show>
                   </td>
-                  <td class="py-1 text-center dark:text-snow">{modifier(attack.attack_bonus)}</td>
-                  <td class="py-1 text-center dark:text-snow">
+                  <td class="py-1 text-center">{modifier(attack.attack_bonus)}</td>
+                  <td class="py-1 text-center">
                     <p>{attack.damage}{attack.damage_bonus > 0 ? modifier(attack.damage_bonus) : ''}</p>
                     <p class="text-xs">{attack.damage_type}</p>
                   </td>
-                  <td class="py-1 text-center dark:text-snow">
+                  <td class="py-1 text-center">
                     <p>{attack.range}</p>
                   </td>
                 </tr>

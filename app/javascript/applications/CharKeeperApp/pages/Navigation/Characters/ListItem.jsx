@@ -23,7 +23,7 @@ export const CharactersListItem = (props) => {
       class="p-4 pb-0 pr-0 flex items-center cursor-pointer"
       classList={{
         'bg-white hover:bg-gray-100 dark:bg-neutral-800 dark:hover:bg-dusty': !props.isActive,
-        'bg-blue-400 dark:bg-red': props.isActive
+        'bg-blue-400 dark:bg-fuzzy-red': props.isActive
       }}
       onClick={props.onClick} // eslint-disable-line solid/reactivity
     >
@@ -36,7 +36,7 @@ export const CharactersListItem = (props) => {
         class="flex-1 flex pb-4 pr-4"
         classList={{
           'border-b border-gray-200 dark:border-dusty': !props.isActive,
-          'border-b border-blue-400 dark:border-red': props.isActive
+          'border-b border-blue-400 dark:border-fuzzy-red': props.isActive
         }}>
         <div class="flex-1">
           <div class="flex">

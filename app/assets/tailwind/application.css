@@ -28,9 +28,9 @@
   --breakpoint-exl: 104rem;
 
   --color-dusty: #474747;
-  --color-lava: #F56F10;
+  /*--color-lava: #F56F10;*/
   --color-snow: #FBFBFB;
-  --color-red: #C6515C;
+  --color-fuzzy-red: #C6515C;
 }
 
 @utility bordered {
@@ -113,12 +113,12 @@
 
 .toggle {
   @apply w-6 h-6 border border-blue-400 bg-white rounded flex justify-center items-center cursor-pointer;
-  @apply dark:border-red dark:text-dusty;
+  @apply dark:border-fuzzy-red dark:text-dusty;
 }
 
 .toggle.checked {
   @apply bg-blue-400 text-snow;
-  @apply dark:bg-red dark:text-snow;
+  @apply dark:bg-fuzzy-red dark:text-snow;
 }
 
 .toggle.outlined {
@@ -182,7 +182,7 @@
 }
 
 #character-navigation p.active {
-  @apply text-black border-b-2 border-blue-400 dark:text-snow dark:border-gray-500;
+  @apply text-black border-b-2 border-blue-400 dark:text-snow dark:border-fuzzy-red;
 }
 
 #character-navigation p.disabled {

@@ -35,7 +35,7 @@ export const Daggerheart = (props) => {
             <Switch>
               <Match when={activeMobileTab() === 'traits'}>
                 <DaggerheartTraits character={character()} onReplaceCharacter={props.onReplaceCharacter} />
-                <div class="mt-2">
+                <div class="mt-4">
                   <DaggerheartExperience character={character()} onReplaceCharacter={props.onReplaceCharacter} />
                 </div>
                 <div class="mt-4">

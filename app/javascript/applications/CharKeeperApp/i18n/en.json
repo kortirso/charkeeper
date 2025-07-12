@@ -35,6 +35,10 @@
     }
   },
   "daggerheart": {
+    "terms": {
+      "traits": "Traits",
+      "thresholds": "Damage thresholds"
+    },
     "static": {
       "proficiency": "Proficiency",
       "evasion": "Evasion",
@@ -85,6 +89,15 @@
     },
     "experience": {
       "title": "Experience"
+    },
+    "bonuses": {
+      "title": "Bonuses",
+      "health": "Health",
+      "stress": "Stress",
+      "evasion": "Evasion",
+      "armor_score": "Armor",
+      "attack": "Attack",
+      "proficiency": "Proficiency"
     }
   },
   "pathfinder2": {

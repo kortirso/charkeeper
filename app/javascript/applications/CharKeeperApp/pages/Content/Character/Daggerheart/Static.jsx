@@ -13,7 +13,7 @@ export const DaggerheartStatic = (props) => {
 
   return (
     <ErrorWrapper payload={{ character_id: character().id, key: 'DaggerheartStatic' }}>
-      <div class="flex flex-wrap justify-center gap-4">
+      <div class="flex flex-wrap justify-center gap-2">
         <For each={['proficiency', 'evasion', 'armor_score']}>
           {(slug) =>
             <div class="flex-1 emd:w-1/4">

@@ -91,7 +91,7 @@ export const Bonuses = (props) => {
         fallback={
           <div class="p-4 flex-1 flex flex-col blockable">
             <div class="flex-1">
-              <p class="dark:text-snow">{t('character.traits')}</p>
+              <p class="dark:text-snow">{t('daggerheart.terms.traits')}</p>
               <div class="grid grid-cols-3 lg:grid-cols-6 gap-2 mb-4">
                 <For each={Object.entries(config.traits).map(([key, values]) => [key, values.name[locale()]])}>
                   {([slug, trait]) =>
@@ -104,26 +104,26 @@ export const Bonuses = (props) => {
                   }
                 </For>
               </div>
-              <p class="dark:text-snow">{t('character.thresholds')}</p>
+              <p class="dark:text-snow">{t('daggerheart.terms.thresholds')}</p>
               <div class="grid grid-cols-3 gap-2 mb-4">
                 <For each={['minor', 'major', 'severe']}>
                   {(slug) =>
                     <Input
                       numeric
-                      labelText={t(`daggerheart.combat.${slug}`)}
+                      labelText={t(`daggerheart.health.${slug}`)}
                       value={bonusForm.thresholds[slug]}
                       onInput={(value) => setBonusForm({ ...bonusForm, thresholds: { ...bonusForm.thresholds, [slug]: Number(value) } })}
                     />
                   }
                 </For>
               </div>
-              <p class="dark:text-snow">{t('character.bonuses')}</p>
+              <p class="dark:text-snow">{t('daggerheart.bonuses.title')}</p>
               <div class="grid grid-cols-3 lg:grid-cols-6 gap-2 mb-4">
                 <For each={['health', 'stress', 'evasion', 'armor_score', 'attack', 'proficiency']}>
                   {(slug) =>
                     <Input
                       numeric
-                      labelText={t(`daggerheart.combat.${slug}`)}
+                      labelText={t(`daggerheart.bonuses.${slug}`)}
                       value={bonusForm[slug]}
                       onInput={(value) => setBonusForm({ ...bonusForm, [slug]: Number(value) })}
                     />
@@ -161,32 +161,32 @@ export const Bonuses = (props) => {
                 <div class="grid grid-cols-2 lg:grid-cols-3">
                   <Show when={bonus.value.traits}>
                     <div>
-                      <p class="mb-2">{t('character.traits')}</p>
+                      <p class="mb-2">{t('daggerheart.terms.traits')}</p>
                       <For each={Object.entries(bonus.value.traits)}>
                         {([slug, value]) =>
-                          <p class="">{t(`daggerheart.traits.${slug}`)} - {modifier(value)}</p>
+                          <p class="">{config.traits[slug].name[locale()]} - {modifier(value)}</p>
                         }
                       </For>
                     </div>
                   </Show>
                   <Show when={bonus.value.thresholds}>
                     <div>
-                      <p class="mb-2">{t('character.thresholds')}</p>
+                      <p class="mb-2">{t('daggerheart.terms.thresholds')}</p>
                       <For each={['minor', 'major', 'severe']}>
                         {(slug) =>
                           <Show when={bonus.value.thresholds[slug]}>
-                            <p class="">{t(`daggerheart.combat.${slug}`)} - {modifier(bonus.value.thresholds[slug])}</p>
+                            <p class="">{t(`daggerheart.health.${slug}`)} - {modifier(bonus.value.thresholds[slug])}</p>
                           </Show>
                         }
                       </For>
                     </div>
                   </Show>
                   <div>
-                    <p class="mb-2">{t('character.bonuses')}</p>
+                    <p class="mb-2">{t('daggerheart.bonuses.title')}</p>
                     <For each={['health', 'stress', 'evasion', 'armor_score', 'attack', 'proficiency']}>
                       {(slug) =>
                         <Show when={bonus.value[slug]}>
-                          <p class="">{t(`daggerheart.combat.${slug}`)} - {modifier(bonus.value[slug])}</p>
+                          <p class="">{t(`daggerheart.bonuses.${slug}`)} - {modifier(bonus.value[slug])}</p>
                         </Show>
                       }
                     </For>

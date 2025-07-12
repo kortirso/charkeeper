@@ -15,7 +15,7 @@ export const SettingsTab = () => {
     <p
       class="relative py-3 px-4 cursor-pointer rounded"
       classList={{
-        'bg-blue-400 text-white dark:bg-red': appState.activePage === link,
+        'bg-blue-400 text-white dark:bg-fuzzy-red': appState.activePage === link,
         'bg-white text-black hover:bg-gray-100 dark:text-snow dark:bg-neutral-800 dark:hover:bg-dusty': appState.activePage !== link
       }}
       onClick={() => navigate(link, {})}

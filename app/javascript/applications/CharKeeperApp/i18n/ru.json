@@ -35,6 +35,10 @@
     }
   },
   "daggerheart": {
+    "terms": {
+      "traits": "Способности",
+      "thresholds": "Пороги урона"
+    },
     "static": {
       "proficiency": "Мастерство",
       "evasion": "Уклонение",
@@ -85,6 +89,15 @@
     },
     "experience": {
       "title": "Опытность"
+    },
+    "bonuses": {
+      "title": "Бонусы",
+      "health": "Здоровье",
+      "stress": "Стресс",
+      "evasion": "Уклонение",
+      "armor_score": "Доспех",
+      "attack": "Атака",
+      "proficiency": "Мастерство"
     }
   },
   "pathfinder2": {

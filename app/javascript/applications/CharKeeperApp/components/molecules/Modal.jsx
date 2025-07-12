@@ -1,7 +1,7 @@
 import { Portal } from 'solid-js/web';
 import { createSignal, Show, children } from 'solid-js';
 
-import { useAppState, useAppLocale } from '../../context';
+import { useAppState } from '../../context';
 import { clickOutside } from '../../helpers';
 
 export const createModal = () => {
