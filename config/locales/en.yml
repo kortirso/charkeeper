@@ -24,7 +24,7 @@ en:
         telegram_link: web view application
         will_work_on: Will work on
         web: Web application in browsers
-        web_description: Simply run %{href} (works but in development)
+        web_description: Simply run %{href}
         web_link: dashboard
         dashboard_link: Dashboard
         mobile: iOS and Android mobile applications

@@ -12,7 +12,7 @@ export const TextArea = (props) => {
         rows={props.rows || 2}
         class={[
           props.classList,
-          'w-full rounded p-1 border border-gray-200 text-sm dark:bg-neutral-700 dark:border-gray-500 dark:text-snow'
+          'w-full rounded p-1 border border-gray-200 bg-white text-sm dark:bg-neutral-700 dark:border-gray-500 dark:text-snow'
         ].join(' ')}
         onInput={(e) => props.onChange(e.target.value)}
         value={props.value}

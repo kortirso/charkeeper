@@ -24,7 +24,7 @@ ru:
         telegram_link: ссылку на бота
         will_work_on: Будет работать
         web: Веб-приложение для браузера
-        web_description: Просто запустите %{href} (работает, но улучшается)
+        web_description: Просто запустите %{href}
         web_link: панель управления
         dashboard_link: Панель управления
         mobile: Мобильные приложения

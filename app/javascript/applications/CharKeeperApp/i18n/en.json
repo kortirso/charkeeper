@@ -12,7 +12,8 @@
     },
     "settingsPage": {
       "logout": "Logout",
-      "colorSchema": "Color schema"
+      "colorSchema": "Color schema",
+      "version": "Version"
     },
     "characterNavigation": {
       "allFilter": "All",

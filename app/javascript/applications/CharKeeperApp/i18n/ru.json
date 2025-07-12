@@ -12,7 +12,8 @@
     },
     "settingsPage": {
       "logout": "Выход",
-      "colorSchema": "Цветовая палитра"
+      "colorSchema": "Цветовая палитра",
+      "version": "Версия"
     },
     "characterNavigation": {
       "allFilter": "Все",
