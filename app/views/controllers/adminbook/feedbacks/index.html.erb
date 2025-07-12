@@ -9,7 +9,7 @@
   <tbody>
     <% @feedbacks.each_with_index do |feedback, index| %>
       <tr>
-        <td><%= index + 1 %></td>
+        <td class="pr-2"><%= index + 1 %></td>
         <td><%= feedback.value %></td>
         <td><%= feedback.created_at.strftime('%d-%m-%Y') %></td>
       </tr>

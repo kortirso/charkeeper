@@ -10,13 +10,15 @@
       <td>First name</td>
       <td>Last name</td>
       <td>Active</td>
+      <td>Locale</td>
+      <td>Color</td>
       <td>Created</td>
     </tr>
   </thead>
   <tbody>
     <% @users.each_with_index do |user, index| %>
       <tr>
-        <td><%= index + 1 %></td>
+        <td class="pr-2"><%= index + 1 %></td>
         <td class="pr-4"><%= user.id %></td>
         <td><%= user.username %></td>
         <% if user.identities.blank? %>
@@ -36,6 +38,8 @@
             <td><%= identity.active %></td>
           <% end %>
         <% end %>
+        <td><%= user.locale %></td>
+        <td><%= user.color_schema %></td>
         <td><%= user.created_at.strftime('%d-%m-%Y') %></td>
       </tr>
     <% end %>

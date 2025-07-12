@@ -16,7 +16,7 @@
   <tbody>
     <% @notifications.each_with_index do |notification, index| %>
       <tr>
-        <td><%= index + 1 %></td>
+        <td class="pr-2"><%= index + 1 %></td>
         <td class="pr-4">
           <%= link_to edit_adminbook_users_notification_path(notification.id), class: 'underline text-blue-400' do %>
             <%= notification.id %></td>

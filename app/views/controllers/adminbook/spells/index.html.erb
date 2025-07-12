@@ -15,7 +15,7 @@
   <tbody>
     <% @spells.each_with_index do |spell, index| %>
       <tr>
-        <td><%= index + 1 %></td>
+        <td class="pr-2"><%= index + 1 %></td>
         <td class="pr-4">
           <%= link_to edit_adminbook_spell_path(spell.id, provider: params[:provider]), class: 'underline text-blue-400' do %>
             <%= spell.id %></td>
