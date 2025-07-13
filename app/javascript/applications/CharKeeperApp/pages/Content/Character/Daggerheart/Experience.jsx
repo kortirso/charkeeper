@@ -9,10 +9,10 @@ import { updateCharacterRequest } from '../../../../requests/updateCharacterRequ
 import { modifier } from '../../../../helpers';
 
 export const DaggerheartExperience = (props) => {
-  const character = () => props.character;
+  const object = () => props.object;
 
   const [editMode, setEditMode] = createSignal(false);
-  const [experienceData, setExperienceData] = createSignal(character().experience);
+  const [experienceData, setExperienceData] = createSignal(object().experience);
 
   const [appState] = useAppState();
   const [{ renderAlerts }] = useAppAlert();
@@ -22,23 +22,30 @@ export const DaggerheartExperience = (props) => {
 
   const cancelEditing = () => {
     batch(() => {
-      setExperienceData(character().experience);
+      setExperienceData(object().experience);
       setEditMode(false);
     });
   }
 
   const updateCharacter = async () => {
     const payload = { experience: experienceData() };
-    const result = await updateCharacterRequest(
-      appState.accessToken, character().provider, character().id, { character: payload }
-    );
 
-    if (result.errors === undefined) {
-      batch(() => {
-        props.onReplaceCharacter(result.character);
-        setEditMode(false);
-      });
-    } else renderAlerts(result.errors);
+    let result;
+    if (props.callback) {
+      await props.callback(payload);
+      setEditMode(false);
+    } else {
+      result = await updateCharacterRequest(
+        appState.accessToken, object().provider, object().id, { character: payload }
+      );
+
+      if (result.errors === undefined) {
+        batch(() => {
+          if (props.callback) props.onReplaceCharacter(result.character);
+          setEditMode(false);
+        });
+      } else renderAlerts(result.errors);
+    }
   }
 
   const addDraftExperience = () => {
@@ -57,7 +64,7 @@ export const DaggerheartExperience = (props) => {
   }
 
   return (
-    <ErrorWrapper payload={{ character_id: character().id, key: 'DaggerheartExperience' }}>
+    <ErrorWrapper payload={{ character_id: object().id, key: 'DaggerheartExperience' }}>
       <EditWrapper
         editMode={editMode()}
         onSetEditMode={setEditMode}
@@ -69,7 +76,7 @@ export const DaggerheartExperience = (props) => {
           <Show
             when={editMode()}
             fallback={
-              <For each={character().experience}>
+              <For each={object().experience}>
                 {(exp) =>
                   <div class="flex mt-2 dark:text-snow">
                     <p class="mr-4">{exp.exp_name}</p>

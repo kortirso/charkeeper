@@ -9,6 +9,12 @@ module DaggerheartCharacter
 
     def method_missing(_method, *args); end
 
+    # rubocop: disable Naming/PredicateMethod
+    def can_have_companion
+      subclasses.value?('beastbound')
+    end
+    # rubocop: enable Naming/PredicateMethod
+
     def modified_traits
       @modified_traits ||=
         traits.merge(

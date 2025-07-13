@@ -202,7 +202,7 @@ export const Dnd5 = (props) => {
               <Match when={activeMobileTab() === 'spells'}>
                 <Switch>
                   <Match when={spellClassesList().length === 0}>
-                    <div class="p-4 flex blockable">
+                    <div class="p-4 flex blockable dark:text-snow">
                       <p>{t('character.no_magic')}</p>
                     </div>
                   </Match>

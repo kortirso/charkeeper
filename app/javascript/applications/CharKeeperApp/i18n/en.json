@@ -32,7 +32,8 @@
       "avatar": "Avatar",
       "abilities": "Abilities",
       "professions": "Mastery",
-      "spells": "Spells"
+      "spells": "Spells",
+      "companion": "Companion"
     }
   },
   "daggerheart": {
@@ -103,6 +104,23 @@
     "beast": {
       "transformation": "Transformation to beast",
       "naturalForm": "Natural form"
+    },
+    "companion": {
+      "notAvailable": "Companion is not available",
+      "name": "Companion's name",
+      "evasion": "Evasion",
+      "damage": "Damage",
+      "distance": "Distance",
+      "leveling": {
+        "intelligent": "Intelligent",
+        "light": "Light in the Dark",
+        "comfort": "Creature comfort",
+        "armored": "Armored",
+        "vicious": "Vicious",
+        "resilient": "Resilient",
+        "bonded": "Bonded",
+        "aware": "Aware"
+      }
     }
   },
   "pathfinder2": {
@@ -171,6 +189,7 @@
 
 
 
+  "create": "Create",
   "back": "Back",
   "save": "Save",
   "find": "Find",

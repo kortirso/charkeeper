@@ -7,6 +7,10 @@ en:
     errors:
       unexpected_key: Unknown param
       included_in?: Unknown value
+      character_companion:
+        rules:
+          character:
+            must_be_beastbound: Only ranger subclass beastbound can have companion
       character_item:
         rules:
           ready_to_use:

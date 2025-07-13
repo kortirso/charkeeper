@@ -7,6 +7,10 @@ ru:
     errors:
       unexpected_key: Неизвестный параметр
       included_in?: Неизвестное значение
+      character_companion:
+        rules:
+          character:
+            must_be_beastbound: Только подкласс следопыта Звериные узы иметь создавать питомца
       character_item:
         rules:
           ready_to_use:

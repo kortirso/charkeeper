@@ -32,7 +32,8 @@
       "avatar": "Аватар",
       "abilities": "Способности",
       "professions": "Владения",
-      "spells": "Заклинания"
+      "spells": "Заклинания",
+      "companion": "Питомец"
     }
   },
   "daggerheart": {
@@ -103,6 +104,23 @@
     "beast": {
       "transformation": "Превращение в зверя",
       "naturalForm": "Естественная форма"
+    },
+    "companion": {
+      "notAvailable": "Питомцы не доступны для этого персонажа",
+      "name": "Имя питомца",
+      "evasion": "Уклонение",
+      "damage": "Урон",
+      "distance": "Дистанция",
+      "leveling": {
+        "intelligent": "Intelligent",
+        "light": "Light in the Dark",
+        "comfort": "Creature comfort",
+        "armored": "Armored",
+        "vicious": "Vicious",
+        "resilient": "Resilient",
+        "bonded": "Bonded",
+        "aware": "Aware"
+      }
     }
   },
   "pathfinder2": {
@@ -171,7 +189,7 @@
 
 
 
-
+  "create": "Создать",
   "back": "Назад",
   "save": "Сохранить",
   "find": "Найти",

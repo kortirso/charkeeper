@@ -57,6 +57,10 @@ module Charkeeper
     register('commands.characters_context.daggerheart.add_spell') { CharactersContext::Daggerheart::AddSpellCommand.new }
     register('commands.characters_context.daggerheart.change_spell') { CharactersContext::Daggerheart::ChangeSpellCommand.new }
     register('commands.characters_context.daggerheart.change_energy') { CharactersContext::Daggerheart::ChangeEnergyCommand.new }
+    register('commands.characters_context.daggerheart.add_companion') { CharactersContext::Daggerheart::AddCompanionCommand.new }
+    register('commands.characters_context.daggerheart.change_companion') {
+      CharactersContext::Daggerheart::ChangeCompanionCommand.new
+    }
 
     register('commands.image_processing.attach_avatar_by_file') { ImageProcessingContext::AttachAvatarByFileCommand.new }
     register('commands.image_processing.attach_avatar_by_url') { ImageProcessingContext::AttachAvatarByUrlCommand.new }
