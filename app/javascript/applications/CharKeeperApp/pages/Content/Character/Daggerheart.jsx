@@ -2,7 +2,7 @@ import { createSignal, Switch, Match } from 'solid-js';
 import * as i18n from '@solid-primitives/i18n';
 
 import {
-  DaggerheartTraits, DaggerheartStatic, DaggerheartHealth, DaggerheartCombat, DaggerheartBeastform,
+  DaggerheartTraits, DaggerheartStatic, DaggerheartHealth, DaggerheartCombat, DaggerheartBeastform, DaggerheartCompanion,
   DaggerheartDomainCards, DaggerheartRest, DaggerheartLeveling, DaggerheartExperience, DaggerheartGold, DaggerheartFeats
 } from '../../../pages';
 import { CharacterNavigation, Equipment, Bonuses, Notes, Avatar, ContentWrapper } from '../../../components';
@@ -27,7 +27,7 @@ export const Daggerheart = (props) => {
       mobileView={
         <>
           <CharacterNavigation
-            tabsList={['traits', 'combat', 'equipment', 'domainCards', 'bonuses', 'rest', 'notes', 'classLevels', 'avatar']}
+            tabsList={['traits', 'combat', 'equipment', 'domainCards', 'companion', 'bonuses', 'rest', 'notes', 'classLevels', 'avatar']}
             activeTab={activeMobileTab()}
             setActiveTab={setActiveMobileTab}
           />
@@ -36,7 +36,7 @@ export const Daggerheart = (props) => {
               <Match when={activeMobileTab() === 'traits'}>
                 <DaggerheartTraits character={character()} onReplaceCharacter={props.onReplaceCharacter} />
                 <div class="mt-4">
-                  <DaggerheartExperience character={character()} onReplaceCharacter={props.onReplaceCharacter} />
+                  <DaggerheartExperience object={character()} onReplaceCharacter={props.onReplaceCharacter} />
                 </div>
                 <div class="mt-4">
                   <DaggerheartBeastform character={character()} onReplaceCharacter={props.onReplaceCharacter} />
@@ -75,6 +75,9 @@ export const Daggerheart = (props) => {
                   onReloadCharacter={props.onReloadCharacter}
                 />
               </Match>
+              <Match when={activeMobileTab() === 'companion'}>
+                <DaggerheartCompanion character={character()} />
+              </Match>
               <Match when={activeMobileTab() === 'bonuses'}>
                 <Bonuses character={character()} onReloadCharacter={props.onReloadCharacter} />
               </Match>
@@ -101,7 +104,7 @@ export const Daggerheart = (props) => {
             <DaggerheartStatic character={character()} />
           </div>
           <div class="mt-4">
-            <DaggerheartExperience character={character()} onReplaceCharacter={props.onReplaceCharacter} />
+            <DaggerheartExperience object={character()} onReplaceCharacter={props.onReplaceCharacter} />
           </div>
           <div class="mt-4">
             <DaggerheartBeastform character={character()} onReplaceCharacter={props.onReplaceCharacter} />
@@ -114,7 +117,7 @@ export const Daggerheart = (props) => {
       rightView={
         <>
           <CharacterNavigation
-            tabsList={['combat', 'equipment', 'domainCards', 'bonuses', 'rest', 'notes', 'classLevels', 'avatar']}
+            tabsList={['combat', 'equipment', 'domainCards', 'companion', 'bonuses', 'rest', 'notes', 'classLevels', 'avatar']}
             activeTab={activeTab()}
             setActiveTab={setActiveTab}
           />
@@ -146,6 +149,9 @@ export const Daggerheart = (props) => {
                   onReplaceCharacter={props.onReplaceCharacter}
                   onReloadCharacter={props.onReloadCharacter}
                 />
+              </Match>
+              <Match when={activeTab() === 'companion'}>
+                <DaggerheartCompanion character={character()} />
               </Match>
               <Match when={activeTab() === 'bonuses'}>
                 <Bonuses character={character()} onReloadCharacter={props.onReloadCharacter} />

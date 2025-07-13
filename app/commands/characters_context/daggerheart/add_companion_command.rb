@@ -12,9 +12,9 @@ module CharactersContext
         end
 
         rule(:character) do
-          next if value.data.main_class == 'ranger'
+          next if value.data.subclasses.value?('beastbound')
 
-          key.failure(:must_be_ranger)
+          key.failure(:must_be_beastbound)
         end
       end
 

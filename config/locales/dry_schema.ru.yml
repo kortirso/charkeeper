@@ -10,7 +10,7 @@ ru:
       character_companion:
         rules:
           character:
-            must_be_ranger: Только следопыт иметь создавать питомца
+            must_be_beastbound: Только подкласс следопыта Звериные узы иметь создавать питомца
       character_item:
         rules:
           ready_to_use:

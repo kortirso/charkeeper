@@ -22,17 +22,6 @@
     "kind": "static"
   },
   {
-    "slug": "companion",
-    "title": { "en": "Companion", "ru": "Companion" },
-    "description": {
-      "en": "You have an animal companion of your choice.",
-      "ru": "You have an animal companion of your choice."
-    },
-    "origin": "subclass",
-    "origin_value": "beastbound",
-    "kind": "text"
-  },
-  {
     "slug": "battle_bonded",
     "title": { "en": "Battle-Bonded", "ru": "Battle-Bonded" },
     "description": {

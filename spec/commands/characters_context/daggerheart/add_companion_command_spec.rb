@@ -10,13 +10,13 @@ describe CharactersContext::Daggerheart::AddCompanionCommand do
   context 'for invalid params' do
     it 'does not create companion', :aggregate_failures do
       expect { command_call }.not_to change(character, :companion)
-      expect(command_call[:errors]).to eq({ character: ['Only ranger can have companion'] })
+      expect(command_call[:errors]).to eq({ character: ['Only ranger subclass beastbound can have companion'] })
     end
   end
 
   context 'for valid params' do
     before do
-      character.data['main_class'] = 'ranger'
+      character.data['subclasses'] = { ranger: 'beastbound' }
       character.save
     end
 

@@ -19,7 +19,7 @@ export const ErrorWrapper = (props) => {
       fallback={(error) => {
         sendError(error);
         return (
-          <div class="blockable p-4">
+          <div class="blockable p-4 dark:text-snow">
             <p>{t('alerts.error')}</p>
           </div>
         );

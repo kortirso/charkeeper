@@ -10,7 +10,7 @@ en:
       character_companion:
         rules:
           character:
-            must_be_ranger: Only ranger can have companion
+            must_be_beastbound: Only ranger subclass beastbound can have companion
       character_item:
         rules:
           ready_to_use:

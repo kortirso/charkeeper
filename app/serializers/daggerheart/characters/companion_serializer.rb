@@ -3,8 +3,10 @@
 module Daggerheart
   module Characters
     class CompanionSerializer < ApplicationSerializer
-      attributes :id, :name, :data, :evasion, :stress_max
+      attributes :id, :name, :caption, :evasion, :stress_marked, :stress_max, :character_id, :damage, :distance, :experience,
+                 :leveling
 
+      delegate :stress_marked, :damage, :distance, :experience, :leveling, to: :data
       delegate :data, to: :object
 
       def evasion

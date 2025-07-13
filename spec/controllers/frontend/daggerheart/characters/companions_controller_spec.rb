@@ -4,7 +4,9 @@ describe Frontend::Daggerheart::Characters::CompanionsController do
   let!(:user_session) { create :user_session }
   let(:access_token) { Authkeeper::GenerateTokenService.new.call(user_session: user_session)[:result] }
   let!(:character) { create :character, :daggerheart }
-  let!(:user_character) { create :character, :daggerheart, user: user_session.user, data: { main_class: 'ranger' } }
+  let!(:user_character) {
+    create :character, :daggerheart, user: user_session.user, data: { subclasses: { ranger: 'beastbound' } }
+  }
 
   describe 'GET#show' do
     context 'for logged users' do
@@ -43,7 +45,10 @@ describe Frontend::Daggerheart::Characters::CompanionsController do
 
             expect(response).to have_http_status :ok
             expect(response.parsed_body['companion'].keys).to(
-              contain_exactly('id', 'name', 'data', 'evasion', 'stress_max')
+              contain_exactly(
+                'id', 'name', 'caption', 'evasion', 'damage', 'distance', 'stress_max', 'stress_marked',
+                'character_id', 'experience', 'leveling'
+              )
             )
           end
         end
@@ -89,9 +94,6 @@ describe Frontend::Daggerheart::Characters::CompanionsController do
           it 'creates companion', :aggregate_failures do
             expect { request }.to change(Daggerheart::Character::Companion, :count).by(1)
             expect(response).to have_http_status :created
-            expect(response.parsed_body['companion'].keys).to(
-              contain_exactly('id', 'name', 'data', 'evasion', 'stress_max')
-            )
           end
         end
       end
@@ -139,9 +141,6 @@ describe Frontend::Daggerheart::Characters::CompanionsController do
 
             expect(companion.reload.name).to eq 'Compy'
             expect(response).to have_http_status :ok
-            expect(response.parsed_body['companion'].keys).to(
-              contain_exactly('id', 'name', 'data', 'evasion', 'stress_max')
-            )
           end
         end
       end

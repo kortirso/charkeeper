@@ -19,14 +19,14 @@ module CharactersContext
             required(:comfort).filled(:integer, gteq?: 0)
             required(:armored).filled(:integer, gteq?: 0)
             required(:vicious).filled(:integer, gteq?: 0)
-            required(:recilient).filled(:integer, gteq?: 0)
+            required(:resilient).filled(:integer, gteq?: 0)
             required(:bonded).filled(:integer, gteq?: 0)
             required(:aware).filled(:integer, gteq?: 0)
           end
           optional(:experience).maybe(:array).each(:hash) do
             required(:id).filled(:integer)
-            required(:name).filled(:string)
-            required(:level).filled(:integer, gteq?: 0)
+            required(:exp_name).filled(:string)
+            required(:exp_level).filled(:integer, gteq?: 0)
           end
           optional(:stress_marked).filled(:integer)
           optional(:damage).filled(Damages)
