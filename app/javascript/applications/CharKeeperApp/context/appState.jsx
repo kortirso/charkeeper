@@ -45,9 +45,11 @@ export const AppStateProvider = (props) => {
   const store = [
     appState,
     {
-      changePayload(payload) {
-        if (window.__TAURI_INTERNALS__ === undefined) localStorage.setItem(CHARKEEPER_STATE_DATA_KEY, JSON.stringify(payload));
-        else updateStore(payload);
+      changePayload(payload, updateCache = true) {
+        if (updateCache) {
+          if (window.__TAURI_INTERNALS__ === undefined) localStorage.setItem(CHARKEEPER_STATE_DATA_KEY, JSON.stringify(payload));
+          else updateStore(payload);
+        }
 
         setAppState({ ...appState, ...payload });
       },
