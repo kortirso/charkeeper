@@ -11,6 +11,7 @@ class Character < ApplicationRecord
   has_many :notes, class_name: '::Character::Note', dependent: :destroy
   has_many :bonuses, class_name: '::Character::Bonus', dependent: :destroy
   has_many :feats, class_name: '::Character::Feat', dependent: :destroy
+  has_one :companion, class_name: '::Character::Companion', dependent: :destroy
 
   scope :dnd, -> { where(type: %w[Dnd5::Character Dnd2024::Character]) }
   scope :dnd5, -> { where(type: 'Dnd5::Character') }
