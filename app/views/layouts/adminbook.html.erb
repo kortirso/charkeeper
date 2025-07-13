@@ -14,11 +14,12 @@
     <%= stylesheet_link_tag :application %>
   </head>
   <body class="w-full h-screen flex">
-    <nav class="border-b border-black p-2 w-40 flex flex-col">
+    <nav class="border-b border-black p-2 w-48 flex flex-col">
       <%= link_to 'Main', adminbook_path %>
       <%= link_to 'Users', adminbook_users_path %>
       <%= link_to 'Feedbacks', adminbook_feedbacks_path %>
-      <%= link_to 'Notifications', adminbook_users_notifications_path %>
+      <%= link_to 'User notifications', adminbook_users_notifications_path %>
+      <%= link_to 'Notifications', adminbook_notifications_path %>
       <p class="mt-4 text-gray-400">D&D 5</p>
       <%= link_to 'Characters', adminbook_dnd5_characters_path %>
       <%= link_to 'Items', adminbook_items_path(provider: 'dnd5') %>

@@ -3,7 +3,7 @@
 FactoryBot.define do
   factory :user_identity, class: 'User::Identity' do
     provider { User::Identity::TELEGRAM }
-    uid { '1234567890' }
+    sequence(:uid) { |i| i }
     username { 'login' }
     user
   end
