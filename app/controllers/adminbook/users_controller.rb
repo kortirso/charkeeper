@@ -3,7 +3,7 @@
 module Adminbook
   class UsersController < Adminbook::BaseController
     def index
-      @users = User.includes(:identities).order(created_at: :asc)
+      @users = User.includes(:identities).order(created_at: :desc)
     end
   end
 end
