@@ -3,6 +3,7 @@
 module CharactersContext
   module Daggerheart
     class ChangeCompanionCommand < BaseCommand
+      # rubocop: disable Metrics/BlockLength
       use_contract do
         config.messages.namespace = :character_companion
 
@@ -30,14 +31,16 @@ module CharactersContext
           optional(:stress_marked).filled(:integer)
           optional(:damage).filled(Damages)
           optional(:distance).filled(Distances)
+          optional(:caption).filled(:string)
         end
       end
+      # rubocop: enable Metrics/BlockLength
 
       private
 
       def do_prepare(input)
-        input[:data_attributes] = input.except(:companion, :name).stringify_keys
-        input[:attributes] = input.slice(:name)
+        input[:data_attributes] = input.except(:companion, :name, :caption).stringify_keys
+        input[:attributes] = input.slice(:name, :caption)
       end
 
       def do_persist(input)
