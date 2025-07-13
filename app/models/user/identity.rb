@@ -10,5 +10,6 @@ class User
     enum :provider, { TELEGRAM => 0, GOOGLE => 1 }
 
     scope :telegram, -> { where(provider: TELEGRAM) }
+    scope :active, -> { where(active: true) }
   end
 end

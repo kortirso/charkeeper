@@ -78,6 +78,7 @@ module Charkeeper
     }
 
     register('services.characters_context.daggerheart.refresh_feats') { CharactersContext::Daggerheart::RefreshFeats.new }
+    register('services.notifications_context.send_notification') { NotificationsContext::SendService.new }
   end
 end
 

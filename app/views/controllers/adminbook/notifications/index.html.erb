@@ -1,0 +1,25 @@
+<div class="mb-4">
+  <%= link_to 'New notification', new_adminbook_notification_path, class: 'btn btn-primary' %>
+</div>
+<table class="table w-full text-sm">
+  <thead>
+    <tr>
+      <td></td>
+      <td>ID</td>
+      <td>Value</td>
+      <td>Locale</td>
+      <td>Targets</td>
+    </tr>
+  </thead>
+  <tbody>
+    <% @notifications.each_with_index do |notification, index| %>
+      <tr>
+        <td class="pr-2"><%= index + 1 %></td>
+        <td class="pr-4"><%= notification.id %></td>
+        <td class="pr-4"><%= notification.value %></td>
+        <td class="pr-4"><%= notification.locale %></td>
+        <td><%= notification.targets %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
