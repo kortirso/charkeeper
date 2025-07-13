@@ -50,7 +50,7 @@ export const CharKeeperAppContent = () => {
               username: accessTokenData.username,
               isAdmin: accessTokenData.admin,
               colorSchema: accessTokenData.color_schema
-            });
+            }, false);
           });
         } else {
           setAccessToken(null);
