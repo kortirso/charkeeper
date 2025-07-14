@@ -202,7 +202,6 @@ export const DaggerheartCompanion = (props) => {
                   </div>
                 </div>
               </EditWrapper>
-
               <div class="mt-4">
                 <DaggerheartExperience object={companion()} callback={updateCompanion} />
               </div>

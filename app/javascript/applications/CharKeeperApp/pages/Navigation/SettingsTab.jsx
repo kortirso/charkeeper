@@ -32,16 +32,16 @@ export const SettingsTab = () => {
   return (
     <>
       <PageHeader>
-        {t('settingsPage.title')}
+        {t('pages.settingsPage.title')}
       </PageHeader>
       <div class="p-4 flex-1 flex flex-col overflow-y-scroll">
         <div class="flex-1">
-          {renderSettingsLink(t('settingsPage.profile'), 'profile')}
-          {renderSettingsLink(t('settingsPage.changeLocale'), 'locale')}
-          {renderSettingsLink(t('settingsPage.notifications'), 'notifications')}
-          {renderSettingsLink(t('settingsPage.feedback'), 'feedback')}
+          {renderSettingsLink(t('pages.settingsPage.profile'), 'profile')}
+          {renderSettingsLink(t('pages.settingsPage.changeLocale'), 'locale')}
+          {renderSettingsLink(t('pages.settingsPage.notifications'), 'notifications')}
+          {renderSettingsLink(t('pages.settingsPage.feedback'), 'feedback')}
           <div class="flex py-3 px-4 gap-4">
-            <p class="dark:text-snow">{t('settingsPage.socials')}</p>
+            <p class="dark:text-snow">{t('pages.settingsPage.socials')}</p>
             <a href="https://discord.gg/NFqWPkuZ" target="_blank" rel="noopener noreferrer" class="opacity-75 hover:opacity-100">
               <Discord />
             </a>

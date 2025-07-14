@@ -28,7 +28,7 @@ module Daggerheart
     def decorator
       @decorator ||= {}
       @decorator.fetch(object.id) do |key|
-        @decorator[key] = object.decorator
+        @decorator[key] = object.decorator(simple: (context ? (context[:simple] || false) : false))
       end
     end
   end

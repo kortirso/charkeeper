@@ -46,13 +46,13 @@ export const UsernameTab = (props) => {
             </IconButton>
           }
         >
-          <p>{t('settingsPage.profile')}</p>
+          <p>{t('pages.settingsPage.profile')}</p>
         </PageHeader>
       </Show>
       <div class="p-4 flex-1 flex flex-col overflow-y-scroll">
         <Input
           containerClassList="mb-2"
-          labelText={t('settingsPage.username')}
+          labelText={t('pages.settingsPage.username')}
           value={username()}
           onInput={(value) => setUsername(value)}
         />

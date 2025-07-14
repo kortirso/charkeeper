@@ -13,7 +13,14 @@
     "settingsPage": {
       "logout": "Logout",
       "colorSchema": "Color schema",
-      "version": "Version"
+      "version": "Version",
+      "title": "Settings",
+      "changeLocale": "Locale",
+      "feedback": "Feedback",
+      "profile": "Profile",
+      "username": "Username",
+      "socials": "Community links",
+      "notifications": "Notifications"
     },
     "characterNavigation": {
       "allFilter": "All",
@@ -34,6 +41,16 @@
       "professions": "Mastery",
       "spells": "Spells",
       "companion": "Companion"
+    },
+    "homebrewPage": {
+      "title": "Homebrew",
+      "heritages": "Heritages",
+      "daggerheart": {
+        "races": "Daggerheart's heritages",
+        "newRace": "Add new heritage",
+        "raceName": "Race's name",
+        "domains": "Domains"
+      }
     }
   },
   "daggerheart": {
@@ -206,18 +223,6 @@
     "fileSizeLimit": "File size should be less than 1 MB",
     "invalidSubclassesList": "You need to select subclasses for all classes",
     "feedbackIsAdded": "Feedback is added, thank you very much for using CharKeeper!"
-  },
-  "settingsPage": {
-    "title": "Settings",
-    "changeLocale": "Locale",
-    "feedback": "Feedback",
-    "profile": "Profile",
-    "username": "Username",
-    "socials": "Community links",
-    "notifications": "Notifications"
-  },
-  "homebrewPage": {
-    "title": "Homebrew"
   },
   "charactersPage": {
     "title": "Characters list",

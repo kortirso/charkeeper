@@ -40,13 +40,13 @@ export const FeedbackTab = (props) => {
             </IconButton>
           }
         >
-          <p>{t('settingsPage.feedback')}</p>
+          <p>{t('pages.settingsPage.feedback')}</p>
         </PageHeader>
       </Show>
       <div class="p-4 flex-1 flex flex-col overflow-y-scroll">
         <TextArea
           rows="10"
-          labelText={t('settingsPage.feedback')}
+          labelText={t('pages.settingsPage.feedback')}
           value={feedback()}
           onChange={(value) => setFeedback(value)}
         />

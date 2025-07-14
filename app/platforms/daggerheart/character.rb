@@ -79,10 +79,10 @@ module Daggerheart
 
     attribute :data, Daggerheart::CharacterData.to_type
 
-    def decorator
+    def decorator(simple: false)
       base_decorator = ::DaggerheartCharacter::BaseDecorator.new(self)
       features_decorator = ::DaggerheartCharacter::FeaturesDecorator.new(base_decorator)
-      features_decorator.features
+      features_decorator.features unless simple
       features_decorator
     end
   end

@@ -1,4 +1,4 @@
-import { createSignal, Show, For, splitProps } from 'solid-js';
+import { createSignal, Show, For, Switch, Match, splitProps } from 'solid-js';
 
 import { Label } from './Label';
 import { Chevron } from '../../assets';
@@ -11,7 +11,7 @@ export const Select = (props) => {
 
   const onSelect = (value) => {
     props.onSelect(value);
-    setIsOpen(false);
+    if (!props.multi) setIsOpen(false);
   }
 
   return (
@@ -25,14 +25,24 @@ export const Select = (props) => {
           class={[isOpen() ? 'is-open' : '', 'form-value flex justify-between items-center h-12'].join(' ')}
           onClick={() => setIsOpen(!isOpen())}
         >
-          <span>{props.selectedValue ? props.items[props.selectedValue] : ''}</span>
+          <Switch fallback={''}>
+            <Match when={props.selectedValue}>
+              <span>{props.items[props.selectedValue]}</span>
+            </Match>
+            <Match when={props.selectedValues}>
+              <span>{Object.entries(props.items).filter(([key,]) => props.selectedValues.includes(key)).map(([,value]) => value).join(', ')}</span>
+            </Match>
+          </Switch>
           <Chevron rotated={isOpen()} />
         </div>
         <Show when={isOpen()}>
           <ul class="form-dropdown">
             <For each={Object.entries(props.items)}>
               {([key, value]) =>
-                <li onClick={() => onSelect(key)}>
+                <li
+                  classList={{ 'selected': props.multi && props.selectedValues.includes(key) }}
+                  onClick={() => onSelect(key)}
+                >
                   {value}
                 </li>
               }

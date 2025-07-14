@@ -32,12 +32,12 @@ export const LocaleTab = (props) => {
             </IconButton>
           }
         >
-          <p>{t('settingsPage.changeLocale')}</p>
+          <p>{t('pages.settingsPage.changeLocale')}</p>
         </PageHeader>
       </Show>
       <div class="p-4 flex-1 flex flex-col overflow-y-scroll">
         <Select
-          labelText={t('settingsPage.changeLocale')}
+          labelText={t('pages.settingsPage.changeLocale')}
           items={{ 'en': 'English', 'ru': 'Русский' }}
           selectedValue={locale()}
           onSelect={(value) => changeLocale(value)}

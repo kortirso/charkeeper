@@ -9,8 +9,11 @@ en:
       included_in?: Unknown value
       homebrew_race:
         rules:
+          name:
+            filled?: Name can't be blank
           domains:
-            only_two: Domains list should contain only 2 values
+            filled?: Domains can't be blank
+            only_two: Domains list should contain 2 values
             invalid_value: Domains list contains invalid value
       character_companion:
         rules:
@@ -31,13 +34,13 @@ en:
         invalid: Invalid credentials
         rules:
           password:
-            filled?: can't be blank
+            filled?: Password can't be blank
           password_confirmation:
-            filled?: can't be blank
+            filled?: Password confirmation can't be blank
           passwords:
-            different: must be equal
+            different: Passwords must be equal
           username:
-            invalid: has invalid format
+            invalid: Username has invalid format
           locale:
             filled?: Locale must be filled
             included_in?: Invalid locale value

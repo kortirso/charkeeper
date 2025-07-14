@@ -1,4 +1,4 @@
-import { createSignal, Switch, Match } from 'solid-js';
+import { createSignal, Switch, Match, Show } from 'solid-js';
 import { createWindowSize } from '@solid-primitives/resize-observer';
 
 import { Button } from '../../components';
@@ -11,30 +11,34 @@ export const ContentWrapper = (props) => {
 
   return (
     <Switch>
-      <Match when={size.width <= 1151}>
+      <Match when={props.mobileView && size.width <= 1151}>
         {props.mobileView}
       </Match>
-      <Match when={size.width >= 1152 && size.width <= 1407}>
+      <Match when={size.width <= 1407}>
         <div class="p-2 pt-4 flex-1 overflow-y-scroll relative">
           <Switch>
-            <Match when={activeView() === 'left'}>
-              <Button
-                default
-                classList='absolute z-10 top-0 right-0 rounded min-w-6 min-h-6 opacity-75'
-                onClick={() => setActiveView('right')}
-              >
-                <Arrow forward />
-              </Button>
+            <Match when={props.activeView ? props.activeView === 'left' : activeView() === 'left'}>
+              <Show when={!props.activeView}>
+                <Button
+                  default
+                  classList='absolute z-10 top-0 right-0 rounded min-w-6 min-h-6 opacity-75'
+                  onClick={() => setActiveView('right')}
+                >
+                  <Arrow forward />
+                </Button>
+              </Show>
               {props.leftView}
             </Match>
-            <Match when={activeView() === 'right'}>
-              <Button
-                default
-                classList='absolute z-10 top-0 left-0 rounded min-w-6 min-h-6 opacity-75'
-                onClick={() => setActiveView('left')}
-              >
-                <Arrow back />
-              </Button>
+            <Match when={props.activeView ? props.activeView === 'right' : activeView() === 'right'}>
+              <Show when={!props.activeView}>
+                <Button
+                  default
+                  classList='absolute z-10 top-0 left-0 rounded min-w-6 min-h-6 opacity-75'
+                  onClick={() => setActiveView('left')}
+                >
+                  <Arrow back />
+                </Button>
+              </Show>
               {props.rightView}
             </Match>
           </Switch>

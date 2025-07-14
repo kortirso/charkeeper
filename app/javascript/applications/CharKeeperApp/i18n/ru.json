@@ -13,7 +13,14 @@
     "settingsPage": {
       "logout": "Выход",
       "colorSchema": "Цветовая палитра",
-      "version": "Версия"
+      "version": "Версия",
+      "title": "Настройки",
+      "changeLocale": "Язык",
+      "feedback": "Отзыв",
+      "profile": "Профиль",
+      "username": "Имя пользователя",
+      "socials": "Общество",
+      "notifications": "Уведомления"
     },
     "characterNavigation": {
       "allFilter": "Все",
@@ -34,6 +41,16 @@
       "professions": "Владения",
       "spells": "Заклинания",
       "companion": "Питомец"
+    },
+    "homebrewPage": {
+      "title": "Homebrew",
+      "heritages": "Расы",
+      "daggerheart": {
+        "races": "Расы Daggerheart",
+        "newRace": "Добавить новую расу",
+        "raceName": "Название расы",
+        "domains": "Домены"
+      }
     }
   },
   "daggerheart": {
@@ -206,18 +223,6 @@
     "fileSizeLimit": "Размер файла должен быть меньше 1 МБ",
     "invalidSubclassesList": "Необходимо выбрать все подклассы для классов",
     "feedbackIsAdded": "Отзыв отправлен, большое спасибо за использование ЧарКипера!"
-  },
-  "settingsPage": {
-    "title": "Настройки",
-    "changeLocale": "Язык",
-    "feedback": "Отзыв",
-    "profile": "Профиль",
-    "username": "Имя пользователя",
-    "socials": "Общество",
-    "notifications": "Уведомления"
-  },
-  "homebrewPage": {
-    "title": "Homebrew"
   },
   "charactersPage": {
     "title": "Персонажи",

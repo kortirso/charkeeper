@@ -14,7 +14,7 @@ describe HomebrewContext::Daggerheart::AddRaceCommand do
 
       it 'does not create race', :aggregate_failures do
         expect { command_call }.not_to change(Daggerheart::Homebrew::Race, :count)
-        expect(command_call[:errors]).to eq({ domains: ['Domains list should contain only 2 values'] })
+        expect(command_call[:errors]).to eq({ domains: ['Domains list should contain 2 values'] })
       end
     end
 
