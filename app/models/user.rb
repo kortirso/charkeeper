@@ -13,6 +13,7 @@ class User < ApplicationRecord
   has_many :identities, class_name: 'User::Identity', dependent: :destroy
   has_many :feedbacks, class_name: 'User::Feedback', dependent: :destroy
   has_many :notifications, class_name: 'User::Notification', dependent: :destroy
+  has_many :homebrews, dependent: :destroy
 
   enum :color_schema, { LIGHT => 0, DARK => 1 }
 end

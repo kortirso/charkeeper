@@ -7,6 +7,11 @@ en:
     errors:
       unexpected_key: Unknown param
       included_in?: Unknown value
+      homebrew_race:
+        rules:
+          domains:
+            only_two: Domains list should contain only 2 values
+            invalid_value: Domains list contains invalid value
       character_companion:
         rules:
           character:

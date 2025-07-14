@@ -73,6 +73,10 @@ module Daggerheart
       config['beastforms']
     end
 
+    def self.domains
+      config['domains']
+    end
+
     attribute :data, Daggerheart::CharacterData.to_type
 
     def decorator

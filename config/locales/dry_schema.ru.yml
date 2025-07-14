@@ -7,6 +7,11 @@ ru:
     errors:
       unexpected_key: Неизвестный параметр
       included_in?: Неизвестное значение
+      homebrew_race:
+        rules:
+          domains:
+            only_two: Список доменов должен содержать только 2 значения
+            invalid_value: Список доменов содержит неверное значение
       character_companion:
         rules:
           character:

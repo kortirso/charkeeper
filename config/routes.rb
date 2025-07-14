@@ -40,6 +40,12 @@ Rails.application.routes.draw do
   end
 
   namespace :frontend do
+    namespace :homebrews do
+      scope ':provider' do
+        resources :races, only: %i[index create destroy]
+      end
+    end
+
     scope module: :users do
       resources :signin, only: %i[create]
       resources :signup, only: %i[create]

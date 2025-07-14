@@ -72,6 +72,8 @@ module Charkeeper
       WebhooksContext::ReceiveTelegramChatMemberWebhookCommand.new
     }
 
+    register('commands.homebrew_context.daggerheart.add_race') { HomebrewContext::Daggerheart::AddRaceCommand.new }
+
     # services
     register('services.auth_context.validate_web_telegram_signature') { AuthContext::WebTelegramSignatureValidateService.new }
     register('services.webhooks_context.handle_telegram_message_webhook') {
