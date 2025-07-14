@@ -1,17 +1,17 @@
 <table class="table w-full text-sm">
   <thead>
     <tr>
-      <td></td>
-      <td>ID</td>
-      <td>Username</td>
-      <td>Provider UID</td>
-      <td>Provider</td>
-      <td>Provider username</td>
-      <td>First name</td>
-      <td>Last name</td>
-      <td>Active</td>
-      <td>Locale</td>
-      <td>Color</td>
+      <td class="pr-2"></td>
+      <td class="pr-2">ID</td>
+      <td class="pr-2">Username</td>
+      <td class="pr-2">Provider UID</td>
+      <td class="pr-2">Provider</td>
+      <td class="pr-2">Provider username</td>
+      <td class="pr-2">First name</td>
+      <td class="pr-2">Last name</td>
+      <td class="pr-2">Active</td>
+      <td class="pr-2">Locale</td>
+      <td class="pr-2">Color</td>
       <td>Created</td>
     </tr>
   </thead>
@@ -19,7 +19,7 @@
     <% @users.each_with_index do |user, index| %>
       <tr>
         <td class="pr-2"><%= index + 1 %></td>
-        <td class="pr-4"><%= user.id %></td>
+        <td class="pr-2"><%= user.id %></td>
         <td><%= user.username %></td>
         <% if user.identities.blank? %>
           <td></td>
@@ -30,16 +30,16 @@
           <td></td>
         <% else %>
           <% user.identities.each do |identity| %>
-            <td><%= identity.uid %></td>
-            <td><%= identity.provider %></td>
-            <td><%= identity.username %></td>
-            <td><%= identity.first_name %></td>
-            <td><%= identity.last_name %></td>
-            <td><%= identity.active %></td>
+            <td class="pr-2"><%= identity.uid %></td>
+            <td class="pr-2"><%= identity.provider %></td>
+            <td class="pr-2" class="pr-2"><%= identity.username %></td>
+            <td class="pr-2"><%= identity.first_name %></td>
+            <td class="pr-2"><%= identity.last_name %></td>
+            <td class="pr-2"><%= identity.active %></td>
           <% end %>
         <% end %>
-        <td><%= user.locale %></td>
-        <td><%= user.color_schema %></td>
+        <td class="pr-2"><%= user.locale %></td>
+        <td class="pr-2"><%= user.color_schema %></td>
         <td><%= user.created_at.strftime('%d-%m-%Y') %></td>
       </tr>
     <% end %>
