@@ -43,6 +43,7 @@ Rails.application.routes.draw do
     namespace :homebrews do
       scope ':provider' do
         resources :races, only: %i[index create destroy]
+        resources :feats, only: %i[index create destroy]
       end
     end
     resources :homebrews, only: %i[index]

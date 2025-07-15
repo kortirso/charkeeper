@@ -7,6 +7,21 @@ en:
     errors:
       unexpected_key: Unknown param
       included_in?: Unknown value
+      homebrew_feat:
+        rules:
+          title:
+            filled?: Title can't be blank
+            max_size?: Title's size cannot be greater than 50
+          description:
+            filled?: Description can't be blank
+            max_size?: Description's size cannot be greater than 250
+          origin:
+            included_in?: Unknown value of origin
+            not_found: Origin is not found
+          limit:
+            all_or_nothing_present: Limit can't be blank if limit refresh is present
+          limit_refresh:
+            all_or_nothing_present: Limit refresh can't be blank if limit is present
       homebrew_race:
         rules:
           name:
