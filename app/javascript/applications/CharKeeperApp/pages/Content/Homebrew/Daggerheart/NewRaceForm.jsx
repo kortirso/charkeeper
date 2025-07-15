@@ -28,13 +28,16 @@ export const NewDaggerheartRaceForm = (props) => {
       />
       <Select
         multi
-        containerClassList="mb-2"
+        containerClassList="mb-4"
         labelText={t('pages.homebrewPage.daggerheart.domains')}
         items={Object.fromEntries(Object.entries(config.domains).map(([key, values]) => [key, values.name[locale()]]))}
         selectedValues={domains()}
         onSelect={updateDomains}
       />
-      <Button default onClick={() => props.onSave({ brewery: { name: name(), domains: domains() } })}>{t('save')}</Button>
+      <div class="flex gap-4 w-full">
+        <Button outlined classList="flex-1" onClick={props.onCancel}>{t('cancel')}</Button>
+        <Button default classList="flex-1" onClick={() => props.onSave({ brewery: { name: name(), domains: domains() } })}>{t('save')}</Button>
+      </div>
     </>
   );
 }

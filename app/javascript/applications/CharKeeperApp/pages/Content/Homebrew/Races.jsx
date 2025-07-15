@@ -7,6 +7,7 @@ import { Close } from '../../../assets';
 import { useAppState, useAppLocale, useAppAlert } from '../../../context';
 import { fetchHomebrewRacesRequest } from '../../../requests/fetchHomebrewRacesRequest';
 import { createHomebrewRaceRequest } from '../../../requests/createHomebrewRaceRequest';
+import { removeHomebrewRaceRequest } from '../../../requests/removeHomebrewRaceRequest';
 
 export const HomebrewRaces = (props) => {
   const [races, setRaces] = createSignal(undefined);
@@ -31,6 +32,8 @@ export const HomebrewRaces = (props) => {
     );
   });
 
+  const cancenCreatingRace = () => setActiveView('left');
+
   const createRace = async (payload) => {
     const result = await createHomebrewRaceRequest(appState.accessToken, props.provider, payload);
 
@@ -39,6 +42,15 @@ export const HomebrewRaces = (props) => {
         setRaces(races().concat(result.race));
         setActiveView('left');
       });
+    } else renderAlerts(result.errors);
+  }
+
+  const removeRace = async (event, id) => {
+    event.stopPropagation();
+
+    const result = await removeHomebrewRaceRequest(appState.accessToken, props.provider, id);
+    if (result.errors === undefined) {
+      setRaces(races().filter((item) => item.id !== id));
     } else renderAlerts(result.errors);
   }
 
@@ -57,7 +69,7 @@ export const HomebrewRaces = (props) => {
                   <Toggle isOpen title={
                     <div class="flex items-center">
                       <p class="flex-1">{race.name}</p>
-                      <IconButton onClick={() => null}>
+                      <IconButton onClick={(e) => removeRace(e, race.id)}>
                         <Close />
                       </IconButton>
                     </div>
@@ -77,7 +89,7 @@ export const HomebrewRaces = (props) => {
           <Show when={activeView() === 'right'}>
             <Switch>
               <Match when={props.provider === 'daggerheart'}>
-                <NewDaggerheartRaceForm onSave={createRace} />
+                <NewDaggerheartRaceForm onSave={createRace} onCancel={cancenCreatingRace} />
               </Match>
             </Switch>
           </Show>
