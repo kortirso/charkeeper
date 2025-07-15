@@ -45,6 +45,7 @@ Rails.application.routes.draw do
         resources :races, only: %i[index create destroy]
       end
     end
+    resources :homebrews, only: %i[index]
 
     scope module: :users do
       resources :signin, only: %i[create]

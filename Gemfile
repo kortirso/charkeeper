@@ -44,6 +44,7 @@ gem 'securerandom', '0.3.2'
 # api serializer
 gem 'oj'
 gem 'panko_serializer'
+gem 'props_template'
 
 # auth
 gem 'action_policy'

@@ -7,11 +7,7 @@ FactoryBot.define do
 
     trait :daggerheart do
       type { 'Daggerheart::Homebrew::Race' }
-      data {
-        {
-          domains: %w[codex grace]
-        }
-      }
+      data { {} }
     end
   end
 end

@@ -4,8 +4,6 @@ module Daggerheart
   module Homebrew
     class RaceData
       include StoreModel::Model
-
-      attribute :domains, array: true, default: []
     end
 
     class Race < ::Homebrew::Race
