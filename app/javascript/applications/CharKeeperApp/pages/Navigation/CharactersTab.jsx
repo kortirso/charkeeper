@@ -422,7 +422,7 @@ export const CharactersTab = () => {
                       <Select
                         containerClassList="mb-2"
                         labelText={t('newCharacterPage.dnd2024.size')}
-                        items={dnd2024Config.species[characterDnd2024Form.species].sizes.reduce((acc, item) => { acc[item] = t(`dnd2024.sizes.${item}`); return acc; }, {})}
+                        items={dnd2024Config.species[characterDnd2024Form.species].sizes.reduce((acc, item) => { acc[item] = t(`newCharacterPage.dnd2024.sizes.${item}`); return acc; }, {})}
                         selectedValue={characterDnd2024Form.size}
                         onSelect={(value) => setCharacterDnd2024Form({ ...characterDnd2024Form, size: value })}
                       />

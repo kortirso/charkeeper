@@ -14,7 +14,8 @@ export const ItemsTable = (props) => {
 
   return (
     <div class="blockable p-4 mb-2">
-      <h2 class="text-lg dark:text-snow">{props.title}</h2>
+      <h2 class="text-lg dark:text-snow mb-2">{props.title}</h2>
+      <p class="text-sm dark:text-snow mb-2">{props.subtitle}</p>
       <Show when={items().length > 0}>
         <table class="w-full table first-column-full-width">
           <thead>

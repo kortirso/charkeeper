@@ -15,6 +15,7 @@ export const Equipment = (props) => {
 
   const character = () => props.character;
 
+  const [lastActiveCharacterId, setLastActiveCharacterId] = createSignal(undefined);
   const [characterItems, setCharacterItems] = createSignal(undefined);
   const [items, setItems] = createSignal(undefined);
   const [itemsSelectingMode, setItemsSelectingMode] = createSignal(false);
@@ -30,8 +31,7 @@ export const Equipment = (props) => {
   const fetchCharacterItems = async () => await fetchCharacterItemsRequest(appState.accessToken, character().provider, character().id);
 
   createEffect(() => {
-    if (characterItems() !== undefined) return;
-    if (items() !== undefined) return;
+    if (lastActiveCharacterId() === character().id) return;
 
     const fetchItems = async () => await fetchItemsRequest(appState.accessToken, character().provider);
 
@@ -40,6 +40,7 @@ export const Equipment = (props) => {
         batch(() => {
           setCharacterItems(characterItemsData.items);
           setItems(itemsData.items.sort((a, b) => a.name > b.name));
+          setLastActiveCharacterId(character().id);
         });
       }
     );
@@ -173,6 +174,7 @@ export const Equipment = (props) => {
           <Button default textable classList="mb-2" onClick={() => setItemsSelectingMode(true)}>{t('equipment.addItems')}</Button>
           <ItemsTable
             title={t('equipment.equipedItems')}
+            subtitle={t('equipment.equipedItemsDescription')}
             items={characterItems().filter((item) => item.ready_to_use)}
             onChangeItem={changeItem}
             onUpdateCharacterItem={updateCharacterItem}
@@ -180,6 +182,7 @@ export const Equipment = (props) => {
           />
           <ItemsTable
             title={t('equipment.backpackItems')}
+            subtitle={t('equipment.backpackItemsDescription')}
             items={characterItems().filter((item) => !item.ready_to_use)}
             onChangeItem={changeItem}
             onUpdateCharacterItem={updateCharacterItem}

@@ -206,7 +206,9 @@
     "cost": "Cost",
     "addItems": "Add items",
     "equipedItems": "Equiped",
+    "equipedItemsDescription": "Items in your hands, equiped armor, ammo for weapon, consumables",
     "backpackItems": "Backpacked",
+    "backpackItemsDescription": "Items in backpack, can't be quickly used",
     "itemNote": "Item note",
     "weaponsList": "Weapon",
     "primaryWeapon": "Primary weapon",
@@ -272,7 +274,11 @@
       "legacy": "Legacy",
       "size": "Size",
       "mainClass": "Main class",
-      "alignment": "Alignment"
+      "alignment": "Alignment",
+      "sizes": {
+        "small": "Small",
+        "medium": "Medium"
+      }
     },
     "pathfinder2": {
       "race": "Race",

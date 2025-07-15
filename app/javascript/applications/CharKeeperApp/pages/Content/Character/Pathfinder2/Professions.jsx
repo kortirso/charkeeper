@@ -1,4 +1,4 @@
-import { createSignal, For } from 'solid-js';
+import { createSignal, createEffect, For, batch } from 'solid-js';
 import * as i18n from '@solid-primitives/i18n';
 
 import { ErrorWrapper, Toggle, Levelbox, Button, TextArea } from '../../../../components';
@@ -10,6 +10,7 @@ export const Pathfinder2Professions = (props) => {
   const character = () => props.character;
 
   // changeable data
+  const [lastActiveCharacterId, setLastActiveCharacterId] = createSignal(undefined);
   const [languagesData, setLanguagesData] = createSignal(character().languages);
 
   const [appState] = useAppState();
@@ -17,6 +18,15 @@ export const Pathfinder2Professions = (props) => {
   const [locale, dict] = useAppLocale();
 
   const t = i18n.translator(dict);
+
+  createEffect(() => {
+    if (lastActiveCharacterId() === character().id) return;
+
+    batch(() => {
+      setLanguagesData(character().languages);
+      setLastActiveCharacterId(character().id);
+    });
+  });
 
   const updateLanguages = async () => {
     const result = await updateCharacterRequest(

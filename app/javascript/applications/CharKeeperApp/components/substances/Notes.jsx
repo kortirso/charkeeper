@@ -10,6 +10,7 @@ import { createCharacterNoteRequest } from '../../requests/createCharacterNoteRe
 import { removeCharacterNoteRequest } from '../../requests/removeCharacterNoteRequest';
 
 export const Notes = () => {
+  const [lastActiveCharacterId, setLastActiveCharacterId] = createSignal(undefined);
   const [notes, setNotes] = createSignal(undefined);
   const [activeNewNoteTab, setActiveNewNoteTab] = createSignal(false);
   const [noteForm, setNoteForm] = createStore({
@@ -23,13 +24,16 @@ export const Notes = () => {
   const t = i18n.translator(dict);
 
   createEffect(() => {
-    if (notes() !== undefined) return;
+    if (lastActiveCharacterId() === appState.activePageParams.id) return;
 
     const fetchCharacterNotes = async () => await fetchCharacterNotesRequest(appState.accessToken, appState.activePageParams.id);
 
     Promise.all([fetchCharacterNotes()]).then(
       ([characterNotesData]) => {
-        setNotes(characterNotesData.notes);
+        batch(() => {
+          setNotes(characterNotesData.notes);
+          setLastActiveCharacterId(appState.activePageParams.id);
+        });
       }
     );
   });

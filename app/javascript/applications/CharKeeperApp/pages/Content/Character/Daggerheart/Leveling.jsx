@@ -1,4 +1,4 @@
-import { createMemo, createSignal, For, Show, batch } from 'solid-js';
+import { createMemo, createSignal, createEffect, For, Show, batch } from 'solid-js';
 import * as i18n from '@solid-primitives/i18n';
 
 import { Select, Checkbox, Button, ErrorWrapper } from '../../../../components';
@@ -13,6 +13,7 @@ export const DaggerheartLeveling = (props) => {
   const classes = () => config.classes;
 
   // changeable data
+  const [lastActiveCharacterId, setLastActiveCharacterId] = createSignal(undefined);
   const [classesData, setClassesData] = createSignal(character().classes);
   const [subclassesData, setSubclassesData] = createSignal(character().subclasses);
   const [domainsData, setDomainsData] = createSignal(character().domains);
@@ -24,6 +25,19 @@ export const DaggerheartLeveling = (props) => {
   const [locale, dict] = useAppLocale();
 
   const t = i18n.translator(dict);
+
+  createEffect(() => {
+    if (lastActiveCharacterId() === character().id) return;
+
+    batch(() => {
+      setClassesData(character().classes);
+      setSubclassesData(character().subclasses);
+      setDomainsData(character().domains);
+      setSubclassesMasteryData(character().subclasses_mastery);
+      setLevelingData(character().leveling);
+      setLastActiveCharacterId(character().id);
+    });
+  });
 
   const sortedClasses = createMemo(() => {
     const result = [{ [character().main_class]: classes()[character().main_class]}];

@@ -1,4 +1,4 @@
-import { createSignal, For, Show, batch } from 'solid-js';
+import { createSignal, createEffect, For, Show, batch } from 'solid-js';
 
 import { ErrorWrapper, Button, EditWrapper } from '../../../../components';
 import config from '../../../../data/dnd2024.json';
@@ -11,12 +11,22 @@ import { modifier } from '../../../../helpers';
 export const Dnd5Abilities = (props) => {
   const character = () => props.character;
 
+  const [lastActiveCharacterId, setLastActiveCharacterId] = createSignal(undefined);
   const [editMode, setEditMode] = createSignal(false);
   const [abilitiesData, setAbilitiesData] = createSignal(character().abilities);
 
   const [appState] = useAppState();
   const [{ renderAlerts }] = useAppAlert();
   const [locale] = useAppLocale();
+
+  createEffect(() => {
+    if (lastActiveCharacterId() === character().id) return;
+
+    batch(() => {
+      setAbilitiesData(character().abilities);
+      setLastActiveCharacterId(character().id);
+    });
+  });
 
   const decreaseAbilityValue = (slug) => setAbilitiesData({ ...abilitiesData(), [slug]: abilitiesData()[slug] - 1 });
   const increaseAbilityValue = (slug) => setAbilitiesData({ ...abilitiesData(), [slug]: abilitiesData()[slug] + 1 });
