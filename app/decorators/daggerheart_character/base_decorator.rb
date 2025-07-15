@@ -60,7 +60,7 @@ module DaggerheartCharacter
     end
 
     def hope_max
-      @hope_max ||= data.hope_max
+      @hope_max ||= data.hope_max + beastbound_pet_bonus
     end
 
     def proficiency
@@ -208,6 +208,13 @@ module DaggerheartCharacter
 
     def sum(values)
       values.sum(&:to_i)
+    end
+
+    def beastbound_pet_bonus
+      return 0 unless subclasses.value?('beastbound')
+      return 0 unless __getobj__.companion
+
+      __getobj__.companion.data.leveling['light'].to_i
     end
 
     def beastform_config
