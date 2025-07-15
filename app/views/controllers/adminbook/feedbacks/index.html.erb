@@ -3,6 +3,7 @@
     <tr>
       <td></td>
       <td>Text</td>
+      <td>User ID</td>
       <td>Created</td>
     </tr>
   </thead>
@@ -10,7 +11,8 @@
     <% @feedbacks.each_with_index do |feedback, index| %>
       <tr>
         <td class="pr-2"><%= index + 1 %></td>
-        <td><%= feedback.value %></td>
+        <td class="pr-2"><%= feedback.value %></td>
+        <td class="pr-2"><%= feedback.user_id %></td>
         <td><%= feedback.created_at.strftime('%d-%m-%Y') %></td>
       </tr>
     <% end %>
