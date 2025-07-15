@@ -44,19 +44,42 @@
     },
     "homebrewPage": {
       "title": "Homebrew",
-      "heritages": "Heritages",
       "daggerheart": {
-        "races": "Daggerheart's heritages",
-        "newRace": "Add new heritage",
-        "raceName": "Race's name",
-        "domains": "Domains"
+        "ancestries": "Ancestries",
+        "features": "Features",
+        "races": "Daggerheart's ancestries",
+        "newRace": "Add new ancestry",
+        "raceName": "Ancestry's name",
+        "newFeat": "Add new feature",
+        "featTitle": "Title",
+        "featDescription": "Description",
+        "origin": "Origin",
+        "originValue": "Origin value",
+        "limit": "Usage limit",
+        "limitRefresh": "Limit refresh",
+        "kind": "Kind",
+        "noFeats": "No features for ancestry"
       }
     }
   },
   "daggerheart": {
     "terms": {
       "traits": "Traits",
-      "thresholds": "Damage thresholds"
+      "thresholds": "Damage thresholds",
+      "feats": {
+        "origins": {
+          "ancestry": "Ancestry"
+        },
+        "kinds": {
+          "static": "Static text",
+          "text": "Text area"
+        },
+        "limitRefresh": {
+          "shortRest": "Short rest",
+          "longRest": "Long rest",
+          "session": "Session"
+        }
+      }
     },
     "static": {
       "proficiency": "Proficiency",
@@ -259,12 +282,12 @@
       "mainAbility": "Main ability"
     },
     "daggerheart": {
-      "heritage": "Heritage",
+      "ancestry": "Ancestry",
       "community": "Community",
       "mainClass": "Main class",
       "subclass": "Subclass",
-      "customHeritage": "Mixed heritage",
-      "heritageName": "Heritage name",
+      "customAncestry": "Mixed ancestry",
+      "ancestryName": "Ancestry's name",
       "mainFeature": "Main feature",
       "secondaryFeature": "Secondary feature"
     }

@@ -16,8 +16,8 @@ export const HomebrewTab = () => {
     <p
       class="relative py-3 px-4 cursor-pointer rounded"
       classList={{
-        'bg-blue-400 text-white dark:bg-fuzzy-red': appState.activePage === link,
-        'text-black hover:bg-gray-100 dark:text-snow dark:hover:bg-dusty': appState.activePage !== link
+        'bg-blue-400 text-white dark:bg-fuzzy-red': appState.activePageParams.content === linkParams.content,
+        'text-black hover:bg-gray-100 dark:text-snow dark:hover:bg-dusty': appState.activePageParams.content !== linkParams.content
       }}
       onClick={() => navigate(link, linkParams)}
     >
@@ -31,18 +31,17 @@ export const HomebrewTab = () => {
       <PageHeader>
         {t('pages.homebrewPage.title')}
       </PageHeader>
-
       <CharacterNavigation
         tabsList={['daggerheart']}
         disableTabsList={['dnd5', 'dnd2024', 'pathfinder2']}
         activeTab={activeFilter()}
         setActiveTab={setActiveFilter}
       />
-
       <div class="p-4 flex-1 overflow-y-scroll">
         <Switch>
           <Match when={activeFilter() === 'daggerheart'}>
-            {renderHomebrewLink(t('pages.homebrewPage.heritages'), 'homebrew', { content: 'races', provider: 'daggerheart' })}
+            {renderHomebrewLink(t('pages.homebrewPage.daggerheart.ancestries'), 'homebrew', { content: 'races', provider: 'daggerheart' })}
+            {renderHomebrewLink(t('pages.homebrewPage.daggerheart.features'), 'homebrew', { content: 'feats', provider: 'daggerheart' })}
           </Match>
         </Switch>
       </div>

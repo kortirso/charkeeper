@@ -1,19 +1,34 @@
-import { Switch, Match, Show } from 'solid-js';
+import { createSignal, createEffect, Switch, Match, Show } from 'solid-js';
 import * as i18n from '@solid-primitives/i18n';
 import { createWindowSize } from '@solid-primitives/resize-observer';
 
-import { HomebrewRaces } from '../../pages';
+import { HomebrewRaces, HomebrewFeats } from '../../pages';
 import { PageHeader, IconButton } from '../../components';
 import { Arrow } from '../../assets';
 import { useAppState, useAppLocale } from '../../context';
+import { fetchHomebrewsRequest } from '../../requests/fetchHomebrewsRequest';
 
 export const HomebrewContentTab = (props) => {
   const size = createWindowSize();
+
+  const [homebrews, setHomebrews] = createSignal(undefined);
 
   const [appState] = useAppState();
   const [, dict] = useAppLocale();
 
   const t = i18n.translator(dict);
+
+  createEffect(() => {
+    if (homebrews() !== undefined) return;
+
+    const fetchHomebrews = async () => await fetchHomebrewsRequest(appState.accessToken);
+
+    Promise.all([fetchHomebrews()]).then(
+      ([homebrewsData]) => {
+        setHomebrews(homebrewsData);
+      }
+    );
+  });
 
   return (
     <>
@@ -33,6 +48,9 @@ export const HomebrewContentTab = (props) => {
           <Switch>
             <Match when={appState.activePageParams.content === 'races'}>
               <HomebrewRaces provider="daggerheart" />
+            </Match>
+            <Match when={appState.activePageParams.content === 'feats'}>
+              <HomebrewFeats provider="daggerheart" homebrews={homebrews()} />
             </Match>
           </Switch>
         </Match>

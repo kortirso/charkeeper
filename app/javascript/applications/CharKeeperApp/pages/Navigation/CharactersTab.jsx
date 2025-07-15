@@ -14,7 +14,6 @@ import { fetchCharacterRequest } from '../../requests/fetchCharacterRequest';
 import { createCharacterRequest } from '../../requests/createCharacterRequest';
 import { removeCharacterRequest } from '../../requests/removeCharacterRequest';
 import { fetchHomebrewsRequest } from '../../requests/fetchHomebrewsRequest';
-
 import { translate } from '../../helpers';
 
 const DAGGERHEART_DEFAULT_FORM = {
@@ -506,7 +505,7 @@ export const CharactersTab = () => {
                       onInput={(value) => setCharacterDaggerheartForm({ ...characterDaggerheartForm, name: value })}
                     />
                     <Checkbox
-                      labelText={t('newCharacterPage.daggerheart.customHeritage')}
+                      labelText={t('newCharacterPage.daggerheart.customAncestry')}
                       labelPosition="right"
                       labelClassList="ml-2"
                       checked={customHeritage()}
@@ -518,7 +517,7 @@ export const CharactersTab = () => {
                       fallback={
                         <Select
                           containerClassList="mb-2"
-                          labelText={t('newCharacterPage.daggerheart.heritage')}
+                          labelText={t('newCharacterPage.daggerheart.ancestry')}
                           items={translate(daggerheartHeritages(), locale())}
                           selectedValue={characterDaggerheartForm.heritage}
                           onSelect={(value) => setCharacterDaggerheartForm({ ...characterDaggerheartForm, heritage: value })}
@@ -527,7 +526,7 @@ export const CharactersTab = () => {
                     >
                       <Input
                         containerClassList="mb-2"
-                        labelText={t('newCharacterPage.daggerheart.heritageName')}
+                        labelText={t('newCharacterPage.daggerheart.ancestryName')}
                         value={characterDaggerheartForm.heritage_name}
                         onInput={(value) => setCharacterDaggerheartForm({ ...characterDaggerheartForm, heritage_name: value })}
                       />

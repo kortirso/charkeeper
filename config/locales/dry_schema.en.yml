@@ -16,8 +16,13 @@ en:
             filled?: Description can't be blank
             max_size?: Description's size cannot be greater than 250
           origin:
+            filled?: Origin can't be blank
             included_in?: Unknown value of origin
             not_found: Origin is not found
+          origin_value:
+            filled?: Origin value can't be blank
+          kind:
+            filled?: Kind can't be blank
           limit:
             all_or_nothing_present: Limit can't be blank if limit refresh is present
           limit_refresh:
