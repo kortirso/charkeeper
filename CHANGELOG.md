@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## Unreleased
 ### Added
 - managing homebrew ancestries and features for Daggerheart
+- counting bonus from Light in the Dark of companion to max hope
 
 ### Modified
 - tooltips for Equipment/Backpack items

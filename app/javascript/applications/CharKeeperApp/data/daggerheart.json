@@ -209,7 +209,7 @@
     "ranger": {
       "name": { "en": "Ranger", "ru": "Следопыт" },
       "subclasses": {
-        "beastbound": { "name": { "en": "Beastbound", "ru": "Зверинные узы" }, "spellcast": "agi" },
+        "beastbound": { "name": { "en": "Beastbound", "ru": "Звериные узы" }, "spellcast": "agi" },
         "wayfinder": { "name": { "en": "Wayfinder", "ru": "Путевод" }, "spellcast": "agi" }
       },
       "domains": ["bone", "sage"]
