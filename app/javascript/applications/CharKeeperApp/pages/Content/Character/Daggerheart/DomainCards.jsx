@@ -18,6 +18,7 @@ export const DaggerheartDomainCards = (props) => {
   const domains = () => config.domains;
   const traits = () => config.traits;
 
+  const [lastActiveCharacterId, setLastActiveCharacterId] = createSignal(undefined);
   const [characterSpells, setCharacterSpells] = createSignal(undefined);
   const [spells, setSpells] = createSignal(undefined);
   const [spellsSelectingMode, setSpellsSelectingMode] = createSignal(false);
@@ -30,23 +31,22 @@ export const DaggerheartDomainCards = (props) => {
 
   const t = i18n.translator(dict);
 
-  const fetchCharacterSpells = async () => await fetchCharacterSpellsRequest(appState.accessToken, character().provider, character().id);
-
   createEffect(() => {
-    if (characterSpells() !== undefined) return;
-    if (spells() !== undefined) return;
+    if (lastActiveCharacterId() === character().id) return;
 
     const fetchSpells = async () => await fetchSpellsRequest(
       appState.accessToken,
       character().provider,
       { domains: character().selected_domains.join(','), max_level: character().level }
     );
+    const fetchCharacterSpells = async () => await fetchCharacterSpellsRequest(appState.accessToken, character().provider, character().id);
 
     Promise.all([fetchCharacterSpells(), fetchSpells()]).then(
       ([characterSpellsData, spellsData]) => {
         batch(() => {
           setCharacterSpells(characterSpellsData.spells);
           setSpells(spellsData.spells.sort((a, b) => a.name > b.name));
+          setLastActiveCharacterId(character().id);
         });
       }
     );

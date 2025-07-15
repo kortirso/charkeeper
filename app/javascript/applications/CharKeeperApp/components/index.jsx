@@ -15,11 +15,11 @@ export * from './molecules/ErrorWrapper';
 export * from './molecules/NotificationsBudge';
 export * from './molecules/ContentWrapper';
 export * from './molecules/EditWrapper';
+export * from './molecules/CharacterNavigation';
+export * from './molecules/FeatureTitle';
+export * from './molecules/ItemsTable';
 
 export * from './substances/Avatar';
-export * from './substances/CharacterNavigation';
 export * from './substances/Notes';
-export * from './substances/FeatureTitle';
-export * from './substances/ItemsTable';
 export * from './substances/Bonuses';
 export * from './substances/Equipment';

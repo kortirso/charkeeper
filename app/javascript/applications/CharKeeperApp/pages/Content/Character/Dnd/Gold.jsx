@@ -1,4 +1,4 @@
-import { createSignal, For, batch } from 'solid-js';
+import { createSignal, createEffect, For, batch } from 'solid-js';
 import * as i18n from '@solid-primitives/i18n';
 
 import { createModal, StatsBlock, Input, Button } from '../../../../components';
@@ -8,6 +8,7 @@ import { updateCharacterRequest } from '../../../../requests/updateCharacterRequ
 export const DndGold = (props) => {
   const character = () => props.character;
 
+  const [lastActiveCharacterId, setLastActiveCharacterId] = createSignal(undefined);
   const [coinsData, setCoinsData] = createSignal(character().coins);
 
   const { Modal, openModal, closeModal } = createModal();
@@ -16,6 +17,15 @@ export const DndGold = (props) => {
   const [, dict] = useAppLocale();
 
   const t = i18n.translator(dict);
+
+  createEffect(() => {
+    if (lastActiveCharacterId() === character().id) return;
+
+    batch(() => {
+      setCoinsData(character().coins);
+      setLastActiveCharacterId(character().id);
+    });
+  });
 
   const updateCoins = async () => {
     const result = await updateCharacterRequest(

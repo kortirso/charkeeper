@@ -1,4 +1,4 @@
-import { createSignal, For, Show, batch } from 'solid-js';
+import { createSignal, createEffect, For, Show, batch } from 'solid-js';
 
 import { Button, ErrorWrapper, EditWrapper } from '../../../../components';
 import config from '../../../../data/daggerheart.json';
@@ -10,12 +10,22 @@ import { modifier } from '../../../../helpers';
 export const DaggerheartTraits = (props) => {
   const character = () => props.character;
 
+  const [lastActiveCharacterId, setLastActiveCharacterId] = createSignal(undefined);
   const [editMode, setEditMode] = createSignal(false);
   const [traitsData, setTraitsData] = createSignal(character().traits);
 
   const [appState] = useAppState();
   const [{ renderAlerts }] = useAppAlert();
   const [locale] = useAppLocale();
+
+  createEffect(() => {
+    if (lastActiveCharacterId() === character().id) return;
+
+    batch(() => {
+      setTraitsData(character().traits);
+      setLastActiveCharacterId(character().id);
+    });
+  });
 
   const decreaseTraitValue = (slug) => setTraitsData({ ...traitsData(), [slug]: traitsData()[slug] - 1 });
   const increaseTraitValue = (slug) => setTraitsData({ ...traitsData(), [slug]: traitsData()[slug] + 1 });

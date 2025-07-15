@@ -1,4 +1,4 @@
-import { createSignal, For, Show, createMemo, batch } from 'solid-js';
+import { createSignal, createEffect, For, Show, createMemo, batch } from 'solid-js';
 import * as i18n from '@solid-primitives/i18n';
 
 import { createModal, StatsBlock, ErrorWrapper, Select, Checkbox, Button, TextArea } from '../../../../components';
@@ -15,6 +15,7 @@ const DND2024_CLASSES_PREPARE_SPELLS = [
 export const Dnd5Spellbook = (props) => {
   const character = () => props.character;
 
+  const [lastActiveCharacterId, setLastActiveCharacterId] = createSignal(undefined);
   const [preparedSpellFilter, setPreparedSpellFilter] = createSignal(true);
   const [activeSpellClass, setActiveSpellClass] = createSignal(props.initialSpellClassesList[0]);
   const [changingSpell, setChangingSpell] = createSignal(null);
@@ -23,6 +24,16 @@ export const Dnd5Spellbook = (props) => {
   const [, dict] = useAppLocale();
 
   const t = i18n.translator(dict);
+
+  createEffect(() => {
+    if (lastActiveCharacterId() === character().id) return;
+
+    batch(() => {
+      setPreparedSpellFilter(true);
+      setActiveSpellClass(props.initialSpellClassesList[0]);
+      setLastActiveCharacterId(character().id);
+    });
+  });
 
   // actions
   const changeSpell = (item) => {

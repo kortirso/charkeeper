@@ -1,4 +1,4 @@
-import { createSignal, For, Show, batch } from 'solid-js';
+import { createSignal, createEffect, For, Show, batch } from 'solid-js';
 import * as i18n from '@solid-primitives/i18n';
 import { Key } from '@solid-primitives/keyed';
 
@@ -11,6 +11,7 @@ import { modifier } from '../../../../helpers';
 export const DaggerheartExperience = (props) => {
   const object = () => props.object;
 
+  const [lastActiveObjectId, setLastActiveObjectId] = createSignal(undefined);
   const [editMode, setEditMode] = createSignal(false);
   const [experienceData, setExperienceData] = createSignal(object().experience);
 
@@ -19,6 +20,15 @@ export const DaggerheartExperience = (props) => {
   const [, dict] = useAppLocale();
 
   const t = i18n.translator(dict);
+
+  createEffect(() => {
+    if (lastActiveObjectId() === object().id) return;
+
+    batch(() => {
+      setExperienceData(object().experience);
+      setLastActiveObjectId(object().id);
+    });
+  });
 
   const cancelEditing = () => {
     batch(() => {

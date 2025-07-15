@@ -1,4 +1,4 @@
-import { createSignal, createEffect, For, Show } from 'solid-js';
+import { createSignal, createEffect, For, Show, batch } from 'solid-js';
 import * as i18n from '@solid-primitives/i18n';
 
 import { ErrorWrapper, Toggle, Checkbox } from '../../../../components';
@@ -11,6 +11,7 @@ export const Dnd5Professions = (props) => {
   const feats = () => config.feats;
 
   // changeable data
+  const [lastActiveCharacterId, setLastActiveCharacterId] = createSignal(undefined);
   const [items, setItems] = createSignal(undefined);
   const [languagesData, setLanguagesData] = createSignal(character().languages);
   const [toolsData, setToolsData] = createSignal(character().tools);
@@ -22,13 +23,19 @@ export const Dnd5Professions = (props) => {
   const t = i18n.translator(dict);
 
   createEffect(() => {
-    if (items() !== undefined) return;
+    if (lastActiveCharacterId() === character().id) return;
 
     const fetchItems = async () => await fetchItemsRequest(appState.accessToken, character().provider);
 
     Promise.all([fetchItems()]).then(
       ([itemsData]) => {
-        setItems(itemsData.items.sort((a, b) => a.name > b.name));
+        batch(() => {
+          setItems(itemsData.items.sort((a, b) => a.name > b.name));
+          setLanguagesData(character().languages);
+          setToolsData(character().tools);
+          setMusicData(character().music);
+          setLastActiveCharacterId(character().id);
+        });
       }
     );
   });

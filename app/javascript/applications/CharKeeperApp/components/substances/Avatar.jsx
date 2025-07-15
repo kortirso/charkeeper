@@ -1,4 +1,4 @@
-import { createSignal, batch } from 'solid-js';
+import { createSignal, createEffect, batch } from 'solid-js';
 import * as i18n from '@solid-primitives/i18n';
 
 import { Button, Input, Label } from '../../components';
@@ -8,16 +8,26 @@ import { updateCharacterRequest } from '../../requests/updateCharacterRequest';
 export const Avatar = (props) => {
   const character = () => props.character;
 
+  const [lastActiveCharacterId, setLastActiveCharacterId] = createSignal(undefined);
   const [loading, setLoading] = createSignal(false);
   const [selectedFile, setSelectedFile] = createSignal(null);
   const [avatarUrl, setAvatarUrl] = createSignal('');
-  const [name, setName] = createSignal(character().name);
+  const [name, setName] = createSignal(undefined);
 
   const [appState] = useAppState();
   const [{ renderAlert, renderAlerts, renderNotice }] = useAppAlert();
   const [, dict] = useAppLocale();
 
   const t = i18n.translator(dict);
+
+  createEffect(() => {
+    if (lastActiveCharacterId() === character().id) return;
+
+    batch(() => {
+      setName(character().name);
+      setLastActiveCharacterId(character().id);
+    });
+  });
 
   const handleFileChange = (event) => {
     const target = event.target;

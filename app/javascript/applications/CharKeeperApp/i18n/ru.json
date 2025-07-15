@@ -206,7 +206,9 @@
     "cost": "Цена",
     "addItems": "Добавить предметы",
     "equipedItems": "Экипировано",
+    "equipedItemsDescription": "Предметы в руках, экипированный доспех, боеприпасы, расходные материалы",
     "backpackItems": "В рюкзаке",
+    "backpackItemsDescription": "Предметы в рюкзаке, не могут быть быстро использованы",
     "itemNote": "Заметка",
     "weaponsList": "Оружие",
     "primaryWeapon": "Основное оружие",
@@ -272,7 +274,11 @@
       "legacy": "Наследие",
       "size": "Размер",
       "mainClass": "Основной класс",
-      "alignment": "Мировоззрение"
+      "alignment": "Мировоззрение",
+      "sizes": {
+        "small": "Маленький",
+        "medium": "Средний"
+      }
     },
     "pathfinder2": {
       "race": "Раса",

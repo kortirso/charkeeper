@@ -1,4 +1,4 @@
-import { createSignal, For, Show, Switch, Match, batch } from 'solid-js';
+import { createSignal, createEffect, For, Show, Switch, Match, batch } from 'solid-js';
 import * as i18n from '@solid-primitives/i18n';
 
 import { createModal, StatsBlock, ErrorWrapper, Input, Toggle, Checkbox, Select, Button, FeatureTitle } from '../../../../components';
@@ -11,6 +11,7 @@ export const Dnd5Combat = (props) => {
   const character = () => props.character;
 
   // changeable data
+  const [lastActiveCharacterId, setLastActiveCharacterId] = createSignal(undefined);
   const [damageConditions, setDamageConditions] = createSignal(character().conditions);
   const [damageHealValue, setDamageHealValue] = createSignal(0);
   const [healthData, setHealthData] = createSignal(character().health);
@@ -26,6 +27,17 @@ export const Dnd5Combat = (props) => {
   const [, dict] = useAppLocale();
 
   const t = i18n.translator(dict);
+
+  createEffect(() => {
+    if (lastActiveCharacterId() === character().id) return;
+
+    batch(() => {
+      setDamageConditions(character().conditions);
+      setHealthData(character().health);
+      setTextFeaturesData(character().features.filter((item) => item.kind === 'text').reduce((acc, item) => { acc[item.slug] = character().selected_features[item.slug]; return acc; }, {}));
+      setLastActiveCharacterId(character().id);
+    });
+  });
 
   // actions
   const spendEnergy = async (event, feature) => {

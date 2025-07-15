@@ -1,4 +1,4 @@
-import { createSignal, For, Show, batch, Switch, Match } from 'solid-js';
+import { createSignal, createEffect, For, Show, batch, Switch, Match } from 'solid-js';
 import * as i18n from '@solid-primitives/i18n';
 
 import { ErrorWrapper, Select, Checkbox, Button } from '../../../../components';
@@ -12,6 +12,7 @@ export const Dnd5ClassLevels = (props) => {
   const character = () => props.character;
 
   // changeable data
+  const [lastActiveCharacterId, setLastActiveCharacterId] = createSignal(undefined);
   const [classesData, setClassesData] = createSignal(character().classes);
   const [subclassesData, setSubclassesData] = createSignal(character().subclasses);
 
@@ -20,6 +21,16 @@ export const Dnd5ClassLevels = (props) => {
   const [locale, dict] = useAppLocale();
 
   const t = i18n.translator(dict);
+
+  createEffect(() => {
+    if (lastActiveCharacterId() === character().id) return;
+
+    batch(() => {
+      setClassesData(character().classes);
+      setSubclassesData(character().subclasses);
+      setLastActiveCharacterId(character().id);
+    });
+  });
 
   const classes = () => character().provider === 'dnd5' ? dict().dnd5.classes : translate(dnd2024Config.classes, locale());
   const subclasses = () => character().provider === 'dnd5' ? dict().dnd5.subclasses : {};

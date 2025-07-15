@@ -1,4 +1,4 @@
-import { createSignal, For, Show, batch, Switch, Match } from 'solid-js';
+import { createSignal, createEffect, For, Show, batch, Switch, Match } from 'solid-js';
 
 import { ErrorWrapper, Checkbox, Levelbox, EditWrapper } from '../../../../components';
 import config from '../../../../data/dnd2024.json';
@@ -10,12 +10,22 @@ import { modifier } from '../../../../helpers';
 export const Dnd5Skills = (props) => {
   const character = () => props.character;
 
+  const [lastActiveCharacterId, setLastActiveCharacterId] = createSignal(undefined);
   const [editMode, setEditMode] = createSignal(false);
   const [skillsData, setSkillsData] = createSignal(character().skills);
 
   const [appState] = useAppState();
   const [{ renderAlerts }] = useAppAlert();
   const [locale] = useAppLocale();
+
+  createEffect(() => {
+    if (lastActiveCharacterId() === character().id) return;
+
+    batch(() => {
+      setSkillsData(character().skills);
+      setLastActiveCharacterId(character().id);
+    });
+  });
 
   const toggleSkill = (slug) => {
     const result = skillsData().slice().map((item) => {

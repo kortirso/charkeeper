@@ -8,6 +8,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Added
 - managing homebrew ancestries and features for Daggerheart
 
+### Modified
+- tooltips for Equipment/Backpack items
+
+### Fixed
+- changing content of ContentTab after changing character for similar provider
+
 ## [0.2.2] - 2025-07-14
 ### Added
 - managing companions for Daggerheart characters

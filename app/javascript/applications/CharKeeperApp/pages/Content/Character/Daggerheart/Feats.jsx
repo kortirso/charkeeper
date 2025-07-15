@@ -1,4 +1,4 @@
-import { createSignal, For, Switch, Match } from 'solid-js';
+import { createSignal, createEffect, For, Switch, Match, batch } from 'solid-js';
 import * as i18n from '@solid-primitives/i18n';
 
 import { Toggle, Button, Select, ErrorWrapper, FeatureTitle, TextArea } from '../../../../components';
@@ -8,6 +8,7 @@ import { updateCharacterFeatRequest } from '../../../../requests/updateCharacter
 export const DaggerheartFeats = (props) => {
   const character = () => props.character;
 
+  const [lastActiveCharacterId, setLastActiveCharacterId] = createSignal(undefined);
   const [featValues, setFeatValues] = createSignal(
     character().features.reduce((acc, item) => { acc[item.slug] = item.value; return acc; }, {})
   );
@@ -17,6 +18,15 @@ export const DaggerheartFeats = (props) => {
   const [locale, dict] = useAppLocale();
 
   const t = i18n.translator(dict);
+
+  createEffect(() => {
+    if (lastActiveCharacterId() === character().id) return;
+
+    batch(() => {
+      setFeatValues(character().features.reduce((acc, item) => { acc[item.slug] = item.value; return acc; }, {}));
+      setLastActiveCharacterId(character().id);
+    });
+  });
 
   const spendEnergy = (event, feature) => {
     event.stopPropagation();
