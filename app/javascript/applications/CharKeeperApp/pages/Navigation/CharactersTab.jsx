@@ -268,7 +268,7 @@ export const CharactersTab = () => {
       </Switch>
       <Switch>
         <Match when={currentTab() === 'characters'}>
-          <div class="relative flex-1 overflow-y-scroll">
+          <div class="flex-1 overflow-y-scroll">
             <Show when={characters() !== undefined}>
               <For each={filteredCharacters()}>
                 {(character) =>
@@ -326,7 +326,7 @@ export const CharactersTab = () => {
               </For>
             </Show>
             <Show when={appState.isAdmin}>
-              <div class="absolute bottom-0 left-0 w-full flex p-2">
+              <div class="w-full flex p-2">
                 <Button
                   default
                   size="small"
