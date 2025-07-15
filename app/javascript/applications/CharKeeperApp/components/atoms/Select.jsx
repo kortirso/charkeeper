@@ -25,7 +25,7 @@ export const Select = (props) => {
           class={[isOpen() ? 'is-open' : '', 'form-value flex justify-between items-center h-12'].join(' ')}
           onClick={() => setIsOpen(!isOpen())}
         >
-          <Switch fallback={''}>
+          <Switch fallback={<span></span>}>
             <Match when={props.selectedValue}>
               <span>{props.items[props.selectedValue]}</span>
             </Match>
