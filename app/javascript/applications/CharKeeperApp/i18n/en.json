@@ -13,7 +13,14 @@
     "settingsPage": {
       "logout": "Logout",
       "colorSchema": "Color schema",
-      "version": "Version"
+      "version": "Version",
+      "title": "Settings",
+      "changeLocale": "Locale",
+      "feedback": "Feedback",
+      "profile": "Profile",
+      "username": "Username",
+      "socials": "Community links",
+      "notifications": "Notifications"
     },
     "characterNavigation": {
       "allFilter": "All",
@@ -34,12 +41,45 @@
       "professions": "Mastery",
       "spells": "Spells",
       "companion": "Companion"
+    },
+    "homebrewPage": {
+      "title": "Homebrew",
+      "daggerheart": {
+        "ancestries": "Ancestries",
+        "features": "Features",
+        "races": "Daggerheart's ancestries",
+        "newRace": "Add new ancestry",
+        "raceName": "Ancestry's name",
+        "newFeat": "Add new feature",
+        "featTitle": "Title",
+        "featDescription": "Description",
+        "origin": "Origin",
+        "originValue": "Origin value",
+        "limit": "Usage limit",
+        "limitRefresh": "Limit refresh",
+        "kind": "Kind",
+        "noFeats": "No features for ancestry"
+      }
     }
   },
   "daggerheart": {
     "terms": {
       "traits": "Traits",
-      "thresholds": "Damage thresholds"
+      "thresholds": "Damage thresholds",
+      "feats": {
+        "origins": {
+          "ancestry": "Ancestry"
+        },
+        "kinds": {
+          "static": "Static text",
+          "text": "Text area"
+        },
+        "limitRefresh": {
+          "shortRest": "Short rest",
+          "longRest": "Long rest",
+          "session": "Session"
+        }
+      }
     },
     "static": {
       "proficiency": "Proficiency",
@@ -207,18 +247,6 @@
     "invalidSubclassesList": "You need to select subclasses for all classes",
     "feedbackIsAdded": "Feedback is added, thank you very much for using CharKeeper!"
   },
-  "settingsPage": {
-    "title": "Settings",
-    "changeLocale": "Locale",
-    "feedback": "Feedback",
-    "profile": "Profile",
-    "username": "Username",
-    "socials": "Community links",
-    "notifications": "Notifications"
-  },
-  "homebrewPage": {
-    "title": "Homebrew"
-  },
   "charactersPage": {
     "title": "Characters list",
     "level": "Level",
@@ -254,12 +282,12 @@
       "mainAbility": "Main ability"
     },
     "daggerheart": {
-      "heritage": "Heritage",
+      "ancestry": "Ancestry",
       "community": "Community",
       "mainClass": "Main class",
       "subclass": "Subclass",
-      "customHeritage": "Mixed heritage",
-      "heritageName": "Heritage name",
+      "customAncestry": "Mixed ancestry",
+      "ancestryName": "Ancestry's name",
       "mainFeature": "Main feature",
       "secondaryFeature": "Secondary feature"
     }

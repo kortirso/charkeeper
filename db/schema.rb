@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_07_13_154224) do
+ActiveRecord::Schema[8.0].define(version: 2025_07_15_103749) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
   enable_extension "pgcrypto"
@@ -170,7 +170,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_07_13_154224) do
 
   create_table "feats", id: :uuid, default: -> { "gen_random_uuid()" }, comment: "Навыки", force: :cascade do |t|
     t.string "type", null: false
-    t.string "slug", null: false
+    t.string "slug"
     t.jsonb "title", default: {}, null: false
     t.jsonb "description", default: {}, null: false
     t.integer "origin", limit: 2, null: false, comment: "Тип применимости навыка"
@@ -184,6 +184,28 @@ ActiveRecord::Schema[8.0].define(version: 2025_07_13_154224) do
     t.jsonb "eval_variables", default: {}, null: false, comment: "Вычисляемые переменные"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.uuid "user_id"
+    t.index ["user_id"], name: "index_feats_on_user_id"
+  end
+
+  create_table "homebrew_races", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "user_id", null: false
+    t.string "type", null: false, comment: "Отношение к игровой системе"
+    t.string "name", null: false
+    t.jsonb "data", default: {}, null: false, comment: "Кастомные данные расы"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_homebrew_races_on_user_id"
+  end
+
+  create_table "homebrews", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "user_id", null: false
+    t.uuid "brewery_id", null: false
+    t.string "brewery_type", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["brewery_id", "brewery_type"], name: "index_homebrews_on_brewery_id_and_brewery_type"
+    t.index ["user_id"], name: "index_homebrews_on_user_id"
   end
 
   create_table "items", id: :uuid, default: -> { "gen_random_uuid()" }, comment: "Предметы", force: :cascade do |t|

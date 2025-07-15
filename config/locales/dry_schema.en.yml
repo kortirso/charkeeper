@@ -7,6 +7,34 @@ en:
     errors:
       unexpected_key: Unknown param
       included_in?: Unknown value
+      homebrew_feat:
+        rules:
+          title:
+            filled?: Title can't be blank
+            max_size?: Title's size cannot be greater than 50
+          description:
+            filled?: Description can't be blank
+            max_size?: Description's size cannot be greater than 250
+          origin:
+            filled?: Origin can't be blank
+            included_in?: Unknown value of origin
+            not_found: Origin is not found
+          origin_value:
+            filled?: Origin value can't be blank
+          kind:
+            filled?: Kind can't be blank
+          limit:
+            all_or_nothing_present: Limit can't be blank if limit refresh is present
+          limit_refresh:
+            all_or_nothing_present: Limit refresh can't be blank if limit is present
+      homebrew_race:
+        rules:
+          name:
+            filled?: Name can't be blank
+          domains:
+            filled?: Domains can't be blank
+            only_two: Domains list should contain 2 values
+            invalid_value: Domains list contains invalid value
       character_companion:
         rules:
           character:
@@ -26,13 +54,13 @@ en:
         invalid: Invalid credentials
         rules:
           password:
-            filled?: can't be blank
+            filled?: Password can't be blank
           password_confirmation:
-            filled?: can't be blank
+            filled?: Password confirmation can't be blank
           passwords:
-            different: must be equal
+            different: Passwords must be equal
           username:
-            invalid: has invalid format
+            invalid: Username has invalid format
           locale:
             filled?: Locale must be filled
             included_in?: Invalid locale value

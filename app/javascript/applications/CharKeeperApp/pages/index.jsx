@@ -11,6 +11,10 @@ export * from './Content/LocaleTab';
 export * from './Content/FeedbackTab';
 export * from './Content/UsernameTab';
 export * from './Content/NotificationsTab';
+export * from './Content/HomebrewContentTab';
+
+export * from './Content/Homebrew/Races';
+export * from './Content/Homebrew/Feats';
 
 export * from './Content/Character/Dnd5';
 export * from './Content/Character/Dnd5/Abilities';
@@ -47,5 +51,10 @@ export * from './Content/Character/Daggerheart/DomainCardsTable';
 export * from './Content/Character/Daggerheart/Rest';
 export * from './Content/Character/Daggerheart/Beastform';
 export * from './Content/Character/Daggerheart/Companion';
+
+export * from './Content/Homebrew/Daggerheart/NewRaceForm';
+export * from './Content/Homebrew/Daggerheart/Race';
+export * from './Content/Homebrew/Daggerheart/NewFeatForm';
+export * from './Content/Homebrew/Daggerheart/Feat';
 
 export * from './Navigation/Characters/ListItem';

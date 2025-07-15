@@ -7,6 +7,34 @@ ru:
     errors:
       unexpected_key: Неизвестный параметр
       included_in?: Неизвестное значение
+      homebrew_feat:
+        rules:
+          title:
+            filled?: Необходимо указать название
+            max_size?: Название не может быть длиннее, чем 50 символов
+          description:
+            filled?: Необходимо указать описание
+            max_size?: Описание не может быть длиннее, чем 250 символов
+          origin:
+            filled?: Необходимо указать принадлежность
+            included_in?: Неизвестное значение принадлежности
+            not_found: Источник не найден
+          origin_value:
+            filled?: Необходимо указать значение принадлежности
+          kind:
+            filled?: Необходимо указать тип способности
+          limit:
+            all_or_nothing_present: Лимит должен быть указан, если указано обновление лимита
+          limit_refresh:
+            all_or_nothing_present: Обновление лимита должно быть указано, если указан лимит
+      homebrew_race:
+        rules:
+          name:
+            filled?: Необходимо указать название
+          domains:
+            filled?: Необходимо указать домены
+            only_two: Список доменов должен содержать 2 значения
+            invalid_value: Список доменов содержит неверное значение
       character_companion:
         rules:
           character:

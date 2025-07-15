@@ -13,7 +13,14 @@
     "settingsPage": {
       "logout": "Выход",
       "colorSchema": "Цветовая палитра",
-      "version": "Версия"
+      "version": "Версия",
+      "title": "Настройки",
+      "changeLocale": "Язык",
+      "feedback": "Отзыв",
+      "profile": "Профиль",
+      "username": "Имя пользователя",
+      "socials": "Общество",
+      "notifications": "Уведомления"
     },
     "characterNavigation": {
       "allFilter": "Все",
@@ -34,12 +41,45 @@
       "professions": "Владения",
       "spells": "Заклинания",
       "companion": "Питомец"
+    },
+    "homebrewPage": {
+      "title": "Homebrew",
+      "daggerheart": {
+        "ancestries": "Расы",
+        "features": "Способности",
+        "races": "Расы Daggerheart",
+        "newRace": "Добавить новую расу",
+        "raceName": "Название расы",
+        "newFeat": "Добавить новую способность",
+        "featTitle": "Название",
+        "featDescription": "Описание",
+        "origin": "Тип принадлежности",
+        "originValue": "Значение принадлежности",
+        "limit": "Лимит использований",
+        "limitRefresh": "Сброс лимита",
+        "kind": "Тип",
+        "noFeats": "Нет способностей для расы"
+      }
     }
   },
   "daggerheart": {
     "terms": {
       "traits": "Способности",
-      "thresholds": "Пороги урона"
+      "thresholds": "Пороги урона",
+      "feats": {
+        "origins": {
+          "ancestry": "Раса"
+        },
+        "kinds": {
+          "static": "Вывод описания",
+          "text": "С вводом данных"
+        },
+        "limitRefresh": {
+          "shortRest": "Короткий отдых",
+          "longRest": "Продолжительный отдых",
+          "session": "После сессии"
+        }
+      }
     },
     "static": {
       "proficiency": "Мастерство",
@@ -207,18 +247,6 @@
     "invalidSubclassesList": "Необходимо выбрать все подклассы для классов",
     "feedbackIsAdded": "Отзыв отправлен, большое спасибо за использование ЧарКипера!"
   },
-  "settingsPage": {
-    "title": "Настройки",
-    "changeLocale": "Язык",
-    "feedback": "Отзыв",
-    "profile": "Профиль",
-    "username": "Имя пользователя",
-    "socials": "Общество",
-    "notifications": "Уведомления"
-  },
-  "homebrewPage": {
-    "title": "Homebrew"
-  },
   "charactersPage": {
     "title": "Персонажи",
     "level": "Уровень",
@@ -254,12 +282,12 @@
       "mainAbility": "Основная характеристика"
     },
     "daggerheart": {
-      "heritage": "Раса",
+      "ancestry": "Раса",
       "community": "Общество",
       "mainClass": "Основной класс",
       "subclass": "Подкласс",
-      "customHeritage": "Мультираса",
-      "heritageName": "Название расы",
+      "customAncestry": "Мультираса",
+      "ancestryName": "Название расы",
       "mainFeature": "Главная способность",
       "secondaryFeature": "Дополнительная способность"
     }

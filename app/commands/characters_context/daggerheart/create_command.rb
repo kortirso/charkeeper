@@ -13,7 +13,6 @@ module CharactersContext
       use_contract do
         config.messages.namespace = :daggerheart_character
 
-        Heritages = Dry::Types['strict.string'].enum(*::Daggerheart::Character.heritages.keys)
         Communities = Dry::Types['strict.string'].enum(*::Daggerheart::Character.communities.keys)
         Classes = Dry::Types['strict.string'].enum(*::Daggerheart::Character.classes_info.keys)
 
@@ -23,7 +22,7 @@ module CharactersContext
           required(:community).filled(Communities)
           required(:main_class).filled(Classes)
           required(:subclass).filled(:string)
-          optional(:heritage).filled(Heritages)
+          optional(:heritage).filled(:string)
           optional(:heritage_name).filled(:string)
           optional(:heritage_features).filled(:array).each(:string)
           optional(:avatar_file).hash do
@@ -36,6 +35,14 @@ module CharactersContext
         rule(:heritage, :heritage_name).validate(:check_at_least_one_present)
         rule(:heritage, :heritage_name).validate(:check_only_one_present)
         rule(:avatar_file, :avatar_url).validate(:check_only_one_present)
+
+        rule(:heritage, :user) do
+          next if values[:heritage].blank?
+          next if values[:heritage].in?(::Daggerheart::Character.heritages.keys)
+          next if values[:heritage].in?(::Daggerheart::Homebrew::Race.where(user_id: values[:user].id).ids)
+
+          key.failure(:included_in?)
+        end
 
         rule(:main_class, :subclass) do
           next if values[:subclass].nil?
