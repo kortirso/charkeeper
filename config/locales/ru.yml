@@ -7,6 +7,11 @@ ru:
       boosts: "Вы можете улучшить следующие характеристики: %{ability_boosts_text}.\nТакже вы можете изучить следующие умения: %{skill_boosts_text}"
       free: На ваш выбор
       int: + модификатор Инт
+  frontend:
+    homebrews:
+      races:
+        daggerheart:
+          character_exists: Персонаж с такой расой существует
   web:
     welcome:
       index:

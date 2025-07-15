@@ -7,6 +7,11 @@ en:
       boosts: "You can improve abilities: %{ability_boosts_text}.\nYou can learn skills: %{skill_boosts_text}"
       free: Free
       int: + Int modifier
+  frontend:
+    homebrews:
+      races:
+        daggerheart:
+          character_exists: Character with such ancestry exists
   web:
     welcome:
       index:

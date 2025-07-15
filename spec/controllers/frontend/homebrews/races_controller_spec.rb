@@ -90,6 +90,21 @@ describe Frontend::Homebrews::RacesController do
           expect(response).to have_http_status :ok
           expect(response.parsed_body).to eq({ 'result' => 'ok' })
         end
+
+        context 'when character exists with deletinh ancestry' do
+          let!(:character) { create :character, :daggerheart, user: user_session.user }
+
+          before do
+            character.data['heritage'] = homebrew.id
+            character.save
+          end
+
+          it 'returns error', :aggregate_failures do
+            expect { request }.not_to change(Daggerheart::Homebrew::Race, :count)
+            expect(response).to have_http_status :unprocessable_entity
+            expect(response.parsed_body['errors']).to eq({ 'base' => ['Персонаж с такой расой существует'] })
+          end
+        end
       end
     end
   end

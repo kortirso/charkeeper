@@ -9,6 +9,7 @@ module Frontend
 
       before_action :find_races, only: %i[index]
       before_action :find_race, only: %i[destroy]
+      before_action :find_existing_characters, only: %i[destroy]
 
       def index
         serialize_relation(@races, serializer, :races)
@@ -36,6 +37,12 @@ module Frontend
         @race = races_relation.find_by!(id: params[:id], user_id: current_user.id)
       end
 
+      def find_existing_characters
+        return unless characters_relation.where(user_id: current_user.id).exists?(["data ->> 'heritage' = ?", @race.id])
+
+        unprocessable_response({ base: [t("frontend.homebrews.races.#{params[:provider]}.character_exists")] })
+      end
+
       def create_params
         params.require(:brewery).permit!.to_h
       end
@@ -56,6 +63,12 @@ module Frontend
         case params[:provider]
         when 'daggerheart' then ::Daggerheart::Homebrew::Race
         else []
+        end
+      end
+
+      def characters_relation
+        case params[:provider]
+        when 'daggerheart' then ::Daggerheart::Character
         end
       end
     end
