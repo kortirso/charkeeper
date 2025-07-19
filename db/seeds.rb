@@ -16,7 +16,8 @@ spells.map! do |spell|
       school: spell[4],
       available_for: spell[6].split(','),
       source: spell[5]
-    }
+    },
+    available_for: spell[6].split(',')
   }
 end
 Dnd2024::Spell.upsert_all(spells)
@@ -35,7 +36,8 @@ spells.map! do |spell|
       school: spell[4],
       available_for: spell[6].split(','),
       source: spell[5]
-    }
+    },
+    available_for: spell[6].split(',')
   }
 end
 Dnd5::Spell.upsert_all(spells)
