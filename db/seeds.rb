@@ -59,6 +59,19 @@ items.map! do |item|
 end
 Dnd5::Item.upsert_all(items)
 
+items = CSV.parse(File.read(Rails.root.join('db/data/daggerheart_items.csv')), headers: false, col_sep: ';')
+items.map! do |item|
+  {
+    kind: item[0],
+    slug: item[1],
+    name: {
+      en: item[2],
+      ru: item[3]
+    }
+  }
+end
+Daggerheart::Item.upsert_all(items)
+
 # виды урона оружия
 # колющий - pierce
 # рубящий - slash

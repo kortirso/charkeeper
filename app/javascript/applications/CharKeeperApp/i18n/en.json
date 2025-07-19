@@ -221,7 +221,8 @@
     "ammoList": "Ammo",
     "focusList": "Focus",
     "toolsList": "Artisan's tools",
-    "musicList": "Musical instruments"
+    "musicList": "Musical instruments",
+    "consumables": "Consumables"
   },
   "rest": {
     "shortRest": "Short rest",
