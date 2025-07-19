@@ -7,6 +7,13 @@ ru:
     errors:
       unexpected_key: Неизвестный параметр
       included_in?: Неизвестное значение
+      homebrew_item:
+        rules:
+          title:
+            filled?: Необходимо указать название
+            max_size?: Название не может быть длиннее, чем 50 символов
+          kind:
+            filled?: Необходимо указать тип предмета
       homebrew_feat:
         rules:
           title:

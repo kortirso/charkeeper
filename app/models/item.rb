@@ -7,5 +7,7 @@ class Item < ApplicationRecord
   scope :pathfinder2, -> { where(type: 'Pathfinder2::Item') }
   scope :daggerheart, -> { where(type: 'Daggerheart::Item') }
 
+  belongs_to :user, optional: true
+
   has_many :character_items, class_name: 'Character::Item', dependent: :destroy
 end

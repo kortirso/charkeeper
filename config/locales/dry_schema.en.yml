@@ -7,6 +7,13 @@ en:
     errors:
       unexpected_key: Unknown param
       included_in?: Unknown value
+      homebrew_item:
+        rules:
+          name:
+            filled?: Name can't be blank
+            max_size?: Name's size cannot be greater than 50
+          kind:
+            filled?: Kind can't be blank
       homebrew_feat:
         rules:
           title:

@@ -58,7 +58,11 @@
         "limit": "Usage limit",
         "limitRefresh": "Limit refresh",
         "kind": "Kind",
-        "noFeats": "No features for ancestry"
+        "noFeats": "No features for ancestry",
+        "items": "Items",
+        "itemName": "Item name",
+        "itemKind": "Item kind",
+        "newItem": "Add new item"
       }
     }
   },
@@ -78,6 +82,12 @@
           "shortRest": "Short rest",
           "longRest": "Long rest",
           "session": "Session"
+        }
+      },
+      "items": {
+        "kinds": {
+          "item": "Item",
+          "consumable": "Consumable"
         }
       }
     },
