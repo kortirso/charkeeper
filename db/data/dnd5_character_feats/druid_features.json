@@ -1,0 +1,94 @@
+[
+  {
+    "slug": "wild_shape",
+    "title": { "en": "Wild Shape", "ru": "Дикий облик" },
+    "description": {
+      "en": "You can use your action to magically assume the shape of a beast (challenge rating - {{value}}) that you have seen before.",
+      "ru": "Вы можете действием принять при помощи магии облик любого зверя (показатель опасности - {{value}}), которого вы видели."
+    },
+    "origin": "class",
+    "origin_value": "druid",
+    "kind": "static",
+    "description_eval_variables": {
+      "value": "class_level = classes['druid']; class_level >= 8 ? 1 : (class_level >= 4 ? 0.5 : 0.25)",
+      "limit": "classes['druid'] == 20 ? 0 : 2"
+    },
+    "limit_refresh": "short_rest",
+    "conditions": { "level": 2 }
+  },
+  {
+    "slug": "timeless_body",
+    "title": { "en": "Timeless Body", "ru": "Безвременное тело" },
+    "description": {
+      "en": "For every 10 years that pass, your body ages only 1 year.",
+      "ru": "За каждые 10 лет ваше тело стареет только на 1 год."
+    },
+    "origin": "class",
+    "origin_value": "druid",
+    "kind": "static",
+    "conditions": { "level": 18 }
+  },
+  {
+    "slug": "beast spells",
+    "title": { "en": "Beast Spells", "ru": "Заклинания зверя" },
+    "description": {
+      "en": "You can cast many of your druid spells in any shape you assume using Wild Shape (but you aren't able to provide material components).",
+      "ru": "Вы можете творить в диком облике заклинания друида (кроме требующих материальные компоненты)."
+    },
+    "origin": "class",
+    "origin_value": "druid",
+    "kind": "static",
+    "conditions": { "level": 18 }
+  },
+  {
+    "slug": "archdruid",
+    "title": { "en": "Archdruid", "ru": "Архидруид" },
+    "description": {
+      "en": "You can ignore the verbal and somatic components of your druid spells, as well as any material components that lack a cost and aren't consumed by a spell. You gain this benefit in both your normal shape and your beast shape from Wild Shape.",
+      "ru": "Вы можете игнорировать соматический и вербальный компоненты заклинаний друида, а также материальные компоненты без указанной цены и не поглощаемые заклинанием. Это действует как в нормальном облике, так и в облике зверя."
+    },
+    "origin": "class",
+    "origin_value": "druid",
+    "kind": "static",
+    "conditions": { "level": 20 }
+  },
+  {
+    "slug": "natural_recovery",
+    "title": { "en": "Natural recovery", "ru": "Естественное восстановление" },
+    "description": {
+      "en": "During a short rest, you choose expended spell slots to recover. Total sum level of slots - {{value}}. None of the slots can be 6th level or higher.",
+      "ru": "Во время короткого отдыха можно восстановить потраченные ячейки заклинаний. Сумма уровней {{value}}. Ни одна ячейка не может быть 6 уровня или выше."
+    },
+    "origin": "subclass",
+    "origin_value": "circle_of_the_land",
+    "kind": "static",
+    "description_eval_variables": {
+      "value": "(classes['druid'] / 2.0).round",
+      "limit": "1"
+    },
+    "limit_refresh": "short_rest",
+    "conditions": { "level": 2 }
+  },
+  {
+    "slug": "land",
+    "title": { "en": "Circle spells", "ru": "Заклинания круга" },
+    "description": {
+      "en": "Your mystical connection to the land infuses you with the ability to cast certain spells.",
+      "ru": "Духовная связь друида с землёй наделяет его некоторыми заклинаниями."
+    },
+    "origin": "subclass",
+    "origin_value": "circle_of_the_land",
+    "kind": "one_from_list",
+    "options": {
+      "arctic": { "en": "Arctic", "ru": "Тундра" },
+      "coast": { "en": "Coast", "ru": "Побережье" },
+      "desert": { "en": "Desert", "ru": "Пустыня" },
+      "forest": { "en": "Forest", "ru": "Лес" },
+      "grassland": { "en": "Grassland", "ru": "Луг" },
+      "mountain": { "en": "Mountain", "ru": "Гора" },
+      "swamp": { "en": "Swamp", "ru": "Болото" },
+      "underdark": { "en": "Underdark", "ru": "Подземье" }
+    },
+    "conditions": { "level": 3 }
+  }
+]

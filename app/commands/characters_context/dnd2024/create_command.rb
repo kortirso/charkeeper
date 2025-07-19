@@ -5,7 +5,8 @@ module CharactersContext
     class CreateCommand < BaseCommand
       include Deps[
         attach_avatar_by_url: 'commands.image_processing.attach_avatar_by_url',
-        attach_avatar_by_file: 'commands.image_processing.attach_avatar_by_file'
+        attach_avatar_by_file: 'commands.image_processing.attach_avatar_by_file',
+        refresh_feats: 'services.characters_context.dnd2024.refresh_feats'
       ]
 
       # rubocop: disable Metrics/BlockLength
@@ -62,6 +63,7 @@ module CharactersContext
 
       def do_persist(input)
         character = ::Dnd2024::Character.create!(input.slice(:user, :name, :data))
+        refresh_feats.call(character: character)
 
         learn_spells_list(character, input)
         attach_avatar_by_file.call({ character: character, file: input[:avatar_file] }) if input[:avatar_file]
@@ -80,17 +82,14 @@ module CharactersContext
       def learn_spells_list(character, input)
         return if ::Dnd2024::Character::CLASSES_KNOW_SPELLS_LIST.exclude?(input[:main_class])
 
-        spells = ::Dnd2024::Spell.all.filter_map do |spell|
-          next if spell.data.available_for.exclude?(input[:main_class])
-
+        spells = ::Dnd2024::Spell.where('available_for && ?', "{#{input[:main_class]}}").map do |spell|
           {
             character_id: character.id,
             spell_id: spell.id,
             data: { ready_to_use: false, prepared_by: input[:main_class] }
           }
         end
-
-        ::Character::Spell.upsert_all(spells)
+        ::Character::Spell.upsert_all(spells) if spells.any?
       end
     end
   end

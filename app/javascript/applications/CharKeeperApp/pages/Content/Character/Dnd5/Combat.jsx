@@ -1,8 +1,8 @@
-import { createSignal, createEffect, For, Show, Switch, Match, batch } from 'solid-js';
+import { createSignal, createEffect, For, Show, batch } from 'solid-js';
 import * as i18n from '@solid-primitives/i18n';
 
-import { createModal, StatsBlock, ErrorWrapper, Input, Toggle, Checkbox, Select, Button, FeatureTitle } from '../../../../components';
-import { useAppState, useAppLocale, useAppAlert } from '../../../../context';
+import { createModal, StatsBlock, ErrorWrapper, Input, Toggle, Checkbox, Button } from '../../../../components';
+import { useAppState, useAppLocale } from '../../../../context';
 import { updateCharacterRequest } from '../../../../requests/updateCharacterRequest';
 import { createCharacterHealthRequest } from '../../../../requests/createCharacterHealthRequest';
 import { modifier } from '../../../../helpers';
@@ -16,14 +16,8 @@ export const Dnd5Combat = (props) => {
   const [damageHealValue, setDamageHealValue] = createSignal(0);
   const [healthData, setHealthData] = createSignal(character().health);
 
-  const [onceSelectedFeaturesData, setOnceSelectedFeaturesData] = createSignal({});
-  const [textFeaturesData, setTextFeaturesData] = createSignal(
-    character().features.filter((item) => item.kind === 'text').reduce((acc, item) => { acc[item.slug] = character().selected_features[item.slug]; return acc; }, {})
-  );
-
   const { Modal, openModal, closeModal } = createModal();
   const [appState] = useAppState();
-  const [{ renderAlerts }] = useAppAlert();
   const [, dict] = useAppLocale();
 
   const t = i18n.translator(dict);
@@ -34,54 +28,11 @@ export const Dnd5Combat = (props) => {
     batch(() => {
       setDamageConditions(character().conditions);
       setHealthData(character().health);
-      setTextFeaturesData(character().features.filter((item) => item.kind === 'text').reduce((acc, item) => { acc[item.slug] = character().selected_features[item.slug]; return acc; }, {}));
       setLastActiveCharacterId(character().id);
     });
   });
 
   // actions
-  const spendEnergy = async (event, feature) => {
-    event.stopPropagation();
-
-    let payload;
-    const currentValue = character().energy[feature.slug];
-
-    if (currentValue === feature.limit) return;
-    if (currentValue) {
-      payload = { ...character().energy, [feature.slug]: currentValue + 1 };
-    } else {
-      payload = { ...character().energy, [feature.slug]: 1 };
-    }
-
-    const result = await updateCharacterRequest(
-      appState.accessToken, character().provider, character().id, { character: { energy: payload }, only_head: true }
-    );
-
-    if (result.errors === undefined) props.onReplaceCharacter({ energy: payload });
-    else renderAlerts(result.errors);
-  }
-
-  const restoreEnergy = async (event, feature) => {
-    event.stopPropagation();
-
-    let payload;
-    const currentValue = character().energy[feature.slug];
-
-    if (currentValue === 0) return;
-    if (currentValue) {
-      payload = { ...character().energy, [feature.slug]: currentValue - 1 };
-    } else {
-      payload = { ...character().energy, [feature.slug]: 0 };
-    }
-
-    const result = await updateCharacterRequest(
-      appState.accessToken, character().provider, character().id, { character: { energy: payload }, only_head: true }
-    );
-
-    if (result.errors === undefined) props.onReplaceCharacter({ energy: payload });
-    else renderAlerts(result.errors);
-  }
-
   const toggleDamageCondition = async (damageType, slug) => {
     const newValue = { ...damageConditions() };
     if (newValue[damageType].includes(slug)) {
@@ -92,28 +43,6 @@ export const Dnd5Combat = (props) => {
 
     const result = await props.onRefreshCharacter(newValue);
     if (result.errors === undefined) setDamageConditions(newValue);
-  }
-
-  const toggleSelectedFeatureOption = async (feature, option) => {
-    const selectedOptions = character().selected_features[feature.slug];
-
-    let newData;
-    if (selectedOptions) {
-      if (selectedOptions.includes(option)) {
-        newData = { ...character().selected_features, [feature.slug]: selectedOptions.filter((item) => item !== option) }
-      } else {
-        newData = { ...character().selected_features, [feature.slug]: selectedOptions.concat(option) }
-      }
-    } else {
-      newData = { ...character().selected_features, [feature.slug]: [option] }
-    }
-
-    await props.onReloadCharacter({ selected_features: newData });
-  }
-
-  const setSelectedFeatureOption = async (feature, value) => {
-    const newData = { ...character().selected_features, [feature.slug]: value }
-    await props.onReloadCharacter({ selected_features: newData });
   }
 
   // submits
@@ -172,16 +101,6 @@ export const Dnd5Combat = (props) => {
         closeModal();
       });
     }
-  }
-
-  const updateTextFeature = async (slug) => {
-    const newData = { ...character().selected_features, [slug]: textFeaturesData()[slug] }
-    await props.onRefreshCharacter({ selected_features: newData });
-  }
-
-  const confirmOnceSelectedFeaturesData = async (slug) => {
-    const newData = { ...character().selected_features, [slug]: onceSelectedFeaturesData()[slug] }
-    await props.onReloadCharacter({ selected_features: newData });
   }
 
   // rendering
@@ -353,103 +272,6 @@ export const Dnd5Combat = (props) => {
       </Toggle>
       {renderAttacksBox(`${t('terms.attackAction')} - ${character().attacks_per_action}`, character().attacks.filter((item) => item.action_type === 'action'))}
       {renderAttacksBox(`${t('terms.attackBonusAction')} - 1`, character().attacks.filter((item) => item.action_type === 'bonus action'))}
-      <For each={character().features}>
-        {(feature) =>
-          <Toggle title={<FeatureTitle feature={feature} character={character()} onSpendEnergy={spendEnergy} onRestoreEnergy={restoreEnergy} />}>
-            <Switch>
-              <Match when={feature.kind === 'static'}>
-                <p
-                  class="text-sm font-cascadia-light"
-                  innerHTML={feature.description} // eslint-disable-line solid/no-innerhtml
-                />
-              </Match>
-              <Match when={feature.kind === 'dynamic_list'}>
-                <p
-                  class="text-sm font-cascadia-light mb-2"
-                  innerHTML={feature.description} // eslint-disable-line solid/no-innerhtml
-                />
-                <For each={feature.options}>
-                  {(option) =>
-                    <div class="mb-2">
-                      <Checkbox
-                        labelText={t(`dnd.selectedFeatures.${option}`)}
-                        labelPosition="right"
-                        labelClassList="text-sm ml-4"
-                        checked={character().selected_features[feature.slug]?.includes(option)}
-                        onToggle={() => toggleSelectedFeatureOption(feature, option)}
-                      />
-                    </div>
-                  }
-                </For>
-              </Match>
-              <Match when={feature.kind === 'static_list'}>
-                <p
-                  class="text-sm font-cascadia-light mb-2"
-                  innerHTML={feature.description} // eslint-disable-line solid/no-innerhtml
-                />
-                <Switch>
-                  <Match when={feature.choose_once && !character().selected_features[feature.slug]}>
-                    <Select
-                      containerClassList="w-full mb-2"
-                      items={feature.options.reduce((acc, option) => { acc[option] = t(`dnd.${feature.options_type || 'selectedFeatures'}.${option}`); return acc; }, {})}
-                      selectedValue={onceSelectedFeaturesData()[feature.slug]}
-                      onSelect={(option) => setOnceSelectedFeaturesData({ ...onceSelectedFeaturesData(), [feature.slug]: option })}
-                    />
-                    <Button default size="small" onClick={() => confirmOnceSelectedFeaturesData(feature.slug)}>
-                      {t('character.confirmChooseOnceFeature')}
-                    </Button>
-                  </Match>
-                  <Match when={feature.choose_once && character().selected_features[feature.slug]}>
-                    <p>{t(`dnd.selectedFeatures.${character().selected_features[feature.slug]}`)}</p>
-                  </Match>
-                  <Match when={!feature.choose_once}>
-                    <Select
-                      containerClassList="w-full mb-2"
-                      items={feature.options.reduce((acc, option) => { acc[option] = t(`dnd.selectedFeatures.${option}`); return acc; }, {})}
-                      selectedValue={character().selected_features[feature.slug]}
-                      onSelect={(option) => setSelectedFeatureOption(feature, option)}
-                    />
-                  </Match>
-                </Switch>
-              </Match>
-              <Match when={feature.kind === 'choose_from' && feature.options_type === 'selected_skills'}>
-                <p
-                  class="text-sm font-cascadia-light mb-2"
-                  innerHTML={feature.description} // eslint-disable-line solid/no-innerhtml
-                />
-                <For each={character().skills.filter((item) => item.selected).map((item) => item.name)}>
-                  {(option) =>
-                    <div class="mb-2">
-                      <Checkbox
-                        labelText={t(`dnd.skills.${option}`)}
-                        labelPosition="right"
-                        labelClassList="text-sm ml-4"
-                        checked={character().selected_features[feature.slug]?.includes(option)}
-                        onToggle={() => toggleSelectedFeatureOption(feature, option)}
-                      />
-                    </div>
-                  }
-                </For>
-              </Match>
-              <Match when={feature.kind === 'text'}>
-                <p
-                  class="text-sm font-cascadia-light mb-2"
-                  innerHTML={feature.description} // eslint-disable-line solid/no-innerhtml
-                />
-                <textarea
-                  rows="5"
-                  class="w-full border border-gray-200 rounded p-1 text-sm"
-                  onInput={(e) => setTextFeaturesData({ ...textFeaturesData(), [feature.slug]: e.target.value })}
-                  value={textFeaturesData()[feature.slug] || ''}
-                />
-                <div class="flex justify-end mt-2">
-                  <Button default textable size="small" onClick={() => updateTextFeature(feature.slug)}>{t('save')}</Button>
-                </div>
-              </Match>
-            </Switch>
-          </Toggle>
-        }
-      </For>
       <Modal>
         <div class="flex flex-col">
           <For each={['max', 'temp']}>

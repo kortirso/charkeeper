@@ -1,0 +1,74 @@
+[
+  {
+    "slug": "fighting_style_defense",
+    "title": { "en": "", "ru": "" },
+    "description": { "en": "", "ru": "" },
+    "origin": "class",
+    "origin_value": "all",
+    "kind": "update_result",
+    "eval_variables": {
+      "armor_class": "defense_gear[:armor].present? ? (armor_class + 1) : armor_class"
+    },
+    "conditions": { "selected_feats": ["fighting_style_defense"] }
+  },
+  {
+    "slug": "fighting_style_archery",
+    "title": { "en": "", "ru": "" },
+    "description": { "en": "", "ru": "" },
+    "origin": "class",
+    "origin_value": "all",
+    "kind": "update_result",
+    "eval_variables": {
+      "attacks": "attacks.each { |attack| next if attack[:type] != 'range'; attack[:attack_bonus] += 2 }"
+    },
+    "conditions": { "selected_feats": ["fighting_style_archery"] }
+  },
+  {
+    "slug": "fighting_style_dueling",
+    "title": { "en": "", "ru": "" },
+    "description": { "en": "", "ru": "" },
+    "origin": "class",
+    "origin_value": "all",
+    "kind": "update_result",
+    "eval_variables": {
+      "attacks": "attacks.each { |attack| next if attack[:type] != 'melee'; next if attack[:hands] != '1'; next if attack[:tooltips].include?('dual'); attack[:damage_bonus] += 2 }"
+    },
+    "conditions": { "selected_feats": ["fighting_style_dueling"] }
+  },
+  {
+    "slug": "fighting_style_two_weapon_fighting",
+    "title": { "en": "", "ru": "" },
+    "description": { "en": "", "ru": "" },
+    "origin": "class",
+    "origin_value": "all",
+    "kind": "update_result",
+    "eval_variables": {
+      "attacks": "attacks.each { |attack| next if attack[:action_type] != 'bonus action'; next if attack[:tooltips].exclude?('dual'); attack[:damage_bonus] += result[:attacks].find { |i| i[:hands] == 1 && i[:action_type] == 'action' && i[:slug] == attack[:slug] }[:damage_bonus] }"
+    },
+    "conditions": { "selected_feats": ["fighting_style_two_weapon_fighting"] }
+  },
+  {
+    "slug": "fighting_style_great_weapon_fighting",
+    "title": { "en": "Great Weapon Fighting", "ru": "Сражение большим оружием" },
+    "description": {
+      "en": "When you roll a 1 or 2 on a damage die for an attack you make with a melee weapon that you are wielding with two hands, you can reroll the die and must use the new roll, even if the new roll is a 1 or a 2. The weapon must have the two-handed or versatile property for you to gain this benefit.",
+      "ru": "Если у вас выпало «1» или «2» на кости урона оружия при атаке, которую вы совершали рукопашным оружием, удерживая его двумя руками, то вы можете перебросить эту кость, и должны использовать новый результат, даже если снова выпало «1» или «2». Чтобы воспользоваться этим преимуществом, ваше оружие должно иметь свойство «двуручное» или «универсальное»."
+    },
+    "origin": "class",
+    "origin_value": "all",
+    "kind": "static",
+    "conditions": { "selected_feats": ["fighting_style_great_weapon_fighting"] }
+  },
+  {
+    "slug": "fighting_style_protection",
+    "title": { "en": "Protection", "ru": "Защита" },
+    "description": {
+      "en": "When a creature you can see attacks a target other than you that is within 5 feet of you, you can use your reaction to impose disadvantage on the attack roll. You must be wielding a shield.",
+      "ru": "Если существо, которое вы видите, атакует не вас, а другое существо, находящееся в пределах 5 футов от вас, вы можете реакцией создать помеху его броску атаки. Для этого вы должны использовать щит."
+    },
+    "origin": "class",
+    "origin_value": "all",
+    "kind": "static",
+    "conditions": { "selected_feats": ["fighting_style_protection"] }
+  }
+]

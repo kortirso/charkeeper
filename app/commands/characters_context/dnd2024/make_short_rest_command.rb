@@ -2,7 +2,7 @@
 
 module CharactersContext
   module Dnd2024
-    class MakeShortRestCommand < CharactersContext::Dnd5::MakeShortRestCommand
+    class MakeShortRestCommand < BaseCommand
       use_contract do
         params do
           required(:character).filled(type?: ::Dnd2024::Character)
@@ -11,15 +11,11 @@ module CharactersContext
 
       private
 
-      def do_prepare(input)
-        input[:refresh_energy_slugs] =
-          ::Dnd2024::Character::Feature
-            .where(slug: input[:character].data.energy.keys, limit_refresh: 'short_rest')
-            .pluck(:slug)
-        # input[:refresh_one_energy_slugs] =
-        #   ::Dnd2024::Character::Feature
-        #     .where(slug: input[:character].data.energy.keys, limit_refresh: 'one_at_short_rest')
-        #     .pluck(:slug)
+      def do_persist(input)
+        input[:character].feats.where(limit_refresh: 0).update_all(used_count: 0)
+        input[:character].feats.where(limit_refresh: 2).where.not(used_count: 0).find_each { |item| item.decrement!(:used_count) }
+
+        { result: :ok }
       end
     end
   end

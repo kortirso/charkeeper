@@ -1,0 +1,25 @@
+[
+  {
+    "slug": "draconic_ancestry",
+    "title": { "en": "Draconic Ancestry", "ru": "Наследие драконов" },
+    "description": {
+      "en": "You have draconic ancestry.",
+      "ru": "Вы получаете драконье наследие."
+    },
+    "origin": "race",
+    "origin_value": "dragonborn",
+    "kind": "one_from_list",
+    "options": {
+      "draconic_ancestry_black": { "en": "Black gragon", "ru": "Чёрный дракон" },
+      "draconic_ancestry_blue": { "en": "Blue gragon", "ru": "Синий дракон" },
+      "draconic_ancestry_brass": { "en": "Brass gragon", "ru": "Латунный дракон" },
+      "draconic_ancestry_bronze": { "en": "Bronze gragon", "ru": "Бронзовый дракон" },
+      "draconic_ancestry_copper": { "en": "Copper gragon", "ru": "Медный дракон" },
+      "draconic_ancestry_gold": { "en": "Gold gragon", "ru": "Золотой дракон" },
+      "draconic_ancestry_green": { "en": "Green gragon", "ru": "Зелёный дракон" },
+      "draconic_ancestry_red": { "en": "Red gragon", "ru": "Красный дракон" },
+      "draconic_ancestry_silver": { "en": "Silver gragon", "ru": "Серебряный дракон" },
+      "draconic_ancestry_white": { "en": "White gragon", "ru": "Белый дракон" }
+    }
+  }
+]

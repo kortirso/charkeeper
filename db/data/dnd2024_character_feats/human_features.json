@@ -1,0 +1,17 @@
+[
+  {
+    "slug": "resourceful",
+    "title": { "en": "Resourceful", "ru": "Находчивость" },
+    "description": {
+      "en": "After a long rest, you gain Heroic Inspiration.",
+      "ru": "Вы получаете Героическое Вдохновение каждый раз после продолжительного отдыха."
+    },
+    "origin": "species",
+    "origin_value": "human",
+    "kind": "static",
+    "description_eval_variables": {
+      "limit": "1"
+    },
+    "limit_refresh": "long_rest"
+  }
+]

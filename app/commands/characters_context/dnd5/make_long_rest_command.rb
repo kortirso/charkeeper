@@ -14,9 +14,6 @@ module CharactersContext
       def do_prepare(input)
         data = input[:character].data
 
-        # полное восстановление способностей
-        data.energy.transform_values! { 0 }
-
         # полное восстановление ячеек заклинаний
         data.spent_spell_slots.transform_values! { 0 }
 
@@ -35,6 +32,7 @@ module CharactersContext
 
       def do_persist(input)
         input[:character].save!
+        input[:character].feats.update_all(used_count: 0)
 
         { result: :ok }
       end

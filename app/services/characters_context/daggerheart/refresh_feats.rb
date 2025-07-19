@@ -2,52 +2,41 @@
 
 module CharactersContext
   module Daggerheart
-    class RefreshFeats
-      def call(character:)
-        existing_ids = Character::Feat.where(character_id: character.id).pluck(:feat_id)
-
-        feats_for_adding = available_feats(character, existing_ids)
-        return if feats_for_adding.blank?
-
-        feats_for_adding.map! do |item|
-          {
-            character_id: character.id,
-            feat_id: item.id,
-            used_count: 0,
-            limit_refresh: item.limit_refresh
-          }
-        end
-        ::Character::Feat.upsert_all(feats_for_adding)
-      end
+    class RefreshFeats < CharactersContext::RefreshFeats
+      REQUIRED_ATTRIBUTES = %i[id slug conditions origin origin_value limit_refresh exclude].freeze
 
       private
 
-      def available_feats(character, existing_ids)
-        feats(character).select(:id, :conditions, :origin, :origin_value, :limit_refresh).filter_map do |item|
-          next if item.id.in?(existing_ids)
+      def filter_available_feats(character)
+        feats(character).select(*REQUIRED_ATTRIBUTES).filter_map do |item|
           next item if item.conditions.blank?
 
-          # rubocop: disable Style/SoleNestedConditional
-          if item.origin == 'subclass' && item.conditions.key?('subclass_mastery')
-            next if character.data.subclasses_mastery[item.origin_value] < item.conditions['subclass_mastery']
-          end
-          # rubocop: enable Style/SoleNestedConditional
-
-          item
+          filter_feat(item, character)
         end
       end
 
-      # rubocop: disable Metrics/AbcSize
+      def filter_feat(item, character)
+        conditions = item.conditions
+        return unless match_by_subclass_mastery?(conditions['subclass_mastery'], item, character)
+
+        item
+      end
+
+      def match_by_subclass_mastery?(condition, item, character)
+        return true unless condition
+        return true unless item.origin == 'subclass'
+
+        character.data.subclasses_mastery[item.origin_value] > condition
+      end
+
       def feats(character)
         data = character.data
-        ::Daggerheart::Feat.where(origin: 'ancestry', origin_value: data.heritage)
-          .or(::Daggerheart::Feat.where(origin: 'ancestry', slug: data.heritage_features))
-          .or(::Daggerheart::Feat.where(origin: 'community', origin_value: data.community))
-          .or(::Daggerheart::Feat.where(origin: 'class', origin_value: data.classes.keys))
-          .or(::Daggerheart::Feat.where(origin: 'subclass', origin_value: data.subclasses.values))
-          .or(::Daggerheart::Feat.where(origin: 'beastform', origin_value: data.beastform))
+        ::Daggerheart::Feat.where(
+          origin_value: [
+            data.heritage, data.community, data.classes.keys, data.subclasses.values, data.beastform
+          ].flatten.compact.uniq
+        ).or(::Daggerheart::Feat.where(origin: 'ancestry', slug: data.heritage_features))
       end
-      # rubocop: enable Metrics/AbcSize
     end
   end
 end

@@ -1,0 +1,160 @@
+[
+  {
+    "slug": "bardic_inspiration",
+    "title": { "en": "Bardic inspiration", "ru": "Вдохновение барда" },
+    "description": {
+      "en": "You can use a bonus action on your turn to choose one creature other than yourself within 60 feet of you who can hear you. That creature gains one Bardic inspiration die, a {{value}}. Once within the next 10 minutes, the creature can roll the die and add the number rolled to one ability check, attack roll, or saving throw it makes.",
+      "ru": "Вы можете бонусным действием выбрать одно существо, отличное от вас, в пределах 60 футов, которое может вас слышать. Это существо получает кость бардовского вдохновения — {{value}}. В течение следующих 10 минут это существо может один раз бросить эту кость и добавить результат к проверке характеристики, броску атаки или спасброску, который оно совершает."
+    },
+    "origin": "class",
+    "origin_value": "bard",
+    "kind": "static",
+    "description_eval_variables": {
+      "value": "'d6'",
+      "limit": "[1, modifiers['wis']].max"
+    },
+    "limit_refresh": "long_rest"
+  },
+  {
+    "slug": "jask_of_all_trades",
+    "title": { "en": "Jack of all trades", "ru": "Мастер на все руки" },
+    "description": {
+      "en": "You can add {{value}} to any ability check you make that doesn't already include your proficiency bonus.",
+      "ru": "Вы можете добавлять {{value}} ко всем проверкам характеристик, куда этот бонус ещё не включён."
+    },
+    "origin": "class",
+    "origin_value": "bard",
+    "kind": "static",
+    "description_eval_variables": {
+      "value": "proficiency_bonus / 2"
+    },
+    "conditions": { "level": 2 }
+  },
+  {
+    "slug": "song_of_rest",
+    "title": { "en": "Song of rest", "ru": "Песнь отдыха" },
+    "description": {
+      "en": "If you or any friendly creatures who can hear your performance regain hit points at the end of the short rest, each of those creatures regains an extra {{value}} hit points.",
+      "ru": "Если вы, или любые союзные существа, способные слышать ваше исполнение, восстанавливаете хиты в конце короткого отдыха, каждый из вас восстанавливает дополнительно {{value}} хитов."
+    },
+    "origin": "class",
+    "origin_value": "bard",
+    "kind": "static",
+    "description_eval_variables": {
+      "value": "class_level = classes['bard']; return '1d12' if class_level >= 17; return '1d10' if class_level >= 13; return '1d8' if class_level >= 9; '1d6'"
+    },
+    "conditions": { "level": 2 }
+  },
+  {
+    "slug": "expertise",
+    "title": { "en": "Expertise", "ru": "Компетентность" },
+    "description": {
+      "en": "Choose {{value}} learned skills. Your proficiency bonus is doubled for selected skills.",
+      "ru": "Выберите {{value}} изученных умения. Ваш бонус мастерства для выбранных умений удваивается."
+    },
+    "origin": "class",
+    "origin_value": "bard",
+    "kind": "many_from_list",
+    "options": {
+      "acrobatics": { "en": "Acrobatics", "ru": "Акробатика" },
+      "animal": { "en": "Animal", "ru": "Уход за животными" },
+      "arcana": { "en": "Arcana", "ru": "Магия" },
+      "athletics": { "en": "Athletics", "ru": "Атлетика" },
+      "deception": { "en": "Deception", "ru": "Обмен" },
+      "history": { "en": "History", "ru": "История" },
+      "insight": { "en": "Insight", "ru": "Проницательность" },
+      "intimidation": { "en": "Intimidation", "ru": "Запугивание" },
+      "investigation": { "en": "Investigation", "ru": "Анализ" },
+      "medicine": { "en": "Medicine", "ru": "Медицина" },
+      "nature": { "en": "Nature", "ru": "Природа" },
+      "perception": { "en": "Perception", "ru": "Внимательность" },
+      "performance": { "en": "Performance", "ru": "Выступление" },
+      "persuasion": { "en": "Persuasion", "ru": "Убеждение" },
+      "religion": { "en": "Religion", "ru": "Религия" },
+      "sleight": { "en": "Sleight of Hands", "ru": "Ловкость рук" },
+      "stealth": { "en": "Stealth", "ru": "Скрытность" },
+      "survival": { "en": "Survival", "ru": "Выживание" }
+    },
+    "description_eval_variables": {
+      "value": "classes['bard'] >= 10 ? 4 : 2"
+    },
+    "eval_variables": {
+      "skills": "expertises = selected_feats['expertise']; skills.each { |skill| next if expertises.nil?; next if expertises.exclude?(skill[:slug]); skill[:modifier] += proficiency_bonus }"
+    },
+    "conditions": { "level": 3 }
+  },
+  {
+    "slug": "bardic_inspiration_1",
+    "title": { "en": "Bardic inspiration", "ru": "Вдохновение барда" },
+    "description": {
+      "en": "You can use a bonus action on your turn to choose one creature other than yourself within 60 feet of you who can hear you. That creature gains one Bardic inspiration die, a {{value}}. Once within the next 10 minutes, the creature can roll the die and add the number rolled to one ability check, attack roll, or saving throw it makes.",
+      "ru": "Вы можете бонусным действием выбрать одно существо, отличное от вас, в пределах 60 футов, которое может вас слышать. Это существо получает кость бардовского вдохновения — {{value}}. В течение следующих 10 минут это существо может один раз бросить эту кость и добавить результат к проверке характеристики, броску атаки или спасброску, который оно совершает."
+    },
+    "exclude": ["bardic_inspiration"],
+    "origin": "class",
+    "origin_value": "bard",
+    "kind": "static",
+    "description_eval_variables": {
+      "value": "class_level = classes['bard']; return 'd12' if class_level >= 15; return 'd10' if class_level >= 10; 'd8'",
+      "limit": "[1, modifiers['wis']].max"
+    },
+    "limit_refresh": "short_rest",
+    "conditions": { "level": 5 }
+  },
+  {
+    "slug": "countercharm",
+    "title": { "en": "Countercharm", "ru": "Контрочарование" },
+    "description": {
+      "en": "As an action, you can slart a performance that lasts until the end of your next turn. During that time, you and any friendly creatures within 30 feet of you have advantage on saving throws against being frightened or charmed. A creature must be able to hear you to gain this benefit. The performance ends early if you are incapacitated or silenced or if you voluntarily end it (no action required).",
+      "ru": "Вы можете действием начать исполнение, которое продлится до конца вашего следующего хода. В течение этого времени вы и все дружественные существа в пределах 30 футов от вас совершают спасброски от запугивания и очарования с преимуществом. Чтобы получить это преимущество, существа должны слышать вас. Исполнение заканчивается преждевременно, если вы оказываетесь недееспособны, теряете способность говорить, или прекращаете исполнение добровольно (на это не требуется действие)."
+    },
+    "origin": "class",
+    "origin_value": "bard",
+    "kind": "static",
+    "conditions": { "level": 6 }
+  },
+  {
+    "slug": "superior_inspiration",
+    "title": { "en": "Superior Inspiration", "ru": "Превосходное вдохновение" },
+    "description": {
+      "en": "When you roll initiative and have no uses of Bardic Inspiration left, you regain one use.",
+      "ru": "Если на момент броска инициативы у вас не осталось неиспользованных вдохновений, вы получаете одно."
+    },
+    "origin": "class",
+    "origin_value": "bard",
+    "kind": "static",
+    "conditions": { "level": 20 }
+  },
+  {
+    "slug": "words_of_terror",
+    "title": { "en": "Words of terror", "ru": "Слова ужаса" },
+    "description": {
+      "en": "If you speak to a Humanoid in private for at least 1 minute, you can attempt to plant a seed of paranoia in its mind. At the end of the conversation, the target must succeed on a Wisdom saving throw (DC {{value}}) or be frightened of you or another creature of your choice. The target is frightened in this manner for 1 hour until it is attacked or takes damage, or until it notices that its allies are attacked or take damage. If the target succeeds on the save, it does not notice any signs that you tried to frighten it.",
+      "ru": "Если вы разговариваете с Гуманоидом наедине, в течение по крайней мере 1 минуты, то можете попытаться посеять семя паранойи в его разуме. В конце беседы цель должна преуспеть в спасброске Мудрости (УС {{value}}), иначе будет напугана вами или другим существом по вашему выбору. Цель напугана на 1 час таким образом, пока не будет атакована или не получит урон, или пока она не заметит, что её союзники атакованы или получили урон. Если цель преуспевает в спасброске, то она не замечает никаких признаков того, что вы пытались ее испугать."
+    },
+    "origin": "subclass",
+    "origin_value": "college_of_whispers",
+    "kind": "static",
+    "description_eval_variables": {
+      "value": "spell_classes.dig(:bard, :save_dc)",
+      "limit": "1"
+    },
+    "limit_refresh": "short_rest",
+    "conditions": { "level": 3 }
+  },
+  {
+    "slug": "psychic_blades",
+    "title": { "en": "Psychic blades", "ru": "Психические клинки" },
+    "description": {
+      "en": "Whenever you hit a creature with a weapon attack, you can spend one Bardic Inspiration to deal an additional {{value}} psychic damage to the target. You can use this feature once per round on your turn.",
+      "ru": "Когда вы попадаете по существу атакой оружием, вы можете потратить одно «Вдохновение барда» и нанести цели дополнительные {{value}} урона психической энергией. Вы можете использовать это умение один раз за раунд в свой ход."
+    },
+    "origin": "subclass",
+    "origin_value": "college_of_whispers",
+    "kind": "static",
+    "description_eval_variables": {
+      "value": "class_level = classes['bard']; return '8d6' if class_level >= 15; return '5d6' if class_level >= 10; return '3d6' if class_level >= 5; '2d6'"
+    },
+    "conditions": { "level": 3 }
+  }
+]

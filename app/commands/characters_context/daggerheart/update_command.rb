@@ -39,8 +39,6 @@ module CharactersContext
             required(:bags).filled(:integer)
             required(:chests).filled(:integer)
           end
-          optional(:energy).hash
-          optional(:selected_features).hash
           optional(:leveling).hash do
             required(:health).filled(:integer)
             required(:stress).filled(:integer)

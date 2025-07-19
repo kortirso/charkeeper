@@ -1,0 +1,137 @@
+[
+  {
+    "slug": "fighting_style",
+    "title": { "en": "Fighting style", "ru": "Боевой стиль" },
+    "description": {
+      "en": "You adopt a particular style of fighting as your speciality.",
+      "ru": "Вы выбираете боевой стиль, соответствующий вашей специализации."
+    },
+    "origin": "class",
+    "origin_value": "fighter",
+    "kind": "one_from_list",
+    "options": {
+      "fighting_style_archery": { "en": "Archery", "ru": "Стрельба" },
+      "fighting_style_defense": { "en": "Defense", "ru": "Оборона" },
+      "fighting_style_dueling": { "en": "Dueling", "ru": "Дуэлянт" },
+      "fighting_style_great_weapon_fighting": { "en": "Great weapon fighting", "ru": "Сражение большим оружием" },
+      "fighting_style_protection": { "en": "Protection", "ru": "Защита" },
+      "fighting_style_two_weapon_fighting": { "en": "Two weapon fighting", "ru": "Сражение двумя оружиями" }
+    }
+  },
+  {
+    "slug": "second_wind",
+    "title": { "en": "Second wind", "ru": "Второе дыхание" },
+    "description": {
+      "en": "You can use a bonus action to regain {{value}} hit points.",
+      "ru": "В свой ход вы можете бонусным действием восстановить {{value}} хитов."
+    },
+    "origin": "class",
+    "origin_value": "fighter",
+    "kind": "static",
+    "description_eval_variables": {
+      "value": "'1d10+' + classes['fighter'].to_s",
+      "limit": "1"
+    },
+    "limit_refresh": "short_rest"
+  },
+  {
+    "slug": "action_surge",
+    "title": { "en": "Action surge", "ru": "Всплеск действий" },
+    "description": {
+      "en": "On your turn, you can take one additional action on top of your regular action and a possible bonus action, only once on the same turn.",
+      "ru": "В свой ход вы можете совершить одно дополнительное действие помимо обычного и бонусного действий, в течение одного хода можно использовать лишь один раз."
+    },
+    "origin": "class",
+    "origin_value": "fighter",
+    "kind": "static",
+    "description_eval_variables": {
+      "limit": "classes['fighter'] >= 17 ? 2 : 1"
+    },
+    "limit_refresh": "short_rest",
+    "conditions": { "level": 2 }
+  },
+  {
+    "slug": "additional_attack",
+    "title": { "en": "", "ru": "" },
+    "description": { "en": "", "ru": "" },
+    "origin": "class",
+    "origin_value": "fighter",
+    "kind": "update_result",
+    "eval_variables": {
+      "attacks_per_action": "class_level = classes['fighter']; class_level == 20 ? 4 : (class_level >= 11 ? 3 : (class_level >= 5 ? 2 : 1))"
+    },
+    "conditions": { "level": 5 }
+  },
+  {
+    "slug": "indomitable",
+    "title": { "en": "Indomitable", "ru": "Упорный" },
+    "description": {
+      "en": "You can reroll a saving throw that you fail. If you do so, you must use the new roll.",
+      "ru": "Вы можете перебросить проваленный спасбросок, и должны использовать новый результат."
+    },
+    "origin": "class",
+    "origin_value": "fighter",
+    "kind": "static",
+    "description_eval_variables": {
+      "limit": "class_level = classes['fighter']; class_level >= 17 ? 3 : (class_level >= 13 ? 2 : 1)"
+    },
+    "limit_refresh": "long_rest",
+    "conditions": { "level": 9 }
+  },
+  {
+    "slug": "improved_critical",
+    "title": { "en": "Improved critical", "ru": "Улучшенные критические попадания" },
+    "description": {
+      "en": "Your weapon attacks score a critical hit on a roll of 19-20.",
+      "ru": "Ваши атаки оружием совершают критическое попадание при выпадении «19» или «20» на кости атаки."
+    },
+    "origin": "subclass",
+    "origin_value": "champion",
+    "kind": "static",
+    "conditions": { "level": 3 }
+  },
+  {
+    "slug": "remarkable_athlete",
+    "title": { "en": "Remarkable athlete", "ru": "Выдающийся атлет" },
+    "description": {
+      "en": "You can add {{value}} to any Strength, Dexterity, or Constitution check you make that doesn't already use your proficiency bonus. When you make a running long jump, the distance you can cover increases by a {{distance}}.",
+      "ru": "Вы можете добавлять {{value}} ко всем проверкам Силы, Ловкости или Телосложения, куда этот бонус ещё не включён. Если вы совершаете прыжок в длину с разбега, дальность прыжка увеличивается на {{distance}} футов."
+    },
+    "origin": "subclass",
+    "origin_value": "champion",
+    "kind": "static",
+    "description_eval_variables": {
+      "value": "(proficiency_bonus / 2.0).round",
+      "distance": "modifiers['str']"
+    },
+    "conditions": { "level": 7 }
+  },
+  {
+    "slug": "superiod_critical",
+    "title": { "en": "Superior critical", "ru": "Превосходные критические попадания" },
+    "description": {
+      "en": "Your weapon attacks score a critical hit on a roll of 18-20.",
+      "ru": "Ваши атаки оружием совершают критическое попадание при выпадении «18»-«20» на кости атаки."
+    },
+    "exclude": ["improved_critical"],
+    "origin": "subclass",
+    "origin_value": "champion",
+    "kind": "static",
+    "conditions": { "level": 15 }
+  },
+  {
+    "slug": "survivor",
+    "title": { "en": "Survivor", "ru": "Уцелевший" },
+    "description": {
+      "en": "At the start of each of your turns, you regain {{value}} hit points if you have no more than half of your hit points left. You don't gain this benefit if you have O hit points.",
+      "ru": "В начале каждого своего хода вы восстанавливаете {{value}} хитов, если количество ваших хитов не превышает половины от максимума. Эта способность не работает, если у вас 0 хитов."
+    },
+    "origin": "subclass",
+    "origin_value": "champion",
+    "kind": "static",
+    "description_eval_variables": {
+      "value": "5 + modifiers['con']"
+    },
+    "conditions": { "level": 18 }
+  }
+]

@@ -3,18 +3,21 @@
 describe CharactersContext::Daggerheart::RefreshFeats do
   subject(:service_call) { described_class.new.call(character: Daggerheart::Character.find(character.id)) }
 
-  let!(:feat) { create :feat, :rally }
+  let!(:feat1) { create :feat, :rally }
+  let!(:feat2) { create :feat, :rally }
+  let!(:feat3) { create :feat, :rally, exclude: [feat1.slug] }
   let!(:character) { create :character, :daggerheart }
 
-  it 'attaches feats to character' do
-    expect { service_call }.to change(character.feats, :count).by(1)
+  before do
+    create :feat, :rally, origin: 3, origin_value: 'wordsmith', conditions: { subclass_mastery: 3 }
+
+    create :character_feat, feat: feat1, character: character
+    create :character_feat, feat: feat2, character: character
   end
 
-  context 'with existing attached feat' do
-    before { create :character_feat, character: character, feat: feat }
+  it 'attaches feats to character' do
+    service_call
 
-    it 'does not attach feats to character' do
-      expect { service_call }.not_to change(character.feats, :count)
-    end
+    expect(character.feats.pluck(:feat_id)).to contain_exactly(feat2.id, feat3.id)
   end
 end

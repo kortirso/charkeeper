@@ -1,0 +1,61 @@
+[
+  {
+    "slug": "cantrip",
+    "title": { "en": "Cantrip", "ru": "Заговор" },
+    "description": {
+      "en": "You know one Cantrip of your choice from the wizard spelllist.",
+      "ru": "Вы знаете один заговор из списка заклинаний волшебника."
+    },
+    "origin": "subrace",
+    "origin_value": "wood_elf",
+    "level": 0,
+    "kind": "text",
+    "visible": "true",
+    "description_eval_variables": {},
+    "eval_variables": {
+      "static_spells": "spell_name = selected_features['cantrip']; static_spells.merge({ spell_name => { 'attack_bonus' => proficiency_bonus + modifiers['int'], 'save_dc' => 8 + proficiency_bonus + modifiers['int'] } }) if spell_name; static_spells"
+    }
+  },
+  {
+    "slug": "drow_magic_0",
+    "title": { "en": "", "ru": "" },
+    "description": { "en": "", "ru": "" },
+    "origin": "subrace",
+    "origin_value": "drow",
+    "level": 0,
+    "kind": "update_result",
+    "visible": "true",
+    "description_eval_variables": {},
+    "eval_variables": {
+      "static_spells": "static_spells.merge({ 'dancing_lights' => { 'attack_bonus' => proficiency_bonus + modifiers['cha'], 'save_dc' => 8 + proficiency_bonus + modifiers['cha'] } })"
+    }
+  },
+  {
+    "slug": "drow_magic_1",
+    "title": { "en": "", "ru": "" },
+    "description": { "en": "", "ru": "" },
+    "origin": "subrace",
+    "origin_value": "drow",
+    "level": 3,
+    "kind": "update_result",
+    "visible": "true",
+    "description_eval_variables": {},
+    "eval_variables": {
+      "static_spells": "static_spells.merge({ 'faerie_fire' => { 'limit' => 1, 'attack_bonus' => proficiency_bonus + modifiers['cha'], 'save_dc' => 8 + proficiency_bonus + modifiers['cha'] } })"
+    }
+  },
+  {
+    "slug": "drow_magic_2",
+    "title": { "en": "", "ru": "" },
+    "description": { "en": "", "ru": "" },
+    "origin": "subrace",
+    "origin_value": "drow",
+    "level": 5,
+    "kind": "update_result",
+    "visible": "true",
+    "description_eval_variables": {},
+    "eval_variables": {
+      "static_spells": "static_spells.merge({ 'darkness' => { 'limit' => 1, 'attack_bonus' => proficiency_bonus + modifiers['cha'], 'save_dc' => 8 + proficiency_bonus + modifiers['cha'] } })"
+    }
+  }
+]

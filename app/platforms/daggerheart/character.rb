@@ -14,7 +14,6 @@ module Daggerheart
     attribute :domains, array: true, default: {} # домены выбранные для вторичных классов
     attribute :subclasses, array: true, default: {}
     attribute :subclasses_mastery, array: true, default: {}
-    attribute :experiences, array: true, default: {}
     attribute :traits, array: true, default: { 'str' => 1, 'agi' => 2, 'fin' => 1, 'ins' => 0, 'pre' => 0, 'know' => -1 }
     attribute :health_marked, :integer, default: 0
     attribute :health_max, :integer, default: 5
@@ -81,7 +80,7 @@ module Daggerheart
 
     def decorator(simple: false)
       base_decorator = ::DaggerheartCharacter::BaseDecorator.new(self)
-      features_decorator = ::DaggerheartCharacter::FeaturesDecorator.new(base_decorator)
+      features_decorator = ::FeaturesDecorator.new(base_decorator)
       features_decorator.features unless simple
       features_decorator
     end

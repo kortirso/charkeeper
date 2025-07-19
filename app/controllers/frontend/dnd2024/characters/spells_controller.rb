@@ -10,6 +10,7 @@ module Frontend
           character_spell_update: 'commands.characters_context.dnd2024.spell_update'
         ]
         include SerializeRelation
+        include SerializeResource
 
         INDEX_SERIALIZER_FIELDS = %i[id ready_to_use prepared_by slug name level spell_id].freeze
 
@@ -22,7 +23,8 @@ module Frontend
         def create
           case character_spell_add.call(create_params)
           in { errors: errors } then unprocessable_response(errors)
-          else only_head_response
+          in { result: result }
+            serialize_resource(result, ::Dnd2024::Characters::SpellSerializer, :spell, {}, :created)
           end
         end
 

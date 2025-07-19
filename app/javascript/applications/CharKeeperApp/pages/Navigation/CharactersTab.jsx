@@ -101,7 +101,7 @@ export const CharactersTab = () => {
     }
     const allOptions = subclassOptions.concat(classOptions);
 
-    return Object.fromEntries(Object.entries(dict().dnd.abilities).filter(([key,]) => allOptions.includes(key)));
+    return Object.fromEntries(Object.entries(dnd2024Config.abilities).map(([key, values]) => [key, values.name[locale()]]).filter(([key,]) => allOptions.includes(key)));
   });
 
   const heritageFeatures = createMemo(() => {
