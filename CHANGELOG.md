@@ -9,6 +9,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - default Daggerheart's items
 - creating and using Daggerheart's homebrewery items
 
+### Modified
+- D&D refactoring
+
 ## [0.2.3] - 2025-07-15
 ### Added
 - managing homebrew ancestries and features for Daggerheart
