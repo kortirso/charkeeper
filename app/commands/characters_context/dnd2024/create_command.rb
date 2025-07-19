@@ -82,17 +82,14 @@ module CharactersContext
       def learn_spells_list(character, input)
         return if ::Dnd2024::Character::CLASSES_KNOW_SPELLS_LIST.exclude?(input[:main_class])
 
-        spells = ::Dnd2024::Spell.all.filter_map do |spell|
-          next if spell.data.available_for.exclude?(input[:main_class])
-
+        spells = ::Dnd2024::Spell.where('available_for && ?', "{#{input[:main_class]}}").map do |spell|
           {
             character_id: character.id,
             spell_id: spell.id,
             data: { ready_to_use: false, prepared_by: input[:main_class] }
           }
         end
-
-        ::Character::Spell.upsert_all(spells)
+        ::Character::Spell.upsert_all(spells) if spells.any?
       end
     end
   end

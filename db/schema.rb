@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_07_16_173514) do
+ActiveRecord::Schema[8.0].define(version: 2025_07_19_141036) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
   enable_extension "pgcrypto"
@@ -100,7 +100,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_07_16_173514) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.text "notes"
-    t.index ["character_id", "spell_id"], name: "index_character_spells_on_character_id_and_spell_id", unique: true
+    t.index ["character_id", "spell_id"], name: "index_character_spells_on_character_id_and_spell_id"
   end
 
   create_table "characters", id: :uuid, default: -> { "gen_random_uuid()" }, comment: "Персонажи", force: :cascade do |t|
@@ -238,6 +238,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_07_16_173514) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "slug", null: false
+    t.string "available_for", array: true
     t.index ["slug"], name: "index_spells_on_slug"
   end
 

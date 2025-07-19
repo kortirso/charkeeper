@@ -74,12 +74,11 @@ export const Dnd5Spells = (props) => {
     if (lastActiveCharacterId() !== character().id) return [];
     if (spellClassesList().length === 0) return [];
 
-    const maxSpellLevel = activeSpellClass() === 'all' ? 9 : character().spell_classes[activeSpellClass()].max_spell_level;
+    const maxSpellLevel = character().spell_classes[activeSpellClass()].max_spell_level;
 
     return spells().filter((item) => {
       if (item.level > maxSpellLevel) return false;
       if (!availableSpellFilter()) return true;
-      if (activeSpellClass() === 'all') return true;
 
       return item.available_for.includes(activeSpellClass());
     });
@@ -90,7 +89,7 @@ export const Dnd5Spells = (props) => {
     if (spellClassesList().length === 0) return [];
 
     return characterSpells().filter((item) => {
-      if (activeSpellClass() !== 'all' && item.prepared_by !== activeSpellClass()) return false;
+      if (item.prepared_by !== activeSpellClass()) return false;
       if (preparedSpellFilter()) return item.ready_to_use;
       if (Object.keys(character().static_spells).includes(item.slug)) return false;
       return true;
@@ -260,13 +259,13 @@ export const Dnd5Spells = (props) => {
               <Show when={spellClassesList().length > 1}>
                 <Select
                   classList="w-40"
-                  items={spellClassesList().reduce((acc, item) => { acc[item] = t(`dnd5.classes.${item}`); return acc; }, { 'all': t('character.allSpells') })}
+                  items={spellClassesList().reduce((acc, item) => { acc[item] = t(`dnd5.classes.${item}`); return acc; }, {})}
                   selectedValue={activeSpellClass()}
                   onSelect={(value) => setActiveSpellClass(value)}
                 />
               </Show>
             </div>
-            <Show when={lastActiveCharacterId() === character().id && activeSpellClass() !== 'all'}>
+            <Show when={lastActiveCharacterId() === character().id}>
               <StatsBlock
                 items={[
                   { title: t('terms.spellAttack'), value: modifier(character().spell_classes[activeSpellClass()].attack_bonus) },

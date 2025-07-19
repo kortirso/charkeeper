@@ -122,8 +122,14 @@ module CharactersContext
 
       private
 
+      # rubocop: disable Metrics/AbcSize
       def do_prepare(input)
-        input[:level] = input[:classes].values.sum(&:to_i) if input[:classes]
+        if input[:classes]
+          input[:level] = input[:classes].values.sum(&:to_i)
+          input[:added_classes] = input[:classes].keys - input[:character].data.classes.keys
+          input[:removed_classes] = input[:character].data.classes.keys - input[:classes].keys
+        end
+
         %i[classes abilities health coins energy spent_spell_slots spent_hit_dice].each do |key|
           input[key]&.transform_values!(&:to_i)
         end
@@ -135,7 +141,6 @@ module CharactersContext
         end
       end
 
-      # rubocop: disable Metrics/AbcSize
       def do_persist(input)
         input[:character].data =
           input[:character].data.attributes.merge(input.except(:character, :avatar_file, :avatar_url, :name).stringify_keys)
@@ -145,6 +150,7 @@ module CharactersContext
         if %i[classes subclasses selected_features selected_feats].intersect?(input.keys)
           refresh_feats.call(character: input[:character])
         end
+        refresh_spells(input) if input[:classes]
 
         attach_avatar_by_file.call({ character: input[:character], file: input[:avatar_file] }) if input[:avatar_file]
         attach_avatar_by_url.call({ character: input[:character], url: input[:avatar_url] }) if input[:avatar_url]
@@ -152,6 +158,26 @@ module CharactersContext
         { result: input[:character] }
       end
       # rubocop: enable Metrics/AbcSize
+
+      def refresh_spells(input)
+        input[:added_classes].each do |added_class|
+          spells =
+            ::Dnd2024::Spell
+              .where('available_for && ?', "{#{added_class}}")
+              .map do |spell|
+                {
+                  character_id: input[:character].id,
+                  spell_id: spell.id,
+                  data: { ready_to_use: false, prepared_by: added_class }
+                }
+              end
+          ::Character::Spell.upsert_all(spells) if spells.any?
+        end
+
+        input[:removed_classes].each do |removed_class|
+          input[:character].spells.where("data -> 'prepared_by' ? :prepared_by", prepared_by: removed_class).destroy_all
+        end
+      end
     end
   end
 end

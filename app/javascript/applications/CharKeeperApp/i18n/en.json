@@ -311,7 +311,6 @@
     "thresholds": "Damage thresholds",
     "onlyPreparedSpells": "Only prepared",
     "onlyAvailableSpells": "Only available",
-    "allSpells": "All",
     "no_magic": "Character does not have magic abilities",
     "changeLevels": "Change class levels",
     "changeClasses": "Change character classes",
