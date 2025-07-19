@@ -5,7 +5,7 @@ module Frontend
     include SerializeRelation
 
     def index
-      serialize_relation(relation, ::ItemSerializer, :items)
+      serialize_relation(relation.where(user_id: [nil, current_user.id]), ::ItemSerializer, :items)
     end
 
     private

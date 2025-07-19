@@ -23,6 +23,8 @@ export const Daggerheart = (props) => {
   const primaryWeaponFilter = (item) => item.kind.includes('primary weapon');
   const secondaryWeaponFilter = (item) => item.kind.includes('secondary weapon');
   const armorFilter = (item) => item.kind.includes('armor');
+  const itemsFilter = (item) => item.kind.includes('item');
+  const consumablesFilter = (item) => item.kind.includes('consumable');
 
   const mobileView = createMemo(() => {
     if (size.width >= 1152) return <></>;
@@ -63,7 +65,9 @@ export const Daggerheart = (props) => {
                 itemFilters={[
                   { title: t('equipment.primaryWeapon'), callback: primaryWeaponFilter },
                   { title: t('equipment.secondaryWeapon'), callback: secondaryWeaponFilter },
-                  { title: t('equipment.armorList'), callback: armorFilter }
+                  { title: t('equipment.armorList'), callback: armorFilter },
+                  { title: t('equipment.itemsList'), callback: itemsFilter },
+                  { title: t('equipment.consumables'), callback: consumablesFilter }
                 ]}
                 onReplaceCharacter={props.onReplaceCharacter}
                 onReloadCharacter={props.onReloadCharacter}
@@ -148,7 +152,9 @@ export const Daggerheart = (props) => {
                 itemFilters={[
                   { title: t('equipment.primaryWeapon'), callback: primaryWeaponFilter },
                   { title: t('equipment.secondaryWeapon'), callback: secondaryWeaponFilter },
-                  { title: t('equipment.armorList'), callback: armorFilter }
+                  { title: t('equipment.armorList'), callback: armorFilter },
+                  { title: t('equipment.itemsList'), callback: itemsFilter },
+                  { title: t('equipment.consumables'), callback: consumablesFilter }
                 ]}
                 onReplaceCharacter={props.onReplaceCharacter}
                 onReloadCharacter={props.onReloadCharacter}
