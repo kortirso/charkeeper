@@ -1,0 +1,77 @@
+[
+  {
+    "slug": "eldritch_invocations",
+    "title": { "en": "Eldritch Invocations", "ru": "Таинственные воззвания" },
+    "description": {
+      "en": "You gain {{value}} eldritch invocations of your choice.",
+      "ru": "Вы получаете несколько воззваний (кол-во {{value}}) на свой выбор."
+    },
+    "origin": "class",
+    "origin_value": "warlock",
+    "kind": "text",
+    "description_eval_variables": {
+      "value": "class_level = classes['warlock']; return 8 if class_level >= 18; return 7 if class_level >= 15; return 6 if class_level >= 12; return 5 if class_level >= 9; return 4 if class_level >= 7; return 3 if class_level >= 5; 2"
+    },
+    "conditions": { "level": 2 }
+  },
+  {
+    "slug": "pact_boon",
+    "title": { "en": "Pact Boon", "ru": "Предмет договора" },
+    "description": {
+      "en": "Your otherworldly patron bestows a gift upon you for your loyal service.",
+      "ru": "Потусторонний покровитель дарует вам подарок за верную службу."
+    },
+    "origin": "class",
+    "origin_value": "warlock",
+    "kind": "one_from_list",
+    "options": {
+      "pact_of_the_chain": { "en": "Pact of the chain", "ru": "Договор цепи" },
+      "pact_of_the_blade": { "en": "Pact of the blade", "ru": "Договор клинка" },
+      "pact_of_the_tome": { "en": "Pact of the tome", "ru": "Договор гримуара" }
+    },
+    "conditions": { "level": 3 }
+  },
+  {
+    "slug": "pact_of_the_blade",
+    "title": { "en": "Pact of the blade", "ru": "Договор клинка" },
+    "description": {
+      "en": "You can use your action to create a pact weapon in your empty hand.",
+      "ru": "Вы можете действием создать оружие договора в своей пустой руке."
+    },
+    "origin": "class",
+    "origin_value": "warlock",
+    "kind": "static",
+    "conditions": { "level": 3, "selected_feats": ["pact_of_the_blade"] }
+  },
+  {
+    "slug": "mystic_arcanum",
+    "title": { "en": "Mystic Arcanum", "ru": "Таинственный арканум" },
+    "description": {
+      "en": "Learn 1 spell per specific level ({{value}}). You can use it once per day without spending spell slot.",
+      "ru": "Выучите по одному заклинанию указанных уровней ({{value}}). Можно применить 1 раз в день без использования ячейки заклинаний."
+    },
+    "origin": "class",
+    "origin_value": "warlock",
+    "kind": "text",
+    "description_eval_variables": {
+      "value": "class_level = classes['warlock']; return '6, 7, 8, 9' if class_level >= 17; return '6, 7, 8' if class_level >= 15; return '6, 7' if class_level >= 13; '6'"
+    },
+    "conditions": { "level": 11 }
+  },
+  {
+    "slug": "eldritch_master",
+    "title": { "en": "Eldritch Master", "ru": "Таинственный мастер" },
+    "description": {
+      "en": "Restore all spell slots.",
+      "ru": "Восстановление всех ячеек заклинаний."
+    },
+    "origin": "class",
+    "origin_value": "warlock",
+    "kind": "static",
+    "description_eval_variables": {
+      "limit": "1"
+    },
+    "limit_refresh": "long_rest",
+    "conditions": { "level": 20 }
+  }
+]

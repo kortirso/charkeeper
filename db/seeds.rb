@@ -75,24 +75,24 @@ Dnd5::Item.upsert_all(items)
 # досягаемость - reach
 # перезарядка - reload
 
-Dir[File.join(Rails.root.join('db/data/dnd5_character_features/*.json'))].each do |filename|
+Dir[File.join(Rails.root.join('db/data/dnd5_character_feats/*.json'))].each do |filename|
   puts "seeding - #{filename}"
-  JSON.parse(File.read(filename)).each do |character_feature|
-    ::Dnd5::Character::Feature.create!(character_feature)
+  JSON.parse(File.read(filename)).each do |feat|
+    ::Dnd5::Feat.create!(feat)
   end
 end
 
-Dir[File.join(Rails.root.join('db/data/dnd2024_character_features/*.json'))].each do |filename|
+Dir[File.join(Rails.root.join('db/data/dnd2024_character_feats/*.json'))].each do |filename|
   puts "seeding - #{filename}"
-  JSON.parse(File.read(filename)).each do |character_feature|
-    ::Dnd2024::Character::Feature.create!(character_feature)
+  JSON.parse(File.read(filename)).each do |feat|
+    ::Dnd2024::Feat.create!(feat)
   end
 end
 
 Dir[File.join(Rails.root.join('db/data/daggerheart_feats/*.json'))].each do |filename|
   puts "seeding - #{filename}"
-  JSON.parse(File.read(filename)).each do |character_feature|
-    ::Daggerheart::Feat.create!(character_feature)
+  JSON.parse(File.read(filename)).each do |feat|
+    ::Daggerheart::Feat.create!(feat)
   end
 end
 

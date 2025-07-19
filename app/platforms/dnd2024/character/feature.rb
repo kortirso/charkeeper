@@ -11,6 +11,12 @@ module Dnd2024
       SUBCLASS_ORIGIN = 'subclass'
       FEAT_ORIGIN = 'feat'
 
+      # STATIC = 'static'
+      # TEXT = 'text'
+      # ONE_FROM_LIST = 'one_from_list' # рендерится список, выбирается одно значение
+      # MANY_FROM_LIST = 'many_from_list' # рендерится список, выбирается несколько значений
+      # UPDATE_RESULT = 'update_result' # не рендерится, обновляются данные декоратора
+
       STATIC = 'static' # рендерится текст
       STATIC_LIST = 'static_list' # рендерится список, выбирается одно значение
       DYNAMIC_LIST = 'dynamic_list' # рендерится список, выбирается несколько значений

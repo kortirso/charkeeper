@@ -1,0 +1,13 @@
+[
+  {
+    "slug": "fey_ancestry",
+    "title": { "en": "Fey Ancestry", "ru": "Наследие фей" },
+    "description": {
+      "en": "You have advantage on saving throws against being charmed, and magic can't put you to sleep.",
+      "ru": "Вы совершаете с преимуществом спасброски от очарования, и вас невозможно магически усыпить."
+    },
+    "origin": "race",
+    "origin_value": "half_elf",
+    "kind": "static"
+  }
+]

@@ -5,7 +5,8 @@ module CharactersContext
     class UpdateCommand < BaseCommand
       include Deps[
         attach_avatar_by_url: 'commands.image_processing.attach_avatar_by_url',
-        attach_avatar_by_file: 'commands.image_processing.attach_avatar_by_file'
+        attach_avatar_by_file: 'commands.image_processing.attach_avatar_by_file',
+        refresh_feats: 'services.characters_context.dnd5.refresh_feats'
       ]
 
       SKILLS = %w[
@@ -51,14 +52,13 @@ module CharactersContext
             required(:copper).filled(:integer)
           end
           optional(:selected_skills).value(:array).each(included_in?: SKILLS)
-          optional(:selected_features).hash
+          optional(:selected_feats).hash
           optional(:weapon_core_skills).value(:array).each(included_in?: WEAPON_CORE_SKILLS)
           optional(:weapon_skills).value(:array).each(
             included_in?: ::Dnd5::Item.where(kind: %w[light martial]).pluck(:slug).sort
           )
           optional(:armor_proficiency).value(:array).each(included_in?: ARMOR_PROFICIENCY)
           optional(:languages).value(:array).each(included_in?: LANGUAGES)
-          optional(:energy).hash
           optional(:spent_spell_slots).hash
           optional(:spent_hit_dice).hash
           optional(:tools).value(:array).each(:string)
@@ -147,6 +147,8 @@ module CharactersContext
           input[:character].data.attributes.merge(input.except(:character, :avatar_file, :avatar_url, :name).stringify_keys)
         input[:character].assign_attributes(input.slice(:name))
         input[:character].save!
+
+        refresh_feats.call(character: input[:character]) if %i[classes subclasses selected_feats].intersect?(input.keys)
 
         attach_avatar_by_file.call({ character: input[:character], file: input[:avatar_file] }) if input[:avatar_file]
         attach_avatar_by_url.call({ character: input[:character], url: input[:avatar_url] }) if input[:avatar_url]

@@ -5,7 +5,7 @@ module Dnd2024Character
     MELEE_ATTACK_TOOLTIPS = %w[2handed heavy].freeze
     RANGE_ATTACK_TOOLTIPS = %w[2handed heavy reload].freeze
 
-    delegate :id, :name, :data, to: :__getobj__
+    delegate :id, :name, :data, :feats, to: :__getobj__
     delegate :species, :legacy, :main_class, :classes, :subclasses, :level, :languages, :health, :abilities,
              :selected_features, :resistance, :immunity, :vulnerability, :energy, :coins, :darkvision,
              :weapon_core_skills, :weapon_skills, :armor_proficiency, :music, :spent_spell_slots,

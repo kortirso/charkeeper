@@ -1,0 +1,29 @@
+[
+  {
+    "slug": "power_build",
+    "title": { "en": "Power Build", "ru": "Мощное Телосложение" },
+    "description": {
+      "en": "You have advantage on any ability checks to end being grappled. You count as large for your carrying capacity.",
+      "ru": "Вы получаете преимущество на спасброски, чтобы избавиться от состояния Схваченный. Вы также считаетесь существом на один размер больше при определении вашей грузоподъемности."
+    },
+    "origin": "species",
+    "origin_value": "goliath",
+    "kind": "static"
+  },
+  {
+    "slug": "large_form",
+    "title": { "en": "Large Form", "ru": "Большая форма" },
+    "description": {
+      "en": "You can become a large humanoid for ten minutes. While large, you gain advantage on Strength checks and increase your movement speed by 10.",
+      "ru": "Вы можете бонусным действием увеличить свой размер до большого на 10 минут. Вы получаете преимущество на проверки Силы, и ваша скорость увеличивается на 10 футов."
+    },
+    "origin": "species",
+    "origin_value": "goliath",
+    "kind": "static",
+    "description_eval_variables": {
+      "limit": "1"
+    },
+    "limit_refresh": "long_rest",
+    "conditions": { "level": 5 }
+  }
+]

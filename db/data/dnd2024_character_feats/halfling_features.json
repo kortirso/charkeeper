@@ -1,0 +1,46 @@
+[
+  {
+    "slug": "luck",
+    "title": { "en": "Luck", "ru": "Везучий" },
+    "description": {
+      "en": "When you roll a 1 on a d20 test, you can reroll instead. You must take the new dice roll.",
+      "ru": "Когда вы выбрасываете 1 на кости при выполнении d20 теста, то вы можете перебросить кость и должны использовать новый результат."
+    },
+    "origin": "species",
+    "origin_value": "halfling",
+    "kind": "static"
+  },
+  {
+    "slug": "brave",
+    "title": { "en": "Brave", "ru": "Храбрый" },
+    "description": {
+      "en": "You have advantage on saving throws against or to end being frightened.",
+      "ru": "Вы имеете преимущество на спасброски, которые вы совершаете, чтобы избежать или прекратить состояние Испуганный."
+    },
+    "origin": "species",
+    "origin_value": "halfling",
+    "kind": "static"
+  },
+  {
+    "slug": "halfling_nimbleness",
+    "title": { "en": "Halfling Nimbleness", "ru": "Проворство полуросликов" },
+    "description": {
+      "en": "You can move through a space when occupied by someone who is one size larger than you.",
+      "ru": "Вы можете проходить сквозь пространство, занятое существами, чей размер больше вашего."
+    },
+    "origin": "species",
+    "origin_value": "halfling",
+    "kind": "static"
+  },
+  {
+    "slug": "naturally_stealthy",
+    "title": { "en": "Naturally Stealthy", "ru": "Естественная скрытность" },
+    "description": {
+      "en": "You can take the Hide action even when only behind someone of a size larger than you.",
+      "ru": "Вы можете совершить действие Засада, даже если вы скрыты только существом, которое хотя бы на один размер больше вас."
+    },
+    "origin": "species",
+    "origin_value": "halfling",
+    "kind": "static"
+  }
+]

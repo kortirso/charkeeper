@@ -23,3 +23,4 @@ export * from './substances/Avatar';
 export * from './substances/Notes';
 export * from './substances/Bonuses';
 export * from './substances/Equipment';
+export * from './substances/Feats';

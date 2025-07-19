@@ -2,7 +2,7 @@
 
 module DaggerheartCharacter
   class BaseDecorator < SimpleDelegator
-    delegate :id, :name, :data, to: :__getobj__
+    delegate :id, :name, :data, :feats, to: :__getobj__
     delegate :heritage, :main_class, :classes, :subclasses, :level, :gold, :spent_armor_slots, :health_marked, :stress_marked,
              :hope_marked, :traits, :total_gold, :subclasses_mastery, :experiences, :community,
              :leveling, :experience, :heritage_name, :heritage_features, :domains, :beastform, to: :data

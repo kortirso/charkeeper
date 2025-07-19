@@ -1,0 +1,33 @@
+[
+  {
+    "slug": "relentless_endurance",
+    "title": { "en": "Relentless Endurance", "ru": "Непоколебимая стойкость" },
+    "description": {
+      "en": "When you are reduced to O hit points but not killed outright, you can drop to 1 hit point instead.",
+      "ru": "Если ваши хиты опустились до нуля, но вы при этом не убиты, ваши хиты вместо этого опускаются до 1."
+    },
+    "origin": "species",
+    "origin_value": "orc",
+    "kind": "static",
+    "description_eval_variables": {
+      "limit": "1"
+    },
+    "limit_refresh": "long_rest"
+  },
+  {
+    "slug": "savage_attacks",
+    "title": { "en": "Savage Attacks", "ru": "Всплеск Адреналина" },
+    "description": {
+      "en": "You take the Dash action as a bonus action. When you do, you gain {{value}} temporary hit points.",
+      "ru": "Вы можете совершить Бонусным Действием действие Рывок. Когда вы это делаете, вы получаете временные хиты в количестве {{value}}"
+    },
+    "origin": "species",
+    "origin_value": "orc",
+    "kind": "static",
+    "description_eval_variables": {
+      "value": "proficiency_bonus",
+      "limit": "proficiency_bonus"
+    },
+    "limit_refresh": "short_rest"
+  }
+]

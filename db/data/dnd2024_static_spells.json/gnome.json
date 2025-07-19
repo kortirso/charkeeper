@@ -1,0 +1,41 @@
+[
+  {
+    "slug": "forest_gnome_legacy_0",
+    "title": { "en": "", "ru": "" },
+    "description": { "en": "", "ru": "" },
+    "origin": "legacy",
+    "origin_value": "forest_gnome",
+    "level": 0,
+    "kind": "update_result",
+    "visible": "selected_features.keys.include?('gnome_spellcasting')",
+    "eval_variables": {
+      "static_spells": "ability = selected_features['gnome_spellcasting']; static_spells.merge({ 'minor_illusion' => { 'attack_bonus' => proficiency_bonus + modifiers[ability], 'save_dc' => 8 + proficiency_bonus + modifiers[ability] } })"
+    }
+  },
+  {
+    "slug": "forest_gnome_legacy_1",
+    "title": { "en": "", "ru": "" },
+    "description": { "en": "", "ru": "" },
+    "origin": "legacy",
+    "origin_value": "forest_gnome",
+    "level": 0,
+    "kind": "update_result",
+    "visible": "selected_features.keys.include?('gnome_spellcasting')",
+    "eval_variables": {
+      "static_spells": "ability = selected_features['gnome_spellcasting']; static_spells.merge({ 'speak_with_animals' => { 'limit' => proficiency_bonus, 'attack_bonus' => proficiency_bonus + modifiers[ability], 'save_dc' => 8 + proficiency_bonus + modifiers[ability] } })"
+    }
+  },
+  {
+    "slug": "rock_gnome_legacy_0",
+    "title": { "en": "", "ru": "" },
+    "description": { "en": "", "ru": "" },
+    "origin": "legacy",
+    "origin_value": "rock_gnome",
+    "level": 0,
+    "kind": "update_result",
+    "visible": "selected_features.keys.include?('gnome_spellcasting')",
+    "eval_variables": {
+      "static_spells": "ability = selected_features['gnome_spellcasting']; static_spells.merge({ 'mending' => { 'attack_bonus' => proficiency_bonus + modifiers[ability], 'save_dc' => 8 + proficiency_bonus + modifiers[ability] }, 'prestidigitation' => { 'attack_bonus' => proficiency_bonus + modifiers[ability], 'save_dc' => 8 + proficiency_bonus + modifiers[ability] } })"
+    }
+  }
+]

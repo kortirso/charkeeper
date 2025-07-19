@@ -1,0 +1,29 @@
+[
+  {
+    "slug": "fey_ancestry",
+    "title": { "en": "Fey Ancestry", "ru": "Наследие фей" },
+    "description": {
+      "en": "You have advantage on saving throws to prevent or end being charmed.",
+      "ru": "Вы получаете Преимущество на спасброски, которые совершаете, чтобы избежать или прекратить состояние Очарованный."
+    },
+    "origin": "species",
+    "origin_value": "elf",
+    "kind": "static"
+  },
+  {
+    "slug": "elven_spellcasting",
+    "title": { "en": "Elven lineage", "ru": "Эльфийское происхождение" },
+    "description": {
+      "en": "Choose species spellcasting ability.",
+      "ru": "Выберите заклинательную характеристику вида."
+    },
+    "origin": "species",
+    "origin_value": "elf",
+    "kind": "one_from_list",
+    "options": {
+      "int": { "en": "Intelligence", "ru": "Интеллект" },
+      "wis": { "en": "Wisdom", "ru": "Мудрость" },
+      "cha": { "en": "Charisma", "ru": "Харизма" }
+    }
+  }
+]

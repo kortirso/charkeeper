@@ -1,0 +1,151 @@
+[
+  {
+    "slug": "rogue_expertise",
+    "description": {
+      "en": "Choose {{value}} learned skills. Your proficiency bonus is doubled for selected skills.",
+      "ru": "Выберите {{value}} изученных умения. Ваш бонус мастерства для выбранных умений удваивается."
+    },
+    "origin": "class",
+    "origin_value": "rogue",
+    "kind": "many_from_list",
+    "options": {
+      "acrobatics": { "en": "Acrobatics", "ru": "Акробатика" },
+      "animal": { "en": "Animal", "ru": "Уход за животными" },
+      "arcana": { "en": "Arcana", "ru": "Магия" },
+      "athletics": { "en": "Athletics", "ru": "Атлетика" },
+      "deception": { "en": "Deception", "ru": "Обмен" },
+      "history": { "en": "History", "ru": "История" },
+      "insight": { "en": "Insight", "ru": "Проницательность" },
+      "intimidation": { "en": "Intimidation", "ru": "Запугивание" },
+      "investigation": { "en": "Investigation", "ru": "Анализ" },
+      "medicine": { "en": "Medicine", "ru": "Медицина" },
+      "nature": { "en": "Nature", "ru": "Природа" },
+      "perception": { "en": "Perception", "ru": "Внимательность" },
+      "performance": { "en": "Performance", "ru": "Выступление" },
+      "persuasion": { "en": "Persuasion", "ru": "Убеждение" },
+      "religion": { "en": "Religion", "ru": "Религия" },
+      "sleight": { "en": "Sleight of Hands", "ru": "Ловкость рук" },
+      "stealth": { "en": "Stealth", "ru": "Скрытность" },
+      "survival": { "en": "Survival", "ru": "Выживание" }
+    },
+    "description_eval_variables": {
+      "value": "classes['rogue'] >= 6 ? 4 : 2"
+    },
+    "eval_variables": {
+      "skills": "expertises = selected_feats['rogue_expertise']; skills.each { |skill| next if expertises.nil?; next if expertises.exclude?(skill[:slug]); skill[:modifier] += proficiency_bonus }"
+    }
+  },
+  {
+    "slug": "sneak_attack",
+    "title": { "en": "Sneak Attack", "ru": "Скрытая атака" },
+    "description": {
+      "en": "Once per turn, you can deal an extra {{value}} damage to one creature you hit with an attack if you have advantage on the attack roll. The attack must use a finesse or a ranged weapon. You don't need advantage on the attack roll if another enemy of the target is within 5 feet of it, that enemy isn't incapacitated, and you don't have disadvantage on the attack roll.",
+      "ru": "Один раз в ход вы можете причинить дополнительный урон {{value}} одному из существ, по которому вы попали атакой, совершённой с преимуществом к броску атаки. Атака должна использовать дальнобойное оружие или оружие со свойством «фехтовальное». Вам не нужно иметь преимущество при броске атаки, если другой враг цели находится в пределах 5 футов от неё. Этот враг не должен быть недееспособным, и у вас не должно быть помехи для броска атаки."
+    },
+    "origin": "class",
+    "origin_value": "rogue",
+    "kind": "static",
+    "description_eval_variables": {
+      "value": "((classes['rogue'] + 1) / 2).to_s + 'd6'"
+    }
+  },
+  {
+    "slug": "thieves_cant",
+    "title": { "en": "Thieves' Cant", "ru": "Воровской жаргон" },
+    "description": {
+      "en": "You learned thieves' cant, a secret mix of dialect, jargon, and code that allows you to hide messages.",
+      "ru": "Вы выучили воровской жаргон, тайную смесь диалекта, жаргона и шифра, который позволяет скрывать сообщения."
+    },
+    "origin": "class",
+    "origin_value": "rogue",
+    "kind": "static"
+  },
+  {
+    "slug": "cunning_action",
+    "title": { "en": "Cunning Action", "ru": "Хитрое действие" },
+    "description": {
+      "en": "You can take a bonus action on each of your turns in combat. This action can be used only to take the Dash, Disengage, or Hide action.",
+      "ru": "Вы можете в каждом ходу боя совершать бонусное действие. Это действие может быть использовано только для Рывка, Отхода или Засады."
+    },
+    "origin": "class",
+    "origin_value": "rogue",
+    "kind": "static",
+    "conditions": { "level": 2 }
+  },
+  {
+    "slug": "uncanny_dodge",
+    "title": { "en": "Uncanny Dodge", "ru": "Невероятное уклонение" },
+    "description": {
+      "en": "When an attacker that you can see hits you with an attack, you can use your reaction to halve the attack's damage against you.",
+      "ru": "Когда нападающий, которого вы можете видеть, попадает по вам атакой, вы можете реакцией уменьшить вдвое урон, причиняемый вам этой атакой."
+    },
+    "origin": "class",
+    "origin_value": "rogue",
+    "kind": "static",
+    "conditions": { "level": 5 }
+  },
+  {
+    "slug": "rogue_evasion",
+    "title": { "en": "Evasion", "ru": "Увёртливость" },
+    "description": {
+      "en": "When you are subjected to an effect that allows you to make a Dexterity saving throw to take only half damage, you instead take no damage if you succeed on the saving throw, and only half damage if you fail.",
+      "ru": "Если вы попадаете под действие эффекта, позволяющего совершить спасбросок Ловкости, чтобы получить только половину урона, вы вместо этого не получаете урона при успешном спасброске и получаете только половину урона при проваленном."
+    },
+    "origin": "class",
+    "origin_value": "rogue",
+    "kind": "static",
+    "conditions": { "level": 7 }
+  },
+  {
+    "slug": "reliable_talent",
+    "title": { "en": "Reliable Talent", "ru": "Надёжный талант" },
+    "description": {
+      "en": "Whenever you make an ability check that lets you add your proficiency bonus, you can treat a d20 roll of 9 or lower as a 10.",
+      "ru": "Каждый раз, когда вы совершаете проверку характеристики, которая позволяет добавить бонус мастерства, вы можете при выпадении на к20 результата «1–9» считать, что выпало «10»."
+    },
+    "origin": "class",
+    "origin_value": "rogue",
+    "kind": "static",
+    "conditions": { "level": 11 }
+  },
+  {
+    "slug": "blindsense",
+    "title": { "en": "Blindsense", "ru": "Слепое зрение" },
+    "description": {
+      "en": "If you are able to hear, you are aware of the location of any hidden or invisible creature within lO feet of you.",
+      "ru": "Если вы можете слышать, то знаете о местонахождении всех скрытых и невидимых существ в пределах 10 футов от себя."
+    },
+    "origin": "class",
+    "origin_value": "rogue",
+    "kind": "static",
+    "conditions": { "level": 14 }
+  },
+  {
+    "slug": "elusive",
+    "title": { "en": "Elusive", "ru": "Неуловимость" },
+    "description": {
+      "en": "No attack roll has advantage against you while you aren't incapacitated.",
+      "ru": "Никакие броски атаки не получают преимущества над вами, пока вы не станете недееспособным."
+    },
+    "origin": "class",
+    "origin_value": "rogue",
+    "kind": "static",
+    "conditions": { "level": 18 }
+  },
+  {
+    "slug": "stroke_of_luck",
+    "title": { "en": "Stroke of Luck", "ru": "Удача" },
+    "description": {
+      "en": "If your attack misses a target within range, you can turn the miss into a hit. If you fail an ability check, you can treat the d20 roll as a 20.",
+      "ru": "Если ваша атака промахивается по цели, находящейся в пределах досягаемости, вы можете изменить промах на попадание. Если вы провалили проверку характеристики, вы можете заменить результат, выпавший на к20, на «20»."
+    },
+    "origin": "class",
+    "origin_value": "rogue",
+    "kind": "static",
+    "description_eval_variables": {
+      "limit": "1"
+    },
+    "limit_refresh": "long_rest",
+    "conditions": { "level": 20 }
+  }
+]

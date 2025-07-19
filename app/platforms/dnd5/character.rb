@@ -15,9 +15,10 @@ module Dnd5
     attribute :health, array: true
     attribute :death_saving_throws, array: true, default: { success: 0, failure: 0 }
     attribute :speed, :integer
-    attribute :energy, array: true, default: {}
+    # attribute :energy, array: true, default: {}
     attribute :selected_skills, array: true, default: [] # ['history']
-    attribute :selected_features, array: true, default: {} # { 'fighting_style' => ['fighting_style_defense'] }
+    # attribute :selected_features, array: true, default: {} # { 'fighting_style' => ['fighting_style_defense'] }
+    attribute :selected_feats, array: true, default: {} # { 'fighting_style' => ['fighting_style_defense'] }
     attribute :languages, array: true
     attribute :weapon_core_skills, array: true
     attribute :weapon_skills, array: true
@@ -183,7 +184,7 @@ module Dnd5
       subrace_decorator = ::Dnd5Character::SubraceDecorateWrapper.new(race_decorator)
       class_decorator = ::Dnd5Character::ClassDecorateWrapper.new(subrace_decorator)
       subclass_decorator = ::Dnd5Character::SubclassDecorateWrapper.new(class_decorator)
-      features_decorator = ::Dnd5Character::FeaturesDecorator.new(subclass_decorator)
+      features_decorator = ::FeaturesDecorator.new(subclass_decorator)
       features_decorator.features unless simple
       ::Dnd5Character::OverallDecorator.new(features_decorator)
     end

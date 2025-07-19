@@ -1,0 +1,35 @@
+[
+  {
+    "slug": "healing_hands",
+    "title": { "en": "Healing Hands", "ru": "Исцеляющие руки" },
+    "description": {
+      "en": "You can heal someone for {{value}}.",
+      "ru": "Действием магия вы можете коснуться существа и оно восстанавливает {{value}} хитов."
+    },
+    "origin": "species",
+    "origin_value": "aasimar",
+    "kind": "static",
+    "description_eval_variables": {
+      "limit": "1",
+      "value": "proficiency_bonus.to_s + 'd4'"
+    },
+    "limit_refresh": "long_rest"
+  },
+  {
+    "slug": "celestial_revelation",
+    "title": { "en": "Celestial Revelation", "ru": "Откровение небес" },
+    "description": {
+      "en": "You deal additional damage {{value}} when you hit someone with a weapon or spell.",
+      "ru": "Один раз в каждый из ваших ходов, до окончания превращения, вы можете нанести дополнительный урон {{value}} одной цели, когда наносите ей урон атакой или заклинанием."
+    },
+    "origin": "species",
+    "origin_value": "aasimar",
+    "kind": "static",
+    "description_eval_variables": {
+      "limit": "1",
+      "value": "proficiency_bonus"
+    },
+    "limit_refresh": "long_rest",
+    "conditions": { "level": 3 }
+  }
+]

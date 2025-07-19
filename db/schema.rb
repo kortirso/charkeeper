@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_07_15_103749) do
+ActiveRecord::Schema[8.0].define(version: 2025_07_16_173514) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
   enable_extension "pgcrypto"
@@ -185,6 +185,9 @@ ActiveRecord::Schema[8.0].define(version: 2025_07_15_103749) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.uuid "user_id"
+    t.string "origin_values", comment: "Несколько источников, которые могут иметь навык", array: true
+    t.index ["origin_value"], name: "index_feats_on_origin_value", where: "(origin_value IS NOT NULL)"
+    t.index ["origin_values"], name: "index_feats_on_origin_values", where: "(origin_values IS NOT NULL)", using: :gin
     t.index ["user_id"], name: "index_feats_on_user_id"
   end
 

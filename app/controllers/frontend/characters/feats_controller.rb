@@ -28,7 +28,7 @@ module Frontend
       end
 
       def update_params
-        params.expect(character_feat: %i[used_count value]).to_h
+        params.require(:character_feat).permit!.to_h
       end
 
       def characters_relation

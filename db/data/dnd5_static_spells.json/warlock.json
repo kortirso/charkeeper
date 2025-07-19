@@ -1,0 +1,28 @@
+[
+  {
+    "slug": "pact_of_the_tome",
+    "title": { "en": "", "ru": "" },
+    "description": { "en": "", "ru": "" },
+    "origin": "class",
+    "origin_value": "warlock",
+    "level": 3,
+    "kind": "update_result",
+    "visible": "true",
+    "eval_variables": {
+      "spell_classes": "spell_classes[:warlock][:cantrips_amount] += 3; spell_classes"
+    }
+  },
+  {
+    "slug": "pact_of_the_chain",
+    "title": { "en": "", "ru": "" },
+    "description": { "en": "", "ru": "" },
+    "origin": "class",
+    "origin_value": "warlock",
+    "level": 3,
+    "kind": "update_result",
+    "visible": "true",
+    "eval_variables": {
+      "static_spells": "static_spells.merge({ 'find_familiar' => { 'attack_bonus' => proficiency_bonus + modifiers['cha'], 'save_dc' => 8 + proficiency_bonus + modifiers['cha'] } })"
+    }
+  }
+]

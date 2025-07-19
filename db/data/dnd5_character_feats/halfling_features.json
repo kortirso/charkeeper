@@ -1,0 +1,57 @@
+[
+  {
+    "slug": "lucky",
+    "title": { "en": "Lucky", "ru": "Везучий" },
+    "description": {
+      "en": "When you roll a 1 on an attack roll, ability check, or saving throw, you can reroll the die and must use the new roll.",
+      "ru": "Если при броске атаки, проверке характеристики или спасброске у вас выпало «1», вы можете перебросить кость, и должны использовать новый результат."
+    },
+    "origin": "race",
+    "origin_value": "halfling",
+    "kind": "static"
+  },
+  {
+    "slug": "brave",
+    "title": { "en": "Brave", "ru": "Храбрый" },
+    "description": {
+      "en": "You have advantage on saving throws against being frightened.",
+      "ru": "Вы совершаете с преимуществом спасброски от испуга."
+    },
+    "origin": "race",
+    "origin_value": "halfling",
+    "kind": "static"
+  },
+  {
+    "slug": "halfling_nimbleness",
+    "title": { "en": "Halfling Nimbleness", "ru": "Проворство полуросликов" },
+    "description": {
+      "en": "You can move through the space of any creature that is of a size larger than yours.",
+      "ru": "Вы можете проходить сквозь пространство, занятое существами, чей размер больше вашего."
+    },
+    "origin": "race",
+    "origin_value": "halfling",
+    "kind": "static"
+  },
+  {
+    "slug": "naturally_stealthy",
+    "title": { "en": "Naturally Stealthy", "ru": "Естественная скрытность" },
+    "description": {
+      "en": "You can attempt to hide even when you are obscured only by a creature that is at least one size larger than you.",
+      "ru": "Вы можете предпринять попытку скрыться даже если заслонены только существом, превосходящими вас в размере как минимум на одну категорию."
+    },
+    "origin": "subrace",
+    "origin_value": "lightfoot",
+    "kind": "static"
+  },
+  {
+    "slug": "stout_resilience",
+    "title": { "en": "Stout Resilience", "ru": "Устойчивость коренастых" },
+    "description": {
+      "en": "You have advantage on saving throws against poison.",
+      "ru": "Вы совершаете с преимуществом спасброски от яда."
+    },
+    "origin": "subrace",
+    "origin_value": "stout",
+    "kind": "static"
+  }
+]

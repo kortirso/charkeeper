@@ -85,6 +85,8 @@ module Charkeeper
     }
 
     register('services.characters_context.daggerheart.refresh_feats') { CharactersContext::Daggerheart::RefreshFeats.new }
+    register('services.characters_context.dnd5.refresh_feats') { CharactersContext::Dnd5::RefreshFeats.new }
+    register('services.characters_context.dnd2024.refresh_feats') { CharactersContext::Dnd2024::RefreshFeats.new }
     register('services.notifications_context.send_notification') { NotificationsContext::SendService.new }
   end
 end

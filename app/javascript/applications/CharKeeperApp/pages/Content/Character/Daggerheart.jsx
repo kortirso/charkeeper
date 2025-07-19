@@ -3,9 +3,9 @@ import * as i18n from '@solid-primitives/i18n';
 
 import {
   DaggerheartTraits, DaggerheartStatic, DaggerheartHealth, DaggerheartCombat, DaggerheartBeastform, DaggerheartCompanion,
-  DaggerheartDomainCards, DaggerheartRest, DaggerheartLeveling, DaggerheartExperience, DaggerheartGold, DaggerheartFeats
+  DaggerheartDomainCards, DaggerheartRest, DaggerheartLeveling, DaggerheartExperience, DaggerheartGold
 } from '../../../pages';
-import { CharacterNavigation, Equipment, Bonuses, Notes, Avatar, ContentWrapper } from '../../../components';
+import { CharacterNavigation, Equipment, Bonuses, Notes, Avatar, ContentWrapper, Feats } from '../../../components';
 import { useAppLocale } from '../../../context';
 
 export const Daggerheart = (props) => {
@@ -42,7 +42,7 @@ export const Daggerheart = (props) => {
                   <DaggerheartBeastform character={character()} onReplaceCharacter={props.onReplaceCharacter} />
                 </div>
                 <div class="mt-4">
-                  <DaggerheartFeats character={character()} onReplaceCharacter={props.onReplaceCharacter} />
+                  <Feats character={character()} onReplaceCharacter={props.onReplaceCharacter} />
                 </div>
               </Match>
               <Match when={activeMobileTab() === 'combat'}>
@@ -110,7 +110,7 @@ export const Daggerheart = (props) => {
             <DaggerheartBeastform character={character()} onReplaceCharacter={props.onReplaceCharacter} />
           </div>
           <div class="mt-4">
-            <DaggerheartFeats character={character()} onReplaceCharacter={props.onReplaceCharacter} />
+            <Feats character={character()} onReplaceCharacter={props.onReplaceCharacter} />
           </div>
         </>
       }

@@ -19,7 +19,8 @@ describe Dnd5::Character do
       create :character_item, character: character, item: range_weapon
       create :character_item, character: character, item: armor, ready_to_use: true
 
-      create :dnd5_character_feature, :bardic_inspiration
+      feat = create :feat, :dnd5_bardic_inspiration
+      create :character_feat, feat: feat, character: character
     end
 
     it 'calculates everything without errors', :aggregate_failures do

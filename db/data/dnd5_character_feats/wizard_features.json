@@ -1,0 +1,43 @@
+[
+  {
+    "slug": "arcane_recovery",
+    "title": { "en": "Arcane Recovery", "ru": "Магическое восстановление" },
+    "description": {
+      "en": "After short rest you can restore some spell slots with total level equal {{value}} and 5th level or lower.",
+      "ru": "Когда вы заканчиваете короткий отдых, вы можете восстановить часть использованных ячеек заклинаний суммарным уровнем {{value}} и не выше 5 уровня."
+    },
+    "origin": "class",
+    "origin_value": "wizard",
+    "kind": "static",
+    "description_eval_variables": {
+      "limit": "1",
+      "value": "(classes['wizard'] / 2.0).round"
+    },
+    "limit_refresh": "long_rest",
+    "conditions": { "level": 2 }
+  },
+  {
+    "slug": "spell_mastery",
+    "title": { "en": "Spell Mastery", "ru": "Мастерство заклинателя" },
+    "description": {
+      "en": "Choose a 1st level wizard spell and a 2nd level wizard spell that are in your spellbook. You can cast those spells at their lowest level without expending a spell slot when you have them prepared.",
+      "ru": "Выберите одно заклинание волшебника 1 уровня и одно заклинание волшебника 2 уровня, которые есть в вашей книге заклинаний. Вы можете использовать эти заклинания без увеличения их уровня, не тратя ячеек заклинаний, при условии, что вы их подготовили."
+    },
+    "origin": "class",
+    "origin_value": "wizard",
+    "kind": "text",
+    "conditions": { "level": 18 }
+  },
+  {
+    "slug": "signature_spells",
+    "title": { "en": "Signature Spells", "ru": "Фирменное заклинание" },
+    "description": {
+      "en": "Choose two 3rd level wizard spells in your spellbook as your signature spells. You always have these spells prepared, they don't count against the number of spells you have prepared, and you can cast each of them once at 3rd level without expending a spell slot, 1 time after short rest.",
+      "ru": "Выберите два заклинания волшебника 3 уровня из своей книги заклинаний в качестве фирменных заклинаний. Для вас эти заклинания всегда считаются подготовленными, они не учитываются в количестве подготовленных заклинаний, и вы можете сотворить каждое из этих заклинаний 3 уровня, не тратя ячейку заклинаний, 1 раз после короткого отдыха."
+    },
+    "origin": "class",
+    "origin_value": "wizard",
+    "kind": "text",
+    "conditions": { "level": 20 }
+  }
+]

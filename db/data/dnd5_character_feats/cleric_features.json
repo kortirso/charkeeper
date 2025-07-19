@@ -1,0 +1,66 @@
+[
+  {
+    "slug": "channel_divinity",
+    "title": { "en": "Channel Divinity", "ru": "Божественный канал" },
+    "description": {
+      "en": "When you use your Channel Divinity, you choose which effect to create.",
+      "ru": "Когда вы используете Божественный канал, вы выбираете, какой эффект создать."
+    },
+    "origin": "class",
+    "origin_value": "cleric",
+    "kind": "static",
+    "description_eval_variables": {
+      "limit": "class_level = classes['cleric']; return 3 if class_level >= 18; return 2 if class_level >= 6; 1"
+    },
+    "limit_refresh": "short_rest",
+    "conditions": { "level": 2 }
+  },
+  {
+    "slug": "turn_undead_0",
+    "title": { "en": "Channel Divinity: Turn Undead", "ru": "Божественный канал: Изгнание нежити" },
+    "description": {
+      "en": "Each undead that can see or hear you within 30 feet of you must make a Wisdom saving throw (DC {{value}}). If the creature fails its saving throw, it is turned for 1 minute or until it takes any damage. A turned creature must spend its turns trying to move as far away from you as it can.",
+      "ru": "Вся нежить, которая может видеть или слышать вас в пределах 30 футов, должна совершить спасбросок Мудрости (УС {{value}}). Если существо провалило спасбросок, оно изгоняется на 1 минуту, или пока не получит урон. Изгнанное существо должно тратить свои ходы, пытаясь уйти от вас как можно дальше."
+    },
+    "origin": "class",
+    "origin_value": "cleric",
+    "kind": "static",
+    "description_eval_variables": {
+      "value": "spell_classes.dig(:cleric, :save_dc)"
+    },
+    "conditions": { "level": 2 }
+  },
+  {
+    "slug": "turn_undead_1",
+    "title": { "en": "Channel Divinity: Turn Undead", "ru": "Божественный канал: Изгнание нежити" },
+    "description": {
+      "en": "Each undead that can see or hear you within 30 feet of you must make a Wisdom saving throw (DC {{value}). If the creature fails its saving throw, if its challenge rating {{cr_value}} or lower - it is instantly destroyed, otherwise - it is turned for 1 minute or until it takes any damage. A turned creature must spend its turns trying to move as far away from you as it can.",
+      "ru": "Вся нежить, которая может видеть или слышать вас в пределах 30 футов, должна совершить спасбросок Мудрости (УС {{value}}). Если существо провалило спасбросок, а его показатель опасности {{cr_value}} или меньше - оно уничтожается, иначе оно изгоняется на 1 минуту, или пока не получит урон. Изгнанное существо должно тратить свои ходы, пытаясь уйти от вас как можно дальше."
+    },
+    "exclude": ["turn_undead_0"],
+    "origin": "class",
+    "origin_value": "cleric",
+    "kind": "static",
+    "description_eval_variables": {
+      "value": "spell_classes.dig(:cleric, :save_dc)",
+      "cr_value": "class_level = classes['cleric']; return 4 if class_level >= 17; return 3 if class_level >= 14; return 2 if class_level >= 11; return 1 if class_level >= 8; 0.5"
+    },
+    "conditions": { "level": 5 }
+  },
+  {
+    "slug": "divine_intervention",
+    "title": { "en": "Divine Intervention", "ru": "Божественное вмешательство" },
+    "description": {
+      "en": "You can call on your deity to intervene on your behalf when your need is great.",
+      "ru": "Вы можете воззвать к своему божеству о помощи, когда сильно в этом нуждаетесь."
+    },
+    "origin": "class",
+    "origin_value": "cleric",
+    "kind": "static",
+    "description_eval_variables": {
+      "limit": "1"
+    },
+    "limit_refresh": "long_rest",
+    "conditions": { "level": 10 }
+  }
+]

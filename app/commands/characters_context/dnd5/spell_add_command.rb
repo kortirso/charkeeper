@@ -24,7 +24,7 @@ module CharactersContext
       private
 
       def do_persist(input)
-        ::Dnd5::Character::Spell.create!(
+        result = ::Dnd5::Character::Spell.create!(
           character: input[:character],
           spell: input[:spell],
           data: {
@@ -33,7 +33,7 @@ module CharactersContext
           }
         )
 
-        { result: input[:character].reload }
+        { result: result }
       end
     end
   end

@@ -93,8 +93,7 @@ describe Frontend::Dnd5::Characters::SpellsController do
 
           it 'creates character spell', :aggregate_failures do
             expect { request }.to change(user_character.spells, :count).by(1)
-            expect(response).to have_http_status :ok
-            expect(response.parsed_body).to eq({ 'result' => 'ok' })
+            expect(response).to have_http_status :created
           end
         end
       end

@@ -1,0 +1,29 @@
+[
+  {
+    "slug": "gnomish_cunning",
+    "title": { "en": "Gnomish Cunning", "ru": "Гномья хитрость" },
+    "description": {
+      "en": "You have advantage on all Intelligence, Wisdom, and Charisma saving throws.",
+      "ru": "Вы совершаете с преимуществом спасброски Интеллекта, Мудрости и Харизмы."
+    },
+    "origin": "species",
+    "origin_value": "gnome",
+    "kind": "static"
+  },
+  {
+    "slug": "gnome_spellcasting",
+    "title": { "en": "Gnomish lineage", "ru": "Гномье происхождение" },
+    "description": {
+      "en": "Choose species spellcasting ability.",
+      "ru": "Выберите заклинательную характеристику вида."
+    },
+    "origin": "species",
+    "origin_value": "gnome",
+    "kind": "one_from_list",
+    "options": {
+      "int": { "en": "Intelligence", "ru": "Интеллект" },
+      "wis": { "en": "Wisdom", "ru": "Мудрость" },
+      "cha": { "en": "Charisma", "ru": "Харизма" }
+    }
+  }
+]
