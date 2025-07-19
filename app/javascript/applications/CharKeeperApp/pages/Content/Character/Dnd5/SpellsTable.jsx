@@ -66,7 +66,7 @@ export const SpellsTable = (props) => {
           <For each={props.spells}>
             {(spell) =>
               <tr class="dark:text-snow">
-                <td class="py-1">
+                <td class="py-1 pl-1">
                   <p
                     class={`cursor-pointer ${spell.ready_to_use ? '' : 'opacity-50'}`}
                     // onClick={() => props.changeSpell(spell)}

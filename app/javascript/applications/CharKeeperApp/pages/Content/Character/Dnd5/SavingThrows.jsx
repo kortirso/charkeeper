@@ -18,7 +18,7 @@ export const Dnd5SavingThrows = (props) => {
     <ErrorWrapper payload={{ character_id: character().id, key: 'Dnd5SavingThrows' }}>
       <div class="blockable p-4">
         <h2 class="text-lg dark:text-snow mb-2">{t('dndV2.savings.title')}</h2>
-        <div class="grid grid-cols-3 emd:grid-cols-2 elg:grid-cols-1 exl:grid-cols-2 gap-4">
+        <div class="grid grid-cols-3 emd:grid-cols-2 gap-4">
           <For each={Object.entries(config.abilities)}>
             {([slug, ability]) =>
               <div class="flex flex-col items-center">

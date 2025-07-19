@@ -196,7 +196,7 @@ export const Dnd5Spells = (props) => {
                       <For each={filteredSpellsList().filter((item) => item.level === level)}>
                         {(spell) =>
                           <tr>
-                            <td class="py-1">
+                            <td class="py-1 pl-1">
                               <p class={`${knownSpellIds().includes(spell.id) ? '' : 'opacity-50'}`}>{spell.name}</p>
                               <Show
                                 when={!availableSpellFilter()}
@@ -266,7 +266,6 @@ export const Dnd5Spells = (props) => {
                 />
               </Show>
             </div>
-
             <Show when={lastActiveCharacterId() === character().id && activeSpellClass() !== 'all'}>
               <StatsBlock
                 items={[
@@ -303,13 +302,11 @@ export const Dnd5Spells = (props) => {
                 </div>
               </div>
             </Show>
-
             <Show when={character().provider === 'dnd5' ? DND5_CLASSES_LEARN_SPELLS.includes(activeSpellClass()) : DND2024_CLASSES_LEARN_SPELLS.includes(activeSpellClass())}>
               <Button default textable classList="mb-2" onClick={() => setSpellsSelectingMode(true)}>
                 {t('character.knownSpells')}
               </Button>
             </Show>
-
             <SpellsTable
               level="0"
               spells={filteredCharacterSpells().filter((item) => item.level === 0)}
@@ -317,7 +314,6 @@ export const Dnd5Spells = (props) => {
               onEnableSpell={enableSpell}
               onDisableSpell={disableSpell}
             />
-
             <For each={Object.entries(character().spells_slots)}>
               {([level, slotsAmount]) =>
                 <SpellsTable
