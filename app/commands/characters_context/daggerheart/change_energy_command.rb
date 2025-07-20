@@ -45,7 +45,7 @@ module CharactersContext
             next unless input.dig(:options, key).positive?
 
             rolled_value = roll.call(dice: "#{input.dig(:options, key)}d4", modifier: input[:character].tier)
-            input[:data][value] = input[:character].data.attributes[value] - rolled_value
+            input[:data][value] = input[:character].data[value] - rolled_value
             input[:data][value] = [input[:data][value], 0].max
           end
         end

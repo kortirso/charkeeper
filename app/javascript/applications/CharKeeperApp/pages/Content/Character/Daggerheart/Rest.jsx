@@ -18,7 +18,7 @@ export const DaggerheartRest = (props) => {
     clear_armor_slots: 0,
     gain_hope: 0,
     gain_double_hope: 0
-  })
+  });
 
   const [appState] = useAppState();
   const [{ renderNotice, renderAlerts }] = useAppAlert();
@@ -39,9 +39,16 @@ export const DaggerheartRest = (props) => {
       { ...payload, options: restOptions, make_rolls: makeRolls() }
     );
     if (result.errors === undefined) {
-      const characterData = await fetchCharacterRequest(appState.accessToken, character().id, { only: 'features' });
+      const characterData = await fetchCharacterRequest(
+        appState.accessToken,
+        character().id,
+        { only: 'features,health_marked,stress_marked,spent_armor_slots,hope_marked' }
+      );
+
       batch(() => {
         props.onReplaceCharacter(characterData.character);
+        setRestOptions({ clear_health: 0, clear_stress: 0, clear_armor_slots: 0, gain_hope: 0, gain_double_hope: 0 });
+        setMakeRolls(false);
         renderNotice(t('alerts.restIsFinished'));
       });
     } else renderAlerts(result.errors);

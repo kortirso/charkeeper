@@ -11,19 +11,17 @@ module Dnd5
     attribute :main_class, :string
     attribute :classes, array: true
     attribute :subclasses, array: true
-    attribute :abilities, array: true, default: { str: 10, dex: 10, con: 10, int: 10, wis: 10, cha: 10 }
+    attribute :abilities, array: true, default: { 'str' => 10, 'dex' => 10, 'con' => 10, 'int' => 10, 'wis' => 10, 'cha' => 10 }
     attribute :health, array: true
-    attribute :death_saving_throws, array: true, default: { success: 0, failure: 0 }
+    attribute :death_saving_throws, array: true, default: { 'success' => 0, 'failure' => 0 }
     attribute :speed, :integer
-    # attribute :energy, array: true, default: {}
     attribute :selected_skills, array: true, default: [] # ['history']
-    # attribute :selected_features, array: true, default: {} # { 'fighting_style' => ['fighting_style_defense'] }
     attribute :selected_feats, array: true, default: {} # { 'fighting_style' => ['fighting_style_defense'] }
     attribute :languages, array: true
     attribute :weapon_core_skills, array: true
     attribute :weapon_skills, array: true
     attribute :armor_proficiency, array: true
-    attribute :coins, array: true, default: { gold: 0, silver: 0, copper: 0 }
+    attribute :coins, array: true, default: { 'gold' => 0, 'silver' => 0, 'copper' => 0 }
     attribute :spent_spell_slots, array: true, default: {}
     attribute :hit_dice, array: true, default: {} # максимальные кости хитов
     attribute :spent_hit_dice, array: true, default: {} # потраченные кости хитов

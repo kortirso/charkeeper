@@ -7,7 +7,7 @@ describe CharactersContext::Dnd2024::MakeShortRestCommand do
   let!(:character) {
     create :character, :dnd2024, data: {
       spent_spell_slots: { 1 => 3, 2 => 1 },
-      spent_hit_dice: { 'd6' => 0, 'd8' => 1, 'd10' => 2, 'd12' => 3 },
+      spent_hit_dice: { '6' => 0, '8' => 1, '10' => 2, '12' => 3 },
       health: { max: 10, current: 1 }
     }
   }
@@ -27,7 +27,7 @@ describe CharactersContext::Dnd2024::MakeShortRestCommand do
     expect(character_feat2.reload.used_count).to eq 0
     expect(character_feat3.reload.used_count).to eq 1
     expect(data.spent_spell_slots).to eq({ '1' => 3, '2' => 1 })
-    expect(data.spent_hit_dice).to eq({ 'd6' => 0, 'd8' => 1, 'd10' => 2, 'd12' => 3 })
+    expect(data.spent_hit_dice).to eq({ '6' => 0, '8' => 1, '10' => 2, '12' => 3 })
     expect(data.health).to eq({ 'max' => 10, 'current' => 1 })
   end
 end

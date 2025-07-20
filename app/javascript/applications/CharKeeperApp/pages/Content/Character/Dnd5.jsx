@@ -3,7 +3,8 @@ import * as i18n from '@solid-primitives/i18n';
 import { createWindowSize } from '@solid-primitives/resize-observer';
 
 import {
-  Dnd5Abilities, Dnd5Combat, Dnd5Rest, Dnd5ClassLevels, Dnd5Professions, Dnd5Spells, DndGold, Dnd5Skills, Dnd5SavingThrows
+  Dnd5Abilities, Dnd5Combat, Dnd5Rest, Dnd5ClassLevels, Dnd5Professions, Dnd5Spells, DndGold, Dnd5Skills, Dnd5SavingThrows,
+  Dnd5Proficiency
 } from '../../../pages';
 import { CharacterNavigation, Equipment, Notes, Avatar, ContentWrapper, Feats } from '../../../components';
 import { useAppState, useAppLocale } from '../../../context';
@@ -59,6 +60,9 @@ export const Dnd5 = (props) => {
           <Switch>
             <Match when={activeMobileTab() === 'abilities'}>
               <Dnd5Abilities character={character()} onReplaceCharacter={props.onReplaceCharacter} />
+              <div class="mt-4">
+                <Dnd5Proficiency character={character()} onReplaceCharacter={props.onReplaceCharacter} />
+              </div>
               <div class="mt-4">
                 <Dnd5SavingThrows character={character()} />
               </div>
@@ -133,7 +137,10 @@ export const Dnd5 = (props) => {
         <Dnd5Abilities character={character()} onReplaceCharacter={props.onReplaceCharacter} />
         <div class="flex flex-col emd:flex-row emd:gap-4 emd:mt-4">
           <div class="mt-4 emd:mt-0 flex-1">
-            <Dnd5SavingThrows character={character()} />
+            <Dnd5Proficiency character={character()} onReplaceCharacter={props.onReplaceCharacter} />
+            <div class="mt-4">
+              <Dnd5SavingThrows character={character()} />
+            </div>
           </div>
           <div class="mt-4 emd:mt-0 flex-1">
             <Dnd5Skills character={character()} onReplaceCharacter={props.onReplaceCharacter} />
