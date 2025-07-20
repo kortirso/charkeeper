@@ -28,7 +28,7 @@ describe Frontend::Daggerheart::Characters::RestController do
         context 'for unexisting value' do
           it 'returns error' do
             post :create, params: {
-              character_id: user_character.id, rest: 'unexisting', charkeeper_access_token: access_token
+              character_id: user_character.id, value: 'unexisting', charkeeper_access_token: access_token
             }
 
             expect(response).to have_http_status :unprocessable_entity
@@ -37,7 +37,7 @@ describe Frontend::Daggerheart::Characters::RestController do
 
         context 'for existing value' do
           let(:request) {
-            post :create, params: { character_id: user_character.id, rest: 'short', charkeeper_access_token: access_token }
+            post :create, params: { character_id: user_character.id, value: 'short', charkeeper_access_token: access_token }
           }
 
           it 'calls service', :aggregate_failures do

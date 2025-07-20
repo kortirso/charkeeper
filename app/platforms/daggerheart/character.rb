@@ -78,6 +78,14 @@ module Daggerheart
 
     attribute :data, Daggerheart::CharacterData.to_type
 
+    def tier
+      return 4 if data.level >= 8
+      return 3 if data.level >= 5
+      return 2 if data.level >= 2
+
+      1
+    end
+
     def decorator(simple: false)
       base_decorator = ::DaggerheartCharacter::BaseDecorator.new(self)
       features_decorator = ::FeaturesDecorator.new(base_decorator)

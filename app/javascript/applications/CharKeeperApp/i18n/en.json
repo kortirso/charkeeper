@@ -110,8 +110,13 @@
       "hope": "Hope"
     },
     "rest": {
-      "shortRestDescription": "At short rest player can move domain cards between its loadout and vault for free, then choose twice from the list of downtime moves: 1) Clear 1d4+{{tier}} Hit Points for yourself or an ally, 2) Clear 1d4+{{tier}} Stress, 3) Clear 1d4+{{tier}} Armor Slots from your or an ally's armor, 4) Describe how you prepare yourself for the path ahead, then gain a Hope. If you choose to Prepare with one or more members of your party, you each gain 2 Hope.",
-      "longRestDescription": "At long rest player can move domain cards between its loadout and vault for free, then choose twice from the list of downtime moves: 1) Clear all Hit Points for yourself or an ally, 2) Clear all Stress, 3) Clear all Armor Slots from your or an ally's armor, 4) Describe how you prepare for the next day's adventure, then gain a Hope. If you choose to Prepare with one or more members of your party, you each gain 2 Hope."
+      "restDescription": "At rest player can move domain cards between its loadout and vault for free, then choose twice from the list of downtime moves.",
+      "clear_health": "Clear 1d4+{{tier}} (or all for long rest) Hit Points for yourself",
+      "clear_stress": "Clear 1d4+{{tier}} (or all for long rest) Stress",
+      "clear_armor_slots": "Clear 1d4+{{tier}} (or all for long rest) Armor Slots from your armor",
+      "gain_hope": "Gain a Hope",
+      "gain_double_hope": "Gain 2 Hope",
+      "makeRolls": "Make rolls"
     },
     "gold": {
       "coins": "Coins",
