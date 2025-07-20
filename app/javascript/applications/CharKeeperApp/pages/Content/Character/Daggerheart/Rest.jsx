@@ -21,7 +21,7 @@ export const DaggerheartRest = (props) => {
   })
 
   const [appState] = useAppState();
-  const [{ renderNotice }] = useAppAlert();
+  const [{ renderNotice, renderAlerts }] = useAppAlert();
   const [, dict] = useAppLocale();
 
   const t = i18n.translator(dict);
@@ -44,7 +44,7 @@ export const DaggerheartRest = (props) => {
         props.onReplaceCharacter(characterData.character);
         renderNotice(t('alerts.restIsFinished'));
       });
-    }
+    } else renderAlerts(result.errors);
   }
 
   return (

@@ -7,6 +7,10 @@ en:
     errors:
       unexpected_key: Unknown param
       included_in?: Unknown value
+      daggerheart_rest:
+        rules:
+          options:
+            too_many_expectations: Select only 2 options
       homebrew_item:
         rules:
           name:

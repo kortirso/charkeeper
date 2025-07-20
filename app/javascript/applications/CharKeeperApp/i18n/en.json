@@ -111,12 +111,12 @@
     },
     "rest": {
       "restDescription": "At rest player can move domain cards between its loadout and vault for free, then choose twice from the list of downtime moves.",
-      "clear_health": "Clear 1d4+{{tier}} (or all for long rest) Hit Points for yourself",
-      "clear_stress": "Clear 1d4+{{tier}} (or all for long rest) Stress",
-      "clear_armor_slots": "Clear 1d4+{{tier}} (or all for long rest) Armor Slots from your armor",
+      "clear_health": "Clear 1d4+{{tier}} or all Hit Points for yourself",
+      "clear_stress": "Clear 1d4+{{tier}} or all Stress",
+      "clear_armor_slots": "Clear 1d4+{{tier}} or all Armor Slots from your armor",
       "gain_hope": "Gain a Hope",
       "gain_double_hope": "Gain 2 Hope",
-      "makeRolls": "Make rolls"
+      "makeRolls": "Make auto rolls"
     },
     "gold": {
       "coins": "Coins",

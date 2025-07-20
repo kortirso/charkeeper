@@ -7,6 +7,10 @@ ru:
     errors:
       unexpected_key: Неизвестный параметр
       included_in?: Неизвестное значение
+      daggerheart_rest:
+        rules:
+          options:
+            too_many_expectations: Выберите только 2 варианта
       homebrew_item:
         rules:
           title:

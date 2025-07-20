@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Roll
-  # 1d4+3
+  # value - 1d10
   def call(dice:, modifier: 0)
     multiplier, dice_value = dice.split('d')
 
