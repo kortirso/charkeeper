@@ -39,6 +39,7 @@ Rails.application.routes.draw do
         resources :races, only: %i[index create destroy]
         resources :feats, only: %i[index create destroy]
         resources :items, only: %i[index create destroy]
+        resources :specialities, only: %i[index create destroy]
       end
     end
     resources :homebrews, only: %i[index]

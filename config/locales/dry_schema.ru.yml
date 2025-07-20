@@ -11,6 +11,15 @@ ru:
         rules:
           options:
             too_many_expectations: Выберите только 2 варианта
+      homebrew_speciality:
+        rules:
+          name:
+            filled?: Необходимо указать название
+            max_size?: Название не может быть длиннее, чем 50 символов
+          domains:
+            filled?: Необходимо указать домены
+            only_two: Список доменов должен содержать 2 значения
+            invalid_value: Список доменов содержит неверное значение
       homebrew_item:
         rules:
           title:
@@ -42,10 +51,6 @@ ru:
         rules:
           name:
             filled?: Необходимо указать название
-          domains:
-            filled?: Необходимо указать домены
-            only_two: Список доменов должен содержать 2 значения
-            invalid_value: Список доменов содержит неверное значение
       character_companion:
         rules:
           character:

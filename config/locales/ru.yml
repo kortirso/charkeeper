@@ -12,6 +12,9 @@ ru:
       races:
         daggerheart:
           character_exists: Персонаж с такой расой существует
+      specialities:
+        daggerheart:
+          character_exists: Персонаж с таким классом существует
   web:
     welcome:
       index:

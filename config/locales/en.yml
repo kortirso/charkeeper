@@ -12,6 +12,9 @@ en:
       races:
         daggerheart:
           character_exists: Character with such ancestry exists
+      specialities:
+        daggerheart:
+          character_exists: Character with such class exists
   web:
     welcome:
       index:

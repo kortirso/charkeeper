@@ -11,6 +11,15 @@ en:
         rules:
           options:
             too_many_expectations: Select only 2 options
+      homebrew_speciality:
+        rules:
+          name:
+            filled?: Name can't be blank
+            max_size?: Name's size cannot be greater than 50
+          domains:
+            filled?: Domains can't be blank
+            only_two: Domains list should contain 2 values
+            invalid_value: Domains list contains invalid value
       homebrew_item:
         rules:
           name:
@@ -42,10 +51,6 @@ en:
         rules:
           name:
             filled?: Name can't be blank
-          domains:
-            filled?: Domains can't be blank
-            only_two: Domains list should contain 2 values
-            invalid_value: Domains list contains invalid value
       character_companion:
         rules:
           character:
