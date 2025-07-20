@@ -27,6 +27,19 @@ export const NewDaggerheartFeatForm = (props) => {
     return props.homebrews.daggerheart.heritages;
   });
 
+  const daggerheartClasses = createMemo(() => {
+    if (props.homebrews === undefined) return [];
+
+    return props.homebrews.daggerheart.classes;
+  });
+
+  const originValues = createMemo(() => {
+    if (featForm.origin === 'ancestry') return daggerheartHeritages();
+    if (featForm.origin === 'class') return daggerheartClasses();
+    
+    return [];
+  });
+
   return (
     <>
       <Input
@@ -47,13 +60,13 @@ export const NewDaggerheartFeatForm = (props) => {
         labelText={t('pages.homebrewPage.daggerheart.origin')}
         items={dict().daggerheart.terms.feats.origins}
         selectedValue={featForm.origin}
-        onSelect={(value) => setFeatForm({ ...featForm, origin: value })}
+        onSelect={(value) => setFeatForm({ ...featForm, origin: value, origin_value: '' })}
       />
       <Show when={featForm.origin}>
         <Select
           containerClassList="mb-2"
           labelText={t('pages.homebrewPage.daggerheart.originValue')}
-          items={translate(daggerheartHeritages(), locale())}
+          items={translate(originValues(), locale())}
           selectedValue={featForm.origin_value}
           onSelect={(value) => setFeatForm({ ...featForm, origin_value: value })}
         />

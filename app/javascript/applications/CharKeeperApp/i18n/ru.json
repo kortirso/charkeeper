@@ -78,7 +78,8 @@
       "thresholds": "Пороги урона",
       "feats": {
         "origins": {
-          "ancestry": "Раса"
+          "ancestry": "Раса",
+          "class": "Класс"
         },
         "kinds": {
           "static": "Вывод описания",

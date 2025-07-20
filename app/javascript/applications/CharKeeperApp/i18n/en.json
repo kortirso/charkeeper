@@ -78,7 +78,8 @@
       "thresholds": "Damage thresholds",
       "feats": {
         "origins": {
-          "ancestry": "Ancestry"
+          "ancestry": "Ancestry",
+          "class": "Class"
         },
         "kinds": {
           "static": "Static text",
