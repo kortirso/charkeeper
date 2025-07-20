@@ -16,6 +16,7 @@ module Charkeeper
     end
 
     register('to_bool') { ToBool.new }
+    register('roll') { Roll.new }
     register('monitoring.providers.rails') { Monitoring::Providers::Rails.new }
     register('monitoring.client') { Monitoring::Client.new }
     register('api.telegram.client') { TelegramApi::Client.new }

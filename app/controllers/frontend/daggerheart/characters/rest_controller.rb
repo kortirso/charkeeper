@@ -11,7 +11,7 @@ module Frontend
         before_action :find_character
 
         def create
-          case change_energy.call({ character: @character, value: params[:rest] })
+          case change_energy.call(rest_options.merge({ character: @character }))
           in { errors: errors } then unprocessable_response(errors)
           else only_head_response
           end
@@ -21,6 +21,10 @@ module Frontend
 
         def find_character
           @character = authorized_scope(Character.all).daggerheart.find(params[:character_id])
+        end
+
+        def rest_options
+          params.permit!.to_h
         end
       end
     end

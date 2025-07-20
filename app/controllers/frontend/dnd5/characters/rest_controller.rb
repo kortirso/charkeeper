@@ -14,8 +14,10 @@ module Frontend
         before_action :check_perform_command
 
         def create
-          @perform_command.call(character: @character)
-          only_head_response
+          case @perform_command.call(rest_options.merge({ character: @character }))
+          in { errors: errors } then unprocessable_response(errors)
+          else only_head_response
+          end
         end
 
         private
@@ -26,7 +28,7 @@ module Frontend
 
         def find_perform_command
           @perform_command =
-            case params[:type]
+            case params[:value]
             when 'short_rest' then make_short_rest
             when 'long_rest' then make_long_rest
             end
@@ -34,6 +36,10 @@ module Frontend
 
         def check_perform_command
           render json: { errors: ['Invalid type'] }, status: :unprocessable_entity if @perform_command.nil?
+        end
+
+        def rest_options
+          params.permit!.to_h
         end
       end
     end

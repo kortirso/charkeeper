@@ -31,7 +31,7 @@ describe Frontend::Dnd5::Characters::RestController do
         context 'for unexisting type' do
           it 'returns error' do
             post :create, params: {
-              character_id: user_character.id, type: 'unexisting', charkeeper_access_token: access_token
+              character_id: user_character.id, value: 'unexisting', charkeeper_access_token: access_token
             }
 
             expect(response).to have_http_status :unprocessable_entity
@@ -40,7 +40,7 @@ describe Frontend::Dnd5::Characters::RestController do
 
         context 'for existing type' do
           let(:request) {
-            post :create, params: { character_id: user_character.id, type: 'short_rest', charkeeper_access_token: access_token }
+            post :create, params: { character_id: user_character.id, value: 'short_rest', charkeeper_access_token: access_token }
           }
 
           it 'calls service', :aggregate_failures do
