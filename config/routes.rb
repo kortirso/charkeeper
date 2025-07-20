@@ -15,15 +15,9 @@ Rails.application.routes.draw do
 
     namespace :dnd5 do
       resources :characters, only: %i[index]
-      namespace :characters do
-        resources :features, except: %i[show]
-      end
     end
     namespace :dnd2024 do
       resources :characters, only: %i[index]
-      namespace :characters do
-        resources :features, except: %i[show]
-      end
     end
     namespace :pathfinder2 do
       resources :characters, only: %i[index]
