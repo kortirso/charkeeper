@@ -41,6 +41,7 @@ export const HomebrewTab = () => {
         <Switch>
           <Match when={activeFilter() === 'daggerheart'}>
             {renderHomebrewLink(t('pages.homebrewPage.daggerheart.ancestries'), 'homebrew', { content: 'races', provider: 'daggerheart' })}
+            {renderHomebrewLink(t('pages.homebrewPage.daggerheart.classes'), 'homebrew', { content: 'classes', provider: 'daggerheart' })}
             {renderHomebrewLink(t('pages.homebrewPage.daggerheart.features'), 'homebrew', { content: 'feats', provider: 'daggerheart' })}
             {renderHomebrewLink(t('pages.homebrewPage.daggerheart.items'), 'homebrew', { content: 'items', provider: 'daggerheart' })}
           </Match>

@@ -47,7 +47,7 @@
       "daggerheart": {
         "ancestries": "Ancestries",
         "features": "Features",
-        "races": "Daggerheart's ancestries",
+        "races": "Ancestries",
         "newRace": "Add new ancestry",
         "raceName": "Ancestry's name",
         "newFeat": "Add new feature",
@@ -62,7 +62,13 @@
         "items": "Items",
         "itemName": "Item name",
         "itemKind": "Item kind",
-        "newItem": "Add new item"
+        "newItem": "Add new item",
+        "classes": "Classes",
+        "newClass": "Add new class",
+        "className": "Class name",
+        "evasion": "Starting evasion",
+        "maxHealth": "Starting hit points",
+        "domains": "Domains"
       }
     }
   },
@@ -72,7 +78,8 @@
       "thresholds": "Damage thresholds",
       "feats": {
         "origins": {
-          "ancestry": "Ancestry"
+          "ancestry": "Ancestry",
+          "class": "Class"
         },
         "kinds": {
           "static": "Static text",

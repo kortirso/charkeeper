@@ -30,7 +30,7 @@ module Frontend
       private
 
       def find_races
-        @races = races_relation.joins(:homebrews).where(homebrews: { user_id: current_user.id }).distinct
+        @races = races_relation.where(user_id: current_user.id).distinct
       end
 
       def find_race
