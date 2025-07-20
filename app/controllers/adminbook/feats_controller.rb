@@ -38,6 +38,8 @@ module Adminbook
       @feat_class =
         case params[:provider]
         when 'daggerheart' then ::Daggerheart::Feat
+        when 'dnd5' then ::Dnd5::Feat
+        when 'dnd2024' then ::Dnd2024::Feat
         end
     end
 
