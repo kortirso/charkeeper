@@ -3,7 +3,6 @@
 module CharactersContext
   module Daggerheart
     class AddBonusCommand < BaseCommand
-      # rubocop: disable Metrics/BlockLength
       use_contract do
         config.messages.namespace = :character_bonus
 
@@ -24,7 +23,6 @@ module CharactersContext
             optional(:evasion).filled(:integer)
             optional(:armor_score).filled(:integer)
             optional(:thresholds).hash do
-              optional(:minor).filled(:integer)
               optional(:major).filled(:integer)
               optional(:severe).filled(:integer)
             end
@@ -33,7 +31,6 @@ module CharactersContext
           end
         end
       end
-      # rubocop: enable Metrics/BlockLength
 
       private
 

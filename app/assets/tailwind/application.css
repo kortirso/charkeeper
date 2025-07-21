@@ -213,3 +213,24 @@
 .uneditable-field {
   display: none;
 }
+
+.damage-caption {
+  @apply flex-1 flex flex-col items-center;
+}
+
+.damage-caption p:nth-of-type(1) {
+  @apply flex-1 text-center flex items-center uppercase font-cascadia-bold dark:text-snow py-4 px-2 text-sm md:text-base;
+}
+
+.damage-caption p:nth-of-type(2) {
+  @apply text-xs dark:text-snow;
+}
+
+.damage-threshold {
+  @apply flex items-center pb-4;
+}
+
+.damage-threshold p {
+  @apply text-center border border-blue-400 bg-white rounded w-10 py-1 font-cascadia text-lg;
+  @apply dark:border-fuzzy-red dark:text-dusty;
+}

@@ -106,9 +106,9 @@
     "health": {
       "armorScore": "Armor Score",
       "armorSlots": "Armor Slots",
-      "minor": "Minor",
-      "major": "Major",
-      "severe": "Severe",
+      "minor": "Minor damage",
+      "major": "Major damage",
+      "severe": "Severe damage",
       "minorDamage": "Mark 1 HP",
       "majorDamage": "Mark 2 HP",
       "severeDamage": "Mark 3 HP",

@@ -24,7 +24,7 @@ export const Bonuses = (props) => {
     stress: 0,
     evasion: 0,
     armor_score: 0,
-    thresholds: { minor: 0, major: 0, severe: 0 },
+    thresholds: { major: 0, severe: 0 },
     attack: 0,
     proficiency: 0
   });
@@ -106,7 +106,7 @@ export const Bonuses = (props) => {
               </div>
               <p class="dark:text-snow">{t('daggerheart.terms.thresholds')}</p>
               <div class="grid grid-cols-3 gap-2 mb-4">
-                <For each={['minor', 'major', 'severe']}>
+                <For each={['major', 'severe']}>
                   {(slug) =>
                     <Input
                       numeric
@@ -172,7 +172,7 @@ export const Bonuses = (props) => {
                   <Show when={bonus.value.thresholds}>
                     <div>
                       <p class="mb-2">{t('daggerheart.terms.thresholds')}</p>
-                      <For each={['minor', 'major', 'severe']}>
+                      <For each={['major', 'severe']}>
                         {(slug) =>
                           <Show when={bonus.value.thresholds[slug]}>
                             <p class="">{t(`daggerheart.health.${slug}`)} - {modifier(bonus.value.thresholds[slug])}</p>
