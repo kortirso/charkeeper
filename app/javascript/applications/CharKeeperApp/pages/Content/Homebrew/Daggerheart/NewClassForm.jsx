@@ -26,7 +26,7 @@ export const NewDaggerheartClassForm = (props) => {
   return (
     <>
       <Input
-        containerClassList="mb-4"
+        containerClassList="mb-2"
         labelText={t('pages.homebrewPage.daggerheart.className')}
         value={classForm.name}
         onInput={(value) => setClassForm({ ...classForm, name: value })}

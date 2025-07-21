@@ -27,10 +27,10 @@ export const Select = (props) => {
         >
           <Switch fallback={<span />}>
             <Match when={props.selectedValue}>
-              <span>{props.items[props.selectedValue]}</span>
+              <span class="truncate">{props.items[props.selectedValue]}</span>
             </Match>
             <Match when={props.selectedValues}>
-              <span>{Object.entries(props.items).filter(([key,]) => props.selectedValues.includes(key)).map(([,value]) => value).join(', ')}</span>
+              <span class="truncate">{Object.entries(props.items).filter(([key,]) => props.selectedValues.includes(key)).map(([,value]) => value).join(', ')}</span>
             </Match>
           </Switch>
           <Chevron rotated={isOpen()} />
