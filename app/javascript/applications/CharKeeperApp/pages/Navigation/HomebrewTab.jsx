@@ -40,9 +40,9 @@ export const HomebrewTab = () => {
       <div class="p-4 flex-1 overflow-y-scroll">
         <Switch>
           <Match when={activeFilter() === 'daggerheart'}>
-            {renderHomebrewLink(t('pages.homebrewPage.daggerheart.ancestries'), 'homebrew', { content: 'races', provider: 'daggerheart' })}
+            {renderHomebrewLink(t('pages.homebrewPage.daggerheart.races'), 'homebrew', { content: 'races', provider: 'daggerheart' })}
             {renderHomebrewLink(t('pages.homebrewPage.daggerheart.classes'), 'homebrew', { content: 'classes', provider: 'daggerheart' })}
-            {renderHomebrewLink(t('pages.homebrewPage.daggerheart.features'), 'homebrew', { content: 'feats', provider: 'daggerheart' })}
+            {renderHomebrewLink(t('pages.homebrewPage.daggerheart.feats'), 'homebrew', { content: 'feats', provider: 'daggerheart' })}
             {renderHomebrewLink(t('pages.homebrewPage.daggerheart.items'), 'homebrew', { content: 'items', provider: 'daggerheart' })}
           </Match>
         </Switch>

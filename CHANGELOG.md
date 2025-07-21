@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Fixed
 - saving selected feats values
+- rendering Select value
 
 ## [0.2.5] - 2025-07-20
 ### Added

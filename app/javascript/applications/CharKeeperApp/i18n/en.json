@@ -45,9 +45,8 @@
     "homebrewPage": {
       "title": "Homebrew",
       "daggerheart": {
-        "ancestries": "Ancestries",
-        "features": "Features",
         "races": "Ancestries",
+        "feats": "Features",
         "newRace": "Add new ancestry",
         "raceName": "Ancestry's name",
         "newFeat": "Add new feature",

@@ -45,9 +45,8 @@
     "homebrewPage": {
       "title": "Homebrew",
       "daggerheart": {
-        "ancestries": "Расы",
-        "features": "Способности",
-        "races": "Расы Daggerheart",
+        "races": "Расы",
+        "feats": "Способности",
         "newRace": "Добавить новую расу",
         "raceName": "Название расы",
         "newFeat": "Добавить новую способность",
