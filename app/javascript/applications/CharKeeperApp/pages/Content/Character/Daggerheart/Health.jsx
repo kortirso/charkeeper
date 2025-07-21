@@ -49,20 +49,23 @@ export const DaggerheartHealth = (props) => {
     <ErrorWrapper payload={{ character_id: character().id, key: 'DaggerheartHealth' }}>
       <div class="blockable pb-2">
         <div class="p-4 flex mb-2">
-          <div class="flex-1 flex flex-col items-center">
-            <p class="uppercase text-sm elg:text-[10px] mb-1 dark:text-snow">{t('daggerheart.health.minor')}</p>
-            <p class="font-cascadia text-2xl mb-1 dark:text-snow">{character().damage_thresholds.minor}</p>
-            <p class="text-xs mb-1 dark:text-snow">{t('daggerheart.health.minorDamage')}</p>
+          <div class="damage-caption">
+            <p>{t('daggerheart.health.minor')}</p>
+            <p>{t('daggerheart.health.minorDamage')}</p>
           </div>
-          <div class="flex-1 flex flex-col items-center">
-            <p class="uppercase text-sm elg:text-[10px] mb-1 dark:text-snow">{t('daggerheart.health.major')}</p>
-            <p class="font-cascadia text-2xl mb-1 dark:text-snow">{character().damage_thresholds.major}</p>
-            <p class="text-xs mb-1 dark:text-snow">{t('daggerheart.health.majorDamage')}</p>
+          <div class="damage-threshold">
+            <p>{character().damage_thresholds.major}</p>
           </div>
-          <div class="flex-1 flex flex-col items-center">
-            <p class="uppercase text-sm elg:text-[10px] mb-1 dark:text-snow">{t('daggerheart.health.severe')}</p>
-            <p class="font-cascadia text-2xl mb-1 dark:text-snow">{character().damage_thresholds.severe}</p>
-            <p class="text-xs mb-1 dark:text-snow">{t('daggerheart.health.severeDamage')}</p>
+          <div class="damage-caption">
+            <p>{t('daggerheart.health.major')}</p>
+            <p>{t('daggerheart.health.majorDamage')}</p>
+          </div>
+          <div class="damage-threshold">
+            <p>{character().damage_thresholds.severe}</p>
+          </div>
+          <div class="damage-caption">
+            <p>{t('daggerheart.health.severe')}</p>
+            <p>{t('daggerheart.health.severeDamage')}</p>
           </div>
         </div>
         {renderAttribute(t('daggerheart.health.armorSlots'), character().armor_slots, 'spent_armor_slots')}
