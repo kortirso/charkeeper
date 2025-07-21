@@ -15,7 +15,7 @@ module CharactersContext
     private
 
     def do_prepare(input)
-      return unless input[:character_feat].feat.kind.in?(%w[one_from_list many_from_list static_list])
+      return unless input[:character_feat].feat.kind.in?([3, 4])
 
       input[:key] =
         case input[:character_feat].character.type
@@ -28,10 +28,11 @@ module CharactersContext
     end
 
     def do_persist(input)
-      input[:character_feat].update!(input.except(:character_feat, :selected_feats, :key))
+      input[:character_feat].update!(input.except(:character_feat, :selected_feats, :selected_features, :key))
 
       if input[:key]
-        input[:character_feat].character.data[input[:key]].merge!(input[input[:key]])
+        data = input[:character_feat].character.data
+        data[input[:key]] = (data[input[:key]] || {}).merge(input[input[:key]])
         input[:character_feat].character.save
       end
 
