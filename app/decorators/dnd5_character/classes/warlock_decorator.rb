@@ -51,7 +51,34 @@ module Dnd5Character
         @spells_slots ||= SPELL_SLOTS[class_level]
       end
 
+      def static_spells
+        @static_spells ||= begin
+          result = __getobj__.static_spells
+          find_cantrips(result) if selected_feats['pact_of_the_tome'] && class_level >= 3
+          result['find_familiar'] = {} if selected_feats['pact_of_the_chain'] && class_level >= 3
+          result
+        end
+      end
+
       private
+
+      def find_cantrips(result)
+        cantrips =
+          Dnd5::Spell
+            .where("data ->> 'level' = '0'")
+            .where(
+              "name ->> 'en' = :name OR name ->> 'ru' = :name",
+              name: selected_feats['pact_of_the_tome'].split(',').map(&:strip)
+            )
+            .limit(3)
+        return if cantrips.blank?
+
+        result.merge!(cantrips.pluck(:slug).index_with { static_spell_attributes })
+      end
+
+      def static_spell_attributes
+        { 'attack_bonus' => proficiency_bonus + modifiers['cha'], 'save_dc' => 8 + proficiency_bonus + modifiers['cha'] }
+      end
 
       def class_level
         @class_level ||= classes['warlock']

@@ -15,8 +15,6 @@ module CharactersContext
     private
 
     def do_prepare(input)
-      return unless input[:character_feat].feat.kind.in?([3, 4])
-
       input[:key] =
         case input[:character_feat].character.type
         when 'Dnd5::Character' then :selected_feats

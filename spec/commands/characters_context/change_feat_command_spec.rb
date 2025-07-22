@@ -13,11 +13,11 @@ describe CharactersContext::ChangeFeatCommand do
       let!(:character_feat) { create :character_feat, character: character, feat: feat }
       let(:value) { 'value' }
 
-      it 'updates only feat', :aggregate_failures do
+      it 'updates feat', :aggregate_failures do
         command_call
 
         expect(character_feat.reload.value).to eq value
-        expect(character.reload.data['selected_feats']).to eq({})
+        expect(character.reload.data['selected_feats']).to eq({ feat.slug => 'value' })
       end
     end
 
@@ -47,7 +47,7 @@ describe CharactersContext::ChangeFeatCommand do
         command_call
 
         expect(character_feat.reload.value).to eq value
-        expect(character.reload.data['selected_features']).to eq({})
+        expect(character.reload.data['selected_features']).to eq({ feat.slug => 'value' })
       end
     end
 
