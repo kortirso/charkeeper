@@ -170,11 +170,11 @@ module DaggerheartCharacter
     # rubocop: enable Metrics/AbcSize, Metrics/MethodLength
 
     def attack_bonuses
-      @attack_bonuses ||= sum(bonuses.pluck('attack'))
+      @attack_bonuses ||= sum(bonuses.pluck('attack').compact)
     end
 
     def item_bonuses
-      @item_bonuses ||= equiped_items_info.pluck('bonuses')
+      @item_bonuses ||= equiped_items_info.pluck('bonuses').compact
     end
 
     def equiped_thresholds_bonuses
@@ -191,6 +191,7 @@ module DaggerheartCharacter
         .items
         .where(ready_to_use: true)
         .joins(:item)
+        .where(items: { kind: ['armor', 'secondary weapon'] })
         .pluck('items.info')
     end
 
@@ -203,7 +204,7 @@ module DaggerheartCharacter
     end
 
     def bonuses
-      @bonuses ||= __getobj__.bonuses.pluck(:value)
+      @bonuses ||= __getobj__.bonuses.pluck(:value).compact
     end
 
     def sum(values)

@@ -8,6 +8,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Added
 - rendering static spells for D&D
 
+### Fixed
+- rendering Daggerheart character
+
 ## [0.2.6] - 2025-07-21
 ### Modified
 - rendering major/severe damage thresholds for Daggerheart
