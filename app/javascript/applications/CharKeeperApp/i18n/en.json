@@ -338,7 +338,6 @@
     "changeClasses": "Change character classes",
     "knownSpells": "Learning spells",
     "items": "Add equipment",
-    "staticSpell": "Static spell",
     "staticSpellPerDay": "per day",
     "staticSpellLevel": "as level",
     "staticSpellAttackBonus": "attack bonus",
@@ -512,7 +511,8 @@
       "sorcerer": "Sorcerer",
       "warlock": "Warlock",
       "wizard": "Wizard",
-      "artificer": "Artificer"
+      "artificer": "Artificer",
+      "static": "Natural spells"
     },
     "subclasses": {
       "barbarian": {

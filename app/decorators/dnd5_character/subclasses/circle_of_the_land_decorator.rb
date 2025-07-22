@@ -34,15 +34,19 @@ module Dnd5Character
 
       def static_spells
         @static_spells ||= begin
-          selected_land = selected_features['land']
+          selected_land = selected_feats['land']
           result = __getobj__.static_spells
-          result.merge!(LAND_SPELLS_3[selected_land].index_with { {} }) if selected_land && class_level >= 3
-          result.merge!(LAND_SPELLS_5[selected_land].index_with { {} }) if selected_land && class_level >= 5
+          result.merge!(LAND_SPELLS_3[selected_land].index_with { static_spell_attributes }) if selected_land && class_level >= 3
+          result.merge!(LAND_SPELLS_5[selected_land].index_with { static_spell_attributes }) if selected_land && class_level >= 5
           result
         end
       end
 
       private
+
+      def static_spell_attributes
+        { 'attack_bonus' => proficiency_bonus + modifiers['wis'], 'save_dc' => 8 + proficiency_bonus + modifiers['wis'] }
+      end
 
       def class_level
         @class_level ||= classes['druid']

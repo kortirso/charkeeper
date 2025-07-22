@@ -120,7 +120,8 @@ module Dnd2024
     def decorator(simple: false)
       base_decorator = ::Dnd2024Character::BaseDecorator.new(self)
       species_decorator = ::Dnd2024Character::SpeciesDecorateWrapper.new(base_decorator)
-      class_decorator = ::Dnd2024Character::ClassDecorateWrapper.new(species_decorator)
+      legacy_decorator = ::Dnd2024Character::LegacyDecorateWrapper.new(species_decorator)
+      class_decorator = ::Dnd2024Character::ClassDecorateWrapper.new(legacy_decorator)
       features_decorator = ::FeaturesDecorator.new(class_decorator)
       features_decorator.features unless simple
       ::Dnd2024Character::OverallDecorator.new(features_decorator)

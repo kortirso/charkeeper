@@ -338,9 +338,6 @@
     "changeClasses": "Изменить классы персонажа",
     "knownSpells": "Изучение заклинаний",
     "items": "Добавить снаряжение",
-    "itemsList": "Предметы",
-    "weaponsList": "Оружие",
-    "staticSpell": "Постоянное",
     "staticSpellPerDay": "раз в день",
     "staticSpellLevel": "как на уровне",
     "staticSpellAttackBonus": "бонус атаки",
@@ -514,7 +511,8 @@
       "sorcerer": "Чародей",
       "warlock": "Колдун",
       "wizard": "Волшебник",
-      "artificer": "Изобретатель"
+      "artificer": "Изобретатель",
+      "static": "Врождённые"
     },
     "subclasses": {
       "barbarian": {

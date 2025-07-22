@@ -43,26 +43,7 @@ export const SpellsTable = (props) => {
         </Show>
       </div>
       <table class="w-full table first-column-full-width">
-        <thead>
-          <tr>
-            <td />
-            <td />
-          </tr>
-        </thead>
         <tbody>
-          {/*<For each={staticCharacterSpells().filter((item) => item.level === parseInt(props.level))}>
-            {(spell) =>
-              <tr>
-                <td class="py-1">
-                  <p>
-                    {spell.name}
-                  </p>
-                  <p class="text-xs">{renderStaticSpellDescription(spell)}</p>
-                </td>
-                <td />
-              </tr>
-            }
-          </For>*/}
           <For each={props.spells}>
             {(spell) =>
               <tr class="dark:text-snow">
@@ -73,9 +54,6 @@ export const SpellsTable = (props) => {
                   >
                     {spell.name}
                   </p>
-                  {/*<Show when={props.initialSpellClassesList.length > 1 && activeSpellClass() === 'all'}>
-                    <p class="text-xs">{t(`dnd5.classes.${spell.prepared_by}`)}</p>
-                  </Show>*/}
                   <Show when={spell.notes !== null}>
                     <p class="text-xs">{spell.notes}</p>
                   </Show>
