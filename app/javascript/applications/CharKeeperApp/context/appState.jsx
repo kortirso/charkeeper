@@ -19,27 +19,34 @@ export const AppStateProvider = (props) => {
   createEffect(async () => {
     if (appState.accessToken) return;
 
-    const stateDataString = window.__TAURI_INTERNALS__ ? await readStore() : localStorage.getItem(CHARKEEPER_STATE_DATA_KEY);
-    if (stateDataString === null) return;
+    const stateDataString = window.__TAURI_INTERNALS__ ? await readTauriStore() : localStorage.getItem(CHARKEEPER_STATE_DATA_KEY);
+    if (stateDataString === null || stateDataString === undefined) return;
 
     setAppState({ ...appState, ...JSON.parse(stateDataString) });
   });
 
-  const readStore = async () => {
+  const readTauriStore = async () => {
     try {
-      const Store = require('@tauri-apps/plugin-store').Store;
-      const store = await Store.load('settings.json');
+      const { load } = window.__TAURI__.store;
+      const store = await load('settings.json');
       const value = await store.get(CHARKEEPER_STATE_DATA_KEY);
       return value;
-    } catch(e) { return null } // eslint-disable-line no-unused-vars
+    } catch(e) {
+      console.log(e.message);
+      return null;
+    }
   }
 
-  const updateStore = async (payload) => {
+  const updateTauriStore = async (payload) => {
     try {
-      const Store = require('@tauri-apps/plugin-store').Store
-      const store = await Store.load('settings.json')
-      await store.set(CHARKEEPER_STATE_DATA_KEY, JSON.stringify(payload))
-    } catch(e) { return null } // eslint-disable-line no-unused-vars
+      const { load } = window.__TAURI__.store;
+      const store = await load('settings.json');
+      await store.set(CHARKEEPER_STATE_DATA_KEY, payload ? JSON.stringify(payload) : null);
+      await store.save();
+    } catch(e) {
+      console.log(e.message);
+      return null;
+    }
   }
 
   const store = [
@@ -48,13 +55,15 @@ export const AppStateProvider = (props) => {
       changePayload(payload, updateCache = true) {
         if (updateCache) {
           if (window.__TAURI_INTERNALS__ === undefined) localStorage.setItem(CHARKEEPER_STATE_DATA_KEY, JSON.stringify(payload));
-          else updateStore(payload);
+          else updateTauriStore(payload);
         }
-
         setAppState({ ...appState, ...payload });
       },
       setAccessToken(value) {
-        if (value === null) localStorage.removeItem(CHARKEEPER_STATE_DATA_KEY);
+        if (value === null) {
+          if (window.__TAURI_INTERNALS__ === undefined) localStorage.removeItem(CHARKEEPER_STATE_DATA_KEY);
+          else updateTauriStore(null);
+        }
         setAppState({ ...appState, accessToken: value });
       },
       changeUsername(value) {
