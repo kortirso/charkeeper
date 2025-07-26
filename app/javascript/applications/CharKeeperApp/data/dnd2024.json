@@ -91,9 +91,7 @@
       "name": { "en": "Fighter", "ru": "Воин" },
       "subclasses": {
         "battle_master": { "name": { "en": "Battle master", "ru": "Мастер боевых искусств" } },
-        "champion": { "name": { "en": "Champion", "ru": "Чемпион" } },
-        "eldritch_knight": { "name": { "en": "Eldritch Knight,", "ru": "Мистический рыцарь" } },
-        "psi_warrior": { "name": { "en": "Psi Warrior", "ru": "Пси-воин" } }
+        "champion": { "name": { "en": "Champion", "ru": "Чемпион" } }
       }
     },
     "monk": {
