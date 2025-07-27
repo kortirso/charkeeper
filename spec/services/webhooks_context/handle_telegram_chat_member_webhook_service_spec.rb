@@ -24,20 +24,22 @@ describe WebhooksContext::HandleTelegramChatMemberWebhookService do
     context 'for kicked status' do
       let(:status) { 'kicked' }
 
-      it 'updates identity' do
+      it 'updates identity', :aggregate_failures do
         service_call
 
         expect(identity.reload.active).to be_falsy
+        expect(identity.user.reload.discarded_at).not_to be_nil
       end
     end
 
     context 'for member status' do
       let(:status) { 'member' }
 
-      it 'does not update identity' do
+      it 'does not update identity', :aggregate_failures do
         service_call
 
         expect(identity.reload.active).to be_truthy
+        expect(identity.user.reload.discarded_at).to be_nil
       end
     end
   end

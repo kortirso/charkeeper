@@ -25,6 +25,7 @@ module WebhooksContext
       when '/start'
         identity = find_identity(message) || create_identity(message)
         identity.update(active: true) unless identity&.active?
+        identity.user.update(discarded_at: nil)
         send_start_message(message[:from], message[:chat])
       when '/contacts' then send_contacts_message(message[:chat])
       when '/unsubscribe'

@@ -19,10 +19,21 @@ describe WebhooksContext::HandleTelegramMessageWebhookService do
   context 'for existing bot command' do
     let(:text) { '/start' }
 
-    it 'sends response message' do
-      service_call
-
+    it 'sends response message', :aggregate_failures do
+      expect { service_call }.to change(User, :count).by(1)
       expect(client).to have_received(:send_message)
+    end
+
+    context 'for existing deleted user' do
+      let!(:user) { create :user, discarded_at: DateTime.now }
+      let!(:identity) { create :user_identity, user: user, uid: '1', provider: 'telegram', active: false }
+
+      it 'restores user', :aggregate_failures do
+        expect { service_call }.not_to change(User, :count)
+        expect(client).to have_received(:send_message)
+        expect(user.reload.discarded_at).to be_nil
+        expect(identity.reload.active).to be_truthy
+      end
     end
   end
 

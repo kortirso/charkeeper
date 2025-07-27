@@ -4,7 +4,10 @@ module WebhooksContext
   class HandleTelegramChatMemberWebhookService
     def call(chat_member:)
       identity = find_identity(chat_member)
-      identity&.update(active: active?(chat_member))
+      return unless identity
+
+      identity.update(active: active?(chat_member))
+      identity.user.update(discarded_at: DateTime.now) unless active?(chat_member)
     end
 
     private

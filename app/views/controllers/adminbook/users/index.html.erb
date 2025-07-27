@@ -8,8 +8,8 @@
       <td class="pr-2">Provider</td>
       <td class="pr-2">Provider username</td>
       <td class="pr-2">First name</td>
-      <td class="pr-2">Last name</td>
       <td class="pr-2">Active</td>
+      <td class="pr-2">Discarded</td>
       <td class="pr-2">Locale</td>
       <td class="pr-2">Color</td>
       <td>Created</td>
@@ -27,7 +27,7 @@
           <td></td>
           <td></td>
           <td></td>
-          <td></td>
+          <td class="pr-2"><%= user.discarded_at.present? %></td>
           <td class="pr-2"><%= user.locale %></td>
           <td class="pr-2"><%= user.color_schema %></td>
           <td><%= user.created_at.strftime('%d-%m-%Y') %></td>
@@ -42,8 +42,8 @@
             <td class="pr-2"><%= identity.provider %></td>
             <td class="pr-2" class="pr-2"><%= identity.username %></td>
             <td class="pr-2"><%= identity.first_name %></td>
-            <td class="pr-2"><%= identity.last_name %></td>
             <td class="pr-2"><%= identity.active %></td>
+            <td class="pr-2"><%= user.discarded_at.present? %></td>
             <td class="pr-2"><%= user.locale %></td>
             <td class="pr-2"><%= user.color_schema %></td>
             <td><%= user.created_at.strftime('%d-%m-%Y') %></td>
