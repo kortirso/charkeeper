@@ -13,7 +13,7 @@ export const UsernameTab = (props) => {
   const [username, setUsername] = createSignal('');
   const [colorSchema, setColorSchema] = createSignal('');
 
-  const [appState, { changeUsername, changeColorSchema }] = useAppState();
+  const [appState, { changeUserInfo }] = useAppState();
   const [{ renderAlerts }] = useAppAlert();
   const [, dict] = useAppLocale();
 
@@ -30,10 +30,8 @@ export const UsernameTab = (props) => {
 
     const result = await updateUserRequest(appState.accessToken, payload);
 
-    if (result.errors === undefined) {
-      changeUsername(username());
-      changeColorSchema(colorSchema());
-    } else renderAlerts(result.errors);
+    if (result.errors === undefined) changeUserInfo({ username: username(), colorSchema: colorSchema() });
+    else renderAlerts(result.errors);
   }
 
   return (

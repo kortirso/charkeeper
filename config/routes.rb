@@ -67,6 +67,7 @@ Rails.application.routes.draw do
         get 'unread', on: :collection
       end
       resources :monitoring, only: %i[create], module: 'users'
+      resource :info, only: %i[show], module: 'users'
     end
 
     namespace :dnd5 do

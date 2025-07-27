@@ -3,13 +3,13 @@ import { createStore } from 'solid-js/store';
 
 const AppStateContext = createContext();
 
-const CHARKEEPER_STATE_DATA_KEY = 'CharKeeperStateData';
+const CHARKEEPER_ACCESS_TOKEN = 'CharKeeperAccessToken';
 
 export const AppStateProvider = (props) => {
   const [appState, setAppState] = createStore({
+    accessToken: props.accessToken, // eslint-disable-line solid/reactivity
     colorSchema: props.colorSchema || 'light', // eslint-disable-line solid/reactivity
     isAdmin: props.isAdmin || false, // eslint-disable-line solid/reactivity
-    accessToken: props.accessToken, // eslint-disable-line solid/reactivity
     username: props.username, // eslint-disable-line solid/reactivity
     activePage: null,
     activePageParams: {},
@@ -17,19 +17,19 @@ export const AppStateProvider = (props) => {
   });
 
   createEffect(async () => {
-    if (appState.accessToken) return;
+    if (appState.accessToken !== undefined) return;
 
-    const stateDataString = window.__TAURI_INTERNALS__ ? await readTauriStore() : localStorage.getItem(CHARKEEPER_STATE_DATA_KEY);
-    if (stateDataString === null || stateDataString === undefined) return;
+    const stateValue = window.__TAURI_INTERNALS__ ? await readTauriStore() : localStorage.getItem(CHARKEEPER_ACCESS_TOKEN);
+    if (stateValue === null || stateValue === undefined) return;
 
-    setAppState({ ...appState, ...JSON.parse(stateDataString) });
+    setAppState({ ...appState, accessToken: stateValue });
   });
 
   const readTauriStore = async () => {
     try {
       const { load } = window.__TAURI__.store;
       const store = await load('settings.json');
-      const value = await store.get(CHARKEEPER_STATE_DATA_KEY);
+      const value = await store.get(CHARKEEPER_ACCESS_TOKEN);
       return value;
     } catch(e) {
       console.log(e.message);
@@ -37,11 +37,11 @@ export const AppStateProvider = (props) => {
     }
   }
 
-  const updateTauriStore = async (payload) => {
+  const updateTauriStore = async (value) => {
     try {
       const { load } = window.__TAURI__.store;
       const store = await load('settings.json');
-      await store.set(CHARKEEPER_STATE_DATA_KEY, payload ? JSON.stringify(payload) : null);
+      await store.set(CHARKEEPER_ACCESS_TOKEN, value);
       await store.save();
     } catch(e) {
       console.log(e.message);
@@ -52,25 +52,18 @@ export const AppStateProvider = (props) => {
   const store = [
     appState,
     {
-      changePayload(payload, updateCache = true) {
-        if (updateCache) {
-          if (window.__TAURI_INTERNALS__ === undefined) localStorage.setItem(CHARKEEPER_STATE_DATA_KEY, JSON.stringify(payload));
-          else updateTauriStore(payload);
-        }
+      changeUserInfo(payload) {
         setAppState({ ...appState, ...payload });
       },
       setAccessToken(value) {
         if (value === null) {
-          if (window.__TAURI_INTERNALS__ === undefined) localStorage.removeItem(CHARKEEPER_STATE_DATA_KEY);
+          if (window.__TAURI_INTERNALS__ === undefined) localStorage.removeItem(CHARKEEPER_ACCESS_TOKEN);
           else updateTauriStore(null);
+        } else {
+          if (window.__TAURI_INTERNALS__ === undefined) localStorage.setItem(CHARKEEPER_ACCESS_TOKEN, value);
+          else updateTauriStore(value);
         }
         setAppState({ ...appState, accessToken: value });
-      },
-      changeUsername(value) {
-        setAppState({ ...appState, username: value });
-      },
-      changeColorSchema(value) {
-        setAppState({ ...appState, colorSchema: value });
       },
       navigate(page, params) {
         setAppState({ ...appState, activePage: page, activePageParams: params });
