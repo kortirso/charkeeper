@@ -37,7 +37,7 @@ export const SettingsTab = () => {
       <div class="p-4 flex-1 flex flex-col overflow-y-scroll">
         <div class="flex-1">
           {renderSettingsLink(t('pages.settingsPage.profile'), 'profile')}
-          {renderSettingsLink(t('pages.settingsPage.changeLocale'), 'locale')}
+          {renderSettingsLink(t('pages.settingsPage.changePassword'), 'passwords')}
           {renderSettingsLink(t('pages.settingsPage.notifications'), 'notifications')}
           {renderSettingsLink(t('pages.settingsPage.feedback'), 'feedback')}
           <div class="flex py-3 px-4 gap-4">

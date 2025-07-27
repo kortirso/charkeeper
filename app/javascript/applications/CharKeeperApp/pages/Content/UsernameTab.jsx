@@ -1,4 +1,4 @@
-import { Show, createEffect, createSignal } from 'solid-js';
+import { Show, createEffect, createSignal, batch } from 'solid-js';
 import * as i18n from '@solid-primitives/i18n';
 import { createWindowSize } from '@solid-primitives/resize-observer';
 
@@ -12,26 +12,34 @@ export const UsernameTab = (props) => {
 
   const [username, setUsername] = createSignal('');
   const [colorSchema, setColorSchema] = createSignal('');
+  const [localeValue, setLocaleValue] = createSignal(undefined);
 
   const [appState, { changeUserInfo }] = useAppState();
   const [{ renderAlerts }] = useAppAlert();
-  const [, dict] = useAppLocale();
+  const [locale, dict, { setLocale }] = useAppLocale();
 
   const t = i18n.translator(dict);
 
   createEffect(() => {
-    setUsername(appState.username);
-    setColorSchema(appState.colorSchema);
+    batch(() => {
+      setUsername(appState.username);
+      setColorSchema(appState.colorSchema);
+      setLocaleValue(locale());
+    });
   });
 
   const updateProfile = async () => {
-    let payload = { color_schema: colorSchema() };
+    let payload = { color_schema: colorSchema(), locale: localeValue() };
     if (username() !== appState.username) payload = { ...payload, username: username() };
 
     const result = await updateUserRequest(appState.accessToken, payload);
 
-    if (result.errors === undefined) changeUserInfo({ username: username(), colorSchema: colorSchema() });
-    else renderAlerts(result.errors);
+    if (result.errors === undefined) {
+      batch(() => {
+        changeUserInfo({ username: username(), colorSchema: colorSchema() });
+        setLocale(localeValue());
+      });
+    } else renderAlerts(result.errors);
   }
 
   return (
@@ -53,6 +61,13 @@ export const UsernameTab = (props) => {
           labelText={t('pages.settingsPage.username')}
           value={username()}
           onInput={(value) => setUsername(value)}
+        />
+        <Select
+          containerClassList="mb-2"
+          labelText={t('pages.settingsPage.locale')}
+          items={{ 'en': 'English', 'ru': 'Русский' }}
+          selectedValue={localeValue()}
+          onSelect={(value) => setLocaleValue(value)}
         />
         <Select
           containerClassList="mb-4"

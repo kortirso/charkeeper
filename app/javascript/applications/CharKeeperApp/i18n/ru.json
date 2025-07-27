@@ -15,12 +15,13 @@
       "colorSchema": "Цветовая палитра",
       "version": "Версия",
       "title": "Настройки",
-      "changeLocale": "Язык",
+      "changePassword": "Пароль",
       "feedback": "Отзыв",
       "profile": "Профиль",
       "username": "Имя пользователя",
       "socials": "Общество",
-      "notifications": "Уведомления"
+      "notifications": "Уведомления",
+      "locale": "Язык"
     },
     "characterNavigation": {
       "allFilter": "Все",
@@ -269,7 +270,8 @@
     "characterIsUpdated": "Персонаж обновлён",
     "fileSizeLimit": "Размер файла должен быть меньше 1 МБ",
     "invalidSubclassesList": "Необходимо выбрать все подклассы для классов",
-    "feedbackIsAdded": "Отзыв отправлен, большое спасибо за использование ЧарКипера!"
+    "feedbackIsAdded": "Отзыв отправлен, большое спасибо за использование ЧарКипера!",
+    "userIsUpdated": "Пользователь обновлён"
   },
   "charactersPage": {
     "title": "Персонажи",

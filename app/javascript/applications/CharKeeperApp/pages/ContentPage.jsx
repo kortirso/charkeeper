@@ -1,6 +1,6 @@
 import { Switch, Match } from 'solid-js';
 
-import { CharacterTab, LocaleTab, FeedbackTab, UsernameTab, NotificationsTab, HomebrewContentTab } from '../pages';
+import { CharacterTab, PasswordsTab, FeedbackTab, UsernameTab, NotificationsTab, HomebrewContentTab } from '../pages';
 
 import { useAppState } from '../context';
 
@@ -13,8 +13,8 @@ export const ContentPage = (props) => {
         <Match when={appState.activePage === 'character'}>
           <CharacterTab onNavigate={props.onNavigate} />
         </Match>
-        <Match when={appState.activePage === 'locale'}>
-          <LocaleTab onNavigate={props.onNavigate} />
+        <Match when={appState.activePage === 'passwords'}>
+          <PasswordsTab onNavigate={props.onNavigate} />
         </Match>
         <Match when={appState.activePage === 'notifications'}>
           <NotificationsTab onNavigate={props.onNavigate} />
