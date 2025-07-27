@@ -8,12 +8,13 @@ import { useTelegram } from './hooks';
 
 import { fetchAccessTokenRequest } from './requests/fetchAccessTokenRequest';
 import { fetchUnreadNotificationsCountRequest } from './requests/fetchUnreadNotificationsCountRequest';
+import { fetchUserInfoRequest } from './requests/fetchUserInfoRequest';
 
 export const CharKeeperAppContent = () => {
   const size = createWindowSize();
   const { webApp } = useTelegram();
 
-  const [appState, { setAccessToken, navigate, changeUnreadNotificationsCount, changePayload }] = useAppState();
+  const [appState, { setAccessToken, navigate, changeUnreadNotificationsCount, changeUserInfo }] = useAppState();
 
   const [, dict, { setLocale }] = useAppLocale();
 
@@ -45,12 +46,12 @@ export const CharKeeperAppContent = () => {
         if (accessTokenData.access_token) {
           batch(() => {
             setLocale(accessTokenData.locale);
-            changePayload({
-              accessToken: accessTokenData.access_token,
+            setAccessToken(accessTokenData.access_token);
+            changeUserInfo({
               username: accessTokenData.username,
               isAdmin: accessTokenData.admin,
               colorSchema: accessTokenData.color_schema
-            }, false);
+            });
           });
         } else {
           setAccessToken(null);
@@ -68,6 +69,28 @@ export const CharKeeperAppContent = () => {
     Promise.all([fetchUnreadNotificationsCount()]).then(
       ([notificationsCountData]) => {
         if (notificationsCountData.unread !== undefined) changeUnreadNotificationsCount(notificationsCountData.unread);
+      }
+    );
+  });
+
+  createEffect(() => {
+    if (appState.accessToken === undefined || appState.accessToken === null) return;
+    if (appState.username !== undefined) return;
+
+    const fetchUserInfo = async () => await fetchUserInfoRequest(appState.accessToken);
+
+    Promise.all([fetchUserInfo()]).then(
+      ([notificationsCountData, userInfoData]) => {
+        if (userInfoData.errors === undefined) {
+          batch(() => {
+            setLocale(userInfoData.locale);
+            changeUserInfo({
+              username: userInfoData.username,
+              isAdmin: userInfoData.admin,
+              colorSchema: userInfoData.color_schema
+            });
+          });
+        }
       }
     );
   });

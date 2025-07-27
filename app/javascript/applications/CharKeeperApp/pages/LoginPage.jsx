@@ -12,7 +12,7 @@ export const LoginPage = () => {
   const [password, setPassword] = createSignal('');
   const [passwordConfirmation, setPasswordConfirmation] = createSignal('');
 
-  const [, { changePayload }] = useAppState();
+  const [, { changeUserInfo, setAccessToken }] = useAppState();
   const [{ renderAlerts }] = useAppAlert();
   const [, dict, { setLocale }] = useAppLocale();
 
@@ -34,8 +34,8 @@ export const LoginPage = () => {
     if (result.errors === undefined) {
       batch(() => {
         setLocale(result.locale);
-        changePayload({
-          accessToken: result.access_token,
+        setAccessToken(result.access_token);
+        changeUserInfo({
           username: result.username,
           isAdmin: result.admin,
           colorSchema: result.color_schema
