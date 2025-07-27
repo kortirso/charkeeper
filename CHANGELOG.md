@@ -8,6 +8,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Added
 - endpoint for fetching user info
 
+### Modified
+- rendering items in characters list
+
 ## [0.2.7] - 2025-07-22
 ### Added
 - rendering static spells for D&D

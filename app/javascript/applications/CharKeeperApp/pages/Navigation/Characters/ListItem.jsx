@@ -43,9 +43,6 @@ export const CharactersListItem = (props) => {
             <p class="font-cascadia text-lg dark:text-snow" classList={{ 'text-white': props.isActive }}>
               {props.name}
             </p>
-            <span class="text-xs/4 text-gray-400 dark:text-gray-300 ml-2" classList={{ 'text-white': props.isActive }}>
-              {props.provider}
-            </span>
           </div>
           <p class="text-xs/4 text-gray-400 dark:text-gray-300" classList={{ 'text-white': props.isActive }}>
             {props.firstText}

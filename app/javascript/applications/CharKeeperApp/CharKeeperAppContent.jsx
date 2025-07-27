@@ -80,7 +80,7 @@ export const CharKeeperAppContent = () => {
     const fetchUserInfo = async () => await fetchUserInfoRequest(appState.accessToken);
 
     Promise.all([fetchUserInfo()]).then(
-      ([notificationsCountData, userInfoData]) => {
+      ([userInfoData]) => {
         if (userInfoData.errors === undefined) {
           batch(() => {
             setLocale(userInfoData.locale);
