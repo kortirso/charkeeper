@@ -17,31 +17,39 @@
   </thead>
   <tbody>
     <% @users.each_with_index do |user, index| %>
-      <tr>
-        <td class="pr-2"><%= index + 1 %></td>
-        <td class="pr-2"><%= user.id %></td>
-        <td><%= user.username %></td>
-        <% if user.identities.blank? %>
+      <% if user.identities.blank? %>
+        <tr>
+          <td class="pr-2"><%= index + 1 %></td>
+          <td class="pr-2"><%= user.id %></td>
+          <td><%= user.username %></td>
           <td></td>
           <td></td>
           <td></td>
           <td></td>
           <td></td>
           <td></td>
-        <% else %>
-          <% user.identities.each do |identity| %>
+          <td class="pr-2"><%= user.locale %></td>
+          <td class="pr-2"><%= user.color_schema %></td>
+          <td><%= user.created_at.strftime('%d-%m-%Y') %></td>
+        </tr>
+      <% else %>
+        <% user.identities.each do |identity| %>
+          <tr>
+            <td class="pr-2"><%= index + 1 %></td>
+            <td class="pr-2"><%= user.id %></td>
+            <td><%= user.username %></td>
             <td class="pr-2"><%= identity.uid %></td>
             <td class="pr-2"><%= identity.provider %></td>
             <td class="pr-2" class="pr-2"><%= identity.username %></td>
             <td class="pr-2"><%= identity.first_name %></td>
             <td class="pr-2"><%= identity.last_name %></td>
             <td class="pr-2"><%= identity.active %></td>
-          <% end %>
+            <td class="pr-2"><%= user.locale %></td>
+            <td class="pr-2"><%= user.color_schema %></td>
+            <td><%= user.created_at.strftime('%d-%m-%Y') %></td>
+          </tr>
         <% end %>
-        <td class="pr-2"><%= user.locale %></td>
-        <td class="pr-2"><%= user.color_schema %></td>
-        <td><%= user.created_at.strftime('%d-%m-%Y') %></td>
-      </tr>
+      <% end %>
     <% end %>
   </tbody>
 </table>
