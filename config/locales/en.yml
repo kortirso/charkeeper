@@ -35,11 +35,14 @@ en:
         web_description: Simply run %{href}
         web_link: dashboard
         dashboard_link: Dashboard
-        mobile: iOS and Android mobile applications
+        mobile: iOS mobile application
         in_progress: In progress
         macos: MacOS application
         macos_description: Simply download and run %{href}
         macos_link: installer
+        android: Android application
+        android_description: Simply download and run %{href}
+        android_link: installer
         daggerheart:
           title: Daggerheart support
           feature_1: Create characters of standard races/classes, use mixed races or use your own races/classes/subclasses for fully custom characters.

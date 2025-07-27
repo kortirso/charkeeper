@@ -3,32 +3,32 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 @font-face {
+  font-display: block;
   font-family: 'CascadiaMono';
+  font-weight: 500;
   src: url('CascadiaMono-Regular.otf');
 }
 
 @font-face {
-  font-family: 'CascadiaMono-SemiLight';
+  font-display: block;
+  font-family: 'CascadiaMono';
+  font-weight: 400;
   src: url('CascadiaMono-SemiLight.otf');
 }
 
 @font-face {
-  font-family: 'CascadiaMono-Light';
+  font-display: block;
+  font-family: 'CascadiaMono';
+  font-weight: 300;
   src: url('CascadiaMono-Light.otf');
 }
 
 @theme {
-  --font-sans: 'CascadiaMono-Light', 'sans-serif';
-  --font-cascadia-light: 'CascadiaMono-Light', 'sans-serif';
-  --font-cascadia: 'CascadiaMono-SemiLight', 'sans-serif';
-  --font-cascadia-bold: 'CascadiaMono', 'sans-serif';
-
   --breakpoint-emd: 72rem;
   --breakpoint-elg: 88rem;
   --breakpoint-exl: 104rem;
 
   --color-dusty: #474747;
-  /*--color-lava: #F56F10;*/
   --color-snow: #FBFBFB;
   --color-fuzzy-red: #C6515C;
 }
@@ -40,6 +40,11 @@
 @utility blockable {
   @apply bg-white border-2 border-gray-200 rounded-t-lg;
   @apply dark:bg-dusty border dark:border-gray-500;
+}
+
+* {
+  font-family: CascadiaMono;
+  font-weight: 300;
 }
 
 #charkeeper_app_html {
@@ -77,7 +82,7 @@
 }
 
 .btn {
-  @apply py-2 px-4 font-medium cursor-pointer;
+  @apply py-2 px-4 font-normal! cursor-pointer;
 }
 
 .btn-small {
@@ -183,7 +188,7 @@
 }
 
 #character-navigation p {
-  @apply text-xs/6 font-cascadia mx-2 py-2 text-gray-400 cursor-pointer text-nowrap dark:text-gray-300;
+  @apply text-xs/6 font-normal! mx-2 py-2 text-gray-400 cursor-pointer text-nowrap dark:text-gray-300;
 }
 
 #character-navigation p.active {
@@ -219,7 +224,7 @@
 }
 
 .damage-caption p:nth-of-type(1) {
-  @apply flex-1 text-center flex items-center uppercase font-cascadia-bold dark:text-snow py-4 px-2 text-sm md:text-base;
+  @apply flex-1 text-center flex items-center uppercase font-medium! dark:text-snow py-4 px-2 text-sm md:text-base;
 }
 
 .damage-caption p:nth-of-type(2) {
@@ -231,6 +236,6 @@
 }
 
 .damage-threshold p {
-  @apply text-center border border-blue-400 bg-white rounded w-10 py-1 font-cascadia text-lg;
+  @apply text-center border border-blue-400 bg-white rounded w-10 py-1 font-normal! text-lg;
   @apply dark:border-fuzzy-red dark:text-dusty;
 }
