@@ -15,12 +15,13 @@
       "colorSchema": "Color schema",
       "version": "Version",
       "title": "Settings",
-      "changeLocale": "Locale",
+      "changePassword": "Password",
       "feedback": "Feedback",
       "profile": "Profile",
       "username": "Username",
       "socials": "Community links",
-      "notifications": "Notifications"
+      "notifications": "Notifications",
+      "locale": "Locale"
     },
     "characterNavigation": {
       "allFilter": "All",
@@ -269,7 +270,8 @@
     "characterIsUpdated": "Character is updated",
     "fileSizeLimit": "File size should be less than 1 MB",
     "invalidSubclassesList": "You need to select subclasses for all classes",
-    "feedbackIsAdded": "Feedback is added, thank you very much for using CharKeeper!"
+    "feedbackIsAdded": "Feedback is added, thank you very much for using CharKeeper!",
+    "userIsUpdated": "User is updated"
   },
   "charactersPage": {
     "title": "Characters list",
