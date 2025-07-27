@@ -18,14 +18,14 @@ en:
   web:
     welcome:
       index:
-        title: Characters for any tabletop games in one place
+        title: Interactive character sheets for any tabletop games in one place
         description: Create characters for D&D, Pathfinder and/or Daggerheart tabletop games and store them in one place. Charkeeper - mobile character sheets agregator, has automatic calculations of different character attributes and allows to track available features, spells, attacks of your characters.
         features_title: Charkeeper features
         feature_1: Saving characters compatible with D&D 5, Pathfinder 2 and Daggerheart rules.
         feature_2: Account information and saved characters are shared between all devices.
-        feature_3: Easy tracking of health, stress, using equipment and spells.
-        feature_4: Automatic calculation of abilities, skills, available attacks, features.
-        feature_5: And a lot of additional features.
+        feature_3: Uploading avatars for your characters.
+        feature_4: CharKeeper has an adaptive design for easy use on any device with switching between light and dark modes.
+        feature_5: And a lot of additional features specific for game systems.
         work_on: Working on
         telegram: Telegram mini app
         telegram_description: Simply run %{href} in Telegram messenger
@@ -37,6 +37,17 @@ en:
         dashboard_link: Dashboard
         mobile: iOS and Android mobile applications
         in_progress: In progress
+        macos: MacOS application
+        macos_description: Simply download and run %{href}
+        macos_link: installer
+        daggerheart:
+          title: Daggerheart support
+          feature_1: Create characters of standard races/classes, use mixed races or use your own races/classes/subclasses for fully custom characters.
+          feature_2: Edit any stats, experience, equipment, domain cards, levels and classes.
+          feature_3: Automatic calculation of possible attacks depending on equipment.
+          feature_4: Ranger companion management and automatic calculation of druid transformations.
+          feature_5: Account for any bonuses and penalties.
+          feature_6: Automatic calculation of rest effects.
     users:
       auth:
         notice: Authentication succeeds
