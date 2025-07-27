@@ -13,8 +13,16 @@ module UsersContext
         optional(:locale).filled(Locales)
         optional(:username).filled(:string)
         optional(:color_schema).filled(ColorSchemas)
+        optional(:password).filled(:string, min_size?: 10)
+        optional(:password_confirmation).filled(:string, min_size?: 10)
       end
 
+      rule(:password, :password_confirmation).validate(:check_all_or_nothing_present)
+      rule(:password, :password_confirmation) do
+        next if values[:password] == values[:password_confirmation]
+
+        key(:passwords).failure(:different)
+      end
       rule(:username) do
         next if value.blank?
 

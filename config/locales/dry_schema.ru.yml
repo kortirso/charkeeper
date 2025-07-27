@@ -44,9 +44,9 @@ ru:
           kind:
             filled?: Необходимо указать тип способности
           limit:
-            all_or_nothing_present: Лимит должен быть указан, если указано обновление лимита
+            filled?: Лимит должен быть указан
           limit_refresh:
-            all_or_nothing_present: Обновление лимита должно быть указано, если указан лимит
+            filled?: Обновление лимита должно быть указано
       homebrew_race:
         rules:
           name:
@@ -71,8 +71,10 @@ ru:
         rules:
           password:
             filled?: Необходимо указать пароль
+            min_size?: Пароль не может быть короче, чем 10 символов
           password_confirmation:
             filled?: Необходимо подтвердить пароль
+            min_size?: Подтверждение пароля не может быть короче, чем 10 символов
           passwords:
             different: Пароли должны совпадать
           username:

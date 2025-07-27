@@ -51,4 +51,44 @@ describe UsersContext::UpdateCommand do
       end
     end
   end
+
+  context 'for password' do
+    let(:params) { { user: user, password: password, password_confirmation: password_confirmation }.compact }
+    let(:password) { '1234567892' }
+    let(:password_confirmation) { '1234567892' }
+
+    context 'for missing password_confirmation' do
+      let(:password_confirmation) { nil }
+
+      it 'does not update user', :aggregate_failures do
+        expect(command_call[:errors]).not_to be_nil
+        expect(user.reload.authenticate('1234567892')).to be_falsy
+      end
+    end
+
+    context 'for differents passwords' do
+      let(:password_confirmation) { '1234567891' }
+
+      it 'does not update user', :aggregate_failures do
+        expect(command_call[:errors]).not_to be_nil
+        expect(user.reload.authenticate('1234567892')).to be_falsy
+      end
+    end
+
+    context 'for short password' do
+      let(:password) { '123456789' }
+
+      it 'does not update user', :aggregate_failures do
+        expect(command_call[:errors]).not_to be_nil
+        expect(user.reload.authenticate('123456789')).to be_falsy
+      end
+    end
+
+    context 'for valid passwords' do
+      it 'updates user password', :aggregate_failures do
+        expect(command_call[:errors]).to be_nil
+        expect(user.reload.authenticate('1234567892')).to be_truthy
+      end
+    end
+  end
 end

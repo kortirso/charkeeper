@@ -44,9 +44,9 @@ en:
           kind:
             filled?: Kind can't be blank
           limit:
-            all_or_nothing_present: Limit can't be blank if limit refresh is present
+            filled?: Limit can't be blank
           limit_refresh:
-            all_or_nothing_present: Limit refresh can't be blank if limit is present
+            filled?: Limit refresh can't be blank
       homebrew_race:
         rules:
           name:
@@ -71,8 +71,10 @@ en:
         rules:
           password:
             filled?: Password can't be blank
+            min_size?: Password's size cannot be less than 10
           password_confirmation:
             filled?: Password confirmation can't be blank
+            min_size?: Password confirmation's size cannot be less than 10
           passwords:
             different: Passwords must be equal
           username:

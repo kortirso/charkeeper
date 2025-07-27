@@ -53,7 +53,7 @@ describe HomebrewContext::Daggerheart::AddFeatCommand do
 
       it 'does not create feat', :aggregate_failures do
         expect { command_call }.not_to change(Feat, :count)
-        expect(command_call[:errors]).to eq({ limit: ["Limit can't be blank if limit refresh is present"] })
+        expect(command_call[:errors]).to eq({ limit: ["Limit can't be blank"] })
       end
     end
   end

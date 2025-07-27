@@ -21,6 +21,6 @@ class BaseContract < Dry::Validation::Contract
     next if amount_of_present_keys.zero?
     next if amount_of_present_keys == keys.count
 
-    keys.each { |k| key(k).failure(:all_or_nothing_present) unless values.key?(k) && values[k].present? }
+    keys.each { |k| key(k).failure(:filled?) unless values.key?(k) && values[k].present? }
   end
 end
