@@ -65,7 +65,7 @@ export const Pathfinder2Abilities = (props) => {
               <div class="blockable py-4">
                 <p class="text-sm elg:text-[10px] uppercase text-center mb-4 dark:text-white">{ability}</p>
                 <div class="mx-auto flex items-center justify-center">
-                  <p class="text-2xl font-cascadia dark:text-snow">
+                  <p class="text-2xl font-normal! dark:text-snow">
                     {editMode() ? abilitiesData()[slug] : modifier(character().abilities[slug])}
                   </p>
                 </div>

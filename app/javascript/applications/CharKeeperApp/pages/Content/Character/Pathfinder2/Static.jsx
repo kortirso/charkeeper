@@ -20,7 +20,7 @@ export const Pathfinder2Static = (props) => {
               <div class="blockable py-4">
                 <p class="text-sm elg:text-[10px] uppercase text-center mb-4 dark:text-snow">{t(`pathfinder2.static.${slug}`)}</p>
                 <div class="mx-auto flex items-center justify-center">
-                  <p class="text-2xl font-cascadia dark:text-snow">{character()[slug]}</p>
+                  <p class="text-2xl font-normal! dark:text-snow">{character()[slug]}</p>
                 </div>
               </div>
             </div>

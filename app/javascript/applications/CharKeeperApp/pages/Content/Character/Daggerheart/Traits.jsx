@@ -64,7 +64,7 @@ export const DaggerheartTraits = (props) => {
               <div class="blockable py-4">
                 <p class="text-sm elg:text-[10px] uppercase text-center mb-4 dark:text-white">{trait}</p>
                 <div class="mx-auto flex items-center justify-center">
-                  <p class="text-2xl font-cascadia dark:text-snow">
+                  <p class="text-2xl font-normal! dark:text-snow">
                     {editMode() ? traitsData()[slug] : modifier(character().modified_traits[slug])}
                   </p>
                 </div>

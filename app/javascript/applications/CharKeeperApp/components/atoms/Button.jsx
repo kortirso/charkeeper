@@ -5,7 +5,7 @@ export const Button = (props) => {
 
   return (
     <p
-      class={[props.classList, 'rounded cursor-pointer flex justify-center items-center font-cascadia'].join(' ')}
+      class={[props.classList, 'rounded cursor-pointer flex justify-center items-center font-normal!'].join(' ')}
       classList={{
         'min-h-10 min-w-10': props.size === undefined || props.size === 'default',
         'min-h-6 min-w-6 text-sm': props.size === 'small',

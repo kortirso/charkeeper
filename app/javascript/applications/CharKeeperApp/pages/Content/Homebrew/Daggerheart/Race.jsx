@@ -20,7 +20,7 @@ export const DaggerheartRace = (props) => {
         <For each={raceFeats()}>
           {(feat) =>
             <div>
-              <p class="font-cascadia-bold mb-2">{feat.title[locale()]}</p>
+              <p class="font-medium! mb-2">{feat.title[locale()]}</p>
               <p>{feat.description[locale()]}</p>
             </div>
           }

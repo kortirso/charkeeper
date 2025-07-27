@@ -167,7 +167,7 @@ export const DaggerheartCompanion = (props) => {
                   <div class="blockable py-4">
                     <p class="text-sm elg:text-[10px] uppercase text-center mb-4 dark:text-white">{t('daggerheart.companion.evasion')}</p>
                     <div class="mx-auto flex items-center justify-center">
-                      <p class="font-cascadia dark:text-snow">
+                      <p class="font-normal! dark:text-snow">
                         {companion().evasion}
                       </p>
                     </div>
@@ -175,7 +175,7 @@ export const DaggerheartCompanion = (props) => {
                   <div class="blockable py-4">
                     <p class="text-sm elg:text-[10px] uppercase text-center mb-4 dark:text-white">{t('daggerheart.companion.damage')}</p>
                     <div class="mx-auto flex items-center justify-center">
-                      <p class="font-cascadia dark:text-snow">
+                      <p class="font-normal! dark:text-snow">
                         {editDamageMode() ? damageData() : companion().damage}
                       </p>
                     </div>
@@ -189,7 +189,7 @@ export const DaggerheartCompanion = (props) => {
                   <div class="blockable py-4">
                     <p class="text-sm elg:text-[10px] uppercase text-center mb-4 dark:text-white">{t('daggerheart.companion.distance')}</p>
                     <div class="mx-auto flex items-center justify-center">
-                      <p class="font-cascadia dark:text-snow">
+                      <p class="font-normal! dark:text-snow">
                         {editDamageMode() ? distanceData() : companion().distance}
                       </p>
                     </div>

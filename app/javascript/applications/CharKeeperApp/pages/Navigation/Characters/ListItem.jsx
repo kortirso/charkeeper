@@ -40,7 +40,7 @@ export const CharactersListItem = (props) => {
         }}>
         <div class="flex-1">
           <div class="flex">
-            <p class="font-cascadia text-lg dark:text-snow" classList={{ 'text-white': props.isActive }}>
+            <p class="font-normal! text-lg dark:text-snow" classList={{ 'text-white': props.isActive }}>
               {props.name}
             </p>
           </div>

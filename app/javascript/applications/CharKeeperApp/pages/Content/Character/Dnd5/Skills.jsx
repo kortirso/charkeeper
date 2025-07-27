@@ -111,7 +111,7 @@ export const Dnd5Skills = (props) => {
                       </Switch>
                   </Show>
                     <p class="uppercase dark:text-snow mr-4">{skill.ability}</p>
-                    <p class={`flex-1 flex items-center dark:text-snow ${skill.level > 0 ? 'font-cascadia' : ''}`}>
+                    <p class={`flex-1 flex items-center dark:text-snow ${skill.level > 0 ? 'font-normal!' : ''}`}>
                       {config.skills[skill.slug].name[locale()]}
                     </p>
                     <span class="dark:text-snow">{modifier(skill.modifier)}</span>

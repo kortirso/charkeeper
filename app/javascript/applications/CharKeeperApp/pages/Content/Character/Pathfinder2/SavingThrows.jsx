@@ -65,7 +65,7 @@ export const Pathfinder2SavingThrows = (props) => {
                       onToggle={() => updateSavingThrow(slug)}
                     />
                   </Show>
-                  <p class="font-cascadia text-2xl dark:text-snow">{modifier(character().saving_throws_value[slug])}</p>
+                  <p class="font-normal! text-2xl dark:text-snow">{modifier(character().saving_throws_value[slug])}</p>
                 </div>
               </div>
             }

@@ -245,7 +245,7 @@ export const Dnd5Combat = (props) => {
             <For each={Object.entries(dict().damage)}>
               {([slug, damage]) =>
                 <tr>
-                  <td class="font-cascadia-light">{damage}</td>
+                  <td>{damage}</td>
                   <td>
                     <Checkbox
                       checked={damageConditions().vulnerability.includes(slug)}

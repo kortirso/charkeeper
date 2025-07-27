@@ -26,7 +26,7 @@ export const Dnd5SavingThrows = (props) => {
                   {ability.name[locale()]}
                 </p>
                 <div class="flex items-center">
-                  <p class="font-cascadia text-2xl dark:text-snow">{modifier(character().save_dc[slug])}</p>
+                  <p class="font-normal! text-2xl dark:text-snow">{modifier(character().save_dc[slug])}</p>
                 </div>
               </div>
             }

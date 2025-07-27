@@ -48,7 +48,7 @@ export const LoginPage = () => {
 
   return (
     <div class="min-h-screen flex flex-col justify-center items-center">
-      <div class="max-w-sm w-full">
+      <div class="max-w-sm w-full p-4">
         <Switch>
           <Match when={page() === 'signin'}>
             <h2 class="text-2xl mb-4">{t('pages.loginPage.signin')}</h2>

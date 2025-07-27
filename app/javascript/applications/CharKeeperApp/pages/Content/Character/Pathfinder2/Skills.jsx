@@ -99,7 +99,7 @@ export const Pathfinder2Skills = (props) => {
                       />
                     </Show>
                     <p class="uppercase dark:text-snow mr-4">{skill().ability}</p>
-                    <p class={`flex-1 flex items-center dark:text-snow ${skill().level > 0 ? 'font-cascadia' : ''}`}>
+                    <p class={`flex-1 flex items-center dark:text-snow ${skill().level > 0 ? 'font-normal!' : ''}`}>
                       <Show
                         when={editMode() && (skill().slug === 'lore1' || skill().slug === 'lore2')}
                         fallback={skill().name || config.skills[skill().slug].name[locale()]}

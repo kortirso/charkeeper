@@ -603,7 +603,7 @@ export const CharactersTab = () => {
       </Switch>
       <Modal>
         <p class="mb-3 text-xl">{t('charactersPage.deleteCharacterTitle')}</p>
-        <p class="mb-3 font-cascadia-light">{t('deleteCharacterConfirm')}</p>
+        <p class="mb-3">{t('deleteCharacterConfirm')}</p>
         <div class="flex w-full">
           <Button outlined classList='flex-1 mr-2' onClick={closeModal}>{t('cancel')}</Button>
           <Button default classList='flex-1 ml-2' onClick={confirmCharacterDeleting}>{t('delete')}</Button>

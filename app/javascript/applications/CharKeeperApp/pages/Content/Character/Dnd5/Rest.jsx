@@ -76,10 +76,10 @@ export const Dnd5Rest = (props) => {
         <p class="mb-4 dark:text-snow">{t('dndV2.rest.longRestDescription')}</p>
         <div class="flex justify-center items-center">
           <Button default textable classList="flex-1 mr-2" onClick={() => restCharacter({ value: 'short_rest' })}>
-            <span class="font-cascadia-light">{t('rest.shortRest')}</span>
+            <span>{t('rest.shortRest')}</span>
           </Button>
           <Button default textable classList="flex-1 ml-2" onClick={() => restCharacter({ value: 'long_rest' })}>
-            <span class="font-cascadia-light">{t('rest.longRest')}</span>
+            <span>{t('rest.longRest')}</span>
           </Button>
         </div>
       </div>

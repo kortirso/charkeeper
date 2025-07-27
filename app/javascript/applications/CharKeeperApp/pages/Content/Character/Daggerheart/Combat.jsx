@@ -17,7 +17,7 @@ export const DaggerheartCombat = (props) => {
 
     return (
       <div class="p-4 blockable mb-2">
-        <h2 class="text-lg font-cascadia mb-2 dark:text-snow">{title}</h2>
+        <h2 class="text-lg font-normal! mb-2 dark:text-snow">{title}</h2>
         <table class="w-full table first-column-full-width">
           <thead>
             <tr>

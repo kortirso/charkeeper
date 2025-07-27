@@ -108,9 +108,9 @@
       "minor": "Малый урон",
       "major": "Большой урон",
       "severe": "Серьёзный урон",
-      "minorDamage": "Отметить 1 ХП",
-      "majorDamage": "Отметить 2 ХП",
-      "severeDamage": "Отметить 3 ХП",
+      "minorDamage": "1 рана",
+      "majorDamage": "2 раны",
+      "severeDamage": "3 раны",
       "health": "Здоровье",
       "stress": "Стресс",
       "hope": "Надежда"

@@ -91,7 +91,7 @@ export const Dnd5Professions = (props) => {
                     <Checkbox
                       labelText={values.name[locale()]}
                       labelPosition="right"
-                      labelClassList="text-sm ml-4 font-cascadia-light"
+                      labelClassList="text-sm ml-4"
                       checked={character().selected_feats.includes(slug)}
                       onToggle={() => toggleFeat(slug)}
                     />
@@ -107,7 +107,7 @@ export const Dnd5Professions = (props) => {
                     <Checkbox
                       labelText={values.name[locale()]}
                       labelPosition="right"
-                      labelClassList="text-sm ml-4 font-cascadia-light"
+                      labelClassList="text-sm ml-4"
                       checked={character().selected_feats.includes(slug)}
                       onToggle={() => toggleFeat(slug)}
                     />
@@ -123,7 +123,7 @@ export const Dnd5Professions = (props) => {
                     <Checkbox
                       labelText={values.name[locale()]}
                       labelPosition="right"
-                      labelClassList="text-sm ml-4 font-cascadia-light"
+                      labelClassList="text-sm ml-4"
                       checked={character().selected_feats.includes(slug)}
                       onToggle={() => toggleFeat(slug)}
                     />
@@ -141,7 +141,7 @@ export const Dnd5Professions = (props) => {
               <Checkbox
                 labelText={language}
                 labelPosition="right"
-                labelClassList="text-sm ml-4 font-cascadia-light"
+                labelClassList="text-sm ml-4"
                 checked={languagesData().includes(slug)}
                 onToggle={() => toggleLanguage(slug)}
               />
@@ -157,7 +157,7 @@ export const Dnd5Professions = (props) => {
                 <Checkbox
                   labelText={skill}
                   labelPosition="right"
-                  labelClassList="text-sm ml-4 font-cascadia-light"
+                  labelClassList="text-sm ml-4"
                   checked={character().weapon_core_skills.includes(slug)}
                   onToggle={() => toggleWeaponCoreSkill(slug)}
                 />
@@ -170,7 +170,7 @@ export const Dnd5Professions = (props) => {
                 <Checkbox
                   labelText={skill}
                   labelPosition="right"
-                  labelClassList="text-sm ml-4 font-cascadia-light"
+                  labelClassList="text-sm ml-4"
                   checked={character().armor_proficiency.includes(slug)}
                   onToggle={() => toggleArmorCoreSkill(slug)}
                 />
@@ -188,7 +188,7 @@ export const Dnd5Professions = (props) => {
                     <Checkbox
                       labelText={weapon.name}
                       labelPosition="right"
-                      labelClassList="text-sm ml-4 font-cascadia-light"
+                      labelClassList="text-sm ml-4"
                       checked={character().weapon_skills.includes(weapon.slug)}
                       onToggle={() => toggleWeaponSkill(weapon.slug)}
                     />
@@ -204,7 +204,7 @@ export const Dnd5Professions = (props) => {
                     <Checkbox
                       labelText={weapon.name}
                       labelPosition="right"
-                      labelClassList="text-sm ml-4 font-cascadia-light"
+                      labelClassList="text-sm ml-4"
                       checked={character().weapon_skills.includes(weapon.slug)}
                       onToggle={() => toggleWeaponSkill(weapon.slug)}
                     />
@@ -221,7 +221,7 @@ export const Dnd5Professions = (props) => {
                 <Checkbox
                   labelText={tool.name}
                   labelPosition="right"
-                  labelClassList="text-sm ml-4 font-cascadia-light"
+                  labelClassList="text-sm ml-4"
                   checked={toolsData().includes(tool.slug)}
                   onToggle={() => toggleTool(tool.slug)}
                 />
@@ -236,7 +236,7 @@ export const Dnd5Professions = (props) => {
                 <Checkbox
                   labelText={music.name}
                   labelPosition="right"
-                  labelClassList="text-sm ml-4 font-cascadia-light"
+                  labelClassList="text-sm ml-4"
                   checked={musicData().includes(music.slug)}
                   onToggle={() => toggleMusic(music.slug)}
                 />
