@@ -11,6 +11,7 @@ module Frontend
 
       def create
         user_session = User::Session.create!(user: @user)
+        @user.platforms.find_or_create_by!(name: params[:platform]) if params[:platform]
         auth_response(user_session)
       end
 

@@ -17,6 +17,7 @@ module Frontend
         in { errors: errors } then unprocessable_response(errors)
         in { result: result }
           user_session = User::Session.create!(user: result)
+          result.platforms.find_or_create_by!(name: params[:platform]) if params[:platform]
           auth_response(user_session)
         end
       end
