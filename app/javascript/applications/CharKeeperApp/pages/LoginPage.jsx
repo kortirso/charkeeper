@@ -18,15 +18,32 @@ export const LoginPage = () => {
 
   const t = i18n.translator(dict);
 
+  const fetchPlatformData = () => {
+    if (!window.__TAURI_INTERNALS__) return null;
+
+    try {
+      const { platform } = window.__TAURI__.os;
+      return platform();
+    } catch(e) {
+      console.log(e.message);
+      return null;
+    }
+  }
+
   const signUp = async () => {
+    const platformData = fetchPlatformData();
     const result = await signUpRequest(
-      { user: { username: username(), password: password(), password_confirmation: passwordConfirmation() } }
+      {
+        user: { username: username(), password: password(), password_confirmation: passwordConfirmation() },
+        platform: platformData
+      }
     );
     checkSignResult(result);
   }
 
   const signIn = async () => {
-    const result = await signInRequest({ user: { username: username(), password: password() } });
+    const platformData = fetchPlatformData();
+    const result = await signInRequest({ user: { username: username(), password: password() }, platform: platformData });
     checkSignResult(result);
   }
 

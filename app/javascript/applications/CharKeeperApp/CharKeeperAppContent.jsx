@@ -22,6 +22,7 @@ export const CharKeeperAppContent = () => {
 
   createEffect(() => {
     if (appState.accessToken !== undefined) return;
+    if (!appState.initialized) return;
     if (webApp === undefined || webApp.initData === '') return setAccessToken(null);
 
     const urlSearchParams = new URLSearchParams(webApp.initData);
@@ -61,7 +62,7 @@ export const CharKeeperAppContent = () => {
   });
 
   createEffect(() => {
-    if (appState.accessToken === undefined || appState.accessToken === null) return;
+    if (!appState.accessToken) return;
     if (appState.unreadNotificationsCount !== undefined) return;
 
     const fetchUnreadNotificationsCount = async () => await fetchUnreadNotificationsCountRequest(appState.accessToken);
@@ -74,7 +75,7 @@ export const CharKeeperAppContent = () => {
   });
 
   createEffect(() => {
-    if (appState.accessToken === undefined || appState.accessToken === null) return;
+    if (!appState.accessToken) return;
     if (appState.username !== undefined) return;
 
     const fetchUserInfo = async () => await fetchUserInfoRequest(appState.accessToken);

@@ -13,16 +13,19 @@ export const AppStateProvider = (props) => {
     username: props.username, // eslint-disable-line solid/reactivity
     activePage: null,
     activePageParams: {},
-    unreadNotificationsCount: undefined
+    unreadNotificationsCount: undefined,
+    initialized: false
   });
 
   createEffect(async () => {
     if (appState.accessToken !== undefined) return;
 
     const stateValue = window.__TAURI_INTERNALS__ ? await readTauriStore() : localStorage.getItem(CHARKEEPER_ACCESS_TOKEN);
-    if (stateValue === null || stateValue === undefined) return;
+    if (stateValue === null || stateValue === undefined) {
+      return setAppState({ ...appState, initialized: true });
+    }
 
-    setAppState({ ...appState, accessToken: stateValue });
+    setAppState({ ...appState, accessToken: stateValue, initialized: true });
   });
 
   const readTauriStore = async () => {
