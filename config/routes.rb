@@ -8,6 +8,8 @@ Rails.application.routes.draw do
   namespace :adminbook do
     namespace :users do
       resources :notifications, except: %i[show]
+      resources :identities, only: %i[index]
+      resources :platforms, only: %i[index]
     end
     resources :users, only: %i[index]
     resources :feedbacks, only: %i[index]

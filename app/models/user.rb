@@ -13,6 +13,7 @@ class User < ApplicationRecord
   has_many :identities, class_name: 'User::Identity', dependent: :destroy
   has_many :feedbacks, class_name: 'User::Feedback', dependent: :destroy
   has_many :notifications, class_name: 'User::Notification', dependent: :destroy
+  has_many :platforms, class_name: 'User::Platform', dependent: :destroy
   has_many :homebrews, dependent: :destroy
   has_many :feats, dependent: :destroy
   has_many :items, dependent: :destroy

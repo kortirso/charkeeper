@@ -28,10 +28,32 @@ describe Frontend::Users::SigninController do
       end
 
       context 'for valid password' do
-        it 'render access token' do
+        it 'renders access token' do
           post :create, params: { user: { username: user.username, password: user.password } }
 
           expect(response).to have_http_status :created
+        end
+
+        context 'with platform' do
+          let(:request) do
+            post :create, params: { user: { username: user.username, password: user.password }, platform: 'macos' }
+          end
+
+          context 'when platform exists' do
+            before { create :user_platform, user: user, name: 'macos' }
+
+            it 'does not create platform', :aggregate_failures do
+              expect { request }.not_to change(user.platforms, :count)
+              expect(response).to have_http_status :created
+            end
+          end
+
+          context 'when platform does not exist' do
+            it 'creates platform', :aggregate_failures do
+              expect { request }.to change(user.platforms, :count).by(1)
+              expect(response).to have_http_status :created
+            end
+          end
         end
       end
     end

@@ -70,6 +70,15 @@ describe Frontend::Users::SignupController do
         expect(User.last.username).to eq 'user-name'
         expect(response).to have_http_status :created
       end
+
+      context 'with platform' do
+        let(:request) { post :create, params: { user: user_params, platform: 'macos' } }
+
+        it 'creates platform', :aggregate_failures do
+          expect { request }.to change(User::Platform, :count).by(1)
+          expect(response).to have_http_status :created
+        end
+      end
     end
   end
 end
