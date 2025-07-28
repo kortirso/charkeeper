@@ -540,7 +540,7 @@ export const CharactersTab = () => {
                       <Select
                         containerClassList="mb-2"
                         labelText={t('newCharacterPage.daggerheart.secondaryFeature')}
-                        items={heritageFeatures()[0]}
+                        items={heritageFeatures()[1]}
                         selectedValue={characterDaggerheartForm.secondary_feature}
                         onSelect={(value) => setCharacterDaggerheartForm({ ...characterDaggerheartForm, secondary_feature: value })}
                       />

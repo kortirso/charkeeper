@@ -156,13 +156,19 @@ en:
           name:
             key?: Name is required
             filled?: Name must be filled
+          community:
+            key?: Community is required
+            filled?: Community must be filled
           heritage:
             key?: Heritage is required
             filled?: Heritage must be filled
             included_in?: Invalid heritage value
             only_one_present: Too many heritages
             at_least_one_present: Should be at least 1 heritage
+          heritage_features:
+            filled?: Heritage features must be filled
           heritage_name:
+            filled?: Heritage name must be filled
             only_one_present: Too many heritages
             at_least_one_present: Should be at least 1 heritage
           main_class:
@@ -170,6 +176,8 @@ en:
             filled?: Class must be filled
             included_in?: Invalid class value
           subclass:
+            key?: Subclass is required
+            filled?: Subclass must be filled
             invalid: Invalid subclass name
           classes:
             invalid_class_name: Invalid class name
