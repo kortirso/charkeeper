@@ -1,16 +1,14 @@
-import { createSignal, createEffect, Switch, Match, batch, Show, For } from 'solid-js';
+import { createSignal, Switch, Match, batch, Show, For } from 'solid-js';
 import * as i18n from '@solid-primitives/i18n';
 
 import { NewDaggerheartClassForm, DaggerheartClass } from '../../../pages';
 import { ContentWrapper, Button, IconButton, Toggle } from '../../../components';
 import { Close } from '../../../assets';
 import { useAppState, useAppLocale, useAppAlert } from '../../../context';
-import { fetchHomebrewClassesRequest } from '../../../requests/fetchHomebrewClassesRequest';
 import { createHomebrewClassRequest } from '../../../requests/createHomebrewClassRequest';
 import { removeHomebrewClassRequest } from '../../../requests/removeHomebrewClassRequest';
 
 export const HomebrewClasses = (props) => {
-  const [classes, setClasses] = createSignal(undefined);
   const [activeView, setActiveView] = createSignal('left');
 
   const [appState] = useAppState();
@@ -19,27 +17,14 @@ export const HomebrewClasses = (props) => {
 
   const t = i18n.translator(dict);
 
-  createEffect(() => {
-    if (classes() !== undefined) return;
-
-    const fetchClasses = async () => await fetchHomebrewClassesRequest(appState.accessToken, props.provider);
-
-    Promise.all([fetchClasses()]).then(
-      ([classesData]) => {
-        if (classesData.errors) setClasses([]);
-        else setClasses(classesData.specialities);
-      }
-    );
-  });
-
-  const cancenCreatingClass = () => setActiveView('left');
+  const cancelCreatingClass = () => setActiveView('left');
 
   const createClass = async (payload) => {
     const result = await createHomebrewClassRequest(appState.accessToken, props.provider, payload);
 
     if (result.errors === undefined) {
       batch(() => {
-        setClasses(classes().concat(result.speciality));
+        props.addHomebrew('classes', result.speciality);
         setActiveView('left');
       });
     } else renderAlerts(result.errors);
@@ -49,9 +34,8 @@ export const HomebrewClasses = (props) => {
     event.stopPropagation();
 
     const result = await removeHomebrewClassRequest(appState.accessToken, props.provider, id);
-    if (result.errors === undefined) {
-      setClasses(classes().filter((item) => item.id !== id));
-    } else renderAlerts(result.errors);
+    if (result.errors === undefined) props.removeHomebrew('classes', id);
+    else renderAlerts(result.errors);
   }
 
   return (
@@ -63,8 +47,8 @@ export const HomebrewClasses = (props) => {
             <Button default classList="mb-2" onClick={() => setActiveView('right')}>
               {t(`pages.homebrewPage.${props.provider}.newClass`)}
             </Button>
-            <Show when={classes() !== undefined}>
-              <For each={classes()}>
+            <Show when={props.homebrews !== undefined}>
+              <For each={props.homebrews.classes}>
                 {(item) =>
                   <Toggle isOpen title={
                     <div class="flex items-center">
@@ -76,7 +60,7 @@ export const HomebrewClasses = (props) => {
                   }>
                     <Switch>
                       <Match when={props.provider === 'daggerheart'}>
-                        <DaggerheartClass item={item} />
+                        <DaggerheartClass item={item} feats={props.homebrews.feats} />
                       </Match>
                     </Switch>
                   </Toggle>
@@ -89,7 +73,7 @@ export const HomebrewClasses = (props) => {
           <Show when={activeView() === 'right'}>
             <Switch>
               <Match when={props.provider === 'daggerheart'}>
-                <NewDaggerheartClassForm onSave={createClass} onCancel={cancenCreatingClass} />
+                <NewDaggerheartClassForm onSave={createClass} onCancel={cancelCreatingClass} />
               </Match>
             </Switch>
           </Show>

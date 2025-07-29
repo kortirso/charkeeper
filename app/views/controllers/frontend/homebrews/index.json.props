@@ -1,4 +1,4 @@
 json.daggerheart do
-  json.heritages @daggerheart_heritages
+  json.races @daggerheart_heritages
   json.classes @daggerheart_classes
 end

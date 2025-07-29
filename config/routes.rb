@@ -43,6 +43,8 @@ Rails.application.routes.draw do
         resources :items, only: %i[index create destroy]
         resources :specialities, only: %i[index create destroy]
       end
+
+      get ':provider', to: 'list#index'
     end
     resources :homebrews, only: %i[index]
 

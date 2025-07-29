@@ -1,4 +1,4 @@
-import { createSignal, createEffect, Switch, Match, Show } from 'solid-js';
+import { createSignal, createEffect, Switch, Match, Show, batch } from 'solid-js';
 import * as i18n from '@solid-primitives/i18n';
 import { createWindowSize } from '@solid-primitives/resize-observer';
 
@@ -6,11 +6,12 @@ import { HomebrewRaces, HomebrewFeats, HomebrewItems, HomebrewClasses } from '..
 import { PageHeader, IconButton } from '../../components';
 import { Arrow } from '../../assets';
 import { useAppState, useAppLocale } from '../../context';
-import { fetchHomebrewsRequest } from '../../requests/fetchHomebrewsRequest';
+import { fetchHomebrewsListRequest } from '../../requests/fetchHomebrewsListRequest';
 
 export const HomebrewContentTab = (props) => {
   const size = createWindowSize();
 
+  const [lastProvider, setLastProvider] = createSignal(null);
   const [homebrews, setHomebrews] = createSignal(undefined);
 
   const [appState] = useAppState();
@@ -18,17 +19,29 @@ export const HomebrewContentTab = (props) => {
 
   const t = i18n.translator(dict);
 
+  const fetchHomebrewsList = async (provider) => await fetchHomebrewsListRequest(appState.accessToken, provider);
+
   createEffect(() => {
-    if (homebrews() !== undefined) return;
+    if (!appState.activePageParams.provider) return;
+    if (appState.activePageParams.provider === lastProvider()) return;
 
-    const fetchHomebrews = async () => await fetchHomebrewsRequest(appState.accessToken);
-
-    Promise.all([fetchHomebrews()]).then(
+    Promise.all([fetchHomebrewsList(appState.activePageParams.provider)]).then(
       ([homebrewsData]) => {
-        setHomebrews(homebrewsData);
+        batch(() => {
+          setLastProvider(appState.activePageParams.provider);
+          setHomebrews(homebrewsData);
+        });
       }
     );
   });
+
+  const addHomebrew = (key, value) => {
+    setHomebrews({ ...homebrews(), [key]: homebrews()[key].concat([value]) });
+  }
+
+  const removeHomebrew = (key, valueId) => {
+    setHomebrews({ ...homebrews(), [key]: homebrews()[key].slice().filter((item) => item.id !== valueId) });
+  }
 
   return (
     <>
@@ -47,16 +60,31 @@ export const HomebrewContentTab = (props) => {
         <Match when={appState.activePageParams.provider === 'daggerheart'}>
           <Switch>
             <Match when={appState.activePageParams.content === 'races'}>
-              <HomebrewRaces provider="daggerheart" />
+              <HomebrewRaces
+                provider="daggerheart"
+                homebrews={homebrews()}
+                addHomebrew={addHomebrew}
+                removeHomebrew={removeHomebrew}
+              />
+            </Match>
+            <Match when={appState.activePageParams.content === 'classes'}>
+              <HomebrewClasses
+                provider="daggerheart"
+                homebrews={homebrews()}
+                addHomebrew={addHomebrew}
+                removeHomebrew={removeHomebrew}
+              />
             </Match>
             <Match when={appState.activePageParams.content === 'feats'}>
-              <HomebrewFeats provider="daggerheart" homebrews={homebrews()} />
+              <HomebrewFeats
+                provider="daggerheart"
+                homebrews={homebrews()}
+                addHomebrew={addHomebrew}
+                removeHomebrew={removeHomebrew}
+              />
             </Match>
             <Match when={appState.activePageParams.content === 'items'}>
               <HomebrewItems provider="daggerheart" homebrews={homebrews()} />
-            </Match>
-            <Match when={appState.activePageParams.content === 'classes'}>
-              <HomebrewClasses provider="daggerheart" />
             </Match>
           </Switch>
         </Match>
