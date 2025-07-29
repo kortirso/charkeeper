@@ -11,6 +11,11 @@ module DaggerheartCharacter
         result[:traits] = { 'str' => -1, 'agi' => 0, 'fin' => 1, 'ins' => 2, 'pre' => 1, 'know' => 0 }
         result
       end
+
+      def equip(character:)
+        Character::Item.create(character: character, item: Daggerheart::Item.find_by(slug: 'dualstaff'), ready_to_use: true)
+        Character::Item.create(character: character, item: Daggerheart::Item.find_by(slug: 'gambeson_armor'), ready_to_use: true)
+      end
     end
   end
 end

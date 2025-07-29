@@ -352,7 +352,7 @@ export const CharactersTab = () => {
                 containerClassList="mb-2"
                 classList="w-full"
                 labelText={t('newCharacterPage.platform')}
-                items={{ 'dnd5': 'D&D 5', 'dnd2024': 'D&D 2024', 'pathfinder2': 'Pathfinder 2', 'daggerheart': 'Daggerheart' }}
+                items={{ 'dnd5': 'D&D 5', 'dnd2024': 'D&D 2024', 'daggerheart': 'Daggerheart', 'pathfinder2': 'Pathfinder 2' }}
                 selectedValue={platform()}
                 onSelect={(value) => setPlatform(value)}
               />

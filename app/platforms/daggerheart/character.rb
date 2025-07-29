@@ -23,7 +23,7 @@ module Daggerheart
     attribute :hope_max, :integer, default: 6
     attribute :evasion, :integer, default: 10
     attribute :spent_armor_slots, :integer, default: 0
-    attribute :gold, array: true, default: { 'coins' => 0, 'handfuls' => 0, 'bags' => 0, 'chests' => 0 }
+    attribute :gold, array: true, default: { 'coins' => 0, 'handfuls' => 1, 'bags' => 0, 'chests' => 0 }
     attribute :leveling,
               array: true,
               default: { 'health' => 0, 'stress' => 0, 'evasion' => 0, 'proficiency' => 0, 'domain_cards' => 0 }

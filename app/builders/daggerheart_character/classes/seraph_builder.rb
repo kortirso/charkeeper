@@ -11,6 +11,12 @@ module DaggerheartCharacter
         result[:traits] = { 'str' => 2, 'agi' => 0, 'fin' => 0, 'ins' => 1, 'pre' => 1, 'know' => -1 }
         result
       end
+
+      def equip(character:)
+        Character::Item.create(character: character, item: Daggerheart::Item.find_by(slug: 'hallowed_axe'), ready_to_use: true)
+        Character::Item.create(character: character, item: Daggerheart::Item.find_by(slug: 'round_shield'), ready_to_use: true)
+        Character::Item.create(character: character, item: Daggerheart::Item.find_by(slug: 'chainmail_armor'), ready_to_use: true)
+      end
     end
   end
 end

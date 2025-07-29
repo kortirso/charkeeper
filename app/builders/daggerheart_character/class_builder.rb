@@ -6,6 +6,10 @@ module DaggerheartCharacter
       class_builder(result[:main_class]).call(result: result)
     end
 
+    def equip(character:)
+      class_builder(character.data.main_class).equip(character: character)
+    end
+
     private
 
     def class_builder(main_class)
