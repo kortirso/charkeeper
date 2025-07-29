@@ -100,7 +100,9 @@ export const DaggerheartCompanion = (props) => {
   }
 
   const updateCompanion = async (payload, callback = null) => {
-    const result = await updateCompanionRequest(appState.accessToken, character().provider, character().id, { companion: payload });
+    const result = await updateCompanionRequest(
+      appState.accessToken, character().provider, character().id, { companion: payload }
+    );
 
     if (result.errors === undefined) {
       batch(() => {
