@@ -70,6 +70,7 @@ module CharactersContext
 
         attach_avatar_by_file.call({ character: character, file: input[:avatar_file] }) if input[:avatar_file]
         attach_avatar_by_url.call({ character: character, url: input[:avatar_url] }) if input[:avatar_url]
+        add_starting_equipment(character)
 
         { result: character }
       end
@@ -77,6 +78,10 @@ module CharactersContext
       def decorate_fresh_character(data)
         DaggerheartCharacter::BaseBuilder.new.call(result: data)
           .then { |result| DaggerheartCharacter::ClassBuilder.new.call(result: result) }
+      end
+
+      def add_starting_equipment(character)
+        DaggerheartCharacter::ClassBuilder.new.equip(character: character)
       end
     end
   end
