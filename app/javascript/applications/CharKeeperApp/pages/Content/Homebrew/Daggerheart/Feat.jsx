@@ -7,7 +7,12 @@ export const DaggerheartFeat = (props) => {
 
   const featOriginValue = createMemo(() => {
     if (props.homebrews === undefined) return '';
-    if (props.feat.origin === 'ancestry') return props.homebrews.daggerheart.heritages[props.feat.origin_value].name[locale()]
+    if (props.feat.origin === 'ancestry') {
+      return props.homebrews.races.find((item) => item.id === props.feat.origin_value)?.name;
+    }
+    if (props.feat.origin === 'class') {
+      return props.homebrews.classes.find((item) => item.id === props.feat.origin_value)?.name;
+    }
 
     return '';
   });

@@ -13,7 +13,7 @@ describe 'Homebrews' do
       expect(response).to have_http_status :ok
 
       daggerheart_breweries = response.parsed_body['daggerheart']
-      expect(daggerheart_breweries['heritages']).to(
+      expect(daggerheart_breweries['races']).to(
         eq({ daggerheart_race.id => { 'name' => { 'en' => 'Race', 'ru' => 'Race' } } })
       )
     end

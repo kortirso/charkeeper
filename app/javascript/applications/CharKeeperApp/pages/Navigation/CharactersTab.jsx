@@ -87,7 +87,7 @@ export const CharactersTab = () => {
   const daggerheartHeritages = createMemo(() => {
     if (homebrews() === undefined) return [];
 
-    return { ...daggerheartConfig.heritages, ...homebrews().daggerheart.heritages };
+    return { ...daggerheartConfig.heritages, ...homebrews().daggerheart.races };
   });
 
   const mainAbilityOptions = createMemo(() => {

@@ -32,7 +32,7 @@ export const HomebrewItems = (props) => {
     );
   });
 
-  const cancenCreatingItem = () => setActiveView('left');
+  const cancelCreatingItem = () => setActiveView('left');
 
   const createItem = async (payload) => {
     const result = await createHomebrewItemRequest(appState.accessToken, props.provider, payload);
@@ -89,7 +89,7 @@ export const HomebrewItems = (props) => {
           <Show when={activeView() === 'right'}>
             <Switch>
               <Match when={props.provider === 'daggerheart'}>
-                <NewDaggerheartItemForm homebrews={props.homebrews} onSave={createItem} onCancel={cancenCreatingItem} />
+                <NewDaggerheartItemForm homebrews={props.homebrews} onSave={createItem} onCancel={cancelCreatingItem} />
               </Match>
             </Switch>
           </Show>

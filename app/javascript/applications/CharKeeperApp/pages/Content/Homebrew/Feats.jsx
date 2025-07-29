@@ -1,16 +1,14 @@
-import { createSignal, createEffect, Switch, Match, batch, Show, For } from 'solid-js';
+import { createSignal, Switch, Match, batch, Show, For } from 'solid-js';
 import * as i18n from '@solid-primitives/i18n';
 
 import { NewDaggerheartFeatForm, DaggerheartFeat } from '../../../pages';
 import { ContentWrapper, Button, IconButton, Toggle } from '../../../components';
 import { Close } from '../../../assets';
 import { useAppState, useAppLocale, useAppAlert } from '../../../context';
-import { fetchHomebrewFeatsRequest } from '../../../requests/fetchHomebrewFeatsRequest';
 import { createHomebrewFeatRequest } from '../../../requests/createHomebrewFeatRequest';
 import { removeHomebrewFeatRequest } from '../../../requests/removeHomebrewFeatRequest';
 
 export const HomebrewFeats = (props) => {
-  const [feats, setFeats] = createSignal(undefined);
   const [activeView, setActiveView] = createSignal('left');
 
   const [appState] = useAppState();
@@ -19,27 +17,14 @@ export const HomebrewFeats = (props) => {
 
   const t = i18n.translator(dict);
 
-  createEffect(() => {
-    if (feats() !== undefined) return;
-
-    const fetchFeats = async () => await fetchHomebrewFeatsRequest(appState.accessToken, props.provider);
-
-    Promise.all([fetchFeats()]).then(
-      ([featsData]) => {
-        if (featsData.errors) setFeats([]);
-        else setFeats(featsData.feats);
-      }
-    );
-  });
-
-  const cancenCreatingFeat = () => setActiveView('left');
+  const cancelCreatingFeat = () => setActiveView('left');
 
   const createFeat = async (payload) => {
     const result = await createHomebrewFeatRequest(appState.accessToken, props.provider, payload);
 
     if (result.errors === undefined) {
       batch(() => {
-        setFeats(feats().concat(result.feat));
+        props.addHomebrew('feats', result.feat);
         setActiveView('left');
       });
     } else renderAlerts(result.errors);
@@ -49,9 +34,8 @@ export const HomebrewFeats = (props) => {
     event.stopPropagation();
 
     const result = await removeHomebrewFeatRequest(appState.accessToken, props.provider, id);
-    if (result.errors === undefined) {
-      setFeats(feats().filter((item) => item.id !== id));
-    } else renderAlerts(result.errors);
+    if (result.errors === undefined) props.removeHomebrew('feats', id);
+    else renderAlerts(result.errors);
   }
 
   return (
@@ -63,8 +47,8 @@ export const HomebrewFeats = (props) => {
             <Button default classList="mb-2" onClick={() => setActiveView('right')}>
               {t(`pages.homebrewPage.${props.provider}.newFeat`)}
             </Button>
-            <Show when={feats() !== undefined}>
-              <For each={feats()}>
+            <Show when={props.homebrews !== undefined}>
+              <For each={props.homebrews.feats}>
                 {(feat) =>
                   <Toggle isOpen title={
                     <div class="flex items-center">
@@ -89,7 +73,7 @@ export const HomebrewFeats = (props) => {
           <Show when={activeView() === 'right'}>
             <Switch>
               <Match when={props.provider === 'daggerheart'}>
-                <NewDaggerheartFeatForm homebrews={props.homebrews} onSave={createFeat} onCancel={cancenCreatingFeat} />
+                <NewDaggerheartFeatForm homebrews={props.homebrews} onSave={createFeat} onCancel={cancelCreatingFeat} />
               </Match>
             </Switch>
           </Show>

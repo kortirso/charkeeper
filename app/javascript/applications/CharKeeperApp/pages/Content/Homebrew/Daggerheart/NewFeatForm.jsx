@@ -4,7 +4,6 @@ import * as i18n from '@solid-primitives/i18n';
 
 import { Input, TextArea, Select, Button } from '../../../../components';
 import { useAppLocale } from '../../../../context';
-import { translate } from '../../../../helpers';
 
 export const NewDaggerheartFeatForm = (props) => {
   const [featForm, setFeatForm] = createStore({
@@ -17,20 +16,21 @@ export const NewDaggerheartFeatForm = (props) => {
     limit_refresh: null
   });
 
-  const [locale, dict] = useAppLocale();
+  const [, dict] = useAppLocale();
 
   const t = i18n.translator(dict);
 
   const daggerheartHeritages = createMemo(() => {
     if (props.homebrews === undefined) return [];
 
-    return props.homebrews.daggerheart.heritages;
+    return props.homebrews.races.reduce((acc, item) => { acc[item.id] = item.name; return acc; }, {});
   });
+
 
   const daggerheartClasses = createMemo(() => {
     if (props.homebrews === undefined) return [];
 
-    return props.homebrews.daggerheart.classes;
+    return props.homebrews.classes.reduce((acc, item) => { acc[item.id] = item.name; return acc; }, {});
   });
 
   const originValues = createMemo(() => {
@@ -66,7 +66,7 @@ export const NewDaggerheartFeatForm = (props) => {
         <Select
           containerClassList="mb-2"
           labelText={t('pages.homebrewPage.daggerheart.originValue')}
-          items={translate(originValues(), locale())}
+          items={originValues()}
           selectedValue={featForm.origin_value}
           onSelect={(value) => setFeatForm({ ...featForm, origin_value: value })}
         />
