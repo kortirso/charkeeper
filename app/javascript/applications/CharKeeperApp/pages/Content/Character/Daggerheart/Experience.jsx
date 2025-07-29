@@ -1,10 +1,9 @@
 import { createSignal, createEffect, For, Show, batch } from 'solid-js';
 import * as i18n from '@solid-primitives/i18n';
-import { Key } from '@solid-primitives/keyed';
 
-import { Button, Input, ErrorWrapper, EditWrapper } from '../../../../components';
+import { Button, Input, ErrorWrapper, Toggle } from '../../../../components';
 import { useAppState, useAppLocale, useAppAlert } from '../../../../context';
-import { Plus, Close } from '../../../../assets';
+import { Plus, Minus, Close } from '../../../../assets';
 import { updateCharacterRequest } from '../../../../requests/updateCharacterRequest';
 import { modifier } from '../../../../helpers';
 
@@ -12,7 +11,9 @@ export const DaggerheartExperience = (props) => {
   const object = () => props.object;
 
   const [lastActiveObjectId, setLastActiveObjectId] = createSignal(undefined);
+  const [isOpen, setIsOpen] = createSignal(false);
   const [editMode, setEditMode] = createSignal(false);
+  const [name, setName] = createSignal('');
   const [experienceData, setExperienceData] = createSignal(object().experience);
 
   const [appState] = useAppState();
@@ -30,102 +31,117 @@ export const DaggerheartExperience = (props) => {
     });
   });
 
+  const enterEditMode = (e) => {
+    e.stopPropagation();
+
+    batch(() => {
+      setIsOpen(true);
+      setEditMode(true);
+    });
+  }
+
   const cancelEditing = () => {
     batch(() => {
-      setExperienceData(object().experience);
+      setName('');
       setEditMode(false);
     });
   }
 
-  const updateCharacter = async () => {
-    const payload = { experience: experienceData() };
+  const toggleClick = () => setIsOpen(!isOpen());
 
+  const addExperience = () => {
+    const payload = experienceData().concat({ id: Math.floor(Math.random() * 1000), exp_name: name(), exp_level: 0 });
+    setExperienceData(payload);
+    saveExperience({ experience: payload });
+  }
+
+  const removeExperience = (expId) => {
+    const payload = experienceData().filter((item) => item.id !== expId);
+    setExperienceData(payload);
+    saveExperience({ experience: payload });
+  }
+
+  const changeExperience = (exp, value) => {
+    if (exp.exp_level === 0 && value === -1) return;
+
+    const payload = experienceData().slice().map((item) => {
+      if (exp.id !== item.id) return item;
+
+      return { ...item, exp_level: exp.exp_level + value };
+    });
+    setExperienceData(payload);
+    saveExperience({ experience: payload });
+  }
+
+  const saveExperience = async (payload) => {
     let result;
     if (props.callback) {
       await props.callback(payload);
-      setEditMode(false);
+      cancelEditing();
     } else {
       result = await updateCharacterRequest(
-        appState.accessToken, object().provider, object().id, { character: payload }
+        appState.accessToken, object().provider, object().id, { character: payload, only_head: true }
       );
 
       if (result.errors === undefined) {
         batch(() => {
-          if (props.callback) props.onReplaceCharacter(result.character);
-          setEditMode(false);
+          props.onReplaceCharacter(payload);
+          cancelEditing();
         });
       } else renderAlerts(result.errors);
     }
   }
 
-  const addDraftExperience = () => {
-    setExperienceData(experienceData().concat({ id: Math.floor(Math.random() * 1000), exp_name: '', exp_level: 1 }));
-  }
-
-  const removeExperience = (expId) => setExperienceData(experienceData().filter((item) => item.id !== expId));
-
-  const changeExperience = (expId, attribute, value) => {
-    const result = experienceData().slice().map((item) => {
-      if (expId !== item.id) return item;
-
-      return { ...item, [attribute]: value }
-    });
-    setExperienceData(result);
-  }
-
   return (
     <ErrorWrapper payload={{ character_id: object().id, key: 'DaggerheartExperience' }}>
-      <EditWrapper
-        editMode={editMode()}
-        onSetEditMode={setEditMode}
-        onCancelEditing={cancelEditing}
-        onSaveChanges={updateCharacter}
-      >
-        <div class="blockable p-4 mt-2">
-          <h2 class="text-lg dark:text-snow">{t('daggerheart.experience.title')}</h2>
-          <Show
-            when={editMode()}
-            fallback={
-              <For each={object().experience}>
-                {(exp) =>
-                  <div class="flex mt-2 dark:text-snow">
-                    <p class="mr-4">{exp.exp_name}</p>
-                    <p>{modifier(exp.exp_level)}</p>
-                  </div>
-                }
-              </For>
-            }
-          >
-            <Key each={experienceData()} by={item => item.id}>
-              {(exp) =>
-                <div class="flex mt-2">
-                  <Input
-                    containerClassList="flex-1 mr-4"
-                    value={exp().exp_name}
-                    onInput={(value) => changeExperience(exp().id, 'exp_name', value)}
-                  />
-                  <Input
-                    numeric
-                    containerClassList="w-1/4"
-                    value={exp().exp_level}
-                    onInput={(value) => changeExperience(exp().id, 'exp_level', value)}
-                  />
-                  <div class="flex flex-col justify-center">
-                    <Button default size="small" classList="ml-4" onClick={() => removeExperience(exp().id)}>
-                      <Close />
-                    </Button>
-                  </div>
-                </div>
-              }
-            </Key>
-            <div class="flex mt-2">
-              <Button default size="small" onClick={addDraftExperience}>
+      <Toggle
+        disabled
+        isOpenByParent={isOpen() || editMode()}
+        onParentClick={toggleClick}
+        title={
+          <div class="flex justify-between items-center">
+            <h2 class="flex-1 text-lg dark:text-snow">{t('daggerheart.experience.title')}</h2>
+            <Show when={!editMode()}>
+              <Button default size="small" onClick={(e) => enterEditMode(e)}>
                 <Plus />
               </Button>
-            </div>
-          </Show>
+            </Show>
+          </div>
+        }
+      >
+        <div class="experiences">
+          <For each={object().experience}>
+            {(exp) =>
+              <div class="experience">
+                <p class="flex-1">{exp.exp_name}</p>
+                <div class="flex ml-4">
+                  <Button default size="small" classList="opacity-75" onClick={() => changeExperience(exp, -1)}>
+                    <Minus />
+                  </Button>
+                  <p class="mx-2 w-6 text-center">{modifier(exp.exp_level)}</p>
+                  <Button default size="small" classList="opacity-75" onClick={() => changeExperience(exp, 1)}>
+                    <Plus />
+                  </Button>
+                </div>
+                <Button default size="small" classList="ml-4 opacity-75" onClick={() => removeExperience(exp.id)}>
+                  <Close />
+                </Button>
+              </div>
+            }
+          </For>
         </div>
-      </EditWrapper>
+        <Show when={editMode()}>
+          <div class="flex items-center gap-2 mt-4">
+            <Input
+              containerClassList="flex-1"
+              value={name()}
+              onInput={(value) => setName(value)}
+            />
+            <Button outlined onClick={cancelEditing}><Minus /></Button>
+            <Button default onClick={addExperience}><Plus /></Button>
+          </div>
+        </Show>
+      </Toggle>
     </ErrorWrapper>
   );
 }
