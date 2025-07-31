@@ -9,12 +9,24 @@ module Dnd2024Character
         @class_save_dc ||= main_class == 'barbarian' ? CLASS_SAVE_DC : __getobj__.class_save_dc
       end
 
+      def speed
+        @speed ||= __getobj__.speed + speed_modifier
+      end
+
       def armor_class
         @armor_class ||=
           defense_gear[:armor].nil? ? [__getobj__.armor_class, barbarian_armor_class].max : __getobj__.armor_class
       end
 
       private
+
+      def class_level
+        @class_level ||= classes['barbarian']
+      end
+
+      def speed_modifier
+        class_level >= 5 ? 10 : 0
+      end
 
       def barbarian_armor_class
         10 + modifiers['dex'] + modifiers['con'] + defense_gear.dig(:shield, :items_info, 'ac').to_i
