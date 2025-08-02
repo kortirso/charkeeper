@@ -41,7 +41,17 @@
       "abilities": "Abilities",
       "professions": "Mastery",
       "spells": "Spells",
-      "companion": "Companion"
+      "companion": "Companion",
+      "ancestry": "Ancestry",
+      "community": "Community",
+      "class": "Class",
+      "subclass": "Subclass",
+      "beastform": "Beastform",
+      "race": "Race",
+      "subrace": "Subrace",
+      "species": "Species",
+      "legacy": "Legacy",
+      "feat": "Feat"
     },
     "homebrewPage": {
       "title": "Homebrew",
@@ -80,7 +90,9 @@
       "feats": {
         "origins": {
           "ancestry": "Ancestry",
-          "class": "Class"
+          "community": "Community",
+          "class": "Class",
+          "subclass": "Subclass"
         },
         "kinds": {
           "static": "Static text",
@@ -393,7 +405,7 @@
     "cantrips": "Cantrips",
     "known": "Known",
     "prepared": "Prepared",
-    "proficiencyBonus": "Proficiency bonus",
+    "proficiencyBonus": "Proficiency",
     "hitDices": "Hit dices"
   },
   "weaponDamageType": {

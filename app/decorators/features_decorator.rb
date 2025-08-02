@@ -15,7 +15,7 @@ class FeaturesDecorator
     end
   end
 
-  # rubocop: disable Metrics/AbcSize
+  # rubocop: disable Metrics/AbcSize, Metrics/MethodLength
   def features
     @features ||=
       available_features.filter_map do |feature|
@@ -35,11 +35,12 @@ class FeaturesDecorator
           used_count: feature.used_count,
           limit_refresh: feature.feat.limit_refresh,
           options: feature.feat.options,
-          value: feature.value
+          value: feature.value,
+          origin: feature.feat.origin
         }.compact
       end
   end
-  # rubocop: enable Metrics/AbcSize
+  # rubocop: enable Metrics/AbcSize, Metrics/MethodLength
 
   private
 

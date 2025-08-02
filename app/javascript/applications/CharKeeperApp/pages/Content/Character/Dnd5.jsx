@@ -46,6 +46,37 @@ export const Dnd5 = (props) => {
   const toolsFilter = (item) => item.kind === 'tools';
   const musicFilter = (item) => item.kind === 'music';
 
+  const raceFilter = (item) => item.origin === 'race';
+  const subraceFilter = (item) => item.origin === 'subrace';
+  const speciesFilter = (item) => item.origin === 'species';
+  const legacyFilter = (item) => item.origin === 'legacy';
+  const classFilter = (item) => item.origin === 'class';
+  const subclassFilter = (item) => item.origin === 'subclass';
+  const featFilter = (item) => item.origin === 'feat';
+
+  const featDnd5Filters = createMemo(() => {
+    const result = [{ title: 'race', callback: raceFilter }];
+
+    if (character().subrace) result.push({ title: 'subrace', callback: subraceFilter });
+    result.push({ title: 'class', callback: classFilter });
+    if (character().subclasses.length > 0) result.push({ title: 'subclass', callback: subclassFilter });
+
+    return result;
+  });
+
+  const featDnd2024Filters = createMemo(() => {
+    const result = [{ title: 'species', callback: speciesFilter }];
+
+    if (character().legacy) result.push({ title: 'legacy', callback: legacyFilter });
+    result.push({ title: 'class', callback: classFilter });
+    if (character().subclasses.length > 0) result.push({ title: 'subclass', callback: subclassFilter });
+    result.push({ title: 'feat', callback: featFilter });
+
+    return result;
+  });
+
+  const featFilters = createMemo(() => character().provider === 'dnd5' ? featDnd5Filters() : featDnd2024Filters());
+
   const mobileView = createMemo(() => {
     if (size.width >= 1152) return <></>;
 
@@ -70,7 +101,7 @@ export const Dnd5 = (props) => {
                 <Dnd5Skills character={character()} onReplaceCharacter={props.onReplaceCharacter} />
               </div>
               <div class="mt-4">
-                <Feats character={character()} onReplaceCharacter={props.onReplaceCharacter} />
+                <Feats character={character()} filters={featFilters()} onReplaceCharacter={props.onReplaceCharacter} />
               </div>
             </Match>
             <Match when={activeMobileTab() === 'combat'}>
@@ -170,7 +201,7 @@ export const Dnd5 = (props) => {
                 onReplaceCharacter={props.onReplaceCharacter}
               />
               <div class="mt-4">
-                <Feats character={character()} onReplaceCharacter={props.onReplaceCharacter} />
+                <Feats character={character()} filters={featFilters()} onReplaceCharacter={props.onReplaceCharacter} />
               </div>
             </Match>
             <Match when={activeTab() === 'rest'}>
