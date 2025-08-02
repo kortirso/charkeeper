@@ -41,7 +41,17 @@
       "abilities": "Способности",
       "professions": "Владения",
       "spells": "Заклинания",
-      "companion": "Питомец"
+      "companion": "Питомец",
+      "ancestry": "Раса",
+      "community": "Общество",
+      "class": "Класс",
+      "subclass": "Подкласс",
+      "beastform": "Звериная форма",
+      "race": "Раса",
+      "subrace": "Подраса",
+      "species": "Вид",
+      "legacy": "Подвид",
+      "feat": "Навык"
     },
     "homebrewPage": {
       "title": "Homebrew",
@@ -80,7 +90,9 @@
       "feats": {
         "origins": {
           "ancestry": "Раса",
-          "class": "Класс"
+          "community": "Общество",
+          "class": "Класс",
+          "subclass": "Подкласс"
         },
         "kinds": {
           "static": "Вывод описания",

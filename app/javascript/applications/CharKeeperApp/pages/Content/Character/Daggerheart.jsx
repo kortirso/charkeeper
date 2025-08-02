@@ -26,6 +26,24 @@ export const Daggerheart = (props) => {
   const itemsFilter = (item) => item.kind.includes('item');
   const consumablesFilter = (item) => item.kind.includes('consumable');
 
+  const ancestryFilter = (item) => item.origin === 'ancestry';
+  const communityFilter = (item) => item.origin === 'community';
+  const classFilter = (item) => item.origin === 'class';
+  const subclassFilter = (item) => item.origin === 'subclass';
+  const beastformFilter = (item) => item.origin === 'beastform';
+
+  const featFilters = createMemo(() => {
+    const result = [
+      { title: 'ancestry', callback: ancestryFilter },
+      { title: 'community', callback: communityFilter },
+      { title: 'class', callback: classFilter },
+      { title: 'subclass', callback: subclassFilter }
+    ];
+
+    if (character().beastforms.length > 0) result.push({ title: 'beastform', callback: beastformFilter });
+    return result;
+  });
+
   const mobileView = createMemo(() => {
     if (size.width >= 1152) return <></>;
 
@@ -47,7 +65,7 @@ export const Daggerheart = (props) => {
                 <DaggerheartBeastform character={character()} onReplaceCharacter={props.onReplaceCharacter} />
               </div>
               <div class="mt-4">
-                <Feats character={character()} onReplaceCharacter={props.onReplaceCharacter} />
+                <Feats character={character()} filters={featFilters()} onReplaceCharacter={props.onReplaceCharacter} />
               </div>
             </Match>
             <Match when={activeMobileTab() === 'combat'}>
@@ -122,7 +140,7 @@ export const Daggerheart = (props) => {
           <DaggerheartBeastform character={character()} onReplaceCharacter={props.onReplaceCharacter} />
         </div>
         <div class="mt-4">
-          <Feats character={character()} onReplaceCharacter={props.onReplaceCharacter} />
+          <Feats character={character()} filters={featFilters()} onReplaceCharacter={props.onReplaceCharacter} />
         </div>
       </>
     );

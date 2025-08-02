@@ -3,8 +3,8 @@
 module Dnd2024
   class Feat < Feat
     SPECIES_ORIGIN = 'species'
-    CLASS_ORIGIN = 'class'
     LEGACY_ORIGIN = 'legacy'
+    CLASS_ORIGIN = 'class'
     SUBCLASS_ORIGIN = 'subclass'
     FEAT_ORIGIN = 'feat'
 
