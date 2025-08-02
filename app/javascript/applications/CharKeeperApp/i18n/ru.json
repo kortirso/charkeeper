@@ -90,9 +90,7 @@
       "feats": {
         "origins": {
           "ancestry": "Раса",
-          "community": "Общество",
-          "class": "Класс",
-          "subclass": "Подкласс"
+          "class": "Класс"
         },
         "kinds": {
           "static": "Вывод описания",

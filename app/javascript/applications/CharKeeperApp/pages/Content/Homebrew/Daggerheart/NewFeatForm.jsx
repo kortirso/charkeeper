@@ -3,7 +3,9 @@ import { createStore } from 'solid-js/store';
 import * as i18n from '@solid-primitives/i18n';
 
 import { Input, TextArea, Select, Button } from '../../../../components';
+import config from '../../../../data/daggerheart.json';
 import { useAppLocale } from '../../../../context';
+import { translate } from '../../../../helpers';
 
 export const NewDaggerheartFeatForm = (props) => {
   const [featForm, setFeatForm] = createStore({
@@ -16,21 +18,22 @@ export const NewDaggerheartFeatForm = (props) => {
     limit_refresh: null
   });
 
-  const [, dict] = useAppLocale();
+  const [locale, dict] = useAppLocale();
 
   const t = i18n.translator(dict);
 
   const daggerheartHeritages = createMemo(() => {
-    if (props.homebrews === undefined) return [];
+    const result = translate(config.heritages, locale());
+    if (props.homebrews === undefined) return result;
 
-    return props.homebrews.races.reduce((acc, item) => { acc[item.id] = item.name; return acc; }, {});
+    return { ...result, ...props.homebrews.races.reduce((acc, item) => { acc[item.id] = item.name; return acc; }, {}) };
   });
 
-
   const daggerheartClasses = createMemo(() => {
-    if (props.homebrews === undefined) return [];
+    const result = translate(config.classes, locale());
+    if (props.homebrews === undefined) return result;
 
-    return props.homebrews.classes.reduce((acc, item) => { acc[item.id] = item.name; return acc; }, {});
+    return { ...result, ...props.homebrews.classes.reduce((acc, item) => { acc[item.id] = item.name; return acc; }, {}) };
   });
 
   const originValues = createMemo(() => {

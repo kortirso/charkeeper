@@ -90,9 +90,7 @@
       "feats": {
         "origins": {
           "ancestry": "Ancestry",
-          "community": "Community",
-          "class": "Class",
-          "subclass": "Subclass"
+          "class": "Class"
         },
         "kinds": {
           "static": "Static text",

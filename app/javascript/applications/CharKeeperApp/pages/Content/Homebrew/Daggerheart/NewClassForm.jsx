@@ -4,6 +4,7 @@ import * as i18n from '@solid-primitives/i18n';
 import { Input, Button, Select } from '../../../../components';
 import { useAppLocale } from '../../../../context';
 import config from '../../../../data/daggerheart.json';
+import { translate } from '../../../../helpers';
 
 export const NewDaggerheartClassForm = (props) => {
   const [classForm, setClassForm] = createStore({
@@ -49,7 +50,7 @@ export const NewDaggerheartClassForm = (props) => {
         multi
         containerClassList="mb-4"
         labelText={t('pages.homebrewPage.daggerheart.domains')}
-        items={Object.fromEntries(Object.entries(config.domains).map(([key, values]) => [key, values.name[locale()]]))}
+        items={translate(config.domains, locale())}
         selectedValues={classForm.domains}
         onSelect={(value) => updateMultiFeatureValue(value)}
       />

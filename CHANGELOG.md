@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## Unreleased
 ### Modified
 - grouping features by origin
+- adding homebrew feats for default races/classes
 
 ## [0.2.11] - 2025-07-29
 ### Added

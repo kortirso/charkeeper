@@ -1,5 +1,6 @@
 import { createMemo } from 'solid-js';
 
+import config from '../../../../data/daggerheart.json';
 import { useAppLocale } from '../../../../context';
 
 export const DaggerheartFeat = (props) => {
@@ -8,10 +9,12 @@ export const DaggerheartFeat = (props) => {
   const featOriginValue = createMemo(() => {
     if (props.homebrews === undefined) return '';
     if (props.feat.origin === 'ancestry') {
-      return props.homebrews.races.find((item) => item.id === props.feat.origin_value)?.name;
+      const defaultRace = config.heritages[props.feat.origin_value];
+      return props.homebrews.races.find((item) => item.id === props.feat.origin_value)?.name || (defaultRace ? defaultRace.name[locale()] : '');
     }
     if (props.feat.origin === 'class') {
-      return props.homebrews.classes.find((item) => item.id === props.feat.origin_value)?.name;
+      const defaultClass = config.classes[props.feat.origin_value];
+      return props.homebrews.classes.find((item) => item.id === props.feat.origin_value)?.name || (defaultClass ? defaultClass.name[locale()] : '');
     }
 
     return '';
