@@ -68,7 +68,7 @@ module Dnd5Character
     end
 
     def attacks
-      @attacks ||= [unarmed_attack] + weapon_attacks
+      @attacks ||= [unarmed_attack] + weapon_attacks.compact
     end
 
     def conditions
