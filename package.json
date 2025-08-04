@@ -1,6 +1,6 @@
 {
   "name": "charkeeper",
-  "version": "0.2.11",
+  "version": "0.2.12",
   "private": "false",
   "type": "module",
   "browser": true,
