@@ -278,7 +278,6 @@ export const CharactersTab = () => {
                         isActive={character.id == appState.activePageParams.id}
                         avatar={character.avatar}
                         name={character.name}
-                        provider='D&D 5'
                         firstText={`${t('charactersPage.level')} ${character.level} | ${character.subrace ? t(`dnd5.subraces.${character.race}.${character.subrace}`) : t(`dnd5.races.${character.race}`)}`}
                         secondText={Object.keys(character.classes).map((item) => t(`dnd5.classes.${item}`)).join(' * ')}
                         onClick={() => navigate('character', { id: character.id })}
@@ -290,7 +289,6 @@ export const CharactersTab = () => {
                         isActive={character.id == appState.activePageParams.id}
                         avatar={character.avatar}
                         name={character.name}
-                        provider='D&D 2024'
                         firstText={`${t('charactersPage.level')} ${character.level} | ${character.legacy ? dnd2024Config.species[character.species].legacies[character.legacy].name[locale()] : dnd2024Config.species[character.species].name[locale()]}`}
                         secondText={Object.keys(character.classes).map((item) => dnd2024Config.classes[item].name[locale()]).join(' * ')}
                         onClick={() => navigate('character', { id: character.id })}
@@ -302,7 +300,6 @@ export const CharactersTab = () => {
                         isActive={character.id == appState.activePageParams.id}
                         avatar={character.avatar}
                         name={character.name}
-                        provider='Pathfinder 2'
                         firstText={`${t('charactersPage.level')} ${character.level} | ${character.subrace ? pathfinder2Config.races[character.race].subraces[character.subrace].name[locale()] : pathfinder2Config.races[character.race].name[locale()]}`}
                         secondText={Object.keys(character.classes).map((item) => pathfinder2Config.classes[item].name[locale()]).join(' * ')}
                         onClick={() => navigate('character', { id: character.id })}
@@ -314,10 +311,10 @@ export const CharactersTab = () => {
                         isActive={character.id == appState.activePageParams.id}
                         avatar={character.avatar}
                         name={character.name}
-                        provider='Daggerheart'
                         firstText={`${t('charactersPage.level')} ${character.level} | ${character.heritage ? daggerheartHeritages()[character.heritage].name[locale()] : character.heritage_name}`}
                         secondText={Object.keys(character.classes).map((item) => daggerheartConfig.classes[item].name[locale()]).join(' * ')}
                         onClick={() => navigate('character', { id: character.id })}
+                        onViewClick={() => navigate('characterView', { id: character.id })}
                         onDeleteCharacter={(e) => deleteCharacter(e, character.id)}
                       />
                     </Match>

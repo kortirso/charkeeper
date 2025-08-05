@@ -18,9 +18,14 @@ export const CharactersListItem = (props) => {
     setIsOpen(!isOpen());
   }
 
+  const viewClick = (event) => {
+    event.stopPropagation();
+    props.onViewClick();
+  }
+
   return (
     <div
-      class="p-4 pb-0 pr-0 flex items-center cursor-pointer"
+      class="p-4 pb-0 pr-0 flex items-center cursor-pointer relative"
       classList={{
         'bg-white hover:bg-gray-100 dark:bg-neutral-800 dark:hover:bg-dusty': !props.isActive,
         'bg-blue-400 dark:bg-fuzzy-red': props.isActive
@@ -65,6 +70,11 @@ export const CharactersListItem = (props) => {
           </Show>
         </div>
       </div>
+      <Show when={props.onViewClick}>
+        <p class="absolute bottom-0 right-0 px-2 py-1 dark:text-snow" onClick={(e) => viewClick(e)}>
+          PDF
+        </p>
+      </Show>
     </div>
   );
 }
