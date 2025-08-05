@@ -72,6 +72,10 @@ gem 'csv'
 # Use Active Model has_secure_password [https://guides.rubyonrails.org/active_model_basics.html#securepassword]
 gem 'bcrypt', '~> 3.1.7'
 
+# PDF generating
+gem 'combine_pdf'
+gem 'prawn'
+
 group :development, :test do
   gem 'rubocop', '~> 1.35', require: false
   gem 'rubocop-factory_bot', '~> 2.0', require: false

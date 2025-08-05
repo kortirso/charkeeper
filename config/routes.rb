@@ -123,6 +123,7 @@ Rails.application.routes.draw do
       end
 
       resource :dashboard, only: %i[show]
+      resources :characters, only: %i[show]
     end
 
     root 'web/welcome#index'
