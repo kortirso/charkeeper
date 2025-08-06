@@ -105,6 +105,8 @@ Rails.application.routes.draw do
       end
       resources :spells, only: %i[index]
     end
+
+    resources :campaigns, only: %i[index]
   end
 
   namespace :webhooks do

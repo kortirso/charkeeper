@@ -1,5 +1,5 @@
 class AddProviderToCampaigns < ActiveRecord::Migration[8.0]
   def change
-    add_column :campaigns, :type, :string, null: false
+    add_column :campaigns, :provider, :string, null: false
   end
 end

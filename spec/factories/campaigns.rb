@@ -6,19 +6,19 @@ FactoryBot.define do
     user
 
     trait :dnd5 do
-      type { 'Dnd5::Campaign' }
+      provider { 'dnd5' }
     end
 
     trait :dnd2024 do
-      type { 'Dnd2024::Campaign' }
+      provider { 'dnd2024' }
     end
 
     trait :daggerheart do
-      type { 'Daggerheart::Campaign' }
+      provider { 'daggerheart' }
     end
 
     trait :pathfinder2 do
-      type { 'Pathfinder2::Campaign' }
+      provider { 'pathfinder2' }
     end
   end
 end

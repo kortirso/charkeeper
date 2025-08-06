@@ -57,7 +57,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_08_06_081540) do
     t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "type", null: false
+    t.string "provider", null: false
     t.index ["user_id"], name: "index_campaigns_on_user_id"
   end
 
