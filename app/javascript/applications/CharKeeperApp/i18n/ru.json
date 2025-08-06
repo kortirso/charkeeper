@@ -81,6 +81,18 @@
         "maxHealth": "Начальное здоровье",
         "domains": "Домены"
       }
+    },
+    "campaignsPage": {
+      "title": "Кампании",
+      "newTitle": "Новая кампания",
+      "provider": "Платформа",
+      "name": "Название",
+      "onDeleteCampaign": "Удалить",
+      "deleteCampaignTitle": "Удаление кампании",
+      "confirmDeleting": "Вы точно хотите удалить эту кампанию?",
+      "idForSearch": "Чтобы игроки нашли вашу кампанию, они могут использовать следующий ID для поиска",
+      "join": "Присоединиться к кампании",
+      "selectCharacterForJoining": "Выберите персонажа для присоединения к кампании"
     }
   },
   "daggerheart": {

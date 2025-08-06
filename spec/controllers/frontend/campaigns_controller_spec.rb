@@ -49,7 +49,7 @@ describe Frontend::CampaignsController do
         end
       end
 
-      context 'for user character' do
+      context 'for user campaign' do
         before { campaign.update!(user: user_session.user) }
 
         it 'renders campaign' do
@@ -111,7 +111,7 @@ describe Frontend::CampaignsController do
         end
       end
 
-      context 'for user character' do
+      context 'for user campaign' do
         let(:request) { delete :destroy, params: { id: campaign.id, charkeeper_access_token: access_token } }
 
         before { campaign.update!(user: user_session.user) }

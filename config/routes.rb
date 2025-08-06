@@ -106,7 +106,9 @@ Rails.application.routes.draw do
       resources :spells, only: %i[index]
     end
 
-    resources :campaigns, only: %i[index show create destroy]
+    resources :campaigns, only: %i[index show create destroy] do
+      resource :join, only: %i[show create destroy], module: :campaigns
+    end
   end
 
   namespace :webhooks do
@@ -126,6 +128,10 @@ Rails.application.routes.draw do
 
       resource :dashboard, only: %i[show]
       resources :characters, only: %i[show]
+
+      resources :campaigns, only: %i[] do
+        resource :join, only: %i[show], module: :campaigns
+      end
     end
 
     root 'web/welcome#index'

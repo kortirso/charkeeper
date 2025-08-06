@@ -9,7 +9,7 @@ module Frontend
     before_action :find_campaign, only: %i[show destroy]
 
     def index
-      serialize_relation(campaigns, ::CampaignSerializer, :campaigns)
+      serialize_relation(campaigns, ::CampaignSerializer, :campaigns, { except: %i[characters] })
     end
 
     def show
@@ -19,7 +19,7 @@ module Frontend
     def create
       case add_service.call(create_params.merge(user: current_user))
       in { errors: errors } then unprocessable_response(errors)
-      in { result: result } then serialize_resource(result, ::CampaignSerializer, :campaign, {}, :created)
+      in { result: result } then serialize_resource(result, ::CampaignSerializer, :campaign, { except: %i[characters] }, :created)
       end
     end
 
