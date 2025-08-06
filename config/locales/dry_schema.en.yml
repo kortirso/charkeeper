@@ -11,6 +11,13 @@ en:
         rules:
           options:
             too_many_expectations: Select only 2 options
+      campaign:
+        rules:
+          name:
+            filled?: Name can't be blank
+            max_size?: Name's size cannot be greater than 50
+          provider:
+            filled?: Provider can't be blank
       homebrew_speciality:
         rules:
           name:

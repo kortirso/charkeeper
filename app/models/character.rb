@@ -13,6 +13,9 @@ class Character < ApplicationRecord
   has_many :feats, class_name: '::Character::Feat', dependent: :destroy
   has_one :companion, class_name: '::Character::Companion', dependent: :destroy
 
+  has_many :campaign_characters, class_name: 'Campaign::Character', dependent: :destroy
+  has_many :campaigns, through: :campaign_characters
+
   scope :dnd, -> { where(type: %w[Dnd5::Character Dnd2024::Character]) }
   scope :dnd5, -> { where(type: 'Dnd5::Character') }
   scope :dnd2024, -> { where(type: 'Dnd2024::Character') }

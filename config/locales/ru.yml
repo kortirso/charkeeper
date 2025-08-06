@@ -1,4 +1,5 @@
 ru:
+  forbidden: Доступ запрещён
   not_found: Запись не найдена
   change_locale: Изменить локаль
   validation_error: Ошибка валидации

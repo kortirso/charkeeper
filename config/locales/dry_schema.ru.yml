@@ -11,6 +11,13 @@ ru:
         rules:
           options:
             too_many_expectations: Выберите только 2 варианта
+      campaign:
+        rules:
+          name:
+            filled?: Необходимо указать название
+            max_size?: Название не может быть длиннее, чем 50 символов
+          provider:
+            filled?: Необходимо указать систему
       homebrew_speciality:
         rules:
           name:

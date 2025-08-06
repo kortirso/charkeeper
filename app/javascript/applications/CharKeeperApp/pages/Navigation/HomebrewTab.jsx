@@ -25,7 +25,6 @@ export const HomebrewTab = () => {
     </p>
   );
 
-
   return (
     <>
       <PageHeader>

@@ -78,6 +78,9 @@ module Charkeeper
     register('commands.homebrew_context.daggerheart.add_item') { HomebrewContext::Daggerheart::AddItemCommand.new }
     register('commands.homebrew_context.daggerheart.add_speciality') { HomebrewContext::Daggerheart::AddSpecialityCommand.new }
 
+    register('commands.campaigns_context.add_campaign') { CampaignsContext::AddCampaignCommand.new }
+    register('commands.campaigns_context.join_campaign') { CampaignsContext::JoinCampaignCommand.new }
+
     # services
     register('services.auth_context.validate_web_telegram_signature') { AuthContext::WebTelegramSignatureValidateService.new }
     register('services.webhooks_context.handle_telegram_message_webhook') {
