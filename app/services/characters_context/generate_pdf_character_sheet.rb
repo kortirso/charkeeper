@@ -24,7 +24,6 @@ module CharactersContext
         page << CombinePDF.parse(pdf_data).pages[0]
       end
 
-      pdf.save "#{character.name}.pdf"
       pdf
     end
   end
