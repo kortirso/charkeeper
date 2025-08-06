@@ -28,4 +28,100 @@ describe Frontend::CampaignsController do
       end
     end
   end
+
+  describe 'GET#show' do
+    context 'for logged users' do
+      let!(:campaign) { create :campaign, :daggerheart }
+
+      context 'for unexisting campaign' do
+        it 'returns error' do
+          get :show, params: { id: 'unexisting', charkeeper_access_token: access_token }
+
+          expect(response).to have_http_status :not_found
+        end
+      end
+
+      context 'for not user campaign' do
+        it 'returns error' do
+          get :show, params: { id: campaign.id, charkeeper_access_token: access_token }
+
+          expect(response).to have_http_status :not_found
+        end
+      end
+
+      context 'for user character' do
+        before { campaign.update!(user: user_session.user) }
+
+        it 'renders campaign' do
+          get :show, params: { id: campaign.id, charkeeper_access_token: access_token }
+
+          expect(response).to have_http_status :ok
+        end
+      end
+    end
+  end
+
+  describe 'POST#create' do
+    context 'for logged users' do
+      let(:request) {
+        post :create, params: { campaign: { name: name, provider: 'daggerheart' }, charkeeper_access_token: access_token }
+      }
+
+      context 'for invalid params' do
+        let(:name) { '' }
+
+        it 'does not create campaign', :aggregate_failures do
+          expect { request }.not_to change(Campaign, :count)
+          expect(response).to have_http_status :unprocessable_entity
+        end
+      end
+
+      context 'for valid params' do
+        let(:name) { 'Homunculus fight' }
+
+        it 'creates campaign', :aggregate_failures do
+          expect { request }.to change(user_session.user.campaigns, :count).by(1)
+          expect(response).to have_http_status :created
+        end
+      end
+    end
+  end
+
+  describe 'DELETE#destroy' do
+    context 'for logged users' do
+      let!(:campaign) { create :campaign, :daggerheart }
+
+      context 'for unexisting campaign' do
+        it 'returns error' do
+          delete :destroy, params: { id: 'unexisting', charkeeper_access_token: access_token }
+
+          expect(response).to have_http_status :not_found
+        end
+      end
+
+      context 'for not user campaign' do
+        let!(:character) { create :character, :daggerheart, user: user_session.user }
+
+        before { create :campaign_character, campaign: campaign, character: character }
+
+        it 'returns error' do
+          delete :destroy, params: { id: campaign.id, charkeeper_access_token: access_token }
+
+          expect(response).to have_http_status :forbidden
+        end
+      end
+
+      context 'for user character' do
+        let(:request) { delete :destroy, params: { id: campaign.id, charkeeper_access_token: access_token } }
+
+        before { campaign.update!(user: user_session.user) }
+
+        it 'deletes campaign', :aggregate_failures do
+          expect { request }.to change(Campaign, :count).by(-1)
+          expect(response).to have_http_status :ok
+          expect(response.parsed_body).to eq({ 'result' => 'ok' })
+        end
+      end
+    end
+  end
 end

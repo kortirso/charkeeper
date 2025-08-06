@@ -82,7 +82,7 @@ describe Frontend::Homebrews::RacesController do
           expect(response.parsed_body).to eq({ 'result' => 'ok' })
         end
 
-        context 'when character exists with deletinh ancestry' do
+        context 'when character exists with deleting ancestry' do
           let!(:character) { create :character, :daggerheart, user: user_session.user }
 
           before do

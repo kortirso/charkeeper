@@ -17,6 +17,8 @@ class ApplicationController < ActionController::Base
     )
   end
 
+  rescue_from ActionPolicy::Unauthorized, with: :access_denied
+
   def not_found = page_not_found
 
   # rubocop: disable Lint/UselessMethodDefinition

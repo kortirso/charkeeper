@@ -12,12 +12,16 @@ module Frontend
       render json: { result: :ok }, status: :ok
     end
 
+    def access_denied
+      render json: { errors: [t('forbidden')] }, status: :forbidden, formats: [:json] # 403
+    end
+
     def page_not_found
-      render json: { errors: [t('not_found')] }, status: :not_found
+      render json: { errors: [t('not_found')] }, status: :not_found # 404
     end
 
     def unprocessable_response(errors)
-      render json: { errors: errors }, status: :unprocessable_entity
+      render json: { errors: errors }, status: :unprocessable_entity # 422
     end
   end
 end
