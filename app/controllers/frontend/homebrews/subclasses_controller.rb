@@ -4,15 +4,9 @@ module Frontend
   module Homebrews
     class SubclassesController < Frontend::BaseController
       include Deps[add_daggerheart_subclass: 'commands.homebrew_context.daggerheart.add_subclass']
-      include SerializeRelation
       include SerializeResource
 
-      before_action :find_subclasses, only: %i[index]
       before_action :find_subclass, only: %i[destroy]
-
-      def index
-        serialize_relation(@subclasses, serializer, :subclasses)
-      end
 
       def create
         case add_service.call(create_params.merge(user: current_user))
@@ -27,10 +21,6 @@ module Frontend
       end
 
       private
-
-      def find_subclasses
-        @subclasses = subclasses_relation.where(user_id: current_user.id).distinct
-      end
 
       def find_subclass
         @subclass = subclasses_relation.find_by!(id: params[:id], user_id: current_user.id)
