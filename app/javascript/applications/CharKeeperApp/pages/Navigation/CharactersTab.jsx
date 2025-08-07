@@ -85,9 +85,25 @@ export const CharactersTab = () => {
   }
 
   const daggerheartHeritages = createMemo(() => {
-    if (homebrews() === undefined) return [];
+    if (homebrews() === undefined) return {};
 
     return { ...daggerheartConfig.heritages, ...homebrews().daggerheart.races };
+  });
+
+  const daggerheartClasses = createMemo(() => {
+    if (homebrews() === undefined) return {};
+
+    return { ...daggerheartConfig.classes, ...homebrews().daggerheart.classes };
+  });
+
+  const daggerheartSubclasses = createMemo(() => {
+    if (!characterDaggerheartForm.main_class) return {};
+    if (homebrews() === undefined) return {};
+
+    return {
+      ...(daggerheartConfig.classes[characterDaggerheartForm.main_class]?.subclasses || {}),
+      ...(homebrews().daggerheart.subclasses[characterDaggerheartForm.main_class] || {})
+    };
   });
 
   const mainAbilityOptions = createMemo(() => {
@@ -312,7 +328,7 @@ export const CharactersTab = () => {
                         avatar={character.avatar}
                         name={character.name}
                         firstText={`${t('charactersPage.level')} ${character.level} | ${character.heritage ? daggerheartHeritages()[character.heritage].name[locale()] : character.heritage_name}`}
-                        secondText={Object.keys(character.classes).map((item) => daggerheartConfig.classes[item].name[locale()]).join(' * ')}
+                        secondText={Object.keys(character.classes).map((item) => daggerheartClasses()[item].name[locale()]).join(' * ')}
                         onClick={() => navigate('character', { id: character.id })}
                         onViewClick={() => navigate('characterView', { id: character.id })}
                         onDeleteCharacter={(e) => deleteCharacter(e, character.id)}
@@ -552,15 +568,15 @@ export const CharactersTab = () => {
                     <Select
                       containerClassList="mb-2"
                       labelText={t('newCharacterPage.daggerheart.mainClass')}
-                      items={translate(daggerheartConfig.classes, locale())}
+                      items={translate(daggerheartClasses(), locale())}
                       selectedValue={characterDaggerheartForm.main_class}
                       onSelect={(value) => setCharacterDaggerheartForm({ ...characterDaggerheartForm, main_class: value, subclass: undefined })}
                     />
-                    <Show when={daggerheartConfig.classes[characterDaggerheartForm.main_class]?.subclasses}>
+                    <Show when={characterDaggerheartForm.main_class}>
                       <Select
                         containerClassList="mb-2"
                         labelText={t('newCharacterPage.daggerheart.subclass')}
-                        items={translate(daggerheartConfig.classes[characterDaggerheartForm.main_class].subclasses, locale())}
+                        items={translate(daggerheartSubclasses(), locale())}
                         selectedValue={characterDaggerheartForm.subclass}
                         onSelect={(value) => setCharacterDaggerheartForm({ ...characterDaggerheartForm, subclass: value })}
                       />

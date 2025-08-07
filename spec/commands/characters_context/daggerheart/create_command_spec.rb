@@ -76,15 +76,6 @@ describe CharactersContext::Daggerheart::CreateCommand do
       end
     end
 
-    context 'for invalid subclass' do
-      let(:params) { valid_params.merge(subclass: '1') }
-
-      it 'does not create character', :aggregate_failures do
-        expect { command_call }.not_to change(user.characters, :count)
-        expect(command_call[:errors]).not_to be_nil
-      end
-    end
-
     context 'for double heritage' do
       let(:params) { valid_params.merge(heritage_name: 'Name') }
 

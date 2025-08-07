@@ -70,15 +70,25 @@ module CharactersContext
           text_box character.name, at: [174, 732], width: 150
           text_box character.heritage ? ::Daggerheart::Character.heritage_info(character.heritage).dig('name', I18n.locale.to_s) : character.heritage_name, at: [164, 713], width: 150
 
-          classes = character.subclasses.map { |key, value|
-            ::Daggerheart::Character.subclass_info(key, value).dig('name', I18n.locale.to_s)
-          }.join('/')
+          classes = character.subclasses.map { |key, value| "#{class_name(key)} - #{subclass_name(key, value)}" }.join('/')
           text_box classes, at: [323, 713], width: 150
         end
 
         render
       end
       # rubocop: enable Metrics/AbcSize, Metrics/MethodLength, Metrics/PerceivedComplexity, Layout/LineLength
+
+      private
+
+      def class_name(class_slug)
+        default = ::Daggerheart::Character.class_info(class_slug)
+        default ? default.dig('name', I18n.locale.to_s) : ::Daggerheart::Homebrew::Speciality.find(class_slug).name
+      end
+
+      def subclass_name(class_slug, subclass_slug)
+        default = ::Daggerheart::Character.subclass_info(class_slug, subclass_slug)
+        default ? default.dig('name', I18n.locale.to_s) : ::Daggerheart::Homebrew::Subclass.find(subclass_slug).name
+      end
     end
   end
 end
