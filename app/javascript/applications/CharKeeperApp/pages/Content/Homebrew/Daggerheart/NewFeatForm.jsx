@@ -15,7 +15,8 @@ export const NewDaggerheartFeatForm = (props) => {
     origin_value: '',
     kind: '',
     limit: null,
-    limit_refresh: null
+    limit_refresh: null,
+    subclass_mastery: 1
   });
 
   const [locale, dict] = useAppLocale();
@@ -36,9 +37,16 @@ export const NewDaggerheartFeatForm = (props) => {
     return { ...result, ...props.homebrews.classes.reduce((acc, item) => { acc[item.id] = item.name; return acc; }, {}) };
   });
 
+  const daggerheartSubclasses = createMemo(() => {
+    if (props.homebrews === undefined) return [];
+
+    return props.homebrews.subclasses.reduce((acc, item) => { acc[item.id] = item.name; return acc; }, {});
+  });
+
   const originValues = createMemo(() => {
     if (featForm.origin === 'ancestry') return daggerheartHeritages();
     if (featForm.origin === 'class') return daggerheartClasses();
+    if (featForm.origin === 'subclass') return daggerheartSubclasses();
     
     return [];
   });
@@ -72,6 +80,15 @@ export const NewDaggerheartFeatForm = (props) => {
           items={originValues()}
           selectedValue={featForm.origin_value}
           onSelect={(value) => setFeatForm({ ...featForm, origin_value: value })}
+        />
+      </Show>
+      <Show when={featForm.origin === 'subclass'}>
+        <Select
+          containerClassList="mb-2"
+          labelText={t('pages.homebrewPage.daggerheart.subclassMastery')}
+          items={{ 1: 'Foundation', 2: 'Specialization', 3: 'Mastery' }}
+          selectedValue={featForm.subclass_mastery}
+          onSelect={(value) => setFeatForm({ ...featForm, subclass_mastery: value })}
         />
       </Show>
       <Select

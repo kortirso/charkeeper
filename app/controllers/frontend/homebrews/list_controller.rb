@@ -25,6 +25,10 @@ module Frontend
             ::Daggerheart::Homebrew::Speciality.where(user_id: current_user.id),
             each_serializer: ::Daggerheart::Homebrew::SpecialitySerializer
           ).to_a,
+          subclasses: Panko::ArraySerializer.new(
+            ::Daggerheart::Homebrew::Subclass.where(user_id: current_user.id),
+            each_serializer: ::Daggerheart::Homebrew::SubclassSerializer
+          ).to_a,
           feats: Panko::ArraySerializer.new(
             ::Daggerheart::Feat.where(user_id: current_user.id),
             each_serializer: ::Daggerheart::Homebrew::FeatSerializer

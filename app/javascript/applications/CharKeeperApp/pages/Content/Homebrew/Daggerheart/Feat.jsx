@@ -16,6 +16,9 @@ export const DaggerheartFeat = (props) => {
       const defaultClass = config.classes[props.feat.origin_value];
       return props.homebrews.classes.find((item) => item.id === props.feat.origin_value)?.name || (defaultClass ? defaultClass.name[locale()] : '');
     }
+    if (props.feat.origin === 'subclass') {
+      return props.homebrews.subclasses.find((item) => item.id === props.feat.origin_value)?.name || '';
+    }
 
     return '';
   });

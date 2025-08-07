@@ -79,7 +79,15 @@
         "className": "Class name",
         "evasion": "Starting evasion",
         "maxHealth": "Starting hit points",
-        "domains": "Domains"
+        "domains": "Domains",
+        "subclasses": "Subclasses",
+        "subclassName": "Name",
+        "classForSubclass": "Class name",
+        "newSubclass": "Add new subclass",
+        "noSubclassFeats": "No features for subclass. Use the \"Features\" tab to add them.",
+        "classOrigin": "Origin class",
+        "subclassMastery": "Subclass mastery",
+        "spellcastTrait": "Spellcast trait"
       }
     },
     "campaignsPage": {
@@ -102,15 +110,16 @@
       "feats": {
         "origins": {
           "ancestry": "Ancestry",
-          "class": "Class"
+          "class": "Class",
+          "subclass": "Subclass"
         },
         "kinds": {
           "static": "Static text",
           "text": "Text area"
         },
         "limitRefresh": {
-          "shortRest": "Short rest",
-          "longRest": "Long rest",
+          "short_rest": "Short rest",
+          "long_rest": "Long rest",
           "session": "Session"
         }
       },

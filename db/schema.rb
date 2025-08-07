@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_08_06_081540) do
+ActiveRecord::Schema[8.0].define(version: 2025_08_07_052923) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
   enable_extension "pgcrypto"
@@ -226,6 +226,17 @@ ActiveRecord::Schema[8.0].define(version: 2025_08_06_081540) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_homebrew_specialities_on_user_id"
+  end
+
+  create_table "homebrew_subclasses", id: :uuid, default: -> { "gen_random_uuid()" }, comment: "Кастомные подклассы", force: :cascade do |t|
+    t.uuid "user_id", null: false
+    t.string "class_name", null: false, comment: "Название класса или ID кастомного класса"
+    t.string "type", null: false, comment: "Отношение к игровой системе"
+    t.string "name", null: false
+    t.jsonb "data", default: {}, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_homebrew_subclasses_on_user_id"
   end
 
   create_table "homebrews", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|

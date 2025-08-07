@@ -79,7 +79,15 @@
         "className": "Название класса",
         "evasion": "Начальное уклонение",
         "maxHealth": "Начальное здоровье",
-        "domains": "Домены"
+        "domains": "Домены",
+        "subclasses": "Подклассы",
+        "subclassName": "Название",
+        "classForSubclass": "Название класса",
+        "newSubclass": "Добавить новый подкласс",
+        "noSubclassFeats": "Нет способностей для подкласса. Используйте вкладку \"Способности\" для их добавления.",
+        "classOrigin": "Исходный класс",
+        "subclassMastery": "Мастерство подкласса",
+        "spellcastTrait": "Магическая характеристика"
       }
     },
     "campaignsPage": {
@@ -102,15 +110,16 @@
       "feats": {
         "origins": {
           "ancestry": "Раса",
-          "class": "Класс"
+          "class": "Класс",
+          "subclass": "Подкласс"
         },
         "kinds": {
           "static": "Вывод описания",
           "text": "С вводом данных"
         },
         "limitRefresh": {
-          "shortRest": "Короткий отдых",
-          "longRest": "Продолжительный отдых",
+          "short_rest": "Короткий отдых",
+          "long_rest": "Продолжительный отдых",
           "session": "После сессии"
         }
       },

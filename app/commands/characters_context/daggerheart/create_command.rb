@@ -14,13 +14,13 @@ module CharactersContext
         config.messages.namespace = :daggerheart_character
 
         Communities = Dry::Types['strict.string'].enum(*::Daggerheart::Character.communities.keys)
-        Classes = Dry::Types['strict.string'].enum(*::Daggerheart::Character.classes_info.keys)
+        # Classes = Dry::Types['strict.string'].enum(*::Daggerheart::Character.classes_info.keys)
 
         params do
           required(:user).filled(type?: User)
           required(:name).filled(:string)
           required(:community).filled(Communities)
-          required(:main_class).filled(Classes)
+          required(:main_class).filled(:string)
           required(:subclass).filled(:string)
           optional(:heritage).filled(:string)
           optional(:heritage_name).filled(:string)
@@ -44,14 +44,16 @@ module CharactersContext
           key.failure(:included_in?)
         end
 
-        rule(:main_class, :subclass) do
-          next if values[:subclass].nil?
+        # TODO: проверять, что класс стандартный или homebrew
+        # TODO: проверять, что подкласс существует и принадлежит классу
+        # rule(:main_class, :subclass) do
+        #   next if values[:subclass].nil?
 
-          subclasses = ::Daggerheart::Character.subclasses_info(values[:main_class]).keys
-          next if subclasses&.include?(values[:subclass])
+        #   subclasses = ::Daggerheart::Character.subclasses_info(values[:main_class]).keys
+        #   next if subclasses&.include?(values[:subclass])
 
-          key(:subclass).failure(:invalid)
-        end
+        #   key(:subclass).failure(:invalid)
+        # end
       end
       # rubocop: enable Metrics/BlockLength
 

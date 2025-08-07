@@ -4,6 +4,7 @@ module Frontend
   class HomebrewsController < Frontend::BaseController
     before_action :find_daggerheart_heritages
     before_action :find_daggerheart_classes
+    before_action :find_daggerheart_subclasses
 
     def index
       render handlers: [:props], layout: 'props'
@@ -20,7 +21,15 @@ module Frontend
     def find_daggerheart_classes
       @daggerheart_classes =
         ::Daggerheart::Homebrew::Speciality.where(user_id: current_user.id).each_with_object({}) do |item, acc|
-          acc[item.id] = { name: { en: item.name, ru: item.name } }
+          acc[item.id] = { name: { en: item.name, ru: item.name }, domains: item.data.domains }
+        end
+    end
+
+    def find_daggerheart_subclasses
+      @daggerheart_subclasses =
+        ::Daggerheart::Homebrew::Subclass.where(user_id: current_user.id).each_with_object({}) do |item, acc|
+          acc[item.class_name] ||= {}
+          acc[item.class_name][item.id] = { name: { en: item.name, ru: item.name }, spellcast: item.data.spellcast }
         end
     end
   end

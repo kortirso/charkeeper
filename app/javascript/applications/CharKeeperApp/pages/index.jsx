@@ -21,6 +21,7 @@ export * from './Content/Homebrew/Races';
 export * from './Content/Homebrew/Feats';
 export * from './Content/Homebrew/Items';
 export * from './Content/Homebrew/Classes';
+export * from './Content/Homebrew/Subclasses';
 
 export * from './Content/Character/Dnd5';
 export * from './Content/Character/Dnd5/Abilities';
@@ -66,6 +67,8 @@ export * from './Content/Homebrew/Daggerheart/NewItemForm';
 export * from './Content/Homebrew/Daggerheart/Item';
 export * from './Content/Homebrew/Daggerheart/NewClassForm';
 export * from './Content/Homebrew/Daggerheart/Class';
+export * from './Content/Homebrew/Daggerheart/NewSubclassForm';
+export * from './Content/Homebrew/Daggerheart/Subclass';
 
 export * from './Navigation/Characters/ListItem';
 export * from './Navigation/Campaigns/ListItem';

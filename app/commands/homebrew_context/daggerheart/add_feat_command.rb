@@ -7,7 +7,7 @@ module HomebrewContext
       use_contract do
         config.messages.namespace = :homebrew_feat
 
-        Origins = Dry::Types['strict.string'].enum('ancestry', 'class')
+        Origins = Dry::Types['strict.string'].enum('ancestry', 'class', 'subclass')
         Kinds = Dry::Types['strict.string'].enum('static', 'text')
         Limits = Dry::Types['strict.string'].enum('short_rest', 'long_rest', 'session')
 
@@ -20,6 +20,7 @@ module HomebrewContext
           required(:kind).filled(Kinds)
           optional(:limit).filled(:integer, gteq?: 1)
           optional(:limit_refresh).filled(Limits)
+          optional(:subclass_mastery).filled(:integer)
         end
 
         rule(:limit, :limit_refresh).validate(:check_all_or_nothing_present)
@@ -32,6 +33,8 @@ module HomebrewContext
             when 'class'
               ::Daggerheart::Homebrew::Speciality.find_by(user_id: values[:user].id, id: values[:origin_value]) ||
                 ::Daggerheart::Character.class_info(values[:origin_value])
+            when 'subclass'
+              ::Daggerheart::Homebrew::Subclass.find_by(user_id: values[:user].id, id: values[:origin_value])
             end
           next if origin
 
@@ -43,13 +46,16 @@ module HomebrewContext
       private
 
       def do_prepare(input)
+        if input[:origin] == 'subclass' && input.key?(:subclass_mastery)
+          input[:conditions] = { subclass_mastery: input[:subclass_mastery] }
+        end
         input[:description_eval_variables] = { limit: input[:limit].to_s } if input.key?(:limit)
         input[:title] = { en: input[:title], ru: input[:title] }
         input[:description] = { en: input[:description], ru: input[:description] }
       end
 
       def do_persist(input)
-        result = ::Daggerheart::Feat.create!(input.except(:limit))
+        result = ::Daggerheart::Feat.create!(input.except(:limit, :subclass_mastery))
 
         { result: result }
       end

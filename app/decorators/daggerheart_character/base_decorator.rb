@@ -73,7 +73,8 @@ module DaggerheartCharacter
     end
 
     def selected_domains
-      @selected_domains ||= (Daggerheart::Character.domains_info(main_class) + domains.values).uniq
+      @selected_domains ||=
+        ((Daggerheart::Character.domains_info(main_class) || domains_for_homebrew_class(main_class)) + domains.values).uniq
     end
 
     def domain_cards_max
@@ -82,7 +83,10 @@ module DaggerheartCharacter
 
     def spellcast_traits
       @spellcast_traits ||=
-        subclasses.filter_map { |key, value| Daggerheart::Character.subclass_info(key, value)['spellcast'] }.uniq
+        subclasses.filter_map do |key, value|
+          default = Daggerheart::Character.subclass_info(key, value)
+          default ? default['spellcast'] : spellcast_for_homebrew_subclass(value)
+        end.uniq # rubocop: disable Style/MethodCalledOnDoEndBlock
     end
 
     def beastforms
@@ -220,6 +224,14 @@ module DaggerheartCharacter
 
     def beastform_config
       @beastform_config ||= beastform.blank? ? { 'traits' => {}, 'evasion' => 0 } : BeastformConfig.data[beastform]
+    end
+
+    def domains_for_homebrew_class(main_class)
+      Daggerheart::Homebrew::Speciality.find(main_class).data.domains
+    end
+
+    def spellcast_for_homebrew_subclass(subclass)
+      Daggerheart::Homebrew::Subclass.find(subclass).data.spellcast
     end
   end
 end
