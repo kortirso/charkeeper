@@ -264,7 +264,8 @@
     "midnight": { "name": { "en": "Midnight", "ru": "Midnight" } },
     "sage": { "name": { "en": "Sage", "ru": "Sage" } },
     "splendor": { "name": { "en": "Splendor", "ru": "Splendor" } },
-    "valor": { "name": { "en": "Valor", "ru": "Valor" } }
+    "valor": { "name": { "en": "Valor", "ru": "Valor" } },
+    "dread": { "name": { "en": "Dread", "ru": "Dread" } }
   },
   "beastforms": {
     "agile_scout": { "name": { "en": "Agile scout", "ru": "Agile scout" } },
