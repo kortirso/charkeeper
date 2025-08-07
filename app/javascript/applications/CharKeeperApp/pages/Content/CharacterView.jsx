@@ -67,9 +67,19 @@ export const CharacterView = (props) => {
       </Show>
       <div class="flex-1 flex flex-col overflow-y-scroll relative">
         <canvas id="pdf" />
-        <a id="pdfDownload" class="absolute top-4 left-4 rounded bg-blue-400 text-snow dark:bg-fuzzy-red px-2 py-1">
-          Download
-        </a>
+        <div class="absolute top-4 left-4">
+          <a id="pdfDownload" class="rounded bg-blue-400 text-snow dark:bg-fuzzy-red px-2 py-1 mr-2">
+            Download
+          </a>
+          <a
+            class="rounded bg-blue-400 text-snow dark:bg-fuzzy-red px-2 py-1"
+            href={`characters/${appState.activePageParams.id}.pdf`}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Share link
+          </a>
+        </div>
       </div>
     </>
   );

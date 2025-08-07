@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - rendering PDF for Daggerheart characters
 - campaigns
 - homebrew subclasses for Daggerheart
+- share link for character PDF
 
 ## [0.2.12] - 2025-08-04
 ### Modified
