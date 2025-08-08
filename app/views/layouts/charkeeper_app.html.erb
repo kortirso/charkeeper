@@ -13,7 +13,7 @@
     <%= stylesheet_link_tag 'tailwind' %>
     <%= stylesheet_link_tag :application %>
     <%= javascript_include_tag 'application' %>
-    <% if current_page?(dashboard_path) || current_page?(campaign_join_path) %>
+    <% if current_page?(dashboard_path) %>
       <script type="module" src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/5.4.54/pdf.min.mjs"></script>
       <script type="module" src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/5.4.54/pdf.worker.min.mjs"></script>
     <% else %>
