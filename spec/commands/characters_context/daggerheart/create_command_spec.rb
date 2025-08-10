@@ -45,6 +45,30 @@ describe CharactersContext::Daggerheart::CreateCommand do
         expect { JSON.parse(json.to_json) }.not_to raise_error
       end
     end
+
+    context 'for valid homebrew class' do
+      let!(:speciality) do
+        create :homebrew_speciality, :daggerheart, user: user, data: { evasion: 12, health_max: 6, domains: %w[codex grace] }
+      end
+      let!(:subclass) { create :homebrew_subclass, :daggerheart, user: user }
+      let(:valid_params) do
+        {
+          user: user, name: 'Char', community: 'highborne', main_class: speciality.id, subclass: subclass.id, heritage: 'clank'
+        }
+      end
+
+      it 'creates character and successfuly serialize', :aggregate_failures do
+        expect { command_call }.to change(user.characters, :count).by(1)
+
+        character = command_call[:result]
+        expect(character.data.evasion).to eq 12
+
+        json = Panko::Response.create do |response|
+          { 'character' => response.serializer(character, Daggerheart::CharacterSerializer) }
+        end
+        expect { JSON.parse(json.to_json) }.not_to raise_error
+      end
+    end
   end
 
   context 'for invalid params' do

@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Fixed
 - bug with selecting spell for homebrew classes
 - frontend logout button
+- creating Daggerheart characters with homebrew class
 
 ## [0.2.13] - 2025-08-08
 ### Added

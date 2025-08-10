@@ -13,9 +13,16 @@ module DaggerheartCharacter
     private
 
     def class_builder(main_class)
+      return DaggerheartCharacter::Classes::HomebrewBuilder.new(id: main_class) if uuid?(main_class)
+
       "DaggerheartCharacter::Classes::#{main_class.camelize}Builder".constantize.new
     rescue NameError => _e
       DummyBuilder.new
+    end
+
+    def uuid?(string)
+      uuid_regex = /\A[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}\z/
+      string.match?(uuid_regex)
     end
   end
 end
