@@ -70,7 +70,7 @@ export const CharactersListItem = (props) => {
           </Show>
         </div>
       </div>
-      <Show when={props.onViewClick}>
+      <Show when={props.onViewClick && !window.__TAURI_INTERNALS__}>
         <p class="absolute bottom-0 right-0 px-2 py-1 dark:text-snow" onClick={(e) => viewClick(e)}>
           PDF
         </p>

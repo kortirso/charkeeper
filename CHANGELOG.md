@@ -5,6 +5,9 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 ## Unreleased
+### Modified
+- hide PDF button for mobiles
+
 ### Fixed
 - bug with selecting spell for homebrew classes
 - frontend logout button
