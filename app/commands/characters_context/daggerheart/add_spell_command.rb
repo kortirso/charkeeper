@@ -12,9 +12,7 @@ module CharactersContext
         end
 
         rule(:character, :spell) do
-          data = values[:character].data
-          available_domains = (::Daggerheart::Character.domains_info(data.main_class) + data.domains.values).uniq
-          next if values[:spell].data.domain.in?(available_domains)
+          next if values[:spell].data.domain.in?(values[:character].selected_domains)
 
           key(:spell).failure(:invalid_domain_card)
         end

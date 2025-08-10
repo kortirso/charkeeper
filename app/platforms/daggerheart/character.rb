@@ -86,6 +86,14 @@ module Daggerheart
       1
     end
 
+    def selected_domains
+      (
+        (
+          self.class.domains_info(data.main_class) || ::Daggerheart::Homebrew::Speciality.find(data.main_class).data.domains
+        ) + data.domains.values
+      ).uniq
+    end
+
     def decorator(simple: false)
       base_decorator = ::DaggerheartCharacter::BaseDecorator.new(self)
       features_decorator = ::FeaturesDecorator.new(base_decorator)

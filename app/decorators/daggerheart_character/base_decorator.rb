@@ -73,8 +73,7 @@ module DaggerheartCharacter
     end
 
     def selected_domains
-      @selected_domains ||=
-        ((Daggerheart::Character.domains_info(main_class) || domains_for_homebrew_class(main_class)) + domains.values).uniq
+      @selected_domains ||= __getobj__.selected_domains
     end
 
     def domain_cards_max
@@ -224,10 +223,6 @@ module DaggerheartCharacter
 
     def beastform_config
       @beastform_config ||= beastform.blank? ? { 'traits' => {}, 'evasion' => 0 } : BeastformConfig.data[beastform]
-    end
-
-    def domains_for_homebrew_class(main_class)
-      Daggerheart::Homebrew::Speciality.find(main_class).data.domains
     end
 
     def spellcast_for_homebrew_subclass(subclass)
