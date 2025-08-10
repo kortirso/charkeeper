@@ -4,6 +4,7 @@ import * as i18n from '@solid-primitives/i18n';
 import { PageHeader, NotificationsBudge } from '../../components';
 import { Telegram, Discord, Vk } from '../../assets';
 import { useAppState, useAppLocale } from '../../context';
+import { logoutRequest } from '../../requests/logoutRequest';
 
 export const SettingsTab = () => {
   const [appState, { navigate, setAccessToken }] = useAppState();
@@ -26,6 +27,12 @@ export const SettingsTab = () => {
       {title}
     </p>
   );
+
+  const logout = async () => {
+    const result = await logoutRequest(appState.accessToken);
+
+    if (result.errors === undefined) setAccessToken(null);
+  }
 
   // 453x750
   // 420x690
@@ -54,7 +61,7 @@ export const SettingsTab = () => {
           </div>
           <p
             class="py-3 px-4 cursor-pointer rounded hover:bg-gray-100 dark:text-snow dark:hover:bg-dusty"
-            onClick={() => setAccessToken(null)}
+            onClick={logout}
           >
             {t('pages.settingsPage.logout')}
           </p>

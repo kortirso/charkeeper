@@ -50,7 +50,7 @@ Rails.application.routes.draw do
     resources :homebrews, only: %i[index]
 
     scope module: :users do
-      resources :signin, only: %i[create]
+      resource :signin, only: %i[create destroy]
       resources :signup, only: %i[create]
     end
 

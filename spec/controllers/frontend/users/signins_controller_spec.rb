@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-describe Frontend::Users::SigninController do
+describe Frontend::Users::SigninsController do
   describe 'POST#create' do
     it 'renders error' do
       post :create, params: { user: { username: 'something', password: 'invalid_password' } }
@@ -55,6 +55,22 @@ describe Frontend::Users::SigninController do
             end
           end
         end
+      end
+    end
+  end
+
+  describe 'DELETE#destroy' do
+    let!(:user_session) { create :user_session }
+    let(:access_token) { Authkeeper::GenerateTokenService.new.call(user_session: user_session)[:result] }
+
+    context 'for logged users' do
+      let(:request) do
+        delete :destroy, params: { charkeeper_access_token: access_token }
+      end
+
+      it 'remove session', :aggregate_failures do
+        expect { request }.to change(User::Session, :count).by(-1)
+        expect(response).to have_http_status :ok
       end
     end
   end
