@@ -4,9 +4,10 @@ import * as i18n from '@solid-primitives/i18n';
 
 import { Input, Toggle, Button, IconButton, ErrorWrapper, TextArea } from '../../components';
 import { useAppState, useAppLocale } from '../../context';
-import { Close } from '../../assets';
+import { Close, Edit } from '../../assets';
 import { fetchCharacterNotesRequest } from '../../requests/fetchCharacterNotesRequest';
 import { createCharacterNoteRequest } from '../../requests/createCharacterNoteRequest';
+import { updateCharacterNoteRequest } from '../../requests/updateCharacterNoteRequest';
 import { removeCharacterNoteRequest } from '../../requests/removeCharacterNoteRequest';
 
 export const Notes = () => {
@@ -17,6 +18,7 @@ export const Notes = () => {
     title: '',
     value: ''
   });
+  const [editNoteId, setEditNoteId] = createSignal(undefined);
 
   const [appState] = useAppState();
   const [, dict] = useAppLocale();
@@ -38,20 +40,45 @@ export const Notes = () => {
     );
   });
 
-  // actions
   const saveNote = async () => {
     const result = await createCharacterNoteRequest(appState.accessToken, appState.activePageParams.id, { note: noteForm });
 
     if (result.errors === undefined) {
-      batch(() => {
-        setNotes([result.note].concat(notes()));
-        setActiveNewNoteTab(false);
-        setNoteForm({ title: '', value: '' });
-      })
+      setNotes([result.note].concat(notes()));
+      cancelNote();
     }
   }
 
-  const cancelNote = () => setActiveNewNoteTab(false);
+  const editNote = (note) => {
+    batch(() => {
+      setNoteForm({ title: note.title, value: note.value });
+      setEditNoteId(note.id);
+      setActiveNewNoteTab(true);
+    });
+  }
+
+  const updateNote = async () => {
+    const result = await updateCharacterNoteRequest(
+      appState.accessToken, appState.activePageParams.id, editNoteId(), { note: noteForm, only_head: true }
+    );
+
+    if (result.errors === undefined) {
+      setNotes(notes().slice().map((item) => {
+        if (item.id !== editNoteId()) return item;
+
+        return { ...item, ...noteForm };
+      }));
+      cancelNote();
+    }
+  }
+
+  const cancelNote = () => {
+    batch(() => {
+      setEditNoteId(undefined);
+      setActiveNewNoteTab(false);
+      setNoteForm({ title: '', value: '' });
+    });
+  }
 
   const removeNote = async (event, noteId) => {
     event.stopPropagation();
@@ -82,7 +109,12 @@ export const Notes = () => {
             </div>
             <div class="flex justify-end mt-4">
               <Button outlined textable size="small" classList="mr-4" onClick={cancelNote}>{t('cancel')}</Button>
-              <Button default textable size="small" onClick={saveNote}>{t('save')}</Button>
+              <Button
+                default
+                textable
+                size="small"
+                onClick={() => editNoteId() === undefined ? saveNote() : updateNote()}
+              >{t('save')}</Button>
             </div>
           </div>
         }
@@ -101,10 +133,19 @@ export const Notes = () => {
                   </IconButton>
                 </div>
               }>
-                <p
-                  class="text-sm"
-                  innerHTML={note.value} // eslint-disable-line solid/no-innerhtml
-                />
+                <div class="relative">
+                  <p
+                    class="text-sm"
+                    innerHTML={note.value} // eslint-disable-line solid/no-innerhtml
+                  />
+                  <Button
+                    default
+                    classList="absolute -bottom-4 -right-4 rounded opacity-50"
+                    onClick={() => editNote(note)}
+                  >
+                    <Edit width={20} height={20} />
+                  </Button>
+                </div>
               </Toggle>
             }
           </For>
