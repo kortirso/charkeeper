@@ -20,11 +20,13 @@ export const Daggerheart = (props) => {
 
   const t = i18n.translator(dict);
 
-  const primaryWeaponFilter = (item) => item.kind.includes('primary weapon');
-  const secondaryWeaponFilter = (item) => item.kind.includes('secondary weapon');
-  const armorFilter = (item) => item.kind.includes('armor');
-  const itemsFilter = (item) => item.kind.includes('item');
-  const consumablesFilter = (item) => item.kind.includes('consumable');
+  const primaryWeaponFilterT1 = (item) => item.kind === 'primary weapon' && item.info.tier === 1 && item.info.damage_type === 'physical';
+  const primaryWeaponFilterT1Magic = (item) => item.kind === 'primary weapon' && item.info.tier === 1 && item.info.damage_type === 'magic';
+  const secondaryWeaponFilterT1 = (item) => item.kind === 'secondary weapon' && item.info.tier === 1 && item.info.damage_type === 'physical';
+  const armorFilterT1 = (item) => item.kind === 'armor' && item.info.tier === 1;
+  const armorFilterT2 = (item) => item.kind === 'armor' && item.info.tier === 2;
+  const itemsFilter = (item) => item.kind === 'item';
+  const consumablesFilter = (item) => item.kind === 'consumables';
 
   const ancestryFilter = (item) => item.origin === 'ancestry';
   const communityFilter = (item) => item.origin === 'community';
@@ -81,9 +83,11 @@ export const Daggerheart = (props) => {
               <Equipment
                 character={character()}
                 itemFilters={[
-                  { title: t('equipment.primaryWeapon'), callback: primaryWeaponFilter },
-                  { title: t('equipment.secondaryWeapon'), callback: secondaryWeaponFilter },
-                  { title: t('equipment.armorList'), callback: armorFilter },
+                  { title: t('equipment.primaryWeaponT1'), callback: primaryWeaponFilterT1 },
+                  { title: t('equipment.primaryWeaponT1Magic'), callback: primaryWeaponFilterT1Magic },
+                  { title: t('equipment.secondaryWeaponT1'), callback: secondaryWeaponFilterT1 },
+                  { title: t('equipment.armorListT1'), callback: armorFilterT1 },
+                  { title: t('equipment.armorListT2'), callback: armorFilterT2 },
                   { title: t('equipment.itemsList'), callback: itemsFilter },
                   { title: t('equipment.consumables'), callback: consumablesFilter }
                 ]}
@@ -168,9 +172,11 @@ export const Daggerheart = (props) => {
               <Equipment
                 character={character()}
                 itemFilters={[
-                  { title: t('equipment.primaryWeapon'), callback: primaryWeaponFilter },
-                  { title: t('equipment.secondaryWeapon'), callback: secondaryWeaponFilter },
-                  { title: t('equipment.armorList'), callback: armorFilter },
+                  { title: t('equipment.primaryWeaponT1'), callback: primaryWeaponFilterT1 },
+                  { title: t('equipment.primaryWeaponT1Magic'), callback: primaryWeaponFilterT1Magic },
+                  { title: t('equipment.secondaryWeaponT1'), callback: secondaryWeaponFilterT1 },
+                  { title: t('equipment.armorListT1'), callback: armorFilterT1 },
+                  { title: t('equipment.armorListT2'), callback: armorFilterT2 },
                   { title: t('equipment.itemsList'), callback: itemsFilter },
                   { title: t('equipment.consumables'), callback: consumablesFilter }
                 ]}
