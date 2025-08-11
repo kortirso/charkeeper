@@ -3,14 +3,17 @@
 module Frontend
   module Characters
     class NotesController < Frontend::BaseController
-      include Deps[add_note: 'commands.characters_context.add_note']
+      include Deps[
+        add_note: 'commands.characters_context.add_note',
+        change_note: 'commands.characters_context.change_note'
+      ]
       include SerializeResource
       include SerializeRelation
 
       INDEX_SERIALIZER_FIELDS = %i[id title value].freeze
       CREATE_SERIALIZE_FIELDS = %i[id title value].freeze
 
-      before_action :find_note, only: %i[destroy]
+      before_action :find_note, only: %i[update destroy]
 
       def index
         serialize_relation(
@@ -22,10 +25,17 @@ module Frontend
       end
 
       def create
-        case add_note.call(create_params.merge({ character: character }))
+        case add_note.call(note_params.merge({ character: character }))
         in { errors: errors } then unprocessable_response(errors)
         in { result: result }
           serialize_resource(result, ::Characters::NoteSerializer, :note, { only: CREATE_SERIALIZE_FIELDS }, :created)
+        end
+      end
+
+      def update
+        case change_note.call(note_params.merge({ note: @note }))
+        in { errors: errors } then unprocessable_response(errors)
+        else only_head_response
         end
       end
 
@@ -44,8 +54,8 @@ module Frontend
         authorized_scope(Character.all).find(params[:character_id])
       end
 
-      def create_params
-        params.expect(note: %i[value title]).to_h
+      def note_params
+        params.require(:note).permit!.to_h
       end
     end
   end
