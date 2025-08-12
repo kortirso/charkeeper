@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## Unreleased
 ### Added
 - copy and share homebrew races
+- copy and share homebrew subclasses
 
 ## [0.2.15] - 2025-08-11
 ### Added

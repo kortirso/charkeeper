@@ -2,18 +2,20 @@ import { createSignal, Switch, Match, batch, Show, For } from 'solid-js';
 import * as i18n from '@solid-primitives/i18n';
 
 import { NewDaggerheartSubclassForm, DaggerheartSubclass } from '../../../pages';
-import { ContentWrapper, Button, IconButton, Toggle } from '../../../components';
+import { ContentWrapper, Button, IconButton, Toggle, Input } from '../../../components';
 import { Close } from '../../../assets';
 import { useAppState, useAppLocale, useAppAlert } from '../../../context';
 import { createHomebrewSubclassRequest } from '../../../requests/createHomebrewSubclassRequest';
 import { removeHomebrewSubclassRequest } from '../../../requests/removeHomebrewSubclassRequest';
+import { copyHomebrewSubclassRequest } from '../../../requests/copyHomebrewSubclassRequest';
 import { copyToClipboard } from '../../../helpers';
 
 export const HomebrewSubclasses = (props) => {
   const [activeView, setActiveView] = createSignal('left');
+  const [copySubclassId, setCopySubclassId] = createSignal('');
 
   const [appState] = useAppState();
-  const [{ renderAlerts, renderNotice }] = useAppAlert();
+  const [{ renderAlerts, renderNotice, renderAlert }] = useAppAlert();
   const [, dict] = useAppLocale();
 
   const t = i18n.translator(dict);
@@ -29,6 +31,13 @@ export const HomebrewSubclasses = (props) => {
         setActiveView('left');
       });
     } else renderAlerts(result.errors);
+  }
+
+  const copySubclass = async () => {
+    const result = await copyHomebrewSubclassRequest(appState.accessToken, props.provider, copySubclassId());
+
+    if (result.errors === undefined) props.reloadHomebrews();
+    else renderAlert(result.errors);
   }
 
   const removeSubclass = async (event, id) => {
@@ -53,6 +62,17 @@ export const HomebrewSubclasses = (props) => {
             <Button default classList="mb-2" onClick={() => setActiveView('right')}>
               {t(`pages.homebrewPage.${props.provider}.newSubclass`)}
             </Button>
+            <div class="flex mb-2">
+              <Button default size="small" classList="px-2" onClick={copySubclass}>
+                {t('copy')}
+              </Button>
+              <Input
+                containerClassList="ml-2 flex-1"
+                placeholder={t(`pages.homebrewPage.${props.provider}.copyRacePlaceholder`)}
+                value={copySubclassId()}
+                onInput={(value) => setCopySubclassId(value)}
+              />
+            </div>
             <Show when={props.homebrews !== undefined}>
               <For each={props.homebrews.subclasses}>
                 {(item) =>

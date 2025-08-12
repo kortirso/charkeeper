@@ -87,6 +87,7 @@ export const HomebrewContentTab = (props) => {
                 homebrews={homebrews()}
                 addHomebrew={addHomebrew}
                 removeHomebrew={removeHomebrew}
+                reloadHomebrews={reloadHomebrews}
               />
             </Match>
             <Match when={appState.activePageParams.content === 'feats'}>

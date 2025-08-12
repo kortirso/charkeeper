@@ -44,7 +44,9 @@ Rails.application.routes.draw do
         resources :feats, only: %i[index create destroy]
         resources :items, only: %i[index create destroy]
         resources :specialities, only: %i[index create destroy]
-        resources :subclasses, only: %i[create destroy]
+        resources :subclasses, only: %i[create destroy] do
+          resource :copy, only: %i[create], module: :subclasses
+        end
       end
 
       get ':provider', to: 'list#index'

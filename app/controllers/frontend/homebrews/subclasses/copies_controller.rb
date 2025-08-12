@@ -2,15 +2,15 @@
 
 module Frontend
   module Homebrews
-    module Races
+    module Subclasses
       class CopiesController < Frontend::BaseController
-        include Deps[copy_daggerheart_race: 'commands.homebrew_context.daggerheart.copy_race']
+        include Deps[copy_daggerheart_subclass: 'commands.homebrew_context.daggerheart.copy_subclass']
         include SerializeResource
 
-        before_action :find_race
+        before_action :find_subclass
 
         def create
-          case copy_service.call({ race: @race, user: current_user })
+          case copy_service.call({ subclass: @subclass, user: current_user })
           in { errors: errors } then unprocessable_response(errors)
           else only_head_response
           end
@@ -18,19 +18,19 @@ module Frontend
 
         private
 
-        def find_race
-          @race = races_relation.where.not(user: current_user).find(params[:race_id])
+        def find_subclass
+          @subclass = subclasses_relation.where.not(user: current_user).find(params[:subclass_id])
         end
 
         def copy_service
           case params[:provider]
-          when 'daggerheart' then copy_daggerheart_race
+          when 'daggerheart' then copy_daggerheart_subclass
           end
         end
 
-        def races_relation
+        def subclasses_relation
           case params[:provider]
-          when 'daggerheart' then ::Daggerheart::Homebrew::Race
+          when 'daggerheart' then ::Daggerheart::Homebrew::Subclass
           else []
           end
         end
