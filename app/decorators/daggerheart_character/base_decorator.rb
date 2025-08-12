@@ -194,7 +194,7 @@ module DaggerheartCharacter
         .items
         .where(ready_to_use: true)
         .joins(:item)
-        .where(items: { kind: ['armor', 'secondary weapon'] })
+        .where(items: { kind: ['armor', 'primary weapon', 'secondary weapon'] })
         .pluck('items.info')
     end
 
