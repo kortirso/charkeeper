@@ -15,7 +15,7 @@ export const Toggle = (props) => {
         {props.title}
       </div>
       <Show when={props.isOpenByParent ? props.isOpenByParent : isOpen()}>
-        <div class="p-4 border-t border-gray-200 dark:border-gray-500 dark:text-snow">
+        <div class="p-4 border-t border-gray-200 dark:border-gray-500 dark:text-snow relative">
           {safeChildren()}
         </div>
       </Show>

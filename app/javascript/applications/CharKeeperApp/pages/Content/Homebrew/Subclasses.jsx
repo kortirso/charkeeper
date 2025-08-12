@@ -7,12 +7,13 @@ import { Close } from '../../../assets';
 import { useAppState, useAppLocale, useAppAlert } from '../../../context';
 import { createHomebrewSubclassRequest } from '../../../requests/createHomebrewSubclassRequest';
 import { removeHomebrewSubclassRequest } from '../../../requests/removeHomebrewSubclassRequest';
+import { copyToClipboard } from '../../../helpers';
 
 export const HomebrewSubclasses = (props) => {
   const [activeView, setActiveView] = createSignal('left');
 
   const [appState] = useAppState();
-  const [{ renderAlerts }] = useAppAlert();
+  const [{ renderAlerts, renderNotice }] = useAppAlert();
   const [, dict] = useAppLocale();
 
   const t = i18n.translator(dict);
@@ -36,6 +37,11 @@ export const HomebrewSubclasses = (props) => {
     const result = await removeHomebrewSubclassRequest(appState.accessToken, props.provider, id);
     if (result.errors === undefined) props.removeHomebrew('subclasses', id);
     else renderAlerts(result.errors);
+  }
+
+  const copy = (value) => {
+    copyToClipboard(value);
+    renderNotice(t('alerts.copied'));
   }
 
   return (
@@ -63,6 +69,9 @@ export const HomebrewSubclasses = (props) => {
                         <DaggerheartSubclass homebrews={props.homebrews} item={item} />
                       </Match>
                     </Switch>
+                    <p class="absolute bottom-0 right-0 px-2 py-1 dark:text-snow cursor-pointer" onClick={() => copy(item.id)}>
+                      COPY
+                    </p>
                   </Toggle>
                 }
               </For>

@@ -38,7 +38,9 @@ Rails.application.routes.draw do
   namespace :frontend do
     namespace :homebrews do
       scope ':provider' do
-        resources :races, only: %i[index create destroy]
+        resources :races, only: %i[index create destroy] do
+          resource :copy, only: %i[create], module: :races
+        end
         resources :feats, only: %i[index create destroy]
         resources :items, only: %i[index create destroy]
         resources :specialities, only: %i[index create destroy]
