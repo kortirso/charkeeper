@@ -35,6 +35,11 @@ export const HomebrewContentTab = (props) => {
     );
   });
 
+  const reloadHomebrews = async () => {
+    const result = await fetchHomebrewsList(appState.activePageParams.provider);
+    setHomebrews(result);
+  }
+
   const addHomebrew = (key, value) => {
     setHomebrews({ ...homebrews(), [key]: homebrews()[key].concat([value]) });
   }
@@ -65,6 +70,7 @@ export const HomebrewContentTab = (props) => {
                 homebrews={homebrews()}
                 addHomebrew={addHomebrew}
                 removeHomebrew={removeHomebrew}
+                reloadHomebrews={reloadHomebrews}
               />
             </Match>
             <Match when={appState.activePageParams.content === 'classes'}>
@@ -81,6 +87,7 @@ export const HomebrewContentTab = (props) => {
                 homebrews={homebrews()}
                 addHomebrew={addHomebrew}
                 removeHomebrew={removeHomebrew}
+                reloadHomebrews={reloadHomebrews}
               />
             </Match>
             <Match when={appState.activePageParams.content === 'feats'}>

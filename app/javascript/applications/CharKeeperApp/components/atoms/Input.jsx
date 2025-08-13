@@ -13,6 +13,7 @@ export const Input = (props) => {
           <input
             type="text"
             class="w-full h-12 px-2 border border-gray-200 text-sm bg-white dark:bg-neutral-700 dark:border-gray-500 dark:text-snow rounded"
+            placeholder={props.placeholder || ''}
             onInput={(e) => props.onInput(e.target.value)}
             value={props.value}
           />
@@ -24,6 +25,7 @@ export const Input = (props) => {
             pattern="[0-9]*"
             inputmode="numeric"
             class="w-full h-12 px-2 border border-gray-200 text-sm bg-white dark:bg-neutral-700 dark:border-gray-500 dark:text-snow rounded"
+            placeholder={props.placeholder || ''}
             onInput={(e) => props.onInput(e.target.value)}
             value={props.value}
           />
@@ -32,6 +34,7 @@ export const Input = (props) => {
           <input
             type="password"
             class="w-full h-12 px-2 border border-gray-200 text-sm bg-white dark:bg-neutral-700 dark:border-gray-500 dark:text-snow rounded"
+            placeholder={props.placeholder || ''}
             onInput={(e) => props.onInput(e.target.value)}
             value={props.value}
           />

@@ -14,7 +14,7 @@ module HomebrewContext
         params do
           required(:user).filled(type?: ::User)
           required(:title).filled(:string, max_size?: 50)
-          required(:description).filled(:string, max_size?: 250)
+          required(:description).filled(:string, max_size?: 500)
           required(:origin).filled(Origins)
           required(:origin_value).filled(:string)
           required(:kind).filled(Kinds)

@@ -2,17 +2,20 @@ import { createSignal, Switch, Match, batch, Show, For } from 'solid-js';
 import * as i18n from '@solid-primitives/i18n';
 
 import { NewDaggerheartRaceForm, DaggerheartRace } from '../../../pages';
-import { ContentWrapper, Button, IconButton, Toggle } from '../../../components';
+import { ContentWrapper, Button, IconButton, Toggle, Input } from '../../../components';
 import { Close } from '../../../assets';
 import { useAppState, useAppLocale, useAppAlert } from '../../../context';
 import { createHomebrewRaceRequest } from '../../../requests/createHomebrewRaceRequest';
 import { removeHomebrewRaceRequest } from '../../../requests/removeHomebrewRaceRequest';
+import { copyHomebrewRaceRequest } from '../../../requests/copyHomebrewRaceRequest';
+import { copyToClipboard } from '../../../helpers';
 
 export const HomebrewRaces = (props) => {
   const [activeView, setActiveView] = createSignal('left');
+  const [copyRaceId, setCopyRaceId] = createSignal('');
 
   const [appState] = useAppState();
-  const [{ renderAlerts }] = useAppAlert();
+  const [{ renderAlerts, renderAlert, renderNotice }] = useAppAlert();
   const [, dict] = useAppLocale();
 
   const t = i18n.translator(dict);
@@ -30,12 +33,24 @@ export const HomebrewRaces = (props) => {
     } else renderAlerts(result.errors);
   }
 
+  const copyRace = async () => {
+    const result = await copyHomebrewRaceRequest(appState.accessToken, props.provider, copyRaceId());
+
+    if (result.errors === undefined) props.reloadHomebrews();
+    else renderAlert(result.errors);
+  }
+
   const removeRace = async (event, id) => {
     event.stopPropagation();
 
     const result = await removeHomebrewRaceRequest(appState.accessToken, props.provider, id);
     if (result.errors === undefined) props.removeHomebrew('races', id);
     else renderAlerts(result.errors);
+  }
+
+  const copy = (value) => {
+    copyToClipboard(value);
+    renderNotice(t('alerts.copied'));
   }
 
   return (
@@ -47,6 +62,17 @@ export const HomebrewRaces = (props) => {
             <Button default classList="mb-2" onClick={() => setActiveView('right')}>
               {t(`pages.homebrewPage.${props.provider}.newRace`)}
             </Button>
+            <div class="flex mb-2">
+              <Button default size="small" classList="px-2" onClick={copyRace}>
+                {t('copy')}
+              </Button>
+              <Input
+                containerClassList="ml-2 flex-1"
+                placeholder={t(`pages.homebrewPage.${props.provider}.copyRacePlaceholder`)}
+                value={copyRaceId()}
+                onInput={(value) => setCopyRaceId(value)}
+              />
+            </div>
             <Show when={props.homebrews !== undefined}>
               <For each={props.homebrews.races}>
                 {(race) =>
@@ -63,6 +89,9 @@ export const HomebrewRaces = (props) => {
                         <DaggerheartRace raceId={race.id} feats={props.homebrews.feats} />
                       </Match>
                     </Switch>
+                    <p class="absolute bottom-0 right-0 px-2 py-1 dark:text-snow cursor-pointer" onClick={() => copy(race.id)}>
+                      COPY
+                    </p>
                   </Toggle>
                 }
               </For>

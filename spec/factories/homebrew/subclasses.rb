@@ -9,7 +9,7 @@ FactoryBot.define do
     trait :daggerheart do
       type { 'Daggerheart::Homebrew::Subclass' }
       data {
-        {}
+        { spellcast: 'ins' }
       }
     end
   end
