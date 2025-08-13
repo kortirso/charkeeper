@@ -9,8 +9,6 @@ module HomebrewContext
       ]
 
       use_contract do
-        config.messages.namespace = :homebrew_race
-
         params do
           required(:race).filled(type?: ::Daggerheart::Homebrew::Race)
           required(:user).filled(type?: ::User)
