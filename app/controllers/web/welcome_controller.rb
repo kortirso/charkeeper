@@ -5,5 +5,7 @@ module Web
     skip_before_action :authenticate
 
     def index; end
+
+    def privacy; end
   end
 end

@@ -137,6 +137,8 @@ Rails.application.routes.draw do
       resources :campaigns, only: %i[] do
         resource :join, only: %i[show], module: :campaigns
       end
+
+      get 'privacy', to: 'welcome#privacy'
     end
 
     root 'web/welcome#index'

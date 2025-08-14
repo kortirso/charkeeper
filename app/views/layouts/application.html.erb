@@ -42,6 +42,8 @@
             <% I18n.available_locales.each do |locale| %>
               <%= link_to locale, change_locale(locale), class: 'ml-2', aria: { label: t('change_locale') } %>
             <% end %>
+            <span>,</span>
+            <%= link_to 'Privacy policy', privacy_path, class: 'ml-2' %>
           </p>
           <div class="flex">
             <a href="https://discord.gg/NFqWPkuZ" target="_blank" rel="noopener noreferrer" class="opacity-75 hover:opacity-100">
