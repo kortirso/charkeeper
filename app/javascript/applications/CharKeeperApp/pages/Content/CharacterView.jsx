@@ -1,16 +1,22 @@
 import { createSignal, createEffect, Show } from 'solid-js';
 import { createWindowSize } from '@solid-primitives/resize-observer';
+import * as i18n from '@solid-primitives/i18n';
 
 import { PageHeader, IconButton } from '../../components';
 import { Arrow } from '../../assets';
-import { useAppState } from '../../context';
+import { useAppState, useAppAlert, useAppLocale } from '../../context';
 import { fetchCharacterViewRequest } from '../../requests/fetchCharacterViewRequest';
+import { copyToClipboard } from '../../helpers';
 
 export const CharacterView = (props) => {
   const size = createWindowSize();
   const [characterId, setCharacterId] = createSignal(undefined);
 
   const [appState] = useAppState();
+  const [{ renderNotice }] = useAppAlert();
+  const [, dict] = useAppLocale();
+
+  const t = i18n.translator(dict);
 
   createEffect(() => {
     if (appState.activePageParams.id === characterId()) return;
@@ -54,6 +60,11 @@ export const CharacterView = (props) => {
     });
   }
 
+  const copy = () => {
+    copyToClipboard(`https://charkeeper.org/characters/${appState.activePageParams.id}.pdf`);
+    renderNotice(t('alerts.copied'));
+  }
+
   return (
     <>
       <Show when={size.width < 768}>
@@ -71,14 +82,9 @@ export const CharacterView = (props) => {
           <a id="pdfDownload" class="rounded bg-blue-400 text-snow dark:bg-fuzzy-red px-2 py-1 mr-2">
             Download
           </a>
-          <a
-            class="rounded bg-blue-400 text-snow dark:bg-fuzzy-red px-2 py-1"
-            href={`characters/${appState.activePageParams.id}.pdf`}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+          <span class="rounded bg-blue-400 text-snow dark:bg-fuzzy-red px-2 py-1 cursor-pointer" onClick={copy}>
             Share link
-          </a>
+          </span>
         </div>
       </div>
     </>
