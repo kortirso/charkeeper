@@ -171,7 +171,7 @@
       "damage_bonus": 2,
       "damage_type": "physical",
       "burden": 2,
-      "bonuses": { "traits": { "finesse": -1 } },
+      "bonuses": { "traits": { "fin": -1 } },
       "features": []
     }
   },
@@ -187,7 +187,7 @@
       "damage_bonus": 3,
       "damage_type": "physical",
       "burden": 2,
-      "bonuses": { "traits": { "finesse": -1 } },
+      "bonuses": { "traits": { "fin": -1 } },
       "features": []
     }
   },
@@ -235,7 +235,7 @@
       "damage_bonus": 3,
       "damage_type": "physical",
       "burden": 2,
-      "bonuses": { "traits": { "finesse": -1 } },
+      "bonuses": { "traits": { "fin": -1 } },
       "features": []
     }
   },

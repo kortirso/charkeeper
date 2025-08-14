@@ -8,7 +8,7 @@ import { modifier } from '../../../../helpers';
 export const DaggerheartCombat = (props) => {
   const character = () => props.character;
 
-  const [, dict] = useAppLocale();
+  const [locale, dict] = useAppLocale();
 
   const t = i18n.translator(dict);
 
@@ -35,7 +35,7 @@ export const DaggerheartCombat = (props) => {
                     <p>{attack.name}</p>
                     <Show when={attack.features.length > 0}>
                       <p class="text-xs">
-                        {attack.features.join(', ')}
+                        {typeof variable === 'string' ? attack.features.join(', ') : attack.features.map((item) => item[locale()]).join(', ')}
                       </p>
                     </Show>
                     <Show when={attack.notes}>

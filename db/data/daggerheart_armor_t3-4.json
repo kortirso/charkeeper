@@ -1,0 +1,443 @@
+[
+  {
+    "slug": "dragonscale-armor",
+    "kind": "armor",
+    "name": {
+      "en": "Dragonscale armor",
+      "ru": "Доспех из драконей чешуи"
+    },
+    "info": {
+      "tier": 3,
+      "base_score": 5,
+      "bonuses": {
+        "thresholds": {
+          "major": 11,
+          "severe": 27
+        }
+      },
+      "features": [
+        {
+          "en": "Once per short rest, when you would mark your last Hit Point, you can instead mark a Stress.",
+          "ru": "Один раз за короткий отдых, когда вы должны отметить свою последнюю Рану, вы можете вместо этого отметить Стресс."
+        }
+      ]
+    }
+  },
+  {
+    "slug": "bellamoi-fine-armor",
+    "kind": "armor",
+    "name": {
+      "en": "Bellamoi fine armor",
+      "ru": "Парадная броня Белламуа"
+    },
+    "info": {
+      "tier": 3,
+      "base_score": 5,
+      "bonuses": {
+        "traits": {
+          "pre": 1
+        },
+        "thresholds": {
+          "major": 11,
+          "severe": 27
+        }
+      }
+    }
+  },
+  {
+    "slug": "advanced-leather-armor",
+    "kind": "armor",
+    "name": {
+      "en": "Advanced leather armor",
+      "ru": "Продвинутый кожаный доспех"
+    },
+    "info": {
+      "tier": 3,
+      "base_score": 5,
+      "bonuses": {
+        "thresholds": {
+          "major": 11,
+          "severe": 27
+        }
+      }
+    }
+  },
+  {
+    "slug": "advanced-gambeson-armor",
+    "kind": "armor",
+    "name": {
+      "en": "Advanced gambeson armor",
+      "ru": "Продвинутый стёганый доспех"
+    },
+    "info": {
+      "tier": 3,
+      "base_score": 5,
+      "bonuses": {
+        "evasion": 1,
+        "thresholds": {
+          "major": 9,
+          "severe": 23
+        }
+      }
+    }
+  },
+  {
+    "slug": "spiked-plate-armor",
+    "kind": "armor",
+    "name": {
+      "en": "Spiked plate armor",
+      "ru": "Шипованный латный доспех"
+    },
+    "info": {
+      "tier": 3,
+      "base_score": 5,
+      "bonuses": {
+        "thresholds": {
+          "major": 10,
+          "severe": 25
+        }
+      },
+      "features": [
+        {
+          "en": "On a successful attack against a target within Melee range, add a d4 to the damage roll.",
+          "ru": "При успешной атаке по цели Вплотную, добавьте d4 к броску урона."
+        }
+      ]
+    }
+  },
+  {
+    "slug": "bladefare-armor",
+    "kind": "armor",
+    "name": {
+      "en": "Bladefare armor",
+      "ru": "Доспех дуэлянта"
+    },
+    "info": {
+      "tier": 3,
+      "base_score": 6,
+      "bonuses": {
+        "thresholds": {
+          "major": 16,
+          "severe": 39
+        }
+      },
+      "features": [
+        {
+          "en": "You can't mark an Armor Slot to reduce magic damage.",
+          "ru": "Вы не можете отмечать Ячейки Брони для уменьшения магического урона."
+        }
+      ]
+    }
+  },
+  {
+    "slug": "monetts-cloak",
+    "kind": "armor",
+    "name": {
+      "en": "Monett's Cloak",
+      "ru": "Плащ Монэтта"
+    },
+    "info": {
+      "tier": 3,
+      "base_score": 6,
+      "bonuses": {
+        "thresholds": {
+          "major": 16,
+          "severe": 39
+        }
+      },
+      "features": [
+        {
+          "en": "You can't mark an Armor Slot to reduce physical damage.",
+          "ru": "Вы не можете отмечать Ячейки Брони для уменьшения физического урона."
+        }
+      ]
+    }
+  },
+  {
+    "slug": "advanced-chainmail-armor",
+    "kind": "armor",
+    "name": {
+      "en": "Advanced chainmail armor",
+      "ru": "Продвинутый кольчужный доспех"
+    },
+    "info": {
+      "tier": 3,
+      "base_score": 6,
+      "bonuses": {
+        "evasion": -1,
+        "thresholds": {
+          "major": 13,
+          "severe": 31
+        }
+      }
+    }
+  },
+  {
+    "slug": "advanced-full-plate-armor",
+    "kind": "armor",
+    "name": {
+      "en": "Advanced full plate armor",
+      "ru": "Продвинутый латный доспех"
+    },
+    "info": {
+      "tier": 3,
+      "base_score": 6,
+      "bonuses": {
+        "evasion": -2,
+        "traits": {
+          "agi": -1
+        },
+        "thresholds": {
+          "major": 15,
+          "severe": 35
+        }
+      }
+    }
+  },
+  {
+    "slug": "runes-of-fortification",
+    "kind": "armor",
+    "name": {
+      "en": "Runes of fortification",
+      "ru": "Руны укрепления"
+    },
+    "info": {
+      "tier": 3,
+      "base_score": 6,
+      "bonuses": {
+        "thresholds": {
+          "major": 17,
+          "severe": 43
+        }
+      },
+      "features": [
+        {
+          "en": "Each time you mark an Armor Slot, you must mark a Stress.",
+          "ru": "Каждый раз, когда вы отмечаете Ячейку Брони, вы должны отметить Стресс."
+        }
+      ]
+    }
+  },
+  {
+    "slug": "full-fortified-armor",
+    "kind": "armor",
+    "name": {
+      "en": "Full fortified armor",
+      "ru": "Укреплённый полный доспех"
+    },
+    "info": {
+      "tier": 4,
+      "base_score": 4,
+      "bonuses": {
+        "thresholds": {
+          "major": 15,
+          "severe": 40
+        }
+      },
+      "features": [
+        {
+          "en": "When you mark an Armor Slot, you reduce the severity of an attack by two thresholds instead of one.",
+          "ru": "Когда вы отмечаете Ячейку Брони, вы уменьшаете тяжесть атаки на два порога вместо одного."
+        }
+      ]
+    }
+  },
+  {
+    "slug": "channeling-armor",
+    "kind": "armor",
+    "name": {
+      "en": "Channeling armor",
+      "ru": "Проводящий доспех"
+    },
+    "info": {
+      "tier": 4,
+      "base_score": 5,
+      "bonuses": {
+        "thresholds": {
+          "major": 13,
+          "severe": 36
+        }
+      },
+      "features": [
+        {
+          "en": "+1 to Spellcast Rolls",
+          "ru": "+1 к Броскам Заклинаний"
+        }
+      ]
+    }
+  },
+  {
+    "slug": "legendary-leather-armor",
+    "kind": "armor",
+    "name": {
+      "en": "Legendary leather armor",
+      "ru": "Легендарный кожаный доспех"
+    },
+    "info": {
+      "tier": 4,
+      "base_score": 6,
+      "bonuses": {
+        "thresholds": {
+          "major": 13,
+          "severe": 36
+        }
+      }
+    }
+  },
+  {
+    "slug": "legendary-gambeson-armor",
+    "kind": "armor",
+    "name": {
+      "en": "Legendary gambeson armor",
+      "ru": "Легендарный стёганый доспех"
+    },
+    "info": {
+      "tier": 4,
+      "base_score": 6,
+      "bonuses": {
+        "evasion": 1,
+        "thresholds": {
+          "major": 11,
+          "severe": 32
+        }
+      }
+    }
+  },
+  {
+    "slug": "veritas-opal-armor",
+    "kind": "armor",
+    "name": {
+      "en": "Veritas opal armor",
+      "ru": "Опаловый доспех Веритаса"
+    },
+    "info": {
+      "tier": 4,
+      "base_score": 6,
+      "bonuses": {
+        "evasion": 0,
+        "traits": {
+          "agi": 0
+        },
+        "thresholds": {
+          "major": 13,
+          "severe": 36
+        }
+      },
+      "features": [
+        {
+          "en": "This armor glows when another creature within Close range tells a lie.",
+          "ru": "Эта броня светится, когда другое существо в пределах Средней дистанции лжёт."
+        }
+      ]
+    }
+  },
+  {
+    "slug": "emberwoven-armor",
+    "kind": "armor",
+    "name": {
+      "en": "Emberwoven armor",
+      "ru": "Плетённый углями доспех"
+    },
+    "info": {
+      "tier": 4,
+      "base_score": 6,
+      "bonuses": {
+        "thresholds": {
+          "major": 13,
+          "severe": 36
+        }
+      },
+      "features": [
+        {
+          "en": "When an adversary attacks you within Melee range, they mark a Stress.",
+          "ru": "Когда противник атакует вас Вплотную, он отмечает себе Стресс."
+        }
+      ]
+    }
+  },
+  {
+    "slug": "legendary-chainmail-armor",
+    "kind": "armor",
+    "name": {
+      "en": "Legendary chainmail armor",
+      "ru": "Легендарный кольчужный доспех"
+    },
+    "info": {
+      "tier": 4,
+      "base_score": 7,
+      "bonuses": {
+        "evasion": -1,
+        "thresholds": {
+          "major": 15,
+          "severe": 40
+        }
+      }
+    }
+  },
+  {
+    "slug": "legendary-full-plate-armor",
+    "kind": "armor",
+    "name": {
+      "en": "Legendary full plate armor",
+      "ru": "Легендарный латный доспех"
+    },
+    "info": {
+      "tier": 4,
+      "base_score": 7,
+      "bonuses": {
+        "evasion": -2,
+        "traits": {
+          "agi": -1
+        },
+        "thresholds": {
+          "major": 17,
+          "severe": 44
+        }
+      }
+    }
+  },
+  {
+    "slug": "dunamis-silkchain",
+    "kind": "armor",
+    "name": {
+      "en": "Dunamis silkchain",
+      "ru": "Шёлковая кольчуга Дунамиса"
+    },
+    "info": {
+      "tier": 4,
+      "base_score": 7,
+      "bonuses": {
+        "thresholds": {
+          "major": 13,
+          "severe": 36
+        }
+      },
+      "features": [
+        {
+          "en": "Mark an Armor Slot to roll a d4 and add its result as a bonus to your Evasion against an incoming attack.",
+          "ru": "Отметьте Ячейку Брони, чтобы бросить d4 и добавить его результат в качестве бонуса к вашему Уклонению от наступающей атаки."
+        }
+      ]
+    }
+  },
+  {
+    "slug": "savior-chainmail",
+    "kind": "armor",
+    "name": {
+      "en": "Savior chainmail",
+      "ru": "Кольчуга спасителя"
+    },
+    "info": {
+      "tier": 4,
+      "base_score": 8,
+      "bonuses": {
+        "evasion": -1,
+        "traits": { "agi": -1, "str": -1, "fin": -1, "ins": -1, "know": -1, "pre": -1 },
+        "thresholds": {
+          "major": 18,
+          "severe": 48
+        }
+      }
+    }
+  }
+]

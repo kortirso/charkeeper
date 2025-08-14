@@ -278,11 +278,7 @@
     "toolsList": "Artisan's tools",
     "musicList": "Musical instruments",
     "consumables": "Consumables",
-    "primaryWeaponT1": "Primary weapon T1",
-    "primaryWeaponT1Magic": "Primary weapon T1 Magic",
-    "secondaryWeaponT1": "Secondary weapon T1",
-    "armorListT1": "Armor list T1",
-    "armorListT2": "Armor list T2"
+    "primaryWeaponMagic": "Primary weapon magic"
   },
   "rest": {
     "shortRest": "Short rest",

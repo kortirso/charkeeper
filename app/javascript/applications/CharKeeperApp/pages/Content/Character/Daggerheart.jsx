@@ -22,9 +22,20 @@ export const Daggerheart = (props) => {
 
   const primaryWeaponFilterT1 = (item) => item.kind === 'primary weapon' && item.info.tier === 1 && item.info.damage_type === 'physical';
   const primaryWeaponFilterT1Magic = (item) => item.kind === 'primary weapon' && item.info.tier === 1 && item.info.damage_type === 'magic';
-  const secondaryWeaponFilterT1 = (item) => item.kind === 'secondary weapon' && item.info.tier === 1 && item.info.damage_type === 'physical';
+  const primaryWeaponFilterT2 = (item) => item.kind === 'primary weapon' && item.info.tier === 2 && item.info.damage_type === 'physical';
+  const primaryWeaponFilterT2Magic = (item) => item.kind === 'primary weapon' && item.info.tier === 2 && item.info.damage_type === 'magic';
+  const primaryWeaponFilterT3 = (item) => item.kind === 'primary weapon' && item.info.tier === 3 && item.info.damage_type === 'physical';
+  const primaryWeaponFilterT3Magic = (item) => item.kind === 'primary weapon' && item.info.tier === 3 && item.info.damage_type === 'magic';
+  const primaryWeaponFilterT4 = (item) => item.kind === 'primary weapon' && item.info.tier === 4 && item.info.damage_type === 'physical';
+  const primaryWeaponFilterT4Magic = (item) => item.kind === 'primary weapon' && item.info.tier === 4 && item.info.damage_type === 'magic';
+  const secondaryWeaponFilterT1 = (item) => item.kind === 'secondary weapon' && item.info.tier === 1;
+  const secondaryWeaponFilterT2 = (item) => item.kind === 'secondary weapon' && item.info.tier === 2;
+  const secondaryWeaponFilterT3 = (item) => item.kind === 'secondary weapon' && item.info.tier === 3;
+  const secondaryWeaponFilterT4 = (item) => item.kind === 'secondary weapon' && item.info.tier === 4;
   const armorFilterT1 = (item) => item.kind === 'armor' && item.info.tier === 1;
   const armorFilterT2 = (item) => item.kind === 'armor' && item.info.tier === 2;
+  const armorFilterT3 = (item) => item.kind === 'armor' && item.info.tier === 3;
+  const armorFilterT4 = (item) => item.kind === 'armor' && item.info.tier === 4;
   const itemsFilter = (item) => item.kind === 'item';
   const consumablesFilter = (item) => item.kind === 'consumables';
 
@@ -83,11 +94,22 @@ export const Daggerheart = (props) => {
               <Equipment
                 character={character()}
                 itemFilters={[
-                  { title: t('equipment.primaryWeaponT1'), callback: primaryWeaponFilterT1 },
-                  { title: t('equipment.primaryWeaponT1Magic'), callback: primaryWeaponFilterT1Magic },
-                  { title: t('equipment.secondaryWeaponT1'), callback: secondaryWeaponFilterT1 },
-                  { title: t('equipment.armorListT1'), callback: armorFilterT1 },
-                  { title: t('equipment.armorListT2'), callback: armorFilterT2 },
+                  { title: `${t('equipment.primaryWeapon')} T1`, callback: primaryWeaponFilterT1 },
+                  { title: `${t('equipment.primaryWeaponMagic')} T1`, callback: primaryWeaponFilterT1Magic },
+                  { title: `${t('equipment.primaryWeapon')} T2`, callback: primaryWeaponFilterT2 },
+                  { title: `${t('equipment.primaryWeaponMagic')} T2`, callback: primaryWeaponFilterT2Magic },
+                  { title: `${t('equipment.primaryWeapon')} T3`, callback: primaryWeaponFilterT3 },
+                  { title: `${t('equipment.primaryWeaponMagic')} T3`, callback: primaryWeaponFilterT3Magic },
+                  { title: `${t('equipment.primaryWeapon')} T4`, callback: primaryWeaponFilterT4 },
+                  { title: `${t('equipment.primaryWeaponMagic')} T4`, callback: primaryWeaponFilterT4Magic },
+                  { title: `${t('equipment.secondaryWeapon')} T1`, callback: secondaryWeaponFilterT1 },
+                  { title: `${t('equipment.secondaryWeapon')} T2`, callback: secondaryWeaponFilterT2 },
+                  { title: `${t('equipment.secondaryWeapon')} T3`, callback: secondaryWeaponFilterT3 },
+                  { title: `${t('equipment.secondaryWeapon')} T4`, callback: secondaryWeaponFilterT4 },
+                  { title: `${t('equipment.armorList')} T1`, callback: armorFilterT1 },
+                  { title: `${t('equipment.armorList')} T2`, callback: armorFilterT2 },
+                  { title: `${t('equipment.armorList')} T3`, callback: armorFilterT3 },
+                  { title: `${t('equipment.armorList')} T4`, callback: armorFilterT4 },
                   { title: t('equipment.itemsList'), callback: itemsFilter },
                   { title: t('equipment.consumables'), callback: consumablesFilter }
                 ]}
@@ -172,11 +194,22 @@ export const Daggerheart = (props) => {
               <Equipment
                 character={character()}
                 itemFilters={[
-                  { title: t('equipment.primaryWeaponT1'), callback: primaryWeaponFilterT1 },
-                  { title: t('equipment.primaryWeaponT1Magic'), callback: primaryWeaponFilterT1Magic },
-                  { title: t('equipment.secondaryWeaponT1'), callback: secondaryWeaponFilterT1 },
-                  { title: t('equipment.armorListT1'), callback: armorFilterT1 },
-                  { title: t('equipment.armorListT2'), callback: armorFilterT2 },
+                  { title: `${t('equipment.primaryWeapon')} T1`, callback: primaryWeaponFilterT1 },
+                  { title: `${t('equipment.primaryWeaponMagic')} T1`, callback: primaryWeaponFilterT1Magic },
+                  { title: `${t('equipment.primaryWeapon')} T2`, callback: primaryWeaponFilterT2 },
+                  { title: `${t('equipment.primaryWeaponMagic')} T2`, callback: primaryWeaponFilterT2Magic },
+                  { title: `${t('equipment.primaryWeapon')} T3`, callback: primaryWeaponFilterT3 },
+                  { title: `${t('equipment.primaryWeaponMagic')} T3`, callback: primaryWeaponFilterT3Magic },
+                  { title: `${t('equipment.primaryWeapon')} T4`, callback: primaryWeaponFilterT4 },
+                  { title: `${t('equipment.primaryWeaponMagic')} T4`, callback: primaryWeaponFilterT4Magic },
+                  { title: `${t('equipment.secondaryWeapon')} T1`, callback: secondaryWeaponFilterT1 },
+                  { title: `${t('equipment.secondaryWeapon')} T2`, callback: secondaryWeaponFilterT2 },
+                  { title: `${t('equipment.secondaryWeapon')} T3`, callback: secondaryWeaponFilterT3 },
+                  { title: `${t('equipment.secondaryWeapon')} T4`, callback: secondaryWeaponFilterT4 },
+                  { title: `${t('equipment.armorList')} T1`, callback: armorFilterT1 },
+                  { title: `${t('equipment.armorList')} T2`, callback: armorFilterT2 },
+                  { title: `${t('equipment.armorList')} T3`, callback: armorFilterT3 },
+                  { title: `${t('equipment.armorList')} T4`, callback: armorFilterT4 },
                   { title: t('equipment.itemsList'), callback: itemsFilter },
                   { title: t('equipment.consumables'), callback: consumablesFilter }
                 ]}

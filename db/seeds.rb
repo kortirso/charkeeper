@@ -127,7 +127,23 @@ armor_file = File.read(Rails.root.join('db/data/daggerheart_t2_armor.json'))
 armor = JSON.parse(armor_file)
 Daggerheart::Item.upsert_all(armor) if armor.any?
 
+armor_file = File.read(Rails.root.join('db/data/daggerheart_armor_t3-4.json'))
+armor = JSON.parse(armor_file)
+Daggerheart::Item.upsert_all(armor) if armor.any?
+
 weapons_file = File.read(Rails.root.join('db/data/daggerheart_weapons.json'))
+weapons = JSON.parse(weapons_file)
+Daggerheart::Item.upsert_all(weapons) if weapons.any?
+
+weapons_file = File.read(Rails.root.join('db/data/daggerheart_weapon_t2.json'))
+weapons = JSON.parse(weapons_file)
+Daggerheart::Item.upsert_all(weapons) if weapons.any?
+
+weapons_file = File.read(Rails.root.join('db/data/daggerheart_weapon_t3.json'))
+weapons = JSON.parse(weapons_file)
+Daggerheart::Item.upsert_all(weapons) if weapons.any?
+
+weapons_file = File.read(Rails.root.join('db/data/daggerheart_weapon_t4.json'))
 weapons = JSON.parse(weapons_file)
 Daggerheart::Item.upsert_all(weapons) if weapons.any?
 

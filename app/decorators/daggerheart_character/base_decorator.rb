@@ -153,7 +153,7 @@ module DaggerheartCharacter
         damage_bonus: item[:items_info]['damage_bonus'],
         damage_type: item[:items_info]['damage_type'],
         kind: item[:items_kind],
-        features: item[:items_info]['features'],
+        features: item[:items_info]['features'] || [],
         notes: item[:notes],
         ready_to_use: item[:ready_to_use]
       }]

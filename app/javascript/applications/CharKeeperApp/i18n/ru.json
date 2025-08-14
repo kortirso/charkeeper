@@ -278,11 +278,7 @@
     "toolsList": "Инструменты",
     "musicList": "Музыкальные инструменты",
     "consumables": "Расходные материалы",
-    "primaryWeaponT1": "Основное оружие T1",
-    "primaryWeaponT1Magic": "Основное оружие T1 Маг",
-    "secondaryWeaponT1": "Запасное оружие T1",
-    "armorListT1": "Броня T1",
-    "armorListT2": "Броня T2"
+    "primaryWeaponMagic": "Основное оружие маг"
   },
   "rest": {
     "shortRest": "Короткий отдых",
