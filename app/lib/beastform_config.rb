@@ -3,17 +3,20 @@
 module BeastformConfig
   extend self
 
-  def data
-    @data ||= load_data
+  def data(provider)
+    @data ||= {}
+    @data.fetch(provider) do |key|
+      @data[key] = load_data(provider)
+    end
   end
 
   private
 
-  def load_data
-    JSON.parse(File.read(data_path))
+  def load_data(provider)
+    JSON.parse(File.read(data_path(provider)))
   end
 
-  def data_path
-    Rails.root.join('config/settings/beastform.json')
+  def data_path(provider)
+    Rails.root.join("config/settings/beastforms/#{provider}.json")
   end
 end

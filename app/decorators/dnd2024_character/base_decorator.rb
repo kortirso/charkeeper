@@ -9,7 +9,7 @@ module Dnd2024Character
     delegate :species, :legacy, :main_class, :classes, :subclasses, :level, :languages, :health, :abilities,
              :selected_features, :resistance, :immunity, :vulnerability, :energy, :coins, :darkvision,
              :weapon_core_skills, :weapon_skills, :armor_proficiency, :music, :spent_spell_slots,
-             :hit_dice, :spent_hit_dice, :death_saving_throws, :speed, :selected_feats, to: :data
+             :hit_dice, :spent_hit_dice, :death_saving_throws, :selected_feats, :beastform, to: :data
 
     def method_missing(_method, *args); end
 
@@ -18,17 +18,28 @@ module Dnd2024Character
     end
 
     def modifiers
-      @modifiers ||= abilities.transform_values { |value| calc_ability_modifier(value) }
+      @modifiers ||= modified_abilities.transform_values { |value| calc_ability_modifier(value) }
+    end
+
+    def modified_abilities
+      @modified_abilities ||=
+        abilities.merge(
+          *[beastform_config['abilities']].compact
+        ) { |_key, oldval, newval| [newval, oldval].max }
     end
 
     def skills
       @skills ||= [
         %w[acrobatics dex], %w[animal wis], %w[arcana int], %w[athletics str],
         %w[deception cha], %w[history int], %w[insight wis], %w[intimidation cha],
-        %w[investigation int], %w[medicine wis], %w[nature wis], %w[perception wis],
+        %w[investigation int], %w[medicine wis], %w[nature int], %w[perception wis],
         %w[performance cha], %w[persuasion cha], %w[religion int], %w[sleight dex],
         %w[stealth dex], %w[survival wis]
       ].map { |item| skill_payload(item[0], item[1]) }
+    end
+
+    def speed
+      @speed ||= beastform.blank? ? data.speed : beastform_config['speed']
     end
 
     def features
@@ -40,7 +51,7 @@ module Dnd2024Character
     end
 
     def load
-      @load ||= abilities['str'] * 15
+      @load ||= modified_abilities['str'] * 15
     end
 
     def spell_classes
@@ -68,7 +79,7 @@ module Dnd2024Character
     end
 
     def attacks
-      @attacks ||= [unarmed_attack] + weapon_attacks.compact
+      @attacks ||= beastform.blank? ? ([unarmed_attack] + weapon_attacks.compact) : beastform_attacks
     end
 
     def conditions
@@ -104,6 +115,25 @@ module Dnd2024Character
       }
     end
 
+    # rubocop: disable Metrics/AbcSize
+    def beastform_attacks
+      beastform_config['attacks'].map do |beast_attack|
+        {
+          type: 'melee',
+          name: beast_attack['name'][I18n.locale.to_s],
+          action_type: 'action',
+          hands: 2,
+          melee_distance: 5,
+          attack_bonus: modifiers['str'] + proficiency_bonus,
+          damage: beast_attack['damage'],
+          damage_bonus: modifiers['str'],
+          damage_type: beast_attack['damage_type'],
+          tooltips: beast_attack['tooltips'].map { |item| item[I18n.locale.to_s] }
+        }
+      end
+    end
+    # rubocop: enable Metrics/AbcSize
+
     def unarmed_attack
       {
         type: 'unarmed',
@@ -122,6 +152,8 @@ module Dnd2024Character
     end
 
     def calc_armor_class
+      return beastform_config['ac'] if beastform
+
       equiped_armor = defense_gear[:armor]
       equiped_shield = defense_gear[:shield]
       return 10 + modifiers['dex'] if equiped_armor.nil? && equiped_shield.nil?
@@ -260,6 +292,10 @@ module Dnd2024Character
         .where(items: { kind: %w[shield armor] })
         .hashable_pluck('items.kind', 'items.data', 'items.info')
         .partition { |item| item[:items_kind] != 'shield' }
+    end
+
+    def beastform_config
+      @beastform_config ||= beastform.blank? ? { 'abilities' => {} } : BeastformConfig.data('dnd2024')[beastform]
     end
   end
 end

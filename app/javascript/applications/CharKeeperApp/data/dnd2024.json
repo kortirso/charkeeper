@@ -177,5 +177,8 @@
     "sleight": { "name": { "en": "Sleight of Hands", "ru": "Ловкость рук" } },
     "stealth": { "name": { "en": "Stealth", "ru": "Скрытность" } },
     "survival": { "name": { "en": "Survival", "ru": "Выживание" } }
+  },
+  "beastforms": {
+    "wolf": { "name": { "en": "Wolf", "ru": "Волк" } }
   }
 }
