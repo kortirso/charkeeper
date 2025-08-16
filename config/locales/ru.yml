@@ -44,8 +44,9 @@ ru:
         android: Приложение для Android
         android_description: Просто скачайте и запустите %{href}
         android_link: установщик
-        google_play: или участвуйте в %{href} в Google Play
-        google_play_link: бета-тесте
+        google_play: или участвуйте в %{href1} и %{href2} в Google Play
+        google_play_link1: бета-тесте (на android)
+        google_play_link2: на сайте
         daggerheart:
           title: Поддержка Daggerheart
           feature_1: Создание персонажей стандартных рас/классов, использование составных рас или использование ваших собственных рас/классов/подклассов для полностью кастомных персонажей.

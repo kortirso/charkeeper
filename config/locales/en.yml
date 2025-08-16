@@ -44,6 +44,9 @@ en:
         android: Android application
         android_description: Simply download and run %{href}
         android_link: installer
+        google_play: or participate in %{href1} and %{href2} in Google Play
+        google_play_link1: beta-test (android link)
+        google_play_link2: on site
         daggerheart:
           title: Daggerheart support
           feature_1: Create characters of standard races/classes, use mixed races or use your own races/classes/subclasses for fully custom characters.
