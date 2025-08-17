@@ -217,7 +217,7 @@ export const CharactersTab = () => {
     
     if (result.errors === undefined) {
       batch(() => {
-        setCharacters(characters().concat(result.character));
+        setCharacters([result.character, ...characters()]);
         setPlatform(undefined);
         setCharacterDnd5Form({
           name: '', race: undefined, subrace: undefined, main_class: undefined,
@@ -294,67 +294,22 @@ export const CharactersTab = () => {
       <Switch>
         <Match when={currentTab() === 'characters'}>
           <div class="flex-1 overflow-y-scroll">
-            <Show when={characters() !== undefined}>
-              <For each={filteredCharacters()}>
-                {(character) =>
-                  <Switch>
-                    <Match when={character.provider === 'dnd5'}>
-                      <CharactersListItem
-                        isActive={character.id == appState.activePageParams.id}
-                        avatar={character.avatar}
-                        name={character.name}
-                        firstText={`${t('charactersPage.level')} ${character.level} | ${character.subrace ? t(`dnd5.subraces.${character.race}.${character.subrace}`) : t(`dnd5.races.${character.race}`)}`}
-                        secondText={Object.keys(character.classes).map((item) => t(`dnd5.classes.${item}`)).join(' * ')}
-                        onClick={() => navigate('character', { id: character.id })}
-                        onDeleteCharacter={(e) => deleteCharacter(e, character.id)}
-                      />
-                    </Match>
-                    <Match when={character.provider === 'dnd2024'}>
-                      <CharactersListItem
-                        isActive={character.id == appState.activePageParams.id}
-                        avatar={character.avatar}
-                        name={character.name}
-                        firstText={`${t('charactersPage.level')} ${character.level} | ${character.legacy ? dnd2024Config.species[character.species].legacies[character.legacy].name[locale()] : dnd2024Config.species[character.species].name[locale()]}`}
-                        secondText={Object.keys(character.classes).map((item) => dnd2024Config.classes[item].name[locale()]).join(' * ')}
-                        onClick={() => navigate('character', { id: character.id })}
-                        onDeleteCharacter={(e) => deleteCharacter(e, character.id)}
-                      />
-                    </Match>
-                    <Match when={character.provider === 'pathfinder2'}>
-                      <CharactersListItem
-                        isActive={character.id == appState.activePageParams.id}
-                        avatar={character.avatar}
-                        name={character.name}
-                        firstText={`${t('charactersPage.level')} ${character.level} | ${character.subrace ? pathfinder2Config.races[character.race].subraces[character.subrace].name[locale()] : pathfinder2Config.races[character.race].name[locale()]}`}
-                        secondText={Object.keys(character.classes).map((item) => pathfinder2Config.classes[item].name[locale()]).join(' * ')}
-                        onClick={() => navigate('character', { id: character.id })}
-                        onDeleteCharacter={(e) => deleteCharacter(e, character.id)}
-                      />
-                    </Match>
-                    <Match when={character.provider === 'daggerheart'}>
-                      <CharactersListItem
-                        isActive={character.id == appState.activePageParams.id}
-                        avatar={character.avatar}
-                        name={character.name}
-                        firstText={`${t('charactersPage.level')} ${character.level} | ${character.heritage ? daggerheartHeritages()[character.heritage].name[locale()] : character.heritage_name}`}
-                        secondText={Object.keys(character.classes).map((item) => daggerheartClasses()[item].name[locale()]).join(' * ')}
-                        onClick={() => navigate('character', { id: character.id })}
-                        onViewClick={() => navigate('characterView', { id: character.id })}
-                        onDeleteCharacter={(e) => deleteCharacter(e, character.id)}
-                      />
-                    </Match>
-                  </Switch>
-                }
-              </For>
-            </Show>
+            <For each={filteredCharacters()}>
+              {(character) =>
+                <CharactersListItem
+                  character={character}
+                  isActive={character.id == appState.activePageParams.id}
+                  daggerheartHeritages={daggerheartHeritages()}
+                  daggerheartClasses={daggerheartClasses()}
+                  onClick={() => navigate('character', { id: character.id })}
+                  onViewClick={() => navigate('characterView', { id: character.id })}
+                  onDeleteCharacter={(e) => deleteCharacter(e, character.id)}
+                />
+              }
+            </For>
             <Show when={appState.isAdmin}>
               <div class="w-full flex p-2">
-                <Button
-                  default
-                  size="small"
-                  classList="px-2"
-                  onClick={findAdminCharacter}
-                >
+                <Button default size="small" classList="px-2" onClick={findAdminCharacter}>
                   {t('find')}
                 </Button>
                 <Input
