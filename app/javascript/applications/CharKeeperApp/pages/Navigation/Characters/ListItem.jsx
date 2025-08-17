@@ -77,17 +77,15 @@ export const CharactersListItem = (props) => {
         </Show>
       </div>
       <div
-        class="flex-1 flex pb-4 pr-4"
+        class="flex-1 flex pb-4 pr-4 overflow-hidden"
         classList={{
           'border-b border-gray-200 dark:border-dusty': !props.isActive,
           'border-b border-blue-400 dark:border-fuzzy-red': props.isActive
         }}>
-        <div class="flex-1">
-          <div class="flex">
-            <p class="font-normal! text-lg dark:text-snow" classList={{ 'text-white': props.isActive }}>
-              {character().name}
-            </p>
-          </div>
+        <div class="flex-1 overflow-hidden">
+          <p class="font-normal! text-lg dark:text-snow truncate-text" classList={{ 'text-white': props.isActive }}>
+            {character().name}
+          </p>
           <p class="text-xs/4 text-gray-400 dark:text-gray-300" classList={{ 'text-white': props.isActive }}>
             {firstText()}
           </p>

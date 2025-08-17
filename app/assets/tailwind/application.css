@@ -248,3 +248,11 @@
 .experiences .experience:nth-of-type(2n) {
   @apply bg-gray-50 dark:bg-neutral-700;
 }
+
+.truncate-text {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3; /* Specifies the number of lines to display */
+  overflow: hidden;
+  text-overflow: ellipsis; /* Adds an ellipsis (...) at the end of the truncated text */
+}

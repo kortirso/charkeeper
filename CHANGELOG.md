@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Modified
 - light three dots
+- rendering huge character names
 
 ### Fixed
 - reseting new character form
