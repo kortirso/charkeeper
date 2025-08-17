@@ -79,7 +79,7 @@
       "subraces": {
         "ancient_elf": { "name": { "en": "Ancient elf", "ru": "Древний эльф" } },
         "woodland_elf": { "name": { "en": "Woodland elf", "ru": "Лесной эльф" } },
-        "cavern_elf": { "name": { "en": "Cavern elf", "ru": "Пецерный эльф" } },
+        "cavern_elf": { "name": { "en": "Cavern elf", "ru": "Пещерный эльф" } },
         "arctic_elf": { "name": { "en": "Arctic elf", "ru": "Полярный эльф" } },
         "whisper_elf": { "name": { "en": "Whisper elf", "ru": "Шепчущий эльф" } },
         "seer_elf": { "name": { "en": "Seer elf", "ru": "Эльф-провидец" } }
