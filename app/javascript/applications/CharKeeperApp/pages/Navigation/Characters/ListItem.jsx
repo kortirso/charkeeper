@@ -59,14 +59,14 @@ export const CharactersListItem = (props) => {
             {props.secondText}
           </p>
         </div>
-        <div class="relative h-16" use:clickOutside={() => setIsOpen(false)}>
+        <div class="relative h-16 dark:text-snow" use:clickOutside={() => setIsOpen(false)}>
           <IconButton onClick={toggleMenu}>
             <Dots />
           </IconButton>
           <Show when={isOpen()}>
             <div class="absolute right-0 border border-gray-200 rounded overflow-hidden">
               <p
-                class="px-2 py-1 text-sm bg-white hover:bg-gray-200 dark:bg-dusty dark:hover:bg-neutral-800 dark:text-snow"
+                class="px-2 py-1 text-sm bg-white hover:bg-gray-200 dark:bg-dusty dark:hover:bg-neutral-800"
                 onClick={props.onDeleteCharacter} // eslint-disable-line solid/reactivity
               >{t('charactersPage.onDeleteCharacter')}</p>
             </div>
