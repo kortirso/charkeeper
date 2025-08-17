@@ -2,7 +2,7 @@ import { createSignal, Show } from 'solid-js';
 import * as i18n from '@solid-primitives/i18n';
 
 import { IconButton } from '../../../components';
-import { Dots } from '../../../assets';
+import { Dots, Avatar } from '../../../assets';
 import { useAppLocale } from '../../../context';
 import { clickOutside } from '../../../helpers';
 
@@ -32,8 +32,11 @@ export const CharactersListItem = (props) => {
       }}
       onClick={props.onClick} // eslint-disable-line solid/reactivity
     >
-      <div class="mr-3 pb-4">
-        <Show when={props.avatar} fallback={<div class="w-16 h-16 bordered" />}>
+      <div class="mr-3 pb-4 dark:text-snow">
+        <Show
+          when={props.avatar}
+          fallback={<Avatar width={64} height={64} />}
+        >
           <img src={props.avatar} class="w-16 h-16 rounded" />
         </Show>
       </div>
