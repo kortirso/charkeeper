@@ -8,6 +8,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Added
 - default avatar
 
+### Modified
+- light three dots
+
 ## [0.2.16] - 2025-08-14
 ### Added
 - copy and share homebrew races
