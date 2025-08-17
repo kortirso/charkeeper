@@ -21,6 +21,10 @@ const DAGGERHEART_DEFAULT_FORM = {
   secondary_feature: undefined, community: undefined, main_class: undefined, subclass: undefined,
   avatar_file: undefined, avatar_url: undefined
 }
+const DND5_DEFAULT_FORM = {
+  name: '', race: undefined, subrace: undefined, main_class: undefined,
+  alignment: 'neutral', avatar_file: undefined, avatar_url: undefined
+}
 const DND2024_DEFAULT_FORM = {
   name: '', species: undefined, legacy: undefined, size: undefined,
   main_class: undefined, alignment: 'neutral', avatar_file: undefined, avatar_url: undefined
@@ -40,15 +44,7 @@ export const CharactersTab = () => {
   const [avatarUrl, setAvatarUrl] = createSignal('');
   const [deletingCharacterId, setDeletingCharacterId] = createSignal(undefined);
   const [adminCharacterId, setAdminCharacterId] = createSignal('');
-  const [characterDnd5Form, setCharacterDnd5Form] = createStore({
-    name: '',
-    race: undefined,
-    subrace: undefined,
-    main_class: undefined,
-    alignment: 'neutral',
-    avatar_file: undefined,
-    avatar_url: undefined
-  });
+  const [characterDnd5Form, setCharacterDnd5Form] = createStore(DND5_DEFAULT_FORM);
   const [characterDnd2024Form, setCharacterDnd2024Form] = createStore(DND2024_DEFAULT_FORM);
   const [characterPathfinder2Form, setCharacterPathfinder2Form] = createStore(PATHFINDER2_DEFAULT_FORM);
   const [characterDaggerheartForm, setCharacterDaggerheartForm] = createStore(DAGGERHEART_DEFAULT_FORM);
@@ -223,10 +219,23 @@ export const CharactersTab = () => {
       batch(() => {
         setCharacters(characters().concat(result.character));
         setPlatform(undefined);
-        setCharacterDnd5Form({ name: '', race: undefined, subrace: undefined, main_class: undefined, alignment: 'neutral', avatar_file: undefined, avatar_url: undefined });
-        setCharacterDnd2024Form(DND2024_DEFAULT_FORM);
-        setCharacterPathfinder2Form(PATHFINDER2_DEFAULT_FORM);
-        setCharacterDaggerheartForm(DAGGERHEART_DEFAULT_FORM);
+        setCharacterDnd5Form({
+          name: '', race: undefined, subrace: undefined, main_class: undefined,
+          alignment: 'neutral', avatar_file: undefined, avatar_url: undefined
+        });
+        setCharacterDnd2024Form({
+          name: '', species: undefined, legacy: undefined, size: undefined,
+          main_class: undefined, alignment: 'neutral', avatar_file: undefined, avatar_url: undefined
+        });
+        setCharacterPathfinder2Form({
+          name: '', race: undefined, subrace: undefined, main_class: undefined, subclass: undefined,
+          background: undefined, main_ability: undefined, avatar_file: undefined, avatar_url: undefined
+        });
+        setCharacterDaggerheartForm({
+          name: '', heritage: undefined, heritage_name: '', heritage_features: [], main_feature: undefined,
+          secondary_feature: undefined, community: undefined, main_class: undefined, subclass: undefined,
+          avatar_file: undefined, avatar_url: undefined
+        });
         setCurrentTab('characters');
         setLoading(false);
       });
@@ -269,7 +278,7 @@ export const CharactersTab = () => {
         <Match when={currentTab() === 'characters'}>
           <Button
             default
-            classList='absolute right-4 bottom-4 rounded-full w-12 h-12 z-10'
+            classList="absolute right-4 bottom-4 rounded-full w-12 h-12 z-10"
             onClick={() => setCurrentTab('newCharacter')}
           >
             <Plus />
