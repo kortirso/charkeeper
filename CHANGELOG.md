@@ -11,6 +11,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Modified
 - light three dots
 
+### Fixed
+- reseting new character form
+
 ## [0.2.16] - 2025-08-14
 ### Added
 - copy and share homebrew races
