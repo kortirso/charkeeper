@@ -111,12 +111,6 @@
     "kind": "static",
     "conditions": { "level": 20 }
   },
-
-
-
-
-
-
   {
     "slug": "words_of_creation",
     "title": { "en": "Words of creation", "ru": "Друидический язык" },
@@ -517,6 +511,262 @@
       "limit": "1"
     },
     "limit_refresh": "long_rest",
+    "conditions": { "level": 20 }
+  },
+
+
+
+
+  {
+    "slug": "rogue_expertise",
+    "title": { "en": "Expertise", "ru": "Компетентность" },
+    "description": {
+      "en": "Choose {{value}} learned skills. Your proficiency bonus is doubled for selected skills.",
+      "ru": "Выберите {{value}} изученных умения. Ваш бонус мастерства для выбранных умений удваивается."
+    },
+    "origin": "class",
+    "origin_value": "rogue",
+    "kind": "static",
+    "description_eval_variables": {
+      "value": "classes['rogue'] >= 6 ? 4 : 2"
+    }
+  },
+  {
+    "slug": "thieves_cant",
+    "title": { "en": "Thieves' cant", "ru": "Воровской жаргон" },
+    "description": {
+      "en": "You know Thieves' cant and one other language of your choice.",
+      "ru": "Вы знаете Воровской жаргон и ещё один язык на выбор."
+    },
+    "origin": "class",
+    "origin_value": "rogue",
+    "kind": "static"
+  },
+  {
+    "slug": "rogue_weapon_mastery",
+    "title": { "en": "Weapon mastery", "ru": "Оружейные приёмы" },
+    "description": {
+      "en": "Your training with weapons allows you to use the mastery properties of two kinds of weapons of your choice with which you have proficiency. Whenever you finish a Long Rest, you can change the kinds of weapons you chose.",
+      "ru": "Ваша тренировка с оружием позволяет вам использовать оружейные приёмы 2 типов оружия, из тех которыми вы владеете. Когда вы заканчиваете продолжительный отдых, вы можете поменять типы оружия."
+    },
+    "origin": "class",
+    "origin_value": "rogue",
+    "kind": "static"
+  },
+  {
+    "slug": "sneak_attack",
+    "title": { "en": "Sneak attack", "ru": "Скрытая атака" },
+    "description": {
+      "en": "Once per turn, you can deal an extra {{value}}d6 damage to one creature you hit with an attack roll if you have Advantage on the roll and the attack uses a Finesse or a Ranged weapon. You don't need Advantage on the attack roll if at least one of your allies is within 5 feet of the target, the ally doesn't have the Incapacitated condition, and you don't have Disadvantage on the attack roll.",
+      "ru": "Один раз в ход вы можете нанести дополнительно {{value}}к6 урона одному существу, по которому вы попали атакой, совершённой с преимуществом. Атака должна использовать дальнобойное оружие или оружие со свойством фехтовальное. Вам не нужно иметь преимущество при броске атаки, если в пределах 5 футов от цели находится по крайней мере 1 ваш союзник. Этот союзник не должен быть в состоянии недееспособный и у вас не должно быть помехи для этого броска атаки."
+    },
+    "origin": "class",
+    "origin_value": "rogue",
+    "kind": "static",
+    "description_eval_variables": {
+      "value": "(classes['rogue'] + 1) / 2"
+    }
+  },
+  {
+    "slug": "cunning_action",
+    "title": { "en": "Cunning action", "ru": "Хитрое действие" },
+    "description": {
+      "en": "On your turn, you can take one of the following actions as a Bonus Action: Dash, Disengage, or Hide.",
+      "ru": "В свой ход бонусным действием вы можете совершить 1 из следующих действий: рывок, отход или засада."
+    },
+    "origin": "class",
+    "origin_value": "rogue",
+    "kind": "static",
+    "conditions": { "level": 2 }
+  },
+  {
+    "slug": "steady_aim",
+    "title": { "en": "Steady aim", "ru": "Точное прицеливание" },
+    "description": {
+      "en": "As a Bonus Action, you give yourself Advantage on your next attack roll on the current turn. You can use this feature only if you haven't moved during this turn, and after you use it, your Speed is O until the end of the current turn.",
+      "ru": "Бонусным действием вы можете дать себе преимущество на следующий бросок атаки в текущий ход. Вы можете использовать это бонусное действие только если в этот ход вы не двигались и после использования этого умения ваша скорость будет равна 0 до конца текущего хода."
+    },
+    "origin": "class",
+    "origin_value": "rogue",
+    "kind": "static",
+    "conditions": { "level": 3 }
+  },
+  {
+    "slug": "sneak_attack_poison",
+    "title": { "en": "Sneak attack: Poison", "ru": "Скрытая атака: Отравить" },
+    "description": {
+      "en": "1d6. You add a toxin to your strike, forcing the target to make a Constitution saving throw (DC {{dc}}). On a failed save, the target has the Poisoned condition for 1 minute. At the end of each of its turns, the Poisoned target repeats the save, ending the effect on itself on a success. To use this effect, you must have a Poisoner's Kit on your person.",
+      "ru": "1к6. Вы наносите усиленный ядом удар, вынуждая цель совершить спасбросок Телосложения (УС {{dc}}). Если спасбросок провален, то цель получает состояние отравленный на 1 минуту. В конце каждого своего хода отравленная цель повторяет спасбросок и в случае успеха эффект заканчивается. Чтобы использовать этот эффект, вы должны иметь при себе набор отравителя."
+    },
+    "origin": "class",
+    "origin_value": "rogue",
+    "kind": "static",
+    "description_eval_variables": {
+      "dc": "8 + modifiers['dex'] + proficiency_bonus"
+    },
+    "conditions": { "level": 5 }
+  },
+  {
+    "slug": "sneak_attack_trip",
+    "title": { "en": "Sneak attack: Trip", "ru": "Скрытая атака: Повалить" },
+    "description": {
+      "en": "1d6. If the target is Large or smaller, it must succeed on a Dexterity saving throw (DC {{dc}}) or have the Prone condition.",
+      "ru": "1к6. Если цель является существом размера большой или меньше, то она должна совершить спасбросок Ловкости (УС {{dc}}), получая состояние лежащий ничком в случае провала."
+    },
+    "origin": "class",
+    "origin_value": "rogue",
+    "kind": "static",
+    "description_eval_variables": {
+      "dc": "8 + modifiers['dex'] + proficiency_bonus"
+    },
+    "conditions": { "level": 5 }
+  },
+  {
+    "slug": "sneak_attack_withdraw",
+    "title": { "en": "Sneak attack: Withdraw", "ru": "Скрытая атака: Отступить" },
+    "description": {
+      "en": "1d6. Immediately after the attack, you move up to half your Speed without provoking Opportunity Attacks.",
+      "ru": "1к6. Сразу после атаки вы можете переместиться вплоть до половины своей скорости, не провоцируя атак."
+    },
+    "origin": "class",
+    "origin_value": "rogue",
+    "kind": "static",
+    "conditions": { "level": 5 }
+  },
+  {
+    "slug": "sneak_attack_daze",
+    "title": { "en": "Sneak attack: Daze", "ru": "Скрытая атака: Оглушить" },
+    "description": {
+      "en": "2d6. The target must succeed on a Constitution saving throw (DC {{dc}}), or on its next turn, it can do only one of the following: move or take an action or a Bonus Action.",
+      "ru": "2к6. Цель должна сделать спасбросок Телосложения (УС {{dc}}). В случае провала в её следующий ходу ей доступно лишь одно из следующего: перемещение, действие или бонусное действие."
+    },
+    "origin": "class",
+    "origin_value": "rogue",
+    "kind": "static",
+    "description_eval_variables": {
+      "dc": "8 + modifiers['dex'] + proficiency_bonus"
+    },
+    "conditions": { "level": 14 }
+  },
+  {
+    "slug": "sneak_attack_knock_out",
+    "title": { "en": "Sneak attack: Knock out", "ru": "Скрытая атака: Вырубить" },
+    "description": {
+      "en": "6d6. The target must succeed on a Constitution saving throw (DC {{dc}}), or it has the Unconscious condition for 1 minute or until it takes any damage. The Unconscious target repeats the save at the end of each of its turns, ending the effect on itself on a success.",
+      "ru": "6к6. Цель должна совершить спасбросок Телосложения (УС {{dc}}). В случае провала она получает состояние бессознательный длительностью в 1 минуту или до тех пор, пока не получит урон. Цель в состоянии бессознательный повторяет спасбросок в конце каждого своего хода, избавляясь от эффекта на себе при успехе."
+    },
+    "origin": "class",
+    "origin_value": "rogue",
+    "kind": "static",
+    "description_eval_variables": {
+      "dc": "8 + modifiers['dex'] + proficiency_bonus"
+    },
+    "conditions": { "level": 14 }
+  },
+  {
+    "slug": "sneak_attack_obscure",
+    "title": { "en": "Sneak attack: Obscure", "ru": "Скрытая атака: Ослепить" },
+    "description": {
+      "en": "3d6. The target must succeed on a Dexterity saving throw (DC {{dc}}), or it has the Blinded condition until the end of its next turn.",
+      "ru": "3к6. Цель должна совершить спасбросок Ловкости (УС {{dc}}). В случае провала она получает состояние ослеплённый до конца её следующего хода."
+    },
+    "origin": "class",
+    "origin_value": "rogue",
+    "kind": "static",
+    "description_eval_variables": {
+      "dc": "8 + modifiers['dex'] + proficiency_bonus"
+    },
+    "conditions": { "level": 14 }
+  },
+
+
+
+  {
+    "slug": "uncanny_dodge",
+    "title": { "en": "Uncanny dodge", "ru": "Невероятное уклонение" },
+    "description": {
+      "en": "When an attacker that you can see hits you with an attack roll, you can take a Reaction to halve the attack's damage against you (round down).",
+      "ru": "Когда нападающий, которого вы можете видеть, попадает по вам атакой, вы можете реакцией уменьшить вдвое урон (округляя к меньшему), наносимый вам этой атакой."
+    },
+    "origin": "class",
+    "origin_value": "rogue",
+    "kind": "static",
+    "conditions": { "level": 5 }
+  },
+  {
+    "slug": "evasion",
+    "title": { "en": "Evasion", "ru": "Увёртливость" },
+    "description": {
+      "en": "When you're subjected to an effect that allows you to make a Dexterity saving throw to take only half damage, you instead take no damage if you succeed on the saving throw and only half damage if you fail.",
+      "ru": "Когда вы попадаете под действие эффекта, который позволяет вам совершить спасбросок Ловкости, чтобы получить только половину урона, вместо этого вы не получаете урона вовсе, если спасбросок был успешен, и только половину урона, если он был провален."
+    },
+    "origin": "class",
+    "origin_value": "rogue",
+    "kind": "static",
+    "conditions": { "level": 7 }
+  },
+  {
+    "slug": "reliable_talent",
+    "title": { "en": "Reliable talent", "ru": "Надёжный талант" },
+    "description": {
+      "en": "Whenever you make an ability check that uses one of your skill or tool proficiencies, you can treat a d20 roll of 9 or lower as a 10.",
+      "ru": "Каждый раз, когда вы совершаете проверку характеристики, которая использует одно из ваших владений инструментом или навыком, то при выпадении на к20 результата 9 или ниже вы можете считать, что выпало 10."
+    },
+    "origin": "class",
+    "origin_value": "rogue",
+    "kind": "static",
+    "conditions": { "level": 7 }
+  },
+  {
+    "slug": "improved_cunning_strike",
+    "title": { "en": "Improved cunning strike", "ru": "Улучшенный хитрый удар" },
+    "description": {
+      "en": "You can use up to two Cunning Strike effects when you deal Sneak Attack damage.",
+      "ru": "Вы можете использовать до двух эффектов Хитрого удара при нанесении урона от Скрытой атаки."
+    },
+    "origin": "class",
+    "origin_value": "rogue",
+    "kind": "static",
+    "conditions": { "level": 11 }
+  },
+  {
+    "slug": "slippery_mind",
+    "title": { "en": "Slippery mind", "ru": "Скользкий ум" },
+    "description": { "en": "", "ru": "" },
+    "origin": "class",
+    "origin_value": "rogue",
+    "kind": "update_result",
+    "eval_variables": {
+      "class_save_dc": "class_save_dc.concat(%w[wis cha]).uniq"
+    },
+    "conditions": { "level": 15 }
+  },
+  {
+    "slug": "elusive",
+    "title": { "en": "Elusive", "ru": "Неуловимый" },
+    "description": {
+      "en": "No attack roll can have Advantage against you unless you have the Incapacitated condition.",
+      "ru": "Никакие броски атаки по вам не могут получить преимущество, пока вы не находитесь в состоянии недееспособный."
+    },
+    "origin": "class",
+    "origin_value": "rogue",
+    "kind": "static",
+    "conditions": { "level": 18 }
+  },
+  {
+    "slug": "stroke_of_luck",
+    "title": { "en": "Stroke of luck", "ru": "Удача" },
+    "description": {
+      "en": "If you fail a D20 Test, you can turn the roll into a 20.",
+      "ru": "Если вы провалили Тест к20, то вы можете изменить полученный результат на «20»."
+    },
+    "origin": "class",
+    "origin_value": "rogue",
+    "kind": "static",
+    "description_eval_variables": {
+      "limit": "1"
+    },
+    "limit_refresh": "short_rest",
     "conditions": { "level": 20 }
   }
 ]
