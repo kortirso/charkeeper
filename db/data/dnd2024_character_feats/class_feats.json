@@ -139,8 +139,8 @@
     "origin_value": "druid",
     "kind": "one_from_list",
     "options": {
-      "magician": { "en": "Magician", "ru": "Маг" },
-      "warden": { "en": "Warden", "ru": "Хранитель" }
+      "primal_order_magician": { "en": "Magician", "ru": "Маг" },
+      "primal_order_warden": { "en": "Warden", "ru": "Хранитель" }
     }
   },
   {
@@ -154,7 +154,7 @@
       "spell_classes": "spell_classes[:druid][:cantrips_amount] += 1; spell_classes",
       "skills": "selected_skill = ['arcana', 'nature']; skills.map { |skill| next skill if skill[:slug] != selected_skill; skill[:modifier] += [1, modifiers['wis']].max; skill }"
     },
-    "conditions": { "selected_feature": "magician" }
+    "conditions": { "selected_feature": "primal_order_magician" }
   },
   {
     "slug": "warden",
@@ -166,6 +166,146 @@
     "origin": "class",
     "origin_value": "druid",
     "kind": "static",
-    "conditions": { "selected_feature": "warden" }
+    "conditions": { "selected_feature": "primal_order_warden" }
   },
+  {
+    "slug": "wild_companion",
+    "title": { "en": "Wild companion", "ru": "Дикий компаньон" },
+    "description": {
+      "en": "As a Magic action, you can expend a spell slot or a use of Wild Shape to cast the Find Familiar spell without Material components. When you cast the spell in this way, the familiar is Fey and disappears when you finish a Long Rest.",
+      "ru": "Действием магия вы можете потратить ячейку заклинания или использование дикой формы, чтобы наложить заклинание Поиск фамильяра без материальных компонентов. Когда вы накладываете заклинание таким образом, фамильяр имеет тип существа фея и исчезает, когда вы заканчиваете продолжительный отдых."
+    },
+    "origin": "class",
+    "origin_value": "druid",
+    "kind": "static",
+    "conditions": { "level": 2 }
+  },
+  {
+    "slug": "wild_resurgence",
+    "title": { "en": "Wild resurgence", "ru": "Восстановление дикости" },
+    "description": {
+      "en": "Once on each of your turns, if you have no uses of Wild Shape left, you can give yourself one use by expending a spell slot (no action required). In addition, you can expend one use of Wild Shape (no action required) to give yourself a level 1 spell slot, but you can't do so again until you finish a Long Rest.",
+      "ru": "Один раз в ваш ход, если у вас не осталось использований Дикой формы, вы можете дать себе одно использование, потратив ячейку заклинания (действие не требуется). Кроме того, вы можете потратить одно использование Дикой формы (действие не требуется), чтобы дать себе ячейку заклинания 1 уровня, но вы не сможете сделать это снова, пока не закончите продолжительный отдых."
+    },
+    "origin": "class",
+    "origin_value": "druid",
+    "kind": "static",
+    "description_eval_variables": {
+      "limit": "1"
+    },
+    "limit_refresh": "long_rest",
+    "conditions": { "level": 5 }
+  },
+  {
+    "slug": "elemental_fury",
+    "title": { "en": "Elemental fury", "ru": "Стихийная ярость" },
+    "description": {
+      "en": "The might of the elements flows through you. ",
+      "ru": "Мощь стихий течёт через вас."
+    },
+    "origin": "class",
+    "origin_value": "druid",
+    "kind": "one_from_list",
+    "options": {
+      "elemental_fury_spellcasting": { "en": "Potent spellcasting", "ru": "Мощные заклинания" },
+      "elemental_fury_strike": { "en": "Primal strike", "ru": "Дикий удар" }
+    },
+    "conditions": { "level": 7 }
+  },
+  {
+    "slug": "potent_spellcasting",
+    "title": { "en": "Potent spellcasting", "ru": "Мощные заклинания" },
+    "description": {
+      "en": "Add +{{value}} to the damage you deal with any Druid cantrip.",
+      "ru": "Добавьте +{{value}} к урону, который вы наносите любым заговором друида."
+    },
+    "origin": "class",
+    "origin_value": "druid",
+    "kind": "static",
+    "description_eval_variables": {
+      "value": "modifiers['wis']"
+    },
+    "conditions": { "selected_feature": "elemental_fury_spellcasting" }
+  },
+  {
+    "slug": "primal_strike",
+    "title": { "en": "Primal strike", "ru": "Дикий удар" },
+    "description": {
+      "en": "Once on each of your turns when you hit a creature with an attack roll using a weapon or a Beast form's attack in Wild Shape, you can cause the target to take an extra 1d8 Cold, Fire, Lightning, or Thunder damage (choose when you hit).",
+      "ru": "Один раз в ваш ход, когда вы попадаете по существу броском атаки, используя оружие или атаку из статблока зверя в Дикой форме, вы можете заставить цель получить дополнительно 1к8 урона холодом, огнём, электричеством или звуком (выберите, когда вы наносите удар)."
+    },
+    "origin": "class",
+    "origin_value": "druid",
+    "kind": "static",
+    "conditions": { "selected_feature": "elemental_fury_strike" }
+  },
+  {
+    "slug": "improved_potent_spellcasting",
+    "title": { "en": "Potent spellcasting", "ru": "Мощные заклинания" },
+    "description": {
+      "en": "Add +{{value}} to the damage you deal with any Druid cantrip. When you cast a Druid cantrip with a range of 10 feet or greater, the spell's range increases by 300 feet.",
+      "ru": "Добавьте +{{value}} к урону, который вы наносите любым заговором друида. Когда вы применяете заговор друида с дистанцией 10 футов или больше, то радиус действия заклинания увеличивается на 300 футов."
+    },
+    "exclude": ["potent_spellcasting"],
+    "origin": "class",
+    "origin_value": "druid",
+    "kind": "static",
+    "description_eval_variables": {
+      "value": "modifiers['wis']"
+    },
+    "conditions": { "selected_feature": "elemental_fury_spellcasting", "level": 15 }
+  },
+  {
+    "slug": "improved_primal_strike",
+    "title": { "en": "Primal strike", "ru": "Дикий удар" },
+    "description": {
+      "en": "Once on each of your turns when you hit a creature with an attack roll using a weapon or a Beast form's attack in Wild Shape, you can cause the target to take an extra 2d8 Cold, Fire, Lightning, or Thunder damage (choose when you hit).",
+      "ru": "Один раз в ваш ход, когда вы попадаете по существу броском атаки, используя оружие или атаку из статблока зверя в Дикой форме, вы можете заставить цель получить дополнительно 2к8 урона холодом, огнём, электричеством или звуком (выберите, когда вы наносите удар)."
+    },
+    "exclude": ["primal_strike"],
+    "origin": "class",
+    "origin_value": "druid",
+    "kind": "static",
+    "conditions": { "selected_feature": "elemental_fury_strike", "level": 15 }
+  },
+  {
+    "slug": "beast_spells",
+    "title": { "en": "Beast spells", "ru": "Заклинания Зверя" },
+    "description": {
+      "en": "While using Wild Shape, you can cast spells in Beast form, except for any spell that has a Material component with a cost specified or that consumes its Material component.",
+      "ru": "Во время использования Дикой формы вы можете накладывать заклинания в форме зверя, за исключением любого заклинания, которое имеет материальный компонент со стоимостью или которое потребляет материальный компонент."
+    },
+    "origin": "class",
+    "origin_value": "druid",
+    "kind": "static",
+    "conditions": { "level": 18 }
+  },
+  {
+    "slug": "evergreen_wild_shape",
+    "title": { "en": "Evergreen wild shape", "ru": "Неувядающая Дикая форма" },
+    "description": {
+      "en": "Whenever you roll Initiative and have no uses of Wild Shape left, you regain one expended use of it.",
+      "ru": "Каждый раз, когда вы бросаете инициативу и у вас не осталось использований Дикой формы, то вы восстанавливаете одно потраченное её использование."
+    },
+    "origin": "class",
+    "origin_value": "druid",
+    "kind": "static",
+    "conditions": { "level": 20 }
+  },
+  {
+    "slug": "wild_resurgence",
+    "title": { "en": "Wild resurgence", "ru": "Природный маг" },
+    "description": {
+      "en": "You can convert uses of Wild Shape into a spell slot (no action required). Choose a number of your unexpended uses of Wild Shape and convert them into a single spell slot, with each use contributing 2 spell levels.",
+      "ru": "Вы можете преобразовать использования Дикой формы в ячейку заклинания (действие не требуется). Выберите несколько ваших неизрасходованных использований Дикой формы и преобразуйте их в одну ячейку заклинания, при этом каждое использование добавляет 2 уровня заклинания."
+    },
+    "origin": "class",
+    "origin_value": "druid",
+    "kind": "static",
+    "description_eval_variables": {
+      "limit": "1"
+    },
+    "limit_refresh": "long_rest",
+    "conditions": { "level": 20 }
+  }
 ]
