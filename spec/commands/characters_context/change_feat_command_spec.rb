@@ -9,7 +9,7 @@ describe CharactersContext::ChangeFeatCommand do
     let!(:character) { create :character }
 
     context 'for simple feat' do
-      let!(:feat) { create :feat, :dnd5_bardic_inspiration, kind: 1 }
+      let!(:feat) { create :feat, :dnd5_bardic_inspiration, kind: 1, origin_value: 'monk' }
       let!(:character_feat) { create :character_feat, character: character, feat: feat }
       let(:value) { 'value' }
 
@@ -22,7 +22,7 @@ describe CharactersContext::ChangeFeatCommand do
     end
 
     context 'for select feat' do
-      let!(:feat) { create :feat, :dnd5_bardic_inspiration, kind: 3 }
+      let!(:feat) { create :feat, :dnd5_bardic_inspiration, kind: 3, origin_value: 'monk' }
       let!(:character_feat) { create :character_feat, character: character, feat: feat }
       let(:value) { '1' }
 

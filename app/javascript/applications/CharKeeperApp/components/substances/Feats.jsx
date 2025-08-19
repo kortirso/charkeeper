@@ -65,13 +65,16 @@ export const Feats = (props) => {
       { character_feat: payload, only_head: true }
     );
 
-    const newFeatures = character().features.slice().map((element) => {
-      if (element.id !== featureId) return element;
-      return { ...element, ...payload }
-    });
-
     if (result.errors === undefined) {
-      if (refresh) props.onReplaceCharacter({ features: newFeatures });
+      if (refresh) {
+        const newFeatures = character().features.slice().map((element) => {
+          if (element.id !== featureId) return element;
+          return { ...element, ...payload };
+        });
+        props.onReplaceCharacter({ features: newFeatures });
+      } else {
+        props.onReloadCharacter();
+      }
     } else renderAlerts(result.errors);
   }
 

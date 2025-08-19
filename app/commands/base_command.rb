@@ -2,9 +2,7 @@
 
 class BaseCommand
   include ActionView::Helpers::SanitizeHelper
-  include Deps[
-    monitoring: 'monitoring.client'
-  ]
+  include Deps[monitoring: 'monitoring.client']
 
   class_attribute :contract
 

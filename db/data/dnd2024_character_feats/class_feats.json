@@ -10,7 +10,7 @@
     "origin_value": "bard",
     "kind": "static",
     "description_eval_variables": {
-      "value": "current_level = classes['bard']; return 'd12' if current_elevel >= 15; return 'd10' if current_elevel >= 10; return 'd8' if current_elevel >= 5; 'd6'",
+      "value": "current_level = classes['bard']; return 'd12' if current_level >= 15; return 'd10' if current_level >= 10; return 'd8' if current_level >= 5; 'd6'",
       "limit": "[1, modifiers['wis']].max"
     },
     "limit_refresh": "long_rest"
@@ -27,7 +27,7 @@
     "origin_value": "bard",
     "kind": "static",
     "description_eval_variables": {
-      "value": "current_level = classes['bard']; return 'd12' if current_elevel >= 15; return 'd10' if current_elevel >= 10; return 'd8' if current_elevel >= 5; 'd6'",
+      "value": "current_level = classes['bard']; return 'd12' if current_level >= 15; return 'd10' if current_level >= 10; return 'd8' if current_level >= 5; 'd6'",
       "limit": "[1, modifiers['wis']].max"
     },
     "limit_refresh": "short_rest",
@@ -36,13 +36,10 @@
   {
     "slug": "jask_of_all_trades",
     "title": { "en": "Jack of all trades", "ru": "Мастер на все руки" },
-    "description": {
-      "en": "",
-      "ru": ""
-    },
+    "description": { "en": "", "ru": "" },
     "origin": "class",
     "origin_value": "bard",
-    "kind": "result",
+    "kind": "update_result",
     "eval_variables": {
       "skills": "bonus = proficiency_bonus / 2; skills.map { |skill| next skill if skill[:level].positive?; skill[:modifier] = modifiers[skill[:ability]] + bonus; skill }"
     },
@@ -728,18 +725,6 @@
     "origin_value": "rogue",
     "kind": "static",
     "conditions": { "level": 11 }
-  },
-  {
-    "slug": "slippery_mind",
-    "title": { "en": "Slippery mind", "ru": "Скользкий ум" },
-    "description": { "en": "", "ru": "" },
-    "origin": "class",
-    "origin_value": "rogue",
-    "kind": "update_result",
-    "eval_variables": {
-      "class_save_dc": "class_save_dc.concat(%w[wis cha]).uniq"
-    },
-    "conditions": { "level": 15 }
   },
   {
     "slug": "elusive",

@@ -20,11 +20,14 @@ class FeaturesDecorator
     @features ||=
       available_features.filter_map do |feature|
         feature.feat.eval_variables.each do |method_name, variable|
-          instance_variable_set(:"@#{method_name}", eval_variable(variable))
+          result = eval_variable(feature.feat, variable)
+          instance_variable_set(:"@#{method_name}", result) if result
         end
         next if feature.feat.kind == 'update_result'
 
-        feature.feat.description_eval_variables.transform_values! { |value| eval_variable(value) }
+        feature.feat.description_eval_variables.transform_values! do |value|
+          eval_variable(feature.feat, value) || value
+        end
         {
           id: feature.id,
           slug: feature.feat.slug,
@@ -55,10 +58,21 @@ class FeaturesDecorator
   end
 
   # rubocop: disable Security/Eval, Style/MethodCalledOnDoEndBlock
-  def eval_variable(variable)
+  def eval_variable(feat, variable)
     lambda do
       eval(variable)
     end.call
+  rescue StandardError, SyntaxError => e
+    monitoring_feat_error(e, feat)
+    nil
   end
   # rubocop: enable Security/Eval, Style/MethodCalledOnDoEndBlock
+
+  def monitoring_feat_error(exception, feat)
+    Charkeeper::Container.resolve('monitoring.client').notify(
+      exception: Monitoring::FeatVariableError.new('Feat variable error'),
+      metadata: { slug: feat.slug, message: exception.message },
+      severity: :info
+    )
+  end
 end

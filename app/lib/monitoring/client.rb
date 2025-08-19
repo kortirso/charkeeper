@@ -6,6 +6,7 @@ module Monitoring
   ReceiveTelegramWebhook = Class.new(StandardError)
   ValidationError = Class.new(StandardError)
   FrontendError = Class.new(StandardError)
+  FeatVariableError = Class.new(StandardError)
 
   class Client
     include Deps[provider: 'monitoring.providers.rails']

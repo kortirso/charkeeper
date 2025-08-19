@@ -21,7 +21,7 @@ module CharactersContext
       def filter_feat(item, character, subclasses_levels, selected_feats)
         conditions = item.conditions
         return unless match_by_level?(conditions['level'], item, character, subclasses_levels)
-        return unless match_by_selected_feats?(conditions['selected_feats'], selected_feats)
+        return unless match_by_selected_feats?(conditions['selected_feature'], selected_feats)
 
         item
       end
@@ -37,7 +37,7 @@ module CharactersContext
 
       def match_by_selected_feats?(condition, selected_feats)
         return true unless condition
-        return false if (condition - selected_feats).any?
+        return false if ([condition] - selected_feats).any?
 
         true
       end

@@ -101,7 +101,12 @@ export const Dnd5 = (props) => {
                 <Dnd5Skills character={character()} onReplaceCharacter={props.onReplaceCharacter} />
               </div>
               <div class="mt-4">
-                <Feats character={character()} filters={featFilters()} onReplaceCharacter={props.onReplaceCharacter} />
+                <Feats
+                  character={character()}
+                  filters={featFilters()}
+                  onReplaceCharacter={props.onReplaceCharacter}
+                  onReloadCharacter={props.onReloadCharacter}
+                />
               </div>
             </Match>
             <Match when={activeMobileTab() === 'combat'}>
