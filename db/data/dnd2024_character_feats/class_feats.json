@@ -307,5 +307,216 @@
     },
     "limit_refresh": "long_rest",
     "conditions": { "level": 20 }
+  },
+  {
+    "slug": "divine_order",
+    "title": { "en": "Primal order", "ru": "Божественный порядок" },
+    "description": {
+      "en": "You have dedicated yourself to one of the following sacred roles of your choice.",
+      "ru": "Вы посвятили себя одной из следующих священных ролей по вашему выбору."
+    },
+    "origin": "class",
+    "origin_value": "cleric",
+    "kind": "one_from_list",
+    "options": {
+      "divine_order_thaumaturge": { "en": "Thaumaturge", "ru": "Чудотворец" },
+      "divine_order_protector": { "en": "Protector", "ru": "Защитник" }
+    }
+  },
+  {
+    "slug": "thaumaturge",
+    "title": { "en": "Thaumaturge", "ru": "Чудотворец" },
+    "description": { "en": "", "ru": "" },
+    "origin": "class",
+    "origin_value": "cleric",
+    "kind": "update_result",
+    "eval_variables": {
+      "spell_classes": "spell_classes[:cleric][:cantrips_amount] += 1; spell_classes",
+      "skills": "selected_skill = ['arcana', 'religion']; skills.map { |skill| next skill if skill[:slug] != selected_skill; skill[:modifier] += [1, modifiers['wis']].max; skill }"
+    },
+    "conditions": { "selected_feature": "divine_order_thaumaturge" }
+  },
+  {
+    "slug": "protector",
+    "title": { "en": "Protector", "ru": "Защитник" },
+    "description": {
+      "en": "You gain proficiency with Martial weapons and training with Medium armor.",
+      "ru": "Вы получаете владение воинским оружием и тяжелыми доспехами."
+    },
+    "origin": "class",
+    "origin_value": "cleric",
+    "kind": "static",
+    "conditions": { "selected_feature": "divine_order_protector" }
+  },
+  {
+    "slug": "channel_divinity",
+    "title": { "en": "Channel Divinity", "ru": "Божественный канал" },
+    "description": {
+      "en": "When you use your Channel Divinity, you choose which effect to create.",
+      "ru": "Когда вы используете Божественный канал, вы выбираете, какой эффект создать."
+    },
+    "origin": "class",
+    "origin_value": "cleric",
+    "kind": "static",
+    "description_eval_variables": {
+      "limit": "class_level = classes['cleric']; return 4 if class_level >= 18; return 3 if class_level >= 6; 2"
+    },
+    "limit_refresh": "one_at_short_rest",
+    "conditions": { "level": 2 }
+  },
+  {
+    "slug": "turn_undead_0",
+    "title": { "en": "Channel Divinity: Turn Undead", "ru": "Божественный канал: Изгнание нежити" },
+    "description": {
+      "en": "Each Undead of your choice within 30 feet of you must make a Wisdom saving throw (DC {{value}}). If the creature fails its saving throw, it is turned for 1 minute or until it takes any damage. A turned creature must spend its turns trying to move as far away from you as it can.",
+      "ru": "Каждая нежить по вашему выбору в пределах 30 футов должна совершить спасбросок Мудрости (УС {{value}}). If the creature fails its save, it has the Frightened and Incapacitated conditions for 1minute. For that duration, it tries to move as far from you as it can on its turns. This effect ends early on the creature if it takes any damage, if you have the Incapacitated condition, or if you die."
+    },
+    "origin": "class",
+    "origin_value": "cleric",
+    "kind": "static",
+    "description_eval_variables": {
+      "value": "spell_classes.dig(:cleric, :save_dc)"
+    },
+    "conditions": { "level": 2 }
+  },
+  {
+    "slug": "turn_undead_1",
+    "title": { "en": "Channel Divinity: Turn Undead", "ru": "Божественный канал: Изгнание нежити" },
+    "description": {
+      "en": "Each Undead of your choice within 30 feet of you must make a Wisdom saving throw (DC {{value}}). If the creature fails its saving throw, it is turned for 1 minute or until it takes any damage. A turned creature must spend its turns trying to move as far away from you as it can. You can roll {{dice}}d8. Each Undead that fails its saving throw against that use of Turn Undead takes Radiant damage equal to the roll's total. This damage doesn't end the turn effect.",
+      "ru": "Каждая нежить по вашему выбору в пределах 30 футов должна совершить спасбросок Мудрости (УС {{value}}). Если существо проваливает спасбросок, то на 1 минуту оно получает состояния испуганный и недееспособный. В течение этого времени каждый свой ход оно пытается отойти от вас как можно дальше. Этот эффект заканчивается на существе раньше, если оно получает какой-либо урон, если у вас появляется состояние недееспособный или если вы умираете. Вы можете бросить {{dice}}к8. Каждая нежить, которая провалила свой спасбросок против этого использования Изгнания нежити, получит урон излучением, равный общему результату броска. Этот урон не заканчивает эффект изгнания."
+    },
+    "exclude": ["turn_undead_0"],
+    "origin": "class",
+    "origin_value": "cleric",
+    "kind": "static",
+    "description_eval_variables": {
+      "value": "spell_classes.dig(:cleric, :save_dc)",
+      "dice": "[1, modifiers['wis']].max"
+    },
+    "conditions": { "level": 5 }
+  },
+  {
+    "slug": "divine_spark",
+    "title": { "en": "Channel Divinity: Divine spark", "ru": "Божественный канал: Божественная искра" },
+    "description": {
+      "en": "As a Magic action, you point your Holy Symbol at another creature you can see within 30 feet of yourself. Roll {{dice}}d8+{{modifier}}. You either restore Hit Points to the creature or force the creature to make a Constitution saving throw (DC {{value}}). On a failed save, the creature takes Necrotic or Radiant damage (your choice). On a successful save, the creature takes half as much damage (round down).",
+      "ru": "Действием магия вы указываете священным символом на другое существо, которое вы можете видеть в пределах 30 футов от себя. Бросьте {{dice}}к8+{{modifier}}. Вы либо восстанавливаете хиты существа, либо заставляете существо совершить спасбросок Телосложения (УС {{save}}). При провале существо получает урон некротической энергией или излучением (по вашему выбору). При успешном спасброске существо получает половину урона (округляется в меньшую сторону)."
+    },
+    "origin": "class",
+    "origin_value": "cleric",
+    "kind": "static",
+    "description_eval_variables": {
+      "save": "spell_classes.dig(:cleric, :save_dc)",
+      "dice": "class_level = classes['cleric']; return 4 if class_level >= 18; return 3 if class_level >= 13; return 2 if class_level >= 7; 1",
+      "modifier": "modifiers['wis']"
+    },
+    "conditions": { "level": 2 }
+  },
+  {
+    "slug": "blessed_strikes",
+    "title": { "en": "Blessed strikes", "ru": "Благословлённые удары" },
+    "description": {
+      "en": "Divine power infuses you in battle.",
+      "ru": "Божественная сила наполняет вас в битве."
+    },
+    "origin": "class",
+    "origin_value": "cleric",
+    "kind": "one_from_list",
+    "options": {
+      "blessed_strikes_spellcasting": { "en": "Potent spellcasting", "ru": "Мощный заговор" },
+      "blessed_strikes_strike": { "en": "Divine strike", "ru": "Божественный удар" }
+    },
+    "conditions": { "level": 7 }
+  },
+  {
+    "slug": "cleric_potent_spellcasting",
+    "title": { "en": "Potent spellcasting", "ru": "Мощный заговор" },
+    "description": {
+      "en": "Add +{{value}} to the damage you deal with any Cleric cantrip.",
+      "ru": "Добавьте +{{value}} к урону, который вы наносите любым заговором жреца."
+    },
+    "origin": "class",
+    "origin_value": "cleric",
+    "kind": "static",
+    "description_eval_variables": {
+      "value": "modifiers['wis']"
+    },
+    "conditions": { "selected_feature": "blessed_strikes_spellcasting" }
+  },
+  {
+    "slug": "divine_strike",
+    "title": { "en": "Divine strike", "ru": "Божественный удар" },
+    "description": {
+      "en": "Once on each of your turns when you hit a creature with an attack roll using a weapon, you can cause the target to take an extra 1d8 Necrotic or Radiant damage (your choice).",
+      "ru": "Один раз в каждый из ваших ходов, когда вы попадаете по существу броском атаки с использованием оружия, вы можете нанести цели дополнительно 1к8 урона некротической энергией или излучением (по вашему выбору)."
+    },
+    "origin": "class",
+    "origin_value": "cleric",
+    "kind": "static",
+    "conditions": { "selected_feature": "blessed_strikes_strike" }
+  },
+  {
+    "slug": "improved_cleric_potent_spellcasting",
+    "title": { "en": "Potent spellcasting", "ru": "Мощный заговор" },
+    "description": {
+      "en": "Add +{{value}} to the damage you deal with any Cleric cantrip. When you cast a Cleric cantrip with a range of 10 feet or greater, the spell's range increases by 300 feet.",
+      "ru": "Добавьте +{{value}} к урону, который вы наносите любым заговором жреца. Когда вы накладываете заговор жреца и наносите им урон существу, вы можете даровать жизненную силу себе или другому существу в радиусе 60 футов от себя, предоставляя количество временных хитов, равное {{hp}}."
+    },
+    "exclude": ["cleric_potent_spellcasting"],
+    "origin": "class",
+    "origin_value": "cleric",
+    "kind": "static",
+    "description_eval_variables": {
+      "value": "modifiers['wis']",
+      "hp": "2 * modifiers['wis']"
+    },
+    "conditions": { "selected_feature": "blessed_strikes_spellcasting", "level": 14 }
+  },
+  {
+    "slug": "improved_divine_strike",
+    "title": { "en": "Divine strike", "ru": "Божественный удар" },
+    "description": {
+      "en": "Once on each of your turns when you hit a creature with an attack roll using a weapon, you can cause the target to take an extra 2d8 Necrotic or Radiant damage (your choice).",
+      "ru": "Один раз в каждый из ваших ходов, когда вы попадаете по существу броском атаки с использованием оружия, вы можете нанести цели дополнительно 2к8 урона некротической энергией или излучением (по вашему выбору)."
+    },
+    "exclude": ["divine_strike"],
+    "origin": "class",
+    "origin_value": "cleric",
+    "kind": "static",
+    "conditions": { "selected_feature": "blessed_strikes_strike", "level": 14 }
+  },
+  {
+    "slug": "divine_intervention",
+    "title": { "en": "Divine intervention", "ru": "Божественное вмешательство" },
+    "description": {
+      "en": "As a Magic action, choose any Cleric spell of level 5 or lower that doesn't require a Reaction to cast. As part of the same action, you cast that spell without expending a spell slot or needing Material components.",
+      "ru": "Действием магия выберите любое заклинание жреца 5 уровня или ниже, которое не требует реакции для сотворения. В рамках этого же действия вы используете это заклинание, не тратя ячейку заклинания и/или не нуждаясь в материальных компонентах."
+    },
+    "origin": "class",
+    "origin_value": "cleric",
+    "kind": "static",
+    "description_eval_variables": {
+      "limit": "1"
+    },
+    "limit_refresh": "long_rest",
+    "conditions": { "level": 10 }
+  },
+  {
+    "slug": "greater_divine_intervention",
+    "title": { "en": "Greater divine intervention", "ru": "Великое божественное вмешательство" },
+    "description": {
+      "en": "As a Magic action, choose any Cleric spell of level 5 or lower that doesn't require a Reaction to cast. As part of the same action, you cast that spell without expending a spell slot or needing Material components. When you use your Divine Intervention feature, you can choose Wish when you select a spell. If you do so,you can't use Divine Intervention again until you finish 2d4 Long Rests.",
+      "ru": "Действием магия выберите любое заклинание жреца 5 уровня или ниже, которое не требует реакции для сотворения. В рамках этого же действия вы используете это заклинание, не тратя ячейку заклинания и/или не нуждаясь в материальных компонентах. Вы можете выбрать заклинание Желание при выборе заклинания. Если вы это совершаете, то вы не можете использовать Божественное вмешательство снова, пока не закончите 2к4 продолжительных отдыха."
+    },
+    "exclude": ["divine_intervention"],
+    "origin": "class",
+    "origin_value": "cleric",
+    "kind": "static",
+    "description_eval_variables": {
+      "limit": "1"
+    },
+    "limit_refresh": "long_rest",
+    "conditions": { "level": 20 }
   }
 ]
