@@ -50,7 +50,7 @@
     "kind": "static",
     "description_eval_variables": {
       "save_dc": "8 + modifiers['con'] + proficiency_bonus",
-      "damage": " >= 17 ? '4d10' : (level >= 11 ? '3d10' : (level >= 5 ? '2d10' : '1d10'))",
+      "damage": "level >= 17 ? '4d10' : (level >= 11 ? '3d10' : (level >= 5 ? '2d10' : '1d10'))",
       "limit": "proficiency_bonus"
     },
     "eval_variables": {
