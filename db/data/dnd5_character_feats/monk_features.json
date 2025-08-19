@@ -171,10 +171,7 @@
   {
     "slug": "diamond_soul",
     "title": { "en": "Diamond Soul", "ru": "Алмазная душа" },
-    "description": {
-      "en": "Whenever you make a saving throw and fail, you can spend 1 ki point to reroll it and take the second result.",
-      "ru": "Если вы провалили спасбросок, вы можете повторить его, потратив 1 очко ци, и должны использовать второй результат."
-    },
+    "description": { "en": "", "ru": "" },
     "origin": "class",
     "origin_value": "monk",
     "kind": "static",

@@ -1,0 +1,772 @@
+[
+  {
+    "slug": "bardic_inspiration",
+    "title": { "en": "Bardic inspiration", "ru": "Бардовское вдохновение" },
+    "description": {
+      "en": "As a Bonus Action, you can inspire another creature within 60 feet of yourself who can see or hear you. That creature gains one of your Bardic Inspiration dice. A creature can have only one Bardic Inspiration die at a time. Once within the next hour when the creature fails a D20 Test, the creature can roll the Bardic Inspiration die and add the number rolled to the d20.",
+      "ru": "Бонусным действием вы можете вдохновить другое существо в пределах 60 футов от вас, которое может видеть или слышать вас. Это существо получает одну из ваших костей бардовского вдохновения. У существа может быть только одна кость бардовского вдохновения одновременно. Один раз в течение следующего часа, когда существо проваливает Тест к20, существо может бросить кость бардовского вдохновения и добавить выпавшее число к результату броска к20."
+    },
+    "origin": "class",
+    "origin_value": "bard",
+    "kind": "static",
+    "description_eval_variables": {
+      "value": "current_level = classes['bard']; return 'd12' if current_elevel >= 15; return 'd10' if current_elevel >= 10; return 'd8' if current_elevel >= 5; 'd6'",
+      "limit": "[1, modifiers['wis']].max"
+    },
+    "limit_refresh": "long_rest"
+  },
+  {
+    "slug": "bardic_inspiration_1",
+    "title": { "en": "Bardic inspiration", "ru": "Бардовское вдохновение" },
+    "description": {
+      "en": "As a Bonus Action, you can inspire another creature within 60 feet of yourself who can see or hear you. That creature gains one of your Bardic Inspiration dice. A creature can have only one Bardic Inspiration die at a time. Once within the next hour when the creature fails a D20 Test, the creature can roll the Bardic Inspiration die and add the number rolled to the d20. You can expend a spell slot (no action required) to regain one expended use of Bardic Inspiration.",
+      "ru": "Бонусным действием вы можете вдохновить другое существо в пределах 60 футов от вас, которое может видеть или слышать вас. Это существо получает одну из ваших костей бардовского вдохновения. У существа может быть только одна кость бардовского вдохновения одновременно. Один раз в течение следующего часа, когда существо проваливает Тест к20, существо может бросить кость бардовского вдохновения и добавить выпавшее число к результату броска к20. Вы можете потратить ячейку заклинания (действие не требуется), чтобы восстановить 1 потраченное использование кости бардовского вдохновения."
+    },
+    "exclude": ["bardic_inspiration"],
+    "origin": "class",
+    "origin_value": "bard",
+    "kind": "static",
+    "description_eval_variables": {
+      "value": "current_level = classes['bard']; return 'd12' if current_elevel >= 15; return 'd10' if current_elevel >= 10; return 'd8' if current_elevel >= 5; 'd6'",
+      "limit": "[1, modifiers['wis']].max"
+    },
+    "limit_refresh": "short_rest",
+    "conditions": { "level": 5 }
+  },
+  {
+    "slug": "jask_of_all_trades",
+    "title": { "en": "Jack of all trades", "ru": "Мастер на все руки" },
+    "description": {
+      "en": "",
+      "ru": ""
+    },
+    "origin": "class",
+    "origin_value": "bard",
+    "kind": "result",
+    "eval_variables": {
+      "skills": "bonus = proficiency_bonus / 2; skills.map { |skill| next skill if skill[:level].positive?; skill[:modifier] = modifiers[skill[:ability]] + bonus; skill }"
+    },
+    "conditions": { "level": 2 }
+  },
+  {
+    "slug": "expertise",
+    "title": { "en": "Expertise", "ru": "Компетентность" },
+    "description": {
+      "en": "Choose {{value}} learned skills. Your proficiency bonus is doubled for selected skills.",
+      "ru": "Выберите {{value}} изученных умения. Ваш бонус мастерства для выбранных умений удваивается."
+    },
+    "origin": "class",
+    "origin_value": "bard",
+    "kind": "static",
+    "description_eval_variables": {
+      "value": "classes['bard'] >= 9 ? 4 : 2"
+    },
+    "conditions": { "level": 2 }
+  },
+  {
+    "slug": "countercharm",
+    "title": { "en": "Countercharm", "ru": "Контрочарование" },
+    "description": {
+      "en": "If you or a creature within 30 feet of you fails a saving throw against an effect that applies the Charmed or Frightened condition, you can take a Reaction to cause the save to be rerolled, and the new roll has Advantage.",
+      "ru": "Если вы или существо в радиусе 30 футов от вас проваливает спасбросок против эффекта, который накладывает состояние очарованный или испуганный, то вы можете использовать реакцию, чтобы решить что спасбросок будет переброшен, и новый бросок будет совершён с преимуществом."
+    },
+    "origin": "class",
+    "origin_value": "bard",
+    "kind": "static",
+    "conditions": { "level": 7 }
+  },
+  {
+    "slug": "magical_secrets",
+    "title": { "en": "Magical secrets", "ru": "Магические секреты" },
+    "description": {
+      "en": "Whenever you reach a Bard level and the Prepared Spells number increases, you can choose any of your new prepared spells from the Bard, Cleric, Druid, and Wizard spell lists, and the chosen spells count as Bard spells for you. In addition, whenever you replace a spell prepared for this class, you can replace it with a spell from those lists.",
+      "ru": "Когда вы достигаете нового уровня барда и число подготовленных заклинаний увеличивается, вы можете выбрать любое из новых подготовленных заклинаний из списков заклинаний барда, жреца, друида и волшебника и выбранные заклинания будут считаться заклинаниями барда для вас. Кроме того, каждый раз, когда вы заменяете заклинание, подготовленное для барда, вы можете заменить его заклинанием из этих списков."
+    },
+    "origin": "class",
+    "origin_value": "bard",
+    "kind": "static",
+    "conditions": { "level": 10 }
+  },
+  {
+    "slug": "superior_inspiration",
+    "title": { "en": "Superior Inspiration", "ru": "Превосходное вдохновение" },
+    "description": {
+      "en": "When you roll Initiative, you regain expended uses of Bardic Inspiration until you have two if you have fewer than that.",
+      "ru": "Когда вы совершаете бросок инициативы, вы восстанавливаете до 2 потраченных костей бардовского вдохновения, если у вас их меньше."
+    },
+    "origin": "class",
+    "origin_value": "bard",
+    "kind": "static",
+    "conditions": { "level": 18 }
+  },
+  {
+    "slug": "words_of_creation",
+    "title": { "en": "Words of creation", "ru": "Слова творения" },
+    "description": {
+      "en": "You always have the Power Word Heal and Power Word Kill spells prepared. When you cast either spell, you can target a second creature with it if that creature is within 10 feet of the first target.",
+      "ru": "У вас всегда подготовлены заклинания Слово силы: исцеление и Слово силы: смерть. Когда вы накладываете любое из этих заклинаний, вы можете нацелить его на второе существо, если это существо находится в пределах 10 футов от первой цели."
+    },
+    "origin": "class",
+    "origin_value": "bard",
+    "kind": "static",
+    "conditions": { "level": 20 }
+  },
+  {
+    "slug": "words_of_creation",
+    "title": { "en": "Words of creation", "ru": "Друидический язык" },
+    "description": {
+      "en": "You always have the Power Word Heal and Power Word Kill spells prepared. When you cast either spell, you can target a second creature with it if that creature is within 10 feet of the first target.",
+      "ru": "Вы можете использовать друидический, чтобы оставлять скрытые сообщения. Вы и другие, кто знает друидический, автоматически замечаете такое сообщение. Другие замечают наличие сообщения с помощью успешной проверки Интеллекта (Анализ) со УС 15, но не могут расшифровать его без магии."
+    },
+    "origin": "class",
+    "origin_value": "druid",
+    "kind": "static"
+  },
+  {
+    "slug": "primal_order",
+    "title": { "en": "Primal order", "ru": "Первобытный порядок" },
+    "description": {
+      "en": "You have dedicated yourself to one of the following sacred roles of your choice.",
+      "ru": "Вы посвятили себя одной из следующих священных ролей по вашему выбору."
+    },
+    "origin": "class",
+    "origin_value": "druid",
+    "kind": "one_from_list",
+    "options": {
+      "primal_order_magician": { "en": "Magician", "ru": "Маг" },
+      "primal_order_warden": { "en": "Warden", "ru": "Хранитель" }
+    }
+  },
+  {
+    "slug": "magician",
+    "title": { "en": "Magician", "ru": "Маг" },
+    "description": { "en": "", "ru": "" },
+    "origin": "class",
+    "origin_value": "druid",
+    "kind": "update_result",
+    "eval_variables": {
+      "spell_classes": "spell_classes[:druid][:cantrips_amount] += 1; spell_classes",
+      "skills": "selected_skill = ['arcana', 'nature']; skills.map { |skill| next skill if skill[:slug] != selected_skill; skill[:modifier] += [1, modifiers['wis']].max; skill }"
+    },
+    "conditions": { "selected_feature": "primal_order_magician" }
+  },
+  {
+    "slug": "warden",
+    "title": { "en": "Warden", "ru": "Хранитель" },
+    "description": {
+      "en": "You gain proficiency with Martial weapons and training with Medium armor.",
+      "ru": "Вы получаете владения воинским оружием и средними доспехами."
+    },
+    "origin": "class",
+    "origin_value": "druid",
+    "kind": "static",
+    "conditions": { "selected_feature": "primal_order_warden" }
+  },
+  {
+    "slug": "wild_companion",
+    "title": { "en": "Wild companion", "ru": "Дикий компаньон" },
+    "description": {
+      "en": "As a Magic action, you can expend a spell slot or a use of Wild Shape to cast the Find Familiar spell without Material components. When you cast the spell in this way, the familiar is Fey and disappears when you finish a Long Rest.",
+      "ru": "Действием магия вы можете потратить ячейку заклинания или использование дикой формы, чтобы наложить заклинание Поиск фамильяра без материальных компонентов. Когда вы накладываете заклинание таким образом, фамильяр имеет тип существа фея и исчезает, когда вы заканчиваете продолжительный отдых."
+    },
+    "origin": "class",
+    "origin_value": "druid",
+    "kind": "static",
+    "conditions": { "level": 2 }
+  },
+  {
+    "slug": "wild_resurgence",
+    "title": { "en": "Wild resurgence", "ru": "Восстановление дикости" },
+    "description": {
+      "en": "Once on each of your turns, if you have no uses of Wild Shape left, you can give yourself one use by expending a spell slot (no action required). In addition, you can expend one use of Wild Shape (no action required) to give yourself a level 1 spell slot, but you can't do so again until you finish a Long Rest.",
+      "ru": "Один раз в ваш ход, если у вас не осталось использований Дикой формы, вы можете дать себе одно использование, потратив ячейку заклинания (действие не требуется). Кроме того, вы можете потратить одно использование Дикой формы (действие не требуется), чтобы дать себе ячейку заклинания 1 уровня, но вы не сможете сделать это снова, пока не закончите продолжительный отдых."
+    },
+    "origin": "class",
+    "origin_value": "druid",
+    "kind": "static",
+    "description_eval_variables": {
+      "limit": "1"
+    },
+    "limit_refresh": "long_rest",
+    "conditions": { "level": 5 }
+  },
+  {
+    "slug": "elemental_fury",
+    "title": { "en": "Elemental fury", "ru": "Стихийная ярость" },
+    "description": {
+      "en": "The might of the elements flows through you. ",
+      "ru": "Мощь стихий течёт через вас."
+    },
+    "origin": "class",
+    "origin_value": "druid",
+    "kind": "one_from_list",
+    "options": {
+      "elemental_fury_spellcasting": { "en": "Potent spellcasting", "ru": "Мощные заклинания" },
+      "elemental_fury_strike": { "en": "Primal strike", "ru": "Дикий удар" }
+    },
+    "conditions": { "level": 7 }
+  },
+  {
+    "slug": "potent_spellcasting",
+    "title": { "en": "Potent spellcasting", "ru": "Мощные заклинания" },
+    "description": {
+      "en": "Add +{{value}} to the damage you deal with any Druid cantrip.",
+      "ru": "Добавьте +{{value}} к урону, который вы наносите любым заговором друида."
+    },
+    "origin": "class",
+    "origin_value": "druid",
+    "kind": "static",
+    "description_eval_variables": {
+      "value": "modifiers['wis']"
+    },
+    "conditions": { "selected_feature": "elemental_fury_spellcasting" }
+  },
+  {
+    "slug": "primal_strike",
+    "title": { "en": "Primal strike", "ru": "Дикий удар" },
+    "description": {
+      "en": "Once on each of your turns when you hit a creature with an attack roll using a weapon or a Beast form's attack in Wild Shape, you can cause the target to take an extra 1d8 Cold, Fire, Lightning, or Thunder damage (choose when you hit).",
+      "ru": "Один раз в ваш ход, когда вы попадаете по существу броском атаки, используя оружие или атаку из статблока зверя в Дикой форме, вы можете заставить цель получить дополнительно 1к8 урона холодом, огнём, электричеством или звуком (выберите, когда вы наносите удар)."
+    },
+    "origin": "class",
+    "origin_value": "druid",
+    "kind": "static",
+    "conditions": { "selected_feature": "elemental_fury_strike" }
+  },
+  {
+    "slug": "improved_potent_spellcasting",
+    "title": { "en": "Potent spellcasting", "ru": "Мощные заклинания" },
+    "description": {
+      "en": "Add +{{value}} to the damage you deal with any Druid cantrip. When you cast a Druid cantrip with a range of 10 feet or greater, the spell's range increases by 300 feet.",
+      "ru": "Добавьте +{{value}} к урону, который вы наносите любым заговором друида. Когда вы применяете заговор друида с дистанцией 10 футов или больше, то радиус действия заклинания увеличивается на 300 футов."
+    },
+    "exclude": ["potent_spellcasting"],
+    "origin": "class",
+    "origin_value": "druid",
+    "kind": "static",
+    "description_eval_variables": {
+      "value": "modifiers['wis']"
+    },
+    "conditions": { "selected_feature": "elemental_fury_spellcasting", "level": 15 }
+  },
+  {
+    "slug": "improved_primal_strike",
+    "title": { "en": "Primal strike", "ru": "Дикий удар" },
+    "description": {
+      "en": "Once on each of your turns when you hit a creature with an attack roll using a weapon or a Beast form's attack in Wild Shape, you can cause the target to take an extra 2d8 Cold, Fire, Lightning, or Thunder damage (choose when you hit).",
+      "ru": "Один раз в ваш ход, когда вы попадаете по существу броском атаки, используя оружие или атаку из статблока зверя в Дикой форме, вы можете заставить цель получить дополнительно 2к8 урона холодом, огнём, электричеством или звуком (выберите, когда вы наносите удар)."
+    },
+    "exclude": ["primal_strike"],
+    "origin": "class",
+    "origin_value": "druid",
+    "kind": "static",
+    "conditions": { "selected_feature": "elemental_fury_strike", "level": 15 }
+  },
+  {
+    "slug": "beast_spells",
+    "title": { "en": "Beast spells", "ru": "Заклинания Зверя" },
+    "description": {
+      "en": "While using Wild Shape, you can cast spells in Beast form, except for any spell that has a Material component with a cost specified or that consumes its Material component.",
+      "ru": "Во время использования Дикой формы вы можете накладывать заклинания в форме зверя, за исключением любого заклинания, которое имеет материальный компонент со стоимостью или которое потребляет материальный компонент."
+    },
+    "origin": "class",
+    "origin_value": "druid",
+    "kind": "static",
+    "conditions": { "level": 18 }
+  },
+  {
+    "slug": "evergreen_wild_shape",
+    "title": { "en": "Evergreen wild shape", "ru": "Неувядающая Дикая форма" },
+    "description": {
+      "en": "Whenever you roll Initiative and have no uses of Wild Shape left, you regain one expended use of it.",
+      "ru": "Каждый раз, когда вы бросаете инициативу и у вас не осталось использований Дикой формы, то вы восстанавливаете одно потраченное её использование."
+    },
+    "origin": "class",
+    "origin_value": "druid",
+    "kind": "static",
+    "conditions": { "level": 20 }
+  },
+  {
+    "slug": "wild_resurgence",
+    "title": { "en": "Wild resurgence", "ru": "Природный маг" },
+    "description": {
+      "en": "You can convert uses of Wild Shape into a spell slot (no action required). Choose a number of your unexpended uses of Wild Shape and convert them into a single spell slot, with each use contributing 2 spell levels.",
+      "ru": "Вы можете преобразовать использования Дикой формы в ячейку заклинания (действие не требуется). Выберите несколько ваших неизрасходованных использований Дикой формы и преобразуйте их в одну ячейку заклинания, при этом каждое использование добавляет 2 уровня заклинания."
+    },
+    "origin": "class",
+    "origin_value": "druid",
+    "kind": "static",
+    "description_eval_variables": {
+      "limit": "1"
+    },
+    "limit_refresh": "long_rest",
+    "conditions": { "level": 20 }
+  },
+  {
+    "slug": "divine_order",
+    "title": { "en": "Primal order", "ru": "Божественный порядок" },
+    "description": {
+      "en": "You have dedicated yourself to one of the following sacred roles of your choice.",
+      "ru": "Вы посвятили себя одной из следующих священных ролей по вашему выбору."
+    },
+    "origin": "class",
+    "origin_value": "cleric",
+    "kind": "one_from_list",
+    "options": {
+      "divine_order_thaumaturge": { "en": "Thaumaturge", "ru": "Чудотворец" },
+      "divine_order_protector": { "en": "Protector", "ru": "Защитник" }
+    }
+  },
+  {
+    "slug": "thaumaturge",
+    "title": { "en": "Thaumaturge", "ru": "Чудотворец" },
+    "description": { "en": "", "ru": "" },
+    "origin": "class",
+    "origin_value": "cleric",
+    "kind": "update_result",
+    "eval_variables": {
+      "spell_classes": "spell_classes[:cleric][:cantrips_amount] += 1; spell_classes",
+      "skills": "selected_skill = ['arcana', 'religion']; skills.map { |skill| next skill if skill[:slug] != selected_skill; skill[:modifier] += [1, modifiers['wis']].max; skill }"
+    },
+    "conditions": { "selected_feature": "divine_order_thaumaturge" }
+  },
+  {
+    "slug": "protector",
+    "title": { "en": "Protector", "ru": "Защитник" },
+    "description": {
+      "en": "You gain proficiency with Martial weapons and training with Medium armor.",
+      "ru": "Вы получаете владение воинским оружием и тяжелыми доспехами."
+    },
+    "origin": "class",
+    "origin_value": "cleric",
+    "kind": "static",
+    "conditions": { "selected_feature": "divine_order_protector" }
+  },
+  {
+    "slug": "channel_divinity",
+    "title": { "en": "Channel Divinity", "ru": "Божественный канал" },
+    "description": {
+      "en": "When you use your Channel Divinity, you choose which effect to create.",
+      "ru": "Когда вы используете Божественный канал, вы выбираете, какой эффект создать."
+    },
+    "origin": "class",
+    "origin_value": "cleric",
+    "kind": "static",
+    "description_eval_variables": {
+      "limit": "class_level = classes['cleric']; return 4 if class_level >= 18; return 3 if class_level >= 6; 2"
+    },
+    "limit_refresh": "one_at_short_rest",
+    "conditions": { "level": 2 }
+  },
+  {
+    "slug": "turn_undead_0",
+    "title": { "en": "Channel Divinity: Turn Undead", "ru": "Божественный канал: Изгнание нежити" },
+    "description": {
+      "en": "Each Undead of your choice within 30 feet of you must make a Wisdom saving throw (DC {{value}}). If the creature fails its saving throw, it is turned for 1 minute or until it takes any damage. A turned creature must spend its turns trying to move as far away from you as it can.",
+      "ru": "Каждая нежить по вашему выбору в пределах 30 футов должна совершить спасбросок Мудрости (УС {{value}}). If the creature fails its save, it has the Frightened and Incapacitated conditions for 1minute. For that duration, it tries to move as far from you as it can on its turns. This effect ends early on the creature if it takes any damage, if you have the Incapacitated condition, or if you die."
+    },
+    "origin": "class",
+    "origin_value": "cleric",
+    "kind": "static",
+    "description_eval_variables": {
+      "value": "spell_classes.dig(:cleric, :save_dc)"
+    },
+    "conditions": { "level": 2 }
+  },
+  {
+    "slug": "turn_undead_1",
+    "title": { "en": "Channel Divinity: Turn Undead", "ru": "Божественный канал: Изгнание нежити" },
+    "description": {
+      "en": "Each Undead of your choice within 30 feet of you must make a Wisdom saving throw (DC {{value}}). If the creature fails its saving throw, it is turned for 1 minute or until it takes any damage. A turned creature must spend its turns trying to move as far away from you as it can. You can roll {{dice}}d8. Each Undead that fails its saving throw against that use of Turn Undead takes Radiant damage equal to the roll's total. This damage doesn't end the turn effect.",
+      "ru": "Каждая нежить по вашему выбору в пределах 30 футов должна совершить спасбросок Мудрости (УС {{value}}). Если существо проваливает спасбросок, то на 1 минуту оно получает состояния испуганный и недееспособный. В течение этого времени каждый свой ход оно пытается отойти от вас как можно дальше. Этот эффект заканчивается на существе раньше, если оно получает какой-либо урон, если у вас появляется состояние недееспособный или если вы умираете. Вы можете бросить {{dice}}к8. Каждая нежить, которая провалила свой спасбросок против этого использования Изгнания нежити, получит урон излучением, равный общему результату броска. Этот урон не заканчивает эффект изгнания."
+    },
+    "exclude": ["turn_undead_0"],
+    "origin": "class",
+    "origin_value": "cleric",
+    "kind": "static",
+    "description_eval_variables": {
+      "value": "spell_classes.dig(:cleric, :save_dc)",
+      "dice": "[1, modifiers['wis']].max"
+    },
+    "conditions": { "level": 5 }
+  },
+  {
+    "slug": "divine_spark",
+    "title": { "en": "Channel Divinity: Divine spark", "ru": "Божественный канал: Божественная искра" },
+    "description": {
+      "en": "As a Magic action, you point your Holy Symbol at another creature you can see within 30 feet of yourself. Roll {{dice}}d8+{{modifier}}. You either restore Hit Points to the creature or force the creature to make a Constitution saving throw (DC {{value}}). On a failed save, the creature takes Necrotic or Radiant damage (your choice). On a successful save, the creature takes half as much damage (round down).",
+      "ru": "Действием магия вы указываете священным символом на другое существо, которое вы можете видеть в пределах 30 футов от себя. Бросьте {{dice}}к8+{{modifier}}. Вы либо восстанавливаете хиты существа, либо заставляете существо совершить спасбросок Телосложения (УС {{save}}). При провале существо получает урон некротической энергией или излучением (по вашему выбору). При успешном спасброске существо получает половину урона (округляется в меньшую сторону)."
+    },
+    "origin": "class",
+    "origin_value": "cleric",
+    "kind": "static",
+    "description_eval_variables": {
+      "save": "spell_classes.dig(:cleric, :save_dc)",
+      "dice": "class_level = classes['cleric']; return 4 if class_level >= 18; return 3 if class_level >= 13; return 2 if class_level >= 7; 1",
+      "modifier": "modifiers['wis']"
+    },
+    "conditions": { "level": 2 }
+  },
+  {
+    "slug": "blessed_strikes",
+    "title": { "en": "Blessed strikes", "ru": "Благословлённые удары" },
+    "description": {
+      "en": "Divine power infuses you in battle.",
+      "ru": "Божественная сила наполняет вас в битве."
+    },
+    "origin": "class",
+    "origin_value": "cleric",
+    "kind": "one_from_list",
+    "options": {
+      "blessed_strikes_spellcasting": { "en": "Potent spellcasting", "ru": "Мощный заговор" },
+      "blessed_strikes_strike": { "en": "Divine strike", "ru": "Божественный удар" }
+    },
+    "conditions": { "level": 7 }
+  },
+  {
+    "slug": "cleric_potent_spellcasting",
+    "title": { "en": "Potent spellcasting", "ru": "Мощный заговор" },
+    "description": {
+      "en": "Add +{{value}} to the damage you deal with any Cleric cantrip.",
+      "ru": "Добавьте +{{value}} к урону, который вы наносите любым заговором жреца."
+    },
+    "origin": "class",
+    "origin_value": "cleric",
+    "kind": "static",
+    "description_eval_variables": {
+      "value": "modifiers['wis']"
+    },
+    "conditions": { "selected_feature": "blessed_strikes_spellcasting" }
+  },
+  {
+    "slug": "divine_strike",
+    "title": { "en": "Divine strike", "ru": "Божественный удар" },
+    "description": {
+      "en": "Once on each of your turns when you hit a creature with an attack roll using a weapon, you can cause the target to take an extra 1d8 Necrotic or Radiant damage (your choice).",
+      "ru": "Один раз в каждый из ваших ходов, когда вы попадаете по существу броском атаки с использованием оружия, вы можете нанести цели дополнительно 1к8 урона некротической энергией или излучением (по вашему выбору)."
+    },
+    "origin": "class",
+    "origin_value": "cleric",
+    "kind": "static",
+    "conditions": { "selected_feature": "blessed_strikes_strike" }
+  },
+  {
+    "slug": "improved_cleric_potent_spellcasting",
+    "title": { "en": "Potent spellcasting", "ru": "Мощный заговор" },
+    "description": {
+      "en": "Add +{{value}} to the damage you deal with any Cleric cantrip. When you cast a Cleric cantrip with a range of 10 feet or greater, the spell's range increases by 300 feet.",
+      "ru": "Добавьте +{{value}} к урону, который вы наносите любым заговором жреца. Когда вы накладываете заговор жреца и наносите им урон существу, вы можете даровать жизненную силу себе или другому существу в радиусе 60 футов от себя, предоставляя количество временных хитов, равное {{hp}}."
+    },
+    "exclude": ["cleric_potent_spellcasting"],
+    "origin": "class",
+    "origin_value": "cleric",
+    "kind": "static",
+    "description_eval_variables": {
+      "value": "modifiers['wis']",
+      "hp": "2 * modifiers['wis']"
+    },
+    "conditions": { "selected_feature": "blessed_strikes_spellcasting", "level": 14 }
+  },
+  {
+    "slug": "improved_divine_strike",
+    "title": { "en": "Divine strike", "ru": "Божественный удар" },
+    "description": {
+      "en": "Once on each of your turns when you hit a creature with an attack roll using a weapon, you can cause the target to take an extra 2d8 Necrotic or Radiant damage (your choice).",
+      "ru": "Один раз в каждый из ваших ходов, когда вы попадаете по существу броском атаки с использованием оружия, вы можете нанести цели дополнительно 2к8 урона некротической энергией или излучением (по вашему выбору)."
+    },
+    "exclude": ["divine_strike"],
+    "origin": "class",
+    "origin_value": "cleric",
+    "kind": "static",
+    "conditions": { "selected_feature": "blessed_strikes_strike", "level": 14 }
+  },
+  {
+    "slug": "divine_intervention",
+    "title": { "en": "Divine intervention", "ru": "Божественное вмешательство" },
+    "description": {
+      "en": "As a Magic action, choose any Cleric spell of level 5 or lower that doesn't require a Reaction to cast. As part of the same action, you cast that spell without expending a spell slot or needing Material components.",
+      "ru": "Действием магия выберите любое заклинание жреца 5 уровня или ниже, которое не требует реакции для сотворения. В рамках этого же действия вы используете это заклинание, не тратя ячейку заклинания и/или не нуждаясь в материальных компонентах."
+    },
+    "origin": "class",
+    "origin_value": "cleric",
+    "kind": "static",
+    "description_eval_variables": {
+      "limit": "1"
+    },
+    "limit_refresh": "long_rest",
+    "conditions": { "level": 10 }
+  },
+  {
+    "slug": "greater_divine_intervention",
+    "title": { "en": "Greater divine intervention", "ru": "Великое божественное вмешательство" },
+    "description": {
+      "en": "As a Magic action, choose any Cleric spell of level 5 or lower that doesn't require a Reaction to cast. As part of the same action, you cast that spell without expending a spell slot or needing Material components. When you use your Divine Intervention feature, you can choose Wish when you select a spell. If you do so,you can't use Divine Intervention again until you finish 2d4 Long Rests.",
+      "ru": "Действием магия выберите любое заклинание жреца 5 уровня или ниже, которое не требует реакции для сотворения. В рамках этого же действия вы используете это заклинание, не тратя ячейку заклинания и/или не нуждаясь в материальных компонентах. Вы можете выбрать заклинание Желание при выборе заклинания. Если вы это совершаете, то вы не можете использовать Божественное вмешательство снова, пока не закончите 2к4 продолжительных отдыха."
+    },
+    "exclude": ["divine_intervention"],
+    "origin": "class",
+    "origin_value": "cleric",
+    "kind": "static",
+    "description_eval_variables": {
+      "limit": "1"
+    },
+    "limit_refresh": "long_rest",
+    "conditions": { "level": 20 }
+  },
+
+
+
+
+  {
+    "slug": "rogue_expertise",
+    "title": { "en": "Expertise", "ru": "Компетентность" },
+    "description": {
+      "en": "Choose {{value}} learned skills. Your proficiency bonus is doubled for selected skills.",
+      "ru": "Выберите {{value}} изученных умения. Ваш бонус мастерства для выбранных умений удваивается."
+    },
+    "origin": "class",
+    "origin_value": "rogue",
+    "kind": "static",
+    "description_eval_variables": {
+      "value": "classes['rogue'] >= 6 ? 4 : 2"
+    }
+  },
+  {
+    "slug": "thieves_cant",
+    "title": { "en": "Thieves' cant", "ru": "Воровской жаргон" },
+    "description": {
+      "en": "You know Thieves' cant and one other language of your choice.",
+      "ru": "Вы знаете Воровской жаргон и ещё один язык на выбор."
+    },
+    "origin": "class",
+    "origin_value": "rogue",
+    "kind": "static"
+  },
+  {
+    "slug": "rogue_weapon_mastery",
+    "title": { "en": "Weapon mastery", "ru": "Оружейные приёмы" },
+    "description": {
+      "en": "Your training with weapons allows you to use the mastery properties of two kinds of weapons of your choice with which you have proficiency. Whenever you finish a Long Rest, you can change the kinds of weapons you chose.",
+      "ru": "Ваша тренировка с оружием позволяет вам использовать оружейные приёмы 2 типов оружия, из тех которыми вы владеете. Когда вы заканчиваете продолжительный отдых, вы можете поменять типы оружия."
+    },
+    "origin": "class",
+    "origin_value": "rogue",
+    "kind": "static"
+  },
+  {
+    "slug": "sneak_attack",
+    "title": { "en": "Sneak attack", "ru": "Скрытая атака" },
+    "description": {
+      "en": "Once per turn, you can deal an extra {{value}}d6 damage to one creature you hit with an attack roll if you have Advantage on the roll and the attack uses a Finesse or a Ranged weapon. You don't need Advantage on the attack roll if at least one of your allies is within 5 feet of the target, the ally doesn't have the Incapacitated condition, and you don't have Disadvantage on the attack roll.",
+      "ru": "Один раз в ход вы можете нанести дополнительно {{value}}к6 урона одному существу, по которому вы попали атакой, совершённой с преимуществом. Атака должна использовать дальнобойное оружие или оружие со свойством фехтовальное. Вам не нужно иметь преимущество при броске атаки, если в пределах 5 футов от цели находится по крайней мере 1 ваш союзник. Этот союзник не должен быть в состоянии недееспособный и у вас не должно быть помехи для этого броска атаки."
+    },
+    "origin": "class",
+    "origin_value": "rogue",
+    "kind": "static",
+    "description_eval_variables": {
+      "value": "(classes['rogue'] + 1) / 2"
+    }
+  },
+  {
+    "slug": "cunning_action",
+    "title": { "en": "Cunning action", "ru": "Хитрое действие" },
+    "description": {
+      "en": "On your turn, you can take one of the following actions as a Bonus Action: Dash, Disengage, or Hide.",
+      "ru": "В свой ход бонусным действием вы можете совершить 1 из следующих действий: рывок, отход или засада."
+    },
+    "origin": "class",
+    "origin_value": "rogue",
+    "kind": "static",
+    "conditions": { "level": 2 }
+  },
+  {
+    "slug": "steady_aim",
+    "title": { "en": "Steady aim", "ru": "Точное прицеливание" },
+    "description": {
+      "en": "As a Bonus Action, you give yourself Advantage on your next attack roll on the current turn. You can use this feature only if you haven't moved during this turn, and after you use it, your Speed is O until the end of the current turn.",
+      "ru": "Бонусным действием вы можете дать себе преимущество на следующий бросок атаки в текущий ход. Вы можете использовать это бонусное действие только если в этот ход вы не двигались и после использования этого умения ваша скорость будет равна 0 до конца текущего хода."
+    },
+    "origin": "class",
+    "origin_value": "rogue",
+    "kind": "static",
+    "conditions": { "level": 3 }
+  },
+  {
+    "slug": "sneak_attack_poison",
+    "title": { "en": "Sneak attack: Poison", "ru": "Скрытая атака: Отравить" },
+    "description": {
+      "en": "1d6. You add a toxin to your strike, forcing the target to make a Constitution saving throw (DC {{dc}}). On a failed save, the target has the Poisoned condition for 1 minute. At the end of each of its turns, the Poisoned target repeats the save, ending the effect on itself on a success. To use this effect, you must have a Poisoner's Kit on your person.",
+      "ru": "1к6. Вы наносите усиленный ядом удар, вынуждая цель совершить спасбросок Телосложения (УС {{dc}}). Если спасбросок провален, то цель получает состояние отравленный на 1 минуту. В конце каждого своего хода отравленная цель повторяет спасбросок и в случае успеха эффект заканчивается. Чтобы использовать этот эффект, вы должны иметь при себе набор отравителя."
+    },
+    "origin": "class",
+    "origin_value": "rogue",
+    "kind": "static",
+    "description_eval_variables": {
+      "dc": "8 + modifiers['dex'] + proficiency_bonus"
+    },
+    "conditions": { "level": 5 }
+  },
+  {
+    "slug": "sneak_attack_trip",
+    "title": { "en": "Sneak attack: Trip", "ru": "Скрытая атака: Повалить" },
+    "description": {
+      "en": "1d6. If the target is Large or smaller, it must succeed on a Dexterity saving throw (DC {{dc}}) or have the Prone condition.",
+      "ru": "1к6. Если цель является существом размера большой или меньше, то она должна совершить спасбросок Ловкости (УС {{dc}}), получая состояние лежащий ничком в случае провала."
+    },
+    "origin": "class",
+    "origin_value": "rogue",
+    "kind": "static",
+    "description_eval_variables": {
+      "dc": "8 + modifiers['dex'] + proficiency_bonus"
+    },
+    "conditions": { "level": 5 }
+  },
+  {
+    "slug": "sneak_attack_withdraw",
+    "title": { "en": "Sneak attack: Withdraw", "ru": "Скрытая атака: Отступить" },
+    "description": {
+      "en": "1d6. Immediately after the attack, you move up to half your Speed without provoking Opportunity Attacks.",
+      "ru": "1к6. Сразу после атаки вы можете переместиться вплоть до половины своей скорости, не провоцируя атак."
+    },
+    "origin": "class",
+    "origin_value": "rogue",
+    "kind": "static",
+    "conditions": { "level": 5 }
+  },
+  {
+    "slug": "sneak_attack_daze",
+    "title": { "en": "Sneak attack: Daze", "ru": "Скрытая атака: Оглушить" },
+    "description": {
+      "en": "2d6. The target must succeed on a Constitution saving throw (DC {{dc}}), or on its next turn, it can do only one of the following: move or take an action or a Bonus Action.",
+      "ru": "2к6. Цель должна сделать спасбросок Телосложения (УС {{dc}}). В случае провала в её следующий ходу ей доступно лишь одно из следующего: перемещение, действие или бонусное действие."
+    },
+    "origin": "class",
+    "origin_value": "rogue",
+    "kind": "static",
+    "description_eval_variables": {
+      "dc": "8 + modifiers['dex'] + proficiency_bonus"
+    },
+    "conditions": { "level": 14 }
+  },
+  {
+    "slug": "sneak_attack_knock_out",
+    "title": { "en": "Sneak attack: Knock out", "ru": "Скрытая атака: Вырубить" },
+    "description": {
+      "en": "6d6. The target must succeed on a Constitution saving throw (DC {{dc}}), or it has the Unconscious condition for 1 minute or until it takes any damage. The Unconscious target repeats the save at the end of each of its turns, ending the effect on itself on a success.",
+      "ru": "6к6. Цель должна совершить спасбросок Телосложения (УС {{dc}}). В случае провала она получает состояние бессознательный длительностью в 1 минуту или до тех пор, пока не получит урон. Цель в состоянии бессознательный повторяет спасбросок в конце каждого своего хода, избавляясь от эффекта на себе при успехе."
+    },
+    "origin": "class",
+    "origin_value": "rogue",
+    "kind": "static",
+    "description_eval_variables": {
+      "dc": "8 + modifiers['dex'] + proficiency_bonus"
+    },
+    "conditions": { "level": 14 }
+  },
+  {
+    "slug": "sneak_attack_obscure",
+    "title": { "en": "Sneak attack: Obscure", "ru": "Скрытая атака: Ослепить" },
+    "description": {
+      "en": "3d6. The target must succeed on a Dexterity saving throw (DC {{dc}}), or it has the Blinded condition until the end of its next turn.",
+      "ru": "3к6. Цель должна совершить спасбросок Ловкости (УС {{dc}}). В случае провала она получает состояние ослеплённый до конца её следующего хода."
+    },
+    "origin": "class",
+    "origin_value": "rogue",
+    "kind": "static",
+    "description_eval_variables": {
+      "dc": "8 + modifiers['dex'] + proficiency_bonus"
+    },
+    "conditions": { "level": 14 }
+  },
+
+
+
+  {
+    "slug": "uncanny_dodge",
+    "title": { "en": "Uncanny dodge", "ru": "Невероятное уклонение" },
+    "description": {
+      "en": "When an attacker that you can see hits you with an attack roll, you can take a Reaction to halve the attack's damage against you (round down).",
+      "ru": "Когда нападающий, которого вы можете видеть, попадает по вам атакой, вы можете реакцией уменьшить вдвое урон (округляя к меньшему), наносимый вам этой атакой."
+    },
+    "origin": "class",
+    "origin_value": "rogue",
+    "kind": "static",
+    "conditions": { "level": 5 }
+  },
+  {
+    "slug": "evasion",
+    "title": { "en": "Evasion", "ru": "Увёртливость" },
+    "description": {
+      "en": "When you're subjected to an effect that allows you to make a Dexterity saving throw to take only half damage, you instead take no damage if you succeed on the saving throw and only half damage if you fail.",
+      "ru": "Когда вы попадаете под действие эффекта, который позволяет вам совершить спасбросок Ловкости, чтобы получить только половину урона, вместо этого вы не получаете урона вовсе, если спасбросок был успешен, и только половину урона, если он был провален."
+    },
+    "origin": "class",
+    "origin_value": "rogue",
+    "kind": "static",
+    "conditions": { "level": 7 }
+  },
+  {
+    "slug": "reliable_talent",
+    "title": { "en": "Reliable talent", "ru": "Надёжный талант" },
+    "description": {
+      "en": "Whenever you make an ability check that uses one of your skill or tool proficiencies, you can treat a d20 roll of 9 or lower as a 10.",
+      "ru": "Каждый раз, когда вы совершаете проверку характеристики, которая использует одно из ваших владений инструментом или навыком, то при выпадении на к20 результата 9 или ниже вы можете считать, что выпало 10."
+    },
+    "origin": "class",
+    "origin_value": "rogue",
+    "kind": "static",
+    "conditions": { "level": 7 }
+  },
+  {
+    "slug": "improved_cunning_strike",
+    "title": { "en": "Improved cunning strike", "ru": "Улучшенный хитрый удар" },
+    "description": {
+      "en": "You can use up to two Cunning Strike effects when you deal Sneak Attack damage.",
+      "ru": "Вы можете использовать до двух эффектов Хитрого удара при нанесении урона от Скрытой атаки."
+    },
+    "origin": "class",
+    "origin_value": "rogue",
+    "kind": "static",
+    "conditions": { "level": 11 }
+  },
+  {
+    "slug": "slippery_mind",
+    "title": { "en": "Slippery mind", "ru": "Скользкий ум" },
+    "description": { "en": "", "ru": "" },
+    "origin": "class",
+    "origin_value": "rogue",
+    "kind": "update_result",
+    "eval_variables": {
+      "class_save_dc": "class_save_dc.concat(%w[wis cha]).uniq"
+    },
+    "conditions": { "level": 15 }
+  },
+  {
+    "slug": "elusive",
+    "title": { "en": "Elusive", "ru": "Неуловимый" },
+    "description": {
+      "en": "No attack roll can have Advantage against you unless you have the Incapacitated condition.",
+      "ru": "Никакие броски атаки по вам не могут получить преимущество, пока вы не находитесь в состоянии недееспособный."
+    },
+    "origin": "class",
+    "origin_value": "rogue",
+    "kind": "static",
+    "conditions": { "level": 18 }
+  },
+  {
+    "slug": "stroke_of_luck",
+    "title": { "en": "Stroke of luck", "ru": "Удача" },
+    "description": {
+      "en": "If you fail a D20 Test, you can turn the roll into a 20.",
+      "ru": "Если вы провалили Тест к20, то вы можете изменить полученный результат на «20»."
+    },
+    "origin": "class",
+    "origin_value": "rogue",
+    "kind": "static",
+    "description_eval_variables": {
+      "limit": "1"
+    },
+    "limit_refresh": "short_rest",
+    "conditions": { "level": 20 }
+  }
+]

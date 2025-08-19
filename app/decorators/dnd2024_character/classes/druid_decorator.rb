@@ -28,7 +28,19 @@ module Dnd2024Character
         @spells_slots ||= ::Dnd2024Character::ClassDecorateWrapper::SPELL_SLOTS[class_level]
       end
 
+      def static_spells
+        @static_spells ||= begin
+          result = __getobj__.static_spells
+          result['speak_with_animals'] = static_spell_attributes
+          result
+        end
+      end
+
       private
+
+      def static_spell_attributes
+        { 'attack_bonus' => proficiency_bonus + modifiers['wis'], 'save_dc' => 8 + proficiency_bonus + modifiers['wis'] }
+      end
 
       def class_level
         @class_level ||= classes['druid']

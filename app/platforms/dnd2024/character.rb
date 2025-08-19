@@ -33,6 +33,7 @@ module Dnd2024
     attribute :resistance, array: true, default: [] # сопротивления
     attribute :immunity, array: true, default: [] # иммунитеты
     attribute :vulnerability, array: true, default: [] # уязвимости
+    attribute :beastform, :string
   end
 
   class Character < Character
@@ -74,6 +75,10 @@ module Dnd2024
 
     def self.subclass_info(class_value, subclass_value)
       config.dig('classes', class_value, 'subclasses', subclass_value)
+    end
+
+    def self.beastforms
+      config['beastforms']
     end
 
     # alignment

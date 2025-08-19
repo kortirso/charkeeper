@@ -25,6 +25,8 @@ module CharactersContext
       use_contract do
         config.messages.namespace = :dnd5_character
 
+        Beastforms = Dry::Types['strict.string'].enum(*::Dnd2024::Character.beastforms.keys)
+
         params do
           required(:character).filled(type?: ::Dnd2024::Character)
           optional(:classes).hash
@@ -74,6 +76,7 @@ module CharactersContext
             required(:file_name).filled(:string)
           end
           optional(:avatar_url).filled(:string)
+          optional(:beastform).maybe(Beastforms)
         end
 
         rule(:avatar_file, :avatar_url).validate(:check_only_one_present)

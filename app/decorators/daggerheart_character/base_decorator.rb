@@ -91,7 +91,7 @@ module DaggerheartCharacter
     def beastforms
       return [] if classes.keys.exclude?('druid')
 
-      BeastformConfig.data.select { |_, values| values['tier'] <= tier }.keys
+      BeastformConfig.data('daggerheart').select { |_, values| values['tier'] <= tier }.keys
     end
 
     def tier
@@ -222,7 +222,7 @@ module DaggerheartCharacter
     end
 
     def beastform_config
-      @beastform_config ||= beastform.blank? ? { 'traits' => {}, 'evasion' => 0 } : BeastformConfig.data[beastform]
+      @beastform_config ||= beastform.blank? ? { 'traits' => {}, 'evasion' => 0 } : BeastformConfig.data('daggerheart')[beastform]
     end
 
     def spellcast_for_homebrew_subclass(subclass)
