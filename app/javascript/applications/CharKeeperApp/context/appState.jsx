@@ -1,5 +1,6 @@
 import { createContext, createEffect, useContext } from 'solid-js';
 import { createStore } from 'solid-js/store';
+import { M3 } from 'tauri-plugin-m3';
 
 const AppStateContext = createContext();
 
@@ -17,6 +18,16 @@ export const AppStateProvider = (props) => {
     initialized: false
   });
 
+  const setStatusBarColor = async (value) => await M3.setBarColor(value);
+
+  const deviceInsets = async () => {
+    const result = await M3.getInsets();
+
+    const bodyElement = document.getElementById('charkeeper_app_body');
+    bodyElement.style.paddingTop = `${result.adjustedInsetTop}px`;
+    bodyElement.style.paddingBottom = `${result.adjustedInsetBottom}px`;
+  }
+
   createEffect(async () => {
     if (appState.accessToken !== undefined) return;
 
@@ -26,6 +37,27 @@ export const AppStateProvider = (props) => {
     }
 
     setAppState({ ...appState, accessToken: stateValue, initialized: true });
+  });
+
+  createEffect(() => {
+    if (!window.__TAURI_INTERNALS__) return;
+
+    const bodyElement = document.getElementById('charkeeper_app_body');
+    if (appState.colorSchema === 'dark') {
+      // Apply dark theme styles or classes
+      bodyElement.classList.add('dark-theme');
+      setStatusBarColor('light');
+    } else {
+      // Apply light theme styles or classes
+      bodyElement.classList.remove('dark-theme');
+      setStatusBarColor('dark');
+    }
+  });
+
+  createEffect(() => {
+    if (!window.__TAURI_INTERNALS__) return;
+
+    deviceInsets();
   });
 
   const readTauriStore = async () => {
