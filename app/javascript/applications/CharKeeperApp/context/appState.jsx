@@ -1,6 +1,5 @@
 import { createContext, createEffect, useContext } from 'solid-js';
 import { createStore } from 'solid-js/store';
-import { M3 } from 'tauri-plugin-m3';
 
 const AppStateContext = createContext();
 
@@ -18,11 +17,10 @@ export const AppStateProvider = (props) => {
     initialized: false
   });
 
-  const setStatusBarColor = async (value) => await M3.setBarColor(value);
+  const setStatusBarColor = async (value) => await window.__TAURI__.core.invoke('plugin:m3|bar_color', { color: value });
 
   const deviceInsets = async () => {
-    const result = await M3.getInsets();
-
+    const result = await window.__TAURI__.core.invoke('plugin:m3|insets');
     const bodyElement = document.getElementById('charkeeper_app_body');
     bodyElement.style.paddingTop = `${result.adjustedInsetTop}px`;
     bodyElement.style.paddingBottom = `${result.adjustedInsetBottom}px`;
@@ -56,6 +54,9 @@ export const AppStateProvider = (props) => {
 
   createEffect(() => {
     if (!window.__TAURI_INTERNALS__) return;
+
+    const { platform } = window.__TAURI__.os;
+    if (platform() !== 'android') return;
 
     deviceInsets();
   });
