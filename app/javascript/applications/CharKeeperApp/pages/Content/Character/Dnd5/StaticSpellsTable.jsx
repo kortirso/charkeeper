@@ -26,7 +26,7 @@ export const StaticSpellsTable = (props) => {
           <For each={props.spells}>
             {(spell) =>
               <tr>
-                <td class="py-1 pl-1">
+                <td class="py-1 pl-1 dark:text-snow">
                   <p>
                     {spell.name}
                   </p>
