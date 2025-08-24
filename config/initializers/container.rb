@@ -90,8 +90,14 @@ module Charkeeper
     register('services.webhooks_context.handle_telegram_message_webhook') {
       WebhooksContext::HandleTelegramMessageWebhookService.new
     }
+    register('services.webhooks_context.handle_telegram_group_message_webhook') {
+      WebhooksContext::HandleTelegramGroupMessageWebhookService.new
+    }
     register('services.webhooks_context.handle_telegram_chat_member_webhook') {
       WebhooksContext::HandleTelegramChatMemberWebhookService.new
+    }
+    register('services.webhooks_context.handle_bot_command') {
+      WebhooksContext::HandleBotCommandService.new
     }
 
     register('services.characters_context.daggerheart.refresh_feats') { CharactersContext::Daggerheart::RefreshFeats.new }

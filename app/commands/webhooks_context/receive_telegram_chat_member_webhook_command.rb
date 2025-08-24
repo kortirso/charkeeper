@@ -22,7 +22,7 @@ module WebhooksContext
     private
 
     def do_persist(input)
-      handle_telegram_webhook.call(chat_member: input[:chat_member])
+      handle_telegram_webhook.call(chat_member: input[:chat_member]) if input.dig(:chat_member, :chat, :id).positive?
 
       { result: :ok }
     end

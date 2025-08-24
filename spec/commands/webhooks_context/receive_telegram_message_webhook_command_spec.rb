@@ -4,12 +4,17 @@ describe WebhooksContext::ReceiveTelegramMessageWebhookCommand do
   subject(:command_call) { described_class.new.call({ message: message }) }
 
   let(:handler) { Charkeeper::Container.resolve('services.webhooks_context.handle_telegram_message_webhook') }
+  let(:group_handler) { Charkeeper::Container.resolve('services.webhooks_context.handle_telegram_group_message_webhook') }
 
-  before { allow(handler).to receive(:call) }
+  before do
+    allow(handler).to receive(:call)
+    allow(group_handler).to receive(:call)
+  end
 
   context 'with invalid message' do
     let(:message) do
       {
+        message_id: 1,
         from: { first_name: 'First', last_name: 'Last', username: 'User', language_code: 'en' },
         chat: { id: '' },
         text: 'text'
@@ -23,9 +28,27 @@ describe WebhooksContext::ReceiveTelegramMessageWebhookCommand do
     end
   end
 
+  context 'with valid group message' do
+    let(:message) do
+      {
+        message_id: 1,
+        from: { first_name: 'First', last_name: 'Last', username: 'User', language_code: 'en' },
+        chat: { id: -123 },
+        text: '/roll d20'
+      }
+    end
+
+    it 'calls group_handler' do
+      command_call
+
+      expect(group_handler).to have_received(:call).with(message: message)
+    end
+  end
+
   context 'with valid message' do
     let(:message) do
       {
+        message_id: 1,
         from: { first_name: 'First', last_name: 'Last', username: 'User', language_code: 'en' },
         chat: { id: 123 },
         text: 'text'

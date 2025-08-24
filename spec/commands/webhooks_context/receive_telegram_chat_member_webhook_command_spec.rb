@@ -23,6 +23,22 @@ describe WebhooksContext::ReceiveTelegramChatMemberWebhookCommand do
     end
   end
 
+  context 'with group message' do
+    let(:chat_member) do
+      {
+        from: { first_name: 'First', last_name: 'Last', username: 'User', language_code: 'en' },
+        chat: { id: -1 },
+        new_chat_member: { status: 'member' }
+      }
+    end
+
+    it 'does not call handler' do
+      command_call
+
+      expect(handler).not_to have_received(:call)
+    end
+  end
+
   context 'with valid message' do
     let(:chat_member) do
       {
