@@ -72,7 +72,7 @@ describe Frontend::CampaignsController do
 
         it 'does not create campaign', :aggregate_failures do
           expect { request }.not_to change(Campaign, :count)
-          expect(response).to have_http_status :unprocessable_entity
+          expect(response).to have_http_status :unprocessable_content
         end
       end
 

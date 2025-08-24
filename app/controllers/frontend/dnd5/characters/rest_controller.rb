@@ -35,7 +35,7 @@ module Frontend
         end
 
         def check_perform_command
-          render json: { errors: ['Invalid type'] }, status: :unprocessable_entity if @perform_command.nil?
+          render json: { errors: ['Invalid type'] }, status: :unprocessable_content if @perform_command.nil?
         end
 
         def rest_options

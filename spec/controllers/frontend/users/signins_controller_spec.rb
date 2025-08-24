@@ -5,7 +5,7 @@ describe Frontend::Users::SigninsController do
     it 'renders error' do
       post :create, params: { user: { username: 'something', password: 'invalid_password' } }
 
-      expect(response).to have_http_status :unprocessable_entity
+      expect(response).to have_http_status :unprocessable_content
     end
 
     context 'for existing user' do
@@ -15,7 +15,7 @@ describe Frontend::Users::SigninsController do
         it 'renders error' do
           post :create, params: { user: { username: user.username, password: 'invalid_password' } }
 
-          expect(response).to have_http_status :unprocessable_entity
+          expect(response).to have_http_status :unprocessable_content
         end
       end
 
@@ -23,7 +23,7 @@ describe Frontend::Users::SigninsController do
         it 'renders error' do
           post :create, params: { user: { username: user.username, password: '' } }
 
-          expect(response).to have_http_status :unprocessable_entity
+          expect(response).to have_http_status :unprocessable_content
         end
       end
 

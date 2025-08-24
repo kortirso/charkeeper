@@ -21,7 +21,7 @@ module Frontend
     end
 
     def unprocessable_response(errors)
-      render json: { errors: errors }, status: :unprocessable_entity # 422
+      render json: { errors: errors }, status: :unprocessable_content # 422
     end
   end
 end

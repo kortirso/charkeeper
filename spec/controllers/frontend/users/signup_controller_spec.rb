@@ -7,7 +7,7 @@ describe Frontend::Users::SignupController do
 
       it 'does not create new user', :aggregate_failures do
         expect { request }.not_to change(User, :count)
-        expect(response).to have_http_status :unprocessable_entity
+        expect(response).to have_http_status :unprocessable_content
       end
     end
 
@@ -16,7 +16,7 @@ describe Frontend::Users::SignupController do
 
       it 'does not create new user', :aggregate_failures do
         expect { request }.not_to change(User, :count)
-        expect(response).to have_http_status :unprocessable_entity
+        expect(response).to have_http_status :unprocessable_content
       end
     end
 
@@ -25,7 +25,7 @@ describe Frontend::Users::SignupController do
 
       it 'does not create new user', :aggregate_failures do
         expect { request }.not_to change(User, :count)
-        expect(response).to have_http_status :unprocessable_entity
+        expect(response).to have_http_status :unprocessable_content
       end
     end
 
@@ -34,7 +34,7 @@ describe Frontend::Users::SignupController do
 
       it 'does not create new user', :aggregate_failures do
         expect { request }.not_to change(User, :count)
-        expect(response).to have_http_status :unprocessable_entity
+        expect(response).to have_http_status :unprocessable_content
       end
     end
 
@@ -43,7 +43,7 @@ describe Frontend::Users::SignupController do
 
       it 'does not create new user', :aggregate_failures do
         expect { request }.not_to change(User, :count)
-        expect(response).to have_http_status :unprocessable_entity
+        expect(response).to have_http_status :unprocessable_content
       end
     end
 
@@ -57,7 +57,7 @@ describe Frontend::Users::SignupController do
 
       it 'does not create new user', :aggregate_failures do
         expect { request }.not_to change(User, :count)
-        expect(response).to have_http_status :unprocessable_entity
+        expect(response).to have_http_status :unprocessable_content
       end
     end
 

@@ -90,7 +90,7 @@ describe Frontend::Characters::BonusesController do
 
           it 'does not create character bonus', :aggregate_failures do
             expect { request }.not_to change(Character::Bonus, :count)
-            expect(response).to have_http_status :unprocessable_entity
+            expect(response).to have_http_status :unprocessable_content
           end
         end
 

@@ -19,7 +19,7 @@ describe Frontend::Homebrews::SubclassesController do
 
         it 'does not create homebrew', :aggregate_failures do
           expect { request }.not_to change(Daggerheart::Homebrew::Subclass, :count)
-          expect(response).to have_http_status :unprocessable_entity
+          expect(response).to have_http_status :unprocessable_content
         end
       end
 

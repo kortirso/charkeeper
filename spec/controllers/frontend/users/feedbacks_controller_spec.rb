@@ -13,7 +13,7 @@ describe Frontend::Users::FeedbacksController do
 
         it 'does not create feedback', :aggregate_failures do
           expect { request }.not_to change(User::Feedback, :count)
-          expect(response).to have_http_status :unprocessable_entity
+          expect(response).to have_http_status :unprocessable_content
         end
       end
 

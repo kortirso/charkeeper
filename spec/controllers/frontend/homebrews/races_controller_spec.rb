@@ -34,7 +34,7 @@ describe Frontend::Homebrews::RacesController do
 
         it 'does not create homebrew', :aggregate_failures do
           expect { request }.not_to change(Daggerheart::Homebrew::Race, :count)
-          expect(response).to have_http_status :unprocessable_entity
+          expect(response).to have_http_status :unprocessable_content
         end
       end
 
@@ -92,7 +92,7 @@ describe Frontend::Homebrews::RacesController do
 
           it 'returns error', :aggregate_failures do
             expect { request }.not_to change(Daggerheart::Homebrew::Race, :count)
-            expect(response).to have_http_status :unprocessable_entity
+            expect(response).to have_http_status :unprocessable_content
             expect(response.parsed_body['errors']).to eq({ 'base' => ['Персонаж с такой расой существует'] })
           end
         end

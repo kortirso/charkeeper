@@ -30,7 +30,7 @@ describe Frontend::Dnd5::CharactersController do
 
         it 'returns error', :aggregate_failures do
           expect { request }.not_to change(Character, :count)
-          expect(response).to have_http_status :unprocessable_entity
+          expect(response).to have_http_status :unprocessable_content
           expect(response.parsed_body['errors']).not_to be_nil
         end
       end
@@ -67,7 +67,7 @@ describe Frontend::Dnd5::CharactersController do
             id: character.id, character: { classes: { monk: 31 } }, charkeeper_access_token: access_token
           }
 
-          expect(response).to have_http_status :unprocessable_entity
+          expect(response).to have_http_status :unprocessable_content
           expect(response.parsed_body['errors']['classes']).to eq(['Недопустимый уровень'])
         end
       end

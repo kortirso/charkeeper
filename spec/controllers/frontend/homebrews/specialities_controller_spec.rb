@@ -38,7 +38,7 @@ describe Frontend::Homebrews::SpecialitiesController do
 
         it 'does not create homebrew', :aggregate_failures do
           expect { request }.not_to change(Daggerheart::Homebrew::Speciality, :count)
-          expect(response).to have_http_status :unprocessable_entity
+          expect(response).to have_http_status :unprocessable_content
         end
       end
 
@@ -96,7 +96,7 @@ describe Frontend::Homebrews::SpecialitiesController do
 
           it 'returns error', :aggregate_failures do
             expect { request }.not_to change(Daggerheart::Homebrew::Speciality, :count)
-            expect(response).to have_http_status :unprocessable_entity
+            expect(response).to have_http_status :unprocessable_content
             expect(response.parsed_body['errors']).to eq({ 'base' => ['Персонаж с таким классом существует'] })
           end
         end

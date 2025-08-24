@@ -34,7 +34,7 @@ describe Frontend::Dnd5::Characters::RestController do
               character_id: user_character.id, value: 'unexisting', charkeeper_access_token: access_token
             }
 
-            expect(response).to have_http_status :unprocessable_entity
+            expect(response).to have_http_status :unprocessable_content
           end
         end
 

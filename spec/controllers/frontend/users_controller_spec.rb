@@ -17,7 +17,7 @@ describe Frontend::UsersController do
         it 'returns error', :aggregate_failures do
           patch :update, params: { user: { locale: '' }, charkeeper_access_token: access_token }
 
-          expect(response).to have_http_status :unprocessable_entity
+          expect(response).to have_http_status :unprocessable_content
           expect(response.parsed_body['errors']['locale']).to eq(['Необходимо указать локаль'])
         end
       end
@@ -26,7 +26,7 @@ describe Frontend::UsersController do
         it 'returns error', :aggregate_failures do
           patch :update, params: { user: { locale: 'it' }, charkeeper_access_token: access_token }
 
-          expect(response).to have_http_status :unprocessable_entity
+          expect(response).to have_http_status :unprocessable_content
           expect(response.parsed_body['errors']['locale']).to eq(['Недопустимое значение локали'])
         end
       end

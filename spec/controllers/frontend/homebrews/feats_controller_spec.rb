@@ -40,7 +40,7 @@ describe Frontend::Homebrews::FeatsController do
 
         it 'does not create feat', :aggregate_failures do
           expect { request }.not_to change(Feat, :count)
-          expect(response).to have_http_status :unprocessable_entity
+          expect(response).to have_http_status :unprocessable_content
         end
       end
 
