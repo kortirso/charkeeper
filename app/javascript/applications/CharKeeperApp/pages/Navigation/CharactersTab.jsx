@@ -264,6 +264,7 @@ export const CharactersTab = () => {
         setCharacters(characters().filter((item) => item.id !== deletingCharacterId()));
         closeModal();
       });
+      navigate(null, {});
     } else renderAlerts(result.errors);
   }
 
