@@ -8,7 +8,7 @@ describe WebhooksContext::Telegram::HandleBotCommandService do
       let(:command_text) { '/roll d20' }
 
       it 'returns result' do
-        expect(service_call.include?('*Result*: d20')).to be_truthy
+        expect(service_call.include?('<b>Result</b>: d20')).to be_truthy
       end
     end
 
@@ -16,7 +16,7 @@ describe WebhooksContext::Telegram::HandleBotCommandService do
       let(:command_text) { '/roll d20+2' }
 
       it 'returns result' do
-        expect(service_call.include?('*Result*: d20+2')).to be_truthy
+        expect(service_call.include?('<b>Result</b>: d20+2')).to be_truthy
       end
     end
 
@@ -24,7 +24,7 @@ describe WebhooksContext::Telegram::HandleBotCommandService do
       let(:command_text) { '/roll d20+2 d12' }
 
       it 'returns result', :aggregate_failures do
-        expect(service_call.include?('*Result*: d20+2')).to be_truthy
+        expect(service_call.include?('<b>Result</b>: d20+2')).to be_truthy
         expect(service_call.include?('d12 (')).to be_truthy
       end
     end
