@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-describe WebhooksContext::HandleTelegramGroupMessageWebhookService do
+describe WebhooksContext::Telegram::HandleGroupMessageWebhookService do
   subject(:service_call) { described_class.new.call(message: message) }
 
   let(:message) do

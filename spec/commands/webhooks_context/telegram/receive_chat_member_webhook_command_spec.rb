@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
-describe WebhooksContext::ReceiveTelegramChatMemberWebhookCommand do
+describe WebhooksContext::Telegram::ReceiveChatMemberWebhookCommand do
   subject(:command_call) { described_class.new.call({ chat_member: chat_member }) }
 
-  let(:handler) { Charkeeper::Container.resolve('services.webhooks_context.handle_telegram_chat_member_webhook') }
+  let(:handler) { Charkeeper::Container.resolve('services.webhooks_context.telegram.handle_chat_member_webhook') }
 
   before { allow(handler).to receive(:call) }
 

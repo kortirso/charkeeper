@@ -4,8 +4,8 @@ module Webhooks
   class TelegramsController < ApplicationController
     include Deps[
       monitoring: 'monitoring.client',
-      message_webhook: 'commands.webhooks_context.receive_telegram_message_webhook',
-      chat_member_webhook: 'commands.webhooks_context.receive_telegram_chat_member_webhook'
+      message_webhook: 'commands.webhooks_context.telegram.receive_message_webhook',
+      chat_member_webhook: 'commands.webhooks_context.telegram.receive_chat_member_webhook'
     ]
 
     skip_before_action :verify_authenticity_token
