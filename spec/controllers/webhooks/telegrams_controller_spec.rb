@@ -5,7 +5,7 @@ describe Webhooks::TelegramsController do
     before { allow(Charkeeper::Container.resolve('monitoring.client')).to receive(:notify) }
 
     context 'for message webhook' do
-      let(:handler) { Charkeeper::Container.resolve('commands.webhooks_context.receive_telegram_message_webhook') }
+      let(:handler) { Charkeeper::Container.resolve('commands.webhooks_context.telegram.receive_message_webhook') }
 
       before { allow(handler).to receive(:call) }
 

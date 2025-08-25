@@ -6,7 +6,7 @@ class Roll
     multiplier, dice_value = dice.split('d')
 
     result = modifier
-    multiplier.to_i.times { result += rand(1..dice_value.to_i) }
+    (multiplier.blank? ? 1 : multiplier.to_i).times { result += rand(1..dice_value.to_i) }
     result
   end
 end

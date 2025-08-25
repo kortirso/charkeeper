@@ -67,11 +67,11 @@ module Charkeeper
     register('commands.image_processing.attach_avatar_by_file') { ImageProcessingContext::AttachAvatarByFileCommand.new }
     register('commands.image_processing.attach_avatar_by_url') { ImageProcessingContext::AttachAvatarByUrlCommand.new }
 
-    register('commands.webhooks_context.receive_telegram_message_webhook') {
-      WebhooksContext::ReceiveTelegramMessageWebhookCommand.new
+    register('commands.webhooks_context.telegram.receive_message_webhook') {
+      WebhooksContext::Telegram::ReceiveMessageWebhookCommand.new
     }
-    register('commands.webhooks_context.receive_telegram_chat_member_webhook') {
-      WebhooksContext::ReceiveTelegramChatMemberWebhookCommand.new
+    register('commands.webhooks_context.telegram.receive_chat_member_webhook') {
+      WebhooksContext::Telegram::ReceiveChatMemberWebhookCommand.new
     }
 
     register('commands.homebrew_context.daggerheart.add_race') { HomebrewContext::Daggerheart::AddRaceCommand.new }
@@ -87,11 +87,18 @@ module Charkeeper
 
     # services
     register('services.auth_context.validate_web_telegram_signature') { AuthContext::WebTelegramSignatureValidateService.new }
-    register('services.webhooks_context.handle_telegram_message_webhook') {
-      WebhooksContext::HandleTelegramMessageWebhookService.new
+
+    register('services.webhooks_context.telegram.handle_message_webhook') {
+      WebhooksContext::Telegram::HandleMessageWebhookService.new
     }
-    register('services.webhooks_context.handle_telegram_chat_member_webhook') {
-      WebhooksContext::HandleTelegramChatMemberWebhookService.new
+    register('services.webhooks_context.telegram.handle_group_message_webhook') {
+      WebhooksContext::Telegram::HandleGroupMessageWebhookService.new
+    }
+    register('services.webhooks_context.telegram.handle_chat_member_webhook') {
+      WebhooksContext::Telegram::HandleChatMemberWebhookService.new
+    }
+    register('services.webhooks_context.telegram.handle_bot_command') {
+      WebhooksContext::Telegram::HandleBotCommandService.new
     }
 
     register('services.characters_context.daggerheart.refresh_feats') { CharactersContext::Daggerheart::RefreshFeats.new }
