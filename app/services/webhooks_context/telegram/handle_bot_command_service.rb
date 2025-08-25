@@ -8,7 +8,7 @@ module WebhooksContext
       # { rolls: rolls, total: total }
       def represent_roll_command_result(result)
         formatted_result = result[:rolls].map { |item| "#{item[0]} (#{item[1]})" }.join(', ')
-        "*Result*: #{formatted_result}\n*Total*: #{result[:total]}"
+        "<b>Result</b>: #{formatted_result}\n<b>Total</b>: #{result[:total]}"
       end
     end
   end

@@ -32,11 +32,13 @@ module WebhooksContext
 
     def handle_roll_command(arguments)
       total = 0
-      rolls = arguments.map do |argument|
+      rolls = arguments.filter_map do |argument|
         dice, modifier = argument.gsub(/\s+/, '').split('+')
         roll_result = roll.call(dice: dice, modifier: modifier.to_i)
         total += roll_result
         [argument, roll_result]
+      rescue StandardError => _e
+        next
       end
       { rolls: rolls, total: total }
     end
