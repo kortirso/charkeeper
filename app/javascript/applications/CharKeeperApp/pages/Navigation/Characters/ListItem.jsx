@@ -5,28 +5,47 @@ import { IconButton } from '../../../components';
 import { Dots, Avatar } from '../../../assets';
 import pathfinder2Config from '../../../data/pathfinder2.json';
 import dnd2024Config from '../../../data/dnd2024.json';
-import { useAppLocale } from '../../../context';
-import { clickOutside } from '../../../helpers';
+import { useAppState, useAppLocale, useAppAlert } from '../../../context';
+import { clickOutside, copyToClipboard } from '../../../helpers';
 
 const AVAILABLE_PDF = ['daggerheart'];
+const AVAILABLE_JSON = ['daggerheart'];
 
 export const CharactersListItem = (props) => {
   const character = () => props.character;
 
   const [isOpen, setIsOpen] = createSignal(false);
 
+  const [appState] = useAppState();
+  const [{ renderNotice }] = useAppAlert();
   const [locale, dict] = useAppLocale();
 
   const t = i18n.translator(dict);
 
   const toggleMenu = (event) => {
     event.stopPropagation();
+
     setIsOpen(!isOpen());
   }
 
   const viewClick = (event) => {
     event.stopPropagation();
+
     props.onViewClick();
+    setIsOpen(false);
+  }
+
+  const deleteClick = (event) => {
+    setIsOpen(false);
+    props.onDeleteCharacter(event);
+  }
+
+  const copy = (event) => {
+    event.stopPropagation();
+
+    copyToClipboard(`https://charkeeper.org/characters/${appState.activePageParams.id}.json`);
+    renderNotice(t('alerts.copied'));
+    setIsOpen(false);
   }
 
   const firstText = createMemo(() => {
@@ -77,7 +96,7 @@ export const CharactersListItem = (props) => {
         </Show>
       </div>
       <div
-        class="flex-1 flex pb-4 pr-4 overflow-hidden"
+        class="flex-1 flex pb-4 pr-4"
         classList={{
           'border-b border-gray-200 dark:border-dusty': !props.isActive,
           'border-b border-blue-400 dark:border-fuzzy-red': props.isActive
@@ -98,20 +117,29 @@ export const CharactersListItem = (props) => {
             <Dots />
           </IconButton>
           <Show when={isOpen()}>
-            <div class="absolute right-0 border border-gray-200 rounded overflow-hidden">
+            <div class="absolute z-9 right-0 border border-gray-200 rounded overflow-hidden">
               <p
                 class="px-2 py-1 text-sm bg-white hover:bg-gray-200 dark:bg-dusty dark:hover:bg-neutral-800"
-                onClick={props.onDeleteCharacter} // eslint-disable-line solid/reactivity
+                onClick={deleteClick}
               >{t('charactersPage.onDeleteCharacter')}</p>
+              <Show when={AVAILABLE_JSON.includes(character().provider)}>
+                <p
+                  class="px-2 py-1 text-sm bg-white hover:bg-gray-200 dark:bg-dusty dark:hover:bg-neutral-800"
+                  onClick={copy}
+                >{t('charactersPage.onCopyCharacter')}</p>
+              </Show>
+              <Show when={AVAILABLE_PDF.includes(character().provider) && !window.__TAURI_INTERNALS__}>
+                <p
+                  class="px-2 py-1 text-sm bg-white hover:bg-gray-200 dark:bg-dusty dark:hover:bg-neutral-800"
+                  onClick={(e) => viewClick(e)}
+                >
+                  PDF
+                </p>
+              </Show>
             </div>
           </Show>
         </div>
       </div>
-      <Show when={AVAILABLE_PDF.includes(character().provider) && !window.__TAURI_INTERNALS__}>
-        <p class="absolute bottom-0 right-0 px-2 py-1 dark:text-snow" onClick={(e) => viewClick(e)}>
-          PDF
-        </p>
-      </Show>
     </div>
   );
 }
