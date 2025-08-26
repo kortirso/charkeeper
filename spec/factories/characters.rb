@@ -74,7 +74,7 @@ FactoryBot.define do
       data {
         {
           level: 4,
-          race: 'halfling',
+          heritage: 'halfling',
           community: 'highborne',
           main_class: 'bard',
           classes: { bard: 4 },

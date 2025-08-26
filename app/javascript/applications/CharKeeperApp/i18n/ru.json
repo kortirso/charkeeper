@@ -314,7 +314,10 @@
     "level": "Уровень",
     "new": "Добавить нового персонажа",
     "onDeleteCharacter": "Удалить",
-    "deleteCharacterTitle": "Удаление персонажа"
+    "deleteCharacterTitle": "Удаление персонажа",
+    "onCopyCharacter": "Поделиться",
+    "download": "Скачать",
+    "sharePdf": "Поделиться PDF ссылкой"
   },
   "newCharacterPage": {
     "avatarFile": "Выберите файл аватара",

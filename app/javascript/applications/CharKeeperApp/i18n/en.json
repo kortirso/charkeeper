@@ -314,7 +314,10 @@
     "level": "Level",
     "new": "Create new character",
     "onDeleteCharacter": "Delete",
-    "deleteCharacterTitle": "Deleting character"
+    "deleteCharacterTitle": "Deleting character",
+    "onCopyCharacter": "Share",
+    "download": "Download",
+    "sharePdf": "Share PDF link"
   },
   "newCharacterPage": {
     "avatarFile": "Select avatar file",

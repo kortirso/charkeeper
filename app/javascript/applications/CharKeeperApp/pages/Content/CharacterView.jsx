@@ -80,10 +80,10 @@ export const CharacterView = (props) => {
         <canvas id="pdf" />
         <div class="absolute top-4 left-4">
           <a id="pdfDownload" class="rounded bg-blue-400 text-snow dark:bg-fuzzy-red px-2 py-1 mr-2">
-            Download
+            {t('charactersPage.download')}
           </a>
           <span class="rounded bg-blue-400 text-snow dark:bg-fuzzy-red px-2 py-1 cursor-pointer" onClick={copy}>
-            Share link
+            {t('charactersPage.sharePdf')}
           </span>
         </div>
       </div>

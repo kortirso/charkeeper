@@ -17,6 +17,7 @@ class ApplicationController < ActionController::Base
     )
   end
 
+  rescue_from ActiveRecord::RecordNotFound, with: :page_not_found
   rescue_from ActionPolicy::Unauthorized, with: :access_denied
 
   def not_found = page_not_found

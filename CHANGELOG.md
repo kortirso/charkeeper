@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Added
 - sending bot commands from group chat in telegram
 - session rest icon for Daggerheart
+- json shared endpoint
 
 ### Modified
 - clear character data after deleting

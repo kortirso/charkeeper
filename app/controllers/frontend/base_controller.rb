@@ -4,8 +4,6 @@ module Frontend
   class BaseController < ApplicationController
     protect_from_forgery with: :null_session
 
-    rescue_from ActiveRecord::RecordNotFound, with: :page_not_found
-
     private
 
     def only_head_response
