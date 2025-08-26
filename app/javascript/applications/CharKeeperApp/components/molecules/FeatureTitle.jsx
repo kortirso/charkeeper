@@ -3,7 +3,7 @@ import * as i18n from '@solid-primitives/i18n';
 
 import { Button } from '../../components';
 import { useAppLocale } from '../../context';
-import { PlusSmall, Minus, Campfire, LongCampfire } from '../../assets';
+import { PlusSmall, Minus, Campfire, LongCampfire, Moon } from '../../assets';
 
 export const FeatureTitle = (props) => {
   const feature = () => props.feature;
@@ -30,7 +30,7 @@ export const FeatureTitle = (props) => {
                 <span title={t('rest.longRest')}><LongCampfire /></span>
               </Match>
               <Match when={feature().limit_refresh === 'session'}>
-                <span title={t('rest.sessionRest')}><LongCampfire /></span>
+                <span title={t('rest.sessionRest')}><Moon width={16} height={16} /></span>
               </Match>
             </Switch>
           </p>
