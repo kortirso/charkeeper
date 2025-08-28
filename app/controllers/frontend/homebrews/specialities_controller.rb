@@ -38,7 +38,8 @@ module Frontend
       end
 
       def find_existing_characters
-        return unless characters_relation.where(user_id: current_user.id).exists?(["data ->> 'main_class' = ?", @speciality.id])
+        subclasses = characters_relation.where(user_id: current_user.id).pluck(:data).pluck(:subclasses)
+        return if subclasses.flat_map(&:keys).exclude?(@speciality.id)
 
         unprocessable_response({ base: [t("frontend.homebrews.specialities.#{params[:provider]}.character_exists")] })
       end

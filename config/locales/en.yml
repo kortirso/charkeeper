@@ -16,6 +16,9 @@ en:
       specialities:
         daggerheart:
           character_exists: Character with such class exists
+      subclasses:
+        daggerheart:
+          character_exists: Character with such subclass exists
   web:
     welcome:
       index:

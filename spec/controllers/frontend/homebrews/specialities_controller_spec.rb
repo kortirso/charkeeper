@@ -55,7 +55,8 @@ describe Frontend::Homebrews::SpecialitiesController do
 
   describe 'DELETE#destroy' do
     context 'for logged users' do
-      let!(:homebrew) { create :homebrew_speciality, :daggerheart }
+      let!(:homebrew_speciality) { create :homebrew_speciality, :daggerheart }
+      let!(:homebrew) { create :homebrew_subclass, :daggerheart }
 
       context 'for unexisting homebrew' do
         it 'returns error' do
@@ -67,7 +68,7 @@ describe Frontend::Homebrews::SpecialitiesController do
 
       context 'for not user homebrew' do
         it 'returns error' do
-          delete :destroy, params: { id: homebrew.id, provider: 'daggerheart', charkeeper_access_token: access_token }
+          delete :destroy, params: { id: homebrew_speciality.id, provider: 'daggerheart', charkeeper_access_token: access_token }
 
           expect(response).to have_http_status :not_found
         end
@@ -75,10 +76,13 @@ describe Frontend::Homebrews::SpecialitiesController do
 
       context 'for user character' do
         let(:request) {
-          delete :destroy, params: { id: homebrew.id, provider: 'daggerheart', charkeeper_access_token: access_token }
+          delete :destroy, params: { id: homebrew_speciality.id, provider: 'daggerheart', charkeeper_access_token: access_token }
         }
 
-        before { homebrew.update!(user: user_session.user) }
+        before do
+          homebrew_speciality.update!(user: user_session.user)
+          homebrew.update!(user: user_session.user)
+        end
 
         it 'deletes homebrew', :aggregate_failures do
           expect { request }.to change(Daggerheart::Homebrew::Speciality, :count).by(-1)
@@ -90,7 +94,7 @@ describe Frontend::Homebrews::SpecialitiesController do
           let!(:character) { create :character, :daggerheart, user: user_session.user }
 
           before do
-            character.data['main_class'] = homebrew.id
+            character.data['subclasses'] = character.data['subclasses'].merge({ homebrew_speciality.id => homebrew.id })
             character.save
           end
 

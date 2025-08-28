@@ -36,6 +36,7 @@ describe Frontend::Homebrews::SubclassesController do
 
   describe 'DELETE#destroy' do
     context 'for logged users' do
+      let!(:homebrew_speciality) { create :homebrew_speciality, :daggerheart }
       let!(:homebrew) { create :homebrew_subclass, :daggerheart }
 
       context 'for unexisting homebrew' do
@@ -59,12 +60,30 @@ describe Frontend::Homebrews::SubclassesController do
           delete :destroy, params: { id: homebrew.id, provider: 'daggerheart', charkeeper_access_token: access_token }
         }
 
-        before { homebrew.update!(user: user_session.user) }
+        before do
+          homebrew_speciality.update!(user: user_session.user)
+          homebrew.update!(user: user_session.user)
+        end
 
         it 'deletes homebrew', :aggregate_failures do
           expect { request }.to change(Daggerheart::Homebrew::Subclass, :count).by(-1)
           expect(response).to have_http_status :ok
           expect(response.parsed_body).to eq({ 'result' => 'ok' })
+        end
+
+        context 'when character exists with deleting subclass' do
+          let!(:character) { create :character, :daggerheart, user: user_session.user }
+
+          before do
+            character.data['subclasses'] = character.data['subclasses'].merge({ homebrew_speciality.id => homebrew.id })
+            character.save
+          end
+
+          it 'returns error', :aggregate_failures do
+            expect { request }.not_to change(Daggerheart::Homebrew::Race, :count)
+            expect(response).to have_http_status :unprocessable_content
+            expect(response.parsed_body['errors']).to eq({ 'base' => ['Персонаж с таким подклассом существует'] })
+          end
         end
       end
     end

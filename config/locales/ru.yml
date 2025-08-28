@@ -16,6 +16,9 @@ ru:
       specialities:
         daggerheart:
           character_exists: Персонаж с таким классом существует
+      subclasses:
+        daggerheart:
+          character_exists: Персонаж с таким подклассом существует
   web:
     welcome:
       index:

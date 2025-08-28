@@ -26,7 +26,7 @@ module CharactersContext
         return true unless condition
         return true unless item.origin == 'subclass'
 
-        character.data.subclasses_mastery[item.origin_value] > condition
+        character.data.subclasses_mastery[item.origin_value] >= condition
       end
 
       def feats(character)

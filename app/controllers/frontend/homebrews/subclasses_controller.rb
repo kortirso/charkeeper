@@ -7,6 +7,7 @@ module Frontend
       include SerializeResource
 
       before_action :find_subclass, only: %i[destroy]
+      before_action :find_existing_characters, only: %i[destroy]
 
       def create
         case add_service.call(create_params.merge(user: current_user))
@@ -24,6 +25,13 @@ module Frontend
 
       def find_subclass
         @subclass = subclasses_relation.find_by!(id: params[:id], user_id: current_user.id)
+      end
+
+      def find_existing_characters
+        subclasses = characters_relation.where(user_id: current_user.id).pluck(:data).pluck(:subclasses)
+        return if subclasses.flat_map(&:values).exclude?(@subclass.id)
+
+        unprocessable_response({ base: [t("frontend.homebrews.subclasses.#{params[:provider]}.character_exists")] })
       end
 
       def create_params
@@ -46,6 +54,12 @@ module Frontend
         case params[:provider]
         when 'daggerheart' then ::Daggerheart::Homebrew::Subclass
         else []
+        end
+      end
+
+      def characters_relation
+        case params[:provider]
+        when 'daggerheart' then ::Daggerheart::Character
         end
       end
     end
