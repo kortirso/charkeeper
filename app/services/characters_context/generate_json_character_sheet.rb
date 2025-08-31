@@ -12,7 +12,7 @@ module CharactersContext
 
     def daggerheart_json(character)
       CharactersContext::Daggerheart::GenerateJsonCharacterSheet.new.to_json(
-        character: character.decorator
+        character: character
       )
     end
   end
