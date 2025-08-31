@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## Unrelease
 ### Modified
 - allow to learn any spell for D&D
+- allow to learn any domain card for Daggerheart
 
 ### Fixed
 - refreshing Daggerheart subclass feats

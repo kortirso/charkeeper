@@ -2,7 +2,7 @@ import { createSignal, createEffect, For, Show, createMemo, batch } from 'solid-
 import * as i18n from '@solid-primitives/i18n';
 
 import { DomainCardsTable } from './DomainCardsTable';
-import { createModal, StatsBlock, ErrorWrapper, Button, Toggle, TextArea } from '../../../../components';
+import { createModal, StatsBlock, ErrorWrapper, Button, Toggle, TextArea, Checkbox } from '../../../../components';
 import config from '../../../../data/daggerheart.json';
 import { useAppState, useAppLocale, useAppAlert } from '../../../../context';
 import { PlusSmall } from '../../../../assets';
@@ -23,6 +23,7 @@ export const DaggerheartDomainCards = (props) => {
   const [spells, setSpells] = createSignal(undefined);
   const [spellsSelectingMode, setSpellsSelectingMode] = createSignal(false);
   const [changingSpell, setChangingSpell] = createSignal(null);
+  const [availableDomainsFilter, setAvailableDomainsFilter] = createSignal(true);
 
   const { Modal, openModal, closeModal } = createModal();
   const [appState] = useAppState();
@@ -37,7 +38,7 @@ export const DaggerheartDomainCards = (props) => {
     const fetchSpells = async () => await fetchSpellsRequest(
       appState.accessToken,
       character().provider,
-      { domains: character().selected_domains.join(','), max_level: character().level }
+      { max_level: character().level }
     );
     const fetchCharacterSpells = async () => await fetchCharacterSpellsRequest(appState.accessToken, character().provider, character().id);
 
@@ -50,6 +51,15 @@ export const DaggerheartDomainCards = (props) => {
         });
       }
     );
+  });
+
+  // character().selected_domains.join(',')
+
+  const renderingDomains = createMemo(() => {
+    if (domains() === undefined) return [];
+    if (availableDomainsFilter()) return character().selected_domains;
+
+    return Object.keys(domains());
   });
 
   const learnedSpells = createMemo(() => {
@@ -126,7 +136,16 @@ export const DaggerheartDomainCards = (props) => {
         when={!spellsSelectingMode()}
         fallback={
           <>
-            <For each={character().selected_domains}>
+            <div class="flex justify-between items-center mb-2">
+              <Checkbox
+                labelText={t('character.onlyAvailableSpells')}
+                labelPosition="right"
+                labelClassList="ml-2"
+                checked={availableDomainsFilter()}
+                onToggle={() => setAvailableDomainsFilter(!availableDomainsFilter())}
+              />
+            </div>
+            <For each={renderingDomains()}>
               {(domain) =>
                 <Toggle title={domains()[domain].name[locale()]}>
                   <table class="w-full table first-column-full-width">
