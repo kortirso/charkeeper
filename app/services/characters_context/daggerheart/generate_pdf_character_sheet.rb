@@ -6,7 +6,7 @@ module CharactersContext
       PAGE_SIZE = 'A4'
       PAGE_LAYOUT = :portrait
 
-      # rubocop: disable Metrics/AbcSize, Metrics/MethodLength, Metrics/PerceivedComplexity, Layout/LineLength
+      # rubocop: disable Metrics/AbcSize, Metrics/MethodLength, Metrics/PerceivedComplexity, Layout/LineLength, Metrics/CyclomaticComplexity
       def to_pdf(character:)
         font Rails.root.join('app/assets/fonts/CascadiaMono-SemiLight.otf')
         stroke_color '000000'
@@ -30,7 +30,7 @@ module CharactersContext
           fill_and_stroke_rounded_rectangle [129.6 + (index * 15.1), 516], 12.5, 7, 1
         end
 
-        # removing
+        # removing hope
         fill_color 'FFFFFF'
         fill_rectangle [-6, 474], 230, 50
         fill_rectangle [-10, 40], 175, 10
@@ -54,7 +54,7 @@ module CharactersContext
         text_box character.evasion.to_s, at: [8, 658], height: 20, width: 20, align: :center
         text_box character.armor_score.to_s, at: [68.5, 658], height: 20, width: 20, align: :center
 
-        # rectangle [137.5, 572], 22, 15
+        # rectangle [0, 400], 175, 90
         # stroke
 
         [['agi', 175], ['str', 238], ['fin', 298], ['ins', 359], ['pre', 422], ['know', 482]].each do |item|
@@ -72,11 +72,16 @@ module CharactersContext
 
           classes = character.subclasses.map { |key, value| "#{class_name(key)} - #{subclass_name(key, value)}" }.join('/')
           text_box classes, at: [323, 713], width: 150
+
+          character.experience.sort_by { |item| -item['exp_level'] }.first(5).each_with_index do |experience, index|
+            text_box experience['exp_name'], at: [0, 395 - (index * 18)], width: 175
+            text_box "+#{experience['exp_level']}", at: [195, 395 - (index * 18)], width: 25
+          end
         end
 
         render
       end
-      # rubocop: enable Metrics/AbcSize, Metrics/MethodLength, Metrics/PerceivedComplexity, Layout/LineLength
+      # rubocop: enable Metrics/AbcSize, Metrics/MethodLength, Metrics/PerceivedComplexity, Layout/LineLength, Metrics/CyclomaticComplexity
 
       private
 
