@@ -1,0 +1,17 @@
+[
+  {
+    "slug": "lay_on_hands",
+    "title": { "en": "Lay on Hands", "ru": "Наложение рук" },
+    "description": {
+      "en": "As a Bonus Action, you can touch a creature (which could be yourself) and draw power from the pool of healing to restore a number of Hit Points to that creature, up to the maximum amount remaining in the pool. You can also expend 5 Hit Points from the pool of healing power to remove the Poisoned condition from the creature.",
+      "ru": "Бонусным действием вы можете коснуться существа (в том числе себя) и направить часть запаса целительной силы на восстановление хитов этому существу, вплоть максимума оставшихся в запасе очков. Альтернативно вы можете потратить 5 хитов из вашего запаса целительной силы для снятия с цели состояния отравленный."
+    },
+    "origin": "class",
+    "origin_value": "paladin",
+    "kind": "static",
+    "description_eval_variables": {
+      "limit": "5 * classes['paladin']"
+    },
+    "limit_refresh": "long_rest"
+  },
+]

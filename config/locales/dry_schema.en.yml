@@ -124,10 +124,7 @@ en:
             invalid_class_name: Invalid class name
             invalid_level: Invalid level
           character:
-            can_not_learn: Can't learn spells
             can_not_prepare: Can't prepare spells
-          spell:
-            can_not_learn: Can't be learned by class
           subrace:
             invalid: Invalid subrace
           legacy:

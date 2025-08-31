@@ -64,7 +64,7 @@ module Frontend
             params
               .permit(:notes).to_h
               .merge({ character: @character, character_spell: @character.spells.find(params[:id]) })
-          result[:ready_to_use] = to_bool.call(params[:ready_to_use]) if params[:ready_to_use]
+          result[:ready_to_use] = to_bool.call(params[:ready_to_use]) if params.key?(:ready_to_use)
           result
         end
       end

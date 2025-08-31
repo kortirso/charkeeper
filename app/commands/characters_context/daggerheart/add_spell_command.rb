@@ -10,12 +10,6 @@ module CharactersContext
           required(:character).filled(type?: ::Daggerheart::Character)
           required(:spell).filled(type?: ::Daggerheart::Spell)
         end
-
-        rule(:character, :spell) do
-          next if values[:spell].data.domain.in?(values[:character].selected_domains)
-
-          key(:spell).failure(:invalid_domain_card)
-        end
       end
 
       private

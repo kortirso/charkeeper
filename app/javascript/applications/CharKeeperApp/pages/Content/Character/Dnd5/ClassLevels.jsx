@@ -32,7 +32,12 @@ export const Dnd5ClassLevels = (props) => {
     });
   });
 
-  const classes = () => character().provider === 'dnd5' ? dict().dnd5.classes : translate(dnd2024Config.classes, locale());
+  const classes = () => {
+    if (character().provider === 'dnd2024') return translate(dnd2024Config.classes, locale());
+
+    return Object.fromEntries(Object.entries(dict().dnd5.classes).filter(([slug,]) => slug !== 'static'));
+  }
+
   const subclasses = () => character().provider === 'dnd5' ? dict().dnd5.subclasses : {};
 
   // actions

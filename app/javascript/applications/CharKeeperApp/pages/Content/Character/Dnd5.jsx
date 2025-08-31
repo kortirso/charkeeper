@@ -206,7 +206,12 @@ export const Dnd5 = (props) => {
                 onReplaceCharacter={props.onReplaceCharacter}
               />
               <div class="mt-4">
-                <Feats character={character()} filters={featFilters()} onReplaceCharacter={props.onReplaceCharacter} />
+                <Feats
+                  character={character()}
+                  filters={featFilters()}
+                  onReplaceCharacter={props.onReplaceCharacter}
+                  onReloadCharacter={props.onReloadCharacter}
+                />
               </div>
             </Match>
             <Match when={activeTab() === 'rest'}>
