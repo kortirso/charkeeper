@@ -14,9 +14,7 @@ import { removeCharacterSpellRequest } from '../../../../requests/removeCharacte
 import { updateCharacterRequest } from '../../../../requests/updateCharacterRequest';
 import { modifier } from '../../../../helpers';
 
-const DND5_CLASSES_LEARN_SPELLS = ['bard', 'ranger', 'sorcerer', 'warlock', 'wizard'];
 const DND5_CLASSES_PREPARE_SPELLS = ['cleric', 'druid', 'paladin', 'artificer', 'wizard'];
-const DND2024_CLASSES_LEARN_SPELLS = ['wizard'];
 const DND2024_CLASSES_PREPARE_SPELLS = [
   'bard', 'ranger', 'sorcerer', 'warlock', 'cleric', 'druid', 'paladin', 'artificer', 'wizard'
 ];
@@ -275,7 +273,7 @@ export const Dnd5Spells = (props) => {
               </Show>
               <Show when={spellClassesList().length > 1}>
                 <Select
-                  classList="w-40"
+                  classList="w-52"
                   items={spellClassesList().reduce((acc, item) => { acc[item] = t(`dnd5.classes.${item}`); return acc; }, {})}
                   selectedValue={activeSpellClass()}
                   onSelect={(value) => setActiveSpellClass(value)}
@@ -326,11 +324,9 @@ export const Dnd5Spells = (props) => {
                   </div>
                 </div>
               </Show>
-              <Show when={character().provider === 'dnd5' ? DND5_CLASSES_LEARN_SPELLS.includes(activeSpellClass()) : DND2024_CLASSES_LEARN_SPELLS.includes(activeSpellClass())}>
-                <Button default textable classList="mb-2" onClick={() => setSpellsSelectingMode(true)}>
-                  {t('character.knownSpells')}
-                </Button>
-              </Show>
+              <Button default textable classList="mb-2" onClick={() => setSpellsSelectingMode(true)}>
+                {t('character.knownSpells')}
+              </Button>
               <SpellsTable
                 level="0"
                 spells={filteredCharacterSpells().filter((item) => item.level === 0)}

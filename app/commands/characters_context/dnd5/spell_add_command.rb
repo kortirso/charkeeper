@@ -11,14 +11,6 @@ module CharactersContext
           required(:spell).filled(type?: ::Dnd5::Spell)
           required(:target_spell_class).filled(:string)
         end
-
-        rule(:character, :target_spell_class) do
-          key(:character).failure(:can_not_learn) unless values[:character].can_learn_spell?(values[:target_spell_class])
-        end
-
-        rule(:spell, :target_spell_class) do
-          key(:spell).failure(:can_not_learn) unless values[:spell].data.available_for.include?(values[:target_spell_class])
-        end
       end
 
       private

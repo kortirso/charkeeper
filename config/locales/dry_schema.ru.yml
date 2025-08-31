@@ -124,10 +124,7 @@ ru:
             invalid_class_name: Недопустимое название класса
             invalid_level: Недопустимый уровень
           character:
-            can_not_learn: Не может учить заклинания
             can_not_prepare: Не может подготавливать заклинания
-          spell:
-            can_not_learn: Заклинание не может быть выучено
           subrace:
             invalid: Недопустимая подраса
           legacy:

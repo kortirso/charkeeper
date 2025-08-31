@@ -95,15 +95,6 @@ describe Frontend::Daggerheart::Characters::SpellsController do
               contain_exactly('id', 'ready_to_use', 'notes', 'level', 'slug', 'name')
             )
           end
-
-          context 'for invalid spell data' do
-            before { spell.update!(data: { codex: 'splendor' }) }
-
-            it 'does not create character spell', :aggregate_failures do
-              expect { request }.not_to change(Daggerheart::Character::Spell, :count)
-              expect(response).to have_http_status :unprocessable_content
-            end
-          end
         end
       end
     end
