@@ -50,6 +50,22 @@ module Dnd2024Character
         @spells_slots ||= SPELL_SLOTS[class_level]
       end
 
+      def static_spells
+        @static_spells ||= begin
+          result = __getobj__.static_spells
+          result['hunter_mark'] = static_spell_attributes.merge({ 'limit' => (class_level + 7) / 4, 'level' => 1 })
+          result
+        end
+      end
+
+      def attacks_per_action
+        @attacks_per_action ||= class_level >= 5 ? 2 : 1
+      end
+
+      def speed
+        @speed ||= class_level >= 6 ? (__getobj__.speed + 10) : __getobj__.speed
+      end
+
       private
 
       def class_level
@@ -80,6 +96,10 @@ module Dnd2024Character
 
       def max_spell_level
         SPELL_SLOTS[class_level].keys.max
+      end
+
+      def static_spell_attributes
+        { 'attack_bonus' => proficiency_bonus + modifiers['wis'], 'save_dc' => 8 + proficiency_bonus + modifiers['wis'] }
       end
     end
   end

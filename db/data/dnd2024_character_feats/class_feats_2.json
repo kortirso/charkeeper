@@ -14,4 +14,287 @@
     },
     "limit_refresh": "long_rest"
   },
+  {
+    "slug": "paladin_weapon_mastery",
+    "title": { "en": "Weapon mastery", "ru": "Оружейные приёмы" },
+    "description": {
+      "en": "Your training with weapons allows you to use the mastery properties of 2 kinds of Simple or Martial weapons of your choice.",
+      "ru": "Ваши тренировки с оружием позволяют вам использовать оружейные приёмы 2 типов простого или воинского оружия по вашему выбору."
+    },
+    "origin": "class",
+    "origin_value": "paladin",
+    "kind": "text"
+  },
+  {
+    "slug": "paladin_fighting_style",
+    "title": { "en": "Fighting style", "ru": "Боевой стиль" },
+    "description": {
+      "en": "You gain a Fighting Style feat of your choice or you learn two Cleric cantrips of your choice. Whenever you gain a Paladin level, you can replace one of these cantrips with another Cleric cantrip.",
+      "ru": "Вы получаете черту боевого стиля по вашему выбору или вы изучаете 2 заговора жреца на свой выбор. Когда вы получаете уровень паладина, вы можете заменить один из заговоров на другой заговор жреца."
+    },
+    "origin": "class",
+    "origin_value": "paladin",
+    "kind": "static",
+    "conditions": { "level": 2 }
+  },
+  {
+    "slug": "channel_divinity",
+    "title": { "en": "Channel divinity", "ru": "Божественный канал" },
+    "description": {
+      "en": "You can channel divine energy directly from the Outer Planes, using it to fuel magical effects.",
+      "ru": "Вы можете направлять божественную энергию непосредственно из внешних планов для подпитки магических эффектов."
+    },
+    "origin": "class",
+    "origin_value": "paladin",
+    "kind": "static",
+    "description_eval_variables": {
+      "limit": "classes['paladin'] >= 11 ? 3 : 2"
+    },
+    "limit_refresh": "one_at_short_rest",
+    "conditions": { "level": 3 }
+  },
+  {
+    "slug": "divine_sense",
+    "title": { "en": "Channel divinity: divine sense", "ru": "Божественный канал: Божественное чувство" },
+    "description": {
+      "en": "As a Bonus Action, you can detect Celestials, Fiends, and Undead. For the next 10 minutes you know the location of any creature of those types within 60 feet of yourself, and you know its creature type. Within the same radius, you also detect the presence ofany place or object that has been consecrated or desecrated, as with the Hallow spell.",
+      "ru": "Бонусным действием вы можете обнаружить небожителей, исчадий и нежить. В течение следующих 10 минут вы знаете местоположение любого существа этих типов в радиусе 60 футов от вас, а также тип существа. В пределах этого же радиуса вы также обнаруживаете присутствие любого места или объекта, который был освящён или осквернён, как при действии заклинания Святилище."
+    },
+    "origin": "class",
+    "origin_value": "paladin",
+    "kind": "static",
+    "conditions": { "level": 3 }
+  },
+  {
+    "slug": "aura_of_protection",
+    "title": { "en": "Aura of protection", "ru": "Аура защиты" },
+    "description": {
+      "en": "You radiate a protective, unseeable aura in a 10-foot Emanation that originates from you. You and your allies in the aura gain a bonus to saving throws equal +{{value}}.",
+      "ru": "Вы излучаете защитную невидимую ауру 10-футовой эманации, исходящей от вас. Вы и дружественные существа в пределах ауры получаете бонус к спасброску +{{value}}."
+    },
+    "origin": "class",
+    "origin_value": "paladin",
+    "kind": "static",
+    "description_eval_variables": {
+      "value": "[1, modifiers['cha']].max"
+    },
+    "conditions": { "level": 6 }
+  },
+  {
+    "slug": "abjure_foes",
+    "title": { "en": "Abjure foes", "ru": "Изгнание врагов" },
+    "description": {
+      "en": "As a Magic action, you can expend one use of this class's Channel Divinity. You can target a number of creatures ({{value}}) that you can see within 60 feet of yourself. Each target must succeed on a Wisdom saving throw (DC {{value}}) or have the Frightened condition for 1 minute or until it takes any damage. While Frightened in this way, a target can do only one of the following on its turns: move, take an action, or take a Bonus Action.",
+      "ru": "Действием магия вы можете потратить одно использование Божественного канала. Вы можете выбрать количество существ ({{value}}), которых вы видите в пределах 60 футов от себя. Каждая цель должна преуспеть в спасброске Мудрости (УС {{dc}}) или получить состояние испуганный на 1 минуту или до получения любого урона. Пока существо находится в состоянии испуганный от этого умения, оно может совершать только 1 из следующих вариантов в свой ход: перемещение, действие или бонусное действие."
+    },
+    "origin": "class",
+    "origin_value": "paladin",
+    "kind": "static",
+    "description_eval_variables": {
+      "value": "[1, modifiers['cha']].max",
+      "dc": "8 + proficiency_bonus + modifiers['cha']"
+    },
+    "conditions": { "level": 9 }
+  },
+  {
+    "slug": "aura_of_protection_1",
+    "title": { "en": "Aura of protection", "ru": "Аура защиты" },
+    "description": {
+      "en": "You radiate a protective, unseeable aura in a 10-foot Emanation that originates from you. You and your allies in the aura gain a bonus to saving throws equal +{{value}}, and have Immunity to the Frightened condition",
+      "ru": "Вы излучаете защитную невидимую ауру 10-футовой эманации, исходящей от вас. Вы и дружественные существа в пределах ауры получаете бонус к спасброску +{{value}}, а также получаете иммунитет к состоянию испуганный."
+    },
+    "exclude": ["aura_of_protection"],
+    "origin": "class",
+    "origin_value": "paladin",
+    "kind": "static",
+    "description_eval_variables": {
+      "value": "[1, modifiers['cha']].max"
+    },
+    "conditions": { "level": 10 }
+  },
+  {
+    "slug": "radiant_strikes",
+    "title": { "en": "Radiant strikes", "ru": "Сияющие удары" },
+    "description": {
+      "en": "When you hit a target with an attack roll using a Melee weapon or an Unarmed Strike, the target takes an extra ld8 Radiant damage.",
+      "ru": "Когда вы попадаете по цели броском атаки с использованием рукопашного оружия или безоружным ударом, цель получает дополнительно 1к8 урона излучением."
+    },
+    "origin": "class",
+    "origin_value": "paladin",
+    "kind": "static",
+    "conditions": { "level": 11 }
+  },
+  {
+    "slug": "lay_on_hands_1",
+    "title": { "en": "Lay on Hands", "ru": "Наложение рук" },
+    "description": {
+      "en": "As a Bonus Action, you can touch a creature (which could be yourself) and draw power from the pool of healing to restore a number of Hit Points to that creature, up to the maximum amount remaining in the pool. You can also expend 5 Hit Points from the pool of healing power to remove the Poisoned, Blinded, Charmed, Deafened, Frightened, Paralyzed, or Stunned condition from the creature.",
+      "ru": "Бонусным действием вы можете коснуться существа (в том числе себя) и направить часть запаса целительной силы на восстановление хитов этому существу, вплоть максимума оставшихся в запасе очков. Альтернативно вы можете потратить 5 хитов из вашего запаса целительной силы для снятия с цели состояния отравленный, ослеплённый, очарованный, оглохший, испуганный, парализованный или ошеломлённый."
+    },
+    "exclude": ["lay_on_hands"],
+    "origin": "class",
+    "origin_value": "paladin",
+    "kind": "static",
+    "description_eval_variables": {
+      "limit": "5 * classes['paladin']"
+    },
+    "limit_refresh": "long_rest",
+    "conditions": { "level": 14 }
+  },
+  {
+    "slug": "aura_of_protection_2",
+    "title": { "en": "Aura of protection", "ru": "Аура защиты" },
+    "description": {
+      "en": "You radiate a protective, unseeable aura in a 30-foot Emanation that originates from you. You and your allies in the aura gain a bonus to saving throws equal +{{value}}, and have Immunity to the Frightened condition",
+      "ru": "Вы излучаете защитную невидимую ауру 30-футовой эманации, исходящей от вас. Вы и дружественные существа в пределах ауры получаете бонус к спасброску +{{value}}, а также получаете иммунитет к состоянию испуганный."
+    },
+    "exclude": ["aura_of_protection_1"],
+    "origin": "class",
+    "origin_value": "paladin",
+    "kind": "static",
+    "description_eval_variables": {
+      "value": "[1, modifiers['cha']].max"
+    },
+    "conditions": { "level": 18 }
+  },
+  {
+    "slug": "ranger_weapon_mastery",
+    "title": { "en": "Weapon mastery", "ru": "Оружейные приёмы" },
+    "description": {
+      "en": "Your training with weapons allows you to use the mastery properties of 2 kinds of Simple or Martial weapons of your choice. Whenever you finish a Long Rest, you can change the kinds ofweapons you chose.",
+      "ru": "Ваши тренировки с оружием позволяют вам использовать оружейные приёмы 2 типов простого или воинского оружия по вашему выбору. Когда вы заканчиваете продолжительный отдых, вы можете поменять типы оружия."
+    },
+    "origin": "class",
+    "origin_value": "ranger",
+    "kind": "text"
+  },
+  {
+    "slug": "deft_explorer",
+    "title": { "en": "Deft explorer", "ru": "Искусный исследователь" },
+    "description": {
+      "en": "You gain Expertise in 1 skill. You know two languages of your choice.",
+      "ru": "Вы получаете компетентность для одного навыка, которым владеете. Вы обучаетесь 2 языкам на выбор."
+    },
+    "origin": "class",
+    "origin_value": "ranger",
+    "kind": "static",
+    "conditions": { "level": 2 }
+  },
+  {
+    "slug": "ranger_fighting_style",
+    "title": { "en": "Fighting style", "ru": "Боевой стиль" },
+    "description": {
+      "en": "You gain a Fighting Style feat of your choice or you learn two Druid cantrips of your choice. Whenever you gain a Ranger level, you can replace one of these cantrips with another Druid cantrip.",
+      "ru": "Вы получаете черту боевого стиля по вашему выбору или вы изучаете 2 заговора друида на свой выбор. Когда вы получаете уровень следопыта, вы можете заменить один из заговоров на другой заговор друида."
+    },
+    "origin": "class",
+    "origin_value": "paladin",
+    "kind": "static",
+    "conditions": { "level": 2 }
+  },
+  {
+    "slug": "ranger_expertise",
+    "title": { "en": "Expertise", "ru": "Компетентность" },
+    "description": {
+      "en": "You gain Expertise in 2 skill.",
+      "ru": "Вы получаете компетентность для 2 навыков, которымы владеете."
+    },
+    "origin": "class",
+    "origin_value": "ranger",
+    "kind": "static",
+    "conditions": { "level": 9 }
+  },
+  {
+    "slug": "temporary_hit_points",
+    "title": { "en": "Temporary hit points", "ru": "Временные хиты" },
+    "description": {
+      "en": "As a Magic action, you can give yourself {{value}} Temporary Hit Points.",
+      "ru": "Действием магия вы можете дать себе {{value}} временных хитов."
+    },
+    "origin": "class",
+    "origin_value": "ranger",
+    "kind": "static",
+    "description_eval_variables": {
+      "value": "'1d8' + [1, modifiers['wis']].max.to_s",
+      "limit": "[1, modifiers['wis']].max"
+    },
+    "limit_refresh": "long_rest",
+    "conditions": { "level": 10 }
+  },
+  {
+    "slug": "decrease_exhaustion",
+    "title": { "en": "Decrease exhaustion", "ru": "Снижение истощения" },
+    "description": {
+      "en": "Whenever you finish a Short Rest, your Exhaustion level decreases by 1.",
+      "ru": "После завершения каждого короткого отдыха ваша степень состояния истощённый уменьшается на 1."
+    },
+    "origin": "class",
+    "origin_value": "ranger",
+    "kind": "static",
+    "conditions": { "level": 10 }
+  },
+  {
+    "slug": "relentless_hunter",
+    "title": { "en": "Relentless hunter", "ru": "Беспощадный охотник" },
+    "description": {
+      "en": "Taking damage can't break your Concentration on Hunter's Mark.",
+      "ru": "Получение урона не прерывает вашу концентрацию при использовании Метки охотника."
+    },
+    "origin": "class",
+    "origin_value": "ranger",
+    "kind": "static",
+    "conditions": { "level": 13 }
+  },
+  {
+    "slug": "nature_veil",
+    "title": { "en": "Nature's veil", "ru": "Природная завеса" },
+    "description": {
+      "en": "As a Bonus Action, you can give yourself the Invisible condition until the end of your next turn.",
+      "ru": "Бонусным действием, вы можете дать себе состояние невидимый до конца вашего следующего хода."
+    },
+    "origin": "class",
+    "origin_value": "ranger",
+    "kind": "static",
+    "description_eval_variables": {
+      "limit": "[1, modifiers['wis']].max"
+    },
+    "limit_refresh": "long_rest",
+    "conditions": { "level": 14 }
+  },
+  {
+    "slug": "precise_hunter",
+    "title": { "en": "Precise hunter", "ru": "Меткий охотник" },
+    "description": {
+      "en": "You have Advantage on attack rolls against the creature cur rently marked by your Hunter's Mark.",
+      "ru": "Вы получаете преимущество при бросках атаки против существа, которое в данный момент отмечено вашей Меткой охотника."
+    },
+    "origin": "class",
+    "origin_value": "ranger",
+    "kind": "static",
+    "conditions": { "level": 17 }
+  },
+  {
+    "slug": "feral_senses",
+    "title": { "en": "Feral senses", "ru": "Дикие чувства" },
+    "description": {
+      "en": "Your connection to the forces of nature grants you Blindsight with a range of 30 feet.",
+      "ru": "Ваша связь с силами природы предоставляет вам слепое зрение в радиусе 30 футов."
+    },
+    "origin": "class",
+    "origin_value": "ranger",
+    "kind": "static",
+    "conditions": { "level": 18 }
+  },
+  {
+    "slug": "foe_slayer",
+    "title": { "en": "Foe slayer", "ru": "Убийца врагов" },
+    "description": {
+      "en": "The damage die of your Hunter's Mark is a dlO rather than a d6.",
+      "ru": "Кость урона, наносимого вашей Меткой охотника, становится равна к10 вместо к6."
+    },
+    "origin": "class",
+    "origin_value": "ranger",
+    "kind": "static",
+    "conditions": { "level": 20 }
+  }
 ]

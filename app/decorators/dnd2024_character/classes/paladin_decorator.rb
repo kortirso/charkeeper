@@ -50,6 +50,19 @@ module Dnd2024Character
         @spells_slots ||= SPELL_SLOTS[class_level]
       end
 
+      def static_spells
+        @static_spells ||= begin
+          result = __getobj__.static_spells
+          result['divine_smite'] = static_spell_attributes.merge({ 'limit' => 1, 'level' => 1 }) if level >= 2
+          result['find_steed'] = static_spell_attributes.merge({ 'limit' => 1, 'level' => 2 }) if level >= 5
+          result
+        end
+      end
+
+      def attacks_per_action
+        @attacks_per_action ||= class_level >= 5 ? 2 : 1
+      end
+
       private
 
       def class_level
@@ -73,6 +86,10 @@ module Dnd2024Character
 
       def max_spell_level
         SPELL_SLOTS[class_level].keys.max
+      end
+
+      def static_spell_attributes
+        { 'attack_bonus' => proficiency_bonus + modifiers['cha'], 'save_dc' => 8 + proficiency_bonus + modifiers['cha'] }
       end
     end
   end
