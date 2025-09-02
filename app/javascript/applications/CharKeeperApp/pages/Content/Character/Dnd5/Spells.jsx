@@ -40,7 +40,7 @@ export const Dnd5Spells = (props) => {
 
   const spellClassesList = createMemo(() => {
     const result = Object.keys(character().spell_classes);
-    if (Object.keys(character().static_spells).length > 0) result.push('static');
+    if (Object.keys(character().static_spells).length > 0 && !spellsSelectingMode()) result.push('static');
 
     return result;
   });
@@ -116,11 +116,15 @@ export const Dnd5Spells = (props) => {
     if (spells() === undefined) return [];
     if (Object.keys(character().static_spells).length === 0) return [];
 
+    // описания имеющихся заклинаний
     const staticSpells = spells().filter((item) => Object.keys(character().static_spells).includes(item.slug));
+
     return Object.entries(character().static_spells).map(([slug, item]) => {
       const spell = staticSpells.find((item) => item.slug === slug);
+      if (!spell) return null;
+
       return { slug: slug, name: spell.name, level: spell.level, data: item }
-    });
+    }).filter((item) => item);
   });
 
   const learnSpell = async (spellId, targetSpellClass) => {
@@ -282,11 +286,7 @@ export const Dnd5Spells = (props) => {
             </div>
             <Show
               when={activeSpellClass() !== 'static'}
-              fallback={
-                <>
-                  <StaticSpellsTable spells={staticCharacterSpells()} />
-                </>
-              }
+              fallback={<StaticSpellsTable spells={staticCharacterSpells()} />}
             >
               <Show when={lastActiveCharacterId() === character().id}>
                 <StatsBlock

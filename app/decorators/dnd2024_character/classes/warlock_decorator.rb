@@ -6,24 +6,24 @@ module Dnd2024Character
       SPELL_SLOTS = {
         1 => { 1 => 1 },
         2 => { 1 => 2 },
-        3 => { 2 => 2 },
-        4 => { 2 => 2 },
-        5 => { 3 => 2 },
-        6 => { 3 => 2 },
-        7 => { 4 => 2 },
-        8 => { 4 => 2 },
-        9 => { 5 => 2 },
-        10 => { 5 => 2 },
-        11 => { 5 => 3 },
-        12 => { 5 => 3 },
-        13 => { 5 => 3 },
-        14 => { 5 => 3 },
-        15 => { 5 => 3 },
-        16 => { 5 => 3 },
-        17 => { 5 => 4 },
-        18 => { 5 => 4 },
-        19 => { 5 => 4 },
-        20 => { 5 => 4 }
+        3 => { 1 => 0, 2 => 2 },
+        4 => { 1 => 0, 2 => 2 },
+        5 => { 1 => 0, 2 => 0, 3 => 2 },
+        6 => { 1 => 0, 2 => 0, 3 => 2 },
+        7 => { 1 => 0, 2 => 0, 3 => 0, 4 => 2 },
+        8 => { 1 => 0, 2 => 0, 3 => 0, 4 => 2 },
+        9 => { 1 => 0, 2 => 0, 3 => 0, 4 => 0, 5 => 2 },
+        10 => { 1 => 0, 2 => 0, 3 => 0, 4 => 0, 5 => 2 },
+        11 => { 1 => 0, 2 => 0, 3 => 0, 4 => 0, 5 => 3, 6 => 0 },
+        12 => { 1 => 0, 2 => 0, 3 => 0, 4 => 0, 5 => 3, 6 => 0 },
+        13 => { 1 => 0, 2 => 0, 3 => 0, 4 => 0, 5 => 3, 6 => 0, 7 => 0 },
+        14 => { 1 => 0, 2 => 0, 3 => 0, 4 => 0, 5 => 3, 6 => 0, 7 => 0 },
+        15 => { 1 => 0, 2 => 0, 3 => 0, 4 => 0, 5 => 3, 6 => 0, 7 => 0, 8 => 0 },
+        16 => { 1 => 0, 2 => 0, 3 => 0, 4 => 0, 5 => 3, 6 => 0, 7 => 0, 8 => 0 },
+        17 => { 1 => 0, 2 => 0, 3 => 0, 4 => 0, 5 => 4, 6 => 0, 7 => 0, 8 => 0, 9 => 0 },
+        18 => { 1 => 0, 2 => 0, 3 => 0, 4 => 0, 5 => 4, 6 => 0, 7 => 0, 8 => 0, 9 => 0 },
+        19 => { 1 => 0, 2 => 0, 3 => 0, 4 => 0, 5 => 4, 6 => 0, 7 => 0, 8 => 0, 9 => 0 },
+        20 => { 1 => 0, 2 => 0, 3 => 0, 4 => 0, 5 => 4, 6 => 0, 7 => 0, 8 => 0, 9 => 0 }
       }.freeze
       CLASS_SAVE_DC = %w[wis cha].freeze
 
@@ -50,6 +50,33 @@ module Dnd2024Character
         @spells_slots ||= SPELL_SLOTS[class_level]
       end
 
+      # rubocop: disable Metrics/AbcSize, Metrics/CyclomaticComplexity, Metrics/MethodLength, Metrics/PerceivedComplexity
+      def static_spells
+        @static_spells ||= begin
+          eldritch_invocations = __getobj__.selected_features['eldritch_invocations']
+          result = __getobj__.static_spells
+          result['contact_other_plane'] = static_spell_attributes.merge({ 'limit' => 1 }) if level >= 9
+          if eldritch_invocations
+            result['find_familiar'] = static_spell_attributes if eldritch_invocations.include?('pact_of_the_chain')
+            result['mage_armor'] = static_spell_attributes if eldritch_invocations.include?('armor_of_shadows')
+            result['disguise_self'] = static_spell_attributes if eldritch_invocations.include?('mask_of_many_faces')
+            result['false_life'] = static_spell_attributes if eldritch_invocations.include?('fiendish_vigor')
+            result['jump'] = static_spell_attributes if eldritch_invocations.include?('otherworldly_leap')
+            result['silent_image'] = static_spell_attributes if eldritch_invocations.include?('misty_visions')
+            result['levitate'] = static_spell_attributes if eldritch_invocations.include?('ascendant_step')
+            if eldritch_invocations.include?('gift_of_the_depths')
+              result['water_breathing'] = static_spell_attributes.merge({ 'limit' => 1 })
+            end
+            result['alter_self'] = static_spell_attributes if eldritch_invocations.include?('master_of_myriad_forms')
+            result['invisibility'] = static_spell_attributes if eldritch_invocations.include?('one_with_shadows')
+            result['speak_with_dead'] = static_spell_attributes if eldritch_invocations.include?('whispers_of_the_grave')
+            result['arcane_eye'] = static_spell_attributes if eldritch_invocations.include?('visions_of_distant_realms')
+          end
+          result
+        end
+      end
+      # rubocop: enable Metrics/AbcSize, Metrics/CyclomaticComplexity, Metrics/MethodLength, Metrics/PerceivedComplexity
+
       private
 
       def class_level
@@ -71,6 +98,10 @@ module Dnd2024Character
 
       def max_spell_level
         SPELL_SLOTS[class_level].keys.max
+      end
+
+      def static_spell_attributes
+        { 'attack_bonus' => proficiency_bonus + modifiers['cha'], 'save_dc' => 8 + proficiency_bonus + modifiers['cha'] }
       end
     end
   end

@@ -1,4 +1,4 @@
-import { For } from 'solid-js';
+import { For, Show } from 'solid-js';
 import * as i18n from '@solid-primitives/i18n';
 
 import { useAppLocale } from '../../../../context';
@@ -20,24 +20,26 @@ export const StaticSpellsTable = (props) => {
   }
 
   return (
-    <div class="blockable mb-2 p-4">
-      <table class="w-full table first-column-full-width">
-        <tbody>
-          <For each={props.spells}>
-            {(spell) =>
-              <tr>
-                <td class="py-1 pl-1 dark:text-snow">
-                  <p>
-                    {spell.name}
-                  </p>
-                  <p class="text-xs">{renderStaticSpellDescription(spell)}</p>
-                </td>
-                <td />
-              </tr>
-            }
-          </For>
-        </tbody>
-      </table>
-    </div>
+    <Show when={props.spells.length > 0} fallback={<></>}>
+      <div class="blockable mb-2 p-4">
+        <table class="w-full table first-column-full-width">
+          <tbody>
+            <For each={props.spells}>
+              {(spell) =>
+                <tr>
+                  <td class="py-1 pl-1 dark:text-snow">
+                    <p>
+                      {spell.name}
+                    </p>
+                    <p class="text-xs">{renderStaticSpellDescription(spell)}</p>
+                  </td>
+                  <td />
+                </tr>
+              }
+            </For>
+          </tbody>
+        </table>
+      </div>
+    </Show>
   );
 }
