@@ -1,4 +1,4 @@
-import { createSignal, createEffect, createMemo, For, Show, batch, Switch, Match } from 'solid-js';
+import { createSignal, createEffect, For, Show, batch, Switch, Match } from 'solid-js';
 import * as i18n from '@solid-primitives/i18n';
 
 import { Toggle, Button, IconButton, TextArea } from '../../components';
@@ -33,14 +33,14 @@ export const Bonuses = (props) => {
 
     Promise.all([fetchCharacterBonuses()]).then(
       ([characterBonusesData]) => {
-        setBonuses(characterBonusesData.bonuses);
+        batch(() => {
+          setBonuses(characterBonusesData.bonuses);
+          setBonusForm(
+            character().provider === 'daggerheart' ? DAGGERHEART_PLACEHOLDER : DND_PLACEHOLDER
+          );
+        });
       }
     );
-  });
-
-  const bonusValuesPlaceholder = createMemo(() => {
-    if (character().provider === 'dnd5' || character().provider === 'dnd2024') return DND_PLACEHOLDER;
-    if (character().provider === 'daggerheart') return DAGGERHEART_PLACEHOLDER;
   });
 
   const parseValue = (values, value) => parseInt(values[value] || 0);
@@ -130,7 +130,6 @@ export const Bonuses = (props) => {
                 classList="mb-2"
                 rows="5"
                 labelText={t('character.newBonusValues')}
-                placeholder={bonusValuesPlaceholder()}
                 value={bonusForm()}
                 onChange={(value) => setBonusForm(value)}
               />

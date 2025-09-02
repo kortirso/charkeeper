@@ -1,0 +1,107 @@
+[
+  {
+    "slug": "dueling",
+    "title": { "en": "Dueling", "ru": "Дуэлянт" },
+    "description": {
+      "en": "When you're holding a Melee weapon in one hand and no other weapons, you gain a +2 bonus to damage rolls with that weapon.",
+      "ru": "Когда вы держите рукопашное оружие в 1 руке и не держите других оружий, вы получаете бонус +2 к броскам урона этим оружием."
+    },
+    "origin": "feat",
+    "origin_value": "fighting_style",
+    "kind": "static"
+  },
+  {
+    "slug": "protection",
+    "title": { "en": "Protection", "ru": "Защита" },
+    "description": {
+      "en": "When a creature you can see attacks a target other than you that is within 5 feet of you, you can take a Reaction to interpose your Shield if you're holding one. You impose Disadvantage on the triggering attack roll and all other attack rolls against the target until the start of your next turn if you remain within 5 feet of the target.",
+      "ru": "Когда существо, которое вы видите, атакует цель в пределах 5 футов от вас (кроме вас), вы можете использовать реакцию, чтобы помешать своим щитом, если вы его держите. Вы накладываете помеху на бросок атаки, который вызвал срабатывание этого умения, и на все последующие броски атаки против цели до начала вашего следующего хода, если остаётесь в пределах 5 футов от цели."
+    },
+    "origin": "feat",
+    "origin_value": "fighting_style",
+    "kind": "static"
+  },
+  {
+    "slug": "interception",
+    "title": { "en": "Interception", "ru": "Перехват" },
+    "description": {
+      "en": "When a creature you can see hits another creature within 5 feet of you with an attack roll, you can take a Reaction to reduce the damage dealt to the target by 1d10+{{value}}. You must be holding a Shield or a Simple or Martial weapon to use this Reaction.",
+      "ru": "Когда существо, которое вы видите, атакует другое существо в пределах 5 футов от вас, вы можете использовать реакцию, чтобы уменьшить урон, нанесённый цели, на 1к10+{{value}}. Вы должны держать щит или простое или воинское оружие, чтобы использовать эту реакцию."
+    },
+    "origin": "feat",
+    "origin_value": "fighting_style",
+    "kind": "static",
+    "description_eval_variables": {
+      "value": "proficiency_bonus"
+    }
+  },
+  {
+    "slug": "great_weapon_fighting",
+    "title": { "en": "Great Weapon Fighting", "ru": "Сражение большим оружием" },
+    "description": {
+      "en": "When you roll damage for an attack you make with a Melee weapon that you are holding with two hands, you can treat any 1 or 2 on a damage die as a 3. The weapon must have the Two-Handed or Versatile property to gain this benefit.",
+      "ru": "Когда вы бросаете урон за атаку, которую вы совершаете с использованием рукопашного оружия, которое держите 2 руками, вы можете считать 1 или 2 на кости урона как 3. Оружие должно обладать свойством двуручное или универсальное, чтобы получить этот эффект."
+    },
+    "origin": "feat",
+    "origin_value": "fighting_style",
+    "kind": "static"
+  },
+  {
+    "slug": "blind fighting",
+    "title": { "en": "Blind Fighting", "ru": "Сражение вслепую" },
+    "description": {
+      "en": "You have Blindsight with a range of 10 feet.",
+      "ru": "Вы получаете слепое зрение с дистанцией 10 футов."
+    },
+    "origin": "feat",
+    "origin_value": "fighting_style",
+    "kind": "static"
+  },
+  {
+    "slug": "unarmed fighting",
+    "title": { "en": "Unarmed Fighting", "ru": "Сражение голыми руками" },
+    "description": {
+      "en": "When you hit with your Unarmed Strike and deal damage, you can deal Bludgeoning damage equal to 1d6+{{value}} instead of the normal damage of an Unarmed Strike. If you aren't holding any weapons or a Shield when you make the attack roll, the d6 becomes a d8. At the start of each of your turns, you can deal 1d4 Bludgeoning damage to one creature Grappled by you.",
+      "ru": "Когда вы попадаете по цели с помощью вашего безоружного удара и наносите урон, вы можете нанести дробящий урон в размере 1к6+{{value}} вместо обычного урона от безоружного удара. Если вы не держите никакое оружие или щит, когда совершаете бросок атаки, кость 1к6 становится 1к8. В начале каждого вашего хода вы можете нанести 1к4 дробящего урона одному существу, которое вы схватили."
+    },
+    "origin": "feat",
+    "origin_value": "fighting_style",
+    "kind": "static",
+    "description_eval_variables": {
+      "value": "modifiers['str']"
+    }
+  },
+  {
+    "slug": "two_weapon_fighting",
+    "title": { "en": "Two-Weapon Fighting", "ru": "Сражение двумя оружиями" },
+    "description": {
+      "en": "When you make an extra attack as a result of using a weapon that has the Light property, you can add your ability modifier to the damage of that attack if you aren't already adding it to the damage.",
+      "ru": "Когда вы совершаете дополнительную атаку в результате использования оружия со свойством лёгкое, вы можете добавить ваш модификатор характеристики к урону этой атаки, если вы ещё не добавляли его к урону."
+    },
+    "origin": "feat",
+    "origin_value": "fighting_style",
+    "kind": "static"
+  },
+  {
+    "slug": "thrown_weapon_fighting",
+    "title": { "en": "Thrown Weapon Fighting", "ru": "Сражение метательным оружием" },
+    "description": {
+      "en": "When you hit with a ranged attack roll using a weapon that has the Thrown property, you gain a +2 bonus to the damage roll.",
+      "ru": "Когда вы попадаете по цели с помощью дальнобойной атаки, используя оружие со свойством метательное, вы получаете бонус +2 к броску урона."
+    },
+    "origin": "feat",
+    "origin_value": "fighting_style",
+    "kind": "static"
+  },
+  {
+    "slug": "archery",
+    "title": { "en": "Archery", "ru": "Стрельба из лука" },
+    "description": {
+      "en": "You gain a +2 bonus to attack rolls you make with Ranged weapons.",
+      "ru": "Вы получаете бонус +2 к броскам атаки, которые вы совершаете с использованием дальнобойного оружия."
+    },
+    "origin": "feat",
+    "origin_value": "fighting_style",
+    "kind": "static"
+  }
+]
