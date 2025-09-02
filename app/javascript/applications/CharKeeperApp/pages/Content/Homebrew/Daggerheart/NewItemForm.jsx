@@ -1,18 +1,49 @@
+import { Show } from 'solid-js';
 import { createStore } from 'solid-js/store';
 import * as i18n from '@solid-primitives/i18n';
 
-import { Input, Select, Button } from '../../../../components';
+import { Input, Select, Button, TextArea } from '../../../../components';
 import { useAppLocale } from '../../../../context';
+import config from '../../../../data/daggerheart.json';
+import { translate } from '../../../../helpers';
 
 export const NewDaggerheartItemForm = (props) => {
   const [itemForm, setItemForm] = createStore({
     name: '',
-    kind: ''
+    kind: '',
+    burden: 1,
+    tier: 1,
+    trait: 'str',
+    range: 'melee',
+    damage_type: 'physical',
+    damage: 'd6',
+    damage_bonus: 0,
+    features: ''
   });
 
-  const [, dict] = useAppLocale();
+  const [locale, dict] = useAppLocale();
 
   const t = i18n.translator(dict);
+
+  const generatePayload = () => {
+    if (itemForm.kind === 'item' || itemForm.kind === 'consumable') return { name: itemForm.name, kind: itemForm.kind };
+    if (itemForm.kind === 'primary weapon' || itemForm.kind === 'secondary weapon') {
+      return {
+        name: itemForm.name,
+        kind: itemForm.kind,
+        info: {
+          burden: itemForm.burden,
+          tier: itemForm.tier,
+          trait: itemForm.trait,
+          range: itemForm.range,
+          damage_type: itemForm.damage_type,
+          damage: itemForm.damage,
+          damage_bonus: itemForm.damage_bonus,
+          features: { en: itemForm.features, ru: itemForm.features }
+        }
+      }
+    }
+  }
 
   return (
     <>
@@ -29,9 +60,69 @@ export const NewDaggerheartItemForm = (props) => {
         selectedValue={itemForm.kind}
         onSelect={(value) => setItemForm({ ...itemForm, kind: value })}
       />
+      <Show when={itemForm.kind === 'primary weapon' || itemForm.kind === 'secondary weapon'}>
+        <div class="mb-2 flex gap-4">
+          <Select
+            containerClassList="flex-1"
+            labelText={t('pages.homebrewPage.daggerheart.tier')}
+            items={{ 1: 1, 2: 2, 3: 3, 4: 4 }}
+            selectedValue={itemForm.tier}
+            onSelect={(value) => setItemForm({ ...itemForm, tier: parseInt(value) })}
+          />
+          <Select
+            containerClassList="flex-1"
+            labelText={t('pages.homebrewPage.daggerheart.trait')}
+            items={translate(config.traits, locale())}
+            selectedValue={itemForm.trait}
+            onSelect={(value) => setItemForm({ ...itemForm, trait: value })}
+          />
+          <Select
+            containerClassList="flex-1"
+            labelText={t('pages.homebrewPage.daggerheart.damageType')}
+            items={translate(config.damageTypes, locale())}
+            selectedValue={itemForm.damage_type}
+            onSelect={(value) => setItemForm({ ...itemForm, damage_type: value })}
+          />
+          <Select
+            containerClassList="flex-1"
+            labelText={t('pages.homebrewPage.daggerheart.burden')}
+            items={{ 1: 1, 2: 2 }}
+            selectedValue={itemForm.burden}
+            onSelect={(value) => setItemForm({ ...itemForm, burden: parseInt(value) })}
+          />
+        </div>
+        <div class="mb-4 flex gap-4">
+          <Select
+            containerClassList="flex-1"
+            labelText={t('pages.homebrewPage.daggerheart.range')}
+            items={translate(config.ranges, locale())}
+            selectedValue={itemForm.range}
+            onSelect={(value) => setItemForm({ ...itemForm, range: value })}
+          />
+          <Select
+            containerClassList="flex-1"
+            labelText={t('pages.homebrewPage.daggerheart.damage')}
+            items={{ 'd6': 'd6', 'd8': 'd8', 'd10': 'd10', 'd12': 'd12' }}
+            selectedValue={itemForm.damage}
+            onSelect={(value) => setItemForm({ ...itemForm, damage: value })}
+          />
+          <Input
+            containerClassList="flex-1"
+            labelText={t('pages.homebrewPage.daggerheart.damageBonus')}
+            value={itemForm.damage_bonus}
+            onInput={(value) => setItemForm({ ...itemForm, damage_bonus: parseInt(value) })}
+          />
+        </div>
+        <TextArea
+          rows="3"
+          labelText={t('pages.homebrewPage.daggerheart.features')}
+          value={itemForm.features}
+          onChange={(value) => setItemForm({ ...itemForm, features: value })}
+        />
+      </Show>
       <div class="flex gap-4 w-full mt-4">
         <Button outlined classList="flex-1" onClick={props.onCancel}>{t('cancel')}</Button>
-        <Button default classList="flex-1" onClick={() => props.onSave({ brewery: Object.fromEntries(Object.entries(itemForm).filter(([, value]) => value !== null)) })}>{t('save')}</Button>
+        <Button default classList="flex-1" onClick={() => props.onSave({ brewery: generatePayload() })}>{t('save')}</Button>
       </div>
     </>
   );

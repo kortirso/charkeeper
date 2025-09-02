@@ -6,12 +6,13 @@ module HomebrewContext
       use_contract do
         config.messages.namespace = :homebrew_item
 
-        Kinds = Dry::Types['strict.string'].enum('item', 'consumable')
+        Kinds = Dry::Types['strict.string'].enum('item', 'consumable', 'primary weapon', 'secondary weapon', 'armor')
 
         params do
           required(:user).filled(type?: ::User)
           required(:name).filled(:string, max_size?: 50)
           required(:kind).filled(Kinds)
+          optional(:info).hash
         end
       end
 

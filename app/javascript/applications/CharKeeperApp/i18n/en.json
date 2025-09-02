@@ -88,7 +88,14 @@
         "classOrigin": "Origin class",
         "subclassMastery": "Subclass mastery",
         "spellcastTrait": "Spellcast trait",
-        "copyRacePlaceholder": "Ask homebrew owner to copy and send ID of object"
+        "copyRacePlaceholder": "Ask homebrew owner to copy and send ID of object",
+        "tier": "Tier",
+        "trait": "Trait",
+        "range": "Range",
+        "damage": "Damage",
+        "damageType": "Damage type",
+        "damageBonus": "Damage bonus",
+        "burden": "Burden"
       }
     },
     "campaignsPage": {
@@ -127,7 +134,9 @@
       "items": {
         "kinds": {
           "item": "Item",
-          "consumable": "Consumable"
+          "consumable": "Consumable",
+          "primary weapon": "Primary weapon",
+          "secondary weapon": "Secondary weapon"
         }
       }
     },

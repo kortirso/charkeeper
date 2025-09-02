@@ -88,7 +88,14 @@
         "classOrigin": "Исходный класс",
         "subclassMastery": "Мастерство подкласса",
         "spellcastTrait": "Магическая характеристика",
-        "copyRacePlaceholder": "Попросите владельца homebrew скопировать ID"
+        "copyRacePlaceholder": "Попросите владельца homebrew скопировать ID",
+        "tier": "Тир",
+        "trait": "Способность",
+        "range": "Дальность",
+        "damage": "Урон",
+        "damageType": "Тип урона",
+        "damageBonus": "Бонус урона",
+        "burden": "Руки"
       }
     },
     "campaignsPage": {
@@ -127,7 +134,9 @@
       "items": {
         "kinds": {
           "item": "Предмет",
-          "consumable": "Расходный материал"
+          "consumable": "Расходный материал",
+          "primary weapon": "Основное оружие",
+          "secondary weapon": "Запасное оружие"
         }
       }
     },

@@ -288,5 +288,16 @@
     "ins": { "name": { "en": "Instinct", "ru": "Инстинкты" } },
     "pre": { "name": { "en": "Presence", "ru": "Наружность" } },
     "know": { "name": { "en": "Knowledge", "ru": "Знания" } }
+  },
+  "ranges": {
+    "melee": { "name": { "en": "Melee", "ru": "Melee" } },
+    "very close": { "name": { "en": "Very close", "ru": "Very close" } },
+    "close": { "name": { "en": "Close", "ru": "Close" } },
+    "far": { "name": { "en": "Far", "ru": "Far" } },
+    "veryfar": { "name": { "en": "Very far", "ru": "Very far" } }
+  },
+  "damageTypes": {
+    "physical": { "name": { "en": "Physical", "ru": "Physical" } },
+    "magic": { "name": { "en": "Magic", "ru": "Magic" } }
   }
 }
