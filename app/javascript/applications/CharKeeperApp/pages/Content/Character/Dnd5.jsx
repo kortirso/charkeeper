@@ -6,7 +6,7 @@ import {
   Dnd5Abilities, Dnd5Combat, Dnd5Rest, Dnd5ClassLevels, Dnd5Professions, Dnd5Spells, DndGold, Dnd5Skills, Dnd5SavingThrows,
   Dnd5Proficiency
 } from '../../../pages';
-import { CharacterNavigation, Equipment, Notes, Avatar, ContentWrapper, Feats } from '../../../components';
+import { CharacterNavigation, Equipment, Notes, Avatar, ContentWrapper, Feats, Bonuses } from '../../../components';
 import { useAppState, useAppLocale } from '../../../context';
 import { updateCharacterRequest } from '../../../requests/updateCharacterRequest';
 
@@ -83,7 +83,7 @@ export const Dnd5 = (props) => {
     return (
       <>
         <CharacterNavigation
-          tabsList={['abilities', 'combat', 'equipment', 'spells', 'rest', 'notes', 'professions', 'classLevels', 'avatar']}
+          tabsList={['abilities', 'combat', 'equipment', 'spells', 'rest', 'bonuses', 'notes', 'professions', 'classLevels', 'avatar']}
           activeTab={activeMobileTab()}
           setActiveTab={setActiveMobileTab}
         />
@@ -119,6 +119,9 @@ export const Dnd5 = (props) => {
             </Match>
             <Match when={activeMobileTab() === 'rest'}>
               <Dnd5Rest character={character()} onReplaceCharacter={props.onReplaceCharacter} />
+            </Match>
+            <Match when={activeMobileTab() === 'bonuses'}>
+              <Bonuses character={character()} onReloadCharacter={props.onReloadCharacter} />
             </Match>
             <Match when={activeMobileTab() === 'equipment'}>
               <Equipment
@@ -192,7 +195,7 @@ export const Dnd5 = (props) => {
     return (
       <>
         <CharacterNavigation
-          tabsList={['combat', 'equipment', 'spells', 'rest', 'notes', 'professions', 'classLevels', 'avatar']}
+          tabsList={['combat', 'equipment', 'spells', 'rest', 'bonuses', 'notes', 'professions', 'classLevels', 'avatar']}
           activeTab={activeTab()}
           setActiveTab={setActiveTab}
         />
@@ -242,6 +245,9 @@ export const Dnd5 = (props) => {
             </Match>
             <Match when={activeTab() === 'notes'}>
               <Notes />
+            </Match>
+            <Match when={activeTab() === 'bonuses'}>
+              <Bonuses character={character()} onReloadCharacter={props.onReloadCharacter} />
             </Match>
             <Match when={activeTab() === 'classLevels'}>
               <Dnd5ClassLevels character={character()} onReplaceCharacter={props.onReplaceCharacter} />

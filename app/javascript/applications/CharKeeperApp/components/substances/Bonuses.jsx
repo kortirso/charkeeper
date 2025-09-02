@@ -1,16 +1,18 @@
-import { createSignal, createEffect, For, Show, batch, Switch, Match } from 'solid-js';
+import { createSignal, createEffect, createMemo, For, Show, batch, Switch, Match } from 'solid-js';
 import * as i18n from '@solid-primitives/i18n';
 
 import { Toggle, Button, IconButton, TextArea } from '../../components';
 import { useAppState, useAppLocale, useAppAlert } from '../../context';
 import { Close } from '../../assets';
 import config from '../../data/daggerheart.json';
+import dndConfig from '../../data/dnd2024.json';
 import { fetchCharacterBonusesRequest } from '../../requests/fetchCharacterBonusesRequest';
 import { createCharacterBonusRequest } from '../../requests/createCharacterBonusRequest';
 import { removeCharacterBonusRequest } from '../../requests/removeCharacterBonusRequest';
 import { modifier } from '../../helpers';
 
-const DAGGERHEART_PLACEHOLDER = "str: 0, agi: 0, fin: 0, ins: 0, pre: 0, know: 0, health: 0, stress: 0, evasion: 0, armor_score: 0, major: 0, severe: 0, attack: 0, proficiency: 0"
+const DAGGERHEART_PLACEHOLDER = "str: 0, agi: 0, fin: 0, ins: 0, pre: 0, know: 0, health: 0, stress: 0, evasion: 0, armor_score: 0, major: 0, severe: 0, attack: 0, proficiency: 0";
+const DND_PLACEHOLDER = "str: 0, dex: 0, con: 0, wis: 0, int: 0, cha: 0, armor_class: 0, initiative: 0, speed: 0, health: 0, attack: 0";
 
 export const Bonuses = (props) => {
   const character = () => props.character;
@@ -36,6 +38,11 @@ export const Bonuses = (props) => {
     );
   });
 
+  const bonusValuesPlaceholder = createMemo(() => {
+    if (character().provider === 'dnd5' || character().provider === 'dnd2024') return DND_PLACEHOLDER;
+    if (character().provider === 'daggerheart') return DAGGERHEART_PLACEHOLDER;
+  });
+
   const parseValue = (values, value) => parseInt(values[value] || 0);
 
   const transformValues = () => {
@@ -54,6 +61,19 @@ export const Bonuses = (props) => {
         thresholds: { major: parseValue(formValues, 'major'), severe: parseValue(formValues, 'severe') },
         attack: parseValue(formValues, 'attack'),
         proficiency: parseValue(formValues, 'proficiency')
+      }
+    }
+    if (character().provider === 'dnd5' || character().provider === 'dnd2024') {
+      return {
+        abilities: {
+          str: parseValue(formValues, 'str'), dex: parseValue(formValues, 'dex'), con: parseValue(formValues, 'con'),
+          wis: parseValue(formValues, 'wis'), int: parseValue(formValues, 'int'), cha: parseValue(formValues, 'cha')
+        },
+        health: parseValue(formValues, 'health'),
+        initiative: parseValue(formValues, 'initiative'),
+        armor_class: parseValue(formValues, 'armor_class'),
+        attack: parseValue(formValues, 'attack'),
+        speed: parseValue(formValues, 'speed')
       }
     }
   }
@@ -110,7 +130,7 @@ export const Bonuses = (props) => {
                 classList="mb-2"
                 rows="5"
                 labelText={t('character.newBonusValues')}
-                placeholder={DAGGERHEART_PLACEHOLDER}
+                placeholder={bonusValuesPlaceholder()}
                 value={bonusForm()}
                 onChange={(value) => setBonusForm(value)}
               />
@@ -143,6 +163,34 @@ export const Bonuses = (props) => {
                 </div>
               }>
                 <Switch>
+                  <Match when={character().provider === 'dnd5' || character().provider === 'dnd2024'}>
+                    <div class="grid grid-cols-2 lg:grid-cols-3">
+                      <Show when={bonus.value.abilities}>
+                        <div>
+                          <p class="mb-2">{t('dndV2.terms.abilities')}</p>
+                          <For each={Object.entries(bonus.value.abilities)}>
+                            {([slug, value]) =>
+                              <p>{dndConfig.abilities[slug].name[locale()]} - {modifier(value)}</p>
+                            }
+                          </For>
+                        </div>
+                      </Show>
+                      <Show
+                        when={bonus.value.health || bonus.value.initiative || bonus.value.armor_class || bonus.value.attack || bonus.value.speed}
+                      >
+                        <div>
+                          <p class="mb-2">{t('dndV2.bonuses.title')}</p>
+                          <For each={['health', 'initiative', 'armor_class', 'attack', 'speed']}>
+                            {(slug) =>
+                              <Show when={bonus.value[slug]}>
+                                <p>{t(`dndV2.bonuses.${slug}`)} - {modifier(bonus.value[slug])}</p>
+                              </Show>
+                            }
+                          </For>
+                        </div>
+                      </Show>
+                    </div>
+                  </Match>
                   <Match when={character().provider === 'daggerheart'}>
                     <div class="grid grid-cols-2 lg:grid-cols-3">
                       <Show when={bonus.value.traits}>

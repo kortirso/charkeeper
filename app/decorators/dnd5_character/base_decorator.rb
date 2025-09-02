@@ -18,7 +18,14 @@ module Dnd5Character
     end
 
     def modifiers
-      @modifiers ||= abilities.transform_values { |value| calc_ability_modifier(value) }
+      @modifiers ||= modified_abilities.transform_values { |value| calc_ability_modifier(value) }
+    end
+
+    def modified_abilities
+      @modified_abilities ||=
+        abilities.merge(
+          *[*bonuses.pluck('abilities')].compact
+        ) { |_key, oldval, newval| newval + oldval }
     end
 
     def skills
@@ -56,11 +63,11 @@ module Dnd5Character
     end
 
     def armor_class
-      @armor_class ||= calc_armor_class
+      @armor_class ||= calc_armor_class + sum(bonuses.pluck('armor_class'))
     end
 
     def initiative
-      @initiative ||= modifiers['dex']
+      @initiative ||= modifiers['dex'] + sum(bonuses.pluck('initiative'))
     end
 
     def attacks_per_action
@@ -252,6 +259,14 @@ module Dnd5Character
         .where(items: { kind: %w[shield armor] })
         .hashable_pluck('items.kind', 'items.data', 'items.info')
         .partition { |item| item[:items_kind] != 'shield' }
+    end
+
+    def bonuses
+      @bonuses ||= __getobj__.bonuses.pluck(:value).compact
+    end
+
+    def sum(values)
+      values.sum(&:to_i)
     end
   end
 end

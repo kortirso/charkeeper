@@ -67,7 +67,7 @@ export const Dnd5Abilities = (props) => {
                 <div class="w-16 h-16 flex items-center justify-center mx-auto relative">
                   <p class="text-4xl dark:text-snow">{modifier(character().modifiers[slug])}</p>
                   <div class="absolute -right-4 -bottom-0 w-8 h-8 rounded-full border border-gray-200 bg-white flex items-center justify-center opacity-75">
-                    <p class="text-xl">{editMode() ? abilitiesData()[slug] : character().abilities[slug]}</p>
+                    <p class="text-xl">{editMode() ? abilitiesData()[slug] : character().modified_abilities[slug]}</p>
                   </div>
                 </div>
                 <Show when={editMode()}>

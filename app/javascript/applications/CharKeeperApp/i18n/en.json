@@ -237,6 +237,17 @@
     },
     "savings": {
       "title": "Saving throws"
+    },
+    "bonuses": {
+      "title": "Bonuses",
+      "health": "Health",
+      "initiative": "Initiative",
+      "armor_class": "Armor class",
+      "attack": "Attack",
+      "speed": "Speed"
+    },
+    "terms": {
+      "abilities": "Abilities"
     }
   },
   "combat": {

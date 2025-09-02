@@ -4,6 +4,7 @@ module Frontend
   module Characters
     class BonusesController < Frontend::BaseController
       include Deps[
+        add_dnd_bonus: 'commands.characters_context.dnd5.add_bonus',
         add_daggerheart_bonus: 'commands.characters_context.daggerheart.add_bonus'
       ]
       include SerializeRelation
@@ -53,6 +54,7 @@ module Frontend
 
       def add_bonus_command
         case params[:provider]
+        when 'dnd5', 'dnd2024' then add_dnd_bonus
         when 'daggerheart' then add_daggerheart_bonus
         end
       end

@@ -237,6 +237,17 @@
     },
     "savings": {
       "title": "Спасброски"
+    },
+    "bonuses": {
+      "title": "Бонусы",
+      "health": "ХП",
+      "initiative": "Инициатива",
+      "armor_class": "Класс брони",
+      "attack": "Атака",
+      "speed": "Скорость"
+    },
+    "terms": {
+      "abilities": "Способности"
     }
   },
   "combat": {
