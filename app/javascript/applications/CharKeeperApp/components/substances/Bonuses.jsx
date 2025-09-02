@@ -1,16 +1,16 @@
-import { createSignal, createEffect, For, Show, batch } from 'solid-js';
-import { createStore } from 'solid-js/store';
+import { createSignal, createEffect, For, Show, batch, Switch, Match } from 'solid-js';
 import * as i18n from '@solid-primitives/i18n';
 
-import { Input, Toggle, Button, IconButton, TextArea } from '../../components';
+import { Toggle, Button, IconButton, TextArea } from '../../components';
 import { useAppState, useAppLocale, useAppAlert } from '../../context';
 import { Close } from '../../assets';
 import config from '../../data/daggerheart.json';
 import { fetchCharacterBonusesRequest } from '../../requests/fetchCharacterBonusesRequest';
 import { createCharacterBonusRequest } from '../../requests/createCharacterBonusRequest';
 import { removeCharacterBonusRequest } from '../../requests/removeCharacterBonusRequest';
-
 import { modifier } from '../../helpers';
+
+const DAGGERHEART_PLACEHOLDER = "str: 0, agi: 0, fin: 0, ins: 0, pre: 0, know: 0, health: 0, stress: 0, evasion: 0, armor_score: 0, major: 0, severe: 0, attack: 0, proficiency: 0"
 
 export const Bonuses = (props) => {
   const character = () => props.character;
@@ -18,16 +18,7 @@ export const Bonuses = (props) => {
   const [bonuses, setBonuses] = createSignal(undefined);
   const [createMode, setCreateMode] = createSignal(false);
   const [bonusComment, setBonusComment] = createSignal('');
-  const [bonusForm, setBonusForm] = createStore({
-    traits: { str: 0, agi: 0, fin: 0, ins: 0, pre: 0, know: 0 },
-    health: 0,
-    stress: 0,
-    evasion: 0,
-    armor_score: 0,
-    thresholds: { major: 0, severe: 0 },
-    attack: 0,
-    proficiency: 0
-  });
+  const [bonusForm, setBonusForm] = createSignal('');
 
   const [appState] = useAppState();
   const [{ renderAlerts }] = useAppAlert();
@@ -45,6 +36,28 @@ export const Bonuses = (props) => {
     );
   });
 
+  const parseValue = (values, value) => parseInt(values[value] || 0);
+
+  const transformValues = () => {
+    const formValues = Object.fromEntries(bonusForm().split(',').map((item) => item.trim().split(':').map((i) => i.trim())));
+
+    if (character().provider === 'daggerheart') {
+      return {
+        traits: {
+          str: parseValue(formValues, 'str'), agi: parseValue(formValues, 'agi'), fin: parseValue(formValues, 'fin'),
+          ins: parseValue(formValues, 'ins'), pre: parseValue(formValues, 'pre'), know: parseValue(formValues, 'know')
+        },
+        health: parseValue(formValues, 'health'),
+        stress: parseValue(formValues, 'stress'),
+        evasion: parseValue(formValues, 'evasion'),
+        armor_score: parseValue(formValues, 'armor_score'),
+        thresholds: { major: parseValue(formValues, 'major'), severe: parseValue(formValues, 'severe') },
+        attack: parseValue(formValues, 'attack'),
+        proficiency: parseValue(formValues, 'proficiency')
+      }
+    }
+  }
+
   const removeZeroValues = (form) => {
     return Object.entries(form).reduce((acc, [key, value]) => {
       if (Number.isInteger(value)) {
@@ -58,7 +71,9 @@ export const Bonuses = (props) => {
   }
 
   const saveBonus = async () => {
-    const newObject = removeZeroValues(bonusForm);
+    const newObject = removeZeroValues(transformValues());
+    if (Object.keys(newObject).length === 0) return;
+
     const result = await createCharacterBonusRequest(
       appState.accessToken,
       character().provider,
@@ -91,45 +106,14 @@ export const Bonuses = (props) => {
         fallback={
           <div class="p-4 flex-1 flex flex-col blockable">
             <div class="flex-1">
-              <p class="dark:text-snow">{t('daggerheart.terms.traits')}</p>
-              <div class="grid grid-cols-3 lg:grid-cols-6 gap-2 mb-4">
-                <For each={Object.entries(config.traits).map(([key, values]) => [key, values.name[locale()]])}>
-                  {([slug, trait]) =>
-                    <Input
-                      numeric
-                      labelText={trait}
-                      value={bonusForm.traits[slug]}
-                      onInput={(value) => setBonusForm({ ...bonusForm, traits: { ...bonusForm.traits, [slug]: Number(value) } })}
-                    />
-                  }
-                </For>
-              </div>
-              <p class="dark:text-snow">{t('daggerheart.terms.thresholds')}</p>
-              <div class="grid grid-cols-3 gap-2 mb-4">
-                <For each={['major', 'severe']}>
-                  {(slug) =>
-                    <Input
-                      numeric
-                      labelText={t(`daggerheart.health.${slug}`)}
-                      value={bonusForm.thresholds[slug]}
-                      onInput={(value) => setBonusForm({ ...bonusForm, thresholds: { ...bonusForm.thresholds, [slug]: Number(value) } })}
-                    />
-                  }
-                </For>
-              </div>
-              <p class="dark:text-snow">{t('daggerheart.bonuses.title')}</p>
-              <div class="grid grid-cols-3 lg:grid-cols-6 gap-2 mb-4">
-                <For each={['health', 'stress', 'evasion', 'armor_score', 'attack', 'proficiency']}>
-                  {(slug) =>
-                    <Input
-                      numeric
-                      labelText={t(`daggerheart.bonuses.${slug}`)}
-                      value={bonusForm[slug]}
-                      onInput={(value) => setBonusForm({ ...bonusForm, [slug]: Number(value) })}
-                    />
-                  }
-                </For>
-              </div>
+              <TextArea
+                classList="mb-2"
+                rows="5"
+                labelText={t('character.newBonusValues')}
+                placeholder={DAGGERHEART_PLACEHOLDER}
+                value={bonusForm()}
+                onChange={(value) => setBonusForm(value)}
+              />
               <TextArea
                 rows="5"
                 labelText={t('character.newBonusComment')}
@@ -158,40 +142,48 @@ export const Bonuses = (props) => {
                   </IconButton>
                 </div>
               }>
-                <div class="grid grid-cols-2 lg:grid-cols-3">
-                  <Show when={bonus.value.traits}>
-                    <div>
-                      <p class="mb-2">{t('daggerheart.terms.traits')}</p>
-                      <For each={Object.entries(bonus.value.traits)}>
-                        {([slug, value]) =>
-                          <p class="">{config.traits[slug].name[locale()]} - {modifier(value)}</p>
-                        }
-                      </For>
+                <Switch>
+                  <Match when={character().provider === 'daggerheart'}>
+                    <div class="grid grid-cols-2 lg:grid-cols-3">
+                      <Show when={bonus.value.traits}>
+                        <div>
+                          <p class="mb-2">{t('daggerheart.terms.traits')}</p>
+                          <For each={Object.entries(bonus.value.traits)}>
+                            {([slug, value]) =>
+                              <p class="">{config.traits[slug].name[locale()]} - {modifier(value)}</p>
+                            }
+                          </For>
+                        </div>
+                      </Show>
+                      <Show when={bonus.value.thresholds}>
+                        <div>
+                          <p class="mb-2">{t('daggerheart.terms.thresholds')}</p>
+                          <For each={['major', 'severe']}>
+                            {(slug) =>
+                              <Show when={bonus.value.thresholds[slug]}>
+                                <p class="">{t(`daggerheart.health.${slug}`)} - {modifier(bonus.value.thresholds[slug])}</p>
+                              </Show>
+                            }
+                          </For>
+                        </div>
+                      </Show>
+                      <Show
+                        when={bonus.value.health || bonus.value.stress || bonus.value.evasion || bonus.value.armor_score || bonus.value.attack || bonus.value.proficiency}
+                      >
+                        <div>
+                          <p class="mb-2">{t('daggerheart.bonuses.title')}</p>
+                          <For each={['health', 'stress', 'evasion', 'armor_score', 'attack', 'proficiency']}>
+                            {(slug) =>
+                              <Show when={bonus.value[slug]}>
+                                <p class="">{t(`daggerheart.bonuses.${slug}`)} - {modifier(bonus.value[slug])}</p>
+                              </Show>
+                            }
+                          </For>
+                        </div>
+                      </Show>
                     </div>
-                  </Show>
-                  <Show when={bonus.value.thresholds}>
-                    <div>
-                      <p class="mb-2">{t('daggerheart.terms.thresholds')}</p>
-                      <For each={['major', 'severe']}>
-                        {(slug) =>
-                          <Show when={bonus.value.thresholds[slug]}>
-                            <p class="">{t(`daggerheart.health.${slug}`)} - {modifier(bonus.value.thresholds[slug])}</p>
-                          </Show>
-                        }
-                      </For>
-                    </div>
-                  </Show>
-                  <div>
-                    <p class="mb-2">{t('daggerheart.bonuses.title')}</p>
-                    <For each={['health', 'stress', 'evasion', 'armor_score', 'attack', 'proficiency']}>
-                      {(slug) =>
-                        <Show when={bonus.value[slug]}>
-                          <p class="">{t(`daggerheart.bonuses.${slug}`)} - {modifier(bonus.value[slug])}</p>
-                        </Show>
-                      }
-                    </For>
-                  </div>
-                </div>
+                  </Match>
+                </Switch>
               </Toggle>
             }
           </For>
