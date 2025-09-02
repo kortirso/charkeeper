@@ -2,27 +2,30 @@ import { createSignal, createEffect, Switch, Match, batch, Show, For } from 'sol
 import * as i18n from '@solid-primitives/i18n';
 
 import { NewDaggerheartItemForm, DaggerheartItem } from '../../../pages';
-import { ContentWrapper, Button, IconButton, Toggle } from '../../../components';
+import { ContentWrapper, Button, IconButton, Toggle, Input } from '../../../components';
 import { Close } from '../../../assets';
 import { useAppState, useAppLocale, useAppAlert } from '../../../context';
 import { fetchHomebrewItemsRequest } from '../../../requests/fetchHomebrewItemsRequest';
 import { createHomebrewItemRequest } from '../../../requests/createHomebrewItemRequest';
 import { removeHomebrewItemRequest } from '../../../requests/removeHomebrewItemRequest';
+import { copyHomebrewItemRequest } from '../../../requests/copyHomebrewItemRequest';
+import { copyToClipboard } from '../../../helpers';
 
 export const HomebrewItems = (props) => {
   const [items, setItems] = createSignal(undefined);
   const [activeView, setActiveView] = createSignal('left');
+  const [copyItemId, setCopyItemId] = createSignal('');
 
   const [appState] = useAppState();
-  const [{ renderAlerts }] = useAppAlert();
+  const [{ renderAlert, renderAlerts, renderNotice }] = useAppAlert();
   const [locale, dict] = useAppLocale();
 
   const t = i18n.translator(dict);
 
+  const fetchItems = async () => await fetchHomebrewItemsRequest(appState.accessToken, props.provider);
+
   createEffect(() => {
     if (items() !== undefined) return;
-
-    const fetchItems = async () => await fetchHomebrewItemsRequest(appState.accessToken, props.provider);
 
     Promise.all([fetchItems()]).then(
       ([itemsData]) => {
@@ -54,6 +57,21 @@ export const HomebrewItems = (props) => {
     } else renderAlerts(result.errors);
   }
 
+  const copyItem = async () => {
+    const result = await copyHomebrewItemRequest(appState.accessToken, props.provider, copyItemId());
+
+    if (result.errors === undefined) {
+      const itemsData = await fetchItems();
+      setItems(itemsData.items);
+    } else renderAlert(result.errors);
+    setCopyItemId('');
+  }
+
+  const copy = (value) => {
+    copyToClipboard(value);
+    renderNotice(t('alerts.copied'));
+  }
+
   return (
     <>
       <ContentWrapper
@@ -63,6 +81,19 @@ export const HomebrewItems = (props) => {
             <Button default classList="mb-2" onClick={() => setActiveView('right')}>
               {t(`pages.homebrewPage.${props.provider}.newItem`)}
             </Button>
+
+            <div class="flex mb-2">
+              <Button default size="small" classList="px-2" onClick={copyItem}>
+                {t('copy')}
+              </Button>
+              <Input
+                containerClassList="ml-2 flex-1"
+                placeholder={t(`pages.homebrewPage.${props.provider}.copyRacePlaceholder`)}
+                value={copyItemId()}
+                onInput={(value) => setCopyItemId(value)}
+              />
+            </div>
+
             <Show when={items() !== undefined}>
               <For each={items()}>
                 {(item) =>
@@ -79,6 +110,9 @@ export const HomebrewItems = (props) => {
                         <DaggerheartItem item={item} homebrews={props.homebrews} />
                       </Match>
                     </Switch>
+                    <p class="absolute bottom-0 right-0 px-2 py-1 dark:text-snow cursor-pointer" onClick={() => copy(item.id)}>
+                      COPY
+                    </p>
                   </Toggle>
                 }
               </For>

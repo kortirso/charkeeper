@@ -42,7 +42,9 @@ Rails.application.routes.draw do
           resource :copy, only: %i[create], module: :races
         end
         resources :feats, only: %i[index create destroy]
-        resources :items, only: %i[index create destroy]
+        resources :items, only: %i[index create destroy] do
+          resource :copy, only: %i[create], module: :items
+        end
         resources :specialities, only: %i[index create destroy]
         resources :subclasses, only: %i[create destroy] do
           resource :copy, only: %i[create], module: :subclasses

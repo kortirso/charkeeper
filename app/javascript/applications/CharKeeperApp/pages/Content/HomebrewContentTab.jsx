@@ -99,7 +99,10 @@ export const HomebrewContentTab = (props) => {
               />
             </Match>
             <Match when={appState.activePageParams.content === 'items'}>
-              <HomebrewItems provider="daggerheart" homebrews={homebrews()} />
+              <HomebrewItems
+                provider="daggerheart"
+                homebrews={homebrews()}
+                reloadHomebrews={reloadHomebrews} />
             </Match>
           </Switch>
         </Match>
