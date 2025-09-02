@@ -9,6 +9,7 @@ export const TextArea = (props) => {
     <div class={props.containerClassList}>
       <Label { ...labelProps } />
       <textarea
+        placeholder={props.placeholder || ''}
         rows={props.rows || 2}
         class={[
           props.classList,
