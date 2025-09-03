@@ -14,6 +14,7 @@ export * from './List';
 export * from './Campaigns';
 export * from './Avatar';
 export * from './Moon';
+export * from './Chat';
 export * from './socials/Discord';
 export * from './socials/Telegram';
 export * from './socials/Vk';

@@ -109,6 +109,9 @@
       "idForSearch": "To help players find your campaign, they can use the following ID to search",
       "join": "Join campaign",
       "selectCharacterForJoining": "Select character for joining to campaign"
+    },
+    "botPage": {
+      "title": "Bot commands"
     }
   },
   "daggerheart": {

@@ -2,8 +2,17 @@ import { Switch, Match, splitProps } from 'solid-js';
 
 import { Label } from './Label';
 
+const INPUT_STYLES = "w-full h-12 px-2 border border-gray-200 text-sm bg-white dark:bg-neutral-700 dark:border-gray-500 dark:text-snow rounded";
+
 export const Input = (props) => {
   const [labelProps] = splitProps(props, ['labelText', 'labelClassList']);
+
+  const handleKeyDown = (event) => {
+    if (!props.onKeyDown) return;
+    if (event.key !== 'Enter') return;
+
+    props.onKeyDown(event);
+  }
 
   return (
     <div class={props.containerClassList}>
@@ -12,9 +21,10 @@ export const Input = (props) => {
         fallback={
           <input
             type="text"
-            class="w-full h-12 px-2 border border-gray-200 text-sm bg-white dark:bg-neutral-700 dark:border-gray-500 dark:text-snow rounded"
+            class={INPUT_STYLES}
             placeholder={props.placeholder || ''}
             onInput={(e) => props.onInput(e.target.value)}
+            onKeyDown={handleKeyDown}
             value={props.value}
           />
         }
@@ -24,18 +34,20 @@ export const Input = (props) => {
             type="number"
             pattern="[0-9]*"
             inputmode="numeric"
-            class="w-full h-12 px-2 border border-gray-200 text-sm bg-white dark:bg-neutral-700 dark:border-gray-500 dark:text-snow rounded"
+            class={INPUT_STYLES}
             placeholder={props.placeholder || ''}
             onInput={(e) => props.onInput(e.target.value)}
+            onKeyDown={handleKeyDown}
             value={props.value}
           />
         </Match>
         <Match when={props.password}>
           <input
             type="password"
-            class="w-full h-12 px-2 border border-gray-200 text-sm bg-white dark:bg-neutral-700 dark:border-gray-500 dark:text-snow rounded"
+            class={INPUT_STYLES}
             placeholder={props.placeholder || ''}
             onInput={(e) => props.onInput(e.target.value)}
+            onKeyDown={handleKeyDown}
             value={props.value}
           />
         </Match>
