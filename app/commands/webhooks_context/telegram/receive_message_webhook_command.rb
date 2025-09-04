@@ -13,6 +13,7 @@ module WebhooksContext
           required(:message).hash do
             required(:message_id).filled(:integer)
             required(:from).hash do
+              optional(:id).filled(:integer)
               optional(:first_name).filled(:string)
               optional(:last_name).filled(:string)
               optional(:username).filled(:string)
@@ -31,6 +32,13 @@ module WebhooksContext
       def do_persist(input)
         handle_webhook.call(message: input[:message]) if input.dig(:message, :chat, :id).positive?
         handle_group_webhook.call(message: input[:message]) if input.dig(:message, :chat, :id).negative?
+
+
+        # BotService.call({
+        #   source: 'telegram',
+        #   message: input[:message][:text],
+        #   data: { user: current_user }
+        # })
 
         { result: :ok }
       end
