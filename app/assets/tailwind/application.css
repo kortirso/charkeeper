@@ -256,3 +256,10 @@
   overflow: hidden;
   text-overflow: ellipsis; /* Adds an ellipsis (...) at the end of the truncated text */
 }
+
+code {
+  color: crimson;
+  background-color: #f1f1f1;
+  padding: 2px;
+  font-size: 105%;
+}

@@ -36,6 +36,7 @@ Rails.application.routes.draw do
   end
 
   namespace :frontend do
+    resources :bots, only: %i[create]
     namespace :homebrews do
       scope ':provider' do
         resources :races, only: %i[index create destroy] do
@@ -141,6 +142,7 @@ Rails.application.routes.draw do
       end
 
       get 'privacy', to: 'welcome#privacy'
+      get 'bot_commands', to: 'welcome#bot_commands'
     end
 
     root 'web/welcome#index'

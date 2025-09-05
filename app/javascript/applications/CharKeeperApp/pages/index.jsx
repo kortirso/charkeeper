@@ -6,6 +6,7 @@ export * from './Navigation/CharactersTab';
 export * from './Navigation/HomebrewTab';
 export * from './Navigation/SettingsTab';
 export * from './Navigation/CampaignsTab';
+export * from './Navigation/BotTab';
 
 export * from './Content/CharacterTab';
 export * from './Content/CharacterView';

@@ -110,6 +110,9 @@
       "join": "Join campaign",
       "selectCharacterForJoining": "Select character for joining to campaign",
       "noCampaigns": "There are no campaigns yet"
+    },
+    "botPage": {
+      "title": "Bot commands"
     }
   },
   "daggerheart": {

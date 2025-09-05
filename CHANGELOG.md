@@ -11,6 +11,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## [0.2.21] - 2025-09-04
 ### Added
 - adding homebrew weapons for Daggerheart
+- in app bot commands interface
 
 ### Modified
 - bonuses adding system

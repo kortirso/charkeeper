@@ -3,6 +3,13 @@ ru:
   not_found: Запись не найдена
   change_locale: Изменить локаль
   validation_error: Ошибка валидации
+  services:
+    bot_context:
+      representers:
+        roll:
+          result: Результат
+          total: Сумма
+          nothing: Нет результата
   decorators:
     pathfinder2:
       boosts: "Вы можете улучшить следующие характеристики: %{ability_boosts_text}.\nТакже вы можете изучить следующие умения: %{skill_boosts_text}"

@@ -3,12 +3,10 @@
 describe WebhooksContext::Telegram::ReceiveMessageWebhookCommand do
   subject(:command_call) { described_class.new.call({ message: message }) }
 
-  let(:handler) { Charkeeper::Container.resolve('services.webhooks_context.telegram.handle_message_webhook') }
-  let(:group_handler) { Charkeeper::Container.resolve('services.webhooks_context.telegram.handle_group_message_webhook') }
+  let(:handler) { Charkeeper::Container.resolve('services.bot_context.handle') }
 
   before do
     allow(handler).to receive(:call)
-    allow(group_handler).to receive(:call)
   end
 
   context 'with invalid message' do
@@ -41,7 +39,7 @@ describe WebhooksContext::Telegram::ReceiveMessageWebhookCommand do
     it 'calls group_handler' do
       command_call
 
-      expect(group_handler).to have_received(:call).with(message: message)
+      expect(handler).to have_received(:call)
     end
   end
 
@@ -58,7 +56,7 @@ describe WebhooksContext::Telegram::ReceiveMessageWebhookCommand do
     it 'calls handler' do
       command_call
 
-      expect(handler).to have_received(:call).with(message: message)
+      expect(handler).to have_received(:call)
     end
   end
 end

@@ -3,16 +3,14 @@
 module WebhooksContext
   module Telegram
     class ReceiveMessageWebhookCommand < BaseCommand
-      include Deps[
-        handle_webhook: 'services.webhooks_context.telegram.handle_message_webhook',
-        handle_group_webhook: 'services.webhooks_context.telegram.handle_group_message_webhook'
-      ]
+      include Deps[handle_service: 'services.bot_context.handle']
 
       use_contract do
         params do
           required(:message).hash do
             required(:message_id).filled(:integer)
             required(:from).hash do
+              optional(:id).filled(:integer)
               optional(:first_name).filled(:string)
               optional(:last_name).filled(:string)
               optional(:username).filled(:string)
@@ -29,10 +27,19 @@ module WebhooksContext
       private
 
       def do_persist(input)
-        handle_webhook.call(message: input[:message]) if input.dig(:message, :chat, :id).positive?
-        handle_group_webhook.call(message: input[:message]) if input.dig(:message, :chat, :id).negative?
+        define_locale(input[:message])
+        handle_service.call(
+          source: input.dig(:message, :chat, :id).positive? ? :telegram_bot : :telegram_group_bot,
+          message: input[:message][:text],
+          data: { raw_message: input[:message] }
+        )
 
         { result: :ok }
+      end
+
+      def define_locale(message)
+        message_locale = message.dig(:from, :language_code).to_sym
+        I18n.locale = I18n.available_locales.include?(message_locale) ? message_locale : I18n.default_locale
       end
     end
   end

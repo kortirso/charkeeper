@@ -7,5 +7,7 @@ module Web
     def index; end
 
     def privacy; end
+
+    def bot_commands; end
   end
 end
