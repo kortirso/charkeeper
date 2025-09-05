@@ -17,24 +17,17 @@ module Frontend
 
       def daggerheart_payload
         {
-          races: Panko::ArraySerializer.new(
-            ::Daggerheart::Homebrew::Race.where(user_id: current_user.id),
-            each_serializer: ::Daggerheart::Homebrew::RaceSerializer
-          ).to_a,
-          classes: Panko::ArraySerializer.new(
-            ::Daggerheart::Homebrew::Speciality.where(user_id: current_user.id),
-            each_serializer: ::Daggerheart::Homebrew::SpecialitySerializer
-          ).to_a,
-          subclasses: Panko::ArraySerializer.new(
-            ::Daggerheart::Homebrew::Subclass.where(user_id: current_user.id),
-            each_serializer: ::Daggerheart::Homebrew::SubclassSerializer
-          ).to_a,
-          feats: Panko::ArraySerializer.new(
-            ::Daggerheart::Feat.where(user_id: current_user.id),
-            each_serializer: ::Daggerheart::Homebrew::FeatSerializer
-          ).to_a
+          races: Panko::ArraySerializer.new(races, each_serializer: ::Daggerheart::Homebrew::RaceSerializer).to_a,
+          classes: Panko::ArraySerializer.new(classes, each_serializer: ::Daggerheart::Homebrew::SpecialitySerializer).to_a,
+          subclasses: Panko::ArraySerializer.new(subclasses, each_serializer: ::Daggerheart::Homebrew::SubclassSerializer).to_a,
+          feats: Panko::ArraySerializer.new(feats, each_serializer: ::Daggerheart::Homebrew::FeatSerializer).to_a
         }
       end
+
+      def races = ::Daggerheart::Homebrew::Race.where(user_id: current_user.id).order(name: :asc)
+      def classes = ::Daggerheart::Homebrew::Speciality.where(user_id: current_user.id).order(name: :asc)
+      def subclasses = ::Daggerheart::Homebrew::Subclass.where(user_id: current_user.id).order(name: :asc)
+      def feats = ::Daggerheart::Feat.where(user_id: current_user.id).order(Arel.sql("title->>'en' ASC"))
     end
   end
 end

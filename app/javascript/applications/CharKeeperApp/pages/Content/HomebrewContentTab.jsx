@@ -41,7 +41,14 @@ export const HomebrewContentTab = (props) => {
   }
 
   const addHomebrew = (key, value) => {
-    setHomebrews({ ...homebrews(), [key]: homebrews()[key].concat([value]) });
+    const newList = homebrews()[key].concat([value]).sort((a, b) => {
+      if (a.name) return a.name.localeCompare(b.name);
+      if (a.title) return a.title.en.localeCompare(b.title.en);
+
+      return a.id.localeCompare(b.id);
+    });
+
+    setHomebrews({ ...homebrews(), [key]: newList });
   }
 
   const removeHomebrew = (key, valueId) => {
