@@ -199,10 +199,6 @@
   @apply text-black border-b-2 border-blue-400 dark:text-snow dark:border-fuzzy-red;
 }
 
-#character-navigation p.disabled {
-  @apply text-gray-200 dark:text-gray-400;
-}
-
 .alert-box {
   @apply fixed top-4 right-4 z-50;
 }

@@ -20,13 +20,6 @@ export const CharacterNavigation = (props) => {
           </p>
         }
       </For>
-      <For each={props.disableTabsList}>
-        {(tab) =>
-          <p class="disabled">
-            {t(`pages.characterNavigation.${tab}`)}
-          </p>
-        }
-      </For>
     </div>
   );
 }

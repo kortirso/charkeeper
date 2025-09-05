@@ -285,8 +285,7 @@ export const CharactersTab = () => {
             <Plus />
           </Button>
           <CharacterNavigation
-            tabsList={['allFilter'].concat(characterProviders())}
-            disableTabsList={['dnd5', 'dnd2024', 'pathfinder2', 'daggerheart'].filter((item) => !characterProviders().includes(item))}
+            tabsList={['allFilter'].concat(['dnd5', 'dnd2024', 'pathfinder2', 'daggerheart'].filter((item) => characterProviders().includes(item)))}
             activeTab={activeFilter()}
             setActiveTab={setActiveFilter}
           />

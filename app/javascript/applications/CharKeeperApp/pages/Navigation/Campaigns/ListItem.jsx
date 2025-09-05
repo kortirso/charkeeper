@@ -38,12 +38,12 @@ export const CampaignsListItem = (props) => {
             {props.name}
           </p>
         </div>
-        <div class="relative h-8" use:clickOutside={() => setIsOpen(false)}>
+        <div class="relative h-8 dark:text-snow" use:clickOutside={() => setIsOpen(false)}>
           <IconButton onClick={toggleMenu}>
             <Dots />
           </IconButton>
           <Show when={isOpen()}>
-            <div class="absolute right-0 border border-gray-200 rounded overflow-hidden">
+            <div class="absolute z-9 right-0 border border-gray-200 rounded overflow-hidden">
               <p
                 class="px-2 py-1 text-sm bg-white hover:bg-gray-200 dark:bg-dusty dark:hover:bg-neutral-800 dark:text-snow"
                 onClick={props.onDeleteCampaign} // eslint-disable-line solid/reactivity
