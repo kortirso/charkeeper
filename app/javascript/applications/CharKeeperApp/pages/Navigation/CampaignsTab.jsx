@@ -1,4 +1,4 @@
-import { createSignal, createEffect, For, Switch, Match, Show, batch } from 'solid-js';
+import { createSignal, createEffect, createMemo, For, Switch, Match, Show, batch } from 'solid-js';
 import { createStore } from 'solid-js/store';
 import * as i18n from '@solid-primitives/i18n';
 
@@ -13,7 +13,7 @@ import { fetchCampaignJoinRequest } from '../../requests/fetchCampaignJoinReques
 
 export const CampaignsTab = () => {
   const [currentTab, setCurrentTab] = createSignal('campaigns');
-  const [activeFilter, setActiveFilter] = createSignal('dnd5');
+  const [activeFilter, setActiveFilter] = createSignal('allFilter');
   const [campaigns, setCampaigns] = createSignal(undefined);
   const [findCampaignId, setFindCampaignId] = createSignal('');
   const [deletingCampaignId, setDeletingCampaignId] = createSignal(undefined);
@@ -39,6 +39,20 @@ export const CampaignsTab = () => {
         setCampaigns(campaignsData.campaigns);
       }
     );
+  });
+
+  const campaignProviders = createMemo(() => {
+    if (campaigns() === undefined) return [];
+
+    const uniqProviders = new Set(campaigns().map((item) => item.provider));
+    return [...uniqProviders];
+  });
+
+  const filteredCampaigns = createMemo(() => {
+    if (campaigns() === undefined) return [];
+    if (activeFilter() === 'allFilter') return campaigns();
+
+    return campaigns().filter((item) => item.provider === activeFilter());
   });
 
   const saveCampaign = async () => {
@@ -103,8 +117,7 @@ export const CampaignsTab = () => {
             <Plus />
           </Button>
           <CharacterNavigation
-            tabsList={['dnd5', 'dnd2024', 'daggerheart', 'pathfinder2']}
-            disableTabsList={[]}
+            tabsList={['allFilter'].concat(['dnd5', 'dnd2024', 'pathfinder2', 'daggerheart'].filter((item) => campaignProviders().includes(item)))}
             activeTab={activeFilter()}
             setActiveTab={setActiveFilter}
           />
@@ -113,8 +126,11 @@ export const CampaignsTab = () => {
       <Switch>
         <Match when={currentTab() === 'campaigns'}>
           <div class="flex-1 overflow-y-scroll">
-            <Show when={campaigns() !== undefined}>
-              <For each={campaigns().filter((item) => item.provider === activeFilter())}>
+            <Show
+              when={filteredCampaigns().length > 0}
+              fallback={<p class="dark:text-snow p-2">{t('pages.campaignsPage.noCampaigns')}</p>}
+            >
+              <For each={filteredCampaigns()}>
                 {(campaign) =>
                   <CampaignsListItem
                     isActive={campaign.id == appState.activePageParams.id}

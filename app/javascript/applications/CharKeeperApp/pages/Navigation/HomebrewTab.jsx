@@ -32,7 +32,6 @@ export const HomebrewTab = () => {
       </PageHeader>
       <CharacterNavigation
         tabsList={['daggerheart']}
-        disableTabsList={['dnd5', 'dnd2024', 'pathfinder2']}
         activeTab={activeFilter()}
         setActiveTab={setActiveFilter}
       />

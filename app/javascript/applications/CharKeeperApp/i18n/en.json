@@ -108,7 +108,8 @@
       "confirmDeleting": "Are you sure need to remove this character?",
       "idForSearch": "To help players find your campaign, they can use the following ID to search",
       "join": "Join campaign",
-      "selectCharacterForJoining": "Select character for joining to campaign"
+      "selectCharacterForJoining": "Select character for joining to campaign",
+      "noCampaigns": "There are no campaigns yet"
     }
   },
   "daggerheart": {
