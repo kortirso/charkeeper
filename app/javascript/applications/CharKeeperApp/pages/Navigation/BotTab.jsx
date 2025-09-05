@@ -1,4 +1,4 @@
-import { createSignal, For, batch } from 'solid-js';
+import { createSignal, For, batch, Show } from 'solid-js';
 import * as i18n from '@solid-primitives/i18n';
 
 import { PageHeader, Input } from '../../components';
@@ -15,12 +15,14 @@ export const BotTab = () => {
   const t = i18n.translator(dict);
 
   const runBotCommand = async () => {
-    await createBotRequest(appState.accessToken, { value: currentCommand() });
+    const result = await createBotRequest(appState.accessToken, { value: currentCommand() });
 
-    batch(() => {
-      setHistory([{ text: currentCommand(), author: 'user' }].concat(history()));
-      setCurrentCommand('');
-    });
+    if (result.result) {
+      batch(() => {
+        setHistory([{ text: result.result }, { text: currentCommand(), author: 'user' }].concat(history()));
+        setCurrentCommand('');
+      });
+    }
   }
 
   return (
@@ -28,11 +30,22 @@ export const BotTab = () => {
       <PageHeader>
         {t('pages.botPage.title')}
       </PageHeader>
+      {console.log(history())}
       <div class="p-4 flex-1 flex flex-col overflow-hidden">
         <div class="flex-1 flex flex-col-reverse overflow-y-scroll mb-4">
           <For each={history()}>
             {(item) =>
-              <p class="dark:text-snow">{item.text}</p>
+              <Show
+                when={item.author}
+                fallback={
+                  <p
+                    class="pl-4 py-1 dark:text-snow"
+                    innerHTML={item.text} // eslint-disable-line solid/no-innerhtml
+                  />
+                }
+              >
+                <p class="dark:text-snow opacity-75">{item.text}</p>
+              </Show>
             }
           </For>
         </div>

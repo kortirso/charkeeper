@@ -2,10 +2,14 @@
 
 module Frontend
   class BotsController < Frontend::BaseController
-    def create
-      only_head_response
+    include Deps[
+      handle_service: 'services.bot_context.handle'
+    ]
 
-      # BotService.call({ source: 'web', message: params[:value], data: { user: current_user } })
+    def create
+      render json: {
+        result: handle_service.call(source: :web, message: params[:value], data: { user: current_user })
+      }, status: :ok
     end
   end
 end

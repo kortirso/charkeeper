@@ -8,20 +8,8 @@ module WebhooksContext
         add_identity: 'commands.auth_context.add_identity'
       ]
 
-      def call(message:)
-        define_locale(message)
-        route_message(message)
-      end
-
-      private
-
-      def define_locale(message)
-        message_locale = message.dig(:from, :language_code).to_sym
-        I18n.locale = I18n.available_locales.include?(message_locale) ? message_locale : I18n.default_locale
-      end
-
       # rubocop: disable Metrics/AbcSize
-      def route_message(message)
+      def call(message:)
         case message[:text]
         when '/start'
           identity = find_identity(message) || create_identity(message)
@@ -39,6 +27,8 @@ module WebhooksContext
         end
       end
       # rubocop: enable Metrics/AbcSize
+
+      private
 
       def find_identity(message)
         User::Identity.find_by(provider: User::Identity::TELEGRAM, uid: message.dig(:chat, :id).to_s)

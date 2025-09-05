@@ -93,20 +93,22 @@ module Charkeeper
     register('services.webhooks_context.telegram.handle_message_webhook') {
       WebhooksContext::Telegram::HandleMessageWebhookService.new
     }
-    register('services.webhooks_context.telegram.handle_group_message_webhook') {
-      WebhooksContext::Telegram::HandleGroupMessageWebhookService.new
-    }
     register('services.webhooks_context.telegram.handle_chat_member_webhook') {
       WebhooksContext::Telegram::HandleChatMemberWebhookService.new
-    }
-    register('services.webhooks_context.telegram.handle_bot_command') {
-      WebhooksContext::Telegram::HandleBotCommandService.new
     }
 
     register('services.characters_context.daggerheart.refresh_feats') { CharactersContext::Daggerheart::RefreshFeats.new }
     register('services.characters_context.dnd5.refresh_feats') { CharactersContext::Dnd5::RefreshFeats.new }
     register('services.characters_context.dnd2024.refresh_feats') { CharactersContext::Dnd2024::RefreshFeats.new }
     register('services.notifications_context.send_notification') { NotificationsContext::SendService.new }
+
+    register('services.bot_context.handle') { BotContext::HandleService.new }
+
+    register('services.bot_context.handle_command') { BotContext::HandleCommandService.new }
+    register('services.bot_context.commands.roll') { BotContext::Commands::Roll.new }
+
+    register('services.bot_context.represent_command') { BotContext::RepresentCommandService.new }
+    register('services.bot_context.representers.roll') { BotContext::Representers::Roll.new }
   end
 end
 
