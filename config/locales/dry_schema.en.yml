@@ -7,6 +7,10 @@ en:
     errors:
       unexpected_key: Unknown param
       included_in?: Unknown value
+      homebrew_book:
+        rules:
+          provider:
+            included_in?: Unknown value
       daggerheart_rest:
         rules:
           options:

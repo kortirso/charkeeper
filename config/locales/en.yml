@@ -3,6 +3,11 @@ en:
   not_found: Object is not found
   change_locale: Change locale
   validation_error: Validation error
+  providers:
+    daggerheart: Daggerheart
+    dnd5: D&D 5
+    dnd2024: D&D 2024
+    pathfinder2: Pathfinder 2
   services:
     bot_context:
       representers:
@@ -10,6 +15,11 @@ en:
           result: Result
           total: Total
           nothing: No result
+        book:
+          create:
+            result: "Module \"%{name}\" is created"
+          remove:
+            result: Module is deleted
   decorators:
     pathfinder2:
       boosts: "You can improve abilities: %{ability_boosts_text}.\nYou can learn skills: %{skill_boosts_text}"

@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## Unreleased
 ### Added
 - in app bot commands interface
+- bot commands for books manupulating
 
 ### Modified
 - homebrew sorting
