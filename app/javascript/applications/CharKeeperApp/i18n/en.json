@@ -55,6 +55,7 @@
     },
     "homebrewPage": {
       "title": "Homebrew",
+      "modulesHelp": "Modules can be edited by bot command",
       "daggerheart": {
         "races": "Ancestries",
         "feats": "Features",
@@ -95,7 +96,9 @@
         "damage": "Damage",
         "damageType": "Damage type",
         "damageBonus": "Damage bonus",
-        "burden": "Burden"
+        "burden": "Burden",
+        "modules": "Modules",
+        "includedAncestries": "Included ancestries"
       }
     },
     "campaignsPage": {

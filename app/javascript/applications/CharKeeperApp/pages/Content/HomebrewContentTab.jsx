@@ -2,7 +2,9 @@ import { createSignal, createEffect, Switch, Match, Show, batch } from 'solid-js
 import * as i18n from '@solid-primitives/i18n';
 import { createWindowSize } from '@solid-primitives/resize-observer';
 
-import { HomebrewRaces, HomebrewFeats, HomebrewItems, HomebrewClasses, HomebrewSubclasses } from '../../pages';
+import {
+  HomebrewRaces, HomebrewFeats, HomebrewItems, HomebrewClasses, HomebrewSubclasses, HomebrewModules
+} from '../../pages';
 import { PageHeader, IconButton } from '../../components';
 import { Arrow } from '../../assets';
 import { useAppState, useAppLocale } from '../../context';
@@ -71,6 +73,12 @@ export const HomebrewContentTab = (props) => {
       <Switch>
         <Match when={appState.activePageParams.provider === 'daggerheart'}>
           <Switch>
+            <Match when={appState.activePageParams.content === 'modules'}>
+              <HomebrewModules
+                provider="daggerheart"
+                homebrews={homebrews()}
+              />
+            </Match>
             <Match when={appState.activePageParams.content === 'races'}>
               <HomebrewRaces
                 provider="daggerheart"
