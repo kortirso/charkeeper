@@ -23,6 +23,7 @@ export * from './Content/Homebrew/Feats';
 export * from './Content/Homebrew/Items';
 export * from './Content/Homebrew/Classes';
 export * from './Content/Homebrew/Subclasses';
+export * from './Content/Homebrew/Modules';
 
 export * from './Content/Character/Dnd5';
 export * from './Content/Character/Dnd5/Abilities';

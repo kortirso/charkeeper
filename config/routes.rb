@@ -39,6 +39,7 @@ Rails.application.routes.draw do
     resources :bots, only: %i[create]
     namespace :homebrews do
       scope ':provider' do
+        resources :books, only: %i[index]
         resources :races, only: %i[index create destroy] do
           resource :copy, only: %i[create], module: :races
         end

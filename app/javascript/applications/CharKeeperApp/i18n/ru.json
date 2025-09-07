@@ -55,6 +55,7 @@
     },
     "homebrewPage": {
       "title": "Homebrew",
+      "modulesHelp": "Модули могут редактироваться через бот команды",
       "daggerheart": {
         "races": "Расы",
         "feats": "Способности",
@@ -95,7 +96,9 @@
         "damage": "Урон",
         "damageType": "Тип урона",
         "damageBonus": "Бонус урона",
-        "burden": "Руки"
+        "burden": "Руки",
+        "modules": "Модули",
+        "includedAncestries": "Включённые расы"
       }
     },
     "campaignsPage": {

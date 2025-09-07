@@ -81,7 +81,6 @@ export const HomebrewItems = (props) => {
             <Button default classList="mb-2" onClick={() => setActiveView('right')}>
               {t(`pages.homebrewPage.${props.provider}.newItem`)}
             </Button>
-
             <div class="flex mb-2">
               <Button default size="small" classList="px-2" onClick={copyItem}>
                 {t('copy')}
@@ -93,7 +92,6 @@ export const HomebrewItems = (props) => {
                 onInput={(value) => setCopyItemId(value)}
               />
             </div>
-
             <Show when={items() !== undefined}>
               <For each={items()}>
                 {(item) =>
