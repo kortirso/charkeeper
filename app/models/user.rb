@@ -18,6 +18,8 @@ class User < ApplicationRecord
   has_many :feats, dependent: :destroy
   has_many :items, dependent: :destroy
   has_many :campaigns, dependent: :destroy
+  has_many :homebrew_books, class_name: 'Homebrew::Book', dependent: :destroy
+  has_many :active_bot_objects, dependent: :destroy
 
   enum :color_schema, { LIGHT => 0, DARK => 1 }
 end

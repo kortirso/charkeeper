@@ -17,12 +17,14 @@ export const BotTab = () => {
   const runBotCommand = async () => {
     const result = await createBotRequest(appState.accessToken, { value: currentCommand() });
 
-    if (result.result) {
-      batch(() => {
-        setHistory([{ text: result.result }, { text: currentCommand(), author: 'user' }].concat(history()));
-        setCurrentCommand('');
-      });
-    }
+    batch(() => {
+      setHistory(
+        [
+          { text: (result.result ? result.result : result.errors[0]) }, { text: currentCommand(), author: 'user' }
+        ].concat(history())
+      );
+      setCurrentCommand('');
+    });
   }
 
   return (
@@ -30,7 +32,6 @@ export const BotTab = () => {
       <PageHeader>
         {t('pages.botPage.title')}
       </PageHeader>
-      {console.log(history())}
       <div class="p-4 flex-1 flex flex-col overflow-hidden">
         <div class="flex-1 flex flex-col-reverse overflow-y-scroll mb-4">
           <For each={history()}>
@@ -49,12 +50,13 @@ export const BotTab = () => {
             }
           </For>
         </div>
-        <Input
-          value={currentCommand()}
-          onInput={(value) => setCurrentCommand(value)}
-          onKeyDown={runBotCommand}
+        <Input value={currentCommand()} onInput={(value) => setCurrentCommand(value)} onKeyDown={runBotCommand} />
+        <p
+          class="mt-2 dark:text-snow text-xs"
+          innerHTML={t('pages.botPage.link')} // eslint-disable-line solid/no-innerhtml
         />
       </div>
     </>
   );
 }
+

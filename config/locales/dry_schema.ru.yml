@@ -7,6 +7,10 @@ ru:
     errors:
       unexpected_key: Неизвестный параметр
       included_in?: Неизвестное значение
+      homebrew_book:
+        rules:
+          provider:
+            included_in?: Неизвестное значение
       daggerheart_rest:
         rules:
           options:

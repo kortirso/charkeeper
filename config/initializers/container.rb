@@ -75,6 +75,9 @@ module Charkeeper
       WebhooksContext::Telegram::ReceiveChatMemberWebhookCommand.new
     }
 
+    register('commands.homebrew_context.add_book') { HomebrewContext::AddBookCommand.new }
+    register('commands.homebrew_context.remove_book') { HomebrewContext::RemoveBookCommand.new }
+
     register('commands.homebrew_context.daggerheart.add_race') { HomebrewContext::Daggerheart::AddRaceCommand.new }
     register('commands.homebrew_context.daggerheart.add_feat') { HomebrewContext::Daggerheart::AddFeatCommand.new }
     register('commands.homebrew_context.daggerheart.add_item') { HomebrewContext::Daggerheart::AddItemCommand.new }
@@ -83,6 +86,7 @@ module Charkeeper
     register('commands.homebrew_context.daggerheart.copy_race') { HomebrewContext::Daggerheart::CopyRaceCommand.new }
     register('commands.homebrew_context.daggerheart.copy_subclass') { HomebrewContext::Daggerheart::CopySubclassCommand.new }
     register('commands.homebrew_context.daggerheart.copy_item') { HomebrewContext::Daggerheart::CopyItemCommand.new }
+    register('commands.homebrew_context.daggerheart.add_book_races') { HomebrewContext::Daggerheart::AddBookRacesCommand.new }
 
     register('commands.campaigns_context.add_campaign') { CampaignsContext::AddCampaignCommand.new }
     register('commands.campaigns_context.join_campaign') { CampaignsContext::JoinCampaignCommand.new }
@@ -106,9 +110,11 @@ module Charkeeper
 
     register('services.bot_context.handle_command') { BotContext::HandleCommandService.new }
     register('services.bot_context.commands.roll') { BotContext::Commands::Roll.new }
+    register('services.bot_context.commands.book') { BotContext::Commands::Book.new }
 
     register('services.bot_context.represent_command') { BotContext::RepresentCommandService.new }
     register('services.bot_context.representers.roll') { BotContext::Representers::Roll.new }
+    register('services.bot_context.representers.book') { BotContext::Representers::Book.new }
   end
 end
 

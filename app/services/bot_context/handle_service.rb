@@ -14,17 +14,23 @@ module BotContext
 
     def call(source:, message:, data: {})
       command, arguments = parse_command_text(message)
-      return handle_webhook.call(message: data[:raw_message]) if SERVICE_COMMANDS.include?(command)
-      return if SERVICE_SOURCES.include?(source)
+      if SERVICE_COMMANDS.include?(command)
+        handle_webhook.call(message: data[:raw_message]) if SERVICE_SOURCES.include?(source)
+        return { result: :ok }
+      end
+      return { result: :ok } if SERVICE_SOURCES.include?(source)
 
-      command_result = handle_command.call(command: command, arguments: arguments)
-      return if command_result.nil?
+      command_result = handle_command.call(source: source, command: command, arguments: arguments, data: data)
+      return { errors: ['Invalid command'] } if command_result.nil?
 
-      text = represent_command.call(source: source, command: command, command_result: command_result)
-      return if text.nil?
-      return text if source == :web
+      command_formatted_result = represent_command.call(source: source, command: command, command_result: command_result)
+      return if command_formatted_result.nil?
+      return command_formatted_result if source == :web
 
-      send_result_message(data[:raw_message], text)
+      send_result_message(data[:raw_message], command_formatted_result)
+      nil
+    rescue ArgumentError => _e
+      { errors: ['Invalid command'] }
     end
 
     private
@@ -45,12 +51,12 @@ module BotContext
     end
     # rubocop: enable Style/RedundantRegexpArgument
 
-    def send_result_message(raw_message, text)
+    def send_result_message(raw_message, command_formatted_result)
       telegram_api.send_message(
         bot_secret: bot_secret,
         chat_id: raw_message.dig(:chat, :id),
         reply_to_message_id: raw_message[:message_id],
-        text: text
+        text: command_formatted_result[:errors] ? command_formatted_result.dig(:errors, 0) : command_formatted_result[:result]
       )
     end
 

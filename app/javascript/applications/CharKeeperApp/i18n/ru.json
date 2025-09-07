@@ -112,7 +112,8 @@
       "noCampaigns": "Нет активных кампаний"
     },
     "botPage": {
-      "title": "Команды бота"
+      "title": "Команды бота",
+      "link": "Список доступных команд можно узнать <a href='https://charkeeper.org/bot_commands' class='underline' target='_blank' rel='noopener noreferrer'>тут</a>"
     }
   },
   "daggerheart": {

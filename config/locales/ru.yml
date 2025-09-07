@@ -3,6 +3,11 @@ ru:
   not_found: Запись не найдена
   change_locale: Изменить локаль
   validation_error: Ошибка валидации
+  providers:
+    daggerheart: Daggerheart
+    dnd5: D&D 5
+    dnd2024: D&D 2024
+    pathfinder2: Pathfinder 2
   services:
     bot_context:
       representers:
@@ -10,6 +15,11 @@ ru:
           result: Результат
           total: Сумма
           nothing: Нет результата
+        book:
+          create:
+            result: "Модуль \"%{name}\" создан"
+          remove:
+            result: Модуль удалён
   decorators:
     pathfinder2:
       boosts: "Вы можете улучшить следующие характеристики: %{ability_boosts_text}.\nТакже вы можете изучить следующие умения: %{skill_boosts_text}"

@@ -112,7 +112,8 @@
       "noCampaigns": "There are no campaigns yet"
     },
     "botPage": {
-      "title": "Bot commands"
+      "title": "Bot commands",
+      "link": "List of available commands you can check <a href='https://charkeeper.org/bot_commands' class='underline' target='_blank' rel='noopener noreferrer'>here</a>"
     }
   },
   "daggerheart": {
