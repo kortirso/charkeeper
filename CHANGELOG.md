@@ -4,10 +4,10 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
-## Unreleased
+## [0.2.23] - 2025-09-08
 ### Added
 - in app bot commands interface
-- bot commands for books manupulating
+- bot commands for books manipulating
 - rendering homebrew modules
 
 ### Modified
