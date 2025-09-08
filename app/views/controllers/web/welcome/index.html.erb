@@ -36,7 +36,7 @@
     <p class="text-lg font-normal!"><%= t('web.welcome.index.android') %></p>
     <p class="mb-4">
       <%= t('web.welcome.index.android_description', href: link_to(t('web.welcome.index.android_link'), 'https://charkeeper.org/Charkeeper_0.2.23.apk', class: 'underline', download: 'Charkeeper.apk')).html_safe %>
-      <%= t('web.welcome.index.google_play', href1: link_to(t('web.welcome.index.google_play_link1'), 'https://play.google.com/store/apps/details?id=org.kortirso.charkeeper', class: 'underline'), href2: link_to(t('web.welcome.index.google_play_link2'), 'https://play.google.com/apps/testing/org.kortirso.charkeeper', class: 'underline')).html_safe %>
+      <%= t('web.welcome.index.google_play', href: link_to(t('web.welcome.index.google_play_link'), 'https://play.google.com/store/apps/details?id=org.kortirso.charkeeper', class: 'underline')).html_safe %>
     </p>
     <p class="text-lg font-normal!"><%= t('web.welcome.index.macos') %></p>
     <p class="mb-4">
