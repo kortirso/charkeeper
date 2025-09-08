@@ -37,7 +37,8 @@ module CharactersContext
       def ancestry(decorator)
         return decorator.heritage_name if decorator.heritage.nil?
 
-        ::Daggerheart::Character.heritage_info(decorator.heritage).dig('name', I18n.locale.to_s)
+        default = ::Daggerheart::Character.heritage_info(decorator.heritage)
+        default ? default.dig('name', I18n.locale.to_s) : ::Daggerheart::Homebrew::Race.find(decorator.heritage).name
       end
 
       def community(decorator)

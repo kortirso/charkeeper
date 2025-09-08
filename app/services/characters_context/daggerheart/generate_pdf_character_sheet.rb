@@ -68,7 +68,7 @@ module CharactersContext
         font Rails.root.join('app/assets/fonts/Roboto-Regular.ttf') do
           font_size 8
           text_box character.name, at: [174, 732], width: 150
-          text_box character.heritage ? ::Daggerheart::Character.heritage_info(character.heritage).dig('name', I18n.locale.to_s) : character.heritage_name, at: [164, 713], width: 150
+          text_box ancestry(character), at: [164, 713], width: 150
 
           classes = character.subclasses.map { |key, value| "#{class_name(key)} - #{subclass_name(key, value)}" }.join('/')
           text_box classes, at: [323, 713], width: 150
@@ -84,6 +84,13 @@ module CharactersContext
       # rubocop: enable Metrics/AbcSize, Metrics/MethodLength, Metrics/PerceivedComplexity, Layout/LineLength, Metrics/CyclomaticComplexity
 
       private
+
+      def ancestry(character)
+        return character.heritage_name if character.heritage.nil?
+
+        default = ::Daggerheart::Character.heritage_info(character.heritage)
+        default ? default.dig('name', I18n.locale.to_s) : ::Daggerheart::Homebrew::Race.find(character.heritage).name
+      end
 
       def class_name(class_slug)
         default = ::Daggerheart::Character.class_info(class_slug)

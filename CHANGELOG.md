@@ -13,6 +13,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Modified
 - homebrew sorting
 
+### Fixed
+- rendering daggerheart PDF for characte with homebrew race
+
 ## [0.2.22] - 2025-09-05
 ### Fixed
 - remove inactive filters
