@@ -1,0 +1,134 @@
+[
+  {
+    "slug": "chain_lightning",
+    "name": {
+      "en": "Chain lightning",
+      "ru": "Chain lightning"
+    },
+    "data": {
+      "domain": "arcana",
+      "level": 5
+    }
+  },
+  {
+    "slug": "premonition",
+    "name": {
+      "en": "Premonition",
+      "ru": "Premonition"
+    },
+    "data": {
+      "domain": "arcana",
+      "level": 5
+    }
+  },
+  {
+    "slug": "rift walker",
+    "name": {
+      "en": "Rift Walker",
+      "ru": "Rift Walker"
+    },
+    "data": {
+      "domain": "arcana",
+      "level": 6
+    }
+  },
+  {
+    "slug": "telekinesis",
+    "name": {
+      "en": "Telekinesis",
+      "ru": "Telekinesis"
+    },
+    "data": {
+      "domain": "arcana",
+      "level": 6
+    }
+  },
+  {
+    "slug": "arcana_touched",
+    "name": {
+      "en": "Arcana-Touched",
+      "ru": "Arcana-Touched"
+    },
+    "data": {
+      "domain": "arcana",
+      "level": 7
+    }
+  },
+  {
+    "slug": "cloaking_blast",
+    "name": {
+      "en": "Cloaking blast",
+      "ru": "Cloaking blast"
+    },
+    "data": {
+      "domain": "arcana",
+      "level": 7
+    }
+  },
+  {
+    "slug": "arcane_reflection",
+    "name": {
+      "en": "Arcane reflection",
+      "ru": "Arcane reflection"
+    },
+    "data": {
+      "domain": "arcana",
+      "level": 8
+    }
+  },
+  {
+    "slug": "confusing_aura",
+    "name": {
+      "en": "Confusing aura",
+      "ru": "Confusing aura"
+    },
+    "data": {
+      "domain": "arcana",
+      "level": 8
+    }
+  },
+  {
+    "slug": "earthquake",
+    "name": {
+      "en": "Earthquake",
+      "ru": "Earthquake"
+    },
+    "data": {
+      "domain": "arcana",
+      "level": 9
+    }
+  },
+  {
+    "slug": "sensory_projection",
+    "name": {
+      "en": "Sensory projection",
+      "ru": "Sensory projection"
+    },
+    "data": {
+      "domain": "arcana",
+      "level": 9
+    }
+  },
+  {
+    "slug": "adjust_reality",
+    "name": {
+      "en": "Adjust reality",
+      "ru": "Adjust reality"
+    },
+    "data": {
+      "domain": "arcana",
+      "level": 10
+    }
+  },
+  {
+    "slug": "falling_sky",
+    "name": {
+      "en": "Falling sky",
+      "ru": "Falling sky"
+    },
+    "data": {
+      "domain": "arcana",
+      "level": 10
+    }
+  }
+]

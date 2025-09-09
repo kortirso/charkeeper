@@ -281,6 +281,14 @@
     "pouncing_predator": { "name": { "en": "Pouncing predator", "ru": "Pouncing predator" } },
     "winged_beast": { "name": { "en": "Winged beast", "ru": "Winged beast" } }
   },
+  "stances": {
+    "brutal": { "name": { "en": "Brutal", "ru": "Брутальная" } },
+    "defensive": { "name": { "en": "Defensive", "ru": "Защитная" } },
+    "grappling": { "name": { "en": "Grappling", "ru": "Захватная" } },
+    "steady": { "name": { "en": "Steady", "ru": "Устойчивая" } },
+    "precise": { "name": { "en": "Precise", "ru": "Точная" } },
+    "quick": { "name": { "en": "Quick", "ru": "Быстрая" } }
+  },
   "traits": {
     "str": { "name": { "en": "Strength", "ru": "Сила" } },
     "agi": { "name": { "en": "Agility", "ru": "Ловкость" } },

@@ -132,7 +132,7 @@ module DaggerheartCharacter
         burden: 2,
         range: 'melee',
         attack_bonus: [modified_traits['str'], modified_traits['fin']].max + attack_bonuses,
-        damage: "#{(proficiency / 2.0).round}d4",
+        damage: "#{proficiency}d4",
         damage_bonus: 0,
         damage_type: 'physical',
         kind: 'primary weapon',
