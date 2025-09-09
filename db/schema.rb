@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_09_06_163658) do
+ActiveRecord::Schema[8.0].define(version: 2025_09_09_183020) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
   enable_extension "pgcrypto"
@@ -286,6 +286,9 @@ ActiveRecord::Schema[8.0].define(version: 2025_09_06_163658) do
     t.string "slug"
     t.jsonb "info", default: {}, null: false
     t.uuid "user_id"
+    t.uuid "itemable_id"
+    t.string "itemable_type"
+    t.index ["itemable_id", "itemable_type"], name: "index_items_on_itemable_id_and_itemable_type", where: "((itemable_id IS NOT NULL) AND (itemable_type IS NOT NULL))"
     t.index ["slug"], name: "index_items_on_slug"
     t.index ["user_id"], name: "index_items_on_user_id"
   end

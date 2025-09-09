@@ -19,7 +19,7 @@ describe DaggerheartCharacter::BaseDecorator do
     expect(decorator.evasion).to eq 12
     expect(decorator.health_max).to eq 8
     expect(decorator.attacks.dig(0, :attack_bonus)).to eq 2
-    expect(decorator.attacks.dig(0, :damage)).to eq '2d4'
+    expect(decorator.attacks.dig(0, :damage)).to eq '3d4'
   end
 
   context 'for beastform' do
