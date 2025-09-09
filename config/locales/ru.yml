@@ -64,9 +64,7 @@ ru:
         macos_description: Просто скачайте и запустите %{href}
         macos_link: установщик
         android: Приложение для Android
-        android_description: Просто скачайте и запустите %{href}
-        android_link: установщик
-        google_play: или установите приложение через %{href}
+        google_play: Установите приложение через %{href}
         google_play_link: Google Play Store
         daggerheart:
           title: Поддержка Daggerheart

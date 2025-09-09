@@ -64,9 +64,7 @@ en:
         macos_description: Simply download and run %{href}
         macos_link: installer
         android: Android application
-        android_description: Simply download and run %{href}
-        android_link: installer
-        google_play: or install application through %{href}
+        google_play: Install application through %{href}
         google_play_link: Google Play Store
         daggerheart:
           title: Daggerheart compability
