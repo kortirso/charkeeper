@@ -18,3 +18,4 @@ export * from './Chat';
 export * from './socials/Discord';
 export * from './socials/Telegram';
 export * from './socials/Vk';
+export * from './socials/Boosty';

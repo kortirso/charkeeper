@@ -2,13 +2,13 @@ import { Show } from 'solid-js';
 import * as i18n from '@solid-primitives/i18n';
 
 import { PageHeader, NotificationsBudge } from '../../components';
-import { Telegram, Discord, Vk } from '../../assets';
+import { Telegram, Discord, Vk, Boosty } from '../../assets';
 import { useAppState, useAppLocale } from '../../context';
 import { logoutRequest } from '../../requests/logoutRequest';
 
 export const SettingsTab = () => {
   const [appState, { navigate, setAccessToken }] = useAppState();
-  const [, dict] = useAppLocale();
+  const [locale, dict] = useAppLocale();
 
   const t = i18n.translator(dict);
 
@@ -49,6 +49,11 @@ export const SettingsTab = () => {
           {renderSettingsLink(t('pages.settingsPage.feedback'), 'feedback')}
           <div class="flex py-3 px-4 gap-4">
             <p class="dark:text-snow">{t('pages.settingsPage.socials')}</p>
+            <Show when={locale() == 'ru'}>
+              <a href="https://boosty.to/kortirso" target="_blank" rel="noopener noreferrer" class="opacity-75 hover:opacity-100">
+                <Boosty />
+              </a>
+            </Show>
             <a href="https://discord.gg/CmT8RgyECQ" target="_blank" rel="noopener noreferrer" class="opacity-75 hover:opacity-100">
               <Discord />
             </a>
