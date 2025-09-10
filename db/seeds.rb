@@ -111,6 +111,31 @@ Dir[File.join(Rails.root.join('db/data/daggerheart_feats/*.json'))].each do |fil
   end
 end
 
+# file_content = File.read('db/data/daggerheart/*.json')
+# data_hash = JSON.parse(file_content)
+
+# data_hash = data_hash.filter_map do |item|
+#   next if item['level'] < 5
+
+#   {
+#     slug: item['slug'],
+#     name: {
+#       en: item['original_name'],
+#       ru: item['name']
+#     },
+#     data: {
+#       domain: item['domain_slug'],
+#       level: item['level']
+#     }
+#   }
+# end
+
+# beautified_json_string = JSON.pretty_generate(data_hash)
+# # Write the beautified JSON string to a file
+# File.open('db/data/daggerheart/spells_3.json', "w") do |file|
+#   file.write(beautified_json_string)
+# end
+
 weapons_file = File.read(Rails.root.join('db/data/weapons.json'))
 weapons = JSON.parse(weapons_file)
 Dnd5::Item.upsert_all(weapons) if weapons.any?

@@ -1,0 +1,1322 @@
+[
+  {
+    "slug": "premonition",
+    "name": {
+      "en": "Premonition",
+      "ru": "Предчувствие"
+    },
+    "data": {
+      "domain": "arcana",
+      "level": 5
+    }
+  },
+  {
+    "slug": "chain_lightning",
+    "name": {
+      "en": "Chain Lightning",
+      "ru": "Цепная молния"
+    },
+    "data": {
+      "domain": "arcana",
+      "level": 5
+    }
+  },
+  {
+    "slug": "vitality",
+    "name": {
+      "en": "Vitality",
+      "ru": "Живучесть"
+    },
+    "data": {
+      "domain": "blade",
+      "level": 5
+    }
+  },
+  {
+    "slug": "champions_edge",
+    "name": {
+      "en": "Champion's Edge",
+      "ru": "Преимущество чемпиона"
+    },
+    "data": {
+      "domain": "blade",
+      "level": 5
+    }
+  },
+  {
+    "slug": "know_thy_enemy",
+    "name": {
+      "en": "Know Thy Enemy",
+      "ru": "Знай врага своего"
+    },
+    "data": {
+      "domain": "bone",
+      "level": 5
+    }
+  },
+  {
+    "slug": "signature_move",
+    "name": {
+      "en": "Signature Move",
+      "ru": "Фирменный приём"
+    },
+    "data": {
+      "domain": "bone",
+      "level": 5
+    }
+  },
+  {
+    "slug": "manifest-wall",
+    "name": {
+      "en": "Manifest Wall",
+      "ru": "Сотворение стены"
+    },
+    "data": {
+      "domain": "codex",
+      "level": 5
+    }
+  },
+  {
+    "slug": "teleport",
+    "name": {
+      "en": "Teleport",
+      "ru": "Телепортация"
+    },
+    "data": {
+      "domain": "codex",
+      "level": 5
+    }
+  },
+  {
+    "slug": "thought-delver",
+    "name": {
+      "en": "Thought Delver",
+      "ru": "Чтение мыслей"
+    },
+    "data": {
+      "domain": "grace",
+      "level": 5
+    }
+  },
+  {
+    "slug": "words-of-discord",
+    "name": {
+      "en": "Words of Discord",
+      "ru": "Шепот раздора"
+    },
+    "data": {
+      "domain": "grace",
+      "level": 5
+    }
+  },
+  {
+    "slug": "hush",
+    "name": {
+      "en": "Hush",
+      "ru": "Безмолвие"
+    },
+    "data": {
+      "domain": "midnight",
+      "level": 5
+    }
+  },
+  {
+    "slug": "phantom-retreat",
+    "name": {
+      "en": "Phantom Retreat",
+      "ru": "Призрачное отступление"
+    },
+    "data": {
+      "domain": "midnight",
+      "level": 5
+    }
+  },
+  {
+    "slug": "spectral-mist",
+    "name": {
+      "en": "Spectral Mist",
+      "ru": "Призрачный туман"
+    },
+    "data": {
+      "domain": "dread",
+      "level": 5
+    }
+  },
+  {
+    "slug": "dire-strike",
+    "name": {
+      "en": "Dire Strike",
+      "ru": "Роковой удар"
+    },
+    "data": {
+      "domain": "dread",
+      "level": 5
+    }
+  },
+  {
+    "slug": "wild-fortress",
+    "name": {
+      "en": "Wild Fortress",
+      "ru": "Дикая крепость"
+    },
+    "data": {
+      "domain": "sage",
+      "level": 5
+    }
+  },
+  {
+    "slug": "thorn-skin",
+    "name": {
+      "en": "Thorn Skin",
+      "ru": "Терновая кожа"
+    },
+    "data": {
+      "domain": "sage",
+      "level": 5
+    }
+  },
+  {
+    "slug": "shape-material",
+    "name": {
+      "en": "Shape Material",
+      "ru": "Изменение формы"
+    },
+    "data": {
+      "domain": "splendor",
+      "level": 5
+    }
+  },
+  {
+    "slug": "smite",
+    "name": {
+      "en": "Smite",
+      "ru": "Кара"
+    },
+    "data": {
+      "domain": "splendor",
+      "level": 5
+    }
+  },
+  {
+    "slug": "armorer",
+    "name": {
+      "en": "Armorer",
+      "ru": "Бронник"
+    },
+    "data": {
+      "domain": "valor",
+      "level": 5
+    }
+  },
+  {
+    "slug": "rousing-strike",
+    "name": {
+      "en": "Rousing Strike",
+      "ru": "Воодушевляющий удар"
+    },
+    "data": {
+      "domain": "valor",
+      "level": 5
+    }
+  },
+  {
+    "slug": "telekinesis",
+    "name": {
+      "en": "Telekinesis",
+      "ru": "Телекинез"
+    },
+    "data": {
+      "domain": "arcana",
+      "level": 6
+    }
+  },
+  {
+    "slug": "rift-walker",
+    "name": {
+      "en": "Rift Walker",
+      "ru": "Ходящий сквозь разлом"
+    },
+    "data": {
+      "domain": "arcana",
+      "level": 6
+    }
+  },
+  {
+    "slug": "battle-hardened",
+    "name": {
+      "en": "Battle-Hardened",
+      "ru": "Закалённый в боях"
+    },
+    "data": {
+      "domain": "blade",
+      "level": 6
+    }
+  },
+  {
+    "slug": "rage-up",
+    "name": {
+      "en": "Rage Up",
+      "ru": "Ярость"
+    },
+    "data": {
+      "domain": "blade",
+      "level": 6
+    }
+  },
+  {
+    "slug": "rapid-riposte",
+    "name": {
+      "en": "Rapid Riposte",
+      "ru": "Быстрая контратака"
+    },
+    "data": {
+      "domain": "bone",
+      "level": 6
+    }
+  },
+  {
+    "slug": "recovery",
+    "name": {
+      "en": "Recovery",
+      "ru": "Восстановление"
+    },
+    "data": {
+      "domain": "bone",
+      "level": 6
+    }
+  },
+  {
+    "slug": "banish",
+    "name": {
+      "en": "Banish",
+      "ru": "Изгнание"
+    },
+    "data": {
+      "domain": "codex",
+      "level": 6
+    }
+  },
+  {
+    "slug": "sigil-of-retribution",
+    "name": {
+      "en": "Sigil of Retribution",
+      "ru": "Символ возмездия"
+    },
+    "data": {
+      "domain": "codex",
+      "level": 6
+    }
+  },
+  {
+    "slug": "never-upstaged",
+    "name": {
+      "en": "Never Upstaged",
+      "ru": "Непревзойденность"
+    },
+    "data": {
+      "domain": "grace",
+      "level": 6
+    }
+  },
+  {
+    "slug": "share-the-burden",
+    "name": {
+      "en": "Share the Burden",
+      "ru": "Разделить бремя"
+    },
+    "data": {
+      "domain": "grace",
+      "level": 6
+    }
+  },
+  {
+    "slug": "mass-disguise",
+    "name": {
+      "en": "Mass Disguise",
+      "ru": "Массовая маскировка"
+    },
+    "data": {
+      "domain": "midnight",
+      "level": 6
+    }
+  },
+  {
+    "slug": "dark-whispers",
+    "name": {
+      "en": "Dark Whispers",
+      "ru": "Темные шепоты"
+    },
+    "data": {
+      "domain": "midnight",
+      "level": 6
+    }
+  },
+  {
+    "slug": "wailing-leap",
+    "name": {
+      "en": "Jump Scare",
+      "ru": "Скример"
+    },
+    "data": {
+      "domain": "dread",
+      "level": 6
+    }
+  },
+  {
+    "slug": "nether-flames",
+    "name": {
+      "en": "Darkfire",
+      "ru": "Темное пламя"
+    },
+    "data": {
+      "domain": "dread",
+      "level": 6
+    }
+  },
+  {
+    "slug": "conjured-steeds",
+    "name": {
+      "en": "Conjured Steeds",
+      "ru": "Призванные скакуны"
+    },
+    "data": {
+      "domain": "sage",
+      "level": 6
+    }
+  },
+  {
+    "slug": "forager",
+    "name": {
+      "en": "Forager",
+      "ru": "Собиратель"
+    },
+    "data": {
+      "domain": "sage",
+      "level": 6
+    }
+  },
+  {
+    "slug": "restoration",
+    "name": {
+      "en": "Restoration",
+      "ru": "Восстановление"
+    },
+    "data": {
+      "domain": "splendor",
+      "level": 6
+    }
+  },
+  {
+    "slug": "zone-of-protection",
+    "name": {
+      "en": "Zone of Protection",
+      "ru": "Зона защиты"
+    },
+    "data": {
+      "domain": "splendor",
+      "level": 6
+    }
+  },
+  {
+    "slug": "rise-up",
+    "name": {
+      "en": "Rise Up",
+      "ru": "Не сломлен"
+    },
+    "data": {
+      "domain": "valor",
+      "level": 6
+    }
+  },
+  {
+    "slug": "inevitable",
+    "name": {
+      "en": "Inevitable",
+      "ru": "Неизбежность"
+    },
+    "data": {
+      "domain": "valor",
+      "level": 6
+    }
+  },
+  {
+    "slug": "arcana-touched",
+    "name": {
+      "en": "Arcana-Touched",
+      "ru": "Затронутый арканой"
+    },
+    "data": {
+      "domain": "arcana",
+      "level": 7
+    }
+  },
+  {
+    "slug": "cloaking-blast",
+    "name": {
+      "en": "Cloaking Blast",
+      "ru": "Маскирующий взрыв"
+    },
+    "data": {
+      "domain": "arcana",
+      "level": 7
+    }
+  },
+  {
+    "slug": "blade-touched",
+    "name": {
+      "en": "Blade-Touched",
+      "ru": "Затронутый клинком"
+    },
+    "data": {
+      "domain": "blade",
+      "level": 7
+    }
+  },
+  {
+    "slug": "glancing-blow",
+    "name": {
+      "en": "Glancing Blow",
+      "ru": "Скользящий удар"
+    },
+    "data": {
+      "domain": "blade",
+      "level": 7
+    }
+  },
+  {
+    "slug": "cruel-precision",
+    "name": {
+      "en": "Cruel Precision",
+      "ru": "Жестокая точность"
+    },
+    "data": {
+      "domain": "bone",
+      "level": 7
+    }
+  },
+  {
+    "slug": "bone-touched",
+    "name": {
+      "en": "Bone-Touched",
+      "ru": "Затронутый костью"
+    },
+    "data": {
+      "domain": "bone",
+      "level": 7
+    }
+  },
+  {
+    "slug": "codex-touched",
+    "name": {
+      "en": "Codex-Touched",
+      "ru": "Затронутый кодексом"
+    },
+    "data": {
+      "domain": "codex",
+      "level": 7
+    }
+  },
+  {
+    "slug": "book-of-homet",
+    "name": {
+      "en": "Book of Homet",
+      "ru": "Книга гомета"
+    },
+    "data": {
+      "domain": "codex",
+      "level": 7
+    }
+  },
+  {
+    "slug": "endless-charisma",
+    "name": {
+      "en": "Endless Charisma",
+      "ru": "Бесконечное обаяние"
+    },
+    "data": {
+      "domain": "grace",
+      "level": 7
+    }
+  },
+  {
+    "slug": "grace-touched",
+    "name": {
+      "en": "Grace-Touched",
+      "ru": "Затронутый грацией"
+    },
+    "data": {
+      "domain": "grace",
+      "level": 7
+    }
+  },
+  {
+    "slug": "midnight-touched",
+    "name": {
+      "en": "Midnight-Touched",
+      "ru": "Затронутый полночью"
+    },
+    "data": {
+      "domain": "midnight",
+      "level": 7
+    }
+  },
+  {
+    "slug": "vanishing-dodge",
+    "name": {
+      "en": "Vanishing Dodge",
+      "ru": "Исчезающее уклонение"
+    },
+    "data": {
+      "domain": "midnight",
+      "level": 7
+    }
+  },
+  {
+    "slug": "dread-touched",
+    "name": {
+      "en": "Dread-Touched",
+      "ru": "Затронутый ужасом"
+    },
+    "data": {
+      "domain": "dread",
+      "level": 7
+    }
+  },
+  {
+    "slug": "wall-of-hunger",
+    "name": {
+      "en": "Wall of Hunger",
+      "ru": "Стена ненасытности"
+    },
+    "data": {
+      "domain": "dread",
+      "level": 7
+    }
+  },
+  {
+    "slug": "wild-surge",
+    "name": {
+      "en": "Wild Surge",
+      "ru": "Всплеск дикости"
+    },
+    "data": {
+      "domain": "sage",
+      "level": 7
+    }
+  },
+  {
+    "slug": "sage-touched",
+    "name": {
+      "en": "Sage-Touched",
+      "ru": "Затронутый мудростью"
+    },
+    "data": {
+      "domain": "sage",
+      "level": 7
+    }
+  },
+  {
+    "slug": "splendor-touched",
+    "name": {
+      "en": "Splendor-Touched",
+      "ru": "Затронутый величием"
+    },
+    "data": {
+      "domain": "splendor",
+      "level": 7
+    }
+  },
+  {
+    "slug": "healing-strike",
+    "name": {
+      "en": "Healing Strike",
+      "ru": "Исцеляющий удар"
+    },
+    "data": {
+      "domain": "splendor",
+      "level": 7
+    }
+  },
+  {
+    "slug": "valor-touched",
+    "name": {
+      "en": "Valor-Touched",
+      "ru": "Затронутый доблестью"
+    },
+    "data": {
+      "domain": "valor",
+      "level": 7
+    }
+  },
+  {
+    "slug": "shrug-it-off",
+    "name": {
+      "en": "Shrug It Off",
+      "ru": "Стряхнуть с плеч"
+    },
+    "data": {
+      "domain": "valor",
+      "level": 7
+    }
+  },
+  {
+    "slug": "confusing-aura",
+    "name": {
+      "en": "Confusing Aura",
+      "ru": "Запутывающая аура"
+    },
+    "data": {
+      "domain": "arcana",
+      "level": 8
+    }
+  },
+  {
+    "slug": "arcane-reflection",
+    "name": {
+      "en": "Arcane Reflection",
+      "ru": "Мистическое отражение"
+    },
+    "data": {
+      "domain": "arcana",
+      "level": 8
+    }
+  },
+  {
+    "slug": "frenzy",
+    "name": {
+      "en": "Frenzy",
+      "ru": "Бешенство"
+    },
+    "data": {
+      "domain": "blade",
+      "level": 8
+    }
+  },
+  {
+    "slug": "battle-cry",
+    "name": {
+      "en": "Battle Cry",
+      "ru": "Боевой клич"
+    },
+    "data": {
+      "domain": "blade",
+      "level": 8
+    }
+  },
+  {
+    "slug": "wrangle",
+    "name": {
+      "en": "Wrangle",
+      "ru": "Перетасовка"
+    },
+    "data": {
+      "domain": "bone",
+      "level": 8
+    }
+  },
+  {
+    "slug": "breaking-blow",
+    "name": {
+      "en": "Breaking Blow",
+      "ru": "Сокрушительный удар"
+    },
+    "data": {
+      "domain": "bone",
+      "level": 8
+    }
+  },
+  {
+    "slug": "safe-haven",
+    "name": {
+      "en": "Safe Haven",
+      "ru": "Безопасная гавань"
+    },
+    "data": {
+      "domain": "codex",
+      "level": 8
+    }
+  },
+  {
+    "slug": "book-of-vyola",
+    "name": {
+      "en": "Book of Vyola",
+      "ru": "Книга Вайолы"
+    },
+    "data": {
+      "domain": "codex",
+      "level": 8
+    }
+  },
+  {
+    "slug": "astral-projection",
+    "name": {
+      "en": "Astral Projection",
+      "ru": "Астральная проекция"
+    },
+    "data": {
+      "domain": "grace",
+      "level": 8
+    }
+  },
+  {
+    "slug": "mass-enrapture",
+    "name": {
+      "en": "Mass Enrapture",
+      "ru": "Массовое очарование"
+    },
+    "data": {
+      "domain": "grace",
+      "level": 8
+    }
+  },
+  {
+    "slug": "spellcharge",
+    "name": {
+      "en": "Spellcharge",
+      "ru": "Магический резонанс"
+    },
+    "data": {
+      "domain": "midnight",
+      "level": 8
+    }
+  },
+  {
+    "slug": "shadowhunter",
+    "name": {
+      "en": "Shadowhunter",
+      "ru": "Теневой охотник"
+    },
+    "data": {
+      "domain": "midnight",
+      "level": 8
+    }
+  },
+  {
+    "slug": "dark-army",
+    "name": {
+      "en": "Dark Army",
+      "ru": "Армия тьмы"
+    },
+    "data": {
+      "domain": "dread",
+      "level": 8
+    }
+  },
+  {
+    "slug": "eldritch-flesh",
+    "name": {
+      "en": "Eldritch Flesh",
+      "ru": "Плоть древнего"
+    },
+    "data": {
+      "domain": "dread",
+      "level": 8
+    }
+  },
+  {
+    "slug": "rejuvenation-barrier",
+    "name": {
+      "en": "Rejuvenation Barrier",
+      "ru": "Заживляющий барьер"
+    },
+    "data": {
+      "domain": "sage",
+      "level": 8
+    }
+  },
+  {
+    "slug": "forest-sprites",
+    "name": {
+      "en": "Forest Sprites",
+      "ru": "Лесные духи"
+    },
+    "data": {
+      "domain": "sage",
+      "level": 8
+    }
+  },
+  {
+    "slug": "shield-aura",
+    "name": {
+      "en": "Shield Aura",
+      "ru": "Защитная аура"
+    },
+    "data": {
+      "domain": "splendor",
+      "level": 8
+    }
+  },
+  {
+    "slug": "stunning-sunlight",
+    "name": {
+      "en": "Stunning Sunlight",
+      "ru": "Слепящее солнечное сияние"
+    },
+    "data": {
+      "domain": "splendor",
+      "level": 8
+    }
+  },
+  {
+    "slug": "full-surge",
+    "name": {
+      "en": "Full Surge",
+      "ru": "Всплеск сил"
+    },
+    "data": {
+      "domain": "valor",
+      "level": 8
+    }
+  },
+  {
+    "slug": "ground-pound",
+    "name": {
+      "en": "Ground Pound",
+      "ru": "Дрожь земли"
+    },
+    "data": {
+      "domain": "valor",
+      "level": 8
+    }
+  },
+  {
+    "slug": "earthquake",
+    "name": {
+      "en": "Earthquake",
+      "ru": "Землетрясение"
+    },
+    "data": {
+      "domain": "arcana",
+      "level": 9
+    }
+  },
+  {
+    "slug": "sensory-projection",
+    "name": {
+      "en": "Sensory Projection",
+      "ru": "Сенсорная проекция"
+    },
+    "data": {
+      "domain": "arcana",
+      "level": 9
+    }
+  },
+  {
+    "slug": "gore-and-glory",
+    "name": {
+      "en": "Gore and Glory",
+      "ru": "Кровь и слава"
+    },
+    "data": {
+      "domain": "blade",
+      "level": 9
+    }
+  },
+  {
+    "slug": "reapers-strike",
+    "name": {
+      "en": "Reaper's Strike",
+      "ru": "Удар Жнеца"
+    },
+    "data": {
+      "domain": "blade",
+      "level": 9
+    }
+  },
+  {
+    "slug": "on-the-brink",
+    "name": {
+      "en": "On the Brink",
+      "ru": "На грани"
+    },
+    "data": {
+      "domain": "bone",
+      "level": 9
+    }
+  },
+  {
+    "slug": "splintering-strike",
+    "name": {
+      "en": "Splintering Strike",
+      "ru": "Рассекающий удар"
+    },
+    "data": {
+      "domain": "bone",
+      "level": 9
+    }
+  },
+  {
+    "slug": "disintegration-wave",
+    "name": {
+      "en": "Disintegration Wave",
+      "ru": "Волна уничтожения"
+    },
+    "data": {
+      "domain": "codex",
+      "level": 9
+    }
+  },
+  {
+    "slug": "book-of-ronin",
+    "name": {
+      "en": "Book of Ronin",
+      "ru": "Книга Ронина"
+    },
+    "data": {
+      "domain": "codex",
+      "level": 9
+    }
+  },
+  {
+    "slug": "master-of-the-craft",
+    "name": {
+      "en": "Master of the Craft",
+      "ru": "Мастер своего дела"
+    },
+    "data": {
+      "domain": "grace",
+      "level": 9
+    }
+  },
+  {
+    "slug": "copycat",
+    "name": {
+      "en": "Copycat",
+      "ru": "Подражатель"
+    },
+    "data": {
+      "domain": "grace",
+      "level": 9
+    }
+  },
+  {
+    "slug": "night-terror",
+    "name": {
+      "en": "Night Terror",
+      "ru": "Ночной Ужас"
+    },
+    "data": {
+      "domain": "midnight",
+      "level": 9
+    }
+  },
+  {
+    "slug": "twilight-toll",
+    "name": {
+      "en": "Twilight Toll",
+      "ru": "Сумеречный сбор"
+    },
+    "data": {
+      "domain": "midnight",
+      "level": 9
+    }
+  },
+  {
+    "slug": "savor-the-anguish",
+    "name": {
+      "en": "Savor the Anguish",
+      "ru": "Наслаждение муками"
+    },
+    "data": {
+      "domain": "dread",
+      "level": 9
+    }
+  },
+  {
+    "slug": "damnation",
+    "name": {
+      "en": "Damnation",
+      "ru": "Ужасная кара"
+    },
+    "data": {
+      "domain": "dread",
+      "level": 9
+    }
+  },
+  {
+    "slug": "plant-dominion",
+    "name": {
+      "en": "Plant Dominion",
+      "ru": "Власть над растениями"
+    },
+    "data": {
+      "domain": "sage",
+      "level": 9
+    }
+  },
+  {
+    "slug": "fane-of-the-wilds",
+    "name": {
+      "en": "Fane of the Wilds",
+      "ru": "Храм Дикой Природы"
+    },
+    "data": {
+      "domain": "sage",
+      "level": 9
+    }
+  },
+  {
+    "slug": "overwhelming-aura",
+    "name": {
+      "en": "Overwhelming Aura",
+      "ru": "Переполняющая аура"
+    },
+    "data": {
+      "domain": "splendor",
+      "level": 9
+    }
+  },
+  {
+    "slug": "salvation-beam",
+    "name": {
+      "en": "Salvation Beam",
+      "ru": "Спасительный Луч"
+    },
+    "data": {
+      "domain": "splendor",
+      "level": 9
+    }
+  },
+  {
+    "slug": "lead-by-example",
+    "name": {
+      "en": "Lead by Example",
+      "ru": "Быть примером"
+    },
+    "data": {
+      "domain": "valor",
+      "level": 9
+    }
+  },
+  {
+    "slug": "hold-the-line",
+    "name": {
+      "en": "Hold the Line",
+      "ru": "Держать строй"
+    },
+    "data": {
+      "domain": "valor",
+      "level": 9
+    }
+  },
+  {
+    "slug": "adjust-reality",
+    "name": {
+      "en": "Adjust Reality",
+      "ru": "Изменение реальности"
+    },
+    "data": {
+      "domain": "arcana",
+      "level": 10
+    }
+  },
+  {
+    "slug": "falling-sky",
+    "name": {
+      "en": "Falling Sky",
+      "ru": "Падающее небо"
+    },
+    "data": {
+      "domain": "arcana",
+      "level": 10
+    }
+  },
+  {
+    "slug": "battle-monster",
+    "name": {
+      "en": "Battle Monster",
+      "ru": "Монстр сражений"
+    },
+    "data": {
+      "domain": "blade",
+      "level": 10
+    }
+  },
+  {
+    "slug": "onslaught",
+    "name": {
+      "en": "Onslaught",
+      "ru": "Натиск"
+    },
+    "data": {
+      "domain": "blade",
+      "level": 10
+    }
+  },
+  {
+    "slug": "swift-step",
+    "name": {
+      "en": "Swift Step",
+      "ru": "Быстрый шаг"
+    },
+    "data": {
+      "domain": "bone",
+      "level": 10
+    }
+  },
+  {
+    "slug": "deathrun",
+    "name": {
+      "en": "Deathrun",
+      "ru": "Смертельный рывок"
+    },
+    "data": {
+      "domain": "bone",
+      "level": 10
+    }
+  },
+  {
+    "slug": "book-of-yarrow",
+    "name": {
+      "en": "Book of Yarrow",
+      "ru": "Книга Йаррова"
+    },
+    "data": {
+      "domain": "codex",
+      "level": 10
+    }
+  },
+  {
+    "slug": "transcendent-union",
+    "name": {
+      "en": "Transcendent Union",
+      "ru": "Союз душ"
+    },
+    "data": {
+      "domain": "codex",
+      "level": 10
+    }
+  },
+  {
+    "slug": "notorious",
+    "name": {
+      "en": "Notorious",
+      "ru": "Дурная слава"
+    },
+    "data": {
+      "domain": "grace",
+      "level": 10
+    }
+  },
+  {
+    "slug": "encore",
+    "name": {
+      "en": "Encore",
+      "ru": "На бис"
+    },
+    "data": {
+      "domain": "grace",
+      "level": 10
+    }
+  },
+  {
+    "slug": "eclipse",
+    "name": {
+      "en": "Eclipse",
+      "ru": "Затмение"
+    },
+    "data": {
+      "domain": "midnight",
+      "level": 10
+    }
+  },
+  {
+    "slug": "specter_of_the_dark",
+    "name": {
+      "en": "Specter of the Dark",
+      "ru": "Призрак Тьмы"
+    },
+    "data": {
+      "domain": "midnight",
+      "level": 10
+    }
+  },
+  {
+    "slug": "avatar_of_malice",
+    "name": {
+      "en": "Avatar of Terror",
+      "ru": "Аватар страха"
+    },
+    "data": {
+      "domain": "dread",
+      "level": 10
+    }
+  },
+  {
+    "slug": "invoke_torment",
+    "name": {
+      "en": "Invoke Torment",
+      "ru": "Призыв терзаний"
+    },
+    "data": {
+      "domain": "dread",
+      "level": 10
+    }
+  },
+  {
+    "slug": "tempest",
+    "name": {
+      "en": "Tempest",
+      "ru": "Буря"
+    },
+    "data": {
+      "domain": "sage",
+      "level": 10
+    }
+  },
+  {
+    "slug": "force_of_nature",
+    "name": {
+      "en": "Force of Nature",
+      "ru": "Сила природы"
+    },
+    "data": {
+      "domain": "sage",
+      "level": 10
+    }
+  },
+  {
+    "slug": "resurrection",
+    "name": {
+      "en": "Resurrection",
+      "ru": "Воскрешение"
+    },
+    "data": {
+      "domain": "splendor",
+      "level": 10
+    }
+  },
+  {
+    "slug": "invigoration",
+    "name": {
+      "en": "Invigoration",
+      "ru": "Ободрение"
+    },
+    "data": {
+      "domain": "splendor",
+      "level": 10
+    }
+  },
+  {
+    "slug": "unbreakable",
+    "name": {
+      "en": "Unbreakable",
+      "ru": "Несломленный"
+    },
+    "data": {
+      "domain": "valor",
+      "level": 10
+    }
+  },
+  {
+    "slug": "unyielding_armor",
+    "name": {
+      "en": "Unyielding Armor",
+      "ru": "Неуязвимая броня"
+    },
+    "data": {
+      "domain": "valor",
+      "level": 10
+    }
+  }
+]
