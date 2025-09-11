@@ -2,7 +2,7 @@
 
 require 'csv'
 
-spells = CSV.parse(File.read(Rails.root.join('db/data/dnd2024_spells.csv')), headers: false, col_sep: ';')
+spells = CSV.parse(File.read(Rails.root.join('db/data/dnd2024/spells.csv')), headers: false, col_sep: ';')
 spells.map! do |spell|
   {
     type: 'Dnd2024::Spell',
@@ -22,7 +22,7 @@ spells.map! do |spell|
 end
 Dnd2024::Spell.upsert_all(spells)
 
-spells = CSV.parse(File.read(Rails.root.join('db/data/dnd5_spells.csv')), headers: false, col_sep: ';')
+spells = CSV.parse(File.read(Rails.root.join('db/data/dnd5/spells.csv')), headers: false, col_sep: ';')
 spells.map! do |spell|
   {
     type: 'Dnd5::Spell',
@@ -42,7 +42,7 @@ spells.map! do |spell|
 end
 Dnd5::Spell.upsert_all(spells)
 
-items = CSV.parse(File.read(Rails.root.join('db/data/dnd5_items.csv')), headers: false, col_sep: ';')
+items = CSV.parse(File.read(Rails.root.join('db/data/dnd5/items.csv')), headers: false, col_sep: ';')
 items.map! do |item|
   {
     kind: item[0],
@@ -59,7 +59,7 @@ items.map! do |item|
 end
 Dnd5::Item.upsert_all(items)
 
-items = CSV.parse(File.read(Rails.root.join('db/data/daggerheart_items.csv')), headers: false, col_sep: ';')
+items = CSV.parse(File.read(Rails.root.join('db/data/daggerheart/items.csv')), headers: false, col_sep: ';')
 items.map! do |item|
   {
     kind: item[0],
@@ -90,21 +90,21 @@ Daggerheart::Item.upsert_all(items)
 # досягаемость - reach
 # перезарядка - reload
 
-Dir[File.join(Rails.root.join('db/data/dnd5_character_feats/*.json'))].each do |filename|
+Dir[File.join(Rails.root.join('db/data/dnd5/features/*.json'))].each do |filename|
   puts "seeding - #{filename}"
   JSON.parse(File.read(filename)).each do |feat|
     ::Dnd5::Feat.create!(feat)
   end
 end
 
-Dir[File.join(Rails.root.join('db/data/dnd2024_character_feats/*.json'))].each do |filename|
+Dir[File.join(Rails.root.join('db/data/dnd2024/features/*.json'))].each do |filename|
   puts "seeding - #{filename}"
   JSON.parse(File.read(filename)).each do |feat|
     ::Dnd2024::Feat.create!(feat)
   end
 end
 
-Dir[File.join(Rails.root.join('db/data/daggerheart_feats/*.json'))].each do |filename|
+Dir[File.join(Rails.root.join('db/data/daggerheart/feats/*.json'))].each do |filename|
   puts "seeding - #{filename}"
   JSON.parse(File.read(filename)).each do |feat|
     ::Daggerheart::Feat.create!(feat)
@@ -136,55 +136,31 @@ end
 #   file.write(beautified_json_string)
 # end
 
-weapons_file = File.read(Rails.root.join('db/data/weapons.json'))
+weapons_file = File.read(Rails.root.join('db/data/dnd5/weapons.json'))
 weapons = JSON.parse(weapons_file)
 Dnd5::Item.upsert_all(weapons) if weapons.any?
 
-armor_file = File.read(Rails.root.join('db/data/armor.json'))
+armor_file = File.read(Rails.root.join('db/data/dnd5/armor.json'))
 armor = JSON.parse(armor_file)
 Dnd5::Item.upsert_all(armor) if armor.any?
 
-armor_file = File.read(Rails.root.join('db/data/daggerheart_armor.json'))
+armor_file = File.read(Rails.root.join('db/data/daggerheart/armor.json'))
 armor = JSON.parse(armor_file)
 Daggerheart::Item.upsert_all(armor) if armor.any?
 
-armor_file = File.read(Rails.root.join('db/data/daggerheart_t2_armor.json'))
-armor = JSON.parse(armor_file)
-Daggerheart::Item.upsert_all(armor) if armor.any?
-
-armor_file = File.read(Rails.root.join('db/data/daggerheart_armor_t3-4.json'))
-armor = JSON.parse(armor_file)
-Daggerheart::Item.upsert_all(armor) if armor.any?
-
-weapons_file = File.read(Rails.root.join('db/data/daggerheart_weapons.json'))
+weapons_file = File.read(Rails.root.join('db/data/daggerheart/weapons.json'))
 weapons = JSON.parse(weapons_file)
 Daggerheart::Item.upsert_all(weapons) if weapons.any?
 
-weapons_file = File.read(Rails.root.join('db/data/daggerheart_weapon_t2.json'))
-weapons = JSON.parse(weapons_file)
-Daggerheart::Item.upsert_all(weapons) if weapons.any?
-
-weapons_file = File.read(Rails.root.join('db/data/daggerheart_weapon_t3.json'))
-weapons = JSON.parse(weapons_file)
-Daggerheart::Item.upsert_all(weapons) if weapons.any?
-
-weapons_file = File.read(Rails.root.join('db/data/daggerheart_weapon_t4.json'))
-weapons = JSON.parse(weapons_file)
-Daggerheart::Item.upsert_all(weapons) if weapons.any?
-
-spells_file = File.read(Rails.root.join('db/data/daggerheart_spells.json'))
+spells_file = File.read(Rails.root.join('db/data/daggerheart/spells.json'))
 spells = JSON.parse(spells_file)
 Daggerheart::Spell.upsert_all(spells) if spells.any?
 
-spells_file = File.read(Rails.root.join('db/data/daggerheart_additional_spells.json'))
-spells = JSON.parse(spells_file)
-Daggerheart::Spell.upsert_all(spells) if spells.any?
-
-armor_file = File.read(Rails.root.join('db/data/pathfinder2_armor.json'))
+armor_file = File.read(Rails.root.join('db/data/pathfinder2/armor.json'))
 armor = JSON.parse(armor_file)
 Pathfinder2::Item.upsert_all(armor) if armor.any?
 
-weapons_file = File.read(Rails.root.join('db/data/pathfinder2_weapons.json'))
+weapons_file = File.read(Rails.root.join('db/data/pathfinder2/weapons.json'))
 weapons = JSON.parse(weapons_file)
 Pathfinder2::Item.upsert_all(weapons) if weapons.any?
 

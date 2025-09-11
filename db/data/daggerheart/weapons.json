@@ -1,0 +1,3777 @@
+[
+  {
+    "slug": "broadsword",
+    "kind": "primary weapon",
+    "name": { "en": "Broadsword", "ru": "Палаш" },
+    "info": {
+      "tier": 1,
+      "trait": "agi",
+      "range": "melee",
+      "damage": "d8",
+      "damage_bonus": 0,
+      "damage_type": "physical",
+      "burden": 1,
+      "bonuses": { "attack": 1 },
+      "features": []
+    }
+  },
+  {
+    "slug": "longsword",
+    "kind": "primary weapon",
+    "name": { "en": "Longsword", "ru": "Длинный меч" },
+    "info": {
+      "tier": 1,
+      "trait": "agi",
+      "range": "melee",
+      "damage": "d10",
+      "damage_bonus": 3,
+      "damage_type": "physical",
+      "burden": 2,
+      "bonuses": {},
+      "features": []
+    }
+  },
+  {
+    "slug": "battleaxe",
+    "kind": "primary weapon",
+    "name": { "en": "Battleaxe", "ru": "Боевой топор" },
+    "info": {
+      "tier": 1,
+      "trait": "str",
+      "range": "melee",
+      "damage": "d10",
+      "damage_bonus": 3,
+      "damage_type": "physical",
+      "burden": 2,
+      "bonuses": {},
+      "features": []
+    }
+  },
+  {
+    "slug": "greatsword",
+    "kind": "primary weapon",
+    "name": { "en": "Greatsword", "ru": "Двуручный меч" },
+    "info": {
+      "tier": 1,
+      "trait": "str",
+      "range": "melee",
+      "damage": "d10",
+      "damage_bonus": 3,
+      "damage_type": "physical",
+      "burden": 2,
+      "bonuses": { "evasion": -1 },
+      "features": ["On a successful attack, roll an additional damage die and discard the lowest result."]
+    }
+  },
+  {
+    "slug": "mace",
+    "kind": "primary weapon",
+    "name": { "en": "Mace", "ru": "Булава" },
+    "info": {
+      "tier": 1,
+      "trait": "str",
+      "range": "melee",
+      "damage": "d8",
+      "damage_bonus": 1,
+      "damage_type": "physical",
+      "burden": 1,
+      "bonuses": {},
+      "features": []
+    }
+  },
+  {
+    "slug": "warhammer",
+    "kind": "primary weapon",
+    "name": { "en": "Warhammer", "ru": "Боевой молот" },
+    "info": {
+      "tier": 1,
+      "trait": "str",
+      "range": "melee",
+      "damage": "d12",
+      "damage_bonus": 3,
+      "damage_type": "physical",
+      "burden": 2,
+      "bonuses": { "evasion": -1 },
+      "features": []
+    }
+  },
+  {
+    "slug": "dagger",
+    "kind": "primary weapon",
+    "name": { "en": "Dagger", "ru": "Кинжал" },
+    "info": {
+      "tier": 1,
+      "trait": "fin",
+      "range": "melee",
+      "damage": "d8",
+      "damage_bonus": 1,
+      "damage_type": "physical",
+      "burden": 1,
+      "bonuses": {},
+      "features": []
+    }
+  },
+  {
+    "slug": "quarterstaff",
+    "kind": "primary weapon",
+    "name": { "en": "Quarterstaff", "ru": "Боевой посох" },
+    "info": {
+      "tier": 1,
+      "trait": "ins",
+      "range": "melee",
+      "damage": "d10",
+      "damage_bonus": 3,
+      "damage_type": "physical",
+      "burden": 2,
+      "bonuses": {},
+      "features": []
+    }
+  },
+  {
+    "slug": "cutlass",
+    "kind": "primary weapon",
+    "name": { "en": "Cutlass", "ru": "Сабля" },
+    "info": {
+      "tier": 1,
+      "trait": "pre",
+      "range": "melee",
+      "damage": "d8",
+      "damage_bonus": 1,
+      "damage_type": "physical",
+      "burden": 1,
+      "bonuses": {},
+      "features": []
+    }
+  },
+  {
+    "slug": "rapier",
+    "kind": "primary weapon",
+    "name": { "en": "Rapier", "ru": "Рапира" },
+    "info": {
+      "tier": 1,
+      "trait": "pre",
+      "range": "melee",
+      "damage": "d8",
+      "damage_bonus": 0,
+      "damage_type": "physical",
+      "burden": 1,
+      "bonuses": {},
+      "features": ["When you make an attack, you can mark a Stress to target another creature within range."]
+    }
+  },
+  {
+    "slug": "halberd",
+    "kind": "primary weapon",
+    "name": { "en": "Halberd", "ru": "Алебарда" },
+    "info": {
+      "tier": 1,
+      "trait": "str",
+      "range": "very close",
+      "damage": "d10",
+      "damage_bonus": 2,
+      "damage_type": "physical",
+      "burden": 2,
+      "bonuses": { "traits": { "fin": -1 } },
+      "features": []
+    }
+  },
+  {
+    "slug": "spear",
+    "kind": "primary weapon",
+    "name": { "en": "Spear", "ru": "Копьё" },
+    "info": {
+      "tier": 1,
+      "trait": "fin",
+      "range": "very close",
+      "damage": "d8",
+      "damage_bonus": 3,
+      "damage_type": "physical",
+      "burden": 2,
+      "bonuses": { "traits": { "fin": -1 } },
+      "features": []
+    }
+  },
+  {
+    "slug": "shortbow",
+    "kind": "primary weapon",
+    "name": { "en": "Shortbow", "ru": "Короткий лук" },
+    "info": {
+      "tier": 1,
+      "trait": "agi",
+      "range": "far",
+      "damage": "d6",
+      "damage_bonus": 3,
+      "damage_type": "physical",
+      "burden": 2,
+      "bonuses": {},
+      "features": []
+    }
+  },
+  {
+    "slug": "crossbow",
+    "kind": "primary weapon",
+    "name": { "en": "Crossbow", "ru": "Арбалет" },
+    "info": {
+      "tier": 1,
+      "trait": "fin",
+      "range": "far",
+      "damage": "d6",
+      "damage_bonus": 1,
+      "damage_type": "physical",
+      "burden": 1,
+      "bonuses": {},
+      "features": []
+    }
+  },
+  {
+    "slug": "longbow",
+    "kind": "primary weapon",
+    "name": { "en": "Longbow", "ru": "Длинный лук" },
+    "info": {
+      "tier": 1,
+      "trait": "agi",
+      "range": "very far",
+      "damage": "d8",
+      "damage_bonus": 3,
+      "damage_type": "physical",
+      "burden": 2,
+      "bonuses": { "traits": { "fin": -1 } },
+      "features": []
+    }
+  },
+  {
+    "slug": "arcane_gauntlets",
+    "kind": "primary weapon",
+    "name": { "en": "Arcane Gauntlets", "ru": "Магические наручи" },
+    "info": {
+      "tier": 1,
+      "trait": "str",
+      "range": "melee",
+      "damage": "d10",
+      "damage_bonus": 3,
+      "damage_type": "magic",
+      "burden": 2,
+      "bonuses": {},
+      "features": []
+    }
+  },
+  {
+    "slug": "hallowed_axe",
+    "kind": "primary weapon",
+    "name": { "en": "Hallowed Axe", "ru": "Освященный топор" },
+    "info": {
+      "tier": 1,
+      "trait": "str",
+      "range": "melee",
+      "damage": "d8",
+      "damage_bonus": 1,
+      "damage_type": "magic",
+      "burden": 1,
+      "bonuses": {},
+      "features": []
+    }
+  },
+  {
+    "slug": "glowing_rings",
+    "kind": "primary weapon",
+    "name": { "en": "Glowing Rings", "ru": "Светящиеся кольца" },
+    "info": {
+      "tier": 1,
+      "trait": "agi",
+      "range": "very close",
+      "damage": "d10",
+      "damage_bonus": 1,
+      "damage_type": "magic",
+      "burden": 2,
+      "bonuses": {},
+      "features": []
+    }
+  },
+  {
+    "slug": "hand_runes",
+    "kind": "primary weapon",
+    "name": { "en": "Hand Runes", "ru": "Наручные руны" },
+    "info": {
+      "tier": 1,
+      "trait": "ins",
+      "range": "very close",
+      "damage": "d10",
+      "damage_bonus": 0,
+      "damage_type": "magic",
+      "burden": 1,
+      "bonuses": {},
+      "features": []
+    }
+  },
+  {
+    "slug": "returning_blade",
+    "kind": "primary weapon",
+    "name": { "en": "Returning Blade", "ru": "Возвращающийся клинок" },
+    "info": {
+      "tier": 1,
+      "trait": "fin",
+      "range": "close",
+      "damage": "d8",
+      "damage_bonus": 0,
+      "damage_type": "magic",
+      "burden": 1,
+      "bonuses": {},
+      "features": ["When this weapon is thrown within its range, it appears in your hand immediately after the attack."]
+    }
+  },
+  {
+    "slug": "shortstaff",
+    "kind": "primary weapon",
+    "name": { "en": "Shortstaff", "ru": "Короткий посох" },
+    "info": {
+      "tier": 1,
+      "trait": "ins",
+      "range": "close",
+      "damage": "d8",
+      "damage_bonus": 1,
+      "damage_type": "magic",
+      "burden": 1,
+      "bonuses": {},
+      "features": []
+    }
+  },
+  {
+    "slug": "dualstaff",
+    "kind": "primary weapon",
+    "name": { "en": "Dualstaff", "ru": "Двойной посох" },
+    "info": {
+      "tier": 1,
+      "trait": "ins",
+      "range": "far",
+      "damage": "d6",
+      "damage_bonus": 3,
+      "damage_type": "magic",
+      "burden": 2,
+      "bonuses": {},
+      "features": []
+    }
+  },
+  {
+    "slug": "scepter",
+    "kind": "primary weapon",
+    "name": { "en": "Scepter", "ru": "Скипетр" },
+    "info": {
+      "tier": 1,
+      "trait": "pre",
+      "range": "far",
+      "damage": "d6",
+      "damage_bonus": 0,
+      "damage_type": "magic",
+      "burden": 2,
+      "bonuses": {},
+      "features": [],
+      "versatile": {
+        "trait": "pre",
+        "range": "melee",
+        "damage": "d8",
+        "damage_bonus": 0
+      }
+    }
+  },
+  {
+    "slug": "wand",
+    "kind": "primary weapon",
+    "name": { "en": "Wand", "ru": "Волшебная палочка" },
+    "info": {
+      "tier": 1,
+      "trait": "know",
+      "range": "far",
+      "damage": "d6",
+      "damage_bonus": 1,
+      "damage_type": "magic",
+      "burden": 1,
+      "bonuses": {},
+      "features": []
+    }
+  },
+  {
+    "slug": "greatstaff",
+    "kind": "primary weapon",
+    "name": { "en": "Greatstaff", "ru": "Двуручный посох" },
+    "info": {
+      "tier": 1,
+      "trait": "know",
+      "range": "very far",
+      "damage": "d6",
+      "damage_bonus": 0,
+      "damage_type": "magic",
+      "burden": 2,
+      "bonuses": {},
+      "features": ["On a successful attack, roll an additional damage die and discard the lowest result."]
+    }
+  },
+  {
+    "slug": "shortsword",
+    "kind": "secondary weapon",
+    "name": { "en": "Shortsword", "ru": "Короткий меч" },
+    "info": {
+      "tier": 1,
+      "trait": "agi",
+      "range": "melee",
+      "damage": "d8",
+      "damage_bonus": 0,
+      "damage_type": "physical",
+      "burden": 1,
+      "bonuses": {},
+      "features": ["+2 to primary weapon damage to targets within Melee range."]
+    }
+  },
+  {
+    "slug": "round_shield",
+    "kind": "secondary weapon",
+    "name": { "en": "Round Shield", "ru": "Круглый щит" },
+    "info": {
+      "tier": 1,
+      "trait": "str",
+      "range": "melee",
+      "damage": "d4",
+      "damage_bonus": 0,
+      "damage_type": "physical",
+      "burden": 1,
+      "bonuses": { "armor_score": 1 },
+      "features": []
+    }
+  },
+  {
+    "slug": "tower_shield",
+    "kind": "secondary weapon",
+    "name": { "en": "Tower Shield", "ru": "Башенный щит" },
+    "info": {
+      "tier": 1,
+      "trait": "str",
+      "range": "melee",
+      "damage": "d8",
+      "damage_bonus": 0,
+      "damage_type": "physical",
+      "burden": 1,
+      "bonuses": { "armor_score": 2, "evasion": -1 },
+      "features": []
+    }
+  },
+  {
+    "slug": "small_dagger",
+    "kind": "secondary weapon",
+    "name": { "en": "Small Dagger", "ru": "Маленький кинжал" },
+    "info": {
+      "tier": 1,
+      "trait": "fin",
+      "range": "melee",
+      "damage": "d8",
+      "damage_bonus": 0,
+      "damage_type": "physical",
+      "burden": 1,
+      "bonuses": {},
+      "features": ["+2 to primary weapon damage to targets within Melee range."]
+    }
+  },
+  {
+    "slug": "whip",
+    "kind": "secondary weapon",
+    "name": { "en": "Whip", "ru": "Кнут" },
+    "info": {
+      "tier": 1,
+      "trait": "pre",
+      "range": "very close",
+      "damage": "d6",
+      "damage_bonus": 0,
+      "damage_type": "physical",
+      "burden": 1,
+      "bonuses": {},
+      "features": ["Mark a Stress to crack the whip and force all adversaries within Melee range back to Close range."]
+    }
+  },
+  {
+    "slug": "grappler",
+    "kind": "secondary weapon",
+    "name": { "en": "Grappler", "ru": "Гарпун" },
+    "info": {
+      "tier": 1,
+      "trait": "fin",
+      "range": "close",
+      "damage": "d6",
+      "damage_bonus": 0,
+      "damage_type": "physical",
+      "burden": 1,
+      "bonuses": {},
+      "features": ["On a successful attack, you can pull the target into Melee range."]
+    }
+  },
+  {
+    "slug": "hand_crossbow",
+    "kind": "secondary weapon",
+    "name": { "en": "Hand Crossbow", "ru": "Ручной арбалет" },
+    "info": {
+      "tier": 1,
+      "trait": "fin",
+      "range": "far",
+      "damage": "d6",
+      "damage_bonus": 1,
+      "damage_type": "physical",
+      "burden": 1,
+      "bonuses": {},
+      "features": []
+    }
+  },
+  {
+    "slug": "ego-blade",
+    "kind": "primary weapon",
+    "name": {
+      "en": "Ego blade",
+      "ru": "Клинок Эго"
+    },
+    "info": {
+      "tier": 2,
+      "trait": "agi",
+      "range": "melee",
+      "damage": "d12",
+      "damage_bonus": 4,
+      "damage_type": "magic",
+      "burden": 1,
+      "features": [
+        {
+          "en": "You must have a Presence of 0 or lower to use this weapon.",
+          "ru": "Для использования этого оружия необходимо иметь Влияние 0 или ниже."
+        }
+      ]
+    }
+  },
+  {
+    "slug": "casting-sword",
+    "kind": "primary weapon",
+    "name": {
+      "en": "Casting sword",
+      "ru": "Колдующий меч"
+    },
+    "info": {
+      "tier": 2,
+      "trait": "str",
+      "range": "melee",
+      "damage": "d10",
+      "damage_bonus": 4,
+      "damage_type": "magic",
+      "burden": 2,
+      "versatile": {
+        "trait": "know",
+        "range": "far",
+        "damage": "d6",
+        "damage_bonus": 3
+      }
+    }
+  },
+  {
+    "slug": "yutari-bloodbow",
+    "kind": "primary weapon",
+    "name": {
+      "en": "Yutari bloodbow",
+      "ru": "Кровавый лук Ютари"
+    },
+    "info": {
+      "tier": 2,
+      "trait": "fin",
+      "range": "far",
+      "damage": "d6",
+      "damage_bonus": 4,
+      "damage_type": "magic",
+      "burden": 2,
+      "features": [
+        {
+          "en": "When you roll the maximum value on a damage die, roll an additional damage die.",
+          "ru": "Когда вы выбрасываете максимальное значение на кости урона, бросьте дополнительную кость урона."
+        }
+      ]
+    }
+  },
+  {
+    "slug": "elder-bow",
+    "kind": "primary weapon",
+    "name": {
+      "en": "Elder bow",
+      "ru": "Лук Древности"
+    },
+    "info": {
+      "tier": 2,
+      "trait": "ins",
+      "range": "far",
+      "damage": "d6",
+      "damage_bonus": 4,
+      "damage_type": "magic",
+      "burden": 2,
+      "features": [
+        {
+          "en": "On a successful attack, roll an additional damage die and discard the lowest result.",
+          "ru": "При успешной атаке бросьте дополнительную кость урона и отбросьте результат с наименьшим значением."
+        }
+      ]
+    }
+  },
+  {
+    "slug": "hammer-of-exota",
+    "kind": "primary weapon",
+    "name": {
+      "en": "Hammer of Exota",
+      "ru": "Молот Экзоты"
+    },
+    "info": {
+      "tier": 2,
+      "trait": "ins",
+      "range": "melee",
+      "damage": "d8",
+      "damage_bonus": 6,
+      "damage_type": "magic",
+      "burden": 2,
+      "features": [
+        {
+          "en": "On a successful attack against a target within Melee range, all other adversaries within Very Close range must succeed on a reaction roll (14) or take half damage.",
+          "ru": "При успешной атаке по цели Вплотную все остальные противники в пределах Близкой дистанции должны успешно выполнить Бросок Реакции (14) или получить половину урона."
+        }
+      ]
+    }
+  },
+  {
+    "slug": "wand-of-enthrallment",
+    "kind": "primary weapon",
+    "name": {
+      "en": "Wand of enthrallment",
+      "ru": "Палочка очарования"
+    },
+    "info": {
+      "tier": 2,
+      "trait": "pre",
+      "range": "far",
+      "damage": "d6",
+      "damage_bonus": 4,
+      "damage_type": "magic",
+      "burden": 1,
+      "features": [
+        {
+          "en": "Before you make a Presence Roll, you can mark a Stress to gain a +2 bonus to the result.",
+          "ru": "Перед тем как совершить бросок Влияния, вы можете отметить Стресс, чтобы получить бонус +2 к результату."
+        }
+      ]
+    }
+  },
+  {
+    "slug": "devouring-dagger",
+    "kind": "primary weapon",
+    "name": {
+      "en": "Devouring dagger",
+      "ru": "Пожирающий кинжал"
+    },
+    "info": {
+      "tier": 2,
+      "trait": "fin",
+      "range": "melee",
+      "damage": "d8",
+      "damage_bonus": 4,
+      "damage_type": "magic",
+      "burden": 1,
+      "features": [
+        {
+          "en": "On a successful attack, the target must mark a Stress.",
+          "ru": "При успешной атаке по цели, она должна отметить Стресс."
+        }
+      ]
+    }
+  },
+  {
+    "slug": "keepers-staff",
+    "kind": "primary weapon",
+    "name": {
+      "en": "Keepers staff",
+      "ru": "Посох Хранителя"
+    },
+    "info": {
+      "tier": 2,
+      "trait": "know",
+      "range": "far",
+      "damage": "d6",
+      "damage_bonus": 4,
+      "damage_type": "magic",
+      "burden": 2,
+      "bonuses": { "attack": 1 }
+    }
+  },
+  {
+    "slug": "scepter-of-elias",
+    "kind": "primary weapon",
+    "name": {
+      "en": "Scepter of Elias",
+      "ru": "Скипетр Элиаса"
+    },
+    "info": {
+      "tier": 2,
+      "trait": "pre",
+      "range": "far",
+      "damage": "d6",
+      "damage_bonus": 3,
+      "damage_type": "magic",
+      "burden": 1,
+      "features": [
+        {
+          "en": "On a successful attack, roll a d4. On a result of 4, clear a Stress.",
+          "ru": "При успешной атаке бросьте d4. При результате в 4 очистите Стресс."
+        }
+      ]
+    }
+  },
+  {
+    "slug": "improved-wand",
+    "kind": "primary weapon",
+    "name": {
+      "en": "Improved wand",
+      "ru": "Улучшенная волшебная палочка"
+    },
+    "info": {
+      "tier": 2,
+      "trait": "know",
+      "range": "far",
+      "damage": "d6",
+      "damage_bonus": 4,
+      "damage_type": "magic",
+      "burden": 1
+    }
+  },
+  {
+    "slug": "improved-arcane-gauntlets",
+    "kind": "primary weapon",
+    "name": {
+      "en": "Improved arcane gauntlets",
+      "ru": "Улучшенные магические наручи"
+    },
+    "info": {
+      "tier": 2,
+      "trait": "str",
+      "range": "melee",
+      "damage": "d10",
+      "damage_bonus": 6,
+      "damage_type": "magic",
+      "burden": 2
+    }
+  },
+  {
+    "slug": "improved-hand-runes",
+    "kind": "primary weapon",
+    "name": {
+      "en": "Improved hand runes",
+      "ru": "Улучшенные наручные руны"
+    },
+    "info": {
+      "tier": 2,
+      "trait": "ins",
+      "range": "very close",
+      "damage": "d10",
+      "damage_bonus": 3,
+      "damage_type": "magic",
+      "burden": 1
+    }
+  },
+  {
+    "slug": "improved-glowing-rings",
+    "kind": "primary weapon",
+    "name": {
+      "en": "Improved glowing rings",
+      "ru": "Улучшенные сияющие кольца"
+    },
+    "info": {
+      "tier": 2,
+      "trait": "agi",
+      "range": "very close",
+      "damage": "d10",
+      "damage_bonus": 5,
+      "damage_type": "magic",
+      "burden": 2
+    }
+  },
+  {
+    "slug": "improved-returning-blade",
+    "kind": "primary weapon",
+    "name": {
+      "en": "Improved returning blade",
+      "ru": "Улучшенный возвращающийся клинок"
+    },
+    "info": {
+      "tier": 2,
+      "trait": "fin",
+      "range": "close",
+      "damage": "d8",
+      "damage_bonus": 3,
+      "damage_type": "magic",
+      "burden": 1,
+      "features": [
+        {
+          "en": "When this weapon is thrown within its range, it appears in your hand immediately after the attack.",
+          "ru": "Когда это оружие брошено в пределах дистанции, оно появляется в вашей руке сразу после атаки."
+        }
+      ]
+    }
+  },
+  {
+    "slug": "improved-dualstaff",
+    "kind": "primary weapon",
+    "name": {
+      "en": "Improved dualstaff",
+      "ru": "Улучшенный двойной посох"
+    },
+    "info": {
+      "tier": 2,
+      "trait": "ins",
+      "range": "far",
+      "damage": "d6",
+      "damage_bonus": 6,
+      "damage_type": "magic",
+      "burden": 2
+    }
+  },
+  {
+    "slug": "improved-greatstaff",
+    "kind": "primary weapon",
+    "name": {
+      "en": "Improved greatstaff",
+      "ru": "Улучшенный двуручный посох"
+    },
+    "info": {
+      "tier": 2,
+      "trait": "know",
+      "range": "veryfar",
+      "damage": "d6",
+      "damage_bonus": 3,
+      "damage_type": "magic",
+      "burden": 2,
+      "features": [
+        {
+          "en": "On a successful attack, roll an additional damage die and discard the lowest result.",
+          "ru": "При успешной атаке бросьте дополнительную кость урона и отбросьте результат с наименьшим значением."
+        }
+      ]
+    }
+  },
+  {
+    "slug": "improved-shortstaff",
+    "kind": "primary weapon",
+    "name": {
+      "en": "Improved shortstaff",
+      "ru": "Улучшенный короткий посох"
+    },
+    "info": {
+      "tier": 2,
+      "trait": "ins",
+      "range": "close",
+      "damage": "d8",
+      "damage_bonus": 4,
+      "damage_type": "magic",
+      "burden": 1
+    }
+  },
+  {
+    "slug": "improved-hallowed-axe",
+    "kind": "primary weapon",
+    "name": {
+      "en": "Improved hallowed axe",
+      "ru": "Улучшенный священный топор"
+    },
+    "info": {
+      "tier": 2,
+      "trait": "str",
+      "range": "melee",
+      "damage": "d8",
+      "damage_bonus": 4,
+      "damage_type": "magic",
+      "burden": 1
+    }
+  },
+  {
+    "slug": "improved-scepter",
+    "kind": "primary weapon",
+    "name": {
+      "en": "Improved scepter",
+      "ru": "Улучшенный скипетр"
+    },
+    "info": {
+      "tier": 2,
+      "trait": "pre",
+      "range": "far",
+      "damage": "d6",
+      "damage_bonus": 3,
+      "damage_type": "magic",
+      "burden": 2,
+      "versatile": {
+        "trait": "pre",
+        "range": "melee",
+        "damage": "d8",
+        "damage_bonus": 3
+      }
+    }
+  },
+  {
+    "slug": "war-scythe",
+    "kind": "primary weapon",
+    "name": {
+      "en": "War scythe",
+      "ru": "Боевая коса"
+    },
+    "info": {
+      "tier": 2,
+      "trait": "fin",
+      "range": "very close",
+      "damage": "d8",
+      "damage_bonus": 5,
+      "damage_type": "physical",
+      "burden": 2,
+      "bonuses": { "attack": 1 }
+    }
+  },
+  {
+    "slug": "greatbow",
+    "kind": "primary weapon",
+    "name": {
+      "en": "Greatbow",
+      "ru": "Большой лук"
+    },
+    "info": {
+      "tier": 2,
+      "trait": "str",
+      "range": "far",
+      "damage": "d6",
+      "damage_bonus": 6,
+      "damage_type": "physical",
+      "burden": 2,
+      "features": [
+        {
+          "en": "On a successful attack, roll an additional damage die and discard the lowest result.",
+          "ru": "При успешной атаке бросьте дополнительную кость урона и отбросьте результат с наименьшим значением."
+        }
+      ]
+    }
+  },
+  {
+    "slug": "knuckle-blades",
+    "kind": "primary weapon",
+    "name": {
+      "en": "Knuckle blades",
+      "ru": "Кастеты с лезвиями"
+    },
+    "info": {
+      "tier": 2,
+      "trait": "str",
+      "range": "melee",
+      "damage": "d10",
+      "damage_bonus": 6,
+      "damage_type": "physical",
+      "burden": 2,
+      "features": [
+        {
+          "en": "When you roll the maximum value on a damage die, roll an additional damage die.",
+          "ru": "Когда вы выбрасываете максимальное значение на кости урона, бросьте дополнительную кость урона."
+        }
+      ]
+    }
+  },
+  {
+    "slug": "bladed-whip",
+    "kind": "primary weapon",
+    "name": {
+      "en": "Bladed whip",
+      "ru": "Клинковый кнут"
+    },
+    "info": {
+      "tier": 2,
+      "trait": "agi",
+      "range": "very close",
+      "damage": "d8",
+      "damage_bonus": 3,
+      "damage_type": "physical",
+      "burden": 1,
+      "features": [
+        {
+          "en": "When you make an attack, you can mark a Stress to target another creature within range.",
+          "ru": "Когда вы совершаете атаку, вы можете отметить Стресс, чтобы выбрать целью еще одно существо в пределах дальности."
+        }
+      ]
+    }
+  },
+  {
+    "slug": "blunderbuss",
+    "kind": "primary weapon",
+    "name": {
+      "en": "Blunderbuss",
+      "ru": "Мушкетон"
+    },
+    "info": {
+      "tier": 2,
+      "trait": "fin",
+      "range": "close",
+      "damage": "d8",
+      "damage_bonus": 6,
+      "damage_type": "physical",
+      "burden": 2,
+      "features": [
+        {
+          "en": "After you make an attack, roll a d6. On a result of 1, you must mark a Stress to reload this weapon before you can fire it again.",
+          "ru": "После того, как вы совершили атаку, бросьте d6. При результате в 1 вы должны отметить Стресс, чтобы перезарядить это оружие, прежде чем вы сможете выстрелить снова."
+        }
+      ]
+    }
+  },
+  {
+    "slug": "urok-broadsword",
+    "kind": "primary weapon",
+    "name": {
+      "en": "Urok broadsword",
+      "ru": "Палаш Урока"
+    },
+    "info": {
+      "tier": 2,
+      "trait": "fin",
+      "range": "melee",
+      "damage": "d8",
+      "damage_bonus": 3,
+      "damage_type": "physical",
+      "burden": 1,
+      "features": [
+        {
+          "en": "When you deal Severe damage, the target must mark an additional HP.",
+          "ru": "Когда вы наносите Тяжелый урон цели, она должна отметить дополнительную Рану."
+        }
+      ]
+    }
+  },
+  {
+    "slug": "gilded-falchion",
+    "kind": "primary weapon",
+    "name": {
+      "en": "Gilded falchion",
+      "ru": "Позолоченный фальшион"
+    },
+    "info": {
+      "tier": 2,
+      "trait": "str",
+      "range": "melee",
+      "damage": "d10",
+      "damage_bonus": 4,
+      "damage_type": "physical",
+      "burden": 1,
+      "features": [
+        {
+          "en": "On a successful attack, roll an additional damage die and discard the lowest result.",
+          "ru": "При успешной атаке бросьте дополнительную кость урона и отбросьте результат с наименьшим значением."
+        }
+      ]
+    }
+  },
+  {
+    "slug": "steelforged-halberd",
+    "kind": "primary weapon",
+    "name": {
+      "en": "Steelforged halberd",
+      "ru": "Стальная алебарда"
+    },
+    "info": {
+      "tier": 2,
+      "trait": "str",
+      "range": "very close",
+      "damage": "d8",
+      "damage_bonus": 4,
+      "damage_type": "physical",
+      "burden": 2,
+      "features": [
+        {
+          "en": "On a successful attack, the target must mark a Stress.",
+          "ru": "При успешной атаке по цели, она должна отметить Стресс."
+        }
+      ]
+    }
+  },
+  {
+    "slug": "improved-halberd",
+    "kind": "primary weapon",
+    "name": {
+      "en": "Improved halberd",
+      "ru": "Улучшенная алебарда"
+    },
+    "info": {
+      "tier": 2,
+      "trait": "str",
+      "range": "very close",
+      "damage": "d10",
+      "damage_bonus": 5,
+      "damage_type": "physical",
+      "burden": 2,
+      "bonuses": { "traits": { "fin": -1 } }
+    }
+  },
+  {
+    "slug": "improved-mace",
+    "kind": "primary weapon",
+    "name": {
+      "en": "Improved mace",
+      "ru": "Улучшенная булава"
+    },
+    "info": {
+      "tier": 2,
+      "trait": "str",
+      "range": "melee",
+      "damage": "d8",
+      "damage_bonus": 4,
+      "damage_type": "physical",
+      "burden": 1
+    }
+  },
+  {
+    "slug": "improved-rapier",
+    "kind": "primary weapon",
+    "name": {
+      "en": "Improved rapier",
+      "ru": "Улучшенная рапира"
+    },
+    "info": {
+      "tier": 2,
+      "trait": "pre",
+      "range": "melee",
+      "damage": "d8",
+      "damage_bonus": 3,
+      "damage_type": "physical",
+      "burden": 1,
+      "features": [
+        {
+          "en": "When you make an attack, you can mark a Stress to target another creature within range.",
+          "ru": "Когда вы совершаете атаку, вы можете отметить Стресс, чтобы выбрать целью еще одно существо в пределах дальности."
+        }
+      ]
+    }
+  },
+  {
+    "slug": "improved-cutlass",
+    "kind": "primary weapon",
+    "name": {
+      "en": "Improved cutlass",
+      "ru": "Улучшенная сабля"
+    },
+    "info": {
+      "tier": 2,
+      "trait": "pre",
+      "range": "melee",
+      "damage": "d8",
+      "damage_bonus": 4,
+      "damage_type": "physical",
+      "burden": 1
+    }
+  },
+  {
+    "slug": "improved-battleaxe",
+    "kind": "primary weapon",
+    "name": {
+      "en": "Improved battleaxe",
+      "ru": "Улучшенная секира"
+    },
+    "info": {
+      "tier": 2,
+      "trait": "str",
+      "range": "melee",
+      "damage": "d10",
+      "damage_bonus": 6,
+      "damage_type": "physical",
+      "burden": 2
+    }
+  },
+  {
+    "slug": "improved-spear",
+    "kind": "primary weapon",
+    "name": {
+      "en": "Improved spear",
+      "ru": "Улучшенное копьё"
+    },
+    "info": {
+      "tier": 2,
+      "trait": "fin",
+      "range": "very close",
+      "damage": "d10",
+      "damage_bonus": 5,
+      "damage_type": "physical",
+      "burden": 2,
+      "bonuses": { "traits": { "fin": -1 } }
+    }
+  },
+  {
+    "slug": "improved-crossbow",
+    "kind": "primary weapon",
+    "name": {
+      "en": "Improved crossbow",
+      "ru": "Улучшенный арбалет"
+    },
+    "info": {
+      "tier": 2,
+      "trait": "fin",
+      "range": "far",
+      "damage": "d6",
+      "damage_bonus": 4,
+      "damage_type": "physical",
+      "burden": 1
+    }
+  },
+  {
+    "slug": "improved-warhammer",
+    "kind": "primary weapon",
+    "name": {
+      "en": "Improved warhammer",
+      "ru": "Улучшенный боевой молот"
+    },
+    "info": {
+      "tier": 2,
+      "trait": "str",
+      "range": "melee",
+      "damage": "d12",
+      "damage_bonus": 6,
+      "damage_type": "physical",
+      "burden": 2,
+      "bonuses": { "evasion": -1 }
+    }
+  },
+  {
+    "slug": "improved-quarterstaff",
+    "kind": "primary weapon",
+    "name": {
+      "en": "Improved quarterstaff",
+      "ru": "Улучшенный боевой посох"
+    },
+    "info": {
+      "tier": 2,
+      "trait": "ins",
+      "range": "melee",
+      "damage": "d10",
+      "damage_bonus": 6,
+      "damage_type": "physical",
+      "burden": 2
+    }
+  },
+  {
+    "slug": "improved-greatsword",
+    "kind": "primary weapon",
+    "name": {
+      "en": "Improved greatsword",
+      "ru": "Улучшенный двуручный меч"
+    },
+    "info": {
+      "tier": 2,
+      "trait": "str",
+      "range": "melee",
+      "damage": "d10",
+      "damage_bonus": 6,
+      "damage_type": "physical",
+      "burden": 2,
+      "bonuses": { "evasion": -1 },
+      "features": [
+        {
+          "en": "On a successful attack, roll an additional damage die and discard the lowest result.",
+          "ru": "При успешной атаке бросьте дополнительную кость урона и отбросьте результат с наименьшим значением."
+        }
+      ]
+    }
+  },
+  {
+    "slug": "improved-longbow",
+    "kind": "primary weapon",
+    "name": {
+      "en": "Improved longbow",
+      "ru": "Улучшенный длинный лук"
+    },
+    "info": {
+      "tier": 2,
+      "trait": "agi",
+      "range": "veryfar",
+      "damage": "d8",
+      "damage_bonus": 6,
+      "damage_type": "physical",
+      "burden": 2,
+      "bonuses": { "traits": { "fin": -1 } }
+    }
+  },
+  {
+    "slug": "improved-longsword",
+    "kind": "primary weapon",
+    "name": {
+      "en": "Improved longsword",
+      "ru": "Улучшенный длинный меч"
+    },
+    "info": {
+      "tier": 2,
+      "trait": "agi",
+      "range": "melee",
+      "damage": "d8",
+      "damage_bonus": 6,
+      "damage_type": "physical",
+      "burden": 2
+    }
+  },
+  {
+    "slug": "improved-dagger",
+    "kind": "primary weapon",
+    "name": {
+      "en": "Improved dagger",
+      "ru": "Улучшенный кинжал"
+    },
+    "info": {
+      "tier": 2,
+      "trait": "fin",
+      "range": "melee",
+      "damage": "d8",
+      "damage_bonus": 4,
+      "damage_type": "physical",
+      "burden": 1
+    }
+  },
+  {
+    "slug": "improved-shortbow",
+    "kind": "primary weapon",
+    "name": {
+      "en": "Improved shortbow",
+      "ru": "Улучшенный короткий лук"
+    },
+    "info": {
+      "tier": 2,
+      "trait": "agi",
+      "range": "far",
+      "damage": "d6",
+      "damage_bonus": 6,
+      "damage_type": "physical",
+      "burden": 2
+    }
+  },
+  {
+    "slug": "improved-broadsword",
+    "kind": "primary weapon",
+    "name": {
+      "en": "Improved broadsword",
+      "ru": "Улучшенный палаш"
+    },
+    "info": {
+      "tier": 2,
+      "trait": "agi",
+      "range": "melee",
+      "damage": "d8",
+      "damage_bonus": 3,
+      "damage_type": "physical",
+      "burden": 1,
+      "bonuses": { "attack": 1 }
+    }
+  },
+  {
+    "slug": "finehair-bow",
+    "kind": "primary weapon",
+    "name": {
+      "en": "Finehair bow",
+      "ru": "Шёлковый лук"
+    },
+    "info": {
+      "tier": 2,
+      "trait": "agi",
+      "range": "veryfar",
+      "damage": "d6",
+      "damage_bonus": 5,
+      "damage_type": "physical",
+      "burden": 2,
+      "bonuses": { "attack": 1 }
+    }
+  },
+  {
+    "slug": "returning-axe",
+    "kind": "secondary weapon",
+    "name": {
+      "en": "Returning axe",
+      "ru": "Возвращающийся топор"
+    },
+    "info": {
+      "tier": 2,
+      "trait": "agi",
+      "range": "close",
+      "damage": "d6",
+      "damage_bonus": 4,
+      "damage_type": "physical",
+      "burden": 1,
+      "features": [
+        {
+          "en": "When this weapon is thrown within its range, it appears in your hand immediately after the attack.",
+          "ru": "Когда это оружие брошено в пределах дистанции, оно появляется в вашей руке сразу после атаки."
+        }
+      ]
+    }
+  },
+  {
+    "slug": "parrying-dagger",
+    "kind": "secondary weapon",
+    "name": {
+      "en": "Parrying dagger",
+      "ru": "Парирующий кинжал"
+    },
+    "info": {
+      "tier": 2,
+      "trait": "fin",
+      "range": "melee",
+      "damage": "d6",
+      "damage_bonus": 2,
+      "damage_type": "physical",
+      "burden": 1,
+      "features": [
+        {
+          "en": "When you are attacked, roll this weapon's damage dice. If any of the attacker's damage dice rolled the same value as your dice, the matching results are discarded from the attacker's damage dice before the damage you take is totaled.",
+          "ru": "Когда вас атакуют, совершите бросок урона. Если значение на любой кости урона атакующего совпадает с вашими значениями костей, совпадающие результаты отбрасываются из костей урона атакующего прежде, чем будет подсчитан полученный вами урон."
+        }
+      ]
+    }
+  },
+  {
+    "slug": "improved-tower-shield",
+    "kind": "secondary weapon",
+    "name": {
+      "en": "Improved tower shield",
+      "ru": "Улучшенный башенный щит"
+    },
+    "info": {
+      "tier": 2,
+      "trait": "str",
+      "range": "melee",
+      "damage": "d6",
+      "damage_bonus": 2,
+      "damage_type": "physical",
+      "burden": 1,
+      "bonuses": { "evasion": -1, "armor_score": 3 }
+    }
+  },
+  {
+    "slug": "improved-shortsword",
+    "kind": "secondary weapon",
+    "name": {
+      "en": "Improved shortsword",
+      "ru": "Улучшенный короткий меч"
+    },
+    "info": {
+      "tier": 2,
+      "trait": "agi",
+      "range": "melee",
+      "damage": "d8",
+      "damage_bonus": 2,
+      "damage_type": "physical",
+      "burden": 1,
+      "features": [
+        {
+          "en": "+3 to primary weapon damage to targets within Melee range.",
+          "ru": "+3 к урону основного оружия по целям Вплотную к вам."
+        }
+      ]
+    }
+  },
+  {
+    "slug": "improved-round-shield",
+    "kind": "secondary weapon",
+    "name": {
+      "en": "Improved round shield",
+      "ru": "Улучшенный круглый щит"
+    },
+    "info": {
+      "tier": 2,
+      "trait": "str",
+      "range": "melee",
+      "damage": "d4",
+      "damage_bonus": 2,
+      "damage_type": "physical",
+      "burden": 1,
+      "bonuses": { "armor_score": 2 }
+    }
+  },
+  {
+    "slug": "improved-grappler",
+    "kind": "secondary weapon",
+    "name": {
+      "en": "Improved grappler",
+      "ru": "Улучшенный крюк"
+    },
+    "info": {
+      "tier": 2,
+      "trait": "fin",
+      "range": "close",
+      "damage": "d6",
+      "damage_bonus": 2,
+      "damage_type": "physical",
+      "burden": 1,
+      "features": [
+        {
+          "en": "On a successful attack, you can pull the target into Melee range.",
+          "ru": "При успешной атаке вы можете притянуть цель Вплотную к вам."
+        }
+      ]
+    }
+  },
+  {
+    "slug": "improved-small-dagger",
+    "kind": "secondary weapon",
+    "name": {
+      "en": "Improved small dagger",
+      "ru": "Улучшенный малый кинжал"
+    },
+    "info": {
+      "tier": 2,
+      "trait": "fin",
+      "range": "melee",
+      "damage": "d8",
+      "damage_bonus": 2,
+      "damage_type": "physical",
+      "burden": 1,
+      "features": [
+        {
+          "en": "+3 to primary weapon damage to targets within Melee range.",
+          "ru": "+3 к урону основного оружия по целям Вплотную к вам."
+        }
+      ]
+    }
+  },
+  {
+    "slug": "improved-hand-crossbow",
+    "kind": "secondary weapon",
+    "name": {
+      "en": "Improved hand crossbow",
+      "ru": "Улучшенный ручной арбалет"
+    },
+    "info": {
+      "tier": 2,
+      "trait": "fin",
+      "range": "far",
+      "damage": "d6",
+      "damage_bonus": 3,
+      "damage_type": "physical",
+      "burden": 1
+    }
+  },
+  {
+    "slug": "improved-whip",
+    "kind": "secondary weapon",
+    "name": {
+      "en": "Improved whip",
+      "ru": "Улучшенный хлыст"
+    },
+    "info": {
+      "tier": 2,
+      "trait": "pre",
+      "range": "very close",
+      "damage": "d6",
+      "damage_bonus": 2,
+      "damage_type": "physical",
+      "burden": 1,
+      "features": [
+        {
+          "en": "Mark a Stress to crack the whip and force all adversaries within Melee range back to Close range.",
+          "ru": "Отметьте Стресс, чтобы хлестнуть кнутом и заставить всех противников, находящихся Вплотную к вам, отойти на Среднюю дистанцию."
+        }
+      ]
+    }
+  },
+  {
+    "slug": "spiked-shield",
+    "kind": "secondary weapon",
+    "name": {
+      "en": "Spiked shield",
+      "ru": "Шипастый щит"
+    },
+    "info": {
+      "tier": 2,
+      "trait": "str",
+      "range": "melee",
+      "damage": "d6",
+      "damage_bonus": 2,
+      "damage_type": "physical",
+      "burden": 1,
+      "bonuses": { "armor_score": 1 },
+      "features": [
+        {
+          "en": "+1 to primary weapon damage to targets within Melee range.",
+          "ru": "+1 к урону основного оружия по целям Вплотную к вам."
+        }
+      ]
+    }
+  },
+  {
+    "slug": "blessed-anlace",
+    "kind": "primary weapon",
+    "name": {
+      "en": "Blessed anlace",
+      "ru": "Благословенный клинок"
+    },
+    "info": {
+      "tier": 3,
+      "trait": "ins",
+      "range": "melee",
+      "damage": "d10",
+      "damage_bonus": 6,
+      "damage_type": "magic",
+      "burden": 1,
+      "features": [
+        {
+          "en": "During downtime, automatically clear a Hit Point.",
+          "ru": "Во время привала автоматически очищается одна Рана."
+        }
+      ]
+    }
+  },
+  {
+    "slug": "ilmaris-rifle",
+    "kind": "primary weapon",
+    "name": {
+      "en": "Ilmari's rifle",
+      "ru": "Винтовка Ильмари"
+    },
+    "info": {
+      "tier": 3,
+      "trait": "fin",
+      "range": "very far",
+      "damage": "d6",
+      "damage_bonus": 6,
+      "damage_type": "magic",
+      "burden": 1,
+      "features": [
+        {
+          "en": "After you make an attack, roll a d6. On a result of 1, you must mark a Stress to reload this weapon before you can fire it again.",
+          "ru": "После того, как вы совершили атаку, бросьте d6. При результате в 1 вы должны отметить Стресс, чтобы перезарядить это оружие, прежде чем вы сможете выстрелить снова."
+        }
+      ]
+    }
+  },
+  {
+    "slug": "widogast-pendant",
+    "kind": "primary weapon",
+    "name": {
+      "en": "Widogast pendant",
+      "ru": "Кулон Видогаста"
+    },
+    "info": {
+      "tier": 3,
+      "trait": "know",
+      "range": "close",
+      "damage": "d10",
+      "damage_bonus": 5,
+      "damage_type": "magic",
+      "burden": 1,
+      "features": [
+        {
+          "en": "You choose the target of your attack after making your attack roll.",
+          "ru": "Вы выбираете цель своей атаки после того, как совершили бросок атаки."
+        }
+      ]
+    }
+  },
+  {
+    "slug": "mage-orb",
+    "kind": "primary weapon",
+    "name": {
+      "en": "Mage orb",
+      "ru": "Магическая сфера"
+    },
+    "info": {
+      "tier": 3,
+      "trait": "know",
+      "range": "far",
+      "damage": "d6",
+      "damage_bonus": 7,
+      "damage_type": "magic",
+      "burden": 1,
+      "features": [
+        {
+          "en": "On a successful attack, roll an additional damage die and discard the lowest result.",
+          "ru": "При успешной атаке бросьте дополнительную кость урона и отбросьте результат с наименьшим значением."
+        }
+      ]
+    }
+  },
+  {
+    "slug": "gilded-bow",
+    "kind": "primary weapon",
+    "name": {
+      "en": "Gilded bow",
+      "ru": "Позолоченный лук"
+    },
+    "info": {
+      "tier": 3,
+      "trait": "fin",
+      "range": "far",
+      "damage": "d6",
+      "damage_bonus": 7,
+      "damage_type": "magic",
+      "burden": 2,
+      "features": [
+        {
+          "en": "When you roll a 1 on a damage die, it deals 6 damage instead.",
+          "ru": "Когда вы выбрасываете 1 на кости урона, он наносит 6 урона вместо этого."
+        }
+      ]
+    }
+  },
+  {
+    "slug": "firestaff",
+    "kind": "primary weapon",
+    "name": {
+      "en": "Firestaff",
+      "ru": "Посох Огня"
+    },
+    "info": {
+      "tier": 3,
+      "trait": "ins",
+      "range": "far",
+      "damage": "d6",
+      "damage_bonus": 7,
+      "damage_type": "magic",
+      "burden": 2,
+      "features": [
+        {
+          "en": "When you roll a 6 on a damage die, the target must mark a Stress.",
+          "ru": "Когда вы выбрасываете 6 на кости урона, цель должна отметить Стресс."
+        }
+      ]
+    }
+  },
+  {
+    "slug": "ghostblade",
+    "kind": "primary weapon",
+    "name": {
+      "en": "Ghostblade",
+      "ru": "Призрачный клинок"
+    },
+    "info": {
+      "tier": 3,
+      "trait": "pre",
+      "range": "melee",
+      "damage": "d10",
+      "damage_bonus": 7,
+      "damage_type": "physical",
+      "burden": 1,
+      "features": [
+        {
+          "en": "On a successful attack, you can deal physical or magic damage.",
+          "ru": "При успешной атаке, нанесите физический или магический урон."
+        }
+      ]
+    }
+  },
+  {
+    "slug": "advanced-wand",
+    "kind": "primary weapon",
+    "name": {
+      "en": "Advanced wand",
+      "ru": "Продвинутая волшебная палочка"
+    },
+    "info": {
+      "tier": 3,
+      "trait": "know",
+      "range": "far",
+      "damage": "d6",
+      "damage_bonus": 7,
+      "damage_type": "magic",
+      "burden": 1
+    }
+  },
+  {
+    "slug": "advanced-arcane-gauntlets",
+    "kind": "primary weapon",
+    "name": {
+      "en": "Advanced arcane gauntlets",
+      "ru": "Продвинутые магические наручи"
+    },
+    "info": {
+      "tier": 3,
+      "trait": "str",
+      "range": "melee",
+      "damage": "d10",
+      "damage_bonus": 9,
+      "damage_type": "magic",
+      "burden": 2
+    }
+  },
+  {
+    "slug": "advanced-hand-runes",
+    "kind": "primary weapon",
+    "name": {
+      "en": "Advanced hand runes",
+      "ru": "Продвинутые наручные руны"
+    },
+    "info": {
+      "tier": 3,
+      "trait": "ins",
+      "range": "very close",
+      "damage": "d10",
+      "damage_bonus": 6,
+      "damage_type": "magic",
+      "burden": 1
+    }
+  },
+  {
+    "slug": "advanced-glowing-rings",
+    "kind": "primary weapon",
+    "name": {
+      "en": "Advanced glowing rings",
+      "ru": "Продвинутые сияющие кольца"
+    },
+    "info": {
+      "tier": 3,
+      "trait": "agi",
+      "range": "very close",
+      "damage": "d10",
+      "damage_bonus": 8,
+      "damage_type": "magic",
+      "burden": 2
+    }
+  },
+  {
+    "slug": "advanced-returning-blade",
+    "kind": "primary weapon",
+    "name": {
+      "en": "Advanced returning blade",
+      "ru": "Продвинутый возвращающийся клинок"
+    },
+    "info": {
+      "tier": 3,
+      "trait": "fin",
+      "range": "close",
+      "damage": "d8",
+      "damage_bonus": 6,
+      "damage_type": "magic",
+      "burden": 1,
+      "features": [
+        {
+          "en": "When this weapon is thrown within its range, it appears in your hand immediately after the attack.",
+          "ru": "Когда это оружие брошено в пределах дистанции, оно появляется в вашей руке сразу после атаки."
+        }
+      ]
+    }
+  },
+  {
+    "slug": "advanced-dualstaff",
+    "kind": "primary weapon",
+    "name": {
+      "en": "Advanced dualstaff",
+      "ru": "Продвинутый двойной посох"
+    },
+    "info": {
+      "tier": 3,
+      "trait": "ins",
+      "range": "far",
+      "damage": "d6",
+      "damage_bonus": 9,
+      "damage_type": "magic",
+      "burden": 2
+    }
+  },
+  {
+    "slug": "advanced-greatstaff",
+    "kind": "primary weapon",
+    "name": {
+      "en": "Advanced greatstaff",
+      "ru": "Продвинутый двуручный посох"
+    },
+    "info": {
+      "tier": 3,
+      "trait": "know",
+      "range": "very far",
+      "damage": "d6",
+      "damage_bonus": 6,
+      "damage_type": "magic",
+      "burden": 2,
+      "features": [
+        {
+          "en": "On a successful attack, roll an additional damage die and discard the lowest result.",
+          "ru": "При успешной атаке бросьте дополнительную кость урона и отбросьте результат с наименьшим значением."
+        }
+      ]
+    }
+  },
+  {
+    "slug": "advanced-shortstaff",
+    "kind": "primary weapon",
+    "name": {
+      "en": "Advanced shortstaff",
+      "ru": "Продвинутый короткий посох"
+    },
+    "info": {
+      "tier": 3,
+      "trait": "ins",
+      "range": "close",
+      "damage": "d8",
+      "damage_bonus": 7,
+      "damage_type": "magic",
+      "burden": 1
+    }
+  },
+  {
+    "slug": "advanced-hallowed-axe",
+    "kind": "primary weapon",
+    "name": {
+      "en": "Advanced hallowed axe",
+      "ru": "Продвинутый священный топор"
+    },
+    "info": {
+      "tier": 3,
+      "trait": "str",
+      "range": "melee",
+      "damage": "d8",
+      "damage_bonus": 7,
+      "damage_type": "magic",
+      "burden": 1
+    }
+  },
+  {
+    "slug": "advanced-scepter",
+    "kind": "primary weapon",
+    "name": {
+      "en": "Advanced scepter",
+      "ru": "Продвинутый скипетр"
+    },
+    "info": {
+      "tier": 3,
+      "trait": "pre",
+      "range": "far",
+      "damage": "d6",
+      "damage_bonus": 6,
+      "damage_type": "magic",
+      "burden": 2,
+      "versatile": {
+        "trait": "pre",
+        "range": "melee",
+        "damage": "d8",
+        "damage_bonus": 4
+      }
+    }
+  },
+  {
+    "slug": "runes-of-ruination",
+    "kind": "primary weapon",
+    "name": {
+      "en": "Runes of ruination",
+      "ru": "Руны погибели"
+    },
+    "info": {
+      "tier": 3,
+      "trait": "know",
+      "range": "very close",
+      "damage": "d20",
+      "damage_bonus": 4,
+      "damage_type": "magic",
+      "burden": 1,
+      "features": [
+        {
+          "en": "Each time you make a successful attack, you must mark a Stress.",
+          "ru": "Каждый раз, когда вы отмечаете Ячейку Брони, вы должны отметить Стресс."
+        }
+      ]
+    }
+  },
+  {
+    "slug": "axe-of-fortunis",
+    "kind": "primary weapon",
+    "name": {
+      "en": "Axe of Fortunis",
+      "ru": "Секира Фортуниса"
+    },
+    "info": {
+      "tier": 3,
+      "trait": "str",
+      "range": "melee",
+      "damage": "d10",
+      "damage_bonus": 8,
+      "damage_type": "magic",
+      "burden": 2,
+      "features": [
+        {
+          "en": "On a failed attack, you can mark a Stress to reroll your attack.",
+          "ru": "При неудачном броске атаки вы можете отметить Стресс, чтобы перебросить кости."
+        }
+      ]
+    }
+  },
+  {
+    "slug": "retractable-saber",
+    "kind": "primary weapon",
+    "name": {
+      "en": "Retractable saber",
+      "ru": "Выдвижная сабля"
+    },
+    "info": {
+      "tier": 3,
+      "trait": "pre",
+      "range": "melee",
+      "damage": "d10",
+      "damage_bonus": 7,
+      "damage_type": "physical",
+      "burden": 1,
+      "features": [
+        {
+          "en": "The blade can be hidden in the hilt to avoid detection.",
+          "ru": "The blade can be hidden in the hilt to avoid detection."
+        }
+      ]
+    }
+  },
+  {
+    "slug": "double-flail",
+    "kind": "primary weapon",
+    "name": {
+      "en": "Double flail",
+      "ru": "Двойной цеп"
+    },
+    "info": {
+      "tier": 3,
+      "trait": "agi",
+      "range": "very close",
+      "damage": "d10",
+      "damage_bonus": 8,
+      "damage_type": "physical",
+      "burden": 2,
+      "features": [
+        {
+          "en": "On a successful attack, roll an additional damage die and discard the lowest result.",
+          "ru": "On a successful attack, roll an additional damage die and discard the lowest result."
+        }
+      ]
+    }
+  },
+  {
+    "slug": "talon-blades",
+    "kind": "primary weapon",
+    "name": {
+      "en": "Talon blades",
+      "ru": "Клинки-Когти"
+    },
+    "info": {
+      "tier": 3,
+      "trait": "fin",
+      "range": "close",
+      "damage": "d10",
+      "damage_bonus": 7,
+      "damage_type": "physical",
+      "burden": 2,
+      "features": [
+        {
+          "en": "When you roll the maximum value on a damage die, roll an additional damage die.",
+          "ru": "When you roll the maximum value on a damage die, roll an additional damage die."
+        }
+      ]
+    }
+  },
+  {
+    "slug": "flickerfly-blade",
+    "kind": "primary weapon",
+    "name": {
+      "en": "Flickerfly blade",
+      "ru": "Клинок Светлячка"
+    },
+    "info": {
+      "tier": 3,
+      "trait": "agi",
+      "range": "melee",
+      "damage": "d8",
+      "damage_bonus": 5,
+      "damage_type": "physical",
+      "burden": 1,
+      "features": [
+        {
+          "en": "Gain a bonus to your damage rolls equal to your Agility.",
+          "ru": "Gain a bonus to your damage rolls equal to your Agility."
+        }
+      ]
+    }
+  },
+  {
+    "slug": "bravesword",
+    "kind": "primary weapon",
+    "name": {
+      "en": "Bravesword",
+      "ru": "Меч храбрости"
+    },
+    "info": {
+      "tier": 3,
+      "trait": "str",
+      "range": "melee",
+      "damage": "d12",
+      "damage_bonus": 7,
+      "damage_type": "physical",
+      "burden": 2,
+      "bonuses": { "evasion": -1, "thresholds": { "severe": 3 } }
+    }
+  },
+  {
+    "slug": "hammer-of-wrath",
+    "kind": "primary weapon",
+    "name": {
+      "en": "Hammer of wrath",
+      "ru": "Молот гнева"
+    },
+    "info": {
+      "tier": 3,
+      "trait": "str",
+      "range": "melee",
+      "damage": "d10",
+      "damage_bonus": 7,
+      "damage_type": "physical",
+      "burden": 2,
+      "features": [
+        {
+          "en": "Before you make an attack roll, you can mark a Stress to use a d20 as your damage die.",
+          "ru": "Before you make an attack roll, you can mark a Stress to use a d20 as your damage die."
+        }
+      ]
+    }
+  },
+  {
+    "slug": "advanced-halberd",
+    "kind": "primary weapon",
+    "name": {
+      "en": "Advanced halberd",
+      "ru": "Продвинутая алебарда"
+    },
+    "info": {
+      "tier": 3,
+      "trait": "str",
+      "range": "very close",
+      "damage": "d10",
+      "damage_bonus": 8,
+      "damage_type": "physical",
+      "burden": 2,
+      "bonuses": { "traits": { "fin": -1 } }
+    }
+  },
+  {
+    "slug": "advanced-mace",
+    "kind": "primary weapon",
+    "name": {
+      "en": "Advanced mace",
+      "ru": "Продвинутая булава"
+    },
+    "info": {
+      "tier": 3,
+      "trait": "str",
+      "range": "melee",
+      "damage": "d8",
+      "damage_bonus": 7,
+      "damage_type": "physical",
+      "burden": 1
+    }
+  },
+  {
+    "slug": "advanced-rapier",
+    "kind": "primary weapon",
+    "name": {
+      "en": "Advanced rapier",
+      "ru": "Продвинутая рапира"
+    },
+    "info": {
+      "tier": 3,
+      "trait": "pre",
+      "range": "melee",
+      "damage": "d8",
+      "damage_bonus": 6,
+      "damage_type": "physical",
+      "burden": 1,
+      "features": [
+        {
+          "en": "When you make an attack, you can mark a Stress to target another creature within range.",
+          "ru": "Когда вы совершаете атаку, вы можете отметить Стресс, чтобы выбрать целью еще одно существо в пределах дальности."
+        }
+      ]
+    }
+  },
+  {
+    "slug": "advanced-cutlass",
+    "kind": "primary weapon",
+    "name": {
+      "en": "Advanced cutlass",
+      "ru": "Продвинутая сабля"
+    },
+    "info": {
+      "tier": 3,
+      "trait": "pre",
+      "range": "melee",
+      "damage": "d8",
+      "damage_bonus": 7,
+      "damage_type": "physical",
+      "burden": 1
+    }
+  },
+  {
+    "slug": "advanced-battleaxe",
+    "kind": "primary weapon",
+    "name": {
+      "en": "Advanced battleaxe",
+      "ru": "Продвинутая секира"
+    },
+    "info": {
+      "tier": 3,
+      "trait": "str",
+      "range": "melee",
+      "damage": "d10",
+      "damage_bonus": 9,
+      "damage_type": "physical",
+      "burden": 2
+    }
+  },
+  {
+    "slug": "advanced-spear",
+    "kind": "primary weapon",
+    "name": {
+      "en": "Advanced spear",
+      "ru": "Продвинутое копьё"
+    },
+    "info": {
+      "tier": 3,
+      "trait": "fin",
+      "range": "very close",
+      "damage": "d10",
+      "damage_bonus": 8,
+      "damage_type": "physical",
+      "burden": 2,
+      "bonuses": { "traits": { "fin": -1 } }
+    }
+  },
+  {
+    "slug": "advanced-crossbow",
+    "kind": "primary weapon",
+    "name": {
+      "en": "Advanced crossbow",
+      "ru": "Продвинутый арбалет"
+    },
+    "info": {
+      "tier": 3,
+      "trait": "fin",
+      "range": "far",
+      "damage": "d6",
+      "damage_bonus": 7,
+      "damage_type": "physical",
+      "burden": 1
+    }
+  },
+  {
+    "slug": "advanced-warhammer",
+    "kind": "primary weapon",
+    "name": {
+      "en": "Advanced warhammer",
+      "ru": "Продвинутый боевой молот"
+    },
+    "info": {
+      "tier": 3,
+      "trait": "str",
+      "range": "melee",
+      "damage": "d12",
+      "damage_bonus": 9,
+      "damage_type": "physical",
+      "burden": 2,
+      "bonuses": { "evasion": -1 }
+    }
+  },
+  {
+    "slug": "advanced-quarterstaff",
+    "kind": "primary weapon",
+    "name": {
+      "en": "Advanced quarterstaff",
+      "ru": "Продвинутый боевой посох"
+    },
+    "info": {
+      "tier": 3,
+      "trait": "ins",
+      "range": "melee",
+      "damage": "d10",
+      "damage_bonus": 9,
+      "damage_type": "physical",
+      "burden": 2
+    }
+  },
+  {
+    "slug": "advanced-greatsword",
+    "kind": "primary weapon",
+    "name": {
+      "en": "Advanced greatsword",
+      "ru": "Продвинутый двуручный меч"
+    },
+    "info": {
+      "tier": 3,
+      "trait": "str",
+      "range": "melee",
+      "damage": "d10",
+      "damage_bonus": 9,
+      "damage_type": "physical",
+      "burden": 2,
+      "bonuses": { "evasion": -1 },
+      "features": [
+        {
+          "en": "On a successful attack, roll an additional damage die and discard the lowest result.",
+          "ru": "При успешной атаке бросьте дополнительную кость урона и отбросьте результат с наименьшим значением."
+        }
+      ]
+    }
+  },
+  {
+    "slug": "advanced-longbow",
+    "kind": "primary weapon",
+    "name": {
+      "en": "Advanced longbow",
+      "ru": "Продвинутый длинный лук"
+    },
+    "info": {
+      "tier": 3,
+      "trait": "agi",
+      "range": "very far",
+      "damage": "d8",
+      "damage_bonus": 9,
+      "damage_type": "physical",
+      "burden": 2,
+      "bonuses": { "traits": { "fin": -1 } }
+    }
+  },
+  {
+    "slug": "advanced-longsword",
+    "kind": "primary weapon",
+    "name": {
+      "en": "Advanced longsword",
+      "ru": "Продвинутый длинный меч"
+    },
+    "info": {
+      "tier": 3,
+      "trait": "agi",
+      "range": "melee",
+      "damage": "d8",
+      "damage_bonus": 9,
+      "damage_type": "physical",
+      "burden": 2
+    }
+  },
+  {
+    "slug": "advanced-dagger",
+    "kind": "primary weapon",
+    "name": {
+      "en": "Advanced dagger",
+      "ru": "Продвинутый кинжал"
+    },
+    "info": {
+      "tier": 3,
+      "trait": "fin",
+      "range": "melee",
+      "damage": "d8",
+      "damage_bonus": 7,
+      "damage_type": "physical",
+      "burden": 1
+    }
+  },
+  {
+    "slug": "advanced-shortbow",
+    "kind": "primary weapon",
+    "name": {
+      "en": "Advanced shortbow",
+      "ru": "Продвинутый короткий лук"
+    },
+    "info": {
+      "tier": 3,
+      "trait": "agi",
+      "range": "far",
+      "damage": "d6",
+      "damage_bonus": 9,
+      "damage_type": "physical",
+      "burden": 2
+    }
+  },
+  {
+    "slug": "advanced-broadsword",
+    "kind": "primary weapon",
+    "name": {
+      "en": "Advanced broadsword",
+      "ru": "Продвинутый палаш"
+    },
+    "info": {
+      "tier": 3,
+      "trait": "agi",
+      "range": "melee",
+      "damage": "d8",
+      "damage_bonus": 6,
+      "damage_type": "physical",
+      "burden": 1,
+      "bonuses": { "attack": 1 }
+    }
+  },
+  {
+    "slug": "black-powder-revolver",
+    "kind": "primary weapon",
+    "name": {
+      "en": "Black powder revolver",
+      "ru": "Револьвер на чёрном порохе"
+    },
+    "info": {
+      "tier": 3,
+      "trait": "fin",
+      "range": "far",
+      "damage": "d6",
+      "damage_bonus": 8,
+      "damage_type": "physical",
+      "burden": 1,
+      "features": [
+        {
+          "en": "After you make an attack, roll a d6. On a result of 1, you must mark a Stress to reload this weapon before you can fire it again.",
+          "ru": "After you make an attack, roll a d6. On a result of 1, you must mark a Stress to reload this weapon before you can fire it again."
+        }
+      ]
+    }
+  },
+  {
+    "slug": "meridian-cutlass",
+    "kind": "primary weapon",
+    "name": {
+      "en": "Meridian cutlass",
+      "ru": "Сабля Меридиана"
+    },
+    "info": {
+      "tier": 3,
+      "trait": "pre",
+      "range": "melee",
+      "damage": "d10",
+      "damage_bonus": 5,
+      "damage_type": "physical",
+      "burden": 1,
+      "features": [
+        {
+          "en": "When there are no other creatures within Close range of the target, gain advantage on your attack roll against them.",
+          "ru": "When there are no other creatures within Close range of the target, gain advantage on your attack roll against them."
+        }
+      ]
+    }
+  },
+  {
+    "slug": "labrys-axe",
+    "kind": "primary weapon",
+    "name": {
+      "en": "Labrys axe",
+      "ru": "Топор Лабрис"
+    },
+    "info": {
+      "tier": 3,
+      "trait": "str",
+      "range": "melee",
+      "damage": "d10",
+      "damage_bonus": 7,
+      "damage_type": "physical",
+      "burden": 2,
+      "bonuses": { "armor_score": 1 }
+    }
+  },
+  {
+    "slug": "spiked-bow",
+    "kind": "primary weapon",
+    "name": {
+      "en": "Spiked bow",
+      "ru": "Шипастый лук"
+    },
+    "info": {
+      "tier": 3,
+      "trait": "agi",
+      "range": "very far",
+      "damage": "d6",
+      "damage_bonus": 7,
+      "damage_type": "physical",
+      "burden": 2,
+      "versatile": {
+        "trait": "agi",
+        "range": "melee",
+        "damage": "d10",
+        "damage_bonus": 5
+      }
+    }
+  },
+  {
+    "slug": "buckler",
+    "kind": "secondary weapon",
+    "name": {
+      "en": "Buckler",
+      "ru": "Баклер"
+    },
+    "info": {
+      "tier": 3,
+      "trait": "agi",
+      "range": "melee",
+      "damage": "d4",
+      "damage_bonus": 4,
+      "damage_type": "physical",
+      "burden": 1,
+      "features": [
+        {
+          "en": "When you are attacked, you can mark an Armor Slot to gain a bonus to your Evasion equal to your Armor Score against the attack.",
+          "ru": "Когда вас атакуют, вы можете отметить Ячейку Брони, чтобы получить бонус к Уклонению, равный вашему Показателю Брони против этой атаки."
+        }
+      ]
+    }
+  },
+  {
+    "slug": "advanced-tower-shield",
+    "kind": "secondary weapon",
+    "name": {
+      "en": "Advanced tower shield",
+      "ru": "Продвинутый башенный щит"
+    },
+    "info": {
+      "tier": 3,
+      "trait": "str",
+      "range": "melee",
+      "damage": "d6",
+      "damage_bonus": 4,
+      "damage_type": "physical",
+      "burden": 1,
+      "bonuses": { "evasion": -1, "armor_score": 4 }
+    }
+  },
+  {
+    "slug": "advanced-shortsword",
+    "kind": "secondary weapon",
+    "name": {
+      "en": "Advanced shortsword",
+      "ru": "Продвинутый короткий меч"
+    },
+    "info": {
+      "tier": 3,
+      "trait": "agi",
+      "range": "melee",
+      "damage": "d8",
+      "damage_bonus": 4,
+      "damage_type": "physical",
+      "burden": 1,
+      "features": [
+        {
+          "en": "+4 to primary weapon damage to targets within Melee range.",
+          "ru": "+4 к урону основного оружия по целям Вплотную к вам."
+        }
+      ]
+    }
+  },
+  {
+    "slug": "advanced-round-shield",
+    "kind": "secondary weapon",
+    "name": {
+      "en": "Advanced round shield",
+      "ru": "Продвинутый круглый щит"
+    },
+    "info": {
+      "tier": 3,
+      "trait": "str",
+      "range": "melee",
+      "damage": "d4",
+      "damage_bonus": 4,
+      "damage_type": "physical",
+      "burden": 1,
+      "bonuses": { "armor_score": 3 }
+    }
+  },
+  {
+    "slug": "advanced-grappler",
+    "kind": "secondary weapon",
+    "name": {
+      "en": "Advanced grappler",
+      "ru": "Продвинутый крюк"
+    },
+    "info": {
+      "tier": 3,
+      "trait": "fin",
+      "range": "close",
+      "damage": "d6",
+      "damage_bonus": 4,
+      "damage_type": "physical",
+      "burden": 1,
+      "features": [
+        {
+          "en": "On a successful attack, you can pull the target into Melee range.",
+          "ru": "При успешной атаке вы можете притянуть цель Вплотную к вам."
+        }
+      ]
+    }
+  },
+  {
+    "slug": "advanced-small-dagger",
+    "kind": "secondary weapon",
+    "name": {
+      "en": "Advanced small dagger",
+      "ru": "Продвинутый малый кинжал"
+    },
+    "info": {
+      "tier": 3,
+      "trait": "fin",
+      "range": "melee",
+      "damage": "d8",
+      "damage_bonus": 4,
+      "damage_type": "physical",
+      "burden": 1,
+      "features": [
+        {
+          "en": "+4 to primary weapon damage to targets within Melee range.",
+          "ru": "+4 к урону основного оружия по целям Вплотную к вам."
+        }
+      ]
+    }
+  },
+  {
+    "slug": "advanced-hand-crossbow",
+    "kind": "secondary weapon",
+    "name": {
+      "en": "Advanced hand crossbow",
+      "ru": "Продвинутый ручной арбалет"
+    },
+    "info": {
+      "tier": 3,
+      "trait": "fin",
+      "range": "far",
+      "damage": "d6",
+      "damage_bonus": 5,
+      "damage_type": "physical",
+      "burden": 1
+    }
+  },
+  {
+    "slug": "advanced-whip",
+    "kind": "secondary weapon",
+    "name": {
+      "en": "Advanced whip",
+      "ru": "Продвинутый хлыст"
+    },
+    "info": {
+      "tier": 3,
+      "trait": "pre",
+      "range": "very close",
+      "damage": "d6",
+      "damage_bonus": 4,
+      "damage_type": "physical",
+      "burden": 1,
+      "features": [
+        {
+          "en": "Mark a Stress to crack the whip and force all adversaries within Melee range back to Close range.",
+          "ru": "Отметьте Стресс, чтобы хлестнуть кнутом и заставить всех противников, находящихся Вплотную к вам, отойти на Среднюю дистанцию."
+        }
+      ]
+    }
+  },
+  {
+    "slug": "hand-sling",
+    "kind": "secondary weapon",
+    "name": {
+      "en": "Hand sling",
+      "ru": "Ручная праща"
+    },
+    "info": {
+      "tier": 3,
+      "trait": "fin",
+      "range": "very far",
+      "damage": "d6",
+      "damage_bonus": 4,
+      "damage_type": "physical",
+      "burden": 1,
+      "versatile": {
+        "trait": "fin",
+        "range": "close",
+        "damage": "d8",
+        "damage_bonus": 4
+      }
+    }
+  },
+  {
+    "slug": "powered-gauntlet",
+    "kind": "secondary weapon",
+    "name": {
+      "en": "Powered gauntlet",
+      "ru": "Усиленная рукавица"
+    },
+    "info": {
+      "tier": 3,
+      "trait": "know",
+      "range": "close",
+      "damage": "d6",
+      "damage_bonus": 4,
+      "damage_type": "physical",
+      "burden": 1,
+      "features": [
+        {
+          "en": "Mark a Stress to gain a +1 bonus to your Proficiency on a primary weapon attack.",
+          "ru": "Отметьте Стресс, чтобы получить +1 бонус к Мастерству при атаке основным оружием."
+        }
+      ]
+    }
+  },
+  {
+    "slug": "sword-of-light-and-flame",
+    "kind": "primary weapon",
+    "name": {
+      "en": "Sword of Light & Flame",
+      "ru": "Клинок Света и Пламени"
+    },
+    "info": {
+      "tier": 4,
+      "trait": "str",
+      "range": "melee",
+      "damage": "d10",
+      "damage_bonus": 11,
+      "damage_type": "magic",
+      "burden": 2,
+      "features": [
+        {
+          "en": "This weapon cuts through solid material.",
+          "ru": "Это оружие прорезает твёрдый материал."
+        }
+      ]
+    }
+  },
+  {
+    "slug": "thistlebow",
+    "kind": "primary weapon",
+    "name": {
+      "en": "Thistlebow",
+      "ru": "Колючий лук"
+    },
+    "info": {
+      "tier": 4,
+      "trait": "ins",
+      "range": "far",
+      "damage": "d6",
+      "damage_bonus": 13,
+      "damage_type": "magic",
+      "burden": 2,
+      "bonuses": { "attack": 1 }
+    }
+  },
+  {
+    "slug": "midas-scythe",
+    "kind": "primary weapon",
+    "name": {
+      "en": "Midas scythe",
+      "ru": "Коса Мидаса"
+    },
+    "info": {
+      "tier": 4,
+      "trait": "know",
+      "range": "melee",
+      "damage": "d10",
+      "damage_bonus": 9,
+      "damage_type": "magic",
+      "burden": 2,
+      "features": [
+        {
+          "en": "Spend a handful of gold to gain a +1 bonus to your Proficiency on a damage roll.",
+          "ru": "Потратьте горсть золота, чтобы получить +1 бонус к Мастерству при броске урона."
+        }
+      ]
+    }
+  },
+  {
+    "slug": "legendary-wand",
+    "kind": "primary weapon",
+    "name": {
+      "en": "Legendary wand",
+      "ru": "Легендарная волшебная палочка"
+    },
+    "info": {
+      "tier": 4,
+      "trait": "know",
+      "range": "far",
+      "damage": "d6",
+      "damage_bonus": 10,
+      "damage_type": "magic",
+      "burden": 1
+    }
+  },
+  {
+    "slug": "legendary-arcane-gauntlets",
+    "kind": "primary weapon",
+    "name": {
+      "en": "Legendary arcane gauntlets",
+      "ru": "Легендарные магические наручи"
+    },
+    "info": {
+      "tier": 4,
+      "trait": "str",
+      "range": "melee",
+      "damage": "d10",
+      "damage_bonus": 12,
+      "damage_type": "magic",
+      "burden": 2
+    }
+  },
+  {
+    "slug": "legendary-hand-runes",
+    "kind": "primary weapon",
+    "name": {
+      "en": "Legendary hand runes",
+      "ru": "Легендарные наручные руны"
+    },
+    "info": {
+      "tier": 4,
+      "trait": "ins",
+      "range": "very close",
+      "damage": "d10",
+      "damage_bonus": 9,
+      "damage_type": "magic",
+      "burden": 1
+    }
+  },
+  {
+    "slug": "legendary-glowing-rings",
+    "kind": "primary weapon",
+    "name": {
+      "en": "Legendary glowing rings",
+      "ru": "Легендарные сияющие кольца"
+    },
+    "info": {
+      "tier": 4,
+      "trait": "agi",
+      "range": "very close",
+      "damage": "d10",
+      "damage_bonus": 11,
+      "damage_type": "magic",
+      "burden": 2
+    }
+  },
+  {
+    "slug": "legendary-returning-blade",
+    "kind": "primary weapon",
+    "name": {
+      "en": "Legendary returning blade",
+      "ru": "Легендарный возвращающийся клинок"
+    },
+    "info": {
+      "tier": 4,
+      "trait": "fin",
+      "range": "close",
+      "damage": "d8",
+      "damage_bonus": 9,
+      "damage_type": "magic",
+      "burden": 1,
+      "features": [
+        {
+          "en": "When this weapon is thrown within its range, it appears in your hand immediately after the attack.",
+          "ru": "Когда это оружие брошено в пределах дистанции, оно появляется в вашей руке сразу после атаки."
+        }
+      ]
+    }
+  },
+  {
+    "slug": "legendary-dualstaff",
+    "kind": "primary weapon",
+    "name": {
+      "en": "Legendary dualstaff",
+      "ru": "Легендарный двойной посох"
+    },
+    "info": {
+      "tier": 4,
+      "trait": "ins",
+      "range": "far",
+      "damage": "d8",
+      "damage_bonus": 12,
+      "damage_type": "magic",
+      "burden": 2
+    }
+  },
+  {
+    "slug": "legendary-greatstaff",
+    "kind": "primary weapon",
+    "name": {
+      "en": "Legendary greatstaff",
+      "ru": "Легендарный двуручный посох"
+    },
+    "info": {
+      "tier": 4,
+      "trait": "know",
+      "range": "very far",
+      "damage": "d6",
+      "damage_bonus": 9,
+      "damage_type": "magic",
+      "burden": 2,
+      "features": [
+        {
+          "en": "On a successful attack, roll an additional damage die and discard the lowest result.",
+          "ru": "При успешной атаке бросьте дополнительную кость урона и отбросьте результат с наименьшим значением."
+        }
+      ]
+    }
+  },
+  {
+    "slug": "legendary-shortstaff",
+    "kind": "primary weapon",
+    "name": {
+      "en": "Legendary shortstaff",
+      "ru": "Легендарный короткий посох"
+    },
+    "info": {
+      "tier": 4,
+      "trait": "ins",
+      "range": "close",
+      "damage": "d8",
+      "damage_bonus": 10,
+      "damage_type": "magic",
+      "burden": 1
+    }
+  },
+  {
+    "slug": "legendary-hallowed-axe",
+    "kind": "primary weapon",
+    "name": {
+      "en": "Legendary hallowed axe",
+      "ru": "Легендарный священный топор"
+    },
+    "info": {
+      "tier": 4,
+      "trait": "str",
+      "range": "melee",
+      "damage": "d8",
+      "damage_bonus": 10,
+      "damage_type": "magic",
+      "burden": 1
+    }
+  },
+  {
+    "slug": "legendary-scepter",
+    "kind": "primary weapon",
+    "name": {
+      "en": "Legendary scepter",
+      "ru": "Легендарный скипетр"
+    },
+    "info": {
+      "tier": 4,
+      "trait": "pre",
+      "range": "far",
+      "damage": "d6",
+      "damage_bonus": 9,
+      "damage_type": "magic",
+      "burden": 2,
+      "versatile": {
+        "trait": "pre",
+        "range": "melee",
+        "damage": "d8",
+        "damage_bonus": 6
+      }
+    }
+  },
+  {
+    "slug": "wand-of-essek",
+    "kind": "primary weapon",
+    "name": {
+      "en": "Wand of Essek",
+      "ru": "Палочка Эссека"
+    },
+    "info": {
+      "tier": 4,
+      "trait": "know",
+      "range": "far",
+      "damage": "d8",
+      "damage_bonus": 13,
+      "damage_type": "magic",
+      "burden": 1,
+      "features": [
+        {
+          "en": "You can choose the target of your attack after making your attack roll.",
+          "ru": "Вы можете выбрать цель своей атаки после того, как совершите бросок атаки."
+        }
+      ]
+    }
+  },
+  {
+    "slug": "floating-bladeshards",
+    "kind": "primary weapon",
+    "name": {
+      "en": "Floating bladeshards",
+      "ru": "Парящие осколки клинка"
+    },
+    "info": {
+      "tier": 4,
+      "trait": "ins",
+      "range": "close",
+      "damage": "d8",
+      "damage_bonus": 9,
+      "damage_type": "magic",
+      "burden": 1,
+      "features": [
+        {
+          "en": "On a successful attack, roll an additional damage die and discard the lowest result.",
+          "ru": "При успешной атаке бросьте дополнительную кость урона и отбросьте результат с наименьшим значением."
+        }
+      ]
+    }
+  },
+  {
+    "slug": "fusion-gloves",
+    "kind": "primary weapon",
+    "name": {
+      "en": "Fusion gloves",
+      "ru": "Перчатки Слияния"
+    },
+    "info": {
+      "tier": 4,
+      "trait": "know",
+      "range": "very far",
+      "damage": "d6",
+      "damage_bonus": 9,
+      "damage_type": "magic",
+      "burden": 2,
+      "features": [
+        {
+          "en": "Gain a bonus to your damage rolls equal to your level.",
+          "ru": "Получите бонус к броскам урона, равный вашему уровню."
+        }
+      ]
+    }
+  },
+  {
+    "slug": "siphoning-gauntlets",
+    "kind": "primary weapon",
+    "name": {
+      "en": "Siphoning gauntlets",
+      "ru": "Поглощающие рукавицы"
+    },
+    "info": {
+      "tier": 4,
+      "trait": "pre",
+      "range": "melee",
+      "damage": "d10",
+      "damage_bonus": 9,
+      "damage_type": "magic",
+      "burden": 2,
+      "features": [
+        {
+          "en": "On a successful attack, roll a d6. On a result of 6, clear a Hit Point or clear a Stress.",
+          "ru": "При успешной атаке бросьте d6. При результате в 6 очистите Рану или Стресс."
+        }
+      ]
+    }
+  },
+  {
+    "slug": "bloodstaff",
+    "kind": "primary weapon",
+    "name": {
+      "en": "Bloodstaff",
+      "ru": "Посох крови"
+    },
+    "info": {
+      "tier": 4,
+      "trait": "ins",
+      "range": "far",
+      "damage": "d20",
+      "damage_bonus": 7,
+      "damage_type": "magic",
+      "burden": 2,
+      "features": [
+        {
+          "en": "Each time you make a successful attack, you must mark a Stress.",
+          "ru": "Каждый раз, когда вы отмечаете Ячейку Брони, вы должны отметить Стресс."
+        }
+      ]
+    }
+  },
+  {
+    "slug": "magus-revolver",
+    "kind": "primary weapon",
+    "name": {
+      "en": "Magus revolver",
+      "ru": "Револьвер Магуса"
+    },
+    "info": {
+      "tier": 4,
+      "trait": "fin",
+      "range": "very far",
+      "damage": "d6",
+      "damage_bonus": 13,
+      "damage_type": "magic",
+      "burden": 1,
+      "features": [
+        {
+          "en": "After you make an attack, roll a d6. On a result of 1, you must mark a Stress to reload this weapon before you can fire it again.",
+          "ru": "После того, как вы совершили атаку, бросьте d6. При результате в 1 вы должны отметить Стресс, чтобы перезарядить это оружие, прежде чем вы сможете выстрелить снова."
+        }
+      ]
+    }
+  },
+  {
+    "slug": "curved-dagger",
+    "kind": "primary weapon",
+    "name": {
+      "en": "Curved dagger",
+      "ru": "Изогнутый кинжал"
+    },
+    "info": {
+      "tier": 4,
+      "trait": "fin",
+      "range": "melee",
+      "damage": "d8",
+      "damage_bonus": 9,
+      "damage_type": "physical",
+      "burden": 1,
+      "features": [
+        {
+          "en": "When you roll a 1 on a damage die, it deals 8 damage instead.",
+          "ru": "Когда вы выбрасываете 1 на кости урона, она наносит 8 урона вместо этого."
+        }
+      ]
+    }
+  },
+  {
+    "slug": "legendary-halberd",
+    "kind": "primary weapon",
+    "name": {
+      "en": "Legendary halberd",
+      "ru": "Легендарная алебарда"
+    },
+    "info": {
+      "tier": 4,
+      "trait": "str",
+      "range": "very close",
+      "damage": "d10",
+      "damage_bonus": 11,
+      "damage_type": "physical",
+      "burden": 2,
+      "bonuses": { "traits": { "fin": -1 } }
+    }
+  },
+  {
+    "slug": "legendary-mace",
+    "kind": "primary weapon",
+    "name": {
+      "en": "Legendary mace",
+      "ru": "Легендарная булава"
+    },
+    "info": {
+      "tier": 4,
+      "trait": "str",
+      "range": "melee",
+      "damage": "d8",
+      "damage_bonus": 10,
+      "damage_type": "physical",
+      "burden": 1
+    }
+  },
+  {
+    "slug": "legendary-rapier",
+    "kind": "primary weapon",
+    "name": {
+      "en": "Legendary rapier",
+      "ru": "Легендарная рапира"
+    },
+    "info": {
+      "tier": 4,
+      "trait": "pre",
+      "range": "melee",
+      "damage": "d8",
+      "damage_bonus": 9,
+      "damage_type": "physical",
+      "burden": 1,
+      "features": [
+        {
+          "en": "When you make an attack, you can mark a Stress to target another creature within range.",
+          "ru": "Когда вы совершаете атаку, вы можете отметить Стресс, чтобы выбрать целью еще одно существо в пределах дальности."
+        }
+      ]
+    }
+  },
+  {
+    "slug": "legendary-cutlass",
+    "kind": "primary weapon",
+    "name": {
+      "en": "Legendary cutlass",
+      "ru": "Легендарная сабля"
+    },
+    "info": {
+      "tier": 4,
+      "trait": "pre",
+      "range": "melee",
+      "damage": "d8",
+      "damage_bonus": 10,
+      "damage_type": "physical",
+      "burden": 1
+    }
+  },
+  {
+    "slug": "legendary-battleaxe",
+    "kind": "primary weapon",
+    "name": {
+      "en": "Legendary battleaxe",
+      "ru": "Легендарная секира"
+    },
+    "info": {
+      "tier": 4,
+      "trait": "str",
+      "range": "melee",
+      "damage": "d10",
+      "damage_bonus": 12,
+      "damage_type": "physical",
+      "burden": 2
+    }
+  },
+  {
+    "slug": "legendary-spear",
+    "kind": "primary weapon",
+    "name": {
+      "en": "Legendary spear",
+      "ru": "Легендарное копьё"
+    },
+    "info": {
+      "tier": 4,
+      "trait": "fin",
+      "range": "very close",
+      "damage": "d10",
+      "damage_bonus": 11,
+      "damage_type": "physical",
+      "burden": 2,
+      "bonuses": { "traits": { "fin": -1 } }
+    }
+  },
+  {
+    "slug": "legendary-crossbow",
+    "kind": "primary weapon",
+    "name": {
+      "en": "Legendary сrossbow",
+      "ru": "Легендарный арбалет"
+    },
+    "info": {
+      "tier": 4,
+      "trait": "fin",
+      "range": "far",
+      "damage": "d6",
+      "damage_bonus": 10,
+      "damage_type": "physical",
+      "burden": 1
+    }
+  },
+  {
+    "slug": "legendary-warhammer",
+    "kind": "primary weapon",
+    "name": {
+      "en": "Legendary warhammer",
+      "ru": "Легендарный боевой молот"
+    },
+    "info": {
+      "tier": 4,
+      "trait": "str",
+      "range": "melee",
+      "damage": "d12",
+      "damage_bonus": 12,
+      "damage_type": "physical",
+      "burden": 2,
+      "bonuses": { "evasion": -1 }
+    }
+  },
+  {
+    "slug": "legendary-quarterstaff",
+    "kind": "primary weapon",
+    "name": {
+      "en": "Legendary quarterstaff",
+      "ru": "Легендарный боевой посох"
+    },
+    "info": {
+      "tier": 4,
+      "trait": "ins",
+      "range": "melee",
+      "damage": "d10",
+      "damage_bonus": 12,
+      "damage_type": "physical",
+      "burden": 2
+    }
+  },
+  {
+    "slug": "legendary-greatsword",
+    "kind": "primary weapon",
+    "name": {
+      "en": "Legendary greatsword",
+      "ru": "Легендарный двуручный меч"
+    },
+    "info": {
+      "tier": 4,
+      "trait": "str",
+      "range": "melee",
+      "damage": "d10",
+      "damage_bonus": 12,
+      "damage_type": "physical",
+      "burden": 2,
+      "bonuses": { "evasion": -1 },
+      "features": [
+        {
+          "en": "On a successful attack, roll an additional damage die and discard the lowest result.",
+          "ru": "При успешной атаке бросьте дополнительную кость урона и отбросьте результат с наименьшим значением."
+        }
+      ]
+    }
+  },
+  {
+    "slug": "legendary-longbow",
+    "kind": "primary weapon",
+    "name": {
+      "en": "Legendary longbow",
+      "ru": "Легендарный длинный лук"
+    },
+    "info": {
+      "tier": 4,
+      "trait": "agi",
+      "range": "very far",
+      "damage": "d8",
+      "damage_bonus": 12,
+      "damage_type": "physical",
+      "burden": 2,
+      "bonuses": { "traits": { "fin": -1 } }
+    }
+  },
+  {
+    "slug": "legendary-longsword",
+    "kind": "primary weapon",
+    "name": {
+      "en": "Legendary longsword",
+      "ru": "Легендарный длинный меч"
+    },
+    "info": {
+      "tier": 4,
+      "trait": "agi",
+      "range": "melee",
+      "damage": "d8",
+      "damage_bonus": 12,
+      "damage_type": "physical",
+      "burden": 2
+    }
+  },
+  {
+    "slug": "legendary-dagger",
+    "kind": "primary weapon",
+    "name": {
+      "en": "Legendary dagger",
+      "ru": "Легендарный кинжал"
+    },
+    "info": {
+      "tier": 4,
+      "trait": "fin",
+      "range": "melee",
+      "damage": "d8",
+      "damage_bonus": 10,
+      "damage_type": "physical",
+      "burden": 1
+    }
+  },
+  {
+    "slug": "legendary-shortbow",
+    "kind": "primary weapon",
+    "name": {
+      "en": "Legendary shortbow",
+      "ru": "Легендарный короткий лук"
+    },
+    "info": {
+      "tier": 4,
+      "trait": "agi",
+      "range": "far",
+      "damage": "d6",
+      "damage_bonus": 12,
+      "damage_type": "physical",
+      "burden": 2
+    }
+  },
+  {
+    "slug": "legendary-broadsword",
+    "kind": "primary weapon",
+    "name": {
+      "en": "Legendary broadsword",
+      "ru": "Легендарный палаш"
+    },
+    "info": {
+      "tier": 4,
+      "trait": "agi",
+      "range": "melee",
+      "damage": "d8",
+      "damage_bonus": 9,
+      "damage_type": "physical",
+      "burden": 1,
+      "bonuses": { "attack": 1 }
+    }
+  },
+  {
+    "slug": "aantari-bow",
+    "kind": "primary weapon",
+    "name": {
+      "en": "Aantari bow",
+      "ru": "Лук Аантари"
+    },
+    "info": {
+      "tier": 4,
+      "trait": "fin",
+      "range": "far",
+      "damage": "d6",
+      "damage_bonus": 11,
+      "damage_type": "physical",
+      "burden": 2,
+      "bonuses": { "attack": 1 }
+    }
+  },
+  {
+    "slug": "dual-ended-sword",
+    "kind": "primary weapon",
+    "name": {
+      "en": "Dual-ended sword",
+      "ru": "Обоюдоострый меч"
+    },
+    "info": {
+      "tier": 4,
+      "trait": "agi",
+      "range": "melee",
+      "damage": "d10",
+      "damage_bonus": 9,
+      "damage_type": "physical",
+      "burden": 2,
+      "features": [
+        {
+          "en": "When you make an attack, you can mark a Stress to target another creature within range.",
+          "ru": "Когда вы совершаете атаку, вы можете отметить Стресс, чтобы выбрать целью еще одно существо в пределах дальности."
+        }
+      ]
+    }
+  },
+  {
+    "slug": "sledge-axe",
+    "kind": "primary weapon",
+    "name": {
+      "en": "Sledge axe",
+      "ru": "Разрушительный колун"
+    },
+    "info": {
+      "tier": 4,
+      "trait": "str",
+      "range": "melee",
+      "damage": "d12",
+      "damage_bonus": 13,
+      "damage_type": "physical",
+      "burden": 2,
+      "bonuses": { "traits": { "agi": -1 } },
+      "features": [
+        {
+          "en": "On a successful attack, all adversaries within Very Close range must mark a Stress.",
+          "ru": "При успешной атаке все противники в пределах Близкой дистанции должны отметить Стресс."
+        }
+      ]
+    }
+  },
+  {
+    "slug": "hand-cannon",
+    "kind": "primary weapon",
+    "name": {
+      "en": "Hand cannon",
+      "ru": "Ручная пушка"
+    },
+    "info": {
+      "tier": 4,
+      "trait": "fin",
+      "range": "very far",
+      "damage": "d6",
+      "damage_bonus": 12,
+      "damage_type": "physical",
+      "burden": 1,
+      "features": [
+        {
+          "en": "After you make an attack, roll a d6. On a 1, you must mark a Stress to reload this weapon before you can fire it again.",
+          "ru": "После того, как вы совершили атаку, бросьте d6. При результате в 1 вы должны отметить Стресс, чтобы перезарядить это оружие, прежде чем вы сможете выстрелить снова."
+        }
+      ]
+    }
+  },
+  {
+    "slug": "ricochet-axes",
+    "kind": "primary weapon",
+    "name": {
+      "en": "Ricochet axes",
+      "ru": "Топоры Рикошета"
+    },
+    "info": {
+      "tier": 4,
+      "trait": "agi",
+      "range": "far",
+      "damage": "d6",
+      "damage_bonus": 11,
+      "damage_type": "physical",
+      "burden": 2,
+      "features": [
+        {
+          "en": "Mark 1 or more Stress to hit that many targets in range of the attack.",
+          "ru": "Отметьте 1 или более Стресса для нанесения урона стольким же целям в Дистанции атаки."
+        }
+      ]
+    }
+  },
+  {
+    "slug": "impact-gauntlet",
+    "kind": "primary weapon",
+    "name": {
+      "en": "Impact gauntlet",
+      "ru": "Ударная перчатка"
+    },
+    "info": {
+      "tier": 4,
+      "trait": "str",
+      "range": "melee",
+      "damage": "d10",
+      "damage_bonus": 11,
+      "damage_type": "physical",
+      "burden": 1,
+      "features": [
+        {
+          "en": "On a successful attack, you can spend a Hope to knock the target back to Far range.",
+          "ru": "При успешной атаке вы можете потратить Надежду, чтобы отбросить цель на Далекую Дистанцию."
+        }
+      ]
+    }
+  },
+  {
+    "slug": "extended-polearm",
+    "kind": "primary weapon",
+    "name": {
+      "en": "Extended polearm",
+      "ru": "Удлинённая глефа"
+    },
+    "info": {
+      "tier": 4,
+      "trait": "fin",
+      "range": "very close",
+      "damage": "d8",
+      "damage_bonus": 10,
+      "damage_type": "physical",
+      "burden": 2,
+      "features": [
+        {
+          "en": "This weapon's attack targets all adversaries in a line within range.",
+          "ru": "Это оружие атакует всех противников в линии в пределах дистанции."
+        }
+      ]
+    }
+  },
+  {
+    "slug": "swinging-ropeblade",
+    "kind": "primary weapon",
+    "name": {
+      "en": "Swinging ropeblade",
+      "ru": "Шэнбяо"
+    },
+    "info": {
+      "tier": 4,
+      "trait": "pre",
+      "range": "close",
+      "damage": "d8",
+      "damage_bonus": 9,
+      "damage_type": "physical",
+      "burden": 2,
+      "features": [
+        {
+          "en": "On a successful attack, you can spend a Hope to Restrain the target or pull them into Melee range with you.",
+          "ru": "При успешной атаке вы можете потратить Надежду, чтобы Обездвижить цель или притянуть её Вплотную к себе."
+        }
+      ]
+    }
+  },
+  {
+    "slug": "legendary-tower-shield",
+    "kind": "secondary weapon",
+    "name": {
+      "en": "Legendary tower shield",
+      "ru": "Легендарный башенный щит"
+    },
+    "info": {
+      "tier": 4,
+      "trait": "str",
+      "range": "melee",
+      "damage": "d6",
+      "damage_bonus": 6,
+      "damage_type": "physical",
+      "burden": 1,
+      "bonuses": { "evasion": -1, "armor_score": 5 }
+    }
+  },
+  {
+    "slug": "legendary-shortsword",
+    "kind": "secondary weapon",
+    "name": {
+      "en": "Legendary shortsword",
+      "ru": "Легендарный короткий меч"
+    },
+    "info": {
+      "tier": 4,
+      "trait": "agi",
+      "range": "melee",
+      "damage": "d8",
+      "damage_bonus": 6,
+      "damage_type": "physical",
+      "burden": 1,
+      "features": [
+        {
+          "en": "+5 to primary weapon damage to targets within Melee range.",
+          "ru": "+5 к урону основного оружия по целям Вплотную к вам."
+        }
+      ]
+    }
+  },
+  {
+    "slug": "legendary-round-shield",
+    "kind": "secondary weapon",
+    "name": {
+      "en": "Legendary round shield",
+      "ru": "Легендарный круглый щит"
+    },
+    "info": {
+      "tier": 4,
+      "trait": "str",
+      "range": "melee",
+      "damage": "d4",
+      "damage_bonus": 6,
+      "damage_type": "physical",
+      "burden": 1,
+      "bonuses": { "armor_score": 4 }
+    }
+  },
+  {
+    "slug": "legendary-grappler",
+    "kind": "secondary weapon",
+    "name": {
+      "en": "Legendary grappler",
+      "ru": "Легендарный крюк"
+    },
+    "info": {
+      "tier": 4,
+      "trait": "fin",
+      "range": "close",
+      "damage": "d6",
+      "damage_bonus": 6,
+      "damage_type": "physical",
+      "burden": 1,
+      "features": [
+        {
+          "en": "On a successful attack, you can pull the target into Melee range.",
+          "ru": "При успешной атаке вы можете притянуть цель Вплотную к вам."
+        }
+      ]
+    }
+  },
+  {
+    "slug": "legendary-small-dagger",
+    "kind": "secondary weapon",
+    "name": {
+      "en": "Legendary small dagger",
+      "ru": "Легендарный малый кинжал"
+    },
+    "info": {
+      "tier": 4,
+      "trait": "fin",
+      "range": "melee",
+      "damage": "d8",
+      "damage_bonus": 6,
+      "damage_type": "physical",
+      "burden": 1,
+      "features": [
+        {
+          "en": "+5 to primary weapon damage to targets within Melee range.",
+          "ru": "+5 к урону основного оружия по целям Вплотную к вам."
+        }
+      ]
+    }
+  },
+  {
+    "slug": "legendary-hand-crossbow",
+    "kind": "secondary weapon",
+    "name": {
+      "en": "Legendary hand crossbow",
+      "ru": "Легендарный ручной арбалет"
+    },
+    "info": {
+      "tier": 4,
+      "trait": "fin",
+      "range": "far",
+      "damage": "d6",
+      "damage_bonus": 7,
+      "damage_type": "physical",
+      "burden": 1
+    }
+  },
+  {
+    "slug": "legendary-whip",
+    "kind": "secondary weapon",
+    "name": {
+      "en": "Legendary whip",
+      "ru": "Легендарный хлыст"
+    },
+    "info": {
+      "tier": 4,
+      "trait": "pre",
+      "range": "very close",
+      "damage": "d6",
+      "damage_bonus": 6,
+      "damage_type": "physical",
+      "burden": 1,
+      "features": [
+        {
+          "en": "Mark a Stress to crack the whip and force all adversaries within Melee range back to Close range.",
+          "ru": "Mark a Stress to crack the whip and force all adversaries within Melee range back to Close range."
+        }
+      ]
+    }
+  },
+  {
+    "slug": "knuckle-claws",
+    "kind": "secondary weapon",
+    "name": {
+      "en": "Knuckle claws",
+      "ru": "Наручные когти"
+    },
+    "info": {
+      "tier": 4,
+      "trait": "str",
+      "range": "melee",
+      "damage": "d6",
+      "damage_bonus": 8,
+      "damage_type": "physical",
+      "burden": 1,
+      "features": [
+        {
+          "en": "When you make an attack with your primary weapon, you can deal damage to another target within Melee range.",
+          "ru": "When you make an attack with your primary weapon, you can deal damage to another target within Melee range."
+        }
+      ]
+    }
+  },
+  {
+    "slug": "primer-shard",
+    "kind": "secondary weapon",
+    "name": {
+      "en": "Primer shard",
+      "ru": "Осколок Основания"
+    },
+    "info": {
+      "tier": 4,
+      "trait": "ins",
+      "range": "very close",
+      "damage": "d4",
+      "damage_bonus": 0,
+      "damage_type": "physical",
+      "burden": 1,
+      "features": [
+        {
+          "en": "On a successful attack, your next attack against the same target with your primary weapon automatically succeeds.",
+          "ru": "On a successful attack, your next attack against the same target with your primary weapon automatically succeeds."
+        }
+      ]
+    }
+  },
+  {
+    "slug": "braveshield",
+    "kind": "secondary weapon",
+    "name": {
+      "en": "Braveshield",
+      "ru": "Щит храбреца"
+    },
+    "info": {
+      "tier": 4,
+      "trait": "agi",
+      "range": "melee",
+      "damage": "d4",
+      "damage_bonus": 6,
+      "damage_type": "physical",
+      "burden": 1,
+      "features": [
+        {
+          "en": "When you mark an Armor Slot, it reduces damage for you and all allies within Melee range of you who took the same damage.",
+          "ru": "When you mark an Armor Slot, it reduces damage for you and all allies within Melee range of you who took the same damage."
+        }
+      ]
+    }
+  }
+]
