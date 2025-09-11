@@ -77,7 +77,12 @@
     },
     "bard": {
       "name": { "en": "Bard", "ru": "Бард" },
-      "subclasses": {}
+      "subclasses": {
+        "college_of_dance": { "name": { "en": "College of dance", "ru": "Коллегия танца" } },
+        "college_of_glamour": { "name": { "en": "College of glamour", "ru": "Коллегия очарования" } },
+        "college_of_lore": { "name": { "en": "College of lore", "ru": "Коллегия знания" } },
+        "college_of_valor": { "name": { "en": "College of valor", "ru": "Коллегия доблести" } }
+      }
     },
     "cleric": {
       "name": { "en": "Cleric", "ru": "Жрец" },

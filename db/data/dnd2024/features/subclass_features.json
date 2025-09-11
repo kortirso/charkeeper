@@ -1,0 +1,198 @@
+[
+  {
+    "slug": "dazzling_footwork",
+    "title": { "en": "Dazzling footwork", "ru": "Блистательная подтанцовка" },
+    "description": {
+      "en": "While you aren't wearing armor or wielding a Shield, you gain the following benefits: 1) You have Advantage on any Charisma (Performance) check you make that involves you dancing. 2) When you expend a use of your Bardic Inspiration as part of an action, a Bonus Action, or a Reaction, you can make one Unarmed Strike as part of that action, Bonus Action, or Reaction.",
+      "ru": "Пока вы не носите доспехи или щит, вы получаете следующие эффекты: 1) У вас есть преимущество на любую проверку Харизмы (Выступление), которая включает в себя танец. 2) Когда вы используете ваше бардовское вдохновение действием, бонусным действием или реакцией, вы можете совершить 1 безоружный удар частью этого действия, бонусного действия или реакции."
+    },
+    "origin": "subclass",
+    "origin_value": "college_of_dance",
+    "kind": "static",
+    "conditions": { "level": 3 }
+  },
+  {
+    "slug": "inspiring_movement",
+    "title": { "en": "Inspiring movement", "ru": "Вдохновляющее перемещение" },
+    "description": {
+      "en": "When an enemy you can see ends its turn within 5 feet of you, you can take a Reaction and expend one use of your Bardic Inspiration to move up to half your Speed. Then one ally of your choice within 30 feet of you can also move up to half their Speed using their Reaction. None of this feature's movement provokes Opportunity Attacks.",
+      "ru": "Когда враг, которого вы видите, заканчивает свой ход в пределах 5 футов от вас, вы можете реакцией потратить 1 кость бардовского вдохновения, чтобы переместиться на половину своей скорости. Затем 1 союзник по вашему выбору в пределах 30 футов от вас также может переместиться на половину своей скорости, используя свою реакцию. Ни одно из перемещений с использованием этого умения не вызывает провоцированной атаки."
+    },
+    "origin": "subclass",
+    "origin_value": "college_of_dance",
+    "kind": "static",
+    "conditions": { "level": 6 }
+  },
+  {
+    "slug": "tandem_footwork",
+    "title": { "en": "Tandem footwork", "ru": "Тандемный танец" },
+    "description": {
+      "en": "When you roll Initiative, you can expend one use of your Bardic Inspiration if you don't have the Incapacitated condition. When you do so, roll your Bardic Inspiration die; you and each ally within 30 feet of you who can see or hear you gains a bonus to Initiative equal to the number rolled.",
+      "ru": "Когда вы совершаете бросок инициативы, вы можете потратить 1 кость вашего бардовское вдохновение, если у вас нет состояния недееспособный. Когда вы это совершаете, бросьте кость бардовского вдохновения; вы и каждый союзник в радиусе 30 футов от вас, который может вас видеть или слышать, получаете бонус к инициативе, равный выпавшему значению."
+    },
+    "origin": "subclass",
+    "origin_value": "college_of_dance",
+    "kind": "static",
+    "conditions": { "level": 6 }
+  },
+  {
+    "slug": "leading_evasion",
+    "title": { "en": "Leading evasion", "ru": "Ведущее уклонение" },
+    "description": {
+      "en": "When you are subjected to an effect that allows you to make a Dexterity saving throw to take only half damage, you instead take no damage if you succeed on the saving throw and only half damage if you fail. If any creatures within 5 feet of you are making the same Dexterity saving throw, you can share this benefit with them for that save.",
+      "ru": "Когда вы подвергаетесь эффекту, из-за которого вы совершаете спасбросок Ловкости, чтобы получить только половину урона, вместо этого вы не получаете урона, если вы преуспеваете в спасброске, и только половину урона, если вы проваливаете его. Если какие-либо существа в пределах 5 футов от вас совершают тот же спасбросок Ловкости, то вы можете поделиться этим умением с ними для этого спасброска."
+    },
+    "origin": "subclass",
+    "origin_value": "college_of_dance",
+    "kind": "static",
+    "conditions": { "level": 14 }
+  },
+  {
+    "slug": "beguiling_magic",
+    "title": { "en": "Beguiling magic", "ru": "Магия обольщения" },
+    "description": {
+      "en": "Immediately after you cast an Enchantment or Illusion spell using a spell slot, you can cause a creature you can see within 60 feet of yourself to make a Wisdom saving throw against your spell save DC. On a failed save, the target has the Charmed or Frightened condition (your choice) for 1 minute. The target repeats the save at the end of each of its turns, ending the effect on itself on a success. You can also restore your use of it by expending one use of your Bardic Inspiration (no action required).",
+      "ru": "Сразу после использования вами заклинания школы очарования или иллюзии, с использованием ячейки заклинания, вы можете заставить существо, которое вы видите в пределах 60 футов от себя, совершить спасбросок Мудрости против вашей Сл. спасброска заклинания. При провале спасброска цель становится очарованной или испуганной (по вашему выбору) в течение 1 минуты. В конце каждого своего хода цель повторяет спасбросок, при успешном результате эффект заканчивается. Вы также можете восстановить его использование, потратив одну кость бардовского вдохновения (действие не требуется)."
+    },
+    "origin": "subclass",
+    "origin_value": "college_of_glamour",
+    "kind": "static",
+    "description_eval_variables": {
+      "limit": "1"
+    },
+    "limit_refresh": "long_rest",
+    "conditions": { "level": 3 }
+  },
+  {
+    "slug": "mantle_of_inspiration",
+    "title": { "en": "Mantle of inspiration", "ru": "Мантия вдохновения" },
+    "description": {
+      "en": "As a Bonus Action, you can expend a use of Bardic Inspiration, rolling a Bardic Inspiration die. When you do so, choose a number of other creatures ({{value}}) within 60 feet of yourself. Each of those creatures gains a number of Temporary Hit Points equal to two times the number rolled on the Bardic Inspiration die, and then each can use its Reaction to move up to its Speed without provoking Opportunity Attacks.",
+      "ru": "Бонусным действием вы можете потратить кость бардовского вдохновения. Когда вы это совершаете, выберите несколько других существ (кол-во {{value}}) в пределах 60 футов от себя. Каждое из этих существ получает временные хиты, количество которых равно двукратному значению выпавшему на кости бардовского вдохновения, а затем каждое из этих существ может реакцией переместиться на свою скорость, не вызывая провоцированные атаки."
+    },
+    "origin": "subclass",
+    "origin_value": "college_of_glamour",
+    "kind": "static",
+    "description_eval_variables": {
+      "value": "[1, modifiers['cha']].max"
+    },
+    "conditions": { "level": 3 }
+  },
+  {
+    "slug": "mantle_of_majesty",
+    "title": { "en": "Mantle of majesty", "ru": "Мантия величия" },
+    "description": {
+      "en": "As a Bonus Action, you cast Command without expending a spell slot, and you take on an unearthly appearance for 1 minute or until your Concentration ends. During this time, you can cast Command as a Bonus Action without expending a spell slots. Any creature Charmed by you automaticaily fails its saving throw against the Command you cast with this feature. You can also restore your use of it by expending a level 3+spell slot (no action required).",
+      "ru": "Бонусным действием вы можете использовать заклинание Приказ и принять неземной облик на 1 минуту или до тех пор, пока не закончится ваша концентрация. В течение этого времени вы можете накладывать заклинание Приказ бонусным действием, не тратя ячейку заклинания. Любое существо, очарованное вами, автоматически проваливает свой спасбросок против заклинания Приказ, которое вы использовали с помощью этой способности. Вы можете восстановить его использование, потратив ячейку заклинания 3 уровня и выше (действие не требуется)."
+    },
+    "origin": "subclass",
+    "origin_value": "college_of_glamour",
+    "kind": "static",
+    "conditions": { "level": 6 }
+  },
+  {
+    "slug": "unbreakable_majesty",
+    "title": { "en": "Unbreakable majesty", "ru": "Несокрушимое величие" },
+    "description": {
+      "en": "As a Bonus Action, you can assume a magically majestic presence for 1 minute or until you have the Incapacitated condition. For the duration, whenever any creature hits you with an attack roll for the first time on a turn, the attacker must succeed on a Charisma saving throw (DC {{value}}), or the attack misses instead.",
+      "ru": "Бонусным действием вы можете принять волшебный величественный облик на 1 минуту или до тех пор, пока вы не станете недееспособны. В течение этого времени, когда любое существо первый раз за ход попадает по вам броском атаки, атакующий должен преуспеть в спасброске Харизмы (УС {{value}}) или атака вместо этого промахнется."
+    },
+    "origin": "subclass",
+    "origin_value": "college_of_glamour",
+    "kind": "static",
+    "description_eval_variables": {
+      "value": "spell_classes[:bard][:save_dc]",
+      "limit": "1"
+    },
+    "limit_refresh": "short_rest",
+    "conditions": { "level": 14 }
+  },
+  {
+   "slug": "cutting_words",
+    "title": { "en": "Cutting words", "ru": "Острое cловцо" },
+    "description": {
+      "en": "When a creature that you can see within 60 feet of yourself makes a damage roll or succeeds on an ability check or attack roll, you can take a Reaction to expend one use of your Bardic Inspiration; roll your Bardic Inspiration die, and subtract the number rolled from the creature's roll, reducing the damage or potentially turning the success into a failure.",
+      "ru": "Когда существо, которое вы видите в пределах 60 футов от вас, совершает бросок урона, преуспевает в проверке характеристики или попадает атакой, вы можете реакцией потратить 1 кость бардовского вдохновения; бросьте кость бардовского вдохновения и вычтите выпавшее число из броска существа, уменьшая урон или потенциально превращая успех в неудачу."
+    },
+    "origin": "subclass",
+    "origin_value": "college_of_lore",
+    "kind": "static",
+    "conditions": { "level": 3 }
+  },
+  {
+   "slug": "magical_discoveries",
+    "title": { "en": "Magical discoveries", "ru": "Магические открытия" },
+    "description": {
+      "en": "You learn two spells of your choice. These spells can come from the Cleric, Druid, or Wizard spell list. A spell you choose must be a cantrip or a spell for which you have spell slots. You always have the chosen spells prepared, and whenever you gain Bard level, you can replace one of the spells with another spell.",
+      "ru": "Вы изучаете 2 заклинания по своему выбору. Эти заклинания могут быть из списка заклинаний жреца, друида или волшебника. Выбранное вами заклинание должно быть заговором или заклинанием, для которого у вас есть ячейки заклинаний. Выбранные заклинания всегда подготовлены. Когда вы получаете уровень барда, вы можете заменить 1 из заклинаний другим."
+    },
+    "origin": "subclass",
+    "origin_value": "college_of_lore",
+    "kind": "text",
+    "conditions": { "level": 6 }
+  },
+  {
+   "slug": "peerless_skill",
+    "title": { "en": "Peerless skill", "ru": "Непревзойденный талант" },
+    "description": {
+      "en": "When you make an ability check or attack roll and fail. you can expend one use of Bardic Inspiration; roll the Bardic Inspiration die, and add the number rolled to the d20, potentially turning a failure into a success. On a failure, the Bardic Inspiration isn't expended.",
+      "ru": "Когда вы совершаете проверку характеристики или атаку и терпите неудачу, вы можете потратить 1 кость бардовского вдохновения; бросьте кость бардовского вдохновения и добавьте выпавшее значение к проверке к20, потенциально превращая неудачу в успех. При неудаче кость бардовского вдохновения не расходуется."
+    },
+    "origin": "subclass",
+    "origin_value": "college_of_lore",
+    "kind": "static",
+    "conditions": { "level": 14 }
+  },
+
+
+
+
+  {
+   "slug": "combat_inspiration",
+    "title": { "en": "Combat inspiration", "ru": "Боевое вдохновение" },
+    "description": {
+      "en": "A creature that has a Bardic Inspiration die from you can use it for one of the following effects. 1) When the creature is hit by an attack roll, that creature can use its Reaction to roll the Bardic Inspiration die and add the number rolled to its AC against that attack, potentially causing the attack to miss. 2) Immediately after the creature hits a target with an attack roll, the creature can roll the Bardic Inspiration die and add the number rolled to the attack's damage against the target.",
+      "ru": "Существо, у которого есть кость бардовского вдохновения от вас, может использовать её для одного из следующих эффектов: 1) Когда по существу попадают броском атаки, то оно может реакцией использовать кость бардовского вдохновения и добавить выпавшее значение к своему КД против этой атаки, что может привести к промаху атаки. 2) Сразу после того, как существо попадает броском атаки, существо может бросить кость бардовского вдохновения и добавить выпавшее значение к урону от атаки против цели."
+    },
+    "origin": "subclass",
+    "origin_value": "college_of_valor",
+    "kind": "static",
+    "conditions": { "level": 3 }
+  },
+  {
+   "slug": "martial_training",
+    "title": { "en": "Martial training", "ru": "Боевая подготовка" },
+    "description": {
+      "en": "You can use a Simple or Martial weapon as a Spellcasting Focus to cast spells from your Bard spell list.",
+      "ru": "Вы можете использовать простое или воинское оружие в качестве заклинательной фокусировки, чтобы использовать заклинания из списка заклинаний барда."
+    },
+    "origin": "subclass",
+    "origin_value": "college_of_valor",
+    "kind": "static",
+    "conditions": { "level": 3 }
+  },
+  {
+   "slug": "extra_attack",
+    "title": { "en": "Extra attack", "ru": "Дополнительная атака" },
+    "description": {
+      "en": "You can cast one of your cantrips that has a casting time of an action in place of one of extra attacks.",
+      "ru": "Вы можете использовать один из своих заговоров со временем накладывания «действие» вместо одной из дополнительных атак."
+    },
+    "origin": "subclass",
+    "origin_value": "college_of_valor",
+    "kind": "static",
+    "conditions": { "level": 6 }
+  },
+  {
+   "slug": "battle_magic",
+    "title": { "en": "Battle magic", "ru": "Боевая магия" },
+    "description": {
+      "en": "After you cast a spell that has a casting time of an action, you can make one attack with a weapon as a Bonus Action.",
+      "ru": "После того, как вы используете заклинание, время накладывания которого «действие», то вы можете совершить бонусным действием одну атаку оружием."
+    },
+    "origin": "subclass",
+    "origin_value": "college_of_valor",
+    "kind": "static",
+    "conditions": { "level": 14 }
+  }
+]
