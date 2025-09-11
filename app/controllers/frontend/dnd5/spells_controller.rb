@@ -15,7 +15,7 @@ module Frontend
 
       def relation
         relation = ::Spell.dnd5
-        relation = relation.where("data ->> 'level' <= ?", (0..params[:max_level].to_i).to_a) if params[:max_level]
+        relation = relation.where("data ->> 'level' IN (?)", (0..params[:max_level].to_i).to_a) if params[:max_level]
         relation
       end
     end
