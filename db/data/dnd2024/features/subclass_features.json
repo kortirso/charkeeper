@@ -194,5 +194,241 @@
     "origin_value": "college_of_valor",
     "kind": "static",
     "conditions": { "level": 14 }
+  },
+  {
+    "slug": "frenzy",
+    "title": { "en": "Frenzy", "ru": "Бешенство" },
+    "description": {
+      "en": "If you use Reckless Attack while your Rage is active, you deal extra damage {{value}}d6 to the first target you hit on your turn with a Strength-based attack.",
+      "ru": "Если вы используете Безрассудную атаку, пока активна ваша ярость, то вы наносите дополнительный урон {{value}}к6 цели при попаданиии первой атакой от Силы в ход."
+    },
+    "origin": "subclass",
+    "origin_value": "path_of_the_berserker",
+    "kind": "static",
+    "conditions": { "level": 3 },
+    "description_eval_variables": {
+      "value": "class_level = classes['barbarian']; return 4 if class_level >= 16; return 3 if class_level >= 9; 2"
+    }
+  },
+  {
+    "slug": "mindless_rage",
+    "title": { "en": "Mindless rage", "ru": "Бездумная ярость" },
+    "description": {
+      "en": "You have Immunity to the Charmed and Frightened conditions while your Rage is active. If you're Charmed or Frightened when you enter your Rage, the condition ends on you.",
+      "ru": "У вас есть иммунитет к состояниям очарованный и испуганный, пока активна ваша ярость. Если вы очарованы или испуганы, когда входите в ярость, то эти состояния у вас заканчиваются."
+    },
+    "origin": "subclass",
+    "origin_value": "path_of_the_berserker",
+    "kind": "static",
+    "conditions": { "level": 6 }
+  },
+  {
+    "slug": "retaliation",
+    "title": { "en": "Retaliation", "ru": "Возмездие" },
+    "description": {
+      "en": "When you take damage from a creature that is within 5 feet of you, you can take a Reaction to make one melee attack against that creature, using a weapon or an Unarmed Strike.",
+      "ru": "Когда вы получаете урон от существа, находящегося в пределах 5 футов от вас, вы можете реакцией совершить одну рукопашную атаку против этого существа, используя оружие или безоружный удар."
+    },
+    "origin": "subclass",
+    "origin_value": "path_of_the_berserker",
+    "kind": "static",
+    "conditions": { "level": 10 }
+  },
+  {
+    "slug": "intimidating_presence",
+    "title": { "en": "Intimidating presence", "ru": "Пугающее присутствие" },
+    "description": {
+      "en": "As a Bonus Action each creature of your choice in a 30-foot Emanation originating from you must make a Wisdom saving throw (DC {{value}}). On a failed save, a creature has the Frightened condition for 1 minute. At the end of each of the Frightened creature's turns, the creature repeats the save, ending the effect on itself on a success. You can expend a use of your Rage (no action required) to restore your use of it.",
+      "ru": "Бонусным действием от вас исходит 30-футовая эманация и каждое существо по вашему выбору в эманации должно совершить спасбросок Мудрости (УС {{dc}}). При провале спасброска существо находится в состоянии испуганный в течение 1 минуты. В конце каждого своего хода испуганное существо повторяет спасбросок, при успешном результате эффект заканчивается. Вы можете потратить одно из использований ярости (действие не требуется), чтобы восстановить её использование."
+    },
+    "origin": "subclass",
+    "origin_value": "path_of_the_berserker",
+    "kind": "static",
+    "conditions": { "level": 14 },
+    "description_eval_variables": {
+      "dc": "8 + modifiers['str'] + proficiency_bonus",
+      "limit": "1"
+    },
+    "limit_refresh": "long_rest"
+  },
+  {
+    "slug": "rage_of_the_wilds",
+    "title": { "en": "Rage of the wilds", "ru": "Ярость диких земель" },
+    "description": {
+      "en": "Whenever you activate your Rage, you gain one of the following options of your choice. 1) While your Rage is active, you have Resistance to every damage type except Force, Necrotic, Psychic, and Radiant. 2) When you activate your Rage, you can take the Disengage and Dash actions as part of that Bonus Action. While your Rage is active, you can take a Bonus Action to take both of those actions. 3) While your Rage is active, your allies have Advantage on attack rolls against any enemy of yours within 5 feet of you.",
+      "ru": "Каждый раз, когда вы активируете ярость, вы получаете одну из следующих способностей по вашему выбору. 1) Пока активна ярость, у вас есть сопротивление ко всем типам урона, кроме силового поля, некротической энергии, психической энергии и излучения. 2) Когда вы активируете ярость, вы можете совершить действия отход и рывок частью этого бонусного действия. Пока активна ярость, вы можете бонусным действием выполнить оба этих действия. 3) Пока активна ярость, ваши союзники получают преимущество при бросках атаки против любого вашего врага в 5-футовом радиусе от вас."
+    },
+    "origin": "subclass",
+    "origin_value": "path_of_the_wild_heart",
+    "kind": "text",
+    "conditions": { "level": 3 }
+  },
+  {
+    "slug": "aspect_of_the_wilds",
+    "title": { "en": "Aspect of the wilds", "ru": "Аспект диких земель" },
+    "description": {
+      "en": "You gain one of the following options of your choice. Whenever you finish a Long Rest, you can change your choice. 1) You have Darkvision with a range of 60 feet. If you already have Darkvision, its range increases by 60 feet. 2) You have a Climb Speed equal to your Speed. 3) You have a Swim Speed equal to your Speed.",
+      "ru": "Вы получаете один из следующих вариантов по вашему выбору. Каждый раз, когда вы заканчиваете продолжительный отдых, вы можете изменить свой выбор. 1) Вы имеете тёмное зрение в пределах 60 футов. Если у вас уже есть тёмное зрение, то его дальность увеличивается на 60 футов. 2) Ваша скорость лазания равна вашей скорости. 3) Ваша скорость плавания равна вашей скорости."
+    },
+    "origin": "subclass",
+    "origin_value": "path_of_the_wild_heart",
+    "kind": "text",
+    "conditions": { "level": 6 }
+  },
+  {
+    "slug": "power_of_the_wilds",
+    "title": { "en": "Power of the wilds", "ru": "Сила дикой природы" },
+    "description": {
+      "en": "Whenever you activate your Rage, you gain one of the following options of your choice. 1) While your Rage is active, you have a Fly Speed equal to your Speed if you aren't wearing any armor. 2) While your Rage is active, any of your enemies within 5 feet ofyou have Disadvantage on attack rolls against targets other than you or another Barbarian who has this option active. 3) While your Rage is active, you can cause a Large or smaller creature to have the Prone condition when you hit it with a melee attack.",
+      "ru": "Каждый раз, когда вы активируете свою ярость, вы получаете один из следующих вариантов по вашему выбору. 1) Пока ваша ярость активна, у вас есть скорость полёта, равная вашей скорости, если вы не носите доспехи. 2) Пока ваша ярость активна, то любой из ваших врагов в радиусе 5 футов от вас имеет помеху при бросках атаки против целей, отличных от вас или другого варвара, у которого эта опция активна. 3) Пока ваша ярость активна, вы можете заставить существо большого размера или меньше получить состояние лежащий ничком, когда попадаете по нему рукопашной атакой."
+    },
+    "origin": "subclass",
+    "origin_value": "path_of_the_wild_heart",
+    "kind": "text",
+    "conditions": { "level": 14 }
+  },
+  {
+    "slug": "vitality_surge",
+    "title": { "en": "Vitality surge", "ru": "Всплеск жизненной силы" },
+    "description": {
+      "en": "When you activate your Rage, you gain a number of Temporary Hit Points equal to {{value}}.",
+      "ru": "Когда вы активируете ярость, вы получаете количество временных хитов, равное {{value}}."
+    },
+    "origin": "subclass",
+    "origin_value": "path_of_the_world_tree",
+    "kind": "static",
+    "conditions": { "level": 3 },
+    "description_eval_variables": {
+      "value": "classes['barbarian']"
+    }
+  },
+  {
+    "slug": "life_giving_force",
+    "title": { "en": "Life-Giving force", "ru": "Жизнетворная сила" },
+    "description": {
+      "en": "At the start of each of your turns while your Rage is active, you can choose another creature within 10 feet of yourself to gain Temporary Hit Points - {{value}}d6. If any of these Temporary Hit Points remain when your Rage ends, they vanish.",
+      "ru": "В начале каждого вашего хода, пока ваша ярость активна, вы можете выбрать другое существо в пределах 10 футов от себя, чтобы дать ему временные хиты - {{value}}к6. Если какие-либо из этих временных хитов остаются, когда ваша ярость заканчивается, то они исчезают."
+    },
+    "origin": "subclass",
+    "origin_value": "path_of_the_world_tree",
+    "kind": "static",
+    "conditions": { "level": 3 },
+    "description_eval_variables": {
+      "value": "class_level = classes['barbarian']; return 4 if class_level >= 16; return 3 if class_level >= 9; 2"
+    }
+  },
+  {
+    "slug": "branches_of_the_tree",
+    "title": { "en": "Branches of the Tree", "ru": "Ветви Древа" },
+    "description": {
+      "en": "Whenever a creature you can see starts its turn within 30 feet of you while your Rage is active, you can take a Reaction to summon spectral branches of the World Tree around it. The target must succeed on a Strength saving throw (DC  {{value}}) or be teleported to an unoccupied space you can see within 5 feet of yourself or in the nearest unoccupied space you can see. After the target teleports, you can reduce its Speed to O until the end of the current turn.",
+      "ru": "Когда существо, которое вы видите, начинает свой ход в пределах 30 футов от вас, пока ваша ярость активна, вы можете реакцией вызвать спектральные ветви Мирового древа вокруг него. Цель должна преуспеть в спасброске Силы (УС {{value}}) или при провале она телепортируется в незанятое пространство, которое вы видите в пределах 5 футов от вас, или в ближайшее незанятое пространство, которое вы видите. После телепортации вы можете уменьшить скорость цели до 0 до конца текущего хода."
+    },
+    "origin": "subclass",
+    "origin_value": "path_of_the_world_tree",
+    "kind": "static",
+    "conditions": { "level": 6 },
+    "description_eval_variables": {
+      "value": "8 + modifiers['str'] + proficiency_bonus"
+    }
+  },
+  {
+    "slug": "battering_roots",
+    "title": { "en": "Battering roots", "ru": "Разящие корни" },
+    "description": {
+      "en": "During your turn, your reach is 10 feet greater with any Melee weapon that has the Heavy or Versatile property. When you hit with such a weapon on your turn, you can activate the Push or Topple mastery property in addition to a different mastery property you're using with that weapon.",
+      "ru": "Во время вашего хода ваша досягаемость увеличивается на 10 футов с любым оружием рукопашного боя, имеющим свойство тяжёлое или универсальное. Когда вы наносите удар таким оружием в свой ход, вы можете активировать оружейный приём толкание или опрокидывание в дополнение к другому оружейному приёму, которое вы используете с этим оружием."
+    },
+    "origin": "subclass",
+    "origin_value": "path_of_the_world_tree",
+    "kind": "static",
+    "conditions": { "level": 10 }
+  },
+  {
+    "slug": "travel_along_the_tree",
+    "title": { "en": "Travel along the Tree", "ru": "Путешествие по древу" },
+    "description": {
+      "en": "When you activate your Rage and as a Bonus Action while your Rage is active, you can teleport up to 60 feet to an unoccupied space you can see. In addition, once per Rage, you can increase the range of that teleport to 150 feet. When you do so, you can also bring up to six willing creatures who are within 10 feet of you. Each creature teleports to an unoccupied space of your choice within 10 feet of your destination space.",
+      "ru": "Когда вы активируете свою ярость и пока она активна вы можете бонусным действием телепортироваться на расстояние до 60 футов в видимое вами незанятое пространство. Кроме того, один раз пока ярость активна вы можете увеличить дальность этой телепортации до 150 футов. Когда вы это совершаете, вы также можете телепортировать до 6 согласных существ, которые находятся в пределах 10 футов от вас. Каждое существо телепортируется в незанятое пространство по вашему выбору в пределах 10 футов от вашего места назначения."
+    },
+    "origin": "subclass",
+    "origin_value": "path_of_the_world_tree",
+    "kind": "static",
+    "conditions": { "level": 14 }
+  },
+  {
+    "slug": "divine_fury",
+    "title": { "en": "Divine fury", "ru": "Божественный гнев" },
+    "description": {
+      "en": "On each of your turns while your Rage is active, the first creature you hit with a weapon or an Unarmed Strike takes extra damage equal to {{value}}. The extra damage is Necrotic or Radiant; you choose the type each time you deal the damage.",
+      "ru": "В каждый ваш ход, пока активна ваша ярость, первое существо, по которому вы попали оружием или безоружным ударом, получает дополнительный урон, равный {{value}}. Вы выбираете тип дополнительного урона каждый раз, когда наносите урон: некротический или излучение."
+    },
+    "origin": "subclass",
+    "origin_value": "path_of_the_zealot",
+    "kind": "static",
+    "conditions": { "level": 3 },
+    "description_eval_variables": {
+      "value": "'1d6+' + (classes['barbarian'] / 2).to_s"
+    }
+  },
+  {
+    "slug": "warrior_of_the_gods",
+    "title": { "en": "Warrior of the gods", "ru": "Воин богов" },
+    "description": {
+      "en": "You have a pool of {{limit}} d12s that you can spend to heal yourself. As a Bonus Action, you can expend dice from the pool, roll them, and regain a number of Hit Points equal to the roll's total.",
+      "ru": "У вас есть запас из {{limit}} костей к12, которые вы можете потратить на своё исцеление. Бонусным действием вы можете потратить кости из запаса, чтобы бросить их и восстановить количество хитов, равное итоговому результату броска."
+    },
+    "origin": "subclass",
+    "origin_value": "path_of_the_zealot",
+    "kind": "static",
+    "conditions": { "level": 3 },
+    "description_eval_variables": {
+      "limit": "class_level = classes['barbarian']; return 7 if class_level >= 17; return 6 if class_level >= 12; return 5 if class_level >= 6; 4"
+    },
+    "limit_refresh": "long_rest"
+  },
+  {
+    "slug": "fanatical_focus",
+    "title": { "en": "Fanatical focus", "ru": "Концентрация фанатика" },
+    "description": {
+      "en": "Once per active Rage, if you fail a saving throw, you can reroll it with a bonus equal to your Rage Damage bonus, and you must use the new roll.",
+      "ru": "Если вы провалили спасбросок 1 раз пока ярость активна, то вы можете перебросить его с бонусом, равным вашему бонусу урона ярости, и вы должны использовать новый бросок."
+    },
+    "origin": "subclass",
+    "origin_value": "path_of_the_zealot",
+    "kind": "static",
+    "conditions": { "level": 6 }
+  },
+  {
+    "slug": "zealous_presence",
+    "title": { "en": "Zealous presence", "ru": "Фанатичное присутствие" },
+    "description": {
+      "en": "As a Bonus Action, you unleash a battle cry infused with divine energy. Up to ten other creatures of your choice within 60 feet of you gain Advantage on attack rolls and saving throws until the start of your next turn. You can expend a use of your Rage (no action required) to restore your use of it.",
+      "ru": "Бонусным действием вы издаёте боевой клич, наполненный божественной энергией. До 10 других существ по вашему выбору в радиусе 60 футов от вас получают преимущество на броски атаки и спасброски до начала вашего следующего хода. Вы можете потратить одно из использований ярости (действие не требуется), чтобы восстановить её использование."
+    },
+    "origin": "subclass",
+    "origin_value": "path_of_the_zealot",
+    "kind": "static",
+    "conditions": { "level": 10 },
+    "description_eval_variables": {
+      "limit": "1"
+    },
+    "limit_refresh": "long_rest"
+  },
+  {
+    "slug": "rage_of_the_gods",
+    "title": { "en": "Rage of the Gods", "ru": "Ярость богов" },
+    "description": {
+      "en": "When you activate your Rage, you can assume the form of a divine warrior. This form lasts for 1 minute or until you drop to O Hit Points. While in this form, you gain the benefits below. 1) You have a Fly Speed equal to your Speed and can hover. 2) You have Resistance to Necrotic, Psychic, and Radiant damage. 3) When a creature within 30 feet of you would drop to O Hit Points, you can take a Reaction to expend a use ofyour Rage to instead change the target's Hit Points to a number equal to your Barbarian level.",
+      "ru": "Когда вы активируете свою ярость, вы можете принять форму божественного воителя. Эта форма сохраняется в течение 1 минуты или до тех пор, пока количество хитов не упадет до 0. Находясь в этой форме, вы получаете следующие эффекты: 1) У вас есть скорость полёта, равная вашей скорости, и вы можете парить в воздухе. 2) У вас есть сопротивление к урону некротической энергии, психической энергии и излучением. 3) Когда количество хитов существа, находящегося в радиусе 30 футов от вас, падает до 0, то вы можете реакцией использовать свою ярость, чтобы изменить количество хитов цели на число, равное вашему уровню варвара."
+    },
+    "origin": "subclass",
+    "origin_value": "path_of_the_zealot",
+    "kind": "static",
+    "conditions": { "level": 14 },
+    "description_eval_variables": {
+      "limit": "1"
+    },
+    "limit_refresh": "long_rest"
   }
 ]

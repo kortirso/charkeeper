@@ -73,7 +73,12 @@
   "classes": {
     "barbarian": {
       "name": { "en": "Barbarian", "ru": "Варвар" },
-      "subclasses": {}
+      "subclasses": {
+        "path_of_the_berserker": { "name": { "en": "Path of the Berserker", "ru": "Путь берсерка" } },
+        "path_of_the_wild_heart": { "name": { "en": "Path of the Wild Heart", "ru": "Путь дикого сердца" } },
+        "path_of_the_world_tree": { "name": { "en": "Path of the World Tree", "ru": "Путь Мирового древа" } },
+        "path_of_the_zealot": { "name": { "en": "Path of the Zealot", "ru": "Путь фанатика" } }
+      }
     },
     "bard": {
       "name": { "en": "Bard", "ru": "Бард" },
