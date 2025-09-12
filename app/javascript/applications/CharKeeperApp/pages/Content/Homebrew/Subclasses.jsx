@@ -68,7 +68,7 @@ export const HomebrewSubclasses = (props) => {
               </Button>
               <Input
                 containerClassList="ml-2 flex-1"
-                placeholder={t(`pages.homebrewPage.${props.provider}.copyRacePlaceholder`)}
+                placeholder={t(`pages.homebrewPage.${props.provider}.copyPlaceholder`)}
                 value={copySubclassId()}
                 onInput={(value) => setCopySubclassId(value)}
               />

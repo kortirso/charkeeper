@@ -1,16 +1,16 @@
 import { createSignal, Switch, Match, Show, For } from 'solid-js';
 import * as i18n from '@solid-primitives/i18n';
 
-import { DaggerheartRace } from '../../../pages';
+import { DaggerheartCommunity } from '../../../pages';
 import { Button, IconButton, Toggle, Input } from '../../../components';
 import { Close } from '../../../assets';
 import { useAppState, useAppLocale, useAppAlert } from '../../../context';
-import { removeHomebrewRaceRequest } from '../../../requests/removeHomebrewRaceRequest';
-import { copyHomebrewRaceRequest } from '../../../requests/copyHomebrewRaceRequest';
+import { removeHomebrewCommunityRequest } from '../../../requests/removeHomebrewCommunityRequest';
+import { copyHomebrewCommunityRequest } from '../../../requests/copyHomebrewCommunityRequest';
 import { copyToClipboard } from '../../../helpers';
 
-export const HomebrewRaces = (props) => {
-  const [copyRaceId, setCopyRaceId] = createSignal('');
+export const HomebrewCommunities = (props) => {
+  const [copyCommunityId, setCopyCommunityId] = createSignal('');
 
   const [appState] = useAppState();
   const [{ renderAlerts, renderAlert, renderNotice }] = useAppAlert();
@@ -18,18 +18,18 @@ export const HomebrewRaces = (props) => {
 
   const t = i18n.translator(dict);
 
-  const copyRace = async () => {
-    const result = await copyHomebrewRaceRequest(appState.accessToken, props.provider, copyRaceId());
+  const copyCommunity = async () => {
+    const result = await copyHomebrewCommunityRequest(appState.accessToken, props.provider, copyCommunityId());
 
     if (result.errors === undefined) props.reloadHomebrews();
     else renderAlert(result.errors);
   }
 
-  const removeRace = async (event, id) => {
+  const removeCommunity = async (event, id) => {
     event.stopPropagation();
 
-    const result = await removeHomebrewRaceRequest(appState.accessToken, props.provider, id);
-    if (result.errors === undefined) props.removeHomebrew('races', id);
+    const result = await removeHomebrewCommunityRequest(appState.accessToken, props.provider, id);
+    if (result.errors === undefined) props.removeHomebrew('communities', id);
     else renderAlerts(result.errors);
   }
 
@@ -41,34 +41,35 @@ export const HomebrewRaces = (props) => {
   return (
     <div class="p-2">
       <div class="flex mb-2">
-        <Button default size="small" classList="px-2" onClick={copyRace}>
+        <Button default size="small" classList="px-2" onClick={copyCommunity}>
           {t('copy')}
         </Button>
         <Input
           containerClassList="ml-2 flex-1"
           placeholder={t(`pages.homebrewPage.${props.provider}.copyPlaceholder`)}
-          value={copyRaceId()}
-          onInput={(value) => setCopyRaceId(value)}
+          value={copyCommunityId()}
+          onInput={(value) => setCopyCommunityId(value)}
         />
       </div>
       <Show when={props.homebrews !== undefined}>
         <div class="grid grid-cols-1 emd:grid-cols-2 elg:grid-cols-3 exl:grid-cols-4 gap-x-2">
-          <For each={props.homebrews.races}>
-            {(race) =>
+          {console.log(props.homebrews)}
+          <For each={props.homebrews.communities}>
+            {(community) =>
               <Toggle isOpen title={
                 <div class="flex items-center">
-                  <p class="flex-1 text-lg">{race.name}</p>
-                  <IconButton onClick={(e) => removeRace(e, race.id)}>
+                  <p class="flex-1 text-lg">{community.name}</p>
+                  <IconButton onClick={(e) => removeCommunity(e, community.id)}>
                     <Close />
                   </IconButton>
                 </div>
               }>
                 <Switch>
                   <Match when={props.provider === 'daggerheart'}>
-                    <DaggerheartRace raceId={race.id} feats={props.homebrews.feats} />
+                    <DaggerheartCommunity communityId={community.id} feats={props.homebrews.feats} />
                   </Match>
                 </Switch>
-                <p class="absolute bottom-0 right-0 px-2 py-1 dark:text-snow cursor-pointer" onClick={() => copy(race.id)}>
+                <p class="absolute bottom-0 right-0 px-2 py-1 dark:text-snow cursor-pointer" onClick={() => copy(community.id)}>
                   COPY
                 </p>
               </Toggle>

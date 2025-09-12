@@ -7,7 +7,7 @@ module HomebrewContext
       use_contract do
         config.messages.namespace = :homebrew_feat
 
-        Origins = Dry::Types['strict.string'].enum('ancestry', 'class', 'subclass')
+        Origins = Dry::Types['strict.string'].enum('ancestry', 'class', 'subclass', 'community')
         Kinds = Dry::Types['strict.string'].enum('static', 'text')
         Limits = Dry::Types['strict.string'].enum('short_rest', 'long_rest', 'session')
 
@@ -30,6 +30,9 @@ module HomebrewContext
             when 'ancestry'
               ::Daggerheart::Homebrew::Race.find_by(user_id: values[:user].id, id: values[:origin_value]) ||
                 ::Daggerheart::Character.heritage_info(values[:origin_value])
+            when 'community'
+              ::Daggerheart::Homebrew::Community.find_by(user_id: values[:user].id, id: values[:origin_value]) ||
+                ::Daggerheart::Character.community_info(values[:origin_value])
             when 'class'
               ::Daggerheart::Homebrew::Speciality.find_by(user_id: values[:user].id, id: values[:origin_value]) ||
                 ::Daggerheart::Character.class_info(values[:origin_value])

@@ -30,7 +30,7 @@ export const DaggerheartSubclass = (props) => {
       <p class="mb-4">{t('pages.homebrewPage.daggerheart.classOrigin')} - {daggerheartClasses()[props.item.class_name]}</p>
       <Show
         when={subclassFeats().length > 0}
-        fallback={<p class="mt-2">{t('pages.homebrewPage.daggerheart.noSubclassFeats')}</p>}
+        fallback={<p class="mt-2">{t('pages.homebrewPage.daggerheart.noFeats')}</p>}
       >
         <For each={subclassFeats()}>
           {(feat) =>

@@ -3,6 +3,7 @@
 module Frontend
   class HomebrewsController < Frontend::BaseController
     before_action :find_daggerheart_heritages
+    before_action :find_daggerheart_communities
     before_action :find_daggerheart_classes
     before_action :find_daggerheart_subclasses
 
@@ -16,6 +17,13 @@ module Frontend
       @daggerheart_heritages = ::Daggerheart::Homebrew::Race.where(user_id: current_user.id).each_with_object({}) do |item, acc|
         acc[item.id] = { name: { en: item.name, ru: item.name } }
       end
+    end
+
+    def find_daggerheart_communities
+      @daggerheart_communities =
+        ::Daggerheart::Homebrew::Community.where(user_id: current_user.id).each_with_object({}) do |item, acc|
+          acc[item.id] = { name: { en: item.name, ru: item.name } }
+        end
     end
 
     def find_daggerheart_classes

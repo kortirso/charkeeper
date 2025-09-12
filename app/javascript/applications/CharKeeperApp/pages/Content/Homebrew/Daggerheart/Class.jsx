@@ -20,7 +20,7 @@ export const DaggerheartClass = (props) => {
       <p class="mb-2">{t('pages.homebrewPage.daggerheart.evasion')} - {props.item.evasion}</p>
       <p class="mb-2">{t('pages.homebrewPage.daggerheart.maxHealth')} - {props.item.health_max}</p>
       <p>{t('pages.homebrewPage.daggerheart.domains')} - {Object.entries(config.domains).filter(([key,]) => props.item.domains.includes(key)).map(([, values]) => values.name[locale()]).join(', ')}</p>
-      <Show when={classFeats().length > 0} fallback={<p class="mt-2">{t('pages.homebrewPage.daggerheart.noClassFeats')}</p>}>
+      <Show when={classFeats().length > 0} fallback={<p class="mt-2">{t('pages.homebrewPage.daggerheart.noFeats')}</p>}>
         <For each={classFeats()}>
           {(feat) =>
             <div class="mt-2">

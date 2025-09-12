@@ -1,5 +1,6 @@
 json.daggerheart do
   json.races @daggerheart_heritages
+  json.communities @daggerheart_communities
   json.classes @daggerheart_classes
   json.subclasses @daggerheart_subclasses
 end

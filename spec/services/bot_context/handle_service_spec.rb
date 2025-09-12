@@ -70,7 +70,7 @@ describe BotContext::HandleService do
     context 'for service command' do
       let(:text) { '/start' }
 
-      it 'sends response message', :aggregate_failures do
+      it 'does not send response message', :aggregate_failures do
         expect(service_call[:result]).to eq :ok
         expect(client).not_to have_received(:send_message)
       end

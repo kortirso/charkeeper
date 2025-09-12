@@ -29,7 +29,7 @@ export const HomebrewModules = (props) => {
 
   return (
     <div class="p-2">
-      <p class="mb-4 dark:text-snow">{t('pages.homebrewPage.modulesHelp')}</p>
+      <p class="mb-2 dark:text-snow">{t('pages.homebrewPage.modulesHelp')}</p>
       <Show when={books() !== undefined}>
         <For each={books()}>
           {(book) =>
