@@ -62,6 +62,10 @@ ru:
         rules:
           name:
             filled?: Необходимо указать название
+      homebrew_community:
+        rules:
+          name:
+            filled?: Необходимо указать название
       character_companion:
         rules:
           character:

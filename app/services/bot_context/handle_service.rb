@@ -18,7 +18,6 @@ module BotContext
         handle_webhook.call(message: data[:raw_message]) if SERVICE_SOURCES.include?(source)
         return { result: :ok }
       end
-      return { result: :ok } if SERVICE_SOURCES.include?(source)
 
       command_result = handle_command.call(source: source, command: command, arguments: arguments, data: data)
       return { errors: ['Invalid command'] } if command_result.nil?

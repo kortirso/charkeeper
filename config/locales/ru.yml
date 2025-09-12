@@ -20,6 +20,11 @@ ru:
             result: "Модуль \"%{name}\" создан"
           remove:
             result: Модуль удалён
+        homebrew:
+          add_race:
+            result: "Раса \"%{name}\" создана"
+          add_community:
+            result: "Общество \"%{name}\" создано"
   decorators:
     pathfinder2:
       boosts: "Вы можете улучшить следующие характеристики: %{ability_boosts_text}.\nТакже вы можете изучить следующие умения: %{skill_boosts_text}"
@@ -30,6 +35,9 @@ ru:
       races:
         daggerheart:
           character_exists: Персонаж с такой расой существует
+      communities:
+        daggerheart:
+          character_exists: Персонаж с таким обществом существует
       specialities:
         daggerheart:
           character_exists: Персонаж с таким классом существует

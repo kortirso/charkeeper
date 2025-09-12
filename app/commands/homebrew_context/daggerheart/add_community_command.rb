@@ -2,9 +2,9 @@
 
 module HomebrewContext
   module Daggerheart
-    class AddRaceCommand < BaseCommand
+    class AddCommunityCommand < BaseCommand
       use_contract do
-        config.messages.namespace = :homebrew_race
+        config.messages.namespace = :homebrew_community
 
         params do
           required(:user).filled(type?: ::User)
@@ -15,7 +15,7 @@ module HomebrewContext
       private
 
       def do_persist(input)
-        result = ::Daggerheart::Homebrew::Race.create!(input)
+        result = ::Daggerheart::Homebrew::Community.create!(input)
 
         { result: result }
       end

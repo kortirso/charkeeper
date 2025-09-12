@@ -51,6 +51,9 @@ Rails.application.routes.draw do
         resources :subclasses, only: %i[create destroy] do
           resource :copy, only: %i[create], module: :subclasses
         end
+        resources :communities, only: %i[destroy] do
+          resource :copy, only: %i[create], module: :communities
+        end
       end
 
       get ':provider', to: 'list#index'

@@ -78,12 +78,14 @@ module Charkeeper
     register('commands.homebrew_context.add_book') { HomebrewContext::AddBookCommand.new }
     register('commands.homebrew_context.remove_book') { HomebrewContext::RemoveBookCommand.new }
 
+    register('commands.homebrew_context.daggerheart.add_community') { HomebrewContext::Daggerheart::AddCommunityCommand.new }
     register('commands.homebrew_context.daggerheart.add_race') { HomebrewContext::Daggerheart::AddRaceCommand.new }
     register('commands.homebrew_context.daggerheart.add_feat') { HomebrewContext::Daggerheart::AddFeatCommand.new }
     register('commands.homebrew_context.daggerheart.add_item') { HomebrewContext::Daggerheart::AddItemCommand.new }
     register('commands.homebrew_context.daggerheart.add_speciality') { HomebrewContext::Daggerheart::AddSpecialityCommand.new }
     register('commands.homebrew_context.daggerheart.add_subclass') { HomebrewContext::Daggerheart::AddSubclassCommand.new }
     register('commands.homebrew_context.daggerheart.copy_race') { HomebrewContext::Daggerheart::CopyRaceCommand.new }
+    register('commands.homebrew_context.daggerheart.copy_community') { HomebrewContext::Daggerheart::CopyCommunityCommand.new }
     register('commands.homebrew_context.daggerheart.copy_subclass') { HomebrewContext::Daggerheart::CopySubclassCommand.new }
     register('commands.homebrew_context.daggerheart.copy_item') { HomebrewContext::Daggerheart::CopyItemCommand.new }
     register('commands.homebrew_context.daggerheart.add_book_races') { HomebrewContext::Daggerheart::AddBookRacesCommand.new }
@@ -111,10 +113,12 @@ module Charkeeper
     register('services.bot_context.handle_command') { BotContext::HandleCommandService.new }
     register('services.bot_context.commands.roll') { BotContext::Commands::Roll.new }
     register('services.bot_context.commands.book') { BotContext::Commands::Book.new }
+    register('services.bot_context.commands.homebrew') { BotContext::Commands::Homebrew.new }
 
     register('services.bot_context.represent_command') { BotContext::RepresentCommandService.new }
     register('services.bot_context.representers.roll') { BotContext::Representers::Roll.new }
     register('services.bot_context.representers.book') { BotContext::Representers::Book.new }
+    register('services.bot_context.representers.homebrew') { BotContext::Representers::Homebrew.new }
   end
 end
 

@@ -86,6 +86,12 @@ export const CharactersTab = () => {
     return { ...daggerheartConfig.heritages, ...homebrews().daggerheart.races };
   });
 
+  const daggerheartCommunities = createMemo(() => {
+    if (homebrews() === undefined) return {};
+
+    return { ...daggerheartConfig.communities, ...homebrews().daggerheart.communities };
+  });
+
   const daggerheartClasses = createMemo(() => {
     if (homebrews() === undefined) return {};
 
@@ -525,7 +531,7 @@ export const CharactersTab = () => {
                     <Select
                       containerClassList="mb-2"
                       labelText={t('newCharacterPage.daggerheart.community')}
-                      items={translate(daggerheartConfig.communities, locale())}
+                      items={translate(daggerheartCommunities(), locale())}
                       selectedValue={characterDaggerheartForm.community}
                       onSelect={(value) => setCharacterDaggerheartForm({ ...characterDaggerheartForm, community: value })}
                     />
