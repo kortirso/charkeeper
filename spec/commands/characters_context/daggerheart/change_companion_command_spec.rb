@@ -16,6 +16,6 @@ describe CharactersContext::Daggerheart::ChangeCompanionCommand do
 
     expect(companion.reload.name).to eq 'Compy'
     expect(companion.data.stress_marked).to eq 1
-    expect(command_call[:errors]).to be_nil
+    expect(command_call[:errors_list]).to be_nil
   end
 end

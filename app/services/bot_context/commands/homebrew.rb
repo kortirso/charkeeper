@@ -21,13 +21,13 @@ module BotContext
         result =
           case arguments[0]
           when 'daggerheart' then add_daggerheart_race.call({ user: data[:user], name: arguments[1] })
-          else { errors: ['Invalid command'] }
+          else { errors_list: ['Invalid command'] }
           end
 
         {
           type: 'add_race',
           result: result[:result],
-          errors: result[:errors]
+          errors: result[:errors_list]
         }
       end
 
@@ -35,13 +35,13 @@ module BotContext
         result =
           case arguments[0]
           when 'daggerheart' then add_daggerheart_community.call({ user: data[:user], name: arguments[1] })
-          else { errors: ['Invalid command'] }
+          else { errors_list: ['Invalid command'] }
           end
 
         {
           type: 'add_community',
           result: result[:result],
-          errors: result[:errors]
+          errors: result[:errors_list]
         }
       end
     end

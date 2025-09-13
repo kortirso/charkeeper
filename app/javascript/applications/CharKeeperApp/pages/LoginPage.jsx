@@ -48,7 +48,7 @@ export const LoginPage = () => {
   }
 
   const checkSignResult = (result) => {
-    if (result.errors === undefined) {
+    if (result.errors_list === undefined) {
       batch(() => {
         setLocale(result.locale);
         setAccessToken(result.access_token);
@@ -59,7 +59,7 @@ export const LoginPage = () => {
         });
       });
     } else {
-      renderAlerts(result.errors);
+      renderAlerts(result.errors_list);
     }
   }
 

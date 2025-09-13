@@ -65,12 +65,12 @@ export const Dnd5Skills = (props) => {
       appState.accessToken, character().provider, character().id, { character: { selected_skills: selectedSkills } }
     );
 
-    if (result.errors === undefined) {
+    if (result.errors_list === undefined) {
       batch(() => {
         props.onReplaceCharacter(result.character);
         setEditMode(false);
       });
-    } else renderAlerts(result.errors);
+    } else renderAlerts(result.errors_list);
   }
 
   return (

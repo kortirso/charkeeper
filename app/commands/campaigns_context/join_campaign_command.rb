@@ -18,7 +18,7 @@ module CampaignsContext
 
       { result: result }
     rescue ActiveRecord::RecordNotUnique => _e
-      { errors: { campaign_character: ['Already exists'] } }
+      { errors: { campaign_character: ['Already exists'] }, errors_list: ['Already exists'] }
     end
   end
 end

@@ -21,8 +21,8 @@ export const DaggerheartHealth = (props) => {
       appState.accessToken, character().provider, character().id, { character: { [attribute]: newValue }, only_head: true }
     );
 
-    if (result.errors === undefined) props.onReplaceCharacter({ [attribute]: newValue });
-    else renderAlerts(result.errors);
+    if (result.errors_list === undefined) props.onReplaceCharacter({ [attribute]: newValue });
+    else renderAlerts(result.errors_list);
   }
 
   const renderAttribute = (title, maxValue, slug) => (

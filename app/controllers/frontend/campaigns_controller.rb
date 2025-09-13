@@ -18,7 +18,7 @@ module Frontend
 
     def create
       case add_service.call(create_params.merge(user: current_user))
-      in { errors: errors } then unprocessable_response(errors)
+      in { errors: errors, errors_list: errors_list } then unprocessable_response(errors, errors_list)
       in { result: result } then serialize_resource(result, ::CampaignSerializer, :campaign, { except: %i[characters] }, :created)
       end
     end

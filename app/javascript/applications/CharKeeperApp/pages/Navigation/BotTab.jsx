@@ -20,7 +20,7 @@ export const BotTab = () => {
     batch(() => {
       setHistory(
         [
-          { text: (result.result ? result.result : result.errors[0]) }, { text: currentCommand(), author: 'user' }
+          { text: (result.result ? result.result : result.errors_list[0]) }, { text: currentCommand(), author: 'user' }
         ].concat(history())
       );
       setCurrentCommand('');

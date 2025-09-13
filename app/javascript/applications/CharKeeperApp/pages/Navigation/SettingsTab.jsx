@@ -31,7 +31,7 @@ export const SettingsTab = () => {
   const logout = async () => {
     const result = await logoutRequest(appState.accessToken);
 
-    if (result.errors === undefined) setAccessToken(null);
+    if (result.errors_list === undefined) setAccessToken(null);
   }
 
   // 453x750

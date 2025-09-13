@@ -31,12 +31,12 @@ export const Pathfinder2Health = (props) => {
       { value: damageHealValue() * coefficient, only: 'health,dying_condition_value' }
     );
 
-    if (result.errors === undefined) {
+    if (result.errors_list === undefined) {
       props.onReplaceCharacter({
         health: result.character.health,
         dying_condition_value: result.character.dying_condition_value
       });
-    } else renderAlerts(result.errors);
+    } else renderAlerts(result.errors_list);
   }
 
   const gainDying = () => {
@@ -55,12 +55,12 @@ export const Pathfinder2Health = (props) => {
       appState.accessToken, character().provider, character().id, { character: payload, only_head: true }
     );
 
-    if (result.errors === undefined) {
+    if (result.errors_list === undefined) {
       batch(() => {
         props.onReplaceCharacter(payload);
         closeModal();
       });
-    } else renderAlerts(result.errors);
+    } else renderAlerts(result.errors_list);
   }
 
   return (

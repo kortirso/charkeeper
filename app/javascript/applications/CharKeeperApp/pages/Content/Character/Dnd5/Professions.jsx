@@ -48,19 +48,19 @@ export const Dnd5Professions = (props) => {
   const toggleLanguage = async (slug) => {
     const newValue = languagesData().includes(slug) ? languagesData().filter((item) => item !== slug) : languagesData().concat(slug);
     const result = await props.onRefreshCharacter({ languages: newValue });
-    if (result.errors === undefined) setLanguagesData(newValue);
+    if (result.errors_list === undefined) setLanguagesData(newValue);
   }
 
   const toggleTool = async (slug) => {
     const newValue = toolsData().includes(slug) ? toolsData().filter((item) => item !== slug) : toolsData().concat(slug);
     const result = await props.onRefreshCharacter({ tools: newValue });
-    if (result.errors === undefined) setToolsData(newValue);
+    if (result.errors_list === undefined) setToolsData(newValue);
   }
 
   const toggleMusic = async (slug) => {
     const newValue = musicData().includes(slug) ? musicData().filter((item) => item !== slug) : musicData().concat(slug);
     const result = await props.onRefreshCharacter({ music: newValue });
-    if (result.errors === undefined) setMusicData(newValue);
+    if (result.errors_list === undefined) setMusicData(newValue);
   }
 
   const toggleWeaponCoreSkill = async (slug) => {

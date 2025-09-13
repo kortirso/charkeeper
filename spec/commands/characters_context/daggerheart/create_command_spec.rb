@@ -77,7 +77,7 @@ describe CharactersContext::Daggerheart::CreateCommand do
 
       it 'does not create character', :aggregate_failures do
         expect { command_call }.not_to change(user.characters, :count)
-        expect(command_call[:errors]).not_to be_nil
+        expect(command_call[:errors_list]).not_to be_nil
       end
     end
 
@@ -87,7 +87,7 @@ describe CharactersContext::Daggerheart::CreateCommand do
 
       it 'does not create character', :aggregate_failures do
         expect { command_call }.not_to change(user.characters, :count)
-        expect(command_call[:errors]).not_to be_nil
+        expect(command_call[:errors_list]).not_to be_nil
       end
     end
 
@@ -96,7 +96,7 @@ describe CharactersContext::Daggerheart::CreateCommand do
 
       it 'does not create character', :aggregate_failures do
         expect { command_call }.not_to change(user.characters, :count)
-        expect(command_call[:errors]).not_to be_nil
+        expect(command_call[:errors_list]).not_to be_nil
       end
     end
 
@@ -105,7 +105,7 @@ describe CharactersContext::Daggerheart::CreateCommand do
 
       it 'does not create character', :aggregate_failures do
         expect { command_call }.not_to change(user.characters, :count)
-        expect(command_call[:errors]).not_to be_nil
+        expect(command_call[:errors_list]).not_to be_nil
       end
     end
 
@@ -114,7 +114,7 @@ describe CharactersContext::Daggerheart::CreateCommand do
 
       it 'does not create character', :aggregate_failures do
         expect { command_call }.not_to change(user.characters, :count)
-        expect(command_call[:errors]).not_to be_nil
+        expect(command_call[:errors_list]).not_to be_nil
       end
     end
   end

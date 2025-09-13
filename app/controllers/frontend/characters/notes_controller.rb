@@ -26,7 +26,7 @@ module Frontend
 
       def create
         case add_note.call(note_params.merge({ character: character }))
-        in { errors: errors } then unprocessable_response(errors)
+        in { errors: errors, errors_list: errors_list } then unprocessable_response(errors, errors_list)
         in { result: result }
           serialize_resource(result, ::Characters::NoteSerializer, :note, { only: CREATE_SERIALIZE_FIELDS }, :created)
         end
@@ -34,7 +34,7 @@ module Frontend
 
       def update
         case change_note.call(note_params.merge({ note: @note }))
-        in { errors: errors } then unprocessable_response(errors)
+        in { errors: errors, errors_list: errors_list } then unprocessable_response(errors, errors_list)
         else only_head_response
         end
       end

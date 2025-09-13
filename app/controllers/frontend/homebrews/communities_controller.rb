@@ -20,7 +20,10 @@ module Frontend
       def find_existing_characters
         return unless characters_relation.where(user_id: current_user.id).exists?(["data ->> 'community' = ?", @community.id])
 
-        unprocessable_response({ base: [t("frontend.homebrews.communities.#{params[:provider]}.character_exists")] })
+        unprocessable_response(
+          { base: [t("frontend.homebrews.communities.#{params[:provider]}.character_exists")] },
+          [t("frontend.homebrews.communities.#{params[:provider]}.character_exists")]
+        )
       end
 
       def communities_relation

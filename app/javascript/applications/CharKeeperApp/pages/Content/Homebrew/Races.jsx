@@ -21,16 +21,16 @@ export const HomebrewRaces = (props) => {
   const copyRace = async () => {
     const result = await copyHomebrewRaceRequest(appState.accessToken, props.provider, copyRaceId());
 
-    if (result.errors === undefined) props.reloadHomebrews();
-    else renderAlert(result.errors);
+    if (result.errors_list === undefined) props.reloadHomebrews();
+    else renderAlert(result.errors_list);
   }
 
   const removeRace = async (event, id) => {
     event.stopPropagation();
 
     const result = await removeHomebrewRaceRequest(appState.accessToken, props.provider, id);
-    if (result.errors === undefined) props.removeHomebrew('races', id);
-    else renderAlerts(result.errors);
+    if (result.errors_list === undefined) props.removeHomebrew('races', id);
+    else renderAlerts(result.errors_list);
   }
 
   const copy = (value) => {

@@ -101,13 +101,13 @@ export const Bonuses = (props) => {
       { bonus: { comment: bonusComment(), value: newObject } }
     );
 
-    if (result.errors === undefined) {
+    if (result.errors_list === undefined) {
       batch(() => {
         setCreateMode(false);
         setBonusComment('');
         props.onReloadCharacter();
       })
-    } else renderAlerts(result.errors);
+    } else renderAlerts(result.errors_list);
   }
 
   const cancelBonus = () => setCreateMode(false);
@@ -116,7 +116,7 @@ export const Bonuses = (props) => {
     event.stopPropagation();
 
     const result = await removeCharacterBonusRequest(appState.accessToken, character().provider, character().id, bonusId);
-    if (result.errors === undefined) props.onReloadCharacter();
+    if (result.errors_list === undefined) props.onReloadCharacter();
   }
 
   return (

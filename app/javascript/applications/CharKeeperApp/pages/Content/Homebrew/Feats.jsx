@@ -22,20 +22,20 @@ export const HomebrewFeats = (props) => {
   const createFeat = async (payload) => {
     const result = await createHomebrewFeatRequest(appState.accessToken, props.provider, payload);
 
-    if (result.errors === undefined) {
+    if (result.errors_list === undefined) {
       batch(() => {
         props.addHomebrew('feats', result.feat);
         setActiveView('left');
       });
-    } else renderAlerts(result.errors);
+    } else renderAlerts(result.errors_list);
   }
 
   const removeFeat = async (event, id) => {
     event.stopPropagation();
 
     const result = await removeHomebrewFeatRequest(appState.accessToken, props.provider, id);
-    if (result.errors === undefined) props.removeHomebrew('feats', id);
-    else renderAlerts(result.errors);
+    if (result.errors_list === undefined) props.removeHomebrew('feats', id);
+    else renderAlerts(result.errors_list);
   }
 
   return (

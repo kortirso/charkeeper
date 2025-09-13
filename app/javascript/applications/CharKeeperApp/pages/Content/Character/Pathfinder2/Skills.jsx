@@ -63,12 +63,12 @@ export const Pathfinder2Skills = (props) => {
     }
     const result = await updateCharacterRequest(appState.accessToken, character().provider, character().id, { character: payload });
 
-    if (result.errors === undefined) {
+    if (result.errors_list === undefined) {
       batch(() => {
         props.onReplaceCharacter(result.character);
         setEditMode(false);
       });
-    } else renderAlerts(result.errors);
+    } else renderAlerts(result.errors_list);
   }
 
   return (

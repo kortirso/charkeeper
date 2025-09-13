@@ -83,12 +83,12 @@ export const DaggerheartExperience = (props) => {
         appState.accessToken, object().provider, object().id, { character: payload, only_head: true }
       );
 
-      if (result.errors === undefined) {
+      if (result.errors_list === undefined) {
         batch(() => {
           props.onReplaceCharacter(payload);
           cancelEditing();
         });
-      } else renderAlerts(result.errors);
+      } else renderAlerts(result.errors_list);
     }
   }
 

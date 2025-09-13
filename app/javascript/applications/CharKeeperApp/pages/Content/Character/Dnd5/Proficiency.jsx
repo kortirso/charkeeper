@@ -27,8 +27,8 @@ export const Dnd5Proficiency = (props) => {
     const payload = { spent_hit_dice: newValue };
     const result = await updateCharacterRequest(appState.accessToken, character().provider, character().id, { character: payload, only_head: true });
 
-    if (result.errors === undefined) props.onReplaceCharacter(payload);
-    else renderAlerts(result.errors);
+    if (result.errors_list === undefined) props.onReplaceCharacter(payload);
+    else renderAlerts(result.errors_list);
   }
 
   const restoreDice = async (dice) => {
@@ -40,8 +40,8 @@ export const Dnd5Proficiency = (props) => {
     }
     const payload = { spent_hit_dice: newValue };
     const result = await updateCharacterRequest(appState.accessToken, character().provider, character().id, { character: payload, only_head: true });
-    if (result.errors === undefined) props.onReplaceCharacter(payload);
-    else renderAlerts(result.errors);
+    if (result.errors_list === undefined) props.onReplaceCharacter(payload);
+    else renderAlerts(result.errors_list);
   }
 
   return (

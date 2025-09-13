@@ -33,7 +33,7 @@ describe AuthContext::AddIdentityCommand do
     it 'does not create identity', :aggregate_failures do
       expect { command_call }.not_to change(User::Identity, :count)
       expect(command_call[:result]).to be_nil
-      expect(command_call[:errors]).to eq({ identity: ['Already exists'] })
+      expect(command_call[:errors_list]).to eq(['Already exists'])
     end
   end
 end

@@ -22,20 +22,20 @@ export const HomebrewClasses = (props) => {
   const createClass = async (payload) => {
     const result = await createHomebrewClassRequest(appState.accessToken, props.provider, payload);
 
-    if (result.errors === undefined) {
+    if (result.errors_list === undefined) {
       batch(() => {
         props.addHomebrew('classes', result.speciality);
         setActiveView('left');
       });
-    } else renderAlerts(result.errors);
+    } else renderAlerts(result.errors_list);
   }
 
   const removeClass = async (event, id) => {
     event.stopPropagation();
 
     const result = await removeHomebrewClassRequest(appState.accessToken, props.provider, id);
-    if (result.errors === undefined) props.removeHomebrew('classes', id);
-    else renderAlerts(result.errors);
+    if (result.errors_list === undefined) props.removeHomebrew('classes', id);
+    else renderAlerts(result.errors_list);
   }
 
   return (

@@ -21,16 +21,16 @@ export const HomebrewCommunities = (props) => {
   const copyCommunity = async () => {
     const result = await copyHomebrewCommunityRequest(appState.accessToken, props.provider, copyCommunityId());
 
-    if (result.errors === undefined) props.reloadHomebrews();
-    else renderAlert(result.errors);
+    if (result.errors_list === undefined) props.reloadHomebrews();
+    else renderAlert(result.errors_list);
   }
 
   const removeCommunity = async (event, id) => {
     event.stopPropagation();
 
     const result = await removeHomebrewCommunityRequest(appState.accessToken, props.provider, id);
-    if (result.errors === undefined) props.removeHomebrew('communities', id);
-    else renderAlerts(result.errors);
+    if (result.errors_list === undefined) props.removeHomebrew('communities', id);
+    else renderAlerts(result.errors_list);
   }
 
   const copy = (value) => {

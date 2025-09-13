@@ -41,7 +41,7 @@ module AuthContext
 
       { result: result }
     rescue ActiveRecord::RecordNotUnique => _e
-      { errors: { username: I18n.t('dry_schema.errors.user.exists') } }
+      { errors: { username: [I18n.t('dry_schema.errors.user.exists')] }, errors_list: [I18n.t('dry_schema.errors.user.exists')] }
     end
   end
 end

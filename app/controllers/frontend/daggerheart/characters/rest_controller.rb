@@ -12,7 +12,7 @@ module Frontend
 
         def create
           case change_energy.call(rest_options.merge({ character: @character }))
-          in { errors: errors } then unprocessable_response(errors)
+          in { errors: errors, errors_list: errors_list } then unprocessable_response(errors, errors_list)
           else only_head_response
           end
         end

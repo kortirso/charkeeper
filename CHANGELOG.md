@@ -8,6 +8,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Added
 - managing homebrew communities for Daggerheart
 
+### Modified
+- errors rendering
+- bot result rendering
+
 ## [0.3.0] - 2025-09-10
 
 ## [0.2.23] - 2025-09-08

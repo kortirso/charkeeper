@@ -17,7 +17,7 @@ module Frontend
 
       def create
         case add_service.call(create_params.merge(user: current_user))
-        in { errors: errors } then unprocessable_response(errors)
+        in { errors: errors, errors_list: errors_list } then unprocessable_response(errors, errors_list)
         in { result: result } then serialize_resource(result, serializer, :race, {}, :created)
         end
       end
@@ -40,7 +40,10 @@ module Frontend
       def find_existing_characters
         return unless characters_relation.where(user_id: current_user.id).exists?(["data ->> 'heritage' = ?", @race.id])
 
-        unprocessable_response({ base: [t("frontend.homebrews.races.#{params[:provider]}.character_exists")] })
+        unprocessable_response(
+          { base: [t("frontend.homebrews.races.#{params[:provider]}.character_exists")] },
+          [t("frontend.homebrews.races.#{params[:provider]}.character_exists")]
+        )
       end
 
       def create_params

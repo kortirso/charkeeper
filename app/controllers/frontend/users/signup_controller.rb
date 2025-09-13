@@ -14,7 +14,7 @@ module Frontend
 
       def create
         case add_user.call(create_params)
-        in { errors: errors } then unprocessable_response(errors)
+        in { errors: errors, errors_list: errors_list } then unprocessable_response(errors, errors_list)
         in { result: result }
           user_session = User::Session.create!(user: result)
           result.platforms.find_or_create_by!(name: params[:platform]) if params[:platform]

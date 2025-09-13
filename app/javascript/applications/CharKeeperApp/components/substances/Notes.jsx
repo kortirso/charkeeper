@@ -43,7 +43,7 @@ export const Notes = () => {
   const saveNote = async () => {
     const result = await createCharacterNoteRequest(appState.accessToken, appState.activePageParams.id, { note: noteForm });
 
-    if (result.errors === undefined) {
+    if (result.errors_list === undefined) {
       setNotes([result.note].concat(notes()));
       cancelNote();
     }
@@ -62,7 +62,7 @@ export const Notes = () => {
       appState.accessToken, appState.activePageParams.id, editNoteId(), { note: noteForm, only_head: true }
     );
 
-    if (result.errors === undefined) {
+    if (result.errors_list === undefined) {
       setNotes(notes().slice().map((item) => {
         if (item.id !== editNoteId()) return item;
 
@@ -84,7 +84,7 @@ export const Notes = () => {
     event.stopPropagation();
 
     const result = await removeCharacterNoteRequest(appState.accessToken, appState.activePageParams.id, noteId);
-    if (result.errors === undefined) setNotes(notes().filter((item) => item.id !== noteId));
+    if (result.errors_list === undefined) setNotes(notes().filter((item) => item.id !== noteId));
   }
 
   return (

@@ -25,27 +25,27 @@ export const HomebrewSubclasses = (props) => {
   const createSubclass = async (payload) => {
     const result = await createHomebrewSubclassRequest(appState.accessToken, props.provider, payload);
 
-    if (result.errors === undefined) {
+    if (result.errors_list === undefined) {
       batch(() => {
         props.addHomebrew('subclasses', result.subclass);
         setActiveView('left');
       });
-    } else renderAlerts(result.errors);
+    } else renderAlerts(result.errors_list);
   }
 
   const copySubclass = async () => {
     const result = await copyHomebrewSubclassRequest(appState.accessToken, props.provider, copySubclassId());
 
-    if (result.errors === undefined) props.reloadHomebrews();
-    else renderAlert(result.errors);
+    if (result.errors_list === undefined) props.reloadHomebrews();
+    else renderAlert(result.errors_list);
   }
 
   const removeSubclass = async (event, id) => {
     event.stopPropagation();
 
     const result = await removeHomebrewSubclassRequest(appState.accessToken, props.provider, id);
-    if (result.errors === undefined) props.removeHomebrew('subclasses', id);
-    else renderAlerts(result.errors);
+    if (result.errors_list === undefined) props.removeHomebrew('subclasses', id);
+    else renderAlerts(result.errors_list);
   }
 
   const copy = (value) => {

@@ -21,8 +21,8 @@ export const PasswordsTab = (props) => {
 
   const changePassword = async () => {
     const result = await updateUserRequest(appState.accessToken, { password: password(), password_confirmation: passwordConfirmation() });
-    if (result.errors === undefined) renderNotice(t('alerts.userIsUpdated'));
-    else renderAlerts(result.errors);
+    if (result.errors_list === undefined) renderNotice(t('alerts.userIsUpdated'));
+    else renderAlerts(result.errors_list);
   }
 
   return (

@@ -34,12 +34,12 @@ export const Pathfinder2SavingThrows = (props) => {
       appState.accessToken, character().provider, character().id, { character: { saving_throws: savingThrowsData() } }
     );
 
-    if (result.errors === undefined) {
+    if (result.errors_list === undefined) {
       batch(() => {
         props.onReplaceCharacter(result.character);
         setEditMode(false);
       });
-    } else renderAlerts(result.errors);
+    } else renderAlerts(result.errors_list);
   }
 
   return (

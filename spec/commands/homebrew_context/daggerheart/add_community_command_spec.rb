@@ -13,7 +13,7 @@ describe HomebrewContext::Daggerheart::AddCommunityCommand do
 
       it 'does not create community', :aggregate_failures do
         expect { command_call }.not_to change(Daggerheart::Homebrew::Community, :count)
-        expect(command_call[:errors]).to eq({ name: ["Name can't be blank"] })
+        expect(command_call[:errors_list]).to eq(["Name can't be blank"])
       end
     end
   end
@@ -21,7 +21,7 @@ describe HomebrewContext::Daggerheart::AddCommunityCommand do
   context 'for valid params' do
     it 'creates community', :aggregate_failures do
       expect { command_call }.to change(Daggerheart::Homebrew::Community, :count).by(1)
-      expect(command_call[:errors]).to be_nil
+      expect(command_call[:errors_list]).to be_nil
     end
   end
 end

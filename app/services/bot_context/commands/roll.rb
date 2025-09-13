@@ -15,7 +15,10 @@ module BotContext
         rescue StandardError => _e
           next
         end
-        { rolls: rolls, total: total }
+
+        return { type: 'make_roll', result: { rolls: rolls, total: total } } if rolls.any?
+
+        { errors: [I18n.t('services.bot_context.representers.roll.nothing')] }
       end
     end
   end

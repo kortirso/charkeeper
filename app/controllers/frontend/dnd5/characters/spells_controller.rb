@@ -22,7 +22,7 @@ module Frontend
 
         def create
           case character_spell_add.call(create_params)
-          in { errors: errors } then unprocessable_response(errors)
+          in { errors: errors, errors_list: errors_list } then unprocessable_response(errors, errors_list)
           in { result: result }
             serialize_resource(result, ::Dnd5::Characters::SpellSerializer, :spell, {}, :created)
           end
@@ -30,7 +30,7 @@ module Frontend
 
         def update
           case character_spell_update.call(update_params)
-          in { errors: errors } then unprocessable_response(errors)
+          in { errors: errors, errors_list: errors_list } then unprocessable_response(errors, errors_list)
           else only_head_response
           end
         end

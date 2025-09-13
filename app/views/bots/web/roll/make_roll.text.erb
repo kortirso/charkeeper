@@ -1,0 +1,3 @@
+<%= I18n.t('services.bot_context.representers.roll.result') %>: <%= result[:rolls].map { |item| "#{item[0]} (#{item[1]})" }.join(', ') %>
+<br />
+<%= I18n.t('services.bot_context.representers.roll.total') %>: <%= result[:total] %>

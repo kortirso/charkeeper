@@ -34,7 +34,7 @@ export const Dnd5 = (props) => {
   const updateCharacter = async (payload) => {
     const result = await updateCharacterRequest(appState.accessToken, props.character.provider, props.character.id, { character: payload });
 
-    if (result.errors === undefined) await props.onReloadCharacter();
+    if (result.errors_list === undefined) await props.onReloadCharacter();
     return result;
   }
 

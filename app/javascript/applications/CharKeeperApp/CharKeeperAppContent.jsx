@@ -82,7 +82,7 @@ export const CharKeeperAppContent = () => {
 
     Promise.all([fetchUserInfo()]).then(
       ([userInfoData]) => {
-        if (userInfoData.errors === undefined) {
+        if (userInfoData.errors_list === undefined) {
           batch(() => {
             setLocale(userInfoData.locale);
             changeUserInfo({

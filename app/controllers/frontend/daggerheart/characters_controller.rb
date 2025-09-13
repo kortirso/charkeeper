@@ -13,14 +13,14 @@ module Frontend
 
       def create
         case character_create.call(request_params.merge({ user: current_user }))
-        in { errors: errors } then unprocessable_response(errors)
+        in { errors: errors, errors_list: errors_list } then unprocessable_response(errors, errors_list)
         in { result: result } then render_character(result, { only: CREATE_SERIALIZE_FIELDS }, :created)
         end
       end
 
       def update
         case character_update.call(request_params.merge({ character: character }))
-        in { errors: errors } then unprocessable_response(errors)
+        in { errors: errors, errors_list: errors_list } then unprocessable_response(errors, errors_list)
         else render_character(character, {}, :ok)
         end
       end

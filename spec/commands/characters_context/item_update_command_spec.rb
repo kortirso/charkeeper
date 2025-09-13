@@ -33,7 +33,7 @@ describe CharactersContext::ItemUpdateCommand do
     let(:ready_to_use) { true }
 
     it 'does not update armor', :aggregate_failures do
-      expect(command_call[:errors]).not_to be_nil
+      expect(command_call[:errors_list]).not_to be_nil
       expect(character_armor2.reload.ready_to_use).to be_falsy
     end
   end

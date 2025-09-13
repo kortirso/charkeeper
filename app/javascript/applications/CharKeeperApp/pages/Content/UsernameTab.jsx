@@ -34,12 +34,12 @@ export const UsernameTab = (props) => {
 
     const result = await updateUserRequest(appState.accessToken, payload);
 
-    if (result.errors === undefined) {
+    if (result.errors_list === undefined) {
       batch(() => {
         changeUserInfo({ username: username(), colorSchema: colorSchema() });
         setLocale(localeValue());
       });
-    } else renderAlerts(result.errors);
+    } else renderAlerts(result.errors_list);
   }
 
   return (

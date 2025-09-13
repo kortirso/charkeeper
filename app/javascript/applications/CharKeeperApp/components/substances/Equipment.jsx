@@ -75,7 +75,7 @@ export const Equipment = (props) => {
       { item_id: item.id }
     );
 
-    if (result.errors === undefined) {
+    if (result.errors_list === undefined) {
       batch(() => {
         if (item.kind.includes('weapon')) props.onReloadCharacter();
         reloadCharacterItems();
@@ -89,7 +89,7 @@ export const Equipment = (props) => {
       appState.accessToken, character().provider, character().id, item.id, payload
     );
 
-    if (result.errors === undefined) {
+    if (result.errors_list === undefined) {
       batch(() => {
         if (item.kind !== 'item') props.onReloadCharacter(); // weapon/armor
         const newValue = characterItems().slice().map((element) => {
@@ -106,7 +106,7 @@ export const Equipment = (props) => {
     const result = await removeCharacterItemRequest(
       appState.accessToken, character().provider, character().id, item.id
     );
-    if (result.errors === undefined) {
+    if (result.errors_list === undefined) {
       batch(() => {
         if (item.kind.includes('weapon') || item.ready_to_use) reloadCharacterItems();
         else setCharacterItems(characterItems().filter((element) => element !== item));

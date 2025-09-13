@@ -20,7 +20,7 @@ module Frontend
 
         def create
           case add_companion.call(companion_params.merge(character: @character))
-          in { errors: errors } then unprocessable_response(errors)
+          in { errors: errors, errors_list: errors_list } then unprocessable_response(errors, errors_list)
           in { result: result }
             serialize_resource(result, ::Daggerheart::Characters::CompanionSerializer, :companion, {}, :created)
           end
@@ -28,7 +28,7 @@ module Frontend
 
         def update
           case change_companion.call(companion_params.merge(companion: @companion))
-          in { errors: errors } then unprocessable_response(errors)
+          in { errors: errors, errors_list: errors_list } then unprocessable_response(errors, errors_list)
           in { result: result }
             serialize_resource(result, ::Daggerheart::Characters::CompanionSerializer, :companion, {})
           end

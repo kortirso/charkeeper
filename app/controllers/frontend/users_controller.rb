@@ -8,7 +8,7 @@ module Frontend
 
     def update
       case update_service.call(update_params.merge({ user: current_user }))
-      in { errors: errors } then unprocessable_response(errors)
+      in { errors: errors, errors_list: errors_list } then unprocessable_response(errors, errors_list)
       else only_head_response
       end
     end

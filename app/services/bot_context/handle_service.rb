@@ -20,16 +20,15 @@ module BotContext
       end
 
       command_result = handle_command.call(source: source, command: command, arguments: arguments, data: data)
-      return { errors: ['Invalid command'] } if command_result.nil?
+      return response(source, { errors: ['Invalid command'] }) if command_result.nil?
+      return response(source, { errors: command_result[:errors] }) if command_result[:errors].present?
 
       command_formatted_result = represent_command.call(source: source, command: command, command_result: command_result)
       return if command_formatted_result.nil?
-      return command_formatted_result if source == :web
 
-      send_result_message(data[:raw_message], command_formatted_result)
-      nil
+      response(source, command_formatted_result, data)
     rescue ArgumentError => _e
-      { errors: ['Invalid command'] }
+      { errors: ['Invalid command'], errors_list: ['Invalid command'] }
     end
 
     private
@@ -49,6 +48,12 @@ module BotContext
       [result.shift, result]
     end
     # rubocop: enable Style/RedundantRegexpArgument
+
+    def response(source, result, data={})
+      return send_result_message(data[:raw_message], result) if source != :web
+
+      { result: result[:result], errors: result[:errors], errors_list: result[:errors] }
+    end
 
     def send_result_message(raw_message, command_formatted_result)
       telegram_api.send_message(

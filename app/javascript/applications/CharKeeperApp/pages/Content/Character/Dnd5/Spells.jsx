@@ -134,12 +134,12 @@ export const Dnd5Spells = (props) => {
       props.character.id,
       { spell_id: spellId, target_spell_class: targetSpellClass }
     );
-    if (result.errors === undefined) setCharacterSpells(characterSpells().concat(result.spell));
+    if (result.errors_list === undefined) setCharacterSpells(characterSpells().concat(result.spell));
   }
 
   const forgetSpell = async (spellId) => {
     const result = await removeCharacterSpellRequest(appState.accessToken, props.character.provider, props.character.id, spellId);
-    if (result.errors === undefined) setCharacterSpells(characterSpells().filter((item) => item.spell_id !== spellId));
+    if (result.errors_list === undefined) setCharacterSpells(characterSpells().filter((item) => item.spell_id !== spellId));
   }
 
   const enableSpell = (spellId) => updateCharacterSpell(spellId, { 'ready_to_use': true });
@@ -156,7 +156,7 @@ export const Dnd5Spells = (props) => {
     const result = await updateCharacterRequest(
       appState.accessToken, character().provider, character().id, { character: { spent_spell_slots: newValue }, only_head: true }
     );
-    if (result.errors === undefined) setSpentSpellSlots(newValue);
+    if (result.errors_list === undefined) setSpentSpellSlots(newValue);
   }
 
   const freeSpellSlot = async (level) => {
@@ -165,7 +165,7 @@ export const Dnd5Spells = (props) => {
     const result = await updateCharacterRequest(
       appState.accessToken, character().provider, character().id, { character: { spent_spell_slots: newValue }, only_head: true }
     );
-    if (result.errors === undefined) setSpentSpellSlots(newValue);
+    if (result.errors_list === undefined) setSpentSpellSlots(newValue);
   }
 
   const updateCharacterSpell = async (spellId, payload) => {
@@ -173,7 +173,7 @@ export const Dnd5Spells = (props) => {
       appState.accessToken, character().provider, character().id, spellId, payload
     );
 
-    if (result.errors === undefined) {
+    if (result.errors_list === undefined) {
       batch(() => {
         const newValue = characterSpells().slice().map((element) => {
           if (element.id !== spellId) return element;

@@ -38,8 +38,8 @@ export const CampaignTab = (props) => {
   const deleteCharacter = async (characterId) => {
     const result = await removeCampaignJoinRequest(appState.accessToken, campaign().id, characterId);
 
-    if (result.errors === undefined) setCharacters(characters().filter((item) => item.id !== characterId));
-    else renderAlerts(result.errors);
+    if (result.errors_list === undefined) setCharacters(characters().filter((item) => item.id !== characterId));
+    else renderAlerts(result.errors_list);
   }
 
   return (

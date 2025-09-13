@@ -35,12 +35,12 @@ export const DndGold = (props) => {
       { character: { coins: coinsData() }, only_head: true }
     );
 
-    if (result.errors === undefined) {
+    if (result.errors_list === undefined) {
       batch(() => {
         props.onReplaceCharacter({ coins: coinsData() });
         closeModal();
       });
-    } else renderAlerts(result.errors);
+    } else renderAlerts(result.errors_list);
   }
 
   return (

@@ -24,8 +24,8 @@ export const DaggerheartGold = (props) => {
       appState.accessToken, character().provider, character().id, { character: { [attribute]: payload }, only_head: true }
     );
 
-    if (result.errors === undefined) props.onReplaceCharacter({ [attribute]: payload });
-    else renderAlerts(result.errors);
+    if (result.errors_list === undefined) props.onReplaceCharacter({ [attribute]: payload });
+    else renderAlerts(result.errors_list);
   }
 
   return (

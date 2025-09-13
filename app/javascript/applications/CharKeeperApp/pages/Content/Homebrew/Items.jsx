@@ -40,30 +40,30 @@ export const HomebrewItems = (props) => {
   const createItem = async (payload) => {
     const result = await createHomebrewItemRequest(appState.accessToken, props.provider, payload);
 
-    if (result.errors === undefined) {
+    if (result.errors_list === undefined) {
       batch(() => {
         setItems(items().concat(result.item));
         setActiveView('left');
       });
-    } else renderAlerts(result.errors);
+    } else renderAlerts(result.errors_list);
   }
 
   const removeItem = async (event, id) => {
     event.stopPropagation();
 
     const result = await removeHomebrewItemRequest(appState.accessToken, props.provider, id);
-    if (result.errors === undefined) {
+    if (result.errors_list === undefined) {
       setItems(items().filter((item) => item.id !== id));
-    } else renderAlerts(result.errors);
+    } else renderAlerts(result.errors_list);
   }
 
   const copyItem = async () => {
     const result = await copyHomebrewItemRequest(appState.accessToken, props.provider, copyItemId());
 
-    if (result.errors === undefined) {
+    if (result.errors_list === undefined) {
       const itemsData = await fetchItems();
       setItems(itemsData.items);
-    } else renderAlert(result.errors);
+    } else renderAlert(result.errors_list);
     setCopyItemId('');
   }
 

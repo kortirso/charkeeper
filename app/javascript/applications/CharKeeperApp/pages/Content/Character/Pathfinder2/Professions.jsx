@@ -36,10 +36,10 @@ export const Pathfinder2Professions = (props) => {
       { character: { languages: languagesData() }, only_head: true }
     );
 
-    if (result.errors === undefined) {
+    if (result.errors_list === undefined) {
       props.onReplaceCharacter({ languages: languagesData() });
       renderNotice(t('alerts.characterIsUpdated'));
-    } else renderAlerts(result.errors);
+    } else renderAlerts(result.errors_list);
   }
 
   const updateSkills = async (skills_name, slug) => {
@@ -57,8 +57,8 @@ export const Pathfinder2Professions = (props) => {
       { character: { [skills_name]: newSkillValue }, only_head: true }
     );
 
-    if (result.errors === undefined) props.onReplaceCharacter({ [skills_name]: newSkillValue });
-    else renderAlerts(result.errors);
+    if (result.errors_list === undefined) props.onReplaceCharacter({ [skills_name]: newSkillValue });
+    else renderAlerts(result.errors_list);
   }
 
   return (

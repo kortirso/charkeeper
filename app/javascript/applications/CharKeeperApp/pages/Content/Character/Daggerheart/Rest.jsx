@@ -38,7 +38,7 @@ export const DaggerheartRest = (props) => {
       character().id,
       { ...payload, options: restOptions, make_rolls: makeRolls() }
     );
-    if (result.errors === undefined) {
+    if (result.errors_list === undefined) {
       const characterData = await fetchCharacterRequest(
         appState.accessToken,
         character().id,
@@ -51,7 +51,7 @@ export const DaggerheartRest = (props) => {
         setMakeRolls(false);
         renderNotice(t('alerts.restIsFinished'));
       });
-    } else renderAlerts(result.errors);
+    } else renderAlerts(result.errors_list);
   }
 
   return (

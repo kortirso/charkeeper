@@ -76,7 +76,7 @@ export const DaggerheartDomainCards = (props) => {
       { spell_id: spellId }
     );
 
-    if (result.errors === undefined) {
+    if (result.errors_list === undefined) {
       batch(() => {
         setCharacterSpells([result.spell].concat(characterSpells()));
         renderNotice(t('alerts.domainCardIsAdded'));
@@ -101,7 +101,7 @@ export const DaggerheartDomainCards = (props) => {
       appState.accessToken, character().provider, character().id, spell.id, payload
     );
 
-    if (result.errors === undefined) {
+    if (result.errors_list === undefined) {
       batch(() => {
         const newValue = characterSpells().slice().map((element) => {
           if (element.id !== spell.id) return element;
@@ -117,7 +117,7 @@ export const DaggerheartDomainCards = (props) => {
     const result = await removeCharacterSpellRequest(
       appState.accessToken, character().provider, character().id, spell.id
     );
-    if (result.errors === undefined) {
+    if (result.errors_list === undefined) {
       setCharacterSpells(characterSpells().filter((item) => item.id !== spell.id));
     }
   }

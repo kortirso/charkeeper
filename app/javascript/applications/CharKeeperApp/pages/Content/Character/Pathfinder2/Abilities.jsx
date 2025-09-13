@@ -35,12 +35,12 @@ export const Pathfinder2Abilities = (props) => {
     const payload = { abilities: transformedAbilities }
     const result = await updateCharacterRequest(appState.accessToken, 'pathfinder2', character().id, { character: payload });
 
-    if (result.errors === undefined) {
+    if (result.errors_list === undefined) {
       batch(() => {
         props.onReplaceCharacter(result.character);
         setEditMode(false);
       });
-    } else renderAlerts(result.errors);
+    } else renderAlerts(result.errors_list);
   }
 
   return (

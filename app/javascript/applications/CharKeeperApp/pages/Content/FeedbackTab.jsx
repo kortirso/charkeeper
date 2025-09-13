@@ -22,12 +22,12 @@ export const FeedbackTab = (props) => {
     if (feedback().length === 0) return;
 
     const result = await createUserFeedbackRequest(appState.accessToken, { value: feedback() });
-    if (result.errors === undefined) {
+    if (result.errors_list === undefined) {
       batch(() => {
         renderNotice(t('alerts.feedbackIsAdded'));
         setFeedback('');
       })
-    } else renderAlerts(result.errors);
+    } else renderAlerts(result.errors_list);
   }
 
   return (

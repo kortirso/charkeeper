@@ -17,7 +17,7 @@ describe HomebrewContext::Daggerheart::AddFeatCommand do
 
       it 'does not create feat', :aggregate_failures do
         expect { command_call }.not_to change(Feat, :count)
-        expect(command_call[:errors]).to eq({ title: ["Title can't be blank"] })
+        expect(command_call[:errors_list]).to eq(["Title can't be blank"])
       end
     end
 
@@ -26,7 +26,7 @@ describe HomebrewContext::Daggerheart::AddFeatCommand do
 
       it 'does not create feat', :aggregate_failures do
         expect { command_call }.not_to change(Feat, :count)
-        expect(command_call[:errors]).to eq({ title: ["Title's size cannot be greater than 50"] })
+        expect(command_call[:errors_list]).to eq(["Title's size cannot be greater than 50"])
       end
     end
 

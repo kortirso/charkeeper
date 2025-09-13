@@ -17,7 +17,7 @@ module Frontend
 
       def create
         case add_service.call(create_params.merge(user: current_user))
-        in { errors: errors } then unprocessable_response(errors)
+        in { errors: errors, errors_list: errors_list } then unprocessable_response(errors, errors_list)
         in { result: result } then serialize_resource(result, serializer, :speciality, {}, :created)
         end
       end
@@ -41,7 +41,10 @@ module Frontend
         subclasses = characters_relation.where(user_id: current_user.id).pluck(:data).pluck(:subclasses)
         return if subclasses.flat_map(&:keys).exclude?(@speciality.id)
 
-        unprocessable_response({ base: [t("frontend.homebrews.specialities.#{params[:provider]}.character_exists")] })
+        unprocessable_response(
+          { base: [t("frontend.homebrews.specialities.#{params[:provider]}.character_exists")] },
+          [t("frontend.homebrews.specialities.#{params[:provider]}.character_exists")]
+        )
       end
 
       def create_params

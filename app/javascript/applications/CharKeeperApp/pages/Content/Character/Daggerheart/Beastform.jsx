@@ -27,9 +27,9 @@ export const DaggerheartBeastform = (props) => {
       appState.accessToken, character().provider, character().id, { character: { beastform: (value === 'none' ? null : value) } }
     );
 
-    if (result.errors === undefined) {
+    if (result.errors_list === undefined) {
       props.onReplaceCharacter(result.character);
-    } else renderAlerts(result.errors);
+    } else renderAlerts(result.errors_list);
   }
 
   return (

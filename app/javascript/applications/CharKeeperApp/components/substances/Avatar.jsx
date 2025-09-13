@@ -74,7 +74,7 @@ export const Avatar = (props) => {
 
     const result = await updateCharacterRequest(appState.accessToken, character().provider, character().id, { character: characterFormData, only_head: true });
     
-    if (result.errors === undefined) {
+    if (result.errors_list === undefined) {
       batch(() => {
         if (character().name !== name()) props.onReplaceCharacter({ name: name() });
         renderNotice(t('alerts.characterIsUpdated'));
@@ -82,7 +82,7 @@ export const Avatar = (props) => {
       });
     } else {
       batch(() => {
-        renderAlerts(result.errors);
+        renderAlerts(result.errors_list);
         setLoading(false);
       });
     }

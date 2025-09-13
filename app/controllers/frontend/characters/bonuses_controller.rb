@@ -19,7 +19,7 @@ module Frontend
 
       def create
         case add_bonus_command.call(create_params.merge(character: @character))
-        in { errors: errors } then unprocessable_response(errors)
+        in { errors: errors, errors_list: errors_list } then unprocessable_response(errors, errors_list)
         else only_head_response
         end
       end

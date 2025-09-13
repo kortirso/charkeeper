@@ -15,7 +15,7 @@ module Frontend
 
         def create
           case @perform_command.call(rest_options.merge({ character: @character }))
-          in { errors: errors } then unprocessable_response(errors)
+          in { errors: errors, errors_list: errors_list } then unprocessable_response(errors, errors_list)
           else only_head_response
           end
         end
@@ -35,7 +35,9 @@ module Frontend
         end
 
         def check_perform_command
-          render json: { errors: ['Invalid type'] }, status: :unprocessable_content if @perform_command.nil?
+          return if @perform_command
+
+          render json: { errors: ['Invalid type'], errors_list: ['Invalid type'] }, status: :unprocessable_content
         end
 
         def rest_options

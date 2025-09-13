@@ -25,14 +25,14 @@ module BotContext
 
       def create_book(provider, name, data, source)
         result = add_book_command.call(user: data[:user], name: name, provider: provider)
-        if result[:errors].nil?
+        if result[:errors_list].nil?
           ActiveBotObject.find_by(user: data[:user], source: source, object: 'book')&.destroy
           ActiveBotObject.create!(user: data[:user], source: source, object: 'book', info: { id: result[:result].id })
         end
         {
           type: 'create',
           result: result[:result],
-          errors: result[:errors]
+          errors: result[:errors_list]
         }
       end
 
@@ -49,7 +49,7 @@ module BotContext
         {
           type: 'remove',
           result: result[:result],
-          errors: result[:errors]
+          errors: result[:errors_list]
         }
       end
 

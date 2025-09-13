@@ -32,7 +32,7 @@ module AuthContext
 
       { result: result }
     rescue ActiveRecord::RecordNotUnique => _e
-      { errors: { identity: ['Already exists'] } }
+      { errors: { identity: ['Already exists'] }, errors_list: ['Already exists'] }
     end
 
     def create_user(input)

@@ -168,12 +168,12 @@ export const DaggerheartLeveling = (props) => {
       }
     );
 
-    if (result.errors === undefined) {
+    if (result.errors_list === undefined) {
       batch(() => {
         props.onReplaceCharacter(result.character);
         renderNotice(t('alerts.characterIsUpdated'));
       });
-    } else renderAlerts(result.errors);
+    } else renderAlerts(result.errors_list);
   }
 
   return (

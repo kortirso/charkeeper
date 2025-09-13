@@ -13,11 +13,11 @@ class BaseCommand
   def call(input={})
     lockable(input) do
       contract_result = validate_contract(input)
-      return { errors: contract_result[:errors] } if contract_result[:errors].present?
+      return { errors: contract_result[:errors], errors_list: contract_result[:errors_list] } if contract_result[:errors].present?
 
       input = contract_result[:result]
       errors = validate_content(input)
-      return { errors: errors } if errors.present?
+      return { errors: errors, errors_list: errors } if errors.present?
 
       do_prepare(input)
       do_persist(input)
@@ -58,10 +58,17 @@ class BaseCommand
 
   def validate(input)
     result = contract.call(input)
-    { result: result.to_h, errors: flatten_hash_from(contract.call(input).errors(locale: I18n.locale).to_h) }
+    {
+      result: result.to_h,
+      errors: flatten_hash_from(contract.call(input).errors(locale: I18n.locale).to_h),
+      errors_list: contract.call(input).errors(locale: I18n.locale).to_h.values.flatten
+    }
   rescue Dry::Validation::MissingMessageError => _e
     monitoring_validation_error(input)
-    { errors: { base: [I18n.t('validation_error')] } }
+    {
+      errors: { base: [I18n.t('validation_error')] },
+      errors_list: [I18n.t('validation_error')]
+    }
   end
 
   def flatten_hash_from(hash)

@@ -65,7 +65,7 @@ export const Feats = (props) => {
       { character_feat: payload, only_head: true }
     );
 
-    if (result.errors === undefined) {
+    if (result.errors_list === undefined) {
       if (refresh) {
         const newFeatures = character().features.slice().map((element) => {
           if (element.id !== featureId) return element;
@@ -75,7 +75,7 @@ export const Feats = (props) => {
       } else {
         props.onReloadCharacter();
       }
-    } else renderAlerts(result.errors);
+    } else renderAlerts(result.errors_list);
   }
 
   return (

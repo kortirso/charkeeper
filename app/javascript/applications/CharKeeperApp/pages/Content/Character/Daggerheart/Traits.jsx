@@ -42,12 +42,12 @@ export const DaggerheartTraits = (props) => {
       appState.accessToken, character().provider, character().id, { character: { traits: traitsData() } }
     );
 
-    if (result.errors === undefined) {
+    if (result.errors_list === undefined) {
       batch(() => {
         props.onReplaceCharacter(result.character);
         setEditMode(false);
       });
-    } else renderAlerts(result.errors);
+    } else renderAlerts(result.errors_list);
   }
 
   return (

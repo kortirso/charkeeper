@@ -17,7 +17,7 @@ module Frontend
         monitoring_telegram_auth(user_session.user)
         auth_response(user_session)
       else
-        unprocessable_response({ signature: ['Invalid'] })
+        unprocessable_response({ errors: { signature: ['Invalid'] }, errors_list: ['Invalid signature'] })
       end
     end
 

@@ -4,7 +4,7 @@ export const apiRequest = ({ url, options }) => {
   return fetch(url, options)
     .then((response) => response.json())
     .then((data) => data)
-    .catch(() => { return { errors: ['Internal server error, an error report has been sent to the developer!'] } });
+    .catch(() => { return { errors_list: ['Internal server error, an error report has been sent to the developer!'] } });
 }
 
 export const apiBlobRequest = ({ url, options }) => {
@@ -13,7 +13,7 @@ export const apiBlobRequest = ({ url, options }) => {
   return fetch(url, options)
     .then((response) => response.blob())
     .then(blob => URL.createObjectURL(blob))
-    .catch(() => { return { errors: ['Internal server error, an error report has been sent to the developer!'] } });
+    .catch(() => { return { errors_list: ['Internal server error, an error report has been sent to the developer!'] } });
 }
 
 export const options = (method, accessToken, payload) => {

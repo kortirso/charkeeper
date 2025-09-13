@@ -42,7 +42,7 @@ export const Dnd5Combat = (props) => {
     }
 
     const result = await props.onRefreshCharacter(newValue);
-    if (result.errors === undefined) setDamageConditions(newValue);
+    if (result.errors_list === undefined) setDamageConditions(newValue);
   }
 
   // submits
@@ -59,7 +59,7 @@ export const Dnd5Combat = (props) => {
       appState.accessToken, character().provider, character().id, { character: payload, only_head: true }
     );
 
-    if (result.errors === undefined) props.onReplaceCharacter(payload);
+    if (result.errors_list === undefined) props.onReplaceCharacter(payload);
   }
 
   const freeDeath = async (type) => {
@@ -69,7 +69,7 @@ export const Dnd5Combat = (props) => {
       appState.accessToken, character().provider, character().id, { character: payload, only_head: true }
     );
 
-    if (result.errors === undefined) props.onReplaceCharacter(payload);
+    if (result.errors_list === undefined) props.onReplaceCharacter(payload);
   }
 
   const changeHealth = async (coefficient) => {
@@ -80,7 +80,7 @@ export const Dnd5Combat = (props) => {
       { value: damageHealValue() * coefficient, only: 'health,death_saving_throws' }
     );
 
-    if (result.errors === undefined) {
+    if (result.errors_list === undefined) {
       props.onReplaceCharacter({
         health: result.character.health,
         death_saving_throws: result.character.death_saving_throws
@@ -95,7 +95,7 @@ export const Dnd5Combat = (props) => {
       appState.accessToken, character().provider, character().id, { character: payload, only_head: true }
     );
 
-    if (result.errors === undefined) {
+    if (result.errors_list === undefined) {
       batch(() => {
         props.onReplaceCharacter(payload);
         closeModal();

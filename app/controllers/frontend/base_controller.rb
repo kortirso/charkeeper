@@ -11,15 +11,15 @@ module Frontend
     end
 
     def access_denied
-      render json: { errors: [t('forbidden')] }, status: :forbidden, formats: [:json] # 403
+      render json: { errors: [t('forbidden')], errors_list: [t('forbidden')] }, status: :forbidden, formats: [:json] # 403
     end
 
     def page_not_found
-      render json: { errors: [t('not_found')] }, status: :not_found # 404
+      render json: { errors: [t('not_found')], errors_list: [t('not_found')] }, status: :not_found # 404
     end
 
-    def unprocessable_response(errors)
-      render json: { errors: errors }, status: :unprocessable_content # 422
+    def unprocessable_response(errors, errors_list=[])
+      render json: { errors: errors, errors_list: errors_list }, status: :unprocessable_content # 422
     end
   end
 end

@@ -18,14 +18,14 @@ module Frontend
 
       def create
         case character_item_add.call(create_params)
-        in { errors: errors } then unprocessable_response(errors)
+        in { errors: errors, errors_list: errors_list } then unprocessable_response(errors, errors_list)
         else only_head_response
         end
       end
 
       def update
         case character_item_update.call(update_params.merge({ character_item: @character_item }))
-        in { errors: errors } then unprocessable_response(errors)
+        in { errors: errors, errors_list: errors_list } then unprocessable_response(errors, errors_list)
         else only_head_response
         end
       end

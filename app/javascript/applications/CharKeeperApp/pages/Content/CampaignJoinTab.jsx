@@ -38,8 +38,8 @@ export const CampaignJoinTab = (props) => {
   const joinCharacter = async (characterId) => {
     const result = await createCampaignJoinRequest(appState.accessToken, campaignId(), { character_id: characterId });
 
-    if (result.errors === undefined) navigate('campaign', { id: campaignId() });
-    else renderAlerts(result.errors);
+    if (result.errors_list === undefined) navigate('campaign', { id: campaignId() });
+    else renderAlerts(result.errors_list);
   }
 
   return (

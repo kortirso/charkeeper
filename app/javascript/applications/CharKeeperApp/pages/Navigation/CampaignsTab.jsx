@@ -58,13 +58,13 @@ export const CampaignsTab = () => {
   const saveCampaign = async () => {
     const result = await createCampaignRequest(appState.accessToken, { campaign: campaignForm });
 
-    if (result.errors === undefined) {
+    if (result.errors_list === undefined) {
       batch(() => {
         setCampaigns(campaigns().concat(result.campaign));
         setCurrentTab('campaigns');
         setCampaignForm({ name: '', provider: '' });
       });
-    } else renderAlerts(result.errors);
+    } else renderAlerts(result.errors_list);
   }
 
   const findCampaign = async () => {
@@ -73,8 +73,8 @@ export const CampaignsTab = () => {
 
     const result = await fetchCampaignJoinRequest(appState.accessToken, findCampaignId());
 
-    if (result.errors === undefined) setCampaigns(campaigns().concat(result.campaign));
-    else renderAlerts(result.errors);
+    if (result.errors_list === undefined) setCampaigns(campaigns().concat(result.campaign));
+    else renderAlerts(result.errors_list);
   }
 
   const deleteCampaign = (event, campaignId) => {
@@ -89,12 +89,12 @@ export const CampaignsTab = () => {
   const confirmCampaignDeleting = async () => {
     const result = await removeCampaignRequest(appState.accessToken, deletingCampaignId());
 
-    if (result.errors === undefined) {
+    if (result.errors_list === undefined) {
       batch(() => {
         setCampaigns(campaigns().filter((item) => item.id !== deletingCampaignId()));
         closeModal();
       });
-    } else renderAlerts(result.errors);
+    } else renderAlerts(result.errors_list);
   }
 
   return (

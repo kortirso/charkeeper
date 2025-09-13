@@ -12,7 +12,7 @@ module Frontend
 
       def update
         case change_feat.call(update_params.merge({ character_feat: @character_feat }))
-        in { errors: errors } then unprocessable_response(errors)
+        in { errors: errors, errors_list: errors_list } then unprocessable_response(errors, errors_list)
         else only_head_response
         end
       end

@@ -22,7 +22,7 @@ module Frontend
 
         def create
           case add_spell.call({ character: @character, spell: @spell })
-          in { errors: errors } then unprocessable_response(errors)
+          in { errors: errors, errors_list: errors_list } then unprocessable_response(errors, errors_list)
           in { result: result }
             serialize_resource(result, ::Daggerheart::Characters::SpellSerializer, :spell, {}, :created)
           end
@@ -30,7 +30,7 @@ module Frontend
 
         def update
           case change_spell.call(update_params.merge({ character: @character, character_spell: @character_spell }))
-          in { errors: errors } then unprocessable_response(errors)
+          in { errors: errors, errors_list: errors_list } then unprocessable_response(errors, errors_list)
           else only_head_response
           end
         end

@@ -56,13 +56,13 @@ export const DaggerheartCompanion = (props) => {
   const createCompanion = async () => {
     const result = await createCompanionRequest(appState.accessToken, character().provider, character().id, { name: name() });
 
-    if (result.errors === undefined) {
+    if (result.errors_list === undefined) {
       batch(() => {
         setDamageData(result.companion.damage);
         setDistanceData(result.companion.distance);
         setCompanion(result.companion);
       });
-    } else renderAlerts(result.errors);
+    } else renderAlerts(result.errors_list);
   }
 
   const cancelDamageEditing = () => {
@@ -104,12 +104,12 @@ export const DaggerheartCompanion = (props) => {
       appState.accessToken, character().provider, character().id, { companion: payload }
     );
 
-    if (result.errors === undefined) {
+    if (result.errors_list === undefined) {
       batch(() => {
         setCompanion(result.companion);
         if (callback) callback(false);
       });
-    } else renderAlerts(result.errors);
+    } else renderAlerts(result.errors_list);
   }
 
   return (

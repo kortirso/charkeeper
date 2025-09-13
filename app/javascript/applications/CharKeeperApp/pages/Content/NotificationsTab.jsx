@@ -26,12 +26,12 @@ export const NotificationsTab = (props) => {
 
     Promise.all([fetchUserNotifications()]).then(
       ([notificationsData]) => {
-        if (notificationsData.errors === undefined) {
+        if (notificationsData.errors_list === undefined) {
           batch(() => {
             setNotifications(notificationsData.notifications);
             changeUnreadNotificationsCount(0);
           });
-        } else renderAlerts(notificationsData.errors);
+        } else renderAlerts(notificationsData.errors_list);
       }
     );
   });
