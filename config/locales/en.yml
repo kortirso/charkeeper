@@ -2,11 +2,16 @@ en:
   forbidden: Forbidden
   not_found: Object is not found
   change_locale: Change locale
+  close_cookie: Close cookie
   validation_error: Validation error
   tips:
     title: Tips
     description: CharKeeper is absolutely free, but if you like using CharKeeper and would like to help with the development of the application, you can leave a small donation in one of the ways listed below. Now funds are only needed to pay for the domain name and hosting, but there are plans to pay for the work of enthusiasts who are filling the application with data from various role-playing systems, and to release CharKeeper on iOS (need to pay for an Apple developer account). I would be grateful for any help.
     boosty: Boosty
+  cookie_banner:
+    title: Cookie banner
+    p1: Charkeeper.org doesn't use third-party cookies, only a single in-house cookie.
+    p2: No data is sent to third party.
   providers:
     daggerheart: Daggerheart
     dnd5: D&D 5

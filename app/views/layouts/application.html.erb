@@ -78,6 +78,18 @@
           </div>
         </div>
       </footer>
+      <% unless cookies[:charkeeper_cookie_banner] %>
+        <div class="fixed bottom-16 right-4 p-4 bg-white rounded w-md shadow">
+          <h2 class="text-lg font-medium! mb-4"><%= t('cookie_banner.title') %></h2>
+          <p class="mb-2"><%= t('cookie_banner.p1') %></p>
+          <p><%= t('cookie_banner.p2') %></p>
+          <div class="absolute top-2 right-2">
+            <%= link_to close_cookie_banner, aria: { label: t('close_cookie') } do %>
+              <%= image_tag 'close.svg', class: 'w-10 h-10', alt: 'close', width: 40, height: 40 %>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
     </main>
   </body>
 </html>

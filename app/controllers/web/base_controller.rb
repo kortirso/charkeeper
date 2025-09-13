@@ -2,10 +2,21 @@
 
 module Web
   class BaseController < ApplicationController
+    before_action :close_cookie_banner
     before_action :update_locale
     before_action :set_locale
 
     private
+
+    def close_cookie_banner
+      close_banner = params[:close_cookie_banner]
+      return if close_banner.blank?
+
+      cookies[:charkeeper_cookie_banner] = {
+        value: 'off',
+        domain: Rails.env.production? ? 'charkeeper.org' : nil
+      }.compact
+    end
 
     def update_locale
       switch_locale = params[:switch_locale]

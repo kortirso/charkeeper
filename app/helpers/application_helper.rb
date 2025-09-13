@@ -7,6 +7,10 @@ module ApplicationHelper
     url_for(request.params.merge(switch_locale: locale.to_s))
   end
 
+  def close_cookie_banner
+    url_for(request.params.merge(close_cookie_banner: true))
+  end
+
   def js_component(component_name, **props)
     content_tag(
       'div',
