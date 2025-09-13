@@ -9,5 +9,7 @@ module Web
     def privacy; end
 
     def bot_commands; end
+
+    def tips; end
   end
 end

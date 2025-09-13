@@ -23,14 +23,28 @@
     <main class="relative flex flex-col m-0 p-0 min-h-screen">
       <%= render 'controllers/web/shared/flash' %>
       <div class="w-full bg-white border-b border-gray-200 py-2">
-        <div class="max-w-7xl mx-auto flex flex-row justify-end">
-          <% if current_user %>
-            <%= link_to t('web.users.signin.logout'), logout_path, class: 'underline' %>
-          <% else %>
-            <%= link_to t('web.users.signin.title'), new_signin_path, class: 'mr-4 underline' %>
-            <%= link_to t('web.users.signup.title'), new_signup_path, class: 'underline' %>
-          <% end %>
-        </div>
+        <% if current_page?(root_path) %>
+          <div class="max-w-7xl mx-auto flex flex-row justify-end">
+            <% if current_user %>
+              <%= link_to t('web.users.signin.logout'), logout_path, class: 'underline' %>
+            <% else %>
+              <%= link_to t('web.users.signin.title'), new_signin_path, class: 'mr-4 underline' %>
+              <%= link_to t('web.users.signup.title'), new_signup_path, class: 'underline' %>
+            <% end %>
+          </div>
+        <% else %>
+          <div class="max-w-7xl mx-auto flex flex-row justify-between">
+            <%= link_to 'CharKeeper', root_path %>
+            <div>
+              <% if current_user %>
+                <%= link_to t('web.users.signin.logout'), logout_path, class: 'underline' %>
+              <% else %>
+                <%= link_to t('web.users.signin.title'), new_signin_path, class: 'mr-4 underline' %>
+                <%= link_to t('web.users.signup.title'), new_signup_path, class: 'underline' %>
+              <% end %>
+            </div>
+          </div>
+        <% end %>
       </div>
       <div class="flex flex-col flex-1 overflow-x-hidden">
         <%= yield %>
@@ -42,8 +56,9 @@
             <% I18n.available_locales.each do |locale| %>
               <%= link_to locale, change_locale(locale), class: 'ml-2', aria: { label: t('change_locale') } %>
             <% end %>
-            <span>,</span>
-            <%= link_to 'Privacy policy', privacy_path, class: 'ml-2' %>
+            <%= link_to t('tips.title'), tips_path, class: 'ml-2 underline' %>
+            <%= link_to 'Bot', bot_commands_path, class: 'ml-2 underline' %>
+            <%= link_to 'Privacy policy', privacy_path, class: 'ml-2 underline' %>
           </p>
           <div class="flex">
             <% if I18n.locale == :ru %>

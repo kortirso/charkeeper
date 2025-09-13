@@ -147,6 +147,7 @@ Rails.application.routes.draw do
 
       get 'privacy', to: 'welcome#privacy'
       get 'bot_commands', to: 'welcome#bot_commands'
+      get 'tips', to: 'welcome#tips'
     end
 
     root 'web/welcome#index'
