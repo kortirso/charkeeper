@@ -10,8 +10,8 @@ module BotContext
 
       def call(source:, arguments:, data:) # rubocop: disable Lint/UnusedMethodArgument
         case arguments.shift
-        when 'addRace' then create_race(*arguments, data)
-        when 'addCommunity' then create_community(*arguments, data)
+        when 'createRace' then create_race(*arguments, data)
+        when 'createCommunity' then create_community(*arguments, data)
         end
       end
 
@@ -25,7 +25,7 @@ module BotContext
           end
 
         {
-          type: 'add_race',
+          type: 'create_race',
           result: result[:result],
           errors: result[:errors_list]
         }
@@ -39,7 +39,7 @@ module BotContext
           end
 
         {
-          type: 'add_community',
+          type: 'create_community',
           result: result[:result],
           errors: result[:errors_list]
         }

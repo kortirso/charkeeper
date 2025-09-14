@@ -8,7 +8,8 @@ module Daggerheart
       def items
         object_items = object.items.group_by(&:itemable_type).transform_values { |item| item.pluck(:itemable_id) }
         {
-          races: object_items['Daggerheart::Homebrew::Race']
+          races: object_items['Daggerheart::Homebrew::Race'],
+          communities: object_items['Daggerheart::Homebrew::Community']
         }
       end
     end

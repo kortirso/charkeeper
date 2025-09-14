@@ -95,7 +95,8 @@
         "damageBonus": "Damage bonus",
         "burden": "Burden",
         "modules": "Modules",
-        "includedAncestries": "Included ancestries"
+        "includedAncestries": "Included ancestries",
+        "includedCommunities": "Included communities"
       }
     },
     "campaignsPage": {

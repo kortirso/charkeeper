@@ -6,7 +6,8 @@ module BotContext
       include Deps[
         add_book_command: 'commands.homebrew_context.add_book',
         remove_book_command: 'commands.homebrew_context.remove_book',
-        add_book_races_command: 'commands.homebrew_context.daggerheart.add_book_races'
+        add_book_races_command: 'commands.homebrew_context.daggerheart.add_book_races',
+        add_book_communities_command: 'commands.homebrew_context.daggerheart.add_book_communities'
       ]
 
       def call(source:, arguments:, data:)
@@ -17,6 +18,7 @@ module BotContext
         when 'show' then show_active_book(data, source)
         when 'set' then set_book(*arguments, data, source)
         when 'addRace' then add_race(*arguments, data, source)
+        when 'addCommunity' then add_community(*arguments, data, source)
         when 'export' then export_book(data, source)
         end
       end
@@ -78,6 +80,16 @@ module BotContext
         add_book_races_command.call(user: data[:user], book: ::Homebrew::Book.find(object.info['id']), names: arguments)
         {
           type: 'add_race',
+          result: :ok,
+          errors: nil
+        }
+      end
+
+      def add_community(*arguments, data, source)
+        object = ActiveBotObject.find_by!(user: data[:user], source: source, object: 'book')
+        add_book_communities_command.call(user: data[:user], book: ::Homebrew::Book.find(object.info['id']), names: arguments)
+        {
+          type: 'add_community',
           result: :ok,
           errors: nil
         }

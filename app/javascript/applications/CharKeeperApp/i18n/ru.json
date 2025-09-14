@@ -95,7 +95,8 @@
         "damageBonus": "Бонус урона",
         "burden": "Руки",
         "modules": "Модули",
-        "includedAncestries": "Включённые расы"
+        "includedAncestries": "Включённые расы",
+        "includedCommunities": "Включённые общества"
       }
     },
     "campaignsPage": {
