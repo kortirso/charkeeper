@@ -53,6 +53,12 @@ export const HomebrewModules = (props) => {
                         <p class="flex-1">{community.name}</p>
                       }
                     </For>
+                    <p class="mt-8 mb-2">{t(`pages.homebrewPage.${props.provider}.includedSubclasses`)}</p>
+                    <For each={props.homebrews.subclasses.filter((item) => book.items.subclasses.includes(item.id))}>
+                      {(subclass) =>
+                        <p class="flex-1">{subclass.name}</p>
+                      }
+                    </For>
                   </Match>
                 </Switch>
               </Show>
