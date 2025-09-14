@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - adding homebrew communities to modules
 - adding homebrew subclasses to modules
 - adding homebrew items to modules
+- importing homebrew modules
 
 ### Modified
 - errors rendering

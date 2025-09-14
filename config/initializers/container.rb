@@ -96,6 +96,8 @@ module Charkeeper
       HomebrewContext::Daggerheart::AddBookSubclassesCommand.new
     }
     register('commands.homebrew_context.daggerheart.add_book_items') { HomebrewContext::Daggerheart::AddBookItemsCommand.new }
+    register('commands.homebrew_context.copy_book') { HomebrewContext::CopyBookCommand.new }
+    register('commands.homebrew_context.daggerheart.copy_book') { HomebrewContext::Daggerheart::CopyBookCommand.new }
 
     register('commands.campaigns_context.add_campaign') { CampaignsContext::AddCampaignCommand.new }
     register('commands.campaigns_context.join_campaign') { CampaignsContext::JoinCampaignCommand.new }

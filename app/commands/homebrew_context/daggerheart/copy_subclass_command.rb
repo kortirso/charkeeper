@@ -13,6 +13,7 @@ module HomebrewContext
         params do
           required(:subclass).filled(type?: ::Daggerheart::Homebrew::Subclass)
           required(:user).filled(type?: ::User)
+          optional(:class_name).filled(:string)
         end
       end
 
@@ -20,11 +21,13 @@ module HomebrewContext
 
       # rubocop: disable Metrics/AbcSize
       def do_prepare(input)
-        input[:default] = ::Daggerheart::Character.class_info(input[:subclass].class_name)
-        if input[:default].nil?
-          speciality = ::Daggerheart::Homebrew::Speciality.find_by(id: input[:subclass].class_name)
-          input[:class_attributes] =
-            speciality.data.attributes.symbolize_keys.merge({ id: speciality.id, name: speciality.name, user: input[:user] })
+        if input[:class_name].nil?
+          input[:default] = ::Daggerheart::Character.class_info(input[:subclass].class_name)
+          if input[:default].nil?
+            speciality = ::Daggerheart::Homebrew::Speciality.find_by(id: input[:subclass].class_name)
+            input[:class_attributes] =
+              speciality.data.attributes.symbolize_keys.merge({ id: speciality.id, name: speciality.name, user: input[:user] })
+          end
         end
 
         input[:subclass_attributes] =
@@ -35,28 +38,38 @@ module HomebrewContext
 
       def do_persist(input)
         result = ActiveRecord::Base.transaction do
-          speciality = add_speciality.call(input[:class_attributes].except(:id))[:result] if input[:class_attributes]
-          origin_value = input[:default] ? input[:subclass].class_name : input[:class_attributes][:id]
-          input[:subclass].user.feats.where(origin: 2, origin_value: origin_value)
-            .find_each do |feat|
-              add_feat.call(feat_attributes(
-                feat,
-                input[:class_attributes] ? speciality.id : origin_value
-              ).merge({ user: input[:user] }))
-            end
+          origin_value = find_class_origin_value(input)
+
+          if input[:class_attributes]
+            speciality = add_speciality.call(input[:class_attributes].except(:id))[:result]
+            # скопировать навыки класса
+            input[:subclass].user.feats.where(origin: 2, origin_value: origin_value)
+              .find_each do |feat|
+                add_feat.call(feat_attributes(feat, speciality.id).merge({ user: input[:user] }))
+              end
+          end
 
           subclass =
             add_subclass.call(input[:subclass_attributes].merge({
               class_name: input[:class_attributes] ? speciality.id : origin_value
             }))[:result]
+          # скопировать навыки подкласса
           input[:subclass].user.feats.where(origin: 3, origin_value: input[:subclass].id).find_each do |feat|
             add_feat.call(feat_attributes(feat, subclass.id).merge({ user: input[:user] }))
           end
+          subclass
         end
 
         { result: result }
       end
       # rubocop: enable Metrics/AbcSize
+
+      def find_class_origin_value(input)
+        return input[:class_name] if input[:class_name]
+        return input[:subclass].class_name if input[:default]
+
+        input[:class_attributes][:id]
+      end
 
       def feat_attributes(feat, origin_value)
         feat
