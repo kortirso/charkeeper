@@ -59,7 +59,7 @@ export const Dnd5 = (props) => {
 
     if (character().subrace) result.push({ title: 'subrace', callback: subraceFilter });
     result.push({ title: 'class', callback: classFilter });
-    if (character().subclasses.length > 0) result.push({ title: 'subclass', callback: subclassFilter });
+    if (Object.values(character().subclasses).filter((item) => item !== null).length > 0) result.push({ title: 'subclass', callback: subclassFilter });
 
     return result;
   });
@@ -69,7 +69,7 @@ export const Dnd5 = (props) => {
 
     if (character().legacy) result.push({ title: 'legacy', callback: legacyFilter });
     result.push({ title: 'class', callback: classFilter });
-    if (character().subclasses.length > 0) result.push({ title: 'subclass', callback: subclassFilter });
+    if (Object.values(character().subclasses).filter((item) => item !== null).length > 0) result.push({ title: 'subclass', callback: subclassFilter });
     result.push({ title: 'feat', callback: featFilter });
 
     return result;
