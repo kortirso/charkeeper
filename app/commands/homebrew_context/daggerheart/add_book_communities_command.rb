@@ -22,11 +22,11 @@ module HomebrewContext
             .where(type: 'Daggerheart::Homebrew::Community', user_id: input[:user].id, name: input[:names])
             .where.not(id: existing_community_ids)
             .ids
-        input[:attributes] = community_ids.map do |race_id|
+        input[:attributes] = community_ids.map do |community_id|
           {
             homebrew_book_id: input[:book].id,
             itemable_type: 'Daggerheart::Homebrew::Community',
-            itemable_id: race_id
+            itemable_id: community_id
           }
         end
       end

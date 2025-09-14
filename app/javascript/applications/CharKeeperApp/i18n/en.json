@@ -97,7 +97,8 @@
         "modules": "Modules",
         "includedAncestries": "Included ancestries",
         "includedCommunities": "Included communities",
-        "includedSubclasses": "Included subclasses"
+        "includedSubclasses": "Included subclasses",
+        "includedItems": "Included items"
       }
     },
     "campaignsPage": {

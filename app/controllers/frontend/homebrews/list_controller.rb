@@ -21,7 +21,8 @@ module Frontend
           communities: Panko::ArraySerializer.new(comms, each_serializer: ::Daggerheart::Homebrew::CommunitySerializer).to_a,
           classes: Panko::ArraySerializer.new(classes, each_serializer: ::Daggerheart::Homebrew::SpecialitySerializer).to_a,
           subclasses: Panko::ArraySerializer.new(subclasses, each_serializer: ::Daggerheart::Homebrew::SubclassSerializer).to_a,
-          feats: Panko::ArraySerializer.new(feats, each_serializer: ::Daggerheart::Homebrew::FeatSerializer).to_a
+          feats: Panko::ArraySerializer.new(feats, each_serializer: ::Daggerheart::Homebrew::FeatSerializer).to_a,
+          items: Panko::ArraySerializer.new(items, each_serializer: ::Daggerheart::Homebrew::ItemSerializer).to_a
         }
       end
 
@@ -30,6 +31,7 @@ module Frontend
       def classes = ::Daggerheart::Homebrew::Speciality.where(user_id: current_user.id).order(name: :asc)
       def subclasses = ::Daggerheart::Homebrew::Subclass.where(user_id: current_user.id).order(name: :asc)
       def feats = ::Daggerheart::Feat.where(user_id: current_user.id).order(Arel.sql("title->>'en' ASC"))
+      def items = ::Daggerheart::Item.where(user_id: current_user.id).order(Arel.sql("name->>'en' ASC"))
     end
   end
 end

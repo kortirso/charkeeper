@@ -97,7 +97,8 @@
         "modules": "Модули",
         "includedAncestries": "Включённые расы",
         "includedCommunities": "Включённые общества",
-        "includedSubclasses": "Включённые подклассы"
+        "includedSubclasses": "Включённые подклассы",
+        "includedItems": "Включённые предметы"
       }
     },
     "campaignsPage": {
