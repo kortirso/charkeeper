@@ -9,7 +9,8 @@ module BotContext
         add_book_races_command: 'commands.homebrew_context.daggerheart.add_book_races',
         add_book_communities_command: 'commands.homebrew_context.daggerheart.add_book_communities',
         add_book_subclasses_command: 'commands.homebrew_context.daggerheart.add_book_subclasses',
-        add_book_items_command: 'commands.homebrew_context.daggerheart.add_book_items'
+        add_book_items_command: 'commands.homebrew_context.daggerheart.add_book_items',
+        copy_book_command: 'commands.homebrew_context.copy_book'
       ]
 
       # rubocop: disable Metrics/CyclomaticComplexity
@@ -25,6 +26,7 @@ module BotContext
         when 'addSubclass' then add_subclass(*arguments, data, source)
         when 'addItem' then add_item(*arguments, data, source)
         when 'export' then export_book(data, source)
+        when 'import' then import_book(*arguments, data)
         end
       end
       # rubocop: enable Metrics/CyclomaticComplexity
@@ -127,6 +129,15 @@ module BotContext
           type: 'export',
           result: ::Homebrew::Book.find(object.info['id']),
           errors: nil
+        }
+      end
+
+      def import_book(id, data)
+        result = copy_book_command.call(user: data[:user], id: id)
+        {
+          type: 'import',
+          result: result[:result],
+          errors: result[:errors_list]
         }
       end
     end

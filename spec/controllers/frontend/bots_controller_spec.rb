@@ -26,7 +26,7 @@ describe Frontend::BotsController do
           request
 
           expect(response.parsed_body[:errors]).to eq(['Запись не найдена'])
-          expect(response).to have_http_status :not_found
+          expect(response).to have_http_status :ok
         end
       end
 

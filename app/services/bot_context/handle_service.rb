@@ -12,6 +12,7 @@ module BotContext
     SERVICE_COMMANDS = %w[/start /contacts /unsubscribe /subscribe].freeze
     SERVICE_SOURCES = %i[telegram_bot].freeze
 
+    # rubocop: disable Metrics/AbcSize
     def call(source:, message:, data: {})
       command, arguments = parse_command_text(message)
       if SERVICE_COMMANDS.include?(command)
@@ -27,9 +28,12 @@ module BotContext
       return if command_formatted_result.nil?
 
       response(source, command_formatted_result, data)
+    rescue ActiveRecord::RecordNotFound => _e
+      { errors: [I18n.t('not_found')], errors_list: [I18n.t('not_found')] }
     rescue ArgumentError => _e
       { errors: ['Invalid command'], errors_list: ['Invalid command'] }
     end
+    # rubocop: enable Metrics/AbcSize
 
     private
 

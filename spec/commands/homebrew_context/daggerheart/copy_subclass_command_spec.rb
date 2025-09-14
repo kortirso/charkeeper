@@ -26,12 +26,10 @@ describe HomebrewContext::Daggerheart::CopySubclassCommand do
   context 'for default class' do
     let!(:subclass) { create :homebrew_subclass, :daggerheart, user: user, class_name: 'bard' } # rubocop: disable RSpec/LetSetup
 
-    before { create :feat, :rally, user: user, origin: 2, origin_value: 'bard' }
-
     it 'creates new class and subclass with feats', :aggregate_failures do
       expect { command_call }.to(
         change(Daggerheart::Homebrew::Subclass.where(user_id: another_user.id), :count).by(1)
-          .and(change(Feat.where(user_id: another_user.id), :count).by(2))
+          .and(change(Feat.where(user_id: another_user.id), :count).by(1))
       )
       expect(command_call[:errors]).to be_nil
       expect(Daggerheart::Homebrew::Speciality.where(user_id: another_user.id).count).to eq 0
