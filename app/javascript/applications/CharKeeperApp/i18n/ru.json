@@ -96,7 +96,9 @@
         "burden": "Руки",
         "modules": "Модули",
         "includedAncestries": "Включённые расы",
-        "includedCommunities": "Включённые общества"
+        "includedCommunities": "Включённые общества",
+        "includedSubclasses": "Включённые подклассы",
+        "includedItems": "Включённые предметы"
       }
     },
     "campaignsPage": {

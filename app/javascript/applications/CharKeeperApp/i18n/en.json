@@ -96,7 +96,9 @@
         "burden": "Burden",
         "modules": "Modules",
         "includedAncestries": "Included ancestries",
-        "includedCommunities": "Included communities"
+        "includedCommunities": "Included communities",
+        "includedSubclasses": "Included subclasses",
+        "includedItems": "Included items"
       }
     },
     "campaignsPage": {
