@@ -56,7 +56,7 @@ export const HomebrewCommunities = (props) => {
           {console.log(props.homebrews)}
           <For each={props.homebrews.communities}>
             {(community) =>
-              <Toggle isOpen title={
+              <Toggle isOpenByParent title={
                 <div class="flex items-center">
                   <p class="flex-1 text-lg">{community.name}</p>
                   <IconButton onClick={(e) => removeCommunity(e, community.id)}>

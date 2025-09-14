@@ -55,7 +55,7 @@ export const HomebrewRaces = (props) => {
         <div class="grid grid-cols-1 emd:grid-cols-2 elg:grid-cols-3 exl:grid-cols-4 gap-x-2">
           <For each={props.homebrews.races}>
             {(race) =>
-              <Toggle isOpen title={
+              <Toggle isOpenByParent title={
                 <div class="flex items-center">
                   <p class="flex-1 text-lg">{race.name}</p>
                   <IconButton onClick={(e) => removeRace(e, race.id)}>
