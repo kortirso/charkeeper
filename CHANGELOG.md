@@ -13,6 +13,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Fixed
 - added features for homebrew communities
 - scrolling some homebrew lists
+- bug with switching feats with different providers
 
 ## [0.3.1] - 2025-09-14
 ### Added
