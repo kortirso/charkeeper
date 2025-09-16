@@ -127,7 +127,8 @@
         "origins": {
           "ancestry": "Ancestry",
           "class": "Class",
-          "subclass": "Subclass"
+          "subclass": "Subclass",
+          "community": "Community"
         },
         "kinds": {
           "static": "Static text",

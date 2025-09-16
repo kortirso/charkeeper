@@ -43,10 +43,18 @@ export const NewDaggerheartFeatForm = (props) => {
     return props.homebrews.subclasses.reduce((acc, item) => { acc[item.id] = item.name; return acc; }, {});
   });
 
+  const daggerheartCommunities = createMemo(() => {
+    const result = translate(config.communities, locale());
+    if (props.homebrews === undefined) return result;
+
+    return { ...result, ...props.homebrews.communities.reduce((acc, item) => { acc[item.id] = item.name; return acc; }, {}) };
+  });
+
   const originValues = createMemo(() => {
     if (featForm.origin === 'ancestry') return daggerheartHeritages();
     if (featForm.origin === 'class') return daggerheartClasses();
     if (featForm.origin === 'subclass') return daggerheartSubclasses();
+    if (featForm.origin === 'community') return daggerheartCommunities();
     
     return [];
   });
