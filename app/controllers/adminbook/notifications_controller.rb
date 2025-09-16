@@ -7,7 +7,7 @@ module Adminbook
     ]
 
     def index
-      @notifications = Notification.order(created_at: :desc)
+      @pagy, @notifications = pagy(Notification.order(created_at: :desc), limit: 25)
     end
 
     def new

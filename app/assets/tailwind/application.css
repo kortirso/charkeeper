@@ -263,3 +263,29 @@ code {
   padding: 2px;
   font-size: 105%;
 }
+
+nav.pagy.nav {
+  @apply mt-8;
+}
+
+nav.pagy.nav a {
+  @apply inline-block text-white py-1 px-2 mr-1;
+  @apply bg-fuzzy-red rounded-lg;
+}
+
+nav.pagy.nav a[aria-disabled="true"], nav.pagy.nav a.current {
+  @apply py-1 px-2;
+}
+
+nav.pagy.nav a[aria-disabled="true"],
+nav.pagy.nav a[aria-disabled="true"]:hover,
+nav.pagy.nav a.gap:hover,
+nav.pagy.nav a.current,
+nav.pagy.nav a.current:hover,
+nav.pagy.nav a:hover {
+  @apply text-black;
+}
+
+nav.pagy.nav a.gap {
+  @apply py-1 px-2;
+}

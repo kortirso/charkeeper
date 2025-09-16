@@ -76,6 +76,9 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'combine_pdf'
 gem 'prawn'
 
+# view pagination
+gem 'pagy', '~> 9.0'
+
 group :development, :test do
   gem 'rubocop', '~> 1.35', require: false
   gem 'rubocop-factory_bot', '~> 2.0', require: false

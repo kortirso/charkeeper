@@ -264,6 +264,7 @@ GEM
       bigdecimal (>= 3.0)
       ostruct (>= 0.2)
     ostruct (0.6.3)
+    pagy (9.4.0)
     panko_serializer (0.8.3)
       activesupport
       oj (> 3.11.0, < 4.0.0)
@@ -511,6 +512,7 @@ DEPENDENCIES
   json_spec (= 1.1.5)
   jwt (~> 2.5)
   oj
+  pagy (~> 9.0)
   panko_serializer
   pg (~> 1.1)
   prawn

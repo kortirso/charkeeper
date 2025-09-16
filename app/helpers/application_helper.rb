@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 module ApplicationHelper
+  include Pagy::Frontend
   include Authkeeper::ApplicationHelper
 
   def change_locale(locale)

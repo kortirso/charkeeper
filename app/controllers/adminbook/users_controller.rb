@@ -3,7 +3,7 @@
 module Adminbook
   class UsersController < Adminbook::BaseController
     def index
-      @users = User.order(created_at: :desc)
+      @pagy, @users = pagy(User.order(created_at: :desc), limit: 25)
     end
   end
 end
