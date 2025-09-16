@@ -39,7 +39,7 @@ export const HomebrewRaces = (props) => {
   }
 
   return (
-    <div class="p-2">
+    <div class="p-2 flex-1 overflow-y-scroll">
       <div class="flex mb-2">
         <Button default size="small" classList="px-2" onClick={copyRace}>
           {t('copy')}
