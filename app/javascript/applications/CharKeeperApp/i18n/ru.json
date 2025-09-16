@@ -127,7 +127,8 @@
         "origins": {
           "ancestry": "Раса",
           "class": "Класс",
-          "subclass": "Подкласс"
+          "subclass": "Подкласс",
+          "community": "Общество"
         },
         "kinds": {
           "static": "Вывод описания",
