@@ -65,13 +65,16 @@ export const Dnd5Spells = (props) => {
         batch(() => {
           setCharacterSpells(characterSpellsData.spells);
           setSpells(spellsData.spells.sort((a, b) => a.name > b.name));
-          setSpentSpellSlots(character().spent_spell_slots);
-          setActiveSpellClass(Object.keys(character().spell_classes)[0] || 'static');
-          setLastActiveCharacterId(character().id);
-          setSpellsSelectingMode(false);
         });
       }
     );
+
+    batch(() => {
+      setSpentSpellSlots(character().spent_spell_slots);
+      setActiveSpellClass(Object.keys(character().spell_classes)[0] || 'static');
+      setLastActiveCharacterId(character().id);
+      setSpellsSelectingMode(false);
+    })
   });
 
   const filteredSpellsList = createMemo(() => {

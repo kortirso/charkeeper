@@ -47,10 +47,11 @@ export const DaggerheartDomainCards = (props) => {
         batch(() => {
           setCharacterSpells(characterSpellsData.spells);
           setSpells(spellsData.spells.sort((a, b) => a.name > b.name));
-          setLastActiveCharacterId(character().id);
         });
       }
     );
+
+    setLastActiveCharacterId(character().id);
   });
 
   // character().selected_domains.join(',')

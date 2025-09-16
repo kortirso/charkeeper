@@ -29,18 +29,17 @@ export const Bonuses = (props) => {
   const t = i18n.translator(dict);
 
   createEffect(() => {
+    if (bonuses() !== undefined) return;
+
     const fetchCharacterBonuses = async () => await fetchCharacterBonusesRequest(appState.accessToken, character().provider, character().id);
 
     Promise.all([fetchCharacterBonuses()]).then(
       ([characterBonusesData]) => {
-        batch(() => {
-          setBonuses(characterBonusesData.bonuses);
-          setBonusForm(
-            character().provider === 'daggerheart' ? DAGGERHEART_PLACEHOLDER : DND_PLACEHOLDER
-          );
-        });
+        setBonuses(characterBonusesData.bonuses);
       }
     );
+
+    setBonusForm(character().provider === 'daggerheart' ? DAGGERHEART_PLACEHOLDER : DND_PLACEHOLDER);
   });
 
   const parseValue = (values, value) => parseInt(values[value] || 0);
