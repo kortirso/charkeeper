@@ -7,8 +7,9 @@ import { updateCharacterFeatRequest } from '../../requests/updateCharacterFeatRe
 
 export const Feats = (props) => {
   const character = () => props.character;
+  const filters = () => props.filters;
 
-  const [activeFilter, setActiveFilter] = createSignal(props.filters[0].title);
+  const [activeFilter, setActiveFilter] = createSignal(filters()[0].title);
   const [lastActiveCharacterId, setLastActiveCharacterId] = createSignal(undefined);
   const [featValues, setFeatValues] = createSignal(
     character().features.reduce((acc, item) => { acc[item.slug] = item.value; return acc; }, {})
@@ -26,7 +27,7 @@ export const Feats = (props) => {
     batch(() => {
       setFeatValues(character().features.reduce((acc, item) => { acc[item.slug] = item.value; return acc; }, {}));
       setLastActiveCharacterId(character().id);
-      setActiveFilter(props.filters[0].title);
+      setActiveFilter(filters()[0].title);
     });
   });
 

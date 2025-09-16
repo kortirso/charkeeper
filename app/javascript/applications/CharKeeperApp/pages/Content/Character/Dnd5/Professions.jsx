@@ -29,15 +29,16 @@ export const Dnd5Professions = (props) => {
 
     Promise.all([fetchItems()]).then(
       ([itemsData]) => {
-        batch(() => {
-          setItems(itemsData.items.sort((a, b) => a.name > b.name));
-          setLanguagesData(character().languages);
-          setToolsData(character().tools);
-          setMusicData(character().music);
-          setLastActiveCharacterId(character().id);
-        });
+        setItems(itemsData.items.sort((a, b) => a.name > b.name));
       }
     );
+
+    batch(() => {
+      setLanguagesData(character().languages);
+      setToolsData(character().tools);
+      setMusicData(character().music);
+      setLastActiveCharacterId(character().id);
+    })
   });
 
   const toggleFeat = async (slug) => {

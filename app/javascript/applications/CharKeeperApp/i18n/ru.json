@@ -310,6 +310,7 @@
     "primaryWeaponMagic": "Основное оружие маг"
   },
   "rest": {
+    "oneAtShortRest": "Короткий - 1, длинный - все",
     "shortRest": "Короткий отдых",
     "longRest": "Длинный отдых",
     "sessionRest": "Между сессиями"

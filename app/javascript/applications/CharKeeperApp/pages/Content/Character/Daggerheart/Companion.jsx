@@ -37,20 +37,18 @@ export const DaggerheartCompanion = (props) => {
     Promise.all([fetchCompanion()]).then(
       ([companionData]) => {
         if (companionData.errors) {
-          batch(() => {
-            setCompanion(null);
-            setLastActiveCharacterId(character().id);
-          });
+          setCompanion(null);
         } else {
           batch(() => {
             setDamageData(companionData.companion.damage);
             setDistanceData(companionData.companion.distance);
             setCompanion(companionData.companion);
-            setLastActiveCharacterId(character().id);
           });
         }
       }
     );
+
+    setLastActiveCharacterId(character().id);
   });
 
   const createCompanion = async () => {

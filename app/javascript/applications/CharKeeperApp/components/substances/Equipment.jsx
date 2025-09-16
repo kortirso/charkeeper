@@ -40,10 +40,11 @@ export const Equipment = (props) => {
         batch(() => {
           setCharacterItems(characterItemsData.items);
           setItems(itemsData.items.sort((a, b) => a.name > b.name));
-          setLastActiveCharacterId(character().id);
         });
       }
     );
+
+    setLastActiveCharacterId(character().id);
   });
 
   const reloadCharacterItems = async () => {
