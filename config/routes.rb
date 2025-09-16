@@ -11,6 +11,7 @@ Rails.application.routes.draw do
       resources :identities, only: %i[index]
       resources :platforms, only: %i[index]
     end
+    resources :campaigns, only: %i[index]
     resources :users, only: %i[index]
     resources :feedbacks, only: %i[index]
     resources :notifications, only: %i[index new create]

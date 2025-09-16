@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## Unreleased
 ### Added
 - pagination for admin pages
+- admin pages to view campaigns
 
 ### Fixed
 - added features for homebrew communities
