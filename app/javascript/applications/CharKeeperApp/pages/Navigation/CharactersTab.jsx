@@ -244,6 +244,8 @@ export const CharactersTab = () => {
         });
         setCurrentTab('characters');
         setLoading(false);
+        setSelectedFile(null);
+        setAvatarUrl('');
       });
     } else {
       batch(() => {
