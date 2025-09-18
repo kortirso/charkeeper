@@ -14,6 +14,7 @@ module Dnd5Character
         resistance: [],
         immunity: [],
         vulnerability: [],
+        tools: [],
         hit_dice: { 6 => 0, 8 => 0, 10 => 0, 12 => 0 }
       })
     end
