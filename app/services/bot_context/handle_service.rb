@@ -21,7 +21,7 @@ module BotContext
       end
 
       command_result = handle_command.call(source: source, command: command, arguments: arguments, data: data)
-      return response(source, { errors: ['Invalid command'] }) if command_result.nil?
+      return response(source, { errors: ['Invalid command'] }, data) if command_result.nil?
       return response(source, { errors: command_result[:errors] }) if command_result[:errors].present?
 
       command_formatted_result = represent_command.call(source: source, command: command, command_result: command_result)

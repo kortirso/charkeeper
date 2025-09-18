@@ -31,6 +31,18 @@ describe BotContext::HandleService do
 
       expect(client).to have_received(:send_message)
     end
+
+    context 'for module commands' do
+      context 'when list' do
+        let(:text) { '/module list' }
+
+        it 'returns error message' do
+          service_call
+
+          expect(client).to have_received(:send_message)
+        end
+      end
+    end
   end
 
   context 'for web request' do

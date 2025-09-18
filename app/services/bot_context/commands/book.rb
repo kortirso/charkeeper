@@ -15,6 +15,8 @@ module BotContext
 
       # rubocop: disable Metrics/CyclomaticComplexity
       def call(source:, arguments:, data:)
+        return if source != :web
+
         case arguments.shift
         when 'create' then create_book(*arguments, data, source)
         when 'list' then fetch_books(data)
