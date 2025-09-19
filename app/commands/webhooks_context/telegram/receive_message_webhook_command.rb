@@ -38,7 +38,7 @@ module WebhooksContext
       end
 
       def define_locale(message)
-        message_locale = message.dig(:from, :language_code).to_sym
+        message_locale = message.dig(:from, :language_code)&.to_sym || :en
         I18n.locale = I18n.available_locales.include?(message_locale) ? message_locale : I18n.default_locale
       end
     end

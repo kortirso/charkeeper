@@ -50,7 +50,7 @@ module Frontend
     end
 
     def locale
-      user_locale = user_data['language_code'].to_sym
+      user_locale = user_data['language_code']&.to_sym || :en
       I18n.available_locales.include?(user_locale) ? user_locale : I18n.default_locale
     end
 
