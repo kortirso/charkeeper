@@ -31,7 +31,7 @@ module WebhooksContext
         handle_service.call(
           source: input.dig(:message, :chat, :id).positive? ? :telegram_bot : :telegram_group_bot,
           message: input[:message][:text],
-          data: { raw_message: input[:message] }
+          data: { raw_message: input[:message], user: identity(input[:message])&.user }.compact
         )
 
         { result: :ok }
@@ -40,6 +40,10 @@ module WebhooksContext
       def define_locale(message)
         message_locale = message.dig(:from, :language_code)&.to_sym || :en
         I18n.locale = I18n.available_locales.include?(message_locale) ? message_locale : I18n.default_locale
+      end
+
+      def identity(message)
+        User::Identity.find_by(provider: User::Identity::TELEGRAM, uid: message.dig(:chat, :id).to_s)
       end
     end
   end

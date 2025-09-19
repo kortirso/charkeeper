@@ -8,8 +8,8 @@ module BotContext
         add_daggerheart_community: 'commands.homebrew_context.daggerheart.add_community'
       ]
 
-      def call(source:, arguments:, data:)
-        return if source != :web
+      def call(source:, arguments:, data:) # rubocop: disable Lint/UnusedMethodArgument
+        return if data[:user].nil?
 
         case arguments.shift
         when 'createRace' then create_race(*arguments, data)
