@@ -8,6 +8,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Modified
 - clear image file after character creation
 
+### Fixed
+- user auth for telegram bot commands
+
 ## [0.3.2] - 2025-09-16
 ### Added
 - pagination for admin pages

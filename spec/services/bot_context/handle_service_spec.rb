@@ -33,13 +33,20 @@ describe BotContext::HandleService do
     end
 
     context 'for module commands' do
+      before { create :homebrew_book, user: user }
+
       context 'when list' do
         let(:text) { '/module list' }
 
-        it 'returns error message' do
+        it 'sends list of modules' do
           service_call
 
-          expect(client).to have_received(:send_message)
+          expect(client).to have_received(:send_message).with(
+            bot_secret: nil,
+            chat_id: 1,
+            reply_to_message_id: 1,
+            text: 'Daggerheart - Book'
+          )
         end
       end
     end
