@@ -4,8 +4,6 @@ module CharactersContext
   module Dnd2024
     class CreateCommand < BaseCommand
       include Deps[
-        attach_avatar_by_url: 'commands.image_processing.attach_avatar_by_url',
-        attach_avatar_by_file: 'commands.image_processing.attach_avatar_by_file',
         refresh_feats: 'services.characters_context.dnd2024.refresh_feats'
       ]
 
@@ -66,8 +64,13 @@ module CharactersContext
         refresh_feats.call(character: character)
 
         learn_spells_list(character, input)
-        attach_avatar_by_file.call({ character: character, file: input[:avatar_file] }) if input[:avatar_file]
-        attach_avatar_by_url.call({ character: character, url: input[:avatar_url] }) if input[:avatar_url]
+
+        if input[:avatar_file]
+          ImageProcessingContext::AttachAvatarByFileJob.perform_later(character_id: character.id, file: input[:avatar_file])
+        end
+        if input[:avatar_url]
+          ImageProcessingContext::AttachAvatarByUrlJob.perform_later(character_id: character.id, url: input[:avatar_url])
+        end
 
         { result: character }
       end

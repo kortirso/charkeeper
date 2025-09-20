@@ -26,6 +26,8 @@ module Charkeeper
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 7.2
 
+    config.active_job.queue_adapter = :good_job
+
     config.middleware.use Rack::Deflater
     # Rack::Brotli goes directly under Rack::Deflater, if Rack::Deflater is present
     config.middleware.use Rack::Brotli

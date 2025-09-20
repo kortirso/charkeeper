@@ -66,6 +66,30 @@ namespace :yarn do
   end
 end
 
+namespace :que do
+  desc 'Start que worker'
+  task :start do
+    on roles(:app) do
+      within release_path do
+        with rails_env: fetch(:rails_env) do
+          execute :bundle, 'exec good_job start'
+        end
+      end
+    end
+  end
+
+  desc 'Stop que worker'
+  task :stop do
+    on roles(:app) do
+      within release_path do
+        with rails_env: fetch(:rails_env) do
+          execute "ps aux | grep '/var/www/html/charkeeper/shared/bundle/ruby/3.4.0/[b]in/good_job' | awk '{ print $2 }' | xargs kill"
+        end
+      end
+    end
+  end
+end
+
 namespace :deploy do
   desc 'Restart application'
   task :restart do
@@ -126,9 +150,5 @@ after 'deploy:assets:rsync', 'deploy:assets:cleanup'
 after 'bundler:install', 'yarn:install'
 after 'deploy:published', 'bundler:clean'
 
-# after server restart need to do
-# cap production que:start
-
 # after deploy need to do
-# cap production que:stop
-# cap production que:start
+# cap production que:stop && cap production que:start
