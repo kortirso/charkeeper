@@ -79,6 +79,9 @@ gem 'prawn'
 # view pagination
 gem 'pagy', '~> 9.0'
 
+# background jobs
+gem 'good_job'
+
 group :development, :test do
   gem 'rubocop', '~> 1.35', require: false
   gem 'rubocop-factory_bot', '~> 2.0', require: false

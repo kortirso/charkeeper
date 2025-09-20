@@ -3,11 +3,6 @@
 module CharactersContext
   module Pathfinder2
     class CreateCommand < BaseCommand
-      include Deps[
-        attach_avatar_by_url: 'commands.image_processing.attach_avatar_by_url',
-        attach_avatar_by_file: 'commands.image_processing.attach_avatar_by_file'
-      ]
-
       # rubocop: disable Metrics/BlockLength
       use_contract do
         config.messages.namespace = :pathfinder2_character
@@ -66,8 +61,12 @@ module CharactersContext
       def do_persist(input)
         character = ::Pathfinder2::Character.create!(input.slice(:user, :name, :data))
 
-        attach_avatar_by_file.call({ character: character, file: input[:avatar_file] }) if input[:avatar_file]
-        attach_avatar_by_url.call({ character: character, url: input[:avatar_url] }) if input[:avatar_url]
+        if input[:avatar_file]
+          ImageProcessingContext::AttachAvatarByFileJob.perform_later(character_id: character.id, file: input[:avatar_file])
+        end
+        if input[:avatar_url]
+          ImageProcessingContext::AttachAvatarByUrlJob.perform_later(character_id: character.id, url: input[:avatar_url])
+        end
 
         { result: character }
       end
