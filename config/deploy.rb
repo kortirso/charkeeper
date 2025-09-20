@@ -83,7 +83,7 @@ namespace :que do
     on roles(:app) do
       within release_path do
         with rails_env: fetch(:rails_env) do
-          execute "ps aux | grep '/var/www/html/charkeeper/shared/bundle/ruby/3.4.0/[b]in/good_job' | awk '{ print $2 }' | xargs kill"
+          execute "ps aux | grep '/var/www/html/charkeeper/shared/bundle/ruby/3.4.0/[b]in/good_job' | awk '{ print $2 }' | xargs kill" # rubocop: disable Layout/LineLength
         end
       end
     end
