@@ -287,7 +287,7 @@ module Dnd2024Character
       @equiped_armor_items ||=
         __getobj__
         .items
-        .where(ready_to_use: true)
+        .where(state: ::Character::Item::ACTIVE_STATES)
         .joins(:item)
         .where(items: { kind: %w[shield armor] })
         .hashable_pluck('items.kind', 'items.data', 'items.info')

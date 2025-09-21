@@ -285,14 +285,28 @@
     "newNoteValue": "Текст заметки"
   },
   "equipment": {
+    "in": {
+      "hands": {
+        "title": "В руках",
+        "description": "Предметы в руках"
+      },
+      "equipment": {
+        "title": "На теле",
+        "description": "Экипированный доспех, боеприпасы, расходные материалы"
+      },
+      "backpack": {
+        "title": "В рюкзаке",
+        "description": "Предметы в рюкзаке, не могут быть быстро использованы"
+      },
+      "storage": {
+        "title": "Хранилище",
+        "description": "Предметы в отдалённом хранилище"
+      }
+    },
     "quantity": "Число",
     "weight": "Вес",
     "cost": "Цена",
     "addItems": "Добавить предметы",
-    "equipedItems": "Экипировано",
-    "equipedItemsDescription": "Предметы в руках, экипированный доспех, боеприпасы, расходные материалы",
-    "backpackItems": "В рюкзаке",
-    "backpackItemsDescription": "Предметы в рюкзаке, не могут быть быстро использованы",
     "itemNote": "Заметка",
     "weaponsList": "Оружие",
     "primaryWeapon": "Основное оружие",

@@ -46,7 +46,7 @@ module Frontend
       end
 
       def items
-        @character.items.includes(:item).order('character_items.ready_to_use DESC')
+        @character.items.includes(:item)
       end
 
       def create_params
@@ -57,7 +57,7 @@ module Frontend
       end
 
       def update_params
-        params.expect(character_item: %i[quantity ready_to_use notes]).to_h
+        params.expect(character_item: %i[quantity ready_to_use notes state]).to_h
       end
 
       def characters_relation
