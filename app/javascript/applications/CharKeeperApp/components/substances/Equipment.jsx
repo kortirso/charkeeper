@@ -109,7 +109,7 @@ export const Equipment = (props) => {
     );
     if (result.errors_list === undefined) {
       batch(() => {
-        if (item.kind.includes('weapon') || item.ready_to_use) reloadCharacterItems();
+        if (item.kind.includes('weapon') || item.state === 'hands') reloadCharacterItems();
         else setCharacterItems(characterItems().filter((element) => element !== item));
       });
     }
@@ -173,22 +173,19 @@ export const Equipment = (props) => {
         {safeChildren()}
         <Show when={characterItems() !== undefined}>
           <Button default textable classList="mb-2" onClick={() => setItemsSelectingMode(true)}>{t('equipment.addItems')}</Button>
-          <ItemsTable
-            title={t('equipment.equipedItems')}
-            subtitle={t('equipment.equipedItemsDescription')}
-            items={characterItems().filter((item) => item.ready_to_use)}
-            onChangeItem={changeItem}
-            onUpdateCharacterItem={updateCharacterItem}
-            onRemoveCharacterItem={removeCharacterItem}
-          />
-          <ItemsTable
-            title={t('equipment.backpackItems')}
-            subtitle={t('equipment.backpackItemsDescription')}
-            items={characterItems().filter((item) => !item.ready_to_use)}
-            onChangeItem={changeItem}
-            onUpdateCharacterItem={updateCharacterItem}
-            onRemoveCharacterItem={removeCharacterItem}
-          />
+          <For each={['hands', 'equipment', 'backpack', 'storage']}>
+            {(state) =>
+              <ItemsTable
+                title={t(`equipment.in.${state}.title`)}
+                subtitle={t(`equipment.in.${state}.description`)}
+                state={state}
+                items={characterItems().filter((item) => item.state === state)}
+                onChangeItem={changeItem}
+                onUpdateCharacterItem={updateCharacterItem}
+                onRemoveCharacterItem={removeCharacterItem}
+              />
+            }
+          </For>
           <Show when={props.withWeight}>
             <div class="flex justify-end">
               <div class="p-4 flex blockable">

@@ -1,9 +1,9 @@
-import { For, Show, Switch, Match } from 'solid-js';
+import { For, Show } from 'solid-js';
 import * as i18n from '@solid-primitives/i18n';
 
 import { Button } from '../../components';
 import { useAppLocale } from '../../context';
-import { Close, Arrow } from '../../assets';
+import { Close, Hands, Equipment, Backpack, Storage } from '../../assets';
 
 export const ItemsTable = (props) => {
   const items = () => props.items;
@@ -42,20 +42,28 @@ export const ItemsTable = (props) => {
                     >{item.quantity}</p>
                   </td>
                   <td>
-                    <div class="flex items-center">
-                      <Switch>
-                        <Match when={item.ready_to_use}>
-                          <Button default size="small" onClick={() => props.onUpdateCharacterItem(item, { character_item: { ready_to_use: false } })}>
-                            <Arrow bottom width={16} height={16} />
-                          </Button>
-                        </Match>
-                        <Match when={!item.ready_to_use}>
-                          <Button default size="small" onClick={() => props.onUpdateCharacterItem(item, { character_item: { ready_to_use: true } })}>
-                            <Arrow top width={16} height={16} />
-                          </Button>
-                        </Match>
-                      </Switch>
-                      <Button default size="small" classList="ml-4" onClick={() => props.onRemoveCharacterItem(item)}>
+                    <div class="flex items-center gap-x-2">
+                      <Show when={props.state !== 'hands'}>
+                        <Button default size="small" onClick={() => props.onUpdateCharacterItem(item, { character_item: { ready_to_use: true, state: 'hands' } })}>
+                          <Hands width={16} height={16} />
+                        </Button>
+                      </Show>
+                      <Show when={props.state !== 'equipment'}>
+                        <Button default size="small" onClick={() => props.onUpdateCharacterItem(item, { character_item: { ready_to_use: true, state: 'equipment' } })}>
+                          <Equipment width={16} height={16} />
+                        </Button>
+                      </Show>
+                      <Show when={props.state !== 'backpack'}>
+                        <Button default size="small" onClick={() => props.onUpdateCharacterItem(item, { character_item: { ready_to_use: false, state: 'backpack' } })}>
+                          <Backpack width={16} height={16} />
+                        </Button>
+                      </Show>
+                      <Show when={props.state !== 'storage'}>
+                        <Button default size="small" onClick={() => props.onUpdateCharacterItem(item, { character_item: { ready_to_use: false, state: 'storage' } })}>
+                          <Storage width={16} height={16} />
+                        </Button>
+                      </Show>
+                      <Button default size="small" onClick={() => props.onRemoveCharacterItem(item)}>
                         <Close />
                       </Button>
                     </div>

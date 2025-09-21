@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Modified
 - clear image file after character creation
+- splitting inventory to 4 types
 
 ### Fixed
 - user auth for telegram bot commands
