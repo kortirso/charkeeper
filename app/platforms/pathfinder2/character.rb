@@ -69,6 +69,10 @@ module Pathfinder2
       config['backgrounds']
     end
 
+    def self.abilities
+      config['abilities']
+    end
+
     attribute :data, Pathfinder2::CharacterData.to_type
 
     def decorator

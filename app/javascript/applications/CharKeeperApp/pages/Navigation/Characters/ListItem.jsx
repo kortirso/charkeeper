@@ -8,7 +8,6 @@ import dnd2024Config from '../../../data/dnd2024.json';
 import { useAppState, useAppLocale, useAppAlert } from '../../../context';
 import { clickOutside, copyToClipboard } from '../../../helpers';
 
-const AVAILABLE_PDF = ['daggerheart'];
 const AVAILABLE_JSON = ['daggerheart'];
 
 export const CharactersListItem = (props) => {
@@ -128,7 +127,7 @@ export const CharactersListItem = (props) => {
                   onClick={copy}
                 >{t('charactersPage.onCopyCharacter')}</p>
               </Show>
-              <Show when={AVAILABLE_PDF.includes(character().provider) && !window.__TAURI_INTERNALS__}>
+              <Show when={!window.__TAURI_INTERNALS__}>
                 <p
                   class="px-2 py-1 text-sm bg-white hover:bg-gray-200 dark:bg-dusty dark:hover:bg-neutral-800"
                   onClick={(e) => viewClick(e)}

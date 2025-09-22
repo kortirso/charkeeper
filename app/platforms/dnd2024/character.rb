@@ -81,6 +81,10 @@ module Dnd2024
       config['beastforms']
     end
 
+    def self.abilities
+      config['abilities']
+    end
+
     # alignment
     LAWFUL_GOOD = 'lawful_good'
     LAWFUL_NEUTRAL = 'lawful_neutral'
