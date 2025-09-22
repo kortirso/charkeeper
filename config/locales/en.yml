@@ -18,6 +18,8 @@ en:
     dnd2024: D&D 2024
     pathfinder2: Pathfinder 2
   services:
+    sheets_context:
+      level: Level
     bot_context:
       representers:
         roll:

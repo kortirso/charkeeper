@@ -14,16 +14,6 @@ describe Web::CharactersController do
         end
       end
 
-      context 'for not available character' do
-        let!(:character) { create :character, :dnd2024, user: user_session.user }
-
-        it 'returns error' do
-          get :show, params: { id: character.id, charkeeper_access_token: access_token, format: :json }
-
-          expect(response).to have_http_status :not_found
-        end
-      end
-
       context 'for daggerheart' do
         let!(:character) { create :character, :daggerheart, user: user_session.user }
 

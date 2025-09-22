@@ -70,6 +70,10 @@ module Daggerheart
       config['communities']
     end
 
+    def self.community_info(value)
+      config.dig('communities', value)
+    end
+
     def self.beastforms
       config['beastforms']
     end
@@ -80,6 +84,10 @@ module Daggerheart
 
     def self.domains
       config['domains']
+    end
+
+    def self.traits
+      config['traits']
     end
 
     attribute :data, Daggerheart::CharacterData.to_type

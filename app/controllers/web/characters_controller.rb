@@ -6,9 +6,6 @@ module Web
     skip_before_action :update_locale
     skip_before_action :set_locale
     before_action :find_character
-    before_action :check_allowed_providers
-
-    ALLOWED_PROVIDERS = %w[Daggerheart::Character].freeze
 
     def show
       respond_to do |format|
@@ -17,7 +14,7 @@ module Web
         end
         format.pdf do
           send_data(
-            CharactersContext::GeneratePdfCharacterSheet.new.call(character: @character),
+            SheetsContext::Generate.new.call(character: @character),
             type: 'application/pdf',
             filename: "#{@character.name}.pdf"
           )
@@ -29,12 +26,6 @@ module Web
 
     def find_character
       @character = Character.find(params[:id])
-    end
-
-    def check_allowed_providers
-      return if @character.class.name.in?(ALLOWED_PROVIDERS)
-
-      raise ActiveRecord::RecordNotFound
     end
   end
 end

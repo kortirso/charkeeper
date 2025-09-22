@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## Unreleased
 ### Added
 - background jobs for image processing during character creation
+- universal PDF rendering
 
 ### Modified
 - clear image file after character creation
