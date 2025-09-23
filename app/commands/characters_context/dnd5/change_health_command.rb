@@ -66,7 +66,7 @@ module CharactersContext
 
       def letal_hit(input, current_death)
         input[:health] = { current: 0, temp: 0 }
-        input[:death_saving_throws] = { success: current_death['success'], failure: current_death['failure'] + 1 }
+        input[:death_saving_throws] = { success: current_death['success'], failure: [current_death['failure'] + 1, 3].min }
       end
 
       def healing(input, health, healing_value)
