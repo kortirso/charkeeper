@@ -2,6 +2,7 @@
 
 Rails.application.routes.draw do
   mount SolidErrors::Engine, at: '/solid_errors'
+  mount GoodJob::Engine => 'good_job'
 
   get 'web_telegram', to: 'web_telegram#index'
 
