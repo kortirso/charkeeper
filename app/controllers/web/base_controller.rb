@@ -13,8 +13,9 @@ module Web
       return if close_banner.blank?
 
       cookies[:charkeeper_cookie_banner] = {
-        value: 'off',
-        domain: Rails.env.production? ? 'charkeeper.org' : nil
+        value: 'clicked',
+        domain: Rails.env.production? ? 'charkeeper.org' : nil,
+        expires: 1.year.from_now
       }.compact
     end
 

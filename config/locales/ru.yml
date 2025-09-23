@@ -72,19 +72,19 @@ ru:
         telegram: Телеграм бот
         telegram_description: Просто запустите %{href} в Телеграме
         telegram_link: ссылку на бота
-        will_work_on: Будет работать
         web: Веб-приложение для браузера
         web_description: Просто запустите %{href}
         web_link: панель управления
         dashboard_link: Панель управления
         mobile: Мобильное приложение для iOS
-        in_progress: В разработке
         macos: Приложение для MacOS
         macos_description: Просто скачайте и запустите %{href}
         macos_link: установщик
-        android: Приложение для Android
+        android: Мобильное приложение для Android
         google_play: Установите приложение через %{href}
         google_play_link: Google Play Store
+        app_store: Установите приложение через %{href}
+        app_store_link: TestFlight в App Store
         daggerheart:
           title: Поддержка Daggerheart
           feature_1: Создание персонажей стандартных рас/классов, использование составных рас или использование ваших собственных рас/классов/подклассов для полностью кастомных персонажей.
