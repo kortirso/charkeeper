@@ -3,10 +3,10 @@
 describe WebhooksContext::Telegram::ReceiveMessageWebhookCommand do
   subject(:command_call) { described_class.new.call({ message: message }) }
 
-  let(:handler) { Charkeeper::Container.resolve('services.bot_context.handle') }
+  let(:handler) { BotContext::HandleJob }
 
   before do
-    allow(handler).to receive(:call)
+    allow(handler).to receive(:perform_later)
   end
 
   context 'with invalid message' do
@@ -22,7 +22,7 @@ describe WebhooksContext::Telegram::ReceiveMessageWebhookCommand do
     it 'does not call handler' do
       command_call
 
-      expect(handler).not_to have_received(:call)
+      expect(handler).not_to have_received(:perform_later)
     end
   end
 
@@ -39,7 +39,7 @@ describe WebhooksContext::Telegram::ReceiveMessageWebhookCommand do
     it 'calls group_handler' do
       command_call
 
-      expect(handler).to have_received(:call)
+      expect(handler).to have_received(:perform_later)
     end
   end
 
@@ -56,7 +56,7 @@ describe WebhooksContext::Telegram::ReceiveMessageWebhookCommand do
     it 'does not call handler' do
       command_call
 
-      expect(handler).not_to have_received(:call)
+      expect(handler).not_to have_received(:perform_later)
     end
   end
 
@@ -73,7 +73,7 @@ describe WebhooksContext::Telegram::ReceiveMessageWebhookCommand do
     it 'calls handler' do
       command_call
 
-      expect(handler).to have_received(:call)
+      expect(handler).to have_received(:perform_later)
     end
   end
 end
