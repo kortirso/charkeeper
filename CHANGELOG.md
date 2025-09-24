@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - skiping messages from bot which is not commands
 - exclude receiving webhooks from skylight logs
 - use background jobs for processing webhooks
+- system bot commands for telegram
 
 ## [0.3.3] - 2025-09-23
 ### Added

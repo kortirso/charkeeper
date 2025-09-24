@@ -8,25 +8,27 @@ module WebhooksContext
         add_identity: 'commands.auth_context.add_identity'
       ]
 
-      # rubocop: disable Metrics/AbcSize
+      # rubocop: disable Metrics/AbcSize, Metrics/CyclomaticComplexity
       def call(message:)
         case message[:text]
         when '/start'
           identity = find_identity(message) || create_identity(message)
           identity.update(active: true) unless identity&.active?
           identity.user.update(discarded_at: nil)
-          send_start_message(message[:from], message[:chat])
-        when '/contacts' then send_contacts_message(message[:chat])
+          send_message(message[:chat], I18n.t('telegram_webhook.start', sender: message.dig(:from, :username)))
+        when '/contacts' then send_message(message[:chat], I18n.t('telegram_webhook.contacts'))
         when '/unsubscribe'
           find_identity(message)&.update(active: false)
-          send_unsubscribe_message(message[:chat])
+          send_message(message[:chat], I18n.t('telegram_webhook.unsubscribe'))
         when '/subscribe'
           find_identity(message)&.update(active: true)
-          send_subscribe_message(message[:chat])
-        else send_unknown_message(message[:chat])
+          send_message(message[:chat], I18n.t('telegram_webhook.subscribe'))
+        when '/commands' then send_message(message[:chat], I18n.t('telegram_webhook.commands'))
+        when '/help' then send_message(message[:chat], I18n.t('telegram_webhook.help'))
+        else send_message(message[:chat], I18n.t('telegram_webhook.unknown'))
         end
       end
-      # rubocop: enable Metrics/AbcSize
+      # rubocop: enable Metrics/AbcSize, Metrics/CyclomaticComplexity
 
       private
 
@@ -45,44 +47,8 @@ module WebhooksContext
         })[:result]
       end
 
-      def send_start_message(sender, chat)
-        telegram_api.send_message(
-          bot_secret: bot_secret,
-          chat_id: chat[:id],
-          text: I18n.t('telegram_webhook.start', sender: sender[:username])
-        )
-      end
-
-      def send_contacts_message(chat)
-        telegram_api.send_message(
-          bot_secret: bot_secret,
-          chat_id: chat[:id],
-          text: I18n.t('telegram_webhook.contacts')
-        )
-      end
-
-      def send_unsubscribe_message(chat)
-        telegram_api.send_message(
-          bot_secret: bot_secret,
-          chat_id: chat[:id],
-          text: I18n.t('telegram_webhook.unsubscribe')
-        )
-      end
-
-      def send_subscribe_message(chat)
-        telegram_api.send_message(
-          bot_secret: bot_secret,
-          chat_id: chat[:id],
-          text: I18n.t('telegram_webhook.subscribe')
-        )
-      end
-
-      def send_unknown_message(chat)
-        telegram_api.send_message(
-          bot_secret: bot_secret,
-          chat_id: chat[:id],
-          text: I18n.t('telegram_webhook.unknown')
-        )
+      def send_message(chat, message)
+        telegram_api.send_message(bot_secret: bot_secret, chat_id: chat[:id], text: message)
       end
 
       def bot_secret
