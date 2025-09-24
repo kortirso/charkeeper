@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## Unreleased
 ### Modified
 - skiping messages from bot which is not commands
+- exclude receiving webhooks from skylight logs
 
 ## [0.3.3] - 2025-09-23
 ### Added
