@@ -3,6 +3,7 @@
 module BotContext
   class HandleService
     include Deps[
+      monitoring: 'monitoring.client',
       telegram_api: 'api.telegram.client',
       handle_command: 'services.bot_context.handle_command',
       represent_command: 'services.bot_context.represent_command',
@@ -21,6 +22,7 @@ module BotContext
       end
 
       command_result = handle_command.call(source: source, command: command, arguments: arguments, data: data)
+      monitoring_command_result(source, message, command_result, data[:raw_message])
       return response(source, { errors: ['Invalid command'] }, data) if command_result.nil?
       return response(source, { errors: command_result[:errors] }, data) if command_result[:errors].present?
 
@@ -65,6 +67,14 @@ module BotContext
         chat_id: raw_message.dig(:chat, :id),
         reply_to_message_id: raw_message[:message_id],
         text: command_formatted_result[:errors] ? command_formatted_result.dig(:errors, 0) : command_formatted_result[:result]
+      )
+    end
+
+    def monitoring_command_result(source, message, result, raw_message)
+      monitoring.notify(
+        exception: Monitoring::HandleTelegramWebhook.new('Handle telegram webhook'),
+        metadata: { source: source, message: message, result: result, raw_message: raw_message },
+        severity: :info
       )
     end
 
