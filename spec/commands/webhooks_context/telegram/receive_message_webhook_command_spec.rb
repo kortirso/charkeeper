@@ -43,13 +43,30 @@ describe WebhooksContext::Telegram::ReceiveMessageWebhookCommand do
     end
   end
 
-  context 'with valid message' do
+  context 'with not command message' do
     let(:message) do
       {
         message_id: 1,
         from: { first_name: 'First', last_name: 'Last', username: 'User', language_code: 'en' },
         chat: { id: 123 },
         text: 'text'
+      }
+    end
+
+    it 'does not call handler' do
+      command_call
+
+      expect(handler).not_to have_received(:call)
+    end
+  end
+
+  context 'with valid message' do
+    let(:message) do
+      {
+        message_id: 1,
+        from: { first_name: 'First', last_name: 'Last', username: 'User', language_code: 'en' },
+        chat: { id: 123 },
+        text: '/text'
       }
     end
 

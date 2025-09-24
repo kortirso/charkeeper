@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## Unreleased
+### Modified
+- skiping messages from bot which is not commands
+
 ## [0.3.3] - 2025-09-23
 ### Added
 - background jobs for image processing during character creation

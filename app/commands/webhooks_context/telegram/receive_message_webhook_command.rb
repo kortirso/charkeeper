@@ -22,6 +22,12 @@ module WebhooksContext
             required(:text).filled(:string)
           end
         end
+
+        rule(:message) do
+          next if value[:text].starts_with?('/')
+
+          key.failure(:not_command)
+        end
       end
 
       private
