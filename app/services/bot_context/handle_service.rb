@@ -9,7 +9,7 @@ module BotContext
       handle_webhook: 'services.webhooks_context.telegram.handle_message_webhook'
     ]
 
-    SERVICE_COMMANDS = %w[/start /contacts /unsubscribe /subscribe].freeze
+    SERVICE_COMMANDS = %w[/start /contacts /unsubscribe /subscribe /help /commands].freeze
     SERVICE_SOURCES = %i[telegram_bot].freeze
 
     # rubocop: disable Metrics/AbcSize
