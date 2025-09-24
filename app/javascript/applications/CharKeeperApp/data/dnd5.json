@@ -1,0 +1,161 @@
+{
+  "races": {
+    "human": {
+      "name": { "en": "Human", "ru": "Человек" },
+      "subraces": {}
+    },
+    "dwarf": {
+      "name": { "en": "Dwarf", "ru": "Дварф" },
+      "subraces": {
+        "mountain_dwarf": { "name": { "en": "Mountain dwarf", "ru": "Горный дварф" } },
+        "hill_dwarf": { "name": { "en": "Hill dwarf", "ru": "Холмовой дварф" } }
+      }
+    },
+    "elf": {
+      "name": { "en": "Elf", "ru": "Эльф" },
+      "subraces": {
+        "high_elf": { "name": { "en": "High elf", "ru": "Высший эльф" } },
+        "wood_elf": { "name": { "en": "Wood elf", "ru": "Лесной эльф" } },
+        "drow": { "name": { "en": "Drow", "ru": "Дроу" } }
+      }
+    },
+    "halfling": {
+      "name": { "en": "Halfling", "ru": "Полурослик" },
+      "subraces": {
+        "lightfoot": { "name": { "en": "Lightfoot halfling", "ru": "Легконогий полурослик" } },
+        "stout": { "name": { "en": "Stout halfling", "ru": "Коренастый полурослик" } }
+      }
+    },
+    "dragonborn": {
+      "name": { "en": "Dragonborn", "ru": "Драконорожденный" },
+      "subraces": {}
+    },
+    "gnome": {
+      "name": { "en": "Gnome", "ru": "Гном" },
+      "subraces": {
+        "forest_gnome": { "name": { "en": "Forest gnome", "ru": "Лесной гном" } },
+        "rock_gnome": { "name": { "en": "Rock gnome", "ru": "Скальный гном" } }
+      }
+    },
+    "half_elf": {
+      "name": { "en": "Half-Elf", "ru": "Полуэльф" },
+      "subraces": {}
+    },
+    "half_orc": {
+      "name": { "en": "Half-Orc", "ru": "Полуорк" },
+      "subraces": {}
+    },
+    "tiefling": {
+      "name": { "en": "Tiefling", "ru": "Тифлинг" },
+      "subraces": {}
+    }
+  },
+  "classes": {
+    "barbarian": {
+      "name": { "en": "Barbarian", "ru": "Варвар" },
+      "subclasses": {
+        "path_of_the_berserker": { "name": { "en": "Path of the Berserker", "ru": "Путь берсерка" } },
+        "path_of_the_totem_warrior": { "name": { "en": "Path of the Totem Warrior", "ru": "Путь тотемного воина" } }
+      }
+    },
+    "bard": {
+      "name": { "en": "Bard", "ru": "Бард" },
+      "subclasses": {
+        "college_of_lore": { "name": { "en": "College of lore", "ru": "Коллегия знания" } },
+        "college_of_valor": { "name": { "en": "College of valor", "ru": "Коллегия доблести" } },
+        "college_of_whispers": { "name": { "en": "College of whispers", "ru": "Коллегия шёпотов" } }
+      }
+    },
+    "cleric": {
+      "name": { "en": "Cleric", "ru": "Жрец" },
+      "subclasses": {
+        "knowledge_domain": { "name": { "en": "Knowledge domain", "ru": "Домен знаний" } },
+        "life_domain": { "name": { "en": "Life domain", "ru": "Домен жизни" } },
+        "light_domain": { "name": { "en": "Light domain", "ru": "Домен света" } },
+        "nature_domain": { "name": { "en": "Nature domain", "ru": "Домен природы" } },
+        "tempest_domain": { "name": { "en": "Tempest domain", "ru": "Домен бури" } },
+        "trickery_domain": { "name": { "en": "Trickery domain", "ru": "Домен обмана" } },
+        "war_domain": { "name": { "en": "War domain", "ru": "Домен войны" } }
+      }
+    },
+    "druid": {
+      "name": { "en": "Druid", "ru": "Друид" },
+      "subclasses": {
+        "circle_of_the_land": { "name": { "en": "Circle of tha land", "ru": "Круг земли" } },
+        "circle_of_the_moon": { "name": { "en": "Circle of the moon", "ru": "Круг луны" } }
+      }
+    },
+    "fighter": {
+      "name": { "en": "Fighter", "ru": "Воин" },
+      "subclasses": {
+        "battle_master": { "name": { "en": "Battle master", "ru": "Мастер боевых искусств" } },
+        "champion": { "name": { "en": "Champion", "ru": "Чемпион" } },
+        "eldritch_knight": { "name": { "en": "Eldritch knight", "ru": "Мистический рыцарь" } }
+      }
+    },
+    "monk": {
+      "name": { "en": "Monk", "ru": "Монах" },
+      "subclasses": {
+        "way_of_the_open_hand": { "name": { "en": "Way of the open hand", "ru": "Путь открытой ладони" } },
+        "way_of_shadow": { "name": { "en": "Way of shadow", "ru": "Путь тени" } },
+        "way_of_the_four_elements": { "name": { "en": "Way of the four elements", "ru": "Путь четырёх стихий" } }
+      }
+    },
+    "paladin": {
+      "name": { "en": "Paladin", "ru": "Паладин" },
+      "subclasses": {}
+    },
+    "ranger": {
+      "name": { "en": "Ranger", "ru": "Следопыт" },
+      "subclasses": {}
+    },
+    "rogue": {
+      "name": { "en": "Rogue", "ru": "Плут" },
+      "subclasses": {}
+    },
+    "sorcerer": {
+      "name": { "en": "Sorcerer", "ru": "Чародей" },
+      "subclasses": {}
+    },
+    "warlock": {
+      "name": { "en": "Warlock", "ru": "Колдун" },
+      "subclasses": {}
+    },
+    "wizard": {
+      "name": { "en": "Wizard", "ru": "Волшебник" },
+      "subclasses": {}
+    },
+    "artificer": {
+      "name": { "en": "Artificer", "ru": "Изобретатель" },
+      "subclasses": {}
+    }
+  },
+  "abilities": {
+    "str": { "name": { "en": "Strength", "ru": "Сила" } },
+    "dex": { "name": { "en": "Dexterity", "ru": "Ловкость" } },
+    "con": { "name": { "en": "Constitution", "ru": "Телосложение" } },
+    "int": { "name": { "en": "Intelligence", "ru": "Интеллект" } },
+    "wis": { "name": { "en": "Wisdom", "ru": "Мудрость" } },
+    "cha": { "name": { "en": "Charisma", "ru": "Харизма" } }
+  },
+  "skills": {
+    "acrobatics": { "name": { "en": "Acrobatics", "ru": "Акробатика" } },
+    "animal": { "name": { "en": "Animal", "ru": "Уход за животными" } },
+    "arcana": { "name": { "en": "Arcana", "ru": "Магия" } },
+    "athletics": { "name": { "en": "Athletics", "ru": "Атлетика" } },
+    "deception": { "name": { "en": "Deception", "ru": "Обмен" } },
+    "history": { "name": { "en": "History", "ru": "История" } },
+    "insight": { "name": { "en": "Insight", "ru": "Проницательность" } },
+    "intimidation": { "name": { "en": "Intimidation", "ru": "Запугивание" } },
+    "investigation": { "name": { "en": "Investigation", "ru": "Анализ" } },
+    "medicine": { "name": { "en": "Medicine", "ru": "Медицина" } },
+    "nature": { "name": { "en": "Nature", "ru": "Природа" } },
+    "perception": { "name": { "en": "Perception", "ru": "Внимательность" } },
+    "performance": { "name": { "en": "Performance", "ru": "Выступление" } },
+    "persuasion": { "name": { "en": "Persuasion", "ru": "Убеждение" } },
+    "religion": { "name": { "en": "Religion", "ru": "Религия" } },
+    "sleight": { "name": { "en": "Sleight of Hands", "ru": "Ловкость рук" } },
+    "stealth": { "name": { "en": "Stealth", "ru": "Скрытность" } },
+    "survival": { "name": { "en": "Survival", "ru": "Выживание" } }
+  }
+}
