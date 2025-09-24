@@ -5,6 +5,7 @@ module Monitoring
   AuthByUsername = Class.new(StandardError)
   ReceiveTelegramWebhook = Class.new(StandardError)
   HandleTelegramWebhook = Class.new(StandardError)
+  SendingTelegramWebhook = Class.new(StandardError)
   ValidationError = Class.new(StandardError)
   FrontendError = Class.new(StandardError)
   FeatVariableError = Class.new(StandardError)
