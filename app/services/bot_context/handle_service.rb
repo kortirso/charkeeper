@@ -62,27 +62,18 @@ module BotContext
     end
 
     def send_result_message(raw_message, command_formatted_result)
-      response = telegram_api.send_message(
+      telegram_api.send_message(
         bot_secret: bot_secret,
         chat_id: raw_message.dig(:chat, :id),
         reply_to_message_id: raw_message[:message_id],
         text: command_formatted_result[:errors] ? command_formatted_result.dig(:errors, 0) : command_formatted_result[:result]
       )
-      monitoring_result_sending(response, raw_message, command_formatted_result)
     end
 
     def monitoring_command_result(source, message, result, raw_message)
       monitoring.notify(
         exception: Monitoring::HandleTelegramWebhook.new('Handle telegram webhook'),
         metadata: { source: source, message: message, result: result, raw_message: raw_message },
-        severity: :info
-      )
-    end
-
-    def monitoring_result_sending(response, raw_message, command_formatted_result)
-      monitoring.notify(
-        exception: Monitoring::SendingTelegramWebhook.new('Handle telegram webhook'),
-        metadata: { response: response, raw_message: raw_message, command_formatted_result: command_formatted_result },
         severity: :info
       )
     end
