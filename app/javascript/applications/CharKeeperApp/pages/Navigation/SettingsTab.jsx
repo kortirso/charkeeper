@@ -29,9 +29,10 @@ export const SettingsTab = () => {
   );
 
   const logout = async () => {
-    const result = await logoutRequest(appState.accessToken);
+    await logoutRequest(appState.accessToken);
 
-    if (result.errors_list === undefined) setAccessToken(null);
+    setAccessToken(null);
+    window.location.href = '/';
   }
 
   // 453x750

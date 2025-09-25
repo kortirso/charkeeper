@@ -20,7 +20,7 @@ export const ProfileDeleteTab = (props) => {
     await removeProfileRequest(appState.accessToken);
 
     setAccessToken(null);
-    window.location = '/';
+    window.location.href = '/';
   }
 
   return (
