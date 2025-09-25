@@ -13,6 +13,7 @@ export * from './Content/CharacterView';
 export * from './Content/PasswordsTab';
 export * from './Content/FeedbackTab';
 export * from './Content/UsernameTab';
+export * from './Content/ProfileDeleteTab';
 export * from './Content/NotificationsTab';
 export * from './Content/HomebrewContentTab';
 export * from './Content/CampaignTab';

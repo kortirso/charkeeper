@@ -21,7 +21,9 @@
       "username": "Имя пользователя",
       "socials": "Общество",
       "notifications": "Уведомления",
-      "locale": "Язык"
+      "locale": "Язык",
+      "profileDeleting": "Удаление профиля",
+      "deleteProfileConfirm": "Вы точно хотите удалить свой профиль? Это действие нельзя отменить, все данные будут удалены."
     },
     "characterNavigation": {
       "allFilter": "Все",
