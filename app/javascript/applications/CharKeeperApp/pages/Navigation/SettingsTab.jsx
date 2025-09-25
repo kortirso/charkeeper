@@ -44,6 +44,7 @@ export const SettingsTab = () => {
       <div class="p-4 flex-1 flex flex-col overflow-y-scroll">
         <div class="flex-1">
           {renderSettingsLink(t('pages.settingsPage.profile'), 'profile')}
+          {renderSettingsLink(t('pages.settingsPage.profileDeleting'), 'profileDeleting')}
           {renderSettingsLink(t('pages.settingsPage.changePassword'), 'passwords')}
           {renderSettingsLink(t('pages.settingsPage.notifications'), 'notifications')}
           {renderSettingsLink(t('pages.settingsPage.feedback'), 'feedback')}

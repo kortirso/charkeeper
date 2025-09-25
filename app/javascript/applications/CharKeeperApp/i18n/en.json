@@ -21,7 +21,10 @@
       "username": "Username",
       "socials": "Community links",
       "notifications": "Notifications",
-      "locale": "Locale"
+      "locale": "Locale",
+      "profileDeleting": "Deleting profile",
+      "deleteProfileConfirm1": "Are you sure you want to remove your profile?",
+      "deleteProfileConfirm2": "This action is not revertable, add data will be removed."
     },
     "characterNavigation": {
       "allFilter": "All",

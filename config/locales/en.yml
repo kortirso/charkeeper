@@ -60,7 +60,7 @@ en:
       index:
         title: Interactive character sheets for any tabletop games in one place
         description1: Charkeeper is a character sheet aggregator that automatically calculates various character stats, so you don't have to constantly look at the rulebook, and allows you to track your characters' available abilities, spells, and attacks.
-        description2: Available from any device on the web and as a mobile app on Android.
+        description2: Available from any device on the web and as a mobile app on Android and iOS.
         features_title: Charkeeper features
         feature_1: Saving characters compatible with D&D 5, Pathfinder 2 and Daggerheart rules.
         feature_2: Account information and saved characters are shared between all devices.
