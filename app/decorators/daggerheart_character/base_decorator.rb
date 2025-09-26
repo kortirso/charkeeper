@@ -154,8 +154,8 @@ module DaggerheartCharacter
         damage_type: item[:items_info]['damage_type'],
         kind: item[:items_kind],
         features: item[:items_info]['features'] || [],
-        notes: item[:notes],
-        ready_to_use: item[:state].in?(::Character::Item::ACTIVE_STATES)
+        notes: item[:notes] || [],
+        ready_to_use: item[:state] ? item[:state].in?(::Character::Item::ACTIVE_STATES) : true
       }]
 
       versatile = item[:items_info]['versatile']
@@ -199,11 +199,25 @@ module DaggerheartCharacter
     end
 
     def weapons
+      character_weapons + feat_weapons
+    end
+
+    def character_weapons
       __getobj__
         .items
         .joins(:item)
         .where(items: { kind: ['primary weapon', 'secondary weapon'] })
         .hashable_pluck('items.slug', 'items.name', 'items.kind', 'items.data', 'items.info', :notes, :state)
+    end
+
+    def feat_weapons
+      Item
+        .where(itemable_type: 'Feat', itemable_id: features)
+        .hashable_pluck('items.slug', 'items.name', 'items.kind', 'items.data', 'items.info')
+    end
+
+    def features
+      __getobj__.feats.joins(:feat).pluck('feats.id')
     end
 
     def bonuses

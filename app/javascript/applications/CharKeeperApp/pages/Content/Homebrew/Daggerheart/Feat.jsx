@@ -1,4 +1,4 @@
-import { createMemo } from 'solid-js';
+import { createMemo, Show, For } from 'solid-js';
 
 import config from '../../../../data/daggerheart.json';
 import { useAppLocale } from '../../../../context';
@@ -28,10 +28,25 @@ export const DaggerheartFeat = (props) => {
     return '';
   });
 
+  const featWeapons = createMemo(() => {
+    if (props.homebrews === undefined) return [];
+
+    return props.homebrews.items.filter((item) => item.itemable_type === 'Feat' && item.itemable_id === props.feat.id);
+  });
+
   return (
     <>
       <p class="mb-2">{props.feat.description[locale()]}</p>
       <p>{dict().daggerheart.terms.feats.origins[props.feat.origin]} - {featOriginValue()}</p>
+      <Show when={featWeapons().length > 0}>
+        <div class="mt-2">
+          <For each={featWeapons()}>
+            {(featWeapon) =>
+              <p>{featWeapon.name.en}</p>
+            }
+          </For>
+        </div>
+      </Show>
     </>
   );
 }

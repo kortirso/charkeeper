@@ -23,7 +23,7 @@ export const Select = (props) => {
       <div class={[props.classList, 'relative cursor-pointer'].join(' ')}>
         <div
           class={[isOpen() ? 'is-open' : '', 'form-value flex justify-between items-center h-12'].join(' ')}
-          onClick={() => setIsOpen(!isOpen())}
+          onClick={() => props.disabled ? null : setIsOpen(!isOpen())}
         >
           <Switch fallback={<span />}>
             <Match when={props.selectedValue}>
