@@ -53,7 +53,7 @@ module CharactersContext
       def feats(character)
         data = character.data
         ::Dnd2024::Feat.where(
-          origin_value: [data.species, data.legacy, data.classes.keys, data.subclasses.values].flatten.compact.uniq
+          origin_value: [data.species, data.legacy, data.classes.keys, data.subclasses.values, character.id].flatten.compact.uniq
         ).or(::Dnd2024::Feat.where(origin: 'feat', slug: data.selected_feats))
       end
     end

@@ -90,6 +90,9 @@ export const Feats = (props) => {
       />
       <div class="mt-2">
         <Show when={activeFilterOptions()}>
+          <Show when={activeFilter() === 'personal'}>
+            <p class="dark:text-snow mb-2 text-sm">{t('pages.homebrewPage.personalFeats')}</p>
+          </Show>
           <For each={character().features.filter(activeFilterOptions().callback)}>
             {(feature) =>
               <Toggle title={<FeatureTitle feature={feature} onSpendEnergy={spendEnergy} onRestoreEnergy={restoreEnergy} />}>

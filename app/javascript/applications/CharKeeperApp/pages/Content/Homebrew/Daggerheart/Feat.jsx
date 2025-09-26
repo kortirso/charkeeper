@@ -19,6 +19,11 @@ export const DaggerheartFeat = (props) => {
     if (props.feat.origin === 'subclass') {
       return props.homebrews.subclasses.find((item) => item.id === props.feat.origin_value)?.name || '';
     }
+    if (props.feat.origin === 'character') {
+      if (props.characters === undefined) return '';
+
+      return props.characters.find((item) => item.id === props.feat.origin_value)?.name || '';
+    }
 
     return '';
   });
