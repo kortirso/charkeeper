@@ -1,8 +1,7 @@
 import { createSignal, For, batch, Show } from 'solid-js';
-import * as i18n from '@solid-primitives/i18n';
 
 import { PageHeader, Input } from '../../components';
-import { useAppLocale, useAppState } from '../../context';
+import { useAppI18n, useAppState } from '../../context';
 import { createBotRequest } from '../../requests/createBotRequest';
 
 export const BotTab = () => {
@@ -10,9 +9,7 @@ export const BotTab = () => {
   const [history, setHistory] = createSignal([]);
 
   const [appState] = useAppState();
-  const [, dict] = useAppLocale();
-
-  const t = i18n.translator(dict);
+  const [,, { t }] = useAppI18n();
 
   const runBotCommand = async () => {
     const result = await createBotRequest(appState.accessToken, { value: currentCommand() });

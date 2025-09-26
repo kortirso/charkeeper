@@ -1,6 +1,6 @@
 import { CharKeeperAppContent } from './CharKeeperAppContent';
 
-import { AppStateProvider, AppLocaleProvider, AppAlertProvider } from './context';
+import { AppStateProvider, AppLocaleProvider, AppAlertProvider, AppI18nProvider } from './context';
 
 export const CharKeeperApp = (props) => (
   <AppStateProvider
@@ -10,9 +10,11 @@ export const CharKeeperApp = (props) => (
     colorSchema={props.colorSchema}
   >
     <AppLocaleProvider locale={props.locale}>
-      <AppAlertProvider>
-        <CharKeeperAppContent />
-      </AppAlertProvider>
+      <AppI18nProvider locale={props.locale}>
+        <AppAlertProvider>
+          <CharKeeperAppContent />
+        </AppAlertProvider>
+      </AppI18nProvider>
     </AppLocaleProvider>
   </AppStateProvider>
 );
