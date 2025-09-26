@@ -52,7 +52,7 @@ module CharactersContext
       def feats(character)
         data = character.data
         ::Dnd5::Feat.where(
-          origin_value: [data.race, data.subrace, data.classes.keys, data.subclasses.values].flatten.compact.uniq
+          origin_value: [data.race, data.subrace, data.classes.keys, data.subclasses.values, character.id].flatten.compact.uniq
         ).or(::Dnd5::Feat.where(origin: 'class', origin_value: 'all'))
       end
     end

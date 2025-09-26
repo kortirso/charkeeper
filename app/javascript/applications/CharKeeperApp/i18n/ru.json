@@ -23,7 +23,8 @@
       "notifications": "Уведомления",
       "locale": "Язык",
       "profileDeleting": "Удаление профиля",
-      "deleteProfileConfirm": "Вы точно хотите удалить свой профиль? Это действие нельзя отменить, все данные будут удалены."
+      "deleteProfileConfirm1": "Вы точно хотите удалить свой профиль?",
+      "deleteProfileConfirm2": "Это действие нельзя отменить, все данные будут удалены."
     },
     "characterNavigation": {
       "allFilter": "Все",
@@ -53,7 +54,8 @@
       "subrace": "Подраса",
       "species": "Вид",
       "legacy": "Подвид",
-      "feat": "Навык"
+      "feat": "Навык",
+      "personal": "Личные"
     },
     "homebrewPage": {
       "title": "Homebrew",
@@ -101,7 +103,8 @@
         "includedCommunities": "Включённые общества",
         "includedSubclasses": "Включённые подклассы",
         "includedItems": "Включённые предметы"
-      }
+      },
+      "personalFeats": "Личные способности могут быть добавлены через homebrew"
     },
     "campaignsPage": {
       "title": "Кампании",
@@ -130,7 +133,8 @@
           "ancestry": "Раса",
           "class": "Класс",
           "subclass": "Подкласс",
-          "community": "Общество"
+          "community": "Общество",
+          "character": "Персонаж"
         },
         "kinds": {
           "static": "Вывод описания",

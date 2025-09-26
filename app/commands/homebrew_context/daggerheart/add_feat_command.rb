@@ -3,11 +3,15 @@
 module HomebrewContext
   module Daggerheart
     class AddFeatCommand < BaseCommand
+      include Deps[
+        refresh_feats: 'services.characters_context.daggerheart.refresh_feats'
+      ]
+
       # rubocop: disable Metrics/BlockLength
       use_contract do
         config.messages.namespace = :homebrew_feat
 
-        Origins = Dry::Types['strict.string'].enum('ancestry', 'class', 'subclass', 'community')
+        Origins = Dry::Types['strict.string'].enum('ancestry', 'class', 'subclass', 'community', 'character')
         Kinds = Dry::Types['strict.string'].enum('static', 'text')
         Limits = Dry::Types['strict.string'].enum('short_rest', 'long_rest', 'session')
 
@@ -38,6 +42,8 @@ module HomebrewContext
                 ::Daggerheart::Character.class_info(values[:origin_value])
             when 'subclass'
               ::Daggerheart::Homebrew::Subclass.find_by(user_id: values[:user].id, id: values[:origin_value])
+            when 'character'
+              values[:user].characters.daggerheart.find_by(id: values[:origin_value])
             end
           next if origin
 
@@ -59,6 +65,9 @@ module HomebrewContext
 
       def do_persist(input)
         result = ::Daggerheart::Feat.create!(input.except(:limit, :subclass_mastery))
+
+        character = input[:user].characters.daggerheart.find_by(id: input[:origin_value])
+        refresh_feats.call(character: character) if character
 
         { result: result }
       end

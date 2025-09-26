@@ -54,7 +54,8 @@
       "subrace": "Subrace",
       "species": "Species",
       "legacy": "Legacy",
-      "feat": "Feat"
+      "feat": "Feat",
+      "personal": "Personal"
     },
     "homebrewPage": {
       "title": "Homebrew",
@@ -102,7 +103,8 @@
         "includedCommunities": "Included communities",
         "includedSubclasses": "Included subclasses",
         "includedItems": "Included items"
-      }
+      },
+      "personalFeats": "Personal feats can be created through homebrew"
     },
     "campaignsPage": {
       "title": "Campaigns",
@@ -131,7 +133,8 @@
           "ancestry": "Ancestry",
           "class": "Class",
           "subclass": "Subclass",
-          "community": "Community"
+          "community": "Community",
+          "character": "Character"
         },
         "kinds": {
           "static": "Static text",

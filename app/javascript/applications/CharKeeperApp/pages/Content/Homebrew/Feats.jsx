@@ -1,4 +1,4 @@
-import { createSignal, Switch, Match, batch, Show, For } from 'solid-js';
+import { createSignal, createEffect, Switch, Match, batch, Show, For } from 'solid-js';
 import * as i18n from '@solid-primitives/i18n';
 
 import { NewDaggerheartFeatForm, DaggerheartFeat } from '../../../pages';
@@ -7,8 +7,10 @@ import { Close } from '../../../assets';
 import { useAppState, useAppLocale, useAppAlert } from '../../../context';
 import { createHomebrewFeatRequest } from '../../../requests/createHomebrewFeatRequest';
 import { removeHomebrewFeatRequest } from '../../../requests/removeHomebrewFeatRequest';
+import { fetchCharactersRequest } from '../../../requests/fetchCharactersRequest';
 
 export const HomebrewFeats = (props) => {
+  const [characters, setCharacters] = createSignal(undefined);
   const [activeView, setActiveView] = createSignal('left');
 
   const [appState] = useAppState();
@@ -16,6 +18,18 @@ export const HomebrewFeats = (props) => {
   const [locale, dict] = useAppLocale();
 
   const t = i18n.translator(dict);
+
+  createEffect(() => {
+    if (characters() !== undefined) return;
+
+    const fetchCharacters = async () => await fetchCharactersRequest(appState.accessToken);
+
+    Promise.all([fetchCharacters()]).then(
+      ([charactersData]) => {
+        setCharacters(charactersData.characters);
+      }
+    );
+  });
 
   const cancelCreatingFeat = () => setActiveView('left');
 
@@ -60,7 +74,7 @@ export const HomebrewFeats = (props) => {
                   }>
                     <Switch>
                       <Match when={props.provider === 'daggerheart'}>
-                        <DaggerheartFeat feat={feat} homebrews={props.homebrews} />
+                        <DaggerheartFeat feat={feat} characters={characters()} homebrews={props.homebrews} />
                       </Match>
                     </Switch>
                   </Toggle>
@@ -73,7 +87,12 @@ export const HomebrewFeats = (props) => {
           <Show when={activeView() === 'right'}>
             <Switch>
               <Match when={props.provider === 'daggerheart'}>
-                <NewDaggerheartFeatForm homebrews={props.homebrews} onSave={createFeat} onCancel={cancelCreatingFeat} />
+                <NewDaggerheartFeatForm
+                  homebrews={props.homebrews}
+                  characters={characters()}
+                  onSave={createFeat}
+                  onCancel={cancelCreatingFeat}
+                />
               </Match>
             </Switch>
           </Show>

@@ -44,13 +44,15 @@ export const Daggerheart = (props) => {
   const classFilter = (item) => item.origin === 'class';
   const subclassFilter = (item) => item.origin === 'subclass';
   const beastformFilter = (item) => item.origin === 'beastform';
+  const personalFilter = (item) => item.origin === 'character';
 
   const featFilters = createMemo(() => {
     const result = [
       { title: 'ancestry', callback: ancestryFilter },
       { title: 'community', callback: communityFilter },
       { title: 'class', callback: classFilter },
-      { title: 'subclass', callback: subclassFilter }
+      { title: 'subclass', callback: subclassFilter },
+      { title: 'personal', callback: personalFilter }
     ];
 
     if (character().beastforms.length > 0) result.push({ title: 'beastform', callback: beastformFilter });
