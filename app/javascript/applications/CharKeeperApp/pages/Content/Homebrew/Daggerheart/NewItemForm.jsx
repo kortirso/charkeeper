@@ -18,7 +18,9 @@ export const NewDaggerheartItemForm = (props) => {
     damage_type: 'physical',
     damage: 'd6',
     damage_bonus: 0,
-    features: ''
+    features: '',
+    itemable_type: null,
+    itemable_id: null
   });
 
   const [locale, dict] = useAppLocale();
@@ -31,6 +33,8 @@ export const NewDaggerheartItemForm = (props) => {
       return {
         name: itemForm.name,
         kind: itemForm.kind,
+        itemable_type: itemForm.itemable_type,
+        itemable_id: itemForm.itemable_id,
         info: {
           burden: itemForm.burden,
           tier: itemForm.tier,
@@ -111,6 +115,23 @@ export const NewDaggerheartItemForm = (props) => {
             labelText={t('pages.homebrewPage.daggerheart.damageBonus')}
             value={itemForm.damage_bonus}
             onInput={(value) => setItemForm({ ...itemForm, damage_bonus: parseInt(value) })}
+          />
+        </div>
+        <div class="mb-2 flex gap-4">
+          <Select
+            containerClassList="flex-1"
+            labelText={t('pages.homebrewPage.daggerheart.itemOrigin')}
+            items={{ 'null': 'No value', 'Feat': 'Feat' }}
+            selectedValue={itemForm.itemable_type}
+            onSelect={(value) => setItemForm({ ...itemForm, itemable_type: value === 'null' ? null : value })}
+          />
+          <Select
+            disabled={itemForm.itemable_type === null}
+            containerClassList="flex-1"
+            labelText={t('pages.homebrewPage.daggerheart.itemOriginValue')}
+            items={props.homebrews.feats.reduce((acc, item) => { acc[item.id] = item.title['en']; return acc; }, {})}
+            selectedValue={itemForm.itemable_id}
+            onSelect={(value) => setItemForm({ ...itemForm, itemable_id: value })}
           />
         </div>
         <TextArea

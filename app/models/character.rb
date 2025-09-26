@@ -11,6 +11,7 @@ class Character < ApplicationRecord
   has_many :notes, class_name: '::Character::Note', dependent: :destroy
   has_many :bonuses, class_name: '::Character::Bonus', dependent: :destroy
   has_many :feats, class_name: '::Character::Feat', dependent: :destroy
+  has_many :feat_items, class_name: '::Feat', through: :feats, source: :items
   has_one :companion, class_name: '::Character::Companion', dependent: :destroy
 
   has_many :campaign_characters, class_name: 'Campaign::Character', dependent: :destroy
