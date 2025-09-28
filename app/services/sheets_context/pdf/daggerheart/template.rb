@@ -4,7 +4,7 @@ module SheetsContext
   module Pdf
     module Daggerheart
       class Template < SheetsContext::Pdf::Template
-        # rubocop: disable Metrics/AbcSize
+        # rubocop: disable Metrics/AbcSize, Metrics/MethodLength, Metrics/PerceivedComplexity
         def to_pdf(character:)
           super
 
@@ -16,6 +16,10 @@ module SheetsContext
               trait_name = traits_names[item].dig('name', I18n.locale.to_s)
               text_box trait_name, at: [233 + (55 * index), 735], width: 43, align: :center
             end
+
+            text_box I18n.t('services.sheets_context.daggerheart.proficiency'), at: [48, 699], width: 43, align: :center
+            text_box I18n.t('services.sheets_context.daggerheart.evasion'), at: [101, 699], width: 43, align: :center
+            text_box I18n.t('services.sheets_context.daggerheart.armor_score'), at: [154, 699], width: 43, align: :center
           end
 
           font_size 12
@@ -25,65 +29,58 @@ module SheetsContext
             text_box value, at: [242 + (index * 55), 718], width: 25, height: 14, align: :center
           end
 
+          text_box "+#{character.proficiency}", at: [51, 722], width: 37, height: 14, align: :center
+          text_box character.evasion.to_s, at: [104, 722], width: 37, height: 14, align: :center
+          text_box character.armor_score.to_s, at: [157, 722], width: 37, height: 14, align: :center
+
+          text_box character.damage_thresholds['major'].to_s, at: [80, 622], width: 35, height: 14, align: :center
+          text_box character.damage_thresholds['severe'].to_s, at: [175, 622], width: 35, height: 14, align: :center
+
+          # armor slots
+          character.armor_score.times do |index|
+            fill_color character.spent_armor_slots >= index + 1 ? 'C6515C' : 'FFFFFF'
+            fill_and_stroke_rounded_rectangle [104 + (index * 13), 578], 11, 11, 1
+          end
           # health
-          # 5.times do |index|
-          #   fill_color character.health_marked >= index + 1 ? 'C6515C' : 'FFFFFF'
-          #   fill_and_stroke_rounded_rectangle [16 + (index * 17), 536], 14, 7, 1
-          # end
-          # (character.health_max - 5).times do |index|
-          #   fill_color character.health_marked >= index + 6 ? 'C6515C' : 'FFFFFF'
-          #   fill_and_stroke_rounded_rectangle [101.5 + (index * 17), 536], 14, 7, 1
-          # end
-          # # stress
-          # 6.times do |index|
-          #   fill_color character.stress_marked >= index + 1 ? 'C6515C' : 'FFFFFF'
-          #   fill_and_stroke_rounded_rectangle [39 + (index * 15.1), 516], 12.5, 7, 1
-          # end
-          # (character.stress_max - 6).times do |index|
-          #   fill_color character.stress_marked >= index + 6 ? 'C6515C' : 'FFFFFF'
-          #   fill_and_stroke_rounded_rectangle [129.6 + (index * 15.1), 516], 12.5, 7, 1
-          # end
-
-          # removing hope
-          # fill_color 'FFFFFF'
-          # fill_rectangle [-6, 474], 230, 50
-          # fill_rectangle [-10, 40], 175, 10
-
+          character.health_max.times do |index|
+            fill_color character.health_marked >= index + 1 ? 'C6515C' : 'FFFFFF'
+            fill_and_stroke_rounded_rectangle [104 + (index * 13), 563], 11, 11, 1
+          end
+          # stress
+          character.stress_max.times do |index|
+            fill_color character.stress_marked >= index + 1 ? 'C6515C' : 'FFFFFF'
+            fill_and_stroke_rounded_rectangle [104 + (index * 13), 548], 11, 11, 1
+          end
           # hope
-          # initial_hope_index = character.hope_max == 7 ? 10 : 25
-          # character.hope_marked.times do |index|
-          #   rotate(45, origin: [initial_hope_index + (index * 32.25), 455]) do
-          #     fill_color 'C6515C'
-          #     fill_and_stroke_rounded_rectangle [initial_hope_index - 5.5 + (index * 32.25), 458.5], 9.5, 9.5, 1
-          #   end
-          # end
-          # (character.hope_max - character.hope_marked).times do |index|
-          #   index += character.hope_marked
-          #   rotate(45, origin: [initial_hope_index + (index * 32.25), 455]) do
-          #     stroke_rounded_rectangle [initial_hope_index - 5.5 + (index * 32.25), 458.5], 9.5, 9.5, 1
-          #   end
-          # end
+          character.hope_max.times do |index|
+            fill_color character.hope_marked >= index + 1 ? 'C6515C' : 'FFFFFF'
+            fill_and_stroke_rounded_rectangle [104 + (index * 13), 533], 11, 11, 1
+          end
 
-          # fill_color '000000'
-          # text_box character.evasion.to_s, at: [8, 658], height: 20, width: 20, align: :center
-          # text_box character.armor_score.to_s, at: [68.5, 658], height: 20, width: 20, align: :center
+          font Rails.root.join('app/assets/fonts/Roboto-Regular.ttf') do
+            font_size 10
+            fill_color '000000'
+            character.experience.sort_by { |item| -item['exp_level'] }.first(10).each_with_index do |experience, index|
+              text_box experience['exp_name'], at: [52, 465 - (index * 20)], width: 140
+              text_box "+#{experience['exp_level']}", at: [200, 465 - (index * 20)], width: 38, align: :center
+            end
 
-          # rectangle [170, 682], 39, 21
-          # stroke
+            text_box I18n.t('services.sheets_context.daggerheart.health'), at: [70, 656], width: 150, align: :center
+            text_box I18n.t('services.sheets_context.daggerheart.experience'), at: [70, 491], width: 150, align: :center
 
-          # text_box character.damage_thresholds['major'].to_s, at: [56, 572], width: 22, height: 14, align: :center
-          # text_box character.damage_thresholds['severe'].to_s, at: [137, 572], width: 22, height: 14, align: :center
+            text_box I18n.t('services.sheets_context.daggerheart.armor_slots'), at: [32, 576], width: 150
+            text_box I18n.t('services.sheets_context.daggerheart.hp'), at: [32, 561], width: 150
+            text_box I18n.t('services.sheets_context.daggerheart.stress'), at: [32, 546], width: 150
+            text_box I18n.t('services.sheets_context.daggerheart.hope'), at: [32, 531], width: 150
 
-          # font Rails.root.join('app/assets/fonts/Roboto-Regular.ttf') do
-          #   character.experience.sort_by { |item| -item['exp_level'] }.first(5).each_with_index do |experience, index|
-          #     text_box experience['exp_name'], at: [0, 395 - (index * 18)], width: 175
-          #     text_box "+#{experience['exp_level']}", at: [195, 395 - (index * 18)], width: 25
-          #   end
-          # end
+            text_box I18n.t('services.sheets_context.daggerheart.minor'), at: [20, 619], width: 60, align: :center
+            text_box I18n.t('services.sheets_context.daggerheart.major'), at: [115, 619], width: 60, align: :center
+            text_box I18n.t('services.sheets_context.daggerheart.severe'), at: [210, 619], width: 60, align: :center
+          end
 
           render
         end
-        # rubocop: enable Metrics/AbcSize
+        # rubocop: enable Metrics/AbcSize, Metrics/MethodLength, Metrics/PerceivedComplexity
 
         private
 

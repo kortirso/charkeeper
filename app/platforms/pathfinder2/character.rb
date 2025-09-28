@@ -49,6 +49,10 @@ module Pathfinder2
       config.dig('races', race_value, 'subraces')
     end
 
+    def self.subrace_info(race_value, subrace_value)
+      config.dig('races', race_value, 'subraces', subrace_value)
+    end
+
     def self.classes_info
       config['classes']
     end
@@ -61,6 +65,10 @@ module Pathfinder2
       config.dig('classes', class_value, 'subclasses')
     end
 
+    def self.subclass_info(class_value, subclass_value)
+      config.dig('classes', class_value, 'subclasses', subclass_value)
+    end
+
     def self.main_ability_options(class_value)
       config.dig('classes', class_value, 'main_ability_options')
     end
@@ -71,6 +79,10 @@ module Pathfinder2
 
     def self.abilities
       config['abilities']
+    end
+
+    def self.skills
+      config['skills']
     end
 
     attribute :data, Pathfinder2::CharacterData.to_type

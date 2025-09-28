@@ -4,7 +4,7 @@ module SheetsContext
   module Pdf
     module Pathfinder2
       class Template < SheetsContext::Pdf::Template
-        # rubocop: disable Metrics/AbcSize
+        # rubocop: disable Metrics/AbcSize, Layout/LineLength, Metrics/MethodLength, Metrics/PerceivedComplexity
         def to_pdf(character:)
           super
 
@@ -16,6 +16,10 @@ module SheetsContext
               ability_name = abilities_names[item].dig('name', I18n.locale.to_s)
               text_box ability_name, at: [233 + (55 * index), 735], width: 43, align: :center
             end
+
+            text_box I18n.t('services.sheets_context.pathfinder.armor_class'), at: [48, 699], width: 43, align: :center
+            text_box I18n.t('services.sheets_context.pathfinder.perception'), at: [101, 699], width: 43, align: :center
+            text_box I18n.t('services.sheets_context.pathfinder.speed'), at: [154, 699], width: 43, align: :center
           end
 
           font_size 12
@@ -25,18 +29,65 @@ module SheetsContext
             text_box value, at: [242 + (index * 55), 718], width: 25, height: 14, align: :center
           end
 
+          text_box character.armor_class.to_s, at: [51, 722], width: 37, height: 14, align: :center
+          text_box "+#{character.perception}", at: [104, 722], width: 37, height: 14, align: :center
+          text_box character.speed.to_s, at: [157, 722], width: 37, height: 14, align: :center
+
+          font_size 16
+          text_box character.health['current'].to_s, at: [30, 624], width: 70, align: :center
+          text_box character.health['max'].to_s, at: [110, 624], width: 70, align: :center
+          text_box character.health['temp'].to_s, at: [190, 624], width: 70, align: :center
+
+          font Rails.root.join('app/assets/fonts/Roboto-Regular.ttf') do
+            font_size 10
+            fill_color '000000'
+
+            skills_names = ::Pathfinder2::Character.skills
+            character.skills.map { |skill|
+              skill[:name] = skill[:name] || skills_names[skill[:slug]].dig('name', I18n.locale.to_s)
+              skill
+            }.sort_by { |item| item[:name] }.each_with_index do |skill, index| # rubocop: disable Style/MultilineBlockChain
+              text_box skill[:name], at: [52, 509 - (index * 20)], width: 140
+              text_box "#{'+' if skill[:modifier].positive?}#{skill[:modifier]}", at: [200, 509 - (index * 20)], width: 38, align: :center
+            end
+
+            text_box I18n.t('services.sheets_context.dnd.health'), at: [70, 656], width: 150, align: :center
+            text_box I18n.t('services.sheets_context.dnd.skills'), at: [70, 535], width: 150, align: :center
+
+            font_size 6
+            text_box I18n.t('services.sheets_context.dnd.current_health').upcase, at: [30, 600], width: 70, align: :center
+            text_box I18n.t('services.sheets_context.dnd.max_health').upcase, at: [110, 600], width: 70, align: :center
+            text_box I18n.t('services.sheets_context.dnd.temp_health').upcase, at: [190, 600], width: 70, align: :center
+          end
+
           render
         end
-        # rubocop: enable Metrics/AbcSize
+        # rubocop: enable Metrics/AbcSize, Layout/LineLength, Metrics/MethodLength, Metrics/PerceivedComplexity
 
         private
 
-        def heritage(...)
-          ''
+        def heritage(character)
+          "#{subrace(character)} / #{background(character)}"
         end
 
-        def classes(...)
-          ''
+        def classes(character)
+          character.subclasses.map { |key, value| "#{class_name(key)} (#{subclass_name(key, value)})" }.join(' / ')
+        end
+
+        def subrace(character)
+          ::Pathfinder2::Character.subrace_info(character.race, character.subrace).dig('name', I18n.locale.to_s)
+        end
+
+        def background(character)
+          ::Pathfinder2::Character.backgrounds.dig(character.background, 'name', I18n.locale.to_s)
+        end
+
+        def class_name(class_slug)
+          ::Pathfinder2::Character.class_info(class_slug).dig('name', I18n.locale.to_s)
+        end
+
+        def subclass_name(class_slug, subclass_slug)
+          ::Pathfinder2::Character.subclass_info(class_slug, subclass_slug).dig('name', I18n.locale.to_s)
         end
       end
     end

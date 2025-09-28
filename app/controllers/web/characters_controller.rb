@@ -4,7 +4,6 @@ module Web
   class CharactersController < Web::BaseController
     skip_before_action :authenticate
     skip_before_action :update_locale
-    skip_before_action :set_locale
     before_action :find_character
 
     def show

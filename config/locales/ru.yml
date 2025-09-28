@@ -20,6 +20,34 @@ ru:
   services:
     sheets_context:
       level: Уровень
+      pathfinder:
+        armor_class: Класс брони
+        perception: Восприятие
+        speed: Скорость
+      dnd:
+        initiative: Инициатива
+        armor_class: Класс брони
+        speed: Скорость
+        health: ЗДОРОВЬЕ
+        skills: УМЕНИЯ
+        current_health: Текущее
+        max_health: Максимальное
+        temp_health: Временное
+        success: Успех
+        failure: Провал
+      daggerheart:
+        proficiency: Мастерство
+        evasion: Уклонение
+        armor_score: Очки доспеха
+        armor_slots: ДОСПЕХ
+        hp: РАНЫ
+        stress: СТРЕСС
+        hope: НАДЕЖДА
+        experience: ОПЫТНОСТЬ
+        health: ЗДОРОВЬЕ
+        minor: Малый
+        major: Большой
+        severe: Серьёзный
     bot_context:
       representers:
         roll:

@@ -20,6 +20,34 @@ en:
   services:
     sheets_context:
       level: Level
+      pathfinder:
+        armor_class: Armor class
+        perception: Perception
+        speed: Speed
+      dnd:
+        initiative: Initiative
+        armor_class: Armor class
+        speed: Speed
+        health: HEALTH
+        skills: SKILLS
+        current_health: Current
+        max_health: Max
+        temp_health: Temp
+        success: Success
+        failure: Failure
+      daggerheart:
+        proficiency: Proficiency
+        evasion: Evasion
+        armor_score: Armor score
+        armor_slots: ARMOR
+        hp: HP
+        stress: STRESS
+        hope: HOPE
+        experience: EXPERIENCE
+        health: HEALTH
+        minor: Minor
+        major: Major
+        severe: Severe
     bot_context:
       representers:
         roll:

@@ -67,12 +67,14 @@ export const CampaignTab = (props) => {
                       <td class="py-1 pl-1">
                         <p class="dark:text-snow">{character.name}</p>
                       </td>
-                      <td>
-                        <p
-                          class="dark:text-snow cursor-pointer"
-                          onClick={() => navigate('characterView', { id: character.character_id })}
-                        >PDF</p>
-                      </td>
+                      <Show when={!window.__TAURI_INTERNALS__}>
+                        <td>
+                          <p
+                            class="dark:text-snow cursor-pointer"
+                            onClick={() => navigate('characterView', { id: character.character_id })}
+                          >PDF</p>
+                        </td>
+                      </Show>
                       <td>
                         <Button default size="small" onClick={() => deleteCharacter(character.id)}>
                           <Minus />

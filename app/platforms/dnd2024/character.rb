@@ -85,6 +85,10 @@ module Dnd2024
       config['abilities']
     end
 
+    def self.skills
+      config['skills']
+    end
+
     # alignment
     LAWFUL_GOOD = 'lawful_good'
     LAWFUL_NEUTRAL = 'lawful_neutral'
