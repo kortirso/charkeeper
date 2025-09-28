@@ -20,17 +20,13 @@ module WebhooksContext
             required(:text).filled(:string)
           end
         end
-
-        rule(:message) do
-          next if value[:text].starts_with?('/')
-
-          key.failure(:not_command)
-        end
       end
 
       private
 
       def do_persist(input)
+        return { result: :ok } unless input.dig(:message, :text).starts_with?('/')
+
         BotContext::HandleJob.perform_later(params: input)
         { result: :ok }
       end
