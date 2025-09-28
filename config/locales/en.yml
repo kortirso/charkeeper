@@ -104,14 +104,11 @@ en:
         web_description: Simply run %{href}
         web_link: dashboard
         dashboard_link: Dashboard
-        mobile: iOS mobile application
         macos: MacOS application
         macos_description: Simply download and run %{href}
         macos_link: installer
-        android: Android mobile application
-        google_play: Install application through %{href}
-        google_play_link: Google Play Store
-        app_store: Install application through %{href}
+        mobile_apps: iOS and Android mobile applications
+        app_store: In addition you can install application through %{href} (for faster updates)
         app_store_link: TestFlight in App Store
         daggerheart:
           title: Daggerheart compability

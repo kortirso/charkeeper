@@ -29,11 +29,15 @@
     <p class="mb-4">
       <%= t('web.welcome.index.web_description', href: link_to(t('web.welcome.index.web_link'), dashboard_path, class: 'underline', target: '_blank', rel: 'noopener noreferrer')).html_safe %>
     </p>
-    <p class="text-lg font-normal!"><%= t('web.welcome.index.android') %></p>
-    <p class="mb-4">
-      <%= t('web.welcome.index.google_play', href: link_to(t('web.welcome.index.google_play_link'), 'https://play.google.com/store/apps/details?id=org.kortirso.charkeeper', class: 'underline', target: '_blank', rel: 'noopener noreferrer')).html_safe %>
-    </p>
-    <p class="text-lg font-normal!"><%= t('web.welcome.index.mobile') %></p>
+    <p class="text-lg font-normal!"><%= t('web.welcome.index.mobile_apps') %></p>
+    <div class="flex gap-x-4 my-2">
+      <%= link_to 'https://apps.apple.com/us/app/charkeeper/id6752808498', target: '_blank', rel: 'noopener noreferrer' do %>
+        <%= image_tag 'app_store.svg', alt: 'App store', width: 132, height: 44 %>
+      <% end %>
+      <%= link_to 'https://play.google.com/store/apps/details?id=org.kortirso.charkeeper', target: '_blank', rel: 'noopener noreferrer' do %>
+        <%= image_tag 'google_store.svg', alt: 'Google store', width: 149, height: 44 %>
+      <% end %>
+    </div>
     <p class="mb-4">
       <%= t('web.welcome.index.app_store', href: link_to(t('web.welcome.index.app_store_link'), 'https://testflight.apple.com/join/Fh1SjU8g', class: 'underline', target: '_blank', rel: 'noopener noreferrer')).html_safe %>
     </p>

@@ -104,14 +104,11 @@ ru:
         web_description: Просто запустите %{href}
         web_link: панель управления
         dashboard_link: Панель управления
-        mobile: Мобильное приложение для iOS
         macos: Приложение для MacOS
         macos_description: Просто скачайте и запустите %{href}
         macos_link: установщик
-        android: Мобильное приложение для Android
-        google_play: Установите приложение через %{href}
-        google_play_link: Google Play Store
-        app_store: Установите приложение через %{href}
+        mobile_apps: Мобильное приложение для iOS и Android
+        app_store: Также можете установить приложение через %{href} (для быстрого обновления)
         app_store_link: TestFlight в App Store
         daggerheart:
           title: Поддержка Daggerheart
