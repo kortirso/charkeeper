@@ -10,11 +10,11 @@ module Web
     def show
       respond_to do |format|
         format.json do
-          render json: CharactersContext::GenerateJsonCharacterSheet.new.call(character: @character), status: :ok
+          render json: SheetsContext::Json::Generate.new.call(character: @character), status: :ok
         end
         format.pdf do
           send_data(
-            SheetsContext::Generate.new.call(character: @character),
+            SheetsContext::Pdf::Generate.new.call(character: @character),
             type: 'application/pdf',
             filename: "#{@character.name}.pdf"
           )

@@ -7,6 +7,7 @@ module DaggerheartCharacter
              :hope_marked, :traits, :total_gold, :subclasses_mastery, :experiences, :community,
              :leveling, :experience, :heritage_name, :heritage_features, :domains, :beastform, to: :data
 
+    def parent = __getobj__
     def method_missing(_method, *args); end
 
     # rubocop: disable Naming/PredicateMethod

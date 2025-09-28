@@ -5,7 +5,7 @@ import { IconButton } from '../../../components';
 import { Dots, Avatar } from '../../../assets';
 import pathfinder2Config from '../../../data/pathfinder2.json';
 import dnd2024Config from '../../../data/dnd2024.json';
-import { useAppState, useAppLocale, useAppAlert } from '../../../context';
+import { useAppLocale, useAppAlert } from '../../../context';
 import { clickOutside, copyToClipboard } from '../../../helpers';
 
 const AVAILABLE_JSON = ['daggerheart'];
@@ -15,7 +15,6 @@ export const CharactersListItem = (props) => {
 
   const [isOpen, setIsOpen] = createSignal(false);
 
-  const [appState] = useAppState();
   const [{ renderNotice }] = useAppAlert();
   const [locale, dict] = useAppLocale();
 
@@ -42,7 +41,7 @@ export const CharactersListItem = (props) => {
   const copy = (event) => {
     event.stopPropagation();
 
-    copyToClipboard(`https://charkeeper.org/characters/${appState.activePageParams.id}.json`);
+    copyToClipboard(`https://charkeeper.org/characters/${character().id}.json`);
     renderNotice(t('alerts.copied'));
     setIsOpen(false);
   }

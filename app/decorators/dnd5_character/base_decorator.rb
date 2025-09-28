@@ -11,6 +11,7 @@ module Dnd5Character
              :weapon_core_skills, :weapon_skills, :armor_proficiency, :tools, :music, :spent_spell_slots,
              :hit_dice, :spent_hit_dice, :death_saving_throws, :speed, to: :data
 
+    def parent = __getobj__
     def method_missing(_method, *args); end
 
     def proficiency_bonus

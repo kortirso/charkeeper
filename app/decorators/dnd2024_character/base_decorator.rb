@@ -11,6 +11,7 @@ module Dnd2024Character
              :weapon_core_skills, :weapon_skills, :armor_proficiency, :music, :spent_spell_slots,
              :hit_dice, :spent_hit_dice, :death_saving_throws, :selected_feats, :beastform, to: :data
 
+    def parent = __getobj__
     def method_missing(_method, *args); end
 
     def proficiency_bonus

@@ -9,6 +9,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - character personal homebrew feats
 - add weapons for feats to generating new attacks
 
+### Fixed
+- bug with rendering json for Daggerheart character with custom community
+
 ## [0.3.4] - 2025-09-25
 ### Added
 - removing profiles

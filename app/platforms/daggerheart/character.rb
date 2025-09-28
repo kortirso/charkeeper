@@ -108,6 +108,18 @@ module Daggerheart
       ).uniq
     end
 
+    def ancestry_name
+      return data.heritage_name if data.heritage.nil?
+
+      default = ::Daggerheart::Character.heritage_info(data.heritage)
+      default ? default.dig('name', I18n.locale.to_s) : ::Daggerheart::Homebrew::Race.find(data.heritage).name
+    end
+
+    def community_name
+      default = ::Daggerheart::Character.community_info(data.community)
+      default ? default.dig('name', I18n.locale.to_s) : ::Daggerheart::Homebrew::Community.find(data.community).name
+    end
+
     def decorator(simple: false)
       base_decorator = ::DaggerheartCharacter::BaseDecorator.new(self)
       features_decorator = ::FeaturesDecorator.new(base_decorator)
