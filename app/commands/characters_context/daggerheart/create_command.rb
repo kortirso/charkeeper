@@ -16,12 +16,12 @@ module CharactersContext
 
         params do
           required(:user).filled(type?: User)
-          required(:name).filled(:string)
+          required(:name).filled(:string, max_size?: 50)
           required(:community).filled(:string)
           required(:main_class).filled(:string)
           required(:subclass).filled(:string)
           optional(:heritage).filled(:string)
-          optional(:heritage_name).filled(:string)
+          optional(:heritage_name).filled(:string, max_size?: 50)
           optional(:heritage_features).filled(:array).each(:string)
           optional(:avatar_file).hash do
             required(:file_content).filled(:string)

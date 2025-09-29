@@ -12,7 +12,7 @@ module CharactersContext
 
         params do
           required(:companion).filled(type?: ::Daggerheart::Character::Companion)
-          optional(:name).filled(:string)
+          optional(:name).filled(:string, max_size?: 50)
           optional(:leveling).hash do
             required(:intelligent).filled(:integer, gteq?: 0)
             required(:light).filled(:integer, gteq?: 0)
@@ -25,13 +25,13 @@ module CharactersContext
           end
           optional(:experience).maybe(:array).each(:hash) do
             required(:id).filled(:integer)
-            required(:exp_name).filled(:string)
+            required(:exp_name).filled(:string, max_size?: 50)
             required(:exp_level).filled(:integer, gteq?: 0)
           end
           optional(:stress_marked).filled(:integer)
           optional(:damage).filled(Damages)
           optional(:distance).filled(Distances)
-          optional(:caption).filled(:string)
+          optional(:caption).filled(:string, max_size?: 100)
         end
       end
       # rubocop: enable Metrics/BlockLength

@@ -11,7 +11,7 @@ module UsersContext
       params do
         required(:user).filled(type?: ::User)
         optional(:locale).filled(Locales)
-        optional(:username).filled(:string)
+        optional(:username).filled(:string, max_size?: 50)
         optional(:color_schema).filled(ColorSchemas)
         optional(:password).filled(:string, min_size?: 10)
         optional(:password_confirmation).filled(:string, min_size?: 10)

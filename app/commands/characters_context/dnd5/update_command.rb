@@ -66,7 +66,7 @@ module CharactersContext
           optional(:resistance).value(:array).each(included_in?: DAMAGE_TYPES)
           optional(:immunity).value(:array).each(included_in?: DAMAGE_TYPES)
           optional(:vulnerability).value(:array).each(included_in?: DAMAGE_TYPES)
-          optional(:name).filled(:string)
+          optional(:name).filled(:string, max_size?: 50)
           optional(:avatar_file).hash do
             required(:file_content).filled(:string)
             required(:file_name).filled(:string)

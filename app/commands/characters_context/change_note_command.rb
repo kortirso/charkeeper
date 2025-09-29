@@ -5,8 +5,8 @@ module CharactersContext
     use_contract do
       params do
         required(:note).filled(type?: ::Character::Note)
-        required(:value).filled(:string)
-        required(:title).filled(:string)
+        required(:value).filled(:string, max_size?: 200)
+        required(:title).filled(:string, max_size?: 50)
       end
     end
 

@@ -160,7 +160,7 @@
 }
 
 .form-field .form-dropdown {
-  @apply absolute w-full bg-white border-r border-l border-gray-200 z-10 overflow-y-scroll shadow;
+  @apply absolute w-full bg-white border-r border-l border-gray-200 z-10 overflow-y-auto shadow;
   @apply dark:bg-neutral-800 dark:border-gray-500;
 
   max-height: 7.5rem;
@@ -182,9 +182,7 @@
 }
 
 #character-navigation {
-  @apply flex overflow-x-scroll bg-white border-b border-gray-200 px-2 dark:bg-neutral-800 dark:border-black;
-
-  scrollbar-width: none;
+  @apply flex overflow-x-auto bg-white border-b border-gray-200 px-2 dark:bg-neutral-800 dark:border-black;
 }
 
 #character-navigation::-webkit-scrollbar { 
