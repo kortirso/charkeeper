@@ -424,7 +424,7 @@
     "thresholds": "Damage thresholds",
     "onlyPreparedSpells": "Only prepared",
     "onlyAvailableSpells": "Only available",
-    "no_magic": "Character does not have magic abilities",
+    "customSpellAbility": "Learn with custom spell ability",
     "changeLevels": "Change class levels",
     "changeClasses": "Change character classes",
     "knownSpells": "Learning spells",

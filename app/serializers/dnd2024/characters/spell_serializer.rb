@@ -3,9 +3,9 @@
 module Dnd2024
   module Characters
     class SpellSerializer < ApplicationSerializer
-      ATTRIBUTES = %i[id ready_to_use prepared_by spell_id].freeze
+      ATTRIBUTES = %i[id ready_to_use prepared_by spell_ability slug name level spell_id].freeze
 
-      attributes :id, :ready_to_use, :prepared_by, :slug, :name, :level, :spell_id
+      attributes :id, :ready_to_use, :prepared_by, :spell_ability, :slug, :name, :level, :spell_id
 
       delegate :slug, to: :spell
       delegate :spell, to: :object
@@ -25,6 +25,10 @@ module Dnd2024
 
       def prepared_by
         data['prepared_by']
+      end
+
+      def spell_ability
+        data['spell_ability']
       end
     end
   end

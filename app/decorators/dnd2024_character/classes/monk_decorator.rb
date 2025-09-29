@@ -16,6 +16,18 @@ module Dnd2024Character
           end
       end
 
+      def spell_classes
+        @spell_classes ||= begin
+          result = __getobj__.spell_classes
+          result[:monk] = { multiclass_spell_level: 0 }
+          result
+        end
+      end
+
+      def spells_slots
+        @spells_slots ||= ::Dnd2024Character::ClassDecorateWrapper::EMPTY_SPELL_SLOTS[class_level]
+      end
+
       def speed
         @speed ||= no_armor ? (__getobj__.speed + speed_modifier) : __getobj__.speed
       end
