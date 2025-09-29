@@ -10,7 +10,7 @@ module CharactersContext
           required(:character).filled(type?: ::Dnd5::Character)
           required(:character_spell).filled(type?: ::Dnd5::Character::Spell)
           optional(:ready_to_use).filled(:bool)
-          optional(:notes).maybe(:string)
+          optional(:notes).maybe(:string, max_size?: 100)
         end
 
         rule(:character, :character_spell, :ready_to_use) do

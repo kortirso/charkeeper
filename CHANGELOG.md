@@ -11,6 +11,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Modified
 - rendering basic PDF for all systems
+- text length validations
 
 ### Fixed
 - bug with rendering json for Daggerheart character with custom community

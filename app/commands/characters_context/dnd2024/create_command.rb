@@ -17,7 +17,7 @@ module CharactersContext
 
         params do
           required(:user).filled(type?: User)
-          required(:name).filled(:string)
+          required(:name).filled(:string, max_size?: 50)
           required(:species).filled(Species)
           optional(:legacy).filled(:string)
           required(:size).filled(:string)

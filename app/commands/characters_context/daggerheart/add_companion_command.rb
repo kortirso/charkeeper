@@ -8,7 +8,7 @@ module CharactersContext
 
         params do
           required(:character).filled(type?: ::Daggerheart::Character)
-          required(:name).filled(:string)
+          required(:name).filled(:string, max_size?: 50)
         end
 
         rule(:character) do

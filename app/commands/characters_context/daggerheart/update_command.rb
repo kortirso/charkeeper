@@ -46,7 +46,7 @@ module CharactersContext
             required(:proficiency).filled(:integer)
             required(:domain_cards).filled(:integer)
           end
-          optional(:name).filled(:string)
+          optional(:name).filled(:string, max_size?: 50)
           optional(:avatar_file).hash do
             required(:file_content).filled(:string)
             required(:file_name).filled(:string)
@@ -54,8 +54,8 @@ module CharactersContext
           optional(:avatar_url).filled(:string)
           optional(:experience).maybe(:array).each(:hash) do
             required(:id).filled(:integer)
-            required(:exp_name).filled(:string)
-            required(:exp_level).filled(:integer)
+            required(:exp_name).filled(:string, max_size?: 50)
+            required(:exp_level).filled(:integer, gteq?: 0)
           end
           optional(:beastform).maybe(Beastforms)
         end

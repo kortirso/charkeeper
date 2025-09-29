@@ -7,7 +7,7 @@ module UsersContext
 
       params do
         required(:user).filled(type?: ::User)
-        required(:value).filled(:string)
+        required(:value).filled(:string, max_size?: 500)
       end
     end
 
