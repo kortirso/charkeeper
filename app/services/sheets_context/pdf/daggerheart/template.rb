@@ -58,7 +58,7 @@ module SheetsContext
           font_size 10
           fill_color '000000'
           character.experience.sort_by { |item| -item['exp_level'] }.first(10).each_with_index do |experience, index|
-            text_box experience['exp_name'], at: [52, 467 - (index * 20)], width: 140
+            text_box experience['exp_name'], at: [52, 467 - (index * 20)], width: 140, height: 14
             text_box "+#{experience['exp_level']}", at: [200, 467 - (index * 20)], width: 38, align: :center
           end
 
