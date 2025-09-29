@@ -27,7 +27,7 @@ const DND5_DEFAULT_FORM = {
   alignment: 'neutral', avatar_file: undefined, avatar_url: undefined
 }
 const DND2024_DEFAULT_FORM = {
-  name: '', species: undefined, legacy: undefined, size: undefined,
+  name: '', species: undefined, legacy: undefined, size: undefined, background: undefined,
   main_class: undefined, alignment: 'neutral', avatar_file: undefined, avatar_url: undefined
 }
 const PATHFINDER2_DEFAULT_FORM = {
@@ -231,7 +231,7 @@ export const CharactersTab = () => {
           alignment: 'neutral', avatar_file: undefined, avatar_url: undefined
         });
         setCharacterDnd2024Form({
-          name: '', species: undefined, legacy: undefined, size: undefined,
+          name: '', species: undefined, legacy: undefined, size: undefined, background: undefined,
           main_class: undefined, alignment: 'neutral', avatar_file: undefined, avatar_url: undefined
         });
         setCharacterPathfinder2Form({
@@ -415,6 +415,13 @@ export const CharactersTab = () => {
                         onSelect={(value) => setCharacterDnd2024Form({ ...characterDnd2024Form, size: value })}
                       />
                     </Show>
+                    <Select
+                      containerClassList="mb-2"
+                      labelText={t('newCharacterPage.pathfinder2.background')}
+                      items={translate(dnd2024Config.backgrounds, locale())}
+                      selectedValue={characterDnd2024Form.background}
+                      onSelect={(value) => setCharacterDnd2024Form({ ...characterDnd2024Form, background: value })}
+                    />
                     <Select
                       containerClassList="mb-2"
                       labelText={t('newCharacterPage.dnd2024.mainClass')}

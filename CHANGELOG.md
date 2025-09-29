@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Added
 - character personal homebrew feats
 - add weapons for feats to generating new attacks
+- selecting backgrounds for new D&D 2024 characters
 
 ### Modified
 - rendering basic PDF for all systems

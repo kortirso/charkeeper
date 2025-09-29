@@ -14,6 +14,7 @@ module CharactersContext
         Species = Dry::Types['strict.string'].enum(*::Dnd2024::Character.species.keys)
         Classes = Dry::Types['strict.string'].enum(*::Dnd2024::Character.classes_info.keys)
         Alignments = Dry::Types['strict.string'].enum(*::Dnd2024::Character::ALIGNMENTS)
+        Backgrounds = Dry::Types['strict.string'].enum(*::Dnd2024::Character.backgrounds.keys)
 
         params do
           required(:user).filled(type?: User)
@@ -23,6 +24,7 @@ module CharactersContext
           required(:size).filled(:string)
           required(:main_class).filled(Classes)
           required(:alignment).filled(Alignments)
+          optional(:background).filled(Backgrounds)
           optional(:avatar_file).hash do
             required(:file_content).filled(:string)
             required(:file_name).filled(:string)
@@ -56,7 +58,7 @@ module CharactersContext
 
       def do_prepare(input)
         input[:data] =
-          build_fresh_character(input.slice(:species, :legacy, :size, :main_class, :alignment).symbolize_keys)
+          build_fresh_character(input.slice(:species, :legacy, :size, :main_class, :alignment, :background).symbolize_keys)
       end
 
       def do_persist(input)
@@ -80,6 +82,7 @@ module CharactersContext
           .then { |result| Dnd2024Character::SpeciesBuilder.new.call(result: result) }
           .then { |result| Dnd2024Character::LegaciesBuilder.new.call(result: result) }
           .then { |result| Dnd2024Character::ClassBuilder.new.call(result: result) }
+          .then { |result| Dnd2024Character::BackgroundBuilder.new.call(result: result) }
       end
 
       def learn_spells_list(character, input)
