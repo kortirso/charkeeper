@@ -7,6 +7,7 @@ module Dnd2024
     attribute :level, :integer, default: 1
     attribute :species, :string
     attribute :legacy, :string
+    attribute :background, :string
     attribute :size, :string
     attribute :alignment, :string
     attribute :main_class, :string
@@ -87,6 +88,10 @@ module Dnd2024
 
     def self.skills
       config['skills']
+    end
+
+    def self.backgrounds
+      config['backgrounds']
     end
 
     # alignment

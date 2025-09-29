@@ -69,7 +69,24 @@
       "sizes": ["medium"]
     }
   },
-  "backgrounds": {},
+  "backgrounds": {
+    "entertainer": { "name": { "en": "Entertainer", "ru": "Артист" } },
+    "noble": { "name": { "en": "Noble", "ru": "Благородный" } },
+    "sailor": { "name": { "en": "Sailor", "ru": "Моряк" } },
+    "sage": { "name": { "en": "Sage", "ru": "Мудрец" } },
+    "hermit": { "name": { "en": "Hermit", "ru": "Отшельник" } },
+    "scribe": { "name": { "en": "Scribe", "ru": "Писарь" } },
+    "acolyte": { "name": { "en": "Acolyte", "ru": "Послушник" } },
+    "criminal": { "name": { "en": "Criminal", "ru": "Преступник" } },
+    "guide": { "name": { "en": "Guide", "ru": "Путешественник" } },
+    "artisan": { "name": { "en": "Artisan", "ru": "Ремесленник" } },
+    "soldier": { "name": { "en": "Soldier", "ru": "Солдат" } },
+    "guard": { "name": { "en": "Guard", "ru": "Стражник" } },
+    "wayfarer": { "name": { "en": "Wayfarer", "ru": "Странник" } },
+    "merchant": { "name": { "en": "Merchant", "ru": "Торговец" } },
+    "farmer": { "name": { "en": "Farmer", "ru": "Фермер" } },
+    "charlatan": { "name": { "en": "Charlatan", "ru": "Шарлатан" } }
+  },
   "classes": {
     "barbarian": {
       "name": { "en": "Barbarian", "ru": "Варвар" },
@@ -150,7 +167,15 @@
   "feats": {
     "origin": {
       "alert": { "name": { "en": "Alert", "ru": "Бдительный" } },
-      "lucky": { "name": { "en": "Lucky", "ru": "Везунчик" } }
+      "lucky": { "name": { "en": "Lucky", "ru": "Везунчик" } },
+      "savage_attacker": { "name": { "en": "Savage Attacker", "ru": "Дикий атакующий" } },
+      "tavern_brawler": { "name": { "en": "Tavern Brawler", "ru": "Драчун" } },
+      "healer": { "name": { "en": "Healer", "ru": "Лекарь" } },
+      "musician": { "name": { "en": "Musician", "ru": "Музыкант" } },
+      "cleric_magic_initiate": { "name": { "en": "Magic Initiate (Cleric)", "ru": "Посвящённый в магию (Жрец)" } },
+      "druid_magic_initiate": { "name": { "en": "Magic Initiate (Druid)", "ru": "Посвящённый в магию (Друид)" } },
+      "wizard_magic_initiate": { "name": { "en": "Magic Initiate (Wizard)", "ru": "Посвящённый в магию (Волшебник)" } },
+      "crafter": { "name": { "en": "Crafter", "ru": "Ремесленник" } }
     },
     "general": {
       "actor": { "name": { "en": "Actor", "ru": "Актёр" } },
@@ -170,7 +195,7 @@
   },
   "skills": {
     "acrobatics": { "name": { "en": "Acrobatics", "ru": "Акробатика" } },
-    "animal": { "name": { "en": "Animal", "ru": "Уход за животными" } },
+    "animal": { "name": { "en": "Animal Handling", "ru": "Уход за животными" } },
     "arcana": { "name": { "en": "Arcana", "ru": "Магия" } },
     "athletics": { "name": { "en": "Athletics", "ru": "Атлетика" } },
     "deception": { "name": { "en": "Deception", "ru": "Обмен" } },

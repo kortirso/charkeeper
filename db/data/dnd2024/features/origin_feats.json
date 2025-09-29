@@ -1,0 +1,108 @@
+[
+  {
+    "slug": "savage_attacker",
+    "title": { "en": "Savage Attacker", "ru": "Дикий атакующий" },
+    "description": {
+      "en": "Once per turn when you hit a target with a weapon, you can roll the weapon's damage dice twice and use either roll against the target.",
+      "ru": "1 раз в ход, когда вы попадаете по цели оружием, вы можете дважды бросить кости урона этого оружия и использовать любой из бросков."
+    },
+    "origin": "feat",
+    "origin_value": "origin",
+    "kind": "static"
+  },
+  {
+    "slug": "tavern_brawler",
+    "title": { "en": "Tavern Brawler", "ru": "Драчун" },
+    "description": {
+      "en": "1) Whenever you roll a damage die for your Unarmed Strike, you can reroll the die if it rolls a 1, and you must use the new roll. 2) You have proficiency with improvised weapons. 3) When you hit a creature with an Unarmed Strike as part of the Attack action on your turn, you can deal damage to the target and also push it 5 feet away from you. You can use this benefit only once per turn.",
+      "ru": "1) Каждый раз, когда вы бросаете кость урона для своего безоружного удара, вы можете перебросить кость, если выпало 1, и вы должны использовать новый результат. 2) Вы получаете владение импровизированным оружием. 3) Когда вы поражаете существо безоружным ударом в рамках действия атака в свой ход, вы можете нанести урон цели, а также оттолкнуть её на 5 футов. Вы можете использовать этот эффект только 1 раз за ход."
+    },
+    "origin": "feat",
+    "origin_value": "origin",
+    "kind": "static"
+  },
+  {
+    "slug": "healer",
+    "title": { "en": "Healer", "ru": "Лекарь" },
+    "description": {
+      "en": "1) If you have a Healer's Kit, you can expend one use of it and tend to a creature within 5 feet of yourself as a Utilize action. That creature can expend one of its Hit Point Dice, and you then roll that die. The creature regains a number of Hit Points equal to the roll plus your Proficiency Bonus. 2) Whenever you roll a die to determine the number of Hit Points you restore with a spell or with this feat's Battle Medic benefit, you can reroll the die if it rolls a 1, and you must use the new roll.",
+      "ru": "1) Вы можете действием потратить одно использование комплекта целителя, чтобы позаботиться о существе в пределах 5 футов от вас. Это существо может потратить 1 из своих костей хитов и затем вы бросить эту кость. Существо восстанавливает количество хитов, равное броску + ваш бонус мастерства. 2) Каждый раз, когда вы бросаете кость, чтобы определить количество хитов, которые вы восстанавливаете с помощью заклинания или с помощью эффекта Боевой медик, и на броске выпадает «1», вы можете повторно бросить кость и вы должны использовать новый результат."
+    },
+    "origin": "feat",
+    "origin_value": "origin",
+    "kind": "static"
+  },
+  {
+    "slug": "musician",
+    "title": { "en": "Musician", "ru": "Музыкант" },
+    "description": {
+      "en": "As you finish a Rest, you can play a song on a Musical Instrument with which you have proficiency and give Heroic Inspiration to allies who hear the song (max - {{value}}).",
+      "ru": "Когда вы заканчиваете отдых, вы можете сыграть песню на музыкальном инструменте, которым владеете, и дать героическое вдохновение союзникам, которые услышат эту песню (максимум - {{value}})."
+    },
+    "origin": "feat",
+    "origin_value": "origin",
+    "kind": "static",
+    "description_eval_variables": {
+      "value": "proficiency_bonus"
+    }
+  },
+  {
+    "slug": "cleric_magic_initiate",
+    "title": { "en": "Magic Initiate (Cleric)", "ru": "Посвящённый в магию (Жрец)" },
+    "description": {
+      "en": "You learn 2 cantrips and a level 1 spell (always prepared, 1 use per day) of your choice from the Cleric spell list. Whenever you gain a new level, you can replace one of the spells you chose for this feat with a different spell of the same level from the chosen spell list.",
+      "ru": "Вы изучаете 2 заговора и 1 заклинание 1 уровня (всегда подготовлено, 1 раз в день) по вашему выбору из списка заклинаний жреца. Каждый раз, когда вы получаете новый уровень, вы можете заменить 1 из заклинаний, которое вы выбрали в этой черте, другим заклинанием того же уровня из выбранного списка заклинаний."
+    },
+    "origin": "feat",
+    "origin_value": "origin",
+    "kind": "one_from_list",
+    "options": {
+      "int": { "en": "Intelligence", "ru": "Интеллект" },
+      "wis": { "en": "Wisdom", "ru": "Мудрость" },
+      "cha": { "en": "Charisma", "ru": "Харизма" }
+    }
+  },
+  {
+    "slug": "druid_magic_initiate",
+    "title": { "en": "Magic Initiate (Druid)", "ru": "Посвящённый в магию (Друид)" },
+    "description": {
+      "en": "You learn 2 cantrips and a level 1 spell (always prepared, 1 use per day) of your choice from the Druid spell list. Whenever you gain a new level, you can replace one of the spells you chose for this feat with a different spell of the same level from the chosen spell list.",
+      "ru": "Вы изучаете 2 заговора и 1 заклинание 1 уровня (всегда подготовлено, 1 раз в день) по вашему выбору из списка заклинаний друида. Каждый раз, когда вы получаете новый уровень, вы можете заменить 1 из заклинаний, которое вы выбрали в этой черте, другим заклинанием того же уровня из выбранного списка заклинаний."
+    },
+    "origin": "feat",
+    "origin_value": "origin",
+    "kind": "one_from_list",
+    "options": {
+      "int": { "en": "Intelligence", "ru": "Интеллект" },
+      "wis": { "en": "Wisdom", "ru": "Мудрость" },
+      "cha": { "en": "Charisma", "ru": "Харизма" }
+    }
+  },
+  {
+    "slug": "wizard_magic_initiate",
+    "title": { "en": "Magic Initiate (Wizard)", "ru": "Посвящённый в магию (Волшебник)" },
+    "description": {
+      "en": "You learn 2 cantrips and a level 1 spell (always prepared, 1 use per day) of your choice from the Wizard spell list. Whenever you gain a new level, you can replace one of the spells you chose for this feat with a different spell of the same level from the chosen spell list.",
+      "ru": "Вы изучаете 2 заговора и 1 заклинание 1 уровня (всегда подготовлено, 1 раз в день) по вашему выбору из списка заклинаний волшебника. Каждый раз, когда вы получаете новый уровень, вы можете заменить 1 из заклинаний, которое вы выбрали в этой черте, другим заклинанием того же уровня из выбранного списка заклинаний."
+    },
+    "origin": "feat",
+    "origin_value": "origin",
+    "kind": "one_from_list",
+    "options": {
+      "int": { "en": "Intelligence", "ru": "Интеллект" },
+      "wis": { "en": "Wisdom", "ru": "Мудрость" },
+      "cha": { "en": "Charisma", "ru": "Харизма" }
+    }
+  },
+  {
+    "slug": "crafter",
+    "title": { "en": "Crafter", "ru": "Ремесленник" },
+    "description": {
+      "en": "Whenever you buy a non magical item, you receive a 20 percent discount on it. When you finish a Long Rest, you can craft one piece of gear from the Fast Crafting table, provided you have the Artisan's Tools associated with that item and have proficiency with those tools.",
+      "ru": "Каждый раз, когда вы покупаете немагический предмет, вы получаете на него скидку 20%. Когда вы заканчиваете продолжительный отдых, вы можете создать 1 предмет снаряжения из таблицы «Быстрое создание» с помощью инструмента, которым владеете, и который у вас есть сейчас."
+    },
+    "origin": "feat",
+    "origin_value": "origin",
+    "kind": "static"
+  }
+]

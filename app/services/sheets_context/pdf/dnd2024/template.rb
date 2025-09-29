@@ -13,7 +13,7 @@ module SheetsContext
         private
 
         def heritage(character)
-          [race(character), subrace(character)].compact.join(' / ')
+          [subrace(character) || race(character), background(character)].compact.join(' / ')
         end
 
         def classes(character)
@@ -32,6 +32,12 @@ module SheetsContext
           return unless character.legacy
 
           ::Dnd2024::Character.legacy_info(character.species, character.legacy).dig('name', I18n.locale.to_s)
+        end
+
+        def background(character)
+          return unless character.background
+
+          ::Dnd2024::Character.backgrounds.dig(character.background, 'name', I18n.locale.to_s)
         end
 
         def class_name(class_slug)

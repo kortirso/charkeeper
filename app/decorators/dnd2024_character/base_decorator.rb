@@ -9,7 +9,7 @@ module Dnd2024Character
     delegate :species, :legacy, :main_class, :classes, :subclasses, :level, :languages, :health, :abilities,
              :selected_features, :resistance, :immunity, :vulnerability, :energy, :coins, :darkvision,
              :weapon_core_skills, :weapon_skills, :armor_proficiency, :music, :spent_spell_slots,
-             :hit_dice, :spent_hit_dice, :death_saving_throws, :selected_feats, :beastform, to: :data
+             :hit_dice, :spent_hit_dice, :death_saving_throws, :selected_feats, :beastform, :background, to: :data
 
     def parent = __getobj__
     def method_missing(_method, *args); end
