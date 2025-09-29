@@ -103,59 +103,60 @@
     },
     "paladin": {
       "name": { "en": "Paladin", "ru": "Паладин" },
-      "subclasses": {}
+      "subclasses": {
+        "oath_of_devotion": { "name": { "en": "Oath of Devotion", "ru": "Клятва преданности" } },
+        "oath_of_the_ancients": { "name": { "en": "Oath of the Ancients", "ru": "Клятка древних" } },
+        "oath_of_vengeance": { "name": { "en": "Oath of Vengeance", "ru": "Клятва мести" } }
+      }
     },
     "ranger": {
       "name": { "en": "Ranger", "ru": "Следопыт" },
-      "subclasses": {}
+      "subclasses": {
+        "hunter": { "name": { "en": "Hunter", "ru": "Охотник" } },
+        "beast_master": { "name": { "en": "Beast Master", "ru": "Повелитель зверей" } }
+      }
     },
     "rogue": {
       "name": { "en": "Rogue", "ru": "Плут" },
-      "subclasses": {}
+      "subclasses": {
+        "thief": { "name": { "en": "Thief", "ru": "Вор" } },
+        "assassin": { "name": { "en": "Assassin", "ru": "Убийца" } },
+        "arcane_trickster": { "name": { "en": "Arcane Trickster", "ru": "Мистический ловкач" } }
+      }
     },
     "sorcerer": {
       "name": { "en": "Sorcerer", "ru": "Чародей" },
-      "subclasses": {}
+      "subclasses": {
+        "draconic_bloodline": { "name": { "en": "Draconic Bloodline", "ru": "Наследие драконьей крови" } },
+        "wild_magic": { "name": { "en": "Wild Magic", "ru": "Дикая магия" } }
+      }
     },
     "warlock": {
       "name": { "en": "Warlock", "ru": "Колдун" },
-      "subclasses": {}
+      "subclasses": {
+        "the_archfey": { "name": { "en": "The Archfey", "ru": "Архифея" } },
+        "the_fiend": { "name": { "en": "The Fiend", "ru": "Исчадие" } },
+        "the_great_old_one": { "name": { "en": "The Great Old One", "ru": "Великий древний" } }
+      }
     },
     "wizard": {
       "name": { "en": "Wizard", "ru": "Волшебник" },
-      "subclasses": {}
+      "subclasses": {
+        "school_of_abjuration": { "name": { "en": "School of Abjuration", "ru": "Школа ограждения" } },
+        "school_of_conjuration": { "name": { "en": "School of Conjuration", "ru": "Школа вызова" } },
+        "school_of_divination": { "name": { "en": "School of Divination", "ru": "Школа прорицания" } },
+        "school_of_enchantment": { "name": { "en": "School of Enchantment", "ru": "Школа очарования" } },
+        "school_of_evocation": { "name": { "en": "School of Evocation", "ru": "Школа воплощения" } },
+        "school_of_illusion": { "name": { "en": "School of Illusion", "ru": "Школа иллюзии" } },
+        "school_of_necromancy": { "name": { "en": "School of Necromancy", "ru": "Школа некромантии" } },
+        "school_of_transmutation": { "name": { "en": "School of Transmutation", "ru": "Школа преобразования" } }
+      }
     },
     "artificer": {
       "name": { "en": "Artificer", "ru": "Изобретатель" },
-      "subclasses": {}
+      "subclasses": {
+        "alchemist": { "name": { "en": "Alchemist", "ru": "Алхимик" } }
+      }
     }
-  },
-  "abilities": {
-    "str": { "name": { "en": "Strength", "ru": "Сила" } },
-    "dex": { "name": { "en": "Dexterity", "ru": "Ловкость" } },
-    "con": { "name": { "en": "Constitution", "ru": "Телосложение" } },
-    "int": { "name": { "en": "Intelligence", "ru": "Интеллект" } },
-    "wis": { "name": { "en": "Wisdom", "ru": "Мудрость" } },
-    "cha": { "name": { "en": "Charisma", "ru": "Харизма" } }
-  },
-  "skills": {
-    "acrobatics": { "name": { "en": "Acrobatics", "ru": "Акробатика" } },
-    "animal": { "name": { "en": "Animal", "ru": "Уход за животными" } },
-    "arcana": { "name": { "en": "Arcana", "ru": "Магия" } },
-    "athletics": { "name": { "en": "Athletics", "ru": "Атлетика" } },
-    "deception": { "name": { "en": "Deception", "ru": "Обмен" } },
-    "history": { "name": { "en": "History", "ru": "История" } },
-    "insight": { "name": { "en": "Insight", "ru": "Проницательность" } },
-    "intimidation": { "name": { "en": "Intimidation", "ru": "Запугивание" } },
-    "investigation": { "name": { "en": "Investigation", "ru": "Анализ" } },
-    "medicine": { "name": { "en": "Medicine", "ru": "Медицина" } },
-    "nature": { "name": { "en": "Nature", "ru": "Природа" } },
-    "perception": { "name": { "en": "Perception", "ru": "Внимательность" } },
-    "performance": { "name": { "en": "Performance", "ru": "Выступление" } },
-    "persuasion": { "name": { "en": "Persuasion", "ru": "Убеждение" } },
-    "religion": { "name": { "en": "Religion", "ru": "Религия" } },
-    "sleight": { "name": { "en": "Sleight of Hands", "ru": "Ловкость рук" } },
-    "stealth": { "name": { "en": "Stealth", "ru": "Скрытность" } },
-    "survival": { "name": { "en": "Survival", "ru": "Выживание" } }
   }
 }

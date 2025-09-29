@@ -8,6 +8,7 @@ import { Plus } from '../../assets';
 import pathfinder2Config from '../../data/pathfinder2.json';
 import daggerheartConfig from '../../data/daggerheart.json';
 import dnd2024Config from '../../data/dnd2024.json';
+import dnd5Config from '../../data/dnd5.json';
 import { useAppState, useAppLocale, useAppAlert } from '../../context';
 import { fetchCharactersRequest } from '../../requests/fetchCharactersRequest';
 import { fetchCharacterRequest } from '../../requests/fetchCharacterRequest';
@@ -353,23 +354,25 @@ export const CharactersTab = () => {
                     <Select
                       containerClassList="mb-2"
                       labelText={t('newCharacterPage.dnd5.race')}
-                      items={dict().dnd5.races}
+                      items={translate(dnd5Config.races, locale())}
                       selectedValue={characterDnd5Form.race}
                       onSelect={(value) => setCharacterDnd5Form({ ...characterDnd5Form, race: value, subrace: undefined })}
                     />
-                    <Show when={dict().dnd5.subraces[characterDnd5Form.race]}>
-                      <Select
-                        containerClassList="mb-2"
-                        labelText={t('newCharacterPage.dnd5.subrace')}
-                        items={dict().dnd5.subraces[characterDnd5Form.race]}
-                        selectedValue={characterDnd5Form.subrace}
-                        onSelect={(value) => setCharacterDnd5Form({ ...characterDnd5Form, subrace: value })}
-                      />
+                    <Show when={characterDnd5Form.race !== undefined}>
+                      <Show when={Object.keys(dnd5Config.races[characterDnd5Form.race].subraces).length > 0}>
+                        <Select
+                          containerClassList="mb-2"
+                          labelText={t('newCharacterPage.dnd5.subrace')}
+                          items={translate(dnd5Config.races[characterDnd5Form.race].subraces, locale())}
+                          selectedValue={characterDnd5Form.subrace}
+                          onSelect={(value) => setCharacterDnd5Form({ ...characterDnd5Form, subrace: value })}
+                        />
+                      </Show>
                     </Show>
                     <Select
                       containerClassList="mb-2"
                       labelText={t('newCharacterPage.dnd5.mainClass')}
-                      items={dict().dnd5.classes}
+                      items={translate(dnd5Config.classes, locale())}
                       selectedValue={characterDnd5Form.main_class}
                       onSelect={(value) => setCharacterDnd5Form({ ...characterDnd5Form, main_class: value })}
                     />

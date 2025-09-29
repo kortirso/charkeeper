@@ -37,7 +37,7 @@
 0;produce_flame;Produce Flame;Сотворение пламени;conjuration;PHB;druid
 0;mind_sliver;Mind Sliver;Расщепление разума;enchantment;TCoE;wizard,warlock,sorcerer
 0;lightning_lure;Lightning Lure;Лассо молнии;evocation;TCoE;wizard,warlock,sorcerer,artificer
-0;green_flame_blade;Green Flame Blade;Клинок зелёного пламени;evocation;TCoE;wizard,warlock,sorcerer-artificer
+0;green_flame_blade;Green Flame Blade;Клинок зелёного пламени;evocation;TCoE;wizard,warlock,sorcerer,artificer
 0;booming_blade;Booming Blade;Громовой клинок;evocation;TCoE;wizard,warlock,sorcerer,artificer
 0;druidcraft;Druidcraft;Искусство друидов;transmutation;PHB;druid
 0;word_of_radiance;Word of Radiance;Слово Сияния;evocation;XGTE;cleric

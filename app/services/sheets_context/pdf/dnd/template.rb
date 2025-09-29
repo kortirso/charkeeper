@@ -9,18 +9,16 @@ module SheetsContext
           super
 
           abilities_names = ::Dnd2024::Character.abilities
-          font Rails.root.join('app/assets/fonts/Roboto-Regular.ttf') do
-            font_size 6
-            fill_color 'FFFFFF'
-            %w[str dex con int wis cha].each_with_index do |item, index|
-              ability_name = abilities_names[item].dig('name', I18n.locale.to_s)
-              text_box ability_name, at: [233 + (55 * index), 735], width: 43, align: :center
-            end
-
-            text_box I18n.t('services.sheets_context.dnd.armor_class'), at: [48, 699], width: 43, align: :center
-            text_box I18n.t('services.sheets_context.dnd.initiative'), at: [101, 699], width: 43, align: :center
-            text_box I18n.t('services.sheets_context.dnd.speed'), at: [154, 699], width: 43, align: :center
+          font_size 6
+          fill_color 'FFFFFF'
+          %w[str dex con int wis cha].each_with_index do |item, index|
+            ability_name = abilities_names[item].dig('name', I18n.locale.to_s)
+            text_box ability_name, at: [233 + (55 * index), 736], width: 43, align: :center
           end
+
+          text_box I18n.t('services.sheets_context.dnd.armor_class'), at: [48, 700], width: 43, align: :center
+          text_box I18n.t('services.sheets_context.dnd.initiative'), at: [101, 700], width: 43, align: :center
+          text_box I18n.t('services.sheets_context.dnd.speed'), at: [154, 700], width: 43, align: :center
 
           fill_color '000000'
           %w[str dex con int wis cha].each_with_index do |item, index|
@@ -53,31 +51,29 @@ module SheetsContext
           text_box "#{character.hit_dice['10'] - character.spent_hit_dice['10'].to_i} / #{character.hit_dice['10']}", at: [100, 546], width: 40
           text_box "#{character.hit_dice['12'] - character.spent_hit_dice['12'].to_i} / #{character.hit_dice['12']}", at: [100, 531], width: 40
 
-          font Rails.root.join('app/assets/fonts/Roboto-Regular.ttf') do
-            font_size 10
-            fill_color '000000'
+          font_size 10
+          fill_color '000000'
 
-            skills_names = ::Dnd2024::Character.skills
-            character.skills.map { |skill|
-              skill[:name] = skills_names[skill[:slug]].dig('name', I18n.locale.to_s)
-              skill
-            }.sort_by { |item| item[:name] }.each_with_index do |skill, index| # rubocop: disable Style/MultilineBlockChain
-              text_box skill[:name], at: [52, 465 - (index * 20)], width: 140
-              text_box "#{'+' if skill[:modifier].positive?}#{skill[:modifier]}", at: [200, 465 - (index * 20)], width: 38, align: :center
-            end
-
-            text_box I18n.t('services.sheets_context.dnd.health'), at: [70, 656], width: 150, align: :center
-            text_box I18n.t('services.sheets_context.dnd.skills'), at: [70, 491], width: 150, align: :center
-
-            font_size 6
-            text_box I18n.t('services.sheets_context.dnd.current_health').upcase, at: [30, 600], width: 70, align: :center
-            text_box I18n.t('services.sheets_context.dnd.max_health').upcase, at: [110, 600], width: 70, align: :center
-            text_box I18n.t('services.sheets_context.dnd.temp_health').upcase, at: [190, 600], width: 70, align: :center
-
-            font_size 8
-            text_box I18n.t('services.sheets_context.dnd.success'), at: [168, 575], width: 40
-            text_box I18n.t('services.sheets_context.dnd.failure'), at: [168, 560], width: 40
+          skills_names = ::Dnd2024::Character.skills
+          character.skills.map { |skill|
+            skill[:name] = skills_names[skill[:slug]].dig('name', I18n.locale.to_s)
+            skill
+          }.sort_by { |item| item[:name] }.each_with_index do |skill, index| # rubocop: disable Style/MultilineBlockChain
+            text_box skill[:name], at: [52, 467 - (index * 20)], width: 140
+            text_box "#{'+' if skill[:modifier].positive?}#{skill[:modifier]}", at: [200, 467 - (index * 20)], width: 38, align: :center
           end
+
+          text_box I18n.t('services.sheets_context.dnd.health'), at: [70, 659], width: 150, align: :center
+          text_box I18n.t('services.sheets_context.dnd.skills'), at: [70, 494], width: 150, align: :center
+
+          font_size 6
+          text_box I18n.t('services.sheets_context.dnd.current_health').upcase, at: [30, 600], width: 70, align: :center
+          text_box I18n.t('services.sheets_context.dnd.max_health').upcase, at: [110, 600], width: 70, align: :center
+          text_box I18n.t('services.sheets_context.dnd.temp_health').upcase, at: [190, 600], width: 70, align: :center
+
+          font_size 8
+          text_box I18n.t('services.sheets_context.dnd.success'), at: [168, 576], width: 40
+          text_box I18n.t('services.sheets_context.dnd.failure'), at: [168, 561], width: 40
 
           fill_color 'C6515C'
           character.death_saving_throws['success'].times do |index|

@@ -81,7 +81,7 @@ module CharactersContext
           next if value.nil?
 
           # добавить проверку, что main_class присутствует в списке классов
-          key.failure(:invalid_class_name) unless value.keys.all? { |item| item.in?(::Dnd5::Character::CLASSES) }
+          key.failure(:invalid_class_name) unless value.keys.all? { |item| item.in?(::Dnd5::Character.classes_info.keys) }
           key.failure(:invalid_level) unless value.values.all? { |item| item.to_i.between?(1, 20) }
         end
 
@@ -97,8 +97,8 @@ module CharactersContext
           next if value.nil?
 
           # добавить проверку, что подкласс еще не установлен
-          key.failure(:invalid_class_name) unless value.keys.all? { |item| item.in?(::Dnd5::Character::CLASSES) }
-          unless value.all? { |class_name, sub| sub.nil? || ::Dnd5::Character::SUBCLASSES[class_name].include?(sub) }
+          key.failure(:invalid_class_name) unless value.keys.all? { |item| item.in?(::Dnd5::Character.classes_info.keys) }
+          unless value.all? { |class_name, sub| sub.nil? || ::Dnd5::Character.subclasses_info(class_name).key?(sub) }
             key.failure(:invalid_subclass)
           end
         end

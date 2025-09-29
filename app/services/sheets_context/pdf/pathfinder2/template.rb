@@ -9,18 +9,16 @@ module SheetsContext
           super
 
           abilities_names = ::Pathfinder2::Character.abilities
-          font Rails.root.join('app/assets/fonts/Roboto-Regular.ttf') do
-            font_size 6
-            fill_color 'FFFFFF'
-            %w[str dex con int wis cha].each_with_index do |item, index|
-              ability_name = abilities_names[item].dig('name', I18n.locale.to_s)
-              text_box ability_name, at: [233 + (55 * index), 735], width: 43, align: :center
-            end
-
-            text_box I18n.t('services.sheets_context.pathfinder.armor_class'), at: [48, 699], width: 43, align: :center
-            text_box I18n.t('services.sheets_context.pathfinder.perception'), at: [101, 699], width: 43, align: :center
-            text_box I18n.t('services.sheets_context.pathfinder.speed'), at: [154, 699], width: 43, align: :center
+          font_size 6
+          fill_color 'FFFFFF'
+          %w[str dex con int wis cha].each_with_index do |item, index|
+            ability_name = abilities_names[item].dig('name', I18n.locale.to_s)
+            text_box ability_name, at: [233 + (55 * index), 736], width: 43, align: :center
           end
+
+          text_box I18n.t('services.sheets_context.pathfinder.armor_class'), at: [48, 700], width: 43, align: :center
+          text_box I18n.t('services.sheets_context.pathfinder.perception'), at: [101, 700], width: 43, align: :center
+          text_box I18n.t('services.sheets_context.pathfinder.speed'), at: [154, 700], width: 43, align: :center
 
           font_size 12
           fill_color '000000'
@@ -38,27 +36,25 @@ module SheetsContext
           text_box character.health['max'].to_s, at: [110, 624], width: 70, align: :center
           text_box character.health['temp'].to_s, at: [190, 624], width: 70, align: :center
 
-          font Rails.root.join('app/assets/fonts/Roboto-Regular.ttf') do
-            font_size 10
-            fill_color '000000'
+          font_size 10
+          fill_color '000000'
 
-            skills_names = ::Pathfinder2::Character.skills
-            character.skills.map { |skill|
-              skill[:name] = skill[:name] || skills_names[skill[:slug]].dig('name', I18n.locale.to_s)
-              skill
-            }.sort_by { |item| item[:name] }.each_with_index do |skill, index| # rubocop: disable Style/MultilineBlockChain
-              text_box skill[:name], at: [52, 509 - (index * 20)], width: 140
-              text_box "#{'+' if skill[:modifier].positive?}#{skill[:modifier]}", at: [200, 509 - (index * 20)], width: 38, align: :center
-            end
-
-            text_box I18n.t('services.sheets_context.dnd.health'), at: [70, 656], width: 150, align: :center
-            text_box I18n.t('services.sheets_context.dnd.skills'), at: [70, 535], width: 150, align: :center
-
-            font_size 6
-            text_box I18n.t('services.sheets_context.dnd.current_health').upcase, at: [30, 600], width: 70, align: :center
-            text_box I18n.t('services.sheets_context.dnd.max_health').upcase, at: [110, 600], width: 70, align: :center
-            text_box I18n.t('services.sheets_context.dnd.temp_health').upcase, at: [190, 600], width: 70, align: :center
+          skills_names = ::Pathfinder2::Character.skills
+          character.skills.map { |skill|
+            skill[:name] = skill[:name] || skills_names[skill[:slug]].dig('name', I18n.locale.to_s)
+            skill
+          }.sort_by { |item| item[:name] }.each_with_index do |skill, index| # rubocop: disable Style/MultilineBlockChain
+            text_box skill[:name], at: [52, 511 - (index * 20)], width: 140
+            text_box "#{'+' if skill[:modifier].positive?}#{skill[:modifier]}", at: [200, 511 - (index * 20)], width: 38, align: :center
           end
+
+          text_box I18n.t('services.sheets_context.dnd.health'), at: [70, 659], width: 150, align: :center
+          text_box I18n.t('services.sheets_context.dnd.skills'), at: [70, 538], width: 150, align: :center
+
+          font_size 6
+          text_box I18n.t('services.sheets_context.dnd.current_health').upcase, at: [30, 600], width: 70, align: :center
+          text_box I18n.t('services.sheets_context.dnd.max_health').upcase, at: [110, 600], width: 70, align: :center
+          text_box I18n.t('services.sheets_context.dnd.temp_health').upcase, at: [190, 600], width: 70, align: :center
 
           render
         end

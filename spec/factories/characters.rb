@@ -7,9 +7,9 @@ FactoryBot.define do
     data {
       {
         level: 4,
-        race: Dnd5::Character::HUMAN,
+        race: 'human',
         alignment: Dnd5::Character::NEUTRAL,
-        main_class: Dnd5::Character::MONK,
+        main_class: 'monk',
         classes: { monk: 4 },
         subclasses: { monk: nil },
         abilities: { str: 13, dex: 16, con: 14, int: 11, wis: 16, cha: 10 },
@@ -23,9 +23,9 @@ FactoryBot.define do
       data {
         {
           level: 4,
-          race: Dnd5::Character::HUMAN,
+          race: 'human',
           alignment: Dnd5::Character::NEUTRAL,
-          main_class: Dnd5::Character::BARD,
+          main_class: 'bard',
           classes: { bard: 4 },
           subclasses: { bard: nil },
           abilities: { str: 13, dex: 16, con: 14, int: 11, wis: 16, cha: 10 },

@@ -1,8 +1,9 @@
-import { createSignal, createEffect, For, Show, batch, Switch, Match } from 'solid-js';
+import { createSignal, createEffect, For, Show, batch } from 'solid-js';
 import * as i18n from '@solid-primitives/i18n';
 
 import { ErrorWrapper, Select, Checkbox, Button } from '../../../../components';
 import dnd2024Config from '../../../../data/dnd2024.json';
+import dnd5Config from '../../../../data/dnd5.json';
 import { useAppState, useAppLocale, useAppAlert } from '../../../../context';
 import { PlusSmall, Minus } from '../../../../assets';
 import { updateCharacterRequest } from '../../../../requests/updateCharacterRequest';
@@ -10,6 +11,7 @@ import { translate } from '../../../../helpers';
 
 export const Dnd5ClassLevels = (props) => {
   const character = () => props.character;
+  const currentConfig = () => character().provider === 'dnd5' ? dnd5Config : dnd2024Config;
 
   // changeable data
   const [lastActiveCharacterId, setLastActiveCharacterId] = createSignal(undefined);
@@ -32,13 +34,7 @@ export const Dnd5ClassLevels = (props) => {
     });
   });
 
-  const classes = () => {
-    if (character().provider === 'dnd2024') return translate(dnd2024Config.classes, locale());
-
-    return Object.fromEntries(Object.entries(dict().dnd5.classes).filter(([slug,]) => slug !== 'static'));
-  }
-
-  const subclasses = () => character().provider === 'dnd5' ? dict().dnd5.subclasses : {};
+  const classes = () => translate(currentConfig().classes, locale());
 
   // actions
   /* eslint-disable solid/reactivity */
@@ -93,14 +89,7 @@ export const Dnd5ClassLevels = (props) => {
     <ErrorWrapper payload={{ character_id: character().id, key: 'Dnd5ClassLevels' }}>
       <div class="blockable p-4 flex flex-col">
         <div class="mb-1">
-          <Show
-            when={character().provider === 'dnd5'}
-            fallback={
-              <p class="dark:text-snow">{character().subclasses[character().main_class] ? `${classes()[character().main_class]} - ${translate(dnd2024Config.classes[character().main_class].subclasses, locale())[character().subclasses[character().main_class]]}` : classes()[character().main_class]}</p>
-            }
-          >
-            <p class="dark:text-snow">{character().subclasses[character().main_class] ? `${classes()[character().main_class]} - ${subclasses()[character().main_class][character().subclasses[character().main_class]]}` : classes()[character().main_class]}</p>
-          </Show>
+          <p class="dark:text-snow">{character().subclasses[character().main_class] ? `${classes()[character().main_class]} - ${translate(currentConfig().classes[character().main_class].subclasses, locale())[character().subclasses[character().main_class]]}` : classes()[character().main_class]}</p>
           <div class="my-2 flex items-center">
             <div class="flex justify-between items-center mr-4 w-24">
               <Button default size="small" onClick={() => changeClassLevel(character().main_class, 'down')}>
@@ -112,60 +101,30 @@ export const Dnd5ClassLevels = (props) => {
               </Button>
             </div>
             <div class="flex-1">
-              <Switch>
-                <Match when={character().provider === 'dnd5'}>
-                  <Show
-                    when={subclasses()[character().main_class] !== undefined && !character().subclasses[character().main_class]}
-                    fallback={<></>}
-                  >
-                    <Select
-                      containerClassList="w-full"
-                      items={subclasses()[character().main_class]}
-                      selectedValue={subclassesData()[character().main_class]}
-                      onSelect={(value) => setSubclassesData({ ...subclassesData(), [character().main_class]: value })}
-                    />
-                  </Show>
-                </Match>
-                <Match when={character().provider === 'dnd2024'}>
-                  <Show
-                    when={Object.keys(dnd2024Config.classes[character().main_class].subclasses).length > 0 && !character().subclasses[character().main_class]}
-                    fallback={<></>}
-                  >
-                    <Select
-                      containerClassList="w-full"
-                      items={translate(dnd2024Config.classes[character().main_class].subclasses, locale())}
-                      selectedValue={subclassesData()[character().main_class]}
-                      onSelect={(value) => setSubclassesData({ ...subclassesData(), [character().main_class]: value })}
-                    />
-                  </Show>
-                </Match>
-              </Switch>
+              <Show
+                when={Object.keys(currentConfig().classes[character().main_class].subclasses).length > 0 && !character().subclasses[character().main_class]}
+                fallback={<></>}
+              >
+                <Select
+                  containerClassList="w-full"
+                  items={translate(currentConfig().classes[character().main_class].subclasses, locale())}
+                  selectedValue={subclassesData()[character().main_class]}
+                  onSelect={(value) => setSubclassesData({ ...subclassesData(), [character().main_class]: value })}
+                />
+              </Show>
             </div>
           </div>
         </div>
         <For each={Object.entries(classes()).filter((item) => item[0] !== character().main_class).sort((a,) => !Object.keys(classesData()).includes(a[0]))}>
           {([slug, className]) =>
             <div class="mb-1">
-              <Switch>
-                <Match when={character().provider === 'dnd5'}>
-                  <Checkbox
-                    labelText={character().subclasses[slug] ? `${className} - ${subclasses()[slug][character().subclasses[slug]]}` : className}
-                    labelPosition="right"
-                    labelClassList="ml-4"
-                    checked={classesData()[slug]}
-                    onToggle={() => toggleClass(slug)}
-                  />
-                </Match>
-                <Match when={character().provider === 'dnd2024'}>
-                  <Checkbox
-                    labelText={character().subclasses[slug] ? `${className} - ${translate(dnd2024Config.classes[slug].subclasses, locale())[character().subclasses[slug]]}` : className}
-                    labelPosition="right"
-                    labelClassList="ml-4"
-                    checked={classesData()[slug]}
-                    onToggle={() => toggleClass(slug)}
-                  />
-                </Match>
-              </Switch>
+              <Checkbox
+                labelText={character().subclasses[slug] ? `${className} - ${translate(currentConfig().classes[slug].subclasses, locale())[character().subclasses[slug]]}` : className}
+                labelPosition="right"
+                labelClassList="ml-4"
+                checked={classesData()[slug]}
+                onToggle={() => toggleClass(slug)}
+              />
               <Show when={classesData()[slug]}>
                 <>
                   <div class="my-2 flex items-center">
@@ -179,34 +138,17 @@ export const Dnd5ClassLevels = (props) => {
                       </Button>
                     </div>
                     <div class="flex-1">
-                      <Switch>
-                        <Match when={character().provider === 'dnd5'}>
-                          <Show
-                            when={subclasses()[slug] !== undefined && !character().subclasses[slug]}
-                            fallback={<></>}
-                          >
-                            <Select
-                              containerClassList="w-full"
-                              items={subclasses()[slug]}
-                              selectedValue={subclassesData()[slug]}
-                              onSelect={(value) => setSubclassesData({ ...subclassesData(), [slug]: value })}
-                            />
-                          </Show>
-                        </Match>
-                        <Match when={character().provider === 'dnd2024'}>
-                          <Show
-                            when={Object.keys(dnd2024Config.classes[slug].subclasses).length > 0 && !character().subclasses[slug]}
-                            fallback={<></>}
-                          >
-                            <Select
-                              containerClassList="w-full"
-                              items={translate(dnd2024Config.classes[slug].subclasses, locale())}
-                              selectedValue={subclassesData()[slug]}
-                              onSelect={(value) => setSubclassesData({ ...subclassesData(), [slug]: value })}
-                            />
-                          </Show>
-                        </Match>
-                      </Switch>
+                      <Show
+                        when={Object.keys(currentConfig().classes[slug].subclasses).length > 0 && !character().subclasses[slug]}
+                        fallback={<></>}
+                      >
+                        <Select
+                          containerClassList="w-full"
+                          items={translate(currentConfig().classes[slug].subclasses, locale())}
+                          selectedValue={subclassesData()[slug]}
+                          onSelect={(value) => setSubclassesData({ ...subclassesData(), [slug]: value })}
+                        />
+                      </Show>
                     </div>
                   </div>
                 </>

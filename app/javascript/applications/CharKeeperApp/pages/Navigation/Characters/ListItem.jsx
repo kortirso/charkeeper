@@ -5,6 +5,7 @@ import { IconButton } from '../../../components';
 import { Dots, Avatar } from '../../../assets';
 import pathfinder2Config from '../../../data/pathfinder2.json';
 import dnd2024Config from '../../../data/dnd2024.json';
+import dnd5Config from '../../../data/dnd5.json';
 import { useAppLocale, useAppAlert } from '../../../context';
 import { clickOutside, copyToClipboard } from '../../../helpers';
 
@@ -48,7 +49,7 @@ export const CharactersListItem = (props) => {
 
   const firstText = createMemo(() => {
     if (character().provider === 'dnd5') {
-      return `${t('charactersPage.level')} ${character().level} | ${character().subrace ? t(`dnd5.subraces.${character().race}.${character().subrace}`) : t(`dnd5.races.${character().race}`)}`;
+      return `${t('charactersPage.level')} ${character().level} | ${character().legacy ? dnd5Config.races[character().race].subraces[character().subrace].name[locale()] : dnd5Config.races[character().race].name[locale()]}`;
     }
     if (character().provider === 'dnd2024') {
       return `${t('charactersPage.level')} ${character().level} | ${character().legacy ? dnd2024Config.species[character().species].legacies[character().legacy].name[locale()] : dnd2024Config.species[character().species].name[locale()]}`;
@@ -63,7 +64,7 @@ export const CharactersListItem = (props) => {
 
   const secondText = createMemo(() => {
     if (character().provider === 'dnd5') {
-      return Object.keys(character().classes).map((item) => t(`dnd5.classes.${item}`)).join(' * ');
+      return Object.keys(character().classes).map((item) => dnd5Config.classes[item].name[locale()]).join(' * ');
     }
     if (character().provider === 'dnd2024') {
       return Object.keys(character().classes).map((item) => dnd2024Config.classes[item].name[locale()]).join(' * ');

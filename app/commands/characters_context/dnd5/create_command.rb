@@ -10,8 +10,8 @@ module CharactersContext
       use_contract do
         config.messages.namespace = :dnd5_character
 
-        Races = Dry::Types['strict.string'].enum(*::Dnd5::Character::RACES)
-        Classes = Dry::Types['strict.string'].enum(*::Dnd5::Character::CLASSES)
+        Races = Dry::Types['strict.string'].enum(*::Dnd5::Character.races.keys)
+        Classes = Dry::Types['strict.string'].enum(*::Dnd5::Character.classes_info.keys)
         Alignments = Dry::Types['strict.string'].enum(*::Dnd5::Character::ALIGNMENTS)
 
         params do
@@ -33,7 +33,7 @@ module CharactersContext
         rule(:race, :subrace) do
           next if values[:subrace].nil?
 
-          subraces = ::Dnd5::Character::SUBRACES[values[:race]]
+          subraces = ::Dnd5::Character.subraces_info(values[:race]).keys
           next if subraces&.include?(values[:subrace])
 
           key(:subrace).failure(:invalid)

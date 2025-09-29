@@ -4,6 +4,7 @@ import * as i18n from '@solid-primitives/i18n';
 import { SpellsTable } from './SpellsTable';
 import { StaticSpellsTable } from './StaticSpellsTable';
 import { StatsBlock, ErrorWrapper, Button, Toggle, Checkbox, Select } from '../../../../components';
+import config from '../../../../data/dnd2024.json';
 import { useAppState, useAppLocale } from '../../../../context';
 import { Plus, Minus } from '../../../../assets';
 import { fetchSpellsRequest } from '../../../../requests/fetchSpellsRequest';
@@ -34,7 +35,7 @@ export const Dnd5Spells = (props) => {
   const [preparedSpellFilter, setPreparedSpellFilter] = createSignal(true);
 
   const [appState] = useAppState();
-  const [, dict] = useAppLocale();
+  const [locale, dict] = useAppLocale();
 
   const t = i18n.translator(dict);
 
@@ -78,6 +79,7 @@ export const Dnd5Spells = (props) => {
   });
 
   const filteredSpellsList = createMemo(() => {
+    if (spells() === undefined) return [];
     if (lastActiveCharacterId() !== character().id) return [];
     if (spellClassesList().length === 0) return [];
 
@@ -95,6 +97,7 @@ export const Dnd5Spells = (props) => {
   const filteredCharacterSpells = createMemo(() => {
     if (lastActiveCharacterId() !== character().id) return [];
     if (spellClassesList().length === 0) return [];
+    if (characterSpells() === undefined) return [];
 
     return characterSpells().filter((item) => {
       if (item.prepared_by !== activeSpellClass()) return false;
@@ -107,6 +110,7 @@ export const Dnd5Spells = (props) => {
   const knownSpellIds = createMemo(() => {
     if (lastActiveCharacterId() !== character().id) return [];
     if (spellClassesList().length === 0) return [];
+    if (characterSpells() === undefined) return [];
 
     return characterSpells().map(({ spell_id }) => spell_id);
   });
@@ -204,7 +208,7 @@ export const Dnd5Spells = (props) => {
               <Show when={spellClassesList().length > 1}>
                 <Select
                   classList="w-40"
-                  items={spellClassesList().reduce((acc, item) => { acc[item] = t(`dnd5.classes.${item}`); return acc; }, {})}
+                  items={spellClassesList().reduce((acc, item) => { acc[item] = config.classes[item]['name'][locale()]; return acc; }, {})}
                   selectedValue={activeSpellClass()}
                   onSelect={(value) => setActiveSpellClass(value)}
                 />
@@ -225,13 +229,13 @@ export const Dnd5Spells = (props) => {
                                 fallback={
                                   <Show when={knownSpellIds().includes(spell.id)}>
                                     <p class="text-xs mt-1">
-                                      {t(`dnd5.classes.${characterSpells().find((item) => item.spell_id === spell.id).prepared_by}`)}
+                                      {config.classes[characterSpells().find((item) => item.spell_id === spell.id).prepared_by]['name'][locale()]}
                                     </p>
                                   </Show>
                                 }
                               >
                                 <p class="text-xs text-wrap">
-                                  {spell.available_for.map((item) => dict().dnd5.classes[item]).join(' * ')}
+                                  {spell.available_for.map((item) => config.classes[item]['name'][locale()]).join(' * ')}
                                 </p>
                               </Show>
                             </td>
@@ -281,7 +285,7 @@ export const Dnd5Spells = (props) => {
               <Show when={spellClassesList().length > 1}>
                 <Select
                   classList="w-52"
-                  items={spellClassesList().reduce((acc, item) => { acc[item] = t(`dnd5.classes.${item}`); return acc; }, {})}
+                  items={spellClassesList().reduce((acc, item) => { acc[item] = (item === 'static' ? { 'en': 'Static', 'ru': 'Врожденные' }[locale()] : config.classes[item]['name'][locale()]); return acc; }, {})}
                   selectedValue={activeSpellClass()}
                   onSelect={(value) => setActiveSpellClass(value)}
                 />

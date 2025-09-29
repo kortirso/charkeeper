@@ -9,18 +9,16 @@ module SheetsContext
           super
 
           traits_names = ::Daggerheart::Character.traits
-          font Rails.root.join('app/assets/fonts/Roboto-Regular.ttf') do
-            font_size 6
-            fill_color 'FFFFFF'
-            %w[agi str fin ins pre know].each_with_index do |item, index|
-              trait_name = traits_names[item].dig('name', I18n.locale.to_s)
-              text_box trait_name, at: [233 + (55 * index), 735], width: 43, align: :center
-            end
-
-            text_box I18n.t('services.sheets_context.daggerheart.proficiency'), at: [48, 699], width: 43, align: :center
-            text_box I18n.t('services.sheets_context.daggerheart.evasion'), at: [101, 699], width: 43, align: :center
-            text_box I18n.t('services.sheets_context.daggerheart.armor_score'), at: [154, 699], width: 43, align: :center
+          font_size 6
+          fill_color 'FFFFFF'
+          %w[agi str fin ins pre know].each_with_index do |item, index|
+            trait_name = traits_names[item].dig('name', I18n.locale.to_s)
+            text_box trait_name, at: [233 + (55 * index), 736], width: 43, align: :center
           end
+
+          text_box I18n.t('services.sheets_context.daggerheart.proficiency'), at: [48, 700], width: 43, align: :center
+          text_box I18n.t('services.sheets_context.daggerheart.evasion'), at: [101, 700], width: 43, align: :center
+          text_box I18n.t('services.sheets_context.daggerheart.armor_score'), at: [154, 700], width: 43, align: :center
 
           font_size 12
           fill_color '000000'
@@ -57,26 +55,24 @@ module SheetsContext
             fill_and_stroke_rounded_rectangle [104 + (index * 13), 533], 11, 11, 1
           end
 
-          font Rails.root.join('app/assets/fonts/Roboto-Regular.ttf') do
-            font_size 10
-            fill_color '000000'
-            character.experience.sort_by { |item| -item['exp_level'] }.first(10).each_with_index do |experience, index|
-              text_box experience['exp_name'], at: [52, 465 - (index * 20)], width: 140
-              text_box "+#{experience['exp_level']}", at: [200, 465 - (index * 20)], width: 38, align: :center
-            end
-
-            text_box I18n.t('services.sheets_context.daggerheart.health'), at: [70, 656], width: 150, align: :center
-            text_box I18n.t('services.sheets_context.daggerheart.experience'), at: [70, 491], width: 150, align: :center
-
-            text_box I18n.t('services.sheets_context.daggerheart.armor_slots'), at: [32, 576], width: 150
-            text_box I18n.t('services.sheets_context.daggerheart.hp'), at: [32, 561], width: 150
-            text_box I18n.t('services.sheets_context.daggerheart.stress'), at: [32, 546], width: 150
-            text_box I18n.t('services.sheets_context.daggerheart.hope'), at: [32, 531], width: 150
-
-            text_box I18n.t('services.sheets_context.daggerheart.minor'), at: [20, 619], width: 60, align: :center
-            text_box I18n.t('services.sheets_context.daggerheart.major'), at: [115, 619], width: 60, align: :center
-            text_box I18n.t('services.sheets_context.daggerheart.severe'), at: [210, 619], width: 60, align: :center
+          font_size 10
+          fill_color '000000'
+          character.experience.sort_by { |item| -item['exp_level'] }.first(10).each_with_index do |experience, index|
+            text_box experience['exp_name'], at: [52, 467 - (index * 20)], width: 140
+            text_box "+#{experience['exp_level']}", at: [200, 467 - (index * 20)], width: 38, align: :center
           end
+
+          text_box I18n.t('services.sheets_context.daggerheart.health'), at: [70, 659], width: 150, align: :center
+          text_box I18n.t('services.sheets_context.daggerheart.experience'), at: [70, 494], width: 150, align: :center
+
+          text_box I18n.t('services.sheets_context.daggerheart.armor_slots'), at: [32, 578], width: 150
+          text_box I18n.t('services.sheets_context.daggerheart.hp'), at: [32, 563], width: 150
+          text_box I18n.t('services.sheets_context.daggerheart.stress'), at: [32, 548], width: 150
+          text_box I18n.t('services.sheets_context.daggerheart.hope'), at: [32, 533], width: 150
+
+          text_box I18n.t('services.sheets_context.daggerheart.minor'), at: [20, 621], width: 60, align: :center
+          text_box I18n.t('services.sheets_context.daggerheart.major'), at: [115, 621], width: 60, align: :center
+          text_box I18n.t('services.sheets_context.daggerheart.severe'), at: [210, 621], width: 60, align: :center
 
           render
         end
