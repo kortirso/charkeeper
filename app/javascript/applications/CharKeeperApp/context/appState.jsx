@@ -29,10 +29,10 @@ export const AppStateProvider = (props) => {
     bodyElement.style.paddingBottom = `${result.adjustedInsetBottom}px`;
   }
 
-  createEffect(() => {
+  createEffect(async () => {
     if (appState.accessToken !== undefined) return;
 
-    const stateValue = readFromCache(CHARKEEPER_ACCESS_TOKEN);
+    const stateValue = await readFromCache(CHARKEEPER_ACCESS_TOKEN);
     if (stateValue === null || stateValue === undefined) {
       return setAppState({ ...appState, initialized: true });
     }

@@ -38,7 +38,7 @@ export const PasswordsTab = (props) => {
           <p>{t('pages.settingsPage.changePassword')}</p>
         </PageHeader>
       </Show>
-      <div class="p-4 flex-1 flex flex-col overflow-y-scroll">
+      <div class="p-4 flex-1 flex flex-col overflow-y-auto">
         <Input
           password
           containerClassList="mb-2"

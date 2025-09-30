@@ -33,7 +33,7 @@ export const Pathfinder2 = (props) => {
           activeTab={activeMobileTab()}
           setActiveTab={setActiveMobileTab}
         />
-        <div class="p-2 flex-1 overflow-y-scroll">
+        <div class="p-2 flex-1 overflow-y-auto">
           <Switch>
             <Match when={activeMobileTab() === 'abilities'}>
               <Pathfinder2Abilities character={character()} onReplaceCharacter={props.onReplaceCharacter} />

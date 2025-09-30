@@ -28,7 +28,7 @@ export const HomebrewModules = (props) => {
   });
 
   return (
-    <div class="p-2 flex-1 overflow-y-scroll">
+    <div class="p-2 flex-1 overflow-y-auto">
       <p class="mb-2 dark:text-snow">{t('pages.homebrewPage.modulesHelp')}</p>
       <Show when={books() !== undefined}>
         <For each={books()}>

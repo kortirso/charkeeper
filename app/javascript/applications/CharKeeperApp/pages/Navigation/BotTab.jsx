@@ -30,7 +30,7 @@ export const BotTab = () => {
         {t('pages.botPage.title')}
       </PageHeader>
       <div class="p-4 flex-1 flex flex-col overflow-hidden">
-        <div class="flex-1 flex flex-col-reverse overflow-y-scroll mb-4">
+        <div class="flex-1 flex flex-col-reverse overflow-y-auto mb-4">
           <For each={history()}>
             {(item) =>
               <Show

@@ -49,7 +49,7 @@ export const NotificationsTab = (props) => {
           <p>{t('settingsPage.notifications')}</p>
         </PageHeader>
       </Show>
-      <div class="p-4">
+      <div class="p-4 overflow-y-auto">
         <Show when={notifications() !== undefined}>
           <For each={notifications()}>
             {(notification) =>

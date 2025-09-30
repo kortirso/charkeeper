@@ -42,7 +42,7 @@ export const SettingsTab = () => {
       <PageHeader>
         {t('pages.settingsPage.title')}
       </PageHeader>
-      <div class="p-4 flex-1 flex flex-col overflow-y-scroll">
+      <div class="p-4 flex-1 flex flex-col overflow-y-auto">
         <div class="flex-1">
           {renderSettingsLink(t('pages.settingsPage.profile'), 'profile')}
           {renderSettingsLink(t('pages.settingsPage.profileDeleting'), 'profileDeleting')}

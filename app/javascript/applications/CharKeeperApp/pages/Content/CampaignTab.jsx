@@ -55,7 +55,7 @@ export const CampaignTab = (props) => {
           <p>{campaign().name}</p>
         </PageHeader>
       </Show>
-      <div class="p-4 flex-1 flex flex-col overflow-y-scroll">
+      <div class="p-4 flex-1 flex flex-col overflow-y-auto">
         <div class="blockable p-4 mb-2">
           <p class="mb-2 dark:text-snow">{t('pages.campaignsPage.idForSearch')} - {appState.activePageParams.id}</p>
           <Show when={characters().length > 0}>

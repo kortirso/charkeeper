@@ -69,7 +69,7 @@ export const Daggerheart = (props) => {
           activeTab={activeMobileTab()}
           setActiveTab={setActiveMobileTab}
         />
-        <div class="p-2 flex-1 overflow-y-scroll">
+        <div class="p-2 flex-1 overflow-y-auto">
           <Switch>
             <Match when={activeMobileTab() === 'traits'}>
               <DaggerheartTraits character={character()} onReplaceCharacter={props.onReplaceCharacter} />

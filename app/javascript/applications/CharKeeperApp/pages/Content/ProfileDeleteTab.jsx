@@ -36,7 +36,7 @@ export const ProfileDeleteTab = (props) => {
           <p>{t('pages.settingsPage.profileDeleting')}</p>
         </PageHeader>
       </Show>
-      <div class="p-4 flex-1 flex flex-col overflow-y-scroll">
+      <div class="p-4 flex-1 flex flex-col overflow-y-auto">
         <Button default textable onClick={openModal}>{t('delete')}</Button>
       </div>
       <Modal>

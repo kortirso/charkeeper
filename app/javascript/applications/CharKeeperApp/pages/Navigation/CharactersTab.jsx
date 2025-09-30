@@ -302,7 +302,7 @@ export const CharactersTab = () => {
       </Switch>
       <Switch>
         <Match when={currentTab() === 'characters'}>
-          <div class="flex-1 overflow-y-scroll">
+          <div class="flex-1 overflow-y-auto">
             <For each={filteredCharacters()}>
               {(character) =>
                 <CharactersListItem
@@ -332,7 +332,7 @@ export const CharactersTab = () => {
           </div>
         </Match>
         <Match when={currentTab() === 'newCharacter'}>
-          <div class="p-4 flex-1 flex flex-col overflow-y-scroll">
+          <div class="p-4 flex-1 flex flex-col overflow-y-auto">
             <div class="flex-1">
               <Select
                 containerClassList="mb-2"

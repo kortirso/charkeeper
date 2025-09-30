@@ -35,7 +35,7 @@ export const HomebrewTab = () => {
         activeTab={activeFilter()}
         setActiveTab={setActiveFilter}
       />
-      <div class="p-4 flex-1 overflow-y-scroll">
+      <div class="p-4 flex-1 overflow-y-auto">
         <Switch>
           <Match when={activeFilter() === 'daggerheart'}>
             {renderHomebrewLink(t('pages.homebrewPage.daggerheart.modules'), 'homebrew', { content: 'modules', provider: 'daggerheart' })}

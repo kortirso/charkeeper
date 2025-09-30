@@ -55,7 +55,7 @@ export const UsernameTab = (props) => {
           <p>{t('pages.settingsPage.profile')}</p>
         </PageHeader>
       </Show>
-      <div class="p-4 flex-1 flex flex-col overflow-y-scroll">
+      <div class="p-4 flex-1 flex flex-col overflow-y-auto">
         <Input
           containerClassList="mb-2"
           labelText={t('pages.settingsPage.username')}

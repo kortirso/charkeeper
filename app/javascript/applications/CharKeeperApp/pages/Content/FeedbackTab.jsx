@@ -43,7 +43,7 @@ export const FeedbackTab = (props) => {
           <p>{t('pages.settingsPage.feedback')}</p>
         </PageHeader>
       </Show>
-      <div class="p-4 flex-1 flex flex-col overflow-y-scroll">
+      <div class="p-4 flex-1 flex flex-col overflow-y-auto">
         <TextArea
           rows="10"
           labelText={t('pages.settingsPage.feedback')}

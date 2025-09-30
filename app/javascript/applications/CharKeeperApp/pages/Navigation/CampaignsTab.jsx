@@ -125,7 +125,7 @@ export const CampaignsTab = () => {
       </Switch>
       <Switch>
         <Match when={currentTab() === 'campaigns'}>
-          <div class="flex-1 overflow-y-scroll">
+          <div class="flex-1 overflow-y-auto">
             <Show
               when={filteredCampaigns().length > 0}
               fallback={<p class="dark:text-snow p-2">{t('pages.campaignsPage.noCampaigns')}</p>}
@@ -155,7 +155,7 @@ export const CampaignsTab = () => {
           </div>
         </Match>
         <Match when={currentTab() === 'newCampaign'}>
-          <div class="p-4 flex-1 flex flex-col overflow-y-scroll">
+          <div class="p-4 flex-1 flex flex-col overflow-y-auto">
             <div class="flex-1">
               <Select
                 containerClassList="mb-2"

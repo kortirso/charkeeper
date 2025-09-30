@@ -87,7 +87,7 @@ export const Dnd5 = (props) => {
           activeTab={activeMobileTab()}
           setActiveTab={setActiveMobileTab}
         />
-        <div class="p-2 flex-1 overflow-y-scroll">
+        <div class="p-2 flex-1 overflow-y-auto">
           <Switch>
             <Match when={activeMobileTab() === 'abilities'}>
               <Dnd5Abilities character={character()} onReplaceCharacter={props.onReplaceCharacter} />
