@@ -38,7 +38,7 @@ describe Frontend::Dnd5::Characters::SpellsController do
           expect(response).to have_http_status :ok
           expect(response.parsed_body['spells'].size).to eq 1
           expect(response_values.keys).to(
-            contain_exactly('id', 'ready_to_use', 'prepared_by', 'notes', 'level', 'slug', 'name', 'spell_id')
+            contain_exactly('id', 'ready_to_use', 'prepared_by', 'notes', 'level', 'slug', 'name', 'spell_ability', 'spell_id')
           )
         end
       end

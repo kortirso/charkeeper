@@ -424,7 +424,7 @@
     "thresholds": "Пороги урона",
     "onlyPreparedSpells": "Подготовленные",
     "onlyAvailableSpells": "Доступные",
-    "no_magic": "Персонаж не обладает магическими способностями",
+    "customSpellAbility": "Изучить с магической характеристикой",
     "changeLevels": "Изменить уровни классов",
     "changeClasses": "Изменить классы персонажа",
     "knownSpells": "Изучение заклинаний",

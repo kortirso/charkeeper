@@ -4,11 +4,17 @@ import * as i18n from '@solid-primitives/i18n';
 import { Button, Checkbox } from '../../../../components';
 import { Minus, Plus } from '../../../../assets';
 import { useAppLocale } from '../../../../context';
+import { modifier } from '../../../../helpers';
 
 export const SpellsTable = (props) => {
   const [, dict] = useAppLocale();
 
   const t = i18n.translator(dict);
+
+  const renderSpellDescription = (spellAbility) => {
+    const bonus = props.character.proficiency_bonus + props.character.modifiers[spellAbility];
+    return `${t('character.staticSpellAttackBonus')} ${modifier(bonus)}, ${t('character.staticSpellSaveDC')} ${8 + bonus}`;
+  }
 
   return (
     <div class="blockable mb-2 p-4">
@@ -54,6 +60,9 @@ export const SpellsTable = (props) => {
                   >
                     {spell.name}
                   </p>
+                  <Show when={spell.spell_ability !== null}>
+                    <p class="text-xs">{renderSpellDescription(spell.spell_ability)}</p>
+                  </Show>
                   <Show when={spell.notes !== null}>
                     <p class="text-xs">{spell.notes}</p>
                   </Show>
