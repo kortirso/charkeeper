@@ -1,14 +1,17 @@
 import { createContext, createEffect, useContext } from 'solid-js';
 import { createStore } from 'solid-js/store';
 
+import { readFromCache, writeToCache } from '../helpers';
+
 const AppStateContext = createContext();
 
 const CHARKEEPER_ACCESS_TOKEN = 'CharKeeperAccessToken';
+const COLOR_SCHEMA = 'ColorSchema';
 
 export const AppStateProvider = (props) => {
   const [appState, setAppState] = createStore({
     accessToken: props.accessToken, // eslint-disable-line solid/reactivity
-    colorSchema: props.colorSchema || 'light', // eslint-disable-line solid/reactivity
+    colorSchema: props.colorSchema || readFromCache(COLOR_SCHEMA) || 'light', // eslint-disable-line solid/reactivity
     isAdmin: props.isAdmin || false, // eslint-disable-line solid/reactivity
     username: props.username, // eslint-disable-line solid/reactivity
     activePage: null,
@@ -26,10 +29,10 @@ export const AppStateProvider = (props) => {
     bodyElement.style.paddingBottom = `${result.adjustedInsetBottom}px`;
   }
 
-  createEffect(async () => {
+  createEffect(() => {
     if (appState.accessToken !== undefined) return;
 
-    const stateValue = window.__TAURI_INTERNALS__ ? await readTauriStore() : localStorage.getItem(CHARKEEPER_ACCESS_TOKEN);
+    const stateValue = readFromCache(CHARKEEPER_ACCESS_TOKEN);
     if (stateValue === null || stateValue === undefined) {
       return setAppState({ ...appState, initialized: true });
     }
@@ -61,44 +64,15 @@ export const AppStateProvider = (props) => {
     deviceInsets();
   });
 
-  const readTauriStore = async () => {
-    try {
-      const { load } = window.__TAURI__.store;
-      const store = await load('settings.json');
-      const value = await store.get(CHARKEEPER_ACCESS_TOKEN);
-      return value;
-    } catch(e) {
-      console.log(e.message);
-      return null;
-    }
-  }
-
-  const updateTauriStore = async (value) => {
-    try {
-      const { load } = window.__TAURI__.store;
-      const store = await load('settings.json');
-      await store.set(CHARKEEPER_ACCESS_TOKEN, value);
-      await store.save();
-    } catch(e) {
-      console.log(e.message);
-      return null;
-    }
-  }
-
   const store = [
     appState,
     {
       changeUserInfo(payload) {
+        if (payload.colorSchema) writeToCache(COLOR_SCHEMA, payload.colorSchema);
         setAppState({ ...appState, ...payload });
       },
       setAccessToken(value) {
-        if (value === null) {
-          if (window.__TAURI_INTERNALS__ === undefined) localStorage.removeItem(CHARKEEPER_ACCESS_TOKEN);
-          else updateTauriStore(null);
-        } else {
-          if (window.__TAURI_INTERNALS__ === undefined) localStorage.setItem(CHARKEEPER_ACCESS_TOKEN, value);
-          else updateTauriStore(value);
-        }
+        writeToCache(CHARKEEPER_ACCESS_TOKEN, value);
         setAppState({ ...appState, accessToken: value });
       },
       navigate(page, params) {
