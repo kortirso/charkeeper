@@ -9,6 +9,18 @@ module Dnd5Character
         @class_save_dc ||= main_class == 'barbarian' ? CLASS_SAVE_DC : __getobj__.class_save_dc
       end
 
+      def spell_classes
+        @spell_classes ||= begin
+          result = __getobj__.spell_classes
+          result[:barbarian] = { multiclass_spell_level: 0 }
+          result
+        end
+      end
+
+      def spells_slots
+        @spells_slots ||= ::Dnd5Character::ClassDecorateWrapper::EMPTY_SPELL_SLOTS[class_level]
+      end
+
       def speed
         @speed ||= __getobj__.speed + speed_modifier
       end
