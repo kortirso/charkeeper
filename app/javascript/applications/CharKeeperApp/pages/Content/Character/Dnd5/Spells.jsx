@@ -347,6 +347,7 @@ export const Dnd5Spells = (props) => {
               canPrepareSpells={canPrepareSpells()}
               onEnableSpell={enableSpell}
               onDisableSpell={disableSpell}
+              onUpdateCharacterSpell={updateCharacterSpell}
             />
             <For each={Object.entries(character().spells_slots)}>
               {([level, slotsAmount]) =>
@@ -361,6 +362,7 @@ export const Dnd5Spells = (props) => {
                   onDisableSpell={disableSpell}
                   onSpendSpellSlot={spendSpellSlot}
                   onFreeSpellSlot={freeSpellSlot}
+                  onUpdateCharacterSpell={updateCharacterSpell}
                 />
               }
             </For>
