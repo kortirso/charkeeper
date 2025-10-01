@@ -78,6 +78,8 @@ module Charkeeper
     register('commands.homebrew_context.add_book') { HomebrewContext::AddBookCommand.new }
     register('commands.homebrew_context.remove_book') { HomebrewContext::RemoveBookCommand.new }
 
+    register('commands.homebrew_context.add_race') { HomebrewContext::AddRaceCommand.new }
+
     register('commands.homebrew_context.daggerheart.add_community') { HomebrewContext::Daggerheart::AddCommunityCommand.new }
     register('commands.homebrew_context.daggerheart.add_race') { HomebrewContext::Daggerheart::AddRaceCommand.new }
     register('commands.homebrew_context.daggerheart.add_feat') { HomebrewContext::Daggerheart::AddFeatCommand.new }

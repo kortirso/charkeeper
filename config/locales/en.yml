@@ -61,7 +61,7 @@ en:
             result: Module is deleted
         homebrew:
           add_race:
-            result: "Ancestry \"%{name}\" is created"
+            result: "Race \"%{name}\" is created"
           add_community:
             result: "Community \"%{name}\" is created"
   decorators:

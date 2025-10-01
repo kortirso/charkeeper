@@ -71,62 +71,59 @@ export const HomebrewContentTab = (props) => {
         </PageHeader>
       </Show>
       <Switch>
-        <Match when={appState.activePageParams.provider === 'daggerheart'}>
-          <Switch>
-            <Match when={appState.activePageParams.content === 'modules'}>
-              <HomebrewModules
-                provider="daggerheart"
-                homebrews={homebrews()}
-              />
-            </Match>
-            <Match when={appState.activePageParams.content === 'races'}>
-              <HomebrewRaces
-                provider="daggerheart"
-                homebrews={homebrews()}
-                removeHomebrew={removeHomebrew}
-                reloadHomebrews={reloadHomebrews}
-              />
-            </Match>
-            <Match when={appState.activePageParams.content === 'communities'}>
-              <HomebrewCommunities
-                provider="daggerheart"
-                homebrews={homebrews()}
-                removeHomebrew={removeHomebrew}
-                reloadHomebrews={reloadHomebrews}
-              />
-            </Match>
-            <Match when={appState.activePageParams.content === 'classes'}>
-              <HomebrewClasses
-                provider="daggerheart"
-                homebrews={homebrews()}
-                addHomebrew={addHomebrew}
-                removeHomebrew={removeHomebrew}
-              />
-            </Match>
-            <Match when={appState.activePageParams.content === 'subclasses'}>
-              <HomebrewSubclasses
-                provider="daggerheart"
-                homebrews={homebrews()}
-                addHomebrew={addHomebrew}
-                removeHomebrew={removeHomebrew}
-                reloadHomebrews={reloadHomebrews}
-              />
-            </Match>
-            <Match when={appState.activePageParams.content === 'feats'}>
-              <HomebrewFeats
-                provider="daggerheart"
-                homebrews={homebrews()}
-                addHomebrew={addHomebrew}
-                removeHomebrew={removeHomebrew}
-              />
-            </Match>
-            <Match when={appState.activePageParams.content === 'items'}>
-              <HomebrewItems
-                provider="daggerheart"
-                homebrews={homebrews()}
-                reloadHomebrews={reloadHomebrews} />
-            </Match>
-          </Switch>
+        <Match when={appState.activePageParams.content === 'modules'}>
+          <HomebrewModules
+            provider={appState.activePageParams.provider}
+            homebrews={homebrews()}
+          />
+        </Match>
+        <Match when={appState.activePageParams.content === 'races'}>
+          <HomebrewRaces
+            provider={appState.activePageParams.provider}
+            homebrews={homebrews()}
+            removeHomebrew={removeHomebrew}
+            reloadHomebrews={reloadHomebrews}
+          />
+        </Match>
+        <Match when={appState.activePageParams.content === 'communities'}>
+          <HomebrewCommunities
+            provider={appState.activePageParams.provider}
+            homebrews={homebrews()}
+            removeHomebrew={removeHomebrew}
+            reloadHomebrews={reloadHomebrews}
+          />
+        </Match>
+        <Match when={appState.activePageParams.content === 'classes'}>
+          <HomebrewClasses
+            provider={appState.activePageParams.provider}
+            homebrews={homebrews()}
+            addHomebrew={addHomebrew}
+            removeHomebrew={removeHomebrew}
+          />
+        </Match>
+        <Match when={appState.activePageParams.content === 'subclasses'}>
+          <HomebrewSubclasses
+            provider={appState.activePageParams.provider}
+            homebrews={homebrews()}
+            addHomebrew={addHomebrew}
+            removeHomebrew={removeHomebrew}
+            reloadHomebrews={reloadHomebrews}
+          />
+        </Match>
+        <Match when={appState.activePageParams.content === 'feats'}>
+          <HomebrewFeats
+            provider={appState.activePageParams.provider}
+            homebrews={homebrews()}
+            addHomebrew={addHomebrew}
+            removeHomebrew={removeHomebrew}
+          />
+        </Match>
+        <Match when={appState.activePageParams.content === 'items'}>
+          <HomebrewItems
+            provider={appState.activePageParams.provider}
+            homebrews={homebrews()}
+            reloadHomebrews={reloadHomebrews}
+          />
         </Match>
       </Switch>
     </>

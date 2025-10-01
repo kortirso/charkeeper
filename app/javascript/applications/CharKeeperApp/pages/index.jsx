@@ -74,5 +74,7 @@ export * from './Content/Homebrew/Daggerheart/Class';
 export * from './Content/Homebrew/Daggerheart/NewSubclassForm';
 export * from './Content/Homebrew/Daggerheart/Subclass';
 
+export * from './Content/Homebrew/Dnd2024/Race';
+
 export * from './Navigation/Characters/ListItem';
 export * from './Navigation/Campaigns/ListItem';

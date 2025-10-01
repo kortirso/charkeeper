@@ -4,7 +4,7 @@ module BotContext
   module Commands
     class Homebrew
       include Deps[
-        add_daggerheart_race: 'commands.homebrew_context.daggerheart.add_race',
+        add_race: 'commands.homebrew_context.add_race',
         add_daggerheart_community: 'commands.homebrew_context.daggerheart.add_community'
       ]
 
@@ -20,9 +20,12 @@ module BotContext
       private
 
       def create_race(*arguments, data)
+        values = BotContext::Commands::Parsers::CreateRace.new.call(arguments: arguments)
+        command_params = values.except(:system).merge(user: data[:user])
         result =
-          case arguments[0]
-          when 'daggerheart' then add_daggerheart_race.call({ user: data[:user], name: arguments[1] })
+          case values[:system]
+          when 'daggerheart' then add_race.call(command_params.merge(type: 'Daggerheart::Homebrew::Race'))
+          when 'dnd2024' then add_race.call(command_params.merge(type: 'Dnd2024::Homebrew::Race'))
           else { errors_list: ['Invalid command'] }
           end
 

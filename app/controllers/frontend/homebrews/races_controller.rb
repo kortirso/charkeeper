@@ -38,7 +38,7 @@ module Frontend
       end
 
       def find_existing_characters
-        return unless characters_relation.where(user_id: current_user.id).exists?(["data ->> 'heritage' = ?", @race.id])
+        return unless characters_relation.where(user_id: current_user.id).exists?(["data ->> '#{field_name}' = ?", @race.id])
 
         unprocessable_response(
           { base: [t("frontend.homebrews.races.#{params[:provider]}.character_exists")] },
@@ -59,12 +59,22 @@ module Frontend
       def serializer
         case params[:provider]
         when 'daggerheart' then ::Daggerheart::Homebrew::RaceSerializer
+        when 'dnd2024' then ::Dnd2024::Homebrew::RaceSerializer
         end
       end
 
       def races_relation
         case params[:provider]
         when 'daggerheart' then ::Daggerheart::Homebrew::Race
+        when 'dnd2024' then ::Dnd2024::Homebrew::Race
+        else []
+        end
+      end
+
+      def field_name
+        case params[:provider]
+        when 'daggerheart' then 'heritage'
+        when 'dnd2024' then 'race'
         else []
         end
       end
@@ -72,6 +82,7 @@ module Frontend
       def characters_relation
         case params[:provider]
         when 'daggerheart' then ::Daggerheart::Character
+        when 'dnd2024' then ::Dnd2024::Character
         end
       end
     end
