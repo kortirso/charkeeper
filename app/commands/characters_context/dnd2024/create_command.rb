@@ -11,7 +11,6 @@ module CharactersContext
       use_contract do
         config.messages.namespace = :dnd5_character
 
-        Species = Dry::Types['strict.string'].enum(*::Dnd2024::Character.species.keys)
         Classes = Dry::Types['strict.string'].enum(*::Dnd2024::Character.classes_info.keys)
         Alignments = Dry::Types['strict.string'].enum(*::Dnd2024::Character::ALIGNMENTS)
         Backgrounds = Dry::Types['strict.string'].enum(*::Dnd2024::Character.backgrounds.keys)
@@ -19,7 +18,7 @@ module CharactersContext
         params do
           required(:user).filled(type?: User)
           required(:name).filled(:string, max_size?: 50)
-          required(:species).filled(Species)
+          required(:species).filled(:string)
           optional(:legacy).filled(:string)
           required(:size).filled(:string)
           required(:main_class).filled(Classes)
@@ -34,10 +33,23 @@ module CharactersContext
 
         rule(:avatar_file, :avatar_url).validate(:check_only_one_present)
 
+        rule(:species, :user) do
+          next if values[:species].blank?
+          next if values[:species].in?(::Dnd2024::Character.species.keys)
+          next if values[:species].in?(::Dnd2024::Homebrew::Race.where(user_id: values[:user].id).ids)
+
+          key.failure(:included_in?)
+        end
+
         rule(:species, :size) do
           next if values[:species].nil?
 
-          species_sizes = ::Dnd2024::Character.sizes_info(values[:species])
+          species_sizes =
+            if values[:species].in?(::Dnd2024::Character.species.keys)
+              ::Dnd2024::Character.sizes_info(values[:species])
+            else
+              ::Dnd2024::Homebrew::Race.find_by(id: values[:species])&.data&.size
+            end
           next if species_sizes&.include?(values[:size])
 
           key(:size).failure(:invalid)

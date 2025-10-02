@@ -395,7 +395,8 @@
       "alignment": "Мировоззрение",
       "sizes": {
         "small": "Маленький",
-        "medium": "Средний"
+        "medium": "Средний",
+        "large": "Большой"
       }
     },
     "pathfinder2": {

@@ -395,7 +395,8 @@
       "alignment": "Alignment",
       "sizes": {
         "small": "Small",
-        "medium": "Medium"
+        "medium": "Medium",
+        "large": "Large"
       }
     },
     "pathfinder2": {

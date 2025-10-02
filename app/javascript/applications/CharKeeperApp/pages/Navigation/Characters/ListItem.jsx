@@ -49,10 +49,10 @@ export const CharactersListItem = (props) => {
 
   const firstText = createMemo(() => {
     if (character().provider === 'dnd5') {
-      return `${t('charactersPage.level')} ${character().level} | ${character().legacy ? dnd5Config.races[character().race].subraces[character().subrace].name[locale()] : dnd5Config.races[character().race].name[locale()]}`;
+      return `${t('charactersPage.level')} ${character().level} | ${character().subrace ? dnd5Config.races[character().race].subraces[character().subrace].name[locale()] : dnd5Config.races[character().race].name[locale()]}`;
     }
     if (character().provider === 'dnd2024') {
-      return `${t('charactersPage.level')} ${character().level} | ${character().legacy ? dnd2024Config.species[character().species].legacies[character().legacy].name[locale()] : dnd2024Config.species[character().species].name[locale()]}`;
+      return `${t('charactersPage.level')} ${character().level} | ${character().legacy ? props.dnd2024Races[character().species].legacies[character().legacy].name[locale()] : props.dnd2024Races[character().species].name[locale()]}`;
     }
     if (character().provider === 'pathfinder2') {
       return `${t('charactersPage.level')} ${character().level} | ${character().subrace ? pathfinder2Config.races[character().race].subraces[character().subrace].name[locale()] : pathfinder2Config.races[character().race].name[locale()]}`;

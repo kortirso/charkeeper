@@ -81,6 +81,12 @@ export const CharactersTab = () => {
     if (characterData.errors == undefined) setCharacters(characters().concat(characterData.character));
   }
 
+  const dnd2024Races = createMemo(() => {
+    if (homebrews() === undefined) return {};
+
+    return { ...dnd2024Config.species, ...homebrews().dnd2024.races };
+  });
+
   const daggerheartHeritages = createMemo(() => {
     if (homebrews() === undefined) return {};
 
@@ -308,6 +314,7 @@ export const CharactersTab = () => {
                 <CharactersListItem
                   character={character}
                   isActive={character.id == appState.activePageParams.id}
+                  dnd2024Races={dnd2024Races()}
                   daggerheartHeritages={daggerheartHeritages()}
                   daggerheartClasses={daggerheartClasses()}
                   onClick={() => navigate('character', { id: character.id })}
@@ -393,16 +400,16 @@ export const CharactersTab = () => {
                     <Select
                       containerClassList="mb-2"
                       labelText={t('newCharacterPage.dnd2024.species')}
-                      items={translate(dnd2024Config.species, locale())}
+                      items={translate(dnd2024Races(), locale())}
                       selectedValue={characterDnd2024Form.species}
-                      onSelect={(value) => setCharacterDnd2024Form({ ...characterDnd2024Form, species: value, size: dnd2024Config.species[value].sizes[0], legacy: undefined })}
+                      onSelect={(value) => setCharacterDnd2024Form({ ...characterDnd2024Form, species: value, size: dnd2024Races()[value].sizes[0], legacy: undefined })}
                     />
                     <Show when={characterDnd2024Form.species !== undefined}>
-                      <Show when={Object.keys(dnd2024Config.species[characterDnd2024Form.species].legacies).length > 0}>
+                      <Show when={Object.keys(dnd2024Races()[characterDnd2024Form.species].legacies).length > 0}>
                         <Select
                           containerClassList="mb-2"
                           labelText={t('newCharacterPage.dnd2024.legacy')}
-                          items={translate(dnd2024Config.species[characterDnd2024Form.species].legacies, locale())}
+                          items={translate(dnd2024Races()[characterDnd2024Form.species].legacies, locale())}
                           selectedValue={characterDnd2024Form.legacy}
                           onSelect={(value) => setCharacterDnd2024Form({ ...characterDnd2024Form, legacy: value })}
                         />
@@ -410,7 +417,7 @@ export const CharactersTab = () => {
                       <Select
                         containerClassList="mb-2"
                         labelText={t('newCharacterPage.dnd2024.size')}
-                        items={dnd2024Config.species[characterDnd2024Form.species].sizes.reduce((acc, item) => { acc[item] = t(`newCharacterPage.dnd2024.sizes.${item}`); return acc; }, {})}
+                        items={dnd2024Races()[characterDnd2024Form.species].sizes.reduce((acc, item) => { acc[item] = t(`newCharacterPage.dnd2024.sizes.${item}`); return acc; }, {})}
                         selectedValue={characterDnd2024Form.size}
                         onSelect={(value) => setCharacterDnd2024Form({ ...characterDnd2024Form, size: value })}
                       />
