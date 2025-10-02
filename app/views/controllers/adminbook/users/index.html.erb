@@ -14,7 +14,7 @@
   <tbody>
     <% @users.each_with_index do |user, index| %>
       <tr>
-        <td class="pr-2"><%= index + 1 %></td>
+        <td class="pr-2"><%= (@pagy.page - 1) * 25 + index + 1 %></td>
         <td class="pr-2"><%= user.id %></td>
         <td class="pr-2"><%= user.username %></td>
         <td class="pr-2"><%= user.discarded_at ? 'Удалён' : '' %></td>

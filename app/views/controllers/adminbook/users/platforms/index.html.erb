@@ -11,7 +11,7 @@
   <tbody>
     <% @platforms.each_with_index do |platform, index| %>
       <tr>
-        <td class="pr-2"><%= index + 1 %></td>
+        <td class="pr-2"><%= (@pagy.page - 1) * 25 + index + 1 %></td>
         <td class="pr-2"><%= platform.id %></td>
         <td class="pr-2"><%= platform.name %></td>
         <td class="pr-2"><%= platform.user_id %></td>

@@ -15,7 +15,7 @@
   <tbody>
     <% @identities.each_with_index do |identity, index| %>
       <tr>
-        <td class="pr-2"><%= index + 1 %></td>
+        <td class="pr-2"><%= (@pagy.page - 1) * 25 + index + 1 %></td>
         <td class="pr-2"><%= identity.id %></td>
         <td class="pr-2"><%= identity.uid %></td>
         <td class="pr-2"><%= identity.provider %></td>
