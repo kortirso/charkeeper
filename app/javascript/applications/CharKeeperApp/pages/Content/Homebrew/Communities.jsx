@@ -40,6 +40,7 @@ export const HomebrewCommunities = (props) => {
 
   return (
     <div class="p-2 flex-1 overflow-y-auto">
+      <p class="mb-2 dark:text-snow">{t('pages.homebrewPage.modulesHelp')}</p>
       <div class="flex mb-2">
         <Button default size="small" classList="px-2" onClick={copyCommunity}>
           {t('copy')}

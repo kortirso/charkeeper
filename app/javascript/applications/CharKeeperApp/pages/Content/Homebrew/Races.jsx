@@ -1,7 +1,7 @@
 import { createSignal, Switch, Match, Show, For } from 'solid-js';
 import * as i18n from '@solid-primitives/i18n';
 
-import { DaggerheartRace } from '../../../pages';
+import { DaggerheartRace, Dnd2024Race } from '../../../pages';
 import { Button, IconButton, Toggle, Input } from '../../../components';
 import { Close } from '../../../assets';
 import { useAppState, useAppLocale, useAppAlert } from '../../../context';
@@ -40,17 +40,20 @@ export const HomebrewRaces = (props) => {
 
   return (
     <div class="p-2 flex-1 overflow-y-auto">
-      <div class="flex mb-2">
-        <Button default size="small" classList="px-2" onClick={copyRace}>
-          {t('copy')}
-        </Button>
-        <Input
-          containerClassList="ml-2 flex-1"
-          placeholder={t(`pages.homebrewPage.${props.provider}.copyPlaceholder`)}
-          value={copyRaceId()}
-          onInput={(value) => setCopyRaceId(value)}
-        />
-      </div>
+      <p class="mb-2 dark:text-snow">{t('pages.homebrewPage.modulesHelp')}</p>
+      <Show when={props.provider === 'daggerheart'}>
+        <div class="flex mb-2">
+          <Button default size="small" classList="px-2" onClick={copyRace}>
+            {t('copy')}
+          </Button>
+          <Input
+            containerClassList="ml-2 flex-1"
+            placeholder={t(`pages.homebrewPage.${props.provider}.copyPlaceholder`)}
+            value={copyRaceId()}
+            onInput={(value) => setCopyRaceId(value)}
+          />
+        </div>
+      </Show>
       <Show when={props.homebrews !== undefined}>
         <div class="grid grid-cols-1 emd:grid-cols-2 elg:grid-cols-3 exl:grid-cols-4 gap-x-2">
           <For each={props.homebrews.races}>
@@ -67,10 +70,15 @@ export const HomebrewRaces = (props) => {
                   <Match when={props.provider === 'daggerheart'}>
                     <DaggerheartRace raceId={race.id} feats={props.homebrews.feats} />
                   </Match>
+                  <Match when={props.provider === 'dnd2024'}>
+                    <Dnd2024Race race={race} />
+                  </Match>
                 </Switch>
-                <p class="absolute bottom-0 right-0 px-2 py-1 dark:text-snow cursor-pointer" onClick={() => copy(race.id)}>
-                  COPY
-                </p>
+                <Show when={props.provider === 'daggerheart'}>
+                  <p class="absolute bottom-0 right-0 px-2 py-1 dark:text-snow cursor-pointer" onClick={() => copy(race.id)}>
+                    COPY
+                  </p>
+                </Show>
               </Toggle>
             }
           </For>

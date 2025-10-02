@@ -59,7 +59,12 @@
     },
     "homebrewPage": {
       "title": "Homebrew",
-      "modulesHelp": "Modules can be edited by bot command",
+      "modulesHelp": "Page content can be edited by bot command",
+      "dnd2024": {
+        "races": "Races",
+        "speed": "Speed",
+        "size": "Available sizes"
+      },
       "daggerheart": {
         "races": "Ancestries",
         "communities": "Communities",
@@ -390,7 +395,8 @@
       "alignment": "Alignment",
       "sizes": {
         "small": "Small",
-        "medium": "Medium"
+        "medium": "Medium",
+        "large": "Large"
       }
     },
     "pathfinder2": {

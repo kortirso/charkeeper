@@ -12,6 +12,7 @@ module Frontend
       def provider_payload
         case params[:provider]
         when 'daggerheart' then daggerheart_payload
+        when 'dnd2024' then dnd2024_payload
         end
       end
 
@@ -26,12 +27,20 @@ module Frontend
         }
       end
 
+      def dnd2024_payload
+        {
+          races: Panko::ArraySerializer.new(dnd2024_races, each_serializer: ::Dnd2024::Homebrew::RaceSerializer).to_a
+        }
+      end
+
       def races = ::Daggerheart::Homebrew::Race.where(user_id: current_user.id).order(name: :asc)
       def comms = ::Daggerheart::Homebrew::Community.where(user_id: current_user.id).order(name: :asc)
       def classes = ::Daggerheart::Homebrew::Speciality.where(user_id: current_user.id).order(name: :asc)
       def subclasses = ::Daggerheart::Homebrew::Subclass.where(user_id: current_user.id).order(name: :asc)
       def feats = ::Daggerheart::Feat.where(user_id: current_user.id).order(Arel.sql("title->>'en' ASC"))
       def items = ::Daggerheart::Item.where(user_id: current_user.id).order(Arel.sql("name->>'en' ASC"))
+
+      def dnd2024_races = ::Dnd2024::Homebrew::Race.where(user_id: current_user.id).order(name: :asc)
     end
   end
 end

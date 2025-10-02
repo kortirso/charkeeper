@@ -4,3 +4,7 @@ json.daggerheart do
   json.classes @daggerheart_classes
   json.subclasses @daggerheart_subclasses
 end
+
+json.dnd2024 do
+  json.races @dnd2024_races
+end

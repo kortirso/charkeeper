@@ -51,7 +51,7 @@
     "origin_value": "general",
     "kind": "static",
     "description_eval_variables": {
-      "value": "8 + modifiers('cha') + proficiency_bonus"
+      "value": "8 + modifiers['cha'] + proficiency_bonus"
     },
     "conditions": { "level": 4 }
   },

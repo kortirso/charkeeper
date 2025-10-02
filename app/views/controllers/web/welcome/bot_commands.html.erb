@@ -13,7 +13,24 @@
   <p class="mb-2 light-color">Command for managing homebrews.</p>
   <h3 class="mb-2 font-medium!">Examples</h3>
   <ul>
-    <li><code>/homebrew createRace daggerheart "Ancestry name"</code> - add ancestry for Daggerheart</li>
+    <li><code>/homebrew createRace --system dnd2024 --name "Race name"</code> - add race</li>
+    <div class="pl-4 mt-2">
+      <p>Required arguments</p>
+      <ul>
+        <li><code>--system dnd2024</code> - select role system, options are: <code>dnd2024</code>, <code>daggerheart</code></li>
+        <li><code>--name "Race name"</code> - set race name</li>
+      </ul>
+      <br />
+    </div>
+    <div class="pl-4 mt-2">
+      <p>Optional arguments</p>
+      <ul>
+        <li><code>--speed 35</code> - set speed</li>
+        <li><code>--resistance necrotic,acid</code> - set list of resistances, options are: bludge, pierce, slash, acid, cold, fire, force, lighting, necrotic, poison, psychic, radiant, thunder</li>
+        <li><code>--size small,medium,large</code> - set list of available sizes</li>
+      </ul>
+      <br />
+    </div>
     <li><code>/homebrew createCommunity daggerheart "Community name"</code> - add community for Daggerheart</li>
   </ul>
   <h2 class="mt-8 mb-2 font-medium! text-lg">/module</h2>
