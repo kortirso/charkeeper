@@ -20,6 +20,12 @@ module Dnd5Character
       def spells_slots
         @spells_slots ||= ::Dnd5Character::ClassDecorateWrapper::EMPTY_SPELL_SLOTS[class_level]
       end
+
+      private
+
+      def class_level
+        @class_level ||= classes['fighter']
+      end
     end
   end
 end

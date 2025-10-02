@@ -11,6 +11,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Modified
 - restore D&D spell notes
 
+### Fixed
+- rendering spells tab for D&D fighter class
+
 ## [0.3.5] - 2025-10-01
 ### Added
 - character personal homebrew feats
