@@ -25,7 +25,8 @@ module SheetsContext
         end
 
         def race(character)
-          ::Dnd2024::Character.species_info(character.species).dig('name', I18n.locale.to_s)
+          default = ::Dnd2024::Character.species_info(character.data.species)
+          default ? default.dig('name', I18n.locale.to_s) : ::Dnd2024::Homebrew::Race.find(character.data.species).name
         end
 
         def subrace(character)
