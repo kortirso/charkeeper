@@ -5,12 +5,13 @@ module SerializeRelation
 
   private
 
-  def serialize_relation(relation, serializer, key, serialized_fields={})
+  def serialize_relation(relation, serializer, key, serialized_fields={}, context={})
     render json: Panko::Response.new(
       key => Panko::ArraySerializer.new(
         relation,
         each_serializer: serializer,
-        **serialized_fields
+        **serialized_fields,
+        context: context
       )
     ), status: :ok
   end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_09_21_182418) do
+ActiveRecord::Schema[8.0].define(version: 2025_10_03_094223) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
   enable_extension "pgcrypto"
@@ -323,6 +323,8 @@ ActiveRecord::Schema[8.0].define(version: 2025_09_21_182418) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "provider", null: false
+    t.boolean "shared"
+    t.index ["shared"], name: "index_homebrew_books_on_shared", where: "(shared IS NOT NULL)"
     t.index ["user_id"], name: "index_homebrew_books_on_user_id"
   end
 
@@ -412,11 +414,27 @@ ActiveRecord::Schema[8.0].define(version: 2025_09_21_182418) do
     t.index ["slug"], name: "index_spells_on_slug"
   end
 
+  create_table "user_books", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "user_id", null: false
+    t.uuid "homebrew_book_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id", "homebrew_book_id"], name: "index_user_books_on_user_id_and_homebrew_book_id", unique: true
+  end
+
   create_table "user_feedbacks", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.uuid "user_id", null: false
     t.text "value"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "user_homebrews", id: :uuid, default: -> { "gen_random_uuid()" }, comment: "Заранее сформированный список всех доступных homebrew", force: :cascade do |t|
+    t.uuid "user_id", null: false
+    t.jsonb "data", default: {}, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_user_homebrews_on_user_id"
   end
 
   create_table "user_identities", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
