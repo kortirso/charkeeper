@@ -2,6 +2,10 @@
 
 module HomebrewContext
   class AddRaceCommand < BaseCommand
+    include Deps[
+      refresh_user_data: 'services.homebrews_context.refresh_user_data'
+    ]
+
     SIZES = %w[small medium large].freeze
     DAMAGE_TYPES = %w[bludge pierce slash acid cold fire force lighting necrotic poison psychic radiant thunder].freeze
 
@@ -26,6 +30,8 @@ module HomebrewContext
 
     def do_persist(input)
       result = input[:type].constantize.create!(input.slice(:user, :name, :data))
+
+      refresh_user_data.call(user: input[:user])
 
       { result: result }
     end

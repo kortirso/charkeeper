@@ -3,6 +3,10 @@
 module HomebrewContext
   module Daggerheart
     class AddSpecialityCommand < BaseCommand
+      include Deps[
+        refresh_user_data: 'services.homebrews_context.refresh_user_data'
+      ]
+
       use_contract do
         config.messages.namespace = :homebrew_speciality
 
@@ -30,6 +34,8 @@ module HomebrewContext
 
       def do_persist(input)
         result = ::Daggerheart::Homebrew::Speciality.create!(input[:attributes].merge(input[:data]))
+
+        refresh_user_data.call(user: input[:user])
 
         { result: result }
       end

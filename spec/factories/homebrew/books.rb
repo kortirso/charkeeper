@@ -6,5 +6,9 @@ FactoryBot.define do
     provider { 'daggerheart' }
     shared { false }
     user
+
+    trait :dnd2024 do
+      provider { 'dnd2024' }
+    end
   end
 end
