@@ -107,7 +107,9 @@
         "includedAncestries": "Included ancestries",
         "includedCommunities": "Included communities",
         "includedSubclasses": "Included subclasses",
-        "includedItems": "Included items"
+        "includedItems": "Included items",
+        "itemOrigin": "Attach item to",
+        "itemOriginValue": "Attachable object"
       },
       "personalFeats": "Personal feats can be created through homebrew"
     },

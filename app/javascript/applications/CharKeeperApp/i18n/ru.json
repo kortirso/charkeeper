@@ -107,7 +107,9 @@
         "includedAncestries": "Включённые расы",
         "includedCommunities": "Включённые общества",
         "includedSubclasses": "Включённые подклассы",
-        "includedItems": "Включённые предметы"
+        "includedItems": "Включённые предметы",
+        "itemOrigin": "Принадлежность",
+        "itemOriginValue": "Объект принадлежности"
       },
       "personalFeats": "Личные способности могут быть добавлены через homebrew"
     },

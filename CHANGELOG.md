@@ -8,6 +8,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Added
 - shared homebrew books
 
+### Modified
+- setting damage and trait for Daggerjeart homebrew weapons
+
 ## [0.3.6] - 2025-10-01
 ### Added
 - editing homebrew races for D&D 2024

@@ -1,4 +1,4 @@
-import { Show } from 'solid-js';
+import { Show, createMemo } from 'solid-js';
 import { createStore } from 'solid-js/store';
 import * as i18n from '@solid-primitives/i18n';
 
@@ -26,6 +26,10 @@ export const NewDaggerheartItemForm = (props) => {
   const [locale, dict] = useAppLocale();
 
   const t = i18n.translator(dict);
+
+  const traitsForSelect = createMemo(() => {
+    return { ...{ 'null': 'No value' }, ...translate(config.traits, locale()) };
+  });
 
   const generatePayload = () => {
     if (itemForm.kind === 'item' || itemForm.kind === 'consumable') return { name: itemForm.name, kind: itemForm.kind };
@@ -76,9 +80,9 @@ export const NewDaggerheartItemForm = (props) => {
           <Select
             containerClassList="flex-1"
             labelText={t('pages.homebrewPage.daggerheart.trait')}
-            items={translate(config.traits, locale())}
+            items={traitsForSelect()}
             selectedValue={itemForm.trait}
-            onSelect={(value) => setItemForm({ ...itemForm, trait: value })}
+            onSelect={(value) => setItemForm({ ...itemForm, trait: value === 'null' ? null : value })}
           />
           <Select
             containerClassList="flex-1"
@@ -95,7 +99,7 @@ export const NewDaggerheartItemForm = (props) => {
             onSelect={(value) => setItemForm({ ...itemForm, burden: parseInt(value) })}
           />
         </div>
-        <div class="mb-4 flex gap-4">
+        <div class="mb-2 flex gap-4">
           <Select
             containerClassList="flex-1"
             labelText={t('pages.homebrewPage.daggerheart.range')}
@@ -103,12 +107,11 @@ export const NewDaggerheartItemForm = (props) => {
             selectedValue={itemForm.range}
             onSelect={(value) => setItemForm({ ...itemForm, range: value })}
           />
-          <Select
+          <Input
             containerClassList="flex-1"
             labelText={t('pages.homebrewPage.daggerheart.damage')}
-            items={{ 'd6': 'd6', 'd8': 'd8', 'd10': 'd10', 'd12': 'd12' }}
-            selectedValue={itemForm.damage}
-            onSelect={(value) => setItemForm({ ...itemForm, damage: value })}
+            value={itemForm.damage}
+            onInput={(value) => setItemForm({ ...itemForm, damage: value })}
           />
           <Input
             containerClassList="flex-1"
@@ -117,7 +120,7 @@ export const NewDaggerheartItemForm = (props) => {
             onInput={(value) => setItemForm({ ...itemForm, damage_bonus: parseInt(value) })}
           />
         </div>
-        <div class="mb-2 flex gap-4">
+        <div class="mb-4 flex gap-4">
           <Select
             containerClassList="flex-1"
             labelText={t('pages.homebrewPage.daggerheart.itemOrigin')}

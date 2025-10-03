@@ -149,8 +149,8 @@ module DaggerheartCharacter
         name: item[:items_name][I18n.locale.to_s],
         burden: item[:items_info]['burden'],
         range: item[:items_info]['range'],
-        attack_bonus: modified_traits[item[:items_info]['trait']] + attack_bonuses,
-        damage: "#{proficiency}#{item[:items_info]['damage']}",
+        attack_bonus: trait_bonus(item) + attack_bonuses,
+        damage: item[:items_info]['damage']&.gsub('d', "#{proficiency}d"),
         damage_bonus: item[:items_info]['damage_bonus'],
         damage_type: item[:items_info]['damage_type'],
         kind: item[:items_kind],
@@ -172,6 +172,11 @@ module DaggerheartCharacter
       response
     end
     # rubocop: enable Metrics/AbcSize, Metrics/MethodLength
+
+    def trait_bonus(item)
+      trait = item[:items_info]['trait']
+      trait ? modified_traits[trait] : modified_traits.values.max
+    end
 
     def attack_bonuses
       @attack_bonuses ||= sum(bonuses.pluck('attack').compact)
