@@ -4,6 +4,7 @@ FactoryBot.define do
   factory :homebrew_book, class: 'Homebrew::Book' do
     name { 'Book' }
     provider { 'daggerheart' }
+    shared { false }
     user
   end
 end
