@@ -6,13 +6,15 @@ module Frontend
       include SerializeRelation
 
       def index
-        serialize_relation(books, serializer, :books)
+        serialize_relation(books, serializer, :books, {}, { enabled_books: current_user.books.ids })
       end
 
       private
 
       def books
-        Homebrew::Book.where(provider: params[:provider], user_id: current_user.id).includes(:items)
+        Homebrew::Book.where(provider: params[:provider], user_id: current_user.id)
+          .or(Homebrew::Book.where(provider: params[:provider], shared: true).where.not(user_id: current_user.id))
+          .includes(:items)
       end
 
       def serializer
