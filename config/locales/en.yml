@@ -20,6 +20,10 @@ en:
   services:
     sheets_context:
       level: Level
+      attack: ATTACK
+      dist: DISTANCE
+      damage: DAMAGE
+      type: TYPE
       pathfinder:
         armor_class: Armor class
         perception: Perception
@@ -36,6 +40,7 @@ en:
         success: Success
         failure: Failure
         saving_throws: SAVING THROWS
+        attacks: ATTACKS
       daggerheart:
         proficiency: Proficiency
         evasion: Evasion

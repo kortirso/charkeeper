@@ -4,7 +4,7 @@ module SheetsContext
   module Pdf
     module Daggerheart
       class Template < SheetsContext::Pdf::Template
-        # rubocop: disable Metrics/AbcSize, Metrics/MethodLength, Metrics/PerceivedComplexity
+        # rubocop: disable Metrics/AbcSize, Metrics/MethodLength, Metrics/PerceivedComplexity, Style/NestedTernaryOperator, Metrics/CyclomaticComplexity
         def to_pdf(character:)
           super
 
@@ -55,6 +55,27 @@ module SheetsContext
             fill_and_stroke_rounded_rectangle [104 + (index * 13), 533], 11, 11, 1
           end
 
+          font_size 4
+          fill_color '444444'
+          text_box I18n.t('services.sheets_context.attack').upcase, at: [430, 640], width: 25, height: 10, align: :center
+          text_box I18n.t('services.sheets_context.dist').upcase, at: [455, 640], width: 30, height: 10, align: :center
+          text_box I18n.t('services.sheets_context.damage').upcase, at: [485, 640], width: 35, height: 10, align: :center
+          text_box I18n.t('services.sheets_context.type').upcase, at: [520, 640], width: 30, height: 10, align: :center
+
+          fill_color '000000'
+          character.attacks.first(10).each_with_index do |attack, index|
+            font_size 8
+            text_box attack[:name], at: [327, 629 - (index * 36)], width: 100, height: 14
+
+            font_size 6
+            text_box "#{'+' if attack[:attack_bonus].positive?}#{attack[:attack_bonus]}", at: [430, 629 - (index * 36)], width: 25, height: 14, align: :center # rubocop: disable Layout/LineLength
+            text_box attack[:range], at: [455, 629 - (index * 36)], width: 30, height: 14, align: :center
+
+            damage = attack[:damage].include?('d') ? "#{attack[:damage]}#{'+' if attack[:damage_bonus].positive?}#{attack[:damage_bonus] unless attack[:damage_bonus].zero?}" : ((attack[:damage].to_i + attack[:damage_bonus]).positive? ? (attack[:damage].to_i + attack[:damage_bonus]).to_s : '-') # rubocop: disable Layout/LineLength
+            text_box damage, at: [485, 629 - (index * 36)], width: 35, height: 14, align: :center
+            text_box attack[:damage_type].first(3), at: [520, 629 - (index * 36)], width: 30, height: 14, align: :center
+          end
+
           font_size 10
           fill_color '000000'
           character.experience.sort_by { |item| -item['exp_level'] }.first(10).each_with_index do |experience, index|
@@ -64,6 +85,7 @@ module SheetsContext
 
           text_box I18n.t('services.sheets_context.daggerheart.health'), at: [70, 659], width: 150, align: :center
           text_box I18n.t('services.sheets_context.daggerheart.experience'), at: [70, 494], width: 150, align: :center
+          text_box I18n.t('services.sheets_context.dnd.attacks'), at: [346, 659], width: 175, align: :center
 
           text_box I18n.t('services.sheets_context.daggerheart.armor_slots'), at: [32, 578], width: 150
           text_box I18n.t('services.sheets_context.daggerheart.hp'), at: [32, 563], width: 150
@@ -76,7 +98,7 @@ module SheetsContext
 
           render
         end
-        # rubocop: enable Metrics/AbcSize, Metrics/MethodLength, Metrics/PerceivedComplexity
+        # rubocop: enable Metrics/AbcSize, Metrics/MethodLength, Metrics/PerceivedComplexity, Style/NestedTernaryOperator, Metrics/CyclomaticComplexity
 
         private
 

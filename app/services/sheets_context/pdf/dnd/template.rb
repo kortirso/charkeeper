@@ -4,7 +4,7 @@ module SheetsContext
   module Pdf
     module Dnd
       class Template < SheetsContext::Pdf::Template
-        # rubocop: disable Metrics/AbcSize, Layout/LineLength,  Metrics/MethodLength
+        # rubocop: disable Metrics/AbcSize, Layout/LineLength,  Metrics/MethodLength, Style/NestedTernaryOperator, Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity
         def to_pdf(character:)
           super
 
@@ -61,7 +61,6 @@ module SheetsContext
 
           font_size 10
           fill_color '000000'
-
           skills_names = ::Dnd2024::Character.skills
           character.skills.map { |skill|
             skill[:name] = skills_names[skill[:slug]].dig('name', I18n.locale.to_s)
@@ -71,9 +70,36 @@ module SheetsContext
             text_box "#{'+' if skill[:modifier].positive?}#{skill[:modifier]}", at: [200, 467 - (index * 20)], width: 38, align: :center
           end
 
+          font_size 4
+          fill_color '444444'
+          text_box I18n.t('services.sheets_context.attack').upcase, at: [430, 545], width: 25, height: 10, align: :center
+          text_box I18n.t('services.sheets_context.dist').upcase, at: [455, 545], width: 30, height: 10, align: :center
+          text_box I18n.t('services.sheets_context.damage').upcase, at: [485, 545], width: 35, height: 10, align: :center
+          text_box I18n.t('services.sheets_context.type').upcase, at: [520, 545], width: 30, height: 10, align: :center
+
+          fill_color '000000'
+          character.attacks.first(12).each_with_index do |attack, index|
+            font_size 8
+            text_box attack[:name], at: [327, 534 - (index * 36)], width: 100, height: 14
+
+            font_size 6
+            text_box "#{'+' if attack[:attack_bonus].positive?}#{attack[:attack_bonus]}", at: [430, 534 - (index * 36)], width: 25, height: 14, align: :center
+            if attack[:melee_distance] && attack[:melee_distance] > 5
+              text_box attack[:melee_distance].to_s, at: [455, 534 - (index * 36)], width: 30, height: 14, align: :center
+            else
+              text_box attack[:range_distance].to_s, at: [455, 534 - (index * 36)], width: 30, height: 14, align: :center
+            end
+
+            damage = attack[:damage].include?('d') ? "#{attack[:damage]}#{'+' if attack[:damage_bonus].positive?}#{attack[:damage_bonus] unless attack[:damage_bonus].zero?}" : ((attack[:damage].to_i + attack[:damage_bonus]).positive? ? (attack[:damage].to_i + attack[:damage_bonus]).to_s : '-')
+            text_box damage, at: [485, 534 - (index * 36)], width: 35, height: 14, align: :center
+            text_box attack[:damage_type], at: [520, 534 - (index * 36)], width: 30, height: 14, align: :center
+          end
+
+          font_size 10
           text_box I18n.t('services.sheets_context.dnd.health'), at: [70, 659], width: 150, align: :center
           text_box I18n.t('services.sheets_context.dnd.saving_throws'), at: [346, 659], width: 175, align: :center
           text_box I18n.t('services.sheets_context.dnd.skills'), at: [70, 494], width: 150, align: :center
+          text_box I18n.t('services.sheets_context.dnd.attacks'), at: [346, 564], width: 175, align: :center
 
           font_size 6
           text_box I18n.t('services.sheets_context.dnd.current_health').upcase, at: [30, 600], width: 70, align: :center
@@ -92,7 +118,7 @@ module SheetsContext
             fill_and_stroke_rounded_rectangle [222.5 + (index * 13), 563.5], 11, 11, 1
           end
         end
-        # rubocop: enable Metrics/AbcSize, Layout/LineLength,  Metrics/MethodLength
+        # rubocop: enable Metrics/AbcSize, Layout/LineLength,  Metrics/MethodLength, Style/NestedTernaryOperator, Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity
       end
     end
   end
