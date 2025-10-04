@@ -180,9 +180,10 @@ module Dnd2024Character
       end
     end
 
-    # rubocop: disable Metrics/AbcSize, Metrics/MethodLength
+    # rubocop: disable Metrics/AbcSize, Metrics/MethodLength, Metrics/PerceivedComplexity
     def melee_attack(item)
       captions = item[:items_info]['caption']
+      captions = {} if captions.is_a?(Array)
 
       key_ability_bonus = find_key_ability_bonus('melee', captions)
       # обычная атака
@@ -229,6 +230,7 @@ module Dnd2024Character
 
     def range_attack(item, type)
       captions = item[:items_info]['caption']
+      captions = {} if captions.is_a?(Array)
 
       key_ability_bonus = find_key_ability_bonus('range', captions)
       # обычная атака
@@ -262,7 +264,7 @@ module Dnd2024Character
 
       response
     end
-    # rubocop: enable Metrics/AbcSize, Metrics/MethodLength
+    # rubocop: enable Metrics/AbcSize, Metrics/MethodLength, Metrics/PerceivedComplexity
 
     def find_key_ability_bonus(type, captions)
       return [modifiers['str'], modifiers['dex']].max if captions.key?('finesse')
