@@ -11,7 +11,8 @@ module Daggerheart
           races: object_items['Daggerheart::Homebrew::Race'] || [],
           communities: object_items['Daggerheart::Homebrew::Community'] || [],
           subclasses: object_items['Daggerheart::Homebrew::Subclass'] || [],
-          items: object_items['Daggerheart::Item'] || []
+          items: object_items['Daggerheart::Item'] || [],
+          transformations: object_items['Daggerheart::Homebrew::Transformation'] || []
         }
       end
 

@@ -29,6 +29,7 @@ module Daggerheart
               default: { 'health' => 0, 'stress' => 0, 'evasion' => 0, 'proficiency' => 0, 'domain_cards' => 0 }
     attribute :experience, array: true, default: []
     attribute :beastform, :string
+    attribute :transformation, :string
     attribute :selected_stances, array: true, default: []
     attribute :stance, :string
   end

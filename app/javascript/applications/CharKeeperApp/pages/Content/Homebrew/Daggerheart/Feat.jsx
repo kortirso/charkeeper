@@ -24,6 +24,12 @@ export const DaggerheartFeat = (props) => {
 
       return props.characters.find((item) => item.id === props.feat.origin_value)?.name || '';
     }
+    if (props.feat.origin === 'community') {
+      return props.homebrews.communities.find((item) => item.id === props.feat.origin_value)?.name || '';
+    }
+    if (props.feat.origin === 'transformation') {
+      return props.homebrews.transformations.find((item) => item.id === props.feat.origin_value)?.name || '';
+    }
 
     return '';
   });

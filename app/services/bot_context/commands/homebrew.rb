@@ -5,7 +5,8 @@ module BotContext
     class Homebrew
       include Deps[
         add_race: 'commands.homebrew_context.add_race',
-        add_daggerheart_community: 'commands.homebrew_context.daggerheart.add_community'
+        add_daggerheart_community: 'commands.homebrew_context.daggerheart.add_community',
+        add_daggerheart_transformation: 'commands.homebrew_context.daggerheart.add_transformation'
       ]
 
       def call(source:, arguments:, data:) # rubocop: disable Lint/UnusedMethodArgument
@@ -14,6 +15,7 @@ module BotContext
         case arguments.shift
         when 'createRace' then create_race(*arguments, data)
         when 'createCommunity' then create_community(*arguments, data)
+        when 'createTransformation' then create_transformation(*arguments, data)
         end
       end
 
@@ -37,14 +39,18 @@ module BotContext
       end
 
       def create_community(*arguments, data)
-        result =
-          case arguments[0]
-          when 'daggerheart' then add_daggerheart_community.call({ user: data[:user], name: arguments[1] })
-          else { errors_list: ['Invalid command'] }
-          end
-
+        result = add_daggerheart_community.call({ user: data[:user], name: arguments[0] })
         {
           type: 'create_community',
+          result: result[:result],
+          errors: result[:errors_list]
+        }
+      end
+
+      def create_transformation(*arguments, data)
+        result = add_daggerheart_transformation.call({ user: data[:user], name: arguments[0] })
+        {
+          type: 'create_transformation',
           result: result[:result],
           errors: result[:errors_list]
         }

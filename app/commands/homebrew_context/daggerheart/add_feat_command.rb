@@ -11,7 +11,7 @@ module HomebrewContext
       use_contract do
         config.messages.namespace = :homebrew_feat
 
-        Origins = Dry::Types['strict.string'].enum('ancestry', 'class', 'subclass', 'community', 'character')
+        Origins = Dry::Types['strict.string'].enum('ancestry', 'class', 'subclass', 'community', 'character', 'transformation')
         Kinds = Dry::Types['strict.string'].enum('static', 'text')
         Limits = Dry::Types['strict.string'].enum('short_rest', 'long_rest', 'session')
 
@@ -42,6 +42,8 @@ module HomebrewContext
                 ::Daggerheart::Character.class_info(values[:origin_value])
             when 'subclass'
               ::Daggerheart::Homebrew::Subclass.find_by(user_id: values[:user].id, id: values[:origin_value])
+            when 'transformation'
+              ::Daggerheart::Homebrew::Transformation.find_by(user_id: values[:user].id, id: values[:origin_value])
             when 'character'
               values[:user].characters.daggerheart.find_by(id: values[:origin_value])
             end

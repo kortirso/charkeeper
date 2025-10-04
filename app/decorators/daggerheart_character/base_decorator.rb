@@ -5,7 +5,7 @@ module DaggerheartCharacter
     delegate :id, :name, :data, :feats, to: :__getobj__
     delegate :heritage, :main_class, :classes, :subclasses, :level, :gold, :spent_armor_slots, :health_marked, :stress_marked,
              :hope_marked, :traits, :total_gold, :subclasses_mastery, :experiences, :community,
-             :leveling, :experience, :heritage_name, :heritage_features, :domains, :beastform, to: :data
+             :leveling, :experience, :heritage_name, :heritage_features, :domains, :beastform, :transformation, to: :data
 
     def parent = __getobj__
     def method_missing(_method, *args); end
@@ -97,6 +97,10 @@ module DaggerheartCharacter
 
     def tier
       @tier ||= proficiency_by_level + 1
+    end
+
+    def transformations
+      __getobj__.user.user_homebrew&.data&.dig('daggerheart', 'transformations') || {}
     end
 
     private

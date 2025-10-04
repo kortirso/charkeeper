@@ -3,7 +3,8 @@ import * as i18n from '@solid-primitives/i18n';
 import { createWindowSize } from '@solid-primitives/resize-observer';
 
 import {
-  HomebrewRaces, HomebrewFeats, HomebrewItems, HomebrewClasses, HomebrewSubclasses, HomebrewModules, HomebrewCommunities
+  HomebrewRaces, HomebrewFeats, HomebrewItems, HomebrewClasses, HomebrewSubclasses, HomebrewModules, HomebrewCommunities,
+  HomebrewTransformations
 } from '../../pages';
 import { PageHeader, IconButton } from '../../components';
 import { Arrow } from '../../assets';
@@ -87,6 +88,14 @@ export const HomebrewContentTab = (props) => {
         </Match>
         <Match when={appState.activePageParams.content === 'communities'}>
           <HomebrewCommunities
+            provider={appState.activePageParams.provider}
+            homebrews={homebrews()}
+            removeHomebrew={removeHomebrew}
+            reloadHomebrews={reloadHomebrews}
+          />
+        </Match>
+        <Match when={appState.activePageParams.content === 'transformations'}>
+          <HomebrewTransformations
             provider={appState.activePageParams.provider}
             homebrews={homebrews()}
             removeHomebrew={removeHomebrew}
