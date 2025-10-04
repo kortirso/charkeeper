@@ -12,7 +12,7 @@ module DaggerheartCharacter
 
     # rubocop: disable Naming/PredicateMethod
     def can_have_companion
-      subclasses.value?('beastbound')
+      available_mechanics.include?('companion')
     end
     # rubocop: enable Naming/PredicateMethod
 
@@ -89,18 +89,26 @@ module DaggerheartCharacter
         end.uniq # rubocop: disable Style/MethodCalledOnDoEndBlock
     end
 
+    def available_mechanics
+      @available_mechanics ||=
+        subclasses.filter_map do |key, value|
+          default = Daggerheart::Character.subclass_info(key, value)
+          default ? default['mechanics'] : mechanics_for_homebrew_subclass(value)
+        end.flatten.uniq # rubocop: disable Style/MethodCalledOnDoEndBlock
+    end
+
     def beastforms
-      return [] if classes.keys.exclude?('druid')
+      return [] if available_mechanics.exclude?('beastform')
 
       BeastformConfig.data('daggerheart').select { |_, values| values['tier'] <= tier }.keys
     end
 
-    def tier
-      @tier ||= proficiency_by_level + 1
-    end
-
     def transformations
       __getobj__.user.user_homebrew&.data&.dig('daggerheart', 'transformations') || {}
+    end
+
+    def tier
+      @tier ||= proficiency_by_level + 1
     end
 
     private
@@ -250,7 +258,15 @@ module DaggerheartCharacter
     end
 
     def spellcast_for_homebrew_subclass(subclass)
-      Daggerheart::Homebrew::Subclass.find(subclass).data.spellcast
+      homebrew_subclass(subclass).data.spellcast
+    end
+
+    def mechanics_for_homebrew_subclass(subclass)
+      homebrew_subclass(subclass).data.mechanics
+    end
+
+    def homebrew_subclass(subclass)
+      @homebrew_subclass ||= Daggerheart::Homebrew::Subclass.find(subclass)
     end
   end
 end

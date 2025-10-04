@@ -11,7 +11,8 @@ export const NewDaggerheartSubclassForm = (props) => {
   const [subclassForm, setSubclassForm] = createStore({
     name: '',
     class_name: '',
-    spellcast: null
+    spellcast: null,
+    mechanics: []
   });
 
   const [locale, dict] = useAppLocale();
@@ -24,6 +25,12 @@ export const NewDaggerheartSubclassForm = (props) => {
 
     return { ...result, ...props.homebrews.classes.reduce((acc, item) => { acc[item.id] = item.name; return acc; }, {}) };
   });
+
+  const updateMultiFeatureValue = (value) => {
+    const currentValues = subclassForm.mechanics;
+    const newValue = currentValues.includes(value) ? currentValues.filter((item) => item !== value) : currentValues.concat([value]);
+    setSubclassForm({ ...subclassForm, mechanics: newValue });
+  }
 
   return (
     <>
@@ -46,6 +53,14 @@ export const NewDaggerheartSubclassForm = (props) => {
         items={translate(config.traits, locale())}
         selectedValue={subclassForm.spellcast}
         onSelect={(value) => setSubclassForm({ ...subclassForm, spellcast: value })}
+      />
+      <Select
+        multi
+        containerClassList="mb-4"
+        labelText={t('pages.homebrewPage.daggerheart.mechanics')}
+        items={translate(config.mechanics, locale())}
+        selectedValues={subclassForm.mechanics}
+        onSelect={(value) => updateMultiFeatureValue(value)}
       />
       <div class="flex gap-4 w-full">
         <Button outlined classList="flex-1" onClick={props.onCancel}>{t('cancel')}</Button>

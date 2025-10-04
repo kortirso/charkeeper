@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Added
 - shared homebrew books
 - transformations for Daggerheart characters
+- setting available mechanics for Daggerheart homebrew subclasses
 
 ### Modified
 - setting damage and trait for Daggerjeart homebrew weapons

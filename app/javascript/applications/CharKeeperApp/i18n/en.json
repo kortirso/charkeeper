@@ -112,7 +112,8 @@
         "includedItems": "Items",
         "itemOrigin": "Attach item to",
         "itemOriginValue": "Attachable object",
-        "transformations": "Transformations"
+        "transformations": "Transformations",
+        "mechanics": "Available mechanics"
       },
       "personalFeats": "Personal feats can be created through homebrew"
     },

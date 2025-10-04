@@ -56,7 +56,7 @@ export const Daggerheart = (props) => {
       { title: 'personal', callback: personalFilter }
     ];
 
-    if (Object.keys(character().beastforms).length > 0) result.push({ title: 'beastform', callback: beastformFilter });
+    if (character().beastform !== null) result.push({ title: 'beastform', callback: beastformFilter });
     if (character().transformation !== null) result.push({ title: 'transformation', callback: transformationFilter });
     return result;
   });
