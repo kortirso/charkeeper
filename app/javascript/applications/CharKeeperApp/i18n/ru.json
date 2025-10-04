@@ -112,7 +112,8 @@
         "includedItems": "Предметы",
         "itemOrigin": "Принадлежность",
         "itemOriginValue": "Объект принадлежности",
-        "transformations": "Трансформации"
+        "transformations": "Трансформации",
+        "mechanics": "Доступные механики"
       },
       "personalFeats": "Личные способности могут быть добавлены через homebrew"
     },

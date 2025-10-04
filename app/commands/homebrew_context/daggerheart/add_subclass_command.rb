@@ -15,6 +15,7 @@ module HomebrewContext
           required(:name).filled(:string, max_size?: 50)
           required(:class_name).filled(:string)
           required(:spellcast).maybe(:string)
+          optional(:mechanics).maybe(:array).each(:string)
         end
       end
 
@@ -22,7 +23,7 @@ module HomebrewContext
 
       def do_prepare(input)
         input[:attributes] = input.slice(:user, :name, :class_name)
-        input[:data] = { data: input.slice(:spellcast) }
+        input[:data] = { data: input.slice(:spellcast, :mechanics) }
       end
 
       def do_persist(input)

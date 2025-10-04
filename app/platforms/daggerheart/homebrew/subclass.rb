@@ -6,6 +6,7 @@ module Daggerheart
       include StoreModel::Model
 
       attribute :spellcast, :string
+      attribute :mechanics, array: true, default: [] # beastform, companion
     end
 
     class Subclass < ::Homebrew::Subclass

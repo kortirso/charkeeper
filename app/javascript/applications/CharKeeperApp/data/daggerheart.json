@@ -185,72 +185,72 @@
     "bard": {
       "name": { "en": "Bard", "ru": "Бард" },
       "subclasses": {
-        "troubadour": { "name": { "en": "Troubadour", "ru": "Трубадур" }, "spellcast": "pre" },
-        "wordsmith": { "name": { "en": "Wordsmith", "ru": "Оратор" }, "spellcast": "pre" }
+        "troubadour": { "name": { "en": "Troubadour", "ru": "Трубадур" }, "spellcast": "pre", "mechanics": [] },
+        "wordsmith": { "name": { "en": "Wordsmith", "ru": "Оратор" }, "spellcast": "pre", "mechanics": [] }
       },
       "domains": ["codex", "grace"]
     },
     "druid": {
       "name": { "en": "Druid", "ru": "Друид" },
       "subclasses": {
-        "warden_of_the_elements": { "name": { "en": "Warden of the Elements", "ru": "Хранитель стихий" }, "spellcast": "ins" },
-        "warden_of_renewal": { "name": { "en": "Warden of Renewal", "ru": "Хранитель жизни" }, "spellcast": "ins" }
+        "warden_of_the_elements": { "name": { "en": "Warden of the Elements", "ru": "Хранитель стихий" }, "spellcast": "ins", "mechanics": ["beastform"] },
+        "warden_of_renewal": { "name": { "en": "Warden of Renewal", "ru": "Хранитель жизни" }, "spellcast": "ins", "mechanics": ["beastform"] }
       },
       "domains": ["arcana", "sage"]
     },
     "guardian": {
       "name": { "en": "Guardian", "ru": "Страж" },
       "subclasses": {
-        "stalwart": { "name": { "en": "Stalwart", "ru": "Заступник" }, "spellcast": null },
-        "vengeance": { "name": { "en": "Vengeance", "ru": "Мститель" }, "spellcast": null }
+        "stalwart": { "name": { "en": "Stalwart", "ru": "Заступник" }, "spellcast": null, "mechanics": [] },
+        "vengeance": { "name": { "en": "Vengeance", "ru": "Мститель" }, "spellcast": null, "mechanics": [] }
       },
       "domains": ["blade", "valor"]
     },
     "ranger": {
       "name": { "en": "Ranger", "ru": "Следопыт" },
       "subclasses": {
-        "beastbound": { "name": { "en": "Beastbound", "ru": "Звериные узы" }, "spellcast": "agi" },
-        "wayfinder": { "name": { "en": "Wayfinder", "ru": "Путевод" }, "spellcast": "agi" }
+        "beastbound": { "name": { "en": "Beastbound", "ru": "Звериные узы" }, "spellcast": "agi", "mechanics": ["companion"] },
+        "wayfinder": { "name": { "en": "Wayfinder", "ru": "Путевод" }, "spellcast": "agi", "mechanics": [] }
       },
       "domains": ["bone", "sage"]
     },
     "rogue": {
       "name": { "en": "Rogue", "ru": "Плут" },
       "subclasses": {
-        "nightwalker": { "name": { "en": "Nightwalker", "ru": "Тень" }, "spellcast": "fin" },
-        "syndicate": { "name": { "en": "Syndicate", "ru": "Синдикат" }, "spellcast": "fin" }
+        "nightwalker": { "name": { "en": "Nightwalker", "ru": "Тень" }, "spellcast": "fin", "mechanics": [] },
+        "syndicate": { "name": { "en": "Syndicate", "ru": "Синдикат" }, "spellcast": "fin", "mechanics": [] }
       },
       "domains": ["grace", "midnight"]
     },
     "seraph": {
       "name": { "en": "Seraph", "ru": "Серафим" },
       "subclasses": {
-        "divine_wielder": { "name": { "en": "Divine Wielder", "ru": "Божественный воитель" }, "spellcast": "str" },
-        "winged_sentinel": { "name": { "en": "Winged Sentinel", "ru": "Крылатый страж" }, "spellcast": "str" }
+        "divine_wielder": { "name": { "en": "Divine Wielder", "ru": "Божественный воитель" }, "spellcast": "str", "mechanics": [] },
+        "winged_sentinel": { "name": { "en": "Winged Sentinel", "ru": "Крылатый страж" }, "spellcast": "str", "mechanics": [] }
       },
       "domains": ["splendor", "valor"]
     },
     "sorcerer": {
       "name": { "en": "Sorcerer", "ru": "Чародей" },
       "subclasses": {
-        "elemental_origin": { "name": { "en": "Elemental Origin", "ru": "Стихийное начало" }, "spellcast": "ins" },
-        "Primal_origin": { "name": { "en": "Primal Origin", "ru": "Первозданное начало" }, "spellcast": "ins" }
+        "elemental_origin": { "name": { "en": "Elemental Origin", "ru": "Стихийное начало" }, "spellcast": "ins", "mechanics": [] },
+        "Primal_origin": { "name": { "en": "Primal Origin", "ru": "Первозданное начало" }, "spellcast": "ins", "mechanics": [] }
       },
       "domains": ["arcana", "midnight"]
     },
     "warrior": {
       "name": { "en": "Warrior", "ru": "Воин" },
       "subclasses": {
-        "call_of_the_brave": { "name": { "en": "Call of the Brave", "ru": "Зов храбреца" }, "spellcast": null },
-        "call_of_the_slayer": { "name": { "en": "Call of the Slayer", "ru": "Зов истребителя" }, "spellcast": null }
+        "call_of_the_brave": { "name": { "en": "Call of the Brave", "ru": "Зов храбреца" }, "spellcast": null, "mechanics": [] },
+        "call_of_the_slayer": { "name": { "en": "Call of the Slayer", "ru": "Зов истребителя" }, "spellcast": null, "mechanics": [] }
       },
       "domains": ["blade", "bone"]
     },
     "wizard": {
       "name": { "en": "Wizard", "ru": "Волшебник" },
       "subclasses": {
-        "school_of_knowledge": { "name": { "en": "School of Knowledge", "ru": "Школа знаний" }, "spellcast": "know" },
-        "school_of_war": { "name": { "en": "School of War", "ru": "Школа войны" }, "spellcast": "know" }
+        "school_of_knowledge": { "name": { "en": "School of Knowledge", "ru": "Школа знаний" }, "spellcast": "know", "mechanics": [] },
+        "school_of_war": { "name": { "en": "School of War", "ru": "Школа войны" }, "spellcast": "know", "mechanics": [] }
       },
       "domains": ["codex", "splendor"]
     }
@@ -307,5 +307,9 @@
   "damageTypes": {
     "physical": { "name": { "en": "Physical", "ru": "Физический" } },
     "magic": { "name": { "en": "Magic", "ru": "Магический" } }
+  },
+  "mechanics": {
+    "beastform": { "name": { "en": "Beastform", "ru": "Превращение в зверя" } },
+    "companion": { "name": { "en": "Companion", "ru": "Питомец" } }
   }
 }
