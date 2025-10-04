@@ -5,7 +5,7 @@ module HomebrewContext
     class CopyRaceCommand < BaseCommand
       include Deps[
         add_race: 'commands.homebrew_context.daggerheart.add_race',
-        add_feat: 'commands.homebrew_context.daggerheart.add_feat'
+        copy_feats: 'commands.homebrew_context.daggerheart.copy_feats'
       ]
 
       use_contract do
@@ -21,27 +21,16 @@ module HomebrewContext
         result = ActiveRecord::Base.transaction do
           race = add_race.call({ user: input[:user], name: input[:race].name })[:result]
 
-          input[:race].user.feats.where(origin: 0, origin_value: input[:race].id).find_each do |feat|
-            add_feat.call(feat_attributes(feat, race).merge({ user: input[:user] }))
-          end
+          copy_feats.call(
+            feats: input[:race].user.feats.where(origin: 0, origin_value: input[:race].id).to_a,
+            user: input[:user],
+            origin_value: race.id
+          )
 
           race
         end
 
         { result: result }
-      end
-
-      def feat_attributes(feat, race)
-        feat
-          .attributes
-          .slice('origin', 'kind', 'limit', 'limit_refresh')
-          .symbolize_keys
-          .merge({
-            origin_value: race.id,
-            title: feat.title['en'],
-            description: feat.description['en'],
-            limit: feat.description_eval_variables['limit']
-          }).compact
       end
     end
   end

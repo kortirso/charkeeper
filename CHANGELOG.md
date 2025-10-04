@@ -13,7 +13,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - rendering attacks for PDFs
 
 ### Modified
-- setting damage and trait for Daggerjeart homebrew weapons
+- setting damage and trait for Daggerheart homebrew weapons
+- coping feats with attached items
 
 ## [0.3.6] - 2025-10-01
 ### Added
