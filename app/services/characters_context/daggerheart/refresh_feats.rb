@@ -33,7 +33,8 @@ module CharactersContext
         data = character.data
         ::Daggerheart::Feat.where(
           origin_value: [
-            data.heritage, data.community, data.classes.keys, data.subclasses.values, data.beastform, character.id
+            data.heritage, data.community, data.classes.keys, data.subclasses.values, data.beastform, character.id,
+            data.transformation
           ].flatten.compact.uniq
         ).or(::Daggerheart::Feat.where(origin: 'ancestry', slug: data.heritage_features))
       end

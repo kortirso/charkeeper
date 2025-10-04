@@ -58,6 +58,7 @@ module CharactersContext
             required(:exp_level).filled(:integer, gteq?: 0)
           end
           optional(:beastform).maybe(Beastforms)
+          optional(:transformation).maybe(:string)
         end
 
         rule(:avatar_file, :avatar_url).validate(:check_only_one_present)
@@ -87,7 +88,9 @@ module CharactersContext
         input[:character].assign_attributes(input.slice(:name))
         input[:character].save!
 
-        refresh_feats.call(character: input[:character]) if %i[classes subclasses subclasses_mastery].intersect?(input.keys)
+        if %i[classes subclasses subclasses_mastery transformation beastform].intersect?(input.keys)
+          refresh_feats.call(character: input[:character])
+        end
 
         attach_avatar_by_file.call({ character: input[:character], file: input[:avatar_file] }) if input[:avatar_file]
         attach_avatar_by_url.call({ character: input[:character], url: input[:avatar_url] }) if input[:avatar_url]

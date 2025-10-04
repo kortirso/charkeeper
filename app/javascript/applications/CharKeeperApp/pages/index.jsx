@@ -21,6 +21,7 @@ export * from './Content/CampaignJoinTab';
 
 export * from './Content/Homebrew/Races';
 export * from './Content/Homebrew/Communities';
+export * from './Content/Homebrew/Transformations';
 export * from './Content/Homebrew/Feats';
 export * from './Content/Homebrew/Items';
 export * from './Content/Homebrew/Classes';
@@ -62,9 +63,11 @@ export * from './Content/Character/Daggerheart/DomainCardsTable';
 export * from './Content/Character/Daggerheart/Rest';
 export * from './Content/Character/Daggerheart/Beastform';
 export * from './Content/Character/Daggerheart/Companion';
+export * from './Content/Character/Daggerheart/Transformation';
 
 export * from './Content/Homebrew/Daggerheart/Race';
 export * from './Content/Homebrew/Daggerheart/Community';
+export * from './Content/Homebrew/Daggerheart/Transformation';
 export * from './Content/Homebrew/Daggerheart/NewFeatForm';
 export * from './Content/Homebrew/Daggerheart/Feat';
 export * from './Content/Homebrew/Daggerheart/NewItemForm';

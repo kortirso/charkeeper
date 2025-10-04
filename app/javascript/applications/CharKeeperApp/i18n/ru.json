@@ -55,7 +55,8 @@
       "species": "Вид",
       "legacy": "Подвид",
       "feat": "Навык",
-      "personal": "Личные"
+      "personal": "Личные",
+      "transformation": "Трансформация"
     },
     "homebrewPage": {
       "title": "Homebrew",
@@ -104,12 +105,14 @@
         "damageBonus": "Бонус урона",
         "burden": "Руки",
         "modules": "Модули",
-        "includedAncestries": "Включённые расы",
-        "includedCommunities": "Включённые общества",
-        "includedSubclasses": "Включённые подклассы",
-        "includedItems": "Включённые предметы",
+        "includedAncestries": "Расы",
+        "includedCommunities": "Общества",
+        "includedTransformations": "Трансформации",
+        "includedSubclasses": "Подклассы",
+        "includedItems": "Предметы",
         "itemOrigin": "Принадлежность",
-        "itemOriginValue": "Объект принадлежности"
+        "itemOriginValue": "Объект принадлежности",
+        "transformations": "Трансформации"
       },
       "personalFeats": "Личные способности могут быть добавлены через homebrew"
     },
@@ -141,7 +144,8 @@
           "class": "Класс",
           "subclass": "Подкласс",
           "community": "Общество",
-          "character": "Персонаж"
+          "character": "Персонаж",
+          "transformation": "Трансформация"
         },
         "kinds": {
           "static": "Вывод описания",
@@ -229,6 +233,10 @@
     },
     "beast": {
       "transformation": "Превращение в зверя",
+      "naturalForm": "Естественная форма"
+    },
+    "transformation": {
+      "transformation": "Трансформация",
       "naturalForm": "Естественная форма"
     },
     "companion": {

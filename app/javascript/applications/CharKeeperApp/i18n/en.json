@@ -55,7 +55,8 @@
       "species": "Species",
       "legacy": "Legacy",
       "feat": "Feat",
-      "personal": "Personal"
+      "personal": "Personal",
+      "transformation": "Transformation"
     },
     "homebrewPage": {
       "title": "Homebrew",
@@ -104,12 +105,14 @@
         "damageBonus": "Damage bonus",
         "burden": "Burden",
         "modules": "Modules",
-        "includedAncestries": "Included ancestries",
-        "includedCommunities": "Included communities",
-        "includedSubclasses": "Included subclasses",
-        "includedItems": "Included items",
+        "includedAncestries": "Ancestries",
+        "includedCommunities": "Communities",
+        "includedTransformations": "Transformations",
+        "includedSubclasses": "Subclasses",
+        "includedItems": "Items",
         "itemOrigin": "Attach item to",
-        "itemOriginValue": "Attachable object"
+        "itemOriginValue": "Attachable object",
+        "transformations": "Transformations"
       },
       "personalFeats": "Personal feats can be created through homebrew"
     },
@@ -141,7 +144,8 @@
           "class": "Class",
           "subclass": "Subclass",
           "community": "Community",
-          "character": "Character"
+          "character": "Character",
+          "transformation": "Transformation"
         },
         "kinds": {
           "static": "Static text",
@@ -229,6 +233,10 @@
     },
     "beast": {
       "transformation": "Transformation to beast",
+      "naturalForm": "Natural form"
+    },
+    "transformation": {
+      "transformation": "Transformation",
       "naturalForm": "Natural form"
     },
     "companion": {

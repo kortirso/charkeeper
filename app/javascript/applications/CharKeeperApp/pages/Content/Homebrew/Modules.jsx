@@ -87,6 +87,14 @@ export const HomebrewModules = (props) => {
                         }
                       </For>
                     </Show>
+                    <Show when={book.items.transformations.length > 0}>
+                      <p class="mt-8 mb-2">{t(`pages.homebrewPage.${props.provider}.includedTransformations`)}</p>
+                      <For each={props.homebrews.transformations.filter((item) => book.items.transformations.includes(item.id))}>
+                        {(transformation) =>
+                          <p class="flex-1">{transformation.name}</p>
+                        }
+                      </For>
+                    </Show>
                   </Match>
                 </Switch>
                 <Show when={book.shared}>

@@ -50,6 +50,12 @@ export const NewDaggerheartFeatForm = (props) => {
     return { ...result, ...props.homebrews.communities.reduce((acc, item) => { acc[item.id] = item.name; return acc; }, {}) };
   });
 
+  const daggerheartTransformations = createMemo(() => {
+    if (props.homebrews === undefined) return {};
+
+    return props.homebrews.trans.reduce((acc, item) => { acc[item.id] = item.name; return acc; }, {});
+  });
+
   const daggerheartCharacters = createMemo(() => {
     if (props.characters === undefined) return [];
 
@@ -62,6 +68,7 @@ export const NewDaggerheartFeatForm = (props) => {
     if (featForm.origin === 'subclass') return daggerheartSubclasses();
     if (featForm.origin === 'community') return daggerheartCommunities();
     if (featForm.origin === 'character') return daggerheartCharacters();
+    if (featForm.origin === 'transformation') return daggerheartTransformations();
     
     return [];
   });

@@ -64,6 +64,8 @@ en:
             result: "Race \"%{name}\" is created"
           add_community:
             result: "Community \"%{name}\" is created"
+          add_transformation:
+            result: "Transformation \"%{name}\" is created"
   decorators:
     pathfinder2:
       boosts: "You can improve abilities: %{ability_boosts_text}.\nYou can learn skills: %{skill_boosts_text}"
@@ -77,6 +79,9 @@ en:
       communities:
         daggerheart:
           character_exists: Character with such community exists
+      transformations:
+        daggerheart:
+          character_exists: Character with such transformation exists
       specialities:
         daggerheart:
           character_exists: Character with such class exists

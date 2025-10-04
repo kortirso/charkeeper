@@ -64,6 +64,8 @@ ru:
             result: "Раса \"%{name}\" создана"
           add_community:
             result: "Общество \"%{name}\" создано"
+          add_transformation:
+            result: "Трансформация \"%{name}\" создано"
   decorators:
     pathfinder2:
       boosts: "Вы можете улучшить следующие характеристики: %{ability_boosts_text}.\nТакже вы можете изучить следующие умения: %{skill_boosts_text}"
@@ -77,6 +79,9 @@ ru:
       communities:
         daggerheart:
           character_exists: Персонаж с таким обществом существует
+      transformations:
+        daggerheart:
+          character_exists: Персонаж с такой трансформацией существует
       specialities:
         daggerheart:
           character_exists: Персонаж с таким классом существует

@@ -7,6 +7,7 @@ module HomebrewsContext
         daggerheart: {
           races: daggerheart_heritages(user_id),
           communities: daggerheart_communities(user_id),
+          transformations: daggerheart_transformations(user_id),
           classes: daggerheart_classes(user_id),
           subclasses: daggerheart_subclasses(user_id)
         },
@@ -38,6 +39,15 @@ module HomebrewsContext
 
     def daggerheart_communities(user_id)
       relation = ::Daggerheart::Homebrew::Community.left_outer_joins(:homebrew_book_items)
+      relation.where(user_id: user_id)
+        .or(relation.where(homebrew_book_items: { homebrew_book_id: available_books(user_id) }))
+        .each_with_object({}) do |item, acc|
+          acc[item.id] = { name: { en: item.name, ru: item.name } }
+        end
+    end
+
+    def daggerheart_transformations(user_id)
+      relation = ::Daggerheart::Homebrew::Transformation.left_outer_joins(:homebrew_book_items)
       relation.where(user_id: user_id)
         .or(relation.where(homebrew_book_items: { homebrew_book_id: available_books(user_id) }))
         .each_with_object({}) do |item, acc|

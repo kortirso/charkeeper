@@ -104,6 +104,16 @@ module Charkeeper
     register('commands.campaigns_context.add_campaign') { CampaignsContext::AddCampaignCommand.new }
     register('commands.campaigns_context.join_campaign') { CampaignsContext::JoinCampaignCommand.new }
 
+    register('commands.homebrew_context.daggerheart.add_transformation') {
+      HomebrewContext::Daggerheart::AddTransformationCommand.new
+    }
+    register('commands.homebrew_context.daggerheart.copy_transformation') {
+      HomebrewContext::Daggerheart::CopyTransformationCommand.new
+    }
+    register('commands.homebrew_context.daggerheart.add_book_transformations') {
+      HomebrewContext::Daggerheart::AddBookTransformationsCommand.new
+    }
+
     # services
     register('services.auth_context.validate_web_telegram_signature') { AuthContext::WebTelegramSignatureValidateService.new }
 

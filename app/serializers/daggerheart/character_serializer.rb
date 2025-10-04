@@ -7,14 +7,14 @@ module Daggerheart
                :damage_thresholds, :evasion, :armor_score, :stress_max, :hope_max, :armor_slots, :features,
                :leveling, :subclasses, :subclasses_mastery, :attacks, :experience, :heritage_name,
                :domains, :selected_domains, :domain_cards_max, :spellcast_traits, :beastform, :beastforms, :tier, :proficiency,
-               :can_have_companion
+               :can_have_companion, :transformations, :transformation
 
     delegate :id, :name, :level, :heritage, :main_class, :classes, :traits, :gold, :spent_armor_slots, :health_marked,
              :health_max, :stress_marked, :hope_marked, :stress_max, :hope_max, :modified_traits, :damage_thresholds, :evasion,
              :armor_score, :armor_slots, :features, :leveling, :subclasses,
              :subclasses_mastery, :attacks, :experience, :heritage_name, :domains, :selected_domains,
              :domain_cards_max, :spellcast_traits, :beastform, :beastforms, :tier, :proficiency,
-             :can_have_companion, to: :decorator
+             :can_have_companion, :transformations, :transformation, to: :decorator
     delegate :created_at, to: :object
 
     def provider
