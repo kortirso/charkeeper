@@ -9,11 +9,15 @@ module SheetsContext
           super
 
           abilities_names = ::Dnd2024::Character.abilities
-          font_size 6
           fill_color 'FFFFFF'
           %w[str dex con int wis cha].each_with_index do |item, index|
             ability_name = abilities_names[item].dig('name', I18n.locale.to_s)
+
+            font_size 6
             text_box ability_name, at: [233 + (55 * index), 736], width: 43, align: :center
+
+            font_size 5
+            text_box ability_name, at: [311 + (42 * index), 599.5], width: 36, align: :center
           end
 
           text_box I18n.t('services.sheets_context.dnd.armor_class'), at: [48, 700], width: 43, align: :center
@@ -28,6 +32,10 @@ module SheetsContext
             font_size 10
             value = "#{'+' if character.modifiers[item].positive?}#{character.modifiers[item]}"
             text_box value, at: [245.5 + (index * 55), 699], width: 18, height: 14, align: :center
+
+            font_size 12
+            value = "#{'+' if character.save_dc[item].positive?}#{character.save_dc[item]}"
+            text_box value, at: [314 + (index * 42), 620], width: 30, height: 14, align: :center
           end
 
           font_size 12
@@ -64,6 +72,7 @@ module SheetsContext
           end
 
           text_box I18n.t('services.sheets_context.dnd.health'), at: [70, 659], width: 150, align: :center
+          text_box I18n.t('services.sheets_context.dnd.saving_throws'), at: [346, 659], width: 175, align: :center
           text_box I18n.t('services.sheets_context.dnd.skills'), at: [70, 494], width: 150, align: :center
 
           font_size 6

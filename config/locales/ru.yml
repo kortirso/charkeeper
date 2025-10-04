@@ -35,6 +35,7 @@ ru:
         temp_health: Временное
         success: Успех
         failure: Провал
+        saving_throws: СПАСБРОСКИ
       daggerheart:
         proficiency: Мастерство
         evasion: Уклонение

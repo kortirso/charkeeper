@@ -85,6 +85,10 @@ module Pathfinder2
       config['skills']
     end
 
+    def self.saving_throws
+      config['savingThrows']
+    end
+
     attribute :data, Pathfinder2::CharacterData.to_type
 
     def decorator

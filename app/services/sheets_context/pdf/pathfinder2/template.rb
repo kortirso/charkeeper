@@ -16,6 +16,13 @@ module SheetsContext
             text_box ability_name, at: [233 + (55 * index), 736], width: 43, align: :center
           end
 
+          saving_throws = ::Pathfinder2::Character.saving_throws
+          font_size 5
+          %w[fortitude reflex will].each_with_index do |item, index|
+            saving_throw = saving_throws[item].dig('name', I18n.locale.to_s)
+            text_box saving_throw, at: [365 + (54 * index), 599.5], width: 36, align: :center
+          end
+
           text_box I18n.t('services.sheets_context.pathfinder.armor_class'), at: [48, 700], width: 43, align: :center
           text_box I18n.t('services.sheets_context.pathfinder.perception'), at: [101, 700], width: 43, align: :center
           text_box I18n.t('services.sheets_context.pathfinder.speed'), at: [154, 700], width: 43, align: :center
@@ -25,6 +32,11 @@ module SheetsContext
           %w[str dex con int wis cha].each_with_index do |item, index|
             value = "#{'+' if character.abilities[item].positive?}#{character.abilities[item]}"
             text_box value, at: [242 + (index * 55), 718], width: 25, height: 14, align: :center
+          end
+
+          %w[fortitude reflex will].each_with_index do |item, index|
+            value = "#{'+' if character.saving_throws_value[item.to_sym].positive?}#{character.saving_throws_value[item.to_sym]}"
+            text_box value, at: [368 + (index * 54), 620], width: 30, height: 14, align: :center
           end
 
           text_box character.armor_class.to_s, at: [51, 722], width: 37, height: 14, align: :center
@@ -49,6 +61,7 @@ module SheetsContext
           end
 
           text_box I18n.t('services.sheets_context.dnd.health'), at: [70, 659], width: 150, align: :center
+          text_box I18n.t('services.sheets_context.dnd.saving_throws'), at: [346, 659], width: 175, align: :center
           text_box I18n.t('services.sheets_context.dnd.skills'), at: [70, 538], width: 150, align: :center
 
           font_size 6

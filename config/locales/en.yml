@@ -35,6 +35,7 @@ en:
         temp_health: Temp
         success: Success
         failure: Failure
+        saving_throws: SAVING THROWS
       daggerheart:
         proficiency: Proficiency
         evasion: Evasion
