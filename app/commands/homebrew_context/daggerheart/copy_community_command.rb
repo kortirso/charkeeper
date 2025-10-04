@@ -5,7 +5,7 @@ module HomebrewContext
     class CopyCommunityCommand < BaseCommand
       include Deps[
         add_community: 'commands.homebrew_context.daggerheart.add_community',
-        add_feat: 'commands.homebrew_context.daggerheart.add_feat'
+        copy_feats: 'commands.homebrew_context.daggerheart.copy_feats'
       ]
 
       use_contract do
@@ -21,27 +21,16 @@ module HomebrewContext
         result = ActiveRecord::Base.transaction do
           community = add_community.call({ user: input[:user], name: input[:community].name })[:result]
 
-          input[:community].user.feats.where(origin: 1, origin_value: input[:community].id).find_each do |feat|
-            add_feat.call(feat_attributes(feat, community).merge({ user: input[:user] }))
-          end
+          copy_feats.call(
+            feats: input[:community].user.feats.where(origin: 1, origin_value: input[:community].id).to_a,
+            user: input[:user],
+            origin_value: community.id
+          )
 
           community
         end
 
         { result: result }
-      end
-
-      def feat_attributes(feat, community)
-        feat
-          .attributes
-          .slice('origin', 'kind', 'limit', 'limit_refresh')
-          .symbolize_keys
-          .merge({
-            origin_value: community.id,
-            title: feat.title['en'],
-            description: feat.description['en'],
-            limit: feat.description_eval_variables['limit']
-          }).compact
       end
     end
   end

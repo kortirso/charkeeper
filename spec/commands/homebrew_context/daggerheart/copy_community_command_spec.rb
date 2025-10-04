@@ -8,14 +8,19 @@ describe HomebrewContext::Daggerheart::CopyCommunityCommand do
   let!(:user) { create :user }
   let!(:community) { create :homebrew_community, :daggerheart, user: user }
 
-  before { create :feat, :rally, user: user, origin: 1, origin_value: community.id }
+  before do
+    feat = create :feat, :rally, user: user, origin: 1, origin_value: community.id
+    create :item, itemable: feat, user: user
+  end
 
   it 'creates new community with feat', :aggregate_failures do
     expect { command_call }.to(
       change(Daggerheart::Homebrew::Community, :count).by(1)
         .and(change(Feat, :count).by(1))
+        .and(change(Item, :count).by(1))
     )
     expect(command_call[:errors]).to be_nil
     expect(Feat.last.origin_value).to eq Daggerheart::Homebrew::Community.last.id
+    expect(Item.last.itemable).to eq Feat.last
   end
 end

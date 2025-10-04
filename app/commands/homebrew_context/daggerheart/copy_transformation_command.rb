@@ -5,7 +5,7 @@ module HomebrewContext
     class CopyTransformationCommand < BaseCommand
       include Deps[
         add_transformation: 'commands.homebrew_context.daggerheart.add_transformation',
-        add_feat: 'commands.homebrew_context.daggerheart.add_feat'
+        copy_feats: 'commands.homebrew_context.daggerheart.copy_feats'
       ]
 
       use_contract do
@@ -17,31 +17,20 @@ module HomebrewContext
 
       private
 
-      def do_persist(input) # rubocop: disable Metrics/AbcSize
+      def do_persist(input)
         result = ActiveRecord::Base.transaction do
           transformation = add_transformation.call({ user: input[:user], name: input[:transformation].name })[:result]
 
-          input[:transformation].user.feats.where(origin: 6, origin_value: input[:transformation].id).find_each do |feat|
-            add_feat.call(feat_attributes(feat, transformation).merge({ user: input[:user] }))
-          end
+          copy_feats.call(
+            feats: input[:transformation].user.feats.where(origin: 6, origin_value: input[:transformation].id).to_a,
+            user: input[:user],
+            origin_value: transformation.id
+          )
 
           community
         end
 
         { result: result }
-      end
-
-      def feat_attributes(feat, transformation)
-        feat
-          .attributes
-          .slice('origin', 'kind', 'limit', 'limit_refresh')
-          .symbolize_keys
-          .merge({
-            origin_value: transformation.id,
-            title: feat.title['en'],
-            description: feat.description['en'],
-            limit: feat.description_eval_variables['limit']
-          }).compact
       end
     end
   end
