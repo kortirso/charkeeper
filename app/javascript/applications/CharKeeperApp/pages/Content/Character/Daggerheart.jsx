@@ -4,7 +4,8 @@ import { createWindowSize } from '@solid-primitives/resize-observer';
 
 import {
   DaggerheartTraits, DaggerheartStatic, DaggerheartHealth, DaggerheartCombat, DaggerheartBeastform, DaggerheartCompanion,
-  DaggerheartDomainCards, DaggerheartRest, DaggerheartLeveling, DaggerheartExperience, DaggerheartGold, DaggerheartTransform
+  DaggerheartDomainCards, DaggerheartRest, DaggerheartLeveling, DaggerheartExperience, DaggerheartGold, DaggerheartTransform,
+  DaggerheartStances
 } from '../../../pages';
 import { CharacterNavigation, Equipment, Bonuses, Notes, Avatar, ContentWrapper, Feats } from '../../../components';
 import { useAppLocale } from '../../../context';
@@ -83,6 +84,9 @@ export const Daggerheart = (props) => {
               </div>
               <div class="mt-4">
                 <DaggerheartTransform character={character()} onReplaceCharacter={props.onReplaceCharacter} />
+              </div>
+              <div class="mt-4">
+                <DaggerheartStances character={character()} onReplaceCharacter={props.onReplaceCharacter} />
               </div>
               <div class="mt-4">
                 <Feats character={character()} filters={featFilters()} onReplaceCharacter={props.onReplaceCharacter} />
@@ -174,6 +178,9 @@ export const Daggerheart = (props) => {
         </div>
         <div class="mt-4">
           <DaggerheartTransform character={character()} onReplaceCharacter={props.onReplaceCharacter} />
+        </div>
+        <div class="mt-4">
+          <DaggerheartStances character={character()} onReplaceCharacter={props.onReplaceCharacter} />
         </div>
         <div class="mt-4">
           <Feats character={character()} filters={featFilters()} onReplaceCharacter={props.onReplaceCharacter} />

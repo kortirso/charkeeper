@@ -59,6 +59,8 @@ module CharactersContext
           end
           optional(:beastform).maybe(Beastforms)
           optional(:transformation).maybe(:string)
+          optional(:selected_stances).maybe(:array).each(:string)
+          optional(:stance).maybe(:string)
         end
 
         rule(:avatar_file, :avatar_url).validate(:check_only_one_present)

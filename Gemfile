@@ -10,6 +10,9 @@ gem 'rack-session', '~> 2.0'
 gem 'rackup', '~> 2.1'
 gem 'rails', '~> 8.0'
 
+# caching
+gem 'redis'
+
 # The modern asset pipeline for Rails [https://github.com/rails/propshaft]
 gem 'jsbundling-rails'
 gem 'sprockets-rails'
