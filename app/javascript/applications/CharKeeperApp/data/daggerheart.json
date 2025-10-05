@@ -282,12 +282,56 @@
     "winged_beast": { "name": { "en": "Winged beast", "ru": "Winged beast" } }
   },
   "stances": {
-    "brutal": { "name": { "en": "Brutal", "ru": "Брутальная" } },
-    "defensive": { "name": { "en": "Defensive", "ru": "Защитная" } },
-    "grappling": { "name": { "en": "Grappling", "ru": "Захватная" } },
-    "steady": { "name": { "en": "Steady", "ru": "Устойчивая" } },
-    "precise": { "name": { "en": "Precise", "ru": "Точная" } },
-    "quick": { "name": { "en": "Quick", "ru": "Быстрая" } }
+    "brutal": {
+      "name": { "en": "Brutal", "ru": "Брутальная" },
+      "tier": 1,
+      "feature": {
+        "en": "When you roll the maximum value on a damage die, roll an additional damage die.",
+        "ru": "When you roll the maximum value on a damage die, roll an additional damage die."
+      }
+    },
+    "defensive": {
+      "name": { "en": "Defensive", "ru": "Защитная" },
+      "tier": 1,
+      "feature": {
+        "en": "Attack rolls against you have disadvantage unless the adversary marks a Stress.",
+        "ru": "Attack rolls against you have disadvantage unless the adversary marks a Stress."
+      }
+    },
+    "grappling": {
+      "name": { "en": "Grappling", "ru": "Захватная" },
+      "tier": 1,
+      "feature": {
+        "en": "On a successful attack, you can spend a Focus to make the target temporarily Restrained.",
+        "ru": "On a successful attack, you can spend a Focus to make the target temporarily Restrained."
+      }
+    },
+    "steady": {
+      "name": { "en": "Steady", "ru": "Устойчивая" },
+      "tier": 1,
+      "evasion": -1,
+      "feature": {
+        "en": "When you deal damage on a successful attack, roll an additional damage die and drop the lowest.",
+        "ru": "When you deal damage on a successful attack, roll an additional damage die and drop the lowest."
+      }
+    },
+    "precise": {
+      "name": { "en": "Precise", "ru": "Точная" },
+      "tier": 1,
+      "attack_bonus": 1,
+      "feature": {
+        "en": "",
+        "ru": ""
+      }
+    },
+    "quick": {
+      "name": { "en": "Quick", "ru": "Быстрая" },
+      "tier": 1,
+      "feature": {
+        "en": "When making an attack roll, spend a Focus to include an additional target within range.",
+        "ru": "When making an attack roll, spend a Focus to include an additional target within range."
+      }
+    }
   },
   "traits": {
     "str": { "name": { "en": "Strength", "ru": "Сила" } },
@@ -310,6 +354,7 @@
   },
   "mechanics": {
     "beastform": { "name": { "en": "Beastform", "ru": "Превращение в зверя" } },
-    "companion": { "name": { "en": "Companion", "ru": "Питомец" } }
+    "companion": { "name": { "en": "Companion", "ru": "Питомец" } },
+    "stances": { "name": { "en": "Stances", "ru": "Стойки" } }
   }
 }

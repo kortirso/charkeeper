@@ -11,6 +11,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - setting available mechanics for Daggerheart homebrew subclasses
 - rendering saving throws for PDFs
 - rendering attacks for PDFs
+- stances management for Daggerheart players
 
 ### Modified
 - setting damage and trait for Daggerheart homebrew weapons

@@ -4,7 +4,7 @@ module DaggerheartCharacter
   class BaseDecorator < SimpleDelegator
     delegate :id, :name, :data, :feats, to: :__getobj__
     delegate :heritage, :main_class, :classes, :subclasses, :level, :gold, :spent_armor_slots, :health_marked, :stress_marked,
-             :hope_marked, :traits, :total_gold, :subclasses_mastery, :experiences, :community,
+             :hope_marked, :traits, :total_gold, :subclasses_mastery, :experiences, :community, :stance, :selected_stances,
              :leveling, :experience, :heritage_name, :heritage_features, :domains, :beastform, :transformation, to: :data
 
     def parent = __getobj__
@@ -13,6 +13,10 @@ module DaggerheartCharacter
     # rubocop: disable Naming/PredicateMethod
     def can_have_companion
       available_mechanics.include?('companion')
+    end
+
+    def can_have_stances
+      available_mechanics.include?('stances')
     end
     # rubocop: enable Naming/PredicateMethod
 
@@ -29,13 +33,14 @@ module DaggerheartCharacter
           .merge(*[equiped_thresholds_bonuses, *bonuses.pluck('thresholds')].compact) { |_key, oldval, newval| newval + oldval }
     end
 
-    def evasion
+    def evasion # rubocop: disable Metrics/AbcSize
       @evasion ||=
         data.evasion +
         leveling['evasion'].to_i +
         item_bonuses.pluck('evasion').compact.sum +
         sum(bonuses.pluck('evasion')) +
-        beastform_config['evasion']
+        beastform_config['evasion'] +
+        stance_bonus
     end
 
     def armor_score
@@ -100,7 +105,7 @@ module DaggerheartCharacter
     def beastforms
       return [] if available_mechanics.exclude?('beastform')
 
-      BeastformConfig.data('daggerheart').select { |_, values| values['tier'] <= tier }.keys
+      Config.data('daggerheart', 'beastforms').select { |_, values| values['tier'] <= tier }.keys
     end
 
     def transformations
@@ -144,7 +149,7 @@ module DaggerheartCharacter
         name: { en: 'Unarmed', ru: 'Безоружная' }[I18n.locale],
         burden: 2,
         range: 'melee',
-        attack_bonus: [modified_traits['str'], modified_traits['fin']].max + attack_bonuses,
+        attack_bonus: [modified_traits['str'], modified_traits['fin']].max + attack_bonuses + stance_attack_bonus,
         damage: "#{proficiency}d4",
         damage_bonus: 0,
         damage_type: 'physical',
@@ -161,7 +166,7 @@ module DaggerheartCharacter
         name: item[:items_name][I18n.locale.to_s],
         burden: item[:items_info]['burden'],
         range: item[:items_info]['range'],
-        attack_bonus: trait_bonus(item) + attack_bonuses,
+        attack_bonus: trait_bonus(item) + attack_bonuses + stance_attack_bonus,
         damage: item[:items_info]['damage']&.gsub('d', "#{proficiency}d"),
         damage_bonus: item[:items_info]['damage_bonus'],
         damage_type: item[:items_info]['damage_type'],
@@ -253,8 +258,27 @@ module DaggerheartCharacter
       __getobj__.companion.data.leveling['light'].to_i
     end
 
+    def stance_bonus
+      return 0 if stance.nil?
+
+      values = Daggerheart::Character.stances[stance]
+      return 0 unless values
+
+      values['evasion'].to_i
+    end
+
+    def stance_attack_bonus
+      return 0 if stance.nil?
+
+      values = Daggerheart::Character.stances[stance]
+      return 0 unless values
+
+      values['attack_bonus'].to_i
+    end
+
     def beastform_config
-      @beastform_config ||= beastform.blank? ? { 'traits' => {}, 'evasion' => 0 } : BeastformConfig.data('daggerheart')[beastform]
+      @beastform_config ||=
+        beastform.blank? ? { 'traits' => {}, 'evasion' => 0 } : Config.data('daggerheart', 'beastforms')[beastform]
     end
 
     def spellcast_for_homebrew_subclass(subclass)

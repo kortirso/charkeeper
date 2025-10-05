@@ -298,7 +298,7 @@ module Dnd2024Character
     end
 
     def beastform_config
-      @beastform_config ||= beastform.blank? ? { 'abilities' => {} } : BeastformConfig.data('dnd2024')[beastform]
+      @beastform_config ||= beastform.blank? ? { 'abilities' => {} } : Config.data('dnd2024', 'beastforms')[beastform]
     end
 
     def bonuses

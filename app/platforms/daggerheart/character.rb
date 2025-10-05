@@ -36,7 +36,7 @@ module Daggerheart
 
   class Character < Character
     def self.config
-      @config ||= PlatformConfig.data('daggerheart')
+      PlatformConfig.data('daggerheart')
     end
 
     def self.heritages

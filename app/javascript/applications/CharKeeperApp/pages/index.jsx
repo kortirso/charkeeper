@@ -64,6 +64,7 @@ export * from './Content/Character/Daggerheart/Rest';
 export * from './Content/Character/Daggerheart/Beastform';
 export * from './Content/Character/Daggerheart/Companion';
 export * from './Content/Character/Daggerheart/Transformation';
+export * from './Content/Character/Daggerheart/Stances';
 
 export * from './Content/Homebrew/Daggerheart/Race';
 export * from './Content/Homebrew/Daggerheart/Community';
