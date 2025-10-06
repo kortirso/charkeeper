@@ -20,36 +20,52 @@ module HomebrewsContext
     private
 
     def dnd2024_races(user_id)
-      relation = ::Dnd2024::Homebrew::Race.left_outer_joins(:homebrew_book_items)
+      relation = ::Dnd2024::Homebrew::Race
       relation.where(user_id: user_id)
-        .or(relation.where(homebrew_book_items: { homebrew_book_id: available_books(user_id) }))
+        .or(
+          relation.where(
+            id: available_books_data(user_id)['Dnd2024::Homebrew::Race'] || available_books_data(user_id)['Homebrew::Race']
+          )
+        )
         .each_with_object({}) do |item, acc|
           acc[item.id] = { name: { en: item.name, ru: item.name }, legacies: {}, sizes: item.data.size }
         end
     end
 
     def daggerheart_heritages(user_id)
-      relation = ::Daggerheart::Homebrew::Race.left_outer_joins(:homebrew_book_items)
+      relation = ::Daggerheart::Homebrew::Race
       relation.where(user_id: user_id)
-        .or(relation.where(homebrew_book_items: { homebrew_book_id: available_books(user_id) }))
+        .or(
+          relation.where(
+            id: available_books_data(user_id)['Daggerheart::Homebrew::Race'] || available_books_data(user_id)['Homebrew::Race']
+          )
+        )
         .each_with_object({}) do |item, acc|
           acc[item.id] = { name: { en: item.name, ru: item.name } }
         end
     end
 
     def daggerheart_communities(user_id)
-      relation = ::Daggerheart::Homebrew::Community.left_outer_joins(:homebrew_book_items)
+      relation = ::Daggerheart::Homebrew::Community
       relation.where(user_id: user_id)
-        .or(relation.where(homebrew_book_items: { homebrew_book_id: available_books(user_id) }))
+        .or(
+          relation.where(
+            id: available_books_data(user_id)['Daggerheart::Homebrew::Community'] || available_books_data(user_id)['Homebrew::Community']
+          )
+        )
         .each_with_object({}) do |item, acc|
           acc[item.id] = { name: { en: item.name, ru: item.name } }
         end
     end
 
     def daggerheart_transformations(user_id)
-      relation = ::Daggerheart::Homebrew::Transformation.left_outer_joins(:homebrew_book_items)
+      relation = ::Daggerheart::Homebrew::Transformation
       relation.where(user_id: user_id)
-        .or(relation.where(homebrew_book_items: { homebrew_book_id: available_books(user_id) }))
+        .or(
+          relation.where(
+            id: available_books_data(user_id)['Daggerheart::Homebrew::Race']
+          )
+        )
         .each_with_object({}) do |item, acc|
           acc[item.id] = { name: { en: item.name, ru: item.name } }
         end
@@ -62,17 +78,25 @@ module HomebrewsContext
     end
 
     def daggerheart_subclasses(user_id)
-      relation = ::Daggerheart::Homebrew::Subclass.left_outer_joins(:homebrew_book_items)
+      relation = ::Daggerheart::Homebrew::Subclass
       relation.where(user_id: user_id)
-        .or(relation.where(homebrew_book_items: { homebrew_book_id: available_books(user_id) }))
+        .or(
+          relation.where(
+            id: available_books_data(user_id)['Daggerheart::Homebrew::Subclass'] || available_books_data(user_id)['Homebrew::Subclass']
+          )
+        )
         .each_with_object({}) do |item, acc|
           acc[item.class_name] ||= {}
           acc[item.class_name][item.id] = { name: { en: item.name, ru: item.name }, spellcast: item.data.spellcast }
         end
     end
 
-    def available_books(user_id)
-      @available_books ||= Homebrew::Book.shared.joins(:user_books).where(user_books: { user_id: user_id }).ids
+    def available_books_data(user_id)
+      @available_books_data ||=
+        ::Homebrew::Book::Item
+          .where(homebrew_book_id: ::User::Book.where(user_id: user_id).select(:homebrew_book_id))
+          .group_by(&:itemable_type)
+          .transform_values { |item| item.pluck(:itemable_id) }
     end
   end
 end
