@@ -63,7 +63,7 @@ module HomebrewsContext
       relation.where(user_id: user_id)
         .or(
           relation.where(
-            id: available_books_data(user_id)['Daggerheart::Homebrew::Race']
+            id: available_books_data(user_id)['Daggerheart::Homebrew::Transformation']
           )
         )
         .each_with_object({}) do |item, acc|
@@ -71,11 +71,20 @@ module HomebrewsContext
         end
     end
 
+    # rubocop: disable Rails/PluckInWhere
     def daggerheart_classes(user_id)
-      ::Daggerheart::Homebrew::Speciality.where(user_id: user_id).each_with_object({}) do |item, acc|
-        acc[item.id] = { name: { en: item.name, ru: item.name }, domains: item.data.domains }
-      end
+      relation = ::Daggerheart::Homebrew::Speciality
+      relation.where(user_id: user_id)
+        .or(
+          relation.where(
+            id: ::Daggerheart::Homebrew::Subclass.where(id: available_books_data(user_id)['Daggerheart::Homebrew::Subclass']).pluck(:class_name)
+          )
+        )
+        .each_with_object({}) do |item, acc|
+          acc[item.id] = { name: { en: item.name, ru: item.name }, domains: item.data.domains }
+        end
     end
+    # rubocop: enable Rails/PluckInWhere
 
     def daggerheart_subclasses(user_id)
       relation = ::Daggerheart::Homebrew::Subclass
