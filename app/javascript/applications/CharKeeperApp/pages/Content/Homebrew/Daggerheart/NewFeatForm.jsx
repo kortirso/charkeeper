@@ -53,7 +53,7 @@ export const NewDaggerheartFeatForm = (props) => {
   const daggerheartTransformations = createMemo(() => {
     if (props.homebrews === undefined) return {};
 
-    return props.homebrews.trans.reduce((acc, item) => { acc[item.id] = item.name; return acc; }, {});
+    return props.homebrews.transformations.reduce((acc, item) => { acc[item.id] = item.name; return acc; }, {});
   });
 
   const daggerheartCharacters = createMemo(() => {
