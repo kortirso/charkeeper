@@ -36,6 +36,8 @@ describe CharactersContext::Daggerheart::CreateCommand do
         }
       end
 
+      before { HomebrewsContext::RefreshUserDataService.new.call(user: user) }
+
       it 'creates character and successfuly serialize', :aggregate_failures do
         expect { command_call }.to change(user.characters, :count).by(1)
 

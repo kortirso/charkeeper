@@ -11,9 +11,6 @@ module CharactersContext
       use_contract do
         config.messages.namespace = :daggerheart_character
 
-        # Communities = Dry::Types['strict.string'].enum(*::Daggerheart::Character.communities.keys)
-        # Classes = Dry::Types['strict.string'].enum(*::Daggerheart::Character.classes_info.keys)
-
         params do
           required(:user).filled(type?: User)
           required(:name).filled(:string, max_size?: 50)
@@ -37,7 +34,9 @@ module CharactersContext
         rule(:heritage, :user) do
           next if values[:heritage].blank?
           next if values[:heritage].in?(::Daggerheart::Character.heritages.keys)
-          next if values[:heritage].in?(::Daggerheart::Homebrew::Race.where(user_id: values[:user].id).ids)
+
+          user_homebrew = values[:user].user_homebrew
+          next if user_homebrew && values[:heritage].in?(user_homebrew.data.dig('daggerheart', 'races').keys)
 
           key.failure(:included_in?)
         end
@@ -45,7 +44,9 @@ module CharactersContext
         rule(:community, :user) do
           next if values[:community].blank?
           next if values[:community].in?(::Daggerheart::Character.communities.keys)
-          next if values[:community].in?(::Daggerheart::Homebrew::Community.where(user_id: values[:user].id).ids)
+
+          user_homebrew = values[:user].user_homebrew
+          next if user_homebrew && values[:community].in?(user_homebrew.data.dig('daggerheart', 'communities').keys)
 
           key.failure(:included_in?)
         end
