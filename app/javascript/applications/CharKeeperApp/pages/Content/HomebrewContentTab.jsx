@@ -74,10 +74,7 @@ export const HomebrewContentTab = (props) => {
       <Show when={appState.activePageParams.provider === lastProvider()}>
         <Switch>
           <Match when={appState.activePageParams.content === 'modules'}>
-            <HomebrewModules
-              provider={appState.activePageParams.provider}
-              homebrews={homebrews()}
-            />
+            <HomebrewModules provider={appState.activePageParams.provider} />
           </Match>
           <Match when={appState.activePageParams.content === 'races'}>
             <HomebrewRaces

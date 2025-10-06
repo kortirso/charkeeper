@@ -5,14 +5,14 @@ module Daggerheart
     class BookSerializer < ApplicationSerializer
       attributes :id, :name, :provider, :items, :shared, :enabled
 
-      def items
+      def items # rubocop: disable Metrics/AbcSize
         object_items = object.items.group_by(&:itemable_type).transform_values { |item| item.pluck(:itemable_id) }
         {
-          races: object_items['Daggerheart::Homebrew::Race'] || [],
-          communities: object_items['Daggerheart::Homebrew::Community'] || [],
-          subclasses: object_items['Daggerheart::Homebrew::Subclass'] || [],
-          items: object_items['Daggerheart::Item'] || [],
-          transformations: object_items['Daggerheart::Homebrew::Transformation'] || []
+          races: Daggerheart::Homebrew::Race.where(id: object_items['Daggerheart::Homebrew::Race']).pluck(:name),
+          communities: Daggerheart::Homebrew::Community.where(id: object_items['Daggerheart::Homebrew::Community']).pluck(:name),
+          subclasses: Daggerheart::Homebrew::Subclass.where(id: object_items['Daggerheart::Homebrew::Subclass']).pluck(:name),
+          items: Daggerheart::Item.where(id: object_items['Daggerheart::Homebrew::Item']).pluck(:name).pluck(I18n.locale.to_s),
+          transformations: Daggerheart::Homebrew::Transformation.where(id: object_items['Daggerheart::Homebrew::Transformation']).pluck(:name)
         }
       end
 

@@ -1,24 +1,41 @@
 import { createEffect, createSignal, Switch, Match, Show, For } from 'solid-js';
-import * as i18n from '@solid-primitives/i18n';
 
 import { Toggle, Checkbox } from '../../../components';
 import { useAppState, useAppLocale, useAppAlert } from '../../../context';
 import { fetchHomebrewModulesRequest } from '../../../requests/fetchHomebrewModulesRequest';
 import { updateUserBookRequest } from '../../../requests/updateUserBookRequest';
 
+const TRANSLATION = {
+  en: {
+    races: 'Ancestries',
+    communities: 'Communities',
+    subclasses: 'Subclasses',
+    items: 'Items',
+    transformations: 'Transformations',
+    modulesHelp: 'Page content can be edited by bot command',
+    enabled: 'Enabled'
+  },
+  ru: {
+    races: 'Расы',
+    communities: 'Общества',
+    subclasses: 'Подклассы',
+    items: 'Предметы',
+    transformations: 'Трансформации',
+    modulesHelp: 'Контент раздела может редактироваться через бот команды',
+    enabled: 'Подключено'
+  }
+}
+
 export const HomebrewModules = (props) => {
   const [books, setBooks] = createSignal(undefined);
 
   const [appState] = useAppState();
   const [{ renderAlerts }] = useAppAlert();
-  const [, dict] = useAppLocale();
-
-  const t = i18n.translator(dict);
+  const [locale] = useAppLocale();
 
   const fetchBooks = async () => await fetchHomebrewModulesRequest(appState.accessToken, props.provider);
 
   createEffect(() => {
-    if (props.homebrews === undefined) return;
     if (books() !== undefined) return;
 
     Promise.all([fetchBooks()]).then(
@@ -43,7 +60,7 @@ export const HomebrewModules = (props) => {
 
   return (
     <div class="p-2 flex-1 overflow-y-auto">
-      <p class="mb-2 dark:text-snow">{t('pages.homebrewPage.modulesHelp')}</p>
+      <p class="mb-2 dark:text-snow">{TRANSLATION[locale()].modulesHelp}</p>
       <Show when={books() !== undefined}>
         <div class="grid grid-cols-1 emd:grid-cols-2 gap-x-2">
           <For each={books().sort((item) => !item.shared)}>
@@ -56,56 +73,20 @@ export const HomebrewModules = (props) => {
                 <Switch>
                   <Match when={props.provider === 'daggerheart'}>
                     <div class="grid grid-cols-1 emd:grid-cols-2 gap-x-2 gap-y-8">
-                      <Show when={book.items.races.length > 0}>
-                        <div>
-                          <p class="mb-2">{t(`pages.homebrewPage.${props.provider}.includedAncestries`)}</p>
-                          <For each={props.homebrews.races.filter((item) => book.items.races.includes(item.id))}>
-                            {(race) =>
-                              <p class="flex-1">{race.name}</p>
-                            }
-                          </For>
-                        </div>
-                      </Show>
-                      <Show when={book.items.communities.length > 0}>
-                        <div>
-                          <p class="mb-2">{t(`pages.homebrewPage.${props.provider}.includedCommunities`)}</p>
-                          <For each={props.homebrews.communities.filter((item) => book.items.communities.includes(item.id))}>
-                            {(community) =>
-                              <p class="flex-1">{community.name}</p>
-                            }
-                          </For>
-                        </div>
-                      </Show>
-                      <Show when={book.items.subclasses.length > 0}>
-                        <div>
-                          <p class="mb-2">{t(`pages.homebrewPage.${props.provider}.includedSubclasses`)}</p>
-                          <For each={props.homebrews.subclasses.filter((item) => book.items.subclasses.includes(item.id))}>
-                            {(subclass) =>
-                              <p class="flex-1">{subclass.name}</p>
-                            }
-                          </For>
-                        </div>
-                      </Show>
-                      <Show when={book.items.items.length > 0}>
-                        <div>
-                          <p class="mb-2">{t(`pages.homebrewPage.${props.provider}.includedItems`)}</p>
-                          <For each={props.homebrews.items.filter((item) => book.items.items.includes(item.id))}>
-                            {(item) =>
-                              <p class="flex-1">{item.name.en}</p>
-                            }
-                          </For>
-                        </div>
-                      </Show>
-                      <Show when={book.items.transformations.length > 0}>
-                        <div>
-                          <p class="mb-2">{t(`pages.homebrewPage.${props.provider}.includedTransformations`)}</p>
-                          <For each={props.homebrews.transformations.filter((item) => book.items.transformations.includes(item.id))}>
-                            {(transformation) =>
-                              <p class="flex-1">{transformation.name}</p>
-                            }
-                          </For>
-                        </div>
-                      </Show>
+                      <For each={['races', 'communities', 'subclasses', 'items', 'transformations']}>
+                        {(kind) =>
+                          <Show when={book.items[kind].length > 0}>
+                            <div>
+                              <p class="mb-2">{TRANSLATION[locale()][kind]}</p>
+                              <For each={book.items[kind]}>
+                                {(item) =>
+                                  <p class="flex-1">{item}</p>
+                                }
+                              </For>
+                            </div>
+                          </Show>
+                        }
+                      </For>
                     </div>
                   </Match>
                 </Switch>
@@ -113,7 +94,7 @@ export const HomebrewModules = (props) => {
                   <p class="absolute bottom-0 right-0 px-2 py-1 dark:text-snow cursor-pointer">
                     <Checkbox
                       filled
-                      labelText="Enabled"
+                      labelText={TRANSLATION[locale()].enabled}
                       labelPosition="right"
                       labelClassList="ml-2"
                       checked={book.enabled}
