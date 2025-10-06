@@ -45,7 +45,7 @@ export const HomebrewModules = (props) => {
     <div class="p-2 flex-1 overflow-y-auto">
       <p class="mb-2 dark:text-snow">{t('pages.homebrewPage.modulesHelp')}</p>
       <Show when={books() !== undefined}>
-        <div class="grid grid-cols-1 emd:grid-cols-2 elg:grid-cols-3 exl:grid-cols-4 gap-x-2">
+        <div class="grid grid-cols-1 emd:grid-cols-2 gap-x-2">
           <For each={books().sort((item) => !item.shared)}>
             {(book) =>
               <Toggle isOpen title={
@@ -55,46 +55,58 @@ export const HomebrewModules = (props) => {
               }>
                 <Switch>
                   <Match when={props.provider === 'daggerheart'}>
-                    <Show when={book.items.races.length > 0}>
-                      <p class="mb-2">{t(`pages.homebrewPage.${props.provider}.includedAncestries`)}</p>
-                      <For each={props.homebrews.races.filter((item) => book.items.races.includes(item.id))}>
-                        {(race) =>
-                          <p class="flex-1">{race.name}</p>
-                        }
-                      </For>
-                    </Show>
-                    <Show when={book.items.communities.length > 0}>
-                      <p class="mt-8 mb-2">{t(`pages.homebrewPage.${props.provider}.includedCommunities`)}</p>
-                      <For each={props.homebrews.communities.filter((item) => book.items.communities.includes(item.id))}>
-                        {(community) =>
-                          <p class="flex-1">{community.name}</p>
-                        }
-                      </For>
-                    </Show>
-                    <Show when={book.items.subclasses.length > 0}>
-                      <p class="mt-8 mb-2">{t(`pages.homebrewPage.${props.provider}.includedSubclasses`)}</p>
-                      <For each={props.homebrews.subclasses.filter((item) => book.items.subclasses.includes(item.id))}>
-                        {(subclass) =>
-                          <p class="flex-1">{subclass.name}</p>
-                        }
-                      </For>
-                    </Show>
-                    <Show when={book.items.items.length > 0}>
-                      <p class="mt-8 mb-2">{t(`pages.homebrewPage.${props.provider}.includedItems`)}</p>
-                      <For each={props.homebrews.items.filter((item) => book.items.items.includes(item.id))}>
-                        {(item) =>
-                          <p class="flex-1">{item.name.en}</p>
-                        }
-                      </For>
-                    </Show>
-                    <Show when={book.items.transformations.length > 0}>
-                      <p class="mt-8 mb-2">{t(`pages.homebrewPage.${props.provider}.includedTransformations`)}</p>
-                      <For each={props.homebrews.transformations.filter((item) => book.items.transformations.includes(item.id))}>
-                        {(transformation) =>
-                          <p class="flex-1">{transformation.name}</p>
-                        }
-                      </For>
-                    </Show>
+                    <div class="grid grid-cols-1 emd:grid-cols-2 gap-x-2 gap-y-8">
+                      <Show when={book.items.races.length > 0}>
+                        <div>
+                          <p class="mb-2">{t(`pages.homebrewPage.${props.provider}.includedAncestries`)}</p>
+                          <For each={props.homebrews.races.filter((item) => book.items.races.includes(item.id))}>
+                            {(race) =>
+                              <p class="flex-1">{race.name}</p>
+                            }
+                          </For>
+                        </div>
+                      </Show>
+                      <Show when={book.items.communities.length > 0}>
+                        <div>
+                          <p class="mb-2">{t(`pages.homebrewPage.${props.provider}.includedCommunities`)}</p>
+                          <For each={props.homebrews.communities.filter((item) => book.items.communities.includes(item.id))}>
+                            {(community) =>
+                              <p class="flex-1">{community.name}</p>
+                            }
+                          </For>
+                        </div>
+                      </Show>
+                      <Show when={book.items.subclasses.length > 0}>
+                        <div>
+                          <p class="mb-2">{t(`pages.homebrewPage.${props.provider}.includedSubclasses`)}</p>
+                          <For each={props.homebrews.subclasses.filter((item) => book.items.subclasses.includes(item.id))}>
+                            {(subclass) =>
+                              <p class="flex-1">{subclass.name}</p>
+                            }
+                          </For>
+                        </div>
+                      </Show>
+                      <Show when={book.items.items.length > 0}>
+                        <div>
+                          <p class="mb-2">{t(`pages.homebrewPage.${props.provider}.includedItems`)}</p>
+                          <For each={props.homebrews.items.filter((item) => book.items.items.includes(item.id))}>
+                            {(item) =>
+                              <p class="flex-1">{item.name.en}</p>
+                            }
+                          </For>
+                        </div>
+                      </Show>
+                      <Show when={book.items.transformations.length > 0}>
+                        <div>
+                          <p class="mb-2">{t(`pages.homebrewPage.${props.provider}.includedTransformations`)}</p>
+                          <For each={props.homebrews.transformations.filter((item) => book.items.transformations.includes(item.id))}>
+                            {(transformation) =>
+                              <p class="flex-1">{transformation.name}</p>
+                            }
+                          </For>
+                        </div>
+                      </Show>
+                    </div>
                   </Match>
                 </Switch>
                 <Show when={book.shared}>

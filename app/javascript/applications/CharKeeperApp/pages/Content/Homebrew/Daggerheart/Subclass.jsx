@@ -15,7 +15,7 @@ export const DaggerheartSubclass = (props) => {
   const subclassFeats = createMemo(() => {
     if (props.homebrews === undefined) return [];
 
-    return props.homebrews.feats.filter((item) => item.origin === 'subclass' && item.origin_value === props.item.id)
+    return props.homebrews.feats.filter((item) => item.origin === 'subclass' && item.origin_value === props.item.id).sort((a, b) => a.conditions.subclass_mastery - b.conditions.subclass_mastery)
   });
 
   const daggerheartClasses = createMemo(() => {

@@ -62,24 +62,26 @@ export const HomebrewFeats = (props) => {
               {t(`pages.homebrewPage.${props.provider}.newFeat`)}
             </Button>
             <Show when={props.homebrews !== undefined}>
-              <For each={props.homebrews.feats}>
-                {(feat) =>
-                  <Toggle isOpen title={
-                    <div class="flex items-center">
-                      <p class="flex-1">{feat.title[locale()]}</p>
-                      <IconButton onClick={(e) => removeFeat(e, feat.id)}>
-                        <Close />
-                      </IconButton>
-                    </div>
-                  }>
-                    <Switch>
-                      <Match when={props.provider === 'daggerheart'}>
-                        <DaggerheartFeat feat={feat} characters={characters()} homebrews={props.homebrews} />
-                      </Match>
-                    </Switch>
-                  </Toggle>
-                }
-              </For>
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-2">
+                <For each={props.homebrews.feats}>
+                  {(feat) =>
+                    <Toggle isOpenByParent title={
+                      <div class="flex items-center">
+                        <p class="flex-1">{feat.title[locale()]}</p>
+                        <IconButton onClick={(e) => removeFeat(e, feat.id)}>
+                          <Close />
+                        </IconButton>
+                      </div>
+                    }>
+                      <Switch>
+                        <Match when={props.provider === 'daggerheart'}>
+                          <DaggerheartFeat feat={feat} characters={characters()} homebrews={props.homebrews} />
+                        </Match>
+                      </Switch>
+                    </Toggle>
+                  }
+                </For>
+              </div>
             </Show>
           </>
         }
