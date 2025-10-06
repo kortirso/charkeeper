@@ -20,6 +20,10 @@ ru:
   services:
     sheets_context:
       level: Уровень
+      attack: АТАКА
+      dist: ДИСТАНЦИЯ
+      damage: УРОН
+      type: ТИП
       pathfinder:
         armor_class: Класс брони
         perception: Восприятие
