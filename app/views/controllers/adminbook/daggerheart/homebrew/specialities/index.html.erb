@@ -1,0 +1,31 @@
+<table class="table w-full text-sm">
+  <thead>
+    <tr>
+      <td></td>
+      <td>ID</td>
+      <td>Name</td>
+      <td>Evasion</td>
+      <td>Health</td>
+      <td>Domains</td>
+      <td>User ID</td>
+      <td></td>
+    </tr>
+  </thead>
+  <tbody>
+    <% @specialities.each_with_index do |speciality, index| %>
+      <tr>
+        <td class="pr-2"><%= (@pagy.page - 1) * 25 + index + 1 %></td>
+        <td class="pr-2"><%= speciality.id %></td>
+        <td class="pr-2"><%= speciality.name %></td>
+        <td class="pr-2"><%= speciality.data.evasion %></td>
+        <td class="pr-2"><%= speciality.data.health_max %></td>
+        <td class="pr-2"><%= speciality.data.domains %></td>
+        <td class="pr-2"><%= speciality.user_id %></td>
+        <td><%= speciality.created_at.strftime('%d-%m-%Y') %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<% if @pagy.pages > 1 %>
+  <div class="mt-6"><%== pagy_nav(@pagy) %></div>
+<% end %>

@@ -28,6 +28,17 @@ Rails.application.routes.draw do
     end
     namespace :daggerheart do
       resources :characters, only: %i[index]
+
+      namespace :homebrew do
+        resources :books, only: %i[index]
+        resources :races, only: %i[index]
+        resources :communities, only: %i[index]
+        resources :transformations, only: %i[index]
+        resources :specialities, only: %i[index]
+        resources :subclasses, only: %i[index]
+        resources :feats, only: %i[index]
+        resources :items, only: %i[index]
+      end
     end
 
     resources :items, except: %i[show]

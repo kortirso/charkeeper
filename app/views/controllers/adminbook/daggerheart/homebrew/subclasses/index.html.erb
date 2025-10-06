@@ -1,0 +1,31 @@
+<table class="table w-full text-sm">
+  <thead>
+    <tr>
+      <td></td>
+      <td>ID</td>
+      <td>Name</td>
+      <td>Class name</td>
+      <td>Spellcast</td>
+      <td>Mechanics</td>
+      <td>User ID</td>
+      <td></td>
+    </tr>
+  </thead>
+  <tbody>
+    <% @subclasses.each_with_index do |subclass, index| %>
+      <tr>
+        <td class="pr-2"><%= (@pagy.page - 1) * 25 + index + 1 %></td>
+        <td class="pr-2"><%= subclass.id %></td>
+        <td class="pr-2"><%= subclass.name %></td>
+        <td class="pr-2"><%= subclass.class_name %></td>
+        <td class="pr-2"><%= subclass.data.spellcast %></td>
+        <td class="pr-2"><%= subclass.data.mechanics %></td>
+        <td class="pr-2"><%= subclass.user_id %></td>
+        <td><%= subclass.created_at.strftime('%d-%m-%Y') %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<% if @pagy.pages > 1 %>
+  <div class="mt-6"><%== pagy_nav(@pagy) %></div>
+<% end %>
