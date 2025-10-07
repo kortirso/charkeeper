@@ -3,7 +3,7 @@ import * as i18n from '@solid-primitives/i18n';
 
 import { Button, Input, ErrorWrapper, Toggle } from '../../../../components';
 import { useAppState, useAppLocale, useAppAlert } from '../../../../context';
-import { Plus, Minus, Close } from '../../../../assets';
+import { Plus, Minus, Close, Check } from '../../../../assets';
 import { updateCharacterRequest } from '../../../../requests/updateCharacterRequest';
 import { modifier } from '../../../../helpers';
 
@@ -109,6 +109,19 @@ export const DaggerheartExperience = (props) => {
           </div>
         }
       >
+        <Show when={editMode()}>
+          <div class="flex items-center gap-2 mb-4">
+            <Input
+              containerClassList="flex-1"
+              value={name()}
+              onInput={(value) => setName(value)}
+            />
+            <Show when={name().length > 0}>
+              <Button outlined onClick={cancelEditing}><Close width="30" height="30" /></Button>
+              <Button default onClick={addExperience}><Check width="20" height="20" /></Button>
+            </Show>
+          </div>
+        </Show>
         <div class="experiences">
           <For each={object().experience}>
             {(exp) =>
@@ -130,17 +143,6 @@ export const DaggerheartExperience = (props) => {
             }
           </For>
         </div>
-        <Show when={editMode()}>
-          <div class="flex items-center gap-2 mt-4">
-            <Input
-              containerClassList="flex-1"
-              value={name()}
-              onInput={(value) => setName(value)}
-            />
-            <Button outlined onClick={cancelEditing}><Minus /></Button>
-            <Button default onClick={addExperience}><Plus /></Button>
-          </div>
-        </Show>
       </Toggle>
     </ErrorWrapper>
   );

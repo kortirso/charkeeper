@@ -1,7 +1,7 @@
 import { Show } from 'solid-js';
 
 import { Button } from '../../components';
-import { Minus, Edit, Plus } from '../../assets';
+import { Close, Edit, Check } from '../../assets';
 
 export const EditWrapper = (props) => {
   return (
@@ -21,10 +21,10 @@ export const EditWrapper = (props) => {
       >
         <div class="absolute -bottom-6 right-0 flex justify-end z-10">
           <Button outlined classList='rounded min-w-6 min-h-6 mr-2' onClick={props.onCancelEditing}>
-            <Minus />
+            <Close width="30" height="30" />
           </Button>
           <Button default classList='rounded min-w-6 min-h-6' onClick={props.onSaveChanges}>
-            <Plus />
+            <Check width="20" height="20" />
           </Button>
         </div>
       </Show>

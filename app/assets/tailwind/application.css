@@ -240,7 +240,6 @@
 
 .experiences .experience {
   @apply flex dark:text-snow items-center pl-2 py-1;
-  @apply border-b border-gray-200 dark:border-neutral-800;
 }
 
 .experiences .experience:nth-of-type(2n) {

@@ -20,6 +20,7 @@ export * from './Hands';
 export * from './Equipment';
 export * from './Backpack';
 export * from './Storage';
+export * from './Check';
 export * from './socials/Discord';
 export * from './socials/Telegram';
 export * from './socials/Vk';
