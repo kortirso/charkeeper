@@ -11,10 +11,7 @@ class User
     def generate_default_data
       return if data.keys.any?
 
-      self.data = {
-        daggerheart: {},
-        dnd2024: {}
-      }
+      self.data = HomebrewsContext::FindAvailableService.new.call(user_id: user.id)
     end
   end
 end
