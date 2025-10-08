@@ -9,6 +9,7 @@ import pathfinder2Config from '../../data/pathfinder2.json';
 import daggerheartConfig from '../../data/daggerheart.json';
 import dnd2024Config from '../../data/dnd2024.json';
 import dnd5Config from '../../data/dnd5.json';
+import dc20Config from '../../data/dc20.json';
 import { useAppState, useAppLocale, useAppAlert } from '../../context';
 import { fetchCharactersRequest } from '../../requests/fetchCharactersRequest';
 import { fetchCharacterRequest } from '../../requests/fetchCharacterRequest';
@@ -16,6 +17,23 @@ import { createCharacterRequest } from '../../requests/createCharacterRequest';
 import { removeCharacterRequest } from '../../requests/removeCharacterRequest';
 import { fetchHomebrewsRequest } from '../../requests/fetchHomebrewsRequest';
 import { translate } from '../../helpers';
+
+const TRANSLATION = {
+  en: {
+    newCharacter: {
+      dc20: {
+        class: 'Class'
+      }
+    }
+  },
+  ru: {
+    newCharacter: {
+      dc20: {
+        class: 'Класс'
+      }
+    }
+  }
+}
 
 const DAGGERHEART_DEFAULT_FORM = {
   name: '', heritage: undefined, heritage_name: '', heritage_features: [], main_feature: undefined,
@@ -34,6 +52,9 @@ const PATHFINDER2_DEFAULT_FORM = {
   name: '', race: undefined, subrace: undefined, main_class: undefined, subclass: undefined,
   background: undefined, main_ability: undefined, avatar_file: undefined, avatar_url: undefined
 }
+const DC20_DEFAULT_FORM = {
+  name: '', main_class: undefined, avatar_file: undefined, avatar_url: undefined
+}
 
 export const CharactersTab = () => {
   const [loading, setLoading] = createSignal(false);
@@ -49,6 +70,7 @@ export const CharactersTab = () => {
   const [characterDnd2024Form, setCharacterDnd2024Form] = createStore(DND2024_DEFAULT_FORM);
   const [characterPathfinder2Form, setCharacterPathfinder2Form] = createStore(PATHFINDER2_DEFAULT_FORM);
   const [characterDaggerheartForm, setCharacterDaggerheartForm] = createStore(DAGGERHEART_DEFAULT_FORM);
+  const [characterDc20Form, setCharacterDc20Form] = createStore(DC20_DEFAULT_FORM);
   const [customHeritage, setCustomHeritage] = createSignal(false);
   const [homebrews, setHomebrews] = createSignal(undefined);
 
@@ -197,6 +219,9 @@ export const CharactersTab = () => {
       case 'pathfinder2':
         characterFormData = characterPathfinder2Form; // eslint-disable-line solid/reactivity
         break;
+      case 'dc20':
+        characterFormData = characterDc20Form; // eslint-disable-line solid/reactivity
+        break;
       case 'daggerheart':
         characterFormData = characterDaggerheartForm; // eslint-disable-line solid/reactivity
 
@@ -248,6 +273,9 @@ export const CharactersTab = () => {
           name: '', heritage: undefined, heritage_name: '', heritage_features: [], main_feature: undefined,
           secondary_feature: undefined, community: undefined, main_class: undefined, subclass: undefined,
           avatar_file: undefined, avatar_url: undefined
+        });
+        setCharacterDc20Form({
+          name: '', main_class: undefined, avatar_file: undefined, avatar_url: undefined
         });
         setCurrentTab('characters');
         setLoading(false);
@@ -345,7 +373,7 @@ export const CharactersTab = () => {
                 containerClassList="mb-2"
                 classList="w-full"
                 labelText={t('newCharacterPage.platform')}
-                items={{ 'dnd5': 'D&D 5', 'dnd2024': 'D&D 2024', 'daggerheart': 'Daggerheart', 'pathfinder2': 'Pathfinder 2' }}
+                items={{ 'dnd5': 'D&D 5', 'dnd2024': 'D&D 2024', 'daggerheart': 'Daggerheart', 'pathfinder2': 'Pathfinder 2', 'dc20': 'DC20' }}
                 selectedValue={platform()}
                 onSelect={(value) => setPlatform(value)}
               />
@@ -570,6 +598,21 @@ export const CharactersTab = () => {
                         onSelect={(value) => setCharacterDaggerheartForm({ ...characterDaggerheartForm, subclass: value })}
                       />
                     </Show>
+                  </Match>
+                  <Match when={platform() === 'dc20'}>
+                    <Input
+                      containerClassList="mb-2"
+                      labelText={t('newCharacterPage.name')}
+                      value={characterDc20Form.name}
+                      onInput={(value) => setCharacterDc20Form({ ...characterDc20Form, name: value })}
+                    />
+                    <Select
+                      containerClassList="mb-2"
+                      labelText={TRANSLATION[locale()].newCharacter.dc20['class']}
+                      items={translate(dc20Config.classes, locale())}
+                      selectedValue={characterDc20Form.main_class}
+                      onSelect={(value) => setCharacterDc20Form({ ...characterDc20Form, main_class: value })}
+                    />
                   </Match>
                 </Switch>
               </div>

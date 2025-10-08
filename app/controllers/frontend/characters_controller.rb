@@ -6,6 +6,7 @@ module Frontend
 
     DND_SERIALIZE_FIELDS = %i[id name level race subrace species legacy classes provider avatar created_at].freeze
     DAGGERHEART_SERIALIZE_FIELDS = %i[id name level heritage heritage_name classes provider avatar created_at].freeze
+    DC20_SERIALIZE_FIELDS = %i[id name level classes provider avatar created_at].freeze
 
     before_action :find_character, only: %i[show destroy]
 
@@ -47,6 +48,7 @@ module Frontend
       when 'Dnd2024::Character' then ::Dnd2024::Character
       when 'Pathfinder2::Character' then ::Pathfinder2::Character
       when 'Daggerheart::Character' then ::Daggerheart::Character
+      when 'Dc20::Character' then ::Dc20::Character
       end
     end
 
@@ -60,6 +62,7 @@ module Frontend
       when 'Dnd2024::Character' then ::Dnd2024::CharacterSerializer
       when 'Pathfinder2::Character' then ::Pathfinder2::CharacterSerializer
       when 'Daggerheart::Character' then ::Daggerheart::CharacterSerializer
+      when 'Dc20::Character' then ::Dc20::CharacterSerializer
       end
     end
 
@@ -67,6 +70,7 @@ module Frontend
       case character_type
       when 'Dnd5::Character', 'Dnd2024::Character', 'Pathfinder2::Character' then DND_SERIALIZE_FIELDS
       when 'Daggerheart::Character' then DAGGERHEART_SERIALIZE_FIELDS
+      when 'Dc20::Character' then DC20_SERIALIZE_FIELDS
       end
     end
   end

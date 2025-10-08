@@ -1,0 +1,17 @@
+{
+  "classes": {
+    "commander": { "name": { "en": "Commander", "ru": "Командир" } }
+  },
+  "attributes": {
+    "mig": { "name": { "en": "Might", "ru": "Мощь" } },
+    "agi": { "name": { "en": "Agility", "ru": "Ловкость" } },
+    "int": { "name": { "en": "Intelligence", "ru": "Интеллект" } },
+    "cha": { "name": { "en": "Charisma", "ru": "Харизма" } }
+  },
+  "combatMasteries": {
+    "weapon": { "name": { "en": "Weapon", "ru": "Оружие" } },
+    "light_armor": { "name": { "en": "Light armor", "ru": "Лёгкая броня" } },
+    "heavy_armor": { "name": { "en": "Heavy armor", "ru": "Тяжёлая броня" } },
+    "shield": { "name": { "en": "Shield", "ru": "Щит" } }
+  }
+}
