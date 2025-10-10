@@ -16,7 +16,7 @@ export const DaggerheartBeastform = (props) => {
   const t = i18n.translator(dict);
 
   const beastformsSelect = createMemo(() => {
-    const result = Object.entries(config.beastforms).map(([key, values]) => [key, values.name[locale()]])
+    const result = Object.entries(config.beastforms).filter(([, values]) => values.tier <= character().tier).map(([key, values]) => [key, `${values.name[locale()]} T${values.tier}`])
     result.push(['none', t('daggerheart.beast.naturalForm')]);
 
     return Object.fromEntries(result);
