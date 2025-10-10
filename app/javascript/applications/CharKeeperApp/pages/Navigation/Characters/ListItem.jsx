@@ -6,10 +6,12 @@ import { Dots, Avatar } from '../../../assets';
 import pathfinder2Config from '../../../data/pathfinder2.json';
 import dnd2024Config from '../../../data/dnd2024.json';
 import dnd5Config from '../../../data/dnd5.json';
+import dc20Config from '../../../data/dc20.json';
 import { useAppLocale, useAppAlert } from '../../../context';
 import { clickOutside, copyToClipboard } from '../../../helpers';
 
 const AVAILABLE_JSON = ['daggerheart'];
+const AVAILABLE_PDF = ['daggerheart', 'dnd5', 'dnd2024', 'pathfinder2'];
 
 export const CharactersListItem = (props) => {
   const character = () => props.character;
@@ -60,6 +62,9 @@ export const CharactersListItem = (props) => {
     if (character().provider === 'daggerheart') {
       return `${t('charactersPage.level')} ${character().level} | ${character().heritage ? props.daggerheartHeritages[character().heritage].name[locale()] : character().heritage_name}`;
     }
+    if (character().provider === 'dc20') {
+      return `${t('charactersPage.level')} ${character().level} | ${character().ancestries.map((item) => dc20Config.ancestries[item].name[locale()]).join(' * ')}`;
+    }
   });
 
   const secondText = createMemo(() => {
@@ -74,6 +79,9 @@ export const CharactersListItem = (props) => {
     }
     if (character().provider === 'daggerheart') {
       return Object.keys(character().classes).map((item) => props.daggerheartClasses[item].name[locale()]).join(' * ');
+    }
+    if (character().provider === 'dc20') {
+      return Object.keys(character().classes).map((item) => dc20Config.classes[item].name[locale()]).join(' * ');
     }
   });
 
@@ -127,7 +135,7 @@ export const CharactersListItem = (props) => {
                   onClick={copy}
                 >{t('charactersPage.onCopyCharacter')}</p>
               </Show>
-              <Show when={!window.__TAURI_INTERNALS__}>
+              <Show when={!window.__TAURI_INTERNALS__ && AVAILABLE_PDF.includes(character().provider)}>
                 <p
                   class="px-2 py-1 text-sm bg-white hover:bg-gray-200 dark:bg-dusty dark:hover:bg-neutral-800"
                   onClick={(e) => viewClick(e)}

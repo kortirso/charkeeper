@@ -28,6 +28,7 @@
     },
     "characterNavigation": {
       "allFilter": "All",
+      "dc20": "DC20",
       "dnd5": "D&D 5",
       "dnd2024": "D&D 2024",
       "pathfinder2": "Pathfinder 2",

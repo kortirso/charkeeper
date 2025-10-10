@@ -286,3 +286,7 @@ nav.pagy.nav a:hover {
 nav.pagy.nav a.gap {
   @apply py-1 px-2;
 }
+
+.warning {
+  @apply bg-blue-200 rounded p-4 mb-2;
+}

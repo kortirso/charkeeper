@@ -126,6 +126,10 @@ Rails.application.routes.draw do
       end
     end
 
+    namespace :dc20 do
+      resources :characters, only: %i[create update]
+    end
+
     namespace :daggerheart do
       resources :characters, only: %i[create update] do
         resources :spells, only: %i[index create update destroy], module: 'characters'
