@@ -14,7 +14,7 @@
     <%= stylesheet_link_tag :application %>
   </head>
   <body class="w-full h-screen flex">
-    <nav class="p-2 w-48 flex flex-col">
+    <nav class="p-2 w-48 flex flex-col overflow-y-auto">
       <%= link_to 'Main', adminbook_path %>
       <%= link_to 'Users', adminbook_users_path %>
       <%= link_to 'Identities', adminbook_users_identities_path %>
@@ -52,7 +52,7 @@
       <%= link_to 'Items', adminbook_daggerheart_homebrew_items_path %>
       <%= link_to 'Feats', adminbook_daggerheart_homebrew_feats_path %>
     </nav>
-    <main class="flex-1 overflow-y-scroll p-4">
+    <main class="flex-1 overflow-y-auto p-4">
       <%= yield %>
     </main>
   </body>

@@ -3,7 +3,7 @@
 module Adminbook
   module Daggerheart
     module Homebrew
-      class FeatsController < Adminbook::CharactersController
+      class FeatsController < Adminbook::BaseController
         def index
           @pagy, @feats = pagy(::Daggerheart::Feat.where.not(user_id: nil).order(created_at: :desc), limit: 25)
         end

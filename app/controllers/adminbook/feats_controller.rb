@@ -3,7 +3,8 @@
 module Adminbook
   class FeatsController < Adminbook::BaseController
     def index
-      @feats = ::Feat.where(type: feat_class.to_s).order(origin: :asc, origin_value: :asc)
+      @feats = ::Feat.where(type: feat_class.to_s, user_id: nil).order(origin: :asc, origin_value: :asc)
+      @feats = @feats.where(origin: params[:origin]) if params[:origin]
     end
 
     def new
