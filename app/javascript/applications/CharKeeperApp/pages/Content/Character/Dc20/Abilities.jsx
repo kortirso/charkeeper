@@ -9,14 +9,10 @@ import { modifier } from '../../../../helpers';
 
 const TRANSLATION = {
   en: {
-    attributePoints: 'Free attribute points',
-    pointsAlert: 'Please spend all attribute points',
-    spentPointsAlert: 'You spent too much attribute points'
+    attributePoints: 'Free attribute points'
   },
   ru: {
-    attributePoints: 'Очки атрибутов для распределения',
-    pointsAlert: 'Необходимо распределить все очки атрибутов',
-    spentPointsAlert: 'Потрачено слишком много очков атрибутов'
+    attributePoints: 'Очки атрибутов для распределения'
   }
 }
 
@@ -27,7 +23,7 @@ export const Dc20Abilities = (props) => {
   const [abilitiesData, setAbilitiesData] = createSignal(character().abilities);
 
   const [appState] = useAppState();
-  const [{ renderAlerts, renderAlert }] = useAppAlert();
+  const [{ renderAlerts }] = useAppAlert();
   const [locale] = useAppLocale();
 
   const decreaseAbilityValue = (slug) => {
@@ -59,11 +55,6 @@ export const Dc20Abilities = (props) => {
   }
 
   const updateCharacter = async () => {
-    if (character().attribute_points > 0) {
-      if (attributePointsLeft() > 0) return renderAlert(TRANSLATION[locale()]['pointsAlert']);
-      if (attributePointsLeft() < 0) return renderAlert(TRANSLATION[locale()]['spentPointsAlert']);
-    }
-
     const result = await updateCharacterRequest(
       appState.accessToken, character().provider, character().id, { character: { abilities: abilitiesData() } }
     );
@@ -93,7 +84,7 @@ export const Dc20Abilities = (props) => {
           <For each={Object.entries(config.abilities).map(([key, values]) => [key, values.name[locale()]])}>
             {([slug, ability]) =>
               <div class="blockable py-4">
-                <p class="text-sm elg:text-[10px] uppercase text-center mb-4 dark:text-white">{ability}</p>
+                <p class="text-sm uppercase text-center mb-4 dark:text-white">{ability}</p>
                 <div class="mx-auto flex items-center justify-center">
                   <p class="text-2xl font-normal! dark:text-snow">
                     {editMode() ? abilitiesData()[slug] : modifier(character().abilities[slug])}

@@ -28,5 +28,19 @@
     "light_armor": { "name": { "en": "Light armor", "ru": "Лёгкая броня" } },
     "heavy_armor": { "name": { "en": "Heavy armor", "ru": "Тяжёлая броня" } },
     "shield": { "name": { "en": "Shield", "ru": "Щит" } }
+  },
+  "skills": {
+    "acrobatics": { "name": { "en": "Acrobatics", "ru": "Акробатика" } },
+    "animal": { "name": { "en": "Animal", "ru": "Животные" } },
+    "athletics": { "name": { "en": "Athletics", "ru": "Атлетика" } },
+    "awareness": { "name": { "en": "Awareness", "ru": "Бдительность" } },
+    "influence": { "name": { "en": "Influence", "ru": "Влияние" } },
+    "insight": { "name": { "en": "Insight", "ru": "Проницательность" } },
+    "intimidation": { "name": { "en": "Intimidation", "ru": "Запугивание" } },
+    "investigation": { "name": { "en": "Investigation", "ru": "Анализ" } },
+    "trickery": { "name": { "en": "Trickery", "ru": "Уловки" } },
+    "stealth": { "name": { "en": "Stealth", "ru": "Скрытность" } },
+    "medicine": { "name": { "en": "Medicine", "ru": "Медицина" } },
+    "survival": { "name": { "en": "Survival", "ru": "Выживание" } }
   }
 }

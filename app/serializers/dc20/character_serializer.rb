@@ -3,10 +3,12 @@
 module Dc20
   class CharacterSerializer < ApplicationSerializer
     attributes :provider, :id, :name, :level, :main_class, :abilities, :modified_abilities, :created_at, :avatar, :health,
-               :attribute_points, :classes, :ancestries
+               :attribute_points, :classes, :ancestries, :combat_mastery, :save_dc, :precision_defense, :area_defense, :attack,
+               :skills, :skill_points, :skill_expertise_points
 
     delegate :id, :name, :level, :main_class, :abilities, :modified_abilities, :health, :attribute_points, :classes,
-             :ancestries, to: :decorator
+             :ancestries, :combat_mastery, :save_dc, :precision_defense, :area_defense, :attack, :skills, :skill_points,
+             :skill_expertise_points, to: :decorator
     delegate :created_at, to: :object
 
     def provider

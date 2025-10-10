@@ -2,7 +2,7 @@ import { createSignal, createMemo, Switch, Match } from 'solid-js';
 import { createWindowSize } from '@solid-primitives/resize-observer';
 
 import {
-  Dc20Abilities
+  Dc20Abilities, Dc20Skills
 } from '../../../pages';
 import { CharacterNavigation, Notes, Avatar, ContentWrapper } from '../../../components';
 
@@ -27,6 +27,9 @@ export const Dc20 = (props) => {
           <Switch>
             <Match when={activeMobileTab() === 'abilities'}>
               <Dc20Abilities character={character()} onReplaceCharacter={props.onReplaceCharacter} />
+              <div class="mt-4">
+                <Dc20Skills character={character()} onReplaceCharacter={props.onReplaceCharacter} />
+              </div>
             </Match>
             <Match when={activeMobileTab() === 'notes'}>
               <Notes />
@@ -46,7 +49,12 @@ export const Dc20 = (props) => {
     return (
       <>
         <Dc20Abilities character={character()} onReplaceCharacter={props.onReplaceCharacter} />
-        <div class="flex flex-col emd:flex-row emd:gap-4 emd:mt-4" />
+        <div class="flex flex-col emd:flex-row emd:gap-4 emd:mt-4">
+          <div class="mt-4 emd:mt-0 flex-1">
+            <Dc20Skills character={character()} onReplaceCharacter={props.onReplaceCharacter} />
+          </div>
+          <div class="mt-4 emd:mt-0 flex-1" />
+        </div>
       </>
     );
   });
