@@ -268,18 +268,18 @@
     "dread": { "name": { "en": "Dread", "ru": "Ужас" } }
   },
   "beastforms": {
-    "agile_scout": { "name": { "en": "Agile scout", "ru": "Ловкий разведчик" } },
-    "household_friend": { "name": { "en": "Household friend", "ru": "Домашний питомец" } },
-    "nimble_grazer": { "name": { "en": "Nimble grazer", "ru": "Проворное копытное" } },
-    "pack_predator": { "name": { "en": "Pack predator", "ru": "Стайный хищник" } },
-    "aquatic_scout": { "name": { "en": "Aquatic scout", "ru": "Водный разведчик" } },
-    "stalking_arachnid": { "name": { "en": "Stalking arachnid", "ru": "Выслеживающий арахнид" } },
-    "armored_sentry": { "name": { "en": "Armored sentry", "ru": "Бронированное панцирное" } },
-    "powerful_beast": { "name": { "en": "Powerful beast", "ru": "Крупный зверь" } },
-    "mighty_strider": { "name": { "en": "Mighty strider", "ru": "Выносливый скакун" } },
-    "striking_serpent": { "name": { "en": "Striking serpent", "ru": "Ужасающий змей" } },
-    "pouncing_predator": { "name": { "en": "Pouncing predator", "ru": "Свирепый хищник" } },
-    "winged_beast": { "name": { "en": "Winged beast", "ru": "Крылатый зверь" } }
+    "agile_scout": { "name": { "en": "Agile scout", "ru": "Ловкий разведчик" }, "tier": 1 },
+    "household_friend": { "name": { "en": "Household friend", "ru": "Домашний питомец" }, "tier": 1 },
+    "nimble_grazer": { "name": { "en": "Nimble grazer", "ru": "Проворное копытное" }, "tier": 1 },
+    "pack_predator": { "name": { "en": "Pack predator", "ru": "Стайный хищник" }, "tier": 1 },
+    "aquatic_scout": { "name": { "en": "Aquatic scout", "ru": "Водный разведчик" }, "tier": 1 },
+    "stalking_arachnid": { "name": { "en": "Stalking arachnid", "ru": "Выслеживающий арахнид" }, "tier": 1 },
+    "armored_sentry": { "name": { "en": "Armored sentry", "ru": "Бронированное панцирное" }, "tier": 2 },
+    "powerful_beast": { "name": { "en": "Powerful beast", "ru": "Крупный зверь" }, "tier": 2 },
+    "mighty_strider": { "name": { "en": "Mighty strider", "ru": "Выносливый скакун" }, "tier": 2 },
+    "striking_serpent": { "name": { "en": "Striking serpent", "ru": "Ужасающий змей" }, "tier": 2 },
+    "pouncing_predator": { "name": { "en": "Pouncing predator", "ru": "Свирепый хищник" }, "tier": 2 },
+    "winged_beast": { "name": { "en": "Winged beast", "ru": "Крылатый зверь" }, "tier": 2 }
   },
   "stances": {
     "brutal": {
