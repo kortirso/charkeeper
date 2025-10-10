@@ -37,7 +37,7 @@ module CharactersContext
 
         rule(:abilities) do
           next if value.nil?
-          next if value.values.all? { |item| item.positive? && item <= 7 }
+          next if value.values.all? { |item| item.between?(-2, 7) }
 
           key.failure(:invalid_value)
         end
@@ -45,6 +45,15 @@ module CharactersContext
       # rubocop: enable Metrics/BlockLength
 
       private
+
+      def do_prepare(input) # rubocop: disable Metrics/AbcSize
+        if input.key?(:abilities) # rubocop: disable Style/GuardClause
+          input[:attribute_points] = 0
+          input[:skill_points] = 5 + input[:abilities][:int] if input[:character].data.skill_points.nil?
+          input[:trade_points] = 3 if input[:character].data.trade_points.nil?
+          input[:language_points] = 2 if input[:character].data.language_points.nil?
+        end
+      end
 
       def do_persist(input) # rubocop: disable Metrics/AbcSize
         input[:character].data =

@@ -5,6 +5,7 @@ module Dc20Character
     def call(result:)
       result.merge({
         classes: { result[:main_class] => 1 },
+        ancestries: result[:ancestry_feats].keys,
         attribute_points: calculate_attribute_points(result[:ancestry_feats]),
         skill_expertise_points: calculate_skill_expertise_points(result[:ancestry_feats]),
         trade_expertise_points: calculate_trade_expertise_points(result[:ancestry_feats])

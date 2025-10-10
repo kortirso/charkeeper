@@ -123,13 +123,13 @@ export const Dc20CharacterForm = (props) => {
         </For>
       </Toggle>
       <Show when={Object.keys(characterDc20Form.ancestry_feats).length > 2}>
-        <p>{TRANSLATION[locale()]['manyAncestriesAlert']}</p>
+        <p class="warning">{TRANSLATION[locale()]['manyAncestriesAlert']}</p>
       </Show>
       <Show when={validations.minorTraits > 1}>
-        <p>{TRANSLATION[locale()]['minorTraitsAlert']}</p>
+        <p class="warning">{TRANSLATION[locale()]['minorTraitsAlert']}</p>
       </Show>
       <Show when={validations.negativeTraits > 2}>
-        <p>{TRANSLATION[locale()]['negativeTraitsAlert']}</p>
+        <p class="warning">{TRANSLATION[locale()]['negativeTraitsAlert']}</p>
       </Show>
     </CharacterForm>
   );

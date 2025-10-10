@@ -6,6 +6,7 @@ module Dc20
 
     attribute :level, :integer, default: 1
     attribute :main_class, :string
+    attribute :ancestries, array: true
     attribute :classes, array: true
     attribute :abilities, array: true, default: { 'mig' => -2, 'agi' => -2, 'int' => -2, 'cha' => -2 }
     attribute :health, array: true, default: { 'current' => 1, 'temp' => 0 }
@@ -14,10 +15,13 @@ module Dc20
     attribute :trade_expertise, array: true, default: [] # компетентность в ремеслах
     attribute :skill_levels, array: true, default: {} # { 'skill' => 1 } владение навыками
     attribute :trade_levels, array: true, default: {} # { 'trade' => 1 } владение ремеслами
-    # подсказки
+    # доступные очки для распределения
     attribute :attribute_points, :integer, default: 12
+    attribute :skill_points, :integer
     attribute :skill_expertise_points, :integer, default: 0
+    attribute :trade_points, :integer
     attribute :trade_expertise_points, :integer, default: 0
+    attribute :language_points, :integer
   end
 
   class Character < Character

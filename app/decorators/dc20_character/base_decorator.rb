@@ -3,7 +3,7 @@
 module Dc20Character
   class BaseDecorator < SimpleDelegator
     delegate :id, :name, :data, to: :__getobj__
-    delegate :abilities, :main_class, :level, :combat_expertise, :health, :classes, to: :data
+    delegate :abilities, :main_class, :level, :combat_expertise, :health, :classes, :attribute_points, :ancestries, to: :data
 
     def parent = __getobj__
     def method_missing(_method, *args); end
