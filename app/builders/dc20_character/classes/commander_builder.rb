@@ -3,10 +3,10 @@
 module Dc20Character
   module Classes
     class CommanderBuilder
-      COMBAT_MASTERIES = %w[weapon light_armor heavy_armor shield].freeze
+      COMBAT_EXPERTISE = %w[weapon light_armor heavy_armor shield].freeze
 
       def call(result:)
-        result[:combat_masteries] = COMBAT_MASTERIES
+        result[:combat_expertise] = COMBAT_EXPERTISE
         result[:health] = { current: 9, temp: 0 }
 
         result

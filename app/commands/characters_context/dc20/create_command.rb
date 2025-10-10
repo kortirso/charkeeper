@@ -12,6 +12,7 @@ module CharactersContext
           required(:user).filled(type?: User)
           required(:name).filled(:string, max_size?: 50)
           required(:main_class).filled(Classes)
+          required(:ancestry_feats).hash
           optional(:avatar_file).hash do
             required(:file_content).filled(:string)
             required(:file_name).filled(:string)
@@ -25,7 +26,7 @@ module CharactersContext
       private
 
       def do_prepare(input)
-        input[:data] = build_fresh_character(input.slice(:main_class).symbolize_keys)
+        input[:data] = build_fresh_character(input.slice(:main_class, :ancestry_feats).symbolize_keys)
       end
 
       def do_persist(input)

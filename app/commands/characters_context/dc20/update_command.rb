@@ -14,7 +14,7 @@ module CharactersContext
 
         params do
           required(:character).filled(type?: ::Dc20::Character)
-          optional(:attributes).hash do
+          optional(:abilities).hash do
             required(:mig).filled(:integer)
             required(:agi).filled(:integer)
             required(:int).filled(:integer)
@@ -24,7 +24,7 @@ module CharactersContext
             required(:current).filled(:integer)
             required(:temp).filled(:integer)
           end
-          optional(:combat_masteries).value(:array).each(included_in?: ::Dc20::Character.combat_masteries.keys)
+          optional(:combat_expertise).value(:array).each(included_in?: ::Dc20::Character.combat_expertise.keys)
           optional(:name).filled(:string, max_size?: 50)
           optional(:avatar_file).hash do
             required(:file_content).filled(:string)
@@ -35,7 +35,7 @@ module CharactersContext
 
         rule(:avatar_file, :avatar_url).validate(:check_only_one_present)
 
-        rule(:attributes) do
+        rule(:abilities) do
           next if value.nil?
           next if value.values.all? { |item| item.positive? && item <= 7 }
 
@@ -46,7 +46,7 @@ module CharactersContext
 
       private
 
-      def do_persist(input)
+      def do_persist(input) # rubocop: disable Metrics/AbcSize
         input[:character].data =
           input[:character].data.attributes.merge(input.except(:character, :avatar_file, :avatar_url, :name).stringify_keys)
         input[:character].assign_attributes(input.slice(:name))
