@@ -32,14 +32,17 @@ export const Dnd5SavingThrows = (props) => {
                   {ability.name[locale()]}
                 </p>
                 <div class="flex items-center">
-                  <Dice text={modifier(character().save_dc[slug])} onClick={() => openDiceRoll(character().save_dc[slug])} />
+                  <Dice
+                    text={modifier(character().save_dc[slug])}
+                    onClick={() => openDiceRoll(`/check save ${slug}`, character().save_dc[slug])}
+                  />
                 </div>
               </div>
             }
           </For>
         </div>
       </div>
-      <DiceRoll provider="dnd" />
+      <DiceRoll provider="dnd" characterId={character().id} />
     </ErrorWrapper>
   );
 }

@@ -4,6 +4,7 @@ import { createSignal, Show, batch, Switch, Match } from 'solid-js';
 import { Dice, Button } from '../../components';
 import { useAppState, useAppLocale } from '../../context';
 import { clickOutside, modifier } from '../../helpers';
+import { createBotRequest } from '../../requests/createBotRequest';
 
 const TRANSLATION = {
   en: {
@@ -21,6 +22,7 @@ const TRANSLATION = {
 export const createDiceRoll = () => {
   const [isOpen, setIsOpen] = createSignal(false);
 
+  const [botCommand, setBotCommand] = createSignal('');
   const [bonus, setBonus] = createSignal(0);
   const [additionalBonus, setAdditionalBonus] = createSignal(0);
   const [advantage, setAdvantage] = createSignal(0);
@@ -29,9 +31,10 @@ export const createDiceRoll = () => {
   const [locale] = useAppLocale();
 
   return {
-    openDiceRoll(bonus) {
+    openDiceRoll(botCommand, bonus) {
       batch(() => {
         setIsOpen(true);
+        setBotCommand(botCommand);
         setBonus(bonus);
       });
     },
@@ -45,6 +48,20 @@ export const createDiceRoll = () => {
 
           setAdvantage(advantage() + advantageModifier);
         }
+      }
+
+      const makeRoll = async () => {
+        const options = [];
+        if (advantage() !== 0) options.push(`--adv ${advantage()}`);
+        if (bonus() + additionalBonus() !== 0) options.push(`--bonus ${bonus() + additionalBonus()}`);
+
+        const botCommandWithOptions = options.length > 0 ? `${botCommand()} ${options.join(' ')}` : botCommand();
+
+        const result = await createBotRequest(
+          appState.accessToken, { source: 'raw', value: botCommandWithOptions, character_id: props.characterId }
+        );
+
+        console.log(result);
       }
 
       return (
@@ -82,7 +99,7 @@ export const createDiceRoll = () => {
                   </div>
                 </div>
                 <div class="mt-2">
-                  <Button default textable classList="flex-1">{TRANSLATION[locale()]['roll']}</Button>
+                  <Button default textable classList="flex-1" onClick={makeRoll}>{TRANSLATION[locale()]['roll']}</Button>
                 </div>
               </div>
             </div>
