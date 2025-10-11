@@ -5,7 +5,15 @@ module Frontend
     include Deps[handle_service: 'services.bot_context.handle']
 
     def create
-      render json: handle_service.call(source: :web, message: params[:value], data: { user: current_user }), status: :ok
+      render json: handle_service.call(
+        source: (params[:source] || :web).to_sym, message: params[:value], data: { user: current_user, character: character }
+      ), status: :ok
+    end
+
+    private
+
+    def character
+      current_user.characters.find_by(id: params[:character_id])
     end
   end
 end

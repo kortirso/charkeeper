@@ -139,6 +139,7 @@ module Charkeeper
     register('services.bot_context.commands.roll') { BotContext::Commands::Roll.new }
     register('services.bot_context.commands.book') { BotContext::Commands::Book.new }
     register('services.bot_context.commands.homebrew') { BotContext::Commands::Homebrew.new }
+    register('services.bot_context.commands.check') { BotContext::Commands::Check.new }
 
     register('services.bot_context.represent_command') { BotContext::RepresentCommandService.new }
 

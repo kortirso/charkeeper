@@ -9,7 +9,7 @@ module BotContext
         total = 0
         rolls = arguments.filter_map do |argument|
           dice, modifier = argument.gsub(/\s+/, '').split('+')
-          roll_result = roll.call(dice: dice, modifier: modifier.to_i)
+          roll_result = dice.include?('d') ? roll.call(dice: dice, modifier: modifier.to_i) : dice.to_i
           total += roll_result
           [argument, roll_result]
         rescue StandardError => _e
