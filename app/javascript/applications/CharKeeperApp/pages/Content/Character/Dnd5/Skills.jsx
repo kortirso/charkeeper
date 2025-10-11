@@ -4,7 +4,6 @@ import { ErrorWrapper, Checkbox, Levelbox, EditWrapper } from '../../../../compo
 import config from '../../../../data/dnd2024.json';
 import { useAppState, useAppLocale, useAppAlert } from '../../../../context';
 import { updateCharacterRequest } from '../../../../requests/updateCharacterRequest';
-
 import { modifier } from '../../../../helpers';
 
 export const Dnd5Skills = (props) => {
