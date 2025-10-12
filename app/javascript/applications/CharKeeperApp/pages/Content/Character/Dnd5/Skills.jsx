@@ -1,6 +1,6 @@
 import { createSignal, createEffect, For, Show, batch, Switch, Match } from 'solid-js';
 
-import { ErrorWrapper, Checkbox, Levelbox, EditWrapper } from '../../../../components';
+import { ErrorWrapper, Checkbox, Levelbox, EditWrapper, Dice, createDiceRoll } from '../../../../components';
 import config from '../../../../data/dnd2024.json';
 import { useAppState, useAppLocale, useAppAlert } from '../../../../context';
 import { updateCharacterRequest } from '../../../../requests/updateCharacterRequest';
@@ -13,6 +13,7 @@ export const Dnd5Skills = (props) => {
   const [editMode, setEditMode] = createSignal(false);
   const [skillsData, setSkillsData] = createSignal(character().skills);
 
+  const { DiceRoll, openDiceRoll } = createDiceRoll();
   const [appState] = useAppState();
   const [{ renderAlerts }] = useAppAlert();
   const [locale] = useAppLocale();
@@ -113,7 +114,13 @@ export const Dnd5Skills = (props) => {
                     <p class={`flex-1 flex items-center dark:text-snow ${skill.level > 0 ? 'font-normal!' : ''}`}>
                       {config.skills[skill.slug].name[locale()]}
                     </p>
-                    <span class="dark:text-snow">{modifier(skill.modifier)}</span>
+                    <Dice
+                      width="28"
+                      height="28"
+                      text={modifier(skill.modifier)}
+                      textClassList=""
+                      onClick={() => openDiceRoll(`/check skill ${skill.slug}`, skill.modifier)}
+                    />
                   </div>
                 }
               </For>
@@ -121,6 +128,7 @@ export const Dnd5Skills = (props) => {
           </For>
         </div>
       </EditWrapper>
+      <DiceRoll provider="dnd" characterId={character().id} />
     </ErrorWrapper>
   );
 }

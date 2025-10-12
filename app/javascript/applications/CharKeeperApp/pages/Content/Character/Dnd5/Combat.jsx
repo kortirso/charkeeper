@@ -1,7 +1,9 @@
 import { createSignal, createEffect, For, Show, batch } from 'solid-js';
 import * as i18n from '@solid-primitives/i18n';
 
-import { createModal, StatsBlock, ErrorWrapper, Input, Toggle, Checkbox, Button } from '../../../../components';
+import {
+  createModal, StatsBlock, ErrorWrapper, Input, Toggle, Checkbox, Button, Dice, createDiceRoll
+} from '../../../../components';
 import { useAppState, useAppLocale } from '../../../../context';
 import { updateCharacterRequest } from '../../../../requests/updateCharacterRequest';
 import { createCharacterHealthRequest } from '../../../../requests/createCharacterHealthRequest';
@@ -16,6 +18,7 @@ export const Dnd5Combat = (props) => {
   const [damageHealValue, setDamageHealValue] = createSignal(0);
   const [healthData, setHealthData] = createSignal(character().health);
 
+  const { DiceRoll, openDiceRoll } = createDiceRoll();
   const { Modal, openModal, closeModal } = createModal();
   const [appState] = useAppState();
   const [, dict] = useAppLocale();
@@ -134,7 +137,14 @@ export const Dnd5Combat = (props) => {
                       <p class="text-xs">{attack.notes}</p>
                     </Show>
                   </td>
-                  <td class="py-1 text-center dark:text-snow">{modifier(attack.attack_bonus)}</td>
+                  <td class="py-1 text-center">
+                    <Dice
+                      width="28"
+                      height="28"
+                      text={modifier(attack.attack_bonus)}
+                      onClick={() => openDiceRoll(`/check attack ${attack.name}`, attack.attack_bonus)}
+                    />
+                  </td>
                   <td class="py-1 text-center dark:text-snow">
                     <p>{attack.damage}{attack.damage_bonus > 0 ? modifier(attack.damage_bonus) : ''}</p>
                     <p class="text-xs">{t(`weaponDamageType.${attack.damage_type}`)}</p>
@@ -290,6 +300,7 @@ export const Dnd5Combat = (props) => {
           <Button default textable onClick={updateHealth}>{t('save')}</Button>
         </div>
       </Modal>
+      <DiceRoll provider="dnd" characterId={character().id} />
     </ErrorWrapper>
   );
 }

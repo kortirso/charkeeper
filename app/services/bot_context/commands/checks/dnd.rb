@@ -9,7 +9,7 @@ module BotContext
         def call(character:, arguments: [])
           result =
             case arguments.shift
-            when 'save' then save_check(character, arguments)
+            when 'save', 'attr', 'skill', 'attack' then save_check(character, arguments)
             end
 
           {
