@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - DC20 basic integration
 - In-app dice roll window
 - campaign management by bot
+- sending roll result to telegram group with campaign
 
 ### Modified
 - Save/Cancel buttons

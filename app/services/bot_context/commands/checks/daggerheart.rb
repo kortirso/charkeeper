@@ -7,13 +7,16 @@ module BotContext
         include Deps[roll_command: 'services.bot_context.commands.roll']
 
         def call(character:, arguments: [])
+          type = arguments.shift
+          target = arguments.shift
           result =
-            case arguments.shift
-            when 'attr', 'attack' then attr_check(character, arguments)
+            case type
+            when 'attr', 'attack' then attr_check(character, target, arguments)
             end
 
           {
-            type: 'check',
+            type: type,
+            target: target,
             result: result,
             errors: nil
           }
@@ -21,8 +24,7 @@ module BotContext
 
         private
 
-        def attr_check(_character, arguments)
-          _attribute = arguments.shift # 'str'
+        def attr_check(_character, _target, arguments)
           values = rolls(arguments)
           {
             rolls: [values.dig(0, :rolls, 0), values.dig(1, :rolls, 0), values&.dig(2, :rolls, 0)].compact,

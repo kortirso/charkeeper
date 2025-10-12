@@ -57,6 +57,22 @@ en:
         severe: Severe
     bot_context:
       representers:
+        check:
+          result: Roll result - %{result}
+          dnd:
+            crit_success: Critical success
+            crit_failure: Critical failure
+            success: "%{result}"
+            attr: makes an %{attr} check
+            save: makes an %{attr} save
+            skill: makes an %{attr} skill check
+            attack: makes an attack check with %{target}
+          daggerheart:
+            crit_success: Critical success
+            with_hope: "%{result} with hope"
+            with_fear: "%{result} with fear"
+            attr: makes an %{attr} check
+            attack: makes an attack check with %{target}
         roll:
           result: Result
           total: Total

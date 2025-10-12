@@ -57,6 +57,22 @@ ru:
         severe: Серьёзный
     bot_context:
       representers:
+        check:
+          result: Результат броска - %{result}
+          dnd:
+            crit_success: Критический успех
+            crit_failure: Критическая неудача
+            success: "%{result}"
+            attr: делает проверку атрибута, %{attr}
+            save: делает проверку спасброска, %{attr}
+            skill: делает проверку умения, %{attr}
+            attack: делает проверку атаки, %{target}
+          daggerheart:
+            crit_success: Критический успех
+            with_hope: "%{result} с надеждой"
+            with_fear: "%{result} со страхом"
+            attr: делает проверку атрибута %{attr}
+            attack: делает проверку атаки, %{target}
         roll:
           result: Результат
           total: Сумма

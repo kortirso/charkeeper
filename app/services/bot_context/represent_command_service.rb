@@ -5,7 +5,7 @@ module BotContext
     TELEGRAM_SOURCES = %i[telegram_bot telegram_group_bot].freeze
 
     def call(source:, command:, command_result:)
-      return { result: command_result[:result] } if source == :raw
+      return command_result if source == :raw
 
       source = :telegram if source.in?(TELEGRAM_SOURCES)
 
