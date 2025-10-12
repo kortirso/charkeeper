@@ -16,6 +16,7 @@ class Character < ApplicationRecord
 
   has_many :campaign_characters, class_name: 'Campaign::Character', dependent: :destroy
   has_many :campaigns, through: :campaign_characters
+  has_many :channels, through: :campaigns
 
   scope :dnd, -> { where(type: %w[Dnd5::Character Dnd2024::Character]) }
   scope :dnd5, -> { where(type: 'Dnd5::Character') }
