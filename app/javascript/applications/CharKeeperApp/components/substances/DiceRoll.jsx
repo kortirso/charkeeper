@@ -26,6 +26,7 @@ export const createDiceRoll = () => {
   const [bonus, setBonus] = createSignal(0);
   const [additionalBonus, setAdditionalBonus] = createSignal(0);
   const [advantage, setAdvantage] = createSignal(0);
+  const [rollResult, setRollResult] = createSignal(undefined);
 
   const [appState] = useAppState();
   const [locale] = useAppLocale();
@@ -36,6 +37,8 @@ export const createDiceRoll = () => {
         setIsOpen(true);
         setBotCommand(botCommand);
         setBonus(bonus);
+        setRollResult(undefined);
+        setAdvantage(0);
       });
     },
     closeDiceRoll() {
@@ -46,14 +49,19 @@ export const createDiceRoll = () => {
         if (props.provider === 'dnd') {
           if (advantage() + advantageModifier > 1 || advantage() + advantageModifier < -1) return;
 
-          setAdvantage(advantage() + advantageModifier);
+          batch(() => {
+            setAdvantage(advantage() + advantageModifier);
+            setRollResult(undefined);
+          });
         }
       }
 
       const makeRoll = async () => {
         const options = [];
-        if (advantage() !== 0) options.push(`--adv ${advantage()}`);
-        if (bonus() + additionalBonus() !== 0) options.push(`--bonus ${bonus() + additionalBonus()}`);
+        if (advantage() > 0) options.push(`--adv ${advantage()}`);
+        if (advantage() < 0) options.push(`--dis ${Math.abs(advantage())}`);
+        if (bonus() + additionalBonus() > 0) options.push(`--bonus ${bonus() + additionalBonus()}`);
+        if (bonus() + additionalBonus() < 0) options.push(`--penalty ${Math.abs(bonus() + additionalBonus())}`);
 
         const botCommandWithOptions = options.length > 0 ? `${botCommand()} ${options.join(' ')}` : botCommand();
 
@@ -61,7 +69,7 @@ export const createDiceRoll = () => {
           appState.accessToken, { source: 'raw', value: botCommandWithOptions, character_id: props.characterId }
         );
 
-        console.log(result);
+        setRollResult(result.result);
       }
 
       return (
@@ -72,18 +80,45 @@ export const createDiceRoll = () => {
               classList={{ 'dark': appState.colorSchema === 'dark' }}
             >
               <div class="p-4 blockable" use:clickOutside={() => setIsOpen(false)}>
-                <div class="flex items-center">
-                  <Switch>
-                    <Match when={props.provider === 'dnd'}>
-                      <Dice text="D20" />
-                      <Show when={advantage() !== 0}>
-                        <div class="ml-2"><Dice text={advantage() > 0 ? 'Adv' : 'Dis'} /></div>
-                      </Show>
-                      <Show when={bonus() + additionalBonus() !== 0}>
-                        <p class="text-xl ml-2 dark:text-snow">{modifier(bonus() + additionalBonus())}</p>
-                      </Show>
-                    </Match>
-                  </Switch>
+                <div class="flex justify-between items-center">
+                  <div class="flex items-center">
+                    <Switch>
+                      <Match when={props.provider === 'dnd'}>
+                        <Show
+                          when={rollResult() === undefined}
+                          fallback={
+                            <Dice
+                              minimum={advantage() !== 0 ? (advantage() > 0 ? rollResult().rolls[1][1] > rollResult().rolls[0][1] : rollResult().rolls[1][1] <= rollResult().rolls[0][1]) : false}
+                              text={rollResult().rolls[0][1]}
+                            />
+                          }
+                        >
+                          <Dice text="D20" />
+                        </Show>
+                        <Show when={advantage() !== 0}>
+                          <div class="ml-2">
+                            <Show
+                              when={rollResult() === undefined}
+                              fallback={
+                                <Dice
+                                  minimum={advantage() > 0 ? rollResult().rolls[1][1] <= rollResult().rolls[0][1] : rollResult().rolls[1][1] > rollResult().rolls[0][1]}
+                                  text={rollResult().rolls[1][1]}
+                                />
+                              }
+                            >
+                              <Dice text={advantage() > 0 ? 'Adv' : 'Dis'} />
+                            </Show>
+                          </div>
+                        </Show>
+                        <Show when={bonus() + additionalBonus() !== 0}>
+                          <p class="text-xl ml-2 dark:text-snow">{modifier(bonus() + additionalBonus())}</p>
+                        </Show>
+                      </Match>
+                    </Switch>
+                  </div>
+                  <Show when={rollResult() !== undefined}>
+                    <p class="font-medium! text-xl dark:text-snow">{rollResult().total}</p>
+                  </Show>
                 </div>
                 <div class="flex gap-x-4 mt-4">
                   <div class="flex-1">
