@@ -1,6 +1,6 @@
 import { createSignal, createEffect, For, Show, batch } from 'solid-js';
 
-import { Button, ErrorWrapper, EditWrapper } from '../../../../components';
+import { Button, ErrorWrapper, EditWrapper, Dice, createDiceRoll } from '../../../../components';
 import config from '../../../../data/daggerheart.json';
 import { useAppState, useAppLocale, useAppAlert } from '../../../../context';
 import { Minus, Plus } from '../../../../assets';
@@ -14,6 +14,7 @@ export const DaggerheartTraits = (props) => {
   const [editMode, setEditMode] = createSignal(false);
   const [traitsData, setTraitsData] = createSignal(character().traits);
 
+  const { DiceRoll, openDiceRoll } = createDiceRoll();
   const [appState] = useAppState();
   const [{ renderAlerts }] = useAppAlert();
   const [locale] = useAppLocale();
@@ -65,7 +66,16 @@ export const DaggerheartTraits = (props) => {
                 <p class="text-sm elg:text-[12px] uppercase text-center mb-4 dark:text-white">{trait}</p>
                 <div class="mx-auto flex items-center justify-center">
                   <p class="text-2xl font-normal! dark:text-snow">
-                    {editMode() ? traitsData()[slug] : modifier(character().modified_traits[slug])}
+                    {editMode() ?
+                      traitsData()[slug] :
+                      <Dice
+                        width="64"
+                        height="64"
+                        text={modifier(character().modified_traits[slug])}
+                        textClassList="text-4xl"
+                        onClick={() => openDiceRoll(`/check attr ${slug}`, character().modified_traits[slug])}
+                      />
+                    }
                   </p>
                 </div>
                 <Show when={editMode()}>
@@ -83,6 +93,7 @@ export const DaggerheartTraits = (props) => {
           </For>
         </div>
       </EditWrapper>
+      <DiceRoll provider="daggerheart" characterId={character().id} />
     </ErrorWrapper>
   );
 }

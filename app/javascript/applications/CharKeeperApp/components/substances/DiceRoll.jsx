@@ -10,12 +10,20 @@ const TRANSLATION = {
   en: {
     advantage: 'Advantage',
     disadvantage: 'Disadvantage',
-    roll: 'Roll'
+    roll: 'Roll',
+    crit: 'Crit',
+    hope: 'Hope',
+    fear: 'Fear',
+    critFailure: 'Crit fail'
   },
   ru: {
     advantage: 'Преимущество',
     disadvantage: 'Помеха',
-    roll: 'Бросить'
+    roll: 'Бросить',
+    crit: 'Крит',
+    hope: 'Надежда',
+    fear: 'Страх',
+    critFailure: 'Крит провал'
   }
 }
 
@@ -46,7 +54,7 @@ export const createDiceRoll = () => {
     },
     DiceRoll(props) {
       const updateAdvantage = (advantageModifier) => {
-        if (props.provider === 'dnd') {
+        if (props.provider === 'dnd' || props.provider === 'daggerheart') {
           if (advantage() + advantageModifier > 1 || advantage() + advantageModifier < -1) return;
 
           batch(() => {
@@ -76,10 +84,10 @@ export const createDiceRoll = () => {
         <Portal>
           <Show when={isOpen()}>
             <div
-              class="fixed bottom-6 right-6 z-40 bg-black/25 flex items-center justify-center"
+              class="fixed bottom-6 right-6 z-40 flex items-center justify-center"
               classList={{ 'dark': appState.colorSchema === 'dark' }}
             >
-              <div class="p-4 blockable" use:clickOutside={() => setIsOpen(false)}>
+              <div class="p-4 blockable w-xs" use:clickOutside={() => setIsOpen(false)}>
                 <div class="flex justify-between items-center">
                   <div class="flex items-center">
                     <Switch>
@@ -114,10 +122,58 @@ export const createDiceRoll = () => {
                           <p class="text-xl ml-2 dark:text-snow">{modifier(bonus() + additionalBonus())}</p>
                         </Show>
                       </Match>
+                      <Match when={props.provider === 'daggerheart'}>
+                        <Show
+                          when={rollResult() === undefined}
+                          fallback={
+                            <>
+                              <Dice text={rollResult().rolls[0][1]} />
+                              <Dice text={rollResult().rolls[1][1]} />
+                            </>
+                          }
+                        >
+                          <Dice text="D12" />
+                          <Dice text="D12" />
+                        </Show>
+                        <Show when={advantage() !== 0}>
+                          <div class="ml-2">
+                            <Show
+                              when={rollResult() === undefined}
+                              fallback={
+                                <Dice text={rollResult().rolls[2][1]} />
+                              }
+                            >
+                              <Dice text={advantage() > 0 ? 'Adv' : 'Dis'} />
+                            </Show>
+                          </div>
+                        </Show>
+                        <Show when={bonus() + additionalBonus() !== 0}>
+                          <p class="text-xl ml-2 dark:text-snow">{modifier(bonus() + additionalBonus())}</p>
+                        </Show>
+                      </Match>
                     </Switch>
                   </div>
                   <Show when={rollResult() !== undefined}>
-                    <p class="font-medium! text-xl dark:text-snow">{rollResult().total}</p>
+                    <div class="flex items-center">
+                      <p class="font-medium! text-xl dark:text-snow">{rollResult().total}</p>
+                      <span class="dark:text-snow text-sm uppercase ml-2">
+                        <Switch>
+                          <Match when={props.provider === 'dnd'}>
+                            <Switch>
+                              <Match when={rollResult().status === 'crit_success'}>{TRANSLATION[locale()]['crit']}</Match>
+                              <Match when={rollResult().status === 'crit_failure'}>{TRANSLATION[locale()]['critFailure']}</Match>
+                            </Switch>
+                          </Match>
+                          <Match when={props.provider === 'daggerheart'}>
+                            <Switch>
+                              <Match when={rollResult().status === 'crit_success'}>{TRANSLATION[locale()]['crit']}</Match>
+                              <Match when={rollResult().status === 'with_hope'}>{TRANSLATION[locale()]['hope']}</Match>
+                              <Match when={rollResult().status === 'with_fear'}>{TRANSLATION[locale()]['fear']}</Match>
+                            </Switch>
+                          </Match>
+                        </Switch>
+                      </span>
+                    </div>
                   </Show>
                 </div>
                 <div class="flex gap-x-4 mt-4">
@@ -128,8 +184,8 @@ export const createDiceRoll = () => {
                   <div class="flex-1">
                     <p class="mb-1 py-1 px-2 text-center border border-dusty rounded dark:border-snow dark:text-snow">{additionalBonus()}</p>
                     <div class="flex gap-x-2">
-                      <p class="dice-button" onClick={() => setAdditionalBonus(additionalBonus() - 1)}>-</p>
-                      <p class="dice-button" onClick={() => setAdditionalBonus(additionalBonus() + 1)}>+</p>
+                      <p class="dice-button flex-1" onClick={() => setAdditionalBonus(additionalBonus() - 1)}>-</p>
+                      <p class="dice-button flex-1" onClick={() => setAdditionalBonus(additionalBonus() + 1)}>+</p>
                     </div>
                   </div>
                 </div>
