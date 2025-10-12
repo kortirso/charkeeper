@@ -290,3 +290,7 @@ nav.pagy.nav a.gap {
 .warning {
   @apply bg-blue-200 rounded p-4 mb-2;
 }
+
+.dice-button {
+  @apply py-1 px-2 text-center cursor-pointer border border-dusty rounded dark:border-snow dark:text-snow;
+}

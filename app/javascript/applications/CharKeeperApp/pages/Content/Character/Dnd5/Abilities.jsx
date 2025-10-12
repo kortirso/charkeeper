@@ -1,6 +1,6 @@
 import { createSignal, createEffect, For, Show, batch } from 'solid-js';
 
-import { ErrorWrapper, Button, EditWrapper } from '../../../../components';
+import { ErrorWrapper, Button, EditWrapper, Dice, createDiceRoll } from '../../../../components';
 import config from '../../../../data/dnd2024.json';
 import { useAppState, useAppLocale, useAppAlert } from '../../../../context';
 import { Minus, Plus } from '../../../../assets';
@@ -15,6 +15,7 @@ export const Dnd5Abilities = (props) => {
   const [editMode, setEditMode] = createSignal(false);
   const [abilitiesData, setAbilitiesData] = createSignal(character().abilities);
 
+  const { DiceRoll, openDiceRoll } = createDiceRoll();
   const [appState] = useAppState();
   const [{ renderAlerts }] = useAppAlert();
   const [locale] = useAppLocale();
@@ -65,7 +66,13 @@ export const Dnd5Abilities = (props) => {
               <div class="blockable py-4">
                 <p class="text-sm elg:text-[10px] uppercase text-center mb-4 dark:text-white">{values.name[locale()]}</p>
                 <div class="w-16 h-16 flex items-center justify-center mx-auto relative">
-                  <p class="text-4xl dark:text-snow">{modifier(character().modifiers[slug])}</p>
+                  <Dice
+                    width="64"
+                    height="64"
+                    text={modifier(character().modifiers[slug])}
+                    textClassList="text-4xl"
+                    onClick={() => openDiceRoll(`/check attr ${slug}`, character().modifiers[slug])}
+                  />
                   <div class="absolute -right-4 -bottom-0 w-8 h-8 rounded-full border border-gray-200 bg-white flex items-center justify-center opacity-75">
                     <p class="text-xl">{editMode() ? abilitiesData()[slug] : character().modified_abilities[slug]}</p>
                   </div>
@@ -85,6 +92,7 @@ export const Dnd5Abilities = (props) => {
           </For>
         </div>
       </EditWrapper>
+      <DiceRoll provider="dnd" characterId={character().id} />
     </ErrorWrapper>
   );
 }

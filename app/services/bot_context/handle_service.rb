@@ -54,7 +54,7 @@ module BotContext
     # rubocop: enable Style/RedundantRegexpArgument
 
     def response(source, result, data={})
-      return send_result_message(data[:raw_message], result) if source != :web
+      return send_result_message(data[:raw_message], result) if source != :web && source != :raw
 
       { result: result[:result], errors: result[:errors], errors_list: result[:errors] }
     end

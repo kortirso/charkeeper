@@ -60,11 +60,11 @@ describe BotContext::HandleService do
       expect(client).not_to have_received(:send_message)
     end
 
-    context 'for invalid request' do
+    context 'for digital request' do
       let(:text) { '/roll 20' }
 
-      it 'sends error', :aggregate_failures do
-        expect(service_call[:errors].include?('No result')).to be_truthy
+      it 'sends response message', :aggregate_failures do
+        expect(service_call[:result].include?('Result: 20')).to be_truthy
         expect(client).not_to have_received(:send_message)
       end
     end
