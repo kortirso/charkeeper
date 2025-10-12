@@ -9,6 +9,26 @@
     <li><code>/roll 2d20+4</code> - roll two d20 with modifier</li>
     <li><code>/roll 2d20+4 2d12</code> - roll two d20 with modifier and two d12</li>
   </ul>
+
+  <h2 class="mt-8 mb-2 font-medium! text-lg">/campaign</h2>
+  <p class="mb-2 light-color">Command for managing campaigns.</p>
+  <h3 class="mb-2 font-medium!">Examples</h3>
+  <ul>
+    <li><code>/campaign list</code> - render list of campaigns</li>
+    <li><code>/campaign create --system daggerheart --name "Dark Sun"</code> - create new campaign</li>
+    <div class="pl-4 mt-2">
+      <p>Required arguments</p>
+      <ul>
+        <li><code>--system dnd2024</code> - select campaign system, options are: <code>dnd5</code>, <code>dnd2024</code>, <code>daggerheart</code>, <code>pathfinder2</code>, <code>dc20</code></li>
+        <li><code>--name "Campaign name"</code> - set campaign name</li>
+      </ul>
+      <br />
+    </div>
+    <li><code>/campaign set "Dark Sun"</code> - set campaign with specific name as active</li>
+    <li><code>/campaign show</code> - show active campaign</li>
+    <li><code>/campaign remove "Dark Sun"</code> - remove campaign</li>
+  </ul>
+
   <h2 class="mt-8 mb-2 font-medium! text-lg">/homebrew</h2>
   <p class="mb-2 light-color">Command for managing homebrews.</p>
   <h3 class="mb-2 font-medium!">Examples</h3>

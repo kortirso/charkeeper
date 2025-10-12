@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Added
 - DC20 basic integration
 - In-app dice roll window
+- campaign management by bot
 
 ### Modified
 - Save/Cancel buttons

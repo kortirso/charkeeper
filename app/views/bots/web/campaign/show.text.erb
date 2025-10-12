@@ -1,0 +1,8 @@
+<%= I18n.t("providers.#{result.provider}") + " - #{result.name}" %>
+
+<% if result.characters.exists? %>
+<%= I18n.t('services.bot_context.representers.campaign.show.characters') %>
+<% result.characters.each do |character| %>
+<%= character.name %>
+<% end %>
+<% end %>

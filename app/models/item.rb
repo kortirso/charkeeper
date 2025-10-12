@@ -4,7 +4,7 @@ class Item < ApplicationRecord
   belongs_to :user, optional: true
   belongs_to :itemable, polymorphic: true, optional: true
 
-  has_many :character_items, class_name: 'Character::Item', dependent: :destroy
+  has_many :character_items, class_name: '::Character::Item', dependent: :destroy
 
   scope :dnd, -> { where(type: %w[Dnd5::Item Dnd2024::Item]) }
   scope :dnd5, -> { where(type: 'Dnd5::Item') }

@@ -107,6 +107,9 @@ module Charkeeper
 
     register('commands.campaigns_context.add_campaign') { CampaignsContext::AddCampaignCommand.new }
     register('commands.campaigns_context.join_campaign') { CampaignsContext::JoinCampaignCommand.new }
+    register('commands.campaigns_context.remove_campaign') { CampaignsContext::RemoveCampaignCommand.new }
+
+    register('commands.channels_context.add_channel') { ChannelsContext::AddChannelCommand.new }
 
     register('commands.homebrew_context.daggerheart.add_transformation') {
       HomebrewContext::Daggerheart::AddTransformationCommand.new
@@ -140,6 +143,7 @@ module Charkeeper
     register('services.bot_context.commands.book') { BotContext::Commands::Book.new }
     register('services.bot_context.commands.homebrew') { BotContext::Commands::Homebrew.new }
     register('services.bot_context.commands.check') { BotContext::Commands::Check.new }
+    register('services.bot_context.commands.campaign') { BotContext::Commands::Campaign.new }
 
     register('services.bot_context.represent_command') { BotContext::RepresentCommandService.new }
 

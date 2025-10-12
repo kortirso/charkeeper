@@ -50,6 +50,34 @@ describe BotContext::HandleService do
         end
       end
     end
+
+    context 'for campaign commands' do
+      let!(:channel) { create :channel, external_id: '1' }
+      let!(:campaign) { create :campaign, :daggerheart }
+      let!(:character1) { create :character, :daggerheart }
+      let!(:character2) { create :character, :daggerheart }
+
+      before do
+        create :campaign_character, campaign: campaign, character: character1
+        create :campaign_character, campaign: campaign, character: character2
+        create :campaign_channel, campaign: campaign, channel: channel
+      end
+
+      context 'when show' do
+        let(:text) { '/campaign show' }
+
+        it 'shows campaign info' do
+          service_call
+
+          expect(client).to have_received(:send_message).with(
+            bot_secret: nil,
+            chat_id: 1,
+            reply_to_message_id: 1,
+            text: "Daggerheart - #{campaign.name}\n\nCampaign' characters\n\n#{character1.name}\n\n#{character2.name}"
+          )
+        end
+      end
+    end
   end
 
   context 'for web request' do
