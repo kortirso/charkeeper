@@ -63,16 +63,16 @@ en:
             crit_success: Critical success
             crit_failure: Critical failure
             success: "%{result}"
-            attr: "%{name} makes an %{attr} check"
-            save: "%{name} makes an %{attr} save"
-            skill: "%{name} makes an %{attr} skill check"
-            attack: "%{name} makes an attack check with %{target}"
+            attr: makes an %{attr} check
+            save: makes an %{attr} save
+            skill: makes an %{attr} skill check
+            attack: makes an attack check with %{target}
           daggerheart:
             crit_success: Critical success
             with_hope: "%{result} with hope"
             with_fear: "%{result} with fear"
-            attr: "%{name} makes an %{attr} check"
-            attack: "%{name} makes an attack check with %{target}"
+            attr: makes an %{attr} check
+            attack: makes an attack check with %{target}
         roll:
           result: Result
           total: Total
