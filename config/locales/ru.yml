@@ -17,6 +17,7 @@ ru:
     dnd5: D&D 5
     dnd2024: D&D 2024
     pathfinder2: Pathfinder 2
+    dc20: DC20
   services:
     sheets_context:
       level: Уровень
@@ -65,6 +66,13 @@ ru:
             result: "Модуль \"%{name}\" создан"
           remove:
             result: Модуль удалён
+        campaign:
+          create:
+            result: "Кампания \"%{name}\" создана"
+          remove:
+            result: Кампания удалёна
+          show:
+            characters: Персонажи кампании
         homebrew:
           add_race:
             result: "Раса \"%{name}\" создана"

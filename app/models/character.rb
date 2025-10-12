@@ -14,7 +14,7 @@ class Character < ApplicationRecord
   has_many :feat_items, class_name: '::Feat', through: :feats, source: :items
   has_one :companion, class_name: '::Character::Companion', dependent: :destroy
 
-  has_many :campaign_characters, class_name: 'Campaign::Character', dependent: :destroy
+  has_many :campaign_characters, class_name: '::Campaign::Character', dependent: :destroy
   has_many :campaigns, through: :campaign_characters
   has_many :channels, through: :campaigns
 

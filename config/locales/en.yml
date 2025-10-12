@@ -17,6 +17,7 @@ en:
     dnd5: D&D 5
     dnd2024: D&D 2024
     pathfinder2: Pathfinder 2
+    dc20: DC20
   services:
     sheets_context:
       level: Level
@@ -65,6 +66,13 @@ en:
             result: "Module \"%{name}\" is created"
           remove:
             result: Module is deleted
+        campaign:
+          create:
+            result: "Campaign \"%{name}\" is created"
+          remove:
+            result: Campaign is deleted
+          show:
+            characters: "Campaign' characters"
         homebrew:
           add_race:
             result: "Race \"%{name}\" is created"
