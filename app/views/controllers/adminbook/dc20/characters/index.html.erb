@@ -1,0 +1,33 @@
+<table class="table w-full text-sm">
+  <thead>
+    <tr>
+      <td></td>
+      <td>ID</td>
+      <td>Name</td>
+      <td>Level</td>
+      <td>Classes</td>
+      <td>User ID</td>
+      <td></td>
+    </tr>
+  </thead>
+  <tbody>
+    <% @characters.each_with_index do |character, index| %>
+      <tr>
+        <td class="pr-2"><%= (@pagy.page - 1) * 25 + index + 1 %></td>
+        <td class="pr-2"><%= character.id %></td>
+        <td class="pr-2"><%= character.name %></td>
+        <td class="pr-2"><%= character.data.level %></td>
+        <td class="pr-2">
+          <% character.data.classes.each do |key, value| %>
+            <p class="text-sm"><%= key %> - <%= value %></p>
+          <% end %>
+        </td>
+        <td class="pr-2"><%= character.user_id %></td>
+        <td><%= character.created_at.strftime('%d-%m-%Y') %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<% if @pagy.pages > 1 %>
+  <div class="mt-6"><%== pagy_nav(@pagy) %></div>
+<% end %>
