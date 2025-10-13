@@ -162,6 +162,15 @@ en:
           feature_5: Spells management system with marking spent spell slots.
           feature_6: Automatic calculation of rest effects.
           feature_7: Automatic rendering available feats with prefilled values of damage and other feat stats.
+        bots:
+          title: Bots integrations in Discord and Telegram
+          feature_1: Campaigns management
+          feature_2: Sending roll results
+          feature_3: Homebrews management
+          telegram: For Telegram bot just find %{href} and add it to any of your groups
+          telegram_link: bot user
+          discord: For Discord bot just invite bot by %{href} to your channels
+          descord_link: link
     users:
       auth:
         notice: Authentication succeeds

@@ -67,7 +67,7 @@ module Charkeeper
 
     config.active_support.to_time_preserves_timezone = :zone
 
-    # config.hosts << 'snxxui-95-179-120-153.ru.tuna.am'
+    # config.hosts << 'sklh4i-2001-41d0-800-4d0f--.nl.tuna.am'
 
     # Catch 404s
     config.after_initialize do |app|
