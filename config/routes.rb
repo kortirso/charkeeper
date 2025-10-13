@@ -149,6 +149,7 @@ Rails.application.routes.draw do
 
   namespace :webhooks do
     resource :telegram, only: %i[create]
+    resource :discord, only: %i[create]
   end
 
   scope '(:locale)', locale: /#{I18n.available_locales.join('|')}/, defaults: { locale: nil } do

@@ -130,7 +130,7 @@ module DaggerheartCharacter
       beast_attack = beastform_config['attack']
 
       {
-        name: { en: 'Best attack', ru: 'Атака' }[I18n.locale],
+        name: { en: 'Beast attack', ru: 'Атака' }[I18n.locale],
         burden: 2,
         range: beast_attack['range'],
         attack_bonus: modified_traits[beast_attack['trait']] + attack_bonuses,
