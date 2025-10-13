@@ -18,6 +18,10 @@ en:
     dnd2024: D&D 2024
     pathfinder2: Pathfinder 2
     dc20: DC20
+  commands:
+    campaigns_context:
+      join_campaign:
+        provider_mismatch: Несовпадение систем
   services:
     sheets_context:
       level: Level

@@ -7,7 +7,8 @@ module BotContext
       homebrew_command: 'services.bot_context.commands.homebrew',
       book_command: 'services.bot_context.commands.book',
       check_command: 'services.bot_context.commands.check',
-      campaign_command: 'services.bot_context.commands.campaign'
+      campaign_command: 'services.bot_context.commands.campaign',
+      character_command: 'services.bot_context.commands.character'
     ]
 
     def call(source:, command:, arguments:, data:)
@@ -17,6 +18,7 @@ module BotContext
       when '/module' then book_command.call(source: source, arguments: arguments, data: data)
       when '/check' then check_command.call(source: source, arguments: arguments, data: data)
       when '/campaign' then campaign_command.call(source: source, arguments: arguments, data: data)
+      when '/character' then character_command.call(source: source, arguments: arguments, data: data)
       end
     end
   end
