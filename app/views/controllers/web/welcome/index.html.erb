@@ -80,3 +80,20 @@
     <p class="mb-2"><%= t('web.welcome.index.daggerheart.feature_6') %></p>
   </div>
 </div>
+<div class="max-w-7xl mx-auto mb-16 px-8 xl:px-0 grid grid-cols-1 lg:grid-cols-2 gap-x-8 gap-y-16">
+  <div class="order-1 lg:order-1">
+    <h2 class="text-4xl mb-4"><%= t('web.welcome.index.bots.title') %></h2>
+    <p class="mb-2"><%= t('web.welcome.index.bots.feature_1') %></p>
+    <p class="mb-2"><%= t('web.welcome.index.bots.feature_2') %></p>
+    <p class="mb-2"><%= t('web.welcome.index.bots.feature_3') %></p>
+    <p class="mb-2">
+      <%= t('web.welcome.index.bots.telegram', href: link_to(t('web.welcome.index.bots.telegram_link'), 'https://t.me/charkeeper_bot', class: 'underline', target: '_blank', rel: 'noopener noreferrer')).html_safe %>
+    </p>
+    <p class="mb-2">
+      <%= t('web.welcome.index.bots.discord', href: link_to(t('web.welcome.index.bots.discord_link'), 'https://discord.com/api/oauth2/authorize?client_id=1408454100642955296&scope=bot&permissions=536872960', class: 'underline', target: '_blank', rel: 'noopener noreferrer')).html_safe %>
+    </p>
+  </div>
+  <div class="order-2 lg:order-2">
+    <%= image_tag 'dnd.webp', alt: 'dnd', class: 'rounded', width: 624, height: 288 %>
+  </div>
+</div>
