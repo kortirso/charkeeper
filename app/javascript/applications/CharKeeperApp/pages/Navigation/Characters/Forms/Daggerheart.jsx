@@ -53,9 +53,9 @@ export const DaggerheartCharacterForm = (props) => {
     const mainFeatures = {};
     const secondaryFeatures = {};
 
-    Object.values(daggerheartConfig.heritages).forEach((item) => {
-      mainFeatures[item.main_feature.slug] = `${item.name[locale()]} - ${item.main_feature.name[locale()]}`;
-      secondaryFeatures[item.secondary_feature.slug] = `${item.name[locale()]} - ${item.secondary_feature.name[locale()]}`;
+    Object.values(daggerheartHeritages()).filter((item) => item.features.length > 1).forEach((item) => {
+      mainFeatures[item.features[0].slug] = `${item.name[locale()]} - ${item.features[0].name[locale()]}`;
+      secondaryFeatures[item.features[1].slug] = `${item.name[locale()]} - ${item.features[1].name[locale()]}`;
     })
 
     return [mainFeatures, secondaryFeatures];
