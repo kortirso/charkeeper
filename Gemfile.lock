@@ -300,6 +300,8 @@ GEM
     pg (1.6.2-x86_64-darwin)
     pg (1.6.2-x86_64-linux)
     pg (1.6.2-x86_64-linux-musl)
+    pghero (3.7.0)
+      activerecord (>= 7.1)
     pp (0.6.3)
       prettyprint
     prawn (2.5.0)
@@ -546,6 +548,7 @@ DEPENDENCIES
   pagy (~> 9.0)
   panko_serializer
   pg (~> 1.1)
+  pghero
   prawn
   props_template
   puma (= 6.5.0)

@@ -61,6 +61,7 @@ gem 'store_model'
 gem 'faraday', '~> 2.0'
 
 # performance metrics
+gem 'pghero'
 gem 'skylight'
 
 # bugs tracking
