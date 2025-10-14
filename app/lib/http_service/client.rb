@@ -36,6 +36,16 @@ module HttpService
     end
     # rubocop: enable Metrics/AbcSize
 
+    def delete(path:, params: nil, headers: nil)
+      raise StandardError, 'please stub request in test env' if Rails.env.test? && connection.adapter != 'Faraday::Adapter::Test'
+
+      response = connection.delete(path, params, headers)
+      {
+        success: response.success?,
+        body: response.body
+      }
+    end
+
     private
 
     def build_connection

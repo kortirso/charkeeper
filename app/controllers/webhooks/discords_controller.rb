@@ -19,13 +19,20 @@ module Webhooks
 
     private
 
+    # rubocop: disable Layout/LineLength
     def send_callback
       discord_client.send_callback(
         interaction_id: params[:id],
         interaction_token: params[:token],
-        params: { type: 4, data: { content: 'Congrats on sending your command!' } }
+        params: {
+          type: 4,
+          data: {
+            content: "#{params.dig(:user, :global_name)} sends request `/#{params.dig(:data, :name)} #{params.dig(:data, :options, 0, :value)}`"
+          }
+        }
       )
     end
+    # rubocop: enable Layout/LineLength
 
     def pong_response
       render json: { type: 1 }, status: :ok
