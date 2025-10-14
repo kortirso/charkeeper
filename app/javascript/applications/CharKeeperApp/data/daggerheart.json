@@ -2,171 +2,135 @@
   "heritages": {
     "clank": {
       "name": { "en": "Clank", "ru": "Кланк" },
-      "main_feature": {
-        "slug": "purposeful_design", "name": { "en": "Purposeful Design", "ru": "Целенаправленный дизайн" }
-      },
-      "secondary_feature": {
-        "slug": "efficient", "name": { "en": "Efficient", "ru": "Эффективность" }
-      },
+      "features": [
+        { "slug": "purposeful_design", "name": { "en": "Purposeful Design", "ru": "Целенаправленный дизайн" } },
+        { "slug": "efficient", "name": { "en": "Efficient", "ru": "Эффективность" } }
+      ],
       "comment": "Механические существа"
     },
     "drakona": {
       "name": { "en": "Drakona", "ru": "Дракона" },
-      "main_feature": {
-        "slug": "scales", "name": { "en": "Scales", "ru": "Чешуя" }
-      },
-      "secondary_feature": {
-        "slug": "elemental_breath", "name": { "en": "Elemental Breath", "ru": "Элементальное дыхание" }
-      },
+      "features": [
+        { "slug": "scales", "name": { "en": "Scales", "ru": "Чешуя" } },
+        { "slug": "elemental_breath", "name": { "en": "Elemental Breath", "ru": "Элементальное дыхание" } }
+      ],
       "comment": "Антропоморфные драконы"
     },
     "dwarf": {
       "name": { "en": "Dwarf", "ru": "Дварф" },
-      "main_feature": {
-        "slug": "thick_skin", "name": { "en": "Thick Skin", "ru": "Толстая кожа" }
-      },
-      "secondary_feature": {
-        "slug": "increased_fortitude", "name": { "en": "Increased Fortitude", "ru": "Повышенная стойкость" }
-      }
+      "features": [
+        { "slug": "thick_skin", "name": { "en": "Thick Skin", "ru": "Толстая кожа" } },
+        { "slug": "increased_fortitude", "name": { "en": "Increased Fortitude", "ru": "Повышенная стойкость" } }
+      ]
     },
     "elf": {
       "name": { "en": "Elf", "ru": "Эльф" },
-      "main_feature": {
-        "slug": "quick_reactions", "name": { "en": "Quick Reactions", "ru": "Быстрые рефлексы" }
-      },
-      "secondary_feature": {
-        "slug": "celestial_trance", "name": { "en": "Celestial Trance", "ru": "Небесный транс" }
-      }
+      "features": [
+        { "slug": "quick_reactions", "name": { "en": "Quick Reactions", "ru": "Быстрые рефлексы" } },
+        { "slug": "celestial_trance", "name": { "en": "Celestial Trance", "ru": "Небесный транс" } }
+      ]
     },
     "faerie": {
       "name": { "en": "Faerie", "ru": "Фейри" },
-      "main_feature": {
-        "slug": "luckbender", "name": { "en": "Luckbender", "ru": "Везунчик" }
-      },
-      "secondary_feature": {
-        "slug": "wings", "name": { "en": "Wings", "ru": "Крылья" }
-      }
+      "features": [
+        { "slug": "luckbender", "name": { "en": "Luckbender", "ru": "Везунчик" } },
+        { "slug": "wings", "name": { "en": "Wings", "ru": "Крылья" } }
+      ]
     },
     "faun": {
       "name": { "en": "Faun", "ru": "Фавн" },
-      "main_feature": {
-        "slug": "caprine_leap", "name": { "en": "Caprine Leap", "ru": "Козлиный прыжок" }
-      },
-      "secondary_feature": {
-        "slug": "kick", "name": { "en": "Kick", "ru": "Удар копытом" }
-      }
+      "features": [
+        { "slug": "caprine_leap", "name": { "en": "Caprine Leap", "ru": "Козлиный прыжок" } },
+        { "slug": "kick", "name": { "en": "Kick", "ru": "Удар копытом" } }
+      ]
     },
     "firbolg": {
       "name": { "en": "Firbolg", "ru": "Фирболг" },
-      "main_feature": {
-        "slug": "charge", "name": { "en": "Charge", "ru": "Таран" }
-      },
-      "secondary_feature": {
-        "slug": "unshakable", "name": { "en": "Unshakable", "ru": "Невозмутимость" }
-      }
+      "features": [
+        { "slug": "charge", "name": { "en": "Charge", "ru": "Таран" } },
+        { "slug": "unshakable", "name": { "en": "Unshakable", "ru": "Невозмутимость" } }
+      ]
     },
     "fungril": {
       "name": { "en": "Fungril", "ru": "Фангрил" },
-      "main_feature": {
-        "slug": "fungril_network", "name": { "en": "Fungril Network", "ru": "Сеть фангрилов" }
-      },
-      "secondary_feature": {
-        "slug": "death_connection", "name": { "en": "Death Connection", "ru": "Связь со смертью" }
-      },
+      "features": [
+        { "slug": "fungril_network", "name": { "en": "Fungril Network", "ru": "Сеть фангрилов" } },
+        { "slug": "death_connection", "name": { "en": "Death Connection", "ru": "Связь со смертью" } }
+      ],
       "comment": "Антропоморфные грибы"
     },
     "galapa": {
       "name": { "en": "Galapa", "ru": "Галапа" },
-      "main_feature": {
-        "slug": "shell", "name": { "en": "Shell", "ru": "Панцирь" }
-      },
-      "secondary_feature": {
-        "slug": "retract", "name": { "en": "Retract", "ru": "Втягивание" }
-      },
+      "features": [
+        { "slug": "shell", "name": { "en": "Shell", "ru": "Панцирь" } },
+        { "slug": "retract", "name": { "en": "Retract", "ru": "Втягивание" } }
+      ],
       "comment": "Антропоморфные черепахи"
     },
     "giant": {
       "name": { "en": "Giant", "ru": "Великан" },
-      "main_feature": {
-        "slug": "endurance", "name": { "en": "Endurance", "ru": "Выносливость" }
-      },
-      "secondary_feature": {
-        "slug": "reach", "name": { "en": "Reach", "ru": "Досягаемость" }
-      }
+      "features": [
+        { "slug": "endurance", "name": { "en": "Endurance", "ru": "Выносливость" } },
+        { "slug": "reach", "name": { "en": "Reach", "ru": "Досягаемость" } }
+      ]
     },
     "goblin": {
       "name": { "en": "Goblin", "ru": "Гоблин" },
-      "main_feature": {
-        "slug": "surefooted", "name": { "en": "Surefooted", "ru": "Твёрдая поступь" }
-      },
-      "secondary_feature": {
-        "slug": "danger_sense", "name": { "en": "Danger Sensen", "ru": "Чувство опасности" }
-      }
+      "features": [
+        { "slug": "surefooted", "name": { "en": "Surefooted", "ru": "Твёрдая поступь" } },
+        { "slug": "danger_sense", "name": { "en": "Danger Sensen", "ru": "Чувство опасности" } }
+      ]
     },
     "halfling": {
       "name": { "en": "Halfling", "ru": "Полурослик" },
-      "main_feature": {
-        "slug": "luckbringer", "name": { "en": "Luckbringer", "ru": "Приносящий удачу" }
-      },
-      "secondary_feature": {
-        "slug": "internal_compass", "name": { "en": "Internal compass", "ru": "Внутренний компас" }
-      }
+      "features": [
+        { "slug": "luckbringer", "name": { "en": "Luckbringer", "ru": "Приносящий удачу" } },
+        { "slug": "internal_compass", "name": { "en": "Internal compass", "ru": "Внутренний компас" } }
+      ]
     },
     "human": {
       "name": { "en": "Human", "ru": "Человек" },
-      "main_feature": {
-        "slug": "high_stamina", "name": { "en": "High Stamina", "ru": "Высокая выносливость" }
-      },
-      "secondary_feature": {
-        "slug": "adaptability", "name": { "en": "Adaptability", "ru": "Адаптивность" }
-      }
+      "features": [
+        { "slug": "high_stamina", "name": { "en": "High Stamina", "ru": "Высокая выносливость" } },
+        { "slug": "adaptability", "name": { "en": "Adaptability", "ru": "Адаптивность" } }
+      ]
     },
     "infernis": {
       "name": { "en": "Infernis", "ru": "Инфернис" },
-      "main_feature": {
-        "slug": "fearless", "name": { "en": "Fearless", "ru": "Бесстрашие" }
-      },
-      "secondary_feature": {
-        "slug": "dread_visage", "name": { "en": "Dread Visage", "ru": "Грозный облик" }
-      }
+      "features": [
+        { "slug": "fearless", "name": { "en": "Fearless", "ru": "Бесстрашие" } },
+        { "slug": "dread_visage", "name": { "en": "Dread Visage", "ru": "Грозный облик" } }
+      ]
     },
     "katari": {
       "name": { "en": "Katari", "ru": "Катари" },
-      "main_feature": {
-        "slug": "feline_instincts", "name": { "en": "Feline Instincts", "ru": "Кошачьи инстинкты" }
-      },
-      "secondary_feature": {
-        "slug": "retracting_claws", "name": { "en": "Retracting Claws", "ru": "Втяжные когти" }
-      },
+      "features": [
+        { "slug": "feline_instincts", "name": { "en": "Feline Instincts", "ru": "Кошачьи инстинкты" } },
+        { "slug": "retracting_claws", "name": { "en": "Retracting Claws", "ru": "Втяжные когти" } }
+      ],
       "comment": "Антропоморфные кошки"
     },
     "orc": {
       "name": { "en": "Orc", "ru": "Орк" },
-      "main_feature": {
-        "slug": "sturdy", "name": { "en": "Sturdy", "ru": "Выносливость" }
-      },
-      "secondary_feature": {
-        "slug": "tusks", "name": { "en": "Tusks", "ru": "Бивни" }
-      }
+      "features": [
+        { "slug": "sturdy", "name": { "en": "Sturdy", "ru": "Выносливость" } },
+        { "slug": "tusks", "name": { "en": "Tusks", "ru": "Бивни" } }
+      ]
     },
     "ribbet": {
       "name": { "en": "Ribbet", "ru": "Риббет" },
-      "main_feature": {
-        "slug": "amphibious", "name": { "en": "Amphibious", "ru": "Амфибия" }
-      },
-      "secondary_feature": {
-        "slug": "long_tongue", "name": { "en": "Long Tongue", "ru": "Длинный Язык" }
-      },
+      "features": [
+        { "slug": "amphibious", "name": { "en": "Amphibious", "ru": "Амфибия" } },
+        { "slug": "long_tongue", "name": { "en": "Long Tongue", "ru": "Длинный Язык" } }
+      ],
       "comment": "Антропоморфные жабы"
     },
     "simiah": {
       "name": { "en": "Simiah", "ru": "Симиан" },
-      "main_feature": {
-        "slug": "natural_climber", "name": { "en": "Natural Climber", "ru": "Прирождённый скалолаз" }
-      },
-      "secondary_feature": {
-        "slug": "nimble", "name": { "en": "Nimble", "ru": "Ловкий" }
-      },
+      "features": [
+        { "slug": "natural_climber", "name": { "en": "Natural Climber", "ru": "Прирождённый скалолаз" } },
+        { "slug": "nimble", "name": { "en": "Nimble", "ru": "Ловкий" } }
+      ],
       "comment": "Антропоморфные обезьяны"
     }
   },

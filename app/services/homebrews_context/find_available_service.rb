@@ -5,7 +5,7 @@ module HomebrewsContext
     def call(user_id:)
       {
         daggerheart: {
-          races: daggerheart_heritages(user_id),
+          races: races_with_features(user_id).to_h,
           communities: daggerheart_communities(user_id),
           transformations: daggerheart_transformations(user_id),
           classes: daggerheart_classes(user_id),
@@ -32,17 +32,44 @@ module HomebrewsContext
         end
     end
 
-    def daggerheart_heritages(user_id)
-      relation = ::Daggerheart::Homebrew::Race
-      relation.where(user_id: user_id)
-        .or(
-          relation.where(
-            id: available_books_data(user_id)['Daggerheart::Homebrew::Race'] || available_books_data(user_id)['Homebrew::Race']
+    def races_with_features(...)
+      daggerheart_heritages(...).map do |key, values|
+        [
+          key,
+          values.merge(
+            features: daggerheart_heritage_features(...)[key] || []
           )
-        )
-        .each_with_object({}) do |item, acc|
-          acc[item.id] = { name: { en: item.name, ru: item.name } }
-        end
+        ]
+      end
+    end
+
+    def daggerheart_heritages(user_id)
+      return @daggerheart_heritages if defined?(@daggerheart_heritages)
+
+      relation = ::Daggerheart::Homebrew::Race
+      @daggerheart_heritages =
+        relation.where(user_id: user_id)
+          .or(
+            relation.where(
+              id: available_books_data(user_id)['Daggerheart::Homebrew::Race'] || available_books_data(user_id)['Homebrew::Race']
+            )
+          )
+          .each_with_object({}) do |item, acc|
+            acc[item.id] = { name: { en: item.name, ru: item.name } }
+          end
+    end
+
+    def daggerheart_heritage_features(...)
+      @daggerheart_heritage_features ||=
+        ::Daggerheart::Feat
+          .where(origin: 0)
+          .where(origin_value: daggerheart_heritages(...).keys)
+          .order(created_at: :asc)
+          .select(:id, :title, :origin_value)
+          .each_with_object({}) do |item, acc|
+            acc[item.origin_value] ||= []
+            acc[item.origin_value].push({ slug: item.id, name: item.title })
+          end
     end
 
     def daggerheart_communities(user_id)

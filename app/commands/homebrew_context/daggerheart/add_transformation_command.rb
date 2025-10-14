@@ -3,6 +3,10 @@
 module HomebrewContext
   module Daggerheart
     class AddTransformationCommand < BaseCommand
+      include Deps[
+        refresh_user_data: 'services.homebrews_context.refresh_user_data'
+      ]
+
       use_contract do
         config.messages.namespace = :homebrew_transformation
 
@@ -16,6 +20,8 @@ module HomebrewContext
 
       def do_persist(input)
         result = ::Daggerheart::Homebrew::Transformation.create!(input)
+
+        refresh_user_data.call(user: input[:user])
 
         { result: result }
       end

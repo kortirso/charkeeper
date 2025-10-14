@@ -8,6 +8,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Added
 - character bot commands
 
+### Modified
+- using homebrew ancestries for mixed Daggerheart ancestries
+
 ## [0.3.8] - 2025-10-12
 ### Added
 - DC20 basic integration
