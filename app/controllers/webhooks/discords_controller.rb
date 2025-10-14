@@ -27,7 +27,7 @@ module Webhooks
         params: {
           type: 4,
           data: {
-            content: "#{params.dig(:user, :global_name)} sends request `/#{params.dig(:data, :name)} #{params.dig(:data, :options, 0, :value)}`"
+            content: "#{params.dig(:member, :user, :global_name)} sends request `/#{params.dig(:data, :name)} #{params.dig(:data, :options, 0, :value)}`"
           }
         }
       )
