@@ -15,7 +15,7 @@ describe Webhooks::DiscordsController do
       request.headers['X-Signature-Timestamp'] = '1760352406'
     end
 
-    it 'calls handler', :aggregate_failures do
+    it 'calls handler', :aggregate_failures, skip: 'no test credentials' do
       # rubocop: disable Style/StringLiterals
       post :create, body: "{\"version\":1,\"application_id\":\"1408454100642955296\",\"type\":0}"
       # rubocop: enable Style/StringLiterals
@@ -25,7 +25,7 @@ describe Webhooks::DiscordsController do
     end
 
     context 'with invalid signature' do
-      it 'calls handler', :aggregate_failures do
+      it 'calls handler', :aggregate_failures, skip: 'no test credentials' do
         post :create, params: {}
 
         expect(response).to have_http_status :unauthorized

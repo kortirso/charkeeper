@@ -12,7 +12,7 @@ module Webhooks
 
     def create
       monitoring_discord_webhook
-      head :no_content
+      render json: { type: 1 }, status: :ok
     end
 
     private
