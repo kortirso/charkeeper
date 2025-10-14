@@ -21,6 +21,7 @@ module Charkeeper
     register('monitoring.client') { Monitoring::Client.new }
     register('api.telegram.client') { TelegramApi::Client.new }
     register('api.imgproxy.client') { ImgproxyApi::Client.new }
+    register('api.discord.client') { DiscordApi::Client.new }
 
     # commands
     register('commands.auth_context.add_identity') { AuthContext::AddIdentityCommand.new }

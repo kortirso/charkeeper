@@ -3,6 +3,7 @@
 module DiscordApi
   class Client < HttpService::Client
     include Requests::Commands
+    include Requests::Interactions
 
     BASE_URL = 'https://discord.com'
 

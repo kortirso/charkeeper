@@ -3,7 +3,8 @@
 module Webhooks
   class DiscordsController < ApplicationController
     include Deps[
-      monitoring: 'monitoring.client'
+      monitoring: 'monitoring.client',
+      discord_client: 'api.discord.client'
     ]
 
     skip_before_action :verify_authenticity_token
@@ -12,10 +13,27 @@ module Webhooks
 
     def create
       monitoring_discord_webhook
-      render json: { type: params[:type] == 1 ? 1 : 4 }, status: :ok
+      send_callback unless params[:type] == 1
+      params[:type] == 1 ? pong_response : interaction_response
     end
 
     private
+
+    def send_callback
+      discord_client.send_callback(
+        interaction_id: params[:id],
+        interaction_token: params[:token],
+        params: { type: 4, data: { content: 'Congrats on sending your command!' } }
+      )
+    end
+
+    def pong_response
+      render json: { type: 1 }, status: :ok
+    end
+
+    def interaction_response
+      head :accepted
+    end
 
     def validate_discord_signature
       verify_key = RbNaCl::VerifyKey.new([public_key].pack('H*'))
