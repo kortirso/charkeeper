@@ -3,9 +3,9 @@
 module DiscordApi
   module Requests
     module Commands
-      def add_command(params:)
+      def add_command(channel_id:, params:)
         post(
-          path: "api/v10/applications/1408454100642955296/commands",
+          path: "api/v10/applications/#{channel_id}/commands",
           body: params,
           headers: headers
         )

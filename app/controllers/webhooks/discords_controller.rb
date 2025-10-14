@@ -12,7 +12,7 @@ module Webhooks
 
     def create
       monitoring_discord_webhook
-      render json: { type: 1 }, status: :ok
+      render json: { type: params[:type] == 1 ? 1 : 4 }, status: :ok
     end
 
     private
