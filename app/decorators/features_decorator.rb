@@ -15,13 +15,16 @@ class FeaturesDecorator
     end
   end
 
-  # rubocop: disable Metrics/AbcSize, Metrics/MethodLength
+  # rubocop: disable Metrics/AbcSize, Metrics/MethodLength, Metrics/PerceivedComplexity
   def features
     @features ||=
       available_features.filter_map do |feature|
-        feature.feat.eval_variables.each do |method_name, variable|
-          result = eval_variable(feature.feat, variable)
-          instance_variable_set(:"@#{method_name}", result) if result
+        # добавлять статические бонусы или включенные
+        if !feature.feat.continious || feature.active
+          feature.feat.eval_variables.each do |method_name, variable|
+            result = eval_variable(feature.feat, variable)
+            instance_variable_set(:"@#{method_name}", result) if result
+          end
         end
         next if feature.feat.kind == 'update_result'
 
@@ -39,11 +42,13 @@ class FeaturesDecorator
           limit_refresh: feature.feat.limit_refresh,
           options: feature.feat.options,
           value: feature.value,
-          origin: feature.feat.origin
+          origin: feature.feat.origin,
+          active: feature.active,
+          continious: feature.feat.continious
         }.compact
       end
   end
-  # rubocop: enable Metrics/AbcSize, Metrics/MethodLength
+  # rubocop: enable Metrics/AbcSize, Metrics/MethodLength, Metrics/PerceivedComplexity
 
   private
 

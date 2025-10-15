@@ -3,7 +3,7 @@
 class CampaignSerializer < ApplicationSerializer
   ATTRIBUTES = %i[id name provider characters].freeze
 
-  attributes :id, :name, :provider, :characters
+  attributes(*ATTRIBUTES)
 
   def characters
     object.campaign_characters.includes(:character).map do |member|

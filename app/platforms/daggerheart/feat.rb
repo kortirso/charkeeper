@@ -9,11 +9,12 @@ module Daggerheart
     BEASTFORM_ORIGIN = 'beastform'
     CHARACTER_ORIGIN = 'character'
     TRANSFORMATION_ORIGIN = 'transformation'
+    DOMAIN_CARD_ORIGIN = 'domain_card'
 
     STATIC = 'static' # рендерится текст
     TEXT = 'text' # можно добавить текст
     UPDATE_RESULT = 'update_result' # не рендерится, обновляются данные декоратора
-    STATIC_LIST = 'static_list' # рендерится список, выбирается одно значение, изменить нельзя
+    STATIC_LIST = 'static_list' # рендерится список, выбирается одно значение
 
     SHORT_REST = 'short_rest'
     LONG_REST = 'long_rest'
@@ -26,7 +27,8 @@ module Daggerheart
       SUBCLASS_ORIGIN => 3,
       BEASTFORM_ORIGIN => 4,
       CHARACTER_ORIGIN => 5,
-      TRANSFORMATION_ORIGIN => 6
+      TRANSFORMATION_ORIGIN => 6,
+      DOMAIN_CARD_ORIGIN => 7
     }
     enum :kind, { STATIC => 0, TEXT => 1, UPDATE_RESULT => 2, STATIC_LIST => 3 }
     enum :limit_refresh, { SHORT_REST => 0, LONG_REST => 1, SESSION => 2 }

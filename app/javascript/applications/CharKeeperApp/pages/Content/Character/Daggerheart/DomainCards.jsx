@@ -54,8 +54,6 @@ export const DaggerheartDomainCards = (props) => {
     setLastActiveCharacterId(character().id);
   });
 
-  // character().selected_domains.join(',')
-
   const renderingDomains = createMemo(() => {
     if (domains() === undefined) return [];
     if (availableDomainsFilter()) return character().selected_domains;
@@ -149,7 +147,7 @@ export const DaggerheartDomainCards = (props) => {
             <For each={renderingDomains()}>
               {(domain) =>
                 <Toggle title={domains()[domain].name[locale()]}>
-                  <table class="w-full table first-column-full-width">
+                  <table class="w-full table table-top first-column-full-width">
                     <thead>
                       <tr>
                         <td />
@@ -157,30 +155,25 @@ export const DaggerheartDomainCards = (props) => {
                       </tr>
                     </thead>
                     <tbody>
-                      <For each={spells().filter((spell) => spell.domain === domain)}>
+                      <For each={spells().filter((spell) => spell.origin_value === domain)}>
                         {(spell) =>
-                          <Show
-                            when={learnedSpells().includes(spell.slug)}
-                            fallback={
-                              <tr>
-                                <td class="py-1 pl-1">
-                                  <p class="dark:text-snow">{spell.name}</p>
-                                </td>
-                                <td>
+                          <tr>
+                            <td class="py-1 pl-1">
+                              <div classList={{ 'opacity-50': learnedSpells().includes(spell.slug) }}>
+                                <p class="dark:text-snow mb-1">{spell.title}</p>
+                                <p class="text-xs dark:text-snow">{spell.description}</p>
+                              </div>
+                            </td>
+                            <td class="py-1">
+                              <span>
+                                <Show when={!learnedSpells().includes(spell.slug)}>
                                   <Button default size="small" onClick={() => selectDomainCard(spell.id)}>
                                     <PlusSmall />
                                   </Button>
-                                </td>
-                              </tr>
-                            }
-                          >
-                            <tr>
-                              <td class="py-1 pl-1">
-                                <p class="dark:text-snow opacity-50">{spell.name}</p>
-                              </td>
-                              <td />
-                            </tr>
-                          </Show>
+                                </Show>
+                              </span>
+                            </td>
+                          </tr>
                         }
                       </For>
                     </tbody>

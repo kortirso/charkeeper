@@ -5,18 +5,16 @@ module Frontend
     class SpellsController < Frontend::BaseController
       include SerializeRelation
 
-      INDEX_SERIALIZER_FIELDS = %i[id slug name level domain].freeze
-
       def index
-        serialize_relation(relation, ::Daggerheart::SpellSerializer, :spells, only: INDEX_SERIALIZER_FIELDS)
+        serialize_relation(relation, ::FeatSerializer, :spells)
       end
 
       private
 
       def relation
-        relation = ::Spell.daggerheart
-        relation = relation.where("data ->> 'domain' IN (?)", params[:domains].split(',')) if params[:domains]
-        relation = relation.where("data ->> 'level' IN (?)", (0..params[:max_level].to_i).to_a.map(&:to_s)) if params[:max_level]
+        relation = ::Daggerheart::Feat.where(origin: 'domain_card')
+        relation = relation.where(origin_value: params[:domains].split(',')) if params[:domains]
+        relation = relation.where("conditions ->> 'level' IN (?)", (0..params[:max_level].to_i).to_a.map(&:to_s)) if params[:max_level] # rubocop: disable Layout/LineLength
         relation
       end
     end

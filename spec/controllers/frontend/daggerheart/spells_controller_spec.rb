@@ -7,9 +7,9 @@ describe Frontend::Daggerheart::SpellsController do
   describe 'GET#index' do
     context 'for logged users' do
       before do
-        create :spell, :daggerheart, data: { level: 1, domain: 'bone' }
-        create :spell, :daggerheart, data: { level: 2, domain: 'arcana' }
-        create :spell, :daggerheart, data: { level: 3, domain: 'midnight' }
+        create :feat, :rally, origin: 7, origin_value: 'bone', conditions: { level: 1 }
+        create :feat, :rally, origin: 7, origin_value: 'arcana', conditions: { level: 2 }
+        create :feat, :rally, origin: 7, origin_value: 'midnight', conditions: { level: 3 }
       end
 
       it 'returns data', :aggregate_failures do
@@ -19,7 +19,7 @@ describe Frontend::Daggerheart::SpellsController do
 
         expect(response).to have_http_status :ok
         expect(response.parsed_body['spells'].size).to eq 3
-        expect(response_values.keys).to contain_exactly('id', 'slug', 'name', 'level', 'domain')
+        expect(response_values.keys).to contain_exactly('id', 'slug', 'title', 'description', 'origin_value', 'conditions')
       end
 
       context 'with filtering' do
@@ -30,8 +30,8 @@ describe Frontend::Daggerheart::SpellsController do
 
           expect(response).to have_http_status :ok
           expect(response.parsed_body['spells'].size).to eq 2
-          expect(response.parsed_body['spells'].pluck('domain').sort).to eq(%w[arcana bone])
-          expect(response_values.keys).to contain_exactly('id', 'slug', 'name', 'level', 'domain')
+          expect(response.parsed_body['spells'].pluck('origin_value').sort).to eq(%w[arcana bone])
+          expect(response_values.keys).to contain_exactly('id', 'slug', 'title', 'description', 'origin_value', 'conditions')
         end
       end
 
@@ -45,8 +45,8 @@ describe Frontend::Daggerheart::SpellsController do
 
           expect(response).to have_http_status :ok
           expect(response.parsed_body['spells'].size).to eq 1
-          expect(response.parsed_body['spells'].pluck('domain').sort).to eq(%w[bone])
-          expect(response_values.keys).to contain_exactly('id', 'slug', 'name', 'level', 'domain')
+          expect(response.parsed_body['spells'].pluck('origin_value').sort).to eq(%w[bone])
+          expect(response_values.keys).to contain_exactly('id', 'slug', 'title', 'description', 'origin_value', 'conditions')
         end
       end
     end

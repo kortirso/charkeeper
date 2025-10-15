@@ -7,7 +7,8 @@ module CharactersContext
         config.messages.namespace = :daggerheart_character
 
         params do
-          required(:character_spell).filled(type?: ::Daggerheart::Character::Spell)
+          required(:character_spell).filled(type?: ::Daggerheart::Character::Feat)
+          optional(:active).filled(:bool)
           optional(:ready_to_use).filled(:bool)
           optional(:notes).maybe(:string)
         end
@@ -20,7 +21,7 @@ module CharactersContext
           input
             .except(:character_spell, :ready_to_use)
             .merge({
-              data: input[:character_spell].data.merge(input.except(:character_spell, :notes).stringify_keys)
+              value: (input[:character_spell].value || {}).merge(input.except(:character_spell, :notes, :active).stringify_keys)
             })
       end
 
