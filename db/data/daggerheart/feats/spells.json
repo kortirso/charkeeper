@@ -1,0 +1,3522 @@
+[
+  {
+    "slug": "rune-ward",
+    "title": {
+      "en": "Rune Ward",
+      "ru": "Рунный Оберег"
+    },
+    "description": {
+      "en": "You have a deeply personal trinket that can be infused with protective magic and held as a ward by you or an ally. The ward's holder can spend a Hope to reduce incoming damage by 1d8. If the Ward Die result is 8, the ward's power ends after it reduces damage this turn. It can be recharged for free on your next rest.",
+      "ru": "У вас есть очень ценная для вас безделушка, которая может быть пропитана охранной магией и служить оберегом для вас или вашего союзника. Когда носитель оберега получает урон, он может потратить Надежду, чтобы уменьшить этот урон на 1d8. Если на Кости Оберега выпадет 8, то сила оберега временно прекращается после того, как он снизит урон в этот ход. Его можно бесплатно перезарядить во время следующего отдыха."
+    },
+    "origin": "domain_card",
+    "origin_value": "arcana",
+    "kind": "static",
+    "conditions": { "level": 1 },
+    "continious": false
+  },
+  {
+    "slug": "unleash-chaos",
+    "title": {
+      "en": "Unleash Chaos",
+      "ru": "Высвобождение Хаоса"
+    },
+    "description": {
+      "en": "At the beginning of a session, place a number of tokens equal to your Spellcast trait on this card. Make a Spellcast Roll against a target within Far range and spend any number of tokens. On a success, roll a number of d10 s equal to the tokens you spent and deal that much magic damage to the target. Mark a Stress to replenish this card with tokens (up to your Spellcast trait).",
+      "ru": "В начале сессии поместите на эту карту количество жетонов, равное вашей Характеристике Заклинателя. Совершите Бросок Заклинания против цели в пределах Далекой дистанции и потратьте любое количество жетонов. При успехе бросьте число d10, равное количеству потраченных жетонов, и нанесите цели столько же магического урона. Отметьте Стресс, чтобы восполнить запас жетонов на этой карте вплоть до вашей Характеристики Заклинателя."
+    },
+    "origin": "domain_card",
+    "origin_value": "arcana",
+    "kind": "text",
+    "conditions": { "level": 1 },
+    "continious": false
+  },
+  {
+    "slug": "wall-walk",
+    "title": {
+      "en": "Wall Walk",
+      "ru": "Хождение по Стенам"
+    },
+    "description": {
+      "en": "Spend a Hope to allow a creature you can touch to climb on walls and ceilings as easily as walking on the ground. This lasts until the end of the scene or you cast Wall Walk again.",
+      "ru": "Потратьте Надежду, чтобы позволить существу, до которого вы можете коснуться, взбираться по стенам и потолкам так же легко, как ходить по земле. Это длится до конца сцены или пока вы не используете Хождение по Стенам снова."
+    },
+    "origin": "domain_card",
+    "origin_value": "arcana",
+    "kind": "static",
+    "conditions": { "level": 1 },
+    "continious": false
+  },
+  {
+    "slug": "get-back-up",
+    "title": {
+      "en": "Get Back Up",
+      "ru": "Вернуться в Строй"
+    },
+    "description": {
+      "en": "When you take Severe damage, you can mark a Stress to reduce the severity by one threshold.",
+      "ru": "Когда вы получаете Тяжёлый Урон, вы можете уменьшить тяжесть на один порог, но взамен отметить Стресс."
+    },
+    "origin": "domain_card",
+    "origin_value": "blade",
+    "kind": "static",
+    "conditions": { "level": 1 },
+    "continious": false
+  },
+  {
+    "slug": "not-good-enough",
+    "title": {
+      "en": "Not Good Enough",
+      "ru": "Так не Пойдёт"
+    },
+    "description": {
+      "en": "When you roll your damage dice, you can reroll any 1s or 2s.",
+      "ru": "При броске костей урона, вы можете перебросить все 1 и 2."
+    },
+    "origin": "domain_card",
+    "origin_value": "blade",
+    "kind": "static",
+    "conditions": { "level": 1 },
+    "continious": false
+  },
+  {
+    "slug": "whirlwind",
+    "title": {
+      "en": "Whirlwind",
+      "ru": "Вихрь"
+    },
+    "description": {
+      "en": "When you make a successful attack against a target within Very Close range, you can spend a Hope to use the attack against all other targets within Very Close range. All additional adversaries you succeed against with this ability take half damage.",
+      "ru": "Когда вы успешно атакуете цель в пределах Близкой дистанции, вы можете потратить Надежду, чтобы использовать эту атаку против всех других целей в пределах Близкой дистанции. Все дополнительные противники, против которых вы преуспели при использовании этой способности, получают половину урона."
+    },
+    "origin": "domain_card",
+    "origin_value": "blade",
+    "kind": "static",
+    "conditions": { "level": 1 },
+    "continious": false
+  },
+  {
+    "slug": "deft-maneuvers",
+    "title": {
+      "en": "Deft Maneuvers",
+      "ru": "Ловкие Манёвры"
+    },
+    "description": {
+      "en": "Mark a Stress to sprint anywhere within Far range without making an Agility Roll to get there. If you end this movement within Melee range of an adversary and immediately make an attack against them, gain a +1 bonus to the attack roll.",
+      "ru": "Отметьте Стресс, чтобы переместиться куда угодно в пределах Далекой дистанции, не совершая при этом Броска Проворности. Если вы завершите перемещение, находясь Вплотную к противнику и сразу же совершите против него атаку, вы получаете +1 к Броску Атаки."
+    },
+    "origin": "domain_card",
+    "origin_value": "bone",
+    "kind": "static",
+    "description_eval_variables": { "limit": "1" },
+    "limit_refresh": "short_rest",
+    "conditions": { "level": 1 },
+    "continious": false
+  },
+  {
+    "slug": "i-see-it-coming",
+    "title": {
+      "en": "I See It Coming",
+      "ru": "Я Предвидел Это"
+    },
+    "description": {
+      "en": "When you're targeted by an attack made from beyond Melee range, you can mark a Stress to roll a d4 and gain a bonus to your Evasion equal to the result against the attack.",
+      "ru": "Когда вы становитесь целью атаки, исходящей за пределами дистанции Вплотную, отметьте Стресс, чтобы увеличить ваше Уклонение на 1d4 против этой атаки."
+    },
+    "origin": "domain_card",
+    "origin_value": "bone",
+    "kind": "static",
+    "conditions": { "level": 1 },
+    "continious": false
+  },
+  {
+    "slug": "untouchable",
+    "title": {
+      "en": "Untouchable",
+      "ru": "Неуловимый"
+    },
+    "description": {
+      "en": "Gain a bonus to your Evasion equal to half your Agility.",
+      "ru": "Вы получаете бонус к Уклонению, равный половине вашей Проворности."
+    },
+    "origin": "domain_card",
+    "origin_value": "bone",
+    "kind": "update_result",
+    "eval_variables": {
+      "evasion": "evasion + (modified_traits['agi'] / 2.0).round"
+    },
+    "conditions": { "level": 1 },
+    "continious": false
+  },
+  {
+    "slug": "book-of-ava",
+    "title": {
+      "en": "Book of Ava",
+      "ru": "Книга Авы"
+    },
+    "description": {
+      "en": "Make a Spellcast Roll against a target within Melee range. On a success, they're knocked back to Far range and take d10+2 magic damage using your Proficiency.",
+      "ru": "Совершите Бросок Заклинания против цели, находящейся Вплотную. При успехе отбросьте цель на Далекую дистанцию и нанесите ей d10+2 магического урона, используя ваше Мастерство."
+    },
+    "origin": "domain_card",
+    "origin_value": "codex",
+    "kind": "static",
+    "conditions": { "level": 1 },
+    "continious": false
+  },
+  {
+    "slug": "book-of-illiat",
+    "title": {
+      "en": "Book of Illiat",
+      "ru": "Книга Иллиата"
+    },
+    "description": {
+      "en": "Make a Spellcast Roll against a target within Very Close range. On a success, they're Asleep until they take damage or the GM spends a Fear on their turn to clear this condition.",
+      "ru": "Совершите Бросок Заклинания против цели в пределах Близкой дистанции. При успехе она Засыпает, до тех пор пока не получит урон или ведущий не потратит Страх в свой ход, чтобы закончить это состояние."
+    },
+    "origin": "domain_card",
+    "origin_value": "codex",
+    "kind": "static",
+    "conditions": { "level": 1 },
+    "continious": false
+  },
+  {
+    "slug": "book-of-tyfar",
+    "title": {
+      "en": "Book of Tyfar",
+      "ru": "Книга Тайфара"
+    },
+    "description": {
+      "en": "Make a Spellcast Roll against up to three adversaries within Melee range. Targets you succeed against take 2d6 magic damage and must mark a Stress as flames erupt from your hand.",
+      "ru": "Совершите Бросок Заклинания, чтобы атаковать до трёх противников, находящихся Вплотную. Цели, против которых вы преуспеваете, получают 2d6 магического урона и должны отметить Стресс, пока из вашей руки вырываются языки пламени."
+    },
+    "origin": "domain_card",
+    "origin_value": "codex",
+    "kind": "static",
+    "conditions": { "level": 1 },
+    "continious": false
+  },
+  {
+    "slug": "deft-deceiver",
+    "title": {
+      "en": "Deft Deceiver",
+      "ru": "Искусный Обманщик"
+    },
+    "description": {
+      "en": "Spend a Hope to gain advantage on a roll to deceive or trick someone into believing a lie you tell them.",
+      "ru": "Потратьте Надежду, чтобы получить преимущество на бросок, который вы делаете, чтобы обмануть или заставить кого-то поверить в ложь, которую вы говорите."
+    },
+    "origin": "domain_card",
+    "origin_value": "grace",
+    "kind": "static",
+    "conditions": { "level": 1 },
+    "continious": false
+  },
+  {
+    "slug": "enrapture",
+    "title": {
+      "en": "Enrapture",
+      "ru": "Очарование"
+    },
+    "description": {
+      "en": "Make a Spellcast Roll against a target within Close range. On a success, they become temporarily Enraptured. While Enraptured, a target's attention is fixed on you, narrowing their field of view and drowning out any sound but your voice. Once per rest on a success, you can mark a Stress to force the Enraptured target to mark a Stress as well.",
+      "ru": "Совершите Бросок Заклинания против цели в пределах Средней дистанции. При успехе, цель временно становится Очарованной. Пока цель Очарована, всё внимание цели приковано к вам, её поле зрения сужается, а все звуки, помимо вашего голоса, приглушаются. Один раз до следующего отдыха при успехе, вы можете отметить Стресс, чтобы заставить Очарованную цель также отметить Стресс."
+    },
+    "origin": "domain_card",
+    "origin_value": "grace",
+    "kind": "static",
+    "description_eval_variables": { "limit": "1" },
+    "limit_refresh": "short_rest",
+    "conditions": { "level": 1 },
+    "continious": false
+  },
+  {
+    "slug": "inspirational-words",
+    "title": {
+      "en": "Inspirational Words",
+      "ru": "Вдохновляющие Слова"
+    },
+    "description": {
+      "en": "After a long rest, place a number of tokens on this card equal to your Presence. When you speak with an ally, you can spend a token from this card to give them one benefit from the following options: 1) Your ally clears a Stress. 2) Your ally clears a Hit Point. 3) Your ally gains a Hope.",
+      "ru": "После продолжительного отдыха поместите на эту карту количество жетонов, равное вашему Влиянию. Когда вы разговариваете с союзником, вы можете потратить жетон с этой карты, чтобы дать ему одно из следующих преимуществ: 1) Очистить Стресс. 2) Очистить Рану. 3) Получить Надежду."
+    },
+    "origin": "domain_card",
+    "origin_value": "grace",
+    "kind": "text",
+    "conditions": { "level": 1 },
+    "continious": false
+  },
+  {
+    "slug": "pick-and-pull",
+    "title": {
+      "en": "Pick and Pull",
+      "ru": "Взлом и Воровство"
+    },
+    "description": {
+      "en": "You have advantage on action rolls to pick nonmagical locks, disarm nonmagical traps, or steal items from a target (either through stealth or by force).",
+      "ru": "Вы получаете преимущество при бросках действия для взлома немагических замков, обезвреживания немагических ловушек или воровства предметов у цели (скрытно или силой)."
+    },
+    "origin": "domain_card",
+    "origin_value": "midnight",
+    "kind": "static",
+    "conditions": { "level": 1 },
+    "continious": false
+  },
+  {
+    "slug": "rain-of-blades",
+    "title": {
+      "en": "Rain of Blades",
+      "ru": "Дождь Клинков"
+    },
+    "description": {
+      "en": "Spend a Hope to make a Spellcast Roll and conjure throwing blades that strike out at all targets within Very Close range. Targets you succeed against take d8+2 magic damage using your Proficiency. If a target you hit is Vulnerable, they take an extra 1d8 damage.",
+      "ru": "Потратьте Надежду, чтобы совершить Бросок Заклинания и призвать метательные клинки, которые поразят все цели в пределах Близкой дистанции. Цели, против которых вы преуспели, получают d8+2 магического урона, используя ваше Мастерство. Если вы поразили цель, которая является Уязвимой, она получает дополнительно 1d8 урона."
+    },
+    "origin": "domain_card",
+    "origin_value": "midnight",
+    "kind": "static",
+    "conditions": { "level": 1 },
+    "continious": false
+  },
+  {
+    "slug": "uncanny-disguise",
+    "title": {
+      "en": "Uncanny Disguise",
+      "ru": "Поразительная Маскировка"
+    },
+    "description": {
+      "en": "When you have a few minutes to prepare, you can mark a Stress to don the facade of any humanoid you can picture clearly in your mind. While disguised, you have advantage on Presence Rolls to avoid scrutiny. Place a number of tokens equal to your Spellcast trait on this card. When you take an action while disguised, spend a token from this card. After the action that spends the last token is resolved, the disguise drops.",
+      "ru": "Когда у вас есть несколько минут на подготовку, вы можете отметить Стресс, чтобы принять облик любого гуманоида, которого вы можете ясно себе представить. Пока вы замаскированы, вы получаете преимущество для бросков Влияния, когда хотите помешать другим разглядеть, что этот облик — иллюзия. Поместите на эту карту количество жетонов, равное вашей Характеристике Заклинателя. Когда вы совершаете действие, будучи замаскированным, потратьте жетон с этой карты. После завершения действия, на которое был потрачен последний жетон, маскировка спадёт."
+    },
+    "origin": "domain_card",
+    "origin_value": "midnight",
+    "kind": "text",
+    "conditions": { "level": 1 },
+    "continious": false
+  },
+  {
+    "slug": "blighting-strike",
+    "title": {
+      "en": "Blighting Strike",
+      "ru": "Увядающий Удар"
+    },
+    "description": {
+      "en": "Make a Spellcast Roll against a target within Far range. On a success, the target takes d6+1 magic damage using your Proficiency and the next time the target deals damage to an ally, it is reduced by half. If you succeed with Fear, the target instead takes d10+1 magic damage using your Proficiency.",
+      "ru": "Совершите Бросок Заклинания против цели в пределах Далекой дистанции. При успехе цель получает d6+1 магического урона, используя ваше Мастерство, и в следующий раз, когда цель наносит урон союзнику, он будет уменьшен наполовину. Если вы преуспеваете со Страхом, вместо этого цель получает d10+1 магического урона, используя ваше Мастерство."
+    },
+    "origin": "domain_card",
+    "origin_value": "dread",
+    "kind": "static",
+    "conditions": { "level": 1 },
+    "continious": false
+  },
+  {
+    "slug": "umbral-veil",
+    "title": {
+      "en": "Umbral Veil",
+      "ru": "Завеса Теней"
+    },
+    "description": {
+      "en": "When you roll with Fear, you can spend any number of Hope to place an equal number of tokens on this card, encasing yourself in a shadowy energy. After an attack roll is made against you, you can spend any number of tokens to give the attack roll a -1 penalty per token.",
+      "ru": "При броске со Страхом, вы можете потратить любое количество Надежды и поместить на эту карту столько же жетонов, чтобы окружить себя теневой энергией. После того, как против вас был совершен бросок атаки, вы можете потратить любое количество жетонов, чтобы наложить на бросок атаки штраф -1, за каждый жетон."
+    },
+    "origin": "domain_card",
+    "origin_value": "dread",
+    "kind": "text",
+    "description_eval_variables": { "limit": "1" },
+    "limit_refresh": "short_rest",
+    "conditions": { "level": 1 },
+    "continious": false
+  },
+  {
+    "slug": "voice-of-dread",
+    "title": {
+      "en": "Voice of Dread",
+      "ru": "Глас Ужаса"
+    },
+    "description": {
+      "en": "You can magically speak directly into the ears of a creature you can see. To torment them with your words, make a Spellcast Roll against them. On a success, they must mark a Stress and become temporarily Vulnerable.",
+      "ru": "Вы можете магическим образом говорить прямо в уши существа, которое вы видите. Чтобы истязать его своими словами, совершите Бросок Заклинания против него. При успехе оно должно отметить Стресс и становится временно Уязвимым."
+    },
+    "origin": "domain_card",
+    "origin_value": "dread",
+    "kind": "static",
+    "conditions": { "level": 1 },
+    "continious": false
+  },
+  {
+    "slug": "gifted-tracker",
+    "title": {
+      "en": "Gifted Tracker",
+      "ru": "Талант к Выслеживанию"
+    },
+    "description": {
+      "en": "When you're tracking a specific creature or group of creatures based on signs of their passage, you can spend any number of Hope and ask the GM that many questions from the following list. 1) What direction did they go? 2) How long ago did they pass through? 3) What were they doing in this location? 4) How many of them were here? When you encounter creatures you've tracked in this way, gain a +1 bonus to your Evasion against them.",
+      "ru": "Когда вы выслеживаете конкретное существо или группу существ по оставленным ими следам, потратьте любое количество Надежды и задайте столько же вопросов Мастеру из этого списка: 1) В каком направлении они движутся? 2) Как давно они здесь проходили? 3) Чем они здесь занимались? 4) Сколько их здесь было? Если вы встречаете существ, которых вы выслеживали таким образом, вы получаете +1 к вашему Уклонению против них."
+    },
+    "origin": "domain_card",
+    "origin_value": "sage",
+    "kind": "static",
+    "eval_variables": {
+      "evasion": "evasion + 1"
+    },
+    "conditions": { "level": 1 },
+    "continious": true
+  },
+  {
+    "slug": "natures-tongue",
+    "title": {
+      "en": "Nature's Tongue",
+      "ru": "Язык Природы"
+    },
+    "description": {
+      "en": "When you want to speak to the plants and animals around you, make an Instinct Roll (12). On a success, they'll give you the information they know. On a roll with Fear, their knowledge might be limited or come at a cost. Additionally, before you make a Spellcast Roll while within a natural environment, you can spend a Hope to gain a +2 bonus to the roll.",
+      "ru": "Когда вы захотите поговорить с окружающими вас растениями и животными, совершите Бросок Инстинкта (12). При успехе они сообщат вам информацию, которую знают. При броске со Страхом эта информация может быть ограничена или за нее придется заплатить. Кроме того, перед тем, как вы совершаете Бросок Заклинания, находясь в окружении природы, вы можете потратить Надежду, чтобы добавить +2 к броску."
+    },
+    "origin": "domain_card",
+    "origin_value": "sage",
+    "kind": "static",
+    "conditions": { "level": 1 },
+    "continious": false
+  },
+  {
+    "slug": "vicious-entangle",
+    "title": {
+      "en": "Vicious Entangle",
+      "ru": "Неистовое Опутывание"
+    },
+    "description": {
+      "en": "Make a Spellcast Roll against a target within Far range. On a success, roots and vines reach out from the ground, dealing 1d8+1 physical damage and temporarily Restraining the target. Additionally on a success, you can spend a Hope to temporarily Restrain another adversary within Very Close range of your target.",
+      "ru": "Совершите Бросок Заклинания против цели в пределах Далекой дистанции. При успехе, корни и лозы вырываются из под земли, нанося 1d8+1 физического урона и временно Обездвиживая цель. Также при успехе, вы можете потратить Надежду, чтобы временно Обездвижить всех противников, в предехах Близкой дистанции от вашей цели."
+    },
+    "origin": "domain_card",
+    "origin_value": "sage",
+    "kind": "static",
+    "conditions": { "level": 1 },
+    "continious": false
+  },
+  {
+    "slug": "bolt-beacon",
+    "title": {
+      "en": "Bolt Beacon",
+      "ru": "Стрела Света"
+    },
+    "description": {
+      "en": "Make a Spellcast Roll against a target within Far range. On a success, spend a Hope to send a bolt of shimmering light toward them, dealing d8+2 magic damage using your Proficiency. The target becomes temporarily Vulnerable and glows brightly until this condition is cleared.",
+      "ru": "Совершите Бросок Заклинания против цели в пределах Далекой дистанции. При успехе, потратьте Надежду, чтобы выпустить в цель снаряд мерцающего света, нанеся ей d8+2 магического урона, используя ваше Мастерство. Цель становится временно Уязвимой и начинает ярко светится, пока это состояние не прекратится."
+    },
+    "origin": "domain_card",
+    "origin_value": "splendor",
+    "kind": "static",
+    "conditions": { "level": 1 },
+    "continious": false
+  },
+  {
+    "slug": "mending-touch",
+    "title": {
+      "en": "Mending Touch",
+      "ru": "Исцеляющее Касание"
+    },
+    "description": {
+      "en": "You lay your hands upon a creature and channel healing magic to close their wounds. When you can take a few minutes to focus on the target you're helping, you can spend 2 Hope to clear a Hit Point or a Stress on them. Once per long rest, when you spend this healing time learning something new about them or revealing something about yourself, you can clear 2 Hit Points or 2 Stress on them instead.",
+      "ru": "Вы кладете руки на существо и направляете целительную магию, чтобы исцелить его увечья. Когда у вас есть несколько минут, чтобы сосредоточиться на цели, которой вы помогаете, вы можете потратить 2 Надежды, чтобы очистить Рану или Стресс у цели. Один раз до следующего продолжительного отдыха, когда во время исцеления вы узнаете что-то новое о цели или рассказываете что-то о себе, вместо этого очистите 2 Раны или 2 Стресса у цели."
+    },
+    "origin": "domain_card",
+    "origin_value": "splendor",
+    "kind": "static",
+    "description_eval_variables": { "limit": "1" },
+    "limit_refresh": "long_rest",
+    "conditions": { "level": 1 },
+    "continious": false
+  },
+  {
+    "slug": "reassurance",
+    "title": {
+      "en": "Reassurance",
+      "ru": "Подбадривание"
+    },
+    "description": {
+      "en": "After an ally attempts an action roll but before the consequences take place, you can offer assistance or words of support. When you do, your ally can reroll their dice.",
+      "ru": "После того как союзник попытается совершить бросок действия, но до наступления последствий, вы можете предложить ему свою помощь или слова поддержки. Когда вы это сделаете, союзник сможет перебросить свои кости."
+    },
+    "origin": "domain_card",
+    "origin_value": "splendor",
+    "kind": "static",
+    "description_eval_variables": { "limit": "1" },
+    "limit_refresh": "short_rest",
+    "conditions": { "level": 1 },
+    "continious": false
+  },
+  {
+    "slug": "bare-bones",
+    "title": {
+      "en": "Bare Bones",
+      "ru": "Ничего лишнего"
+    },
+    "description": {
+      "en": "When you choose not to equip armor, you have bonuses to armor score and damage thresholds.",
+      "ru": "Пока на вас не экипирована броня, вы получаете бонусы к броне и порогам урона."
+    },
+    "origin": "domain_card",
+    "origin_value": "valor",
+    "kind": "static",
+    "eval_variables": {
+      "armor_score": "3 + modified_traits['str']",
+      "damage_thresholds": "damage_thresholds.merge({ 'major' => damage_thresholds['major'] + 7 + tier * 2, 'severe' => damage_thresholds['severe'] + (tier == 1 ? 19 : (10 + tier * 7)) })"
+    },
+    "conditions": { "level": 1 },
+    "continious": true
+  },
+  {
+    "slug": "forceful-push",
+    "title": {
+      "en": "Forceful Push",
+      "ru": "Отбрасывание"
+    },
+    "description": {
+      "en": "Make an attack with your primary weapon against a target within Melee range. On a success, you deal damage and knock them back to Close range. On a success with Hope, add a d6 to your damage roll. Additionally, you can spend a Hope to make them temporarily Vulnerable.",
+      "ru": "Совершите атаку вашим основным оружием по цели, находящейся Вплотную. При успехе вы наносите урон и отталкиваете цель на Среднюю дистанцию. При успехе с Надеждой, добавьте d6 к броску урона. Кроме того, вы можете потратить Надежду, чтобы сделать вашу цель временно Уязвимой."
+    },
+    "origin": "domain_card",
+    "origin_value": "valor",
+    "kind": "static",
+    "conditions": { "level": 1 },
+    "continious": false
+  },
+  {
+    "slug": "i-am-your-shield",
+    "title": {
+      "en": "I Am Your Shield",
+      "ru": "Я Твой Щит"
+    },
+    "description": {
+      "en": "When an ally within Very Close range would take damage, you can mark a Stress to stand in the way and make yourself the target of the attack instead. When you take damage from this attack, you can mark any number of Armor Slots.",
+      "ru": "Когда союзник в пределах Близкой дистанции должен получить урон, вы можете отметить Стресс, чтобы заслонить его и получить урон вместо него. Когда вы получаете урон от этой атаки, вы можете отметить любое количество Ячеек Брони."
+    },
+    "origin": "domain_card",
+    "origin_value": "valor",
+    "kind": "static",
+    "conditions": { "level": 1 },
+    "continious": false
+  },
+  {
+    "slug": "cinder-grasp",
+    "title": {
+      "en": "Cinder Grasp",
+      "ru": "Пепельная Хватка"
+    },
+    "description": {
+      "en": "Make a Spellcast Roll against a target within Melee range. On a success, the target instantly bursts into flames, takes 1d20+3 magic damage, and is temporarily lit On Fire. When a creature acts while On Fire, they must take an extra 2d6 magic damage if they are still On Fire at the end of their action.",
+      "ru": "Совершите Бросок Заклинания против цели, находящейся Вплотную. При успехе цель мгновенно воспламеняется, получает 1d20+3 магического урона и временно Поджигается. Когда существо действует будучи Подожженным, оно должно получить дополнительно 2d6 магического урона, если в конце действия оно все еще Подожжено."
+    },
+    "origin": "domain_card",
+    "origin_value": "arcana",
+    "kind": "static",
+    "conditions": { "level": 2 },
+    "continious": false
+  },
+  {
+    "slug": "floating-eye",
+    "title": {
+      "en": "Floating Eye",
+      "ru": "Парящее Око"
+    },
+    "description": {
+      "en": "Spend a Hope to create a single, small floating orb that you can move anywhere within Very Far range. While this spell is active, you can see through the orb as though you're looking out from its position. You can transition between using your own senses and seeing through the orb freely. If the orb takes damage or moves out of range, the spell ends.",
+      "ru": "Потратьте Надежду, чтобы создать одну небольшую парящую сферу, которую вы можете перемещать в любое место в пределах Очень Далекой дистанции. Пока это заклинание активно, вы можете видеть через сферу, как если бы вы смотрели из ее позиции. Вы можете свободно переключаться между использованием своих собственных чувств и видением через сферу. Если сфера получает урон или выходит из досягаемости, действие заклинания прекращается."
+    },
+    "origin": "domain_card",
+    "origin_value": "arcana",
+    "kind": "static",
+    "conditions": { "level": 2 },
+    "continious": false
+  },
+  {
+    "slug": "a-soldiers-bond",
+    "title": {
+      "en": "A Soldier's Bond",
+      "ru": "Солдатская Связь"
+    },
+    "description": {
+      "en": "When you compliment someone or ask them about something they're good at, you can both gain 3 Hope.",
+      "ru": "Когда вы делаете кому-то комплимент или спрашиваете о том, в чем они хороши, вы оба получаете 3 Надежды."
+    },
+    "origin": "domain_card",
+    "origin_value": "blade",
+    "kind": "static",
+    "description_eval_variables": { "limit": "1" },
+    "limit_refresh": "long_rest",
+    "conditions": { "level": 2 },
+    "continious": false
+  },
+  {
+    "slug": "reckless",
+    "title": {
+      "en": "Reckless",
+      "ru": "Безрассудный"
+    },
+    "description": {
+      "en": "Mark a Stress to gain advantage on an attack.",
+      "ru": "Отметьте Стресс, чтобы получить преимущество для следующей атаки."
+    },
+    "origin": "domain_card",
+    "origin_value": "blade",
+    "kind": "static",
+    "conditions": { "level": 2 },
+    "continious": false
+  },
+  {
+    "slug": "ferocity",
+    "title": {
+      "en": "Ferocity",
+      "ru": "Свирепость"
+    },
+    "description": {
+      "en": "When you cause an adversary to mark 1 or more Hit Points, you can spend 2 Hope to increase your Evasion by the number of Hit Points they marked. This bonus lasts until after the next attack made against you.",
+      "ru": "Когда вы заставляете противника отметить 1 или более Ран, вы можете потратить 2 Надежды, чтобы увеличить ваше Уклонение на количество отмеченных ими Ран. Этот бонус заканчивается после следующей атаки, направленной на вас."
+    },
+    "origin": "domain_card",
+    "origin_value": "bone",
+    "kind": "static",
+    "conditions": { "level": 2 },
+    "continious": false
+  },
+  {
+    "slug": "strategic-approach",
+    "title": {
+      "en": "Strategic Approach",
+      "ru": "Стратегический Подход"
+    },
+    "description": {
+      "en": "After a long rest, place a number of tokens equal to your Knowledge on this card (minimum 1). The first time you move within Close range of an adversary and make an attack against them, you can spend one token to choose one of the following options: 1) You make the attack with advantage. 2) You clear a Stress on an ally within Melee range of the adversary. 3) You add a d8 to your damage roll. When you take a long rest, clear all unspent tokens.",
+      "ru": "После продолжительного отдыха поместите на эту карту количество жетонов, равное вашей характеристике Знаний (минимум 1). В первый раз, когда вы перемещаетесь в пределы Средней дистанции противника и совершаете атаку против него, вы можете потратить один жетон, чтобы выбрать один из следующих вариантов: 1) Вы совершаете атаку с преимуществом. 2) Вы очищаете Стресс с союзника, находящегося Вплотную к противнику. 3) Вы добавляете d8 к вашему броску урона."
+    },
+    "origin": "domain_card",
+    "origin_value": "bone",
+    "kind": "text",
+    "conditions": { "level": 2 },
+    "continious": false
+  },
+  {
+    "slug": "book-of-sitil",
+    "title": {
+      "en": "Book of Sitil",
+      "ru": "Книга Ситила"
+    },
+    "description": {
+      "en": "You magically shift your appearance and clothing to avoid recognition.",
+      "ru": "Вы магическим образом меняете свою внешность и одежду, чтобы избежать узнавания."
+    },
+    "origin": "domain_card",
+    "origin_value": "codex",
+    "kind": "static",
+    "conditions": { "level": 2 },
+    "continious": false
+  },
+  {
+    "slug": "book-of-vagras",
+    "title": {
+      "en": "Book of Vagras",
+      "ru": "Книга Ваграса"
+    },
+    "description": {
+      "en": "Make a Spellcast Roll (15) on an object you're touching that can close (such as a lock, chest, or box). Once per rest on a success, you can lock the object so it can only be opened by creatures of your choice. Someone with access to magic and an hour of time to study the spell can break it.",
+      "ru": "Совершите Бросок Заклинания (15) на объект, который вы касаетесь и который можно закрыть (например, замок, сундук или ящик). При успехе один раз до следующего отдыха вы можете запереть объект так, что его смогут открыть только существа по вашему выбору. Кто-то, обладающий доступом к магии и имеющий час времени на изучение заклинания, может его разорвать."
+    },
+    "origin": "domain_card",
+    "origin_value": "codex",
+    "kind": "static",
+    "description_eval_variables": { "limit": "1" },
+    "limit_refresh": "short_rest",
+    "conditions": { "level": 2 },
+    "continious": false
+  },
+  {
+    "slug": "tell-no-lies",
+    "title": {
+      "en": "Tell No Lies",
+      "ru": "Ничего, Кроме Правды"
+    },
+    "description": {
+      "en": "Make a Spellcast Roll against a target within Very Close range. On a success, they can't lie to you while they remain within Close range, but they are not compelled to speak. If you ask them a question and they refuse to answer, they must mark a Stress and the effect ends. The target is typically unaware this spell has been cast on them until it causes them to utter the truth.",
+      "ru": "Совершите Бросок Заклинания против цели в пределах Близкой дистанции. При успехе они не могут лгать вам, пока остаются в пределах Средней дистанции, но не вынуждены говорить. Если вы зададите им вопрос, а они откажутся отвечать, они должны отметить Стресс, и эффект заканчивается. Цель обычно не знает, что на нее наложено это заклинание, пока оно не заставит ее произнести правду."
+    },
+    "origin": "domain_card",
+    "origin_value": "grace",
+    "kind": "static",
+    "conditions": { "level": 2 },
+    "continious": false
+  },
+  {
+    "slug": "troublemaker",
+    "title": {
+      "en": "Troublemaker",
+      "ru": "Смутьян"
+    },
+    "description": {
+      "en": "When you taunt or provoke a target within Far range, make a Presence Roll against them. Once per rest on a success, roll a number of d4s equal to your Proficiency. The target must mark Stress equal to the highest result rolled.",
+      "ru": "Когда вы дразните или провоцируете цель в пределах Далекой дистанции, совершите Бросок Влияния против нее. При успехе, один раз до следующего отдыха, бросьте количество d4, равное вашему Мастерству. Цель должна отметить Стресс, в количестве наибольшего выпавшего значения на костях."
+    },
+    "origin": "domain_card",
+    "origin_value": "grace",
+    "kind": "static",
+    "description_eval_variables": { "limit": "1" },
+    "limit_refresh": "short_rest",
+    "conditions": { "level": 2 },
+    "continious": false
+  },
+  {
+    "slug": "midnight-spirit",
+    "title": {
+      "en": "Midnight Spirit",
+      "ru": "Дух Полночи"
+    },
+    "description": {
+      "en": "Spend a Hope to summon a humanoid-sized spirit that can move or carry things for you until your next rest. You can also send it to attack an adversary. When you do, make a Spellcast Roll against a target within Very Far range. On a success, the spirit moves into Melee range with that target. Roll a number of d6s equal to your Spellcast trait and deal that much magic damage to the target. The spirit then dissipates. You can only have one spirit at a time.",
+      "ru": "Потратьте Надежду чтобы вызвать духа размером с гуманоида, который может двигаться или нести вещи для вас до вашего следующего отдыха. Вы также можете послать его атаковать противника. Когда вы это делаете, совершите Бросок Заклинания против цели в пределах Очень Далекой дистанции. При успехе, дух перемещается Вплотную к цели. Бросьте количество d6, равное вашей Характеристике Заклинателя и нанесите столько же магического урона цели. После этого дух исчезает. У вас может быть только один дух в одно время."
+    },
+    "origin": "domain_card",
+    "origin_value": "midnight",
+    "kind": "static",
+    "conditions": { "level": 2 },
+    "continious": false
+  },
+  {
+    "slug": "shadowbind",
+    "title": {
+      "en": "Shadowbind",
+      "ru": "Теневые Путы"
+    },
+    "description": {
+      "en": "Make a Spellcast Roll against all adversaries within Very Close range. Targets you succeed against are temporarily Restrained as their shadow binds them in place.",
+      "ru": "Совершите Бросок Заклинания против всех противников в пределах Близкой дистанции. Цели, против которых вы преуспели, становятся временно Обездвижены, так как их тени приковали их к месту."
+    },
+    "origin": "domain_card",
+    "origin_value": "midnight",
+    "kind": "static",
+    "conditions": { "level": 2 },
+    "continious": false
+  },
+  {
+    "slug": "hideous-retribution",
+    "title": {
+      "en": "Hideous Retribution",
+      "ru": "Безобразная Кара"
+    },
+    "description": {
+      "en": "When an ally within Close range takes damage from a target you can see, you can make a Spellcast Reaction Roll against the target. On a success, mark a Stress to deal them d6 magic damage using your Proficiency.",
+      "ru": "Когда союзник в пределах Средней дистанции получает урон от противника, которого вы видите, вы можете совершить Бросок Реакции против противника, используя вашу характеристику заклинателя. При успехе отметьте Стресс, чтобы нанести ему d6 магического урона, используя ваше Мастерство."
+    },
+    "origin": "domain_card",
+    "origin_value": "dread",
+    "kind": "static",
+    "conditions": { "level": 2 },
+    "continious": false
+  },
+  {
+    "slug": "siphon-essence",
+    "title": {
+      "en": "Siphon Essence",
+      "ru": "Вытягивание Сущности"
+    },
+    "description": {
+      "en": "Make a Spellcast Roll against a target within Very Close range. On a success, once per long rest, the target takes d20 magic damage using your Proficiency. You clear a number of Hit Points equal to the number Hit Points the target marked from this attack. On a success with Fear, you gain a +1 bonus to your Proficiency for this attack.",
+      "ru": "Совершите Бросок Заклинания против цели в пределах Близкой дистанции. При успехе, один раз до следующего продолжительного отдыха, цель получает d20 магического урона, используя ваше Мастерство. Вы очищаете количество Ран, равное количеству Ран, отмеченных целью от этой атаки. При успехе со Страхом, вы получаете +1 к Мастерству для этой атаки."
+    },
+    "origin": "domain_card",
+    "origin_value": "dread",
+    "kind": "static",
+    "description_eval_variables": { "limit": "1" },
+    "limit_refresh": "long_rest",
+    "conditions": { "level": 2 },
+    "continious": false
+  },
+  {
+    "slug": "conjure-swarm",
+    "title": {
+      "en": "Conjure Swarm",
+      "ru": "Призыв Роя"
+    },
+    "description": {
+      "en": "Mark a Stress to conjure armored beetles that encircle you. When you next take damage, reduce the severity by one threshold. You can spend a Hope to keep the beetles conjured after taking damage.",
+      "ru": "Отметьте Стресс, чтобы призвать бронированных жуков, которые окружат вас. Когда вы в следующий раз получите урон, уменьшите его тяжесть на один порог. Вы можете потратить Надежду, чтобы сохранить жуков после получения урона."
+    },
+    "origin": "domain_card",
+    "origin_value": "sage",
+    "kind": "static",
+    "conditions": { "level": 2 },
+    "continious": false
+  },
+  {
+    "slug": "natural-familiar",
+    "title": {
+      "en": "Natural Familiar",
+      "ru": "Природный Фамильяр"
+    },
+    "description": {
+      "en": "Spend a Hope to summon a small nature spirit or forest critter to your side until your next rest, you cast Natural Familiar again, or the familiar is targeted by an attack. If you spend an additional Hope, you can summon a familiar that flies. You can communicate with them, make a Spellcast Roll to command them to perform simple tasks, and mark a Stress to see through their eyes. When you deal damage to an adversary within Melee range of your familiar, you add a d6 to your damage roll.",
+      "ru": "Потратьте Надежду, чтобы призвать небольшого духа природы или лесного существа на вашу сторону до вашего следующего отдыха, пока вы не используете Природного Фамильяра повторно или пока фамильяр не станет целью атаки. Если вы потратите дополнительную Надежду, вы можете призвать летающего фамильяра. Вы можете общаться с ним, совершить Бросок Заклинания, чтобы приказать ему выполнить простые задачи, а также отметить Стресс, чтобы увидеть мир через его глаза. Когда вы наносите урон противнику, находящемуся Вплотную к вашему фамильяру, вы добавляете d6 к вашему броску урона."
+    },
+    "origin": "domain_card",
+    "origin_value": "sage",
+    "kind": "static",
+    "conditions": { "level": 2 },
+    "continious": false
+  },
+  {
+    "slug": "final-words",
+    "title": {
+      "en": "Final Words",
+      "ru": "Последние Слова"
+    },
+    "description": {
+      "en": "You can infuse a corpse with a moment of life to speak with it. Make a Spellcast Roll (13). On a success with Hope, the corpse answers up to three questions. On a success with Fear, the corpse answers one question. The corpse answers truthfully, but it can't impart information it didn't know in life. On a failure, or once the corpse has finished answering your questions, the body turns to dust.",
+      "ru": "Вы можете наделить труп искрой жизни, чтобы поговорить с ним. Совершите Бросок Заклинания (13). При успехе с Надеждой, труп отвечает на три вопроса. При успехе со Страхом, труп отвечает на один вопрос. Труп отвечает правдиво, но не может передать информацию, которой он не обладал при жизни. При неудаче или после того, как труп закончит отвечать на ваши вопросы, тело превращается в прах."
+    },
+    "origin": "domain_card",
+    "origin_value": "splendor",
+    "kind": "static",
+    "conditions": { "level": 2 },
+    "continious": false
+  },
+  {
+    "slug": "healing-hands",
+    "title": {
+      "en": "Healing Hands",
+      "ru": "Исцеляющие Руки"
+    },
+    "description": {
+      "en": "Make a Spellcast Roll (13) and target a creature other than yourself within Melee range. On a success, mark a Stress to clear 2 Hit Points or 2 Stress on the target. On a failure, mark a Stress to clear a Hit Point or a Stress on the target. You can't heal the same target again until your next long rest.",
+      "ru": "Совершите Бросок Заклинания (13) и выберите цель, помимо вас, находящуюся Вплотную. При успехе, отметьте Стресс, чтобы очистить 2 Раны или 2 Стресса у цели. При провале, отметьте Стресс, чтобы очистить Рану или Стресс у цели. Вы не можете лечить ту же цель снова до следующего продолжительного отдыха."
+    },
+    "origin": "domain_card",
+    "origin_value": "splendor",
+    "kind": "static",
+    "conditions": { "level": 2 },
+    "continious": false
+  },
+  {
+    "slug": "body-basher",
+    "title": {
+      "en": "Body Basher",
+      "ru": "Не Жалея Себя"
+    },
+    "description": {
+      "en": "You use the full force of your body in a fight. On a successful attack using a weapon with a Melee range, gain a bonus to your damage roll equal to your Strength.",
+      "ru": "В бою вы используете всю силу своего тела. При успешной атаке оружием с дистанцией Вплотную, вы получаете бонус к броску урона, равный вашей Силе."
+    },
+    "origin": "domain_card",
+    "origin_value": "valor",
+    "kind": "static",
+    "conditions": { "level": 2 },
+    "continious": false
+  },
+  {
+    "slug": "bold-presence",
+    "title": {
+      "en": "Bold Presence",
+      "ru": "Отважное Присутствие"
+    },
+    "description": {
+      "en": "When you make a Presence Roll, you can spend a Hope to add your Strength to the roll. Additionally, once per rest when you would gain a condition, you can describe how your bold presence aids you in the situation and avoid gaining the condition.",
+      "ru": "Когда вы совершаете бросок Влияния, вы можете потратить Надежду, чтобы добавить свою Силу к броску. Кроме того, один раз до следующего отдыха, когда вы должны получить какое-то состояние, вы можете описать, как ваше отважное присутствие помогает вам в ситуации, и избежать получения этого состояния."
+    },
+    "origin": "domain_card",
+    "origin_value": "valor",
+    "kind": "static",
+    "description_eval_variables": { "limit": "1" },
+    "limit_refresh": "short_rest",
+    "conditions": { "level": 2 },
+    "continious": false
+  },
+  {
+    "slug": "counterspell",
+    "title": {
+      "en": "Counterspell",
+      "ru": "Контрзаклинание"
+    },
+    "description": {
+      "en": "You can interrupt a magical effect taking place by making a Reaction Roll using your Spellcast trait. On a success, the effect stops and any consequences are avoided, and this card is placed in your vault.",
+      "ru": "Вы можете прекратить проявление магического эффекта, совершив Бросок Реакции с использованием вашей Характеристики Заклинателя. В случае успеха эффект прекращается, предотвращая все возможные последствия, а эта карта помещается в ваше Хранилище."
+    },
+    "origin": "domain_card",
+    "origin_value": "arcana",
+    "kind": "static",
+    "conditions": { "level": 3 },
+    "continious": false
+  },
+  {
+    "slug": "flight",
+    "title": {
+      "en": "Flight",
+      "ru": "Полёт"
+    },
+    "description": {
+      "en": "Make a Spellcast Roll (15). On a success, place a number of tokens equal to your Agility on this card (minimum 1). When you make an action roll while flying, spend a token from this card. After the action that spends the last token is resolved, you descend to the ground directly below you.",
+      "ru": "Совершите Бросок Заклинания (15). При успехе поместите на эту карту количество жетонов, равное вашей Проворности (минимум 1). Когда вы совершаете Бросок Действия во время полета, потратьте жетон с этой карты. После того, как действие, которое тратит последний жетон, будет выполнено, вы спускаетесь на землю прямо под собой."
+    },
+    "origin": "domain_card",
+    "origin_value": "arcana",
+    "kind": "text",
+    "conditions": { "level": 3 },
+    "continious": false
+  },
+  {
+    "slug": "scramble",
+    "title": {
+      "en": "Scramble",
+      "ru": "Отскок"
+    },
+    "description": {
+      "en": "When a creature within Melee range would deal damage to you, you can avoid the attack and safely move out of Melee range of the enemy.",
+      "ru": "Когда существо, что находится Вплотную к вам наносит вам урон, вы можете избежать атаки и безопасно выйти из зоны досягаемости врага."
+    },
+    "origin": "domain_card",
+    "origin_value": "blade",
+    "kind": "static",
+    "description_eval_variables": { "limit": "1" },
+    "limit_refresh": "short_rest",
+    "conditions": { "level": 3 },
+    "continious": false
+  },
+  {
+    "slug": "versatile-fighter",
+    "title": {
+      "en": "Versatile Fighter",
+      "ru": "Универсальный боец"
+    },
+    "description": {
+      "en": "You can use a different character trait for an equipped weapon, rather than the trait the weapon calls for. When you deal damage, you can mark a Stress to use the maximum result of one of your damage dice instead of rolling it.",
+      "ru": "Вы можете использовать любую другую Характеристику для оружия, вместо характеристики, указанной для этого оружия. Когда вы наносите урон, вы можете отметить Стресс, чтобы использовать максимальный результат одной из ваших костей урона вместо броска этой кости."
+    },
+    "origin": "domain_card",
+    "origin_value": "blade",
+    "kind": "static",
+    "eval_variables": {
+      "use_max_trait_value_for_attack": "true"
+    },
+    "conditions": { "level": 3 },
+    "continious": false
+  },
+  {
+    "slug": "brace",
+    "title": {
+      "en": "Brace",
+      "ru": "Приготовиться"
+    },
+    "description": {
+      "en": "When you mark an Armor Slot to reduce incoming damage, you can mark a Stress to mark an additional Armor Slot.",
+      "ru": "Когда вы отмечаете Ячейку Брони для уменьшения получаемого урона, вы можете отметить Стресс, чтобы отметить дополнительную Ячейку Брони для уменьшения урона."
+    },
+    "origin": "domain_card",
+    "origin_value": "bone",
+    "kind": "static",
+    "conditions": { "level": 3 },
+    "continious": false
+  },
+  {
+    "slug": "tactician",
+    "title": {
+      "en": "Tactician",
+      "ru": "Тактик"
+    },
+    "description": {
+      "en": "When you Help an Ally, they can spend a Hope to add one of your Experiences to their roll alongside your advantage die. When making a Tag Team Roll, you can roll a d20 as your Hope Die.",
+      "ru": "Когда вы оказываете Помощь союзнику, он может потратить Надежду, чтобы добавить один из ваших Опытов к своему броску вместе с вашей костью Преимущества. Когда вы совершаете Командный бросок, вы можете бросить d20 в качестве кости Надежды."
+    },
+    "origin": "domain_card",
+    "origin_value": "bone",
+    "kind": "static",
+    "conditions": { "level": 3 },
+    "continious": false
+  },
+  {
+    "slug": "book-of-korvax",
+    "title": {
+      "en": "Book of Korvax",
+      "ru": "Книга Корвакса"
+    },
+    "description": {
+      "en": "Make a Spellcast Roll to temporarily lift a target you can see up into the air and move them within Close range of their original position.",
+      "ru": "Совершите Бросок Заклинания, чтобы временно поднять в воздух цель, которую вы видите, и переместить ее в пределах Средней дистанции от ее исходного положения."
+    },
+    "origin": "domain_card",
+    "origin_value": "codex",
+    "kind": "static",
+    "conditions": { "level": 3 },
+    "continious": false
+  },
+  {
+    "slug": "book-of-norai",
+    "title": {
+      "en": "Book of Norai",
+      "ru": "Книга Нораи"
+    },
+    "description": {
+      "en": "Make a Spellcast Roll against a target within Far range. On a success, they're temporarily Restrained and must mark a Stress. If you target a flying creature, this spell grounds and temporarily Restrains them.",
+      "ru": "Совершите Бросок Заклинания против цели в пределах Далекой дистанции. При успехе цель временно Обездвижена и должна отметить Стресс. Если вы целитесь в летающее существо, это заклинание приземляет и временно Обездвиживает его."
+    },
+    "origin": "domain_card",
+    "origin_value": "codex",
+    "kind": "static",
+    "conditions": { "level": 3 },
+    "continious": false
+  },
+  {
+    "slug": "hypnotic-shimmer",
+    "title": {
+      "en": "Hypnotic Shimmer",
+      "ru": "Гипнотическое мерцание"
+    },
+    "description": {
+      "en": "Make a Spellcast Roll against all adversaries in front of you within Close range. Once per rest on a success, create an illusion of flashing colors and lights that temporarily Stuns targets you succeed against and forces them to mark a Stress. While Stunned, they can't use reactions and can't take any other actions until they clear this condition.",
+      "ru": "Совершите Бросок Заклинания против всех противников перед вами в пределах Средней дистанции. При успехе, один раз до следующего отдыха, создайте иллюзию мигающих цветов и огней, которая временно Оглушает цели, против которых вы преуспели, и заставляет их отметить Стресс. Пока они Оглушены, они не могут использовать реакции и предпринимать никаких других действий, пока не снимут это состояние."
+    },
+    "origin": "domain_card",
+    "origin_value": "grace",
+    "kind": "static",
+    "description_eval_variables": { "limit": "1" },
+    "limit_refresh": "short_rest",
+    "conditions": { "level": 3 },
+    "continious": false
+  },
+  {
+    "slug": "invisibility",
+    "title": {
+      "en": "Invisibility",
+      "ru": "Невидимость"
+    },
+    "description": {
+      "en": "Make a Spellcast Roll (10). On a success, mark a Stress and choose yourself or an ally within Melee range to become Invisible. An Invisible creature can't be seen except through magical means and attack rolls against them are made with disadvantage. Place a number of tokens on this card equal to your Spellcast trait. When the Invisible creature takes an action, spend a token from this card. After the action that spends the last token is resolved, the effect ends. You can only hold Invisibility on one creature at a time.",
+      "ru": "Совершите Бросок Заклинания (10). При успехе отметьте Стресс и выберите себя или союзника, находящегося к вам Вплотную, который станет Невидимым. Невидимое существо нельзя увидеть, кроме как с помощью магических средств, и броски Атаки против него совершаются с помехой. Поместите на эту карту количество жетонов, равное вашей Характеристике Заклинателя. Когда Невидимое существо совершает действие, потратьте жетон с этой карты. После того, как действие, за которое был потрачен последний жетон, разрешено, эффект заканчивается. Вы можете одновременно удерживать Невидимость только на одном существе."
+    },
+    "origin": "domain_card",
+    "origin_value": "grace",
+    "kind": "static",
+    "conditions": { "level": 3 },
+    "continious": false
+  },
+  {
+    "slug": "chokehold",
+    "title": {
+      "en": "Chokehold",
+      "ru": "Удушающий Захват"
+    },
+    "description": {
+      "en": "When you position yourself behind a creature who's about your size, you can mark a Stress to pull them into a chokehold, making them temporarily Vulnerable. When a creature attacks a target who is Vulnerable in this way, they deal an extra 2d6 damage.",
+      "ru": "Когда вы находитесь позади существа, которое примерно вашего размера, вы можете отметить Стресс, чтобы схватить его за горло, сделав цель Уязвимой. Когда существо атакует цель, которая является Уязвимой таким образом, оно наносит дополнительный урон 2d6."
+    },
+    "origin": "domain_card",
+    "origin_value": "midnight",
+    "kind": "static",
+    "conditions": { "level": 3 },
+    "continious": false
+  },
+  {
+    "slug": "veil-of-night",
+    "title": {
+      "en": "Veil of Night",
+      "ru": "Покров Ночи"
+    },
+    "description": {
+      "en": "Make a Spellcast Roll (13). On a success, you can create a temporary curtain of darkness between two points within Far range. Only you can see through this darkness. You're considered Hidden to adversaries on the other side of the veil, and you have advantage on attacks you make through the darkness. The veil remains until you cast another spell.",
+      "ru": "Совершите Бросок Заклинания (13). При успехе вы можете создать временную завесу тьмы между двумя точками в пределах Далекой дистанции. Только вы можете видеть сквозь эту тьму. Вы считаетесь Скрытым для противников по другую сторону завесы, и у вас есть Преимущество при атаках, совершаемых сквозь тьму. Завеса остается до тех пор, пока вы не произнесете другое заклинание."
+    },
+    "origin": "domain_card",
+    "origin_value": "midnight",
+    "kind": "static",
+    "conditions": { "level": 3 },
+    "continious": false
+  },
+  {
+    "slug": "shared-trauma",
+    "title": {
+      "en": "Shared Trauma",
+      "ru": "Разделённая Травма"
+    },
+    "description": {
+      "en": "Mark any number of Hit Points on a willing creature within Melee range to clear an equal number of Hit Points on another willing creature within Melee range. You can choose yourself in place of either creature.",
+      "ru": "Отметьте любое количество Ран у согласного существа, находящегося Вплотную, чтобы очистить столько же Ран у другого согласного существа, находящегося Вплотную. Вы можете выбрать себя вместо любого из этих существ."
+    },
+    "origin": "domain_card",
+    "origin_value": "dread",
+    "kind": "static",
+    "description_eval_variables": { "limit": "1" },
+    "limit_refresh": "short_rest",
+    "conditions": { "level": 3 },
+    "continious": false
+  },
+  {
+    "slug": "terrify",
+    "title": {
+      "en": "Terrify",
+      "ru": "Вселить Ужас"
+    },
+    "description": {
+      "en": "Make a Spellcast Roll against a target within Far range. On a success, the target marks 1d4 Stress and you can choose to make the target run one range away from you. On a success with Fear, the target becomes temporarily Vulnerable.",
+      "ru": "Совершите Бросок Заклинания против цели в пределах Далекой дистанции. При успехе цель отмечает 1d4 Стресса, и вы можете заставить ее убежать на одну ступень дистанции от вас. При успехе со Страхом, цель становится временно Уязвимой."
+    },
+    "origin": "domain_card",
+    "origin_value": "dread",
+    "kind": "static",
+    "conditions": { "level": 3 },
+    "continious": false
+  },
+  {
+    "slug": "corrosive-projectile",
+    "title": {
+      "en": "Corrosive Projectile",
+      "ru": "Кислотный Снаряд"
+    },
+    "description": {
+      "en": "Make a Spellcast Roll against a target within Far range. On a success, deal d6+4 magic damage using your Proficiency. Additionally, mark 2 or more Stress to make them permanently Corroded. While a target is Corroded, they gain a −1 penalty to their Difficulty for every 2 Stress you spent. This condition can stack.",
+      "ru": "Совершите Бросок Заклинания против цели в пределах Далекой дистанции. При успехе нанесите d6+4 урона магией, используя ваше Мастерство. Кроме того, отметьте 2 или более Стресса, чтобы сделать её Окисленной. Пока цель Окислена, она получает штраф −1 к Сложности за каждые 2 очка Стресса, потраченные вами. Это состояние может накапливаться."
+    },
+    "origin": "domain_card",
+    "origin_value": "sage",
+    "kind": "static",
+    "conditions": { "level": 3 },
+    "continious": false
+  },
+  {
+    "slug": "towering-stalk",
+    "title": {
+      "en": "Towering Stalk",
+      "ru": "Могучий Стебель"
+    },
+    "description": {
+      "en": "You can conjure a thick, twisting stalk within Close range that can be easily climbed. Its height can grow up to Far range. Mark a Stress to use this spell as an attack. Make a Spellcast Roll against an adversary or group of adversaries within Close range. The erupting stalk lifts targets you succeed against into the air and drops them, dealing d8 physical damage using your Proficiency.",
+      "ru": "Вы можете создать толстый, извивающийся стебель в пределах Средней дистанции, по которому можно легко подняться. Его высота может достигать Далекой дистанции. Отметьте Стресс, чтобы использовать это заклинание в качестве атаки. Совершите Бросок Заклинания против противника или группы противников в пределах Средней дистанции. Вырывающийся стебель поднимает в воздух цели, против которых вы преуспели, и бросает их, нанося d8 физического урона с использованием вашего Мастерства."
+    },
+    "origin": "domain_card",
+    "origin_value": "sage",
+    "kind": "static",
+    "description_eval_variables": { "limit": "1" },
+    "limit_refresh": "short_rest",
+    "conditions": { "level": 3 },
+    "continious": false
+  },
+  {
+    "slug": "second-wind",
+    "title": {
+      "en": "Second Wind",
+      "ru": "Второе Дыхание"
+    },
+    "description": {
+      "en": "When you succeed on an attack against an adversary, you can clear 3 Stress or a Hit Point. On a success with Hope, you also clear 3 Stress or a Hit Point on an ally within Close range of you.",
+      "ru": "Когда вы успешно атакуете противника, вы можете очистить 3 Стресса или одну Рану. При успехе с Надеждой вы также очищаете 3 Стресса или Рану с союзника, находящегося Вплотную к вам."
+    },
+    "origin": "domain_card",
+    "origin_value": "splendor",
+    "kind": "static",
+    "description_eval_variables": { "limit": "1" },
+    "limit_refresh": "short_rest",
+    "conditions": { "level": 3 },
+    "continious": false
+  },
+  {
+    "slug": "voice-of-reason",
+    "title": {
+      "en": "Voice of Reason",
+      "ru": "Голос Разума"
+    },
+    "description": {
+      "en": "You have advantage on action rolls to de-escalate violent situations or convince someone to follow your lead.Additionally, you're emboldened in moments of duress. When all of your Stress slots are marked, you gain a +1 bonus to your Proficiency for damage rolls.",
+      "ru": "У вас есть преимущество на Броски Действия, чтобы разрядить напряженную ситуацию или убедить кого-то последовать вашему примеру. Кроме того, вы становитесь смелее в моменты напряжения. Когда все ваши ячейки Стресса отмечены, вы получаете бонус +1 к Мастерству для бросков на нанесение урона."
+    },
+    "origin": "domain_card",
+    "origin_value": "splendor",
+    "kind": "static",
+    "conditions": { "level": 3 },
+    "continious": false
+  },
+  {
+    "slug": "critical-inspiration",
+    "title": {
+      "en": "Critical Inspiration",
+      "ru": "Вдохновляющее Попадание"
+    },
+    "description": {
+      "en": "When you critically succeed on an attack, all allies within Very Close range can clear a Stressor gain a Hope.",
+      "ru": "Когда вы выбрасываете критический успех на атаку, все союзники в пределах Близкой дистанции могут очистить Стресс или получить Надежду."
+    },
+    "origin": "domain_card",
+    "origin_value": "valor",
+    "kind": "static",
+    "description_eval_variables": { "limit": "1" },
+    "limit_refresh": "short_rest",
+    "conditions": { "level": 3 },
+    "continious": false
+  },
+  {
+    "slug": "lean-on-me",
+    "title": {
+      "en": "Lean on Me",
+      "ru": "Положись на Меня"
+    },
+    "description": {
+      "en": "When you console or inspire an ally who failed an action roll, you can both clear 2 Stress.",
+      "ru": "Когда вы утешаете или вдохновляете союзника, который провалил бросок действия, вы оба можете очистить 2 Стресса."
+    },
+    "origin": "domain_card",
+    "origin_value": "valor",
+    "kind": "static",
+    "description_eval_variables": { "limit": "1" },
+    "limit_refresh": "long_rest",
+    "conditions": { "level": 3 },
+    "continious": false
+  },
+  {
+    "slug": "blink-out",
+    "title": {
+      "en": "Blink Out",
+      "ru": "Мерцание"
+    },
+    "description": {
+      "en": "Make a Spellcast Roll (12). On a success, spend a Hope to teleport to another point you can see within Far range. If any willing creatures are within Very Close range, spend an additional Hope for each creature to bring them with you.",
+      "ru": "Совершите Бросок Заклинания (12). При успехе потратьте Надежду, чтобы телепортироваться в другую точку, которую вы можете видеть в пределах Далекой дистанции. Если какие-либо согласные существа находятся в пределах Близкой дистанции от вас, потратьте дополнительную Надежду за каждое существо, чтобы взять их с собой."
+    },
+    "origin": "domain_card",
+    "origin_value": "arcana",
+    "kind": "static",
+    "conditions": { "level": 4 },
+    "continious": false
+  },
+  {
+    "slug": "preservation-blast",
+    "title": {
+      "en": "Preservation Blast",
+      "ru": "Отталкивающий импульс"
+    },
+    "description": {
+      "en": "Make a Spellcast Roll against all targets within Melee range. Targets you succeed against are forced back to Far range and take d8+3 magic damage using your Spellcast trait.",
+      "ru": "Совершите Бросок Заклинания против всех целей, что находятся Вплотную к вам. Цели, против которых вы преуспели, будут отброшены на Далекую дистанцию и получат d8+3 магического урона, используя вашу Характеристику Заклинателя."
+    },
+    "origin": "domain_card",
+    "origin_value": "arcana",
+    "kind": "static",
+    "conditions": { "level": 4 },
+    "continious": false
+  },
+  {
+    "slug": "deadly-focus",
+    "title": {
+      "en": "Deadly Focus",
+      "ru": "Смертоносная сосредоточенность"
+    },
+    "description": {
+      "en": "You can apply all your focus toward a target of your choice. Until you attack another creature, you defeat the target, or the battle ends, gain a +1 bonus to your Proficiency.",
+      "ru": "Вы можете сосредоточить все свое внимание на цель по вашему выбору. До тех пор, пока вы не атакуете другое существо, не победите цель или не закончите бой, вы получаете бонус +1 к Мастерству."
+    },
+    "origin": "domain_card",
+    "origin_value": "blade",
+    "kind": "static",
+    "description_eval_variables": { "limit": "1" },
+    "eval_variables": {
+      "proficiency": "proficiency + 1"
+    },
+    "limit_refresh": "short_rest",
+    "conditions": { "level": 4 },
+    "continious": true
+  },
+  {
+    "slug": "fortified-armor",
+    "title": {
+      "en": "Fortified Armor",
+      "ru": "Усиленная Броня"
+    },
+    "description": {
+      "en": "While you are wearing armor, gain a +2 bonus to your damage thresholds.",
+      "ru": "Пока вы носите доспехи, получите бонус +2 к порогам урона."
+    },
+    "origin": "domain_card",
+    "origin_value": "blade",
+    "kind": "static",
+    "eval_variables": {
+      "damage_thresholds": "equiped_armor ? damage_thresholds.transform_values { |item| item + 2 } : damage_thresholds"
+    },
+    "conditions": { "level": 4 },
+    "continious": false
+  },
+  {
+    "slug": "boost",
+    "title": {
+      "en": "Boost",
+      "ru": "Импульс"
+    },
+    "description": {
+      "en": "Mark a Stress to boost off a willing ally within Close range, fling yourself into the air, and perform an aerial attack against a target within Far range. You have advantage on the attack, add a d10 to the damage roll, and end your move within Melee range of the target.",
+      "ru": "Отметьте Стресс, чтобы оттолкнуться от согласного союзника в пределах Средней дистанции, подбросить себя в воздух и выполнить воздушную атаку против цели в пределах Далекой дистанции. Вы получаете Преимущество в атаке, добавляете d10 к броску урона и заканчиваете свой ход Вплотную к цели."
+    },
+    "origin": "domain_card",
+    "origin_value": "bone",
+    "kind": "static",
+    "conditions": { "level": 4 },
+    "continious": false
+  },
+  {
+    "slug": "redirect",
+    "title": {
+      "en": "Redirect",
+      "ru": "Перенаправление"
+    },
+    "description": {
+      "en": "When an attack made against you from beyond Melee range fails, roll a number of d6s equal to your Proficiency. If any roll a 6, you can mark a Stress to redirect the attack to damage an adversary within Very Close range instead.",
+      "ru": "Когда нацеленная на вас атака, исходящая за пределами дистанции Вплотную, не достигает вас, бросьте количество d6, равное вашему Мастерству. Если хоть один результат равен 6, вы можете отметить Стресс, чтобы перенаправить атаку на противника, находящегося на Близкой дистанции."
+    },
+    "origin": "domain_card",
+    "origin_value": "bone",
+    "kind": "static",
+    "conditions": { "level": 4 },
+    "continious": false
+  },
+  {
+    "slug": "book-of-exota",
+    "title": {
+      "en": "Book of Exota",
+      "ru": "Книга Экзоты"
+    },
+    "description": {
+      "en": "You can interrupt a magical effect taking place. Make a Reaction Roll using your Spellcast trait. Once per rest on a success, the effect stops and any consequences are avoided.",
+      "ru": "Вы можете прервать действующий магический эффект. Совершите Бросок Реакции с использованием вашей Характеристики Заклинателя. При успехе, один раз до следующего отдыха, эффект прекращается, а все последствия избегаются."
+    },
+    "origin": "domain_card",
+    "origin_value": "codex",
+    "kind": "static",
+    "description_eval_variables": { "limit": "1" },
+    "limit_refresh": "short_rest",
+    "conditions": { "level": 4 },
+    "continious": false
+  },
+  {
+    "slug": "book-of-grynn",
+    "title": {
+      "en": "Book of Grynn",
+      "ru": "Книга Гринна"
+    },
+    "description": {
+      "en": "Spend a Hope to negate the damage of an attack targeting you or an ally within Very Close range.",
+      "ru": "Потратьте Надежду, чтобы отменить урон от атаки, нацеленной на вас или союзника в пределах Близкой дистанции."
+    },
+    "origin": "domain_card",
+    "origin_value": "codex",
+    "kind": "static",
+    "description_eval_variables": { "limit": "1" },
+    "limit_refresh": "long_rest",
+    "conditions": { "level": 4 },
+    "continious": false
+  },
+  {
+    "slug": "soothing-speech",
+    "title": {
+      "en": "Soothing Speech",
+      "ru": "Успокаивающая речь"
+    },
+    "description": {
+      "en": "During a short rest, when you take the time to comfort another character while using the Tend to Wounds downtime move on them, clear an additional Hit Point on that character. When you do, you also clear 2 Hit Points.",
+      "ru": "Во время короткого отдыха, когда вы утешаете другого персонажа, используя действие Оказать Первую Помощь из Ходов Отдыха, очистите дополнительную Рану этому персонажу. Когда вы это сделаете, вы также очищаете 2 Раны себе."
+    },
+    "origin": "domain_card",
+    "origin_value": "grace",
+    "kind": "static",
+    "conditions": { "level": 4 },
+    "continious": false
+  },
+  {
+    "slug": "through-your-eyes",
+    "title": {
+      "en": "Through Your Eyes",
+      "ru": "Твоими глазами"
+    },
+    "description": {
+      "en": "Choose a target within Very Far range. You can see through their eyes and hear through their ears. You can transition between using your own senses or the target's freely until you cast another spell or until your next rest.",
+      "ru": "Выберите цель в пределах Очень Далекой дистанции. Вы можете видеть глазами и слышать ушами цели. Вы можете свободно переключаться между использованием своих собственных чувств и чувств цели, пока не произнесете другое заклинание или до следующего отдыха."
+    },
+    "origin": "domain_card",
+    "origin_value": "grace",
+    "kind": "static",
+    "conditions": { "level": 4 },
+    "continious": false
+  },
+  {
+    "slug": "glyph-of-nightfall",
+    "title": {
+      "en": "Glyph of Nightfall",
+      "ru": "Печать Заката"
+    },
+    "description": {
+      "en": "Make a Spellcast Roll against a target within Very Close range. On a success, spend a Hope to conjure a dark glyph upon their body that exposes their weak points, temporarily reducing the target's Difficulty by a value equal to your Knowledge (minimum 1).",
+      "ru": "Совершите Бросок Заклинания против цели, находящейся в Близкой дистанции. При успехе потратьте Надежду, чтобы наложить на тело цели темную печать, которая показывает ее слабые места, временно уменьшая Сложность цели на значение, равное вашему Знанию (минимум 1)."
+    },
+    "origin": "domain_card",
+    "origin_value": "midnight",
+    "kind": "static",
+    "conditions": { "level": 4 },
+    "continious": false
+  },
+  {
+    "slug": "stealth-expertise",
+    "title": {
+      "en": "Stealth Expertise",
+      "ru": "Эксперт в Скрытности"
+    },
+    "description": {
+      "en": "When you roll with Fear while attempting to move unnoticed through a dangerous area, you can mark a Stress to roll with Hope instead. If an ally within Close range is also attempting to move unnoticed and rolls with Fear, you can mark a Stress to change their result to a roll with Hope.",
+      "ru": "Если вы выбросили кости со Страхом при попытке незаметно пройти через опасную зону, вы можете отметить Стресс, чтобы вместо этого бросить кости с Надеждой. Если союзник в пределах Средней дистанции также пытается пройти незаметно и бросает кости со Страхом, вы можете отметить Стресс, чтобы изменить его результат на бросок с Надеждой."
+    },
+    "origin": "domain_card",
+    "origin_value": "midnight",
+    "kind": "static",
+    "conditions": { "level": 4 },
+    "continious": false
+  },
+  {
+    "slug": "withering-affliction",
+    "title": {
+      "en": "Chains of Affliction",
+      "ru": "Оковы Мучений"
+    },
+    "description": {
+      "en": "Mark 2 Stress to temporarily Chain a target within Close range. When a Chained creature deals damage, the target of their attack reduces the number of Hit Points they mark by one. You can't have more than one creature Chained at a time.",
+      "ru": "Отметьте 2 Стресса, чтобы временно Сковать цель в пределах Средней дистанции. Когда Скованное существо наносит урон, цель его атаки уменьшает количество отмеченных Ран на одну. Вы не можете иметь более одного Скованного существа одновременно."
+    },
+    "origin": "domain_card",
+    "origin_value": "dread",
+    "kind": "static",
+    "conditions": { "level": 4 },
+    "continious": false
+  },
+  {
+    "slug": "summon-horror",
+    "title": {
+      "en": "Summon Horror",
+      "ru": "Призыв Ужаса"
+    },
+    "description": {
+      "en": "Make a Spellcast Roll against a target within Far range. On a success, spend a Hope to call forth an otherworldly creature to attack them and deal d10 magic damage using your Proficiency. The target must succeed on a Reaction Roll (12) to steel themselves from the horror or mark 1d4 Stress. After making the attack, the creature dissipates.",
+      "ru": "Совершите Бросок Заклинания против цели в пределах Далекой дистанции. При успехе, потратьте Надежду, чтобы вызвать потустороннее существо, которое атакует цель и нанесет d10 магического урона, используя ваше Мастерство. Цель также должна преуспеть в Бросоке Реакции (12), чтобы противостоять этому ужасу, иначе она должна отметить 1d4 Стресса. После совершения атаки существо рассеивается."
+    },
+    "origin": "domain_card",
+    "origin_value": "dread",
+    "kind": "static",
+    "conditions": { "level": 4 },
+    "continious": false
+  },
+  {
+    "slug": "death-grip",
+    "title": {
+      "en": "Death Grip",
+      "ru": "Смертельный Хват"
+    },
+    "description": {
+      "en": "Make a Spellcast Roll against a target within Close range and choose one of the following options: 1) You pull the target into Melee range or pull yourself into Melee range of them. 2) You constrict the target and force them to mark 2 Stress. 3) All adversaries between you and the target must succeed on a Reaction Roll (13) or be hit by vines, taking 3d6+2 physical damage. On a success, vines reach out from your hands, causing the chosen effect and temporarily Restraining the target.",
+      "ru": "Совершите Бросок Заклинания против цели в пределах Средней дистанции и выберите один из следующих вариантов: 1) Вы притягиваете цель Вплотную к вам или сами приближаетесь к ней Вплотную. 2) Вы сжимаете цель и заставляете ее отметить 2 Стресса. 3) Все противники между вами и целью должны успешно выполнить Бросок Реакции (13) или получить 3d6+2 физического урона от лиан. При успехе, лианы вытягиваются из ваших рук, вызывая выбранный эффект и временно Обездвиживая цель."
+    },
+    "origin": "domain_card",
+    "origin_value": "sage",
+    "kind": "static",
+    "conditions": { "level": 4 },
+    "continious": false
+  },
+  {
+    "slug": "healing-field",
+    "title": {
+      "en": "Healing Field",
+      "ru": "Целебное Поле"
+    },
+    "description": {
+      "en": "You can conjure a field of healing plants around you. Everywhere within Close range of you bursts to life with vibrant nature, allowing you and all allies in the area to clear a Hit Point. Spend 2 Hope to allow you and all allies to clear 2 Hit Points instead.",
+      "ru": "Вы можете создать вокруг себя поле целебных растений. Вся область в пределах Средней дистанции от вас оживает яркой природой, позволяя вам и всем союзникам в этой области очистить Рану. Потратьте 2 Надежды, чтобы вместо этого вы и все союзники могли очистить 2 Раны."
+    },
+    "origin": "domain_card",
+    "origin_value": "sage",
+    "kind": "static",
+    "description_eval_variables": { "limit": "1" },
+    "limit_refresh": "long_rest",
+    "conditions": { "level": 4 },
+    "continious": false
+  },
+  {
+    "slug": "divination",
+    "title": {
+      "en": "Divination",
+      "ru": "Гадание"
+    },
+    "description": {
+      "en": "Spend 3 Hope to reach out to the forces beyond and ask one “yes or no” question about an event, person, place, or situation in the near future. For a moment, the present falls away and you see the answer before you.",
+      "ru": "Потратьте 3 Надежды, чтобы обратиться к внешним силам и задать один вопрос, требующий ответа «да» или «нет», о событии, человеке, месте или ситуации в ближайшем будущем. На мгновение настоящее исчезает, и вы видите ответ перед собой."
+    },
+    "origin": "domain_card",
+    "origin_value": "splendor",
+    "kind": "static",
+    "description_eval_variables": { "limit": "1" },
+    "limit_refresh": "long_rest",
+    "conditions": { "level": 4 },
+    "continious": false
+  },
+  {
+    "slug": "life-ward",
+    "title": {
+      "en": "Life Ward",
+      "ru": "Оберег Жизни"
+    },
+    "description": {
+      "en": "Spend 3 Hope and choose an ally within Close range. They are marked with a glowing sigil of protection. When this ally would make a death move, they clear a Hit Point instead. This effect ends when it saves the target from a death move, you cast Life Ward on another target, or you take a long rest.",
+      "ru": "Потратьте 3 Надежды и выберите союзника в пределах Средней дистанции. Он будет отмечен светящимся знаком защиты. Когда этот союзник совершит предсмертный ход, он вместо этого очищает одну Рану. Этот эффект заканчивается, когда он спасает цель от предсмертного хода, вы накладываете Защиту Жизни на другую цель или вы совершаете продолжительный отдых."
+    },
+    "origin": "domain_card",
+    "origin_value": "splendor",
+    "kind": "static",
+    "conditions": { "level": 4 },
+    "continious": false
+  },
+  {
+    "slug": "goad-them-on",
+    "title": {
+      "en": "Goad Them On",
+      "ru": "Раззадорить врага"
+    },
+    "description": {
+      "en": "Describe how you taunt a target within Close range, then make a Presence Roll against them. On a success, the target must mark a Stress, and the next time the GM spotlights them, they must target you with an attack, which they make with disadvantage.",
+      "ru": "Опишите, как вы дразните цель в пределах Средней дистанции, затем совершите Бросок Влияния против нее. В случае успеха, цель должна отметить Стресс, и в следующий раз, когда Мастер активирует её, она обязана нацелиться на вас атакой, которую та совершает с помехой."
+    },
+    "origin": "domain_card",
+    "origin_value": "valor",
+    "kind": "static",
+    "conditions": { "level": 4 },
+    "continious": false
+  },
+  {
+    "slug": "support-tank",
+    "title": {
+      "en": "Support Tank",
+      "ru": "Поддерживающий защитник"
+    },
+    "description": {
+      "en": "When an ally within Close range fails a roll, you can spend 2 Hope to allow them to reroll either their Hope or Fear Die.",
+      "ru": "Когда союзник в пределах Средней дистанции проваливает бросок, вы можете потратить 2 Надежды, чтобы позволить ему перебросить либо кость Надежды, либо кость Страха"
+    },
+    "origin": "domain_card",
+    "origin_value": "valor",
+    "kind": "static",
+    "conditions": { "level": 4 },
+    "continious": false
+  },
+  {
+    "slug": "chain-lightning",
+    "title": {
+      "en": "Chain Lightning",
+      "ru": "Цепная молния"
+    },
+    "description": {
+      "en": "Mark 2 Stress to make a Spellcast Roll, unleashing lightning on all targets within Close range. Targets you succeed against must make a reaction roll with a Difficulty equal to the result of your Spellcast Roll. Targets who fail take 2d8+4 magic damage. Additional adversaries not already targeted by Chain Lightning and within Close range of previous targets who took damage must also make the Reaction Roll. Targets who fail take 2d8+4 magic damage. This chain continues until there are no more adversaries within range.",
+      "ru": "Отметьте 2 Стресса, чтобы совершить Бросок Заклинания и направить молнию на всех целей в Средней дистанции. Цели, против которых вы преуспели, должны выполнить бросок реакции со Сложностью, равной результату вашего броска заклинания. Цели, которые провалили бросок, получают 2d8+4 магического урона. Дополнительные противники, которые еще не были целями Цепной молнии и находящиеся на расстоянии близко к предыдущим целям, получившим урон, также должны сделать Бросок Реакции. Цели, которые провалили бросок, получают 2d8+4 урона от магии. Эта цепь продолжается, пока в радиусе действия не останется противников."
+    },
+    "origin": "domain_card",
+    "origin_value": "arcana",
+    "kind": "static",
+    "conditions": { "level": 5 },
+    "continious": false
+  },
+  {
+    "slug": "premonition",
+    "title": {
+      "en": "Premonition",
+      "ru": "Предчувствие"
+    },
+    "description": {
+      "en": "Immediately after the GM conveys the consequences of a roll you made, you can rescind the move and consequences like they never happened and make another move instead.",
+      "ru": "Сразу после того, как Мастер сообщит вам о результатах вашего броска, вы можете отменить своё действие и его последствия, как будто ничего не произошло, и сделать другое действие."
+    },
+    "origin": "domain_card",
+    "origin_value": "arcana",
+    "kind": "static",
+    "description_eval_variables": { "limit": "1" },
+    "limit_refresh": "long_rest",
+    "conditions": { "level": 5 },
+    "continious": false
+  },
+  {
+    "slug": "champions-edge",
+    "title": {
+      "en": "Champion's Edge",
+      "ru": "Преимущество Чемпиона"
+    },
+    "description": {
+      "en": "When you critically succeed on an attack, you can spend up to 3 Hope and choose one of the following options for each Hope spent: 1) You clear a Hit Point. 2) You clear an Armor Slot. 3) The target must mark an additional Hit Point. You can't choose the same option more than once.",
+      "ru": "Когда вы бросаете критический успех на атаку, вы можете потратить до 3 Надежды и выбрать один из следующих вариантов за каждую потраченную Надежду: 1) Вы очищаете Рану. 2) Вы очищаете Ячейку Брони. 3) Цель должна отметить дополнительную Рану. Вы не можете выбрать один и тот же вариант более одного раза."
+    },
+    "origin": "domain_card",
+    "origin_value": "blade",
+    "kind": "static",
+    "conditions": { "level": 5 },
+    "continious": false
+  },
+  {
+    "slug": "vitality",
+    "title": {
+      "en": "Vitality",
+      "ru": "Живучесть"
+    },
+    "description": {
+      "en": "When you choose this card, permanently gain two of the following benefits. Then place this card in your vault permanently.",
+      "ru": "Когда вы выбираете эту карту, вы навсегда получаете два из следующих преимуществ. Затем навсегда поместите эту карту в ваше хранилище."
+    },
+    "origin": "domain_card",
+    "origin_value": "blade",
+    "kind": "static_list",
+    "options": {
+      "vitality_1": { "en": "Stress slot, Hit point slot", "ru": "Одну ячейку Стресса, Одну ячейку Ран" },
+      "vitality_2": { "en": "Stress slot, bonus to thresholds", "ru": "Одну ячейку Стресса, +2 к вашим порогам урона" },
+      "vitality_3": { "en": "Hit point slot, bonus to thresholds +2", "ru": "Одну ячейку Ран, +2 к вашим порогам урона" }
+    },
+    "conditions": { "level": 5 },
+    "continious": false
+  },
+  {
+    "slug": "know-thy-enemy",
+    "title": {
+      "en": "Know Thy Enemy",
+      "ru": "Знай Врага Своего"
+    },
+    "description": {
+      "en": "When observing a creature, you can make an Instinct Roll against them. On a success, spend a Hope and ask the GM for one set of information about the target from the following options: 1) Their unmarked Hit Points and Stress. 2) Their Difficulty and damage thresholds. 3) Their tactics and standard attack damage dice. 4) Their features and Experiences. Additionally on a success, you can mark a Stress to remove a Fear from the GM's Fear Pool.",
+      "ru": "Наблюдая за существом, вы можете совершить Бросок Инстинкта против него. При успехе потратьте Надежду и попросите Мастера предоставить вам одну из следующих сведений о нём: 1) Его неотмеченные Раны и Стресс. 2) Его Сложность и пороги урона. 3) Его тактика и стандартные кости урона от атаки. 4) Его навыки и Опыт. Кроме того, при успехе вы можете отметить Стресс, чтобы удалить один жетон Страха из запаса Страха Мастера."
+    },
+    "origin": "domain_card",
+    "origin_value": "bone",
+    "kind": "static",
+    "conditions": { "level": 5 },
+    "continious": false
+  },
+  {
+    "slug": "signature-move",
+    "title": {
+      "en": "Signature Move",
+      "ru": "Фирменный Приём"
+    },
+    "description": {
+      "en": "Name and describe your signature combat move. Once per rest, when you perform this signature move as part of an action you're taking, you can roll a d20 as your Hope Die. On a success, clear a Stress.",
+      "ru": "Назовите и опишите свой фирменный боевой прием. Один раз до следующего отдыха, когда вы выполняете этот прием в рамках своего действия, вы можете бросить d20 в качестве кости Надежды. При успехе очистите Стресс."
+    },
+    "origin": "domain_card",
+    "origin_value": "bone",
+    "kind": "text",
+    "description_eval_variables": { "limit": "1" },
+    "limit_refresh": "short_rest",
+    "conditions": { "level": 5 },
+    "continious": false
+  },
+  {
+    "slug": "manifest-wall",
+    "title": {
+      "en": "Manifest Wall",
+      "ru": "Сотворение Стены"
+    },
+    "description": {
+      "en": "Make a Spellcast Roll (15). Once per rest on a success, spend a Hope to create a temporary magical wall between two points within Far range. It can be up to 50 feet high and form at any angle. Creatures or objects in its path are shunted to a side of your choice. The wall stays up until your next rest or you cast Manifest Wall again.",
+      "ru": "Совершите Бросок Заклинания (15). При успехе, один раз до следующего отдыха, потратьте Надежду для создания временной магической стены между двумя точками в пределах Далекой дистанции. Она может быть высотой до 15 метров и формироваться под любым углом. Существа или предметы, находящиеся на ее пути, отбрасываются в сторону по вашему выбору. Стена остается до вашего следующего отдыха или до тех пор, пока вы не произнесете заклинание «Сотворение Стены» снова."
+    },
+    "origin": "domain_card",
+    "origin_value": "codex",
+    "kind": "static",
+    "description_eval_variables": { "limit": "1" },
+    "limit_refresh": "short_rest",
+    "conditions": { "level": 5 },
+    "continious": false
+  },
+  {
+    "slug": "teleport",
+    "title": {
+      "en": "Teleport",
+      "ru": "Телепортация"
+    },
+    "description": {
+      "en": "You can instantly teleport yourself and any number of willing targets within Close range to a place you've been before. Choose one of the following options, then make a Spellcast Roll (16): 1) If you know the place very well, gain a +3 bonus. 2) If you've visited the place frequently, gain a +1 bonus. 3) If you've visited the place infrequently, gain no modifier. 4) If you've only been there once, gain a −2 penalty. On a success, you appear where you were intending to go. On a failure, you appear off course, with the range of failure determining how far off course.",
+      "ru": "Вы можете мгновенно телепортировать себя и любое количество желающих целей в пределах Средней дистанции в место, где вы уже бывали. Выберите один из следующих вариантов, затем совершите Бросок Заклинания (16): 1) Если вы хорошо знаете это место, получите бонус +3. 2) Если вы часто бывали в этом месте, получите бонус +1. 3) Если вы бывали в этом месте нечасто, не получаете модификатор. 4) Если вы были там только один раз, получите штраф −2. При успехе вы появляетесь там, куда намеревались отправиться. При неудаче вы появляетесь в другом месте, и дистанция неудачи определяет, насколько далеко от курса."
+    },
+    "origin": "domain_card",
+    "origin_value": "codex",
+    "kind": "static",
+    "description_eval_variables": { "limit": "1" },
+    "limit_refresh": "long_rest",
+    "conditions": { "level": 5 },
+    "continious": false
+  },
+  {
+    "slug": "thought-delver",
+    "title": {
+      "en": "Thought Delver",
+      "ru": "Чтение Мыслей"
+    },
+    "description": {
+      "en": "You can peek into the minds of others. Spend a Hope to read the vague surface thoughts of a target within Far range. Make a Spellcast Roll against the target to delve for deeper, more hidden thoughts. On a roll with Fear, the target might, at the GM's discretion, become aware that you're reading their thoughts.",
+      "ru": "Вы можете заглянуть в умы других. Потратьте Надежду, чтобы прочитать смутные поверхностные мысли цели в пределах Далекой дистанции. Совершите Бросок Заклинания против цели, чтобы проникнуть в более глубокие, скрытые мысли. При броске со Страхом цель может, по усмотрению Мастера, осознать, что вы читаете ее мысли."
+    },
+    "origin": "domain_card",
+    "origin_value": "grace",
+    "kind": "static",
+    "conditions": { "level": 5 },
+    "continious": false
+  },
+  {
+    "slug": "words-of-discord",
+    "title": {
+      "en": "Words of Discord",
+      "ru": "Шепот Раздора"
+    },
+    "description": {
+      "en": "Whisper words of discord to an adversary within Melee range and make a Spellcast Roll (13). On a success, the target must mark a Stress and make an attack against another adversary instead of against you or your allies. Once this attack is over, the target realizes what happened. The next time you cast Words of Discord on them, gain a −5 penalty to the Spellcast Roll.",
+      "ru": "Шепните слова раздора противнику, находящемуся Вплотную и совершите Бросок Заклинания (13). При успехе цель должна отметить Стресс и совершить атаку против другого противника вместо вас или ваших союзников. После завершения атаки цель понимает, что произошло. В следующий раз, когда вы наложите на нее Шепот Раздора, вы получаете штраф −5 к Броску Заклинания."
+    },
+    "origin": "domain_card",
+    "origin_value": "grace",
+    "kind": "static",
+    "conditions": { "level": 5 },
+    "continious": false
+  },
+  {
+    "slug": "hush",
+    "title": {
+      "en": "Hush",
+      "ru": "Безмолвие"
+    },
+    "description": {
+      "en": "Make a Spellcast Roll against a target within Close range. On a success, spend a Hope to conjure suppressive magic around the target that encompasses everything within Very Close range of them and follows them as they move. The target and anything within the area is Silenced until the GM spends a Fear on their turn to clear this condition, you cast Hush again, or you take Major damage. While Silenced, they can't make noise and can't cast spells.",
+      "ru": "Совершите Бросок Заклинания против цели в пределах Средней дистанции. При успехе потратьте Надежду, чтобы создать вокруг цели магическое поле, которое охватывает все в пределах Близкой дистанции от нее и следует за ней, когда та движется. Цель и все, что находится в области действия, Безмолвны до тех пор, пока Мастер не потратит Страх в свой ход, чтобы снять это состояние, вы не произнесете Заклинание снова или не получите Тяжелый урон. Пока они Безмолвны, они не могут издавать звуки и не могут произносить заклинания."
+    },
+    "origin": "domain_card",
+    "origin_value": "midnight",
+    "kind": "static",
+    "conditions": { "level": 5 },
+    "continious": false
+  },
+  {
+    "slug": "phantom-retreat",
+    "title": {
+      "en": "Phantom Retreat",
+      "ru": "Призрачное Отступление"
+    },
+    "description": {
+      "en": "Spend a Hope to activate Phantom Retreat where you're currently standing. Spend another Hope at any time before your next rest to disappear from where you are and reappear where you were standing when you activated Phantom Retreat. This spell ends after you reappear.",
+      "ru": "Потратьте Надежду для активации «Призрачного отступления» в том месте, где вы находитесь. Потратьте еще одну Надежду в любое время до вашего следующего отдыха, чтобы исчезнуть из того места, где вы находитесь, и появиться там, где вы были, когда активировали «Призрачное отступление». Это заклинание заканчивается после вашего появления."
+    },
+    "origin": "domain_card",
+    "origin_value": "midnight",
+    "kind": "static",
+    "conditions": { "level": 5 },
+    "continious": false
+  },
+  {
+    "slug": "dire-strike",
+    "title": {
+      "en": "Dire Strike",
+      "ru": "Роковой Удар"
+    },
+    "description": {
+      "en": "After making a successful attack, you can spend 2 Hope to leach power from the target. For each Hit Point your target marked from this attack, the GM loses a Fear.",
+      "ru": "После совершения успешной атаки, вы можете потратить 2 Надежды, чтобы поглотить силу цели. За каждую Рану, отмеченной целью от этой атаки, Мастер теряет Страх."
+    },
+    "origin": "domain_card",
+    "origin_value": "dread",
+    "kind": "static",
+    "conditions": { "level": 5 },
+    "continious": false
+  },
+  {
+    "slug": "spectral-mist",
+    "title": {
+      "en": "Spectral Mist",
+      "ru": "Призрачный Туман"
+    },
+    "description": {
+      "en": "Mark a Stress to summon an eerie mist that turns you and any targets within Close range momentarily incorporeal. While a creature is incorporeal, they can move through solid objects and are immune to physical damage. A creature becomes corporeal again after they pass through a solid object or make an action roll. Otherwise, this effect drops at the end of the scene.",
+      "ru": "Отметьте Стресс, чтобы призвать жуткий туман, который делает вас и всех целей в пределах Средней дистанции на мгновение нематериальными. Пока существо нематериально, оно может проходить сквозь твердые предметы и имеют иммунитет к физическому урону. Существо снова становится материальным после того, как пройдет сквозь твердый предмет или совершит бросок действия. Иначе этот эффект пропадает в конце сцены."
+    },
+    "origin": "domain_card",
+    "origin_value": "dread",
+    "kind": "static",
+    "conditions": { "level": 5 },
+    "continious": false
+  },
+  {
+    "slug": "thorn-skin",
+    "title": {
+      "en": "Thorn Skin",
+      "ru": "Терновая кожа"
+    },
+    "description": {
+      "en": "Spend a Hope to sprout thorns all over your body. When you do, place a number of tokens equal to your Spellcast trait on this card. When you take damage, you can spend any number of tokens to roll that number of d6s. Add the results together and reduce the incoming damage by that amount. If you're within Melee range of the attacker, deal that amount of damage back to them.",
+      "ru": "Потратьте Надежду, чтобы по всему телу выросли шипы. Когда вы это сделаете, поместите на эту карту количество жетонов, равное вашей Характеристике Заклинателя. Когда вы получаете урон, вы можете потратить любое количество жетонов, чтобы бросить столько же d6. Сложите результаты и уменьшите получаемый урон на эту сумму. Если вы находитесь Вплотную к атакующему, нанесите ему урон, равный этой сумме."
+    },
+    "origin": "domain_card",
+    "origin_value": "sage",
+    "kind": "text",
+    "description_eval_variables": { "limit": "1" },
+    "limit_refresh": "short_rest",
+    "conditions": { "level": 5 },
+    "continious": false
+  },
+  {
+    "slug": "wild-fortress",
+    "title": {
+      "en": "Wild Fortress",
+      "ru": "Дикая Крепость"
+    },
+    "description": {
+      "en": "Make a Spellcast Roll (13). On a success, spend 2 Hope to grow a natural barricade in the shape of a dome that you and one ally can take cover within. While inside the dome, a creature can't be targeted by attacks and can't make attacks. Attacks made against the dome automatically succeed. The dome has a Major damage threshold of 15 and a Severe damage threshold of 30, and lasts until it marks 3 Hit Points. Place tokens on this card to represent marking Hit Points.",
+      "ru": "Совершите Бросок Заклинания (13). При успехе, потратьте 2 Надежды, чтобы вырастить естественную баррикаду в форме купола, в котором вы и один союзник можете укрыться. Находясь внутри купола, существо не может быть целью атак и не может совершать атаки. Атаки, совершенные против купола, автоматически считаются успешными. Купол имеет порог Ощутимого Урона - 15 и Тяжелого урона - 30, и длится до тех пор, пока не будет отмечено 3 Раны. Поместите жетоны на эту карту, чтобы обозначать отмеченные Раны."
+    },
+    "origin": "domain_card",
+    "origin_value": "sage",
+    "kind": "static",
+    "conditions": { "level": 5 },
+    "continious": false
+  },
+  {
+    "slug": "shape-material",
+    "title": {
+      "en": "Shape Material",
+      "ru": "Изменение формы"
+    },
+    "description": {
+      "en": "Spend a Hope to shape a section of natural material you're touching (such as stone, ice, or wood) to suit your purpose. The area of the material can be no larger than you. For example, you can form a rudimentary tool or create a door. You can only affect the material within Close range of where you're touching it.",
+      "ru": "Потратьте Надежду, чтобы изменить форму участка природного материала, к которому вы прикасаетесь (например, камню, льду или дереву), в соответствии с вашими целями. Площадь материала не может быть больше вашего роста. Например, вы можете сформировать примитивный инструмент или создать дверь. Вы можете воздействовать только на материал, находящийся в пределах Среднего расстояния от места вашего прикосновения."
+    },
+    "origin": "domain_card",
+    "origin_value": "splendor",
+    "kind": "static",
+    "conditions": { "level": 5 },
+    "continious": false
+  },
+  {
+    "slug": "smite",
+    "title": {
+      "en": "Smite",
+      "ru": "Кара"
+    },
+    "description": {
+      "en": "Spend 3 Hope to charge your powerful smite. When you next successfully attack with a weapon, double the result of your damage roll. This attack deals magic damage regardless of the weapon's damage type.",
+      "ru": "Потратьте 3 Надежды, чтобы зарядить свой мощный удар. При следующем успешном ударе оружием удвойте результат броска урона. Этот удар наносит магический урон независимо от типа урона оружия."
+    },
+    "origin": "domain_card",
+    "origin_value": "splendor",
+    "kind": "static",
+    "description_eval_variables": { "limit": "1" },
+    "limit_refresh": "short_rest",
+    "conditions": { "level": 5 },
+    "continious": false
+  },
+  {
+    "slug": "armorer",
+    "title": {
+      "en": "Armorer",
+      "ru": "Бронник"
+    },
+    "description": {
+      "en": "While you're wearing armor, gain a +1 bonus to your Armor Score. During a rest, when you choose to repair your armor as a downtime move, your allies also clear an Armor Slot.",
+      "ru": "Пока вы носите броню, вы получаете бонус +1 к Показателю Брони. Во время отдыха, когда вы выбираете ремонт брони в качестве Хода Отдыха, ваши союзники также очищают Ячейку Брони."
+    },
+    "origin": "domain_card",
+    "origin_value": "valor",
+    "kind": "static",
+    "eval_variables": {
+      "armor_score": "equiped_armor ? (armor_score + 1) : armor_score"
+    },
+    "conditions": { "level": 5 },
+    "continious": false
+  },
+  {
+    "slug": "rousing-strike",
+    "title": {
+      "en": "Rousing Strike",
+      "ru": "Воодушевляющий удар"
+    },
+    "description": {
+      "en": "When you critically succeed on an attack, you and all allies who can see or hear you can clear a Hit Point or 1d4 Stress.",
+      "ru": "Когда вы бросаете критический успех на атаку, вы и все союзники, которые могут вас видеть или слышать, могут очистить Рану или 1d4 Стресса."
+    },
+    "origin": "domain_card",
+    "origin_value": "valor",
+    "kind": "static",
+    "description_eval_variables": { "limit": "1" },
+    "limit_refresh": "short_rest",
+    "conditions": { "level": 5 },
+    "continious": false
+  },
+  {
+    "slug": "rift-walker",
+    "title": {
+      "en": "Rift Walker",
+      "ru": "Ходящий сквозь Разлом"
+    },
+    "description": {
+      "en": "Make a Spellcast Roll (15). On a success, you place an arcane marking on the ground where you currently stand. The next time you successfully cast Rift Walker, a rift in space opens up, providing safe passage back to the exact spot where the marking was placed. This rift stays open until you choose to close it or you cast another spell. You can drop the spell at any time to cast Rift Walker again and place the marking somewhere new.",
+      "ru": "Совершите Бросок Заклинания (15). В случае успеха вы помещаете на землю под собой тайную метку. В следующий раз, когда вы успешно произнесете заклинание «Разлом», откроется разрыв в пространстве, обеспечивающий безопасный проход обратно в то место, где была помещена метка. Этот разлом остается открытым, пока вы не решите его закрыть или не произнесете другое заклинание. Вы можете завершить заклинание в любой момент, чтобы снова использовать «Ходячий сквозь Разлом» и разместить метку в новом месте."
+    },
+    "origin": "domain_card",
+    "origin_value": "arcana",
+    "kind": "static",
+    "conditions": { "level": 6 },
+    "continious": false
+  },
+  {
+    "slug": "telekinesis",
+    "title": {
+      "en": "Telekinesis",
+      "ru": "Телекинез"
+    },
+    "description": {
+      "en": "Make a Spellcast Roll against a target within Far range. On a success, you can use your mind to move them anywhere within Far range of their original position. You can throw the lifted target as an attack by making an additional Spellcast Roll against the second target you're trying to attack. On a success, deal d12+4 physical damage to the second target using your Proficiency. This spell then ends.",
+      "ru": "Совершите Бросок Заклинания против цели, находящейся в далекой дистанции. В случае успеха вы можете использовать свой разум, чтобы переместить цель в любую точку в пределах Далекой дистанции от ее исходного положения. Вы можете бросить поднятую цель в качестве атаки, выполнив дополнительный бросок заклинания против второй цели, которую вы пытаетесь атаковать. В случае успеха нанесите второй цели d12+4 физического урона, используя свое Мастерство. Затем заклинание заканчивается."
+    },
+    "origin": "domain_card",
+    "origin_value": "arcana",
+    "kind": "static",
+    "conditions": { "level": 6 },
+    "continious": false
+  },
+  {
+    "slug": "battle-hardened",
+    "title": {
+      "en": "Battle-Hardened",
+      "ru": "Закалённый в Боях"
+    },
+    "description": {
+      "en": "When you would make a Death Move, you can spend a Hope to clear a Hit Point instead.",
+      "ru": "Когда вы собираетесь совершить Предсмертный Ход, вы можете потратить Надежду, чтобы вместо этого очистить Рану."
+    },
+    "origin": "domain_card",
+    "origin_value": "blade",
+    "kind": "static",
+    "description_eval_variables": { "limit": "1" },
+    "limit_refresh": "long_rest",
+    "conditions": { "level": 6 },
+    "continious": false
+  },
+  {
+    "slug": "rage-up",
+    "title": {
+      "en": "Rage Up",
+      "ru": "Ярость"
+    },
+    "description": {
+      "en": "Before you make an attack, you can mark a Stress to gain a bonus to your damage roll equal to twice your Strength. You can Rage Up twice per attack.",
+      "ru": "Перед тем, как совершить атаку, вы можете отметить Стресс, чтобы получить бонус к броску урона, равный удвоенной величине вашей Силы. Вы можете впадать в Ярость два раза за атаку."
+    },
+    "origin": "domain_card",
+    "origin_value": "blade",
+    "kind": "static",
+    "conditions": { "level": 6 },
+    "continious": false
+  },
+  {
+    "slug": "rapid-riposte",
+    "title": {
+      "en": "Rapid Riposte",
+      "ru": "Быстрая Контратака"
+    },
+    "description": {
+      "en": "When an attack made against you from within Melee range fails, you can mark a Stress and seize the opportunity to deal the weapon damage of one of your active weapons to the attacker.",
+      "ru": "Когда нацеленная на вас атака от противника, находящегося Вплотную к вам, не удалась, вы можете отметить Стресс и воспользоваться возможностью, чтобы нанести атакующему урон одним из ваших активных оружий."
+    },
+    "origin": "domain_card",
+    "origin_value": "bone",
+    "kind": "static",
+    "conditions": { "level": 6 },
+    "continious": false
+  },
+  {
+    "slug": "recovery",
+    "title": {
+      "en": "Recovery",
+      "ru": "Восстановление"
+    },
+    "description": {
+      "en": "During a short rest, you can choose a long rest downtime move instead. You can spend a Hope to let an ally do the same.",
+      "ru": "Во время короткого отдыха вы можете выбрать один из Ходов Продолжительного Отдыха вместо Хода Короткого Отдыха. Вы можете потратить Надежду, чтобы союзник мог сделать то же самое."
+    },
+    "origin": "domain_card",
+    "origin_value": "bone",
+    "kind": "static",
+    "conditions": { "level": 6 },
+    "continious": false
+  },
+  {
+    "slug": "banish",
+    "title": {
+      "en": "Banish",
+      "ru": "Изгнание"
+    },
+    "description": {
+      "en": "Make a Spellcast Roll against a target within Close range. On a success, roll a number of d20s equal to your Spellcast trait. The target must make a Reaction Roll with a Difficulty equal to your highest result. On a success, the target must mark a Stress but isn't banished. Once per rest on a failure, they are banished from this realm. When the PCs roll with Fear, the Difficulty gains a −1 penalty and the target makes another reaction roll. On a success, they return from banishment.",
+      "ru": "Совершите Бросок Заклинания против цели в пределах Средней дистанции. При успехе, бросьте количество d20, равное вашей Характеристике Заклинателя. Цель должна совершить Бросок Реакции со Сложностью, равной вашему наивысшему результату. При успехе цель должна отметить Стресс, но не изгоняется. При провале, один раз до следующего отдыха, цель изгоняется из этого плана. Когда игроки совершают броски со Страхом, Сложность получает штраф −1, и цель совершает бросок реакции. При успехе она возвращается из изгнания."
+    },
+    "origin": "domain_card",
+    "origin_value": "codex",
+    "kind": "static",
+    "conditions": { "level": 6 },
+    "continious": false
+  },
+  {
+    "slug": "sigil-of-retribution",
+    "title": {
+      "en": "Sigil of Retribution",
+      "ru": "Символ Возмездия"
+    },
+    "description": {
+      "en": "Mark an adversary within Close range with a sigil of retribution. The GM gains a Fear. When the marked adversary deals damage to you or your allies, place a d8 on this card. You can hold a number of d8s equal to your level. When you successfully attack the marked adversary, roll the dice on this card and add the total to your damage roll, then clear the dice. This effect ends when the marked adversary is defeated or you cast Sigil of Retribution again.",
+      "ru": "Отметьте противника в пределах Средней дистанции знаком возмездия. Мастер получает Страх. Каждый раз, когда помеченный противник наносит урон вам или вашим союзникам, поместите d8 на эту карту. Вы можете иметь количество d8, равное вашему уровню. Когда вы успешно атакуете помеченного противника, бросьте кости с этой карты и добавьте сумму к вашему броску урона, затем уберите кости. Этот эффект заканчивается, когда помеченный противник побежден или вы снова используете Символ Возмездия."
+    },
+    "origin": "domain_card",
+    "origin_value": "codex",
+    "kind": "static",
+    "conditions": { "level": 6 },
+    "continious": false
+  },
+  {
+    "slug": "never-upstaged",
+    "title": {
+      "en": "Never Upstaged",
+      "ru": "Непревзойденность"
+    },
+    "description": {
+      "en": "When you mark 1 or more Hit Points from an attack, you can mark a Stress to place a number of tokens equal to the number of Hit Points you marked on this card. On your next successful attack, gain a +5 bonus to your damage roll for each token on this card, then clear all tokens.",
+      "ru": "Когда вы отмечаете 1 или более Рану от атаки, вы можете отметить Стресс, чтобы поместить количество жетонов, равное количеству полученных Ран, на эту карту. При следующей успешной атаке вы получаете бонус +5 к броску урона за каждый жетон на этой карте, затем снимаете все жетоны."
+    },
+    "origin": "domain_card",
+    "origin_value": "grace",
+    "kind": "text",
+    "conditions": { "level": 6 },
+    "continious": false
+  },
+  {
+    "slug": "share-the-burden",
+    "title": {
+      "en": "Share the Burden",
+      "ru": "Разделить Бремя"
+    },
+    "description": {
+      "en": "Take on the Stress from a willing creature within Melee range. The target describes what intimate knowledge or emotions telepathically leak from their mind in this moment between you. Transfer any number of their marked Stress to you, then gain a Hope for each Stress transferred.",
+      "ru": "Возьмите на себя Стресс согласного существа, находящегося к вам Вплотную. Цель описывает, какие интимные знания или эмоции телепатически просачиваются из ее разума в этот момент между вами. Передайте любое количество ее отмеченного Стресса себе, затем получите Надежду за каждый переданный Стресс."
+    },
+    "origin": "domain_card",
+    "origin_value": "grace",
+    "kind": "static",
+    "description_eval_variables": { "limit": "1" },
+    "limit_refresh": "short_rest",
+    "conditions": { "level": 6 },
+    "continious": false
+  },
+  {
+    "slug": "dark-whispers",
+    "title": {
+      "en": "Dark Whispers",
+      "ru": "Темные шепоты"
+    },
+    "description": {
+      "en": "You can speak into the mind of any person with whom you've made physical contact. Once you've opened a channel with them, they can speak back into your mind. Additionally, you can mark a Stress to make a Spellcast Rollagainst them. On a success, you can ask the GM one of the following questions and receive an answer: 1) Where are they? 2) What are they doing? 3) What are they afraid of? 4) What do they cherish most in the world?",
+      "ru": "Вы можете говорить в уме любого существа, с которым вы совершили физический контакт. Как только вы открыли канал связи с ним, он может ответить вам в уме. Кроме того, вы можете отметить Стресс, чтобы совершить Бросок Заклинания против него. В случае успеха вы можете задать Мастеру один из следующих вопросов и получить ответ: 1) Где оно? 2) Что оно делает? 3) Чего оно боится? 4) Что оно больше всего ценит в этом мире?"
+    },
+    "origin": "domain_card",
+    "origin_value": "midnight",
+    "kind": "static",
+    "conditions": { "level": 6 },
+    "continious": false
+  },
+  {
+    "slug": "mass-disguise",
+    "title": {
+      "en": "Mass Disguise",
+      "ru": "Массовая Маскировка"
+    },
+    "description": {
+      "en": "When you have a few minutes of silence to focus, you can mark a Stress to change the appearance of all willing creatures within Close range. Their new forms must share a general body structure and size, and can be somebody or something you've seen before or entirely fabricated. A disguised creature has advantage on Presence Rolls to avoid scrutiny. Activate a Countdown (8). It ticks down as a consequence the GM chooses. When it triggers, the disguise drops.",
+      "ru": "Когда у вас есть несколько минут тишины, чтобы сосредоточиться, вы можете отметить Стресс, чтобы изменить внешний вид всех желающих существ в пределах Средней дистанции. Их новые формы должны иметь общую структуру тела и размер, и могут быть кем-то или чем-то, что вы видели раньше, или полностью выдуманными. Замаскированное существо имеет преимущество на броски Влияния, чтобы избежать обнаружения. Активируйте Отсчёт (8). Он отсчитывает время до последствий, которые выберет Мастер. Когда он срабатывает, маскировка снимается."
+    },
+    "origin": "domain_card",
+    "origin_value": "midnight",
+    "kind": "static",
+    "conditions": { "level": 6 },
+    "continious": false
+  },
+  {
+    "slug": "nether-flames",
+    "title": {
+      "en": "Darkfire",
+      "ru": "Темное Пламя"
+    },
+    "description": {
+      "en": "Make a Spellcast Roll against all adversaries within Close range. You can spend a Hope for any you succeed against, and they must make a Reaction Roll (14). On a failure, they take d8+6 magic damage using your Proficiency as they are engulfed in dark fire. On a success, they take half damage.",
+      "ru": "Совершите Бросок Заклинания против всех противников в пределах Средней дистанции. Вы можете потратить Надежду для любых целей, против которых вы преуспели, и они должны совершить Бросок Реакции (14). При провале, они получают d8+6 магического урона, используя ваше Мастерство, будучи охваченными темным огнем. При успехе они получают половину урона."
+    },
+    "origin": "domain_card",
+    "origin_value": "dread",
+    "kind": "static",
+    "conditions": { "level": 6 },
+    "continious": false
+  },
+  {
+    "slug": "wailing-leap",
+    "title": {
+      "en": "Jump Scare",
+      "ru": "Скример"
+    },
+    "description": {
+      "en": "When you deal magic damage to a target, you can mark a Stress to immediately teleport into Melee range of them. When you do, they become Vulnerable until they mark one or more Hit Points.",
+      "ru": "Когда вы наносите магический урон цели, вы можете отметить Стресс, чтобы немедленно телепортироваться Вплотную к ней. Когда вы это делаете, цель становится Уязвимой, пока не отметит одну или больше Ран."
+    },
+    "origin": "domain_card",
+    "origin_value": "dread",
+    "kind": "static",
+    "conditions": { "level": 6 },
+    "continious": false
+  },
+  {
+    "slug": "conjured-steeds",
+    "title": {
+      "en": "Conjured Steeds",
+      "ru": "Призванные Скакуны"
+    },
+    "description": {
+      "en": "Spend any number of Hope to conjure that many magical steeds (such as horses, camels, or elephants) that you and your allies can ride until your next long rest or the steeds take any damage. The steeds double your land speed while traveling and, when in danger, allow you to move within Far range without having to roll. Creatures riding a steed gain a −2 penalty to attack rolls and a +2 bonus to damage rolls.",
+      "ru": "Потратьте любое количество Надежды, чтобы вызвать столько же магических скакунов (таких как лошади, верблюды или слоны), на которых вы и ваши союзники можете ездить до вашего следующего продолжительного отдыха или пока скакуны не получат какой-либо урон. Скакуны удваивают вашу скорость передвижения по суше и, в случае опасности, позволяют вам перемещаться на Далекую дистанцию без броска. Существа, верхом на скакуне, получают штраф −2 к броскам атаки и бонус +2 к броскам урона."
+    },
+    "origin": "domain_card",
+    "origin_value": "sage",
+    "kind": "static",
+    "conditions": { "level": 6 },
+    "continious": false
+  },
+  {
+    "slug": "forager",
+    "title": {
+      "en": "Forager",
+      "ru": "Собиратель"
+    },
+    "description": {
+      "en": "As an additional downtime move you can choose, roll a d6 to see what you forage. Work with the GM to describe it and add it to your inventory as a consumable. Your party can carry up to five foraged consumables at a time. 1) A unique food (Clear 2 Stress). 2) A beautiful relic (Gain 2 Hope). 3) An arcane rune (+2 to a Spellcast Roll). 4) A healing vial (Clear 2 Hit Points). 5) A luck charm (Reroll any die). 6) Choose one of the options above.",
+      "ru": "В качестве дополнительного Хода Отдыха вы можете бросить 1d6, чтобы узнать, что вы добыли. Опишите добычу вместе с Мастером и добавьте ее в свой инвентарь как одноразовые предметы. Ваша группа может нести до пяти добытых одноразовых предметов за раз. 1) Экзотическая еда (Очистить 2 Стресса). 2) Красивая реликвия (Получить 2 Надежды). 3) Таинственная руна (+2 к Броску Заклинания). 4) Склянка здоровья (Очистить 2 Раны). 5) Талисман удачи (Перебросить любую кость). 6) Выберите один из вариантов выше."
+    },
+    "origin": "domain_card",
+    "origin_value": "sage",
+    "kind": "static",
+    "conditions": { "level": 6 },
+    "continious": false
+  },
+  {
+    "slug": "restoration",
+    "title": {
+      "en": "Restoration",
+      "ru": "Восстановление"
+    },
+    "description": {
+      "en": "After a long rest, place a number of tokens equal to your Spellcast trait on this card. Touch a creature and spend any number of tokens to clear 2 Hit Points or 2 Stress for each token spent. You can also spend a token from this card when touching a creature to clear the Vulnerable condition or heal a physical or magical ailment (the GM might require additional tokens depending on the strength of the ailment).",
+      "ru": "В конце продолжительного отдыха поместите на эту карту количество жетонов, равное вашей Характеристике Заклинателя. Прикоснитесь к существу и потратьте любое количество жетонов, чтобы очистить 2 Раны или 2 Стресса за каждый потраченный жетон. Вы также можете потратить жетон с этой карты при прикосновении к существу, чтобы снять состояние Уязвим или исцелить физическое или магическое заболевание (Мастер может потребовать дополнительные жетоны в зависимости от силы заболевания)."
+    },
+    "origin": "domain_card",
+    "origin_value": "splendor",
+    "kind": "text",
+    "conditions": { "level": 6 },
+    "continious": false
+  },
+  {
+    "slug": "zone-of-protection",
+    "title": {
+      "en": "Zone of Protection",
+      "ru": "Зона Защиты"
+    },
+    "description": {
+      "en": "Make a Spellcast Roll (16). Once per long rest on a success, choose a point within Far range and create a visible zone of protection there for all allies within Very Close range of that point. When you do, place a d6 on this card with the 1 value facing up. When an ally in this zone takes damage, they reduce it by the die's value. You then increase the die's value by one. When the die's value would exceed 6, this effect ends.",
+      "ru": "Совершите Бросок Заклинания (16). При успехе, один раз до следующего продолжительного отдыха выберите точку в пределах Далекой дистанции и создайте там видимую зону защиты для всех союзников в пределах Близкой дистанции от этой точки. Когда вы это сделаете, поместите 1d6 на эту карту стороной с цифрой 1 вверх. Когда союзник в этой зоне получает урон, тот уменьшается на значение кости. Затем вы увеличиваете значение кости на один. Когда значение кости превышает 6, этот эффект заканчивается."
+    },
+    "origin": "domain_card",
+    "origin_value": "splendor",
+    "kind": "static",
+    "description_eval_variables": { "limit": "1" },
+    "limit_refresh": "long_rest",
+    "conditions": { "level": 6 },
+    "continious": false
+  },
+  {
+    "slug": "inevitable",
+    "title": {
+      "en": "Inevitable",
+      "ru": "Неизбежность"
+    },
+    "description": {
+      "en": "When you fail an action roll, your next action roll has advantage.",
+      "ru": "Когда вы проваливаете бросок действия, ваш следующий бросок действия получает преимущество."
+    },
+    "origin": "domain_card",
+    "origin_value": "valor",
+    "kind": "static",
+    "conditions": { "level": 6 },
+    "continious": false
+  },
+  {
+    "slug": "rise-up",
+    "title": {
+      "en": "Rise Up",
+      "ru": "Не сломлен"
+    },
+    "description": {
+      "en": "Gain a bonus to your Severe threshold equal to your Proficiency. When you mark 1 or more Hit Points from an attack, clear a Stress.",
+      "ru": "Получите бонус к вашему порогу Тяжелого урона, равный вашему Мастерству. Когда вы отмечаете 1 или более Раны от атаки, очистите один Стресс."
+    },
+    "origin": "domain_card",
+    "origin_value": "valor",
+    "kind": "static",
+    "eval_variables": {
+      "damage_thresholds": "damage_thresholds.merge({ 'severe' => damage_thresholds['severe'] + proficiency })"
+    },
+    "conditions": { "level": 6 },
+    "continious": false
+  },
+  {
+    "slug": "arcana-touched",
+    "title": {
+      "en": "Arcana-Touched",
+      "ru": "Затронутый Арканой"
+    },
+    "description": {
+      "en": "When 4 or more of the domain cards in your loadout are from the Arcana domain, gain the following benefits: 1) +1 bonus to your Spellcast Rolls. 2) Once per rest, you can switch the results of your Hope and Fear Dice.",
+      "ru": "Когда 4 или более карт домена в вашем Инвентаре относятся к домену Аркана, вы получаете следующие преимущества: 1) +1 бонус к вашим Броскам Заклинаний. 2) Один раз до следующего отдыха вы можете поменять местами результаты костей Надежды и Страха."
+    },
+    "origin": "domain_card",
+    "origin_value": "arcana",
+    "kind": "static",
+    "description_eval_variables": { "limit": "1" },
+    "limit_refresh": "long_rest",
+    "conditions": { "level": 7 },
+    "continious": false
+  },
+  {
+    "slug": "cloaking-blast",
+    "title": {
+      "en": "Cloaking Blast",
+      "ru": "Маскирующий взрыв"
+    },
+    "description": {
+      "en": "When you make a successful Spellcast Roll to cast a different spell, you can spend a Hope to become Cloaked. While Cloaked, you remain unseen if you are stationary when an adversary moves to where they would normally see you. When you move into or within an adversary's line of sight or make an attack, you are no longer Cloaked.",
+      "ru": "Когда вы успешно совершаете Бросок Заклинания для применения другого заклинания, вы можете потратить Надежду, чтобы стать Замаскированным. Пока вы Замаскированы, вы остаетесь незаметным, если стоите на месте, даже когда противник движется туда, где обычно мог бы вас увидеть. Когда вы перемещаетесь в поле зрения противника или совершаете атаку, вы теряете состояние Замаскированный."
+    },
+    "origin": "domain_card",
+    "origin_value": "arcana",
+    "kind": "static",
+    "conditions": { "level": 7 },
+    "continious": false
+  },
+  {
+    "slug": "blade-touched",
+    "title": {
+      "en": "Blade-Touched",
+      "ru": "Затронутый Клинком"
+    },
+    "description": {
+      "en": "When 4 or more of the domain cards in your loadout are from the Blade domain, gain the following benefits: 1) +2 bonus to your attack rolls. 2) +4 bonus to your Severe damage threshold.",
+      "ru": "Когда 4 или более карт домена в вашем Инвентаре относятся к домену Клинка, вы получаете следующие преимущества: 1) +2 бонус к вашим броскам атаки. 2) +4 бонус к вашему порогу Тяжелого урона."
+    },
+    "origin": "domain_card",
+    "origin_value": "blade",
+    "kind": "static",
+    "eval_variables": {
+      "attack": "attack + 2",
+      "damage_thresholds": "damage_thresholds.merge({ 'severe' => damage_thresholds['severe'] + 4 })"
+    },
+    "conditions": { "level": 7 },
+    "continious": true
+  },
+  {
+    "slug": "glancing-blow",
+    "title": {
+      "en": "Glancing Blow",
+      "ru": "Скользящий Удар"
+    },
+    "description": {
+      "en": "When you fail an attack, you can mark a Stress to deal weapon damage using half your Proficiency.",
+      "ru": "Когда вы промахиваетесь, вы можете отметить Стресс, чтобы нанести урон оружием, используя половину вашего Мастерства"
+    },
+    "origin": "domain_card",
+    "origin_value": "blade",
+    "kind": "static",
+    "conditions": { "level": 7 },
+    "continious": false
+  },
+  {
+    "slug": "bone-touched",
+    "title": {
+      "en": "Bone-Touched",
+      "ru": "Затронутый Костью"
+    },
+    "description": {
+      "en": "When 4 or more of the domain cards in your loadout are from the Bone domain, gain the following benefits: 1) +1 bonus to Agility. 2) Once per rest, you can spend 3 Hope to cause an attack that succeeded against you to fail instead.",
+      "ru": "Когда 4 или более карт домена в вашем Инвентаре относятся к домену Кости, вы получаете следующие преимущества: 1) +1 бонус к Проворности. 2) Один раз до следующего отдыха вы можете потратить 3 Надежды, чтобы атака, нацеленная на вас, промахнулась."
+    },
+    "origin": "domain_card",
+    "origin_value": "bone",
+    "kind": "static",
+    "eval_variables": {
+      "modified_traits": "modified_traits.merge({ 'agi' => modified_traits['agi'] + 1 })"
+    },
+    "conditions": { "level": 7 },
+    "continious": true
+  },
+  {
+    "slug": "cruel-precision",
+    "title": {
+      "en": "Cruel Precision",
+      "ru": "Жестокая точность"
+    },
+    "description": {
+      "en": "When you make a successful attack with a weapon, gain a bonus to your damage roll equal to either your Finesse or Agility.",
+      "ru": "Когда вы совершаете успешную атаку оружием, вы получаете бонус к Броску Урона, равный вашей Искусности или Проворности."
+    },
+    "origin": "domain_card",
+    "origin_value": "bone",
+    "kind": "static",
+    "conditions": { "level": 7 },
+    "continious": false
+  },
+  {
+    "slug": "book-of-homet",
+    "title": {
+      "en": "Book of Homet",
+      "ru": "Книга Гомета"
+    },
+    "description": {
+      "en": "Make a Spellcast Roll (13). Once per rest on a success, you and all creatures touching you can pass through a wall or door within Close range. The effect ends once everyone is on the other side.",
+      "ru": "Совершите Бросок Заклинания (13). При успехе, один раз до следующего отдыха, вы и все существа, касающиеся вас, можете пройти сквозь стену или дверь в пределах Средней дистанции. Эффект заканчивается, когда все оказываются по другую сторону."
+    },
+    "origin": "domain_card",
+    "origin_value": "codex",
+    "kind": "static",
+    "description_eval_variables": { "limit": "1" },
+    "limit_refresh": "long_rest",
+    "conditions": { "level": 7 },
+    "continious": false
+  },
+  {
+    "slug": "codex-touched",
+    "title": {
+      "en": "Codex-Touched",
+      "ru": "Затронутый Кодексом"
+    },
+    "description": {
+      "en": "When 4 or more of the domain cards in your loadout are from the Codex domain, gain the following benefits: 1) You can mark a Stress to add your Proficiency to a Spellcast Roll. 2) Once per rest, replace this card with any card from your vault without paying its Recall Cost.",
+      "ru": "Когда 4 или более карт домена в вашем Инвентаре принадлежат домену Кодекс, вы получаете следующие преимущества: 1) Вы можете отметить Стресс, чтобы добавить ваше Мастерство к Броску Заклинания. 2) Один раз до следующего отдыха замените эту карту любой картой из вашего хранилища, не платя за ее Призыв."
+    },
+    "origin": "domain_card",
+    "origin_value": "codex",
+    "kind": "static",
+    "description_eval_variables": { "limit": "1" },
+    "limit_refresh": "short_rest",
+    "conditions": { "level": 7 },
+    "continious": false
+  },
+  {
+    "slug": "endless-charisma",
+    "title": {
+      "en": "Endless Charisma",
+      "ru": "Бесконечное обаяние"
+    },
+    "description": {
+      "en": "After you make an action roll to persuade, lie, or garner favor, you can spend a Hope to reroll the Hope or Fear Die.",
+      "ru": "После того, как вы совершили бросок действия, чтобы убедить, солгать или заручиться поддержкой, вы можете потратить Надежду, чтобы перебросить либо кость Надежды, либо кость Страха."
+    },
+    "origin": "domain_card",
+    "origin_value": "grace",
+    "kind": "static",
+    "conditions": { "level": 7 },
+    "continious": false
+  },
+  {
+    "slug": "grace-touched",
+    "title": {
+      "en": "Grace-Touched",
+      "ru": "Затронутый Грацией"
+    },
+    "description": {
+      "en": "When 4 or more of the domain cards in your loadout are from the Grace domain, gain the following benefits: 1) You can mark an Armor Slot instead of marking a Stress. 2) When you would force a target to mark a number of Hit Points, you can choose instead to force them to mark that number of Stress.",
+      "ru": "Когда 4 или более карт домена в вашем Инвентаре принадлежат домену Грации, вы получаете следующие преимущества: 1) Вы можете отметить Ячейку Брони вместо того, чтобы отметить Стресс. 2) Когда вы заставляете цель отметить количество Ран, вы можете вместо этого заставить ее отметить это количество Стресса."
+    },
+    "origin": "domain_card",
+    "origin_value": "grace",
+    "kind": "static",
+    "conditions": { "level": 7 },
+    "continious": false
+  },
+  {
+    "slug": "midnight-touched",
+    "title": {
+      "en": "Midnight-Touched",
+      "ru": "Затронутый Полночью"
+    },
+    "description": {
+      "en": "When 4 or more of the domain cards in your loadout are from the Midnight domain, gain the following benefits: 1) Once per rest, when you have 0 Hope and the GM would gain a Fear, you can gain a Hope instead. 2) When you make a successful attack, you can mark a Stress to add the result of your Fear Die to your damage roll.",
+      "ru": "Когда 4 или более карт домена в вашем Инвентаре принадлежат домену Полночь, вы получаете следующие преимущества: 1) Один раз до следующего отдыха, когда у вас 0 Надежды и Мастер должен получить Страх, вы можете вместо этого получить Надежду. 2) Когда вы совершаете успешную атаку, вы можете отметить Стресс, чтобы добавить результат вашего Кости Страха к вашему Броску Урона."
+    },
+    "origin": "domain_card",
+    "origin_value": "midnight",
+    "kind": "static",
+    "conditions": { "level": 7 },
+    "continious": false
+  },
+  {
+    "slug": "vanishing-dodge",
+    "title": {
+      "en": "Vanishing Dodge",
+      "ru": "Исчезающее Уклонение"
+    },
+    "description": {
+      "en": "When an attack made against you that would deal physical damage fails, you can spend a Hope to envelop yourself in shadow, becoming Hidden and teleporting to a point within Close range of the attacker. You remain Hidden until the next time you make an action roll.",
+      "ru": "Когда атака, нацеленная на вас и наносящая физический урон, не достигает цели, вы можете потратить Надежду, чтобы окутать себя тенью, став Скрытым и телепортироваться в точку в пределах Средней дистанции от атакующего. Вы остаетесь Скрытым до следующего раза, когда совершите бросок действия."
+    },
+    "origin": "domain_card",
+    "origin_value": "midnight",
+    "kind": "static",
+    "conditions": { "level": 7 },
+    "continious": false
+  },
+  {
+    "slug": "dread-touched",
+    "title": {
+      "en": "Dread-Touched",
+      "ru": "Затронутый Ужасом"
+    },
+    "description": {
+      "en": "When 4 or more of the domain cards in your loadout are from the Dread domain, gain the following benefits: 1) When you succeed with Fear, you can mark 2 Stress to keep the GM from gaining a Fear. 2) Once per rest, when making an action roll, you can add a +1 bonus to the roll for each Fear token the GM has stored.",
+      "ru": "Когда 4 или более карт домена в вашем инвентаре относятся к домену Ужаса, вы получаете следующие преимущества: 1) Когда вы преуспеваете со Страхом, вы можете отметить 2 Стресса, чтобы Мастер не получил Страх. 2) Один раз до следующего отдыха, при броске действия, вы можете добавить +1 к броску за каждый жетон Страха у Мастера."
+    },
+    "origin": "domain_card",
+    "origin_value": "dread",
+    "kind": "static",
+    "description_eval_variables": { "limit": "1" },
+    "limit_refresh": "short_rest",
+    "conditions": { "level": 7 },
+    "continious": false
+  },
+  {
+    "slug": "wall-of-hunger",
+    "title": {
+      "en": "Wall of Hunger",
+      "ru": "Стена Ненасытности"
+    },
+    "description": {
+      "en": "Succeed a Spellcast Roll (13) to create a visible wall of writhing, necrotic energy in a line between two points within Far range that lasts until you mark a Hit Point or cast this spell again. Any creatures inside the wall when it appears or who try to pass through the wall must mark 2 Stress, then make a Reaction Roll (16). On a failure, they are temporarily Restrained by the wall.",
+      "ru": "Совершите успешный Бросок Заклинания (13), чтобы создать видимую стену из извивающейся некротической энергии линией между двумя точками в пределах Далекой дистанции. Она существует до тех пор, пока вы не отметите Рану или не используете это заклинание повторно. Любые существа, находящиеся внутри стены в момент ее появления или пытающиеся пройти через нее, должны отметить 2 Стресса и совершить Бросок Реакции (16). При провале они временно Обездвижены стеной."
+    },
+    "origin": "domain_card",
+    "origin_value": "dread",
+    "kind": "static",
+    "conditions": { "level": 7 },
+    "continious": false
+  },
+  {
+    "slug": "sage-touched",
+    "title": {
+      "en": "Sage-Touched",
+      "ru": "Затронутый Мудростью"
+    },
+    "description": {
+      "en": "When 4 or more of the domain cards in your loadout are from the Sage domain, gain the following benefits: 1) While you're in a natural environment, you gain a +2 bonus to your Spellcast Rolls. 2) Once per rest, you can double your Agility or Instinct when making a roll that uses that trait. You must choose to do this before you roll.",
+      "ru": "Когда 4 или более карт домена в вашем Инвентаре принадлежат домену Мудрость, вы получаете следующие преимущества: 1) Пока вы находитесь в естественном окружении, вы получаете бонус +2 к Броскам Заклинаний. 2) Один раз до следующего отдыха вы можете удвоить свою Проворность или Инстинкт при совершении броска, использующего эту характеристику. Вы должны выбрать это перед броском."
+    },
+    "origin": "domain_card",
+    "origin_value": "sage",
+    "kind": "static",
+    "description_eval_variables": { "limit": "1" },
+    "limit_refresh": "short_rest",
+    "conditions": { "level": 7 },
+    "continious": false
+  },
+  {
+    "slug": "wild-surge",
+    "title": {
+      "en": "Wild Surge",
+      "ru": "Всплеск Дикости"
+    },
+    "description": {
+      "en": "Mark a Stress to channel the natural world around you and enhance yourself. Describe how your appearance changes, then place a d6 on this card with the 1 value facing up. While the Wild Surge Die is active, you add its value to every action roll you make. After you add its value to a roll, increase the Wild Surge Die's value by one. When the die's value would exceed 6 or you take a rest, this form drops and you must mark an additional Stress.",
+      "ru": "Отметьте Стресс, чтобы направить энергию окружающего мира на себя и усилить свои способности. Опишите, как изменился ваш внешний вид, затем поместите d6 на эту карту стороной с цифрой 1 вверх. Пока активна кость Всплеска Дикости, вы добавляете её значение к каждому броску Действия, который совершаете. После того, как вы добавили её значение к броску, увеличьте значение кости Всплеска Дикости на единицу. Когда значение кости превысит 6 или вы совершаете отдых, эта форма исчезает, и вы должны отметить дополнительный Стресс."
+    },
+    "origin": "domain_card",
+    "origin_value": "sage",
+    "kind": "text",
+    "description_eval_variables": { "limit": "1" },
+    "limit_refresh": "long_rest",
+    "conditions": { "level": 7 },
+    "continious": false
+  },
+  {
+    "slug": "healing-strike",
+    "title": {
+      "en": "Healing Strike",
+      "ru": "Исцеляющий удар"
+    },
+    "description": {
+      "en": "When you deal damage to an adversary, you can spend 2 Hope to clear a Hit Point on an ally within Close range.",
+      "ru": "Когда вы наносите урон противнику, вы можете потратить 2 Надежды, чтобы очистить одну Рану союзника, находящегося в пределах Средней дистанции."
+    },
+    "origin": "domain_card",
+    "origin_value": "splendor",
+    "kind": "static",
+    "conditions": { "level": 7 },
+    "continious": false
+  },
+  {
+    "slug": "splendor-touched",
+    "title": {
+      "en": "Splendor-Touched",
+      "ru": "Затронутый Величием"
+    },
+    "description": {
+      "en": "When 4 or more of the domain cards in your loadout are from the Splendor domain, gain the following benefits: 1) +3 bonus to your Severe damage threshold. 2) Once per long rest, when incoming damage would require you to mark a number of Hit Points, you can choose to mark that much Stress or spend that much Hope instead.",
+      "ru": "Когда 4 или более карт домена в вашем Инвентаре относятся к домену Величие, вы получаете следующие преимущества: 1) +3 бонус к порогу вашего Тяжелого урона. 2) Один раз до следующего продолжительного отдыха, когда получаемый урон требует от вас отметить количество Ран, вы можете вместо этого отметить столько же Стресса или потратить столько же Надежды."
+    },
+    "origin": "domain_card",
+    "origin_value": "splendor",
+    "kind": "static",
+    "description_eval_variables": { "limit": "1" },
+    "eval_variables": {
+      "damage_thresholds": "damage_thresholds.merge({ 'severe' => damage_thresholds['severe'] + 3 })"
+    },
+    "limit_refresh": "long_rest",
+    "conditions": { "level": 7 },
+    "continious": false
+  },
+  {
+    "slug": "shrug-it-off",
+    "title": {
+      "en": "Shrug It Off",
+      "ru": "Стряхнуть с плеч"
+    },
+    "description": {
+      "en": "When you would take damage, you can mark a Stress to reduce the severity of the damage by one threshold. When you do, roll a d6. On a result of 3 or lower, place this card in your vault.",
+      "ru": "Когда вы получаете урон, вы можете отметить Стресс, чтобы уменьшить тяжесть урона на один порог. Когда вы это делаете, бросьте 1d6. При результате 3 или ниже поместите эту карту в ваше хранилище."
+    },
+    "origin": "domain_card",
+    "origin_value": "valor",
+    "kind": "static",
+    "conditions": { "level": 7 },
+    "continious": false
+  },
+  {
+    "slug": "valor-touched",
+    "title": {
+      "en": "Valor-Touched",
+      "ru": "Затронутый Доблестью"
+    },
+    "description": {
+      "en": "When 4 or more of the domain cards in your loadout are from the Valor domain, gain the following benefits: 1) +1 bonus to your Armor Score. 2) When you mark 1 or more Hit Points without marking an Armor Slot, clear an Armor Slot.",
+      "ru": "Когда 4 или более карт домена в вашем Инвентаре принадлежат домену Доблести, вы получаете следующие преимущества: 1) +1 бонус к вашему Показателю Брони. 2) Когда вы получаете 1 или более Ран, не отмечая Ячейку Брони, очистите Ячейку Брони."
+    },
+    "origin": "domain_card",
+    "origin_value": "valor",
+    "kind": "static",
+    "eval_variables": {
+      "armor_score": "armor_score + 1"
+    },
+    "conditions": { "level": 7 },
+    "continious": true
+  },
+  {
+    "slug": "arcane-reflection",
+    "title": {
+      "en": "Arcane Reflection",
+      "ru": "Мистическое Отражение"
+    },
+    "description": {
+      "en": "When you would take magic damage, you can spend any number of Hope to roll that many d6s. If any roll a 6, the attack is reflected back to the caster, dealing the damage to them instead.",
+      "ru": "Когда вы получаете магический урон, вы можете потратить любое количество Надежды, чтобы бросить столько же d6. Если любая из костей показывает 6, атака отражается обратно на заклинателя, нанося урон ему."
+    },
+    "origin": "domain_card",
+    "origin_value": "arcana",
+    "kind": "static",
+    "conditions": { "level": 8 },
+    "continious": false
+  },
+  {
+    "slug": "confusing-aura",
+    "title": {
+      "en": "Confusing Aura",
+      "ru": "Запутывающая аура"
+    },
+    "description": {
+      "en": "Make a Spellcast Roll (14). Once per long rest on a success, you create a layer of illusion over your body that makes it hard to tell exactly where you are. Mark any number of Stress to make that many additional layers. When an adversary makes an attack against you, roll a number of d6s equal to the number of layers currently active. If any roll a 5 or higher, one layer of the aura is destroyed and the attack fails. If all the results are 4 or lower, you take the damage and this spell ends.",
+      "ru": "Совершите Бросок Заклинания (14). При успехе, один раз до следующего продолжительного отдыха вы создаете вокруг своего тела слои иллюзии, которые затрудняют определение вашего точного местоположения. Отметьте любое количество Стресса, чтобы создать столько же дополнительных слоев. Когда противник наносит по вам удар, бросьте количество к6, равное количеству активных слоев. Если любая из костей показывает 5 или выше, один слой ауры уничтожается, и атака не достигает цели. Если все результаты равны 4 или ниже, вы получаете урон, и заклинание заканчивается."
+    },
+    "origin": "domain_card",
+    "origin_value": "arcana",
+    "kind": "text",
+    "description_eval_variables": { "limit": "1" },
+    "limit_refresh": "long_rest",
+    "conditions": { "level": 8 },
+    "continious": false
+  },
+  {
+    "slug": "battle-cry",
+    "title": {
+      "en": "Battle Cry",
+      "ru": "Боевой клич"
+    },
+    "description": {
+      "en": "While you're charging into danger, you can muster a rousing call that inspires your allies. All allies who can hear you each clear a Stress and gain a Hope. Additionally, your allies gain advantage on attack rolls until you or an ally rolls a failure with Fear.",
+      "ru": "Когда вы бросаетесь в опасность, вы можете издать воодушевляющий клич, который вдохновляет ваших союзников. Все союзники, которые слышат вас, очищают Стресс и получают Надежду. Кроме того, ваши союзники получают Преимущество на броски Атаки, пока вы или ваш союзник не провалите бросок со Страхом."
+    },
+    "origin": "domain_card",
+    "origin_value": "blade",
+    "kind": "static",
+    "description_eval_variables": { "limit": "1" },
+    "limit_refresh": "long_rest",
+    "conditions": { "level": 8 },
+    "continious": false
+  },
+  {
+    "slug": "frenzy",
+    "title": { "en": "Frenzy", "ru": "Бешенство" },
+    "description": {
+      "en": "You can go into a Frenzy until there are no more adversaries within sight. While Frenzied, you can't use Armor Slots, and you gain a +10 bonus to your damage rolls and a +8 bonus to your Severe damage threshold.",
+      "ru": "Вы можете впасть в состояние Бешенство, пока в поле зрения не останется противников. В состоянии Бешенства вы не можете использовать Ячейки Брони и получаете бонус +10 к броскам урона и бонус +8 к порогу Тяжелого урона."
+    },
+    "origin": "domain_card",
+    "origin_value": "blade",
+    "kind": "static",
+    "description_eval_variables": { "limit": "1" },
+    "eval_variables": {
+      "damage_thresholds": "damage_thresholds.merge({ 'severe' => damage_thresholds['severe'] + 8 })"
+    },
+    "limit_refresh": "long_rest",
+    "conditions": { "level": 8 },
+    "continious": true
+  },
+  {
+    "slug": "breaking-blow",
+    "title": {
+      "en": "Breaking Blow",
+      "ru": "Сокрушительный Удар"
+    },
+    "description": {
+      "en": "When you make a successful attack, you can mark a Stress to make the next successful attack against that same target deal an extra 2d12 damage.",
+      "ru": "Когда вы совершаете успешную атаку, вы можете отметить Стресс, чтобы следующая успешная атака против той же цели нанесла дополнительно 2d12 урона."
+    },
+    "origin": "domain_card",
+    "origin_value": "bone",
+    "kind": "static",
+    "conditions": { "level": 8 },
+    "continious": false
+  },
+  {
+    "slug": "wrangle",
+    "title": {
+      "en": "Wrangle",
+      "ru": "Перетасовка"
+    },
+    "description": {
+      "en": "Make an Agility Roll against all targets within Close range. Spend a Hope to move targets you succeed against, and any willing allies within Close range, to another point within Close range.",
+      "ru": "Совершите Бросок Проворности против всех целей в пределах Средней дистанции. Потратьте одну Надежду, чтобы переместить цели, против которых вы преуспели, и всех согласных союзников в пределах Средней дистанции в другую точку в пределах Средней дистанции."
+    },
+    "origin": "domain_card",
+    "origin_value": "bone",
+    "kind": "static",
+    "conditions": { "level": 8 },
+    "continious": false
+  },
+  {
+    "slug": "book-of-vyola",
+    "title": {
+      "en": "Book of Vyola",
+      "ru": "Книга Вайолы"
+    },
+    "description": {
+      "en": "Make a Spellcast Roll against a target within Far range. On a success, peer into the target's mind and ask the GM a question. The GM describes any memories the target has pertaining to the answer.",
+      "ru": "Совершите Бросок Заклинания против цели в пределах Далекой дистанции. При успехе загляните в разум цели и задайте Мастеру вопрос. Мастер описывает любые воспоминания цели, имеющие отношение к ответу."
+    },
+    "origin": "domain_card",
+    "origin_value": "codex",
+    "kind": "static",
+    "conditions": { "level": 8 },
+    "continious": false
+  },
+  {
+    "slug": "safe-haven",
+    "title": {
+      "en": "Safe Haven",
+      "ru": "Безопасная Гавань"
+    },
+    "description": {
+      "en": "When you have a few minutes of calm to focus, you can spend 2 Hope to summon your Safe Haven, a large interdimensional home where you and your allies can take shelter. When you do, a magical door appears somewhere within Close range. Only creatures of your choice can enter. Once inside, you can make the entrance invisible. You and anyone else inside can always exit. Once you leave, the doorway must be summoned again. When you take a rest within your own Safe Haven, you can choose an additional downtime move.",
+      "ru": "Когда у вас есть несколько минут спокойствия, чтобы сосредоточиться, вы можете потратить 2 Надежды на вызов Безопасного Убежища, большого межпространственного дома, где вы и ваши союзники можете укрыться. Когда вы это сделаете, где-то в пределах Средней дистанции появится магическая дверь. В него могут войти только выбранные вами существа. Оказавшись внутри, вы можете сделать вход невидимым. Вы и все, кто находится внутри, всегда можете выйти. После выхода дверь необходимо вызвать снова. Когда вы отдыхаете в своем Безопасном Убежище, вы можете выбрать дополнительный Ход Отдыха."
+    },
+    "origin": "domain_card",
+    "origin_value": "codex",
+    "kind": "static",
+    "conditions": { "level": 8 },
+    "continious": false
+  },
+  {
+    "slug": "astral-projection",
+    "title": {
+      "en": "Astral Projection",
+      "ru": "Астральная Проекция"
+    },
+    "description": {
+      "en": "Mark a Stress to create a projected copy of yourself that can appear anywhere you've been before. You can see and hear through the projection as though it were you and affect the world as though you were there. A creature investigating the projection can tell it's of magical origin. This effect lasts until your next rest or your projection takes any damage.",
+      "ru": "Отметьте Стресс, чтобы создать проекцию себя, которая может появиться в любом месте, где вы были ранее.Вы можете видеть и слышать через проекцию, как если бы это были вы, и влиять на мир, как если бы вы были там. Существо, исследующее проекцию, может определить, что она имеет магическое происхождение. Этот эффект длится до вашего следующего отдыха или до тех пор, пока ваша проекция не получит какой-либо урон."
+    },
+    "origin": "domain_card",
+    "origin_value": "grace",
+    "kind": "static",
+    "description_eval_variables": { "limit": "1" },
+    "limit_refresh": "long_rest",
+    "conditions": { "level": 8 },
+    "continious": false
+  },
+  {
+    "slug": "mass-enrapture",
+    "title": {
+      "en": "Mass Enrapture",
+      "ru": "Массовое Очарование"
+    },
+    "description": {
+      "en": "Make a Spellcast Roll against all targets within Far range. Targets you succeed against become temporarily Enraptured. While Enraptured, a target's attention is fixed on you, narrowing their field of view and drowning out any sound but your voice. Mark a Stress to force all Enraptured targets to mark a Stress, ending this spell.",
+      "ru": "Совершите Бросок Заклинания против всех целей в пределах Далекой дистанции. Цели, против которых вы преуспели, временно становятся Очарованными. Пока цель Очарована, ее внимание приковано к вам, сужая поле зрения и заглушая все звуки, кроме вашего голоса. Отметьте Стресс, чтобы заставить всех Очарованных целей отметить Стресс, что завершит действие этого заклинания."
+    },
+    "origin": "domain_card",
+    "origin_value": "grace",
+    "kind": "static",
+    "conditions": { "level": 8 },
+    "continious": false
+  },
+  {
+    "slug": "shadowhunter",
+    "title": {
+      "en": "Shadowhunter",
+      "ru": "Теневой Охотник"
+    },
+    "description": {
+      "en": "Your prowess is enhanced under the cover of shadow. While you're shrouded in low light or darkness, you gain a +1 bonus to your Evasion and make attack rolls with advantage.",
+      "ru": "Ваша резвость усиливается под покровом тени. Пока вы находитесь в полумраке или темноте, вы получаете бонус +1 к Уклонению и совершаете броски Атаки с преимуществом."
+    },
+    "origin": "domain_card",
+    "origin_value": "midnight",
+    "kind": "static",
+    "eval_variables": {
+      "evasion": "evasion + 1"
+    },
+    "conditions": { "level": 8 },
+    "continious": true
+  },
+  {
+    "slug": "spellcharge",
+    "title": {
+      "en": "Spellcharge",
+      "ru": "Магический Резонанс"
+    },
+    "description": {
+      "en": "When you take magic damage, place tokens equal to the number of Hit Points you marked on this card. You can store a number of tokens equal to your Spellcast trait. When you make a successful attack against a target, you can spend any number of tokens to add a d6 for each token spent to your damage roll.",
+      "ru": "Когда вы получаете магический урон, поместите количество жетонов, равное количеству полученных Ран, на эту карту. Вы можете хранить количество жетонов, равное вашей Характеристике Заклинателя. Когда вы совершаете успешную атаку против цели, вы можете потратить любое количество жетонов, чтобы добавить d6 за каждый потраченный жетон к вашему броску урона."
+    },
+    "origin": "domain_card",
+    "origin_value": "midnight",
+    "kind": "text",
+    "conditions": { "level": 8 },
+    "continious": false
+  },
+  {
+    "slug": "dark-army",
+    "title": {
+      "en": "Dark Army",
+      "ru": "Армия Тьмы"
+    },
+    "description": {
+      "en": "Make a Spellcast Roll (14). Once per long rest, on a success you can summon a group of fiends that surround and move with you. Place 8 tokens on this card. When you deal damage to a target within Very Close range, you can spend a token to increase it by +1d8. Additionally, when you take damage, you can spend a token to reduce it by 1d8. Each time you spend a token, a fiend acts on your behalf, then disappears. Remove all tokens from this card on your next rest.",
+      "ru": "Совершите Бросок Заклинания (14). Один раз до следующего продолжительного отдыха, при успехе вы можете призвать группу демонов, которые окружают вас и движутся вместе с вами. Положите 8 жетонов на эту карту. Когда вы наносите урон цели в пределах Близкой дистанции, вы можете потратить жетон, чтобы увеличить его на +1d8. Кроме того, когда вы получаете урон, вы можете потратить жетон, чтобы уменьшить его на 1d8. Каждый раз, когда вы тратите жетон, демон действует в ваших интересах, после чего исчезает. Снимите все жетоны с этой карты во время вашего следующего отдыха."
+    },
+    "origin": "domain_card",
+    "origin_value": "dread",
+    "kind": "static",
+    "description_eval_variables": { "limit": "1" },
+    "limit_refresh": "long_rest",
+    "conditions": { "level": 8 },
+    "continious": false
+  },
+  {
+    "slug": "eldritch-flesh",
+    "title": {
+      "en": "Eldritch Flesh",
+      "ru": "Плоть Древнего"
+    },
+    "description": {
+      "en": "You embody the darkness you have dallied with. When this card is in your loadout: 1) Gain a +1 bonus to your damage thresholds for each Stress you have marked. 2) When you roll with Fear, you can spend 2 Hope to clear an Armor Slot.",
+      "ru": "Вы воплощаете тьму, с которой прежде лишь игрались. Пока эта карта в вашем инвентаре: 1) Получите +1 к вашим порогам урона за каждый отмеченный вами Стресс. 2) При бросках со Страхом, вы можете потратить 2 Надежды, чтобы очистить Ячейку Брони."
+    },
+    "origin": "domain_card",
+    "origin_value": "dread",
+    "kind": "static",
+    "eval_variables": {
+      "damage_thresholds": "damage_thresholds.transform_values { |item| item + stress_marked }"
+    },
+    "conditions": { "level": 8 },
+    "continious": false
+  },
+  {
+    "slug": "forest-sprites",
+    "title": {
+      "en": "Forest Sprites",
+      "ru": "Лесные Духи"
+    },
+    "description": {
+      "en": "Make a Spellcast Roll (13). On a success, spend any number of Hope to create an equal number of small forest sprites who appear at points you choose within Far range, providing the following benefits: 1) Your allies gain a +3 bonus to attack rolls against adversaries within Melee range of a sprite. 2) An ally who marks an Armor Slot while within Melee range of a sprite can mark an additional Armor Slot. A sprite vanishes after granting a benefit or taking any damage.",
+      "ru": "Совершите Бросок Заклинания (13). При успехе, потратьте любое количество Надежды, чтобы создать такое же количество маленьких лесных духов, которые появляются в выбранных вами точках в пределах Далекой дистанции, предоставляя следующие преимущества: 1) Ваши союзники получают +3 бонус к броскам Атаки против противников находящихся Вплотную к духу. 2) Союзник, который отмечает Ячейку Брони находясь Вплотную к духу, может отметить дополнительную Ячейку Брони чтобы снизить порог урона. Дух исчезает после того, как предоставил преимущество или получил любой урон."
+    },
+    "origin": "domain_card",
+    "origin_value": "sage",
+    "kind": "static",
+    "conditions": { "level": 8 },
+    "continious": false
+  },
+  {
+    "slug": "rejuvenation-barrier",
+    "title": {
+      "en": "Rejuvenation Barrier",
+      "ru": "Заживляющий Барьер"
+    },
+    "description": {
+      "en": "Make a Spellcast Roll (15). Once per rest on a success, create a temporary barrier of protective energy around you at Very Close range. You and all allies within the barrier when this spell is cast clear 1d4 Hit Points. While the barrier is up, you and all allies within have resistance to physical damage from outside the barrier. When you move, the barrier follows you.",
+      "ru": "Совершите Бросок Заклинания (15). При успехе, один раз до следующего отдыха, создайте вокруг себя временный барьер защитной энергии на Близкой дистанции. Вы и все союзники, находящиеся внутри барьера во время произнесения этого заклинания, очищаете 1d4 Раны. Пока барьер существует, вы и все союзники внутри него получаете сопротивление физическому урону, наносимому извне. Когда вы двигаетесь, барьер следует за вами."
+    },
+    "origin": "domain_card",
+    "origin_value": "sage",
+    "kind": "static",
+    "description_eval_variables": { "limit": "1" },
+    "limit_refresh": "long_rest",
+    "conditions": { "level": 8 },
+    "continious": false
+  },
+  {
+    "slug": "shield-aura",
+    "title": {
+      "en": "Shield Aura",
+      "ru": "Защитная Аура"
+    },
+    "description": {
+      "en": "Mark a Stress to cast a protective aura on a target within Very Close range. When the target marks an Armor Slot, they reduce the severity of the attack by an additional threshold. If this spell causes a creature who would be damaged to instead mark no Hit Points, the effect ends. You can only hold Shield Aura on one creature at a time.",
+      "ru": "Отметьте Стресс, чтобы наложить защитную ауру на цель в пределах Близкой дистанции. Когда цель отмечает Ячейку Брони, она уменьшает силу атаки на дополнительный порог. Если это заклинание заставляет существо, которое получило бы урон, вместо этого не отмечать Рану, эффект заканчивается. Вы можете удерживать «Защитную Ауру» только на одном существе за раз."
+    },
+    "origin": "domain_card",
+    "origin_value": "splendor",
+    "kind": "static",
+    "conditions": { "level": 8 },
+    "continious": false
+  },
+  {
+    "slug": "stunning-sunlight",
+    "title": {
+      "en": "Stunning Sunlight",
+      "ru": "Слепящее Солнечное Сияние"
+    },
+    "description": {
+      "en": "Make a Spellcast Roll to unleash powerful rays of burning sunlight against all adversaries in front of you within Far range. On a success, spend any number of Hope and force that many targets you succeeded against to make a Reaction Roll (14). Targets who succeed take 3d20+3 magic damage. Targets who fail take 4d20+5 magic damage and are temporarily Stunned. While Stunned, they can't use reactions and can't take any other actions until they clear this condition.",
+      "ru": "Совершите Бросок Заклинания, чтобы выпустить мощные лучи жгучего солнечного света на всех противников перед вами в пределах Далёкой дистанции. При успехе потратьте любое количество Надежды и заставьте столько же целей, против которых вы преуспели, сделать Бросок Реакции (14). Цели, которые успешно прошли бросок, получают 3d20+3 урона от магии. Цели, которые провалили бросок, получают 4d20+5 урона от магии и временно Оглушаются. Пока они Оглушены, они не могут использовать реакции и не могут совершать никаких других действий, пока не снимут это состояние."
+    },
+    "origin": "domain_card",
+    "origin_value": "splendor",
+    "kind": "static",
+    "conditions": { "level": 8 },
+    "continious": false
+  },
+  {
+    "slug": "full-surge",
+    "title": {
+      "en": "Full Surge",
+      "ru": "Всплеск Сил"
+    },
+    "description": {
+      "en": "Mark 3 Stress to push your body to its limits. Gain a +2 bonus to all of your character traits until your next rest.",
+      "ru": "Отметьте 3 Стресса, чтобы довести свое тело до предела. Получите бонус +2 ко всем своим Характеристикам до следующего отдыха."
+    },
+    "origin": "domain_card",
+    "origin_value": "valor",
+    "kind": "static",
+    "description_eval_variables": { "limit": "1" },
+    "eval_variables": {
+      "modified_traits": "modified_traits.transform_values { |item| item + 2 }"
+    },
+    "limit_refresh": "long_rest",
+    "conditions": { "level": 8 },
+    "continious": true
+  },
+  {
+    "slug": "ground-pound",
+    "title": {
+      "en": "Ground Pound",
+      "ru": "Дрожь Земли"
+    },
+    "description": {
+      "en": "Spend 2 Hope to strike the ground where you stand and make a Strength Roll against all targets within Very Close range. Targets you succeed against are thrown back to Far range and must make a Reaction Roll (17). Targets who fail take 4d10+8 damage. Targets who succeed take half damage.",
+      "ru": "Потратьте 2 Надежды, чтобы ударить землю под ногами и совершить Бросок Силы против всех целей в пределах Близкой дистанции. Цели, против которых вы преуспели, отбрасываются на Далекую дистанцию и должны совершить Бросок Реакции (17). Цели, которые провалили бросок, получают 4d10+8 урона. Цели, которые преуспели, получают половину урона."
+    },
+    "origin": "domain_card",
+    "origin_value": "valor",
+    "kind": "static",
+    "conditions": { "level": 8 },
+    "continious": false
+  },
+  {
+    "slug": "earthquake",
+    "title": {
+      "en": "Earthquake",
+      "ru": "Землетрясение"
+    },
+    "description": {
+      "en": "Make a Spellcast Roll (16). Once per rest on a success, all targets within Very Far range who aren't flying must make a Reaction Roll (18). Targets who fail take 3d10+8 physical damage and are temporarily Vulnerable. Targets who succeed take half damage. Additionally, when you succeed on the Spellcast Roll, all terrain within Very Far range becomes difficult to move through and structures within this range might sustain damage or crumble.",
+      "ru": "Совершите Бросок Заклинания (16). При успехе, один раз до следующего отдыха все цели в пределах Очень дальней дистанции, которые не летают, должны совершить Бросок Реакции (18). Цели, провалившие бросок, получают 3d10+8 физического урона и временно становятся Уязвимыми. Цели, прошедшие бросок, получают половину урона. Кроме того, при успешном броске заклинания вся местность в радиусе действия заклинания становится труднопроходимой, а сооружения в этом радиусе могут получить повреждения или разрушиться."
+    },
+    "origin": "domain_card",
+    "origin_value": "arcana",
+    "kind": "static",
+    "description_eval_variables": { "limit": "1" },
+    "limit_refresh": "long_rest",
+    "conditions": { "level": 9 },
+    "continious": false
+  },
+  {
+    "slug": "sensory-projection",
+    "title": {
+      "en": "Sensory Projection",
+      "ru": "Сенсорная проекция"
+    },
+    "description": {
+      "en": "Make a Spellcast Roll (15). On a success, drop into a vision that lets you clearly see and hear any place you have been before as though you are standing there in this moment. You can move freely in this vision and are not constrained by the physics or impediments of a physical body. This spell cannot be detected by mundane or magical means. You drop out of this vision upon taking damage or casting another spell.",
+      "ru": "Совершите Бросок Заклинания (15). При успехе вы попадаете в видение, которое позволяет вам ясно видеть и слышать любое место, в котором вы когда-либо были, как будто вы стоите там в данный момент. Вы можете свободно перемещаться в этом видении и не ограничены физическими законами или препятствиями физического тела. Это заклинание не может быть обнаружено обычными или магическими средствами. Вы выходите из этого видения, получив урон или произнеся другое заклинание."
+    },
+    "origin": "domain_card",
+    "origin_value": "arcana",
+    "kind": "static",
+    "description_eval_variables": { "limit": "1" },
+    "limit_refresh": "short_rest",
+    "conditions": { "level": 9 },
+    "continious": false
+  },
+  {
+    "slug": "gore-and-glory",
+    "title": {
+      "en": "Gore and Glory",
+      "ru": "Кровь и слава"
+    },
+    "description": {
+      "en": "When you critically succeed on a weapon attack, gain an additional Hope or clear an additional Stress. Additionally, when you deal enough damage to defeat an enemy, gain a Hope or clear a Stress.",
+      "ru": "Когда вы бросаете критический успех на атаку, получите дополнительную Надежду или очистите дополнительный Стресс. Кроме того, когда вы наносите достаточно урона, чтобы победить врага, получите Надежду или очистите Стресс."
+    },
+    "origin": "domain_card",
+    "origin_value": "blade",
+    "kind": "static",
+    "conditions": { "level": 9 },
+    "continious": false
+  },
+  {
+    "slug": "reapers-strike",
+    "title": {
+      "en": "Reaper's Strike",
+      "ru": "Удар Жнеца"
+    },
+    "description": {
+      "en": "Spend a Hope to make an attack roll. The GM tells you which targets within range it would succeed against. Choose one of these targets and force them to mark 5 Hit Points.",
+      "ru": "Потратьте Надежду, чтобы совершить бросок Атаки. Мастер сообщает вам, против каких целей в пределах дистанции вы преуспеваете. Выберите одну из этих целей и заставьте ее отметить 5 Ран."
+    },
+    "origin": "domain_card",
+    "origin_value": "blade",
+    "kind": "static",
+    "description_eval_variables": { "limit": "1" },
+    "limit_refresh": "long_rest",
+    "conditions": { "level": 9 },
+    "continious": false
+  },
+  {
+    "slug": "on-the-brink",
+    "title": {
+      "en": "On the Brink",
+      "ru": "На Грани"
+    },
+    "description": {
+      "en": "When you have 2 or fewer Hit Points unmarked, you don't take Minor damage.",
+      "ru": "Когда у вас остаётся 2 или менее неотмеченных Ран, вы не получаете Легкий урон."
+    },
+    "origin": "domain_card",
+    "origin_value": "bone",
+    "kind": "static",
+    "conditions": { "level": 9 },
+    "continious": false
+  },
+  {
+    "slug": "splintering-strike",
+    "title": {
+      "en": "Splintering Strike",
+      "ru": "Рассекающий Удар"
+    },
+    "description": {
+      "en": "Spend a Hope and make an attack against all adversaries within your weapon's range. Once per long rest, on a success against any targets, add up the damage dealt, then redistribute that damage however you wish between the targets you succeeded against. When you deal damage to a target, roll an additional damage die and add its result to the damage you deal to that target.",
+      "ru": "Потратьте Надежду и совершите атаку против всех противников в пределах дистанции вашего оружия. При успешном поражении любой цели, один раз до следующего продолжительного отдыха, сложите нанесенный урон, а затем распределите его по своему усмотрению между целями, против которых вы преуспели. Когда вы наносите урон цели, бросьте дополнительную кость урона и добавьте её результат к урону, нанесенному этой цели."
+    },
+    "origin": "domain_card",
+    "origin_value": "bone",
+    "kind": "static",
+    "conditions": { "level": 9 },
+    "continious": false
+  },
+  {
+    "slug": "book-of-ronin",
+    "title": {
+      "en": "Book of Ronin",
+      "ru": "Книга Ронина"
+    },
+    "description": {
+      "en": "Make a Spellcast Roll (15). On a success, transform into an inanimate object no larger than twice your normal size. You can remain in this shape until you take damage.",
+      "ru": "Совершите Бросок Заклинания (15). При успехе вы превращаетесь в неодушевленный объект, размер которого не превышает двойной размер вашего нормального тела. Вы можете оставаться в этом виде до тех пор, пока не получите урон."
+    },
+    "origin": "domain_card",
+    "origin_value": "codex",
+    "kind": "static",
+    "conditions": { "level": 9 },
+    "continious": false
+  },
+  {
+    "slug": "disintegration-wave",
+    "title": {
+      "en": "Disintegration Wave",
+      "ru": "Волна Уничтожения"
+    },
+    "description": {
+      "en": "Make a Spellcast Roll (18). Once per long rest on a success, the GM tells you which adversaries within Far range have a Difficulty of 18 or lower. Mark a Stress for each one you wish to hit with this spell. They are killed and can't come back to life by any means.",
+      "ru": "Совершите Бросок Заклинания (18). При успехе, один раз до следующего продолжительного отдыха, Мастер сообщает вам, у каких противников в пределах Далекой дистанции Сложность равна 18 или ниже. Отметьте Стресс для каждого, кого вы хотите поразить этим заклинанием. Они убиты и не могут вернуться к жизни никаким образом."
+    },
+    "origin": "domain_card",
+    "origin_value": "codex",
+    "kind": "static",
+    "description_eval_variables": { "limit": "1" },
+    "limit_refresh": "long_rest",
+    "conditions": { "level": 9 },
+    "continious": false
+  },
+  {
+    "slug": "copycat",
+    "title": {
+      "en": "Copycat",
+      "ru": "Подражатель"
+    },
+    "description": {
+      "en": "This card can mimic the features of another domain card of level 8 or lower in another player's loadout. Spend Hope equal to half the card's level to gain access to the feature. It lasts until your next rest or they place the card in their vault.",
+      "ru": "Эта карта может имитировать особенности другой карты домена уровня 8 или ниже из инвентаря другого игрока. Потратьте количество Надежды в размере половины уровня карты, чтобы получить доступ к особенности. Она действует до вашего следующего отдыха или до тех пор, пока карта не будет помещена в хранилище."
+    },
+    "origin": "domain_card",
+    "origin_value": "grace",
+    "kind": "static",
+    "description_eval_variables": { "limit": "1" },
+    "limit_refresh": "long_rest",
+    "conditions": { "level": 9 },
+    "continious": false
+  },
+  {
+    "slug": "master-of-the-craft",
+    "title": {
+      "en": "Master of the Craft",
+      "ru": "Мастер своего Дела"
+    },
+    "description": {
+      "en": "Gain a permanent +2 bonus to two of your Experiences or a permanent +3 bonus to one of your Experiences. Then place this card in your vault permanently.",
+      "ru": "Получите постоянный бонус +2 к двум вашим Опытам или постоянный бонус +3 к одному из ваших Опытов. Затем навсегда поместите эту карту в ваше хранилище."
+    },
+    "origin": "domain_card",
+    "origin_value": "grace",
+    "kind": "static",
+    "conditions": { "level": 9 },
+    "continious": false
+  },
+  {
+    "slug": "night-terror",
+    "title": {
+      "en": "Night Terror",
+      "ru": "Ночной Ужас"
+    },
+    "description": {
+      "en": "Choose any targets within Very Close range to perceive you as a nightmarish horror. The targets must succeed on a Reaction Roll (16) or become temporarily Horrified. While Horrified, they're Vulnerable. Steal a number of Fear from the GM equal to the number of targets that are Horrified (up to the number of Fear in the GM's pool). Roll a number of d6s equal to the number of stolen Fear and deal the total damage to each Horrified target. Discard the stolen Fear.",
+      "ru": "Выберите сколько угодно целей в пределах Близкой Дистанции, которые будут воспринимать вас как ночной ужас. Цели должны успешно выполнить Бросок Реакции (16) или временно стать Испуганными. Пока цель Испугана, она Уязвима. Украдите у Мастера из запаса по одному жетону Страха за каждую Испуганную цель (до количества Страха в запасе Мастера). Бросьте количество d6, равное количеству украденного Страха, и нанесите общий урон каждой Испуганной цели."
+    },
+    "origin": "domain_card",
+    "origin_value": "midnight",
+    "kind": "static",
+    "conditions": { "level": 9 },
+    "continious": false
+  },
+  {
+    "slug": "twilight-toll",
+    "title": {
+      "en": "Twilight Toll",
+      "ru": "Сумеречный Сбор"
+    },
+    "description": {
+      "en": "Choose a target within Far range. When you succeed on an action roll against them that doesn't result in making a damage roll, place a token on this card. When you deal damage to this target, spend any number of tokens to add a d12 for each token spent to your damage roll. You can only hold Twilight Toll on one creature at a time. When you choose a new target or take a rest, clear all unspent tokens.",
+      "ru": "Выберите цель в пределах Далекой дистанции. Когда вы успешно проводите бросок действия против этой цели, который не приводит к совершению броска урона, поместите жетон на эту карту. Когда вы наносите урон этой цели, потратьте любое количество жетонов, чтобы добавить d12 за каждый потраченный жетон к вашему броску урона. Вы можете держать Сумеречный Сбор только на одном существе за раз. Когда вы выбираете новую цель или совершаете отдых, удалите все неиспользованные жетоны."
+    },
+    "origin": "domain_card",
+    "origin_value": "midnight",
+    "kind": "static",
+    "conditions": { "level": 9 },
+    "continious": false
+  },
+  {
+    "slug": "damnation",
+    "title": {
+      "en": "Damnation",
+      "ru": "Ужасная Кара"
+    },
+    "description": {
+      "en": "Make a Spellcast Roll against a target within Far range. On a success, mark any number of Stress to roll an equal number of d20s, dealing magic damage equal to the total result. If the target is defeated as a result of this attack, all adversaries within Far range of the target mark a Stress.",
+      "ru": "Совершите Бросок Заклинания против цели в пределах Далекой дистанции. При успехе, отметьте любое количество Стресса, чтобы бросить столько же d20 и нанести магический урон, равный общему результату. Если цель была побеждена в результате этой атаки, то все противники в пределах Далекой дистанции отмечают Стресс."
+    },
+    "origin": "domain_card",
+    "origin_value": "dread",
+    "kind": "static",
+    "conditions": { "level": 9 },
+    "continious": false
+  },
+  {
+    "slug": "savor-the-anguish",
+    "title": {
+      "en": "Savor the Anguish",
+      "ru": "Наслаждение Муками"
+    },
+    "description": {
+      "en": "When an adversary within Close range marks Stress or takes Severe damage, you can spend a Hope to clear a Stress or force the GM to lose a Fear.",
+      "ru": "Когда противних в пределах Средней дистанции отмечает Стресс или получает Тяжелый урон, вы можете потратить Надежду, чтобы очистить Стресс или заставить Мастера потерять жетон Страха."
+    },
+    "origin": "domain_card",
+    "origin_value": "dread",
+    "kind": "static",
+    "conditions": { "level": 9 },
+    "continious": false
+  },
+  {
+    "slug": "fane-of-the-wilds",
+    "title": {
+      "en": "Fane of the Wilds",
+      "ru": "Храм Дикой Природы"
+    },
+    "description": {
+      "en": "After a long rest, place a number of tokens equal to the number of Sage domain cards in your loadout and vault on this card. When you would make a Spellcast Roll, you can spend any number of tokens after the roll to gain a +1 bonus for each token spent. When you critically succeed on a Spellcast Roll for a Sage domain spell, gain a token..",
+      "ru": "После Продолжительного Отдыха поместите на эту карту количество жетонов, равное количеству карт Домена Мудрость в вашем Инвентаре и Хранилище. Когда вы собираетесь совершить Бросок Заклинания, вы можете потратить любое количество жетонов после броска, чтобы получить бонус +1 за каждый потраченный жетон. Когда вы совершаете критический успех для Броска Заклинания домена Мудрости, получите жетон."
+    },
+    "origin": "domain_card",
+    "origin_value": "sage",
+    "kind": "text",
+    "conditions": { "level": 9 },
+    "continious": false
+  },
+  {
+    "slug": "plant-dominion",
+    "title": {
+      "en": "Plant Dominion",
+      "ru": "Власть над Растениями"
+    },
+    "description": {
+      "en": "Make a Spellcast Roll (18). Once per long rest on a success, you reshape the natural world, changing the surrounding plant life anywhere within Far range of you. For example, you can grow trees instantly, clear a path through dense vines, or create a wall of roots.",
+      "ru": "Совершите Бросок Заклинания (18). При успехе, один раз до следующего продолжительного отдыха, вы изменяете природный мир, меняя окружающую растительность в пределах Далекой дистанции от вас. Например, вы можете мгновенно вырастить деревья, проложить путь через густые лианы или создать стену из корней."
+    },
+    "origin": "domain_card",
+    "origin_value": "sage",
+    "kind": "static",
+    "description_eval_variables": { "limit": "1" },
+    "limit_refresh": "long_rest",
+    "conditions": { "level": 9 },
+    "continious": false
+  },
+  {
+    "slug": "overwhelming-aura",
+    "title": {
+      "en": "Overwhelming Aura",
+      "ru": "Переполняющая аура"
+    },
+    "description": {
+      "en": "Make a Spellcast Roll (15) to magically empower your aura. On a success, spend 2 Hope to make your Presence equal to your Spellcast trait until your next long rest. While this spell is active, an adversary must mark a Stress when they target you with an attack.",
+      "ru": "Совершите Бросок Заклинания (15), чтобы магически усилить свою ауру. В случае успеха потратьте 2 Надежды, чтобы ваше Влияние стало равным вашей Характеристики Заклинателя до вашего следующего продолжительного отдыха. Пока это заклинание действует, противник должен отметить Стресс, когда выбирает вас целью атаки."
+    },
+    "origin": "domain_card",
+    "origin_value": "splendor",
+    "kind": "static",
+    "conditions": { "level": 9 },
+    "continious": false
+  },
+  {
+    "slug": "salvation-beam",
+    "title": {
+      "en": "Salvation Beam",
+      "ru": "Спасительный Луч"
+    },
+    "description": {
+      "en": "Make a Spellcast Roll (16). On a success, mark any number of Stress to target a line of allies within Far range. You can clear Hit Points on the targets equal to the number of Stress marked, divided among them however you'd like.",
+      "ru": "Совершите Бросок Заклинания (16). В случае успеха отметьте любое количество Стресса, чтобы выбрать целью линию союзников в пределах Далёкой дистанции. Вы можете очистить Раны целям, равное количеству отмеченного Стресса, распределив его между ними по своему усмотрению."
+    },
+    "origin": "domain_card",
+    "origin_value": "splendor",
+    "kind": "static",
+    "conditions": { "level": 9 },
+    "continious": false
+  },
+  {
+    "slug": "hold-the-line",
+    "title": {
+      "en": "Hold the Line",
+      "ru": "Держать строй"
+    },
+    "description": {
+      "en": "Describe the defensive stance you take and spend a Hope. If an adversary moves within Very Close range, they're pulled into Melee range and Restrained. This condition lasts until you move or fail a roll with Fear, or the GM spends 2 Fear on their turn to clear it.",
+      "ru": "Опишите свою оборонительную стойку и потратьте Надежду. Если противник приблизится на Близкую дистанцию, он будет притянут к вам Вплотную и Обездвижен. Это состояние длится до тех пор, пока вы не сдвинетесь, не провалите бросок со Страхом, или Мастер не потратит 2 Страха в свой ход, чтобы снять его."
+    },
+    "origin": "domain_card",
+    "origin_value": "valor",
+    "kind": "text",
+    "conditions": { "level": 9 },
+    "continious": false
+  },
+  {
+    "slug": "lead-by-example",
+    "title": {
+      "en": "Lead by Example",
+      "ru": "Быть Примером"
+    },
+    "description": {
+      "en": "When you deal damage to an adversary, you can mark a Stress and describe how you encourage your allies. The next PC to make an attack against that adversary can clear a Stress or gain a Hope.",
+      "ru": "Когда вы наносите урон противнику, вы можете отметить Стресс и описать, как вы подбадриваете своих союзников. Следующий персонаж, совершающий атаку против этого противника, может очистить Стресс или получить Надежду."
+    },
+    "origin": "domain_card",
+    "origin_value": "valor",
+    "kind": "static",
+    "conditions": { "level": 9 },
+    "continious": false
+  },
+  {
+    "slug": "adjust-reality",
+    "title": {
+      "en": "Adjust Reality",
+      "ru": "Изменение реальности"
+    },
+    "description": {
+      "en": "After you or a willing ally make any roll, you can spend 5 Hope to change the numerical result of that roll to a result of your choice instead. The result must be plausible within the range of the dice.",
+      "ru": "После того, как вы или ваш союзник сделали любой бросок, вы можете потратить 5 Надежды, чтобы изменить числовой результат этого броска на результат по вашему выбору. Результат должен быть возможным в пределах диапазона костей."
+    },
+    "origin": "domain_card",
+    "origin_value": "arcana",
+    "kind": "static",
+    "conditions": { "level": 10 },
+    "continious": false
+  },
+  {
+    "slug": "falling-sky",
+    "title": {
+      "en": "Falling Sky",
+      "ru": "Падающее Небо"
+    },
+    "description": {
+      "en": "Make a Spellcast Roll against all adversaries within Far range. Mark any number of Stress to make shards of arcana rain down from above. Targets you succeed against take 1d20+2 magic damage for each Stress marked.",
+      "ru": "Совершите Бросок Заклинания против всех противников в пределах Далекой дистанции. Отметьте любое количество Стресса, чтобы с неба посыпались осколки магии. Цели, против которых вы преуспели, получают 1d20+2 урона от магии за каждый отмеченный Стресс."
+    },
+    "origin": "domain_card",
+    "origin_value": "arcana",
+    "kind": "static",
+    "conditions": { "level": 10 },
+    "continious": false
+  },
+  {
+    "slug": "battle-monster",
+    "title": {
+      "en": "Battle Monster",
+      "ru": "Монстр Сражений"
+    },
+    "description": {
+      "en": "When you make a successful attack against an adversary, you can mark 4 Stress to force the target to mark a number of Hit Points equal to the number of Hit Points you currently have marked instead of rolling for damage.",
+      "ru": "Когда вы совершаете успешную атаку против противника, вы можете отметить 4 Стресса, чтобы заставить цель отметить количество Ран, равное количеству Ран, которые у вас в данный момент отмечены, вместо того, чтобы бросать кость на урон."
+    },
+    "origin": "domain_card",
+    "origin_value": "blade",
+    "kind": "static",
+    "conditions": { "level": 10 },
+    "continious": false
+  },
+  {
+    "slug": "onslaught",
+    "title": {
+      "en": "Onslaught",
+      "ru": "Натиск"
+    },
+    "description": {
+      "en": "When you successfully make an attack with your weapon, you never deal damage beneath a target's Major damage threshold (the target always marks a minimum of 2 Hit Points). Additionally, when a creature within your weapon's range deals damage to an ally with an attack that doesn't include you, you can mark a Stress to force them to make a Reaction Roll (15). On a failure, the target must mark a Hit Point.",
+      "ru": "Когда вы успешно совершаете атаку своим оружием, вы никогда не наносите урон ниже порога Ощутимого урона цели (цель всегда получает минимум 2 Раны). Кроме того, когда существо в пределах дистанции вашего оружия наносит урон вашему союзнику атакой, которая не включает вас, вы можете отметить Стресс, чтобы заставить его совершить Бросок Реакции (15). При провале цель должна отметить Рану."
+    },
+    "origin": "domain_card",
+    "origin_value": "blade",
+    "kind": "static",
+    "conditions": { "level": 10 },
+    "continious": false
+  },
+  {
+    "slug": "deathrun",
+    "title": {
+      "en": "Deathrun",
+      "ru": "Смертельный Рывок"
+    },
+    "description": {
+      "en": "Spend 3 Hope to run a straight path through the battlefield to a point within Far range, making an attack against all adversaries within your weapon's range along that path. Choose the order in which you deal damage to the targets you succeeded against. For the first, roll your weapon damage with a +1 bonus to your Proficiency. Then remove a die from your damage roll and deal the remaining damage to the next target. Continue to remove a die for each subsequent target until you have no more damage dice or adversaries. You can't target the same adversary more than once per attack.",
+      "ru": "Потратьте 3 Надежды, чтобы пробежать по прямой линии через поле боя до точки в пределах Далекой дистанции, совершив атаку против всех противников в пределах досягаемости вашего оружия на этом пути. Выберите порядок, в котором вы наносите урон целям, против которых вы преуспели. Для первой цели бросьте кости урона вашего оружия с бонусом +1 к вашему Мастерству. Затем удалите одну кость из броска урона и нанесите оставшийся урон следующей цели. Продолжайте удалять по одной кости для каждой последующей цели, пока у вас не останется костей урона или противников. Вы не можете атаковать одного и того же противника более одного раза за атаку."
+    },
+    "origin": "domain_card",
+    "origin_value": "bone",
+    "kind": "static",
+    "conditions": { "level": 10 },
+    "continious": false
+  },
+  {
+    "slug": "swift-step",
+    "title": {
+      "en": "Swift Step",
+      "ru": "Быстрый Шаг"
+    },
+    "description": {
+      "en": "When an attack made against you fails, clear a Stress. If you can't clear a Stress, gain a Hope.",
+      "ru": "Когда атака, совершенная против вас, не удалась, очистите Стресс. Если вы не можете очистить Стресс, получите Надежду."
+    },
+    "origin": "domain_card",
+    "origin_value": "bone",
+    "kind": "static",
+    "conditions": { "level": 10 },
+    "continious": false
+  },
+  {
+    "slug": "book-of-yarrow",
+    "title": {
+      "en": "Book of Yarrow",
+      "ru": "Книга Йаррова"
+    },
+    "description": {
+      "en": "Make a Spellcast Roll (18). On a success, time temporarily slows to a halt for everyone within Far range except for you. It resumes the next time you make an action roll that targets another creature.",
+      "ru": "Совершите Бросок Заклинания (18). При успехе, пространство временно замедляется для всех в пределах Далекой дистанции, кроме вас. Оно возобновляется, когда вы совершаете следующий бросок действия, целью которого является другое существо."
+    },
+    "origin": "domain_card",
+    "origin_value": "codex",
+    "kind": "static",
+    "conditions": { "level": 10 },
+    "continious": false
+  },
+  {
+    "slug": "transcendent-union",
+    "title": {
+      "en": "Transcendent Union",
+      "ru": "Союз Душ"
+    },
+    "description": {
+      "en": "Spend 5 Hope to cast this spell on two or more willing creatures. Until your next rest, when a creature connected by this union would mark Stress or Hit Points, the connected creatures can choose who marks it.",
+      "ru": "Потратьте 5 Надежды, чтобы наложить это заклинание на двух или более согласных существ. До вашего следующего отдыха, когда существо, связанное этим союзом, отметит Стресс или Рану, связанные существа могут выбрать, кто получит это."
+    },
+    "origin": "domain_card",
+    "origin_value": "codex",
+    "kind": "static",
+    "description_eval_variables": { "limit": "1" },
+    "limit_refresh": "long_rest",
+    "conditions": { "level": 10 },
+    "continious": false
+  },
+  {
+    "slug": "encore",
+    "title": {
+      "en": "Encore",
+      "ru": "На Бис"
+    },
+    "description": {
+      "en": "When an ally within Close range deals damage to an adversary, you can make a Spellcast Roll against that same target. On a success, you deal the same damage to the target that your ally dealt. If your Spellcast Roll succeeds with Fear, place this card in your vault.",
+      "ru": "Когда союзник в пределах Средней дистанции наносит урон противнику, вы можете совершить Бросок Заклинания против той же цели. При успехе вы наносите цели тот же урон, что и ваш союзник. Если ваш Бросок Заклинания успешен с Страхом, поместите эту карту в ваше Хранилище."
+    },
+    "origin": "domain_card",
+    "origin_value": "grace",
+    "kind": "static",
+    "conditions": { "level": 10 },
+    "continious": false
+  },
+  {
+    "slug": "notorious",
+    "title": {
+      "en": "Notorious",
+      "ru": "Дурная слава"
+    },
+    "description": {
+      "en": "People know who you are and what you've done, and they treat you differently because of it. When you leverage your notoriety to get what you want, you can mark a Stress before you roll to gain a +10 bonus to the result. Your food and drinks are always free wherever you go, and everything else you buy is reduced in price by one bag of gold (to a minimum of one handful). This card doesn't count against your loadout's domain card maximum of 5 and can't be placed in your vault.",
+      "ru": "Люди знают, кто вы и что вы сделали, и относятся к вам по-другому из-за этого. Когда вы используете свою известность, чтобы получить то, что хотите, вы можете отметить Стресс перед броском, чтобы получить бонус +10 к результату. Ваша еда и напитки всегда бесплатны, где бы вы ни были, а все остальное, что вы покупаете, дешевеет на один мешок золота (до минимума в одну горсть). Эта карта не учитывается в максимальном количестве карт домена в Инвентаре (5) и не может быть помещена в хранилище."
+    },
+    "origin": "domain_card",
+    "origin_value": "grace",
+    "kind": "static",
+    "conditions": { "level": 10 },
+    "continious": false
+  },
+  {
+    "slug": "eclipse",
+    "title": {
+      "en": "Eclipse",
+      "ru": "Затмение"
+    },
+    "description": {
+      "en": "Make a Spellcast Roll (16). Once per long rest on a success, plunge the entire area within Far range into complete darkness only you and your allies can see through. Attack rolls have disadvantage when targeting you or an ally within this shadow.Additionally, when you or an ally succeeds with Hope against an adversary within this shadow, the target must mark a Stress. This spell lasts until the GM spends a Fear on their turn to clear this effect or you take Severe damage.",
+      "ru": "Совершите Бросок Заклинания (16). Один раз до следующего продолжительного отдыха, при успехе, погрузите всю область в пределах Далекой дистанции в полную темноту, которую могут видеть только вы и ваши союзники. Броски Атаки имеют помеху при нацеливании на вас или ваших союзников в этой тени.Кроме того, когда вы или ваш союзник преуспеваете с Надеждой против противника в этой тени, цель должна отметить Стресс. Это заклинание действует до тех пор, пока Мастер не потратит Страх в свой ход, чтобы снять этот эффект, или вы не получите Тяжелый урон."
+    },
+    "origin": "domain_card",
+    "origin_value": "midnight",
+    "kind": "static",
+    "description_eval_variables": { "limit": "1" },
+    "limit_refresh": "long_rest",
+    "conditions": { "level": 10 },
+    "continious": false
+  },
+  {
+    "slug": "specter-of-the-dark",
+    "title": {
+      "en": "Specter of the Dark",
+      "ru": "Призрак Тьмы"
+    },
+    "description": {
+      "en": "Mark a Stress to become Spectral until you make an action roll targeting another creature. While Spectral, you're immune to physical damage and can float and pass through solid objects. Other creatures can still see you while you're in this form.",
+      "ru": "Отметьте Стресс, чтобы стать Призрачным до тех пор, пока вы не совершите бросок действия, нацеленный на другое существо. Пока вы Призрачный, вы невосприимчивы к физическому урону и можете парить и проходить сквозь твердые предметы. Другие существа могут видеть вас, пока вы находитесь в этой форме."
+    },
+    "origin": "domain_card",
+    "origin_value": "midnight",
+    "kind": "static",
+    "conditions": { "level": 10 },
+    "continious": false
+  },
+  {
+    "slug": "avatar-of-malice",
+    "title": {
+      "en": "Avatar of Terror",
+      "ru": "Аватар Страха"
+    },
+    "description": {
+      "en": "Mark a Stress to transform into a creature fueled by fear. While in this form, your damage rolls gain a +1d6 bonus for each Fear the GM has. Additionally, gain a Hope when the GM uses a Fear feature on an adversary within Close range.You must spend a Hope to make an action roll while in this form. Otherwise, you drop out of this form.",
+      "ru": "Отметьте Стресс, чтобы превратиться в существо, питающееся страхом. Находясь в этой форме, ваши броски урона получают +1d6, за каждый жетон Страха у Мастера. Кроме того, вы получаете Надежду, когда Мастер использует свойство страха противника в пределах Средней дистанции.Вы должны потратить Надежду, чтобы совершать броски действия в этой форме. В противном случае вы выходите из этой формы."
+    },
+    "origin": "domain_card",
+    "origin_value": "dread",
+    "kind": "static",
+    "conditions": { "level": 10 },
+    "continious": false
+  },
+  {
+    "slug": "invoke-torment",
+    "title": {
+      "en": "Invoke Torment",
+      "ru": "Призыв Терзаний"
+    },
+    "description": {
+      "en": "Targets with all of their Stress marked take double damage from your attacks. Additionally, when you defeat a creature with all of its Stress marked, you clear a Stress.",
+      "ru": "Существа, у которых отмечены все ячейки Стресса, получают двойной урон от ваших атак. Кроме того, когда вы побеждаете существо, у которого отмечены все ячейки Стресса, вы очищаете Стресс."
+    },
+    "origin": "domain_card",
+    "origin_value": "dread",
+    "kind": "static",
+    "conditions": { "level": 10 },
+    "continious": false
+  },
+  {
+    "slug": "force-of-nature",
+    "title": {
+      "en": "Force of Nature",
+      "ru": "Сила Природы"
+    },
+    "description": {
+      "en": "Mark a Stress to transform into a hulking nature spirit, gaining the following benefits: 1) When you succeed on an attack or Spellcast Roll, gain a +10 bonus to the damage roll. 2) When you deal enough damage to defeat a creature within Close range, you absorb them and clear an Armor Slot. 3) You can't be Restrained. Before you make an action roll, you must spend a Hope. If you can't, you revert to your normal form.",
+      "ru": "Отметьте Стресс, чтобы превратиться в огромного духа природы, получив следующие преимущества: 1) Когда вы успешно выполняете атаку или Бросок Заклинания, получите бонус +10 к броску урона. 2) Когда вы наносите достаточно урона, чтобы победить существо в пределах Средней дистанции, вы поглощаете его и очищаете Ячейку Брони. 3) Вы не можете быть Обездвижены. Перед тем, как совершить бросок действия, вы должны потратить Надежду. Если вы не можете этого сделать, вы возвращаетесь в свою нормальную форму."
+    },
+    "origin": "domain_card",
+    "origin_value": "sage",
+    "kind": "static",
+    "conditions": { "level": 10 },
+    "continious": false
+  },
+  {
+    "slug": "tempest",
+    "title": {
+      "en": "Tempest",
+      "ru": "Буря"
+    },
+    "description": {
+      "en": "Choose one of the following tempests and make a Spellcast Roll against all targets within Far range. Targets you succeed against experience its effects until the GM spends a Fear on their turn to end this spell. 1) Blizzard. Deal 2d20+8 magic damage and targets are temporarily Vulnerable. 2) Hurricane. Deal 3d10+10 magic damage and choose a direction the wind is blowing. Targets can't move against the wind. 3) Sandstorm. Deal 5d6+9 magic damage. Attacks made from beyond Melee range have disadvantage.",
+      "ru": "Выберите одну из следующих бурь и совершите Бросок Заклинания против всех целей в пределах Далекой дистанции. Цели, против которых вы добились успеха, испытывают ее эффекты, пока Мастер не потратит Страх в свой ход, чтобы прекратить действие этого заклинания. 1) Метель. Наносит 2d20+8 урона магией и цели временно становятся Уязвимыми. 2) Ураган. Наносит 3d10+10 урона магией и выберите направление, в котором дует ветер. Цели не могут двигаться против ветра. 3) Песчаная буря. Наносит 5d6+9 магического урона. Атаки, совершенные не Вплотную, имеют помеху."
+    },
+    "origin": "domain_card",
+    "origin_value": "sage",
+    "kind": "static",
+    "conditions": { "level": 10 },
+    "continious": false
+  },
+  {
+    "slug": "invigoration",
+    "title": {
+      "en": "Invigoration",
+      "ru": "Ободрение"
+    },
+    "description": {
+      "en": "When you or an ally within Close range has used a feature that has an exhaustion limit (such as once per rest or once per session), you can spend any number of Hope and roll that many d6s. If any roll a 6, the feature can be used again.",
+      "ru": "Когда вы или союзник в пределах Средней дистанции использовали способность, которая имеет ограничение на количество использований (например, один раз до следующего отдыха или один раз за сессию), вы можете потратить любое количество Надежды и бросить столько же d6. Если любая из костей покажет 6, способность можно использовать снова."
+    },
+    "origin": "domain_card",
+    "origin_value": "splendor",
+    "kind": "static",
+    "conditions": { "level": 10 },
+    "continious": false
+  },
+  {
+    "slug": "resurrection",
+    "title": {
+      "en": "Resurrection",
+      "ru": "Воскрешение"
+    },
+    "description": {
+      "en": "Make a Spellcast Roll (20). On a success, restore one creature who has been dead no longer than 100 years to full strength. Then roll a d6. On a result of 5 or lower, place this card in your vault permanently. On a failure, you can't cast Resurrection again for a week.",
+      "ru": "Совершите Бросок Заклинания (20). В случае успеха восстановите одно существо, мертвое не более 100 лет, до полной силы. Затем бросьте 1d6. При результате 5 или ниже поместите эту карту в свое хранилище навсегда. В случае неудачи вы не можете использовать «Воскрешение» в течение недели."
+    },
+    "origin": "domain_card",
+    "origin_value": "splendor",
+    "kind": "static",
+    "conditions": { "level": 10 },
+    "continious": false
+  },
+  {
+    "slug": "unbreakable",
+    "title": {
+      "en": "Unbreakable",
+      "ru": "Несломленный"
+    },
+    "description": {
+      "en": "When you mark your last Hit Point, instead of making a death move, you can roll a d6 and clear a number of Hit Points equal to the result. Then place this card in your vault.",
+      "ru": "Когда вы отмечаете свою последнюю Рану, вместо того, чтобы совершить Предсмертный Ход, вы можете бросить 1d6 и очистить количество Ран, равное результату. Затем поместите эту карту в свое Хранилище."
+    },
+    "origin": "domain_card",
+    "origin_value": "valor",
+    "kind": "static",
+    "conditions": { "level": 10 },
+    "continious": false
+  },
+  {
+    "slug": "unyielding-armor",
+    "title": {
+      "en": "Unyielding Armor",
+      "ru": "Неуязвимая броня"
+    },
+    "description": {
+      "en": "When you would mark an Armor Slot, roll a number of d6s equal to your Proficiency. If any roll a 6, reduce the severity by one threshold without marking an Armor Slot.",
+      "ru": "Когда вы должны отметить Ячейку Брони, бросьте количество d6, равное вашему Мастерству. Если выпала хоть одна 6, уменьшите порог урона на один, не отмечая Ячейку Брони."
+    },
+    "origin": "domain_card",
+    "origin_value": "valor",
+    "kind": "static",
+    "conditions": { "level": 10 },
+    "continious": false
+  }
+]

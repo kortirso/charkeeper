@@ -111,28 +111,40 @@ Dir[File.join(Rails.root.join('db/data/daggerheart/feats/*.json'))].each do |fil
   end
 end
 
-# file_content = File.read('db/data/daggerheart/*.json')
-# data_hash = JSON.parse(file_content)
+# file_content = File.read('db/data/daggerheart/spells-ru.json')
+# data_hash_ru = JSON.parse(file_content)['data']
 
-# data_hash = data_hash.filter_map do |item|
-#   next if item['level'] < 5
+# file_content = File.read('db/data/daggerheart/spells-en.json')
+# data_hash_en = JSON.parse(file_content)['data']
+
+# data_hash = data_hash_en.map do |item|
+#   ru_item = data_hash_ru.find { |i| i['slug'] == item['slug'] }
 
 #   {
 #     slug: item['slug'],
-#     name: {
-#       en: item['original_name'],
-#       ru: item['name']
+#     title: { en: item['name'], ru: ru_item['name'] },
+#     description: {
+#       en: item['features'][0]['main_body'],
+#       ru: ru_item['features'][0]['main_body']
 #     },
-#     data: {
-#       domain: item['domain_slug'],
-#       level: item['level']
-#     }
+#     origin: 'domain_card',
+#     origin_value: item['domain_slug'],
+#     kind: 'static',
+#     description_eval_variables: {
+#       limit: "1"
+#     },
+#     eval_variables: {
+#       damage_thresholds: "damage_thresholds.merge({ 'severe' => damage_thresholds['severe'] + 8 })"
+#     },
+#     limit_refresh: "long_rest",
+#     conditions: { level: item['level'] },
+#     continious: false
 #   }
 # end
 
 # beautified_json_string = JSON.pretty_generate(data_hash)
 # # Write the beautified JSON string to a file
-# File.open('db/data/daggerheart/spells_3.json', "w") do |file|
+# File.open('db/data/daggerheart/feats/spells.json', 'w') do |file|
 #   file.write(beautified_json_string)
 # end
 

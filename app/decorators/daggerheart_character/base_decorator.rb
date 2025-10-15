@@ -18,6 +18,10 @@ module DaggerheartCharacter
     def can_have_stances
       available_mechanics.include?('stances')
     end
+
+    def use_max_trait_for_attack
+      false
+    end
     # rubocop: enable Naming/PredicateMethod
 
     def modified_traits
@@ -51,10 +55,7 @@ module DaggerheartCharacter
     end
 
     def armor_slots
-      @armor_slots ||=
-        equiped_items_info.pluck('base_score').compact.sum +
-        item_bonuses.pluck('armor_score').compact.sum +
-        sum(bonuses.pluck('armor_score'))
+      @armor_slots ||= armor_score
     end
 
     def health_max
@@ -133,7 +134,7 @@ module DaggerheartCharacter
         name: { en: 'Beast attack', ru: 'Атака' }[I18n.locale],
         burden: 2,
         range: beast_attack['range'],
-        attack_bonus: modified_traits[beast_attack['trait']] + attack_bonuses,
+        attack_bonus: (use_max_trait_for_attack ? max_trait_value : modified_traits[beast_attack['trait']]) + attack_bonuses,
         damage: "#{(proficiency / 2.0).round}#{beast_attack['damage']}",
         damage_bonus: beast_attack['damage_bonus'],
         damage_type: beast_attack['damage_type'],
@@ -149,7 +150,7 @@ module DaggerheartCharacter
         name: { en: 'Unarmed', ru: 'Безоружная' }[I18n.locale],
         burden: 2,
         range: 'melee',
-        attack_bonus: [modified_traits['str'], modified_traits['fin']].max + attack_bonuses + stance_attack_bonus,
+        attack_bonus: (use_max_trait_for_attack ? max_trait_value : [modified_traits['str'], modified_traits['fin']].max) + attack_bonuses + stance_attack_bonus,
         damage: "#{proficiency}d4",
         damage_bonus: 0,
         damage_type: 'physical',
@@ -166,7 +167,7 @@ module DaggerheartCharacter
         name: item[:items_name][I18n.locale.to_s],
         burden: item[:items_info]['burden'],
         range: item[:items_info]['range'],
-        attack_bonus: trait_bonus(item) + attack_bonuses + stance_attack_bonus,
+        attack_bonus: (use_max_trait_for_attack ? max_trait_value : trait_bonus(item)) + attack_bonuses + stance_attack_bonus,
         damage: item[:items_info]['damage']&.gsub('d', "#{proficiency}d"),
         damage_bonus: item[:items_info]['damage_bonus'],
         damage_type: item[:items_info]['damage_type'],
@@ -192,7 +193,11 @@ module DaggerheartCharacter
 
     def trait_bonus(item)
       trait = item[:items_info]['trait']
-      trait ? modified_traits[trait] : modified_traits.values.max
+      trait ? modified_traits[trait] : max_trait_value
+    end
+
+    def max_trait_value
+      modified_traits.values.max
     end
 
     def attack_bonuses
@@ -219,6 +224,16 @@ module DaggerheartCharacter
         .joins(:item)
         .where(items: { kind: ['armor', 'primary weapon', 'secondary weapon'] })
         .pluck('items.info')
+    end
+
+    def equiped_armor
+      @equiped_armor ||=
+        __getobj__
+        .items
+        .where(state: ::Character::Item::ACTIVE_STATES)
+        .joins(:item)
+        .where(items: { kind: 'armor' })
+        .exists?
     end
 
     def weapons
