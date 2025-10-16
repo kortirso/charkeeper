@@ -5,7 +5,7 @@ module Daggerheart
     class SpellSerializer < ApplicationSerializer
       ATTRIBUTES = %i[id ready_to_use notes slug name level].freeze
 
-      attributes :id, :ready_to_use, :notes, :slug, :name, :level
+      attributes(*ATTRIBUTES)
 
       delegate :slug, to: :spell
       delegate :spell, :data, to: :object

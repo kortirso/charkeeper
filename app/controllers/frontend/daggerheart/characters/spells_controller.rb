@@ -17,14 +17,14 @@ module Frontend
         before_action :find_character_spell, only: %i[update destroy]
 
         def index
-          serialize_relation(spells, ::Daggerheart::Characters::SpellSerializer, :spells)
+          serialize_relation(spells, ::Daggerheart::Characters::FeatSerializer, :spells)
         end
 
         def create
           case add_spell.call({ character: @character, spell: @spell })
           in { errors: errors, errors_list: errors_list } then unprocessable_response(errors, errors_list)
           in { result: result }
-            serialize_resource(result, ::Daggerheart::Characters::SpellSerializer, :spell, {}, :created)
+            serialize_resource(result, ::Daggerheart::Characters::FeatSerializer, :spell, {}, :created)
           end
         end
 
@@ -47,15 +47,15 @@ module Frontend
         end
 
         def find_spell
-          @spell = ::Spell.daggerheart.find(params[:spell_id])
+          @spell = ::Daggerheart::Feat.where(origin: 7).find(params[:spell_id])
         end
 
         def find_character_spell
-          @character_spell = @character.spells.find(params[:id])
+          @character_spell = @character.feats.find(params[:id])
         end
 
         def spells
-          @character.spells.includes(:spell)
+          @character.feats.includes(:feat).where(feats: { origin: 7 })
         end
 
         def update_params

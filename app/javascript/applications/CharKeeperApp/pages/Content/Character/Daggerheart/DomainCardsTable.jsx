@@ -10,7 +10,7 @@ export const DomainCardsTable = (props) => {
     <div class="blockable p-4 mb-2">
       <h2 class="text-lg dark:text-snow">{props.title}</h2>
       <Show when={spells().length > 0}>
-        <table class="w-full table first-column-full-width">
+        <table class="w-full table table-top first-column-full-width">
           <thead>
             <tr>
               <td />
@@ -22,12 +22,13 @@ export const DomainCardsTable = (props) => {
               {(spell) =>
                 <tr>
                   <td class="py-1 pl-1">
-                    <p class="cursor-pointer dark:text-snow" onClick={() => props.onChangeSpell(spell)}>{spell.name}</p>
+                    <p class="cursor-pointer dark:text-snow" onClick={() => props.onChangeSpell(spell)}>{spell.title}</p>
+                    <p class="text-xs dark:text-snow">{spell.description}</p>
                     <Show when={spell.notes}>
                       <p class="text-sm mt-1 dark:text-snow">{spell.notes}</p>
                     </Show>
                   </td>
-                  <td>
+                  <td class="py-1">
                     <div class="flex items-center">
                       <Switch>
                         <Match when={spell.ready_to_use}>

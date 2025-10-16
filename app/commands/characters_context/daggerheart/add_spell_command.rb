@@ -8,17 +8,19 @@ module CharactersContext
 
         params do
           required(:character).filled(type?: ::Daggerheart::Character)
-          required(:spell).filled(type?: ::Daggerheart::Spell)
+          required(:spell).filled(type?: ::Daggerheart::Feat)
         end
       end
 
       private
 
       def do_persist(input)
-        result = ::Daggerheart::Character::Spell.create!(
+        result = ::Daggerheart::Character::Feat.create!(
           character: input[:character],
-          spell: input[:spell],
-          data: { ready_to_use: false }
+          feat: input[:spell],
+          used_count: 0,
+          limit_refresh: input[:spell].limit_refresh,
+          value: { ready_to_use: false }
         )
 
         { result: result }

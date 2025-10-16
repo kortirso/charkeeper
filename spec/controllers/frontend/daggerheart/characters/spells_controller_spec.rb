@@ -5,10 +5,12 @@ describe Frontend::Daggerheart::Characters::SpellsController do
   let(:access_token) { Authkeeper::GenerateTokenService.new.call(user_session: user_session)[:result] }
   let!(:character) { create :character, :daggerheart }
   let!(:user_character) { create :character, :daggerheart, user: user_session.user, data: { main_class: 'bard' } }
-  let!(:spell) { create :spell, :daggerheart, data: { domain: 'codex' } }
+  let!(:spell) { create :feat, :rally, origin: 7, origin_value: 'codex', conditions: { level: 1 } }
 
   describe 'GET#index' do
     context 'for logged users' do
+      before { create :character_feat, feat: spell, character: user_character }
+
       context 'for unexisting character' do
         it 'returns error' do
           get :index, params: { character_id: 'unexisting', charkeeper_access_token: access_token }
@@ -18,8 +20,6 @@ describe Frontend::Daggerheart::Characters::SpellsController do
       end
 
       context 'for not user character' do
-        before { create :character_spell, character: character }
-
         it 'returns error' do
           get :index, params: { character_id: character.id, charkeeper_access_token: access_token }
 
@@ -28,8 +28,6 @@ describe Frontend::Daggerheart::Characters::SpellsController do
       end
 
       context 'for user character' do
-        before { create :character_spell, character: user_character }
-
         it 'returns data', :aggregate_failures do
           get :index, params: { character_id: user_character.id, charkeeper_access_token: access_token }
 
@@ -38,7 +36,7 @@ describe Frontend::Daggerheart::Characters::SpellsController do
           expect(response).to have_http_status :ok
           expect(response.parsed_body['spells'].size).to eq 1
           expect(response_values.keys).to(
-            contain_exactly('id', 'ready_to_use', 'notes', 'level', 'slug', 'name')
+            contain_exactly('id', 'ready_to_use', 'notes', 'slug', 'title', 'description')
           )
         end
       end
@@ -74,7 +72,7 @@ describe Frontend::Daggerheart::Characters::SpellsController do
           }
 
           it 'does not create character spell', :aggregate_failures do
-            expect { request }.not_to change(Daggerheart::Character::Spell, :count)
+            expect { request }.not_to change(Daggerheart::Character::Feat, :count)
             expect(response).to have_http_status :not_found
           end
         end
@@ -89,10 +87,10 @@ describe Frontend::Daggerheart::Characters::SpellsController do
           }
 
           it 'creates character spell', :aggregate_failures do
-            expect { request }.to change(user_character.spells, :count).by(1)
+            expect { request }.to change(user_character.feats, :count).by(1)
             expect(response).to have_http_status :created
             expect(response.parsed_body['spell'].keys).to(
-              contain_exactly('id', 'ready_to_use', 'notes', 'level', 'slug', 'name')
+              contain_exactly('id', 'ready_to_use', 'notes', 'slug', 'title', 'description')
             )
           end
         end
@@ -137,7 +135,7 @@ describe Frontend::Daggerheart::Characters::SpellsController do
         end
 
         context 'for existing spell' do
-          let!(:character_spell) { create :character_spell, spell: spell, character: user_character }
+          let!(:character_spell) { create :character_feat, feat: spell, character: user_character }
           let(:request) {
             patch :update, params: {
               character_id: user_character.id,
@@ -150,7 +148,7 @@ describe Frontend::Daggerheart::Characters::SpellsController do
           it 'updates character spell', :aggregate_failures do
             request
 
-            expect(character_spell.reload.data['ready_to_use']).to be_truthy
+            expect(character_spell.reload.value['ready_to_use']).to be_truthy
             expect(response).to have_http_status :ok
             expect(response.parsed_body).to eq({ 'result' => 'ok' })
           end
@@ -188,13 +186,13 @@ describe Frontend::Daggerheart::Characters::SpellsController do
           }
 
           it 'does not delete character spell', :aggregate_failures do
-            expect { request }.not_to change(Daggerheart::Character::Spell, :count)
+            expect { request }.not_to change(Daggerheart::Character::Feat, :count)
             expect(response).to have_http_status :not_found
           end
         end
 
         context 'for existing spell' do
-          let!(:character_spell) { create :character_spell, spell: spell, character: user_character }
+          let!(:character_spell) { create :character_feat, feat: spell, character: user_character }
           let(:request) {
             delete :destroy, params: {
               character_id: user_character.id,
@@ -204,7 +202,7 @@ describe Frontend::Daggerheart::Characters::SpellsController do
           }
 
           it 'deletes character spell', :aggregate_failures do
-            expect { request }.to change(user_character.spells, :count).by(-1)
+            expect { request }.to change(user_character.feats, :count).by(-1)
             expect(response).to have_http_status :ok
             expect(response.parsed_body).to eq({ 'result' => 'ok' })
           end

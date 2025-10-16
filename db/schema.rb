@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_10_12_091756) do
+ActiveRecord::Schema[8.0].define(version: 2025_10_16_065220) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
   enable_extension "pgcrypto"
@@ -113,6 +113,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_10_12_091756) do
     t.datetime "updated_at", null: false
     t.integer "limit_refresh", limit: 2, comment: "Событие для обновления лимита"
     t.integer "used_count", comment: "Кол-во использований"
+    t.boolean "active", default: false, comment: "Включен ли эффект навыка"
     t.index ["character_id", "feat_id"], name: "index_character_feats_on_character_id_and_feat_id", unique: true
   end
 
@@ -238,6 +239,8 @@ ActiveRecord::Schema[8.0].define(version: 2025_10_12_091756) do
     t.datetime "updated_at", null: false
     t.uuid "user_id"
     t.string "origin_values", comment: "Несколько источников, которые могут иметь навык", array: true
+    t.boolean "continious", default: false, comment: "Имеет ли навык включаемый эффект"
+    t.jsonb "bonus_eval_variables"
     t.index ["origin_value"], name: "index_feats_on_origin_value", where: "(origin_value IS NOT NULL)"
     t.index ["origin_values"], name: "index_feats_on_origin_values", where: "(origin_values IS NOT NULL)", using: :gin
     t.index ["user_id"], name: "index_feats_on_user_id"

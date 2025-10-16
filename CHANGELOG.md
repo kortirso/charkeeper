@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Modified
 - using homebrew ancestries for mixed Daggerheart ancestries
+- Daggerheart domain cards from spells for feats
 
 ### Fixed
 - creating campaign by bot from web interface

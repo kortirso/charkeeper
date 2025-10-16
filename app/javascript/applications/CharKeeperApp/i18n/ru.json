@@ -177,7 +177,7 @@
       "minorDamage": "1 рана",
       "majorDamage": "2 раны",
       "severeDamage": "3 раны",
-      "health": "Здоровье",
+      "health": "Раны",
       "stress": "Стресс",
       "hope": "Надежда"
     },

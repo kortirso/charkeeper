@@ -1,7 +1,10 @@
 # frozen_string_literal: true
 
 describe DaggerheartCharacter::BaseDecorator do
-  subject(:decorator) { described_class.new(Character.find(character.id)) }
+  subject(:decorator) do
+    base_decorator = described_class.new(Character.find(character.id))
+    DaggerheartCharacter::StatsDecorator.new(base_decorator)
+  end
 
   let!(:character) { create :character, :daggerheart }
 

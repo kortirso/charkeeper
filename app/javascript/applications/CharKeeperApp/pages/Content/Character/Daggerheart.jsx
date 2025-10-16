@@ -47,6 +47,7 @@ export const Daggerheart = (props) => {
   const beastformFilter = (item) => item.origin === 'beastform';
   const personalFilter = (item) => item.origin === 'character';
   const transformationFilter = (item) => item.origin === 'transformation';
+  const domainCardFilter = (item) => item.origin === 'domain_card' && item.value.ready_to_use;
 
   const featFilters = createMemo(() => {
     const result = [
@@ -54,6 +55,7 @@ export const Daggerheart = (props) => {
       { title: 'community', callback: communityFilter },
       { title: 'class', callback: classFilter },
       { title: 'subclass', callback: subclassFilter },
+      { title: 'domainCards', callback: domainCardFilter },
       { title: 'personal', callback: personalFilter }
     ];
 
@@ -89,7 +91,12 @@ export const Daggerheart = (props) => {
                 <DaggerheartStances character={character()} onReplaceCharacter={props.onReplaceCharacter} />
               </div>
               <div class="mt-4">
-                <Feats character={character()} filters={featFilters()} onReplaceCharacter={props.onReplaceCharacter} />
+                <Feats
+                  character={character()}
+                  filters={featFilters()}
+                  onReplaceCharacter={props.onReplaceCharacter}
+                  onReloadCharacter={props.onReloadCharacter}
+                />
               </div>
             </Match>
             <Match when={activeMobileTab() === 'combat'}>
@@ -133,7 +140,6 @@ export const Daggerheart = (props) => {
             <Match when={activeMobileTab() === 'domainCards'}>
               <DaggerheartDomainCards
                 character={character()}
-                onReplaceCharacter={props.onReplaceCharacter}
                 onReloadCharacter={props.onReloadCharacter}
               />
             </Match>
@@ -183,7 +189,12 @@ export const Daggerheart = (props) => {
           <DaggerheartStances character={character()} onReplaceCharacter={props.onReplaceCharacter} />
         </div>
         <div class="mt-4">
-          <Feats character={character()} filters={featFilters()} onReplaceCharacter={props.onReplaceCharacter} />
+          <Feats
+            character={character()}
+            filters={featFilters()}
+            onReplaceCharacter={props.onReplaceCharacter}
+            onReloadCharacter={props.onReloadCharacter}
+          />
         </div>
       </>
     );
@@ -239,7 +250,6 @@ export const Daggerheart = (props) => {
             <Match when={activeTab() === 'domainCards'}>
               <DaggerheartDomainCards
                 character={character()}
-                onReplaceCharacter={props.onReplaceCharacter}
                 onReloadCharacter={props.onReloadCharacter}
               />
             </Match>

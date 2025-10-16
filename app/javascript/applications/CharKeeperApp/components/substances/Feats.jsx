@@ -1,9 +1,18 @@
 import { createSignal, createEffect, createMemo, For, Switch, Match, batch, Show } from 'solid-js';
 import * as i18n from '@solid-primitives/i18n';
 
-import { Toggle, Button, Select, ErrorWrapper, FeatureTitle, TextArea, CharacterNavigation } from '../../components';
+import { Toggle, Button, Select, ErrorWrapper, FeatureTitle, TextArea, CharacterNavigation, Checkbox } from '../../components';
 import { useAppState, useAppLocale, useAppAlert } from '../../context';
 import { updateCharacterFeatRequest } from '../../requests/updateCharacterFeatRequest';
+
+const TRANSLATION = {
+  en: {
+    activeFeat: 'Active'
+  },
+  ru: {
+    activeFeat: 'Активен'
+  }
+}
 
 export const Feats = (props) => {
   const character = () => props.character;
@@ -135,6 +144,18 @@ export const Feats = (props) => {
                       selectedValues={featValues()[feature.slug] || []}
                       onSelect={(option) => updateMultiFeatureValue(feature, option)}
                     />
+                  </Match>
+                  <Match when={feature.continious}>
+                    <div class="mt-2 flex justify-end">
+                      <Checkbox
+                        filled
+                        labelText={TRANSLATION[locale()]['activeFeat']}
+                        labelPosition="right"
+                        labelClassList="ml-2"
+                        checked={feature.active}
+                        onToggle={() => refreshFeatures(feature.id, { active: !feature.active }, false)}
+                      />
+                    </div>
                   </Match>
                 </Switch>
               </Toggle>
