@@ -12,6 +12,8 @@ module Frontend
       private
 
       def relation
+        return [] if params[:version].blank?
+
         relation = ::Daggerheart::Feat.where(origin: 'domain_card')
         relation = relation.where(origin_value: params[:domains].split(',')) if params[:domains]
         relation = relation.where("conditions ->> 'level' IN (?)", (0..params[:max_level].to_i).to_a.map(&:to_s)) if params[:max_level] # rubocop: disable Layout/LineLength

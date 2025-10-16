@@ -13,7 +13,7 @@ describe Frontend::Daggerheart::SpellsController do
       end
 
       it 'returns data', :aggregate_failures do
-        get :index, params: { charkeeper_access_token: access_token, format: :json }
+        get :index, params: { charkeeper_access_token: access_token, format: :json, version: '0.3.8' }
 
         response_values = response.parsed_body.dig('spells', 0)
 
@@ -22,9 +22,18 @@ describe Frontend::Daggerheart::SpellsController do
         expect(response_values.keys).to contain_exactly('id', 'slug', 'title', 'description', 'origin_value', 'conditions')
       end
 
+      context 'for old app version' do
+        it 'returns empty data', :aggregate_failures do
+          get :index, params: { charkeeper_access_token: access_token, format: :json }
+
+          expect(response).to have_http_status :ok
+          expect(response.parsed_body['spells'].size).to eq 0
+        end
+      end
+
       context 'with filtering' do
         it 'returns data', :aggregate_failures do
-          get :index, params: { charkeeper_access_token: access_token, domains: 'bone,arcana', format: :json }
+          get :index, params: { charkeeper_access_token: access_token, domains: 'bone,arcana', format: :json, version: '0.3.8' }
 
           response_values = response.parsed_body.dig('spells', 0)
 
@@ -38,7 +47,7 @@ describe Frontend::Daggerheart::SpellsController do
       context 'with filtering by level' do
         it 'returns data', :aggregate_failures do
           get :index, params: {
-            charkeeper_access_token: access_token, domains: 'bone,arcana,midnight', max_level: 1, format: :json
+            charkeeper_access_token: access_token, domains: 'bone,arcana,midnight', max_level: 1, format: :json, version: '0.3.8'
           }
 
           response_values = response.parsed_body.dig('spells', 0)

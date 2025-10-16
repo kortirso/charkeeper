@@ -47,14 +47,20 @@ module Frontend
         end
 
         def find_spell
+          raise ActiveRecord::RecordNotFound if params[:version].blank?
+
           @spell = ::Daggerheart::Feat.where(origin: 7).find(params[:spell_id])
         end
 
         def find_character_spell
+          raise ActiveRecord::RecordNotFound if params[:version].blank?
+
           @character_spell = @character.feats.find(params[:id])
         end
 
         def spells
+          return [] if params[:version].blank?
+
           @character.feats.includes(:feat).where(feats: { origin: 7 })
         end
 

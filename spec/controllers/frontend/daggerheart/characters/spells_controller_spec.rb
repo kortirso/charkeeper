@@ -13,7 +13,7 @@ describe Frontend::Daggerheart::Characters::SpellsController do
 
       context 'for unexisting character' do
         it 'returns error' do
-          get :index, params: { character_id: 'unexisting', charkeeper_access_token: access_token }
+          get :index, params: { character_id: 'unexisting', charkeeper_access_token: access_token, version: '0.3.8' }
 
           expect(response).to have_http_status :not_found
         end
@@ -21,7 +21,7 @@ describe Frontend::Daggerheart::Characters::SpellsController do
 
       context 'for not user character' do
         it 'returns error' do
-          get :index, params: { character_id: character.id, charkeeper_access_token: access_token }
+          get :index, params: { character_id: character.id, charkeeper_access_token: access_token, version: '0.3.8' }
 
           expect(response).to have_http_status :not_found
         end
@@ -29,7 +29,7 @@ describe Frontend::Daggerheart::Characters::SpellsController do
 
       context 'for user character' do
         it 'returns data', :aggregate_failures do
-          get :index, params: { character_id: user_character.id, charkeeper_access_token: access_token }
+          get :index, params: { character_id: user_character.id, charkeeper_access_token: access_token, version: '0.3.8' }
 
           response_values = response.parsed_body.dig('spells', 0)
 
@@ -39,6 +39,15 @@ describe Frontend::Daggerheart::Characters::SpellsController do
             contain_exactly('id', 'ready_to_use', 'notes', 'slug', 'title', 'description')
           )
         end
+
+        context 'for old app version' do
+          it 'returns empty data', :aggregate_failures do
+            get :index, params: { character_id: user_character.id, charkeeper_access_token: access_token }
+
+            expect(response).to have_http_status :ok
+            expect(response.parsed_body['spells'].size).to eq 0
+          end
+        end
       end
     end
   end
@@ -47,7 +56,7 @@ describe Frontend::Daggerheart::Characters::SpellsController do
     context 'for logged users' do
       context 'for unexisting character' do
         it 'returns error' do
-          post :create, params: { character_id: 'unexisting', charkeeper_access_token: access_token }
+          post :create, params: { character_id: 'unexisting', charkeeper_access_token: access_token, version: '0.3.8' }
 
           expect(response).to have_http_status :not_found
         end
@@ -57,7 +66,7 @@ describe Frontend::Daggerheart::Characters::SpellsController do
         before { create :character_spell, character: character }
 
         it 'returns error' do
-          post :create, params: { character_id: character.id, charkeeper_access_token: access_token }
+          post :create, params: { character_id: character.id, charkeeper_access_token: access_token, version: '0.3.8' }
 
           expect(response).to have_http_status :not_found
         end
@@ -67,7 +76,7 @@ describe Frontend::Daggerheart::Characters::SpellsController do
         context 'for unexisting spell' do
           let(:request) {
             post :create, params: {
-              character_id: user_character.id, spell_id: 'unexisting', charkeeper_access_token: access_token
+              character_id: user_character.id, spell_id: 'unexisting', charkeeper_access_token: access_token, version: '0.3.8'
             }
           }
 
@@ -82,7 +91,8 @@ describe Frontend::Daggerheart::Characters::SpellsController do
             post :create, params: {
               character_id: user_character.id,
               spell_id: spell.id,
-              charkeeper_access_token: access_token
+              charkeeper_access_token: access_token,
+              version: '0.3.8'
             }
           }
 
@@ -93,6 +103,21 @@ describe Frontend::Daggerheart::Characters::SpellsController do
               contain_exactly('id', 'ready_to_use', 'notes', 'slug', 'title', 'description')
             )
           end
+
+          context 'for old app version' do
+            let(:request) {
+              post :create, params: {
+                character_id: user_character.id,
+                spell_id: spell.id,
+                charkeeper_access_token: access_token
+              }
+            }
+
+            it 'does not create character spell', :aggregate_failures do
+              expect { request }.not_to change(Daggerheart::Character::Feat, :count)
+              expect(response).to have_http_status :not_found
+            end
+          end
         end
       end
     end
@@ -102,7 +127,9 @@ describe Frontend::Daggerheart::Characters::SpellsController do
     context 'for logged users' do
       context 'for unexisting character' do
         it 'returns error' do
-          patch :update, params: { character_id: 'unexisting', id: 'unexisting', charkeeper_access_token: access_token }
+          patch :update, params: {
+            character_id: 'unexisting', id: 'unexisting', charkeeper_access_token: access_token, version: '0.3.8'
+          }
 
           expect(response).to have_http_status :not_found
         end
@@ -110,7 +137,9 @@ describe Frontend::Daggerheart::Characters::SpellsController do
 
       context 'for not user character' do
         it 'returns error' do
-          patch :update, params: { character_id: character.id, id: 'unexisting', charkeeper_access_token: access_token }
+          patch :update, params: {
+            character_id: character.id, id: 'unexisting', charkeeper_access_token: access_token, version: '0.3.8'
+          }
 
           expect(response).to have_http_status :not_found
         end
@@ -123,7 +152,8 @@ describe Frontend::Daggerheart::Characters::SpellsController do
               character_id: user_character.id,
               id: 'unexisting',
               character_spell: { ready_to_use: true },
-              charkeeper_access_token: access_token
+              charkeeper_access_token: access_token,
+              version: '0.3.8'
             }
           }
 
@@ -141,7 +171,8 @@ describe Frontend::Daggerheart::Characters::SpellsController do
               character_id: user_character.id,
               id: character_spell.id,
               character_spell: { ready_to_use: true },
-              charkeeper_access_token: access_token
+              charkeeper_access_token: access_token,
+              version: '0.3.8'
             }
           }
 
@@ -152,6 +183,23 @@ describe Frontend::Daggerheart::Characters::SpellsController do
             expect(response).to have_http_status :ok
             expect(response.parsed_body).to eq({ 'result' => 'ok' })
           end
+
+          context 'for old app version' do
+            let(:request) {
+              patch :update, params: {
+                character_id: user_character.id,
+                id: character_spell.id,
+                character_spell: { ready_to_use: true },
+                charkeeper_access_token: access_token
+              }
+            }
+
+            it 'does not update character spell' do
+              request
+
+              expect(response).to have_http_status :not_found
+            end
+          end
         end
       end
     end
@@ -161,7 +209,9 @@ describe Frontend::Daggerheart::Characters::SpellsController do
     context 'for logged users' do
       context 'for unexisting character' do
         it 'returns error' do
-          delete :destroy, params: { character_id: 'unexisting', id: 'unexisting', charkeeper_access_token: access_token }
+          delete :destroy, params: {
+            character_id: 'unexisting', id: 'unexisting', charkeeper_access_token: access_token, version: '0.3.8'
+          }
 
           expect(response).to have_http_status :not_found
         end
@@ -169,7 +219,9 @@ describe Frontend::Daggerheart::Characters::SpellsController do
 
       context 'for not user character' do
         it 'returns error' do
-          delete :destroy, params: { character_id: character.id, id: 'unexisting', charkeeper_access_token: access_token }
+          delete :destroy, params: {
+            character_id: character.id, id: 'unexisting', charkeeper_access_token: access_token, version: '0.3.8'
+          }
 
           expect(response).to have_http_status :not_found
         end
@@ -181,7 +233,8 @@ describe Frontend::Daggerheart::Characters::SpellsController do
             delete :destroy, params: {
               character_id: user_character.id,
               id: 'unexisting',
-              charkeeper_access_token: access_token
+              charkeeper_access_token: access_token,
+              version: '0.3.8'
             }
           }
 
@@ -197,7 +250,8 @@ describe Frontend::Daggerheart::Characters::SpellsController do
             delete :destroy, params: {
               character_id: user_character.id,
               id: character_spell.id,
-              charkeeper_access_token: access_token
+              charkeeper_access_token: access_token,
+              version: '0.3.8'
             }
           }
 
@@ -205,6 +259,21 @@ describe Frontend::Daggerheart::Characters::SpellsController do
             expect { request }.to change(user_character.feats, :count).by(-1)
             expect(response).to have_http_status :ok
             expect(response.parsed_body).to eq({ 'result' => 'ok' })
+          end
+
+          context 'for old app version' do
+            let(:request) {
+              delete :destroy, params: {
+                character_id: user_character.id,
+                id: character_spell.id,
+                charkeeper_access_token: access_token
+              }
+            }
+
+            it 'does not delete character spell', :aggregate_failures do
+              expect { request }.not_to change(Daggerheart::Character::Feat, :count)
+              expect(response).to have_http_status :not_found
+            end
           end
         end
       end
