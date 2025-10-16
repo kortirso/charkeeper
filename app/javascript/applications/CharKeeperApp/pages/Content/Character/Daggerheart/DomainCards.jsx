@@ -54,11 +54,16 @@ export const DaggerheartDomainCards = (props) => {
     setLastActiveCharacterId(character().id);
   });
 
+  const daggerheartDomains = createMemo(() => {
+    if (domains() === undefined) return {};
+
+    return { ...domains(), ...character().homebrew_domains };
+  });
+
   const renderingDomains = createMemo(() => {
-    if (domains() === undefined) return [];
     if (availableDomainsFilter()) return character().selected_domains;
 
-    return Object.keys(domains());
+    return Object.keys(daggerheartDomains());
   });
 
   const learnedSpells = createMemo(() => {
@@ -148,7 +153,7 @@ export const DaggerheartDomainCards = (props) => {
             </div>
             <For each={renderingDomains()}>
               {(domain) =>
-                <Toggle title={domains()[domain].name[locale()]}>
+                <Toggle title={daggerheartDomains()[domain].name[locale()]}>
                   <table class="w-full table table-top first-column-full-width">
                     <thead>
                       <tr>

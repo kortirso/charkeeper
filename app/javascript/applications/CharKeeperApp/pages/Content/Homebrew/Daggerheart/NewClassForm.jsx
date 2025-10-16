@@ -1,3 +1,4 @@
+import { createMemo } from 'solid-js';
 import { createStore } from 'solid-js/store';
 import * as i18n from '@solid-primitives/i18n';
 
@@ -23,6 +24,13 @@ export const NewDaggerheartClassForm = (props) => {
     const newValue = currentValues.includes(value) ? currentValues.filter((item) => item !== value) : currentValues.concat([value]);
     setClassForm({ ...classForm, domains: newValue });
   }
+
+  const daggerheartDomains = createMemo(() => {
+    const result = translate(config.domains, locale());
+    if (props.homebrews === undefined) return result;
+
+    return { ...result, ...props.homebrews.domains.reduce((acc, item) => { acc[item.id] = item.name; return acc; }, {}) };
+  });
 
   return (
     <>
@@ -50,7 +58,7 @@ export const NewDaggerheartClassForm = (props) => {
         multi
         containerClassList="mb-4"
         labelText={t('pages.homebrewPage.daggerheart.domains')}
-        items={translate(config.domains, locale())}
+        items={daggerheartDomains()}
         selectedValues={classForm.domains}
         onSelect={(value) => updateMultiFeatureValue(value)}
       />

@@ -16,7 +16,8 @@ export const NewDaggerheartFeatForm = (props) => {
     kind: '',
     limit: null,
     limit_refresh: null,
-    subclass_mastery: 1
+    subclass_mastery: 1,
+    level: 1
   });
 
   const [locale, dict] = useAppLocale();
@@ -56,6 +57,12 @@ export const NewDaggerheartFeatForm = (props) => {
     return props.homebrews.transformations.reduce((acc, item) => { acc[item.id] = item.name; return acc; }, {});
   });
 
+  const daggerheartDomains = createMemo(() => {
+    if (props.homebrews === undefined) return {};
+
+    return props.homebrews.domains.reduce((acc, item) => { acc[item.id] = item.name; return acc; }, {});
+  });
+
   const daggerheartCharacters = createMemo(() => {
     if (props.characters === undefined) return [];
 
@@ -69,6 +76,7 @@ export const NewDaggerheartFeatForm = (props) => {
     if (featForm.origin === 'community') return daggerheartCommunities();
     if (featForm.origin === 'character') return daggerheartCharacters();
     if (featForm.origin === 'transformation') return daggerheartTransformations();
+    if (featForm.origin === 'domain_card') return daggerheartDomains();
     
     return [];
   });
@@ -111,6 +119,14 @@ export const NewDaggerheartFeatForm = (props) => {
           items={{ 1: 'Foundation', 2: 'Specialization', 3: 'Mastery' }}
           selectedValue={featForm.subclass_mastery}
           onSelect={(value) => setFeatForm({ ...featForm, subclass_mastery: value })}
+        />
+      </Show>
+      <Show when={featForm.origin === 'domain_card'}>
+        <Input
+          containerClassList="mb-2"
+          labelText={t('pages.homebrewPage.daggerheart.domainLevel')}
+          value={featForm.level}
+          onInput={(value) => setFeatForm({ ...featForm, level: parseInt(value) })}
         />
       </Show>
       <Select

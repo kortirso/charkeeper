@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_10_16_065220) do
+ActiveRecord::Schema[8.0].define(version: 2025_10_16_112405) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
   enable_extension "pgcrypto"
@@ -172,6 +172,14 @@ ActiveRecord::Schema[8.0].define(version: 2025_10_16_065220) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.jsonb "eval_variables", default: {}, null: false
+  end
+
+  create_table "daggerheart_homebrew_domains", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "user_id", null: false
+    t.string "name", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_daggerheart_homebrew_domains_on_user_id"
   end
 
   create_table "daggerheart_homebrew_transformations", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|

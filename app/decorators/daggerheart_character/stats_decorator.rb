@@ -105,10 +105,6 @@ module DaggerheartCharacter
       Config.data('daggerheart', 'beastforms').select { |_, values| values['tier'] <= tier }.keys
     end
 
-    def transformations
-      __getobj__.user.user_homebrew&.data&.dig('daggerheart', 'transformations') || {}
-    end
-
     private
 
     def proficiency_by_level

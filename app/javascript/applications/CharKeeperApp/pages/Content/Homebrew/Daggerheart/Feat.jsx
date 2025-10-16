@@ -30,6 +30,9 @@ export const DaggerheartFeat = (props) => {
     if (props.feat.origin === 'transformation') {
       return props.homebrews.transformations.find((item) => item.id === props.feat.origin_value)?.name || '';
     }
+    if (props.feat.origin === 'domain_card') {
+      return props.homebrews.domains.find((item) => item.id === props.feat.origin_value)?.name || '';
+    }
 
     return '';
   });

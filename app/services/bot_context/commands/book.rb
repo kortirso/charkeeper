@@ -9,12 +9,13 @@ module BotContext
         add_book_races_command: 'commands.homebrew_context.daggerheart.add_book_races',
         add_book_communities_command: 'commands.homebrew_context.daggerheart.add_book_communities',
         add_book_transformations_command: 'commands.homebrew_context.daggerheart.add_book_transformations',
+        add_book_domains_command: 'commands.homebrew_context.daggerheart.add_book_domains',
         add_book_subclasses_command: 'commands.homebrew_context.daggerheart.add_book_subclasses',
         add_book_items_command: 'commands.homebrew_context.daggerheart.add_book_items',
         copy_book_command: 'commands.homebrew_context.copy_book'
       ]
 
-      # rubocop: disable Metrics/CyclomaticComplexity
+      # rubocop: disable Metrics/CyclomaticComplexity, Metrics/AbcSize
       def call(source:, arguments:, data:)
         return if data[:user].nil?
 
@@ -27,13 +28,14 @@ module BotContext
         when 'addRace' then add_race(*arguments, data, source)
         when 'addCommunity' then add_community(*arguments, data, source)
         when 'addTransformation' then add_transformation(*arguments, data, source)
+        when 'addDomain' then add_domain(*arguments, data, source)
         when 'addSubclass' then add_subclass(*arguments, data, source)
         when 'addItem' then add_item(*arguments, data, source)
         when 'export' then export_book(data, source)
         when 'import' then import_book(*arguments, data)
         end
       end
-      # rubocop: enable Metrics/CyclomaticComplexity
+      # rubocop: enable Metrics/CyclomaticComplexity, Metrics/AbcSize
 
       private
 
@@ -112,6 +114,16 @@ module BotContext
         add_book_transformations_command.call(user: data[:user], book: ::Homebrew::Book.find(object.info['id']), names: arguments)
         {
           type: 'add_transformation',
+          result: :ok,
+          errors: nil
+        }
+      end
+
+      def add_domain(*arguments, data, source)
+        object = ActiveBotObject.find_by!(user: data[:user], source: source, object: 'book')
+        add_book_domains_command.call(user: data[:user], book: ::Homebrew::Book.find(object.info['id']), names: arguments)
+        {
+          type: 'add_domain',
           result: :ok,
           errors: nil
         }

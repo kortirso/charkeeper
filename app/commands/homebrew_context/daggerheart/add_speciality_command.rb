@@ -19,9 +19,7 @@ module HomebrewContext
         end
 
         rule(:domains) do
-          next key.failure(:only_two) if value.size != 2
-
-          key.failure(:invalid_value) if (value - ::Daggerheart::Character.domains.keys).any?
+          key.failure(:only_two) if value.size != 2
         end
       end
 

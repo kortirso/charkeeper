@@ -8,6 +8,7 @@ module HomebrewsContext
           races: races_with_features(user_id).to_h,
           communities: daggerheart_communities(user_id),
           transformations: daggerheart_transformations(user_id),
+          domains: daggerheart_domains(user_id),
           classes: daggerheart_classes(user_id),
           subclasses: daggerheart_subclasses(user_id)
         },
@@ -91,6 +92,19 @@ module HomebrewsContext
         .or(
           relation.where(
             id: available_books_data(user_id)['Daggerheart::Homebrew::Transformation']
+          )
+        )
+        .each_with_object({}) do |item, acc|
+          acc[item.id] = { name: { en: item.name, ru: item.name } }
+        end
+    end
+
+    def daggerheart_domains(user_id)
+      relation = ::Daggerheart::Homebrew::Domain
+      relation.where(user_id: user_id)
+        .or(
+          relation.where(
+            id: available_books_data(user_id)['Daggerheart::Homebrew::Domain']
           )
         )
         .each_with_object({}) do |item, acc|

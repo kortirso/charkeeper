@@ -12,6 +12,7 @@ const TRANSLATION = {
     subclasses: 'Subclasses',
     items: 'Items',
     transformations: 'Transformations',
+    domains: 'Domains',
     modulesHelp: 'Page content can be edited by bot command',
     enabled: 'Enabled'
   },
@@ -21,6 +22,7 @@ const TRANSLATION = {
     subclasses: 'Подклассы',
     items: 'Предметы',
     transformations: 'Трансформации',
+    domains: 'Домены',
     modulesHelp: 'Контент раздела может редактироваться через бот команды',
     enabled: 'Подключено'
   }
@@ -73,7 +75,7 @@ export const HomebrewModules = (props) => {
                 <Switch>
                   <Match when={props.provider === 'daggerheart'}>
                     <div class="grid grid-cols-1 emd:grid-cols-2 gap-x-2 gap-y-8">
-                      <For each={['races', 'communities', 'subclasses', 'items', 'transformations']}>
+                      <For each={['races', 'communities', 'subclasses', 'items', 'transformations', 'domains']}>
                         {(kind) =>
                           <Show when={book.items[kind].length > 0}>
                             <div>
