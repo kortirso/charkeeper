@@ -33,7 +33,7 @@ module BotContext
       response(source, command_formatted_result, data)
     rescue ActiveRecord::RecordNotFound => _e
       { errors: [I18n.t('not_found')], errors_list: [I18n.t('not_found')] }
-    rescue ArgumentError => _e
+    rescue ArgumentError, OptionParser::MissingArgument => _e
       { errors: ['Invalid command'], errors_list: ['Invalid command'] }
     end
     # rubocop: enable Metrics/AbcSize
