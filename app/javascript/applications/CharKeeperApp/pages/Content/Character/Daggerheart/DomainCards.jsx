@@ -167,7 +167,7 @@ export const DaggerheartDomainCards = (props) => {
                           <tr>
                             <td class="py-1 pl-1">
                               <div classList={{ 'opacity-50': learnedSpells().includes(spell.slug) }}>
-                                <p class="dark:text-snow mb-1">{spell.title}</p>
+                                <p class="dark:text-snow mb-1">{spell.title} ({spell.conditions.level})</p>
                                 <p class="text-xs dark:text-snow">{spell.description}</p>
                               </div>
                             </td>
