@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Added
 - character bot commands
 - creating homebrew domains and attaching to class
+- login with Discord account
 
 ### Modified
 - using homebrew ancestries for mixed Daggerheart ancestries

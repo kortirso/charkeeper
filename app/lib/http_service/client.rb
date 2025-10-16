@@ -34,6 +34,21 @@ module HttpService
       end
       response.body if response.success?
     end
+
+    def form_post(path:, body: {}, params: {}, headers: {})
+      raise StandardError, 'please stub request in test env' if Rails.env.test? && connection.adapter != 'Faraday::Adapter::Test'
+
+      response = connection.post(path) do |request|
+        params.each do |param, value|
+          request.params[param] = value
+        end
+        headers.each do |header, value|
+          request.headers[header] = value
+        end
+        request.body = URI.encode_www_form(body)
+      end
+      response.body if response.success?
+    end
     # rubocop: enable Metrics/AbcSize
 
     def delete(path:, params: nil, headers: nil)
