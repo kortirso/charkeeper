@@ -7,6 +7,7 @@ module CharactersContext
       available_feats = find_available_feats(character)
 
       remove_not_available_feats(character, existing_ids, available_feats)
+      remove_redundant_feats(character)
       add_new_available_feats(character, available_feats, existing_ids)
     end
 
@@ -19,7 +20,10 @@ module CharactersContext
     end
 
     def remove_not_available_feats(character, existing_ids, available_feats)
-      Character::Feat.where(character_id: character.id, feat_id: (existing_ids - available_feats.pluck(:id))).destroy_all
+      Character::Feat
+        .joins(:feat)
+        .where.not(feats: { origin: exclude_origins_from_remove })
+        .where(character_id: character.id, feat_id: (existing_ids - available_feats.pluck(:id))).destroy_all
     end
 
     def add_new_available_feats(character, available_feats, existing_ids)
@@ -30,7 +34,8 @@ module CharactersContext
           character_id: character.id,
           feat_id: item.id,
           used_count: 0,
-          limit_refresh: item.limit_refresh
+          limit_refresh: item.limit_refresh,
+          ready_to_use: true
         }
       end
       ::Character::Feat.upsert_all(feats_for_adding) if feats_for_adding.any?

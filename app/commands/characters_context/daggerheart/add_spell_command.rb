@@ -20,7 +20,7 @@ module CharactersContext
           feat: input[:spell],
           used_count: 0,
           limit_refresh: input[:spell].limit_refresh,
-          value: { ready_to_use: false }
+          ready_to_use: false
         )
 
         { result: result }

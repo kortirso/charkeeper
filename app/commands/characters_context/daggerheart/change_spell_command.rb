@@ -19,9 +19,11 @@ module CharactersContext
       def do_prepare(input)
         input[:attributes] =
           input
-            .except(:character_spell, :ready_to_use)
+            .except(:character_spell)
             .merge({
-              value: (input[:character_spell].value || {}).merge(input.except(:character_spell, :notes, :active).stringify_keys)
+              value: (input[:character_spell].value || {}).merge(
+                input.except(:character_spell, :notes, :active, :ready_to_use).stringify_keys
+              )
             })
       end
 

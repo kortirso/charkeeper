@@ -18,10 +18,6 @@ module Daggerheart
       def description
         object.feat.description[I18n.locale.to_s]
       end
-
-      def ready_to_use
-        object.value&.dig('ready_to_use') || false
-      end
     end
   end
 end

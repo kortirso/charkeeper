@@ -47,7 +47,7 @@ export const Daggerheart = (props) => {
   const beastformFilter = (item) => item.origin === 'beastform';
   const personalFilter = (item) => item.origin === 'character';
   const transformationFilter = (item) => item.origin === 'transformation';
-  const domainCardFilter = (item) => item.origin === 'domain_card' && item.value.ready_to_use;
+  const domainCardFilter = (item) => item.origin === 'domain_card' && item.ready_to_use;
 
   const featFilters = createMemo(() => {
     const result = [

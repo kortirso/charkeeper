@@ -34,8 +34,7 @@ module DaggerheartCharacter
     private
 
     def feature_bonuses_enabled?(feature)
-      ready_to_use = feature.value.is_a?(Hash) ? feature.value.fetch('ready_to_use', true) : true
-      (!feature.feat.continious && ready_to_use) || feature.active
+      (!feature.feat.continious && feature.ready_to_use) || feature.active
     end
 
     # rubocop: disable Security/Eval, Style/MethodCalledOnDoEndBlock

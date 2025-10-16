@@ -179,7 +179,7 @@ describe Frontend::Daggerheart::Characters::SpellsController do
           it 'updates character spell', :aggregate_failures do
             request
 
-            expect(character_spell.reload.value['ready_to_use']).to be_truthy
+            expect(character_spell.reload.ready_to_use).to be_truthy
             expect(response).to have_http_status :ok
             expect(response.parsed_body).to eq({ 'result' => 'ok' })
           end

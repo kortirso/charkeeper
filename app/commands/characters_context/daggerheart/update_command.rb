@@ -61,6 +61,7 @@ module CharactersContext
           optional(:transformation).maybe(:string)
           optional(:selected_stances).maybe(:array).each(:string)
           optional(:stance).maybe(:string)
+          optional(:selected_features).hash
         end
 
         rule(:avatar_file, :avatar_url).validate(:check_only_one_present)
@@ -90,7 +91,7 @@ module CharactersContext
         input[:character].assign_attributes(input.slice(:name))
         input[:character].save!
 
-        if %i[classes subclasses subclasses_mastery transformation beastform].intersect?(input.keys)
+        if %i[classes subclasses subclasses_mastery transformation beastform selected_features].intersect?(input.keys)
           refresh_feats.call(character: input[:character])
         end
 

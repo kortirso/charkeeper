@@ -5,7 +5,8 @@ module DaggerheartCharacter
     delegate :id, :name, :data, :feats, to: :__getobj__
     delegate :heritage, :main_class, :classes, :subclasses, :level, :gold, :spent_armor_slots, :health_marked, :stress_marked,
              :hope_marked, :traits, :total_gold, :subclasses_mastery, :experiences, :community, :stance, :selected_stances,
-             :leveling, :experience, :heritage_name, :heritage_features, :domains, :beastform, :transformation, to: :data
+             :leveling, :experience, :heritage_name, :heritage_features, :domains, :beastform, :transformation,
+             :selected_features, to: :data
 
     def parent = __getobj__
 

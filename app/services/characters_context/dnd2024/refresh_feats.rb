@@ -7,6 +7,10 @@ module CharactersContext
 
       private
 
+      def remove_redundant_feats(...); end
+
+      def exclude_origins_from_remove; end
+
       def filter_available_feats(character)
         selected_feats = find_selected_feats(character)
         subclasses_levels = find_subclasses_levels(character)

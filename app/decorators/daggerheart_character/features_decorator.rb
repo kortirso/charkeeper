@@ -16,7 +16,7 @@ module DaggerheartCharacter
       end
     end
 
-    # rubocop: disable Metrics/AbcSize, Metrics/MethodLength, Metrics/PerceivedComplexity
+    # rubocop: disable Metrics/AbcSize, Metrics/MethodLength, Metrics/PerceivedComplexity, Metrics/BlockLength
     def features
       @features ||=
         available_features.filter_map do |feature|
@@ -45,17 +45,17 @@ module DaggerheartCharacter
             value: feature.value,
             origin: feature.feat.origin,
             active: feature.active,
-            continious: feature.feat.continious
+            continious: feature.feat.continious,
+            ready_to_use: feature.ready_to_use
           }.compact
         end
     end
-    # rubocop: enable Metrics/AbcSize, Metrics/MethodLength, Metrics/PerceivedComplexity
+    # rubocop: enable Metrics/AbcSize, Metrics/MethodLength, Metrics/PerceivedComplexity, Metrics/BlockLength
 
     private
 
     def feature_bonuses_enabled?(feature)
-      ready_to_use = feature.value.is_a?(Hash) ? feature.value.fetch('ready_to_use', true) : true
-      (!feature.feat.continious && ready_to_use) || feature.active
+      (!feature.feat.continious && feature.ready_to_use) || feature.active
     end
 
     def update_feature_description(feature)

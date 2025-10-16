@@ -4,7 +4,8 @@ module CharactersContext
   class ChangeFeatCommand < BaseCommand
     include Deps[
       character_dnd5_update: 'commands.characters_context.dnd5.update',
-      character_dnd2024_update: 'commands.characters_context.dnd2024.update'
+      character_dnd2024_update: 'commands.characters_context.dnd2024.update',
+      character_daggerheart_update: 'commands.characters_context.daggerheart.update'
     ]
 
     use_contract do
@@ -26,7 +27,7 @@ module CharactersContext
       input[:key] =
         case input[:character_feat].character.type
         when 'Dnd5::Character' then :selected_feats
-        when 'Dnd2024::Character' then :selected_features
+        when 'Dnd2024::Character', 'Daggerheart::Character' then :selected_features
         end
       return if input[:key].nil?
 
@@ -53,6 +54,7 @@ module CharactersContext
       case input[:character_feat].character.type
       when 'Dnd5::Character' then character_dnd5_update
       when 'Dnd2024::Character' then character_dnd2024_update
+      when 'Daggerheart::Character' then character_daggerheart_update
       end
     end
   end
