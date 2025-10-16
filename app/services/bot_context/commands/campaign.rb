@@ -31,9 +31,11 @@ module BotContext
 
         if result[:errors_list].blank?
           external_id = data.dig(:raw_message, :chat, :id)
-          channel = add_channel.call(provider: 'telegram', external_id: external_id.to_s)[:result]
+          if external_id
+            channel = add_channel.call(provider: 'telegram', external_id: external_id.to_s)[:result]
 
-          result[:result].campaign_channels.create(channel: channel) if channel.campaign.blank?
+            result[:result].campaign_channels.create(channel: channel) if channel.campaign.blank?
+          end
         end
 
         {

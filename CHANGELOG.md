@@ -11,6 +11,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Modified
 - using homebrew ancestries for mixed Daggerheart ancestries
 
+### Fixed
+- creating campaign by bot from web interface
+
 ## [0.3.8] - 2025-10-12
 ### Added
 - DC20 basic integration
