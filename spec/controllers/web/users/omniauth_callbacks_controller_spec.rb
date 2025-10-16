@@ -89,6 +89,16 @@ describe Web::Users::OmniauthCallbacksController do
                 expect { request }.to change(User::Identity, :count).by(1)
                 expect(response).to redirect_to dashboard_path
               end
+
+              context 'when identity belongs to another user' do
+                let!(:identity) { create :user_identity, uid: '123' }
+
+                it 'redirects to dashboard_path', :aggregate_failures do
+                  expect { request }.not_to change(User::Identity, :count)
+                  expect(identity.reload.user).to eq @current_user
+                  expect(response).to redirect_to dashboard_path
+                end
+              end
             end
           end
         end
