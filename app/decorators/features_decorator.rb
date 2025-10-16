@@ -20,7 +20,7 @@ class FeaturesDecorator
     @features ||=
       available_features.filter_map do |feature|
         # добавлять статические бонусы или включенные
-        if !feature.feat.continious || feature.active
+        if feature_bonuses_enabled?(feature)
           feature.feat.eval_variables.each do |method_name, variable|
             result = eval_variable(feature.feat, variable)
             instance_variable_set(:"@#{method_name}", result) if result
@@ -51,6 +51,11 @@ class FeaturesDecorator
   # rubocop: enable Metrics/AbcSize, Metrics/MethodLength, Metrics/PerceivedComplexity
 
   private
+
+  def feature_bonuses_enabled?(feature)
+    ready_to_use = feature.value.is_a?(Hash) ? feature.value.fetch('ready_to_use', true) : true
+    (!feature.feat.continious && ready_to_use) || feature.active
+  end
 
   def available_features
     wrapped.feats.includes(:feat).order('feats.origin ASC, feats.created_at ASC')

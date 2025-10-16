@@ -123,7 +123,10 @@ module Daggerheart
 
     def decorator(simple: false)
       base_decorator = ::DaggerheartCharacter::BaseDecorator.new(self)
-      features_decorator = ::FeaturesDecorator.new(base_decorator)
+      base_features_decorator = ::DaggerheartCharacter::FeaturesBaseDecorator.new(base_decorator)
+      base_features_decorator.features unless simple
+      stats_decorator = ::DaggerheartCharacter::StatsDecorator.new(base_features_decorator)
+      features_decorator = ::DaggerheartCharacter::FeaturesDecorator.new(stats_decorator)
       features_decorator.features unless simple
       features_decorator
     end

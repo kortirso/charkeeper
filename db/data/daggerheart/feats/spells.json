@@ -1,6 +1,6 @@
 [
   {
-    "slug": "rune-ward",
+    "slug": "rune_ward",
     "title": {
       "en": "Rune Ward",
       "ru": "Рунный Оберег"
@@ -16,7 +16,7 @@
     "continious": false
   },
   {
-    "slug": "unleash-chaos",
+    "slug": "unleash_chaos",
     "title": {
       "en": "Unleash Chaos",
       "ru": "Высвобождение Хаоса"
@@ -32,7 +32,7 @@
     "continious": false
   },
   {
-    "slug": "wall-walk",
+    "slug": "wall_walk",
     "title": {
       "en": "Wall Walk",
       "ru": "Хождение по Стенам"
@@ -48,7 +48,7 @@
     "continious": false
   },
   {
-    "slug": "get-back-up",
+    "slug": "get_back_up",
     "title": {
       "en": "Get Back Up",
       "ru": "Вернуться в Строй"
@@ -64,7 +64,7 @@
     "continious": false
   },
   {
-    "slug": "not-good-enough",
+    "slug": "not_good_enough",
     "title": {
       "en": "Not Good Enough",
       "ru": "Так не Пойдёт"
@@ -96,7 +96,7 @@
     "continious": false
   },
   {
-    "slug": "deft-maneuvers",
+    "slug": "deft_maneuvers",
     "title": {
       "en": "Deft Maneuvers",
       "ru": "Ловкие Манёвры"
@@ -149,7 +149,7 @@
     "continious": false
   },
   {
-    "slug": "book-of-ava",
+    "slug": "book_of_ava",
     "title": {
       "en": "Book of Ava",
       "ru": "Книга Авы"
@@ -165,7 +165,7 @@
     "continious": false
   },
   {
-    "slug": "book-of-illiat",
+    "slug": "book_of_illiat",
     "title": {
       "en": "Book of Illiat",
       "ru": "Книга Иллиата"
@@ -181,7 +181,7 @@
     "continious": false
   },
   {
-    "slug": "book-of-tyfar",
+    "slug": "book_of_tyfar",
     "title": {
       "en": "Book of Tyfar",
       "ru": "Книга Тайфара"
@@ -197,7 +197,7 @@
     "continious": false
   },
   {
-    "slug": "deft-deceiver",
+    "slug": "deft_deceiver",
     "title": {
       "en": "Deft Deceiver",
       "ru": "Искусный Обманщик"
@@ -231,7 +231,7 @@
     "continious": false
   },
   {
-    "slug": "inspirational-words",
+    "slug": "inspirational_words",
     "title": {
       "en": "Inspirational Words",
       "ru": "Вдохновляющие Слова"
@@ -247,7 +247,7 @@
     "continious": false
   },
   {
-    "slug": "pick-and-pull",
+    "slug": "pick_and_pull",
     "title": {
       "en": "Pick and Pull",
       "ru": "Взлом и Воровство"
@@ -263,7 +263,7 @@
     "continious": false
   },
   {
-    "slug": "rain-of-blades",
+    "slug": "rain_of_blades",
     "title": {
       "en": "Rain of Blades",
       "ru": "Дождь Клинков"
@@ -279,7 +279,7 @@
     "continious": false
   },
   {
-    "slug": "uncanny-disguise",
+    "slug": "uncanny_disguise",
     "title": {
       "en": "Uncanny Disguise",
       "ru": "Поразительная Маскировка"
@@ -295,7 +295,7 @@
     "continious": false
   },
   {
-    "slug": "blighting-strike",
+    "slug": "blighting_strike",
     "title": {
       "en": "Blighting Strike",
       "ru": "Увядающий Удар"
@@ -311,7 +311,7 @@
     "continious": false
   },
   {
-    "slug": "umbral-veil",
+    "slug": "umbral_veil",
     "title": {
       "en": "Umbral Veil",
       "ru": "Завеса Теней"
@@ -329,7 +329,7 @@
     "continious": false
   },
   {
-    "slug": "voice-of-dread",
+    "slug": "voice_of_dread",
     "title": {
       "en": "Voice of Dread",
       "ru": "Глас Ужаса"
@@ -345,7 +345,7 @@
     "continious": false
   },
   {
-    "slug": "gifted-tracker",
+    "slug": "gifted_tracker",
     "title": {
       "en": "Gifted Tracker",
       "ru": "Талант к Выслеживанию"
@@ -364,7 +364,7 @@
     "continious": true
   },
   {
-    "slug": "natures-tongue",
+    "slug": "nature_tongue",
     "title": {
       "en": "Nature's Tongue",
       "ru": "Язык Природы"
@@ -380,7 +380,7 @@
     "continious": false
   },
   {
-    "slug": "vicious-entangle",
+    "slug": "vicious_entangle",
     "title": {
       "en": "Vicious Entangle",
       "ru": "Неистовое Опутывание"
@@ -396,7 +396,7 @@
     "continious": false
   },
   {
-    "slug": "bolt-beacon",
+    "slug": "bolt_beacon",
     "title": {
       "en": "Bolt Beacon",
       "ru": "Стрела Света"
@@ -412,7 +412,7 @@
     "continious": false
   },
   {
-    "slug": "mending-touch",
+    "slug": "mending_touch",
     "title": {
       "en": "Mending Touch",
       "ru": "Исцеляющее Касание"
@@ -448,7 +448,7 @@
     "continious": false
   },
   {
-    "slug": "bare-bones",
+    "slug": "bare_bones",
     "title": {
       "en": "Bare Bones",
       "ru": "Ничего лишнего"
@@ -460,15 +460,18 @@
     "origin": "domain_card",
     "origin_value": "valor",
     "kind": "static",
+    "bonus_eval_variables": {
+      "base_armor_score": "3 + modified_traits['str']"
+    },
     "eval_variables": {
-      "armor_score": "3 + modified_traits['str']",
+      "armor_score": "armor_score",
       "damage_thresholds": "damage_thresholds.merge({ 'major' => damage_thresholds['major'] + 7 + tier * 2, 'severe' => damage_thresholds['severe'] + (tier == 1 ? 19 : (10 + tier * 7)) })"
     },
     "conditions": { "level": 1 },
     "continious": true
   },
   {
-    "slug": "forceful-push",
+    "slug": "forceful_push",
     "title": {
       "en": "Forceful Push",
       "ru": "Отбрасывание"
@@ -484,7 +487,7 @@
     "continious": false
   },
   {
-    "slug": "i-am-your-shield",
+    "slug": "i_am_your_shield",
     "title": {
       "en": "I Am Your Shield",
       "ru": "Я Твой Щит"
@@ -500,7 +503,7 @@
     "continious": false
   },
   {
-    "slug": "cinder-grasp",
+    "slug": "cinder_grasp",
     "title": {
       "en": "Cinder Grasp",
       "ru": "Пепельная Хватка"
@@ -516,7 +519,7 @@
     "continious": false
   },
   {
-    "slug": "floating-eye",
+    "slug": "floating_eye",
     "title": {
       "en": "Floating Eye",
       "ru": "Парящее Око"
@@ -532,7 +535,7 @@
     "continious": false
   },
   {
-    "slug": "a-soldiers-bond",
+    "slug": "soldier_bond",
     "title": {
       "en": "A Soldier's Bond",
       "ru": "Солдатская Связь"
@@ -582,7 +585,7 @@
     "continious": false
   },
   {
-    "slug": "strategic-approach",
+    "slug": "strategic_approach",
     "title": {
       "en": "Strategic Approach",
       "ru": "Стратегический Подход"
@@ -598,7 +601,7 @@
     "continious": false
   },
   {
-    "slug": "book-of-sitil",
+    "slug": "book_of_sitil",
     "title": {
       "en": "Book of Sitil",
       "ru": "Книга Ситила"
@@ -614,7 +617,7 @@
     "continious": false
   },
   {
-    "slug": "book-of-vagras",
+    "slug": "book_of_vagras",
     "title": {
       "en": "Book of Vagras",
       "ru": "Книга Ваграса"
@@ -632,7 +635,7 @@
     "continious": false
   },
   {
-    "slug": "tell-no-lies",
+    "slug": "tell_no_lies",
     "title": {
       "en": "Tell No Lies",
       "ru": "Ничего, Кроме Правды"
@@ -666,7 +669,7 @@
     "continious": false
   },
   {
-    "slug": "midnight-spirit",
+    "slug": "midnight_spirit",
     "title": {
       "en": "Midnight Spirit",
       "ru": "Дух Полночи"
@@ -698,7 +701,7 @@
     "continious": false
   },
   {
-    "slug": "hideous-retribution",
+    "slug": "hideous_retribution",
     "title": {
       "en": "Hideous Retribution",
       "ru": "Безобразная Кара"
@@ -714,7 +717,7 @@
     "continious": false
   },
   {
-    "slug": "siphon-essence",
+    "slug": "siphon_essence",
     "title": {
       "en": "Siphon Essence",
       "ru": "Вытягивание Сущности"
@@ -732,7 +735,7 @@
     "continious": false
   },
   {
-    "slug": "conjure-swarm",
+    "slug": "conjure_swarm",
     "title": {
       "en": "Conjure Swarm",
       "ru": "Призыв Роя"
@@ -748,7 +751,7 @@
     "continious": false
   },
   {
-    "slug": "natural-familiar",
+    "slug": "natural_familiar",
     "title": {
       "en": "Natural Familiar",
       "ru": "Природный Фамильяр"
@@ -764,7 +767,7 @@
     "continious": false
   },
   {
-    "slug": "final-words",
+    "slug": "final_words",
     "title": {
       "en": "Final Words",
       "ru": "Последние Слова"
@@ -780,7 +783,7 @@
     "continious": false
   },
   {
-    "slug": "healing-hands",
+    "slug": "healing_hands",
     "title": {
       "en": "Healing Hands",
       "ru": "Исцеляющие Руки"
@@ -796,7 +799,7 @@
     "continious": false
   },
   {
-    "slug": "body-basher",
+    "slug": "body_basher",
     "title": {
       "en": "Body Basher",
       "ru": "Не Жалея Себя"
@@ -812,7 +815,7 @@
     "continious": false
   },
   {
-    "slug": "bold-presence",
+    "slug": "bold_presence",
     "title": {
       "en": "Bold Presence",
       "ru": "Отважное Присутствие"
@@ -1233,10 +1236,10 @@
     "origin_value": "blade",
     "kind": "static",
     "eval_variables": {
-      "damage_thresholds": "equiped_armor ? damage_thresholds.transform_values { |item| item + 2 } : damage_thresholds"
+      "damage_thresholds": "damage_thresholds.transform_values { |item| item + 2 }"
     },
     "conditions": { "level": 4 },
-    "continious": false
+    "continious": true
   },
   {
     "slug": "boost",
@@ -1574,6 +1577,48 @@
     "continious": false
   },
   {
+    "slug": "vitality_1",
+    "title": {},
+    "description": {},
+    "origin": "domain_card",
+    "origin_value": "blade",
+    "kind": "update_result",
+    "eval_variables": {
+      "stress_max": "stress_max + 1",
+      "health_max": "health_max + 1"
+    },
+    "conditions": { "selected_feature": "vitality_1" },
+    "continious": false
+  },
+  {
+    "slug": "vitality_2",
+    "title": {},
+    "description": {},
+    "origin": "domain_card",
+    "origin_value": "blade",
+    "kind": "update_result",
+    "eval_variables": {
+      "stress_max": "stress_max + 1",
+      "damage_thresholds": "damage_thresholds.transform_values { |item| item + 2 }"
+    },
+    "conditions": { "selected_feature": "vitality_2" },
+    "continious": false
+  },
+  {
+    "slug": "vitality_3",
+    "title": {},
+    "description": {},
+    "origin": "domain_card",
+    "origin_value": "blade",
+    "kind": "update_result",
+    "eval_variables": {
+      "health_max": "health_max + 1",
+      "damage_thresholds": "damage_thresholds.transform_values { |item| item + 2 }"
+    },
+    "conditions": { "selected_feature": "vitality_3" },
+    "continious": false
+  },
+  {
     "slug": "know-thy-enemy",
     "title": {
       "en": "Know Thy Enemy",
@@ -1821,10 +1866,10 @@
     "origin_value": "valor",
     "kind": "static",
     "eval_variables": {
-      "armor_score": "equiped_armor ? (armor_score + 1) : armor_score"
+      "armor_score": "armor_score + 1"
     },
     "conditions": { "level": 5 },
-    "continious": false
+    "continious": true
   },
   {
     "slug": "rousing-strike",
@@ -2256,7 +2301,7 @@
     "origin": "domain_card",
     "origin_value": "bone",
     "kind": "static",
-    "eval_variables": {
+    "bonus_eval_variables": {
       "modified_traits": "modified_traits.merge({ 'agi' => modified_traits['agi'] + 1 })"
     },
     "conditions": { "level": 7 },
@@ -2840,7 +2885,7 @@
     "origin_value": "valor",
     "kind": "static",
     "description_eval_variables": { "limit": "1" },
-    "eval_variables": {
+    "bonus_eval_variables": {
       "modified_traits": "modified_traits.transform_values { |item| item + 2 }"
     },
     "limit_refresh": "long_rest",
