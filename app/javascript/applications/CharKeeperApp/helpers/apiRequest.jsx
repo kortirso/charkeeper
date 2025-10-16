@@ -5,6 +5,11 @@ export const apiRequest = ({ url, options }) => {
 
     if (url.endsWith('.json')) url = `https://charkeeper.org${url}?${platformData}`;
     else url = `https://charkeeper.org${url}&${platformData}`;
+  } else {
+    const platformData = `platform=web&version=0.3.8`;
+
+    if (url.endsWith('.json')) url = `${url}?${platformData}`;
+    else url = `${url}&${platformData}`;
   }
 
   return fetch(url, options)
