@@ -100,6 +100,8 @@ en:
             result: "Community \"%{name}\" is created"
           add_transformation:
             result: "Transformation \"%{name}\" is created"
+          add_domain:
+            result: "Domain \"%{name}\" is created"
   decorators:
     pathfinder2:
       boosts: "You can improve abilities: %{ability_boosts_text}.\nYou can learn skills: %{skill_boosts_text}"

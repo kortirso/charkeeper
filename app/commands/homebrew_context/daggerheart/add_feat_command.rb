@@ -12,7 +12,10 @@ module HomebrewContext
       use_contract do
         config.messages.namespace = :homebrew_feat
 
-        Origins = Dry::Types['strict.string'].enum('ancestry', 'class', 'subclass', 'community', 'character', 'transformation')
+        Origins =
+          Dry::Types['strict.string'].enum(
+            'ancestry', 'class', 'subclass', 'community', 'character', 'transformation', 'domain_card'
+          )
         Kinds = Dry::Types['strict.string'].enum('static', 'text')
         Limits = Dry::Types['strict.string'].enum('short_rest', 'long_rest', 'session')
 
@@ -45,6 +48,8 @@ module HomebrewContext
               ::Daggerheart::Homebrew::Subclass.find_by(user_id: values[:user].id, id: values[:origin_value])
             when 'transformation'
               ::Daggerheart::Homebrew::Transformation.find_by(user_id: values[:user].id, id: values[:origin_value])
+            when 'domain_card'
+              ::Daggerheart::Homebrew::Domain.find_by(user_id: values[:user].id, id: values[:origin_value])
             when 'character'
               values[:user].characters.daggerheart.find_by(id: values[:origin_value])
             end
@@ -61,13 +66,16 @@ module HomebrewContext
         if input[:origin] == 'subclass' && input.key?(:subclass_mastery)
           input[:conditions] = { subclass_mastery: input[:subclass_mastery] }
         end
+        if input[:origin] == 'domain_card' && input.key?(:level)
+          input[:conditions] = { level: input[:level] }
+        end
         input[:description_eval_variables] = { limit: input[:limit].to_s } if input.key?(:limit)
         input[:title] = { en: input[:title], ru: input[:title] }
         input[:description] = { en: input[:description], ru: input[:description] }
       end
 
       def do_persist(input)
-        result = ::Daggerheart::Feat.create!(input.except(:limit, :subclass_mastery))
+        result = ::Daggerheart::Feat.create!(input.except(:limit, :subclass_mastery, :level))
 
         input[:user].characters.daggerheart.find_each { |character| refresh_feats.call(character: character) }
         refresh_user_data.call(user: input[:user])

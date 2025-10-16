@@ -12,7 +12,8 @@ module Daggerheart
           communities: Daggerheart::Homebrew::Community.where(id: object_items['Daggerheart::Homebrew::Community']).pluck(:name),
           subclasses: Daggerheart::Homebrew::Subclass.where(id: object_items['Daggerheart::Homebrew::Subclass']).pluck(:name),
           items: Daggerheart::Item.where(id: object_items['Daggerheart::Homebrew::Item']).pluck(:name).pluck(I18n.locale.to_s),
-          transformations: Daggerheart::Homebrew::Transformation.where(id: object_items['Daggerheart::Homebrew::Transformation']).pluck(:name)
+          transformations: Daggerheart::Homebrew::Transformation.where(id: object_items['Daggerheart::Homebrew::Transformation']).pluck(:name),
+          domains: Daggerheart::Homebrew::Domain.where(id: object_items['Daggerheart::Homebrew::Domain']).pluck(:name)
         }
       end
 

@@ -6,7 +6,8 @@ module BotContext
       include Deps[
         add_race: 'commands.homebrew_context.add_race',
         add_daggerheart_community: 'commands.homebrew_context.daggerheart.add_community',
-        add_daggerheart_transformation: 'commands.homebrew_context.daggerheart.add_transformation'
+        add_daggerheart_transformation: 'commands.homebrew_context.daggerheart.add_transformation',
+        add_daggerheart_domain: 'commands.homebrew_context.daggerheart.add_domain'
       ]
 
       def call(source:, arguments:, data:) # rubocop: disable Lint/UnusedMethodArgument
@@ -16,6 +17,7 @@ module BotContext
         when 'createRace' then create_race(*arguments, data)
         when 'createCommunity' then create_community(*arguments, data)
         when 'createTransformation' then create_transformation(*arguments, data)
+        when 'createDomain' then create_domain(*arguments, data)
         end
       end
 
@@ -51,6 +53,15 @@ module BotContext
         result = add_daggerheart_transformation.call({ user: data[:user], name: arguments[0] })
         {
           type: 'create_transformation',
+          result: result[:result],
+          errors: result[:errors_list]
+        }
+      end
+
+      def create_domain(*arguments, data)
+        result = add_daggerheart_domain.call({ user: data[:user], name: arguments[0] })
+        {
+          type: 'create_domain',
           result: result[:result],
           errors: result[:errors_list]
         }

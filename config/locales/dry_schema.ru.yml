@@ -31,7 +31,6 @@ ru:
           domains:
             filled?: Необходимо указать домены
             only_two: Список доменов должен содержать 2 значения
-            invalid_value: Список доменов содержит неверное значение
       homebrew_item:
         rules:
           title:

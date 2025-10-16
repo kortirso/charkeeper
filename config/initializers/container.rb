@@ -122,6 +122,16 @@ module Charkeeper
       HomebrewContext::Daggerheart::AddBookTransformationsCommand.new
     }
 
+    register('commands.homebrew_context.daggerheart.add_domain') {
+      HomebrewContext::Daggerheart::AddDomainCommand.new
+    }
+    register('commands.homebrew_context.daggerheart.copy_domain') {
+      HomebrewContext::Daggerheart::CopyDomainCommand.new
+    }
+    register('commands.homebrew_context.daggerheart.add_book_domains') {
+      HomebrewContext::Daggerheart::AddBookDomainsCommand.new
+    }
+
     # services
     register('services.auth_context.validate_web_telegram_signature') { AuthContext::WebTelegramSignatureValidateService.new }
 

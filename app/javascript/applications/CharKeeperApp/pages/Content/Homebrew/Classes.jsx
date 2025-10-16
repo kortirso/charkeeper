@@ -60,7 +60,7 @@ export const HomebrewClasses = (props) => {
                   }>
                     <Switch>
                       <Match when={props.provider === 'daggerheart'}>
-                        <DaggerheartClass item={item} feats={props.homebrews.feats} />
+                        <DaggerheartClass homebrews={props.homebrews} item={item} />
                       </Match>
                     </Switch>
                   </Toggle>
@@ -73,7 +73,7 @@ export const HomebrewClasses = (props) => {
           <Show when={activeView() === 'right'}>
             <Switch>
               <Match when={props.provider === 'daggerheart'}>
-                <NewDaggerheartClassForm onSave={createClass} onCancel={cancelCreatingClass} />
+                <NewDaggerheartClassForm homebrews={props.homebrews} onSave={createClass} onCancel={cancelCreatingClass} />
               </Match>
             </Switch>
           </Show>

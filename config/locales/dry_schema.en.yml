@@ -31,7 +31,6 @@ en:
           domains:
             filled?: Domains can't be blank
             only_two: Domains list should contain 2 values
-            invalid_value: Domains list contains invalid value
       homebrew_item:
         rules:
           name:

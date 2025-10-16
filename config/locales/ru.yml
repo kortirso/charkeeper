@@ -100,6 +100,8 @@ ru:
             result: "Общество \"%{name}\" создано"
           add_transformation:
             result: "Трансформация \"%{name}\" создано"
+          add_domain:
+            result: "Домен \"%{name}\" создан"
   decorators:
     pathfinder2:
       boosts: "Вы можете улучшить следующие характеристики: %{ability_boosts_text}.\nТакже вы можете изучить следующие умения: %{skill_boosts_text}"

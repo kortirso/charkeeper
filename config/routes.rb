@@ -38,6 +38,7 @@ Rails.application.routes.draw do
         resources :races, only: %i[index]
         resources :communities, only: %i[index]
         resources :transformations, only: %i[index]
+        resources :domains, only: %i[index]
         resources :specialities, only: %i[index]
         resources :subclasses, only: %i[index]
         resources :feats, only: %i[index]
@@ -73,6 +74,9 @@ Rails.application.routes.draw do
         end
         resources :transformations, only: %i[destroy] do
           resource :copy, only: %i[create], module: :transformations
+        end
+        resources :domains, only: %i[destroy] do
+          resource :copy, only: %i[create], module: :domains
         end
       end
 
