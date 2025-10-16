@@ -140,7 +140,6 @@ export const Daggerheart = (props) => {
             <Match when={activeMobileTab() === 'domainCards'}>
               <DaggerheartDomainCards
                 character={character()}
-                onReplaceCharacter={props.onReplaceCharacter}
                 onReloadCharacter={props.onReloadCharacter}
               />
             </Match>
@@ -251,7 +250,6 @@ export const Daggerheart = (props) => {
             <Match when={activeTab() === 'domainCards'}>
               <DaggerheartDomainCards
                 character={character()}
-                onReplaceCharacter={props.onReplaceCharacter}
                 onReloadCharacter={props.onReloadCharacter}
               />
             </Match>

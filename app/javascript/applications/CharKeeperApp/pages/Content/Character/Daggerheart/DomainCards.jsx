@@ -109,6 +109,7 @@ export const DaggerheartDomainCards = (props) => {
         setCharacterSpells(newValue);
         closeModal();
       });
+      props.onReloadCharacter();
     }
   }
 
@@ -118,6 +119,7 @@ export const DaggerheartDomainCards = (props) => {
     );
     if (result.errors_list === undefined) {
       setCharacterSpells(characterSpells().filter((item) => item.id !== spell.id));
+      props.onReloadCharacter();
     }
   }
 
