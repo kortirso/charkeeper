@@ -4,6 +4,7 @@ import { createSignal, Show, batch, Switch, Match, For } from 'solid-js';
 import { Dice, Button } from '../../components';
 import { useAppState, useAppLocale } from '../../context';
 import { clickOutside, modifier } from '../../helpers';
+import { Close } from '../../assets';
 import { createBotRequest } from '../../requests/createBotRequest';
 
 const TRANSLATION = {
@@ -77,6 +78,49 @@ export const createDiceRoll = () => {
         setRollResult(result.result);
       }
 
+      const rerollDndDice = async (index) => {
+        const result = await createBotRequest(appState.accessToken, { source: 'raw', value: '/roll d20' });
+
+        const newRollResults = [...rollResult().rolls.slice(0, index), result.result.rolls[0], ...rollResult().rolls.slice(index + 1)];
+
+        let total = bonus() + additionalBonus();
+        let status = null;
+        if (advantage() > 0) {
+          const maxRoll = Math.max(...newRollResults.map((item) => item[1]));
+          total += maxRoll;
+          if (maxRoll === 20) status = 'crit_success';
+          if (maxRoll === 1) status = 'crit_failure';
+        } else if (advantage() < 0) {
+          const minRoll = Math.min(...newRollResults.map((item) => item[1]));
+          total += minRoll;
+          if (minRoll === 1) status = 'crit_failure';
+          if (minRoll === 20) status = 'crit_success';
+        } else {
+          total += newRollResults[0][1];
+          if (newRollResults[0][1] === 1) status = 'crit_failure';
+          if (newRollResults[0][1] === 20) status = 'crit_success';
+        }
+
+        setRollResult({ ...rollResult(), rolls: newRollResults, total: total, status: status });
+      }
+
+      const rerollDhDice = async (dice, index) => {
+        const result = await createBotRequest(appState.accessToken, { source: 'raw', value: `/roll ${dice}` });
+
+        const newRollResults = [...rollResult().rolls.slice(0, index), result.result.rolls[0], ...rollResult().rolls.slice(index + 1)];
+
+        let total = newRollResults.slice(0, 2).reduce((acc, item) => acc + item[1], 0) + bonus() + additionalBonus();
+        if (advantage() > 0) total += newRollResults[2][1];
+        if (advantage() < 0) total -= newRollResults[2][1];
+
+        let status;
+        if (newRollResults[0][1] === newRollResults[1][1]) status = 'crit_success';
+        if (newRollResults[0][1] > newRollResults[1][1]) status = 'with_hope';
+        if (newRollResults[0][1] < newRollResults[1][1]) status = 'with_fear';
+
+        setRollResult({ ...rollResult(), rolls: newRollResults, total: total, status: status });
+      }
+
       const makeSimpleRoll = async () => {
         let value = `/roll ${dices().join(' ').toLowerCase()}`;
         if (additionalBonus() !== 0) value += ` ${additionalBonus()}`;
@@ -127,6 +171,7 @@ export const createDiceRoll = () => {
                             when={rollResult() === undefined}
                             fallback={
                               <Dice
+                                onClick={() => rerollDndDice(0)}
                                 minimum={advantage() !== 0 ? (advantage() > 0 ? rollResult().rolls[1][1] > rollResult().rolls[0][1] : rollResult().rolls[1][1] <= rollResult().rolls[0][1]) : false}
                                 text={rollResult().rolls[0][1]}
                               />
@@ -140,6 +185,7 @@ export const createDiceRoll = () => {
                                 when={rollResult() === undefined}
                                 fallback={
                                   <Dice
+                                    onClick={() => rerollDndDice(1)}
                                     minimum={advantage() > 0 ? rollResult().rolls[1][1] <= rollResult().rolls[0][1] : rollResult().rolls[1][1] > rollResult().rolls[0][1]}
                                     text={rollResult().rolls[1][1]}
                                   />
@@ -158,8 +204,8 @@ export const createDiceRoll = () => {
                             when={rollResult() === undefined}
                             fallback={
                               <>
-                                <Dice text={rollResult().rolls[0][1]} />
-                                <Dice text={rollResult().rolls[1][1]} />
+                                <Dice onClick={() => rerollDhDice('d12', 0)} text={rollResult().rolls[0][1]} />
+                                <Dice onClick={() => rerollDhDice('d12', 1)} text={rollResult().rolls[1][1]} />
                               </>
                             }
                           >
@@ -171,7 +217,7 @@ export const createDiceRoll = () => {
                               <Show
                                 when={rollResult() === undefined}
                                 fallback={
-                                  <Dice text={rollResult().rolls[2][1]} />
+                                  <Dice onClick={() => rerollDhDice('d6', 2)} text={rollResult().rolls[2][1]} />
                                 }
                               >
                                 <Dice text={advantage() > 0 ? 'Adv' : 'Dis'} />
@@ -271,7 +317,7 @@ export const createDiceRoll = () => {
                   <div class="p-2">
                     <Dice
                       onClick={() => isOpen() ? setIsOpen(undefined) : setIsOpen('rollCommand')}
-                      text={isOpen() ? 'X' : 'D20'}
+                      text={isOpen() ? <Close /> : 'D20'}
                     />
                   </div>
                 </div>

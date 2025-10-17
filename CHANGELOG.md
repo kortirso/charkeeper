@@ -11,6 +11,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - login with Discord account
 - attaching oauth accounts to existing account
 - custom rolls
+- rerolls
 
 ### Modified
 - using homebrew ancestries for mixed Daggerheart ancestries
