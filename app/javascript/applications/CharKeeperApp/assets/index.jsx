@@ -26,3 +26,4 @@ export * from './socials/Discord';
 export * from './socials/Telegram';
 export * from './socials/Vk';
 export * from './socials/Boosty';
+export * from './socials/Google';

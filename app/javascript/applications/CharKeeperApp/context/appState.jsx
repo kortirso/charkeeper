@@ -17,6 +17,9 @@ export const AppStateProvider = (props) => {
     activePage: null,
     activePageParams: {},
     unreadNotificationsCount: undefined,
+    identities: props.identities, // eslint-disable-line solid/reactivity
+    oauthLinks: props.oauthLinks, // eslint-disable-line solid/reactivity
+    oauthCredentials: props.oauthCredentials, // eslint-disable-line solid/reactivity
     initialized: false
   });
 
