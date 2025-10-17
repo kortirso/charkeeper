@@ -95,7 +95,11 @@ export const createDiceRoll = () => {
           total += minRoll;
           if (minRoll === 1) status = 'crit_failure';
           if (minRoll === 20) status = 'crit_success';
-        } else total += newRollResults[0][1];
+        } else {
+          total += newRollResults[0][1];
+          if (newRollResults[0][1] === 1) status = 'crit_failure';
+          if (newRollResults[0][1] === 20) status = 'crit_success';
+        }
 
         setRollResult({ ...rollResult(), rolls: newRollResults, total: total, status: status });
       }
