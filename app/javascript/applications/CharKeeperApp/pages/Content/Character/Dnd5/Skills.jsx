@@ -1,6 +1,6 @@
 import { createSignal, createEffect, For, Show, batch, Switch, Match } from 'solid-js';
 
-import { ErrorWrapper, Checkbox, Levelbox, EditWrapper, Dice, createDiceRoll } from '../../../../components';
+import { ErrorWrapper, Checkbox, Levelbox, EditWrapper, Dice } from '../../../../components';
 import config from '../../../../data/dnd2024.json';
 import { useAppState, useAppLocale, useAppAlert } from '../../../../context';
 import { updateCharacterRequest } from '../../../../requests/updateCharacterRequest';
@@ -13,7 +13,6 @@ export const Dnd5Skills = (props) => {
   const [editMode, setEditMode] = createSignal(false);
   const [skillsData, setSkillsData] = createSignal(character().skills);
 
-  const { DiceRoll, openDiceRoll } = createDiceRoll();
   const [appState] = useAppState();
   const [{ renderAlerts }] = useAppAlert();
   const [locale] = useAppLocale();
@@ -119,7 +118,7 @@ export const Dnd5Skills = (props) => {
                       height="28"
                       text={modifier(skill.modifier)}
                       textClassList=""
-                      onClick={() => openDiceRoll(`/check skill ${skill.slug}`, skill.modifier)}
+                      onClick={() => props.openDiceRoll(`/check skill ${skill.slug}`, skill.modifier)}
                     />
                   </div>
                 }
@@ -128,7 +127,6 @@ export const Dnd5Skills = (props) => {
           </For>
         </div>
       </EditWrapper>
-      <DiceRoll provider="dnd" characterId={character().id} />
     </ErrorWrapper>
   );
 }
