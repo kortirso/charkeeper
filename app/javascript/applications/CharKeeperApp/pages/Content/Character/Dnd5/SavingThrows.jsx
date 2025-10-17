@@ -1,6 +1,6 @@
 import { For } from 'solid-js';
 
-import { ErrorWrapper, Dice, createDiceRoll } from '../../../../components';
+import { ErrorWrapper, Dice } from '../../../../components';
 import config from '../../../../data/dnd2024.json';
 import { useAppLocale } from '../../../../context';
 import { modifier } from '../../../../helpers';
@@ -17,7 +17,6 @@ const TRANSLATION = {
 export const Dnd5SavingThrows = (props) => {
   const character = () => props.character;
 
-  const { DiceRoll, openDiceRoll } = createDiceRoll();
   const [locale] = useAppLocale();
 
   return (
@@ -34,7 +33,7 @@ export const Dnd5SavingThrows = (props) => {
                 <div class="flex items-center">
                   <Dice
                     text={modifier(character().save_dc[slug])}
-                    onClick={() => openDiceRoll(`/check save ${slug}`, character().save_dc[slug])}
+                    onClick={() => props.openDiceRoll(`/check save ${slug}`, character().save_dc[slug])}
                   />
                 </div>
               </div>
@@ -42,7 +41,6 @@ export const Dnd5SavingThrows = (props) => {
           </For>
         </div>
       </div>
-      <DiceRoll provider="dnd" characterId={character().id} />
     </ErrorWrapper>
   );
 }

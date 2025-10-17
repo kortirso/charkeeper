@@ -6,7 +6,9 @@ import {
   Dnd5Abilities, Dnd5Combat, Dnd5Rest, Dnd5ClassLevels, Dnd5Professions, Dnd5Spells, DndGold, Dnd5Skills, Dnd5SavingThrows,
   Dnd5Proficiency
 } from '../../../pages';
-import { CharacterNavigation, Equipment, Notes, Avatar, ContentWrapper, Feats, Bonuses } from '../../../components';
+import {
+  CharacterNavigation, Equipment, Notes, Avatar, ContentWrapper, Feats, Bonuses, createDiceRoll
+} from '../../../components';
 import { useAppState, useAppLocale } from '../../../context';
 import { updateCharacterRequest } from '../../../requests/updateCharacterRequest';
 
@@ -18,6 +20,7 @@ export const Dnd5 = (props) => {
   const [activeMobileTab, setActiveMobileTab] = createSignal('abilities');
   const [activeTab, setActiveTab] = createSignal('combat');
 
+  const { DiceRoll, openDiceRoll } = createDiceRoll();
   const [appState] = useAppState();
   const [, dict] = useAppLocale();
 
@@ -90,15 +93,15 @@ export const Dnd5 = (props) => {
         <div class="p-2 flex-1 overflow-y-auto">
           <Switch>
             <Match when={activeMobileTab() === 'abilities'}>
-              <Dnd5Abilities character={character()} onReplaceCharacter={props.onReplaceCharacter} />
+              <Dnd5Abilities character={character()} openDiceRoll={openDiceRoll} onReplaceCharacter={props.onReplaceCharacter} />
               <div class="mt-4">
                 <Dnd5Proficiency character={character()} onReplaceCharacter={props.onReplaceCharacter} />
               </div>
               <div class="mt-4">
-                <Dnd5SavingThrows character={character()} />
+                <Dnd5SavingThrows character={character()} openDiceRoll={openDiceRoll} />
               </div>
               <div class="mt-4">
-                <Dnd5Skills character={character()} onReplaceCharacter={props.onReplaceCharacter} />
+                <Dnd5Skills character={character()} openDiceRoll={openDiceRoll} onReplaceCharacter={props.onReplaceCharacter} />
               </div>
               <div class="mt-4">
                 <Feats
@@ -112,6 +115,7 @@ export const Dnd5 = (props) => {
             <Match when={activeMobileTab() === 'combat'}>
               <Dnd5Combat
                 character={character()}
+                openDiceRoll={openDiceRoll}
                 onReloadCharacter={updateCharacter}
                 onRefreshCharacter={refreshCharacter}
                 onReplaceCharacter={props.onReplaceCharacter}
@@ -173,16 +177,16 @@ export const Dnd5 = (props) => {
 
     return (
       <>
-        <Dnd5Abilities character={character()} onReplaceCharacter={props.onReplaceCharacter} />
+        <Dnd5Abilities character={character()} openDiceRoll={openDiceRoll} onReplaceCharacter={props.onReplaceCharacter} />
         <div class="flex flex-col emd:flex-row emd:gap-4 emd:mt-4">
           <div class="mt-4 emd:mt-0 flex-1">
             <Dnd5Proficiency character={character()} onReplaceCharacter={props.onReplaceCharacter} />
             <div class="mt-4">
-              <Dnd5SavingThrows character={character()} />
+              <Dnd5SavingThrows character={character()} openDiceRoll={openDiceRoll} />
             </div>
           </div>
           <div class="mt-4 emd:mt-0 flex-1">
-            <Dnd5Skills character={character()} onReplaceCharacter={props.onReplaceCharacter} />
+            <Dnd5Skills character={character()} openDiceRoll={openDiceRoll} onReplaceCharacter={props.onReplaceCharacter} />
           </div>
         </div>
       </>
@@ -204,6 +208,7 @@ export const Dnd5 = (props) => {
             <Match when={activeTab() === 'combat'}>
               <Dnd5Combat
                 character={character()}
+                openDiceRoll={openDiceRoll}
                 onReloadCharacter={updateCharacter}
                 onRefreshCharacter={refreshCharacter}
                 onReplaceCharacter={props.onReplaceCharacter}
@@ -269,6 +274,9 @@ export const Dnd5 = (props) => {
   });
 
   return (
-    <ContentWrapper mobileView={mobileView()} leftView={leftView()} rightView={rightView()} />
+    <>
+      <ContentWrapper mobileView={mobileView()} leftView={leftView()} rightView={rightView()} />
+      <DiceRoll provider="dnd" characterId={character().id} />
+    </>
   );
 }

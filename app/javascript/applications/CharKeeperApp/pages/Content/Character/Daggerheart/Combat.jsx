@@ -1,14 +1,13 @@
 import { For, Show } from 'solid-js';
 import * as i18n from '@solid-primitives/i18n';
 
-import { ErrorWrapper, Dice, createDiceRoll } from '../../../../components';
+import { ErrorWrapper, Dice } from '../../../../components';
 import { useAppLocale } from '../../../../context';
 import { modifier } from '../../../../helpers';
 
 export const DaggerheartCombat = (props) => {
   const character = () => props.character;
 
-  const { DiceRoll, openDiceRoll } = createDiceRoll();
   const [locale, dict] = useAppLocale();
   const t = i18n.translator(dict);
 
@@ -47,7 +46,7 @@ export const DaggerheartCombat = (props) => {
                       width="28"
                       height="28"
                       text={modifier(attack.attack_bonus)}
-                      onClick={() => openDiceRoll(`/check attack ${attack.name}`, attack.attack_bonus)}
+                      onClick={() => props.openDiceRoll(`/check attack ${attack.name}`, attack.attack_bonus)}
                     />
                   </td>
                   <td class="py-1 text-center">
@@ -70,7 +69,6 @@ export const DaggerheartCombat = (props) => {
     <ErrorWrapper payload={{ character_id: character().id, key: 'DaggerheartCombat' }}>
       {renderAttacksBox(t('combat.list.equipment'), character().attacks.filter((item) => item.ready_to_use))}
       {renderAttacksBox(t('combat.list.backpack'), character().attacks.filter((item) => !item.ready_to_use))}
-      <DiceRoll provider="daggerheart" characterId={character().id} />
     </ErrorWrapper>
   );
 }

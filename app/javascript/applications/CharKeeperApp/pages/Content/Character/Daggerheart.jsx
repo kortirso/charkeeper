@@ -7,7 +7,9 @@ import {
   DaggerheartDomainCards, DaggerheartRest, DaggerheartLeveling, DaggerheartExperience, DaggerheartGold, DaggerheartTransform,
   DaggerheartStances
 } from '../../../pages';
-import { CharacterNavigation, Equipment, Bonuses, Notes, Avatar, ContentWrapper, Feats } from '../../../components';
+import {
+  CharacterNavigation, Equipment, Bonuses, Notes, Avatar, ContentWrapper, Feats, createDiceRoll
+} from '../../../components';
 import { useAppLocale } from '../../../context';
 
 export const Daggerheart = (props) => {
@@ -17,6 +19,7 @@ export const Daggerheart = (props) => {
   const [activeMobileTab, setActiveMobileTab] = createSignal('traits');
   const [activeTab, setActiveTab] = createSignal('combat');
 
+  const { DiceRoll, openDiceRoll } = createDiceRoll();
   const [, dict] = useAppLocale();
 
   const t = i18n.translator(dict);
@@ -77,7 +80,11 @@ export const Daggerheart = (props) => {
         <div class="p-2 flex-1 overflow-y-auto">
           <Switch>
             <Match when={activeMobileTab() === 'traits'}>
-              <DaggerheartTraits character={character()} onReplaceCharacter={props.onReplaceCharacter} />
+              <DaggerheartTraits
+                character={character()}
+                openDiceRoll={openDiceRoll}
+                onReplaceCharacter={props.onReplaceCharacter}
+              />
               <div class="mt-4">
                 <DaggerheartExperience object={character()} onReplaceCharacter={props.onReplaceCharacter} />
               </div>
@@ -105,7 +112,11 @@ export const Daggerheart = (props) => {
                 <DaggerheartHealth character={character()} onReplaceCharacter={props.onReplaceCharacter} />
               </div>
               <div class="mt-4">
-                <DaggerheartCombat character={character()} onReplaceCharacter={props.onReplaceCharacter} />
+                <DaggerheartCombat
+                  character={character()}
+                  openDiceRoll={openDiceRoll}
+                  onReplaceCharacter={props.onReplaceCharacter}
+                />
               </div>
             </Match>
             <Match when={activeMobileTab() === 'equipment'}>
@@ -172,7 +183,11 @@ export const Daggerheart = (props) => {
 
     return (
       <>
-        <DaggerheartTraits character={character()} onReplaceCharacter={props.onReplaceCharacter} />
+        <DaggerheartTraits
+          character={character()}
+          openDiceRoll={openDiceRoll}
+          onReplaceCharacter={props.onReplaceCharacter}
+        />
         <div class="mt-4">
           <DaggerheartStatic character={character()} />
         </div>
@@ -215,7 +230,11 @@ export const Daggerheart = (props) => {
             <Match when={activeTab() === 'combat'}>
               <DaggerheartHealth character={character()} onReplaceCharacter={props.onReplaceCharacter} />
               <div class="mt-4">
-                <DaggerheartCombat character={character()} />
+                <DaggerheartCombat
+                  character={character()}
+                  openDiceRoll={openDiceRoll}
+                  onReplaceCharacter={props.onReplaceCharacter}
+                />
               </div>
             </Match>
             <Match when={activeTab() === 'equipment'}>
@@ -278,6 +297,9 @@ export const Daggerheart = (props) => {
   });
 
   return (
-    <ContentWrapper mobileView={mobileView()} leftView={leftView()} rightView={rightView()} />
+    <>
+      <ContentWrapper mobileView={mobileView()} leftView={leftView()} rightView={rightView()} />
+      <DiceRoll provider="daggerheart" characterId={character().id} />
+    </>
   );
 }

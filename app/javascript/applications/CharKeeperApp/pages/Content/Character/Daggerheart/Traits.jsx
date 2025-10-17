@@ -1,6 +1,6 @@
 import { createSignal, createEffect, For, Show, batch } from 'solid-js';
 
-import { Button, ErrorWrapper, EditWrapper, Dice, createDiceRoll } from '../../../../components';
+import { Button, ErrorWrapper, EditWrapper, Dice } from '../../../../components';
 import config from '../../../../data/daggerheart.json';
 import { useAppState, useAppLocale, useAppAlert } from '../../../../context';
 import { Minus, Plus } from '../../../../assets';
@@ -14,7 +14,6 @@ export const DaggerheartTraits = (props) => {
   const [editMode, setEditMode] = createSignal(false);
   const [traitsData, setTraitsData] = createSignal(character().traits);
 
-  const { DiceRoll, openDiceRoll } = createDiceRoll();
   const [appState] = useAppState();
   const [{ renderAlerts }] = useAppAlert();
   const [locale] = useAppLocale();
@@ -73,7 +72,7 @@ export const DaggerheartTraits = (props) => {
                         height="64"
                         text={modifier(character().modified_traits[slug])}
                         textClassList="text-4xl"
-                        onClick={() => openDiceRoll(`/check attr ${slug}`, character().modified_traits[slug])}
+                        onClick={() => props.openDiceRoll(`/check attr ${slug}`, character().modified_traits[slug])}
                       />
                     }
                   </p>
@@ -93,7 +92,6 @@ export const DaggerheartTraits = (props) => {
           </For>
         </div>
       </EditWrapper>
-      <DiceRoll provider="daggerheart" characterId={character().id} />
     </ErrorWrapper>
   );
 }

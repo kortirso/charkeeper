@@ -2,7 +2,7 @@ import { createSignal, createEffect, For, Show, batch } from 'solid-js';
 import * as i18n from '@solid-primitives/i18n';
 
 import {
-  createModal, StatsBlock, ErrorWrapper, Input, Toggle, Checkbox, Button, Dice, createDiceRoll
+  createModal, StatsBlock, ErrorWrapper, Input, Toggle, Checkbox, Button, Dice
 } from '../../../../components';
 import { useAppState, useAppLocale } from '../../../../context';
 import { updateCharacterRequest } from '../../../../requests/updateCharacterRequest';
@@ -18,7 +18,6 @@ export const Dnd5Combat = (props) => {
   const [damageHealValue, setDamageHealValue] = createSignal(0);
   const [healthData, setHealthData] = createSignal(character().health);
 
-  const { DiceRoll, openDiceRoll } = createDiceRoll();
   const { Modal, openModal, closeModal } = createModal();
   const [appState] = useAppState();
   const [, dict] = useAppLocale();
@@ -142,7 +141,7 @@ export const Dnd5Combat = (props) => {
                       width="28"
                       height="28"
                       text={modifier(attack.attack_bonus)}
-                      onClick={() => openDiceRoll(`/check attack ${attack.name}`, attack.attack_bonus)}
+                      onClick={() => props.openDiceRoll(`/check attack ${attack.name}`, attack.attack_bonus)}
                     />
                   </td>
                   <td class="py-1 text-center dark:text-snow">
@@ -300,7 +299,6 @@ export const Dnd5Combat = (props) => {
           <Button default textable onClick={updateHealth}>{t('save')}</Button>
         </div>
       </Modal>
-      <DiceRoll provider="dnd" characterId={character().id} />
     </ErrorWrapper>
   );
 }
