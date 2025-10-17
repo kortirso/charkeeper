@@ -1,6 +1,9 @@
 <%=
   js_component 'CharKeeperApp',
                access_token: @access_token,
+               identities: @identities,
+               oauth_links: @oauth_links,
+               oauth_credentials: @oauth_credentials,
                locale: current_user.locale,
                username: current_user.username,
                admin: current_user.admin?,

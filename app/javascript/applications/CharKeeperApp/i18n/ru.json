@@ -12,16 +12,13 @@
     },
     "settingsPage": {
       "logout": "Выход",
-      "colorSchema": "Цветовая палитра",
       "version": "Версия",
       "title": "Настройки",
       "changePassword": "Пароль",
       "feedback": "Отзыв",
       "profile": "Профиль",
-      "username": "Имя пользователя",
       "socials": "Общество",
       "notifications": "Уведомления",
-      "locale": "Язык",
       "profileDeleting": "Удаление профиля",
       "deleteProfileConfirm1": "Вы точно хотите удалить свой профиль?",
       "deleteProfileConfirm2": "Это действие нельзя отменить, все данные будут удалены."

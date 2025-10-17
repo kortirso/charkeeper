@@ -1,11 +1,35 @@
-import { Show, createEffect, createSignal, batch } from 'solid-js';
+import { Show, createEffect, createSignal, createMemo, batch, For, Switch, Match } from 'solid-js';
 import * as i18n from '@solid-primitives/i18n';
 import { createWindowSize } from '@solid-primitives/resize-observer';
 
-import { PageHeader, IconButton, Input, Button, Select } from '../../components';
-import { Arrow } from '../../assets';
+import { PageHeader, IconButton, Input, Button, Select, Label } from '../../components';
+import { Arrow, Google, Discord, Telegram, Close } from '../../assets';
 import { useAppState, useAppLocale, useAppAlert } from '../../context';
 import { updateUserRequest } from '../../requests/updateUserRequest';
+import { removeIdentityRequest } from '../../requests/removeIdentityRequest';
+
+const TRANSLATION = {
+  en: {
+    existingIdentities: 'Existing identities',
+    availableIdentities: 'Available identities',
+    connected: 'Everything is connected',
+    light: 'Light',
+    dark: 'Dark',
+    username: 'Username',
+    locale: 'Locale',
+    colorSchema: 'Color schema'
+  },
+  ru: {
+    existingIdentities: 'Подключенные сервисы',
+    availableIdentities: 'Доступные сервисы',
+    connected: 'Всё подключено',
+    light: 'Светлая',
+    dark: 'Тёмная',
+    username: 'Имя пользователя',
+    locale: 'Язык',
+    colorSchema: 'Цветовая палитра'
+  }
+}
 
 export const UsernameTab = (props) => {
   const size = createWindowSize();
@@ -28,6 +52,12 @@ export const UsernameTab = (props) => {
     });
   });
 
+  const identityProviders = createMemo(() => {
+    if (appState.identities === undefined) return [];
+
+    return appState.identities.map((item) => item.provider);
+  });
+
   const updateProfile = async () => {
     let payload = { color_schema: colorSchema(), locale: localeValue() };
     if (username() !== appState.username) payload = { ...payload, username: username() };
@@ -40,6 +70,11 @@ export const UsernameTab = (props) => {
         setLocale(localeValue());
       });
     } else renderAlerts(result.errors_list);
+  }
+
+  const removeIdentity = async (id) => {
+    await removeIdentityRequest(appState.accessToken, id);
+    window.location.href = '/';
   }
 
   return (
@@ -58,25 +93,88 @@ export const UsernameTab = (props) => {
       <div class="p-4 flex-1 flex flex-col overflow-y-auto">
         <Input
           containerClassList="mb-2"
-          labelText={t('pages.settingsPage.username')}
+          labelText={TRANSLATION[locale()]['username']}
           value={username()}
           onInput={(value) => setUsername(value)}
         />
         <Select
           containerClassList="mb-2"
-          labelText={t('pages.settingsPage.locale')}
+          labelText={TRANSLATION[locale()]['locale']}
           items={{ 'en': 'English', 'ru': 'Русский' }}
           selectedValue={localeValue()}
           onSelect={(value) => setLocaleValue(value)}
         />
         <Select
-          containerClassList="mb-4"
-          labelText={t('pages.settingsPage.colorSchema')}
-          items={{ 'light': 'Light', 'dark': 'Dark' }}
+          containerClassList="mb-2"
+          labelText={TRANSLATION[locale()]['colorSchema']}
+          items={{ 'light': TRANSLATION[locale()]['light'], 'dark': TRANSLATION[locale()]['dark'] }}
           selectedValue={colorSchema()}
           onSelect={(value) => setColorSchema(value)}
         />
-        <Button default textable onClick={updateProfile}>{t('save')}</Button>
+
+        <Show when={appState.identities !== undefined}>
+          <div class="mb-2 grid grid-cols-1 emd:grid-cols-2 gap-2">
+            <div>
+              <Label labelText={TRANSLATION[locale()]['existingIdentities']} />
+              <table class="table border border-gray-200 bg-white dark:bg-neutral-700 dark:border-gray-500 dark:text-snow">
+                <tbody>
+                  <For each={appState.identities}>
+                    {(identity) =>
+                      <tr>
+                        <td class="flex p-1">
+                          <Switch>
+                            <Match when={identity.provider === 'discord'}><Discord /></Match>
+                            <Match when={identity.provider === 'google'}><Google /></Match>
+                            <Match when={identity.provider === 'telegram'}><Telegram /></Match>
+                          </Switch>
+                          <p class="dark:text-snow ml-4">{identity.uid}</p>
+                        </td>
+                        <td class="p-1">
+                          <IconButton onClick={() => removeIdentity(identity.id)}>
+                            <Close />
+                          </IconButton>
+                        </td>
+                      </tr>
+                    }
+                  </For>
+                </tbody>
+              </table>
+            </div>
+            <div>
+              <Label labelText={TRANSLATION[locale()]['availableIdentities']} />
+              <Show
+                when={['google', 'discord', 'telegram'].filter((item) => !identityProviders().includes(item)).length > 0}
+                fallback={
+                  <p>{TRANSLATION[locale()]['connected']}</p>
+                }
+              >
+                <div class="p-1">
+                  <For each={['google', 'discord', 'telegram'].filter((item) => !identityProviders().includes(item))}>
+                    {(provider) =>
+                      <Switch>
+                        <Match when={provider === 'discord'}><a href={appState.oauthLinks.discord}><Discord /></a></Match>
+                        <Match when={provider === 'google'}><a href={appState.oauthLinks.google}><Google /></a></Match>
+                        <Match when={provider === 'telegram'}>
+                          <script
+                            async
+                            src="https://telegram.org/js/telegram-widget.js?22"
+                            data-telegram-login={appState.oauthCredentials.telegram.botName}
+                            data-size="medium"
+                            data-userpic="false"
+                            data-radius="0"
+                            data-auth-url={appState.oauthCredentials.telegram.redirectUrl}
+                            data-request-access="write"
+                          />
+                        </Match>
+                      </Switch>
+                    }
+                  </For>
+                </div>
+              </Show>
+            </div>
+          </div>
+        </Show>
+        <Button default textable classList="mt-4" onClick={updateProfile}>{t('save')}</Button>
       </div>
     </>
   );

@@ -12,16 +12,13 @@
     },
     "settingsPage": {
       "logout": "Logout",
-      "colorSchema": "Color schema",
       "version": "Version",
       "title": "Settings",
       "changePassword": "Password",
       "feedback": "Feedback",
       "profile": "Profile",
-      "username": "Username",
       "socials": "Community links",
       "notifications": "Notifications",
-      "locale": "Locale",
       "profileDeleting": "Deleting profile",
       "deleteProfileConfirm1": "Are you sure you want to remove your profile?",
       "deleteProfileConfirm2": "This action is not revertable, add data will be removed."

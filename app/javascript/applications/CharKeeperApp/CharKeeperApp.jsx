@@ -8,6 +8,9 @@ export const CharKeeperApp = (props) => (
     username={props.username}
     isAdmin={props.admin}
     colorSchema={props.colorSchema}
+    identities={props.identities}
+    oauthLinks={props.oauthLinks}
+    oauthCredentials={props.oauthCredentials}
   >
     <AppLocaleProvider locale={props.locale}>
       <AppI18nProvider locale={props.locale}>
