@@ -198,7 +198,7 @@
     "animal": { "name": { "en": "Animal Handling", "ru": "Уход за животными" } },
     "arcana": { "name": { "en": "Arcana", "ru": "Магия" } },
     "athletics": { "name": { "en": "Athletics", "ru": "Атлетика" } },
-    "deception": { "name": { "en": "Deception", "ru": "Обмен" } },
+    "deception": { "name": { "en": "Deception", "ru": "Обман" } },
     "history": { "name": { "en": "History", "ru": "История" } },
     "insight": { "name": { "en": "Insight", "ru": "Проницательность" } },
     "intimidation": { "name": { "en": "Intimidation", "ru": "Запугивание" } },

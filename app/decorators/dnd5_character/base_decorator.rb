@@ -120,12 +120,14 @@ module Dnd5Character
       }
     end
 
-    def calc_armor_class
+    def calc_armor_class # rubocop: disable Metrics/AbcSize
       equiped_armor = defense_gear[:armor]
       equiped_shield = defense_gear[:shield]
-      return 10 + modifiers['dex'] if equiped_armor.nil? && equiped_shield.nil?
+      return 10 + modifiers['dex'] + equiped_shield&.dig(:items_info, 'ac').to_i if equiped_armor.nil?
 
-      equiped_armor&.dig(:items_info, 'ac').to_i + equiped_shield&.dig(:items_info, 'ac').to_i
+      equiped_armor.dig(:items_info, 'ac').to_i +
+        equiped_shield&.dig(:items_info, 'ac').to_i +
+        [equiped_armor.dig(:items_info, 'max_dex'), modifiers['dex']].compact.min
     end
 
     def calc_defense_gear

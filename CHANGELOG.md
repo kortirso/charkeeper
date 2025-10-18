@@ -20,6 +20,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Fixed
 - creating campaign by bot from web interface
 - handling option errors for commands
+- armor class calculations for D&D
 
 ## [0.3.8] - 2025-10-12
 ### Added
