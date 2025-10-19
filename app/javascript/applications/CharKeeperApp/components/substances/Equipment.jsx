@@ -10,6 +10,15 @@ import { createCharacterItemRequest } from '../../requests/createCharacterItemRe
 import { updateCharacterItemRequest } from '../../requests/updateCharacterItemRequest';
 import { removeCharacterItemRequest } from '../../requests/removeCharacterItemRequest';
 
+const TRANSLATION = {
+  en: {
+    searchByName: 'Search by name (from 3 characters)'
+  },
+  ru: {
+    searchByName: 'Поиск по названию (от 3 символов)'
+  }
+}
+
 export const Equipment = (props) => {
   const safeChildren = children(() => props.children);
 
@@ -20,11 +29,12 @@ export const Equipment = (props) => {
   const [items, setItems] = createSignal(undefined);
   const [itemsSelectingMode, setItemsSelectingMode] = createSignal(false);
   const [changingItem, setChangingItem] = createSignal(null);
+  const [filterByName, setFilterByName] = createSignal('');
 
   const { Modal, openModal, closeModal } = createModal();
   const [appState] = useAppState();
   const [{ renderNotice }] = useAppAlert();
-  const [, dict] = useAppLocale();
+  const [locale, dict] = useAppLocale();
 
   const t = i18n.translator(dict);
 
@@ -122,38 +132,12 @@ export const Equipment = (props) => {
     return characterItems().reduce((acc, item) => acc + item.quantity * item.data.weight, 0);
   });
 
-  const renderItems = (title, items) => (
-    <Toggle title={title}>
-      <table class="w-full table first-column-full-width">
-        <thead>
-          <tr>
-            <td />
-            <Show when={props.withWeight}><td class="text-center px-2">{t('equipment.weight')}</td></Show>
-            <Show when={props.withPrice}><td class="text-center text-nowrap px-2">{t('equipment.cost')}</td></Show>
-            <td />
-          </tr>
-        </thead>
-        <tbody>
-          <For each={items}>
-            {(item) =>
-              <tr>
-                <td class="py-1 pl-1">
-                  <p>{item.name}</p>
-                </td>
-                <Show when={props.withWeight}><td class="py-1 text-center">{item.data.weight}</td></Show>
-                <Show when={props.withPrice}><td class="py-1 text-center">{item.data.price / 100}</td></Show>
-                <td>
-                  <Button default size="small" onClick={() => buyItem(item)}>
-                    <PlusSmall />
-                  </Button>
-                </td>
-              </tr>
-            }
-          </For>
-        </tbody>
-      </table>
-    </Toggle>
-  );
+  const filteredItems = createMemo(() => {
+    if (items() === undefined) return [];
+    if (filterByName().length < 3) return items();
+
+    return items().filter((item) => item.name.includes(filterByName()));
+  });
 
   return (
     <ErrorWrapper payload={{ character_id: character().id, key: 'Equipment' }}>
@@ -161,9 +145,46 @@ export const Equipment = (props) => {
         when={!itemsSelectingMode()}
         fallback={
           <>
+            <Input
+              containerClassList="mb-2"
+              placeholder={TRANSLATION[locale()]['searchByName']}
+              value={filterByName()}
+              onInput={(value) => setFilterByName(value)}
+            />
             <For each={props.itemFilters}>
               {(itemFilter) =>
-                renderItems(itemFilter.title, items().filter(itemFilter.callback))
+                <Show when={filteredItems().filter(itemFilter.callback).length > 0}>
+                  <Toggle title={itemFilter.title}>
+                    <table class="w-full table first-column-full-width">
+                      <thead>
+                        <tr>
+                          <td />
+                          <Show when={props.withWeight}><td class="text-center px-2">{t('equipment.weight')}</td></Show>
+                          <Show when={props.withPrice}><td class="text-center text-nowrap px-2">{t('equipment.cost')}</td></Show>
+                          <td />
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <For each={filteredItems().filter(itemFilter.callback)}>
+                          {(item) =>
+                            <tr>
+                              <td class="py-1 pl-1">
+                                <p>{item.name}</p>
+                              </td>
+                              <Show when={props.withWeight}><td class="py-1 text-center">{item.data.weight}</td></Show>
+                              <Show when={props.withPrice}><td class="py-1 text-center">{item.data.price / 100}</td></Show>
+                              <td>
+                                <Button default size="small" onClick={() => buyItem(item)}>
+                                  <PlusSmall />
+                                </Button>
+                              </td>
+                            </tr>
+                          }
+                        </For>
+                      </tbody>
+                    </table>
+                  </Toggle>
+                </Show>
               }
             </For>
             <Button default textable onClick={() => setItemsSelectingMode(false)}>{t('back')}</Button>
