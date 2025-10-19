@@ -33,7 +33,7 @@ module DaggerheartCharacter
 
     def damage_thresholds
       @damage_thresholds ||=
-        { 'major' => level, 'severe' => equiped_thresholds_bonuses.any? ? level : (2 * level) }
+        { 'major' => level, 'severe' => level }
           .merge(*[equiped_thresholds_bonuses, *bonuses.pluck('thresholds')].compact) { |_key, oldval, newval| newval + oldval }
     end
 

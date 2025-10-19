@@ -13,7 +13,7 @@ module CharactersContext
         required(:character_item).filled(type?: ::Character::Item)
         optional(:quantity).filled(:integer)
         optional(:ready_to_use).filled(:bool)
-        optional(:notes).maybe(:string, max_size?: 100)
+        optional(:notes).maybe(:string, max_size?: 250)
         optional(:state).filled(States)
       end
 

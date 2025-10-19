@@ -142,9 +142,15 @@ end
 #   }
 # end
 
-# beautified_json_string = JSON.pretty_generate(data_hash)
-# # Write the beautified JSON string to a file
-# File.open('db/data/daggerheart/feats/spells.json', 'w') do |file|
+# client = HttpService::Client.new(url: 'https://new.ttg.club')
+# response = links.map do |url|
+#   sleep(1)
+#   client.get(path: "/api/v2/#{url}")[:body]
+# end
+
+# beautified_json_string = JSON.pretty_generate(response)
+# # # Write the beautified JSON string to a file
+# File.open('db/data/dnd2024/spells.json', 'w') do |file|
 #   file.write(beautified_json_string)
 # end
 
