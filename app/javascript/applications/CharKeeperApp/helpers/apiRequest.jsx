@@ -1,12 +1,12 @@
 export const apiRequest = ({ url, options }) => {
   if (window.__TAURI_INTERNALS__) {
     const { platform } = window.__TAURI__.os;
-    const platformData = `platform=${platform()}&version=0.3.8`;
+    const platformData = `platform=${platform()}&version=0.3.9`;
 
     if (url.endsWith('.json')) url = `https://charkeeper.org${url}?${platformData}`;
     else url = `https://charkeeper.org${url}&${platformData}`;
   } else {
-    const platformData = `platform=web&version=0.3.8`;
+    const platformData = `platform=web&version=0.3.9`;
 
     if (url.endsWith('.json')) url = `${url}?${platformData}`;
     else url = `${url}&${platformData}`;

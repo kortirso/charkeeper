@@ -131,7 +131,7 @@ en:
         description1: Charkeeper is a character sheet aggregator that automatically calculates various character stats, so you don't have to constantly look at the rulebook, and allows you to track your characters' available abilities, spells, and attacks.
         description2: Available from any device on the web and as a mobile app on Android and iOS.
         features_title: Charkeeper features
-        feature_1: Saving characters compatible with D&D 5, Pathfinder 2 and Daggerheart rules.
+        feature_1: Saving characters compatible with D&D 5, Pathfinder 2, Daggerheart and DC20 rules.
         feature_2: Account information and saved characters are shared between all devices.
         feature_3: Uploading avatars for your characters.
         feature_4: CharKeeper has an adaptive design for easy use on any device with switching between light and dark modes.
@@ -176,7 +176,7 @@ en:
           telegram: For Telegram bot just find %{href} and add it to any of your groups
           telegram_link: bot user
           discord: For Discord bot just invite bot by %{href} to your channels
-          descord_link: link
+          discord_link: link
     users:
       auth:
         notice: Authentication succeeds
