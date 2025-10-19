@@ -32,6 +32,9 @@ export const NewDaggerheartItemForm = (props) => {
   });
 
   const generatePayload = () => {
+    console.log(itemForm.damage_bonus)
+    console.log(isNaN(itemForm.damage_bonus))
+
     if (itemForm.kind === 'item' || itemForm.kind === 'consumable') return { name: itemForm.name, kind: itemForm.kind };
     if (itemForm.kind === 'primary weapon' || itemForm.kind === 'secondary weapon') {
       return {
@@ -46,7 +49,7 @@ export const NewDaggerheartItemForm = (props) => {
           range: itemForm.range,
           damage_type: itemForm.damage_type,
           damage: itemForm.damage,
-          damage_bonus: itemForm.damage_bonus,
+          damage_bonus: !isNaN(itemForm.damage_bonus) ? (parseInt(itemForm.damage_bonus) || 0) : 0,
           features: { en: itemForm.features, ru: itemForm.features }
         }
       }
@@ -117,7 +120,7 @@ export const NewDaggerheartItemForm = (props) => {
             containerClassList="flex-1"
             labelText={t('pages.homebrewPage.daggerheart.damageBonus')}
             value={itemForm.damage_bonus}
-            onInput={(value) => setItemForm({ ...itemForm, damage_bonus: parseInt(value) })}
+            onInput={(value) => setItemForm({ ...itemForm, damage_bonus: value })}
           />
         </div>
         <div class="mb-4 flex gap-4">
