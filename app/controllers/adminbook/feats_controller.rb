@@ -45,7 +45,7 @@ module Adminbook
     end
 
     def transform_params(updating_params)
-      %w[description_eval_variables eval_variables options conditions].each do |attribute|
+      %w[bonus_eval_variables description_eval_variables eval_variables options conditions].each do |attribute|
         updating_params[attribute] = JSON.parse(updating_params[attribute].gsub(' =>', ':').gsub('nil', 'null'))
       end
       updating_params['exclude'] = updating_params['exclude'].split(',')

@@ -14,7 +14,7 @@ module Frontend
       def relation # rubocop: disable Metrics/AbcSize
         return [] if params[:version].blank?
 
-        relation = ::Daggerheart::Feat.where(origin: 'domain_card').where.not(kind: 'update_result')
+        relation = ::Daggerheart::Feat.where(origin: 'domain_card').where.not(origin_value: '')
         relation =
           relation.where(user_id: nil).or(
             relation

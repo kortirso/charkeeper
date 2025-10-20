@@ -33,7 +33,7 @@ module DaggerheartCharacter
 
     def damage_thresholds
       @damage_thresholds ||=
-        { 'major' => level, 'severe' => level }
+        base_damage_thresholds
           .merge(*[equiped_thresholds_bonuses, *bonuses.pluck('thresholds')].compact) { |_key, oldval, newval| newval + oldval }
     end
 
@@ -192,25 +192,8 @@ module DaggerheartCharacter
       @attack_bonuses ||= sum(bonuses.pluck('attack').compact)
     end
 
-    def item_bonuses
-      @item_bonuses ||= equiped_items_info.pluck('bonuses').compact
-    end
-
-    def equiped_thresholds_bonuses
-      @equiped_thresholds_bonuses ||= item_bonuses.pluck('thresholds').compact.first || {}
-    end
-
     def equiped_traits_bonuses
       item_bonuses.pluck('traits').compact.first || {}
-    end
-
-    def equiped_armor
-      @equiped_armor ||=
-        __getobj__
-        .items
-        .where(state: ::Character::Item::ACTIVE_STATES)
-        .joins(:item)
-        .exists?(items: { kind: 'armor' })
     end
 
     def weapons
@@ -279,6 +262,14 @@ module DaggerheartCharacter
 
     def mechanics_for_homebrew_subclass(subclass)
       homebrew_subclass(subclass).data.mechanics
+    end
+
+    def equiped_thresholds_bonuses
+      @equiped_thresholds_bonuses ||= item_bonuses.pluck('thresholds').compact.first || {}
+    end
+
+    def item_bonuses
+      @item_bonuses ||= equiped_items_info.pluck('bonuses').compact
     end
 
     def homebrew_subclass(subclass)

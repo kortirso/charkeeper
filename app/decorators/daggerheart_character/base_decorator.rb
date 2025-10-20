@@ -22,6 +22,10 @@ module DaggerheartCharacter
       @base_armor_score ||= equiped_items_info.pluck('base_score').compact.sum
     end
 
+    def base_damage_thresholds
+      @base_damage_thresholds ||= { 'major' => level, 'severe' => equiped_armor ? level : (2 * level) }
+    end
+
     def selected_domains
       @selected_domains ||= __getobj__.selected_domains
     end
@@ -40,6 +44,15 @@ module DaggerheartCharacter
 
     def user_homebrew
       @user_homebrew ||= __getobj__.user.user_homebrew&.data || {}
+    end
+
+    def equiped_armor
+      @equiped_armor ||=
+        __getobj__
+        .items
+        .where(state: ::Character::Item::ACTIVE_STATES)
+        .joins(:item)
+        .exists?(items: { kind: 'armor' })
     end
 
     def equiped_items_info

@@ -461,14 +461,11 @@
     "origin_value": "valor",
     "kind": "static",
     "bonus_eval_variables": {
-      "base_armor_score": "3 + modified_traits['str']"
-    },
-    "eval_variables": {
-      "armor_score": "armor_score",
-      "damage_thresholds": "damage_thresholds.merge({ 'major' => damage_thresholds['major'] + 7 + tier * 2, 'severe' => damage_thresholds['severe'] + (tier == 1 ? 19 : (10 + tier * 7)) })"
+      "base_armor_score": "equiped_armor ? base_armor_score : (3 + modified_traits['str'])",
+      "base_damage_thresholds": "equiped_armor ? base_damage_thresholds : ({ 'major' => 7 + tier * 2, 'severe' => (tier == 1 ? 19 : (10 + tier * 7)) })"
     },
     "conditions": { "level": 1 },
-    "continious": true
+    "continious": false
   },
   {
     "slug": "forceful_push",
