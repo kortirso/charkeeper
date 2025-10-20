@@ -106,7 +106,7 @@ describe Frontend::Characters::BonusesController do
 
           it 'creates character bonus', :aggregate_failures do
             expect { request }.to change(user_character.bonuses, :count).by(1)
-            expect(response).to have_http_status :ok
+            expect(response).to have_http_status :created
           end
         end
       end

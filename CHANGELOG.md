@@ -11,6 +11,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Fixed
 - bug with rendering value of feature
 - damage thresholds calculations for Daggerheart
+- refreshing bonuses list
 
 ## [0.3.9] - 2025-10-19
 ### Added
