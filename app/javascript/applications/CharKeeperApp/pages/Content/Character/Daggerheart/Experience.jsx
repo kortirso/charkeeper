@@ -50,7 +50,7 @@ export const DaggerheartExperience = (props) => {
   const toggleClick = () => setIsOpen(!isOpen());
 
   const addExperience = () => {
-    const payload = experienceData().concat({ id: Math.floor(Math.random() * 1000), exp_name: name(), exp_level: 0 });
+    const payload = experienceData().concat({ id: Math.floor(Math.random() * 1000), exp_name: name(), exp_level: 2 });
     setExperienceData(payload);
     saveExperience({ experience: payload });
   }
