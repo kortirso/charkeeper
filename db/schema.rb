@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_10_19_195737) do
+ActiveRecord::Schema[8.0].define(version: 2025_10_20_183245) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
   enable_extension "pgcrypto"
@@ -115,6 +115,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_10_19_195737) do
     t.integer "used_count", comment: "Кол-во использований"
     t.boolean "active", default: false, comment: "Включен ли эффект навыка"
     t.boolean "ready_to_use"
+    t.text "notes"
     t.index ["character_id", "feat_id"], name: "index_character_feats_on_character_id_and_feat_id", unique: true
   end
 

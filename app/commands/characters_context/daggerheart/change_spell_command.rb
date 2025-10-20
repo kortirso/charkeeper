@@ -10,7 +10,7 @@ module CharactersContext
           required(:character_spell).filled(type?: ::Daggerheart::Character::Feat)
           optional(:active).filled(:bool)
           optional(:ready_to_use).filled(:bool)
-          optional(:notes).maybe(:string)
+          optional(:notes).maybe(:string, max_size?: 250)
         end
       end
 
