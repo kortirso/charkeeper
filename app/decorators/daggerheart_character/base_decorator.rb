@@ -60,10 +60,18 @@ module DaggerheartCharacter
       @equiped_weapon_info ||=
         __getobj__
         .items
-        .where(state: ::Character::Item::ACTIVE_STATES)
+        .where(state: ::Character::Item::HANDS)
         .joins(:item)
         .where(items: { kind: ['primary weapon', 'secondary weapon'] })
         .pluck('items.info')
+    end
+
+    def armor_equiped?
+      !equiped_armor_info.nil?
+    end
+
+    def weapon_equiped?
+      equiped_weapon_info.any?
     end
   end
 end
