@@ -34,7 +34,9 @@ module DaggerheartCharacter
     def damage_thresholds
       @damage_thresholds ||=
         base_damage_thresholds
-          .merge(*[equiped_thresholds_bonuses, *bonuses.pluck('thresholds')].compact) { |_key, oldval, newval| newval + oldval }
+          .merge(
+            *[level_thresholds_bonuses, equiped_thresholds_bonuses, *bonuses.pluck('thresholds')].compact
+          ) { |_key, oldval, newval| newval + oldval }
     end
 
     def evasion # rubocop: disable Metrics/AbcSize
@@ -264,12 +266,16 @@ module DaggerheartCharacter
       homebrew_subclass(subclass).data.mechanics
     end
 
+    def level_thresholds_bonuses
+      { 'major' => level, 'severe' => level }
+    end
+
     def equiped_thresholds_bonuses
-      @equiped_thresholds_bonuses ||= item_bonuses.pluck('thresholds').compact.first || {}
+      equiped_armor_info&.dig('bonuses', 'thresholds') || {}
     end
 
     def item_bonuses
-      @item_bonuses ||= equiped_items_info.pluck('bonuses').compact
+      @item_bonuses ||= [equiped_armor_info&.dig('bonuses')].compact + equiped_weapon_info.pluck('bonuses').compact
     end
 
     def homebrew_subclass(subclass)

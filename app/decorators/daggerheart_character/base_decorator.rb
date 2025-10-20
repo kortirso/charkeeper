@@ -19,11 +19,11 @@ module DaggerheartCharacter
     end
 
     def base_armor_score
-      @base_armor_score ||= equiped_items_info.pluck('base_score').compact.sum
+      @base_armor_score ||= equiped_armor_info&.dig('bonuses', 'base_score') || 0
     end
 
     def base_damage_thresholds
-      @base_damage_thresholds ||= { 'major' => level, 'severe' => equiped_armor ? level : (2 * level) }
+      @base_damage_thresholds ||= { 'major' => 0, 'severe' => equiped_armor_info ? 0 : level }
     end
 
     def selected_domains
@@ -46,22 +46,23 @@ module DaggerheartCharacter
       @user_homebrew ||= __getobj__.user.user_homebrew&.data || {}
     end
 
-    def equiped_armor
-      @equiped_armor ||=
+    def equiped_armor_info
+      @equiped_armor_info ||=
         __getobj__
         .items
         .where(state: ::Character::Item::ACTIVE_STATES)
         .joins(:item)
-        .exists?(items: { kind: 'armor' })
+        .where(items: { kind: 'armor' })
+        .pick('items.info')
     end
 
-    def equiped_items_info
-      @equiped_items_info ||=
+    def equiped_weapon_info
+      @equiped_weapon_info ||=
         __getobj__
         .items
         .where(state: ::Character::Item::ACTIVE_STATES)
         .joins(:item)
-        .where(items: { kind: ['armor', 'primary weapon', 'secondary weapon'] })
+        .where(items: { kind: ['primary weapon', 'secondary weapon'] })
         .pluck('items.info')
     end
   end
