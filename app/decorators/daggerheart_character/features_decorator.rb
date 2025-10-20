@@ -34,7 +34,7 @@ module DaggerheartCharacter
           end
           {
             id: feature.id,
-            slug: feature.feat.slug,
+            slug: feature.feat.slug || feature.id,
             kind: feature.feat.kind,
             title: feature.feat.title[I18n.locale.to_s],
             description: update_feature_description(feature),
