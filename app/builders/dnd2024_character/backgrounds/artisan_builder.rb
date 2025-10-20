@@ -5,7 +5,7 @@ module Dnd2024Character
     class ArtisanBuilder
       def call(result:)
         result[:selected_feats] = ['crafter']
-        result[:selected_skills] = { investigation: 1, persuation: 1 }
+        result[:selected_skills] = { investigation: 1, persuasion: 1 }
 
         result
       end

@@ -5,7 +5,7 @@ module Dnd2024Character
     class MerchantBuilder
       def call(result:)
         result[:selected_feats] = ['lucky']
-        result[:selected_skills] = { animal: 1, persuation: 1 }
+        result[:selected_skills] = { animal: 1, persuasion: 1 }
 
         result
       end
