@@ -111,8 +111,45 @@ Dir[File.join(Rails.root.join('db/data/daggerheart/feats/*.json'))].each do |fil
   end
 end
 
-# file_content = File.read('db/data/daggerheart/spells-ru.json')
-# data_hash_ru = JSON.parse(file_content)['data']
+# file_content = File.read('db/data/dnd2024/spells.json')
+# data_hash = JSON.parse(file_content)
+
+# classes = { 'Изобретатель' => 'artificer', 'Чародей' => 'sorcerer', 'Волшебник' => 'wizard', 'Бард' => 'bard', 'Друид' => 'druid', 'Колдун' => 'warlock', 'Жрец' => 'cleric', 'Паладин' => 'paladin', 'Следопыт' => 'ranger' }
+# schools = { 'Ограждение' => 'abjuration', 'Вызов' => 'conjuration', 'Прорицание' => 'divination', 'Очарование' => 'enchantment', 'Воплощение' => 'evocation', 'Иллюзия' => 'illusion', 'Некромантия' => 'necromancy', 'Преобразование' => 'transmutation' }
+
+# data_hash = data_hash.map do |item|
+#   {
+#     slug: item['url'],
+#     title: { en: item['name']['eng'], ru: item['name']['rus'] },
+#     description: {
+#       en: '',
+#       ru: item['description'].join("\n")
+#     },
+#     origin: 'spell',
+#     origin_values: item['affiliation']['classes'].map { |i| classes[i['name']] },
+#     kind: 'static',
+#     description_eval_variables: {},
+#     eval_variables: {},
+#     info: {
+#       level: item['level'],
+#       school: schools[item['school']],
+#       casting_time: item['castingTime'],
+#       range: item['range'],
+#       duration: item['duration'],
+#       components: item['components'],
+#       source: item['source']['name']['label']
+#     },
+#     different: {
+#       upper: item['upper']
+#     }
+#   }
+# end
+
+# beautified_json_string = JSON.pretty_generate(data_hash)
+# # # Write the beautified JSON string to a file
+# File.open('db/data/dnd2024/spells1.json', 'w') do |file|
+#   file.write(beautified_json_string)
+# end
 
 # file_content = File.read('db/data/daggerheart/spells-en.json')
 # data_hash_en = JSON.parse(file_content)['data']
