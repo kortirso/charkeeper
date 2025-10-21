@@ -43,26 +43,20 @@ export const ItemsTable = (props) => {
                   </td>
                   <td>
                     <div class="flex items-center gap-x-2">
-                      <Show when={props.state !== 'hands'}>
-                        <Button default size="small" onClick={() => props.onUpdateCharacterItem(item, { character_item: { ready_to_use: true, state: 'hands' } })}>
-                          <Hands width={16} height={16} />
-                        </Button>
-                      </Show>
-                      <Show when={props.state !== 'equipment'}>
-                        <Button default size="small" onClick={() => props.onUpdateCharacterItem(item, { character_item: { ready_to_use: true, state: 'equipment' } })}>
-                          <Equipment width={16} height={16} />
-                        </Button>
-                      </Show>
-                      <Show when={props.state !== 'backpack'}>
-                        <Button default size="small" onClick={() => props.onUpdateCharacterItem(item, { character_item: { ready_to_use: false, state: 'backpack' } })}>
-                          <Backpack width={16} height={16} />
-                        </Button>
-                      </Show>
-                      <Show when={props.state !== 'storage'}>
-                        <Button default size="small" onClick={() => props.onUpdateCharacterItem(item, { character_item: { ready_to_use: false, state: 'storage' } })}>
-                          <Storage width={16} height={16} />
-                        </Button>
-                      </Show>
+                      <For each={[
+                        { state: 'hands', flag: true, icon: <Hands width={16} height={16} /> },
+                        { state: 'equipment', flag: true, icon: <Equipment width={16} height={16} /> },
+                        { state: 'backpack', flag: false, icon: <Backpack width={16} height={16} /> },
+                        { state: 'storage', flag: false, icon: <Storage width={16} height={16} /> }
+                      ]}>
+                        {(element) =>
+                          <Show when={props.state !== element.state}>
+                            <Button default size="small" onClick={() => props.onUpdateCharacterItem(item, { character_item: { ready_to_use: element.flag, state: element.state } })}>
+                              {element.icon}
+                            </Button>
+                          </Show>
+                        }
+                      </For>
                       <Button default size="small" onClick={() => props.onRemoveCharacterItem(item)}>
                         <Close />
                       </Button>

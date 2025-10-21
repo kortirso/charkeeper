@@ -66,11 +66,11 @@ module DaggerheartCharacter
         .pluck('items.info')
     end
 
-    def armor_equiped?
+    def armor_equiped # rubocop: disable Naming/PredicateMethod
       !equiped_armor_info.nil?
     end
 
-    def weapon_equiped?
+    def weapon_equiped # rubocop: disable Naming/PredicateMethod
       equiped_weapon_info.any?
     end
   end
