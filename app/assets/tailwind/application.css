@@ -234,11 +234,24 @@
 }
 
 .damage-threshold {
-  @apply flex items-center pb-4;
+  @apply flex items-center pb-4 relative;
+
+  padding-right: 13.5px;
+}
+
+.damage-threshold::before {
+  @apply absolute right-0 bg-white border border-blue-400 content-[''] rotate-45;
+
+  width: 26.5px;
+  height: 26.5px;
+}
+
+.dark .damage-threshold::before {
+  @apply border-fuzzy-red;
 }
 
 .damage-threshold p {
-  @apply text-center border border-blue-400 bg-white rounded w-10 py-1 font-normal! text-lg;
+  @apply text-center border border-blue-400 bg-white w-10 py-1 font-normal! text-lg border-r-0 relative z-10;
   @apply dark:border-fuzzy-red dark:text-dusty;
 }
 

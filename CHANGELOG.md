@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Modified
 - case-insensitive items search with auto toggling
 - selecting domain cards
+- damage thresholds icons
 
 ### Fixed
 - refreshing bonuses list
