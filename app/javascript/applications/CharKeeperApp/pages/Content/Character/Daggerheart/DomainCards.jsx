@@ -13,6 +13,15 @@ import { updateCharacterSpellRequest } from '../../../../requests/updateCharacte
 import { removeCharacterSpellRequest } from '../../../../requests/removeCharacterSpellRequest';
 import { modifier } from '../../../../helpers';
 
+const TRANSLATION = {
+  en: {
+    loadoutLimit: 'Loadout limit'
+  },
+  ru: {
+    loadoutLimit: 'Лимит инвентаря'
+  }
+}
+
 export const DaggerheartDomainCards = (props) => {
   const character = () => props.character;
   const domains = () => config.domains;
@@ -196,6 +205,7 @@ export const DaggerheartDomainCards = (props) => {
           <StatsBlock
             items={[
               { title: t('daggerheart.domainCards.limit'), value: character().domain_cards_max },
+              { title: TRANSLATION[locale()]['loadoutLimit'], value: 5 },
               { title: t('daggerheart.domainCards.spellcastTraits'), value: renderSpellcastTraits(character().spellcast_traits) }
             ]}
           />
