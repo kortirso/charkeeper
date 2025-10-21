@@ -34,6 +34,7 @@ module DaggerheartCharacter
     def damage_thresholds
       @damage_thresholds ||=
         base_damage_thresholds
+          .with_indifferent_access
           .merge(
             *[level_thresholds_bonuses, equiped_thresholds_bonuses, *bonuses.pluck('thresholds')].compact
           ) { |_key, oldval, newval| newval + oldval }
