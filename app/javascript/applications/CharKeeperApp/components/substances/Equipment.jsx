@@ -12,10 +12,12 @@ import { removeCharacterItemRequest } from '../../requests/removeCharacterItemRe
 
 const TRANSLATION = {
   en: {
-    searchByName: 'Search by name (from 3 characters)'
+    searchByName: 'Search by name (from 3 characters)',
+    clear: 'Clear'
   },
   ru: {
-    searchByName: 'Поиск по названию (от 3 символов)'
+    searchByName: 'Поиск по названию (от 3 символов)',
+    clear: 'Очистить'
   }
 }
 
@@ -136,7 +138,8 @@ export const Equipment = (props) => {
     if (items() === undefined) return [];
     if (filterByName().length < 3) return items();
 
-    return items().filter((item) => item.name.includes(filterByName()));
+    const searchPattern = filterByName().toLowerCase();
+    return items().filter((item) => item.name.toLowerCase().includes(searchPattern));
   });
 
   return (
@@ -145,16 +148,21 @@ export const Equipment = (props) => {
         when={!itemsSelectingMode()}
         fallback={
           <>
-            <Input
-              containerClassList="mb-2"
-              placeholder={TRANSLATION[locale()]['searchByName']}
-              value={filterByName()}
-              onInput={(value) => setFilterByName(value)}
-            />
+            <div class="mb-2 flex">
+              <Input
+                containerClassList="mr-2 flex-1"
+                placeholder={TRANSLATION[locale()]['searchByName']}
+                value={filterByName()}
+                onInput={(value) => setFilterByName(value)}
+              />
+              <Button default size="small" classList="px-2" onClick={() => setFilterByName('')}>
+                {TRANSLATION[locale()]['clear']}
+              </Button>
+            </div>
             <For each={props.itemFilters}>
               {(itemFilter) =>
                 <Show when={filteredItems().filter(itemFilter.callback).length > 0}>
-                  <Toggle title={itemFilter.title}>
+                  <Toggle isOpenByParent={filterByName().length >= 3} title={itemFilter.title}>
                     <table class="w-full table first-column-full-width">
                       <thead>
                         <tr>
@@ -169,7 +177,12 @@ export const Equipment = (props) => {
                           {(item) =>
                             <tr>
                               <td class="py-1 pl-1">
-                                <p>{item.name}</p>
+                                <p>
+                                  {item.name}
+                                  <Show when={item.homebrew}>
+                                    <span title="Homebrew" class="text-xs ml-2">HB</span>
+                                  </Show>
+                                </p>
                               </td>
                               <Show when={props.withWeight}><td class="py-1 text-center">{item.data.weight}</td></Show>
                               <Show when={props.withPrice}><td class="py-1 text-center">{item.data.price / 100}</td></Show>

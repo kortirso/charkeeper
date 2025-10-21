@@ -4,13 +4,19 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## Unreleased
+### Modified
+- case-insensitive items search with auto toggling
+
+### Fixed
+- refreshing bonuses list
+
 ## [0.3.9b] - 2025-10-20
 - default experience value to +2
 
 ### Fixed
 - bug with rendering value of feature
 - damage thresholds calculations for Daggerheart
-- refreshing bonuses list
 
 ## [0.3.9] - 2025-10-19
 ### Added
