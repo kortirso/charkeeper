@@ -50,10 +50,10 @@ module SheetsContext
         end
 
         def domain_cards(character)
-          result = character.spells.includes(:spell).map do |item|
+          result = character.feats.includes(:feat).where(feats: { origin: 7 }).map do |item|
             {
-              name: item.spell.name['en'],
-              ready_to_use: item.data['ready_to_use']
+              name: item.feat.title['en'],
+              ready_to_use: item.ready_to_use
             }
           end
 
