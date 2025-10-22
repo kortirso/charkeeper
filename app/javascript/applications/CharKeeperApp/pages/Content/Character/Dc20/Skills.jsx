@@ -303,21 +303,21 @@ export const Dc20Skills = (props) => {
         <div class="blockable pb-2">
           <div class="p-4 flex mb-2">
             <div class="dc20-points-caption">
-              <p>{TRANSLATION[locale()]['skillPoints']} - {skillPoints.skillPoints}</p>
-              <p>{TRANSLATION[locale()]['expertisePoints']} - {skillPoints.skillExpertisePoints}</p>
+              <p>{TRANSLATION[locale()]['skillPoints']} {skillPoints.skillPoints}</p>
+              <p>{TRANSLATION[locale()]['expertisePoints']} {skillPoints.skillExpertisePoints}</p>
             </div>
             <div class="dc20-points-convert cursor-pointer" onClick={convertSkillPoint}>
               <p>1:2</p>
             </div>
             <div class="dc20-points-caption">
-              <p>{TRANSLATION[locale()]['tradePoints']} - {skillPoints.tradePoints}</p>
-              <p>{TRANSLATION[locale()]['expertisePoints']} - {skillPoints.tradeExpertisePoints}</p>
+              <p>{TRANSLATION[locale()]['tradePoints']} {skillPoints.tradePoints}</p>
+              <p>{TRANSLATION[locale()]['expertisePoints']} {skillPoints.tradeExpertisePoints}</p>
             </div>
             <div class="dc20-points-convert cursor-pointer" onClick={convertTradePoint}>
               <p>1:2</p>
             </div>
             <div class="dc20-points-caption">
-              <p>{TRANSLATION[locale()]['langPoints']} - {skillPoints.languagePoints}</p>
+              <p>{TRANSLATION[locale()]['langPoints']} {skillPoints.languagePoints}</p>
               <p />
             </div>
           </div>
