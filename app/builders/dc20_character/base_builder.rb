@@ -8,7 +8,8 @@ module Dc20Character
         ancestries: result[:ancestry_feats].keys,
         attribute_points: calculate_attribute_points(result[:ancestry_feats]),
         skill_expertise_points: calculate_skill_expertise_points(result[:ancestry_feats]),
-        trade_expertise_points: calculate_trade_expertise_points(result[:ancestry_feats])
+        trade_expertise_points: calculate_trade_expertise_points(result[:ancestry_feats]),
+        guide_step: 1
       }).except(:ancestry_feats)
     end
 

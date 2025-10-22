@@ -255,6 +255,40 @@
   @apply dark:border-fuzzy-red dark:text-dusty;
 }
 
+.dc20-points-caption {
+  @apply flex-1 flex flex-col items-center;
+}
+
+.dc20-points-caption p:nth-of-type(1) {
+  @apply flex-1 text-center flex items-center uppercase font-medium! dark:text-snow py-4 px-2 text-xs md:text-base;
+}
+
+.dc20-points-caption p:nth-of-type(2) {
+  @apply text-xs dark:text-snow h-4;
+}
+
+.dc20-points-convert {
+  @apply flex items-center pb-4 relative;
+
+  padding-right: 11px;
+}
+
+.dc20-points-convert::before {
+  @apply absolute right-0 bg-white border border-blue-400 content-[''] rotate-45;
+
+  width: 22px;
+  height: 22px;
+}
+
+.dark .dc20-points-convert::before {
+  @apply border-fuzzy-red;
+}
+
+.dc20-points-convert p {
+  @apply text-center border border-blue-400 bg-white w-8 h-8 py-1 font-normal! text-sm border-r-0 relative z-10;
+  @apply dark:border-fuzzy-red dark:text-dusty;
+}
+
 .experiences .experience {
   @apply flex dark:text-snow items-center pl-2 py-1;
 }

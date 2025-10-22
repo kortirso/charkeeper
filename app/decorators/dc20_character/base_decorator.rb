@@ -4,7 +4,8 @@ module Dc20Character
   class BaseDecorator < SimpleDelegator
     delegate :id, :name, :data, to: :__getobj__
     delegate :abilities, :main_class, :level, :combat_expertise, :health, :classes, :attribute_points, :ancestries, :skill_levels,
-             :skill_expertise, :skill_points, :skill_expertise_points, to: :data
+             :skill_expertise, :skill_points, :skill_expertise_points, :trade_points, :trade_expertise_points, :language_points,
+             :trade_levels, :trade_expertise, to: :data
 
     def parent = __getobj__
     def method_missing(_method, *args); end
@@ -55,6 +56,12 @@ module Dc20Character
       ].map { |item| skill_payload(item[0], item[1]) }
     end
 
+    def trades
+      @trades ||= [
+        %w[arcana int], %w[history int], %w[nature int], %w[occultism int], %w[religion int]
+      ].map { |item| trade_payload(item[0], item[1]) }
+    end
+
     def initiative
       @initiative ||= modified_abilities['agi'] + combat_mastery
     end
@@ -69,6 +76,17 @@ module Dc20Character
         modifier: modified_abilities[ability] + (level * 2),
         level: level,
         expertise: skill_expertise.include?(slug)
+      }
+    end
+
+    def trade_payload(slug, ability)
+      level = trade_levels[slug].to_i
+      {
+        slug: slug,
+        ability: ability,
+        modifier: modified_abilities[ability] + (level * 2),
+        level: level,
+        expertise: trade_expertise.include?(slug)
       }
     end
   end

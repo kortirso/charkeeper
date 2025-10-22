@@ -1,6 +1,6 @@
 import { createSignal, createMemo, For, Show, batch } from 'solid-js';
 
-import { ErrorWrapper, Button, EditWrapper } from '../../../../components';
+import { ErrorWrapper, Button, EditWrapper, GuideWrapper } from '../../../../components';
 import config from '../../../../data/dc20.json';
 import { useAppState, useAppLocale, useAppAlert } from '../../../../context';
 import { Minus, Plus } from '../../../../assets';
@@ -9,10 +9,12 @@ import { modifier } from '../../../../helpers';
 
 const TRANSLATION = {
   en: {
-    attributePoints: 'Free attribute points'
+    attributePoints: 'Free attribute points',
+    helpMessage: 'You start with a -2 in all of your Attributes. You then gain Attribute Points to increase whichever Attributes you want, up to the Attribute Limit (3).'
   },
   ru: {
-    attributePoints: 'Очки атрибутов для распределения'
+    attributePoints: 'Очки атрибутов для распределения',
+    helpMessage: 'Ваш персонаж начинает с -2 во всех атрибутах. Вы можете потратить Очки Атрибутов для увеличения любых атрибутов вплоть до максимума (3).'
   }
 }
 
@@ -69,42 +71,49 @@ export const Dc20Abilities = (props) => {
 
   return (
     <ErrorWrapper payload={{ character_id: character().id, key: 'Dc20Abilities' }}>
-      <Show when={character().attribute_points > 0}>
-        <div class="warning">
-          <p class="text-sm">{TRANSLATION[locale()]['attributePoints']} - {attributePointsLeft()}</p>
-        </div>
-      </Show>
-      <EditWrapper
-        editMode={editMode()}
-        onSetEditMode={setEditMode}
-        onCancelEditing={cancelEditing}
-        onSaveChanges={updateCharacter}
+      <GuideWrapper
+        character={character()}
+        guideStep={1}
+        helpMessage={TRANSLATION[locale()]['helpMessage']}
+        onReloadCharacter={props.onReloadCharacter}
       >
-        <div class="grid grid-cols-2 emd:grid-cols-4 gap-2">
-          <For each={Object.entries(config.abilities).map(([key, values]) => [key, values.name[locale()]])}>
-            {([slug, ability]) =>
-              <div class="blockable py-4">
-                <p class="text-sm uppercase text-center mb-4 dark:text-white">{ability}</p>
-                <div class="mx-auto flex items-center justify-center">
-                  <p class="text-2xl font-normal! dark:text-snow">
-                    {editMode() ? abilitiesData()[slug] : modifier(character().abilities[slug])}
-                  </p>
-                </div>
-                <Show when={editMode()}>
-                  <div class="mt-2 flex justify-center gap-2">
-                    <Button default size="small" onClick={() => decreaseAbilityValue(slug)}>
-                      <Minus />
-                    </Button>
-                    <Button default size="small" onClick={() => increaseAbilityValue(slug)}>
-                      <Plus />
-                    </Button>
+        <Show when={character().attribute_points > 0}>
+          <div class="warning">
+            <p class="text-sm">{TRANSLATION[locale()]['attributePoints']} - {attributePointsLeft()}</p>
+          </div>
+        </Show>
+        <EditWrapper
+          editMode={editMode()}
+          onSetEditMode={setEditMode}
+          onCancelEditing={cancelEditing}
+          onSaveChanges={updateCharacter}
+        >
+          <div class="grid grid-cols-2 emd:grid-cols-4 gap-2">
+            <For each={Object.entries(config.abilities).map(([key, values]) => [key, values.name[locale()]])}>
+              {([slug, ability]) =>
+                <div class="blockable py-4">
+                  <p class="text-sm uppercase text-center mb-4 dark:text-white">{ability}</p>
+                  <div class="mx-auto flex items-center justify-center">
+                    <p class="text-2xl font-normal! dark:text-snow">
+                      {editMode() ? abilitiesData()[slug] : modifier(character().abilities[slug])}
+                    </p>
                   </div>
-                </Show>
-              </div>
-            }
-          </For>
-        </div>
-      </EditWrapper>
+                  <Show when={editMode()}>
+                    <div class="mt-2 flex justify-center gap-2">
+                      <Button default size="small" onClick={() => decreaseAbilityValue(slug)}>
+                        <Minus />
+                      </Button>
+                      <Button default size="small" onClick={() => increaseAbilityValue(slug)}>
+                        <Plus />
+                      </Button>
+                    </div>
+                  </Show>
+                </div>
+              }
+            </For>
+          </div>
+        </EditWrapper>
+      </GuideWrapper>
     </ErrorWrapper>
   );
 }

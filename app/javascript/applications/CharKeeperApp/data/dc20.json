@@ -42,5 +42,12 @@
     "stealth": { "name": { "en": "Stealth", "ru": "Скрытность" } },
     "medicine": { "name": { "en": "Medicine", "ru": "Медицина" } },
     "survival": { "name": { "en": "Survival", "ru": "Выживание" } }
+  },
+  "trades": {
+    "arcana": { "name": { "en": "Arcana", "ru": "Магия" } },
+    "history": { "name": { "en": "History", "ru": "История" } },
+    "nature": { "name": { "en": "Nature", "ru": "Природа" } },
+    "occultism": { "name": { "en": "Occultism", "ru": "Оккультизм" } },
+    "religion": { "name": { "en": "Religion", "ru": "Религия" } }
   }
 }

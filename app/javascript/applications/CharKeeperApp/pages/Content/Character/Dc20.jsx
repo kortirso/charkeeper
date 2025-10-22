@@ -26,9 +26,17 @@ export const Dc20 = (props) => {
         <div class="p-2 flex-1 overflow-y-auto">
           <Switch>
             <Match when={activeMobileTab() === 'abilities'}>
-              <Dc20Abilities character={character()} onReplaceCharacter={props.onReplaceCharacter} />
+              <Dc20Abilities
+                character={character()}
+                onReplaceCharacter={props.onReplaceCharacter}
+                onReloadCharacter={props.onReloadCharacter}
+              />
               <div class="mt-4">
-                <Dc20Skills character={character()} onReplaceCharacter={props.onReplaceCharacter} />
+                <Dc20Skills
+                  character={character()}
+                  onReplaceCharacter={props.onReplaceCharacter}
+                  onReloadCharacter={props.onReloadCharacter}
+                />
               </div>
             </Match>
             <Match when={activeMobileTab() === 'notes'}>
@@ -48,12 +56,17 @@ export const Dc20 = (props) => {
 
     return (
       <>
-        <Dc20Abilities character={character()} onReplaceCharacter={props.onReplaceCharacter} />
-        <div class="flex flex-col emd:flex-row emd:gap-4 emd:mt-4">
-          <div class="mt-4 emd:mt-0 flex-1">
-            <Dc20Skills character={character()} onReplaceCharacter={props.onReplaceCharacter} />
-          </div>
-          <div class="mt-4 emd:mt-0 flex-1" />
+        <Dc20Abilities
+          character={character()}
+          onReplaceCharacter={props.onReplaceCharacter}
+          onReloadCharacter={props.onReloadCharacter}
+        />
+        <div class="mt-4">
+          <Dc20Skills
+            character={character()}
+            onReplaceCharacter={props.onReplaceCharacter}
+            onReloadCharacter={props.onReloadCharacter}
+          />
         </div>
       </>
     );

@@ -31,6 +31,7 @@ module CharactersContext
             required(:file_name).filled(:string)
           end
           optional(:avatar_url).filled(:string)
+          optional(:guide_step).maybe(:integer)
         end
 
         rule(:avatar_file, :avatar_url).validate(:check_only_one_present)

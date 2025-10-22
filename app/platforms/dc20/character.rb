@@ -15,13 +15,15 @@ module Dc20
     attribute :trade_expertise, array: true, default: [] # компетентность в ремеслах
     attribute :skill_levels, array: true, default: {} # { 'skill' => 1 } владение навыками
     attribute :trade_levels, array: true, default: {} # { 'trade' => 1 } владение ремеслами
+    attribute :language_levels, array: true, default: {} # { 'common' => 2 } владение языками
     # доступные очки для распределения
+    attribute :guide_step, :integer # этап помощи при создании персонажа
     attribute :attribute_points, :integer, default: 12
-    attribute :skill_points, :integer
+    attribute :skill_points, :integer, default: 5
     attribute :skill_expertise_points, :integer, default: 0
-    attribute :trade_points, :integer
+    attribute :trade_points, :integer, default: 3
     attribute :trade_expertise_points, :integer, default: 0
-    attribute :language_points, :integer
+    attribute :language_points, :integer, default: 2
   end
 
   class Character < Character
