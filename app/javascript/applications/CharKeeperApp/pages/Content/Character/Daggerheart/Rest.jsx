@@ -2,7 +2,7 @@ import { createSignal, batch, For } from 'solid-js';
 import { createStore } from 'solid-js/store';
 import * as i18n from '@solid-primitives/i18n';
 
-import { Button, ErrorWrapper, Levelbox, Checkbox } from '../../../../components';
+import { Button, ErrorWrapper, Levelbox, Checkbox, GuideWrapper } from '../../../../components';
 import { useAppState, useAppLocale, useAppAlert } from '../../../../context';
 import { fetchCharacterRequest } from '../../../../requests/fetchCharacterRequest';
 import { createCharacterRestRequest } from '../../../../requests/createCharacterRestRequest';
@@ -56,40 +56,42 @@ export const DaggerheartRest = (props) => {
 
   return (
     <ErrorWrapper payload={{ character_id: character().id, key: 'DaggerheartRest' }}>
-      <div class="blockable p-4">
-        <p class="mb-4 dark:text-snow">{t('daggerheart.rest.restDescription')}</p>
-        <For each={['clear_health', 'clear_stress', 'clear_armor_slots', 'gain_hope', 'gain_double_hope']}>
-          {(item) =>
-            <Levelbox
-              classList="mb-1"
-              labelText={replace(t(`daggerheart.rest.${item}`), { tier: character().tier })}
-              labelPosition="right"
-              labelClassList="ml-2"
-              value={restOptions[item]}
-              onToggle={() => updateOption(item)}
-            />
-          }
-        </For>
-        <Checkbox
-          classList="mb-4"
-          labelText={t('daggerheart.rest.makeRolls')}
-          labelPosition="right"
-          labelClassList="ml-2"
-          checked={makeRolls()}
-          onToggle={() => setMakeRolls(!makeRolls())}
-        />
-        <div class="grid grid-cols-1 lg:grid-cols-3 lg:gap-4">
-          <Button default textable classList="mb-2 lg:mb-0" onClick={() => restCharacter({ value: 'short' })}>
-            {t('rest.shortRest')}
-          </Button>
-          <Button default textable classList="mb-2 lg:mb-0" onClick={() => restCharacter({ value: 'long' })}>
-            {t('rest.longRest')}
-          </Button>
-          <Button default textable onClick={() => restCharacter({ value: 'session' })}>
-            {t('rest.sessionRest')}
-          </Button>
+      <GuideWrapper character={character()}>
+        <div class="blockable p-4">
+          <p class="mb-4 dark:text-snow">{t('daggerheart.rest.restDescription')}</p>
+          <For each={['clear_health', 'clear_stress', 'clear_armor_slots', 'gain_hope', 'gain_double_hope']}>
+            {(item) =>
+              <Levelbox
+                classList="mb-1"
+                labelText={replace(t(`daggerheart.rest.${item}`), { tier: character().tier })}
+                labelPosition="right"
+                labelClassList="ml-2"
+                value={restOptions[item]}
+                onToggle={() => updateOption(item)}
+              />
+            }
+          </For>
+          <Checkbox
+            classList="mb-4"
+            labelText={t('daggerheart.rest.makeRolls')}
+            labelPosition="right"
+            labelClassList="ml-2"
+            checked={makeRolls()}
+            onToggle={() => setMakeRolls(!makeRolls())}
+          />
+          <div class="grid grid-cols-1 lg:grid-cols-3 lg:gap-4">
+            <Button default textable classList="mb-2 lg:mb-0" onClick={() => restCharacter({ value: 'short' })}>
+              {t('rest.shortRest')}
+            </Button>
+            <Button default textable classList="mb-2 lg:mb-0" onClick={() => restCharacter({ value: 'long' })}>
+              {t('rest.longRest')}
+            </Button>
+            <Button default textable onClick={() => restCharacter({ value: 'session' })}>
+              {t('rest.sessionRest')}
+            </Button>
+          </div>
         </div>
-      </div>
+      </GuideWrapper>
     </ErrorWrapper>
   );
 }

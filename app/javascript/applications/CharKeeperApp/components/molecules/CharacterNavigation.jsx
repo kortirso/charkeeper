@@ -13,7 +13,10 @@ export const CharacterNavigation = (props) => {
       <For each={props.tabsList}>
         {(tab) =>
           <p
-            classList={{ 'active': props.activeTab === tab }}
+            classList={{
+              'active': props.activeTab === tab,
+              'opacity-25': props.currentGuideStep && tab !== props.markedTabs[props.currentGuideStep.toString()]
+            }}
             onClick={() => props.setActiveTab(tab)}
           >
             {t(`pages.characterNavigation.${tab}`)}

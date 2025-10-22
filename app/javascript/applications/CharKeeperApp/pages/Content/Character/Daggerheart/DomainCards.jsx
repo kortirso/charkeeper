@@ -2,7 +2,7 @@ import { createSignal, createEffect, For, Show, createMemo, batch } from 'solid-
 import * as i18n from '@solid-primitives/i18n';
 
 import { DomainCardsTable } from './DomainCardsTable';
-import { createModal, StatsBlock, ErrorWrapper, Button, Toggle, TextArea, Checkbox } from '../../../../components';
+import { createModal, StatsBlock, ErrorWrapper, Button, Toggle, TextArea, Checkbox, GuideWrapper } from '../../../../components';
 import config from '../../../../data/daggerheart.json';
 import { useAppState, useAppLocale, useAppAlert } from '../../../../context';
 import { PlusSmall } from '../../../../assets';
@@ -147,87 +147,94 @@ export const DaggerheartDomainCards = (props) => {
 
   return (
     <ErrorWrapper payload={{ character_id: character().id, key: 'DaggerheartDomainCards' }}>
-      <Show
-        when={!spellsSelectingMode()}
-        fallback={
-          <>
-            <div class="flex justify-between items-center mb-2">
-              <Checkbox
-                labelText={t('character.onlyAvailableSpells')}
-                labelPosition="right"
-                labelClassList="ml-2"
-                checked={availableDomainsFilter()}
-                onToggle={() => setAvailableDomainsFilter(!availableDomainsFilter())}
-              />
-            </div>
-            <For each={renderingDomains()}>
-              {(domain) =>
-                <Toggle title={daggerheartDomains()[domain].name[locale()]}>
-                  <table class="w-full table table-top first-column-full-width">
-                    <thead>
-                      <tr>
-                        <td />
-                        <td />
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <For each={spells().filter((spell) => spell.origin_value === domain)}>
-                        {(spell) =>
-                          <tr>
-                            <td class="py-1 pl-1">
-                              <div classList={{ 'opacity-50': learnedSpells().includes(spell.slug) }}>
-                                <p class="dark:text-snow mb-1">{spell.title} ({spell.conditions.level})</p>
-                                <p class="text-xs dark:text-snow">{spell.description}</p>
-                              </div>
-                            </td>
-                            <td class="py-1">
-                              <span>
-                                <Show when={!learnedSpells().includes(spell.slug)}>
-                                  <Button default size="small" onClick={() => selectDomainCard(spell.id)}>
-                                    <PlusSmall />
-                                  </Button>
-                                </Show>
-                              </span>
-                            </td>
-                          </tr>
-                        }
-                      </For>
-                    </tbody>
-                  </table>
-                </Toggle>
-              }
-            </For>
-            <Button default textable onClick={() => setSpellsSelectingMode(false)}>{t('back')}</Button>
-          </>
-        }
+      <GuideWrapper
+        character={character()}
+        guideStep={props.guideStep}
+        helpMessage={props.helpMessage}
+        onReloadCharacter={props.onReloadCharacter}
       >
-        <Show when={characterSpells() !== undefined}>
-          <StatsBlock
-            items={[
-              { title: t('daggerheart.domainCards.limit'), value: character().domain_cards_max },
-              { title: TRANSLATION[locale()]['loadoutLimit'], value: 5 },
-              { title: t('daggerheart.domainCards.spellcastTraits'), value: renderSpellcastTraits(character().spellcast_traits) }
-            ]}
-          />
-          <Button default textable classList="mb-2" onClick={() => setSpellsSelectingMode(true)}>
-            {t('daggerheart.domainCards.select')}
-          </Button>
-          <DomainCardsTable
-            title={t('daggerheart.domainCards.loadout')}
-            spells={characterSpells().filter((spell) => spell.ready_to_use)}
-            onChangeSpell={changeSpell}
-            onUpdateCharacterSpell={updateCharacterSpell}
-            onRemoveCharacterSpell={removeCharacterSpell}
-          />
-          <DomainCardsTable
-            title={t('daggerheart.domainCards.vault')}
-            spells={characterSpells().filter((spell) => !spell.ready_to_use)}
-            onChangeSpell={changeSpell}
-            onUpdateCharacterSpell={updateCharacterSpell}
-            onRemoveCharacterSpell={removeCharacterSpell}
-          />
+        <Show
+          when={!spellsSelectingMode()}
+          fallback={
+            <>
+              <div class="flex justify-between items-center mb-2">
+                <Checkbox
+                  labelText={t('character.onlyAvailableSpells')}
+                  labelPosition="right"
+                  labelClassList="ml-2"
+                  checked={availableDomainsFilter()}
+                  onToggle={() => setAvailableDomainsFilter(!availableDomainsFilter())}
+                />
+              </div>
+              <For each={renderingDomains()}>
+                {(domain) =>
+                  <Toggle title={daggerheartDomains()[domain].name[locale()]}>
+                    <table class="w-full table table-top first-column-full-width">
+                      <thead>
+                        <tr>
+                          <td />
+                          <td />
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <For each={spells().filter((spell) => spell.origin_value === domain)}>
+                          {(spell) =>
+                            <tr>
+                              <td class="py-1 pl-1">
+                                <div classList={{ 'opacity-50': learnedSpells().includes(spell.slug) }}>
+                                  <p class="dark:text-snow mb-1">{spell.title} ({spell.conditions.level})</p>
+                                  <p class="text-xs dark:text-snow">{spell.description}</p>
+                                </div>
+                              </td>
+                              <td class="py-1">
+                                <span>
+                                  <Show when={!learnedSpells().includes(spell.slug)}>
+                                    <Button default size="small" onClick={() => selectDomainCard(spell.id)}>
+                                      <PlusSmall />
+                                    </Button>
+                                  </Show>
+                                </span>
+                              </td>
+                            </tr>
+                          }
+                        </For>
+                      </tbody>
+                    </table>
+                  </Toggle>
+                }
+              </For>
+              <Button default textable onClick={() => setSpellsSelectingMode(false)}>{t('back')}</Button>
+            </>
+          }
+        >
+          <Show when={characterSpells() !== undefined}>
+            <StatsBlock
+              items={[
+                { title: t('daggerheart.domainCards.limit'), value: character().domain_cards_max },
+                { title: TRANSLATION[locale()]['loadoutLimit'], value: 5 },
+                { title: t('daggerheart.domainCards.spellcastTraits'), value: renderSpellcastTraits(character().spellcast_traits) }
+              ]}
+            />
+            <Button default textable classList="mb-2" onClick={() => setSpellsSelectingMode(true)}>
+              {t('daggerheart.domainCards.select')}
+            </Button>
+            <DomainCardsTable
+              title={t('daggerheart.domainCards.loadout')}
+              spells={characterSpells().filter((spell) => spell.ready_to_use)}
+              onChangeSpell={changeSpell}
+              onUpdateCharacterSpell={updateCharacterSpell}
+              onRemoveCharacterSpell={removeCharacterSpell}
+            />
+            <DomainCardsTable
+              title={t('daggerheart.domainCards.vault')}
+              spells={characterSpells().filter((spell) => !spell.ready_to_use)}
+              onChangeSpell={changeSpell}
+              onUpdateCharacterSpell={updateCharacterSpell}
+              onRemoveCharacterSpell={removeCharacterSpell}
+            />
+          </Show>
         </Show>
-      </Show>
+      </GuideWrapper>
       <Modal>
         <Show when={changingSpell()}>
           <TextArea

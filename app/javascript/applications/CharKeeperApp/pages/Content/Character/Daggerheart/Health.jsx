@@ -1,7 +1,7 @@
 import { For, Show } from 'solid-js';
 import * as i18n from '@solid-primitives/i18n';
 
-import { Checkbox, ErrorWrapper } from '../../../../components';
+import { Checkbox, ErrorWrapper, GuideWrapper } from '../../../../components';
 import { useAppState, useAppLocale, useAppAlert } from '../../../../context';
 import { updateCharacterRequest } from '../../../../requests/updateCharacterRequest';
 
@@ -47,32 +47,34 @@ export const DaggerheartHealth = (props) => {
 
   return (
     <ErrorWrapper payload={{ character_id: character().id, key: 'DaggerheartHealth' }}>
-      <div class="blockable pb-2">
-        <div class="p-4 flex mb-2">
-          <div class="damage-caption">
-            <p>{t('daggerheart.health.minor')}</p>
-            <p>{t('daggerheart.health.minorDamage')}</p>
+      <GuideWrapper character={character()}>
+        <div class="blockable pb-2">
+          <div class="p-4 flex mb-2">
+            <div class="damage-caption">
+              <p>{t('daggerheart.health.minor')}</p>
+              <p>{t('daggerheart.health.minorDamage')}</p>
+            </div>
+            <div class="damage-threshold">
+              <p>{character().damage_thresholds.major}</p>
+            </div>
+            <div class="damage-caption">
+              <p>{t('daggerheart.health.major')}</p>
+              <p>{t('daggerheart.health.majorDamage')}</p>
+            </div>
+            <div class="damage-threshold">
+              <p>{character().damage_thresholds.severe}</p>
+            </div>
+            <div class="damage-caption">
+              <p>{t('daggerheart.health.severe')}</p>
+              <p>{t('daggerheart.health.severeDamage')}</p>
+            </div>
           </div>
-          <div class="damage-threshold">
-            <p>{character().damage_thresholds.major}</p>
-          </div>
-          <div class="damage-caption">
-            <p>{t('daggerheart.health.major')}</p>
-            <p>{t('daggerheart.health.majorDamage')}</p>
-          </div>
-          <div class="damage-threshold">
-            <p>{character().damage_thresholds.severe}</p>
-          </div>
-          <div class="damage-caption">
-            <p>{t('daggerheart.health.severe')}</p>
-            <p>{t('daggerheart.health.severeDamage')}</p>
-          </div>
+          {renderAttribute(t('daggerheart.health.armorSlots'), character().armor_slots, 'spent_armor_slots')}
+          {renderAttribute(t('daggerheart.health.health'), character().health_max, 'health_marked')}
+          {renderAttribute(t('daggerheart.health.stress'), character().stress_max, 'stress_marked')}
+          {renderAttribute(t('daggerheart.health.hope'), character().hope_max, 'hope_marked')}
         </div>
-        {renderAttribute(t('daggerheart.health.armorSlots'), character().armor_slots, 'spent_armor_slots')}
-        {renderAttribute(t('daggerheart.health.health'), character().health_max, 'health_marked')}
-        {renderAttribute(t('daggerheart.health.stress'), character().stress_max, 'stress_marked')}
-        {renderAttribute(t('daggerheart.health.hope'), character().hope_max, 'hope_marked')}
-      </div>
+      </GuideWrapper>
     </ErrorWrapper>
   );
 }

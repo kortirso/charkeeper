@@ -1,7 +1,7 @@
 import { For } from 'solid-js';
 import * as i18n from '@solid-primitives/i18n';
 
-import { Checkbox, ErrorWrapper } from '../../../../components';
+import { Checkbox, ErrorWrapper, GuideWrapper } from '../../../../components';
 import { useAppState, useAppLocale, useAppAlert } from '../../../../context';
 import { updateCharacterRequest } from '../../../../requests/updateCharacterRequest';
 
@@ -30,30 +30,32 @@ export const DaggerheartGold = (props) => {
 
   return (
     <ErrorWrapper payload={{ character_id: character().id, key: 'DaggerheartGold' }}>
-      <div class="blockable mb-2 p-4">
-        <For each={['coins', 'handfuls', 'bags', 'chests']}>
-          {(item) =>
-            <div class="mb-2">
-              <p class="text-sm/4 uppercase mb-1 dark:text-snow">{t(`daggerheart.gold.${item}`)}</p>
-              <div class="flex">
-                <For each={Array.from([...Array(10).keys()], (x) => x + 1)}>
-                  {(index) =>
-                    <Checkbox
-                      filled
-                      checked={character().gold[item] >= index}
-                      classList="mr-1"
-                      onToggle={() => updateAttribute('gold', item, index)}
-                    />
-                  }
-                </For>
+      <GuideWrapper character={character()}>
+        <div class="blockable mb-2 p-4">
+          <For each={['coins', 'handfuls', 'bags', 'chests']}>
+            {(item) =>
+              <div class="mb-2">
+                <p class="text-sm/4 uppercase mb-1 dark:text-snow">{t(`daggerheart.gold.${item}`)}</p>
+                <div class="flex">
+                  <For each={Array.from([...Array(10).keys()], (x) => x + 1)}>
+                    {(index) =>
+                      <Checkbox
+                        filled
+                        checked={character().gold[item] >= index}
+                        classList="mr-1"
+                        onToggle={() => updateAttribute('gold', item, index)}
+                      />
+                    }
+                  </For>
+                </div>
               </div>
-            </div>
-          }
-        </For>
-        <p class="text-right dark:text-snow">
-          {t('daggerheart.gold.total')} - {character().gold.chests * 1000 + character().gold.bags * 100 + character().gold.handfuls * 10 + character().gold.coins}
-        </p>
-      </div>
+            }
+          </For>
+          <p class="text-right dark:text-snow">
+            {t('daggerheart.gold.total')} - {character().gold.chests * 1000 + character().gold.bags * 100 + character().gold.handfuls * 10 + character().gold.coins}
+          </p>
+        </div>
+      </GuideWrapper>
     </ErrorWrapper>
   );
 }
