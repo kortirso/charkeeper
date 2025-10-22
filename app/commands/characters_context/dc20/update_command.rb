@@ -32,6 +32,15 @@ module CharactersContext
           end
           optional(:avatar_url).filled(:string)
           optional(:guide_step).maybe(:integer)
+          optional(:skill_levels).hash
+          optional(:skill_expertise).value(:array)
+          optional(:trade_levels).hash
+          optional(:trade_expertise).value(:array)
+          optional(:trade_knowledge).hash
+          optional(:language_levels).hash
+          optional(:skill_points).filled(:integer)
+          optional(:trade_points).filled(:integer)
+          optional(:language_points).filled(:integer)
         end
 
         rule(:avatar_file, :avatar_url).validate(:check_only_one_present)
@@ -47,12 +56,47 @@ module CharactersContext
 
       private
 
-      def do_prepare(input) # rubocop: disable Metrics/AbcSize
-        if input.key?(:abilities) # rubocop: disable Style/GuardClause
+      def do_prepare(input) # rubocop: disable Metrics/AbcSize, Metrics/MethodLength
+        data = input[:character].data
+
+        if input.key?(:abilities)
           input[:attribute_points] = 0
-          input[:skill_points] = 5 + input[:abilities][:int] if input[:character].data.skill_points.nil?
-          input[:trade_points] = 3 if input[:character].data.trade_points.nil?
-          input[:language_points] = 2 if input[:character].data.language_points.nil?
+          if data.guide_step == 1
+            input[:skill_points] = 5 + input[:abilities][:int]
+            input[:trade_points] = 3
+            input[:language_points] = 2
+          end
+        end
+
+        if input.key?(:skill_levels)
+          expertise_change = input[:skill_expertise].count - data.skill_expertise.count
+          levels_change = input[:skill_levels].values.sum - data.skill_levels.values.sum
+
+          spent_expertise_points = [data.skill_expertise_points, expertise_change].min
+          spent_points = [data.skill_points, levels_change].min
+          spent_additonal_points =
+            expertise_change > data.skill_expertise_points ? (expertise_change - data.skill_expertise_points) : 0
+
+          input[:skill_points] = data.skill_points - spent_points - spent_additonal_points
+          input[:skill_expertise_points] = data.skill_expertise_points - spent_expertise_points
+        end
+
+        if input.key?(:trade_levels)
+          expertise_change = input[:trade_expertise].count - data.trade_expertise.count
+          levels_change = input[:trade_levels].values.sum - data.trade_levels.values.sum
+
+          spent_expertise_points = [data.trade_expertise_points, expertise_change].min
+          spent_points = [data.trade_points, levels_change].min
+          spent_additonal_points =
+            expertise_change > data.trade_expertise_points ? (expertise_change - data.trade_expertise_points) : 0
+
+          input[:trade_points] = data.trade_points - spent_points - spent_additonal_points
+          input[:trade_expertise_points] = data.trade_expertise_points - spent_expertise_points
+        end
+
+        if input.key?(:language_levels) # rubocop: disable Style/GuardClause
+          input[:language_points] =
+            [data.language_points - (input[:language_levels].values.sum - data.language_levels.values.sum), 0].max
         end
       end
 

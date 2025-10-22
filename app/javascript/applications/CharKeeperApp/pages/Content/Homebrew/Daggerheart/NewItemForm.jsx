@@ -32,9 +32,6 @@ export const NewDaggerheartItemForm = (props) => {
   });
 
   const generatePayload = () => {
-    console.log(itemForm.damage_bonus)
-    console.log(isNaN(itemForm.damage_bonus))
-
     if (itemForm.kind === 'item' || itemForm.kind === 'consumable') return { name: itemForm.name, kind: itemForm.kind };
     if (itemForm.kind === 'primary weapon' || itemForm.kind === 'secondary weapon') {
       return {

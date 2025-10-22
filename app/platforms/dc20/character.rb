@@ -12,9 +12,10 @@ module Dc20
     attribute :health, array: true, default: { 'current' => 1, 'temp' => 0 }
     attribute :combat_expertise, array: true, default: [] # weapon, light_armor, heavy_armor, shield
     attribute :skill_expertise, array: true, default: [] # компетентность в навыках
+    attribute :skill_levels, array: true, default: {} # { 'medicine' => 1 } владение навыками
     attribute :trade_expertise, array: true, default: [] # компетентность в ремеслах
-    attribute :skill_levels, array: true, default: {} # { 'skill' => 1 } владение навыками
-    attribute :trade_levels, array: true, default: {} # { 'trade' => 1 } владение ремеслами
+    attribute :trade_levels, array: true, default: {} # { 'arcana' => 1 } владение ремеслами
+    attribute :trade_knowledge, array: true, default: {} # { 'Алхимия' => 'int' } известные нестандартные ремёсла
     attribute :language_levels, array: true, default: {} # { 'common' => 2 } владение языками
     # доступные очки для распределения
     attribute :guide_step, :integer # этап помощи при создании персонажа

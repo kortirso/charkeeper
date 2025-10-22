@@ -5,7 +5,7 @@ module Dc20Character
     delegate :id, :name, :data, to: :__getobj__
     delegate :abilities, :main_class, :level, :combat_expertise, :health, :classes, :attribute_points, :ancestries, :skill_levels,
              :skill_expertise, :skill_points, :skill_expertise_points, :trade_points, :trade_expertise_points, :language_points,
-             :trade_levels, :trade_expertise, to: :data
+             :trade_levels, :trade_expertise, :trade_knowledge, :language_levels, to: :data
 
     def parent = __getobj__
     def method_missing(_method, *args); end
@@ -57,9 +57,11 @@ module Dc20Character
     end
 
     def trades
-      @trades ||= [
-        %w[arcana int], %w[history int], %w[nature int], %w[occultism int], %w[religion int]
-      ].map { |item| trade_payload(item[0], item[1]) }
+      @trades ||=
+        [
+          %w[arcana int], %w[history int], %w[nature int], %w[occultism int], %w[religion int]
+        ].map { |item| trade_payload(item[0], item[1]) } +
+        trade_knowledge.map { |item| trade_payload(item[0], item[1]) }
     end
 
     def initiative
