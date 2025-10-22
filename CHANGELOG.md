@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## Unreleased
 ### Added
 - guide mode for new characters
+- guide mode for DC20 characters
+- rolls for DC20 characters
 
 ### Modified
 - case-insensitive items search with auto toggling
