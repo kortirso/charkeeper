@@ -1,7 +1,7 @@
 import { createSignal, createEffect, For, Show, createMemo, batch, children } from 'solid-js';
 import * as i18n from '@solid-primitives/i18n';
 
-import { ItemsTable, createModal, ErrorWrapper, Input, Button, Toggle, TextArea } from '../../components';
+import { ItemsTable, createModal, ErrorWrapper, Input, Button, Toggle, TextArea, GuideWrapper } from '../../components';
 import { useAppState, useAppLocale, useAppAlert } from '../../context';
 import { PlusSmall } from '../../assets';
 import { fetchItemsRequest } from '../../requests/fetchItemsRequest';
@@ -144,91 +144,98 @@ export const Equipment = (props) => {
 
   return (
     <ErrorWrapper payload={{ character_id: character().id, key: 'Equipment' }}>
-      <Show
-        when={!itemsSelectingMode()}
-        fallback={
-          <>
-            <div class="mb-2 flex">
-              <Input
-                containerClassList="mr-2 flex-1"
-                placeholder={TRANSLATION[locale()]['searchByName']}
-                value={filterByName()}
-                onInput={(value) => setFilterByName(value)}
-              />
-              <Button default size="small" classList="px-2" onClick={() => setFilterByName('')}>
-                {TRANSLATION[locale()]['clear']}
-              </Button>
-            </div>
-            <For each={props.itemFilters}>
-              {(itemFilter) =>
-                <Show when={filteredItems().filter(itemFilter.callback).length > 0}>
-                  <Toggle isOpenByParent={filterByName().length >= 3} title={itemFilter.title}>
-                    <table class="w-full table first-column-full-width">
-                      <thead>
-                        <tr>
-                          <td />
-                          <Show when={props.withWeight}><td class="text-center px-2">{t('equipment.weight')}</td></Show>
-                          <Show when={props.withPrice}><td class="text-center text-nowrap px-2">{t('equipment.cost')}</td></Show>
-                          <td />
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <For each={filteredItems().filter(itemFilter.callback)}>
-                          {(item) =>
-                            <tr>
-                              <td class="py-1 pl-1">
-                                <p>
-                                  {item.name}
-                                  <Show when={item.homebrew}>
-                                    <span title="Homebrew" class="text-xs ml-2">HB</span>
-                                  </Show>
-                                </p>
-                              </td>
-                              <Show when={props.withWeight}><td class="py-1 text-center">{item.data.weight}</td></Show>
-                              <Show when={props.withPrice}><td class="py-1 text-center">{item.data.price / 100}</td></Show>
-                              <td>
-                                <Button default size="small" onClick={() => buyItem(item)}>
-                                  <PlusSmall />
-                                </Button>
-                              </td>
-                            </tr>
-                          }
-                        </For>
-                      </tbody>
-                    </table>
-                  </Toggle>
-                </Show>
+      <GuideWrapper
+        character={character()}
+        guideStep={props.guideStep}
+        helpMessage={props.helpMessage}
+        onReloadCharacter={props.onReloadCharacter}
+      >
+        <Show
+          when={!itemsSelectingMode()}
+          fallback={
+            <>
+              <div class="mb-2 flex">
+                <Input
+                  containerClassList="mr-2 flex-1"
+                  placeholder={TRANSLATION[locale()]['searchByName']}
+                  value={filterByName()}
+                  onInput={(value) => setFilterByName(value)}
+                />
+                <Button default size="small" classList="px-2" onClick={() => setFilterByName('')}>
+                  {TRANSLATION[locale()]['clear']}
+                </Button>
+              </div>
+              <For each={props.itemFilters}>
+                {(itemFilter) =>
+                  <Show when={filteredItems().filter(itemFilter.callback).length > 0}>
+                    <Toggle isOpenByParent={filterByName().length >= 3} title={itemFilter.title}>
+                      <table class="w-full table first-column-full-width">
+                        <thead>
+                          <tr>
+                            <td />
+                            <Show when={props.withWeight}><td class="text-center px-2">{t('equipment.weight')}</td></Show>
+                            <Show when={props.withPrice}><td class="text-center text-nowrap px-2">{t('equipment.cost')}</td></Show>
+                            <td />
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <For each={filteredItems().filter(itemFilter.callback)}>
+                            {(item) =>
+                              <tr>
+                                <td class="py-1 pl-1">
+                                  <p>
+                                    {item.name}
+                                    <Show when={item.homebrew}>
+                                      <span title="Homebrew" class="text-xs ml-2">HB</span>
+                                    </Show>
+                                  </p>
+                                </td>
+                                <Show when={props.withWeight}><td class="py-1 text-center">{item.data.weight}</td></Show>
+                                <Show when={props.withPrice}><td class="py-1 text-center">{item.data.price / 100}</td></Show>
+                                <td>
+                                  <Button default size="small" onClick={() => buyItem(item)}>
+                                    <PlusSmall />
+                                  </Button>
+                                </td>
+                              </tr>
+                            }
+                          </For>
+                        </tbody>
+                      </table>
+                    </Toggle>
+                  </Show>
+                }
+              </For>
+              <Button default textable onClick={() => setItemsSelectingMode(false)}>{t('back')}</Button>
+            </>
+          }
+        >
+          {safeChildren()}
+          <Show when={characterItems() !== undefined}>
+            <Button default textable classList="mb-2" onClick={() => setItemsSelectingMode(true)}>{t('equipment.addItems')}</Button>
+            <For each={['hands', 'equipment', 'backpack', 'storage']}>
+              {(state) =>
+                <ItemsTable
+                  title={t(`equipment.in.${state}.title`)}
+                  subtitle={t(`equipment.in.${state}.description`)}
+                  state={state}
+                  items={characterItems().filter((item) => item.state === state)}
+                  onChangeItem={changeItem}
+                  onUpdateCharacterItem={updateCharacterItem}
+                  onRemoveCharacterItem={removeCharacterItem}
+                />
               }
             </For>
-            <Button default textable onClick={() => setItemsSelectingMode(false)}>{t('back')}</Button>
-          </>
-        }
-      >
-        {safeChildren()}
-        <Show when={characterItems() !== undefined}>
-          <Button default textable classList="mb-2" onClick={() => setItemsSelectingMode(true)}>{t('equipment.addItems')}</Button>
-          <For each={['hands', 'equipment', 'backpack', 'storage']}>
-            {(state) =>
-              <ItemsTable
-                title={t(`equipment.in.${state}.title`)}
-                subtitle={t(`equipment.in.${state}.description`)}
-                state={state}
-                items={characterItems().filter((item) => item.state === state)}
-                onChangeItem={changeItem}
-                onUpdateCharacterItem={updateCharacterItem}
-                onRemoveCharacterItem={removeCharacterItem}
-              />
-            }
-          </For>
-          <Show when={props.withWeight}>
-            <div class="flex justify-end">
-              <div class="p-4 flex blockable">
-                <p class="dark:text-snow">{calculateCurrentLoad()} / {character().load}</p>
+            <Show when={props.withWeight}>
+              <div class="flex justify-end">
+                <div class="p-4 flex blockable">
+                  <p class="dark:text-snow">{calculateCurrentLoad()} / {character().load}</p>
+                </div>
               </div>
-            </div>
+            </Show>
           </Show>
         </Show>
-      </Show>
+      </GuideWrapper>
       <Modal>
         <Show when={changingItem()}>
           <div class="mb-2 flex items-center">

@@ -2,7 +2,7 @@ import { createSignal, createEffect, Show, batch, For } from 'solid-js';
 import * as i18n from '@solid-primitives/i18n';
 
 import { DaggerheartExperience } from '../../../../pages';
-import { ErrorWrapper, Input, Button, EditWrapper, Checkbox } from '../../../../components';
+import { ErrorWrapper, Input, Button, EditWrapper, Checkbox, GuideWrapper } from '../../../../components';
 import { useAppState, useAppLocale, useAppAlert } from '../../../../context';
 import { Minus, Plus } from '../../../../assets';
 import { fetchCompanionRequest } from '../../../../requests/fetchCompanionRequest';
@@ -112,137 +112,139 @@ export const DaggerheartCompanion = (props) => {
 
   return (
     <ErrorWrapper payload={{ character_id: character().id, key: 'DaggerheartCompanion' }}>
-      <Show
-        when={character().can_have_companion}
-        fallback={
-          <div class="p-4 blockable dark:text-snow">
-            <p>{t('daggerheart.companion.notAvailable')}</p>
-          </div>
-        }
-      >
+      <GuideWrapper character={character()}>
         <Show
-          when={companion()}
+          when={character().can_have_companion}
           fallback={
-            <>
-              <Input
-                containerClassList="mb-4"
-                labelText={t('daggerheart.companion.name')}
-                value={name()}
-                onInput={(value) => setName(value)}
-              />
-              <Button default onClick={createCompanion}>{t('create')}</Button>
-            </>
+            <div class="p-4 blockable dark:text-snow">
+              <p>{t('daggerheart.companion.notAvailable')}</p>
+            </div>
           }
         >
-          <div class="flex flex-col emd:flex-row gap-4">
-            <div class="flex-1">
-              <div class="p-4 blockable dark:text-snow">
-                <p class="text-xl">{companion().name}</p>
-                <Show when={companion().caption}>
-                  <p class="mt-2">{companion().caption}</p>
-                </Show>
-                <div class="mt-4">
-                  <p class="text-sm/4 uppercase mb-1 dark:text-snow">{t('daggerheart.health.stress')}</p>
-                  <div class="flex">
-                    <For each={Array.from([...Array(companion().stress_max).keys()], (x) => x + 1)}>
-                      {(index) =>
-                        <Checkbox
-                          filled
-                          checked={companion().stress_marked >= index}
-                          classList="mr-1"
-                          onToggle={() => updateStress(index)}
-                        />
-                      }
-                    </For>
+          <Show
+            when={companion()}
+            fallback={
+              <>
+                <Input
+                  containerClassList="mb-4"
+                  labelText={t('daggerheart.companion.name')}
+                  value={name()}
+                  onInput={(value) => setName(value)}
+                />
+                <Button default onClick={createCompanion}>{t('create')}</Button>
+              </>
+            }
+          >
+            <div class="flex flex-col emd:flex-row gap-4">
+              <div class="flex-1">
+                <div class="p-4 blockable dark:text-snow">
+                  <p class="text-xl">{companion().name}</p>
+                  <Show when={companion().caption}>
+                    <p class="mt-2">{companion().caption}</p>
+                  </Show>
+                  <div class="mt-4">
+                    <p class="text-sm/4 uppercase mb-1 dark:text-snow">{t('daggerheart.health.stress')}</p>
+                    <div class="flex">
+                      <For each={Array.from([...Array(companion().stress_max).keys()], (x) => x + 1)}>
+                        {(index) =>
+                          <Checkbox
+                            filled
+                            checked={companion().stress_marked >= index}
+                            classList="mr-1"
+                            onToggle={() => updateStress(index)}
+                          />
+                        }
+                      </For>
+                    </div>
                   </div>
                 </div>
-              </div>
-              <EditWrapper
-                editMode={editDamageMode()}
-                onSetEditMode={setEditDamageMode}
-                onCancelEditing={cancelDamageEditing}
-                onSaveChanges={() => updateCompanion({ damage: damageData(), distance: distanceData() }, setEditDamageMode)}
-              >
-                <div class="grid grid-cols-3 gap-2 mt-4">
-                  <div class="blockable py-4">
-                    <p class="text-sm elg:text-[10px] uppercase text-center mb-4 dark:text-white">{t('daggerheart.companion.evasion')}</p>
-                    <div class="mx-auto flex items-center justify-center">
-                      <p class="font-normal! dark:text-snow">
-                        {companion().evasion}
-                      </p>
-                    </div>
-                  </div>
-                  <div class="blockable py-4">
-                    <p class="text-sm elg:text-[10px] uppercase text-center mb-4 dark:text-white">{t('daggerheart.companion.damage')}</p>
-                    <div class="mx-auto flex items-center justify-center">
-                      <p class="font-normal! dark:text-snow">
-                        {editDamageMode() ? damageData() : companion().damage}
-                      </p>
-                    </div>
-                    <Show when={editDamageMode()}>
-                      <div class="mt-2 flex justify-center gap-2">
-                        <Button default size="small" onClick={() => changeDamage(-1)}><Minus /></Button>
-                        <Button default size="small" onClick={() => changeDamage(1)}><Plus /></Button>
-                      </div>
-                    </Show>
-                  </div>
-                  <div class="blockable py-4">
-                    <p class="text-sm elg:text-[10px] uppercase text-center mb-4 dark:text-white">{t('daggerheart.companion.distance')}</p>
-                    <div class="mx-auto flex items-center justify-center">
-                      <p class="font-normal! dark:text-snow">
-                        {editDamageMode() ? distanceData() : companion().distance}
-                      </p>
-                    </div>
-                    <Show when={editDamageMode()}>
-                      <div class="mt-2 flex justify-center gap-2">
-                        <Button default size="small" onClick={() => changeDistance(-1)}><Minus /></Button>
-                        <Button default size="small" onClick={() => changeDistance(1)}><Plus /></Button>
-                      </div>
-                    </Show>
-                  </div>
-                </div>
-              </EditWrapper>
-              <div class="mt-4">
-                <DaggerheartExperience object={companion()} callback={updateCompanion} />
-              </div>
-            </div>
-            <div class="flex-1">
-              <div class="p-4 blockable dark:text-snow">
-                <For
-                  each={[
-                    { title: t('daggerheart.companion.leveling.intelligent'), max: 3, attribute: 'intelligent' },
-                    { title: t('daggerheart.companion.leveling.light'), max: 1, attribute: 'light' },
-                    { title: t('daggerheart.companion.leveling.comfort'), max: 1, attribute: 'comfort' },
-                    { title: t('daggerheart.companion.leveling.armored'), max: 1, attribute: 'armored' },
-                    { title: t('daggerheart.companion.leveling.vicious'), max: 3, attribute: 'vicious' },
-                    { title: t('daggerheart.companion.leveling.resilient'), max: 3, attribute: 'resilient' },
-                    { title: t('daggerheart.companion.leveling.bonded'), max: 1, attribute: 'bonded' },
-                    { title: t('daggerheart.companion.leveling.aware'), max: 3, attribute: 'aware' }
-                  ]}
+                <EditWrapper
+                  editMode={editDamageMode()}
+                  onSetEditMode={setEditDamageMode}
+                  onCancelEditing={cancelDamageEditing}
+                  onSaveChanges={() => updateCompanion({ damage: damageData(), distance: distanceData() }, setEditDamageMode)}
                 >
-                  {(item) =>
-                    <div class="mt-2">
-                      <p class="text-sm/4 uppercase mb-1 dark:text-snow">{item.title}</p>
-                      <div class="flex">
-                        <For each={Array.from([...Array(item.max).keys()], (x) => x + 1)}>
-                          {(index) =>
-                            <Checkbox
-                              filled
-                              checked={companion().leveling[item.attribute] >= index}
-                              classList="mr-1"
-                              onToggle={() => updateLeveling(item.attribute, index)}
-                            />
-                          }
-                        </For>
+                  <div class="grid grid-cols-3 gap-2 mt-4">
+                    <div class="blockable py-4">
+                      <p class="text-sm elg:text-[10px] uppercase text-center mb-4 dark:text-white">{t('daggerheart.companion.evasion')}</p>
+                      <div class="mx-auto flex items-center justify-center">
+                        <p class="font-normal! dark:text-snow">
+                          {companion().evasion}
+                        </p>
                       </div>
                     </div>
-                  }
-                </For>
+                    <div class="blockable py-4">
+                      <p class="text-sm elg:text-[10px] uppercase text-center mb-4 dark:text-white">{t('daggerheart.companion.damage')}</p>
+                      <div class="mx-auto flex items-center justify-center">
+                        <p class="font-normal! dark:text-snow">
+                          {editDamageMode() ? damageData() : companion().damage}
+                        </p>
+                      </div>
+                      <Show when={editDamageMode()}>
+                        <div class="mt-2 flex justify-center gap-2">
+                          <Button default size="small" onClick={() => changeDamage(-1)}><Minus /></Button>
+                          <Button default size="small" onClick={() => changeDamage(1)}><Plus /></Button>
+                        </div>
+                      </Show>
+                    </div>
+                    <div class="blockable py-4">
+                      <p class="text-sm elg:text-[10px] uppercase text-center mb-4 dark:text-white">{t('daggerheart.companion.distance')}</p>
+                      <div class="mx-auto flex items-center justify-center">
+                        <p class="font-normal! dark:text-snow">
+                          {editDamageMode() ? distanceData() : companion().distance}
+                        </p>
+                      </div>
+                      <Show when={editDamageMode()}>
+                        <div class="mt-2 flex justify-center gap-2">
+                          <Button default size="small" onClick={() => changeDistance(-1)}><Minus /></Button>
+                          <Button default size="small" onClick={() => changeDistance(1)}><Plus /></Button>
+                        </div>
+                      </Show>
+                    </div>
+                  </div>
+                </EditWrapper>
+                <div class="mt-4">
+                  <DaggerheartExperience object={companion()} callback={updateCompanion} />
+                </div>
+              </div>
+              <div class="flex-1">
+                <div class="p-4 blockable dark:text-snow">
+                  <For
+                    each={[
+                      { title: t('daggerheart.companion.leveling.intelligent'), max: 3, attribute: 'intelligent' },
+                      { title: t('daggerheart.companion.leveling.light'), max: 1, attribute: 'light' },
+                      { title: t('daggerheart.companion.leveling.comfort'), max: 1, attribute: 'comfort' },
+                      { title: t('daggerheart.companion.leveling.armored'), max: 1, attribute: 'armored' },
+                      { title: t('daggerheart.companion.leveling.vicious'), max: 3, attribute: 'vicious' },
+                      { title: t('daggerheart.companion.leveling.resilient'), max: 3, attribute: 'resilient' },
+                      { title: t('daggerheart.companion.leveling.bonded'), max: 1, attribute: 'bonded' },
+                      { title: t('daggerheart.companion.leveling.aware'), max: 3, attribute: 'aware' }
+                    ]}
+                  >
+                    {(item) =>
+                      <div class="mt-2">
+                        <p class="text-sm/4 uppercase mb-1 dark:text-snow">{item.title}</p>
+                        <div class="flex">
+                          <For each={Array.from([...Array(item.max).keys()], (x) => x + 1)}>
+                            {(index) =>
+                              <Checkbox
+                                filled
+                                checked={companion().leveling[item.attribute] >= index}
+                                classList="mr-1"
+                                onToggle={() => updateLeveling(item.attribute, index)}
+                              />
+                            }
+                          </For>
+                        </div>
+                      </div>
+                    }
+                  </For>
+                </div>
               </div>
             </div>
-          </div>
+          </Show>
         </Show>
-      </Show>
+      </GuideWrapper>
     </ErrorWrapper>
   );
 }

@@ -1,6 +1,6 @@
 import { createSignal, createMemo, Show } from 'solid-js';
 
-import { Select, ErrorWrapper } from '../../../../components';
+import { Select, ErrorWrapper, GuideWrapper } from '../../../../components';
 import config from '../../../../data/daggerheart.json';
 import { useAppState, useAppLocale, useAppAlert } from '../../../../context';
 import { updateCharacterRequest } from '../../../../requests/updateCharacterRequest';
@@ -61,29 +61,31 @@ export const DaggerheartStances = (props) => {
 
   return (
     <ErrorWrapper payload={{ character_id: character().id, key: 'DaggerheartStances' }}>
-      <Show when={character().can_have_stances}>
-        <div class="blockable p-4">
-          <h2 class="text-lg mb-2 dark:text-snow">{TRANSLATION[locale()]['stances']}</h2>
-          <Select
-            multi
-            containerClassList="w-full"
-            labelText={TRANSLATION[locale()]['selectedStances']}
-            items={availableStances()}
-            selectedValues={selectedStances()}
-            onSelect={(value) => updateMultiFeatureValue(value)}
-          />
-          <Select
-            containerClassList="mt-2 w-full"
-            labelText={TRANSLATION[locale()]['activeStance']}
-            items={stancesSelect()}
-            selectedValue={character().stance}
-            onSelect={(value) => updateCharacter({ stance: value === 'null' ? null : value })}
-          />
-          <Show when={character().stance}>
-            <p class="mt-2 dark:text-snow">{config.stances[character().stance].feature[locale()]}</p>
-          </Show>
-        </div>
-      </Show>
+      <GuideWrapper character={character()}>
+        <Show when={character().can_have_stances}>
+          <div class="blockable p-4">
+            <h2 class="text-lg mb-2 dark:text-snow">{TRANSLATION[locale()]['stances']}</h2>
+            <Select
+              multi
+              containerClassList="w-full"
+              labelText={TRANSLATION[locale()]['selectedStances']}
+              items={availableStances()}
+              selectedValues={selectedStances()}
+              onSelect={(value) => updateMultiFeatureValue(value)}
+            />
+            <Select
+              containerClassList="mt-2 w-full"
+              labelText={TRANSLATION[locale()]['activeStance']}
+              items={stancesSelect()}
+              selectedValue={character().stance}
+              onSelect={(value) => updateCharacter({ stance: value === 'null' ? null : value })}
+            />
+            <Show when={character().stance}>
+              <p class="mt-2 dark:text-snow">{config.stances[character().stance].feature[locale()]}</p>
+            </Show>
+          </div>
+        </Show>
+      </GuideWrapper>
     </ErrorWrapper>
   );
 }

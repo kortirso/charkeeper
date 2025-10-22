@@ -1,7 +1,7 @@
 import { createMemo, Show } from 'solid-js';
 import * as i18n from '@solid-primitives/i18n';
 
-import { Select, ErrorWrapper } from '../../../../components';
+import { Select, ErrorWrapper, GuideWrapper } from '../../../../components';
 import config from '../../../../data/daggerheart.json';
 import { useAppState, useAppLocale, useAppAlert } from '../../../../context';
 import { updateCharacterRequest } from '../../../../requests/updateCharacterRequest';
@@ -35,15 +35,17 @@ export const DaggerheartBeastform = (props) => {
   return (
     <ErrorWrapper payload={{ character_id: character().id, key: 'DaggerheartBeastform' }}>
       <Show when={character().beastforms.length > 0}>
-        <div class="blockable p-4">
-          <h2 class="text-lg mb-2 dark:text-snow">{t('daggerheart.beast.transformation')}</h2>
-          <Select
-            containerClassList="w-full"
-            items={beastformsSelect()}
-            selectedValue={character().beastform === null ? 'none' : character().beastform}
-            onSelect={(value) => changeBeastform(value)}
-          />
-        </div>
+        <GuideWrapper character={character()}>
+          <div class="blockable p-4">
+            <h2 class="text-lg mb-2 dark:text-snow">{t('daggerheart.beast.transformation')}</h2>
+            <Select
+              containerClassList="w-full"
+              items={beastformsSelect()}
+              selectedValue={character().beastform === null ? 'none' : character().beastform}
+              onSelect={(value) => changeBeastform(value)}
+            />
+          </div>
+        </GuideWrapper>
       </Show>
     </ErrorWrapper>
   );

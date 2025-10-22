@@ -6,7 +6,8 @@ module DaggerheartCharacter
       result.merge({
         classes: { result[:main_class] => 1 },
         subclasses: { result[:main_class] => result[:subclass] },
-        subclasses_mastery: { result[:subclass] => 1 }
+        subclasses_mastery: { result[:subclass] => 1 },
+        guide_step: 1
       })
     end
   end

@@ -26,3 +26,5 @@ export * from './substances/Bonuses';
 export * from './substances/Equipment';
 export * from './substances/Feats';
 export * from './substances/DiceRoll';
+
+export * from './wrappers/Guide';

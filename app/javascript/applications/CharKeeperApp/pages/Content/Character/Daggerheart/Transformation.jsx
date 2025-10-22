@@ -1,7 +1,7 @@
 import { createMemo, Show } from 'solid-js';
 import * as i18n from '@solid-primitives/i18n';
 
-import { Select, ErrorWrapper } from '../../../../components';
+import { Select, ErrorWrapper, GuideWrapper } from '../../../../components';
 import { useAppState, useAppLocale, useAppAlert } from '../../../../context';
 import { updateCharacterRequest } from '../../../../requests/updateCharacterRequest';
 
@@ -33,17 +33,19 @@ export const DaggerheartTransform = (props) => {
 
   return (
     <ErrorWrapper payload={{ character_id: character().id, key: 'DaggerheartTransformation' }}>
-      <Show when={Object.keys(character().transformations).length > 0}>
-        <div class="blockable p-4">
-          <h2 class="text-lg mb-2 dark:text-snow">{t('daggerheart.transformation.transformation')}</h2>
-          <Select
-            containerClassList="w-full"
-            items={transformationsSelect()}
-            selectedValue={character().transformation === null ? 'none' : character().transformation}
-            onSelect={(value) => changeTransformation(value)}
-          />
-        </div>
-      </Show>
+      <GuideWrapper character={character()}>
+        <Show when={Object.keys(character().transformations).length > 0}>
+          <div class="blockable p-4">
+            <h2 class="text-lg mb-2 dark:text-snow">{t('daggerheart.transformation.transformation')}</h2>
+            <Select
+              containerClassList="w-full"
+              items={transformationsSelect()}
+              selectedValue={character().transformation === null ? 'none' : character().transformation}
+              onSelect={(value) => changeTransformation(value)}
+            />
+          </div>
+        </Show>
+      </GuideWrapper>
     </ErrorWrapper>
   );
 }

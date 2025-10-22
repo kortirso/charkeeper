@@ -12,6 +12,19 @@ import {
 } from '../../../components';
 import { useAppLocale } from '../../../context';
 
+const TRANSLATION = {
+  en: {
+    helpMessage: "You can choose either a two-handed primary weapon, or a one-handed primary weapon and a one-handed secondary weapon, then equip them. You can choose one set of armor and equip it. You can choose any other items.",
+    domainHelpMessage: "To start, look at all the level 1 cards from your class's two domains and choose two cards. You can take one from each domain or two from a single domain.",
+    levelingHelpMessage: "In the future on this tab you can level up your character."
+  },
+  ru: {
+    helpMessage: "Вы можете выбрать двуручное оружие или одноручное основное и одноручное дополнительное оружие, а затем экипировать его. Вы можете выбрать набор брони и экипировать его. Вы также можете выбрать другие вещи.",
+    domainHelpMessage: "В начале изучите все карты 1 уровня из двух доменов вашего класса и выберите 2 карты. Вы можете выбрать по карте из каждого домена или обе карты из одного домена.",
+    levelingHelpMessage: "В будущем на этой вкладке вы сможете указывать уровень вашего персонажа."
+  }
+}
+
 export const Daggerheart = (props) => {
   const size = createWindowSize();
   const character = () => props.character;
@@ -20,7 +33,7 @@ export const Daggerheart = (props) => {
   const [activeTab, setActiveTab] = createSignal('combat');
 
   const { DiceRoll, openDiceRoll } = createDiceRoll();
-  const [, dict] = useAppLocale();
+  const [locale, dict] = useAppLocale();
 
   const t = i18n.translator(dict);
 
@@ -73,9 +86,11 @@ export const Daggerheart = (props) => {
     return (
       <>
         <CharacterNavigation
-          tabsList={['traits', 'combat', 'equipment', 'domainCards', 'companion', 'bonuses', 'rest', 'notes', 'classLevels', 'avatar']}
+          tabsList={['traits', 'combat', 'equipment', 'domainCards', 'bonuses', 'rest', 'classLevels', 'companion', 'notes', 'avatar']}
           activeTab={activeMobileTab()}
           setActiveTab={setActiveMobileTab}
+          currentGuideStep={character().guide_step}
+          markedTabs={{ '3': 'equipment', '4': 'domainCards', '5': 'classLevels' }}
         />
         <div class="p-2 flex-1 overflow-y-auto">
           <Switch>
@@ -84,9 +99,14 @@ export const Daggerheart = (props) => {
                 character={character()}
                 openDiceRoll={openDiceRoll}
                 onReplaceCharacter={props.onReplaceCharacter}
+                onReloadCharacter={props.onReloadCharacter}
               />
               <div class="mt-4">
-                <DaggerheartExperience object={character()} onReplaceCharacter={props.onReplaceCharacter} />
+                <DaggerheartExperience
+                  object={character()}
+                  onReplaceCharacter={props.onReplaceCharacter}
+                  onReloadCharacter={props.onReloadCharacter}
+                />
               </div>
               <div class="mt-4">
                 <DaggerheartBeastform character={character()} onReplaceCharacter={props.onReplaceCharacter} />
@@ -144,6 +164,9 @@ export const Daggerheart = (props) => {
                 ]}
                 onReplaceCharacter={props.onReplaceCharacter}
                 onReloadCharacter={props.onReloadCharacter}
+                currentGuideStep={character().guide_step}
+                guideStep={3}
+                helpMessage={TRANSLATION[locale()]['helpMessage']}
               >
                 <DaggerheartGold character={character()} onReplaceCharacter={props.onReplaceCharacter} />
               </Equipment>
@@ -152,6 +175,9 @@ export const Daggerheart = (props) => {
               <DaggerheartDomainCards
                 character={character()}
                 onReloadCharacter={props.onReloadCharacter}
+                currentGuideStep={character().guide_step}
+                guideStep={4}
+                helpMessage={TRANSLATION[locale()]['domainHelpMessage']}
               />
             </Match>
             <Match when={activeMobileTab() === 'companion'}>
@@ -167,7 +193,15 @@ export const Daggerheart = (props) => {
               <Notes />
             </Match>
             <Match when={activeMobileTab() === 'classLevels'}>
-              <DaggerheartLeveling character={character()} onReplaceCharacter={props.onReplaceCharacter} />
+              <DaggerheartLeveling
+                character={character()}
+                onReplaceCharacter={props.onReplaceCharacter}
+                onReloadCharacter={props.onReloadCharacter}
+                currentGuideStep={character().guide_step}
+                guideStep={5}
+                helpMessage={TRANSLATION[locale()]['levelingHelpMessage']}
+                finishGuideStep={true}
+              />
             </Match>
             <Match when={activeMobileTab() === 'avatar'}>
               <Avatar character={character()} onReplaceCharacter={props.onReplaceCharacter} />
@@ -187,12 +221,17 @@ export const Daggerheart = (props) => {
           character={character()}
           openDiceRoll={openDiceRoll}
           onReplaceCharacter={props.onReplaceCharacter}
+          onReloadCharacter={props.onReloadCharacter}
         />
         <div class="mt-4">
           <DaggerheartStatic character={character()} />
         </div>
         <div class="mt-4">
-          <DaggerheartExperience object={character()} onReplaceCharacter={props.onReplaceCharacter} />
+          <DaggerheartExperience
+            object={character()}
+            onReplaceCharacter={props.onReplaceCharacter}
+            onReloadCharacter={props.onReloadCharacter}
+          />
         </div>
         <div class="mt-4">
           <DaggerheartBeastform character={character()} onReplaceCharacter={props.onReplaceCharacter} />
@@ -221,9 +260,11 @@ export const Daggerheart = (props) => {
     return (
       <>
         <CharacterNavigation
-          tabsList={['combat', 'equipment', 'domainCards', 'companion', 'bonuses', 'rest', 'notes', 'classLevels', 'avatar']}
+          tabsList={['combat', 'equipment', 'domainCards', 'bonuses', 'rest', 'classLevels', 'companion', 'notes', 'avatar']}
           activeTab={activeTab()}
           setActiveTab={setActiveTab}
+          currentGuideStep={character().guide_step}
+          markedTabs={{ '3': 'equipment', '4': 'domainCards', '5': 'classLevels' }}
         />
         <div class="p-2 flex-1">
           <Switch>
@@ -262,6 +303,9 @@ export const Daggerheart = (props) => {
                 ]}
                 onReplaceCharacter={props.onReplaceCharacter}
                 onReloadCharacter={props.onReloadCharacter}
+                currentGuideStep={character().guide_step}
+                guideStep={3}
+                helpMessage={TRANSLATION[locale()]['helpMessage']}
               >
                 <DaggerheartGold character={character()} onReplaceCharacter={props.onReplaceCharacter} />
               </Equipment>
@@ -270,6 +314,9 @@ export const Daggerheart = (props) => {
               <DaggerheartDomainCards
                 character={character()}
                 onReloadCharacter={props.onReloadCharacter}
+                currentGuideStep={character().guide_step}
+                guideStep={4}
+                helpMessage={TRANSLATION[locale()]['domainHelpMessage']}
               />
             </Match>
             <Match when={activeTab() === 'companion'}>
@@ -285,7 +332,15 @@ export const Daggerheart = (props) => {
               <Notes />
             </Match>
             <Match when={activeTab() === 'classLevels'}>
-              <DaggerheartLeveling character={character()} onReplaceCharacter={props.onReplaceCharacter} />
+              <DaggerheartLeveling
+                character={character()}
+                onReplaceCharacter={props.onReplaceCharacter}
+                onReloadCharacter={props.onReloadCharacter}
+                currentGuideStep={character().guide_step}
+                guideStep={5}
+                helpMessage={TRANSLATION[locale()]['levelingHelpMessage']}
+                finishGuideStep={true}
+              />
             </Match>
             <Match when={activeTab() === 'avatar'}>
               <Avatar character={character()} onReplaceCharacter={props.onReplaceCharacter} />

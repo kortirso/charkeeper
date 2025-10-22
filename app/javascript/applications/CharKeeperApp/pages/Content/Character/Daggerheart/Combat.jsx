@@ -1,7 +1,7 @@
 import { For, Show } from 'solid-js';
 import * as i18n from '@solid-primitives/i18n';
 
-import { ErrorWrapper, Dice } from '../../../../components';
+import { ErrorWrapper, Dice, GuideWrapper } from '../../../../components';
 import { useAppLocale } from '../../../../context';
 import { modifier } from '../../../../helpers';
 
@@ -67,8 +67,10 @@ export const DaggerheartCombat = (props) => {
 
   return (
     <ErrorWrapper payload={{ character_id: character().id, key: 'DaggerheartCombat' }}>
-      {renderAttacksBox(t('combat.list.equipment'), character().attacks.filter((item) => item.ready_to_use))}
-      {renderAttacksBox(t('combat.list.backpack'), character().attacks.filter((item) => !item.ready_to_use))}
+      <GuideWrapper character={character()}>
+        {renderAttacksBox(t('combat.list.equipment'), character().attacks.filter((item) => item.ready_to_use))}
+        {renderAttacksBox(t('combat.list.backpack'), character().attacks.filter((item) => !item.ready_to_use))}
+      </GuideWrapper>
     </ErrorWrapper>
   );
 }

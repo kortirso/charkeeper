@@ -1,11 +1,20 @@
 import { createSignal, createEffect, For, Show, batch } from 'solid-js';
 import * as i18n from '@solid-primitives/i18n';
 
-import { Button, Input, ErrorWrapper, Toggle } from '../../../../components';
+import { Button, Input, ErrorWrapper, Toggle, GuideWrapper } from '../../../../components';
 import { useAppState, useAppLocale, useAppAlert } from '../../../../context';
 import { Plus, Minus, Close, Check } from '../../../../assets';
 import { updateCharacterRequest } from '../../../../requests/updateCharacterRequest';
 import { modifier } from '../../../../helpers';
+
+const TRANSLATION = {
+  en: {
+    helpMessage: "Your character starts with two Experiences (each with a +2 modifier)."
+  },
+  ru: {
+    helpMessage: "Ваш персонаж начинает приключение с 2 опытами (каждый с модификатором +2)."
+  }
+}
 
 export const DaggerheartExperience = (props) => {
   const object = () => props.object;
@@ -18,7 +27,7 @@ export const DaggerheartExperience = (props) => {
 
   const [appState] = useAppState();
   const [{ renderAlerts }] = useAppAlert();
-  const [, dict] = useAppLocale();
+  const [locale, dict] = useAppLocale();
 
   const t = i18n.translator(dict);
 
@@ -79,13 +88,20 @@ export const DaggerheartExperience = (props) => {
       await props.callback(payload);
       cancelEditing();
     } else {
+      let onlyHead = true;
+      if (object().guide_step && payload.experience.length >= 2) {
+        payload = { ...payload, guide_step: object().guide_step + 1 };
+        onlyHead = false;
+      }
+
       result = await updateCharacterRequest(
         appState.accessToken, object().provider, object().id, { character: payload, only_head: true }
       );
 
       if (result.errors_list === undefined) {
         batch(() => {
-          props.onReplaceCharacter(payload);
+          if (onlyHead) props.onReplaceCharacter(payload);
+          else props.onReloadCharacter();
           cancelEditing();
         });
       } else renderAlerts(result.errors_list);
@@ -94,56 +110,63 @@ export const DaggerheartExperience = (props) => {
 
   return (
     <ErrorWrapper payload={{ character_id: object().id, key: 'DaggerheartExperience' }}>
-      <Toggle
-        disabled
-        isOpenByParent={isOpen() || editMode()}
-        onParentClick={toggleClick}
-        title={
-          <div class="flex justify-between items-center">
-            <h2 class="flex-1 text-lg dark:text-snow">{t('daggerheart.experience.title')}</h2>
-            <Show when={!editMode()}>
-              <Button default size="small" onClick={(e) => enterEditMode(e)}>
-                <Plus />
-              </Button>
-            </Show>
-          </div>
-        }
+      <GuideWrapper
+        character={object()}
+        guideStep={2}
+        helpMessage={TRANSLATION[locale()]['helpMessage']}
+        onReloadCharacter={props.onReloadCharacter}
       >
-        <Show when={editMode()}>
-          <div class="flex items-center gap-2 mb-4">
-            <Input
-              containerClassList="flex-1"
-              value={name()}
-              onInput={(value) => setName(value)}
-            />
-            <Show when={name().length > 0}>
-              <Button outlined onClick={cancelEditing}><Close width="30" height="30" /></Button>
-              <Button default onClick={addExperience}><Check width="20" height="20" /></Button>
-            </Show>
-          </div>
-        </Show>
-        <div class="experiences">
-          <For each={object().experience}>
-            {(exp) =>
-              <div class="experience">
-                <p class="flex-1">{exp.exp_name}</p>
-                <div class="flex ml-4">
-                  <Button default size="small" classList="opacity-75" onClick={() => changeExperience(exp, -1)}>
-                    <Minus />
-                  </Button>
-                  <p class="mx-2 w-6 text-center">{modifier(exp.exp_level)}</p>
-                  <Button default size="small" classList="opacity-75" onClick={() => changeExperience(exp, 1)}>
-                    <Plus />
+        <Toggle
+          disabled
+          isOpenByParent={isOpen() || editMode()}
+          onParentClick={toggleClick}
+          title={
+            <div class="flex justify-between items-center">
+              <h2 class="flex-1 text-lg dark:text-snow">{t('daggerheart.experience.title')}</h2>
+              <Show when={!editMode()}>
+                <Button default size="small" onClick={(e) => enterEditMode(e)}>
+                  <Plus />
+                </Button>
+              </Show>
+            </div>
+          }
+        >
+          <Show when={editMode()}>
+            <div class="flex items-center gap-2 mb-4">
+              <Input
+                containerClassList="flex-1"
+                value={name()}
+                onInput={(value) => setName(value)}
+              />
+              <Show when={name().length > 0}>
+                <Button outlined onClick={cancelEditing}><Close width="30" height="30" /></Button>
+                <Button default onClick={addExperience}><Check width="20" height="20" /></Button>
+              </Show>
+            </div>
+          </Show>
+          <div class="experiences">
+            <For each={object().experience}>
+              {(exp) =>
+                <div class="experience">
+                  <p class="flex-1">{exp.exp_name}</p>
+                  <div class="flex ml-4">
+                    <Button default size="small" classList="opacity-75" onClick={() => changeExperience(exp, -1)}>
+                      <Minus />
+                    </Button>
+                    <p class="mx-2 w-6 text-center">{modifier(exp.exp_level)}</p>
+                    <Button default size="small" classList="opacity-75" onClick={() => changeExperience(exp, 1)}>
+                      <Plus />
+                    </Button>
+                  </div>
+                  <Button default size="small" classList="ml-4 opacity-75" onClick={() => removeExperience(exp.id)}>
+                    <Close />
                   </Button>
                 </div>
-                <Button default size="small" classList="ml-4 opacity-75" onClick={() => removeExperience(exp.id)}>
-                  <Close />
-                </Button>
-              </div>
-            }
-          </For>
-        </div>
-      </Toggle>
+              }
+            </For>
+          </div>
+        </Toggle>
+      </GuideWrapper>
     </ErrorWrapper>
   );
 }
