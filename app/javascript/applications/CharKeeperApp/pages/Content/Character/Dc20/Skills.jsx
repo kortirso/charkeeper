@@ -1,7 +1,7 @@
 import { createSignal, createEffect, For, Show, batch } from 'solid-js';
 import { createStore } from 'solid-js/store';
 
-import { ErrorWrapper, Checkbox, Levelbox, EditWrapper, GuideWrapper, Input, Select, Button } from '../../../../components';
+import { ErrorWrapper, Checkbox, Levelbox, EditWrapper, GuideWrapper, Input, Select, Button, Dice } from '../../../../components';
 import config from '../../../../data/dc20.json';
 import { useAppState, useAppLocale, useAppAlert } from '../../../../context';
 import { updateCharacterRequest } from '../../../../requests/updateCharacterRequest';
@@ -358,7 +358,14 @@ export const Dc20Skills = (props) => {
                           <p class={`flex-1 flex items-center dark:text-snow ${skill.level > 0 ? 'font-normal!' : ''}`}>
                             {config.skills[skill.slug].name[locale()]}
                           </p>
-                          <span class="dark:text-snow">{modifier(skill.modifier)}</span>
+                          <span class="dark:text-snow">
+                            <Dice
+                              width="28"
+                              height="28"
+                              text={modifier(skill.modifier)}
+                              onClick={() => props.openDiceRoll(`/check skill ${skill.slug}`, skill.modifier)}
+                            />
+                          </span>
                         </div>
                       }
                     </For>
@@ -402,7 +409,14 @@ export const Dc20Skills = (props) => {
                           <p class={`flex-1 flex items-center dark:text-snow ${trade.level > 0 ? 'font-normal!' : ''}`}>
                             {config.trades[trade.slug] ? config.trades[trade.slug].name[locale()] : trade.slug}
                           </p>
-                          <span class="dark:text-snow">{modifier(trade.modifier)}</span>
+                          <span class="dark:text-snow">
+                            <Dice
+                              width="28"
+                              height="28"
+                              text={modifier(trade.modifier)}
+                              onClick={() => props.openDiceRoll(`/check trade "${trade.slug}"`, trade.modifier)}
+                            />
+                          </span>
                         </div>
                       }
                     </For>
@@ -449,7 +463,17 @@ export const Dc20Skills = (props) => {
                       </Show>
                       <p class={`flex-1 flex items-center dark:text-snow ${level > 0 ? 'font-normal!' : ''}`}>{name}</p>
                       <span class="dark:text-snow">
-                        {level == 2 || level == 0 ? '-' : modifier(Math.max(...[character().modified_abilities.int, character().modified_abilities.cha]))}
+                        {level == 2 || level == 0 ? (
+                            '-'
+                          ) : (
+                            <Dice
+                              width="28"
+                              height="28"
+                              text={modifier(Math.max(...[character().modified_abilities.int, character().modified_abilities.cha]))}
+                              onClick={() => props.openDiceRoll(`/check language "${name}"`, Math.max(...[character().modified_abilities.int, character().modified_abilities.cha]))}
+                            />
+                          )
+                        }
                       </span>
                     </div>
                   }

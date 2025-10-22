@@ -61,6 +61,12 @@ export const createDiceRoll = () => {
             setRollResult(undefined);
           });
         }
+        if (props.provider === 'dc20') {
+          batch(() => {
+            setAdvantage(advantage() + advantageModifier);
+            setRollResult(undefined);
+          });
+        }
       }
 
       const makeRoll = async () => {
@@ -163,79 +169,115 @@ export const createDiceRoll = () => {
             <div class="flex items-end">
               <Show when={isOpen() === 'botCommand'}>
                 <div class="p-4 blockable w-xs">
-                  <div class="flex justify-between items-center">
-                    <div class="flex items-center">
-                      <Switch>
-                        <Match when={props.provider === 'dnd'}>
-                          <Show
-                            when={rollResult() === undefined}
-                            fallback={
-                              <Dice
-                                onClick={() => rerollDndDice(0)}
-                                minimum={advantage() !== 0 ? (advantage() > 0 ? rollResult().rolls[1][1] > rollResult().rolls[0][1] : rollResult().rolls[1][1] <= rollResult().rolls[0][1]) : false}
-                                text={rollResult().rolls[0][1]}
-                              />
-                            }
-                          >
-                            <Dice text="D20" />
-                          </Show>
-                          <Show when={advantage() !== 0}>
-                            <div class="ml-2">
-                              <Show
-                                when={rollResult() === undefined}
-                                fallback={
+                  <div class="flex flex-wrap items-center gap-2">
+                    <Switch>
+                      <Match when={props.provider === 'dnd'}>
+                        <Show
+                          when={rollResult() === undefined}
+                          fallback={
+                            <Dice
+                              onClick={() => rerollDndDice(0)}
+                              minimum={advantage() !== 0 ? (advantage() > 0 ? rollResult().rolls[1][1] > rollResult().rolls[0][1] : rollResult().rolls[1][1] <= rollResult().rolls[0][1]) : false}
+                              text={rollResult().rolls[0][1]}
+                            />
+                          }
+                        >
+                          <Dice text="D20" />
+                        </Show>
+                        <Show when={advantage() !== 0}>
+                          <div>
+                            <Show
+                              when={rollResult() === undefined}
+                              fallback={
+                                <Dice
+                                  onClick={() => rerollDndDice(1)}
+                                  minimum={advantage() > 0 ? rollResult().rolls[1][1] <= rollResult().rolls[0][1] : rollResult().rolls[1][1] > rollResult().rolls[0][1]}
+                                  text={rollResult().rolls[1][1]}
+                                />
+                              }
+                            >
+                              <Dice text={advantage() > 0 ? 'Adv' : 'Dis'} />
+                            </Show>
+                          </div>
+                        </Show>
+                        <Show when={bonus() + additionalBonus() !== 0}>
+                          <p class="text-xl ml-2 dark:text-snow">{modifier(bonus() + additionalBonus())}</p>
+                        </Show>
+                      </Match>
+                      <Match when={props.provider === 'daggerheart'}>
+                        <Show
+                          when={rollResult() === undefined}
+                          fallback={
+                            <>
+                              <Dice onClick={() => rerollDhDice('d12', 0)} text={rollResult().rolls[0][1]} />
+                              <Dice onClick={() => rerollDhDice('d12', 1)} text={rollResult().rolls[1][1]} />
+                            </>
+                          }
+                        >
+                          <Dice text="D12" />
+                          <Dice text="D12" />
+                        </Show>
+                        <Show when={advantage() !== 0}>
+                          <div class="ml-2">
+                            <Show
+                              when={rollResult() === undefined}
+                              fallback={
+                                <Dice onClick={() => rerollDhDice('d6', 2)} text={rollResult().rolls[2][1]} />
+                              }
+                            >
+                              <Dice text={advantage() > 0 ? 'Adv' : 'Dis'} />
+                            </Show>
+                          </div>
+                        </Show>
+                        <Show when={bonus() + additionalBonus() !== 0}>
+                          <p class="text-xl ml-2 dark:text-snow">{modifier(bonus() + additionalBonus())}</p>
+                        </Show>
+                      </Match>
+                      <Match when={props.provider === 'dc20'}>
+                        <Show
+                          when={rollResult() === undefined}
+                          fallback={
+                            <Dice
+                              text={rollResult().rolls[0][1]}
+                              minimum={rollResult().rolls[0][1] !== rollResult().final_roll}
+                            />
+                          }
+                        >
+                          <Dice text="D20" />
+                        </Show>
+                        <Show when={advantage() !== 0}>
+                          <For each={Array.from([...Array(Math.abs(advantage())).keys()], (x) => x + 1)}>
+                            {(index) =>
+                              <div>
+                                <Show
+                                  when={rollResult() === undefined}
+                                  fallback={
+                                    <Dice
+                                      text={rollResult().rolls[index][1]}
+                                      minimum={rollResult().rolls[index][1] !== rollResult().final_roll}
+                                    />
+                                  }
+                                >
                                   <Dice
-                                    onClick={() => rerollDndDice(1)}
-                                    minimum={advantage() > 0 ? rollResult().rolls[1][1] <= rollResult().rolls[0][1] : rollResult().rolls[1][1] > rollResult().rolls[0][1]}
-                                    text={rollResult().rolls[1][1]}
+                                    textClassList="text-sm text-center"
+                                    text={advantage() > 0 ? 'Adv' : 'Dis'}
                                   />
-                                }
-                              >
-                                <Dice text={advantage() > 0 ? 'Adv' : 'Dis'} />
-                              </Show>
-                            </div>
-                          </Show>
-                          <Show when={bonus() + additionalBonus() !== 0}>
-                            <p class="text-xl ml-2 dark:text-snow">{modifier(bonus() + additionalBonus())}</p>
-                          </Show>
-                        </Match>
-                        <Match when={props.provider === 'daggerheart'}>
-                          <Show
-                            when={rollResult() === undefined}
-                            fallback={
-                              <>
-                                <Dice onClick={() => rerollDhDice('d12', 0)} text={rollResult().rolls[0][1]} />
-                                <Dice onClick={() => rerollDhDice('d12', 1)} text={rollResult().rolls[1][1]} />
-                              </>
+                                </Show>
+                              </div>
                             }
-                          >
-                            <Dice text="D12" />
-                            <Dice text="D12" />
-                          </Show>
-                          <Show when={advantage() !== 0}>
-                            <div class="ml-2">
-                              <Show
-                                when={rollResult() === undefined}
-                                fallback={
-                                  <Dice onClick={() => rerollDhDice('d6', 2)} text={rollResult().rolls[2][1]} />
-                                }
-                              >
-                                <Dice text={advantage() > 0 ? 'Adv' : 'Dis'} />
-                              </Show>
-                            </div>
-                          </Show>
-                          <Show when={bonus() + additionalBonus() !== 0}>
-                            <p class="text-xl ml-2 dark:text-snow">{modifier(bonus() + additionalBonus())}</p>
-                          </Show>
-                        </Match>
-                      </Switch>
-                    </div>
+                          </For>
+                        </Show>
+                        <Show when={bonus() + additionalBonus() !== 0}>
+                          <p class="text-xl ml-2 dark:text-snow">{modifier(bonus() + additionalBonus())}</p>
+                        </Show>
+                      </Match>
+                    </Switch>
                     <Show when={rollResult() !== undefined}>
-                      <div class="flex items-center">
+                      <div class="flex flex-1 items-center justify-end">
                         <p class="font-medium! text-xl dark:text-snow">{rollResult().total}</p>
                         <span class="dark:text-snow text-sm uppercase ml-2">
                           <Switch>
-                            <Match when={props.provider === 'dnd'}>
+                            <Match when={props.provider === 'dnd' || props.provider === 'dc20'}>
                               <Switch>
                                 <Match when={rollResult().status === 'crit_success'}>{TRANSLATION[locale()]['crit']}</Match>
                                 <Match when={rollResult().status === 'crit_failure'}>{TRANSLATION[locale()]['critFailure']}</Match>

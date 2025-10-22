@@ -1,6 +1,6 @@
 import { For } from 'solid-js';
 
-import { ErrorWrapper, GuideWrapper } from '../../../../components';
+import { ErrorWrapper, GuideWrapper, Dice } from '../../../../components';
 import config from '../../../../data/dc20.json';
 import { useAppLocale } from '../../../../context';
 import { modifier } from '../../../../helpers';
@@ -37,7 +37,12 @@ export const Dc20Saves = (props) => {
                       {TRANSLATION[locale()][slug]}
                     </p>
                     <div class="mx-auto flex items-center justify-center">
-                      <p class="text-2xl font-normal! dark:text-snow">{modifier(character()[slug])}</p>
+                      <p class="text-2xl font-normal! dark:text-snow">
+                        <Dice
+                          text={modifier(character()[slug])}
+                          onClick={() => props.openDiceRoll(`/check save ${slug}`, character()[slug])}
+                        />
+                      </p>
                     </div>
                   </div>
                 }
@@ -51,7 +56,12 @@ export const Dc20Saves = (props) => {
                       {config.abilities[slug].name[locale()]}
                     </p>
                     <div class="mx-auto flex items-center justify-center">
-                      <p class="text-2xl font-normal! dark:text-snow">{modifier(character().attribute_saves[slug])}</p>
+                      <p class="text-2xl font-normal! dark:text-snow">
+                        <Dice
+                          text={modifier(character().attribute_saves[slug])}
+                          onClick={() => props.openDiceRoll(`/check save ${slug}`, character().attribute_saves[slug])}
+                        />
+                      </p>
                     </div>
                   </div>
                 }

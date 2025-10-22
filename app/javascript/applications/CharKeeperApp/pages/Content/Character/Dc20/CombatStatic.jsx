@@ -1,4 +1,4 @@
-import { ErrorWrapper, GuideWrapper } from '../../../../components';
+import { ErrorWrapper, GuideWrapper, Dice } from '../../../../components';
 import { useAppLocale } from '../../../../context';
 import { modifier } from '../../../../helpers';
 
@@ -35,7 +35,12 @@ export const Dc20CombatStatic = (props) => {
           <div class="blockable py-4">
             <p class="text-sm uppercase text-center mb-4 dark:text-snow">{TRANSLATION[locale()]['initiative']}</p>
             <div class="mx-auto flex items-center justify-center">
-              <p class="text-2xl font-normal! dark:text-snow">{modifier(character().initiative)}</p>
+              <p class="text-2xl font-normal! dark:text-snow">
+                <Dice
+                  text={modifier(character().initiative)}
+                  onClick={() => props.openDiceRoll('/check initiative self', character().initiative)}
+                />
+              </p>
             </div>
           </div>
           <div class="blockable py-4">

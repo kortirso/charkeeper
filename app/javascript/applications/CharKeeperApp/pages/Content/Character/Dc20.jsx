@@ -4,11 +4,13 @@ import { createWindowSize } from '@solid-primitives/resize-observer';
 import {
   Dc20Abilities, Dc20Skills, Dc20Saves, Dc20CombatStatic
 } from '../../../pages';
-import { CharacterNavigation, Notes, Avatar, ContentWrapper } from '../../../components';
+import { CharacterNavigation, Notes, Avatar, ContentWrapper, createDiceRoll } from '../../../components';
 
 export const Dc20 = (props) => {
   const size = createWindowSize();
   const character = () => props.character;
+
+  const { DiceRoll, openDiceRoll } = createDiceRoll();
 
   const [activeMobileTab, setActiveMobileTab] = createSignal('abilities');
   const [activeTab, setActiveTab] = createSignal('combat');
@@ -30,22 +32,24 @@ export const Dc20 = (props) => {
             <Match when={activeMobileTab() === 'abilities'}>
               <Dc20Abilities
                 character={character()}
+                openDiceRoll={openDiceRoll}
                 onReplaceCharacter={props.onReplaceCharacter}
                 onReloadCharacter={props.onReloadCharacter}
               />
               <div class="mt-4">
-                <Dc20Saves character={character()} />
+                <Dc20Saves character={character()} openDiceRoll={openDiceRoll} />
               </div>
               <div class="mt-4">
                 <Dc20Skills
                   character={character()}
+                  openDiceRoll={openDiceRoll}
                   onReplaceCharacter={props.onReplaceCharacter}
                   onReloadCharacter={props.onReloadCharacter}
                 />
               </div>
             </Match>
             <Match when={activeMobileTab() === 'combat'}>
-              <Dc20CombatStatic character={character()} />
+              <Dc20CombatStatic character={character()} openDiceRoll={openDiceRoll} />
             </Match>
             <Match when={activeMobileTab() === 'notes'}>
               <Notes />
@@ -66,15 +70,17 @@ export const Dc20 = (props) => {
       <>
         <Dc20Abilities
           character={character()}
+          openDiceRoll={openDiceRoll}
           onReplaceCharacter={props.onReplaceCharacter}
           onReloadCharacter={props.onReloadCharacter}
         />
         <div class="mt-4">
-          <Dc20Saves character={character()} />
+          <Dc20Saves character={character()} openDiceRoll={openDiceRoll} />
         </div>
         <div class="mt-4">
           <Dc20Skills
             character={character()}
+            openDiceRoll={openDiceRoll}
             onReplaceCharacter={props.onReplaceCharacter}
             onReloadCharacter={props.onReloadCharacter}
           />
@@ -98,7 +104,7 @@ export const Dc20 = (props) => {
         <div class="p-2 flex-1">
           <Switch>
             <Match when={activeTab() === 'combat'}>
-              <Dc20CombatStatic character={character()} />
+              <Dc20CombatStatic character={character()} openDiceRoll={openDiceRoll} />
             </Match>
             <Match when={activeTab() === 'notes'}>
               <Notes />
@@ -113,6 +119,9 @@ export const Dc20 = (props) => {
   });
 
   return (
-    <ContentWrapper mobileView={mobileView()} leftView={leftView()} rightView={rightView()} />
+    <>
+      <ContentWrapper mobileView={mobileView()} leftView={leftView()} rightView={rightView()} />
+      <DiceRoll provider="dc20" characterId={character().id} />
+    </>
   );
 }

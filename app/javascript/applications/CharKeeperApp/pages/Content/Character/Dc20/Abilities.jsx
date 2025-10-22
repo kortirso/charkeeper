@@ -1,6 +1,6 @@
 import { createSignal, createMemo, For, Show, batch } from 'solid-js';
 
-import { ErrorWrapper, Button, EditWrapper, GuideWrapper } from '../../../../components';
+import { ErrorWrapper, Button, EditWrapper, GuideWrapper, Dice } from '../../../../components';
 import config from '../../../../data/dc20.json';
 import { useAppState, useAppLocale, useAppAlert } from '../../../../context';
 import { Minus, Plus } from '../../../../assets';
@@ -96,7 +96,16 @@ export const Dc20Abilities = (props) => {
                     <p class="text-sm uppercase text-center mb-4 dark:text-white">{ability}</p>
                     <div class="mx-auto flex items-center justify-center">
                       <p class="text-2xl font-normal! dark:text-snow">
-                        {editMode() ? abilitiesData()[slug] : modifier(character().abilities[slug])}
+                        {editMode() ?
+                          abilitiesData()[slug] :
+                          <Dice
+                            width="64"
+                            height="64"
+                            text={modifier(character().abilities[slug])}
+                            textClassList="text-4xl"
+                            onClick={() => props.openDiceRoll(`/check attr ${slug}`, character().abilities[slug])}
+                          />
+                        }
                       </p>
                     </div>
                     <Show when={editMode()}>
