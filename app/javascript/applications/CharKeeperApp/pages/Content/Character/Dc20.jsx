@@ -2,7 +2,7 @@ import { createSignal, createMemo, Switch, Match } from 'solid-js';
 import { createWindowSize } from '@solid-primitives/resize-observer';
 
 import {
-  Dc20Abilities, Dc20Skills
+  Dc20Abilities, Dc20Skills, Dc20Saves, Dc20CombatStatic
 } from '../../../pages';
 import { CharacterNavigation, Notes, Avatar, ContentWrapper } from '../../../components';
 
@@ -19,9 +19,11 @@ export const Dc20 = (props) => {
     return (
       <>
         <CharacterNavigation
-          tabsList={['abilities', 'notes', 'avatar']}
+          tabsList={['abilities', 'combat', 'notes', 'avatar']}
           activeTab={activeMobileTab()}
           setActiveTab={setActiveMobileTab}
+          currentGuideStep={character().guide_step}
+          markedTabs={{}}
         />
         <div class="p-2 flex-1 overflow-y-auto">
           <Switch>
@@ -32,12 +34,18 @@ export const Dc20 = (props) => {
                 onReloadCharacter={props.onReloadCharacter}
               />
               <div class="mt-4">
+                <Dc20Saves character={character()} />
+              </div>
+              <div class="mt-4">
                 <Dc20Skills
                   character={character()}
                   onReplaceCharacter={props.onReplaceCharacter}
                   onReloadCharacter={props.onReloadCharacter}
                 />
               </div>
+            </Match>
+            <Match when={activeMobileTab() === 'combat'}>
+              <Dc20CombatStatic character={character()} />
             </Match>
             <Match when={activeMobileTab() === 'notes'}>
               <Notes />
@@ -62,6 +70,9 @@ export const Dc20 = (props) => {
           onReloadCharacter={props.onReloadCharacter}
         />
         <div class="mt-4">
+          <Dc20Saves character={character()} />
+        </div>
+        <div class="mt-4">
           <Dc20Skills
             character={character()}
             onReplaceCharacter={props.onReplaceCharacter}
@@ -78,12 +89,17 @@ export const Dc20 = (props) => {
     return (
       <>
         <CharacterNavigation
-          tabsList={['notes', 'avatar']}
+          tabsList={['combat', 'notes', 'avatar']}
           activeTab={activeTab()}
           setActiveTab={setActiveTab}
+          currentGuideStep={character().guide_step}
+          markedTabs={{}}
         />
         <div class="p-2 flex-1">
           <Switch>
+            <Match when={activeTab() === 'combat'}>
+              <Dc20CombatStatic character={character()} />
+            </Match>
             <Match when={activeTab() === 'notes'}>
               <Notes />
             </Match>

@@ -18,6 +18,18 @@ module Dc20Character
       @combat_mastery ||= (level / 2.0).round
     end
 
+    def attribute_saves
+      @attribute_saves ||= abilities.transform_values { |item| item + combat_mastery }
+    end
+
+    def physical_save
+      @physical_save ||= attribute_saves.slice('mig', 'agi').values.max
+    end
+
+    def mental_save
+      @mental_save ||= attribute_saves.slice('cha', 'int').values.max
+    end
+
     def save_dc
       @save_dc ||= 10 + modified_abilities['prime'] + combat_mastery
     end

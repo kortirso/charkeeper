@@ -5,12 +5,13 @@ module Dc20
     attributes :provider, :id, :name, :level, :main_class, :abilities, :modified_abilities, :created_at, :avatar, :health,
                :attribute_points, :classes, :ancestries, :combat_mastery, :save_dc, :precision_defense, :area_defense, :attack,
                :skills, :skill_points, :skill_expertise_points, :guide_step, :trade_points, :trade_expertise_points,
-               :language_points, :trades, :trade_knowledge, :language_levels
+               :language_points, :trades, :trade_knowledge, :language_levels, :attribute_saves, :physical_save, :mental_save,
+               :initiative
 
     delegate :id, :name, :level, :main_class, :abilities, :modified_abilities, :health, :attribute_points, :classes,
              :ancestries, :combat_mastery, :save_dc, :precision_defense, :area_defense, :attack, :skills, :skill_points,
              :skill_expertise_points, :trade_points, :trade_expertise_points, :language_points, :trades, :trade_knowledge,
-             :language_levels, to: :decorator
+             :language_levels, :attribute_saves, :physical_save, :mental_save, :initiative, to: :decorator
     delegate :created_at, :updated_at, :data, to: :object
     delegate :guide_step, to: :data
 

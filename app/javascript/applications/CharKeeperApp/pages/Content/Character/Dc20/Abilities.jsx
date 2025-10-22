@@ -88,29 +88,31 @@ export const Dc20Abilities = (props) => {
           onCancelEditing={cancelEditing}
           onSaveChanges={updateCharacter}
         >
-          <div class="grid grid-cols-2 emd:grid-cols-4 gap-2">
-            <For each={Object.entries(config.abilities).map(([key, values]) => [key, values.name[locale()]])}>
-              {([slug, ability]) =>
-                <div class="blockable py-4">
-                  <p class="text-sm uppercase text-center mb-4 dark:text-white">{ability}</p>
-                  <div class="mx-auto flex items-center justify-center">
-                    <p class="text-2xl font-normal! dark:text-snow">
-                      {editMode() ? abilitiesData()[slug] : modifier(character().abilities[slug])}
-                    </p>
-                  </div>
-                  <Show when={editMode()}>
-                    <div class="mt-2 flex justify-center gap-2">
-                      <Button default size="small" onClick={() => decreaseAbilityValue(slug)}>
-                        <Minus />
-                      </Button>
-                      <Button default size="small" onClick={() => increaseAbilityValue(slug)}>
-                        <Plus />
-                      </Button>
+          <div class="blockable p-4">
+            <div class="grid grid-cols-2 emd:grid-cols-4 gap-2">
+              <For each={Object.entries(config.abilities).map(([key, values]) => [key, values.name[locale()]])}>
+                {([slug, ability]) =>
+                  <div>
+                    <p class="text-sm uppercase text-center mb-4 dark:text-white">{ability}</p>
+                    <div class="mx-auto flex items-center justify-center">
+                      <p class="text-2xl font-normal! dark:text-snow">
+                        {editMode() ? abilitiesData()[slug] : modifier(character().abilities[slug])}
+                      </p>
                     </div>
-                  </Show>
-                </div>
-              }
-            </For>
+                    <Show when={editMode()}>
+                      <div class="mt-2 flex justify-center gap-2">
+                        <Button default size="small" onClick={() => decreaseAbilityValue(slug)}>
+                          <Minus />
+                        </Button>
+                        <Button default size="small" onClick={() => increaseAbilityValue(slug)}>
+                          <Plus />
+                        </Button>
+                      </div>
+                    </Show>
+                  </div>
+                }
+              </For>
+            </div>
           </div>
         </EditWrapper>
       </GuideWrapper>
