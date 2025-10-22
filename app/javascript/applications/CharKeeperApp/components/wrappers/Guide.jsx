@@ -32,7 +32,7 @@ export const GuideWrapper = (props) => {
   return (
     <div
       classList={{
-        'opacity-25': props.character.guide_step !== null && props.guideStep !== props.character.guide_step
+        'opacity-25': props.character.guide_step && props.guideStep !== props.character.guide_step
       }}
     >
       <Show when={props.guideStep === props.character.guide_step && props.helpMessage}>
