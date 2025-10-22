@@ -15,7 +15,8 @@ export const CharacterNavigation = (props) => {
           <p
             classList={{
               'active': props.activeTab === tab,
-              'opacity-25': props.currentGuideStep && tab !== props.markedTabs[props.currentGuideStep.toString()]
+              'opacity-25': props.currentGuideStep && tab !== props.markedTabs[props.currentGuideStep.toString()],
+              'text-black! dark:text-snow!': props.currentGuideStep && tab === props.markedTabs[props.currentGuideStep.toString()]
             }}
             onClick={() => props.setActiveTab(tab)}
           >
