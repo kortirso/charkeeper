@@ -15,6 +15,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Fixed
 - refreshing bonuses list
+- rendering Daggerheart json
 
 ## [0.3.9b] - 2025-10-20
 - default experience value to +2
