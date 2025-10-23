@@ -299,7 +299,7 @@ export const Dnd5Spells = (props) => {
             when={activeSpellClass() !== 'static'}
             fallback={<StaticSpellsTable spells={staticCharacterSpells()} />}
           >
-            <Show when={character().spell_classes[activeSpellClass()].multiclass_spell_level > 0}>
+            <Show when={character().spell_classes[activeSpellClass()].save_dc}>
               <Show when={lastActiveCharacterId() === character().id}>
                 <StatsBlock
                   items={[

@@ -107,7 +107,7 @@ export const SpellsTable = (props) => {
       </div>
       <Modal>
         <Show when={changingSpell()}>
-          <p class="flex-1 text-sm text-left dark:text-snow">{changingSpell().name}</p>
+          <p class="flex-1 text-xl text-left dark:text-snow mb-2">{changingSpell().name}</p>
           <TextArea
             rows="2"
             labelText={t('character.spellNote')}

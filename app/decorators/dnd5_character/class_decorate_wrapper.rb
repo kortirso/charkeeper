@@ -51,7 +51,7 @@ module Dnd5Character
     def spells_slots
       @spells_slots ||=
         if spell_classes.keys.size > 1
-          SPELL_SLOTS[spell_classes.values.pluck(:multiclass_spell_level).sum]
+          SPELL_SLOTS[spell_classes.values.pluck(:multiclass_spell_level).compact.sum]
         else
           wrapped.spells_slots
         end

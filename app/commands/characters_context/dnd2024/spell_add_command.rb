@@ -12,7 +12,7 @@ module CharactersContext
           required(:character).filled(type?: ::Dnd2024::Character)
           required(:spell).filled(type?: ::Dnd2024::Spell)
           required(:target_spell_class).filled(:string)
-          optional(:spell_ability).filled(SpellAbilities)
+          optional(:spell_ability).maybe(SpellAbilities)
         end
       end
 
