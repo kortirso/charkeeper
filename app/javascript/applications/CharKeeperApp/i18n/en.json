@@ -423,9 +423,6 @@
   "itemsPage": {
     "title": "Items"
   },
-  "spellbookPage": {
-    "level": "level"
-  },
   "spellsPage": {
     "title": "Spells"
   },
@@ -438,10 +435,6 @@
     "changeClasses": "Change character classes",
     "knownSpells": "Learning spells",
     "items": "Add equipment",
-    "staticSpellPerDay": "per day",
-    "staticSpellLevel": "as level",
-    "staticSpellAttackBonus": "attack bonus",
-    "staticSpellSaveDC": "save DC",
     "damage": "Damage",
     "heal": "Heal",
     "damageConditions": "Damage resistances",
@@ -450,7 +443,6 @@
     "immunity": "Immune", 
     "ammoList": "Ammo",
     "itemNote": "Item note",
-    "spellNote": "Spell note",
     "deathSavingThrows": "Death saving throws",
     "deathSuccess": "Success",
     "deathFailure": "Failure",
@@ -488,7 +480,6 @@
     },
     "attackAction": "Action attacks",
     "attackBonusAction": "Bonus action attacks",
-    "cantrips": "Cantrips",
     "known": "Known",
     "prepared": "Prepared",
     "proficiencyBonus": "Proficiency",

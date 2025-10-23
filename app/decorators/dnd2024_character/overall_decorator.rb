@@ -11,5 +11,25 @@ module Dnd2024Character
         result
       end
     end
+
+    def formatted_static_spells
+      return @formatted_static_spells if defined?(@formatted_static_spells)
+
+      formatted_static_spells = __getobj__.static_spells
+      return [] if formatted_static_spells.blank?
+
+      @formatted_static_spells = Dnd2024::Spell.where(slug: formatted_static_spells.keys).map do |spell|
+        static_spell = formatted_static_spells[spell.slug]
+
+        {
+          id: spell.id,
+          slug: spell.slug,
+          name: spell.name[I18n.locale.to_s],
+          level: spell.data.level,
+          data: static_spell,
+          ready_to_use: true
+        }
+      end
+    end
   end
 end

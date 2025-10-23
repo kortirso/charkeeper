@@ -27,3 +27,5 @@ export * from './socials/Telegram';
 export * from './socials/Vk';
 export * from './socials/Boosty';
 export * from './socials/Google';
+export * from './dnd/classes/Paladin';
+export * from './dnd/classes/Wizard';

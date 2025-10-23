@@ -4,7 +4,7 @@ module Dnd5Character
   module Classes
     class PaladinDecorator < ApplicationDecorator
       SPELL_SLOTS = {
-        1 => {},
+        1 => { 1 => 0 },
         2 => { 1 => 2 },
         3 => { 1 => 3 },
         4 => { 1 => 3 },
