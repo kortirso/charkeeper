@@ -41,6 +41,7 @@ module CharactersContext
           optional(:skill_points).filled(:integer)
           optional(:trade_points).filled(:integer)
           optional(:language_points).filled(:integer)
+          optional(:conditions).maybe(:array).each(:string)
         end
 
         rule(:avatar_file, :avatar_url).validate(:check_only_one_present)

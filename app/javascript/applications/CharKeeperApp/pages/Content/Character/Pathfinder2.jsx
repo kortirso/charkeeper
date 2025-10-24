@@ -6,7 +6,7 @@ import {
   Pathfinder2Abilities, Pathfinder2Health, Pathfinder2Professions, DndGold, Pathfinder2Static, Pathfinder2Skills,
   Pathfinder2SavingThrows
 } from '../../../pages';
-import { CharacterNavigation, Equipment, Notes, Avatar, ContentWrapper } from '../../../components';
+import { CharacterNavigation, Equipment, Notes, Avatar, ContentWrapper, Conditions } from '../../../components';
 import { useAppLocale } from '../../../context';
 
 export const Pathfinder2 = (props) => {
@@ -39,6 +39,9 @@ export const Pathfinder2 = (props) => {
               <Pathfinder2Abilities character={character()} onReplaceCharacter={props.onReplaceCharacter} />
               <div class="mt-4">
                 <Pathfinder2SavingThrows character={character()} onReplaceCharacter={props.onReplaceCharacter} />
+              </div>
+              <div class="mt-4">
+                <Conditions character={character()} />
               </div>
               <div class="mt-4">
                 <Pathfinder2Skills character={character()} onReplaceCharacter={props.onReplaceCharacter} />
@@ -89,6 +92,9 @@ export const Pathfinder2 = (props) => {
         <div class="flex flex-col emd:flex-row emd:gap-4 emd:mt-4">
           <div class="mt-4 emd:mt-0 flex-1">
             <Pathfinder2SavingThrows character={character()} />
+          </div>
+          <div class="mt-4">
+            <Conditions character={character()} />
           </div>
           <div class="mt-4 emd:mt-0 flex-1">
             <Pathfinder2Skills character={character()} onReplaceCharacter={props.onReplaceCharacter} />

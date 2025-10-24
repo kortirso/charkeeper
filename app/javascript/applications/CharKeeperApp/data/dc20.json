@@ -49,5 +49,14 @@
     "nature": { "name": { "en": "Nature", "ru": "Природа" } },
     "occultism": { "name": { "en": "Occultism", "ru": "Оккультизм" } },
     "religion": { "name": { "en": "Religion", "ru": "Религия" } }
+  },
+  "conditions": {
+    "blinded": {
+      "name": { "en": "Blinded", "ru": "Ослеплён" },
+      "description": {
+        "en": "You can't see. All terrain is considered Difficult Terrain for you unless you're guided by another creature. Attack rolls against you have Advantage, and your attack rolls have Disadvantage.",
+        "ru": "Вы не видите. Вся местность для вас считается Труднопроходимой, только если вас не ведёт другое существо. Броски атаки против вас совершаются с преимуществом, а ваши броски атаки совершаются с помехой."
+      }
+    }
   }
 }

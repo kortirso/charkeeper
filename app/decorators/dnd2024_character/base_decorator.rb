@@ -8,7 +8,7 @@ module Dnd2024Character
     delegate :id, :name, :data, :feats, to: :__getobj__
     delegate :species, :legacy, :main_class, :classes, :subclasses, :level, :languages, :health, :abilities,
              :selected_features, :resistance, :immunity, :vulnerability, :energy, :coins, :darkvision,
-             :weapon_core_skills, :weapon_skills, :armor_proficiency, :music, :spent_spell_slots,
+             :weapon_core_skills, :weapon_skills, :armor_proficiency, :music, :spent_spell_slots, :conditions,
              :hit_dice, :spent_hit_dice, :death_saving_throws, :selected_feats, :beastform, :background, to: :data
 
     def parent = __getobj__
@@ -83,7 +83,7 @@ module Dnd2024Character
       @attacks ||= beastform.blank? ? ([unarmed_attack] + weapon_attacks.compact) : beastform_attacks
     end
 
-    def conditions
+    def resistances
       {
         resistance: resistance,
         immunity: immunity,

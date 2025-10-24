@@ -1,10 +1,13 @@
-import { createSignal, createEffect, Show, batch, For } from 'solid-js';
+import { createSignal, createEffect, createMemo, Show, batch, For } from 'solid-js';
 
-import { Select, ErrorWrapper, GuideWrapper } from '../../../../components';
-import config from '../../../../data/daggerheart.json';
-import { useAppState, useAppLocale } from '../../../../context';
-import { updateCharacterRequest } from '../../../../requests/updateCharacterRequest';
-import { translate } from '../../../../helpers';
+import { Select, ErrorWrapper, GuideWrapper } from '../../components';
+import daggerheartConfig from '../../data/daggerheart.json';
+import dndConfig from '../../data/dnd2024.json';
+import pathfinder2Config from '../../data/pathfinder2.json';
+import dc20Config from '../../data/dc20.json';
+import { useAppState, useAppLocale } from '../../context';
+import { updateCharacterRequest } from '../../requests/updateCharacterRequest';
+import { translate } from '../../helpers';
 
 const TRANSLATION = {
   en: {
@@ -17,7 +20,7 @@ const TRANSLATION = {
   }
 }
 
-export const DaggerheartConditions = (props) => {
+export const Conditions = (props) => {
   const character = () => props.character;
 
   const [lastActiveCharacterId, setLastActiveCharacterId] = createSignal(undefined);
@@ -35,6 +38,13 @@ export const DaggerheartConditions = (props) => {
     });
   });
 
+  const providerConfig = createMemo(() => {
+    if (character().provider === 'daggerheart') return daggerheartConfig;
+    if (character().provider === 'dnd5' || character().provider === 'dnd2024') return dndConfig;
+    if (character().provider === 'pathfinder2') return pathfinder2Config;
+    if (character().provider === 'dc20') return dc20Config;
+  });
+
   const updateMultiFeatureValue = async (value) => {
     const newValue = selectedConditions().includes(value) ? selectedConditions().filter((item) => item !== value) : selectedConditions().concat([value]);
 
@@ -45,7 +55,7 @@ export const DaggerheartConditions = (props) => {
   }
 
   return (
-    <ErrorWrapper payload={{ character_id: character().id, key: 'DaggerheartConditions' }}>
+    <ErrorWrapper payload={{ character_id: character().id, key: 'Conditions' }}>
       <GuideWrapper character={character()}>
         <div class="blockable p-4">
           <h2 class="text-lg mb-2 dark:text-snow">{TRANSLATION[locale()]['conditions']}</h2>
@@ -53,14 +63,14 @@ export const DaggerheartConditions = (props) => {
             multi
             containerClassList="w-full"
             labelText={TRANSLATION[locale()]['selectedConditions']}
-            items={translate(config.conditions, locale())}
+            items={translate(providerConfig().conditions, locale())}
             selectedValues={selectedConditions()}
             onSelect={(value) => updateMultiFeatureValue(value)}
           />
           <Show when={selectedConditions().length > 0}>
             <For each={selectedConditions()}>
               {(condition) =>
-                <p class="mt-2 dark:text-snow text-sm">{config.conditions[condition].description[locale()]}</p>
+                <p class="mt-2 dark:text-snow text-sm">{providerConfig().conditions[condition].description[locale()]}</p>
               }
             </For>
           </Show>

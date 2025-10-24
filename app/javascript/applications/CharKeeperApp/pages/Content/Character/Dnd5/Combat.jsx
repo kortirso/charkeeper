@@ -14,7 +14,7 @@ export const Dnd5Combat = (props) => {
 
   // changeable data
   const [lastActiveCharacterId, setLastActiveCharacterId] = createSignal(undefined);
-  const [damageConditions, setDamageConditions] = createSignal(character().conditions);
+  const [damageConditions, setDamageConditions] = createSignal(character().resistances);
   const [damageHealValue, setDamageHealValue] = createSignal(0);
   const [healthData, setHealthData] = createSignal(character().health);
 
@@ -28,7 +28,7 @@ export const Dnd5Combat = (props) => {
     if (lastActiveCharacterId() === character().id) return;
 
     batch(() => {
-      setDamageConditions(character().conditions);
+      setDamageConditions(character().resistances);
       setHealthData(character().health);
       setLastActiveCharacterId(character().id);
     });

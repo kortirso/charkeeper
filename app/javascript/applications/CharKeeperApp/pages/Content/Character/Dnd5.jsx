@@ -7,7 +7,7 @@ import {
   Dnd5Proficiency
 } from '../../../pages';
 import {
-  CharacterNavigation, Equipment, Notes, Avatar, ContentWrapper, Feats, Bonuses, createDiceRoll
+  CharacterNavigation, Equipment, Notes, Avatar, ContentWrapper, Feats, Bonuses, createDiceRoll, Conditions
 } from '../../../components';
 import { useAppState, useAppLocale } from '../../../context';
 import { updateCharacterRequest } from '../../../requests/updateCharacterRequest';
@@ -101,6 +101,9 @@ export const Dnd5 = (props) => {
                 <Dnd5SavingThrows character={character()} openDiceRoll={openDiceRoll} />
               </div>
               <div class="mt-4">
+                <Conditions character={character()} />
+              </div>
+              <div class="mt-4">
                 <Dnd5Skills character={character()} openDiceRoll={openDiceRoll} onReplaceCharacter={props.onReplaceCharacter} />
               </div>
               <div class="mt-4">
@@ -183,6 +186,9 @@ export const Dnd5 = (props) => {
             <Dnd5Proficiency character={character()} onReplaceCharacter={props.onReplaceCharacter} />
             <div class="mt-4">
               <Dnd5SavingThrows character={character()} openDiceRoll={openDiceRoll} />
+            </div>
+            <div class="mt-4">
+              <Conditions character={character()} />
             </div>
           </div>
           <div class="mt-4 emd:mt-0 flex-1">

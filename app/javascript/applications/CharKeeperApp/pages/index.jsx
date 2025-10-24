@@ -66,7 +66,6 @@ export * from './Content/Character/Daggerheart/Beastform';
 export * from './Content/Character/Daggerheart/Companion';
 export * from './Content/Character/Daggerheart/Transformation';
 export * from './Content/Character/Daggerheart/Stances';
-export * from './Content/Character/Daggerheart/Conditions';
 
 export * from './Content/Character/Dc20';
 export * from './Content/Character/Dc20/Abilities';
