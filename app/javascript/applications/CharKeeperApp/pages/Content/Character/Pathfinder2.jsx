@@ -92,9 +92,9 @@ export const Pathfinder2 = (props) => {
         <div class="flex flex-col emd:flex-row emd:gap-4 emd:mt-4">
           <div class="mt-4 emd:mt-0 flex-1">
             <Pathfinder2SavingThrows character={character()} />
-          </div>
-          <div class="mt-4">
-            <Conditions character={character()} />
+            <div class="mt-4">
+              <Conditions character={character()} />
+            </div>
           </div>
           <div class="mt-4 emd:mt-0 flex-1">
             <Pathfinder2Skills character={character()} onReplaceCharacter={props.onReplaceCharacter} />
