@@ -16,19 +16,8 @@ module CharactersContext
 
       private
 
-      def do_prepare(input)
-        input[:attributes] =
-          input
-            .except(:character_spell)
-            .merge({
-              value: (input[:character_spell].value || {}).merge(
-                input.except(:character_spell, :notes, :active, :ready_to_use).stringify_keys
-              )
-            })
-      end
-
       def do_persist(input)
-        input[:character_spell].update!(input[:attributes])
+        input[:character_spell].update!(input.slice(:notes, :active, :ready_to_use))
 
         { result: input[:character_spell] }
       end

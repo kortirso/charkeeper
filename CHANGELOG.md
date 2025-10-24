@@ -5,8 +5,12 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 ## Unreleased
+### Modified
+- rendering D&D spells
+
 ### Fixed
 - rendering D&D 2024 spells for 1 level semi spell classes
+- managing Daggerheart domain cards
 
 ## [0.3.10] - 2025-10-22
 ### Added
