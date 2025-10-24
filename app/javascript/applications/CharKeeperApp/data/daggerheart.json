@@ -320,5 +320,28 @@
     "beastform": { "name": { "en": "Beastform", "ru": "Превращение в зверя" } },
     "companion": { "name": { "en": "Companion", "ru": "Питомец" } },
     "stances": { "name": { "en": "Stances", "ru": "Стойки" } }
+  },
+  "conditions": {
+    "hidden": {
+      "name": { "en": "Hidden", "ru": "Скрыт" },
+      "description": {
+        "en": "While you're out of sight from all foes and they don't know where you are, you gain the Hidden condition. While Hidden, any rolls against you have disadvantage.",
+        "ru": "Пока вы находитесь вне поля зрения всех противников и они не знают, где вы, вы получаете состояние Скрыт. Пока вы Скрыты, все броски против вас имеют помеху."
+      }
+    },
+    "restrained": {
+      "name": { "en": "Restrained", "ru": "Обездвижен" },
+      "description": {
+        "en": "You can't move, but you can still take actions from your current position.",
+        "ru": "Вы не можете ходить, но вы все еще можете совершать действия с вашей текущей позиции."
+      }
+    },
+    "vulnerable": {
+      "name": { "en": "Vulnerable", "ru": "Уязвим" },
+      "description": {
+        "en": "When a creature becomes Vulnerable, the players and GM should work together to describe narratively how that happened. While you are Vulnerable, all rolls targeting you have advantage.",
+        "ru": "Когда существо становится Уязвимым, игроки и Мастер должны совместно описать, как это произошло. Пока вы Уязвимы, все броски, направленные на вас, имеют преимущество."
+      }
+    }
   }
 }

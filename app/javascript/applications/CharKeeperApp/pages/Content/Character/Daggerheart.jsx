@@ -5,7 +5,7 @@ import { createWindowSize } from '@solid-primitives/resize-observer';
 import {
   DaggerheartTraits, DaggerheartStatic, DaggerheartHealth, DaggerheartCombat, DaggerheartBeastform, DaggerheartCompanion,
   DaggerheartDomainCards, DaggerheartRest, DaggerheartLeveling, DaggerheartExperience, DaggerheartGold, DaggerheartTransform,
-  DaggerheartStances
+  DaggerheartStances, DaggerheartConditions
 } from '../../../pages';
 import {
   CharacterNavigation, Equipment, Bonuses, Notes, Avatar, ContentWrapper, Feats, createDiceRoll
@@ -116,6 +116,9 @@ export const Daggerheart = (props) => {
               </div>
               <div class="mt-4">
                 <DaggerheartStances character={character()} onReplaceCharacter={props.onReplaceCharacter} />
+              </div>
+              <div class="mt-4">
+                <DaggerheartConditions character={character()} />
               </div>
               <div class="mt-4">
                 <Feats
@@ -241,6 +244,9 @@ export const Daggerheart = (props) => {
         </div>
         <div class="mt-4">
           <DaggerheartStances character={character()} onReplaceCharacter={props.onReplaceCharacter} />
+        </div>
+        <div class="mt-4">
+          <DaggerheartConditions character={character()} />
         </div>
         <div class="mt-4">
           <Feats

@@ -34,6 +34,7 @@ module Daggerheart
     attribute :stance, :string
     attribute :selected_features, array: true, default: {} # { 'fighting_style' => ['fighting_style_defense'] }
     attribute :guide_step, :integer # этап помощи при создании персонажа
+    attribute :conditions, array: true, default: []
   end
 
   class Character < Character
