@@ -23,7 +23,7 @@ module CharactersContext
         next if !values[:ready_to_use].blank? && values[:ready_to_use] == false
         next if !values[:state].blank? && READY_TO_USE_STATES.exclude?(values[:state])
         next unless values[:character_item].item.kind == 'armor'
-        next unless values[:character_item].character.items.ready_to_use.joins(:item).exists?(items: { kind: 'armor' })
+        next unless values[:character_item].character.items.where(state: ::Character::Item::ACTIVE_STATES).joins(:item).exists?(items: { kind: 'armor' }) # rubocop: disable Layout/LineLength
 
         key(:ready_to_use).failure(:only_one)
       end

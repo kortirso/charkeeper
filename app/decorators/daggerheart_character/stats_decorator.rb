@@ -27,7 +27,7 @@ module DaggerheartCharacter
     def modified_traits
       @modified_traits ||=
         __getobj__.modified_traits.merge(
-          *[equiped_traits_bonuses, *bonuses.pluck('traits'), beastform_config['traits']].compact
+          *[*equiped_traits_bonuses, *bonuses.pluck('traits'), beastform_config['traits']].compact
         ) { |_key, oldval, newval| newval + oldval }
     end
 
@@ -158,7 +158,8 @@ module DaggerheartCharacter
         name: item[:items_name][I18n.locale.to_s],
         burden: item[:items_info]['burden'],
         range: item[:items_info]['range'],
-        attack_bonus: (use_max_trait_for_attack ? max_trait_value : trait_bonus(item)) + attack_bonuses + stance_attack_bonus,
+        attack_bonus: (use_max_trait_for_attack ? max_trait_value : trait_bonus(item)) + attack_bonuses + stance_attack_bonus +
+                      item.dig(:items_info, 'bonuses', 'attack').to_i,
         damage: item[:items_info]['damage']&.gsub('d', "#{proficiency}d"),
         damage_bonus: item[:items_info]['damage_bonus'],
         damage_type: item[:items_info]['damage_type'],
@@ -196,7 +197,7 @@ module DaggerheartCharacter
     end
 
     def equiped_traits_bonuses
-      item_bonuses.pluck('traits').compact.first || {}
+      item_bonuses.pluck('traits').compact
     end
 
     def weapons
