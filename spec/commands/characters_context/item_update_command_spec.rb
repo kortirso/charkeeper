@@ -9,12 +9,12 @@ describe CharactersContext::ItemUpdateCommand do
   let!(:weapon2) { create :item, kind: 'weapon' }
   let!(:armor1) { create :item, kind: 'armor' }
   let!(:armor2) { create :item, kind: 'armor' }
-  let!(:character_weapon2) { create :character_item, character: character, item: weapon2, ready_to_use: false }
-  let!(:character_armor2) { create :character_item, character: character, item: armor2, ready_to_use: false }
+  let!(:character_weapon2) { create :character_item, character: character, item: weapon2, state: 'backpack' }
+  let!(:character_armor2) { create :character_item, character: character, item: armor2, state: 'backpack' }
 
   before do
-    create :character_item, character: character, item: weapon1, ready_to_use: true
-    create :character_item, character: character, item: armor1, ready_to_use: true
+    create :character_item, character: character, item: weapon1, state: 'hands'
+    create :character_item, character: character, item: armor1, state: 'equipment'
   end
 
   context 'for weapon' do

@@ -41,7 +41,9 @@ describe DaggerheartCharacter::BaseDecorator do
 
   context 'with equiped armor' do
     let!(:armor) do
-      create :item, :daggerheart, kind: 'armor', info: { bonuses: { base_score: 4, thresholds: { major: 7, severe: 14 } } }
+      create :item, :daggerheart, kind: 'armor', info: {
+        bonuses: { traits: { str: -1 }, evasion: -1, base_score: 4, thresholds: { major: 7, severe: 14 } }
+      }
     end
 
     before { create :character_item, character: character, item: armor, state: Character::Item::EQUIPMENT }
@@ -60,6 +62,25 @@ describe DaggerheartCharacter::BaseDecorator do
         expect { decorator.id }.not_to raise_error
         expect(decorator.armor_score).to eq 5
         expect(decorator.damage_thresholds).to eq({ 'major' => 12, 'severe' => 20 })
+      end
+
+      context 'with weapon' do
+        let!(:weapon) do
+          create :item, :daggerheart, kind: 'primary weapon', info: { bonuses: { traits: { pre: 1 }, evasion: -1, attack: 1 } }
+        end
+
+        before { create :character_item, character: character, item: weapon, state: Character::Item::HANDS }
+
+        it 'does not raise errors', :aggregate_failures do
+          expect { decorator.id }.not_to raise_error
+          expect(decorator.proficiency).to eq 3
+          expect(decorator.traits).to eq({ 'str' => 1, 'agi' => 2, 'fin' => 1, 'ins' => 0, 'pre' => 0, 'know' => -1 })
+          expect(decorator.modified_traits).to eq({ 'str' => 0, 'agi' => 2, 'fin' => 1, 'ins' => 0, 'pre' => 1, 'know' => 0 })
+          expect(decorator.damage_thresholds).to eq({ 'major' => 12, 'severe' => 20 })
+          expect(decorator.evasion).to eq 10
+          expect(decorator.health_max).to eq 8
+          expect(decorator.attacks.dig(1, :attack_bonus)).to eq 4
+        end
       end
     end
 
