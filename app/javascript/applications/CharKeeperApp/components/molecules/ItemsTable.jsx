@@ -5,8 +5,11 @@ import { Button } from '../../components';
 import { useAppLocale } from '../../context';
 import { Close, Hands, Equipment, Backpack, Storage } from '../../assets';
 
+const STATE_ICONS = { 'hands': Hands, 'equipment': Equipment, 'backpack': Backpack, 'storage': Storage }
+
 export const ItemsTable = (props) => {
   const items = () => props.items;
+  const IconComponent = STATE_ICONS[props.state];
 
   const [, dict] = useAppLocale();
 
@@ -14,7 +17,10 @@ export const ItemsTable = (props) => {
 
   return (
     <div class="blockable p-4 mb-2">
-      <h2 class="text-lg dark:text-snow mb-2">{props.title}</h2>
+      <h2 class="text-lg dark:text-snow mb-2 flex items-center gap-x-2">
+        <IconComponent width={20} height={20} />
+        {props.title}
+      </h2>
       <p class="text-sm dark:text-snow mb-2">{props.subtitle}</p>
       <Show when={items().length > 0}>
         <table class="w-full table first-column-full-width">
@@ -44,15 +50,15 @@ export const ItemsTable = (props) => {
                   <td>
                     <div class="flex items-center gap-x-2">
                       <For each={[
-                        { state: 'hands', flag: true, icon: <Hands width={16} height={16} /> },
-                        { state: 'equipment', flag: true, icon: <Equipment width={16} height={16} /> },
-                        { state: 'backpack', flag: false, icon: <Backpack width={16} height={16} /> },
-                        { state: 'storage', flag: false, icon: <Storage width={16} height={16} /> }
+                        { state: 'hands', flag: true, Icon: Hands },
+                        { state: 'equipment', flag: true, Icon: Equipment },
+                        { state: 'backpack', flag: false, Icon: Backpack },
+                        { state: 'storage', flag: false, Icon: Storage }
                       ]}>
-                        {(element) =>
-                          <Show when={props.state !== element.state}>
-                            <Button default size="small" onClick={() => props.onUpdateCharacterItem(item, { character_item: { ready_to_use: element.flag, state: element.state } })}>
-                              {element.icon}
+                        {({ state, flag, Icon }) =>
+                          <Show when={props.state !== state}>
+                            <Button default size="small" onClick={() => props.onUpdateCharacterItem(item, { character_item: { ready_to_use: flag, state: state } })}>
+                              <Icon width={16} height={16} />
                             </Button>
                           </Show>
                         }

@@ -14,6 +14,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Modified
 - rendering D&D spells
+- rendering equipment
 
 ### Fixed
 - rendering D&D 2024 spells for 1 level semi spell classes
