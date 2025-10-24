@@ -64,6 +64,7 @@ module CharactersContext
             required(:silver).filled(:integer)
             required(:copper).filled(:integer)
           end
+          optional(:conditions).maybe(:array).each(:string)
         end
 
         rule(:avatar_file, :avatar_url).validate(:check_only_one_present)

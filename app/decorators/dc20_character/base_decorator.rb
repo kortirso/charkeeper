@@ -5,7 +5,7 @@ module Dc20Character
     delegate :id, :name, :data, to: :__getobj__
     delegate :abilities, :main_class, :level, :combat_expertise, :health, :classes, :attribute_points, :ancestries, :skill_levels,
              :skill_expertise, :skill_points, :skill_expertise_points, :trade_points, :trade_expertise_points, :language_points,
-             :trade_levels, :trade_expertise, :trade_knowledge, :language_levels, to: :data
+             :trade_levels, :trade_expertise, :trade_knowledge, :language_levels, :conditions, to: :data
 
     def parent = __getobj__
     def method_missing(_method, *args); end

@@ -35,6 +35,7 @@ module Dnd2024
     attribute :immunity, array: true, default: [] # иммунитеты
     attribute :vulnerability, array: true, default: [] # уязвимости
     attribute :beastform, :string
+    attribute :conditions, array: true, default: []
   end
 
   class Character < Character

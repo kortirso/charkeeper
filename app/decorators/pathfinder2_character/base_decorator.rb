@@ -7,7 +7,7 @@ module Pathfinder2Character
 
     delegate :id, :name, :data, to: :__getobj__
     delegate :race, :subrace, :main_class, :classes, :subclasses, :level, :languages, :health, :selected_skills,
-             :lore_skills, :background, :weapon_skills, :armor_skills, :main_ability, :class_dc,
+             :lore_skills, :background, :weapon_skills, :armor_skills, :main_ability, :class_dc, :conditions,
              :saving_throws, :dying_condition_value, :ability_boosts, :skill_boosts, :coins, to: :data
 
     def parent = __getobj__

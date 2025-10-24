@@ -4,7 +4,7 @@ import { createWindowSize } from '@solid-primitives/resize-observer';
 import {
   Dc20Abilities, Dc20Skills, Dc20Saves, Dc20CombatStatic
 } from '../../../pages';
-import { CharacterNavigation, Notes, Avatar, ContentWrapper, createDiceRoll } from '../../../components';
+import { CharacterNavigation, Notes, Avatar, ContentWrapper, createDiceRoll, Conditions } from '../../../components';
 
 export const Dc20 = (props) => {
   const size = createWindowSize();
@@ -38,6 +38,9 @@ export const Dc20 = (props) => {
               />
               <div class="mt-4">
                 <Dc20Saves character={character()} openDiceRoll={openDiceRoll} />
+              </div>
+              <div class="mt-4">
+                <Conditions character={character()} />
               </div>
               <div class="mt-4">
                 <Dc20Skills
@@ -76,6 +79,9 @@ export const Dc20 = (props) => {
         />
         <div class="mt-4">
           <Dc20Saves character={character()} openDiceRoll={openDiceRoll} />
+        </div>
+        <div class="mt-4">
+          <Conditions character={character()} />
         </div>
         <div class="mt-4">
           <Dc20Skills

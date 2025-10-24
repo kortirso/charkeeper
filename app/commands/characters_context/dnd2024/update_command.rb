@@ -77,6 +77,7 @@ module CharactersContext
           end
           optional(:avatar_url).filled(:string)
           optional(:beastform).maybe(Beastforms)
+          optional(:conditions).maybe(:array).each(:string)
         end
 
         rule(:avatar_file, :avatar_url).validate(:check_only_one_present)

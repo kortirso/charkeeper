@@ -7,7 +7,7 @@ module Dnd5Character
 
     delegate :id, :name, :data, :feats, to: :__getobj__
     delegate :race, :subrace, :main_class, :classes, :subclasses, :level, :languages, :health, :abilities, :selected_skills,
-             :selected_feats, :resistance, :immunity, :vulnerability, :coins,
+             :selected_feats, :resistance, :immunity, :vulnerability, :coins, :conditions,
              :weapon_core_skills, :weapon_skills, :armor_proficiency, :tools, :music, :spent_spell_slots,
              :hit_dice, :spent_hit_dice, :death_saving_throws, :speed, to: :data
 
@@ -79,7 +79,7 @@ module Dnd5Character
       @attacks ||= [unarmed_attack] + weapon_attacks.compact
     end
 
-    def conditions
+    def resistances
       {
         resistance: resistance,
         immunity: immunity,

@@ -4,17 +4,17 @@ module Dnd2024
   class CharacterSerializer < ApplicationSerializer
     attributes :provider, :id, :name, :level, :species, :legacy, :main_class, :classes, :subclasses, :abilities, :skills,
                :modifiers, :save_dc, :proficiency_bonus, :hit_dice, :armor_class, :initiative, :speed, :attacks_per_action,
-               :attacks, :features, :selected_features, :conditions, :death_saving_throws, :health, :energy, :spent_hit_dice,
+               :attacks, :features, :selected_features, :resistances, :death_saving_throws, :health, :energy, :spent_hit_dice,
                :spent_spell_slots, :coins, :load, :languages, :tools, :music, :weapon_core_skills, :weapon_skills,
                :armor_proficiency, :spell_classes, :spells_slots, :static_spells, :created_at, :avatar, :selected_feats,
-               :darkvision, :modified_abilities, :available_spell_level, :formatted_static_spells
+               :darkvision, :modified_abilities, :available_spell_level, :formatted_static_spells, :conditions
 
     delegate :id, :name, :level, :species, :legacy, :main_class, :classes, :subclasses, :abilities, :skills,
              :modifiers, :save_dc, :proficiency_bonus, :hit_dice, :armor_class, :initiative, :speed, :attacks_per_action,
-             :attacks, :features, :selected_features, :conditions, :death_saving_throws, :health, :energy, :spent_hit_dice,
+             :attacks, :features, :selected_features, :resistances, :death_saving_throws, :health, :energy, :spent_hit_dice,
              :spent_spell_slots, :coins, :load, :languages, :tools, :music, :weapon_core_skills, :weapon_skills,
              :armor_proficiency, :spell_classes, :spells_slots, :static_spells, :selected_feats, :darkvision,
-             :modified_abilities, :available_spell_level, :formatted_static_spells, to: :decorator
+             :modified_abilities, :available_spell_level, :formatted_static_spells, :conditions, to: :decorator
     delegate :created_at, to: :object
 
     def provider

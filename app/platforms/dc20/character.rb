@@ -17,6 +17,7 @@ module Dc20
     attribute :trade_levels, array: true, default: {} # { 'arcana' => 1 } владение ремеслами
     attribute :trade_knowledge, array: true, default: {} # { 'Алхимия' => 'int' } известные нестандартные ремёсла
     attribute :language_levels, array: true, default: {} # { 'common' => 2 } владение языками
+    attribute :conditions, array: true, default: []
     # доступные очки для распределения
     attribute :guide_step, :integer # этап помощи при создании персонажа
     attribute :attribute_points, :integer, default: 12

@@ -215,5 +215,14 @@
   },
   "beastforms": {
     "wolf": { "name": { "en": "Wolf", "ru": "Волк" } }
+  },
+  "conditions": {
+    "blinded": {
+      "name": { "en": "Blinded", "ru": "Ослеплённый" },
+      "description": {
+        "en": "You can't see and automatically fail any ability check that requires sight. Attack rolls against you have Advantage, and your attack rolls have Disadvantage.",
+        "ru": "Вы не видите и автоматически проваливаете любые проверки характеристик, требующие зрения. Броски атаки против вас совершаются с преимуществом, а ваши броски атаки совершаются с помехой."
+      }
+    }
   }
 }

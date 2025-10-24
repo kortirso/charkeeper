@@ -30,6 +30,7 @@ module Dnd5
     attribute :resistance, array: true, default: [] # сопротивления
     attribute :immunity, array: true, default: [] # иммунитеты
     attribute :vulnerability, array: true, default: [] # уязвимости
+    attribute :conditions, array: true, default: []
   end
 
   class Character < Character
