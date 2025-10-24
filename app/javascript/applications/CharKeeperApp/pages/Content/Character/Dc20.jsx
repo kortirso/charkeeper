@@ -1,10 +1,12 @@
 import { createSignal, createMemo, Switch, Match } from 'solid-js';
+import * as i18n from '@solid-primitives/i18n';
 import { createWindowSize } from '@solid-primitives/resize-observer';
 
 import {
   Dc20Abilities, Dc20Skills, Dc20Saves, Dc20CombatStatic
 } from '../../../pages';
-import { CharacterNavigation, Notes, Avatar, ContentWrapper, createDiceRoll, Conditions } from '../../../components';
+import { CharacterNavigation, Notes, Avatar, ContentWrapper, createDiceRoll, Conditions, Equipment } from '../../../components';
+import { useAppLocale } from '../../../context';
 
 export const Dc20 = (props) => {
   const size = createWindowSize();
@@ -15,13 +17,19 @@ export const Dc20 = (props) => {
   const [activeMobileTab, setActiveMobileTab] = createSignal('abilities');
   const [activeTab, setActiveTab] = createSignal('combat');
 
+  const [, dict] = useAppLocale();
+
+  const t = i18n.translator(dict);
+
+  const weaponFilter = (item) => item.kind.includes('weapon');
+
   const mobileView = createMemo(() => {
     if (size.width >= 1152) return <></>;
 
     return (
       <>
         <CharacterNavigation
-          tabsList={['abilities', 'combat', 'notes', 'avatar']}
+          tabsList={['abilities', 'combat', 'equipment', 'notes', 'avatar']}
           activeTab={activeMobileTab()}
           setActiveTab={setActiveMobileTab}
           currentGuideStep={character().guide_step}
@@ -53,6 +61,16 @@ export const Dc20 = (props) => {
             </Match>
             <Match when={activeMobileTab() === 'combat'}>
               <Dc20CombatStatic character={character()} openDiceRoll={openDiceRoll} />
+            </Match>
+            <Match when={activeMobileTab() === 'equipment'}>
+              <Equipment
+                character={character()}
+                itemFilters={[
+                  { title: t('equipment.weaponsList'), callback: weaponFilter }
+                ]}
+                onReplaceCharacter={props.onReplaceCharacter}
+                onReloadCharacter={props.onReloadCharacter}
+              />
             </Match>
             <Match when={activeMobileTab() === 'notes'}>
               <Notes />
@@ -101,7 +119,7 @@ export const Dc20 = (props) => {
     return (
       <>
         <CharacterNavigation
-          tabsList={['combat', 'notes', 'avatar']}
+          tabsList={['combat', 'equipment', 'notes', 'avatar']}
           activeTab={activeTab()}
           setActiveTab={setActiveTab}
           currentGuideStep={character().guide_step}
@@ -111,6 +129,16 @@ export const Dc20 = (props) => {
           <Switch>
             <Match when={activeTab() === 'combat'}>
               <Dc20CombatStatic character={character()} openDiceRoll={openDiceRoll} />
+            </Match>
+            <Match when={activeTab() === 'equipment'}>
+              <Equipment
+                character={character()}
+                itemFilters={[
+                  { title: t('equipment.weaponsList'), callback: weaponFilter }
+                ]}
+                onReplaceCharacter={props.onReplaceCharacter}
+                onReloadCharacter={props.onReloadCharacter}
+              />
             </Match>
             <Match when={activeTab() === 'notes'}>
               <Notes />

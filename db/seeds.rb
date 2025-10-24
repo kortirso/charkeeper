@@ -191,6 +191,10 @@ end
 #   file.write(beautified_json_string)
 # end
 
+weapons_file = File.read(Rails.root.join('db/data/dc20/weapons.json'))
+weapons = JSON.parse(weapons_file)
+Dc20::Item.upsert_all(weapons) if weapons.any?
+
 weapons_file = File.read(Rails.root.join('db/data/dnd5/weapons.json'))
 weapons = JSON.parse(weapons_file)
 Dnd5::Item.upsert_all(weapons) if weapons.any?

@@ -1,0 +1,150 @@
+[
+  {
+    "slug": "hand_axe",
+    "kind": "weapon",
+    "name": { "en": "Hand Axe", "ru": "Ручной топор" },
+    "info": {
+      "range": "melee",
+      "distance": "5/10",
+      "damage": 1,
+      "styles": ["axe"],
+      "features": ["Concealable", "Toss"]
+    }
+  },
+  {
+    "slug": "short_sword",
+    "kind": "weapon",
+    "name": { "en": "Short sword", "ru": "Короткий меч" },
+    "info": {
+      "range": "melee",
+      "damage": 1,
+      "styles": ["sword"],
+      "features": ["Guard", "Impact"]
+    }
+  },
+  {
+    "slug": "javelin",
+    "kind": "weapon",
+    "name": { "en": "Javelin", "ru": "Метательное копьё" },
+    "info": {
+      "range": "melee",
+      "distance": "10/20",
+      "damage": 1,
+      "styles": ["spear"],
+      "features": ["Thrown"]
+    }
+  },
+  {
+    "slug": "light_hammer",
+    "kind": "weapon",
+    "name": { "en": "Light hammer", "ru": "Лёгкий молот" },
+    "info": {
+      "range": "melee",
+      "distance": "5/10",
+      "damage": 1,
+      "styles": ["hammer"],
+      "features": ["Impact", "Toss"]
+    }
+  },
+  {
+    "slug": "battleaxe",
+    "kind": "weapon",
+    "name": { "en": "Battleaxe", "ru": "Боевой топор" },
+    "info": {
+      "range": "melee",
+      "damage": 1,
+      "styles": ["axe"],
+      "features": ["Impact", "Versatile"]
+    }
+  },
+  {
+    "slug": "long_spear",
+    "kind": "weapon",
+    "name": { "en": "Long Spear", "ru": "Длинное копьё" },
+    "info": {
+      "range": "melee",
+      "damage": 1,
+      "styles": ["spear"],
+      "features": ["Versatile", "Reach"]
+    }
+  },
+  {
+    "slug": "quarterstaff",
+    "kind": "weapon",
+    "name": { "en": "Quarterstaff", "ru": "Боевой посох" },
+    "info": {
+      "range": "melee",
+      "damage": 1,
+      "styles": ["staff"],
+      "features": ["Versatile", "Guard"]
+    }
+  },
+  {
+    "slug": "longsword",
+    "kind": "weapon",
+    "name": { "en": "Longsword", "ru": "Длинный меч" },
+    "info": {
+      "range": "melee",
+      "damage": 1,
+      "styles": ["sword"],
+      "features": ["Versatile", "Guard"]
+    }
+  },
+  {
+    "slug": "war_flail",
+    "kind": "weapon",
+    "name": { "en": "War Flail", "ru": "Боевой цеп" },
+    "info": {
+      "range": "melee",
+      "damage": 2,
+      "styles": ["chained"],
+      "features": ["Two-Handed", "Impact"]
+    }
+  },
+  {
+    "slug": "halberd",
+    "kind": "weapon",
+    "name": { "en": "Halberd", "ru": "Алебарда" },
+    "info": {
+      "range": "melee",
+      "damage": 1,
+      "styles": ["axe", "pick"],
+      "features": ["Two-Handed", "Reach", "Impact"]
+    }
+  },
+  {
+    "slug": "scythe",
+    "kind": "weapon",
+    "name": { "en": "Scythe", "ru": "Коса" },
+    "info": {
+      "range": "melee",
+      "damage": 2,
+      "styles": ["axe"],
+      "features": ["Two-Handed", "Reach"]
+    }
+  },
+  {
+    "slug": "shortbow",
+    "kind": "weapon",
+    "name": { "en": "Shortbow", "ru": "Короткий лук" },
+    "info": {
+      "range": "ranged",
+      "distance": "15/45",
+      "damage": 1,
+      "styles": ["bow"],
+      "features": ["Two-Handed", "Ammo", "Silent"]
+    }
+  },
+  {
+    "slug": "longbow",
+    "kind": "weapon",
+    "name": { "en": "Longbow", "ru": "Длинный лук" },
+    "info": {
+      "range": "ranged",
+      "distance": "30/90",
+      "damage": 1,
+      "styles": ["bow"],
+      "features": ["Two-Handed", "Ammo", "Unwieldy", "Impact"]
+    }
+  }
+]
