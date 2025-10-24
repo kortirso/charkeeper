@@ -69,7 +69,7 @@ export const SpellsTable = (props) => {
       <div class="blockable mb-2 p-4">
         <div class="flex justify-between items-center">
           <h2 class="text-lg dark:text-snow">
-            <Show when={props.level !== '0'} fallback={TRANSLATION[locale()]['cantrips']}>
+            <Show when={props.level !== 0} fallback={TRANSLATION[locale()]['cantrips']}>
               {props.level} {TRANSLATION[locale()]['level']}
             </Show>
           </h2>

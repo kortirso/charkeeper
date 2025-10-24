@@ -428,12 +428,9 @@
   },
   "character": {
     "thresholds": "Пороги урона",
-    "onlyPreparedSpells": "Подготовленные",
-    "onlyAvailableSpells": "Доступные",
     "customSpellAbility": "Изучить с магической характеристикой",
     "changeLevels": "Изменить уровни классов",
     "changeClasses": "Изменить классы персонажа",
-    "knownSpells": "Изучение заклинаний",
     "items": "Добавить снаряжение",
     "damage": "Урон",
     "heal": "Лечение",
@@ -467,8 +464,6 @@
     "music": "Музыкальные инструменты"
   },
   "terms": {
-    "spellAttack": "Бонус атаки",
-    "saveDC": "Спасброски",
     "armorClass": "Класс брони",
     "initiative": "Инициатива",
     "perception": "Восприятие",
@@ -480,8 +475,6 @@
     },
     "attackAction": "Атаки за действие",
     "attackBonusAction": "Атаки за бонус действие",
-    "known": "Известные",
-    "prepared": "Подготовленные",
     "proficiencyBonus": "Бонус мастерства",
     "hitDices": "Кости хитов"
   },
