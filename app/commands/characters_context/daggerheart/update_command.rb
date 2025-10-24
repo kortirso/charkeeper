@@ -63,6 +63,7 @@ module CharactersContext
           optional(:stance).maybe(:string)
           optional(:selected_features).hash
           optional(:guide_step).maybe(:integer)
+          optional(:conditions).maybe(:array).each(:string)
         end
 
         rule(:avatar_file, :avatar_url).validate(:check_only_one_present)
