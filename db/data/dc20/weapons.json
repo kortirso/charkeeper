@@ -7,7 +7,8 @@
       "range": "melee",
       "distance": "5/10",
       "damage": 1,
-      "styles": ["axe"],
+      "styles": ["Axe"],
+      "damage_types": ["s"],
       "features": ["Concealable", "Toss"]
     }
   },
@@ -18,7 +19,8 @@
     "info": {
       "range": "melee",
       "damage": 1,
-      "styles": ["sword"],
+      "styles": ["Sword"],
+      "damage_types": ["s"],
       "features": ["Guard", "Impact"]
     }
   },
@@ -30,7 +32,8 @@
       "range": "melee",
       "distance": "10/20",
       "damage": 1,
-      "styles": ["spear"],
+      "styles": ["Spear"],
+      "damage_types": ["p"],
       "features": ["Thrown"]
     }
   },
@@ -42,7 +45,8 @@
       "range": "melee",
       "distance": "5/10",
       "damage": 1,
-      "styles": ["hammer"],
+      "styles": ["Hammer"],
+      "damage_types": ["b"],
       "features": ["Impact", "Toss"]
     }
   },
@@ -53,7 +57,8 @@
     "info": {
       "range": "melee",
       "damage": 1,
-      "styles": ["axe"],
+      "styles": ["Axe"],
+      "damage_types": ["s"],
       "features": ["Impact", "Versatile"]
     }
   },
@@ -64,7 +69,8 @@
     "info": {
       "range": "melee",
       "damage": 1,
-      "styles": ["spear"],
+      "styles": ["Spear"],
+      "damage_types": ["p"],
       "features": ["Versatile", "Reach"]
     }
   },
@@ -75,7 +81,8 @@
     "info": {
       "range": "melee",
       "damage": 1,
-      "styles": ["staff"],
+      "styles": ["Staff"],
+      "damage_types": ["b"],
       "features": ["Versatile", "Guard"]
     }
   },
@@ -86,7 +93,8 @@
     "info": {
       "range": "melee",
       "damage": 1,
-      "styles": ["sword"],
+      "styles": ["Sword"],
+      "damage_types": ["s"],
       "features": ["Versatile", "Guard"]
     }
   },
@@ -97,7 +105,8 @@
     "info": {
       "range": "melee",
       "damage": 2,
-      "styles": ["chained"],
+      "styles": ["Chained"],
+      "damage_types": ["b"],
       "features": ["Two-Handed", "Impact"]
     }
   },
@@ -108,7 +117,8 @@
     "info": {
       "range": "melee",
       "damage": 1,
-      "styles": ["axe", "pick"],
+      "styles": ["Axe", "Pick"],
+      "damage_types": ["s", "p"],
       "features": ["Two-Handed", "Reach", "Impact"]
     }
   },
@@ -119,7 +129,8 @@
     "info": {
       "range": "melee",
       "damage": 2,
-      "styles": ["axe"],
+      "styles": ["Axe"],
+      "damage_types": ["s"],
       "features": ["Two-Handed", "Reach"]
     }
   },
@@ -131,7 +142,8 @@
       "range": "ranged",
       "distance": "15/45",
       "damage": 1,
-      "styles": ["bow"],
+      "styles": ["Bow"],
+      "damage_types": ["p"],
       "features": ["Two-Handed", "Ammo", "Silent"]
     }
   },
@@ -143,7 +155,8 @@
       "range": "ranged",
       "distance": "30/90",
       "damage": 1,
-      "styles": ["bow"],
+      "styles": ["Bow"],
+      "damage_types": ["p"],
       "features": ["Two-Handed", "Ammo", "Unwieldy", "Impact"]
     }
   }

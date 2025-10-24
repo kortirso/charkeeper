@@ -11,7 +11,8 @@ module BotContext
           target = arguments.shift
           result =
             case type
-            when 'attr', 'save', 'skill', 'trade', 'language', 'initiative' then attr_check(character, target, arguments)
+            when 'attr', 'save', 'skill', 'trade', 'language', 'initiative', 'attack'
+              attr_check(character, target, arguments)
             end
 
           {

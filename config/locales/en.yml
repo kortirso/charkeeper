@@ -107,6 +107,28 @@ en:
       boosts: "You can improve abilities: %{ability_boosts_text}.\nYou can learn skills: %{skill_boosts_text}"
       free: Free
       int: + Int modifier
+    dc20:
+      weapon_features:
+        Axe: You deal +1 damage against creatures that are Bleeding.
+        Bow: You deal +1 damage against creatures that are Slowed.
+        Chained: Your Attacks ignore Shields and 1/2 Cover, and you deal +1 damage against targets that are wielding a Shield or behind 1/2 Cover.
+        Hammer: You deal +1 damage against creatures that are Dazed or Petrified.
+        Pick: You deal +1 damage against creatures that are Impaired.
+        Spear: You deal +1 damage against a creature if you moved 2 Spaces towards it immediately before making the Attack or if it is on a Mount. Additionally, you do not have DisADV on Attack Checks made using the weapon as a result of being underwater.
+        Staff: You deal +1 damage against creatures that are Hindered.
+        Sword: You deal +1 damage against creatures that are Exposed.
+        Ammo: You can load a weapon as part of an Attack made with it.
+        Concealable: Drawing the weapon doesn't provoke Opportunity Attacks. If you draw the weapon as part of an Attack, you have ADV on the Attack. You can only gain this benefit once against each creature per Combat.
+        Guard: You gain +1 PD while wielding the weapon.
+        Impact: You deal +1 damage on Heavy Hits.
+        Multi-Faceted: You must choose which weapon Style to use. The chosen weapon Style determines the Attack's damage type.
+        Reach: This weapon adds 1 Space to your Melee Range when you Attack with it.
+        Silent: When you make a Ranged Attack with the weapon while Hidden, you remain Unheard by creatures you're Hidden from.
+        Toss: You can throw the weapon to make a Ranged Martial Attack.
+        Thrown: You can throw the weapon to make a Ranged Martial Attack.
+        Two-Handed: The weapon requires 2 hands when you Attack with it.
+        Unwieldy: You have DisADV on Attacks made with the weapon against targets within 1 Space of you.
+        Versatile: This weapon can be wielded with 1 or 2 hands. When you wield the weapon with 2 hands, you gain a +2 bonus to Hit using it.
   frontend:
     homebrews:
       races:

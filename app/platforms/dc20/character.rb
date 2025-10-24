@@ -49,7 +49,8 @@ module Dc20
 
     def decorator
       base_decorator = ::Dc20Character::BaseDecorator.new(self)
-      ::Dc20Character::ClassDecorateWrapper.new(base_decorator)
+      class_decorator = ::Dc20Character::ClassDecorateWrapper.new(base_decorator)
+      ::Dc20Character::StatsDecorator.new(class_decorator)
     end
   end
 end
