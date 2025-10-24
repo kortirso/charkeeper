@@ -15,10 +15,12 @@ import { modifier } from '../../../../helpers';
 
 const TRANSLATION = {
   en: {
-    loadoutLimit: 'Loadout limit'
+    loadoutLimit: 'Loadout limit',
+    domainCardIsAdded: 'Domain card is added'
   },
   ru: {
-    loadoutLimit: 'Лимит инвентаря'
+    loadoutLimit: 'Лимит инвентаря',
+    domainCardIsAdded: 'Карта домена добавлена'
   }
 }
 
@@ -92,7 +94,7 @@ export const DaggerheartDomainCards = (props) => {
     if (result.errors_list === undefined) {
       batch(() => {
         setCharacterSpells([result.spell].concat(characterSpells()));
-        renderNotice(t('alerts.domainCardIsAdded'));
+        renderNotice(TRANSLATION[locale()]['domainCardIsAdded']);
       });
     }
   }

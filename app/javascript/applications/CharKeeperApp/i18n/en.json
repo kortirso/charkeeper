@@ -359,7 +359,6 @@
     "error": "An error occurred while rendering data, an error report has been sent to the developer!",
     "restIsFinished": "Rest is finished",
     "itemIsAdded": "Item is added",
-    "domainCardIsAdded": "Domain card is added to vault",
     "characterIsUpdated": "Character is updated",
     "fileSizeLimit": "File size should be less than 1 MB",
     "invalidSubclassesList": "You need to select subclasses for all classes",
