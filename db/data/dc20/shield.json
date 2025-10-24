@@ -1,0 +1,67 @@
+[
+  {
+    "slug": "buckler",
+    "kind": "shield",
+    "name": { "en": "Buckler", "ru": "Баклер" },
+    "info": {
+      "type": "light_shield",
+      "pd": 1,
+      "ad": 0,
+      "speed": 0,
+      "agi_check": false,
+      "features": ["Grasp"]
+    }
+  },
+  {
+    "slug": "round_shield",
+    "kind": "shield",
+    "name": { "en": "Round Shield", "ru": "Круглый щит" },
+    "info": {
+      "type": "light_shield",
+      "pd": 0,
+      "ad": 1,
+      "speed": 0,
+      "agi_check": false,
+      "features": ["Toss"]
+    }
+  },
+  {
+    "slug": "heater_shield",
+    "kind": "shield",
+    "name": { "en": "Heater Shield", "ru": "Обитый щит" },
+    "info": {
+      "type": "light_shield",
+      "pd": 1,
+      "ad": 1,
+      "speed": 0,
+      "agi_check": false,
+      "features": []
+    }
+  },
+  {
+    "slug": "kite_shield",
+    "kind": "shield",
+    "name": { "en": "Kite Shield", "ru": "Экю" },
+    "info": {
+      "type": "heavy_shield",
+      "pd": 1,
+      "ad": 2,
+      "speed": -1,
+      "agi_check": true,
+      "features": ["Mounted"]
+    }
+  },
+  {
+    "slug": "tower_shield",
+    "kind": "shield",
+    "name": { "en": "Tower Shield", "ru": "Башенный щит" },
+    "info": {
+      "type": "heavy_shield",
+      "pd": 2,
+      "ad": 2,
+      "speed": -1,
+      "agi_check": true,
+      "features": []
+    }
+  }
+]

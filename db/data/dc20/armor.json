@@ -1,0 +1,86 @@
+[
+  {
+    "slug": "defensive_light",
+    "kind": "armor",
+    "name": { "en": "Defensive light armor", "ru": "Стандартная лёгкая броня" },
+    "info": {
+      "type": "light_armor",
+      "pd": 1,
+      "ad": 1,
+      "speed": 0,
+      "agi_check": false,
+      "pdr": 0,
+      "edr": 0
+    }
+  },
+  {
+    "slug": "deflecting_light",
+    "kind": "armor",
+    "name": { "en": "Deflecting light armor", "ru": "Укреплённая лёгкая броня" },
+    "info": {
+      "type": "light_armor",
+      "pd": 2,
+      "ad": 0,
+      "speed": 0,
+      "agi_check": false,
+      "pdr": 0,
+      "edr": 0
+    }
+  },
+  {
+    "slug": "fortified_light",
+    "kind": "armor",
+    "name": { "en": "Fortified light armor", "ru": "Полная лёгкая броня" },
+    "info": {
+      "type": "light_armor",
+      "pd": 0,
+      "ad": 2,
+      "speed": 0,
+      "agi_check": false,
+      "pdr": 0,
+      "edr": 0
+    }
+  },
+  {
+    "slug": "defensive_heavy",
+    "kind": "armor",
+    "name": { "en": "Defensive heavy armor", "ru": "Стандартная тяжёлая броня" },
+    "info": {
+      "type": "heavy_armor",
+      "pd": 1,
+      "ad": 1,
+      "speed": -1,
+      "agi_check": true,
+      "pdr": "half",
+      "edr": 0
+    }
+  },
+  {
+    "slug": "deflecting_heavy",
+    "kind": "armor",
+    "name": { "en": "Deflecting heavy armor", "ru": "Укреплённая тяжёлая броня" },
+    "info": {
+      "type": "heavy_armor",
+      "pd": 2,
+      "ad": 0,
+      "speed": -1,
+      "agi_check": true,
+      "pdr": "half",
+      "edr": 0
+    }
+  },
+  {
+    "slug": "fortified_heavy",
+    "kind": "armor",
+    "name": { "en": "Fortified heavy armor", "ru": "Полная тяжёлая броня" },
+    "info": {
+      "type": "heavy_armor",
+      "pd": 0,
+      "ad": 2,
+      "speed": -1,
+      "agi_check": true,
+      "pdr": "half",
+      "edr": 0
+    }
+  }
+]

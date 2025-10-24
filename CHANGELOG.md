@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - conditions for all systems
 - equipment management for DC20 characters
 - combat management for DC20 characters
+- weapons, armors and shields for DC20 characters
 
 ### Modified
 - rendering D&D spells

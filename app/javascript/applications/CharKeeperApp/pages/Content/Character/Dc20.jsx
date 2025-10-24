@@ -22,6 +22,8 @@ export const Dc20 = (props) => {
   const t = i18n.translator(dict);
 
   const weaponFilter = (item) => item.kind.includes('weapon');
+  const armorFilter = (item) => item.kind.includes('armor');
+  const shieldFilter = (item) => item.kind.includes('shield');
 
   const mobileView = createMemo(() => {
     if (size.width >= 1152) return <></>;
@@ -73,7 +75,9 @@ export const Dc20 = (props) => {
               <Equipment
                 character={character()}
                 itemFilters={[
-                  { title: t('equipment.weaponsList'), callback: weaponFilter }
+                  { title: t('equipment.weaponsList'), callback: weaponFilter },
+                  { title: t('equipment.armorList'), callback: armorFilter },
+                  { title: t('equipment.shieldList'), callback: shieldFilter }
                 ]}
                 onReplaceCharacter={props.onReplaceCharacter}
                 onReloadCharacter={props.onReloadCharacter}
@@ -148,7 +152,9 @@ export const Dc20 = (props) => {
               <Equipment
                 character={character()}
                 itemFilters={[
-                  { title: t('equipment.weaponsList'), callback: weaponFilter }
+                  { title: t('equipment.weaponsList'), callback: weaponFilter },
+                  { title: t('equipment.armorList'), callback: armorFilter },
+                  { title: t('equipment.shieldList'), callback: shieldFilter }
                 ]}
                 onReplaceCharacter={props.onReplaceCharacter}
                 onReloadCharacter={props.onReloadCharacter}

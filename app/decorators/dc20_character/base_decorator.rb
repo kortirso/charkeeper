@@ -37,7 +37,8 @@ module Dc20Character
     def precision_defense
       return @precision_defense if defined?(@precision_defense)
 
-      default = 8 + combat_mastery + modified_abilities['agi'] + modified_abilities['int']
+      default = 8 + combat_mastery + modified_abilities['agi'] + modified_abilities['int'] + equiped_armor_info&.dig('pd').to_i +
+                equiped_shield_info&.dig('pd').to_i
       @precision_defense ||= {
         default: default,
         heavy: default + 5,
@@ -48,7 +49,8 @@ module Dc20Character
     def area_defense
       return @area_defense if defined?(@area_defense)
 
-      default = 8 + combat_mastery + modified_abilities['mig'] + modified_abilities['cha']
+      default = 8 + combat_mastery + modified_abilities['mig'] + modified_abilities['cha'] + equiped_armor_info&.dig('ad').to_i +
+                equiped_shield_info&.dig('ad').to_i
       @area_defense ||= {
         default: default,
         heavy: default + 5,
@@ -78,6 +80,26 @@ module Dc20Character
 
     def initiative
       @initiative ||= modified_abilities['agi'] + combat_mastery
+    end
+
+    def equiped_armor_info
+      @equiped_armor_info ||=
+        __getobj__
+        .items
+        .where(state: ::Character::Item::ACTIVE_STATES)
+        .joins(:item)
+        .where(items: { kind: 'armor' })
+        .pick('items.info')
+    end
+
+    def equiped_shield_info
+      @equiped_shield_info ||=
+        __getobj__
+        .items
+        .where(state: ::Character::Item::HANDS)
+        .joins(:item)
+        .where(items: { kind: 'shield' })
+        .pick('items.info')
     end
 
     private

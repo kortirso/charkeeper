@@ -195,6 +195,14 @@ weapons_file = File.read(Rails.root.join('db/data/dc20/weapons.json'))
 weapons = JSON.parse(weapons_file)
 Dc20::Item.upsert_all(weapons) if weapons.any?
 
+armor_file = File.read(Rails.root.join('db/data/dc20/armor.json'))
+armor = JSON.parse(armor_file)
+Dc20::Item.upsert_all(armor) if armor.any?
+
+shield_file = File.read(Rails.root.join('db/data/dc20/shield.json'))
+shield = JSON.parse(shield_file)
+Dc20::Item.upsert_all(shield) if shield.any?
+
 weapons_file = File.read(Rails.root.join('db/data/dnd5/weapons.json'))
 weapons = JSON.parse(weapons_file)
 Dnd5::Item.upsert_all(weapons) if weapons.any?

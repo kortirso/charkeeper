@@ -11,7 +11,7 @@ module Dc20Character
     end
 
     def attacks
-      @attacks ||= [unarmed_attack] + character_weapons.map { |item| calculate_attack(item) }
+      @attacks ||= [unarmed_attack, shield_attack].compact + character_weapons.map { |item| calculate_attack(item) }
     end
 
     def precision_defense
@@ -29,6 +29,22 @@ module Dc20Character
         name: { en: 'Unarmed', ru: 'Безоружная' }[I18n.locale],
         attack_bonus: modified_abilities['prime'] + combat_mastery,
         damage: 0,
+        damage_types: ['b'],
+        features: [],
+        features_text: [],
+        notes: [],
+        ready_to_use: true
+      }
+    end
+
+    def shield_attack
+      return if equiped_shield_info.nil?
+      return if combat_expertise.exclude?(equiped_shield_info['type'])
+
+      {
+        name: { en: 'Shield attack', ru: 'Удар щитом' }[I18n.locale],
+        attack_bonus: modified_abilities['prime'] + combat_mastery,
+        damage: 1,
         damage_types: ['b'],
         features: [],
         features_text: [],
