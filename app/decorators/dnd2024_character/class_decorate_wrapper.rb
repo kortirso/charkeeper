@@ -57,6 +57,10 @@ module Dnd2024Character
         end
     end
 
+    def available_spell_level
+      spells_slots.keys.max
+    end
+
     private
 
     def wrap_classes(obj)

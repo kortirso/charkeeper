@@ -164,6 +164,8 @@ module CharactersContext
 
       def refresh_spells(input)
         input[:added_classes].each do |added_class|
+          next if ::Dnd2024::Character::CLASSES_KNOW_SPELLS_LIST.exclude?(added_class)
+
           spells =
             ::Dnd2024::Spell
               .where('available_for && ?', "{#{added_class}}")

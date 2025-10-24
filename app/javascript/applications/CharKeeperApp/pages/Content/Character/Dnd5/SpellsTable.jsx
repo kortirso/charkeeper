@@ -1,22 +1,55 @@
 import { createSignal, For, Show, batch } from 'solid-js';
-import * as i18n from '@solid-primitives/i18n';
 
 import { Button, Checkbox, createModal, TextArea } from '../../../../components';
+import config from '../../../../data/dnd2024.json';
 import { Minus, Plus } from '../../../../assets';
 import { useAppLocale } from '../../../../context';
 import { modifier } from '../../../../helpers';
+
+const TRANSLATION = {
+  en: {
+    attackBonus: 'attack bonus',
+    saveDC: 'save DC',
+    perDay: 'per day',
+    spellLevel: 'as level',
+    cantrips: 'Cantrips',
+    level: 'level',
+    spellNote: 'Spell note',
+    static: 'Static',
+    save: 'Save'
+  },
+  ru: {
+    attackBonus: 'бонус атаки',
+    saveDC: 'УС',
+    perDay: 'раз в день',
+    spellLevel: 'как на уровне',
+    cantrips: 'Заговоры',
+    level: 'уровень',
+    spellNote: 'Заметка о заклинании',
+    static: 'Врождённое',
+    save: 'Сохранить'
+  }
+}
 
 export const SpellsTable = (props) => {
   const [changingSpell, setChangingSpell] = createSignal(null);
 
   const { Modal, openModal, closeModal } = createModal();
-  const [, dict] = useAppLocale();
+  const [locale] = useAppLocale();
 
-  const t = i18n.translator(dict);
-
-  const renderSpellDescription = (spellAbility) => {
+  const renderDescription = (spellAbility) => {
     const bonus = props.character.proficiency_bonus + props.character.modifiers[spellAbility];
-    return `${t('character.staticSpellAttackBonus')} ${modifier(bonus)}, ${t('character.staticSpellSaveDC')} ${8 + bonus}`;
+    return `${TRANSLATION[locale()]['attackBonus']} ${modifier(bonus)}, ${TRANSLATION[locale()]['saveDC']} ${8 + bonus}`;
+  }
+
+  const renderSpellData = (data) => {
+    const result = [];
+    if (data.limit) result.push(`${data.limit} ${TRANSLATION[locale()]['perDay']}`);
+    if (data.level) result.push(`${TRANSLATION[locale()]['spellLevel']} ${data.level}`);
+    if (data.attack_bonus) result.push(`${TRANSLATION[locale()]['attackBonus']} ${modifier(data.attack_bonus)}`);
+    if (data.save_dc) result.push(`${TRANSLATION[locale()]['saveDC']} ${data.save_dc}`);
+
+    return result.join(', ');
   }
 
   const changeSpell = (spell) => {
@@ -36,29 +69,20 @@ export const SpellsTable = (props) => {
       <div class="blockable mb-2 p-4">
         <div class="flex justify-between items-center">
           <h2 class="text-lg dark:text-snow">
-            <Show when={props.level !== '0'} fallback={t('terms.cantrips')}>
-              {props.level} {t('spellbookPage.level')}
+            <Show when={props.level !== 0} fallback={TRANSLATION[locale()]['cantrips']}>
+              {props.level} {TRANSLATION[locale()]['level']}
             </Show>
           </h2>
           <Show when={props.spentSpellSlots}>
             <div class="flex">
               <For each={[...Array((props.spentSpellSlots[props.level] || 0)).keys()]}>
                 {() =>
-                  <Checkbox
-                    filled
-                    checked
-                    classList="mr-1"
-                    onToggle={() => props.onFreeSpellSlot(props.level)}
-                  />
+                  <Checkbox filled checked classList="mr-1" onToggle={() => props.onFreeSpellSlot(props.level)} />
                 }
               </For>
               <For each={[...Array(props.slotsAmount - (props.spentSpellSlots[props.level] || 0)).keys()]}>
                 {() =>
-                  <Checkbox
-                    filled
-                    classList="mr-1"
-                    onToggle={() => props.onSpendSpellSlot(props.level)}
-                  />
+                  <Checkbox filled classList="mr-1" onToggle={() => props.onSpendSpellSlot(props.level)} />
                 }
               </For>
             </div>
@@ -71,20 +95,17 @@ export const SpellsTable = (props) => {
                 <tr class="dark:text-snow">
                   <td class="py-1 pl-1">
                     <p
-                      class={`cursor-pointer ${spell.ready_to_use ? '' : 'opacity-50'}`}
-                      onClick={() => changeSpell(spell)}
+                      classList={{ 'cursor-pointer': !spell.data, 'opacity-50': !spell.ready_to_use }}
+                      onClick={() => spell.data ? null : changeSpell(spell)}
                     >
                       {spell.name}
                     </p>
-                    <Show when={spell.spell_ability !== null}>
-                      <p class="text-xs">{renderSpellDescription(spell.spell_ability)}</p>
-                    </Show>
-                    <Show when={spell.notes !== null}>
-                      <p class="text-xs">{spell.notes}</p>
-                    </Show>
+                    <Show when={spell.spell_ability}><p class="text-xs">{renderDescription(spell.spell_ability)}</p></Show>
+                    <Show when={spell.data}><p class="text-xs">{renderSpellData(spell.data)}</p></Show>
+                    <Show when={spell.notes}><p class="text-xs">{spell.notes}</p></Show>
                   </td>
                   <td>
-                    <Show when={props.canPrepareSpells}>
+                    <Show when={!spell.data && props.canPrepareSpells}>
                       <Show
                         when={spell.ready_to_use}
                         fallback={
@@ -98,6 +119,11 @@ export const SpellsTable = (props) => {
                         </Button>
                       </Show>
                     </Show>
+                    <Show when={props.activeSpellClass === undefined}>
+                      <p class="text-xs text-right">
+                        {spell.prepared_by ? config.classes[spell.prepared_by]['name'][locale()] : TRANSLATION[locale()]['static']}
+                      </p>
+                    </Show>
                   </td>
                 </tr>
               }
@@ -110,11 +136,11 @@ export const SpellsTable = (props) => {
           <p class="flex-1 text-xl text-left dark:text-snow mb-2">{changingSpell().name}</p>
           <TextArea
             rows="2"
-            labelText={t('character.spellNote')}
+            labelText={TRANSLATION[locale()]['spellNote']}
             onChange={(value) => setChangingSpell({ ...changingSpell(), notes: value })}
             value={changingSpell().notes}
           />
-          <Button default textable classList="mt-2" onClick={updateSpell}>{t('save')}</Button>
+          <Button default textable classList="mt-2" onClick={updateSpell}>{TRANSLATION[locale()]['save']}</Button>
         </Show>
       </Modal>
     </>

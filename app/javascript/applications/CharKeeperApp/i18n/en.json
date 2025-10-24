@@ -423,25 +423,14 @@
   "itemsPage": {
     "title": "Items"
   },
-  "spellbookPage": {
-    "level": "level"
-  },
   "spellsPage": {
     "title": "Spells"
   },
   "character": {
     "thresholds": "Damage thresholds",
-    "onlyPreparedSpells": "Only prepared",
-    "onlyAvailableSpells": "Only available",
-    "customSpellAbility": "Learn with custom spell ability",
     "changeLevels": "Change class levels",
     "changeClasses": "Change character classes",
-    "knownSpells": "Learning spells",
     "items": "Add equipment",
-    "staticSpellPerDay": "per day",
-    "staticSpellLevel": "as level",
-    "staticSpellAttackBonus": "attack bonus",
-    "staticSpellSaveDC": "save DC",
     "damage": "Damage",
     "heal": "Heal",
     "damageConditions": "Damage resistances",
@@ -450,7 +439,6 @@
     "immunity": "Immune", 
     "ammoList": "Ammo",
     "itemNote": "Item note",
-    "spellNote": "Spell note",
     "deathSavingThrows": "Death saving throws",
     "deathSuccess": "Success",
     "deathFailure": "Failure",
@@ -475,8 +463,6 @@
     "music": "Musical instruments"
   },
   "terms": {
-    "spellAttack": "Spell attack",
-    "saveDC": "Save DC",
     "armorClass": "Armor Class",
     "initiative": "Initiative",
     "perception": "Perception",
@@ -488,9 +474,6 @@
     },
     "attackAction": "Action attacks",
     "attackBonusAction": "Bonus action attacks",
-    "cantrips": "Cantrips",
-    "known": "Known",
-    "prepared": "Prepared",
     "proficiencyBonus": "Proficiency",
     "hitDices": "Hit dices"
   },
