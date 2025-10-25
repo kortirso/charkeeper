@@ -18,7 +18,7 @@ module Dnd5Character
       end
 
       def spells_slots
-        @spells_slots ||= ::Dnd5Character::ClassDecorateWrapper::EMPTY_SPELL_SLOTS[class_level]
+        @spells_slots ||= { 1 => 0 }
       end
 
       private

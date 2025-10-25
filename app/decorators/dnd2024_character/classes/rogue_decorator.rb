@@ -24,7 +24,7 @@ module Dnd2024Character
       end
 
       def spells_slots
-        @spells_slots ||= ::Dnd2024Character::ClassDecorateWrapper::EMPTY_SPELL_SLOTS[class_level]
+        @spells_slots ||= { 1 => 0 }
       end
 
       private
