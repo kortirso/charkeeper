@@ -42,7 +42,7 @@ describe DaggerheartCharacter::BaseDecorator do
   context 'with equiped armor' do
     let!(:armor) do
       create :item, :daggerheart, kind: 'armor', info: {
-        bonuses: { traits: { str: -1 }, evasion: -1, base_score: 4, thresholds: { major: 7, severe: 14 } }
+        base_score: 4, bonuses: { traits: { str: -1 }, evasion: -1, thresholds: { major: 7, severe: 14 } }
       }
     end
 

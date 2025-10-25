@@ -19,7 +19,7 @@ module DaggerheartCharacter
     end
 
     def base_armor_score
-      @base_armor_score ||= equiped_armor_info&.dig('bonuses', 'base_score') || 0
+      @base_armor_score ||= equiped_armor_info&.dig('base_score') || 0
     end
 
     def base_damage_thresholds
