@@ -128,18 +128,5 @@ module Dnd5
       features_decorator.features unless simple
       ::Dnd5Character::OverallDecorator.new(features_decorator)
     end
-
-    def can_learn_spell?(target_spell_class)
-      return false if CLASSES_LEARN_SPELLS.exclude?(target_spell_class)
-
-      true
-    end
-
-    def can_prepare_spell?(target_spell_class)
-      return false if data.classes.keys.exclude?(target_spell_class)
-      return false if CLASSES_PREPARE_SPELLS.exclude?(target_spell_class)
-
-      true
-    end
   end
 end

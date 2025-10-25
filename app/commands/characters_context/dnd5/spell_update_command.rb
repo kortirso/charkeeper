@@ -12,13 +12,6 @@ module CharactersContext
           optional(:ready_to_use).filled(:bool)
           optional(:notes).maybe(:string, max_size?: 100)
         end
-
-        rule(:character, :character_spell, :ready_to_use) do
-          next if values[:ready_to_use].nil?
-          next if values[:character].can_prepare_spell?(values[:character_spell].data['prepared_by'])
-
-          key(:character).failure(:can_not_prepare)
-        end
       end
 
       private

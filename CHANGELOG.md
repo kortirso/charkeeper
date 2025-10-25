@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## Unreleased
 ### Fixed
 - calculating Daggerheart armor score
+- changing D&D character spells
 
 ## [0.3.11] - 2025-10-24
 ### Added

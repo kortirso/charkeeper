@@ -146,13 +146,5 @@ module Dnd2024
       features_decorator.features unless simple
       ::Dnd2024Character::OverallDecorator.new(features_decorator)
     end
-
-    def can_learn_spell?(target_spell_class)
-      target_spell_class == 'wizard'
-    end
-
-    def can_prepare_spell?(target_spell_class)
-      data.classes.key?(target_spell_class)
-    end
   end
 end

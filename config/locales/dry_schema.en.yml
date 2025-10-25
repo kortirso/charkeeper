@@ -131,8 +131,6 @@ en:
           energy:
             invalid_class_name: Invalid class name
             invalid_level: Invalid level
-          character:
-            can_not_prepare: Can't prepare spells
           subrace:
             invalid: Invalid subrace
           legacy:

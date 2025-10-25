@@ -63,7 +63,7 @@ module Frontend
         def update_params
           {
             character_spell: @character.spells.find(params[:id]),
-            ready_to_use: params[:ready_to_use] ? to_bool.call(params[:ready_to_use]) : nil,
+            ready_to_use: params[:ready_to_use].nil? ? nil : to_bool.call(params[:ready_to_use]),
             notes: params[:notes]
           }.compact
         end

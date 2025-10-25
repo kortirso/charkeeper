@@ -131,8 +131,6 @@ ru:
           energy:
             invalid_class_name: Недопустимое название класса
             invalid_level: Недопустимый уровень
-          character:
-            can_not_prepare: Не может подготавливать заклинания
           subrace:
             invalid: Недопустимая подраса
           legacy:
