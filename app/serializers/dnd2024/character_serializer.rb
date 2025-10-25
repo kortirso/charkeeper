@@ -14,7 +14,7 @@ module Dnd2024
              :attacks, :features, :selected_features, :resistances, :death_saving_throws, :health, :energy, :spent_hit_dice,
              :spent_spell_slots, :coins, :load, :languages, :tools, :music, :weapon_core_skills, :weapon_skills,
              :armor_proficiency, :spell_classes, :spells_slots, :static_spells, :selected_feats, :darkvision,
-             :modified_abilities, :available_spell_level, :formatted_static_spells, :conditions, to: :decorator
+             :modified_abilities, :available_spell_level, :formatted_static_spells, to: :decorator
     delegate :created_at, to: :object
 
     def provider
@@ -23,6 +23,14 @@ module Dnd2024
 
     def avatar
       object.avatar.blob.url if object.avatar.attached?
+    end
+
+    def conditions
+      return decorator.conditions if context.blank?
+      return decorator.conditions if context[:version].blank?
+      return decorator.conditions if context[:version] >= '0.3.11'
+
+      decorator.resistances
     end
 
     def decorator
