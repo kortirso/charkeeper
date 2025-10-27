@@ -352,7 +352,6 @@
   "save": "Save",
   "find": "Find",
   "saving": "Saving",
-  "deleteCharacterConfirm": "Are you sure need to remove this character?",
   "cancel": "Cancel",
   "delete": "Delete",
   "copy": "Copy",
@@ -371,8 +370,6 @@
     "title": "Characters list",
     "level": "Level",
     "new": "Create new character",
-    "onDeleteCharacter": "Delete",
-    "deleteCharacterTitle": "Deleting character",
     "onCopyCharacter": "Share",
     "download": "Download",
     "sharePdf": "Share PDF link"

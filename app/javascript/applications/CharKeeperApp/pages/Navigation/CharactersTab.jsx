@@ -16,6 +16,19 @@ import { createCharacterRequest } from '../../requests/createCharacterRequest';
 import { removeCharacterRequest } from '../../requests/removeCharacterRequest';
 import { fetchHomebrewsRequest } from '../../requests/fetchHomebrewsRequest';
 
+const TRANSLATION = {
+  en: {
+    deleteCharacterConfirm: 'Are you sure need to remove this character?',
+    deleteCharacterTitle: 'Deleting character',
+    delete: 'Delete',
+  },
+  ru: {
+    deleteCharacterConfirm: 'Вы точно хотите избавиться от этого персонажа?',
+    deleteCharacterTitle: 'Удаление персонажа',
+    delete: 'Удалить',
+  }
+}
+
 export const CharactersTab = () => {
   const [loading, setLoading] = createSignal(false);
   const [currentTab, setCurrentTab] = createSignal('characters');
@@ -29,7 +42,7 @@ export const CharactersTab = () => {
   const { Modal, openModal, closeModal } = createModal();
   const [appState, { navigate }] = useAppState();
   const [{ renderAlert, renderAlerts }] = useAppAlert();
-  const [, dict] = useAppLocale();
+  const [locale, dict] = useAppLocale();
 
   const t = i18n.translator(dict);
 
@@ -261,11 +274,11 @@ export const CharactersTab = () => {
         </Match>
       </Switch>
       <Modal>
-        <p class="mb-3 text-xl">{t('charactersPage.deleteCharacterTitle')}</p>
-        <p class="mb-3">{t('deleteCharacterConfirm')}</p>
+        <p class="mb-3 text-xl">{TRANSLATION[locale()]['deleteCharacterTitle']}</p>
+        <p class="mb-3">{TRANSLATION[locale()]['deleteCharacterConfirm']}</p>
         <div class="flex w-full">
-          <Button outlined classList='flex-1 mr-2' onClick={closeModal}>{t('cancel')}</Button>
-          <Button default classList='flex-1 ml-2' onClick={confirmCharacterDeleting}>{t('delete')}</Button>
+          <Button outlined classList='flex-1 mr-2 text-sm md:text-base' onClick={closeModal}>{t('cancel')}</Button>
+          <Button default classList='flex-1 ml-2 text-sm md:text-base' onClick={confirmCharacterDeleting}>{TRANSLATION[locale()]['delete']}</Button>
         </div>
       </Modal>
     </>
