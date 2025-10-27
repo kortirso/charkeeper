@@ -12,6 +12,14 @@ import { clickOutside, copyToClipboard } from '../../../helpers';
 
 const AVAILABLE_JSON = ['daggerheart'];
 const AVAILABLE_PDF = ['daggerheart', 'dnd5', 'dnd2024', 'pathfinder2'];
+const TRANSLATION = {
+  en: {
+    delete: 'Delete'
+  },
+  ru: {
+    delete: 'Удалить'
+  }
+}
 
 export const CharactersListItem = (props) => {
   const character = () => props.character;
@@ -128,7 +136,7 @@ export const CharactersListItem = (props) => {
               <p
                 class="px-2 py-1 text-sm bg-white hover:bg-gray-200 dark:bg-dusty dark:hover:bg-neutral-800"
                 onClick={deleteClick}
-              >{t('charactersPage.onDeleteCharacter')}</p>
+              >{TRANSLATION[locale()]['delete']}</p>
               <Show when={AVAILABLE_JSON.includes(character().provider)}>
                 <p
                   class="px-2 py-1 text-sm bg-white hover:bg-gray-200 dark:bg-dusty dark:hover:bg-neutral-800"

@@ -352,7 +352,6 @@
   "save": "Сохранить",
   "find": "Найти",
   "saving": "Сохранение",
-  "deleteCharacterConfirm": "Вы точно хотите избавиться от этого персонажа?",
   "cancel": "Отменить",
   "delete": "Удалить",
   "copy": "Копировать",
@@ -371,8 +370,6 @@
     "title": "Персонажи",
     "level": "Уровень",
     "new": "Добавить нового персонажа",
-    "onDeleteCharacter": "Удалить",
-    "deleteCharacterTitle": "Удаление персонажа",
     "onCopyCharacter": "Поделиться",
     "download": "Скачать",
     "sharePdf": "Поделиться PDF ссылкой"

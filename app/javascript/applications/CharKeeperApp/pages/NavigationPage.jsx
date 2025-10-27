@@ -10,7 +10,7 @@ export const NavigationPage = () => {
   // 453x750
   // 420x690
   return (
-    <div class="flex flex-col w-full sm:w-96 md:border-r border-gray-200 bg-white dark:bg-neutral-800 dark:border-neutral-700">
+    <div class="flex flex-col w-full md:w-96 md:border-r border-gray-200 bg-white dark:bg-neutral-800 dark:border-neutral-700">
       <div class="relative flex-1 flex flex-col overflow-hidden">
         <Switch>
           <Match when={currentTab() === 'characters'}>
