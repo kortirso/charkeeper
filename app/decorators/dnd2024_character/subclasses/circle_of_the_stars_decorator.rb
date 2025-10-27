@@ -2,7 +2,7 @@
 
 module Dnd2024Character
   module Subclasses
-    class OathOfTheStarsDecorator < ApplicationDecorator
+    class CircleOfTheStarsDecorator < ApplicationDecorator
       def static_spells
         @static_spells ||= begin
           result = __getobj__.static_spells
