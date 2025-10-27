@@ -40,6 +40,7 @@ export * from './Content/Character/Dnd5/SavingThrows';
 export * from './Content/Character/Dnd5/Spells';
 export * from './Content/Character/Dnd5/SpellsTable';
 export * from './Content/Character/Dnd5/Proficiency';
+export * from './Content/Character/Dnd5/WildShapes';
 
 export * from './Content/Character/Pathfinder2';
 export * from './Content/Character/Pathfinder2/Abilities';

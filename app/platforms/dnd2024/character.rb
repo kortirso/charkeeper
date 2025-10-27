@@ -34,6 +34,7 @@ module Dnd2024
     attribute :resistance, array: true, default: [] # сопротивления
     attribute :immunity, array: true, default: [] # иммунитеты
     attribute :vulnerability, array: true, default: [] # уязвимости
+    attribute :selected_beastforms, array: true, default: []
     attribute :beastform, :string
     attribute :conditions, array: true, default: []
   end

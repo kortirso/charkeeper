@@ -1,10 +1,10 @@
-import { createSignal, createMemo, Switch, Match } from 'solid-js';
+import { createSignal, createMemo, Switch, Match, Show } from 'solid-js';
 import * as i18n from '@solid-primitives/i18n';
 import { createWindowSize } from '@solid-primitives/resize-observer';
 
 import {
   Dnd5Abilities, Dnd5Combat, Dnd5Rest, Dnd5ClassLevels, Dnd5Professions, Dnd5Spells, DndGold, Dnd5Skills, Dnd5SavingThrows,
-  Dnd5Proficiency
+  Dnd5Proficiency, Dnd2024WildShapes
 } from '../../../pages';
 import {
   CharacterNavigation, Equipment, Notes, Avatar, ContentWrapper, Feats, Bonuses, createDiceRoll, Conditions
@@ -103,6 +103,13 @@ export const Dnd5 = (props) => {
               <div class="mt-4">
                 <Conditions character={character()} />
               </div>
+
+              <Show when={character().provider === 'dnd2024'}>
+                <div class="mt-4">
+                  <Dnd2024WildShapes character={character()} onReplaceCharacter={props.onReplaceCharacter} />
+                </div>
+              </Show>
+
               <div class="mt-4">
                 <Dnd5Skills character={character()} openDiceRoll={openDiceRoll} onReplaceCharacter={props.onReplaceCharacter} />
               </div>
@@ -190,6 +197,11 @@ export const Dnd5 = (props) => {
             <div class="mt-4">
               <Conditions character={character()} />
             </div>
+            <Show when={character().provider === 'dnd2024'}>
+              <div class="mt-4">
+                <Dnd2024WildShapes character={character()} onReplaceCharacter={props.onReplaceCharacter} />
+              </div>
+            </Show>
           </div>
           <div class="mt-4 emd:mt-0 flex-1">
             <Dnd5Skills character={character()} openDiceRoll={openDiceRoll} onReplaceCharacter={props.onReplaceCharacter} />

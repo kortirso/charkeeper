@@ -76,6 +76,7 @@ module CharactersContext
             required(:file_name).filled(:string)
           end
           optional(:avatar_url).filled(:string)
+          optional(:selected_beastforms).maybe(:array).each(:string)
           optional(:beastform).maybe(Beastforms)
           optional(:conditions).maybe(:array).each(:string)
         end
