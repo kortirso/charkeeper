@@ -11,6 +11,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Modified
 - domain cards rendering for mobile screens
 - mobile styles for dice rolls block
+- rendering natural value as first element for Daggerjeart characters
 
 ### Fixed
 - calculating Daggerheart armor score
