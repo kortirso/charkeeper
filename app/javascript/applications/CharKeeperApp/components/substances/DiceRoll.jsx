@@ -52,6 +52,15 @@ export const createDiceRoll = () => {
       });
     },
     DiceRoll(props) {
+      const resetDices = () => {
+        batch(() => {
+          setIsOpen(undefined);
+          setRollResult(undefined);
+          setDices([]);
+          setAdvantage(0);
+        });
+      }
+
       const updateAdvantage = (advantageModifier) => {
         if (props.provider === 'dnd' || props.provider === 'daggerheart') {
           if (advantage() + advantageModifier > 1 || advantage() + advantageModifier < -1) return;
@@ -162,13 +171,13 @@ export const createDiceRoll = () => {
       return (
         <Portal>
           <div
-            class="fixed bottom-6 right-6 z-40 flex items-center justify-center"
+            class="fixed bottom-0 right-0 px-6 pb-6 sm:pr-6 z-40 flex items-center justify-end sm:justify-center w-full sm:w-auto"
             classList={{ 'dark': appState.colorSchema === 'dark' }}
             use:clickOutside={() => setIsOpen(undefined)}
           >
-            <div class="flex items-end">
+            <div class="flex-1 flex flex-col sm:flex-row items-end">
               <Show when={isOpen() === 'botCommand'}>
-                <div class="p-4 blockable w-xs">
+                <div class="p-4 blockable w-full sm:w-xs">
                   <div class="flex flex-wrap items-center gap-2">
                     <Switch>
                       <Match when={props.provider === 'dnd'}>
@@ -314,7 +323,7 @@ export const createDiceRoll = () => {
                 </div>
               </Show>
               <Show when={isOpen() === 'rollCommand' && dices().length > 0}>
-                <div class="p-4 blockable w-xs">
+                <div class="mb-2 sm:mb-0 p-4 blockable w-full sm:w-xs">
                   <div class="flex items-center flex-wrap gap-2">
                     <For each={dices()}>
                       {(dice, index) =>
@@ -345,23 +354,22 @@ export const createDiceRoll = () => {
                 </div>
               </Show>
               <Show when={isOpen() !== 'botCommand'}>
-                <div class="ml-4 blockable">
+                <div
+                  class="blockable p-2 flex justify-between sm:flex-col sm:gap-2 sm:ml-4"
+                  classList={{ 'w-full sm:w-auto': isOpen() }}
+                >
                   <Show when={isOpen()}>
-                    <div class="grid grid-cols-1 gap-y-2 p-2">
-                      <Dice onClick={() => addDice('D4')} text="D4" />
-                      <Dice onClick={() => addDice('D6')} text="D6" />
-                      <Dice onClick={() => addDice('D8')} text="D8" />
-                      <Dice onClick={() => addDice('D12')} text="D12" />
-                      <Dice onClick={() => addDice('D20')} text="D20" />
-                      <Dice onClick={() => addDice('D100')} text="D100" />
-                    </div>
+                    <Dice onClick={() => addDice('D4')} text="D4" />
+                    <Dice onClick={() => addDice('D6')} text="D6" />
+                    <Dice onClick={() => addDice('D8')} text="D8" />
+                    <Dice onClick={() => addDice('D12')} text="D12" />
+                    <Dice onClick={() => addDice('D20')} text="D20" />
+                    <Dice onClick={() => addDice('D100')} text="D100" />
                   </Show>
-                  <div class="p-2">
-                    <Dice
-                      onClick={() => isOpen() ? setIsOpen(undefined) : setIsOpen('rollCommand')}
-                      text={isOpen() ? <Close /> : 'D20'}
-                    />
-                  </div>
+                  <Dice
+                    onClick={() => isOpen() ? resetDices() : setIsOpen('rollCommand')}
+                    text={isOpen() ? <Close /> : 'D20'}
+                  />
                 </div>
               </Show>
             </div>
