@@ -1,8 +1,10 @@
 {
   "wolf": {
     "tier": 0.25,
-    "abilities": { "str": 14, "agi": 15, "con": 12, "wis": 12 },
+    "abilities": { "str": 14, "agi": 15, "con": 12 },
+    "saves": { "str": 2, "agi": 2, "con": 1, "int": -4, "wis": 1, "cha": -2 },
     "ac": 12,
+    "initiative": 2,
     "speed": 40,
     "darkvision": 60,
     "perception": 15,
@@ -10,7 +12,10 @@
     "attacks": [
       {
         "name": { "en": "Bite", "ru": "Укус" },
+        "type": "melee",
+        "attack_bonus": 2,
         "damage": "1d6",
+        "damage_bonus": 0,
         "damage_type": "pierce",
         "tooltips": [
           {

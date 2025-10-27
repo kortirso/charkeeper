@@ -7,14 +7,16 @@ module Dnd2024
                :attacks, :features, :selected_features, :resistances, :death_saving_throws, :health, :energy, :spent_hit_dice,
                :spent_spell_slots, :coins, :load, :languages, :tools, :music, :weapon_core_skills, :weapon_skills,
                :armor_proficiency, :spell_classes, :spells_slots, :static_spells, :created_at, :avatar, :selected_feats,
-               :darkvision, :modified_abilities, :available_spell_level, :formatted_static_spells, :conditions
+               :darkvision, :modified_abilities, :available_spell_level, :formatted_static_spells, :conditions,
+               :selected_beastforms, :beastform
 
     delegate :id, :name, :level, :species, :legacy, :main_class, :classes, :subclasses, :abilities, :skills,
              :modifiers, :save_dc, :proficiency_bonus, :hit_dice, :armor_class, :initiative, :speed, :attacks_per_action,
              :attacks, :features, :selected_features, :resistances, :death_saving_throws, :health, :energy, :spent_hit_dice,
              :spent_spell_slots, :coins, :load, :languages, :tools, :music, :weapon_core_skills, :weapon_skills,
              :armor_proficiency, :spell_classes, :spells_slots, :static_spells, :selected_feats, :darkvision,
-             :modified_abilities, :available_spell_level, :formatted_static_spells, to: :decorator
+             :modified_abilities, :available_spell_level, :formatted_static_spells, :selected_beastforms, :beastform,
+             to: :decorator
     delegate :created_at, to: :object
 
     def provider

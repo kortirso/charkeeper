@@ -112,7 +112,12 @@
     },
     "druid": {
       "name": { "en": "Druid", "ru": "Друид" },
-      "subclasses": {}
+      "subclasses": {
+        "circle_of_the_land": { "name": { "en": "Circle of the Land", "ru": "Круг земли" } },
+        "circle_of_the_moon": { "name": { "en": "Circle of the Moon", "ru": "Круг луны" } },
+        "circle_of_the_sea": { "name": { "en": "Circle of the Sea", "ru": "Круг моря" } },
+        "circle_of_the_stars": { "name": { "en": "Circle of the Stars", "ru": "Круг звёзд" } }
+      }
     },
     "fighter": {
       "name": { "en": "Fighter", "ru": "Воин" },

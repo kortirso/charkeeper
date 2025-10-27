@@ -9,7 +9,8 @@ module Dnd2024Character
     delegate :species, :legacy, :main_class, :classes, :subclasses, :level, :languages, :health, :abilities,
              :selected_features, :resistance, :immunity, :vulnerability, :energy, :coins, :darkvision,
              :weapon_core_skills, :weapon_skills, :armor_proficiency, :music, :spent_spell_slots, :conditions,
-             :hit_dice, :spent_hit_dice, :death_saving_throws, :selected_feats, :beastform, :background, to: :data
+             :hit_dice, :spent_hit_dice, :death_saving_throws, :selected_feats, :beastform, :background, :selected_beastforms,
+             to: :data
 
     def parent = __getobj__
     def method_missing(_method, *args); end
@@ -24,9 +25,8 @@ module Dnd2024Character
 
     def modified_abilities
       @modified_abilities ||=
-        abilities.merge(
-          *[*bonuses.pluck('abilities')].compact
-        ) { |_key, oldval, newval| newval + oldval }
+        (beastform.blank? ? abilities : with_beastform_abilities)
+          .merge(*[*bonuses.pluck('abilities')].compact) { |_key, oldval, newval| newval + oldval }
     end
 
     def skills
@@ -60,7 +60,12 @@ module Dnd2024Character
     end
 
     def save_dc
-      @save_dc ||= modifiers.clone
+      @save_dc ||=
+        if beastform.blank?
+          modifiers.clone
+        else
+          modifiers.clone.merge(beastform_config['saves']) { |_key, oldval, newval| [newval, oldval].max }
+        end
     end
 
     def defense_gear
@@ -68,7 +73,8 @@ module Dnd2024Character
     end
 
     def armor_class
-      @armor_class ||= calc_armor_class + sum(bonuses.pluck('armor_class'))
+      @armor_class ||=
+        beastform.blank? ? (calc_armor_class + sum(bonuses.pluck('armor_class'))) : beastform_config['ac']
     end
 
     def initiative
@@ -101,22 +107,29 @@ module Dnd2024Character
 
     private
 
+    def with_beastform_abilities
+      abilities.merge(beastform_config['abilities']) { |_key, oldval, newval| [newval, oldval].max }
+    end
+
     def calc_ability_modifier(value)
       (value / 2) - 5
     end
 
     def skill_payload(slug, ability)
       level = selected_skills[slug].to_i
+      level = 1 if level.zero? && beastform.present? && beastform_config.dig('skills', slug)
+
+      modifier = [modifiers[ability] + (level * proficiency_bonus), beastform_config&.dig('skills', slug)].compact.max
+
       {
         slug: slug,
         ability: ability,
-        modifier: modifiers[ability] + (level * proficiency_bonus),
+        modifier: modifier,
         level: level,
         selected: level.positive?
       }
     end
 
-    # rubocop: disable Metrics/AbcSize
     def beastform_attacks
       beastform_config['attacks'].map do |beast_attack|
         {
@@ -125,15 +138,15 @@ module Dnd2024Character
           action_type: 'action',
           hands: 2,
           melee_distance: 5,
-          attack_bonus: modifiers['str'] + proficiency_bonus,
+          attack_bonus: beast_attack['attack_bonus'] + proficiency_bonus,
           damage: beast_attack['damage'],
-          damage_bonus: modifiers['str'],
+          damage_bonus: beast_attack['damage_bonus'],
           damage_type: beast_attack['damage_type'],
-          tooltips: beast_attack['tooltips'].map { |item| item[I18n.locale.to_s] }
+          tooltips: [],
+          notes: beast_attack['tooltips'].map { |item| item[I18n.locale.to_s] }.join('; ')
         }
       end
     end
-    # rubocop: enable Metrics/AbcSize
 
     def unarmed_attack
       {
@@ -153,8 +166,6 @@ module Dnd2024Character
     end
 
     def calc_armor_class # rubocop: disable Metrics/AbcSize
-      return beastform_config['ac'] if beastform
-
       equiped_armor = defense_gear[:armor]
       equiped_shield = defense_gear[:shield]
       return 10 + modifiers['dex'] + equiped_shield&.dig(:items_info, 'ac').to_i if equiped_armor.nil?
