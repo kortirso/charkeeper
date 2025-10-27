@@ -9,6 +9,9 @@ export const DomainCardsTable = (props) => {
   return (
     <div class="blockable p-4 mb-2">
       <h2 class="text-lg dark:text-snow">{props.title}</h2>
+      <Show when={props.subtitle}>
+        <p class="text-sm dark:text-snow">{props.subtitle}</p>
+      </Show>
       <Show when={spells().length > 0}>
         <table class="w-full table table-top first-column-full-width">
           <thead>
@@ -29,7 +32,7 @@ export const DomainCardsTable = (props) => {
                     </Show>
                   </td>
                   <td class="py-1">
-                    <div class="flex items-center">
+                    <div class="flex flex-col flex-col-reverse md:flex-row items-center gap-y-4 gap-x-2">
                       <Switch>
                         <Match when={spell.ready_to_use}>
                           <Button default size="small" onClick={() => props.onUpdateCharacterSpell(spell, { character_spell: { ready_to_use: false } })}>
@@ -42,7 +45,7 @@ export const DomainCardsTable = (props) => {
                           </Button>
                         </Match>
                       </Switch>
-                      <Button default size="small" classList="ml-4" onClick={() => props.onRemoveCharacterSpell(spell)}>
+                      <Button default size="small" onClick={() => props.onRemoveCharacterSpell(spell)}>
                         <Close />
                       </Button>
                     </div>

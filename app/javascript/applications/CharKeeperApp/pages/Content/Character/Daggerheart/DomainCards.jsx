@@ -213,7 +213,6 @@ export const DaggerheartDomainCards = (props) => {
             <StatsBlock
               items={[
                 { title: t('daggerheart.domainCards.limit'), value: character().domain_cards_max },
-                { title: TRANSLATION[locale()]['loadoutLimit'], value: 5 },
                 { title: t('daggerheart.domainCards.spellcastTraits'), value: renderSpellcastTraits(character().spellcast_traits) }
               ]}
             />
@@ -222,6 +221,7 @@ export const DaggerheartDomainCards = (props) => {
             </Button>
             <DomainCardsTable
               title={t('daggerheart.domainCards.loadout')}
+              subtitle={`${TRANSLATION[locale()]['loadoutLimit']} - 5`}
               spells={characterSpells().filter((spell) => spell.ready_to_use)}
               onChangeSpell={changeSpell}
               onUpdateCharacterSpell={updateCharacterSpell}
