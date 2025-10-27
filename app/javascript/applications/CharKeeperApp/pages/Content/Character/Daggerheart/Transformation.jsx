@@ -15,10 +15,8 @@ export const DaggerheartTransform = (props) => {
   const t = i18n.translator(dict);
 
   const transformationsSelect = createMemo(() => {
-    const result = Object.entries(character().transformations).map(([key, values]) => [key, values.name[locale()]])
-    result.push(['none', t('daggerheart.transformation.naturalForm')]);
-
-    return Object.fromEntries(result);
+    const result = Object.entries(character().transformations).map(([key, values]) => [key, values.name[locale()]]);
+    return Object.fromEntries([['none', t('daggerheart.transformation.naturalForm')]].concat(result));
   });
 
   const changeTransformation = async (value) => {

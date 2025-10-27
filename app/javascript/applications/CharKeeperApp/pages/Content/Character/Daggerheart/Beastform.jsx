@@ -17,9 +17,7 @@ export const DaggerheartBeastform = (props) => {
 
   const beastformsSelect = createMemo(() => {
     const result = Object.entries(config.beastforms).filter(([, values]) => values.tier <= character().tier).map(([key, values]) => [key, `${values.name[locale()]} T${values.tier}`])
-    result.push(['none', t('daggerheart.beast.naturalForm')]);
-
-    return Object.fromEntries(result);
+    return Object.fromEntries([['none', t('daggerheart.beast.naturalForm')]].concat(result));
   });
 
   const changeBeastform = async (value) => {
