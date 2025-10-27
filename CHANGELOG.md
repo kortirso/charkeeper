@@ -8,6 +8,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Added
 - druid wild shapes for D&D 2024 characters
 
+### Modified
+- domain cards rendering for mobile screens
+
 ### Fixed
 - calculating Daggerheart armor score
 - changing D&D character spells
