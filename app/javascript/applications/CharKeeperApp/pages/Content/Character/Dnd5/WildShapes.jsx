@@ -1,4 +1,4 @@
-import { createSignal, createMemo, Show } from 'solid-js';
+import { createSignal, createMemo } from 'solid-js';
 
 import { Select, ErrorWrapper, GuideWrapper } from '../../../../components';
 import config from '../../../../data/dnd2024.json';
@@ -62,26 +62,24 @@ export const Dnd2024WildShapes = (props) => {
   return (
     <ErrorWrapper payload={{ character_id: character().id, key: 'Dnd2024Beastforms' }}>
       <GuideWrapper character={character()}>
-        <Show when={Object.keys(character().classes).includes('druid')}>
-          <div class="blockable p-4">
-            <h2 class="text-lg mb-2 dark:text-snow">{TRANSLATION[locale()]['beastforms']}</h2>
-            <Select
-              multi
-              containerClassList="w-full"
-              labelText={TRANSLATION[locale()]['selectedBeastforms']}
-              items={availableBeastforms()}
-              selectedValues={selectedBeastforms()}
-              onSelect={(value) => updateMultiFeatureValue(value)}
-            />
-            <Select
-              containerClassList="mt-2 w-full"
-              labelText={TRANSLATION[locale()]['activeBeastform']}
-              items={beastformsSelect()}
-              selectedValue={character().beastform}
-              onSelect={(value) => updateCharacter({ beastform: value === 'null' ? null : value })}
-            />
-          </div>
-        </Show>
+        <div class="blockable p-4">
+          <h2 class="text-lg mb-2 dark:text-snow">{TRANSLATION[locale()]['beastforms']}</h2>
+          <Select
+            multi
+            containerClassList="w-full"
+            labelText={TRANSLATION[locale()]['selectedBeastforms']}
+            items={availableBeastforms()}
+            selectedValues={selectedBeastforms()}
+            onSelect={(value) => updateMultiFeatureValue(value)}
+          />
+          <Select
+            containerClassList="mt-2 w-full"
+            labelText={TRANSLATION[locale()]['activeBeastform']}
+            items={beastformsSelect()}
+            selectedValue={character().beastform}
+            onSelect={(value) => updateCharacter({ beastform: value === 'null' ? null : value })}
+          />
+        </div>
       </GuideWrapper>
     </ErrorWrapper>
   );
