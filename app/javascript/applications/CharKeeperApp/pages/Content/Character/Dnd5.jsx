@@ -7,7 +7,7 @@ import {
   Dnd5Proficiency, Dnd2024WildShapes
 } from '../../../pages';
 import {
-  CharacterNavigation, Equipment, Notes, Avatar, ContentWrapper, Feats, Bonuses, createDiceRoll, Conditions
+  CharacterNavigation, Equipment, Notes, Avatar, ContentWrapper, Feats, Bonuses, createDiceRoll, Conditions, Combat
 } from '../../../components';
 import { useAppState, useAppLocale } from '../../../context';
 import { updateCharacterRequest } from '../../../requests/updateCharacterRequest';
@@ -130,6 +130,13 @@ export const Dnd5 = (props) => {
                 onRefreshCharacter={refreshCharacter}
                 onReplaceCharacter={props.onReplaceCharacter}
               />
+              <div class="mt-4">
+                <Combat
+                  character={character()}
+                  openDiceRoll={openDiceRoll}
+                  onReplaceCharacter={props.onReplaceCharacter}
+                />
+              </div>
             </Match>
             <Match when={activeMobileTab() === 'rest'}>
               <Dnd5Rest character={character()} onReplaceCharacter={props.onReplaceCharacter} />
@@ -231,6 +238,13 @@ export const Dnd5 = (props) => {
                 onRefreshCharacter={refreshCharacter}
                 onReplaceCharacter={props.onReplaceCharacter}
               />
+              <div class="mt-4">
+                <Combat
+                  character={character()}
+                  openDiceRoll={openDiceRoll}
+                  onReplaceCharacter={props.onReplaceCharacter}
+                />
+              </div>
               <div class="mt-4">
                 <Feats
                   character={character()}

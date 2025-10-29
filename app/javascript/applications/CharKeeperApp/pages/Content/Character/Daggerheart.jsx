@@ -3,12 +3,12 @@ import * as i18n from '@solid-primitives/i18n';
 import { createWindowSize } from '@solid-primitives/resize-observer';
 
 import {
-  DaggerheartTraits, DaggerheartStatic, DaggerheartHealth, DaggerheartCombat, DaggerheartBeastform, DaggerheartCompanion,
+  DaggerheartTraits, DaggerheartStatic, DaggerheartHealth, DaggerheartBeastform, DaggerheartCompanion,
   DaggerheartDomainCards, DaggerheartRest, DaggerheartLeveling, DaggerheartExperience, DaggerheartGold, DaggerheartTransform,
   DaggerheartStances
 } from '../../../pages';
 import {
-  CharacterNavigation, Equipment, Bonuses, Notes, Avatar, ContentWrapper, Feats, createDiceRoll, Conditions
+  CharacterNavigation, Equipment, Bonuses, Notes, Avatar, ContentWrapper, Feats, createDiceRoll, Conditions, Combat
 } from '../../../components';
 import { useAppLocale } from '../../../context';
 
@@ -135,7 +135,7 @@ export const Daggerheart = (props) => {
                 <DaggerheartHealth character={character()} onReplaceCharacter={props.onReplaceCharacter} />
               </div>
               <div class="mt-4">
-                <DaggerheartCombat
+                <Combat
                   character={character()}
                   openDiceRoll={openDiceRoll}
                   onReplaceCharacter={props.onReplaceCharacter}
@@ -277,7 +277,7 @@ export const Daggerheart = (props) => {
             <Match when={activeTab() === 'combat'}>
               <DaggerheartHealth character={character()} onReplaceCharacter={props.onReplaceCharacter} />
               <div class="mt-4">
-                <DaggerheartCombat
+                <Combat
                   character={character()}
                   openDiceRoll={openDiceRoll}
                   onReplaceCharacter={props.onReplaceCharacter}

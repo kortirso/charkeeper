@@ -27,5 +27,6 @@ export * from './substances/Equipment';
 export * from './substances/Feats';
 export * from './substances/DiceRoll';
 export * from './substances/Conditions';
+export * from './substances/Combat';
 
 export * from './wrappers/Guide';

@@ -74,13 +74,11 @@ module Dnd2024Character
           next if attack[:kind] == 'martial' && attack[:caption].exclude?('light')
 
           attack[:attack_bonus] = key_ability_bonus + proficiency_bonus
-          attack[:damage_bonus] = key_ability_bonus if attack[:action_type] == 'action'
+          attack[:damage_bonus] = key_ability_bonus
           attack[:damage] = "1d#{[attack[:damage].split('d')[-1].to_i, ((((class_level + 1) / 6) + 2) * 2) + 2].max}"
           attack[:tooltips] = attack[:tooltips].push('monk').uniq
+          attack[:tags] = attack[:tags].merge('monk' => I18n.t('tags.dnd.weapon.title.monk'))
         end
-        unarmed_attack = result.find { |attack| attack[:kind] == 'unarmed' && attack[:action_type] == 'action' }
-        result << unarmed_attack.merge({ action_type: 'bonus action', tooltips: ['flurry_of_blows'], damage_bonus: 0 })
-        result << unarmed_attack.merge({ action_type: 'bonus action', tooltips: ['martial_arts'], damage_bonus: 0 })
         result
       end
       # rubocop: enable Metrics/AbcSize

@@ -1,9 +1,7 @@
-import { createSignal, createEffect, For, Show, batch } from 'solid-js';
+import { createSignal, createEffect, For, batch } from 'solid-js';
 import * as i18n from '@solid-primitives/i18n';
 
-import {
-  createModal, StatsBlock, ErrorWrapper, Input, Toggle, Checkbox, Button, Dice
-} from '../../../../components';
+import { createModal, StatsBlock, ErrorWrapper, Input, Toggle, Checkbox, Button } from '../../../../components';
 import { useAppState, useAppLocale } from '../../../../context';
 import { updateCharacterRequest } from '../../../../requests/updateCharacterRequest';
 import { createCharacterHealthRequest } from '../../../../requests/createCharacterHealthRequest';
@@ -103,62 +101,6 @@ export const Dnd5Combat = (props) => {
         closeModal();
       });
     }
-  }
-
-  // rendering
-  const renderAttacksBox = (title, values) => {
-    if (values.length === 0) return <></>;
-
-    return (
-      <div class="p-4 blockable mb-2">
-        <h2 class="text-lg mb-2 dark:text-snow">{title}</h2>
-        <table class="w-full table first-column-full-width">
-          <thead>
-            <tr>
-              <td />
-              <td class="text-center dark:text-snow">{t('combat.table.bonus')}</td>
-              <td class="text-center dark:text-snow">{t('combat.table.damage')}</td>
-              <td class="text-center dark:text-snow">{t('combat.table.distance')}</td>
-            </tr>
-          </thead>
-          <tbody>
-            <For each={values}>
-              {(attack) =>
-                <tr>
-                  <td class="py-1 dark:text-snow">
-                    <p class="">{attack.name}</p>
-                    <Show when={attack.tooltips.length > 0}>
-                      <p class="text-xs">
-                        {attack.tooltips.map((item) => t(`attack.tooltips.${item}`)).join(', ')}
-                      </p>
-                    </Show>
-                    <Show when={attack.notes}>
-                      <p class="text-xs">{attack.notes}</p>
-                    </Show>
-                  </td>
-                  <td class="py-1 text-center">
-                    <Dice
-                      width="28"
-                      height="28"
-                      text={modifier(attack.attack_bonus)}
-                      onClick={() => props.openDiceRoll(`/check attack ${attack.name}`, attack.attack_bonus)}
-                    />
-                  </td>
-                  <td class="py-1 text-center dark:text-snow">
-                    <p>{attack.damage}{attack.damage_bonus > 0 ? modifier(attack.damage_bonus) : ''}</p>
-                    <p class="text-xs">{t(`weaponDamageType.${attack.damage_type}`)}</p>
-                  </td>
-                  <td class="py-1 text-center dark:text-snow">
-                    <Show when={attack.melee_distance}><p>{attack.melee_distance}</p></Show>
-                    <Show when={attack.range_distance}><p>{attack.range_distance}</p></Show>
-                  </td>
-                </tr>
-              }
-            </For>
-          </tbody>
-        </table>
-      </div>
-    );
   }
 
   return (
@@ -279,8 +221,6 @@ export const Dnd5Combat = (props) => {
           </tbody>
         </table>
       </Toggle>
-      {renderAttacksBox(`${t('terms.attackAction')} - ${character().attacks_per_action}`, character().attacks.filter((item) => item.action_type === 'action'))}
-      {renderAttacksBox(`${t('terms.attackBonusAction')} - 1`, character().attacks.filter((item) => item.action_type === 'bonus action'))}
       <Modal>
         <div class="flex flex-col">
           <For each={['max', 'temp']}>

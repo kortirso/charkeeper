@@ -33,7 +33,8 @@ module Dc20Character
         features: [],
         features_text: [],
         notes: [],
-        ready_to_use: true
+        ready_to_use: true,
+        tags: { 'b' => I18n.t('tags.dc20.weapon.title.b') }
       }
     end
 
@@ -49,7 +50,8 @@ module Dc20Character
         features: [],
         features_text: [],
         notes: [],
-        ready_to_use: true
+        ready_to_use: true,
+        tags: { 'b' => I18n.t('tags.dc20.weapon.title.b') }
       }
     end
 
@@ -63,11 +65,15 @@ module Dc20Character
         damage_types: item.dig(:items_info, 'damage_types'),
         features: item.dig(:items_info, 'features'),
         notes: item[:notes] || [],
-        ready_to_use: item[:state] ? item[:state].in?(::Character::Item::HANDS) : true
+        ready_to_use: item[:state] ? item[:state].in?(::Character::Item::HANDS) : true,
+        tags: item.dig(:items_info, 'damage_types').index_with { |type| I18n.t("tags.dc20.weapon.title.#{type}") }
       }
 
       result[:features] += item.dig(:items_info, 'styles') if combat_expertise.include?('weapon')
-      result[:features_text] = result[:features].map { |feature| I18n.t("decorators.dc20.weapon_features.#{feature}") }
+      result[:features_text] = result[:features].map { |feature| I18n.t("tags.dc20.weapon.#{feature}") }
+      result[:tags] =
+        result[:tags].merge(result[:features].index_with { |feature| I18n.t("tags.dc20.weapon.title.#{feature}") })
+
       result
     end
     # rubocop: enable Metrics/AbcSize

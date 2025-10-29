@@ -3,9 +3,11 @@ import * as i18n from '@solid-primitives/i18n';
 import { createWindowSize } from '@solid-primitives/resize-observer';
 
 import {
-  Dc20Abilities, Dc20Skills, Dc20Saves, Dc20CombatStatic, Dc20Combat
+  Dc20Abilities, Dc20Skills, Dc20Saves, Dc20CombatStatic
 } from '../../../pages';
-import { CharacterNavigation, Notes, Avatar, ContentWrapper, createDiceRoll, Conditions, Equipment } from '../../../components';
+import {
+  CharacterNavigation, Notes, Avatar, ContentWrapper, createDiceRoll, Conditions, Equipment, Combat
+} from '../../../components';
 import { useAppLocale } from '../../../context';
 
 export const Dc20 = (props) => {
@@ -64,7 +66,7 @@ export const Dc20 = (props) => {
             <Match when={activeMobileTab() === 'combat'}>
               <Dc20CombatStatic character={character()} openDiceRoll={openDiceRoll} />
               <div class="mt-4">
-                <Dc20Combat
+                <Combat
                   character={character()}
                   openDiceRoll={openDiceRoll}
                   onReplaceCharacter={props.onReplaceCharacter}
@@ -141,7 +143,7 @@ export const Dc20 = (props) => {
             <Match when={activeTab() === 'combat'}>
               <Dc20CombatStatic character={character()} openDiceRoll={openDiceRoll} />
               <div class="mt-4">
-                <Dc20Combat
+                <Combat
                   character={character()}
                   openDiceRoll={openDiceRoll}
                   onReplaceCharacter={props.onReplaceCharacter}

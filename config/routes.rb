@@ -139,6 +139,14 @@ Rails.application.routes.draw do
       resources :characters, only: %i[create update]
     end
 
+    scope ':provider' do
+      namespace :tags do
+        scope ':type' do
+          get ':id', action: :show
+        end
+      end
+    end
+
     namespace :daggerheart do
       resources :characters, only: %i[create update] do
         resources :spells, only: %i[index create update destroy], module: 'characters'

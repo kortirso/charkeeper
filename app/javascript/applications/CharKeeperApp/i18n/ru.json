@@ -283,11 +283,6 @@
     }
   },
   "combat": {
-    "table": {
-      "bonus": "Бонус",
-      "damage": "Урон",
-      "distance": "Дист"
-    },
     "list": {
       "equipment": "Активное снаряжение",
       "backpack": "Рюкзак"
@@ -470,16 +465,8 @@
       "max": "Макс хиты",
       "temp": "Врем хиты"
     },
-    "attackAction": "Атаки за действие",
-    "attackBonusAction": "Атаки за бонус действие",
     "proficiencyBonus": "Бонус мастерства",
     "hitDices": "Кости хитов"
-  },
-  "weaponDamageType": {
-    "2hands": "Двуручная",
-    "bludge": "Дробящий",
-    "pierce": "Колющий",
-    "slash": "Рубящий"
   },
   "damage": {
     "bludge": "Дробящий",
@@ -495,17 +482,6 @@
     "psychic": "Психическая энергия",
     "radiant": "Излучение",
     "thunder": "Звук"
-  },
-  "attack": {
-    "tooltips": {
-      "2handed": "Двуручное",
-      "dual": "Двойное",
-      "heavy": "Тяжёлое",
-      "reload": "Перезарядка",
-      "flurry_of_blows": "Шквал ударов",
-      "monk": "Монашеское",
-      "martial_arts": "Боевые искусства"
-    }
   },
   "dnd": {
     "alignments": {

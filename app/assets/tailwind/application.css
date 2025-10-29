@@ -345,3 +345,8 @@ nav.pagy.nav a.gap {
 .dice-button {
   @apply py-1 px-2 text-center cursor-pointer border border-dusty rounded dark:border-snow dark:text-snow;
 }
+
+.tag {
+  @apply px-1 border rounded bg-white border-gray-500 cursor-pointer;
+  @apply dark:bg-neutral-800 dark:border-neutral-800 dark:text-snow;
+}

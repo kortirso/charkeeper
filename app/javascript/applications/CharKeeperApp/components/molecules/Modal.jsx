@@ -26,7 +26,7 @@ export const createModal = () => {
               class="fixed top-0 left-0 w-full h-full z-40 bg-black/75 flex items-center justify-center"
               classList={{ 'dark': appState.colorSchema === 'dark' }}
             >
-              <div class="modal" use:clickOutside={() => setIsOpen(false)}>
+              <div class={['modal', props.classList || ''].join(' ')} use:clickOutside={() => setIsOpen(false)}>
                 {safeChildren()}
               </div>
             </div>

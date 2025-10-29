@@ -107,28 +107,6 @@ en:
       boosts: "You can improve abilities: %{ability_boosts_text}.\nYou can learn skills: %{skill_boosts_text}"
       free: Free
       int: + Int modifier
-    dc20:
-      weapon_features:
-        Axe: You deal +1 damage against creatures that are Bleeding.
-        Bow: You deal +1 damage against creatures that are Slowed.
-        Chained: Your Attacks ignore Shields and 1/2 Cover, and you deal +1 damage against targets that are wielding a Shield or behind 1/2 Cover.
-        Hammer: You deal +1 damage against creatures that are Dazed or Petrified.
-        Pick: You deal +1 damage against creatures that are Impaired.
-        Spear: You deal +1 damage against a creature if you moved 2 Spaces towards it immediately before making the Attack or if it is on a Mount. Additionally, you do not have DisADV on Attack Checks made using the weapon as a result of being underwater.
-        Staff: You deal +1 damage against creatures that are Hindered.
-        Sword: You deal +1 damage against creatures that are Exposed.
-        Ammo: You can load a weapon as part of an Attack made with it.
-        Concealable: Drawing the weapon doesn't provoke Opportunity Attacks. If you draw the weapon as part of an Attack, you have ADV on the Attack. You can only gain this benefit once against each creature per Combat.
-        Guard: You gain +1 PD while wielding the weapon.
-        Impact: You deal +1 damage on Heavy Hits.
-        Multi-Faceted: You must choose which weapon Style to use. The chosen weapon Style determines the Attack's damage type.
-        Reach: This weapon adds 1 Space to your Melee Range when you Attack with it.
-        Silent: When you make a Ranged Attack with the weapon while Hidden, you remain Unheard by creatures you're Hidden from.
-        Toss: You can throw the weapon to make a Ranged Martial Attack.
-        Thrown: You can throw the weapon to make a Ranged Martial Attack.
-        Two-Handed: The weapon requires 2 hands when you Attack with it.
-        Unwieldy: You have DisADV on Attacks made with the weapon against targets within 1 Space of you.
-        Versatile: This weapon can be wielded with 1 or 2 hands. When you wield the weapon with 2 hands, you gain a +2 bonus to Hit using it.
   frontend:
     homebrews:
       races:
@@ -226,3 +204,86 @@ en:
     subscribe: "You have subscribed to receive project news.\n\nTo unsubscribe, use the /unsubscribe command."
     commands: "You can use various bot commands both in this chat and include the bot in your groups and call commands there.\n\nA full list of commands can be found at https://charkeeper.org/bot_commands"
     help: "If you would like to help develop the app in any way, you can contact us with any questions using the contact information provided, or simply donate to cover expenses via:\n\nBoosty https://boosty.to/kortirso\ncrypto USDT (TRC20 | TRON) TT1T8m3ffwh9f8AVYqLkDB7miuJpAq1ji9"
+  tags:
+    dnd:
+      weapon:
+        ammo: You can use a weapon that has the ammunition properly to make a ranged attack only if you have ammunition to fire from the weapon.
+        2handed: This weapon requires two hands to use.
+        heavy: Small creatures have disadvantage on attack rolls with heavy weapons. 
+        light: A light weapon is small and easy to handle, making it ideal for use when fighting with two weapons.
+        reload: You can fire only one piece of ammunition from it per action.
+        reach: This weapon adds 5 feet to your reach when you attack with it.
+        thrown: You can throw the weapon to make a ranged attack.
+        versatile: This weapon can be used with one or two hands. Increase dice type for two-handed damage.
+        unwieldy: You have disadvantage on attacks made with the weapon against targets within 5 feet of you.
+        monk: Special monk weapon.
+        bludge: Things that bludgeon you, like a hammer or fist.
+        pierce: Things that pierce you, like an arrow or fangs.
+        slash: Things that slash you, like a blade or claw.
+        title:
+          ammo: Ammo
+          2handed: Two-Handed
+          heavy: Heavy
+          light: Light
+          reload: Loading
+          reach: Reach
+          thrown: Thrown
+          versatile: Versatile
+          unwieldy: Unwieldy
+          monk: Monk
+          bludge: Bludgeoning
+          pierce: Piercing
+          slash: Slashing
+    daggerheart:
+      weapon:
+        physical: Physical
+        magic: Magic
+    dc20:
+      weapon:
+        Axe: You deal +1 situational damage against creatures that are Bleeding.
+        Bow: You deal +1 situational damage against creatures that are Slowed.
+        Chained: Your Attacks ignore Shields and 1/2 Cover, and you deal +1 situational damage against targets that are wielding a Shield or behind 1/2 Cover.
+        Hammer: You deal +1 situational damage against creatures that are Dazed or Petrified.
+        Pick: You deal +1 situational damage against creatures that are Impaired.
+        Spear: You deal +1 situational damage against a creature if you moved 2 Spaces towards it immediately before making the Attack or if it is on a Mount. Additionally, you do not have DisADV on Attack Checks made using the weapon as a result of being underwater.
+        Staff: You deal +1 situational damage against creatures that are Hindered.
+        Sword: You deal +1 situational damage against creatures that are Exposed.
+        Ammo: You can load a weapon as part of an Attack made with it.
+        Concealable: Drawing the weapon doesn't provoke Opportunity Attacks. If you draw the weapon as part of an Attack, you have ADV on the Attack. You can only gain this benefit once against each creature per Combat.
+        Guard: You gain +1 PD while wielding the weapon.
+        Impact: You deal +1 situational damage on Heavy Hits.
+        Multi-Faceted: You must choose which weapon Style to use. The chosen weapon Style determines the Attack's damage type.
+        Reach: This weapon adds 1 Space to your Melee Range when you Attack with it.
+        Silent: When you make a Ranged Attack with the weapon while Hidden, you remain Unheard by creatures you're Hidden from.
+        Toss: You can throw the weapon to make a Ranged Martial Attack.
+        Thrown: You can throw the weapon to make a Ranged Martial Attack.
+        Two-Handed: The weapon requires 2 hands when you Attack with it.
+        Unwieldy: You have DisADV on Attacks made with the weapon against targets within 1 Space of you.
+        Versatile: This weapon can be wielded with 1 or 2 hands. When you wield the weapon with 2 hands, you gain a +2  situational bonus to Hit using it.
+        b: Things that bludgeon you, like a hammer or fist.
+        p: Things that pierce you, like an arrow or fangs.
+        s: Things that slash you, like a blade or claw.
+        title:
+          Axe: Axe
+          Bow: Bow
+          Chained: Chained
+          Hammer: Hammer
+          Pick: Pick
+          Spear: Spear
+          Staff: Staff
+          Sword: Sword
+          Ammo: Ammo
+          Concealable: Concealable
+          Guard: Guard
+          Impact: Impact
+          Multi-Faceted: Multi-Faceted
+          Reach: Reach
+          Silent: Silent
+          Toss: Toss
+          Thrown: Thrown
+          Two-Handed: Two-Handed
+          Unwieldy: Unwieldy
+          Versatile: Versatile
+          b: Bludgeoning
+          p: Piercing
+          s: Slashing
