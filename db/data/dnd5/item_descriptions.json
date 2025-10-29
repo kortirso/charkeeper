@@ -1,6 +1,522 @@
 {
   "acid": {
-    "en": "",
-    "ru": "Когда вы совершаете действие атака, то вы можете заменить 1 из ваших атак на бросок флакона с кислотой. Выберите 1 существо или объект, который вы видите в пределах 20 футов от себя. Цель должна преуспеть в спасброске Ловкости (Сл. 8 + ваш модификатор Ловкости + ваш бонус мастерства), иначе она получит 2к6 урона кислотой."
+    "en": "When you take the Attack action, you can replace one of your attacks with throwing a vial of Acid. Target one creature or object you can see within 20 feet ofyourself. The target must succeed on a Dexterity saving throw (DC 8 plus your Dexterity modifier and Proficiency Bonus) or take 2d6 Acid damage.",
+    "ru": "Когда вы совершаете действие атака, то вы можете заменить 1 из ваших атак на бросок флакона с кислотой. Выберите 1 существо или объект, который вы видите в пределах 20 футов от себя. Цель должна преуспеть в спасброске Ловкости (Сл. 8 + ваш модификатор Ловкости + ваш бонус мастерства), иначе она получит 2d6 урона кислотой."
+  },
+  "alchemist_fire": {
+    "en": "When you take the Attack action, you can replace one of your attacks with throwing a flask of Alchemist's Fire. Target one creature or object you can see within 20 feet of yourself. The target must succeed on a Dexterity saving throw (DC 8 plus your Dexterity modifier and Proficiency Bonus) or take 1d4 Fire damage and start burning (see the rules glossary).",
+    "ru": "Когда вы совершаете действие атака, то вы можете заменить 1 из ваших атак на бросок фляги с алхимическим огнём. Выберите 1 существо или объект, который вы видите в пределах 20 футов от себя. Цель должна преуспеть в спасброске Ловкости (Сл. 8 + ваш моди- фикатор Ловкости + ваш бонус мастерства), иначе она получит 1d4 урона огнём и начнёт гореть (см. глоссарий правил)."
+  },
+  "antitoxin": {
+    "en": "As a Bonus Action, you can drink a vial of Antitoxin to gain Advantage on saving throws to avoid or end the Poisoned condition for 1 hour.",
+    "ru": "Бонусным действием вы можете выпить флакон противоядия, чтобы получить в течение 1 часа преимущество на спасброски для избежания или снятия состояния отравленный."
+  },
+  "backpack": {
+    "en": "A Backpack holds up to 30 pounds within 1 cubic foot. It can also serve as a saddlebag.",
+    "ru": "Рюкзак вмещает до 30 фунтов в объёме 1 кубического фута. Также может использоваться как седельная сумка."
+  },
+  "ball_bearings": {
+    "en": "As a Utilize action, you can spill Ball Bearings from their pouch. They spread to cover a level, 10-foot-square area within 10 feet of yourself. A creature that enters this area for the first time on a turn must succeed on a DC 10 Dexterity saving throw or have the Prone condition. It takes 10 minutes to recover the Ball Bearings.",
+    "ru": "При использовании действия использование, вы можете высыпать шарики из их мешочка. Они покрывают ровную площадь 10 на 10 футов в пределах 10 футов от вас. Существо, которое впервые за ход входит на эту местность, должно преуспеть в спасброске Ловкости со Сл. 10 или при провале получит состояние лежащий ничком. На сбор шариков требуется 10 минут."
+  },
+  "barrel": {
+    "en": "A Barrel holds up to 40 gallons of liquid or up to 4 cubic feet of dry goods.",
+    "ru": "Бочка вмещает до 40 галлонов жидкости или до 4 кубических футов сухих продуктов."
+  },
+  "basket": {
+    "en": "A Basket holds up to 40 pounds within 2 cubic feet.",
+    "ru": "Корзина вмещает до 40 фунтов в объёме 2 кубических фута."
+  },
+  "bedroll": {
+    "en": "A Bedroll sleeps one Small or Medium creature. While in a Bedroll, you automatically succeed on saving throws against extreme cold (see the Dungeon Master's Guide).",
+    "ru": "Спальник рассчитан на 1 существо маленького или среднего размера. Находясь в спальнике, вы автоматически преуспеваете в спасбросках против экстремального холода (см. Руководство Мастера)."
+  },
+  "bell": {
+    "en": "When rung as a Utilize action, a Bell produces a sound that can be heard up to 60 feet away.",
+    "ru": "Когда колокольчик звенит в качестве действия использование его звук слышен на расстоянии до 60 футов."
+  },
+  "blanket": {
+    "en": "While wrapped in a blanket, you have Advantage on saving throws against extreme cold (see the Dungeon Master's Guide).",
+    "ru": "Будучи завёрнутым в одеяло вы получаете преимущество на спасброски против экстремального холода (см. Руководство Мастера)."
+  },
+  "block_tackle": {
+    "en": "A Block and Tackle allows you to hoist up to four times the weight you can normally lift.",
+    "ru": "Блок и лебёдка позволяют поднимать груз, в 4 раза превышающий ваш обычный лимит."
+  },
+  "book": {
+    "en": "A Book contains fiction or nonfiction. If you consult an accurate nonfiction Book about its topic, you gain a +5 bonus to Intelligence (Arcana, History, Nature, or Religion) checks you make about that topic.",
+    "ru": "Книга содержит художественные или научно-популярные тексты. Если вы используете достоверную научно-популярную книгу по соответствующей теме, то вы получаете бонус +5 к проверкам Интеллекта (Аркана, История, Природа или Религия), связанным с этой темой."
+  },
+  "bottle_glass": {
+    "en": "A Glass Bottle holds up to 1.5 pints.",
+    "ru": "Стеклянная бутылка вмещает до 1,5 пинт."
+  },
+  "bucket": {
+    "en": "A Bucket holds up to half a cubic foot of contents.",
+    "ru": "Ведро вмещает объём до 0,5 кубического фута."
+  },
+  "burglar_pack": {
+    "en": "A Burglar's Pack contains the following items: Backpack, Ball Bearings, Bell, 10 Candles, Crowbar, Hooded Lantern, 7 flasks of Oil, 5 days of Rations, Rope, Tinderbox, and Waterskin.",
+    "ru": "Набор взломщика содержит следующие предметы: рюкзак, мелкие шарики, колокольчик, 10 свеч, лом, закрытый фонарь, 7 фляг масла, рационы на 5 дней, верёвка, трутница, и бурдюк."
+  },
+  "caltrops": {
+    "en": "As a Utilize action, you can spread Caltrops from their bag to cover a 5-foot-square area within 5 feet ofyourself. A creature that enters this area for the first time on a turn must succeed on a DC 15 Dexterity saving throw or take 1 Piercing damage and have its Speed reduced to Ountil the start of its next turn. It takes 10 minutes to recover the Caltrops.",
+    "ru": "Действием использование, вы можете рассыпать калтропы из мешочка на площадь 5 на 5 футов в пределах 5 футов от себя. Существо, которое впервые за ход входит в эту местность, должно преуспеть в спасброске Ловкости со Сл. 15, иначе получит 1 колющий урон и его скорость будет уменьшена до 0 до начала его следующего хода. На сбор калтропов требуется 10 минут."
+  },
+  "candle": {
+    "en": "For 1 hour, a lit Candle sheds Bright Light in a 5-foot radius and Dim Light for an additional 5 feet.",
+    "ru": "Зажжённая свеча излучает яркий свет в радиусе 5 футов и тусклый свет на дополнительные 5 футов в течение 1 часа."
+  },
+  "case_bolt": {
+    "en": "A Crossbow Bolt Case holds up to 20 Bolts.",
+    "ru": "Футляр для арбалетных болтов вмещает до 20 болтов."
+  },
+  "case_scroll": {
+    "en": "A Map or Scroll Case holds up to 10 sheets of paper or 5 sheets of parchment.",
+    "ru": "Футляр для карт или свитков вмещает до 10 листов бумаги или 5 листов пергамента."
+  },
+  "chain": {
+    "en": "As a Utilize action, you can wrap a Chain around an unwilling creature within 5 feet of yourself that has the Grappled, Incapacitated, or Restrained condition if you succeed on a DC 13 Strength (Athletics) check. If the creature's legs are bound, the creature has the Restrained condition until it escapes. Escaping the Chain requires the creature to make a successful DC 18 Dexterity (Acrobatics) check as an action. Bursting the Chain requires a successful DC 20 Strength (Athletics) check as an action.",
+    "ru": "Действием использование вы можете обернуть цепь вокруг несогласного существа в пределах 5 футов от вас, если у этого существа есть состояние схваченный, недееcпособный или опутанный, и если вам удастся совершить проверку Силы (Атлетика) Сл. 13. Если ноги существа связаны, то оно получает состояние опутанный, пока не освободится. Чтобы освободиться от цепи, существо должно действием успешно совершить проверку Ловкости (Акробатика) со Сл. 18. Чтобы порвать цепь, требуется действием успешная проверка Силы (Атлетика) со Сл. 20."
+  },
+  "chest": {
+    "en": "A Chest holds up to 12 cubic feet of contents.",
+    "ru": "Сундук вмещает до 12 кубических футов."
+  },
+  "climber_kit": {
+    "en": "A Climber 's Kit includes boot tips, gloves, pitons, and a harness. As a Utilize action, you can use the Climber's Kit to anchor yourself; when you do, you can't fall more than 25 feet from the anchor point, and you can't move more than 25 feet from there without undoing the anchor as a Bonus Action.",
+    "ru": "Набор для лазания включает в себя одеваемые на обувь когти, перчатки, крюки и страховочную систему. Действием использование, вы можете использовать набор для лазания, чтобы закрепиться; при этом вы не можете упасть более чем на 25 футов от точки закрепления, и не можете переместиться более чем на 25 футов оттуда, не сняв закрепление бонусным действием."
+  },
+  "clothes_fine": {
+    "en": "Fine Clothes are made of expensive fabrics and adorned with expertly crafted details. Some events and locations admit only people wearing these clothes.",
+    "ru": "Парадная одежда изготовлена из дорогих тканей и украшена искусно выполненными деталями. Некоторые мероприятия и места допускают персонажей, одетых только в такую одежду."
+  },
+  "clothes_traveler": {
+    "en": "Traveler's Clothes are resilient garments designed for travel in various environments.",
+    "ru": "Одежда путешественника — это прочные предметы одежды, предназначенные для путешествий в различных условиях."
+  },
+  "component_pouch": {
+    "en": "A Component Pouch is watertight and filled with compartments that hold all the free Material components of your spells.",
+    "ru": "Мешочек с компонентами водонепроницаемый и заполнен кармашками для всех бесплатных материальных компонентов ваших заклинаний."
+  },
+  "clothes_costume": {
+    "en": "While wearing a Costume, you have Advantage on any ability check you make to impersonate the person or type of person it represents.",
+    "ru": "Когда вы носите костюм, то вы получаете преимущество на любую проверку характеристики, чтобы изобразить персонажа или тип, которого он представляет."
+  },
+  "crowbar": {
+    "en": "Using a Crowbar gives you Advantage on Strength checks where the Crowbar's leverage can be applied.",
+    "ru": "Использование лома даёт вам преимущество на проверки Силы, когда можно применить его как рычаг."
+  },
+  "diplomat_pack": {
+    "en": "A Diplomat's Pack contains the following items: Chest, Fine Clothes, Ink, 5 Ink Pens, Lamp, 2 Map or Scroll Cases, 4 flasks of Oil, 5 sheets of Paper, 5 sheets of Parchment, Perfume, and Tinderbox.",
+    "ru": "Набор дипломата содержит следующие предметы: сундук, парадная одежда, чернила, 5 писчих пера, лампа, 2 футляра для карт или свитков, 4 фляги масла, 5 листов бумаги, 5 листов пергамента, духи и трутница."
+  },
+  "dungeoneer_pack": {
+    "en": "A Dungeoneer's Pack contains the following items: Backpack, Caltrops, Crowbar, 2 flasks of Oil, 10 days of Rations, Rope, Tinderbox, 10 Torches, and Waterskin.",
+    "ru": "Набор исследователя подземелий содержит следующие предметы: рюкзак, калтропы, лом, 2 фляги масла, рационы на 10 дней, верёвка, трутница, 10 факелов и бурдюк."
+  },
+  "entertainer_pack": {
+    "en": "An Entertainer's Pack contains the follow ing items: Backpack, Bedroll, Bell, Bullseye Lantern, 3 Costumes, Mirror, 8 flasks of Oil, 9 days of Rations, Tinderbox, and Waterskin.",
+    "ru": "Набор артиста содержит следующие предметы: рюкзак, спальник, колокольчик, направленный фонарь, 3 костюма, зеркало, 8 фляг масла, рационы на 9 дней, трутница и бурдюк."
+  },
+  "explorer_pack": {
+    "en": "An Explorer's Pack contains the following items: Backpack, Bedroll, 2 flasks of Oil, 10 days of Rations, Rope, Tinderbox,10 Torches, and Waterskin.",
+    "ru": "Набор путешественника содержит следующие предметы: рюкзак, спальник, 2 фляги масла, рационы на 10 дней, верёвка, трутница, 10 факелов и бурдюк."
+  },
+  "flask": {
+    "en": "A Flask holds up to 1 pint.",
+    "ru": "Фляга вмещает до 1 пинты."
+  },
+  "grappling_hook": {
+    "en": "As a Utilize action, you can throw the Grappling Hook at a railing, a ledge, or another catch within 5O feet of yourself, and the hook catches on if you succeed on a DC 13 Dexterity (Acrobatics) check. If you tied a Rope to the hook, you can then climb it.",
+    "ru": "Действием использование вы можете бросить крюк-кошку на перила, выступ или другой зацеп в пределах 50 футов от себя. Крюк зацепится, если вы успешно пройдёте проверку Ловкости (Акробатика) со Сл. 13. Если вы привязали верёвку к крюку, то вы сможете по ней взобраться."
+  },
+  "healer_kit": {
+    "en": "A Healer's Kit has ten uses. As a Utilize action, you can expend one of its uses to stabilize an Unconscious creature that has O Hit Points without needing to make a Wisdom (Medicine) check.",
+    "ru": "Комплект целителя имеет 10 использований. Действием использование вы можете израсходовать 1 его использование, чтобы стабилизировать бессознательное существо с 0 хитов, не проводя проверку Мудрости (Медицина)."
+  },
+  "holy_water": {
+    "en": "When you take the Attack action, you can replace one of your attacks with throwing a flask of Holy Water. Target one creature you can see within 20 feet of yourself. The target must succeed on a Dexterity saving throw (DC 8 plus your Dexterity modifier and Proficiency Bonus) or take 2d8 Radiant damage if it is a Fiend or an Undead.",
+    "ru": "Когда вы выполняете действие атака, то вы можете заменить 1 из ваших атак броском фляги со святой водой. Выберите 1 существо, которое вы видите в пределах 20 футов от вас. Цель должна преуспеть в спасброске Ловкости (Сл. 8 + ваш модификатор Ловкости + ваш бонус мастерства) или при провале цель получит 2d8 урона излучением, если это исчадие или нежить."
+  },
+  "hunting_trap": {
+    "en": "As a Utilize action, you can set a Hunting Trap, which is a sawtooth steel ring that snaps shut when a creature steps on a pressure plate in the center. The trap is affixed by a heavy chain to an immobile object, such as a tree or a spike driven into the ground. A creature that steps on the plate must succeed on a DC 13 Dexterity saving throw or take 1d4 Piercing damage and have its Speed reduced to 0 until the start of its next turn. Thereafter, until the creature breaks free of the trap, its movement is limited by the length of the chain (typically 3 feet). A creature can use its action to make a DC 13 Strength (Athletics) check, freeing itself or another creature within its reach on a success. Each failed check deals 1 Piercing damage to the trapped creature.",
+    "ru": "Действием использование вы можете установить охотничий капкан, который представляет собой стальное кольцо с зубцами, захлопывающееся, когда существо наступает на нажимную пластину в центре. Ловушка прикреплена тяжёлой цепью к неподвижному объекту, такому как дерево или вбитый в землю кол. Существо, наступившее на пластину, должно преуспеть в спасброске Ловкости со Сл. 13, иначе оно получит 1d4 колющего урона, и его скорость будет снижена до 0 до начала его следующего хода. Далее, до тех пор, пока существо не освободится из ловушки, его перемещение ограничено длиной цепи (обычно 3 фута). Существо может использовать своё действие, чтобы совершить проверку Силы (Атлетика) со Сл. 13, освобождая себя или другое существо в пределах своей досягаемости при успехе. Каждая неудачная проверка наносит 1 колющий урон пойманному существу."
+  },
+  "ink": {
+    "en": "Ink comes in a 1-ounce bottle, which provides enough ink to write about 500 pages.",
+    "ru": "Чернила поставляются в бутылочке объёмом 1 унция, чего достаточно для написания примерно 500 страниц."
+  },
+  "ink_pen": {
+    "en": "Using Ink, an Ink Pen is used to write or draw.",
+    "ru": "Писчее перо используется для письма или рисования, используя чернила."
+  },
+  "jug": {
+    "en": "A Jug holds up to 1 gallon.",
+    "ru": "Кувшин вмещает объём до 1 галлона."
+  },
+  "ladder": {
+    "en": "A Ladder is 10 feet tall. You must climb to move up or down it.",
+    "ru": "Лестница высотой 10 футов. Вы должны лазать, чтобы подняться или спуститься по ней."
+  },
+  "lamp": {
+    "en": "A Lamp burns Oil as fuel to cast Bright Light in a 15-foot radius and Dim Light for an additional 30 feet .",
+    "ru": "Лампа сжигает масло в качестве топлива, освещая ярким светом радиус в 15 футов и тусклым светом на дополнительные 30 футов."
+  },
+  "lantern_bullseye": {
+    "en": "A Bullseye Lantern burns Oil as fuel to cast Bright Light in a 60-foot Cone and Dim Light for an addiotional 60 feet.",
+    "ru": "Направленный фонарь сжигает масло в качестве топлива, освещая ярким светом конус длиной 60 футов и тусклым светом на дополнительные 60 футов."
+  },
+  "lantern_hooded": {
+    "en": "A Hooded Lantern burns Oil as fuel to cast Bright Light in a 30-foot radius and Dim Light for an additional 30 feet. As a Bonus Action, you can lower the hood, reducing the light to Dim Light in a 5-foot radius, or raise it again.",
+    "ru": "Закрытый фонарь сжигает масло в качестве топлива, освещая ярким светом радиус в 30 футов и тусклым светом на дополнительные 30 футов. Вы можете бонусным действием опустить козырёк, уменьшив освещение до тусклого света в радиусе 5 футов, или снова поднять его."
+  },
+  "lock": {
+    "en": "A Lock comes with a key. Without the key, a creature can use Thieves' Tools to pick this Lock with a successful DC 15 Dexterity (Sleight of Hand) check.",
+    "ru": "Замок поставляется с ключом. Без ключа существо может использовать воровские инструменты, чтобы взломать этот замок, успешно пройдя проверку Ловкости (Ловкость рук) со Сл. 15."
+  },
+  "magnifying_glass": {
+    "en": "A Magnifying Glass grants Advantage on any ability check made to appraise or inspect a highly detailed item. Lighting a fire with a Magnifying Glass requires light as bright as sunlight to focus, tinder to ignite, and about 5 minutes for the fire to ignite.",
+    "ru": "Увеличительное стекло даёт преимущество на любую проверку характеристики, сделанную для оценки или осмотра детализированного предмета. Для того чтобы зажечь огонь с помощью увеличительного стекла, требуется яркий свет, как солнечный, трут для воспламенения и около 5 минут для зажигания огня."
+  },
+  "manacles": {
+    "en": "As a Utilize action, you can use Manacles to bind an unwilling Small or Medium creature within 5 feet of yourself that has the Grappled, Incapacitated, or Restrained condition if you succeed on a DC 13 Dexterity (Sleight of Hand) check. While bound, a creature has Disadvantage on attack rolls, and the creature is Restrained if the Manacles are attached to a chain or hook that is fixed in place. Escaping the Manacles requires a successful DC 20 Dexterity (Sleight of Hand) check as an action. Bursting them requires a successful DC 25 Strength (Athletics) check as an action.\nEach set of Manacles comes with a key. Without the key, a creature can use Thieves' Tools to pick the Manacles' lock with a successful DC 15 Dexterity (Sleight of Hand) check.",
+    "ru": "Действием использование вы можете использовать кандалы, чтобы сковать несогласное существо малень- кого или среднего размера в пределах 5 футов от вас, которое находится в состоянии захваченный, недееcпо- собный или опутанный, если вы успешно пройдёте проверку Ловкости (Ловкость рук) со Сл. 13. Пока суще- ство сковано, оно испытывает помеху на броски атаки, и оно считается опутанным, если кандалы прикрепле- ны к цепи или крюку, зафиксированному на месте. Освобождение от кандалов требует действием успешно совершить проверку Ловкости (Ловкость рук) со Сл. 20. Разрыв кандалов требует действием совершить успеш- ную проверку Силы (Атлетика) со Сл. 25.\nКаждый комплект кандалов поставляется с ключом. Без ключа существо может использовать воровские инструменты, чтобы вскрыть замок кандалов, успешно пройдя проверку Ловкости (Ловкость рук) со Сл. 15."
+  },
+  "map": {
+    "en": "If you consult an accurate Map,you gain a +5 bonus to Wisdom (Survival) checks you make to find your way in the place represented on it.",
+    "ru": "Если вы используете точную карту, то вы получаете бонус +5 к проверкам Мудрости (Выживание), которые вы совершаете, чтобы найти путь к месту, указанному на карте."
+  },
+  "mirror_steel": {
+    "en": "A handheld steel Mirror is useful for personal cosmetics but also for peeking around corners and reflecting light as a signal.",
+    "ru": "Ручное стальное зеркало полезно для нанесения косметики, а также для заглядывания за углы и отражения света в качестве сигнала."
+  },
+  "net": {
+    "en": "When you take the Attack action, you can replace one of your attacks with throwing a Net. Target a creature you can see within 15 feet of yourself. The target must succeed on a Dexterity saving throw (DC 8 plus your Dexterity modifier and Proficiency Bonus) or have the Restrained condition until it escapes. The target succeeds automatically if it is Huge or larger.\nTo escape, the target or a creature within 5 feet of it must take an action to make a DC 10 Strength (Athletics) check, freeing the Restrained creature on a success. Destroying the Net (AC 10; 5 HP; Immunity to Bludgeoning, Poison, and Psychic damage) also frees the target, ending the effect.",
+    "ru": "Когда вы совершаете действие атака, то вы можете заменить одну из своих атак броском сети. Выберите существо, которое вы видите в пределах 15 футов от себя. Цель должна успешно совершить спасбросок Ловкости (Сл. 8 + ваш модификатор Ловкости + ваш бонус мастерства) или получить состояние опутанный до тех пор, пока не освободится. Цель автоматически преуспевает, если она размером огромная или больше.\nДля освобождения цель или существо в пределах 5 футов от неё должны совершить действие и совершить проверку Силы (Атлетика) со Сл. 10, освобождая опутанное существо в случае успеха. Уничтожение Сети (КД 10; 5 хитов; иммунитет к дробящему урону, ядом и психической энергией) также освобождает цель, завершая эффект."
+  },
+  "oil_flask": {
+    "en": "You can douse a creature, object, or space with Oil or use it as fuel, as detailed below.\nDousing a Creature or an Object. When you take the Attack action, you can replace one of your attacks with throwing an Oil flask. Target one creature or object within 20 feet of yourself. The target must succeed on a Dexterity saving throw (DC 8 plus your Dexterity modifier and Proficiency Bonus) or be covered in oil. If the target takes Fire damage before the oil dries (after 1 minute), the target takes an extra 5 Fire damage from burning oil.\nDousing a Space. You can take the Utilize action to pour an Oil flask on level ground to cover a 5-foot-square area within 5 feet of yourself. If lit, the oil burns until the end of the turn 2 rounds from when the oil was lit(or 12 seconds) and deals 5 Fire damage to any creature that enters the area or ends its turn there. A creature can take this damage only once per turn.\nFuel. Oil serves as fuel for Lamps and Lanterns. Once lit, a flask of Oil burns for 6 hours in a Lamp or Lantern. That duration doesn't need to be consecutive; you can extinguish the burning Oil (as a Utilize action) and rekindle it again until it has burned for a total of 6 hours.",
+    "ru": "Вы можете облить существо, предмет или местность маслом или использовать его в качестве топлива, как описано ниже.\nОблить существо или предмет. Когда вы совершаете действие атака, то вы можете заменить 1 из своих атак броском фляги с маслом. Выберите 1 существо или предмет в пределах 20 футов от себя. Цель должна успешно совершить спасбросок Ловкости (Сл. 8 + ваш модификатор Ловкости + ваш бонус мастерства) или станет покрыта маслом. Если цель получит огненный урон до того, как масло высохнет (через 1 минуту), то цель получает дополнительный урон огнём в размере 5 от горящего масла.\nРазлить на местности. Вы можете совершить действие использование, чтобы вылить флягу с маслом на ровную поверхность, покрывая квадрат со сторой 5 футов в пределах 5 футов от себя. Если зажечь масло, то оно будет гореть до конца хода второго раунда после зажжения (или 12 секунд) и наносить 5 урона огнём любому существу, которое войдёт в эту область или завершит там свой ход. Существо может получить этот урон только 1 раз за ход.\nТопливо. Масло служит топливом для ламп и фонарей. После зажигания фляга с маслом горит в лампе или фонаре в течение 6 часов. Это время не обязательно должно быть непрерывным; вы можете погасить горящее масло (с помощью действия использование) и снова его зажечь до тех пор, пока оно не будет гореть в общей сложности 6 часов."
+  },
+  "paper": {
+    "en": "One sheet of Paper can hold about 250 handwritten words.",
+    "ru": "1 лист бумаги может вместить около 250 слов, написанных от руки."
+  },
+  "parchment": {
+    "en": "One sheet of Parchment can hold about 250 handwritten words.",
+    "ru": "1 лист пергамента может вместить около 250 слов, написанных от руки."
+  },
+  "perfume": {
+    "en": "Perfume comes in a 4-ounce vial. For 1 hour after applying Perfume to yourself, you have Advantage on Charisma (Persuasion) checks made to influence an Indifferent Humanoid within 5 feet of yourself.",
+    "ru": "Духи находятся в 4-унциевом флаконе. В течение 1 часа после нанесения духов на себя, вы получаете преимущество на проверки Харизмы (Убеждение), совершённые для того, чтобы повлиять на нейтрального гуманоида в пределах 5 футов от вас."
+  },
+  "poison_basic": {
+    "en": "As a Bonus Action, you can use a vial of Basic Poison to coat one weapon or up to three pieces of ammunition. A creature that takes Piercing or Slashing damage from the poisoned weapon or ammunition takes an extra 1d4 Poison damage. Once applied, the poison retains potency for 1 minute or until its damage is dealt, whichever comes first.",
+    "ru": "Бонусным действием вы можете использовать флакон с обычным ядом, чтобы покрыть им 1 оружие или до 3 единиц боеприпасов. Существо, которое получает колющий или рубящий урон от отравленного оружия или боеприпасов, дополнительно получает 1d4 урона ядом. После нанесения яд сохраняет свою силу в течение 1 минуты или до тех пор, пока не будет нанесён урон, в зависимости от того, что произойдёт раньше."
+  },
+  "pole": {
+    "en": "A Pole is 10 feet long. You can use it to touch something up to 10 feet away. If you must make a Strength (Athletics) check as part of a High or Long Jump, you can use the Pole to vault, giving yourself Advantage on the check.",
+    "ru": "Шест имеет длину 10 футов. Вы можете использовать его, чтобы дотянуться до чего-либо на расстоянии до 10 футов. Если вам нужно совершить проверку Силы (Атлетика) в рамках прыжка в высоту или длину, то вы можете использовать шест для прыжка с шестом, получив преимущество на проверку."
+  },
+  "pot_iron": {
+    "en": "An Iron Pot holds up to 1gallon.",
+    "ru": "Железный горшок вмещает объём до 1 галлона."
+  },
+  "pouch": {
+    "en": "A Pouch holds up to 6 pounds within one-fifth of a cubic foot.",
+    "ru": "Сумка вмещает до 6 фунтов в 1/5 кубического фута."
+  },
+  "priest_pack": {
+    "en": "A Priest's Pack contains the following items: Backpack, Blanket, Holy Water, Lamp, 7 days of Rations, Robe, and Tinderbox.",
+    "ru": "Набор священника содержит следующие предметы: спальник, одеяло, святая вода, лампа, рационы на 7 дней, роба и трутница."
+  },
+  "quiver": {
+    "en": "A Quiver holds up to 20 Arrows.",
+    "ru": "Колчан вмещает до 20 стрел."
+  },
+  "ram_portable": {
+    "en": "You can use a Portable Ram to break down doors. When doing so, you gain a +4 bonus to the Strength check. One other character can help you use the ram, giving you Advantage on this check.",
+    "ru": "Вы можете использовать портативный таран, чтобы выбивать двери. Для выбивания дверей вы получаете бонус +4 к проверке Силы. Другой персонаж может помочь вам использовать таран, давая вам преимущество на эту проверку."
+  },
+  "rations": {
+    "en": "Rations consist of travel-ready food, includingjerky, dried fruit, hardtack, and nuts. See «Malnutrition» in the rules glossary for the risks of not eating.",
+    "ru": "Рацион состоит из пищи, готовой к употреблению в дороге, включая вяленое мясо, сухофрукты, сухари и орехи. См. недоедание в глоссарии правил для ознакомления с рисками, связанными с отсутствием еды."
+  },
+  "robes": {
+    "en": "A Robe has vocational or ceremonial significance. Some events and locations admit only people wearing a Robe bearing certain colors or symbols.",
+    "ru": "Роба имеет профессиональное или церемониальное значение. Некоторые события и места допускают персонажей, одетых только в робу определённого цвета или с определёнными символами."
+  },
+  "rope_hempen": {
+    "en": "As a Utilize action, you can tie a knot with Rope if you succeed on a DC 10 Dexterity (Sleight of Hand) check. The Rope can be burst with a successful DC 20 Strength (Athletics) check.\nYou can bind an unwilling creature with the Rope only if the creature has the Grappled, Incapacitated, or Restrained condition. If the creature's legs are bound, the creature has the Restrained condition until it escapes. Escaping the Rope requires the creature to make a successful DC 15 Dexterity (Acrobatics) check as an action.",
+    "ru": "Действием использование, вы можете завязать узел на верёвке, если преуспели в проверке Ловкости (Ловкость рук) со Сл. 10. Верёвку можно разорвать, пройдя успешно проверку Силы (Атлетика) со Сл. 20. Вы можете связать несогласное существо верёвкой только если это существо находится в состоянии схваченный, недееспособный или опутанный. Если ноги существа связаны, то оно будет находиться в состоянии опутанный до тех пор, пока не освободится. Для освобождения от верёвки существо действием должно преуспеть в проверке Ловкости (Акробатика) со Сл. 15."
+  },
+  "sack": {
+    "en": "A Sack holds up to 30 pounds within 1 cubic foot.",
+    "ru": "Мешок вмещает до 30 фунтов веса и имеет объём 1 кубический фут."
+  },
+  "scholar_pack": {
+    "en": "A Scholar's Pack contains the following items: Backpack, Book, Ink, Ink Pen, Lamp, 10 flasks of Oil, 10 sheets of Parchment, and Tinderbox.",
+    "ru": "Набор учёного включает в себя следующие предметы: рюкзак, книга, чернила, писчее перо, лампа, 10 фляг масла, 10 листов пергамента и трутница."
+  },
+  "shovel": {
+    "en": "Working for 1 hour, you can use a Shovel to dig a hole that is 5 feet on each side in soil or similar material.",
+    "ru": "Работая в течение 1 часа, вы можете использовать лопату для копания ямы длинной 5 футов по каждой стороне в земле или подобном материале."
+  },
+  "signal_whistle": {
+    "en": "When blown as a Utilize action, a Signal Whistle produces a sound that can be heard up to 600 feet away.",
+    "ru": "Действием использование вы можете заставить сигнальный свисток издать звук, который можно услы- шать на расстоянии до 600 футов."
+  },
+  "spell_scroll": {
+    "en": "A Spell Scroll (Cantrip) or Spell Scroll (Level 1) is a magic item that bears the words of a cantrip or level 1 spell, respectively, determined by the scroll's creator. If the spell is on your class's spell list, you can read the scroll and cast the spell using its normal casting time and without providing any Material components.\nIf the spell requires a saving throw or an attack roll, the spell save DC is 13, and the attack bonus is +5.The scroll disintegrates when the casting is completed.",
+    "ru": "Свиток заклинания (Заговор) или свиток заклинания (Уровень 1) — это магический предмет, содержащий слова заговора или заклинания 1 уровня, соответственно, определяемого создателем свитка. Если заклинание находится в списке заклинаний вашего класса, то вы можете прочитать свиток и наложить заклинание, используя его обычное время накладывания и без предоставления материальных компонентов.\nЕсли заклинание требует спасбросок или бросок атаки, то Сл. спасброска составляет 13, а бонус к атаке +5. Свиток рассыпается в прах после завершения накладывания заклинания."
+  },
+  "spike_iron": {
+    "en": "Iron Spikes come in bundles of ten. As a Utilize action, you can use a blunt object, such as a Light Hammer, to hammer a spike into wood, earth, or a similar material.You can do so to jam a door shut or to then tie a Rope or Chain to the Spike.",
+    "ru": "Железные колья продаются в наборах по 10 штук. Действием использование, вы можете использовать тупой предмет, такой как лёгкий молот, чтобы вбить кол в дерево, землю или аналогичный материал. Вы можете сделать это, чтобы заблокировать дверь или затем привязать верёвку или цепь к колу."
+  },
+  "spyglass": {
+    "en": "Objects viewed through a Spyglass are magnified to twice their size.",
+    "ru": "Объекты, рассматриваемые через подзорную трубу, кажутся увеличенными в 2 раза."
+  },
+  "tent": {
+    "en": "A Tent sleeps up to two Small or Medium creatures.",
+    "ru": "Палатка вмещает до 2 существ маленького или среднего размера."
+  },
+  "tinderbox": {
+    "en": "A Tinderbox is a small container holding flint, fire steel, and tinder (usually dry cloth soaked in light oil) used to kindle a fire. Using it to light a Candle, Lamp, Lantern, or Torch- or anything else with exposed fuel- takes a Bonus Action. Lighting any other fire takes 1 minute.",
+    "ru": "Трутница — это небольшой контейнер, содержащий кремень, огниво и трут (обычно сухую ткань, пропитанную горючей смесью), используемые для разжигания огня. Использование её для зажигания свечи, лампы, фонаря или факела (или любого другого предмета с открытым топливом) занимает бонусное действие. Зажигание любого другого огня занимает 1 минуту."
+  },
+  "torch": {
+    "en": "A Torch burns for 1 hour, casting Bright Light in a 20-foot radius and Dim Light for an additional 20 feet. When you take the Attack action, you can attack with the Torch, using it as a Simple Melee weapon. On a hit, the target takes 1 Fire damage.",
+    "ru": "Факел горит в течение 1 часа, освещая ярким светом радиус 20 футов и тусклым светом ещё на 20 футов. Когда вы совершаете действие атака, то вы можете атаковать факелом, используя его как простое рукопашное оружие. При попадании цель получает 1 урона огнём."
+  },
+  "vial": {
+    "en": "A Vial holds up to 4 ounces.",
+    "ru": "Флакон вмещает объём до 4 унций."
+  },
+  "waterskin": {
+    "en": "A Waterskin holds up to 4 pints. If you don't drink sufficient water, you risk dehydration (see the rules glossary).",
+    "ru": "Бурдюк вмещает до 4 пинт. Если вы не пьёте достаточно количество воды, то рискуете получить обезвоживание (см. глоссарий правил)."
+  },
+  "brewer": {
+    "en": "Detect poisoned drink (DC 15), or identify alcohol (DC 10)",
+    "ru": "Обнаружить отравленный напиток (Сл. 15) или определить алкоголь (Сл. 10)",
+    "ability": "int",
+    "weight": 9,
+    "creation": {
+      "en": "Antitoxin",
+      "ru": "Противоядие"
+    }
+  },
+  "calligrapher": {
+    "en": "Write text with impressive flourishes that guard against forgery (DC 15)",
+    "ru": "Написание текста с впечатляющими узорами, которые защищают от подделки (Сл. 15)",
+    "ability": "dex",
+    "weight": 5,
+    "creation": {
+      "en": "Ink, Spell Scroll",
+      "ru": "Чернила, свиток заклинания"
+    }
+  },
+  "carpenter": {
+    "en": "Seal or pry open a door or container (DC 20)",
+    "ru": "Запечатать или вскрыть дверь или контейнер (Сл. 20)",
+    "ability": "str",
+    "weight": 6,
+    "creation": {
+      "en": "Club, Greatclub, Quarterstaff, Barrel, Chest, Ladder, Pole, Portable Ram, Torch",
+      "ru": "Дубинка, палица, боевой посох, бочка, сундук, лестница, шест, портативный таран, факел"
+    }
+  },
+  "cartographer": {
+    "en": "Draft a map ofa small area (DC 15)",
+    "ru": "Составление карты небольшой области (Сл. 15)",
+    "ability": "wis",
+    "weight": 6,
+    "creation": {
+      "en": "Map",
+      "ru": "Карта"
+    }
+  },
+  "cobbler": {
+    "en": "Modify footwear to give Advantage on the wearer's next Dexterity (Acrobatics) check (DC 10)",
+    "ru": "Модификация обуви для предоставления преимущества на следующей проверке Ловкости (Акробатика) для носителя (Сл. 10)",
+    "ability": "dex",
+    "weight": 5,
+    "creation": {
+      "en": "Climber's Kit",
+      "ru": "Набор для лазания"
+    }
+  },
+  "cook_utensils": {
+    "en": "Improve food's flavor (DC 10), or detect spoiled or poisoned food (DC 15)",
+    "ru": "Улучшение вкуса пищи (Сл. 10) или обнаружение испорченной или отравленной еды (Сл. 15)",
+    "ability": "wis",
+    "weight": 8,
+    "creation": {
+      "en": "Rations",
+      "ru": "Рационы"
+    }
+  },
+  "glassblower": {
+    "en": "Discern what a glass object held in the past 24 hours (DC l5)",
+    "ru": "Определение того, что хранилось в стеклянном предмете в течение последних 24 часов (Сл. 15)",
+    "ability": "int",
+    "weight": 5,
+    "creation": {
+      "en": "Glass Bottle, Magnifying Glass, Spyglass, Vial",
+      "ru": "Стеклянная бутылка, увеличительное стекло, подзорная труба, флакон"
+    }
+  },
+  "jeweler": {
+    "en": "Discern a gem's value (DC 15)",
+    "ru": "Определение стоимости драгоценного камня (Сл. 15)",
+    "ability": "int",
+    "weight": 2,
+    "creation": {
+      "en": "Arcane Focus, Holy Symbol",
+      "ru": "Магическая фокусировка, священный символ"
+    }
+  },
+  "leatherworker": {
+    "en": "Add a design to a leather item (DC 10)",
+    "ru": "Добавление узора на кожаное изделие (Сл. 10)",
+    "ability": "dex",
+    "weight": 5,
+    "creation": {
+      "en": "Sling, Whip, Hide Armor, Leather Armor, Studded Leather Armor, Backpack, Crossbow Bolt Case, Map or Scroll Case, Parchment, Pouch, Quiver, Waterskin",
+      "ru": "Праща, кнут, шкурный доспех, кожаный доспех, проклёпаная кожа, рюкзак, футляр для арбалетных болтов, футляр для карт или свитков, пергамент, сумка, колчан, бурдюк"
+    }
+  },
+  "mason": {
+    "en": "Chisel a symbol or hole in stone (DC 10)",
+    "ru": "Высечь символ или отверстие в камне (Сл. 10)",
+    "ability": "str",
+    "weight": 8,
+    "creation": {
+      "en": "Block and Tackle",
+      "ru": "Блок и лебёдка"
+    }
+  },
+  "painter": {
+    "en": "Paint a recognizable image of something you've seen (DC 10)",
+    "ru": "Нарисовать узнаваемое изображение чего-то, что вы видели (Сл. 10)",
+    "ability": "wis",
+    "weight": 5,
+    "creation": {
+      "en": "Druidic Focus, Holy Symbol",
+      "ru": "Фокусировка друидов, священный символ"
+    }
+  },
+  "potter": {
+    "en": "Discern what a ceramic object held in the past 24 hours (DC 15)",
+    "ru": "Определение того, что хранилось в керамическом предмете в течение последних 24 часов (Сл. 15)",
+    "ability": "int",
+    "weight": 3,
+    "creation": {
+      "en": "Jug, Lamp",
+      "ru": "Кувшин, лампа"
+    }
+  },
+  "smith": {
+    "en": "Pry open a door or container (DC 20)",
+    "ru": "Вскрыть дверь или контейнер (Сл. 20)",
+    "ability": "ыек",
+    "weight": 8,
+    "creation": {
+      "en": "Any Melee weapon (except Club, Greatclub, Quarterstaff, and Whip), Medium armor (except Hide), Heavy armor, Ball Bearings, Bucket, Caltrops, Chain, Crowbar, Firearm Bullets, Grappling Hook, Iron Pot, Iron Spikes, Sling Bullets",
+      "ru": "Любое рукопашное оружие (кроме дубинки, палицы, посоха и кнута), средние доспехи (кроме шкурного доспеха), тяжёлые доспехи, мелкие шарики, ведро, калтропы, цепь, лом, пули для огнестрельного оружия, крюк-кошка, железный горшок, железные колья, снаряды для пращи"
+    }
+  },
+  "tinker": {
+    "en": "Assemble a Tiny item composed of scrap, which falls apart in 1 minute (DC 20)",
+    "ru": "Собрать крошечный предмет из обломков, который развалится через 1 минуту (Сл. 20)",
+    "ability": "dex",
+    "weight": 10,
+    "creation": {
+      "en": "Musket, Pistol, Bell, Bullseye Lantern, Flask, Hooded Lantern, Hunting Trap, Lock, Manacles, Mirror, Shovel, Signal Whistle, Tinderbox",
+      "ru": "Мушкет, пистоль, колокольчик, направленный фонарь, фляга, закрытый фонарь, охотничий капкан, замок, кандалы, зеркало, лопата, сигнальный свисток, трутница"
+    }
+  },
+  "weaver": {
+    "en": "Mend a tear in clothing (DC 10), or sew a Tiny design (DC 10)",
+    "ru": "Залатать дырку на одежде (Сл. 10) или вышить крошечный узор (Сл. 10)",
+    "ability": "dex",
+    "weight": 5,
+    "creation": {
+      "en": "Padded Armor, Basket, Bedroll, Blanket, Fine Clothes, Net, Robe, Rope, Sack, String, Tent, Traveler's Clothes",
+      "ru": "Стёганый доспех, корзина, спальник, одеяло, парадная одежда, сеть, роба, верёвка, сумка, бечёвка, палатка, одежда путешественника"
+    }
+  },
+  "woodcarver": {
+    "en": "Carve a pattern in wood (DC 10)",
+    "ru": "Вырезать узор на дереве (Сл. 10)",
+    "ability": "dex",
+    "weight": 5,
+    "creation": {
+      "en": "Club, Greatclub, Quarterstaff, Ranged weapons (except Pistol, Musket, and Sling), Arcane Focus, Arrows, Bolts, Druidic Focus, Ink Pen, Needles",
+      "ru": "Дубинка, палица, боевой посох, дальнобойное оружие (кроме пистоля, мушкета и пращи), магическая фокусировка, стрелы, болты, фокусировка друидов, писчее перо, иглы для трубки"
+    }
+  },
+  "diguise": {
+    "en": "Apply makeup (DC 10)",
+    "ru": "Нанести грим (Сл. 10)",
+    "ability": "cha",
+    "weight": 3,
+    "creation": {
+      "en": "Costume",
+      "ru": "Костюм"
+    }
+  },
+  "forgery": {
+    "en": "Mimic 10 or fewer words of someone else's handwriting (DC 15), or duplicate awax seal (DC 20)",
+    "ru": "Подделать до 10 слов чьего-либо почерка (Сл. 15) или создать дубликат восковой печати (Сл. 20)",
+    "ability": "dex",
+    "weight": 5,
+    "creation": {
+      "en": "",
+      "ru": ""
+    }
+  },
+  "herbalism": {
+    "en": "Identify a plant (DC 10)",
+    "ru": "Определить растение (Сл. 10)",
+    "ability": "int",
+    "weight": 3,
+    "creation": {
+      "en": "Antitoxin, Candle, Healer's Kit, Potion ofHealing",
+      "ru": "Противоядие, свеча, комплект целителя, зелье лечения"
+    }
+  },
+  "navigator": {
+    "en": "Plot a course (DC 10), or determine positionby stargazing (DC 15)",
+    "ru": "Проложить курс (Сл. 10) или определить местоположение по звёздам (Сл. 15)",
+    "ability": "wis",
+    "weight": 2,
+    "creation": {
+      "en": "",
+      "ru": ""
+    }
+  },
+  "poisoner": {
+    "en": "Detect a poisoned object (DC 10)",
+    "ru": "Обнаружить отравленный предмет (Сл. 10)",
+    "ability": "int",
+    "weight": 2,
+    "creation": {
+      "en": "Basic Poison",
+      "ru": "Простой яд"
+    }
+  },
+  "thieves": {
+    "en": " Pick a lock (DC 15), or disarm a trap (DC 15)",
+    "ru": "Взломать замок (Сл. 15) или обезвредить ловушку (Сл. 15)",
+    "ability": "dex",
+    "weight": 1,
+    "creation": {
+      "en": "",
+      "ru": ""
+    }
   }
 }
