@@ -32,7 +32,7 @@ module Frontend
     private
 
     def find_campaign
-      @campaign = campaigns.find(params[:id])
+      @campaign = Campaign.find(params[:id])
     end
 
     def create_params

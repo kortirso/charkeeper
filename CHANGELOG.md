@@ -17,6 +17,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - calculating Daggerheart armor score
 - changing D&D character spells
 - general styles for app with text for delete button
+- joining campaign
 
 ## [0.3.11] - 2025-10-24
 ### Added

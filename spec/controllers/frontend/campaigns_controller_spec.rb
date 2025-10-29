@@ -41,17 +41,7 @@ describe Frontend::CampaignsController do
         end
       end
 
-      context 'for not user campaign' do
-        it 'returns error' do
-          get :show, params: { id: campaign.id, charkeeper_access_token: access_token }
-
-          expect(response).to have_http_status :not_found
-        end
-      end
-
-      context 'for user campaign' do
-        before { campaign.update!(user: user_session.user) }
-
+      context 'for existing campaign' do
         it 'renders campaign' do
           get :show, params: { id: campaign.id, charkeeper_access_token: access_token }
 
