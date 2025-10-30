@@ -84,6 +84,8 @@ module Dnd5Character
       }
     end
 
+    def beastform; end
+
     private
 
     def calc_ability_modifier(value)
