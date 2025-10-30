@@ -224,7 +224,11 @@
     "survival": { "name": { "en": "Survival", "ru": "Выживание" } }
   },
   "beastforms": {
-    "wolf": { "name": { "en": "Wolf", "ru": "Волк" } }
+    "boar": { "name": { "en": "Boar", "ru": "Кабан" } },
+    "wolf": { "name": { "en": "Wolf", "ru": "Волк" } },
+    "spider": { "name": { "en": "Spider", "ru": "Паук" } },
+    "panther": { "name": { "en": "Panther", "ru": "Пантера" } },
+    "draft_horse": { "name": { "en": "Draft horse", "ru": "Упряжная лошадь" } }
   },
   "conditions": {
     "blinded": {

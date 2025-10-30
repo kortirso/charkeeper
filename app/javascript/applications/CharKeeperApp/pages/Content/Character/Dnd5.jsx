@@ -4,7 +4,7 @@ import { createWindowSize } from '@solid-primitives/resize-observer';
 
 import {
   Dnd5Abilities, Dnd5Combat, Dnd5Rest, Dnd5ClassLevels, Dnd5Professions, Dnd5Spells, DndGold, Dnd5Skills, Dnd5SavingThrows,
-  Dnd5Proficiency, Dnd2024WildShapes
+  Dnd5Proficiency, Dnd2024WildShapes, BeastFeatures
 } from '../../../pages';
 import {
   CharacterNavigation, Equipment, Notes, Avatar, ContentWrapper, Feats, Bonuses, createDiceRoll, Conditions, Combat
@@ -103,13 +103,11 @@ export const Dnd5 = (props) => {
               <div class="mt-4">
                 <Conditions character={character()} />
               </div>
-
               <Show when={character().provider === 'dnd2024'}>
                 <div class="mt-4">
                   <Dnd2024WildShapes character={character()} onReplaceCharacter={props.onReplaceCharacter} />
                 </div>
               </Show>
-
               <div class="mt-4">
                 <Dnd5Skills character={character()} openDiceRoll={openDiceRoll} onReplaceCharacter={props.onReplaceCharacter} />
               </div>
@@ -131,11 +129,13 @@ export const Dnd5 = (props) => {
                 onReplaceCharacter={props.onReplaceCharacter}
               />
               <div class="mt-4">
-                <Combat
-                  character={character()}
-                  openDiceRoll={openDiceRoll}
-                  onReplaceCharacter={props.onReplaceCharacter}
-                />
+                <Show when={character().beastform === null} fallback={<BeastFeatures character={character()} />}>
+                  <Combat
+                    character={character()}
+                    openDiceRoll={openDiceRoll}
+                    onReplaceCharacter={props.onReplaceCharacter}
+                  />
+                </Show>
               </div>
             </Match>
             <Match when={activeMobileTab() === 'rest'}>
@@ -239,11 +239,13 @@ export const Dnd5 = (props) => {
                 onReplaceCharacter={props.onReplaceCharacter}
               />
               <div class="mt-4">
-                <Combat
-                  character={character()}
-                  openDiceRoll={openDiceRoll}
-                  onReplaceCharacter={props.onReplaceCharacter}
-                />
+                <Show when={character().beastform === null} fallback={<BeastFeatures character={character()} />}>
+                  <Combat
+                    character={character()}
+                    openDiceRoll={openDiceRoll}
+                    onReplaceCharacter={props.onReplaceCharacter}
+                  />
+                </Show>
               </div>
               <div class="mt-4">
                 <Feats

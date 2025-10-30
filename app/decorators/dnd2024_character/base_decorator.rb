@@ -128,24 +128,7 @@ module Dnd2024Character
     end
 
     def beastform_attacks
-      beastform_config['attacks'].map do |beast_attack|
-        {
-          type: 'melee',
-          name: beast_attack['name'][I18n.locale.to_s],
-          attack_bonus: beast_attack['attack_bonus'] + proficiency_bonus,
-          damage: beast_attack['damage'],
-          damage_bonus: beast_attack['damage_bonus'],
-          tags: {},
-          notes: beast_attack['tooltips'].map { |item| item[I18n.locale.to_s] }.join('; '),
-          ready_to_use: true,
-          # для обратной совместимости
-          action_type: 'action',
-          hands: 2,
-          melee_distance: 5,
-          damage_type: beast_attack['damage_type'],
-          tooltips: []
-        }
-      end
+      beastform_config['features']
     end
 
     def unarmed_attack
