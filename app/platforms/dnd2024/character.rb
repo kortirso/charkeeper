@@ -24,6 +24,7 @@ module Dnd2024
     attribute :languages, array: true
     attribute :weapon_core_skills, array: true
     attribute :weapon_skills, array: true
+    attribute :weapon_mastery, array: true, default: [] # Оружейные приёмы
     attribute :armor_proficiency, array: true
     attribute :coins, array: true, default: { 'gold' => 0, 'silver' => 0, 'copper' => 0 }
     attribute :spent_spell_slots, array: true, default: {}
