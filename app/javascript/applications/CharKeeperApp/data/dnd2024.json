@@ -192,7 +192,16 @@
       "elemental_adept": { "name": { "en": "Elemental adept", "ru": "Адепт стихий" } }
     },
     "fighting": {
-      "defense": { "name": { "en": "Defense", "ru": "Оборона" } }
+      "defense": { "name": { "en": "Defense", "ru": "Оборона" } },
+      "dueling": { "name": { "en": "Dueling", "ru": "Дуэлянт" } },
+      "protection": { "name": { "en": "Protection", "ru": "Защита" } },
+      "interception": { "name": { "en": "Interception", "ru": "Перехват" } },
+      "great_weapon_fighting": { "name": { "en": "Great Weapon Fighting", "ru": "Сражение большим оружием" } },
+      "blind_fighting": { "name": { "en": "Blind Fighting", "ru": "Сражение вслепую" } },
+      "unarmed_fighting": { "name": { "en": "Unarmed Fighting", "ru": "Сражение голыми руками" } },
+      "two_weapon_fighting": { "name": { "en": "Two-Weapon Fighting", "ru": "Сражение двумя оружиями" } },
+      "thrown_weapon_fighting": { "name": { "en": "Thrown Weapon Fighting", "ru": "Сражение метательным оружием" } },
+      "archery": { "name": { "en": "Archery", "ru": "Стрельба из лука" } }
     }
   },
   "abilities": {

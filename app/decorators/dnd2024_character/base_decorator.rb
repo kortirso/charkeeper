@@ -221,11 +221,12 @@ module Dnd2024Character
       key_ability_bonus = find_key_ability_bonus('range', captions)
       damage_type = item[:items_info]['damage_type']
       mastery = item[:items_info]['mastery']
+      base_bonus = key_ability_bonus + (selected_feats.include?('archery') ? 2 : 0)
       {
         type: type,
         slug: item[:items_slug],
         name: item[:items_name][I18n.locale.to_s],
-        attack_bonus: weapon_proficiency?(item) ? (key_ability_bonus + proficiency_bonus) : key_ability_bonus,
+        attack_bonus: weapon_proficiency?(item) ? (base_bonus + proficiency_bonus) : base_bonus,
         distance: item[:items_info]['dist'],
         damage: item[:items_info]['damage'],
         damage_bonus: key_ability_bonus,
