@@ -6,6 +6,15 @@ import config from '../../../../data/dnd2024.json';
 import { useAppLocale, useAppState } from '../../../../context';
 import { fetchItemsRequest } from '../../../../requests/fetchItemsRequest';
 
+const TRANSLATION = {
+  en: {
+    weaponMastery: 'Weapon mastery'
+  },
+  ru: {
+    weaponMastery: 'Оружейное мастерство'
+  }
+}
+
 export const Dnd5Professions = (props) => {
   const character = () => props.character;
   const feats = () => config.feats;
@@ -79,6 +88,11 @@ export const Dnd5Professions = (props) => {
     await props.onReloadCharacter({ weapon_skills: newValue });
   }
 
+  const toggleWeaponMastery = async (slug) => {
+    const newValue = character().weapon_mastery.includes(slug) ? character().weapon_mastery.filter((item) => item !== slug) : character().weapon_mastery.concat(slug);
+    await props.onReloadCharacter({ weapon_mastery: newValue });
+  }
+
   return (
     <ErrorWrapper payload={{ character_id: character().id, key: 'Dnd5Professions' }}>
       <Show when={character().provider === 'dnd2024'}>
@@ -150,6 +164,23 @@ export const Dnd5Professions = (props) => {
           }
         </For>
       </Toggle>
+      <Show when={character().provider === 'dnd2024'}>
+        <Toggle title={TRANSLATION[locale()]['weaponMastery']}>
+          <For each={Object.entries(config.weaponMasteries)}>
+            {([slug, names]) =>
+              <div class="mb-1">
+                <Checkbox
+                  labelText={names.name[locale()]}
+                  labelPosition="right"
+                  labelClassList="text-sm ml-4"
+                  checked={character().weapon_mastery.includes(slug)}
+                  onToggle={() => toggleWeaponMastery(slug)}
+                />
+              </div>
+            }
+          </For>
+        </Toggle>
+      </Show>
       <Show when={items() !== undefined}>
         <Toggle title={t('professionsPage.weaponCoreSkill')}>
           <For each={Object.entries(dict().dnd.coreWeaponSkills)}>

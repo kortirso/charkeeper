@@ -57,6 +57,7 @@ module CharactersContext
           optional(:selected_features).hash
           optional(:selected_feats).value(:array)
           optional(:weapon_core_skills).value(:array).each(included_in?: WEAPON_CORE_SKILLS)
+          optional(:weapon_mastery).value(:array).each(:string)
           # optional(:weapon_skills).value(:array).each(
           #   included_in?: ::Dnd2024::Item.where(kind: ['light', 'martial']).pluck(:slug).sort
           # )

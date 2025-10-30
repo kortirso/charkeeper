@@ -7,7 +7,7 @@ module Dnd2024Character
              :selected_features, :resistance, :immunity, :vulnerability, :energy, :coins, :darkvision,
              :weapon_core_skills, :weapon_skills, :armor_proficiency, :music, :spent_spell_slots, :conditions,
              :hit_dice, :spent_hit_dice, :death_saving_throws, :selected_feats, :beastform, :background, :selected_beastforms,
-             to: :data
+             :weapon_mastery, to: :data
 
     def parent = __getobj__
     def method_missing(_method, *args); end
@@ -178,7 +178,7 @@ module Dnd2024Character
       end
     end
 
-    # rubocop: disable Metrics/AbcSize, Metrics/MethodLength
+    # rubocop: disable Metrics/AbcSize, Metrics/MethodLength, Metrics/PerceivedComplexity
     def melee_attack(item)
       captions = item[:items_info]['caption']
       captions = {} if captions.is_a?(Array)
@@ -186,6 +186,7 @@ module Dnd2024Character
 
       key_ability_bonus = find_key_ability_bonus('melee', captions)
       damage_type = item[:items_info]['damage_type']
+      mastery = item[:items_info]['mastery']
       {
         type: 'melee',
         slug: item[:items_slug],
@@ -198,6 +199,8 @@ module Dnd2024Character
         notes: item[:notes],
         tags: { damage_type => I18n.t("tags.dnd.weapon.title.#{damage_type}") }.merge(
           captions.index_with { |type| I18n.t("tags.dnd.weapon.title.#{type}") }
+        ).merge(
+          weapon_mastery.include?(mastery) ? { mastery => I18n.t("tags.dnd.weapon.title.#{mastery}") } : {}
         ),
         ready_to_use: item[:state] ? item[:state].in?(::Character::Item::HANDS) : true,
         # для обратной совместимости
@@ -217,6 +220,7 @@ module Dnd2024Character
 
       key_ability_bonus = find_key_ability_bonus('range', captions)
       damage_type = item[:items_info]['damage_type']
+      mastery = item[:items_info]['mastery']
       {
         type: type,
         slug: item[:items_slug],
@@ -229,6 +233,8 @@ module Dnd2024Character
         notes: item[:notes],
         tags: { damage_type => I18n.t("tags.dnd.weapon.title.#{damage_type}") }.merge(
           captions.index_with { |type| I18n.t("tags.dnd.weapon.title.#{type}") }
+        ).merge(
+          weapon_mastery.include?(mastery) ? { mastery => I18n.t("tags.dnd.weapon.title.#{mastery}") } : {}
         ),
         ready_to_use: item[:state] ? item[:state].in?(::Character::Item::HANDS) : true,
         # для обратной совместимости
@@ -240,7 +246,7 @@ module Dnd2024Character
         caption: captions
       }
     end
-    # rubocop: enable Metrics/AbcSize, Metrics/MethodLength
+    # rubocop: enable Metrics/AbcSize, Metrics/MethodLength, Metrics/PerceivedComplexity
 
     def find_key_ability_bonus(type, captions)
       return [modifiers['str'], modifiers['dex']].max if captions.include?('finesse')
