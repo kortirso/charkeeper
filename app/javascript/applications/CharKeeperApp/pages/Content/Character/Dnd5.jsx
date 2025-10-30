@@ -103,7 +103,7 @@ export const Dnd5 = (props) => {
               <div class="mt-4">
                 <Conditions character={character()} />
               </div>
-              <Show when={character().provider === 'dnd2024'}>
+              <Show when={character().provider === 'dnd2024' && Object.keys(character().classes).includes('druid')}>
                 <div class="mt-4">
                   <Dnd2024WildShapes character={character()} onReplaceCharacter={props.onReplaceCharacter} />
                 </div>
@@ -204,7 +204,7 @@ export const Dnd5 = (props) => {
             <div class="mt-4">
               <Conditions character={character()} />
             </div>
-            <Show when={character().provider === 'dnd2024'}>
+            <Show when={character().provider === 'dnd2024' && Object.keys(character().classes).includes('druid')}>
               <div class="mt-4">
                 <Dnd2024WildShapes character={character()} onReplaceCharacter={props.onReplaceCharacter} />
               </div>
