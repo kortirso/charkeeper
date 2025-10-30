@@ -17,9 +17,10 @@ export const Toggle = (props) => {
       <div
         classList={{
           '': !props.noInnerPadding,
-          'blockable': props.noInnerPadding
+          'blockable': props.noInnerPadding,
+          'cursor-pointer': !props.disabled
         }}
-        class="py-2 px-4 cursor-pointer dark:text-snow"
+        class="py-2 px-4 dark:text-snow"
         onClick={() => props.disabled ? (props.onParentClick ? props.onParentClick() : null) : setIsOpen(!isOpen())}
       >
         {props.title}

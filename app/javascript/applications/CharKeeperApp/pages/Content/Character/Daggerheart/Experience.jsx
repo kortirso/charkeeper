@@ -20,7 +20,6 @@ export const DaggerheartExperience = (props) => {
   const object = () => props.object;
 
   const [lastActiveObjectId, setLastActiveObjectId] = createSignal(undefined);
-  const [isOpen, setIsOpen] = createSignal(false);
   const [editMode, setEditMode] = createSignal(false);
   const [name, setName] = createSignal('');
   const [experienceData, setExperienceData] = createSignal(object().experience);
@@ -43,10 +42,7 @@ export const DaggerheartExperience = (props) => {
   const enterEditMode = (e) => {
     e.stopPropagation();
 
-    batch(() => {
-      setIsOpen(true);
-      setEditMode(true);
-    });
+    setEditMode(true);
   }
 
   const cancelEditing = () => {
@@ -55,8 +51,6 @@ export const DaggerheartExperience = (props) => {
       setEditMode(false);
     });
   }
-
-  const toggleClick = () => setIsOpen(!isOpen());
 
   const addExperience = () => {
     const payload = experienceData().concat({ id: Math.floor(Math.random() * 1000), exp_name: name(), exp_level: 2 });
@@ -118,8 +112,7 @@ export const DaggerheartExperience = (props) => {
       >
         <Toggle
           disabled
-          isOpenByParent={isOpen() || editMode()}
-          onParentClick={toggleClick}
+          isOpen
           title={
             <div class="flex justify-between items-center">
               <h2 class="flex-1 text-lg dark:text-snow">{t('daggerheart.experience.title')}</h2>
