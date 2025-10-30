@@ -50,7 +50,7 @@ export const Combat = (props) => {
           <thead>
             <tr>
               <td />
-              <td class="text-center dark:text-snow px-1">{TRANSLATION[locale()]['attack']}</td>
+              <td class="text-center dark:text-snow">{TRANSLATION[locale()]['attack']}</td>
               <td class="text-center dark:text-snow px-1">{TRANSLATION[locale()]['damage']}</td>
               <td class="text-center dark:text-snow px-1">{TRANSLATION[locale()]['distance']}</td>
             </tr>
@@ -79,7 +79,7 @@ export const Combat = (props) => {
                       <p class="text-xs mt-1">{attack.notes}</p>
                     </Show>
                   </td>
-                  <td class="p-1 text-center">
+                  <td class="py-1 text-center">
                     <Dice
                       width="28"
                       height="28"

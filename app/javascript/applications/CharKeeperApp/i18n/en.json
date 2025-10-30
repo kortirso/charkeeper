@@ -108,8 +108,7 @@
         "transformations": "Transformations",
         "mechanics": "Available mechanics",
         "domainLevel": "Domain level"
-      },
-      "personalFeats": "Personal feats can be created through homebrew"
+      }
     },
     "campaignsPage": {
       "title": "Campaigns",

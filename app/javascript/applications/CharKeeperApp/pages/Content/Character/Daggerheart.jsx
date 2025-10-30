@@ -92,7 +92,7 @@ export const Daggerheart = (props) => {
           currentGuideStep={character().guide_step}
           markedTabs={{ '3': 'equipment', '4': 'domainCards', '5': 'classLevels' }}
         />
-        <div class="p-2 flex-1 overflow-y-auto">
+        <div class="p-2 pb-16 flex-1 overflow-y-auto">
           <Switch>
             <Match when={activeMobileTab() === 'traits'}>
               <DaggerheartTraits
@@ -272,7 +272,7 @@ export const Daggerheart = (props) => {
           currentGuideStep={character().guide_step}
           markedTabs={{ '3': 'equipment', '4': 'domainCards', '5': 'classLevels' }}
         />
-        <div class="p-2 flex-1">
+        <div class="p-2 pb-16 flex-1">
           <Switch>
             <Match when={activeTab() === 'combat'}>
               <DaggerheartHealth character={character()} onReplaceCharacter={props.onReplaceCharacter} />
