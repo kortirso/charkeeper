@@ -103,7 +103,11 @@ export const Dnd5 = (props) => {
               <div class="mt-4">
                 <Conditions character={character()} />
               </div>
+<<<<<<< HEAD
+              <Show when={character().provider === 'dnd2024'}>
+=======
               <Show when={character().provider === 'dnd2024' && Object.keys(character().classes).includes('druid')}>
+>>>>>>> refs/subrepo/app/javascript/applications/CharKeeperApp/fetch
                 <div class="mt-4">
                   <Dnd2024WildShapes character={character()} onReplaceCharacter={props.onReplaceCharacter} />
                 </div>
