@@ -15,7 +15,7 @@ export const ContentWrapper = (props) => {
         {props.mobileView}
       </Match>
       <Match when={size.width <= 1407}>
-        <div class="p-2 flex-1 overflow-y-auto relative">
+        <div class="p-2 pb-16 flex-1 overflow-y-auto relative">
           <Switch>
             <Match when={props.activeView ? props.activeView === 'left' : activeView() === 'left'}>
               <Show when={!props.activeView}>

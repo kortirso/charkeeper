@@ -6,13 +6,23 @@ import {
 } from '../../components';
 import { useAppState, useAppLocale, useAppAlert } from '../../context';
 import { updateCharacterFeatRequest } from '../../requests/updateCharacterFeatRequest';
+import { readFromCache, writeToCache } from '../../helpers';
 
+const FEATURES_TOGGLE = 'FeaturesToggle';
 const TRANSLATION = {
   en: {
-    activeFeat: 'Active'
+    activeFeat: 'Active',
+    allFeatures: 'All features',
+    enable: 'Enable grouping',
+    disable: 'Disable grouping',
+    personalFeats: 'Personal feats can be created through homebrew'
   },
   ru: {
-    activeFeat: 'Активен'
+    activeFeat: 'Активен',
+    allFeatures: 'Все способности',
+    enable: 'Группировать',
+    disable: 'Не группировать',
+    personalFeats: 'Личные способности могут быть добавлены через homebrew'
   }
 }
 
@@ -20,6 +30,7 @@ export const Feats = (props) => {
   const character = () => props.character;
   const filters = () => props.filters;
 
+  const [filtering, setFiltering] = createSignal(true);
   const [activeFilter, setActiveFilter] = createSignal(filters()[0].title);
   const [lastActiveCharacterId, setLastActiveCharacterId] = createSignal(undefined);
   const [featValues, setFeatValues] = createSignal(
@@ -32,6 +43,11 @@ export const Feats = (props) => {
 
   const t = i18n.translator(dict);
 
+  const readFeaturesToggle = async () => {
+    const cacheValue = await readFromCache(FEATURES_TOGGLE)
+    setFiltering(cacheValue === null ? true : false);
+  }
+
   createEffect(() => {
     if (lastActiveCharacterId() === character().id) return;
 
@@ -40,6 +56,8 @@ export const Feats = (props) => {
       setLastActiveCharacterId(character().id);
       setActiveFilter(filters()[0].title);
     });
+
+    readFeaturesToggle();
   });
 
   const activeFilterOptions = createMemo(() => filters().find((item) => item.title === activeFilter()));
@@ -92,20 +110,39 @@ export const Feats = (props) => {
     } else renderAlerts(result.errors_list);
   }
 
+  const updateFiltering = (cacheValue, value) => {
+    batch(() => {
+      writeToCache(FEATURES_TOGGLE, cacheValue);
+      setFiltering(value);
+    })
+  }
+
   return (
     <ErrorWrapper payload={{ character_id: character().id, key: 'Feats' }}>
       <GuideWrapper character={character()}>
-        <CharacterNavigation
-          tabsList={filters().map((item) => item.title)}
-          activeTab={activeFilter()}
-          setActiveTab={setActiveFilter}
-        />
+        <Show
+          when={filtering() === null || filtering()}
+          fallback={
+            <div id="character-navigation">
+              <p class="active">{TRANSLATION[locale()]['allFeatures']}</p>
+              <p onClick={() => updateFiltering(null, true)}>{TRANSLATION[locale()]['enable']}</p>
+            </div>
+          }
+        >
+          <CharacterNavigation
+            tabsList={filters().map((item) => item.title)}
+            activeTab={activeFilter()}
+            setActiveTab={setActiveFilter}
+          >
+            <p onClick={() => updateFiltering('disable', false)}>{TRANSLATION[locale()]['disable']}</p>
+          </CharacterNavigation>
+        </Show>
         <div class="mt-2">
           <Show when={activeFilterOptions()}>
-            <Show when={activeFilter() === 'personal'}>
-              <p class="dark:text-snow mb-2 text-sm">{t('pages.homebrewPage.personalFeats')}</p>
+            <Show when={filtering() === null || filtering() && activeFilter() === 'personal'}>
+              <p class="dark:text-snow mb-2 text-sm">{TRANSLATION[locale()]['personalFeats']}</p>
             </Show>
-            <For each={character().features.filter(activeFilterOptions().callback)}>
+            <For each={filtering() === null || filtering() ? character().features.filter(activeFilterOptions().callback) : character().features}>
               {(feature) =>
                 <Toggle title={<FeatureTitle feature={feature} onSpendEnergy={spendEnergy} onRestoreEnergy={restoreEnergy} />}>
                   <p

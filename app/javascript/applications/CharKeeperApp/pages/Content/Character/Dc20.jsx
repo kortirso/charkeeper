@@ -39,7 +39,7 @@ export const Dc20 = (props) => {
           currentGuideStep={character().guide_step}
           markedTabs={{ '3': 'equipment' }}
         />
-        <div class="p-2 flex-1 overflow-y-auto">
+        <div class="p-2 pb-16 flex-1 overflow-y-auto">
           <Switch>
             <Match when={activeMobileTab() === 'abilities'}>
               <Dc20Abilities
@@ -138,7 +138,7 @@ export const Dc20 = (props) => {
           currentGuideStep={character().guide_step}
           markedTabs={{ '3': 'equipment' }}
         />
-        <div class="p-2 flex-1">
+        <div class="p-2 pb-16 flex-1">
           <Switch>
             <Match when={activeTab() === 'combat'}>
               <Dc20CombatStatic character={character()} openDiceRoll={openDiceRoll} />

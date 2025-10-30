@@ -1,4 +1,4 @@
-import { For } from 'solid-js';
+import { For, Show } from 'solid-js';
 import * as i18n from '@solid-primitives/i18n';
 
 import { useAppLocale } from '../../context';
@@ -24,6 +24,7 @@ export const CharacterNavigation = (props) => {
           </p>
         }
       </For>
+      <Show when={props.children}>{props.children}</Show>
     </div>
   );
 }

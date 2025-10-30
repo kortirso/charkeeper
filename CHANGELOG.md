@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Modified
 - rendering attacks with tags for all systems
 - rendering experiences block
+- optional filtering character features
 
 ## [0.3.12] - 2025-10-29
 ### Added

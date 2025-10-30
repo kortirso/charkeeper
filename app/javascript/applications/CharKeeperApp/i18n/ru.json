@@ -108,8 +108,7 @@
         "transformations": "Трансформации",
         "mechanics": "Доступные механики",
         "domainLevel": "Уровень доступа"
-      },
-      "personalFeats": "Личные способности могут быть добавлены через homebrew"
+      }
     },
     "campaignsPage": {
       "title": "Кампании",

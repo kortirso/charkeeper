@@ -171,7 +171,7 @@ export const createDiceRoll = () => {
       return (
         <Portal>
           <div
-            class="fixed bottom-0 right-0 px-6 pb-6 sm:pr-6 z-40 flex items-center justify-end sm:justify-center w-full sm:w-auto"
+            class="fixed bottom-0 right-0 px-6 pb-4 sm:pr-6 z-40 flex items-center justify-end sm:justify-center w-full sm:w-auto"
             classList={{ 'dark': appState.colorSchema === 'dark' }}
             use:clickOutside={() => setIsOpen(undefined)}
           >
