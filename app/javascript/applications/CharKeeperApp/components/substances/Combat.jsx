@@ -56,6 +56,7 @@ export const Combat = (props) => {
             </tr>
           </thead>
           <tbody>
+
             <For each={values}>
               {(attack) =>
                 <tr class="dark:text-snow">
@@ -70,9 +71,9 @@ export const Combat = (props) => {
                         </For>
                       </div>
                     </Show>
-                    <Show when={attack.tags === undefined && attack.features && Object.keys(attack.features).length > 0}>
+                    <Show when={attack.tags === undefined && attack.features && attack.features.length > 0}>
                       <p class="mt-1 text-xs">
-                        {typeof variable === 'string' ? attack.features.join(', ') : attack.features.map((item) => item[locale()]).join(', ')}
+                        {typeof attack.features[0] === 'string' ? attack.features.join(', ') : attack.features.map((item) => item[locale()]).join(', ')}
                       </p>
                     </Show>
                     <Show when={attack.notes}>
