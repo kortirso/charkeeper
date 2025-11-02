@@ -24,10 +24,6 @@ module DaggerheartCharacter
     end
     # rubocop: enable Naming/PredicateMethod
 
-    def proficiency
-      @proficiency ||= __getobj__.proficiency + leveling['proficiency'].to_i + sum(bonuses.pluck('proficiency'))
-    end
-
     def modified_traits
       @modified_traits ||=
         __getobj__.modified_traits.merge(
@@ -212,10 +208,6 @@ module DaggerheartCharacter
 
     def features
       feats.joins(:feat).pluck('feats.id')
-    end
-
-    def bonuses
-      @bonuses ||= __getobj__.bonuses.pluck(:value).compact
     end
 
     def sum(values)

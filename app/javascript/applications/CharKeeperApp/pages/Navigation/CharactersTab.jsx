@@ -20,12 +20,12 @@ const TRANSLATION = {
   en: {
     deleteCharacterConfirm: 'Are you sure need to remove this character?',
     deleteCharacterTitle: 'Deleting character',
-    delete: 'Delete',
+    delete: 'Delete'
   },
   ru: {
     deleteCharacterConfirm: 'Вы точно хотите избавиться от этого персонажа?',
     deleteCharacterTitle: 'Удаление персонажа',
-    delete: 'Удалить',
+    delete: 'Удалить'
   }
 }
 

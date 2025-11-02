@@ -19,7 +19,7 @@ module DaggerheartCharacter
     end
 
     def proficiency
-      @proficiency ||= tier
+      @proficiency ||= tier + leveling['proficiency'].to_i + bonuses.pluck('proficiency').sum(&:to_i)
     end
 
     def modified_traits
@@ -88,6 +88,10 @@ module DaggerheartCharacter
       return 2 if level >= 2
 
       1
+    end
+
+    def bonuses
+      @bonuses ||= __getobj__.bonuses.pluck(:value).compact
     end
   end
 end

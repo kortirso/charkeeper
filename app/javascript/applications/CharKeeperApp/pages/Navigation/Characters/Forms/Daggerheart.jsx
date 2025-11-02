@@ -13,6 +13,15 @@ const DAGGERHEART_DEFAULT_FORM = {
   secondary_feature: undefined, community: undefined, main_class: undefined, subclass: undefined
 }
 
+const TRANSLATION = {
+  en: {
+    options: 'There are books available in Homebrews/Modules section for additional options for character creation.'
+  },
+  ru: {
+    options: 'В разделе Homebrews/Модули доступны книги для расширения возможных вариантов при создании персонажа.'
+  }
+}
+
 export const DaggerheartCharacterForm = (props) => {
   const [customHeritage, setCustomHeritage] = createSignal(false);
 
@@ -89,6 +98,7 @@ export const DaggerheartCharacterForm = (props) => {
 
   return (
     <CharacterForm loading={props.loading} setCurrentTab={props.setCurrentTab} onSaveCharacter={saveCharacter}>
+      <p class="dark:text-snow mb-2">{TRANSLATION[locale()]['options']}</p>
       <Input
         containerClassList="mb-2"
         labelText={t('newCharacterPage.name')}
