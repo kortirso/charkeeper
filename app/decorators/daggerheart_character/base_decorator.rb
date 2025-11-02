@@ -14,6 +14,14 @@ module DaggerheartCharacter
       __getobj__.respond_to?(method.to_sym) ? __getobj__.public_send(method) : nil
     end
 
+    def advantage_dice
+      'd6'
+    end
+
+    def proficiency
+      @proficiency ||= tier
+    end
+
     def modified_traits
       @modified_traits ||= traits
     end
@@ -72,6 +80,14 @@ module DaggerheartCharacter
 
     def weapon_equiped # rubocop: disable Naming/PredicateMethod
       equiped_weapon_info.any?
+    end
+
+    def tier
+      return 4 if level >= 8
+      return 3 if level >= 5
+      return 2 if level >= 2
+
+      1
     end
   end
 end

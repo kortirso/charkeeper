@@ -1,0 +1,290 @@
+[
+  {
+    "slug": "elemental_incarnation_fire",
+    "title": {
+      "en": "Fire elemental incarnation",
+      "ru": "Стихийное воплощение огня"
+    },
+    "description": {
+      "en": "When an adversary within Melee range deals damage to you, they take 1d10 magic damage.",
+      "ru": "Когда противник, находящийся Вплотную, наносит вам урон, он получает 1d10 магического урона."
+    },
+    "origin": "subclass",
+    "origin_value": "warden_of_the_elements",
+    "kind": "static",
+    "eval_variables": {},
+    "conditions": { "selected_feature": "elemental_incarnation_fire" },
+    "continious": false
+  },
+  {
+    "slug": "elemental_incarnation_earth",
+    "title": {
+      "en": "Earth elemental incarnation",
+      "ru": "Стихийное воплощение земли"
+    },
+    "description": {
+      "en": "Gain a calculated bonus to your damage thresholds.",
+      "ru": "Вы получаете добавленный бонус к вашим порогам урона."
+    },
+    "origin": "subclass",
+    "origin_value": "warden_of_the_elements",
+    "kind": "static",
+    "eval_variables": {
+      "damage_thresholds": "damage_thresholds.transform_values { |item| item + proficiency }"
+    },
+    "conditions": { "selected_feature": "elemental_incarnation_earth" },
+    "continious": false
+  },
+  {
+    "slug": "elemental_incarnation_water",
+    "title": {
+      "en": "Water elemental incarnation",
+      "ru": "Стихийное воплощение воды"
+    },
+    "description": {
+      "en": "When you deal damage to an adversary within Melee range, all other adversaries within Very Close range must mark a Stress.",
+      "ru": "Когда вы наносите урон противнику, находящемуся Вплотную, все остальные противники в пределах Близкой дистанции должны отметить Стресс."
+    },
+    "origin": "subclass",
+    "origin_value": "warden_of_the_elements",
+    "kind": "static",
+    "eval_variables": {},
+    "conditions": { "selected_feature": "elemental_incarnation_water" },
+    "continious": false
+  },
+  {
+    "slug": "elemental_incarnation_air",
+    "title": {
+      "en": "Air elemental incarnation",
+      "ru": "Стихийное воплощение воздуха"
+    },
+    "description": {
+      "en": "You can hover, gaining advantage on Agility Rolls.",
+      "ru": "Вы можете парить, получая преимущество при бросках Проворности."
+    },
+    "origin": "subclass",
+    "origin_value": "warden_of_the_elements",
+    "kind": "static",
+    "eval_variables": {},
+    "conditions": { "selected_feature": "elemental_incarnation_air" },
+    "continious": false
+  },
+  {
+    "slug": "elemental_dominion_fire",
+    "title": {
+      "en": "Fire elemental dominion",
+      "ru": "Стихийное господство огня"
+    },
+    "description": {
+      "en": "When an adversary within Melee range deals damage to you, they take 1d10 magic damage; you gain a +1 situative bonus to your Proficiency for attacks and spells that deal damage.",
+      "ru": "Когда противник, находящийся Вплотную, наносит вам урон, он получает 1d10 магического урона; вы получаете ситуативный бонус +1 к вашему Мастерству для атак и заклинаний, которые наносят урон."
+    },
+    "exclude": ["elemental_incarnation_fire"],
+    "origin": "subclass",
+    "origin_value": "warden_of_the_elements",
+    "kind": "static",
+    "eval_variables": {},
+    "conditions": { "selected_feature": "elemental_dominion_fire" },
+    "continious": false
+  },
+  {
+    "slug": "elemental_dominion_earth",
+    "title": {
+      "en": "Earth elemental dominion",
+      "ru": "Стихийное господство земли"
+    },
+    "description": {
+      "en": "Gain a calculated bonus to your damage thresholds; when you would mark Hit Points, roll a d6 per Hit Point marked. For each result of 6, reduce the number of Hit Points you mark by 1.",
+      "ru": "Вы получаете добавленный бонус к вашим порогам урона; когда вы отмечаете Рану, бросьте d6 за каждую отмеченную ячейку. За каждый результат 6, уменьшите количество отмеченных Ран на 1."
+    },
+    "exclude": ["elemental_incarnation_earth"],
+    "origin": "subclass",
+    "origin_value": "warden_of_the_elements",
+    "kind": "static",
+    "eval_variables": {
+      "damage_thresholds": "damage_thresholds.transform_values { |item| item + proficiency }"
+    },
+    "conditions": { "selected_feature": "elemental_dominion_earth" },
+    "continious": false
+  },
+  {
+    "slug": "elemental_dominion_water",
+    "title": {
+      "en": "Water elemental dominion",
+      "ru": "Стихийное господство воды"
+    },
+    "description": {
+      "en": "When you deal damage to an adversary within Melee range, all other adversaries within Very Close range must mark a Stress; when an attack against you succeeds, you can mark a Stress to make the attacker temporarily Vulnerable.",
+      "ru": "Когда вы наносите урон противнику, находящемуся Вплотную, все остальные противники в пределах Близкой дистанции должны отметить Стресс; если атака против вас успешна, вы можете отметить Стресс, чтобы сделать атакующего временно Уязвимым."
+    },
+    "exclude": ["elemental_incarnation_water"],
+    "origin": "subclass",
+    "origin_value": "warden_of_the_elements",
+    "kind": "static",
+    "eval_variables": {},
+    "conditions": { "selected_feature": "elemental_dominion_water" },
+    "continious": false
+  },
+  {
+    "slug": "elemental_dominion_air",
+    "title": {
+      "en": "Air elemental dominion",
+      "ru": "Стихийное господство воздуха"
+    },
+    "description": {
+      "en": "You can hover, gaining advantage on Agility Rolls; you gain a +1 calculated bonus to your Evasion and can fly.",
+      "ru": "Вы можете парить, получая преимущество при бросках Проворности; вы получаете добавленный бонус +1 к вашему Уклонению и можете летать."
+    },
+    "exclude": ["elemental_incarnation_air"],
+    "origin": "subclass",
+    "origin_value": "warden_of_the_elements",
+    "kind": "static",
+    "eval_variables": {
+      "evasion": "evasion + 1"
+    },
+    "conditions": { "selected_feature": "elemental_dominion_air" },
+    "continious": false
+  },
+  {
+    "slug": "elemental_aura_fire",
+    "title": {
+      "en": "Fire elemental aura",
+      "ru": "Стихийная аура огня"
+    },
+    "description": {
+      "en": "When an adversary marks 1 or more Hit Points, they must also mark a Stress.",
+      "ru": "Когда противник отмечает 1 или более Ран, он также отмечает 1 Стресс."
+    },
+    "origin": "subclass",
+    "origin_value": "warden_of_the_elements",
+    "kind": "static",
+    "eval_variables": {},
+    "conditions": { "selected_feature": "elemental_aura_fire" },
+    "continious": false
+  },
+  {
+    "slug": "elemental_aura_earth",
+    "title": {
+      "en": "Earth elemental aura",
+      "ru": "Стихийная аура земли"
+    },
+    "description": {
+      "en": "Your allies gain a +1 bonus to Strength.",
+      "ru": "Ваши союзники получают +1 к Силе."
+    },
+    "origin": "subclass",
+    "origin_value": "warden_of_the_elements",
+    "kind": "static",
+    "eval_variables": {},
+    "conditions": { "selected_feature": "elemental_aura_earth" },
+    "continious": false
+  },
+  {
+    "slug": "elemental_aura_water",
+    "title": {
+      "en": "Water elemental aura",
+      "ru": "Стихийная аура воды"
+    },
+    "description": {
+      "en": "When an adversary deals damage to you, you can mark a Stress to move them anywhere within Very Close range of where they are.",
+      "ru": "Когда противник наносит вам урон, вы можете отметить Стресс, чтобы переместить его в любое место в пределах Близкой дистанции от того места, где он находится."
+    },
+    "origin": "subclass",
+    "origin_value": "warden_of_the_elements",
+    "kind": "static",
+    "eval_variables": {},
+    "conditions": { "selected_feature": "elemental_aura_water" },
+    "continious": false
+  },
+  {
+    "slug": "elemental_aura_air",
+    "title": {
+      "en": "Air elemental aura",
+      "ru": "Стихийная аура воздуха"
+    },
+    "description": {
+      "en": "When you or an ally takes damage from an attack beyond Melee range, reduce the damage by 1d8.",
+      "ru": "Когда вы или союзник получаете урон от атаки, исходящей за пределами дистанции Вплотную, снизьте его на 1d8."
+    },
+    "origin": "subclass",
+    "origin_value": "warden_of_the_elements",
+    "kind": "static",
+    "eval_variables": {},
+    "conditions": { "selected_feature": "elemental_aura_air" },
+    "continious": false
+  },
+  {
+    "slug": "transcendence_severe",
+    "title": {
+      "en": "Severe threshold bonus",
+      "ru": "Бонус к порогу Тяжёлого урона"
+    },
+    "description": {
+      "en": "+4 calculated bonus to your Severe threshold.",
+      "ru": "+4 добавленный бонус к вашему порогу Тяжёлого урона."
+    },
+    "origin": "subclass",
+    "origin_value": "elemental_origin",
+    "kind": "static",
+    "eval_variables": {
+      "damage_thresholds": "damage_thresholds.merge({ 'severe': damage_thresholds['severe'] + 4 })"
+    },
+    "conditions": { "selected_feature": "transcendence_severe" },
+    "continious": false
+  },
+  {
+    "slug": "transcendence_trait",
+    "title": {
+      "en": "Bonus to a trait",
+      "ru": "Бонус к характеристике"
+    },
+    "description": {
+      "en": "+1 situative bonus to a character trait of your choice.",
+      "ru": "+1 ситуативный бонус к Характеристике по вашему выбору."
+    },
+    "origin": "subclass",
+    "origin_value": "elemental_origin",
+    "kind": "static",
+    "eval_variables": {},
+    "conditions": { "selected_feature": "transcendence_trait" },
+    "continious": false
+  },
+  {
+    "slug": "transcendence_proficiency",
+    "title": {
+      "en": "Bonus to Proficiency",
+      "ru": "Бонус к Мастерству"
+    },
+    "description": {
+      "en": "+1 calculated bonus to your Proficiency.",
+      "ru": "+1 добавленный бонус к Мастерству."
+    },
+    "origin": "subclass",
+    "origin_value": "elemental_origin",
+    "kind": "static",
+    "bonus_eval_variables": {
+      "proficiency": "proficiency + 1"
+    },
+    "conditions": { "selected_feature": "transcendence_proficiency" },
+    "continious": false
+  },
+  {
+    "slug": "transcendence_evasion",
+    "title": {
+      "en": "Bonus to your Evasion",
+      "ru": "Бонус к Уклонению"
+    },
+    "description": {
+      "en": "+2 calculated bonus to your Evasion.",
+      "ru": "+2 добавленный бонус к Уклонению."
+    },
+    "origin": "subclass",
+    "origin_value": "elemental_origin",
+    "kind": "static",
+    "eval_variables": {
+      "evasion": "evasion + 2"
+    },
+    "conditions": { "selected_feature": "transcendence_evasion" },
+    "continious": false
+  }
+]

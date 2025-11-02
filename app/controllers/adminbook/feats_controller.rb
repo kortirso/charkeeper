@@ -3,7 +3,7 @@
 module Adminbook
   class FeatsController < Adminbook::BaseController
     def index
-      @feats = ::Feat.where(type: feat_class.to_s, user_id: nil).order(origin: :asc, origin_value: :asc)
+      @feats = ::Feat.where(type: feat_class.to_s, user_id: [nil, admin_id]).order(origin: :asc, origin_value: :asc)
       @feats = @feats.where(origin: params[:origin]) if params[:origin]
     end
 
@@ -55,6 +55,10 @@ module Adminbook
 
     def feat_params
       params.require(:feat).permit!.to_h
+    end
+
+    def admin_id
+      '64de04ab-795e-473d-9672-2dadf86e65be'
     end
   end
 end

@@ -191,6 +191,33 @@ end
 #   file.write(beautified_json_string)
 # end
 
+# json = {
+#   "slug": "long_tongue",
+#   "kind": "primary weapon",
+#   "name": { "en": "Long Tongue", "ru": "Длинный Язык" },
+#   "data": {},
+#   "info": {
+#     "tier": 1,
+#     "trait": "fin",
+#     "range": "close",
+#     "damage": "d12",
+#     "damage_bonus": 0,
+#     "damage_type": "physical",
+#     "burden": 1,
+#     "bonuses": {},
+#     "features": [
+#       {
+#         "en": "Mark a Stress to use your tongue as weapon.",
+#         "ru": "Отметьте Стресс, чтобы использовать язык как оружие"
+#       }
+#     ]
+#   },
+#   "itemable_id": "0b90fc57-a228-4b7b-b716-60bb7d7560db",
+#   "itemable_type": "Feat"
+# }
+
+# Daggerheart::Item.create!(json)
+
 weapons_file = File.read(Rails.root.join('db/data/dc20/weapons.json'))
 weapons = JSON.parse(weapons_file)
 Dc20::Item.upsert_all(weapons) if weapons.any?

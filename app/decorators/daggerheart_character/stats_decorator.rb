@@ -24,6 +24,10 @@ module DaggerheartCharacter
     end
     # rubocop: enable Naming/PredicateMethod
 
+    def proficiency
+      @proficiency ||= __getobj__.proficiency + leveling['proficiency'].to_i + sum(bonuses.pluck('proficiency'))
+    end
+
     def modified_traits
       @modified_traits ||=
         __getobj__.modified_traits.merge(
@@ -73,10 +77,6 @@ module DaggerheartCharacter
       @hope_max ||= data.hope_max + beastbound_pet_bonus
     end
 
-    def proficiency
-      @proficiency ||= 1 + leveling['proficiency'].to_i + proficiency_by_level + sum(bonuses.pluck('proficiency'))
-    end
-
     def attacks
       @attacks ||=
         beastform.blank? ? ([unarmed_attack] + weapons.flat_map { |item| calculate_attack(item) }) : [beastform_attack]
@@ -109,14 +109,6 @@ module DaggerheartCharacter
     end
 
     private
-
-    def proficiency_by_level
-      return 3 if level >= 8
-      return 2 if level >= 5
-      return 1 if level >= 2
-
-      0
-    end
 
     def beastform_attack
       beast_attack = beastform_config['attack']
