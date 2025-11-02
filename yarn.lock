@@ -429,51 +429,51 @@
     "@nodelib/fs.scandir" "2.1.5"
     fastq "^1.6.0"
 
-"@solid-primitives/event-listener@^2.4.1":
-  version "2.4.1"
-  resolved "https://registry.yarnpkg.com/@solid-primitives/event-listener/-/event-listener-2.4.1.tgz#d71b068bad49f0cbf06ca3ae6869b4ea2a84a9b9"
-  integrity sha512-Xc/lBCeuh9LwzR4lYbMDtopwWK7N9b4o+FmI4uoI8DOtVGYi0Ip20DG8PtwHk+g31lHgvwtFFVKfnUx2UaqZJg==
+"@solid-primitives/event-listener@^2.4.3":
+  version "2.4.3"
+  resolved "https://registry.yarnpkg.com/@solid-primitives/event-listener/-/event-listener-2.4.3.tgz#e09380222e38ed1b27f3d93bc72e85ba8507b3c0"
+  integrity sha512-h4VqkYFv6Gf+L7SQj+Y6puigL/5DIi7x5q07VZET7AWcS+9/G3WfIE9WheniHWJs51OEkRB43w6lDys5YeFceg==
   dependencies:
-    "@solid-primitives/utils" "^6.3.1"
+    "@solid-primitives/utils" "^6.3.2"
 
 "@solid-primitives/i18n@^2.1.1":
-  version "2.1.1"
-  resolved "https://registry.yarnpkg.com/@solid-primitives/i18n/-/i18n-2.1.1.tgz#19826dabafa10b94abcd06f6c2a1b2b9bf6c5b91"
-  integrity sha512-1p9B8hveu+gzFRWfXcRtdzzEdr7gw3c8uLXm+2bU33JHgiI8kYJsWvG128sE6vU1ZtYGPrGq980Jd6hxYupyZQ==
+  version "2.2.1"
+  resolved "https://registry.yarnpkg.com/@solid-primitives/i18n/-/i18n-2.2.1.tgz#f650fa7704345367d20a9ce63a6897d26ce23ee4"
+  integrity sha512-TnTnE2Ku11MGYZ1JzhJ8pYscwg1fr9MteoYxPwsfxWfh9Jp5K7RRJncJn9BhOHvNLwROjqOHZ46PT7sPHqbcXw==
 
 "@solid-primitives/keyed@^1.5.1":
-  version "1.5.1"
-  resolved "https://registry.yarnpkg.com/@solid-primitives/keyed/-/keyed-1.5.1.tgz#7d360230de1ba904d1c8a8c0db040e47e660de2f"
-  integrity sha512-lAgQ1Jou8nxywifWsWjDTla9MI7Pfr46JRTC40K81fqz8dw4E8t/4gYuIwqP1EHVG0mItfIb3XqDw0wEQh+QYA==
+  version "1.5.2"
+  resolved "https://registry.yarnpkg.com/@solid-primitives/keyed/-/keyed-1.5.2.tgz#0b2caa83bb293374b513f33fd4ba09dc3b5f4630"
+  integrity sha512-BgoEdqPw48URnI+L5sZIHdF4ua4Las1eWEBBPaoSFs42kkhnHue+rwCBPL2Z9ebOyQ75sUhUfOETdJfmv0D6Kg==
 
 "@solid-primitives/resize-observer@^2.1.1":
-  version "2.1.1"
-  resolved "https://registry.yarnpkg.com/@solid-primitives/resize-observer/-/resize-observer-2.1.1.tgz#88d5de0f5de7860ea9cc6eeb14737535c9605d90"
-  integrity sha512-vb/VS9+YdUdVZ2V92JimFmFuaJ2MSyKOGnUay/mQvoQ0R+mtdT7FSylfQlVslCzm0ecx8Jkvsm1Sk2lopvMAdg==
+  version "2.1.3"
+  resolved "https://registry.yarnpkg.com/@solid-primitives/resize-observer/-/resize-observer-2.1.3.tgz#459db96f9c4a3d98a194d940c6e69f3ad4b2dad8"
+  integrity sha512-zBLje5E06TgOg93S7rGPldmhDnouNGhvfZVKOp+oG2XU8snA+GoCSSCz1M+jpNAg5Ek2EakU5UVQqL152WmdXQ==
   dependencies:
-    "@solid-primitives/event-listener" "^2.4.1"
-    "@solid-primitives/rootless" "^1.5.1"
-    "@solid-primitives/static-store" "^0.1.1"
-    "@solid-primitives/utils" "^6.3.1"
+    "@solid-primitives/event-listener" "^2.4.3"
+    "@solid-primitives/rootless" "^1.5.2"
+    "@solid-primitives/static-store" "^0.1.2"
+    "@solid-primitives/utils" "^6.3.2"
 
-"@solid-primitives/rootless@^1.5.1":
-  version "1.5.1"
-  resolved "https://registry.yarnpkg.com/@solid-primitives/rootless/-/rootless-1.5.1.tgz#f1ae18c4d01a2b7951abd8ec8debd04e9aa2fc8c"
-  integrity sha512-G4eNC6F3ufRT2Mjbodl7rSOH7uq/Emqs3S7/BIBWgh+V/IFUtvu6WELeqSrk4FJX3T/kKKvC+T8gXhepExSWyg==
+"@solid-primitives/rootless@^1.5.2":
+  version "1.5.2"
+  resolved "https://registry.yarnpkg.com/@solid-primitives/rootless/-/rootless-1.5.2.tgz#0a9243a977672169cb8ed43bf4eba0c4d8eb5ac5"
+  integrity sha512-9HULb0QAzL2r47CCad0M+NKFtQ+LrGGNHZfteX/ThdGvKIg2o2GYhBooZubTCd/RTu2l2+Nw4s+dEfiDGvdrrQ==
   dependencies:
-    "@solid-primitives/utils" "^6.3.1"
+    "@solid-primitives/utils" "^6.3.2"
 
-"@solid-primitives/static-store@^0.1.1":
-  version "0.1.1"
-  resolved "https://registry.yarnpkg.com/@solid-primitives/static-store/-/static-store-0.1.1.tgz#6bbfd1757b71d9058b08b761d644655c52b90261"
-  integrity sha512-daXWvpLjd+4hbYdGaaEJ2kKFuFhshvfIBFLveW7mfk2BWHl9lGQVwUuExp3qllkK9ONA9p+5D2cpwBQosv8odQ==
+"@solid-primitives/static-store@^0.1.2":
+  version "0.1.2"
+  resolved "https://registry.yarnpkg.com/@solid-primitives/static-store/-/static-store-0.1.2.tgz#acdbecee75f17a5b64416859082fca67eefbaaaa"
+  integrity sha512-ReK+5O38lJ7fT+L6mUFvUr6igFwHBESZF+2Ug842s7fvlVeBdIVEdTCErygff6w7uR6+jrr7J8jQo+cYrEq4Iw==
   dependencies:
-    "@solid-primitives/utils" "^6.3.1"
+    "@solid-primitives/utils" "^6.3.2"
 
-"@solid-primitives/utils@^6.3.1":
-  version "6.3.1"
-  resolved "https://registry.yarnpkg.com/@solid-primitives/utils/-/utils-6.3.1.tgz#d6fcffdadf885e731b459f05a563d8c1ac0c5a4d"
-  integrity sha512-4/Z59nnwu4MPR//zWZmZm2yftx24jMqQ8CSd/JobL26TPfbn4Ph8GKNVJfGJWShg1QB98qObJSskqizbTvcLLA==
+"@solid-primitives/utils@^6.3.2":
+  version "6.3.2"
+  resolved "https://registry.yarnpkg.com/@solid-primitives/utils/-/utils-6.3.2.tgz#13d6126fc5a498965d7c45dd41c052e42dcfd7e1"
+  integrity sha512-hZ/M/qr25QOCcwDPOHtGjxTD8w2mNyVAYvcfgwzBHq2RwNqHNdDNsMZYap20+ruRwW4A3Cdkczyoz0TSxLCAPQ==
 
 "@types/estree@^1.0.6":
   version "1.0.6"
@@ -1227,15 +1227,15 @@ semver@^7.6.0:
   resolved "https://registry.yarnpkg.com/semver/-/semver-7.6.3.tgz#980f7b5550bc175fb4dc09403085627f9eb33143"
   integrity sha512-oVekP1cKtI+CTDvHWYFUcMtsK/00wmAEfyqKfNdARm8u1wNVhSgaX7A8d4UuIlUI5e84iEwOhs7ZPYRmzU9U6A==
 
-seroval-plugins@^1.1.0:
-  version "1.2.0"
-  resolved "https://registry.yarnpkg.com/seroval-plugins/-/seroval-plugins-1.2.0.tgz#7fcf8537938e0446f843897172fc64f01322c33f"
-  integrity sha512-hULTbfzSe81jGWLH8TAJjkEvw6JWMqOo9Uq+4V4vg+HNq53hyHldM9ZOfjdzokcFysiTp9aFdV2vJpZFqKeDjQ==
+seroval-plugins@~1.3.0:
+  version "1.3.3"
+  resolved "https://registry.yarnpkg.com/seroval-plugins/-/seroval-plugins-1.3.3.tgz#51bcacf09e5384080d7ea4002b08fd9f6166daf5"
+  integrity sha512-16OL3NnUBw8JG1jBLUoZJsLnQq0n5Ua6aHalhJK4fMQkz1lqR7Osz1sA30trBtd9VUDc2NgkuRCn8+/pBwqZ+w==
 
-seroval@^1.1.0:
-  version "1.2.0"
-  resolved "https://registry.yarnpkg.com/seroval/-/seroval-1.2.0.tgz#742d642750abd0d279fe86bde20137096ead8400"
-  integrity sha512-GURoU99ko2UiAgUC3qDCk59Jb3Ss4Po8VIMGkG8j5PFo2Q7y0YSMP8QG9NuL/fJCoTz9V1XZUbpNIMXPOfaGpA==
+seroval@~1.3.0:
+  version "1.3.2"
+  resolved "https://registry.yarnpkg.com/seroval/-/seroval-1.3.2.tgz#7e5be0dc1a3de020800ef013ceae3a313f20eca7"
+  integrity sha512-RbcPH1n5cfwKrru7v7+zrZvjLurgHhGyso3HTyGtRivGWgYjbOmGuivCQaORNELjNONoK35nj28EoWul9sb1zQ==
 
 shebang-command@^2.0.0:
   version "2.0.0"
@@ -1250,13 +1250,13 @@ shebang-regex@^3.0.0:
   integrity sha512-7++dFhtcx3353uBaq8DDR4NuxBetBzC7ZQOhmTQInHEd6bSrXdiEyzCvG07Z44UYdLShWUyXt5M/yhz8ekcb1A==
 
 solid-js@^1.8.21:
-  version "1.9.4"
-  resolved "https://registry.yarnpkg.com/solid-js/-/solid-js-1.9.4.tgz#da9b5645f10875a631d93335cd50525ff36b6c27"
-  integrity sha512-ipQl8FJ31bFUoBNScDQTG3BjN6+9Rg+Q+f10bUbnO6EOTTf5NGerJeHc7wyu5I4RMHEl/WwZwUmy/PTRgxxZ8g==
+  version "1.9.10"
+  resolved "https://registry.yarnpkg.com/solid-js/-/solid-js-1.9.10.tgz#95e57b004f3788d38f19e3b47101e90a9ab9dd0f"
+  integrity sha512-Coz956cos/EPDlhs6+jsdTxKuJDPT7B5SVIWgABwROyxjY7Xbr8wkzD68Et+NxnV7DLJ3nJdAC2r9InuV/4Jew==
   dependencies:
     csstype "^3.1.0"
-    seroval "^1.1.0"
-    seroval-plugins "^1.1.0"
+    seroval "~1.3.0"
+    seroval-plugins "~1.3.0"
 
 strip-json-comments@^3.1.1:
   version "3.1.1"

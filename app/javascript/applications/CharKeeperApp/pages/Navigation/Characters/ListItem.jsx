@@ -133,23 +133,12 @@ export const CharactersListItem = (props) => {
           </IconButton>
           <Show when={isOpen()}>
             <div class="absolute z-9 right-0 border border-gray-200 rounded overflow-hidden">
-              <p
-                class="px-2 py-1 text-sm bg-white hover:bg-gray-200 dark:bg-dusty dark:hover:bg-neutral-800"
-                onClick={deleteClick}
-              >{TRANSLATION[locale()]['delete']}</p>
+              <p class="dots-item" onClick={deleteClick}>{TRANSLATION[locale()]['delete']}</p>
               <Show when={AVAILABLE_JSON.includes(character().provider)}>
-                <p
-                  class="px-2 py-1 text-sm bg-white hover:bg-gray-200 dark:bg-dusty dark:hover:bg-neutral-800"
-                  onClick={copy}
-                >{t('charactersPage.onCopyCharacter')}</p>
+                <p class="dots-item" onClick={copy}>{t('charactersPage.onCopyCharacter')}</p>
               </Show>
               <Show when={!window.__TAURI_INTERNALS__ && AVAILABLE_PDF.includes(character().provider)}>
-                <p
-                  class="px-2 py-1 text-sm bg-white hover:bg-gray-200 dark:bg-dusty dark:hover:bg-neutral-800"
-                  onClick={(e) => viewClick(e)}
-                >
-                  PDF
-                </p>
+                <p class="dots-item" onClick={(e) => viewClick(e)}>PDF</p>
               </Show>
             </div>
           </Show>

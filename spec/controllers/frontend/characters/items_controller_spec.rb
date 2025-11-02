@@ -38,7 +38,9 @@ describe Frontend::Characters::ItemsController do
           expect(response).to have_http_status :ok
           expect(response.parsed_body['items'].size).to eq 1
           expect(response_values.keys).to(
-            contain_exactly('id', 'quantity', 'ready_to_use', 'notes', 'name', 'kind', 'data', 'state')
+            contain_exactly(
+              'id', 'quantity', 'ready_to_use', 'notes', 'name', 'kind', 'data', 'state', 'has_description', 'item_id'
+            )
           )
         end
       end

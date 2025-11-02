@@ -101,6 +101,9 @@ Rails.application.routes.draw do
     end
 
     get ':provider/items', to: 'items#index'
+    namespace :info do
+      resources :items, only: %i[show]
+    end
     resource :users, only: %i[update destroy] do
       resources :identities, only: %i[destroy], module: 'users'
       resources :feedbacks, only: %i[create], module: 'users'

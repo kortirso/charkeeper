@@ -1,19 +1,37 @@
-import { For, Show } from 'solid-js';
+import { createSignal, For, Show } from 'solid-js';
 import * as i18n from '@solid-primitives/i18n';
 
-import { Button } from '../../components';
+import { Button, IconButton } from '../../components';
 import { useAppLocale } from '../../context';
-import { Close, Hands, Equipment, Backpack, Storage } from '../../assets';
+import { Hands, Equipment, Backpack, Storage, Dots } from '../../assets';
+import { clickOutside } from '../../helpers';
 
 const STATE_ICONS = { 'hands': Hands, 'equipment': Equipment, 'backpack': Backpack, 'storage': Storage }
+
+const TRANSLATION = {
+  en: {
+    delete: 'Remove',
+    info: 'Info',
+    change: 'Change'
+  },
+  ru: {
+    delete: 'Убрать',
+    info: 'Информация',
+    change: 'Изменить'
+  }
+}
 
 export const ItemsTable = (props) => {
   const items = () => props.items;
   const IconComponent = STATE_ICONS[props.state];
 
-  const [, dict] = useAppLocale();
+  const [isOpen, setIsOpen] = createSignal(null);
+
+  const [locale, dict] = useAppLocale();
 
   const t = i18n.translator(dict);
+
+  const toggleMenu = (item) => setIsOpen(isOpen() ? null : item);
 
   return (
     <div class="blockable p-4 mb-2">
@@ -42,10 +60,7 @@ export const ItemsTable = (props) => {
                     </Show>
                   </td>
                   <td class="py-1">
-                    <p
-                      class="p-1 text-center cursor-pointer dark:text-snow"
-                      onClick={() => props.onChangeItem(item)}
-                    >{item.quantity}</p>
+                    <p class="p-1 text-center cursor-pointer dark:text-snow">{item.quantity}</p>
                   </td>
                   <td>
                     <div class="flex items-center gap-x-2">
@@ -63,9 +78,20 @@ export const ItemsTable = (props) => {
                           </Show>
                         }
                       </For>
-                      <Button default size="small" onClick={() => props.onRemoveCharacterItem(item)}>
-                        <Close />
-                      </Button>
+                      <div class="relative h-6 dark:text-snow" use:clickOutside={() => setIsOpen(false)}>
+                        <IconButton onClick={() => toggleMenu(item)}>
+                          <Dots />
+                        </IconButton>
+                        <Show when={isOpen() === item}>
+                          <div class="absolute z-9 right-0 border border-gray-200 rounded overflow-hidden">
+                            <p class="dots-item" onClick={() => props.onChangeItem(item)}>{TRANSLATION[locale()]['change']}</p>
+                            <Show when={item.has_description}>
+                              <p class="dots-item" onClick={() => props.onInfoItem(item.item_id, item.name)}>{TRANSLATION[locale()]['info']}</p>
+                            </Show>
+                            <p class="dots-item" onClick={() => props.onRemoveCharacterItem(item)}>{TRANSLATION[locale()]['delete']}</p>
+                          </div>
+                        </Show>
+                      </div>
                     </div>
                   </td>
                 </tr>

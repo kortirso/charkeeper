@@ -45,7 +45,7 @@ export const CampaignsListItem = (props) => {
           <Show when={isOpen()}>
             <div class="absolute z-9 right-0 border border-gray-200 rounded overflow-hidden">
               <p
-                class="px-2 py-1 text-sm bg-white hover:bg-gray-200 dark:bg-dusty dark:hover:bg-neutral-800 dark:text-snow"
+                class="dots-item"
                 onClick={props.onDeleteCampaign} // eslint-disable-line solid/reactivity
               >{t('pages.campaignsPage.onDeleteCampaign')}</p>
             </div>

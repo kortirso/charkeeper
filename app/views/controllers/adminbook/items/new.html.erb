@@ -3,14 +3,24 @@
     <div><%= form.label 'Псевдоним', class: 'form-label' %></div>
     <div><%= form.text_field :slug, class: 'form-value w-80', required: true %></div>
   </div>
-  <%= form.fields_for :name do |title_form| %>
+  <%= form.fields_for :name do |name_form| %>
     <div class="form-field mb-2">
-      <div><%= title_form.label 'Название (en)', class: 'form-label' %></div>
-      <div><%= title_form.text_field :en, class: 'form-value w-80' %></div>
+      <div><%= name_form.label 'Название (en)', class: 'form-label' %></div>
+      <div><%= name_form.text_field :en, class: 'form-value w-80' %></div>
     </div>
     <div class="form-field mb-2">
-      <div><%= title_form.label 'Название (ru)', class: 'form-label' %></div>
-      <div><%= title_form.text_field :ru, class: 'form-value w-80' %></div>
+      <div><%= name_form.label 'Название (ru)', class: 'form-label' %></div>
+      <div><%= name_form.text_field :ru, class: 'form-value w-80' %></div>
+    </div>
+  <% end %>
+  <%= form.fields_for :description do |description_form| %>
+    <div class="form-field mb-2">
+      <div><%= description_form.label 'Описание (en)', class: 'form-label' %></div>
+      <div><%= description_form.textarea :en, class: 'form-text text-sm', size: '100x7' %></div>
+    </div>
+    <div class="form-field mb-2">
+      <div><%= description_form.label 'Описание (ru)', class: 'form-label' %></div>
+      <div><%= description_form.textarea :ru, class: 'form-text text-sm', size: '100x7' %></div>
     </div>
   <% end %>
   <div class="form-field mb-2">

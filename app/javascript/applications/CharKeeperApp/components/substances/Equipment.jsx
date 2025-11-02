@@ -3,12 +3,13 @@ import * as i18n from '@solid-primitives/i18n';
 
 import { ItemsTable, createModal, ErrorWrapper, Input, Button, Toggle, TextArea, GuideWrapper } from '../../components';
 import { useAppState, useAppLocale, useAppAlert } from '../../context';
-import { PlusSmall } from '../../assets';
+import { PlusSmall, Info } from '../../assets';
 import { fetchItemsRequest } from '../../requests/fetchItemsRequest';
 import { fetchCharacterItemsRequest } from '../../requests/fetchCharacterItemsRequest';
 import { createCharacterItemRequest } from '../../requests/createCharacterItemRequest';
 import { updateCharacterItemRequest } from '../../requests/updateCharacterItemRequest';
 import { removeCharacterItemRequest } from '../../requests/removeCharacterItemRequest';
+import { fetchItemInfoRequest } from '../../requests/fetchItemInfoRequest';
 
 const TRANSLATION = {
   en: {
@@ -31,6 +32,7 @@ export const Equipment = (props) => {
   const [items, setItems] = createSignal(undefined);
   const [itemsSelectingMode, setItemsSelectingMode] = createSignal(false);
   const [changingItem, setChangingItem] = createSignal(null);
+  const [itemInfo, setItemInfo] = createSignal(null);
   const [filterByName, setFilterByName] = createSignal('');
 
   const { Modal, openModal, closeModal } = createModal();
@@ -68,8 +70,21 @@ export const Equipment = (props) => {
   const changeItem = (item) => {
     batch(() => {
       setChangingItem(item);
+      setItemInfo(null);
       openModal();
     });
+  }
+
+  const showInfo = async (id, name) => {
+    const result = await fetchItemInfoRequest(appState.accessToken, id);
+
+    if (result.errors_list === undefined) {
+      batch(() => {
+        openModal();
+        setChangingItem(null);
+        setItemInfo([name, result.value]);
+      });
+    }
   }
 
   // submits
@@ -188,14 +203,22 @@ export const Equipment = (props) => {
                                     <Show when={item.homebrew}>
                                       <span title="Homebrew" class="text-xs ml-2">HB</span>
                                     </Show>
+                                    
                                   </p>
                                 </td>
                                 <Show when={props.withWeight}><td class="py-1 text-center">{item.data.weight}</td></Show>
                                 <Show when={props.withPrice}><td class="py-1 text-center">{item.data.price / 100}</td></Show>
                                 <td>
-                                  <Button default size="small" onClick={() => buyItem(item)}>
-                                    <PlusSmall />
-                                  </Button>
+                                  <div class="flex justify-end gap-x-2">
+                                    <Show when={item.has_description}>
+                                      <Button default size="small" onClick={() => showInfo(item.id, item.name)}>
+                                        <Info width="20" height="20" />
+                                      </Button>
+                                    </Show>
+                                    <Button default size="small" onClick={() => buyItem(item)}>
+                                      <PlusSmall />
+                                    </Button>
+                                  </div>
                                 </td>
                               </tr>
                             }
@@ -221,6 +244,7 @@ export const Equipment = (props) => {
                   state={state}
                   items={characterItems().filter((item) => item.state === state)}
                   onChangeItem={changeItem}
+                  onInfoItem={showInfo}
                   onUpdateCharacterItem={updateCharacterItem}
                   onRemoveCharacterItem={removeCharacterItem}
                 />
@@ -236,7 +260,7 @@ export const Equipment = (props) => {
           </Show>
         </Show>
       </GuideWrapper>
-      <Modal>
+      <Modal classList="md:max-w-md!">
         <Show when={changingItem()}>
           <div class="mb-2 flex items-center">
             <p class="flex-1 text-sm text-left dark:text-snow">{changingItem().name}</p>
@@ -254,6 +278,10 @@ export const Equipment = (props) => {
             value={changingItem().notes}
           />
           <Button default textable classList="mt-2" onClick={updateItem}>{t('save')}</Button>
+        </Show>
+        <Show when={itemInfo()}>
+          <p class="mb-3 text-xl">{itemInfo()[0]}</p>
+          <p>{itemInfo()[1]}</p>
         </Show>
       </Modal>
     </ErrorWrapper>
