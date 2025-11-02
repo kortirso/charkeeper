@@ -26,6 +26,7 @@ module HomebrewContext
           required(:origin).filled(Origins)
           required(:origin_value).filled(:string)
           required(:kind).filled(Kinds)
+          optional(:level).filled(:integer, gteq?: 1)
           optional(:limit).filled(:integer, gteq?: 1)
           optional(:limit_refresh).filled(Limits)
           optional(:subclass_mastery).filled(:integer)
