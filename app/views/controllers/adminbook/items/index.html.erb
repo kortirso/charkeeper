@@ -9,6 +9,7 @@
       <td>Slug</td>
       <td>Kind</td>
       <td>Name</td>
+      <td>Description</td>
       <td>Data</td>
       <td>Info</td>
       <td></td>
@@ -27,6 +28,11 @@
         <td class="pr-4"><%= item.kind %></td>
         <td class="pr-4">
           <% item.name.each do |key, value| %>
+            <p class="text-sm"><%= key %> - <%= value %></p>
+          <% end %>
+        </td>
+        <td class="pr-4">
+          <% item.description.each do |key, value| %>
             <p class="text-sm"><%= key %> - <%= value %></p>
           <% end %>
         </td>

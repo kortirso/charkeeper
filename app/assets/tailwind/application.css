@@ -350,3 +350,8 @@ nav.pagy.nav a.gap {
   @apply px-1 border rounded bg-white border-gray-500 cursor-pointer;
   @apply dark:bg-neutral-800 dark:border-neutral-800 dark:text-snow;
 }
+
+.dots-item {
+  @apply px-2 py-1 text-sm bg-white hover:bg-gray-200 cursor-pointer;
+  @apply dark:bg-dusty dark:hover:bg-neutral-800;
+}

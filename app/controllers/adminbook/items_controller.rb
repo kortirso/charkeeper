@@ -37,6 +37,7 @@ module Adminbook
       when 'dnd5', 'dnd2024' then ::Dnd5::Item
       when 'daggerheart' then ::Daggerheart::Item
       when 'pathfinder2' then ::Pathfinder2::Item
+      when 'dc20' then ::Dc20::Item
       end
     end
 
@@ -47,7 +48,7 @@ module Adminbook
     end
 
     def item_params
-      params.expect(item: [:slug, :data, :info, { name: %i[en ru] }])
+      params.expect(item: [:slug, :data, :info, { name: %i[en ru], description: %i[en ru] }])
     end
   end
 end

@@ -2,16 +2,20 @@
 
 module Characters
   class ItemSerializer < ApplicationSerializer
-    ATTRIBUTES = %i[id quantity ready_to_use notes name kind data state].freeze
+    ATTRIBUTES = %i[id quantity ready_to_use notes name kind data state item_id has_description].freeze
     READY_TO_USE_STATES = %w[hands equipment].freeze
 
-    attributes :id, :quantity, :ready_to_use, :notes, :name, :kind, :data, :state
+    attributes(*ATTRIBUTES)
 
     delegate :kind, :data, to: :item
     delegate :item, to: :object
 
     def name
       item.name[I18n.locale.to_s]
+    end
+
+    def has_description # rubocop: disable Naming/PredicateMethod, Naming/PredicatePrefix
+      item.description[I18n.locale.to_s].present?
     end
 
     # DEPRECATED
