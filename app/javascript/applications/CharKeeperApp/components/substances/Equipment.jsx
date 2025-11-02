@@ -3,7 +3,7 @@ import * as i18n from '@solid-primitives/i18n';
 
 import { ItemsTable, createModal, ErrorWrapper, Input, Button, Toggle, TextArea, GuideWrapper } from '../../components';
 import { useAppState, useAppLocale, useAppAlert } from '../../context';
-import { PlusSmall } from '../../assets';
+import { PlusSmall, Info } from '../../assets';
 import { fetchItemsRequest } from '../../requests/fetchItemsRequest';
 import { fetchCharacterItemsRequest } from '../../requests/fetchCharacterItemsRequest';
 import { createCharacterItemRequest } from '../../requests/createCharacterItemRequest';
@@ -203,21 +203,22 @@ export const Equipment = (props) => {
                                     <Show when={item.homebrew}>
                                       <span title="Homebrew" class="text-xs ml-2">HB</span>
                                     </Show>
-                                    <Show when={item.has_description}>
-                                      <span
-                                        title="Info"
-                                        class="text-xs ml-2 cursor-pointer"
-                                        onClick={() => showInfo(item.id, item.name)}
-                                      >I</span>
-                                    </Show>
+                                    
                                   </p>
                                 </td>
                                 <Show when={props.withWeight}><td class="py-1 text-center">{item.data.weight}</td></Show>
                                 <Show when={props.withPrice}><td class="py-1 text-center">{item.data.price / 100}</td></Show>
                                 <td>
-                                  <Button default size="small" onClick={() => buyItem(item)}>
-                                    <PlusSmall />
-                                  </Button>
+                                  <div class="flex justify-end gap-x-2">
+                                    <Show when={item.has_description}>
+                                      <Button default size="small" onClick={() => showInfo(item.id, item.name)}>
+                                        <Info width="20" height="20" />
+                                      </Button>
+                                    </Show>
+                                    <Button default size="small" onClick={() => buyItem(item)}>
+                                      <PlusSmall />
+                                    </Button>
+                                  </div>
                                 </td>
                               </tr>
                             }
