@@ -2,717 +2,479 @@
   "premium_bedroll": {
     "en": "During downtime, you automatically clear a Stress.",
     "ru": "Во время Отдыха вы автоматически очищаете Стресс."
-  }
-}
-{
+  },
   "piper_whistle": {
     "en": "This handcrafted whistle has a distinctive sound. When you blow this whistle, its piercing tone can be heard within a 1-mile radius.",
     "ru": "Эта свирель ручной работы имеет характерный звук. Когда вы дуете в этот свисток, его пронзительный звук слышен в радиусе 1 километра."
-  }
-}
-{
+  },
   "charging_quiver": {
     "en": "When you succeed on an attack with an arrow stored in this quiver, gain a bonus to the damage roll equal to your current tier.",
     "ru": "Когда вы успешно наносите удар стрелой из этого колчана, получите бонус к Броску Урона, равный вашему текущему Рангу."
-  }
-}
-{
+  },
   "alistair_torch": {
-    "en": "You can light this magic torch at will. The flame’s light fills a much larger space than it should, enough to illuminate a cave bright as day.",
+    "en": "You can light this magic torch at will. The flame's light fills a much larger space than it should, enough to illuminate a cave bright as day.",
     "ru": "Вы можете зажигать этот магический факел по желанию. Его пламя освещает гораздо большую область, чем должно, — достаточно, чтобы осветить пещеру, как при дневном свете."
-  }
-}
-{
+  },
   "speaking_orbs": {
     "en": "This pair of orbs allows any creatures holding them to communicate with each other across any distance.",
     "ru": "Эта пара сфер позволяет существам, которые держат их, общаться друг с другом на любом расстоянии."
-  }
-}
-{
+  },
   "manacles": {
     "en": "This pair of locking cuffs comes with a key.",
     "ru": "Эта пара наручников с замком поставляется с ключом."
-  }
-}
-{
+  },
   "arcane_clock": {
     "en": "A creature with a Spellcast trait wearing this cloak can adjust its color, texture, and size at will.",
     "ru": "Существо с чертой Заклинателя, носящее этот плащ, может изменять его цвет, текстуру и размер по своему желанию."
-  }
-}
-{
+  },
   "woven_net": {
     "en": "You can make a Finesse Roll using this net to trap a small creature. A trapped target can break free with a successful Attack Roll (16).",
     "ru": "Вы можете совершить Бросок Искусности, используя эту сеть, чтобы поймать небольшое существо. Пойманная цель может освободиться, успешно совершив Бросок Атаки (16)."
-  }
-}
-{
+  },
   "fire_jar": {
     "en": "You can pour out the strange liquid contents of this jar to instantly produce fire. The contents regenerate when you take a long rest.",
     "ru": "Вы можете вылить странную жидкость из этой банки, чтобы мгновенно разжечь огонь. Содержимое восстанавливается после продолжительного отдыха."
-  }
-}
-{
+  },
   "suspended_rod": {
-    "en": "This flat rod is inscribed with runes. When you activate the rod, it is immediately suspended in place. Until the rod is deactivated, it can’t move, doesn’t abide by the rules of gravity, and remains in place.",
+    "en": "This flat rod is inscribed with runes. When you activate the rod, it is immediately suspended in place. Until the rod is deactivated, it can't move, doesn't abide by the rules of gravity, and remains in place.",
     "ru": "Этот плоский жезл исписан рунами. Когда вы активируете жезл, он сразу же зависает на месте. До тех пор, пока жезл не будет деактивирован, он не будет подчинятся законам гравитации и останется на месте."
-  }
-}
-{
+  },
   "glamour_stone": {
-    "en": "Activate this pebble-sized stone to memorize the appearance of someone you can see. Spend a Hopeto magically recreate this guise on yourself as an illusion.",
+    "en": "Activate this pebble-sized stone to memorize the appearance of someone you can see. Spend a Hope to magically recreate this guise on yourself as an illusion.",
     "ru": "Активируйте этот камень размером с гальку, чтобы запомнить внешность кого-то, кого вы видите. Потратьте Надежду, чтобы магическим образом воссоздать этот облик на себе в виде иллюзии."
-  }
-}
-{
+  },
   "empty_chest": {
     "en": "This magical chest appears empty. When you speak a specific trigger word or action and open the chest, you can see the items stored within it.",
     "ru": "Этот магический сундук кажется пустым. Скажите ключевое слово или сделайте условное действие — и вы увидите хранимые внутри вещи."
-  }
-}
-{
+  },
   "companion_case": {
     "en": "This case can fit a small animal companion. While the companion is inside, the animal and case are immune to all damage and harmful effects.",
     "ru": "В этот футляр можно поместить маленького животного-компаньона. Пока он внутри, оба неуязвимы ко всем видам урона и эффектам."
-  }
-}
-{
+  },
   "piercing_arrows": {
-    "en": "Three times per rest when you succeed on an attack with one of these arrows, you can add your Proficiencyto the damage roll.",
+    "en": "Three times per rest when you succeed on an attack with one of these arrows, you can add your Proficiency to the damage roll.",
     "ru": "Три раза за отдых, когда вы успешно наносите удар одной из этих стрел, вы можете добавить ваше Мастерство к Броску Урона."
-  }
-}
-{
+  },
   "valorstone": {
-    "en": "You can attach this stone to armor that doesn’t already have a feature. The armor gains the following feature. Resilient: Before you mark your last Armor Slot, roll a d6. On a result of 6, reduce the severity by one threshold without marking an Armor Slot.",
+    "en": "You can attach this stone to armor that doesn't already have a feature. The armor gains the following feature. Resilient: Before you mark your last Armor Slot, roll a d6. On a result of 6, reduce the severity by one threshold without marking an Armor Slot.",
     "ru": "Вы можете прикрепить этот камень к доспеху, который еще не имеет свойств. Доспех получает следующее свойство. Устойчивое: Перед тем, как отметить последнюю Ячейку Брони, бросьте 1d6. При результате в 6 уменьшите тяжесть урона на один порог, не отмечая Ячейку Брони."
-  }
-}
-{
+  },
   "skeleton_key": {
     "en": "When you use this key to open a locked door, you gain advantage on the Finesse Roll.",
     "ru": "Когда вы используете этот ключ, чтобы открыть запертую дверь, вы получаете преимущество в броске на Искусность."
-  }
-}
-{
+  },
   "arcane_prism": {
-    "en": "Position this prism in a location of your choosing and activate it. All allies within Closerange of it gain a +1 bonus to their Spellcast Rolls. While activated, the prism can’t be moved. Once the prism is deactivated, it can’t be activated again until your next long rest.",
+    "en": "Position this prism in a location of your choosing and activate it. All allies within Close range of it gain a +1 bonus to their Spellcast Rolls. While activated, the prism can't be moved. Once the prism is deactivated, it can't be activated again until your next long rest.",
     "ru": "Поместите эту призму в выбранное вами место и активируйте ее. Все союзники в пределах Средней дистанции от нее получают бонус +1 к своим Броскам Заклинаний. Пока призма активирована, ее нельзя перемещать. После деактивации призму нельзя активировать снова до вашего следующего Продолжительного Отдыха."
-  }
-}
-{
+  },
   "minor_stamina_potion_recipe": {
     "en": "As a downtime move, you can use the bone of a creature to craft a Minor Stamina Potion.",
     "ru": "В качестве действия Привала вы можете использовать кость существа для создания Малого Зелья Выносливости."
-  }
-}
-{
+  },
   "minor_health_potion_recipe": {
     "en": "As a downtime move, you can use a vial of blood to craft a Minor Health Potion.",
     "ru": "В качестве действия Привала вы можете использовать флакон с кровью для создания Малого Зелья Лечения."
-  }
-}
-{
+  },
   "homing_compasses": {
     "en": "These two compasses point toward each other no matter how far apart they are.",
     "ru": "Эти два компаса указывают друг на друга, независимо от того, как далеко они находятся друг от друга."
-  }
-}
-{
+  },
   "corrector_sprite": {
     "en": "This tiny sprite sits in the curve of your ear canal and whispers helpful advice during combat. Once per short rest, you can gain advantageon an attack roll.",
     "ru": "Этот крошечный дух сидит в изгибе вашего ушного канала и шепчет полезные советы во время боя. Один раз за короткий отдых вы можете получить преимущество на бросок атаки."
-  }
-}
-{
+  },
   "gecko_gloves": {
     "en": "You can climb up vertical surfaces and across ceilings.",
     "ru": "Вы можете лазать по вертикальным поверхностям и потолкам."
-  }
-}
-{
+  },
   "lorekeeper": {
     "en": "You can store the name and details of up to three hostile creatures inside this book. You gain a +1 bonus to action rolls against those creatures.",
     "ru": "Вы можете сохранить в этой книге имена и подробные сведения о трех враждебных существах. Вы получаете бонус +1 к броскам действия против этих существ."
-  }
-}
-{
+  },
   "vial_of_darksmore_recipe": {
     "en": "As a downtime move, you can mark a Stress to craft a Vial of Darksmoke.",
     "ru": "В качестве действия во время Привала вы можете отметить Стресс, чтобы изготовить Флакон с Чёрным Дымом."
-  }
-}
-{
+  },
   "bloodstone": {
-    "en": "You can attach this stone to a weapon that doesn’t already have a feature. The weapon gains the following feature. Brutal: When you roll the maximum value on a damage die, roll an additional damage die.",
+    "en": "You can attach this stone to a weapon that doesn't already have a feature. The weapon gains the following feature. Brutal: When you roll the maximum value on a damage die, roll an additional damage die.",
     "ru": "Вы можете прикрепить этот камень к оружию, которое еще не имеет этой особенности. Оружие получает следующую особенность. Жестокое: Когда вы выбрасываете максимальное значение на кости урона, бросьте дополнительную кость урона."
-  }
-}
-{
+  },
   "greatstone": {
-    "en": "You can attach this stone to a weapon that doesn’t already have a feature. The weapon gains the following feature. Powerful: On a successful attack, roll an additional damage die and discard the lowest result.",
+    "en": "You can attach this stone to a weapon that doesn't already have a feature. The weapon gains the following feature. Powerful: On a successful attack, roll an additional damage die and discard the lowest result.",
     "ru": "Вы можете прикрепить этот камень к оружию, которое еще не имеет особенности. Оружие получает следующую особенность. Мощное: При успешной атаке бросьте дополнительную кость урона и отбросьте результат, который меньше всего."
-  }
-}
-{
+  },
   "glider": {
     "en": "While falling, you can mark a Stress to deploy this small parachute and glide safely to the ground.",
     "ru": "Во время падения вы можете отметить Стресс, чтобы развернуть этот маленький парашют и безопасно спланировать на землю."
-  }
-}
-{
+  },
   "ring_of_silence": {
-    "en": "Spend a Hopeto activate this ring. Your footsteps are silent until your next rest.",
+    "en": "Spend a Hope to activate this ring. Your footsteps are silent until your next rest.",
     "ru": "Потратьте Надежду, чтобы активировать это кольцо. Ваши шаги будут бесшумными до следующего отдыха."
-  }
-}
-{
+  },
   "calming_pendant": {
-    "en": "When you would mark your last Stress, roll a d6. On a result of 5 or higher, don’t mark it.",
+    "en": "When you would mark your last Stress, roll a d6. On a result of 5 or higher, don't mark it.",
     "ru": "Когда вы должны отметить последний Стресс, бросьте 1d6. При результате в 5 или выше не отмечайте его."
-  }
-}
-{
+  },
   "dual_flask": {
-    "en": "This flask can hold two different liquids. You can swap between them by flipping a small switch on the flask’s side.",
+    "en": "This flask can hold two different liquids. You can swap between them by flipping a small switch on the flask's side.",
     "ru": "В эту флягу можно налить две разные жидкости. Переключаться между ними можно с помощью небольшого переключателя на боковой стороне фляги."
-  }
-}
-{
+  },
   "bag_of_ficklesand": {
-    "en": "You can convince this small bag of sand to be much heavier or lighter with a successful Presence Roll (10). Additionally, on a successful Finesse Roll (10), you can blow a bit of sand into a target’s face to make them temporarily Vulnerable .",
-    "ru": "Вы можете убедить этот маленький мешок с песком, чтобы он стал намного тяжелее или легче, успешно выполнив бросок на Влияние (10). Кроме того, при успешном броске на Искусность (10) вы можете выдуть немного песка в лицо цели, чтобы временно сделать ее Уязвимой ."
-  }
-}
-{
+    "en": "You can convince this small bag of sand to be much heavier or lighter with a successful Presence Roll (10). Additionally, on a successful Finesse Roll (10), you can blow a bit of sand into a target's face to make them temporarily Vulnerable.",
+    "ru": "Вы можете убедить этот маленький мешок с песком, чтобы он стал намного тяжелее или легче, успешно выполнив бросок на Влияние (10). Кроме того, при успешном броске на Искусность (10) вы можете выдуть немного песка в лицо цели, чтобы временно сделать ее Уязвимой."
+  },
   "ring_of_resistance": {
     "en": "Once per long rest, you can activate this ring after a successful attack against you to halve the damage.",
     "ru": "Один раз за продолжительный отдых вы можете активировать это кольцо после успешной атаки по вам, чтобы уменьшить полученный урон вдвое."
-  }
-}
-{
+  },
   "phoenix_feather": {
     "en": "If you have at least one Phoenix Feather on you when you fall unconscious, you gain a +1 bonus to the roll you make to determine whether you gain a scar.",
     "ru": "Если у вас есть хотя бы одно Перо Феникса, когда вы теряете сознание, вы получаете бонус +1 к броску, который вы совершаете, чтобы определить, получите ли вы шрам."
-  }
-}
-{
+  },
   "box_of_many_goods": {
-    "en": "Once per long rest, you can open this small box and roll a d12. On a result of 1–6, it’s empty. On a result of 7–10, it contains one random common consumable. On a result of 11–12, it contains two random common consumables.",
+    "en": "Once per long rest, you can open this small box and roll a d12. On a result of 1–6, it's empty. On a result of 7–10, it contains one random common consumable. On a result of 11–12, it contains two random common consumables.",
     "ru": "Один раз за продолжительный отдых вы можете открыть эту маленькую коробку и бросить 1d12. При результате в 1–6 она пуста. При результате в 7–10 она содержит один случайный обычный расходуемый предмет. При результате в 11–12 она содержит два случайных обычных расходуемых предмета."
-  }
-}
-{
+  },
   "airblade_charm": {
-    "en": "You can attach this charm to a weapon with a Meleerange. Three times per rest, you can activate the charm and attack a target within Closerange.",
+    "en": "You can attach this charm to a weapon with a Melee range. Three times per rest, you can activate the charm and attack a target within Close range.",
     "ru": "Вы можете прикрепить этот амулет к оружию с дистанцией Вплотную. Три раза за отдых вы можете активировать амулет и атаковать цель в пределах Средней дистанции."
-  }
-}
-{
+  },
   "portal_seed": {
     "en": "You can plant this seed in the ground to grow a portal in that spot. The portal is ready to use in 24 hours. You can use this portal to travel to any other location where you planted a portal seed. A portal can be destroyed by dealing any amount of magic damage to it.",
     "ru": "Вы можете посадить это семя в землю, чтобы вырастить портал в этом месте. Портал будет готов к использованию через 24 часа. Вы можете использовать этот портал для перемещения в любое другое место, где вы посадили другое семя портала. Портал можно уничтожить, нанеся ему любое количество магического урона."
-  }
-}
-{
+  },
   "paragon_chain": {
-    "en": "As a downtime move, you can meditate on an ideal or principle you hold dear and focus your will into this chain. Once per long rest, you can spend a Hopeto roll a d20 as your Hope Die for rolls that directly align with that principle.",
+    "en": "As a downtime move, you can meditate on an ideal or principle you hold dear and focus your will into this chain. Once per long rest, you can spend a Hope to roll a d20 as your Hope Die for rolls that directly align with that principle.",
     "ru": "В качестве действия привала вы можете помедитировать над идеалом или принципом, который вам дорог, и сосредоточить свою волю на этой цепи. Один раз за продолжительный отдых вы можете потратить Надежду, чтобы бросить 1d20 в качестве кубика Надежды для бросков, которые напрямую связаны с этим принципом."
-  }
-}
-{
+  },
   "elusive_amulet": {
     "en": "Once per long rest, you can activate this amulet to become Hidden until you move. While Hidden in this way, you remain unseen even if an adversary moves to where they would normally see you.",
     "ru": "Один раз за Продолжительный Отдых вы можете активировать этот амулет, чтобы стать Скрытым до тех пор, пока не сдвинетесь с места. Пока вы Скрыты таким образом, вы остаетесь невидимым, даже если противник переместится туда, где обычно мог бы вас увидеть."
-  }
-}
-{
+  },
   "hopekeeper_locket": {
     "en": "During a long rest, if you have 6 Hope, you can spend a Hope to imbue this locket with your bountiful resolve. When you have 0 Hope, you can use the locket to immediately gain a Hope. The locket must be re-imbued before it can be used this way again.",
     "ru": "Во время продолжительного отдыха, если у вас есть 6 Надежды, вы можете потратить одну Надежду, чтобы наполнить этот медальон вашей решимостью. Когда у вас нет Надежды, вы можете использовать медальон, чтобы немедленно получить одну Надежду. Медальон необходимо снова наполнить, прежде чем его снова можно будет использовать таким образом."
-  }
-}
-{
+  },
   "infinite_bag": {
     "en": "When you store items in this bag, they are kept in a pocket dimension that never runs out of space. You can retrieve an item at any time.",
     "ru": "Когда вы храните предметы в этом мешке, они находятся в карманном измерении, где никогда не заканчивается место. Вы можете достать предмет в любое время."
-  }
-}
-{
+  },
   "stride_relic": {
-    "en": "You gain a +1 bonus to your Agility. You can only carry one relic.",
-    "ru": "Вы получаете бонус +1 к Проворности. Вы можете носить только одну реликвию."
-  }
-}
-{
+    "en": "You gain a +1 situation bonus to your Agility. You can only carry one relic.",
+    "ru": "Вы получаете ситуативный бонус +1 к Проворности. Вы можете носить только одну реликвию."
+  },
   "bolster_relic": {
-    "en": "You gain a +1 bonus to your Strength. You can only carry one relic.",
-    "ru": "Вы получаете бонус +1 к Силе. Вы можете носить только одну реликвию."
-  }
-}
-{
+    "en": "You gain a +1 situation bonus to your Strength. You can only carry one relic.",
+    "ru": "Вы получаете ситуативный бонус +1 к Силе. Вы можете носить только одну реликвию."
+  },
   "control_relic": {
-    "en": "You gain a +1 bonus to your Finesse. You can only carry one relic.",
-    "ru": "Вы получаете бонус +1 к Искусности. Вы можете носить только одну реликвию."
-  }
-}
-{
+    "en": "You gain a +1 situation bonus to your Finesse. You can only carry one relic.",
+    "ru": "Вы получаете ситуативный бонус +1 к Искусности. Вы можете носить только одну реликвию."
+  },
   "attune_relic": {
-    "en": "You gain a +1 bonus to your Instinct. You can only carry one relic.",
-    "ru": "Вы получаете бонус +1 к Инстинкту. Вы можете носить только одну реликвию."
-  }
-}
-{
+    "en": "You gain a +1 situation bonus to your Instinct. You can only carry one relic.",
+    "ru": "Вы получаете ситуативный бонус +1 к Инстинкту. Вы можете носить только одну реликвию."
+  },
   "charm_relic": {
-    "en": "You gain a +1 bonus to your Presence. You can only carry one relic.",
-    "ru": "Вы получаете бонус +1 к Влиянию. Вы можете носить только одну реликвию."
-  }
-}
-{
+    "en": "You gain a +1 situation bonus to your Presence. You can only carry one relic.",
+    "ru": "Вы получаете ситуативный бонус +1 к Влиянию. Вы можете носить только одну реликвию."
+  },
   "enlighten_relic": {
-    "en": "You gain a +1 bonus to your Knowledge. You can only carry one relic.",
-    "ru": "Вы получаете бонус +1 к Знаниям. Вы можете носить только одну реликвию."
-  }
-}
-{
+    "en": "You gain a +1 situation bonus to your Knowledge. You can only carry one relic.",
+    "ru": "Вы получаете ситуативный бонус +1 к Знаниям. Вы можете носить только одну реликвию."
+  },
   "honing_relic": {
-    "en": "You gain a +1 bonus to an Experience of your choice. You can only carry one relic.",
-    "ru": "Вы получаете бонус +1 к Опыту по вашему выбору. Вы можете носить только одну реликвию."
-  }
-}
-{
+    "en": "You gain a +1 situation bonus to an Experience of your choice. You can only carry one relic.",
+    "ru": "Вы получаете ситуативный бонус +1 к Опыту по вашему выбору. Вы можете носить только одну реликвию."
+  },
   "flickerfly_pendant": {
-    "en": "While you carry this pendant, your weapons with a Meleerange that deal physical damage have a gossamer sheen and can attack targets within Very Close range.",
+    "en": "While you carry this pendant, your weapons with a Melee range that deal physical damage have a gossamer sheen and can attack targets within Very Close range.",
     "ru": "Пока вы носите этот кулон, ваше оружие с дистанцией атаки Вплотную, наносящее физический урон, имеет тонкий блеск и может атаковать цели в пределах Очень близкой дистанции."
-  }
-}
-{
+  },
   "lakestrider_boots": {
     "en": "You can walk on the surface of water as if it were soft ground.",
     "ru": "Вы можете ходить по поверхности воды, как по мягкой земле."
-  }
-}
-{
+  },
   "clay_companion": {
     "en": "When you sculpt this ball of clay into a clay animal companion, it behaves as that animal. For example, a clay spider can spin clay webs, while a clay bird can fly. The clay companion retains memory and identity across different shapes, but they can adopt new mannerisms with each form.",
     "ru": "Когда вы лепите из этого шарика глины глиняного животного-компаньона, он ведет себя как это животное. Например, глиняный паук может плести глиняные паутины, а глиняная птица может летать. Глиняные компаньоны сохраняют память и индивидуальность при изменении формы, но могут приобретать новые манеры поведения."
-  }
-}
-{
+  },
   "mythic_dust_recipe": {
     "en": "As a downtime move, you can use a handful of fine gold dust to craft Mythic Dust.",
     "ru": "В качестве действия привала вы можете использовать горсть мелкой золотой пыли для создания Мифической Пыли."
-  }
-}
-{
+  },
   "shard_of_memory": {
-    "en": "Once per long rest, you can spend 2 Hopeto recall a domain card from your vault instead of paying its Recall Cost.",
+    "en": "Once per long rest, you can spend 2 Hope to recall a domain card from your vault instead of paying its Recall Cost.",
     "ru": "Один раз за продолжительный отдых вы можете потратить 2 Надежды, чтобы призвать карту домена из вашего хранилища вместо того, чтобы платить ее стоимость Призыва."
-  }
-}
-{
+  },
   "gem_of_alacrity": {
-    "en": "You can attach this gem to a weapon, allowing you to use your Agilitywhen making an attack with that weapon.",
+    "en": "You can attach this gem to a weapon, allowing you to use your Agility when making an attack with that weapon.",
     "ru": "Вы можете прикрепить этот самоцвет к оружию, что позволит вам использовать Проворность при совершении атаки этим оружием."
-  }
-}
-{
+  },
   "gem_of_might": {
-    "en": "You can attach this gem to a weapon, allowing you to use your Strengthwhen making an attack with that weapon.",
+    "en": "You can attach this gem to a weapon, allowing you to use your Strength when making an attack with that weapon.",
     "ru": "Вы можете прикрепить этот самоцвет к оружию, что позволит вам использовать Силу при совершении атаки этим оружием."
-  }
-}
-{
+  },
   "gem_of_precision": {
-    "en": "You can attach this gem to a weapon, allowing you to use your Finessewhen making an attack with that weapon.",
+    "en": "You can attach this gem to a weapon, allowing you to use your Finesse when making an attack with that weapon.",
     "ru": "Вы можете прикрепить этот драгоценный камень к оружию, что позволит вам использовать Искусность при совершении атаки этим оружием."
-  }
-}
-{
+  },
   "gem_of_insight": {
-    "en": "You can attach this gem to a weapon, allowing you to use your Instinctwhen making an attack with that weapon.",
+    "en": "You can attach this gem to a weapon, allowing you to use your Instinct when making an attack with that weapon.",
     "ru": "Вы можете прикрепить этот самоцвет к оружию, что позволит вам использовать Инстинкт при совершении атаки этим оружием."
-  }
-}
-{
+  },
   "gem_audacity": {
-    "en": "You can attach this gem to a weapon, allowing you to use your Presencewhen making an attack with that weapon.",
+    "en": "You can attach this gem to a weapon, allowing you to use your Presence when making an attack with that weapon.",
     "ru": "Вы можете прикрепить этот самоцвет к оружию, что позволит вам использовать Влияние при совершении атаки этим оружием."
-  }
-}
-{
+  },
   "gem_of_sagacity": {
-    "en": "You can attach this gem to a weapon, allowing you to use your Knowledgewhen making an attack with that weapon.",
+    "en": "You can attach this gem to a weapon, allowing you to use your Knowledge when making an attack with that weapon.",
     "ru": "Вы можете прикрепить этот самоцвет к оружию, что позволит вам использовать Знание при совершении атаки этим оружием."
-  }
-}
-{
+  },
   "ring_of_unbreakable_resolve": {
-    "en": "Once per session, when the GM spends a Fear, you can spend 4 Hopeto cancel the effects of that spent Fear.",
+    "en": "Once per session, when the GM spends a Fear, you can spend 4 Hope to cancel the effects of that spent Fear.",
     "ru": "Один раз за сессию, когда Мастер тратит Страх, вы можете потратить 4 Надежды, чтобы отменить эффект потраченного Страха."
-  }
-}
-{
+  },
   "belt_of_unity": {
-    "en": "Once per session, you can spend 5 Hopeto lead a Tag Team Roll with three PCs instead of two.",
+    "en": "Once per session, you can spend 5 Hope to lead a Tag Team Roll with three PCs instead of two.",
     "ru": "Один раз за сессию вы можете потратить 5 Надежды, чтобы провести Командный Бросок с тремя персонажами вместо двух."
-  }
-}
-{
+  },
   "stride_potion": {
     "en": "You gain a +1 bonus to your next Agility Roll.",
     "ru": "Вы получаете бонус +1 к следующему броску Проворности."
-  }
-}
-{
+  },
   "bolster_potion": {
     "en": "You gain a +1 bonus to your next Strength Roll.",
     "ru": "Вы получаете бонус +1 к следующему броску Силы."
-  }
-}
-{
+  },
   "control_potion": {
     "en": "You gain a +1 bonus to your next Finesse Roll.",
     "ru": "Вы получаете бонус +1 к следующему броску Искусности."
-  }
-}
-{
+  },
   "attune_potion": {
     "en": "You gain a +1 bonus to your next Instinct Roll.",
     "ru": "Вы получаете бонус +1 к следующему броску Инстинкта."
-  }
-}
-{
+  },
   "charm_potion": {
     "en": "You gain a +1 bonus to your next Presence Roll.",
     "ru": "Вы получаете бонус +1 к следующему броску Влияния."
-  }
-}
-{
+  },
   "enlighten_potion": {
     "en": "You gain a +1 bonus to your next Knowledge Roll.",
     "ru": "Вы получаете бонус +1 к следующему броску Знаний."
-  }
-}
-{
+  },
   "minor_health_potion": {
     "en": "Clear 1d4 HP.",
     "ru": "Излечите 1d4 Ран."
-  }
-}
-{
+  },
   "minor_stamina_potion": {
     "en": "Clear 1d4 Stress.",
     "ru": "Очистите 1d4 Стресса."
-  }
-}
-{
+  },
   "grindletooth_vanom": {
     "en": "You can apply this venom to a weapon that deals physical damage to add a d6 to your next damage roll with that weapon.",
     "ru": "Вы можете нанести этот яд на оружие, наносящее физический урон, чтобы добавить 1d6 к вашему следующему броску урона этим оружием."
-  }
-}
-{
+  },
   "varik_leaves": {
     "en": "You can eat these paired leaves to immediately gain 2 Hope.",
     "ru": "Вы можете съесть эти спаренные листья, чтобы сразу получить 2 Надежды."
-  }
-}
-{
+  },
   "vial_of_moondrip": {
     "en": "When you drink the contents of this vial, you can see in total darkness until your next rest.",
     "ru": "Выпив содержимое этого флакона, вы сможете видеть в полной темноте до следующего отдыха."
-  }
-}
-{
+  },
   "unstable_arcane_shard": {
-    "en": "You can make a Finesse Roll to throw this shard at a group of adversaries within Farrange. Targets you succeed against take 1d20 magic damage.",
+    "en": "You can make a Finesse Roll to throw this shard at a group of adversaries within Far range. Targets you succeed against take 1d20 magic damage.",
     "ru": "Вы можете совершить бросок Искусности, чтобы бросить этот осколок в группу противников в пределах Далекой дистанции. Цели, против которых вы преуспели, получают 1d20 урона от магии."
-  }
-}
-{
+  },
   "potion_of_stability": {
     "en": "You can drink this potion to choose one additional downtime move.",
     "ru": "Вы можете выпить это зелье, чтобы выбрать одно дополнительное действие привала."
-  }
-}
-{
+  },
   "improved_grindletooth_vanom": {
     "en": "You can apply this venom to a weapon that deals physical damage to add a d8 to your next damage roll with that weapon.",
     "ru": "Вы можете нанести этот яд на оружие, наносящее физический урон, чтобы добавить 1d8 к вашему следующему броску урона этим оружием."
-  }
-}
-{
+  },
   "morphing_clay": {
-    "en": "You can spend a Hopeto use this clay, altering your face enough to make you unrecognizable until your next rest.",
+    "en": "You can spend a Hope to use this clay, altering your face enough to make you unrecognizable until your next rest.",
     "ru": "Вы можете потратить Надежду, чтобы использовать эту глину, изменив свое лицо настолько, что вас не узнают до следующего отдыха."
-  }
-}
-{
+  },
   "vial_of_darksmoke": {
     "en": "When an adversary attacks you, use this vial and roll a number of d6s equal to your Agility. Add the highest result to your Evasion against the attack.",
     "ru": "Когда противник атакует вас, используйте этот флакон и бросьте количество d6, равное вашей Проворности. Добавьте самый высокий результат к вашему Уклонению от этой атаки."
-  }
-}
-{
+  },
   "jumping_root": {
-    "en": "Eat this root to leap up to Farrange once without needing to roll.",
+    "en": "Eat this root to leap up to Far range once without needing to roll.",
     "ru": "Съешь этот корень, чтобы один раз прыгнуть на Далекую дистанцию без необходимости бросать кость."
-  }
-}
-{
+  },
   "snap_powder": {
     "en": "Mark a Stress and clear a HP.",
     "ru": "Отметьте Стресс, чтобы очистить Рану."
-  }
-}
-{
+  },
   "health_potion": {
     "en": "Clear 1d4+1 HP.",
     "ru": "Излечите 1d4+1 Ран."
-  }
-}
-{
+  },
   "stamina_potion": {
     "en": "Clear 1d4+1 Stress.",
     "ru": "Очистите 1d4+1 Стресса."
-  }
-}
-{
+  },
   "armor_stitcher": {
     "en": "You can use this stitcher to spend any number of Hopeand clear that many Armor Slots.",
     "ru": "Вы можете использовать этот швейный аппарат, чтобы потратить любое количество Надежды и очистить столько же Ячеек Брони."
-  }
-}
-{
+  },
   "gill_salve": {
     "en": "You can apply this salve to your neck to breathe underwater for a number of minutes equal to your level.",
     "ru": "Вы можете нанести эту мазь на шею, чтобы дышать под водой в течение минут, равных вашему уровню."
-  }
-}
-{
+  },
   "replication_parchment": {
-    "en": "By touching this piece of parchment to another, you can perfectly copy the second parchment’s contents. Once used, this parchment becomes mundane paper.",
+    "en": "By touching this piece of parchment to another, you can perfectly copy the second parchment's contents. Once used, this parchment becomes mundane paper.",
     "ru": "Прикоснувшись этим пергаментом к другому, вы можете идеально скопировать содержимое второго пергамента. После использования этот пергамент становится обычной бумагой."
-  }
-}
-{
+  },
   "improved_arcane_shard": {
-    "en": "You can make a Finesse Roll to throw this shard at a group of adversaries within Farrange. Targets you succeed against take 2d20 magic damage.",
+    "en": "You can make a Finesse Roll to throw this shard at a group of adversaries within Far range. Targets you succeed against take 2d20 magic damage.",
     "ru": "Вы можете совершить бросок Искусности, чтобы бросить этот осколок в группу противников в пределах Далекой дистанции. Цели, по которым вы успешно бросили, получают 2d20 урона от магии."
-  }
-}
-{
+  },
   "major_stride_potion": {
-    "en": "You gain a +1 bonus to your Agilityuntil your next rest.",
-    "ru": "Вы получаете бонус +1 к Проворности до следующего отдыха."
-  }
-}
-{
+    "en": "You gain a +1 situative bonus to your Agility until your next rest.",
+    "ru": "Вы получаете ситуативный бонус +1 к Проворности до следующего отдыха."
+  },
   "major_bolster_potion": {
-    "en": "You gain a +1 bonus to your Strengthuntil your next rest.",
-    "ru": "Вы получаете бонус +1 к Силе до следующего отдыха."
-  }
-}
-{
+    "en": "You gain a +1 situative bonus to your Strengt huntil your next rest.",
+    "ru": "Вы получаете ситуативный бонус +1 к Силе до следующего отдыха."
+  },
   "major_control_potion": {
-    "en": "You gain a +1 bonus to your Finesseuntil your next rest.",
-    "ru": "Вы получаете бонус +1 к Искусности до следующего отдыха."
-  }
-}
-{
+    "en": "You gain a +1 situative bonus to your Finesse until your next rest.",
+    "ru": "Вы получаете ситуативный бонус +1 к Искусности до следующего отдыха."
+  },
   "major_attune_potion": {
-    "en": "You gain a +1 bonus to your Instinctuntil your next rest.",
-    "ru": "Вы получаете бонус +1 к Инстинкту до следующего отдыха."
-  }
-}
-{
+    "en": "You gain a +1 situative bonus to your Instinct until your next rest.",
+    "ru": "Вы получаете ситуативный бонус +1 к Инстинкту до следующего отдыха."
+  },
   "major_charm_potion": {
-    "en": "You gain a +1 bonus to your Presenceuntil your next rest.",
-    "ru": "Вы получаете бонус +1 к Влиянию до следующего отдыха."
-  }
-}
-{
+    "en": "You gain a +1 situative bonus to your Presence until your next rest.",
+    "ru": "Вы получаете ситуативный бонус +1 к Влиянию до следующего отдыха."
+  },
   "major_enlighten_potion": {
-    "en": "You gain a +1 bonus to your Knowledgeuntil your next rest.",
-    "ru": "Вы получаете бонус +1 к Знаниям до следующего отдыха."
-  }
-}
-{
+    "en": "You gain a +1 situative bonus to your Knowledge until your next rest.",
+    "ru": "Вы получаете ситуативный бонус +1 к Знаниям до следующего отдыха."
+  },
   "blood_of_the_yorgi": {
     "en": "You can drink this blood to disappear from where you are and immediately reappear at a point you can see within Very Far range.",
     "ru": "Вы можете выпить эту кровь, чтобы исчезнуть с того места, где вы находитесь, и сразу же появиться в точке, которую вы можете видеть в пределах Очень Далекой дистанции."
-  }
-}
-{
+  },
   "homet_secret_potion": {
     "en": "After drinking this potion, the next successful attack you make critically succeeds.",
     "ru": "После выпивания этого зелья следующий успешный бросок на атаку вместо этого получает критический успех"
-  }
-}
-{
+  },
   "redthorn_saliva": {
     "en": "You can apply this saliva to a weapon that deals physical damage to add a d12 to your next damage roll with that weapon.",
     "ru": "Вы можете нанести эту слюну на оружие, наносящее физический урон, чтобы добавить 1d12 к вашему следующему броску урона этим оружием."
-  }
-}
-{
+  },
   "channelstone": {
     "en": "You can use this stone to take a spell or grimoire from your vault, use it once, and return it to your vault.",
     "ru": "Вы можете использовать этот камень, чтобы взять заклинание или гримуар из своего хранилища, использовать его один раз и вернуть в хранилище."
-  }
-}
-{
+  },
   "mythic_dust": {
     "en": "You can apply this dust to a weapon that deals magic damage to add a d12 to your next damage roll with that weapon.",
     "ru": "Вы можете нанести эту пыль на оружие, наносящее магический урон, чтобы добавить d12 к вашему следующему броску урона этим оружием."
-  }
-}
-{
+  },
   "acidpaste": {
     "en": "This paste eats away walls and other surfaces in bright flashes.",
     "ru": "Паста прожигает стены и другие поверхности яркими вспышками."
-  }
-}
-{
+  },
   "hopehold_flare": {
     "en": "When you use this flare, allies within Close range roll a d6 when they spend a Hope. On a result of 6, they gain the effect of that Hopewithout spending it. The flare lasts until the end of the scene.",
     "ru": "Когда вы зажигаете эту вспышку, союзники в пределах Средней дистанции бросают 1d6, когда тратят Надежду. При результате 6 они получают эффект Надежды без ее траты. Вспышка действует до конца сцены."
-  }
-}
-{
+  },
   "major_arcane_shard": {
-    "en": "You can make a Finesse Roll to throw this shard at a group of adversaries within Farrange. Targets you succeed against take 4d20 magic damage.",
+    "en": "You can make a Finesse Roll to throw this shard at a group of adversaries within Far range. Targets you succeed against take 4d20 magic damage.",
     "ru": "Вы можете совершить Бросок Искусности, чтобы бросить этот осколок в группу противников в пределах Далекой дистанции. Цели, против которых вы преуспели, получают 4d20 урона от магии."
-  }
-}
-{
+  },
   "featherbone": {
     "en": "You can use this bone to control your falling speed for a number of minutes equal to your level.",
     "ru": "Используйте, чтобы замедлить своё падение на количество минут, равное твоему уровню."
-  }
-}
-{
+  },
   "circle_of_the_void": {
     "en": "Mark a Stress to create a void that extends up to Farrange. No magic can be cast inside the void, and creatures within the void are immune to magic damage.",
     "ru": "Отметьте Стресс чтобы создать пустоту, которая распространяется на Далекую дистанцию. Внутри пустоты нельзя использовать магию, а существа, находящиеся в ней, имеют иммунитет к магическому урону."
-  }
-}
-{
+  },
   "sun_tree_sap": {
     "en": "Consume this sap to roll a d6. On a result of 5–6, clear 2 HP. On a result of 2–4, clear 3 Stress. On a result of 1, see through the veil of death and return changed, gaining one scar.",
     "ru": "Потребите этот сок, чтобы бросить 1d6. При результате в 5–6, очистите 2 Раны. При результате в 2–4, очистите 3 Стресса. При результате в 1, загляните сквозь завесу смерти и вернитесь измененным, получив один шрам."
-  }
-}
-{
+  },
   "dripfang_poison": {
     "en": "A creature who consumes this poison takes 8d10 direct magic damage.",
     "ru": "Существо, которое потребляет этот яд, получает 8d10 прямого магического урона."
-  }
-}
-{
+  },
   "major_health_potion": {
     "en": "Clear 1d4+2 HP.",
     "ru": "Излечите 1d4+2 Ран."
-  }
-}
-{
+  },
   "major_stamina_potion": {
     "en": "Clear 1d4+2 Stress.",
     "ru": "Очистите 1d4+2 Стресса."
-  }
-}
-{
+  },
   "ogre_musk": {
     "en": "You can use this musk to prevent anyone from tracking you by mundane or magical means until your next rest.",
     "ru": "Вы можете использовать этот мускус, чтобы никто не смог отследить вас обычными или магическими средствами до вашего следующего отдыха."
-  }
-}
-{
+  },
   "wingsprout": {
     "en": "You gain magic wings that allow you to fly for a number of minutes equal to your level.",
     "ru": "Вы получаете волшебные крылья, которые позволяют вам летать в течение минут, равных вашему уровню."
-  }
-}
-{
+  },
   "jar_of_lost_voices": {
-    "en": "You can open this jar to release a deafening echo of voices for a number of minutes equal to your Instinct. Creatures within Farrange unprepared for the sound take 6d8 magic damage.",
+    "en": "You can open this jar to release a deafening echo of voices for a number of minutes equal to your Instinct. Creatures within Far range unprepared for the sound take 6d8 magic damage.",
     "ru": "Вы можете открыть эту банку, чтобы выпустить оглушающее эхо голосов на количество минут, равное вашему Инстинкту. Существа в пределах Далекой дистанции, не подготовленные к звуку, получают 6d8 урона от магии."
-  }
-}
-{
+  },
   "dragonbloom_tea": {
-    "en": "You can drink this tea to unleash a fiery breath attack. Make an Instinct Roll against all adversaries in front of you within Closerange. Targets you succeed against take d20 physical damage using your Proficiency.",
+    "en": "You can drink this tea to unleash a fiery breath attack. Make an Instinct Roll against all adversaries in front of you within Close range. Targets you succeed against take d20 physical damage using your Proficiency.",
     "ru": "Вы можете выпить этот чай, чтобы совершить атаку огненным дыханием. Сделайте Бросок Инстинкта против всех противников перед вами в пределах Средней дистанции. Цели, против которых вы преуспели, получают d20 физического урона, равного вашему Мастерству."
-  }
-}
-{
+  },
   "bridge_seed": {
-    "en": "Thick vines grow from your location to a point of your choice within Farrange, allowing you to climb up or across them. The vines dissipate on your next short rest.",
+    "en": "Thick vines grow from your location to a point of your choice within Far range, allowing you to climb up or across them. The vines dissipate on your next short rest.",
     "ru": "Толстые лианы растут от вашего местоположения до выбранной вами точки в пределах Далекой дистанции, позволяя вам подниматься по ним вверх или перебираться через них. Лианы исчезают после вашего следующего короткого отдыха."
-  }
-}
-{
+  },
   "sleeping_sap": {
-    "en": "You can drink this potion to fall asleep for a full night’s rest. You clear all Stress upon waking.",
+    "en": "You can drink this potion to fall asleep for a full night's rest. You clear all Stress upon waking.",
     "ru": "Вы можете выпить это зелье, чтобы заснуть и хорошо отдохнуть всю ночь. Проснувшись, вы очищаете весь Стресс."
-  }
-}
-{
+  },
   "feast_of_xuria": {
     "en": "You can eat this meal to clear all HP and Stress and gain 1d4 Hope.",
     "ru": "Вы можете съесть эту еду, чтобы исцелить все Раны и Стресс и получить 1d4 Надежды."
-  }
-}
-{
+  },
   "bonding_honey": {
     "en": "This honey can be used to glue two objects together permanently.",
     "ru": "Этот мед можно использовать для постоянного склеивания двух предметов."
-  }
-}
-{
+  },
   "shrinking_potion": {
-    "en": "You can drink this potion to halve your size until you choose to drop this form or your next rest. While in this form, you have a +2 bonus to Agilityand a −1 penalty to your Proficiency.",
-    "ru": "Вы можете выпить это зелье, чтобы уменьшить свой размер вдвое, пока не решите отказаться от этой формы или не сделаете следующий отдых. В этой форме вы получаете бонус +2 к Проворности и штраф -1 к Мастерству."
-  }
-}
-{
+    "en": "You can drink this potion to halve your size until you choose to drop this form or your next rest. While in this form, you have a +2 situation bonus to Agility and a −1 situation penalty to your Proficiency.",
+    "ru": "Вы можете выпить это зелье, чтобы уменьшить свой размер вдвое, пока не решите отказаться от этой формы или не сделаете следующий отдых. В этой форме вы получаете ситуативный бонус +2 к Проворности и ситуативный штраф -1 к Мастерству."
+  },
   "growing_potion": {
-    "en": "You can drink this potion to double your size until you choose to drop this form or your next rest. While in this form, you have a +2 bonus to Strengthand a +1 bonus to your Proficiency.",
-    "ru": "Вы можете выпить это зелье, чтобы удвоить свой размер, пока не решите отказаться от этой формы или не наступит следующий отдых. В этой форме вы получаете бонус +2 к Силе и +1 к Мастерству."
-  }
-}
-{
+    "en": "You can drink this potion to double your size until you choose to drop this form or your next rest. While in this form, you have a +2 situation bonus to Strength and a +1 situation bonus to your Proficiency.",
+    "ru": "Вы можете выпить это зелье, чтобы удвоить свой размер, пока не решите отказаться от этой формы или не наступит следующий отдых. В этой форме вы получаете ситуативный бонус +2 к Силе и +1 к Мастерству."
+  },
   "knowledge_stone": {
     "en": "If you die while holding this stone, an ally can take a card from your loadout to place in their loadout or vault. After they take this knowledge, the stone crumbles.",
     "ru": "Если вы погибаете, имея при себе этот камень, союзник может взять карту из вашего инвентаря и поместить ее в свой инвентарь или хранилище. После того, как он возьмет это знание, камень рассыпается."
-  }
-}
-{
+  },
   "sweet_moss": {
     "en": "You can consume this moss during a rest to clear 1d4 HP or 1d4 Stress.",
     "ru": "Вы можете съесть этот мох во время отдыха, чтобы очистить 1d4 Раны или 1d4 Стресса."
-  }
-}
-{
+  },
   "blinding_orb": {
-    "en": "You can activate this orb to create a flash of bright light. All targets within Closerange become Vulnerable until they mark HP.",
+    "en": "You can activate this orb to create a flash of bright light. All targets within Close range become Vulnerable until they mark HP.",
     "ru": "Вы можете активировать эту сферу, чтобы создать вспышку яркого света. Все цели в пределах Средней дистанции становятся Уязвимыми , пока не отметят Рану."
-  }
-}
-{
+  },
   "death_tea": {
-    "en": "After you drink this tea, you instantly kill your target when you critically succeed on an attack. If you don’t critically succeed on an attack before your next long rest, you die.",
+    "en": "After you drink this tea, you instantly kill your target when you critically succeed on an attack. If you don't critically succeed on an attack before your next long rest, you die.",
     "ru": "После того, как вы выпьете этот чай, вы мгновенно убиваете свою цель, когда выбрасываете критический успех на атаку. Если вы не наносите критически успешный удар до вашего следующего продолжительного отдыха, вы умираете."
-  }
-}
-{
+  },
   "mirror_of_marigold": {
-    "en": "When you take damage, you can spend a Hopeto negate that damage, after which the mirror shatters.",
+    "en": "When you take damage, you can spend a Hope to negate that damage, after which the mirror shatters.",
     "ru": "Когда вы получаете урон, вы можете потратить Надежду, чтобы отменить этот урон, после чего зеркало разбивается."
-  }
-}
-{
+  },
   "stardrop": {
     "en": "You can use this stardrop to summon a hailstorm of comets that deals 8d20 physical damage to all targets within Very Far range.",
     "ru": "Вы можете использовать эту звездную каплю, чтобы вызвать град комет, который наносит 8d20 физического урона всем целям в пределах Очень Далекой дистанции."
