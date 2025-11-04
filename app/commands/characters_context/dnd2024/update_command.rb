@@ -98,9 +98,6 @@ module CharactersContext
 
           # добавить проверку, что подкласс еще не установлен
           key.failure(:invalid_class_name) unless value.keys.all? { |item| item.in?(::Dnd2024::Character.classes_info.keys) }
-          unless value.all? { |class_name, sub| sub.nil? || ::Dnd2024::Character.subclasses_info(class_name).key?(sub) }
-            key.failure(:invalid_subclass)
-          end
         end
 
         rule(:abilities) do
