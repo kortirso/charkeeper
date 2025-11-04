@@ -8,6 +8,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Added
 - rendering items info
 
+### Modified
+- reseting adv/disadv by clicking the same button
+
 ## [0.3.13] - 2025-10-29
 ### Added
 - selecting weapon mastery for D&D 2024
