@@ -63,7 +63,8 @@ export const createDiceRoll = () => {
 
       const updateAdvantage = (advantageModifier) => {
         if (props.provider === 'dnd' || props.provider === 'daggerheart') {
-          if (advantage() + advantageModifier > 1 || advantage() + advantageModifier < -1) return;
+          if (advantage() + advantageModifier > 1) advantageModifier = -1;
+          if (advantage() + advantageModifier < -1) advantageModifier = 1;
 
           batch(() => {
             setAdvantage(advantage() + advantageModifier);
