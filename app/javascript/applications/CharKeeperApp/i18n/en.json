@@ -235,7 +235,6 @@
       "naturalForm": "Natural form"
     },
     "companion": {
-      "notAvailable": "Companion is not available",
       "name": "Companion's name",
       "evasion": "Evasion",
       "damage": "Damage",
