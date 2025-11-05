@@ -1,16 +1,35 @@
-import { createSignal, Show, For, Switch, Match, splitProps } from 'solid-js';
+import { createSignal, createMemo, Show, For, Switch, Match, splitProps } from 'solid-js';
 
 import { Label } from './Label';
+import { useAppLocale } from '../../context';
 import { Chevron } from '../../assets';
 import { clickOutside } from '../../helpers';
+
+const TRANSLATION = {
+  en: {
+    clear: 'Cancel selection'
+  },
+  ru: {
+    clear: 'Отменить выбор'
+  }
+}
 
 export const Select = (props) => {
   const [labelProps] = splitProps(props, ['labelText', 'labelClassList']);
 
   const [isOpen, setIsOpen] = createSignal(false);
 
+  const [locale] = useAppLocale();
+
+  const itemsForSelect = createMemo(() => {
+    if (!props.withNull) return Object.entries(props.items);
+
+    return [['null', TRANSLATION[locale()]['clear']]].concat(Object.entries(props.items));
+  });
+
   const onSelect = (value) => {
-    props.onSelect(value);
+    const newValue = value === 'null' ? null : value;
+    props.onSelect(newValue);
     if (!props.multi) setIsOpen(false);
   }
 
@@ -37,7 +56,7 @@ export const Select = (props) => {
         </div>
         <Show when={isOpen()}>
           <ul class="form-dropdown">
-            <For each={Object.entries(props.items)}>
+            <For each={itemsForSelect()}>
               {([key, value]) =>
                 <li
                   classList={{ 'selected': props.multi && props.selectedValues.includes(key) }}

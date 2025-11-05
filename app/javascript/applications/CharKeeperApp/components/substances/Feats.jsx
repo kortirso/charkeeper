@@ -49,7 +49,6 @@ export const Feats = (props) => {
 
   const readFeaturesToggle = async () => {
     const cacheValue = await readFromCache(FEATURES_FILTER_NAME);
-    console.log(cacheValue)
     setFiltering(cacheValue === null ? ['groupFeatures'] : cacheValue.split(','));
   }
 
@@ -187,6 +186,7 @@ export const Feats = (props) => {
                     </Match>
                     <Match when={feature.kind === 'static_list' || feature.kind === 'one_from_list'}>
                       <Select
+                        withNull
                         containerClassList="w-full mt-2"
                         items={Object.entries(feature.options).reduce((acc, [key, value]) => { acc[key] = value[locale()]; return acc; }, {})}
                         selectedValue={featValues()[feature.slug]}
