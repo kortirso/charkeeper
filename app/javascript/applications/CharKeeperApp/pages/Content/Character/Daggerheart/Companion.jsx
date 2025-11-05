@@ -113,14 +113,7 @@ export const DaggerheartCompanion = (props) => {
   return (
     <ErrorWrapper payload={{ character_id: character().id, key: 'DaggerheartCompanion' }}>
       <GuideWrapper character={character()}>
-        <Show
-          when={character().can_have_companion}
-          fallback={
-            <div class="p-4 blockable dark:text-snow">
-              <p>{t('daggerheart.companion.notAvailable')}</p>
-            </div>
-          }
-        >
+        <Show when={character().can_have_companion}>
           <Show
             when={companion()}
             fallback={
