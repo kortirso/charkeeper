@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## Unreleased
 ### Added
 - rendering items info
+- rendering attack tags for Daggerheart
 
 ### Modified
 - reseting adv/disadv by clicking the same button

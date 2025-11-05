@@ -14,6 +14,12 @@ module DaggerheartCharacter
       __getobj__.respond_to?(method.to_sym) ? __getobj__.public_send(method) : nil
     end
 
+    # rubocop: disable Naming/PredicateMethod
+    def use_max_trait_for_attack
+      false
+    end
+    # rubocop: enable Naming/PredicateMethod
+
     def advantage_dice
       'd6'
     end

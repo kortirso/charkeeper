@@ -18,10 +18,6 @@ module DaggerheartCharacter
     def can_have_stances
       available_mechanics.include?('stances')
     end
-
-    def use_max_trait_for_attack
-      false
-    end
     # rubocop: enable Naming/PredicateMethod
 
     def modified_traits
@@ -106,12 +102,11 @@ module DaggerheartCharacter
 
     private
 
-    def beastform_attack
+    def beastform_attack # rubocop: disable Metrics/AbcSize
       beast_attack = beastform_config['attack']
 
       {
         name: { en: 'Beast attack', ru: 'Атака' }[I18n.locale],
-        burden: 2,
         range: beast_attack['range'],
         attack_bonus: (use_max_trait_for_attack ? max_trait_value : modified_traits[beast_attack['trait']]) + attack_bonuses,
         damage: "#{(proficiency / 2.0).round}#{beast_attack['damage']}",
@@ -120,14 +115,14 @@ module DaggerheartCharacter
         kind: 'primary weapon',
         features: [],
         notes: [],
-        ready_to_use: true
+        ready_to_use: true,
+        tags: { beast_attack['damage_type'] => I18n.t("tags.daggerheart.weapon.title.#{beast_attack['damage_type']}") }
       }
     end
 
     def unarmed_attack
       {
         name: { en: 'Unarmed', ru: 'Безоружная' }[I18n.locale],
-        burden: 2,
         range: 'melee',
         attack_bonus: (use_max_trait_for_attack ? max_trait_value : [modified_traits['str'], modified_traits['fin']].max) + attack_bonuses + stance_attack_bonus, # rubocop: disable Layout/LineLength
         damage: "#{proficiency}d4",
@@ -136,7 +131,8 @@ module DaggerheartCharacter
         kind: 'primary weapon',
         features: [],
         notes: [],
-        ready_to_use: true
+        ready_to_use: true,
+        tags: { 'physical' => I18n.t('tags.daggerheart.weapon.title.physical') }
       }
     end
 
@@ -144,7 +140,6 @@ module DaggerheartCharacter
     def calculate_attack(item)
       response = [{
         name: item[:items_name][I18n.locale.to_s],
-        burden: item[:items_info]['burden'],
         range: item[:items_info]['range'],
         attack_bonus: (use_max_trait_for_attack ? max_trait_value : trait_bonus(item)) + attack_bonuses + stance_attack_bonus +
                       item.dig(:items_info, 'bonuses', 'attack').to_i,
@@ -154,8 +149,16 @@ module DaggerheartCharacter
         kind: item[:items_kind],
         features: item[:items_info]['features'] || [],
         notes: item[:notes] || [],
-        ready_to_use: item[:state] ? item[:state].in?(::Character::Item::ACTIVE_STATES) : true
+        ready_to_use: item[:state] ? item[:state].in?(::Character::Item::ACTIVE_STATES) : true,
+        tags: {
+          item[:items_kind].tr(' ', '_') => I18n.t("tags.daggerheart.weapon.title.#{item[:items_kind].tr(' ', '_')}"),
+          item[:items_info]['damage_type'] => I18n.t("tags.daggerheart.weapon.title.#{item[:items_info]['damage_type']}")
+        }
       }]
+
+      if item[:items_info]['burden'] == 2
+        response[0][:tags] = response[0][:tags].merge({ 'Two-Handed' => I18n.t('tags.daggerheart.weapon.title.Two-Handed') })
+      end
 
       versatile = item[:items_info]['versatile']
       if versatile
