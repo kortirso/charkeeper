@@ -252,8 +252,17 @@ en:
           vex: Vex
     daggerheart:
       weapon:
-        physical: Physical
-        magic: Magic
+        physical: Physical damage comes from any wielded weapon that cuts, stabs, or bludgeons.
+        magic: Magic damage is caused or enhanced by magic.
+        Two-Handed: The weapon requires 2 hands when you Attack with it.
+        primary_weapon: Primary weapons are the main weapons your character will likely be fighting with during an encounter. A character can only hold one primary weapon at a time.
+        secondary_weapon: Secondary weapons are typically ancillary pieces of equipment that augment your character's fighting, such as shields, daggers, or small swords. If a character's primary weapon is one-handed, we recommend you also take a secondary weapon (but you can't hold your secondary weapon if you switch to a primary weapon that requires two hands).
+        title:
+          physical: Physical damage
+          magic: Magic damage
+          Two-Handed: Two-Handed
+          primary_weapon: Primary
+          secondary_weapon: Secondary
     dc20:
       weapon:
         Axe: You deal +1 situational damage against creatures that are Bleeding.
