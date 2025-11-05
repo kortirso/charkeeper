@@ -16,7 +16,7 @@ module DaggerheartCharacter
       end
     end
 
-    # rubocop: disable Metrics/AbcSize, Metrics/MethodLength, Metrics/PerceivedComplexity, Metrics/BlockLength
+    # rubocop: disable Metrics/AbcSize, Metrics/MethodLength, Metrics/PerceivedComplexity
     def features
       @features ||=
         available_features.filter_map do |feature|
@@ -27,7 +27,6 @@ module DaggerheartCharacter
               instance_variable_set(:"@#{method_name}", result) if result
             end
           end
-          next if feature.feat.kind == 'update_result'
 
           feature.feat.description_eval_variables.transform_values! do |value|
             eval_variable(feature.feat, value) || value
@@ -50,7 +49,7 @@ module DaggerheartCharacter
           }.compact
         end
     end
-    # rubocop: enable Metrics/AbcSize, Metrics/MethodLength, Metrics/PerceivedComplexity, Metrics/BlockLength
+    # rubocop: enable Metrics/AbcSize, Metrics/MethodLength, Metrics/PerceivedComplexity
 
     private
 
