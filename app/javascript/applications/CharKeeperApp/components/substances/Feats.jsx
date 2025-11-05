@@ -8,21 +8,25 @@ import { useAppState, useAppLocale, useAppAlert } from '../../context';
 import { updateCharacterFeatRequest } from '../../requests/updateCharacterFeatRequest';
 import { readFromCache, writeToCache } from '../../helpers';
 
-const FEATURES_TOGGLE = 'FeaturesToggle';
+const FEATURES_FILTER_NAME = 'FeaturesFiltersStatus';
 const TRANSLATION = {
   en: {
     activeFeat: 'Active',
     allFeatures: 'All features',
-    enable: 'Enable grouping',
-    disable: 'Disable grouping',
-    personalFeats: 'Personal feats can be created through homebrew'
+    personalFeats: 'Personal feats can be created through homebrew',
+    settings: 'Filter settings',
+    showPersonal: 'Show personal',
+    groupFeatures: 'Group features',
+    showPassive: 'Show passive'
   },
   ru: {
     activeFeat: 'Активен',
     allFeatures: 'Все способности',
-    enable: 'Группировать',
-    disable: 'Не группировать',
-    personalFeats: 'Личные способности могут быть добавлены через homebrew'
+    personalFeats: 'Личные способности могут быть добавлены через homebrew',
+    settings: 'Настройки фильтров',
+    showPersonal: 'Показать личные',
+    groupFeatures: 'Группировать',
+    showPassive: 'Показать пассивные'
   }
 }
 
@@ -30,7 +34,7 @@ export const Feats = (props) => {
   const character = () => props.character;
   const filters = () => props.filters;
 
-  const [filtering, setFiltering] = createSignal(true);
+  const [filtering, setFiltering] = createSignal([]);
   const [activeFilter, setActiveFilter] = createSignal(filters()[0].title);
   const [lastActiveCharacterId, setLastActiveCharacterId] = createSignal(undefined);
   const [featValues, setFeatValues] = createSignal(
@@ -44,8 +48,9 @@ export const Feats = (props) => {
   const t = i18n.translator(dict);
 
   const readFeaturesToggle = async () => {
-    const cacheValue = await readFromCache(FEATURES_TOGGLE)
-    setFiltering(cacheValue === null ? true : false);
+    const cacheValue = await readFromCache(FEATURES_FILTER_NAME);
+    console.log(cacheValue)
+    setFiltering(cacheValue === null ? ['groupFeatures'] : cacheValue.split(','));
   }
 
   createEffect(() => {
@@ -61,6 +66,17 @@ export const Feats = (props) => {
   });
 
   const activeFilterOptions = createMemo(() => filters().find((item) => item.title === activeFilter()));
+
+  const filteredFeatures = createMemo(() => {
+    if (filtering() === null) return character().features;
+
+    const result = character().features.filter((item) => {
+      if (!filtering().includes('showPassive') && item.kind === 'update_result') return false;
+      return true;
+    });
+
+    return filtering().includes('groupFeatures') ? result.filter(activeFilterOptions().callback) : result;
+  });
 
   const spendEnergy = (event, feature) => {
     event.stopPropagation();
@@ -110,10 +126,11 @@ export const Feats = (props) => {
     } else renderAlerts(result.errors_list);
   }
 
-  const updateFiltering = (cacheValue, value) => {
+  const updateFiltering = (value) => {
+    const newValue = filtering().includes(value) ? filtering().filter((item) => item !== value) : filtering().concat([value]);
     batch(() => {
-      writeToCache(FEATURES_TOGGLE, cacheValue);
-      setFiltering(value);
+      writeToCache(FEATURES_FILTER_NAME, newValue.join(','));
+      setFiltering(newValue);
     })
   }
 
@@ -121,30 +138,30 @@ export const Feats = (props) => {
     <ErrorWrapper payload={{ character_id: character().id, key: 'Feats' }}>
       <GuideWrapper character={character()}>
         <Show
-          when={filtering() === null || filtering()}
+          when={filtering() === null || filtering().includes('groupFeatures')}
           fallback={
             <div id="character-navigation">
               <p class="active">{TRANSLATION[locale()]['allFeatures']}</p>
-              <p onClick={() => updateFiltering(null, true)}>{TRANSLATION[locale()]['enable']}</p>
             </div>
           }
         >
           <CharacterNavigation
-            tabsList={filters().map((item) => item.title)}
+            tabsList={filters().map((item) => item.title).filter((item) => item !== 'personal' || filtering() === null || filtering().includes('showPersonal'))}
             activeTab={activeFilter()}
             setActiveTab={setActiveFilter}
-          >
-            <p onClick={() => updateFiltering('disable', false)}>{TRANSLATION[locale()]['disable']}</p>
-          </CharacterNavigation>
+          />
         </Show>
         <div class="mt-2">
           <Show when={activeFilterOptions()}>
-            <Show when={filtering() === null || filtering() && activeFilter() === 'personal'}>
+            <Show when={activeFilter() === 'personal'}>
               <p class="dark:text-snow mb-2 text-sm">{TRANSLATION[locale()]['personalFeats']}</p>
             </Show>
-            <For each={filtering() === null || filtering() ? character().features.filter(activeFilterOptions().callback) : character().features}>
+            <For each={filteredFeatures()}>
               {(feature) =>
-                <Toggle title={<FeatureTitle feature={feature} onSpendEnergy={spendEnergy} onRestoreEnergy={restoreEnergy} />}>
+                <Toggle
+                  containerClassList={feature.kind === 'update_result' ? 'opacity-50' : ''}
+                  title={<FeatureTitle feature={feature} onSpendEnergy={spendEnergy} onRestoreEnergy={restoreEnergy} />}
+                >
                   <p
                     class="text-sm"
                     innerHTML={feature.description} // eslint-disable-line solid/no-innerhtml
@@ -201,6 +218,18 @@ export const Feats = (props) => {
                 </Toggle>
               }
             </For>
+            <Select
+              multi
+              containerClassList="w-1/2 mb-2"
+              labelText={TRANSLATION[locale()]['settings']}
+              items={{
+                'showPersonal': TRANSLATION[locale()]['showPersonal'],
+                'groupFeatures': TRANSLATION[locale()]['groupFeatures'],
+                'showPassive': TRANSLATION[locale()]['showPassive']
+              }}
+              selectedValues={filtering() || []}
+              onSelect={(value) => updateFiltering(value)}
+            />
           </Show>
         </div>
       </GuideWrapper>

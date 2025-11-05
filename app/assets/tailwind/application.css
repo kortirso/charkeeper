@@ -186,7 +186,8 @@
 }
 
 #character-navigation {
-  @apply flex overflow-x-auto bg-white border-b border-gray-200 px-2 dark:bg-neutral-800 dark:border-black;
+  @apply flex overflow-x-auto bg-white border-b border-gray-200 px-2;
+  @apply dark:bg-neutral-800 dark:border-black;
 }
 
 #character-navigation::-webkit-scrollbar { 
