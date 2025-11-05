@@ -11,6 +11,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Modified
 - reseting adv/disadv by clicking the same button
+- rendering order for Daggerheart feats
 
 ## [0.3.13] - 2025-10-29
 ### Added

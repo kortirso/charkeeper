@@ -71,12 +71,12 @@ export const Daggerheart = (props) => {
       { title: 'community', callback: communityFilter },
       { title: 'class', callback: classFilter },
       { title: 'subclass', callback: subclassFilter },
-      { title: 'domainCards', callback: domainCardFilter },
-      { title: 'personal', callback: personalFilter }
+      { title: 'domainCards', callback: domainCardFilter }
     ];
 
     if (character().beastform !== null) result.push({ title: 'beastform', callback: beastformFilter });
     if (character().transformation !== null) result.push({ title: 'transformation', callback: transformationFilter });
+    result.push({ title: 'personal', callback: personalFilter });
     return result;
   });
 
