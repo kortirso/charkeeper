@@ -32,6 +32,8 @@ module CharactersContext
       def do_persist(input)
         character = ::Dc20::Character.create!(input.slice(:user, :name, :data))
 
+        attach_feats(character, input[:ancestry_feats].values.flatten)
+
         if input[:avatar_file]
           ImageProcessingContext::AttachAvatarByFileJob.perform_later(character_id: character.id, file: input[:avatar_file])
         end
@@ -45,6 +47,19 @@ module CharactersContext
       def build_fresh_character(data)
         Dc20Character::BaseBuilder.new.call(result: data)
           .then { |result| Dc20Character::ClassBuilder.new.call(result: result) }
+      end
+
+      def attach_feats(character, feat_slugs)
+        feats_for_adding = ::Dc20::Feat.where(origin: 0, slug: feat_slugs).map do |feat|
+          {
+            feat_id: feat.id,
+            character_id: character.id,
+            used_count: 0,
+            limit_refresh: feat.limit_refresh,
+            ready_to_use: true
+          }
+        end
+        ::Character::Feat.upsert_all(feats_for_adding) if feats_for_adding.any?
       end
     end
   end

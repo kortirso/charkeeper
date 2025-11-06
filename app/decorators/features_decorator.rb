@@ -43,7 +43,8 @@ class FeaturesDecorator
           value: feature.value,
           origin: feature.feat.origin,
           active: feature.active,
-          continious: feature.feat.continious
+          continious: feature.feat.continious,
+          ready_to_use: feature.ready_to_use
         }.compact
       end
   end
@@ -53,10 +54,6 @@ class FeaturesDecorator
 
   def feature_bonuses_enabled?(feature)
     (!feature.feat.continious && feature.ready_to_use) || feature.active
-  end
-
-  def available_features
-    wrapped.feats.includes(:feat).order('feats.origin ASC, feats.created_at ASC')
   end
 
   def update_feature_description(feature)

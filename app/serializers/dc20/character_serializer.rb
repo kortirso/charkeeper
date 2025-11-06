@@ -2,13 +2,13 @@
 
 module Dc20
   class CharacterSerializer < ApplicationSerializer
-    attributes :provider, :id, :name, :level, :main_class, :abilities, :modified_abilities, :created_at, :avatar, :health,
+    attributes :features, :provider, :id, :name, :level, :main_class, :abilities, :modified_abilities, :created_at, :avatar,
                :attribute_points, :classes, :ancestries, :combat_mastery, :save_dc, :precision_defense, :area_defense, :attack,
                :skills, :skill_points, :skill_expertise_points, :guide_step, :trade_points, :trade_expertise_points,
                :language_points, :trades, :trade_knowledge, :language_levels, :attribute_saves, :physical_save, :mental_save,
-               :initiative, :conditions, :attacks
+               :initiative, :conditions, :attacks, :health
 
-    delegate :id, :name, :level, :main_class, :abilities, :modified_abilities, :health, :attribute_points, :classes,
+    delegate :features, :id, :name, :level, :main_class, :abilities, :modified_abilities, :health, :attribute_points, :classes,
              :ancestries, :combat_mastery, :save_dc, :precision_defense, :area_defense, :attack, :skills, :skill_points,
              :skill_expertise_points, :trade_points, :trade_expertise_points, :language_points, :trades, :trade_knowledge,
              :language_levels, :attribute_saves, :physical_save, :mental_save, :initiative, :conditions, :attacks, to: :decorator
@@ -26,7 +26,7 @@ module Dc20
     def decorator
       @decorator ||= {}
       @decorator.fetch(object.id) do |key|
-        @decorator[key] = object.decorator
+        @decorator[key] = object.decorator(simple: (context ? (context[:simple] || false) : false))
       end
     end
   end

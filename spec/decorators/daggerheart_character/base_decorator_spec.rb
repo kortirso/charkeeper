@@ -3,10 +3,10 @@
 describe DaggerheartCharacter::BaseDecorator do
   subject(:decorator) do
     base_decorator = described_class.new(Character.find(character.id))
-    base_features_decorator = DaggerheartCharacter::FeaturesBaseDecorator.new(base_decorator)
+    base_features_decorator = FeaturesBaseDecorator.new(base_decorator)
     base_features_decorator.features
     stats_decorator = DaggerheartCharacter::StatsDecorator.new(base_features_decorator)
-    features_decorator = DaggerheartCharacter::FeaturesDecorator.new(stats_decorator)
+    features_decorator = FeaturesDecorator.new(stats_decorator)
     features_decorator.features
     features_decorator
   end

@@ -6,7 +6,7 @@ import {
   Dc20Abilities, Dc20Skills, Dc20Saves, Dc20CombatStatic
 } from '../../../pages';
 import {
-  CharacterNavigation, Notes, Avatar, ContentWrapper, createDiceRoll, Conditions, Equipment, Combat
+  CharacterNavigation, Notes, Avatar, ContentWrapper, createDiceRoll, Conditions, Equipment, Combat, Feats
 } from '../../../components';
 import { useAppLocale } from '../../../context';
 
@@ -26,6 +26,15 @@ export const Dc20 = (props) => {
   const weaponFilter = (item) => item.kind.includes('weapon');
   const armorFilter = (item) => item.kind.includes('armor');
   const shieldFilter = (item) => item.kind.includes('shield');
+
+  const ancestryFilter = (item) => item.origin === 'ancestry';
+
+  const featFilters = createMemo(() => {
+    const result = [
+      { title: 'ancestry', callback: ancestryFilter }
+    ];
+    return result;
+  });
 
   const mobileView = createMemo(() => {
     if (size.width >= 1152) return <></>;
@@ -58,6 +67,14 @@ export const Dc20 = (props) => {
                 <Dc20Skills
                   character={character()}
                   openDiceRoll={openDiceRoll}
+                  onReplaceCharacter={props.onReplaceCharacter}
+                  onReloadCharacter={props.onReloadCharacter}
+                />
+              </div>
+              <div class="mt-4">
+                <Feats
+                  character={character()}
+                  filters={featFilters()}
                   onReplaceCharacter={props.onReplaceCharacter}
                   onReloadCharacter={props.onReloadCharacter}
                 />
@@ -147,6 +164,14 @@ export const Dc20 = (props) => {
                   character={character()}
                   openDiceRoll={openDiceRoll}
                   onReplaceCharacter={props.onReplaceCharacter}
+                />
+              </div>
+              <div class="mt-4">
+                <Feats
+                  character={character()}
+                  filters={featFilters()}
+                  onReplaceCharacter={props.onReplaceCharacter}
+                  onReloadCharacter={props.onReloadCharacter}
                 />
               </div>
             </Match>

@@ -92,11 +92,16 @@ module Pathfinder2
 
     attribute :data, Pathfinder2::CharacterData.to_type
 
-    def decorator
+    def decorator(simple: false)
       base_decorator = ::Pathfinder2Character::BaseDecorator.new(self)
-      race_decorator = ::Pathfinder2Character::RaceDecorateWrapper.new(base_decorator)
+      base_features_decorator = ::FeaturesBaseDecorator.new(base_decorator)
+      base_features_decorator.features unless simple
+      race_decorator = ::Pathfinder2Character::RaceDecorateWrapper.new(base_features_decorator)
       subrace_decorator = ::Pathfinder2Character::SubraceDecorateWrapper.new(race_decorator)
-      ::Pathfinder2Character::ClassDecorateWrapper.new(subrace_decorator)
+      class_decorator = ::Pathfinder2Character::ClassDecorateWrapper.new(subrace_decorator)
+      features_decorator = ::FeaturesDecorator.new(class_decorator)
+      features_decorator.features unless simple
+      features_decorator
     end
   end
 end

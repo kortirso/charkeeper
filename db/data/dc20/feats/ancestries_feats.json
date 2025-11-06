@@ -1,0 +1,50 @@
+[
+  {
+    "slug": "human_resolve",
+    "title": { "en": "Human Resolve", "ru": "Человеческое Упорство" },
+    "description": {
+      "en": "Your Death's Door Threshold value is expanded by 1.",
+      "ru": "К значению вашего Порога Смерти добавляется -1."
+    },
+    "origin": "ancestry",
+    "origin_value": "human",
+    "kind": "update_result"
+  },
+  {
+    "slug": "undying",
+    "title": { "en": "Undying", "ru": "Неумирающий" },
+    "description": {
+      "en": "You have ADV on Saves against the Doomed Condition.",
+      "ru": "Вы получаете Преимущество на Спасы от Обречённости."
+    },
+    "origin": "ancestry",
+    "origin_value": "human",
+    "kind": "static"
+  },
+  {
+    "slug": "human_determination",
+    "title": { "en": "Human Determination", "ru": "Человеческая Решительность" },
+    "description": {
+      "en": "You can give yourself ADV on an Attack Check or Spell Check while Bloodied.",
+      "ru": "Вы можете дать себе Преимущество на Проверку Атаки или Проверку Заклинания, если вы Изранены."
+    },
+    "origin": "ancestry",
+    "origin_value": "human",
+    "kind": "static",
+    "description_eval_variables": {
+      "limit": "1"
+    },
+    "limit_refresh": "combat"
+  },
+  {
+    "slug": "unbreakable",
+    "title": { "en": "Unbreakable", "ru": "Несломимый" },
+    "description": {
+      "en": "You have ADV on Death Saves.",
+      "ru": "Вы получаете Преимущество на Спасы от Смерти."
+    },
+    "origin": "ancestry",
+    "origin_value": "human",
+    "kind": "static"
+  }
+]

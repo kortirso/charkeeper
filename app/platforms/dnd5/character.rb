@@ -120,7 +120,9 @@ module Dnd5
 
     def decorator(simple: false)
       base_decorator = ::Dnd5Character::BaseDecorator.new(self)
-      race_decorator = ::Dnd5Character::RaceDecorateWrapper.new(base_decorator)
+      base_features_decorator = ::FeaturesBaseDecorator.new(base_decorator)
+      base_features_decorator.features unless simple
+      race_decorator = ::Dnd5Character::RaceDecorateWrapper.new(base_features_decorator)
       subrace_decorator = ::Dnd5Character::SubraceDecorateWrapper.new(race_decorator)
       class_decorator = ::Dnd5Character::ClassDecorateWrapper.new(subrace_decorator)
       subclass_decorator = ::Dnd5Character::SubclassDecorateWrapper.new(class_decorator)
