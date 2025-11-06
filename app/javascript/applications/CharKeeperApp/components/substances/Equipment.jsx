@@ -136,8 +136,10 @@ export const Equipment = (props) => {
     );
     if (result.errors_list === undefined) {
       batch(() => {
-        if (item.kind.includes('weapon') || item.state === 'hands') reloadCharacterItems();
-        else setCharacterItems(characterItems().filter((element) => element !== item));
+        if (item.kind.includes('weapon') || item.state === 'hands') {
+          reloadCharacterItems();
+          props.onReloadCharacter();
+        } else setCharacterItems(characterItems().filter((element) => element !== item));
       });
     }
   }

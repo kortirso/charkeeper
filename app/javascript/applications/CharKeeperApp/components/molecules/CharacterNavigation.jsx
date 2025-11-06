@@ -10,20 +10,22 @@ export const CharacterNavigation = (props) => {
 
   return (
     <div id="character-navigation">
-      <For each={props.tabsList}>
-        {(tab) =>
-          <p
-            classList={{
-              'active': props.activeTab === tab,
-              'opacity-25': props.currentGuideStep && tab !== props.markedTabs[props.currentGuideStep.toString()],
-              'text-black! dark:text-snow!': props.currentGuideStep && tab === props.markedTabs[props.currentGuideStep.toString()]
-            }}
-            onClick={() => props.setActiveTab(tab)}
-          >
-            {t(`pages.characterNavigation.${tab}`)}
-          </p>
-        }
-      </For>
+      <div class="flex">
+        <For each={props.tabsList}>
+          {(tab) =>
+            <p
+              classList={{
+                'active': props.activeTab === tab,
+                'opacity-25': props.currentGuideStep && tab !== props.markedTabs[props.currentGuideStep.toString()],
+                'text-black! dark:text-snow!': props.currentGuideStep && tab === props.markedTabs[props.currentGuideStep.toString()]
+              }}
+              onClick={() => props.setActiveTab(tab)}
+            >
+              {t(`pages.characterNavigation.${tab}`)}
+            </p>
+          }
+        </For>
+      </div>
       <Show when={props.children}>{props.children}</Show>
     </div>
   );

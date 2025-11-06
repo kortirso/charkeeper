@@ -98,6 +98,7 @@ export const DaggerheartDomainCards = (props) => {
         setCharacterSpells([result.spell].concat(characterSpells()));
         renderNotice(TRANSLATION[locale()]['domainCardIsAdded']);
       });
+      props.onReloadCharacter();
     }
   }
 
