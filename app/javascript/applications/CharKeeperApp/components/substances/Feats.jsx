@@ -5,6 +5,7 @@ import {
   Toggle, Button, Select, ErrorWrapper, FeatureTitle, TextArea, CharacterNavigation, Checkbox, GuideWrapper
 } from '../../components';
 import { useAppState, useAppLocale, useAppAlert } from '../../context';
+import { Edit } from '../../assets';
 import { updateCharacterFeatRequest } from '../../requests/updateCharacterFeatRequest';
 import { readFromCache, writeToCache } from '../../helpers';
 
@@ -34,6 +35,7 @@ export const Feats = (props) => {
   const character = () => props.character;
   const filters = () => props.filters;
 
+  const [showFilters, setShowFilters] = createSignal(false);
   const [filtering, setFiltering] = createSignal([]);
   const [activeFilter, setActiveFilter] = createSignal(filters()[0].title);
   const [lastActiveCharacterId, setLastActiveCharacterId] = createSignal(undefined);
@@ -141,6 +143,9 @@ export const Feats = (props) => {
           fallback={
             <div id="character-navigation">
               <p class="active">{TRANSLATION[locale()]['allFeatures']}</p>
+              <Button default classList='rounded min-w-6 min-h-6 opacity-50 m-0!' onClick={() => setShowFilters(!showFilters())}>
+                <Edit />
+              </Button>
             </div>
           }
         >
@@ -148,10 +153,28 @@ export const Feats = (props) => {
             tabsList={filters().map((item) => item.title).filter((item) => item !== 'personal' || filtering() === null || filtering().includes('showPersonal'))}
             activeTab={activeFilter()}
             setActiveTab={setActiveFilter}
-          />
+          >
+            <Button default classList='rounded min-w-6 min-h-6 opacity-50 m-0!' onClick={() => setShowFilters(!showFilters())}>
+              <Edit />
+            </Button>
+          </CharacterNavigation>
         </Show>
         <div class="mt-2">
           <Show when={activeFilterOptions()}>
+            <Show when={showFilters()}>
+              <Select
+                multi
+                containerClassList="w-1/2 mb-2"
+                labelText={TRANSLATION[locale()]['settings']}
+                items={{
+                  'showPersonal': TRANSLATION[locale()]['showPersonal'],
+                  'groupFeatures': TRANSLATION[locale()]['groupFeatures'],
+                  'showPassive': TRANSLATION[locale()]['showPassive']
+                }}
+                selectedValues={filtering() || []}
+                onSelect={(value) => updateFiltering(value)}
+              />
+            </Show>
             <Show when={activeFilter() === 'personal'}>
               <p class="dark:text-snow mb-2 text-sm">{TRANSLATION[locale()]['personalFeats']}</p>
             </Show>
@@ -218,18 +241,6 @@ export const Feats = (props) => {
                 </Toggle>
               }
             </For>
-            <Select
-              multi
-              containerClassList="w-1/2 mb-2"
-              labelText={TRANSLATION[locale()]['settings']}
-              items={{
-                'showPersonal': TRANSLATION[locale()]['showPersonal'],
-                'groupFeatures': TRANSLATION[locale()]['groupFeatures'],
-                'showPassive': TRANSLATION[locale()]['showPassive']
-              }}
-              selectedValues={filtering() || []}
-              onSelect={(value) => updateFiltering(value)}
-            />
           </Show>
         </div>
       </GuideWrapper>

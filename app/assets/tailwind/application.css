@@ -186,7 +186,7 @@
 }
 
 #character-navigation {
-  @apply flex overflow-x-auto bg-white border-b border-gray-200 px-2;
+  @apply flex justify-between overflow-x-auto bg-white border-b border-gray-200 px-2;
   @apply dark:bg-neutral-800 dark:border-black;
 }
 
