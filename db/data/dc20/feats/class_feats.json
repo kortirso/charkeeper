@@ -1,0 +1,51 @@
+[
+  {
+    "slug": "inspiring_presence",
+    "title": { "en": "Inspiring Presence", "ru": "Вдохновляющее присутствие" },
+    "description": {
+      "en": "Whenever you spend SP while in Combat, you can restore an amount of HP equal to the SP spent. Choose any creatures within 5 Spaces that can see or hear you, and divide the HP among them.",
+      "ru": "Когда вы тратите ОВ во время Боя, вы можете восстановить ОЗ в количестве, равном потраченным ОВ. Выберите любое количество существ в пределах 5 Клеток, которые могут видеть или слышать вас, и распределите эти ОЗ между ними."
+    },
+    "origin": "class",
+    "origin_value": "commander",
+    "kind": "static",
+    "conditions": { "level": 1 }
+  },
+  {
+    "slug": "commander_call",
+    "title": { "en": "Commander's Call", "ru": "Приказ командира" },
+    "description": {
+      "en": "You can spend 1 AP and 1 SP to command a willing creature that you can see within 5 Spaces that can also see or hear you. The chosen creature can immediately take 1 of the following Actions of your choice as a Reaction for free. You can only use each of the following commands once on each of your turns. 1) The creature makes an Attack with ADV. They can't spend any resources on this Attack. 2) The creature takes the Full Dodge Action. 3) The creature moves up to their Speed without provoking Opportunity Attacks.",
+      "ru": "Вы можете потратить 1 ОД и 1 ОВ, чтобы отдать приказ согласному существу, которое видите в пределах 5 Клеток и которое также может видеть или слышать вас. Выберите одно из нижеперечисленных Действий. Выбранное существо может немедленно выполнить его в качестве Реакции бесплатно. Вы можете использовать каждый из этих приказов только один раз за ваш ход.\n1) Существо Атакует с Преимуществом. Оно не может тратить на эту Атаку ресурсы. 2) Существо Активно Уклоняется. 3) Существо перемещается до своей Скорости, не провоцируя Атаки по Возможности."
+    },
+    "origin": "class",
+    "origin_value": "commander",
+    "kind": "static",
+    "conditions": { "level": 1 },
+    "price": { "ap": 1, "sp": 1 }
+  },
+  {
+    "slug": "natural_leader",
+    "title": { "en": "Natural Leader", "ru": "Прирождённый лидер" },
+    "description": {
+      "en": "You have ADV on Checks made to convince creatures that you are an authority figure. Additionally, you have ADV on the first Charisma Check made to interact with non-hostile members of military groups.",
+      "ru": "Вы получаете Преимуществом на Проверки, направленные на внушение своего авторитета существам. Также вы получаете Преимуществом на первую Проверку Харизмы при взаимодействии с неагрессивными членами военных организаций."
+    },
+    "origin": "class_flavor",
+    "origin_value": "commander",
+    "kind": "static",
+    "conditions": { "level": 1 }
+  },
+  {
+    "slug": "commanding_aura",
+    "title": { "en": "Commanding Aura", "ru": "Аура командования" },
+    "description": {
+      "en": "You're surrounded by a 5 Space Aura. You can target any creature within your Aura to grant one of the followingeffects below, provided the target can see or hear you. 1) (1 AP) You take the Help Action to aid the target with an Attack. You can also do so as a Reaction whenever a valid target makes an Attack. 2) (1 AP) You grant creatures of your choice (including yourself) 1 Temp HP. 3) (1 AP) When a creature in your aura is targeted by an Attack, you can impose DisADV on the Attack as a Reaction.",
+      "ru": "Вы окружены Аурой в 5 Клеток. Вы можете нацелиться на любое существо в вашей Ауре, чтобы дать ему один из следующих эффектов, при условии, что цель может видеть или слышать вас. 1) (1 ОД) Вы Помогаете цели с Атакой. Вы также можете сделать это в качестве Реакции, когда подходящая цель совершает Атаку. 2) (1 ОД) Вы даёте всем выбранным вами существам (включая себя) 1 Врем ОЗ. 3) (1 ОД) Когда существо в вашей Ауре становится целью Атаки, вы можете в качестве Реакции наложить Помеху на эту Атаку."
+    },
+    "origin": "class",
+    "origin_value": "commander",
+    "kind": "static",
+    "conditions": { "level": 2 }
+  }
+]

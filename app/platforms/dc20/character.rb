@@ -10,6 +10,7 @@ module Dc20
     attribute :classes, array: true
     attribute :abilities, array: true, default: { 'mig' => -2, 'agi' => -2, 'int' => -2, 'cha' => -2 }
     attribute :health, array: true, default: { 'current' => 1, 'temp' => 0 }
+    attribute :stamina_points, :integer, default: 0
     attribute :combat_expertise, array: true, default: [] # weapon, light_armor, heavy_armor, light_shield, heavy_shield
     attribute :skill_expertise, array: true, default: [] # компетентность в навыках
     attribute :skill_levels, array: true, default: {} # { 'medicine' => 1 } владение навыками
@@ -26,6 +27,7 @@ module Dc20
     attribute :trade_points, :integer, default: 3
     attribute :trade_expertise_points, :integer, default: 0
     attribute :language_points, :integer, default: 2
+    attribute :path_points, :integer, default: 0
   end
 
   class Character < Character

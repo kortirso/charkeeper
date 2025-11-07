@@ -164,7 +164,7 @@ export const Feats = (props) => {
             <Show when={showFilters()}>
               <Select
                 multi
-                containerClassList="w-1/2 mb-2"
+                containerClassList="w-full md:w-1/2 mb-2"
                 labelText={TRANSLATION[locale()]['settings']}
                 items={{
                   'showPersonal': TRANSLATION[locale()]['showPersonal'],

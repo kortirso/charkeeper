@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## Unreleased
 ### Added
 - rendering DC20 feats
+- DC20 class feats
 
 ### Modified
 - refreshing character after domain cards and equipment changes

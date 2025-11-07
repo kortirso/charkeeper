@@ -11,6 +11,10 @@ module Dc20Character
         )
       end
 
+      def stamina_points
+        @stamina_points ||= (class_level / 3) + 1
+      end
+
       private
 
       def class_level

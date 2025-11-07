@@ -15,7 +15,7 @@ class FeaturesDecorator
     end
   end
 
-  # rubocop: disable Metrics/AbcSize, Metrics/MethodLength, Metrics/PerceivedComplexity
+  # rubocop: disable Metrics/AbcSize, Metrics/MethodLength, Metrics/PerceivedComplexity, Metrics/BlockLength
   def features
     @features ||=
       available_features.filter_map do |feature|
@@ -44,11 +44,12 @@ class FeaturesDecorator
           origin: feature.feat.origin,
           active: feature.active,
           continious: feature.feat.continious,
-          ready_to_use: feature.ready_to_use
+          ready_to_use: feature.ready_to_use,
+          price: feature.feat.price
         }.compact
       end
   end
-  # rubocop: enable Metrics/AbcSize, Metrics/MethodLength, Metrics/PerceivedComplexity
+  # rubocop: enable Metrics/AbcSize, Metrics/MethodLength, Metrics/PerceivedComplexity, Metrics/BlockLength
 
   private
 

@@ -28,10 +28,12 @@ export const Dc20 = (props) => {
   const shieldFilter = (item) => item.kind.includes('shield');
 
   const ancestryFilter = (item) => item.origin === 'ancestry';
+  const classFilter = (item) => item.origin === 'class';
 
   const featFilters = createMemo(() => {
     const result = [
-      { title: 'ancestry', callback: ancestryFilter }
+      { title: 'ancestry', callback: ancestryFilter },
+      { title: 'class', callback: classFilter }
     ];
     return result;
   });
