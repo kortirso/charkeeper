@@ -51,7 +51,7 @@ export const NewDaggerheartItemForm = (props) => {
           damage_type: itemForm.damage_type,
           damage: itemForm.damage,
           damage_bonus: !isNaN(itemForm.damage_bonus) ? (parseInt(itemForm.damage_bonus) || 0) : 0,
-          features: { en: itemForm.features, ru: itemForm.features }
+          features: [{ en: itemForm.features, ru: itemForm.features }]
         }
       }
     }
