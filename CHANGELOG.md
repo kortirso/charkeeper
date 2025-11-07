@@ -13,6 +13,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Modified
 - refreshing character after domain cards and equipment changes
+- adding description for homebrew items
 
 ### Fixed
 - domain cards checkbox label

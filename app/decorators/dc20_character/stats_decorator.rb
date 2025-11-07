@@ -19,11 +19,13 @@ module Dc20Character
     end
 
     def stamina_points
-      @stamina_points ||= stamina_points.merge('max' => stamina_points['max'] + (paths['martial'] / 2.0).round)
+      @stamina_points ||=
+        __getobj__.stamina_points.merge('max' => __getobj__.stamina_points['max'] + (paths['martial'] / 2.0).round)
     end
 
     def mana_points
-      @mana_points ||= mana_points.merge('max' => mana_points['max'] + (paths['spellcaster'] * 2))
+      @mana_points ||=
+        __getobj__.mana_points.merge('max' => __getobj__.mana_points['max'] + (paths['spellcaster'] * 2))
     end
 
     private
