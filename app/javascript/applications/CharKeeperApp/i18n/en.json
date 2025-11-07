@@ -107,7 +107,9 @@
         "itemOriginValue": "Attachable object",
         "transformations": "Transformations",
         "mechanics": "Available mechanics",
-        "domainLevel": "Domain level"
+        "domainLevel": "Domain level",
+        "features": "Features",
+        "description": "Description"
       }
     },
     "campaignsPage": {

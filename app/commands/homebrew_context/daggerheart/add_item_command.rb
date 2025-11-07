@@ -12,6 +12,7 @@ module HomebrewContext
         params do
           required(:user).filled(type?: ::User)
           required(:name).filled(:string, max_size?: 50)
+          optional(:description).filled(:string, max_size?: 250)
           required(:kind).filled(Kinds)
           optional(:itemable_type).maybe(Types)
           optional(:itemable_id).maybe(:string, :uuid_v4?)
@@ -24,6 +25,7 @@ module HomebrewContext
       # rubocop: disable Style/GuardClause
       def do_prepare(input)
         input[:name] = { en: input[:name], ru: input[:name] }
+        input[:description] = { en: input[:description], ru: input[:description] }
 
         if input[:itemable_type] && input[:itemable_id]
           input[:itemable] =

@@ -107,7 +107,9 @@
         "itemOriginValue": "Объект принадлежности",
         "transformations": "Трансформации",
         "mechanics": "Доступные механики",
-        "domainLevel": "Уровень доступа"
+        "domainLevel": "Уровень доступа",
+        "features": "Особенности",
+        "description": "Описание"
       }
     },
     "campaignsPage": {
