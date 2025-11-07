@@ -71,7 +71,7 @@ module CharactersContext
         ).or(
           ::Daggerheart::Feat.where(origin: 'ancestry', id: data.heritage_features)
         ).or(
-          ::Daggerheart::Feat.where(origin: 'domain_card', slug: data.selected_features.values.flatten)
+          ::Daggerheart::Feat.where(origin: 'domain_card', slug: data.selected_features.values.flatten.compact)
         )
       end
     end
