@@ -107,9 +107,9 @@ export const Combat = (props) => {
           </thead>
           <tbody>
             <For each={values}>
-              {(attack) =>
+              {(attack, index) =>
                 <>
-                  <tr class="dark:text-snow border-t! border-gray-200! dark:border-neutral-800!">
+                  <tr class="dark:text-snow border-t border-gray-200 dark:border-neutral-800" classList={{ 'bg-gray-50 dark:bg-neutral-700': index() % 2 === 1 }}>
                     <td class="pt-2 pb-1 pl-1">
                       <p>{attack.name}</p>
                     </td>
@@ -136,8 +136,8 @@ export const Combat = (props) => {
                     </td>
                   </tr>
                   <Show when={attack.tags && Object.keys(attack.tags).length > 0}>
-                    <tr>
-                      <td colspan="4" class="py-1">
+                    <tr classList={{ 'bg-gray-50 dark:bg-neutral-700': index() % 2 === 1 }}>
+                      <td colspan="4" class="p-1">
                         <div class="flex flex-wrap gap-x-2 gap-y-1">
                           <For each={Object.entries(attack.tags)}>
                             {([tag, value]) =>
@@ -149,8 +149,8 @@ export const Combat = (props) => {
                     </tr>
                   </Show>
                   <Show when={(attack.tags === undefined || character().provider === 'daggerheart') && attack.features && attack.features.length > 0}>
-                    <tr>
-                      <td colspan="4" class="py-1">
+                    <tr classList={{ 'bg-gray-50 dark:bg-neutral-700': index() % 2 === 1 }}>
+                      <td colspan="4" class="p-1">
                         <p class="text-xs dark:text-snow">
                           {typeof attack.features[0] === 'string' ? attack.features.join(', ') : attack.features.map((item) => item[locale()]).join(', ')}
                         </p>
@@ -158,8 +158,8 @@ export const Combat = (props) => {
                     </tr>
                   </Show>
                   <Show when={attack.notes && attack.notes.length > 0}>
-                    <tr>
-                      <td colspan="4" class="py-1">
+                    <tr classList={{ 'bg-gray-50 dark:bg-neutral-700': index() % 2 === 1 }}>
+                      <td colspan="4" class="p-1">
                         <p class="text-xs dark:text-snow">{attack.notes}</p>
                       </td>
                     </tr>
