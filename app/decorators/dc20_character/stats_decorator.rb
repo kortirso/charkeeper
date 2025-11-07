@@ -18,6 +18,14 @@ module Dc20Character
       @precision_defense ||= __getobj__.precision_defense.transform_values { |value| value + guard_bonuses }
     end
 
+    def stamina_points
+      @stamina_points ||= stamina_points.merge('max' => stamina_points['max'] + (paths['martial'] / 2.0).round)
+    end
+
+    def mana_points
+      @mana_points ||= mana_points.merge('max' => mana_points['max'] + (paths['spellcaster'] * 2))
+    end
+
     private
 
     def guard_bonuses
