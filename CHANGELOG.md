@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Added
 - rendering DC20 feats
 - DC20 class feats
+- rendering Daggerheart weapon distances in squares
 
 ### Modified
 - refreshing character after domain cards and equipment changes
