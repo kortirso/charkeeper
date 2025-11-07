@@ -14,6 +14,7 @@ module CharactersContext
 
         params do
           required(:character).filled(type?: ::Dc20::Character)
+          optional(:level).filled(:integer)
           optional(:abilities).hash do
             required(:mig).filled(:integer)
             required(:agi).filled(:integer)
@@ -42,6 +43,14 @@ module CharactersContext
           optional(:trade_points).filled(:integer)
           optional(:language_points).filled(:integer)
           optional(:conditions).maybe(:array).each(:string)
+          optional(:paths).hash
+          optional(:path_points).filled(:integer)
+          optional(:stamina_points).hash do
+            required(:current).filled(:integer)
+          end
+          optional(:mana_points).hash do
+            required(:current).filled(:integer)
+          end
         end
 
         rule(:avatar_file, :avatar_url).validate(:check_only_one_present)
@@ -106,6 +115,10 @@ module CharactersContext
           input[:character].data.attributes.merge(input.except(:character, :avatar_file, :avatar_url, :name).stringify_keys)
         input[:character].assign_attributes(input.slice(:name))
         input[:character].save!
+
+        if input.key?(:level)
+          Dc20Character::ClassUpdater.new.call(character: input[:character])
+        end
 
         attach_avatar_by_file.call({ character: input[:character], file: input[:avatar_file] }) if input[:avatar_file]
         attach_avatar_by_url.call({ character: input[:character], url: input[:avatar_url] }) if input[:avatar_url]

@@ -12,7 +12,7 @@ module Dc20Character
       end
 
       def stamina_points
-        @stamina_points ||= (class_level / 3) + 1
+        @stamina_points ||= __getobj__.stamina_points.merge('max' => ((class_level / 3) + 1))
       end
 
       private
