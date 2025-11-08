@@ -8,7 +8,7 @@ class Character
     STORAGE = 'storage'
     ACTIVE_STATES = [HANDS, EQUIPMENT].freeze
 
-    belongs_to :character, class_name: '::Character', touch: true
+    belongs_to :character, class_name: '::Character'
     belongs_to :item, class_name: '::Item'
 
     enum :state, { HANDS => 0, EQUIPMENT => 1, BACKPACK => 2, STORAGE => 3 }

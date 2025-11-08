@@ -54,7 +54,8 @@
       "legacy": "Legacy",
       "feat": "Feat",
       "personal": "Personal",
-      "transformation": "Transformation"
+      "transformation": "Transformation",
+      "maneuver": "Maneuver"
     },
     "homebrewPage": {
       "title": "Homebrew",

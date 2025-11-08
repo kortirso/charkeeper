@@ -180,7 +180,7 @@ module CharactersContext
         end
 
         input[:removed_classes].each do |removed_class|
-          input[:character].spells.where("data -> 'prepared_by' ? :prepared_by", prepared_by: removed_class).destroy_all
+          input[:character].spells.where("data -> 'prepared_by' ? :prepared_by", prepared_by: removed_class).delete_all
         end
       end
     end

@@ -54,7 +54,8 @@
       "legacy": "Подвид",
       "feat": "Навык",
       "personal": "Личные",
-      "transformation": "Трансформация"
+      "transformation": "Трансформация",
+      "maneuver": "Приём"
     },
     "homebrewPage": {
       "title": "Homebrew",

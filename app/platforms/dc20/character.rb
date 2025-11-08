@@ -21,6 +21,7 @@ module Dc20
     attribute :language_levels, array: true, default: {} # { 'common' => 2 } владение языками
     attribute :conditions, array: true, default: []
     attribute :paths, array: true, default: { martial: 0, spellcaster: 0 }
+    attribute :maneuvers, array: true, default: []
     # доступные очки для распределения
     attribute :guide_step, :integer # этап помощи при создании персонажа
     attribute :attribute_points, :integer, default: 12

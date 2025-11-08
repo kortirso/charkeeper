@@ -51,6 +51,7 @@ module CharactersContext
           optional(:mana_points).hash do
             required(:current).filled(:integer)
           end
+          optional(:maneuvers).value(:array)
         end
 
         rule(:avatar_file, :avatar_url).validate(:check_only_one_present)
@@ -116,14 +117,25 @@ module CharactersContext
         input[:character].assign_attributes(input.slice(:name))
         input[:character].save!
 
-        if input.key?(:level)
-          Dc20Character::ClassUpdater.new.call(character: input[:character])
-        end
+        Dc20Character::ClassUpdater.new.call(character: input[:character]) if input.key?(:level)
+        refresh_maneuver_feats(input[:character]) if input.key?(:maneuvers)
 
         attach_avatar_by_file.call({ character: input[:character], file: input[:avatar_file] }) if input[:avatar_file]
         attach_avatar_by_url.call({ character: input[:character], url: input[:avatar_url] }) if input[:avatar_url]
 
         { result: input[:character] }
+      end
+
+      def refresh_maneuver_feats(character)
+        character.feats.joins(:feat).where(feats: { origin: 3 }).delete_all
+        feats_for_adding = ::Dc20::Feat.where(origin: 3, slug: character.data.maneuvers).map do |feat|
+          {
+            feat_id: feat.id,
+            character_id: character.id,
+            ready_to_use: true
+          }
+        end
+        ::Character::Feat.upsert_all(feats_for_adding) if feats_for_adding.any?
       end
     end
   end
