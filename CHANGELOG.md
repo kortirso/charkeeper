@@ -19,6 +19,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Fixed
 - domain cards checkbox label
 - creating and rendering features for Daggerheart homebrew weapons
+- threshold translation
 
 ## [0.3.14] - 2025-11-05
 ### Added
