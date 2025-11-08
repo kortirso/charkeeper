@@ -11,6 +11,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - rendering Daggerheart weapon distances in squares
 - selecting character path for DC20 characters
 - DC20 maneuvers
+- unlimited counters for feats
 
 ### Modified
 - refreshing character after domain cards and equipment changes

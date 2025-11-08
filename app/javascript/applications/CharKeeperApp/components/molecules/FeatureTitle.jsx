@@ -38,11 +38,11 @@ export const FeatureTitle = (props) => {
         </Show>
         <Show when={feature().limit !== undefined}>
           <div class="flex items-center">
-            <Button default size="small" onClick={(event) => feature().used_count !== feature().limit ? props.onSpendEnergy(event, feature()) : event.stopPropagation()}>
+            <Button default size="small" onClick={(event) => (feature().limit === 0 && feature().used_count !== 0) || feature().used_count !== feature().limit ? props.onSpendEnergy(event, feature()) : event.stopPropagation()}>
               <Minus />
             </Button>
             <p class="flex items-center justify-center mx-2">
-              <span class="w-6 text-center">{feature().limit - (feature().used_count || 0)}</span>
+              <span class="w-6 text-center">{feature().limit === 0 ? -feature().used_count : feature().limit - (feature().used_count || 0)}</span>
               <Switch>
                 <Match when={feature().limit_refresh === 'one_at_short_rest'}>
                   <span title={t('rest.oneAtShortRest')}><Picnic /></span>
@@ -58,7 +58,7 @@ export const FeatureTitle = (props) => {
                 </Match>
               </Switch>
             </p>
-            <Button default size="small" onClick={(event) => (feature().used_count || 0) > 0 ? props.onRestoreEnergy(event, feature()) : event.stopPropagation()}>
+            <Button default size="small" onClick={(event) => feature().limit === 0 || (feature().used_count || 0) > 0 ? props.onRestoreEnergy(event, feature()) : event.stopPropagation()}>
               <PlusSmall />
             </Button>
           </div>
