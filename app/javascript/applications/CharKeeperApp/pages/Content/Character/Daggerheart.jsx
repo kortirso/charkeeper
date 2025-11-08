@@ -81,7 +81,7 @@ export const Daggerheart = (props) => {
   });
 
   const characterTabs = createMemo(() => {
-    const result = ['combat', 'equipment', 'domainCards', 'bonuses', 'rest', 'classLevels'];
+    const result = ['combat', 'equipment', 'domainCards', 'states', 'classLevels', 'rest', 'bonuses'];
     if (character().can_have_companion) result.push('companion');
     return result.concat(['notes', 'avatar']);
   });
@@ -113,18 +113,6 @@ export const Daggerheart = (props) => {
                   onReplaceCharacter={props.onReplaceCharacter}
                   onReloadCharacter={props.onReloadCharacter}
                 />
-              </div>
-              <div class="mt-4">
-                <DaggerheartBeastform character={character()} onReplaceCharacter={props.onReplaceCharacter} />
-              </div>
-              <div class="mt-4">
-                <DaggerheartTransform character={character()} onReplaceCharacter={props.onReplaceCharacter} />
-              </div>
-              <div class="mt-4">
-                <DaggerheartStances character={character()} onReplaceCharacter={props.onReplaceCharacter} />
-              </div>
-              <div class="mt-4">
-                <Conditions character={character()} />
               </div>
               <div class="mt-4">
                 <Feats
@@ -189,6 +177,18 @@ export const Daggerheart = (props) => {
                 helpMessage={TRANSLATION[locale()]['domainHelpMessage']}
               />
             </Match>
+            <Match when={activeMobileTab() === 'states'}>
+              <DaggerheartTransform character={character()} onReplaceCharacter={props.onReplaceCharacter} />
+              <div class="mt-4">
+                <DaggerheartBeastform character={character()} onReplaceCharacter={props.onReplaceCharacter} />
+              </div>
+              <div class="mt-4">
+                <DaggerheartStances character={character()} onReplaceCharacter={props.onReplaceCharacter} />
+              </div>
+              <div class="mt-4">
+                <Conditions character={character()} />
+              </div>
+            </Match>
             <Match when={activeMobileTab() === 'companion'}>
               <DaggerheartCompanion character={character()} />
             </Match>
@@ -241,18 +241,6 @@ export const Daggerheart = (props) => {
             onReplaceCharacter={props.onReplaceCharacter}
             onReloadCharacter={props.onReloadCharacter}
           />
-        </div>
-        <div class="mt-4">
-          <DaggerheartBeastform character={character()} onReplaceCharacter={props.onReplaceCharacter} />
-        </div>
-        <div class="mt-4">
-          <DaggerheartTransform character={character()} onReplaceCharacter={props.onReplaceCharacter} />
-        </div>
-        <div class="mt-4">
-          <DaggerheartStances character={character()} onReplaceCharacter={props.onReplaceCharacter} />
-        </div>
-        <div class="mt-4">
-          <Conditions character={character()} />
         </div>
         <div class="mt-4">
           <Feats
@@ -330,6 +318,18 @@ export const Daggerheart = (props) => {
                 guideStep={4}
                 helpMessage={TRANSLATION[locale()]['domainHelpMessage']}
               />
+            </Match>
+            <Match when={activeTab() === 'states'}>
+              <DaggerheartTransform character={character()} onReplaceCharacter={props.onReplaceCharacter} />
+              <div class="mt-4">
+                <DaggerheartBeastform character={character()} onReplaceCharacter={props.onReplaceCharacter} />
+              </div>
+              <div class="mt-4">
+                <DaggerheartStances character={character()} onReplaceCharacter={props.onReplaceCharacter} />
+              </div>
+              <div class="mt-4">
+                <Conditions character={character()} />
+              </div>
             </Match>
             <Match when={activeTab() === 'companion'}>
               <DaggerheartCompanion character={character()} />

@@ -55,7 +55,8 @@
       "feat": "Feat",
       "personal": "Personal",
       "transformation": "Transformation",
-      "maneuver": "Maneuver"
+      "maneuver": "Maneuver",
+      "states": "States"
     },
     "homebrewPage": {
       "title": "Homebrew",
