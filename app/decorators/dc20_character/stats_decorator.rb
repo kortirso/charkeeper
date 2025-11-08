@@ -28,6 +28,10 @@ module Dc20Character
         __getobj__.mana_points.merge('max' => __getobj__.mana_points['max'] + (paths['spellcaster'] * 2))
     end
 
+    def maneuver_points
+      @maneuver_points ||= __getobj__.maneuver_points + paths['martial']
+    end
+
     private
 
     def guard_bonuses

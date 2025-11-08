@@ -27,7 +27,8 @@
     "weapon": { "name": { "en": "Weapon", "ru": "Оружие" } },
     "light_armor": { "name": { "en": "Light armor", "ru": "Лёгкая броня" } },
     "heavy_armor": { "name": { "en": "Heavy armor", "ru": "Тяжёлая броня" } },
-    "shield": { "name": { "en": "Shield", "ru": "Щит" } }
+    "light_shield": { "name": { "en": "Light shield", "ru": "Лёгкие щиты" } },
+    "heavy_shield": { "name": { "en": "Heavy shield", "ru": "Тяжёлые щиты" } }
   },
   "skills": {
     "acrobatics": { "name": { "en": "Acrobatics", "ru": "Акробатика" } },
@@ -57,6 +58,96 @@
         "en": "You can't see. All terrain is considered Difficult Terrain for you unless you're guided by another creature. Attack rolls against you have Advantage, and your attack rolls have Disadvantage.",
         "ru": "Вы не видите. Вся местность для вас считается Труднопроходимой, только если вас не ведёт другое существо. Броски атаки против вас совершаются с преимуществом, а ваши броски атаки совершаются с помехой."
       }
+    }
+  },
+  "maneuvers": {
+    "extend_attack": {
+      "name": { "en": "Extend Attack", "ru": "Удлинить атаку" },
+      "type": "attack"
+    },
+    "power_attack": {
+      "name": { "en": "Power Attack", "ru": "Усилить атаку" },
+      "type": "attack"
+    },
+    "sweep_attack": {
+      "name": { "en": "Sweep Attack", "ru": "Расширить атаку" },
+      "type": "attack"
+    },
+    "bleed": {
+      "name": { "en": "Bleed", "ru": "Ранить" },
+      "type": "save"
+    },
+    "daze": {
+      "name": { "en": "Daze", "ru": "Потрясти" },
+      "type": "save"
+    },
+    "expose": {
+      "name": { "en": "Expose", "ru": "Раскрыть для удара" },
+      "type": "save"
+    },
+    "hamstring": {
+      "name": { "en": "Hamstring", "ru": "Замедлить" },
+      "type": "save"
+    },
+    "hinder": {
+      "name": { "en": "Hinder", "ru": "Сковать" },
+      "type": "save"
+    },
+    "impair": {
+      "name": { "en": "Impair", "ru": "Ослабить" },
+      "type": "save"
+    },
+    "knockback": {
+      "name": { "en": "Knockback", "ru": "Оттолкнуть" },
+      "type": "save"
+    },
+    "trip": {
+      "name": { "en": "Trip", "ru": "Повалить" },
+      "type": "save"
+    },
+    "body_block": {
+      "name": { "en": "Body Block", "ru": "Закрыться" },
+      "type": "grapple"
+    },
+    "restrain": {
+      "name": { "en": "Restrain", "ru": "Обездвижить" },
+      "type": "grapple"
+    },
+    "slam": {
+      "name": { "en": "Slam", "ru": "Сдавить" },
+      "type": "grapple"
+    },
+    "takedown": {
+      "name": { "en": "Takedown", "ru": "Уронить" },
+      "type": "grapple"
+    },
+    "throw": {
+      "name": { "en": "Throw", "ru": "Бросить" },
+      "type": "grapple"
+    },
+    "parry": {
+      "name": { "en": "Parry", "ru": "Парировать" },
+      "type": "defense"
+    },
+    "protect": {
+      "name": { "en": "Protect", "ru": "Защитить" },
+      "type": "defense"
+    },
+    "raise_shield": {
+      "name": { "en": "Raise Shield", "ru": "Поднять щит" },
+      "type": "defense"
+    },
+    "side_step": {
+      "name": { "en": "Side Step", "ru": "Отшагнуть" },
+      "type": "defense"
+    },
+    "swap": {
+      "name": { "en": "Swap", "ru": "Прикрыть" },
+      "type": "defense"
+    },
+    "taunt": {
+      "name": { "en": "Taunt", "ru": "Спровоцировать" },
+      "type": "defense"
     }
   }
 }

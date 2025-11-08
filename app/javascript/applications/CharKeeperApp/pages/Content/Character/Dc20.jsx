@@ -40,11 +40,13 @@ export const Dc20 = (props) => {
 
   const ancestryFilter = (item) => item.origin === 'ancestry';
   const classFilter = (item) => item.origin === 'class';
+  const maneuverFilter = (item) => item.origin === 'maneuver';
 
   const featFilters = createMemo(() => {
     const result = [
       { title: 'ancestry', callback: ancestryFilter },
-      { title: 'class', callback: classFilter }
+      { title: 'class', callback: classFilter },
+      { title: 'maneuver', callback: maneuverFilter }
     ];
     return result;
   });

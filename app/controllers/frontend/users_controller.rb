@@ -21,7 +21,7 @@ module Frontend
     private
 
     def destroy_sessions
-      current_user.sessions.destroy_all
+      current_user.sessions.delete_all
       cookies.delete(Authkeeper.configuration.access_token_name)
     end
 

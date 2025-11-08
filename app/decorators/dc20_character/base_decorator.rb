@@ -6,7 +6,7 @@ module Dc20Character
     delegate :abilities, :main_class, :level, :combat_expertise, :health, :classes, :attribute_points, :ancestries, :skill_levels,
              :skill_expertise, :skill_points, :skill_expertise_points, :trade_points, :trade_expertise_points, :language_points,
              :trade_levels, :trade_expertise, :trade_knowledge, :language_levels, :conditions, :stamina_points, :path_points,
-             :paths, :mana_points, to: :data
+             :paths, :mana_points, :maneuvers, to: :data
 
     def parent = __getobj__
 
@@ -104,6 +104,10 @@ module Dc20Character
         .joins(:item)
         .where(items: { kind: 'shield' })
         .pick('items.info')
+    end
+
+    def maneuver_points
+      0
     end
 
     private
