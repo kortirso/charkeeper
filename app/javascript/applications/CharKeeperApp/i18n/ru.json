@@ -55,7 +55,8 @@
       "feat": "Навык",
       "personal": "Личные",
       "transformation": "Трансформация",
-      "maneuver": "Приём"
+      "maneuver": "Приём",
+      "states": "Состояния"
     },
     "homebrewPage": {
       "title": "Homebrew",
