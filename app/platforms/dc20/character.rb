@@ -20,7 +20,7 @@ module Dc20
     attribute :trade_knowledge, array: true, default: {} # { 'Алхимия' => 'int' } известные нестандартные ремёсла
     attribute :language_levels, array: true, default: {} # { 'common' => 2 } владение языками
     attribute :conditions, array: true, default: []
-    attribute :paths, array: true, default: { martial: 0, spellcaster: 0 }
+    attribute :paths, array: true, default: { 'martial' => 0, 'spellcaster' => 0 }
     attribute :maneuvers, array: true, default: []
     # доступные очки для распределения
     attribute :guide_step, :integer # этап помощи при создании персонажа
