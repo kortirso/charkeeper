@@ -164,6 +164,14 @@ Rails.application.routes.draw do
     end
   end
 
+  namespace :homebrews do
+    namespace :daggerheart do
+      resources :ancestries, only: %i[index show create update destroy]
+      resources :communities, only: %i[index show create update destroy]
+      resources :feats, only: %i[index create destroy]
+    end
+  end
+
   namespace :webhooks do
     resource :telegram, only: %i[create]
     resource :discord, only: %i[create]
@@ -181,6 +189,7 @@ Rails.application.routes.draw do
       end
 
       resource :dashboard, only: %i[show]
+      resource :homebrews, only: %i[show]
       resources :characters, only: %i[show]
 
       resources :campaigns, only: %i[] do

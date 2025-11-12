@@ -1,0 +1,29 @@
+<footer class="px-8 py-4 border-t border-gray-200">
+  <div class="flex justify-between items-center w-full max-w-7xl mx-auto">
+    <p>
+      <span>&copy;</span> Since 2025, CharKeeper,
+      <% I18n.available_locales.each do |locale| %>
+        <%= link_to locale, change_locale(locale), class: 'ml-2', aria: { label: t('change_locale') } %>
+      <% end %>
+      <%= link_to t('tips.title'), tips_path, class: 'ml-2 underline' %>
+      <%= link_to 'Bot', bot_commands_path, class: 'ml-2 underline' %>
+      <%= link_to 'Privacy policy', privacy_path, class: 'ml-2 underline' %>
+    </p>
+    <div class="flex">
+      <% if I18n.locale == :ru %>
+        <a href="https://boosty.to/kortirso" target="_blank" rel="noopener noreferrer" class="opacity-75 hover:opacity-100">
+          <%= image_tag 'boosty.svg', class: 'w-6 h-6 mr-2', alt: 'boosty', width: 24, height: 24 %>
+        </a>
+      <% end %>
+      <a href="https://discord.gg/CmT8RgyECQ" target="_blank" rel="noopener noreferrer" class="opacity-75 hover:opacity-100">
+        <%= image_tag 'discord.svg', class: 'w-6 h-6 mr-2', alt: 'discord', width: 24, height: 24 %>
+      </a>
+      <a href="https://vk.com/char_keeper" target="_blank" rel="noopener noreferrer" class="opacity-75 hover:opacity-100">
+        <%= image_tag 'vk.svg', class: 'w-6 h-6 mr-2', alt: 'vk', width: 24, height: 24 %>
+      </a>
+      <a href="https://t.me/charkeeper" target="_blank" rel="noopener noreferrer" class="opacity-75 hover:opacity-100">
+        <%= image_tag 'telegram.svg', class: 'w-6 h-6 mr-2', alt: 'telegram', width: 24, height: 24 %>
+      </a>
+    </div>
+  </div>
+</footer>

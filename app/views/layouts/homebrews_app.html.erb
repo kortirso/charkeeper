@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" id="homebrews_app_html">
+  <head>
+    <title><%= content_for(:title) || 'CharKeeper' %></title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= yield :head %>
+    <%= stylesheet_link_tag 'tailwind' %>
+    <%= stylesheet_link_tag :application %>
+    <%= javascript_include_tag 'application' %>
+  </head>
+  <body id="homebrews_app_body">
+    <main class="flex flex-col m-0 p-0 min-h-screen">
+      <div class="flex flex-col flex-1 overflow-x-hidden pb-16">
+        <%= yield %>
+      </div>
+      <%= render 'controllers/web/shared/footer' %>
+    </main>
+  </body>
+</html>

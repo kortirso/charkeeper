@@ -85,7 +85,11 @@ module Charkeeper
     register('commands.homebrew_context.add_race') { HomebrewContext::AddRaceCommand.new }
 
     register('commands.homebrew_context.daggerheart.add_community') { HomebrewContext::Daggerheart::AddCommunityCommand.new }
+    register('commands.homebrew_context.daggerheart.change_community') {
+      HomebrewContext::Daggerheart::ChangeCommunityCommand.new
+    }
     register('commands.homebrew_context.daggerheart.add_race') { HomebrewContext::Daggerheart::AddRaceCommand.new }
+    register('commands.homebrew_context.daggerheart.change_race') { HomebrewContext::Daggerheart::ChangeRaceCommand.new }
     register('commands.homebrew_context.daggerheart.add_feat') { HomebrewContext::Daggerheart::AddFeatCommand.new }
     register('commands.homebrew_context.daggerheart.add_item') { HomebrewContext::Daggerheart::AddItemCommand.new }
     register('commands.homebrew_context.daggerheart.add_speciality') { HomebrewContext::Daggerheart::AddSpecialityCommand.new }

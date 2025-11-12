@@ -1,12 +1,8 @@
 import { render } from 'solid-js/web';
 
-import {
-  CharKeeperApp
-} from './applications';
+import { CharKeeperApp, HomebrewsApp } from './applications';
 
-const components = {
-  CharKeeperApp
-}
+const components = { CharKeeperApp, HomebrewsApp }
 
 document.addEventListener('DOMContentLoaded', () => {
   const mountPoints = document.querySelectorAll('[data-js-component]');
