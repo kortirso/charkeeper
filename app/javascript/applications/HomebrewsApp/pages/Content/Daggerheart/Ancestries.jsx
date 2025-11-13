@@ -1,12 +1,9 @@
-import { createSignal, createEffect, Show, For, Switch, Match, batch } from 'solid-js';
+import { createSignal, createEffect, Show, For, batch } from 'solid-js';
 import { createStore } from 'solid-js/store';
 
-import config from '../../../../CharKeeperApp/data/daggerheart.json';
-
 import { useAppState, useAppLocale } from '../../../context';
-import { Button, Input, createModal, DaggerheartFeat } from '../../../components';
+import { Button, Input, createModal, DaggerheartFeatForm, DaggerheartFeat } from '../../../components';
 import { Edit, Trash } from '../../../assets';
-import { modifier } from '../../../helpers';
 import { fetchDaggerheartAncestries } from '../../../requests/fetchDaggerheartAncestries';
 import { fetchDaggerheartAncestry } from '../../../requests/fetchDaggerheartAncestry';
 import { createDaggerheartAncestry } from '../../../requests/createDaggerheartAncestry';
@@ -21,52 +18,14 @@ const TRANSLATION = {
     newAncestryTitle: 'Ancestry form',
     name: 'Ancestry name',
     save: 'Save',
-    addFeature: 'Add feature',
-    modifies: {
-      'str': 'Strength',
-      'agi': 'Agility',
-      'fin': 'Finesse',
-      'ins': 'Instinct',
-      'pre': 'Presence',
-      'know': 'Knowledge',
-      'health': 'Health',
-      'stress': 'Stress',
-      'hope': 'Hope',
-      'evasion': 'Evasion',
-      'armor_score': 'Armor score',
-      'major': 'Major threshold',
-      'severe': 'Severe threshold',
-      'attack': 'Attacks',
-      'proficiency': 'Proficiency',
-      'level': 'Level',
-      'tier': 'Tier'
-    }
+    addFeature: 'Add feature'
   },
   ru: {
     add: 'Добавить расу',
     newAncestryTitle: 'Редактирование расы',
     name: 'Название расы',
     save: 'Сохранить',
-    addFeature: 'Добавить способность',
-    modifies: {
-      'str': 'Сила',
-      'agi': 'Проворность',
-      'fin': 'Искусность',
-      'ins': 'Инстинкт',
-      'pre': 'Влияние',
-      'know': 'Знание',
-      'health': 'Здоровье',
-      'stress': 'Стресс',
-      'hope': 'Надежда',
-      'evasion': 'Уклонение',
-      'armor_score': 'Слоты Доспеха',
-      'major': 'Ощутимый урон',
-      'severe': 'Тяжёлый урон',
-      'attack': 'Атаки',
-      'proficiency': 'Мастерство',
-      'level': 'Уровень',
-      'tier': 'Ранг'
-    }
+    addFeature: 'Добавить способность'
   }
 }
 
@@ -214,75 +173,7 @@ export const DaggerheartAncestries = () => {
                 </Show>
                 <For each={ancestry.features}>
                   {(feature) =>
-                    <div class="mb-4">
-                      <p class="font-medium! mb-1">{feature.title.en}</p>
-                      <p class="text-sm mb-2">{feature.description.en}</p>
-                      <Show when={feature.bonuses.length > 0}>
-                        <div class="flex flex-wrap gap-x-2">
-                          <For each={feature.bonuses}>
-                            {(bonus) =>
-                              <Switch
-                                fallback={
-                                  <For each={['health', 'stress', 'hope', 'evasion', 'armor_score', 'attack', 'proficiency']}>
-                                    {(slug) =>
-                                      <Show when={bonus.value[slug] || bonus.dynamic_value[slug]}>
-                                        <p class="mb-1 bg-gray-200 p-1 rounded text-sm">
-                                          {bonus.value[slug] ? modifier(bonus.value[slug]) : `+[${TRANSLATION[locale()]['modifies'][bonus.dynamic_value[slug]]}]`} {TRANSLATION[locale()]['modifies'][slug]}
-                                        </p>
-                                      </Show>
-                                    }
-                                  </For>
-                                }
-                              >
-                                <Match when={bonus.value.traits}>
-                                  <For each={Object.entries(bonus.value.traits)}>
-                                    {([slug, value]) =>
-                                      <p class="mb-1 bg-gray-200 p-1 rounded text-sm">
-                                        {modifier(value)} {config.traits[slug].name[locale()]}
-                                      </p>
-                                    }
-                                  </For>
-                                </Match>
-                                <Match when={bonus.dynamic_value.traits}>
-                                  <For each={Object.entries(bonus.dynamic_value.traits)}>
-                                    {([slug, value]) =>
-                                      <p class="mb-1 bg-gray-200 p-1 rounded text-sm">
-                                        {`+[${TRANSLATION[locale()]['modifies'][value]}]`} {config.traits[slug].name[locale()]}
-                                      </p>
-                                    }
-                                  </For>
-                                </Match>
-                                <Match when={bonus.value.thresholds}>
-                                  <For each={['major', 'severe']}>
-                                    {(slug) =>
-                                      <Show when={bonus.value.thresholds[slug]}>
-                                        <p class="mb-1 bg-gray-200 p-1 rounded text-sm">
-                                          {modifier(bonus.value.thresholds[slug])} {TRANSLATION[locale()]['modifies'][slug]}
-                                        </p>
-                                      </Show>
-                                    }
-                                  </For>
-                                </Match>
-                                <Match when={bonus.dynamic_value.thresholds}>
-                                  <For each={['major', 'severe']}>
-                                    {(slug) =>
-                                      <Show when={bonus.dynamic_value.thresholds[slug]}>
-                                        <p class="mb-1 bg-gray-200 p-1 rounded text-sm">
-                                          {`+[${TRANSLATION[locale()]['modifies'][bonus.dynamic_value.thresholds[slug]]}]`} {TRANSLATION[locale()]['modifies'][slug]}
-                                        </p>
-                                      </Show>
-                                    }
-                                  </For>
-                                </Match>
-                              </Switch>
-                            }
-                          </For>
-                        </div>
-                      </Show>
-                      <Button default classList="px-2 py-1" onClick={() => removeFeature(feature)}>
-                        <Trash width="20" height="20" />
-                      </Button>
-                    </div>
+                    <DaggerheartFeat feature={feature} onRemoveFeature={removeFeature} />
                   }
                 </For>
               </div>
@@ -312,7 +203,7 @@ export const DaggerheartAncestries = () => {
           </Button>
         </Show>
         <Show when={modalMode() === 'featureForm'}>
-          <DaggerheartFeat origin="ancestry" originValue={featureAncestry().id} onSave={createAncestryFeature} onCancel={closeModal} />
+          <DaggerheartFeatForm origin="ancestry" originValue={featureAncestry().id} onSave={createAncestryFeature} onCancel={closeModal} />
         </Show>
       </Modal>
     </Show>

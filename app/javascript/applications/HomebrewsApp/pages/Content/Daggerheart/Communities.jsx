@@ -2,7 +2,7 @@ import { createSignal, createEffect, Show, For, batch } from 'solid-js';
 import { createStore } from 'solid-js/store';
 
 import { useAppState, useAppLocale } from '../../../context';
-import { Button, Input, createModal, DaggerheartFeat } from '../../../components';
+import { Button, Input, createModal, DaggerheartFeatForm, DaggerheartFeat } from '../../../components';
 import { Edit, Trash } from '../../../assets';
 import { fetchDaggerheartCommunities } from '../../../requests/fetchDaggerheartCommunities';
 import { fetchDaggerheartCommunity } from '../../../requests/fetchDaggerheartCommunity';
@@ -173,13 +173,7 @@ export const DaggerheartCommunities = () => {
                 </Show>
                 <For each={community.features}>
                   {(feature) =>
-                    <div class="mb-4">
-                      <p class="font-medium! mb-1">{feature.title.en}</p>
-                      <p class="text-sm mb-2">{feature.description.en}</p>
-                      <Button default classList="px-2 py-1" onClick={() => removeFeature(feature)}>
-                        <Trash width="20" height="20" />
-                      </Button>
-                    </div>
+                    <DaggerheartFeat feature={feature} onRemoveFeature={removeFeature} />
                   }
                 </For>
               </div>
@@ -209,7 +203,7 @@ export const DaggerheartCommunities = () => {
           </Button>
         </Show>
         <Show when={modalMode() === 'featureForm'}>
-          <DaggerheartFeat origin="community" originValue={featureCommunity().id} onSave={createCommunityFeature} onCancel={closeModal} />
+          <DaggerheartFeatForm origin="community" originValue={featureCommunity().id} onSave={createCommunityFeature} onCancel={closeModal} />
         </Show>
       </Modal>
     </Show>

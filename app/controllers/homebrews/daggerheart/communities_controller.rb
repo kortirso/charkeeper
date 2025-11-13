@@ -13,6 +13,7 @@ module Homebrews
       before_action :find_communities, only: %i[index]
       before_action :find_community, only: %i[show update destroy]
       before_action :find_features, only: %i[index show]
+      before_action :find_feature_bonuses, only: %i[index show]
       before_action :find_existing_characters, only: %i[destroy]
 
       def index
@@ -21,13 +22,13 @@ module Homebrews
           ::Homebrews::Daggerheart::CommunitySerializer,
           :communities,
           {},
-          { features: @features }
+          { features: @features, bonuses: @bonuses }
         )
       end
 
       def show
         serialize_resource(
-          @community, ::Homebrews::Daggerheart::CommunitySerializer, :community, {}, :ok, { features: @features }
+          @community, ::Homebrews::Daggerheart::CommunitySerializer, :community, {}, :ok, { features: @features, bonuses: @bonuses }
         )
       end
 
@@ -61,6 +62,10 @@ module Homebrews
       def find_features
         @features =
           ::Daggerheart::Feat.where(origin_value: @communities ? @communities.pluck(:id) : @community.id).order(created_at: :asc)
+      end
+
+      def find_feature_bonuses
+        @bonuses = Character::Bonus.where(bonusable: @features.pluck(:id))
       end
 
       def find_community

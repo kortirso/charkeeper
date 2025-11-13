@@ -6,4 +6,5 @@ export * from './atoms/TextArea';
 
 export * from './molecules/Modal';
 
+export * from './substances/DaggerheartFeatForm';
 export * from './substances/DaggerheartFeat';
