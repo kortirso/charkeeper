@@ -7,6 +7,6 @@ FactoryBot.define do
         something: 1
       }
     }
-    character
+    bonusable factory: :character
   end
 end

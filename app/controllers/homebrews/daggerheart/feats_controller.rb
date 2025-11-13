@@ -19,6 +19,10 @@ module Homebrews
         params.require(:brewery).permit!.to_h
       end
 
+      def bonuses_params
+        params.permit![:bonuses].to_a.map { |item| item.to_h.deep_symbolize_keys }
+      end
+
       def serializer = ::Daggerheart::Homebrew::FeatSerializer
     end
   end

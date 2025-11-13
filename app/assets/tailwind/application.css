@@ -71,7 +71,7 @@
 }
 
 .modal {
-  @apply relative p-4 blockable dark:text-snow;
+  @apply relative p-4 blockable dark:text-snow overflow-y-auto;
 
   max-width: 90%;
   max-height: 90%;

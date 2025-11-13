@@ -14,8 +14,8 @@ describe DaggerheartCharacter::BaseDecorator do
   let!(:character) { create :character, :daggerheart }
 
   before do
-    create :character_bonus, character: character, value: { proficiency: 1, traits: { know: 1 } }
-    create :character_bonus, character: character, value: { evasion: 1, health: 2, attack: 1 }
+    create :character_bonus, bonusable: character, value: { proficiency: 1, traits: { know: 1 } }
+    create :character_bonus, bonusable: character, value: { evasion: 1, health: 2, attack: 1 }
   end
 
   it 'does not raise errors', :aggregate_failures do
@@ -31,7 +31,7 @@ describe DaggerheartCharacter::BaseDecorator do
   end
 
   context 'with bonus to thresholds' do
-    before { create :character_bonus, character: character, value: { thresholds: { major: 1, severe: 2 } } }
+    before { create :character_bonus, bonusable: character, value: { thresholds: { major: 1, severe: 2 } } }
 
     it 'does not raise errors', :aggregate_failures do
       expect { decorator.id }.not_to raise_error
@@ -56,7 +56,7 @@ describe DaggerheartCharacter::BaseDecorator do
     end
 
     context 'with bonus to thresholds' do
-      before { create :character_bonus, character: character, value: { armor_score: 1, thresholds: { major: 1, severe: 2 } } }
+      before { create :character_bonus, bonusable: character, value: { armor_score: 1, thresholds: { major: 1, severe: 2 } } }
 
       it 'does not raise errors', :aggregate_failures do
         expect { decorator.id }.not_to raise_error
@@ -114,7 +114,7 @@ describe DaggerheartCharacter::BaseDecorator do
         end
 
         context 'with bonus to thresholds' do
-          before { create :character_bonus, character: character, value: { thresholds: { major: 1, severe: 2 } } }
+          before { create :character_bonus, bonusable: character, value: { thresholds: { major: 1, severe: 2 } } }
 
           it 'does not raise errors', :aggregate_failures do
             expect { decorator.id }.not_to raise_error

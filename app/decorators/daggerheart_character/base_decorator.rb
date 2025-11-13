@@ -25,7 +25,11 @@ module DaggerheartCharacter
     end
 
     def proficiency
-      @proficiency ||= tier + leveling['proficiency'].to_i + bonuses.pluck('proficiency').sum(&:to_i)
+      @proficiency ||=
+        tier +
+        leveling['proficiency'].to_i +
+        bonuses.pluck('proficiency').sum(&:to_i) +
+        static_feat_bonuses.pluck('proficiency').sum(&:to_i)
     end
 
     def modified_traits
@@ -98,6 +102,14 @@ module DaggerheartCharacter
 
     def bonuses
       @bonuses ||= __getobj__.bonuses.pluck(:value).compact
+    end
+
+    def static_feat_bonuses
+      @static_feat_bonuses ||= feat_bonuses.pluck(:value).compact
+    end
+
+    def feat_bonuses
+      @feat_bonuses ||= Character::Bonus.where(bonusable_id: __getobj__.feats.pluck(:feat_id)).to_a
     end
   end
 end
