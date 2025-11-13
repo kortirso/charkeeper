@@ -51,6 +51,12 @@ module CharactersContext
           optional(:mana_points).hash do
             required(:current).filled(:integer)
           end
+          optional(:grit_points).hash do
+            required(:current).filled(:integer)
+          end
+          optional(:rest_points).hash do
+            required(:current).filled(:integer)
+          end
           optional(:maneuvers).value(:array)
         end
 

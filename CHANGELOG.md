@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Added
 - separate web app for managing homebrews
 - bonuses for homebrews
+- resources management for DC20 characters
 
 ## [0.3.15] - 2025-11-09
 ### Added
