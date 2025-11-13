@@ -13,6 +13,7 @@ module Homebrews
       before_action :find_ancestries, only: %i[index]
       before_action :find_ancestry, only: %i[show update destroy]
       before_action :find_features, only: %i[index show]
+      before_action :find_feature_bonuses, only: %i[index show]
       before_action :find_existing_characters, only: %i[destroy]
 
       def index
@@ -21,13 +22,13 @@ module Homebrews
           ::Homebrews::Daggerheart::AncestrySerializer,
           :ancestries,
           {},
-          { features: @features }
+          { features: @features, bonuses: @bonuses }
         )
       end
 
       def show
         serialize_resource(
-          @ancestry, ::Homebrews::Daggerheart::AncestrySerializer, :ancestry, {}, :ok, { features: @features }
+          @ancestry, ::Homebrews::Daggerheart::AncestrySerializer, :ancestry, {}, :ok, { features: @features, bonuses: @bonuses }
         )
       end
 
@@ -60,7 +61,13 @@ module Homebrews
 
       def find_features
         @features =
-          ::Daggerheart::Feat.where(origin_value: @ancestries ? @ancestries.pluck(:id) : @ancestry.id).order(created_at: :asc)
+          ::Daggerheart::Feat
+            .where(origin_value: @ancestries ? @ancestries.pluck(:id) : @ancestry.id)
+            .order(created_at: :asc)
+      end
+
+      def find_feature_bonuses
+        @bonuses = Character::Bonus.where(bonusable: @features.pluck(:id))
       end
 
       def find_ancestry

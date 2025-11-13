@@ -3,6 +3,10 @@
 module HomebrewContext
   module Daggerheart
     class ChangeCommunityCommand < BaseCommand
+      include Deps[
+        refresh_user_data: 'services.homebrews_context.refresh_user_data'
+      ]
+
       use_contract do
         config.messages.namespace = :homebrew_community
 
@@ -16,6 +20,8 @@ module HomebrewContext
 
       def do_persist(input)
         input[:community].update!(input.slice(:name))
+
+        refresh_user_data.call(user: input[:community].user) if input[:community].user
 
         { result: input[:community] }
       end

@@ -1,4 +1,4 @@
-import { createMemo, Show } from 'solid-js';
+import { createSignal, createMemo, Show, For } from 'solid-js';
 import { createStore } from 'solid-js/store';
 
 import config from '../../../CharKeeperApp/data/daggerheart.json';
@@ -6,6 +6,7 @@ import config from '../../../CharKeeperApp/data/daggerheart.json';
 import { Input, Button, Select, TextArea } from '../../components';
 import { useAppLocale } from '../../context';
 import { translate } from '../../helpers';
+import { Trash } from '../../assets';
 
 const TRANSLATION = {
   en: {
@@ -16,7 +17,28 @@ const TRANSLATION = {
     description: 'Feature description',
     kind: 'Feature kind',
     limit: 'Usage limit',
-    limitRefresh: 'Limit refresh'
+    limitRefresh: 'Limit refresh',
+    addBonus: 'Add bonus',
+    bonusModify: 'Modify',
+    bonusType: 'Bonus type',
+    bonusValue: 'Bonus value',
+    modifies: {
+      'str': 'Strength',
+      'agi': 'Agility',
+      'fin': 'Finesse',
+      'ins': 'Instinct',
+      'pre': 'Presence',
+      'know': 'Knowledge',
+      'health': 'Health',
+      'stress': 'Stress',
+      'hope': 'Hope',
+      'evasion': 'Evasion',
+      'armor_score': 'Armor score',
+      'major': 'Major threshold',
+      'severe': 'Severe threshold',
+      'attack': 'Attacks',
+      'proficiency': 'Proficiency'
+    }
   },
   ru: {
     save: 'Сохранить',
@@ -26,9 +48,32 @@ const TRANSLATION = {
     description: 'Описание',
     kind: 'Тип',
     limit: 'Лимит использований',
-    limitRefresh: 'Обновление лимита'
+    limitRefresh: 'Обновление лимита',
+    addBonus: 'Добавить бонус',
+    bonusModify: 'Прибавка к',
+    bonusType: 'Тип бонуса',
+    bonusValue: 'Значение бонуса',
+    modifies: {
+      'str': 'Сила',
+      'agi': 'Проворность',
+      'fin': 'Искусность',
+      'ins': 'Инстинкт',
+      'pre': 'Влияние',
+      'know': 'Знание',
+      'health': 'Здоровье',
+      'stress': 'Стресс',
+      'hope': 'Надежда',
+      'evasion': 'Уклонение',
+      'armor_score': 'Слоты Доспеха',
+      'major': 'Ощутимый урон',
+      'severe': 'Тяжёлый урон',
+      'attack': 'Атаки',
+      'proficiency': 'Мастерство'
+    }
   }
 }
+const TRAITS = ['str', 'agi', 'fin', 'ins', 'pre', 'know'];
+const THRESHOLDS = ['major', 'severe'];
 
 export const DaggerheartFeat = (props) => {
   const [featForm, setFeatForm] = createStore({
@@ -42,6 +87,7 @@ export const DaggerheartFeat = (props) => {
     subclass_mastery: 1,
     level: 1
   });
+  const [bonuses, setBonuses] = createSignal([]);
 
   const [locale] = useAppLocale();
 
@@ -102,6 +148,37 @@ export const DaggerheartFeat = (props) => {
     return [];
   });
 
+  const addBonus = () => setBonuses(bonuses().concat({ id: Math.floor(Math.random() * 1000), type: 'static', modify: null, value: null }));
+
+  const removeBonus = (bonus) => setBonuses(bonuses().filter((item) => item.id !== bonus.id));
+
+  const updateBonus = (bonus, attribute, value) => {
+    const newValue = bonuses().map((item) => {
+      if (item.id !== bonus.id) return item;
+
+      return { ...item, [attribute]: value };
+    });
+    setBonuses(newValue);
+  }
+
+  const parseValue = (value) => parseInt(value || 0);
+
+  const save = () => {
+    const presentedBonuses = bonuses().map((item) => {
+      const result = { id: item.id, type: item.type };
+      const value = item.type === 'static' ? parseValue(item.value) : item.value;
+
+      if (TRAITS.includes(item.modify)) return { ...result, value: { traits: { [item.modify]: value } } };
+      if (THRESHOLDS.includes(item.modify)) return { ...result, value: { thresholds: { [item.modify]: value } } };
+      return { ...result, value: { [item.modify]: value } };
+    });
+
+    props.onSave({
+      brewery: Object.fromEntries(Object.entries(featForm).filter(([, value]) => value !== null)),
+      bonuses: presentedBonuses
+    });
+  }
+
   return (
     <>
       <p class="mb-2 text-xl">{TRANSLATION[locale()]['formTitle']}</p>
@@ -160,6 +237,58 @@ export const DaggerheartFeat = (props) => {
         selectedValue={featForm.kind}
         onSelect={(value) => setFeatForm({ ...featForm, kind: value })}
       />
+      <Button default small classList="p-1 mb-2" onClick={addBonus}>{TRANSLATION[locale()]['addBonus']}</Button>
+      <Show when={bonuses().length > 0}>
+        <For each={bonuses()}>
+          {(bonus) =>
+            <>
+              <div class="flex gap-x-2 items-center">
+                <Select
+                  containerClassList="mb-2 flex-1"
+                  labelText={TRANSLATION[locale()]['bonusModify']}
+                  items={TRANSLATION[locale()]['modifies']}
+                  selectedValue={bonus.modify}
+                  onSelect={(value) => updateBonus(bonus, 'modify', value)}
+                />
+                <Button default classList="px-2 py-1" onClick={() => removeBonus(bonus)}>
+                  <Trash width="24" height="24" />
+                </Button>
+              </div>
+              <Show when={bonus.modify !== null}>
+                <div class="flex gap-x-2">
+                  <Select
+                    containerClassList="mb-2 flex-1"
+                    labelText={TRANSLATION[locale()]['bonusType']}
+                    items={translate({ "static": { "name": { "en": "Static", "ru": "Статичный" } }, "dynamic": { "name": { "en": "Dynamic", "ru": "Динамический" } } }, locale())}
+                    selectedValue={bonus.type}
+                    onSelect={(value) => updateBonus(bonus, 'type', value)}
+                  />
+                  <Show
+                    when={bonus.type === 'static' || bonus.modify === 'proficiency'}
+                    fallback={
+                      <Select
+                        containerClassList="mb-2 flex-1"
+                        labelText={TRANSLATION[locale()]['bonusValue']}
+                        items={translate({ "proficiency": { "name": { "en": "Proficiency", "ru": "Мастерство" } }, "level": { "name": { "en": "Level", "ru": "Уровень" } }, "tier": { "name": { "en": "Tier", "ru": "Ранг" } } }, locale())}
+                        selectedValue={bonus.value}
+                        onSelect={(value) => updateBonus(bonus, 'value', value)}
+                      />
+                    }
+                  >
+                    <Input
+                      nemeric
+                      containerClassList="mb-2 flex-1"
+                      labelText={TRANSLATION[locale()]['bonusValue']}
+                      value={bonus.value}
+                      onInput={(value) => updateBonus(bonus, 'value', value)}
+                    />
+                  </Show>
+                </div>
+              </Show>
+            </>
+          }
+        </For>
+      </Show>
       <Input
         nemeric
         containerClassList="mb-2"
@@ -178,7 +307,7 @@ export const DaggerheartFeat = (props) => {
       </Show>
       <div class="flex justify-end gap-4 mt-4">
         <Button default classList="py-1 px-2" onClick={props.onCancel}>{TRANSLATION[locale()]['cancel']}</Button>
-        <Button default classList="py-1 px-2" onClick={() => props.onSave({ brewery: Object.fromEntries(Object.entries(featForm).filter(([, value]) => value !== null)) })}>{TRANSLATION[locale()]['save']}</Button>
+        <Button default classList="py-1 px-2" onClick={save}>{TRANSLATION[locale()]['save']}</Button>
       </div>
     </>
   );

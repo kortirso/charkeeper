@@ -42,8 +42,8 @@ describe Frontend::Characters::BonusesController do
 
       context 'for user character' do
         before do
-          create :character_bonus, character: user_character
-          create :character_bonus, character: character
+          create :character_bonus, bonusable: user_character
+          create :character_bonus, bonusable: character
         end
 
         it 'returns data', :aggregate_failures do
@@ -159,7 +159,7 @@ describe Frontend::Characters::BonusesController do
         end
 
         context 'for existing item' do
-          let!(:bonus) { create :character_bonus, character: user_character }
+          let!(:bonus) { create :character_bonus, bonusable: user_character }
           let(:request) {
             delete :destroy, params: {
               character_id: user_character.id,
