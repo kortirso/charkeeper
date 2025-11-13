@@ -7,12 +7,17 @@ module Dc20Character
         @health ||= __getobj__.health.merge(
           'max' => max_health,
           'bloodied' => max_health / 2,
-          'well_bloodied' => max_health / 4
+          'well_bloodied' => max_health / 4,
+          'death_threshold' => 0 - modified_abilities['prime'] - combat_mastery
         )
       end
 
       def stamina_points
         @stamina_points ||= __getobj__.stamina_points.merge('max' => ((class_level / 3) + 1))
+      end
+
+      def rest_points
+        @rest_points ||= __getobj__.rest_points.merge('max' => max_health)
       end
 
       def maneuver_points
