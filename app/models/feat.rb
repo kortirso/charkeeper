@@ -11,4 +11,5 @@ class Feat < ApplicationRecord
   belongs_to :user, optional: true
 
   has_many :character_feats, class_name: 'Character::Feat', dependent: :destroy
+  has_many :bonuses, class_name: '::Character::Bonus', as: :bonusable, dependent: :destroy
 end

@@ -23,7 +23,13 @@ module DaggerheartCharacter
     def modified_traits
       @modified_traits ||=
         __getobj__.modified_traits.merge(
-          *[*equiped_traits_bonuses, *bonuses.pluck('traits'), beastform_config['traits']].compact
+          *[
+            *equiped_traits_bonuses,
+            *bonuses.pluck('traits'),
+            *static_feat_bonuses.pluck('traits'),
+            *dynamic_feat_bonuses.pluck('traits'),
+            beastform_config['traits']
+          ].compact
         ) { |_key, oldval, newval| newval + oldval }
     end
 
@@ -32,7 +38,13 @@ module DaggerheartCharacter
         base_damage_thresholds
           .with_indifferent_access
           .merge(
-            *[level_thresholds_bonuses, equiped_thresholds_bonuses, *bonuses.pluck('thresholds')].compact
+            *[
+              level_thresholds_bonuses,
+              equiped_thresholds_bonuses,
+              *bonuses.pluck('thresholds'),
+              *static_feat_bonuses.pluck('thresholds'),
+              *dynamic_feat_bonuses.pluck('thresholds')
+            ].compact
           ) { |_key, oldval, newval| newval + oldval }
     end
 
@@ -42,6 +54,8 @@ module DaggerheartCharacter
         leveling['evasion'].to_i +
         item_bonuses.pluck('evasion').compact.sum +
         sum(bonuses.pluck('evasion')) +
+        sum(static_feat_bonuses.pluck('evasion')) +
+        sum(dynamic_feat_bonuses.pluck('evasion')) +
         beastform_config['evasion'] +
         stance_bonus
     end
@@ -50,7 +64,9 @@ module DaggerheartCharacter
       @armor_score ||=
         base_armor_score +
         item_bonuses.pluck('armor_score').compact.sum +
-        sum(bonuses.pluck('armor_score'))
+        sum(bonuses.pluck('armor_score')) +
+        sum(static_feat_bonuses.pluck('armor_score')) +
+        sum(dynamic_feat_bonuses.pluck('armor_score'))
     end
 
     def armor_slots
@@ -58,15 +74,26 @@ module DaggerheartCharacter
     end
 
     def health_max
-      @health_max ||= data.health_max + leveling['health'].to_i + sum(bonuses.pluck('health'))
+      @health_max ||=
+        data.health_max +
+        leveling['health'].to_i +
+        sum(bonuses.pluck('health')) +
+        sum(static_feat_bonuses.pluck('health')) +
+        sum(dynamic_feat_bonuses.pluck('health'))
     end
 
     def stress_max
-      @stress_max ||= data.stress_max + leveling['stress'].to_i + sum(bonuses.pluck('stress'))
+      @stress_max ||=
+        data.stress_max +
+        leveling['stress'].to_i +
+        sum(bonuses.pluck('stress')) +
+        sum(static_feat_bonuses.pluck('stress')) +
+        sum(dynamic_feat_bonuses.pluck('stress'))
     end
 
     def hope_max
-      @hope_max ||= data.hope_max + beastbound_pet_bonus
+      @hope_max ||=
+        data.hope_max + beastbound_pet_bonus + sum(static_feat_bonuses.pluck('hope')) + sum(dynamic_feat_bonuses.pluck('hope'))
     end
 
     def attacks
@@ -184,7 +211,10 @@ module DaggerheartCharacter
     end
 
     def attack_bonuses
-      @attack_bonuses ||= sum(bonuses.pluck('attack').compact)
+      @attack_bonuses ||=
+        sum(bonuses.pluck('attack').compact) +
+        sum(static_feat_bonuses.pluck('attack').compact) +
+        sum(dynamic_feat_bonuses.pluck('attack').compact)
     end
 
     def equiped_traits_bonuses

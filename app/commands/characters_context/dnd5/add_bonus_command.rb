@@ -7,7 +7,7 @@ module CharactersContext
         config.messages.namespace = :character_bonus
 
         params do
-          required(:character).filled(type_included_in?: [::Dnd5::Character, ::Dnd2024::Character])
+          required(:bonusable).filled(type_included_in?: [::Dnd5::Character, ::Dnd2024::Character])
           required(:comment).filled(:string)
           required(:value).hash do
             optional(:abilities).hash do

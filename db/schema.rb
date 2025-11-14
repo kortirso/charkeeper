@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2025_11_07_071838) do
+ActiveRecord::Schema[8.1].define(version: 2025_11_13_070617) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
   enable_extension "pgcrypto"
@@ -88,11 +88,15 @@ ActiveRecord::Schema[8.1].define(version: 2025_11_07_071838) do
   end
 
   create_table "character_bonus", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
-    t.uuid "character_id", null: false
+    t.uuid "bonusable_id", null: false
+    t.string "bonusable_type", null: false
+    t.uuid "character_id"
     t.string "comment"
     t.datetime "created_at", null: false
+    t.jsonb "dynamic_value", default: {}, null: false
     t.datetime "updated_at", null: false
     t.jsonb "value", default: {}, null: false
+    t.index ["bonusable_id", "bonusable_type"], name: "index_character_bonus_on_bonusable_id_and_bonusable_type"
   end
 
   create_table "character_companions", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|

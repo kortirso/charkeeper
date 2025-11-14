@@ -96,7 +96,7 @@ export const Combat = (props) => {
     return (
       <div class="p-4 mb-2">
         <h2 class="text-lg font-normal! mb-2 dark:text-snow">{title}</h2>
-        <table class="w-full table first-column-full-width table-top">
+        <table class="w-full table no-darks first-column-full-width table-top">
           <thead>
             <tr>
               <td />
@@ -107,50 +107,64 @@ export const Combat = (props) => {
           </thead>
           <tbody>
             <For each={values}>
-              {(attack) =>
-                <tr class="dark:text-snow">
-                  <td class="py-1 pl-1">
-                    <p>{attack.name}</p>
-                    <Show when={attack.tags && Object.keys(attack.tags).length > 0}>
-                      <div class="mt-1 flex flex-wrap gap-x-2 gap-y-1">
-                        <For each={Object.entries(attack.tags)}>
-                          {([tag, value]) =>
-                            <p class="tag" onClick={() => showTagInfo(tag, value)}>{value}</p>
-                          }
-                        </For>
-                      </div>
-                    </Show>
-                    <Show when={(attack.tags === undefined || character().provider === 'daggerheart') && attack.features && attack.features.length > 0}>
-                      <p class="mt-1 text-xs">
-                        {typeof attack.features[0] === 'string' ? attack.features.join(', ') : attack.features.map((item) => item[locale()]).join(', ')}
-                      </p>
-                    </Show>
-                    <Show when={attack.notes}>
-                      <p class="text-xs mt-1">{attack.notes}</p>
-                    </Show>
-                  </td>
-                  <td class="py-1 text-center">
-                    <Dice
-                      width="28"
-                      height="28"
-                      text={modifier(attack.attack_bonus)}
-                      onClick={() => props.openDiceRoll(`/check attack ${attack.name}`, attack.attack_bonus)}
-                    />
-                  </td>
-                  <td class="p-1 text-center">
-                    <p>{attack.damage}{attack.damage_bonus > 0 ? modifier(attack.damage_bonus) : ''}</p>
-                  </td>
-                  <td class="p-1 text-center">
-                    <Show when={character().provider === 'daggerheart'} fallback={<p>{attack.distance || attack.range}</p>}>
-                      <Show
-                        when={settings().includes('showSquares')}
-                        fallback={<p class="text-sm">{TRANSLATION[locale()]['distances'][attack.range]}</p>}
-                      >
-                        <p>{DH_SQUARE_DISTANCES[attack.range]}</p>
+              {(attack, index) =>
+                <>
+                  <tr class="dark:text-snow border-t border-gray-200 dark:border-neutral-800" classList={{ 'bg-gray-50 dark:bg-neutral-700': index() % 2 === 1 }}>
+                    <td class="pt-2 pb-1 pl-1">
+                      <p>{attack.name}</p>
+                    </td>
+                    <td class="pt-2 pb-1 text-center">
+                      <Dice
+                        width="28"
+                        height="28"
+                        text={modifier(attack.attack_bonus)}
+                        onClick={() => props.openDiceRoll(`/check attack ${attack.name}`, attack.attack_bonus)}
+                      />
+                    </td>
+                    <td class="pt-2 pb-1 text-center">
+                      <p>{attack.damage}{attack.damage_bonus > 0 ? modifier(attack.damage_bonus) : ''}</p>
+                    </td>
+                    <td class="pt-2 pb-1 text-center">
+                      <Show when={character().provider === 'daggerheart'} fallback={<p>{attack.distance || attack.range}</p>}>
+                        <Show
+                          when={settings().includes('showSquares')}
+                          fallback={<p class="text-sm">{TRANSLATION[locale()]['distances'][attack.range]}</p>}
+                        >
+                          <p>{DH_SQUARE_DISTANCES[attack.range]}</p>
+                        </Show>
                       </Show>
-                    </Show>
-                  </td>
-                </tr>
+                    </td>
+                  </tr>
+                  <Show when={attack.tags && Object.keys(attack.tags).length > 0}>
+                    <tr classList={{ 'bg-gray-50 dark:bg-neutral-700': index() % 2 === 1 }}>
+                      <td colspan="4" class="p-1">
+                        <div class="flex flex-wrap gap-x-2 gap-y-1">
+                          <For each={Object.entries(attack.tags)}>
+                            {([tag, value]) =>
+                              <p class="tag" onClick={() => showTagInfo(tag, value)}>{value}</p>
+                            }
+                          </For>
+                        </div>
+                      </td>
+                    </tr>
+                  </Show>
+                  <Show when={(attack.tags === undefined || character().provider === 'daggerheart') && attack.features && attack.features.length > 0}>
+                    <tr classList={{ 'bg-gray-50 dark:bg-neutral-700': index() % 2 === 1 }}>
+                      <td colspan="4" class="p-1">
+                        <p class="text-xs dark:text-snow">
+                          {typeof attack.features[0] === 'string' ? attack.features.join(', ') : attack.features.map((item) => item[locale()]).join(', ')}
+                        </p>
+                      </td>
+                    </tr>
+                  </Show>
+                  <Show when={attack.notes && attack.notes.length > 0}>
+                    <tr classList={{ 'bg-gray-50 dark:bg-neutral-700': index() % 2 === 1 }}>
+                      <td colspan="4" class="p-1">
+                        <p class="text-xs dark:text-snow">{attack.notes}</p>
+                      </td>
+                    </tr>
+                  </Show>
+                </>
               }
             </For>
           </tbody>

@@ -9,7 +9,7 @@ class Character < ApplicationRecord
   has_many :spells, class_name: '::Character::Spell', dependent: :destroy
   has_many :items, class_name: '::Character::Item', dependent: :destroy
   has_many :notes, class_name: '::Character::Note', dependent: :destroy
-  has_many :bonuses, class_name: '::Character::Bonus', dependent: :destroy
+  has_many :bonuses, class_name: '::Character::Bonus', as: :bonusable, dependent: :destroy
   has_many :feats, class_name: '::Character::Feat', dependent: :destroy
   has_many :feat_items, class_name: '::Feat', through: :feats, source: :items
   has_one :companion, class_name: '::Character::Companion', dependent: :destroy

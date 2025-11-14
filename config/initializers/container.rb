@@ -29,6 +29,8 @@ module Charkeeper
     register('commands.users_context.update') { UsersContext::UpdateCommand.new }
     register('commands.users_context.add_feedback') { UsersContext::AddFeedbackCommand.new }
 
+    register('commands.bonuses_context.refresh') { BonusesContext::RefreshBonusesCommand.new }
+
     register('commands.characters_context.item_update') { CharactersContext::ItemUpdateCommand.new }
     register('commands.characters_context.item_add') { CharactersContext::ItemAddCommand.new }
     register('commands.characters_context.change_feat') { CharactersContext::ChangeFeatCommand.new }
@@ -85,7 +87,11 @@ module Charkeeper
     register('commands.homebrew_context.add_race') { HomebrewContext::AddRaceCommand.new }
 
     register('commands.homebrew_context.daggerheart.add_community') { HomebrewContext::Daggerheart::AddCommunityCommand.new }
+    register('commands.homebrew_context.daggerheart.change_community') {
+      HomebrewContext::Daggerheart::ChangeCommunityCommand.new
+    }
     register('commands.homebrew_context.daggerheart.add_race') { HomebrewContext::Daggerheart::AddRaceCommand.new }
+    register('commands.homebrew_context.daggerheart.change_race') { HomebrewContext::Daggerheart::ChangeRaceCommand.new }
     register('commands.homebrew_context.daggerheart.add_feat') { HomebrewContext::Daggerheart::AddFeatCommand.new }
     register('commands.homebrew_context.daggerheart.add_item') { HomebrewContext::Daggerheart::AddItemCommand.new }
     register('commands.homebrew_context.daggerheart.add_speciality') { HomebrewContext::Daggerheart::AddSpecialityCommand.new }

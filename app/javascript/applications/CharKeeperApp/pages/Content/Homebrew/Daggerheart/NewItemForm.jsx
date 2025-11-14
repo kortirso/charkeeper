@@ -20,7 +20,8 @@ export const NewDaggerheartItemForm = (props) => {
     damage_bonus: 0,
     features: '',
     itemable_type: null,
-    itemable_id: null
+    itemable_id: null,
+    description: ''
   });
 
   const [locale, dict] = useAppLocale();
@@ -32,10 +33,13 @@ export const NewDaggerheartItemForm = (props) => {
   });
 
   const generatePayload = () => {
-    if (itemForm.kind === 'item' || itemForm.kind === 'consumable') return { name: itemForm.name, kind: itemForm.kind };
+    if (itemForm.kind === 'item' || itemForm.kind === 'consumable') {
+      return { name: itemForm.name, kind: itemForm.kind, description: itemForm.description };
+    }
     if (itemForm.kind === 'primary weapon' || itemForm.kind === 'secondary weapon') {
       return {
         name: itemForm.name,
+        description: itemForm.description,
         kind: itemForm.kind,
         itemable_type: itemForm.itemable_type,
         itemable_id: itemForm.itemable_id,
@@ -47,7 +51,7 @@ export const NewDaggerheartItemForm = (props) => {
           damage_type: itemForm.damage_type,
           damage: itemForm.damage,
           damage_bonus: !isNaN(itemForm.damage_bonus) ? (parseInt(itemForm.damage_bonus) || 0) : 0,
-          features: { en: itemForm.features, ru: itemForm.features }
+          features: [{ en: itemForm.features, ru: itemForm.features }]
         }
       }
     }
@@ -120,7 +124,7 @@ export const NewDaggerheartItemForm = (props) => {
             onInput={(value) => setItemForm({ ...itemForm, damage_bonus: value })}
           />
         </div>
-        <div class="mb-4 flex gap-4">
+        <div class="mb-2 flex gap-4">
           <Select
             containerClassList="flex-1"
             labelText={t('pages.homebrewPage.daggerheart.itemOrigin')}
@@ -144,6 +148,13 @@ export const NewDaggerheartItemForm = (props) => {
           onChange={(value) => setItemForm({ ...itemForm, features: value })}
         />
       </Show>
+      <TextArea
+        rows="3"
+        containerClassList="mt-2"
+        labelText={t('pages.homebrewPage.daggerheart.description')}
+        value={itemForm.description}
+        onChange={(value) => setItemForm({ ...itemForm, description: value })}
+      />
       <div class="flex gap-4 w-full mt-4">
         <Button outlined classList="flex-1" onClick={props.onCancel}>{t('cancel')}</Button>
         <Button default classList="flex-1" onClick={() => props.onSave({ brewery: generatePayload() })}>{t('save')}</Button>

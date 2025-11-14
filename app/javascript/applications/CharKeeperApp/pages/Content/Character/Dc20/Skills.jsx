@@ -298,7 +298,6 @@ export const Dc20Skills = (props) => {
         guideStep={2}
         helpMessage={TRANSLATION[locale()]['helpMessage']}
         onReloadCharacter={props.onReloadCharacter}
-        finishGuideStep={true}
       >
         <div class="blockable pb-2">
           <div class="p-4 flex mb-2">

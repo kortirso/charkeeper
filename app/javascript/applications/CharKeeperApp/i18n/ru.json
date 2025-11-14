@@ -54,7 +54,9 @@
       "legacy": "Подвид",
       "feat": "Навык",
       "personal": "Личные",
-      "transformation": "Трансформация"
+      "transformation": "Трансформация",
+      "maneuver": "Приём",
+      "states": "Состояния"
     },
     "homebrewPage": {
       "title": "Homebrew",
@@ -107,7 +109,9 @@
         "itemOriginValue": "Объект принадлежности",
         "transformations": "Трансформации",
         "mechanics": "Доступные механики",
-        "domainLevel": "Уровень доступа"
+        "domainLevel": "Уровень доступа",
+        "features": "Особенности",
+        "description": "Описание"
       }
     },
     "campaignsPage": {
@@ -170,8 +174,8 @@
       "armorScore": "Очки Доспеха",
       "armorSlots": "Слоты Доспеха",
       "minor": "Малый урон",
-      "major": "Большой урон",
-      "severe": "Серьёзный урон",
+      "major": "Ощутимый урон",
+      "severe": "Тяжёлый урон",
       "minorDamage": "1 рана",
       "majorDamage": "2 раны",
       "severeDamage": "3 раны",

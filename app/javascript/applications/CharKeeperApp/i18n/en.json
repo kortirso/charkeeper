@@ -54,7 +54,9 @@
       "legacy": "Legacy",
       "feat": "Feat",
       "personal": "Personal",
-      "transformation": "Transformation"
+      "transformation": "Transformation",
+      "maneuver": "Maneuver",
+      "states": "States"
     },
     "homebrewPage": {
       "title": "Homebrew",
@@ -107,7 +109,9 @@
         "itemOriginValue": "Attachable object",
         "transformations": "Transformations",
         "mechanics": "Available mechanics",
-        "domainLevel": "Domain level"
+        "domainLevel": "Domain level",
+        "features": "Features",
+        "description": "Description"
       }
     },
     "campaignsPage": {

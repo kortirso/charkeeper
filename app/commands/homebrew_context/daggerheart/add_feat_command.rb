@@ -5,7 +5,8 @@ module HomebrewContext
     class AddFeatCommand < BaseCommand
       include Deps[
         refresh_feats: 'services.characters_context.daggerheart.refresh_feats',
-        refresh_user_data: 'services.homebrews_context.refresh_user_data'
+        refresh_user_data: 'services.homebrews_context.refresh_user_data',
+        refresh_bonuses: 'commands.bonuses_context.refresh'
       ]
 
       # rubocop: disable Metrics/BlockLength
@@ -30,6 +31,11 @@ module HomebrewContext
           optional(:limit).filled(:integer, gteq?: 1)
           optional(:limit_refresh).filled(Limits)
           optional(:subclass_mastery).filled(:integer)
+          optional(:bonuses).maybe(:array).each(:hash) do
+            required(:id).filled(type_included_in?: [Integer, String])
+            required(:type).filled(:string)
+            required(:value)
+          end
         end
 
         rule(:limit, :limit_refresh).validate(:check_all_or_nothing_present)
@@ -76,10 +82,11 @@ module HomebrewContext
       end
 
       def do_persist(input)
-        result = ::Daggerheart::Feat.create!(input.except(:limit, :subclass_mastery, :level))
+        result = ::Daggerheart::Feat.create!(input.except(:limit, :subclass_mastery, :level, :bonuses))
 
         input[:user].characters.daggerheart.find_each { |character| refresh_feats.call(character: character) }
         refresh_user_data.call(user: input[:user])
+        refresh_bonuses.call(bonusable: result, bonuses: input[:bonuses]) if input[:bonuses]
 
         { result: result }
       end

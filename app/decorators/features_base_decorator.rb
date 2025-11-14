@@ -30,6 +30,15 @@ class FeaturesBaseDecorator
     @available_features ||= wrapped.feats.includes(:feat).order('feats.origin ASC, feats.created_at ASC')
   end
 
+  def dynamic_feat_bonuses
+    @dynamic_feat_bonuses ||=
+      feat_bonuses.pluck(:dynamic_value).compact.filter_map do |hash|
+        next if hash.empty?
+
+        call_values(hash)
+      end
+  end
+
   private
 
   def feature_bonuses_enabled?(feature)
@@ -44,6 +53,16 @@ class FeaturesBaseDecorator
   rescue StandardError, SyntaxError => e
     monitoring_feat_error(e, feat)
     nil
+  end
+
+  def call_values(object)
+    if object.is_a?(Hash)
+      object.transform_values { |value| call_values(value) }
+    else
+      lambda do
+        eval(object)
+      end.call
+    end
   end
   # rubocop: enable Security/Eval, Style/MethodCalledOnDoEndBlock
 end

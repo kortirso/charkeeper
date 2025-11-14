@@ -73,6 +73,8 @@ export * from './Content/Character/Dc20/Abilities';
 export * from './Content/Character/Dc20/Saves';
 export * from './Content/Character/Dc20/Skills';
 export * from './Content/Character/Dc20/CombatStatic';
+export * from './Content/Character/Dc20/Leveling';
+export * from './Content/Character/Dc20/Resources';
 
 export * from './Content/Homebrew/Daggerheart/Race';
 export * from './Content/Homebrew/Daggerheart/Community';

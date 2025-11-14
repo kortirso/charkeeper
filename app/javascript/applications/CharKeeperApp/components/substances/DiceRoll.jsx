@@ -219,13 +219,13 @@ export const createDiceRoll = () => {
                           when={rollResult() === undefined}
                           fallback={
                             <>
-                              <Dice onClick={() => rerollDhDice('d12', 0)} text={rollResult().rolls[0][1]} />
-                              <Dice onClick={() => rerollDhDice('d12', 1)} text={rollResult().rolls[1][1]} />
+                              <Dice fill="#C28D23" onClick={() => rerollDhDice('d12', 0)} text={rollResult().rolls[0][1]} />
+                              <Dice fill="#2362C2" onClick={() => rerollDhDice('d12', 1)} text={rollResult().rolls[1][1]} />
                             </>
                           }
                         >
-                          <Dice text="D12" />
-                          <Dice text="D12" />
+                          <Dice fill="#C28D23" text="D12" />
+                          <Dice fill="#2362C2" text="D12" />
                         </Show>
                         <Show when={advantage() !== 0}>
                           <div class="ml-2">

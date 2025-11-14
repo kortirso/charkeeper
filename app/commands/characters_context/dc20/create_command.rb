@@ -32,7 +32,7 @@ module CharactersContext
       def do_persist(input)
         character = ::Dc20::Character.create!(input.slice(:user, :name, :data))
 
-        attach_feats(character, input[:main_class], input[:ancestry_feats].values.flatten)
+        attach_feats(character, input[:ancestry_feats].values.flatten)
 
         if input[:avatar_file]
           ImageProcessingContext::AttachAvatarByFileJob.perform_later(character_id: character.id, file: input[:avatar_file])
@@ -49,8 +49,8 @@ module CharactersContext
           .then { |result| Dc20Character::ClassBuilder.new.call(result: result) }
       end
 
-      def attach_feats(character, main_class, feat_slugs)
-        feats_for_adding = feats_relation(main_class, feat_slugs).map do |feat|
+      def attach_feats(character, feat_slugs)
+        feats_for_adding = feats_relation(character, feat_slugs).map do |feat|
           {
             feat_id: feat.id,
             character_id: character.id,
@@ -62,9 +62,10 @@ module CharactersContext
         ::Character::Feat.upsert_all(feats_for_adding) if feats_for_adding.any?
       end
 
-      def feats_relation(main_class, feat_slugs)
+      def feats_relation(character, feat_slugs)
         ::Dc20::Feat.where(origin: 0, slug: feat_slugs)
-          .or(::Dc20::Feat.where(origin: [1, 2], origin_value: main_class).where("conditions ->> 'level' = '1'"))
+          .or(::Dc20::Feat.where(origin: [1, 2], origin_value: character.data.main_class).where("conditions ->> 'level' = '1'"))
+          .or(::Dc20::Feat.where(origin: 3, slug: character.data.maneuvers))
       end
     end
   end

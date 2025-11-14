@@ -23,7 +23,7 @@ module CharactersContext
       Character::Feat
         .joins(:feat)
         .where.not(feats: { origin: exclude_origins_from_remove })
-        .where(character_id: character.id, feat_id: (existing_ids - available_feats.pluck(:id))).destroy_all
+        .where(character_id: character.id, feat_id: (existing_ids - available_feats.pluck(:id))).delete_all
     end
 
     def add_new_available_feats(character, available_feats, existing_ids)

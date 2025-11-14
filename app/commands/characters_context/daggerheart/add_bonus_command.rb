@@ -7,7 +7,7 @@ module CharactersContext
         config.messages.namespace = :character_bonus
 
         params do
-          required(:character).filled(type?: ::Daggerheart::Character)
+          required(:bonusable).filled(type?: ::Daggerheart::Character)
           required(:comment).filled(:string)
           required(:value).hash do
             optional(:traits).hash do

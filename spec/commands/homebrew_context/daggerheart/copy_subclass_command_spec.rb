@@ -24,7 +24,7 @@ describe HomebrewContext::Daggerheart::CopySubclassCommand do
   end
 
   context 'for default class' do
-    let!(:subclass) { create :homebrew_subclass, :daggerheart, user: user, class_name: 'bard' } # rubocop: disable RSpec/LetSetup
+    let!(:subclass) { create :homebrew_subclass, :daggerheart, user: user, class_name: 'bard' }
 
     it 'creates new class and subclass with feats', :aggregate_failures do
       expect { command_call }.to(

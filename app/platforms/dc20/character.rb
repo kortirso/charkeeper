@@ -10,7 +10,10 @@ module Dc20
     attribute :classes, array: true
     attribute :abilities, array: true, default: { 'mig' => -2, 'agi' => -2, 'int' => -2, 'cha' => -2 }
     attribute :health, array: true, default: { 'current' => 1, 'temp' => 0 }
-    attribute :stamina_points, :integer, default: 0
+    attribute :stamina_points, array: true, default: { 'current' => 0, 'max' => 0 }
+    attribute :mana_points, array: true, default: { 'current' => 0, 'max' => 0 }
+    attribute :rest_points, array: true, default: { 'current' => 0, 'max' => 0 }
+    attribute :grit_points, array: true, default: { 'current' => 0, 'max' => 0 }
     attribute :combat_expertise, array: true, default: [] # weapon, light_armor, heavy_armor, light_shield, heavy_shield
     attribute :skill_expertise, array: true, default: [] # компетентность в навыках
     attribute :skill_levels, array: true, default: {} # { 'medicine' => 1 } владение навыками
@@ -19,6 +22,8 @@ module Dc20
     attribute :trade_knowledge, array: true, default: {} # { 'Алхимия' => 'int' } известные нестандартные ремёсла
     attribute :language_levels, array: true, default: {} # { 'common' => 2 } владение языками
     attribute :conditions, array: true, default: []
+    attribute :paths, array: true, default: { 'martial' => 0, 'spellcaster' => 0 }
+    attribute :maneuvers, array: true, default: []
     # доступные очки для распределения
     attribute :guide_step, :integer # этап помощи при создании персонажа
     attribute :attribute_points, :integer, default: 12
@@ -28,6 +33,9 @@ module Dc20
     attribute :trade_expertise_points, :integer, default: 0
     attribute :language_points, :integer, default: 2
     attribute :path_points, :integer, default: 0
+    attribute :talent_points, :integer, default: 0
+    attribute :class_feature_points, :integer, default: 0
+    attribute :subclass_feature_points, :integer, default: 0
   end
 
   class Character < Character

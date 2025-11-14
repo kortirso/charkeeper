@@ -71,7 +71,7 @@
 }
 
 .modal {
-  @apply relative p-4 blockable dark:text-snow;
+  @apply relative p-4 blockable dark:text-snow overflow-y-auto;
 
   max-width: 90%;
   max-height: 90%;
@@ -101,7 +101,7 @@
   @apply uppercase pb-1 text-xs dark:text-snow;
 }
 
-.table tbody tr {
+.table:not(.no-darks) tbody tr {
   @apply border-b border-gray-200 dark:border-neutral-800;
 }
 
@@ -109,7 +109,7 @@
   @apply align-top;
 }
 
-.table tbody tr:nth-of-type(2n) {
+.table:not(.no-darks) tbody tr:nth-of-type(2n) {
   @apply bg-gray-50 dark:bg-neutral-700;
 }
 
@@ -355,4 +355,12 @@ nav.pagy.nav a.gap {
 .dots-item {
   @apply px-2 py-1 text-sm bg-white hover:bg-gray-200 cursor-pointer;
   @apply dark:bg-dusty dark:hover:bg-neutral-800;
+}
+
+.homebrew-provider-nav {
+  @apply bg-gray-200 hover:bg-gray-300 rounded px-2 py-1 cursor-pointer;
+}
+
+.homebrew-provider-nav.active {
+  @apply bg-neutral-800 text-snow;
 }

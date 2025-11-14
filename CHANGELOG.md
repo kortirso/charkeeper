@@ -6,15 +6,29 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## Unreleased
 ### Added
+- separate web app for managing homebrews
+- bonuses for homebrews
+- resources management for DC20 characters
+
+## [0.3.15] - 2025-11-09
+### Added
 - rendering DC20 feats
 - DC20 class feats
 - rendering Daggerheart weapon distances in squares
+- selecting character path for DC20 characters
+- DC20 maneuvers
+- unlimited counters for feats
 
 ### Modified
 - refreshing character after domain cards and equipment changes
+- adding description for homebrew items
+- Daggerheart dice colors
+- Daggerheart tabs
 
 ### Fixed
 - domain cards checkbox label
+- creating and rendering features for Daggerheart homebrew weapons
+- threshold translation
 
 ## [0.3.14] - 2025-11-05
 ### Added

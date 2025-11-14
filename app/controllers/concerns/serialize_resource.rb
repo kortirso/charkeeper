@@ -5,14 +5,15 @@ module SerializeResource
 
   private
 
-  def serialize_resource(resource, serializer, key, serialized_fields={}, status=:ok)
+  def serialize_resource(resource, serializer, key, serialized_fields={}, status=:ok, context={})
     return only_head_response if params[:only_head]
 
+    context = default_context.merge(context)
     data =
       if params[:only].blank?
-        Panko::Response.create { |response| { key => response.serializer(resource, serializer, **serialized_fields, **context) } }
+        Panko::Response.create { |response| { key => response.serializer(resource, serializer, **serialized_fields, context: context) } }
       else
-        Panko::Response.create { |response| { key => response.serializer(resource, serializer, **only_fields, **context) } }
+        Panko::Response.create { |response| { key => response.serializer(resource, serializer, **only_fields, context: context) } }
       end
 
     render json: data, status: status
@@ -22,7 +23,7 @@ module SerializeResource
     { only: params[:only].split(',').map(&:to_sym) }
   end
 
-  def context
-    { context: { version: params[:version] }.compact }
+  def default_context
+    { version: params[:version] }.compact
   end
 end

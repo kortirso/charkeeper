@@ -20,7 +20,7 @@ module CharactersContext
         existing_slugs = character.data.selected_features.values.flatten
 
         feats = ::Daggerheart::Feat.where(slug: all_slugs - existing_slugs).ids
-        Character::Feat.where(feat_id: feats, character: character).destroy_all
+        Character::Feat.where(feat_id: feats, character: character).delete_all
       end
 
       def filter_available_feats(character)
@@ -71,7 +71,7 @@ module CharactersContext
         ).or(
           ::Daggerheart::Feat.where(origin: 'ancestry', id: data.heritage_features)
         ).or(
-          ::Daggerheart::Feat.where(origin: 'domain_card', slug: data.selected_features.values.flatten)
+          ::Daggerheart::Feat.where(origin: 'domain_card', slug: data.selected_features.values.flatten.compact)
         )
       end
     end
