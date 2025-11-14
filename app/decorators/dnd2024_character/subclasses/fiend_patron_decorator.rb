@@ -2,7 +2,7 @@
 
 module Dnd2024Character
   module Subclasses
-    class FiendDecorator < ApplicationDecorator
+    class FiendPatronDecorator < ApplicationDecorator
       def static_spells # rubocop: disable Metrics/MethodLength, Metrics/AbcSize
         @static_spells ||= begin
           result = __getobj__.static_spells

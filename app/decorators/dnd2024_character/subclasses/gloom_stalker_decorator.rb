@@ -3,24 +3,14 @@
 module Dnd2024Character
   module Subclasses
     class GloomStalkerDecorator < ApplicationDecorator
-      def static_spells # rubocop: disable Metrics/MethodLength, Metrics/AbcSize
+      def static_spells # rubocop: disable Metrics/AbcSize
         @static_spells ||= begin
           result = __getobj__.static_spells
-          if class_level >= 3
-            result['disguise_self'] = static_spell_attributes
-          end
-          if class_level >= 5
-            result['rope_trick'] = static_spell_attributes
-          end
-          if class_level >= 9
-            result['fear'] = static_spell_attributes
-          end
-          if class_level >= 13
-            result['greater_invisibility'] = static_spell_attributes
-          end
-          if class_level >= 17
-            result['seeming'] = static_spell_attributes
-          end
+          result['disguise_self'] = static_spell_attributes if class_level >= 3
+          result['rope_trick'] = static_spell_attributes if class_level >= 5
+          result['fear'] = static_spell_attributes if class_level >= 9
+          result['greater_invisibility'] = static_spell_attributes if class_level >= 13
+          result['seeming'] = static_spell_attributes if class_level >= 17
           result
         end
       end

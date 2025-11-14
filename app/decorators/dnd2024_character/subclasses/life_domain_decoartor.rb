@@ -33,7 +33,7 @@ module Dnd2024Character
       private
 
       def class_level
-        classes['paladin']
+        classes['cleric']
       end
 
       def static_spell_attributes

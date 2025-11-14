@@ -156,6 +156,7 @@
         "fey_wanderer": { "name": { "en": "Fey Wanderer", "ru": "Фейский странник" } },
         "gloom_stalker": { "name": { "en": "Gloom Stalker", "ru": "Сумрачный охотник" } },
         "hunter": { "name": { "en": "Hunter", "ru": "Охотник" } }
+      }
     },
     "rogue": {
       "name": { "en": "Rogue", "ru": "Плут" },
@@ -164,6 +165,7 @@
         "assassin": { "name": { "en": "Assassin", "ru": "Убийца" } },
         "soulknife": { "name": { "en": "Soulknife", "ru": "Клинок души" } },
         "thief": { "name": { "en": "Thief", "ru": "Вор" } }
+      }
     },
     "sorcerer": {
       "name": { "en": "Sorcerer", "ru": "Чародей" },

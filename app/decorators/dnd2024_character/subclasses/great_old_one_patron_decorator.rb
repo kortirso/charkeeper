@@ -2,28 +2,27 @@
 
 module Dnd2024Character
   module Subclasses
-    class ArchfeyDecorator < ApplicationDecorator
+    class GreatOldOnePatronDecorator < ApplicationDecorator
       def static_spells # rubocop: disable Metrics/MethodLength, Metrics/AbcSize
         @static_spells ||= begin
           result = __getobj__.static_spells
           if class_level >= 3
-            result['calm_emotions'] = static_spell_attributes
-            result['faerie_fire'] = static_spell_attributes
-            result['misty_step'] = static_spell_attributes
+            result['detect_thoughts'] = static_spell_attributes
+            result['dissonant_whispers'] = static_spell_attributes
             result['phantasmal_force'] = static_spell_attributes
-            result['sleep'] = static_spell_attributes
+            result['tasha_hideous_laughter'] = static_spell_attributes
           end
           if class_level >= 5
-            result['blink'] = static_spell_attributes
-            result['plant_growth'] = static_spell_attributes
+            result['clairvoyance'] = static_spell_attributes
+            result['hunger_of_hadar'] = static_spell_attributes
           end
           if class_level >= 7
-            result['dominate_beast'] = static_spell_attributes
-            result['greater_invisibility'] = static_spell_attributes
+            result['confusion'] = static_spell_attributes
+            result['summon_aberration'] = static_spell_attributes
           end
           if class_level >= 9
-            result['dominate_person'] = static_spell_attributes
-            result['seeming'] = static_spell_attributes
+            result['modify_memory'] = static_spell_attributes
+            result['telekinesis'] = static_spell_attributes
           end
           result
         end
