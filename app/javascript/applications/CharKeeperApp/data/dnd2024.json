@@ -108,7 +108,12 @@
     },
     "cleric": {
       "name": { "en": "Cleric", "ru": "Жрец" },
-      "subclasses": {}
+      "subclasses": {
+        "life_domain": { "name": { "en": "Life Domain", "ru": "Домен жизни" } },
+        "light_domain": { "name": { "en": "Light Domain", "ru": "Домен света" } },
+        "trickery_domain": { "name": { "en": "Trickery Domain", "ru": "Домен обмана" } },
+        "war_domain": { "name": { "en": "War Domain", "ru": "Домен войны" } }
+      }
     },
     "druid": {
       "name": { "en": "Druid", "ru": "Друид" },
@@ -146,19 +151,39 @@
     },
     "ranger": {
       "name": { "en": "Ranger", "ru": "Следопыт" },
-      "subclasses": {}
+      "subclasses": {
+        "beast_master": { "name": { "en": "Beast Master", "ru": "Повелитель зверей" } },
+        "fey_wanderer": { "name": { "en": "Fey Wanderer", "ru": "Фейский странник" } },
+        "gloom_stalker": { "name": { "en": "Gloom Stalker", "ru": "Сумрачный охотник" } },
+        "hunter": { "name": { "en": "Hunter", "ru": "Охотник" } }
+      }
     },
     "rogue": {
       "name": { "en": "Rogue", "ru": "Плут" },
-      "subclasses": {}
+      "subclasses": {
+        "arcane_trickster": { "name": { "en": "Arcane Trickster", "ru": "Мистический ловкач" } },
+        "assassin": { "name": { "en": "Assassin", "ru": "Убийца" } },
+        "soulknife": { "name": { "en": "Soulknife", "ru": "Клинок души" } },
+        "thief": { "name": { "en": "Thief", "ru": "Вор" } }
+      }
     },
     "sorcerer": {
       "name": { "en": "Sorcerer", "ru": "Чародей" },
-      "subclasses": {}
+      "subclasses": {
+        "aberrant_sorcery": { "name": { "en": "Aberrant Sorcery", "ru": "Аберрантный разум" } },
+        "clockwork_sorcery": { "name": { "en": "Clockwork Sorcery", "ru": "Заводная душа" } },
+        "draconic_sorcery": { "name": { "en": "Draconic Sorcery", "ru": "Драконья кровь" } },
+        "wild_magic_sorcery": { "name": { "en": "Wild Magic Sorcery", "ru": "Дикая магия" } }
+      }
     },
     "warlock": {
       "name": { "en": "Warlock", "ru": "Колдун" },
-      "subclasses": {}
+      "subclasses": {
+        "archfey_patron": { "name": { "en": "Archfey Patron", "ru": "Покровитель Архифея" } },
+        "celestial_patron": { "name": { "en": "Celestial Patron", "ru": "Покровитель Небожитель" } },
+        "fiend_patron": { "name": { "en": "Fiend Patron", "ru": "Покровитель Исчадие" } },
+        "great_old_one_patron": { "name": { "en": "Great Old One Patron", "ru": "Покровитель Великий древний" } }
+      }
     },
     "wizard": {
       "name": { "en": "Wizard", "ru": "Волшебник" },
@@ -171,7 +196,12 @@
     },
     "artificer": {
       "name": { "en": "Artificer", "ru": "Изобретатель" },
-      "subclasses": {}
+      "subclasses": {
+        "alchemist": { "name": { "en": "Alchemist", "ru": "Алхимик" } },
+        "armorer": { "name": { "en": "Armorer", "ru": "Бронник" } },
+        "artillerist": { "name": { "en": "Artillerist", "ru": "Артиллерист" } },
+        "battle_smith": { "name": { "en": "Battle Smith", "ru": "Боевой кузнец" } }
+      }
     }
   },
   "feats": {
