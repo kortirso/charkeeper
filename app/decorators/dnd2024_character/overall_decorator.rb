@@ -2,6 +2,8 @@
 
 module Dnd2024Character
   class OverallDecorator < ApplicationDecorator
+    DEFAULT_SPEEDS = %w[swim climb].freeze
+
     def save_dc
       @save_dc ||= begin
         result = __getobj__.save_dc
@@ -18,6 +20,11 @@ module Dnd2024Character
         result -= 10 if defense_gear[:armor]&.dig(:items_info, 'str_req').to_i > modifiers['str']
         result
       end
+    end
+
+    def speeds
+      @speeds ||=
+        DEFAULT_SPEEDS.index_with { speed / 2 }.merge(__getobj__.speeds).transform_values { |value| value.zero? ? speed : value }
     end
 
     def formatted_static_spells

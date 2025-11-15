@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - separate web app for managing homebrews
 - bonuses for homebrews
 - resources management for DC20 characters
+- rendering additional speeds for D&D characters
 
 ### Modified
 - dynamic loading for D&D 2024
