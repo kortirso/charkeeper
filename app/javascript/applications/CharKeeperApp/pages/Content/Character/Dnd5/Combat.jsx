@@ -1,4 +1,4 @@
-import { createSignal, createEffect, For, batch } from 'solid-js';
+import { createSignal, createEffect, For, Show, batch } from 'solid-js';
 import * as i18n from '@solid-primitives/i18n';
 
 import { createModal, StatsBlock, ErrorWrapper, Input, Toggle, Checkbox, Button } from '../../../../components';
@@ -6,6 +6,19 @@ import { useAppState, useAppLocale } from '../../../../context';
 import { updateCharacterRequest } from '../../../../requests/updateCharacterRequest';
 import { createCharacterHealthRequest } from '../../../../requests/createCharacterHealthRequest';
 import { modifier } from '../../../../helpers';
+
+const TRANSLATION = {
+  en: {
+    flight: 'Flight speeds',
+    swim: 'Swim speed',
+    climb: 'Climb speed'
+  },
+  ru: {
+    flight: 'Скорость полёта',
+    swim: 'Скорость плавания',
+    climb: 'Скорость лазания'
+  }
+}
 
 export const Dnd5Combat = (props) => {
   const character = () => props.character;
@@ -18,7 +31,7 @@ export const Dnd5Combat = (props) => {
 
   const { Modal, openModal, closeModal } = createModal();
   const [appState] = useAppState();
-  const [, dict] = useAppLocale();
+  const [locale, dict] = useAppLocale();
 
   const t = i18n.translator(dict);
 
@@ -111,7 +124,17 @@ export const Dnd5Combat = (props) => {
           { title: t('terms.initiative'), value: modifier(character().initiative) },
           { title: t('terms.speed'), value: character().speed }
         ]}
-      />
+      >
+        <Show when={Object.keys(character().speeds).length > 0}>
+          <div class="pt-0 p-4">
+            <For each={Object.entries(character().speeds)}>
+              {([slug, value]) =>
+                <p class="dark:text-snow text-sm">{TRANSLATION[locale()][slug]} - {value}</p>
+              }
+            </For>
+          </div>
+        </Show>
+      </StatsBlock>
       <StatsBlock
         items={[
           { title: t('terms.health.current'), value: character().health.current },

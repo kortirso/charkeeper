@@ -17,6 +17,7 @@ module Dnd2024
     attribute :health, array: true
     attribute :death_saving_throws, array: true, default: { 'success' => 0, 'failure' => 0 }
     attribute :speed, :integer, default: 30
+    attribute :speeds, array: true, default: {} # { 'flight' => 30, 'swim' => 0, 'climb' => 10 }
     attribute :darkvision, :integer, default: 0
     attribute :selected_skills, array: true, default: {} # { 'history' => 1 }
     attribute :selected_features, array: true, default: {} # { 'fighting_style' => ['fighting_style_defense'] }
