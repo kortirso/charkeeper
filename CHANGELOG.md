@@ -10,6 +10,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - bonuses for homebrews
 - resources management for DC20 characters
 
+### Modified
+- dynamic loading for D&D 2024
+
 ## [0.3.15] - 2025-11-09
 ### Added
 - rendering DC20 feats

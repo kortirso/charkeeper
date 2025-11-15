@@ -7,7 +7,11 @@ module Dnd2024Character
              :selected_features, :resistance, :immunity, :vulnerability, :energy, :coins, :darkvision,
              :weapon_core_skills, :weapon_skills, :armor_proficiency, :music, :spent_spell_slots, :conditions,
              :hit_dice, :spent_hit_dice, :death_saving_throws, :selected_feats, :beastform, :background, :selected_beastforms,
-             :weapon_mastery, to: :data
+             :weapon_mastery, :size, to: :data
+
+    SIZE_CAPACITY_MODIFIERS = {
+      'tiny' => 7.5, 'small' => 15, 'medium' => 15, 'large' => 30, 'huge' => 60, 'gargantuan' => 120
+    }.freeze
 
     def parent = __getobj__
     def method_missing(_method, *args); end
@@ -49,7 +53,7 @@ module Dnd2024Character
     end
 
     def load
-      @load ||= modified_abilities['str'] * 15
+      @load ||= modified_abilities['str'] * SIZE_CAPACITY_MODIFIERS[size]
     end
 
     def spell_classes

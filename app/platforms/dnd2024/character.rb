@@ -8,7 +8,7 @@ module Dnd2024
     attribute :species, :string
     attribute :legacy, :string
     attribute :background, :string
-    attribute :size, :string
+    attribute :size, :string, default: 'medium'
     attribute :alignment, :string
     attribute :main_class, :string
     attribute :classes, array: true
