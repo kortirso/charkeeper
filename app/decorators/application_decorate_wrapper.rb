@@ -1,10 +1,11 @@
 # frozen_string_literal: true
 
 class ApplicationDecorateWrapper
-  attr_accessor :wrapped
+  attr_accessor :wrapped, :logger
 
   def initialize(obj)
     @wrapped = wrap_classes(obj)
+    @logger = Logger.new($stdout)
   end
 
   def method_missing(method, *_args)

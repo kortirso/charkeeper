@@ -25,7 +25,18 @@ module Dnd2024Character
       end
 
       def spells_slots
-        @spells_slots ||= ::Dnd2024Character::ClassDecorateWrapper::SPELL_SLOTS[class_level]
+        @spells_slots ||= ::Dnd2024Character::SubclassDecorateWrapper::SPELL_SLOTS[class_level]
+      end
+
+      def static_spells
+        @static_spells ||= begin
+          result = __getobj__.static_spells
+          if class_level >= 20
+            result['power_word_heal'] = static_spell_attributes
+            result['power_word_kill'] = static_spell_attributes
+          end
+          result
+        end
       end
 
       private
@@ -53,7 +64,11 @@ module Dnd2024Character
       end
 
       def max_spell_level
-        ::Dnd2024Character::ClassDecorateWrapper::SPELL_SLOTS[class_level].keys.max
+        ::Dnd2024Character::SubclassDecorateWrapper::SPELL_SLOTS[class_level].keys.max
+      end
+
+      def static_spell_attributes
+        { 'attack_bonus' => proficiency_bonus + modifiers['cha'], 'save_dc' => 8 + proficiency_bonus + modifiers['cha'] }
       end
     end
   end

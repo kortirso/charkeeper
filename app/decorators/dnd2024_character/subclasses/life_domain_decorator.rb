@@ -7,24 +7,22 @@ module Dnd2024Character
         @static_spells ||= begin
           result = __getobj__.static_spells
           if class_level >= 3
-            result['protection_from_evil_and_good'] = static_spell_attributes
-            result['shield_of_faith'] = static_spell_attributes
+            result['aid'] = static_spell_attributes
+            result['bless'] = static_spell_attributes
+            result['cure_wounds'] = static_spell_attributes
+            result['lessser_restoration'] = static_spell_attributes
           end
           if class_level >= 5
-            result['aid'] = static_spell_attributes
-            result['zone_of_truth'] = static_spell_attributes
+            result['mass_healing_word'] = static_spell_attributes
+            result['revivify'] = static_spell_attributes
+          end
+          if class_level >= 7
+            result['aura_of_life'] = static_spell_attributes
+            result['death_ward'] = static_spell_attributes
           end
           if class_level >= 9
-            result['beacon_of_hope'] = static_spell_attributes
-            result['dispel_magic'] = static_spell_attributes
-          end
-          if class_level >= 13
-            result['freedom_of_movement'] = static_spell_attributes
-            result['guardian_of_faith'] = static_spell_attributes
-          end
-          if class_level >= 17
-            result['commune'] = static_spell_attributes
-            result['flame_strike'] = static_spell_attributes
+            result['greater_restoration'] = static_spell_attributes
+            result['mass_cure_wounds'] = static_spell_attributes
           end
           result
         end

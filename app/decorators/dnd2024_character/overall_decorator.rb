@@ -12,6 +12,14 @@ module Dnd2024Character
       end
     end
 
+    def speed
+      @speed ||= begin
+        result = __getobj__.speed
+        result -= 10 if defense_gear[:armor]&.dig(:items_info, 'str_req').to_i > modifiers['str']
+        result
+      end
+    end
+
     def formatted_static_spells
       return @formatted_static_spells if defined?(@formatted_static_spells)
 

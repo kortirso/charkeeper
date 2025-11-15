@@ -10,7 +10,6 @@ module Dnd2024Character
           result['misty_step'] = static_spell_attributes if class_level >= 5
           result['summon_fey'] = static_spell_attributes if class_level >= 9
           result['dimension_door'] = static_spell_attributes if class_level >= 13
-          result['misty_step'] = static_spell_attributes if class_level >= 15
           result['mislead'] = static_spell_attributes if class_level >= 17
           result
         end

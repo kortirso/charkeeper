@@ -5,9 +5,7 @@ module Dnd5Character
     private
 
     def wrap_classes(obj)
-      obj.subclasses.keys.inject(obj) do |acc, (_class_name, subclass_name)|
-        next acc if subclass_name.nil?
-
+      obj.subclasses.values.compact.inject(obj) do |acc, (_class_name, subclass_name)|
         acc = subclass_decorator(subclass_name).new(acc)
         acc
       end

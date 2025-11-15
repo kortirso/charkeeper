@@ -24,6 +24,7 @@ module Dnd2024Character
             result['modify_memory'] = static_spell_attributes
             result['telekinesis'] = static_spell_attributes
           end
+          result['hex'] = static_spell_attributes if class_level >= 10
           result
         end
       end

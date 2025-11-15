@@ -128,7 +128,9 @@
       "name": { "en": "Fighter", "ru": "Воин" },
       "subclasses": {
         "battle_master": { "name": { "en": "Battle master", "ru": "Мастер боевых искусств" } },
-        "champion": { "name": { "en": "Champion", "ru": "Чемпион" } }
+        "champion": { "name": { "en": "Champion", "ru": "Чемпион" } },
+        "eldritch_knight": { "name": { "en": "Eldritch Knight", "ru": "Мистический рыцарь" } },
+        "psi_warrior": { "name": { "en": "Psi Warrior", "ru": "Пси-воин" } }
       }
     },
     "monk": {
@@ -198,9 +200,7 @@
       "name": { "en": "Artificer", "ru": "Изобретатель" },
       "subclasses": {
         "alchemist": { "name": { "en": "Alchemist", "ru": "Алхимик" } },
-        "armorer": { "name": { "en": "Armorer", "ru": "Бронник" } },
-        "artillerist": { "name": { "en": "Artillerist", "ru": "Артиллерист" } },
-        "battle_smith": { "name": { "en": "Battle Smith", "ru": "Боевой кузнец" } }
+        "armorer": { "name": { "en": "Armorer", "ru": "Бронник" } }
       }
     }
   },

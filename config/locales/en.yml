@@ -228,6 +228,7 @@ en:
         slow: If you hit a creature with this weapon and deal damage to it, you can reduce its Speed by 10 feet until the start of your next turn. If the creature is hit more than once by weapons that have this property, the Speed reduction doesn't exceed 10 feet.
         topple: If you hit a creature with this weapon, you can force the creature to make a Constitution saving throw (DC 8 plus the ability modifier used to make the attack roll and your Proficiency Bonus). On a failed save, the creature has the Pr one condition.
         vex: If you hit a creature with this weapon and deal damage to the creature, you have Advantage on your next attack roll against that creature before the end of your next turn.
+        psychic: Psychic damage.
         title:
           ammo: Ammo
           2handed: Two-Handed
@@ -250,6 +251,7 @@ en:
           slow: Slow
           topple: Topple
           vex: Vex
+          psychic: Psychic
     daggerheart:
       weapon:
         physical: Physical damage comes from any wielded weapon that cuts, stabs, or bludgeons.

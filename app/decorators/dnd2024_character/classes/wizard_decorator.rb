@@ -25,7 +25,7 @@ module Dnd2024Character
       end
 
       def spells_slots
-        @spells_slots ||= ::Dnd2024Character::ClassDecorateWrapper::SPELL_SLOTS[class_level]
+        @spells_slots ||= ::Dnd2024Character::SubclassDecorateWrapper::SPELL_SLOTS[class_level]
       end
 
       private
@@ -51,7 +51,7 @@ module Dnd2024Character
       end
 
       def max_spell_level
-        ::Dnd2024Character::ClassDecorateWrapper::SPELL_SLOTS[class_level].keys.max
+        ::Dnd2024Character::SubclassDecorateWrapper::SPELL_SLOTS[class_level].keys.max
       end
     end
   end
