@@ -232,42 +232,6 @@
     "dread": { "name": { "en": "Dread", "ru": "Ужас" } }
   },
   "beastforms": {
-    "agile_scout": {
-      "name": { "en": "Agile scout", "ru": "Ловкий разведчик" },
-      "tier": 1,
-      "adv": { "en": "deceive, locate, sneak", "ru": "обмане, обнаружении, скрытности" },
-      "examples": { "en": "Fox, Mouse, Weasel", "ru": "Лиса, Мышь, Ласка" }
-    },
-    "household_friend": {
-      "name": { "en": "Household friend", "ru": "Домашний питомец" },
-      "tier": 1,
-      "adv": { "en": "climb, locate, protect", "ru": "взбирании, обнаружении, защите" },
-      "examples": { "en": "Cat, Dog, Rabbit", "ru": "Кот, Собака, Кролик" }
-    },
-    "nimble_grazer": {
-      "name": { "en": "Nimble grazer", "ru": "Проворное копытное" },
-      "tier": 1,
-      "adv": { "en": "leap, sneak, sprint", "ru": "прыжках, скрытности, галопе" },
-      "examples": { "en": "Deer, Gazelle, Goat", "ru": "Олень, Газель, Коза" }
-    },
-    "pack_predator": {
-      "name": { "en": "Pack predator", "ru": "Стайный хищник" },
-      "tier": 1,
-      "adv": { "en": "attack, sprint, track", "ru": "атаке, беге, выслеживании" },
-      "examples": { "en": "Coyote, Hyena, Wolf", "ru": "Койот, Гиена, Волк" }
-    },
-    "aquatic_scout": {
-      "name": { "en": "Aquatic scout", "ru": "Водный разведчик" },
-      "tier": 1,
-      "adv": { "en": "navigate, sneak, swim", "ru": "навигации, скрытности, плавании" },
-      "examples": { "en": "Eel, Fish, Octopus", "ru": "Угорь, Рыба, Осьминог" }
-    },
-    "stalking_arachnid": {
-      "name": { "en": "Stalking arachnid", "ru": "Выслеживающий арахнид" },
-      "tier": 1,
-      "adv": { "en": "attack, climb, sneak", "ru": "атаке, взбирании, скрытности" },
-      "examples": { "en": "Tarantula, Wolf Spider", "ru": "Тарантул, Паук-волк" }
-    },
     "armored_sentry": {
       "name": { "en": "Armored sentry", "ru": "Бронированное панцирное" },
       "tier": 2,
@@ -303,6 +267,42 @@
       "tier": 2,
       "adv": { "en": "deceive, locate, scare", "ru": "обмане, обнаружении, испуге" },
       "examples": { "en": "Hawk, Owl, Raven", "ru": "Ястреб, Сова, Ворон" }
+    },
+    "agile_scout": {
+      "name": { "en": "Agile scout", "ru": "Ловкий разведчик" },
+      "tier": 1,
+      "adv": { "en": "deceive, locate, sneak", "ru": "обмане, обнаружении, скрытности" },
+      "examples": { "en": "Fox, Mouse, Weasel", "ru": "Лиса, Мышь, Ласка" }
+    },
+    "household_friend": {
+      "name": { "en": "Household friend", "ru": "Домашний питомец" },
+      "tier": 1,
+      "adv": { "en": "climb, locate, protect", "ru": "взбирании, обнаружении, защите" },
+      "examples": { "en": "Cat, Dog, Rabbit", "ru": "Кот, Собака, Кролик" }
+    },
+    "nimble_grazer": {
+      "name": { "en": "Nimble grazer", "ru": "Проворное копытное" },
+      "tier": 1,
+      "adv": { "en": "leap, sneak, sprint", "ru": "прыжках, скрытности, галопе" },
+      "examples": { "en": "Deer, Gazelle, Goat", "ru": "Олень, Газель, Коза" }
+    },
+    "pack_predator": {
+      "name": { "en": "Pack predator", "ru": "Стайный хищник" },
+      "tier": 1,
+      "adv": { "en": "attack, sprint, track", "ru": "атаке, беге, выслеживании" },
+      "examples": { "en": "Coyote, Hyena, Wolf", "ru": "Койот, Гиена, Волк" }
+    },
+    "aquatic_scout": {
+      "name": { "en": "Aquatic scout", "ru": "Водный разведчик" },
+      "tier": 1,
+      "adv": { "en": "navigate, sneak, swim", "ru": "навигации, скрытности, плавании" },
+      "examples": { "en": "Eel, Fish, Octopus", "ru": "Угорь, Рыба, Осьминог" }
+    },
+    "stalking_arachnid": {
+      "name": { "en": "Stalking arachnid", "ru": "Выслеживающий арахнид" },
+      "tier": 1,
+      "adv": { "en": "attack, climb, sneak", "ru": "атаке, взбирании, скрытности" },
+      "examples": { "en": "Tarantula, Wolf Spider", "ru": "Тарантул, Паук-волк" }
     }
   },
   "stances": {
