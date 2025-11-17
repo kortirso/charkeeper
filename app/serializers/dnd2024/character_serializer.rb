@@ -38,7 +38,10 @@ module Dnd2024
     def decorator
       @decorator ||= {}
       @decorator.fetch(object.id) do |key|
-        @decorator[key] = object.decorator(simple: (context ? (context[:simple] || false) : false))
+        @decorator[key] = object.decorator(
+          simple: (context ? (context[:simple] || false) : false),
+          version: (context ? (context[:version] || nil) : nil)
+        )
       end
     end
   end
