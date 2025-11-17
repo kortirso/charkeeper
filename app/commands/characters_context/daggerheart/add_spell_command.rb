@@ -3,6 +3,10 @@
 module CharactersContext
   module Daggerheart
     class AddSpellCommand < BaseCommand
+      include Deps[
+        refresh_feats: 'services.characters_context.daggerheart.refresh_feats'
+      ]
+
       use_contract do
         config.messages.namespace = :daggerheart_character
 
@@ -28,6 +32,8 @@ module CharactersContext
           limit_refresh: input[:spell].limit_refresh,
           ready_to_use: input[:ready_to_use]
         )
+
+        refresh_feats.call(character: input[:character])
 
         { result: result }
       end

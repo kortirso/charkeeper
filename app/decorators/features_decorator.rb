@@ -16,7 +16,7 @@ class FeaturesDecorator
     end
   end
 
-  # rubocop: disable Metrics/AbcSize, Metrics/MethodLength, Metrics/PerceivedComplexity, Metrics/BlockLength
+  # rubocop: disable Metrics/AbcSize, Metrics/MethodLength, Metrics/PerceivedComplexity, Metrics/BlockLength, Metrics/CyclomaticComplexity
   def features
     @features ||=
       available_features.filter_map do |feature|
@@ -27,6 +27,7 @@ class FeaturesDecorator
             instance_variable_set(:"@#{method_name}", result) if result
           end
         end
+        next if feature.feat.kind == 'hidden'
 
         feature.feat.description_eval_variables.transform_values! do |value|
           eval_variable(feature.feat, value) || value
@@ -42,7 +43,7 @@ class FeaturesDecorator
           limit_refresh: feature.feat.limit_refresh,
           options: feature.feat.options,
           value: feature.value,
-          origin: feature.feat.origin,
+          origin: feature.feat.origin == 'parent' ? available_features.find { |f| f.feat.slug == feature.feat.origin_value }.feat.origin : feature.feat.origin, # rubocop: disable Layout/LineLength
           active: feature.active,
           continious: feature.feat.continious,
           ready_to_use: feature.ready_to_use,
@@ -50,7 +51,7 @@ class FeaturesDecorator
         }.compact
       end
   end
-  # rubocop: enable Metrics/AbcSize, Metrics/MethodLength, Metrics/PerceivedComplexity, Metrics/BlockLength
+  # rubocop: enable Metrics/AbcSize, Metrics/MethodLength, Metrics/PerceivedComplexity, Metrics/BlockLength, Metrics/CyclomaticComplexity
 
   private
 

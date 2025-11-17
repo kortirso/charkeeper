@@ -4,7 +4,7 @@ describe Frontend::Daggerheart::Characters::SpellsController do
   let!(:user_session) { create :user_session }
   let(:access_token) { Authkeeper::GenerateTokenService.new.call(user_session: user_session)[:result] }
   let!(:character) { create :character, :daggerheart }
-  let!(:user_character) { create :character, :daggerheart, user: user_session.user, data: { main_class: 'bard' } }
+  let!(:user_character) { create :character, :daggerheart, user: user_session.user }
   let!(:spell) { create :feat, :rally, origin: 7, origin_value: 'codex', conditions: { level: 1 } }
 
   describe 'GET#index' do
