@@ -72,6 +72,11 @@ module CharactersContext
           ::Daggerheart::Feat.where(origin: 'ancestry', id: data.heritage_features)
         ).or(
           ::Daggerheart::Feat.where(origin: 'domain_card', slug: data.selected_features.values.flatten.compact)
+        ).or(
+          ::Daggerheart::Feat.where(
+            origin: 'parent',
+            origin_value: character.feats.where(ready_to_use: true).joins(:feat).where(feats: { kind: 5 }).pluck('feats.slug')
+          )
         )
       end
     end
