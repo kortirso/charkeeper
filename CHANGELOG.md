@@ -13,6 +13,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Modified
 - dynamic loading for D&D 2024
+- beastforms order for DH characters
 
 ## [0.3.15] - 2025-11-09
 ### Added
