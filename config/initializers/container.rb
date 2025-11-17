@@ -15,6 +15,7 @@ module Charkeeper
       end
     end
 
+    register('markdown') { ActiveMarkdown.new }
     register('to_bool') { ToBool.new }
     register('roll') { Roll.new }
     register('monitoring.providers.rails') { Monitoring::Providers::Rails.new }

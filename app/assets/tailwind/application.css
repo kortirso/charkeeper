@@ -364,3 +364,11 @@ nav.pagy.nav a.gap {
 .homebrew-provider-nav.active {
   @apply bg-neutral-800 text-snow;
 }
+
+.feat-markdown {
+  @apply text-sm;
+}
+
+.feat-markdown strong {
+  font-weight: 600;
+}

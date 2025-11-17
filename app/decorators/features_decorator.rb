@@ -1,10 +1,11 @@
 # frozen_string_literal: true
 
 class FeaturesDecorator
-  attr_accessor :wrapped
+  attr_accessor :wrapped, :version
 
-  def initialize(obj)
+  def initialize(obj, version: nil)
     @wrapped = obj
+    @version = version
   end
 
   def method_missing(method, *_args)
@@ -58,7 +59,10 @@ class FeaturesDecorator
   end
 
   def update_feature_description(feature)
-    result = feature.feat.description[I18n.locale.to_s]
+    result = Charkeeper::Container.resolve('markdown').call(
+      value: feature.feat.description[I18n.locale.to_s],
+      version: version
+    )
     feature.feat.description_eval_variables.each { |key, value| result.gsub!("{{#{key}}}", value.to_s) }
     result
   end

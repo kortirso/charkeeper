@@ -118,7 +118,7 @@ module Dnd5
 
     attribute :data, Dnd5::CharacterData.to_type
 
-    def decorator(simple: false)
+    def decorator(simple: false, version: nil)
       base_decorator = ::Dnd5Character::BaseDecorator.new(self)
       base_features_decorator = ::FeaturesBaseDecorator.new(base_decorator)
       base_features_decorator.features unless simple
@@ -126,7 +126,7 @@ module Dnd5
       subrace_decorator = ::Dnd5Character::SubraceDecorateWrapper.new(race_decorator)
       class_decorator = ::Dnd5Character::ClassDecorateWrapper.new(subrace_decorator)
       subclass_decorator = ::Dnd5Character::SubclassDecorateWrapper.new(class_decorator)
-      features_decorator = ::FeaturesDecorator.new(subclass_decorator)
+      features_decorator = ::FeaturesDecorator.new(subclass_decorator, version: version)
       features_decorator.features unless simple
       ::Dnd5Character::OverallDecorator.new(features_decorator)
     end

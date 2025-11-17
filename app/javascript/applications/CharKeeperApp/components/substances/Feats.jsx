@@ -184,8 +184,8 @@ export const Feats = (props) => {
                   containerClassList={feature.kind === 'update_result' ? 'opacity-50' : ''}
                   title={<FeatureTitle feature={feature} onSpendEnergy={spendEnergy} onRestoreEnergy={restoreEnergy} />}
                 >
-                  <p
-                    class="text-sm"
+                  <div
+                    class="feat-markdown"
                     innerHTML={feature.description} // eslint-disable-line solid/no-innerhtml
                   />
                   <Switch fallback={<></>}>

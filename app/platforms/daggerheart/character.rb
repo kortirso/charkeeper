@@ -124,12 +124,12 @@ module Daggerheart
       default ? default.dig('name', I18n.locale.to_s) : ::Daggerheart::Homebrew::Community.find(data.community).name
     end
 
-    def decorator(simple: false)
+    def decorator(simple: false, version: nil)
       base_decorator = ::DaggerheartCharacter::BaseDecorator.new(self)
       base_features_decorator = ::FeaturesBaseDecorator.new(base_decorator)
       base_features_decorator.features unless simple
       stats_decorator = ::DaggerheartCharacter::StatsDecorator.new(base_features_decorator)
-      features_decorator = ::FeaturesDecorator.new(stats_decorator)
+      features_decorator = ::FeaturesDecorator.new(stats_decorator, version: version)
       features_decorator.features unless simple
       features_decorator
     end
