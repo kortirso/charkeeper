@@ -121,7 +121,7 @@
       "name": { "en": "Ribbet", "ru": "Риббет" },
       "features": [
         { "slug": "amphibious", "name": { "en": "Amphibious", "ru": "Амфибия" } },
-        { "slug": "long_tongue", "name": { "en": "Long Tongue", "ru": "Длинный Язык" } }
+        { "slug": "long_tongue", "name": { "en": "Long Tongue", "ru": "Длинный язык" } }
       ],
       "comment": "Антропоморфные жабы"
     },
@@ -232,6 +232,54 @@
     "dread": { "name": { "en": "Dread", "ru": "Ужас" } }
   },
   "beastforms": {
+    "massive_behemoth": {
+      "name": { "en": "Massive Behemoth", "ru": "Могучий гигант" },
+      "tier": 4,
+      "adv": { "en": "locate, protect, scare, sprint", "ru": "обнаружении, защите, устрашении, спринте" },
+      "examples": { "en": "Elephant, Mammoth, Rhinoceros", "ru": "Слон, Мамонт, Носорог" }
+    },
+    "terrible_lizard": {
+      "name": { "en": "Terrible Lizard", "ru": "Ужасный ящер" },
+      "tier": 4,
+      "adv": { "en": "attack, deceive, scare, track", "ru": "атаке, обмане, устрашении, выслеживании" },
+      "examples": { "en": "Brachiosaurus, Tyrannosaurus", "ru": "Брахиозавр, Тираннозавр" }
+    },
+    "mythic_aerial_hunter": {
+      "name": { "en": "Mythic Aerial Hunter", "ru": "Мифический крылатый хищник" },
+      "tier": 4,
+      "adv": { "en": "attack, deceive, locate, navigate", "ru": "атаке, обмане, обнаружении, навигации" },
+      "examples": { "en": "Dragon, Pterodactyl, Roc, Wyvern", "ru": "Дракон, Птеродактиль, Птица Рух, Виверна" }
+    },
+    "epic_aquatic_beast": {
+      "name": { "en": "Epic Aquatic Beast", "ru": "Эпический водный зверь" },
+      "tier": 4,
+      "adv": { "en": "locate, protect, scare, track", "ru": "обнаружении, защите, устрашении, выслеживании" },
+      "examples": { "en": "Giant Squid, Whale", "ru": "Гигантский кальмар, Кит" }
+    },
+    "great_predator": {
+      "name": { "en": "Great Predator", "ru": "Великий хищник" },
+      "tier": 3,
+      "adv": { "en": "attack, sneak, sprint", "ru": "атаке, скрытности, спринте" },
+      "examples": { "en": "Dire Wolf, Velociraptor, Sabertooth Tiger", "ru": "Ужасный волк, Велоцираптор, Саблезубый тигр" }
+    },
+    "mighty_lizard": {
+      "name": { "en": "Mighty Lizard", "ru": "Крупный ящер" },
+      "tier": 3,
+      "adv": { "en": "attack, sneak, track", "ru": "атаке, скрытности, выслеживании" },
+      "examples": { "en": "Alligator, Crocodile, Gila Monster", "ru": "Аллигатор, Крокодил, Аризонский ядозуб" }
+    },
+    "great_winged_beast": {
+      "name": { "en": "Great Winged Beast", "ru": "Великий крылатый зверь" },
+      "tier": 3,
+      "adv": { "en": "deceive, distract, locate", "ru": "обмане, отвлечении, обнаружении" },
+      "examples": { "en": "Giant Eagle, Falcon", "ru": "Гигантский орёл, Сокол" }
+    },
+    "aquatic_predator": {
+      "name": { "en": "Aquatic Predator", "ru": "Водный хищник" },
+      "tier": 3,
+      "adv": { "en": "attack, swim, track", "ru": "атаке, плавании, выслеживании" },
+      "examples": { "en": "Dolphin, Orca, Shark", "ru": "Дельфин, Косатка, Акула" }
+    },
     "armored_sentry": {
       "name": { "en": "Armored sentry", "ru": "Бронированное панцирное" },
       "tier": 2,
@@ -254,7 +302,7 @@
       "name": { "en": "Striking serpent", "ru": "Ужасающий змей" },
       "tier": 2,
       "adv": { "en": "climb, deceive, sprint", "ru": "взбирании, обмане, беге" },
-      "examples": { "en": "Cobra, Rattlesnake, Viper", "ru": "Кобра, Гремучая Змея, Гадюка" }
+      "examples": { "en": "Cobra, Rattlesnake, Viper", "ru": "Кобра, Гремучая змея, Гадюка" }
     },
     "pouncing_predator": {
       "name": { "en": "Pouncing predator", "ru": "Свирепый хищник" },

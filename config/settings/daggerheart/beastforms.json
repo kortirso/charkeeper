@@ -70,5 +70,53 @@
     "traits": { "fin": 1 },
     "evasion": 3,
     "attack": { "trait": "fin", "range": "melee", "damage": "d4", "damage_bonus": 2, "damage_type": "physical" }
+  },
+  "aquatic_predator": {
+    "tier": 3,
+    "traits": { "agi": 2 },
+    "evasion": 4,
+    "attack": { "trait": "agi", "range": "melee", "damage": "d10", "damage_bonus": 6, "damage_type": "physical" }
+  },
+  "great_winged_beast": {
+    "tier": 3,
+    "traits": { "fin": 2 },
+    "evasion": 3,
+    "attack": { "trait": "fin", "range": "melee", "damage": "d8", "damage_bonus": 6, "damage_type": "physical" }
+  },
+  "mighty_lizard": {
+    "tier": 3,
+    "traits": { "ins": 2 },
+    "evasion": 1,
+    "attack": { "trait": "ins", "range": "melee", "damage": "d10", "damage_bonus": 7, "damage_type": "physical" }
+  },
+  "great_predator": {
+    "tier": 3,
+    "traits": { "str": 2 },
+    "evasion": 2,
+    "attack": { "trait": "str", "range": "melee", "damage": "d12", "damage_bonus": 8, "damage_type": "physical" }
+  },
+  "epic_aquatic_beast": {
+    "tier": 4,
+    "traits": { "agi": 3 },
+    "evasion": 3,
+    "attack": { "trait": "agi", "range": "melee", "damage": "d10", "damage_bonus": 10, "damage_type": "physical" }
+  },
+  "mythic_aerial_hunter": {
+    "tier": 4,
+    "traits": { "fin": 3 },
+    "evasion": 4,
+    "attack": { "trait": "fin", "range": "melee", "damage": "d10", "damage_bonus": 11, "damage_type": "physical" }
+  },
+  "terrible_lizard": {
+    "tier": 4,
+    "traits": { "str": 3 },
+    "evasion": 2,
+    "attack": { "trait": "str", "range": "melee", "damage": "d12", "damage_bonus": 10, "damage_type": "physical" }
+  },
+  "massive_behemoth": {
+    "tier": 4,
+    "traits": { "str": 3 },
+    "evasion": 1,
+    "attack": { "trait": "str", "range": "melee", "damage": "d12", "damage_bonus": 12, "damage_type": "physical" }
   }
 }
