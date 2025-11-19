@@ -73,7 +73,7 @@ export const SettingsTab = () => {
             {t('pages.settingsPage.logout')}
           </p>
         </div>
-        <p class="py-3 px-4 dark:text-snow">{t('pages.settingsPage.version')} 0.3.15, 2025.11.09</p>
+        <p class="py-3 px-4 dark:text-snow">{t('pages.settingsPage.version')} 0.3.16, 2025.11.19</p>
       </div>
     </>
   );
