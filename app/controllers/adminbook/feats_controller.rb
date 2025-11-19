@@ -41,11 +41,12 @@ module Adminbook
         when 'daggerheart' then ::Daggerheart::Feat
         when 'dnd5' then ::Dnd5::Feat
         when 'dnd2024' then ::Dnd2024::Feat
+        when 'dc20' then ::Dc20::Feat
         end
     end
 
     def transform_params(updating_params)
-      %w[bonus_eval_variables description_eval_variables eval_variables options conditions].each do |attribute|
+      %w[bonus_eval_variables description_eval_variables eval_variables options conditions price].each do |attribute|
         updating_params[attribute] = JSON.parse(updating_params[attribute].gsub(' =>', ':').gsub('nil', 'null'))
       end
       updating_params['exclude'] = updating_params['exclude'].split(',')

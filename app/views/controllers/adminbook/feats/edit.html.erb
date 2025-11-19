@@ -63,5 +63,13 @@
     <div><%= form.label 'Переменные для расчетов', class: 'form-label' %></div>
     <div><%= form.textarea :eval_variables, class: 'form-text text-sm', required: true, size: '100x7' %></div>
   </div>
+  <div class="form-field mb-2">
+    <div><%= form.label 'Цена', class: 'form-label' %></div>
+    <div><%= form.textarea :price, class: 'form-text text-sm', required: true, size: '100x7' %></div>
+  </div>
+  <div class="form-field mb-2">
+    <div><%= form.label 'Активируемое', class: 'form-label' %></div>
+    <div><%= form.checkbox :continious, class: 'form-text text-sm' %></div>
+  </div>
   <%= form.submit 'Update', class: 'btn btn-primary' %>
 <% end %>
