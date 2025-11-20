@@ -17,6 +17,7 @@ module CharactersContext
 
         params do
           required(:character).filled(type?: ::Daggerheart::Character)
+          optional(:level).filled(:integer)
           optional(:classes).hash
           optional(:domains).hash
           optional(:subclasses).hash
@@ -39,13 +40,7 @@ module CharactersContext
             required(:bags).filled(:integer)
             required(:chests).filled(:integer)
           end
-          optional(:leveling).hash do
-            required(:health).filled(:integer)
-            required(:stress).filled(:integer)
-            required(:evasion).filled(:integer)
-            required(:proficiency).filled(:integer)
-            required(:domain_cards).filled(:integer)
-          end
+          optional(:leveling).hash
           optional(:name).filled(:string, max_size?: 50)
           optional(:avatar_file).hash do
             required(:file_content).filled(:string)
@@ -80,8 +75,7 @@ module CharactersContext
       private
 
       def do_prepare(input)
-        input[:level] = input[:classes].values.sum(&:to_i) if input[:classes]
-        %i[classes traits energy].each do |key|
+        %i[traits energy].each do |key|
           input[key]&.transform_values!(&:to_i)
         end
       end
@@ -93,7 +87,7 @@ module CharactersContext
         input[:character].assign_attributes(input.slice(:name))
         input[:character].save!
 
-        if %i[classes subclasses subclasses_mastery transformation beastform selected_features].intersect?(input.keys)
+        if %i[level classes subclasses subclasses_mastery transformation beastform selected_features].intersect?(input.keys)
           refresh_feats.call(character: input[:character])
         end
 

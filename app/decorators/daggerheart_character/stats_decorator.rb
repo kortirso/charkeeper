@@ -28,7 +28,8 @@ module DaggerheartCharacter
             *bonuses.pluck('traits'),
             *static_feat_bonuses.pluck('traits'),
             *dynamic_feat_bonuses.pluck('traits'),
-            beastform_config['traits']
+            beastform_config['traits'],
+            leveling_traits
           ].compact
         ) { |_key, oldval, newval| newval + oldval }
     end
@@ -128,6 +129,10 @@ module DaggerheartCharacter
     end
 
     private
+
+    def leveling_traits
+      leveling['selected_traits'].values.flatten.tally
+    end
 
     def beastform_attack # rubocop: disable Metrics/AbcSize
       beast_attack = beastform_config['attack']
