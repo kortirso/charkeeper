@@ -86,6 +86,10 @@ module Dnd5Character
 
     def beastform; end
 
+    def speeds
+      {}
+    end
+
     private
 
     def calc_ability_modifier(value)
