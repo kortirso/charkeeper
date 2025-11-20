@@ -84,8 +84,7 @@ FactoryBot.define do
           evasion: 10,
           health_max: 5,
           stress_max: 6,
-          hope_max: 6,
-          leveling: { evasion: 1, health: 1 }
+          hope_max: 6
         }
       }
     end

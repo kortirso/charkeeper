@@ -200,13 +200,7 @@
       "total": "Total coins"
     },
     "leveling": {
-      "level": "Class level",
       "mastery": "Subclass mastery",
-      "health": "Permanent Hit Point slots",
-      "stress": "Permanent Stress slots",
-      "evasion": "Permanent +1 bonus to Evasion",
-      "proficiency": "Permanent +1 bonus to Proficiency",
-      "domainCards": "Additional domain card",
       "domain": "Domain",
       "subclass": "Subclass"
     },
