@@ -15,7 +15,14 @@
     }
   },
   "classes": {
-    "commander": { "name": { "en": "Commander", "ru": "Командир" } }
+    "commander": { "name": { "en": "Commander", "ru": "Командир" } },
+    "spellblade": { "name": { "en": "Spellblade", "ru": "Маг клинка" } },
+    "wizard": { "name": { "en": "Wizard", "ru": "Волшебник" } }
+  },
+  "spell_lists": {
+    "arcane": { "name": { "en": "Arcane", "ru": "Арканный" } },
+    "divine": { "name": { "en": "Divine", "ru": "Божественный" } },
+    "primal": { "name": { "en": "Primal", "ru": "Природный" } }
   },
   "abilities": {
     "mig": { "name": { "en": "Might", "ru": "Мощь" } },

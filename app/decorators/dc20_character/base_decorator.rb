@@ -6,7 +6,7 @@ module Dc20Character
     delegate :abilities, :main_class, :level, :combat_expertise, :health, :classes, :attribute_points, :ancestries, :skill_levels,
              :skill_expertise, :skill_points, :skill_expertise_points, :trade_points, :trade_expertise_points, :language_points,
              :trade_levels, :trade_expertise, :trade_knowledge, :language_levels, :conditions, :stamina_points, :path_points,
-             :paths, :mana_points, :maneuvers, :rest_points, to: :data
+             :paths, :mana_points, :maneuvers, :rest_points, :path, :spell_list, to: :data
 
     def parent = __getobj__
 
@@ -20,6 +20,10 @@ module Dc20Character
 
     def combat_mastery
       @combat_mastery ||= (level / 2.0).round
+    end
+
+    def mana_spend_limit
+      @mana_spend_limit ||= (level / 2.0).round
     end
 
     def attribute_saves
@@ -106,9 +110,9 @@ module Dc20Character
         .pick('items.info')
     end
 
-    def maneuver_points
-      0
-    end
+    def maneuver_points = 0
+    def cantrips = 0
+    def spells = 0
 
     def grit_points
       @grit_points ||= data.grit_points.merge('max' => modified_abilities['cha'] + 2)

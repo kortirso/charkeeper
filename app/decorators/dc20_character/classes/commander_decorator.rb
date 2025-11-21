@@ -13,7 +13,7 @@ module Dc20Character
       end
 
       def stamina_points
-        @stamina_points ||= __getobj__.stamina_points.merge('max' => ((class_level / 3) + 1))
+        @stamina_points ||= __getobj__.stamina_points.merge('max' => ((level / 3) + 1))
       end
 
       def rest_points
@@ -26,17 +26,13 @@ module Dc20Character
 
       private
 
-      def class_level
-        @class_level ||= classes['commander']
-      end
-
       def max_health
-        @max_health ||= 6 + (3 * class_level) + modified_abilities['mig']
+        @max_health ||= 6 + (3 * level) + modified_abilities['mig']
       end
 
       def class_maneuver_points
-        return 6 if class_level >= 8
-        return 5 if class_level >= 5
+        return 6 if level >= 8
+        return 5 if level >= 5
 
         4
       end

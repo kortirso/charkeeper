@@ -3,7 +3,7 @@ import * as i18n from '@solid-primitives/i18n';
 import { createWindowSize } from '@solid-primitives/resize-observer';
 
 import {
-  Dc20Abilities, Dc20Skills, Dc20Saves, Dc20CombatStatic, Dc20Leveling, Dc20Resources
+  Dc20Abilities, Dc20Skills, Dc20Saves, Dc20CombatStatic, Dc20Leveling, Dc20Resources, Dc20Spells
 } from '../../../pages';
 import {
   CharacterNavigation, Notes, Avatar, ContentWrapper, createDiceRoll, Conditions, Equipment, Combat, Feats
@@ -51,13 +51,19 @@ export const Dc20 = (props) => {
     return result;
   });
 
+  const characterTabs = createMemo(() => {
+    const result = ['combat', 'equipment'];
+    if (character().mana_points.max > 0) result.push('spells');
+    return result.concat(['classLevels', 'notes', 'avatar']);
+  });
+
   const mobileView = createMemo(() => {
     if (size.width >= 1152) return <></>;
 
     return (
       <>
         <CharacterNavigation
-          tabsList={['abilities', 'combat', 'equipment', 'classLevels', 'notes', 'avatar']}
+          tabsList={['abilities'].concat(characterTabs())}
           activeTab={activeMobileTab()}
           setActiveTab={setActiveMobileTab}
           currentGuideStep={character().guide_step}
@@ -131,6 +137,11 @@ export const Dc20 = (props) => {
                 helpMessage={TRANSLATION[locale()]['levelingHelpMessage']}
               />
             </Match>
+            <Match when={activeMobileTab() === 'spells'}>
+              <Dc20Spells
+                character={character()}
+              />
+            </Match>
             <Match when={activeMobileTab() === 'notes'}>
               <Notes />
             </Match>
@@ -178,7 +189,7 @@ export const Dc20 = (props) => {
     return (
       <>
         <CharacterNavigation
-          tabsList={['combat', 'equipment', 'classLevels', 'notes', 'avatar']}
+          tabsList={characterTabs()}
           activeTab={activeTab()}
           setActiveTab={setActiveTab}
           currentGuideStep={character().guide_step}
@@ -228,6 +239,11 @@ export const Dc20 = (props) => {
                 onReloadCharacter={props.onReloadCharacter}
                 currentGuideStep={character().guide_step}
                 helpMessage={TRANSLATION[locale()]['levelingHelpMessage']}
+              />
+            </Match>
+            <Match when={activeTab() === 'spells'}>
+              <Dc20Spells
+                character={character()}
               />
             </Match>
             <Match when={activeTab() === 'notes'}>

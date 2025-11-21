@@ -24,6 +24,8 @@ module Dc20
     attribute :conditions, array: true, default: []
     attribute :paths, array: true, default: { 'martial' => 0, 'spellcaster' => 0 }
     attribute :maneuvers, array: true, default: []
+    attribute :path, array: true, default: []
+    attribute :spell_list, :string
     # доступные очки для распределения
     attribute :guide_step, :integer # этап помощи при создании персонажа
     attribute :attribute_points, :integer, default: 12
