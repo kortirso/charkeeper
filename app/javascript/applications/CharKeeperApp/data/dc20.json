@@ -3,14 +3,14 @@
     "human": {
       "name": { "en": "Human", "ru": "Человек" },
       "feats": {
-        "attribute_increase": { "name": { "en": "Attribute increase", "ru": "Увеличение атрибута" }, "price": 2 },
-        "skill_expertise": { "name": { "en": "Skill expertise", "ru": "Компетентность в навыке" }, "price": 2 },
-        "human_resolve": { "name": { "en": "Human resolve", "ru": "Человеческое упорство" }, "price": 1 },
+        "attribute_increase": { "name": { "en": "Attribute Increase", "ru": "Увеличение атрибута" }, "price": 2 },
+        "skill_expertise": { "name": { "en": "Skill Expertise", "ru": "Компетентность в навыке" }, "price": 2 },
+        "human_resolve": { "name": { "en": "Human Resolve", "ru": "Человеческое упорство" }, "price": 1 },
         "undying": { "name": { "en": "Undying", "ru": "Неумирающий" }, "price": 0 },
-        "trade_expertise": { "name": { "en": "Trade expertise", "ru": "Компетентность в ремесле" }, "price": 1 },
-        "human_determination": { "name": { "en": "Human determination", "ru": "Человеческая решительность" }, "price": 1 },
+        "trade_expertise": { "name": { "en": "Trade Expertise", "ru": "Компетентность в ремесле" }, "price": 1 },
+        "human_determination": { "name": { "en": "Human Determination", "ru": "Человеческая решительность" }, "price": 1 },
         "unbreakable": { "name": { "en": "Unbreakable", "ru": "Несломимый" }, "price": 1 },
-        "attribute_decrease": { "name": { "en": "Attribute decrease", "ru": "Уменьшение атрибута" }, "price": -1 }
+        "attribute_decrease": { "name": { "en": "Attribute Decrease", "ru": "Уменьшение атрибута" }, "price": -1 }
       }
     }
   },
@@ -32,10 +32,10 @@
   },
   "combatExpertise": {
     "weapon": { "name": { "en": "Weapon", "ru": "Оружие" } },
-    "light_armor": { "name": { "en": "Light armor", "ru": "Лёгкая броня" } },
-    "heavy_armor": { "name": { "en": "Heavy armor", "ru": "Тяжёлая броня" } },
-    "light_shield": { "name": { "en": "Light shield", "ru": "Лёгкие щиты" } },
-    "heavy_shield": { "name": { "en": "Heavy shield", "ru": "Тяжёлые щиты" } }
+    "light_armor": { "name": { "en": "Light Armor", "ru": "Лёгкая броня" } },
+    "heavy_armor": { "name": { "en": "Heavy Armor", "ru": "Тяжёлая броня" } },
+    "light_shield": { "name": { "en": "Light Shield", "ru": "Лёгкие щиты" } },
+    "heavy_shield": { "name": { "en": "Heavy Shield", "ru": "Тяжёлые щиты" } }
   },
   "skills": {
     "acrobatics": { "name": { "en": "Acrobatics", "ru": "Акробатика" } },
@@ -155,6 +155,76 @@
     "taunt": {
       "name": { "en": "Taunt", "ru": "Спровоцировать" },
       "type": "defense"
+    }
+  },
+  "talents": {
+    "attribute_increase": {
+      "name": { "en": "Attribute Increase", "ru": "Повышение атрибутов" },
+      "multiple": true
+    },
+    "skill_or_trade_increase": {
+      "name": { "en": "Skill or Trade Increase", "ru": "Повышение навыков или ремёсел" },
+      "multiple": true
+    },
+    "martial_expansion": {
+      "name": { "en": "Martial Expansion", "ru": "Боевое посвящение" },
+      "multiple": false
+    },
+    "spellcasting_expansion": {
+      "name": { "en": "Spellcasting Expansion", "ru": "Магическое посвящение" },
+      "multiple": false
+    },
+    "seize_momentum": {
+      "name": { "en": "Seize Momentum", "ru": "Быстрое реагирование" },
+      "multiple": false,
+      "required_features": ["commander_call", "commanding_aura"],
+      "level": 3
+    },
+    "coordinated_command": {
+      "name": { "en": "Coordinated Command", "ru": "Координирующий приказ" },
+      "multiple": false,
+      "required_features": ["commander_call"],
+      "level": 3
+    },
+    "expanded_disciplines": {
+      "name": { "en": "Expanded Disciplines", "ru": "Расширение дисциплин" },
+      "multiple": false,
+      "required_features": ["spellblade_disciplines"],
+      "level": 3
+    },
+    "sling_blade": {
+      "name": { "en": "Sling-Blade", "ru": "Хлестающий клинок" },
+      "multiple": false,
+      "required_features": ["bound_weapon", "spellstrike"],
+      "level": 3
+    },
+    "adaptive_bond": {
+      "name": { "en": "Adaptive Bond", "ru": "Изменчивая связь" },
+      "multiple": false,
+      "required_features": ["bound_weapon"],
+      "level": 3
+    },
+    "expanded_spell_school": {
+      "name": { "en": "Expanded Spell School", "ru": "Расширение школ заклинаний" },
+      "multiple": false,
+      "required_features": ["spell_school_initiate"],
+      "level": 3
+    },
+    "crowned_sigil": {
+      "name": { "en": "Crowned Sigil", "ru": "Переносной сигил" },
+      "multiple": false,
+      "required_features": ["arcane_sigil_feature"],
+      "level": 3
+    },
+    "overly_prepared_spell": {
+      "name": { "en": "Overly Prepared Spell", "ru": "Сверхподготовленное заклинание" },
+      "multiple": false,
+      "required_features": ["prepared_spell", "spell_school_initiate"],
+      "level": 3
+    },
+    "novice_multiclass": {
+      "name": { "en": "Novice Multiclass", "ru": "Новичок мультикласса" },
+      "multiple": false
     }
   }
 }

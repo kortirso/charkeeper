@@ -25,9 +25,11 @@ module Dc20
     attribute :paths, array: true, default: { 'martial' => 0, 'spellcaster' => 0 }
     attribute :maneuvers, array: true, default: []
     attribute :path, array: true, default: []
-    attribute :spell_list, :string
+    attribute :spell_list, array: true, default: [] # доступные списки заклинаний
+    attribute :talents, array: true, default: [] # список выбранных талантов
     # доступные очки для распределения
     attribute :guide_step, :integer # этап помощи при создании персонажа
+    attribute :ancestry_points, :integer, default: 0
     attribute :attribute_points, :integer, default: 12
     attribute :skill_points, :integer, default: 5
     attribute :skill_expertise_points, :integer, default: 0

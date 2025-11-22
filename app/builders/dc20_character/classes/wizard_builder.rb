@@ -9,7 +9,7 @@ module Dc20Character
         result[:combat_expertise] = COMBAT_EXPERTISE
         result[:health] = { current: 8, temp: 0 }
         result[:maneuvers] = []
-        result[:spell_list] = 'arcane'
+        result[:spell_list] = ['arcane']
         result[:path] = ['spellcaster']
 
         result
