@@ -34,12 +34,13 @@ module CharactersContext
           optional(:health_marked).filled(:integer)
           optional(:stress_marked).filled(:integer)
           optional(:hope_marked).filled(:integer)
-          optional(:gold).hash do
-            required(:coins).filled(:integer) # TODO: если значение 10, то увеличивать на 1 нижестоящий
+          optional(:gold).hash do # TODO: deprecated
+            required(:coins).filled(:integer)
             required(:handfuls).filled(:integer)
             required(:bags).filled(:integer)
             required(:chests).filled(:integer)
           end
+          optional(:money).filled(:integer)
           optional(:leveling).hash
           optional(:name).filled(:string, max_size?: 50)
           optional(:avatar_file).hash do
@@ -74,14 +75,26 @@ module CharactersContext
 
       private
 
-      def do_prepare(input)
+      def do_prepare(input) # rubocop: disable Metrics/AbcSize
         %i[traits energy].each do |key|
           input[key]&.transform_values!(&:to_i)
         end
+
+        if input.key?(:money)
+          chests, modulus = input[:money].divmod(1_000)
+          bags, modulus = modulus.divmod(100)
+          handfuls, coins = modulus.divmod(10)
+          input[:gold] = { chests: chests, bags: bags, handfuls: handfuls, coins: coins }
+        elsif input.key?(:gold)
+          input[:money] =
+            (input.dig(:gold, :chests) * 1_000) +
+            (input.dig(:gold, :bags) * 100) +
+            (input.dig(:gold, :handfuls) * 10) +
+            input.dig(:gold, :coins)
+        end
       end
 
-      # rubocop: disable Metrics/AbcSize
-      def do_persist(input)
+      def do_persist(input) # rubocop: disable Metrics/AbcSize
         input[:character].data =
           input[:character].data.attributes.merge(input.except(:character, :avatar_file, :avatar_url, :name).stringify_keys)
         input[:character].assign_attributes(input.slice(:name))
@@ -96,7 +109,6 @@ module CharactersContext
 
         { result: input[:character] }
       end
-      # rubocop: enable Metrics/AbcSize
     end
   end
 end

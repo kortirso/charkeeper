@@ -343,7 +343,6 @@ export const DaggerheartLeveling = (props) => {
             </Show>
           </Show>
           <div class="flex mt-2 gap-x-4">
-            {/*<Button outlined textable classList="flex-1" onClick={resetLeveling}>{TRANSLATION[locale()]['reset']}</Button>*/}
             <Button default textable classList="flex-1" onClick={updateClasses}>{TRANSLATION[locale()]['save']}</Button>
           </div>
         </div>
