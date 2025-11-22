@@ -192,18 +192,6 @@
       "gain_double_hope": "Gain 2 Hope",
       "makeRolls": "Make auto rolls"
     },
-    "gold": {
-      "coins": "Coins",
-      "handfuls": "Handfuls",
-      "bags": "Bags",
-      "chests": "Chests",
-      "total": "Total coins"
-    },
-    "leveling": {
-      "mastery": "Subclass mastery",
-      "domain": "Domain",
-      "subclass": "Subclass"
-    },
     "domainCards": {
       "limit": "Cards limit",
       "spellcastTraits": "Spellcast traits",
@@ -335,9 +323,6 @@
     "longRest": "Long rest",
     "sessionRest": "Session rest"
   },
-
-
-
   "create": "Create",
   "back": "Back",
   "save": "Save",

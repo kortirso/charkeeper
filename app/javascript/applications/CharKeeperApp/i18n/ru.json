@@ -192,18 +192,6 @@
       "gain_double_hope": "Получить 2 Надежды",
       "makeRolls": "Автоматические броски"
     },
-    "gold": {
-      "coins": "Монеты",
-      "handfuls": "Горсти",
-      "bags": "Мешочки",
-      "chests": "Сундучки",
-      "total": "Всего монет"
-    },
-    "leveling": {
-      "mastery": "Мастерство подкласса",
-      "domain": "Домен",
-      "subclass": "Подкласс"
-    },
     "domainCards": {
       "limit": "Лимит карт",
       "spellcastTraits": "Способности",
@@ -335,9 +323,6 @@
     "longRest": "Длинный отдых",
     "sessionRest": "Между сессиями"
   },
-
-
-
   "create": "Создать",
   "back": "Назад",
   "save": "Сохранить",
