@@ -1,16 +1,17 @@
-import { createSignal, createEffect, Show, For } from 'solid-js';
+import { createSignal, createEffect, createMemo, Show, For } from 'solid-js';
 
-import { Button, ErrorWrapper, GuideWrapper, Toggle, Checkbox } from '../../../../components';
+import { Button, ErrorWrapper, GuideWrapper, Toggle, Checkbox, Select } from '../../../../components';
 import config from '../../../../data/dc20.json';
 import { useAppState, useAppLocale } from '../../../../context';
 import { Arrow, PlusSmall } from '../../../../assets';
 import { updateCharacterRequest } from '../../../../requests/updateCharacterRequest';
+import { translate } from '../../../../helpers';
 
 const TRANSLATION = {
   en: {
     currentLevel: 'Current level',
     paths: 'Character paths',
-    existingPoints: 'Existing path points',
+    existingPoints: 'Available path points',
     martialPathLevel: 'Martial path level',
     spellcasterPathLevel: 'Spellcaster path level',
     title: 'You gain additional benefits from a Talent Path: Martial Path or Spellcaster Path',
@@ -31,7 +32,12 @@ const TRANSLATION = {
     defense: {
       title: 'Defense maneuvers',
       description: 'Defense Maneuvers enable you to avoid or mitigate taking damage by blocking, deflecting, or dodging Attacks.'
-    }
+    },
+    talents: 'Talents',
+    existingTalentPoints: 'Available talents',
+    selectedTalents: 'Selected talents',
+    saveButton: 'Save',
+    selectTalent: 'Select new talent'
   },
   ru: {
     currentLevel: 'Текущий уровень',
@@ -57,7 +63,12 @@ const TRANSLATION = {
     defense: {
       title: 'Приёмы защиты',
       description: 'Позволяют вам снижать получаемый урон или избегать его, используя блокирование, парирование и уклонение.'
-    }
+    },
+    talents: 'Таланты',
+    existingTalentPoints: 'Доступно талантов',
+    selectedTalents: 'Выбранные таланты',
+    saveButton: 'Сохранить',
+    selectTalent: 'Выберите новый талант'
   }
 }
 
@@ -65,6 +76,7 @@ export const Dc20Leveling = (props) => {
   const character = () => props.character;
 
   const [lastActiveCharacterId, setLastActiveCharacterId] = createSignal(undefined);
+  const [selectedTalent, setSelectedTalent] = createSignal(null);
 
   const [appState] = useAppState();
   const [locale] = useAppLocale();
@@ -73,6 +85,19 @@ export const Dc20Leveling = (props) => {
     if (lastActiveCharacterId() === character().id) return;
 
     setLastActiveCharacterId(character().id);
+  });
+
+  const availableTalents = createMemo(() => {
+    const selectedFeatures = character().features.map(({ slug }) => slug);
+
+    const result = Object.entries(config.talents).filter(([slug, values]) => {
+      if (values.level && values.level > character().level) return false;
+      if (values.required_features && values.required_features.filter((item) => selectedFeatures.includes(item)).length !== values.required_features.length) return false;
+      if (!values.multiple && character().talents.includes(slug)) return false
+
+      return true;
+    });
+    return Object.fromEntries(result);
   });
 
   const changeManeuver = (value) => {
@@ -170,6 +195,35 @@ export const Dc20Leveling = (props) => {
               </div>
             }
           </For>
+        </Toggle>
+        <Toggle
+          title={
+            <div class="flex justify-between">
+              <p>{TRANSLATION[locale()]['talents']}</p>
+              <p>{TRANSLATION[locale()]['existingTalentPoints']} - {character().talent_points - character().talents.length}</p>
+            </div>
+          }
+        >
+          <Show when={character().talents.length > 0}>
+            <p class="text-sm mb-2">{TRANSLATION[locale()]['selectedTalents']}</p>
+            <For each={character().talents}>
+              {(talent) =>
+                <p class="text-lg">{config.talents[talent].name[locale()]}</p>
+              }
+            </For>
+          </Show>
+          <Show when={character().talent_points > character().talents.length}>
+            <Select
+              labelText={TRANSLATION[locale()]['selectTalent']}
+              containerClassList="flex-1 mt-4"
+              items={translate(availableTalents(), locale())}
+              selectedValue={selectedTalent()}
+              onSelect={setSelectedTalent}
+            />
+            <Show when={selectedTalent()}>
+              <Button default textable size="small" classList="inline-block mt-2" onClick={() => updateCharacter({ talents: [...character().talents, selectedTalent()] })}>{TRANSLATION[locale()]['saveButton']}</Button>
+            </Show>
+          </Show>
         </Toggle>
       </GuideWrapper>
     </ErrorWrapper>

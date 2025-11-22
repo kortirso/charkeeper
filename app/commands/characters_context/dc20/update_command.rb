@@ -8,6 +8,18 @@ module CharactersContext
         attach_avatar_by_file: 'commands.image_processing.attach_avatar_by_file'
       ]
 
+      LEVELING = {
+        2 => { 'talent_points' => 1, 'path_points' => 1 },
+        3 => { 'attribute_points' => 1, 'skill_points' => 1, 'trade_points' => 1, 'subclass_feature_points' => 1 },
+        4 => { 'ancestry_points' => 2, 'talent_points' => 1, 'path_points' => 1 },
+        5 => { 'attribute_points' => 1, 'skill_points' => 2, 'trade_points' => 1 },
+        6 => { 'skill_points' => 1, 'subclass_feature_points' => 1 },
+        7 => { 'ancestry_points' => 2, 'talent_points' => 1, 'path_points' => 1 },
+        8 => { 'attribute_points' => 1, 'skill_points' => 1, 'trade_points' => 1 },
+        9 => {},
+        10 => { 'attribute_points' => 1, 'skill_points' => 2, 'trade_points' => 1, 'talent_points' => 1, 'path_points' => 1 }
+      }.freeze
+
       # rubocop: disable Metrics/BlockLength
       use_contract do
         config.messages.namespace = :dc20_character
@@ -58,6 +70,7 @@ module CharactersContext
             required(:current).filled(:integer)
           end
           optional(:maneuvers).value(:array)
+          optional(:talents).maybe(:array).each(:string)
         end
 
         rule(:avatar_file, :avatar_url).validate(:check_only_one_present)
@@ -123,13 +136,20 @@ module CharactersContext
         input[:character].assign_attributes(input.slice(:name))
         input[:character].save!
 
-        Dc20Character::ClassUpdater.new.call(character: input[:character]) if input.key?(:level)
+        refresh_points(input[:character]) if input.key?(:level)
         refresh_maneuver_feats(input[:character]) if input.key?(:maneuvers)
+        refresh_talents(input) if input.key?(:talents)
 
         attach_avatar_by_file.call({ character: input[:character], file: input[:avatar_file] }) if input[:avatar_file]
         attach_avatar_by_url.call({ character: input[:character], url: input[:avatar_url] }) if input[:avatar_url]
 
         { result: input[:character] }
+      end
+
+      def refresh_points(character)
+        character.data =
+          character.data.attributes.merge(LEVELING[character.data.level]) { |_key, oldval, newval| newval + oldval }
+        character.save
       end
 
       def refresh_maneuver_feats(character)
@@ -142,6 +162,17 @@ module CharactersContext
           }
         end
         ::Character::Feat.upsert_all(feats_for_adding) if feats_for_adding.any?
+      end
+
+      def refresh_talents(input)
+        case input[:talents].last
+        when 'attribute_increase' then input[:character].data.attribute_points += 1
+        when 'skill_or_trade_increase' then input[:character].data.skill_points += 3
+        when 'martial_expansion'
+          input[:character].data.combat_expertise = %w[weapon light_armor heavy_armor light_shield heavy_shield]
+        end
+
+        input[:character].save
       end
     end
   end

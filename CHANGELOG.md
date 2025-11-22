@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## Unreleased
 ### Added
 - rendering spell stats for DC20 characters
+- selecting talents for DC20 characters
 
 ### Modified
 - leveling for DH characters
