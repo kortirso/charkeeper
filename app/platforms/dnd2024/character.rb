@@ -40,6 +40,12 @@ module Dnd2024
     attribute :selected_beastforms, array: true, default: []
     attribute :beastform, :string
     attribute :conditions, array: true, default: []
+    # только для 1 уровня
+    attribute :guide_step, :integer # этап помощи при создании персонажа
+    attribute :ability_boosts, array: true, default: [] # дополнительные повышения характеристик от происхождения
+    attribute :any_skill_boosts, :integer, default: 0 # дополнительные повышения любого навыка
+    attribute :skill_boosts, :integer, default: 0 # дополнительные повышения навыков от класса
+    attribute :skill_boosts_list, array: true, default: [] # дополнительные повышения навыков от класса
   end
 
   class Character < Character

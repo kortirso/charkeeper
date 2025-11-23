@@ -2,7 +2,7 @@ import { createSignal, batch, For } from 'solid-js';
 import { createStore } from 'solid-js/store';
 import * as i18n from '@solid-primitives/i18n';
 
-import { ErrorWrapper, Button, Levelbox, Checkbox } from '../../../../components';
+import { ErrorWrapper, Button, Levelbox, Checkbox, GuideWrapper } from '../../../../components';
 import { useAppState, useAppLocale, useAppAlert } from '../../../../context';
 import { fetchCharacterRequest } from '../../../../requests/fetchCharacterRequest';
 import { createCharacterRestRequest } from '../../../../requests/createCharacterRestRequest';
@@ -51,38 +51,40 @@ export const Dnd5Rest = (props) => {
 
   return (
     <ErrorWrapper payload={{ character_id: character().id, key: 'Dnd5Rest' }}>
-      <div class="blockable p-4">
-        <p class="mb-4 dark:text-snow">{t('dndV2.rest.shortRestDescription')}</p>
-        <For each={Object.entries(character().hit_dice).filter(([, value]) => value > 0)}>
-          {([dice, maxValue]) =>
-            <Levelbox
-              classList="mb-1"
-              labelText={`d${dice}`}
-              labelPosition="right"
-              labelClassList="ml-2"
-              value={restOptions[`d${dice}`]}
-              onToggle={() => updateOption(dice, maxValue)}
-            />
-          }
-        </For>
-        <Checkbox
-          classList="mb-4"
-          labelText={t('daggerheart.rest.makeRolls')}
-          labelPosition="right"
-          labelClassList="ml-2"
-          checked={makeRolls()}
-          onToggle={() => setMakeRolls(!makeRolls())}
-        />
-        <p class="mb-4 dark:text-snow">{t('dndV2.rest.longRestDescription')}</p>
-        <div class="flex justify-center items-center">
-          <Button default textable classList="flex-1 mr-2" onClick={() => restCharacter({ value: 'short_rest' })}>
-            <span>{t('rest.shortRest')}</span>
-          </Button>
-          <Button default textable classList="flex-1 ml-2" onClick={() => restCharacter({ value: 'long_rest' })}>
-            <span>{t('rest.longRest')}</span>
-          </Button>
+      <GuideWrapper character={character()}>
+        <div class="blockable p-4">
+          <p class="mb-4 dark:text-snow">{t('dndV2.rest.shortRestDescription')}</p>
+          <For each={Object.entries(character().hit_dice).filter(([, value]) => value > 0)}>
+            {([dice, maxValue]) =>
+              <Levelbox
+                classList="mb-1"
+                labelText={`d${dice}`}
+                labelPosition="right"
+                labelClassList="ml-2"
+                value={restOptions[`d${dice}`]}
+                onToggle={() => updateOption(dice, maxValue)}
+              />
+            }
+          </For>
+          <Checkbox
+            classList="mb-4"
+            labelText={t('daggerheart.rest.makeRolls')}
+            labelPosition="right"
+            labelClassList="ml-2"
+            checked={makeRolls()}
+            onToggle={() => setMakeRolls(!makeRolls())}
+          />
+          <p class="mb-4 dark:text-snow">{t('dndV2.rest.longRestDescription')}</p>
+          <div class="flex justify-center items-center">
+            <Button default textable classList="flex-1 mr-2" onClick={() => restCharacter({ value: 'short_rest' })}>
+              <span>{t('rest.shortRest')}</span>
+            </Button>
+            <Button default textable classList="flex-1 ml-2" onClick={() => restCharacter({ value: 'long_rest' })}>
+              <span>{t('rest.longRest')}</span>
+            </Button>
+          </div>
         </div>
-      </div>
+      </GuideWrapper>
     </ErrorWrapper>
   );
 }

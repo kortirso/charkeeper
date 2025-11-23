@@ -6,6 +6,7 @@ module Dnd2024Character
       def call(result:)
         result[:selected_feats] = ['tavern_brawler']
         result[:selected_skills] = { acrobatics: 1, perception: 1 }
+        result[:ability_boosts] = %w[str dex wis]
 
         result
       end

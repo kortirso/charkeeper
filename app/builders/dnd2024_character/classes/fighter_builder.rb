@@ -9,8 +9,10 @@ module Dnd2024Character
       def call(result:)
         result[:weapon_core_skills] = result[:weapon_core_skills].concat(WEAPON_CORE).uniq
         result[:armor_proficiency] = result[:armor_proficiency].concat(ARMOR).uniq
-        result[:abilities] = { str: 15, dex: 13, con: 14, int: 10, wis: 11, cha: 12 }
-        result[:health] = { current: 12, max: 12, temp: 0 }
+        result[:abilities] = { str: 15, dex: 14, con: 13, int: 8, wis: 10, cha: 12 }
+        result[:health] = { current: 11, max: 11, temp: 0 }
+        result[:skill_boosts] += 2
+        result[:skill_boosts_list] = %w[acrobatics athletics intimidation perception survival history insight persuasion animal]
 
         result
       end

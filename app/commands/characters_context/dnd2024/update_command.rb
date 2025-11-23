@@ -81,6 +81,7 @@ module CharactersContext
           optional(:selected_beastforms).maybe(:array).each(:string)
           optional(:beastform).maybe(Beastforms)
           optional(:conditions).maybe(:array).each(:string)
+          optional(:guide_step).maybe(:integer)
         end
 
         rule(:avatar_file, :avatar_url).validate(:check_only_one_present)
@@ -126,21 +127,19 @@ module CharactersContext
 
       private
 
-      def do_prepare(input) # rubocop: disable Metrics/AbcSize, Metrics/PerceivedComplexity
+      def do_prepare(input) # rubocop: disable Metrics/AbcSize, Metrics/PerceivedComplexity, Metrics/CyclomaticComplexity, Metrics/MethodLength
+        %i[classes abilities health coins energy spent_spell_slots spent_hit_dice].each do |key|
+          input[key]&.transform_values!(&:to_i)
+        end
+
         if input[:classes]
           input[:level] = input[:classes].values.sum(&:to_i)
           input[:added_classes] = input[:classes].keys - input[:character].data.classes.keys
           input[:removed_classes] = input[:character].data.classes.keys - input[:classes].keys
-        end
-
-        %i[classes abilities health coins energy spent_spell_slots spent_hit_dice].each do |key|
-          input[key]&.transform_values!(&:to_i)
-        end
-        return if input[:classes].blank?
-
-        input[:hit_dice] = { 6 => 0, 8 => 0, 10 => 0, 12 => 0 }
-        input[:classes].each do |key, class_level|
-          input[:hit_dice][::Dnd2024::Character::HIT_DICES[key]] += class_level
+          input[:hit_dice] = { 6 => 0, 8 => 0, 10 => 0, 12 => 0 }
+          input[:classes].each do |key, class_level|
+            input[:hit_dice][::Dnd2024::Character::HIT_DICES[key]] += class_level
+          end
         end
 
         if input.key?(:money)
@@ -149,6 +148,13 @@ module CharactersContext
           input[:coins] = { copper: copper, silver: silver, gold: gold }
         elsif input.key?(:coins)
           input[:money] = (input.dig(:coins, :gold) * 100) + (input.dig(:coins, :silver) * 10) + input.dig(:coins, :copper)
+        end
+
+        input[:ability_boosts] = 0 if input.key?(:abilities)
+        if input.key?(:selected_skills) # rubocop: disable Style/GuardClause
+          input[:any_skill_boosts] = 0
+          input[:skill_boosts] = 0
+          input[:skill_boosts_list] = []
         end
       end
 
