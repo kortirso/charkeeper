@@ -6,6 +6,7 @@ module Dnd2024Character
       def call(result:)
         result[:selected_feats] = ['healer']
         result[:selected_skills] = { medicine: 1, religion: 1 }
+        result[:ability_boosts] = %w[con wis cha]
 
         result
       end

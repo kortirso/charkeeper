@@ -1,7 +1,7 @@
 import { createSignal, createEffect, For, Show, createMemo, batch, Switch, Match } from 'solid-js';
 
 import { SpellsTable } from './SpellsTable';
-import { StatsBlock, ErrorWrapper, Button, Toggle, Checkbox, Select } from '../../../../components';
+import { StatsBlock, ErrorWrapper, Button, Toggle, Checkbox, Select, GuideWrapper } from '../../../../components';
 import config from '../../../../data/dnd2024.json';
 import { useAppState, useAppLocale } from '../../../../context';
 import {
@@ -215,18 +215,105 @@ export const Dnd5Spells = (props) => {
 
   return (
     <ErrorWrapper payload={{ character_id: character().id, key: 'Dnd5Spells' }}>
-      <Show
-        when={!spellsSelectingMode()}
-        fallback={
-          <>
+      <GuideWrapper character={character()}>
+        <Show
+          when={!spellsSelectingMode()}
+          fallback={
+            <>
+              <div class="flex justify-between items-center mb-2">
+                <Checkbox
+                  labelText={TRANSLATION[locale()]['onlyAvailableSpells']}
+                  labelPosition="right"
+                  labelClassList="ml-2"
+                  checked={availableSpellFilter()}
+                  onToggle={() => setAvailableSpellFilter(!availableSpellFilter())}
+                />
+                <Show when={spellClassesList().length > 1}>
+                  <div class="flex gap-x-1">
+                    <For each={Object.entries(CLASS_ICONS).filter(([className,]) => spellClassesList().includes(className))}>
+                      {([className, Component]) =>
+                        <span
+                          class="cursor-pointer dark:text-snow w-8 h-8 rounded-full bg-dusty flex justify-center items-center"
+                          classList={{ 'opacity-50': className !== activeSpellClass() }}
+                          onClick={() => setActiveSpellClass(className)}
+                        >
+                          <Component width="24" height="24" />
+                        </span>
+                      }
+                    </For>
+                  </div>
+                </Show>
+              </div>
+              <div class="mb-4 flex">
+                <Select
+                  labelText={TRANSLATION[locale()]['customSpellAbility']}
+                  items={{ 'null': TRANSLATION[locale()]['noValue'], 'int': config.abilities.int.name[locale()], 'wis': config.abilities.wis.name[locale()], 'cha': config.abilities.cha.name[locale()] }}
+                  selectedValue={spellAbility()}
+                  onSelect={(value) => setSpellAbility(value === 'null' ? null : value)}
+                />
+              </div>
+              <For each={[...Array(character().available_spell_level + 1).keys()]}>
+                {(level) =>
+                  <Toggle title={level === 0 ? TRANSLATION[locale()]['cantrips'] : `${level} ${TRANSLATION[locale()]['level']}`}>
+                    <table class="w-full table first-column-full-width">
+                      <tbody>
+                        <For each={filteredSpellsList().filter((item) => item.level === level)}>
+                          {(spell) =>
+                            <tr>
+                              <td class="py-1 pl-1">
+                                <p class={`${knownSpellIds().includes(spell.id) ? '' : 'opacity-50'}`}>{spell.name}</p>
+                                <Show
+                                  when={!availableSpellFilter()}
+                                  fallback={
+                                    <Show when={knownSpellIds().includes(spell.id) && !staticSpellIds().includes(spell.id)}>
+                                      <p class="text-xs mt-1">
+                                        {config.classes[characterSpells().find((item) => item.spell_id === spell.id).prepared_by]['name'][locale()]}
+                                      </p>
+                                    </Show>
+                                  }
+                                >
+                                  <p class="text-xs text-wrap">
+                                    {spell.available_for.map((item) => config.classes[item]['name'][locale()]).join(' * ')}
+                                  </p>
+                                </Show>
+                              </td>
+                              <td>
+                                <Switch fallback={<></>}>
+                                  <Match when={!knownSpellIds().includes(spell.id)}>
+                                    <Button default size="small" onClick={() => learnSpell(spell.id, activeSpellClass())}>
+                                      <Plus width={20} height={20} />
+                                    </Button>
+                                  </Match>
+                                  <Match when={!staticSpellIds().includes(spell.id)}>
+                                    <Button default size="small" onClick={() => forgetSpell(spell.id)}>
+                                      <Minus width={20} height={20} />
+                                    </Button>
+                                  </Match>
+                                </Switch>
+                              </td>
+                            </tr>
+                          }
+                        </For>
+                      </tbody>
+                    </table>
+                  </Toggle>
+                }
+              </For>
+              <Button default textable onClick={() => setSpellsSelectingMode(false)}>{TRANSLATION[locale()]['back']}</Button>
+            </>
+          }
+        >
+          <Show when={spells() !== undefined}>
             <div class="flex justify-between items-center mb-2">
-              <Checkbox
-                labelText={TRANSLATION[locale()]['onlyAvailableSpells']}
-                labelPosition="right"
-                labelClassList="ml-2"
-                checked={availableSpellFilter()}
-                onToggle={() => setAvailableSpellFilter(!availableSpellFilter())}
-              />
+              <Show when={activeSpellClass() !== undefined && activeSpellClass() !== 'static'} fallback={<span />}>
+                <Checkbox
+                  labelText={TRANSLATION[locale()]['onlyPreparedSpells']}
+                  labelPosition="right"
+                  labelClassList="ml-2"
+                  checked={preparedSpellFilter()}
+                  onToggle={() => setPreparedSpellFilter(!preparedSpellFilter())}
+                />
+              </Show>
               <Show when={spellClassesList().length > 1}>
                 <div class="flex gap-x-1">
                   <For each={Object.entries(CLASS_ICONS).filter(([className,]) => spellClassesList().includes(className))}>
@@ -234,7 +321,7 @@ export const Dnd5Spells = (props) => {
                       <span
                         class="cursor-pointer dark:text-snow w-8 h-8 rounded-full bg-dusty flex justify-center items-center"
                         classList={{ 'opacity-50': className !== activeSpellClass() }}
-                        onClick={() => setActiveSpellClass(className)}
+                        onClick={() => activeSpellClass() === className ? setActiveSpellClass(undefined) : setActiveSpellClass(className)}
                       >
                         <Component width="24" height="24" />
                       </span>
@@ -243,158 +330,73 @@ export const Dnd5Spells = (props) => {
                 </div>
               </Show>
             </div>
-            <div class="mb-4 flex">
-              <Select
-                labelText={TRANSLATION[locale()]['customSpellAbility']}
-                items={{ 'null': TRANSLATION[locale()]['noValue'], 'int': config.abilities.int.name[locale()], 'wis': config.abilities.wis.name[locale()], 'cha': config.abilities.cha.name[locale()] }}
-                selectedValue={spellAbility()}
-                onSelect={(value) => setSpellAbility(value === 'null' ? null : value)}
+            <Show when={lastActiveCharacterId() === character().id && activeSpellClass() && character().spell_classes[activeSpellClass()]?.save_dc}>
+              <StatsBlock
+                items={[
+                  { title: TRANSLATION[locale()]['spellAttack'], value: modifier(character().spell_classes[activeSpellClass()].attack_bonus) },
+                  { title: TRANSLATION[locale()]['saveDC'], value: character().spell_classes[activeSpellClass()].save_dc }
+                ]}
               />
-            </div>
-            <For each={[...Array(character().available_spell_level + 1).keys()]}>
-              {(level) =>
-                <Toggle title={level === 0 ? TRANSLATION[locale()]['cantrips'] : `${level} ${TRANSLATION[locale()]['level']}`}>
-                  <table class="w-full table first-column-full-width">
-                    <tbody>
-                      <For each={filteredSpellsList().filter((item) => item.level === level)}>
-                        {(spell) =>
-                          <tr>
-                            <td class="py-1 pl-1">
-                              <p class={`${knownSpellIds().includes(spell.id) ? '' : 'opacity-50'}`}>{spell.name}</p>
-                              <Show
-                                when={!availableSpellFilter()}
-                                fallback={
-                                  <Show when={knownSpellIds().includes(spell.id) && !staticSpellIds().includes(spell.id)}>
-                                    <p class="text-xs mt-1">
-                                      {config.classes[characterSpells().find((item) => item.spell_id === spell.id).prepared_by]['name'][locale()]}
-                                    </p>
-                                  </Show>
-                                }
-                              >
-                                <p class="text-xs text-wrap">
-                                  {spell.available_for.map((item) => config.classes[item]['name'][locale()]).join(' * ')}
-                                </p>
-                              </Show>
-                            </td>
-                            <td>
-                              <Switch fallback={<></>}>
-                                <Match when={!knownSpellIds().includes(spell.id)}>
-                                  <Button default size="small" onClick={() => learnSpell(spell.id, activeSpellClass())}>
-                                    <Plus width={20} height={20} />
-                                  </Button>
-                                </Match>
-                                <Match when={!staticSpellIds().includes(spell.id)}>
-                                  <Button default size="small" onClick={() => forgetSpell(spell.id)}>
-                                    <Minus width={20} height={20} />
-                                  </Button>
-                                </Match>
-                              </Switch>
-                            </td>
-                          </tr>
-                        }
-                      </For>
-                    </tbody>
-                  </table>
-                </Toggle>
-              }
-            </For>
-            <Button default textable onClick={() => setSpellsSelectingMode(false)}>{TRANSLATION[locale()]['back']}</Button>
-          </>
-        }
-      >
-        <Show when={spells() !== undefined}>
-          <div class="flex justify-between items-center mb-2">
-            <Show when={activeSpellClass() !== undefined && activeSpellClass() !== 'static'} fallback={<span />}>
-              <Checkbox
-                labelText={TRANSLATION[locale()]['onlyPreparedSpells']}
-                labelPosition="right"
-                labelClassList="ml-2"
-                checked={preparedSpellFilter()}
-                onToggle={() => setPreparedSpellFilter(!preparedSpellFilter())}
-              />
-            </Show>
-            <Show when={spellClassesList().length > 1}>
-              <div class="flex gap-x-1">
-                <For each={Object.entries(CLASS_ICONS).filter(([className,]) => spellClassesList().includes(className))}>
-                  {([className, Component]) =>
-                    <span
-                      class="cursor-pointer dark:text-snow w-8 h-8 rounded-full bg-dusty flex justify-center items-center"
-                      classList={{ 'opacity-50': className !== activeSpellClass() }}
-                      onClick={() => activeSpellClass() === className ? setActiveSpellClass(undefined) : setActiveSpellClass(className)}
-                    >
-                      <Component width="24" height="24" />
-                    </span>
-                  }
-                </For>
-              </div>
-            </Show>
-          </div>
-          <Show when={lastActiveCharacterId() === character().id && activeSpellClass() && character().spell_classes[activeSpellClass()]?.save_dc}>
-            <StatsBlock
-              items={[
-                { title: TRANSLATION[locale()]['spellAttack'], value: modifier(character().spell_classes[activeSpellClass()].attack_bonus) },
-                { title: TRANSLATION[locale()]['saveDC'], value: character().spell_classes[activeSpellClass()].save_dc }
-              ]}
-            />
-            <div class="mb-2 p-4 flex blockable">
-              <div class="flex-1 flex flex-col items-center dark:text-snow">
-                <p class="uppercase text-xs mb-1">{TRANSLATION[locale()]['cantrips']}</p>
-                <p class="text-2xl mb-1">
-                  {character().spell_classes[activeSpellClass()].cantrips_amount}
-                </p>
-              </div>
-              <Show when={character().provider === 'dnd5'}>
+              <div class="mb-2 p-4 flex blockable">
                 <div class="flex-1 flex flex-col items-center dark:text-snow">
-                  <p class="uppercase text-xs mb-1">{TRANSLATION[locale()]['known']}</p>
-                  <p class="text-2xl mb-1 flex gap-2 items-start">
-                    <span>{character().spell_classes[activeSpellClass()].spells_amount || '-'}</span>
-                    <span class="text-sm">{character().spell_classes[activeSpellClass()].max_spell_level} {TRANSLATION[locale()]['level']}</span>
+                  <p class="uppercase text-xs mb-1">{TRANSLATION[locale()]['cantrips']}</p>
+                  <p class="text-2xl mb-1">
+                    {character().spell_classes[activeSpellClass()].cantrips_amount}
                   </p>
                 </div>
-              </Show>
-              <div class="flex-1 flex flex-col items-center dark:text-snow">
-                <p class="uppercase text-xs mb-1">{TRANSLATION[locale()]['prepared']}</p>
-                <p class="text-2xl mb-1">
-                  {character().spell_classes[activeSpellClass()].prepared_spells_amount}
-                </p>
+                <Show when={character().provider === 'dnd5'}>
+                  <div class="flex-1 flex flex-col items-center dark:text-snow">
+                    <p class="uppercase text-xs mb-1">{TRANSLATION[locale()]['known']}</p>
+                    <p class="text-2xl mb-1 flex gap-2 items-start">
+                      <span>{character().spell_classes[activeSpellClass()].spells_amount || '-'}</span>
+                      <span class="text-sm">{character().spell_classes[activeSpellClass()].max_spell_level} {TRANSLATION[locale()]['level']}</span>
+                    </p>
+                  </div>
+                </Show>
+                <div class="flex-1 flex flex-col items-center dark:text-snow">
+                  <p class="uppercase text-xs mb-1">{TRANSLATION[locale()]['prepared']}</p>
+                  <p class="text-2xl mb-1">
+                    {character().spell_classes[activeSpellClass()].prepared_spells_amount}
+                  </p>
+                </div>
               </div>
-            </div>
+            </Show>
+            <Show when={activeSpellClass() !== undefined && activeSpellClass() !== 'static'}>
+              <Button default textable classList="mb-2" onClick={() => setSpellsSelectingMode(true)}>
+                {TRANSLATION[locale()]['knownSpells']}
+              </Button>
+            </Show>
+            <SpellsTable
+              level={0}
+              character={character()}
+              activeSpellClass={activeSpellClass()}
+              spells={filteredCharacterSpells().filter((item) => item.level === 0)}
+              canPrepareSpells={canPrepareSpells()}
+              onEnableSpell={enableSpell}
+              onDisableSpell={disableSpell}
+              onUpdateCharacterSpell={updateCharacterSpell}
+            />
+            <For each={Array.from([...Array(character().available_spell_level).keys()], (x) => x + 1)}>
+              {(level) =>
+                <SpellsTable
+                  level={level}
+                  character={character()}
+                  activeSpellClass={activeSpellClass()}
+                  spells={filteredCharacterSpells().filter((item) => item.level === level)}
+                  spentSpellSlots={spentSpellSlots()}
+                  canPrepareSpells={canPrepareSpells()}
+                  slotsAmount={character().spells_slots[level]}
+                  onEnableSpell={enableSpell}
+                  onDisableSpell={disableSpell}
+                  onSpendSpellSlot={spendSpellSlot}
+                  onFreeSpellSlot={freeSpellSlot}
+                  onUpdateCharacterSpell={updateCharacterSpell}
+                />
+              }
+            </For>
           </Show>
-          <Show when={activeSpellClass() !== undefined && activeSpellClass() !== 'static'}>
-            <Button default textable classList="mb-2" onClick={() => setSpellsSelectingMode(true)}>
-              {TRANSLATION[locale()]['knownSpells']}
-            </Button>
-          </Show>
-          <SpellsTable
-            level={0}
-            character={character()}
-            activeSpellClass={activeSpellClass()}
-            spells={filteredCharacterSpells().filter((item) => item.level === 0)}
-            canPrepareSpells={canPrepareSpells()}
-            onEnableSpell={enableSpell}
-            onDisableSpell={disableSpell}
-            onUpdateCharacterSpell={updateCharacterSpell}
-          />
-          <For each={Array.from([...Array(character().available_spell_level).keys()], (x) => x + 1)}>
-            {(level) =>
-              <SpellsTable
-                level={level}
-                character={character()}
-                activeSpellClass={activeSpellClass()}
-                spells={filteredCharacterSpells().filter((item) => item.level === level)}
-                spentSpellSlots={spentSpellSlots()}
-                canPrepareSpells={canPrepareSpells()}
-                slotsAmount={character().spells_slots[level]}
-                onEnableSpell={enableSpell}
-                onDisableSpell={disableSpell}
-                onSpendSpellSlot={spendSpellSlot}
-                onFreeSpellSlot={freeSpellSlot}
-                onUpdateCharacterSpell={updateCharacterSpell}
-              />
-            }
-          </For>
         </Show>
-      </Show>
+      </GuideWrapper>
     </ErrorWrapper>
   );
 }

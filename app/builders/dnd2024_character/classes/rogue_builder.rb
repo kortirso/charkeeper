@@ -11,8 +11,11 @@ module Dnd2024Character
         result[:weapon_core_skills] = result[:weapon_core_skills].concat(WEAPON_CORE).uniq
         result[:armor_proficiency] = result[:armor_proficiency].concat(ARMOR).uniq
         result[:tools] = result[:tools].concat(TOOLS).uniq
-        result[:abilities] = { str: 11, dex: 15, con: 10, int: 14, wis: 12, cha: 13 }
-        result[:health] = { current: 8, max: 8, temp: 0 }
+        result[:abilities] = { str: 12, dex: 15, con: 13, int: 14, wis: 10, cha: 8 }
+        result[:health] = { current: 9, max: 9, temp: 0 }
+        result[:skill_boosts] += 4
+        result[:skill_boosts_list] =
+          %w[acrobatics athletics deception insight intimidation investigation perception persuasion sleight stealth]
 
         result
       end

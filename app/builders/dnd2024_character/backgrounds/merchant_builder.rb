@@ -6,6 +6,7 @@ module Dnd2024Character
       def call(result:)
         result[:selected_feats] = ['lucky']
         result[:selected_skills] = { animal: 1, persuasion: 1 }
+        result[:ability_boosts] = %w[con int cha]
 
         result
       end

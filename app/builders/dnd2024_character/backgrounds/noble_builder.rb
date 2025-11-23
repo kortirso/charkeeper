@@ -5,6 +5,8 @@ module Dnd2024Character
     class NobleBuilder
       def call(result:)
         result[:selected_skills] = { history: 1, persuasion: 1 }
+        result[:ability_boosts] = %w[str int cha]
+        result[:any_skill_boosts] += 3
 
         result
       end

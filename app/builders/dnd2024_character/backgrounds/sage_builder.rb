@@ -6,6 +6,7 @@ module Dnd2024Character
       def call(result:)
         result[:selected_feats] = ['wizard_magic_initiate']
         result[:selected_skills] = { arcana: 1, history: 1 }
+        result[:ability_boosts] = %w[con int wis]
 
         result
       end

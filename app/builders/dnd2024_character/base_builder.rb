@@ -15,7 +15,10 @@ module Dnd2024Character
         immunity: [],
         vulnerability: [],
         tools: [],
-        hit_dice: { 6 => 0, 8 => 0, 10 => 0, 12 => 0 }
+        hit_dice: { 6 => 0, 8 => 0, 10 => 0, 12 => 0 },
+        guide_step: 1,
+        skill_boosts: 0,
+        any_skill_boosts: 0
       })
     end
   end
