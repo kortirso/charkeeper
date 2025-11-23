@@ -53,6 +53,7 @@ module CharactersContext
             required(:silver).filled(:integer)
             required(:copper).filled(:integer)
           end
+          optional(:money).filled(:integer)
           optional(:selected_skills).hash
           optional(:selected_features).hash
           optional(:selected_feats).value(:array)
@@ -125,8 +126,7 @@ module CharactersContext
 
       private
 
-      # rubocop: disable Metrics/AbcSize
-      def do_prepare(input)
+      def do_prepare(input) # rubocop: disable Metrics/AbcSize, Metrics/PerceivedComplexity
         if input[:classes]
           input[:level] = input[:classes].values.sum(&:to_i)
           input[:added_classes] = input[:classes].keys - input[:character].data.classes.keys
@@ -142,9 +142,17 @@ module CharactersContext
         input[:classes].each do |key, class_level|
           input[:hit_dice][::Dnd2024::Character::HIT_DICES[key]] += class_level
         end
+
+        if input.key?(:money)
+          gold, modulus = input[:money].divmod(100)
+          silver, copper = modulus.divmod(10)
+          input[:coins] = { copper: copper, silver: silver, gold: gold }
+        elsif input.key?(:coins)
+          input[:money] = (input.dig(:coins, :gold) * 100) + (input.dig(:coins, :silver) * 10) + input.dig(:coins, :copper)
+        end
       end
 
-      def do_persist(input)
+      def do_persist(input) # rubocop: disable Metrics/AbcSize
         input[:character].data =
           input[:character].data.attributes.merge(input.except(:character, :avatar_file, :avatar_url, :name).stringify_keys)
         input[:character].assign_attributes(input.slice(:name))
@@ -160,7 +168,6 @@ module CharactersContext
 
         { result: input[:character] }
       end
-      # rubocop: enable Metrics/AbcSize
 
       def refresh_spells(input)
         input[:added_classes].each do |added_class|

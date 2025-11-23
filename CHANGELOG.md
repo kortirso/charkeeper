@@ -11,7 +11,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Modified
 - leveling for DH characters
-- gold management for DH characters
+- gold management for all systems
 
 ## [0.3.16] - 2025-11-19
 ### Added

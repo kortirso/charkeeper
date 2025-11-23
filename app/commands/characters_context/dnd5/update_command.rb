@@ -51,6 +51,7 @@ module CharactersContext
             required(:silver).filled(:integer)
             required(:copper).filled(:integer)
           end
+          optional(:money).filled(:integer)
           optional(:selected_skills).value(:array).each(included_in?: SKILLS)
           optional(:selected_feats).hash
           optional(:weapon_core_skills).value(:array).each(included_in?: WEAPON_CORE_SKILLS)
@@ -126,7 +127,7 @@ module CharactersContext
 
       private
 
-      # rubocop: disable Metrics/AbcSize
+      # rubocop: disable Metrics/AbcSize, Metrics/PerceivedComplexity
       def do_prepare(input)
         if input[:classes]
           input[:level] = input[:classes].values.sum(&:to_i)
@@ -142,6 +143,14 @@ module CharactersContext
         input[:hit_dice] = { 6 => 0, 8 => 0, 10 => 0, 12 => 0 }
         input[:classes].each do |key, class_level|
           input[:hit_dice][::Dnd5::Character::HIT_DICES[key]] += class_level
+        end
+
+        if input.key?(:money)
+          gold, modulus = input[:money].divmod(100)
+          silver, copper = modulus.divmod(10)
+          input[:coins] = { copper: copper, silver: silver, gold: gold }
+        elsif input.key?(:coins)
+          input[:money] = (input.dig(:coins, :gold) * 100) + (input.dig(:coins, :silver) * 10) + input.dig(:coins, :copper)
         end
       end
 
@@ -159,7 +168,7 @@ module CharactersContext
 
         { result: input[:character] }
       end
-      # rubocop: enable Metrics/AbcSize
+      # rubocop: enable Metrics/AbcSize, Metrics/PerceivedComplexity
 
       def refresh_spells(input)
         input[:added_classes].each do |added_class|

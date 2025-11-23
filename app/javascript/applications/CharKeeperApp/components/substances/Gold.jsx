@@ -1,37 +1,48 @@
 import { createSignal, createMemo, For } from 'solid-js';
 
-import { ErrorWrapper, GuideWrapper, Button, Select, Input } from '../../../../components';
-import { useAppState, useAppLocale, useAppAlert } from '../../../../context';
-import { PlusSmall, Minus } from '../../../../assets';
-import { updateCharacterRequest } from '../../../../requests/updateCharacterRequest';
+import { ErrorWrapper, GuideWrapper, Button, Select, Input } from '../../components';
+import { useAppState, useAppLocale, useAppAlert } from '../../context';
+import { PlusSmall, Minus } from '../../assets';
+import { updateCharacterRequest } from '../../requests/updateCharacterRequest';
 
 const TRANSLATION = {
   en: {
     measure: 'Change measure',
     amount: 'Change amout',
-    measures: {
+    daggerheart: {
       coins: 'Coins',
       handfuls: 'Handfuls',
       bags: 'Bags',
       chests: 'Chests'
+    },
+    dnd: {
+      copper: 'Copper',
+      silver: 'Silver',
+      gold: 'Gold'
     }
   },
   ru: {
     measure: 'Мера изменения',
     amount: 'Кол-во',
-    measures: {
+    daggerheart: {
       coins: 'Монеты',
       handfuls: 'Горсти',
       bags: 'Мешочки',
       chests: 'Сундучки'
+    },
+    dnd: {
+      copper: 'Медь',
+      silver: 'Серебро',
+      gold: 'Золото'
     }
   }
 }
 
 const divMod = (a, b) => [Math.trunc(a / b), a % b];
 
-export const DaggerheartGold = (props) => {
+export const Gold = (props) => {
   const character = () => props.character;
+  const goldFormat = () => props.character.provider === 'daggerheart' ? 'daggerheart' : 'dnd'
 
   const [measure, setMeasure] = createSignal('coins');
   const [coinsChange, setCoinsChange] = createSignal(0);
@@ -40,8 +51,28 @@ export const DaggerheartGold = (props) => {
   const [{ renderAlerts }] = useAppAlert();
   const [locale] = useAppLocale();
 
+  const daggerheartGoldFormat = () => {
+    let [chests, chestsless] = divMod(character().money, 1000);
+    let [bags, bagsless] = divMod(chestsless, 100);
+    let [handfuls, coins] = divMod(bagsless, 10);
+
+    return { chests: chests, bags: bags, handfuls: handfuls, coins: coins };
+  }
+
+  const dndGoldFormat = () => {
+    let [gold, silverless] = divMod(character().money, 100);
+    let [silver, copper] = divMod(silverless, 10);
+
+    return { gold: gold, silver: silver, copper: copper };
+  }
+
+  const gold = createMemo(() => {
+    if (goldFormat() === 'daggerheart') return daggerheartGoldFormat();
+    if (goldFormat() === 'dnd') return dndGoldFormat();
+  });
+
   const updateMoney = async (value) => {
-    const moneyChange = coinsChange() * value * (10 ** Object.keys(TRANSLATION.en.measures).indexOf(measure()));
+    const moneyChange = coinsChange() * value * (10 ** Object.keys(TRANSLATION.en[goldFormat()]).indexOf(measure()));
     const newAmount = character().money + moneyChange;
     const payload = { money: newAmount };
 
@@ -53,23 +84,20 @@ export const DaggerheartGold = (props) => {
     else renderAlerts(result.errors_list);
   }
 
-  const gold = createMemo(() => {
-    let [chests, chestsless] = divMod(character().money, 1000);
-    let [bags, bagsless] = divMod(chestsless, 100);
-    let [handfuls, coins] = divMod(bagsless, 10);
-
-    return { chests: chests, bags: bags, handfuls: handfuls, coins: coins };
-  });
-
   return (
-    <ErrorWrapper payload={{ character_id: character().id, key: 'DaggerheartGold' }}>
+    <ErrorWrapper payload={{ character_id: character().id, key: 'Gold' }}>
       <GuideWrapper character={character()}>
         <div class="blockable mb-2 p-4">
-          <div class="grid grid-cols-2 emd:grid-cols-4">
-            <For each={['coins', 'handfuls', 'bags', 'chests']}>
+          <div
+            classList={{
+              'grid grid-cols-2 emd:grid-cols-4': goldFormat() === 'daggerheart',
+              'grid grid-cols-3': goldFormat() === 'dnd'
+            }}
+          >
+            <For each={Object.keys(TRANSLATION[locale()][goldFormat()])}>
               {(item) =>
                 <div class="flex-1 flex flex-col items-center">
-                  <p class="uppercase text-sm mb-1 dark:text-snow">{TRANSLATION[locale()].measures[item]}</p>
+                  <p class="uppercase text-sm mb-1 dark:text-snow">{TRANSLATION[locale()][goldFormat()][item]}</p>
                   <p class="text-2xl mb-1 dark:text-snow">{gold()[item]}</p>
                 </div>
               }
@@ -80,7 +108,7 @@ export const DaggerheartGold = (props) => {
             <Select
               containerClassList="w-40"
               labelText={TRANSLATION[locale()].measure}
-              items={TRANSLATION[locale()].measures}
+              items={TRANSLATION[locale()][goldFormat()]}
               selectedValue={measure()}
               onSelect={setMeasure}
             />

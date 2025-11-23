@@ -51,15 +51,12 @@ export * from './Content/Character/Pathfinder2/Static';
 export * from './Content/Character/Pathfinder2/Skills';
 export * from './Content/Character/Pathfinder2/SavingThrows';
 
-export * from './Content/Character/Dnd/Gold';
-
 export * from './Content/Character/Daggerheart';
 export * from './Content/Character/Daggerheart/Traits';
 export * from './Content/Character/Daggerheart/Experience';
 export * from './Content/Character/Daggerheart/Static';
 export * from './Content/Character/Daggerheart/Health';
 export * from './Content/Character/Daggerheart/Leveling';
-export * from './Content/Character/Daggerheart/Gold';
 export * from './Content/Character/Daggerheart/DomainCards';
 export * from './Content/Character/Daggerheart/DomainCardsTable';
 export * from './Content/Character/Daggerheart/Rest';

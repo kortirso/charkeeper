@@ -3,11 +3,11 @@ import * as i18n from '@solid-primitives/i18n';
 import { createWindowSize } from '@solid-primitives/resize-observer';
 
 import {
-  Dnd5Abilities, Dnd5Combat, Dnd5Rest, Dnd5ClassLevels, Dnd5Professions, Dnd5Spells, DndGold, Dnd5Skills, Dnd5SavingThrows,
+  Dnd5Abilities, Dnd5Combat, Dnd5Rest, Dnd5ClassLevels, Dnd5Professions, Dnd5Spells, Dnd5Skills, Dnd5SavingThrows,
   Dnd5Proficiency, Dnd2024WildShapes, BeastFeatures
 } from '../../../pages';
 import {
-  CharacterNavigation, Equipment, Notes, Avatar, ContentWrapper, Feats, Bonuses, createDiceRoll, Conditions, Combat
+  CharacterNavigation, Equipment, Notes, Avatar, ContentWrapper, Feats, Bonuses, createDiceRoll, Conditions, Combat, Gold
 } from '../../../components';
 import { useAppState, useAppLocale } from '../../../context';
 import { updateCharacterRequest } from '../../../requests/updateCharacterRequest';
@@ -161,7 +161,7 @@ export const Dnd5 = (props) => {
                 onReplaceCharacter={props.onReplaceCharacter}
                 onReloadCharacter={props.onReloadCharacter}
               >
-                <DndGold character={character()} onReplaceCharacter={props.onReplaceCharacter} />
+                <Gold character={character()} onReplaceCharacter={props.onReplaceCharacter} />
               </Equipment>
             </Match>
             <Match when={activeMobileTab() === 'spells'}>
@@ -276,7 +276,7 @@ export const Dnd5 = (props) => {
                 onReplaceCharacter={props.onReplaceCharacter}
                 onReloadCharacter={props.onReloadCharacter}
               >
-                <DndGold character={character()} onReplaceCharacter={props.onReplaceCharacter} />
+                <Gold character={character()} onReplaceCharacter={props.onReplaceCharacter} />
               </Equipment>
             </Match>
             <Match when={activeTab() === 'spells'}>
