@@ -64,6 +64,7 @@ module CharactersContext
             required(:silver).filled(:integer)
             required(:copper).filled(:integer)
           end
+          optional(:money).filled(:integer)
           optional(:conditions).maybe(:array).each(:string)
         end
 
@@ -101,6 +102,7 @@ module CharactersContext
 
       private
 
+      # rubocop: disable Metrics/AbcSize, Metrics/PerceivedComplexity
       def do_prepare(input)
         input[:level] = input[:classes].values.sum(&:to_i) if input[:classes]
         %i[classes abilities health saving_throws selected_skills coins].each do |key|
@@ -109,9 +111,16 @@ module CharactersContext
 
         input[:ability_boosts] = nil if input.key?(:abilities)
         input[:skill_boosts] = nil if input.key?(:selected_skills)
+
+        if input.key?(:money)
+          gold, modulus = input[:money].divmod(100)
+          silver, copper = modulus.divmod(10)
+          input[:coins] = { copper: copper, silver: silver, gold: gold }
+        elsif input.key?(:coins)
+          input[:money] = (input.dig(:coins, :gold) * 100) + (input.dig(:coins, :silver) * 10) + input.dig(:coins, :copper)
+        end
       end
 
-      # rubocop: disable Metrics/AbcSize
       def do_persist(input)
         input[:character].data =
           input[:character].data.attributes.merge(input.except(:character, :avatar_file, :avatar_url, :name).stringify_keys)
@@ -123,7 +132,7 @@ module CharactersContext
 
         { result: input[:character] }
       end
-      # rubocop: enable Metrics/AbcSize
+      # rubocop: enable Metrics/AbcSize, Metrics/PerceivedComplexity
     end
   end
 end

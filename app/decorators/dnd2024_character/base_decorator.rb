@@ -4,7 +4,7 @@ module Dnd2024Character
   class BaseDecorator < SimpleDelegator
     delegate :id, :name, :data, :feats, to: :__getobj__
     delegate :species, :legacy, :main_class, :classes, :subclasses, :level, :languages, :health, :abilities,
-             :selected_features, :resistance, :immunity, :vulnerability, :energy, :coins, :darkvision,
+             :selected_features, :resistance, :immunity, :vulnerability, :energy, :coins, :money, :darkvision,
              :weapon_core_skills, :weapon_skills, :armor_proficiency, :music, :spent_spell_slots, :conditions,
              :hit_dice, :spent_hit_dice, :death_saving_throws, :selected_feats, :beastform, :background, :selected_beastforms,
              :weapon_mastery, :size, :speeds, to: :data

@@ -4,7 +4,7 @@ module Dnd5Character
   class BaseDecorator < SimpleDelegator
     delegate :id, :name, :data, :feats, to: :__getobj__
     delegate :race, :subrace, :main_class, :classes, :subclasses, :level, :languages, :health, :abilities, :selected_skills,
-             :selected_feats, :resistance, :immunity, :vulnerability, :coins, :conditions,
+             :selected_feats, :resistance, :immunity, :vulnerability, :coins, :money, :conditions,
              :weapon_core_skills, :weapon_skills, :armor_proficiency, :tools, :music, :spent_spell_slots,
              :hit_dice, :spent_hit_dice, :death_saving_throws, :speed, to: :data
 

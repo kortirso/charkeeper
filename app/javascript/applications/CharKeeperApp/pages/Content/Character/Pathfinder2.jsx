@@ -3,10 +3,10 @@ import * as i18n from '@solid-primitives/i18n';
 import { createWindowSize } from '@solid-primitives/resize-observer';
 
 import {
-  Pathfinder2Abilities, Pathfinder2Health, Pathfinder2Professions, DndGold, Pathfinder2Static, Pathfinder2Skills,
+  Pathfinder2Abilities, Pathfinder2Health, Pathfinder2Professions, Pathfinder2Static, Pathfinder2Skills,
   Pathfinder2SavingThrows
 } from '../../../pages';
-import { CharacterNavigation, Equipment, Notes, Avatar, ContentWrapper, Conditions } from '../../../components';
+import { CharacterNavigation, Equipment, Notes, Avatar, ContentWrapper, Conditions, Gold } from '../../../components';
 import { useAppLocale } from '../../../context';
 
 export const Pathfinder2 = (props) => {
@@ -65,7 +65,7 @@ export const Pathfinder2 = (props) => {
                 onReplaceCharacter={props.onReplaceCharacter}
                 onReloadCharacter={props.onReloadCharacter}
               >
-                <DndGold character={character()} onReplaceCharacter={props.onReplaceCharacter} />
+                <Gold character={character()} onReplaceCharacter={props.onReplaceCharacter} />
               </Equipment>
             </Match>
             <Match when={activeMobileTab() === 'notes'}>
@@ -134,7 +134,7 @@ export const Pathfinder2 = (props) => {
                 onReplaceCharacter={props.onReplaceCharacter}
                 onReloadCharacter={props.onReloadCharacter}
               >
-                <DndGold character={character()} onReplaceCharacter={props.onReplaceCharacter} />
+                <Gold character={character()} onReplaceCharacter={props.onReplaceCharacter} />
               </Equipment>
             </Match>
             <Match when={activeTab() === 'notes'}>

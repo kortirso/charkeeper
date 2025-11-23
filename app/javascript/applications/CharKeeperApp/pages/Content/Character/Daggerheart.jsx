@@ -4,11 +4,11 @@ import { createWindowSize } from '@solid-primitives/resize-observer';
 
 import {
   DaggerheartTraits, DaggerheartStatic, DaggerheartHealth, DaggerheartBeastform, DaggerheartCompanion,
-  DaggerheartDomainCards, DaggerheartRest, DaggerheartLeveling, DaggerheartExperience, DaggerheartGold, DaggerheartTransform,
+  DaggerheartDomainCards, DaggerheartRest, DaggerheartLeveling, DaggerheartExperience, DaggerheartTransform,
   DaggerheartStances
 } from '../../../pages';
 import {
-  CharacterNavigation, Equipment, Bonuses, Notes, Avatar, ContentWrapper, Feats, createDiceRoll, Conditions, Combat
+  CharacterNavigation, Equipment, Bonuses, Notes, Avatar, ContentWrapper, Feats, createDiceRoll, Conditions, Combat, Gold
 } from '../../../components';
 import { useAppLocale } from '../../../context';
 
@@ -165,7 +165,7 @@ export const Daggerheart = (props) => {
                 guideStep={3}
                 helpMessage={TRANSLATION[locale()]['helpMessage']}
               >
-                <DaggerheartGold character={character()} onReplaceCharacter={props.onReplaceCharacter} />
+                <Gold character={character()} onReplaceCharacter={props.onReplaceCharacter} />
               </Equipment>
             </Match>
             <Match when={activeMobileTab() === 'domainCards'}>
@@ -307,7 +307,7 @@ export const Daggerheart = (props) => {
                 guideStep={3}
                 helpMessage={TRANSLATION[locale()]['helpMessage']}
               >
-                <DaggerheartGold character={character()} onReplaceCharacter={props.onReplaceCharacter} />
+                <Gold character={character()} onReplaceCharacter={props.onReplaceCharacter} />
               </Equipment>
             </Match>
             <Match when={activeTab() === 'domainCards'}>

@@ -28,6 +28,7 @@ module Dnd2024
     attribute :weapon_mastery, array: true, default: [] # Оружейные приёмы
     attribute :armor_proficiency, array: true
     attribute :coins, array: true, default: { 'gold' => 0, 'silver' => 0, 'copper' => 0 }
+    attribute :money, :integer, default: 0
     attribute :spent_spell_slots, array: true, default: {}
     attribute :hit_dice, array: true, default: {} # максимальные кости хитов
     attribute :spent_hit_dice, array: true, default: {} # потраченные кости хитов
