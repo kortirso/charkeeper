@@ -74,6 +74,8 @@ module CharactersContext
           end
           optional(:avatar_url).filled(:string)
           optional(:conditions).maybe(:array).each(:string)
+          optional(:heroic_inspiration).filled(:bool)
+          optional(:bardic_inspiration).maybe(:integer)
         end
 
         rule(:avatar_file, :avatar_url).validate(:check_only_one_present)

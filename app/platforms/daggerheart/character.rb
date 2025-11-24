@@ -4,6 +4,19 @@ module Daggerheart
   class CharacterData
     include StoreModel::Model
 
+    LEVELING = {
+      'traits' => { '2' => 0, '3' => 0, '4' => 0 },
+      'selected_traits' => { '2' => [], '3' => [], '4' => [] },
+      'health' => 0,
+      'stress' => 0,
+      'experience' => 0,
+      'domain_cards' => 0,
+      'evasion' => 0,
+      'proficiency' => 0,
+      'subclass' => 0,
+      'multiclass' => 0
+    }.freeze
+
     attribute :level, :integer, default: 1
     attribute :heritage, :string
     attribute :heritage_name, :string
@@ -25,20 +38,7 @@ module Daggerheart
     attribute :spent_armor_slots, :integer, default: 0
     attribute :gold, array: true, default: { 'coins' => 0, 'handfuls' => 1, 'bags' => 0, 'chests' => 0 }
     attribute :money, :integer, default: 0
-    attribute :leveling,
-              array: true,
-              default: {
-                'traits' => { '2' => 0, '3' => 0, '4' => 0 },
-                'selected_traits' => { '2' => [], '3' => [], '4' => [] },
-                'health' => 0,
-                'stress' => 0,
-                'experience' => 0,
-                'domain_cards' => 0,
-                'evasion' => 0,
-                'proficiency' => 0,
-                'subclass' => 0,
-                'multiclass' => 0
-              }
+    attribute :leveling, array: true, default: LEVELING
     attribute :experience, array: true, default: []
     attribute :beastform, :string
     attribute :transformation, :string

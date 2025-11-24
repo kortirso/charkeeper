@@ -231,15 +231,15 @@ export const Dnd5 = (props) => {
           onReplaceCharacter={props.onReplaceCharacter}
           onReloadCharacter={props.onReloadCharacter}
         />
+        <div class="mt-4">
+          <Dnd5SavingThrows character={character()} openDiceRoll={openDiceRoll} />
+        </div>
+        <div class="mt-4">
+          <Dnd5Proficiency character={character()} onReplaceCharacter={props.onReplaceCharacter} />
+        </div>
         <div class="flex flex-col emd:flex-row emd:gap-4 emd:mt-4">
           <div class="mt-4 emd:mt-0 flex-1">
-            <Dnd5Proficiency character={character()} onReplaceCharacter={props.onReplaceCharacter} />
-            <div class="mt-4">
-              <Dnd5SavingThrows character={character()} openDiceRoll={openDiceRoll} />
-            </div>
-            <div class="mt-4">
-              <Conditions character={character()} />
-            </div>
+            <Conditions character={character()} />
             <Show when={character().provider === 'dnd2024' && Object.keys(character().classes).includes('druid')}>
               <div class="mt-4">
                 <Dnd2024WildShapes character={character()} onReplaceCharacter={props.onReplaceCharacter} />

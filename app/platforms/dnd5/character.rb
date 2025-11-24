@@ -32,6 +32,8 @@ module Dnd5
     attribute :immunity, array: true, default: [] # иммунитеты
     attribute :vulnerability, array: true, default: [] # уязвимости
     attribute :conditions, array: true, default: []
+    attribute :heroic_inspiration, :boolean, default: false
+    attribute :bardic_inspiration, :integer
   end
 
   class Character < Character

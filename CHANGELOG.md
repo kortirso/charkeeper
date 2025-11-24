@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - rendering spell stats for DC20 characters
 - selecting talents for DC20 characters
 - guide mode for D&D 2024 characters
+- marking inspiration for D&D characters
 
 ### Modified
 - leveling for DH characters

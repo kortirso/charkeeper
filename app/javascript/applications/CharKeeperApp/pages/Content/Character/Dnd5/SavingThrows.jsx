@@ -22,20 +22,22 @@ export const Dnd5SavingThrows = (props) => {
   return (
     <ErrorWrapper payload={{ character_id: character().id, key: 'Dnd5SavingThrows' }}>
       <GuideWrapper character={character()}>
-        <div class="blockable p-4">
-          <h2 class="text-lg dark:text-snow mb-2">{TRANSLATION[locale()]['savings']}</h2>
-          <div class="grid grid-cols-3 emd:grid-cols-2 gap-4">
+        <div class="blockable pt-2 pb-4">
+          <p class="text-lg dark:text-snow mb-2 text-center">{TRANSLATION[locale()]['savings']}</p>
+          <div class="grid grid-cols-3 emd:grid-cols-6 elg:grid-cols-3 exl:grid-cols-6 gap-2">
             <For each={Object.entries(config.abilities)}>
               {([slug, ability]) =>
                 <div class="flex flex-col items-center">
-                  <p class="uppercase text-sm elg:text-[14px] mb-1 dark:text-snow">
+                  <p class="uppercase text-sm mb-4 dark:text-snow">
                     {ability.name[locale()]}
                   </p>
                   <div class="flex items-center">
-                    <Dice
-                      text={modifier(character().save_dc[slug])}
-                      onClick={() => props.openDiceRoll(`/check save ${slug}`, character().save_dc[slug])}
-                    />
+                    <p class="text-2xl font-normal! dark:text-snow">
+                      <Dice
+                        text={modifier(character().save_dc[slug])}
+                        onClick={() => props.openDiceRoll(`/check save ${slug}`, character().save_dc[slug])}
+                      />
+                    </p>
                   </div>
                 </div>
               }
