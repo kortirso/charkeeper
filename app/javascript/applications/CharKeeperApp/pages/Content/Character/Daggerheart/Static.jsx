@@ -19,7 +19,7 @@ export const DaggerheartStatic = (props) => {
             {(slug) =>
               <div class="flex-1 emd:w-1/4">
                 <div class="blockable py-4">
-                  <p class="text-sm elg:text-[10px] uppercase text-center mb-4 dark:text-snow">{t(`daggerheart.static.${slug}`)}</p>
+                  <p class="text-sm uppercase text-center mb-4 dark:text-snow">{t(`daggerheart.static.${slug}`)}</p>
                   <div class="mx-auto flex items-center justify-center">
                     <p class="text-2xl font-normal! dark:text-snow">{character()[slug]}</p>
                   </div>

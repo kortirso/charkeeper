@@ -441,9 +441,7 @@
       "current": "Health",
       "max": "Max health",
       "temp": "Temp health"
-    },
-    "proficiencyBonus": "Proficiency",
-    "hitDices": "Hit dices"
+    }
   },
   "damage": {
     "bludge": "Bludgeoning",

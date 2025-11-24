@@ -80,36 +80,38 @@ export const Dnd5Abilities = (props) => {
           onCancelEditing={cancelEditing}
           onSaveChanges={updateCharacter}
         >
-          <div class="grid grid-cols-3 emd:grid-cols-6 elg:grid-cols-3 exl:grid-cols-6 gap-2">
-            <For each={Object.entries(config.abilities)}>
-              {([slug, values]) =>
-                <div class="blockable py-4">
-                  <p class="text-sm elg:text-[10px] uppercase text-center mb-4 dark:text-white">{values.name[locale()]}</p>
-                  <div class="w-16 h-16 flex items-center justify-center mx-auto relative">
-                    <Dice
-                      width="64"
-                      height="64"
-                      text={modifier(character().modifiers[slug])}
-                      textClassList="text-4xl"
-                      onClick={() => props.openDiceRoll(`/check attr ${slug}`, character().modifiers[slug])}
-                    />
-                    <div class="absolute -right-4 -bottom-0 w-8 h-8 rounded-full border border-gray-200 bg-white flex items-center justify-center opacity-75">
-                      <p class="text-xl">{editMode() ? abilitiesData()[slug] : character().modified_abilities[slug]}</p>
+          <div class="blockable py-4">
+            <div class="grid grid-cols-3 emd:grid-cols-6 elg:grid-cols-3 exl:grid-cols-6 gap-2">
+              <For each={Object.entries(config.abilities)}>
+                {([slug, values]) =>
+                  <div>
+                    <p class="text-sm uppercase text-center mb-4 dark:text-white">{values.name[locale()]}</p>
+                    <div class="w-16 h-16 flex items-center justify-center mx-auto relative">
+                      <Dice
+                        width="64"
+                        height="64"
+                        text={modifier(character().modifiers[slug])}
+                        textClassList="text-4xl"
+                        onClick={() => props.openDiceRoll(`/check attr ${slug}`, character().modifiers[slug])}
+                      />
+                      <div class="absolute -right-4 -bottom-0 w-8 h-8 rounded-full border border-gray-200 bg-white flex items-center justify-center opacity-75">
+                        <p class="text-xl">{editMode() ? abilitiesData()[slug] : character().modified_abilities[slug]}</p>
+                      </div>
                     </div>
+                    <Show when={editMode()}>
+                      <div class="mt-2 flex justify-center gap-2">
+                        <Button default size="small" onClick={() => decreaseAbilityValue(slug)}>
+                          <Minus />
+                        </Button>
+                        <Button default size="small" onClick={() => increaseAbilityValue(slug)}>
+                          <Plus />
+                        </Button>
+                      </div>
+                    </Show>
                   </div>
-                  <Show when={editMode()}>
-                    <div class="mt-2 flex justify-center gap-2">
-                      <Button default size="small" onClick={() => decreaseAbilityValue(slug)}>
-                        <Minus />
-                      </Button>
-                      <Button default size="small" onClick={() => increaseAbilityValue(slug)}>
-                        <Plus />
-                      </Button>
-                    </div>
-                  </Show>
-                </div>
-              }
-            </For>
+                }
+              </For>
+            </div>
           </div>
         </EditWrapper>
       </GuideWrapper>
