@@ -23,6 +23,7 @@ export * from './Storage';
 export * from './Check';
 export * from './D20';
 export * from './Info';
+export * from './Combat';
 export * from './socials/Discord';
 export * from './socials/Telegram';
 export * from './socials/Vk';

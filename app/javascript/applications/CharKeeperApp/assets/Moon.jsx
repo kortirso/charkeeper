@@ -2,8 +2,8 @@ export const Moon = (props) => (
   <svg
     version="1.0"
     xmlns="http://www.w3.org/2000/svg"
-    width={props.width || 24}
-    height={props.height || 24}
+    width={props.width || 16}
+    height={props.height || 16}
     viewBox="0 0 1049.000000 1280.000000"
     preserveAspectRatio="xMidYMid meet"
   >

@@ -314,12 +314,6 @@
     "consumables": "Consumables",
     "primaryWeaponMagic": "Primary weapon magic"
   },
-  "rest": {
-    "oneAtShortRest": "Short - 1, long - full",
-    "shortRest": "Short rest",
-    "longRest": "Long rest",
-    "sessionRest": "Session rest"
-  },
   "create": "Create",
   "back": "Back",
   "save": "Save",

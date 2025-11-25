@@ -1,27 +1,42 @@
-import { Show, Switch, Match, For } from 'solid-js';
-import * as i18n from '@solid-primitives/i18n';
+import { Show, For } from 'solid-js';
 
 import { Button } from '../../components';
 import { useAppLocale } from '../../context';
-import { PlusSmall, Minus, Campfire, LongCampfire, Moon, Picnic } from '../../assets';
+import { PlusSmall, Minus, Campfire, LongCampfire, Moon, Picnic, Combat } from '../../assets';
 
+const FEATURE_ICONS = {
+  'one_at_short_rest': Picnic, 'short_rest': Campfire, 'long_rest': LongCampfire, 'session': Moon, 'combat': Combat
+}
 const TRANSLATION = {
   en: {
+    one_at_short_rest: 'Short - 1, long - full',
+    short_rest: 'Short rest',
+    long_rest: 'Long rest',
+    session: 'Session rest',
+    combat: 'Combat rest',
     ap: 'AP',
-    sp: 'SP'
+    sp: 'SP',
+    hope: 'Hope',
+    stress: 'Stress'
   },
   ru: {
+    one_at_short_rest: 'Короткий - 1, длинный - все',
+    short_rest: 'Короткий отдых',
+    long_rest: 'Длинный отдых',
+    session: 'Между сессиями',
+    combat: 'Между боями',
     ap: 'ОД',
-    sp: 'ОВ'
+    sp: 'ОВ',
+    hope: 'Надежда',
+    stress: 'Стресс'
   }
 }
 
 export const FeatureTitle = (props) => {
   const feature = () => props.feature;
+  const IconComponent = FEATURE_ICONS[props.feature.limit_refresh];
 
-  const [locale, dict] = useAppLocale();
-
-  const t = i18n.translator(dict);
+  const [locale] = useAppLocale();
 
   return (
     <div class="flex items-center">
@@ -31,7 +46,9 @@ export const FeatureTitle = (props) => {
           <div class="flex gap-x-2">
             <For each={Object.entries(feature().price)}>
               {([slug, value]) =>
-                <p>{TRANSLATION[locale()][slug]} {value}</p>
+                <Show when={TRANSLATION[locale()][slug]}>
+                  <p>{TRANSLATION[locale()][slug]} {value}</p>
+                </Show>
               }
             </For>
           </div>
@@ -43,20 +60,9 @@ export const FeatureTitle = (props) => {
             </Button>
             <p class="flex items-center justify-center mx-2">
               <span class="w-6 text-center">{feature().limit === 0 ? -feature().used_count : feature().limit - (feature().used_count || 0)}</span>
-              <Switch>
-                <Match when={feature().limit_refresh === 'one_at_short_rest'}>
-                  <span title={t('rest.oneAtShortRest')}><Picnic /></span>
-                </Match>
-                <Match when={feature().limit_refresh === 'short_rest'}>
-                  <span title={t('rest.shortRest')}><Campfire /></span>
-                </Match>
-                <Match when={feature().limit_refresh === 'long_rest'}>
-                  <span title={t('rest.longRest')}><LongCampfire /></span>
-                </Match>
-                <Match when={feature().limit_refresh === 'session'}>
-                  <span title={t('rest.sessionRest')}><Moon width={16} height={16} /></span>
-                </Match>
-              </Switch>
+              <Show when={IconComponent}>
+                <span title={TRANSLATION[locale()][feature().limit_refresh]}><IconComponent /></span>
+              </Show>
             </p>
             <Button default size="small" onClick={(event) => feature().limit === 0 || (feature().used_count || 0) > 0 ? props.onRestoreEnergy(event, feature()) : event.stopPropagation()}>
               <PlusSmall />
