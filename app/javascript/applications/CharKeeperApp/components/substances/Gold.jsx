@@ -8,7 +8,7 @@ import { updateCharacterRequest } from '../../requests/updateCharacterRequest';
 const TRANSLATION = {
   en: {
     measure: 'Change measure',
-    amount: 'Change amout',
+    amount: 'Amount',
     daggerheart: {
       coins: 'Coins',
       handfuls: 'Handfuls',

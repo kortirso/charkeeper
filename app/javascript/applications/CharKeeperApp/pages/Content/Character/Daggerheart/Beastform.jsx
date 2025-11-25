@@ -56,7 +56,7 @@ export const DaggerheartBeastform = (props) => {
               onSelect={(value) => changeBeastform(value)}
             />
             <Show when={character().beastform}>
-              <p class="mt-2">{translation[locale()]['desc']}</p>
+              <p class="text-sm mt-2">{translation[locale()]['desc']}</p>
               <p class="mt-1">{translation[locale()]['examples']} {config.beastforms[character().beastform].examples[locale()]}</p>
               <p class="mt-1">{translation[locale()]['adv']} {config.beastforms[character().beastform].adv[locale()]}</p>
             </Show>
