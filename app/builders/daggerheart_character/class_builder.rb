@@ -8,6 +8,11 @@ module DaggerheartCharacter
 
     def equip(character:)
       class_builder(character.data.main_class).equip(character: character)
+
+      Character::Item.create(character: character, item: Daggerheart::Item.find_by(slug: 'torch'), state: 'backpack')
+      Character::Item.create(character: character, item: Daggerheart::Item.find_by(slug: 'rope'), state: 'backpack')
+      Character::Item.create(character: character, item: Daggerheart::Item.find_by(slug: 'tent'), state: 'backpack')
+      Character::Item.create(character: character, item: Daggerheart::Item.find_by(slug: 'bedroll'), state: 'backpack')
     end
 
     private

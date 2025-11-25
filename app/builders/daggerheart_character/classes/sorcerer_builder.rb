@@ -13,8 +13,8 @@ module DaggerheartCharacter
       end
 
       def equip(character:)
-        Character::Item.create(character: character, item: Daggerheart::Item.find_by(slug: 'dualstaff'), ready_to_use: true)
-        Character::Item.create(character: character, item: Daggerheart::Item.find_by(slug: 'gambeson_armor'), ready_to_use: true)
+        Character::Item.create(character: character, item: Daggerheart::Item.find_by(slug: 'dualstaff'), state: 'hands')
+        Character::Item.create(character: character, item: Daggerheart::Item.find_by(slug: 'gambeson_armor'), state: 'equipment')
       end
     end
   end

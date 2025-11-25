@@ -13,9 +13,9 @@ module DaggerheartCharacter
       end
 
       def equip(character:)
-        Character::Item.create(character: character, item: Daggerheart::Item.find_by(slug: 'hallowed_axe'), ready_to_use: true)
-        Character::Item.create(character: character, item: Daggerheart::Item.find_by(slug: 'round_shield'), ready_to_use: true)
-        Character::Item.create(character: character, item: Daggerheart::Item.find_by(slug: 'chainmail_armor'), ready_to_use: true)
+        Character::Item.create(character: character, item: Daggerheart::Item.find_by(slug: 'hallowed_axe'), state: 'hands')
+        Character::Item.create(character: character, item: Daggerheart::Item.find_by(slug: 'round_shield'), state: 'hands')
+        Character::Item.create(character: character, item: Daggerheart::Item.find_by(slug: 'chainmail_armor'), state: 'equipment')
       end
     end
   end
