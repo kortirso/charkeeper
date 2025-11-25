@@ -3,6 +3,10 @@
 module HomebrewContext
   module Daggerheart
     class AddItemCommand < BaseCommand
+      include Deps[
+        refresh_bonuses: 'commands.bonuses_context.refresh'
+      ]
+
       use_contract do
         config.messages.namespace = :homebrew_item
 
@@ -12,11 +16,16 @@ module HomebrewContext
         params do
           required(:user).filled(type?: ::User)
           required(:name).filled(:string, max_size?: 50)
-          optional(:description).filled(:string, max_size?: 250)
           required(:kind).filled(Kinds)
+          optional(:description).maybe(:string, max_size?: 250)
           optional(:itemable_type).maybe(Types)
           optional(:itemable_id).maybe(:string, :uuid_v4?)
           optional(:info).hash
+          optional(:bonuses).maybe(:array).each(:hash) do
+            required(:id).filled(type_included_in?: [Integer, String])
+            required(:type).filled(:string)
+            required(:value)
+          end
         end
       end
 
@@ -36,6 +45,8 @@ module HomebrewContext
 
       def do_persist(input)
         result = ::Daggerheart::Item.create!(input.except(:itemable_type, :itemable_id))
+
+        refresh_bonuses.call(bonusable: result, bonuses: input[:bonuses]) if input[:bonuses]
 
         { result: result }
       end

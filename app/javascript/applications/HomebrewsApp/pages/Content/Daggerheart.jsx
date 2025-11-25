@@ -35,7 +35,7 @@ export const Daggerheart = () => {
   return (
     <>
       <div class="flex gap-x-4 my-4">
-        <For each={['ancestries', 'communities']}>
+        <For each={['ancestries', 'communities', 'items', 'weapons', 'armor']}>
           {(item) =>
             <p
               class="homebrew-provider-nav"

@@ -23,7 +23,9 @@ const TRANSLATION = {
     'major': 'Major threshold',
     'severe': 'Severe threshold',
     'attack': 'Attacks',
-    'proficiency': 'Proficiency'
+    'proficiency': 'Proficiency',
+    'level': 'Level',
+    'tier': 'Tier'
   },
   ru: {
     'str': 'Сила',
@@ -40,7 +42,9 @@ const TRANSLATION = {
     'major': 'Ощутимый урон',
     'severe': 'Тяжёлый урон',
     'attack': 'Атаки',
-    'proficiency': 'Мастерство'
+    'proficiency': 'Мастерство',
+    'level': 'Уровень',
+    'tier': 'Ранг'
   }
 }
 
