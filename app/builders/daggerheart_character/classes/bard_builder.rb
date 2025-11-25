@@ -13,9 +13,9 @@ module DaggerheartCharacter
       end
 
       def equip(character:)
-        Character::Item.create(character: character, item: Daggerheart::Item.find_by(slug: 'rapier'), ready_to_use: true)
-        Character::Item.create(character: character, item: Daggerheart::Item.find_by(slug: 'small_dagger'), ready_to_use: true)
-        Character::Item.create(character: character, item: Daggerheart::Item.find_by(slug: 'gambeson_armor'), ready_to_use: true)
+        Character::Item.create(character: character, item: Daggerheart::Item.find_by(slug: 'rapier'), state: 'hands')
+        Character::Item.create(character: character, item: Daggerheart::Item.find_by(slug: 'small_dagger'), state: 'hands')
+        Character::Item.create(character: character, item: Daggerheart::Item.find_by(slug: 'gambeson_armor'), state: 'equipment')
       end
     end
   end
