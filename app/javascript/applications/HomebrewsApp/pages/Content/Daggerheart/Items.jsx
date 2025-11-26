@@ -1,7 +1,7 @@
 import { createSignal, createEffect, Show, For, batch } from 'solid-js';
 import { createStore } from 'solid-js/store';
 
-import { useAppState, useAppLocale } from '../../../context';
+import { useAppState, useAppLocale, useAppAlert } from '../../../context';
 import { Button, Input, TextArea, Select, createModal } from '../../../components';
 import { Edit, Trash } from '../../../assets';
 import { fetchDaggerheartItems } from '../../../requests/fetchDaggerheartItems';
@@ -19,6 +19,7 @@ const TRANSLATION = {
     description: 'Description',
     kind: 'Kind',
     save: 'Save',
+    requiredName: 'Name is required',
     kinds: {
       item: 'Item',
       consumable: 'Consumable'
@@ -31,6 +32,7 @@ const TRANSLATION = {
     description: 'Описание',
     kind: 'Тип предмета',
     save: 'Сохранить',
+    requiredName: 'Название предмета - обязательное поле',
     kinds: {
       item: 'Предмет',
       consumable: 'Расходник'
@@ -44,6 +46,7 @@ export const DaggerheartItems = () => {
   const [items, setItems] = createSignal(undefined);
 
   const [appState] = useAppState();
+  const [{ renderAlert }] = useAppAlert();
   const [locale] = useAppLocale();
   const { Modal, openModal, closeModal } = createModal();
 
@@ -72,6 +75,8 @@ export const DaggerheartItems = () => {
   }
 
   const saveItem = () => {
+    if (itemForm.name.length === 0) return renderAlert(TRANSLATION[locale()].requiredName);
+
     itemForm.id === null ? createItem() : updateItem();
   }
 
@@ -126,7 +131,7 @@ export const DaggerheartItems = () => {
             {(item) =>
               <tr>
                 <td class="minimum-width py-1">{item.name[locale()]}</td>
-                <td class="minimum-width py-1">{TRANSLATION[locale()].kinds[item.kind]}</td>
+                <td class="minimum-width py-1 text-sm">{TRANSLATION[locale()].kinds[item.kind]}</td>
                 <td class="py-1">{item.description[locale()]}</td>
                 <td>
                   <div class="flex items-center justify-end gap-x-2 text-neutral-700">
