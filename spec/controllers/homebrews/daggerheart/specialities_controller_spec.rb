@@ -1,14 +1,33 @@
 # frozen_string_literal: true
 
-describe Frontend::Homebrews::SubclassesController do
+describe Homebrews::Daggerheart::SpecialitiesController do
   let!(:user_session) { create :user_session }
   let(:access_token) { Authkeeper::GenerateTokenService.new.call(user_session: user_session)[:result] }
+
+  describe 'GET#index' do
+    context 'for logged users' do
+      context 'for Daggerheart' do
+        let(:request) { get :index, params: { provider: 'daggerheart', charkeeper_access_token: access_token } }
+        let!(:class1) { create :homebrew_speciality, :daggerheart, user: user_session.user }
+
+        before { create :homebrew_speciality, :daggerheart }
+
+        it 'returns data', :aggregate_failures do
+          request
+
+          expect(response).to have_http_status :ok
+          expect(response.parsed_body['specialities'].size).to eq 1
+          expect(response.parsed_body['specialities'].pluck('id')).to contain_exactly(class1.id)
+        end
+      end
+    end
+  end
 
   describe 'POST#create' do
     context 'for logged users' do
       let(:request) {
         post :create, params: {
-          brewery: { name: name, class_name: 'id', spellcast: 'pre' },
+          brewery: { name: name, domains: %w[1 2], evasion: 9, health_max: 6 },
           provider: 'daggerheart',
           charkeeper_access_token: access_token
         }
@@ -18,16 +37,16 @@ describe Frontend::Homebrews::SubclassesController do
         let(:name) { '' }
 
         it 'does not create homebrew', :aggregate_failures do
-          expect { request }.not_to change(Daggerheart::Homebrew::Subclass, :count)
+          expect { request }.not_to change(Daggerheart::Homebrew::Speciality, :count)
           expect(response).to have_http_status :unprocessable_content
         end
       end
 
       context 'for valid params' do
-        let(:name) { 'Moon' }
+        let(:name) { 'Artificer' }
 
         it 'creates homebrew', :aggregate_failures do
-          expect { request }.to change(Daggerheart::Homebrew::Subclass, :count).by(1)
+          expect { request }.to change(Daggerheart::Homebrew::Speciality, :count).by(1)
           expect(response).to have_http_status :created
         end
       end
@@ -36,8 +55,7 @@ describe Frontend::Homebrews::SubclassesController do
 
   describe 'DELETE#destroy' do
     context 'for logged users' do
-      let!(:homebrew_speciality) { create :homebrew_speciality, :daggerheart }
-      let!(:homebrew) { create :homebrew_subclass, :daggerheart }
+      let!(:homebrew) { create :homebrew_speciality, :daggerheart }
 
       context 'for unexisting homebrew' do
         it 'returns error' do
@@ -60,29 +78,26 @@ describe Frontend::Homebrews::SubclassesController do
           delete :destroy, params: { id: homebrew.id, provider: 'daggerheart', charkeeper_access_token: access_token }
         }
 
-        before do
-          homebrew_speciality.update!(user: user_session.user)
-          homebrew.update!(user: user_session.user)
-        end
+        before { homebrew.update!(user: user_session.user) }
 
         it 'deletes homebrew', :aggregate_failures do
-          expect { request }.to change(Daggerheart::Homebrew::Subclass, :count).by(-1)
+          expect { request }.to change(Daggerheart::Homebrew::Speciality, :count).by(-1)
           expect(response).to have_http_status :ok
           expect(response.parsed_body).to eq({ 'result' => 'ok' })
         end
 
-        context 'when character exists with deleting subclass' do
+        context 'when character exists with deleting ancestry' do
           let!(:character) { create :character, :daggerheart, user: user_session.user }
 
           before do
-            character.data['subclasses'] = character.data['subclasses'].merge({ homebrew_speciality.id => homebrew.id })
+            character.data['subclasses'] = { homebrew.id => 1 }
             character.save
           end
 
           it 'returns error', :aggregate_failures do
-            expect { request }.not_to change(Daggerheart::Homebrew::Race, :count)
+            expect { request }.not_to change(Daggerheart::Homebrew::Speciality, :count)
             expect(response).to have_http_status :unprocessable_content
-            expect(response.parsed_body['errors']).to eq({ 'base' => ['Персонаж с таким подклассом существует'] })
+            expect(response.parsed_body['errors']).to eq({ 'base' => ['Персонаж с таким классом существует'] })
           end
         end
       end

@@ -1,7 +1,7 @@
 import { Switch, Match } from 'solid-js';
 
 import {
-  CharacterTab, PasswordsTab, FeedbackTab, UsernameTab, NotificationsTab, HomebrewContentTab, CharacterView, CampaignTab,
+  CharacterTab, PasswordsTab, FeedbackTab, UsernameTab, NotificationsTab, CharacterView, CampaignTab,
   CampaignJoinTab, ProfileDeleteTab
 } from '../pages';
 
@@ -33,9 +33,6 @@ export const ContentPage = (props) => {
         </Match>
         <Match when={appState.activePage === 'profileDeleting'}>
           <ProfileDeleteTab onNavigate={props.onNavigate} />
-        </Match>
-        <Match when={appState.activePage === 'homebrew'}>
-          <HomebrewContentTab onNavigate={props.onNavigate} />
         </Match>
         <Match when={appState.activePage === 'campaign'}>
           <CampaignTab onNavigate={props.onNavigate} />

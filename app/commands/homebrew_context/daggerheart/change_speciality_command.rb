@@ -2,16 +2,16 @@
 
 module HomebrewContext
   module Daggerheart
-    class ChangeCommunityCommand < BaseCommand
+    class ChangeSpecialityCommand < BaseCommand
       include Deps[
         refresh_user_data: 'services.homebrews_context.refresh_user_data'
       ]
 
       use_contract do
-        config.messages.namespace = :homebrew_community
+        config.messages.namespace = :homebrew_speciality
 
         params do
-          required(:community).filled(type?: ::Daggerheart::Homebrew::Community)
+          required(:speciality).filled(type?: ::Daggerheart::Homebrew::Speciality)
           optional(:name).filled(:string, max_size?: 50)
         end
       end
@@ -19,11 +19,11 @@ module HomebrewContext
       private
 
       def do_persist(input)
-        input[:community].update!(input.slice(:name))
+        input[:speciality].update!(input.slice(:name))
 
-        refresh_user_data.call(user: input[:community].user) if input[:community].user
+        refresh_user_data.call(user: input[:speciality].user) if input[:speciality].user
 
-        { result: input[:community] }
+        { result: input[:speciality] }
       end
     end
   end

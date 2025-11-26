@@ -1,8 +1,8 @@
 import { createSignal, Switch, Match } from 'solid-js'; 
 
-import { CharactersTab, HomebrewTab, SettingsTab, CampaignsTab, BotTab } from '../pages';
+import { CharactersTab, SettingsTab, CampaignsTab, BotTab } from '../pages';
 import { IconButton, NotificationsBudge } from '../components';
-import { List, Edit, Homebrew, Campaigns, Chat } from '../assets';
+import { List, Edit, Campaigns, Chat } from '../assets';
 
 export const NavigationPage = () => {
   const [currentTab, setCurrentTab] = createSignal('characters');
@@ -18,9 +18,6 @@ export const NavigationPage = () => {
           </Match>
           <Match when={currentTab() === 'campaigns'}>
             <CampaignsTab />
-          </Match>
-          <Match when={currentTab() === 'homebrew'}>
-            <HomebrewTab />
           </Match>
           <Match when={currentTab() === 'bot'}>
             <BotTab />
@@ -39,11 +36,6 @@ export const NavigationPage = () => {
         <div class="flex-1">
           <IconButton colored size="xl" classList="mx-auto" active={currentTab() === 'campaigns'} onClick={() => setCurrentTab('campaigns')}>
             <Campaigns />
-          </IconButton>
-        </div>
-        <div class="flex-1">
-          <IconButton colored size="xl" classList="mx-auto" active={currentTab() === 'homebrew'} onClick={() => setCurrentTab('homebrew')}>
-            <Homebrew width={28} height={28} />
           </IconButton>
         </div>
         <div class="flex-1">

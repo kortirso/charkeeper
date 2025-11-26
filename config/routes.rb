@@ -168,6 +168,8 @@ Rails.application.routes.draw do
     namespace :daggerheart do
       resources :ancestries, only: %i[index show create update destroy]
       resources :communities, only: %i[index show create update destroy]
+      resources :specialities, only: %i[index show create update destroy]
+      resources :subclasses, only: %i[index show create update destroy]
       resources :feats, only: %i[index create destroy]
       resources :items, only: %i[index show create update destroy]
     end

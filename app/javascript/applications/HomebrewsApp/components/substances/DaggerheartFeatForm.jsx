@@ -1,8 +1,6 @@
-import { createSignal, createMemo, Show } from 'solid-js';
+import { createSignal, Show } from 'solid-js';
 import { createStore } from 'solid-js/store';
 import { Key } from '@solid-primitives/keyed';
-
-import config from '../../../CharKeeperApp/data/daggerheart.json';
 
 import { Input, Button, Select, TextArea } from '../../components';
 import { useAppLocale } from '../../context';
@@ -23,6 +21,7 @@ const TRANSLATION = {
     bonusModify: 'Modify',
     bonusType: 'Bonus type',
     bonusValue: 'Bonus value',
+    mastery: 'Subclass mastery',
     modifies: {
       'str': 'Strength',
       'agi': 'Agility',
@@ -54,6 +53,7 @@ const TRANSLATION = {
     bonusModify: 'Прибавка к',
     bonusType: 'Тип бонуса',
     bonusValue: 'Значение бонуса',
+    mastery: 'Мастерство подкласса',
     modifies: {
       'str': 'Сила',
       'agi': 'Проворность',
@@ -92,62 +92,17 @@ export const DaggerheartFeatForm = (props) => {
 
   const [locale] = useAppLocale();
 
-  const daggerheartHeritages = createMemo(() => {
-    const result = translate(config.heritages, locale());
-    if (props.homebrews === undefined) return result;
+  // const daggerheartCharacters = createMemo(() => {
+  //   if (props.characters === undefined) return [];
 
-    return { ...result, ...props.homebrews.races.reduce((acc, item) => { acc[item.id] = item.name; return acc; }, {}) };
-  });
+  //   return props.characters.filter((item) => item.provider === 'daggerheart').reduce((acc, item) => { acc[item.id] = item.name; return acc; }, {});
+  // });
 
-  const daggerheartClasses = createMemo(() => {
-    const result = translate(config.classes, locale());
-    if (props.homebrews === undefined) return result;
-
-    return { ...result, ...props.homebrews.classes.reduce((acc, item) => { acc[item.id] = item.name; return acc; }, {}) };
-  });
-
-  const daggerheartSubclasses = createMemo(() => {
-    if (props.homebrews === undefined) return [];
-
-    return props.homebrews.subclasses.reduce((acc, item) => { acc[item.id] = item.name; return acc; }, {});
-  });
-
-  const daggerheartCommunities = createMemo(() => {
-    const result = translate(config.communities, locale());
-    if (props.homebrews === undefined) return result;
-
-    return { ...result, ...props.homebrews.communities.reduce((acc, item) => { acc[item.id] = item.name; return acc; }, {}) };
-  });
-
-  const daggerheartTransformations = createMemo(() => {
-    if (props.homebrews === undefined) return {};
-
-    return props.homebrews.transformations.reduce((acc, item) => { acc[item.id] = item.name; return acc; }, {});
-  });
-
-  const daggerheartDomains = createMemo(() => {
-    if (props.homebrews === undefined) return {};
-
-    return props.homebrews.domains.reduce((acc, item) => { acc[item.id] = item.name; return acc; }, {});
-  });
-
-  const daggerheartCharacters = createMemo(() => {
-    if (props.characters === undefined) return [];
-
-    return props.characters.filter((item) => item.provider === 'daggerheart').reduce((acc, item) => { acc[item.id] = item.name; return acc; }, {});
-  });
-
-  const originValues = createMemo(() => {
-    if (featForm.origin === 'ancestry') return daggerheartHeritages();
-    if (featForm.origin === 'class') return daggerheartClasses();
-    if (featForm.origin === 'subclass') return daggerheartSubclasses();
-    if (featForm.origin === 'community') return daggerheartCommunities();
-    if (featForm.origin === 'character') return daggerheartCharacters();
-    if (featForm.origin === 'transformation') return daggerheartTransformations();
-    if (featForm.origin === 'domain_card') return daggerheartDomains();
+  // const originValues = createMemo(() => {
+  //   if (featForm.origin === 'character') return daggerheartCharacters();
     
-    return [];
-  });
+  //   return [];
+  // });
 
   const addBonus = () => setBonuses(bonuses().concat({ id: Math.floor(Math.random() * 1000), type: 'static', modify: null, value: null }));
 
@@ -197,28 +152,10 @@ export const DaggerheartFeatForm = (props) => {
         value={featForm.description}
         onChange={(value) => setFeatForm({ ...featForm, description: value })}
       />
-      <Show when={props.origin === undefined}>
-        <Select
-          containerClassList="mb-2"
-          labelText="Origin"
-          items={[]}
-          selectedValue={featForm.origin}
-          onSelect={(value) => setFeatForm({ ...featForm, origin: value, origin_value: '' })}
-        />
-      </Show>
-      <Show when={props.originValue === undefined && featForm.origin}>
-        <Select
-          containerClassList="mb-2"
-          labelText="Origin value"
-          items={originValues()}
-          selectedValue={featForm.origin_value}
-          onSelect={(value) => setFeatForm({ ...featForm, origin_value: value })}
-        />
-      </Show>
       <Show when={featForm.origin === 'subclass'}>
         <Select
           containerClassList="mb-2"
-          labelText="Subclass mastery"
+          labelText={TRANSLATION[locale()].mastery}
           items={{ 1: 'Foundation', 2: 'Specialization', 3: 'Mastery' }}
           selectedValue={featForm.subclass_mastery}
           onSelect={(value) => setFeatForm({ ...featForm, subclass_mastery: value })}
