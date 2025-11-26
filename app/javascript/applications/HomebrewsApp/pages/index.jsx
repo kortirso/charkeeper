@@ -6,6 +6,7 @@ export * from './Content/Daggerheart';
 export * from './Content/Pathfinder2';
 export * from './Content/Dc20';
 
+export * from './Content/Daggerheart/Books';
 export * from './Content/Daggerheart/Ancestries';
 export * from './Content/Daggerheart/Communities';
 export * from './Content/Daggerheart/Classes';

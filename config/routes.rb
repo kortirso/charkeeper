@@ -83,7 +83,6 @@ Rails.application.routes.draw do
     resource :users, only: %i[update destroy] do
       resources :identities, only: %i[destroy], module: 'users'
       resources :feedbacks, only: %i[create], module: 'users'
-      resources :books, only: %i[update], module: 'users'
       resources :notifications, only: %i[index], module: 'users' do
         get 'unread', on: :collection
       end
@@ -150,6 +149,9 @@ Rails.application.routes.draw do
       resources :transformations, only: %i[index show create update destroy]
       resources :feats, only: %i[index create destroy]
       resources :items, only: %i[index show create update destroy]
+      resources :books, only: %i[index create update destroy] do
+        resource :content, only: %i[create]
+      end
     end
   end
 
