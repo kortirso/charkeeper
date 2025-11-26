@@ -56,30 +56,6 @@ Rails.application.routes.draw do
   namespace :frontend do
     resources :bots, only: %i[create]
     namespace :homebrews do
-      scope ':provider' do
-        resources :books, only: %i[index]
-        resources :races, only: %i[index create destroy] do
-          resource :copy, only: %i[create], module: :races
-        end
-        resources :feats, only: %i[index create destroy]
-        resources :items, only: %i[index create destroy] do
-          resource :copy, only: %i[create], module: :items
-        end
-        resources :specialities, only: %i[index create destroy]
-        resources :subclasses, only: %i[create destroy] do
-          resource :copy, only: %i[create], module: :subclasses
-        end
-        resources :communities, only: %i[destroy] do
-          resource :copy, only: %i[create], module: :communities
-        end
-        resources :transformations, only: %i[destroy] do
-          resource :copy, only: %i[create], module: :transformations
-        end
-        resources :domains, only: %i[destroy] do
-          resource :copy, only: %i[create], module: :domains
-        end
-      end
-
       get ':provider', to: 'list#index'
     end
     resources :homebrews, only: %i[index]
@@ -170,6 +146,8 @@ Rails.application.routes.draw do
       resources :communities, only: %i[index show create update destroy]
       resources :specialities, only: %i[index show create update destroy]
       resources :subclasses, only: %i[index show create update destroy]
+      resources :domains, only: %i[index show create update destroy]
+      resources :transformations, only: %i[index show create update destroy]
       resources :feats, only: %i[index create destroy]
       resources :items, only: %i[index show create update destroy]
     end
