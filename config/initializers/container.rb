@@ -127,6 +127,9 @@ module Charkeeper
     register('commands.homebrew_context.daggerheart.add_transformation') {
       HomebrewContext::Daggerheart::AddTransformationCommand.new
     }
+    register('commands.homebrew_context.daggerheart.change_transformation') {
+      HomebrewContext::Daggerheart::ChangeTransformationCommand.new
+    }
     register('commands.homebrew_context.daggerheart.copy_transformation') {
       HomebrewContext::Daggerheart::CopyTransformationCommand.new
     }
@@ -136,6 +139,9 @@ module Charkeeper
 
     register('commands.homebrew_context.daggerheart.add_domain') {
       HomebrewContext::Daggerheart::AddDomainCommand.new
+    }
+    register('commands.homebrew_context.daggerheart.change_domain') {
+      HomebrewContext::Daggerheart::ChangeDomainCommand.new
     }
     register('commands.homebrew_context.daggerheart.copy_domain') {
       HomebrewContext::Daggerheart::CopyDomainCommand.new

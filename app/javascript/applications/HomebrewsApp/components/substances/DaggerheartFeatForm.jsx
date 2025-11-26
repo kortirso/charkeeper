@@ -22,6 +22,7 @@ const TRANSLATION = {
     bonusType: 'Bonus type',
     bonusValue: 'Bonus value',
     mastery: 'Subclass mastery',
+    domainLevel: 'Domain level',
     modifies: {
       'str': 'Strength',
       'agi': 'Agility',
@@ -54,6 +55,7 @@ const TRANSLATION = {
     bonusType: 'Тип бонуса',
     bonusValue: 'Значение бонуса',
     mastery: 'Мастерство подкласса',
+    domainLevel: 'Уровень домена',
     modifies: {
       'str': 'Сила',
       'agi': 'Проворность',
@@ -163,8 +165,9 @@ export const DaggerheartFeatForm = (props) => {
       </Show>
       <Show when={featForm.origin === 'domain_card'}>
         <Input
+          numeric
           containerClassList="mb-2"
-          labelText=""
+          labelText={TRANSLATION[locale()].domainLevel}
           value={featForm.level}
           onInput={(value) => setFeatForm({ ...featForm, level: parseInt(value) })}
         />
@@ -228,13 +231,6 @@ export const DaggerheartFeatForm = (props) => {
           }
         </Key>
       </Show>
-      <Input
-        nemeric
-        containerClassList="mb-2"
-        labelText={TRANSLATION[locale()]['limit']}
-        value={featForm.limit}
-        onInput={(value) => setFeatForm({ ...featForm, limit: value })}
-      />
       <Show when={featForm.limit}>
         <Select
           containerClassList="mb-2"
@@ -244,6 +240,13 @@ export const DaggerheartFeatForm = (props) => {
           onSelect={(value) => setFeatForm({ ...featForm, limit_refresh: value })}
         />
       </Show>
+      <Input
+        nemeric
+        containerClassList="mb-2"
+        labelText={TRANSLATION[locale()]['limit']}
+        value={featForm.limit}
+        onInput={(value) => setFeatForm({ ...featForm, limit: value })}
+      />
       <div class="flex justify-end gap-4 mt-4">
         <Button default classList="py-1 px-2" onClick={props.onCancel}>{TRANSLATION[locale()]['cancel']}</Button>
         <Button default classList="py-1 px-2" onClick={save}>{TRANSLATION[locale()]['save']}</Button>

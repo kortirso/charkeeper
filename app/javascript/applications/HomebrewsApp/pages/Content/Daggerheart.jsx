@@ -2,7 +2,7 @@ import { For, Switch, Match } from 'solid-js';
 
 import {
   DaggerheartAncestries, DaggerheartCommunities, DaggerheartClasses, DaggerheartSubclasses, DaggerheartItems,
-  DaggerheartWeapons, DaggerheartArmor
+  DaggerheartWeapons, DaggerheartArmor, DaggerheartDomains, DaggerheartTransformations
 } from '../../pages';
 import { useAppState, useAppLocale } from '../../context';
 
@@ -14,7 +14,9 @@ const TRANSLATION = {
     subclasses: 'Subclasses',
     items: 'Items',
     weapons: 'Weapons',
-    armor: 'Armor'
+    armor: 'Armor',
+    domains: 'Domains',
+    transformations: 'Transformations'
   },
   ru: {
     ancestries: 'Расы',
@@ -23,7 +25,9 @@ const TRANSLATION = {
     subclasses: 'Подклассы',
     items: 'Предметы',
     weapons: 'Оружие',
-    armor: 'Броня'
+    armor: 'Броня',
+    domains: 'Домены',
+    transformations: 'Трансформации'
   }
 }
 
@@ -35,7 +39,7 @@ export const Daggerheart = () => {
   return (
     <>
       <div class="flex gap-x-4 my-4">
-        <For each={['ancestries', 'communities', 'classes', 'subclasses', 'items', 'weapons', 'armor']}>
+        <For each={['ancestries', 'communities', 'classes', 'subclasses', 'items', 'weapons', 'armor', 'domains', 'transformations']}>
           {(item) =>
             <p
               class="homebrew-provider-nav"
@@ -50,7 +54,7 @@ export const Daggerheart = () => {
           Object.entries({
             ancestries: DaggerheartAncestries, communities: DaggerheartCommunities, classes: DaggerheartClasses,
             subclasses: DaggerheartSubclasses, items: DaggerheartItems, weapons: DaggerheartWeapons,
-            armor: DaggerheartArmor
+            armor: DaggerheartArmor, domains: DaggerheartDomains, transformations: DaggerheartTransformations
           })
         }>
           {([item, Component]) =>

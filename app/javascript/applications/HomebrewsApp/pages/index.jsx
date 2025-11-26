@@ -13,3 +13,5 @@ export * from './Content/Daggerheart/Subclasses';
 export * from './Content/Daggerheart/Items';
 export * from './Content/Daggerheart/Weapons';
 export * from './Content/Daggerheart/Armor';
+export * from './Content/Daggerheart/Domains';
+export * from './Content/Daggerheart/Transformations';
