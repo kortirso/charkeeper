@@ -212,6 +212,21 @@ export const DaggerheartWeapons = () => {
     <Show when={items() !== undefined} fallback={<></>}>
       <Button default classList="mb-4 px-2 py-1" onClick={openCreateItemModal}>{TRANSLATION[locale()].add}</Button>
       <table class="w-full table">
+        <thead>
+          <tr class="text-sm">
+            <td class="p-1" />
+            <td class="p-1">{TRANSLATION[locale()].kind}</td>
+            <td class="p-1">{TRANSLATION[locale()].tier}</td>
+            <td class="p-1">{TRANSLATION[locale()].trait}</td>
+            <td class="p-1">{TRANSLATION[locale()].range}</td>
+            <td class="p-1 text-nowrap">{TRANSLATION[locale()].damageType}</td>
+            <td class="p-1">{TRANSLATION[locale()].damage}</td>
+            <td class="p-1">{TRANSLATION[locale()].burden}</td>
+            <td class="p-1" />
+            <td class="p-1" />
+            <td class="p-1" />
+          </tr>
+        </thead>
         <tbody>
           <For each={items()}>
             {(item) =>
@@ -221,6 +236,7 @@ export const DaggerheartWeapons = () => {
                 <td class="minimum-width py-1 text-sm">{item.info.tier}</td>
                 <td class="minimum-width py-1 text-sm">{item.info.trait ? config.traits[item.info.trait].name[locale()] : ''}</td>
                 <td class="minimum-width py-1 text-sm">{config.ranges[item.info.range].name[locale()]}</td>
+                <td class="minimum-width py-1 text-sm">{config.damageTypes[item.info.damage_type].name[locale()]}</td>
                 <td class="minimum-width py-1 text-sm">
                   {item.info.damage}
                   <Show when={item.info.damage_bonus !== 0}>

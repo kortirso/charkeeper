@@ -18,6 +18,7 @@ const TRANSLATION = {
     name: 'Item name',
     description: 'Description',
     kind: 'Kind',
+    kindTable: 'Kind',
     save: 'Save',
     requiredName: 'Name is required',
     kinds: {
@@ -31,6 +32,7 @@ const TRANSLATION = {
     name: 'Название предмета',
     description: 'Описание',
     kind: 'Тип предмета',
+    kindTable: 'Тип',
     save: 'Сохранить',
     requiredName: 'Название предмета - обязательное поле',
     kinds: {
@@ -126,6 +128,13 @@ export const DaggerheartItems = () => {
     <Show when={items() !== undefined} fallback={<></>}>
       <Button default classList="mb-4 px-2 py-1" onClick={openCreateItemModal}>{TRANSLATION[locale()]['add']}</Button>
       <table class="w-full table">
+        <thead>
+          <tr class="text-sm">
+            <td class="p-1" />
+            <td class="p-1">{TRANSLATION[locale()].kindTable}</td>
+            <td class="p-1">{TRANSLATION[locale()].description}</td>
+          </tr>
+        </thead>
         <tbody>
           <For each={items()}>
             {(item) =>

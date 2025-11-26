@@ -160,33 +160,37 @@ export const DaggerheartDomains = () => {
   return (
     <Show when={domains() !== undefined} fallback={<></>}>
       <Button default classList="mb-4 px-2 py-1" onClick={openCreateDomainModal}>{TRANSLATION[locale()].add}</Button>
-      <div class="grid grid-cols-3 gap-4">
-        <For each={domains()}>
-          {(domain) =>
-            <div class="blockable p-4 flex flex-col">
-              <div class="flex-1">
-                <p class="font-medium! mb-4 text-xl">{domain.name}</p>
+      <For each={domains()}>
+        {(domain) =>
+          <>
+            <div class="p-4 flex flex-col">
+              <p class="font-medium! mb-4 text-xl">{domain.name}</p>
+              <div class="flex items-center justify-between">
                 <Button default small classList="mb-2 p-1" onClick={() => openCreateFeatureModal(domain)}>
                   {TRANSLATION[locale()].addFeature}
                 </Button>
-                <For each={domain.features}>
-                  {(feature) =>
-                    <DaggerheartFeat feature={feature} onRemoveFeature={removeFeature} />
-                  }
-                </For>
-              </div>
-              <div class="flex items-center justify-end gap-x-2 text-neutral-700">
-                <Button default classList="px-2 py-1" onClick={() => openChangeDomainModal(domain)}>
-                  <Edit width="20" height="20" />
-                </Button>
-                <Button default classList="px-2 py-1" onClick={() => removeDomain(domain)}>
-                  <Trash width="20" height="20" />
-                </Button>
+                <div class="flex items-center justify-between gap-x-2 text-neutral-700">
+                  <Button default classList="px-2 py-1" onClick={() => openChangeDomainModal(domain)}>
+                    <Edit width="20" height="20" />
+                  </Button>
+                  <Button default classList="px-2 py-1" onClick={() => removeDomain(domain)}>
+                    <Trash width="20" height="20" />
+                  </Button>
+                </div>
               </div>
             </div>
-          }
-        </For>
-      </div>
+            <div class="grid grid-cols-3 gap-4">
+              <For each={domain.features}>
+                {(feature) =>
+                  <div class="blockable p-4 flex flex-col">
+                    <DaggerheartFeat feature={feature} onRemoveFeature={removeFeature} />
+                  </div>
+                }
+              </For>
+            </div>
+          </>
+        }
+      </For>
       <Modal>
         <Show when={modalMode() === 'domainForm'}>
           <p class="mb-2 text-xl">{TRANSLATION[locale()].newDomainTitle}</p>

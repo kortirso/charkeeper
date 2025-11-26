@@ -11,7 +11,7 @@ import { removeDaggerheartItem } from '../../../requests/removeDaggerheartItem';
 
 const TRANSLATION = {
   en: {
-    add: 'Add weapon',
+    add: 'Add armor',
     newItemTitle: 'Armor form',
     name: 'Armor name',
     tier: 'Tier',
@@ -19,7 +19,10 @@ const TRANSLATION = {
     features: 'Features',
     description: 'Description',
     save: 'Save',
-    requiredName: 'Name is required'
+    requiredName: 'Name is required',
+    thresholds: 'Damage thresholds',
+    major: 'Major threshold',
+    severe: 'Severe threshold'
   },
   ru: {
     add: 'Добавить броню',
@@ -32,7 +35,10 @@ const TRANSLATION = {
     save: 'Сохранить',
     requiredName: 'Название брони - обязательное поле',
     itemOrigin: 'Принадлежность',
-    itemOriginValue: 'Объект принадлежности'
+    itemOriginValue: 'Объект принадлежности',
+    thresholds: 'Пороги урона',
+    major: 'Ощутимый урон',
+    severe: 'Тяжёлый урон'
   }
 }
 
@@ -43,7 +49,9 @@ export const DaggerheartArmor = () => {
     tier: 1,
     base_score: 1,
     features: '',
-    description: ''
+    description: '',
+    major: 0,
+    severe: 0
   });
 
   const [items, setItems] = createSignal(undefined);
@@ -78,6 +86,8 @@ export const DaggerheartArmor = () => {
         kind: 'armor',
         tier: item.info.tier,
         base_score: item.info.base_score,
+        major: item.info.bonuses.thresholds.major,
+        severe: item.info.bonuses.thresholds.severe,
         features: item.info.features[0] ? item.info.features[0].en : '',
         description: item.description.en
       });
@@ -95,6 +105,7 @@ export const DaggerheartArmor = () => {
       info: {
         tier: itemForm.tier,
         base_score: itemForm.base_score,
+        bonuses: { thresholds: { major: itemForm.major, severe: itemForm.severe } },
         features: [{ en: itemForm.features, ru: itemForm.features }]
       }
     }
@@ -149,6 +160,17 @@ export const DaggerheartArmor = () => {
     <Show when={items() !== undefined} fallback={<></>}>
       <Button default classList="mb-4 px-2 py-1" onClick={openCreateItemModal}>{TRANSLATION[locale()].add}</Button>
       <table class="w-full table">
+        <thead>
+          <tr class="text-sm">
+            <td class="p-1" />
+            <td class="p-1">{TRANSLATION[locale()].tier}</td>
+            <td class="p-1 text-nowrap">{TRANSLATION[locale()].baseScore}</td>
+            <td class="p-1 text-nowrap">{TRANSLATION[locale()].thresholds}</td>
+            <td class="p-1" />
+            <td class="p-1" />
+            <td class="p-1" />
+          </tr>
+        </thead>
         <tbody>
           <For each={items()}>
             {(item) =>
@@ -156,6 +178,7 @@ export const DaggerheartArmor = () => {
                 <td class="minimum-width py-1">{item.name[locale()]}</td>
                 <td class="minimum-width py-1 text-sm">{item.info.tier}</td>
                 <td class="minimum-width py-1 text-sm">{item.info.base_score}</td>
+                <td class="minimum-width py-1 text-sm">{item.info.bonuses.thresholds.major}/{item.info.bonuses.thresholds.severe}</td>
                 <td class="minimum-width py-1 text-sm">{item.info.features[0] ? item.info.features[0].en : ''}</td>
                 <td class="py-1">{item.description[locale()]}</td>
                 <td>
@@ -195,6 +218,22 @@ export const DaggerheartArmor = () => {
             labelText={TRANSLATION[locale()].baseScore}
             value={itemForm.base_score}
             onInput={(value) => setItemForm({ ...itemForm, base_score: parseInt(value) })}
+          />
+        </div>
+        <div class="mb-2 flex gap-4">
+          <Input
+            numeric
+            containerClassList="flex-1"
+            labelText={TRANSLATION[locale()].major}
+            value={itemForm.major}
+            onInput={(value) => setItemForm({ ...itemForm, major: parseInt(value) })}
+          />
+          <Input
+            numeric
+            containerClassList="flex-1"
+            labelText={TRANSLATION[locale()].severe}
+            value={itemForm.severe}
+            onInput={(value) => setItemForm({ ...itemForm, severe: parseInt(value) })}
           />
         </div>
         <TextArea

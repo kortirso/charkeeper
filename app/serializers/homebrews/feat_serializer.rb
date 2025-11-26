@@ -2,7 +2,7 @@
 
 module Homebrews
   class FeatSerializer < ApplicationSerializer
-    attributes :id, :title, :description, :origin_value, :bonuses
+    attributes :id, :title, :description, :origin, :origin_value, :bonuses, :conditions
 
     def bonuses
       return [] unless context

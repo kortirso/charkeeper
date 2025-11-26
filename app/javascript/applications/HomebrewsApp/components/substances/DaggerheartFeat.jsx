@@ -53,7 +53,12 @@ export const DaggerheartFeat = (props) => {
 
   return (
     <div class="mb-4">
-      <p class="font-medium! mb-1">{props.feature.title.en}</p>
+      <div class="flex items-center justify-between">
+        <p class="font-medium! mb-2">{props.feature.title.en}</p>
+        <Show when={props.feature.origin === 'domain_card'}>
+          <p class="mb-2">{TRANSLATION[locale()].level} {props.feature.conditions.level}</p>
+        </Show>
+      </div>
       <p class="text-sm mb-2">{props.feature.description.en}</p>
       <Show when={props.feature.bonuses.length > 0}>
         <div class="flex flex-wrap gap-x-2">
