@@ -9,6 +9,8 @@ const TRANSLATION = {
   en: {
     measure: 'Change measure',
     amount: 'Amount',
+    negativeMoney: 'Money can not be negative',
+    tooMuchMoney: 'Too much money :)',
     daggerheart: {
       coins: 'Coins',
       handfuls: 'Handfuls',
@@ -24,6 +26,8 @@ const TRANSLATION = {
   ru: {
     measure: 'Мера изменения',
     amount: 'Кол-во',
+    negativeMoney: 'Деньги не могут быть отрицательными',
+    tooMuchMoney: 'Указано слишком много денег :)',
     daggerheart: {
       coins: 'Монеты',
       handfuls: 'Горсти',
@@ -48,7 +52,7 @@ export const Gold = (props) => {
   const [coinsChange, setCoinsChange] = createSignal(0);
 
   const [appState] = useAppState();
-  const [{ renderAlerts }] = useAppAlert();
+  const [{ renderAlerts, renderAlert }] = useAppAlert();
   const [locale] = useAppLocale();
 
   const daggerheartGoldFormat = () => {
@@ -74,8 +78,10 @@ export const Gold = (props) => {
   const updateMoney = async (value) => {
     const moneyChange = coinsChange() * value * (10 ** Object.keys(TRANSLATION.en[goldFormat()]).indexOf(measure()));
     const newAmount = character().money + moneyChange;
-    const payload = { money: newAmount };
+    if (newAmount < 0) return renderAlert(TRANSLATION[locale()].negativeMoney);
+    if (newAmount > 100000000) return renderAlert(TRANSLATION[locale()].tooMuchMoney);
 
+    const payload = { money: newAmount };
     const result = await updateCharacterRequest(
       appState.accessToken, character().provider, character().id, { character: payload, only_head: true }
     );
