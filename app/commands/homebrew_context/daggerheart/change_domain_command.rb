@@ -13,13 +13,14 @@ module HomebrewContext
         params do
           required(:domain).filled(type?: ::Daggerheart::Homebrew::Domain)
           optional(:name).filled(:string, max_size?: 50)
+          optional(:public).filled(:bool)
         end
       end
 
       private
 
       def do_persist(input)
-        input[:domain].update!(input.slice(:name))
+        input[:domain].update!(input.slice(:name, :public))
 
         refresh_user_data.call(user: input[:domain].user) if input[:domain].user
 

@@ -141,7 +141,9 @@ Rails.application.routes.draw do
 
   namespace :homebrews do
     namespace :daggerheart do
-      resources :ancestries, only: %i[index show create update destroy]
+      resources :ancestries, only: %i[index show create update destroy] do
+        post :copy, on: :member
+      end
       resources :communities, only: %i[index show create update destroy]
       resources :specialities, only: %i[index show create update destroy]
       resources :subclasses, only: %i[index show create update destroy]

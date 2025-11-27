@@ -4,8 +4,9 @@ module Homebrews
   module Daggerheart
     class AncestriesController < Homebrews::BaseController
       include Deps[
-        add_daggerheart_race: 'commands.homebrew_context.daggerheart.add_race',
-        change_daggerheart_race: 'commands.homebrew_context.daggerheart.change_race'
+        add_race: 'commands.homebrew_context.daggerheart.add_race',
+        change_race: 'commands.homebrew_context.daggerheart.change_race',
+        copy_race: 'commands.homebrew_context.daggerheart.copy_race'
       ]
       include SerializeRelation
       include SerializeResource
@@ -15,6 +16,7 @@ module Homebrews
       before_action :find_features, only: %i[index show]
       before_action :find_feature_bonuses, only: %i[index show]
       before_action :find_existing_characters, only: %i[destroy]
+      before_action :find_another_ancestry, only: %i[copy]
 
       def index
         serialize_relation(
@@ -22,7 +24,7 @@ module Homebrews
           ::Homebrews::Daggerheart::AncestrySerializer,
           :ancestries,
           {},
-          { features: @features, bonuses: @bonuses }
+          { features: @features, bonuses: @bonuses, current_user_id: current_user.id }
         )
       end
 
@@ -33,7 +35,7 @@ module Homebrews
       end
 
       def create
-        case add_daggerheart_race.call(ancestry_params.merge(user: current_user))
+        case add_race.call(ancestry_params.merge(user: current_user))
         in { errors: errors, errors_list: errors_list } then unprocessable_response(errors, errors_list)
         in { result: result }
           serialize_resource(result, ::Homebrews::Daggerheart::AncestrySerializer, :ancestry, {}, :created)
@@ -41,7 +43,7 @@ module Homebrews
       end
 
       def update
-        case change_daggerheart_race.call(ancestry_params.merge(ancestry: @ancestry))
+        case change_race.call(ancestry_params.merge(ancestry: @ancestry))
         in { errors: errors, errors_list: errors_list } then unprocessable_response(errors, errors_list)
         in { result: result }
           serialize_resource(result, ::Homebrews::Daggerheart::AncestrySerializer, :ancestry, {}, :ok)
@@ -53,10 +55,22 @@ module Homebrews
         only_head_response
       end
 
+      def copy
+        case copy_race.call({ race: @ancestry, user: current_user })
+        in { errors: errors, errors_list: errors_list } then unprocessable_response(errors, errors_list)
+        in { result: result }
+          serialize_resource(result, ::Homebrews::Daggerheart::AncestrySerializer, :ancestry, {}, :created)
+        end
+      end
+
       private
 
       def find_ancestries
-        @ancestries = ::Daggerheart::Homebrew::Race.where(user_id: current_user.id).order(created_at: :desc)
+        @ancestries =
+          ::Daggerheart::Homebrew::Race.where(user_id: current_user.id)
+            .or(
+              ::Daggerheart::Homebrew::Race.where.not(user_id: current_user.id).where(public: true)
+            ).order(created_at: :desc)
       end
 
       def find_features
@@ -72,6 +86,10 @@ module Homebrews
 
       def find_ancestry
         @ancestry = ::Daggerheart::Homebrew::Race.find_by!(id: params[:id], user_id: current_user.id)
+      end
+
+      def find_another_ancestry
+        @ancestry = ::Daggerheart::Homebrew::Race.where.not(user_id: current_user.id).find(params[:id])
       end
 
       def find_existing_characters

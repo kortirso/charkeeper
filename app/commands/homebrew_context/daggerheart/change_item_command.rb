@@ -11,6 +11,7 @@ module HomebrewContext
           optional(:name).filled(:string, max_size?: 50)
           optional(:description).maybe(:string, max_size?: 250)
           optional(:info).hash
+          optional(:public).filled(:bool)
         end
       end
 

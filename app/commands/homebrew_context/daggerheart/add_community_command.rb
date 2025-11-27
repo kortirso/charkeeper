@@ -13,6 +13,7 @@ module HomebrewContext
         params do
           required(:user).filled(type?: ::User)
           required(:name).filled(:string, max_size?: 50)
+          optional(:public).filled(:bool)
         end
       end
 

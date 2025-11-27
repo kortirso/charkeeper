@@ -26,6 +26,7 @@ module HomebrewContext
             required(:type).filled(:string)
             required(:value)
           end
+          optional(:public).filled(:bool)
         end
       end
 

@@ -36,6 +36,7 @@ module HomebrewContext
             required(:type).filled(:string)
             required(:value)
           end
+          optional(:no_refresh).filled(:bool)
         end
 
         rule(:limit, :limit_refresh).validate(:check_all_or_nothing_present)
@@ -82,10 +83,12 @@ module HomebrewContext
       end
 
       def do_persist(input)
-        result = ::Daggerheart::Feat.create!(input.except(:limit, :subclass_mastery, :level, :bonuses))
+        result = ::Daggerheart::Feat.create!(input.except(:limit, :subclass_mastery, :level, :bonuses, :no_refresh))
 
-        input[:user].characters.daggerheart.find_each { |character| refresh_feats.call(character: character) }
-        refresh_user_data.call(user: input[:user])
+        unless input.key?(:no_refresh)
+          input[:user].characters.daggerheart.find_each { |character| refresh_feats.call(character: character) }
+          refresh_user_data.call(user: input[:user])
+        end
         refresh_bonuses.call(bonusable: result, bonuses: input[:bonuses]) if input[:bonuses]
 
         { result: result }

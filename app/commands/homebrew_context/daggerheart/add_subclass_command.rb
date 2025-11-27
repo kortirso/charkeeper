@@ -16,13 +16,14 @@ module HomebrewContext
           required(:class_name).filled(:string)
           required(:spellcast).maybe(:string)
           optional(:mechanics).maybe(:array).each(:string)
+          optional(:public).filled(:bool)
         end
       end
 
       private
 
       def do_prepare(input)
-        input[:attributes] = input.slice(:user, :name, :class_name)
+        input[:attributes] = input.slice(:user, :name, :class_name, :public)
         input[:data] = { data: input.slice(:spellcast, :mechanics) }
       end
 

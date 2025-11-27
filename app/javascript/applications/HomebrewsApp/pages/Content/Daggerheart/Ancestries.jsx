@@ -1,9 +1,9 @@
-import { createSignal, createEffect, Show, For, batch } from 'solid-js';
+import { createSignal, createEffect, createMemo, Show, For, batch } from 'solid-js';
 import { createStore } from 'solid-js/store';
 
 import { useAppState, useAppLocale, useAppAlert } from '../../../context';
-import { Button, Input, createModal, DaggerheartFeatForm, DaggerheartFeat, Select } from '../../../components';
-import { Edit, Trash, Stroke } from '../../../assets';
+import { Button, Input, createModal, DaggerheartFeatForm, DaggerheartFeat, Select, Checkbox } from '../../../components';
+import { Edit, Trash, Stroke, Copy } from '../../../assets';
 import { fetchDaggerheartBooks } from '../../../requests/fetchDaggerheartBooks';
 import { changeBookContent } from '../../../requests/changeBookContent';
 import { fetchDaggerheartAncestries } from '../../../requests/fetchDaggerheartAncestries';
@@ -11,6 +11,7 @@ import { fetchDaggerheartAncestry } from '../../../requests/fetchDaggerheartAnce
 import { createDaggerheartAncestry } from '../../../requests/createDaggerheartAncestry';
 import { changeDaggerheartAncestry } from '../../../requests/changeDaggerheartAncestry';
 import { removeDaggerheartAncestry } from '../../../requests/removeDaggerheartAncestry';
+import { copyDaggerheartAncestry } from '../../../requests/copyDaggerheartAncestry';
 import { createFeat } from '../../../requests/createFeat';
 import { removeFeat } from '../../../requests/removeFeat';
 
@@ -23,7 +24,9 @@ const TRANSLATION = {
     newAncestryTitle: 'Ancestry form',
     name: 'Ancestry name',
     save: 'Save',
-    addFeature: 'Add feature'
+    addFeature: 'Add feature',
+    public: 'Show public',
+    copyCompleted: 'Ancestry copy is completed'
   },
   ru: {
     added: 'Контент добавлен в книгу',
@@ -33,12 +36,14 @@ const TRANSLATION = {
     newAncestryTitle: 'Редактирование расы',
     name: 'Название расы',
     save: 'Сохранить',
-    addFeature: 'Добавить способность'
+    addFeature: 'Добавить способность',
+    public: 'Показать открытые',
+    copyCompleted: 'Копирование расы завершено'
   }
 }
 
 export const DaggerheartAncestries = () => {
-  const [ancestryForm, setAncestryForm] = createStore({ name: '' });
+  const [ancestryForm, setAncestryForm] = createStore({ name: '', public: false });
   const [featureAncestry, setFeatureAncestry] = createSignal(undefined);
   const [selectedIds, setSelectedIds] = createSignal([]);
   const [book, setBook] = createSignal(null);
@@ -46,6 +51,7 @@ export const DaggerheartAncestries = () => {
   const [books, setBooks] = createSignal(undefined);
   const [ancestries, setAncestries] = createSignal(undefined);
   const [modalMode, setModalMode] = createSignal(undefined);
+  const [open, setOpen] = createSignal(false);
 
   const [appState] = useAppState();
   const [{ renderNotice }] = useAppAlert();
@@ -66,9 +72,15 @@ export const DaggerheartAncestries = () => {
     );
   });
 
+  const filteredAncestries = createMemo(() => {
+    if (ancestries() === undefined) return [];
+
+    return ancestries().filter(({ own }) => open() ? !own : own);
+  });
+
   const openCreateAncestryModal = () => {
     batch(() => {
-      setAncestryForm({ id: null, name: '' });
+      setAncestryForm({ id: null, name: '', public: false });
       setModalMode('ancestryForm');
       openModal();
     });
@@ -76,7 +88,7 @@ export const DaggerheartAncestries = () => {
 
   const openChangeAncestryModal = (ancestry) => {
     batch(() => {
-      setAncestryForm({ id: ancestry.id, name: ancestry.name });
+      setAncestryForm({ id: ancestry.id, name: ancestry.name, public: ancestry.public });
       setModalMode('ancestryForm');
       openModal();
     });
@@ -100,7 +112,7 @@ export const DaggerheartAncestries = () => {
     if (result.errors_list === undefined) {
       batch(() => {
         setAncestries([result.ancestry].concat(ancestries()));
-        setAncestryForm({ id: null, name: '' });
+        setAncestryForm({ id: null, name: '', public: false });
         closeModal();
       });
     }
@@ -113,12 +125,12 @@ export const DaggerheartAncestries = () => {
       const newAncestries = ancestries().map((item) => {
         if (ancestryForm.id !== item.id) return item;
 
-        return { ...item, name: ancestryForm.name };
+        return { ...item, name: ancestryForm.name, public: ancestryForm.public };
       });
 
       batch(() => {
         setAncestries(newAncestries);
-        setAncestryForm({ id: null, name: '' });
+        setAncestryForm({ id: null, name: '', public: false });
         closeModal();
       });
     }
@@ -129,6 +141,15 @@ export const DaggerheartAncestries = () => {
 
     if (result.errors_list === undefined) {
       setAncestries(ancestries().filter(({ id }) => id !== ancestry.id ));
+    }
+  }
+
+  const copyAncestry = async (ancestryId) => {
+    const result = await copyDaggerheartAncestry(appState.accessToken, ancestryId);
+    const ancestry = await fetchDaggerheartAncestry(appState.accessToken, result.ancestry.id)
+    if (ancestry.errors_list === undefined) {
+      setAncestries([ancestry.ancestry].concat(ancestries()));
+      renderNotice(TRANSLATION[locale()].copyCompleted);
     }
   }
 
@@ -187,56 +208,75 @@ export const DaggerheartAncestries = () => {
 
   return (
     <Show when={ancestries() !== undefined} fallback={<></>}>
-      <Button default classList="mb-4 px-2 py-1" onClick={openCreateAncestryModal}>{TRANSLATION[locale()].add}</Button>
-      <Show when={ancestries().length > 0}>
-        <div class="flex items-center">
-          <Select
-            containerClassList="w-40"
-            labelText={TRANSLATION[locale()].selectBook}
-            items={Object.fromEntries(books().filter(({ shared }) => shared === null).map((item) => [item.id, item.name]))}
-            selectedValue={book()}
-            onSelect={setBook}
-          />
-          <Show when={book() && selectedIds().length > 0}>
-            <Button default classList="px-2 py-1 mt-6 ml-4" onClick={addToBook}>
-              {TRANSLATION[locale()].save}
-            </Button>
-          </Show>
-        </div>
-        <p class="text-sm mt-1 mb-2">{TRANSLATION[locale()].selectBookHelp}</p>
+      <div class="flex">
+        <Button default classList="mb-4 px-2 py-1" onClick={openCreateAncestryModal}>{TRANSLATION[locale()].add}</Button>
+        <Button
+          default
+          active={open()}
+          classList="ml-4 mb-4 px-2 py-1"
+          onClick={() => setOpen(!open())}
+        >{TRANSLATION[locale()].public}</Button>
+      </div>
+      <Show when={filteredAncestries().length > 0}>
+        <Show when={!open()}>
+          <div class="flex items-center">
+            <Select
+              containerClassList="w-40"
+              labelText={TRANSLATION[locale()].selectBook}
+              items={Object.fromEntries(books().filter(({ shared }) => shared === null).map((item) => [item.id, item.name]))}
+              selectedValue={book()}
+              onSelect={setBook}
+            />
+            <Show when={book() && selectedIds().length > 0}>
+              <Button default classList="px-2 py-1 mt-6 ml-4" onClick={addToBook}>
+                {TRANSLATION[locale()].save}
+              </Button>
+            </Show>
+          </div>
+          <p class="text-sm mt-1 mb-2">{TRANSLATION[locale()].selectBookHelp}</p>
+        </Show>
         <div class="grid grid-cols-3 gap-4">
-          <For each={ancestries()}>
+          <For each={filteredAncestries()}>
             {(ancestry) =>
               <div class="blockable p-4 flex flex-col">
                 <div class="flex-1">
                   <p class="font-medium! mb-4 text-xl">{ancestry.name}</p>
-                  <Show when={ancestry.features.length < 2}>
+                  <Show when={!open() && ancestry.features.length < 2}>
                     <Button default small classList="mb-2 p-1" onClick={() => openCreateFeatureModal(ancestry)}>
                       {TRANSLATION[locale()].addFeature}
                     </Button>
                   </Show>
                   <For each={ancestry.features}>
                     {(feature) =>
-                      <DaggerheartFeat feature={feature} onRemoveFeature={removeFeature} />
+                      <DaggerheartFeat open={open()} feature={feature} onRemoveFeature={removeFeature} />
                     }
                   </For>
                 </div>
                 <div class="flex items-center justify-end gap-x-2 text-neutral-700">
-                   <Button
-                    default
-                    classList="p-2"
-                    onClick={() => selectedIds().includes(ancestry.id) ? setSelectedIds(selectedIds().filter((id) => id !== ancestry.id)) : setSelectedIds(selectedIds().concat(ancestry.id))}
+                  <Show
+                    when={!open()}
+                    fallback={
+                      <Button default classList="px-2 py-1" onClick={() => copyAncestry(ancestry.id)}>
+                        <Copy width="20" height="20" />
+                      </Button>
+                    }
                   >
-                    <span classList={{ 'opacity-25': !selectedIds().includes(ancestry.id) }}>
-                      <Stroke width="16" height="12" />
-                    </span>
-                  </Button>
-                  <Button default classList="px-2 py-1" onClick={() => openChangeAncestryModal(ancestry)}>
-                    <Edit width="20" height="20" />
-                  </Button>
-                  <Button default classList="px-2 py-1" onClick={() => removeAncestry(ancestry)}>
-                    <Trash width="20" height="20" />
-                  </Button>
+                    <Button
+                      default
+                      classList="p-2"
+                      onClick={() => selectedIds().includes(ancestry.id) ? setSelectedIds(selectedIds().filter((id) => id !== ancestry.id)) : setSelectedIds(selectedIds().concat(ancestry.id))}
+                    >
+                      <span classList={{ 'opacity-25': !selectedIds().includes(ancestry.id) }}>
+                        <Stroke width="16" height="12" />
+                      </span>
+                    </Button>
+                    <Button default classList="px-2 py-1" onClick={() => openChangeAncestryModal(ancestry)}>
+                      <Edit width="20" height="20" />
+                    </Button>
+                    <Button default classList="px-2 py-1" onClick={() => removeAncestry(ancestry)}>
+                      <Trash width="20" height="20" />
+                    </Button>
+                  </Show>
                 </div>
               </div>
             }
@@ -247,10 +287,18 @@ export const DaggerheartAncestries = () => {
         <Show when={modalMode() === 'ancestryForm'}>
           <p class="mb-2 text-xl">{TRANSLATION[locale()].newAncestryTitle}</p>
           <Input
-            containerClassList="form-field mb-4"
+            containerClassList="form-field mb-2"
             labelText={TRANSLATION[locale()].name}
             value={ancestryForm.name}
             onInput={(value) => setAncestryForm({ ...ancestryForm, name: value })}
+          />
+          <Checkbox
+            labelText={TRANSLATION[locale()].public}
+            labelPosition="right"
+            labelClassList="ml-2"
+            checked={ancestryForm.public}
+            classList="mb-4"
+            onToggle={() => setAncestryForm({ ...ancestryForm, public: !ancestryForm.public })}
           />
           <Button default classList="px-2 py-1" onClick={saveAncestry}>
             {TRANSLATION[locale()].save}
