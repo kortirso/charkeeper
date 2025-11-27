@@ -5,7 +5,8 @@ module HomebrewContext
     class CopyFeatsCommand < BaseCommand
       include Deps[
         add_feat: 'commands.homebrew_context.daggerheart.add_feat',
-        add_item: 'commands.homebrew_context.daggerheart.add_item'
+        add_item: 'commands.homebrew_context.daggerheart.add_item',
+        refresh_feats: 'services.characters_context.daggerheart.refresh_feats'
       ]
 
       use_contract do
@@ -13,18 +14,23 @@ module HomebrewContext
           required(:feats).maybe(:array)
           required(:user).filled(type?: ::User)
           required(:origin_value).filled(:string)
+          optional(:no_refresh).filled(:bool)
         end
       end
 
       private
 
-      def do_persist(input)
+      def do_persist(input) # rubocop: disable Metrics/AbcSize
         input[:feats].each do |feat|
-          new_feat = add_feat.call(feat_attributes(input, feat).merge({ user: input[:user] }))[:result]
+          new_feat = add_feat.call(
+            feat_attributes(input, feat).merge({ user: input[:user], no_refresh: input[:no_refresh] }.compact)
+          )[:result]
           feat.items.find_each do |item|
             add_item.call(item_attributes(item, new_feat.id).merge({ user: input[:user] }))
           end
         end
+
+        input[:user].characters.daggerheart.find_each { |character| refresh_feats.call(character: character) }
 
         { result: :ok }
       end

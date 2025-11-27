@@ -21,7 +21,8 @@ const TRANSLATION = {
     enabled: 'Enabled',
     newBookTitle: 'Book form',
     name: 'Book name',
-    save: 'Save'
+    save: 'Save',
+    official: 'Approved'
   },
   ru: {
     add: 'Добавить книгу',
@@ -34,7 +35,8 @@ const TRANSLATION = {
     enabled: 'Подключено',
     newBookTitle: 'Редактирование книги',
     name: 'Название книги',
-    save: 'Сохранить'
+    save: 'Сохранить',
+    official: 'Одобренная'
   }
 }
 
@@ -55,7 +57,11 @@ export const DaggerheartBooks = () => {
 
     Promise.all([fetchBooks()]).then(
       ([booksData]) => {
-        setBooks(booksData.books);
+        setBooks(booksData.books.sort((a, b) => {
+          if (a.shared !== b.shared) return a.shared - b.shared;
+
+          return a.own - b.own;
+        }));
       }
     );
   });
@@ -106,18 +112,23 @@ export const DaggerheartBooks = () => {
         <For each={books().sort((item) => !item.shared)}>
           {(book) =>
             <div class="blockable p-4">
-              <p class="mb-2 text-xl font-medium!">{book.name}</p>
+              <div class="flex items-center justify-between mb-2">
+                <p class="text-xl font-medium!">{book.name}</p>
+                <Show when={book.shared}>
+                  <p class="font-medium!">{TRANSLATION[locale()].official}</p>
+                </Show>
+              </div>
               <For each={['races', 'communities', 'subclasses', 'items', 'transformations', 'domains']}>
                 {(kind) =>
                   <Show when={book.items[kind].length > 0}>
                     <div class="mb-4">
-                      <p class="font-regular! mb-2">{TRANSLATION[locale()][kind]}</p>
+                      <p class="font-medium! mb-2">{TRANSLATION[locale()][kind]}</p>
                       <p>{book.items[kind].join(', ')}</p>
                     </div>
                   </Show>
                 }
               </For>
-              <Show when={book.shared}>
+              <Show when={book.shared || !book.own}>
                 <p class="px-2 py-1 dark:text-snow cursor-pointer">
                   <Checkbox
                     filled
@@ -130,7 +141,7 @@ export const DaggerheartBooks = () => {
                   />
                 </p>
               </Show>
-              <Show when={book.shared === null}>
+              <Show when={book.own}>
                 <Button default classList="px-2 py-1" onClick={() => removeBook(book)}>
                   <Trash width="20" height="20" />
                 </Button>

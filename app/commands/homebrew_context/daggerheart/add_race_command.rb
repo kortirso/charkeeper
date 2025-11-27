@@ -13,15 +13,17 @@ module HomebrewContext
         params do
           required(:user).filled(type?: ::User)
           required(:name).filled(:string, max_size?: 50)
+          optional(:public).filled(:bool)
+          optional(:no_refresh).filled(:bool)
         end
       end
 
       private
 
       def do_persist(input)
-        result = ::Daggerheart::Homebrew::Race.create!(input)
+        result = ::Daggerheart::Homebrew::Race.create!(input.except(:no_refresh))
 
-        refresh_user_data.call(user: input[:user])
+        refresh_user_data.call(user: input[:user]) unless input.key?(:no_refresh)
 
         { result: result }
       end

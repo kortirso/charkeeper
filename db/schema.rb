@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2025_11_24_154935) do
+ActiveRecord::Schema[8.1].define(version: 2025_11_27_161716) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
   enable_extension "pgcrypto"
@@ -183,6 +183,7 @@ ActiveRecord::Schema[8.1].define(version: 2025_11_24_154935) do
   create_table "daggerheart_homebrew_domains", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.datetime "created_at", null: false
     t.string "name", null: false
+    t.boolean "public", default: false, null: false, comment: "Открыть доступ для сторонних пользователей"
     t.datetime "updated_at", null: false
     t.uuid "user_id", null: false
     t.index ["user_id"], name: "index_daggerheart_homebrew_domains_on_user_id"
@@ -191,6 +192,7 @@ ActiveRecord::Schema[8.1].define(version: 2025_11_24_154935) do
   create_table "daggerheart_homebrew_transformations", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.datetime "created_at", null: false
     t.string "name", null: false
+    t.boolean "public", default: false, null: false, comment: "Открыть доступ для сторонних пользователей"
     t.datetime "updated_at", null: false
     t.uuid "user_id", null: false
     t.index ["user_id"], name: "index_daggerheart_homebrew_transformations_on_user_id"
@@ -363,6 +365,7 @@ ActiveRecord::Schema[8.1].define(version: 2025_11_24_154935) do
     t.datetime "created_at", null: false
     t.string "name", null: false
     t.string "provider", null: false
+    t.boolean "public", default: false, null: false, comment: "Открыть доступ для сторонних пользователей"
     t.boolean "shared"
     t.datetime "updated_at", null: false
     t.uuid "user_id", null: false
@@ -373,6 +376,7 @@ ActiveRecord::Schema[8.1].define(version: 2025_11_24_154935) do
   create_table "homebrew_communities", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.datetime "created_at", null: false
     t.string "name", null: false
+    t.boolean "public", default: false, null: false, comment: "Открыть доступ для сторонних пользователей"
     t.string "type", null: false, comment: "Отношение к игровой системе"
     t.datetime "updated_at", null: false
     t.uuid "user_id", null: false
@@ -383,6 +387,7 @@ ActiveRecord::Schema[8.1].define(version: 2025_11_24_154935) do
     t.datetime "created_at", null: false
     t.jsonb "data", default: {}, null: false, comment: "Кастомные данные расы"
     t.string "name", null: false
+    t.boolean "public", default: false, null: false, comment: "Открыть доступ для сторонних пользователей"
     t.string "type", null: false, comment: "Отношение к игровой системе"
     t.datetime "updated_at", null: false
     t.uuid "user_id", null: false
@@ -404,6 +409,7 @@ ActiveRecord::Schema[8.1].define(version: 2025_11_24_154935) do
     t.datetime "created_at", null: false
     t.jsonb "data", default: {}, null: false
     t.string "name", null: false
+    t.boolean "public", default: false, null: false, comment: "Открыть доступ для сторонних пользователей"
     t.string "type", null: false, comment: "Отношение к игровой системе"
     t.datetime "updated_at", null: false
     t.uuid "user_id", null: false
@@ -429,6 +435,7 @@ ActiveRecord::Schema[8.1].define(version: 2025_11_24_154935) do
     t.string "itemable_type"
     t.string "kind", null: false, comment: "Тип предмета"
     t.jsonb "name", default: {}, null: false
+    t.boolean "public", default: false, null: false, comment: "Открыть доступ для сторонних пользователей"
     t.string "slug"
     t.string "type", null: false
     t.datetime "updated_at", null: false

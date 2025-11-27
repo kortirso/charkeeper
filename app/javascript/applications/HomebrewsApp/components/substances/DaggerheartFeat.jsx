@@ -122,9 +122,11 @@ export const DaggerheartFeat = (props) => {
           </For>
         </div>
       </Show>
-      <Button default classList="px-2 py-1" onClick={() => props.onRemoveFeature(props.feature)}>
-        <Trash width="20" height="20" />
-      </Button>
+      <Show when={props.open !== undefined && !props.open}>
+        <Button default classList="px-2 py-1" onClick={() => props.onRemoveFeature(props.feature)}>
+          <Trash width="20" height="20" />
+        </Button>
+      </Show>
     </div>
   );
 }

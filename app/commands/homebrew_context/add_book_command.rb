@@ -11,6 +11,7 @@ module HomebrewContext
         required(:user).filled(type?: ::User)
         required(:name).filled(:string, max_size?: 50)
         required(:provider).filled(Providers)
+        optional(:public).filled(:bool)
       end
     end
 

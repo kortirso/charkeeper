@@ -13,13 +13,14 @@ module HomebrewContext
         params do
           required(:ancestry).filled(type?: ::Daggerheart::Homebrew::Race)
           required(:name).filled(:string, max_size?: 50)
+          optional(:public).filled(:bool)
         end
       end
 
       private
 
       def do_persist(input)
-        input[:ancestry].update!(input.slice(:name))
+        input[:ancestry].update!(input.slice(:name, :public))
 
         refresh_user_data.call(user: input[:ancestry].user) if input[:ancestry].user
 

@@ -3,7 +3,7 @@
 module Daggerheart
   module Homebrew
     class BookSerializer < ApplicationSerializer
-      attributes :id, :name, :provider, :items, :shared, :enabled
+      attributes :id, :name, :provider, :items, :shared, :public, :enabled, :own
 
       def items # rubocop: disable Metrics/AbcSize
         object_items = object.items.group_by(&:itemable_type).transform_values { |item| item.pluck(:itemable_id) }
@@ -19,6 +19,13 @@ module Daggerheart
 
       def enabled # rubocop: disable Naming/PredicateMethod
         context && context[:enabled_books] ? context[:enabled_books].include?(object.id) : false
+      end
+
+      def own
+        return [] unless context
+        return [] unless context[:current_user_id]
+
+        object.user_id == context[:current_user_id]
       end
     end
   end

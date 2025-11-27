@@ -16,14 +16,22 @@ module Homebrews
       before_action :find_own_book, only: %i[destroy]
 
       def index
-        serialize_relation(books, ::Daggerheart::Homebrew::BookSerializer, :books, {}, { enabled_books: current_user.books.ids })
+        serialize_relation(
+          books,
+          ::Daggerheart::Homebrew::BookSerializer,
+          :books,
+          {},
+          { enabled_books: current_user.books.ids, current_user_id: current_user.id }
+        )
       end
 
       def create
         case add_book.call(book_params.merge(user: current_user, provider: 'daggerheart'))
         in { errors: errors, errors_list: errors_list } then unprocessable_response(errors, errors_list)
         in { result: result }
-          serialize_resource(result, ::Daggerheart::Homebrew::BookSerializer, :book, {}, :created)
+          serialize_resource(
+            result, ::Daggerheart::Homebrew::BookSerializer, :book, {}, :created, current_user_id: current_user.id
+          )
         end
       end
 
@@ -42,7 +50,8 @@ module Homebrews
 
       def books
         Homebrew::Book.where(provider: 'daggerheart', user_id: current_user.id)
-          .or(Homebrew::Book.where(provider: 'daggerheart', shared: true).where.not(user_id: current_user.id))
+          .or(Homebrew::Book.where(provider: 'daggerheart', shared: true))
+          .or(Homebrew::Book.where(provider: 'daggerheart', public: true))
           .includes(:items)
       end
 
