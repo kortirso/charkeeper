@@ -64,7 +64,7 @@ module CharactersContext
             required(:silver).filled(:integer)
             required(:copper).filled(:integer)
           end
-          optional(:money).filled(:integer)
+          optional(:money).filled(:integer, gteq?: 0)
           optional(:conditions).maybe(:array).each(:string)
         end
 

@@ -53,7 +53,7 @@ module CharactersContext
             required(:silver).filled(:integer)
             required(:copper).filled(:integer)
           end
-          optional(:money).filled(:integer)
+          optional(:money).filled(:integer, gteq?: 0)
           optional(:selected_skills).hash
           optional(:selected_features).hash
           optional(:selected_feats).value(:array)
