@@ -1,9 +1,11 @@
 import { createSignal, createEffect, Show, For, batch } from 'solid-js';
 import { createStore } from 'solid-js/store';
 
-import { useAppState, useAppLocale } from '../../../context';
-import { Button, Input, createModal, DaggerheartFeatForm, DaggerheartFeat } from '../../../components';
-import { Edit, Trash } from '../../../assets';
+import { useAppState, useAppLocale, useAppAlert } from '../../../context';
+import { Button, Input, createModal, DaggerheartFeatForm, DaggerheartFeat, Toggle, Select } from '../../../components';
+import { Edit, Trash, Stroke } from '../../../assets';
+import { fetchDaggerheartBooks } from '../../../requests/fetchDaggerheartBooks';
+import { changeBookContent } from '../../../requests/changeBookContent';
 import { fetchDaggerheartDomains } from '../../../requests/fetchDaggerheartDomains';
 import { fetchDaggerheartDomain } from '../../../requests/fetchDaggerheartDomain';
 import { createDaggerheartDomain } from '../../../requests/createDaggerheartDomain';
@@ -14,6 +16,9 @@ import { removeFeat } from '../../../requests/removeFeat';
 
 const TRANSLATION = {
   en: {
+    added: 'Content is added to the book',
+    selectBook: 'Select book',
+    selectBookHelp: 'Select required elements for adding to the book',
     add: 'Add domain',
     newDomainTitle: 'Domain form',
     name: 'Domain name',
@@ -21,6 +26,9 @@ const TRANSLATION = {
     addFeature: 'Add feature'
   },
   ru: {
+    added: 'Контент добавлен в книгу',
+    selectBook: 'Выберите книгу',
+    selectBookHelp: 'Выберите необходимые элементы для добавления в книгу',
     add: 'Добавить домен',
     newDomainTitle: 'Редактирование домена',
     name: 'Название домена',
@@ -32,20 +40,28 @@ const TRANSLATION = {
 export const DaggerheartDomains = () => {
   const [domainForm, setDomainForm] = createStore({ name: '' });
   const [featureDomain, setFeatureDomain] = createSignal(undefined);
+  const [selectedIds, setSelectedIds] = createSignal([]);
+  const [book, setBook] = createSignal(null);
 
+  const [books, setBooks] = createSignal(undefined);
   const [domains, setDomains] = createSignal(undefined);
   const [modalMode, setModalMode] = createSignal(undefined);
 
   const [appState] = useAppState();
+  const [{ renderNotice }] = useAppAlert();
   const [locale] = useAppLocale();
   const { Modal, openModal, closeModal } = createModal();
 
   createEffect(() => {
+    const fetchBooks = async () => await fetchDaggerheartBooks(appState.accessToken);
     const fetchDomains = async () => await fetchDaggerheartDomains(appState.accessToken);
 
-    Promise.all([fetchDomains()]).then(
-      ([domainsData]) => {
-        setDomains(domainsData.domains);
+    Promise.all([fetchDomains(), fetchBooks()]).then(
+      ([domainsData, booksData]) => {
+        batch(() => {
+          setBooks(booksData.books.filter((item) => item.shared === null));
+          setDomains(domainsData.domains);
+        });
       }
     );
   });
@@ -157,19 +173,56 @@ export const DaggerheartDomains = () => {
     }
   }
 
+  const addToBook = async () => {
+    const result = await changeBookContent(appState.accessToken, book(), { ids: selectedIds(), only_head: true }, 'domain');
+
+    if (result.errors_list === undefined) {
+      batch(() => {
+        setBook(null);
+        setSelectedIds([]);
+      });
+      renderNotice(TRANSLATION[locale()].added)
+    }
+  }
+
   return (
     <Show when={domains() !== undefined} fallback={<></>}>
       <Button default classList="mb-4 px-2 py-1" onClick={openCreateDomainModal}>{TRANSLATION[locale()].add}</Button>
+      <Show when={domains().length > 0}>
+        <div class="flex items-center">
+          <Select
+            containerClassList="w-40"
+            labelText={TRANSLATION[locale()].selectBook}
+            items={Object.fromEntries(books().filter(({ shared }) => shared === null).map((item) => [item.id, item.name]))}
+            selectedValue={book()}
+            onSelect={setBook}
+          />
+          <Show when={book() && selectedIds().length > 0}>
+            <Button default classList="px-2 py-1 mt-6 ml-4" onClick={addToBook}>
+              {TRANSLATION[locale()].save}
+            </Button>
+          </Show>
+        </div>
+        <p class="text-sm mt-1 mb-2">{TRANSLATION[locale()].selectBookHelp}</p>
+      </Show>
       <For each={domains()}>
         {(domain) =>
-          <>
-            <div class="p-4 flex flex-col">
-              <p class="font-medium! mb-4 text-xl">{domain.name}</p>
+          <Toggle title={domain.name}>
+            <div class="py-4 flex flex-col">
               <div class="flex items-center justify-between">
                 <Button default small classList="mb-2 p-1" onClick={() => openCreateFeatureModal(domain)}>
                   {TRANSLATION[locale()].addFeature}
                 </Button>
                 <div class="flex items-center justify-between gap-x-2 text-neutral-700">
+                  <Button
+                    default
+                    classList="p-2"
+                    onClick={() => selectedIds().includes(domain.id) ? setSelectedIds(selectedIds().filter((id) => id !== domain.id)) : setSelectedIds(selectedIds().concat(domain.id))}
+                  >
+                    <span classList={{ 'opacity-25': !selectedIds().includes(domain.id) }}>
+                      <Stroke width="16" height="12" />
+                    </span>
+                  </Button>
                   <Button default classList="px-2 py-1" onClick={() => openChangeDomainModal(domain)}>
                     <Edit width="20" height="20" />
                   </Button>
@@ -188,7 +241,7 @@ export const DaggerheartDomains = () => {
                 }
               </For>
             </div>
-          </>
+          </Toggle>
         }
       </For>
       <Modal>

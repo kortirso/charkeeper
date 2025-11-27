@@ -4,6 +4,7 @@ export * from './atoms/Input';
 export * from './atoms/Label';
 export * from './atoms/Select';
 export * from './atoms/TextArea';
+export * from './atoms/Toggle';
 
 export * from './molecules/Modal';
 

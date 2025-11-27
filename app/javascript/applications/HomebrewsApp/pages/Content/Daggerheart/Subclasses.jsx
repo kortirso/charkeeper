@@ -3,10 +3,12 @@ import { createStore } from 'solid-js/store';
 
 import config from '../../../../CharKeeperApp/data/daggerheart.json';
 
-import { useAppState, useAppLocale } from '../../../context';
+import { useAppState, useAppLocale, useAppAlert } from '../../../context';
 import { Button, Input, createModal, DaggerheartFeatForm, DaggerheartFeat, Select } from '../../../components';
-import { Edit, Trash } from '../../../assets';
+import { Edit, Trash, Stroke } from '../../../assets';
 import { fetchHomebrewsList } from '../../../requests/fetchHomebrewsList';
+import { fetchDaggerheartBooks } from '../../../requests/fetchDaggerheartBooks';
+import { changeBookContent } from '../../../requests/changeBookContent';
 import { fetchDaggerheartSubclasses } from '../../../requests/fetchDaggerheartSubclasses';
 import { fetchDaggerheartSubclass } from '../../../requests/fetchDaggerheartSubclass';
 import { createDaggerheartSubclass } from '../../../requests/createDaggerheartSubclass';
@@ -18,6 +20,9 @@ import { translate } from '../../../helpers';
 
 const TRANSLATION = {
   en: {
+    added: 'Content is added to the book',
+    selectBook: 'Select book',
+    selectBookHelp: 'Select required elements for adding to the book',
     add: 'Add subclass',
     newSubclassTitle: 'Subclass form',
     name: 'Subclass name',
@@ -28,6 +33,9 @@ const TRANSLATION = {
     mechanics: 'Mechanics'
   },
   ru: {
+    added: 'Контент добавлен в книгу',
+    selectBook: 'Выберите книгу',
+    selectBookHelp: 'Выберите необходимые элементы для добавления в книгу',
     add: 'Добавить подкласс',
     newSubclassTitle: 'Редактирование подкласса',
     name: 'Название подкласса',
@@ -47,22 +55,28 @@ export const DaggerheartSubclasses = () => {
     class_name: null
   });
   const [featureSubclass, setFeatureSubclass] = createSignal(undefined);
+  const [selectedIds, setSelectedIds] = createSignal([]);
+  const [book, setBook] = createSignal(null);
 
+  const [books, setBooks] = createSignal(undefined);
   const [subclasses, setSubclasses] = createSignal(undefined);
   const [modalMode, setModalMode] = createSignal(undefined);
   const [homebrews, setHomebrews] = createSignal(undefined);
 
   const [appState] = useAppState();
+  const [{ renderNotice }] = useAppAlert();
   const [locale] = useAppLocale();
   const { Modal, openModal, closeModal } = createModal();
 
   createEffect(() => {
+    const fetchBooks = async () => await fetchDaggerheartBooks(appState.accessToken);
     const fetchHomebrews = async () => await fetchHomebrewsList(appState.accessToken, 'daggerheart');
     const fetchSubclasses = async () => await fetchDaggerheartSubclasses(appState.accessToken);
 
-    Promise.all([fetchSubclasses(), fetchHomebrews()]).then(
-      ([subclassesData, homebrewsData]) => {
+    Promise.all([fetchSubclasses(), fetchHomebrews(), fetchBooks()]).then(
+      ([subclassesData, homebrewsData, booksData]) => {
         batch(() => {
+          setBooks(booksData.books.filter((item) => item.shared === null));
           setSubclasses(subclassesData.subclasses);
           setHomebrews(homebrewsData);
         });
@@ -190,43 +204,81 @@ export const DaggerheartSubclasses = () => {
     }
   }
 
+  const addToBook = async () => {
+    const result = await changeBookContent(appState.accessToken, book(), { ids: selectedIds(), only_head: true }, 'subclass');
+
+    if (result.errors_list === undefined) {
+      batch(() => {
+        setBook(null);
+        setSelectedIds([]);
+      });
+      renderNotice(TRANSLATION[locale()].added)
+    }
+  }
+
   return (
     <Show when={subclasses() !== undefined} fallback={<></>}>
       <Button default classList="mb-4 px-2 py-1" onClick={openCreateSubclassModal}>{TRANSLATION[locale()].add}</Button>
-      <div class="grid grid-cols-3 gap-4">
-        <For each={subclasses()}>
-          {(subclass) =>
-            <div class="blockable p-4 flex flex-col">
-              <div class="flex-1">
-                <p class="font-medium! mb-2 text-xl">{subclass.name}</p>
-                <p class="mb-1">{TRANSLATION[locale()].originClass} - {daggerheartClasses()[subclass.class_name]}</p>
-                <Show when={subclass.spellcast}>
-                  <p class="mb-1">{TRANSLATION[locale()].spellcast} - {config.traits[subclass.spellcast].name[locale()]}</p>
-                </Show>
-                <Show when={subclass.mechanics.length > 0}>
-                  <p class="mb-1">{TRANSLATION[locale()].mechanics} - {subclass.mechanics.map((item) => config.mechanics[item].name[locale()]).join(', ')}</p>
-                </Show>
-                <Button default small classList="mt-3 mb-2 p-1" onClick={() => openCreateFeatureModal(subclass)}>
-                  {TRANSLATION[locale()].addFeature}
-                </Button>
-                <For each={subclass.features}>
-                  {(feature) =>
-                    <DaggerheartFeat feature={feature} onRemoveFeature={removeFeature} />
-                  }
-                </For>
+      <Show when={subclasses().length > 0}>
+        <div class="flex items-center">
+          <Select
+            containerClassList="w-40"
+            labelText={TRANSLATION[locale()].selectBook}
+            items={Object.fromEntries(books().filter(({ shared }) => shared === null).map((item) => [item.id, item.name]))}
+            selectedValue={book()}
+            onSelect={setBook}
+          />
+          <Show when={book() && selectedIds().length > 0}>
+            <Button default classList="px-2 py-1 mt-6 ml-4" onClick={addToBook}>
+              {TRANSLATION[locale()].save}
+            </Button>
+          </Show>
+        </div>
+        <p class="text-sm mt-1 mb-2">{TRANSLATION[locale()].selectBookHelp}</p>
+        <div class="grid grid-cols-3 gap-4">
+          <For each={subclasses()}>
+            {(subclass) =>
+              <div class="blockable p-4 flex flex-col">
+                <div class="flex-1">
+                  <p class="font-medium! mb-2 text-xl">{subclass.name}</p>
+                  <p class="mb-1">{TRANSLATION[locale()].originClass} - {daggerheartClasses()[subclass.class_name]}</p>
+                  <Show when={subclass.spellcast}>
+                    <p class="mb-1">{TRANSLATION[locale()].spellcast} - {config.traits[subclass.spellcast].name[locale()]}</p>
+                  </Show>
+                  <Show when={subclass.mechanics.length > 0}>
+                    <p class="mb-1">{TRANSLATION[locale()].mechanics} - {subclass.mechanics.map((item) => config.mechanics[item].name[locale()]).join(', ')}</p>
+                  </Show>
+                  <Button default small classList="mt-3 mb-2 p-1" onClick={() => openCreateFeatureModal(subclass)}>
+                    {TRANSLATION[locale()].addFeature}
+                  </Button>
+                  <For each={subclass.features}>
+                    {(feature) =>
+                      <DaggerheartFeat feature={feature} onRemoveFeature={removeFeature} />
+                    }
+                  </For>
+                </div>
+                <div class="flex items-center justify-end gap-x-2 text-neutral-700">
+                  <Button
+                    default
+                    classList="p-2"
+                    onClick={() => selectedIds().includes(subclass.id) ? setSelectedIds(selectedIds().filter((id) => id !== subclass.id)) : setSelectedIds(selectedIds().concat(subclass.id))}
+                  >
+                    <span classList={{ 'opacity-25': !selectedIds().includes(subclass.id) }}>
+                      <Stroke width="16" height="12" />
+                    </span>
+                  </Button>
+                  <Button default classList="px-2 py-1" onClick={() => openChangeSubclassModal(subclass)}>
+                    <Edit width="20" height="20" />
+                  </Button>
+                  <Button default classList="px-2 py-1" onClick={() => removeSubclass(subclass)}>
+                    <Trash width="20" height="20" />
+                  </Button>
+                </div>
               </div>
-              <div class="flex items-center justify-end gap-x-2 text-neutral-700">
-                <Button default classList="px-2 py-1" onClick={() => openChangeSubclassModal(subclass)}>
-                  <Edit width="20" height="20" />
-                </Button>
-                <Button default classList="px-2 py-1" onClick={() => removeSubclass(subclass)}>
-                  <Trash width="20" height="20" />
-                </Button>
-              </div>
-            </div>
-          }
-        </For>
-      </div>
+            }
+          </For>
+        </div>
+      </Show>
       <Modal>
         <Show when={modalMode() === 'subclassForm'}>
           <p class="mb-2 text-xl">{TRANSLATION[locale()].newSubclassTitle}</p>

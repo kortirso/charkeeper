@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## Unreleased
 ### Added
 - money change validation
+- grouping homebrews to books
 
 ## [0.3.18] - 2025-11-27
 ### Modified

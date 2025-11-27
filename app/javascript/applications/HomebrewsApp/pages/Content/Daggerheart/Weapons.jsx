@@ -4,8 +4,10 @@ import { createStore } from 'solid-js/store';
 import config from '../../../../CharKeeperApp/data/daggerheart.json';
 
 import { useAppState, useAppLocale, useAppAlert } from '../../../context';
-import { Button, Input, TextArea, Select, createModal } from '../../../components';
+import { Button, Input, TextArea, Select, createModal, Checkbox } from '../../../components';
 import { Edit, Trash } from '../../../assets';
+import { fetchDaggerheartBooks } from '../../../requests/fetchDaggerheartBooks';
+import { changeBookContent } from '../../../requests/changeBookContent';
 import { fetchHomebrewsList } from '../../../requests/fetchHomebrewsList';
 import { fetchDaggerheartItems } from '../../../requests/fetchDaggerheartItems';
 import { createDaggerheartItem } from '../../../requests/createDaggerheartItem';
@@ -15,6 +17,9 @@ import { translate } from '../../../helpers';
 
 const TRANSLATION = {
   en: {
+    added: 'Content is added to the book',
+    selectBook: 'Select book',
+    selectBookHelp: 'Select required elements for adding to the book',
     add: 'Add weapon',
     newItemTitle: 'Weapon form',
     name: 'Weapon name',
@@ -40,6 +45,9 @@ const TRANSLATION = {
     }
   },
   ru: {
+    added: 'Контент добавлен в книгу',
+    selectBook: 'Выберите книгу',
+    selectBookHelp: 'Выберите необходимые элементы для добавления в книгу',
     add: 'Добавить оружие',
     newItemTitle: 'Редактирование оружия',
     name: 'Название оружия',
@@ -82,22 +90,27 @@ export const DaggerheartWeapons = () => {
     itemable_id: null,
     description: ''
   });
+  const [selectedIds, setSelectedIds] = createSignal([]);
+  const [book, setBook] = createSignal(null);
 
+  const [books, setBooks] = createSignal(undefined);
   const [items, setItems] = createSignal(undefined);
   const [homebrews, setHomebrews] = createSignal(undefined);
 
   const [appState] = useAppState();
-  const [{ renderAlert }] = useAppAlert();
+  const [{ renderAlert, renderNotice }] = useAppAlert();
   const [locale] = useAppLocale();
   const { Modal, openModal, closeModal } = createModal();
 
   createEffect(() => {
+    const fetchBooks = async () => await fetchDaggerheartBooks(appState.accessToken);
     const fetchHomebrews = async () => await fetchHomebrewsList(appState.accessToken, 'daggerheart');
     const fetchItems = async () => await fetchDaggerheartItems(appState.accessToken, 'primary weapon,secondary weapon');
 
-    Promise.all([fetchItems(), fetchHomebrews()]).then(
-      ([itemsDate, homebrewsData]) => {
+    Promise.all([fetchItems(), fetchHomebrews(), fetchBooks()]).then(
+      ([itemsDate, homebrewsData, booksData]) => {
         batch(() => {
+          setBooks(booksData.books.filter((item) => item.shared === null));
           setItems(itemsDate.items);
           setHomebrews(homebrewsData);
         });
@@ -208,59 +221,97 @@ export const DaggerheartWeapons = () => {
     }
   }
 
+  const addToBook = async () => {
+    const result = await changeBookContent(appState.accessToken, book(), { ids: selectedIds(), only_head: true }, 'item');
+
+    if (result.errors_list === undefined) {
+      batch(() => {
+        setBook(null);
+        setSelectedIds([]);
+      });
+      renderNotice(TRANSLATION[locale()].added)
+    }
+  }
+
   return (
     <Show when={items() !== undefined} fallback={<></>}>
       <Button default classList="mb-4 px-2 py-1" onClick={openCreateItemModal}>{TRANSLATION[locale()].add}</Button>
-      <table class="w-full table">
-        <thead>
-          <tr class="text-sm">
-            <td class="p-1" />
-            <td class="p-1">{TRANSLATION[locale()].kind}</td>
-            <td class="p-1">{TRANSLATION[locale()].tier}</td>
-            <td class="p-1">{TRANSLATION[locale()].trait}</td>
-            <td class="p-1">{TRANSLATION[locale()].range}</td>
-            <td class="p-1 text-nowrap">{TRANSLATION[locale()].damageType}</td>
-            <td class="p-1">{TRANSLATION[locale()].damage}</td>
-            <td class="p-1">{TRANSLATION[locale()].burden}</td>
-            <td class="p-1" />
-            <td class="p-1" />
-            <td class="p-1" />
-          </tr>
-        </thead>
-        <tbody>
-          <For each={items()}>
-            {(item) =>
-              <tr>
-                <td class="minimum-width py-1">{item.name[locale()]}</td>
-                <td class="minimum-width py-1 text-sm">{TRANSLATION[locale()].kinds[item.kind]}</td>
-                <td class="minimum-width py-1 text-sm">{item.info.tier}</td>
-                <td class="minimum-width py-1 text-sm">{item.info.trait ? config.traits[item.info.trait].name[locale()] : ''}</td>
-                <td class="minimum-width py-1 text-sm">{config.ranges[item.info.range].name[locale()]}</td>
-                <td class="minimum-width py-1 text-sm">{config.damageTypes[item.info.damage_type].name[locale()]}</td>
-                <td class="minimum-width py-1 text-sm">
-                  {item.info.damage}
-                  <Show when={item.info.damage_bonus !== 0}>
-                    +{item.info.damageBonus}
-                  </Show>
-                </td>
-                <td class="minimum-width py-1 text-sm">{item.info.burden}</td>
-                <td class="minimum-width py-1 text-sm">{item.info.features.en}</td>
-                <td class="py-1">{item.description[locale()]}</td>
-                <td>
-                  <div class="flex items-center justify-end gap-x-2 text-neutral-700">
-                    <Button default classList="px-2 py-1" onClick={() => openChangeItemModal(item)}>
-                      <Edit width="20" height="20" />
-                    </Button>
-                    <Button default classList="px-2 py-1" onClick={() => removeItem(item)}>
-                      <Trash width="20" height="20" />
-                    </Button>
-                  </div>
-                </td>
-              </tr>
-            }
-          </For>
-        </tbody>
-      </table>
+      <Show when={items().length > 0}>
+        <div class="flex items-center">
+          <Select
+            containerClassList="w-40"
+            labelText={TRANSLATION[locale()].selectBook}
+            items={Object.fromEntries(books().filter(({ shared }) => shared === null).map((item) => [item.id, item.name]))}
+            selectedValue={book()}
+            onSelect={setBook}
+          />
+          <Show when={book() && selectedIds().length > 0}>
+            <Button default classList="px-2 py-1 mt-6 ml-4" onClick={addToBook}>
+              {TRANSLATION[locale()].save}
+            </Button>
+          </Show>
+        </div>
+        <p class="text-sm mt-1 mb-2">{TRANSLATION[locale()].selectBookHelp}</p>
+        <table class="w-full table">
+          <thead>
+            <tr class="text-sm">
+              <td class="p-1" />
+              <td class="p-1" />
+              <td class="p-1">{TRANSLATION[locale()].kind}</td>
+              <td class="p-1">{TRANSLATION[locale()].tier}</td>
+              <td class="p-1">{TRANSLATION[locale()].trait}</td>
+              <td class="p-1">{TRANSLATION[locale()].range}</td>
+              <td class="p-1 text-nowrap">{TRANSLATION[locale()].damageType}</td>
+              <td class="p-1">{TRANSLATION[locale()].damage}</td>
+              <td class="p-1">{TRANSLATION[locale()].burden}</td>
+              <td class="p-1" />
+              <td class="p-1" />
+              <td class="p-1" />
+            </tr>
+          </thead>
+          <tbody>
+            <For each={items()}>
+              {(item) =>
+                <tr>
+                  <td class="minimum-width py-1">
+                    <Checkbox
+                      checked={selectedIds().includes(item.id)}
+                      classList="mr-1"
+                      innerClassList="small"
+                      onToggle={() => selectedIds().includes(item.id) ? setSelectedIds(selectedIds().filter((id) => id !== item.id)) : setSelectedIds(selectedIds().concat(item.id))}
+                    />
+                  </td>
+                  <td class="minimum-width py-1">{item.name[locale()]}</td>
+                  <td class="minimum-width py-1 text-sm">{TRANSLATION[locale()].kinds[item.kind]}</td>
+                  <td class="minimum-width py-1 text-sm">{item.info.tier}</td>
+                  <td class="minimum-width py-1 text-sm">{item.info.trait ? config.traits[item.info.trait].name[locale()] : ''}</td>
+                  <td class="minimum-width py-1 text-sm">{config.ranges[item.info.range].name[locale()]}</td>
+                  <td class="minimum-width py-1 text-sm">{config.damageTypes[item.info.damage_type].name[locale()]}</td>
+                  <td class="minimum-width py-1 text-sm">
+                    {item.info.damage}
+                    <Show when={item.info.damage_bonus !== 0}>
+                      +{item.info.damageBonus}
+                    </Show>
+                  </td>
+                  <td class="minimum-width py-1 text-sm">{item.info.burden}</td>
+                  <td class="minimum-width py-1 text-sm">{item.info.features.en}</td>
+                  <td class="py-1">{item.description[locale()]}</td>
+                  <td>
+                    <div class="flex items-center justify-end gap-x-2 text-neutral-700">
+                      <Button default classList="px-2 py-1" onClick={() => openChangeItemModal(item)}>
+                        <Edit width="20" height="20" />
+                      </Button>
+                      <Button default classList="px-2 py-1" onClick={() => removeItem(item)}>
+                        <Trash width="20" height="20" />
+                      </Button>
+                    </div>
+                  </td>
+                </tr>
+              }
+            </For>
+          </tbody>
+        </table>
+      </Show>
       <Modal>
         <p class="mb-2 text-xl">{TRANSLATION[locale()].newItemTitle}</p>
         <Input
