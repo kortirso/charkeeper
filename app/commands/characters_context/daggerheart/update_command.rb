@@ -40,7 +40,7 @@ module CharactersContext
             required(:bags).filled(:integer)
             required(:chests).filled(:integer)
           end
-          optional(:money).filled(:integer)
+          optional(:money).filled(:integer, gteq?: 0)
           optional(:leveling).hash
           optional(:name).filled(:string, max_size?: 50)
           optional(:avatar_file).hash do
