@@ -145,6 +145,10 @@
   @apply border-dashed;
 }
 
+.toggle.small {
+  @apply w-4 h-4;
+}
+
 .form-field .form-value {
   @apply bordered px-3 leading-8 bg-white text-black;
   @apply dark:bg-neutral-700 dark:border-gray-500 dark:text-snow;

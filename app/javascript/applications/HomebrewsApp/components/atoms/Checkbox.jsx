@@ -12,7 +12,7 @@ export const Checkbox = (props) => {
         <Label { ...labelProps } onClick={() => props.disabled ? null : props.onToggle()} />
       </Show>
       <div
-        class="toggle"
+        class={[props.innerClassList, 'toggle'].join(' ')}
         classList={{ 'checked': props.checked, 'outlined': props.outlined }}
         onClick={() => props.disabled ? null : props.onToggle()}
       >

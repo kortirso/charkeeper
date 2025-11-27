@@ -1,9 +1,11 @@
 import { createSignal, createEffect, Show, For, batch } from 'solid-js';
 import { createStore } from 'solid-js/store';
 
-import { useAppState, useAppLocale } from '../../../context';
-import { Button, Input, createModal, DaggerheartFeatForm, DaggerheartFeat } from '../../../components';
-import { Edit, Trash } from '../../../assets';
+import { useAppState, useAppLocale, useAppAlert } from '../../../context';
+import { Button, Input, createModal, DaggerheartFeatForm, DaggerheartFeat, Select } from '../../../components';
+import { Edit, Trash, Stroke } from '../../../assets';
+import { fetchDaggerheartBooks } from '../../../requests/fetchDaggerheartBooks';
+import { changeBookContent } from '../../../requests/changeBookContent';
 import { fetchDaggerheartCommunities } from '../../../requests/fetchDaggerheartCommunities';
 import { fetchDaggerheartCommunity } from '../../../requests/fetchDaggerheartCommunity';
 import { createDaggerheartCommunity } from '../../../requests/createDaggerheartCommunity';
@@ -14,6 +16,9 @@ import { removeFeat } from '../../../requests/removeFeat';
 
 const TRANSLATION = {
   en: {
+    added: 'Content is added to the book',
+    selectBook: 'Select book',
+    selectBookHelp: 'Select required elements for adding to the book',
     add: 'Add community',
     newCommunityTitle: 'Community form',
     name: 'Community name',
@@ -21,6 +26,9 @@ const TRANSLATION = {
     addFeature: 'Add feature'
   },
   ru: {
+    added: 'Контент добавлен в книгу',
+    selectBook: 'Выберите книгу',
+    selectBookHelp: 'Выберите необходимые элементы для добавления в книгу',
     add: 'Добавить общество',
     newCommunityTitle: 'Редактирование общества',
     name: 'Название общества',
@@ -32,20 +40,28 @@ const TRANSLATION = {
 export const DaggerheartCommunities = () => {
   const [communityForm, setCommunityForm] = createStore({ name: '' });
   const [featureCommunity, setFeatureCommunity] = createSignal(undefined);
+  const [selectedIds, setSelectedIds] = createSignal([]);
+  const [book, setBook] = createSignal(null);
 
+  const [books, setBooks] = createSignal(undefined);
   const [communities, setCommunities] = createSignal(undefined);
   const [modalMode, setModalMode] = createSignal(undefined);
 
   const [appState] = useAppState();
+  const [{ renderNotice }] = useAppAlert();
   const [locale] = useAppLocale();
   const { Modal, openModal, closeModal } = createModal();
 
   createEffect(() => {
+    const fetchBooks = async () => await fetchDaggerheartBooks(appState.accessToken);
     const fetchCommunities = async () => await fetchDaggerheartCommunities(appState.accessToken);
 
-    Promise.all([fetchCommunities()]).then(
-      ([communitiesData]) => {
-        setCommunities(communitiesData.communities);
+    Promise.all([fetchCommunities(), fetchBooks()]).then(
+      ([communitiesData, booksData]) => {
+        batch(() => {
+          setBooks(booksData.books.filter((item) => item.shared === null));
+          setCommunities(communitiesData.communities);
+        });
       }
     );
   });
@@ -157,49 +173,87 @@ export const DaggerheartCommunities = () => {
     }
   }
 
+  const addToBook = async () => {
+    const result = await changeBookContent(appState.accessToken, book(), { ids: selectedIds(), only_head: true }, 'community');
+
+    if (result.errors_list === undefined) {
+      batch(() => {
+        setBook(null);
+        setSelectedIds([]);
+      });
+      renderNotice(TRANSLATION[locale()].added)
+    }
+  }
+
   return (
     <Show when={communities() !== undefined} fallback={<></>}>
-      <Button default classList="mb-4 px-2 py-1" onClick={openCreateCommunityModal}>{TRANSLATION[locale()]['add']}</Button>
-      <div class="grid grid-cols-3 gap-4">
-        <For each={communities()}>
-          {(community) =>
-            <div class="blockable p-4 flex flex-col">
-              <div class="flex-1">
-                <p class="font-medium! mb-4 text-xl">{community.name}</p>
-                <Show when={community.features.length < 1}>
-                  <Button default small classList="mb-2 p-1" onClick={() => openCreateFeatureModal(community)}>
-                    {TRANSLATION[locale()]['addFeature']}
+      <Button default classList="mb-4 px-2 py-1" onClick={openCreateCommunityModal}>{TRANSLATION[locale()].add}</Button>
+      <Show when={communities().length > 0}>
+        <div class="flex items-center">
+          <Select
+            containerClassList="w-40"
+            labelText={TRANSLATION[locale()].selectBook}
+            items={Object.fromEntries(books().filter(({ shared }) => shared === null).map((item) => [item.id, item.name]))}
+            selectedValue={book()}
+            onSelect={setBook}
+          />
+          <Show when={book() && selectedIds().length > 0}>
+            <Button default classList="px-2 py-1 mt-6 ml-4" onClick={addToBook}>
+              {TRANSLATION[locale()].save}
+            </Button>
+          </Show>
+        </div>
+        <p class="text-sm mt-1 mb-2">{TRANSLATION[locale()].selectBookHelp}</p>
+        <div class="grid grid-cols-3 gap-4">
+          <For each={communities()}>
+            {(community) =>
+              <div class="blockable p-4 flex flex-col">
+                <div class="flex-1">
+                  <p class="font-medium! mb-4 text-xl">{community.name}</p>
+                  <Show when={community.features.length < 1}>
+                    <Button default small classList="mb-2 p-1" onClick={() => openCreateFeatureModal(community)}>
+                      {TRANSLATION[locale()].addFeature}
+                    </Button>
+                  </Show>
+                  <For each={community.features}>
+                    {(feature) =>
+                      <DaggerheartFeat feature={feature} onRemoveFeature={removeFeature} />
+                    }
+                  </For>
+                </div>
+                <div class="flex items-center justify-end gap-x-2 text-neutral-700">
+                  <Button
+                    default
+                    classList="p-2"
+                    onClick={() => selectedIds().includes(community.id) ? setSelectedIds(selectedIds().filter((id) => id !== community.id)) : setSelectedIds(selectedIds().concat(community.id))}
+                  >
+                    <span classList={{ 'opacity-25': !selectedIds().includes(community.id) }}>
+                      <Stroke width="16" height="12" />
+                    </span>
                   </Button>
-                </Show>
-                <For each={community.features}>
-                  {(feature) =>
-                    <DaggerheartFeat feature={feature} onRemoveFeature={removeFeature} />
-                  }
-                </For>
+                  <Button default classList="px-2 py-1" onClick={() => openChangeCommunityModal(community)}>
+                    <Edit width="20" height="20" />
+                  </Button>
+                  <Button default classList="px-2 py-1" onClick={() => removeCommunity(community)}>
+                    <Trash width="20" height="20" />
+                  </Button>
+                </div>
               </div>
-              <div class="flex items-center justify-end gap-x-2 text-neutral-700">
-                <Button default classList="px-2 py-1" onClick={() => openChangeCommunityModal(community)}>
-                  <Edit width="20" height="20" />
-                </Button>
-                <Button default classList="px-2 py-1" onClick={() => removeCommunity(community)}>
-                  <Trash width="20" height="20" />
-                </Button>
-              </div>
-            </div>
-          }
-        </For>
-      </div>
+            }
+          </For>
+        </div>
+      </Show>
       <Modal>
         <Show when={modalMode() === 'communityForm'}>
-          <p class="mb-2 text-xl">{TRANSLATION[locale()]['newCommunityTitle']}</p>
+          <p class="mb-2 text-xl">{TRANSLATION[locale()].newCommunityTitle}</p>
           <Input
             containerClassList="form-field mb-4"
-            labelText={TRANSLATION[locale()]['name']}
+            labelText={TRANSLATION[locale()].name}
             value={communityForm.name}
             onInput={(value) => setCommunityForm({ ...communityForm, name: value })}
           />
           <Button default classList="px-2 py-1" onClick={saveCommunity}>
-            {TRANSLATION[locale()]['save']}
+            {TRANSLATION[locale()].save}
           </Button>
         </Show>
         <Show when={modalMode() === 'featureForm'}>

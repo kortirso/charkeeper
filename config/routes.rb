@@ -150,7 +150,7 @@ Rails.application.routes.draw do
       resources :feats, only: %i[index create destroy]
       resources :items, only: %i[index show create update destroy]
       resources :books, only: %i[index create update destroy] do
-        resource :content, only: %i[create]
+        resource :content, only: %i[create], module: :books
       end
     end
   end
