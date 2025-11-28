@@ -3,10 +3,6 @@
 module HomebrewContext
   module Daggerheart
     class AddSubclassCommand < BaseCommand
-      include Deps[
-        refresh_user_data: 'services.homebrews_context.refresh_user_data'
-      ]
-
       use_contract do
         config.messages.namespace = :homebrew_subclass
 
@@ -29,8 +25,6 @@ module HomebrewContext
 
       def do_persist(input)
         result = ::Daggerheart::Homebrew::Subclass.create!(input[:attributes].merge(input[:data]))
-
-        refresh_user_data.call(user: input[:user])
 
         { result: result }
       end

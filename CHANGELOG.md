@@ -10,6 +10,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - grouping homebrews to books
 - copying homebrews
 
+### Modified
+- refreshing homebrews during app load
+
 ## [0.3.18] - 2025-11-27
 ### Modified
 - starting gear for DH characters

@@ -106,7 +106,7 @@ export const CharKeeperAppContent = () => {
   // 420x690
   return (
     <Switch>
-      <Match when={appState.accessToken}>
+      <Match when={appState.accessToken && appState.unreadNotificationsCount !== undefined}>
         <div class="flex-1 flex flex-col bg-gray-50 overflow-hidden" classList={{ 'dark': appState.colorSchema === 'dark' }}>
           <section class="w-full flex-1 flex overflow-hidden">
             <Switch fallback={<ContentPage onNavigate={() => navigate(null, {})} />}>
