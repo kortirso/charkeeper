@@ -4,8 +4,8 @@ module Homebrews
   module Daggerheart
     class ItemsController < Homebrews::BaseController
       include Deps[
-        add_daggerheart_item: 'commands.homebrew_context.daggerheart.add_item',
-        change_daggerheart_item: 'commands.homebrew_context.daggerheart.change_item'
+        add_item: 'commands.homebrew_context.daggerheart.add_item',
+        change_item: 'commands.homebrew_context.daggerheart.change_item'
       ]
       include SerializeRelation
       include SerializeResource
@@ -31,15 +31,15 @@ module Homebrews
       end
 
       def create
-        case add_daggerheart_item.call(item_params.merge(user: current_user))
+        case add_item.call(item_params.merge(user: current_user, bonuses: bonuses_params))
         in { errors: errors, errors_list: errors_list } then unprocessable_response(errors, errors_list)
         in { result: result }
-          serialize_resource(result, ::Homebrews::Daggerheart::ItemSerializer, :item, {}, :created)
+          serialize_resource(result, ::Homebrews::Daggerheart::ItemSerializer, :item, {}, :created, { bonuses: result.bonuses })
         end
       end
 
       def update
-        case change_daggerheart_item.call(item_params.merge(item: @item))
+        case change_item.call(item_params.merge(item: @item, bonuses: bonuses_params))
         in { errors: errors, errors_list: errors_list } then unprocessable_response(errors, errors_list)
         in { result: result }
           serialize_resource(result, ::Homebrews::Daggerheart::ItemSerializer, :item, {}, :ok)
@@ -70,6 +70,10 @@ module Homebrews
 
       def item_params
         params.require(:brewery).permit!.to_h
+      end
+
+      def bonuses_params
+        params.permit![:bonuses].to_a.map { |item| item.to_h.deep_symbolize_keys }
       end
     end
   end

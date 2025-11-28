@@ -45,7 +45,7 @@ module HomebrewContext
       # rubocop: enable Style/GuardClause
 
       def do_persist(input)
-        result = ::Daggerheart::Item.create!(input.except(:itemable_type, :itemable_id))
+        result = ::Daggerheart::Item.create!(input.except(:itemable_type, :itemable_id, :bonuses))
 
         refresh_bonuses.call(bonusable: result, bonuses: input[:bonuses]) if input[:bonuses]
 

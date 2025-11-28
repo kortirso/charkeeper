@@ -28,6 +28,8 @@ module DaggerheartCharacter
             *bonuses.pluck('traits'),
             *static_feat_bonuses.pluck('traits'),
             *dynamic_feat_bonuses.pluck('traits'),
+            *static_item_bonuses.pluck('traits'),
+            *dynamic_item_bonuses.pluck('traits'),
             beastform_config['traits'],
             leveling_traits
           ].compact
@@ -44,7 +46,9 @@ module DaggerheartCharacter
               equiped_thresholds_bonuses,
               *bonuses.pluck('thresholds'),
               *static_feat_bonuses.pluck('thresholds'),
-              *dynamic_feat_bonuses.pluck('thresholds')
+              *dynamic_feat_bonuses.pluck('thresholds'),
+              *static_item_bonuses.pluck('thresholds'),
+              *dynamic_item_bonuses.pluck('thresholds')
             ].compact
           ) { |_key, oldval, newval| newval + oldval }
     end
@@ -57,44 +61,53 @@ module DaggerheartCharacter
         sum(bonuses.pluck('evasion')) +
         sum(static_feat_bonuses.pluck('evasion')) +
         sum(dynamic_feat_bonuses.pluck('evasion')) +
+        sum(static_item_bonuses.pluck('evasion')) +
+        sum(dynamic_item_bonuses.pluck('evasion')) +
         beastform_config['evasion'] +
         stance_bonus
     end
 
-    def armor_score
+    def armor_score # rubocop: disable Metrics/AbcSize
       @armor_score ||=
         base_armor_score +
         item_bonuses.pluck('armor_score').compact.sum +
         sum(bonuses.pluck('armor_score')) +
         sum(static_feat_bonuses.pluck('armor_score')) +
-        sum(dynamic_feat_bonuses.pluck('armor_score'))
+        sum(dynamic_feat_bonuses.pluck('armor_score')) +
+        sum(static_item_bonuses.pluck('armor_score')) +
+        sum(dynamic_item_bonuses.pluck('armor_score'))
     end
 
     def armor_slots
       @armor_slots ||= armor_score
     end
 
-    def health_max
+    def health_max # rubocop: disable Metrics/AbcSize
       @health_max ||=
         data.health_max +
         leveling['health'].to_i +
         sum(bonuses.pluck('health')) +
         sum(static_feat_bonuses.pluck('health')) +
-        sum(dynamic_feat_bonuses.pluck('health'))
+        sum(dynamic_feat_bonuses.pluck('health')) +
+        sum(static_item_bonuses.pluck('health')) +
+        sum(dynamic_item_bonuses.pluck('health'))
     end
 
-    def stress_max
+    def stress_max # rubocop: disable Metrics/AbcSize
       @stress_max ||=
         data.stress_max +
         leveling['stress'].to_i +
         sum(bonuses.pluck('stress')) +
         sum(static_feat_bonuses.pluck('stress')) +
-        sum(dynamic_feat_bonuses.pluck('stress'))
+        sum(dynamic_feat_bonuses.pluck('stress')) +
+        sum(static_item_bonuses.pluck('stress')) +
+        sum(dynamic_item_bonuses.pluck('stress'))
     end
 
-    def hope_max
+    def hope_max # rubocop: disable Metrics/AbcSize
       @hope_max ||=
-        data.hope_max + beastbound_pet_bonus + sum(static_feat_bonuses.pluck('hope')) + sum(dynamic_feat_bonuses.pluck('hope'))
+        data.hope_max + beastbound_pet_bonus + sum(static_feat_bonuses.pluck('hope')) + sum(dynamic_feat_bonuses.pluck('hope')) +
+        sum(static_item_bonuses.pluck('hope')) + sum(dynamic_item_bonuses.pluck('hope'))
     end
 
     def attacks
@@ -215,11 +228,13 @@ module DaggerheartCharacter
       modified_traits.values.max
     end
 
-    def attack_bonuses
+    def attack_bonuses # rubocop: disable Metrics/AbcSize
       @attack_bonuses ||=
         sum(bonuses.pluck('attack').compact) +
         sum(static_feat_bonuses.pluck('attack').compact) +
-        sum(dynamic_feat_bonuses.pluck('attack').compact)
+        sum(dynamic_feat_bonuses.pluck('attack').compact) +
+        sum(static_item_bonuses.pluck('attack').compact) +
+        sum(dynamic_item_bonuses.pluck('attack').compact)
     end
 
     def equiped_traits_bonuses
