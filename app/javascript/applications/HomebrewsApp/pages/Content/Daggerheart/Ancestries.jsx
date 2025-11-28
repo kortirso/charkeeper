@@ -56,7 +56,7 @@ export const DaggerheartAncestries = () => {
   const [open, setOpen] = createSignal(false);
 
   const [appState] = useAppState();
-  const [{ renderNotice }] = useAppAlert();
+  const [{ renderAlerts, renderNotice }] = useAppAlert();
   const [locale] = useAppLocale();
   const { Modal, openModal, closeModal } = createModal();
 
@@ -117,7 +117,7 @@ export const DaggerheartAncestries = () => {
         setAncestryForm({ id: null, name: '', public: false });
         closeModal();
       });
-    }
+    } else renderAlerts(result.errors_list);
   }
 
   const updateAncestry = async () => {
@@ -135,7 +135,7 @@ export const DaggerheartAncestries = () => {
         setAncestryForm({ id: null, name: '', public: false });
         closeModal();
       });
-    }
+    } else renderAlerts(result.errors_list);
   }
 
   const removeAncestry = async (ancestry) => {
@@ -143,7 +143,7 @@ export const DaggerheartAncestries = () => {
 
     if (result.errors_list === undefined) {
       setAncestries(ancestries().filter(({ id }) => id !== ancestry.id ));
-    }
+    } else renderAlerts(result.errors_list);
   }
 
   const copyAncestry = async (ancestryId) => {

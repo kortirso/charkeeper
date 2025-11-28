@@ -3,7 +3,7 @@ import { createStore } from 'solid-js/store';
 
 import config from '../../../../CharKeeperApp/data/daggerheart.json';
 
-import { useAppState, useAppLocale } from '../../../context';
+import { useAppState, useAppLocale, useAppAlert } from '../../../context';
 import { Button, Input, createModal, DaggerheartFeatForm, DaggerheartFeat, Select } from '../../../components';
 import { Edit, Trash } from '../../../assets';
 import { fetchHomebrewsList } from '../../../requests/fetchHomebrewsList';
@@ -53,6 +53,7 @@ export const DaggerheartClasses = () => {
   const [homebrews, setHomebrews] = createSignal(undefined);
 
   const [appState] = useAppState();
+  const [{ renderAlerts }] = useAppAlert();
   const [locale] = useAppLocale();
   const { Modal, openModal, closeModal } = createModal();
 
@@ -120,7 +121,7 @@ export const DaggerheartClasses = () => {
         setSpecialityForm({ id: null, name: '' });
         closeModal();
       });
-    }
+    } else renderAlerts(result.errors_list);
   }
 
   const updateSpeciality = async () => {
@@ -138,7 +139,7 @@ export const DaggerheartClasses = () => {
         setSpecialityForm({ id: null, name: '' });
         closeModal();
       });
-    }
+    } else renderAlerts(result.errors_list);
   }
 
   const removeSpeciality = async (speciality) => {
@@ -146,7 +147,7 @@ export const DaggerheartClasses = () => {
 
     if (result.errors_list === undefined) {
       setSpecialities(specialities().filter(({ id }) => id !== speciality.id ));
-    }
+    } else renderAlerts(result.errors_list);
   }
 
   const createSpecialityFeature = async (payload) => {
@@ -169,7 +170,7 @@ export const DaggerheartClasses = () => {
           closeModal();
         });
       }
-    }
+    } else renderAlerts(result.errors_list);
   }
 
   const removeFeature = async (feature) => {
@@ -186,8 +187,8 @@ export const DaggerheartClasses = () => {
         });
 
         setSpecialities(newSpecialities);
-      }
-    }
+      } else renderAlerts(result.errors_list);
+    } else renderAlerts(result.errors_list);
   }
 
   return (

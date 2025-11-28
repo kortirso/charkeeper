@@ -48,7 +48,7 @@ export const DaggerheartCommunities = () => {
   const [modalMode, setModalMode] = createSignal(undefined);
 
   const [appState] = useAppState();
-  const [{ renderNotice }] = useAppAlert();
+  const [{ renderAlerts, renderNotice }] = useAppAlert();
   const [locale] = useAppLocale();
   const { Modal, openModal, closeModal } = createModal();
 
@@ -103,7 +103,7 @@ export const DaggerheartCommunities = () => {
         setCommunityForm({ id: null, name: '' });
         closeModal();
       });
-    }
+    } else renderAlerts(result.errors_list);
   }
 
   const updateCommunity = async () => {
@@ -121,7 +121,7 @@ export const DaggerheartCommunities = () => {
         setCommunityForm({ id: null, name: '' });
         closeModal();
       });
-    }
+    } else renderAlerts(result.errors_list);
   }
 
   const removeCommunity = async (community) => {
@@ -129,7 +129,7 @@ export const DaggerheartCommunities = () => {
 
     if (result.errors_list === undefined) {
       setCommunities(communities().filter(({ id }) => id !== community.id ));
-    }
+    } else renderAlerts(result.errors_list);
   }
 
   const createCommunityFeature = async (payload) => {

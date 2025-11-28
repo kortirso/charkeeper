@@ -48,7 +48,7 @@ export const DaggerheartDomains = () => {
   const [modalMode, setModalMode] = createSignal(undefined);
 
   const [appState] = useAppState();
-  const [{ renderNotice }] = useAppAlert();
+  const [{ renderAlerts, renderNotice }] = useAppAlert();
   const [locale] = useAppLocale();
   const { Modal, openModal, closeModal } = createModal();
 
@@ -103,7 +103,7 @@ export const DaggerheartDomains = () => {
         setDomainForm({ id: null, name: '' });
         closeModal();
       });
-    }
+    } else renderAlerts(result.errors_list);
   }
 
   const updateDomain = async () => {
@@ -121,7 +121,7 @@ export const DaggerheartDomains = () => {
         setDomainForm({ id: null, name: '' });
         closeModal();
       });
-    }
+    } else renderAlerts(result.errors_list);
   }
 
   const removeDomain = async (domain) => {
@@ -129,7 +129,7 @@ export const DaggerheartDomains = () => {
 
     if (result.errors_list === undefined) {
       setDomains(domains().filter(({ id }) => id !== domain.id ));
-    }
+    } else renderAlerts(result.errors_list);
   }
 
   const createDomainFeature = async (payload) => {
@@ -152,7 +152,7 @@ export const DaggerheartDomains = () => {
           closeModal();
         });
       }
-    }
+    } else renderAlerts(result.errors_list);
   }
 
   const removeFeature = async (feature) => {
@@ -170,7 +170,7 @@ export const DaggerheartDomains = () => {
 
         setDomains(newDomains);
       }
-    }
+    } else renderAlerts(result.errors_list);
   }
 
   const addToBook = async () => {

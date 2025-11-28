@@ -115,8 +115,6 @@ module Charkeeper
       HomebrewContext::Daggerheart::AddBookSubclassesCommand.new
     }
     register('commands.homebrew_context.daggerheart.add_book_items') { HomebrewContext::Daggerheart::AddBookItemsCommand.new }
-    register('commands.homebrew_context.copy_book') { HomebrewContext::CopyBookCommand.new }
-    register('commands.homebrew_context.daggerheart.copy_book') { HomebrewContext::Daggerheart::CopyBookCommand.new }
 
     register('commands.campaigns_context.add_campaign') { CampaignsContext::AddCampaignCommand.new }
     register('commands.campaigns_context.join_campaign') { CampaignsContext::JoinCampaignCommand.new }
@@ -169,8 +167,6 @@ module Charkeeper
 
     register('services.bot_context.handle_command') { BotContext::HandleCommandService.new }
     register('services.bot_context.commands.roll') { BotContext::Commands::Roll.new }
-    register('services.bot_context.commands.book') { BotContext::Commands::Book.new }
-    register('services.bot_context.commands.homebrew') { BotContext::Commands::Homebrew.new }
     register('services.bot_context.commands.check') { BotContext::Commands::Check.new }
     register('services.bot_context.commands.campaign') { BotContext::Commands::Campaign.new }
     register('services.bot_context.commands.character') { BotContext::Commands::Character.new }

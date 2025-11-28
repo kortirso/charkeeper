@@ -9,23 +9,12 @@ describe Frontend::BotsController do
       let(:request) { post :create, params: { value: value, charkeeper_access_token: access_token } }
 
       context 'for invalid command' do
-        let(:value) { '/module create d20 abc' }
+        let(:value) { '/rolld 20' }
 
         it 'returns errors messages', :aggregate_failures do
           request
 
-          expect(response.parsed_body[:errors]).to eq(['Неизвестное значение'])
-          expect(response).to have_http_status :ok
-        end
-      end
-
-      context 'for invalid arguments' do
-        let(:value) { '/module set d20' }
-
-        it 'returns errors messages', :aggregate_failures do
-          request
-
-          expect(response.parsed_body[:errors]).to eq(['Запись не найдена'])
+          expect(response.parsed_body[:errors]).to eq(['Invalid command'])
           expect(response).to have_http_status :ok
         end
       end

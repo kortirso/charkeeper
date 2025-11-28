@@ -2,4 +2,5 @@ User-agent: *
 Disallow: /web_telegram/
 Disallow: /adminbook/
 Disallow: /dashboard/
+Disallow: /homebrews/
 Sitemap: https://charkeeper.org/sitemap.xml

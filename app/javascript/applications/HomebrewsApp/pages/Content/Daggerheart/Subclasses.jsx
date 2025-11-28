@@ -64,7 +64,7 @@ export const DaggerheartSubclasses = () => {
   const [homebrews, setHomebrews] = createSignal(undefined);
 
   const [appState] = useAppState();
-  const [{ renderNotice }] = useAppAlert();
+  const [{ renderAlerts, renderNotice }] = useAppAlert();
   const [locale] = useAppLocale();
   const { Modal, openModal, closeModal } = createModal();
 
@@ -134,7 +134,7 @@ export const DaggerheartSubclasses = () => {
         setSubclassForm({ id: null, name: '' });
         closeModal();
       });
-    }
+    } else renderAlerts(result.errors_list);
   }
 
   const updateSubclass = async () => {
@@ -152,7 +152,7 @@ export const DaggerheartSubclasses = () => {
         setSubclassForm({ id: null, name: '' });
         closeModal();
       });
-    }
+    } else renderAlerts(result.errors_list);
   }
 
   const removeSubclass = async (subclass) => {
@@ -160,7 +160,7 @@ export const DaggerheartSubclasses = () => {
 
     if (result.errors_list === undefined) {
       setSubclasses(subclasses().filter(({ id }) => id !== subclass.id ));
-    }
+    } else renderAlerts(result.errors_list);
   }
 
   const createSubclassFeature = async (payload) => {

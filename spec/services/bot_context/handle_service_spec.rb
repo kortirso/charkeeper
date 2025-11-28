@@ -35,25 +35,6 @@ describe BotContext::HandleService do
       expect(client).to have_received(:send_message)
     end
 
-    context 'for module commands' do
-      before { create :homebrew_book, user: user }
-
-      context 'when list' do
-        let(:text) { '/module list' }
-
-        it 'sends list of modules' do
-          service_call
-
-          expect(client).to have_received(:send_message).with(
-            bot_secret: nil,
-            chat_id: 1,
-            reply_to_message_id: 1,
-            text: 'Daggerheart - Book'
-          )
-        end
-      end
-    end
-
     context 'for campaign commands' do
       let!(:channel) { create :channel, external_id: '1' }
       let!(:campaign) { create :campaign, :daggerheart }
@@ -172,85 +153,6 @@ describe BotContext::HandleService do
       it 'does not send response message', :aggregate_failures do
         expect(service_call[:result]).to eq :ok
         expect(client).not_to have_received(:send_message)
-      end
-    end
-
-    context 'for module commands' do
-      let!(:book) { create :homebrew_book, user: user }
-
-      context 'when list' do
-        let(:text) { '/module list' }
-
-        it 'returns list of modules' do
-          expect(service_call[:result]).to eq 'Daggerheart - Book'
-        end
-      end
-
-      context 'when show' do
-        let(:text) { '/module show' }
-
-        context 'without active book' do
-          it 'returns error', :aggregate_failures do
-            expect(service_call[:result]).to be_nil
-            expect(service_call[:errors_list]).to eq(['Object is not found'])
-          end
-        end
-
-        context 'with active book' do
-          before { create :active_bot_object, user: user, info: { id: book.id } }
-
-          it 'returns list of modules' do
-            expect(service_call[:result]).to eq 'Daggerheart - Book'
-          end
-        end
-
-        context 'with unexisting active book' do
-          before { create :active_bot_object, user: user, info: { id: 'unexisting' } }
-
-          it 'returns error', :aggregate_failures do
-            expect(service_call[:result]).to be_nil
-            expect(service_call[:errors_list]).to eq(['Object is not found'])
-          end
-        end
-      end
-
-      context 'when set' do
-        context 'without active book' do
-          let(:text) { "/module set #{book.name}" }
-
-          it 'sets active book' do
-            expect { service_call }.to change(ActiveBotObject, :count).by(1)
-          end
-        end
-
-        context 'for unexisting name' do
-          let(:text) { '/module set name' }
-
-          it 'returns error', :aggregate_failures do
-            expect { service_call }.not_to change(ActiveBotObject, :count)
-            expect(service_call[:result]).to be_nil
-            expect(service_call[:errors_list]).to eq(['Object is not found'])
-          end
-        end
-      end
-
-      context 'when export' do
-        let(:text) { '/module export' }
-
-        context 'without active book' do
-          it 'returns error', :aggregate_failures do
-            expect(service_call[:result]).to be_nil
-            expect(service_call[:errors_list]).to eq(['Object is not found'])
-          end
-        end
-
-        context 'with active book' do
-          before { create :active_bot_object, user: user, info: { id: book.id } }
-
-          it 'returns import command' do
-            expect(service_call[:result].include?("/module import #{book.id}")).to be_truthy
-          end
-        end
       end
     end
   end

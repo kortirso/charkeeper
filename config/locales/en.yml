@@ -81,11 +81,6 @@ en:
           result: Result
           total: Total
           nothing: No result
-        book:
-          create:
-            result: "Module \"%{name}\" is created"
-          remove:
-            result: Module is deleted
         campaign:
           create:
             result: "Campaign \"%{name}\" is created"
@@ -93,15 +88,6 @@ en:
             result: Campaign is deleted
           show:
             characters: "Campaign' characters"
-        homebrew:
-          add_race:
-            result: "Race \"%{name}\" is created"
-          add_community:
-            result: "Community \"%{name}\" is created"
-          add_transformation:
-            result: "Transformation \"%{name}\" is created"
-          add_domain:
-            result: "Domain \"%{name}\" is created"
   decorators:
     pathfinder2:
       boosts: "You can improve abilities: %{ability_boosts_text}.\nYou can learn skills: %{skill_boosts_text}"
@@ -144,7 +130,8 @@ en:
         web: Web application in browsers
         web_description: Simply run %{href}
         web_link: dashboard
-        dashboard_link: Dashboard
+        dashboard_link: Characters
+        homebrews_link: Homebrews
         macos: MacOS application
         macos_description: Simply download and run %{href}
         macos_link: installer
@@ -161,13 +148,24 @@ en:
           feature_6: Automatically apply the results of downtime effects.
         dnd:
           title: D&D 5 and 2024 compability
-          feature_1: Create characters of standard races/classes
+          feature_1: Create characters of standard races/classes.
           feature_2: Edit any stats, skills, equipment, spells, levels/classes/subclasses.
           feature_3: Automatic calculation of possible attacks depending on equipment, their bonuses and damage.
           feature_4: Easy health management.
           feature_5: Spells management system with marking spent spell slots.
           feature_6: Automatic calculation of rest effects.
           feature_7: Automatic rendering available feats with prefilled values of damage and other feat stats.
+        dc20:
+          title: DC20 compability
+          feature_1: Create characters with selecting race features.
+          feature_2: Edit any stats, skills, trades, languages, equipment.
+          feature_3: Automatic calculation of possible attacks depending on equipment, their bonuses and damage.
+          feature_4: Easy resources management.
+          feature_5: Automatic rendering available feats with prefilled values of damage and other feat stats.
+        homebrews:
+          title: Homebrews management system
+          feature_1: Create and share your homebrew races, classes, subclasses, items.
+          feature_2: Combine your homebrews to books for easy sharing with your players.
         bots:
           title: Bots integrations in Discord and Telegram
           feature_1: Campaigns management

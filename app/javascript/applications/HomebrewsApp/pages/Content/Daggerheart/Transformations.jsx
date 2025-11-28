@@ -48,7 +48,7 @@ export const DaggerheartTransformations = () => {
   const [modalMode, setModalMode] = createSignal(undefined);
 
   const [appState] = useAppState();
-  const [{ renderNotice }] = useAppAlert();
+  const [{ renderAlerts, renderNotice }] = useAppAlert();
   const [locale] = useAppLocale();
   const { Modal, openModal, closeModal } = createModal();
 
@@ -103,7 +103,7 @@ export const DaggerheartTransformations = () => {
         setTransformationForm({ id: null, name: '' });
         closeModal();
       });
-    }
+    } else renderAlerts(result.errors_list);
   }
 
   const updateTransformation = async () => {
@@ -121,7 +121,7 @@ export const DaggerheartTransformations = () => {
         setTransformationForm({ id: null, name: '' });
         closeModal();
       });
-    }
+    } else renderAlerts(result.errors_list);
   }
 
   const removeTransformation = async (transformation) => {
@@ -129,7 +129,7 @@ export const DaggerheartTransformations = () => {
 
     if (result.errors_list === undefined) {
       setTransformations(transformations().filter(({ id }) => id !== transformation.id ));
-    }
+    } else renderAlerts(result.errors_list);
   }
 
   const createTransformationFeature = async (payload) => {
