@@ -5,8 +5,7 @@ module HomebrewContext
     class CopyRaceCommand < BaseCommand
       include Deps[
         add_race: 'commands.homebrew_context.daggerheart.add_race',
-        copy_feats: 'commands.homebrew_context.daggerheart.copy_feats',
-        refresh_user_data: 'services.homebrews_context.refresh_user_data'
+        copy_feats: 'commands.homebrew_context.daggerheart.copy_feats'
       ]
 
       use_contract do
@@ -18,9 +17,9 @@ module HomebrewContext
 
       private
 
-      def do_persist(input) # rubocop: disable Metrics/AbcSize
+      def do_persist(input)
         result = ActiveRecord::Base.transaction do
-          race = add_race.call({ user: input[:user], name: input[:race].name, no_refresh: true })[:result]
+          race = add_race.call({ user: input[:user], name: input[:race].name })[:result]
 
           copy_feats.call(
             feats: input[:race].user.feats.where(origin: 0, origin_value: input[:race].id).to_a,
@@ -31,8 +30,6 @@ module HomebrewContext
 
           race
         end
-
-        refresh_user_data.call(user: input[:user])
 
         { result: result }
       end

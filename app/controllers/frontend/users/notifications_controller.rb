@@ -3,6 +3,10 @@
 module Frontend
   module Users
     class NotificationsController < Frontend::BaseController
+      include Deps[
+        refresh_user_data: 'services.homebrews_context.refresh_user_data'
+      ]
+
       include SerializeRelation
 
       after_action :mark_notifications_as_read, only: %i[index]
@@ -16,6 +20,7 @@ module Frontend
       end
 
       def unread
+        refresh_user_data.call(user: current_user)
         render json: { unread: current_user.notifications.unread.count }, status: :ok
       end
 

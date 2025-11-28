@@ -4,8 +4,7 @@ module Homebrews
   module Daggerheart
     class BooksController < Frontend::BaseController
       include Deps[
-        add_book: 'commands.homebrew_context.add_book',
-        refresh_user_data: 'services.homebrews_context.refresh_user_data'
+        add_book: 'commands.homebrew_context.add_book'
       ]
 
       include SerializeRelation
@@ -37,7 +36,6 @@ module Homebrews
 
       def update
         @user_book ? @user_book.destroy : User::Book.create(user: current_user, book: @book)
-        refresh_user_data.call(user: current_user)
         only_head_response
       end
 

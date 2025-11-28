@@ -5,7 +5,6 @@ module HomebrewContext
     class AddFeatCommand < BaseCommand
       include Deps[
         refresh_feats: 'services.characters_context.daggerheart.refresh_feats',
-        refresh_user_data: 'services.homebrews_context.refresh_user_data',
         refresh_bonuses: 'commands.bonuses_context.refresh'
       ]
 
@@ -87,7 +86,6 @@ module HomebrewContext
 
         unless input.key?(:no_refresh)
           input[:user].characters.daggerheart.find_each { |character| refresh_feats.call(character: character) }
-          refresh_user_data.call(user: input[:user])
         end
         refresh_bonuses.call(bonusable: result, bonuses: input[:bonuses]) if input[:bonuses]
 
