@@ -2,7 +2,7 @@ import { createSignal, createEffect, Show, For, batch } from 'solid-js';
 import { createStore } from 'solid-js/store';
 
 import { useAppState, useAppLocale, useAppAlert } from '../../../context';
-import { Button, Input, TextArea, Select, createModal, Checkbox } from '../../../components';
+import { Button, Input, TextArea, Select, createModal, Checkbox, ItemBonuses, Bonuses } from '../../../components';
 import { Edit, Trash } from '../../../assets';
 import { fetchDaggerheartBooks } from '../../../requests/fetchDaggerheartBooks';
 import { changeBookContent } from '../../../requests/changeBookContent';
@@ -51,8 +51,10 @@ const TRANSLATION = {
 
 export const DaggerheartItems = () => {
   const [itemForm, setItemForm] = createStore({ name: '', description: '', kind: 'item' });
+  const [itemBonuses, setItemBonuses] = createSignal([]);
   const [selectedIds, setSelectedIds] = createSignal([]);
   const [book, setBook] = createSignal(null);
+  const [bonuses, setBonuses] = createSignal(null);
 
   const [books, setBooks] = createSignal(undefined);
   const [items, setItems] = createSignal(undefined);
@@ -79,6 +81,7 @@ export const DaggerheartItems = () => {
   const openCreateItemModal = () => {
     batch(() => {
       setItemForm({ id: null, name: '', description: '', kind: 'item' });
+      setItemBonuses([]);
       openModal();
     });
   }
@@ -86,6 +89,7 @@ export const DaggerheartItems = () => {
   const openChangeItemModal = (item) => {
     batch(() => {
       setItemForm({ id: item.id, name: item.name.en, description: item.description.en });
+      setItemBonuses(item.bonuses);
       openModal();
     });
   }
@@ -97,19 +101,20 @@ export const DaggerheartItems = () => {
   }
 
   const createItem = async () => {
-    const result = await createDaggerheartItem(appState.accessToken, { brewery: itemForm });
+    const result = await createDaggerheartItem(appState.accessToken, { brewery: itemForm, bonuses: bonuses() });
 
     if (result.errors_list === undefined) {
       batch(() => {
         setItems([result.item].concat(items()));
         setItemForm({ id: null, name: '', description: '', kind: 'item' });
+        setItemBonuses([]);
         closeModal();
       });
     }
   }
 
   const updateItem = async () => {
-    const result = await changeDaggerheartItem(appState.accessToken, itemForm.id, { brewery: itemForm, only_head: true });
+    const result = await changeDaggerheartItem(appState.accessToken, itemForm.id, { brewery: itemForm, bonuses: bonuses(), only_head: true });
 
     if (result.errors_list === undefined) {
       const newItems = items().map((item) => {
@@ -118,13 +123,15 @@ export const DaggerheartItems = () => {
         return {
           ...item,
           name: { en: itemForm.name, ru: itemForm.name },
-          description: { en: itemForm.description, ru: itemForm.description }
+          description: { en: itemForm.description, ru: itemForm.description },
+          bonuses: bonuses()
         };
       });
 
       batch(() => {
         setItems(newItems);
         setItemForm({ id: null, name: '', description: '', kind: 'item' });
+        setItemBonuses([]);
         closeModal();
       });
     }
@@ -152,7 +159,7 @@ export const DaggerheartItems = () => {
 
   return (
     <Show when={items() !== undefined} fallback={<></>}>
-      <Button default classList="mb-4 px-2 py-1" onClick={openCreateItemModal}>{TRANSLATION[locale()]['add']}</Button>
+      <Button default classList="mb-4 px-2 py-1" onClick={openCreateItemModal}>{TRANSLATION[locale()].add}</Button>
       <Show when={items().length > 0}>
         <div class="flex items-center">
           <Select
@@ -175,6 +182,7 @@ export const DaggerheartItems = () => {
               <td class="p-1" />
               <td class="p-1" />
               <td class="p-1">{TRANSLATION[locale()].kindTable}</td>
+              <td class="p-1" />
               <td class="p-1">{TRANSLATION[locale()].description}</td>
             </tr>
           </thead>
@@ -192,6 +200,7 @@ export const DaggerheartItems = () => {
                   </td>
                   <td class="minimum-width py-1">{item.name[locale()]}</td>
                   <td class="minimum-width py-1 text-sm">{TRANSLATION[locale()].kinds[item.kind]}</td>
+                  <td class="minimum-width py-1"><Bonuses bonuses={item.bonuses} /></td>
                   <td class="py-1">{item.description[locale()]}</td>
                   <td>
                     <div class="flex items-center justify-end gap-x-2 text-neutral-700">
@@ -224,6 +233,7 @@ export const DaggerheartItems = () => {
           selectedValue={itemForm.kind}
           onSelect={(value) => setItemForm({ ...itemForm, kind: value })}
         />
+        <ItemBonuses bonuses={itemBonuses()} onBonus={setBonuses} />
         <TextArea
           rows="5"
           containerClassList="mb-2"

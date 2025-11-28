@@ -8,5 +8,8 @@ export * from './atoms/Toggle';
 
 export * from './molecules/Modal';
 
+export * from './substances/Bonus';
+export * from './substances/Bonuses';
 export * from './substances/DaggerheartFeatForm';
 export * from './substances/DaggerheartFeat';
+export * from './substances/ItemBonuses';

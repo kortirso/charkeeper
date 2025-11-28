@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - money change validation
 - grouping homebrews to books
 - copying homebrews
+- attaching bonuses to homebrew items
 
 ### Modified
 - refreshing homebrews during app load

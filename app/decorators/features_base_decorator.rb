@@ -39,6 +39,15 @@ class FeaturesBaseDecorator
       end
   end
 
+  def dynamic_item_bonuses
+    @dynamic_item_bonuses ||=
+      item_bonuses.pluck(:dynamic_value).compact.filter_map do |hash|
+        next if hash.empty?
+
+        call_values(hash)
+      end
+  end
+
   private
 
   def feature_bonuses_enabled?(feature)

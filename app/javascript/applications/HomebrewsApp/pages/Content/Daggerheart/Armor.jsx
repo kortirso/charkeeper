@@ -2,7 +2,7 @@ import { createSignal, createEffect, Show, For, batch } from 'solid-js';
 import { createStore } from 'solid-js/store';
 
 import { useAppState, useAppLocale, useAppAlert } from '../../../context';
-import { Button, Input, TextArea, Select, createModal, Checkbox } from '../../../components';
+import { Button, Input, TextArea, Select, createModal, Checkbox, ItemBonuses, Bonuses } from '../../../components';
 import { Edit, Trash } from '../../../assets';
 import { fetchDaggerheartBooks } from '../../../requests/fetchDaggerheartBooks';
 import { changeBookContent } from '../../../requests/changeBookContent';
@@ -59,10 +59,13 @@ export const DaggerheartArmor = () => {
     features: '',
     description: '',
     major: 0,
-    severe: 0
+    severe: 0,
+    bonuses: []
   });
+  const [itemBonuses, setItemBonuses] = createSignal([]);
   const [selectedIds, setSelectedIds] = createSignal([]);
   const [book, setBook] = createSignal(null);
+  const [bonuses, setBonuses] = createSignal(null);
 
   const [books, setBooks] = createSignal(undefined);
   const [items, setItems] = createSignal(undefined);
@@ -89,6 +92,7 @@ export const DaggerheartArmor = () => {
   const openCreateItemModal = () => {
     batch(() => {
       setItemForm({ ...itemForm, id: null });
+      setItemBonuses([]);
       openModal();
     });
   }
@@ -106,6 +110,7 @@ export const DaggerheartArmor = () => {
         features: item.info.features[0] ? item.info.features[0].en : '',
         description: item.description.en
       });
+      setItemBonuses(item.bonuses);
       openModal();
     });
   }
@@ -129,19 +134,20 @@ export const DaggerheartArmor = () => {
   }
 
   const createItem = async (formData) => {
-    const result = await createDaggerheartItem(appState.accessToken, { brewery: formData });
+    const result = await createDaggerheartItem(appState.accessToken, { brewery: formData, bonuses: bonuses() });
 
     if (result.errors_list === undefined) {
       batch(() => {
         setItems([result.item].concat(items()));
         setItemForm({ ...itemForm, id: null });
+        setItemBonuses([]);
         closeModal();
       });
     }
   }
 
   const updateItem = async (formData) => {
-    const result = await changeDaggerheartItem(appState.accessToken, itemForm.id, { brewery: formData, only_head: true });
+    const result = await changeDaggerheartItem(appState.accessToken, itemForm.id, { brewery: formData, bonuses: bonuses(), only_head: true });
 
     if (result.errors_list === undefined) {
       const newItems = items().map((item) => {
@@ -151,13 +157,15 @@ export const DaggerheartArmor = () => {
           ...formData,
           name: { en: itemForm.name, ru: itemForm.name },
           description: { en: itemForm.description, ru: itemForm.description },
-          features: { en: itemForm.features, ru: itemForm.features }
+          features: { en: itemForm.features, ru: itemForm.features },
+          bonuses: bonuses()
         };
       });
 
       batch(() => {
         setItems(newItems);
         setItemForm({ ...itemForm, id: null });
+        setItemBonuses([]);
         closeModal();
       });
     }
@@ -213,6 +221,7 @@ export const DaggerheartArmor = () => {
               <td class="p-1" />
               <td class="p-1" />
               <td class="p-1" />
+              <td class="p-1" />
             </tr>
           </thead>
           <tbody>
@@ -231,6 +240,7 @@ export const DaggerheartArmor = () => {
                   <td class="minimum-width py-1 text-sm">{item.info.tier}</td>
                   <td class="minimum-width py-1 text-sm">{item.info.base_score}</td>
                   <td class="minimum-width py-1 text-sm">{item.info.bonuses.thresholds.major}/{item.info.bonuses.thresholds.severe}</td>
+                  <td class="minimum-width py-1"><Bonuses bonuses={item.bonuses} /></td>
                   <td class="minimum-width py-1 text-sm">{item.info.features[0] ? item.info.features[0].en : ''}</td>
                   <td class="py-1">{item.description[locale()]}</td>
                   <td>
@@ -295,6 +305,7 @@ export const DaggerheartArmor = () => {
           value={itemForm.features}
           onChange={(value) => setItemForm({ ...itemForm, features: value })}
         />
+        <ItemBonuses bonuses={itemBonuses()} onBonus={setBonuses} />
         <TextArea
           rows="5"
           containerClassList="mb-2"
