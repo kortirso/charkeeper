@@ -16,5 +16,9 @@ module Homebrews
         }
       end
     end
+
+    def description
+      object.description.transform_values { |value| Charkeeper::Container.resolve('markdown').call(value: value) }
+    end
   end
 end

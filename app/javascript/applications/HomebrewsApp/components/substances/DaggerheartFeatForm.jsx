@@ -9,6 +9,7 @@ import { Trash } from '../../assets';
 
 const TRANSLATION = {
   en: {
+    markdown: 'You can use Markdown for editing description',
     save: 'Save',
     cancel: 'Cancel',
     formTitle: 'Feature editing',
@@ -42,6 +43,7 @@ const TRANSLATION = {
     }
   },
   ru: {
+    markdown: 'Вы можете использовать Markdown для редактирования описания',
     save: 'Сохранить',
     cancel: 'Отменить',
     formTitle: 'Редактирование способности',
@@ -149,11 +151,12 @@ export const DaggerheartFeatForm = (props) => {
       />
       <TextArea
         rows="5"
-        containerClassList="mb-2"
+        containerClassList="mb-1"
         labelText={TRANSLATION[locale()]['description']}
         value={featForm.description}
         onChange={(value) => setFeatForm({ ...featForm, description: value })}
       />
+      <p class="mb-2 text-sm">{TRANSLATION[locale()].markdown}</p>
       <Show when={featForm.origin === 'subclass'}>
         <Select
           containerClassList="mb-2"

@@ -25,7 +25,8 @@ const TRANSLATION = {
     name: 'Ancestry name',
     save: 'Save',
     addFeature: 'Add feature',
-    public: 'Show public',
+    showPublic: 'Show public',
+    public: 'Public',
     copyCompleted: 'Ancestry copy is completed'
   },
   ru: {
@@ -37,7 +38,8 @@ const TRANSLATION = {
     name: 'Название расы',
     save: 'Сохранить',
     addFeature: 'Добавить способность',
-    public: 'Показать открытые',
+    showPublic: 'Показать открытые',
+    public: 'Открытая',
     copyCompleted: 'Копирование расы завершено'
   }
 }
@@ -215,7 +217,7 @@ export const DaggerheartAncestries = () => {
           active={open()}
           classList="ml-4 mb-4 px-2 py-1"
           onClick={() => setOpen(!open())}
-        >{TRANSLATION[locale()].public}</Button>
+        >{TRANSLATION[locale()].showPublic}</Button>
       </div>
       <Show when={filteredAncestries().length > 0}>
         <Show when={!open()}>
