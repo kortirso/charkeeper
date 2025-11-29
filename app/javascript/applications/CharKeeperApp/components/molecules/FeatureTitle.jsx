@@ -17,7 +17,10 @@ const TRANSLATION = {
     ap: 'AP',
     sp: 'SP',
     hope: 'Hope',
-    stress: 'Stress'
+    stress: 'Stress',
+    spell: 'Spell',
+    ability: 'Ability',
+    grimoire: 'Grimoire'
   },
   ru: {
     one_at_short_rest: 'Короткий - 1, длинный - все',
@@ -28,7 +31,10 @@ const TRANSLATION = {
     ap: 'ОД',
     sp: 'ОВ',
     hope: 'Надежда',
-    stress: 'Стресс'
+    stress: 'Стресс',
+    spell: 'Заклинание',
+    ability: 'Способность',
+    grimoire: 'Гримуар'
   }
 }
 
@@ -40,7 +46,12 @@ export const FeatureTitle = (props) => {
 
   return (
     <div class="flex items-center">
-      <p class="flex-1">{feature().title}</p>
+      <p class="flex-1">
+        {feature().title}
+        <Show when={props.provider === 'daggerheart' && feature().info.type}>
+          {` (${TRANSLATION[locale()][feature().info.type]})`}
+        </Show>
+      </p>
       <div class="flex items-center gap-x-4">
         <Show when={Object.keys(feature().price).length > 0}>
           <div class="flex gap-x-2">
