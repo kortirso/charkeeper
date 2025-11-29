@@ -3,7 +3,7 @@
 module Daggerheart
   module Characters
     class FeatSerializer < ApplicationSerializer
-      ATTRIBUTES = %i[id slug title description ready_to_use notes].freeze
+      ATTRIBUTES = %i[id slug title description ready_to_use notes info level].freeze
 
       attributes(*ATTRIBUTES)
 
@@ -13,6 +13,14 @@ module Daggerheart
 
       def title
         object.feat.title[I18n.locale.to_s]
+      end
+
+      def info
+        object.feat.info
+      end
+
+      def level
+        object.feat.conditions['level']
       end
 
       def description

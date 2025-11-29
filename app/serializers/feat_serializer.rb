@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class FeatSerializer < ApplicationSerializer
-  ATTRIBUTES = %i[id slug title description origin_value conditions].freeze
+  ATTRIBUTES = %i[id slug title description origin_value conditions info].freeze
 
   attributes(*ATTRIBUTES)
 

@@ -17,12 +17,20 @@ const TRANSLATION = {
   en: {
     loadoutLimit: 'Loadout limit',
     domainCardIsAdded: 'Domain card is added',
-    onlyAvailableSpells: 'Only available'
+    onlyAvailableSpells: 'Only available',
+    spell: 'Spell',
+    ability: 'Ability',
+    grimoire: 'Grimoire',
+    level: 'Level'
   },
   ru: {
     loadoutLimit: 'Лимит инвентаря',
     domainCardIsAdded: 'Карта домена добавлена',
-    onlyAvailableSpells: 'Доступные'
+    onlyAvailableSpells: 'Доступные',
+    spell: 'Заклинание',
+    ability: 'Способность',
+    grimoire: 'Гримуар',
+    level: 'Уровень'
   }
 }
 
@@ -174,40 +182,31 @@ export const DaggerheartDomainCards = (props) => {
               <For each={renderingDomains()}>
                 {(domain) =>
                   <Toggle title={daggerheartDomains()[domain].name[locale()]}>
-                    <table class="w-full table table-top first-column-full-width">
-                      <thead>
-                        <tr>
-                          <td />
-                          <td />
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <For each={spells().filter((spell) => spell.origin_value === domain).sort((a, b) => a.conditions.level - b.conditions.level)}>
-                          {(spell) =>
-                            <tr>
-                              <td class="py-1 pl-1">
-                                <div classList={{ 'opacity-50': learnedSpells().includes(spell.slug) }}>
-                                  <p class="dark:text-snow mb-1">{spell.title} ({spell.conditions.level})</p>
-                                  <p
-                                    class="feat-markdown text-xs"
-                                    innerHTML={spell.description} // eslint-disable-line solid/no-innerhtml
-                                  />
-                                </div>
-                              </td>
-                              <td class="py-1">
-                                <span>
-                                  <Show when={!learnedSpells().includes(spell.slug)}>
-                                    <Button default size="small" onClick={() => selectDomainCard(spell.id)}>
-                                      <PlusSmall />
-                                    </Button>
-                                  </Show>
-                                </span>
-                              </td>
-                            </tr>
-                          }
-                        </For>
-                      </tbody>
-                    </table>
+                    <div>
+                      <For each={spells().filter((spell) => spell.origin_value === domain).sort((a, b) => a.conditions.level - b.conditions.level)}>
+                        {(spell) =>
+                          <div class="even:bg-stone-100 dark:even:bg-dark-dusty p-1" classList={{ 'opacity-50': learnedSpells().includes(spell.slug) }}>
+                            <div class="flex items-center justify-between cursor-pointer mb-2" onClick={() => props.onChangeSpell(spell)}>
+                              <p class="font-normal!">{spell.title}</p>
+                              <Show when={spell.info.type}>
+                                {TRANSLATION[locale()][spell.info.type]} ({spell.conditions.level} {TRANSLATION[locale()].level})
+                              </Show>
+                            </div>
+                            <p
+                              class="feat-markdown text-xs mb-1"
+                              innerHTML={spell.description} // eslint-disable-line solid/no-innerhtml
+                            />
+                            <Show when={!learnedSpells().includes(spell.slug)}>
+                              <div class="flex flex-col flex-col-reverse md:flex-row items-center justify-end gap-y-4 gap-x-2">
+                                <Button default size="small" onClick={() => selectDomainCard(spell.id)}>
+                                  <PlusSmall />
+                                </Button>
+                              </div>
+                            </Show>
+                          </div>
+                        }
+                      </For>
+                    </div>
                   </Toggle>
                 }
               </For>

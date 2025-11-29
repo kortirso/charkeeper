@@ -36,7 +36,7 @@ describe Frontend::Daggerheart::Characters::SpellsController do
           expect(response).to have_http_status :ok
           expect(response.parsed_body['spells'].size).to eq 1
           expect(response_values.keys).to(
-            contain_exactly('id', 'ready_to_use', 'notes', 'slug', 'title', 'description')
+            contain_exactly('id', 'ready_to_use', 'notes', 'slug', 'title', 'description', 'info', 'level')
           )
         end
 
@@ -100,7 +100,7 @@ describe Frontend::Daggerheart::Characters::SpellsController do
             expect { request }.to change(user_character.feats, :count).by(1)
             expect(response).to have_http_status :created
             expect(response.parsed_body['spell'].keys).to(
-              contain_exactly('id', 'ready_to_use', 'notes', 'slug', 'title', 'description')
+              contain_exactly('id', 'ready_to_use', 'notes', 'slug', 'title', 'description', 'info', 'level')
             )
           end
 
