@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2025_11_27_161716) do
+ActiveRecord::Schema[8.1].define(version: 2025_11_29_125710) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
   enable_extension "pgcrypto"
@@ -246,6 +246,7 @@ ActiveRecord::Schema[8.1].define(version: 2025_11_27_161716) do
     t.jsonb "description_eval_variables", default: {}, null: false, comment: "Вычисляемые переменные для описания"
     t.jsonb "eval_variables", default: {}, null: false, comment: "Вычисляемые переменные"
     t.string "exclude", comment: "Заменяемые навыки", array: true
+    t.jsonb "info", default: {}, null: false
     t.integer "kind", limit: 2, null: false
     t.integer "limit_refresh", limit: 2, comment: "Событие для обновления лимита"
     t.jsonb "options", comment: "Опции для выбора"

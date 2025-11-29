@@ -19,7 +19,9 @@ describe Frontend::Daggerheart::SpellsController do
 
         expect(response).to have_http_status :ok
         expect(response.parsed_body['spells'].size).to eq 3
-        expect(response_values.keys).to contain_exactly('id', 'slug', 'title', 'description', 'origin_value', 'conditions')
+        expect(response_values.keys).to(
+          contain_exactly('id', 'slug', 'title', 'description', 'origin_value', 'conditions', 'info')
+        )
       end
 
       context 'for old app version' do
@@ -40,7 +42,9 @@ describe Frontend::Daggerheart::SpellsController do
           expect(response).to have_http_status :ok
           expect(response.parsed_body['spells'].size).to eq 2
           expect(response.parsed_body['spells'].pluck('origin_value').sort).to eq(%w[arcana bone])
-          expect(response_values.keys).to contain_exactly('id', 'slug', 'title', 'description', 'origin_value', 'conditions')
+          expect(response_values.keys).to(
+            contain_exactly('id', 'slug', 'title', 'description', 'origin_value', 'conditions', 'info')
+          )
         end
       end
 
@@ -55,7 +59,9 @@ describe Frontend::Daggerheart::SpellsController do
           expect(response).to have_http_status :ok
           expect(response.parsed_body['spells'].size).to eq 1
           expect(response.parsed_body['spells'].pluck('origin_value').sort).to eq(%w[bone])
-          expect(response_values.keys).to contain_exactly('id', 'slug', 'title', 'description', 'origin_value', 'conditions')
+          expect(response_values.keys).to(
+            contain_exactly('id', 'slug', 'title', 'description', 'origin_value', 'conditions', 'info')
+          )
         end
       end
     end
