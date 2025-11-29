@@ -26,7 +26,10 @@ export const DomainCardsTable = (props) => {
                 <tr>
                   <td class="py-1 pl-1">
                     <p class="cursor-pointer dark:text-snow" onClick={() => props.onChangeSpell(spell)}>{spell.title}</p>
-                    <p class="text-xs dark:text-snow">{spell.description}</p>
+                    <p
+                      class="feat-markdown text-xs"
+                      innerHTML={spell.description} // eslint-disable-line solid/no-innerhtml
+                    />
                     <Show when={spell.notes}>
                       <p class="text-sm mt-1 dark:text-snow">{spell.notes}</p>
                     </Show>

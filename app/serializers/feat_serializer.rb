@@ -10,6 +10,10 @@ class FeatSerializer < ApplicationSerializer
   end
 
   def description
-    object.description[I18n.locale.to_s]
+    Charkeeper::Container.resolve('markdown').call(
+      value: object.description[I18n.locale.to_s],
+      version: (context ? (context[:version] || nil) : nil),
+      initial_version: '0.3.20'
+    )
   end
 end

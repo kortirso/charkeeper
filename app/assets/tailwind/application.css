@@ -377,9 +377,17 @@ nav.pagy.nav a.gap {
 }
 
 .feat-markdown {
-  @apply text-sm;
+  @apply text-sm text-stone-800;
+  @apply dark:text-stone-200;
 }
 
 .feat-markdown strong {
+  @apply text-base text-black;
+  @apply dark:text-snow;
+
   font-weight: 500;
+}
+
+.feat-markdown ul {
+  @apply list-disc pl-4;
 }
