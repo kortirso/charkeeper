@@ -30,7 +30,7 @@ module Dnd2024Character
 
       def static_spells # rubocop: disable Metrics/AbcSize, Metrics/PerceivedComplexity
         @static_spells ||= begin
-          selected_land = selected_feats['circle_of_the_land_spells']
+          selected_land = selected_features['circle_of_the_land_spells']
           result = __getobj__.static_spells
           result.merge!(LAND_SPELLS_3[selected_land].index_with { static_spell_attributes }) if selected_land && class_level >= 3
           result.merge!(LAND_SPELLS_5[selected_land].index_with { static_spell_attributes }) if selected_land && class_level >= 5
