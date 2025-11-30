@@ -27,7 +27,7 @@ module Pathfinder2Character
       @skills ||= [
         %w[acrobatics dex], %w[arcana int], %w[athletics str], %w[crafting int],
         %w[deception cha], %w[diplomacy cha], %w[intimidation cha], %w[medicine wis],
-        %w[nature wis], %w[occultism int], %w[performance cha], %w[religion int],
+        %w[nature wis], %w[occultism int], %w[performance cha], %w[religion wis],
         %w[society int], %w[stealth dex], %w[survival wis], %w[thievery dex],
         %w[lore1 int], %w[lore2 int]
       ].map { |item| skill_payload(item[0], item[1]) }
