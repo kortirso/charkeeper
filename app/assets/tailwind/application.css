@@ -383,7 +383,7 @@ nav.pagy.nav a.gap {
 }
 
 .feat-markdown strong {
-  @apply text-base text-black;
+  @apply text-[15px] text-black;
   @apply dark:text-snow;
 
   font-weight: 500;

@@ -187,7 +187,7 @@ export const DaggerheartDomainCards = (props) => {
                         {(spell) =>
                           <div class="even:bg-stone-100 dark:even:bg-dark-dusty p-1" classList={{ 'opacity-50': learnedSpells().includes(spell.slug) }}>
                             <div class="flex items-center justify-between cursor-pointer mb-2" onClick={() => props.onChangeSpell(spell)}>
-                              <p class="font-normal!">{spell.title}</p>
+                              <p class="font-normal! text-lg">{spell.title}</p>
                               <Show when={spell.info.type}>
                                 {TRANSLATION[locale()][spell.info.type]} ({spell.conditions.level} {TRANSLATION[locale()].level})
                               </Show>

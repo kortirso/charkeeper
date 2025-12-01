@@ -31,12 +31,12 @@ export const DomainCardsTable = (props) => {
         <p class="text-sm">{props.subtitle}</p>
       </Show>
       <Show when={spells().length > 0}>
-        <div>
+        <div class="mt-4">
           <For each={spells()}>
             {(spell) =>
               <div class="even:bg-stone-100 dark:even:bg-dark-dusty p-1">
                 <div class="flex items-center justify-between cursor-pointer mb-2" onClick={() => props.onChangeSpell(spell)}>
-                  <p class="font-normal!">{spell.title}</p>
+                  <p class="font-normal! text-lg">{spell.title}</p>
                   <Show when={spell.info.type}>
                     {TRANSLATION[locale()][spell.info.type]} ({spell.level} {TRANSLATION[locale()].level})
                   </Show>
