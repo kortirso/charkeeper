@@ -87,19 +87,15 @@ export const Pathfinder2Skills = (props) => {
                 by={item => item.slug}
               >
                 {(skill) =>
-                  <div class="flex justify-between items-center mb-1">
+                  <div class="flex justify-between items-center mb-1 dark:text-snow">
                     <Show
                       when={editMode()}
-                      fallback={<p class="dark:text-snow mr-4">{skill().level}</p>}
+                      fallback={<Levelbox classList="mr-2" value={skill().level} />}
                     >
-                      <Levelbox
-                        classList="mr-2"
-                        value={skill().level}
-                        onToggle={() => updateSkill(skill().slug)}
-                      />
+                      <Levelbox classList="mr-2" value={skill().level} onToggle={() => updateSkill(skill().slug)} />
                     </Show>
-                    <p class="uppercase dark:text-snow mr-4">{skill().ability}</p>
-                    <p class={`flex-1 flex items-center dark:text-snow ${skill().level > 0 ? 'font-normal!' : ''}`}>
+                    <p class="uppercase mr-4">{skill().ability}</p>
+                    <p class={`flex-1 flex items-center ${skill().level > 0 ? 'font-medium!' : ''}`}>
                       <Show
                         when={editMode() && (skill().slug === 'lore1' || skill().slug === 'lore2')}
                         fallback={skill().name || config.skills[skill().slug].name[locale()]}
@@ -111,7 +107,7 @@ export const Pathfinder2Skills = (props) => {
                         />
                       </Show>
                     </p>
-                    <span class="dark:text-snow">
+                    <span>
                       {modifier(skill().modifier + skill().prof + skill().item + (skill().armor || 0))}
                     </span>
                   </div>

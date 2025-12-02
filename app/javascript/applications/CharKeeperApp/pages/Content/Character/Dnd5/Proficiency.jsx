@@ -65,7 +65,7 @@ export const Dnd5Proficiency = (props) => {
               <p class="text-sm mb-2 text-center h-10">{TRANSLATION[locale()]['heroic']}</p>
               <div class="flex justify-center items-center">
                 <p
-                  class="w-12 leading-12 mx-2 text-center uppercase text-lg cursor-pointer"
+                  class="leading-12 mx-2 text-center uppercase text-lg cursor-pointer"
                   classList={{ 'opacity-50': !character().heroic_inspiration }}
                   onClick={() => updateCharacter({ heroic_inspiration: (character().heroic_inspiration ? false : true) })}
                 >

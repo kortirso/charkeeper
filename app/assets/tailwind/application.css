@@ -132,6 +132,10 @@
   white-space: nowrap;
 }
 
+.levelbox {
+  @apply w-6 h-6;
+}
+
 .toggle {
   @apply w-6 h-6 border border-blue-400 bg-white rounded flex justify-center items-center cursor-pointer;
   @apply dark:border-fuzzy-red dark:text-dusty;

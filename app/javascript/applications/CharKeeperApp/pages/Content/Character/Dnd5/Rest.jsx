@@ -57,6 +57,7 @@ export const Dnd5Rest = (props) => {
           <For each={Object.entries(character().hit_dice).filter(([, value]) => value > 0)}>
             {([dice, maxValue]) =>
               <Levelbox
+                number
                 classList="mb-1"
                 labelText={`d${dice}`}
                 labelPosition="right"
