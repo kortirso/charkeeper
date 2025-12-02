@@ -1,6 +1,7 @@
-import { For, Show, Switch, Match } from 'solid-js';
+import { createMemo, For, Show, Switch, Match } from 'solid-js';
 
 import { Button } from '../../../../components';
+import config from '../../../../data/daggerheart.json';
 import { useAppLocale } from '../../../../context';
 import { Close, Arrow } from '../../../../assets';
 
@@ -24,21 +25,47 @@ export const DomainCardsTable = (props) => {
 
   const [locale] = useAppLocale();
 
+  const cardsByDomains = createMemo(() => {
+    if (props.countCards === undefined) return undefined;
+
+    const domains = spells().reduce((acc, item) => {
+      acc[item.origin_value] ? acc[item.origin_value] += 1 : acc[item.origin_value] = 1
+      return acc;
+    }, {});
+    console.log(Object.entries(domains).sort((a, b) => b[1] - a[1]));
+    return Object.entries(domains).sort((a, b) => b[1] - a[1]);
+  });
+
   return (
     <div class="blockable p-4 mb-2 dark:text-snow">
-      <h2 class="text-lg">{props.title}</h2>
-      <Show when={props.subtitle}>
-        <p class="text-sm">{props.subtitle}</p>
-      </Show>
+      <div class="flex justify-between">
+        <div>
+          <h2 class="text-lg">{props.title}</h2>
+          <Show when={props.subtitle}>
+            <p class="text-sm">{props.subtitle}</p>
+          </Show>
+        </div>
+        <Show when={cardsByDomains() !== undefined}>
+          <div>
+            <For each={cardsByDomains()}>
+              {(item) =>
+                <p class="text-sm">{config.domains[item[0]].name[locale()]} - {item[1]}</p>
+              }
+            </For>
+          </div>
+        </Show>
+      </div>
       <Show when={spells().length > 0}>
         <div class="mt-4">
           <For each={spells()}>
             {(spell) =>
               <div class="even:bg-stone-100 dark:even:bg-dark-dusty p-1">
-                <div class="flex items-center justify-between cursor-pointer mb-2" onClick={() => props.onChangeSpell(spell)}>
+                <div class="cursor-pointer mb-2" onClick={() => props.onChangeSpell(spell)}>
                   <p class="font-normal! text-lg">{spell.title}</p>
                   <Show when={spell.info.type}>
-                    {TRANSLATION[locale()][spell.info.type]} ({spell.level} {TRANSLATION[locale()].level})
+                    <p class="text-sm">
+                      {config.domains[spell.origin_value].name[locale()]} ({spell.level} {TRANSLATION[locale()].level}), {TRANSLATION[locale()][spell.info.type]}
+                    </p>
                   </Show>
                 </div>
                 <p
@@ -48,7 +75,7 @@ export const DomainCardsTable = (props) => {
                 <Show when={spell.notes}>
                   <p class="text-sm mb-1">{spell.notes}</p>
                 </Show>
-                <div class="flex flex-col flex-col-reverse md:flex-row items-center justify-end gap-y-4 gap-x-2">
+                <div class="flex flex-row items-center justify-end gap-y-4 gap-x-2">
                   <Switch>
                     <Match when={spell.ready_to_use}>
                       <Button default size="small" onClick={() => props.onUpdateCharacterSpell(spell, { character_spell: { ready_to_use: false } })}>

@@ -225,6 +225,7 @@ export const DaggerheartDomainCards = (props) => {
               {t('daggerheart.domainCards.select')}
             </Button>
             <DomainCardsTable
+              countCards
               title={t('daggerheart.domainCards.loadout')}
               subtitle={`${TRANSLATION[locale()]['loadoutLimit']} - 5`}
               spells={characterSpells().filter((spell) => spell.ready_to_use)}
