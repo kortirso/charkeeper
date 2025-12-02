@@ -61,8 +61,11 @@ class FeaturesDecorator
   end
 
   def update_feature_description(feature)
+    description = feature.feat.description[I18n.locale.to_s]
+    return if description.blank?
+
     result = Charkeeper::Container.resolve('markdown').call(
-      value: feature.feat.description[I18n.locale.to_s],
+      value: description,
       version: version
     )
     feature.feat.description_eval_variables.each { |key, value| result.gsub!("{{#{key}}}", value.to_s) }
