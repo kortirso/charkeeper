@@ -3,29 +3,24 @@
 module Daggerheart
   module Characters
     class FeatSerializer < ApplicationSerializer
-      ATTRIBUTES = %i[id slug title description ready_to_use notes info level].freeze
+      ATTRIBUTES = %i[id slug title description origin_value ready_to_use notes info level].freeze
 
       attributes(*ATTRIBUTES)
 
-      def slug
-        object.feat.slug
-      end
+      delegate :slug, :info, :origin_value, to: :feat
+      delegate :feat, to: :object
 
       def title
-        object.feat.title[I18n.locale.to_s]
-      end
-
-      def info
-        object.feat.info
+        feat.title[I18n.locale.to_s]
       end
 
       def level
-        object.feat.conditions['level']
+        feat.conditions['level']
       end
 
       def description
         Charkeeper::Container.resolve('markdown').call(
-          value: object.feat.description[I18n.locale.to_s],
+          value: feat.description[I18n.locale.to_s],
           version: (context ? (context[:version] || nil) : nil),
           initial_version: '0.3.20'
         )
