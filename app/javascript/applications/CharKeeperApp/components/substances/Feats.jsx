@@ -1,5 +1,6 @@
-import { createSignal, createEffect, createMemo, For, Switch, Match, batch, Show } from 'solid-js';
+import { createSignal, createEffect, createMemo, Switch, Match, batch, Show } from 'solid-js';
 import * as i18n from '@solid-primitives/i18n';
+import { Key } from '@solid-primitives/keyed';
 
 import {
   Toggle, Button, Select, ErrorWrapper, FeatureTitle, TextArea, CharacterNavigation, Checkbox, GuideWrapper
@@ -178,69 +179,72 @@ export const Feats = (props) => {
             <Show when={activeFilter() === 'personal'}>
               <p class="dark:text-snow mb-2 text-sm">{TRANSLATION[locale()]['personalFeats']}</p>
             </Show>
-            <For each={filteredFeatures()}>
+            <Key
+              each={filteredFeatures()}
+              by={item => item.id}
+            >
               {(feature) =>
                 <Toggle
-                  containerClassList={feature.kind === 'update_result' ? 'opacity-50' : ''}
-                  title={<FeatureTitle feature={feature} provider={character().provider} onSpendEnergy={spendEnergy} onRestoreEnergy={restoreEnergy} />}
+                  containerClassList={feature().kind === 'update_result' ? 'opacity-50' : ''}
+                  title={<FeatureTitle feature={feature()} provider={character().provider} onSpendEnergy={spendEnergy} onRestoreEnergy={restoreEnergy} />}
                 >
                   <div
                     class="feat-markdown"
-                    innerHTML={feature.description} // eslint-disable-line solid/no-innerhtml
+                    innerHTML={feature().description} // eslint-disable-line solid/no-innerhtml
                   />
                   <Switch fallback={<></>}>
-                    <Match when={feature.kind === 'text'}>
+                    <Match when={feature().kind === 'text'}>
                       <TextArea
                         rows="5"
                         containerClassList="mt-2"
-                        value={featValues()[feature.slug] || ''}
-                        onChange={(value) => setFeatValues({ ...featValues(), [feature.slug]: value })}
+                        value={featValues()[feature().slug] || ''}
+                        onChange={(value) => setFeatValues({ ...featValues(), [feature().slug]: value })}
                       />
                       <div class="flex justify-end mt-2">
                         <Button
                           default
                           textable
                           size="small"
-                          onClick={() => updateFeatureValue(feature, featValues()[feature.slug])}
+                          onClick={() => updateFeatureValue(feature(), featValues()[feature().slug])}
                         >
                           {t('save')}
                         </Button>
                       </div>
                     </Match>
-                    <Match when={feature.kind === 'static_list' || feature.kind === 'one_from_list'}>
+                    <Match when={feature().kind === 'static_list' || feature().kind === 'one_from_list'}>
                       <Select
                         withNull
                         containerClassList="w-full mt-2"
-                        items={Object.entries(feature.options).reduce((acc, [key, value]) => { acc[key] = value[locale()]; return acc; }, {})}
-                        selectedValue={featValues()[feature.slug]}
-                        onSelect={(option) => updateFeatureValue(feature, option)}
+                        items={Object.entries(feature().options).reduce((acc, [key, value]) => { acc[key] = value[locale()]; return acc; }, {})}
+                        selectedValue={featValues()[feature().slug]}
+                        onSelect={(option) => updateFeatureValue(feature(), option)}
                       />
                     </Match>
-                    <Match when={feature.kind === 'many_from_list'}>
+                    <Match when={feature().kind === 'many_from_list'}>
                       <Select
                         multi
                         containerClassList="w-full mt-2"
-                        items={Object.entries(feature.options).reduce((acc, [key, value]) => { acc[key] = value[locale()]; return acc; }, {})}
-                        selectedValues={featValues()[feature.slug] || []}
-                        onSelect={(option) => updateMultiFeatureValue(feature, option)}
+                        items={Object.entries(feature().options).reduce((acc, [key, value]) => { acc[key] = value[locale()]; return acc; }, {})}
+                        selectedValues={featValues()[feature().slug] || []}
+                        onSelect={(option) => updateMultiFeatureValue(feature(), option)}
                       />
                     </Match>
-                    <Match when={feature.continious}>
+                    <Match when={feature().continious}>
                       <div class="mt-2 flex justify-end">
                         <Checkbox
                           filled
                           labelText={TRANSLATION[locale()]['activeFeat']}
                           labelPosition="right"
                           labelClassList="ml-2"
-                          checked={feature.active}
-                          onToggle={() => refreshFeatures(feature.id, { active: !feature.active }, false)}
+                          checked={feature().active}
+                          onToggle={() => refreshFeatures(feature().id, { active: !feature().active }, false)}
                         />
                       </div>
                     </Match>
                   </Switch>
                 </Toggle>
               }
-            </For>
+            </Key>
           </Show>
         </div>
       </GuideWrapper>
