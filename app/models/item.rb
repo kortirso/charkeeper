@@ -7,6 +7,8 @@ class Item < ApplicationRecord
   has_many :character_items, class_name: '::Character::Item', dependent: :destroy
   has_many :bonuses, class_name: '::Character::Bonus', as: :bonusable, dependent: :destroy
 
+  has_many :recipes, class_name: 'Item::Recipe', foreign_key: :tool_id, dependent: :destroy
+
   scope :dnd, -> { where(type: %w[Dnd5::Item Dnd2024::Item]) }
   scope :dnd5, -> { where(type: 'Dnd5::Item') }
   scope :dnd2024, -> { where(type: 'Dnd2024::Item') }
