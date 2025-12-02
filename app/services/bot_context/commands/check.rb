@@ -8,7 +8,7 @@ module BotContext
         return if data[:character].nil?
 
         case data[:character].class.name
-        when 'Dnd5::Character', 'Dnd2024::Character'
+        when 'Dnd5::Character', 'Dnd2024::Character', 'Pathfinder2::Character'
           BotContext::Commands::Checks::Dnd.new.call(character: data[:character], arguments: arguments)
         when 'Daggerheart::Character'
           BotContext::Commands::Checks::Daggerheart.new.call(character: data[:character], arguments: arguments)

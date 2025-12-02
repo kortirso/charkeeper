@@ -335,12 +335,10 @@ export const Dc20Skills = (props) => {
                   {(slug) =>
                     <For each={(editSkillsMode() ? skillsData() : character().skills).filter((item) => item.ability === slug)}>
                       {(skill) =>
-                        <div class="flex items-center mb-1">
+                        <div class="flex items-center mb-1 dark:text-snow">
                           <Show
                             when={editSkillsMode()}
-                            fallback={
-                              <p class="dark:text-snow mr-4">{skill.level ? skill.level : (skill.expertise ? 1 : 0)}</p>
-                            }
+                            fallback={<Levelbox classList="mr-2" value={skill.level} />}
                           >
                             <Checkbox
                               classList="mr-2"
@@ -353,11 +351,14 @@ export const Dc20Skills = (props) => {
                               onToggle={() => updateSkill(skill.slug)}
                             />
                           </Show>
-                          <p class="uppercase dark:text-snow mr-4">{skill.ability === 'prime' ? 'prm' : skill.ability}</p>
-                          <p class={`flex-1 flex items-center dark:text-snow ${skill.level > 0 ? 'font-normal!' : ''}`}>
+                          <p class="uppercase mr-4">{skill.ability === 'prime' ? 'prm' : skill.ability}</p>
+                          <p
+                            class="flex-1 flex items-center"
+                            classList={{ 'font-medium!': skill.level > 0 }}
+                          >
                             {config.skills[skill.slug].name[locale()]}
                           </p>
-                          <span class="dark:text-snow">
+                          <span>
                             <Dice
                               width="28"
                               height="28"
@@ -386,12 +387,10 @@ export const Dc20Skills = (props) => {
                   {(slug) =>
                     <For each={(editTradesMode() ? tradesData() : character().trades).filter((item) => item.ability === slug)}>
                       {(trade) =>
-                        <div class="flex items-center mb-1">
+                        <div class="flex items-center mb-1 dark:text-snow">
                           <Show
                             when={editTradesMode()}
-                            fallback={
-                              <p class="dark:text-snow mr-4">{trade.level ? trade.level : (trade.expertise ? 1 : 0)}</p>
-                            }
+                            fallback={<Levelbox classList="mr-2" value={trade.level} />}
                           >
                             <Checkbox
                               classList="mr-2"
@@ -404,11 +403,11 @@ export const Dc20Skills = (props) => {
                               onToggle={() => updateTrade(trade.slug)}
                             />
                           </Show>
-                          <p class="uppercase dark:text-snow mr-4">{trade.ability}</p>
-                          <p class={`flex-1 flex items-center dark:text-snow ${trade.level > 0 ? 'font-normal!' : ''}`}>
+                          <p class="uppercase mr-4">{trade.ability}</p>
+                          <p class={`flex-1 flex items-center ${trade.level > 0 ? 'font-normal!' : ''}`}>
                             {config.trades[trade.slug] ? config.trades[trade.slug].name[locale()] : trade.slug}
                           </p>
-                          <span class="dark:text-snow">
+                          <span>
                             <Dice
                               width="28"
                               height="28"
@@ -449,10 +448,10 @@ export const Dc20Skills = (props) => {
                 <p class="text-lg dark:text-snow mb-2">{TRANSLATION[locale()]['languages']}</p>
                 <For each={Object.entries(editLanguagesMode() ? languagesData() : character().language_levels)}>
                   {([name, level]) =>
-                    <div class="flex items-center mb-1">
+                    <div class="flex items-center mb-1 dark:text-snow">
                       <Show
                         when={editLanguagesMode()}
-                        fallback={<p class="dark:text-snow mr-4">{level}</p>}
+                        fallback={<Levelbox classList="mr-2" value={level} />}
                       >
                         <Levelbox
                           classList="mr-2"
@@ -460,8 +459,8 @@ export const Dc20Skills = (props) => {
                           onToggle={() => updateLanguage(name)}
                         />
                       </Show>
-                      <p class={`flex-1 flex items-center dark:text-snow ${level > 0 ? 'font-normal!' : ''}`}>{name}</p>
-                      <span class="dark:text-snow">
+                      <p class={`flex-1 flex items-center ${level > 0 ? 'font-normal!' : ''}`}>{name}</p>
+                      <span>
                         {level == 2 || level == 0 ? (
                             '-'
                           ) : (

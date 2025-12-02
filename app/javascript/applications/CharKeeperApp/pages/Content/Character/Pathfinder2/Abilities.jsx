@@ -1,6 +1,6 @@
 import { createSignal, For, Show, batch } from 'solid-js';
 
-import { ErrorWrapper, Button, EditWrapper } from '../../../../components';
+import { ErrorWrapper, Button, EditWrapper, Dice } from '../../../../components';
 import config from '../../../../data/pathfinder2.json';
 import { useAppState, useAppLocale, useAppAlert } from '../../../../context';
 import { Minus, Plus } from '../../../../assets';
@@ -59,29 +59,40 @@ export const Pathfinder2Abilities = (props) => {
         onCancelEditing={cancelEditing}
         onSaveChanges={updateCharacter}
       >
-        <div class="grid grid-cols-3 emd:grid-cols-6 gap-2">
-          <For each={Object.entries(config.abilities).map(([key, values]) => [key, values.name[locale()]])}>
-            {([slug, ability]) =>
-              <div class="blockable py-4">
-                <p class="text-sm elg:text-[10px] uppercase text-center mb-4 dark:text-white">{ability}</p>
-                <div class="mx-auto flex items-center justify-center">
-                  <p class="text-2xl font-normal! dark:text-snow">
-                    {editMode() ? abilitiesData()[slug] : modifier(character().abilities[slug])}
-                  </p>
-                </div>
-                <Show when={editMode()}>
-                  <div class="mt-2 flex justify-center gap-2">
-                    <Button default size="small" onClick={() => decreaseAbilityValue(slug)}>
-                      <Minus />
-                    </Button>
-                    <Button default size="small" onClick={() => increaseAbilityValue(slug)}>
-                      <Plus />
-                    </Button>
+        <div class="blockable py-4">
+          <div class="grid grid-cols-3 emd:grid-cols-6 gap-2">
+            <For each={Object.entries(config.abilities).map(([key, values]) => [key, values.name[locale()]])}>
+              {([slug, ability]) =>
+                <div>
+                  <p class="text-sm uppercase text-center mb-4 dark:text-white">{ability}</p>
+                  <div class="mx-auto flex items-center justify-center">
+                    <p class="text-2xl font-normal! dark:text-snow">
+                      {editMode() ?
+                        abilitiesData()[slug] :
+                        <Dice
+                          width="64"
+                          height="64"
+                          text={modifier(character().abilities[slug])}
+                          textClassList="text-4xl"
+                          onClick={() => props.openDiceRoll(`/check attr ${slug}`, character().abilities[slug])}
+                        />
+                      }
+                    </p>
                   </div>
-                </Show>
-              </div>
-            }
-          </For>
+                  <Show when={editMode()}>
+                    <div class="mt-2 flex justify-center gap-2">
+                      <Button default size="small" onClick={() => decreaseAbilityValue(slug)}>
+                        <Minus />
+                      </Button>
+                      <Button default size="small" onClick={() => increaseAbilityValue(slug)}>
+                        <Plus />
+                      </Button>
+                    </div>
+                  </Show>
+                </div>
+              }
+            </For>
+          </div>
         </div>
       </EditWrapper>
     </ErrorWrapper>

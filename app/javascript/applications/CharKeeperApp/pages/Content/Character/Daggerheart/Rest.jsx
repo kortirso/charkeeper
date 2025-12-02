@@ -62,6 +62,7 @@ export const DaggerheartRest = (props) => {
           <For each={['clear_health', 'clear_stress', 'clear_armor_slots', 'gain_hope', 'gain_double_hope']}>
             {(item) =>
               <Levelbox
+                number
                 classList="mb-1"
                 labelText={replace(t(`daggerheart.rest.${item}`), { tier: character().tier })}
                 labelPosition="right"

@@ -6,7 +6,9 @@ import {
   Pathfinder2Abilities, Pathfinder2Health, Pathfinder2Professions, Pathfinder2Static, Pathfinder2Skills,
   Pathfinder2SavingThrows
 } from '../../../pages';
-import { CharacterNavigation, Equipment, Notes, Avatar, ContentWrapper, Conditions, Gold } from '../../../components';
+import {
+  CharacterNavigation, Equipment, Notes, Avatar, ContentWrapper, Conditions, Gold, createDiceRoll
+} from '../../../components';
 import { useAppLocale } from '../../../context';
 
 export const Pathfinder2 = (props) => {
@@ -16,6 +18,7 @@ export const Pathfinder2 = (props) => {
   const [activeMobileTab, setActiveMobileTab] = createSignal('abilities');
   const [activeTab, setActiveTab] = createSignal('combat');
 
+  const { DiceRoll, openDiceRoll } = createDiceRoll();
   const [, dict] = useAppLocale();
 
   const t = i18n.translator(dict);
@@ -36,7 +39,11 @@ export const Pathfinder2 = (props) => {
         <div class="p-2 pb-16 flex-1 overflow-y-auto">
           <Switch>
             <Match when={activeMobileTab() === 'abilities'}>
-              <Pathfinder2Abilities character={character()} onReplaceCharacter={props.onReplaceCharacter} />
+              <Pathfinder2Abilities
+                character={character()}
+                openDiceRoll={openDiceRoll}
+                onReplaceCharacter={props.onReplaceCharacter}
+              />
               <div class="mt-4">
                 <Pathfinder2SavingThrows character={character()} onReplaceCharacter={props.onReplaceCharacter} />
               </div>
@@ -88,7 +95,11 @@ export const Pathfinder2 = (props) => {
 
     return (
       <>
-        <Pathfinder2Abilities character={character()} onReplaceCharacter={props.onReplaceCharacter} />
+        <Pathfinder2Abilities
+          character={character()}
+          openDiceRoll={openDiceRoll}
+          onReplaceCharacter={props.onReplaceCharacter}
+        />
         <div class="flex flex-col emd:flex-row emd:gap-4 emd:mt-4">
           <div class="mt-4 emd:mt-0 flex-1">
             <Pathfinder2SavingThrows character={character()} />
@@ -153,6 +164,9 @@ export const Pathfinder2 = (props) => {
   });
 
   return (
-    <ContentWrapper mobileView={mobileView()} leftView={leftView()} rightView={rightView()} />
+    <>
+      <ContentWrapper mobileView={mobileView()} leftView={leftView()} rightView={rightView()} />
+      <DiceRoll provider="dnd" characterId={character().id} />
+    </>
   );
 }

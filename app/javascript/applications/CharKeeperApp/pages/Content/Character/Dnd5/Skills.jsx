@@ -1,6 +1,6 @@
 import { createSignal, createEffect, For, Show, batch, Switch, Match } from 'solid-js';
 
-import { ErrorWrapper, Checkbox, Levelbox, EditWrapper, Dice, GuideWrapper } from '../../../../components';
+import { ErrorWrapper, Levelbox, EditWrapper, Dice, GuideWrapper } from '../../../../components';
 import config from '../../../../data/dnd2024.json';
 import { useAppState, useAppLocale, useAppAlert } from '../../../../context';
 import { updateCharacterRequest } from '../../../../requests/updateCharacterRequest';
@@ -118,32 +118,29 @@ export const Dnd5Skills = (props) => {
               {(slug) =>
                 <For each={(editMode() ? skillsData() : character().skills).filter((item) => item.ability === slug)}>
                   {(skill) =>
-                    <div class="flex items-center mb-1">
+                    <div class="flex items-center mb-1 dark:text-snow">
                       <Show
                         when={editMode()}
                         fallback={
-                          <p class="dark:text-snow mr-4">{skill.level ? skill.level : (skill.selected ? 1 : 0)}</p>
+                          <Show when={skill.level} fallback={<Levelbox classList="mr-2" value={skill.selected ? 1 : 0} />}>
+                            <Levelbox classList="mr-2" value={skill.level} />
+                          </Show>
                         }
                       >
                         <Switch>
                           <Match when={character().provider === 'dnd5'}>
-                            <Checkbox
-                              classList="mr-2"
-                              checked={skill.selected}
-                              onToggle={() => toggleSkill(skill.slug)}
-                            />
+                            <Levelbox classList="mr-2" value={skill.selected ? 1 : 0} onToggle={() => toggleSkill(skill.slug)} />
                           </Match>
                           <Match when={character().provider === 'dnd2024'}>
-                            <Levelbox
-                              classList="mr-2"
-                              value={skill.level}
-                              onToggle={() => updateSkill(skill.slug)}
-                            />
+                            <Levelbox classList="mr-2" value={skill.level} onToggle={() => updateSkill(skill.slug)} />
                           </Match>
                         </Switch>
-                    </Show>
-                      <p class="uppercase dark:text-snow mr-4">{skill.ability}</p>
-                      <p class={`flex-1 flex items-center dark:text-snow ${skill.level > 0 ? 'font-normal!' : ''}`}>
+                      </Show>
+                      <p class="uppercase mr-4">{skill.ability}</p>
+                      <p
+                        class="flex-1 flex items-center"
+                        classList={{ 'font-medium!': skill.level > 0 || skill.selected }}
+                      >
                         {config.skills[skill.slug].name[locale()]}
                       </p>
                       <Dice
