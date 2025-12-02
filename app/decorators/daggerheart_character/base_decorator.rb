@@ -120,5 +120,9 @@ module DaggerheartCharacter
     def item_bonuses
       @item_bonuses ||= Character::Bonus.where(bonusable_id: __getobj__.items.active_states.pluck(:item_id)).to_a
     end
+
+    def attack
+      0
+    end
   end
 end

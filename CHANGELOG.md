@@ -13,6 +13,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Fixed
 - markdown transformation
+- general attack bonuses from feats for DH characters
 
 ## [0.3.20] - 2025-11-29
 ### Added
