@@ -26,6 +26,7 @@ Rails.application.routes.draw do
     end
     namespace :dnd2024 do
       resources :characters, only: %i[index]
+      resources :recipes, only: %i[index new create]
     end
     namespace :pathfinder2 do
       resources :characters, only: %i[index]
@@ -103,6 +104,7 @@ Rails.application.routes.draw do
       resources :characters, only: %i[create update] do
         resources :spells, only: %i[index create update destroy], module: 'characters'
         resources :rest, only: %i[create], module: 'characters'
+        resources :craft, only: %i[index create], module: 'characters'
       end
       resources :spells, only: %i[index]
     end

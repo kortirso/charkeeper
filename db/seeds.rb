@@ -260,3 +260,9 @@ Pathfinder2::Item.upsert_all(weapons) if weapons.any?
 
 user = User.create! locale: 'ru', password: SecureRandom.alphanumeric(24)
 user.sessions.create!
+
+Item::Recipe.create(
+  tool: Dnd5::Item.find_by(slug: 'herbalism'),
+  item: Dnd5::Item.find_by(slug: 'potion_healing'),
+  info: { output_per_day: 1 }
+)

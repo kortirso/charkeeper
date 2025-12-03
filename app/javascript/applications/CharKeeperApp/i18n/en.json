@@ -56,7 +56,8 @@
       "personal": "Personal",
       "transformation": "Transformation",
       "maneuver": "Maneuver",
-      "states": "States"
+      "states": "States",
+      "craft": "Craft"
     },
     "campaignsPage": {
       "title": "Campaigns",

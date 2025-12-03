@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2025_11_29_125710) do
+ActiveRecord::Schema[8.1].define(version: 2025_12_02_175554) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
   enable_extension "pgcrypto"
@@ -425,6 +425,15 @@ ActiveRecord::Schema[8.1].define(version: 2025_11_29_125710) do
     t.uuid "user_id", null: false
     t.index ["brewery_id", "brewery_type"], name: "index_homebrews_on_brewery_id_and_brewery_type"
     t.index ["user_id"], name: "index_homebrews_on_user_id"
+  end
+
+  create_table "item_recipes", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.jsonb "info", default: {}, null: false
+    t.uuid "item_id", null: false
+    t.uuid "tool_id", null: false
+    t.datetime "updated_at", null: false
+    t.index ["tool_id", "item_id"], name: "index_item_recipes_on_tool_id_and_item_id", unique: true
   end
 
   create_table "items", id: :uuid, default: -> { "gen_random_uuid()" }, comment: "Предметы", force: :cascade do |t|

@@ -56,7 +56,8 @@
       "personal": "Личные",
       "transformation": "Трансформация",
       "maneuver": "Приём",
-      "states": "Состояния"
+      "states": "Состояния",
+      "craft": "Крафт"
     },
     "campaignsPage": {
       "title": "Кампании",
