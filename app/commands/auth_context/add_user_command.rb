@@ -34,10 +34,20 @@ module AuthContext
     def do_prepare(input)
       input[:locale] = I18n.locale if input[:locale].blank?
       input[:color_schema] = User.color_schemas.keys.sample
+
+      input[:book_attributes] = Homebrew::Book.where(shared: true).map do |book|
+        {
+          homebrew_book_id: book.id
+        }
+      end
     end
 
     def do_persist(input)
-      result = User.create!(input)
+      result = User.create!(input.except(:book_attributes))
+
+      if input[:book_attributes].any?
+        User::Book.upsert_all(input[:book_attributes].map { |attrs| attrs.merge(user_id: result.id) })
+      end
 
       { result: result }
     rescue ActiveRecord::RecordNotUnique => _e
