@@ -2,7 +2,7 @@ import { Switch, Match, splitProps } from 'solid-js';
 
 import { Label } from './Label';
 
-const INPUT_STYLES = "w-full h-12 px-2 border border-gray-200 text-sm bg-white dark:bg-neutral-700 dark:border-gray-500 dark:text-snow rounded";
+const INPUT_STYLES = "w-full h-12 px-2 border border-gray-200 text-sm bg-white dark:bg-neutral-700 dark:border-gray-500 rounded";
 
 export const Input = (props) => {
   const [labelProps] = splitProps(props, ['labelText', 'labelClassList']);

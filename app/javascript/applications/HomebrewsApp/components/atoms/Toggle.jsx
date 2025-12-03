@@ -20,7 +20,7 @@ export const Toggle = (props) => {
           'blockable': props.noInnerPadding,
           'cursor-pointer': !props.disabled
         }}
-        class="py-2 px-4 dark:text-snow"
+        class="py-2 px-4"
         onClick={() => props.disabled ? (props.onParentClick ? props.onParentClick() : null) : setIsOpen(!isOpen())}
       >
         {props.title}
@@ -31,7 +31,7 @@ export const Toggle = (props) => {
             'p-4 border-t border-gray-200 dark:border-gray-500': !props.noInnerPadding,
             'p-2': props.noInnerPadding
           }}
-          class="flex-1 dark:text-snow relative"
+          class="flex-1 relative"
         >
           {safeChildren()}
         </div>

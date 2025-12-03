@@ -14,7 +14,7 @@ const TRANSLATION = {
     add: 'Add book',
     races: 'Ancestries',
     communities: 'Communities',
-    subclasses: 'Subclasses',
+    classes: 'Classes',
     items: 'Items',
     transformations: 'Transformations',
     domains: 'Domains',
@@ -29,7 +29,7 @@ const TRANSLATION = {
     add: 'Добавить книгу',
     races: 'Расы',
     communities: 'Общества',
-    subclasses: 'Подклассы',
+    classes: 'Классы',
     items: 'Предметы',
     transformations: 'Трансформации',
     domains: 'Домены',
@@ -120,18 +120,34 @@ export const DaggerheartBooks = () => {
                   <p class="font-medium!">{TRANSLATION[locale()].official}</p>
                 </Show>
               </div>
-              <For each={['races', 'communities', 'subclasses', 'items', 'transformations', 'domains']}>
+              <For each={['races', 'communities', 'classes', 'items', 'transformations', 'domains']}>
                 {(kind) =>
-                  <Show when={book.items[kind].length > 0}>
-                    <div class="mb-4">
-                      <p class="font-medium! mb-2">{TRANSLATION[locale()][kind]}</p>
-                      <p>{book.items[kind].join(', ')}</p>
-                    </div>
+                  <Show
+                    when={kind !== 'classes'}
+                    fallback={
+                      <Show when={Object.keys(book.items.classes).length > 0}>
+                        <div class="mb-4">
+                          <p class="font-medium! mb-2">{TRANSLATION[locale()][kind]}</p>
+                          <For each={Object.entries(book.items.classes)}>
+                            {([className, subclasses]) =>
+                              <p>{className} - {subclasses.join(', ')}</p>
+                            }
+                          </For>
+                        </div>
+                      </Show>
+                    }
+                  >
+                    <Show when={book.items[kind].length > 0}>
+                      <div class="mb-4">
+                        <p class="font-medium! mb-2">{TRANSLATION[locale()][kind]}</p>
+                        <p>{book.items[kind].join(', ')}</p>
+                      </div>
+                    </Show>
                   </Show>
                 }
               </For>
               <Show when={book.shared || !book.own}>
-                <p class="py-1 dark:text-snow cursor-pointer">
+                <p class="py-1 cursor-pointer">
                   <Checkbox
                     labelText={book.enabled ? TRANSLATION[locale()].enabled : TRANSLATION[locale()].disabled}
                     labelPosition="right"

@@ -13,6 +13,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - toggling features with energy
 - rendering skill learning level
 - refreshing available homebrews
+- rendering homebrew books
 
 ### Fixed
 - markdown transformation
