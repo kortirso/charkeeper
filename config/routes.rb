@@ -26,6 +26,7 @@ Rails.application.routes.draw do
     end
     namespace :dnd2024 do
       resources :characters, only: %i[index]
+      resources :recipes, only: %i[index new create]
     end
     namespace :pathfinder2 do
       resources :characters, only: %i[index]

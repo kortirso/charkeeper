@@ -51,11 +51,9 @@ export const Dnd5Craft = (props) => {
 
     Promise.all([fetchCrafts()]).then(
       ([craftsData]) => {
-        console.log(craftsData.tools)
         setTools(craftsData.tools);
       }
     );
-
 
     setLastActiveCharacterId(character().id);
   });

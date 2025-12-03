@@ -361,7 +361,7 @@ export const Dnd5 = (props) => {
                 onReloadCharacter={updateCharacter}
               />
             </Match>
-            <Match when={activeMobileTab() === 'craft'}>
+            <Match when={activeTab() === 'craft'}>
               <Dnd5Craft
                 character={character()}
                 onReloadCharacter={props.onReloadCharacter}

@@ -1,0 +1,28 @@
+<div class="mb-4">
+  <%= link_to 'New recipe', new_adminbook_dnd2024_recipe_path, class: 'btn btn-primary font-cascadia-light' %>
+</div>
+<table class="table w-full text-sm">
+  <thead>
+    <tr>
+      <td>ID</td>
+      <td>Name</td>
+      <td></td>
+    </tr>
+  </thead>
+  <tbody>
+    <% @tools.find_each do |tool| %>
+      <tr>
+        <td class="pr-2"><%= tool.id %></td>
+        <td class="pr-2"><%= tool.name %></td>
+        <td>
+          <% tool.recipes.find_each do |recipe| %>
+            <div class="mb-2">
+              <p><%= recipe.item.name %></p>
+              <p><%= recipe.info %></p>
+            </div>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
