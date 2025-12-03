@@ -22,6 +22,10 @@ ru:
     campaigns_context:
       join_campaign:
         provider_mismatch: Systems mismatch
+    characters_context:
+      dnd2024:
+        craft:
+          no_money: Не достаточно средств
   services:
     sheets_context:
       level: Уровень

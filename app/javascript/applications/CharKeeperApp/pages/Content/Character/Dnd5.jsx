@@ -4,7 +4,7 @@ import { createWindowSize } from '@solid-primitives/resize-observer';
 
 import {
   Dnd5Abilities, Dnd5Combat, Dnd5Rest, Dnd5ClassLevels, Dnd5Professions, Dnd5Spells, Dnd5Skills, Dnd5SavingThrows,
-  Dnd5Proficiency, Dnd2024WildShapes, BeastFeatures
+  Dnd5Proficiency, Dnd2024WildShapes, BeastFeatures, Dnd5Craft
 } from '../../../pages';
 import {
   CharacterNavigation, Equipment, Notes, Avatar, ContentWrapper, Feats, Bonuses, createDiceRoll, Conditions, Combat, Gold
@@ -91,13 +91,19 @@ export const Dnd5 = (props) => {
 
   const featFilters = createMemo(() => character().provider === 'dnd5' ? featDnd5Filters() : featDnd2024Filters());
 
+  const characterTabs = createMemo(() => {
+    const result = ['combat', 'equipment', 'spells', 'professions'];
+    if (character().provider === 'dnd2024') result.push('craft');
+    return result.concat(['classLevels', 'rest', 'bonuses', 'notes', 'avatar']);
+  });
+
   const mobileView = createMemo(() => {
     if (size.width >= 1152) return <></>;
 
     return (
       <>
         <CharacterNavigation
-          tabsList={['abilities', 'combat', 'equipment', 'spells', 'rest', 'bonuses', 'notes', 'professions', 'classLevels', 'avatar']}
+          tabsList={['abilities'].concat(characterTabs())}
           activeTab={activeMobileTab()}
           setActiveTab={setActiveMobileTab}
           currentGuideStep={character().guide_step}
@@ -211,6 +217,12 @@ export const Dnd5 = (props) => {
                 onReloadCharacter={updateCharacter}
               />
             </Match>
+            <Match when={activeMobileTab() === 'craft'}>
+              <Dnd5Craft
+                character={character()}
+                onReloadCharacter={props.onReloadCharacter}
+              />
+            </Match>
             <Match when={activeMobileTab() === 'avatar'}>
               <Avatar character={character()} onReplaceCharacter={props.onReplaceCharacter} />
             </Match>
@@ -265,7 +277,7 @@ export const Dnd5 = (props) => {
     return (
       <>
         <CharacterNavigation
-          tabsList={['combat', 'equipment', 'spells', 'rest', 'bonuses', 'notes', 'professions', 'classLevels', 'avatar']}
+          tabsList={characterTabs()}
           activeTab={activeTab()}
           setActiveTab={setActiveTab}
           currentGuideStep={character().guide_step}
@@ -347,6 +359,12 @@ export const Dnd5 = (props) => {
                 character={character()}
                 onRefreshCharacter={refreshCharacter}
                 onReloadCharacter={updateCharacter}
+              />
+            </Match>
+            <Match when={activeMobileTab() === 'craft'}>
+              <Dnd5Craft
+                character={character()}
+                onReloadCharacter={props.onReloadCharacter}
               />
             </Match>
             <Match when={activeTab() === 'avatar'}>

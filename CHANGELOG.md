@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## Unreleased
 ### Added
 - rendering domains for selected domain cards for DH characters
+- craft system for D&D 2024 characters
 
 ### Modified
 - toggling features with energy
