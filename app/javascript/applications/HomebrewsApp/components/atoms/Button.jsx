@@ -9,7 +9,7 @@ export const Button = (props) => {
       classList={{
         'bg-gray-200 hover:bg-gray-300': props.default,
         'text-sm': props.small,
-        'bg-neutral-800! text-snow!': props.active
+        'bg-neutral-800!': props.active
       }}
       onClick={props.onClick} // eslint-disable-line solid/reactivity
     >
