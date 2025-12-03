@@ -7,6 +7,7 @@ module Dnd2024Character
         result[:selected_feats] = ['wizard_magic_initiate']
         result[:selected_skills] = { arcana: 1, history: 1 }
         result[:ability_boosts] = %w[con int wis]
+        result[:tools] = result[:tools].push('calligrapher').uniq
 
         result
       end

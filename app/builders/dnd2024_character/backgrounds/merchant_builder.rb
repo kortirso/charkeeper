@@ -7,6 +7,7 @@ module Dnd2024Character
         result[:selected_feats] = ['lucky']
         result[:selected_skills] = { animal: 1, persuasion: 1 }
         result[:ability_boosts] = %w[con int cha]
+        result[:tools] = result[:tools].push('navigator').uniq
 
         result
       end

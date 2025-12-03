@@ -7,6 +7,7 @@ module Dnd2024Character
         result[:selected_feats] = ['druid_magic_initiate']
         result[:selected_skills] = { stealth: 1, survival: 1 }
         result[:ability_boosts] = %w[dex con wis]
+        result[:tools] = result[:tools].push('cartographer').uniq
 
         result
       end

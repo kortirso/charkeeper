@@ -7,6 +7,7 @@ module Dnd2024Character
         result[:selected_skills] = { investigation: 1, perception: 1 }
         result[:ability_boosts] = %w[dex int wis]
         result[:any_skill_boosts] += 3
+        result[:tools] = result[:tools].push('calligrapher').uniq
 
         result
       end
