@@ -98,6 +98,7 @@ export const CharKeeperAppContent = () => {
 
   const navigationPage = createMemo(() => {
     if (!appState.accessToken) return <></>;
+    if (appState.unreadNotificationsCount === undefined) return <></>;
 
     return <NavigationPage />;
   });
