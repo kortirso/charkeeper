@@ -19,6 +19,7 @@ const TRANSLATION = {
     transformations: 'Transformations',
     domains: 'Domains',
     enabled: 'Enabled',
+    disabled: 'Disabled',
     newBookTitle: 'Book form',
     name: 'Book name',
     save: 'Save',
@@ -33,6 +34,7 @@ const TRANSLATION = {
     transformations: 'Трансформации',
     domains: 'Домены',
     enabled: 'Подключено',
+    disabled: 'Отключено',
     newBookTitle: 'Редактирование книги',
     name: 'Название книги',
     save: 'Сохранить',
@@ -129,10 +131,9 @@ export const DaggerheartBooks = () => {
                 }
               </For>
               <Show when={book.shared || !book.own}>
-                <p class="px-2 py-1 dark:text-snow cursor-pointer">
+                <p class="py-1 dark:text-snow cursor-pointer">
                   <Checkbox
-                    filled
-                    labelText={TRANSLATION[locale()].enabled}
+                    labelText={book.enabled ? TRANSLATION[locale()].enabled : TRANSLATION[locale()].disabled}
                     labelPosition="right"
                     labelClassList="ml-2"
                     checked={book.enabled}
