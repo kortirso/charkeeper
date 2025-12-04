@@ -186,6 +186,10 @@
   max-height: 7.5rem;
 }
 
+.form-field .form-dropdown.full {
+  max-height: none;
+}
+
 .form-field .form-dropdown li {
   @apply border-b border-gray-200 m-0 py-2 px-4;
   @apply dark:text-snow dark:border-gray-500;

@@ -234,6 +234,7 @@ export const CharactersTab = () => {
         <Match when={currentTab() === 'newCharacter'}>
           <div class="p-4 flex-1 flex flex-col overflow-y-auto">
             <Select
+              showAll
               containerClassList="mb-2"
               classList="w-full"
               labelText={t('newCharacterPage.platform')}
