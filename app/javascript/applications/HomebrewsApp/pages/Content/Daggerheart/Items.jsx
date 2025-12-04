@@ -28,7 +28,8 @@ const TRANSLATION = {
     kinds: {
       item: 'Item',
       consumable: 'Consumable'
-    }
+    },
+    convert: 'Convert'
   },
   ru: {
     added: 'Контент добавлен в книгу',
@@ -45,7 +46,8 @@ const TRANSLATION = {
     kinds: {
       item: 'Предмет',
       consumable: 'Расходник'
-    }
+    },
+    convert: 'Конвертировать'
   }
 }
 
@@ -117,31 +119,40 @@ export const DaggerheartItems = () => {
     const result = await changeDaggerheartItem(appState.accessToken, itemForm.id, { brewery: itemForm, bonuses: bonuses(), only_head: true });
 
     if (result.errors_list === undefined) {
-      const newItems = items().map((item) => {
-        if (itemForm.id !== item.id) return item;
+      if (itemForm.convert) {
+        batch(() => {
+          setItems(items().filter(({ id }) => id !== itemForm.id ));
+          setItemForm({ id: null, name: '', description: '', kind: 'item' });
+          setItemBonuses([]);
+          closeModal();
+        });
+      } else {
+        const newItems = items().map((item) => {
+          if (itemForm.id !== item.id) return item;
 
-        return {
-          ...item,
-          name: { en: itemForm.name, ru: itemForm.name },
-          description: { en: itemForm.description, ru: itemForm.description },
-          bonuses: bonuses()
-        };
-      });
+          return {
+            ...item,
+            name: { en: itemForm.name, ru: itemForm.name },
+            description: { en: itemForm.description, ru: itemForm.description },
+            bonuses: bonuses()
+          };
+        });
 
-      batch(() => {
-        setItems(newItems);
-        setItemForm({ id: null, name: '', description: '', kind: 'item' });
-        setItemBonuses([]);
-        closeModal();
-      });
+        batch(() => {
+          setItems(newItems);
+          setItemForm({ id: null, name: '', description: '', kind: 'item' });
+          setItemBonuses([]);
+          closeModal();
+        });
+      }
     }
   }
 
-  const removeItem = async (item) => {
-    const result = await removeDaggerheartItem(appState.accessToken, item.id);
+  const removeItem = async (itemId) => {
+    const result = await removeDaggerheartItem(appState.accessToken, itemId);
 
     if (result.errors_list === undefined) {
-      setItems(items().filter(({ id }) => id !== item.id ));
+      setItems(items().filter(({ id }) => id !== itemId ));
     }
   }
 
@@ -207,7 +218,7 @@ export const DaggerheartItems = () => {
                       <Button default classList="px-2 py-1" onClick={() => openChangeItemModal(item)}>
                         <Edit width="20" height="20" />
                       </Button>
-                      <Button default classList="px-2 py-1" onClick={() => removeItem(item)}>
+                      <Button default classList="px-2 py-1" onClick={() => removeItem(item.id)}>
                         <Trash width="20" height="20" />
                       </Button>
                     </div>
@@ -220,19 +231,30 @@ export const DaggerheartItems = () => {
       </Show>
       <Modal>
         <p class="mb-2 text-xl">{TRANSLATION[locale()]['newItemTitle']}</p>
+        <Show when={itemForm.id}>
+          <Select
+            containerClassList="mb-2"
+            labelText={TRANSLATION[locale()].convert}
+            items={translate({ "primary weapon": { "name": { "en": "Primary Weapon", "ru": "Основное оружие" } }, "secondary weapon": { "name": { "en": "Secondary Weapon", "ru": "Запасное оружие" } }, "armor": { "name": { "en": "Armor", "ru": "Броня" } } }, locale())}
+            selectedValue={itemForm.convert}
+            onSelect={(value) => setItemForm({ ...itemForm, convert: value })}
+          />
+        </Show>
         <Input
-          containerClassList="form-field mb-4"
+          containerClassList="form-field mb-2"
           labelText={TRANSLATION[locale()]['name']}
           value={itemForm.name}
           onInput={(value) => setItemForm({ ...itemForm, name: value })}
         />
-        <Select
-          containerClassList="mb-2"
-          labelText={TRANSLATION[locale()]['kind']}
-          items={translate({ "item": { "name": { "en": "Item", "ru": "Предмет" } }, "consumable": { "name": { "en": "Consumable", "ru": "Расходник" } } }, locale())}
-          selectedValue={itemForm.kind}
-          onSelect={(value) => setItemForm({ ...itemForm, kind: value })}
-        />
+        <Show when={!itemForm.id}>
+          <Select
+            containerClassList="mb-2"
+            labelText={TRANSLATION[locale()]['kind']}
+            items={translate({ "item": { "name": { "en": "Item", "ru": "Предмет" } }, "consumable": { "name": { "en": "Consumable", "ru": "Расходник" } } }, locale())}
+            selectedValue={itemForm.kind}
+            onSelect={(value) => setItemForm({ ...itemForm, kind: value })}
+          />
+        </Show>
         <ItemBonuses bonuses={itemBonuses()} onBonus={setBonuses} />
         <TextArea
           rows="5"
