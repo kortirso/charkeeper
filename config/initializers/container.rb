@@ -72,6 +72,9 @@ module Charkeeper
     register('commands.characters_context.daggerheart.change_companion') {
       CharactersContext::Daggerheart::ChangeCompanionCommand.new
     }
+    register('commands.characters_context.daggerheart.homebrew.add_item') {
+      CharactersContext::Daggerheart::Homebrew::AddItemCommand.new
+    }
 
     register('commands.image_processing.attach_avatar_by_file') { ImageProcessingContext::AttachAvatarByFileCommand.new }
     register('commands.image_processing.attach_avatar_by_url') { ImageProcessingContext::AttachAvatarByUrlCommand.new }

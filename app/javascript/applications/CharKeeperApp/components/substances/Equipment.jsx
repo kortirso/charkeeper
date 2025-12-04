@@ -1,4 +1,5 @@
 import { createSignal, createEffect, For, Show, createMemo, batch, children } from 'solid-js';
+import { createStore } from 'solid-js/store';
 import * as i18n from '@solid-primitives/i18n';
 
 import { ItemsTable, createModal, ErrorWrapper, Input, Button, Toggle, TextArea, GuideWrapper } from '../../components';
@@ -10,22 +11,36 @@ import { createCharacterItemRequest } from '../../requests/createCharacterItemRe
 import { updateCharacterItemRequest } from '../../requests/updateCharacterItemRequest';
 import { removeCharacterItemRequest } from '../../requests/removeCharacterItemRequest';
 import { fetchItemInfoRequest } from '../../requests/fetchItemInfoRequest';
+import { createCharacterHomebrewItemRequest } from '../../requests/createCharacterHomebrewItemRequest';
 
 const TRANSLATION = {
   en: {
     searchByName: 'Search by name (from 3 characters)',
-    clear: 'Clear'
+    clear: 'Clear',
+    createHomebrew: 'Add homebrew item',
+    homebrewName: 'Item name',
+    homebrewDescription: 'Item description',
+    add: 'Add',
+    tooltip: "Once you've crafted an item, you can edit it in the <a href='https://charkeeper.org/homebrews' class='underline' target='_blank' rel='noopener noreferrer'>Homebrews</a> section, even converting it into a weapon or armor."
   },
   ru: {
     searchByName: 'Поиск по названию (от 3 символов)',
-    clear: 'Очистить'
+    clear: 'Очистить',
+    createHomebrew: 'Добавление homebrew предмета',
+    homebrewName: 'Название предмета',
+    homebrewDescription: 'Описание предмета',
+    add: 'Добавить',
+    tooltip: "После создания предмета вы сможете его отредактировать в разделе <a href='https://charkeeper.org/homebrews' class='underline' target='_blank' rel='noopener noreferrer'>Homebrews</a>, даже преобразовать в оружие или броню"
   }
 }
+const CREATE_HOMEBREW_ITEMS = ['daggerheart'];
 
 export const Equipment = (props) => {
   const safeChildren = children(() => props.children);
 
   const character = () => props.character;
+
+  const [homebrewItem, setHomebrewItem] = createStore({ name: '', description: '' });
 
   const [lastActiveCharacterId, setLastActiveCharacterId] = createSignal(undefined);
   const [characterItems, setCharacterItems] = createSignal(undefined);
@@ -37,7 +52,7 @@ export const Equipment = (props) => {
 
   const { Modal, openModal, closeModal } = createModal();
   const [appState] = useAppState();
-  const [{ renderNotice }] = useAppAlert();
+  const [{ renderNotice, renderAlerts }] = useAppAlert();
   const [locale, dict] = useAppLocale();
 
   const t = i18n.translator(dict);
@@ -159,6 +174,19 @@ export const Equipment = (props) => {
     return items().filter((item) => item.name.toLowerCase().includes(searchPattern));
   });
 
+  const addHomebrewItem = async () => {
+    const result = await createCharacterHomebrewItemRequest(
+      appState.accessToken, character().provider, character().id, { item: homebrewItem }
+    );
+
+    if (result.errors_list === undefined) {
+      batch(() => {
+        reloadCharacterItems();
+        setHomebrewItem({ name: '', description: '' })
+      });
+    } else renderAlerts(result.errors_list);
+  }
+
   return (
     <ErrorWrapper payload={{ character_id: character().id, key: 'Equipment' }}>
       <GuideWrapper
@@ -174,12 +202,12 @@ export const Equipment = (props) => {
               <div class="mb-2 flex">
                 <Input
                   containerClassList="mr-2 flex-1"
-                  placeholder={TRANSLATION[locale()]['searchByName']}
+                  placeholder={TRANSLATION[locale()].searchByName}
                   value={filterByName()}
                   onInput={(value) => setFilterByName(value)}
                 />
                 <Button default size="small" classList="px-2" onClick={() => setFilterByName('')}>
-                  {TRANSLATION[locale()]['clear']}
+                  {TRANSLATION[locale()].clear}
                 </Button>
               </div>
               <For each={props.itemFilters}>
@@ -258,6 +286,28 @@ export const Equipment = (props) => {
                   <p class="dark:text-snow">{calculateCurrentLoad()} / {character().load}</p>
                 </div>
               </div>
+            </Show>
+            <Show when={CREATE_HOMEBREW_ITEMS.includes(character().provider)}>
+              <Toggle title={TRANSLATION[locale()].createHomebrew}>
+                <Input
+                  containerClassList="mb-2"
+                  labelText={TRANSLATION[locale()].homebrewName}
+                  value={homebrewItem.name}
+                  onInput={(value) => setHomebrewItem({ ...homebrewItem, name: value })}
+                />
+                <TextArea
+                  rows="4"
+                  containerClassList="mb-2"
+                  labelText={TRANSLATION[locale()].homebrewDescription}
+                  value={homebrewItem.description}
+                  onChange={(value) => setHomebrewItem({ ...homebrewItem, description: value })}
+                />
+                <p
+                  class="mb-4 text-sm"
+                  innerHTML={TRANSLATION[locale()].tooltip} // eslint-disable-line solid/no-innerhtml
+                />
+                <Button default onClick={addHomebrewItem}>{TRANSLATION[locale()].add}</Button>
+              </Toggle>
             </Show>
           </Show>
         </Show>
