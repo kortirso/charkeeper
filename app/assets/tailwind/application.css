@@ -40,7 +40,7 @@
 
 @utility blockable {
   @apply bg-white border-2 border-gray-200 rounded-t-lg;
-  @apply dark:bg-dusty border dark:border-gray-500;
+  @apply dark:bg-dusty border dark:border-gray-500 dark:text-snow;
 }
 
 * {
