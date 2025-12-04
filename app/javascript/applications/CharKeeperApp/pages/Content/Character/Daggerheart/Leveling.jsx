@@ -27,7 +27,10 @@ const TRANSLATION = {
     selectDomain: 'Select domain from new class',
     proficiency: '+1 bonus to Proficiency',
     subclass: 'Upgrade subclass',
-    multiclass: 'Choose additional class'
+    multiclass: 'Choose additional class',
+    levelTooltip: 'Level up is not revertable, be careful!',
+    multiclassTooltip: 'Saving multiclass selection is not revertable, be careful!',
+    subclassTooltip: 'Saving subclass upgrade is not revertable, be careful!'
   },
   ru: {
     currentLevel: 'Текущий уровень',
@@ -47,7 +50,10 @@ const TRANSLATION = {
     selectDomain: 'Выберите домен от нового класса',
     proficiency: '+1 бонус к мастерству',
     subclass: 'Улучшить подкласс',
-    multiclass: 'Выберите дополнительный класс'
+    multiclass: 'Выберите дополнительный класс',
+    levelTooltip: 'Повышение уровня необратимо, осторожно!',
+    multiclassTooltip: 'Сохранение выбора мультикласса необратимо, осторожно!',
+    subclassTooltip: 'Сохранение выбора улучшения мастерства подкласса необратимо, осторожно!'
   }
 }
 
@@ -214,7 +220,7 @@ export const DaggerheartLeveling = (props) => {
         finishGuideStep={props.finishGuideStep}
       >
         <div class="blockable p-4 flex flex-col mb-4">
-          <div class="flex items-center mb-4">
+          <div class="flex items-center mb-2">
             <Button
               default
               classList='rounded mr-4'
@@ -222,10 +228,11 @@ export const DaggerheartLeveling = (props) => {
             >
               <Arrow top />
             </Button>
-            <p class="dark:text-snow">{TRANSLATION[locale()]['currentLevel']} - {character().level}</p>
+            <p>{TRANSLATION[locale()]['currentLevel']} - {character().level}</p>
           </div>
+          <p class="text-sm mb-4">{TRANSLATION[locale()].levelTooltip}</p>
           <Show when={levelingData() && character().level > 1}>
-            <p class="my-2 dark:text-snow">{TRANSLATION[locale()]['title']} - {levelPoints() - spendLevelPoints()}</p>
+            <p class="my-2">{TRANSLATION[locale()]['title']} - {levelPoints() - spendLevelPoints()}</p>
             <For
               each={[
                 { css: 'mt-4 mb-2', title: TRANSLATION[locale()]['traits'], amount: 3, attribute: 'traits' },
@@ -239,7 +246,7 @@ export const DaggerheartLeveling = (props) => {
               {(item) =>
                 <Show when={levelingData()[item.attribute] > 0 || levelPoints() > 0}>
                   <div class={item.css}>
-                    <p class="text-sm/4 uppercase mb-1 dark:text-snow">{item.title}</p>
+                    <p class="text-sm/4 uppercase mb-1">{item.title}</p>
                     <div class="flex">
                       <For each={Array.from([...Array((item.attribute === 'traits' ? 1 : (character().tier - 1)) * item.amount).keys()], (x) => x + 1)}>
                         {(index) =>
@@ -279,7 +286,7 @@ export const DaggerheartLeveling = (props) => {
                 {(item) =>
                   <Show when={item.amount > 0}>
                     <div class="mb-2">
-                      <p class="text-sm/4 uppercase mb-1 dark:text-snow">{item.title}</p>
+                      <p class="text-sm/4 uppercase mb-1">{item.title}</p>
                       <div class="flex">
                         <For each={Array.from([...Array(item.amount).keys()], (x) => x + 1)}>
                           {(index) =>
@@ -331,6 +338,7 @@ export const DaggerheartLeveling = (props) => {
                   onSelect={(value) => selectDomain(newClass(), value)}
                 />
               </Show>
+              <p class="text-sm mb-4">{TRANSLATION[locale()].multiclassTooltip}</p>
             </Show>
             <Show when={Object.values(character().subclasses_mastery).filter((item) => item > 1).reduce((acc, value) => acc + value - 1, 0) < character().leveling.subclass}>
               <Select
@@ -340,6 +348,7 @@ export const DaggerheartLeveling = (props) => {
                 selectedValue={newClass()}
                 onSelect={setNewClass}
               />
+              <p class="text-sm mb-4">{TRANSLATION[locale()].subclassTooltip}</p>
             </Show>
           </Show>
           <div class="flex mt-2 gap-x-4">
