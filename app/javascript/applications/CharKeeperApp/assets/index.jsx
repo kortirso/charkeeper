@@ -30,6 +30,7 @@ export * from './socials/Telegram';
 export * from './socials/Vk';
 export * from './socials/Boosty';
 export * from './socials/Google';
+export * from './socials/BuyMeACoffee';
 export * from './classes/Artificer';
 export * from './classes/Barbarian';
 export * from './classes/Bard';
