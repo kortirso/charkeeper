@@ -100,6 +100,7 @@ module Charkeeper
     register('commands.homebrew_context.daggerheart.add_feat') { HomebrewContext::Daggerheart::AddFeatCommand.new }
     register('commands.homebrew_context.daggerheart.add_item') { HomebrewContext::Daggerheart::AddItemCommand.new }
     register('commands.homebrew_context.daggerheart.change_item') { HomebrewContext::Daggerheart::ChangeItemCommand.new }
+    register('commands.homebrew_context.daggerheart.convert_item') { HomebrewContext::Daggerheart::ConvertItemCommand.new }
     register('commands.homebrew_context.daggerheart.add_speciality') { HomebrewContext::Daggerheart::AddSpecialityCommand.new }
     register('commands.homebrew_context.daggerheart.change_speciality') {
       HomebrewContext::Daggerheart::ChangeSpecialityCommand.new

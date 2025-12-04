@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## Unreleased
 ### Added
 - creating homebrew items from equipment for DH characters
+- converting homebrew items to another kinds
 
 ### Modified
 - rendering beastforms select for DH characters

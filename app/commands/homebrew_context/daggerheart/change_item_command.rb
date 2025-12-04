@@ -4,11 +4,14 @@ module HomebrewContext
   module Daggerheart
     class ChangeItemCommand < BaseCommand
       include Deps[
-        refresh_bonuses: 'commands.bonuses_context.refresh'
+        refresh_bonuses: 'commands.bonuses_context.refresh',
+        convert_item: 'commands.homebrew_context.daggerheart.convert_item'
       ]
 
       use_contract do
         config.messages.namespace = :homebrew_item
+
+        Kinds = Dry::Types['strict.string'].enum('primary weapon', 'secondary weapon', 'armor')
 
         params do
           required(:item).filled(type?: ::Daggerheart::Item)
@@ -21,6 +24,7 @@ module HomebrewContext
             optional(:type).filled(:string)
             optional(:value)
           end
+          optional(:convert).maybe(Kinds)
         end
       end
 
@@ -32,9 +36,10 @@ module HomebrewContext
       end
 
       def do_persist(input)
-        input[:item].update!(input.except(:item, :bonuses))
+        input[:item].update!(input.except(:item, :bonuses, :convert))
 
         refresh_bonuses.call(bonusable: input[:item], bonuses: input[:bonuses]) if input[:bonuses]
+        convert_item.call(item: input[:item], kind: input[:convert]) if input.key?(:convert)
 
         { result: input[:item] }
       end
