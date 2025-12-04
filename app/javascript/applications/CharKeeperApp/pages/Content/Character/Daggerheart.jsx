@@ -115,6 +115,9 @@ export const Daggerheart = (props) => {
                 />
               </div>
               <div class="mt-4">
+                <DaggerheartBeastform character={character()} onReplaceCharacter={props.onReplaceCharacter} />
+              </div>
+              <div class="mt-4">
                 <Feats
                   character={character()}
                   filters={featFilters()}
@@ -180,9 +183,6 @@ export const Daggerheart = (props) => {
             <Match when={activeMobileTab() === 'states'}>
               <DaggerheartTransform character={character()} onReplaceCharacter={props.onReplaceCharacter} />
               <div class="mt-4">
-                <DaggerheartBeastform character={character()} onReplaceCharacter={props.onReplaceCharacter} />
-              </div>
-              <div class="mt-4">
                 <DaggerheartStances character={character()} onReplaceCharacter={props.onReplaceCharacter} />
               </div>
               <div class="mt-4">
@@ -241,6 +241,9 @@ export const Daggerheart = (props) => {
             onReplaceCharacter={props.onReplaceCharacter}
             onReloadCharacter={props.onReloadCharacter}
           />
+        </div>
+        <div class="mt-4">
+          <DaggerheartBeastform character={character()} onReplaceCharacter={props.onReplaceCharacter} />
         </div>
         <div class="mt-4">
           <Feats
@@ -321,9 +324,6 @@ export const Daggerheart = (props) => {
             </Match>
             <Match when={activeTab() === 'states'}>
               <DaggerheartTransform character={character()} onReplaceCharacter={props.onReplaceCharacter} />
-              <div class="mt-4">
-                <DaggerheartBeastform character={character()} onReplaceCharacter={props.onReplaceCharacter} />
-              </div>
               <div class="mt-4">
                 <DaggerheartStances character={character()} onReplaceCharacter={props.onReplaceCharacter} />
               </div>

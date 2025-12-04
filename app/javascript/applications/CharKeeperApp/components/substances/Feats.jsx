@@ -77,7 +77,7 @@ export const Feats = (props) => {
       return true;
     });
 
-    return filtering().includes('groupFeatures') ? result.filter(activeFilterOptions().callback) : result;
+    return filtering().includes('groupFeatures') && activeFilterOptions() ? result.filter(activeFilterOptions().callback) : result;
   });
 
   const spendEnergy = (event, feature) => {
