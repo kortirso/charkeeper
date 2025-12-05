@@ -94,7 +94,7 @@ export const Dnd5Abilities = (props) => {
                         textClassList="text-4xl"
                         onClick={() => props.openDiceRoll(`/check attr ${slug}`, character().modifiers[slug])}
                       />
-                      <div class="absolute -right-4 -bottom-0 w-8 h-8 rounded-full border border-gray-200 bg-white flex items-center justify-center opacity-75">
+                      <div class="absolute -right-4 -bottom-0 w-8 h-8 rounded-full border border-gray-200 bg-white flex items-center justify-center opacity-75 dark:text-neutral-800">
                         <p class="text-xl">{editMode() ? abilitiesData()[slug] : character().modified_abilities[slug]}</p>
                       </div>
                     </div>

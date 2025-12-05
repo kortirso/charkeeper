@@ -33,7 +33,7 @@ module AuthContext
 
     def do_prepare(input)
       input[:locale] = I18n.locale if input[:locale].blank?
-      input[:color_schema] = User.color_schemas.keys.sample
+      input[:color_schema] = User::DARK
 
       input[:book_attributes] = Homebrew::Book.where(shared: true).map do |book|
         {
