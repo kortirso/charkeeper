@@ -48,6 +48,7 @@ module CharactersContext
             required(:file_name).filled(:string)
           end
           optional(:avatar_url).filled(:string)
+          optional(:file)
           optional(:experience).maybe(:array).each(:hash) do
             required(:id).filled(:integer)
             required(:exp_name).filled(:string, max_size?: 50)
@@ -62,7 +63,7 @@ module CharactersContext
           optional(:conditions).maybe(:array).each(:string)
         end
 
-        rule(:avatar_file, :avatar_url).validate(:check_only_one_present)
+        rule(:avatar_file, :avatar_url, :file).validate(:check_only_one_present)
 
         rule(:traits) do
           next if value.nil?
@@ -103,11 +104,16 @@ module CharactersContext
         if %i[level classes subclasses subclasses_mastery transformation beastform selected_features].intersect?(input.keys)
           refresh_feats.call(character: input[:character])
         end
-
-        attach_avatar_by_file.call({ character: input[:character], file: input[:avatar_file] }) if input[:avatar_file]
-        attach_avatar_by_url.call({ character: input[:character], url: input[:avatar_url] }) if input[:avatar_url]
+        upload_avatar(input)
 
         { result: input[:character] }
+      end
+
+      def upload_avatar(input)
+        attach_avatar_by_file.call({ character: input[:character], file: input[:avatar_file] }) if input[:avatar_file]
+        attach_avatar_by_url.call({ character: input[:character], url: input[:avatar_url] }) if input[:avatar_url]
+        input[:character].avatar.attach(input[:file]) if input[:file]
+      rescue StandardError => _e
       end
     end
   end

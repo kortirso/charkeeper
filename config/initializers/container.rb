@@ -15,6 +15,7 @@ module Charkeeper
       end
     end
 
+    register('feature_requirement') { FeatureRequirement.new }
     register('markdown') { ActiveMarkdown.new }
     register('to_bool') { ToBool.new }
     register('roll') { Roll.new }

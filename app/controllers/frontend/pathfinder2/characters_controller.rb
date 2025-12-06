@@ -5,7 +5,8 @@ module Frontend
     class CharactersController < Frontend::BaseController
       include Deps[
         character_create: 'commands.characters_context.pathfinder2.create',
-        character_update: 'commands.characters_context.pathfinder2.update'
+        character_update: 'commands.characters_context.pathfinder2.update',
+        feature_requirement: 'feature_requirement'
       ]
       include SerializeResource
 
@@ -36,7 +37,11 @@ module Frontend
       end
 
       def request_params
-        params.require(:character).permit!.to_h
+        unless feature_requirement.call(current: params[:version], initial: '0.3.23')
+          return params.require(:character).permit!.to_h
+        end
+
+        params[:character] ? params.require(:character).permit!.to_h : params.permit!.to_h
       end
     end
   end

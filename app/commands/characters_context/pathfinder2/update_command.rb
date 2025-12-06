@@ -57,6 +57,7 @@ module CharactersContext
             required(:file_name).filled(:string)
           end
           optional(:avatar_url).filled(:string)
+          optional(:file)
           optional(:weapon_skills).hash
           optional(:armor_skills).hash
           optional(:coins).hash do
@@ -68,7 +69,7 @@ module CharactersContext
           optional(:conditions).maybe(:array).each(:string)
         end
 
-        rule(:avatar_file, :avatar_url).validate(:check_only_one_present)
+        rule(:avatar_file, :avatar_url, :file).validate(:check_only_one_present)
 
         rule(:abilities) do
           next if value.nil?
@@ -127,12 +128,18 @@ module CharactersContext
         input[:character].assign_attributes(input.slice(:name))
         input[:character].save!
 
-        attach_avatar_by_file.call({ character: input[:character], file: input[:avatar_file] }) if input[:avatar_file]
-        attach_avatar_by_url.call({ character: input[:character], url: input[:avatar_url] }) if input[:avatar_url]
+        upload_avatar(input)
 
         { result: input[:character] }
       end
       # rubocop: enable Metrics/AbcSize, Metrics/PerceivedComplexity
+
+      def upload_avatar(input)
+        attach_avatar_by_file.call({ character: input[:character], file: input[:avatar_file] }) if input[:avatar_file]
+        attach_avatar_by_url.call({ character: input[:character], url: input[:avatar_url] }) if input[:avatar_url]
+        input[:character].avatar.attach(input[:file]) if input[:file]
+      rescue StandardError => _e
+      end
     end
   end
 end

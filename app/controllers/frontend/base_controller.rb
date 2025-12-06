@@ -4,7 +4,19 @@ module Frontend
   class BaseController < ApplicationController
     protect_from_forgery with: :null_session
 
+    before_action :set_active_storage_url_options
+
     private
+
+    def set_active_storage_url_options
+      return if Rails.env.production?
+
+      ActiveStorage::Current.url_options = {
+        protocol: request.protocol,
+        host: request.host,
+        port: request.port
+      }
+    end
 
     def only_head_response
       render json: { result: :ok }, status: :ok

@@ -25,9 +25,10 @@ module CharactersContext
             required(:file_name).filled(:string)
           end
           optional(:avatar_url).filled(:string)
+          optional(:file)
         end
 
-        rule(:avatar_file, :avatar_url).validate(:check_only_one_present)
+        rule(:avatar_file, :avatar_url, :file).validate(:check_only_one_present)
 
         rule(:race, :subrace) do
           next if values[:subrace].nil?
@@ -60,13 +61,7 @@ module CharactersContext
 
       def do_persist(input)
         character = ::Pathfinder2::Character.create!(input.slice(:user, :name, :data))
-
-        if input[:avatar_file]
-          ImageProcessingContext::AttachAvatarByFileJob.perform_later(character_id: character.id, file: input[:avatar_file])
-        end
-        if input[:avatar_url]
-          ImageProcessingContext::AttachAvatarByUrlJob.perform_later(character_id: character.id, url: input[:avatar_url])
-        end
+        upload_avatar(input, character)
 
         { result: character }
       end
@@ -78,6 +73,17 @@ module CharactersContext
           .then { |result| Pathfinder2Character::BackgroundBuilder.new.call(result: result) }
           .then { |result| Pathfinder2Character::ClassBuilder.new.call(result: result) }
           .then { |result| Pathfinder2Character::SubclassBuilder.new.call(result: result) }
+      end
+
+      def upload_avatar(input, character)
+        if input[:avatar_file]
+          ImageProcessingContext::AttachAvatarByFileJob.perform_later(character_id: character.id, file: input[:avatar_file])
+        end
+        if input[:avatar_url]
+          ImageProcessingContext::AttachAvatarByUrlJob.perform_later(character_id: character.id, url: input[:avatar_url])
+        end
+        character.avatar.attach(input[:file]) if input[:file]
+      rescue StandardError => _e
       end
     end
   end
