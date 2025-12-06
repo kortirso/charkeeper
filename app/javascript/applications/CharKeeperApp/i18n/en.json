@@ -272,7 +272,6 @@
     "restIsFinished": "Rest is finished",
     "itemIsAdded": "Item is added",
     "characterIsUpdated": "Character is updated",
-    "fileSizeLimit": "File size should be less than 1 MB",
     "invalidSubclassesList": "You need to select subclasses for all classes",
     "feedbackIsAdded": "Feedback is added, thank you very much for using CharKeeper!",
     "userIsUpdated": "User is updated",
@@ -287,9 +286,6 @@
     "sharePdf": "Share PDF link"
   },
   "newCharacterPage": {
-    "avatarFile": "Select avatar file",
-    "avatarUrl": "or paste link to image",
-    "avatarTransform": "Image will be converted to square format",
     "title": "Create character",
     "name": "Name",
     "platform": "Platform",

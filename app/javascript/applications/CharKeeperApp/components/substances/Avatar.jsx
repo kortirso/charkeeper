@@ -5,6 +5,21 @@ import { Button, Input, Label } from '../../components';
 import { useAppState, useAppLocale, useAppAlert } from '../../context';
 import { updateCharacterRequest } from '../../requests/updateCharacterRequest';
 
+const TRANSLATION = {
+  en: {
+    fileSizeLimit: 'File size should be less than 1 MB',
+    avatarFile: 'Select avatar file',
+    avatarUrl: 'or paste link to image',
+    avatarTransform: 'Image will be converted to square format'
+  },
+  ru: {
+    fileSizeLimit: 'Размер файла должен быть меньше 1 МБ',
+    avatarFile: 'Выберите файл аватара',
+    avatarUrl: 'или укажите ссылку на изображение',
+    avatarTransform: 'Изображение будет конфертировано в квадратный формат'
+  }
+}
+
 export const Avatar = (props) => {
   const character = () => props.character;
 
@@ -16,7 +31,7 @@ export const Avatar = (props) => {
 
   const [appState] = useAppState();
   const [{ renderAlert, renderAlerts, renderNotice }] = useAppAlert();
-  const [, dict] = useAppLocale();
+  const [locale, dict] = useAppLocale();
 
   const t = i18n.translator(dict);
 
@@ -33,46 +48,22 @@ export const Avatar = (props) => {
     const target = event.target;
     if (target.files && target.files.length > 0) {
       const file = target.files[0];
+      if (file.size > 1000000) return renderAlert(TRANSLATION[locale()].fileSizeLimit);
+
       setSelectedFile(file);
-      if (file.size > 1000000) renderAlert(t('alerts.fileSizeLimit'));
     }
-  }
-
-  const imageToBase64 = (file) => {
-    if (file === null) return;
-
-    return new Promise((resolve, reject) => {
-      const reader = new FileReader();
-      reader.onload = () => {
-        const base64String = reader.result.replace(/^data:image\/[a-z]+;base64,/, "");
-        resolve(base64String);
-      };
-      reader.onerror = reject;
-      reader.readAsDataURL(file);
-    });
   }
 
   const updateCharacter = async () => {
-    if (selectedFile() && selectedFile().size > 1000000) {
-      return renderAlert(t('alerts.fileSizeLimit'));
-    }
-
     setLoading(true);
 
-    let characterFormData = {};
-    if (character().name !== name()) {
-      characterFormData = { ...characterFormData, name: name() }
-    }
-    const fileContent = await imageToBase64(selectedFile());
-    if (fileContent) {
-      const avatarFile = { file_content: fileContent, file_name: selectedFile().name }
-      characterFormData = { ...characterFormData, avatar_file: avatarFile }
-    }
-    if (avatarUrl().length > 0) {
-      characterFormData = { ...characterFormData, avatar_url: avatarUrl() }
-    }
+    const characterFormData = new FormData();
+    if (character().name !== name()) characterFormData.append('name', name());
+    if (selectedFile()) characterFormData.append('file', selectedFile());
+    if (avatarUrl().length > 0) characterFormData.append('avatar_url', avatarUrl());
+    characterFormData.append('only_head', true);
 
-    const result = await updateCharacterRequest(appState.accessToken, character().provider, character().id, { character: characterFormData, only_head: true });
+    const result = await updateCharacterRequest(appState.accessToken, character().provider, character().id, characterFormData, true);
     
     if (result.errors_list === undefined) {
       batch(() => {
@@ -91,14 +82,14 @@ export const Avatar = (props) => {
   return (
     <div class="blockable p-4 mb-4">
       <div class="mb-4">
-        <Label labelText={t('newCharacterPage.avatarFile')} />
+        <Label labelText={TRANSLATION[locale()].avatarFile} />
         <input class="block mb-2 dark:text-gray-200" type="file" accept="image/jpeg, image/png" onChange={handleFileChange} />
         <Input
-          labelText={t('newCharacterPage.avatarUrl')}
+          labelText={TRANSLATION[locale()].avatarUrl}
           value={avatarUrl()}
           onInput={(value) => setAvatarUrl(value)}
         />
-        <Label labelText={t('newCharacterPage.avatarTransform')} />
+        <Label labelText={TRANSLATION[locale()].avatarTransform} />
       </div>
       <Input
         containerClassList="mb-4"

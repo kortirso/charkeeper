@@ -78,6 +78,7 @@ module CharactersContext
             required(:file_name).filled(:string)
           end
           optional(:avatar_url).filled(:string)
+          optional(:file)
           optional(:selected_beastforms).maybe(:array).each(:string)
           optional(:beastform).maybe(Beastforms)
           optional(:conditions).maybe(:array).each(:string)
@@ -86,7 +87,7 @@ module CharactersContext
           optional(:bardic_inspiration).maybe(:integer)
         end
 
-        rule(:avatar_file, :avatar_url).validate(:check_only_one_present)
+        rule(:avatar_file, :avatar_url, :file).validate(:check_only_one_present)
 
         # ключи classes и subclasses должны быть одинаковые
         rule(:classes) do
@@ -170,9 +171,7 @@ module CharactersContext
           refresh_feats.call(character: input[:character])
         end
         refresh_spells(input) if input[:classes]
-
-        attach_avatar_by_file.call({ character: input[:character], file: input[:avatar_file] }) if input[:avatar_file]
-        attach_avatar_by_url.call({ character: input[:character], url: input[:avatar_url] }) if input[:avatar_url]
+        upload_avatar(input)
 
         { result: input[:character] }
       end
@@ -197,6 +196,13 @@ module CharactersContext
         input[:removed_classes].each do |removed_class|
           input[:character].spells.where("data -> 'prepared_by' ? :prepared_by", prepared_by: removed_class).delete_all
         end
+      end
+
+      def upload_avatar(input)
+        attach_avatar_by_file.call({ character: input[:character], file: input[:avatar_file] }) if input[:avatar_file]
+        attach_avatar_by_url.call({ character: input[:character], url: input[:avatar_url] }) if input[:avatar_url]
+        input[:character].avatar.attach(input[:file]) if input[:file]
+      rescue StandardError => _e
       end
     end
   end
