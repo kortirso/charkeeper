@@ -158,22 +158,6 @@
     }
   },
   "talents": {
-    "attribute_increase": {
-      "name": { "en": "Attribute Increase", "ru": "Повышение атрибутов" },
-      "multiple": true
-    },
-    "skill_or_trade_increase": {
-      "name": { "en": "Skill or Trade Increase", "ru": "Повышение навыков или ремёсел" },
-      "multiple": true
-    },
-    "martial_expansion": {
-      "name": { "en": "Martial Expansion", "ru": "Боевое посвящение" },
-      "multiple": false
-    },
-    "spellcasting_expansion": {
-      "name": { "en": "Spellcasting Expansion", "ru": "Магическое посвящение" },
-      "multiple": false
-    },
     "seize_momentum": {
       "name": { "en": "Seize Momentum", "ru": "Быстрое реагирование" },
       "multiple": false,

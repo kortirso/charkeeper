@@ -27,12 +27,12 @@ module Dc20Character
 
     def mana_points
       @mana_points ||= __getobj__.mana_points.merge(
-        'max' => __getobj__.mana_points['max'] + (paths['spellcaster'] * 2) + (talents.include?('spellcasting_expansion') ? 2 : 0)
+        'max' => __getobj__.mana_points['max'] + (paths['spellcaster'] * 2)
       )
     end
 
     def maneuver_points
-      @maneuver_points ||= __getobj__.maneuver_points + paths['martial'] + (talents.include?('martial_expansion') ? 2 : 0)
+      @maneuver_points ||= __getobj__.maneuver_points + paths['martial']
     end
 
     def cantrips
@@ -40,7 +40,7 @@ module Dc20Character
     end
 
     def spells
-      @spells ||= __getobj__.spells + paths['spellcaster'] + (talents.include?('spellcasting_expansion') ? 1 : 0)
+      @spells ||= __getobj__.spells + paths['spellcaster']
     end
 
     private

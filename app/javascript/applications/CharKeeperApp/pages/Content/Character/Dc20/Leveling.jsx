@@ -1,11 +1,12 @@
-import { createSignal, createEffect, createMemo, Show, For } from 'solid-js';
+import { createSignal, createEffect, createMemo, Show, For, batch } from 'solid-js';
 
 import { Button, ErrorWrapper, GuideWrapper, Toggle, Checkbox, Select } from '../../../../components';
 import config from '../../../../data/dc20.json';
 import { useAppState, useAppLocale } from '../../../../context';
 import { Arrow, PlusSmall } from '../../../../assets';
 import { updateCharacterRequest } from '../../../../requests/updateCharacterRequest';
-import { translate } from '../../../../helpers';
+import { fetchTalentsRequest } from '../../../../requests/fetchTalentsRequest';
+import { createTalentRequest } from '../../../../requests/createTalentRequest';
 
 const TRANSLATION = {
   en: {
@@ -78,26 +79,33 @@ export const Dc20Leveling = (props) => {
   const [lastActiveCharacterId, setLastActiveCharacterId] = createSignal(undefined);
   const [selectedTalent, setSelectedTalent] = createSignal(null);
 
+  const [talents, setTalents] = createSignal(undefined);
+
   const [appState] = useAppState();
   const [locale] = useAppLocale();
 
   createEffect(() => {
     if (lastActiveCharacterId() === character().id) return;
 
+    const fetchTalents = async () => await fetchTalentsRequest(
+      appState.accessToken, character().provider, character().id
+    );
+
+    Promise.all([fetchTalents()]).then(
+      ([talentsData]) => {
+        batch(() => {
+          setTalents(talentsData.talents);
+        });
+      }
+    );
+
     setLastActiveCharacterId(character().id);
   });
 
   const availableTalents = createMemo(() => {
-    const selectedFeatures = character().features.map(({ slug }) => slug);
+    if (talents() === undefined) return {};
 
-    const result = Object.entries(config.talents).filter(([slug, values]) => {
-      if (values.level && values.level > character().level) return false;
-      if (values.required_features && values.required_features.filter((item) => selectedFeatures.includes(item)).length !== values.required_features.length) return false;
-      if (!values.multiple && character().talents.includes(slug)) return false
-
-      return true;
-    });
-    return Object.fromEntries(result);
+    return talents().filter((item) => item.multiple || !item.selected).reduce((acc, item) => { acc[item.id] = item.title; return acc }, {});
   });
 
   const changeManeuver = (value) => {
@@ -109,6 +117,12 @@ export const Dc20Leveling = (props) => {
     const result = await updateCharacterRequest(appState.accessToken, character().provider, character().id, { character: payload });
 
     if (result.errors_list === undefined) props.onReplaceCharacter(result.character);
+  }
+
+  const saveTalent = async () => {
+    const result = await createTalentRequest(appState.accessToken, character().provider, character().id, { talent_id: selectedTalent().id });
+
+    if (result.errors_list === undefined) props.onReloadCharacter();
   }
 
   return (
@@ -199,29 +213,35 @@ export const Dc20Leveling = (props) => {
         <Toggle
           title={
             <div class="flex justify-between">
-              <p>{TRANSLATION[locale()]['talents']}</p>
-              <p>{TRANSLATION[locale()]['existingTalentPoints']} - {character().talent_points - character().talents.length}</p>
+              <p>{TRANSLATION[locale()].talents}</p>
+              <p>{TRANSLATION[locale()].existingTalentPoints} - {character().talent_points - Object.keys(character().selected_talents).length}</p>
             </div>
           }
         >
-          <Show when={character().talents.length > 0}>
-            <p class="text-sm mb-2">{TRANSLATION[locale()]['selectedTalents']}</p>
-            <For each={character().talents}>
-              {(talent) =>
-                <p class="text-lg">{config.talents[talent].name[locale()]}</p>
+          <Show when={talents() && Object.keys(character().selected_talents).length > 0}>
+            <p class="text-sm mb-2">{TRANSLATION[locale()].selectedTalents}</p>
+            <For each={Object.entries(character().selected_talents)}>
+              {([id, amount]) =>
+                <p class="text-lg">{talents().find((item) => item.id === id).title}{amount > 1 ? ` - ${amount}` : ''}</p>
               }
             </For>
           </Show>
-          <Show when={character().talent_points > character().talents.length}>
+          <Show when={character().talent_points > Object.keys(character().selected_talents).length}>
             <Select
-              labelText={TRANSLATION[locale()]['selectTalent']}
+              labelText={TRANSLATION[locale()].selectTalent}
               containerClassList="flex-1 mt-4"
-              items={translate(availableTalents(), locale())}
-              selectedValue={selectedTalent()}
-              onSelect={setSelectedTalent}
+              items={availableTalents()}
+              selectedValue={selectedTalent()?.id}
+              onSelect={(value) => setSelectedTalent(talents().find((item) => item.id === value))}
             />
             <Show when={selectedTalent()}>
-              <Button default textable size="small" classList="inline-block mt-2" onClick={() => updateCharacter({ talents: [...character().talents, selectedTalent()] })}>{TRANSLATION[locale()]['saveButton']}</Button>
+              <p
+                class="feat-markdown text-xs mt-1"
+                innerHTML={selectedTalent().description} // eslint-disable-line solid/no-innerhtml
+              />
+              <Button default textable size="small" classList="inline-block mt-2" onClick={saveTalent}>
+                {TRANSLATION[locale()].saveButton}
+              </Button>
             </Show>
           </Show>
         </Toggle>

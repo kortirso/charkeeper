@@ -111,7 +111,7 @@ Dir[File.join(Rails.root.join('db/data/daggerheart/feats/*.json'))].each do |fil
   end
 end
 
-Dir[File.join(Rails.root.join('db/data/dc20/feats/*.json'))].each do |filename|
+Dir[File.join(Rails.root.join('db/data/dc20/feats/talents.json'))].each do |filename|
   puts "seeding - #{filename}"
   JSON.parse(File.read(filename)).each do |feat|
     ::Dc20::Feat.create!(feat)

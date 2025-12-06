@@ -1,0 +1,80 @@
+[
+  {
+    "slug": "attribute_increase",
+    "title": { "en": "Attribute Increase", "ru": "Повышение атрибутов" },
+    "description": {
+      "en": "You gain 1 Attribute Point to put into any Attribute of your choice.",
+      "ru": "Вы получаете 1 Очко Атрибутов, которое можете вложить в любой Атрибут."
+    },
+    "origin": "talent",
+    "origin_value": "general",
+    "kind": "static",
+    "conditions": { "level": 1 },
+    "info": {
+      "multiple": true,
+      "increase": {
+        "attribute_points": 1
+      }
+    }
+  },
+  {
+    "slug": "skill_or_trade_increase",
+    "title": { "en": "Skill or Trade Increase", "ru": "Повышение навыков или ремёсел" },
+    "description": {
+      "en": "",
+      "ru": ""
+    },
+    "origin": "talent",
+    "origin_value": "general",
+    "kind": "static",
+    "conditions": { "level": 1 },
+    "info": {
+      "multiple": true,
+      "increase": {
+        "skill_points": 3
+      }
+    }
+  },
+  {
+    "slug": "martial_expansion",
+    "title": { "en": "Martial Expansion", "ru": "Боевое посвящение" },
+    "description": {
+      "en": "",
+      "ru": ""
+    },
+    "origin": "talent",
+    "origin_value": "general",
+    "kind": "static",
+    "conditions": { "level": 1 },
+    "eval_variables": {
+      "maneuver_points": "maneuver_points + 2",
+      "technique_points": "technique_points + 1"
+    },
+    "info": {
+      "multiple": false,
+      "rewrite": {
+        "combat_expertise": ["weapon", "light_armor", "heavy_armor", "light_shield", "heavy_shield"]
+      }
+    }
+  },
+  {
+    "slug": "spellcasting_expansion",
+    "title": { "en": "Spellcasting Expansion", "ru": "Магическое посвящение" },
+    "description": {
+      "en": "",
+      "ru": ""
+    },
+    "origin": "talent",
+    "origin_value": "general",
+    "kind": "static",
+    "conditions": { "level": 1 },
+    "eval_variables": {
+      "mana_points": "mana_points + 2",
+      "spells": "spells + 1",
+      "spell_lists_amount": "spell_lists_amount + 1"
+    },
+    "info": {
+      "multiple": false
+    }
+  }
+]

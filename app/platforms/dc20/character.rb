@@ -26,7 +26,7 @@ module Dc20
     attribute :maneuvers, array: true, default: []
     attribute :path, array: true, default: []
     attribute :spell_list, array: true, default: [] # доступные списки заклинаний
-    attribute :talents, array: true, default: [] # список выбранных талантов
+    attribute :selected_talents, array: true, default: {}
     # доступные очки для распределения
     attribute :guide_step, :integer # этап помощи при создании персонажа
     attribute :ancestry_points, :integer, default: 0
@@ -39,7 +39,6 @@ module Dc20
     attribute :path_points, :integer, default: 0
     attribute :talent_points, :integer, default: 0
     attribute :class_feature_points, :integer, default: 0
-    attribute :subclass_feature_points, :integer, default: 0
   end
 
   class Character < Character
