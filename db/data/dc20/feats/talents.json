@@ -8,7 +8,7 @@
     },
     "origin": "talent",
     "origin_value": "general",
-    "kind": "static",
+    "kind": "hidden",
     "conditions": { "level": 1 },
     "info": {
       "multiple": true,
@@ -26,7 +26,7 @@
     },
     "origin": "talent",
     "origin_value": "general",
-    "kind": "static",
+    "kind": "hidden",
     "conditions": { "level": 1 },
     "info": {
       "multiple": true,
@@ -44,7 +44,7 @@
     },
     "origin": "talent",
     "origin_value": "general",
-    "kind": "static",
+    "kind": "hidden",
     "conditions": { "level": 1 },
     "eval_variables": {
       "maneuver_points": "maneuver_points + 2",
@@ -66,7 +66,7 @@
     },
     "origin": "talent",
     "origin_value": "general",
-    "kind": "static",
+    "kind": "hidden",
     "conditions": { "level": 1 },
     "eval_variables": {
       "mana_points": "mana_points + 2",
@@ -75,6 +75,101 @@
     },
     "info": {
       "multiple": false
+    }
+  },
+  {
+    "slug": "seize_momentum",
+    "title": { "en": "Seize Momentum", "ru": "Быстрое реагирование" },
+    "description": {
+      "en": "Когда союзник в вашей Ауре командования наносит Тяжёлый удар, вы можете использовать Приказ командира в качестве Реакции.",
+      "ru": "Когда союзник в вашей Ауре командования наносит Тяжёлый удар, вы можете использовать Приказ командира в качестве Реакции."
+    },
+    "origin": "talent",
+    "origin_value": "commander",
+    "kind": "static",
+    "conditions": { "level": 3 },
+    "info": {
+      "multiple": false,
+      "required_features": ["commander_call", "commanding_aura"]
+    }
+  },
+  {
+    "slug": "coordinated_command",
+    "title": { "en": "Coordinated Command", "ru": "Координирующий приказ" },
+    "description": {
+      "en": "Один раз за Ход, когда вы используете Приказ командира, вы можете дополнительно потратить 1 ОВ чтобы отдать этот же приказ второму существу в Дальности (включая себя). Вы выбираете, кто из них ходит первым.",
+      "ru": "Один раз за Ход, когда вы используете Приказ командира, вы можете дополнительно потратить 1 ОВ чтобы отдать этот же приказ второму существу в Дальности (включая себя). Вы выбираете, кто из них ходит первым."
+    },
+    "origin": "talent",
+    "origin_value": "commander",
+    "kind": "static",
+    "conditions": { "level": 3 },
+    "info": {
+      "multiple": false,
+      "required_features": ["commander_call"]
+    }
+  },
+  {
+    "slug": "expanded_disciplines",
+    "title": { "en": "Expanded Disciplines", "ru": "Расширение дисциплин" },
+    "description": {
+      "en": "",
+      "ru": "Вы получаете +2 Дисциплины Мага Клинка"
+    },
+    "origin": "talent",
+    "origin_value": "spellblade",
+    "kind": "static",
+    "conditions": { "level": 3 },
+    "info": {
+      "multiple": false,
+      "required_features": ["spellblade_disciplines"]
+    }
+  },
+  {
+    "slug": "sling_blade",
+    "title": { "en": "Sling-Blade", "ru": "Хлестающий клинок" },
+    "description": {
+      "en": "",
+      "ru": ""
+    },
+    "origin": "talent",
+    "origin_value": "spellblade",
+    "kind": "static",
+    "conditions": { "level": 3 },
+    "info": {
+      "multiple": false,
+      "required_features": ["bound_weapon", "spellstrike"]
+    }
+  },
+  {
+    "slug": "adaptive_bond",
+    "title": { "en": "Adaptive Bond", "ru": "Изменчивая связь" },
+    "description": {
+      "en": "",
+      "ru": ""
+    },
+    "origin": "talent",
+    "origin_value": "spellblade",
+    "kind": "static",
+    "conditions": { "level": 3 },
+    "info": {
+      "multiple": false,
+      "required_features": ["bound_weapon"]
+    }
+  },
+  {
+    "slug": "novice_multiclass",
+    "title": { "en": "Novice Multiclass", "ru": "Новичок мультикласса" },
+    "description": {
+      "en": "",
+      "ru": "Вы получаете Черту Класса 1-го Уровня из любого Класса."
+    },
+    "origin": "talent",
+    "origin_value": "multiclass",
+    "kind": "hidden",
+    "conditions": { "level": 1 },
+    "info": {
+      "multiple": true
     }
   }
 ]

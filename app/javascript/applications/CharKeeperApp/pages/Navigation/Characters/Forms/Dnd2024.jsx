@@ -19,8 +19,8 @@ export const Dnd2024CharacterForm = (props) => {
   const [locale, dict] = useAppLocale();
   const t = i18n.translator(dict);
 
-  const saveCharacter = async (selectedFile, avatarUrl) => {
-    const result = await props.onCreateCharacter(characterDnd2024Form, selectedFile, avatarUrl);
+  const saveCharacter = async () => {
+    const result = await props.onCreateCharacter(characterDnd2024Form);
 
     if (result === null) {
       setCharacterDnd2024Form({

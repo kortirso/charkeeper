@@ -10,6 +10,7 @@ module Dc20
 
     STATIC = 'static' # рендерится текст
     UPDATE_RESULT = 'update_result' # рендерится, но затемняется
+    HIDDEN = 'hidden'
 
     SHORT_REST = 'short_rest'
     LONG_REST = 'long_rest'
@@ -22,7 +23,7 @@ module Dc20
       MANEUVER_ORIGIN => 3,
       TALENT_ORIGIN => 4
     }
-    enum :kind, { STATIC => 0, UPDATE_RESULT => 1 }
+    enum :kind, { STATIC => 0, UPDATE_RESULT => 1, HIDDEN => 2 }
     enum :limit_refresh, { SHORT_REST => 0, LONG_REST => 1, COMBAT => 2 }
   end
 end

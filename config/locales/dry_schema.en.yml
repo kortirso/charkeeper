@@ -161,6 +161,15 @@ en:
             invalid: Invalid subrace
           health:
             invalid_value: Health values should not be negative
+      dc20_character:
+        rules:
+          name:
+            key?: Name is required
+            filled?: Name must be filled
+          main_class:
+            key?: Class is required
+            filled?: Class must be filled
+            included_in?: Invalid class value
       daggerheart_character:
         rules:
           name:

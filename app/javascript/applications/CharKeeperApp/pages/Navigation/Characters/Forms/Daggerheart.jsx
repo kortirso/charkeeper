@@ -71,7 +71,7 @@ export const DaggerheartCharacterForm = (props) => {
   });
 
 
-  const saveCharacter = async (selectedFile, avatarUrl) => {
+  const saveCharacter = async () => {
     let characterFormData = null;
 
     if (customHeritage()) {
@@ -86,7 +86,7 @@ export const DaggerheartCharacterForm = (props) => {
       }
     }
 
-    const result = await props.onCreateCharacter(characterFormData, selectedFile, avatarUrl);
+    const result = await props.onCreateCharacter(characterFormData);
 
     if (result === null) {
       setCharacterDaggerheartForm({

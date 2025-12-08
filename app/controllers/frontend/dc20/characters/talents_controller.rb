@@ -38,9 +38,11 @@ module Frontend
 
         def available_talents
           @selected_talents = @character.data.selected_talents.keys
+          selected_features = @character.feats.joins(:feat).where(feats: { origin: 1 }).pluck('feats.slug')
 
           ::Dc20::Feat.where(origin: 4).select do |talent|
             next false if talent.conditions['level'] > @character.data.level
+            next false if talent.info['required_features'] && (talent.info['required_features'] - selected_features).any?
 
             true
           end

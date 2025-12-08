@@ -121,20 +121,13 @@ export const CharactersTab = () => {
     } else renderAlerts(result.errors_list);
   }
 
-  const saveCharacter = async (characterForm, selectedFile, avatarUrl) => {
+  const saveCharacter = async (characterForm) => {
     if (platform() === undefined) return undefined;
 
     setLoading(true);
 
-    const characterFormData = new FormData();
-    Object.entries(characterForm).filter(([, value]) => value !== undefined).forEach((item) => {
-      characterFormData.append(item[0], item[1]);
-    });
-
-    if (selectedFile) characterFormData.append('file', selectedFile);
-    if (avatarUrl.length > 0) characterFormData.append('avatar_url', avatarUrl);
-
-    const result = await createCharacterRequest(appState.accessToken, platform(), characterFormData);
+    const formData = Object.fromEntries(Object.entries(characterForm).filter(([, value]) => value !== undefined));
+    const result = await createCharacterRequest(appState.accessToken, platform(), { character: formData });
     
     if (result.errors_list === undefined) {
       batch(() => {

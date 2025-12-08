@@ -84,12 +84,10 @@ export const Dc20Leveling = (props) => {
   const [appState] = useAppState();
   const [locale] = useAppLocale();
 
+  const fetchTalents = async () => await fetchTalentsRequest(appState.accessToken, character().provider, character().id);
+
   createEffect(() => {
     if (lastActiveCharacterId() === character().id) return;
-
-    const fetchTalents = async () => await fetchTalentsRequest(
-      appState.accessToken, character().provider, character().id
-    );
 
     Promise.all([fetchTalents()]).then(
       ([talentsData]) => {
@@ -113,6 +111,13 @@ export const Dc20Leveling = (props) => {
     updateCharacter({ maneuvers: newValue })
   }
 
+  const levelUp = async () => {
+    await updateCharacter({ level: character().level + 1 });
+
+    const result = await fetchTalents();
+    setTalents(result.talents);
+  }
+
   const updateCharacter = async (payload) => {
     const result = await updateCharacterRequest(appState.accessToken, character().provider, character().id, { character: payload });
 
@@ -122,7 +127,10 @@ export const Dc20Leveling = (props) => {
   const saveTalent = async () => {
     const result = await createTalentRequest(appState.accessToken, character().provider, character().id, { talent_id: selectedTalent().id });
 
-    if (result.errors_list === undefined) props.onReloadCharacter();
+    if (result.errors_list === undefined) {
+      props.onReloadCharacter();
+      setSelectedTalent(null);
+    }
   }
 
   return (
@@ -139,7 +147,7 @@ export const Dc20Leveling = (props) => {
             <Button
               default
               classList='rounded mr-4'
-              onClick={() => updateCharacter({ level: character().level + 1 })}
+              onClick={levelUp}
             >
               <Arrow top />
             </Button>
@@ -225,11 +233,12 @@ export const Dc20Leveling = (props) => {
                 <p class="text-lg">{talents().find((item) => item.id === id).title}{amount > 1 ? ` - ${amount}` : ''}</p>
               }
             </For>
+            <div class="mb-2" />
           </Show>
           <Show when={character().talent_points > Object.keys(character().selected_talents).length}>
             <Select
               labelText={TRANSLATION[locale()].selectTalent}
-              containerClassList="flex-1 mt-4"
+              containerClassList="flex-1"
               items={availableTalents()}
               selectedValue={selectedTalent()?.id}
               onSelect={(value) => setSelectedTalent(talents().find((item) => item.id === value))}
