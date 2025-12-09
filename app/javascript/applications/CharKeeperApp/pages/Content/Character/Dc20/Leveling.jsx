@@ -7,6 +7,7 @@ import { Arrow, PlusSmall } from '../../../../assets';
 import { updateCharacterRequest } from '../../../../requests/updateCharacterRequest';
 import { fetchTalentsRequest } from '../../../../requests/fetchTalentsRequest';
 import { createTalentRequest } from '../../../../requests/createTalentRequest';
+import { fetchTalentFeaturesRequest } from '../../../../requests/fetchTalentFeaturesRequest';
 
 const TRANSLATION = {
   en: {
@@ -38,7 +39,8 @@ const TRANSLATION = {
     existingTalentPoints: 'Available talents',
     selectedTalents: 'Selected talents',
     saveButton: 'Save',
-    selectTalent: 'Select new talent'
+    selectTalent: 'Select new talent',
+    selectMulticlassFeature: 'Select multiclass feature'
   },
   ru: {
     currentLevel: 'Текущий уровень',
@@ -69,7 +71,8 @@ const TRANSLATION = {
     existingTalentPoints: 'Доступно талантов',
     selectedTalents: 'Выбранные таланты',
     saveButton: 'Сохранить',
-    selectTalent: 'Выберите новый талант'
+    selectTalent: 'Выберите новый талант',
+    selectMulticlassFeature: 'Выберите черту любого класса'
   }
 }
 
@@ -78,6 +81,8 @@ export const Dc20Leveling = (props) => {
 
   const [lastActiveCharacterId, setLastActiveCharacterId] = createSignal(undefined);
   const [selectedTalent, setSelectedTalent] = createSignal(null);
+  const [selectedMultiTalent, setSelectedMultiTalent] = createSignal(null);
+  const [talentFeatures, setTalentFeatures] = createSignal(undefined);
 
   const [talents, setTalents] = createSignal(undefined);
 
@@ -85,6 +90,7 @@ export const Dc20Leveling = (props) => {
   const [locale] = useAppLocale();
 
   const fetchTalents = async () => await fetchTalentsRequest(appState.accessToken, character().provider, character().id);
+  const fetchTalentFeatures = async (level) => await fetchTalentFeaturesRequest(appState.accessToken, character().provider, character().id, level);
 
   createEffect(() => {
     if (lastActiveCharacterId() === character().id) return;
@@ -122,6 +128,23 @@ export const Dc20Leveling = (props) => {
     const result = await updateCharacterRequest(appState.accessToken, character().provider, character().id, { character: payload });
 
     if (result.errors_list === undefined) props.onReplaceCharacter(result.character);
+  }
+
+  const modifySelectedTalent = async (value) => {
+    const talent = talents().find((item) => item.id === value);
+
+    setSelectedTalent(talent);
+
+    if (talent.origin_value === 'multiclass') {
+      const result = await fetchTalentFeatures(1);
+      setTalentFeatures(result.talents.reduce((acc, item) => { acc[item.id] = item.title; return acc }, {}));
+    }
+  }
+
+  const modifySelectedMultiTalent = async (value) => {
+    const talent = talentFeatures().find((item) => item.id === value);
+
+    setSelectedMultiTalent(talent);
   }
 
   const saveTalent = async () => {
@@ -241,13 +264,22 @@ export const Dc20Leveling = (props) => {
               containerClassList="flex-1"
               items={availableTalents()}
               selectedValue={selectedTalent()?.id}
-              onSelect={(value) => setSelectedTalent(talents().find((item) => item.id === value))}
+              onSelect={modifySelectedTalent}
             />
             <Show when={selectedTalent()}>
               <p
                 class="feat-markdown text-xs mt-1"
                 innerHTML={selectedTalent().description} // eslint-disable-line solid/no-innerhtml
               />
+              <Show when={selectedTalent().origin_value === 'multiclass' && talentFeatures()}>
+                <Select
+                  labelText={TRANSLATION[locale()].selectMulticlassFeature}
+                  containerClassList="flex-1 mt-1"
+                  items={talentFeatures()}
+                  selectedValue={selectedMultiTalent()?.id}
+                  onSelect={modifySelectedMultiTalent}
+                />
+              </Show>
               <Button default textable size="small" classList="inline-block mt-2" onClick={saveTalent}>
                 {TRANSLATION[locale()].saveButton}
               </Button>
