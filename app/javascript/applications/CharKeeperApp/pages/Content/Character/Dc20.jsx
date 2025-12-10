@@ -39,7 +39,7 @@ export const Dc20 = (props) => {
   const shieldFilter = (item) => item.kind.includes('shield');
 
   const ancestryFilter = (item) => item.origin === 'ancestry';
-  const classFilter = (item) => item.origin === 'class' || item.origin === 'talent';
+  const classFilter = (item) => item.origin === 'class' || item.origin === 'class_flavor' || item.origin === 'talent';
   const maneuverFilter = (item) => item.origin === 'maneuver';
 
   const featFilters = createMemo(() => {

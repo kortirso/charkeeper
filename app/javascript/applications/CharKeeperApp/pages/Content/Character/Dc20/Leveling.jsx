@@ -249,11 +249,11 @@ export const Dc20Leveling = (props) => {
           title={
             <div class="flex justify-between">
               <p>{TRANSLATION[locale()].talents}</p>
-              <p>{TRANSLATION[locale()].existingTalentPoints} - {character().talent_points - Object.keys(character().selected_talents).length}</p>
+              <p>{TRANSLATION[locale()].existingTalentPoints} - {character().talent_points - Object.values(character().selected_talents).reduce((acc, value) => acc + value, 0)}</p>
             </div>
           }
         >
-          <Show when={talents() && Object.keys(character().selected_talents).length > 0}>
+          <Show when={talents() && Object.values(character().selected_talents).reduce((acc, value) => acc + value, 0) > 0}>
             <p class="text-sm mb-2">{TRANSLATION[locale()].selectedTalents}</p>
             <For each={Object.entries(character().selected_talents)}>
               {([id, amount]) =>
@@ -262,7 +262,7 @@ export const Dc20Leveling = (props) => {
             </For>
             <div class="mb-2" />
           </Show>
-          <Show when={character().talent_points > Object.keys(character().selected_talents).length}>
+          <Show when={character().talent_points > Object.values(character().selected_talents).reduce((acc, value) => acc + value, 0)}>
             <Select
               labelText={TRANSLATION[locale()].selectTalent}
               containerClassList="flex-1"

@@ -14,8 +14,10 @@ module CharactersContext
         private
 
         def do_persist(input) # rubocop: disable Metrics/AbcSize
+          return { result: :ok } if ::Character::Feat.exists?(input)
+
           ActiveRecord::Base.transaction do
-            ::Character::Feat.find_or_create_by(input)
+            ::Character::Feat.create!(input)
 
             input[:feat].info['rewrite']&.each { |key, value| input[:character].data[key] = value }
             input[:feat].info['increase']&.each { |key, value| input[:character].data[key] += value }
