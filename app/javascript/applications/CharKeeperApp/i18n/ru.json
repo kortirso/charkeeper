@@ -78,6 +78,10 @@
     }
   },
   "daggerheart": {
+    "terms": {
+      "traits": "Способности",
+      "thresholds": "Пороги урона"
+    },
     "static": {
       "proficiency": "Мастерство",
       "evasion": "Уклонение",

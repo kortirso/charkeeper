@@ -78,6 +78,10 @@
     }
   },
   "daggerheart": {
+    "terms": {
+      "traits": "Traits",
+      "thresholds": "Damage thresholds"
+    },
     "static": {
       "proficiency": "Proficiency",
       "evasion": "Evasion",
@@ -303,8 +307,6 @@
     "deathSuccess": "Success",
     "deathFailure": "Failure",
     "dyingConditionValue": "Dying condition value",
-    "avatar": "Avatar",
-    "bonuses": "Bonuses",
     "newBonus": "New bonus",
     "newBonusValues": "Bonus values",
     "newBonusComment": "Comment"
