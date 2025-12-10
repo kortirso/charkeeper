@@ -84,8 +84,8 @@ module Homebrews
         return if subclasses.flat_map(&:keys).exclude?(@speciality.id)
 
         unprocessable_response(
-          { base: [t("frontend.homebrews.specialities.#{params[:provider]}.character_exists")] },
-          [t("frontend.homebrews.specialities.#{params[:provider]}.character_exists")]
+          { base: [t('frontend.homebrews.specialities.daggerheart.character_exists')] },
+          [t('frontend.homebrews.specialities.daggerheart.character_exists')]
         )
       end
 

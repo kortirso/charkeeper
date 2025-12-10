@@ -80,14 +80,16 @@ module Homebrews
       end
 
       def find_existing_characters
-        unless characters_relation.where(user_id: current_user.id).exists?(["data ->> 'transformation' = ?", @transformation.id])
-          return
-        end
+        return unless characters_relation.exists?(["data ->> 'transformation' = ?", @transformation.id])
 
         unprocessable_response(
           { base: [t('frontend.homebrews.transformations.daggerheart.character_exists')] },
           [t('frontend.homebrews.transformations.daggerheart.character_exists')]
         )
+      end
+
+      def characters_relation
+        ::Daggerheart::Character.where(user_id: current_user.id)
       end
 
       def transformation_params
