@@ -186,7 +186,7 @@ export const DaggerheartDomainCards = (props) => {
                       <For each={spells().filter((spell) => spell.origin_value === domain).sort((a, b) => a.conditions.level - b.conditions.level)}>
                         {(spell) =>
                           <div class="even:bg-stone-100 dark:even:bg-dark-dusty p-1" classList={{ 'opacity-50': learnedSpells().includes(spell.slug) }}>
-                            <div class="flex items-center justify-between cursor-pointer mb-2" onClick={() => props.onChangeSpell(spell)}>
+                            <div class="flex items-center justify-between mb-2">
                               <p class="font-normal! text-lg">{spell.title}</p>
                               <Show when={spell.info.type}>
                                 {TRANSLATION[locale()][spell.info.type]} ({spell.conditions.level} {TRANSLATION[locale()].level})
@@ -229,6 +229,7 @@ export const DaggerheartDomainCards = (props) => {
               title={t('daggerheart.domainCards.loadout')}
               subtitle={`${TRANSLATION[locale()]['loadoutLimit']} - 5`}
               spells={characterSpells().filter((spell) => spell.ready_to_use)}
+              domains={daggerheartDomains()}
               onChangeSpell={changeSpell}
               onUpdateCharacterSpell={updateCharacterSpell}
               onRemoveCharacterSpell={removeCharacterSpell}
@@ -236,6 +237,7 @@ export const DaggerheartDomainCards = (props) => {
             <DomainCardsTable
               title={t('daggerheart.domainCards.vault')}
               spells={characterSpells().filter((spell) => !spell.ready_to_use)}
+              domains={daggerheartDomains()}
               onChangeSpell={changeSpell}
               onUpdateCharacterSpell={updateCharacterSpell}
               onRemoveCharacterSpell={removeCharacterSpell}

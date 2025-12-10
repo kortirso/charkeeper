@@ -14,6 +14,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Fixed
 - rest pages translations
 - deleting homebrew transformations
+- rendering domains cards for homebrew domains
 
 ## [0.3.22] - 2025-12-05
 ### Added

@@ -22,7 +22,7 @@ module CharactersContext
 
       def do_persist(input)
         input[:character_spell].update!(input.slice(:notes, :active, :ready_to_use))
-        refresh_feats.call(character: input[:character_spell].character)
+        refresh_feats.call(character: input[:character_spell].character) if input.key?(:active) || input.key?(:ready_to_use)
 
         { result: input[:character_spell] }
       end

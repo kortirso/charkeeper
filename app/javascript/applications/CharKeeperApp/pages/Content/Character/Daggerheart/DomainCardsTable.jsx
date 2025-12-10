@@ -1,7 +1,6 @@
 import { createMemo, For, Show, Switch, Match } from 'solid-js';
 
 import { Button } from '../../../../components';
-import config from '../../../../data/daggerheart.json';
 import { useAppLocale } from '../../../../context';
 import { Close, Arrow } from '../../../../assets';
 
@@ -32,7 +31,6 @@ export const DomainCardsTable = (props) => {
       acc[item.origin_value] ? acc[item.origin_value] += 1 : acc[item.origin_value] = 1
       return acc;
     }, {});
-    console.log(Object.entries(domains).sort((a, b) => b[1] - a[1]));
     return Object.entries(domains).sort((a, b) => b[1] - a[1]);
   });
 
@@ -49,7 +47,7 @@ export const DomainCardsTable = (props) => {
           <div>
             <For each={cardsByDomains()}>
               {(item) =>
-                <p class="text-sm">{config.domains[item[0]].name[locale()]} - {item[1]}</p>
+                <p class="text-sm">{props.domains[item[0]].name[locale()]} - {item[1]}</p>
               }
             </For>
           </div>
@@ -64,7 +62,7 @@ export const DomainCardsTable = (props) => {
                   <p class="font-normal! text-lg">{spell.title}</p>
                   <Show when={spell.info.type}>
                     <p class="text-sm">
-                      {config.domains[spell.origin_value].name[locale()]} ({spell.level} {TRANSLATION[locale()].level}), {TRANSLATION[locale()][spell.info.type]}
+                      {props.domains[spell.origin_value].name[locale()]} ({spell.level} {TRANSLATION[locale()].level}), {TRANSLATION[locale()][spell.info.type]}
                     </p>
                   </Show>
                 </div>
