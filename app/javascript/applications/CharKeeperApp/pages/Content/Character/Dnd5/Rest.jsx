@@ -7,6 +7,23 @@ import { useAppState, useAppLocale, useAppAlert } from '../../../../context';
 import { fetchCharacterRequest } from '../../../../requests/fetchCharacterRequest';
 import { createCharacterRestRequest } from '../../../../requests/createCharacterRestRequest';
 
+const TRANSLATION = {
+  en: {
+    short: 'Short rest',
+    long: 'Long rest',
+    shortDesc: "At the end of a short rest, a character may spend one or more Hit Dice. Each die spent allows the character to roll the corresponding die, add the character's Constitution modifier to it, and regain the resulting number of hit points.",
+    longDesc: 'At the end of a long rest, the character regains all expended hit points, plus half of the maximum Hit Dice and all expended spell slots.',
+    makeRolls: 'Make auto rolls'
+  },
+  ru: {
+    short: 'Короткий отдых',
+    long: 'Длинный отдых',
+    shortDesc: 'В конце короткого отдыха персонаж может потратить одну или несколько Костей Хитов. Каждая потраченная кость позволяет совершить бросок соответствующей кости, добавить к ней модификатор Телосложения и восстановить получившееся количество хитов.',
+    longDesc: 'В конце продолжительного отдыха персонаж восстанавливает все потраченные хиты, а также половину от максимума Костей Хитов и все потраченные ячейки заклинаний.',
+    makeRolls: 'Автоматические броски'
+  }
+}
+
 export const Dnd5Rest = (props) => {
   const character = () => props.character;
 
@@ -15,7 +32,7 @@ export const Dnd5Rest = (props) => {
 
   const [appState] = useAppState();
   const [{ renderNotice, renderAlerts }] = useAppAlert();
-  const [, dict] = useAppLocale();
+  const [locale, dict] = useAppLocale();
 
   const t = i18n.translator(dict);
 
@@ -53,7 +70,7 @@ export const Dnd5Rest = (props) => {
     <ErrorWrapper payload={{ character_id: character().id, key: 'Dnd5Rest' }}>
       <GuideWrapper character={character()}>
         <div class="blockable p-4">
-          <p class="mb-4 dark:text-snow">{t('dndV2.rest.shortRestDescription')}</p>
+          <p class="mb-4 dark:text-snow">{TRANSLATION[locale()].shortDesc}</p>
           <For each={Object.entries(character().hit_dice).filter(([, value]) => value > 0)}>
             {([dice, maxValue]) =>
               <Levelbox
@@ -69,19 +86,19 @@ export const Dnd5Rest = (props) => {
           </For>
           <Checkbox
             classList="mb-4"
-            labelText={t('daggerheart.rest.makeRolls')}
+            labelText={TRANSLATION[locale()].makeRolls}
             labelPosition="right"
             labelClassList="ml-2"
             checked={makeRolls()}
             onToggle={() => setMakeRolls(!makeRolls())}
           />
-          <p class="mb-4 dark:text-snow">{t('dndV2.rest.longRestDescription')}</p>
+          <p class="mb-4 dark:text-snow">{TRANSLATION[locale()].longDesc}</p>
           <div class="flex justify-center items-center">
             <Button default textable classList="flex-1 mr-2" onClick={() => restCharacter({ value: 'short_rest' })}>
-              <span>{t('rest.shortRest')}</span>
+              <span>{TRANSLATION[locale()].short}</span>
             </Button>
             <Button default textable classList="flex-1 ml-2" onClick={() => restCharacter({ value: 'long_rest' })}>
-              <span>{t('rest.longRest')}</span>
+              <span>{TRANSLATION[locale()].long}</span>
             </Button>
           </div>
         </div>
