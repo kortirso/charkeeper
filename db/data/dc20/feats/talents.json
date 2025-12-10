@@ -1,0 +1,175 @@
+[
+  {
+    "slug": "attribute_increase",
+    "title": { "en": "Attribute Increase", "ru": "Повышение атрибутов" },
+    "description": {
+      "en": "You gain 1 Attribute Point to put into any Attribute of your choice.",
+      "ru": "Вы получаете 1 Очко Атрибутов, которое можете вложить в любой Атрибут."
+    },
+    "origin": "talent",
+    "origin_value": "general",
+    "kind": "hidden",
+    "conditions": { "level": 1 },
+    "info": {
+      "multiple": true,
+      "increase": {
+        "attribute_points": 1
+      }
+    }
+  },
+  {
+    "slug": "skill_or_trade_increase",
+    "title": { "en": "Skill or Trade Increase", "ru": "Повышение навыков или ремёсел" },
+    "description": {
+      "en": "",
+      "ru": ""
+    },
+    "origin": "talent",
+    "origin_value": "general",
+    "kind": "hidden",
+    "conditions": { "level": 1 },
+    "info": {
+      "multiple": true,
+      "increase": {
+        "skill_points": 3
+      }
+    }
+  },
+  {
+    "slug": "martial_expansion",
+    "title": { "en": "Martial Expansion", "ru": "Боевое посвящение" },
+    "description": {
+      "en": "",
+      "ru": ""
+    },
+    "origin": "talent",
+    "origin_value": "general",
+    "kind": "hidden",
+    "conditions": { "level": 1 },
+    "eval_variables": {
+      "maneuver_points": "maneuver_points + 2",
+      "technique_points": "technique_points + 1"
+    },
+    "info": {
+      "multiple": false,
+      "rewrite": {
+        "combat_expertise": ["weapon", "light_armor", "heavy_armor", "light_shield", "heavy_shield"]
+      }
+    }
+  },
+  {
+    "slug": "spellcasting_expansion",
+    "title": { "en": "Spellcasting Expansion", "ru": "Магическое посвящение" },
+    "description": {
+      "en": "",
+      "ru": ""
+    },
+    "origin": "talent",
+    "origin_value": "general",
+    "kind": "hidden",
+    "conditions": { "level": 1 },
+    "eval_variables": {
+      "mana_points": "mana_points + 2",
+      "spells": "spells + 1",
+      "spell_lists_amount": "spell_lists_amount + 1"
+    },
+    "info": {
+      "multiple": false
+    }
+  },
+  {
+    "slug": "seize_momentum",
+    "title": { "en": "Seize Momentum", "ru": "Быстрое реагирование" },
+    "description": {
+      "en": "Когда союзник в вашей Ауре командования наносит Тяжёлый удар, вы можете использовать Приказ командира в качестве Реакции.",
+      "ru": "Когда союзник в вашей Ауре командования наносит Тяжёлый удар, вы можете использовать Приказ командира в качестве Реакции."
+    },
+    "origin": "talent",
+    "origin_value": "commander",
+    "kind": "static",
+    "conditions": { "level": 3 },
+    "info": {
+      "multiple": false,
+      "required_features": ["commander_call", "commanding_aura"]
+    }
+  },
+  {
+    "slug": "coordinated_command",
+    "title": { "en": "Coordinated Command", "ru": "Координирующий приказ" },
+    "description": {
+      "en": "Один раз за Ход, когда вы используете Приказ командира, вы можете дополнительно потратить 1 ОВ чтобы отдать этот же приказ второму существу в Дальности (включая себя). Вы выбираете, кто из них ходит первым.",
+      "ru": "Один раз за Ход, когда вы используете Приказ командира, вы можете дополнительно потратить 1 ОВ чтобы отдать этот же приказ второму существу в Дальности (включая себя). Вы выбираете, кто из них ходит первым."
+    },
+    "origin": "talent",
+    "origin_value": "commander",
+    "kind": "static",
+    "conditions": { "level": 3 },
+    "info": {
+      "multiple": false,
+      "required_features": ["commander_call"]
+    }
+  },
+  {
+    "slug": "expanded_disciplines",
+    "title": { "en": "Expanded Disciplines", "ru": "Расширение дисциплин" },
+    "description": {
+      "en": "",
+      "ru": "Вы получаете +2 Дисциплины Мага Клинка"
+    },
+    "origin": "talent",
+    "origin_value": "spellblade",
+    "kind": "static",
+    "conditions": { "level": 3 },
+    "info": {
+      "multiple": false,
+      "required_features": ["spellblade_disciplines"]
+    }
+  },
+  {
+    "slug": "sling_blade",
+    "title": { "en": "Sling-Blade", "ru": "Хлестающий клинок" },
+    "description": {
+      "en": "",
+      "ru": ""
+    },
+    "origin": "talent",
+    "origin_value": "spellblade",
+    "kind": "static",
+    "conditions": { "level": 3 },
+    "info": {
+      "multiple": false,
+      "required_features": ["bound_weapon", "spellstrike"]
+    }
+  },
+  {
+    "slug": "adaptive_bond",
+    "title": { "en": "Adaptive Bond", "ru": "Изменчивая связь" },
+    "description": {
+      "en": "",
+      "ru": ""
+    },
+    "origin": "talent",
+    "origin_value": "spellblade",
+    "kind": "static",
+    "conditions": { "level": 3 },
+    "info": {
+      "multiple": false,
+      "required_features": ["bound_weapon"]
+    }
+  },
+  {
+    "slug": "novice_multiclass",
+    "title": { "en": "Novice Multiclass", "ru": "Новичок мультикласса" },
+    "description": {
+      "en": "",
+      "ru": "Вы получаете Черту Класса 1-го Уровня из любого Класса."
+    },
+    "origin": "talent",
+    "origin_value": "multiclass",
+    "kind": "hidden",
+    "conditions": { "level": 1 },
+    "info": {
+      "multiple": false
+    }
+  }
+]

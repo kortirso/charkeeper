@@ -6,7 +6,7 @@ module Dc20Character
     delegate :abilities, :main_class, :level, :combat_expertise, :health, :classes, :attribute_points, :ancestries, :skill_levels,
              :skill_expertise, :skill_points, :skill_expertise_points, :trade_points, :trade_expertise_points, :language_points,
              :trade_levels, :trade_expertise, :trade_knowledge, :language_levels, :conditions, :stamina_points, :path_points,
-             :paths, :mana_points, :maneuvers, :rest_points, :path, :spell_list, :talent_points, :talents, to: :data
+             :paths, :mana_points, :maneuvers, :rest_points, :path, :spell_list, :talent_points, to: :data
 
     def parent = __getobj__
 
@@ -111,7 +111,9 @@ module Dc20Character
     end
 
     def maneuver_points = 0
+    def technique_points = 0
     def cantrips = 0
+    def spell_lists_amount = 0
     def spells = 0
 
     def grit_points

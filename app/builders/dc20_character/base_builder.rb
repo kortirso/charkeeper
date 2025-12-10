@@ -4,7 +4,7 @@ module Dc20Character
   class BaseBuilder
     def call(result:)
       result.merge({
-        classes: { result[:main_class] => 1 },
+        classes: {},
         ancestries: result[:ancestry_feats].keys,
         attribute_points: calculate_attribute_points(result[:ancestry_feats]),
         skill_expertise_points: calculate_skill_expertise_points(result[:ancestry_feats]),

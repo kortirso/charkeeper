@@ -28,6 +28,10 @@ module Dc20Character
         @maneuver_points ||= __getobj__.maneuver_points + class_maneuver_points + 3 # 3 - number of attack maneuvers
       end
 
+      def technique_points
+        @technique_points ||= __getobj__.technique_points + class_technique_points + 3 # 3 - number of attack maneuvers
+      end
+
       def cantrips
         @cantrips ||= __getobj__.cantrips + cantrips_by_level
       end
@@ -49,6 +53,13 @@ module Dc20Character
         return 3 if level >= 5
 
         2
+      end
+
+      def class_technique_points
+        return 2 if level >= 8
+        return 1 if level >= 3
+
+        0
       end
 
       def mana_points_by_level

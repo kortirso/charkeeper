@@ -13,15 +13,7 @@ module CharactersContext
           required(:name).filled(:string, max_size?: 50)
           required(:main_class).filled(Classes)
           required(:ancestry_feats).hash
-          optional(:avatar_file).hash do
-            required(:file_content).filled(:string)
-            required(:file_name).filled(:string)
-          end
-          optional(:avatar_url).filled(:string)
-          optional(:file)
         end
-
-        rule(:avatar_file, :avatar_url, :file).validate(:check_only_one_present)
       end
 
       private
@@ -33,7 +25,6 @@ module CharactersContext
       def do_persist(input)
         character = ::Dc20::Character.create!(input.slice(:user, :name, :data))
         attach_feats(character, input[:ancestry_feats].values.flatten)
-        upload_avatar(input, character)
 
         { result: character }
       end
@@ -60,17 +51,6 @@ module CharactersContext
         ::Dc20::Feat.where(origin: 0, slug: feat_slugs)
           .or(::Dc20::Feat.where(origin: [1, 2], origin_value: character.data.main_class).where("conditions ->> 'level' = '1'"))
           .or(::Dc20::Feat.where(origin: 3, slug: character.data.maneuvers))
-      end
-
-      def upload_avatar(input, character)
-        if input[:avatar_file]
-          ImageProcessingContext::AttachAvatarByFileJob.perform_later(character_id: character.id, file: input[:avatar_file])
-        end
-        if input[:avatar_url]
-          ImageProcessingContext::AttachAvatarByUrlJob.perform_later(character_id: character.id, url: input[:avatar_url])
-        end
-        character.avatar.attach(input[:file]) if input[:file]
-      rescue StandardError => _e
       end
     end
   end

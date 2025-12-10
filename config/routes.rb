@@ -116,7 +116,14 @@ Rails.application.routes.draw do
     end
 
     namespace :dc20 do
-      resources :characters, only: %i[create update]
+      resources :characters, only: %i[create update] do
+        scope module: :characters do
+          namespace :talents do
+            resources :features, only: %i[index]
+          end
+        end
+        resources :talents, only: %i[index create], module: 'characters'
+      end
     end
 
     scope ':provider' do

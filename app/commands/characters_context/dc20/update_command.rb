@@ -10,10 +10,10 @@ module CharactersContext
 
       LEVELING = {
         2 => { 'talent_points' => 1, 'path_points' => 1 },
-        3 => { 'attribute_points' => 1, 'skill_points' => 1, 'trade_points' => 1, 'subclass_feature_points' => 1 },
+        3 => { 'attribute_points' => 1, 'skill_points' => 1, 'trade_points' => 1 },
         4 => { 'ancestry_points' => 2, 'talent_points' => 1, 'path_points' => 1 },
         5 => { 'attribute_points' => 1, 'skill_points' => 2, 'trade_points' => 1 },
-        6 => { 'skill_points' => 1, 'subclass_feature_points' => 1 },
+        6 => { 'skill_points' => 1 },
         7 => { 'ancestry_points' => 2, 'talent_points' => 1, 'path_points' => 1 },
         8 => { 'attribute_points' => 1, 'skill_points' => 1, 'trade_points' => 1 },
         9 => {},
@@ -71,7 +71,6 @@ module CharactersContext
             required(:current).filled(:integer)
           end
           optional(:maneuvers).value(:array)
-          optional(:talents).maybe(:array).each(:string)
         end
 
         rule(:avatar_file, :avatar_url, :file).validate(:check_only_one_present)
@@ -139,7 +138,6 @@ module CharactersContext
 
         refresh_points(input[:character]) if input.key?(:level)
         refresh_maneuver_feats(input[:character]) if input.key?(:maneuvers)
-        refresh_talents(input) if input.key?(:talents)
         upload_avatar(input)
 
         { result: input[:character] }
@@ -161,17 +159,6 @@ module CharactersContext
           }
         end
         ::Character::Feat.upsert_all(feats_for_adding) if feats_for_adding.any?
-      end
-
-      def refresh_talents(input)
-        case input[:talents].last
-        when 'attribute_increase' then input[:character].data.attribute_points += 1
-        when 'skill_or_trade_increase' then input[:character].data.skill_points += 3
-        when 'martial_expansion'
-          input[:character].data.combat_expertise = %w[weapon light_armor heavy_armor light_shield heavy_shield]
-        end
-
-        input[:character].save
       end
 
       def upload_avatar(input)

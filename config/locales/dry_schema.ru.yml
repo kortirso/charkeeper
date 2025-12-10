@@ -161,6 +161,15 @@ ru:
             invalid: Недопустимая подраса
           health:
             invalid_value: Значения здоровья не должны быть меньше 0
+      dc20_character:
+        rules:
+          name:
+            key?: Необходимо указать имя персонажа
+            filled?: Необходимо указать имя персонажа
+          main_class:
+            key?: Необходимо указать класс персонажа
+            filled?: Необходимо указать класс персонажа
+            included_in?: Недопустимый класс персонажа
       daggerheart_character:
         rules:
           name:

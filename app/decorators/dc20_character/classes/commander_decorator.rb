@@ -24,6 +24,10 @@ module Dc20Character
         @maneuver_points ||= __getobj__.maneuver_points + class_maneuver_points + 3 # 3 - number of attack maneuvers
       end
 
+      def technique_points
+        @technique_points ||= __getobj__.technique_points + class_technique_points + 3 # 3 - number of attack maneuvers
+      end
+
       private
 
       def max_health
@@ -35,6 +39,14 @@ module Dc20Character
         return 5 if level >= 5
 
         4
+      end
+
+      def class_technique_points
+        return 3 if level >= 8
+        return 2 if level >= 5
+        return 1 if level >= 3
+
+        0
       end
     end
   end

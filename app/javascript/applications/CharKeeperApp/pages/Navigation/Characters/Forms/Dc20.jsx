@@ -3,7 +3,7 @@ import { createStore } from 'solid-js/store';
 
 import { CharacterForm } from '../../../../pages';
 import { Select, Input, Checkbox, Toggle } from '../../../../components';
-import dc20Config from '../../../../data/dc20.json';
+import config from '../../../../data/dc20.json';
 import { useAppLocale } from '../../../../context';
 import { translate } from '../../../../helpers';
 
@@ -37,7 +37,7 @@ export const Dc20CharacterForm = (props) => {
   const [locale] = useAppLocale();
 
   const selectDc20Ancestry = (ancestry, slug) => {
-    const featPoints = dc20Config.ancestries[ancestry].feats[slug].price;
+    const featPoints = config.ancestries[ancestry].feats[slug].price;
 
     let newValue;
     let newTraitsValue;
@@ -66,8 +66,8 @@ export const Dc20CharacterForm = (props) => {
     });
   }
 
-  const saveCharacter = async (selectedFile, avatarUrl) => {
-    const result = await props.onCreateCharacter(characterDc20Form, selectedFile, avatarUrl);
+  const saveCharacter = async () => {
+    const result = await props.onCreateCharacter(characterDc20Form);
 
     if (result === null) {
       batch(() => {
@@ -90,7 +90,7 @@ export const Dc20CharacterForm = (props) => {
       <Select
         containerClassList="mb-4"
         labelText={TRANSLATION[locale()]['class']}
-        items={translate(dc20Config.classes, locale())}
+        items={translate(config.classes, locale())}
         selectedValue={characterDc20Form.main_class}
         onSelect={(value) => setCharacterDc20Form({ ...characterDc20Form, main_class: value })}
       />
@@ -103,7 +103,7 @@ export const Dc20CharacterForm = (props) => {
           </div>
         }
       >
-        <For each={Object.entries(dc20Config.ancestries)}>
+        <For each={Object.entries(config.ancestries)}>
           {([ancestry, values]) =>
             <Toggle title={<p>{values.name[locale()]}</p>}>
               <For each={Object.entries(values.feats)}>

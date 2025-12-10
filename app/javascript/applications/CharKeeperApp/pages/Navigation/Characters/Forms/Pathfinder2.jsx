@@ -34,8 +34,8 @@ export const Pathfinder2CharacterForm = (props) => {
     return Object.fromEntries(Object.entries(dnd2024Config.abilities).map(([key, values]) => [key, values.name[locale()]]).filter(([key,]) => allOptions.includes(key)));
   });
 
-  const saveCharacter = async (selectedFile, avatarUrl) => {
-    const result = await props.onCreateCharacter(characterPathfinder2Form, selectedFile, avatarUrl);
+  const saveCharacter = async () => {
+    const result = await props.onCreateCharacter(characterPathfinder2Form);
 
     if (result === null) {
       setCharacterPathfinder2Form({

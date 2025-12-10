@@ -89,7 +89,7 @@ export const CharactersListItem = (props) => {
       return Object.keys(character().classes).map((item) => props.daggerheartClasses[item].name[locale()]).join(' * ');
     }
     if (character().provider === 'dc20') {
-      return Object.keys(character().classes).map((item) => dc20Config.classes[item].name[locale()]).join(' * ');
+      return dc20Config.classes[character().main_class].name[locale()];
     }
   });
 

@@ -5,16 +5,9 @@ module Dc20Character
     private
 
     def wrap_classes(obj)
-      obj.classes.keys.inject(obj) do |acc, class_name|
-        acc = class_decorator(class_name).new(acc)
-        acc
-      end
-    end
-
-    def class_decorator(class_name)
-      "Dc20Character::Classes::#{class_name.camelize}Decorator".constantize
+      "Dc20Character::Classes::#{obj.main_class.camelize}Decorator".constantize.new(obj)
     rescue NameError => _e
-      ApplicationDecorator
+      ApplicationDecorator.new(obj)
     end
   end
 end

@@ -28,6 +28,10 @@ module Dc20Character
         @spells ||= __getobj__.spells + spells_by_level
       end
 
+      def spell_lists_amount
+        1
+      end
+
       private
 
       def max_health

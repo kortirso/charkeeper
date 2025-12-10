@@ -1,11 +1,13 @@
-import { createSignal, createEffect, createMemo, Show, For } from 'solid-js';
+import { createSignal, createEffect, createMemo, Show, For, batch } from 'solid-js';
 
 import { Button, ErrorWrapper, GuideWrapper, Toggle, Checkbox, Select } from '../../../../components';
 import config from '../../../../data/dc20.json';
 import { useAppState, useAppLocale } from '../../../../context';
 import { Arrow, PlusSmall } from '../../../../assets';
 import { updateCharacterRequest } from '../../../../requests/updateCharacterRequest';
-import { translate } from '../../../../helpers';
+import { fetchTalentsRequest } from '../../../../requests/fetchTalentsRequest';
+import { createTalentRequest } from '../../../../requests/createTalentRequest';
+import { fetchTalentFeaturesRequest } from '../../../../requests/fetchTalentFeaturesRequest';
 
 const TRANSLATION = {
   en: {
@@ -37,7 +39,8 @@ const TRANSLATION = {
     existingTalentPoints: 'Available talents',
     selectedTalents: 'Selected talents',
     saveButton: 'Save',
-    selectTalent: 'Select new talent'
+    selectTalent: 'Select new talent',
+    selectMulticlassFeature: 'Select multiclass feature'
   },
   ru: {
     currentLevel: 'Текущий уровень',
@@ -68,7 +71,8 @@ const TRANSLATION = {
     existingTalentPoints: 'Доступно талантов',
     selectedTalents: 'Выбранные таланты',
     saveButton: 'Сохранить',
-    selectTalent: 'Выберите новый талант'
+    selectTalent: 'Выберите новый талант',
+    selectMulticlassFeature: 'Выберите черту любого класса'
   }
 }
 
@@ -77,27 +81,35 @@ export const Dc20Leveling = (props) => {
 
   const [lastActiveCharacterId, setLastActiveCharacterId] = createSignal(undefined);
   const [selectedTalent, setSelectedTalent] = createSignal(null);
+  const [selectedMultiTalent, setSelectedMultiTalent] = createSignal(null);
+
+  const [talents, setTalents] = createSignal(undefined);
+  const [talentFeatures, setTalentFeatures] = createSignal(undefined);
 
   const [appState] = useAppState();
   const [locale] = useAppLocale();
 
+  const fetchTalents = async () => await fetchTalentsRequest(appState.accessToken, character().provider, character().id);
+  const fetchTalentFeatures = async (level) => await fetchTalentFeaturesRequest(appState.accessToken, character().provider, character().id, level);
+
   createEffect(() => {
     if (lastActiveCharacterId() === character().id) return;
+
+    Promise.all([fetchTalents()]).then(
+      ([talentsData]) => {
+        batch(() => {
+          setTalents(talentsData.talents);
+        });
+      }
+    );
 
     setLastActiveCharacterId(character().id);
   });
 
   const availableTalents = createMemo(() => {
-    const selectedFeatures = character().features.map(({ slug }) => slug);
+    if (talents() === undefined) return {};
 
-    const result = Object.entries(config.talents).filter(([slug, values]) => {
-      if (values.level && values.level > character().level) return false;
-      if (values.required_features && values.required_features.filter((item) => selectedFeatures.includes(item)).length !== values.required_features.length) return false;
-      if (!values.multiple && character().talents.includes(slug)) return false
-
-      return true;
-    });
-    return Object.fromEntries(result);
+    return talents().filter((item) => item.multiple || !item.selected).reduce((acc, item) => { acc[item.id] = item.title; return acc }, {});
   });
 
   const changeManeuver = (value) => {
@@ -105,10 +117,47 @@ export const Dc20Leveling = (props) => {
     updateCharacter({ maneuvers: newValue })
   }
 
+  const levelUp = async () => {
+    await updateCharacter({ level: character().level + 1 });
+
+    const result = await fetchTalents();
+    setTalents(result.talents);
+  }
+
   const updateCharacter = async (payload) => {
     const result = await updateCharacterRequest(appState.accessToken, character().provider, character().id, { character: payload });
 
     if (result.errors_list === undefined) props.onReplaceCharacter(result.character);
+  }
+
+  const modifySelectedTalent = async (value) => {
+    const talent = talents().find((item) => item.id === value);
+
+    setSelectedTalent(talent);
+
+    if (talent.origin_value === 'multiclass') {
+      const result = await fetchTalentFeatures(1);
+      setTalentFeatures(result.talents)
+    } else {
+      batch(() => {
+        setTalentFeatures([]);
+        setSelectedMultiTalent(undefined);
+      });
+    }
+  }
+
+  const modifySelectedMultiTalent = async (value) => {
+    const talent = talentFeatures().find((item) => item.id === value);
+    setSelectedMultiTalent(talent);
+  }
+
+  const saveTalent = async () => {
+    const result = await createTalentRequest(appState.accessToken, character().provider, character().id, { talent_id: selectedTalent().id, talent_feature_id: selectedMultiTalent()?.id });
+
+    if (result.errors_list === undefined) {
+      props.onReloadCharacter();
+      setSelectedTalent(null);
+    }
   }
 
   return (
@@ -125,7 +174,7 @@ export const Dc20Leveling = (props) => {
             <Button
               default
               classList='rounded mr-4'
-              onClick={() => updateCharacter({ level: character().level + 1 })}
+              onClick={levelUp}
             >
               <Arrow top />
             </Button>
@@ -199,29 +248,45 @@ export const Dc20Leveling = (props) => {
         <Toggle
           title={
             <div class="flex justify-between">
-              <p>{TRANSLATION[locale()]['talents']}</p>
-              <p>{TRANSLATION[locale()]['existingTalentPoints']} - {character().talent_points - character().talents.length}</p>
+              <p>{TRANSLATION[locale()].talents}</p>
+              <p>{TRANSLATION[locale()].existingTalentPoints} - {character().talent_points - Object.values(character().selected_talents).reduce((acc, value) => acc + value, 0)}</p>
             </div>
           }
         >
-          <Show when={character().talents.length > 0}>
-            <p class="text-sm mb-2">{TRANSLATION[locale()]['selectedTalents']}</p>
-            <For each={character().talents}>
-              {(talent) =>
-                <p class="text-lg">{config.talents[talent].name[locale()]}</p>
+          <Show when={talents() && Object.values(character().selected_talents).reduce((acc, value) => acc + value, 0) > 0}>
+            <p class="text-sm mb-2">{TRANSLATION[locale()].selectedTalents}</p>
+            <For each={Object.entries(character().selected_talents)}>
+              {([id, amount]) =>
+                <p class="text-lg">{talents().find((item) => item.id === id).title}{amount > 1 ? ` - ${amount}` : ''}</p>
               }
             </For>
+            <div class="mb-2" />
           </Show>
-          <Show when={character().talent_points > character().talents.length}>
+          <Show when={character().talent_points > Object.values(character().selected_talents).reduce((acc, value) => acc + value, 0)}>
             <Select
-              labelText={TRANSLATION[locale()]['selectTalent']}
-              containerClassList="flex-1 mt-4"
-              items={translate(availableTalents(), locale())}
-              selectedValue={selectedTalent()}
-              onSelect={setSelectedTalent}
+              labelText={TRANSLATION[locale()].selectTalent}
+              containerClassList="flex-1"
+              items={availableTalents()}
+              selectedValue={selectedTalent()?.id}
+              onSelect={modifySelectedTalent}
             />
             <Show when={selectedTalent()}>
-              <Button default textable size="small" classList="inline-block mt-2" onClick={() => updateCharacter({ talents: [...character().talents, selectedTalent()] })}>{TRANSLATION[locale()]['saveButton']}</Button>
+              <p
+                class="feat-markdown text-xs mt-1"
+                innerHTML={selectedTalent().description} // eslint-disable-line solid/no-innerhtml
+              />
+              <Show when={selectedTalent().origin_value === 'multiclass' && talentFeatures()}>
+                <Select
+                  labelText={TRANSLATION[locale()].selectMulticlassFeature}
+                  containerClassList="flex-1 mt-1"
+                  items={talentFeatures().reduce((acc, item) => { acc[item.id] = item.title; return acc }, {})}
+                  selectedValue={selectedMultiTalent()?.id}
+                  onSelect={modifySelectedMultiTalent}
+                />
+              </Show>
+              <Button default textable size="small" classList="inline-block mt-2" onClick={saveTalent}>
+                {TRANSLATION[locale()].saveButton}
+              </Button>
             </Show>
           </Show>
         </Toggle>
