@@ -8,6 +8,33 @@ import { fetchCharacterRequest } from '../../../../requests/fetchCharacterReques
 import { createCharacterRestRequest } from '../../../../requests/createCharacterRestRequest';
 import { replace } from '../../../../helpers';
 
+const TRANSLATION = {
+  en: {
+    short: 'Short rest',
+    long: 'Long rest',
+    session: 'Session rest',
+    description: "At rest player can move domain cards between its loadout and vault for free, then choose twice from the list of downtime moves.",
+    makeRolls: 'Make auto rolls',
+    clear_health: 'Clear 1d4+{{tier}} or all Hit Points for yourself',
+    clear_stress: 'Clear 1d4+{{tier}} or all Stress',
+    clear_armor_slots: 'Clear 1d4+{{tier}} or all Armor Slots from your armor',
+    gain_hope: 'Gain a Hope',
+    gain_double_hope: 'Gain 2 Hope'
+  },
+  ru: {
+    short: 'Короткий отдых',
+    long: 'Длинный отдых',
+    session: 'Между сессиями',
+    description: 'Во время отдыха игрок может свободно перемещать карты домена между инвентарём и хранилищем, затем дважды выбрать из списка ходов отдыха.',
+    makeRolls: 'Автоматические броски',
+    clear_health: 'Очистить 1d4+{{tier}} или все ХП для себя',
+    clear_stress: 'Очистить 1d4+{{tier}} или все стресса',
+    clear_armor_slots: 'Очистить 1d4+{{tier}} или все слотов доспеха для себя',
+    gain_hope: 'Получить Надежду',
+    gain_double_hope: 'Получить 2 Надежды'
+  }
+}
+
 export const DaggerheartRest = (props) => {
   const character = () => props.character;
 
@@ -22,7 +49,7 @@ export const DaggerheartRest = (props) => {
 
   const [appState] = useAppState();
   const [{ renderNotice, renderAlerts }] = useAppAlert();
-  const [, dict] = useAppLocale();
+  const [locale, dict] = useAppLocale();
 
   const t = i18n.translator(dict);
 
@@ -58,13 +85,13 @@ export const DaggerheartRest = (props) => {
     <ErrorWrapper payload={{ character_id: character().id, key: 'DaggerheartRest' }}>
       <GuideWrapper character={character()}>
         <div class="blockable p-4">
-          <p class="mb-4 dark:text-snow">{t('daggerheart.rest.restDescription')}</p>
+          <p class="mb-4 dark:text-snow">{TRANSLATION[locale()].description}</p>
           <For each={['clear_health', 'clear_stress', 'clear_armor_slots', 'gain_hope', 'gain_double_hope']}>
             {(item) =>
               <Levelbox
                 number
                 classList="mb-1"
-                labelText={replace(t(`daggerheart.rest.${item}`), { tier: character().tier })}
+                labelText={replace(TRANSLATION[locale()][item], { tier: character().tier })}
                 labelPosition="right"
                 labelClassList="ml-2"
                 value={restOptions[item]}
@@ -74,7 +101,7 @@ export const DaggerheartRest = (props) => {
           </For>
           <Checkbox
             classList="mb-4"
-            labelText={t('daggerheart.rest.makeRolls')}
+            labelText={TRANSLATION[locale()].makeRolls}
             labelPosition="right"
             labelClassList="ml-2"
             checked={makeRolls()}
@@ -82,13 +109,13 @@ export const DaggerheartRest = (props) => {
           />
           <div class="grid grid-cols-1 lg:grid-cols-3 lg:gap-4">
             <Button default textable classList="mb-2 lg:mb-0" onClick={() => restCharacter({ value: 'short' })}>
-              {t('rest.shortRest')}
+              {TRANSLATION[locale()].short}
             </Button>
             <Button default textable classList="mb-2 lg:mb-0" onClick={() => restCharacter({ value: 'long' })}>
-              {t('rest.longRest')}
+              {TRANSLATION[locale()].long}
             </Button>
             <Button default textable onClick={() => restCharacter({ value: 'session' })}>
-              {t('rest.sessionRest')}
+              {TRANSLATION[locale()].session}
             </Button>
           </div>
         </div>

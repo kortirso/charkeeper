@@ -78,38 +78,6 @@
     }
   },
   "daggerheart": {
-    "terms": {
-      "traits": "Traits",
-      "thresholds": "Damage thresholds",
-      "feats": {
-        "origins": {
-          "ancestry": "Ancestry",
-          "class": "Class",
-          "subclass": "Subclass",
-          "community": "Community",
-          "character": "Character",
-          "transformation": "Transformation",
-          "domain_card": "Domain"
-        },
-        "kinds": {
-          "static": "Static text",
-          "text": "Text area"
-        },
-        "limitRefresh": {
-          "short_rest": "Short rest",
-          "long_rest": "Long rest",
-          "session": "Session"
-        }
-      },
-      "items": {
-        "kinds": {
-          "item": "Item",
-          "consumable": "Consumable",
-          "primary weapon": "Primary weapon",
-          "secondary weapon": "Secondary weapon"
-        }
-      }
-    },
     "static": {
       "proficiency": "Proficiency",
       "evasion": "Evasion",
@@ -127,15 +95,6 @@
       "health": "Health",
       "stress": "Stress",
       "hope": "Hope"
-    },
-    "rest": {
-      "restDescription": "At rest player can move domain cards between its loadout and vault for free, then choose twice from the list of downtime moves.",
-      "clear_health": "Clear 1d4+{{tier}} or all Hit Points for yourself",
-      "clear_stress": "Clear 1d4+{{tier}} or all Stress",
-      "clear_armor_slots": "Clear 1d4+{{tier}} or all Armor Slots from your armor",
-      "gain_hope": "Gain a Hope",
-      "gain_double_hope": "Gain 2 Hope",
-      "makeRolls": "Make auto rolls"
     },
     "domainCards": {
       "limit": "Cards limit",
@@ -195,10 +154,6 @@
     }
   },
   "dndV2": {
-    "rest": {
-      "shortRestDescription": "At the end of a short rest, a character may spend one or more Hit Dice. Each die spent allows the character to roll the corresponding die, add the character's Constitution modifier to it, and regain the resulting number of hit points.",
-      "longRestDescription": "At the end of a long rest, the character regains all expended hit points, plus half of the maximum Hit Dice and all expended spell slots."
-    },
     "bonuses": {
       "title": "Bonuses",
       "health": "Health",
