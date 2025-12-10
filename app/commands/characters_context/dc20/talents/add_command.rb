@@ -4,10 +4,15 @@ module CharactersContext
   module Dc20
     module Talents
       class AddCommand < BaseCommand
+        include Deps[
+          add_feat: 'commands.characters_context.dc20.feats.add'
+        ]
+
         use_contract do
           params do
             required(:character).filled(type?: ::Dc20::Character)
-            required(:feat).filled(type?: ::Dc20::Feat)
+            required(:talent).filled(type?: ::Dc20::Feat)
+            optional(:feat).maybe(type?: ::Dc20::Feat)
           end
         end
 
@@ -15,18 +20,21 @@ module CharactersContext
 
         def do_persist(input) # rubocop: disable Metrics/AbcSize
           ActiveRecord::Base.transaction do
-            ::Character::Feat.find_or_create_by(input)
+            feat_id = input[:talent].id
+
+            input[:character].feats.find_or_create_by(feat_id: feat_id)
 
             selected_talents = input[:character].data.selected_talents
-            feat_id = input[:feat].id
             selected_talents.key?(feat_id) ? selected_talents[feat_id] += 1 : selected_talents[feat_id] = 1
             input[:character].data.selected_talents = selected_talents
 
-            input[:feat].info['rewrite']&.each { |key, value| input[:character].data[key] = value }
-            input[:feat].info['increase']&.each { |key, value| input[:character].data[key] += value }
+            input[:talent].info['rewrite']&.each { |key, value| input[:character].data[key] = value }
+            input[:talent].info['increase']&.each { |key, value| input[:character].data[key] += value }
 
             input[:character].save!
           end
+
+          add_feat.call({ character: input[:character], feat: input[:feat] }) if input.key?(:feat)
 
           { result: :ok }
         end

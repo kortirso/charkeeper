@@ -169,7 +169,7 @@
     "kind": "hidden",
     "conditions": { "level": 1 },
     "info": {
-      "multiple": true
+      "multiple": false
     }
   }
 ]

@@ -42,6 +42,8 @@ module Charkeeper
 
     register('commands.characters_context.dc20.talents.add') { CharactersContext::Dc20::Talents::AddCommand.new }
 
+    register('commands.characters_context.dc20.feats.add') { CharactersContext::Dc20::Feats::AddCommand.new }
+
     register('commands.characters_context.dnd5.create') { CharactersContext::Dnd5::CreateCommand.new }
     register('commands.characters_context.dnd5.update') { CharactersContext::Dnd5::UpdateCommand.new }
     register('commands.characters_context.dnd5.spell_update') { CharactersContext::Dnd5::SpellUpdateCommand.new }

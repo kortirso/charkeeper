@@ -19,12 +19,14 @@ module Frontend
             @character = authorized_scope(Character.all).dc20.find(params[:character_id])
           end
 
+          # rubocop: disable Style/IdenticalConditionalBranches, Lint/DuplicateBranch
           def available_talents
             case params[:multiclass_level]
             when 1, 2 then class_features
             else class_features
             end
           end
+          # rubocop: enable Style/IdenticalConditionalBranches, Lint/DuplicateBranch
 
           def class_features
             selected_features = @character.feats.joins(:feat).where(feats: { origin: 1 }).pluck(:feat_id)

@@ -12,6 +12,7 @@ module Frontend
 
         before_action :find_character
         before_action :find_talent, only: %i[create]
+        before_action :find_feat, only: %i[create]
 
         def index
           serialize_relation(
@@ -20,7 +21,7 @@ module Frontend
         end
 
         def create
-          case add_talent.call({ character: @character, feat: @talent })
+          case add_talent.call({ character: @character, talent: @talent, feat: @feat })
           in { errors: errors, errors_list: errors_list } then unprocessable_response(errors, errors_list)
           else only_head_response
           end
@@ -34,6 +35,10 @@ module Frontend
 
         def find_talent
           @talent = ::Dc20::Feat.where(origin: 4).find(params[:talent_id])
+        end
+
+        def find_feat
+          @feat = ::Dc20::Feat.where(origin: 1).find_by(id: params[:talent_feature_id])
         end
 
         def available_talents

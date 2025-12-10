@@ -47,5 +47,21 @@
     "origin_value": "commander",
     "kind": "static",
     "conditions": { "level": 2 }
+  },
+  {
+    "slug": "berserker",
+    "title": { "en": "Berserker", "ru": "Берсерк" },
+    "description": {
+      "en": "When you make a **Melee Martial Attack** on your turn, you can move up to 2 Spaces immediately before making the Attack.",
+      "ru": "В свой Ход сразу перед вашей **Ближней Бойцовской Атакой** вы можете переместиться на 2 Клетки."
+    },
+    "origin": "class",
+    "origin_value": "barbarian",
+    "kind": "static",
+    "conditions": { "level": 1 },
+    "eval_variables": {
+      "area_defense": "equiped_armor_info ? area_defense : area_defense.transform_values { |value| value + 2 }",
+      "speed": "equiped_armor_info ? speed : (speed + 1)"
+    }
   }
 ]

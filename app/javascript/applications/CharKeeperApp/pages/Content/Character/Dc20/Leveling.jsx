@@ -82,9 +82,9 @@ export const Dc20Leveling = (props) => {
   const [lastActiveCharacterId, setLastActiveCharacterId] = createSignal(undefined);
   const [selectedTalent, setSelectedTalent] = createSignal(null);
   const [selectedMultiTalent, setSelectedMultiTalent] = createSignal(null);
-  const [talentFeatures, setTalentFeatures] = createSignal(undefined);
 
   const [talents, setTalents] = createSignal(undefined);
+  const [talentFeatures, setTalentFeatures] = createSignal(undefined);
 
   const [appState] = useAppState();
   const [locale] = useAppLocale();
@@ -137,18 +137,22 @@ export const Dc20Leveling = (props) => {
 
     if (talent.origin_value === 'multiclass') {
       const result = await fetchTalentFeatures(1);
-      setTalentFeatures(result.talents.reduce((acc, item) => { acc[item.id] = item.title; return acc }, {}));
+      setTalentFeatures(result.talents)
+    } else {
+      batch(() => {
+        setTalentFeatures([]);
+        setSelectedMultiTalent(undefined);
+      });
     }
   }
 
   const modifySelectedMultiTalent = async (value) => {
     const talent = talentFeatures().find((item) => item.id === value);
-
     setSelectedMultiTalent(talent);
   }
 
   const saveTalent = async () => {
-    const result = await createTalentRequest(appState.accessToken, character().provider, character().id, { talent_id: selectedTalent().id });
+    const result = await createTalentRequest(appState.accessToken, character().provider, character().id, { talent_id: selectedTalent().id, talent_feature_id: selectedMultiTalent()?.id });
 
     if (result.errors_list === undefined) {
       props.onReloadCharacter();
@@ -275,7 +279,7 @@ export const Dc20Leveling = (props) => {
                 <Select
                   labelText={TRANSLATION[locale()].selectMulticlassFeature}
                   containerClassList="flex-1 mt-1"
-                  items={talentFeatures()}
+                  items={talentFeatures().reduce((acc, item) => { acc[item.id] = item.title; return acc }, {})}
                   selectedValue={selectedMultiTalent()?.id}
                   onSelect={modifySelectedMultiTalent}
                 />
