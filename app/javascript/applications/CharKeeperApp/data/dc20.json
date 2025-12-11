@@ -15,9 +15,27 @@
     }
   },
   "classes": {
-    "commander": { "name": { "en": "Commander", "ru": "Командир" } },
-    "spellblade": { "name": { "en": "Spellblade", "ru": "Маг клинка" } },
-    "wizard": { "name": { "en": "Wizard", "ru": "Волшебник" } }
+    "commander": {
+      "name": { "en": "Commander", "ru": "Командир" },
+      "subclasses": {
+        "crusader": { "name": { "en": "Crusader", "ru": "Крестоносец" } },
+        "warlord": { "name": { "en": "Warlord", "ru": "Военачальник" } }
+      }
+    },
+    "spellblade": {
+      "name": { "en": "Spellblade", "ru": "Маг клинка" },
+      "subclasses": {
+        "paladin": { "name": { "en": "Paladin", "ru": "Паладин" } },
+        "rune_knight": { "name": { "en": "Rune Knight", "ru": "Рунический рыцарь" } }
+      }
+    },
+    "wizard": {
+      "name": { "en": "Wizard", "ru": "Волшебник" },
+      "subclasses": {
+        "portal_mage": { "name": { "en": "Portal Mage", "ru": "Порталист" } },
+        "witch": { "name": { "en": "Witch", "ru": "Ведьма" } }
+      }
+    }
   },
   "spell_lists": {
     "arcane": { "name": { "en": "Arcane", "ru": "Арканный" } },

@@ -6,6 +6,7 @@ module Dc20
 
     attribute :level, :integer, default: 1
     attribute :main_class, :string
+    attribute :subclass, :string
     attribute :ancestries, array: true
     attribute :classes, array: true
     attribute :abilities, array: true, default: { 'mig' => -2, 'agi' => -2, 'int' => -2, 'cha' => -2 }
