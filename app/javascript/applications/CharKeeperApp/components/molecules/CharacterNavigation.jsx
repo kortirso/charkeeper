@@ -8,6 +8,8 @@ export const CharacterNavigation = (props) => {
 
   const t = i18n.translator(dict);
 
+  const isActiveStep = (tab) => props.currentGuideStep && tab === props.markedTabs[props.currentGuideStep.toString()];
+
   return (
     <div id="character-navigation">
       <div class="flex">
@@ -15,9 +17,9 @@ export const CharacterNavigation = (props) => {
           {(tab) =>
             <p
               classList={{
-                'active': props.activeTab === tab,
+                'active': isActiveStep(tab) || props.activeTab === tab,
                 'opacity-25': props.currentGuideStep && tab !== props.markedTabs[props.currentGuideStep.toString()],
-                'text-black! dark:text-snow!': props.currentGuideStep && tab === props.markedTabs[props.currentGuideStep.toString()]
+                'text-black! dark:text-snow!': isActiveStep(tab)
               }}
               onClick={() => props.setActiveTab(tab)}
             >

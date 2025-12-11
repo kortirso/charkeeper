@@ -90,6 +90,7 @@ export const Dc20 = (props) => {
                   openDiceRoll={openDiceRoll}
                   onReplaceCharacter={props.onReplaceCharacter}
                   onReloadCharacter={props.onReloadCharacter}
+                  onNextGuideStepClick={() => setActiveMobileTab('equipment')}
                 />
               </div>
               <div class="mt-4">
@@ -126,6 +127,7 @@ export const Dc20 = (props) => {
                 onReloadCharacter={props.onReloadCharacter}
                 guideStep={3}
                 helpMessage={TRANSLATION[locale()]['equipmentHelpMessage']}
+                onNextGuideStepClick={() => setActiveMobileTab('classLevels')}
               />
             </Match>
             <Match when={activeMobileTab() === 'classLevels'}>
@@ -177,6 +179,7 @@ export const Dc20 = (props) => {
             openDiceRoll={openDiceRoll}
             onReplaceCharacter={props.onReplaceCharacter}
             onReloadCharacter={props.onReloadCharacter}
+            onNextGuideStepClick={() => setActiveTab('equipment')}
           />
         </div>
       </>
@@ -230,6 +233,7 @@ export const Dc20 = (props) => {
                 onReloadCharacter={props.onReloadCharacter}
                 guideStep={3}
                 helpMessage={TRANSLATION[locale()]['equipmentHelpMessage']}
+                onNextGuideStepClick={() => setActiveTab('classLevels')}
               />
             </Match>
             <Match when={activeTab() === 'classLevels'}>
