@@ -105,6 +105,7 @@ Rails.application.routes.draw do
         resources :spells, only: %i[index create update destroy], module: 'characters'
         resources :rest, only: %i[create], module: 'characters'
         resources :craft, only: %i[index create], module: 'characters'
+        resources :talents, only: %i[index create], module: 'characters'
       end
       resources :spells, only: %i[index]
     end
