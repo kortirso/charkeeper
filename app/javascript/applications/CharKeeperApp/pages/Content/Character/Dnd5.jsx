@@ -169,7 +169,7 @@ export const Dnd5 = (props) => {
               </div>
             </Match>
             <Match when={activeMobileTab() === 'rest'}>
-              <Dnd5Rest character={character()} onReplaceCharacter={props.onReplaceCharacter} />
+              <Dnd5Rest character={character()} onReloadCharacter={props.onReloadCharacter} />
             </Match>
             <Match when={activeMobileTab() === 'bonuses'}>
               <Bonuses character={character()} onReloadCharacter={props.onReloadCharacter} />
@@ -315,7 +315,7 @@ export const Dnd5 = (props) => {
               </div>
             </Match>
             <Match when={activeTab() === 'rest'}>
-              <Dnd5Rest character={character()} onReplaceCharacter={props.onReplaceCharacter} />
+              <Dnd5Rest character={character()} onReloadCharacter={props.onReloadCharacter} />
             </Match>
             <Match when={activeTab() === 'equipment'}>
               <Equipment
