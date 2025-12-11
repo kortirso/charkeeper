@@ -145,18 +145,6 @@
       }
     }
   },
-  "pathfinder2": {
-    "static": {
-      "armor_class": "Класс брони",
-      "perception": "Восприятие",
-      "speed": "Скорость"
-    },
-    "savingThrows": {
-      "fortitude": "Стойкость",
-      "reflex": "Рефлексы",
-      "will": "Воля"
-    }
-  },
   "dndV2": {
     "bonuses": {
       "title": "Бонусы",

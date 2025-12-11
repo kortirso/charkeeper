@@ -35,9 +35,9 @@ module Pathfinder2Character
 
     def saving_throws_value
       @saving_throws_value ||= {
-        fortitude: abilities['con'] + profifiency_bonus(saving_throws['fortitude']),
-        reflex: abilities['dex'] + profifiency_bonus(saving_throws['reflex']),
-        will: abilities['wis'] + profifiency_bonus(saving_throws['will'])
+        fortitude: abilities['con'] + proficiency_bonus(saving_throws['fortitude']),
+        reflex: abilities['dex'] + proficiency_bonus(saving_throws['reflex']),
+        will: abilities['wis'] + proficiency_bonus(saving_throws['will'])
       }
     end
 
@@ -50,7 +50,7 @@ module Pathfinder2Character
     end
 
     def perception
-      @perception ||= abilities['wis'] + profifiency_bonus(data.perception)
+      @perception ||= abilities['wis'] + proficiency_bonus(data.perception)
     end
 
     def class_dc_value
@@ -67,7 +67,7 @@ module Pathfinder2Character
 
     private
 
-    def skill_payload(slug, ability)
+    def skill_payload(slug, ability) # rubocop: disable Metrics/AbcSize
       proficiency_level = (lore_skills[slug] ? lore_skills.dig(slug, 'level') : selected_skills[slug]).to_i
 
       {
@@ -75,8 +75,9 @@ module Pathfinder2Character
         name: lore_skills[slug] ? lore_skills.dig(slug, 'name') : nil,
         ability: ability,
         level: proficiency_level,
+        total_modifier: abilities[ability] + proficiency_bonus(proficiency_level) + armor_penalty(slug, ability),
         modifier: abilities[ability],
-        prof: profifiency_bonus(proficiency_level),
+        prof: proficiency_bonus(proficiency_level),
         item: 0,
         armor: armor_penalty(slug, ability)
       }.compact
@@ -105,7 +106,7 @@ module Pathfinder2Character
       }
     end
 
-    def profifiency_bonus(proficiency_level)
+    def proficiency_bonus(proficiency_level)
       return 0 if proficiency_level.to_i.zero?
 
       level + (proficiency_level * 2)
@@ -153,11 +154,11 @@ module Pathfinder2Character
       result = 10
       if equiped_armor
         result += [abilities['dex'], equiped_armor.dig(:items_info, 'dex_max')].compact.min # модификатор ловкости
-        result += profifiency_bonus(armor_skills[equiped_armor.dig(:items_info, 'armor_skill')]) # бонус мастерства
+        result += proficiency_bonus(armor_skills[equiped_armor.dig(:items_info, 'armor_skill')]) # бонус мастерства
         result += equiped_armor.dig(:items_info, 'ac')
       else
         result += abilities['dex'] # модификатор ловкости
-        result += profifiency_bonus(armor_skills['unarmored']) # бонус мастерства
+        result += proficiency_bonus(armor_skills['unarmored']) # бонус мастерства
       end
       result += equiped_shield.dig(:items_info, 'ac') if equiped_shield
 

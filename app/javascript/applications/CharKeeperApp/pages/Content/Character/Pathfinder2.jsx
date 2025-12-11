@@ -45,13 +45,21 @@ export const Pathfinder2 = (props) => {
                 onReplaceCharacter={props.onReplaceCharacter}
               />
               <div class="mt-4">
-                <Pathfinder2SavingThrows character={character()} onReplaceCharacter={props.onReplaceCharacter} />
+                <Pathfinder2SavingThrows
+                  character={character()}
+                  openDiceRoll={openDiceRoll}
+                  onReplaceCharacter={props.onReplaceCharacter}
+                />
               </div>
               <div class="mt-4">
                 <Conditions character={character()} />
               </div>
               <div class="mt-4">
-                <Pathfinder2Skills character={character()} onReplaceCharacter={props.onReplaceCharacter} />
+                <Pathfinder2Skills
+                  character={character()}
+                  openDiceRoll={openDiceRoll}
+                  onReplaceCharacter={props.onReplaceCharacter}
+                />
               </div>
             </Match>
             <Match when={activeMobileTab() === 'combat'}>
@@ -102,13 +110,21 @@ export const Pathfinder2 = (props) => {
         />
         <div class="flex flex-col emd:flex-row emd:gap-4 emd:mt-4">
           <div class="mt-4 emd:mt-0 flex-1">
-            <Pathfinder2SavingThrows character={character()} />
+            <Pathfinder2SavingThrows
+              character={character()}
+              openDiceRoll={openDiceRoll}
+              onReplaceCharacter={props.onReplaceCharacter}
+            />
             <div class="mt-4">
               <Conditions character={character()} />
             </div>
           </div>
           <div class="mt-4 emd:mt-0 flex-1">
-            <Pathfinder2Skills character={character()} onReplaceCharacter={props.onReplaceCharacter} />
+            <Pathfinder2Skills
+              character={character()}
+              openDiceRoll={openDiceRoll}
+              onReplaceCharacter={props.onReplaceCharacter}
+            />
           </div>
         </div>
       </>
