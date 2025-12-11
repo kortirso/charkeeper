@@ -4,7 +4,6 @@ import * as i18n from '@solid-primitives/i18n';
 
 import { ErrorWrapper, Button, Levelbox, Checkbox, GuideWrapper } from '../../../../components';
 import { useAppState, useAppLocale, useAppAlert } from '../../../../context';
-import { fetchCharacterRequest } from '../../../../requests/fetchCharacterRequest';
 import { createCharacterRestRequest } from '../../../../requests/createCharacterRestRequest';
 
 const TRANSLATION = {
@@ -51,14 +50,8 @@ export const Dnd5Rest = (props) => {
       { ...payload, options: restOptions, make_rolls: makeRolls() }
     );
     if (result.errors_list === undefined) {
-      const characterData = await fetchCharacterRequest(
-        appState.accessToken,
-        character().id,
-        { only: 'health,spent_spell_slots,spent_hit_dice,features' }
-      );
-
       batch(() => {
-        props.onReplaceCharacter(characterData.character);
+        props.onReloadCharacter();
         setRestOptions({ d6: 0, d8: 0, d10: 0, d12: 0 });
         setMakeRolls(false);
         renderNotice(t('alerts.restIsFinished'));

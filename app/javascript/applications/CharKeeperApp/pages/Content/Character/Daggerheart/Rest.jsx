@@ -4,7 +4,6 @@ import * as i18n from '@solid-primitives/i18n';
 
 import { Button, ErrorWrapper, Levelbox, Checkbox, GuideWrapper } from '../../../../components';
 import { useAppState, useAppLocale, useAppAlert } from '../../../../context';
-import { fetchCharacterRequest } from '../../../../requests/fetchCharacterRequest';
 import { createCharacterRestRequest } from '../../../../requests/createCharacterRestRequest';
 import { replace } from '../../../../helpers';
 
@@ -66,14 +65,8 @@ export const DaggerheartRest = (props) => {
       { ...payload, options: restOptions, make_rolls: makeRolls() }
     );
     if (result.errors_list === undefined) {
-      const characterData = await fetchCharacterRequest(
-        appState.accessToken,
-        character().id,
-        { only: 'features,health_marked,stress_marked,spent_armor_slots,hope_marked' }
-      );
-
       batch(() => {
-        props.onReplaceCharacter(characterData.character);
+        props.onReloadCharacter();
         setRestOptions({ clear_health: 0, clear_stress: 0, clear_armor_slots: 0, gain_hope: 0, gain_double_hope: 0 });
         setMakeRolls(false);
         renderNotice(t('alerts.restIsFinished'));
