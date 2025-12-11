@@ -1,10 +1,9 @@
 import { createSignal, For, Show, batch } from 'solid-js';
 
-import { ErrorWrapper, EditWrapper, Levelbox } from '../../../../components';
+import { ErrorWrapper, EditWrapper, Levelbox, Dice } from '../../../../components';
 import config from '../../../../data/pathfinder2.json';
 import { useAppState, useAppLocale, useAppAlert } from '../../../../context';
 import { updateCharacterRequest } from '../../../../requests/updateCharacterRequest';
-
 import { modifier } from '../../../../helpers';
 
 export const Pathfinder2SavingThrows = (props) => {
@@ -54,18 +53,29 @@ export const Pathfinder2SavingThrows = (props) => {
           <For each={Object.entries(config.savingThrows)}>
             {([slug, savingName]) =>
               <div class="flex-1 flex flex-col items-center">
-                <p class="uppercase text-sm elg:text-[10px] mb-1 dark:text-snow">
+                <p class="text-sm uppercase text-center mb-4">
                   {savingName.name[locale()]}
                 </p>
                 <div class="flex items-center">
-                  <Show when={editMode()} fallback={<></>}>
+                  <Show
+                    when={editMode()}
+                    fallback={
+                      <p class="text-2xl font-normal!">
+                        <Dice
+                          text={modifier(character().saving_throws_value[slug])}
+                          onClick={() => props.openDiceRoll(`/check save ${slug}`, character().saving_throws_value[slug])}
+                        />
+                      </p>
+                    }
+                  >
                     <Levelbox
                       classList="mr-2"
                       value={savingThrowsData()[slug]}
                       onToggle={() => updateSavingThrow(slug)}
                     />
+                    <p class="font-normal! text-2xl">{modifier(character().saving_throws_value[slug])}</p>
                   </Show>
-                  <p class="font-normal! text-2xl dark:text-snow">{modifier(character().saving_throws_value[slug])}</p>
+                  
                 </div>
               </div>
             }

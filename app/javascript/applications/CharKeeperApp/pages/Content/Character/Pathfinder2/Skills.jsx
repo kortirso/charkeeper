@@ -1,7 +1,7 @@
 import { createSignal, For, Show, batch } from 'solid-js';
 import { Key } from '@solid-primitives/keyed';
 
-import { ErrorWrapper, Levelbox, Input, EditWrapper } from '../../../../components';
+import { ErrorWrapper, Levelbox, Input, EditWrapper, Dice } from '../../../../components';
 import config from '../../../../data/pathfinder2.json';
 import { useAppState, useAppLocale, useAppAlert } from '../../../../context';
 import { updateCharacterRequest } from '../../../../requests/updateCharacterRequest';
@@ -108,7 +108,12 @@ export const Pathfinder2Skills = (props) => {
                       </Show>
                     </p>
                     <span>
-                      {modifier(skill().modifier + skill().prof + skill().item + (skill().armor || 0))}
+                      <Dice
+                        width="28"
+                        height="28"
+                        text={modifier(skill().total_modifier)}
+                        onClick={() => props.openDiceRoll(`/check skill ${skill().slug}`, skill().total_modifier)}
+                      />
                     </span>
                   </div>
                 }

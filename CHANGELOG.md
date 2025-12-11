@@ -13,6 +13,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - switching tabs while changing guide step
 - attaching background feats during character creation for D&D characters
 - refreshing characters after rest
+- rendering dice rolls for Pathfinder 2 characters
 
 ### Fixed
 - rendering skills boosts for D&D characters
