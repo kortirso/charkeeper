@@ -8,6 +8,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Modified
 - switching tabs while changing guide step
 
+### Fixed
+- rendering skills boosts for D&D characters
+
 ## [0.3.23] - 2025-12-10
 ### Added
 - DC20 talents
