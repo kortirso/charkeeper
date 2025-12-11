@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## Unreleased
 ### Modified
 - switching tabs while changing guide step
+- attaching background feats during character creation for D&D characters
 
 ### Fixed
 - rendering skills boosts for D&D characters

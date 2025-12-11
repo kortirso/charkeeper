@@ -63,6 +63,8 @@ module Charkeeper
     register('commands.characters_context.dnd2024.make_long_rest') { CharactersContext::Dnd2024::MakeLongRestCommand.new }
     register('commands.characters_context.dnd2024.craft') { CharactersContext::Dnd2024::CraftCommand.new }
 
+    register('commands.characters_context.dnd2024.talents.add') { CharactersContext::Dnd2024::Talents::AddCommand.new }
+
     register('commands.characters_context.pathfinder2.create') { CharactersContext::Pathfinder2::CreateCommand.new }
     register('commands.characters_context.pathfinder2.update') { CharactersContext::Pathfinder2::UpdateCommand.new }
     register('commands.characters_context.pathfinder2.change_health') { CharactersContext::Pathfinder2::ChangeHealthCommand.new }

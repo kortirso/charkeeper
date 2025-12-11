@@ -9,7 +9,9 @@ module CharactersContext
 
       def remove_redundant_feats(...); end
 
-      def exclude_origins_from_remove; end
+      def exclude_origins_from_remove
+        4
+      end
 
       def filter_available_feats(character)
         selected_feats = find_selected_feats(character)
@@ -58,7 +60,7 @@ module CharactersContext
         data = character.data
         ::Dnd2024::Feat.where(
           origin_value: [data.species, data.legacy, data.classes.keys, data.subclasses.values, character.id].flatten.compact.uniq
-        ).or(::Dnd2024::Feat.where(origin: 'feat', slug: data.selected_feats))
+        )
       end
     end
   end

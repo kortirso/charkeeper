@@ -205,22 +205,6 @@
     }
   },
   "feats": {
-    "origin": {
-      "alert": { "name": { "en": "Alert", "ru": "Бдительный" } },
-      "lucky": { "name": { "en": "Lucky", "ru": "Везунчик" } },
-      "savage_attacker": { "name": { "en": "Savage Attacker", "ru": "Дикий атакующий" } },
-      "tavern_brawler": { "name": { "en": "Tavern Brawler", "ru": "Драчун" } },
-      "healer": { "name": { "en": "Healer", "ru": "Лекарь" } },
-      "musician": { "name": { "en": "Musician", "ru": "Музыкант" } },
-      "cleric_magic_initiate": { "name": { "en": "Magic Initiate (Cleric)", "ru": "Посвящённый в магию (Жрец)" } },
-      "druid_magic_initiate": { "name": { "en": "Magic Initiate (Druid)", "ru": "Посвящённый в магию (Друид)" } },
-      "wizard_magic_initiate": { "name": { "en": "Magic Initiate (Wizard)", "ru": "Посвящённый в магию (Волшебник)" } },
-      "crafter": { "name": { "en": "Crafter", "ru": "Ремесленник" } }
-    },
-    "general": {
-      "actor": { "name": { "en": "Actor", "ru": "Актёр" } },
-      "elemental_adept": { "name": { "en": "Elemental adept", "ru": "Адепт стихий" } }
-    },
     "fighting": {
       "defense": { "name": { "en": "Defense", "ru": "Оборона" } },
       "dueling": { "name": { "en": "Dueling", "ru": "Дуэлянт" } },
