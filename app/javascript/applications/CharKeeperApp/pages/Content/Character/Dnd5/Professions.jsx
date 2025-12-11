@@ -97,57 +97,20 @@ export const Dnd5Professions = (props) => {
     <ErrorWrapper payload={{ character_id: character().id, key: 'Dnd5Professions' }}>
       <GuideWrapper character={character()}>
         <Show when={character().provider === 'dnd2024'}>
-          <Toggle title={t('professionsPage.feats')}>
-            <div class="flex flex-wrap">
-              <div class="w-1/2 mb-4">
-                <p class="mb-2">{t('professionsPage.originFeats')}</p>
-                <For each={Object.entries(feats().origin)}>
-                  {([slug, values]) =>
-                    <div class="mb-1">
-                      <Checkbox
-                        labelText={values.name[locale()]}
-                        labelPosition="right"
-                        labelClassList="text-sm ml-4"
-                        checked={character().selected_feats.includes(slug)}
-                        onToggle={() => toggleFeat(slug)}
-                      />
-                    </div>
-                  }
-                </For>
-              </div>
-              <div class="w-1/2 mb-4">
-                <p class="mb-2">{t('professionsPage.generalFeats')}</p>
-                <For each={Object.entries(feats().general)}>
-                  {([slug, values]) =>
-                    <div class="mb-1">
-                      <Checkbox
-                        labelText={values.name[locale()]}
-                        labelPosition="right"
-                        labelClassList="text-sm ml-4"
-                        checked={character().selected_feats.includes(slug)}
-                        onToggle={() => toggleFeat(slug)}
-                      />
-                    </div>
-                  }
-                </For>
-              </div>
-              <div class="w-1/2">
-                <p class="mb-2">{t('professionsPage.fightingFeats')}</p>
-                <For each={Object.entries(feats().fighting)}>
-                  {([slug, values]) =>
-                    <div class="mb-1">
-                      <Checkbox
-                        labelText={values.name[locale()]}
-                        labelPosition="right"
-                        labelClassList="text-sm ml-4"
-                        checked={character().selected_feats.includes(slug)}
-                        onToggle={() => toggleFeat(slug)}
-                      />
-                    </div>
-                  }
-                </For>
-              </div>
-            </div>
+          <Toggle title={t('professionsPage.fightingFeats')}>
+            <For each={Object.entries(feats().fighting)}>
+              {([slug, values]) =>
+                <div class="mb-1">
+                  <Checkbox
+                    labelText={values.name[locale()]}
+                    labelPosition="right"
+                    labelClassList="text-sm ml-4"
+                    checked={character().selected_feats.includes(slug)}
+                    onToggle={() => toggleFeat(slug)}
+                  />
+                </div>
+              }
+            </For>
           </Toggle>
         </Show>
         <Toggle title={t('professionsPage.languages')}>

@@ -4,7 +4,8 @@ module CharactersContext
   module Dnd2024
     class CreateCommand < BaseCommand
       include Deps[
-        refresh_feats: 'services.characters_context.dnd2024.refresh_feats'
+        refresh_feats: 'services.characters_context.dnd2024.refresh_feats',
+        add_talent: 'commands.characters_context.dnd2024.talents.add'
       ]
 
       # rubocop: disable Metrics/BlockLength
@@ -69,6 +70,7 @@ module CharactersContext
       def do_persist(input)
         character = ::Dnd2024::Character.create!(input.slice(:user, :name, :data))
         refresh_feats.call(character: character)
+        add_talent.call(character: character, talent: ::Dnd2024::Feat.find_by(slug: input.dig(:data, :selected_feats)))
         learn_spells_list(character, input)
 
         { result: character }
