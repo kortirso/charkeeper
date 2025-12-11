@@ -10,7 +10,7 @@ module CharactersContext
       def remove_redundant_feats(...); end
 
       def exclude_origins_from_remove
-        4
+        ::Dnd2024::Feat::SELECTABLE_ORIGINS
       end
 
       def filter_available_feats(character)

@@ -5,7 +5,8 @@ module CharactersContext
     class UpdateCommand < BaseCommand
       include Deps[
         attach_avatar_by_url: 'commands.image_processing.attach_avatar_by_url',
-        attach_avatar_by_file: 'commands.image_processing.attach_avatar_by_file'
+        attach_avatar_by_file: 'commands.image_processing.attach_avatar_by_file',
+        refresh_feats: 'services.characters_context.dc20.refresh_feats'
       ]
 
       LEVELING = {
@@ -26,6 +27,7 @@ module CharactersContext
 
         params do
           required(:character).filled(type?: ::Dc20::Character)
+          optional(:subclass).filled(:string)
           optional(:level).filled(:integer)
           optional(:abilities).hash do
             required(:mig).filled(:integer)
@@ -138,6 +140,7 @@ module CharactersContext
 
         refresh_points(input[:character]) if input.key?(:level)
         refresh_maneuver_feats(input[:character]) if input.key?(:maneuvers)
+        refresh_feats.call(character: input[:character]) if %i[level subclass].intersect?(input.keys)
         upload_avatar(input)
 
         { result: input[:character] }

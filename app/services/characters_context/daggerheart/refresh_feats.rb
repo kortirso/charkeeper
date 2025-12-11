@@ -12,7 +12,7 @@ module CharactersContext
       end
 
       def exclude_origins_from_remove
-        7
+        ::Daggerheart::Feat::SELECTABLE_ORIGINS
       end
 
       def remove_redundant_spells(character)

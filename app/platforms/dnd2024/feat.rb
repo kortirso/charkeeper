@@ -20,6 +20,8 @@ module Dnd2024
     LONG_REST = 'long_rest'
     ONE_AT_SHORT_REST = 'one_at_short_rest' # 1 заряд восстанавливается при коротком отдыхе
 
+    SELECTABLE_ORIGINS = [4, 5].freeze
+
     enum :origin, {
       SPECIES_ORIGIN => 0, CLASS_ORIGIN => 1, LEGACY_ORIGIN => 2, SUBCLASS_ORIGIN => 3, FEAT_ORIGIN => 4, CHARACTER_ORIGIN => 5
     }

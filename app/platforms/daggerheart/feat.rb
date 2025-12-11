@@ -23,6 +23,8 @@ module Daggerheart
     LONG_REST = 'long_rest'
     SESSION = 'session'
 
+    SELECTABLE_ORIGINS = [7].freeze
+
     enum :origin, {
       ANCESTRY_ORIGIN => 0,
       COMMUNITY_ORIGIN => 1,
