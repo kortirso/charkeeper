@@ -109,6 +109,7 @@ export const DaggerheartExperience = (props) => {
         guideStep={2}
         helpMessage={TRANSLATION[locale()]['helpMessage']}
         onReloadCharacter={props.onReloadCharacter}
+        onNextClick={props.onNextGuideStepClick}
       >
         <Toggle
           disabled

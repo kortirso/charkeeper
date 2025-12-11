@@ -138,6 +138,7 @@ export const Dnd5 = (props) => {
                   openDiceRoll={openDiceRoll}
                   onReplaceCharacter={props.onReplaceCharacter}
                   onReloadCharacter={props.onReloadCharacter}
+                  onNextGuideStepClick={() => setActiveMobileTab('equipment')}
                 />
               </div>
               <div class="mt-4">
@@ -191,6 +192,7 @@ export const Dnd5 = (props) => {
                 onReloadCharacter={props.onReloadCharacter}
                 guideStep={3}
                 helpMessage={TRANSLATION[locale()]['equipmentHelpMessage']}
+                onNextGuideStepClick={() => setActiveMobileTab('classLevels')}
               >
                 <Gold character={character()} onReplaceCharacter={props.onReplaceCharacter} />
               </Equipment>
@@ -264,6 +266,7 @@ export const Dnd5 = (props) => {
               openDiceRoll={openDiceRoll}
               onReplaceCharacter={props.onReplaceCharacter}
               onReloadCharacter={props.onReloadCharacter}
+              onNextGuideStepClick={() => setActiveTab('equipment')}
             />
           </div>
         </div>
@@ -332,6 +335,7 @@ export const Dnd5 = (props) => {
                 onReloadCharacter={props.onReloadCharacter}
                 guideStep={3}
                 helpMessage={TRANSLATION[locale()]['equipmentHelpMessage']}
+                onNextGuideStepClick={() => setActiveTab('classLevels')}
               >
                 <Gold character={character()} onReplaceCharacter={props.onReplaceCharacter} />
               </Equipment>

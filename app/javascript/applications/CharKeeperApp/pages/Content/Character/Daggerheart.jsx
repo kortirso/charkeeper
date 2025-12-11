@@ -112,6 +112,7 @@ export const Daggerheart = (props) => {
                   object={character()}
                   onReplaceCharacter={props.onReplaceCharacter}
                   onReloadCharacter={props.onReloadCharacter}
+                  onNextGuideStepClick={() => setActiveMobileTab('equipment')}
                 />
               </div>
               <div class="mt-4">
@@ -167,6 +168,7 @@ export const Daggerheart = (props) => {
                 currentGuideStep={character().guide_step}
                 guideStep={3}
                 helpMessage={TRANSLATION[locale()]['helpMessage']}
+                onNextGuideStepClick={() => setActiveMobileTab('domainCards')}
               >
                 <Gold character={character()} onReplaceCharacter={props.onReplaceCharacter} />
               </Equipment>
@@ -178,6 +180,7 @@ export const Daggerheart = (props) => {
                 currentGuideStep={character().guide_step}
                 guideStep={4}
                 helpMessage={TRANSLATION[locale()]['domainHelpMessage']}
+                onNextGuideStepClick={() => setActiveMobileTab('classLevels')}
               />
             </Match>
             <Match when={activeMobileTab() === 'states'}>
@@ -240,6 +243,7 @@ export const Daggerheart = (props) => {
             object={character()}
             onReplaceCharacter={props.onReplaceCharacter}
             onReloadCharacter={props.onReloadCharacter}
+            onNextGuideStepClick={() => setActiveTab('equipment')}
           />
         </div>
         <div class="mt-4">
@@ -309,6 +313,7 @@ export const Daggerheart = (props) => {
                 currentGuideStep={character().guide_step}
                 guideStep={3}
                 helpMessage={TRANSLATION[locale()]['helpMessage']}
+                onNextGuideStepClick={() => setActiveTab('domainCards')}
               >
                 <Gold character={character()} onReplaceCharacter={props.onReplaceCharacter} />
               </Equipment>
@@ -320,6 +325,7 @@ export const Daggerheart = (props) => {
                 currentGuideStep={character().guide_step}
                 guideStep={4}
                 helpMessage={TRANSLATION[locale()]['domainHelpMessage']}
+                onNextGuideStepClick={() => setActiveTab('classLevels')}
               />
             </Match>
             <Match when={activeTab() === 'states'}>

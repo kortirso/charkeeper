@@ -26,7 +26,10 @@ export const GuideWrapper = (props) => {
       appState.accessToken, props.character.provider, props.character.id, { character: { guide_step: value }, only_head: true }
     );
 
-    if (result.errors_list === undefined) props.onReloadCharacter();
+    if (result.errors_list === undefined) {
+      props.onReloadCharacter();
+      if (props.onNextClick) props.onNextClick();
+    }
   }
 
   return (

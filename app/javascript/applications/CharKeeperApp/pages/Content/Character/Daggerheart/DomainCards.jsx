@@ -165,6 +165,7 @@ export const DaggerheartDomainCards = (props) => {
         guideStep={props.guideStep}
         helpMessage={props.helpMessage}
         onReloadCharacter={props.onReloadCharacter}
+        onNextClick={props.onNextGuideStepClick}
       >
         <Show
           when={!spellsSelectingMode()}

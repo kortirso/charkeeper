@@ -194,6 +194,7 @@ export const Equipment = (props) => {
         guideStep={props.guideStep}
         helpMessage={props.helpMessage}
         onReloadCharacter={props.onReloadCharacter}
+        onNextClick={props.onNextGuideStepClick}
       >
         <Show
           when={!itemsSelectingMode()}
