@@ -1,22 +1,43 @@
-import { createSignal, createEffect, For, Show, batch } from 'solid-js';
+import { createSignal, createEffect, createMemo, For, Show, batch } from 'solid-js';
 import * as i18n from '@solid-primitives/i18n';
 
-import { ErrorWrapper, Select, Checkbox, Button, GuideWrapper } from '../../../../components';
+import { ErrorWrapper, Select, Checkbox, Button, GuideWrapper, Toggle } from '../../../../components';
 import dnd2024Config from '../../../../data/dnd2024.json';
 import dnd5Config from '../../../../data/dnd5.json';
 import { useAppState, useAppLocale, useAppAlert } from '../../../../context';
 import { PlusSmall, Minus } from '../../../../assets';
 import { updateCharacterRequest } from '../../../../requests/updateCharacterRequest';
+import { fetchTalentsRequest } from '../../../../requests/fetchTalentsRequest';
+import { createTalentRequest } from '../../../../requests/createTalentRequest';
 import { translate } from '../../../../helpers';
+
+const TRANSLATION = {
+  en: {
+    talents: 'Feats',
+    existingTalentPoints: 'Available feats',
+    selectTalent: 'Select new feat',
+    saveButton: 'Save',
+    selectedTalents: 'Selected feats'
+  },
+  ru: {
+    talents: 'Черты',
+    existingTalentPoints: 'Доступно черт',
+    selectTalent: 'Выберите новую черту',
+    saveButton: 'Сохранить',
+    selectedTalents: 'Выбранные черты'
+  }
+}
 
 export const Dnd5ClassLevels = (props) => {
   const character = () => props.character;
   const currentConfig = () => character().provider === 'dnd5' ? dnd5Config : dnd2024Config;
 
-  // changeable data
   const [lastActiveCharacterId, setLastActiveCharacterId] = createSignal(undefined);
   const [classesData, setClassesData] = createSignal(character().classes);
   const [subclassesData, setSubclassesData] = createSignal(character().subclasses);
+  const [selectedTalent, setSelectedTalent] = createSignal(null);
+
+  const [talents, setTalents] = createSignal(undefined);
 
   const [appState] = useAppState();
   const [{ renderNotice, renderAlerts }] = useAppAlert();
@@ -24,14 +45,32 @@ export const Dnd5ClassLevels = (props) => {
 
   const t = i18n.translator(dict);
 
+  const fetchTalents = async () => await fetchTalentsRequest(appState.accessToken, character().provider, character().id);
+
   createEffect(() => {
     if (lastActiveCharacterId() === character().id) return;
+
+    if (character().provider === 'dnd2024') {
+      Promise.all([fetchTalents()]).then(
+        ([talentsData]) => {
+          batch(() => {
+            setTalents(talentsData.talents);
+          });
+        }
+      );
+    }
 
     batch(() => {
       setClassesData(character().classes);
       setSubclassesData(character().subclasses);
       setLastActiveCharacterId(character().id);
     });
+  });
+
+  const availableTalents = createMemo(() => {
+    if (talents() === undefined) return {};
+
+    return talents().filter((item) => item.multiple || !item.selected).reduce((acc, item) => { acc[item.id] = item.title; return acc }, {});
   });
 
   const classes = () => translate(currentConfig().classes, locale());
@@ -68,7 +107,6 @@ export const Dnd5ClassLevels = (props) => {
     setClassesData({ ...classesData(), [className]: newValue });
   }
 
-  // submits
   const updateClasses = async () => {
     const result = await updateCharacterRequest(
       appState.accessToken,
@@ -83,6 +121,15 @@ export const Dnd5ClassLevels = (props) => {
         renderNotice(t('alerts.characterIsUpdated'));
       });
     } else renderAlerts(result.errors_list);
+  }
+
+  const saveTalent = async () => {
+    const result = await createTalentRequest(appState.accessToken, character().provider, character().id, { talent_id: selectedTalent().id });
+
+    if (result.errors_list === undefined) {
+      props.onReloadCharacter();
+      setSelectedTalent(null);
+    }
   }
 
   return (
@@ -165,6 +212,46 @@ export const Dnd5ClassLevels = (props) => {
           </For>
           <Button default textable classList="mt-2" onClick={updateClasses}>{t('save')}</Button>
         </div>
+
+        <Show when={character().provider === 'dnd2024'}>
+          <Toggle
+            containerClassList="mt-2"
+            title={
+              <div class="flex justify-between">
+                <p>{TRANSLATION[locale()].talents}</p>
+                <p>{TRANSLATION[locale()].existingTalentPoints} - {1 + Math.trunc(character().level / 4) - Object.values(character().selected_talents).reduce((acc, value) => acc + value, 0)}</p>
+              </div>
+            }
+          >
+            <Show when={talents()}>
+              <p class="text-sm mb-2">{TRANSLATION[locale()].selectedTalents}</p>
+              <For each={Object.entries(character().selected_talents)}>
+                {([id, amount]) =>
+                  <p class="text-lg">{talents().find((item) => item.id === id).title}{amount > 1 ? ` - ${amount}` : ''}</p>
+                }
+              </For>
+              <div class="mb-2" />
+            </Show>
+            <Show when={1 + Math.trunc(character().level / 4) > Object.values(character().selected_talents).reduce((acc, value) => acc + value, 0)}>
+              <Select
+                labelText={TRANSLATION[locale()].selectTalent}
+                containerClassList="flex-1"
+                items={availableTalents()}
+                selectedValue={selectedTalent()?.id}
+                onSelect={(value) => setSelectedTalent(talents().find((item) => item.id === value))}
+              />
+              <Show when={selectedTalent()}>
+                <p
+                  class="feat-markdown text-xs mt-1"
+                  innerHTML={selectedTalent().description} // eslint-disable-line solid/no-innerhtml
+                />
+                <Button default textable size="small" classList="inline-block mt-2" onClick={saveTalent}>
+                  {TRANSLATION[locale()].saveButton}
+                </Button>
+              </Show>
+            </Show>
+          </Toggle>
+        </Show>
       </GuideWrapper>
     </ErrorWrapper>
   );
