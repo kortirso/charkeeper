@@ -103,14 +103,22 @@ module CharactersContext
 
       private
 
-      # rubocop: disable Metrics/AbcSize, Metrics/PerceivedComplexity
+      # rubocop: disable Metrics/AbcSize, Metrics/PerceivedComplexity, Metrics/CyclomaticComplexity
       def do_prepare(input)
         input[:level] = input[:classes].values.sum(&:to_i) if input[:classes]
         %i[classes abilities health saving_throws selected_skills coins].each do |key|
           input[key]&.transform_values!(&:to_i)
         end
 
-        input[:ability_boosts] = nil if input.key?(:abilities)
+        if input.key?(:abilities)
+          input[:ability_boosts_v2] = nil
+          input[:ability_boosts] = nil
+
+          if input[:character].data.skill_boosts.present?
+            input[:skill_boosts] = input[:character].data.skill_boosts
+            input[:skill_boosts]['free'] += (input.dig(:abilities, :int) / 2) - 5
+          end
+        end
         input[:skill_boosts] = nil if input.key?(:selected_skills)
 
         if input.key?(:money)
@@ -132,7 +140,7 @@ module CharactersContext
 
         { result: input[:character] }
       end
-      # rubocop: enable Metrics/AbcSize, Metrics/PerceivedComplexity
+      # rubocop: enable Metrics/AbcSize, Metrics/PerceivedComplexity, Metrics/CyclomaticComplexity
 
       def upload_avatar(input)
         attach_avatar_by_file.call({ character: input[:character], file: input[:avatar_file] }) if input[:avatar_file]

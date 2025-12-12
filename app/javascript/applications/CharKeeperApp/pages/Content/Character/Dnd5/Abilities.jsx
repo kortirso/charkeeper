@@ -81,11 +81,11 @@ export const Dnd5Abilities = (props) => {
           onSaveChanges={updateCharacter}
         >
           <div class="blockable py-4">
-            <div class="grid grid-cols-3 emd:grid-cols-6 elg:grid-cols-3 exl:grid-cols-6 gap-2">
+            <div class="grid grid-cols-3 emd:grid-cols-6 elg:grid-cols-3 exl:grid-cols-6 gap-x-2 gap-y-4">
               <For each={Object.entries(config.abilities)}>
                 {([slug, values]) =>
                   <div>
-                    <p class="text-sm uppercase text-center mb-4 dark:text-white">{values.name[locale()]}</p>
+                    <p class="text-sm uppercase text-center mb-2">{values.name[locale()]}</p>
                     <div class="w-16 h-16 flex items-center justify-center mx-auto relative">
                       <Dice
                         width="64"

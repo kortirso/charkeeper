@@ -13,6 +13,8 @@ module Pathfinder2Character
         result[:ability_boosts].merge!({ free: 1 }) { |_, oldval, newval| oldval + newval }
         result[:vision] = 'low-light'
 
+        result[:ability_boosts_v2][:race] = { 'str_con_wis_cha' => 1 }
+
         result
       end
     end

@@ -12,6 +12,8 @@ module Pathfinder2Character
         result[:ability_boosts].merge!({ free: 2 }) { |_, oldval, newval| oldval + newval }
         result[:vision] = 'dark'
 
+        result[:ability_boosts_v2][:race] = { free: 2 }
+
         result
       end
     end

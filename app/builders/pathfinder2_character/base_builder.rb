@@ -11,6 +11,7 @@ module Pathfinder2Character
         selected_skills: {},
         lore_skills: { lore1: { name: 'Unknown', level: 0 }, lore2: { name: 'Unknown', level: 0 } },
         ability_boosts: { free: 4 },
+        ability_boosts_v2: { base: { free: 4 } },
         skill_boosts: { free: 0 }
       })
     end
