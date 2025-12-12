@@ -11,6 +11,8 @@ module Pathfinder2Character
         result[:languages] = result[:languages].split(', ').concat(LANGUAGES).uniq.join(', ')
         result[:ability_boosts].merge!({ free: 2 }) { |_, oldval, newval| oldval + newval }
 
+        result[:ability_boosts_v2][:race] = { free: 2 }
+
         result
       end
     end

@@ -31,6 +31,7 @@ module Pathfinder2
     attribute :conditions, array: true, default: []
     # только для 1 уровня
     attribute :ability_boosts, array: true # дополнительные повышения характеристик
+    attribute :ability_boosts_v2, array: true # дополнительные повышения характеристик
     attribute :skill_boosts, array: true # дополнительные повышения навыков
   end
 
