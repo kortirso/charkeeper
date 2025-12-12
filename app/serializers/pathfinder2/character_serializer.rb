@@ -5,11 +5,11 @@ module Pathfinder2
     attributes :provider, :id, :name, :level, :race, :subrace, :main_class, :classes, :languages, :health, :abilities, :money,
                :skills, :created_at, :subclasses, :background, :saving_throws_value, :saving_throws, :dying_condition_value,
                :avatar, :boosts, :weapon_skills, :armor_skills, :coins, :load, :armor_class, :speed, :perception, :conditions,
-               :ability_boosts_v2, :skill_boosts
+               :ability_boosts_v2, :skill_boosts, :attacks
 
     delegate :id, :name, :level, :race, :subrace, :main_class, :classes, :languages, :health, :abilities, :skills, :subclasses,
              :background, :saving_throws_value, :saving_throws, :dying_condition_value, :boosts, :weapon_skills, :money,
-             :armor_skills, :coins, :load, :armor_class, :speed, :perception, :conditions, to: :decorator
+             :armor_skills, :coins, :load, :armor_class, :speed, :perception, :conditions, :attacks, to: :decorator
     delegate :data, :created_at, to: :object
     delegate :ability_boosts_v2, :skill_boosts, to: :data
 

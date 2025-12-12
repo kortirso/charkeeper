@@ -7,7 +7,7 @@ import {
   Pathfinder2SavingThrows
 } from '../../../pages';
 import {
-  CharacterNavigation, Equipment, Notes, Avatar, ContentWrapper, Conditions, Gold, createDiceRoll
+  CharacterNavigation, Equipment, Notes, Avatar, ContentWrapper, Conditions, Gold, createDiceRoll, Combat
 } from '../../../components';
 import { useAppLocale } from '../../../context';
 
@@ -66,6 +66,13 @@ export const Pathfinder2 = (props) => {
               <Pathfinder2Static character={character()} />
               <div class="mt-4">
                 <Pathfinder2Health character={character()} onReplaceCharacter={props.onReplaceCharacter} />
+              </div>
+              <div class="mt-4">
+                <Combat
+                  character={character()}
+                  openDiceRoll={openDiceRoll}
+                  onReplaceCharacter={props.onReplaceCharacter}
+                />
               </div>
             </Match>
             <Match when={activeMobileTab() === 'equipment'}>
@@ -147,6 +154,13 @@ export const Pathfinder2 = (props) => {
               <Pathfinder2Static character={character()} />
               <div class="mt-4">
                 <Pathfinder2Health character={character()} onReplaceCharacter={props.onReplaceCharacter} />
+              </div>
+              <div class="mt-4">
+                <Combat
+                  character={character()}
+                  openDiceRoll={openDiceRoll}
+                  onReplaceCharacter={props.onReplaceCharacter}
+                />
               </div>
             </Match>
             <Match when={activeTab() === 'equipment'}>

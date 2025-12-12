@@ -268,6 +268,59 @@ en:
           Two-Handed: Two-Handed
           primary_weapon: Primary
           secondary_weapon: Secondary
+    pathfinder2:
+      weapon:
+        bludge: Things that bludgeon you, like a hammer or fist.
+        pierce: Things that pierce you, like an arrow or fangs.
+        slash: Things that slash you, like a blade or claw.
+        agile: The multiple attack penalty you take with this weapon on the second attack on your turn is –4 instead of –5.
+        backstabber: When you hit an off-guard creature, this weapon deals 1 precision damage in addition to its normal damage. The precision damage increases to 2 if the weapon is a +3 weapon.
+        backswing: After missing with this weapon on your turn, you gain a +1 circumstance bonus to your next attack with this weapon before the end of your turn.
+        concealable: You gain a +2 circumstance bonus to Stealth checks and DCs to hide or conceal a weapon with this trait.
+        deadly: "On a critical hit, the weapon adds a weapon damage die of the listed size. Roll this after doubling the weapon's damage. This increases to two dice if the weapon has a greater striking rune and three dice if the weapon has a major striking rune."
+        disarm: "You can use this weapon to Disarm with the Athletics skill even if you don't have a free hand. This uses the weapon's reach (if different from your own) and adds the weapon's item bonus to attack rolls (if any) as an item bonus to the Athletics check. If you critically fail a check to Disarm using the weapon, you can drop the weapon to take the effects of a failure instead of a critical failure. On a critical success, you still need a free hand if you want to take the item."
+        fatal: The fatal trait includes a die size. On a critical hit, the weapon's damage die increases to that die size instead of the normal die size, and the weapon adds one additional damage die of the listed size.
+        forceful: When you attack with it more than once on your turn, the second attack gains a circumstance bonus to damage equal to the number of weapon damage dice, and each later attack gains a circumstance bonus to damage equal to double the number of damage dice.
+        free_hand: "This weapon doesn't take up your hand, usually because it is built into your armor. A free-hand weapon can't be Disarmed. You can use the hand covered by your free-hand weapon to wield other items, perform manipulate actions, and so on. You can't attack with a free-hand weapon if you're wielding anything in that hand or otherwise using that hand. When you're not wielding anything and not otherwise using the hand, you can use abilities that require you to have a hand free as well as those that require you to be wielding a weapon in that hand. Each of your hands can have only one free-hand weapon on it."
+        grapple: "You can use this weapon to Grapple with the Athletics skill even if you don't have a free hand. This uses the weapon's reach (if different from your own) and adds the weapon's item bonus to attack rolls as an item bonus to the Athletics check. If you critically fail a check to Grapple using the weapon, you can drop the weapon to take the effects of a failure instead of a critical failure."
+        jousting: When mounted, if you moved at least 10 feet on the action before your attack, add a circumstance bonus to damage for that attack equal to the number of damage dice for the weapon. In addition, while mounted, you can wield the weapon in one hand, changing the damage die to the listed value.
+        monk: Many monks learn to use these weapons.
+        nonlethal: Attacks with this weapon are nonlethal, and are used to knock creatures unconscious instead of kill them. You can use a nonlethal weapon to make a lethal attack with a –2 circumstance penalty.
+        parry: While wielding this weapon, if your proficiency with it is trained or better, you can spend a single action to position your weapon defensively, gaining a +1 circumstance bonus to AC until the start of your next turn.
+        ranged_trip: "The weapon can be used to Trip with the Athletics skill within the weapon's first range increment. The skill check takes a –2 circumstance penalty. You can add the weapon's item bonus to attack rolls as a bonus to the check. A ranged trip weapon doesn't deal any damage when used to Trip. These weapons are usually thrown."
+        shove: "You can use this weapon to Shove with the Athletics skill even if you don't have a free hand. This uses the weapon's reach (if different from your own) and adds the weapon's item bonus to attack rolls as an item bonus to the Athletics check. If you critically fail a check to Shove using the weapon, you can drop the weapon to take the effects of a failure instead of a critical failure."
+        sweep: When you attack with this weapon, you gain a +1 circumstance bonus to your attack roll if you already attempted to attack a different target this turn using this weapon.
+        thrown: You can throw this weapon as a ranged attack; it is a ranged weapon when thrown.
+        trip: "You can use this weapon to Trip with the Athletics skill even if you don't have a free hand. This uses the weapon's reach (if different from your own) and adds the weapon's item bonus to attack rolls as an item bonus to the Athletics check. If you critically fail a check to Trip using the weapon, you can drop the weapon to take the effects of a failure instead of a critical failure."
+        twin: "When you attack with a twin weapon, you add a circumstance bonus to the damage roll equal to the weapon's number of damage dice if you have previously attacked with a different weapon of the same type this turn. The weapons must be of the same type, but they don't need to have the same runes."
+        two_hand: "This weapon can be wielded with two hands to change its weapon damage die to the indicated value. This change applies to all the weapon's damage dice."
+        volley: Your attacks against targets that are at a distance within the range listed take a –2 penalty.
+        title:
+          bludge: Bludgeoning
+          pierce: Piercing
+          slash: Slashing
+          agile: Agile
+          backstabber: Backstabber
+          backswing: Backswing
+          concealable: Concealable
+          deadly: Deadly %{value}
+          disarm: Disarm
+          fatal: Fatal %{value}
+          forceful: Forceful
+          free_hand: Free-Hand
+          grapple: Grapple
+          jousting: Jousting %{value}
+          monk: Monk
+          nonlethal: Nonlethal
+          parry: Parry
+          ranged_trip: Ranged Trip
+          shove: Shove
+          sweep: Sweep
+          thrown: Thrown %{value}
+          trip: Trip
+          twin: Twin
+          two_hand: Two-Hand %{value}
+          volley: Volley %{value}
     dc20:
       weapon:
         Axe: You deal +1 situational damage against creatures that are Bleeding.

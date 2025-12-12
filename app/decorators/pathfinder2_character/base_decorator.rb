@@ -65,7 +65,100 @@ module Pathfinder2Character
       @defense_gear ||= calc_defense_gear
     end
 
+    def attacks
+      @attacks ||= [unarmed_attack] + weapon_attacks.flatten.compact
+    end
+
     private
+
+    def unarmed_attack
+      key_ability_bonus = find_key_ability_bonus('melee', ['finesse'])
+      {
+        slug: 'unarmed',
+        name: { en: 'Unarmed', ru: 'Безоружная' }[I18n.locale],
+        attack_bonus: key_ability_bonus + proficiency_bonus(weapon_skills['unarmed']),
+        damage: '1d4',
+        damage_bonus: abilities['str'],
+        tags: ['bludge'].index_with { |type| I18n.t("tags.pathfinder2.weapon.title.#{type}") }.merge(
+          { 'agile' => nil, 'nonlethal' => nil }.to_h do |key, value|
+            [key, I18n.t("tags.pathfinder2.weapon.title.#{key}", value: value)]
+          end
+        ),
+        ready_to_use: true
+      }
+    end
+
+    def weapon_attacks
+      weapons.flat_map do |item|
+        tooltips = parse_tooltips(item)
+
+        case item[:items_info]['type']
+        when 'melee' then melee_attack(item, tooltips)
+        when 'range' then range_attack(item, tooltips)
+        end
+      end
+    end
+
+    def parse_tooltips(item)
+      item[:items_info]['tooltips'].to_h do |tooltip|
+        items = tooltip.split('-')
+        next items if items.size == 2
+
+        items.push(nil)
+        items
+      end
+    end
+
+    def melee_attack(item, tooltips)
+      key_ability_bonus = find_key_ability_bonus('melee', tooltips.keys)
+      attack_values(item, key_ability_bonus, tooltips)
+        .merge({
+          thrown_attack_bonus: tooltips.key?('thrown') ? abilities['dex'] + proficiency_bonus(weapon_skills[item[:items_info]['weapon_skill']]) : nil, # rubocop: disable Layout/LineLength
+          distance: tooltips.key?('thrown') ? item[:items_info]['dist'] : (tooltips.key?('reach') ? 10 : nil), # rubocop: disable Style/NestedTernaryOperator
+          damage_bonus: abilities['str']
+        })
+    end
+
+    def range_attack(item, tooltips)
+      key_ability_bonus = find_key_ability_bonus('range')
+      attack_values(item, key_ability_bonus, tooltips)
+        .merge({
+          distance: item[:items_info]['dist'],
+          damage_bonus: tooltips.key?('propulsive') ? (abilities['str'].positive? ? (abilities['str'] / 2) : abilities['str']) : 0 # rubocop: disable Style/NestedTernaryOperator
+        })
+    end
+
+    def attack_values(item, key_ability_bonus, tooltips) # rubocop: disable Metrics/AbcSize
+      damage_types = item[:items_info]['damage_type'].split('-')
+      {
+        slug: item[:items_slug],
+        name: item[:items_name][I18n.locale.to_s],
+        attack_bonus: key_ability_bonus + proficiency_bonus(weapon_skills[item[:items_info]['weapon_skill']]),
+        damage: item[:items_info]['damage'],
+        notes: item[:notes],
+        tags: damage_types.index_with { |type| I18n.t("tags.pathfinder2.weapon.title.#{type}") }.merge(
+          tooltips.except('finesse', 'versatile', 'reach', 'propulsive').to_h do |key, value|
+            [key, I18n.t("tags.pathfinder2.weapon.title.#{key}", value: value)]
+          end
+        ),
+        ready_to_use: item[:state] ? item[:state].in?(::Character::Item::HANDS) : true
+      }.compact
+    end
+
+    def find_key_ability_bonus(type, tooltips=[])
+      return [abilities['str'], abilities['dex']].max if tooltips.include?('finesse')
+      return abilities['str'] if type == 'melee'
+
+      abilities['dex']
+    end
+
+    def weapons
+      __getobj__
+        .items
+        .joins(:item)
+        .where(items: { kind: 'weapon' })
+        .hashable_pluck('items.slug', 'items.name', 'items.data', 'items.info', :notes, :state)
+    end
 
     def skill_payload(slug, ability) # rubocop: disable Metrics/AbcSize
       proficiency_level = (lore_skills[slug] ? lore_skills.dig(slug, 'level') : selected_skills[slug]).to_i

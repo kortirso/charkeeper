@@ -113,16 +113,27 @@ export const Combat = (props) => {
                     <td class="pt-2 pb-1 pl-1">
                       <p>{attack.name}</p>
                     </td>
-                    <td class="pt-2 pb-1 text-center">
-                      <Dice
-                        width="28"
-                        height="28"
-                        text={modifier(attack.attack_bonus)}
-                        onClick={() => props.openDiceRoll(`/check attack ${attack.name}`, attack.attack_bonus)}
-                      />
+                    <td class="pt-2 pb-1">
+                      <div class="flex items-center justify-center">
+                        <Dice
+                          width="28"
+                          height="28"
+                          text={modifier(attack.attack_bonus)}
+                          onClick={() => props.openDiceRoll(`/check attack ${attack.name}`, attack.attack_bonus)}
+                        />
+                        <Show when={attack.thrown_attack_bonus}>
+                          <span> / </span>
+                          <Dice
+                            width="28"
+                            height="28"
+                            text={modifier(attack.thrown_attack_bonus)}
+                            onClick={() => props.openDiceRoll(`/check attack ${attack.name}`, attack.thrown_attack_bonus)}
+                          />
+                        </Show>
+                      </div>
                     </td>
                     <td class="pt-2 pb-1 text-center">
-                      <p>{attack.damage}{attack.damage_bonus > 0 ? modifier(attack.damage_bonus) : ''}</p>
+                      <p>{attack.damage}{attack.damage_bonus !== 0 ? modifier(attack.damage_bonus) : ''}</p>
                     </td>
                     <td class="pt-2 pb-1 text-center">
                       <Show when={character().provider === 'daggerheart'} fallback={<p>{attack.distance || attack.range}</p>}>

@@ -48,7 +48,7 @@ module Adminbook
     end
 
     def item_params
-      params.expect(item: [:slug, :data, :info, { name: %i[en ru], description: %i[en ru] }])
+      params.expect(item: [:slug, :data, :info, :kind, { name: %i[en ru], description: %i[en ru] }])
     end
   end
 end
