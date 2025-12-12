@@ -19,6 +19,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Fixed
 - rendering skills boosts for D&D characters
+- removing spells fro Daggerheart characters
 
 ## [0.3.23] - 2025-12-10
 ### Added

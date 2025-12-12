@@ -7,7 +7,8 @@ module Frontend
         include Deps[
           to_bool: 'to_bool',
           add_spell: 'commands.characters_context.daggerheart.add_spell',
-          change_spell: 'commands.characters_context.daggerheart.change_spell'
+          change_spell: 'commands.characters_context.daggerheart.change_spell',
+          refresh_feats: 'services.characters_context.daggerheart.refresh_feats'
         ]
         include SerializeRelation
         include SerializeResource
@@ -37,6 +38,7 @@ module Frontend
 
         def destroy
           @character_spell.destroy
+          refresh_feats.call(character: @character)
           only_head_response
         end
 
