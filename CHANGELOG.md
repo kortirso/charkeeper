@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Added
 - talents integration for D&D 2024 characters
 - subclasses selecting for DC20 characters
+- rendering attacks for Pathfinder2 characters
 
 ### Modified
 - switching tabs while changing guide step
