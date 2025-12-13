@@ -19,12 +19,18 @@ module CharactersContext
       private
 
       def do_prepare(input)
+        input[:existing_spell] =
+          ::Daggerheart::Character::Feat.find_by(character_id: input[:character].id, feat_id: input[:spell].id)
+        return if input[:existing_spell]
+
         active_spells =
           input[:character].feats.joins(:feat).where(ready_to_use: true).where(feats: { origin: 7 }).count
         input[:ready_to_use] = active_spells < 5
       end
 
       def do_persist(input)
+        return { result: input[:existing_spell] } if input[:existing_spell]
+
         result = ::Daggerheart::Character::Feat.create!(
           character: input[:character],
           feat: input[:spell],

@@ -38,6 +38,11 @@ FactoryBot.define do
       limit_refresh { 'long_rest' }
     end
 
+    trait :daggerheart do
+      type { 'Daggerheart::Feat' }
+      limit_refresh { 'long_rest' }
+    end
+
     trait :dnd5_bardic_inspiration do
       type { 'Dnd5::Feat' }
       slug { 'bardic_inspiration' }
