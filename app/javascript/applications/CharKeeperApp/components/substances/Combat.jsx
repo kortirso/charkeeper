@@ -1,6 +1,7 @@
 import { createSignal, createEffect, For, Show, batch, Switch, Match } from 'solid-js';
 
 import { ErrorWrapper, Dice, GuideWrapper, createModal, Button, Select } from '../../components';
+import daggerheartConfig from '../../data/daggerheart.json';
 import { useAppState, useAppLocale } from '../../context';
 import { Edit } from '../../assets';
 import { modifier, readFromCache, writeToCache } from '../../helpers';
@@ -94,27 +95,30 @@ export const Combat = (props) => {
     if (values.length === 0) return <></>;
 
     return (
-      <div class="p-4 mb-2">
-        <h2 class="text-lg font-normal! mb-2 dark:text-snow">{title}</h2>
+      <div class="p-4 mb-2 dark:text-snow">
+        <h2 class="text-lg font-normal! mb-2">{title}</h2>
         <table class="w-full table no-darks first-column-full-width table-top">
           <thead>
             <tr>
               <td />
-              <td class="text-center dark:text-snow">{TRANSLATION[locale()]['attack']}</td>
-              <td class="text-center dark:text-snow px-1">{TRANSLATION[locale()]['damage']}</td>
-              <td class="text-center dark:text-snow px-1">{TRANSLATION[locale()]['distance']}</td>
+              <td class="text-center">{TRANSLATION[locale()]['attack']}</td>
+              <td class="text-center px-1">{TRANSLATION[locale()]['damage']}</td>
+              <td class="text-center px-1">{TRANSLATION[locale()]['distance']}</td>
             </tr>
           </thead>
           <tbody>
             <For each={values}>
               {(attack, index) =>
                 <>
-                  <tr class="dark:text-snow border-t border-gray-200 dark:border-neutral-800" classList={{ 'bg-gray-50 dark:bg-neutral-700': index() % 2 === 1 }}>
+                  <tr class="border-t border-gray-200 dark:border-neutral-800" classList={{ 'bg-gray-50 dark:bg-neutral-700': index() % 2 === 1 }}>
                     <td class="pt-2 pb-1 pl-1">
                       <p>{attack.name}</p>
                     </td>
                     <td class="pt-2 pb-1">
                       <div class="flex items-center justify-center">
+                        <Show when={character().provider === 'daggerheart' && attack.trait}>
+                          <span class="mr-2 text-sm uppercase">{daggerheartConfig.traits[attack.trait].shortName[locale()]}</span>
+                        </Show>
                         <Dice
                           width="28"
                           height="28"
@@ -132,18 +136,22 @@ export const Combat = (props) => {
                         </Show>
                       </div>
                     </td>
-                    <td class="pt-2 pb-1 text-center">
-                      <p>{attack.damage}{attack.damage_bonus !== 0 ? modifier(attack.damage_bonus) : ''}</p>
+                    <td class="pt-2 pb-1">
+                      <div class="flex items-center justify-center h-7">
+                        <p>{attack.damage}{attack.damage_bonus !== 0 ? modifier(attack.damage_bonus) : ''}</p>
+                      </div>
                     </td>
-                    <td class="pt-2 pb-1 text-center">
-                      <Show when={character().provider === 'daggerheart'} fallback={<p>{attack.distance || attack.range}</p>}>
-                        <Show
-                          when={settings().includes('showSquares')}
-                          fallback={<p class="text-sm">{TRANSLATION[locale()]['distances'][attack.range]}</p>}
-                        >
-                          <p>{DH_SQUARE_DISTANCES[attack.range]}</p>
+                    <td class="pt-2 pb-1">
+                      <div class="flex items-center justify-center h-7">
+                        <Show when={character().provider === 'daggerheart'} fallback={<p>{attack.distance || attack.range}</p>}>
+                          <Show
+                            when={settings().includes('showSquares')}
+                            fallback={<p class="text-sm">{TRANSLATION[locale()]['distances'][attack.range]}</p>}
+                          >
+                            <p>{DH_SQUARE_DISTANCES[attack.range]}</p>
+                          </Show>
                         </Show>
-                      </Show>
+                      </div>
                     </td>
                   </tr>
                   <Show when={attack.tags && Object.keys(attack.tags).length > 0}>
@@ -162,7 +170,7 @@ export const Combat = (props) => {
                   <Show when={(attack.tags === undefined || character().provider === 'daggerheart') && attack.features && attack.features.length > 0}>
                     <tr classList={{ 'bg-gray-50 dark:bg-neutral-700': index() % 2 === 1 }}>
                       <td colspan="4" class="p-1">
-                        <p class="text-xs dark:text-snow">
+                        <p class="text-xs">
                           {typeof attack.features[0] === 'string' ? attack.features.join(', ') : attack.features.map((item) => item[locale()]).join(', ')}
                         </p>
                       </td>
@@ -171,7 +179,7 @@ export const Combat = (props) => {
                   <Show when={attack.notes && attack.notes.length > 0}>
                     <tr classList={{ 'bg-gray-50 dark:bg-neutral-700': index() % 2 === 1 }}>
                       <td colspan="4" class="p-1">
-                        <p class="text-xs dark:text-snow">{attack.notes}</p>
+                        <p class="text-xs">{attack.notes}</p>
                       </td>
                     </tr>
                   </Show>

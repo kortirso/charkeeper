@@ -406,12 +406,12 @@
     }
   },
   "traits": {
-    "str": { "name": { "en": "Strength", "ru": "Сила" } },
-    "agi": { "name": { "en": "Agility", "ru": "Проворность" } },
-    "fin": { "name": { "en": "Finesse", "ru": "Искусность" } },
-    "ins": { "name": { "en": "Instinct", "ru": "Инстинкт" } },
-    "pre": { "name": { "en": "Presence", "ru": "Влияние" } },
-    "know": { "name": { "en": "Knowledge", "ru": "Знание" } }
+    "str": { "name": { "en": "Strength", "ru": "Сила" }, "shortName": { "en": "Str", "ru": "Сил" } },
+    "agi": { "name": { "en": "Agility", "ru": "Проворность" }, "shortName": { "en": "Agi", "ru": "Пров" } },
+    "fin": { "name": { "en": "Finesse", "ru": "Искусность" }, "shortName": { "en": "Fin", "ru": "Иск" } },
+    "ins": { "name": { "en": "Instinct", "ru": "Инстинкт" }, "shortName": { "en": "Ins", "ru": "Инс" } },
+    "pre": { "name": { "en": "Presence", "ru": "Влияние" }, "shortName": { "en": "Pre", "ru": "Влн" } },
+    "know": { "name": { "en": "Knowledge", "ru": "Знание" }, "shortName": { "en": "Know", "ru": "Знан" } }
   },
   "ranges": {
     "melee": { "name": { "en": "Melee", "ru": "Вплотную" } },

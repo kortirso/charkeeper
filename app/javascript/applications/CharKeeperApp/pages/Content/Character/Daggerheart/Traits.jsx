@@ -77,11 +77,11 @@ export const DaggerheartTraits = (props) => {
           onReloadCharacter={props.onReloadCharacter}
         >
           <div class="blockable py-4">
-            <div class="grid grid-cols-3 emd:grid-cols-6 gap-2">
+            <div class="grid grid-cols-3 emd:grid-cols-6 elg:grid-cols-3 exl:grid-cols-6 gap-x-2 gap-y-4">
               <For each={Object.entries(config.traits).map(([key, values]) => [key, values.name[locale()]])}>
                 {([slug, trait]) =>
                   <div>
-                    <p class="text-sm uppercase text-center mb-4 dark:text-white">{trait}</p>
+                    <p class="text-sm uppercase text-center mb-2 dark:text-white">{trait}</p>
                     <div class="mx-auto flex items-center justify-center">
                       <p class="text-2xl font-normal! dark:text-snow">
                         {editMode() ?

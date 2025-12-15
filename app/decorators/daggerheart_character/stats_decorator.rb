@@ -1,15 +1,7 @@
 # frozen_string_literal: true
 
 module DaggerheartCharacter
-  class StatsDecorator < SimpleDelegator
-    def method_missing(method, *_args)
-      if instance_variable_defined?(:"@#{method}")
-        instance_variable_get(:"@#{method}")
-      else
-        instance_variable_set(:"@#{method}", __getobj__.public_send(method))
-      end
-    end
-
+  class StatsDecorator < ApplicationDecorator
     # rubocop: disable Naming/PredicateMethod
     def can_have_companion
       available_mechanics.include?('companion')
@@ -147,12 +139,13 @@ module DaggerheartCharacter
       leveling['selected_traits'].values.flatten.tally
     end
 
-    def beastform_attack
+    def beastform_attack # rubocop: disable Metrics/AbcSize
       beast_attack = beastform_config['attack']
 
       {
         name: { en: 'Beast attack', ru: 'Атака' }[I18n.locale],
         range: beast_attack['range'],
+        trait: use_max_trait_for_attack ? max_trait : beast_attack['trait'],
         attack_bonus: (use_max_trait_for_attack ? max_trait_value : modified_traits[beast_attack['trait']]) + attack_bonuses,
         damage: "#{proficiency}#{beast_attack['damage']}",
         damage_bonus: beast_attack['damage_bonus'],
@@ -169,6 +162,7 @@ module DaggerheartCharacter
       {
         name: { en: 'Unarmed', ru: 'Безоружная' }[I18n.locale],
         range: 'melee',
+        trait: use_max_trait_for_attack ? max_trait : max_unarmed_trait,
         attack_bonus: (use_max_trait_for_attack ? max_trait_value : [modified_traits['str'], modified_traits['fin']].max) + attack_bonuses + stance_attack_bonus, # rubocop: disable Layout/LineLength
         damage: "#{proficiency}d4",
         damage_bonus: 0,
@@ -181,11 +175,11 @@ module DaggerheartCharacter
       }
     end
 
-    # rubocop: disable Metrics/AbcSize, Metrics/MethodLength
-    def calculate_attack(item)
+    def calculate_attack(item) # rubocop: disable Metrics/AbcSize, Metrics/MethodLength, Metrics/PerceivedComplexity
       response = [{
         name: item[:items_name][I18n.locale.to_s],
         range: item[:items_info]['range'],
+        trait: use_max_trait_for_attack ? max_trait : item[:items_info]['trait'],
         attack_bonus: (use_max_trait_for_attack ? max_trait_value : trait_bonus(item)) + attack_bonuses + stance_attack_bonus +
                       item.dig(:items_info, 'bonuses', 'attack').to_i,
         damage: item[:items_info]['damage']&.gsub('d', "#{proficiency}d"),
@@ -217,11 +211,18 @@ module DaggerheartCharacter
 
       response
     end
-    # rubocop: enable Metrics/AbcSize, Metrics/MethodLength
 
     def trait_bonus(item)
       trait = item[:items_info]['trait']
       trait ? modified_traits[trait] : max_trait_value
+    end
+
+    def max_trait
+      modified_traits.max_by { |_k, v| v }[0]
+    end
+
+    def max_unarmed_trait
+      modified_traits.slice('str', 'fin').max_by { |_k, v| v }[0]
     end
 
     def max_trait_value
