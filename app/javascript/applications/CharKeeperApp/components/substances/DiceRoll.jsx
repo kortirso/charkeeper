@@ -176,7 +176,7 @@ export const createDiceRoll = () => {
             classList={{ 'dark': appState.colorSchema === 'dark', 'w-full sm:w-auto': isOpen() }}
             use:clickOutside={() => setIsOpen(undefined)}
           >
-            <div class="flex-1 flex flex-col sm:flex-row items-end">
+            <div class="flex-1 flex justify-end items-end">
               <Show when={isOpen() === 'botCommand'}>
                 <div class="p-4 blockable w-full sm:w-xs">
                   <div class="flex flex-wrap items-center gap-2">
@@ -324,7 +324,7 @@ export const createDiceRoll = () => {
                 </div>
               </Show>
               <Show when={isOpen() === 'rollCommand' && dices().length > 0}>
-                <div class="mb-2 sm:mb-0 p-4 blockable w-full sm:w-xs">
+                <div class="p-4 blockable w-full sm:w-xs">
                   <div class="flex items-center flex-wrap gap-2">
                     <For each={dices()}>
                       {(dice, index) =>
@@ -356,13 +356,14 @@ export const createDiceRoll = () => {
               </Show>
               <Show when={isOpen() !== 'botCommand'}>
                 <div
-                  class="blockable p-2 flex justify-between sm:flex-col sm:gap-2 sm:ml-4"
-                  classList={{ 'w-full sm:w-auto': isOpen() }}
+                  class="blockable p-2 flex justify-between flex-col gap-2 ml-4"
+                  classList={{ 'w-auto': isOpen() }}
                 >
                   <Show when={isOpen()}>
                     <Dice onClick={() => addDice('D4')} text="D4" />
                     <Dice onClick={() => addDice('D6')} text="D6" />
                     <Dice onClick={() => addDice('D8')} text="D8" />
+                    <Dice onClick={() => addDice('D10')} text="D10" />
                     <Dice onClick={() => addDice('D12')} text="D12" />
                     <Dice onClick={() => addDice('D20')} text="D20" />
                     <Dice onClick={() => addDice('D100')} text="D100" />
