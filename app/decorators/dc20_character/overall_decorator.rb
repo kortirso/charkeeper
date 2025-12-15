@@ -9,5 +9,9 @@ module Dc20Character
         'well_bloodied' => max_health / 4
       )
     end
+
+    def speeds
+      @speeds ||= __getobj__.speeds.transform_values { |item| item.nil? ? __getobj__.speeds['ground'] : item }
+    end
   end
 end

@@ -327,10 +327,10 @@
     "origin_value": "elf",
     "kind": "hidden",
     "info": {
-      "price": -1,
-      "merge": {
-        "abilities": { "mig": -1 }
-      }
+      "price": -1
+    },
+    "bonus_eval_variables": {
+      "modified_abilities": "modified_abilities.merge({ 'mig' => modified_abilities['mig'] - 1 })"
     }
   },
   {
@@ -510,10 +510,10 @@
     "origin_value": "dwarf",
     "kind": "hidden",
     "info": {
-      "price": -1,
-      "merge": {
-        "abilities": { "cha": -1 }
-      }
+      "price": -1
+    },
+    "bonus_eval_variables": {
+      "modified_abilities": "modified_abilities.merge({ 'cha' => modified_abilities['cha'] - 1 })"
     }
   },
   {

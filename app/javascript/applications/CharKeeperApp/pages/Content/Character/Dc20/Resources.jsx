@@ -1,4 +1,4 @@
-import { createMemo, Show } from 'solid-js';
+import { createMemo, Show, For } from 'solid-js';
 
 import { ErrorWrapper, GuideWrapper, Button } from '../../../../components';
 import { useAppState, useAppLocale, useAppAlert } from '../../../../context';
@@ -20,7 +20,18 @@ const TRANSLATION = {
     bloodied: 'Bloodied',
     wellBloodied: 'Well-Bloodied',
     door: "Death's Door",
-    dead: 'Dead'
+    dead: 'Dead',
+    environment: 'Environment',
+    speedTitle: 'Speed',
+    speeds: {
+      ground: 'Ground',
+      swim: 'Swim',
+      climb: 'Climb',
+      flight: 'Flight',
+      glide: 'Glide'
+    },
+    jump: 'Jump distance',
+    breath: 'Breath duration'
   },
   ru: {
     title: 'Ресурсы',
@@ -36,7 +47,18 @@ const TRANSLATION = {
     bloodied: 'Изранен',
     wellBloodied: 'Тяжело изранен',
     door: 'При смерти',
-    dead: 'Мёртв'
+    dead: 'Мёртв',
+    environment: 'Обстановка',
+    speedTitle: 'Скорость',
+    speeds: {
+      ground: 'Наземная',
+      swim: 'Плавание',
+      climb: 'Лазание',
+      flight: 'Полёт',
+      glide: 'Планирование'
+    },
+    jump: 'Дальность прыжка',
+    breath: 'Запас дыхания'
   }
 }
 
@@ -114,7 +136,7 @@ export const Dc20Resources = (props) => {
         </div>
       </div>
       <Show when={points.temp !== undefined}>
-        <div class="flex items-center mb-2 dark:text-snow">
+        <div class="flex items-center mb-2">
           <p class="text-sm/4 w-56">{TRANSLATION[locale()].temp[slug]}</p>
           <div class="flex items-center">
             <div class="w-6" />
@@ -127,28 +149,41 @@ export const Dc20Resources = (props) => {
           </div>
         </div>
       </Show>
-
     </Show>
   );
 
   return (
     <ErrorWrapper payload={{ character_id: character().id, key: 'Dc20Resources' }}>
       <GuideWrapper character={character()}>
-        <div class="blockable p-4 mb-2">
-          <h2 class="text-lg font-normal! mb-2 dark:text-snow">{TRANSLATION[locale()]['title']}</h2>
-          <div class="flex mb-2 dark:text-snow">
-            <p class="w-56" />
-            <div class="flex">
-              <div class="w-6" />
-              <p class="w-32 text-center">{healthStatus()}</p>
-              <div class="w-6" />
+        <div class="blockable p-4 mb-2 grid grid-cols-1 emd:grid-cols-3 gap-x-2 gap-y-4">
+          <div class="col-span-2">
+            <h2 class="text-lg font-normal! mb-2">{TRANSLATION[locale()]['title']}</h2>
+            <div class="flex mb-2">
+              <p class="w-56" />
+              <div class="flex">
+                <div class="w-6" />
+                <p class="w-32 text-center">{healthStatus()}</p>
+                <div class="w-6" />
+              </div>
             </div>
+            {renderAttribute(character().health, 'health')}
+            {renderAttribute(character().stamina_points, 'stamina_points')}
+            {renderAttribute(character().mana_points, 'mana_points')}
+            {renderAttribute(character().rest_points, 'rest_points')}
+            {renderAttribute(character().grit_points, 'grit_points')}
           </div>
-          {renderAttribute(character().health, 'health')}
-          {renderAttribute(character().stamina_points, 'stamina_points')}
-          {renderAttribute(character().mana_points, 'mana_points')}
-          {renderAttribute(character().rest_points, 'rest_points')}
-          {renderAttribute(character().grit_points, 'grit_points')}
+          <div class="">
+            <h2 class="text-lg font-normal! mb-4">{TRANSLATION[locale()].environment}</h2>
+            <h3 class="font-normal! mb-2">{TRANSLATION[locale()].speedTitle}</h3>
+            <p class="text-sm mb-2">{TRANSLATION[locale()].speeds.ground} - {character().speeds.ground}</p>
+            <For each={Object.entries(character().speeds).filter(([slug,]) => slug !== 'ground')}>
+              {([slug, value]) =>
+                <p class="text-sm mb-2">{TRANSLATION[locale()].speeds[slug]} - {value}</p>
+              }
+            </For>
+            <p class="text-sm mt-4">{TRANSLATION[locale()].jump} - {character().jump}</p>
+            <p class="text-sm mt-4">{TRANSLATION[locale()].breath} - {character().breath}</p>
+          </div>
         </div>
       </GuideWrapper>
     </ErrorWrapper>
