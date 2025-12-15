@@ -15,7 +15,12 @@ const TRANSLATION = {
     grit_points: 'Grit points',
     temp: {
       health: 'Temp health points',
-    }
+    },
+    healthy: 'Healthy',
+    bloodied: 'Bloodied',
+    wellBloodied: 'Well-Bloodied',
+    door: "Death's Door",
+    dead: 'Dead'
   },
   ru: {
     title: 'Ресурсы',
@@ -26,7 +31,12 @@ const TRANSLATION = {
     grit_points: 'Очки решимости',
     temp: {
       health: 'Временные очки здоровья',
-    }
+    },
+    healthy: 'Здоров',
+    bloodied: 'Изранен',
+    wellBloodied: 'Тяжело изранен',
+    door: 'При смерти',
+    dead: 'Мёртв'
   }
 }
 
@@ -40,12 +50,12 @@ export const Dc20Resources = (props) => {
   const healthStatus = createMemo(() => {
     const totalHealth = character().health.current + character().health.temp;
 
-    if (totalHealth > character().health.bloodied) return 'Healthy';
-    if (totalHealth > character().health.well_bloodied) return 'Bloodied';
-    if (totalHealth > 0) return 'Well-Bloodied';
-    if (totalHealth > character().health.death_threshold) return "Death's Door"
+    if (totalHealth > character().health.bloodied) return TRANSLATION[locale()].healthy;
+    if (totalHealth > character().health.well_bloodied) return TRANSLATION[locale()].bloodied;
+    if (totalHealth > 0) return TRANSLATION[locale()].wellBloodied;
+    if (totalHealth > character().health.death_threshold) return TRANSLATION[locale()].door;
 
-    return 'Dead';
+    return TRANSLATION[locale()].dead;
   });
 
   const updateTempResource = (attribute) => {

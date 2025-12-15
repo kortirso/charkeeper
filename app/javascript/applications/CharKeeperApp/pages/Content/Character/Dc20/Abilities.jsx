@@ -89,11 +89,11 @@ export const Dc20Abilities = (props) => {
           onSaveChanges={updateCharacter}
         >
           <div class="blockable p-4">
-            <div class="grid grid-cols-2 emd:grid-cols-4 gap-2">
+            <div class="grid grid-cols-2 emd:grid-cols-4 gap-x-2 gap-y-4">
               <For each={Object.entries(config.abilities).map(([key, values]) => [key, values.name[locale()]])}>
                 {([slug, ability]) =>
                   <div>
-                    <p class="text-sm uppercase text-center mb-4 dark:text-white">{ability}</p>
+                    <p class="text-sm uppercase text-center mb-2 dark:text-white">{ability}</p>
                     <div class="mx-auto flex items-center justify-center">
                       <p class="text-2xl font-normal! dark:text-snow">
                         {editMode() ?

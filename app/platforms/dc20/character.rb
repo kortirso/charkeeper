@@ -5,6 +5,7 @@ module Dc20
     include StoreModel::Model
 
     attribute :level, :integer, default: 1
+    attribute :speeds, array: true, default: { 'ground' => 5 } # ground/swim/climb/flight/glide
     attribute :main_class, :string
     attribute :subclass, :string
     attribute :ancestries, array: true
@@ -28,6 +29,7 @@ module Dc20
     attribute :path, array: true, default: []
     attribute :spell_list, array: true, default: [] # доступные списки заклинаний
     attribute :selected_talents, array: true, default: {}
+    attribute :selected_features, array: true, default: {} # { 'fighting_style' => ['fighting_style_defense'] }
     # доступные очки для распределения
     attribute :guide_step, :integer # этап помощи при создании персонажа
     attribute :ancestry_points, :integer, default: 0
@@ -69,7 +71,7 @@ module Dc20
       stats_decorator = ::Dc20Character::StatsDecorator.new(class_decorator)
       features_decorator = ::FeaturesDecorator.new(stats_decorator, version: version)
       features_decorator.features unless simple
-      features_decorator
+      ::Dc20Character::OverallDecorator.new(features_decorator)
     end
   end
 end

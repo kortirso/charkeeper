@@ -73,6 +73,7 @@ module CharactersContext
             required(:current).filled(:integer)
           end
           optional(:maneuvers).value(:array)
+          optional(:selected_features).hash
         end
 
         rule(:avatar_file, :avatar_url, :file).validate(:check_only_one_present)
@@ -140,7 +141,7 @@ module CharactersContext
 
         refresh_points(input[:character]) if input.key?(:level)
         refresh_maneuver_feats(input[:character]) if input.key?(:maneuvers)
-        refresh_feats.call(character: input[:character]) if %i[level subclass].intersect?(input.keys)
+        refresh_feats.call(character: input[:character]) if %i[level subclass selected_features].intersect?(input.keys)
         upload_avatar(input)
 
         { result: input[:character] }
