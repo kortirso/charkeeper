@@ -140,7 +140,7 @@ describe DaggerheartCharacter::BaseDecorator do
       expect(decorator.evasion).to eq 13
       expect(decorator.health_max).to eq 7
       expect(decorator.attacks.dig(0, :attack_bonus)).to eq 4
-      expect(decorator.attacks.dig(0, :damage)).to eq '2d8'
+      expect(decorator.attacks.dig(0, :damage)).to eq '3d8'
     end
   end
 end
