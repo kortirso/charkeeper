@@ -147,14 +147,14 @@ module DaggerheartCharacter
       leveling['selected_traits'].values.flatten.tally
     end
 
-    def beastform_attack # rubocop: disable Metrics/AbcSize
+    def beastform_attack
       beast_attack = beastform_config['attack']
 
       {
         name: { en: 'Beast attack', ru: 'Атака' }[I18n.locale],
         range: beast_attack['range'],
         attack_bonus: (use_max_trait_for_attack ? max_trait_value : modified_traits[beast_attack['trait']]) + attack_bonuses,
-        damage: "#{(proficiency / 2.0).round}#{beast_attack['damage']}",
+        damage: "#{proficiency}#{beast_attack['damage']}",
         damage_bonus: beast_attack['damage_bonus'],
         damage_type: beast_attack['damage_type'],
         kind: 'primary weapon',
