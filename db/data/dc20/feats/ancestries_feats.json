@@ -1,5 +1,73 @@
 [
   {
+    "slug": "attribute_increase",
+    "title": { "en": "Attribute Increase", "ru": "Увеличение атрибута" },
+    "description": {
+      "en": "The chosen Attribute increases by 1.",
+      "ru": "Значение атрибута увеличивается на 1."
+    },
+    "origin": "ancestry",
+    "origin_value": "human",
+    "kind": "hidden",
+    "info": {
+      "price": 2,
+      "increase": {
+        "attribute_points": 1
+      }
+    }
+  },
+  {
+    "slug": "skill_expertise",
+    "title": { "en": "Skill Expertise", "ru": "Компетентность в навыке" },
+    "description": {
+      "en": "Your Mastery Cap and Mastery Level in the chosen Skill both increase by 1.",
+      "ru": "Вы получаете Компетентность в навыке и повышаете его Ступень Мастерства."
+    },
+    "origin": "ancestry",
+    "origin_value": "human",
+    "kind": "hidden",
+    "info": {
+      "price": 2,
+      "increase": {
+        "skill_expertise_points": 1
+      }
+    }
+  },
+  {
+    "slug": "trade_expertise",
+    "title": { "en": "Trade Expertise", "ru": "Компетентность в ремесле" },
+    "description": {
+      "en": "Your Mastery Cap and Mastery Level in the chosen Trade both increase by 1.",
+      "ru": "Вы получаете Компетентность в ремесле и повышаете его Ступень Мастерства."
+    },
+    "origin": "ancestry",
+    "origin_value": "human",
+    "kind": "hidden",
+    "info": {
+      "price": 1,
+      "increase": {
+        "trade_expertise_points": 1
+      }
+    }
+  },
+  {
+    "slug": "attribute_decrease",
+    "title": { "en": "Attribute Decrease", "ru": "Уменьшение атрибута" },
+    "description": {
+      "en": "You decrease the chosen Attribute by 1.",
+      "ru": "Значение атрибута уменьшается на 1."
+    },
+    "origin": "ancestry",
+    "origin_value": "human",
+    "kind": "hidden",
+    "info": {
+      "price": -1,
+      "increase": {
+        "attribute_points": -1
+      }
+    }
+  },
+  {
     "slug": "human_resolve",
     "title": { "en": "Human Resolve", "ru": "Человеческое Упорство" },
     "description": {
@@ -8,7 +76,13 @@
     },
     "origin": "ancestry",
     "origin_value": "human",
-    "kind": "update_result"
+    "kind": "update_result",
+    "eval_variables": {
+      "health": "health.merge({ 'death_threshold' => health['death_threshold'] - 1 })"
+    },
+    "info": {
+      "price": 1
+    }
   },
   {
     "slug": "undying",
@@ -19,7 +93,10 @@
     },
     "origin": "ancestry",
     "origin_value": "human",
-    "kind": "static"
+    "kind": "static",
+    "info": {
+      "price": 0
+    }
   },
   {
     "slug": "human_determination",
@@ -34,7 +111,10 @@
     "description_eval_variables": {
       "limit": "1"
     },
-    "limit_refresh": "combat"
+    "limit_refresh": "combat",
+    "info": {
+      "price": 1
+    }
   },
   {
     "slug": "unbreakable",
@@ -45,6 +125,412 @@
     },
     "origin": "ancestry",
     "origin_value": "human",
-    "kind": "static"
+    "kind": "static",
+    "info": {
+      "price": 1
+    }
+  },
+  {
+    "slug": "elven_will",
+    "title": { "en": "Elven Will", "ru": "Эльфийская воля" },
+    "description": {
+      "en": "You have ADV on Checks and Saves against being Charmed and put to Sleep.",
+      "ru": "Вы получаете Преимущество на Проверки и Спасы против Очарования и Усыпления."
+    },
+    "origin": "ancestry",
+    "origin_value": "elf",
+    "kind": "static",
+    "info": {
+      "price": 1
+    }
+  },
+  {
+    "slug": "nimble",
+    "title": { "en": "Nimble", "ru": "Подвижный" },
+    "description": {
+      "en": "When you take the Dodge Action, you instead gain the benefits of the Full Dodge Action.",
+      "ru": "Когда вы Уклоняетесь, вы получаете бонусы, как если бы Активно Уклонялись."
+    },
+    "origin": "ancestry",
+    "origin_value": "elf",
+    "kind": "static",
+    "info": {
+      "price": 2
+    }
+  },
+  {
+    "slug": "agile_explorer",
+    "title": { "en": "Agile Explorer", "ru": "Ловкий исследователь" },
+    "description": {
+      "en": "You're not affected by Difficult Terrain.",
+      "ru": "На вас не влияет Труднопроходимая Местность."
+    },
+    "origin": "ancestry",
+    "origin_value": "elf",
+    "kind": "static",
+    "info": {
+      "price": 2
+    }
+  },
+  {
+    "slug": "discerning_sight",
+    "title": { "en": "Discerning Sight", "ru": "Распознающий взор" },
+    "description": {
+      "en": "You have ADV on Checks and Saves made to discern through visual illusions.",
+      "ru": "Вы получаете Преимущество на Проверки и Спасы, направленные на распознавание визуальных иллюзий."
+    },
+    "origin": "ancestry",
+    "origin_value": "elf",
+    "kind": "static",
+    "info": {
+      "price": 0
+    }
+  },
+  {
+    "slug": "quick_reactions",
+    "title": { "en": "Quick Reactions", "ru": "Быстрая реакция" },
+    "description": {
+      "en": "While you aren't wearing Armor, you gain +1 PD.",
+      "ru": "Без Брони вы получаете +1 ТЗ."
+    },
+    "origin": "ancestry",
+    "origin_value": "elf",
+    "kind": "update_result",
+    "info": {
+      "price": 1
+    },
+    "eval_variables": {
+      "precision_defense": "equiped_armor_info ? precision_defense : precision_defense.transform_values { |value| value + 1 }"
+    }
+  },
+  {
+    "slug": "peerless_sight",
+    "title": { "en": "Peerless Sight", "ru": "Острый взор" },
+    "description": {
+      "en": "You don't have DisADV as a result of making an Attack with a Weapon at Long Range.",
+      "ru": "Вы не получаете Помеху при Атаке Оружием на Предельную Дальность."
+    },
+    "origin": "ancestry",
+    "origin_value": "elf",
+    "kind": "static",
+    "info": {
+      "price": 1
+    }
+  },
+  {
+    "slug": "climb_speed",
+    "title": { "en": "Climb Speed", "ru": "Скорость лазания" },
+    "description": {
+      "en": "You gain a Climb Speed equal to your Movement Speed.",
+      "ru": "Вы получаете Скорость Лазания, равную вашей обычной Скорости."
+    },
+    "origin": "ancestry",
+    "origin_value": "elf",
+    "kind": "update_result",
+    "info": {
+      "price": 1
+    },
+    "eval_variables": {
+      "speeds": "speeds.merge({ 'climb' => nil })"
+    }
+  },
+  {
+    "slug": "speed_increase",
+    "title": { "en": "Speed Increase", "ru": "Увеличение скорости" },
+    "description": {
+      "en": "Your Speed increases by 1 Space.",
+      "ru": "Ваша Скорость увеличивается на 1 Клетку."
+    },
+    "origin": "ancestry",
+    "origin_value": "elf",
+    "kind": "update_result",
+    "info": {
+      "price": 2
+    },
+    "eval_variables": {
+      "speeds": "speeds.merge({ 'ground' => speeds['ground'] + 1 })"
+    }
+  },
+  {
+    "slug": "elf_trade_expertise",
+    "title": { "en": "Trade Expertise", "ru": "Компетентность в ремесле" },
+    "description": {
+      "en": "Your Mastery Cap and Mastery Level in the chosen Trade both increase by 1.",
+      "ru": "Вы получаете Компетентность в ремесле и повышаете его Ступень Мастерства."
+    },
+    "origin": "ancestry",
+    "origin_value": "elf",
+    "kind": "hidden",
+    "info": {
+      "price": 1,
+      "increase": {
+        "trade_expertise_points": 1
+      }
+    }
+  },
+  {
+    "slug": "plant_knowledge",
+    "title": { "en": "Plant Knowledge", "ru": "Знание растений" },
+    "description": {
+      "en": "While within forests, jungles, and swamps, you have ADV on Survival Checks. Additionally, you have ADV on Nature Checks made to recall information about plants.",
+      "ru": "Вы получаете Преимущество на Проверки Выживания, находясь в лесах, джунглях и болотах. Также вы получаете Преимущество на Проверки Природы, связанные с растениями."
+    },
+    "origin": "ancestry",
+    "origin_value": "elf",
+    "kind": "static",
+    "info": {
+      "price": 1
+    }
+  },
+  {
+    "slug": "brittle",
+    "title": { "en": "Brittle", "ru": "Тощий" },
+    "description": {
+      "en": "Your AD decreases by 1.",
+      "ru": "Вы получаете -1 ПЗ."
+    },
+    "origin": "ancestry",
+    "origin_value": "elf",
+    "kind": "update_result",
+    "info": {
+      "price": -1
+    },
+    "eval_variables": {
+      "area_defense": "area_defense.transform_values { |value| value - 1 }"
+    }
+  },
+  {
+    "slug": "frail",
+    "title": { "en": "Frail", "ru": "Хрупкий" },
+    "description": {
+      "en": "Your HP maximum decreases by 2.",
+      "ru": "Ваш максимум ОЗ уменьшается на 2."
+    },
+    "origin": "ancestry",
+    "origin_value": "elf",
+    "kind": "update_result",
+    "info": {
+      "price": -1
+    },
+    "eval_variables": {
+      "max_health": "max_health - 2"
+    }
+  },
+  {
+    "slug": "might_attribute_decrease",
+    "title": { "en": "Might Attribute Decrease", "ru": "Уменьшение атрибута мощи" },
+    "description": {
+      "en": "You decrease your Might by 1.",
+      "ru": "Ваша Мощь уменьшается на 1."
+    },
+    "origin": "ancestry",
+    "origin_value": "elf",
+    "kind": "hidden",
+    "info": {
+      "price": -1,
+      "merge": {
+        "abilities": { "mig": -1 }
+      }
+    }
+  },
+  {
+    "slug": "tough",
+    "title": { "en": "Tough", "ru": "Крепкий" },
+    "description": {
+      "en": "Your HP maximum increases by 1.",
+      "ru": "Ваш максимум ОЗ увеличивается на 1."
+    },
+    "origin": "ancestry",
+    "origin_value": "dwarf",
+    "kind": "update_result",
+    "info": {
+      "price": 1
+    },
+    "eval_variables": {
+      "max_health": "max_health + 1"
+    }
+  },
+  {
+    "slug": "toxic_fortitude",
+    "title": { "en": "Toxic Fortitude", "ru": "Устойчивость к токсинам" },
+    "description": {
+      "en": "You have Poison Resistance (Half) and ADV on Saves against being Poisoned.",
+      "ru": "Вы получаете Сопротивление Ядовитому (Половина) и Преимущество на Спасы от Отравления."
+    },
+    "origin": "ancestry",
+    "origin_value": "dwarf",
+    "kind": "static",
+    "info": {
+      "price": 2
+    }
+  },
+  {
+    "slug": "physically_sturdy",
+    "title": { "en": "Physically Sturdy", "ru": "Крепость тела" },
+    "description": {
+      "en": "You have ADV on Saves against being Impaired, Deafened, or Petrified.",
+      "ru": "Вы получаете Преимущество на Спасы от Ослабления, Оглушения и Окаменения."
+    },
+    "origin": "ancestry",
+    "origin_value": "dwarf",
+    "kind": "static",
+    "info": {
+      "price": 2
+    }
+  },
+  {
+    "slug": "iron_stomach",
+    "title": { "en": "Iron Stomach", "ru": "Железный желудок" },
+    "description": {
+      "en": "You have ADV on Saves against effects that come from consuming food or liquids.",
+      "ru": "Вы получаете ПРЕИМ на Спасы от эффектов, вызванных употреблением веществ в пищу."
+    },
+    "origin": "ancestry",
+    "origin_value": "dwarf",
+    "kind": "static",
+    "info": {
+      "price": 0
+    }
+  },
+  {
+    "slug": "thick-skinned",
+    "title": { "en": "Thick-Skinned", "ru": "Толстокожий" },
+    "description": {
+      "en": "While you aren't wearing Armor, you gain +1 AD.",
+      "ru": "Без Брони вы получаете +1 ПЗ."
+    },
+    "origin": "ancestry",
+    "origin_value": "dwarf",
+    "kind": "update_result",
+    "info": {
+      "price": 1
+    },
+    "eval_variables": {
+      "area_defense": "equiped_armor_info ? area_defense : area_defense.transform_values { |value| value + 1 }"
+    }
+  },
+  {
+    "slug": "natural_combatant",
+    "title": { "en": "Natural Combatant", "ru": "Прирождённый боец" },
+    "description": {
+      "en": "You gain Combat Training with Heavy Armor and All Shields.",
+      "ru": "Вы получаете Подготовку Оружия, Брони и всех Щитов."
+    },
+    "origin": "ancestry",
+    "origin_value": "dwarf",
+    "kind": "hidden",
+    "info": {
+      "price": 1,
+      "rewrite": {
+        "combat_expertise": ["weapon", "light_armor", "heavy_armor", "light_shield", "heavy_shield"]
+      }
+    }
+  },
+  {
+    "slug": "stone_blood",
+    "title": { "en": "Stone Blood", "ru": "Каменная кровь" },
+    "description": {
+      "en": "You have ADV on Saves against Bleeding. Additionally, you can spend 1 AP to end the Bleeding Condition on yourself.",
+      "ru": "Вы получаете Преимущество на Спасы от Ранения. Также вы можете потратить 1 ОД, чтобы избавиться от Ранения."
+    },
+    "origin": "ancestry",
+    "origin_value": "dwarf",
+    "kind": "static",
+    "info": {
+      "price": 1
+    }
+  },
+  {
+    "slug": "minor_tremorsense",
+    "title": { "en": "Minor Tremorsense", "ru": "Малое чувство вибрации" },
+    "description": {
+      "en": "You have Tremorsense 3 Spaces.",
+      "ru": "Вы получаете Чувство Вибрации на 3 Клетки."
+    },
+    "origin": "ancestry",
+    "origin_value": "dwarf",
+    "kind": "static",
+    "info": {
+      "price": 1
+    }
+  },
+  {
+    "slug": "stubborn",
+    "title": { "en": "Stubborn", "ru": "Упрямый" },
+    "description": {
+      "en": "You have ADV on Saves against being Taunted and against being forcibly moved.",
+      "ru": "Вы получаете Преимущество на Спасы от Провокации и принудительного перемещения."
+    },
+    "origin": "ancestry",
+    "origin_value": "dwarf",
+    "kind": "static",
+    "info": {
+      "price": 2
+    }
+  },
+  {
+    "slug": "dwarf_trade_expertise",
+    "title": { "en": "Trade Expertise", "ru": "Компетентность в ремесле" },
+    "description": {
+      "en": "Your Mastery Cap and Mastery Level in the chosen Trade both increase by 1.",
+      "ru": "Вы получаете Компетентность в ремесле и повышаете его Ступень Мастерства."
+    },
+    "origin": "ancestry",
+    "origin_value": "dwarf",
+    "kind": "hidden",
+    "info": {
+      "price": 1,
+      "increase": {
+        "trade_expertise_points": 1
+      }
+    }
+  },
+  {
+    "slug": "earthen_knowledge",
+    "title": { "en": "Earthen Knowledge", "ru": "Знание земли" },
+    "description": {
+      "en": "While within mountainous and subterranean environments, you have ADV on Survival Checks. Additionally, you have ADV on Nature Checks made to recall information about rocks, soil, crystals, and gems.",
+      "ru": "Вы получаете ПРЕИМ на Проверки Выживания, находясь в горной или подземной местности. Также вы получаете ПРЕИМ на Проверки Природы, связанные с камнями, почвой, кристаллами и драгоценностями."
+    },
+    "origin": "ancestry",
+    "origin_value": "dwarf",
+    "kind": "static",
+    "info": {
+      "price": 1
+    }
+  },
+  {
+    "slug": "charisma_attribute_decrease",
+    "title": { "en": "Charisma Attribute Decrease", "ru": "Уменьшение атрибута харизмы" },
+    "description": {
+      "en": "You decrease your Charisma by 1.",
+      "ru": "Ваша Харизма уменьшается на 1."
+    },
+    "origin": "ancestry",
+    "origin_value": "dwarf",
+    "kind": "hidden",
+    "info": {
+      "price": -1,
+      "merge": {
+        "abilities": { "cha": -1 }
+      }
+    }
+  },
+  {
+    "slug": "short-legged",
+    "title": { "en": "Short-Legged", "ru": "Коротконогий" },
+    "description": {
+      "en": "Your Speed decreases by 1 Space.",
+      "ru": "Ваша Скорость уменьшается на 1 Клетку."
+    },
+    "origin": "ancestry",
+    "origin_value": "dwarf",
+    "kind": "update_result",
+    "info": {
+      "price": -1
+    },
+    "eval_variables": {
+      "speeds": "speeds.merge({ 'ground' => speeds['ground'] - 1 })"
+    }
   }
 ]

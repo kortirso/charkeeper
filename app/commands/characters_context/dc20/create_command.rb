@@ -3,6 +3,10 @@
 module CharactersContext
   module Dc20
     class CreateCommand < BaseCommand
+      include Deps[
+        add_feat: 'commands.characters_context.dc20.feats.add'
+      ]
+
       use_contract do
         config.messages.namespace = :dc20_character
 
@@ -35,16 +39,9 @@ module CharactersContext
       end
 
       def attach_feats(character, feat_slugs)
-        feats_for_adding = feats_relation(character, feat_slugs).map do |feat|
-          {
-            feat_id: feat.id,
-            character_id: character.id,
-            used_count: 0,
-            limit_refresh: feat.limit_refresh,
-            ready_to_use: true
-          }
+        feats_relation(character, feat_slugs).map do |feat|
+          add_feat.call({ character: character, feat: feat })
         end
-        ::Character::Feat.upsert_all(feats_for_adding) if feats_for_adding.any?
       end
 
       def feats_relation(character, feat_slugs)

@@ -301,19 +301,19 @@ export const Dc20Skills = (props) => {
         onNextClick={props.onNextGuideStepClick}
       >
         <div class="blockable pb-2">
-          <div class="p-4 flex mb-2">
+          <div class="p-4 pb-0 sm:pb-4 flex flex-col sm:flex-row">
             <div class="dc20-points-caption">
               <p>{TRANSLATION[locale()]['skillPoints']} {skillPoints.skillPoints}</p>
               <p>{TRANSLATION[locale()]['expertisePoints']} {skillPoints.skillExpertisePoints}</p>
             </div>
-            <div class="dc20-points-convert cursor-pointer" onClick={convertSkillPoint}>
+            <div class="dc20-points-convert" onClick={convertSkillPoint}>
               <p>1:2</p>
             </div>
             <div class="dc20-points-caption">
               <p>{TRANSLATION[locale()]['tradePoints']} {skillPoints.tradePoints}</p>
               <p>{TRANSLATION[locale()]['expertisePoints']} {skillPoints.tradeExpertisePoints}</p>
             </div>
-            <div class="dc20-points-convert cursor-pointer" onClick={convertTradePoint}>
+            <div class="dc20-points-convert" onClick={convertTradePoint}>
               <p>1:2</p>
             </div>
             <div class="dc20-points-caption">

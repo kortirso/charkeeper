@@ -3,15 +3,6 @@
 module Dc20Character
   module Classes
     class WizardDecorator < ApplicationDecorator
-      def health
-        @health ||= __getobj__.health.merge(
-          'max' => max_health,
-          'bloodied' => max_health / 2,
-          'well_bloodied' => max_health / 4,
-          'death_threshold' => 0 - modified_abilities['prime'] - combat_mastery
-        )
-      end
-
       def mana_points
         @mana_points ||= __getobj__.mana_points.merge('max' => mana_points_by_level)
       end
@@ -32,11 +23,11 @@ module Dc20Character
         1
       end
 
-      private
-
       def max_health
         @max_health ||= 6 + (2 * level) + modified_abilities['mig']
       end
+
+      private
 
       def mana_points_by_level
         return 16 if level >= 9

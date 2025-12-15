@@ -125,6 +125,7 @@ Rails.application.routes.draw do
         end
         resources :talents, only: %i[index create], module: 'characters'
       end
+      resources :ancestries, only: %i[index]
     end
 
     scope ':provider' do

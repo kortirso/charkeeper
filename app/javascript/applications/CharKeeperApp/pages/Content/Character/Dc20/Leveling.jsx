@@ -43,7 +43,9 @@ const TRANSLATION = {
     selectTalent: 'Select new talent',
     selectMulticlassFeature: 'Select multiclass feature',
     selectSubclass: 'Select subclass',
-    paragon: 'Paragon'
+    paragon: 'Paragon',
+    general: 'General',
+    multiclass: 'Multiclass'
   },
   ru: {
     currentLevel: 'уровень',
@@ -77,7 +79,9 @@ const TRANSLATION = {
     selectTalent: 'Выберите новый талант',
     selectMulticlassFeature: 'Выберите черту любого класса',
     selectSubclass: 'Выберите подкласс',
-    paragon: 'Эталон'
+    paragon: 'Эталон',
+    general: 'Общий',
+    multiclass: 'Мультикласс'
   }
 }
 
@@ -112,10 +116,17 @@ export const Dc20Leveling = (props) => {
     setLastActiveCharacterId(character().id);
   });
 
+  const talentOrigin = (item) => {
+    if (item.origin_value === 'general') return `${item.title} (${TRANSLATION[locale()].general})`;
+    if (item.origin_value === 'multiclass') return `${item.title} (${TRANSLATION[locale()].multiclass})`;
+
+    return `${item.title} (${config.classes[item.origin_value].name[locale()]})`;
+  }
+
   const availableTalents = createMemo(() => {
     if (talents() === undefined) return {};
 
-    return talents().filter((item) => item.multiple || !item.selected).reduce((acc, item) => { acc[item.id] = item.title; return acc }, {});
+    return talents().filter((item) => item.multiple || !item.selected).reduce((acc, item) => { acc[item.id] = talentOrigin(item); return acc }, {});
   });
 
   const availableSubclasses = createMemo(() => {
@@ -151,6 +162,7 @@ export const Dc20Leveling = (props) => {
 
     if (talent.origin_value === 'multiclass') {
       const result = await fetchTalentFeatures(1);
+      console.log(result.talents)
       setTalentFeatures(result.talents)
     } else {
       batch(() => {
@@ -198,8 +210,7 @@ export const Dc20Leveling = (props) => {
               {' '}- {character().level} {TRANSLATION[locale()].currentLevel}
             </p>
           </div>
-
-          <Show when={!character().subclass}>
+          <Show when={character().level >= 3 && !character().subclass}>
             <Select
               labelText={TRANSLATION[locale()].selectSubclass}
               containerClassList="mt-2"
@@ -312,7 +323,7 @@ export const Dc20Leveling = (props) => {
                 <Select
                   labelText={TRANSLATION[locale()].selectMulticlassFeature}
                   containerClassList="flex-1 mt-1"
-                  items={talentFeatures().reduce((acc, item) => { acc[item.id] = item.title; return acc }, {})}
+                  items={talentFeatures().reduce((acc, item) => { acc[item.id] = `${item.title} (${config.classes[item.origin_value] ? config.classes[item.origin_value].name[locale()] : ''})`; return acc }, {})}
                   selectedValue={selectedMultiTalent()?.id}
                   onSelect={modifySelectedMultiTalent}
                 />

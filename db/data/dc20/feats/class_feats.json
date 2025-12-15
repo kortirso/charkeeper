@@ -61,7 +61,169 @@
     "conditions": { "level": 1 },
     "eval_variables": {
       "area_defense": "equiped_armor_info ? area_defense : area_defense.transform_values { |value| value + 2 }",
-      "speed": "equiped_armor_info ? speed : (speed + 1)"
+      "speeds": "speeds.merge({ 'ground' => speeds['ground'] + 1 })"
     }
+  },
+  {
+    "slug": "bound_weapon",
+    "title": { "en": "Bound Weapon", "ru": "Связанное оружие" },
+    "description": {
+      "en": "Your Bound Weapon gains the following properties:\n\n- When you make a Martial Attack with the Weapon, you can spend 1 or more SP to deal +2 Bound Damage per SP spent. When you do, you also gain the benefits of 1 Attack Maneuver of your choice for free.\n- You can cause the Weapon to emit a 5 Spaces of Dim or Bright Light (you choose the light's appearance). You can extinguish, produce, or adjust the level of this illumination at any time for free.\n- While the Weapon is within 20 Spaces and isn't being held or secured, you can call your Weapon back to you for free, causing it to fly to you. If you don't have a free hand when you call it, or you choose not to grab it, it falls in your Space at your feet.",
+      "ru": "Пока вы держите ваше Связанное Оружие в руках, оно приобретает следующие свойства:\n\n- Когда вы совершаете Бойцовскую Атаку Связанным Оружием, вы можете потратить 1 или более ОВ, чтобы нанести +2 Связанного урона за каждое потраченное ОВ. Когда вы так делаете, вы также можете использовать один Приём Атаки на ваш выбор бесплатно.\n- Вы можете заставить Оружие излучать Тусклый или Яркий Свет в радиусе 5 Клеток (вы выбираете, как он выглядит). Вы можете создавать, изменять и погашать свечение бесплатно в любое время.\n- Если ваше Связанное Оружие находится в пределах 20 Клеток от вас и его ничто и никто не удерживает, вы можете бесплатно возвратить его, заставив полететь к вам в руку. Если во время возврата ваши руки заняты или вы решите не брать Связанное Оружие в руку, оно падает в вашей Клетке у ваших ног."
+    },
+    "origin": "class",
+    "origin_value": "spellblade",
+    "kind": "one_from_list",
+    "conditions": { "level": 1 },
+    "options": {
+      "elemental_damage": { "en": "Elemental Damage", "ru": "Стихийный урон" },
+      "mystical_damage": { "en": "Mystical Damage", "ru": "Мистический урон" }
+    }
+  },
+  {
+    "slug": "spellblade_disciplines",
+    "title": { "en": "Spellblade Disciplines", "ru": "Дисциплины Мага клинка" },
+    "description": {
+      "en": "You learn 2 Spellblade Disciplines.",
+      "ru": "Вы изучаете 2 Дисциплины Мага Клинка."
+    },
+    "origin": "class",
+    "origin_value": "spellblade",
+    "kind": "many_from_list",
+    "conditions": { "level": 1 },
+    "options": {
+      "magus": { "en": "Magus", "ru": "Магус" },
+      "warrior": { "en": "Warrior", "ru": "Воитель" },
+      "acolyte": { "en": "Acolyte", "ru": "Аколит" },
+      "hex_warrior": { "en": "Hex Warrior", "ru": "Проклинающий" },
+      "spell_breaker": { "en": "Spell Breaker", "ru": "Разрушитель заклинаний" },
+      "spell_warder": { "en": "Spell Warder", "ru": "Оберег от заклинаний" },
+      "blink_blade": { "en": "Blink Blade", "ru": "Мерцающий клинок" }
+    }
+  },
+  {
+    "slug": "magus",
+    "title": { "en": "Magus", "ru": "Магус" },
+    "description": {
+      "en": "",
+      "ru": ""
+    },
+    "origin": "class",
+    "origin_value": "spellblade",
+    "kind": "hidden",
+    "eval_variables": {
+      "mana_points": "mana_points.merge({ 'max' => mana_points['max'] + 1 })",
+      "spells": "spells + 1"
+    },
+    "conditions": { "selected_feature": "magus" }
+  },
+  {
+    "slug": "warrior",
+    "title": { "en": "Warrior", "ru": "Воитель" },
+    "description": {
+      "en": "",
+      "ru": ""
+    },
+    "origin": "class",
+    "origin_value": "spellblade",
+    "kind": "hidden",
+    "bonus_eval_variables": {
+      "combat_expertise": "combat_expertise.concat(['heavy_armor', 'heavy_shield']).uniq"
+    },
+    "eval_variables": {
+      "maneuver_points": "maneuver_points + 2"
+    },
+    "conditions": { "selected_feature": "warrior" }
+  },
+  {
+    "slug": "acolyte",
+    "title": { "en": "Acolyte", "ru": "Аколит" },
+    "description": {
+      "en": "You can spend 1 AP and 1 MP to produce 1 of the following effects:\n\n- You gain a pool of healing that you can use to restore HP to any number of creatures within 5 Spaces of you, distributing the HP among them (minimum of 1 HP each). Make a DC 10 Spell Check. Success: You can restore up to 3 HP. Success (each 5): +1 HP. Failure: You only restore up to 2 HP.\n- You can attempt to remove 1 Poison or Disease from a creature of your choice within 1 Space of you. Make a Spell Check against the DC of the Poison or Disease. Success: The chosen Poison or Disease ends on the target.",
+      "ru": "Вы можете потратить 1 ОД и 1 ОМ, чтобы создать один из следующих эффектов:\n\n- Вы получаете запас целительных сил в форме ОЗ, который можете немедленно использовать для восстановления здоровья любому количеству существ в пределах 5 Клеток, распределяя ОЗ между ними. Совершите Проверку Заклинания СЛ 10. Успех: Вы можете восстановить до 3 ОЗ. Успех (каждые 5): +1 ОЗ. Провал: Вы восстанавливаете только до 2 ОЗ.\n- Вы можете попытаться излечить 1 Яд или Болезнь, действующие на выбранное существо в пределах 1 Клетки от вас. Совершите Проверку Заклинания против СЛ Яда или Болезни. Успех: Цель избавляется от Яда или Болезни."
+    },
+    "origin": "class",
+    "origin_value": "spellblade",
+    "kind": "static",
+    "conditions": { "selected_feature": "acolyte" },
+    "price": { "ap": 1, "mp": 1 }
+  },
+  {
+    "slug": "hex_warrior",
+    "title": { "en": "Hex Warrior", "ru": "Проклинающий" },
+    "description": {
+      "en": "You can spend 1 AP and 1 MP to Curse a creature within 10 Spaces for 1 minute. You make a Spell Check against the target's Repeated Physical Save. Save Failure: The target is Dazed or Impaired (your choice) and takes 1 Umbral damage at the start of each of their turns. Additionally, they're prevented from regaining HP.",
+      "ru": "Вы можете потратить 1 ОД и 1 ОМ, чтобы Проклясть существо в пределах 5 Клеток на 1 минуту. Совершите Проверку Заклинания против Повторяемого Физического Спаса цели. Провал Спаса: Цель Потрясена или Ослаблена (на ваш выбор), получает 1 Сумрачного урона в начале каждого своего Хода и не может восстанавливать ОЗ."
+    },
+    "origin": "class",
+    "origin_value": "spellblade",
+    "kind": "static",
+    "conditions": { "selected_feature": "hex_warrior" },
+    "price": { "ap": 1, "mp": 1 }
+  },
+  {
+    "slug": "spell_breaker",
+    "title": { "en": "Spell Breaker", "ru": "Разрушитель заклинаний" },
+    "description": {
+      "en": "You can spend 2 AP to initiate a Spell Duel against a Spell Attack using a Weapon instead of casting a Spell, provided the Initiator or a target of the Spell is within the range of your Weapon. When you do, you make an Attack Check and you can spend SP and MP (for a total up to your Mana Spend Limit) to gain a bonus on your Check equal to the SP and MP spent. You have ADV on your Check if you are within 1 Space of the Initiator.",
+      "ru": "Вы можете потратить 2 ОД на то, чтобы начать Дуэль Заклинаний используя ваше Оружие вместо Заклинания. При этом Инициатор или цель Заклинания должны находиться в пределах досягаемости вашего Оружия. Вы совершаете Проверку Атаки и можете потратить ОВ и ОМ (вплоть до вашего Предела Траты Маны), чтобы получить бонус к вашей Проверке, равный сумме потраченных ОВ и ОМ. Вы получаете Преимущество на эту Проверку, если находитесь в пределах 1 Клетки от Инициатора."
+    },
+    "origin": "class",
+    "origin_value": "spellblade",
+    "kind": "static",
+    "conditions": { "selected_feature": "spell_breaker" },
+    "price": { "ap": 2 }
+  },
+  {
+    "slug": "spell_warder",
+    "title": { "en": "Spell Warder", "ru": "Оберег от заклинаний" },
+    "description": {
+      "en": "When you deal Elemental or Mystical damage with an Attack, you gain Resistance (1) to that damage type until the start of your next turn. If you deal Elemental or Mystical damage again while this is already active, you can choose to keep the current Resistance or switch it out for the new one instead.",
+      "ru": "Когда ваша Атака наносит Стихийный или Мистический урон, вы получаете Сопротивление (1) к этому типу урона до начала вашего следующего Хода. Если вы снова наносите Стихийный или Мистический урон, вы можете сохранить текущее Сопротивление или заменить его на новое."
+    },
+    "origin": "class",
+    "origin_value": "spellblade",
+    "kind": "static",
+    "conditions": { "selected_feature": "spell_warder" }
+  },
+  {
+    "slug": "blink_blade",
+    "title": { "en": "Blink Blade", "ru": "Мерцающий клинок" },
+    "description": {
+      "en": "Once per turn, when you make an Attack, you can choose to teleport to a Space you can see within 1 Space immediately before or after making the Attack (your choice).",
+      "ru": "Один раз за Ход, когда вы совершаете Атаку, вы можете телепортироваться в свободную соседнюю Клетку, которую можете видеть, сразу до или после совершения Атаки (на ваш выбор)."
+    },
+    "origin": "class",
+    "origin_value": "spellblade",
+    "kind": "static",
+    "conditions": { "selected_feature": "blink_blade" }
+  },
+  {
+    "slug": "sense_magic",
+    "title": { "en": "Sense Magic", "ru": "Ощутить магию" },
+    "description": {
+      "en": "You can spend 1 minute focusing your mind to detect the following creature types within 20 Spaces: Aberration, Celestial, Elemental, Fey, Fiend, or Undead. Make a Spell Check against each creature's Mental Save. Check Success: You learn the target's creature type and know its location until the end of your next turn. Check Failure: You learn nothing and can't use this Feature against the target again until you complete a Long Rest.",
+      "ru": "Вы можете сосредоточиться на 1 минуту, чтобы попытаться обнаружить присутствие следующих типов существ в пределах 20 Клеток: Аберрации, Небожители, Элементали, Феи, Исчадия и Нежить. Совершите Проверку Заклинания против Ментального Спаса каждого существа. Успех Проверки: Вы узнаёте тип существа, являющегося целью, и ощущаете его местоположение до конца своего следующего Хода. Провал Проверка: Вы ничего не узнаёте об этой конкретной цели и не можете снова использовать эту Черту против неё, пока не завершите Длительный Отдыха."
+    },
+    "origin": "class_flavor",
+    "origin_value": "spellblade",
+    "kind": "static",
+    "conditions": { "level": 1 }
+  },
+  {
+    "slug": "spellstrike",
+    "title": { "en": "Spellstrike", "ru": "Удар заклинанием" },
+    "description": {
+      "en": "Once on each of your turns when you make a Martial Attack, you can also cast a Spell as part of the same Action, spending 1 AP less than normal.\n\n- When you do, the Spell can only target 1 creature who must be a target of the Attack, and the range of the Attack can't exceed the range of the Spell. The Spell uses the Attack Check as its Spell Check for any of its requirements, and any Saves you force the target to make are made against your Save DC.\n- The Attack and Spell from a Spellstrike are treated as 1 Attack, and can benefit from Maneuvers and Spell Enhancements. The Spell doesn't require Somatic Components.",
+      "ru": "Один раз за каждый свой Ход, когда вы совершаете Бойцовскую Атаку, вы можете наложить Заклинание частью этого же действия. Стоимость этого Заклинания уменьшается на 1 ОД (вплоть до 0 ОД).\n\n- Это Заклинание может быть применено только к 1 цели Атаки в вашей Досягаемости. Заклинание использует Проверку Атаки вместо Проверки Заклинания для всех своих требований, и все наложенные им Спасы совершаются против вашей СЛ Спаса.\n- Бойцовская Атака и Заклинание от Удара Заклинаем считаются одной Атакой, и могут быть дополнены Приёмами и Улучшениями Заклинания. Такое Заклинание не требует Соматического Компонента."
+    },
+    "origin": "class",
+    "origin_value": "spellblade",
+    "kind": "static",
+    "conditions": { "level": 2 },
+    "description_eval_variables": {
+      "limit": "1"
+    },
+    "limit_refresh": "long_rest"
   }
 ]

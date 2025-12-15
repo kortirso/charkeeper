@@ -22,7 +22,7 @@ module CharactersContext
           ActiveRecord::Base.transaction do
             feat_id = input[:talent].id
 
-            input[:character].feats.find_or_create_by(feat_id: feat_id)
+            input[:character].feats.create_with(ready_to_use: true).find_or_create_by(feat_id: feat_id)
 
             selected_talents = input[:character].data.selected_talents
             selected_talents.key?(feat_id) ? selected_talents[feat_id] += 1 : selected_talents[feat_id] = 1

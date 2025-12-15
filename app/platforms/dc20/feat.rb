@@ -13,6 +13,8 @@ module Dc20
     STATIC = 'static' # рендерится текст
     UPDATE_RESULT = 'update_result' # рендерится, но затемняется
     HIDDEN = 'hidden'
+    ONE_FROM_LIST = 'one_from_list' # рендерится список, выбирается одно значение
+    MANY_FROM_LIST = 'many_from_list' # рендерится список, выбирается несколько значений
 
     SHORT_REST = 'short_rest'
     LONG_REST = 'long_rest'
@@ -29,7 +31,7 @@ module Dc20
       SUBCLASS_ORIGIN => 5,
       SUBCLASS_FLAVOR_ORIGIN => 6
     }
-    enum :kind, { STATIC => 0, UPDATE_RESULT => 1, HIDDEN => 2 }
+    enum :kind, { STATIC => 0, UPDATE_RESULT => 1, HIDDEN => 2, ONE_FROM_LIST => 3, MANY_FROM_LIST => 4 }
     enum :limit_refresh, { SHORT_REST => 0, LONG_REST => 1, COMBAT => 2 }
   end
 end

@@ -33,7 +33,7 @@ export const Dc20Saves = (props) => {
               <For each={['physical_save', 'mental_save']}>
                 {(slug) =>
                   <div class="flex-1">
-                    <p class="text-sm uppercase text-center mb-4">
+                    <p class="text-sm uppercase text-center mb-2">
                       {TRANSLATION[locale()][slug]}
                     </p>
                     <div class="mx-auto flex items-center justify-center">
@@ -52,7 +52,7 @@ export const Dc20Saves = (props) => {
               <For each={['mig', 'agi', 'int', 'cha']}>
                 {(slug) =>
                   <div class="flex-1">
-                    <p class="text-sm uppercase text-center mb-4">
+                    <p class="text-sm uppercase text-center mb-2">
                       {config.abilities[slug].name[locale()]}
                     </p>
                     <div class="mx-auto flex items-center justify-center">

@@ -1,18 +1,8 @@
 {
   "ancestries": {
-    "human": {
-      "name": { "en": "Human", "ru": "Человек" },
-      "feats": {
-        "attribute_increase": { "name": { "en": "Attribute Increase", "ru": "Увеличение атрибута" }, "price": 2 },
-        "skill_expertise": { "name": { "en": "Skill Expertise", "ru": "Компетентность в навыке" }, "price": 2 },
-        "human_resolve": { "name": { "en": "Human Resolve", "ru": "Человеческое упорство" }, "price": 1 },
-        "undying": { "name": { "en": "Undying", "ru": "Неумирающий" }, "price": 0 },
-        "trade_expertise": { "name": { "en": "Trade Expertise", "ru": "Компетентность в ремесле" }, "price": 1 },
-        "human_determination": { "name": { "en": "Human Determination", "ru": "Человеческая решительность" }, "price": 1 },
-        "unbreakable": { "name": { "en": "Unbreakable", "ru": "Несломимый" }, "price": 1 },
-        "attribute_decrease": { "name": { "en": "Attribute Decrease", "ru": "Уменьшение атрибута" }, "price": -1 }
-      }
-    }
+    "human": { "name": { "en": "Human", "ru": "Человек" } },
+    "elf": { "name": { "en": "Elf", "ru": "Эльф" } },
+    "dwarf": { "name": { "en": "Dwarf", "ru": "Дварф" } }
   },
   "classes": {
     "commander": {

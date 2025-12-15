@@ -3,15 +3,6 @@
 module Dc20Character
   module Classes
     class SpellbladeDecorator < ApplicationDecorator
-      def health
-        @health ||= __getobj__.health.merge(
-          'max' => max_health,
-          'bloodied' => max_health / 2,
-          'well_bloodied' => max_health / 4,
-          'death_threshold' => 0 - modified_abilities['prime'] - combat_mastery
-        )
-      end
-
       def mana_points
         @mana_points ||= __getobj__.mana_points.merge('max' => mana_points_by_level)
       end
@@ -40,14 +31,14 @@ module Dc20Character
         @spells ||= __getobj__.spells + spells_by_level
       end
 
-      private
-
       def max_health
         @max_health ||= begin
           class_bonus = ((level / 2) * 5) + (level.even? ? 0 : 3)
           6 + class_bonus + modified_abilities['mig']
         end
       end
+
+      private
 
       def class_maneuver_points
         return 3 if level >= 5

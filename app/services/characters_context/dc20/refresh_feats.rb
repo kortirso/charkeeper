@@ -14,16 +14,18 @@ module CharactersContext
       end
 
       def filter_available_feats(character)
+        selected_feats = find_selected_feats(character)
         feats(character).select(*REQUIRED_ATTRIBUTES).filter_map do |item|
           next item if item.conditions.blank?
 
-          filter_feat(item, character)
+          filter_feat(item, character, selected_feats)
         end
       end
 
-      def filter_feat(item, character)
+      def filter_feat(item, character, selected_feats)
         conditions = item.conditions
         return unless match_by_level?(conditions['level'], character)
+        return unless match_by_selected_feats?(conditions['selected_feature'], selected_feats)
 
         item
       end
@@ -33,6 +35,17 @@ module CharactersContext
         return false if character.data.level < condition
 
         true
+      end
+
+      def match_by_selected_feats?(condition, selected_feats)
+        return true unless condition
+        return false if ([condition] - selected_feats).any?
+
+        true
+      end
+
+      def find_selected_feats(character)
+        character.data.selected_features.values.flatten
       end
 
       def feats(character)

@@ -43,6 +43,10 @@ module Dc20Character
       @spells ||= __getobj__.spells + paths['spellcaster']
     end
 
+    def jump
+      @jump = modified_abilities['agi']
+    end
+
     private
 
     def guard_bonuses
