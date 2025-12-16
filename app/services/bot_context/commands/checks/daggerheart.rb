@@ -38,9 +38,14 @@ module BotContext
 
           hope_check = roll_command.call(arguments: ['d12'])[:result]
           fear_check = roll_command.call(arguments: ['d12'])[:result]
-          adv_check = roll_command.call(arguments: ['d6'])[:result] unless values[:adv].to_i.zero?
+          adv_check = roll_command.call(arguments: [values[:adv_dice] || 'd6'])[:result] if values[:adv].to_i.positive?
+          adv_check = roll_command.call(arguments: ['d6'])[:result] if values[:adv].to_i.negative?
 
-          total = hope_check[:total] + fear_check[:total] + adv_check&.dig(:total).to_i + values[:bonus].to_i
+          total =
+            hope_check[:total] +
+            fear_check[:total] +
+            (values[:adv].to_i.positive? ? adv_check&.dig(:total).to_i : (adv_check&.dig(:total).to_i * -1)) +
+            values[:bonus].to_i
 
           [hope_check, fear_check, adv_check, total]
         end

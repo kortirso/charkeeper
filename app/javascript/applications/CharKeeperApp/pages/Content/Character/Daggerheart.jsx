@@ -372,7 +372,7 @@ export const Daggerheart = (props) => {
   return (
     <>
       <ContentWrapper mobileView={mobileView()} leftView={leftView()} rightView={rightView()} />
-      <DiceRoll provider="daggerheart" characterId={character().id} />
+      <DiceRoll provider="daggerheart" characterId={character().id} advantageDice={character().advantage_dice} />
     </>
   );
 }

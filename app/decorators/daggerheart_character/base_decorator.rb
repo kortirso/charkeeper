@@ -20,9 +20,8 @@ module DaggerheartCharacter
     end
     # rubocop: enable Naming/PredicateMethod
 
-    def advantage_dice
-      'd6'
-    end
+    def advantage_dice = 'd6'
+    def disadvantage_dice = 'd6'
 
     def proficiency
       @proficiency ||=
