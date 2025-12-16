@@ -82,6 +82,7 @@ export const createDiceRoll = () => {
       const makeRoll = async () => {
         const options = [];
         if (advantage() > 0) options.push(`--adv ${advantage()}`);
+        if (advantage() > 0 && props.advantageDice) options.push(`--advDice ${props.advantageDice}`);
         if (advantage() < 0) options.push(`--dis ${Math.abs(advantage())}`);
         if (bonus() + additionalBonus() > 0) options.push(`--bonus ${bonus() + additionalBonus()}`);
         if (bonus() + additionalBonus() < 0) options.push(`--penalty ${Math.abs(bonus() + additionalBonus())}`);

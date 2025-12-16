@@ -4,10 +4,11 @@ module BotContext
   module Commands
     module Parsers
       class MakeCheck
-        def call(arguments: [])
+        def call(arguments: []) # rubocop: disable Metrics/AbcSize
           result = {}
           parser = OptionParser.new do |act|
             act.on('--adv [TEXT]', Integer) { |text=0| result[:adv] = text.to_i }
+            act.on('--advDice [TEXT]') { |text| result[:adv_dice] = text }
             act.on('--dis [TEXT]', Integer) { |text=0| result[:adv] = text.to_i * -1 }
             act.on('--bonus [TEXT]', Integer) { |text=0| result[:bonus] = text.to_i }
             act.on('--penalty [TEXT]', Integer) { |text=0| result[:bonus] = text.to_i * -1 }
