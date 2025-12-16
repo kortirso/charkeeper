@@ -31,6 +31,7 @@ module Frontend
           def class_features
             selected_features = @character.feats.joins(:feat).where(feats: { origin: 1 }).pluck(:feat_id)
             ::Dc20::Feat.where(origin: 1).select do |talent|
+              next false if talent.conditions['level'].nil?
               next false if talent.conditions['level'] > params[:multiclass_level].to_i
               next false if talent.id.in?(selected_features)
 
