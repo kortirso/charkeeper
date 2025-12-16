@@ -18,13 +18,6 @@
         "paladin": { "name": { "en": "Paladin", "ru": "Паладин" } },
         "rune_knight": { "name": { "en": "Rune Knight", "ru": "Рунический рыцарь" } }
       }
-    },
-    "wizard": {
-      "name": { "en": "Wizard", "ru": "Волшебник" },
-      "subclasses": {
-        "portal_mage": { "name": { "en": "Portal Mage", "ru": "Порталист" } },
-        "witch": { "name": { "en": "Witch", "ru": "Ведьма" } }
-      }
     }
   },
   "spell_lists": {
