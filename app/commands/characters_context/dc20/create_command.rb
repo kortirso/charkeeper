@@ -10,12 +10,10 @@ module CharactersContext
       use_contract do
         config.messages.namespace = :dc20_character
 
-        Classes = Dry::Types['strict.string'].enum(*::Dc20::Character.classes_info.keys)
-
         params do
           required(:user).filled(type?: User)
           required(:name).filled(:string, max_size?: 50)
-          required(:main_class).filled(Classes)
+          required(:main_class).filled(:string)
           required(:ancestry_feats).hash
         end
       end
