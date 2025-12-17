@@ -31,10 +31,14 @@ export const DaggerheartExperience = (props) => {
   const t = i18n.translator(dict);
 
   createEffect(() => {
-    if (lastActiveObjectId() === object().id) return;
+    if (lastActiveObjectId() === object().id && object().guide_step !== 1) {
+      setEditMode(object().guide_step === 2);
+      return;
+    }
 
     batch(() => {
       setExperienceData(object().experience);
+      setEditMode(object().guide_step === 2);
       setLastActiveObjectId(object().id);
     });
   });

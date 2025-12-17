@@ -32,6 +32,7 @@ export const DaggerheartTraits = (props) => {
 
     batch(() => {
       setTraitsData(character().traits);
+      setEditMode(character().guide_step === 1);
       setLastActiveCharacterId(character().id);
     });
   });

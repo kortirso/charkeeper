@@ -1,4 +1,4 @@
-import { createSignal, For, Show, batch } from 'solid-js';
+import { createEffect, createSignal, For, Show, batch } from 'solid-js';
 import { Key } from '@solid-primitives/keyed';
 
 import { ErrorWrapper, Levelbox, Input, EditWrapper, Dice } from '../../../../components';
@@ -21,12 +21,26 @@ const TRANSLATION = {
 export const Pathfinder2Skills = (props) => {
   const character = () => props.character;
 
+  const [lastActiveCharacterId, setLastActiveCharacterId] = createSignal(undefined);
   const [editMode, setEditMode] = createSignal(false);
   const [skillsData, setSkillsData] = createSignal(character().skills);
 
   const [appState] = useAppState();
   const [{ renderAlerts }] = useAppAlert();
   const [locale] = useAppLocale();
+
+  createEffect(() => {
+    if (lastActiveCharacterId() === character().id && character().guide_step !== 1) {
+      setEditMode(character().guide_step === 2);
+      return;
+    }
+
+    batch(() => {
+      setSkillsData(character().skills);
+      setEditMode(character().guide_step === 2);
+      setLastActiveCharacterId(character().id);
+    });
+  });
 
   const renderSkillBoosts = (skillBoosts) => {
     const result = [];
