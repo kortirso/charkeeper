@@ -21,7 +21,25 @@ const TRANSLATION = {
     homebrewName: 'Item name',
     homebrewDescription: 'Item description',
     add: 'Add',
-    tooltip: "Once you've crafted an item, you can edit it in the <a href='https://charkeeper.org/homebrews' class='underline' target='_blank' rel='noopener noreferrer'>Homebrews</a> section, even converting it into a weapon or armor."
+    tooltip: "Once you've crafted an item, you can edit it in the <a href='https://charkeeper.org/homebrews' class='underline' target='_blank' rel='noopener noreferrer'>Homebrews</a> section, even converting it into a weapon or armor.",
+    in: {
+      hands: {
+        title: 'In hands',
+        description: 'Items in your hands'
+      },
+      equipment: {
+        title: 'On body',
+        description: 'Equiped armor, ammo for weapon, consumables'
+      },
+      backpack: {
+        title: 'In backpack',
+        description: "Items in backpack, can't be quickly used"
+      },
+      storage: {
+        title: 'In storage',
+        description: 'Outer storage of your items'
+      }
+    }
   },
   ru: {
     searchByName: 'Поиск по названию (от 3 символов)',
@@ -30,7 +48,25 @@ const TRANSLATION = {
     homebrewName: 'Название предмета',
     homebrewDescription: 'Описание предмета',
     add: 'Добавить',
-    tooltip: "После создания предмета вы сможете его отредактировать в разделе <a href='https://charkeeper.org/homebrews' class='underline' target='_blank' rel='noopener noreferrer'>Homebrews</a>, даже преобразовать в оружие или броню"
+    tooltip: "После создания предмета вы сможете его отредактировать в разделе <a href='https://charkeeper.org/homebrews' class='underline' target='_blank' rel='noopener noreferrer'>Homebrews</a>, даже преобразовать в оружие или броню",
+    in: {
+      hands: {
+        title: 'В руках',
+        description: "Предметы в руках"
+      },
+      equipment: {
+        title: 'На теле',
+        description: 'Экипированный доспех, боеприпасы, расходные материалы'
+      },
+      backpack: {
+        title: 'В рюкзаке',
+        description: 'Предметы в рюкзаке, не могут быть быстро использованы'
+      },
+      storage: {
+        title: 'В хранилище',
+        description: 'Предметы в отдалённом хранилище'
+      }
+    }
   }
 }
 const CREATE_HOMEBREW_ITEMS = ['daggerheart'];
@@ -46,6 +82,7 @@ export const Equipment = (props) => {
   const [characterItems, setCharacterItems] = createSignal(undefined);
   const [items, setItems] = createSignal(undefined);
   const [itemsSelectingMode, setItemsSelectingMode] = createSignal(false);
+
   const [changingItem, setChangingItem] = createSignal(null);
   const [itemInfo, setItemInfo] = createSignal(null);
   const [filterByName, setFilterByName] = createSignal('');
@@ -103,10 +140,14 @@ export const Equipment = (props) => {
   }
 
   // submits
-  const updateItem = async () => {
-    await updateCharacterItem(
+  const updateItem = () => {
+    if (Object.values(changingItem().states).reduce((acc, item) => acc + item, 0) === 0) {
+      return removeCharacterItem(changingItem());
+    }
+
+    updateCharacterItem(
       changingItem(),
-      { character_item: { quantity: changingItem().quantity, notes: changingItem().notes } }
+      { character_item: { states: changingItem().states, notes: changingItem().notes } }
     );
   }
 
@@ -140,7 +181,7 @@ export const Equipment = (props) => {
           return { ...element, ...payload.character_item } 
         });
         setCharacterItems(newValue);
-        closeModal()
+        closeModal();
       });
     }
   }
@@ -155,6 +196,8 @@ export const Equipment = (props) => {
           reloadCharacterItems();
           props.onReloadCharacter();
         } else setCharacterItems(characterItems().filter((element) => element !== item));
+        closeModal();
+        setChangingItem(null);
       });
     }
   }
@@ -270,10 +313,10 @@ export const Equipment = (props) => {
             <For each={['hands', 'equipment', 'backpack', 'storage']}>
               {(state) =>
                 <ItemsTable
-                  title={t(`equipment.in.${state}.title`)}
-                  subtitle={t(`equipment.in.${state}.description`)}
+                  title={TRANSLATION[locale()].in[state].title}
+                  subtitle={TRANSLATION[locale()].in[state].description}
                   state={state}
-                  items={characterItems().filter((item) => item.state === state)}
+                  items={characterItems().filter((item) => item.states[state] > 0)}
                   onChangeItem={changeItem}
                   onInfoItem={showInfo}
                   onUpdateCharacterItem={updateCharacterItem}
@@ -284,7 +327,7 @@ export const Equipment = (props) => {
             <Show when={props.withWeight}>
               <div class="flex justify-end">
                 <div class="p-4 flex blockable">
-                  <p class="dark:text-snow">{calculateCurrentLoad()} / {character().load}</p>
+                  <p>{calculateCurrentLoad()} / {character().load}</p>
                 </div>
               </div>
             </Show>
@@ -315,14 +358,18 @@ export const Equipment = (props) => {
       </GuideWrapper>
       <Modal classList="md:max-w-md!">
         <Show when={changingItem()}>
-          <div class="mb-2 flex items-center">
-            <p class="flex-1 text-sm text-left dark:text-snow">{changingItem().name}</p>
-            <Input
-              numeric
-              containerClassList="w-20 ml-8"
-              value={changingItem().quantity}
-              onInput={(value) => setChangingItem({ ...changingItem(), quantity: Number(value) })}
-            />
+          <p class="text-lg mb-2">{changingItem().name}</p>
+          <div class="grid grid-cols-2 gap-2 mb-2">
+            <For each={['hands', 'equipment', 'backpack', 'storage']}>
+              {(state) =>
+                <Input
+                  numeric
+                  labelText={TRANSLATION[locale()].in[state].title}
+                  value={changingItem().states[state]}
+                  onInput={(value) => setChangingItem({ ...changingItem(), states: { ...changingItem().states, [state]: parseInt(value) } })}
+                />
+              }
+            </For>
           </div>
           <TextArea
             rows="2"
@@ -330,7 +377,7 @@ export const Equipment = (props) => {
             onChange={(value) => setChangingItem({ ...changingItem(), notes: value })}
             value={changingItem().notes}
           />
-          <Button default textable classList="mt-2" onClick={updateItem}>{t('save')}</Button>
+          <Button default textable classList="mt-4" onClick={updateItem}>{t('save')}</Button>
         </Show>
         <Show when={itemInfo()}>
           <p class="mb-3 text-xl">{itemInfo()[0]}</p>

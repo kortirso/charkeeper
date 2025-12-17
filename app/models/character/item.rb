@@ -15,5 +15,9 @@ class Character
 
     scope :ready_to_use, -> { where(ready_to_use: true) }
     scope :active_states, -> { where(state: ACTIVE_STATES) }
+
+    def self.default_states
+      states.keys.index_with { 0 }
+    end
   end
 end

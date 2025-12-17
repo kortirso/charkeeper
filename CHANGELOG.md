@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Modified
 - guide mode, show editable fields by default
 - expanding features text by config
+- spliting equipment between storages
 
 ### Fixed
 - dice rolling with modified advantage dice for DH characters
