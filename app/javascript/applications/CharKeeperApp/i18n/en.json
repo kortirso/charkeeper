@@ -170,25 +170,6 @@
     "newNoteValue": "Note text"
   },
   "equipment": {
-    "in": {
-      "hands": {
-        "title": "In hands",
-        "description": "Items in your hands"
-      },
-      "equipment": {
-        "title": "On body",
-        "description": "Equiped armor, ammo for weapon, consumables"
-      },
-      "backpack": {
-        "title": "In backpack",
-        "description": "Items in backpack, can't be quickly used"
-      },
-      "storage": {
-        "title": "Storage",
-        "description": "Outer storage of your items"
-      }
-    },
-    "quantity": "Qty",
     "weight": "Weight",
     "cost": "Cost",
     "addItems": "Add items",

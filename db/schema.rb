@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2025_12_02_175554) do
+ActiveRecord::Schema[8.1].define(version: 2025_12_17_114100) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
   enable_extension "pgcrypto"
@@ -132,6 +132,7 @@ ActiveRecord::Schema[8.1].define(version: 2025_12_02_175554) do
     t.integer "quantity", default: 1, null: false
     t.boolean "ready_to_use", default: false, null: false
     t.integer "state", limit: 2, default: 2, null: false
+    t.jsonb "states", default: {}, null: false
     t.datetime "updated_at", null: false
     t.index ["character_id", "item_id"], name: "index_character_items_on_character_id_and_item_id", unique: true
   end

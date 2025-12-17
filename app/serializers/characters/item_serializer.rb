@@ -2,7 +2,7 @@
 
 module Characters
   class ItemSerializer < ApplicationSerializer
-    ATTRIBUTES = %i[id quantity ready_to_use notes name kind data state item_id has_description].freeze
+    ATTRIBUTES = %i[id quantity ready_to_use notes name kind data state item_id has_description states].freeze
     READY_TO_USE_STATES = %w[hands equipment].freeze
 
     attributes(*ATTRIBUTES)

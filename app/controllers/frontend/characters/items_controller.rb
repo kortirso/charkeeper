@@ -4,8 +4,8 @@ module Frontend
   module Characters
     class ItemsController < Frontend::BaseController
       include Deps[
-        character_item_add: 'commands.characters_context.item_add',
-        character_item_update: 'commands.characters_context.item_update'
+        character_item_add: 'commands.characters_context.items.add',
+        character_item_update: 'commands.characters_context.items.update'
       ]
       include SerializeRelation
 
@@ -57,7 +57,7 @@ module Frontend
       end
 
       def update_params
-        params.expect(character_item: %i[quantity ready_to_use notes state]).to_h
+        params.require(:character_item).permit!.to_h
       end
 
       def characters_relation
