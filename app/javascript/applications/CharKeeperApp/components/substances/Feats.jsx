@@ -19,7 +19,8 @@ const TRANSLATION = {
     settings: 'Filter settings',
     showPersonal: 'Show personal',
     groupFeatures: 'Group features',
-    showPassive: 'Show passive'
+    showPassive: 'Show passive',
+    expandAll: 'Expand all'
   },
   ru: {
     activeFeat: 'Активен',
@@ -28,7 +29,8 @@ const TRANSLATION = {
     settings: 'Настройки фильтров',
     showPersonal: 'Показать личные',
     groupFeatures: 'Группировать',
-    showPassive: 'Показать пассивные'
+    showPassive: 'Показать пассивные',
+    expandAll: 'Раскрывать все'
   }
 }
 
@@ -37,7 +39,7 @@ export const Feats = (props) => {
   const filters = () => props.filters;
 
   const [showFilters, setShowFilters] = createSignal(false);
-  const [filtering, setFiltering] = createSignal([]);
+  const [filtering, setFiltering] = createSignal(undefined);
   const [activeFilter, setActiveFilter] = createSignal(filters()[0].title);
   const [lastActiveCharacterId, setLastActiveCharacterId] = createSignal(undefined);
   const [featValues, setFeatValues] = createSignal(
@@ -70,7 +72,7 @@ export const Feats = (props) => {
   const activeFilterOptions = createMemo(() => filters().find((item) => item.title === activeFilter()));
 
   const filteredFeatures = createMemo(() => {
-    if (filtering() === null) return character().features;
+    if (filtering() === undefined) return character().features;
 
     const result = character().features.filter((item) => {
       if (!filtering().includes('showPassive') && item.kind === 'update_result') return false;
@@ -140,7 +142,7 @@ export const Feats = (props) => {
     <ErrorWrapper payload={{ character_id: character().id, key: 'Feats' }}>
       <GuideWrapper character={character()}>
         <Show
-          when={filtering() === null || filtering().includes('groupFeatures')}
+          when={filtering() === undefined || filtering().includes('groupFeatures')}
           fallback={
             <div id="character-navigation">
               <p class="active">{TRANSLATION[locale()]['allFeatures']}</p>
@@ -151,7 +153,7 @@ export const Feats = (props) => {
           }
         >
           <CharacterNavigation
-            tabsList={filters().map((item) => item.title).filter((item) => item !== 'personal' || filtering() === null || filtering().includes('showPersonal'))}
+            tabsList={filters().map((item) => item.title).filter((item) => item !== 'personal' || filtering() === undefined || filtering().includes('showPersonal'))}
             activeTab={activeFilter()}
             setActiveTab={setActiveFilter}
           >
@@ -161,23 +163,24 @@ export const Feats = (props) => {
           </CharacterNavigation>
         </Show>
         <div class="mt-2">
-          <Show when={activeFilterOptions()}>
+          <Show when={filtering() !== undefined && activeFilterOptions()}>
             <Show when={showFilters()}>
               <Select
                 multi
                 containerClassList="w-full md:w-1/2 mb-2"
                 labelText={TRANSLATION[locale()]['settings']}
                 items={{
-                  'showPersonal': TRANSLATION[locale()]['showPersonal'],
-                  'groupFeatures': TRANSLATION[locale()]['groupFeatures'],
-                  'showPassive': TRANSLATION[locale()]['showPassive']
+                  'showPersonal': TRANSLATION[locale()].showPersonal,
+                  'groupFeatures': TRANSLATION[locale()].groupFeatures,
+                  'showPassive': TRANSLATION[locale()].showPassive,
+                  'expandAll': TRANSLATION[locale()].expandAll
                 }}
                 selectedValues={filtering() || []}
                 onSelect={(value) => updateFiltering(value)}
               />
             </Show>
             <Show when={activeFilter() === 'personal'}>
-              <p class="dark:text-snow mb-2 text-sm">{TRANSLATION[locale()]['personalFeats']}</p>
+              <p class="dark:text-snow mb-2 text-sm">{TRANSLATION[locale()].personalFeats}</p>
             </Show>
             <Key
               each={filteredFeatures()}
@@ -186,6 +189,7 @@ export const Feats = (props) => {
               {(feature) =>
                 <Toggle
                   containerClassList={feature().kind === 'update_result' ? 'opacity-50' : ''}
+                  isOpen={filtering().includes('expandAll')}
                   title={<FeatureTitle feature={feature()} provider={character().provider} onSpendEnergy={spendEnergy} onRestoreEnergy={restoreEnergy} />}
                 >
                   <div
