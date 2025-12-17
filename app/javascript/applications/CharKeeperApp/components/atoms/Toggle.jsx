@@ -1,10 +1,12 @@
-import { createSignal, Show, children } from 'solid-js';
+import { createEffect, createSignal, Show, children } from 'solid-js';
 
 export const Toggle = (props) => {
   const isOpenByDefault = () => props.isOpen;
   const safeChildren = children(() => props.children);
 
   const [isOpen, setIsOpen] = createSignal(isOpenByDefault() === undefined ? false : isOpenByDefault());
+
+  createEffect(() => setIsOpen(isOpenByDefault()));
 
   return (
     <div
