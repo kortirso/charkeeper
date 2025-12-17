@@ -34,6 +34,7 @@ export const Dnd5Abilities = (props) => {
 
     batch(() => {
       setAbilitiesData(character().abilities);
+      setEditMode(character().guide_step === 1);
       setLastActiveCharacterId(character().id);
     });
   });

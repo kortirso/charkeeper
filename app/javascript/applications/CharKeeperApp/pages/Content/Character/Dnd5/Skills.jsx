@@ -31,10 +31,14 @@ export const Dnd5Skills = (props) => {
   const [locale] = useAppLocale();
 
   createEffect(() => {
-    if (lastActiveCharacterId() === character().id) return;
+    if (lastActiveCharacterId() === character().id && character().guide_step !== 1) {
+      setEditMode(character().guide_step === 2);
+      return;
+    }
 
     batch(() => {
       setSkillsData(character().skills);
+      setEditMode(character().guide_step === 2);
       setLastActiveCharacterId(character().id);
     });
   });

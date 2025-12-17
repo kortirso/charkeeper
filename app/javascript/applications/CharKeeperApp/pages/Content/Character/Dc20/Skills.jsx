@@ -56,7 +56,10 @@ export const Dc20Skills = (props) => {
   const [locale] = useAppLocale();
 
   createEffect(() => {
-    if (lastActiveCharacterId() === character().id && character().guide_step !== 1) return;
+    if (lastActiveCharacterId() === character().id && character().guide_step !== 1) {
+      setEditSkillsMode(character().guide_step === 2);
+      return;
+    }
 
     batch(() => {
       setSkillsData(character().skills);

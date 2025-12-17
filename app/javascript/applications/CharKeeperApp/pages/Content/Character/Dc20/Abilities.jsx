@@ -1,4 +1,4 @@
-import { createSignal, createMemo, For, Show, batch } from 'solid-js';
+import { createEffect, createSignal, createMemo, For, Show, batch } from 'solid-js';
 
 import { ErrorWrapper, Button, EditWrapper, GuideWrapper, Dice } from '../../../../components';
 import config from '../../../../data/dc20.json';
@@ -21,12 +21,23 @@ const TRANSLATION = {
 export const Dc20Abilities = (props) => {
   const character = () => props.character;
 
-  const [editMode, setEditMode] = createSignal(false);
+  const [lastActiveCharacterId, setLastActiveCharacterId] = createSignal(undefined);
+  const [editMode, setEditMode] = createSignal(props.character.guide_step === 1);
   const [abilitiesData, setAbilitiesData] = createSignal(character().abilities);
 
   const [appState] = useAppState();
   const [{ renderAlerts }] = useAppAlert();
   const [locale] = useAppLocale();
+
+  createEffect(() => {
+    if (lastActiveCharacterId() === character().id) return;
+
+    batch(() => {
+      setAbilitiesData(character().abilities);
+      setEditMode(character().guide_step === 1);
+      setLastActiveCharacterId(character().id);
+    });
+  });
 
   const decreaseAbilityValue = (slug) => {
     if (abilitiesData()[slug] === -2) return;
@@ -74,12 +85,12 @@ export const Dc20Abilities = (props) => {
       <GuideWrapper
         character={character()}
         guideStep={1}
-        helpMessage={TRANSLATION[locale()]['helpMessage']}
+        helpMessage={TRANSLATION[locale()].helpMessage}
         onReloadCharacter={props.onReloadCharacter}
       >
         <Show when={character().attribute_points > 0}>
           <div class="warning">
-            <p class="text-sm">{TRANSLATION[locale()]['attributePoints']} - {attributePointsLeft()}</p>
+            <p class="text-sm">{TRANSLATION[locale()].attributePoints} - {attributePointsLeft()}</p>
           </div>
         </Show>
         <EditWrapper
@@ -95,15 +106,15 @@ export const Dc20Abilities = (props) => {
                   <div>
                     <p class="text-sm uppercase text-center mb-2 dark:text-white">{ability}</p>
                     <div class="mx-auto flex items-center justify-center">
-                      <p class="text-2xl font-normal! dark:text-snow">
+                      <p class="text-2xl font-normal!">
                         {editMode() ?
                           abilitiesData()[slug] :
                           <Dice
                             width="64"
                             height="64"
-                            text={modifier(character().abilities[slug])}
+                            text={modifier(character().modified_abilities[slug])}
                             textClassList="text-4xl"
-                            onClick={() => props.openDiceRoll(`/check attr ${slug}`, character().abilities[slug])}
+                            onClick={() => props.openDiceRoll(`/check attr ${slug}`, character().modified_abilities[slug])}
                           />
                         }
                       </p>
