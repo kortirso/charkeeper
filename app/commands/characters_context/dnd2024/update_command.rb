@@ -153,7 +153,11 @@ module CharactersContext
           input[:money] = (input.dig(:coins, :gold) * 100) + (input.dig(:coins, :silver) * 10) + input.dig(:coins, :copper)
         end
 
-        input[:ability_boosts] = 0 if input.key?(:abilities)
+        if input.key?(:abilities)
+          input[:ability_boosts] = 0
+          input[:leveling_ability_boosts] = 0
+          input[:leveling_ability_boosts_list] = []
+        end
         if input.key?(:selected_skills) # rubocop: disable Style/GuardClause
           input[:any_skill_boosts] = 0
           input[:skill_boosts] = 0

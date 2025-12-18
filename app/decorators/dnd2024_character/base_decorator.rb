@@ -160,9 +160,12 @@ module Dnd2024Character
       equiped_shield = defense_gear[:shield]
       return 10 + modifiers['dex'] + equiped_shield&.dig(:items_info, 'ac').to_i if equiped_armor.nil?
 
+      max_dex = equiped_armor.dig(:items_info, 'max_dex')
+      max_dex += 1 if max_dex.to_i.positive? && __getobj__.data.selected_talents.key?('medium_armor_master')
+
       equiped_armor.dig(:items_info, 'ac').to_i +
         equiped_shield&.dig(:items_info, 'ac').to_i +
-        [equiped_armor.dig(:items_info, 'max_dex'), modifiers['dex']].compact.min
+        [max_dex, modifiers['dex']].compact.min
     end
 
     def calc_defense_gear

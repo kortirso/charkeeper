@@ -22,9 +22,12 @@ module CharactersContext
             input[:character].data.selected_talents = selected_talents
             input[:character].data.selected_feats = []
 
-            input[:character].feats.find_or_create_by(feat_id: feat_id)
+            input[:character].feats.create_with(ready_to_use: true).find_or_create_by(feat_id: feat_id)
             input[:talent].info['rewrite']&.each { |key, value| input[:character].data[key] = value }
             input[:talent].info['increase']&.each { |key, value| input[:character].data[key] += value }
+            input[:talent].info['push']&.each do |key, values|
+              input[:character].data[key] = input[:character].data[key].concat(values).uniq
+            end
 
             input[:character].save!
           end

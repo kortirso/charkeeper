@@ -17,14 +17,20 @@ const TRANSLATION = {
     existingTalentPoints: 'Available feats',
     selectTalent: 'Select new feat',
     saveButton: 'Save',
-    selectedTalents: 'Selected feats'
+    selectedTalents: 'Selected feats',
+    origin: 'Origin',
+    general: 'General',
+    epic: 'Epic'
   },
   ru: {
     talents: 'Черты',
     existingTalentPoints: 'Доступно черт',
     selectTalent: 'Выберите новую черту',
     saveButton: 'Сохранить',
-    selectedTalents: 'Выбранные черты'
+    selectedTalents: 'Выбранные черты',
+    origin: 'Происхождение',
+    general: 'Общее',
+    epic: 'Эпическая'
   }
 }
 
@@ -53,9 +59,7 @@ export const Dnd5ClassLevels = (props) => {
     if (character().provider === 'dnd2024') {
       Promise.all([fetchTalents()]).then(
         ([talentsData]) => {
-          batch(() => {
-            setTalents(talentsData.talents);
-          });
+          setTalents(talentsData.talents);
         }
       );
     }
@@ -70,7 +74,7 @@ export const Dnd5ClassLevels = (props) => {
   const availableTalents = createMemo(() => {
     if (talents() === undefined) return {};
 
-    return talents().filter((item) => item.multiple || !item.selected).reduce((acc, item) => { acc[item.id] = item.title; return acc }, {});
+    return talents().filter((item) => item.multiple || !item.selected).reduce((acc, item) => { acc[item.id] = `${item.title} (${TRANSLATION[locale()][item.origin_value]})`; return acc }, {});
   });
 
   const classes = () => translate(currentConfig().classes, locale());
@@ -120,6 +124,10 @@ export const Dnd5ClassLevels = (props) => {
         props.onReplaceCharacter(result.character);
         renderNotice(t('alerts.characterIsUpdated'));
       });
+
+      const result = await fetchTalents();
+      setTalents(result.talents);
+
     } else renderAlerts(result.errors_list);
   }
 
@@ -212,7 +220,6 @@ export const Dnd5ClassLevels = (props) => {
           </For>
           <Button default textable classList="mt-2" onClick={updateClasses}>{t('save')}</Button>
         </div>
-
         <Show when={character().provider === 'dnd2024'}>
           <Toggle
             containerClassList="mt-2"
@@ -241,10 +248,6 @@ export const Dnd5ClassLevels = (props) => {
                 onSelect={(value) => setSelectedTalent(talents().find((item) => item.id === value))}
               />
               <Show when={selectedTalent()}>
-                <p
-                  class="feat-markdown text-xs mt-1"
-                  innerHTML={selectedTalent().description} // eslint-disable-line solid/no-innerhtml
-                />
                 <Button default textable size="small" classList="inline-block mt-2" onClick={saveTalent}>
                   {TRANSLATION[locale()].saveButton}
                 </Button>

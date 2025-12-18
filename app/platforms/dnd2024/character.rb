@@ -49,6 +49,8 @@ module Dnd2024
     attribute :any_skill_boosts, :integer, default: 0 # дополнительные повышения любого навыка
     attribute :skill_boosts, :integer, default: 0 # дополнительные повышения навыков от класса
     attribute :skill_boosts_list, array: true, default: [] # дополнительные повышения навыков от класса
+    attribute :leveling_ability_boosts, :integer, default: 0
+    attribute :leveling_ability_boosts_list, array: true, default: []
   end
 
   class Character < Character

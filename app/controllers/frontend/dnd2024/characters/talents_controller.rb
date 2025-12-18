@@ -36,11 +36,14 @@ module Frontend
           @talent = ::Dnd2024::Feat.where(origin: 4).find(params[:talent_id])
         end
 
-        def available_talents
+        def available_talents # rubocop: disable Metrics/AbcSize
           @selected_talents = @character.data.selected_talents.keys
+          data = @character.data
 
-          ::Dnd2024::Feat.where(origin: 4, origin_value: %w[origin general]).select do |talent|
-            next false if talent.conditions['level'].to_i > @character.data.level
+          ::Dnd2024::Feat.where(origin: 4, origin_value: %w[origin general epic]).select do |talent|
+            next false if data.level < talent.conditions['level'].to_i
+            next true if talent.conditions['ability'].blank?
+            next false if data.abilities.slice(*talent.conditions['ability']).values.none? { |item| item >= 13 }
 
             true
           end

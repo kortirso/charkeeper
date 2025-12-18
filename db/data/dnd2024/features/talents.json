@@ -1,0 +1,953 @@
+[
+  {
+    "slug": "athlete",
+    "title": { "en": "Athlete", "ru": "Атлет" },
+    "description": {
+      "en": "**Hop Up**. When you have the Prone condition, you can right yourself with only 5 feet of movement.\n\n**Jumping**. You can make a running Long or High Jump after moving only 5 feet.",
+      "ru": "**Вскочить**. Когда вы имеете состояние лежащий ничком, вы можете встать, потратив только 5 футов перемещения.\n\n**Прыжки**. Вы можете выполнить прыжок в длину или в высоту с разбега, переместившись перед этим только на 5 футов."
+    },
+    "origin": "feat",
+    "origin_value": "general",
+    "kind": "static",
+    "conditions": { "level": 4, "ability": ["str", "dex"] },
+    "info": {
+      "multiple": false,
+      "rewrite": { "ability_boosts": ["str", "dex"], "leveling_ability_boosts": 1 }
+    },
+    "eval_variables": {
+      "speeds": "speeds['climb'] = 0; speeds"
+    }
+  },
+  {
+    "slug": "war_caster",
+    "title": { "en": "War Caster", "ru": "Боевой заклинатель" },
+    "description": {
+      "en": "**Concentration**. You have Advantage on Constitution saving throws that you make to maintain Concentration.\n\n**Reactive Spell**. When a creature provokes an Opportunity Attack from you by leaving your reach, you can take a Reaction to cast a spell at the creature rather than making an Opportunity Attack. The spell must have a casting time of one action and must target only that creature.\n\n**Somatic Components**. You can perform the Somatic components of spells even when you have weapons or a Shield in one or both hands.",
+      "ru": "**Концентрация**. У вас есть преимущество при спасбросках Телосложения, которые вы совершаете, чтобы сохранить концентрацию.\n\n**Заклинание реакцией**. Когда существо вызывает у вас провоцированную атаку, перемещаясь за пределы вашей досягаемости, вы можете использовать вашу реакцию, чтобы наложить заклинание на это существо, вместо того, чтобы совершать провоцированную атаку. Заклинание должно иметь время наложения «1 действие» и должно быть нацелено только на это существо.\n\n**Соматические компоненты**. Вы можете выполнять соматические компоненты заклинаний, даже если у вас есть оружие или щит в 1 или 2 руках."
+    },
+    "origin": "feat",
+    "origin_value": "general",
+    "kind": "static",
+    "conditions": { "level": 4 },
+    "info": {
+      "multiple": false,
+      "rewrite": { "ability_boosts": ["int", "wis", "cha"], "leveling_ability_boosts": 1 }
+    }
+  },
+  {
+    "slug": "grappler",
+    "title": { "en": "Grappler", "ru": "Борец" },
+    "description": {
+      "en": "**Punch and Grab**. When you hit a creature with an Unarmed Strike as part of the Attack action on your turn, you can use both the Damage and the Grapple option. You can use this benefit only once per turn.\n\n**Attack Advantage**. You have Advantage on attack rolls against a creature Grappled by you.\n\n**Fast Wrestler**. Your Speed isn't halved when you move a creature Grappled by you if the creature is your size or smaller.",
+      "ru": "**Удар и захват**. Когда вы попадаете по существу безоружным ударом частью действия атака в ваш ход, вы можете одновременно использовать эффект Урон и Захват. Вы можете использовать это умение только 1 раз за ход.\n\n**Преимущество в атаке**. Вы получаете преимущество при бросках атаки против существа, схваченного вами.\n\n**Быстрый в бою**. Вы не тратите дополнительное перемещение, когда вы перемещаете существо, схваченное вами, при условии, что оно вашего размера или меньше."
+    },
+    "origin": "feat",
+    "origin_value": "general",
+    "kind": "static",
+    "conditions": { "level": 4, "ability": ["str", "dex"] },
+    "info": {
+      "multiple": false,
+      "rewrite": { "ability_boosts": ["str", "dex"], "leveling_ability_boosts": 1 }
+    }
+  },
+  {
+    "slug": "mounted_combatant",
+    "title": { "en": "Mounted Combatant", "ru": "Верховой боец" },
+    "description": {
+      "en": "**Mounted Strike**. While mounted, you have Advantage on attack rolls against any unmounted creature within 5 feet of your mount that is at least one size smaller than the mount.\n\n**Leap Aside**. If your mount is subjected to an effect that allows it to make a Dexterity saving throw to take only half damage, it instead takes no damage if it succeeds on the saving throw and only half damage if it fails. For your mount to gain this benefit, you must be riding it, and neither of you can have the Incapacitated condition.\n\n**Veer**. While mounted, you can force an attack that hits your mount to hit you instead if you don't have the Incapacitated condition.",
+      "ru": "**Удар наездника**. Находясь на верховом животном, вы получаете преимущество на броски атаки по любому существу не на верховом животном в пределах 5 футов от вашего верхового животного и по крайней мере на 1 размер меньше его.\n\n**Прыжок в сторону**. Если ваше верховое животное подвергается эффекту, который позволяет ему совершить спасбросок Ловкости, чтобы получить только половину урона, то вместо этого оно не получает никакого урона при успехе и получает только половину урона при провале. Чтобы ваше верховое животное получило этот эффект, вы должны быть верхом на нём, и ни один из вас не должен иметь состояние недееспособный.\n\n**Вираж**. Когда вы верхом, вы можете перенаправить на себя атаку, которая попала в вашего скакуна, но только если у вас нет состояния недееспособный."
+    },
+    "origin": "feat",
+    "origin_value": "general",
+    "kind": "static",
+    "conditions": { "level": 4 },
+    "info": {
+      "multiple": false,
+      "rewrite": { "ability_boosts": ["str", "dex", "wis"], "leveling_ability_boosts": 1 }
+    }
+  },
+  {
+    "slug": "martial_weapon_training",
+    "title": { "en": "Martial Weapon Training", "ru": "Владение воинским оружием" },
+    "description": {
+      "en": "You gain proficiency with Martial weapons.",
+      "ru": "Вы получаете владение воинским оружием."
+    },
+    "origin": "feat",
+    "origin_value": "general",
+    "kind": "update_result",
+    "conditions": { "level": 4 },
+    "info": {
+      "multiple": false,
+      "rewrite": { "ability_boosts": ["str", "dex"], "leveling_ability_boosts": 1, "weapon_core_skills": ["light", "martial"] }
+    }
+  },
+  {
+    "slug": "inspiring_leader",
+    "title": { "en": "Inspiring Leader", "ru": "Воодушевляющий лидер" },
+    "description": {
+      "en": "When you finish a Short or Long Rest, you can give an inspiring performance: a speech, song, or dance. When you do so, choose up to six allies (which can include yourself) within 30 feet of yourself who witness the performance. The chosen creatures each gain Temporary Hit Points equal to your character level plus the modifier of the ability you increased with this feat.",
+      "ru": "Когда вы завершаете короткий или продолжительный отдых, вы можете выступить с вдохновляющей речью, песней или танцем. Когда вы это совершаете, выберите до 6 союзников (в число которых можете входить и вы сами) в пределах 30 футов от вас, которые видели это выступление. Каждое выбранное существо получает временные хиты, равные уровню вашего персонажа + ваш модификатор характеристики, которую вы повысили этой чертой."
+    },
+    "origin": "feat",
+    "origin_value": "general",
+    "kind": "one_from_list",
+    "conditions": { "level": 4, "ability": ["wis", "cha"] },
+    "info": {
+      "multiple": false,
+      "rewrite": { "ability_boosts": ["wis", "cha"], "leveling_ability_boosts": 1 }
+    },
+    "options": {
+      "wis": { "en": "Wisdom", "ru": "Мудрость" },
+      "cha": { "en": "Charisma", "ru": "Харизма" }
+    },
+    "description_eval_variables": {
+      "limit": "1"
+    },
+    "limit_refresh": "short_rest"
+  },
+  {
+    "slug": "shadow-touched",
+    "title": { "en": "Shadow-Touched", "ru": "Затронутый тенью" },
+    "description": {
+      "en": "Choose one level 1 spell from the Illusion or Necromancy school of magic. You always have that spell and the Invisibility spell prepared. You can cast each of these spells without expending a spell slot once per day. The spells' spellcasting ability is the ability increased by this feat.",
+      "ru": "Выберите 1 заклинание 1 уровня из школы иллюзии или некромантии. У вас всегда подготовлено это заклинание и заклинание Невидимость. Вы можете накладывать одно из этих заклинаний без траты ячеек заклинаний 1 раз в день. Заклинательной характеристикой для этих заклинаний является та, которую вы увеличили данной чертой."
+    },
+    "origin": "feat",
+    "origin_value": "general",
+    "kind": "one_from_list",
+    "conditions": { "level": 4 },
+    "info": {
+      "multiple": false,
+      "rewrite": { "ability_boosts": ["int", "wis", "cha"], "leveling_ability_boosts": 1 }
+    },
+    "description_eval_variables": {
+      "limit": "1"
+    },
+    "limit_refresh": "long_rest",
+    "options": {
+      "int": { "en": "Intelligence", "ru": "Интеллект" },
+      "wis": { "en": "Wisdom", "ru": "Мудрость" },
+      "cha": { "en": "Charisma", "ru": "Харизма" }
+    }
+  },
+  {
+    "slug": "fey-touched",
+    "title": { "en": "Fey-Touched", "ru": "Затронутый феями" },
+    "description": {
+      "en": "Choose one level 1 spell from the Divination or Enchantment school of magic. You always have that spell and the Misty Step spell prepared. You can cast each of these spells without expending a spell slot once per day. The spells' spellcasting ability is the ability increased by this feat.",
+      "ru": "Выберите 1 заклинание 1 уровня из школы прорицания или очарования. У вас всегда подготовлено это заклинание и заклинание Туманный шаг. Вы можете накладывать одно из этих заклинаний без траты ячеек заклинаний 1 раз в день. Заклинательной характеристикой для этих заклинаний является та, которую вы увеличили данной чертой."
+    },
+    "origin": "feat",
+    "origin_value": "general",
+    "kind": "one_from_list",
+    "conditions": { "level": 4 },
+    "info": {
+      "multiple": false,
+      "rewrite": { "ability_boosts": ["int", "wis", "cha"], "leveling_ability_boosts": 1 }
+    },
+    "description_eval_variables": {
+      "limit": "1"
+    },
+    "limit_refresh": "long_rest",
+    "options": {
+      "int": { "en": "Intelligence", "ru": "Интеллект" },
+      "wis": { "en": "Wisdom", "ru": "Мудрость" },
+      "cha": { "en": "Charisma", "ru": "Харизма" }
+    }
+  },
+  {
+    "slug": "lightly_armored",
+    "title": { "en": "Lightly Armored", "ru": "Знаток лёгких доспехов" },
+    "description": {
+      "en": "You gain training with Light armor and Shields.",
+      "ru": "Вы получаете владение лёгкими доспехами и щитами."
+    },
+    "origin": "feat",
+    "origin_value": "general",
+    "kind": "update_result",
+    "conditions": { "level": 4 },
+    "info": {
+      "multiple": false,
+      "rewrite": { "ability_boosts": ["str", "dex"], "leveling_ability_boosts": 1 },
+      "push": { "armor_proficiency": ["light", "shield"] }
+    }
+  },
+  {
+    "slug": "moderately_armored",
+    "title": { "en": "Moderately Armored", "ru": "Знаток средних доспехов" },
+    "description": {
+      "en": "You gain training with Medium armor.",
+      "ru": "Вы получаете владение средними доспехами."
+    },
+    "origin": "feat",
+    "origin_value": "general",
+    "kind": "update_result",
+    "conditions": { "level": 4 },
+    "info": {
+      "multiple": false,
+      "rewrite": { "ability_boosts": ["str", "dex"], "leveling_ability_boosts": 1 },
+      "push": { "armor_proficiency": ["medium"] }
+    }
+  },
+  {
+    "slug": "heavily_armored",
+    "title": { "en": "Heavily Armored", "ru": "Знаток тяжёлых доспехов" },
+    "description": {
+      "en": "You gain training with Heavy armor.",
+      "ru": "Вы получаете владение тяжёлыми доспехами."
+    },
+    "origin": "feat",
+    "origin_value": "general",
+    "kind": "update_result",
+    "conditions": { "level": 4 },
+    "info": {
+      "multiple": false,
+      "rewrite": { "ability_boosts": ["str", "con"], "leveling_ability_boosts": 1 },
+      "push": { "armor_proficiency": ["heavy"] }
+    }
+  },
+  {
+    "slug": "dual_wielder",
+    "title": { "en": "Dual Wielder", "ru": "Использование двух оружий" },
+    "description": {
+      "en": "**Enhanced Dual Wielding**. When you take the Attack action on your turn and attack with a weapon that has the Light property, you can make one extra attack as a Bonus Action later on the same turn with a different weapon, which must be a Melee weapon that lacks the Two-Handed property. You don't add your ability modifier to the extra attack's damage unless that modifier is negative.\n\n**Quick Draw**. You can draw or stow two weapons that lack the Two-Handed property when you would normally be able to draw or stow only one.",
+      "ru": "**Улучшенное использование двух оружий**. Когда вы совершаете действие атака в ваш ход и атакуете оружием со свойством лёгкое, вы можете позднее в этот же ход совершить 1 дополнительную атаку бонусным действием другим рукопашным оружием, не имеющим свойство двуручное. Вы не добавляете свой модификатор характеристики к урону этой дополнительной атаки, если только он не отрицательный.\n\n**Быстрое извлечение**. Вы можете вынимать и убирать 2 оружия, не имеющих свойство двуручное, когда обычно вы могли бы вынуть или убрать только 1."
+    },
+    "origin": "feat",
+    "origin_value": "general",
+    "kind": "static",
+    "conditions": { "level": 4, "ability": ["str", "dex"] },
+    "info": {
+      "multiple": false,
+      "rewrite": { "ability_boosts": ["str", "dex"], "leveling_ability_boosts": 1 }
+    }
+  },
+  {
+    "slug": "crusher",
+    "title": { "en": "Crusher", "ru": "Крушитель" },
+    "description": {
+      "en": "**Push**. Once per turn, when you hit a creature with an attack that deals Bludgeoning damage, you can move it 5 feet to an unoccupied space if the target is no more than one size larger than you.\n\n**Enhanced Critical**. When you score a Critical Hit that deals Bludgeoning damage to a creature, attack rolls against that creature have Advantage until the start of your next turn.",
+      "ru": "**Отбросить**. 1 раз в ход, когда вы попадаете по существу атакой и наносите дробящий урон, вы можете переместить его на 5 футов в свободное пространство при условии, что цель больше вас не более чем на 1 размер.\n\n**Улучшенный критический удар**. Когда вы наносите критический удар, наносящий дробящий урон существу, то броски атаки по этому существу получают преимущество до начала вашего следующего хода."
+    },
+    "origin": "feat",
+    "origin_value": "general",
+    "kind": "static",
+    "conditions": { "level": 4 },
+    "info": {
+      "multiple": false,
+      "rewrite": { "ability_boosts": ["str", "con"], "leveling_ability_boosts": 1 }
+    }
+  },
+  {
+    "slug": "great_weapon_master",
+    "title": { "en": "Great Weapon Master", "ru": "Мастер большого оружия" },
+    "description": {
+      "en": "**Heavy Weapon Mastery**. When you hit a creature with a weapon that has the Heavy property as part of the Attack action on your turn, you can cause the weapon to deal extra damage to the target +{{value}}.\n\n**Hew**. Immediately after you score a Critical Hit with a Melee weapon or reduce a creature to 0 Hit Points with one, you can make one attack with the same weapon as a Bonus Action.",
+      "ru": "**Мастерство тяжёлого оружия**. Когда вы попадаете по существу оружием со свойством тяжёлое частью действия атака в ваш ход, то вы можете нанести этим оружием дополнительный урон цели +{{value}}.\n\n**Рассечение**. Сразу же после того, как вы оружием ближнего боя нанесёте критическое попадание или уменьшите хиты существа до 0, вы можете совершить 1 атаку тем же оружием бонусным действием."
+    },
+    "origin": "feat",
+    "origin_value": "general",
+    "kind": "static",
+    "conditions": { "level": 4, "ability": ["str"] },
+    "info": {
+      "multiple": false,
+      "rewrite": { "ability_boosts": ["str"], "leveling_ability_boosts": 1 }
+    },
+    "description_eval_variables": {
+      "value": "proficiency_bonus"
+    }
+  },
+  {
+    "slug": "polearm_master",
+    "title": { "en": "Polearm Master", "ru": "Мастер древкового оружия" },
+    "description": {
+      "en": "**Pole Strike**. Immediately after you take the Attack action and attack with a Quarterstaff, a Spear, or a weapon that has the Heavy and Reach properties, you can use a Bonus Action to ma ke a melee attack with the opposite end of the weapon. The weapon deals Bludgeoning damage, and the weapon's damage die for this attack is a d4.\n\n**Reactive Strike**. While you're holding a Quarterstaff, a Spear, or a weapon that has the Heavy and Reach properties, you can take a Reaction to make one melee attack against a creature that enters the reach you have with that weapon.",
+      "ru": "**Удар древком**. Сразу же после того, как вы совершите действие атака и атакуете боевым посохом, копьём или оружием со свойствами тяжёлое и досягаемость, вы можете бонусным действием совершить рукопашную атаку противоположным концом оружия. Оружие наносит дробящий урон, и кость урона оружием для этой атаки равна к4.\n\n**Ответный удар**. Пока вы держите в руках боевой посох, копьё или оружие со свойствами тяжёлое и досягаемость, вы можете использовать вашу реакцию, чтобы совершить 1 рукопашную атаку по существу, которое входит в зону досягаемости, которую вы имеете с этим оружием."
+    },
+    "origin": "feat",
+    "origin_value": "general",
+    "kind": "static",
+    "conditions": { "level": 4, "ability": ["str", "dex"] },
+    "info": {
+      "multiple": false,
+      "rewrite": { "ability_boosts": ["str", "dex"], "leveling_ability_boosts": 1 }
+    }
+  },
+  {
+    "slug": "weapon_master",
+    "title": { "en": "Weapon Master", "ru": "Мастер оружия" },
+    "description": {
+      "en": "Your training with weapons allows you to use the mastery property of one kind of Simple or Martial weapon of your choice, provided you have proficiency with it. Whenever you finish a Long Rest, you can change the kind of weapon to another eligible kind.",
+      "ru": "Ваше обучение оружием позволяет вам использовать оружейный приём 1 типа простого или воинского оружия по вашему выбору, если вы им владеете. Каждый раз, когда вы заканчиваете продолжительный отдых, вы можете сменить тип оружия на другой подходящий тип."
+    },
+    "origin": "feat",
+    "origin_value": "general",
+    "kind": "update_result",
+    "conditions": { "level": 4 },
+    "info": {
+      "multiple": false,
+      "rewrite": { "ability_boosts": ["str", "dex"], "leveling_ability_boosts": 1 }
+    }
+  },
+  {
+    "slug": "medium_armor_master",
+    "title": { "en": "Medium Armor Master", "ru": "Мастер средних доспехов" },
+    "description": {
+      "en": "While you're wearing Medium armor, you can add 3, rather than 2, to your AC if you have a Dexterity score of 16 or higher.",
+      "ru": "Пока вы носите средние доспехи, то вы можете прибавить 3, а не 2, к вашему КД, если ваш показатель Ловкости 16 или выше."
+    },
+    "origin": "feat",
+    "origin_value": "general",
+    "kind": "update_result",
+    "conditions": { "level": 4 },
+    "info": {
+      "multiple": false,
+      "rewrite": { "ability_boosts": ["str", "dex"], "leveling_ability_boosts": 1 }
+    }
+  },
+  {
+    "slug": "heavy_armor_master",
+    "title": { "en": "Heavy Armor Master", "ru": "Мастер тяжёлых доспехов" },
+    "description": {
+      "en": "When you're hit by an attack while you're wearing Heavy armor, any Bludgeoning, Piercing, and Slashing damage dealt to you by that attack is reduced by an amount equal to your Proficiency Bonus.",
+      "ru": "Если по вам попадают атакой, пока вы носите тяжёлый доспех, то любой колющий, рубящий и дробящий урон от этой атаки уменьшается на величину, равную вашему бонусу мастерства."
+    },
+    "origin": "feat",
+    "origin_value": "general",
+    "kind": "static",
+    "conditions": { "level": 4 },
+    "info": {
+      "multiple": false,
+      "rewrite": { "ability_boosts": ["str", "con"], "leveling_ability_boosts": 1 }
+    }
+  },
+  {
+    "slug": "shield_master",
+    "title": { "en": "Shield Master", "ru": "Мастер щитов" },
+    "description": {
+      "en": "**Shield Bash**. If you attack a creature within 5 feet of you as part of the Attack action and hit with a Melee weapon, you can immediately bash the target with your Shield if it's equipped, forcing the target to make a Strength saving throw (DC {{value}}). On a failed save, you either push the target 5 feet from you or cause it to have the Prone condition (your choice). You can use this benefit only once on each of your turns.\n\n**Interpose Shield**. If you're subjected to an effect that allows you to make a Dexterity saving throw to take only half damage, you can take a Reaction to take no damage if you succeed on the saving throw and are holding a Shield.",
+      "ru": "**Удар щитом**. Если вы атакуете существо в пределах 5 футов частью действия атака и попадаете рукопашным оружием, то вы можете немедленно ударить цель своим щитом, если он экипирован, заставляя цель совершить спасбросок Силы (УС {{value}}). При провале вы либо отталкиваете цель на 5 футов от себя, либо цель получает статус Лежащий ничком (на ваш выбор). Вы можете использовать это умение только 1 раз в каждый из ваших ходов.\n\n**Выставить щит**. Если вы подвергаетесь действию эффекта, позволяющего совершить спасбросок Ловкости для получения половины урона, то вы можете использовать реакцию, чтобы не получить никакого урона, если вы преуспели в спасброске и держите щит."
+    },
+    "origin": "feat",
+    "origin_value": "general",
+    "kind": "static",
+    "conditions": { "level": 4 },
+    "info": {
+      "multiple": false,
+      "rewrite": { "ability_boosts": ["str"], "leveling_ability_boosts": 1 }
+    },
+    "description_eval_variables": {
+      "value": "8 + modifiers['str'] + proficiency_bonus"
+    }
+  },
+  {
+    "slug": "spell_sniper",
+    "title": { "en": "Spell Sniper", "ru": "Меткий заклинатель" },
+    "description": {
+      "en": "**Bypass Cover**. Your attack rolls for spells ignore Half Cover and Three-Quarters Cover.\n\n**Casting in Melee**. Being within 5 feet of an enemy doesn't impose Disadvantage on your attack rolls with spells.\n\n**Increased Range**. When you cast a spell that has a range of at least 10 feet and requires you to make an attack roll, you can increase the spell's range by 60 feet.",
+      "ru": "**Обход укрытия**. Ваши броски атаки заклинаниями игнорируют укрытие на половину и укрытие на три четверти.\n\n**Заклинание в упор**. Нахождение в пределах 5 футов от противника не накладывает помеху на ваши броски атаки заклинаниями.\n\n**Увеличенная дальность**. Когда вы произносите заклинание, которое имеет дистанцию не менее 10 футов и требует от вас совершить бросок атаки, то вы можете увеличить дистанцию заклинания на 60 футов."
+    },
+    "origin": "feat",
+    "origin_value": "general",
+    "kind": "static",
+    "conditions": { "level": 4 },
+    "info": {
+      "multiple": false,
+      "rewrite": { "ability_boosts": ["int", "wis", "cha"], "leveling_ability_boosts": 1 }
+    }
+  },
+  {
+    "slug": "sharpshooter",
+    "title": { "en": "Sharpshooter", "ru": "Меткий стрелок" },
+    "description": {
+      "en": "**Bypass Cover**. Your ranged attacks with weapons ignore Half Cover and Three-Quarters Cover.\n\n**Firing in Melee**. Being within 5 feet of an enemy doesn't impose Disadvantage on your attack rolls with Ranged weapons.\n\n**Long Shots**. Attacking at long range doesn't impose Disadvantage on your attack rolls with Ranged weapons.",
+      "ru": "**Обход укрытия**. Ваши дальнобойные атаки оружием игнорируют укрытие на половину и укрытие на три четверти.\n\n**Стрельба в упор**. Нахождение в пределах 5 футов от врага не накладывает помеху на ваши атаки дальнобойным оружием.\n\n**Дальние выстрелы**. Совершение атаки в пределах максимальной дистанции не вызывает помеху к броску атаки дальнобойным оружием."
+    },
+    "origin": "feat",
+    "origin_value": "general",
+    "kind": "static",
+    "conditions": { "level": 4, "ability": ["dex"] },
+    "info": {
+      "multiple": false,
+      "rewrite": { "ability_boosts": ["dex"], "leveling_ability_boosts": 1 }
+    }
+  },
+  {
+    "slug": "observant",
+    "title": { "en": "Observant", "ru": "Наблюдательный" },
+    "description": {
+      "en": "**Keen Observer**. Choose one of the following skills: Insight, Investigation, or Perception. If you lack proficiency with the chosen skill, you gain proficiency in it, and if you already have proficiency in it, you gain Expertise in it.\n\n**Quick Search**. You can take the Search action as a Bonus Action.",
+      "ru": "**Наблюдательность**. Выберите 1 из следующих навыков: Проницательность, Анализ или Внимательность. Если вы не владеете выбранным навыком, то вы получаете владение им, а если вы уже владеете им, то получаете компетентность в нём.\n\n**Быстрый поиск**. Вы можете совершить действие поиск бонусным действием."
+    },
+    "origin": "feat",
+    "origin_value": "general",
+    "kind": "static",
+    "conditions": { "level": 4, "ability": ["int", "wis"] },
+    "info": {
+      "multiple": false,
+      "rewrite": { "ability_boosts": ["int", "wis"], "leveling_ability_boosts": 1 }
+    }
+  },
+  {
+    "slug": "charger",
+    "title": { "en": "Charger", "ru": "Налётчик" },
+    "description": {
+      "en": "**Improved Dash**. When you take the Dash action, your Speed increases by 10 feet for that action.\n\n**Charge Attack**. If you move at least 10 feet in a straight line toward a target immediately before hitting it with a melee attack roll as part of the Attack action, choose one of the following effects:\n\n- gain a 1d8 bonus to the attack's damage roll\n- push the target up to 10 feet away if it is no more than one size larger than you.\nYou can use this benefit only once on each of your turns.",
+      "ru": "**Улучшенный рывок**. Когда вы совершаете действие рывок, ваша скорость увеличивается на 10 футов для этого действия.\n\n**Атака с разбега**. Если вы перемещаетесь хотя бы на 10 футов по прямой линии к цели непосредственно перед тем, как нанести по ней рукопашную атаку действием атака, то выберите 1 из следующих эффектов:\n\n- добавьте 1к8 к броску урона атаки\n- толкните цель на расстояние до 10 футов от вас, при условии, что цель не более чем на 1 размер больше вас.\nВы можете использовать это умение только 1 раз в каждый свой ход."
+    },
+    "origin": "feat",
+    "origin_value": "general",
+    "kind": "static",
+    "conditions": { "level": 4, "ability": ["str", "dex"] },
+    "info": {
+      "multiple": false,
+      "rewrite": { "ability_boosts": ["str", "dex"], "leveling_ability_boosts": 1 }
+    }
+  },
+  {
+    "slug": "defensive_duelist",
+    "title": { "en": "Defensive Duelist", "ru": "Оборонительный дуэлянт" },
+    "description": {
+      "en": "If you're holding a Finesse weapon and another creature hits you with a melee attack, you can take a Reaction to add your Proficiency Bonus to your Armor Class, potentially causing the attack to miss you. You gain this bonus to your AC against me lee attacks until the start of your next turn.",
+      "ru": "Если вы держите оружие со свойством фехтовальное и другое существо попадает по вам рукопашной атакой, то вы можете использовать вашу реакцию, чтобы добавить ваш бонус мастерства к КД, что может привести к промаху этой атаки. Вы получаете этот бонус к КД против рукопашных атак до начала вашего следующего хода."
+    },
+    "origin": "feat",
+    "origin_value": "general",
+    "kind": "static",
+    "conditions": { "level": 4, "ability": ["dex"] },
+    "info": {
+      "multiple": false,
+      "rewrite": { "ability_boosts": ["dex"], "leveling_ability_boosts": 1 }
+    }
+  },
+  {
+    "slug": "keen_mind",
+    "title": { "en": "Keen Mind", "ru": "Острый ум" },
+    "description": {
+      "en": "**Lore Knowledge**. Choose one of the following skills: Arcana, History, Investigation, Nature, or Religion. If you lack proficiency in the chosen skill, you gain proficiency in it, and if you already have proficiency in it, you gain Expertise in it.\n\n**Quick Study**. You can take the Study action as a Bonus Action.",
+      "ru": "**Знания**. Выберите 1 из следующих навыков: Аркана, История, Анализ, Природа, или Религия. Если у вас нет владения выбранным навыком, то вы получаете владение в нём, а если у вас уже есть владение в нём, то вы получаете компетентность в нём.\n\n**Быстрое изучение**. Вы можете совершить действие изучение бонусным действием."
+    },
+    "origin": "feat",
+    "origin_value": "general",
+    "kind": "static",
+    "conditions": { "level": 4, "ability": ["int"] },
+    "info": {
+      "multiple": false,
+      "rewrite": { "ability_boosts": ["int"], "leveling_ability_boosts": 1 }
+    }
+  },
+  {
+    "slug": "poisoner",
+    "title": { "en": "Poisoner", "ru": "Отравитель" },
+    "description": {
+      "en": "",
+      "ru": "**Сильный яд**. Когда вы совершаете бросок урона для нанесения урона ядом, он игнорирует сопротивление урону ядом.\n\n**Приготовить яд**. За 1 час работы с помощью инструментов отравителя, расходуя материалы на 50 зм, вы можете создать количество доз яда, равное вашему бонусу мастерства. Вы можете нанести дозу яда на оружие или боеприпас бонусным действием. После нанесения яд сохраняет свою эффективность в течение 1 минуты или до тех пор, пока вы не нанесёте урон отравленным предметом, в зависимости от того, что произойдёт раньше. Когда существо получает урон от отравленного предмета, оно должно преуспеть в спасброске Телосложения (СЛ 8 + ваш модификатор характеристики, увеличенной этой чертой + ваш бонус мастерства), иначе получит 2к8 урона ядом и получит состояние отравлен до конца вашего следующего хода."
+    },
+    "origin": "feat",
+    "origin_value": "general",
+    "kind": "one_from_list",
+    "conditions": { "level": 4 },
+    "info": {
+      "multiple": false,
+      "rewrite": { "ability_boosts": ["int", "dex"], "leveling_ability_boosts": 1 },
+      "push": { "tools": ["poisoner"] }
+    },
+    "options": {
+      "int": { "en": "Intelligence", "ru": "Интеллект" },
+      "dex": { "en": "Dexterity", "ru": "Ловкость" }
+    }
+  },
+  {
+    "slug": "speedy",
+    "title": { "en": "Speedy", "ru": "Подвижный" },
+    "description": {
+      "en": "**Dash over Difficult Terrain**. When you take the Dash action on your turn, Difficult Terrain doesn't cost you extra movement for the rest of that turn.\n\n**Agile Movement**. Oppor tunity Attacks have Disadvantage against you.",
+      "ru": "**Рывок по труднопроходимой местности**. Когда вы выполняете действие рывок в ваш ход, то труднопроходимая местность не будет стоить вам дополнительного движения до конца этого хода.\n\n**Проворное движение**. Провоцированные атаки совершаются по вам с помехой."
+    },
+    "origin": "feat",
+    "origin_value": "general",
+    "kind": "static",
+    "conditions": { "level": 4, "ability": ["con", "dex"] },
+    "info": {
+      "multiple": false,
+      "rewrite": { "ability_boosts": ["con", "dex"], "leveling_ability_boosts": 1 }
+    },
+    "eval_variables": {
+      "speed": "speed + 10"
+    }
+  },
+  {
+    "slug": "piercer",
+    "title": { "en": "Piercer", "ru": "Пронзатель" },
+    "description": {
+      "en": "**Puncture**. Once per turn, when you hit a creature with an attack that deals Piercing damage, you can reroll one of the attack's damage dice, and you must use the new roll.\n\n**Enhanced Critical**. When you score a Critical Hit that deals Piercing damage to a creature, you can roll one additional damage die when determining the extra Piercing damage the target takes.",
+      "ru": "**Укол**. 1 раз в ход, когда вы попадаете по существу атакой и наносите колющий урон, вы можете перебросить одну из костей урона, и должны использовать новый результат.\n\n**Улучшенный критический удар**. Когда вы наносите критический удар, наносящий колющий урон существу, вы можете бросить одну дополнительную кость урона, когда определяете дополнительный колющий урон, который получает цель."
+    },
+    "origin": "feat",
+    "origin_value": "general",
+    "kind": "static",
+    "conditions": { "level": 4 },
+    "info": {
+      "multiple": false,
+      "rewrite": { "ability_boosts": ["str", "dex"], "leveling_ability_boosts": 1 }
+    }
+  },
+  {
+    "slug": "skulker",
+    "title": { "en": "Skulker", "ru": "Проныра" },
+    "description": {
+      "en": "**Blindsight**. You have Blindsight with a range of 10 feet.\n\n**Fog of War**. You exploit the distractions of battle, gaining Advantage on any Dexterity (Stealth) check you make as part of the Hide action during combat.\n\n**Sniper**. If you make an attack roll while hidden and the roll misses, making the attack roll doesn't reveal your location.",
+      "ru": "**Слепое зрение**. Вы обладаете слепым зрением с дистанцией 10 футов.\n\n**Туман войны**. Используя отвлекающие факторы в бою, вы получаете преимущество при любой проверке Ловкости (Скрытность), которую вы совершаете частью действия засада во время боя.\n\n**Снайпер**. Если вы совершаете бросок атаки, находясь в засаде, и промахиваетесь, то этот бросок атаки не выдает вашу позицию."
+    },
+    "origin": "feat",
+    "origin_value": "general",
+    "kind": "static",
+    "conditions": { "level": 4, "ability": ["dex"] },
+    "info": {
+      "multiple": false,
+      "rewrite": { "ability_boosts": ["dex"], "leveling_ability_boosts": 1 }
+    }
+  },
+  {
+    "slug": "ritual_caster",
+    "title": { "en": "Ritual Caster", "ru": "Ритуальный заклинатель" },
+    "description": {
+      "en": "**Ritual Spells**. Choose a number of level 1 spells equal to your Proficiency Bonus that have the Ritual tag. You always have those spells prepared, and you can cast them with any spell slots you have. The spells' spelcasting ability is the ability increased i this feat. Whenever your Proficiency Bonus increases thereafter, you can add an additional level 1 spell with the Ritual tag to the spells always prepared with this feature.\n\n**Quick Ritual**. With this benefit, you can cast a Ritual spell that you have prepared using its regular casting time rather than the extended time for a Ritual. Doing so doesn't require a spell slot. Once you cast the spell in this way, you can't use this benefit again until you finish a Long Rest.",
+      "ru": "**Ритуальные заклинания**. Выберите количество заклинаний 1 уровня со свойством ритуал, равное вашему бонусу мастерства. Эти заклинания всегда у вас подготовлены и вы можете использовать их с помощью любых имеющихся у вас ячеек заклинаний. Заклинательной характеристикой для этих заклинаний является та, которую вы увеличили данной чертой. Каждый раз когда ваш бонус мастерства увеличивается, вы можете добавить дополнительное заклинание 1 уровня со свойством ритуал к тем заклинаниям, которые у вас всегда подготовлены благодаря этой черте.\n\n**Быстрый ритуал**. С помощью этой черты вы можете накладывать ритуальное заклинание, которое у вас подготовлено, используя его обычное время наложения, а не увеличенное время для ритуала. Для этого не требуется ячейка заклинания. Как только вы наложите заклинание таким образом, вы не сможете использовать этот эффект снова, пока не закончите продолжительный отдых."
+    },
+    "origin": "feat",
+    "origin_value": "general",
+    "kind": "one_from_list",
+    "conditions": { "level": 4, "ability": ["int", "wis", "cha"] },
+    "info": {
+      "multiple": false,
+      "rewrite": { "ability_boosts": ["int", "wis", "cha"], "leveling_ability_boosts": 1 }
+    },
+    "options": {
+      "int": { "en": "Intelligence", "ru": "Интеллект" },
+      "wis": { "en": "Wisdom", "ru": "Мудрость" },
+      "cha": { "en": "Charisma", "ru": "Харизма" }
+    }
+  },
+  {
+    "slug": "slasher",
+    "title": { "en": "Slasher", "ru": "Рубака" },
+    "description": {
+      "en": "**Hamstring**. Once per turn when you hit a creature with an attack that deals Slashing damage, you can reduce the Speed of that creature by 10 feet until the start of your next turn.\n\n**Enhanced Critical**. When you score a Critical Hit that deals Slashing damage to a creature, it has Disadvantage on attack rolls until the start of your next turn.",
+      "ru": "**Подрезание**. 1 раз в ход, когда вы попадаете по существу атакой и наносите рубящий урон, вы можете уменьшить скорость этого существа на 10 футов до начала вашего следующего хода.\n\n**Улучшенная критическая атака**. Когда вы наносите критический удар, наносящий рубящий урон существу, оно получает помеху на броски атаки до начала вашего следующего хода."
+    },
+    "origin": "feat",
+    "origin_value": "general",
+    "kind": "static",
+    "conditions": { "level": 4 },
+    "info": {
+      "multiple": false,
+      "rewrite": { "ability_boosts": ["str", "dex"], "leveling_ability_boosts": 1 }
+    }
+  },
+  {
+    "slug": "durable",
+    "title": { "en": "Durable", "ru": "Стойкий" },
+    "description": {
+      "en": "**Defy Death**. You have Advantage on Death Saving Throws.\n\n**Speedy Recovery**. As a Bonus Action, you can expend one of your Hit Point Dice, roll the die, and regain a number of Hit Points equal to the roll.",
+      "ru": "**Бросить вызов смерти**. У вас есть преимущество на спасброски от смерти.\n\n**Быстрое восстановление**. Бонусным действием вы можете потратить 1 из своих костей хитов, бросить кость и восстановить количество хитов, равное выпавшему числу."
+    },
+    "origin": "feat",
+    "origin_value": "general",
+    "kind": "static",
+    "conditions": { "level": 4 },
+    "info": {
+      "multiple": false,
+      "rewrite": { "ability_boosts": ["con"], "leveling_ability_boosts": 1 }
+    }
+  },
+  {
+    "slug": "sentinel",
+    "title": { "en": "Sentinel", "ru": "Страж" },
+    "description": {
+      "en": "**Guardian**. Immediately after a creature within 5 feet of you takes the Disengage action or hits a target other than you with an attack, you can make an Opportunity Attack against that creature.\n\n**Halt**. When you hit a creature with an Opportunity Attack, the creature's Speed becomes 0 for the rest of the current turn.",
+      "ru": "**Защитник**. Сразу же после того, как существо в пределах 5 футов от вас совершает действие отход или попадает атакой не по вам, то вы можете совершить провоцированную атаку по этому существу.\n\n**Стоять**. Когда вы попадаете по существу провоцированной атакой, то скорость этого существа становится равной 0 до конца текущего хода."
+    },
+    "origin": "feat",
+    "origin_value": "general",
+    "kind": "static",
+    "conditions": { "level": 4, "ability": ["str", "dex"] },
+    "info": {
+      "multiple": false,
+      "rewrite": { "ability_boosts": ["str", "dex"], "leveling_ability_boosts": 1 }
+    }
+  },
+  {
+    "slug": "telekinetic",
+    "title": { "en": "Telekinetic", "ru": "Телекинетик" },
+    "description": {
+      "en": "**Minor Telekinesis**. You learn the Mage Hand spell. You can cast it without Verbal or Somatic components, you can make the spectral hand Invisible, and its range increases by 30 feet when you cast it. The spell's spellcasting ability is the ability increased by this feat.\n\n**Telekinetic Shove**. As a Bonus Action, you can telekinetically shove one creature you can see within 30 feet of yourself. W hen you do so, the target must succeed on a Strength saving throw (DC 8 plus the ability modifier of the score increased by this feat and your Proficiency Bonus) or be moved 5 feet toward or away from you.",
+      "ru": "**Малый телекинез**. Вы узнаёте заговор Волшебная рука. Вы можете использовать его без вербальных или соматических компонентов и можете делать волшебную руку невидимой. Если вы уже знаете этот заговор, то его дистанция и расстояние возможого нахождения руки увеличивается на 30 футов, когда вы его накладываете. Заклинательной характеристикой этого заклинания является та, которую вы увеличили данной чертой.\n\n**Телекинетический толчок**. Бонусным действием вы можете попытаться телекинетически толкнуть 1 существо, которое вы можете видеть в пределах 30 футов. Когда вы это совершаете, то цель должна преуспеть в спасброске Силы (Сл. 8 + ваш бонус мастерства + ваш модификатор характеристики, которую вы увеличили данной чертой), иначе она будет перемещена на 5 футов к вам или от вас."
+    },
+    "origin": "feat",
+    "origin_value": "general",
+    "kind": "one_from_list",
+    "conditions": { "level": 4 },
+    "info": {
+      "multiple": false,
+      "rewrite": { "ability_boosts": ["int", "wis", "cha"], "leveling_ability_boosts": 1 }
+    },
+    "options": {
+      "int": { "en": "Intelligence", "ru": "Интеллект" },
+      "wis": { "en": "Wisdom", "ru": "Мудрость" },
+      "cha": { "en": "Charisma", "ru": "Харизма" }
+    }
+  },
+  {
+    "slug": "telepathic",
+    "title": { "en": "Telepathic", "ru": "Телепат" },
+    "description": {
+      "en": "**Telepathic Utterance**. You can speak telepathically to any creature you can see within 60 feet of yourself. Your telepathic utterances are in a language you know, and the creature understands you only if it knows that language. Your communication doesn't give the creature the ability lo respond to you telepathically.\n\n**Detect Thoughts**. You always have the Detect Thoughts spell prepared. You can cast it without a spell slot or spell components, and you must finish a Long Rest before you can cast it in this way again. You can also cast it using spell slots you have of the appropriate level. Your spellcasting ability for the spell is the ability increased by this feat.",
+      "ru": "**Телепатическое общение**. Вы можете телепатически общаться с любым существом, которое можете видеть в пределах 60 футов. Ваши телепатические сообщения произносятся на языке, который вы знаете, и существо понимает вас, если оно знает этот язык. Ваше общение не даёт существу возможность отвечать вам телепатически.\n\n**Обнаружение мыслей**. У вас всегда подготовлено заклинание Обнаружение мыслей. Вы можете наложить его без использования ячеек заклинания или компонентов 1 раз в день. Заклинательной характеристикой этого заклинания является та, которую вы увеличили данной чертой."
+    },
+    "origin": "feat",
+    "origin_value": "general",
+    "kind": "one_from_list",
+    "conditions": { "level": 4 },
+    "info": {
+      "multiple": false,
+      "rewrite": { "ability_boosts": ["int", "wis", "cha"], "leveling_ability_boosts": 1 }
+    },
+    "options": {
+      "int": { "en": "Intelligence", "ru": "Интеллект" },
+      "wis": { "en": "Wisdom", "ru": "Мудрость" },
+      "cha": { "en": "Charisma", "ru": "Харизма" }
+    },
+    "description_eval_variables": {
+      "limit": "1"
+    },
+    "limit_refresh": "long_rest"
+  },
+  {
+    "slug": "mage_slayer",
+    "title": { "en": "Mage Slayer", "ru": "Убийца магов" },
+    "description": {
+      "en": "**Concentration Breaker**. When you damage a creature that is concentrating, it has Disadvantage on the saving throw it makes to maintain Concentration.\n\n**Guarded Mind**. If you fail an Intelligence, a Wisdom, or a Charisma saving throw, you can cause yourself to succeed instead. Once you use this benefit, you can't use it again until you finish a Short or Long Rest.",
+      "ru": "**Разрушение концентрации**. Когда вы наносите урон существу, которое концентрируется, оно получает помеху на спасбросок для сохранения концентрации.\n\n**Защищённый разум**. Если вы провалите спасбросок Интеллекта, Мудрости или Харизмы, то вы можете превратить результат в успех. Как только вы используете это умение, вы не можете сделать это снова, пока не завершите короткий или продолжительный отдых."
+    },
+    "origin": "feat",
+    "origin_value": "general",
+    "kind": "static",
+    "conditions": { "level": 4 },
+    "info": {
+      "multiple": false,
+      "rewrite": { "ability_boosts": ["str", "dex"], "leveling_ability_boosts": 1 }
+    },
+    "description_eval_variables": {
+      "limit": "1"
+    },
+    "limit_refresh": "short_rest"
+  },
+  {
+    "slug": "ability_score_improvement",
+    "title": { "en": "Ability Score Improvement", "ru": "Улучшение характеристик" },
+    "description": {
+      "en": "Increase one ability score of your choice by 2, or increase two ability scores of your choice by 1.",
+      "ru": "Увеличьте 1 показатель характеристики по вашему выбору на 2 или увеличьте 2 показателя характеристики по вашему выбору на 1."
+    },
+    "origin": "feat",
+    "origin_value": "general",
+    "kind": "update_result",
+    "conditions": { "level": 4 },
+    "info": {
+      "multiple": true,
+      "rewrite": { "ability_boosts": [], "leveling_ability_boosts": 2 }
+    }
+  },
+  {
+    "slug": "resilient",
+    "title": { "en": "Resilient", "ru": "Устойчивый" },
+    "description": {
+      "en": "**Ability Score Increase**. Choose one ability in which you lack saving throw proficiency. Increase the chosen ability score by 1, to a maximum of 20.\n\n**Saving Throw Proficiency**. You gain saving throw proficiency with the chosen ability.",
+      "ru": "**Повышение характеристики**. Выберите 1 характеристику, в которой у вас нет владения спасброском. Увеличьте свой показатель выбранной характеристики на 1, максимум до 20.\n\n**Владение спасброском**. Вы получаете владение спасброском в выбранной характеристике."
+    },
+    "origin": "feat",
+    "origin_value": "general",
+    "kind": "one_from_list",
+    "conditions": { "level": 4 },
+    "info": {
+      "multiple": false,
+      "rewrite": { "ability_boosts": [], "leveling_ability_boosts": 1 }
+    },
+    "eval_variables": {
+      "class_save_dc": "selected_features.key?('resilient') ? [selected_features['resilient']].concat(class_save_dc).uniq : class_save_dc"
+    },
+    "options": {
+      "str": { "en": "Strength", "ru": "Сила" },
+      "dex": { "en": "Dexterity", "ru": "Ловкость" },
+      "con": { "en": "Constitution", "ru": "Телосложение" },
+      "int": { "en": "Intelligence", "ru": "Интеллект" },
+      "wis": { "en": "Wisdom", "ru": "Мудрость" },
+      "cha": { "en": "Charisma", "ru": "Харизма" }
+    }
+  },
+  {
+    "slug": "chef",
+    "title": { "en": "Chef", "ru": "Шеф-повар" },
+    "description": {
+      "en": "**Replenishing Meal**. As part of a Short Rest, you can cook special food if you have ingredients and Cook's Utensils on hand. You can prepare enough of this food for a number of creatures equal to 4 plus your Proficiency Bonus. At the end of the Short Rest, any creature who eats the food and spends one or more Hit Dice to regain Hit Points regains an extra 1d8 Hit Points.\n\n**Bolstering Treats**. With 1 hour of work or when you finish a Long Rest, you can cook a number of treats equal to your Proficiency Bonus if you have ingredients and Cook's Utensils on hand. These special treats last 8 hours after being made. A creature can use a Bonus Action to eat one of those treats to gain a number of Temporary Hit Points equal to your Proficiency Bonus.",
+      "ru": "**Восполняющая пища**. Частью короткого отдыха вы можете приготовить особую еду при условии, что у вас есть ингредиенты и инструменты повара под рукой. Вы можете приготовить достаточно пищи для количества существ, равного 4 + ваш бонус мастерства. В конце короткого отдыха любое существо, которое съедает эту пищу и тратит 1 или несколько костей хитов, чтобы восстановить хиты, дополнительно восстанавливает 1к8 хитов.\n\n**Подкрепляющие угощения**. За 1 час работы или по окончании продолжительного отдыха вы можете заготовить количество угощений, равное вашему бонусу мастерства, если у вас есть ингредиенты и инструменты повара под рукой. Эти особые угощения съедобны в течение 8 часов после приготовления. Существо может бонусным действием съесть 1 из этих угощений, чтобы получить количество временных хитов, равное вашему бонусу мастерства."
+    },
+    "origin": "feat",
+    "origin_value": "general",
+    "kind": "static",
+    "conditions": { "level": 4 },
+    "info": {
+      "multiple": false,
+      "rewrite": { "ability_boosts": ["con", "wis"], "leveling_ability_boosts": 1 },
+      "push": { "tools": ["cook_utensils"] }
+    }
+  },
+  {
+    "slug": "crossbow_expert",
+    "title": { "en": "Crossbow Expert", "ru": "Эксперт в арбалетах" },
+    "description": {
+      "en": "**Ignore Loading**. You ignore the Loading property of the Hand Crossbow, Heavy Crossbow, and Light Crossbow. If you're holding one of them, you can load a piece of ammunition into it even if you lack a free hand.\n\n**Firing in Melee**. Being within 5 feet of an enemy doesn't impose Disadvantage on your attack rolls with crossbows.\n\n**Dual Wielding**. When you make the extra attack of the Light property, you can add your ability modifier to the damage of the extra attack if that attack is with a crossbow that has the Light property and you aren't already adding that modifier to the damage.",
+      "ru": "**Игнорирование перезарядки**. Вы игнорируете свойство перезарядка для ручного арбалета, тяжёлого арбалета и лёгкого арбалета. Если вы держите 1 из них, то можете зарядить его боеприпасом даже если у вас нет свободной руки.\n\n**Стрельба в упор**. Нахождение в пределах 5 футов от врага не накладывает помеху на ваши броски атаки арбалетом.\n\n**Использование двух оружий**. Когда вы совершаете дополнительную атаку благодаря свойству оружия лёгкое, вы можете добавить ваш модификатор характеристики к урону от дополнительной атаки, если эта атака была произведена из арбалета со свойством лёгкое и вы ещё не добавили этот модификатор к урону."
+    },
+    "origin": "feat",
+    "origin_value": "general",
+    "kind": "static",
+    "conditions": { "level": 4, "ability": ["dex"] },
+    "info": {
+      "multiple": false,
+      "rewrite": { "ability_boosts": ["dex"], "leveling_ability_boosts": 1 }
+    }
+  },
+  {
+    "slug": "skill_expert",
+    "title": { "en": "Skill Expert", "ru": "Эксперт в умении" },
+    "description": {
+      "en": "**Skill Proficiency**. You gain proficiency in one skill of your choice.\n\n**Expertise**. Choose one skill in which you have proficiency but lack Expertise. You gain Expertise with that skill.",
+      "ru": "**Владение навыком**. Вы получаете владение 1 навыком на ваш выбор.\n\n**Компетентность**. Выберите 1 навык, которым вы владеете, но не имеете в нем компетентности. Вы получаете компетентность в этом навыке."
+    },
+    "origin": "feat",
+    "origin_value": "general",
+    "kind": "static",
+    "conditions": { "level": 4 },
+    "info": {
+      "multiple": false,
+      "rewrite": { "ability_boosts": [], "leveling_ability_boosts": 1 }
+    }
+  },
+  {
+    "slug": "boon_of_combat_prowess",
+    "title": { "en": "Boon of Combat Prowess", "ru": "Дар боевой доблести" },
+    "description": {
+      "en": "When you miss with an attack roll, you can hit instead. Once you use this benefit, you can't use it again until the start of your next turn.",
+      "ru": "Когда вы промахиваетесь по цели, вы можете вместо этого попасть по ней. Использовать этот эффект можно только 1 раз до начала вашего следующего хода."
+    },
+    "origin": "feat",
+    "origin_value": "epic",
+    "kind": "static",
+    "conditions": { "level": 19 },
+    "info": {
+      "multiple": false,
+      "rewrite": { "ability_boosts": [], "leveling_ability_boosts": 1 }
+    }
+  },
+  {
+    "slug": "boon of recovery",
+    "title": { "en": "Boon of Recovery", "ru": "Дар восстановления" },
+    "description": {
+      "en": "**Last Stand**. When you would be reduced to 0 Hit Points, you can drop to 1 Hit Point instead and regain a number of Hit Points equal to half your Hit Point maximum. Once you use this benefit, you can't use it again until you finish a Long Rest.\n\n**Recover Vitality**. You have a pool of ten d1Os. As a Bonus Action, you can expend dice from the pool, roll those dice, and regain a number of Hit Points equal to the roll's total. You regain all the expended dice when you finish a Long Rest.",
+      "ru": "**Последний рубеж**. Когда ваши хиты должны быть снижены до 0, вы можете опустить их до 1 хита вместо этого и восстановить количество хитов, равное половине вашего максимума хитов. После использования этого эффекта вы не можете использовать его снова, пока не завершите продолжительный отдых.\n\n**Восстановление жизненных сил**. У вас есть резерв из десяти к10. Вы можете использовать кости из резерва бонусным действием, бросить эти кости и восстановить количество хитов, равное сумме бросков. Вы восстанавливаете все использованные кости из резерва после завершения продолжительного отдыха."
+    },
+    "origin": "feat",
+    "origin_value": "epic",
+    "kind": "static",
+    "conditions": { "level": 19 },
+    "info": {
+      "multiple": false,
+      "rewrite": { "ability_boosts": [], "leveling_ability_boosts": 1 }
+    },
+    "limit_refresh": "long_rest",
+    "description_eval_variables": {
+      "limit": "10"
+    }
+  },
+  {
+    "slug": "boon_of_combat_prowess",
+    "title": { "en": "Boon of Spell Recall", "ru": "Дар восстановления чар" },
+    "description": {
+      "en": "Whenever you cast a spell with a level 1-4 spell slot, roll 1d4. If the number you roll is the same as the slot's level, the slot isn't expended.",
+      "ru": "Когда вы накладываете заклинание, используя ячейку заклинания 1-4 уровня, бросьте к4. Если выпавшее число совпадает с уровнем ячейки, то ячейка не расходуется."
+    },
+    "origin": "feat",
+    "origin_value": "epic",
+    "kind": "static",
+    "conditions": { "level": 19 },
+    "info": {
+      "multiple": false,
+      "rewrite": { "ability_boosts": ["int", "cha", "wis"], "leveling_ability_boosts": 1 }
+    }
+  },
+  {
+    "slug": "boon_of_the_night_spirit",
+    "title": { "en": "Boon of the Night Spirit", "ru": "Дар духа ночи" },
+    "description": {
+      "en": "**Merge with Shadows**. While within Dim Light or Darkness, you can give yourself the Invisible condition as a Bonus Action. The condition ends on you immediately after you take an action, a Bonus Action, or a Reaction.\n\n**Shadowy Form**. While within Dim Light or Darkness, you have Resistance to all damage except Psychic and Radiant.",
+      "ru": "**лияние с тенями**. Находясь в тусклом свете или тьме, вы можете дать себе состояние невидимый бонусным действием. Состояние заканчивается сразу после того, как вы совершаете действие, бонусное действие или реакцию.\n\n**Теневая форма**. Находясь в тусклом свете или тьме вы получаете сопротивление всему урону, кроме психической энергией и излучением."
+    },
+    "origin": "feat",
+    "origin_value": "epic",
+    "kind": "static",
+    "conditions": { "level": 19 },
+    "info": {
+      "multiple": false,
+      "rewrite": { "ability_boosts": [], "leveling_ability_boosts": 1 }
+    }
+  },
+  {
+    "slug": "boon_of_truesight",
+    "title": { "en": "Boon of Truesight", "ru": "Дар истинного зрения" },
+    "description": {
+      "en": "You have Truesight with a range of 60 feet.",
+      "ru": "Вы получаете истинное зрение с дистанцией 60 футов."
+    },
+    "origin": "feat",
+    "origin_value": "epic",
+    "kind": "static",
+    "conditions": { "level": 19 },
+    "info": {
+      "multiple": false,
+      "rewrite": { "ability_boosts": [], "leveling_ability_boosts": 1 }
+    }
+  },
+  {
+    "slug": "boon_of_skill",
+    "title": { "en": "Boon of Skill", "ru": "Дар умения" },
+    "description": {
+      "en": "**All-Around Adept**. You gain proficiency in all skills.\n\n**Expertise**. Choose one skill in which you lack Expertise. You gain Expertise in that skill.",
+      "ru": "**Всесторонний мастер**. Вы получаете владение всеми навыками.\n\n**Компетентность**. Выберите 1 навык, в котором у вас нет компетентности. Вы получаете компетентность в этом навыке."
+    },
+    "origin": "feat",
+    "origin_value": "epic",
+    "kind": "update_result",
+    "conditions": { "level": 19 },
+    "info": {
+      "multiple": false,
+      "rewrite": { "ability_boosts": [], "leveling_ability_boosts": 1 }
+    }
+  },
+  {
+    "slug": "boon_of_irresistible_offense",
+    "title": { "en": "Boon of Irresistible Offense", "ru": "Дар непреодолимого нападения" },
+    "description": {
+      "en": "**Overcome Defenses**. The Bludgeoning, Piercing, and Slashing damage you deal always ignores Resistance.\n\n**Overwhelming Strike**. When you roll a 20 on the d20 for an attack roll, you can deal extra damage to the target equal to the ability score increased by this feat. The extra damage's type is the same as the attack's type.",
+      "ru": "**Преодоление защиты**. Дробящий, колющий и рубящий урон, который вы наносите, всегда игнорирует сопротивление.\n\n**Преодолевающий удар**. Когда вы выбрасываете 20 на к20 для броска атаки, то вы можете нанести дополнительный урон цели, равный значению характеристики, увеличенной этим даром. Тип дополнительного урона соответствует типу атаки."
+    },
+    "origin": "feat",
+    "origin_value": "epic",
+    "kind": "static",
+    "conditions": { "level": 19 },
+    "info": {
+      "multiple": false,
+      "rewrite": { "ability_boosts": ["str", "dex"], "leveling_ability_boosts": 1 }
+    }
+  },
+  {
+    "slug": "boon_of_dimensional_travel",
+    "title": { "en": "Boon of Dimensional Travel", "ru": "Дар пространственного путешествия" },
+    "description": {
+      "en": "Immediately after you take the Attack action or the Magic action, you can teleport up to 30 feet to an unoccupied space you can see.",
+      "ru": "Сразу после того, как вы совершаете действие атака или действие магия, вы можете телепортироваться на расстояние до 30 футов в незанятое пространство, которое вы видите."
+    },
+    "origin": "feat",
+    "origin_value": "epic",
+    "kind": "static",
+    "conditions": { "level": 19 },
+    "info": {
+      "multiple": false,
+      "rewrite": { "ability_boosts": [], "leveling_ability_boosts": 1 }
+    }
+  },
+  {
+    "slug": "boon_of_speed",
+    "title": { "en": "Boon of Speed", "ru": "Дар скорости" },
+    "description": {
+      "en": "As a Bonus Action, you can take the Disengage action, which also ends the Grappled condition on you.",
+      "ru": "Бонусным действием вы можете совершить действие отход, которое также снимает с вас состояние схваченный."
+    },
+    "origin": "feat",
+    "origin_value": "epic",
+    "kind": "static",
+    "conditions": { "level": 19 },
+    "info": {
+      "multiple": false,
+      "rewrite": { "ability_boosts": [], "leveling_ability_boosts": 1 }
+    },
+    "eval_variables": {
+      "speed": "speed + 30"
+    }
+  },
+  {
+    "slug": "boon_of_fortitude",
+    "title": { "en": "Boon of Fortitude", "ru": "Дар стойкости" },
+    "description": {
+      "en": "Your Hit Point maximum increases by 40. In addition, whenever you regain Hit Points, you can regain additional Hit Points equal to your Constitution modifier. Once you've regained these additional Hit Points, you can't do so again until the start of your next turn.",
+      "ru": "Ваш максимум хитов увеличивается на 40. Кроме того, всякий раз, когда вы восстанавливаете хиты, вы можете восстановить дополнительные хиты, равные вашему модификатору Телосложения. После восстановления этих дополнительных хитов вы не можете делать это снова до начала вашего следующего хода."
+    },
+    "origin": "feat",
+    "origin_value": "epic",
+    "kind": "static",
+    "conditions": { "level": 19 },
+    "info": {
+      "multiple": false,
+      "rewrite": { "ability_boosts": [], "leveling_ability_boosts": 1 }
+    }
+  },
+  {
+    "slug": "boon_of_combat_prowess",
+    "title": { "en": "Boon of Combat Prowess", "ru": "Дар судьбы" },
+    "description": {
+      "en": "When you or another creature within 60 feet of you succeeds on or fails a d20 Test, you can roll 2d4 and apply the total rolled as a bonus or penalty to the d20 roll. Once you use this benefit, you can't use it again until you roll Initiative or finish a Short or Long Rest.",
+      "ru": "Когда вы или другое существо в пределах 60 футов от вас успешно проходит или проваливает Тест к20, то вы можете бросить 2к4 и применить сумму как бонус или штраф к броску к20. После использования этого эффекта вы не можете использовать его снова, пока не совершите бросок инициативы или не закончите короткий или продолжительный отдых."
+    },
+    "origin": "feat",
+    "origin_value": "epic",
+    "kind": "static",
+    "conditions": { "level": 19 },
+    "info": {
+      "multiple": false,
+      "rewrite": { "ability_boosts": [], "leveling_ability_boosts": 1 }
+    }
+  },
+  {
+    "slug": "boon_of_energy_resistance",
+    "title": { "en": "Boon of Energy Resistance", "ru": "Дар устойчивости к энергиям" },
+    "description": {
+      "en": "**Energy Resistances**. You gain Resistance to two of the following damage types of your choice. Whenever you finish a Long Rest, you can change your choices.\n\n**Energy Redirection**. When you take damage of one of the types chosen for the Energy Resistances benefit, you can take a Reaction to direct damage of the same type toward another creature you can see within 60 feet of yourself that isn't behind Total Cover. If you do so, that creature must succeed on a Dexterity saving throw (DC {{dc}}) or take damage equal to 2d12+{{damage}}.",
+      "ru": "**Устойчивость к энергиям**. Вы получаете сопротивление к 2 из следующих типов урона на ваш выбор. Каждый раз, когда вы заканчиваете продолжительный отдых, вы можете изменить свой выбор.\n\n**Перенаправление энергии**. Когда вы получаете урон одного из типов, выбранных для эффекта Устойчивость к энергиям, вы можете использовать реакцию, чтобы направить урон того же типа на другое существо, которое вы видите в пределах 60 футов от вас и которое не находится за полным укрытием. Если вы это совершаете, то это существо должно преуспеть в спасброске Ловкости (УС {{dc}}) или получить урон, равный 2к12+{{damage}}."
+    },
+    "origin": "feat",
+    "origin_value": "epic",
+    "kind": "many_from_list",
+    "conditions": { "level": 19 },
+    "description_eval_variables": {
+      "dc": "8 + modifiers['con'] + proficiency_bonus",
+      "damage": "modifiers['con']"
+    },
+    "info": {
+      "multiple": false,
+      "rewrite": { "ability_boosts": [], "leveling_ability_boosts": 1 }
+    },
+    "options": {
+      "boon_of_energy_resistance_acid": {"en": "Acid", "ru": "Кислота"},
+      "boon_of_energy_resistance_cold": {"en": "Cold", "ru": "Холод"},
+      "boon_of_energy_resistance_fire": {"en": "Fire", "ru": "Огонь"},
+      "boon_of_energy_resistance_poison": {"en": "Poison", "ru": "Яд"},
+      "boon_of_energy_resistance_lightning": {"en": "Lightning", "ru": "Электричество"},
+      "boon_of_energy_resistance_cold": {"en": "Necrotic", "ru": "Некротическая энергия"},
+      "boon_of_energy_resistance_fire": {"en": "Psychic", "ru": "Психическая энергия"},
+      "boon_of_energy_resistance_poison": {"en": "Radiant", "ru": "Излучение"},
+      "boon_of_energy_resistance_lightning": {"en": "Thunder", "ru": "Звук"}
+    }
+  }
+]

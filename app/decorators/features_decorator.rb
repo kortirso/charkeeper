@@ -1,11 +1,12 @@
 # frozen_string_literal: true
 
 class FeaturesDecorator
-  attr_accessor :wrapped, :version
+  attr_accessor :wrapped, :version, :logger
 
   def initialize(obj, version: nil)
     @wrapped = obj
     @version = version
+    @logger = Logger.new($stdout)
   end
 
   def method_missing(method, *_args)
