@@ -1,7 +1,7 @@
 import { Portal } from 'solid-js/web';
 import { createSignal, Show, batch, Switch, Match, For } from 'solid-js';
 
-import { Dice, Button } from '../../components';
+import { Dice, DualityDice, Button } from '../../components';
 import { useAppState, useAppLocale } from '../../context';
 import { clickOutside, modifier } from '../../helpers';
 import { Close } from '../../assets';
@@ -37,6 +37,7 @@ export const createDiceRoll = () => {
   const [advantage, setAdvantage] = createSignal(0);
   const [rollResult, setRollResult] = createSignal(undefined);
   const [dices, setDices] = createSignal([]);
+  const [dualityMode, setDualityMode] = createSignal(false);
 
   const [appState] = useAppState();
   const [locale] = useAppLocale();
@@ -139,7 +140,8 @@ export const createDiceRoll = () => {
       }
 
       const makeSimpleRoll = async () => {
-        let value = `/roll ${dices().join(' ').toLowerCase()}`;
+        let value = dualityMode() ? '/dualityRoll' : '/roll'
+        value += ` ${dices().join(' ').toLowerCase()}`;
         if (additionalBonus() !== 0) value += ` ${additionalBonus()}`;
 
         const result = await createBotRequest(appState.accessToken, { source: 'raw', value: value });
@@ -168,6 +170,13 @@ export const createDiceRoll = () => {
             setRollResult({ ...rollResult(), rolls: newRollResults, total: total });
           }
         });
+      }
+
+      const dualityColor = (index) => {
+        if (index === 0) return '#C28D23';
+        if (index === 1) return '#2362C2';
+
+        return null;
       }
 
       return (
@@ -220,13 +229,13 @@ export const createDiceRoll = () => {
                           when={rollResult() === undefined}
                           fallback={
                             <>
-                              <Dice fill="#C28D23" onClick={() => rerollDhDice('d12', 0)} text={rollResult().rolls[0][1]} />
-                              <Dice fill="#2362C2" onClick={() => rerollDhDice('d12', 1)} text={rollResult().rolls[1][1]} />
+                              <Dice fill={dualityColor(0)} onClick={() => rerollDhDice('d12', 0)} text={rollResult().rolls[0][1]} />
+                              <Dice fill={dualityColor(1)} onClick={() => rerollDhDice('d12', 1)} text={rollResult().rolls[1][1]} />
                             </>
                           }
                         >
-                          <Dice fill="#C28D23" text="D12" />
-                          <Dice fill="#2362C2" text="D12" />
+                          <Dice fill={dualityColor(0)} text="D12" />
+                          <Dice fill={dualityColor(1)} text="D12" />
                         </Show>
                         <Show when={advantage() !== 0}>
                           <div class="ml-2">
@@ -284,9 +293,9 @@ export const createDiceRoll = () => {
                       </Match>
                     </Switch>
                     <Show when={rollResult() !== undefined}>
-                      <div class="flex flex-1 items-center justify-end">
-                        <p class="font-medium! text-xl dark:text-snow">{rollResult().total}</p>
-                        <span class="dark:text-snow text-sm uppercase ml-2">
+                      <div class="flex flex-1 items-center justify-end dark:text-snow">
+                        <p class="font-medium! text-xl">{rollResult().total}</p>
+                        <span class={`roll-result ${rollResult().status}`}>
                           <Switch>
                             <Match when={props.provider === 'dnd' || props.provider === 'dc20'}>
                               <Switch>
@@ -329,18 +338,42 @@ export const createDiceRoll = () => {
                   <div class="flex items-center flex-wrap gap-2">
                     <For each={dices()}>
                       {(dice, index) =>
-                        <Dice
-                          onClick={() => removeDice(index())}
-                          text={rollResult() ? (rollResult().rolls.length - 1 >= index() && rollResult().rolls[index()][0].includes('d') ? rollResult().rolls[index()][1] : dice) : dice}
-                        />
+                        <Show
+                          when={dualityMode()}
+                          fallback={
+                            <Dice
+                              onClick={() => removeDice(index())}
+                              text={rollResult() ? (rollResult().rolls.length - 1 >= index() && rollResult().rolls[index()][0].includes('d') ? rollResult().rolls[index()][1] : dice) : dice}
+                            />
+                          }
+                        >
+                          <Dice
+                            onClick={() => removeDice(index())}
+                            text={rollResult() ? (rollResult().rolls.length - 1 >= index() && rollResult().rolls[index()][0].includes('d') ? rollResult().rolls[index()][1] : dice) : dice}
+                            fill={dualityColor(index())}
+                          />
+                        </Show>
                       }
                     </For>
                     <Show when={additionalBonus() !== 0}>
-                      <p class="text-xl ml-2 dark:text-snow">{modifier(additionalBonus())}</p>
+                      <p class="text-xl ml-2">{modifier(additionalBonus())}</p>
                     </Show>
                     <Show when={rollResult() !== undefined}>
                       <div class="flex-1 flex items-center justify-end">
-                        <p class="font-medium! text-xl dark:text-snow">{rollResult().total}</p>
+                        <p class="font-medium! text-xl">{rollResult().total}</p>
+                        <Show when={rollResult().status}>
+                          <span class={`roll-result ${rollResult().status}`}>
+                            <Switch>
+                              <Match when={props.provider === 'daggerheart'}>
+                                <Switch>
+                                  <Match when={rollResult().status === 'crit_success'}>{TRANSLATION[locale()].crit}</Match>
+                                  <Match when={rollResult().status === 'with_hope'}>{TRANSLATION[locale()].hope}</Match>
+                                  <Match when={rollResult().status === 'with_fear'}>{TRANSLATION[locale()].fear}</Match>
+                                </Switch>
+                              </Match>
+                            </Switch>
+                          </span>
+                        </Show>
                       </div>
                     </Show>
                   </div>
@@ -350,8 +383,11 @@ export const createDiceRoll = () => {
                       <p class="dice-button flex-1" onClick={() => setSimpleBonus(1)}>+</p>
                     </div>
                   </div>
-                  <div class="mt-2">
+                  <div class="mt-2 flex gap-x-2">
                     <Button default textable classList="flex-1" onClick={makeSimpleRoll}>{TRANSLATION[locale()]['roll']}</Button>
+                    <Show when={props.provider === 'daggerheart'}>
+                      <DualityDice onClick={() => setDualityMode(!dualityMode())} />
+                    </Show>
                   </div>
                 </div>
               </Show>

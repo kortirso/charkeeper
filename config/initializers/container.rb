@@ -180,6 +180,7 @@ module Charkeeper
 
     register('services.bot_context.handle_command') { BotContext::HandleCommandService.new }
     register('services.bot_context.commands.roll') { BotContext::Commands::Roll.new }
+    register('services.bot_context.commands.duality_roll') { BotContext::Commands::DualityRoll.new }
     register('services.bot_context.commands.check') { BotContext::Commands::Check.new }
     register('services.bot_context.commands.campaign') { BotContext::Commands::Campaign.new }
     register('services.bot_context.commands.character') { BotContext::Commands::Character.new }

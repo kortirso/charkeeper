@@ -401,3 +401,23 @@ nav.pagy.nav a.gap {
 .feat-markdown ul {
   @apply list-disc pl-4;
 }
+
+.roll-result {
+  @apply px-1 py-0.5 rounded text-sm uppercase ml-2 font-medium!;
+}
+
+.roll-result.crit_success {
+  background: #16A34A;
+}
+
+.roll-result.crit_failure {
+  background: #DC2626;
+}
+
+.roll-result.with_hope {
+  background: #C28D23;
+}
+
+.roll-result.with_fear {
+  background: #2362C2;
+}
