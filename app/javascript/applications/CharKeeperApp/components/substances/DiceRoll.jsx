@@ -52,6 +52,15 @@ export const createDiceRoll = () => {
         setAdvantage(0);
       });
     },
+    openSimpleDiceRoll(dices, bonus) {
+      batch(() => {
+        setIsOpen('rollCommand');
+        setDices(dices);
+        setAdditionalBonus(bonus);
+        setRollResult(undefined);
+        setAdvantage(0);
+      });
+    },
     DiceRoll(props) {
       const resetDices = () => {
         batch(() => {

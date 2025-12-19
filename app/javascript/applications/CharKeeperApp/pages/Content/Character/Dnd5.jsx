@@ -31,7 +31,7 @@ export const Dnd5 = (props) => {
   const [activeMobileTab, setActiveMobileTab] = createSignal('abilities');
   const [activeTab, setActiveTab] = createSignal('combat');
 
-  const { DiceRoll, openDiceRoll } = createDiceRoll();
+  const { DiceRoll, openDiceRoll, openSimpleDiceRoll } = createDiceRoll();
   const [appState] = useAppState();
   const [locale, dict] = useAppLocale();
 
@@ -163,6 +163,7 @@ export const Dnd5 = (props) => {
                   <Combat
                     character={character()}
                     openDiceRoll={openDiceRoll}
+                    openSimpleDiceRoll={openSimpleDiceRoll}
                     onReplaceCharacter={props.onReplaceCharacter}
                   />
                 </Show>
@@ -301,6 +302,7 @@ export const Dnd5 = (props) => {
                   <Combat
                     character={character()}
                     openDiceRoll={openDiceRoll}
+                    openSimpleDiceRoll={openSimpleDiceRoll}
                     onReplaceCharacter={props.onReplaceCharacter}
                   />
                 </Show>
