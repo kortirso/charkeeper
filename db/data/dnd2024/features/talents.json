@@ -733,7 +733,8 @@
     "conditions": { "level": 4 },
     "info": {
       "multiple": false,
-      "rewrite": { "ability_boosts": [], "leveling_ability_boosts": 1 }
+      "rewrite": { "ability_boosts": [], "leveling_ability_boosts": 1 },
+      "increase": { "any_skill_boosts": 1 }
     }
   },
   {

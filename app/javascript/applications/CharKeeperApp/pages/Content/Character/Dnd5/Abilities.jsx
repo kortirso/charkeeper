@@ -81,7 +81,6 @@ export const Dnd5Abilities = (props) => {
             <p class="text-sm">{TRANSLATION[locale()]['abilityBoosts']} {Object.entries(config.abilities).filter(([slug]) => character().ability_boosts.includes(slug)).map(([, values]) => values.name[locale()]).join(', ')}</p>
           </div>
         </Show>
-
         <Show when={character().leveling_ability_boosts > 0}>
           <div class="warning">
             <p class="text-sm">{TRANSLATION[locale()]['levelingAbilityBoosts']}, {character().leveling_ability_boosts}</p>
@@ -93,7 +92,6 @@ export const Dnd5Abilities = (props) => {
             </Show>
           </div>
         </Show>
-
         <EditWrapper
           editMode={editMode()}
           onSetEditMode={setEditMode}

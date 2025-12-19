@@ -16,6 +16,10 @@ module Dnd2024Character
     def parent = __getobj__
     def method_missing(_method, *args); end
 
+    def available_talents
+      @available_talents ||= (level / 4) + 1 + (level >= 19 ? 1 : 0)
+    end
+
     def proficiency_bonus
       @proficiency_bonus ||= 2 + ((level - 1) / 4)
     end

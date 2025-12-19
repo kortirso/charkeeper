@@ -116,12 +116,12 @@ export const Dnd5ClassLevels = (props) => {
       appState.accessToken,
       character().provider,
       character().id,
-      { character: { classes: classesData(), subclasses: subclassesData() } }
+      { character: { classes: classesData(), subclasses: subclassesData() }, only_head: true }
     );
 
     if (result.errors_list === undefined) {
       batch(() => {
-        props.onReplaceCharacter(result.character);
+        props.onReloadCharacter();
         renderNotice(t('alerts.characterIsUpdated'));
       });
 
@@ -226,7 +226,7 @@ export const Dnd5ClassLevels = (props) => {
             title={
               <div class="flex justify-between">
                 <p>{TRANSLATION[locale()].talents}</p>
-                <p>{TRANSLATION[locale()].existingTalentPoints} - {1 + Math.trunc(character().level / 4) - Object.values(character().selected_talents).reduce((acc, value) => acc + value, 0)}</p>
+                <p>{TRANSLATION[locale()].existingTalentPoints} - {character().available_talents - Object.values(character().selected_talents).reduce((acc, value) => acc + value, 0)}</p>
               </div>
             }
           >
@@ -239,7 +239,7 @@ export const Dnd5ClassLevels = (props) => {
               </For>
               <div class="mb-2" />
             </Show>
-            <Show when={1 + Math.trunc(character().level / 4) > Object.values(character().selected_talents).reduce((acc, value) => acc + value, 0)}>
+            <Show when={character().available_talents > Object.values(character().selected_talents).reduce((acc, value) => acc + value, 0)}>
               <Select
                 labelText={TRANSLATION[locale()].selectTalent}
                 containerClassList="flex-1"
@@ -248,6 +248,10 @@ export const Dnd5ClassLevels = (props) => {
                 onSelect={(value) => setSelectedTalent(talents().find((item) => item.id === value))}
               />
               <Show when={selectedTalent()}>
+                <p
+                  class="feat-markdown text-xs mt-1"
+                  innerHTML={selectedTalent().description} // eslint-disable-line solid/no-innerhtml
+                />
                 <Button default textable size="small" classList="inline-block mt-2" onClick={saveTalent}>
                   {TRANSLATION[locale()].saveButton}
                 </Button>

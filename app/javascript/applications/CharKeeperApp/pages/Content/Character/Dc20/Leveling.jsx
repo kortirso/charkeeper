@@ -162,7 +162,6 @@ export const Dc20Leveling = (props) => {
 
     if (talent.origin_value === 'multiclass') {
       const result = await fetchTalentFeatures(1);
-      console.log(result.talents)
       setTalentFeatures(result.talents)
     } else {
       batch(() => {

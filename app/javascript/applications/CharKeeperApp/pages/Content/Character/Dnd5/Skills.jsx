@@ -98,7 +98,7 @@ export const Dnd5Skills = (props) => {
         onReloadCharacter={props.onReloadCharacter}
         onNextClick={props.onNextGuideStepClick}
       >
-        <Show when={character().guide_step === 2 && (character().skill_boosts > 0 || character().any_skill_boosts > 0)}>
+        <Show when={character().skill_boosts > 0 || character().any_skill_boosts > 0}>
           <div class="warning">
             <Show when={character().any_skill_boosts > 0}>
               <p class="text-sm">{TRANSLATION[locale()]['anySkillBoosts']} {character().any_skill_boosts}</p>

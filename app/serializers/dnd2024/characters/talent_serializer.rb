@@ -20,7 +20,7 @@ module Dnd2024
           value: object.description[I18n.locale.to_s],
           version: (context ? (context[:version] || nil) : nil),
           initial_version: '0.3.20'
-        )
+        )&.gsub(/{{[a-z]+}}/, 'x')
       end
 
       def selected # rubocop: disable Naming/PredicateMethod
