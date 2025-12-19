@@ -1,4 +1,4 @@
-import { ErrorWrapper, StatsBlock } from '../../../../components';
+import { ErrorWrapper, StatsBlock, Dice } from '../../../../components';
 import { useAppLocale } from '../../../../context';
 import { modifier } from '../../../../helpers';
 
@@ -25,7 +25,16 @@ export const Pathfinder2Static = (props) => {
       <StatsBlock
         items={[
           { title: TRANSLATION[locale()].armorClass, value: character().armor_class },
-          { title: TRANSLATION[locale()].perception, value: modifier(character().perception) },
+          {
+            title: TRANSLATION[locale()].perception,
+            value:
+              <Dice
+                width="36"
+                height="36"
+                text={modifier(character().perception)}
+                onClick={() => props.openDiceRoll('/check initiative empty', character().perception)}
+              />
+          },
           { title: TRANSLATION[locale()].speed, value: character().speed }
         ]}
       />

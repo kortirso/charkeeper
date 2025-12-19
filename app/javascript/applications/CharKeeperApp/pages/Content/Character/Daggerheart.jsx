@@ -32,7 +32,7 @@ export const Daggerheart = (props) => {
   const [activeMobileTab, setActiveMobileTab] = createSignal('traits');
   const [activeTab, setActiveTab] = createSignal('combat');
 
-  const { DiceRoll, openDiceRoll } = createDiceRoll();
+  const { DiceRoll, openDiceRoll, openSimpleDiceRoll } = createDiceRoll();
   const [locale, dict] = useAppLocale();
 
   const t = i18n.translator(dict);
@@ -136,6 +136,7 @@ export const Daggerheart = (props) => {
                 <Combat
                   character={character()}
                   openDiceRoll={openDiceRoll}
+                  openSimpleDiceRoll={openSimpleDiceRoll}
                   onReplaceCharacter={props.onReplaceCharacter}
                 />
               </div>
@@ -281,6 +282,7 @@ export const Daggerheart = (props) => {
                 <Combat
                   character={character()}
                   openDiceRoll={openDiceRoll}
+                  openSimpleDiceRoll={openSimpleDiceRoll}
                   onReplaceCharacter={props.onReplaceCharacter}
                 />
               </div>

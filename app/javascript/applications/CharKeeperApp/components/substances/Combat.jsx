@@ -91,6 +91,20 @@ export const Combat = (props) => {
     })
   }
 
+  const openAttackRoll = (attack) => {
+    const dices = attack.damage.split('+').reduce((acc, item) => {
+      if (!item.includes('d')) return acc;
+
+      const parsedItem = item.split('d');
+      for (var i = 0; i < parsedItem[0]; i++) {
+        acc.push(`D${parsedItem[1]}`)
+      }
+      return acc;
+    }, []);
+
+    if (dices.length > 0) props.openSimpleDiceRoll(dices, attack.damage_bonus);
+  }
+
   const renderAttacksBox = (title, values) => {
     if (values.length === 0) return <></>;
 
@@ -137,8 +151,10 @@ export const Combat = (props) => {
                       </div>
                     </td>
                     <td class="pt-2 pb-1">
-                      <div class="flex items-center justify-center h-7">
-                        <p>{attack.damage}{attack.damage_bonus !== 0 ? modifier(attack.damage_bonus) : ''}</p>
+                      <div class="flex items-center justify-center h-7 cursor-pointer">
+                        <p onClick={() => openAttackRoll(attack)}>
+                          {attack.damage}{attack.damage_bonus !== 0 ? modifier(attack.damage_bonus) : ''}
+                        </p>
                       </div>
                     </td>
                     <td class="pt-2 pb-1">

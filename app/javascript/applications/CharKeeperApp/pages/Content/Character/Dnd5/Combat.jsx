@@ -1,7 +1,9 @@
 import { createSignal, createEffect, For, Show, batch } from 'solid-js';
 import * as i18n from '@solid-primitives/i18n';
 
-import { createModal, StatsBlock, ErrorWrapper, Input, Toggle, Checkbox, Button, GuideWrapper } from '../../../../components';
+import {
+  createModal, StatsBlock, ErrorWrapper, Input, Toggle, Checkbox, Button, GuideWrapper, Dice
+} from '../../../../components';
 import { useAppState, useAppLocale } from '../../../../context';
 import { updateCharacterRequest } from '../../../../requests/updateCharacterRequest';
 import { createCharacterHealthRequest } from '../../../../requests/createCharacterHealthRequest';
@@ -122,7 +124,17 @@ export const Dnd5Combat = (props) => {
         <StatsBlock
           items={[
             { title: t('terms.armorClass'), value: character().armor_class },
-            { title: t('terms.initiative'), value: modifier(character().initiative) },
+            {
+              title: t('terms.initiative'),
+              value: 
+                <Dice
+                  width="36"
+                  height="36"
+                  text={modifier(character().initiative)}
+                  onClick={() => props.openDiceRoll('/check initiative empty', character().initiative)}
+                />
+              
+            },
             { title: t('terms.speed'), value: character().speed }
           ]}
         >
