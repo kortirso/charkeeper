@@ -95,7 +95,7 @@ module BotContext
 
     def character_provider(name)
       case name
-      when 'Dnd5::Character', 'Dnd2024::Character' then 'dnd'
+      when 'Dnd5::Character', 'Dnd2024::Character', 'Dc20::Character', 'Pathfinder2::Character' then 'dnd'
       when 'Daggerheart::Character' then 'daggerheart'
       end
     end

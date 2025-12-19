@@ -19,6 +19,7 @@ export * from './molecules/CharacterNavigation';
 export * from './molecules/FeatureTitle';
 export * from './molecules/ItemsTable';
 export * from './molecules/Dice';
+export * from './molecules/DualityDice';
 
 export * from './substances/Avatar';
 export * from './substances/Notes';
