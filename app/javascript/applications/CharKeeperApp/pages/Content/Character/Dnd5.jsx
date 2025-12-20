@@ -59,6 +59,7 @@ export const Dnd5 = (props) => {
   const focusFilter = (item) => item.kind === 'focus';
   const toolsFilter = (item) => item.kind === 'tools';
   const musicFilter = (item) => item.kind === 'music';
+  const potionFilter = (item) => item.kind === 'potion';
 
   const raceFilter = (item) => item.origin === 'race';
   const subraceFilter = (item) => item.origin === 'subrace';
@@ -184,10 +185,11 @@ export const Dnd5 = (props) => {
                   { title: t('equipment.itemsList'), callback: itemFilter },
                   { title: t('equipment.weaponsList'), callback: weaponFilter },
                   { title: t('equipment.armorList'), callback: armorFilter },
+                  { title: t('equipment.consumables'), callback: potionFilter},
                   { title: t('equipment.ammoList'), callback: ammoFilter },
                   { title: t('equipment.focusList'), callback: focusFilter },
                   { title: t('equipment.toolsList'), callback: toolsFilter },
-                  { title: t('equipment.musicList'), callback: musicFilter},
+                  { title: t('equipment.musicList'), callback: musicFilter}
                 ]}
                 onReplaceCharacter={props.onReplaceCharacter}
                 onReloadCharacter={props.onReloadCharacter}
@@ -328,10 +330,11 @@ export const Dnd5 = (props) => {
                   { title: t('equipment.itemsList'), callback: itemFilter },
                   { title: t('equipment.weaponsList'), callback: weaponFilter },
                   { title: t('equipment.armorList'), callback: armorFilter },
+                  { title: t('equipment.consumables'), callback: potionFilter},
                   { title: t('equipment.ammoList'), callback: ammoFilter },
                   { title: t('equipment.focusList'), callback: focusFilter },
                   { title: t('equipment.toolsList'), callback: toolsFilter },
-                  { title: t('equipment.musicList'), callback: musicFilter},
+                  { title: t('equipment.musicList'), callback: musicFilter}
                 ]}
                 onReplaceCharacter={props.onReplaceCharacter}
                 onReloadCharacter={props.onReloadCharacter}

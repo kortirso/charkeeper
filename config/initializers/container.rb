@@ -128,6 +128,9 @@ module Charkeeper
     }
     register('commands.homebrew_context.daggerheart.add_book_items') { HomebrewContext::Daggerheart::AddBookItemsCommand.new }
 
+    register('commands.homebrew_context.dnd.add_item') { HomebrewContext::Dnd::Items::AddCommand.new }
+    register('commands.homebrew_context.dnd.change_item') { HomebrewContext::Dnd::Items::ChangeCommand.new }
+
     register('commands.campaigns_context.add_campaign') { CampaignsContext::AddCampaignCommand.new }
     register('commands.campaigns_context.join_campaign') { CampaignsContext::JoinCampaignCommand.new }
     register('commands.campaigns_context.remove_campaign') { CampaignsContext::RemoveCampaignCommand.new }

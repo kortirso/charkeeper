@@ -2,7 +2,7 @@ import { createSignal, createEffect, Show, For, batch } from 'solid-js';
 import { createStore } from 'solid-js/store';
 
 import { useAppState, useAppLocale, useAppAlert } from '../../../context';
-import { Button, Input, TextArea, Select, createModal, Checkbox, ItemBonuses, Bonuses } from '../../../components';
+import { Button, Input, TextArea, Select, createModal, Checkbox, DndItemBonuses, DndBonuses } from '../../../components';
 import { Edit, Trash } from '../../../assets';
 import { fetchDaggerheartBooks } from '../../../requests/fetchDaggerheartBooks';
 import { changeBookContent } from '../../../requests/changeBookContent';
@@ -16,52 +16,54 @@ const TRANSLATION = {
     added: 'Content is added to the book',
     selectBook: 'Select book',
     selectBookHelp: 'Select required elements for adding to the book',
-    add: 'Add armor',
-    newItemTitle: 'Armor form',
-    name: 'Armor name',
-    tier: 'Tier',
-    baseScore: 'Base score',
-    features: 'Features',
+    add: 'Add item',
+    newItemTitle: 'Item form',
+    name: 'Item name',
     description: 'Description',
+    kind: 'Kind',
+    kindTable: 'Kind',
     save: 'Save',
     requiredName: 'Name is required',
-    thresholds: 'Damage thresholds',
-    major: 'Major threshold',
-    severe: 'Severe threshold'
+    weight: 'Weight',
+    price: 'Price, cc',
+    kinds: {
+      item: 'Item',
+      potion: 'Potion',
+      tools: 'Tools',
+      music: 'Music tools',
+      focus: 'Focus',
+      ammo: 'Ammo'
+    },
+    convert: 'Convert'
   },
   ru: {
     added: 'Контент добавлен в книгу',
     selectBook: 'Выберите книгу',
     selectBookHelp: 'Выберите необходимые элементы для добавления в книгу',
-    add: 'Добавить броню',
-    newItemTitle: 'Редактирование брони',
-    name: 'Название брони',
-    tier: 'Ранг',
-    baseScore: 'Очки доспеха',
-    features: 'Особенности',
+    add: 'Добавить предмет',
+    newItemTitle: 'Редактирование предмета',
+    name: 'Название предмета',
     description: 'Описание',
+    kind: 'Тип предмета',
+    kindTable: 'Тип',
     save: 'Сохранить',
-    requiredName: 'Название брони - обязательное поле',
-    itemOrigin: 'Принадлежность',
-    itemOriginValue: 'Объект принадлежности',
-    thresholds: 'Пороги урона',
-    major: 'Ощутимый урон',
-    severe: 'Тяжёлый урон'
+    requiredName: 'Название предмета - обязательное поле',
+    weight: 'Вес',
+    price: 'Цена, медяки',
+    kinds: {
+      item: 'Предмет',
+      potion: 'Зелье',
+      tools: 'Инструмент',
+      music: 'Музыкальный инструмент',
+      focus: 'Фокус',
+      ammo: 'Боеприпас'
+    },
+    convert: 'Конвертировать'
   }
 }
 
-export const DaggerheartArmor = () => {
-  const [itemForm, setItemForm] = createStore({
-    name: '',
-    kind: 'armor',
-    tier: 1,
-    base_score: 1,
-    features: '',
-    description: '',
-    major: 0,
-    severe: 0,
-    bonuses: []
-  });
+export const DndItems = () => {
+  const [itemForm, setItemForm] = createStore({ name: '', description: '', kind: 'item', weight: 1, price: 1 });
   const [itemBonuses, setItemBonuses] = createSignal([]);
   const [selectedIds, setSelectedIds] = createSignal([]);
   const [book, setBook] = createSignal(null);
@@ -77,7 +79,7 @@ export const DaggerheartArmor = () => {
 
   createEffect(() => {
     const fetchBooks = async () => await fetchDaggerheartBooks(appState.accessToken);
-    const fetchItems = async () => await fetchItemsRequest(appState.accessToken, 'daggerheart', 'armor');
+    const fetchItems = async () => await fetchItemsRequest(appState.accessToken, 'dnd', 'item,potion,tools,music,focus,ammo');
 
     Promise.all([fetchItems(), fetchBooks()]).then(
       ([itemsDate, booksData]) => {
@@ -91,7 +93,7 @@ export const DaggerheartArmor = () => {
 
   const openCreateItemModal = () => {
     batch(() => {
-      setItemForm({ ...itemForm, id: null });
+      setItemForm({ id: null, name: '', description: '', kind: 'item' });
       setItemBonuses([]);
       openModal();
     });
@@ -99,17 +101,7 @@ export const DaggerheartArmor = () => {
 
   const openChangeItemModal = (item) => {
     batch(() => {
-      setItemForm({
-        id: item.id,
-        name: item.name.en,
-        kind: 'armor',
-        tier: item.info.tier,
-        base_score: item.info.base_score,
-        major: item.info.bonuses.thresholds.major,
-        severe: item.info.bonuses.thresholds.severe,
-        features: item.info.features[0] ? item.info.features[0].en : '',
-        description: item.description.en
-      });
+      setItemForm({ id: item.id, name: item.name.en, description: item.description.en, weight: item.data.weight, price: item.data.price });
       setItemBonuses(item.bonuses);
       openModal();
     });
@@ -122,11 +114,9 @@ export const DaggerheartArmor = () => {
       name: itemForm.name,
       description: itemForm.description,
       kind: itemForm.kind,
-      info: {
-        tier: itemForm.tier,
-        base_score: itemForm.base_score,
-        bonuses: { thresholds: { major: itemForm.major, severe: itemForm.severe } },
-        features: [{ en: itemForm.features, ru: itemForm.features }]
+      data: {
+        weight: itemForm.weight,
+        price: itemForm.price
       }
     }
 
@@ -134,12 +124,12 @@ export const DaggerheartArmor = () => {
   }
 
   const createItem = async (formData) => {
-    const result = await createItemRequest(appState.accessToken, 'daggerheart', { brewery: formData, bonuses: bonuses() });
+    const result = await createItemRequest(appState.accessToken, 'dnd', { brewery: formData, bonuses: bonuses() });
 
     if (result.errors_list === undefined) {
       batch(() => {
         setItems([result.item].concat(items()));
-        setItemForm({ ...itemForm, id: null });
+        setItemForm({ id: null, name: '', description: '', kind: 'item' });
         setItemBonuses([]);
         closeModal();
       });
@@ -147,35 +137,34 @@ export const DaggerheartArmor = () => {
   }
 
   const updateItem = async (formData) => {
-    const result = await changeItemRequest(appState.accessToken, 'daggerheart', itemForm.id, { brewery: formData, bonuses: bonuses(), only_head: true });
+    const result = await changeItemRequest(appState.accessToken, 'dnd', itemForm.id, { brewery: formData, bonuses: bonuses(), only_head: true });
 
     if (result.errors_list === undefined) {
       const newItems = items().map((item) => {
         if (itemForm.id !== item.id) return item;
 
         return {
-          ...formData,
-          name: { en: itemForm.name, ru: itemForm.name },
-          description: { en: itemForm.description, ru: itemForm.description },
-          features: { en: itemForm.features, ru: itemForm.features },
+          ...item,
+          name: { en: formData.name, ru: formData.name },
+          description: { en: formData.description, ru: formData.description },
           bonuses: bonuses()
         };
       });
 
       batch(() => {
         setItems(newItems);
-        setItemForm({ ...itemForm, id: null });
+        setItemForm({ id: null, name: '', description: '', kind: 'item' });
         setItemBonuses([]);
         closeModal();
       });
     }
   }
 
-  const removeItem = async (item) => {
-    const result = await removeItemRequest(appState.accessToken, 'daggerheart', item.id);
+  const removeItem = async (itemId) => {
+    const result = await removeItemRequest(appState.accessToken, 'dnd', itemId);
 
     if (result.errors_list === undefined) {
-      setItems(items().filter(({ id }) => id !== item.id ));
+      setItems(items().filter(({ id }) => id !== itemId ));
     }
   }
 
@@ -215,12 +204,11 @@ export const DaggerheartArmor = () => {
             <tr class="text-sm">
               <td class="p-1" />
               <td class="p-1" />
-              <td class="p-1">{TRANSLATION[locale()].tier}</td>
-              <td class="p-1 text-nowrap">{TRANSLATION[locale()].baseScore}</td>
-              <td class="p-1 text-nowrap">{TRANSLATION[locale()].thresholds}</td>
+              <td class="p-1">{TRANSLATION[locale()].kindTable}</td>
+              <td class="p-1">{TRANSLATION[locale()].weight}</td>
+              <td class="p-1 text-nowrap">{TRANSLATION[locale()].price}</td>
               <td class="p-1" />
-              <td class="p-1" />
-              <td class="p-1" />
+              <td class="p-1">{TRANSLATION[locale()].description}</td>
               <td class="p-1" />
             </tr>
           </thead>
@@ -237,18 +225,17 @@ export const DaggerheartArmor = () => {
                     />
                   </td>
                   <td class="minimum-width py-1">{item.name[locale()]}</td>
-                  <td class="minimum-width py-1 text-sm">{item.info.tier}</td>
-                  <td class="minimum-width py-1 text-sm">{item.info.base_score}</td>
-                  <td class="minimum-width py-1 text-sm">{item.info.bonuses.thresholds.major}/{item.info.bonuses.thresholds.severe}</td>
-                  <td class="minimum-width py-1"><Bonuses bonuses={item.bonuses} /></td>
-                  <td class="minimum-width py-1 text-sm">{item.info.features[0] ? item.info.features[0].en : ''}</td>
+                  <td class="minimum-width py-1 text-sm">{TRANSLATION[locale()].kinds[item.kind]}</td>
+                  <td class="minimum-width py-1">{item.data.weight}</td>
+                  <td class="minimum-width py-1">{item.data.price}</td>
+                  <td class="minimum-width py-1"><DndBonuses bonuses={item.bonuses} /></td>
                   <td class="py-1">{item.description[locale()]}</td>
                   <td>
                     <div class="flex items-center justify-end gap-x-2 text-neutral-700">
                       <Button default classList="px-2 py-1" onClick={() => openChangeItemModal(item)}>
                         <Edit width="20" height="20" />
                       </Button>
-                      <Button default classList="px-2 py-1" onClick={() => removeItem(item)}>
+                      <Button default classList="px-2 py-1" onClick={() => removeItem(item.id)}>
                         <Trash width="20" height="20" />
                       </Button>
                     </div>
@@ -261,51 +248,47 @@ export const DaggerheartArmor = () => {
       </Show>
       <Modal>
         <p class="mb-2 text-xl">{TRANSLATION[locale()].newItemTitle}</p>
+        {/*<Show when={itemForm.id}>
+          <Select
+            containerClassList="mb-2"
+            labelText={TRANSLATION[locale()].convert}
+            items={translate({ "primary weapon": { "name": { "en": "Primary Weapon", "ru": "Основное оружие" } }, "secondary weapon": { "name": { "en": "Secondary Weapon", "ru": "Запасное оружие" } }, "armor": { "name": { "en": "Armor", "ru": "Броня" } } }, locale())}
+            selectedValue={itemForm.convert}
+            onSelect={(value) => setItemForm({ ...itemForm, convert: value })}
+          />
+        </Show>*/}
         <Input
-          containerClassList="form-field mb-4"
+          containerClassList="form-field mb-2"
           labelText={TRANSLATION[locale()].name}
           value={itemForm.name}
           onInput={(value) => setItemForm({ ...itemForm, name: value })}
         />
-        <div class="mb-2 flex gap-4">
+        <Show when={!itemForm.id}>
           <Select
-            containerClassList="flex-1"
-            labelText={TRANSLATION[locale()].tier}
-            items={{ 1: 1, 2: 2, 3: 3, 4: 4 }}
-            selectedValue={itemForm.tier}
-            onSelect={(value) => setItemForm({ ...itemForm, tier: parseInt(value) })}
+            containerClassList="mb-2"
+            labelText={TRANSLATION[locale()].kind}
+            items={TRANSLATION[locale()].kinds}
+            selectedValue={itemForm.kind}
+            onSelect={(value) => setItemForm({ ...itemForm, kind: value })}
           />
-          <Input
-            numeric
-            containerClassList="flex-1"
-            labelText={TRANSLATION[locale()].baseScore}
-            value={itemForm.base_score}
-            onInput={(value) => setItemForm({ ...itemForm, base_score: parseInt(value) })}
-          />
-        </div>
+        </Show>
+        <DndItemBonuses bonuses={itemBonuses()} onBonus={setBonuses} />
         <div class="mb-2 flex gap-4">
           <Input
             numeric
             containerClassList="flex-1"
-            labelText={TRANSLATION[locale()].major}
-            value={itemForm.major}
-            onInput={(value) => setItemForm({ ...itemForm, major: parseInt(value) })}
+            labelText={TRANSLATION[locale()].weight}
+            value={itemForm.weight}
+            onInput={(value) => setItemForm({ ...itemForm, weight: parseFloat(value) })}
           />
           <Input
             numeric
             containerClassList="flex-1"
-            labelText={TRANSLATION[locale()].severe}
-            value={itemForm.severe}
-            onInput={(value) => setItemForm({ ...itemForm, severe: parseInt(value) })}
+            labelText={TRANSLATION[locale()].price}
+            value={itemForm.price}
+            onInput={(value) => setItemForm({ ...itemForm, price: parseInt(value) })}
           />
         </div>
-        <TextArea
-          rows="3"
-          labelText={TRANSLATION[locale()].features}
-          value={itemForm.features}
-          onChange={(value) => setItemForm({ ...itemForm, features: value })}
-        />
-        <ItemBonuses bonuses={itemBonuses()} onBonus={setBonuses} />
         <TextArea
           rows="5"
           containerClassList="mb-2"

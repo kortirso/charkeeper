@@ -1,8 +1,8 @@
 import { apiRequest, options } from '../helpers';
 
-export const createDaggerheartItem = async (accessToken, payload) => {
+export const createItemRequest = async (accessToken, provider, payload) => {
   return await apiRequest({
-    url: '/homebrews/daggerheart/items.json',
+    url: `/homebrews/${provider}/items.json`,
     options: options('POST', accessToken, payload)
   });
 }

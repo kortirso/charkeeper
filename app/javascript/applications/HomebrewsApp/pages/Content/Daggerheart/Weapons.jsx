@@ -9,10 +9,10 @@ import { Edit, Trash } from '../../../assets';
 import { fetchDaggerheartBooks } from '../../../requests/fetchDaggerheartBooks';
 import { changeBookContent } from '../../../requests/changeBookContent';
 import { fetchHomebrewsList } from '../../../requests/fetchHomebrewsList';
-import { fetchDaggerheartItems } from '../../../requests/fetchDaggerheartItems';
-import { createDaggerheartItem } from '../../../requests/createDaggerheartItem';
-import { changeDaggerheartItem } from '../../../requests/changeDaggerheartItem';
-import { removeDaggerheartItem } from '../../../requests/removeDaggerheartItem';
+import { fetchItemsRequest } from '../../../requests/fetchItemsRequest';
+import { createItemRequest } from '../../../requests/createItemRequest';
+import { changeItemRequest } from '../../../requests/changeItemRequest';
+import { removeItemRequest } from '../../../requests/removeItemRequest';
 import { translate } from '../../../helpers';
 
 const TRANSLATION = {
@@ -107,7 +107,7 @@ export const DaggerheartWeapons = () => {
   createEffect(() => {
     const fetchBooks = async () => await fetchDaggerheartBooks(appState.accessToken);
     const fetchHomebrews = async () => await fetchHomebrewsList(appState.accessToken, 'daggerheart');
-    const fetchItems = async () => await fetchDaggerheartItems(appState.accessToken, 'primary weapon,secondary weapon');
+    const fetchItems = async () => await fetchItemsRequest(appState.accessToken, 'daggerheart', 'primary weapon,secondary weapon');
 
     Promise.all([fetchItems(), fetchHomebrews(), fetchBooks()]).then(
       ([itemsDate, homebrewsData, booksData]) => {
@@ -183,7 +183,7 @@ export const DaggerheartWeapons = () => {
   }
 
   const createItem = async (formData) => {
-    const result = await createDaggerheartItem(appState.accessToken, { brewery: formData, bonuses: bonuses() });
+    const result = await createItemRequest(appState.accessToken, 'daggerheart', { brewery: formData, bonuses: bonuses() });
 
     if (result.errors_list === undefined) {
       batch(() => {
@@ -196,7 +196,7 @@ export const DaggerheartWeapons = () => {
   }
 
   const updateItem = async (formData) => {
-    const result = await changeDaggerheartItem(appState.accessToken, itemForm.id, { brewery: formData, bonuses: bonuses(), only_head: true });
+    const result = await changeItemRequest(appState.accessToken, 'daggerheart', itemForm.id, { brewery: formData, bonuses: bonuses(), only_head: true });
 
     if (result.errors_list === undefined) {
       const newItems = items().map((item) => {
@@ -221,7 +221,7 @@ export const DaggerheartWeapons = () => {
   }
 
   const removeItem = async (item) => {
-    const result = await removeDaggerheartItem(appState.accessToken, item.id);
+    const result = await removeItemRequest(appState.accessToken, 'daggerheart', item.id);
 
     if (result.errors_list === undefined) {
       setItems(items().filter(({ id }) => id !== item.id ));
