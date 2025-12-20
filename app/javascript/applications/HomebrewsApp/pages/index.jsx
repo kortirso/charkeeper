@@ -1,6 +1,5 @@
 export * from './ContentPage';
 
-export * from './Content/Dnd5';
 export * from './Content/Dnd2024';
 export * from './Content/Daggerheart';
 export * from './Content/Pathfinder2';
@@ -16,3 +15,5 @@ export * from './Content/Daggerheart/Weapons';
 export * from './Content/Daggerheart/Armor';
 export * from './Content/Daggerheart/Domains';
 export * from './Content/Daggerheart/Transformations';
+
+export * from './Content/Dnd/Items';
