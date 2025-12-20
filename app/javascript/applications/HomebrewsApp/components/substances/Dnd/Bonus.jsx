@@ -18,7 +18,8 @@ const TRANSLATION = {
     'speed': 'Speed',
     'attack': 'Attack',
     'proficiency': 'Proficiency bonus',
-    'level': 'Level'
+    'level': 'Level',
+    'save': 'saving throw'
   },
   ru: {
     'str': 'Сила',
@@ -32,7 +33,8 @@ const TRANSLATION = {
     'speed': 'Скорость',
     'attack': 'Атака',
     'proficiency': 'Бонус мастерства',
-    'level': 'Уровень'
+    'level': 'Уровень',
+    'save': 'спасбросок'
   }
 }
 
@@ -44,7 +46,7 @@ export const DndBonus = (props) => {
       fallback={
         <For each={['armor_class', 'initiative', 'speed', 'attack', 'proficiency']}>
           {(slug) =>
-            <Show when={props.bonus.value[slug] || props.bonus.dynamic_value[slug]}>
+            <Show when={props.bonus.value[slug] || (props.bonus.dynamic_value && props.bonus.dynamic_value[slug])}>
               <p class="bg-gray-200 p-1 rounded text-sm">
                 {props.bonus.value[slug] ? modifier(props.bonus.value[slug]) : `+[${TRANSLATION[locale()][props.bonus.dynamic_value[slug]]}]`} {TRANSLATION[locale()][slug]}
               </p>
@@ -53,7 +55,7 @@ export const DndBonus = (props) => {
         </For>
       }
     >
-      <Match when={props.bonus.value.abilities}>
+      <Match when={props.bonus.value?.abilities}>
         <For each={Object.entries(props.bonus.value.abilities)}>
           {([slug, value]) =>
             <p class="bg-gray-200 p-1 rounded text-sm">
@@ -62,11 +64,29 @@ export const DndBonus = (props) => {
           }
         </For>
       </Match>
-      <Match when={props.bonus.dynamic_value.abilities}>
+      <Match when={props.bonus.dynamic_value?.abilities}>
         <For each={Object.entries(props.bonus.dynamic_value.abilities)}>
           {([slug, value]) =>
             <p class="bg-gray-200 p-1 rounded text-sm">
               {`+[${TRANSLATION[locale()][value]}]`} {config.abilities[slug].name[locale()]}
+            </p>
+          }
+        </For>
+      </Match>
+      <Match when={props.bonus.value?.saves}>
+        <For each={Object.entries(props.bonus.value.saves)}>
+          {([slug, value]) =>
+            <p class="bg-gray-200 p-1 rounded text-sm">
+              {modifier(value)} {config.abilities[slug].name[locale()]} {TRANSLATION[locale()].save}
+            </p>
+          }
+        </For>
+      </Match>
+      <Match when={props.bonus.dynamic_value?.saves}>
+        <For each={Object.entries(props.bonus.dynamic_value.saves)}>
+          {([slug, value]) =>
+            <p class="bg-gray-200 p-1 rounded text-sm">
+              {`+[${TRANSLATION[locale()][value]}]`} {config.abilities[slug].name[locale()]} {TRANSLATION[locale()].save}
             </p>
           }
         </For>

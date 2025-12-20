@@ -72,7 +72,7 @@
 }
 
 .modal {
-  @apply relative p-4 blockable;
+  @apply relative p-4 blockable overflow-y-auto;
 
   max-width: 90%;
   max-height: 90%;

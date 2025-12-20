@@ -43,7 +43,7 @@ module Dnd2024Character
     def save_dc
       @save_dc ||=
         if beastform.blank?
-          modifiers.clone
+          modifiers_with_bonuses
         else
           modifiers.clone.merge(beastform_config['saves']) { |_key, oldval, newval| [newval, oldval].max }
         end
@@ -79,6 +79,15 @@ module Dnd2024Character
     end
 
     private
+
+    def modifiers_with_bonuses
+      modifiers.clone.merge(
+        *[
+          *static_item_bonuses.pluck('saves'),
+          *dynamic_item_bonuses.pluck('saves')
+        ].compact
+      ) { |_key, oldval, newval| newval + oldval }
+    end
 
     def armor_class_with_bonuses
       __getobj__.armor_class +

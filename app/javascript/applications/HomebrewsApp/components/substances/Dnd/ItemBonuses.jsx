@@ -19,6 +19,12 @@ const TRANSLATION = {
       'int': 'Intelligence',
       'wis': 'Wisdom',
       'cha': 'Charisma',
+      'strSave': 'Strength saving throw',
+      'dexSave': 'Dexterity saving throw',
+      'conSave': 'Constitution saving throw',
+      'intSave': 'Intelligence saving throw',
+      'wisSave': 'Wisdom saving throw',
+      'chaSave': 'Charisma saving throw',
       'armor_class': 'Armor Class',
       'initiative': 'Initiative',
       'speed': 'Speed',
@@ -39,6 +45,12 @@ const TRANSLATION = {
       'int': 'Интеллект',
       'wis': 'Мудрость',
       'cha': 'Харизма',
+      'strSave': 'Сила спасбросок',
+      'dexSave': 'Ловкость спасбросок',
+      'conSave': 'Телосложение спасбросок',
+      'intSave': 'Интеллект спасбросок',
+      'wisSave': 'Мудрость спасбросок',
+      'chaSave': 'Харизма спасбросок',
       'armor_class': 'Класс брони',
       'initiative': 'Инициатива',
       'speed': 'Скорость',
@@ -49,6 +61,7 @@ const TRANSLATION = {
   }
 }
 const ABILITIES = ['str', 'dex', 'con', 'int', 'wis', 'cha'];
+const SAVES = ['strSave', 'dexSave', 'conSave', 'intSave', 'wisSave', 'chaSave'];
 
 export const DndItemBonuses = (props) => {
   const initialBonuses = () => props.bonuses;
@@ -63,6 +76,17 @@ export const DndItemBonuses = (props) => {
 
   const parseValue = (value) => parseInt(value || 0);
 
+  const saveSlug = (value) => {
+    return {
+      'strSave': 'str',
+      'dexSave': 'dex',
+      'conSave': 'con',
+      'intSave': 'int',
+      'wisSave': 'wis',
+      'chaSave': 'cha'
+    }[value];
+  }
+
   const representBonuses = (newValue) => {
     setBonuses(newValue);
     const presentedBonuses = newValue.map((item) => {
@@ -72,6 +96,7 @@ export const DndItemBonuses = (props) => {
       const value = item.type === 'static' ? parseValue(item.value) : item.value;
 
       if (ABILITIES.includes(item.modify)) return { ...result, value: { abilities: { [item.modify]: value } } };
+      if (SAVES.includes(item.modify)) return { ...result, value: { saves: { [saveSlug(item.modify)]: value } } };
       return { ...result, value: { [item.modify]: value } };
     });
     props.onBonus(presentedBonuses);

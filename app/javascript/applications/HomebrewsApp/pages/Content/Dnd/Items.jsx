@@ -69,7 +69,7 @@ export const DndItems = () => {
   const [book, setBook] = createSignal(null);
   const [bonuses, setBonuses] = createSignal(null);
 
-  const [books, setBooks] = createSignal(undefined);
+  const [books, setBooks] = createSignal(undefined); // eslint-disable-line no-unused-vars
   const [items, setItems] = createSignal(undefined);
 
   const [appState] = useAppState();
@@ -147,6 +147,7 @@ export const DndItems = () => {
           ...item,
           name: { en: formData.name, ru: formData.name },
           description: { en: formData.description, ru: formData.description },
+          data: { weight: formData.weight, price: formData.price },
           bonuses: bonuses()
         };
       });
@@ -168,6 +169,7 @@ export const DndItems = () => {
     }
   }
 
+  /* eslint-disable no-unused-vars */
   const addToBook = async () => {
     const result = await changeBookContent(appState.accessToken, book(), { ids: selectedIds(), only_head: true }, 'item');
 
@@ -179,12 +181,13 @@ export const DndItems = () => {
       renderNotice(TRANSLATION[locale()].added)
     }
   }
+  /* eslint-enable no-unused-vars */
 
   return (
     <Show when={items() !== undefined} fallback={<></>}>
       <Button default classList="mb-4 px-2 py-1" onClick={openCreateItemModal}>{TRANSLATION[locale()].add}</Button>
       <Show when={items().length > 0}>
-        <div class="flex items-center">
+        {/*<div class="flex items-center">
           <Select
             containerClassList="w-40"
             labelText={TRANSLATION[locale()].selectBook}
@@ -197,7 +200,7 @@ export const DndItems = () => {
               {TRANSLATION[locale()].save}
             </Button>
           </Show>
-        </div>
+        </div>*/}
         <p class="text-sm mt-1 mb-2">{TRANSLATION[locale()].selectBookHelp}</p>
         <table class="w-full table">
           <thead>
