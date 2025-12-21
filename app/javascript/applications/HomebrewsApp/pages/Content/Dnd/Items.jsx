@@ -201,7 +201,7 @@ export const DndItems = () => {
             </Button>
           </Show>
         </div>*/}
-        <p class="text-sm mt-1 mb-2">{TRANSLATION[locale()].selectBookHelp}</p>
+        {/*<p class="text-sm mt-1 mb-2">{TRANSLATION[locale()].selectBookHelp}</p>*/}
         <table class="w-full table">
           <thead>
             <tr class="text-sm">

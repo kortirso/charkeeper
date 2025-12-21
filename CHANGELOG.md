@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - DH mode for simple rolls
 - dice rolls for damage
 - homebrew items for D&D characters
+- creating homebrew items from interface for D&D characters
 
 ### Modified
 - guide mode, show editable fields by default

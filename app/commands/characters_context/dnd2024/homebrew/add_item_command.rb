@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
 module CharactersContext
-  module Daggerheart
+  module Dnd2024
     module Homebrew
       class AddItemCommand < BaseCommand
         include Deps[
-          add_homebrew_item: 'commands.homebrew_context.daggerheart.add_item',
+          add_homebrew_item: 'commands.homebrew_context.dnd.add_item',
           add_character_item: 'commands.characters_context.items.add'
         ]
 
@@ -14,7 +14,7 @@ module CharactersContext
 
           params do
             required(:user).filled(type?: ::User)
-            required(:character).filled(type?: ::Daggerheart::Character)
+            required(:character).filled(type?: ::Dnd2024::Character)
             required(:name).filled(:string, max_size?: 50)
             optional(:description).maybe(:string, max_size?: 250)
           end

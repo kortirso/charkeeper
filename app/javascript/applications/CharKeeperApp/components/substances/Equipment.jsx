@@ -69,7 +69,7 @@ const TRANSLATION = {
     }
   }
 }
-const CREATE_HOMEBREW_ITEMS = ['daggerheart'];
+const CREATE_HOMEBREW_ITEMS = ['daggerheart', 'dnd2024'];
 
 export const Equipment = (props) => {
   const safeChildren = children(() => props.children);
@@ -324,13 +324,6 @@ export const Equipment = (props) => {
                 />
               }
             </For>
-            <Show when={props.withWeight}>
-              <div class="flex justify-end">
-                <div class="p-4 flex blockable">
-                  <p>{calculateCurrentLoad()} / {character().load}</p>
-                </div>
-              </div>
-            </Show>
             <Show when={CREATE_HOMEBREW_ITEMS.includes(character().provider)}>
               <Toggle title={TRANSLATION[locale()].createHomebrew}>
                 <Input
@@ -352,6 +345,13 @@ export const Equipment = (props) => {
                 />
                 <Button default onClick={addHomebrewItem}>{TRANSLATION[locale()].add}</Button>
               </Toggle>
+            </Show>
+            <Show when={props.withWeight}>
+              <div class="flex justify-end">
+                <div class="p-4 flex blockable">
+                  <p>{calculateCurrentLoad()} / {character().load}</p>
+                </div>
+              </div>
             </Show>
           </Show>
         </Show>
