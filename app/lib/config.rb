@@ -3,8 +3,8 @@
 module Config
   extend self
 
-  def data(provider, key)
-    Rails.cache.fetch("#{provider}/#{key}") { load_data(provider, key) }
+  def data(provider, key, version: '0.3.24')
+    Rails.cache.fetch("#{provider}/#{key}/#{version}") { load_data(provider, key) }
   end
 
   private
