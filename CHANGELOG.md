@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - dice rolls for damage
 - homebrew items for D&D characters
 - creating homebrew items from interface for D&D characters
+- disabling character bonuses
 
 ### Modified
 - guide mode, show editable fields by default

@@ -32,6 +32,7 @@ module Charkeeper
     register('commands.users_context.add_feedback') { UsersContext::AddFeedbackCommand.new }
 
     register('commands.bonuses_context.refresh') { BonusesContext::RefreshBonusesCommand.new }
+    register('commands.bonuses_context.change') { BonusesContext::ChangeCommand.new }
 
     register('commands.characters_context.items.update') { CharactersContext::Items::UpdateCommand.new }
     register('commands.characters_context.items.add') { CharactersContext::Items::AddCommand.new }

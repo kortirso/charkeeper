@@ -24,8 +24,7 @@ const MAPPING = {
     'initiative': 'Initiative',
     'speed': 'Speed',
     'attack': 'Attack',
-    'proficiency_bonus': 'Proficiency bonus',
-    'level': 'Level'
+    'proficiency_bonus': 'Proficiency bonus'
   },
   ru: {
     'str': 'Сила',
@@ -44,8 +43,7 @@ const MAPPING = {
     'initiative': 'Инициатива',
     'speed': 'Скорость',
     'attack': 'Атака',
-    'proficiency_bonus': 'Бонус мастерства',
-    'level': 'Уровень'
+    'proficiency_bonus': 'Бонус мастерства'
   }
 }
 const DYNAMIC_ITEMS = {
@@ -120,11 +118,11 @@ export const Dnd5Bonuses = (props) => {
           {([bonusSlug, value]) =>
             <Switch
               fallback={
-                <For each={['armor_class', 'initiative', 'speed', 'attack', 'proficiency_bonus']}>
+                <For each={['armor_class', 'initiative', 'speed', 'attack']}>
                   {(slug) =>
                     <Show when={bonusSlug === slug}>
                       <p class="bonus">
-                        {`+[${MAPPING[locale()][value]}]`} {MAPPING[locale()][slug]}
+                        {`+[${MAPPING[locale()][value] ? MAPPING[locale()][value] : DYNAMIC_ITEMS[value].name[locale()]}]`} {MAPPING[locale()][slug]}
                       </p>
                     </Show>
                   }
@@ -135,7 +133,7 @@ export const Dnd5Bonuses = (props) => {
                 <For each={Object.entries(value)}>
                   {([slug, value]) =>
                     <p class="bonus">
-                      {`+[${MAPPING[locale()][value]}]`} {config.abilities[slug].name[locale()]}
+                      {`+[${MAPPING[locale()][value] ? MAPPING[locale()][value] : DYNAMIC_ITEMS[value].name[locale()]}]`} {config.abilities[slug].name[locale()]}
                     </p>
                   }
                 </For>

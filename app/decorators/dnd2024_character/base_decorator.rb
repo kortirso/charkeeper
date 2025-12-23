@@ -82,11 +82,11 @@ module Dnd2024Character
     end
 
     def bonuses
-      @bonuses ||= __getobj__.bonuses.pluck(:value).compact
+      @bonuses ||= __getobj__.bonuses.enabled.pluck(:value).compact
     end
 
     def dynamic_bonuses
-      @dynamic_bonuses ||= __getobj__.bonuses.pluck(:dynamic_value).compact
+      @dynamic_bonuses ||= __getobj__.bonuses.enabled.pluck(:dynamic_value).compact
     end
   end
 end

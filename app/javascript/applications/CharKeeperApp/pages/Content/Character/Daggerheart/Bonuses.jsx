@@ -99,11 +99,11 @@ export const DaggerheartBonuses = (props) => {
           {([bonusSlug, value]) =>
             <Switch
               fallback={
-                <For each={['health', 'stress', 'hope', 'evasion', 'armor_score', 'attack', 'proficiency']}>
+                <For each={['health', 'stress', 'hope', 'evasion', 'armor_score', 'attack']}>
                   {(slug) =>
                     <Show when={bonusSlug === slug}>
                       <p class="bonus">
-                        {`+[${MAPPING[locale()][value]}]`} {MAPPING[locale()][slug]}
+                        {`+[${MAPPING[locale()][value] ? MAPPING[locale()][value] : DYNAMIC_ITEMS[value].name[locale()]}]`} {MAPPING[locale()][slug]}
                       </p>
                     </Show>
                   }
@@ -114,7 +114,7 @@ export const DaggerheartBonuses = (props) => {
                 <For each={Object.entries(value)}>
                   {([slug, value]) =>
                     <p class="bonus">
-                      {`+[${MAPPING[locale()][value]}]`} {config.traits[slug].name[locale()]}
+                      {`+[${MAPPING[locale()][value] ? MAPPING[locale()][value] : DYNAMIC_ITEMS[value].name[locale()]}]`} {config.traits[slug].name[locale()]}
                     </p>
                   }
                 </For>
@@ -123,7 +123,7 @@ export const DaggerheartBonuses = (props) => {
                 <For each={Object.entries(value)}>
                   {([slug, value]) =>
                     <p class="bonus">
-                      {`+[${MAPPING[locale()][value]}]`} {MAPPING[locale()][slug]}
+                      {`+[${MAPPING[locale()][value] ? MAPPING[locale()][value] : DYNAMIC_ITEMS[value].name[locale()]}]`} {MAPPING[locale()][slug]}
                     </p>
                   }
                 </For>
