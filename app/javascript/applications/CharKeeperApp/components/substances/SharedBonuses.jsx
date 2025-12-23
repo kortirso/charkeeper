@@ -1,10 +1,11 @@
 import { createSignal, createEffect, For, Show, batch } from 'solid-js';
 import { Key } from '@solid-primitives/keyed';
 
-import { Toggle, Button, IconButton, Select, Input } from '../../components';
+import { Toggle, Button, IconButton, Select, Input, Checkbox } from '../../components';
 import { useAppState, useAppLocale, useAppAlert } from '../../context';
 import { Close, Trash } from '../../assets';
 import { fetchCharacterBonusesRequest } from '../../requests/fetchCharacterBonusesRequest';
+import { updateCharacterBonusRequest } from '../../requests/updateCharacterBonusRequest';
 import { removeCharacterBonusRequest } from '../../requests/removeCharacterBonusRequest';
 import { translate } from '../../helpers';
 
@@ -17,7 +18,9 @@ const TRANSLATION = {
     bonusModify: 'Modify',
     bonusType: 'Bonus type',
     bonusValue: 'Bonus value',
-    newBonusComment: "Modificator's name"
+    newBonusComment: "Modificator's name",
+    enabled: 'Bonus is active',
+    disabled: 'Bonus is disabled'
   },
   ru: {
     cancel: 'Отменить',
@@ -27,7 +30,9 @@ const TRANSLATION = {
     bonusModify: 'Прибавка к',
     bonusType: 'Тип бонуса',
     bonusValue: 'Значение бонуса',
-    newBonusComment: 'Название модификатора'
+    newBonusComment: 'Название модификатора',
+    enabled: 'Бонус активен',
+    disabled: 'Бонус не активен'
   }
 }
 
@@ -95,6 +100,20 @@ export const SharedBonuses = (props) => {
   }
 
   const cancelBonus = () => setCreateMode(false);
+
+  const changeBonus = async (bonus) => {
+    const result = await updateCharacterBonusRequest(appState.accessToken, character().provider, character().id, bonus.id, { bonus: { enabled: !bonus.enabled } });
+    if (result.errors_list === undefined) {
+      setBonuses(
+        bonuses().map((item) => {
+          if (item.id !== bonus.id) return item;
+
+          return { ...item, enabled: !bonus.enabled };
+        })
+      )
+      props.onReloadCharacter();
+    }
+  }
 
   const removeBonus = async (event, bonusId) => {
     event.stopPropagation();
@@ -186,9 +205,16 @@ export const SharedBonuses = (props) => {
                   </IconButton>
                 </div>
               }>
-                <div class="flex flex-wrap gap-1">
+                <div class="flex flex-wrap gap-1 mb-2">
                   <BonusComponent bonus={bonus} />
                 </div>
+                <Checkbox
+                  labelText={bonus.enabled ? TRANSLATION[locale()].enabled : TRANSLATION[locale()].disabled}
+                  labelPosition="right"
+                  labelClassList="ml-2"
+                  checked={bonus.enabled}
+                  onToggle={() => changeBonus(bonus)}
+                />
               </Toggle>
             }
           </For>

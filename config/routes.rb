@@ -72,7 +72,7 @@ Rails.application.routes.draw do
 
       scope ':provider' do
         resources :items, only: %i[index create update destroy], module: 'characters'
-        resources :bonuses, only: %i[index create destroy], module: 'characters'
+        resources :bonuses, only: %i[index create update destroy], module: 'characters'
         resources :feats, only: %i[update], module: 'characters'
       end
     end

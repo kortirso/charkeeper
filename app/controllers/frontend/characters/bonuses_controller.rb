@@ -8,13 +8,14 @@ module Frontend
         add_daggerheart_bonus: 'commands.characters_context.daggerheart.add_bonus',
         feature_requirement: 'feature_requirement',
         add_dnd_bonus_v2: 'commands.characters_context.dnd2024.bonuses.add',
-        add_daggerheart_bonus_v2: 'commands.characters_context.daggerheart.bonuses.add'
+        add_daggerheart_bonus_v2: 'commands.characters_context.daggerheart.bonuses.add',
+        change_command: 'commands.bonuses_context.change'
       ]
       include SerializeRelation
       include SerializeResource
 
       before_action :find_character
-      before_action :find_character_bonus, only: %i[destroy]
+      before_action :find_character_bonus, only: %i[update destroy]
 
       def index
         serialize_relation(bonuses, ::Characters::BonusSerializer, :bonuses)
@@ -25,6 +26,13 @@ module Frontend
         in { errors: errors, errors_list: errors_list } then unprocessable_response(errors, errors_list)
         in { result: result }
           serialize_resource(result, ::Characters::BonusSerializer, :bonus, {}, :created)
+        end
+      end
+
+      def update
+        case change_command.call(update_params.merge(character_bonus: @character_bonus))
+        in { errors: errors, errors_list: errors_list } then unprocessable_response(errors, errors_list)
+        else only_head_response
         end
       end
 
@@ -73,6 +81,10 @@ module Frontend
 
       def create_params
         params.require(:bonus).permit!.to_unsafe_hash.deep_symbolize_keys
+      end
+
+      def update_params
+        params.require(:bonus).permit!.to_h
       end
     end
   end
