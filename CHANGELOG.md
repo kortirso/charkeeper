@@ -15,6 +15,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - guide mode, show editable fields by default
 - expanding features text by config
 - spliting equipment between storages
+- bonuses tab with dynamic bonuses
 
 ### Fixed
 - dice rolling with modified advantage dice for DH characters

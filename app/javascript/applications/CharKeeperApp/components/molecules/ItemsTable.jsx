@@ -22,7 +22,7 @@ const TRANSLATION = {
 
 export const ItemsTable = (props) => {
   const items = () => props.items;
-  const IconComponent = STATE_ICONS[props.state];
+  const IconComponent = STATE_ICONS[props.state]; // eslint-disable-line solid/reactivity
 
   const [isOpen, setIsOpen] = createSignal(null);
 

@@ -145,19 +145,6 @@
       }
     }
   },
-  "dndV2": {
-    "bonuses": {
-      "title": "Bonuses",
-      "health": "Health",
-      "initiative": "Initiative",
-      "armor_class": "Armor class",
-      "attack": "Attack",
-      "speed": "Speed"
-    },
-    "terms": {
-      "abilities": "Abilities"
-    }
-  },
   "combat": {
     "list": {
       "equipment": "Ready to use",
@@ -275,10 +262,7 @@
     "deathSavingThrows": "Death saving throws",
     "deathSuccess": "Success",
     "deathFailure": "Failure",
-    "dyingConditionValue": "Dying condition value",
-    "newBonus": "New bonus",
-    "newBonusValues": "Bonus values",
-    "newBonusComment": "Comment"
+    "dyingConditionValue": "Dying condition value"
   },
   "professionsPage": {
     "fightingFeats": "Fighting style",

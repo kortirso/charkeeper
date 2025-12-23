@@ -2,6 +2,6 @@
 
 module Characters
   class BonusSerializer < ApplicationSerializer
-    attributes :id, :value, :comment
+    attributes :id, :value, :dynamic_value, :comment
   end
 end

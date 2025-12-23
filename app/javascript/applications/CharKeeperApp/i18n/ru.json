@@ -145,19 +145,6 @@
       }
     }
   },
-  "dndV2": {
-    "bonuses": {
-      "title": "Бонусы",
-      "health": "ХП",
-      "initiative": "Инициатива",
-      "armor_class": "Класс брони",
-      "attack": "Атака",
-      "speed": "Скорость"
-    },
-    "terms": {
-      "abilities": "Способности"
-    }
-  },
   "combat": {
     "list": {
       "equipment": "Активное снаряжение",
@@ -275,10 +262,7 @@
     "deathSavingThrows": "Спасброски от смерти",
     "deathSuccess": "Успехи",
     "deathFailure": "Провалы",
-    "dyingConditionValue": "Состояние при смерти",
-    "newBonus": "Новый бонус",
-    "newBonusValues": "Значения бонуса",
-    "newBonusComment": "Комментарий"
+    "dyingConditionValue": "Состояние при смерти"
   },
   "professionsPage": {
     "fightingFeats": "Боевые стили",

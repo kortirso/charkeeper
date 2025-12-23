@@ -104,6 +104,10 @@ module DaggerheartCharacter
       @bonuses ||= __getobj__.bonuses.pluck(:value).compact
     end
 
+    def dynamic_bonuses
+      @dynamic_bonuses ||= __getobj__.bonuses.pluck(:dynamic_value).compact
+    end
+
     def static_feat_bonuses
       @static_feat_bonuses ||= feat_bonuses.pluck(:value).compact
     end

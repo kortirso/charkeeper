@@ -5,7 +5,10 @@ module Frontend
     class BonusesController < Frontend::BaseController
       include Deps[
         add_dnd_bonus: 'commands.characters_context.dnd5.add_bonus',
-        add_daggerheart_bonus: 'commands.characters_context.daggerheart.add_bonus'
+        add_daggerheart_bonus: 'commands.characters_context.daggerheart.add_bonus',
+        feature_requirement: 'feature_requirement',
+        add_dnd_bonus_v2: 'commands.characters_context.dnd2024.bonuses.add',
+        add_daggerheart_bonus_v2: 'commands.characters_context.daggerheart.bonuses.add'
       ]
       include SerializeRelation
       include SerializeResource
@@ -49,19 +52,27 @@ module Frontend
         when 'dnd5', 'dnd2024' then authorized_scope(Character.all).dnd
         when 'pathfinder2' then authorized_scope(Character.all).pathfinder2
         when 'daggerheart' then authorized_scope(Character.all).daggerheart
+        when 'dc20' then authorized_scope(Character.all).dc20
         else Character.none
         end
       end
 
       def add_bonus_command
-        case params[:provider]
-        when 'dnd5', 'dnd2024' then add_dnd_bonus
-        when 'daggerheart' then add_daggerheart_bonus
+        if feature_requirement.call(current: params[:version], initial: '0.3.23')
+          case params[:provider]
+          when 'dnd5', 'dnd2024' then add_dnd_bonus_v2
+          when 'daggerheart' then add_daggerheart_bonus_v2
+          end
+        else
+          case params[:provider]
+          when 'dnd5', 'dnd2024' then add_dnd_bonus
+          when 'daggerheart' then add_daggerheart_bonus
+          end
         end
       end
 
       def create_params
-        params.require(:bonus).permit!.to_h
+        params.require(:bonus).permit!.to_unsafe_hash.deep_symbolize_keys
       end
     end
   end

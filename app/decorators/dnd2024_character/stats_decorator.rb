@@ -16,6 +16,7 @@ module Dnd2024Character
           .merge(
             *[
               *bonuses.pluck('abilities'),
+              *dynamic_bonuses.pluck('abilities'),
               *static_item_bonuses.pluck('abilities'),
               *dynamic_item_bonuses.pluck('abilities')
             ].compact
@@ -53,11 +54,12 @@ module Dnd2024Character
       @armor_class ||= beastform.blank? ? armor_class_with_bonuses : beastform_config['ac']
     end
 
-    def initiative
+    def initiative # rubocop: disable Metrics/AbcSize
       @initiative ||=
         __getobj__.initiative +
         modifiers['dex'] +
         sum(bonuses.pluck('initiative')) +
+        sum(dynamic_bonuses.pluck('initiative')) +
         sum(static_item_bonuses.pluck('initiative')) +
         sum(dynamic_item_bonuses.pluck('initiative'))
     end
@@ -83,6 +85,8 @@ module Dnd2024Character
     def modifiers_with_bonuses
       modifiers.clone.merge(
         *[
+          *bonuses.pluck('saves'),
+          *dynamic_bonuses.pluck('saves'),
           *static_item_bonuses.pluck('saves'),
           *dynamic_item_bonuses.pluck('saves')
         ].compact
@@ -93,6 +97,7 @@ module Dnd2024Character
       __getobj__.armor_class +
         calc_armor_class +
         sum(bonuses.pluck('armor_class')) +
+        sum(dynamic_bonuses.pluck('armor_class')) +
         sum(static_item_bonuses.pluck('armor_class')) +
         sum(dynamic_item_bonuses.pluck('armor_class'))
     end
@@ -100,6 +105,7 @@ module Dnd2024Character
     def speed_with_bonuses
       __getobj__.speed +
         sum(bonuses.pluck('speed')) +
+        sum(dynamic_bonuses.pluck('speed')) +
         sum(static_item_bonuses.pluck('speed')) +
         sum(dynamic_item_bonuses.pluck('speed'))
     end
@@ -246,6 +252,8 @@ module Dnd2024Character
 
     def attack_bonuses
       @attack_bonuses ||=
+        sum(bonuses.pluck('attack').compact) +
+        sum(dynamic_bonuses.pluck('attack').compact) +
         sum(static_item_bonuses.pluck('attack').compact) +
         sum(dynamic_item_bonuses.pluck('attack').compact)
     end

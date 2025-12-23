@@ -40,7 +40,7 @@ const TRANSLATION = {
 
 export const FeatureTitle = (props) => {
   const feature = () => props.feature;
-  const IconComponent = FEATURE_ICONS[props.feature.limit_refresh];
+  const IconComponent = FEATURE_ICONS[props.feature.limit_refresh]; // eslint-disable-line solid/reactivity
 
   const [locale] = useAppLocale();
 
