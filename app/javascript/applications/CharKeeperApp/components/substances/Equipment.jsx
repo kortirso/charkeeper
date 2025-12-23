@@ -137,9 +137,9 @@ export const Equipment = (props) => {
   const moveItem = async (item, fromState, toState) => {
     if (item.states[fromState] === 1) {
       const payload = {
-        ...changingItem().states,
+        ...item.states,
         [fromState]: 0,
-        [changingItem().states[toState]]: changingItem().states[toState] + 1
+        [item.states[toState]]: item.states[toState] + 1
       }
 
       await updateCharacterItem(item, { character_item: { states: payload } });

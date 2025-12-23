@@ -84,6 +84,15 @@ module DaggerheartCharacter
         .pluck('items.info')
     end
 
+    def equiped_items_info
+      @equiped_items_info ||=
+        __getobj__
+        .items
+        .where(state: ::Character::Item::ACTIVE_STATES)
+        .joins(:item)
+        .pluck('items.info', 'items.name', 'items.id')
+    end
+
     def armor_equiped # rubocop: disable Naming/PredicateMethod
       !equiped_armor_info.nil?
     end
