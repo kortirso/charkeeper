@@ -2,12 +2,12 @@
 
 module Characters
   class ItemSerializer < ApplicationSerializer
-    ATTRIBUTES = %i[id quantity ready_to_use notes name kind data state item_id has_description states].freeze
+    ATTRIBUTES = %i[id quantity ready_to_use notes name kind data state item_id has_description states info].freeze
     READY_TO_USE_STATES = %w[hands equipment].freeze
 
     attributes(*ATTRIBUTES)
 
-    delegate :kind, :data, to: :item
+    delegate :kind, :data, :info, to: :item
     delegate :item, to: :object
 
     def name
