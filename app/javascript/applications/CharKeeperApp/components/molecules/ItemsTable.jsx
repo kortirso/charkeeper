@@ -55,6 +55,13 @@ export const ItemsTable = (props) => {
                     <Show when={item.notes}>
                       <p class="text-sm mt-1 text-stone-800 dark:text-stone-300">{item.notes}</p>
                     </Show>
+                    <Show when={item.info?.features && item.info.features.length > 0}>
+                      <For each={item.info.features}>
+                        {(item) =>
+                          <p class="text-xs mt-1 text-stone-800 dark:text-stone-300">{item[locale()]}</p>
+                        }
+                      </For>
+                    </Show>
                   </td>
                   <td class="py-1">
                     <p class="p-1 text-center">{item.states[props.state]}</p>
