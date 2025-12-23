@@ -64,6 +64,7 @@ export const Daggerheart = (props) => {
   const personalFilter = (item) => item.origin === 'character';
   const transformationFilter = (item) => item.origin === 'transformation';
   const domainCardFilter = (item) => (item.origin === 'domain_card' && item.ready_to_use) || item.origin === 'parent';
+  const equipmentFilter = (item) => item.origin === 'equipment';
 
   const featFilters = createMemo(() => {
     const result = [
@@ -71,7 +72,8 @@ export const Daggerheart = (props) => {
       { title: 'community', callback: communityFilter },
       { title: 'class', callback: classFilter },
       { title: 'subclass', callback: subclassFilter },
-      { title: 'domainCards', callback: domainCardFilter }
+      { title: 'domainCards', callback: domainCardFilter },
+      { title: 'equipment', callback: equipmentFilter }
     ];
 
     if (character().beastform !== null) result.push({ title: 'beastform', callback: beastformFilter });
