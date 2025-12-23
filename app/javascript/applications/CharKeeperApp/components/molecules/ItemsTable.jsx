@@ -2,18 +2,20 @@ import { createSignal, For, Show } from 'solid-js';
 
 import { Button, IconButton } from '../../components';
 import { useAppLocale } from '../../context';
-import { Hands, Equipment, Backpack, Storage, Dots, Edit } from '../../assets';
+import { Hands, Equipment, Backpack, Storage, Dots } from '../../assets';
 import { clickOutside } from '../../helpers';
 
 const STATE_ICONS = { 'hands': Hands, 'equipment': Equipment, 'backpack': Backpack, 'storage': Storage }
 
 const TRANSLATION = {
   en: {
+    change: 'Edit',
     delete: 'Remove',
     info: 'Info',
     quantity: 'Qty'
   },
   ru: {
+    change: 'Изменить',
     delete: 'Убрать',
     info: 'Информация',
     quantity: 'Кол-во'
@@ -68,15 +70,25 @@ export const ItemsTable = (props) => {
                   </td>
                   <td>
                     <div class="flex items-center gap-x-2">
-                      <Button default size="small" onClick={() => props.onChangeItem(item)}>
-                        <Edit width={16} height={16} />
-                      </Button>
+                      <For each={[
+                        { state: 'hands', Icon: Hands }, { state: 'equipment', Icon: Equipment },
+                        { state: 'backpack', Icon: Backpack }, { state: 'storage', Icon: Storage }
+                      ]}>
+                        {({ state, Icon }) =>
+                          <Show when={props.state !== state}>
+                            <Button default size="small" onClick={() => props.onMoveCharacterItem(item, props.state, state)}>
+                              <Icon width={16} height={16} />
+                            </Button>
+                          </Show>
+                        }
+                      </For>
                       <div class="relative h-6" use:clickOutside={() => setIsOpen(false)}>
                         <IconButton onClick={() => toggleMenu(item)}>
                           <Dots />
                         </IconButton>
                         <Show when={isOpen() === item}>
                           <div class="absolute z-9 right-0 border border-gray-200 rounded overflow-hidden">
+                            <p class="dots-item" onClick={() => props.onChangeItem(item)}>{TRANSLATION[locale()].change}</p>
                             <Show when={item.has_description}>
                               <p class="dots-item" onClick={() => props.onInfoItem(item.item_id, item.name)}>{TRANSLATION[locale()].info}</p>
                             </Show>
