@@ -17,7 +17,12 @@ module Dnd2024Character
     end
 
     def proficiency_bonus
-      @proficiency_bonus ||= 2 + ((level - 1) / 4) + static_item_bonuses.pluck('proficiency').sum(&:to_i)
+      @proficiency_bonus ||=
+        2 +
+        ((level - 1) / 4) +
+        static_item_bonuses.pluck('proficiency').sum(&:to_i) +
+        bonuses.pluck('proficiency_bonus').sum(&:to_i) +
+        dynamic_bonuses.pluck('proficiency_bonus').sum(&:to_i)
     end
 
     def modified_abilities = abilities
@@ -78,6 +83,10 @@ module Dnd2024Character
 
     def bonuses
       @bonuses ||= __getobj__.bonuses.pluck(:value).compact
+    end
+
+    def dynamic_bonuses
+      @dynamic_bonuses ||= __getobj__.bonuses.pluck(:dynamic_value).compact
     end
   end
 end

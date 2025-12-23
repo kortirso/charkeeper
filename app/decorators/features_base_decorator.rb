@@ -30,6 +30,15 @@ class FeaturesBaseDecorator
     @available_features ||= wrapped.feats.includes(:feat).order('feats.origin ASC, feats.created_at ASC')
   end
 
+  def dynamic_bonuses
+    @dynamic_bonuses ||=
+      wrapped.dynamic_bonuses&.filter_map do |hash|
+        next if hash.empty?
+
+        call_values(hash)
+      end
+  end
+
   def dynamic_feat_bonuses
     @dynamic_feat_bonuses ||=
       feat_bonuses.pluck(:dynamic_value).compact.filter_map do |hash|

@@ -5,10 +5,10 @@ import { createWindowSize } from '@solid-primitives/resize-observer';
 import {
   DaggerheartTraits, DaggerheartStatic, DaggerheartHealth, DaggerheartBeastform, DaggerheartCompanion,
   DaggerheartDomainCards, DaggerheartRest, DaggerheartLeveling, DaggerheartExperience, DaggerheartTransform,
-  DaggerheartStances
+  DaggerheartStances, DaggerheartBonuses
 } from '../../../pages';
 import {
-  CharacterNavigation, Equipment, Bonuses, Notes, Avatar, ContentWrapper, Feats, createDiceRoll, Conditions, Combat, Gold
+  CharacterNavigation, Equipment, Notes, Avatar, ContentWrapper, Feats, createDiceRoll, Conditions, Combat, Gold
 } from '../../../components';
 import { useAppLocale } from '../../../context';
 
@@ -197,7 +197,7 @@ export const Daggerheart = (props) => {
               <DaggerheartCompanion character={character()} />
             </Match>
             <Match when={activeMobileTab() === 'bonuses'}>
-              <Bonuses character={character()} onReloadCharacter={props.onReloadCharacter} />
+              <DaggerheartBonuses character={character()} onReloadCharacter={props.onReloadCharacter} />
             </Match>
             <Match when={activeMobileTab() === 'rest'}>
               <DaggerheartRest character={character()} onReloadCharacter={props.onReloadCharacter} />
@@ -343,7 +343,7 @@ export const Daggerheart = (props) => {
               <DaggerheartCompanion character={character()} />
             </Match>
             <Match when={activeTab() === 'bonuses'}>
-              <Bonuses character={character()} onReloadCharacter={props.onReloadCharacter} />
+              <DaggerheartBonuses character={character()} onReloadCharacter={props.onReloadCharacter} />
             </Match>
             <Match when={activeTab() === 'rest'}>
               <DaggerheartRest character={character()} onReloadCharacter={props.onReloadCharacter} />

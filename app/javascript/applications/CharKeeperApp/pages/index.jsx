@@ -31,6 +31,7 @@ export * from './Content/Character/Dnd5/Proficiency';
 export * from './Content/Character/Dnd5/WildShapes';
 export * from './Content/Character/Dnd5/BeastFeatures';
 export * from './Content/Character/Dnd5/Craft';
+export * from './Content/Character/Dnd5/Bonuses';
 
 export * from './Content/Character/Pathfinder2';
 export * from './Content/Character/Pathfinder2/Abilities';
@@ -53,6 +54,7 @@ export * from './Content/Character/Daggerheart/Beastform';
 export * from './Content/Character/Daggerheart/Companion';
 export * from './Content/Character/Daggerheart/Transformation';
 export * from './Content/Character/Daggerheart/Stances';
+export * from './Content/Character/Daggerheart/Bonuses';
 
 export * from './Content/Character/Dc20';
 export * from './Content/Character/Dc20/Abilities';

@@ -421,3 +421,8 @@ nav.pagy.nav a.gap {
 .roll-result.with_fear {
   background: #2362C2;
 }
+
+.bonus {
+  @apply bg-gray-200 p-1 rounded text-sm;
+  @apply dark:bg-neutral-800 dark:text-snow;
+}
