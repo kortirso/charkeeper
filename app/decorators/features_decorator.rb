@@ -33,14 +33,14 @@ class FeaturesDecorator
         feature.feat.description_eval_variables.transform_values! do |value|
           eval_variable(feature.feat, value) || value
         end
-        {
+
+        result = {
           id: feature.id,
           slug: feature.feat.slug || feature.id,
           kind: feature.feat.kind,
           title: feature.feat.title[I18n.locale.to_s],
           description: update_feature_description(feature),
           limit: feature.feat.description_eval_variables['limit'],
-          used_count: feature.used_count,
           limit_refresh: feature.feat.limit_refresh,
           options: feature.feat.options,
           value: feature.value,
@@ -51,6 +51,7 @@ class FeaturesDecorator
           price: feature.feat.price,
           info: feature.feat.info
         }.compact
+        result.merge(used_count: feature.used_count)
       end
   end
   # rubocop: enable Metrics/AbcSize, Metrics/MethodLength, Metrics/PerceivedComplexity, Metrics/BlockLength, Metrics/CyclomaticComplexity

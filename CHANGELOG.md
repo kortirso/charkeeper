@@ -20,6 +20,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - expanding features text by config
 - spliting equipment between storages
 - bonuses tab with dynamic bonuses
+- refreshing used count for reverse refreshing
 
 ### Fixed
 - dice rolling with modified advantage dice for DH characters

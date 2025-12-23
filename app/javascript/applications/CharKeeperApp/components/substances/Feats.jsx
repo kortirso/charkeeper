@@ -89,7 +89,7 @@ export const Feats = (props) => {
 
   const restoreEnergy = (event, feature) => {
     event.stopPropagation();
-    refreshFeatures(feature.id, { used_count: feature.used_count - 1 });
+    refreshFeatures(feature.id, { used_count: (feature.used_count === null ? feature.limit : feature.used_count) - 1 });
   }
 
   const updateFeatureValue = (feature, value) => {
