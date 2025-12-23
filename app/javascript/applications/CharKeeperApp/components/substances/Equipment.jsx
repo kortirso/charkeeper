@@ -39,7 +39,10 @@ const TRANSLATION = {
         title: 'In storage',
         description: 'Outer storage of your items'
       }
-    }
+    },
+    amount: 'Moving amount',
+    was: 'Was',
+    will: 'will be'
   },
   ru: {
     searchByName: 'Поиск по названию (от 3 символов)',
@@ -66,7 +69,10 @@ const TRANSLATION = {
         title: 'В хранилище',
         description: 'Предметы в отдалённом хранилище'
       }
-    }
+    },
+    amount: 'Кол-во перемещаемого',
+    was: 'Было',
+    will: 'будет'
   }
 }
 const CREATE_HOMEBREW_ITEMS = ['daggerheart', 'dnd2024'];
@@ -83,6 +89,7 @@ export const Equipment = (props) => {
   const [items, setItems] = createSignal(undefined);
   const [itemsSelectingMode, setItemsSelectingMode] = createSignal(false);
 
+  const [movingItem, setMovingItem] = createStore({ item: null, fromState: null, toState: null, amount: 1 });
   const [changingItem, setChangingItem] = createSignal(null);
   const [itemInfo, setItemInfo] = createSignal(null);
   const [filterByName, setFilterByName] = createSignal('');
@@ -125,6 +132,37 @@ export const Equipment = (props) => {
       setItemInfo(null);
       openModal();
     });
+  }
+
+  const moveItem = async (item, fromState, toState) => {
+    if (item.states[fromState] === 1) {
+      const payload = {
+        ...changingItem().states,
+        [fromState]: 0,
+        [changingItem().states[toState]]: changingItem().states[toState] + 1
+      }
+
+      await updateCharacterItem(item, { character_item: { states: payload } });
+    } else {
+      batch(() => {
+        setMovingItem({ item: item, fromState: fromState, toState: toState, amount: 1 });
+        openModal();
+      });
+    }
+  }
+
+  const finishMovingItem = async () => {
+    const states = movingItem.item.states;
+    if (states[movingItem.fromState] < movingItem.amount) return;
+    if (movingItem.amount < 1) return;
+
+    const payload = {
+      ...states,
+      [movingItem.fromState]: states[movingItem.fromState] - movingItem.amount,
+      [movingItem.toState]: states[movingItem.toState] + movingItem.amount
+    }
+
+    await updateCharacterItem(movingItem.item, { character_item: { states: payload } });
   }
 
   const showInfo = async (id, name) => {
@@ -317,6 +355,7 @@ export const Equipment = (props) => {
                   subtitle={TRANSLATION[locale()].in[state].description}
                   state={state}
                   items={characterItems().filter((item) => item.states[state] > 0)}
+                  onMoveCharacterItem={moveItem}
                   onChangeItem={changeItem}
                   onInfoItem={showInfo}
                   onUpdateCharacterItem={updateCharacterItem}
@@ -382,6 +421,17 @@ export const Equipment = (props) => {
         <Show when={itemInfo()}>
           <p class="mb-3 text-xl">{itemInfo()[0]}</p>
           <p>{itemInfo()[1]}</p>
+        </Show>
+        <Show when={movingItem.item}>
+          <p class="text-lg mb-2">{movingItem.item.name}</p>
+          <p class="text-sm mb-1">{TRANSLATION[locale()].was} {TRANSLATION[locale()].in[movingItem.fromState].title.toLowerCase()}, {TRANSLATION[locale()].will} {TRANSLATION[locale()].in[movingItem.toState].title.toLowerCase()}</p>
+          <Input
+            numeric
+            labelText={TRANSLATION[locale()].amount}
+            value={movingItem.amount}
+            onInput={(value) => setMovingItem({ ...movingItem, amount: parseInt(value) })}
+          />
+          <Button default textable classList="mt-4" onClick={finishMovingItem}>{t('save')}</Button>
         </Show>
       </Modal>
     </ErrorWrapper>
