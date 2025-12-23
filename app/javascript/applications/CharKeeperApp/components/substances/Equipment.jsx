@@ -12,6 +12,7 @@ import { updateCharacterItemRequest } from '../../requests/updateCharacterItemRe
 import { removeCharacterItemRequest } from '../../requests/removeCharacterItemRequest';
 import { fetchItemInfoRequest } from '../../requests/fetchItemInfoRequest';
 import { createCharacterHomebrewItemRequest } from '../../requests/createCharacterHomebrewItemRequest';
+import { consumeCharacterBonusRequest } from '../../requests/consumeCharacterBonusRequest';
 
 const TRANSLATION = {
   en: {
@@ -134,12 +135,27 @@ export const Equipment = (props) => {
     });
   }
 
+  const consumeItem = async (item, fromState) => {
+    const result = await consumeCharacterBonusRequest(
+      appState.accessToken,
+      character().provider,
+      character().id,
+      item.bonuses[0].id,
+      { character_item_id: item.id, from_state: fromState, only_head: true }
+    );
+
+    if (result.errors_list === undefined) {
+      props.onReloadCharacter();
+      reloadCharacterItems();
+    }
+  }
+
   const moveItem = async (item, fromState, toState) => {
     if (item.states[fromState] === 1) {
       const payload = {
         ...item.states,
         [fromState]: 0,
-        [item.states[toState]]: item.states[toState] + 1
+        [toState]: item.states[toState] + 1
       }
 
       await updateCharacterItem(item, { character_item: { states: payload } });
@@ -355,6 +371,7 @@ export const Equipment = (props) => {
                   subtitle={TRANSLATION[locale()].in[state].description}
                   state={state}
                   items={characterItems().filter((item) => item.states[state] > 0)}
+                  onConsumeItem={consumeItem}
                   onMoveCharacterItem={moveItem}
                   onChangeItem={changeItem}
                   onInfoItem={showInfo}
