@@ -2,7 +2,7 @@ import { createSignal, For, Show } from 'solid-js';
 
 import { Button, IconButton } from '../../components';
 import { useAppLocale } from '../../context';
-import { Hands, Equipment, Backpack, Storage, Dots } from '../../assets';
+import { Hands, Equipment, Backpack, Storage, Dots, Drink } from '../../assets';
 import { clickOutside } from '../../helpers';
 
 const STATE_ICONS = { 'hands': Hands, 'equipment': Equipment, 'backpack': Backpack, 'storage': Storage }
@@ -69,7 +69,7 @@ export const ItemsTable = (props) => {
                     <p class="p-1 text-center">{item.states[props.state]}</p>
                   </td>
                   <td>
-                    <div class="flex items-center gap-x-2">
+                    <div class="flex items-center justify-end gap-x-2">
                       <For each={[
                         { state: 'hands', Icon: Hands }, { state: 'equipment', Icon: Equipment },
                         { state: 'backpack', Icon: Backpack }, { state: 'storage', Icon: Storage }
@@ -82,6 +82,11 @@ export const ItemsTable = (props) => {
                           </Show>
                         }
                       </For>
+                      <Show when={item.kind === 'consumables' && item.bonuses.length > 0}>
+                        <Button default size="small" onClick={() => props.onConsumeItem(item, props.state)}>
+                          <Drink width={16} height={16} />
+                        </Button>
+                      </Show>
                       <div class="relative h-6" use:clickOutside={() => setIsOpen(false)}>
                         <IconButton onClick={() => toggleMenu(item)}>
                           <Dots />

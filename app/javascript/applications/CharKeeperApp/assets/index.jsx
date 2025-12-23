@@ -25,6 +25,7 @@ export * from './D20';
 export * from './Info';
 export * from './Combat';
 export * from './Trash';
+export * from './Drink';
 export * from './LevelChevron';
 export * from './socials/Discord';
 export * from './socials/Telegram';

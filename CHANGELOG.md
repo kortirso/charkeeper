@@ -15,6 +15,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - in-app spellcast rolls for DH characters
 - different distance meters
 - rendering equipment features in feats tab
+- consuming elixir with bonuses
 
 ### Modified
 - guide mode, show editable fields by default
