@@ -2,7 +2,7 @@ import { createSignal, createEffect, For, Show, createMemo, batch } from 'solid-
 import * as i18n from '@solid-primitives/i18n';
 
 import { DomainCardsTable } from './DomainCardsTable';
-import { createModal, StatsBlock, ErrorWrapper, Button, Toggle, TextArea, Checkbox, GuideWrapper } from '../../../../components';
+import { createModal, StatsBlock, ErrorWrapper, Button, Toggle, TextArea, Checkbox, GuideWrapper, Dice } from '../../../../components';
 import config from '../../../../data/daggerheart.json';
 import { useAppState, useAppLocale, useAppAlert } from '../../../../context';
 import { PlusSmall } from '../../../../assets';
@@ -153,7 +153,15 @@ export const DaggerheartDomainCards = (props) => {
   const renderSpellcastTraits = (spellcastTraits) => (
     <For each={spellcastTraits}>
       {(trait) =>
-        <p class="text-sm dark:text-snow">{traits()[trait].name[locale()]} {modifier(character().modified_traits[trait])}</p>
+        <p class="text-base dark:text-snow flex items-center">
+          <span class="text-sm mr-2 uppercase">{traits()[trait].shortName[locale()]}</span>
+          <Dice
+            width="28"
+            height="28"
+            text={modifier(character().modified_traits[trait])}
+            onClick={() => props.openDiceRoll(`/check attack ${trait}`, character().modified_traits[trait])}
+          />
+        </p>
       }
     </For>
   );

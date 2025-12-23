@@ -182,6 +182,7 @@ export const Daggerheart = (props) => {
                 guideStep={4}
                 helpMessage={TRANSLATION[locale()]['domainHelpMessage']}
                 onNextGuideStepClick={() => setActiveMobileTab('classLevels')}
+                openDiceRoll={openDiceRoll}
               />
             </Match>
             <Match when={activeMobileTab() === 'states'}>
@@ -328,6 +329,7 @@ export const Daggerheart = (props) => {
                 guideStep={4}
                 helpMessage={TRANSLATION[locale()]['domainHelpMessage']}
                 onNextGuideStepClick={() => setActiveTab('classLevels')}
+                openDiceRoll={openDiceRoll}
               />
             </Match>
             <Match when={activeTab() === 'states'}>
