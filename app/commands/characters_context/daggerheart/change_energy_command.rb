@@ -62,7 +62,8 @@ module CharactersContext
       # rubocop: enable Metrics/AbcSize, Metrics/CyclomaticComplexity, Metrics/MethodLength, Metrics/PerceivedComplexity, Style/GuardClause
 
       def do_persist(input)
-        input[:character].feats.where(limit_refresh: limit_refresh(input)).update_all(used_count: 0)
+        update_refresh(input)
+        update_reverse_refresh(input)
 
         if input[:data]
           input[:character].data = ::Daggerheart::CharacterData.new(input[:character].data.attributes.merge(input[:data]))
@@ -70,6 +71,18 @@ module CharactersContext
         end
 
         { result: input[:character] }
+      end
+
+      def update_refresh(input)
+        input[:character].feats.where(limit_refresh: limit_refresh(input)).update_all(used_count: 0)
+      end
+
+      def update_reverse_refresh(input)
+        input[:character].feats
+          .joins(:feat)
+          .where(feats: { reverse_refresh: true })
+          .where(limit_refresh: limit_refresh(input))
+          .update_all(used_count: nil)
       end
 
       def limit_refresh(input)

@@ -70,12 +70,12 @@ export const FeatureTitle = (props) => {
               <Minus />
             </Button>
             <p class="flex items-center justify-center mx-2">
-              <span class="w-6 text-center">{feature().limit === 0 ? -feature().used_count : feature().limit - (feature().used_count || 0)}</span>
+              <span class="w-6 text-center">{feature().limit === 0 ? -feature().used_count : feature().limit - (feature().used_count === null ? feature().limit : feature().used_count)}</span>
               <Show when={IconComponent}>
                 <span title={TRANSLATION[locale()][feature().limit_refresh]}><IconComponent /></span>
               </Show>
             </p>
-            <Button default size="small" onClick={(event) => feature().limit === 0 || (feature().used_count || 0) > 0 ? props.onRestoreEnergy(event, feature()) : event.stopPropagation()}>
+            <Button default size="small" onClick={(event) => feature().limit === 0 || feature().used_count === null || feature().used_count > 0 ? props.onRestoreEnergy(event, feature()) : event.stopPropagation()}>
               <PlusSmall />
             </Button>
           </div>
