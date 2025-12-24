@@ -90,6 +90,13 @@ gem 'good_job'
 # markdown parsing
 gem 'redcarpet'
 
+group :development, :production do
+  gem 'get_process_mem'
+  gem 'rails_performance'
+  gem 'sys-cpu'
+  gem 'sys-filesystem'
+end
+
 group :development, :test do
   gem 'rubocop', '~> 1.35', require: false
   gem 'rubocop-factory_bot', '~> 2.0', require: false
