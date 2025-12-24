@@ -51,7 +51,7 @@ gem 'props_template'
 
 # auth
 gem 'action_policy'
-gem 'authkeeper', '0.1.10'
+gem 'authkeeper', '0.1.13'
 gem 'jwt', '~> 2.5'
 
 # Work with JSON-backed attributes

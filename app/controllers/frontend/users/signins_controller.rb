@@ -3,7 +3,10 @@
 module Frontend
   module Users
     class SigninsController < Frontend::BaseController
-      include AuthkeeperDeps[fetch_session: 'services.fetch_session']
+      include AuthkeeperDeps[
+        fetch_session: 'services.fetch_session',
+        fetch_uuid: 'services.fetch_uuid'
+      ]
       include Signable
 
       skip_before_action :authenticate, only: %i[create]
@@ -41,6 +44,9 @@ module Frontend
         return if auth_call[:errors].present?
 
         auth_call[:result].destroy
+
+        auth_uuid = fetch_uuid.call(token: bearer_token || params[Authkeeper.configuration.access_token_name])
+        Rails.cache.delete("authkeeper_cached_user_v2/#{auth_uuid[:result]}") if auth_uuid[:result]
       end
 
       def user_params
