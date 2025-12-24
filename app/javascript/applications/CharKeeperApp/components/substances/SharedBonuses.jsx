@@ -20,7 +20,8 @@ const TRANSLATION = {
     bonusValue: 'Bonus value',
     newBonusComment: "Modificator's name",
     enabled: 'Bonus is active',
-    disabled: 'Bonus is disabled'
+    disabled: 'Bonus is disabled',
+    noValues: 'At least one bonus should be present'
   },
   ru: {
     cancel: 'Отменить',
@@ -32,7 +33,8 @@ const TRANSLATION = {
     bonusValue: 'Значение бонуса',
     newBonusComment: 'Название модификатора',
     enabled: 'Бонус активен',
-    disabled: 'Бонус не активен'
+    disabled: 'Бонус не активен',
+    noValues: 'Необходимо указать хотя бы один бонус со значением'
   }
 }
 
@@ -49,7 +51,7 @@ export const SharedBonuses = (props) => {
   const [bonusComment, setBonusComment] = createSignal('');
 
   const [appState] = useAppState();
-  const [{ renderAlerts }] = useAppAlert();
+  const [{ renderAlerts, renderAlert }] = useAppAlert();
   const [locale] = useAppLocale();
 
   const fetchBonuses = async () => await fetchCharacterBonusesRequest(appState.accessToken, character().provider, character().id);
@@ -79,7 +81,8 @@ export const SharedBonuses = (props) => {
   const updateNewBonus = (bonus, attribute, value) => {
     const newValue = bonusesList().map((item) => {
       if (item.id !== bonus.id) return item;
-      if (attribute === 'modify') return { ...item, [attribute]: value, type: 'static', value: null };
+      if (attribute === 'modify') return { ...item, modify: value, type: 'static', value: null };
+      if (attribute === 'type') return { ...item, type: value, value: null };
 
       return { ...item, [attribute]: value };
     });
@@ -87,7 +90,10 @@ export const SharedBonuses = (props) => {
   }
 
   const saveBonus = async () => {
-    const result = await props.onSaveBonus(bonusesList(), bonusComment());
+    const bonusesWithValues = bonusesList().filter((item) => item.modify && item.value);
+    if (bonusesWithValues.length === 0) return renderAlert(TRANSLATION[locale()].noValues);
+
+    const result = await props.onSaveBonus(bonusesWithValues, bonusComment());
 
     if (result.errors_list === undefined) {
       batch(() => {
