@@ -28,27 +28,13 @@ module Frontend
     private
 
     def characters
-      characters_by_provider.map do |character_type, ids|
+      current_user.characters.group_by(&:type).map do |character_type, characters|
         Panko::ArraySerializer.new(
-          relation(character_type).where(id: ids.pluck(:id)).includes(avatar_attachment: :blob),
+          characters,
           each_serializer: serializer(character_type),
           only: serialize_fields(character_type),
           context: { simple: true }
         ).to_a
-      end
-    end
-
-    def characters_by_provider
-      current_user.characters.hashable_pluck(:id, :type).group_by { |item| item[:type] }
-    end
-
-    def relation(character_type)
-      case character_type
-      when 'Dnd5::Character' then ::Dnd5::Character
-      when 'Dnd2024::Character' then ::Dnd2024::Character
-      when 'Pathfinder2::Character' then ::Pathfinder2::Character
-      when 'Daggerheart::Character' then ::Daggerheart::Character
-      when 'Dc20::Character' then ::Dc20::Character
       end
     end
 

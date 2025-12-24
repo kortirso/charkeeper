@@ -15,6 +15,7 @@ module Charkeeper
       end
     end
 
+    register('cache.avatars') { Cache::Avatars.new }
     register('feature_requirement') { FeatureRequirement.new }
     register('markdown') { ActiveMarkdown.new }
     register('to_bool') { ToBool.new }

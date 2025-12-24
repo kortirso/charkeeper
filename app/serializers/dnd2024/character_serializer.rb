@@ -2,6 +2,8 @@
 
 module Dnd2024
   class CharacterSerializer < ApplicationSerializer
+    include Deps[cache: 'cache.avatars']
+
     attributes :level, :features, :provider, :id, :name, :species, :legacy, :main_class, :classes, :subclasses, :abilities,
                :modifiers, :save_dc, :proficiency_bonus, :hit_dice, :armor_class, :initiative, :speed, :attacks_per_action,
                :attacks, :selected_features, :resistances, :death_saving_throws, :health, :energy, :spent_hit_dice,
@@ -28,7 +30,7 @@ module Dnd2024
     end
 
     def avatar
-      object.avatar.blob.url if object.avatar.attached?
+      cache.fetch_item(id: object.id)
     end
 
     def conditions

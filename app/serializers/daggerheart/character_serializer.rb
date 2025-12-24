@@ -2,6 +2,8 @@
 
 module Daggerheart
   class CharacterSerializer < ApplicationSerializer
+    include Deps[cache: 'cache.avatars']
+
     attributes :features, :provider, :avatar, :id, :name, :level, :heritage, :main_class, :classes, :traits, :created_at, :gold,
                :spent_armor_slots, :health_marked, :health_max, :stress_marked, :hope_marked, :modified_traits, :money,
                :damage_thresholds, :evasion, :base_armor_score, :armor_score, :stress_max, :hope_max, :armor_slots,
@@ -26,7 +28,7 @@ module Daggerheart
     end
 
     def avatar
-      object.avatar.blob.url if object.avatar.attached?
+      cache.fetch_item(id: object.id)
     end
 
     def decorator

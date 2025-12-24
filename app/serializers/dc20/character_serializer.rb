@@ -2,6 +2,8 @@
 
 module Dc20
   class CharacterSerializer < ApplicationSerializer
+    include Deps[cache: 'cache.avatars']
+
     attributes :features, :provider, :id, :name, :level, :main_class, :abilities, :modified_abilities, :created_at, :avatar,
                :attribute_points, :classes, :ancestries, :combat_mastery, :save_dc, :precision_defense, :area_defense, :attack,
                :skills, :skill_points, :skill_expertise_points, :guide_step, :trade_points, :trade_expertise_points,
@@ -25,7 +27,7 @@ module Dc20
     end
 
     def avatar
-      object.avatar.blob.url if object.avatar.attached?
+      cache.fetch_item(id: object.id)
     end
 
     def decorator

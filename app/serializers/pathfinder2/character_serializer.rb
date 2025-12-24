@@ -2,6 +2,8 @@
 
 module Pathfinder2
   class CharacterSerializer < ApplicationSerializer
+    include Deps[cache: 'cache.avatars']
+
     attributes :provider, :id, :name, :level, :race, :subrace, :main_class, :classes, :languages, :health, :abilities, :money,
                :skills, :created_at, :subclasses, :background, :saving_throws_value, :saving_throws, :dying_condition_value,
                :avatar, :boosts, :weapon_skills, :armor_skills, :coins, :load, :armor_class, :speed, :perception, :conditions,
@@ -18,7 +20,7 @@ module Pathfinder2
     end
 
     def avatar
-      object.avatar.blob.url if object.avatar.attached?
+      cache.fetch_item(id: object.id)
     end
 
     def decorator
