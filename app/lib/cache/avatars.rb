@@ -4,10 +4,10 @@ module Cache
   class Avatars
     include Rails.application.routes.url_helpers
 
-    VERSION = '0.3.25'
+    CACHE_KEY = 'avatars/0.3.25'
 
     def fetch_list
-      Rails.cache.fetch("avatars/#{VERSION}") { load_initial_data }
+      Rails.cache.fetch(CACHE_KEY) { load_initial_data }
     end
 
     def fetch_item(id:)
@@ -15,11 +15,14 @@ module Cache
     end
 
     def push_item(item:)
-      Rails.cache.write("avatars/#{VERSION}", fetch_list.merge(item.record_id => rails_blob_url(item, host: 'charkeeper.org')))
+      Rails.cache.write(
+        CACHE_KEY,
+        fetch_list.merge(item.record_id => rails_blob_url(item, host: 'charkeeper.org', protocol: 'https'))
+      )
     end
 
     def refresh_list
-      Rails.cache.write("avatars/#{VERSION}", load_initial_data)
+      Rails.cache.write(CACHE_KEY, load_initial_data)
     end
 
     private

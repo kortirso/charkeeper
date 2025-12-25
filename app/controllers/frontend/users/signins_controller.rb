@@ -40,12 +40,13 @@ module Frontend
       end
 
       def destroy_session
-        auth_call = fetch_session.call(token: bearer_token || params[Authkeeper.configuration.access_token_name])
+        token = bearer_token || params[Authkeeper.configuration.access_token_name]
+        auth_call = fetch_session.call(token: token)
         return if auth_call[:errors].present?
 
         auth_call[:result].destroy
 
-        auth_uuid = fetch_uuid.call(token: bearer_token || params[Authkeeper.configuration.access_token_name])
+        auth_uuid = fetch_uuid.call(token: token)
         Rails.cache.delete("authkeeper_cached_user_v2/#{auth_uuid[:result]}") if auth_uuid[:result]
       end
 
