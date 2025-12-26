@@ -5,7 +5,7 @@ import {
   CharactersListItem, Dc20CharacterForm, DaggerheartCharacterForm, Dnd5CharacterForm, Dnd2024CharacterForm,
   Pathfinder2CharacterForm
 } from '../../pages';
-import { CharacterNavigation, createModal, PageHeader, Select, Input, Button } from '../../components';
+import { CharacterNavigation, createModal, PageHeader, Select, Input, Button, Loading } from '../../components';
 import { Plus } from '../../assets';
 import daggerheartConfig from '../../data/daggerheart.json';
 import dnd2024Config from '../../data/dnd2024.json';
@@ -94,7 +94,7 @@ export const CharactersTab = () => {
   });
 
   const filteredCharacters = createMemo(() => {
-    if (characters() === undefined) return [];
+    if (characters() === undefined) return undefined;
     if (activeFilter() === 'allFilter') return characters();
 
     return characters().filter((item) => item.provider === activeFilter());
@@ -155,13 +155,15 @@ export const CharactersTab = () => {
           </PageHeader>
         </Match>
         <Match when={currentTab() === 'characters'}>
-          <Button
-            default
-            classList="absolute right-4 bottom-4 rounded-full w-12 h-12 z-10"
-            onClick={() => setCurrentTab('newCharacter')}
-          >
-            <Plus />
-          </Button>
+          <Show when={filteredCharacters()}>
+            <Button
+              default
+              classList="absolute right-4 bottom-4 rounded-full w-12 h-12 z-10"
+              onClick={() => setCurrentTab('newCharacter')}
+            >
+              <Plus />
+            </Button>
+          </Show>
           <CharacterNavigation
             tabsList={['allFilter'].concat(['dnd5', 'dnd2024', 'pathfinder2', 'daggerheart', 'dc20'].filter((item) => characterProviders().includes(item)))}
             activeTab={activeFilter()}
@@ -172,32 +174,34 @@ export const CharactersTab = () => {
       <Switch>
         <Match when={currentTab() === 'characters'}>
           <div class="flex-1 overflow-y-auto">
-            <For each={filteredCharacters()}>
-              {(character) =>
-                <CharactersListItem
-                  character={character}
-                  isActive={character.id == appState.activePageParams.id}
-                  dnd2024Races={dnd2024Races()}
-                  daggerheartHeritages={daggerheartHeritages()}
-                  daggerheartClasses={daggerheartClasses()}
-                  onClick={() => navigate('character', { id: character.id })}
-                  onViewClick={() => navigate('characterView', { id: character.id })}
-                  onDeleteCharacter={(e) => deleteCharacter(e, character.id)}
-                />
-              }
-            </For>
-            <Show when={appState.isAdmin}>
-              <div class="w-full flex p-2">
-                <Button default size="small" classList="px-2" onClick={findAdminCharacter}>
-                  {t('find')}
-                </Button>
-                <Input
-                  containerClassList="ml-4 flex-1"
-                  labelText={t('newCharacterPage.adminCharacterId')}
-                  value={adminCharacterId()}
-                  onInput={(value) => setAdminCharacterId(value)}
-                />
-              </div>
+            <Show when={filteredCharacters()} fallback={<Loading />}>
+              <For each={filteredCharacters()}>
+                {(character) =>
+                  <CharactersListItem
+                    character={character}
+                    isActive={character.id == appState.activePageParams.id}
+                    dnd2024Races={dnd2024Races()}
+                    daggerheartHeritages={daggerheartHeritages()}
+                    daggerheartClasses={daggerheartClasses()}
+                    onClick={() => navigate('character', { id: character.id })}
+                    onViewClick={() => navigate('characterView', { id: character.id })}
+                    onDeleteCharacter={(e) => deleteCharacter(e, character.id)}
+                  />
+                }
+              </For>
+              <Show when={appState.isAdmin}>
+                <div class="w-full flex p-2">
+                  <Button default size="small" classList="px-2" onClick={findAdminCharacter}>
+                    {t('find')}
+                  </Button>
+                  <Input
+                    containerClassList="ml-4 flex-1"
+                    labelText={t('newCharacterPage.adminCharacterId')}
+                    value={adminCharacterId()}
+                    onInput={(value) => setAdminCharacterId(value)}
+                  />
+                </div>
+              </Show>
             </Show>
           </div>
         </Match>
