@@ -13,5 +13,9 @@ module Dc20Character
     def speeds
       @speeds ||= __getobj__.speeds.transform_values { |item| item.nil? ? __getobj__.speeds['ground'] : item }
     end
+
+    def rest_points
+      @rest_points ||= __getobj__.rest_points.merge('max' => health['max'])
+    end
   end
 end

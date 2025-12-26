@@ -11,10 +11,6 @@ module Dc20Character
         @stamina_points ||= __getobj__.stamina_points.merge('max' => ((level / 6) + 1))
       end
 
-      def rest_points
-        @rest_points ||= __getobj__.rest_points.merge('max' => max_health)
-      end
-
       def maneuver_points
         @maneuver_points ||= __getobj__.maneuver_points + class_maneuver_points + 3 # 3 - number of attack maneuvers
       end

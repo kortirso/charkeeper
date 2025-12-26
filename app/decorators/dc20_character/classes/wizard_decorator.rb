@@ -7,10 +7,6 @@ module Dc20Character
         @mana_points ||= __getobj__.mana_points.merge('max' => mana_points_by_level)
       end
 
-      def rest_points
-        @rest_points ||= __getobj__.rest_points.merge('max' => max_health)
-      end
-
       def cantrips
         @cantrips ||= __getobj__.cantrips + cantrips_by_level
       end
