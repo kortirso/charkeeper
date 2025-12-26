@@ -64,6 +64,7 @@ export * from './Content/Character/Dc20/CombatStatic';
 export * from './Content/Character/Dc20/Leveling';
 export * from './Content/Character/Dc20/Resources';
 export * from './Content/Character/Dc20/Spells';
+export * from './Content/Character/Dc20/Rest';
 
 export * from './Navigation/Characters/ListItem';
 export * from './Navigation/Characters/CharacterForm';
