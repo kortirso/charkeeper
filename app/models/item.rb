@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Item < ApplicationRecord
-  belongs_to :user, optional: true
+  belongs_to :user, optional: true, touch: :homebrew_updated_at
   belongs_to :itemable, polymorphic: true, optional: true
 
   has_many :character_items, class_name: '::Character::Item', dependent: :destroy

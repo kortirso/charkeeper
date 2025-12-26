@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2025_12_23_163630) do
+ActiveRecord::Schema[8.1].define(version: 2025_12_26_152931) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
   enable_extension "pgcrypto"
@@ -159,6 +159,7 @@ ActiveRecord::Schema[8.1].define(version: 2025_12_23_163630) do
   create_table "characters", id: :uuid, default: -> { "gen_random_uuid()" }, comment: "Персонажи", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.jsonb "data", default: {}, null: false, comment: "Свойства персонажа"
+    t.datetime "equipment_updated_at"
     t.string "name", null: false
     t.string "type", null: false, comment: "Система, для которой создан персонаж"
     t.datetime "updated_at", null: false
@@ -544,6 +545,7 @@ ActiveRecord::Schema[8.1].define(version: 2025_12_23_163630) do
     t.integer "color_schema"
     t.datetime "created_at", null: false
     t.datetime "discarded_at"
+    t.datetime "homebrew_updated_at"
     t.string "locale", default: "en", null: false
     t.string "password_digest"
     t.datetime "updated_at", null: false

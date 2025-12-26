@@ -5,7 +5,7 @@ module Daggerheart
     class Domain < ApplicationRecord
       self.table_name = :daggerheart_homebrew_domains
 
-      belongs_to :user
+      belongs_to :user, touch: :homebrew_updated_at
 
       has_many :homebrew_book_items, class_name: 'Homebrew::Book::Item', as: :itemable, dependent: :destroy
     end

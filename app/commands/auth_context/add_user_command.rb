@@ -49,6 +49,8 @@ module AuthContext
         User::Book.upsert_all(input[:book_attributes].map { |attrs| attrs.merge(user_id: result.id) })
       end
 
+      result.update(homebrew_updated_at: DateTime.now)
+
       { result: result }
     rescue ActiveRecord::RecordNotUnique => _e
       { errors: { username: [I18n.t('dry_schema.errors.user.exists')] }, errors_list: [I18n.t('dry_schema.errors.user.exists')] }

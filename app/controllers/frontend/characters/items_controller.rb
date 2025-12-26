@@ -13,7 +13,7 @@ module Frontend
       before_action :find_character_item, only: %i[update destroy]
 
       def index
-        serialize_relation(items, ::Characters::ItemSerializer, :items)
+        serialize_relation_v2(items, ::Characters::ItemSerializer, :items, cache_options: cache_options)
       end
 
       def create
@@ -36,6 +36,12 @@ module Frontend
       end
 
       private
+
+      def cache_options
+        return {} unless @character.equipment_updated_at
+
+        { key: "character_items/#{@character.id}/#{@character.equipment_updated_at}/v1", expires_in: 24.hours }
+      end
 
       def find_character
         @character = characters_relation.find(params[:character_id])

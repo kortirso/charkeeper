@@ -2,6 +2,6 @@
 
 class Homebrew
   class Speciality < ApplicationRecord
-    belongs_to :user
+    belongs_to :user, touch: :homebrew_updated_at
   end
 end

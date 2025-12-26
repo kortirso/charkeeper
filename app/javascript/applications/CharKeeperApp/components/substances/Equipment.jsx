@@ -107,13 +107,13 @@ export const Equipment = (props) => {
   createEffect(() => {
     if (lastActiveCharacterId() === character().id) return;
 
-    const fetchItems = async () => await fetchItemsRequest(appState.accessToken, character().provider);
+    const fetchItems = async (homebrew) => await fetchItemsRequest(appState.accessToken, character().provider, homebrew);
 
-    Promise.all([fetchCharacterItems(), fetchItems()]).then(
-      ([characterItemsData, itemsData]) => {
+    Promise.all([fetchCharacterItems(), fetchItems(false), fetchItems(true)]).then(
+      ([characterItemsData, itemsData, homebrewItemsData]) => {
         batch(() => {
           setCharacterItems(characterItemsData.items);
-          setItems(itemsData.items.sort((a, b) => a.name > b.name));
+          setItems(itemsData.items.concat(homebrewItemsData.items).sort((a, b) => a.name > b.name));
         });
       }
     );
