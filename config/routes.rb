@@ -127,6 +127,7 @@ Rails.application.routes.draw do
           end
         end
         resources :talents, only: %i[index create], module: 'characters'
+        resources :rest, only: %i[create], module: 'characters'
       end
       resources :ancestries, only: %i[index]
     end
