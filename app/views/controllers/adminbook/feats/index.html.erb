@@ -7,9 +7,8 @@
       <td>Slug</td>
       <td>Title</td>
       <td>Kind</td>
-      <td>Description variables</td>
-      <td>Eval variables</td>
-      <td>Limit refresh</td>
+      <td>Description</td>
+      <td>Price</td>
       <td></td>
     </tr>
   </thead>
@@ -31,18 +30,12 @@
           <p class="text-xs"><%= feat.kind %></p>
         </td>
         <td class="pr-4">
-          <% feat.description_eval_variables.each do |key, variable| %>
-            <p class="text-xs mb-1"><%= key %></p>
-            <p class="text-xs mb-2"><%= variable %></p>
-          <% end %>
+          <p><%= feat.description['ru'] %></p>
+          <p><%= feat.description['en'] %></p>
         </td>
         <td class="pr-4">
-          <% feat.eval_variables.each do |key, variable| %>
-            <p class="text-xs mb-1"><%= key %></p>
-            <p class="text-xs mb-2"><%= variable %></p>
-          <% end %>
+          <p class="text-xs"><%= feat.price %></p>
         </td>
-        <td class="pr-4"><%= feat.limit_refresh %></td>
         <td>
           <%= button_to 'X', adminbook_feat_path(feat.id, provider: params[:provider]), method: :delete, class: 'btn-warning btn-small text-sm' %>
         </td>
