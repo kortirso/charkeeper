@@ -54,7 +54,7 @@ export const Feats = (props) => {
 
   const readFeaturesToggle = async () => {
     const cacheValue = await readFromCache(FEATURES_FILTER_NAME);
-    setFiltering(cacheValue === null ? ['groupFeatures'] : cacheValue.split(','));
+    setFiltering(cacheValue === null || cacheValue === undefined ? ['groupFeatures'] : cacheValue.split(','));
   }
 
   createEffect(() => {

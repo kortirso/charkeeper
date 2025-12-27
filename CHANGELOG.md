@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Fixed
 - saving bonuses
+- reading cache for android devices
 
 ## [0.3.25] - 2025-12-24
 ### Added
