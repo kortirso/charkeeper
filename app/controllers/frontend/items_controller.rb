@@ -17,7 +17,7 @@ module Frontend
       return {} unless feature_requirement.call(current: params[:version], initial: '0.3.26')
       return {} if params[:homebrew]
 
-      { key: "items/#{params[:provider]}/v1", expires_in: 12.hours }
+      { key: "items/#{params[:provider]}/#{I18n.locale}/v1", expires_in: 12.hours }
     end
 
     def items # rubocop: disable Metrics/AbcSize
