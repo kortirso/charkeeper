@@ -140,6 +140,9 @@ en:
         macos: MacOS application
         macos_description: Simply download and run %{href}
         macos_link: installer
+        apk: Android application
+        apk_description: Simply download and run %{href}
+        apk_link: installer
         mobile_apps: iOS and Android mobile applications
         app_store: In addition you can install application through %{href} (for faster updates)
         app_store_link: TestFlight in App Store

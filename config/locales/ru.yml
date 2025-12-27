@@ -140,6 +140,9 @@ ru:
         macos: Приложение для MacOS
         macos_description: Просто скачайте и запустите %{href}
         macos_link: установщик
+        apk: Приложение для Android
+        apk_description: Просто скачайте и запустите %{href}
+        apk_link: установщик
         mobile_apps: Мобильное приложение для iOS и Android
         app_store: Также можете установить приложение через %{href} (для быстрого обновления)
         app_store_link: TestFlight в App Store
