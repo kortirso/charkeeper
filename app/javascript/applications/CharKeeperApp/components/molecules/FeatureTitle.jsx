@@ -2,11 +2,12 @@ import { Show, For } from 'solid-js';
 
 import { Button } from '../../components';
 import { useAppLocale } from '../../context';
-import { PlusSmall, Minus, Campfire, LongCampfire, Moon, Picnic, Combat } from '../../assets';
+import { PlusSmall, Minus, Campfire, LongCampfire, Moon, Picnic, Combat, Ability, Spell, Grimoire } from '../../assets';
 
 const FEATURE_ICONS = {
   'one_at_short_rest': Picnic, 'short_rest': Campfire, 'long_rest': LongCampfire, 'session': Moon, 'combat': Combat
 }
+const TYPE_ICONS = { 'ability': Ability, 'spell': Spell, 'grimoire': Grimoire }
 const TRANSLATION = {
   en: {
     one_at_short_rest: 'Short - 1, long - full',
@@ -17,10 +18,7 @@ const TRANSLATION = {
     ap: 'AP',
     sp: 'SP',
     hope: 'Hope',
-    stress: 'Stress',
-    spell: 'Spell',
-    ability: 'Ability',
-    grimoire: 'Grimoire'
+    stress: 'Stress'
   },
   ru: {
     one_at_short_rest: 'Короткий - 1, длинный - все',
@@ -31,39 +29,39 @@ const TRANSLATION = {
     ap: 'ОД',
     sp: 'ОВ',
     hope: 'Надежда',
-    stress: 'Стресс',
-    spell: 'Заклинание',
-    ability: 'Способность',
-    grimoire: 'Гримуар'
+    stress: 'Стресс'
   }
 }
 
 export const FeatureTitle = (props) => {
   const feature = () => props.feature;
   const IconComponent = FEATURE_ICONS[props.feature.limit_refresh]; // eslint-disable-line solid/reactivity
+  const InfoComponent = props.provider === 'daggerheart' ? TYPE_ICONS[props.feature.info.type] : null; // eslint-disable-line solid/reactivity
 
   const [locale] = useAppLocale();
 
   return (
-    <div class="flex items-center">
-      <p class="flex-1">
-        {feature().title}
-        <Show when={props.provider === 'daggerheart' && feature().info.type}>
-          {` (${TRANSLATION[locale()][feature().info.type]})`}
-        </Show>
-      </p>
-      <div class="flex items-center gap-x-4">
+    <div class="flex">
+      <div class="flex-1">
+        <p class="flex items-center">
+          <Show when={InfoComponent}>
+            <span class="mr-2"><InfoComponent /></span>
+          </Show>
+          {feature().title}
+        </p>
         <Show when={Object.keys(feature().price).length > 0}>
           <div class="flex gap-x-2">
             <For each={Object.entries(feature().price)}>
               {([slug, value]) =>
                 <Show when={TRANSLATION[locale()][slug]}>
-                  <p>{TRANSLATION[locale()][slug]} {value}</p>
+                  <p class="text-xs">{TRANSLATION[locale()][slug]} {value}</p>
                 </Show>
               }
             </For>
           </div>
         </Show>
+      </div>
+      <div class="flex items-center gap-x-4">
         <Show when={feature().limit !== undefined}>
           <div class="flex items-center">
             <Button default size="small" onClick={(event) => (feature().limit === 0 && feature().used_count !== 0) || feature().used_count !== feature().limit ? props.onSpendEnergy(event, feature()) : event.stopPropagation()}>
