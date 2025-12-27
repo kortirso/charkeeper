@@ -201,8 +201,8 @@
 }
 
 .form-field .form-dropdown li.selected {
-  @apply border-red-400;
-  @apply dark:bg-fuzzy-red;
+  @apply border-blue-400 dark:border-red-400;
+  @apply bg-blue-400 dark:bg-fuzzy-red text-snow;
 }
 
 #character-navigation {
