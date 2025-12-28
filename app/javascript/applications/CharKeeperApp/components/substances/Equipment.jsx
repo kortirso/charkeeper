@@ -2,7 +2,9 @@ import { createSignal, createEffect, For, Show, createMemo, batch, children } fr
 import { createStore } from 'solid-js/store';
 import * as i18n from '@solid-primitives/i18n';
 
-import { ItemsTable, createModal, ErrorWrapper, Input, Button, Toggle, TextArea, GuideWrapper } from '../../components';
+import {
+  ItemsTable, createModal, ErrorWrapper, Input, Button, Toggle, TextArea, GuideWrapper, ItemContent
+} from '../../components';
 import { useAppState, useAppLocale, useAppAlert } from '../../context';
 import { PlusSmall, Info } from '../../assets';
 import { fetchItemsRequest } from '../../requests/fetchItemsRequest';
@@ -77,6 +79,7 @@ const TRANSLATION = {
   }
 }
 const CREATE_HOMEBREW_ITEMS = ['daggerheart', 'dnd2024'];
+const ITEMS_INFO = ['daggerheart'];
 
 export const Equipment = (props) => {
   const safeChildren = children(() => props.children);
@@ -181,14 +184,22 @@ export const Equipment = (props) => {
     await updateCharacterItem(movingItem.item, { character_item: { states: payload } });
   }
 
-  const showInfo = async (id, name) => {
-    const result = await fetchItemInfoRequest(appState.accessToken, id);
+  const showInfo = async (item) => {
+    if (item.has_description) {
+      const result = await fetchItemInfoRequest(appState.accessToken, item.id);
 
-    if (result.errors_list === undefined) {
+      if (result.errors_list === undefined) {
+        batch(() => {
+          openModal();
+          setChangingItem(null);
+          setItemInfo([item, result.value]);
+        });
+      }
+    } else {
       batch(() => {
         openModal();
         setChangingItem(null);
-        setItemInfo([name, result.value]);
+        setItemInfo([item, null]);
       });
     }
   }
@@ -331,15 +342,14 @@ export const Equipment = (props) => {
                                     <Show when={item.homebrew}>
                                       <span title="Homebrew" class="text-xs ml-2">HB</span>
                                     </Show>
-                                    
                                   </p>
                                 </td>
                                 <Show when={props.withWeight}><td class="py-1 text-center">{item.data.weight}</td></Show>
                                 <Show when={props.withPrice}><td class="py-1 text-center">{item.data.price / 100}</td></Show>
                                 <td>
                                   <div class="flex justify-end gap-x-2">
-                                    <Show when={item.has_description}>
-                                      <Button default size="small" onClick={() => showInfo(item.id, item.name)}>
+                                    <Show when={ITEMS_INFO.includes(character().provider)}>
+                                      <Button default size="small" onClick={() => showInfo(item)}>
                                         <Info width="20" height="20" />
                                       </Button>
                                     </Show>
@@ -367,6 +377,7 @@ export const Equipment = (props) => {
             <For each={['hands', 'equipment', 'backpack', 'storage']}>
               {(state) =>
                 <ItemsTable
+                  provider={character().provider}
                   title={TRANSLATION[locale()].in[state].title}
                   subtitle={TRANSLATION[locale()].in[state].description}
                   state={state}
@@ -436,8 +447,11 @@ export const Equipment = (props) => {
           <Button default textable classList="mt-4" onClick={updateItem}>{t('save')}</Button>
         </Show>
         <Show when={itemInfo()}>
-          <p class="mb-3 text-xl">{itemInfo()[0]}</p>
-          <p>{itemInfo()[1]}</p>
+          <ItemContent
+            provider={character().provider}
+            item={itemInfo()[0]}
+            description={itemInfo()[1]}
+          />
         </Show>
         <Show when={movingItem.item}>
           <p class="text-lg mb-2">{movingItem.item.name}</p>

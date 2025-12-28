@@ -21,6 +21,7 @@ const TRANSLATION = {
     quantity: 'Кол-во'
   }
 }
+const ITEMS_INFO = ['daggerheart'];
 
 export const ItemsTable = (props) => {
   const items = () => props.items;
@@ -94,8 +95,8 @@ export const ItemsTable = (props) => {
                         <Show when={isOpen() === item}>
                           <div class="absolute z-9 right-0 border border-gray-200 rounded overflow-hidden">
                             <p class="dots-item" onClick={() => props.onChangeItem(item)}>{TRANSLATION[locale()].change}</p>
-                            <Show when={item.has_description}>
-                              <p class="dots-item" onClick={() => props.onInfoItem(item.item_id, item.name)}>{TRANSLATION[locale()].info}</p>
+                            <Show when={ITEMS_INFO.includes(props.provider)}>
+                              <p class="dots-item" onClick={() => props.onInfoItem(item)}>{TRANSLATION[locale()].info}</p>
                             </Show>
                             <p class="dots-item" onClick={() => props.onRemoveCharacterItem(item)}>{TRANSLATION[locale()].delete}</p>
                           </div>

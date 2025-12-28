@@ -418,7 +418,7 @@
     "very close": { "name": { "en": "Very close", "ru": "Близко" } },
     "close": { "name": { "en": "Close", "ru": "Средне" } },
     "far": { "name": { "en": "Far", "ru": "Далеко" } },
-    "veryfar": { "name": { "en": "Very far", "ru": "Очень далеко" } }
+    "very far": { "name": { "en": "Very far", "ru": "Очень далеко" } }
   },
   "damageTypes": {
     "physical": { "name": { "en": "Physical", "ru": "Физический" } },
