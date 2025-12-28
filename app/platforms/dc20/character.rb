@@ -16,7 +16,7 @@ module Dc20
     attribute :mana_points, array: true, default: { 'current' => 0, 'max' => 0 }
     attribute :rest_points, array: true, default: { 'current' => 0, 'max' => 0 }
     attribute :grit_points, array: true, default: { 'current' => 0, 'max' => 0 }
-    attribute :combat_expertise, array: true, default: [] # weapon, light_armor, heavy_armor, light_shield, heavy_shield
+    attribute :combat_expertise, array: true, default: [] # weapon, light_armor, heavy_armor, light_shield, heavy_shield, focuses
     attribute :skill_expertise, array: true, default: [] # компетентность в навыках
     attribute :skill_levels, array: true, default: {} # { 'medicine' => 1 } владение навыками
     attribute :trade_expertise, array: true, default: [] # компетентность в ремеслах

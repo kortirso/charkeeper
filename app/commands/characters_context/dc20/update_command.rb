@@ -15,11 +15,11 @@ module CharactersContext
         3 => { 'attribute_points' => 1, 'skill_points' => 1, 'trade_points' => 1 },
         4 => { 'ancestry_points' => 2, 'talent_points' => 1, 'path_points' => 1 },
         5 => { 'attribute_points' => 1, 'skill_points' => 2, 'trade_points' => 1 },
-        6 => { 'skill_points' => 1 },
-        7 => { 'ancestry_points' => 2, 'talent_points' => 1, 'path_points' => 1 },
-        8 => { 'attribute_points' => 1, 'skill_points' => 1, 'trade_points' => 1 },
+        6 => { 'skill_points' => 1, 'path_points' => 1 },
+        7 => { 'ancestry_points' => 2, 'talent_points' => 1 },
+        8 => { 'attribute_points' => 1, 'skill_points' => 1, 'trade_points' => 1, 'path_points' => 1 },
         9 => {},
-        10 => { 'attribute_points' => 1, 'skill_points' => 2, 'trade_points' => 1, 'talent_points' => 1, 'path_points' => 1 }
+        10 => { 'attribute_points' => 1, 'skill_points' => 2, 'trade_points' => 1, 'talent_points' => 1 }
       }.freeze
 
       # rubocop: disable Metrics/BlockLength

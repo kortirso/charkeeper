@@ -18,12 +18,26 @@
         "paladin": { "name": { "en": "Paladin", "ru": "Паладин" } },
         "rune_knight": { "name": { "en": "Rune Knight", "ru": "Рунический рыцарь" } }
       }
+    },
+    "wizard": {
+      "name": { "en": "Wizard", "ru": "Волшебник" },
+      "subclasses": {}
     }
   },
   "spell_lists": {
     "arcane": { "name": { "en": "Arcane", "ru": "Арканный" } },
     "divine": { "name": { "en": "Divine", "ru": "Божественный" } },
     "primal": { "name": { "en": "Primal", "ru": "Природный" } }
+  },
+  "schools": {
+    "astromancy": { "name": { "en": "Astromancy", "ru": "Астромантия" } },
+    "conjuration": { "name": { "en": "Conjuration", "ru": "Вызов" } },
+    "divination": { "name": { "en": "Divination", "ru": "Прорицание" } },
+    "elemental": { "name": { "en": "Elemental", "ru": "Элементализм" } },
+    "enchantment": { "name": { "en": "Enchantment", "ru": "Очарование" } },
+    "invocation": { "name": { "en": "Invocation", "ru": "Призыв" } },
+    "nullification": { "name": { "en": "Nullification", "ru": "Аннулирование" } },
+    "transmutation": { "name": { "en": "Transmutation", "ru": "Преобразование" } }
   },
   "abilities": {
     "mig": { "name": { "en": "Might", "ru": "Мощь" } },
@@ -32,6 +46,7 @@
     "cha": { "name": { "en": "Charisma", "ru": "Харизма" } }
   },
   "combatExpertise": {
+    "focuses": { "name": { "en": "Spell Focuses", "ru": "Фокусировка" } },
     "weapon": { "name": { "en": "Weapon", "ru": "Оружие" } },
     "light_armor": { "name": { "en": "Light Armor", "ru": "Лёгкая броня" } },
     "heavy_armor": { "name": { "en": "Heavy Armor", "ru": "Тяжёлая броня" } },

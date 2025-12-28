@@ -97,22 +97,18 @@ module Dc20Character
     def stamina_points
       @stamina_points ||=
         __getobj__.stamina_points.merge(
-          'max' => __getobj__.stamina_points['max'] + (paths['martial'] / (path.include?('martial') ? 2.0 : 2)).round
+          'max' => __getobj__.stamina_points['max'] + paths['martial']
         )
     end
 
     def mana_points
       @mana_points ||= __getobj__.mana_points.merge(
-        'max' => __getobj__.mana_points['max'] + (paths['spellcaster'] * 2)
+        'max' => __getobj__.mana_points['max'] + (paths['spellcaster'] * 3)
       )
     end
 
     def maneuver_points
       @maneuver_points ||= __getobj__.maneuver_points + paths['martial']
-    end
-
-    def cantrips
-      @cantrips ||= __getobj__.cantrips + ((paths['spellcaster'] + 1) / 2)
     end
 
     def spells
