@@ -38,10 +38,11 @@ module Dc20Character
 
     def max_health = 0
     def maneuver_points = 0
-    def technique_points = 0
-    def cantrips = 0
     def spell_lists_amount = 0
     def spells = 0
     def size = 'medium'
+
+    # DEPRECATED
+    def cantrips = 0
   end
 end

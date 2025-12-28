@@ -7,10 +7,6 @@ module Dc20Character
         @mana_points ||= __getobj__.mana_points.merge('max' => mana_points_by_level)
       end
 
-      def cantrips
-        @cantrips ||= __getobj__.cantrips + cantrips_by_level
-      end
-
       def spells
         @spells ||= __getobj__.spells + spells_by_level
       end
@@ -20,34 +16,29 @@ module Dc20Character
       end
 
       def max_health
-        @max_health ||= 6 + (2 * level) + modified_abilities['mig']
+        @max_health ||= 6 + level + modified_abilities['mig']
       end
 
       private
 
       def mana_points_by_level
+        return 18 if level >= 10
         return 16 if level >= 9
-        return 14 if level >= 8
-        return 12 if level >= 6
-        return 10 if level >= 5
+        return 13 if level >= 7
+        return 11 if level >= 5
         return 8 if level >= 3
 
         6
       end
 
-      def cantrips_by_level
-        return 4 if level >= 8
-        return 3 if level >= 5
-
-        2
-      end
-
       def spells_by_level
-        return 6 if level >= 9
-        return 5 if level >= 6
-        return 4 if level >= 3
+        return 9 if level >= 10
+        return 8 if level >= 9
+        return 7 if level >= 7
+        return 6 if level >= 5
+        return 5 if level >= 3
 
-        3
+        4
       end
     end
   end

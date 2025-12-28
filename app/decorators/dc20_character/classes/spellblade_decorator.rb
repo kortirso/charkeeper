@@ -8,70 +8,39 @@ module Dc20Character
       end
 
       def stamina_points
-        @stamina_points ||= __getobj__.stamina_points.merge('max' => ((level / 6) + 1))
+        @stamina_points ||= __getobj__.stamina_points.merge('max' => ((level + 3) / 4))
       end
 
       def maneuver_points
-        @maneuver_points ||= __getobj__.maneuver_points + class_maneuver_points + 3 # 3 - number of attack maneuvers
-      end
-
-      def technique_points
-        @technique_points ||= __getobj__.technique_points + class_technique_points + 3 # 3 - number of attack maneuvers
-      end
-
-      def cantrips
-        @cantrips ||= __getobj__.cantrips + cantrips_by_level
+        @maneuver_points ||= __getobj__.maneuver_points + class_maneuver_points
       end
 
       def spells
-        @spells ||= __getobj__.spells + spells_by_level
+        @spells ||= __getobj__.spells + ((level + 3) / 4) + 1
       end
 
       def max_health
-        @max_health ||= begin
-          class_bonus = ((level / 2) * 5) + (level.even? ? 0 : 3)
-          6 + class_bonus + modified_abilities['mig']
-        end
+        @max_health ||= 6 + level + ((level + 1) / 2) + modified_abilities['mig']
       end
 
       private
 
       def class_maneuver_points
-        return 3 if level >= 5
-
-        2
-      end
-
-      def class_technique_points
-        return 2 if level >= 8
-        return 1 if level >= 3
-
-        0
-      end
-
-      def mana_points_by_level
-        return 8 if level >= 9
-        return 7 if level >= 8
-        return 6 if level >= 6
-        return 5 if level >= 5
-        return 4 if level >= 3
-
-        3
-      end
-
-      def cantrips_by_level
-        return 4 if level >= 8
-        return 3 if level >= 5
+        return 4 if level >= 10
+        return 3 if level >= 7
         return 2 if level >= 3
 
         1
       end
 
-      def spells_by_level
-        return 3 if level >= 9
-        return 2 if level >= 6
+      def mana_points_by_level
+        return 9 if level >= 10
+        return 8 if level >= 9
+        return 6 if level >= 7
+        return 5 if level >= 5
+        return 4 if level >= 3
 
-        1
+        2
       end
     end
   end

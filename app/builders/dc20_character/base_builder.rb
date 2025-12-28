@@ -9,7 +9,8 @@ module Dc20Character
         attribute_points: 12,
         skill_expertise_points: 0,
         trade_expertise_points: 0,
-        guide_step: 1
+        guide_step: 1,
+        maneuvers: []
       }).except(:ancestry_feats)
     end
   end
