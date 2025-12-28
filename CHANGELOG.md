@@ -11,6 +11,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Modified
 - feature titles with icons and prices
+- disable leveling for DH characters if level up slots is not spend
 
 ## [0.3.26] - 2025-12-27
 ### Added
