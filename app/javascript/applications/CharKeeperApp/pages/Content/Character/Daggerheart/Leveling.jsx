@@ -30,7 +30,8 @@ const TRANSLATION = {
     multiclass: 'Choose additional class',
     levelTooltip: 'Level up is not revertable, be careful!',
     multiclassTooltip: 'Saving multiclass selection is not revertable, be careful!',
-    subclassTooltip: 'Saving subclass upgrade is not revertable, be careful!'
+    subclassTooltip: 'Saving subclass upgrade is not revertable, be careful!',
+    warning: 'Mark all level up slots before leveling'
   },
   ru: {
     currentLevel: 'Текущий уровень',
@@ -53,7 +54,8 @@ const TRANSLATION = {
     multiclass: 'Выберите дополнительный класс',
     levelTooltip: 'Повышение уровня необратимо, осторожно!',
     multiclassTooltip: 'Сохранение выбора мультикласса необратимо, осторожно!',
-    subclassTooltip: 'Сохранение выбора улучшения мастерства подкласса необратимо, осторожно!'
+    subclassTooltip: 'Сохранение выбора улучшения мастерства подкласса необратимо, осторожно!',
+    warning: 'Отметьте все слоты повышения уровня'
   }
 }
 
@@ -70,7 +72,7 @@ export const DaggerheartLeveling = (props) => {
   const [domainsData, setDomainsData] = createSignal(character().domains);
 
   const [appState] = useAppState();
-  const [{ renderAlerts }] = useAppAlert();
+  const [{ renderAlerts, renderAlert }] = useAppAlert();
   const [locale] = useAppLocale();
 
   createEffect(() => {
@@ -174,6 +176,15 @@ export const DaggerheartLeveling = (props) => {
     setLevelingData({ ...levelingData(), selected_traits: newValue });
   }
 
+  const levelUp = () => {
+    const availableLevelPoints = levelPoints() - spendLevelPoints();
+    if (availableLevelPoints > 0 && (character().level === 4 || character().level === 7)) {
+      return renderAlert(TRANSLATION[locale()].warning);
+    }
+
+    updateCharacter({ level: character().level + 1 });
+  }
+
   const updateCharacter = async (payload) => {
     const result = await updateCharacterRequest(appState.accessToken, character().provider, character().id, { character: payload });
 
@@ -221,11 +232,7 @@ export const DaggerheartLeveling = (props) => {
       >
         <div class="blockable p-4 flex flex-col mb-4">
           <div class="flex items-center mb-2">
-            <Button
-              default
-              classList='rounded mr-4'
-              onClick={() => updateCharacter({ level: character().level + 1 })}
-            >
+            <Button default classList="rounded mr-4" onClick={levelUp}>
               <Arrow top />
             </Button>
             <p>{TRANSLATION[locale()]['currentLevel']} - {character().level}</p>
