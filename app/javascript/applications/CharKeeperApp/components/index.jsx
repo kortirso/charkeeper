@@ -26,6 +26,7 @@ export * from './substances/Avatar';
 export * from './substances/Notes';
 export * from './substances/SharedBonuses';
 export * from './substances/Equipment';
+export * from './substances/ItemContent';
 export * from './substances/Feats';
 export * from './substances/DiceRoll';
 export * from './substances/Conditions';

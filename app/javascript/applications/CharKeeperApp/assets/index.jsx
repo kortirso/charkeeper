@@ -29,6 +29,8 @@ export * from './Drink';
 export * from './Spell';
 export * from './Ability';
 export * from './Grimoire';
+export * from './Hand';
+export * from './TwoHands';
 export * from './LevelChevron';
 export * from './socials/Discord';
 export * from './socials/Telegram';
