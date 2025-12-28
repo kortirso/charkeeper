@@ -1,41 +1,277 @@
-import { For } from 'solid-js';
+import { createSignal, createEffect, createMemo, For, Show, batch } from 'solid-js';
 
-import { ErrorWrapper, GuideWrapper } from '../../../../components';
-import { useAppLocale } from '../../../../context';
+import config from '../../../../data/dc20.json';
+import { ErrorWrapper, GuideWrapper, Toggle, Button, Checkbox } from '../../../../components';
+import { useAppState, useAppLocale, useAppAlert } from '../../../../context';
+import { PlusSmall, Minus } from '../../../../assets';
+import { fetchSpellsRequest } from '../../../../requests/fetchSpellsRequest';
+import { fetchCharacterSpellsRequest } from '../../../../requests/fetchCharacterSpellsRequest';
+import { createCharacterSpellRequest } from '../../../../requests/createCharacterSpellRequest';
+import { removeCharacterSpellRequest } from '../../../../requests/removeCharacterSpellRequest';
 
 const TRANSLATION = {
   en: {
     mana_spend_limit: 'Mana spend limit',
-    cantrips: 'Cantrips',
-    spells: 'Spells'
+    spells: 'Spells',
+    selectSpells: 'Select spells',
+    back: 'Back',
+    spellIsLearned: 'Spell is learned',
+    range: 'Range',
+    price: 'Price',
+    duration: 'Duration',
+    instant: 'Instantaneous',
+    hours: 'hours',
+    minutes: 'minutes',
+    self: 'Self',
+    squares: 'spaces',
+    enhancements: 'Enhancements',
+    onlyAvailableSpells: 'Only available spells',
+    prices: {
+      ap: 'AP',
+      mp: 'MP'
+    }
   },
   ru: {
     mana_spend_limit: 'Предел траты маны',
-    cantrips: 'Заговоры',
-    spells: 'Заклинания'
+    spells: 'Заклинания',
+    selectSpells: 'Выбрать заклинания',
+    back: 'Назад',
+    spellIsLearned: 'Заклинание изучено',
+    range: 'Дальность',
+    price: 'Цена',
+    duration: 'Продолжительность',
+    instant: 'Мгновенно',
+    hours: 'часов',
+    minutes: 'минут',
+    self: 'На себя',
+    squares: 'квадратов',
+    enhancements: 'Улучшения',
+    onlyAvailableSpells: 'Только доступные заклинания',
+    prices: {
+      ap: 'ОД',
+      mp: 'ОМ'
+    }
   }
 }
 
 export const Dc20Spells = (props) => {
   const character = () => props.character;
+  const spellLists = () => config.spell_lists;
+  const schools = () => config.schools;
 
+  const [lastActiveCharacterId, setLastActiveCharacterId] = createSignal(undefined);
+  const [characterSpells, setCharacterSpells] = createSignal(undefined);
+  const [spells, setSpells] = createSignal(undefined);
+  const [spellsSelectingMode, setSpellsSelectingMode] = createSignal(false);
+  const [availableListFilter, setAvailableListFilter] = createSignal(true);
+
+  const [appState] = useAppState();
+  const [{ renderNotice }] = useAppAlert();
   const [locale] = useAppLocale();
+
+  createEffect(() => {
+    if (lastActiveCharacterId() === character().id) return;
+
+    const fetchSpells = async () => await fetchSpellsRequest(appState.accessToken, character().provider);
+    const fetchCharacterSpells = async () => await fetchCharacterSpellsRequest(appState.accessToken, character().provider, character().id);
+
+    Promise.all([fetchSpells(), fetchCharacterSpells()]).then(
+      ([spellsData, characterSpellsData]) => {
+        batch(() => {
+          setSpells(spellsData.spells.sort((a, b) => a.title > b.title));
+          setCharacterSpells(characterSpellsData.spells);
+        });
+      }
+    );
+
+    setLastActiveCharacterId(character().id);
+  });
+
+  const renderingLists = createMemo(() => {
+    if (availableListFilter()) {
+      if (character().spell_list.length > 0) {
+        return Object.keys(spellLists()).filter((item) => character().spell_list.includes(item));
+      }
+    }
+
+    return Object.keys(spellLists());
+  });
+
+  const learnedSpellIds = createMemo(() => {
+    if (spells() === undefined) return [];
+    if (characterSpells() === undefined) return [];
+
+    return characterSpells().map((item) => item.spell_id);
+  });
+
+  const learnedSpells = createMemo(() => {
+    if (spells() === undefined) return [];
+    if (characterSpells() === undefined) return [];
+
+    const characterSpellIds = characterSpells().map((item) => item.spell_id);
+
+    return spells().filter((spell) => characterSpellIds.includes(spell.id));
+  });
+
+  const renderSpellPrice = (price) => {
+    return Object.entries(price).map(([slug, price]) => {
+      if (price === null) return `X ${TRANSLATION[locale()].prices[slug]}`;
+
+      return `${price} ${TRANSLATION[locale()].prices[slug]}`;
+    }).join(', ');
+  }
+
+  const renderSpellRange = (range) => {
+    if (range === 'self') return TRANSLATION[locale()].self;
+
+    return `${range} ${TRANSLATION[locale()].squares}`;
+  }
+
+  const renderSpellDuration = (duration) => {
+    if (duration === 'instant') return `${TRANSLATION[locale()].duration}: ${TRANSLATION[locale()].instant}`;
+    if (duration >= 60) return `${TRANSLATION[locale()].duration} (${TRANSLATION[locale()].hours}): ${duration / 60}`;
+
+    return `${TRANSLATION[locale()].duration} (${TRANSLATION[locale()].minutes}): ${duration}`;
+  }
+
+  const learnSpell = async (spellId) => {
+    const result = await createCharacterSpellRequest(
+      appState.accessToken,
+      character().provider,
+      character().id,
+      { spell_id: spellId }
+    );
+
+    if (result.errors_list === undefined) {
+      batch(() => {
+        setCharacterSpells([result.spell].concat(characterSpells()));
+        renderNotice(TRANSLATION[locale()].spellIsLearned);
+      });
+    }
+  }
+
+  const forgetSpell = async (spellId) => {
+    const result = await removeCharacterSpellRequest(
+      appState.accessToken, character().provider, character().id, spellId
+    );
+    if (result.errors_list === undefined) setCharacterSpells(characterSpells().filter((item) => item.spell_id !== spellId));
+  }
 
   return (
     <ErrorWrapper payload={{ character_id: character().id, key: 'Dc20Spells' }}>
       <GuideWrapper character={character()}>
-        <div class="blockable grid grid-cols-3 justify-center gap-x-2 gap-y-4">
-          <For each={['mana_spend_limit', 'cantrips', 'spells']}>
-            {(item) =>
-              <div class="py-4 px-2">
-                <p class="text-sm uppercase text-center mb-4">{TRANSLATION[locale()][item]}</p>
-                <div class="mx-auto flex items-center justify-center">
-                  <p class="text-2xl font-normal! dark:text-snow">{character()[item]}</p>
-                </div>
+        <Show
+          when={!spellsSelectingMode()}
+          fallback={
+            <>
+              <div class="flex justify-between items-center mb-2">
+                <Checkbox
+                  labelText={TRANSLATION[locale()].onlyAvailableSpells}
+                  labelPosition="right"
+                  labelClassList="ml-2"
+                  checked={availableListFilter()}
+                  onToggle={() => setAvailableListFilter(!availableListFilter())}
+                />
               </div>
-            }
-          </For>
-        </div>
+              <For each={renderingLists()}>
+                {(list) =>
+                  <Toggle title={spellLists()[list].name[locale()]}>
+                    <div>
+                      <For each={spells().filter((spell) => spell.origin_value.includes(list))}>
+                        {(spell) =>
+                          <div
+                            class="even:bg-stone-100 dark:even:bg-dark-dusty p-1"
+                            classList={{ 'opacity-50': learnedSpellIds().includes(spell.id) }}
+                          >
+                            <div class="flex items-center justify-between mb-2">
+                              <p class="font-normal! text-lg">{spell.title}</p>
+                              <p>{schools()[spell.school].name[locale()]}</p>
+                            </div>
+                            <p
+                              class="feat-markdown text-xs"
+                              innerHTML={spell.description} // eslint-disable-line solid/no-innerhtml
+                            />
+                            <div class="flex flex-row justify-end">
+                              <Show
+                                when={!learnedSpellIds().includes(spell.id)}
+                                fallback={
+                                  <Button default size="small" onClick={() => forgetSpell(spell.id)}>
+                                    <Minus />
+                                  </Button>
+                                }
+                              >
+                                <Button default size="small" onClick={() => learnSpell(spell.id)}>
+                                  <PlusSmall />
+                                </Button>
+                              </Show>
+                            </div>
+                          </div>
+                        }
+                      </For>
+                    </div>
+                  </Toggle>
+                }
+              </For>
+              <Button default textable onClick={() => setSpellsSelectingMode(false)}>{TRANSLATION[locale()].back}</Button>
+            </>
+          }
+        >
+          <Show when={characterSpells() !== undefined}>
+            <div class="blockable grid grid-cols-2 justify-center gap-x-2 gap-y-4">
+              <For each={['mana_spend_limit', 'spells']}>
+                {(item) =>
+                  <div class="py-4 px-2">
+                    <p class="text-sm uppercase text-center mb-4">{TRANSLATION[locale()][item]}</p>
+                    <div class="mx-auto flex items-center justify-center">
+                      <p class="text-2xl font-normal! dark:text-snow">{character()[item]}</p>
+                    </div>
+                  </div>
+                }
+              </For>
+            </div>
+            <Button default textable classList="mt-2" onClick={() => setSpellsSelectingMode(true)}>
+              {TRANSLATION[locale()].selectSpells}
+            </Button>
+
+            <Show when={learnedSpellIds().length > 0}>
+              <div class="mt-2">
+                <For each={learnedSpells()}>
+                  {(spell) =>
+                    <Toggle title={spell.title}>
+                      <div>
+                        <Show when={spell.price}>
+                          <p class="text-sm mt-1">{TRANSLATION[locale()].price}: {renderSpellPrice(spell.price)}</p>
+                        </Show>
+                        <Show when={spell.info.range}>
+                          <p class="text-sm mt-1">{TRANSLATION[locale()].range}: {renderSpellRange(spell.info.range)}</p>
+                        </Show>
+                        <Show when={spell.info.duration}>
+                          <p class="text-sm mt-1">{renderSpellDuration(spell.info.duration)}</p>
+                        </Show>
+                      </div>
+                      <p
+                        class="feat-markdown text-xs mt-4"
+                        innerHTML={spell.description} // eslint-disable-line solid/no-innerhtml
+                      />
+                      <div class="mt-4">
+                        <p class="font-normal!">{TRANSLATION[locale()].enhancements}</p>
+                        <For each={spell.info.enhancements}>
+                          {(enhancement) =>
+                            <p class="feat-markdown text-sm mt-1">
+                              <span class="font-medium!">{enhancement.name[locale()]}</span>
+                              : ({renderSpellPrice(enhancement.price)}) {enhancement.description[locale()]}
+                            </p>
+                          }
+                        </For>
+                      </div>
+                      <Show when={spell.notes}><p class="text-sm mt-2">{spell.notes}</p></Show>
+                    </Toggle>
+                  }
+                </For>
+              </div>
+            </Show>
+          </Show>
+        </Show>
       </GuideWrapper>
     </ErrorWrapper>
   );

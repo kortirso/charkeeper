@@ -9,6 +9,7 @@ module Dc20
     TALENT_ORIGIN = 'talent'
     SUBCLASS_ORIGIN = 'subclass'
     SUBCLASS_FLAVOR_ORIGIN = 'subclass_flavor'
+    SPELL_ORIGIN = 'spell'
 
     STATIC = 'static' # рендерится текст
     UPDATE_RESULT = 'update_result' # рендерится, но затемняется
@@ -20,7 +21,7 @@ module Dc20
     LONG_REST = 'long_rest'
     COMBAT = 'combat'
 
-    SELECTABLE_ORIGINS = [0, 3, 4].freeze
+    SELECTABLE_ORIGINS = [0, 3, 4, 7].freeze
 
     enum :origin, {
       ANCESTRY_ORIGIN => 0,
@@ -29,7 +30,8 @@ module Dc20
       MANEUVER_ORIGIN => 3,
       TALENT_ORIGIN => 4,
       SUBCLASS_ORIGIN => 5,
-      SUBCLASS_FLAVOR_ORIGIN => 6
+      SUBCLASS_FLAVOR_ORIGIN => 6,
+      SPELL_ORIGIN => 7
     }
     enum :kind, { STATIC => 0, UPDATE_RESULT => 1, HIDDEN => 2, ONE_FROM_LIST => 3, MANY_FROM_LIST => 4 }
     enum :limit_refresh, { SHORT_REST => 0, LONG_REST => 1, COMBAT => 2 }

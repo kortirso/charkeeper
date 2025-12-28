@@ -122,6 +122,7 @@ Rails.application.routes.draw do
     namespace :dc20 do
       resources :characters, only: %i[create update] do
         scope module: :characters do
+          resources :spells, only: %i[index create update destroy]
           namespace :talents do
             resources :features, only: %i[index]
           end
@@ -130,6 +131,7 @@ Rails.application.routes.draw do
         resources :rest, only: %i[create], module: 'characters'
       end
       resources :ancestries, only: %i[index]
+      resources :spells, only: %i[index]
     end
 
     scope ':provider' do

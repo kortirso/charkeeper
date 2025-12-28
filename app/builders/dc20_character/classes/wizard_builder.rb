@@ -3,7 +3,7 @@
 module Dc20Character
   module Classes
     class WizardBuilder
-      COMBAT_EXPERTISE = %w[light_armor].freeze
+      COMBAT_EXPERTISE = %w[light_armor focuses].freeze
 
       def call(result:)
         result[:combat_expertise] = COMBAT_EXPERTISE

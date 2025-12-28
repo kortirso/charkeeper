@@ -1,0 +1,86 @@
+[
+  {
+    "slug": "arcane_bolt",
+    "title": { "en": "Arcane Bolt", "ru": "Арканный снаряд" },
+    "description": {
+      "en": "You conjure a bolt of pure magical energy that homes in on a target. Make a Ranged Spell Attack against the AD of a target within range. Hit: The target takes 1 Bludgeoning, Slashing or Piercing damage (your choice).",
+      "ru": "Вы создаёте сгусток чистой магической энергии, который наводится на цель. Совершите дистанционную атаку заклинанием против ТЗ цели в пределах досягаемости. Попадание: Цель получает 1 дробящий, рубящий или колющий урон (на ваш выбор)."
+    },
+    "origin": "spell",
+    "origin_value": "arcane",
+    "origin_values": ["Bludgeoning", "Piercing", "Slashing"],
+    "kind": "static",
+    "price": { "ap": 1 },
+    "info": {
+      "school": "astromancy",
+      "range": 10,
+      "duration": "instant",
+      "enhancements": [
+        {
+          "name": { "en": "Range", "ru": "Дальность" },
+          "price": { "ap": 1 },
+          "repeatable": 2,
+          "description": { "en": "The range of the Spell increases by 5 Spaces.", "ru": "Дальность заклинания увеличивается на 5 квадратов." }
+        },
+        {
+          "name": { "en": "Damage", "ru": "Урон" },
+          "price": { "ap": 1 },
+          "repeatable": true,
+          "description": { "en": "The damage increases by 1 for 1 target of your choice.", "ru": "Урон заклинания увеличивается на 1 для 1 цели на ваш выбор." }
+        },
+        {
+          "name": { "en": "Arcane Missiles", "ru": "Арканные стрелы" },
+          "price": { "ap": 1, "mp": null },
+          "description": { "en": "Choose X (by spent MP) additional targets within range using the same Spell Attack for all targets.", "ru": "Выберите X (по кол-ву потраченных ОМ) дополнительных целей в пределах дальности, используя туже атаку заклинанием для всех целей." }
+        },
+        {
+          "name": { "en": "Autonomous", "ru": "Самонаведение" },
+          "price": { "mp": 1 },
+          "description": { "en": "You can Attack a target you've seen since the start of your last turn, provided it's within range and there's a path between you and the target the projectile can follow. This attack ignores 1/2 or 3/4 Cover and you don't have DisADV if the target is Unseen by you.", "ru": "Вы можете атаковать цель, которую видели с начала своего последнего хода, при условии, что она находится в пределах досягаемости и между вами и целью есть путь, по которому может следовать снаряд. Эта атака игнорирует укрытие на 1/2 или 3/4, и у вас нет штрафа за снижение урона, если цель не видна вам." }
+        }
+      ]
+    }
+  },
+  {
+    "slug": "mage_armor",
+    "title": { "en": "Mage Armor", "ru": "Магический доспех" },
+    "description": {
+      "en": "You create a magical protective coating around the target creature. The target gains +2 AD for the duration.",
+      "ru": "Вы создаёте вокруг целевого существа магическое защитное покрытие. Цель получает +2 к ПЗ на время действия покрытия."
+    },
+    "origin": "spell",
+    "origin_value": "arcane",
+    "origin_values": ["Embolden", "Ward"],
+    "kind": "static",
+    "price": { "ap": 1, "mp": 1 },
+    "info": {
+      "school": "conjuration",
+      "range": 5,
+      "duration": 60,
+      "enhancements": [
+        {
+          "name": { "en": "Range", "ru": "Дальность" },
+          "price": { "ap": 1 },
+          "repeatable": 2,
+          "description": { "en": "The range of the Spell increases by 5 Spaces.", "ru": "Дальность заклинания увеличивается на 5 квадратов." }
+        },
+        {
+          "name": { "en": "Duration", "ru": "Длительность" },
+          "price": { "mp": 1 },
+          "repeatable": true,
+          "description": { "en": "The duration increases by 1 step. (1 hour -> 8 hours -> until Long Rest).", "ru": "Длительность увеличивается на 1 шаг (1 час -> 8 часов -> до длинного отдыха)." }
+        },
+        {
+          "name": { "en": "Greater Armor", "ru": "Улучшенный доспех" },
+          "price": { "mp": 1 },
+          "description": { "en": "The target gain an additional +1 AD.", "ru": "Цель получает дополнительно + 1 ПЗ." }
+        },
+        {
+          "name": { "en": "Heavily Warded", "ru": "Сильно защищённый" },
+          "price": { "mp": 1 },
+          "description": { "en": "The target gains PDR.", "ru": "Цель получает PDR." }
+        }
+      ]
+    }
+  }
+]
