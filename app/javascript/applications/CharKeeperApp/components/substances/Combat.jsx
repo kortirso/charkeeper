@@ -77,7 +77,7 @@ export const Combat = (props) => {
 
   const readDistanceSettings = async () => {
     const cacheValue = await readFromCache(DISTANCE_SETTINGS_CACHE_NAME);
-    setSettings(cacheValue === null ? {} : JSON.parse(cacheValue));
+    setSettings(cacheValue === null || cacheValue === undefined ? {} : JSON.parse(cacheValue));
   }
 
   createEffect(() => {
