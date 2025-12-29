@@ -17,5 +17,15 @@ module Dc20Character
     def rest_points
       @rest_points ||= __getobj__.rest_points.merge('max' => health['max'])
     end
+
+    def max_health
+      @max_health ||= __getobj__.max_health + sum(__getobj__.bonuses.pluck('hp')) + sum(__getobj__.dynamic_bonuses.pluck('hp'))
+    end
+
+    private
+
+    def sum(values)
+      values.sum(&:to_i)
+    end
   end
 end

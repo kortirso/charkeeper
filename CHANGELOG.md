@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Added
 - rendering items info for all DH items
 - rendering spells for DC20 characters
+- bonuses tab for DC20 characters
 
 ### Modified
 - feature titles with icons and prices

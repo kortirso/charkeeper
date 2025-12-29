@@ -9,7 +9,8 @@ module Frontend
         feature_requirement: 'feature_requirement',
         add_dnd_bonus_v2: 'commands.characters_context.dnd2024.bonuses.add',
         add_daggerheart_bonus_v2: 'commands.characters_context.daggerheart.bonuses.add',
-        change_command: 'commands.bonuses_context.change'
+        change_command: 'commands.bonuses_context.change',
+        add_dc20_bonus: 'commands.characters_context.dc20.bonuses.add'
       ]
       include SerializeRelation
       include SerializeResource
@@ -70,6 +71,7 @@ module Frontend
           case params[:provider]
           when 'dnd5', 'dnd2024' then add_dnd_bonus_v2
           when 'daggerheart' then add_daggerheart_bonus_v2
+          when 'dc20' then add_dc20_bonus
           end
         else
           case params[:provider]

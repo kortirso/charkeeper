@@ -3,7 +3,8 @@ import * as i18n from '@solid-primitives/i18n';
 import { createWindowSize } from '@solid-primitives/resize-observer';
 
 import {
-  Dc20Abilities, Dc20Skills, Dc20Saves, Dc20CombatStatic, Dc20Leveling, Dc20Resources, Dc20Spells, Dc20Rest
+  Dc20Abilities, Dc20Skills, Dc20Saves, Dc20CombatStatic, Dc20Leveling, Dc20Resources, Dc20Spells, Dc20Rest,
+  Dc20Bonuses
 } from '../../../pages';
 import {
   CharacterNavigation, Notes, Avatar, ContentWrapper, createDiceRoll, Conditions, Equipment, Combat, Feats
@@ -54,7 +55,7 @@ export const Dc20 = (props) => {
   const characterTabs = createMemo(() => {
     const result = ['combat', 'equipment'];
     if (character().mana_points.max > 0) result.push('spells');
-    return result.concat(['classLevels', 'rest', 'notes', 'avatar']);
+    return result.concat(['classLevels', 'rest', 'bonuses', 'notes', 'avatar']);
   });
 
   const mobileView = createMemo(() => {
@@ -146,6 +147,9 @@ export const Dc20 = (props) => {
             </Match>
             <Match when={activeMobileTab() === 'rest'}>
               <Dc20Rest character={character()} onReloadCharacter={props.onReloadCharacter} />
+            </Match>
+            <Match when={activeMobileTab() === 'bonuses'}>
+              <Dc20Bonuses character={character()} onReloadCharacter={props.onReloadCharacter} />
             </Match>
             <Match when={activeMobileTab() === 'notes'}>
               <Notes />
@@ -255,6 +259,9 @@ export const Dc20 = (props) => {
             </Match>
             <Match when={activeTab() === 'rest'}>
               <Dc20Rest character={character()} onReloadCharacter={props.onReloadCharacter} />
+            </Match>
+            <Match when={activeTab() === 'bonuses'}>
+              <Dc20Bonuses character={character()} onReloadCharacter={props.onReloadCharacter} />
             </Match>
             <Match when={activeTab() === 'notes'}>
               <Notes />

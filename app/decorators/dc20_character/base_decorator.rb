@@ -19,7 +19,7 @@ module Dc20Character
     end
 
     def combat_mastery
-      @combat_mastery ||= (level / 2.0).round
+      @combat_mastery ||= (level / 2.0).round + bonuses.pluck('combat_mastery').sum(&:to_i)
     end
 
     def mana_spend_limit
@@ -41,6 +41,14 @@ module Dc20Character
     def spell_lists_amount = 0
     def spells = 0
     def size = 'medium'
+
+    def bonuses
+      @bonuses ||= __getobj__.bonuses.enabled.pluck(:value).compact
+    end
+
+    def dynamic_bonuses
+      @dynamic_bonuses ||= __getobj__.bonuses.enabled.pluck(:dynamic_value).compact
+    end
 
     # DEPRECATED
     def cantrips = 0

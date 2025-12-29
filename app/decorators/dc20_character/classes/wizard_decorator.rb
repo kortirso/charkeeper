@@ -16,7 +16,7 @@ module Dc20Character
       end
 
       def max_health
-        @max_health ||= 6 + level + modified_abilities['mig']
+        @max_health ||= __getobj__.max_health + 6 + level + modified_abilities['mig']
       end
 
       private
