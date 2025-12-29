@@ -15,6 +15,7 @@ import { removeCharacterItemRequest } from '../../requests/removeCharacterItemRe
 import { fetchItemInfoRequest } from '../../requests/fetchItemInfoRequest';
 import { createCharacterHomebrewItemRequest } from '../../requests/createCharacterHomebrewItemRequest';
 import { consumeCharacterBonusRequest } from '../../requests/consumeCharacterBonusRequest';
+import { consumeCharacterItemRequest } from '../../requests/consumeCharacterItemRequest';
 
 const TRANSLATION = {
   en: {
@@ -150,6 +151,16 @@ export const Equipment = (props) => {
     if (result.errors_list === undefined) {
       props.onReloadCharacter();
       reloadCharacterItems();
+    }
+  }
+
+  const consumeCharacterItem = async (item, fromState) => {
+    const result = await consumeCharacterItemRequest(appState.accessToken, character().provider, character().id, item.id, { from_state: fromState });
+
+    if (result.errors_list === undefined) {
+      props.onReloadCharacter();
+      reloadCharacterItems();
+      renderNotice(result.result);
     }
   }
 
@@ -383,6 +394,7 @@ export const Equipment = (props) => {
                   state={state}
                   items={characterItems().filter((item) => item.states[state] > 0)}
                   onConsumeItem={consumeItem}
+                  onConsumeCharacterItem={consumeCharacterItem}
                   onMoveCharacterItem={moveItem}
                   onChangeItem={changeItem}
                   onInfoItem={showInfo}

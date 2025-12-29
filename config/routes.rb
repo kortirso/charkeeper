@@ -71,7 +71,9 @@ Rails.application.routes.draw do
       resources :notes, only: %i[index create update destroy], module: 'characters'
 
       scope ':provider' do
-        resources :items, only: %i[index create update destroy], module: 'characters'
+        resources :items, only: %i[index create update destroy], module: 'characters' do
+          resources :consume, only: %i[create], module: 'items'
+        end
         resources :bonuses, only: %i[index create update destroy], module: 'characters' do
           resources :consume, only: %i[create], module: 'bonuses'
         end
