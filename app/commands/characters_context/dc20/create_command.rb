@@ -17,13 +17,14 @@ module CharactersContext
           required(:name).filled(:string, max_size?: 50)
           required(:main_class).filled(Classes)
           required(:ancestry_feats).hash
+          optional(:skip_guide).filled(:bool)
         end
       end
 
       private
 
       def do_prepare(input)
-        input[:data] = build_fresh_character(input.slice(:main_class, :ancestry_feats).symbolize_keys)
+        input[:data] = build_fresh_character(input.slice(:main_class, :ancestry_feats, :skip_guide).symbolize_keys)
       end
 
       def do_persist(input)

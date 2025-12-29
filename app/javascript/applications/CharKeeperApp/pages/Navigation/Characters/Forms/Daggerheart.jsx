@@ -1,4 +1,4 @@
-import { createSignal, createMemo, Show } from 'solid-js';
+import { createSignal, createMemo, createEffect, Show } from 'solid-js';
 import { createStore } from 'solid-js/store';
 import * as i18n from '@solid-primitives/i18n';
 
@@ -6,19 +6,22 @@ import { CharacterForm } from '../../../../pages';
 import { Select, Input, Checkbox } from '../../../../components';
 import daggerheartConfig from '../../../../data/daggerheart.json';
 import { useAppLocale } from '../../../../context';
-import { translate } from '../../../../helpers';
+import { translate, readFromCache } from '../../../../helpers';
 
 const DAGGERHEART_DEFAULT_FORM = {
   name: '', heritage: undefined, heritage_name: '', heritage_features: [], main_feature: undefined,
-  secondary_feature: undefined, community: undefined, main_class: undefined, subclass: undefined
-}
+  secondary_feature: undefined, community: undefined, main_class: undefined, subclass: undefined, skip_guide: false
+};
+const RENDER_GUIDE_CACHE_NAME = 'RenderGuideSettings';
 
 const TRANSLATION = {
   en: {
-    options: 'There are books available in Homebrews/Modules section for additional options for character creation.'
+    options: 'There are books available in Homebrews/Modules section for additional options for character creation.',
+    skipGuide: 'Skip new character guide'
   },
   ru: {
-    options: 'В разделе Homebrews/Модули доступны книги для расширения возможных вариантов при создании персонажа.'
+    options: 'В разделе Homebrews/Модули доступны книги для расширения возможных вариантов при создании персонажа.',
+    skipGuide: 'Пропустить настройку нового персонажа'
   }
 }
 
@@ -29,6 +32,17 @@ export const DaggerheartCharacterForm = (props) => {
 
   const [locale, dict] = useAppLocale();
   const t = i18n.translator(dict);
+
+  const readGuideSettings = async () => {
+    const cacheValue = await readFromCache(RENDER_GUIDE_CACHE_NAME);
+    const value = cacheValue === null || cacheValue === undefined ? {} : JSON.parse(cacheValue);
+
+    setCharacterDaggerheartForm({ ...characterDaggerheartForm, skip_guide: value.daggerheart === false })
+  }
+
+  createEffect(() => {
+    readGuideSettings();
+  });
 
   const daggerheartHeritages = createMemo(() => {
     if (props.homebrews() === undefined) return {};
@@ -70,7 +84,6 @@ export const DaggerheartCharacterForm = (props) => {
     return [mainFeatures, secondaryFeatures];
   });
 
-
   const saveCharacter = async () => {
     let characterFormData = null;
 
@@ -91,7 +104,7 @@ export const DaggerheartCharacterForm = (props) => {
     if (result === null) {
       setCharacterDaggerheartForm({
         name: '', heritage: undefined, heritage_name: '', heritage_features: [], main_feature: undefined,
-        secondary_feature: undefined, community: undefined, main_class: undefined, subclass: undefined
+        secondary_feature: undefined, community: undefined, main_class: undefined, subclass: undefined, skip_guide: true
       });
     }
   }
@@ -169,6 +182,14 @@ export const DaggerheartCharacterForm = (props) => {
           onSelect={(value) => setCharacterDaggerheartForm({ ...characterDaggerheartForm, subclass: value })}
         />
       </Show>
+      <Checkbox
+        labelText={TRANSLATION[locale()].skipGuide}
+        labelPosition="right"
+        labelClassList="ml-2"
+        checked={characterDaggerheartForm.skip_guide}
+        classList="mt-4"
+        onToggle={() => setCharacterDaggerheartForm({ ...characterDaggerheartForm, skip_guide: !characterDaggerheartForm.skip_guide })}
+      />
     </CharacterForm>
   );
 }

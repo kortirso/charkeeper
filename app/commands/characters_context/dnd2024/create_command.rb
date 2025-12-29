@@ -25,6 +25,7 @@ module CharactersContext
           required(:main_class).filled(Classes)
           required(:alignment).filled(Alignments)
           optional(:background).filled(Backgrounds)
+          optional(:skip_guide).filled(:bool)
         end
 
         rule(:species, :user) do
@@ -64,7 +65,9 @@ module CharactersContext
 
       def do_prepare(input)
         input[:data] =
-          build_fresh_character(input.slice(:species, :legacy, :size, :main_class, :alignment, :background).symbolize_keys)
+          build_fresh_character(
+            input.slice(:species, :legacy, :size, :main_class, :alignment, :background, :skip_guide).symbolize_keys
+          )
       end
 
       def do_persist(input)

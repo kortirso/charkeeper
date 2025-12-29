@@ -20,6 +20,7 @@ module CharactersContext
           optional(:heritage).filled(:string)
           optional(:heritage_name).filled(:string, max_size?: 50)
           optional(:heritage_features).filled(:array).each(:string)
+          optional(:skip_guide).filled(:bool)
         end
 
         rule(:heritage, :heritage_name).validate(:check_at_least_one_present)
@@ -63,7 +64,9 @@ module CharactersContext
       def do_prepare(input)
         input[:data] =
           decorate_fresh_character(
-            input.slice(:heritage, :heritage_name, :heritage_features, :community, :main_class, :subclass).symbolize_keys
+            input
+              .slice(:heritage, :heritage_name, :heritage_features, :community, :main_class, :subclass, :skip_guide)
+              .symbolize_keys
           )
       end
 
