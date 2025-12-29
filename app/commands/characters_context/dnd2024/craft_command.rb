@@ -23,14 +23,22 @@ module CharactersContext
       end
 
       def do_prepare(input)
-        input[:character_item] = ::Character::Item.find_or_create_by(input.slice(:character, :item))
+        input[:character_item] =
+          ::Character::Item
+            .create_with(states: ::Character::Item.default_states)
+            .find_or_create_by(input.slice(:character, :item))
       end
 
-      def do_persist(input)
-        input[:character_item].increment!(:quantity, input[:amount])
+      def do_persist(input) # rubocop: disable Metrics/AbcSize
         input[:character].data =
           input[:character].data.attributes.merge({ 'money' => input[:character].data.money - input[:price] })
-        input[:character].save
+        input[:character].save!
+
+        input[:character_item].update!(
+          states: input[:character_item].states.merge({
+            'backpack' => input[:character_item].states['backpack'].to_i + input[:amount]
+          })
+        )
 
         { result: :ok }
       end

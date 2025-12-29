@@ -5,7 +5,6 @@ describe Frontend::Dnd2024::Characters::CraftController do
   let(:access_token) { Authkeeper::GenerateTokenService.new.call(user_session: user_session)[:result] }
   let!(:character) { create :character, :dnd2024 }
   let!(:user_character) { create :character, :dnd2024, user: user_session.user, data: { main_class: 'bard' } }
-  let!(:item) { create :item, slug: 'potion_healing', kind: 'potion', data: { weight: 0.5, price: 5_000 } }
 
   describe 'GET#index' do
     context 'for logged users' do
@@ -48,6 +47,8 @@ describe Frontend::Dnd2024::Characters::CraftController do
   end
 
   describe 'POST#create' do
+    let!(:item) { create :item, slug: 'potion_healing', kind: 'potion', data: { weight: 0.5, price: 5_000 } }
+
     context 'for logged users' do
       context 'for unexisting character' do
         it 'returns error' do
@@ -87,11 +88,15 @@ describe Frontend::Dnd2024::Characters::CraftController do
           end
 
           context 'when character has such items' do
-            let!(:character_item) { create :character_item, character: user_character, item: item, quantity: 2 }
+            let!(:character_item) do
+              create :character_item, character: user_character, item: item, states: {
+                hands: 1, equipment: 0, backpack: 1, storage: 0
+              }
+            end
 
             it 'add items', :aggregate_failures do
               expect { request }.not_to change(user_character.items, :count)
-              expect(character_item.reload.quantity).to eq 4
+              expect(character_item.reload.states['backpack']).to eq 3
               expect(user_character.reload.data.money).to eq 2_500
               expect(response).to have_http_status :ok
             end

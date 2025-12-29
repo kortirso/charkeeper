@@ -33,6 +33,7 @@ Rails.application.routes.draw do
     end
     namespace :daggerheart do
       resources :characters, only: %i[index]
+      resources :recipes, only: %i[index new create]
 
       namespace :homebrew do
         resources :books, only: %i[index]
@@ -148,6 +149,7 @@ Rails.application.routes.draw do
       resources :characters, only: %i[create update] do
         resources :spells, only: %i[index create update destroy], module: 'characters'
         resources :rest, only: %i[create], module: 'characters'
+        resources :craft, only: %i[index create], module: 'characters'
         resource :companions, only: %i[show create update destroy], module: 'characters'
         resources :homebrew_items, only: %i[create], module: 'characters'
       end

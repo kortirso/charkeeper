@@ -1,8 +1,8 @@
 import { apiRequest, options } from '../helpers';
 
-export const createCraftRequest = async (accessToken, characterId, payload) => {
+export const createCraftRequest = async (accessToken, provider, characterId, payload) => {
   return await apiRequest({
-    url: `/frontend/dnd2024/characters/${characterId}/craft.json`,
+    url: `/frontend/${provider}/characters/${characterId}/craft.json`,
     options: options('POST', accessToken, payload)
   });
 }

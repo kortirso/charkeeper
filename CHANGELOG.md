@@ -11,6 +11,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - bonuses tab for DC20 characters
 - focus items for DC20 characters
 - drinking effects for consumables
+- crafting items for DH characters
 
 ### Modified
 - feature titles with icons and prices
