@@ -5,7 +5,7 @@ import { CharacterForm } from '../../../../pages';
 import { Select, Input, Checkbox, Toggle } from '../../../../components';
 import config from '../../../../data/dc20.json';
 import { useAppLocale, useAppState } from '../../../../context';
-import { translate } from '../../../../helpers';
+import { translate, readFromCache } from '../../../../helpers';
 import { fetchDc20AncestriesRequest } from '../../../../requests/fetchDc20AncestriesRequest';
 
 const TRANSLATION = {
@@ -16,7 +16,8 @@ const TRANSLATION = {
     class: 'Class',
     manyAncestriesAlert: 'Maximum 2 ancestries',
     minorTraitsAlert: 'Maximum 1 minor trait',
-    negativeTraitsAlert: 'Maximum 2 negative traits'
+    negativeTraitsAlert: 'Maximum 2 negative traits',
+    skipGuide: 'Skip new character guide'
   },
   ru: {
     name: 'Имя',
@@ -25,11 +26,13 @@ const TRANSLATION = {
     class: 'Класс',
     manyAncestriesAlert: 'Максимум только 2 родословные',
     minorTraitsAlert: 'Максимум 1 малая черта',
-    negativeTraitsAlert: 'Максимум 2 отрицательные черты'
+    negativeTraitsAlert: 'Максимум 2 отрицательные черты',
+    skipGuide: 'Пропустить настройку нового персонажа'
   }
 }
 
-const DC20_DEFAULT_FORM = { name: '', main_class: undefined, ancestry_feats: {}, ancestryPoints: 5 }
+const DC20_DEFAULT_FORM = { name: '', main_class: undefined, ancestry_feats: {}, ancestryPoints: 5, skip_guide: false };
+const RENDER_GUIDE_CACHE_NAME = 'RenderGuideSettings';
 
 export const Dc20CharacterForm = (props) => {
   const [characterDc20Form, setCharacterDc20Form] = createStore(DC20_DEFAULT_FORM);
@@ -38,6 +41,13 @@ export const Dc20CharacterForm = (props) => {
 
   const [appState] = useAppState();
   const [locale] = useAppLocale();
+
+  const readGuideSettings = async () => {
+    const cacheValue = await readFromCache(RENDER_GUIDE_CACHE_NAME);
+    const value = cacheValue === null || cacheValue === undefined ? {} : JSON.parse(cacheValue);
+
+    setCharacterDc20Form({ ...characterDc20Form, skip_guide: value.dc20 === false })
+  }
 
   createEffect(() => {
     if (ancestries() !== undefined) return;
@@ -49,6 +59,8 @@ export const Dc20CharacterForm = (props) => {
         setAncestries(ancestriesData.ancestries);
       }
     );
+
+    readGuideSettings();
   });
 
   const selectDc20Ancestry = (ancestry, slug, featPoints) => {
@@ -90,7 +102,7 @@ export const Dc20CharacterForm = (props) => {
     if (result === null) {
       batch(() => {
         setCharacterDc20Form({
-          name: '', main_class: undefined, ancestryPoints: 5, ancestry_feats: {}
+          name: '', main_class: undefined, ancestryPoints: 5, ancestry_feats: {}, skip_guide: true
         });
         setValidations({ negativeTraits: 0, minorTraits: 0 });
       });
@@ -144,6 +156,14 @@ export const Dc20CharacterForm = (props) => {
           </For>
         </Toggle>
       </Show>
+      <Checkbox
+        labelText={TRANSLATION[locale()].skipGuide}
+        labelPosition="right"
+        labelClassList="ml-2"
+        checked={characterDc20Form.skip_guide}
+        classList="mt-4"
+        onToggle={() => setCharacterDc20Form({ ...characterDc20Form, skip_guide: !characterDc20Form.skip_guide })}
+      />
       <Show when={Object.keys(characterDc20Form.ancestry_feats).length > 2}>
         <p class="warning">{TRANSLATION[locale()]['manyAncestriesAlert']}</p>
       </Show>

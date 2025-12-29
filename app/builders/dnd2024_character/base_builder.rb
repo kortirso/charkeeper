@@ -16,10 +16,10 @@ module Dnd2024Character
         vulnerability: [],
         tools: [],
         hit_dice: { 6 => 0, 8 => 0, 10 => 0, 12 => 0 },
-        guide_step: 1,
+        guide_step: result[:skip_guide] ? nil : 1,
         skill_boosts: 0,
         any_skill_boosts: 0
-      })
+      }).except(:skip_guide)
     end
   end
 end

@@ -1,16 +1,26 @@
-import { Show } from 'solid-js';
+import { createEffect, Show } from 'solid-js';
 import { createStore } from 'solid-js/store';
 import * as i18n from '@solid-primitives/i18n';
 
 import { CharacterForm } from '../../../../pages';
-import { Select, Input } from '../../../../components';
+import { Select, Input, Checkbox } from '../../../../components';
 import dnd2024Config from '../../../../data/dnd2024.json';
 import { useAppLocale } from '../../../../context';
-import { translate } from '../../../../helpers';
+import { translate, readFromCache } from '../../../../helpers';
 
 const DND2024_DEFAULT_FORM = {
   name: '', species: undefined, legacy: undefined, size: undefined, background: undefined,
-  main_class: undefined, alignment: 'neutral'
+  main_class: undefined, alignment: 'neutral', skip_guide: false
+};
+const RENDER_GUIDE_CACHE_NAME = 'RenderGuideSettings';
+
+const TRANSLATION = {
+  en: {
+    skipGuide: 'Skip new character guide'
+  },
+  ru: {
+    skipGuide: 'Пропустить настройку нового персонажа'
+  }
 }
 
 export const Dnd2024CharacterForm = (props) => {
@@ -19,13 +29,24 @@ export const Dnd2024CharacterForm = (props) => {
   const [locale, dict] = useAppLocale();
   const t = i18n.translator(dict);
 
+  const readGuideSettings = async () => {
+    const cacheValue = await readFromCache(RENDER_GUIDE_CACHE_NAME);
+    const value = cacheValue === null || cacheValue === undefined ? {} : JSON.parse(cacheValue);
+
+    setCharacterDnd2024Form({ ...characterDnd2024Form, skip_guide: value.dnd2024 === false })
+  }
+
+  createEffect(() => {
+    readGuideSettings();
+  });
+
   const saveCharacter = async () => {
     const result = await props.onCreateCharacter(characterDnd2024Form);
 
     if (result === null) {
       setCharacterDnd2024Form({
         name: '', species: undefined, legacy: undefined, size: undefined, background: undefined,
-        main_class: undefined, alignment: 'neutral'
+        main_class: undefined, alignment: 'neutral', skip_guide: true
       });
     }
   }
@@ -82,6 +103,14 @@ export const Dnd2024CharacterForm = (props) => {
         items={dict().dnd.alignments}
         selectedValue={characterDnd2024Form.alignment}
         onSelect={(value) => setCharacterDnd2024Form({ ...characterDnd2024Form, alignment: value })}
+      />
+      <Checkbox
+        labelText={TRANSLATION[locale()].skipGuide}
+        labelPosition="right"
+        labelClassList="ml-2"
+        checked={characterDnd2024Form.skip_guide}
+        classList="mt-4"
+        onToggle={() => setCharacterDnd2024Form({ ...characterDnd2024Form, skip_guide: !characterDnd2024Form.skip_guide })}
       />
     </CharacterForm>
   );
