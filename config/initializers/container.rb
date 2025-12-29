@@ -38,6 +38,7 @@ module Charkeeper
 
     register('commands.characters_context.items.update') { CharactersContext::Items::UpdateCommand.new }
     register('commands.characters_context.items.add') { CharactersContext::Items::AddCommand.new }
+    register('commands.characters_context.items.consume') { CharactersContext::Items::ConsumeCommand.new }
     register('commands.characters_context.change_feat') { CharactersContext::ChangeFeatCommand.new }
 
     register('commands.characters_context.dc20.create') { CharactersContext::Dc20::CreateCommand.new }
