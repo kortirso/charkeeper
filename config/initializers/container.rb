@@ -73,6 +73,7 @@ module Charkeeper
 
     register('commands.characters_context.dnd2024.bonuses.add') { CharactersContext::Dnd2024::Bonuses::AddCommand.new }
     register('commands.characters_context.daggerheart.bonuses.add') { CharactersContext::Daggerheart::Bonuses::AddCommand.new }
+    register('commands.characters_context.dc20.bonuses.add') { CharactersContext::Dc20::Bonuses::AddCommand.new }
 
     register('commands.characters_context.pathfinder2.create') { CharactersContext::Pathfinder2::CreateCommand.new }
     register('commands.characters_context.pathfinder2.update') { CharactersContext::Pathfinder2::UpdateCommand.new }

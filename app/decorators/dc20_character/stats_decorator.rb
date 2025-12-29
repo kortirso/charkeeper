@@ -3,7 +3,15 @@
 module Dc20Character
   class StatsDecorator < ApplicationDecorator
     def modified_abilities
-      @modified_abilities ||= __getobj__.modified_abilities.merge('prime' => __getobj__.modified_abilities.values.max)
+      @modified_abilities ||= begin
+        result = abilities.merge(
+          *[
+            *bonuses.pluck('abilities'),
+            *dynamic_bonuses.pluck('abilities')
+          ].compact
+        ) { |_key, oldval, newval| newval + oldval }
+        result.merge('prime' => result.values.max)
+      end
     end
 
     def save_dc
@@ -13,20 +21,22 @@ module Dc20Character
     def precision_defense # rubocop: disable Metrics/AbcSize
       return @precision_defense if defined?(@precision_defense)
 
-      default = 8 + combat_mastery + modified_abilities['agi'] + modified_abilities['int'] + equiped_armor_info&.dig('pd').to_i +
-                equiped_shield_info&.dig('pd').to_i
+      default =
+        8 + combat_mastery + modified_abilities['agi'] + modified_abilities['int'] + equiped_armor_info&.dig('pd').to_i +
+        equiped_shield_info&.dig('pd').to_i + sum(bonuses.pluck('pd')) + sum(dynamic_bonuses.pluck('pd')) + guard_bonuses
       @precision_defense ||= {
-        default: default + guard_bonuses,
-        heavy: default + 5 + guard_bonuses,
-        brutal: default + 10 + guard_bonuses
+        default: default,
+        heavy: default + 5,
+        brutal: default + 10
       }
     end
 
-    def area_defense
+    def area_defense # rubocop: disable Metrics/AbcSize
       return @area_defense if defined?(@area_defense)
 
-      default = 8 + combat_mastery + modified_abilities['mig'] + modified_abilities['cha'] + equiped_armor_info&.dig('ad').to_i +
-                equiped_shield_info&.dig('ad').to_i
+      default =
+        8 + combat_mastery + modified_abilities['mig'] + modified_abilities['cha'] + equiped_armor_info&.dig('ad').to_i +
+        equiped_shield_info&.dig('ad').to_i + sum(bonuses.pluck('ad')) + sum(dynamic_bonuses.pluck('ad'))
       @area_defense ||= {
         default: default,
         heavy: default + 5,
@@ -35,7 +45,8 @@ module Dc20Character
     end
 
     def attack
-      @attack ||= modified_abilities['prime'] + combat_mastery
+      @attack ||=
+        modified_abilities['prime'] + combat_mastery + sum(bonuses.pluck('attack')) + sum(dynamic_bonuses.pluck('attack'))
     end
 
     def skills
@@ -55,7 +66,8 @@ module Dc20Character
     end
 
     def initiative
-      @initiative ||= modified_abilities['agi'] + combat_mastery
+      @initiative ||=
+        modified_abilities['agi'] + combat_mastery + sum(bonuses.pluck('initiative')) + sum(dynamic_bonuses.pluck('initiative'))
     end
 
     def grit_points
@@ -79,15 +91,27 @@ module Dc20Character
     end
 
     def attribute_saves
-      @attribute_saves ||= modified_abilities.transform_values { |item| item + combat_mastery }
+      @attribute_saves ||=
+        modified_abilities.transform_values { |item| item + combat_mastery }.merge(
+          *[
+            *bonuses.pluck('saves'),
+            *dynamic_bonuses.pluck('saves')
+          ].compact
+        ) { |_key, oldval, newval| newval + oldval }
     end
 
     def physical_save
-      @physical_save ||= attribute_saves.slice('mig', 'agi').values.max
+      @physical_save ||=
+        attribute_saves.slice('mig', 'agi').values.max +
+        sum(bonuses.pluck('physical_save')) +
+        sum(dynamic_bonuses.pluck('physical_save'))
     end
 
     def mental_save
-      @mental_save ||= attribute_saves.slice('cha', 'int').values.max
+      @mental_save ||=
+        attribute_saves.slice('cha', 'int').values.max +
+        sum(bonuses.pluck('mental_save')) +
+        sum(dynamic_bonuses.pluck('mental_save'))
     end
 
     def attacks
@@ -97,13 +121,15 @@ module Dc20Character
     def stamina_points
       @stamina_points ||=
         __getobj__.stamina_points.merge(
-          'max' => __getobj__.stamina_points['max'] + paths['martial']
+          'max' => __getobj__.stamina_points['max'] + paths['martial'] + sum(bonuses.pluck('sp')) +
+                   sum(dynamic_bonuses.pluck('sp'))
         )
     end
 
     def mana_points
       @mana_points ||= __getobj__.mana_points.merge(
-        'max' => __getobj__.mana_points['max'] + (paths['spellcaster'] * 3)
+        'max' => __getobj__.mana_points['max'] + (paths['spellcaster'] * 3) + sum(bonuses.pluck('mp')) +
+                 sum(dynamic_bonuses.pluck('mp'))
       )
     end
 
@@ -123,6 +149,12 @@ module Dc20Character
       @breath = [modified_abilities['mig'], 1].max
     end
 
+    def speeds
+      @speeds ||= __getobj__.speeds.merge(
+        'ground' => __getobj__.speeds['ground'] + sum(bonuses.pluck('speed')) + sum(dynamic_bonuses.pluck('speed'))
+      )
+    end
+
     private
 
     def guard_bonuses
@@ -132,7 +164,7 @@ module Dc20Character
     def unarmed_attack
       {
         name: { en: 'Unarmed', ru: 'Безоружная' }[I18n.locale],
-        attack_bonus: modified_abilities['prime'] + combat_mastery,
+        attack_bonus: attack,
         damage: 0,
         damage_types: ['b'],
         features: [],
@@ -149,7 +181,7 @@ module Dc20Character
 
       {
         name: { en: 'Shield attack', ru: 'Удар щитом' }[I18n.locale],
-        attack_bonus: modified_abilities['prime'] + combat_mastery,
+        attack_bonus: attack,
         damage: 1,
         damage_types: ['b'],
         features: [],
@@ -164,7 +196,7 @@ module Dc20Character
     def calculate_attack(item)
       result = {
         name: item.dig(:items_name, I18n.locale.to_s),
-        attack_bonus: modified_abilities['prime'] + combat_mastery,
+        attack_bonus: attack,
         distance: item.dig(:items_info, 'distance'),
         damage: item.dig(:items_info, 'damage'),
         damage_types: item.dig(:items_info, 'damage_types'),
@@ -211,6 +243,10 @@ module Dc20Character
         level: level,
         expertise: trade_expertise.include?(slug)
       }
+    end
+
+    def sum(values)
+      values.sum(&:to_i)
     end
   end
 end

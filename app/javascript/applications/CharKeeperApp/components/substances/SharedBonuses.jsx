@@ -159,12 +159,12 @@ export const SharedBonuses = (props) => {
                         <Select
                           containerClassList="mb-2 flex-1"
                           labelText={TRANSLATION[locale()].bonusType}
-                          items={translate({ "static": { "name": { "en": "Static", "ru": "Статичный" } }, "dynamic": { "name": { "en": "Dynamic", "ru": "Динамический" } } }, locale())}
+                          items={translate(bonus().modify === props.proficiencyName ? { "static": { "name": { "en": "Static", "ru": "Статичный" } } } : { "static": { "name": { "en": "Static", "ru": "Статичный" } }, "dynamic": { "name": { "en": "Dynamic", "ru": "Динамический" } } }, locale())}
                           selectedValue={bonus().type}
                           onSelect={(value) => updateNewBonus(bonus(), 'type', value)}
                         />
                         <Show
-                          when={bonus().type === 'static' || bonus().modify === props.proficiencyName}
+                          when={bonus().type === 'static'}
                           fallback={
                             <Select
                               containerClassList="mb-2 flex-1"
