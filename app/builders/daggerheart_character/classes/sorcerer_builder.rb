@@ -12,10 +12,12 @@ module DaggerheartCharacter
         result
       end
 
+      # rubocop: disable Layout/LineLength
       def equip(character:)
-        Character::Item.create(character: character, item: Daggerheart::Item.find_by(slug: 'dualstaff'), state: 'hands')
-        Character::Item.create(character: character, item: Daggerheart::Item.find_by(slug: 'gambeson_armor'), state: 'equipment')
+        Character::Item.create(character: character, item: Daggerheart::Item.find_by(slug: 'dualstaff'), states: Character::Item.default_states.merge({ 'hands' => 1 }))
+        Character::Item.create(character: character, item: Daggerheart::Item.find_by(slug: 'gambeson_armor'), states: Character::Item.default_states.merge({ 'equipment' => 1 }))
       end
+      # rubocop: enable Layout/LineLength
     end
   end
 end

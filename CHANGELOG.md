@@ -18,6 +18,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - disable leveling for DH characters if level up slots is not spend
 - rendering guide steps as optional
 
+### Fixed
+- starting equipment for DH characters
+
 ## [0.3.26] - 2025-12-27
 ### Added
 - rest actions for DC20 characters
