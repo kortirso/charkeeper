@@ -1,8 +1,8 @@
 import { apiRequest, options } from '../helpers';
 
-export const fetchCraftsRequest = async (accessToken, characterId) => {
+export const fetchCraftsRequest = async (accessToken, provider, characterId) => {
   return await apiRequest({
-    url: `/frontend/dnd2024/characters/${characterId}/craft.json`,
+    url: `/frontend/${provider}/characters/${characterId}/craft.json`,
     options: options('GET', accessToken)
   });
 }

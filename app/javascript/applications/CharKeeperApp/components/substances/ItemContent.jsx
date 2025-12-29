@@ -82,6 +82,7 @@ const COMPONENTS = {
     'primary weapon': DaggerheartWeapon,
     'secondary weapon': DaggerheartWeapon,
     'item': DaggerheartItem,
+    'recipe': DaggerheartItem,
     'consumables': DaggerheartItem,
     'armor': DaggerheartArmor
   }

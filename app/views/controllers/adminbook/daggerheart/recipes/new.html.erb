@@ -1,0 +1,11 @@
+<%= form_with model: @item_recipe, scope: :item_recipe, url: adminbook_daggerheart_recipes_path, method: 'post', class: 'font-cascadia-light' do |form| %>
+  <div class="form-field mb-2">
+    <div><%= form.label 'Инструмент', class: 'form-label' %></div>
+    <div><%= form.select :tool_id, Item.daggerheart.where(kind: 'recipe').map { |c| [c.name[I18n.locale.to_s], c.id] }, required: true %></div>
+  </div>
+  <div class="form-field mb-2">
+    <div><%= form.label 'Изготавливаемое', class: 'form-label' %></div>
+    <div><%= form.select :item_id, Item.daggerheart.where.not(kind: 'recipe').map { |c| [c.name[I18n.locale.to_s], c.id] }, include_blank: true %></div>
+  </div>
+  <%= form.submit 'Create', class: 'btn-primary btn' %>
+<% end %>

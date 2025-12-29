@@ -5,7 +5,7 @@ import { createWindowSize } from '@solid-primitives/resize-observer';
 import {
   DaggerheartTraits, DaggerheartStatic, DaggerheartHealth, DaggerheartBeastform, DaggerheartCompanion,
   DaggerheartDomainCards, DaggerheartRest, DaggerheartLeveling, DaggerheartExperience, DaggerheartTransform,
-  DaggerheartStances, DaggerheartBonuses
+  DaggerheartStances, DaggerheartBonuses, DaggerheartCraft
 } from '../../../pages';
 import {
   CharacterNavigation, Equipment, Notes, Avatar, ContentWrapper, Feats, createDiceRoll, Conditions, Combat, Gold
@@ -53,7 +53,7 @@ export const Daggerheart = (props) => {
   const armorFilterT2 = (item) => item.kind === 'armor' && item.info.tier === 2;
   const armorFilterT3 = (item) => item.kind === 'armor' && item.info.tier === 3;
   const armorFilterT4 = (item) => item.kind === 'armor' && item.info.tier === 4;
-  const itemsFilter = (item) => item.kind === 'item';
+  const itemsFilter = (item) => item.kind === 'item' || item.kind === 'recipe';
   const consumablesFilter = (item) => item.kind === 'consumables';
 
   const ancestryFilter = (item) => item.origin === 'ancestry';
@@ -83,7 +83,7 @@ export const Daggerheart = (props) => {
   });
 
   const characterTabs = createMemo(() => {
-    const result = ['combat', 'equipment', 'domainCards', 'states', 'classLevels', 'rest', 'bonuses'];
+    const result = ['combat', 'equipment', 'domainCards', 'states', 'craft', 'classLevels', 'rest', 'bonuses'];
     if (character().can_have_companion) result.push('companion');
     return result.concat(['notes', 'avatar']);
   });
@@ -217,6 +217,12 @@ export const Daggerheart = (props) => {
                 guideStep={5}
                 helpMessage={TRANSLATION[locale()]['levelingHelpMessage']}
                 finishGuideStep={true}
+              />
+            </Match>
+            <Match when={activeMobileTab() === 'craft'}>
+              <DaggerheartCraft
+                character={character()}
+                onReloadCharacter={props.onReloadCharacter}
               />
             </Match>
             <Match when={activeMobileTab() === 'avatar'}>
@@ -364,6 +370,12 @@ export const Daggerheart = (props) => {
                 guideStep={5}
                 helpMessage={TRANSLATION[locale()]['levelingHelpMessage']}
                 finishGuideStep={true}
+              />
+            </Match>
+            <Match when={activeTab() === 'craft'}>
+              <DaggerheartCraft
+                character={character()}
+                onReloadCharacter={props.onReloadCharacter}
               />
             </Match>
             <Match when={activeTab() === 'avatar'}>
