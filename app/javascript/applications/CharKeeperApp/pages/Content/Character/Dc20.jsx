@@ -38,6 +38,7 @@ export const Dc20 = (props) => {
   const weaponFilter = (item) => item.kind.includes('weapon');
   const armorFilter = (item) => item.kind.includes('armor');
   const shieldFilter = (item) => item.kind.includes('shield');
+  const focusFilter = (item) => item.kind.includes('focus');
 
   const ancestryFilter = (item) => item.origin === 'ancestry';
   const classFilter = (item) => item.origin === 'class' || item.origin === 'class_flavor' || item.origin === 'talent';
@@ -122,7 +123,8 @@ export const Dc20 = (props) => {
                 itemFilters={[
                   { title: t('equipment.weaponsList'), callback: weaponFilter },
                   { title: t('equipment.armorList'), callback: armorFilter },
-                  { title: t('equipment.shieldList'), callback: shieldFilter }
+                  { title: t('equipment.shieldList'), callback: shieldFilter },
+                  { title: t('equipment.focusList'), callback: focusFilter }
                 ]}
                 onReplaceCharacter={props.onReplaceCharacter}
                 onReloadCharacter={props.onReloadCharacter}
@@ -142,7 +144,7 @@ export const Dc20 = (props) => {
             </Match>
             <Match when={activeMobileTab() === 'spells'}>
               <Dc20Spells
-                character={character()}
+                character={character()} openDiceRoll={openDiceRoll}
               />
             </Match>
             <Match when={activeMobileTab() === 'rest'}>
@@ -234,7 +236,8 @@ export const Dc20 = (props) => {
                 itemFilters={[
                   { title: t('equipment.weaponsList'), callback: weaponFilter },
                   { title: t('equipment.armorList'), callback: armorFilter },
-                  { title: t('equipment.shieldList'), callback: shieldFilter }
+                  { title: t('equipment.shieldList'), callback: shieldFilter },
+                  { title: t('equipment.focusList'), callback: focusFilter }
                 ]}
                 onReplaceCharacter={props.onReplaceCharacter}
                 onReloadCharacter={props.onReloadCharacter}
@@ -254,7 +257,7 @@ export const Dc20 = (props) => {
             </Match>
             <Match when={activeTab() === 'spells'}>
               <Dc20Spells
-                character={character()}
+                character={character()} openDiceRoll={openDiceRoll}
               />
             </Match>
             <Match when={activeTab() === 'rest'}>
