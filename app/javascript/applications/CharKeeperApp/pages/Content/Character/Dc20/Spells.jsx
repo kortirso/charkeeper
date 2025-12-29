@@ -1,13 +1,16 @@
 import { createSignal, createEffect, createMemo, For, Show, batch } from 'solid-js';
 
 import config from '../../../../data/dc20.json';
-import { ErrorWrapper, GuideWrapper, Toggle, Button, Checkbox } from '../../../../components';
+import { ErrorWrapper, GuideWrapper, Toggle, Button, Checkbox, createModal, StatsBlock, Dice } from '../../../../components';
 import { useAppState, useAppLocale, useAppAlert } from '../../../../context';
 import { PlusSmall, Minus } from '../../../../assets';
 import { fetchSpellsRequest } from '../../../../requests/fetchSpellsRequest';
 import { fetchCharacterSpellsRequest } from '../../../../requests/fetchCharacterSpellsRequest';
 import { createCharacterSpellRequest } from '../../../../requests/createCharacterSpellRequest';
 import { removeCharacterSpellRequest } from '../../../../requests/removeCharacterSpellRequest';
+import { fetchCharacterItemsRequest } from '../../../../requests/fetchCharacterItemsRequest';
+import { fetchTagInfoRequest } from '../../../../requests/fetchTagInfoRequest';
+import { modifier } from '../../../../helpers';
 
 const TRANSLATION = {
   en: {
@@ -29,7 +32,11 @@ const TRANSLATION = {
     prices: {
       ap: 'AP',
       mp: 'MP'
-    }
+    },
+    features: {
+      'Long-Ranged': 'Long-Ranged'
+    },
+    attack: 'Spell Check'
   },
   ru: {
     mana_spend_limit: 'Предел траты маны',
@@ -50,7 +57,11 @@ const TRANSLATION = {
     prices: {
       ap: 'ОД',
       mp: 'ОМ'
-    }
+    },
+    features: {
+      'Long-Ranged': 'Дальнобойное'
+    },
+    attack: 'Бонус атаки'
   }
 }
 
@@ -64,7 +75,10 @@ export const Dc20Spells = (props) => {
   const [spells, setSpells] = createSignal(undefined);
   const [spellsSelectingMode, setSpellsSelectingMode] = createSignal(false);
   const [availableListFilter, setAvailableListFilter] = createSignal(true);
+  const [characterItems, setCharacterItems] = createSignal(undefined);
+  const [tagInfo, setTagInfo] = createSignal([]);
 
+  const { Modal, openModal } = createModal();
   const [appState] = useAppState();
   const [{ renderNotice }] = useAppAlert();
   const [locale] = useAppLocale();
@@ -74,12 +88,14 @@ export const Dc20Spells = (props) => {
 
     const fetchSpells = async () => await fetchSpellsRequest(appState.accessToken, character().provider);
     const fetchCharacterSpells = async () => await fetchCharacterSpellsRequest(appState.accessToken, character().provider, character().id);
+    const fetchCharacterItems = async () => await fetchCharacterItemsRequest(appState.accessToken, character().provider, character().id);
 
-    Promise.all([fetchSpells(), fetchCharacterSpells()]).then(
-      ([spellsData, characterSpellsData]) => {
+    Promise.all([fetchSpells(), fetchCharacterSpells(), fetchCharacterItems()]).then(
+      ([spellsData, characterSpellsData, characterItemsData]) => {
         batch(() => {
           setSpells(spellsData.spells.sort((a, b) => a.title > b.title));
           setCharacterSpells(characterSpellsData.spells);
+          setCharacterItems(characterItemsData.items.filter((item) => item.kind === 'focus' && item.states.hands > 0));
         });
       }
     );
@@ -132,6 +148,14 @@ export const Dc20Spells = (props) => {
     if (duration >= 60) return `${TRANSLATION[locale()].duration} (${TRANSLATION[locale()].hours}): ${duration / 60}`;
 
     return `${TRANSLATION[locale()].duration} (${TRANSLATION[locale()].minutes}): ${duration}`;
+  }
+
+  const showTagInfo = async (tag, value) => {
+    const result = await fetchTagInfoRequest(appState.accessToken, character().provider, 'focus', tag);
+    batch(() => {
+      openModal();
+      setTagInfo([value, result.value]);
+    });
   }
 
   const learnSpell = async (spellId) => {
@@ -217,22 +241,43 @@ export const Dc20Spells = (props) => {
           }
         >
           <Show when={characterSpells() !== undefined}>
-            <div class="blockable grid grid-cols-2 justify-center gap-x-2 gap-y-4">
-              <For each={['mana_spend_limit', 'spells']}>
-                {(item) =>
-                  <div class="py-4 px-2">
-                    <p class="text-sm uppercase text-center mb-4">{TRANSLATION[locale()][item]}</p>
-                    <div class="mx-auto flex items-center justify-center">
-                      <p class="text-2xl font-normal! dark:text-snow">{character()[item]}</p>
-                    </div>
-                  </div>
+            <StatsBlock
+              items={[
+                { title: TRANSLATION[locale()].mana_spend_limit, value: character().mana_spend_limit },
+                { title: TRANSLATION[locale()].spells, value: character().spells },
+                {
+                  title: TRANSLATION[locale()].attack,
+                  value:
+                    <Dice
+                      width="36"
+                      height="36"
+                      text={modifier(character().attack)}
+                      onClick={() => props.openDiceRoll('/check attack spell', character().attack)}
+                    />
                 }
-              </For>
-            </div>
-            <Button default textable classList="mt-2" onClick={() => setSpellsSelectingMode(true)}>
-              {TRANSLATION[locale()].selectSpells}
-            </Button>
-
+              ]}
+            />
+            <Show when={characterItems().length > 0}>
+              <div class="blockable p-4 mt-2">
+                <h2 class="text-lg flex items-center gap-x-2">Фокусировка</h2>
+                <For each={characterItems()}>
+                  {(item) =>
+                    <div class="mt-2">
+                      <p>{item.name}</p>
+                      <div class="flex flex-wrap gap-x-2 gap-y-1 mt-1">
+                        <For each={item.info.features}>
+                          {(feature) =>
+                            <p class="tag" onClick={() => showTagInfo(feature, TRANSLATION[locale()].features[feature])}>
+                              {TRANSLATION[locale()].features[feature]}
+                            </p>
+                          }
+                        </For>
+                      </div>
+                    </div>
+                  }
+                </For>
+              </div>
+            </Show>
             <Show when={learnedSpellIds().length > 0}>
               <div class="mt-2">
                 <For each={learnedSpells()}>
@@ -270,8 +315,15 @@ export const Dc20Spells = (props) => {
                 </For>
               </div>
             </Show>
+            <Button default textable classList="mt-2" onClick={() => setSpellsSelectingMode(true)}>
+              {TRANSLATION[locale()].selectSpells}
+            </Button>
           </Show>
         </Show>
+        <Modal classList="md:max-w-md!">
+          <p class="mb-3 text-xl">{tagInfo()[0]}</p>
+          <p>{tagInfo()[1]}</p>
+        </Modal>
       </GuideWrapper>
     </ErrorWrapper>
   );

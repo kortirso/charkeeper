@@ -325,6 +325,8 @@ en:
           two_hand: Two-Hand %{value}
           volley: Volley %{value}
     dc20:
+      focus:
+        Long-Ranged: Spells you cast with a Range greater than 1 have their range increase by 5 Spaces.
       weapon:
         Axe: You deal +1 situational damage against creatures that are Bleeding.
         Bow: You deal +1 situational damage against creatures that are Slowed.
