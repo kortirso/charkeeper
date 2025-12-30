@@ -7,10 +7,10 @@ export const DualityDice = (props) => (
     onClick={props.onClick ? props.onClick : null} // eslint-disable-line solid/reactivity
   >
     <div class="relative z-20">
-      <D20 width={props.width || 30} height={props.height || 30} fill="#C28D23" />
+      <D20 mode="hope" width={props.width || 30} height={props.height || 30} />
     </div>
     <div class="absolute bottom-0 right-0 z-10">
-      <D20 width={props.width || 30} height={props.height || 30} fill="#2362C2" />
+      <D20 mode="fear" width={props.width || 30} height={props.height || 30} />
     </div>
   </div>
 );

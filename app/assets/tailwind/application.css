@@ -403,7 +403,7 @@ nav.pagy.nav a.gap {
 }
 
 .roll-result {
-  @apply px-1 py-0.5 rounded text-sm uppercase ml-2 font-medium!;
+  @apply px-1 py-0.5 rounded text-xs uppercase ml-1 font-medium!;
 }
 
 .roll-result.crit_success {
