@@ -3,7 +3,7 @@
 module Homebrews
   module Daggerheart
     class CommunitySerializer < ApplicationSerializer
-      attributes :id, :name, :features
+      attributes :id, :name, :features, :public, :own
 
       def features
         return [] unless context
@@ -16,6 +16,13 @@ module Homebrews
           context: { bonuses: context[:bonuses] }
         )
         JSON.parse(resp.to_json)
+      end
+
+      def own
+        return [] unless context
+        return [] unless context[:current_user_id]
+
+        object.user_id == context[:current_user_id]
       end
     end
   end

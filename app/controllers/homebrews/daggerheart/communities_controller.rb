@@ -5,7 +5,8 @@ module Homebrews
     class CommunitiesController < Homebrews::BaseController
       include Deps[
         add_daggerheart_community: 'commands.homebrew_context.daggerheart.add_community',
-        change_daggerheart_community: 'commands.homebrew_context.daggerheart.change_community'
+        change_daggerheart_community: 'commands.homebrew_context.daggerheart.change_community',
+        copy_community: 'commands.homebrew_context.daggerheart.copy_community'
       ]
       include SerializeRelation
       include SerializeResource
@@ -15,6 +16,7 @@ module Homebrews
       before_action :find_features, only: %i[index show]
       before_action :find_feature_bonuses, only: %i[index show]
       before_action :find_existing_characters, only: %i[destroy]
+      before_action :find_another_community, only: %i[copy]
 
       def index
         serialize_relation(
@@ -22,7 +24,7 @@ module Homebrews
           ::Homebrews::Daggerheart::CommunitySerializer,
           :communities,
           {},
-          { features: @features, bonuses: @bonuses }
+          { features: @features, bonuses: @bonuses, current_user_id: current_user.id }
         )
       end
 
@@ -53,10 +55,22 @@ module Homebrews
         only_head_response
       end
 
+      def copy
+        case copy_community.call({ community: @community, user: current_user })
+        in { errors: errors, errors_list: errors_list } then unprocessable_response(errors, errors_list)
+        in { result: result }
+          serialize_resource(result, ::Homebrews::Daggerheart::CommunitySerializer, :community, {}, :created)
+        end
+      end
+
       private
 
       def find_communities
-        @communities = ::Daggerheart::Homebrew::Community.where(user_id: current_user.id).order(created_at: :desc)
+        @communities =
+          ::Daggerheart::Homebrew::Community.where(user_id: current_user.id)
+            .or(
+              ::Daggerheart::Homebrew::Community.where.not(user_id: current_user.id).where(public: true)
+            ).order(created_at: :desc)
       end
 
       def find_features
@@ -70,6 +84,10 @@ module Homebrews
 
       def find_community
         @community = ::Daggerheart::Homebrew::Community.find_by!(id: params[:id], user_id: current_user.id)
+      end
+
+      def find_another_community
+        @community = ::Daggerheart::Homebrew::Community.where.not(user_id: current_user.id).find(params[:id])
       end
 
       def find_existing_characters

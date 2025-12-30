@@ -38,8 +38,8 @@ const TRANSLATION = {
     name: 'Название расы',
     save: 'Сохранить',
     addFeature: 'Добавить способность',
-    showPublic: 'Показать открытые',
-    public: 'Открытая',
+    showPublic: 'Показать общедоступные',
+    public: 'Общедоступная',
     copyCompleted: 'Копирование расы завершено'
   }
 }

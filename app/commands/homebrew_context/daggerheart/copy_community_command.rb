@@ -24,7 +24,8 @@ module HomebrewContext
           copy_feats.call(
             feats: input[:community].user.feats.where(origin: 1, origin_value: input[:community].id).to_a,
             user: input[:user],
-            origin_value: community.id
+            origin_value: community.id,
+            no_refresh: true
           )
 
           community

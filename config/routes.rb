@@ -167,7 +167,9 @@ Rails.application.routes.draw do
       resources :ancestries, only: %i[index show create update destroy] do
         post :copy, on: :member
       end
-      resources :communities, only: %i[index show create update destroy]
+      resources :communities, only: %i[index show create update destroy] do
+        post :copy, on: :member
+      end
       resources :specialities, only: %i[index show create update destroy]
       resources :subclasses, only: %i[index show create update destroy]
       resources :domains, only: %i[index show create update destroy]
