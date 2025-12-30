@@ -27,8 +27,8 @@ const TRANSLATION = {
 export const DaggerheartCraft = (props) => {
   const character = () => props.character;
 
-  const [toolId, setToolId] = createSignal(undefined);
-  const [itemId, setItemId] = createSignal(undefined);
+  const [tool, setTool] = createSignal(undefined);
+  const [item, setItem] = createSignal(undefined);
   const [amount, setAmount] = createSignal(1);
 
   const [lastActiveCharacterId, setLastActiveCharacterId] = createSignal(undefined);
@@ -53,33 +53,36 @@ export const DaggerheartCraft = (props) => {
   });
 
   const craftItems = createMemo(() => {
-    if (!toolId()) return [];
+    if (!tool()) return [];
 
-    return tools().find(({ id }) => id === toolId()).items;
+    return tools().find(({ id }) => id === tool().id).items;
   });
 
   const changeTool = (toolId) => {
-    const availableItems = tools().find(({ id }) => id === toolId).items;
+    const selectedTool = tools().find(({ id }) => id === toolId);
+    const availableItems = selectedTool.items;
 
     batch(() => {
-      setToolId(toolId);
+      setTool(selectedTool);
       setAmount(1);
 
-      if (availableItems.length === 1) setItemId(availableItems[0].id);
-      else setItemId(undefined);
+      if (availableItems.length === 1) setItem(availableItems[0]);
+      else setItem(undefined);
     });
   }
 
   const changeCraftItem = (itemId) => {
+    const selectedItem = tool().items.find(({ id }) => id === itemId);
+
     batch(() => {
-      setItemId(itemId);
+      setItem(selectedItem);
       setAmount(1);
     });
   }
 
   const craft = async () => {
     const result = await createCraftRequest(
-      appState.accessToken, character().provider, character().id, { item_id: itemId(), amount: Math.trunc(amount()) }
+      appState.accessToken, character().provider, character().id, { item_id: item().id, amount: Math.trunc(amount()) }
     )
 
     if (result.errors_list === undefined) {
@@ -94,28 +97,30 @@ export const DaggerheartCraft = (props) => {
         <div class="blockable p-4">
           <Show
             when={tools().length > 0}
-            fallback={
-              <p>{TRANSLATION[locale()].noTools}</p>
-            }
+            fallback={<p>{TRANSLATION[locale()].noTools}</p>}
           >
             <Select
-              containerClassList="w-full mb-2"
+              containerClassList="w-full"
               labelText={TRANSLATION[locale()].selectTool}
               items={Object.fromEntries(tools().map((item) => [item.id, item.name[locale()]]))}
-              selectedValue={toolId()}
+              selectedValue={tool()?.id}
               onSelect={changeTool}
             />
-            <Show when={toolId()}>
+            <Show when={tool()}>
+              <p class="mt-1 text-sm text-stone-800 dark:text-stone-200">{tool().description}</p>
               <Select
-                containerClassList="w-full mb-2"
+                containerClassList="w-full mt-4"
                 labelText={TRANSLATION[locale()].selectItem}
                 items={Object.fromEntries(craftItems().map((item) => [item.id, item.name[locale()]]))}
-                selectedValue={itemId()}
+                selectedValue={item()?.id}
                 onSelect={changeCraftItem}
               />
             </Show>
-            <Show when={itemId()}>
-              <div class="flex gap-x-2 mb-2">
+            <Show when={item()}>
+              <Show when={item().description}>
+                <p class="mt-1 text-sm text-stone-800 dark:text-stone-200">{item().description}</p>
+              </Show>
+              <div class="mt-4">
                 <Input
                   numeric
                   containerClassList="flex-1"
@@ -124,7 +129,7 @@ export const DaggerheartCraft = (props) => {
                   onInput={setAmount}
                 />
               </div>
-              <Button default onClick={craft}>{TRANSLATION[locale()].craft}</Button>
+              <Button default classList="mt-4" onClick={craft}>{TRANSLATION[locale()].craft}</Button>
             </Show>
           </Show>
         </div>
