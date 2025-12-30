@@ -182,10 +182,10 @@ export const createDiceRoll = () => {
       }
 
       const dualityColor = (index) => {
-        if (index === 0) return '#C28D23';
-        if (index === 1) return '#2362C2';
+        if (index === 0) return 'hope';
+        if (index === 1) return 'fear';
 
-        return null;
+        return 'default';
       }
 
       return (
@@ -238,23 +238,23 @@ export const createDiceRoll = () => {
                           when={rollResult() === undefined}
                           fallback={
                             <>
-                              <Dice fill={dualityColor(0)} onClick={() => rerollDhDice('d12', 0)} text={rollResult().rolls[0][1]} />
-                              <Dice fill={dualityColor(1)} onClick={() => rerollDhDice('d12', 1)} text={rollResult().rolls[1][1]} />
+                              <Dice mode="hope" type="D12" onClick={() => rerollDhDice('d12', 0)} text={rollResult().rolls[0][1]} />
+                              <Dice mode="fear" type="D12" onClick={() => rerollDhDice('d12', 1)} text={rollResult().rolls[1][1]} />
                             </>
                           }
                         >
-                          <Dice fill={dualityColor(0)} text="D12" />
-                          <Dice fill={dualityColor(1)} text="D12" />
+                          <Dice mode="hope" type="D12" text="D12" />
+                          <Dice mode="fear" type="D12" text="D12" />
                         </Show>
                         <Show when={advantage() !== 0}>
                           <div class="ml-2">
                             <Show
                               when={rollResult() === undefined}
                               fallback={
-                                <Dice onClick={() => rerollDhDice('d6', 2)} text={rollResult().rolls[2][1]} />
+                                <Dice type={advantage() > 0 ? props.advantageDice.toUpperCase() : 'D6'} onClick={() => rerollDhDice('d6', 2)} text={rollResult().rolls[2][1]} />
                               }
                             >
-                              <Dice text={advantage() > 0 ? 'Adv' : 'Dis'} />
+                              <Dice type={advantage() > 0 ? props.advantageDice.toUpperCase() : 'D6'} text={advantage() > 0 ? 'Adv' : 'Dis'} />
                             </Show>
                           </div>
                         </Show>
@@ -351,15 +351,17 @@ export const createDiceRoll = () => {
                           when={dualityMode()}
                           fallback={
                             <Dice
+                              type={dice}
                               onClick={() => removeDice(index())}
                               text={rollResult() ? (rollResult().rolls.length - 1 >= index() && rollResult().rolls[index()][0].includes('d') ? rollResult().rolls[index()][1] : dice) : dice}
                             />
                           }
                         >
                           <Dice
+                            type={dice}
                             onClick={() => removeDice(index())}
                             text={rollResult() ? (rollResult().rolls.length - 1 >= index() && rollResult().rolls[index()][0].includes('d') ? rollResult().rolls[index()][1] : dice) : dice}
-                            fill={dualityColor(index())}
+                            mode={dualityColor(index())}
                           />
                         </Show>
                       }
@@ -406,13 +408,13 @@ export const createDiceRoll = () => {
                   classList={{ 'w-auto': isOpen() }}
                 >
                   <Show when={isOpen()}>
-                    <Dice onClick={() => addDice('D4')} text="D4" />
-                    <Dice onClick={() => addDice('D6')} text="D6" />
-                    <Dice onClick={() => addDice('D8')} text="D8" />
-                    <Dice onClick={() => addDice('D10')} text="D10" />
-                    <Dice onClick={() => addDice('D12')} text="D12" />
-                    <Dice onClick={() => addDice('D20')} text="D20" />
-                    <Dice onClick={() => addDice('D100')} text="D100" />
+                    <Dice type="D4" onClick={() => addDice('D4')} text="D4" />
+                    <Dice type="D6" onClick={() => addDice('D6')} text="D6" />
+                    <Dice type="D8" onClick={() => addDice('D8')} text="D8" />
+                    <Dice type="D10" onClick={() => addDice('D10')} text="D10" />
+                    <Dice type="D12" onClick={() => addDice('D12')} text="D12" />
+                    <Dice type="D20" onClick={() => addDice('D20')} text="D20" />
+                    <Dice type="D20" onClick={() => addDice('D100')} text="D100" />
                   </Show>
                   <Dice
                     onClick={() => isOpen() ? resetDices() : setIsOpen('rollCommand')}
