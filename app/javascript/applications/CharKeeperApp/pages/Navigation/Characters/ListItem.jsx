@@ -12,12 +12,15 @@ import { clickOutside, copyToClipboard } from '../../../helpers';
 
 const AVAILABLE_JSON = ['daggerheart'];
 const AVAILABLE_PDF = ['daggerheart', 'dnd5', 'dnd2024', 'pathfinder2'];
+const AVAILABLE_RESET = ['daggerheart'];
 const TRANSLATION = {
   en: {
-    delete: 'Delete'
+    delete: 'Delete',
+    reset: 'Reset'
   },
   ru: {
-    delete: 'Удалить'
+    delete: 'Удалить',
+    reset: 'Сбросить'
   }
 }
 
@@ -47,6 +50,11 @@ export const CharactersListItem = (props) => {
   const deleteClick = (event) => {
     setIsOpen(false);
     props.onDeleteCharacter(event);
+  }
+
+  const resetClick = (event) => {
+    setIsOpen(false);
+    props.onResetCharacter(event);
   }
 
   const copy = (event) => {
@@ -133,7 +141,10 @@ export const CharactersListItem = (props) => {
           </IconButton>
           <Show when={isOpen()}>
             <div class="absolute z-9 right-0 border border-gray-200 rounded overflow-hidden">
-              <p class="dots-item" onClick={deleteClick}>{TRANSLATION[locale()]['delete']}</p>
+              <p class="dots-item" onClick={deleteClick}>{TRANSLATION[locale()].delete}</p>
+              <Show when={AVAILABLE_RESET.includes(character().provider)}>
+                <p class="dots-item" onClick={resetClick}>{TRANSLATION[locale()].reset}</p>
+              </Show>
               <Show when={AVAILABLE_JSON.includes(character().provider)}>
                 <p class="dots-item" onClick={copy}>{t('charactersPage.onCopyCharacter')}</p>
               </Show>

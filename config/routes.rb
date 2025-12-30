@@ -70,6 +70,7 @@ Rails.application.routes.draw do
     resources :auth, only: %i[create]
     resources :characters, only: %i[index show destroy] do
       resources :notes, only: %i[index create update destroy], module: 'characters'
+      resources :reset, only: %i[create], module: 'characters'
 
       scope ':provider' do
         resources :items, only: %i[index create update destroy], module: 'characters' do

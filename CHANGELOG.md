@@ -5,6 +5,9 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 ## Unreleased
+### Added
+- reseting DH characters to 1 level
+
 ### Modified
 - rendering dices with correct type
 - craft item selection if only 1 is available
