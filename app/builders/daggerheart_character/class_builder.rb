@@ -2,6 +2,8 @@
 
 module DaggerheartCharacter
   class ClassBuilder
+    include Deps[item_add: 'commands.characters_context.items.add']
+
     def call(result:)
       class_builder(result[:main_class]).call(result: result)
     end
@@ -9,10 +11,10 @@ module DaggerheartCharacter
     def equip(character:)
       class_builder(character.data.main_class).equip(character: character)
 
-      Character::Item.create(character: character, item: Daggerheart::Item.find_by(slug: 'torch'), state: 'backpack')
-      Character::Item.create(character: character, item: Daggerheart::Item.find_by(slug: 'rope'), state: 'backpack')
-      Character::Item.create(character: character, item: Daggerheart::Item.find_by(slug: 'tent'), state: 'backpack')
-      Character::Item.create(character: character, item: Daggerheart::Item.find_by(slug: 'bedroll'), state: 'backpack')
+      item_add.call(character: character, item: Daggerheart::Item.find_by(slug: 'torch'), state: 'backpack')
+      item_add.call(character: character, item: Daggerheart::Item.find_by(slug: 'rope'), state: 'backpack')
+      item_add.call(character: character, item: Daggerheart::Item.find_by(slug: 'tent'), state: 'backpack')
+      item_add.call(character: character, item: Daggerheart::Item.find_by(slug: 'bedroll'), state: 'backpack')
     end
 
     private

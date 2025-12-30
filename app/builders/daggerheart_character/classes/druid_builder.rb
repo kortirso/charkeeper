@@ -3,6 +3,8 @@
 module DaggerheartCharacter
   module Classes
     class DruidBuilder
+      include Deps[item_add: 'commands.characters_context.items.add']
+
       def call(result:)
         result[:evasion] = 10
         result[:health_max] = 6
@@ -12,13 +14,11 @@ module DaggerheartCharacter
         result
       end
 
-      # rubocop: disable Layout/LineLength
       def equip(character:)
-        Character::Item.create(character: character, item: Daggerheart::Item.find_by(slug: 'shortstaff'), states: Character::Item.default_states.merge({ 'hands' => 1 }))
-        Character::Item.create(character: character, item: Daggerheart::Item.find_by(slug: 'round_shield'), states: Character::Item.default_states.merge({ 'hands' => 1 }))
-        Character::Item.create(character: character, item: Daggerheart::Item.find_by(slug: 'leather_armor'), states: Character::Item.default_states.merge({ 'equipment' => 1 }))
+        item_add.call(character: character, item: Daggerheart::Item.find_by(slug: 'shortstaff'), state: 'hands')
+        item_add.call(character: character, item: Daggerheart::Item.find_by(slug: 'round_shield'), state: 'hands')
+        item_add.call(character: character, item: Daggerheart::Item.find_by(slug: 'leather_armor'), state: 'equipment')
       end
-      # rubocop: enable Layout/LineLength
     end
   end
 end
