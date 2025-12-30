@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## Unreleased
 ### Modified
 - rendering dices with correct type
+- craft item selection if only 1 is available
 
 ## [0.3.27] - 2025-12-29
 ### Added

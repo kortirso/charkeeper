@@ -65,12 +65,20 @@ export const Dnd5Craft = (props) => {
   });
 
   const changeTool = (toolId) => {
+    const availableItems = tools().find(({ id }) => id === toolId).items;
+
     batch(() => {
       setToolId(toolId);
-      setItemId(undefined);
-      setCraftItem(undefined);
       setAmount(1);
       setPrice(1);
+
+      if (availableItems.length === 1) {
+        setItemId(availableItems[0].id);
+        setCraftItem(availableItems[0]);
+      } else {
+        setItemId(undefined);
+        setCraftItem(undefined);
+      }
     });
   }
 
