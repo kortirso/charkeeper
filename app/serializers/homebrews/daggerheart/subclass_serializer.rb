@@ -3,7 +3,7 @@
 module Homebrews
   module Daggerheart
     class SubclassSerializer < ApplicationSerializer
-      attributes :id, :name, :class_name, :features, :spellcast, :mechanics
+      attributes :id, :name, :class_name, :features, :spellcast, :mechanics, :public, :own
 
       delegate :spellcast, :mechanics, to: :data
       delegate :data, to: :object
@@ -19,6 +19,13 @@ module Homebrews
           context: { bonuses: context[:bonuses] }
         )
         JSON.parse(resp.to_json)
+      end
+
+      def own
+        return [] unless context
+        return [] unless context[:current_user_id]
+
+        object.user_id == context[:current_user_id]
       end
     end
   end

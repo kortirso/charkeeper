@@ -171,7 +171,9 @@ Rails.application.routes.draw do
         post :copy, on: :member
       end
       resources :specialities, only: %i[index show create update destroy]
-      resources :subclasses, only: %i[index show create update destroy]
+      resources :subclasses, only: %i[index show create update destroy] do
+        post :copy, on: :member
+      end
       resources :domains, only: %i[index show create update destroy]
       resources :transformations, only: %i[index show create update destroy]
       resources :feats, only: %i[index create destroy]
