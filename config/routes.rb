@@ -186,6 +186,10 @@ Rails.application.routes.draw do
     namespace :dnd do
       resources :items, only: %i[index show create update destroy]
     end
+
+    namespace :users do
+      resources :books, only: %i[update]
+    end
   end
 
   namespace :webhooks do

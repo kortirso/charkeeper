@@ -111,8 +111,8 @@ module Charkeeper
       WebhooksContext::Telegram::ReceiveChatMemberWebhookCommand.new
     }
 
-    register('commands.homebrew_context.add_book') { HomebrewContext::AddBookCommand.new }
-    register('commands.homebrew_context.remove_book') { HomebrewContext::RemoveBookCommand.new }
+    register('commands.homebrew_context.books.add') { HomebrewContext::Books::AddCommand.new }
+    register('commands.homebrew_context.books.change') { HomebrewContext::Books::ChangeCommand.new }
 
     register('commands.homebrew_context.add_race') { HomebrewContext::AddRaceCommand.new }
 

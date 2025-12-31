@@ -37,21 +37,14 @@ describe Homebrews::Daggerheart::BooksController do
       end
 
       context 'for existing book' do
-        let!(:book) { create :homebrew_book, shared: true }
-        let(:request) { patch :update, params: { id: book.id, charkeeper_access_token: access_token } }
+        let!(:book) { create :homebrew_book, user: user_session.user }
+        let(:request) { patch :update, params: { id: book.id, brewery: { public: true }, charkeeper_access_token: access_token } }
 
-        it 'attaches book to user', :aggregate_failures do
-          expect { request }.to change(user_session.user.books, :count).by(1)
+        it 'updates book', :aggregate_failures do
+          request
+
+          expect(book.reload.public?).to be_truthy
           expect(response).to have_http_status :ok
-        end
-
-        context 'when book is attached' do
-          before { create :user_book, user: user_session.user, book: book }
-
-          it 'deattaches book from user', :aggregate_failures do
-            expect { request }.to change(user_session.user.books, :count).by(-1)
-            expect(response).to have_http_status :ok
-          end
         end
       end
     end

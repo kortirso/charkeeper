@@ -1,11 +1,12 @@
-import { createSignal, createEffect, Show, For, batch } from 'solid-js';
+import { createSignal, createEffect, createMemo, Show, For, batch } from 'solid-js';
 import { createStore } from 'solid-js/store';
 
 import { useAppState, useAppLocale, useAppAlert } from '../../../context';
 import { Checkbox, Button, Input, createModal } from '../../../components';
-import { Trash } from '../../../assets';
+import { Trash, Edit } from '../../../assets';
 import { fetchDaggerheartBooks } from '../../../requests/fetchDaggerheartBooks';
 import { changeDaggerheartBook } from '../../../requests/changeDaggerheartBook';
+import { changeUserBook } from '../../../requests/changeUserBook';
 import { createDaggerheartBook } from '../../../requests/createDaggerheartBook';
 import { removeDaggerheartBook } from '../../../requests/removeDaggerheartBook';
 
@@ -23,7 +24,9 @@ const TRANSLATION = {
     newBookTitle: 'Book form',
     name: 'Book name',
     save: 'Save',
-    official: 'Approved'
+    official: 'Approved',
+    showPublic: 'Show public',
+    public: 'Public'
   },
   ru: {
     add: 'Добавить книгу',
@@ -38,14 +41,17 @@ const TRANSLATION = {
     newBookTitle: 'Редактирование книги',
     name: 'Название книги',
     save: 'Сохранить',
-    official: 'Одобренная'
+    official: 'Одобренная',
+    showPublic: 'Показать общедоступные',
+    public: 'Общедоступная'
   }
 }
 
 export const DaggerheartBooks = () => {
-  const [bookForm, setBookForm] = createStore({ name: '' });
+  const [bookForm, setBookForm] = createStore({ name: '', public: false });
 
   const [books, setBooks] = createSignal(undefined);
+  const [open, setOpen] = createSignal(false);
 
   const [appState] = useAppState();
   const [{ renderAlerts }] = useAppAlert();
@@ -68,11 +74,28 @@ export const DaggerheartBooks = () => {
     );
   });
 
+  const filteredBooks = createMemo(() => {
+    if (books() === undefined) return [];
+
+    return books().filter(({ own, shared, enabled }) => open() ? (!own && !shared) : (own || shared || enabled));
+  });
+
   const openCreateBookModal = () => {
     batch(() => {
-      setBookForm({ id: null, name: '' });
+      setBookForm({ id: null, name: '', public: false });
       openModal();
     });
+  }
+
+  const openChangeBookModal = (book) => {
+    batch(() => {
+      setBookForm({ id: book.id, name: book.name, public: book.public });
+      openModal();
+    });
+  }
+
+  const saveBook = () => {
+    bookForm.id === null ? createBook() : updateBook();
   }
 
   const createBook = async () => {
@@ -81,10 +104,28 @@ export const DaggerheartBooks = () => {
     if (result.errors_list === undefined) {
       batch(() => {
         setBooks([result.book].concat(books()));
-        setBookForm({ id: null, name: '' });
+        setBookForm({ id: null, name: '', public: false });
         closeModal();
       });
     }
+  }
+
+  const updateBook = async () => {
+    const result = await changeDaggerheartBook(appState.accessToken, bookForm.id, { brewery: bookForm, only_head: true });
+
+    if (result.errors_list === undefined) {
+      const newBooks = books().map((item) => {
+        if (bookForm.id !== item.id) return item;
+
+        return { ...item, name: bookForm.name, public: bookForm.public };
+      });
+
+      batch(() => {
+        setBooks(newBooks);
+        setBookForm({ id: null, name: '', public: false });
+        closeModal();
+      });
+    } else renderAlerts(result.errors_list);
   }
 
   const removeBook = async (book) => {
@@ -96,7 +137,7 @@ export const DaggerheartBooks = () => {
   }
 
   const toggleBook = async (bookId) => {
-    const result = await changeDaggerheartBook(appState.accessToken, bookId);
+    const result = await changeUserBook(appState.accessToken, bookId);
 
     if (result.errors_list === undefined) {
       setBooks(books().map((item) => {
@@ -109,9 +150,12 @@ export const DaggerheartBooks = () => {
 
   return (
     <Show when={books() !== undefined} fallback={<></>}>
-      <Button default classList="mb-4 px-2 py-1" onClick={openCreateBookModal}>{TRANSLATION[locale()].add}</Button>
+      <div class="flex">
+        <Button default classList="mb-4 px-2 py-1" onClick={openCreateBookModal}>{TRANSLATION[locale()].add}</Button>
+        <Button default active={open()} classList="ml-4 mb-4 px-2 py-1" onClick={() => setOpen(!open())}>{TRANSLATION[locale()].showPublic}</Button>
+      </div>
       <div class="grid grid-cols-1 emd:grid-cols-2 gap-4">
-        <For each={books().sort((item) => !item.shared)}>
+        <For each={filteredBooks().sort((item) => !item.shared)}>
           {(book) =>
             <div class="blockable p-4">
               <div class="flex items-center justify-between mb-2">
@@ -159,9 +203,14 @@ export const DaggerheartBooks = () => {
                 </p>
               </Show>
               <Show when={book.own}>
-                <Button default classList="px-2 py-1" onClick={() => removeBook(book)}>
-                  <Trash width="20" height="20" />
-                </Button>
+                <div class="flex items-center justify-end gap-x-2 text-neutral-700">
+                  <Button default classList="px-2 py-1" onClick={() => openChangeBookModal(book)}>
+                    <Edit width="20" height="20" />
+                  </Button>
+                  <Button default classList="px-2 py-1" onClick={() => removeBook(book)}>
+                    <Trash width="20" height="20" />
+                  </Button>
+                </div>
               </Show>
             </div>
           }
@@ -175,7 +224,15 @@ export const DaggerheartBooks = () => {
           value={bookForm.name}
           onInput={(value) => setBookForm({ ...bookForm, name: value })}
         />
-        <Button default classList="px-2 py-1" onClick={createBook}>
+        <Checkbox
+          labelText={TRANSLATION[locale()].public}
+          labelPosition="right"
+          labelClassList="ml-2"
+          checked={bookForm.public}
+          classList="mb-4"
+          onToggle={() => setBookForm({ ...bookForm, public: !bookForm.public })}
+        />
+        <Button default classList="px-2 py-1" onClick={saveBook}>
           {TRANSLATION[locale()].save}
         </Button>
       </Modal>
