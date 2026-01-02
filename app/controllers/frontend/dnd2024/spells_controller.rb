@@ -6,7 +6,9 @@ module Frontend
       include SerializeRelation
 
       def index
-        serialize_relation_v2(relation, ::Dnd2024::SpellSerializer, :spells, cache_options: cache_options)
+        serialize_relation_v2(
+          relation, ::Dnd2024::SpellSerializer, :spells, cache_options: cache_options, order_options: { key: 'name' }
+        )
       end
 
       private

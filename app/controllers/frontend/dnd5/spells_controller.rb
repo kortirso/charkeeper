@@ -8,7 +8,9 @@ module Frontend
       INDEX_SERIALIZER_FIELDS = %i[id slug name level available_for].freeze
 
       def index
-        serialize_relation_v2(relation, ::Dnd5::SpellSerializer, :spells, cache_options: cache_options)
+        serialize_relation_v2(
+          relation, ::Dnd5::SpellSerializer, :spells, cache_options: cache_options, order_options: { key: 'name' }
+        )
       end
 
       private

@@ -16,7 +16,7 @@ module Frontend
         before_action :find_spell, only: %i[create]
 
         def index
-          serialize_relation_v2(spells, ::Dnd2024::Characters::SpellSerializer, :spells)
+          serialize_relation_v2(spells, ::Dnd2024::Characters::SpellSerializer, :spells, order_options: { key: 'name' })
         end
 
         def create

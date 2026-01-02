@@ -93,8 +93,8 @@ export const Dnd5Spells = (props) => {
     Promise.all([fetchCharacterSpells(), fetchSpells()]).then(
       ([characterSpellsData, spellsData]) => {
         batch(() => {
-          setCharacterSpells(characterSpellsData.spells.sort((a, b) => a.name > b.name));
-          setSpells(spellsData.spells.sort((a, b) => a.name > b.name));
+          setCharacterSpells(characterSpellsData.spells);
+          setSpells(spellsData.spells);
         });
       }
     );
