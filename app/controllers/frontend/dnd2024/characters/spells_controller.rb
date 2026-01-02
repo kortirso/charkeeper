@@ -12,13 +12,11 @@ module Frontend
         include SerializeRelation
         include SerializeResource
 
-        INDEX_SERIALIZER_FIELDS = %i[id ready_to_use prepared_by spell_ability notes slug name level spell_id].freeze
-
         before_action :find_character
         before_action :find_spell, only: %i[create]
 
         def index
-          serialize_relation(spells, ::Dnd2024::Characters::SpellSerializer, :spells, only: INDEX_SERIALIZER_FIELDS)
+          serialize_relation_v2(spells, ::Dnd2024::Characters::SpellSerializer, :spells)
         end
 
         def create
@@ -53,7 +51,13 @@ module Frontend
         end
 
         def spells
-          @character.spells.includes(:spell)
+          @character.spells.includes(:spell).order(order_by)
+        end
+
+        def order_by
+          return Arel.sql("spells.name->>'ru' COLLATE \"ru_RU.UTF-8\" ASC") if I18n.locale == :ru
+
+          Arel.sql("spells.name->>'#{I18n.locale}' ASC")
         end
 
         def create_params

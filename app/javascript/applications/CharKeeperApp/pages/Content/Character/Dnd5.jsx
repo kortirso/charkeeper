@@ -201,7 +201,7 @@ export const Dnd5 = (props) => {
               </Equipment>
             </Match>
             <Match when={activeMobileTab() === 'spells'}>
-              <Dnd5Spells character={character()} onReplaceCharacter={props.onReplaceCharacter} />
+              <Dnd5Spells character={character()} openDiceRoll={openDiceRoll} onReplaceCharacter={props.onReplaceCharacter} />
             </Match>
             <Match when={activeMobileTab() === 'notes'}>
               <Notes />
@@ -346,7 +346,7 @@ export const Dnd5 = (props) => {
               </Equipment>
             </Match>
             <Match when={activeTab() === 'spells'}>
-              <Dnd5Spells character={character()} onReplaceCharacter={props.onReplaceCharacter} />
+              <Dnd5Spells character={character()} openDiceRoll={openDiceRoll} onReplaceCharacter={props.onReplaceCharacter} />
             </Match>
             <Match when={activeTab() === 'notes'}>
               <Notes />
