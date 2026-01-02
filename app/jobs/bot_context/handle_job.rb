@@ -22,7 +22,7 @@ module BotContext
     end
 
     def identity(message)
-      User::Identity.find_by(provider: User::Identity::TELEGRAM, uid: message.dig(:chat, :id).to_s)
+      User::Identity.find_by(provider: User::Identity::TELEGRAM, uid: message.dig(:from, :id).to_s)
     end
   end
 end
