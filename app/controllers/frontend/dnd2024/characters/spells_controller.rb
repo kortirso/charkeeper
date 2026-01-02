@@ -51,13 +51,7 @@ module Frontend
         end
 
         def spells
-          @character.spells.includes(:spell).order(order_by)
-        end
-
-        def order_by
-          return Arel.sql("spells.name->>'ru' COLLATE \"ru_RU.UTF-8\" ASC") if I18n.locale == :ru
-
-          Arel.sql("spells.name->>'#{I18n.locale}' ASC")
+          @character.spells.includes(:spell)
         end
 
         def create_params

@@ -20,13 +20,7 @@ module Frontend
       def relation
         relation = ::Spell.dnd5
         relation = relation.where("data ->> 'level' IN (?)", (0..params[:max_level].to_i).to_a.map(&:to_s)) if params[:max_level]
-        relation.order(order_by)
-      end
-
-      def order_by
-        return Arel.sql("name->>'ru' COLLATE \"ru_RU.UTF-8\" ASC") if I18n.locale == :ru
-
-        Arel.sql("name->>'#{I18n.locale}' ASC")
+        relation
       end
     end
   end
