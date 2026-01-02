@@ -12,6 +12,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - rendering dices with correct type
 - craft item selection if only 1 is available
 - rendering craft descriptions
+- sorting spells for D&D characters
 
 ### Fixed
 - invalid total speed while wearing armor without strength requirements

@@ -1,11 +1,12 @@
 import { createSignal, createEffect, For, Show, createMemo, batch, Switch, Match } from 'solid-js';
 
 import { SpellsTable } from './SpellsTable';
-import { StatsBlock, ErrorWrapper, Button, Toggle, Checkbox, Select, GuideWrapper } from '../../../../components';
+import { StatsBlock, ErrorWrapper, Button, Toggle, Checkbox, Select, GuideWrapper, Dice } from '../../../../components';
 import config from '../../../../data/dnd2024.json';
 import { useAppState, useAppLocale } from '../../../../context';
 import {
-  Plus, Minus, Avatar, Artificer, Barbarian, Bard, Cleric, Druid, Fighter, Monk, Paladin, Ranger, Rogue, Sorcerer, Warlock, Wizard
+  Plus, Minus, Avatar, Artificer, Barbarian, Bard, Cleric, Druid, Fighter, Monk, Paladin, Ranger, Rogue, Sorcerer, Warlock,
+  Wizard
 } from '../../../../assets';
 import { fetchSpellsRequest } from '../../../../requests/fetchSpellsRequest';
 import { fetchCharacterSpellsRequest } from '../../../../requests/fetchCharacterSpellsRequest';
@@ -37,7 +38,8 @@ const TRANSLATION = {
     onlyPreparedSpells: 'Only prepared',
     customSpellAbility: 'Learn with custom spell ability',
     back: 'Back',
-    noValue: 'Default'
+    noValue: 'Default',
+    filterByClass: 'Filter by class'
   },
   ru: {
     cantrips: 'Заговоры',
@@ -47,11 +49,12 @@ const TRANSLATION = {
     known: 'Известные',
     spellAttack: 'Бонус атаки',
     saveDC: 'Спасброски',
-    onlyAvailableSpells: 'Доступные',
-    onlyPreparedSpells: 'Подготовленные',
+    onlyAvailableSpells: 'Только доступные',
+    onlyPreparedSpells: 'Только подготовленные',
     customSpellAbility: 'Изучить с магической характеристикой',
     back: 'Назад',
-    noValue: 'Стандартная'
+    noValue: 'Стандартная',
+    filterByClass: 'Фильтр по классам'
   }
 }
 
@@ -91,7 +94,7 @@ export const Dnd5Spells = (props) => {
       ([characterSpellsData, spellsData]) => {
         batch(() => {
           setCharacterSpells(characterSpellsData.spells);
-          setSpells(spellsData.spells.sort((a, b) => a.name > b.name));
+          setSpells(spellsData.spells);
         });
       }
     );
@@ -252,6 +255,7 @@ export const Dnd5Spells = (props) => {
                   onSelect={(value) => setSpellAbility(value === 'null' ? null : value)}
                 />
               </div>
+              <Button default textable classList="mb-2" onClick={() => setSpellsSelectingMode(false)}>{TRANSLATION[locale()]['back']}</Button>
               <For each={[...Array(character().available_spell_level + 1).keys()]}>
                 {(level) =>
                   <Toggle title={level === 0 ? TRANSLATION[locale()]['cantrips'] : `${level} ${TRANSLATION[locale()]['level']}`}>
@@ -299,41 +303,23 @@ export const Dnd5Spells = (props) => {
                   </Toggle>
                 }
               </For>
-              <Button default textable onClick={() => setSpellsSelectingMode(false)}>{TRANSLATION[locale()]['back']}</Button>
             </>
           }
         >
           <Show when={spells() !== undefined}>
-            <div class="flex justify-between items-center mb-2">
-              <Show when={activeSpellClass() !== undefined && activeSpellClass() !== 'static'} fallback={<span />}>
-                <Checkbox
-                  labelText={TRANSLATION[locale()]['onlyPreparedSpells']}
-                  labelPosition="right"
-                  labelClassList="ml-2"
-                  checked={preparedSpellFilter()}
-                  onToggle={() => setPreparedSpellFilter(!preparedSpellFilter())}
-                />
-              </Show>
-              <Show when={spellClassesList().length > 1}>
-                <div class="flex gap-x-1">
-                  <For each={Object.entries(CLASS_ICONS).filter(([className,]) => spellClassesList().includes(className))}>
-                    {([className, Component]) =>
-                      <span
-                        class="cursor-pointer dark:text-snow w-8 h-8 rounded-full bg-dusty flex justify-center items-center"
-                        classList={{ 'opacity-50': className !== activeSpellClass() }}
-                        onClick={() => activeSpellClass() === className ? setActiveSpellClass(undefined) : setActiveSpellClass(className)}
-                      >
-                        <Component width="24" height="24" />
-                      </span>
-                    }
-                  </For>
-                </div>
-              </Show>
-            </div>
             <Show when={lastActiveCharacterId() === character().id && activeSpellClass() && character().spell_classes[activeSpellClass()]?.save_dc}>
               <StatsBlock
                 items={[
-                  { title: TRANSLATION[locale()]['spellAttack'], value: modifier(character().spell_classes[activeSpellClass()].attack_bonus) },
+                  {
+                    title: TRANSLATION[locale()]['spellAttack'],
+                    value:
+                      <Dice
+                        width="36"
+                        height="36"
+                        text={modifier(character().spell_classes[activeSpellClass()].attack_bonus)}
+                        onClick={() => props.openDiceRoll('/check attack spell', character().spell_classes[activeSpellClass()].attack_bonus)}
+                      />
+                  },
                   { title: TRANSLATION[locale()]['saveDC'], value: character().spell_classes[activeSpellClass()].save_dc }
                 ]}
               />
@@ -361,9 +347,36 @@ export const Dnd5Spells = (props) => {
                 </div>
               </div>
             </Show>
+            <div class="flex justify-between items-center mb-2">
+              <Show when={activeSpellClass() !== undefined && activeSpellClass() !== 'static'} fallback={<span />}>
+                <Checkbox
+                  labelText={TRANSLATION[locale()]['onlyPreparedSpells']}
+                  labelPosition="right"
+                  labelClassList="ml-2"
+                  checked={preparedSpellFilter()}
+                  onToggle={() => setPreparedSpellFilter(!preparedSpellFilter())}
+                />
+              </Show>
+              <Show when={spellClassesList().length > 1}>
+                <div class="flex items-center gap-x-1">
+                  <span class="text-xs dark:text-snow">{TRANSLATION[locale()].filterByClass}</span>
+                  <For each={Object.entries(CLASS_ICONS).filter(([className,]) => spellClassesList().includes(className))}>
+                    {([className, Component]) =>
+                      <span
+                        class="cursor-pointer dark:text-snow w-8 h-8 rounded-full bg-dusty flex justify-center items-center"
+                        classList={{ 'opacity-50': className !== activeSpellClass() }}
+                        onClick={() => activeSpellClass() === className ? setActiveSpellClass(undefined) : setActiveSpellClass(className)}
+                      >
+                        <Component width="24" height="24" />
+                      </span>
+                    }
+                  </For>
+                </div>
+              </Show>
+            </div>
             <Show when={activeSpellClass() !== undefined && activeSpellClass() !== 'static'}>
               <Button default textable classList="mb-2" onClick={() => setSpellsSelectingMode(true)}>
-                {TRANSLATION[locale()]['knownSpells']}
+                {TRANSLATION[locale()].knownSpells}
               </Button>
             </Show>
             <SpellsTable

@@ -2,7 +2,7 @@
 
 module Dnd2024
   class SpellSerializer < ApplicationSerializer
-    ATTRIBUTES = %i[id slug name level available_for].freeze
+    ATTRIBUTES = %i[name id slug level available_for].freeze
 
     attributes(*ATTRIBUTES)
 

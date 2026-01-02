@@ -12,13 +12,11 @@ module Frontend
         include SerializeRelation
         include SerializeResource
 
-        INDEX_SERIALIZER_FIELDS = %i[id ready_to_use prepared_by spell_ability notes slug name level spell_id].freeze
-
         before_action :find_character
         before_action :find_spell, only: %i[create]
 
         def index
-          serialize_relation(spells, ::Dnd2024::Characters::SpellSerializer, :spells, only: INDEX_SERIALIZER_FIELDS)
+          serialize_relation_v2(spells, ::Dnd2024::Characters::SpellSerializer, :spells, order_options: { key: 'name' })
         end
 
         def create
