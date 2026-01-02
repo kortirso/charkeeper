@@ -17,7 +17,8 @@ module Dnd2024Character
     def speed
       @speed ||= begin
         result = __getobj__.speed
-        result -= 10 if defense_gear[:armor]&.dig(:items_info, 'str_req').to_i > modifiers['str']
+        str_req = defense_gear[:armor]&.dig(:items_info, 'str_req')
+        result -= 10 if str_req && str_req > modifiers['str']
         result
       end
     end

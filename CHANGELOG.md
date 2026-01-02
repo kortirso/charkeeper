@@ -13,6 +13,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - craft item selection if only 1 is available
 - rendering craft descriptions
 
+### Fixed
+- invalid total speed while wearing armor without strength requirements
+
 ## [0.3.27] - 2025-12-29
 ### Added
 - rendering items info for all DH items
