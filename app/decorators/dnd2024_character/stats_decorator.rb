@@ -111,7 +111,7 @@ module Dnd2024Character
     end
 
     def with_beastform_abilities
-      abilities.merge(beastform_config['abilities']) { |_key, oldval, newval| [newval, oldval].max }
+      __getobj__.modified_abilities.merge(beastform_config['abilities']) { |_key, oldval, newval| [newval, oldval].max }
     end
 
     def calc_ability_modifier(value)

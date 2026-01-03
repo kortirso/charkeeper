@@ -16,6 +16,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Fixed
 - invalid total speed while wearing armor without strength requirements
+- wild shapes for D&D characters
 
 ## [0.3.27] - 2025-12-29
 ### Added
