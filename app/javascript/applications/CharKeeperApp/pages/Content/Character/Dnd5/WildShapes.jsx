@@ -40,7 +40,7 @@ export const Dnd2024WildShapes = (props) => {
   });
 
   const updateMultiFeatureValue = (value) => {
-    const currentValues = character().selected_beastforms;
+    const currentValues = selectedBeastforms();
     const newValue = currentValues.includes(value) ? currentValues.filter((item) => item !== value) : currentValues.concat([value]);
 
     updateCharacter({ selected_beastforms: newValue }, true);
@@ -63,18 +63,18 @@ export const Dnd2024WildShapes = (props) => {
     <ErrorWrapper payload={{ character_id: character().id, key: 'Dnd2024Beastforms' }}>
       <GuideWrapper character={character()}>
         <div class="blockable p-4">
-          <h2 class="text-lg mb-2 dark:text-snow">{TRANSLATION[locale()]['beastforms']}</h2>
+          <h2 class="text-lg mb-2">{TRANSLATION[locale()].beastforms}</h2>
           <Select
             multi
             containerClassList="w-full"
-            labelText={TRANSLATION[locale()]['selectedBeastforms']}
+            labelText={TRANSLATION[locale()].selectedBeastforms}
             items={availableBeastforms()}
             selectedValues={selectedBeastforms()}
             onSelect={(value) => updateMultiFeatureValue(value)}
           />
           <Select
             containerClassList="mt-2 w-full"
-            labelText={TRANSLATION[locale()]['activeBeastform']}
+            labelText={TRANSLATION[locale()].activeBeastform}
             items={beastformsSelect()}
             selectedValue={character().beastform}
             onSelect={(value) => updateCharacter({ beastform: value === 'null' ? null : value })}
