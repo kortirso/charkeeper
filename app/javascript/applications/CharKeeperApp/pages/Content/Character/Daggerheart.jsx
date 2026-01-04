@@ -53,8 +53,9 @@ export const Daggerheart = (props) => {
   const armorFilterT2 = (item) => item.kind === 'armor' && item.info.tier === 2;
   const armorFilterT3 = (item) => item.kind === 'armor' && item.info.tier === 3;
   const armorFilterT4 = (item) => item.kind === 'armor' && item.info.tier === 4;
-  const itemsFilter = (item) => item.kind === 'item' || item.kind === 'recipe';
+  const itemsFilter = (item) => item.kind === 'item';
   const consumablesFilter = (item) => item.kind === 'consumables';
+  const recipesFilter = (item) => item.kind === 'recipe';
 
   const ancestryFilter = (item) => item.origin === 'ancestry';
   const communityFilter = (item) => item.origin === 'community';
@@ -164,7 +165,8 @@ export const Daggerheart = (props) => {
                   { title: `${t('equipment.armorList')} T3`, callback: armorFilterT3 },
                   { title: `${t('equipment.armorList')} T4`, callback: armorFilterT4 },
                   { title: t('equipment.itemsList'), callback: itemsFilter },
-                  { title: t('equipment.consumables'), callback: consumablesFilter }
+                  { title: t('equipment.consumables'), callback: consumablesFilter },
+                  { title: t('equipment.recipes'), callback: recipesFilter }
                 ]}
                 onReplaceCharacter={props.onReplaceCharacter}
                 onReloadCharacter={props.onReloadCharacter}
@@ -317,7 +319,8 @@ export const Daggerheart = (props) => {
                   { title: `${t('equipment.armorList')} T3`, callback: armorFilterT3 },
                   { title: `${t('equipment.armorList')} T4`, callback: armorFilterT4 },
                   { title: t('equipment.itemsList'), callback: itemsFilter },
-                  { title: t('equipment.consumables'), callback: consumablesFilter }
+                  { title: t('equipment.consumables'), callback: consumablesFilter },
+                  { title: t('equipment.recipes'), callback: recipesFilter }
                 ]}
                 onReplaceCharacter={props.onReplaceCharacter}
                 onReloadCharacter={props.onReloadCharacter}

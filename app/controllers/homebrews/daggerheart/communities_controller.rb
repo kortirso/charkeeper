@@ -38,7 +38,9 @@ module Homebrews
         case add_daggerheart_community.call(community_params.merge(user: current_user))
         in { errors: errors, errors_list: errors_list } then unprocessable_response(errors, errors_list)
         in { result: result }
-          serialize_resource(result, ::Homebrews::Daggerheart::CommunitySerializer, :community, {}, :created)
+          serialize_resource(
+            result, ::Homebrews::Daggerheart::CommunitySerializer, :community, {}, :created, { current_user_id: current_user.id }
+          )
         end
       end
 

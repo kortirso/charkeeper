@@ -1,15 +1,17 @@
-import { createSignal, createEffect, Show, For, batch } from 'solid-js';
+import { createSignal, createEffect, createMemo, Show, For, batch } from 'solid-js';
 import { createStore } from 'solid-js/store';
 
 import { useAppState, useAppLocale, useAppAlert } from '../../../context';
 import { Button, Input, TextArea, Select, createModal, Checkbox, ItemBonuses, Bonuses } from '../../../components';
-import { Edit, Trash } from '../../../assets';
+import { Edit, Trash, Copy } from '../../../assets';
 import { fetchDaggerheartBooks } from '../../../requests/fetchDaggerheartBooks';
 import { changeBookContent } from '../../../requests/changeBookContent';
 import { fetchItemsRequest } from '../../../requests/fetchItemsRequest';
+import { fetchItemRequest } from '../../../requests/fetchItemRequest';
 import { createItemRequest } from '../../../requests/createItemRequest';
 import { changeItemRequest } from '../../../requests/changeItemRequest';
 import { removeItemRequest } from '../../../requests/removeItemRequest';
+import { copyItemRequest } from '../../../requests/copyItemRequest';
 import { translate } from '../../../helpers';
 
 const TRANSLATION = {
@@ -27,9 +29,13 @@ const TRANSLATION = {
     requiredName: 'Name is required',
     kinds: {
       item: 'Item',
-      consumable: 'Consumable'
+      consumable: 'Consumable',
+      recipe: 'Recipe'
     },
-    convert: 'Convert'
+    convert: 'Convert',
+    showPublic: 'Show public',
+    public: 'Public',
+    copyCompleted: 'Item copy is completed'
   },
   ru: {
     added: 'Контент добавлен в книгу',
@@ -45,21 +51,26 @@ const TRANSLATION = {
     requiredName: 'Название предмета - обязательное поле',
     kinds: {
       item: 'Предмет',
-      consumable: 'Расходник'
+      consumable: 'Расходник',
+      recipe: 'Рецепт'
     },
-    convert: 'Конвертировать'
+    convert: 'Конвертировать',
+    showPublic: 'Показать общедоступные',
+    public: 'Общедоступная',
+    copyCompleted: 'Копирование предмета завершено'
   }
 }
 
 export const DaggerheartItems = () => {
-  const [itemForm, setItemForm] = createStore({ name: '', description: '', kind: 'item' });
+  const [itemForm, setItemForm] = createStore({ name: '', description: '', kind: 'item', public: false });
   const [itemBonuses, setItemBonuses] = createSignal([]);
   const [selectedIds, setSelectedIds] = createSignal([]);
   const [book, setBook] = createSignal(null);
-  const [bonuses, setBonuses] = createSignal(null);
+  const [bonuses, setBonuses] = createSignal([]);
 
   const [books, setBooks] = createSignal(undefined);
   const [items, setItems] = createSignal(undefined);
+  const [open, setOpen] = createSignal(false);
 
   const [appState] = useAppState();
   const [{ renderAlert, renderNotice }] = useAppAlert();
@@ -68,7 +79,7 @@ export const DaggerheartItems = () => {
 
   createEffect(() => {
     const fetchBooks = async () => await fetchDaggerheartBooks(appState.accessToken);
-    const fetchItems = async () => await fetchItemsRequest(appState.accessToken, 'daggerheart', 'item,consumable');
+    const fetchItems = async () => await fetchItemsRequest(appState.accessToken, 'daggerheart', 'item,consumable,recipe');
 
     Promise.all([fetchItems(), fetchBooks()]).then(
       ([itemsDate, booksData]) => {
@@ -80,9 +91,15 @@ export const DaggerheartItems = () => {
     );
   });
 
+  const filteredItems = createMemo(() => {
+    if (items() === undefined) return [];
+
+    return items().filter(({ own }) => open() ? !own : own);
+  });
+
   const openCreateItemModal = () => {
     batch(() => {
-      setItemForm({ id: null, name: '', description: '', kind: 'item' });
+      setItemForm({ id: null, name: '', description: '', kind: 'item', public: false });
       setItemBonuses([]);
       openModal();
     });
@@ -90,7 +107,7 @@ export const DaggerheartItems = () => {
 
   const openChangeItemModal = (item) => {
     batch(() => {
-      setItemForm({ id: item.id, name: item.name.en, description: item.description.en });
+      setItemForm({ id: item.id, name: item.name.en, description: item.description.en, public: item.public });
       setItemBonuses(item.bonuses);
       openModal();
     });
@@ -108,7 +125,7 @@ export const DaggerheartItems = () => {
     if (result.errors_list === undefined) {
       batch(() => {
         setItems([result.item].concat(items()));
-        setItemForm({ id: null, name: '', description: '', kind: 'item' });
+        setItemForm({ id: null, name: '', description: '', kind: 'item', public: false });
         setItemBonuses([]);
         closeModal();
       });
@@ -122,7 +139,7 @@ export const DaggerheartItems = () => {
       if (itemForm.convert) {
         batch(() => {
           setItems(items().filter(({ id }) => id !== itemForm.id ));
-          setItemForm({ id: null, name: '', description: '', kind: 'item' });
+          setItemForm({ id: null, name: '', description: '', kind: 'item', public: false });
           setItemBonuses([]);
           closeModal();
         });
@@ -134,13 +151,14 @@ export const DaggerheartItems = () => {
             ...item,
             name: { en: itemForm.name, ru: itemForm.name },
             description: { en: itemForm.description, ru: itemForm.description },
+            public: itemForm.public,
             bonuses: bonuses()
           };
         });
 
         batch(() => {
           setItems(newItems);
-          setItemForm({ id: null, name: '', description: '', kind: 'item' });
+          setItemForm({ id: null, name: '', description: '', kind: 'item', public: false });
           setItemBonuses([]);
           closeModal();
         });
@@ -153,6 +171,15 @@ export const DaggerheartItems = () => {
 
     if (result.errors_list === undefined) {
       setItems(items().filter(({ id }) => id !== itemId ));
+    }
+  }
+
+  const copyItem = async (itemId) => {
+    const result = await copyItemRequest(appState.accessToken, 'daggerheart', itemId);
+    const item = await fetchItemRequest(appState.accessToken, 'daggerheart', result.item.id)
+    if (item.errors_list === undefined) {
+      setItems([item.item].concat(items()));
+      renderNotice(TRANSLATION[locale()].copyCompleted);
     }
   }
 
@@ -170,8 +197,11 @@ export const DaggerheartItems = () => {
 
   return (
     <Show when={items() !== undefined} fallback={<></>}>
-      <Button default classList="mb-4 px-2 py-1" onClick={openCreateItemModal}>{TRANSLATION[locale()].add}</Button>
-      <Show when={items().length > 0}>
+      <div class="flex">
+        <Button default classList="mb-4 px-2 py-1" onClick={openCreateItemModal}>{TRANSLATION[locale()].add}</Button>
+        <Button default active={open()} classList="ml-4 mb-4 px-2 py-1" onClick={() => setOpen(!open())}>{TRANSLATION[locale()].showPublic}</Button>
+      </div>
+      <Show when={filteredItems().length > 0}>
         <div class="flex items-center">
           <Select
             containerClassList="w-40"
@@ -198,16 +228,18 @@ export const DaggerheartItems = () => {
             </tr>
           </thead>
           <tbody>
-            <For each={items()}>
+            <For each={filteredItems()}>
               {(item) =>
                 <tr>
                   <td class="minimum-width py-1">
-                    <Checkbox
-                      checked={selectedIds().includes(item.id)}
-                      classList="mr-1"
-                      innerClassList="small"
-                      onToggle={() => selectedIds().includes(item.id) ? setSelectedIds(selectedIds().filter((id) => id !== item.id)) : setSelectedIds(selectedIds().concat(item.id))}
-                    />
+                    <Show when={!open()}>
+                      <Checkbox
+                        checked={selectedIds().includes(item.id)}
+                        classList="mr-1"
+                        innerClassList="small"
+                        onToggle={() => selectedIds().includes(item.id) ? setSelectedIds(selectedIds().filter((id) => id !== item.id)) : setSelectedIds(selectedIds().concat(item.id))}
+                      />
+                    </Show>
                   </td>
                   <td class="minimum-width py-1">{item.name[locale()]}</td>
                   <td class="minimum-width py-1 text-sm">{TRANSLATION[locale()].kinds[item.kind]}</td>
@@ -215,12 +247,21 @@ export const DaggerheartItems = () => {
                   <td class="py-1">{item.description[locale()]}</td>
                   <td>
                     <div class="flex items-center justify-end gap-x-2 text-neutral-700">
-                      <Button default classList="px-2 py-1" onClick={() => openChangeItemModal(item)}>
-                        <Edit width="20" height="20" />
-                      </Button>
-                      <Button default classList="px-2 py-1" onClick={() => removeItem(item.id)}>
-                        <Trash width="20" height="20" />
-                      </Button>
+                      <Show
+                        when={!open()}
+                        fallback={
+                          <Button default classList="px-2 py-1" onClick={() => copyItem(item.id)}>
+                            <Copy width="20" height="20" />
+                          </Button>
+                        }
+                      >
+                        <Button default classList="px-2 py-1" onClick={() => openChangeItemModal(item)}>
+                          <Edit width="20" height="20" />
+                        </Button>
+                        <Button default classList="px-2 py-1" onClick={() => removeItem(item.id)}>
+                          <Trash width="20" height="20" />
+                        </Button>
+                      </Show>
                     </div>
                   </td>
                 </tr>
@@ -250,7 +291,7 @@ export const DaggerheartItems = () => {
           <Select
             containerClassList="mb-2"
             labelText={TRANSLATION[locale()]['kind']}
-            items={translate({ "item": { "name": { "en": "Item", "ru": "Предмет" } }, "consumable": { "name": { "en": "Consumable", "ru": "Расходник" } } }, locale())}
+            items={translate({ "item": { "name": { "en": "Item", "ru": "Предмет" } }, "consumable": { "name": { "en": "Consumable", "ru": "Расходник" } }, "recipe": { "name": { "en": "Recipe", "ru": "Рецепт" } } }, locale())}
             selectedValue={itemForm.kind}
             onSelect={(value) => setItemForm({ ...itemForm, kind: value })}
           />
@@ -262,6 +303,14 @@ export const DaggerheartItems = () => {
           labelText={TRANSLATION[locale()]['description']}
           value={itemForm.description}
           onChange={(value) => setItemForm({ ...itemForm, description: value })}
+        />
+        <Checkbox
+          labelText={TRANSLATION[locale()].public}
+          labelPosition="right"
+          labelClassList="ml-2"
+          checked={itemForm.public}
+          classList="mb-2"
+          onToggle={() => setItemForm({ ...itemForm, public: !itemForm.public })}
         />
         <Button default classList="px-2 py-1" onClick={saveItem}>
           {TRANSLATION[locale()]['save']}

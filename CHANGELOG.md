@@ -14,6 +14,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - rendering craft descriptions
 - sorting spells for D&D characters
 - delaying between rolls
+- homebrew items and recipes for DH characters
 
 ### Fixed
 - invalid total speed while wearing armor without strength requirements
