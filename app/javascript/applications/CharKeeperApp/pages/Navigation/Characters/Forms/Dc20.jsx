@@ -110,7 +110,7 @@ export const Dc20CharacterForm = (props) => {
   }
 
   return (
-    <CharacterForm loading={props.loading} setCurrentTab={props.setCurrentTab} onSaveCharacter={saveCharacter}>
+    <CharacterForm setCurrentTab={props.setCurrentTab} onSaveCharacter={saveCharacter}>
       <Input
         containerClassList="mb-2"
         labelText={TRANSLATION[locale()]['name']}

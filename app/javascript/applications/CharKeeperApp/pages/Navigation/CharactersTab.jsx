@@ -37,7 +37,6 @@ const TRANSLATION = {
 }
 
 export const CharactersTab = () => {
-  const [loading, setLoading] = createSignal(false);
   const [currentTab, setCurrentTab] = createSignal('characters');
   const [activeFilter, setActiveFilter] = createSignal('allFilter');
   const [characters, setCharacters] = createSignal(undefined);
@@ -155,8 +154,6 @@ export const CharactersTab = () => {
   const saveCharacter = async (characterForm) => {
     if (platform() === undefined) return undefined;
 
-    setLoading(true);
-
     const formData = Object.fromEntries(Object.entries(characterForm).filter(([, value]) => value !== undefined));
     const result = await createCharacterRequest(appState.accessToken, platform(), { character: formData });
     
@@ -165,12 +162,10 @@ export const CharactersTab = () => {
         setCharacters([result.character, ...characters()]);
         setPlatform(undefined);
         setCurrentTab('characters');
-        setLoading(false);
       });
     } else {
       batch(() => {
         renderAlerts(result.errors_list);
-        setLoading(false);
       })
     }
 
@@ -250,29 +245,24 @@ export const CharactersTab = () => {
             />
             <Switch>
               <Match when={platform() === 'dnd5'}>
-                <Dnd5CharacterForm loading={loading} onCreateCharacter={saveCharacter} homebrews={homebrews} setCurrentTab={setCurrentTab} />
+                <Dnd5CharacterForm onCreateCharacter={saveCharacter} homebrews={homebrews} setCurrentTab={setCurrentTab} />
               </Match>
               <Match when={platform() === 'dnd2024'}>
-                <Dnd2024CharacterForm loading={loading} onCreateCharacter={saveCharacter} homebrews={homebrews} setCurrentTab={setCurrentTab} dnd2024Races={dnd2024Races} />
+                <Dnd2024CharacterForm onCreateCharacter={saveCharacter} homebrews={homebrews} setCurrentTab={setCurrentTab} dnd2024Races={dnd2024Races} />
               </Match>
               <Match when={platform() === 'pathfinder2'}>
-                <Pathfinder2CharacterForm loading={loading} onCreateCharacter={saveCharacter} homebrews={homebrews} setCurrentTab={setCurrentTab} />
+                <Pathfinder2CharacterForm onCreateCharacter={saveCharacter} homebrews={homebrews} setCurrentTab={setCurrentTab} />
               </Match>
               <Match when={platform() === 'daggerheart'}>
-                <DaggerheartCharacterForm loading={loading} onCreateCharacter={saveCharacter} homebrews={homebrews} setCurrentTab={setCurrentTab} />
+                <DaggerheartCharacterForm onCreateCharacter={saveCharacter} homebrews={homebrews} setCurrentTab={setCurrentTab} />
               </Match>
               <Match when={platform() === 'dc20'}>
-                <Dc20CharacterForm loading={loading} onCreateCharacter={saveCharacter} setCurrentTab={setCurrentTab} />
+                <Dc20CharacterForm onCreateCharacter={saveCharacter} setCurrentTab={setCurrentTab} />
               </Match>
             </Switch>
             <Show when={platform() === undefined}>
               <div class="flex mt-4">
-                <Button
-                  outlined
-                  size='default'
-                  classList='w-full mr-2'
-                  onClick={() => loading() ? null : setCurrentTab('characters')}
-                >
+                <Button outlined size="default" classList="w-full mr-2" onClick={() => setCurrentTab('characters')}>
                   {t('back')}
                 </Button>
               </div>

@@ -52,7 +52,7 @@ export const Dnd2024CharacterForm = (props) => {
   }
 
   return (
-    <CharacterForm loading={props.loading} setCurrentTab={props.setCurrentTab} onSaveCharacter={saveCharacter}>
+    <CharacterForm setCurrentTab={props.setCurrentTab} onSaveCharacter={saveCharacter}>
       <Input
         containerClassList="mb-2"
         labelText={t('newCharacterPage.name')}

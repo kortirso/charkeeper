@@ -16,19 +16,11 @@ export const CharacterForm = (props) => {
         </div>
       </div>
       <div class="flex mt-4 gap-x-4">
-        <Button
-          outlined
-          classList="flex-1"
-          onClick={() => props.loading() ? null : props.setCurrentTab('characters')}
-        >
+        <Button withSuspense outlined classList="flex-1" onClick={() => props.setCurrentTab('characters')}>
           {t('back')}
         </Button>
-        <Button
-          default
-          classList="flex-1"
-          onClick={() => props.loading() ? null : props.onSaveCharacter()}
-        >
-          {props.loading() ? t('saving') : t('save')}
+        <Button withSuspense default classList="flex-1" onClick={props.onSaveCharacter}>
+          {t('save')}
         </Button>
       </div>
     </>
