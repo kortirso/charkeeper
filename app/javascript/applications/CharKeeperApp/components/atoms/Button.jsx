@@ -1,7 +1,21 @@
-import { children } from 'solid-js';
+import { createSignal, Show, children } from 'solid-js';
+
+import { Loading } from '../../components';
 
 export const Button = (props) => {
   const safeChildren = children(() => props.children);
+
+  const [loading, setLoading] = createSignal(false);
+
+  const click = async () => {
+    if (props.onClick === undefined) return;
+    if (!props.withSuspense) return props.onClick();
+    if (loading()) return;
+
+    setLoading(true);
+    await props.onClick();
+    setLoading(false);
+  }
 
   return (
     <p
@@ -13,9 +27,11 @@ export const Button = (props) => {
         'bg-white text-blue-400 border border-blue-400 dark:text-black dark:border-fuzzy-red': props.outlined,
         'px-2 py-1': props.textable
       }}
-      onClick={props.onClick} // eslint-disable-line solid/reactivity
+      onClick={click}
     >
-      {safeChildren()}
+      <Show when={!loading()} fallback={<Loading spinner />}>
+        {safeChildren()}
+      </Show>
     </p>
   );
 }

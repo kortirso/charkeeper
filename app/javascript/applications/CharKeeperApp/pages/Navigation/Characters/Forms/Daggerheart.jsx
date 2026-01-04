@@ -110,7 +110,7 @@ export const DaggerheartCharacterForm = (props) => {
   }
 
   return (
-    <CharacterForm loading={props.loading} setCurrentTab={props.setCurrentTab} onSaveCharacter={saveCharacter}>
+    <CharacterForm setCurrentTab={props.setCurrentTab} onSaveCharacter={saveCharacter}>
       <p class="dark:text-snow mb-2">{TRANSLATION[locale()]['options']}</p>
       <Input
         containerClassList="mb-2"

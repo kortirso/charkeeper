@@ -338,7 +338,7 @@ export const createDiceRoll = () => {
                     </div>
                   </div>
                   <div class="mt-2">
-                    <Button default textable classList="flex-1" onClick={makeRoll}>{TRANSLATION[locale()]['roll']}</Button>
+                    <Button withSuspense default textable classList="flex-1" onClick={makeRoll}>{TRANSLATION[locale()]['roll']}</Button>
                   </div>
                 </div>
               </Show>
@@ -395,7 +395,7 @@ export const createDiceRoll = () => {
                     </div>
                   </div>
                   <div class="mt-2 flex gap-x-2">
-                    <Button default textable classList="flex-1" onClick={makeSimpleRoll}>{TRANSLATION[locale()]['roll']}</Button>
+                    <Button withSuspense default textable classList="flex-1" onClick={makeSimpleRoll}>{TRANSLATION[locale()]['roll']}</Button>
                     <Show when={props.provider === 'daggerheart'}>
                       <DualityDice onClick={() => setDualityMode(!dualityMode())} />
                     </Show>

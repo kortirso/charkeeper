@@ -426,3 +426,12 @@ nav.pagy.nav a.gap {
   @apply bg-gray-200 p-1 rounded text-sm;
   @apply dark:bg-neutral-800 dark:text-snow;
 }
+
+.spinner {
+  border: 4px solid #f3f3f3; /* Light grey background */
+  border-top: 4px solid #57534e; /* Blue top border (the spinning part) */
+  border-radius: 50%; /* Makes the div a circle */
+  width: 28px;
+  height: 28px;
+  animation: spin 2s linear infinite; /* Applies the animation */
+}
