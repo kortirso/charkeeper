@@ -55,7 +55,7 @@ export const Select = (props) => {
           <Chevron rotated={isOpen()} />
         </div>
         <Show when={isOpen()}>
-          <ul class="form-dropdown">
+          <ul class="form-dropdown" classList={{ 'relative': props.relative }}>
             <For each={itemsForSelect()}>
               {([key, value]) =>
                 <li

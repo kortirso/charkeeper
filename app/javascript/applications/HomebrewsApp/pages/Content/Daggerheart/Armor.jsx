@@ -1,15 +1,17 @@
-import { createSignal, createEffect, Show, For, batch } from 'solid-js';
+import { createSignal, createEffect, createMemo, Show, For, batch } from 'solid-js';
 import { createStore } from 'solid-js/store';
 
 import { useAppState, useAppLocale, useAppAlert } from '../../../context';
 import { Button, Input, TextArea, Select, createModal, Checkbox, ItemBonuses, Bonuses } from '../../../components';
-import { Edit, Trash } from '../../../assets';
+import { Edit, Trash, Copy } from '../../../assets';
 import { fetchDaggerheartBooks } from '../../../requests/fetchDaggerheartBooks';
 import { changeBookContent } from '../../../requests/changeBookContent';
 import { fetchItemsRequest } from '../../../requests/fetchItemsRequest';
 import { createItemRequest } from '../../../requests/createItemRequest';
 import { changeItemRequest } from '../../../requests/changeItemRequest';
 import { removeItemRequest } from '../../../requests/removeItemRequest';
+import { fetchItemRequest } from '../../../requests/fetchItemRequest';
+import { copyItemRequest } from '../../../requests/copyItemRequest';
 
 const TRANSLATION = {
   en: {
@@ -27,7 +29,10 @@ const TRANSLATION = {
     requiredName: 'Name is required',
     thresholds: 'Damage thresholds',
     major: 'Major threshold',
-    severe: 'Severe threshold'
+    severe: 'Severe threshold',
+    showPublic: 'Show public',
+    public: 'Public',
+    copyCompleted: 'Armor copy is completed'
   },
   ru: {
     added: 'Контент добавлен в книгу',
@@ -46,7 +51,10 @@ const TRANSLATION = {
     itemOriginValue: 'Объект принадлежности',
     thresholds: 'Пороги урона',
     major: 'Ощутимый урон',
-    severe: 'Тяжёлый урон'
+    severe: 'Тяжёлый урон',
+    showPublic: 'Показать общедоступные',
+    public: 'Общедоступная',
+    copyCompleted: 'Копирование доспеха завершено'
   }
 }
 
@@ -60,15 +68,17 @@ export const DaggerheartArmor = () => {
     description: '',
     major: 0,
     severe: 0,
-    bonuses: []
+    bonuses: [],
+    public: false
   });
   const [itemBonuses, setItemBonuses] = createSignal([]);
   const [selectedIds, setSelectedIds] = createSignal([]);
   const [book, setBook] = createSignal(null);
-  const [bonuses, setBonuses] = createSignal(null);
+  const [bonuses, setBonuses] = createSignal([]);
 
   const [books, setBooks] = createSignal(undefined);
   const [items, setItems] = createSignal(undefined);
+  const [open, setOpen] = createSignal(false);
 
   const [appState] = useAppState();
   const [{ renderAlert, renderNotice }] = useAppAlert();
@@ -87,6 +97,12 @@ export const DaggerheartArmor = () => {
         });
       }
     );
+  });
+
+  const filteredItems = createMemo(() => {
+    if (items() === undefined) return [];
+
+    return items().filter(({ own }) => open() ? !own : own);
   });
 
   const openCreateItemModal = () => {
@@ -108,7 +124,8 @@ export const DaggerheartArmor = () => {
         major: item.info.bonuses.thresholds.major,
         severe: item.info.bonuses.thresholds.severe,
         features: item.info.features[0] ? item.info.features[0].en : '',
-        description: item.description.en
+        description: item.description.en,
+        public: item.public
       });
       setItemBonuses(item.bonuses);
       openModal();
@@ -127,7 +144,8 @@ export const DaggerheartArmor = () => {
         base_score: itemForm.base_score,
         bonuses: { thresholds: { major: itemForm.major, severe: itemForm.severe } },
         features: [{ en: itemForm.features, ru: itemForm.features }]
-      }
+      },
+      public: itemForm.public
     }
 
     itemForm.id === null ? createItem(formData) : updateItem(formData);
@@ -158,6 +176,7 @@ export const DaggerheartArmor = () => {
           name: { en: itemForm.name, ru: itemForm.name },
           description: { en: itemForm.description, ru: itemForm.description },
           features: { en: itemForm.features, ru: itemForm.features },
+          public: itemForm.public,
           bonuses: bonuses()
         };
       });
@@ -179,6 +198,15 @@ export const DaggerheartArmor = () => {
     }
   }
 
+  const copyItem = async (itemId) => {
+    const result = await copyItemRequest(appState.accessToken, 'daggerheart', itemId);
+    const item = await fetchItemRequest(appState.accessToken, 'daggerheart', result.item.id)
+    if (item.errors_list === undefined) {
+      setItems([item.item].concat(items()));
+      renderNotice(TRANSLATION[locale()].copyCompleted);
+    }
+  }
+
   const addToBook = async () => {
     const result = await changeBookContent(appState.accessToken, book(), { ids: selectedIds(), only_head: true }, 'item');
 
@@ -193,8 +221,11 @@ export const DaggerheartArmor = () => {
 
   return (
     <Show when={items() !== undefined} fallback={<></>}>
-      <Button default classList="mb-4 px-2 py-1" onClick={openCreateItemModal}>{TRANSLATION[locale()].add}</Button>
-      <Show when={items().length > 0}>
+      <div class="flex">
+        <Button default classList="mb-4 px-2 py-1" onClick={openCreateItemModal}>{TRANSLATION[locale()].add}</Button>
+        <Button default active={open()} classList="ml-4 mb-4 px-2 py-1" onClick={() => setOpen(!open())}>{TRANSLATION[locale()].showPublic}</Button>
+      </div>
+      <Show when={filteredItems().length > 0}>
         <div class="flex items-center">
           <Select
             containerClassList="w-40"
@@ -225,16 +256,18 @@ export const DaggerheartArmor = () => {
             </tr>
           </thead>
           <tbody>
-            <For each={items()}>
+            <For each={filteredItems()}>
               {(item) =>
                 <tr>
                   <td class="minimum-width py-1">
-                    <Checkbox
-                      checked={selectedIds().includes(item.id)}
-                      classList="mr-1"
-                      innerClassList="small"
-                      onToggle={() => selectedIds().includes(item.id) ? setSelectedIds(selectedIds().filter((id) => id !== item.id)) : setSelectedIds(selectedIds().concat(item.id))}
-                    />
+                    <Show when={!open()}>
+                      <Checkbox
+                        checked={selectedIds().includes(item.id)}
+                        classList="mr-1"
+                        innerClassList="small"
+                        onToggle={() => selectedIds().includes(item.id) ? setSelectedIds(selectedIds().filter((id) => id !== item.id)) : setSelectedIds(selectedIds().concat(item.id))}
+                      />
+                    </Show>
                   </td>
                   <td class="minimum-width py-1">{item.name[locale()]}</td>
                   <td class="minimum-width py-1 text-sm">{item.info.tier}</td>
@@ -245,12 +278,21 @@ export const DaggerheartArmor = () => {
                   <td class="py-1">{item.description[locale()]}</td>
                   <td>
                     <div class="flex items-center justify-end gap-x-2 text-neutral-700">
-                      <Button default classList="px-2 py-1" onClick={() => openChangeItemModal(item)}>
-                        <Edit width="20" height="20" />
-                      </Button>
-                      <Button default classList="px-2 py-1" onClick={() => removeItem(item)}>
-                        <Trash width="20" height="20" />
-                      </Button>
+                      <Show
+                        when={!open()}
+                        fallback={
+                          <Button default classList="px-2 py-1" onClick={() => copyItem(item.id)}>
+                            <Copy width="20" height="20" />
+                          </Button>
+                        }
+                      >
+                        <Button default classList="px-2 py-1" onClick={() => openChangeItemModal(item)}>
+                          <Edit width="20" height="20" />
+                        </Button>
+                        <Button default classList="px-2 py-1" onClick={() => removeItem(item)}>
+                          <Trash width="20" height="20" />
+                        </Button>
+                      </Show>
                     </div>
                   </td>
                 </tr>
@@ -312,6 +354,14 @@ export const DaggerheartArmor = () => {
           labelText={TRANSLATION[locale()].description}
           value={itemForm.description}
           onChange={(value) => setItemForm({ ...itemForm, description: value })}
+        />
+        <Checkbox
+          labelText={TRANSLATION[locale()].public}
+          labelPosition="right"
+          labelClassList="ml-2"
+          checked={itemForm.public}
+          classList="mb-2"
+          onToggle={() => setItemForm({ ...itemForm, public: !itemForm.public })}
         />
         <Button default classList="px-2 py-1" onClick={saveItem}>
           {TRANSLATION[locale()].save}

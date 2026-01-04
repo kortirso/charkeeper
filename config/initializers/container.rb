@@ -114,6 +114,9 @@ module Charkeeper
     register('commands.homebrew_context.books.add') { HomebrewContext::Books::AddCommand.new }
     register('commands.homebrew_context.books.change') { HomebrewContext::Books::ChangeCommand.new }
 
+    register('commands.homebrew_context.daggerheart.recipes.add') { HomebrewContext::Daggerheart::Recipes::AddCommand.new }
+    register('commands.homebrew_context.daggerheart.recipes.copy') { HomebrewContext::Daggerheart::Recipes::CopyCommand.new }
+
     register('commands.homebrew_context.add_race') { HomebrewContext::AddRaceCommand.new }
 
     register('commands.homebrew_context.daggerheart.add_community') { HomebrewContext::Daggerheart::AddCommunityCommand.new }

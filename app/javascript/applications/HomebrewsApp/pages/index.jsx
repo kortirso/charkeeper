@@ -15,5 +15,6 @@ export * from './Content/Daggerheart/Weapons';
 export * from './Content/Daggerheart/Armor';
 export * from './Content/Daggerheart/Domains';
 export * from './Content/Daggerheart/Transformations';
+export * from './Content/Daggerheart/Recipes';
 
 export * from './Content/Dnd/Items';

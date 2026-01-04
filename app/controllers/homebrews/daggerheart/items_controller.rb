@@ -5,7 +5,8 @@ module Homebrews
     class ItemsController < Homebrews::ItemsController
       include Deps[
         add_item: 'commands.homebrew_context.daggerheart.add_item',
-        change_item: 'commands.homebrew_context.daggerheart.change_item'
+        change_item: 'commands.homebrew_context.daggerheart.change_item',
+        copy_item: 'commands.homebrew_context.daggerheart.copy_item'
       ]
 
       private

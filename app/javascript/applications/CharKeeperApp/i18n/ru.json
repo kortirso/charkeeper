@@ -172,7 +172,8 @@
     "toolsList": "Инструменты",
     "musicList": "Музыкальные инструменты",
     "consumables": "Расходные материалы",
-    "primaryWeaponMagic": "Основное оружие маг"
+    "primaryWeaponMagic": "Основное оружие маг",
+    "recipes": "Рецепты"
   },
   "create": "Создать",
   "back": "Назад",

@@ -43,7 +43,9 @@ module Homebrews
         case add_daggerheart_subclass.call(subclass_params.merge(user: current_user))
         in { errors: errors, errors_list: errors_list } then unprocessable_response(errors, errors_list)
         in { result: result }
-          serialize_resource(result, ::Homebrews::Daggerheart::SubclassSerializer, :subclass, {}, :created)
+          serialize_resource(
+            result, ::Homebrews::Daggerheart::SubclassSerializer, :subclass, {}, :created, { current_user_id: current_user.id }
+          )
         end
       end
 

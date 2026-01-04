@@ -22,9 +22,9 @@ module Homebrews
         context && context[:enabled_books] ? context[:enabled_books].include?(object.id) : false
       end
 
-      def own
-        return [] unless context
-        return [] unless context[:current_user_id]
+      def own # rubocop: disable Naming/PredicateMethod
+        return false unless context
+        return false unless context[:current_user_id]
 
         object.user_id == context[:current_user_id]
       end

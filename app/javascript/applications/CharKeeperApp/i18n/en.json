@@ -172,7 +172,8 @@
     "toolsList": "Artisan's tools",
     "musicList": "Musical instruments",
     "consumables": "Consumables",
-    "primaryWeaponMagic": "Primary weapon magic"
+    "primaryWeaponMagic": "Primary weapon magic",
+    "recipes": "Recipes"
   },
   "create": "Create",
   "back": "Back",
