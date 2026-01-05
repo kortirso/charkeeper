@@ -43,8 +43,8 @@
   },
   "powerful_beast": {
     "tier": 2,
-    "traits": { "str": 1 },
-    "evasion": 3,
+    "traits": { "str": 3 },
+    "evasion": 1,
     "attack": { "trait": "str", "range": "melee", "damage": "d10", "damage_bonus": 4, "damage_type": "physical" }
   },
   "mighty_strider": {
