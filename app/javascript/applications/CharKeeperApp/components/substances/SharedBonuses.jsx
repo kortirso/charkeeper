@@ -13,28 +13,28 @@ const TRANSLATION = {
   en: {
     cancel: 'Cancel',
     save: 'Save',
-    newBonus: 'Add modificators',
+    newBonus: 'Add modificator',
     addBonus: 'Add bonus',
-    bonusModify: 'Modify',
-    bonusType: 'Bonus type',
-    bonusValue: 'Bonus value',
+    bonusModify: "Modify's target",
+    bonusType: "Modify's type",
+    bonusValue: "Modify's value",
     newBonusComment: "Modificator's name",
-    enabled: 'Bonus is active',
-    disabled: 'Bonus is disabled',
-    noValues: 'At least one bonus should be present'
+    enabled: 'Modificator is active',
+    disabled: 'Modificator is disabled',
+    noValues: 'At least one modificator should be present'
   },
   ru: {
     cancel: 'Отменить',
     save: 'Сохранить',
-    newBonus: 'Добавить модификаторы',
-    addBonus: 'Добавить бонус',
-    bonusModify: 'Прибавка к',
-    bonusType: 'Тип бонуса',
-    bonusValue: 'Значение бонуса',
+    newBonus: 'Добавить модификатор',
+    addBonus: 'Добавить изменение',
+    bonusModify: 'Цель изменения',
+    bonusType: 'Тип изменения',
+    bonusValue: 'Значение изменения',
     newBonusComment: 'Название модификатора',
-    enabled: 'Бонус активен',
-    disabled: 'Бонус не активен',
-    noValues: 'Необходимо указать хотя бы один бонус со значением'
+    enabled: 'Модификатор активен',
+    disabled: 'Модификатор не активен',
+    noValues: 'Необходимо указать хотя бы один модификатор со значением'
   }
 }
 
@@ -67,6 +67,13 @@ export const SharedBonuses = (props) => {
 
     setLastActiveCharacterId(character().id);
   });
+
+  const activateCreateMode = () => {
+    batch(() => {
+      setCreateMode(true);
+      if (bonusesList().length === 0) addNewBonus();
+    });
+  }
 
   const addNewBonus = () => {
     const newValue = bonusesList().concat({ id: Math.floor(Math.random() * 1000), type: 'static', modify: null, value: null });
@@ -142,7 +149,7 @@ export const SharedBonuses = (props) => {
               <Key each={bonusesList()} by={item => item.id}>
                 {(bonus) =>
                   <>
-                    <div class="flex gap-x-2 items-end py-1 mb-2">
+                    <div class="flex gap-x-2 items-end py-1 mt-2">
                       <Select
                         containerClassList="flex-1"
                         labelText={TRANSLATION[locale()].bonusModify}
@@ -155,9 +162,9 @@ export const SharedBonuses = (props) => {
                       </Button>
                     </div>
                     <Show when={bonus().modify}>
-                      <div class="flex gap-x-2">
+                      <div class="flex gap-x-2 mt-2">
                         <Select
-                          containerClassList="mb-2 flex-1"
+                          containerClassList="flex-1"
                           labelText={TRANSLATION[locale()].bonusType}
                           items={translate(bonus().modify === props.proficiencyName ? { "static": { "name": { "en": "Static", "ru": "Статичный" } } } : { "static": { "name": { "en": "Static", "ru": "Статичный" } }, "dynamic": { "name": { "en": "Dynamic", "ru": "Динамический" } } }, locale())}
                           selectedValue={bonus().type}
@@ -167,7 +174,7 @@ export const SharedBonuses = (props) => {
                           when={bonus().type === 'static'}
                           fallback={
                             <Select
-                              containerClassList="mb-2 flex-1"
+                              containerClassList="flex-1"
                               labelText={TRANSLATION[locale()].bonusValue}
                               items={translate(props.dynamicItems, locale())}
                               selectedValue={bonus().value}
@@ -177,7 +184,7 @@ export const SharedBonuses = (props) => {
                         >
                           <Input
                             nemeric
-                            containerClassList="mb-2 flex-1"
+                            containerClassList="flex-1"
                             labelText={TRANSLATION[locale()].bonusValue}
                             value={bonus().value}
                             onInput={(value) => updateNewBonus(bonus(), 'value', value)}
@@ -189,21 +196,21 @@ export const SharedBonuses = (props) => {
                 }
               </Key>
             </Show>
-            <Button default small classList="p-1 my-2" onClick={addNewBonus}>{TRANSLATION[locale()].addBonus}</Button>
-            <div class="flex justify-end mt-2">
+            <Button default small classList="p-1 mt-2" onClick={addNewBonus}>{TRANSLATION[locale()].addBonus}</Button>
+            <div class="flex justify-end mt-4">
               <Button outlined textable size="small" classList="mr-4" onClick={cancelBonus}>{TRANSLATION[locale()].cancel}</Button>
               <Button default textable size="small" onClick={saveBonus}>{TRANSLATION[locale()].save}</Button>
             </div>
           </div>
         }
       >
-        <Button default textable classList="mb-2 w-full uppercase" onClick={() => setCreateMode(true)}>
+        <Button default textable classList="w-full uppercase" onClick={activateCreateMode}>
           {TRANSLATION[locale()].newBonus}
         </Button>
         <Show when={bonuses() !== undefined}>
           <For each={bonuses()}>
             {(bonus) =>
-              <Toggle isOpenByParent title={
+              <Toggle isOpenByParent containerClassList="mt-2" title={
                 <div class="flex items-center">
                   <p class="flex-1">{bonus.comment}</p>
                   <IconButton onClick={(e) => removeBonus(e, bonus.id)}>
