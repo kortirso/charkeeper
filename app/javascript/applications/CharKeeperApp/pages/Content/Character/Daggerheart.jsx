@@ -5,7 +5,7 @@ import { createWindowSize } from '@solid-primitives/resize-observer';
 import {
   DaggerheartTraits, DaggerheartStatic, DaggerheartHealth, DaggerheartBeastform, DaggerheartCompanion,
   DaggerheartDomainCards, DaggerheartRest, DaggerheartLeveling, DaggerheartExperience, DaggerheartTransform,
-  DaggerheartStances, DaggerheartBonuses, DaggerheartCraft
+  DaggerheartStances, DaggerheartBonuses, DaggerheartCraft, DaggerheartScars
 } from '../../../pages';
 import {
   CharacterNavigation, Equipment, Notes, Avatar, ContentWrapper, Feats, createDiceRoll, Conditions, Combat, Gold
@@ -197,6 +197,9 @@ export const Daggerheart = (props) => {
               <div class="mt-4">
                 <Conditions character={character()} />
               </div>
+              <div class="mt-4">
+                <DaggerheartScars character={character()} onReloadCharacter={props.onReloadCharacter} />
+              </div>
             </Match>
             <Match when={activeMobileTab() === 'companion'}>
               <DaggerheartCompanion character={character()} />
@@ -350,6 +353,9 @@ export const Daggerheart = (props) => {
               </div>
               <div class="mt-4">
                 <Conditions character={character()} />
+              </div>
+              <div class="mt-4">
+                <DaggerheartScars character={character()} onReloadCharacter={props.onReloadCharacter} />
               </div>
             </Match>
             <Match when={activeTab() === 'companion'}>

@@ -25,21 +25,23 @@ export const DaggerheartHealth = (props) => {
     else renderAlerts(result.errors_list);
   }
 
-  const renderAttribute = (title, maxValue, slug) => (
+  const renderAttribute = (title, maxValue, slug, disabled=0) => (
     <Show when={maxValue !== 0} fallback={<></>}>
       <div class="px-4 mb-2">
         <p class="text-sm/4 uppercase mb-1 dark:text-snow">{title}</p>
         <div class="flex">
           <For each={Array.from([...Array(maxValue).keys()], (x) => x + 1)}>
             {(index) =>
-              <Checkbox
-                filled
-                checked={character()[slug] >= index}
-                classList="mr-1"
-                onToggle={() => updateAttribute(slug, index)}
-              />
+              <Checkbox filled checked={character()[slug] >= index} classList="mr-1" onToggle={() => updateAttribute(slug, index)} />
             }
           </For>
+          <Show when={disabled > 0}>
+            <For each={Array.from([...Array(disabled).keys()])}>
+              {() =>
+                <Checkbox disabled checked={false} classList="mr-1" />
+              }
+            </For>
+          </Show>
         </div>
       </div>
     </Show>
@@ -72,7 +74,7 @@ export const DaggerheartHealth = (props) => {
           {renderAttribute(t('daggerheart.health.armorSlots'), character().armor_slots, 'spent_armor_slots')}
           {renderAttribute(t('daggerheart.health.health'), character().health_max, 'health_marked')}
           {renderAttribute(t('daggerheart.health.stress'), character().stress_max, 'stress_marked')}
-          {renderAttribute(t('daggerheart.health.hope'), character().hope_max, 'hope_marked')}
+          {renderAttribute(t('daggerheart.health.hope'), character().hope_max, 'hope_marked', character().scarred_hope)}
         </div>
       </GuideWrapper>
     </ErrorWrapper>

@@ -10,11 +10,12 @@ module Daggerheart
                :leveling, :subclasses, :subclasses_mastery, :attacks, :experience, :heritage_name,
                :domains, :selected_domains, :domain_cards_max, :spellcast_traits, :beastform, :beastforms, :tier, :proficiency,
                :can_have_companion, :transformations, :homebrew_domains, :transformation, :can_have_stances, :selected_stances,
-               :stance, :selected_features, :guide_step, :conditions, :advantage_dice, :disadvantage_dice, :level_points
+               :stance, :selected_features, :guide_step, :conditions, :advantage_dice, :disadvantage_dice, :level_points, :scars,
+               :scarred_hope
 
     delegate :features, :id, :name, :level, :heritage, :main_class, :classes, :traits, :gold, :spent_armor_slots, :health_marked,
              :health_max, :stress_marked, :hope_marked, :stress_max, :hope_max, :modified_traits, :damage_thresholds, :evasion,
-             :base_armor_score, :armor_score, :armor_slots, :leveling, :subclasses, :money,
+             :base_armor_score, :armor_score, :armor_slots, :leveling, :subclasses, :money, :scars, :scarred_hope,
              :subclasses_mastery, :attacks, :experience, :heritage_name, :domains, :selected_domains,
              :domain_cards_max, :spellcast_traits, :beastform, :beastforms, :tier, :proficiency,
              :can_have_companion, :transformations, :transformation, :can_have_stances, :selected_stances, :stance,
