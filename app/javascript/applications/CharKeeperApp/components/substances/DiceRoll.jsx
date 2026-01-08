@@ -48,6 +48,7 @@ export const createDiceRoll = () => {
         setIsOpen('botCommand');
         setBotCommand(botCommand);
         setBonus(bonus);
+        setAdditionalBonus(0);
         setRollResult(undefined);
         setAdvantage(0);
       });
