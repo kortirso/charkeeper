@@ -62,6 +62,10 @@ module CharactersContext
           optional(:selected_features).hash
           optional(:guide_step).maybe(:integer)
           optional(:conditions).maybe(:array).each(:string)
+          optional(:scars).maybe(:array).each(:hash) do
+            required(:id).filled(:integer)
+            required(:name).filled(:string, max_size?: 500)
+          end
         end
 
         rule(:avatar_file, :avatar_url, :file).validate(:check_only_one_present)

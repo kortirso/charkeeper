@@ -111,7 +111,12 @@ module DaggerheartCharacter
         sum(static_feat_bonuses.pluck('hope')) +
         sum(dynamic_feat_bonuses.pluck('hope')) +
         sum(static_item_bonuses.pluck('hope')) +
-        sum(dynamic_item_bonuses.pluck('hope'))
+        sum(dynamic_item_bonuses.pluck('hope')) -
+        scars.size
+    end
+
+    def scarred_hope
+      scars.size
     end
 
     def attacks
