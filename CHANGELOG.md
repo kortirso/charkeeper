@@ -8,6 +8,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Modified
 - bonuses tab translations
 
+### Fixed
+- creating experiences for DH characters
+
 ## [0.4.0] - 2026-01-05
 ### Added
 - reseting DH characters to 1 level

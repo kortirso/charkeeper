@@ -43,12 +43,6 @@ export const DaggerheartExperience = (props) => {
     });
   });
 
-  const enterEditMode = (e) => {
-    e.stopPropagation();
-
-    setEditMode(true);
-  }
-
   const cancelEditing = () => {
     batch(() => {
       setName('');
@@ -122,7 +116,7 @@ export const DaggerheartExperience = (props) => {
             <div class="flex justify-between items-center">
               <h2 class="flex-1 text-lg dark:text-snow">{t('daggerheart.experience.title')}</h2>
               <Show when={!editMode()}>
-                <Button default size="small" onClick={(e) => enterEditMode(e)}>
+                <Button default size="small" onClick={() => setEditMode(true)}>
                   <Plus />
                 </Button>
               </Show>
