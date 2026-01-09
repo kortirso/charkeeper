@@ -96,18 +96,6 @@ export const DaggerheartFeatForm = (props) => {
 
   const [locale] = useAppLocale();
 
-  // const daggerheartCharacters = createMemo(() => {
-  //   if (props.characters === undefined) return [];
-
-  //   return props.characters.filter((item) => item.provider === 'daggerheart').reduce((acc, item) => { acc[item.id] = item.name; return acc; }, {});
-  // });
-
-  // const originValues = createMemo(() => {
-  //   if (featForm.origin === 'character') return daggerheartCharacters();
-    
-  //   return [];
-  // });
-
   const addBonus = () => setBonuses(bonuses().concat({ id: Math.floor(Math.random() * 1000), type: 'static', modify: null, value: null }));
 
   const removeBonus = (bonus) => setBonuses(bonuses().filter((item) => item.id !== bonus.id));
