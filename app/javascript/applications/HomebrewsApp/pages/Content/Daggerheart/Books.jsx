@@ -122,7 +122,7 @@ export const DaggerheartBooks = () => {
 
       batch(() => {
         setBooks(newBooks);
-        setBookForm({ id: null, name: '', public: false });
+        setBookForm({ id: null, name: '', own: true, public: false });
         closeModal();
       });
     } else renderAlerts(result.errors_list);

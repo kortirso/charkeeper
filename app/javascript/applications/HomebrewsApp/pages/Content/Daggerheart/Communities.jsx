@@ -132,7 +132,7 @@ export const DaggerheartCommunities = () => {
 
       batch(() => {
         setCommunities(newCommunities);
-        setCommunityForm({ id: null, name: '', public: false });
+        setCommunityForm({ id: null, name: '', own: true, public: false });
         closeModal();
       });
     } else renderAlerts(result.errors_list);

@@ -85,7 +85,7 @@ export const DaggerheartRecipes = () => {
     if (result.errors_list === undefined) {
       batch(() => {
         setRecipes([result.recipe].concat(recipes()));
-        setRecipeForm({ tool_id: null, item_id: null, public: false });
+        setRecipeForm({ tool_id: null, item_id: null, own: true, public: false });
         closeModal();
       });
     }

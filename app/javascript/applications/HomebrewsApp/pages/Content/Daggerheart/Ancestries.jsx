@@ -132,7 +132,7 @@ export const DaggerheartAncestries = () => {
 
       batch(() => {
         setAncestries(newAncestries);
-        setAncestryForm({ id: null, name: '', public: false });
+        setAncestryForm({ id: null, name: '', own: true, public: false });
         closeModal();
       });
     } else renderAlerts(result.errors_list);

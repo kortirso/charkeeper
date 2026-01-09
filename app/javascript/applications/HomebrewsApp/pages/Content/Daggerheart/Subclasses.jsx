@@ -165,7 +165,7 @@ export const DaggerheartSubclasses = () => {
 
       batch(() => {
         setSubclasses(newSubclasses);
-        setSubclassForm({ id: null, name: '', mechanics: [], spellcast: null, class_name: null, public: false });
+        setSubclassForm({ id: null, name: '', mechanics: [], spellcast: null, class_name: null, public: false, own: true });
         closeModal();
       });
     } else renderAlerts(result.errors_list);

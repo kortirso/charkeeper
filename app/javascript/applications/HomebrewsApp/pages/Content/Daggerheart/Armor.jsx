@@ -176,6 +176,7 @@ export const DaggerheartArmor = () => {
           name: { en: itemForm.name, ru: itemForm.name },
           description: { en: itemForm.description, ru: itemForm.description },
           features: { en: itemForm.features, ru: itemForm.features },
+          own: true,
           public: itemForm.public,
           bonuses: bonuses()
         };

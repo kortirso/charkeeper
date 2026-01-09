@@ -151,6 +151,7 @@ export const DaggerheartItems = () => {
             ...item,
             name: { en: itemForm.name, ru: itemForm.name },
             description: { en: itemForm.description, ru: itemForm.description },
+            own: true,
             public: itemForm.public,
             bonuses: bonuses()
           };
