@@ -29,7 +29,8 @@ module Dnd2024Character
       logger.info(spell_classes) unless Rails.env.test?
       @spells_slots ||=
         if spell_classes.values.many? { |value| value[:save_dc].present? }
-          SPELL_SLOTS[spell_classes.values.pluck(:multiclass_spell_level).compact.sum]
+          multiclass_level = [spell_classes.values.pluck(:multiclass_spell_level).compact.sum, 20].min
+          SPELL_SLOTS[multiclass_level]
         else
           wrapped.spells_slots
         end
