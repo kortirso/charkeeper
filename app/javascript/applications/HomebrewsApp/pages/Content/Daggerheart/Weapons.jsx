@@ -97,7 +97,8 @@ export const DaggerheartWeapons = () => {
     itemable_type: null,
     itemable_id: null,
     description: '',
-    public: false
+    public: false,
+    own: true
   });
   const [itemBonuses, setItemBonuses] = createSignal([]);
   const [selectedIds, setSelectedIds] = createSignal([]);
@@ -122,7 +123,7 @@ export const DaggerheartWeapons = () => {
     Promise.all([fetchItems(), fetchHomebrews(), fetchBooks()]).then(
       ([itemsDate, homebrewsData, booksData]) => {
         batch(() => {
-          setBooks(booksData.books.filter((item) => item.shared === null));
+          setBooks(booksData.books.filter((item) => item.own));
           setItems(itemsDate.items);
           setHomebrews(homebrewsData);
         });
@@ -165,7 +166,8 @@ export const DaggerheartWeapons = () => {
         itemable_type: null,
         itemable_id: null,
         description: item.description.en,
-        public: item.public
+        public: item.public,
+        own: true,
       });
       setItemBonuses(item.bonuses);
       openModal();
@@ -332,7 +334,7 @@ export const DaggerheartWeapons = () => {
                   <td class="minimum-width py-1 text-sm">
                     {item.info.damage}
                     <Show when={item.info.damage_bonus !== 0}>
-                      +{item.info.damageBonus}
+                      +{item.info.damage_bonus}
                     </Show>
                   </td>
                   <td class="minimum-width py-1 text-sm">{item.info.burden}</td>

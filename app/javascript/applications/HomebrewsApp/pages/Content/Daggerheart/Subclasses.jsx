@@ -86,7 +86,7 @@ export const DaggerheartSubclasses = () => {
     Promise.all([fetchSubclasses(), fetchHomebrews(), fetchBooks()]).then(
       ([subclassesData, homebrewsData, booksData]) => {
         batch(() => {
-          setBooks(booksData.books.filter((item) => item.shared === null));
+          setBooks(booksData.books.filter((item) => item.own));
           setSubclasses(subclassesData.subclasses);
           setHomebrews(homebrewsData);
         });

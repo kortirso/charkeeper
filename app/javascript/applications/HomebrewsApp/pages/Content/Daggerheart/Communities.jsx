@@ -67,7 +67,7 @@ export const DaggerheartCommunities = () => {
     Promise.all([fetchCommunities(), fetchBooks()]).then(
       ([communitiesData, booksData]) => {
         batch(() => {
-          setBooks(booksData.books.filter((item) => item.shared === null));
+          setBooks(booksData.books.filter((item) => item.own));
           setCommunities(communitiesData.communities);
         });
       }

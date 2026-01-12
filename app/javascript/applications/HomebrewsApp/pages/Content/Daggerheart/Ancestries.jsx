@@ -67,7 +67,7 @@ export const DaggerheartAncestries = () => {
     Promise.all([fetchAncestries(), fetchBooks()]).then(
       ([ancestriesData, booksData]) => {
         batch(() => {
-          setBooks(booksData.books.filter((item) => item.shared === null));
+          setBooks(booksData.books.filter((item) => item.own));
           setAncestries(ancestriesData.ancestries);
         });
       }

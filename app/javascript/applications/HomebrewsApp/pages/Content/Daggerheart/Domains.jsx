@@ -59,7 +59,7 @@ export const DaggerheartDomains = () => {
     Promise.all([fetchDomains(), fetchBooks()]).then(
       ([domainsData, booksData]) => {
         batch(() => {
-          setBooks(booksData.books.filter((item) => item.shared === null));
+          setBooks(booksData.books.filter((item) => item.own));
           setDomains(domainsData.domains);
         });
       }

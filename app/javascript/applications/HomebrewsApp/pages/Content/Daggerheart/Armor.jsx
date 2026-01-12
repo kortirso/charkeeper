@@ -92,7 +92,7 @@ export const DaggerheartArmor = () => {
     Promise.all([fetchItems(), fetchBooks()]).then(
       ([itemsDate, booksData]) => {
         batch(() => {
-          setBooks(booksData.books.filter((item) => item.shared === null));
+          setBooks(booksData.books.filter((item) => item.own));
           setItems(itemsDate.items);
         });
       }

@@ -59,7 +59,7 @@ export const DaggerheartTransformations = () => {
     Promise.all([fetchTransformations(), fetchBooks()]).then(
       ([transformationsData, booksData]) => {
         batch(() => {
-          setBooks(booksData.books.filter((item) => item.shared === null));
+          setBooks(booksData.books.filter((item) => item.own));
           setTransformations(transformationsData.transformations);
         });
       }
