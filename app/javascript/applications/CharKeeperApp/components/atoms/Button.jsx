@@ -7,13 +7,13 @@ export const Button = (props) => {
 
   const [loading, setLoading] = createSignal(false);
 
-  const click = async () => {
+  const click = async (event) => {
     if (props.onClick === undefined) return;
-    if (!props.withSuspense) return props.onClick();
+    if (!props.withSuspense) return props.onClick(event);
     if (loading()) return;
 
     setLoading(true);
-    await props.onClick();
+    await props.onClick(event);
     setLoading(false);
   }
 
