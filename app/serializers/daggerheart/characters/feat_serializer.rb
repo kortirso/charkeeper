@@ -19,11 +19,12 @@ module Daggerheart
       end
 
       def description
-        Charkeeper::Container.resolve('markdown').call(
+        result = Charkeeper::Container.resolve('markdown').call(
           value: feat.description[I18n.locale.to_s],
           version: (context ? (context[:version] || nil) : nil),
           initial_version: '0.3.20'
         )
+        context && context[:gsub] ? result&.gsub(/{{[a-z]+}}/, 'x') : result
       end
     end
   end

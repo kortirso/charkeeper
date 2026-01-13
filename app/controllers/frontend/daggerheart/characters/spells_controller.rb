@@ -18,7 +18,7 @@ module Frontend
         before_action :find_character_spell, only: %i[update destroy]
 
         def index
-          serialize_relation(spells, ::Daggerheart::Characters::FeatSerializer, :spells)
+          serialize_relation(spells, ::Daggerheart::Characters::FeatSerializer, :spells, {}, { gsub: true })
         end
 
         def create
