@@ -6,7 +6,7 @@ module Frontend
       include SerializeRelation
 
       def index
-        serialize_relation(relation, ::FeatSerializer, :spells)
+        serialize_relation(relation, ::FeatSerializer, :spells, {}, { gsub: true })
       end
 
       private

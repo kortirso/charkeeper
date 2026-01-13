@@ -8,7 +8,7 @@ describe DaggerheartCharacter::BaseDecorator do
     stats_decorator = DaggerheartCharacter::StatsDecorator.new(base_features_decorator)
     features_decorator = FeaturesDecorator.new(stats_decorator)
     features_decorator.features
-    features_decorator
+    DaggerheartCharacter::OverallDecorator.new(features_decorator)
   end
 
   let!(:character) { create :character, :daggerheart }

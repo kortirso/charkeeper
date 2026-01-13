@@ -144,7 +144,7 @@ module Daggerheart
       stats_decorator = ::DaggerheartCharacter::StatsDecorator.new(base_features_decorator)
       features_decorator = ::FeaturesDecorator.new(stats_decorator, version: version)
       features_decorator.features unless simple
-      features_decorator
+      ::DaggerheartCharacter::OverallDecorator.new(features_decorator)
     end
   end
 end
