@@ -28,7 +28,7 @@ const TRANSLATION = {
     proficiency: '+1 bonus to Proficiency',
     subclass: 'Upgrade subclass',
     multiclass: 'Choose additional class',
-    levelTooltip: 'Level up is not revertable, be careful!',
+    levelTooltip: "Level up is not revertable, be careful! But you can reset character progress in character's menu.",
     multiclassTooltip: 'Saving multiclass selection is not revertable, be careful!',
     subclassTooltip: 'Saving subclass upgrade is not revertable, be careful!',
     warning: 'Mark all level up slots before leveling'
@@ -52,7 +52,7 @@ const TRANSLATION = {
     proficiency: '+1 бонус к мастерству',
     subclass: 'Улучшить подкласс',
     multiclass: 'Выберите дополнительный класс',
-    levelTooltip: 'Повышение уровня необратимо, осторожно!',
+    levelTooltip: 'Повышение уровня необратимо, осторожно! Но можно сбросить весь прогресс в меню персонажа.',
     multiclassTooltip: 'Сохранение выбора мультикласса необратимо, осторожно!',
     subclassTooltip: 'Сохранение выбора улучшения мастерства подкласса необратимо, осторожно!',
     warning: 'Отметьте все слоты повышения уровня'
