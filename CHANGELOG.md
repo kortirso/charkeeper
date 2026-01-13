@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Modified
 - rendering description with values for domain cards
 - leveling warning for DH characters
+- reseting level for DH characters
 
 ## [0.4.1] - 2026-01-12
 ### Added

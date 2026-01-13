@@ -26,7 +26,7 @@ module CharactersContext
             'domains' => {},
             'health_marked' => 0,
             'stress_marked' => 0,
-            'hope_marked' => 0,
+            'hope_marked' => 2,
             'spent_armor_slots' => 0,
             'leveling' => ::Daggerheart::CharacterData::LEVELING,
             'experience' => [],
