@@ -22,7 +22,8 @@ const TRANSLATION = {
     deleteCharacterConfirm: 'Are you sure need to remove this character?',
     deleteCharacterTitle: 'Deleting character',
     delete: 'Delete',
-    resetCharacterConfirm: 'Are you sure need to reset this character to 1 level?',
+    resetCharacterConfirm1: 'Are you sure need to reset this character to 1 level?',
+    resetCharacterConfirm2: "Only character's equipment will not be reset.",
     resetCharacterTitle: 'Reseting character',
     reset: 'Reset'
   },
@@ -30,7 +31,8 @@ const TRANSLATION = {
     deleteCharacterConfirm: 'Вы точно хотите избавиться от этого персонажа?',
     deleteCharacterTitle: 'Удаление персонажа',
     delete: 'Удалить',
-    resetCharacterConfirm: 'Вы точно хотите сбросить от этого персонажа до 1 уровня?',
+    resetCharacterConfirm1: 'Вы точно хотите сбросить от этого персонажа до 1 уровня?',
+    resetCharacterConfirm2: "Только снаряжение персонажа не будет сброшено.",
     resetCharacterTitle: 'Сброс персонажа',
     reset: 'Сбросить'
   }
@@ -272,16 +274,17 @@ export const CharactersTab = () => {
       </Switch>
       <Modal>
         <Show when={deletingCharacterId()}>
-          <p class="mb-3 text-xl">{TRANSLATION[locale()].deleteCharacterTitle}</p>
-          <p class="mb-3">{TRANSLATION[locale()].deleteCharacterConfirm}</p>
+          <p class="mb-2 text-xl">{TRANSLATION[locale()].deleteCharacterTitle}</p>
+          <p class="mb-2">{TRANSLATION[locale()].deleteCharacterConfirm}</p>
           <div class="flex w-full">
             <Button outlined classList='flex-1 mr-2 text-sm md:text-base' onClick={closeModal}>{t('cancel')}</Button>
             <Button default classList='flex-1 ml-2 text-sm md:text-base' onClick={confirmCharacterDeleting}>{TRANSLATION[locale()].delete}</Button>
           </div>
         </Show>
         <Show when={resetingCharacterId()}>
-          <p class="mb-3 text-xl">{TRANSLATION[locale()].resetCharacterTitle}</p>
-          <p class="mb-3">{TRANSLATION[locale()].resetCharacterConfirm}</p>
+          <p class="mb-2 text-xl">{TRANSLATION[locale()].resetCharacterTitle}</p>
+          <p class="mb-2">{TRANSLATION[locale()].resetCharacterConfirm1}</p>
+          <p class="mb-2">{TRANSLATION[locale()].resetCharacterConfirm2}</p>
           <div class="flex w-full">
             <Button outlined classList='flex-1 mr-2 text-sm md:text-base' onClick={closeModal}>{t('cancel')}</Button>
             <Button default classList='flex-1 ml-2 text-sm md:text-base' onClick={confirmCharacterReseting}>{TRANSLATION[locale()].reset}</Button>
