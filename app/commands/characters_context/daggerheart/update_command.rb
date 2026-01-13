@@ -66,6 +66,7 @@ module CharactersContext
             required(:id).filled(:integer)
             required(:name).filled(:string, max_size?: 500)
           end
+          optional(:heritage_name).filled(:string, max_size?: 50)
         end
 
         rule(:avatar_file, :avatar_url, :file).validate(:check_only_one_present)
