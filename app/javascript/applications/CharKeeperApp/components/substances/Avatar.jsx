@@ -1,4 +1,4 @@
-import { createSignal, createEffect, batch } from 'solid-js';
+import { createSignal, createEffect, Show, batch } from 'solid-js';
 import * as i18n from '@solid-primitives/i18n';
 
 import { Button, Input, Label } from '../../components';
@@ -10,13 +10,15 @@ const TRANSLATION = {
     fileSizeLimit: 'File size should be less than 1 MB',
     avatarFile: 'Select avatar file',
     avatarUrl: 'or paste link to image',
-    avatarTransform: 'Image will be converted to square format'
+    avatarTransform: 'Image will be converted to square format',
+    heritageName: 'Mixed ancestry name'
   },
   ru: {
     fileSizeLimit: 'Размер файла должен быть меньше 1 МБ',
     avatarFile: 'Выберите файл аватара',
     avatarUrl: 'или укажите ссылку на изображение',
-    avatarTransform: 'Изображение будет конфертировано в квадратный формат'
+    avatarTransform: 'Изображение будет конфертировано в квадратный формат',
+    heritageName: 'Название расы'
   }
 }
 
@@ -27,7 +29,9 @@ export const Avatar = (props) => {
   const [loading, setLoading] = createSignal(false);
   const [selectedFile, setSelectedFile] = createSignal(null);
   const [avatarUrl, setAvatarUrl] = createSignal('');
+  
   const [name, setName] = createSignal(undefined);
+  const [heritageName, setHeritageName] = createSignal(undefined);
 
   const [appState] = useAppState();
   const [{ renderAlert, renderAlerts, renderNotice }] = useAppAlert();
@@ -40,6 +44,7 @@ export const Avatar = (props) => {
 
     batch(() => {
       setName(character().name);
+      setHeritageName(character().heritage_name);
       setLastActiveCharacterId(character().id);
     });
   });
@@ -59,6 +64,7 @@ export const Avatar = (props) => {
 
     const characterFormData = new FormData();
     if (character().name !== name()) characterFormData.append('name', name());
+    if (character().heritage_name !== heritageName()) characterFormData.append('heritage_name', heritageName());
     if (selectedFile()) characterFormData.append('file', selectedFile());
     if (avatarUrl().length > 0) characterFormData.append('avatar_url', avatarUrl());
     characterFormData.append('only_head', true);
@@ -67,7 +73,7 @@ export const Avatar = (props) => {
     
     if (result.errors_list === undefined) {
       batch(() => {
-        if (character().name !== name()) props.onReplaceCharacter({ name: name() });
+        if (character().name !== name()) props.onReplaceCharacter({ name: name(), heritage_name: heritageName() });
         renderNotice(t('alerts.characterIsUpdated'));
         setLoading(false);
       });
@@ -81,7 +87,7 @@ export const Avatar = (props) => {
 
   return (
     <div class="blockable p-4 mb-4">
-      <div class="mb-4">
+      <div>
         <Label labelText={TRANSLATION[locale()].avatarFile} />
         <input class="block mb-2 dark:text-gray-200" type="file" accept="image/jpeg, image/png" onChange={handleFileChange} />
         <Input
@@ -92,12 +98,20 @@ export const Avatar = (props) => {
         <Label labelText={TRANSLATION[locale()].avatarTransform} />
       </div>
       <Input
-        containerClassList="mb-4"
+        containerClassList="mt-4"
         labelText={t('newCharacterPage.name')}
         value={name()}
-        onInput={(value) => setName(value)}
+        onInput={setName}
       />
-      <Button default onClick={() => loading() ? null : updateCharacter()}>{loading() ? t('saving') : t('save')}</Button>
+      <Show when={character().provider === 'daggerheart' && heritageName()}>
+        <Input
+          containerClassList="mt-4"
+          labelText={TRANSLATION[locale()].heritageName}
+          value={heritageName()}
+          onInput={setHeritageName}
+        />
+      </Show>
+      <Button default classList="mt-4" onClick={() => loading() ? null : updateCharacter()}>{loading() ? t('saving') : t('save')}</Button>
     </div>
   );
 }
