@@ -9,6 +9,8 @@ module HomebrewContext
         params do
           required(:subclass).filled(type?: ::Daggerheart::Homebrew::Subclass)
           optional(:name).filled(:string, max_size?: 50)
+          optional(:spellcast).maybe(:string)
+          optional(:mechanics).maybe(:array).each(:string)
           optional(:public).filled(:bool)
         end
       end
@@ -16,7 +18,7 @@ module HomebrewContext
       private
 
       def do_persist(input)
-        input[:subclass].update!(input.slice(:name, :public))
+        input[:subclass].update!(input.except(:subclass))
 
         { result: input[:subclass] }
       end
