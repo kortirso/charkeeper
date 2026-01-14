@@ -17,7 +17,10 @@ module HomebrewContext
       private
 
       def do_persist(input)
-        input[:speciality].update!(input.except(:speciality))
+        input[:speciality].data =
+          input[:speciality].data.attributes.merge(input.slice(:evasion, :health_max).stringify_keys)
+        input[:speciality].assign_attributes(input.slice(:name))
+        input[:speciality].save!
 
         { result: input[:speciality] }
       end

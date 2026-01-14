@@ -18,7 +18,10 @@ module HomebrewContext
       private
 
       def do_persist(input)
-        input[:subclass].update!(input.except(:subclass))
+        input[:subclass].data =
+          input[:subclass].data.attributes.merge(input.slice(:spellcast, :mechanics).stringify_keys)
+        input[:subclass].assign_attributes(input.slice(:name, :public))
+        input[:subclass].save!
 
         { result: input[:subclass] }
       end
