@@ -42,7 +42,7 @@
       "abilities": "Способности",
       "professions": "Владения",
       "spells": "Заклинания",
-      "companion": "Питомец",
+      "companion": "Компаньон",
       "ancestry": "Раса",
       "community": "Общество",
       "class": "Класс",
@@ -127,22 +127,6 @@
     "transformation": {
       "transformation": "Трансформация",
       "naturalForm": "Естественная форма"
-    },
-    "companion": {
-      "name": "Имя питомца",
-      "evasion": "Уклонение",
-      "damage": "Урон",
-      "distance": "Дистанция",
-      "leveling": {
-        "intelligent": "Intelligent",
-        "light": "Light in the Dark",
-        "comfort": "Creature comfort",
-        "armored": "Armored",
-        "vicious": "Vicious",
-        "resilient": "Resilient",
-        "bonded": "Bonded",
-        "aware": "Aware"
-      }
     }
   },
   "combat": {

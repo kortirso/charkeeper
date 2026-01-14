@@ -127,22 +127,6 @@
     "transformation": {
       "transformation": "Transformation",
       "naturalForm": "Natural form"
-    },
-    "companion": {
-      "name": "Companion's name",
-      "evasion": "Evasion",
-      "damage": "Damage",
-      "distance": "Distance",
-      "leveling": {
-        "intelligent": "Intelligent",
-        "light": "Light in the Dark",
-        "comfort": "Creature comfort",
-        "armored": "Armored",
-        "vicious": "Vicious",
-        "resilient": "Resilient",
-        "bonded": "Bonded",
-        "aware": "Aware"
-      }
     }
   },
   "combat": {
