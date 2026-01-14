@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## Unreleased
 ### Modified
 - companion form for DH characters
+- refreshing companion during rest action for DH characters
 
 ## [0.4.2] - 2026-01-13
 ### Added
