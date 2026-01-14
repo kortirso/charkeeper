@@ -37,6 +37,7 @@ module CharactersContext
       def do_prepare(input)
         return if input[:options].nil?
 
+        companion = input[:character].companion
         input[:data] = { 'hope_marked' => input[:character].data.hope_marked }
         if input[:value] == 'short' && input[:make_rolls]
           {
@@ -47,12 +48,25 @@ module CharactersContext
             rolled_value = roll.call(dice: "#{input.dig(:options, key)}d4", modifier: input[:character].tier)
             input[:data][value] = input[:character].data[value] - rolled_value
             input[:data][value] = [input[:data][value], 0].max
+
+            if companion && companion.data.stress_marked != companion.data.stress_max
+              input[:companion_stress_marked] = [companion.data.stress_marked - rolled_value, 0].max
+            end
           end
         end
         if input[:value] == 'long'
           input[:data]['health_marked'] = 0 if input.dig(:options, :clear_health).positive?
           input[:data]['stress_marked'] = 0 if input.dig(:options, :clear_stress).positive?
           input[:data]['spent_armor_slots'] = 0 if input.dig(:options, :clear_armor_slots).positive?
+
+          if companion
+            input[:companion_stress_marked] =
+              if companion.data.stress_marked == companion.data.stress_max
+                companion.data.stress_marked - 1
+              else
+                0
+              end
+          end
         end
         if input[:value] != 'session'
           input[:data]['hope_marked'] += input.dig(:options, :gain_hope) + (2 * input.dig(:options, :gain_double_hope))
@@ -64,6 +78,7 @@ module CharactersContext
       def do_persist(input)
         update_refresh(input)
         update_reverse_refresh(input)
+        refresh_companion(input) if input[:companion_stress_marked]
 
         if input[:data]
           input[:character].data = ::Daggerheart::CharacterData.new(input[:character].data.attributes.merge(input[:data]))
@@ -71,6 +86,12 @@ module CharactersContext
         end
 
         { result: input[:character] }
+      end
+
+      def refresh_companion(input)
+        input[:character].companion.data =
+          input[:character].companion.data.attributes.merge('stress_marked' => input[:companion_stress_marked])
+        input[:character].companion.save
       end
 
       def update_refresh(input)
