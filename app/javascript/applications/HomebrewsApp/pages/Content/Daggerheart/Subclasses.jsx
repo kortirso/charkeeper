@@ -160,7 +160,7 @@ export const DaggerheartSubclasses = () => {
       const newSubclasses = subclasses().map((item) => {
         if (subclassForm.id !== item.id) return item;
 
-        return { ...item, name: subclassForm.name };
+        return { ...item, ...subclassForm };
       });
 
       batch(() => {

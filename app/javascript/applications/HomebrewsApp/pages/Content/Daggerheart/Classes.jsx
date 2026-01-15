@@ -80,7 +80,7 @@ export const DaggerheartClasses = () => {
 
   const openCreateSpecialityModal = () => {
     batch(() => {
-      setSpecialityForm({ id: null, name: '' });
+      setSpecialityForm({ id: null, name: '', domains: [], evasion: 10, health_max: 6 });
       setModalMode('specialityForm');
       openModal();
     });
@@ -118,7 +118,7 @@ export const DaggerheartClasses = () => {
     if (result.errors_list === undefined) {
       batch(() => {
         setSpecialities([result.speciality].concat(specialities()));
-        setSpecialityForm({ id: null, name: '' });
+        setSpecialityForm({ id: null, name: '', domains: [], evasion: 10, health_max: 6 });
         closeModal();
       });
     } else renderAlerts(result.errors_list);
@@ -131,12 +131,12 @@ export const DaggerheartClasses = () => {
       const newSpecialities = specialities().map((item) => {
         if (specialityForm.id !== item.id) return item;
 
-        return { ...item, name: specialityForm.name };
+        return { ...item, ...specialityForm };
       });
 
       batch(() => {
         setSpecialities(newSpecialities);
-        setSpecialityForm({ id: null, name: '' });
+        setSpecialityForm({ id: null, name: '', domains: [], evasion: 10, health_max: 6 });
         closeModal();
       });
     } else renderAlerts(result.errors_list);
