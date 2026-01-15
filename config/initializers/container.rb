@@ -158,14 +158,14 @@ module Charkeeper
 
     register('commands.channels_context.add_channel') { ChannelsContext::AddChannelCommand.new }
 
-    register('commands.homebrew_context.daggerheart.add_transformation') {
-      HomebrewContext::Daggerheart::AddTransformationCommand.new
+    register('commands.homebrew_context.daggerheart.transformations.add') {
+      HomebrewContext::Daggerheart::Transformations::AddCommand.new
     }
-    register('commands.homebrew_context.daggerheart.change_transformation') {
-      HomebrewContext::Daggerheart::ChangeTransformationCommand.new
+    register('commands.homebrew_context.daggerheart.transformations.change') {
+      HomebrewContext::Daggerheart::Transformations::ChangeCommand.new
     }
-    register('commands.homebrew_context.daggerheart.copy_transformation') {
-      HomebrewContext::Daggerheart::CopyTransformationCommand.new
+    register('commands.homebrew_context.daggerheart.transformations.copy') {
+      HomebrewContext::Daggerheart::Transformations::CopyCommand.new
     }
     register('commands.homebrew_context.daggerheart.add_book_transformations') {
       HomebrewContext::Daggerheart::AddBookTransformationsCommand.new

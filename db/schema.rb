@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_01_04_182159) do
+ActiveRecord::Schema[8.1].define(version: 2026_01_15_153605) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
   enable_extension "pgcrypto"
@@ -195,6 +195,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_01_04_182159) do
   create_table "daggerheart_homebrew_transformations", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.datetime "created_at", null: false
     t.string "name", null: false
+    t.jsonb "name_json", default: {}, null: false
     t.boolean "public", default: false, null: false, comment: "Открыть доступ для сторонних пользователей"
     t.datetime "updated_at", null: false
     t.uuid "user_id", null: false
