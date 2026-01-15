@@ -4,8 +4,8 @@ module Homebrews
   module Daggerheart
     class TransformationsController < Homebrews::BaseController
       include Deps[
-        add_daggerheart_transformation: 'commands.homebrew_context.daggerheart.add_transformation',
-        change_daggerheart_transformation: 'commands.homebrew_context.daggerheart.change_transformation'
+        add_daggerheart_transformation: 'commands.homebrew_context.daggerheart.transformations.add',
+        change_daggerheart_transformation: 'commands.homebrew_context.daggerheart.transformations.change'
       ]
       include SerializeRelation
       include SerializeResource
