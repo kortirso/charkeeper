@@ -95,7 +95,7 @@ module HomebrewsContext
           )
         )
         .each_with_object({}) do |item, acc|
-          acc[item.id] = { name: { en: item.name, ru: item.name_json['ru'] || item.name } }
+          acc[item.id] = { name: item.name_json.keys.blank? ? { en: item.name, ru: item.name } : item.name_json }
         end
     end
 
