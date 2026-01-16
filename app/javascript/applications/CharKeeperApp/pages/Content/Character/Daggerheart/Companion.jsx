@@ -108,7 +108,11 @@ export const DaggerheartCompanion = (props) => {
 
   const [companion, setCompanion] = createSignal(undefined);
   const [name, setName] = createSignal('');
+
+  const [editNameMode, setEditNameMode] = createSignal(false);
   const [editDamageMode, setEditDamageMode] = createSignal(false);
+  
+  const [nameData, setNameData] = createSignal(undefined);
   const [damageData, setDamageData] = createSignal(undefined);
   const [distanceData, setDistanceData] = createSignal(undefined);
 
@@ -135,6 +139,7 @@ export const DaggerheartCompanion = (props) => {
           setCompanion(null);
         } else {
           batch(() => {
+            setNameData(companionData.companion.name)
             setDamageData(companionData.companion.damage);
             setDistanceData(companionData.companion.distance);
             setCompanion(companionData.companion);
@@ -178,6 +183,13 @@ export const DaggerheartCompanion = (props) => {
       setDamageData(companion().damage);
       setDistanceData(companion().distance);
       setEditDamageMode(false);
+    });
+  }
+
+  const cancelNameEditing = () => {
+    batch(() => {
+      setNameData(companion().name);
+      setEditNameMode(false);
     });
   }
 
@@ -233,7 +245,7 @@ export const DaggerheartCompanion = (props) => {
                   containerClassList="mb-4"
                   labelText={TRANSLATION[locale()].name}
                   value={name()}
-                  onInput={(value) => setName(value)}
+                  onInput={setName}
                 />
                 <Button default onClick={createCompanion}>{t('create')}</Button>
               </>
@@ -241,27 +253,38 @@ export const DaggerheartCompanion = (props) => {
           >
             <div class="flex flex-col emd:flex-row gap-4">
               <div class="flex-1">
-                <div class="p-4 blockable">
-                  <p class="text-xl">{companion().name}</p>
-                  <Show when={companion().caption}>
-                    <p class="mt-2">{companion().caption}</p>
-                  </Show>
-                  <div class="mt-4">
-                    <p class="text-sm/4 uppercase mb-1">{t('daggerheart.health.stress')}</p>
-                    <div class="flex">
-                      <For each={Array.from([...Array(companion().stress_max).keys()], (x) => x + 1)}>
-                        {(index) =>
-                          <Checkbox
-                            filled
-                            checked={companion().stress_marked >= index}
-                            classList="mr-1"
-                            onToggle={() => updateStress(index)}
-                          />
-                        }
-                      </For>
+                <EditWrapper
+                  editMode={editNameMode()}
+                  onSetEditMode={setEditNameMode}
+                  onCancelEditing={cancelNameEditing}
+                  onSaveChanges={() => updateCompanion({ name: nameData() }, setEditNameMode)}
+                >
+                  <div class="p-4 blockable">
+                    <Show when={editNameMode()} fallback={<p class="text-xl">{companion().name}</p>}>
+                      <Input
+                        containerClassList="mb-4"
+                        labelText={TRANSLATION[locale()].name}
+                        value={nameData()}
+                        onInput={setNameData}
+                      />
+                    </Show>
+                    <div class="mt-4">
+                      <p class="text-sm/4 uppercase mb-1">{t('daggerheart.health.stress')}</p>
+                      <div class="flex">
+                        <For each={Array.from([...Array(companion().stress_max).keys()], (x) => x + 1)}>
+                          {(index) =>
+                            <Checkbox
+                              filled
+                              checked={companion().stress_marked >= index}
+                              classList="mr-1"
+                              onToggle={() => updateStress(index)}
+                            />
+                          }
+                        </For>
+                      </div>
                     </div>
                   </div>
-                </div>
+                </EditWrapper>
                 <EditWrapper
                   editMode={editDamageMode()}
                   onSetEditMode={setEditDamageMode}
