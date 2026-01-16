@@ -27,6 +27,9 @@ en:
       dnd2024:
         craft:
           no_money: Not enough money
+      items:
+        consume:
+          done: "%{value} is consumed"
   services:
     sheets_context:
       level: Level

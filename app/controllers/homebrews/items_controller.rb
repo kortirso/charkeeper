@@ -19,14 +19,15 @@ module Homebrews
     end
 
     def create
-      case add_item.call(item_params.merge(user: current_user, bonuses: bonuses_params))
+      case add_item.call(item_params.merge(user: current_user, bonuses: bonuses_params, consume: consume_params))
       in { errors: errors, errors_list: errors_list } then unprocessable_response(errors, errors_list)
-      in { result: result } then serialize_resource(result, serializer, :item, {}, :created, { bonuses: result.bonuses })
+      in { result: result }
+        serialize_resource(result, serializer, :item, {}, :created, { bonuses: result.bonuses, current_user_id: current_user.id })
       end
     end
 
     def update
-      case change_item.call(item_params.merge(item: @item, bonuses: bonuses_params))
+      case change_item.call(item_params.merge(item: @item, bonuses: bonuses_params, consume: consume_params))
       in { errors: errors, errors_list: errors_list } then unprocessable_response(errors, errors_list)
       in { result: result } then serialize_resource(result, serializer, :item, {}, :ok)
       end
@@ -80,6 +81,10 @@ module Homebrews
 
     def bonuses_params
       params.permit![:bonuses].to_a.map { |item| item.to_h.deep_symbolize_keys }
+    end
+
+    def consume_params
+      params.permit![:consume].to_a.map { |item| item.to_h.deep_symbolize_keys }
     end
   end
 end

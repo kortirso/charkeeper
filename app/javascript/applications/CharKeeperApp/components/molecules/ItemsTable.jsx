@@ -88,7 +88,7 @@ export const ItemsTable = (props) => {
                           <Drink width={16} height={16} />
                         </Button>
                       </Show>
-                      <Show when={item.kind === 'consumables' && item.info.consume}>
+                      <Show when={(item.kind === 'consumables' || item.kind === 'potion') && item.info.consume}>
                         <Button default size="small" onClick={() => props.onConsumeCharacterItem(item, props.state)}>
                           <Drink width={16} height={16} />
                         </Button>

@@ -1,5 +1,6 @@
 import { createSignal, createEffect, createMemo, Show, For, batch } from 'solid-js';
 import { createStore } from 'solid-js/store';
+import { Key } from '@solid-primitives/keyed';
 
 import { useAppState, useAppLocale, useAppAlert } from '../../../context';
 import { Button, Input, TextArea, Select, createModal, Checkbox, ItemBonuses, Bonuses } from '../../../components';
@@ -29,13 +30,19 @@ const TRANSLATION = {
     requiredName: 'Name is required',
     kinds: {
       item: 'Item',
-      consumable: 'Consumable',
+      consumables: 'Consumable',
       recipe: 'Recipe'
     },
     convert: 'Convert',
     showPublic: 'Show public',
     public: 'Public',
-    copyCompleted: 'Item copy is completed'
+    copyCompleted: 'Item copy is completed',
+    addConsume: 'Add consume effect',
+    consumeAttribute: 'Changing attribute',
+    consumeFormula: 'Formula',
+    formulas1: 'Formula can contain math expressions.',
+    formulas2: 'For dice rolls use D(x), where x - dices amount.',
+    formulas3: "For example, 'D(4)+2', '-1 * 2 * D(4) + 3'."
   },
   ru: {
     added: 'Контент добавлен в книгу',
@@ -51,22 +58,29 @@ const TRANSLATION = {
     requiredName: 'Название предмета - обязательное поле',
     kinds: {
       item: 'Предмет',
-      consumable: 'Расходник',
+      consumables: 'Расходник',
       recipe: 'Рецепт'
     },
     convert: 'Конвертировать',
     showPublic: 'Показать общедоступные',
     public: 'Общедоступная',
-    copyCompleted: 'Копирование предмета завершено'
+    copyCompleted: 'Копирование предмета завершено',
+    addConsume: 'Добавить эффект использования',
+    consumeAttribute: 'Изменяемый атрибут',
+    consumeFormula: 'Формула',
+    formulas1: 'Формула может содержать математические выражения.',
+    formulas2: 'Для броска кубика используёте D(x), где x - кол-во граней.',
+    formulas3: "Например, 'D(4)+2', '-1 * 2 * D(4) + 3'."
   }
 }
 
 export const DaggerheartItems = () => {
-  const [itemForm, setItemForm] = createStore({ name: '', description: '', kind: 'item', public: false });
+  const [itemForm, setItemForm] = createStore({ name: '', description: '', kind: 'item', public: false, own: true });
   const [itemBonuses, setItemBonuses] = createSignal([]);
   const [selectedIds, setSelectedIds] = createSignal([]);
   const [book, setBook] = createSignal(null);
   const [bonuses, setBonuses] = createSignal([]);
+  const [consume, setConsume] = createSignal([]);
 
   const [books, setBooks] = createSignal(undefined);
   const [items, setItems] = createSignal(undefined);
@@ -79,7 +93,7 @@ export const DaggerheartItems = () => {
 
   createEffect(() => {
     const fetchBooks = async () => await fetchDaggerheartBooks(appState.accessToken);
-    const fetchItems = async () => await fetchItemsRequest(appState.accessToken, 'daggerheart', 'item,consumable,recipe');
+    const fetchItems = async () => await fetchItemsRequest(appState.accessToken, 'daggerheart', 'item,consumables,recipe');
 
     Promise.all([fetchItems(), fetchBooks()]).then(
       ([itemsDate, booksData]) => {
@@ -99,18 +113,31 @@ export const DaggerheartItems = () => {
 
   const openCreateItemModal = () => {
     batch(() => {
-      setItemForm({ id: null, name: '', description: '', kind: 'item', public: false });
+      setItemForm({ id: null, name: '', description: '', kind: 'item', public: false, own: true });
       setItemBonuses([]);
+      setConsume([]);
       openModal();
     });
   }
 
   const openChangeItemModal = (item) => {
     batch(() => {
-      setItemForm({ id: item.id, name: item.name.en, description: item.description.en, public: item.public });
+      setItemForm({ id: item.id, kind: item.kind, name: item.name.en, description: item.description.en, public: item.public, own: true });
       setItemBonuses(item.bonuses);
+      setConsume(item.info.consume || []);
       openModal();
     });
+  }
+
+  const addConsume = () => setConsume(consume().concat({ id: Math.floor(Math.random() * 1000), attribute: null, formula: '' }));
+
+  const changeConsume = (id, attribute, value) => {
+    const result = consume().map((item) => {
+      if (item.id !== id) return item;
+
+      return { ...item, [attribute]: value };
+    });
+    setConsume(result);
   }
 
   const saveItem = () => {
@@ -120,27 +147,29 @@ export const DaggerheartItems = () => {
   }
 
   const createItem = async () => {
-    const result = await createItemRequest(appState.accessToken, 'daggerheart', { brewery: itemForm, bonuses: bonuses() });
+    const result = await createItemRequest(appState.accessToken, 'daggerheart', { brewery: itemForm, bonuses: bonuses(), consume: consume().filter((item) => item.attribute !== null && item.formula.length > 0) });
 
     if (result.errors_list === undefined) {
       batch(() => {
         setItems([result.item].concat(items()));
-        setItemForm({ id: null, name: '', description: '', kind: 'item', public: false });
+        setItemForm({ id: null, name: '', description: '', kind: 'item', public: false, own: true });
         setItemBonuses([]);
+        setConsume([]);
         closeModal();
       });
     }
   }
 
   const updateItem = async () => {
-    const result = await changeItemRequest(appState.accessToken, 'daggerheart', itemForm.id, { brewery: itemForm, bonuses: bonuses(), only_head: true });
+    const result = await changeItemRequest(appState.accessToken, 'daggerheart', itemForm.id, { brewery: itemForm, bonuses: bonuses(), consume: consume().filter((item) => item.attribute !== null && item.formula.length > 0), only_head: true });
 
     if (result.errors_list === undefined) {
       if (itemForm.convert) {
         batch(() => {
           setItems(items().filter(({ id }) => id !== itemForm.id ));
-          setItemForm({ id: null, name: '', description: '', kind: 'item', public: false });
+          setItemForm({ id: null, name: '', description: '', kind: 'item', public: false, own: true });
           setItemBonuses([]);
+          setConsume([]);
           closeModal();
         });
       } else {
@@ -153,14 +182,16 @@ export const DaggerheartItems = () => {
             description: { en: itemForm.description, ru: itemForm.description },
             own: true,
             public: itemForm.public,
-            bonuses: bonuses()
+            bonuses: bonuses(),
+            info: { consume: consume().filter((item) => item.attribute !== null && item.formula.length > 0) }
           };
         });
 
         batch(() => {
           setItems(newItems);
-          setItemForm({ id: null, name: '', description: '', kind: 'item', public: false });
+          setItemForm({ id: null, name: '', description: '', kind: 'item', public: false, own: true });
           setItemBonuses([]);
+          setConsume([]);
           closeModal();
         });
       }
@@ -272,10 +303,10 @@ export const DaggerheartItems = () => {
         </table>
       </Show>
       <Modal>
-        <p class="mb-2 text-xl">{TRANSLATION[locale()]['newItemTitle']}</p>
+        <p class="text-xl">{TRANSLATION[locale()]['newItemTitle']}</p>
         <Show when={itemForm.id}>
           <Select
-            containerClassList="mb-2"
+            containerClassList="mt-2"
             labelText={TRANSLATION[locale()].convert}
             items={translate({ "primary weapon": { "name": { "en": "Primary Weapon", "ru": "Основное оружие" } }, "secondary weapon": { "name": { "en": "Secondary Weapon", "ru": "Запасное оружие" } }, "armor": { "name": { "en": "Armor", "ru": "Броня" } } }, locale())}
             selectedValue={itemForm.convert}
@@ -283,16 +314,16 @@ export const DaggerheartItems = () => {
           />
         </Show>
         <Input
-          containerClassList="form-field mb-2"
+          containerClassList="form-field mt-2"
           labelText={TRANSLATION[locale()]['name']}
           value={itemForm.name}
           onInput={(value) => setItemForm({ ...itemForm, name: value })}
         />
         <Show when={!itemForm.id}>
           <Select
-            containerClassList="mb-2"
+            containerClassList="mt-2"
             labelText={TRANSLATION[locale()]['kind']}
-            items={translate({ "item": { "name": { "en": "Item", "ru": "Предмет" } }, "consumable": { "name": { "en": "Consumable", "ru": "Расходник" } }, "recipe": { "name": { "en": "Recipe", "ru": "Рецепт" } } }, locale())}
+            items={translate({ "item": { "name": { "en": "Item", "ru": "Предмет" } }, "consumables": { "name": { "en": "Consumable", "ru": "Расходник" } }, "recipe": { "name": { "en": "Recipe", "ru": "Рецепт" } } }, locale())}
             selectedValue={itemForm.kind}
             onSelect={(value) => setItemForm({ ...itemForm, kind: value })}
           />
@@ -300,20 +331,51 @@ export const DaggerheartItems = () => {
         <ItemBonuses bonuses={itemBonuses()} onBonus={setBonuses} />
         <TextArea
           rows="5"
-          containerClassList="mb-2"
+          containerClassList="mt-2"
           labelText={TRANSLATION[locale()]['description']}
           value={itemForm.description}
           onChange={(value) => setItemForm({ ...itemForm, description: value })}
         />
+        <Show when={itemForm.kind === 'consumables'}>
+          <Button default small classList="p-1 mt-2" onClick={addConsume}>{TRANSLATION[locale()].addConsume}</Button>
+          <Show when={consume().length > 0}>
+            <p class="text-xs mt-1">{TRANSLATION[locale()].formulas1}</p>
+            <p class="text-xs mt-1">{TRANSLATION[locale()].formulas2}</p>
+            <p class="text-xs mt-1 mb-4">{TRANSLATION[locale()].formulas3}</p>
+          </Show>
+          <Key
+            each={consume()}
+            by={item => item.id}
+          >
+            {(consumeItem) =>
+              <div class="flex items-center gap-2">
+                <Select
+                  containerClassList="flex-1"
+                  labelText={TRANSLATION[locale()].consumeAttribute}
+                  items={translate({ "health_marked": { "name": { "en": "HP", "ru": "Раны" } }, "stress_marked": { "name": { "en": "Stress", "ru": "Стресс" } }, "hope_marked": { "name": { "en": "Hope", "ru": "Надежда" } } }, locale())}
+                  selectedValue={consumeItem().attribute}
+                  onSelect={(value) => changeConsume(consumeItem().id, 'attribute', value)}
+                />
+
+                <Input
+                  containerClassList="form-field flex-1"
+                  labelText={TRANSLATION[locale()].consumeFormula}
+                  value={consumeItem().formula}
+                  onInput={(value) => changeConsume(consumeItem().id, 'formula', value)}
+                />
+              </div>
+            }
+          </Key>
+        </Show>
         <Checkbox
           labelText={TRANSLATION[locale()].public}
           labelPosition="right"
           labelClassList="ml-2"
           checked={itemForm.public}
-          classList="mb-2"
+          classList="mt-4"
           onToggle={() => setItemForm({ ...itemForm, public: !itemForm.public })}
         />
-        <Button default classList="px-2 py-1" onClick={saveItem}>
+        <Button default classList="mt-4 px-2 py-1" onClick={saveItem}>
           {TRANSLATION[locale()]['save']}
         </Button>
       </Modal>

@@ -5,13 +5,15 @@ module HomebrewContext
     class ChangeItemCommand < BaseCommand
       include Deps[
         refresh_bonuses: 'commands.bonuses_context.refresh',
-        convert_item: 'commands.homebrew_context.daggerheart.convert_item'
+        convert_item: 'commands.homebrew_context.daggerheart.convert_item',
+        formula: 'formula'
       ]
 
       use_contract do
         config.messages.namespace = :homebrew_item
 
         Kinds = Dry::Types['strict.string'].enum('primary weapon', 'secondary weapon', 'armor')
+        ConsumeAttributes = Dry::Types['strict.string'].enum('health_marked', 'stress_marked', 'hope_marked')
 
         params do
           required(:item).filled(type?: ::Daggerheart::Item)
@@ -24,19 +26,36 @@ module HomebrewContext
             optional(:type).filled(:string)
             optional(:value)
           end
+          optional(:consume).maybe(:array).each(:hash) do
+            required(:id).filled(type?: Integer)
+            required(:attribute).filled(ConsumeAttributes)
+            required(:formula).filled(:string)
+          end
           optional(:convert).maybe(Kinds)
         end
       end
 
       private
 
+      # rubocop: disable Style/GuardClause
       def do_prepare(input)
         input[:name] = { en: input[:name], ru: input[:name] }
         input[:description] = { en: input[:description], ru: input[:description] }
+
+        if input.key?(:consume)
+          consume_result = input[:consume].select do |consume|
+            result = formula.call(formula: consume[:formula])
+            next unless result
+
+            consume
+          end
+          input[:info] = { consume: consume_result } if consume_result.any?
+        end
       end
+      # rubocop: enable Style/GuardClause
 
       def do_persist(input)
-        input[:item].update!(input.except(:item, :bonuses, :convert))
+        input[:item].update!(input.except(:item, :bonuses, :convert, :consume))
 
         refresh_bonuses.call(bonusable: input[:item], bonuses: input[:bonuses]) if input[:bonuses]
         convert_item.call(item: input[:item], kind: input[:convert]) if input.key?(:convert)

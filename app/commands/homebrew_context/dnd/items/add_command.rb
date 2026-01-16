@@ -5,7 +5,8 @@ module HomebrewContext
     module Items
       class AddCommand < BaseCommand
         include Deps[
-          refresh_bonuses: 'commands.bonuses_context.refresh'
+          refresh_bonuses: 'commands.bonuses_context.refresh',
+          formula: 'formula'
         ]
 
         use_contract do
@@ -13,6 +14,7 @@ module HomebrewContext
 
           Kinds = Dry::Types['strict.string'].enum('item', 'potion', 'ammo', 'focus', 'tools', 'music')
           Types = Dry::Types['strict.string'].enum('Feat')
+          ConsumeAttributes = Dry::Types['strict.string'].enum('health')
 
           params do
             required(:user).filled(type?: ::User)
@@ -27,13 +29,18 @@ module HomebrewContext
               required(:type).filled(:string)
               required(:value)
             end
+            optional(:consume).maybe(:array).each(:hash) do
+              required(:id).filled(type?: Integer)
+              required(:attribute).filled(ConsumeAttributes)
+              required(:formula).filled(:string)
+            end
             optional(:public).filled(:bool)
           end
         end
 
         private
 
-        # rubocop: disable Style/GuardClause
+        # rubocop: disable Style/GuardClause, Metrics/AbcSize
         def do_prepare(input)
           input[:name] = { en: input[:name], ru: input[:name] }
           input[:description] = { en: input[:description], ru: input[:description] }
@@ -42,11 +49,21 @@ module HomebrewContext
             input[:itemable] =
               input[:itemable_type].constantize.where(user_id: input[:user].id).find_by(id: input[:itemable_id])
           end
+
+          if input.key?(:consume)
+            consume_result = input[:consume].select do |consume|
+              result = formula.call(formula: consume[:formula])
+              next unless result
+
+              consume
+            end
+            input[:info] = { consume: consume_result } if consume_result.any?
+          end
         end
-        # rubocop: enable Style/GuardClause
+        # rubocop: enable Style/GuardClause, Metrics/AbcSize
 
         def do_persist(input)
-          result = ::Dnd5::Item.create!(input.except(:itemable_type, :itemable_id, :bonuses))
+          result = ::Dnd5::Item.create!(input.except(:itemable_type, :itemable_id, :bonuses, :consume))
 
           refresh_bonuses.call(bonusable: result, bonuses: input[:bonuses]) if input[:bonuses]
 

@@ -1,8 +1,9 @@
 import { createSignal, createEffect, Show, For, batch } from 'solid-js';
 import { createStore } from 'solid-js/store';
+import { Key } from '@solid-primitives/keyed';
 
 import { useAppState, useAppLocale, useAppAlert } from '../../../context';
-import { Button, Input, TextArea, Select, createModal, Checkbox, DndItemBonuses, DndBonuses } from '../../../components';
+import { Button, Input, TextArea, Select, createModal, DndItemBonuses, DndBonuses } from '../../../components';
 import { Edit, Trash } from '../../../assets';
 import { fetchDaggerheartBooks } from '../../../requests/fetchDaggerheartBooks';
 import { changeBookContent } from '../../../requests/changeBookContent';
@@ -10,6 +11,7 @@ import { fetchItemsRequest } from '../../../requests/fetchItemsRequest';
 import { createItemRequest } from '../../../requests/createItemRequest';
 import { changeItemRequest } from '../../../requests/changeItemRequest';
 import { removeItemRequest } from '../../../requests/removeItemRequest';
+import { translate } from '../../../helpers';
 
 const TRANSLATION = {
   en: {
@@ -34,7 +36,13 @@ const TRANSLATION = {
       focus: 'Focus',
       ammo: 'Ammo'
     },
-    convert: 'Convert'
+    convert: 'Convert',
+    addConsume: 'Add consume effect',
+    consumeAttribute: 'Changing attribute',
+    consumeFormula: 'Formula',
+    formulas1: 'Formula can contain math expressions.',
+    formulas2: 'For dice rolls use D(x), where x - dices amount.',
+    formulas3: "For example, 'D(4)+2', '-1 * 2 * D(4) + 3'."
   },
   ru: {
     added: 'Контент добавлен в книгу',
@@ -58,7 +66,13 @@ const TRANSLATION = {
       focus: 'Фокус',
       ammo: 'Боеприпас'
     },
-    convert: 'Конвертировать'
+    convert: 'Конвертировать',
+    addConsume: 'Добавить эффект использования',
+    consumeAttribute: 'Изменяемый атрибут',
+    consumeFormula: 'Формула',
+    formulas1: 'Формула может содержать математические выражения.',
+    formulas2: 'Для броска кубика используёте D(x), где x - кол-во граней.',
+    formulas3: "Например, 'D(4)+2', '-1 * 2 * D(4) + 3'."
   }
 }
 
@@ -67,7 +81,9 @@ export const DndItems = () => {
   const [itemBonuses, setItemBonuses] = createSignal([]);
   const [selectedIds, setSelectedIds] = createSignal([]);
   const [book, setBook] = createSignal(null);
-  const [bonuses, setBonuses] = createSignal(null);
+
+  const [bonuses, setBonuses] = createSignal([]);
+  const [consume, setConsume] = createSignal([]);
 
   const [books, setBooks] = createSignal(undefined); // eslint-disable-line no-unused-vars
   const [items, setItems] = createSignal(undefined);
@@ -95,16 +111,29 @@ export const DndItems = () => {
     batch(() => {
       setItemForm({ id: null, name: '', description: '', kind: 'item' });
       setItemBonuses([]);
+      setConsume([]);
       openModal();
     });
   }
 
   const openChangeItemModal = (item) => {
     batch(() => {
-      setItemForm({ id: item.id, name: item.name.en, description: item.description.en, weight: item.data.weight, price: item.data.price });
+      setItemForm({ id: item.id, name: item.name.en, kind: item.kind, description: item.description.en, weight: item.data.weight, price: item.data.price });
       setItemBonuses(item.bonuses);
+      setConsume(item.info.consume || []);
       openModal();
     });
+  }
+
+  const addConsume = () => setConsume(consume().concat({ id: Math.floor(Math.random() * 1000), attribute: null, formula: '' }));
+
+  const changeConsume = (id, attribute, value) => {
+    const result = consume().map((item) => {
+      if (item.id !== id) return item;
+
+      return { ...item, [attribute]: value };
+    });
+    setConsume(result);
   }
 
   const saveItem = () => {
@@ -124,20 +153,21 @@ export const DndItems = () => {
   }
 
   const createItem = async (formData) => {
-    const result = await createItemRequest(appState.accessToken, 'dnd', { brewery: formData, bonuses: bonuses() });
+    const result = await createItemRequest(appState.accessToken, 'dnd', { brewery: formData, bonuses: bonuses(), consume: consume().filter((item) => item.attribute !== null && item.formula.length > 0) });
 
     if (result.errors_list === undefined) {
       batch(() => {
         setItems([result.item].concat(items()));
         setItemForm({ id: null, name: '', description: '', kind: 'item' });
         setItemBonuses([]);
+        setConsume([]);
         closeModal();
       });
     }
   }
 
   const updateItem = async (formData) => {
-    const result = await changeItemRequest(appState.accessToken, 'dnd', itemForm.id, { brewery: formData, bonuses: bonuses(), only_head: true });
+    const result = await changeItemRequest(appState.accessToken, 'dnd', itemForm.id, { brewery: formData, bonuses: bonuses(), consume: consume().filter((item) => item.attribute !== null && item.formula.length > 0), only_head: true });
 
     if (result.errors_list === undefined) {
       const newItems = items().map((item) => {
@@ -148,7 +178,8 @@ export const DndItems = () => {
           name: { en: formData.name, ru: formData.name },
           description: { en: formData.description, ru: formData.description },
           data: { weight: formData.weight, price: formData.price },
-          bonuses: bonuses()
+          bonuses: bonuses(),
+          info: { consume: consume().filter((item) => item.attribute !== null && item.formula.length > 0) }
         };
       });
 
@@ -156,6 +187,7 @@ export const DndItems = () => {
         setItems(newItems);
         setItemForm({ id: null, name: '', description: '', kind: 'item' });
         setItemBonuses([]);
+        setConsume([]);
         closeModal();
       });
     }
@@ -220,12 +252,12 @@ export const DndItems = () => {
               {(item) =>
                 <tr>
                   <td class="minimum-width py-1">
-                    <Checkbox
+                    {/*<Checkbox
                       checked={selectedIds().includes(item.id)}
                       classList="mr-1"
                       innerClassList="small"
                       onToggle={() => selectedIds().includes(item.id) ? setSelectedIds(selectedIds().filter((id) => id !== item.id)) : setSelectedIds(selectedIds().concat(item.id))}
-                    />
+                    />*/}
                   </td>
                   <td class="minimum-width py-1">{item.name[locale()]}</td>
                   <td class="minimum-width py-1 text-sm">{TRANSLATION[locale()].kinds[item.kind]}</td>
@@ -250,7 +282,7 @@ export const DndItems = () => {
         </table>
       </Show>
       <Modal>
-        <p class="mb-2 text-xl">{TRANSLATION[locale()].newItemTitle}</p>
+        <p class="text-xl">{TRANSLATION[locale()].newItemTitle}</p>
         {/*<Show when={itemForm.id}>
           <Select
             containerClassList="mb-2"
@@ -261,14 +293,14 @@ export const DndItems = () => {
           />
         </Show>*/}
         <Input
-          containerClassList="form-field mb-2"
+          containerClassList="form-field mt-2"
           labelText={TRANSLATION[locale()].name}
           value={itemForm.name}
           onInput={(value) => setItemForm({ ...itemForm, name: value })}
         />
         <Show when={!itemForm.id}>
           <Select
-            containerClassList="mb-2"
+            containerClassList="mt-2"
             labelText={TRANSLATION[locale()].kind}
             items={TRANSLATION[locale()].kinds}
             selectedValue={itemForm.kind}
@@ -276,7 +308,7 @@ export const DndItems = () => {
           />
         </Show>
         <DndItemBonuses bonuses={itemBonuses()} onBonus={setBonuses} />
-        <div class="mb-2 flex gap-4">
+        <div class="mt-2 flex gap-4">
           <Input
             numeric
             containerClassList="flex-1"
@@ -292,14 +324,47 @@ export const DndItems = () => {
             onInput={(value) => setItemForm({ ...itemForm, price: parseInt(value) })}
           />
         </div>
+
+        <Show when={itemForm.kind === 'potion'}>
+          <Button default small classList="p-1 mt-2" onClick={addConsume}>{TRANSLATION[locale()].addConsume}</Button>
+          <Show when={consume().length > 0}>
+            <p class="text-xs mt-1">{TRANSLATION[locale()].formulas1}</p>
+            <p class="text-xs mt-1">{TRANSLATION[locale()].formulas2}</p>
+            <p class="text-xs mt-1 mb-4">{TRANSLATION[locale()].formulas3}</p>
+          </Show>
+          <Key
+            each={consume()}
+            by={item => item.id}
+          >
+            {(consumeItem) =>
+              <div class="flex items-center gap-2">
+                <Select
+                  containerClassList="flex-1"
+                  labelText={TRANSLATION[locale()].consumeAttribute}
+                  items={translate({ "health": { "name": { "en": "Health", "ru": "Здоровье" } } }, locale())}
+                  selectedValue={consumeItem().attribute}
+                  onSelect={(value) => changeConsume(consumeItem().id, 'attribute', value)}
+                />
+
+                <Input
+                  containerClassList="form-field flex-1"
+                  labelText={TRANSLATION[locale()].consumeFormula}
+                  value={consumeItem().formula}
+                  onInput={(value) => changeConsume(consumeItem().id, 'formula', value)}
+                />
+              </div>
+            }
+          </Key>
+        </Show>
+
         <TextArea
           rows="5"
-          containerClassList="mb-2"
+          containerClassList="mt-2"
           labelText={TRANSLATION[locale()].description}
           value={itemForm.description}
           onChange={(value) => setItemForm({ ...itemForm, description: value })}
         />
-        <Button default classList="px-2 py-1" onClick={saveItem}>
+        <Button default classList="mt-4 px-2 py-1" onClick={saveItem}>
           {TRANSLATION[locale()].save}
         </Button>
       </Modal>

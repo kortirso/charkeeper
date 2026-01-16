@@ -3,7 +3,7 @@
 module CharactersContext
   module Items
     class ConsumeCommand < BaseCommand
-      include Deps[roll: 'roll']
+      include Deps[formula: 'formula']
 
       use_contract do
         params do
@@ -15,22 +15,28 @@ module CharactersContext
 
       private
 
-      def do_prepare(input) # rubocop: disable Metrics/AbcSize
+      def do_prepare(input) # rubocop: disable Metrics/AbcSize, Metrics/PerceivedComplexity
         input[:attributes] = {}
         input[:result] = []
 
         input[:character_item].item.info['consume'].each do |consume|
-          dice, modifier = consume['roll'].gsub(/\s+/, '').split('+')
-          roll_result = dice.include?('d') ? roll.call(dice: dice, modifier: modifier.to_i) : dice.to_i
+          result = formula.call(formula: consume['formula'])
 
-          input[:attributes][consume['attribute']] =
-            if consume['direction'] == 'down'
-              [input[:character].data.attributes[consume['attribute']] - roll_result, 0].max
-            else
-              input[:character].data.attributes[consume['attribute']] + roll_result
-            end
+          if input[:character].is_a?(::Daggerheart::Character)
+            input[:attributes][consume['attribute']] = [input[:character].data.attributes[consume['attribute']] + result, 0].max
+          elsif input[:character].is_a?(::Dnd2024::Character) || input[:character].is_a?(::Dnd5::Character)
+            input[:attributes][consume['attribute']] ||= input[:character].data[consume['attribute']]
+            input[:attributes][consume['attribute']]['current'] =
+              [input[:character].data.attributes[consume['attribute']]['current'] + result, 0].max
+          end
 
-          input[:result].push(consume['result'][I18n.locale.to_s].gsub('{{value}}', roll_result.to_s))
+          if consume['result']
+            input[:result].push(consume['result'][I18n.locale.to_s].gsub('{{value}}', result.abs.to_s))
+          else
+            input[:result].push(
+              I18n.t('commands.characters_context.items.consume.done', value: input[:character_item].item.name[I18n.locale.to_s])
+            )
+          end
         end
       end
 

@@ -6,7 +6,7 @@ describe HomebrewContext::Daggerheart::AddItemCommand do
   let(:instance) { described_class.new }
   let!(:user) { create :user }
   let(:valid_params) do
-    { user: user, name: 'Name', kind: 'consumable' }
+    { user: user, name: 'Name', kind: 'consumables' }
   end
 
   context 'for invalid params' do

@@ -27,6 +27,9 @@ ru:
       dnd2024:
         craft:
           no_money: Не достаточно средств
+      items:
+        consume:
+          done: "%{value} использовано"
   services:
     sheets_context:
       level: Уровень
