@@ -197,7 +197,7 @@ export const Equipment = (props) => {
 
   const showInfo = async (item) => {
     if (item.has_description) {
-      const result = await fetchItemInfoRequest(appState.accessToken, item.id);
+      const result = await fetchItemInfoRequest(appState.accessToken, item.item_id);
 
       if (result.errors_list === undefined) {
         batch(() => {
