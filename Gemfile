@@ -90,6 +90,9 @@ gem 'good_job'
 # markdown parsing
 gem 'redcarpet'
 
+# code parser
+gem 'dentaku'
+
 group :development, :production do
   gem 'get_process_mem'
   gem 'rails_performance'
