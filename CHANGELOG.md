@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## Unreleased
 ### Added
 - translations for homebrew DH transformations
+- changing companion's name for DH characters
 
 ### Modified
 - companion form for DH characters
