@@ -3,8 +3,16 @@
 credentials = Rails.application.credentials.dig(Rails.env.to_sym, :oauth) || {}
 
 Authkeeper.configure do |config|
-  config.access_token_name = :charkeeper_access_token
-  config.domain = 'charkeeper.org' if Rails.env.production?
+  if Rails.env.production?
+    config.domain = 'charkeeper.org'
+    config.access_token_name = :charkeeper_access_token
+  elsif Rails.env.ru_production?
+    config.domain = 'charkeeper.ru'
+    config.access_token_name = :charkeeper_ru_access_token
+  else
+    config.access_token_name = :charkeeper_access_token
+  end
+
   config.fallback_url_session_name = :charkeeper_fallback_url
   config.current_user_cache_minutes = 5
 

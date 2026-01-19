@@ -14,7 +14,7 @@ module Web
 
       cookies[:charkeeper_cookie_banner] = {
         value: 'clicked',
-        domain: Rails.env.production? ? 'charkeeper.org' : nil,
+        domain: current_domain,
         expires: 1.year.from_now
       }.compact
     end
@@ -27,7 +27,7 @@ module Web
       current_user&.update(locale: switch_locale)
       cookies[:charkeeper_locale] = {
         value: switch_locale,
-        domain: Rails.env.production? ? 'charkeeper.org' : nil
+        domain: current_domain
       }.compact
     end
 
@@ -43,6 +43,12 @@ module Web
 
     def current_locale
       current_user&.locale.presence&.to_sym || cookies[:charkeeper_locale].presence&.to_sym || I18n.default_locale
+    end
+
+    def current_domain
+      return 'charkeeper.org' if Rails.env.production?
+
+      'charkeeper.ru' if Rails.env.ru_production?
     end
   end
 end

@@ -33,7 +33,7 @@ module Charkeeper
     config.middleware.use Rack::Brotli
 
     I18n.available_locales = %i[en ru]
-    config.i18n.default_locale = :en
+    config.i18n.default_locale = Rails.env.ru_production? ? :ru : :en
 
     config.time_zone = 'UTC'
 

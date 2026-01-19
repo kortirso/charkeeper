@@ -41,3 +41,14 @@ production:
     <<: *primary_production
     database: charkeeper_errors
     migrations_paths: db/errors_migrate
+
+ru_production:
+  primary: &primary_production
+    <<: *default
+    database: charkeeper
+    username: charkeeper
+    password: <%= Rails.application.credentials[:database_password] %>
+  errors:
+    <<: *primary_production
+    database: charkeeper_errors
+    migrations_paths: db/errors_migrate

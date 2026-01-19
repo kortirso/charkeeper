@@ -268,3 +268,10 @@ Style/SafeNavigationChainLength:
 
 Style/MissingRespondToMissing:
   Enabled: false
+
+Rails/UnknownEnv:
+  Environments:
+    - development
+    - test
+    - production
+    - ru_production
