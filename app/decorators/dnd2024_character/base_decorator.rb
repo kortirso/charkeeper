@@ -7,7 +7,7 @@ module Dnd2024Character
              :selected_features, :resistance, :immunity, :vulnerability, :coins, :money, :darkvision,
              :weapon_core_skills, :weapon_skills, :armor_proficiency, :music, :spent_spell_slots, :conditions,
              :hit_dice, :spent_hit_dice, :death_saving_throws, :selected_feats, :beastform, :background, :selected_beastforms,
-             :weapon_mastery, :size, :speed, :speeds, :selected_skills, :tools, to: :data
+             :weapon_mastery, :size, :speed, :speeds, :selected_skills, :tools, :exhaustion, to: :data
 
     def parent = __getobj__
     def method_missing(_method, *args); end

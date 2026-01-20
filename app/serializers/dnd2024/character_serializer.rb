@@ -12,7 +12,7 @@ module Dnd2024
                :darkvision, :modified_abilities, :available_spell_level, :formatted_static_spells, :conditions,
                :selected_beastforms, :beastform, :weapon_mastery, :speeds, :money, :guide_step, :ability_boosts,
                :any_skill_boosts, :skill_boosts, :skill_boosts_list, :heroic_inspiration, :bardic_inspiration, :selected_talents,
-               :leveling_ability_boosts, :leveling_ability_boosts_list, :available_talents, :skills
+               :leveling_ability_boosts, :leveling_ability_boosts_list, :available_talents, :skills, :exhaustion
 
     delegate :features, :id, :name, :level, :species, :legacy, :main_class, :classes, :subclasses, :abilities, :skills,
              :modifiers, :save_dc, :proficiency_bonus, :hit_dice, :armor_class, :initiative, :speed, :attacks_per_action,
@@ -23,7 +23,8 @@ module Dnd2024
              :weapon_mastery, :speeds, :money, :available_talents, to: :decorator
     delegate :created_at, :data, to: :object
     delegate :guide_step, :ability_boosts, :any_skill_boosts, :skill_boosts, :skill_boosts_list, :heroic_inspiration,
-             :bardic_inspiration, :selected_talents, :leveling_ability_boosts, :leveling_ability_boosts_list, to: :data
+             :bardic_inspiration, :selected_talents, :leveling_ability_boosts, :leveling_ability_boosts_list, :exhaustion,
+             to: :data
 
     def provider
       'dnd2024'

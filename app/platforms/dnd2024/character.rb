@@ -43,6 +43,7 @@ module Dnd2024
     attribute :heroic_inspiration, :boolean, default: false
     attribute :bardic_inspiration, :integer
     attribute :selected_talents, array: true, default: {}
+    attribute :exhaustion, :integer, default: 0
     # только для 1 уровня
     attribute :guide_step, :integer # этап помощи при создании персонажа
     attribute :ability_boosts, array: true, default: [] # дополнительные повышения характеристик от происхождения

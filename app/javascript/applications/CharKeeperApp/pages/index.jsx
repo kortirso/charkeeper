@@ -32,6 +32,7 @@ export * from './Content/Character/Dnd5/WildShapes';
 export * from './Content/Character/Dnd5/BeastFeatures';
 export * from './Content/Character/Dnd5/Craft';
 export * from './Content/Character/Dnd5/Bonuses';
+export * from './Content/Character/Dnd5/Exhaustion';
 
 export * from './Content/Character/Pathfinder2';
 export * from './Content/Character/Pathfinder2/Abilities';
