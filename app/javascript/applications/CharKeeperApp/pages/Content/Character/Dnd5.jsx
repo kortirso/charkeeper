@@ -4,7 +4,7 @@ import { createWindowSize } from '@solid-primitives/resize-observer';
 
 import {
   Dnd5Abilities, Dnd5Combat, Dnd5Rest, Dnd5ClassLevels, Dnd5Professions, Dnd5Spells, Dnd5Skills, Dnd5SavingThrows,
-  Dnd5Proficiency, Dnd2024WildShapes, BeastFeatures, Dnd5Craft, Dnd5Bonuses
+  Dnd5Proficiency, Dnd2024WildShapes, BeastFeatures, Dnd5Craft, Dnd5Bonuses, Dnd2024Exhaustion
 } from '../../../pages';
 import {
   CharacterNavigation, Equipment, Notes, Avatar, ContentWrapper, Feats, createDiceRoll, Conditions, Combat, Gold
@@ -256,6 +256,11 @@ export const Dnd5 = (props) => {
         </div>
         <div class="emd:gap-4 emd:mt-4 grid grid-cols-1 emd:grid-cols-2">
           <div class="mt-4 emd:mt-0">
+            <Show when={character().provider === 'dnd2024'}>
+              <div class="mb-4">
+                <Dnd2024Exhaustion character={character()} onReplaceCharacter={props.onReplaceCharacter} />
+              </div>
+            </Show>
             <Conditions character={character()} />
             <Show when={character().provider === 'dnd2024' && Object.keys(character().classes).includes('druid')}>
               <div class="mt-4">

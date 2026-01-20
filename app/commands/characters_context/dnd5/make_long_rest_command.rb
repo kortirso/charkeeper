@@ -11,7 +11,7 @@ module CharactersContext
 
       private
 
-      def do_prepare(input)
+      def do_prepare(input) # rubocop: disable Metrics/AbcSize
         data = input[:character].data
 
         # полное восстановление ячеек заклинаний
@@ -28,6 +28,9 @@ module CharactersContext
 
         # полное восстановление здоровья
         data.health['current'] = data.health['max']
+
+        # восстановление истощения
+        data.exhaustion = [data.exhaustion - 1, 0].max
       end
 
       def do_persist(input)
