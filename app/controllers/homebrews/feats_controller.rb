@@ -6,7 +6,7 @@ module Homebrews
     include SerializeResource
 
     before_action :find_feats, only: %i[index]
-    before_action :find_feat, only: %i[destroy]
+    before_action :find_feat, only: %i[update destroy]
 
     def index
       serialize_relation(@feats, serializer, :feats)
@@ -16,6 +16,13 @@ module Homebrews
       case add_feat.call(create_params.merge(user: current_user, bonuses: bonuses_params))
       in { errors: errors, errors_list: errors_list } then unprocessable_response(errors, errors_list)
       in { result: result } then serialize_resource(result, serializer, :feat, {}, :created)
+      end
+    end
+
+    def update
+      case change_feat.call(create_params.merge(feat: @feat, bonuses: bonuses_params))
+      in { errors: errors, errors_list: errors_list } then unprocessable_response(errors, errors_list)
+      in { result: result } then serialize_resource(result, serializer, :feat, {}, :ok)
       end
     end
 

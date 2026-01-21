@@ -2,7 +2,8 @@
 
 module Homebrews
   class FeatSerializer < ApplicationSerializer
-    attributes :id, :title, :description, :origin, :origin_value, :bonuses, :conditions
+    attributes :id, :title, :description, :markdown_description, :origin, :origin_value, :bonuses, :conditions, :limit,
+               :limit_refresh, :kind
 
     def bonuses
       return [] unless context
@@ -17,8 +18,14 @@ module Homebrews
       end
     end
 
-    def description
-      object.description.transform_values { |value| Charkeeper::Container.resolve('markdown').call(value: value) }
+    def markdown_description
+      object.description.transform_values { |value|
+        Charkeeper::Container.resolve('markdown').call(value: value, version: '0.4.4')
+      }
+    end
+
+    def limit
+      object.description_eval_variables['limit']
     end
   end
 end

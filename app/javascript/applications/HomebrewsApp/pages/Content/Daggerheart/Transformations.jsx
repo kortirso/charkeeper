@@ -3,7 +3,7 @@ import { createStore } from 'solid-js/store';
 
 import { useAppState, useAppLocale, useAppAlert } from '../../../context';
 import { Button, Input, createModal, DaggerheartFeatForm, DaggerheartFeat, Select } from '../../../components';
-import { Edit, Trash, Stroke } from '../../../assets';
+import { Edit, Trash, Stroke, Plus } from '../../../assets';
 import { fetchDaggerheartBooks } from '../../../requests/fetchDaggerheartBooks';
 import { changeBookContent } from '../../../requests/changeBookContent';
 import { fetchDaggerheartTransformations } from '../../../requests/fetchDaggerheartTransformations';
@@ -12,6 +12,7 @@ import { createDaggerheartTransformation } from '../../../requests/createDaggerh
 import { changeDaggerheartTransformation } from '../../../requests/changeDaggerheartTransformation';
 import { removeDaggerheartTransformation } from '../../../requests/removeDaggerheartTransformation';
 import { createFeat } from '../../../requests/createFeat';
+import { changeFeat } from '../../../requests/changeFeat';
 import { removeFeat } from '../../../requests/removeFeat';
 
 const TRANSLATION = {
@@ -22,8 +23,7 @@ const TRANSLATION = {
     add: 'Add transformation',
     newTransformationTitle: 'Transformation form',
     name: 'Transformation name',
-    save: 'Save',
-    addFeature: 'Add feature'
+    save: 'Save'
   },
   ru: {
     added: 'Контент добавлен в книгу',
@@ -32,8 +32,7 @@ const TRANSLATION = {
     add: 'Добавить трансформацию',
     newTransformationTitle: 'Редактирование трансформации',
     name: 'Название трансформации',
-    save: 'Сохранить',
-    addFeature: 'Добавить способность'
+    save: 'Сохранить'
   }
 }
 
@@ -155,6 +154,27 @@ export const DaggerheartTransformations = () => {
     }
   }
 
+  const updateFeature = async (id, originId, payload) => {
+    const result = await changeFeat(appState.accessToken, 'daggerheart', id, payload);
+
+    if (result.errors_list === undefined) {
+      const transformation = await fetchDaggerheartTransformation(appState.accessToken, originId)
+
+      if (transformation.errors_list === undefined) {
+        const newTransformations = transformations().map((item) => {
+          if (originId !== item.id) return item;
+
+          return { ...item, ...transformation.transformation };
+        });
+
+        batch(() => {
+          setTransformations(newTransformations);
+          closeModal();
+        });
+      }
+    }
+  }
+
   const removeFeature = async (feature) => {
     const result = await removeFeat(appState.accessToken, 'daggerheart', feature.id);
 
@@ -204,22 +224,32 @@ export const DaggerheartTransformations = () => {
           </Show>
         </div>
         <p class="text-sm mt-1 mb-2">{TRANSLATION[locale()].selectBookHelp}</p>
-        <div class="grid grid-cols-3 gap-4">
+        <div class="border border-gray-200 rounded border-b-0">
           <For each={transformations()}>
             {(transformation) =>
-              <div class="blockable p-4 flex flex-col">
-                <div class="flex-1">
-                  <p class="font-medium! mb-4 text-xl">{transformation.name}</p>
+              <div class="grid grid-cols-12 gap-4 p-4 border-b border-gray-200 rounded">
+                <div class="col-span-3">
+                  <p class="text-xl">{transformation.name}</p>
+                </div>
+                <div class="col-span-7">
                   <Button default small classList="mb-2 p-1" onClick={() => openCreateFeatureModal(transformation)}>
-                    {TRANSLATION[locale()].addFeature}
+                    <Plus width="20" height="20" />
                   </Button>
                   <For each={transformation.features}>
-                    {(feature) =>
-                      <DaggerheartFeat feature={feature} onRemoveFeature={removeFeature} />
+                    {(feature, index) =>
+                      <div class="mb-2">
+                        <DaggerheartFeat
+                          feature={feature}
+                          index={index()}
+                          originId={transformation.id}
+                          onRemoveFeature={removeFeature}
+                          updateFeature={updateFeature}
+                        />
+                      </div>
                     }
                   </For>
                 </div>
-                <div class="flex items-center justify-end gap-x-2 text-neutral-700">
+                <div class="col-span-2 flex items-start justify-end gap-2">
                   <Button
                     default
                     classList="p-2"

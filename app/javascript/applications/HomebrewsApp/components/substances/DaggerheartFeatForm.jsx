@@ -1,4 +1,4 @@
-import { createSignal, Show } from 'solid-js';
+import { createSignal, createEffect, Show, batch } from 'solid-js';
 import { createStore } from 'solid-js/store';
 import { Key } from '@solid-primitives/keyed';
 
@@ -94,7 +94,36 @@ export const DaggerheartFeatForm = (props) => {
   });
   const [bonuses, setBonuses] = createSignal([]);
 
+  const [featureId, setFeatureId] = createSignal(undefined);
+
   const [locale] = useAppLocale();
+
+  createEffect(() => {
+    if (props.feature && featureId() !== props.feature) {
+      batch(() => {
+        setFeatForm({ ...props.feature, title: props.feature.title.en, description: props.feature.description.en });
+        setBonuses(
+          props.feature.bonuses.map((item) => {
+            const type = Object.keys(item.dynamic_value).length > 0 ? 'dynamic' : 'static';
+            const entries = Object.entries(type === 'dynamic' ? item.dynamic_value : item.value);
+
+            let modify;
+            let value;
+            if (entries[0][0] === 'traits' || entries[0][0] === 'thresholds') {
+              const items = Object.entries(entries[0][1]);
+              modify = items[0][0];
+              value = items[0][1];
+            } else {
+              modify = entries[0][0];
+              value = entries[0][1];
+            }
+            return { id: item.id, type: type, modify: modify, value: value }
+          })
+        );
+        setFeatureId(props.feature.id)
+      });
+    }
+  });
 
   const addBonus = () => setBonuses(bonuses().concat({ id: Math.floor(Math.random() * 1000), type: 'static', modify: null, value: null }));
 
@@ -130,17 +159,17 @@ export const DaggerheartFeatForm = (props) => {
 
   return (
     <>
-      <p class="mb-2 text-xl">{TRANSLATION[locale()]['formTitle']}</p>
+      <p class="mb-2 text-xl">{TRANSLATION[locale()].formTitle}</p>
       <Input
         containerClassList="mb-2"
-        labelText={TRANSLATION[locale()]['title']}
+        labelText={TRANSLATION[locale()].title}
         value={featForm.title}
         onInput={(value) => setFeatForm({ ...featForm, title: value })}
       />
       <TextArea
         rows="5"
         containerClassList="mb-1"
-        labelText={TRANSLATION[locale()]['description']}
+        labelText={TRANSLATION[locale()].description}
         value={featForm.description}
         onChange={(value) => setFeatForm({ ...featForm, description: value })}
       />

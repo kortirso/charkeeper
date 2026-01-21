@@ -3,7 +3,10 @@
 module Homebrews
   module Daggerheart
     class FeatsController < Homebrews::FeatsController
-      include Deps[add_feat: 'commands.homebrew_context.daggerheart.add_feat']
+      include Deps[
+        add_feat: 'commands.homebrew_context.daggerheart.add_feat',
+        change_feat: 'commands.homebrew_context.daggerheart.change_feat'
+      ]
 
       private
 

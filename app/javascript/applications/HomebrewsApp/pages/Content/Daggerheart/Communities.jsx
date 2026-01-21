@@ -3,7 +3,7 @@ import { createStore } from 'solid-js/store';
 
 import { useAppState, useAppLocale, useAppAlert } from '../../../context';
 import { Button, Input, createModal, DaggerheartFeatForm, DaggerheartFeat, Select, Checkbox } from '../../../components';
-import { Edit, Trash, Stroke, Copy } from '../../../assets';
+import { Edit, Trash, Stroke, Copy, Plus } from '../../../assets';
 import { fetchDaggerheartBooks } from '../../../requests/fetchDaggerheartBooks';
 import { changeBookContent } from '../../../requests/changeBookContent';
 import { fetchDaggerheartCommunities } from '../../../requests/fetchDaggerheartCommunities';
@@ -13,6 +13,7 @@ import { changeDaggerheartCommunity } from '../../../requests/changeDaggerheartC
 import { removeDaggerheartCommunity } from '../../../requests/removeDaggerheartCommunity';
 import { copyDaggerheartCommunity } from '../../../requests/copyDaggerheartCommunity';
 import { createFeat } from '../../../requests/createFeat';
+import { changeFeat } from '../../../requests/changeFeat';
 import { removeFeat } from '../../../requests/removeFeat';
 
 const TRANSLATION = {
@@ -24,7 +25,6 @@ const TRANSLATION = {
     newCommunityTitle: 'Community form',
     name: 'Community name',
     save: 'Save',
-    addFeature: 'Add feature',
     showPublic: 'Show public',
     public: 'Public',
     copyCompleted: 'Community copy is completed'
@@ -37,7 +37,6 @@ const TRANSLATION = {
     newCommunityTitle: 'Редактирование общества',
     name: 'Название общества',
     save: 'Сохранить',
-    addFeature: 'Добавить способность',
     showPublic: 'Показать общедоступные',
     public: 'Общедоступная',
     copyCompleted: 'Копирование общества завершено'
@@ -178,6 +177,29 @@ export const DaggerheartCommunities = () => {
     }
   }
 
+  const updateFeature = async (id, originId, payload) => {
+    const result = await changeFeat(appState.accessToken, 'daggerheart', id, payload);
+
+    if (result.errors_list === undefined) {
+      const community = await fetchDaggerheartCommunity(appState.accessToken, originId)
+
+      if (community.errors_list === undefined) {
+        const newCommunities = communities().map((item) => {
+          if (originId !== item.id) return item;
+
+          return { ...item, ...community.community };
+        });
+
+        batch(() => {
+          setCommunities(newCommunities);
+          setFeatureCommunity(undefined);
+          setModalMode(undefined);
+          closeModal();
+        });
+      }
+    }
+  }
+
   const removeFeature = async (feature) => {
     const result = await removeFeat(appState.accessToken, 'daggerheart', feature.id);
 
@@ -230,24 +252,35 @@ export const DaggerheartCommunities = () => {
           </Show>
         </div>
         <p class="text-sm mt-1 mb-2">{TRANSLATION[locale()].selectBookHelp}</p>
-        <div class="grid grid-cols-3 gap-4">
+        <div class="border border-gray-200 rounded border-b-0">
           <For each={filteredCommunities()}>
             {(community) =>
-              <div class="blockable p-4 flex flex-col">
-                <div class="flex-1">
-                  <p class="font-medium! mb-4 text-xl">{community.name}</p>
-                  <Show when={community.features.length < 1}>
+              <div class="grid grid-cols-12 gap-4 p-4 border-b border-gray-200 rounded">
+                <div class="col-span-3">
+                  <p class="text-xl">{community.name}</p>
+                </div>
+                <div class="col-span-7">
+                  <Show when={!open() && community.features.length < 1}>
                     <Button default small classList="mb-2 p-1" onClick={() => openCreateFeatureModal(community)}>
-                      {TRANSLATION[locale()].addFeature}
+                      <Plus width="20" height="20" />
                     </Button>
                   </Show>
                   <For each={community.features}>
-                    {(feature) =>
-                      <DaggerheartFeat feature={feature} onRemoveFeature={removeFeature} />
+                    {(feature, index) =>
+                      <div class="mb-2">
+                        <DaggerheartFeat
+                          open={open()}
+                          feature={feature}
+                          index={index()}
+                          originId={community.id}
+                          onRemoveFeature={removeFeature}
+                          updateFeature={updateFeature}
+                        />
+                      </div>
                     }
                   </For>
                 </div>
-                <div class="flex items-center justify-end gap-x-2 text-neutral-700">
+                <div class="col-span-2 flex items-start justify-end gap-2">
                   <Show
                     when={!open()}
                     fallback={

@@ -176,7 +176,7 @@ Rails.application.routes.draw do
       end
       resources :domains, only: %i[index show create update destroy]
       resources :transformations, only: %i[index show create update destroy]
-      resources :feats, only: %i[index create destroy]
+      resources :feats, only: %i[index create update destroy]
       resources :items, only: %i[index show create update destroy] do
         post :copy, on: :member
       end

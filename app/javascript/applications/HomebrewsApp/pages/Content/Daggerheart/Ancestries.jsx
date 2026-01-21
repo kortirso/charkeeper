@@ -3,7 +3,7 @@ import { createStore } from 'solid-js/store';
 
 import { useAppState, useAppLocale, useAppAlert } from '../../../context';
 import { Button, Input, createModal, DaggerheartFeatForm, DaggerheartFeat, Select, Checkbox } from '../../../components';
-import { Edit, Trash, Stroke, Copy } from '../../../assets';
+import { Edit, Trash, Stroke, Copy, Plus } from '../../../assets';
 import { fetchDaggerheartBooks } from '../../../requests/fetchDaggerheartBooks';
 import { changeBookContent } from '../../../requests/changeBookContent';
 import { fetchDaggerheartAncestries } from '../../../requests/fetchDaggerheartAncestries';
@@ -13,6 +13,7 @@ import { changeDaggerheartAncestry } from '../../../requests/changeDaggerheartAn
 import { removeDaggerheartAncestry } from '../../../requests/removeDaggerheartAncestry';
 import { copyDaggerheartAncestry } from '../../../requests/copyDaggerheartAncestry';
 import { createFeat } from '../../../requests/createFeat';
+import { changeFeat } from '../../../requests/changeFeat';
 import { removeFeat } from '../../../requests/removeFeat';
 
 const TRANSLATION = {
@@ -24,7 +25,6 @@ const TRANSLATION = {
     newAncestryTitle: 'Ancestry form',
     name: 'Ancestry name',
     save: 'Save',
-    addFeature: 'Add feature',
     showPublic: 'Show public',
     public: 'Public',
     copyCompleted: 'Ancestry copy is completed'
@@ -37,7 +37,6 @@ const TRANSLATION = {
     newAncestryTitle: 'Редактирование расы',
     name: 'Название расы',
     save: 'Сохранить',
-    addFeature: 'Добавить способность',
     showPublic: 'Показать общедоступные',
     public: 'Общедоступная',
     copyCompleted: 'Копирование расы завершено'
@@ -178,6 +177,27 @@ export const DaggerheartAncestries = () => {
     }
   }
 
+  const updateFeature = async (id, originId, payload) => {
+    const result = await changeFeat(appState.accessToken, 'daggerheart', id, payload);
+
+    if (result.errors_list === undefined) {
+      const ancestry = await fetchDaggerheartAncestry(appState.accessToken, originId)
+
+      if (ancestry.errors_list === undefined) {
+        const newAncestries = ancestries().map((item) => {
+          if (originId !== item.id) return item;
+
+          return { ...item, ...ancestry.ancestry };
+        });
+
+        batch(() => {
+          setAncestries(newAncestries);
+          closeModal();
+        });
+      }
+    }
+  }
+
   const removeFeature = async (feature) => {
     const result = await removeFeat(appState.accessToken, 'daggerheart', feature.id);
 
@@ -237,24 +257,35 @@ export const DaggerheartAncestries = () => {
           </div>
           <p class="text-sm mt-1 mb-2">{TRANSLATION[locale()].selectBookHelp}</p>
         </Show>
-        <div class="grid grid-cols-3 gap-4">
+        <div class="border border-gray-200 rounded border-b-0">
           <For each={filteredAncestries()}>
             {(ancestry) =>
-              <div class="blockable p-4 flex flex-col">
-                <div class="flex-1">
-                  <p class="font-medium! mb-4 text-xl">{ancestry.name}</p>
+              <div class="grid grid-cols-12 gap-4 p-4 border-b border-gray-200 rounded">
+                <div class="col-span-3">
+                  <p class="text-xl">{ancestry.name}</p>
+                </div>
+                <div class="col-span-7">
                   <Show when={!open() && ancestry.features.length < 2}>
                     <Button default small classList="mb-2 p-1" onClick={() => openCreateFeatureModal(ancestry)}>
-                      {TRANSLATION[locale()].addFeature}
+                      <Plus width="20" height="20" />
                     </Button>
                   </Show>
                   <For each={ancestry.features}>
-                    {(feature) =>
-                      <DaggerheartFeat open={open()} feature={feature} onRemoveFeature={removeFeature} />
+                    {(feature, index) =>
+                      <div class="mb-2">
+                        <DaggerheartFeat
+                          open={open()}
+                          feature={feature}
+                          index={index()}
+                          originId={ancestry.id}
+                          onRemoveFeature={removeFeature}
+                          updateFeature={updateFeature}
+                        />
+                      </div>
                     }
                   </For>
                 </div>
-                <div class="flex items-center justify-end gap-x-2 text-neutral-700">
+                <div class="col-span-2 flex items-start justify-end gap-2">
                   <Show
                     when={!open()}
                     fallback={

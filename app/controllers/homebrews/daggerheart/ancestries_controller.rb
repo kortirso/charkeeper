@@ -30,7 +30,12 @@ module Homebrews
 
       def show
         serialize_resource(
-          @ancestry, ::Homebrews::Daggerheart::AncestrySerializer, :ancestry, {}, :ok, { features: @features, bonuses: @bonuses }
+          @ancestry,
+          ::Homebrews::Daggerheart::AncestrySerializer,
+          :ancestry,
+          {},
+          :ok,
+          { features: @features, bonuses: @bonuses, current_user_id: current_user.id }
         )
       end
 
