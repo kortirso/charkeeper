@@ -4,7 +4,7 @@ module Cache
   class Avatars
     include Rails.application.routes.url_helpers
 
-    CACHE_KEY = 'avatars/0.3.25'
+    CACHE_KEY = 'avatars/0.4.4'
 
     def fetch_list
       Rails.cache.fetch(CACHE_KEY) { load_initial_data }
@@ -17,7 +17,7 @@ module Cache
     def push_item(item:)
       Rails.cache.write(
         CACHE_KEY,
-        fetch_list.merge(item.record_id => rails_blob_url(item, host: 'charkeeper.org', protocol: 'https'))
+        fetch_list.merge(item.record_id => rails_blob_url(item, host: host, protocol: 'https'))
       )
     end
 
@@ -31,8 +31,14 @@ module Cache
       ActiveStorage::Attachment.where(name: 'avatar', record_type: 'Character')
         .includes(:blob)
         .each_with_object({}) do |item, acc|
-          acc[item.record_id] = rails_blob_url(item, host: 'charkeeper.org', protocol: 'https')
+          acc[item.record_id] = rails_blob_url(item, host: host, protocol: 'https')
         end
+    end
+
+    def host
+      return 'charkeeper.ru' if Rails.env.ru_production? || Rails.env.development?
+
+      'charkeeper.org'
     end
   end
 end
