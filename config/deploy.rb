@@ -123,7 +123,7 @@ namespace :deploy do
     task :rsync do
       on roles('web'), in: :parallel do |server|
         run_locally do
-          remote_shell = %(-e "ssh -p 2987")
+          remote_shell = %(-e "ssh -p 2988")
 
           # rubocop: disable Layout/LineLength
           commands = []
