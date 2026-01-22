@@ -8,6 +8,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Added
 - rendering exhaustion level for D&D characters
 
+### Modified
+- rendering result of consuming elixirs
+
 ## [0.4.3] - 2026-01-19
 ### Added
 - translations for homebrew DH transformations

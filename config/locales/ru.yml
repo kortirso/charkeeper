@@ -29,7 +29,7 @@ ru:
           no_money: Не достаточно средств
       items:
         consume:
-          done: "%{value} использовано"
+          done: "%{value} использовано, бросок - %{roll}"
   services:
     sheets_context:
       level: Уровень
