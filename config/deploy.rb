@@ -144,9 +144,9 @@ namespace :deploy do
   end
 end
 
-after 'bundler:install', 'deploy:assets:prepare'
-after 'deploy:assets:prepare', 'deploy:assets:rsync'
-after 'deploy:assets:rsync', 'deploy:assets:cleanup'
+# after 'bundler:install', 'deploy:assets:prepare'
+# after 'deploy:assets:prepare', 'deploy:assets:rsync'
+# after 'deploy:assets:rsync', 'deploy:assets:cleanup'
 after 'bundler:install', 'yarn:install'
 after 'deploy:published', 'bundler:clean'
 
