@@ -10,9 +10,9 @@ module TelegramApi
         )[:body]
       end
 
-      def set_webhook(bot_secret:, url:, secret_token:)
+      def set_webhook(bot_secret:, url:)
         get(
-          path: "bot#{bot_secret}/setWebhook?url=#{url}&secret_token=#{secret_token}",
+          path: "bot#{bot_secret}/setWebhook?url=#{url}",
           headers: headers
         )[:body]
       end
