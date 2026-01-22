@@ -11,7 +11,7 @@ en:
     boosty: Boosty
   cookie_banner:
     title: Cookie banner
-    p1: Charkeeper.org doesn't use third-party cookies, only a single in-house cookie.
+    p1: Charkeeper doesn't use third-party cookies, only a single in-house cookie.
     p2: No data is sent to third party.
   providers:
     daggerheart: Daggerheart
@@ -124,6 +124,9 @@ en:
         title: Interactive character sheets for any tabletop games in one place
         description1: Charkeeper is a character sheet aggregator that automatically calculates various character stats, so you don't have to constantly look at the rulebook, and allows you to track your characters' available abilities, spells, and attacks.
         description2: Available from any device on the web and as a mobile app on Android and iOS.
+        description3: Since January 23, 2026, Charkeeper runs on 2 separate servers as 2 independent applications. You can switch between servers, but adding/updating/deleting any data will only change on the current server. The mobile application can also be switched to use a more suitable server.
+        switch_ru: Switch to RU
+        switch_eu: Switch to EU
         features_title: Charkeeper features
         feature_1: Saving characters compatible with D&D 5, Pathfinder 2, Daggerheart and DC20 rules.
         feature_2: Account information and saved characters are shared between all devices.

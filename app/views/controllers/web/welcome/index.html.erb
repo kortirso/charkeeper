@@ -16,6 +16,14 @@
     </div>
   </div>
 </div>
+<div class="max-w-5xl mx-auto mb-16">
+  <p class="text-xl mb-4"><%= t('web.welcome.index.description3') %></p>
+  <% if Rails.env.production? %>
+    <%= link_to t('web.welcome.index.switch_ru'), 'https://charkeeper.ru', target: '_blank', rel: 'noopener noreferrer', class: 'btn-big btn-primary inline-block' %>
+  <% else %>
+    <%= link_to t('web.welcome.index.switch_eu'), 'https://charkeeper.org', target: '_blank', rel: 'noopener noreferrer', class: 'btn-big btn-primary inline-block' %>
+  <% end %>
+</div>
 <div class="max-w-7xl mx-auto mb-16 px-8 xl:px-0 grid grid-cols-1 lg:grid-cols-2 gap-x-8 gap-y-16">
   <div>
     <h2 class="text-4xl mb-4"><%= t('web.welcome.index.features_title') %></h2>
