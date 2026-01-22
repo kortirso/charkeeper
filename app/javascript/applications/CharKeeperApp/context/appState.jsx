@@ -20,7 +20,8 @@ export const AppStateProvider = (props) => {
     identities: props.identities, // eslint-disable-line solid/reactivity
     oauthLinks: props.oauthLinks, // eslint-disable-line solid/reactivity
     oauthCredentials: props.oauthCredentials, // eslint-disable-line solid/reactivity
-    initialized: false
+    initialized: false,
+    rootHost: props.host || 'charkeeper.org' // eslint-disable-line solid/reactivity
   });
 
   const setStatusBarColor = async (value) => await window.__TAURI__.core.invoke('plugin:m3|bar_color', { color: value });

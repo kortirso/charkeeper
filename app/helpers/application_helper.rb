@@ -25,6 +25,13 @@ module ApplicationHelper
     ) { '' }
   end
 
+  def root_host
+    return 'charkeeper.ru' if Rails.env.ru_production?
+    return 'charkeeper.org' if Rails.env.production?
+
+    'localhost:5000'
+  end
+
   private
 
   def component_props(props)

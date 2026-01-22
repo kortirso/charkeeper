@@ -61,7 +61,7 @@ export const CharacterView = (props) => {
   }
 
   const copy = () => {
-    copyToClipboard(`https://charkeeper.org/characters/${appState.activePageParams.id}.pdf`);
+    copyToClipboard(`https://${appState.rootHost}/characters/${appState.activePageParams.id}.pdf`);
     renderNotice(t('alerts.copied'));
   }
 
