@@ -15,7 +15,7 @@ module CharactersContext
 
       private
 
-      def do_prepare(input) # rubocop: disable Metrics/AbcSize, Metrics/PerceivedComplexity
+      def do_prepare(input) # rubocop: disable Metrics/AbcSize, Metrics/PerceivedComplexity, Metrics/MethodLength
         input[:attributes] = {}
         input[:result] = []
 
@@ -34,7 +34,11 @@ module CharactersContext
             input[:result].push(consume['result'][I18n.locale.to_s].gsub('{{value}}', result.abs.to_s))
           else
             input[:result].push(
-              I18n.t('commands.characters_context.items.consume.done', value: input[:character_item].item.name[I18n.locale.to_s])
+              I18n.t(
+                'commands.characters_context.items.consume.done',
+                value: input[:character_item].item.name[I18n.locale.to_s],
+                roll: result.abs.to_s
+              )
             )
           end
         end
