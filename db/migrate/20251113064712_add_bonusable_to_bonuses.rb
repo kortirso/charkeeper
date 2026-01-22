@@ -9,9 +9,9 @@ class AddBonusableToBonuses < ActiveRecord::Migration[8.1]
       add_index :character_bonus, [:bonusable_id, :bonusable_type], algorithm: :concurrently
     end
 
-    Character::Bonus.find_each do |bonus|
-      bonus.update(bonusable_id: bonus.character_id, bonusable_type: 'Character')
-    end
+    # Character::Bonus.find_each do |bonus|
+    #   bonus.update(bonusable_id: bonus.character_id, bonusable_type: 'Character')
+    # end
 
     safety_assured do
       change_column_null :character_bonus, :bonusable_id, false
