@@ -93,7 +93,7 @@ gem 'redcarpet'
 # code parser
 gem 'dentaku'
 
-group :development, :production do
+group :development, :production, :ru_production do
   gem 'get_process_mem'
   gem 'rails_performance'
   gem 'sys-cpu'
