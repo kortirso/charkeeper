@@ -14,9 +14,9 @@ module Monitoring
     include Deps[provider: 'monitoring.providers.rails']
 
     def notify(exception:, metadata: {}, severity: nil)
-      return unless Rails.env.production?
-
-      provider.notify(exception: exception, metadata: metadata, severity: severity)
+      if Rails.env.production? || Rails.env.ru_production?
+        provider.notify(exception: exception, metadata: metadata, severity: severity)
+      end
     end
   end
 end
