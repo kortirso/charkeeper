@@ -62,7 +62,7 @@
     </p>
     <p class="text-lg font-normal!"><%= t('web.welcome.index.telegram') %></p>
     <p class="mb-4">
-      <%= t('web.welcome.index.telegram_description', href: link_to(t('web.welcome.index.telegram_link'), 'https://t.me/charkeeper_bot', class: 'underline', target: '_blank', rel: 'noopener noreferrer')).html_safe %>
+      <%= t('web.welcome.index.telegram_description', href: link_to(t('web.welcome.index.telegram_link'), (Rails.env.ru_production? ? 'https://t.me/charkeeper_ru_bot' : 'https://t.me/charkeeper_bot'), class: 'underline', target: '_blank', rel: 'noopener noreferrer')).html_safe %>
     </p>
   </div>
 </div>
