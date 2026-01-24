@@ -66,4 +66,4 @@ set :ssh_options,
     keys: %w[~/.ssh/id_rsa],
     forward_agent: true,
     auth_methods: %w[publickey password],
-    port: 2988
+    port: 2987
