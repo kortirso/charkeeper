@@ -19,19 +19,11 @@ module Web
       end
 
       def destroy
-        destroy_session
-        cookies.delete(Authkeeper.configuration.access_token_name)
+        sign_out
         redirect_to root_path
       end
 
       private
-
-      def destroy_session
-        auth_call = fetch_session.call(token: cookies[Authkeeper.configuration.access_token_name])
-        return if auth_call[:errors].present?
-
-        auth_call[:result].destroy
-      end
 
       def find_user
         @user = User.find_by(username: user_params[:username])
