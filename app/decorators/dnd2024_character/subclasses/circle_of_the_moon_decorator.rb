@@ -13,10 +13,10 @@ module Dnd2024Character
       def static_spells # rubocop: disable Metrics/AbcSize
         @static_spells ||= begin
           result = __getobj__.static_spells
-          result.merge!(SPELLS[class_level].index_with { static_spell_attributes }) if class_level >= 3
-          result.merge!(SPELLS[class_level].index_with { static_spell_attributes }) if class_level >= 5
-          result.merge!(SPELLS[class_level].index_with { static_spell_attributes }) if class_level >= 7
-          result.merge!(SPELLS[class_level].index_with { static_spell_attributes }) if class_level >= 9
+          result.merge!(SPELLS[3].index_with { static_spell_attributes }) if class_level >= 3
+          result.merge!(SPELLS[5].index_with { static_spell_attributes }) if class_level >= 5
+          result.merge!(SPELLS[7].index_with { static_spell_attributes }) if class_level >= 7
+          result.merge!(SPELLS[9].index_with { static_spell_attributes }) if class_level >= 9
           result
         end
       end
