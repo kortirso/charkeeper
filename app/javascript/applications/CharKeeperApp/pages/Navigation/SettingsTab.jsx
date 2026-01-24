@@ -1,16 +1,40 @@
-import { Show } from 'solid-js'; 
+import { createSignal, createEffect, Show } from 'solid-js'; 
 import * as i18n from '@solid-primitives/i18n';
 
 import { PageHeader, NotificationsBudge } from '../../components';
 import { Telegram, Discord, Vk, Boosty, BuyMeACoffee } from '../../assets';
 import { useAppState, useAppLocale } from '../../context';
 import { logoutRequest } from '../../requests/logoutRequest';
+import { readFromCache } from '../../helpers';
+
+const CHARKEEPER_HOST_CACHE_NAME = 'CharKeeperHost';
+const TRANSLATION = {
+  en: {
+    baseHost: 'Current server'
+  },
+  ru: {
+    baseHost: 'Текущий сервер'
+  }
+}
 
 export const SettingsTab = () => {
+  const [host, setHost] = createSignal(undefined);
+
   const [appState, { navigate, setAccessToken }] = useAppState();
-  const [, dict] = useAppLocale();
+  const [locale, dict] = useAppLocale();
 
   const t = i18n.translator(dict);
+
+  const readHostData = async () => {
+    const cacheValue = await readFromCache(CHARKEEPER_HOST_CACHE_NAME);
+    setHost(cacheValue === null || cacheValue === undefined ? 'charkeeper.org' : cacheValue);
+  }
+
+  createEffect(() => {
+    if (host() !== undefined) return;
+
+    readHostData();
+  });
 
   const renderSettingsLink = (title, link) => (
     <p
@@ -44,6 +68,9 @@ export const SettingsTab = () => {
       </PageHeader>
       <div class="p-4 flex-1 flex flex-col overflow-y-auto">
         <div class="flex-1">
+          <Show when={host()}>
+            <p class="mb-4 dark:text-snow">{TRANSLATION[locale()].baseHost} - {host()}</p>
+          </Show>
           {renderSettingsLink(t('pages.settingsPage.profile'), 'profile')}
           {renderSettingsLink(t('pages.settingsPage.profileDeleting'), 'profileDeleting')}
           {renderSettingsLink(t('pages.settingsPage.changePassword'), 'passwords')}

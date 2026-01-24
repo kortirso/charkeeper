@@ -1,20 +1,38 @@
-import { createSignal, Switch, Match, batch } from 'solid-js';
+import { createSignal, Switch, Match, Show, batch } from 'solid-js';
 import * as i18n from '@solid-primitives/i18n';
 
-import { Input, Button } from '../components';
+import { Input, Button, Select } from '../components';
 import { useAppState, useAppLocale, useAppAlert } from '../context';
 import { signUpRequest } from '../requests/signUpRequest';
 import { signInRequest } from '../requests/signInRequest';
+import { writeToCache } from '../helpers';
+
+const CHARKEEPER_HOST_CACHE_NAME = 'CharKeeperHost';
+const TRANSLATION = {
+  en: {
+    region: 'Server region',
+    euRegion: 'EU region',
+    ruRegion: 'RU region',
+    regionHelp: 'The servers operate independently of each other.'
+  },
+  ru: {
+    region: 'Регион сервера',
+    euRegion: 'Евро регион',
+    ruRegion: 'РУ регион',
+    regionHelp: 'Серверы работают независимо от друг друга.'
+  }
+}
 
 export const LoginPage = () => {
   const [page, setPage] = createSignal('signin');
   const [username, setUsername] = createSignal('');
   const [password, setPassword] = createSignal('');
   const [passwordConfirmation, setPasswordConfirmation] = createSignal('');
+  const [region, setRegion] = createSignal('charkeeper.org');
 
   const [, { changeUserInfo, setAccessToken }] = useAppState();
   const [{ renderAlerts }] = useAppAlert();
-  const [, dict, { setLocale }] = useAppLocale();
+  const [locale, dict, { setLocale }] = useAppLocale();
 
   const t = i18n.translator(dict);
 
@@ -31,6 +49,8 @@ export const LoginPage = () => {
   }
 
   const signUp = async () => {
+    writeToCache(CHARKEEPER_HOST_CACHE_NAME, region());
+
     const platformData = fetchPlatformData();
     const result = await signUpRequest(
       {
@@ -42,6 +62,8 @@ export const LoginPage = () => {
   }
 
   const signIn = async () => {
+    writeToCache(CHARKEEPER_HOST_CACHE_NAME, region());
+
     const platformData = fetchPlatformData();
     const result = await signInRequest({ user: { username: username(), password: password() }, platform: platformData });
     checkSignResult(result);
@@ -74,18 +96,31 @@ export const LoginPage = () => {
             <h2 class="text-2xl mb-4">{t('pages.loginPage.signup')}</h2>
           </Match>
         </Switch>
+        <Show when={window.__TAURI_INTERNALS__}>
+          <Select
+            containerClassList="mb-1"
+            labelText={TRANSLATION[locale()].region}
+            items={{
+              'charkeeper.org': TRANSLATION[locale()].euRegion,
+              'charkeeper.ru': TRANSLATION[locale()].ruRegion,
+            }}
+            selectedValue={region()}
+            onSelect={setRegion}
+          />
+          <p class="text-sm mb-2">{TRANSLATION[locale()].regionHelp}</p>
+        </Show>
         <Input
           containerClassList="form-field mb-2"
           labelText={t('pages.loginPage.username')}
           value={username()}
-          onInput={(value) => setUsername(value)}
+          onInput={setUsername}
         />
         <Input
           password
           containerClassList="form-field mb-2"
           labelText={t('pages.loginPage.password')}
           value={password()}
-          onInput={(value) => setPassword(value)}
+          onInput={setPassword}
         />
         <Switch>
           <Match when={page() === 'signin'}>
@@ -103,7 +138,7 @@ export const LoginPage = () => {
               containerClassList="form-field mb-2"
               labelText={t('pages.loginPage.passwordConfirmation')}
               value={passwordConfirmation()}
-              onInput={(value) => setPasswordConfirmation(value)}
+              onInput={setPasswordConfirmation}
             />
             <p>
               {t('pages.loginPage.haveAccount')}

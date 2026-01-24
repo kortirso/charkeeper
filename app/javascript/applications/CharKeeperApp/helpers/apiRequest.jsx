@@ -1,10 +1,17 @@
-export const apiRequest = ({ url, options }) => {
+import { readFromCache } from '../helpers';
+
+const CHARKEEPER_HOST_CACHE_NAME = 'CharKeeperHost';
+
+export const apiRequest = async ({ url, options }) => {
   if (window.__TAURI_INTERNALS__) {
     const { platform } = window.__TAURI__.os;
     const platformData = `platform=${platform()}&version=0.4.4`;
 
-    if (url.endsWith('.json')) url = `https://charkeeper.org${url}?${platformData}`;
-    else url = `https://charkeeper.org${url}&${platformData}`;
+    const cacheValue = await readFromCache(CHARKEEPER_HOST_CACHE_NAME);
+    const base_host = cacheValue === null || cacheValue === undefined ? 'charkeeper.org' : cacheValue;
+
+    if (url.endsWith('.json')) url = `https://${base_host}${url}?${platformData}`;
+    else url = `https://${base_host}${url}&${platformData}`;
   } else {
     const platformData = `platform=web&version=0.4.4`;
 
@@ -18,8 +25,13 @@ export const apiRequest = ({ url, options }) => {
     .catch(() => { return { errors_list: ['Internal server error, an error report has been sent to the developer!'] } });
 }
 
-export const apiBlobRequest = ({ url, options }) => {
-  if (window.__TAURI_INTERNALS__) url = `https://charkeeper.org${url}`;
+export const apiBlobRequest = async ({ url, options }) => {
+  if (window.__TAURI_INTERNALS__) {
+    const cacheValue = await readFromCache(CHARKEEPER_HOST_CACHE_NAME);
+    const base_host = cacheValue === null || cacheValue === undefined ? 'charkeeper.org' : cacheValue;
+
+    url = `https://${base_host}${url}`;
+  }
 
   return fetch(url, options)
     .then((response) => response.blob())
