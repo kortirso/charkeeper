@@ -107,7 +107,7 @@ module SheetsContext
         end
 
         def classes(character)
-          character.subclasses.map { |key, value| "#{class_name(key)} (#{subclass_name(key, value)})" }.join(' / ')
+          character.parent.subclass_names.map { |key, value| "#{key} (#{value})" }.join(' / ')
         end
 
         def race(character)
@@ -116,16 +116,6 @@ module SheetsContext
 
         def community(character)
           character.parent.community_name
-        end
-
-        def class_name(class_slug)
-          default = ::Daggerheart::Character.class_info(class_slug)
-          default ? default.dig('name', I18n.locale.to_s) : ::Daggerheart::Homebrew::Speciality.find(class_slug).name
-        end
-
-        def subclass_name(class_slug, subclass_slug)
-          default = ::Daggerheart::Character.subclass_info(class_slug, subclass_slug)
-          default ? default.dig('name', I18n.locale.to_s) : ::Daggerheart::Homebrew::Subclass.find(subclass_slug).name
         end
       end
     end

@@ -8,7 +8,7 @@ module HomebrewContext
 
         params do
           required(:ancestry).filled(type?: ::Daggerheart::Homebrew::Race)
-          required(:name).filled(:string, max_size?: 50)
+          optional(:name).filled(:string, max_size?: 50)
           optional(:public).filled(:bool)
         end
       end

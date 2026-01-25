@@ -7,7 +7,6 @@ import {
 } from '../../pages';
 import { CharacterNavigation, createModal, PageHeader, Select, Input, Button, Loading } from '../../components';
 import { Plus } from '../../assets';
-import daggerheartConfig from '../../data/daggerheart.json';
 import dnd2024Config from '../../data/dnd2024.json';
 import { useAppState, useAppLocale, useAppAlert } from '../../context';
 import { fetchCharactersRequest } from '../../requests/fetchCharactersRequest';
@@ -82,18 +81,6 @@ export const CharactersTab = () => {
     if (homebrews() === undefined) return {};
 
     return { ...dnd2024Config.species, ...homebrews().dnd2024.races };
-  });
-
-  const daggerheartHeritages = createMemo(() => {
-    if (homebrews() === undefined) return {};
-
-    return { ...daggerheartConfig.heritages, ...homebrews().daggerheart.races };
-  });
-
-  const daggerheartClasses = createMemo(() => {
-    if (homebrews() === undefined) return {};
-
-    return { ...daggerheartConfig.classes, ...homebrews().daggerheart.classes };
   });
 
   const characterProviders = createMemo(() => {
@@ -209,8 +196,6 @@ export const CharactersTab = () => {
                     character={character}
                     isActive={character.id == appState.activePageParams.id}
                     dnd2024Races={dnd2024Races()}
-                    daggerheartHeritages={daggerheartHeritages()}
-                    daggerheartClasses={daggerheartClasses()}
                     onClick={() => navigate('character', { id: character.id })}
                     onViewClick={() => navigate('characterView', { id: character.id })}
                     onDeleteCharacter={(e) => deleteCharacter(e, character.id)}

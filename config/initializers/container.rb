@@ -16,6 +16,7 @@ module Charkeeper
     end
 
     register('cache.avatars') { Cache::Avatars.new }
+    register('cache.daggerheart_names') { Cache::DaggerheartNames.new }
     register('feature_requirement') { FeatureRequirement.new }
     register('markdown') { ActiveMarkdown.new }
     register('to_bool') { ToBool.new }

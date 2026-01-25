@@ -77,7 +77,7 @@ export const CharactersListItem = (props) => {
       return `${t('charactersPage.level')} ${character().level} | ${character().subrace ? pathfinder2Config.races[character().race].subraces[character().subrace].name[locale()] : pathfinder2Config.races[character().race].name[locale()]}`;
     }
     if (character().provider === 'daggerheart') {
-      return `${t('charactersPage.level')} ${character().level} | ${character().heritage ? props.daggerheartHeritages[character().heritage].name[locale()] : character().heritage_name}`;
+      return `${t('charactersPage.level')} ${character().level} | ${character().names.ancestry_name}`;
     }
     if (character().provider === 'dc20') {
       return `${t('charactersPage.level')} ${character().level} | ${character().ancestries.map((item) => dc20Config.ancestries[item].name[locale()]).join(' * ')}`;
@@ -95,7 +95,7 @@ export const CharactersListItem = (props) => {
       return Object.keys(character().classes).map((item) => pathfinder2Config.classes[item].name[locale()]).join(' * ');
     }
     if (character().provider === 'daggerheart') {
-      return Object.keys(character().classes).map((item) => props.daggerheartClasses[item].name[locale()]).join(' * ');
+      return Object.keys(character().names.subclass_names).join(' * ');
     }
     if (character().provider === 'dc20') {
       return dc20Config.classes[character().main_class].name[locale()];

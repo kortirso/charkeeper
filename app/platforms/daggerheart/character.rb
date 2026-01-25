@@ -129,12 +129,22 @@ module Daggerheart
       return data.heritage_name if data.heritage.nil?
 
       default = ::Daggerheart::Character.heritage_info(data.heritage)
-      default ? default.dig('name', I18n.locale.to_s) : ::Daggerheart::Homebrew::Race.find(data.heritage).name
+      return default.dig('name', I18n.locale.to_s) if default
+
+      daggerheart_names.fetch_item(key: :ancestries, id: data.heritage).dig(:name, I18n.locale)
     end
 
     def community_name
       default = ::Daggerheart::Character.community_info(data.community)
-      default ? default.dig('name', I18n.locale.to_s) : ::Daggerheart::Homebrew::Community.find(data.community).name
+      return default.dig('name', I18n.locale.to_s) if default
+
+      daggerheart_names.fetch_item(key: :communities, id: data.community).dig(:name, I18n.locale)
+    end
+
+    def subclass_names
+      data.subclasses.each_with_object({}) do |(class_slug, subclass_slug), acc|
+        acc[class_name(class_slug)] = subclass_name(class_slug, subclass_slug)
+      end
     end
 
     def decorator(simple: false, version: nil)
@@ -146,5 +156,23 @@ module Daggerheart
       features_decorator.features unless simple
       ::DaggerheartCharacter::OverallDecorator.new(features_decorator)
     end
+
+    private
+
+    def class_name(class_slug)
+      default = ::Daggerheart::Character.class_info(class_slug)
+      return default.dig('name', I18n.locale.to_s) if default
+
+      daggerheart_names.fetch_item(key: :classes, id: class_slug).dig(:name, I18n.locale)
+    end
+
+    def subclass_name(class_slug, subclass_slug)
+      default = ::Daggerheart::Character.subclass_info(class_slug, subclass_slug)
+      return default.dig('name', I18n.locale.to_s) if default
+
+      daggerheart_names.fetch_item(key: :subclasses, id: subclass_slug).dig(:name, I18n.locale)
+    end
+
+    def daggerheart_names = Charkeeper::Container.resolve('cache.daggerheart_names')
   end
 end
