@@ -1,8 +1,8 @@
 import { apiRequest, options } from '../helpers';
 
-export const fetchCharacterNotesRequest = async (accessToken, id) => {
+export const fetchNotesRequest = async (accessToken, type, id) => {
   return await apiRequest({
-    url: `/frontend/characters/${id}/notes.json`,
+    url: `/frontend/${type}/${id}/notes.json`,
     options: options('GET', accessToken)
   });
 }

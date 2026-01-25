@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
-module CharactersContext
-  class ChangeNoteCommand < BaseCommand
+module NotesContext
+  class AddCommand < BaseCommand
     use_contract do
       params do
-        required(:note).filled(type?: ::Character::Note)
+        required(:noteable).filled(type_included_in?: [::Character, ::Campaign])
         required(:value).filled(:string, max_size?: 200)
         required(:title).filled(:string, max_size?: 50)
       end
@@ -13,13 +13,13 @@ module CharactersContext
     private
 
     def do_prepare(input)
-      input[:value] = sanitize(input[:value].split("\n").join('<br />'))
+      input[:value] = sanitize(input[:value])
     end
 
     def do_persist(input)
-      input[:note].update!(input.except(:note))
+      result = input[:noteable].notes.create!(input.except(:noteable))
 
-      { result: input[:note] }
+      { result: result }
     end
   end
 end
