@@ -34,8 +34,11 @@ export const CampaignsListItem = (props) => {
           'border-b border-blue-400 dark:border-fuzzy-red': props.isActive
         }}>
         <div class="flex-1">
-          <p class="font-normal! text-lg dark:text-snow" classList={{ 'text-white': props.isActive }}>
+          <p class="font-normal! text-lg dark:text-snow">
             {props.name}
+          </p>
+          <p class="text-sm dark:text-snow">
+            {t(`pages.characterNavigation.${props.provider}`)}
           </p>
         </div>
         <div class="relative h-8 dark:text-snow" use:clickOutside={() => setIsOpen(false)}>

@@ -38,7 +38,7 @@ describe Frontend::Characters::NotesController do
 
           expect(response).to have_http_status :ok
           expect(response.parsed_body['notes'].size).to eq 1
-          expect(response_values.keys).to contain_exactly('id', 'title', 'value')
+          expect(response_values.keys).to contain_exactly('id', 'title', 'value', 'markdown_value')
         end
       end
     end
@@ -76,7 +76,7 @@ describe Frontend::Characters::NotesController do
         it 'creates character note', :aggregate_failures do
           expect { request }.to change(user_character.notes, :count).by(1)
           expect(response).to have_http_status :created
-          expect(response.parsed_body['note'].keys).to contain_exactly('id', 'title', 'value')
+          expect(response.parsed_body['note'].keys).to contain_exactly('id', 'title', 'value', 'markdown_value')
         end
       end
     end

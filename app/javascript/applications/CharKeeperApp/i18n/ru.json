@@ -57,7 +57,8 @@
       "transformation": "Трансформация",
       "maneuver": "Приём",
       "states": "Состояния",
-      "craft": "Крафт"
+      "craft": "Крафт",
+      "campaignCharacters": "Персонажи"
     },
     "campaignsPage": {
       "title": "Кампании",

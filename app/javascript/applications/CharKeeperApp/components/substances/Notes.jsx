@@ -5,43 +5,67 @@ import * as i18n from '@solid-primitives/i18n';
 import { Input, Toggle, Button, IconButton, ErrorWrapper, TextArea } from '../../components';
 import { useAppState, useAppLocale } from '../../context';
 import { Close, Edit } from '../../assets';
-import { fetchCharacterNotesRequest } from '../../requests/fetchCharacterNotesRequest';
-import { createCharacterNoteRequest } from '../../requests/createCharacterNoteRequest';
-import { updateCharacterNoteRequest } from '../../requests/updateCharacterNoteRequest';
-import { removeCharacterNoteRequest } from '../../requests/removeCharacterNoteRequest';
+import { fetchNotesRequest } from '../../requests/fetchNotesRequest';
+import { createNoteRequest } from '../../requests/createNoteRequest';
+import { updateNoteRequest } from '../../requests/updateNoteRequest';
+import { removeNoteRequest } from '../../requests/removeNoteRequest';
 
-export const Notes = () => {
-  const [lastActiveCharacterId, setLastActiveCharacterId] = createSignal(undefined);
+const TRANSLATION = {
+  en: {
+    textHelp: 'You can use Markdown for editing description'
+  },
+  ru: {
+    textHelp: 'Вы можете использовать Markdown для редактирования описания'
+  }
+}
+
+export const Notes = (props) => {
+  const type = () => props.type || 'characters';
+
+  const [lastActivePageId, setLastActivePageId] = createSignal(undefined);
   const [notes, setNotes] = createSignal(undefined);
   const [activeNewNoteTab, setActiveNewNoteTab] = createSignal(false);
   const [noteForm, setNoteForm] = createStore({
     title: '',
     value: ''
   });
-  const [editNoteId, setEditNoteId] = createSignal(undefined);
 
   const [appState] = useAppState();
-  const [, dict] = useAppLocale();
+  const [locale, dict] = useAppLocale();
 
   const t = i18n.translator(dict);
 
   createEffect(() => {
-    if (lastActiveCharacterId() === appState.activePageParams.id) return;
+    if (lastActivePageId() === appState.activePageParams.id) return;
 
-    const fetchCharacterNotes = async () => await fetchCharacterNotesRequest(appState.accessToken, appState.activePageParams.id);
+    const fetchCharacterNotes = async () => await fetchNotesRequest(appState.accessToken, type(), appState.activePageParams.id);
 
     Promise.all([fetchCharacterNotes()]).then(
       ([characterNotesData]) => {
         batch(() => {
           setNotes(characterNotesData.notes);
-          setLastActiveCharacterId(appState.activePageParams.id);
+          setLastActivePageId(appState.activePageParams.id);
         });
       }
     );
   });
 
-  const saveNote = async () => {
-    const result = await createCharacterNoteRequest(appState.accessToken, appState.activePageParams.id, { note: noteForm });
+  const addNote = () => {
+    batch(() => {
+      setNoteForm({ title: '', value: '' });
+      setActiveNewNoteTab(true);
+    });
+  }
+
+  const editNote = (note) => {
+    batch(() => {
+      setNoteForm({ id: note.id, title: note.title, value: note.value });
+      setActiveNewNoteTab(true);
+    });
+  }
+
+  const createNote = async () => {
+    const result = await createNoteRequest(appState.accessToken, type(), appState.activePageParams.id, { note: noteForm });
 
     if (result.errors_list === undefined) {
       setNotes([result.note].concat(notes()));
@@ -49,24 +73,14 @@ export const Notes = () => {
     }
   }
 
-  const editNote = (note) => {
-    batch(() => {
-      setNoteForm({ title: note.title, value: note.value });
-      setEditNoteId(note.id);
-      setActiveNewNoteTab(true);
-    });
-  }
-
   const updateNote = async () => {
-    const result = await updateCharacterNoteRequest(
-      appState.accessToken, appState.activePageParams.id, editNoteId(), { note: noteForm, only_head: true }
-    );
+    const result = await updateNoteRequest(appState.accessToken, type(), appState.activePageParams.id, noteForm.id, { note: noteForm });
 
     if (result.errors_list === undefined) {
       setNotes(notes().slice().map((item) => {
-        if (item.id !== editNoteId()) return item;
+        if (item.id !== noteForm.id) return item;
 
-        return { ...item, ...noteForm };
+        return result.note;
       }));
       cancelNote();
     }
@@ -74,16 +88,15 @@ export const Notes = () => {
 
   const cancelNote = () => {
     batch(() => {
-      setEditNoteId(undefined);
-      setActiveNewNoteTab(false);
       setNoteForm({ title: '', value: '' });
+      setActiveNewNoteTab(false);
     });
   }
 
   const removeNote = async (event, noteId) => {
     event.stopPropagation();
 
-    const result = await removeCharacterNoteRequest(appState.accessToken, appState.activePageParams.id, noteId);
+    const result = await removeNoteRequest(appState.accessToken, type(), appState.activePageParams.id, noteId);
     if (result.errors_list === undefined) setNotes(notes().filter((item) => item.id !== noteId));
   }
 
@@ -106,6 +119,7 @@ export const Notes = () => {
                 value={noteForm.value}
                 onChange={(value) => setNoteForm({ ...noteForm, value: value })}
               />
+              <p class="text-sm mt-1">{TRANSLATION[locale()].textHelp}</p>
             </div>
             <div class="flex justify-end mt-4">
               <Button outlined textable size="small" classList="mr-4" onClick={cancelNote}>{t('cancel')}</Button>
@@ -113,13 +127,13 @@ export const Notes = () => {
                 default
                 textable
                 size="small"
-                onClick={() => editNoteId() === undefined ? saveNote() : updateNote()}
+                onClick={() => noteForm.id === undefined ? createNote() : updateNote()}
               >{t('save')}</Button>
             </div>
           </div>
         }
       >
-        <Button default textable classList="mb-2 w-full uppercase" onClick={() => setActiveNewNoteTab(true)}>
+        <Button default textable classList="mb-2 w-full uppercase" onClick={addNote}>
           {t('notes.newNote')}
         </Button>
         <Show when={notes() !== undefined}>
@@ -135,8 +149,8 @@ export const Notes = () => {
               }>
                 <div class="relative">
                   <p
-                    class="text-sm"
-                    innerHTML={note.value} // eslint-disable-line solid/no-innerhtml
+                    class="feat-markdown"
+                    innerHTML={note.markdown_value} // eslint-disable-line solid/no-innerhtml
                   />
                   <Button
                     default

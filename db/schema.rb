@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_01_15_153605) do
+ActiveRecord::Schema[8.1].define(version: 2026_01_25_080807) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
   enable_extension "pgcrypto"
@@ -69,6 +69,15 @@ ActiveRecord::Schema[8.1].define(version: 2026_01_15_153605) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["campaign_id", "character_id"], name: "index_campaign_characters_on_campaign_id_and_character_id", unique: true
+  end
+
+  create_table "campaign_notes", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "campaign_id", null: false
+    t.datetime "created_at", null: false
+    t.string "title", null: false
+    t.datetime "updated_at", null: false
+    t.text "value", null: false
+    t.index ["campaign_id"], name: "index_campaign_notes_on_campaign_id"
   end
 
   create_table "campaigns", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
@@ -144,6 +153,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_01_15_153605) do
     t.string "title", null: false
     t.datetime "updated_at", null: false
     t.text "value", null: false
+    t.index ["character_id"], name: "index_character_notes_on_character_id"
   end
 
   create_table "character_spells", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|

@@ -60,8 +60,9 @@ module Charkeeper
     register('commands.characters_context.dnd5.make_long_rest') { CharactersContext::Dnd5::MakeLongRestCommand.new }
     register('commands.characters_context.dnd5.change_health') { CharactersContext::Dnd5::ChangeHealthCommand.new }
     register('commands.characters_context.dnd5.add_bonus') { CharactersContext::Dnd5::AddBonusCommand.new }
-    register('commands.characters_context.add_note') { CharactersContext::NoteAddCommand.new }
-    register('commands.characters_context.change_note') { CharactersContext::ChangeNoteCommand.new }
+
+    register('commands.notes_context.add') { NotesContext::AddCommand.new }
+    register('commands.notes_context.change') { NotesContext::ChangeCommand.new }
 
     register('commands.characters_context.dnd2024.create') { CharactersContext::Dnd2024::CreateCommand.new }
     register('commands.characters_context.dnd2024.update') { CharactersContext::Dnd2024::UpdateCommand.new }

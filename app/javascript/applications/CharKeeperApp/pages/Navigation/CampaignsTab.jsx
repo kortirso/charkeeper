@@ -11,6 +11,15 @@ import { createCampaignRequest } from '../../requests/createCampaignRequest';
 import { removeCampaignRequest } from '../../requests/removeCampaignRequest';
 import { fetchCampaignJoinRequest } from '../../requests/fetchCampaignJoinRequest';
 
+const TRANSLATION = {
+  en: {
+    askDm: 'Ask your DM for campaign ID'
+  },
+  ru: {
+    askDm: 'Узнайте у мастера ID кампании'
+  }
+}
+
 export const CampaignsTab = () => {
   const [currentTab, setCurrentTab] = createSignal('campaigns');
   const [activeFilter, setActiveFilter] = createSignal('allFilter');
@@ -25,7 +34,7 @@ export const CampaignsTab = () => {
   const { Modal, openModal, closeModal } = createModal();
   const [appState, { navigate }] = useAppState();
   const [{ renderAlerts }] = useAppAlert();
-  const [, dict] = useAppLocale();
+  const [locale, dict] = useAppLocale();
 
   const t = i18n.translator(dict);
 
@@ -135,6 +144,7 @@ export const CampaignsTab = () => {
                   <CampaignsListItem
                     isActive={campaign.id == appState.activePageParams.id}
                     name={campaign.name}
+                    provider={campaign.provider}
                     onClick={() => navigate('campaign', { id: campaign.id })}
                     onDeleteCampaign={(e) => deleteCampaign(e, campaign.id)}
                   />
@@ -148,6 +158,7 @@ export const CampaignsTab = () => {
               <Input
                 containerClassList="ml-4 flex-1"
                 labelText={t('pages.campaignsPage.findCampaignId')}
+                placeholder={TRANSLATION[locale()].askDm}
                 value={findCampaignId()}
                 onInput={(value) => setFindCampaignId(value)}
               />
@@ -172,11 +183,11 @@ export const CampaignsTab = () => {
                 onInput={(value) => setCampaignForm({ ...campaignForm, name: value })}
               />
             </div>
-            <div class="flex mt-4">
-              <Button outlined size='default' classList='w-full mr-2' onClick={() => setCurrentTab('campaigns')}>
+            <div class="flex mt-4 items-center gap-x-4">
+              <Button outlined size='default' classList='w-full' onClick={() => setCurrentTab('campaigns')}>
                 {t('back')}
               </Button>
-              <Button default size='default' classList='w-full ml-2' onClick={saveCampaign}>
+              <Button default size='default' classList='w-full' onClick={saveCampaign}>
                 {t('save')}
               </Button>
             </div>

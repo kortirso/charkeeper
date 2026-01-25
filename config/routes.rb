@@ -158,6 +158,7 @@ Rails.application.routes.draw do
     end
 
     resources :campaigns, only: %i[index show create destroy] do
+      resources :notes, only: %i[index create update destroy], module: 'campaigns'
       resource :join, only: %i[show create destroy], module: :campaigns
     end
   end

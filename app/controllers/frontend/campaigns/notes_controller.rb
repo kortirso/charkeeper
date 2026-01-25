@@ -1,12 +1,12 @@
 # frozen_string_literal: true
 
 module Frontend
-  module Characters
+  module Campaigns
     class NotesController < Frontend::NotesController
       private
 
       def noteable
-        authorized_scope(Character.all).find(params[:character_id])
+        Campaign.find(params[:campaign_id])
       end
     end
   end

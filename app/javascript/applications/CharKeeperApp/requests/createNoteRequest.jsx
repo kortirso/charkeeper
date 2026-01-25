@@ -1,8 +1,8 @@
 import { apiRequest, options } from '../helpers';
 
-export const createCharacterNoteRequest = async (accessToken, id, payload) => {
+export const createNoteRequest = async (accessToken, type, id, payload) => {
   return await apiRequest({
-    url: `/frontend/characters/${id}/notes.json`,
+    url: `/frontend/${type}/${id}/notes.json`,
     options: options('POST', accessToken, payload)
   });
 }

@@ -1,10 +1,10 @@
-import { createSignal, createEffect, Show, For, batch } from 'solid-js';
+import { createSignal, createEffect, Show, Switch, Match, batch } from 'solid-js';
 import { createWindowSize } from '@solid-primitives/resize-observer';
-import * as i18n from '@solid-primitives/i18n';
 
-import { PageHeader, IconButton, Button } from '../../components';
-import { Arrow, Minus } from '../../assets';
-import { useAppState, useAppLocale, useAppAlert } from '../../context';
+import { CampaignDnd5, CampaignPathfinder2, CampaignDaggerheart, CampaignDc20 } from '../../pages';
+import { PageHeader, IconButton } from '../../components';
+import { Arrow } from '../../assets';
+import { useAppState, useAppAlert } from '../../context';
 import { fetchCampaignRequest } from '../../requests/fetchCampaignRequest';
 import { removeCampaignJoinRequest } from '../../requests/removeCampaignJoinRequest';
 
@@ -14,11 +14,8 @@ export const CampaignTab = (props) => {
   const [campaign, setCampaign] = createSignal({});
   const [characters, setCharacters] = createSignal([]);
 
-  const [appState, { navigate }] = useAppState();
+  const [appState] = useAppState();
   const [{ renderAlerts }] = useAppAlert();
-  const [, dict] = useAppLocale();
-
-  const t = i18n.translator(dict);
 
   createEffect(() => {
     if (appState.activePageParams.id === campaign().id) return;
@@ -55,46 +52,20 @@ export const CampaignTab = (props) => {
           <p>{campaign().name}</p>
         </PageHeader>
       </Show>
-      <div class="p-4 flex-1 flex flex-col overflow-y-auto">
-        <div class="blockable p-4 mb-2">
-          <p class="mb-2 dark:text-snow">{t('pages.campaignsPage.idForSearch')} - {appState.activePageParams.id}</p>
-          <Show when={characters().length > 0}>
-            <table class="w-full table first-column-full-width">
-              <tbody>
-                <For each={characters()}>
-                  {(character) =>
-                    <tr>
-                      <td class="py-1 pl-1">
-                        <p class="dark:text-snow">{character.name}</p>
-                      </td>
-                      <Show when={!window.__TAURI_INTERNALS__}>
-                        <td>
-                          <p
-                            class="dark:text-snow cursor-pointer"
-                            onClick={() => navigate('characterView', { id: character.character_id })}
-                          >PDF</p>
-                        </td>
-                      </Show>
-                      <td>
-                        <Button default size="small" onClick={() => deleteCharacter(character.id)}>
-                          <Minus />
-                        </Button>
-                      </td>
-                    </tr>
-                  }
-                </For>
-              </tbody>
-            </table>
-          </Show>
-        </div>
-        <Button
-          default
-          classList="mb-2"
-          onClick={() => navigate('campaignJoin', { id: campaign().id, provider: campaign().provider })}
-        >
-          {t(`pages.campaignsPage.join`)}
-        </Button>
-      </div>
+      <Switch>
+        <Match when={campaign().provider === 'dnd5' || campaign().provider === 'dnd2024'}>
+          <CampaignDnd5 campaign={campaign()} characters={characters()} onDeleteCharacter={deleteCharacter} />
+        </Match>
+        <Match when={campaign().provider === 'pathfinder2'}>
+          <CampaignPathfinder2 campaign={campaign()} characters={characters()} onDeleteCharacter={deleteCharacter} />
+        </Match>
+        <Match when={campaign().provider === 'daggerheart'}>
+          <CampaignDaggerheart campaign={campaign()} characters={characters()} onDeleteCharacter={deleteCharacter} />
+        </Match>
+        <Match when={campaign().provider === 'dc20'}>
+          <CampaignDc20 campaign={campaign()} characters={characters()} onDeleteCharacter={deleteCharacter} />
+        </Match>
+      </Switch>
     </>
   );
 }
