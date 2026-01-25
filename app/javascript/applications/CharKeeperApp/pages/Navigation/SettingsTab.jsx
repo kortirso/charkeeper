@@ -6,6 +6,7 @@ import { Telegram, Discord, Vk, Boosty, BuyMeACoffee } from '../../assets';
 import { useAppState, useAppLocale } from '../../context';
 import { logoutRequest } from '../../requests/logoutRequest';
 import { readFromCache } from '../../helpers';
+import { useTelegram } from '../../hooks';
 
 const CHARKEEPER_HOST_CACHE_NAME = 'CharKeeperHost';
 const TRANSLATION = {
@@ -22,6 +23,7 @@ export const SettingsTab = () => {
 
   const [appState, { navigate, setAccessToken }] = useAppState();
   const [locale, dict] = useAppLocale();
+  const { webApp } = useTelegram();
 
   const t = i18n.translator(dict);
 
@@ -94,12 +96,14 @@ export const SettingsTab = () => {
               <Telegram />
             </a>
           </div>
-          <p
-            class="py-3 px-4 cursor-pointer rounded hover:bg-gray-100 dark:text-snow dark:hover:bg-dusty"
-            onClick={logout}
-          >
-            {t('pages.settingsPage.logout')}
-          </p>
+          <Show when={webApp === undefined}>
+            <p
+              class="py-3 px-4 cursor-pointer rounded hover:bg-gray-100 dark:text-snow dark:hover:bg-dusty"
+              onClick={logout}
+            >
+              {t('pages.settingsPage.logout')}
+            </p>
+          </Show>
         </div>
         <p class="py-3 px-4 dark:text-snow">{t('pages.settingsPage.version')} 0.4.4, 2026.01.22</p>
       </div>

@@ -49,7 +49,7 @@ export const LoginPage = () => {
   }
 
   const signUp = async () => {
-    writeToCache(CHARKEEPER_HOST_CACHE_NAME, region());
+    if (window.__TAURI_INTERNALS__) writeToCache(CHARKEEPER_HOST_CACHE_NAME, region());
 
     const platformData = fetchPlatformData();
     const result = await signUpRequest(
@@ -62,7 +62,7 @@ export const LoginPage = () => {
   }
 
   const signIn = async () => {
-    writeToCache(CHARKEEPER_HOST_CACHE_NAME, region());
+    if (window.__TAURI_INTERNALS__) writeToCache(CHARKEEPER_HOST_CACHE_NAME, region());
 
     const platformData = fetchPlatformData();
     const result = await signInRequest({ user: { username: username(), password: password() }, platform: platformData });
