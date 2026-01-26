@@ -8,6 +8,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Added
 - campaign notes
 
+### Modified
+- soft deleting homebrews
+
 ## [0.4.4] - 2026-01-22
 ### Added
 - rendering exhaustion level for D&D characters

@@ -10,6 +10,8 @@ module Daggerheart
     end
 
     class Subclass < ::Homebrew::Subclass
+      include Discard::Model
+
       attribute :data, Daggerheart::Homebrew::SubclassData.to_type
     end
   end

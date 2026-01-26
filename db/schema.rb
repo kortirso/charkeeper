@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_01_25_080807) do
+ActiveRecord::Schema[8.1].define(version: 2026_01_26_081332) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
   enable_extension "pgcrypto"
@@ -391,32 +391,38 @@ ActiveRecord::Schema[8.1].define(version: 2026_01_25_080807) do
 
   create_table "homebrew_communities", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.datetime "created_at", null: false
+    t.datetime "discarded_at"
     t.string "name", null: false
     t.boolean "public", default: false, null: false, comment: "Открыть доступ для сторонних пользователей"
     t.string "type", null: false, comment: "Отношение к игровой системе"
     t.datetime "updated_at", null: false
     t.uuid "user_id", null: false
+    t.index ["discarded_at"], name: "index_homebrew_communities_on_discarded_at"
     t.index ["user_id"], name: "index_homebrew_communities_on_user_id"
   end
 
   create_table "homebrew_races", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.datetime "created_at", null: false
     t.jsonb "data", default: {}, null: false, comment: "Кастомные данные расы"
+    t.datetime "discarded_at"
     t.string "name", null: false
     t.boolean "public", default: false, null: false, comment: "Открыть доступ для сторонних пользователей"
     t.string "type", null: false, comment: "Отношение к игровой системе"
     t.datetime "updated_at", null: false
     t.uuid "user_id", null: false
+    t.index ["discarded_at"], name: "index_homebrew_races_on_discarded_at"
     t.index ["user_id"], name: "index_homebrew_races_on_user_id"
   end
 
   create_table "homebrew_specialities", id: :uuid, default: -> { "gen_random_uuid()" }, comment: "Кастомные классы", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.jsonb "data", default: {}, null: false
+    t.datetime "discarded_at"
     t.string "name", null: false
     t.string "type", null: false, comment: "Отношение к игровой системе"
     t.datetime "updated_at", null: false
     t.uuid "user_id", null: false
+    t.index ["discarded_at"], name: "index_homebrew_specialities_on_discarded_at"
     t.index ["user_id"], name: "index_homebrew_specialities_on_user_id"
   end
 
@@ -424,11 +430,13 @@ ActiveRecord::Schema[8.1].define(version: 2026_01_25_080807) do
     t.string "class_name", null: false, comment: "Название класса или ID кастомного класса"
     t.datetime "created_at", null: false
     t.jsonb "data", default: {}, null: false
+    t.datetime "discarded_at"
     t.string "name", null: false
     t.boolean "public", default: false, null: false, comment: "Открыть доступ для сторонних пользователей"
     t.string "type", null: false, comment: "Отношение к игровой системе"
     t.datetime "updated_at", null: false
     t.uuid "user_id", null: false
+    t.index ["discarded_at"], name: "index_homebrew_subclasses_on_discarded_at"
     t.index ["user_id"], name: "index_homebrew_subclasses_on_user_id"
   end
 

@@ -103,21 +103,9 @@ en:
       int: + Int modifier
   frontend:
     homebrews:
-      races:
-        daggerheart:
-          character_exists: Character with such ancestry exists
-      communities:
-        daggerheart:
-          character_exists: Character with such community exists
       transformations:
         daggerheart:
           character_exists: Character with such transformation exists
-      specialities:
-        daggerheart:
-          character_exists: Character with such class exists
-      subclasses:
-        daggerheart:
-          character_exists: Character with such subclass exists
   web:
     welcome:
       index:

@@ -90,10 +90,10 @@ describe Homebrews::Daggerheart::AncestriesController do
             character.save
           end
 
-          it 'returns error', :aggregate_failures do
+          it 'discards homebrew', :aggregate_failures do
             expect { request }.not_to change(Daggerheart::Homebrew::Race, :count)
-            expect(response).to have_http_status :unprocessable_content
-            expect(response.parsed_body['errors']).to eq({ 'base' => ['Персонаж с такой расой существует'] })
+            expect(response).to have_http_status :ok
+            expect(homebrew.reload.discarded?).to be_truthy
           end
         end
       end
