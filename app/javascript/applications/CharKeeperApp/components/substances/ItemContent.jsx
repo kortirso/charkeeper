@@ -35,7 +35,9 @@ const DaggerheartWeapon = (props) => {
       <div class="flex items-center gap-x-2 mt-2">
         <p>{item().info.burden === 1 ? <Hand /> : <TwoHands />}</p>
         <p>{daggerheartConfig.traits[item().info.trait].name[props.locale]},</p>
-        <p>{daggerheartConfig.ranges[item().info.range].name[props.locale]}</p>
+        <Show when={item().info.range}>
+          <p>{daggerheartConfig.ranges[item().info.range].name[props.locale]}</p>
+        </Show>
       </div>
       <div class="flex items-center gap-x-2 mt-2">
         <p>{item().info.damage}{item().info.damage_bonus !== 0 ? modifier(item().info.damage_bonus) : ''}</p>
