@@ -111,14 +111,16 @@ module SheetsContext
           text_box I18n.t('services.sheets_context.count'), at: [242, 726], width: 40, height: 10, align: :center
           text_box I18n.t('services.sheets_context.count'), at: [509, 784], width: 40, height: 10, align: :center
 
-          font_size 12
+          font_size 10
           fill_color '000000'
           character.parent.items.includes(:item)
             .to_a
             .sort_by { |item| item.item.name[I18n.locale.to_s] }
-            .each_with_index do |item, index|
-              text_box item.item.name[I18n.locale.to_s], at: [52, 716 - (index * 28)], width: 140, height: 14
-              text_box item.states.values.sum.to_s, at: [242, 716 - (index * 28)], width: 40, height: 14, align: :center
+            .each_slice(25).to_a.each_with_index do |group, group_index|
+              group.each_with_index do |item, index|
+                text_box item.item.name[I18n.locale.to_s], at: [52 + (group_index * 267), 716 - (index * 28) + (group_index * 56)], width: 140, height: 14
+                text_box item.states.values.sum.to_s, at: [242 + (group_index * 267), 716 - (index * 28) + (group_index * 56)], width: 40, height: 14, align: :center
+              end
             end
 
           start_new_page
@@ -140,7 +142,7 @@ module SheetsContext
 
                 font_size 5
                 card_text = markdown.call(value: feat.feat.description[I18n.locale.to_s], version: '0.4.4')
-                text_box card_text.gsub(%r{</?p[^>]*>}i, ''), at: [48 + (index * 175), 758 - (group_index * 127)], width: 160, height: 90, inline_format: true
+                text_box card_text.gsub(%r{</?p[^>]*>}i, '').gsub(/{{[a-z]+}}/, 'x'), at: [48 + (index * 175), 758 - (group_index * 127)], width: 160, height: 90, inline_format: true
               end
             end
 
