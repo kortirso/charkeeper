@@ -54,14 +54,14 @@ module Homebrews
       end
 
       def destroy
-        @speciality.destroy
+        @kept ? @speciality.discard : @speciality.destroy
         only_head_response
       end
 
       private
 
       def find_specialities
-        @specialities = ::Daggerheart::Homebrew::Speciality.where(user_id: current_user.id).order(created_at: :desc)
+        @specialities = ::Daggerheart::Homebrew::Speciality.kept.where(user_id: current_user.id).order(created_at: :desc)
       end
 
       def find_features
@@ -76,17 +76,14 @@ module Homebrews
       end
 
       def find_speciality
-        @speciality = ::Daggerheart::Homebrew::Speciality.find_by!(id: params[:id], user_id: current_user.id)
+        @speciality = ::Daggerheart::Homebrew::Speciality.kept.find_by!(id: params[:id], user_id: current_user.id)
       end
 
       def find_existing_characters
-        subclasses = ::Daggerheart::Character.where(user_id: current_user.id).pluck(:data).pluck(:subclasses)
+        subclasses = ::Daggerheart::Character.pluck(:data).pluck(:subclasses)
         return if subclasses.flat_map(&:keys).exclude?(@speciality.id)
 
-        unprocessable_response(
-          { base: [t('frontend.homebrews.specialities.daggerheart.character_exists')] },
-          [t('frontend.homebrews.specialities.daggerheart.character_exists')]
-        )
+        @kept = true
       end
 
       def speciality_params

@@ -103,21 +103,9 @@ ru:
       int: + модификатор Инт
   frontend:
     homebrews:
-      races:
-        daggerheart:
-          character_exists: Персонаж с такой расой существует
-      communities:
-        daggerheart:
-          character_exists: Персонаж с таким обществом существует
       transformations:
         daggerheart:
           character_exists: Персонаж с такой трансформацией существует
-      specialities:
-        daggerheart:
-          character_exists: Персонаж с таким классом существует
-      subclasses:
-        daggerheart:
-          character_exists: Персонаж с таким подклассом существует
   web:
     welcome:
       index:

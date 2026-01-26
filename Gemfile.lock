@@ -143,6 +143,8 @@ GEM
       bigdecimal
       concurrent-ruby
     diff-lcs (1.6.2)
+    discard (1.4.0)
+      activerecord (>= 4.2, < 9.0)
     docile (1.4.1)
     drb (2.2.3)
     dry-auto_inject (1.1.0)
@@ -558,6 +560,7 @@ DEPENDENCIES
   csv
   database_cleaner (~> 2.0)
   dentaku
+  discard (~> 1.4)
   dry-auto_inject (~> 1.0)
   dry-container (~> 0.11.0)
   dry-validation (~> 1.10)

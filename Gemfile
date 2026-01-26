@@ -93,6 +93,9 @@ gem 'redcarpet'
 # code parser
 gem 'dentaku'
 
+# soft deleting
+gem 'discard', '~> 1.4'
+
 group :development, :production, :ru_production do
   gem 'get_process_mem'
   gem 'rails_performance'

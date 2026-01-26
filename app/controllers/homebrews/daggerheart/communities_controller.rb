@@ -58,7 +58,7 @@ module Homebrews
       end
 
       def destroy
-        @community.destroy
+        @kept ? @community.discard : @community.destroy
         only_head_response
       end
 
@@ -77,7 +77,7 @@ module Homebrews
           ::Daggerheart::Homebrew::Community.where(user_id: current_user.id)
             .or(
               ::Daggerheart::Homebrew::Community.where.not(user_id: current_user.id).where(public: true)
-            ).order(created_at: :desc)
+            ).kept.order(created_at: :desc)
       end
 
       def find_features
@@ -90,11 +90,11 @@ module Homebrews
       end
 
       def find_community
-        @community = ::Daggerheart::Homebrew::Community.find_by!(id: params[:id], user_id: current_user.id)
+        @community = ::Daggerheart::Homebrew::Community.kept.find_by!(id: params[:id], user_id: current_user.id)
       end
 
       def find_another_community
-        @community = ::Daggerheart::Homebrew::Community.where.not(user_id: current_user.id).find(params[:id])
+        @community = ::Daggerheart::Homebrew::Community.kept.where.not(user_id: current_user.id).find(params[:id])
       end
 
       def find_existing_characters
@@ -102,10 +102,7 @@ module Homebrews
           return
         end
 
-        unprocessable_response(
-          { base: [t('frontend.homebrews.communities.daggerheart.character_exists')] },
-          [t('frontend.homebrews.communities.daggerheart.character_exists')]
-        )
+        @kept = true
       end
 
       def community_params

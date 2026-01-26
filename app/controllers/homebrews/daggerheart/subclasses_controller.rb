@@ -58,7 +58,7 @@ module Homebrews
       end
 
       def destroy
-        @subclass.destroy
+        @kept ? @subclass.discard : @subclass.destroy
         only_head_response
       end
 
@@ -77,7 +77,7 @@ module Homebrews
           ::Daggerheart::Homebrew::Subclass.where(user_id: current_user.id)
             .or(
               ::Daggerheart::Homebrew::Subclass.where.not(user_id: current_user.id).where(public: true)
-            ).order(created_at: :desc)
+            ).kept.order(created_at: :desc)
       end
 
       def find_features
@@ -92,21 +92,18 @@ module Homebrews
       end
 
       def find_subclass
-        @subclass = ::Daggerheart::Homebrew::Subclass.find_by!(id: params[:id], user_id: current_user.id)
+        @subclass = ::Daggerheart::Homebrew::Subclass.kept.find_by!(id: params[:id], user_id: current_user.id)
       end
 
       def find_another_subclass
-        @subclass = ::Daggerheart::Homebrew::Subclass.where.not(user_id: current_user.id).find(params[:id])
+        @subclass = ::Daggerheart::Homebrew::Subclass.kept.where.not(user_id: current_user.id).find(params[:id])
       end
 
       def find_existing_characters
-        subclasses = ::Daggerheart::Character.where(user_id: current_user.id).pluck(:data).pluck(:subclasses)
+        subclasses = ::Daggerheart::Character.pluck(:data).pluck(:subclasses)
         return if subclasses.flat_map(&:values).exclude?(@subclass.id)
 
-        unprocessable_response(
-          { base: [t('frontend.homebrews.subclasses.daggerheart.character_exists')] },
-          [t('frontend.homebrews.subclasses.daggerheart.character_exists')]
-        )
+        @kept = true
       end
 
       def subclass_params

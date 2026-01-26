@@ -11,6 +11,8 @@ module Daggerheart
     end
 
     class Speciality < ::Homebrew::Speciality
+      include Discard::Model
+
       attribute :data, Daggerheart::Homebrew::SpecialityData.to_type
     end
   end

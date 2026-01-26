@@ -58,7 +58,7 @@ module Homebrews
       end
 
       def destroy
-        @ancestry.destroy
+        @kept ? @ancestry.discard : @ancestry.destroy
         only_head_response
       end
 
@@ -77,7 +77,7 @@ module Homebrews
           ::Daggerheart::Homebrew::Race.where(user_id: current_user.id)
             .or(
               ::Daggerheart::Homebrew::Race.where.not(user_id: current_user.id).where(public: true)
-            ).order(created_at: :desc)
+            ).kept.order(created_at: :desc)
       end
 
       def find_features
@@ -92,20 +92,17 @@ module Homebrews
       end
 
       def find_ancestry
-        @ancestry = ::Daggerheart::Homebrew::Race.find_by!(id: params[:id], user_id: current_user.id)
+        @ancestry = ::Daggerheart::Homebrew::Race.kept.find_by!(id: params[:id], user_id: current_user.id)
       end
 
       def find_another_ancestry
-        @ancestry = ::Daggerheart::Homebrew::Race.where.not(user_id: current_user.id).find(params[:id])
+        @ancestry = ::Daggerheart::Homebrew::Race.kept.where.not(user_id: current_user.id).find(params[:id])
       end
 
       def find_existing_characters
         return unless ::Daggerheart::Character.where(user_id: current_user.id).exists?(["data ->> 'heritage' = ?", @ancestry.id])
 
-        unprocessable_response(
-          { base: [t('frontend.homebrews.races.daggerheart.character_exists')] },
-          [t('frontend.homebrews.races.daggerheart.character_exists')]
-        )
+        @kept = true
       end
 
       def ancestry_params

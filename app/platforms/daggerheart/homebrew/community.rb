@@ -3,6 +3,7 @@
 module Daggerheart
   module Homebrew
     class Community < ::Homebrew::Community
+      include Discard::Model
     end
   end
 end
