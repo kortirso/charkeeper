@@ -4,6 +4,8 @@ module SheetsContext
   module Pdf
     module Daggerheart
       class Template < SheetsContext::Pdf::Template
+        include Deps[markdown: 'markdown']
+
         # rubocop: disable Metrics/AbcSize, Metrics/MethodLength, Metrics/PerceivedComplexity, Style/NestedTernaryOperator, Metrics/CyclomaticComplexity, Layout/LineLength
         def to_pdf(character:)
           super
@@ -117,6 +119,29 @@ module SheetsContext
             .each_with_index do |item, index|
               text_box item.item.name[I18n.locale.to_s], at: [52, 716 - (index * 28)], width: 140, height: 14
               text_box item.states.values.sum.to_s, at: [242, 716 - (index * 28)], width: 40, height: 14, align: :center
+            end
+
+          start_new_page
+
+          font_size 10
+          text_box I18n.t('services.sheets_context.daggerheart.domain_cards'), at: [210, 818], width: 175, align: :center
+
+          character.parent.feats.includes(:feat).where(feats: { origin: 7 })
+            .sort_by { |item| item[:ready_to_use] ? 0 : 1 }
+            .each_slice(3).to_a.each_with_index do |group, group_index|
+              group.each_with_index do |feat, index|
+                font_size 6
+                fill_color '444444'
+                text_box I18n.t('services.sheets_context.daggerheart.level', value: feat.feat.conditions['level']), at: [52 + (index * 175), 770 - (group_index * 127)], width: 150, height: 14, align: :right
+
+                font_size 10
+                fill_color '000000'
+                text_box feat.feat.title[I18n.locale.to_s], at: [52 + (index * 175), 788 - (group_index * 127)], width: 140, height: 14
+
+                font_size 5
+                card_text = markdown.call(value: feat.feat.description[I18n.locale.to_s], version: '0.4.4')
+                text_box card_text.gsub(%r{</?p[^>]*>}i, ''), at: [48 + (index * 175), 758 - (group_index * 127)], width: 160, height: 90, inline_format: true
+              end
             end
 
           render

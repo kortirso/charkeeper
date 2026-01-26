@@ -5,7 +5,14 @@ module SheetsContext
     class Template < Prawn::Document
       # rubocop: disable Metrics/AbcSize
       def to_pdf(character:)
-        font Rails.root.join('app/assets/fonts/CascadiaMono-Light.ttf')
+        font_families.update(
+          'CascadiaMono' => {
+            normal: Rails.root.join('app/assets/fonts/CascadiaMono-Light.ttf'),
+            bold: Rails.root.join('app/assets/fonts/CascadiaMono-Regular.ttf'),
+            italic: Rails.root.join('app/assets/fonts/CascadiaMono-LightItalic.ttf')
+          }
+        )
+        font 'CascadiaMono'
 
         font_size 12
         fill_color 'FFFFFF'

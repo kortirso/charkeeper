@@ -70,6 +70,8 @@ ru:
         minor: Малый
         major: Ощутимый
         severe: Тяжёлый
+        domain_cards: КАРТЫ ДОМЕНОВ
+        level: "%{value} уровень"
     bot_context:
       representers:
         check:

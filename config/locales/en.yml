@@ -70,6 +70,8 @@ en:
         minor: Minor
         major: Major
         severe: Severe
+        domain_cards: DOMAIN CARDS
+        level: "%{value} level"
     bot_context:
       representers:
         check:
