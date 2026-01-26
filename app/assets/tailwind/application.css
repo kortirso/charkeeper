@@ -443,3 +443,11 @@ nav.pagy.nav a.gap {
   height: 28px;
   animation: spin 2s linear infinite; /* Applies the animation */
 }
+
+#pdf canvas {
+  @apply w-full;
+}
+
+#pdf .pdf_splitter {
+  @apply w-full h-2;
+}

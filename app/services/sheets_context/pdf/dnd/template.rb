@@ -27,11 +27,11 @@ module SheetsContext
           fill_color '000000'
           %w[str dex con int wis cha].each_with_index do |item, index|
             font_size 12
-            text_box character.modified_abilities[item].to_s, at: [242 + (index * 55), 720], width: 25, height: 14, align: :center
+            value = "#{'+' if character.modifiers[item].positive?}#{character.modifiers[item]}"
+            text_box value, at: [242 + (index * 55), 720], width: 25, height: 14, align: :center
 
             font_size 10
-            value = "#{'+' if character.modifiers[item].positive?}#{character.modifiers[item]}"
-            text_box value, at: [245.5 + (index * 55), 699], width: 18, height: 14, align: :center
+            text_box character.modified_abilities[item].to_s, at: [245.5 + (index * 55), 699], width: 18, height: 14, align: :center
 
             font_size 12
             value = "#{'+' if character.save_dc[item].positive?}#{character.save_dc[item]}"
@@ -73,26 +73,30 @@ module SheetsContext
           font_size 4
           fill_color '444444'
           text_box I18n.t('services.sheets_context.attack').upcase, at: [430, 545], width: 25, height: 10, align: :center
-          text_box I18n.t('services.sheets_context.dist').upcase, at: [455, 545], width: 30, height: 10, align: :center
+          # text_box I18n.t('services.sheets_context.dist').upcase, at: [455, 545], width: 30, height: 10, align: :center
           text_box I18n.t('services.sheets_context.damage').upcase, at: [485, 545], width: 35, height: 10, align: :center
-          text_box I18n.t('services.sheets_context.type').upcase, at: [520, 545], width: 30, height: 10, align: :center
+          text_box I18n.t('services.sheets_context.dist').upcase, at: [520, 545], width: 30, height: 10, align: :center
 
           fill_color '000000'
-          character.attacks.first(12).each_with_index do |attack, index|
+          character.attacks.sort_by { |item| item[:ready_to_use] ? 0 : 1 }.first(12).each_with_index do |attack, index|
             font_size 8
             text_box attack[:name], at: [327, 534 - (index * 36)], width: 100, height: 14
 
             font_size 6
             text_box "#{'+' if attack[:attack_bonus].positive?}#{attack[:attack_bonus]}", at: [430, 534 - (index * 36)], width: 25, height: 14, align: :center
-            if attack[:melee_distance] && attack[:melee_distance] > 5
-              text_box attack[:melee_distance].to_s, at: [455, 534 - (index * 36)], width: 30, height: 14, align: :center
+            if attack[:melee_distance]
+              text_box attack[:melee_distance].to_s, at: [520, 534 - (index * 36)], width: 30, height: 14, align: :center
             else
-              text_box attack[:range_distance].to_s, at: [455, 534 - (index * 36)], width: 30, height: 14, align: :center
+              text_box attack[:range_distance].to_s, at: [520, 534 - (index * 36)], width: 30, height: 14, align: :center
             end
 
             damage = attack[:damage].include?('d') ? "#{attack[:damage]}#{'+' if attack[:damage_bonus].positive?}#{attack[:damage_bonus] unless attack[:damage_bonus].zero?}" : ((attack[:damage].to_i + attack[:damage_bonus]).positive? ? (attack[:damage].to_i + attack[:damage_bonus]).to_s : '-')
             text_box damage, at: [485, 534 - (index * 36)], width: 35, height: 14, align: :center
-            text_box attack[:damage_type], at: [520, 534 - (index * 36)], width: 30, height: 14, align: :center
+            # text_box attack[:damage_type], at: [520, 534 - (index * 36)], width: 30, height: 14, align: :center
+
+            tags = attack[:tags].values
+            tags.unshift(I18n.t('services.sheets_context.ready_to_use')) if attack[:ready_to_use]
+            text_box tags.join(' / '), at: [327, 517 - (index * 36)], width: 200, height: 14
           end
 
           font_size 10
@@ -117,6 +121,27 @@ module SheetsContext
           character.death_saving_throws['failure'].times do |index|
             fill_and_stroke_rounded_rectangle [222.5 + (index * 13), 563.5], 11, 11, 1
           end
+
+          start_new_page
+
+          font_size 10
+          fill_color '000000'
+          text_box I18n.t('services.sheets_context.equipment'), at: [210, 818], width: 175, align: :center
+
+          font_size 4
+          fill_color '444444'
+          text_box I18n.t('services.sheets_context.count'), at: [242, 726], width: 40, height: 10, align: :center
+          text_box I18n.t('services.sheets_context.count'), at: [509, 784], width: 40, height: 10, align: :center
+
+          font_size 12
+          fill_color '000000'
+          character.parent.items.includes(:item)
+            .to_a
+            .sort_by { |item| item.item.name[I18n.locale.to_s] }
+            .each_with_index do |item, index|
+              text_box item.item.name[I18n.locale.to_s], at: [52, 716 - (index * 28)], width: 140, height: 14
+              text_box item.states.values.sum.to_s, at: [242, 716 - (index * 28)], width: 40, height: 14, align: :center
+            end
         end
         # rubocop: enable Metrics/AbcSize, Layout/LineLength,  Metrics/MethodLength, Style/NestedTernaryOperator, Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity
       end

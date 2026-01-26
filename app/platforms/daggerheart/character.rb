@@ -107,6 +107,10 @@ module Daggerheart
       config['traits']
     end
 
+    def self.ranges
+      config['ranges']
+    end
+
     attribute :data, Daggerheart::CharacterData.to_type
 
     def tier

@@ -41,20 +41,29 @@ export const CharacterView = (props) => {
   const renderCharacterView = (characterViewData) => {
     pdfjsLib.GlobalWorkerOptions.workerSrc = './pdf.worker.mjs'; // eslint-disable-line no-undef
     pdfjsLib.getDocument(characterViewData).promise.then(async function(pdfDoc) { // eslint-disable-line no-undef
-      const page = await pdfDoc.getPage(1);
+      const container = document.getElementById('pdf');
+      for (let pageNum = 1; pageNum <= pdfDoc._pdfInfo.numPages; pageNum++) {
+        if (pageNum > 1) {
+          const splitter = document.createElement('div');
+          splitter.className = 'pdf_splitter';
+          container.appendChild(splitter);
+        }
+        const canvas = document.createElement('canvas');
+        canvas.id = `page-${pageNum}`;
+        canvas.style.display = 'block';
+        container.appendChild(canvas);
 
-      const scale = 3;
-      const viewport = page.getViewport({ scale });
+        const page = await pdfDoc.getPage(pageNum);
+        const scale = 3;
+        const viewport = page.getViewport({ scale });
 
-      // Get the canvas element and set its size based on the PDF page.
-      const canvas = document.getElementById('pdf');
-      const context = canvas.getContext('2d');
-      canvas.height = viewport.height;
-      canvas.width = viewport.width;
+        const context = canvas.getContext('2d');
+        canvas.height = viewport.height;
+        canvas.width = viewport.width;
 
-      // Render the page into the canvas.
-      const renderContext = { canvasContext: context, viewport: viewport };
-      await page.render(renderContext).promise;
+        const renderContext = { canvasContext: context, viewport: viewport };
+        await page.render(renderContext).promise;
+      }
     }).catch(function(error) {
       console.error('Error loading PDF:', error);
     });
@@ -77,7 +86,7 @@ export const CharacterView = (props) => {
         />
       </Show>
       <div class="flex-1 flex flex-col overflow-y-scroll relative">
-        <canvas id="pdf" />
+        <div id="pdf" />
         <div class="absolute top-4 left-4">
           <a id="pdfDownload" class="rounded bg-blue-400 text-snow dark:bg-fuzzy-red px-2 py-1 mr-2">
             {t('charactersPage.download')}

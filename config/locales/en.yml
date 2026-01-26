@@ -36,7 +36,10 @@ en:
       attack: ATTACK
       dist: DISTANCE
       damage: DAMAGE
-      type: TYPE
+      trait: TYPE
+      ready_to_use: Ready to use
+      count: COUNT
+      equipment: EQUIPMENT
       pathfinder:
         armor_class: Armor class
         perception: Perception

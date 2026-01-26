@@ -36,7 +36,10 @@ ru:
       attack: АТАКА
       dist: ДИСТАНЦИЯ
       damage: УРОН
-      type: ТИП
+      trait: ТИП
+      ready_to_use: Наготове
+      count: КОЛ-ВО
+      equipment: СНАРЯЖЕНИЕ
       pathfinder:
         armor_class: Класс брони
         perception: Восприятие
@@ -65,8 +68,8 @@ ru:
         experience: ОПЫТНОСТЬ
         health: ЗДОРОВЬЕ
         minor: Малый
-        major: Большой
-        severe: Серьёзный
+        major: Ощутимый
+        severe: Тяжёлый
     bot_context:
       representers:
         check:

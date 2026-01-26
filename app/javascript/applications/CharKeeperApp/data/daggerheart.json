@@ -414,11 +414,11 @@
     "know": { "name": { "en": "Knowledge", "ru": "Знание" }, "shortName": { "en": "Know", "ru": "Знан" } }
   },
   "ranges": {
-    "melee": { "name": { "en": "Melee", "ru": "Вплотную" } },
-    "very close": { "name": { "en": "Very close", "ru": "Близко" } },
-    "close": { "name": { "en": "Close", "ru": "Средне" } },
-    "far": { "name": { "en": "Far", "ru": "Далеко" } },
-    "very far": { "name": { "en": "Very far", "ru": "Очень далеко" } }
+    "melee": { "name": { "en": "Melee", "ru": "Вплотную" }, "shortName": { "en": "Melee", "ru": "" } },
+    "very close": { "name": { "en": "Very close", "ru": "Близко" }, "shortName": { "en": "V close", "ru": "" } },
+    "close": { "name": { "en": "Close", "ru": "Средне" }, "shortName": { "en": "", "ru": "Close" } },
+    "far": { "name": { "en": "Far", "ru": "Далеко" }, "shortName": { "en": "", "ru": "Far" } },
+    "very far": { "name": { "en": "Very far", "ru": "Очень далеко" }, "shortName": { "en": "V far", "ru": "" } }
   },
   "damageTypes": {
     "physical": { "name": { "en": "Physical", "ru": "Физический" } },

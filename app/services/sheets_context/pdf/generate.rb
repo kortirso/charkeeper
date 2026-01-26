@@ -22,11 +22,7 @@ module SheetsContext
             page_size: 'A4', page_layout: :portrait, margin: 0
           ).to_pdf(character: character.decorator)
 
-        pdf.pages.each do |page|
-          page << CombinePDF.parse(pdf_data).pages[0]
-        end
-
-        pdf
+        add_data_to_template(pdf, pdf_data)
       end
 
       def dnd5_pdf(character)
@@ -37,11 +33,7 @@ module SheetsContext
             page_size: 'A4', page_layout: :portrait, margin: 0
           ).to_pdf(character: character.decorator)
 
-        pdf.pages.each do |page|
-          page << CombinePDF.parse(pdf_data).pages[0]
-        end
-
-        pdf
+        add_data_to_template(pdf, pdf_data)
       end
 
       def dnd2024_pdf(character)
@@ -52,11 +44,7 @@ module SheetsContext
             page_size: 'A4', page_layout: :portrait, margin: 0
           ).to_pdf(character: character.decorator)
 
-        pdf.pages.each do |page|
-          page << CombinePDF.parse(pdf_data).pages[0]
-        end
-
-        pdf
+        add_data_to_template(pdf, pdf_data)
       end
 
       def pathfinder2_pdf(character)
@@ -67,10 +55,14 @@ module SheetsContext
             page_size: 'A4', page_layout: :portrait, margin: 0
           ).to_pdf(character: character.decorator)
 
-        pdf.pages.each do |page|
-          page << CombinePDF.parse(pdf_data).pages[0]
-        end
+        add_data_to_template(pdf, pdf_data)
+      end
 
+      def add_data_to_template(pdf, pdf_data)
+        parsed_pdf = CombinePDF.parse(pdf_data)
+        pdf.pages.each.with_index do |page, index|
+          page << parsed_pdf.pages[index]
+        end
         pdf
       end
     end

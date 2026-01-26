@@ -4,7 +4,7 @@ module SheetsContext
   module Pdf
     module Daggerheart
       class Template < SheetsContext::Pdf::Template
-        # rubocop: disable Metrics/AbcSize, Metrics/MethodLength, Metrics/PerceivedComplexity, Style/NestedTernaryOperator, Metrics/CyclomaticComplexity
+        # rubocop: disable Metrics/AbcSize, Metrics/MethodLength, Metrics/PerceivedComplexity, Style/NestedTernaryOperator, Metrics/CyclomaticComplexity, Layout/LineLength
         def to_pdf(character:)
           super
 
@@ -57,23 +57,27 @@ module SheetsContext
 
           font_size 4
           fill_color '444444'
-          text_box I18n.t('services.sheets_context.attack').upcase, at: [430, 640], width: 25, height: 10, align: :center
-          text_box I18n.t('services.sheets_context.dist').upcase, at: [455, 640], width: 30, height: 10, align: :center
-          text_box I18n.t('services.sheets_context.damage').upcase, at: [485, 640], width: 35, height: 10, align: :center
-          text_box I18n.t('services.sheets_context.type').upcase, at: [520, 640], width: 30, height: 10, align: :center
+          text_box I18n.t('services.sheets_context.attack'), at: [430, 640], width: 25, height: 10, align: :center
+          text_box I18n.t('services.sheets_context.trait'), at: [455, 640], width: 30, height: 10, align: :center
+          text_box I18n.t('services.sheets_context.damage'), at: [485, 640], width: 35, height: 10, align: :center
+          text_box I18n.t('services.sheets_context.dist'), at: [520, 640], width: 30, height: 10, align: :center
 
           fill_color '000000'
-          character.attacks.first(10).each_with_index do |attack, index|
+          character.attacks.sort_by { |item| item[:ready_to_use] ? 0 : 1 }.first(10).each_with_index do |attack, index|
             font_size 8
             text_box attack[:name], at: [327, 629 - (index * 36)], width: 100, height: 14
 
             font_size 6
-            text_box "#{'+' if attack[:attack_bonus].positive?}#{attack[:attack_bonus]}", at: [430, 629 - (index * 36)], width: 25, height: 14, align: :center # rubocop: disable Layout/LineLength
-            text_box attack[:range], at: [455, 629 - (index * 36)], width: 30, height: 14, align: :center
+            text_box "#{'+' if attack[:attack_bonus].positive?}#{attack[:attack_bonus]}", at: [430, 629 - (index * 36)], width: 25, height: 14, align: :center
+            text_box ::Daggerheart::Character.traits.dig(attack[:trait], 'shortName', I18n.locale.to_s).to_s, at: [455, 629 - (index * 36)], width: 30, height: 14, align: :center
 
-            damage = attack[:damage].include?('d') ? "#{attack[:damage]}#{'+' if attack[:damage_bonus].positive?}#{attack[:damage_bonus] unless attack[:damage_bonus].zero?}" : ((attack[:damage].to_i + attack[:damage_bonus]).positive? ? (attack[:damage].to_i + attack[:damage_bonus]).to_s : '-') # rubocop: disable Layout/LineLength
+            damage = attack[:damage].include?('d') ? "#{attack[:damage]}#{'+' if attack[:damage_bonus].positive?}#{attack[:damage_bonus] unless attack[:damage_bonus].zero?}" : ((attack[:damage].to_i + attack[:damage_bonus]).positive? ? (attack[:damage].to_i + attack[:damage_bonus]).to_s : '-')
             text_box damage, at: [485, 629 - (index * 36)], width: 35, height: 14, align: :center
-            text_box attack[:damage_type].first(3), at: [520, 629 - (index * 36)], width: 30, height: 14, align: :center
+            text_box ::Daggerheart::Character.ranges.dig(attack[:range], 'shortName', 'en').to_s, at: [520, 629 - (index * 36)], width: 30, height: 14, align: :center
+
+            tags = attack[:tags].values
+            tags.unshift(I18n.t('services.sheets_context.ready_to_use')) if attack[:ready_to_use]
+            text_box tags.join(' / '), at: [327, 612 - (index * 36)], width: 200, height: 14
           end
 
           font_size 10
@@ -96,9 +100,28 @@ module SheetsContext
           text_box I18n.t('services.sheets_context.daggerheart.major'), at: [115, 621], width: 60, align: :center
           text_box I18n.t('services.sheets_context.daggerheart.severe'), at: [210, 621], width: 60, align: :center
 
+          start_new_page
+
+          text_box I18n.t('services.sheets_context.equipment'), at: [210, 818], width: 175, align: :center
+
+          font_size 4
+          fill_color '444444'
+          text_box I18n.t('services.sheets_context.count'), at: [242, 726], width: 40, height: 10, align: :center
+          text_box I18n.t('services.sheets_context.count'), at: [509, 784], width: 40, height: 10, align: :center
+
+          font_size 12
+          fill_color '000000'
+          character.parent.items.includes(:item)
+            .to_a
+            .sort_by { |item| item.item.name[I18n.locale.to_s] }
+            .each_with_index do |item, index|
+              text_box item.item.name[I18n.locale.to_s], at: [52, 716 - (index * 28)], width: 140, height: 14
+              text_box item.states.values.sum.to_s, at: [242, 716 - (index * 28)], width: 40, height: 14, align: :center
+            end
+
           render
         end
-        # rubocop: enable Metrics/AbcSize, Metrics/MethodLength, Metrics/PerceivedComplexity, Style/NestedTernaryOperator, Metrics/CyclomaticComplexity
+        # rubocop: enable Metrics/AbcSize, Metrics/MethodLength, Metrics/PerceivedComplexity, Style/NestedTernaryOperator, Metrics/CyclomaticComplexity, Layout/LineLength
 
         private
 
