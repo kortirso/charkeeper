@@ -80,7 +80,7 @@ module SheetsContext
           fill_color '000000'
           character.attacks.sort_by { |item| item[:ready_to_use] ? 0 : 1 }.first(12).each_with_index do |attack, index|
             font_size 8
-            text_box attack[:name], at: [327, 534 - (index * 36)], width: 100, height: 14
+            formatted_text_box [{ text: attack[:name], styles: attack[:ready_to_use] ? [:bold] : [], color: attack[:ready_to_use] ? '000000' : '444444' }], at: [327, 534 - (index * 36)], width: 100, height: 14
 
             font_size 6
             text_box "#{'+' if attack[:attack_bonus].positive?}#{attack[:attack_bonus]}", at: [430, 534 - (index * 36)], width: 25, height: 14, align: :center
@@ -95,7 +95,6 @@ module SheetsContext
             # text_box attack[:damage_type], at: [520, 534 - (index * 36)], width: 30, height: 14, align: :center
 
             tags = attack[:tags].values
-            tags.unshift(I18n.t('services.sheets_context.ready_to_use')) if attack[:ready_to_use]
             text_box tags.join(' / '), at: [327, 517 - (index * 36)], width: 200, height: 14
           end
 
@@ -122,28 +121,7 @@ module SheetsContext
             fill_and_stroke_rounded_rectangle [222.5 + (index * 13), 563.5], 11, 11, 1
           end
 
-          start_new_page
-
-          font_size 10
-          fill_color '000000'
-          text_box I18n.t('services.sheets_context.equipment'), at: [210, 818], width: 175, align: :center
-
-          font_size 6
-          fill_color '444444'
-          text_box I18n.t('services.sheets_context.count'), at: [242, 726], width: 40, height: 10, align: :center
-          text_box I18n.t('services.sheets_context.count'), at: [509, 784], width: 40, height: 10, align: :center
-
-          font_size 10
-          fill_color '000000'
-          character.parent.items.includes(:item)
-            .to_a
-            .sort_by { |item| item.item.name[I18n.locale.to_s] }
-            .each_slice(25).to_a.each_with_index do |group, group_index|
-              group.each_with_index do |item, index|
-                text_box item.item.name[I18n.locale.to_s], at: [52 + (group_index * 267), 716 - (index * 28) + (group_index * 56)], width: 140, height: 14
-                text_box item.states.values.sum.to_s, at: [242 + (group_index * 267), 716 - (index * 28) + (group_index * 56)], width: 40, height: 14, align: :center
-              end
-            end
+          render_equipment_page(character)
         end
         # rubocop: enable Metrics/AbcSize, Layout/LineLength,  Metrics/MethodLength, Style/NestedTernaryOperator, Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity
       end
