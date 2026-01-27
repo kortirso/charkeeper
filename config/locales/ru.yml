@@ -37,9 +37,18 @@ ru:
       dist: ДИСТАНЦИЯ
       damage: УРОН
       trait: ТИП
-      ready_to_use: Наготове
       count: КОЛ-ВО
       equipment: СНАРЯЖЕНИЕ
+      equipments:
+        hands: В руках
+        equipment: На теле
+        backpack: В рюкзаке
+        storage: В хранилище
+      gold:
+        coins: Монеты
+        handfuls: Горсти
+        bags: Мешочки
+        chests: Сундучки
       pathfinder:
         armor_class: Класс брони
         perception: Восприятие

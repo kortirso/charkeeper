@@ -13,7 +13,7 @@ module SheetsContext
           traits_names = ::Daggerheart::Character.traits
           font_size 6
           fill_color 'FFFFFF'
-          %w[agi str fin ins pre know].each_with_index do |item, index|
+          %w[str agi fin ins pre know].each_with_index do |item, index|
             trait_name = traits_names[item].dig('name', I18n.locale.to_s)
             text_box trait_name, at: [233 + (55 * index), 736], width: 43, align: :center
           end
@@ -24,17 +24,17 @@ module SheetsContext
 
           font_size 12
           fill_color '000000'
-          %w[agi str fin ins pre know].each_with_index do |item, index|
+          %w[str agi fin ins pre know].each_with_index do |item, index|
             value = "#{'+' if character.modified_traits[item].positive?}#{character.modified_traits[item]}"
             text_box value, at: [242 + (index * 55), 718], width: 25, height: 14, align: :center
           end
 
-          text_box "+#{character.proficiency}", at: [51, 722], width: 37, height: 14, align: :center
+          text_box character.proficiency.to_s, at: [51, 722], width: 37, height: 14, align: :center
           text_box character.evasion.to_s, at: [104, 722], width: 37, height: 14, align: :center
           text_box character.armor_score.to_s, at: [157, 722], width: 37, height: 14, align: :center
 
-          text_box character.damage_thresholds['major'].to_s, at: [80, 622], width: 35, height: 14, align: :center
-          text_box character.damage_thresholds['severe'].to_s, at: [175, 622], width: 35, height: 14, align: :center
+          text_box character.damage_thresholds['major'].to_s, at: [78, 622], width: 35, height: 14, align: :center
+          text_box character.damage_thresholds['severe'].to_s, at: [173, 622], width: 35, height: 14, align: :center
 
           # armor slots
           character.armor_score.times do |index|
@@ -67,19 +67,22 @@ module SheetsContext
           fill_color '000000'
           character.attacks.sort_by { |item| item[:ready_to_use] ? 0 : 1 }.first(10).each_with_index do |attack, index|
             font_size 8
-            text_box attack[:name], at: [327, 629 - (index * 36)], width: 100, height: 14
+            formatted_text_box [{ text: attack[:name], styles: attack[:ready_to_use] ? [:bold] : [], color: attack[:ready_to_use] ? '000000' : '444444' }], at: [327, 629 - (index * 52)], width: 100, height: 14
 
             font_size 6
-            text_box "#{'+' if attack[:attack_bonus].positive?}#{attack[:attack_bonus]}", at: [430, 629 - (index * 36)], width: 25, height: 14, align: :center
-            text_box ::Daggerheart::Character.traits.dig(attack[:trait], 'shortName', I18n.locale.to_s).to_s, at: [455, 629 - (index * 36)], width: 30, height: 14, align: :center
+            text_box "#{'+' if attack[:attack_bonus].positive?}#{attack[:attack_bonus]}", at: [430, 629 - (index * 52)], width: 25, height: 14, align: :center
+            text_box ::Daggerheart::Character.traits.dig(attack[:trait], 'shortName', I18n.locale.to_s).to_s, at: [455, 629 - (index * 52)], width: 30, height: 14, align: :center
 
             damage = attack[:damage].include?('d') ? "#{attack[:damage]}#{'+' if attack[:damage_bonus].positive?}#{attack[:damage_bonus] unless attack[:damage_bonus].zero?}" : ((attack[:damage].to_i + attack[:damage_bonus]).positive? ? (attack[:damage].to_i + attack[:damage_bonus]).to_s : '-')
-            text_box damage, at: [485, 629 - (index * 36)], width: 35, height: 14, align: :center
-            text_box ::Daggerheart::Character.ranges.dig(attack[:range], 'shortName', 'en').to_s, at: [520, 629 - (index * 36)], width: 30, height: 14, align: :center
+            text_box damage, at: [485, 629 - (index * 52)], width: 35, height: 14, align: :center
+            text_box ::Daggerheart::Character.ranges.dig(attack[:range], 'shortName', 'en').to_s, at: [520, 629 - (index * 52)], width: 30, height: 14, align: :center
 
-            tags = attack[:tags].values
-            tags.unshift(I18n.t('services.sheets_context.ready_to_use')) if attack[:ready_to_use]
-            text_box tags.join(' / '), at: [327, 612 - (index * 36)], width: 200, height: 14
+            text_box attack[:tags].values.join(' / '), at: [327, 612 - (index * 52)], width: 200, height: 14
+
+            if attack[:features].any?
+              font_size 5
+              text_box attack[:features][0][I18n.locale.to_s], at: [327, 601 - (index * 52)], width: 200, height: 14
+            end
           end
 
           font_size 10
@@ -102,26 +105,17 @@ module SheetsContext
           text_box I18n.t('services.sheets_context.daggerheart.major'), at: [115, 621], width: 60, align: :center
           text_box I18n.t('services.sheets_context.daggerheart.severe'), at: [210, 621], width: 60, align: :center
 
-          start_new_page
+          render_equipment_page(character)
 
-          text_box I18n.t('services.sheets_context.equipment'), at: [210, 818], width: 175, align: :center
+          %w[coins handfuls bags chests].each_with_index do |key, index|
+            font_size 6
+            fill_color 'FFFFFF'
+            text_box I18n.t("services.sheets_context.gold.#{key}"), at: [51 + (index * 59), 759], width: 48, align: :center
 
-          font_size 4
-          fill_color '444444'
-          text_box I18n.t('services.sheets_context.count'), at: [242, 726], width: 40, height: 10, align: :center
-          text_box I18n.t('services.sheets_context.count'), at: [509, 784], width: 40, height: 10, align: :center
-
-          font_size 10
-          fill_color '000000'
-          character.parent.items.includes(:item)
-            .to_a
-            .sort_by { |item| item.item.name[I18n.locale.to_s] }
-            .each_slice(25).to_a.each_with_index do |group, group_index|
-              group.each_with_index do |item, index|
-                text_box item.item.name[I18n.locale.to_s], at: [52 + (group_index * 267), 716 - (index * 28) + (group_index * 56)], width: 140, height: 14
-                text_box item.states.values.sum.to_s, at: [242 + (group_index * 267), 716 - (index * 28) + (group_index * 56)], width: 40, height: 14, align: :center
-              end
-            end
+            font_size 12
+            fill_color '000000'
+            text_box character.gold[key].to_s, at: [54 + (index * 59), 781], width: 42, height: 14, align: :center
+          end
 
           start_new_page
 

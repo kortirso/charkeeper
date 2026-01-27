@@ -37,9 +37,18 @@ en:
       dist: DISTANCE
       damage: DAMAGE
       trait: TYPE
-      ready_to_use: Ready to use
       count: COUNT
       equipment: EQUIPMENT
+      equipments:
+        hands: In hands
+        equipment: On body
+        backpack: In backpack
+        storage: In storage
+      gold:
+        coins: Coins
+        handfuls: Handfuls
+        bags: Bags
+        chests: Chests
       pathfinder:
         armor_class: Armor class
         perception: Perception

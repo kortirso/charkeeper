@@ -69,28 +69,7 @@ module SheetsContext
           text_box I18n.t('services.sheets_context.dnd.max_health').upcase, at: [110, 600], width: 70, align: :center
           text_box I18n.t('services.sheets_context.dnd.temp_health').upcase, at: [190, 600], width: 70, align: :center
 
-          start_new_page
-
-          font_size 10
-          fill_color '000000'
-          text_box I18n.t('services.sheets_context.equipment'), at: [210, 818], width: 175, align: :center
-
-          font_size 4
-          fill_color '444444'
-          text_box I18n.t('services.sheets_context.count'), at: [242, 726], width: 40, height: 10, align: :center
-          text_box I18n.t('services.sheets_context.count'), at: [509, 784], width: 40, height: 10, align: :center
-
-          font_size 10
-          fill_color '000000'
-          character.parent.items.includes(:item)
-            .to_a
-            .sort_by { |item| item.item.name[I18n.locale.to_s] }
-            .each_slice(25).to_a.each_with_index do |group, group_index|
-              group.each_with_index do |item, index|
-                text_box item.item.name[I18n.locale.to_s], at: [52 + (group_index * 267), 716 - (index * 28) + (group_index * 56)], width: 140, height: 14
-                text_box item.states.values.sum.to_s, at: [242 + (group_index * 267), 716 - (index * 28) + (group_index * 56)], width: 40, height: 14, align: :center
-              end
-            end
+          render_equipment_page(character)
 
           render
         end

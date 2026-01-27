@@ -193,7 +193,8 @@ module DaggerheartCharacter
         tags: {
           item[:items_kind].tr(' ', '_') => I18n.t("tags.daggerheart.weapon.title.#{item[:items_kind].tr(' ', '_')}"),
           item[:items_info]['damage_type'] => I18n.t("tags.daggerheart.weapon.title.#{item[:items_info]['damage_type']}")
-        }
+        },
+        burden: item[:items_info]['burden']
       }]
 
       if item[:items_info]['burden'] == 2
