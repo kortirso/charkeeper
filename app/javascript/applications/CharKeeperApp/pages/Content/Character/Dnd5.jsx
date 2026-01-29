@@ -4,7 +4,7 @@ import { createWindowSize } from '@solid-primitives/resize-observer';
 
 import {
   Dnd5Abilities, Dnd5Combat, Dnd5Rest, Dnd5ClassLevels, Dnd5Professions, Dnd5Spells, Dnd5Skills, Dnd5SavingThrows,
-  Dnd5Proficiency, Dnd2024WildShapes, BeastFeatures, Dnd5Craft, Dnd5Bonuses, Dnd2024Exhaustion
+  Dnd5Proficiency, Dnd2024WildShapes, BeastFeatures, Dnd5Craft, Dnd5Bonuses, Dnd2024Exhaustion, Dnd2024Spells
 } from '../../../pages';
 import {
   CharacterNavigation, Equipment, Notes, Avatar, ContentWrapper, Feats, createDiceRoll, Conditions, Combat, Gold
@@ -201,7 +201,14 @@ export const Dnd5 = (props) => {
               </Equipment>
             </Match>
             <Match when={activeMobileTab() === 'spells'}>
-              <Dnd5Spells character={character()} openDiceRoll={openDiceRoll} onReplaceCharacter={props.onReplaceCharacter} />
+              <Show
+                when={character().provider === 'dnd5'}
+                fallback={
+                  <Dnd2024Spells character={character()} openDiceRoll={openDiceRoll} onReplaceCharacter={props.onReplaceCharacter} />
+                }
+              >
+                <Dnd5Spells character={character()} openDiceRoll={openDiceRoll} onReplaceCharacter={props.onReplaceCharacter} />
+              </Show>
             </Match>
             <Match when={activeMobileTab() === 'notes'}>
               <Notes />
@@ -351,7 +358,14 @@ export const Dnd5 = (props) => {
               </Equipment>
             </Match>
             <Match when={activeTab() === 'spells'}>
-              <Dnd5Spells character={character()} openDiceRoll={openDiceRoll} onReplaceCharacter={props.onReplaceCharacter} />
+              <Show
+                when={character().provider === 'dnd5'}
+                fallback={
+                  <Dnd2024Spells character={character()} openDiceRoll={openDiceRoll} onReplaceCharacter={props.onReplaceCharacter} />
+                }
+              >
+                <Dnd5Spells character={character()} openDiceRoll={openDiceRoll} onReplaceCharacter={props.onReplaceCharacter} />
+              </Show>
             </Match>
             <Match when={activeTab() === 'notes'}>
               <Notes />

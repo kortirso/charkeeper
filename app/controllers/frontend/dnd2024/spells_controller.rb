@@ -3,11 +3,14 @@
 module Frontend
   module Dnd2024
     class SpellsController < Frontend::BaseController
+      include Deps[
+        feature_requirement: 'feature_requirement'
+      ]
       include SerializeRelation
 
       def index
         serialize_relation_v2(
-          relation, ::Dnd2024::SpellSerializer, :spells, cache_options: cache_options, order_options: { key: 'name' }
+          relation, ::Dnd2024::SpellSerializer, :spells, cache_options: {}, order_options: { key: 'title' }
         )
       end
 
@@ -18,9 +21,11 @@ module Frontend
       end
 
       def relation
-        relation = ::Spell.dnd2024
-        relation = relation.where("data ->> 'level' IN (?)", (0..params[:max_level].to_i).to_a.map(&:to_s)) if params[:max_level]
-        relation
+        return [] unless feature_requirement.call(current: params[:version], initial: '0.4.5')
+
+        result = ::Dnd2024::Feat.where(origin: ::Dnd2024::Feat::SPELL_ORIGIN)
+        result = result.where("info ->> 'level' IN (?)", (0..params[:max_level].to_i).to_a.map(&:to_s)) if params[:max_level]
+        result
       end
     end
   end

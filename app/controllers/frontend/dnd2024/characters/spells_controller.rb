@@ -6,21 +6,23 @@ module Frontend
       class SpellsController < Frontend::BaseController
         include Deps[
           to_bool: 'to_bool',
-          character_spell_add: 'commands.characters_context.dnd2024.spell_add',
-          character_spell_update: 'commands.characters_context.dnd2024.spell_update'
+          add_spell: 'commands.characters_context.dnd2024.spells.add',
+          change_spell: 'commands.characters_context.dnd2024.spells.change',
+          feature_requirement: 'feature_requirement'
         ]
         include SerializeRelation
         include SerializeResource
 
         before_action :find_character
         before_action :find_spell, only: %i[create]
+        before_action :find_character_spell, only: %i[update]
 
         def index
-          serialize_relation_v2(spells, ::Dnd2024::Characters::SpellSerializer, :spells, order_options: { key: 'name' })
+          serialize_relation_v2(spells, ::Dnd2024::Characters::SpellSerializer, :spells)
         end
 
         def create
-          case character_spell_add.call(create_params.merge(character: @character, spell: @spell))
+          case add_spell.call(create_params.merge(character: @character, feat: @spell))
           in { errors: errors, errors_list: errors_list } then unprocessable_response(errors, errors_list)
           in { result: result }
             serialize_resource(result, ::Dnd2024::Characters::SpellSerializer, :spell, {}, :created)
@@ -28,14 +30,14 @@ module Frontend
         end
 
         def update
-          case character_spell_update.call(update_params.merge(character: @character))
+          case change_spell.call(update_params.merge(character_spell: @character_spell))
           in { errors: errors, errors_list: errors_list } then unprocessable_response(errors, errors_list)
           else only_head_response
           end
         end
 
         def destroy
-          character_spell = @character.spells.find_by!(spell_id: params[:id])
+          character_spell = @character.feats.find_by!(feat_id: params[:id])
           character_spell.destroy
           only_head_response
         end
@@ -47,11 +49,17 @@ module Frontend
         end
 
         def find_spell
-          @spell = ::Spell.dnd2024.find(params[:spell_id])
+          @spell = ::Dnd2024::Feat.where(origin: ::Dnd2024::Feat::SPELL_ORIGIN).find(params[:spell_id])
+        end
+
+        def find_character_spell
+          @character_spell = @character.feats.find(params[:id])
         end
 
         def spells
-          @character.spells.includes(:spell)
+          return [] unless feature_requirement.call(current: params[:version], initial: '0.4.5')
+
+          @character.feats.includes(:feat).where(feats: { origin: 6 })
         end
 
         def create_params
@@ -60,7 +68,6 @@ module Frontend
 
         def update_params
           {
-            character_spell: @character.spells.find(params[:id]),
             ready_to_use: params[:ready_to_use].nil? ? nil : to_bool.call(params[:ready_to_use]),
             notes: params[:notes]
           }.compact

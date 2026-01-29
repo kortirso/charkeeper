@@ -451,3 +451,29 @@ nav.pagy.nav a.gap {
 #pdf .pdf_splitter {
   @apply w-full h-2;
 }
+
+.dnd2024-spell {
+  @apply p-2;
+  @apply odd:bg-stone-200 dark:odd:bg-dark-dusty;
+  @apply border-b border-gray-200 dark:border-neutral-800;
+}
+
+.dnd2024-spells .dnd2024-spell:last-of-type {
+  @apply border-0;
+}
+
+.dnd2024-spell-header {
+  @apply flex items-center justify-between;
+}
+
+.dnd2024-spell-title {
+  @apply uppercase cursor-pointer;
+}
+
+.dnd2024-spell-tooltips {
+  @apply flex text-sm mt-2;
+}
+
+.spell-attribute {
+  @apply flex-1 flex justify-center items-center;
+}

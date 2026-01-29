@@ -2,15 +2,28 @@
 
 module Dnd2024
   class SpellSerializer < ApplicationSerializer
-    ATTRIBUTES = %i[name id slug level available_for].freeze
+    ATTRIBUTES = %i[
+      id slug title level school origin_values time range hit dc components effects duration damage_up concentration ritual
+    ].freeze
+
+    INFO_ATTRIBUTES = %i[level school time range hit dc components effects area duration damage_up concentration ritual].freeze
 
     attributes(*ATTRIBUTES)
 
-    delegate :level, :available_for, to: :data
-    delegate :data, to: :object
+    delegate :info, to: :object
 
-    def name
-      object.name[I18n.locale.to_s]
+    INFO_ATTRIBUTES.each do |method_name|
+      define_method(method_name) do
+        info[method_name.to_s]
+      end
+    end
+
+    def title
+      object.title[I18n.locale.to_s]
+    end
+
+    def extract_info
+      info
     end
   end
 end

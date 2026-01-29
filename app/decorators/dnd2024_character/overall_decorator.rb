@@ -34,16 +34,13 @@ module Dnd2024Character
       formatted_static_spells = __getobj__.static_spells
       return [] if formatted_static_spells.blank?
 
-      @formatted_static_spells = Dnd2024::Spell.where(slug: formatted_static_spells.keys).map do |spell|
+      @formatted_static_spells = ::Dnd2024::Feat.where(origin: 6, slug: formatted_static_spells.keys).map do |spell|
         static_spell = formatted_static_spells[spell.slug]
 
         {
-          id: spell.id,
-          slug: spell.slug,
-          name: spell.name[I18n.locale.to_s],
-          level: spell.data.level,
-          data: static_spell,
-          ready_to_use: true
+          ready_to_use: true,
+          feat_id: spell.id,
+          spell: ::Dnd2024::SpellSerializer.new.serialize(spell).merge(data: static_spell)
         }
       end
     end
