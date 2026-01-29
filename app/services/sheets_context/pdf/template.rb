@@ -51,7 +51,7 @@ module SheetsContext
         %w[hands equipment backpack storage].each do |key|
           next if column_index == 2
 
-          items.select { |item| item.states[key].positive? }.each do |item|
+          items.select { |item| item.states[key]&.positive? }.each do |item|
             next if column_index == 2
 
             font_size 8
