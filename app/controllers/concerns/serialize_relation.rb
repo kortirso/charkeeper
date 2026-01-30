@@ -26,7 +26,7 @@ module SerializeRelation
           **serialized_fields,
           context: default_context.merge(context)
         ).serialize(relation)
-        data.sort_by! { |item| item[order_options[:key]] } if order_options[:key]
+        data.sort_by! { |item| item.dig(*order_options[:key]) } if order_options[:key]
         data
       end
 

@@ -13,7 +13,7 @@ module Frontend
 
       def index
         serialize_relation_v2(
-          relation, ::Dnd2024::SpellSerializer, :spells, cache_options: {}, order_options: { key: 'title' }
+          relation, ::Dnd2024::SpellSerializer, :spells, cache_options: cache_options, order_options: { key: 'title' }
         )
       end
 
