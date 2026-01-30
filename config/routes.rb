@@ -114,7 +114,7 @@ Rails.application.routes.draw do
         resources :talents, only: %i[index create], module: 'characters'
         resources :homebrew_items, only: %i[create], module: 'characters'
       end
-      resources :spells, only: %i[index]
+      resources :spells, only: %i[index show]
     end
 
     namespace :pathfinder2 do

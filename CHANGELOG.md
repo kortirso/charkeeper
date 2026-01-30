@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Modified
 - soft deleting homebrews
+- D&D 2024 spells management
 
 ## [0.4.4] - 2026-01-22
 ### Added

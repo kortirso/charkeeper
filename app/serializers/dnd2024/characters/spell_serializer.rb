@@ -3,31 +3,22 @@
 module Dnd2024
   module Characters
     class SpellSerializer < ApplicationSerializer
-      ATTRIBUTES = %i[name id ready_to_use prepared_by spell_ability slug level spell_id notes].freeze
+      ATTRIBUTES = %i[id ready_to_use prepared_by spell_ability feat_id notes spell].freeze
 
       attributes(*ATTRIBUTES)
 
-      delegate :slug, to: :spell
-      delegate :data, :spell, to: :object
-
-      def name
-        object.spell.name[I18n.locale.to_s]
-      end
-
-      def level
-        object.spell.data.level
-      end
-
-      def ready_to_use
-        data['ready_to_use']
-      end
+      delegate :value, to: :object
 
       def prepared_by
-        data['prepared_by']
+        (value || {})['prepared_by']
       end
 
       def spell_ability
-        data['spell_ability']
+        (value || {})['spell_ability']
+      end
+
+      def spell
+        Dnd2024::SpellSerializer.new.serialize(object.feat)
       end
     end
   end

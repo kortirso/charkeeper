@@ -10,7 +10,7 @@ export const Toggle = (props) => {
 
   return (
     <div
-      class={[props.containerClassList, 'mb-2 flex flex-col'].join(' ')}
+      class={['mb-2 flex flex-col', props.containerClassList].join(' ')}
       classList={{
         'blockable': !props.noInnerPadding,
         '': props.noInnerPadding
@@ -33,7 +33,7 @@ export const Toggle = (props) => {
             'p-4 border-t border-gray-200 dark:border-gray-500': !props.noInnerPadding,
             'p-2': props.noInnerPadding
           }}
-          class="flex-1 dark:text-snow relative"
+          class="flex-1 dark:text-snow relative dark:bg-neutral-700"
         >
           {safeChildren()}
         </div>

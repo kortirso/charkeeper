@@ -40,6 +40,14 @@ export * from './Content/Character/Dnd5/Craft';
 export * from './Content/Character/Dnd5/Bonuses';
 export * from './Content/Character/Dnd5/Exhaustion';
 
+export * from './Content/Character/Dnd2024/Spells';
+export * from './Content/Character/Dnd2024/Spells/CastTime';
+export * from './Content/Character/Dnd2024/Spells/Range';
+export * from './Content/Character/Dnd2024/Spells/Attack';
+export * from './Content/Character/Dnd2024/Spells/Components';
+export * from './Content/Character/Dnd2024/Spells/Duration';
+export * from './Content/Character/Dnd2024/Spells/Effects';
+
 export * from './Content/Character/Pathfinder2';
 export * from './Content/Character/Pathfinder2/Abilities';
 export * from './Content/Character/Pathfinder2/Health';

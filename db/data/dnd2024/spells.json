@@ -15,7 +15,7 @@
     "info": {
       "level": 0,
       "school": "evocation",
-      "time": "action",
+      "time": "A",
       "range": "60,ft",
       "dc": "dex",
       "components": "v,s",
@@ -42,7 +42,7 @@
     "info": {
       "level": 0,
       "school": "conjuration",
-      "time": "action",
+      "time": "A",
       "range": "30,ft",
       "components": "v,s",
       "duration": "1,m"
@@ -64,7 +64,7 @@
     "info": {
       "level": 0,
       "school": "enchantment",
-      "time": "action",
+      "time": "A",
       "range": "10,ft",
       "dc": "wis",
       "components": "s,m",
@@ -93,7 +93,7 @@
     "info": {
       "level": 0,
       "school": "transmutation",
-      "time": "bonus_action",
+      "time": "BA",
       "range": "self",
       "components": "v,s,m",
       "duration": "1,m",
@@ -117,7 +117,7 @@
     "info": {
       "level": 0,
       "school": "abjuration",
-      "time": "action",
+      "time": "A",
       "range": "self",
       "components": "v,s",
       "concentration": true,
@@ -142,7 +142,7 @@
     "info": {
       "level": 0,
       "school": "evocation",
-      "time": "action",
+      "time": "A",
       "range": "60,ft",
       "hit": true,
       "components": "v,s",
@@ -168,7 +168,7 @@
     "info": {
       "level": 0,
       "school": "enchantment",
-      "time": "action",
+      "time": "A",
       "range": "60,ft",
       "dc": "wis",
       "components": "v",
@@ -194,7 +194,7 @@
     "info": {
       "level": 0,
       "school": "transmutation",
-      "time": "action",
+      "time": "A",
       "range": "30,ft",
       "components": "v,s",
       "duration": "instant",
@@ -217,7 +217,7 @@
     "info": {
       "level": 0,
       "school": "necromancy",
-      "time": "action",
+      "time": "A",
       "range": "touch",
       "hit": true,
       "components": "v,s",
@@ -243,7 +243,7 @@
     "info": {
       "level": 0,
       "school": "evocation",
-      "time": "action",
+      "time": "A",
       "range": "60,ft",
       "hit": true,
       "components": "v,s",
@@ -269,7 +269,7 @@
     "info": {
       "level": 0,
       "school": "illusion",
-      "time": "action",
+      "time": "A",
       "range": "30,ft",
       "components": "s,m",
       "duration": "1,m",
@@ -292,7 +292,7 @@
     "info": {
       "level": 0,
       "school": "divination",
-      "time": "action",
+      "time": "A",
       "range": "self",
       "components": "v,s,m",
       "duration": "instant",
@@ -319,7 +319,7 @@
     "info": {
       "level": 0,
       "school": "evocation",
-      "time": "action",
+      "time": "A",
       "range": "120,ft",
       "hit": true,
       "components": "v,s",
@@ -344,7 +344,7 @@
     "info": {
       "level": 0,
       "school": "divination",
-      "time": "action",
+      "time": "A",
       "range": "touch",
       "components": "v,s",
       "concentration": true,
@@ -369,7 +369,7 @@
     "info": {
       "level": 0,
       "school": "evocation",
-      "time": "action",
+      "time": "A",
       "range": "120,ft",
       "hit": true,
       "components": "v,s",
@@ -395,7 +395,7 @@
     "info": {
       "level": 0,
       "school": "evocation",
-      "time": "action",
+      "time": "A",
       "range": "120,ft",
       "components": "v,s,m",
       "concentration": true,
@@ -419,7 +419,7 @@
     "info": {
       "level": 0,
       "school": "necromancy",
-      "time": "action",
+      "time": "A",
       "range": "60,ft",
       "dc": "wis",
       "components": "v,s",
@@ -467,7 +467,7 @@
     "info": {
       "level": 0,
       "school": "evocation",
-      "time": "action",
+      "time": "A",
       "range": "self",
       "dc": "con",
       "components": "s",
@@ -494,7 +494,7 @@
     "info": {
       "level": 0,
       "school": "enchantment",
-      "time": "action",
+      "time": "A",
       "range": "60,ft",
       "dc": "int",
       "components": "v",
@@ -520,7 +520,7 @@
     "info": {
       "level": 0,
       "school": "evocation",
-      "time": "action",
+      "time": "A",
       "range": "touch",
       "components": "v,m",
       "duration": "1,h",
@@ -543,7 +543,7 @@
     "info": {
       "level": 0,
       "school": "evocation",
-      "time": "action",
+      "time": "A",
       "range": "60,ft",
       "dc": "dex",
       "components": "v,s",
@@ -569,7 +569,7 @@
     "info": {
       "level": 0,
       "school": "evocation",
-      "time": "action",
+      "time": "A",
       "range": "self",
       "dc": "con",
       "components": "v,s,m",
@@ -596,7 +596,7 @@
     "info": {
       "level": 0,
       "school": "transmutation",
-      "time": "action",
+      "time": "A",
       "range": "120,ft",
       "components": "s,m",
       "concentration": true,
@@ -620,7 +620,7 @@
     "info": {
       "level": 0,
       "school": "abjuration",
-      "time": "action",
+      "time": "A",
       "range": "touch",
       "components": "v,s",
       "concentration": true,
@@ -645,7 +645,7 @@
     "info": {
       "level": 0,
       "school": "conjuration",
-      "time": "bonus_action",
+      "time": "BA",
       "range": "self",
       "components": "v,s",
       "concentration": true,
@@ -671,7 +671,7 @@
     "info": {
       "level": 0,
       "school": "transmutation",
-      "time": "action",
+      "time": "A",
       "range": "30,ft",
       "hit": true,
       "components": "v,s,m",
@@ -697,7 +697,7 @@
     "info": {
       "level": 0,
       "school": "necromancy",
-      "time": "action",
+      "time": "A",
       "range": "15,ft",
       "components": "v,s",
       "duration": "instant",
@@ -721,7 +721,7 @@
     "info": {
       "level": 0,
       "school": "transmutation",
-      "time": "action",
+      "time": "A",
       "range": "10,ft",
       "components": "v,s",
       "duration": "1,h",
@@ -744,7 +744,7 @@
     "info": {
       "level": 0,
       "school": "evocation",
-      "time": "action",
+      "time": "A",
       "range": "120,ft",
       "hit": true,
       "components": "v,s",
@@ -770,7 +770,7 @@
     "info": {
       "level": 0,
       "school": "transmutation",
-      "time": "action",
+      "time": "A",
       "range": "30,ft",
       "components": "v",
       "duration": "1,m",
@@ -793,7 +793,7 @@
     "info": {
       "level": 0,
       "school": "evocation",
-      "time": "action",
+      "time": "A",
       "range": "touch",
       "hit": true,
       "components": "v,s",
@@ -819,7 +819,7 @@
     "info": {
       "level": 0,
       "school": "transmutation",
-      "time": "action",
+      "time": "A",
       "range": "30,ft",
       "components": "v,s",
       "duration": "instant",
@@ -842,7 +842,7 @@
     "info": {
       "level": 0,
       "school": "necromancy",
-      "time": "action",
+      "time": "A",
       "range": "30,ft",
       "hit": true,
       "components": "v,s",
@@ -868,7 +868,7 @@
     "info": {
       "level": 1,
       "school": "evocation",
-      "time": "reaction",
+      "time": "R",
       "range": "60,ft",
       "dc": "dex",
       "components": "v,s",
@@ -893,7 +893,7 @@
     "info": {
       "level": 1,
       "school": "illusion",
-      "time": "action",
+      "time": "A",
       "range": "60,ft",
       "components": "v,s,m",
       "concentration": true,
@@ -917,7 +917,7 @@
     "info": {
       "level": 1,
       "school": "enchantment",
-      "time": "action",
+      "time": "A",
       "range": "30,ft",
       "components": "v,s,m",
       "concentration": true,
@@ -942,7 +942,7 @@
     "info": {
       "level": 1,
       "school": "evocation",
-      "time": "bonus_action",
+      "time": "BA",
       "range": "self",
       "components": "v",
       "duration": "instant",
@@ -966,7 +966,7 @@
     "info": {
       "level": 1,
       "school": "transmutation",
-      "time": "bonus_action",
+      "time": "BA",
       "range": "self",
       "components": "v,s",
       "concentration": true,
@@ -991,7 +991,7 @@
     "info": {
       "level": 1,
       "school": "evocation",
-      "time": "action",
+      "time": "A",
       "range": "60,ft",
       "hit": true,
       "components": "v,s,m",
@@ -1017,7 +1017,7 @@
     "info": {
       "level": 1,
       "school": "evocation",
-      "time": "action",
+      "time": "A",
       "range": "self",
       "dc": "con",
       "components": "v,s",
@@ -1043,7 +1043,7 @@
     "info": {
       "level": 1,
       "school": "evocation",
-      "time": "action",
+      "time": "A",
       "range": "120,ft",
       "hit": true,
       "components": "v,s",
@@ -1068,7 +1068,7 @@
     "info": {
       "level": 1,
       "school": "enchantment",
-      "time": "bonus_action",
+      "time": "BA",
       "range": "30,ft",
       "dc": "wis",
       "components": "v",
@@ -1097,7 +1097,7 @@
     "info": {
       "level": 1,
       "school": "enchantment",
-      "time": "action",
+      "time": "A",
       "range": "touch",
       "components": "v,s",
       "concentration": true,
@@ -1122,7 +1122,7 @@
     "info": {
       "level": 1,
       "school": "necromancy",
-      "time": "bonus_action",
+      "time": "BA",
       "range": "self",
       "components": "v",
       "duration": "1,m",
@@ -1146,7 +1146,7 @@
     "info": {
       "level": 1,
       "school": "conjuration",
-      "time": "bonus_action",
+      "time": "BA",
       "range": "self",
       "dc": "dex",
       "components": "v",
@@ -1172,7 +1172,7 @@
     "info": {
       "level": 1,
       "school": "evocation",
-      "time": "bonus_action",
+      "time": "BA",
       "range": "self",
       "components": "v",
       "duration": "instant",
@@ -1196,7 +1196,7 @@
     "info": {
       "level": 1,
       "school": "enchantment",
-      "time": "action",
+      "time": "A",
       "range": "60,ft",
       "dc": "wis",
       "components": "v",
@@ -1206,7 +1206,7 @@
     }
   },
   {
-    "slug": "armor-of-agathys",
+    "slug": "armor_of_agathys",
     "title": {
       "en": "Armor of Agathys",
       "ru": "Доспех Агатиса"
@@ -1221,7 +1221,7 @@
     "info": {
       "level": 1,
       "school": "abjuration",
-      "time": "bonus_action",
+      "time": "BA",
       "range": "self",
       "components": "v,s,m",
       "duration": "1,h",
@@ -1230,7 +1230,7 @@
     }
   },
   {
-    "slug": "mage-armor",
+    "slug": "mage_armor",
     "title": {
       "en": "Mage Armor",
       "ru": "Доспехи мага"
@@ -1245,7 +1245,7 @@
     "info": {
       "level": 1,
       "school": "abjuration",
-      "time": "action",
+      "time": "A",
       "range": "touch",
       "components": "v,s,m",
       "duration": "8,h",
@@ -1254,7 +1254,7 @@
     }
   },
   {
-    "slug": "animal-friendship",
+    "slug": "animal_friendship",
     "title": {
       "en": "Animal Friendship",
       "ru": "Дружба с животными"
@@ -1269,7 +1269,7 @@
     "info": {
       "level": 1,
       "school": "enchantment",
-      "time": "action",
+      "time": "A",
       "range": "30,ft",
       "dc": "wis",
       "components": "v,s,m",
@@ -1279,7 +1279,7 @@
     }
   },
   {
-    "slug": "tasha-s-hideous-laughter",
+    "slug": "tasha_hideous_laughter",
     "title": {
       "en": "Tasha's Hideous Laughter",
       "ru": "Жуткий смех Таши"
@@ -1294,7 +1294,7 @@
     "info": {
       "level": 1,
       "school": "enchantment",
-      "time": "action",
+      "time": "A",
       "range": "30,ft",
       "dc": "wis",
       "components": "v,s,m",
@@ -1305,7 +1305,7 @@
     }
   },
   {
-    "slug": "protection-from-evil-and-good",
+    "slug": "protection_from_evil_and_good",
     "title": {
       "en": "Protection from Evil and Good",
       "ru": "Защита от зла и добра"
@@ -1320,7 +1320,7 @@
     "info": {
       "level": 1,
       "school": "abjuration",
-      "time": "action",
+      "time": "A",
       "range": "touch",
       "components": "v,s,m",
       "concentration": true,
@@ -1330,7 +1330,7 @@
     }
   },
   {
-    "slug": "illusory-script",
+    "slug": "illusory_script",
     "title": {
       "en": "Illusory Script",
       "ru": "Иллюзорные письмена"
@@ -1354,7 +1354,7 @@
     }
   },
   {
-    "slug": "ice-knife",
+    "slug": "ice_knife",
     "title": {
       "en": "Ice Knife",
       "ru": "Ледяной кинжал"
@@ -1369,7 +1369,7 @@
     "info": {
       "level": 1,
       "school": "conjuration",
-      "time": "action",
+      "time": "A",
       "range": "60,ft",
       "hit": true,
       "components": "v,s,m",
@@ -1379,7 +1379,7 @@
     }
   },
   {
-    "slug": "healing-word",
+    "slug": "healing_word",
     "title": {
       "en": "Healing Word",
       "ru": "Лечащее слово"
@@ -1394,17 +1394,16 @@
     "info": {
       "level": 1,
       "school": "abjuration",
-      "time": "bonus_action",
+      "time": "BA",
       "range": "60,ft",
       "components": "v",
-      "concentration": true,
       "duration": "instant",
       "effects": ["heal"],
       "source": "PHB"
     }
   },
   {
-    "slug": "cure-wounds",
+    "slug": "cure_wounds",
     "title": {
       "en": "Cure Wounds",
       "ru": "Лечение ран"
@@ -1419,7 +1418,7 @@
     "info": {
       "level": 1,
       "school": "abjuration",
-      "time": "action",
+      "time": "A",
       "range": "touch",
       "components": "v,s",
       "duration": "instant",
@@ -1428,7 +1427,7 @@
     }
   },
   {
-    "slug": "ray-of-sickness",
+    "slug": "ray_of_sickness",
     "title": {
       "en": "Ray of Sickness",
       "ru": "Луч болезни"
@@ -1443,7 +1442,7 @@
     "info": {
       "level": 1,
       "school": "necromancy",
-      "time": "action",
+      "time": "A",
       "range": "60,ft",
       "hit": true,
       "components": "v,s",
@@ -1453,7 +1452,7 @@
     }
   },
   {
-    "slug": "disguise-self",
+    "slug": "disguise_self",
     "title": {
       "en": "Disguise Self",
       "ru": "Маскировка"
@@ -1468,7 +1467,7 @@
     "info": {
       "level": 1,
       "school": "illusion",
-      "time": "action",
+      "time": "A",
       "range": "self",
       "components": "v,s",
       "duration": "1,h",
@@ -1477,7 +1476,7 @@
     }
   },
   {
-    "slug": "hunter-s-mark",
+    "slug": "hunter_mark",
     "title": {
       "en": "Hunter's Mark",
       "ru": "Метка охотника"
@@ -1492,7 +1491,7 @@
     "info": {
       "level": 1,
       "school": "divination",
-      "time": "bonus_action",
+      "time": "BA",
       "range": "90,ft",
       "components": "v",
       "concentration": true,
@@ -1502,7 +1501,7 @@
     }
   },
   {
-    "slug": "inflict-wounds",
+    "slug": "inflict_wounds",
     "title": {
       "en": "Inflict Wounds",
       "ru": "Нанесение ран"
@@ -1517,7 +1516,7 @@
     "info": {
       "level": 1,
       "school": "necromancy",
-      "time": "action",
+      "time": "A",
       "range": "touch",
       "dc": "con",
       "components": "v,s",
@@ -1527,7 +1526,7 @@
     }
   },
   {
-    "slug": "guiding-bolt",
+    "slug": "guiding_bolt",
     "title": {
       "en": "Guiding Bolt",
       "ru": "Направляющий снаряд"
@@ -1542,18 +1541,17 @@
     "info": {
       "level": 1,
       "school": "evocation",
-      "time": "action",
+      "time": "A",
       "range": "120,ft",
       "hit": true,
       "components": "v,s",
-      "concentration": true,
       "duration": "1,r",
-      "effects": ["damage,radiant,4d6", "buff"],
+      "effects": ["damage,radiant,4d6", "debuff"],
       "source": "PHB"
     }
   },
   {
-    "slug": "unseen-servant",
+    "slug": "unseen_servant",
     "title": {
       "en": "Unseen Servant",
       "ru": "Невидимый слуга"
@@ -1569,7 +1567,7 @@
       "level": 1,
       "school": "conjuration",
       "ritual": true,
-      "time": "action",
+      "time": "A",
       "range": "60,ft",
       "components": "v,s,m",
       "duration": "1,h",
@@ -1577,7 +1575,7 @@
     }
   },
   {
-    "slug": "detect-poison-and-disease",
+    "slug": "detect_poison_and_disease",
     "title": {
       "en": "Detect Poison and Disease",
       "ru": "Обнаружение болезней и яда"
@@ -1592,7 +1590,7 @@
     "info": {
       "level": 1,
       "school": "divination",
-      "time": "action",
+      "time": "A",
       "range": "self",
       "components": "v,s,m",
       "concentration": true,
@@ -1603,7 +1601,7 @@
     }
   },
   {
-    "slug": "detect-evil-and-good",
+    "slug": "detect_evil_and_good",
     "title": {
       "en": "Detect Evil and Good",
       "ru": "Обнаружение добра и зла"
@@ -1618,7 +1616,7 @@
     "info": {
       "level": 1,
       "school": "divination",
-      "time": "action",
+      "time": "A",
       "range": "self",
       "components": "v,s",
       "concentration": true,
@@ -1628,7 +1626,7 @@
     }
   },
   {
-    "slug": "detect-magic",
+    "slug": "detect_magic",
     "title": {
       "en": "Detect Magic",
       "ru": "Обнаружение магии"
@@ -1643,7 +1641,7 @@
     "info": {
       "level": 1,
       "school": "divination",
-      "time": "action",
+      "time": "A",
       "range": "self",
       "components": "v,s",
       "concentration": true,
@@ -1653,7 +1651,7 @@
     }
   },
   {
-    "slug": "burning-hands",
+    "slug": "burning_hands",
     "title": {
       "en": "Burning Hands",
       "ru": "Огненные ладони"
@@ -1668,7 +1666,7 @@
     "info": {
       "level": 1,
       "school": "evocation",
-      "time": "action",
+      "time": "A",
       "range": "self",
       "dc": "dex",
       "components": "v,s",
@@ -1679,7 +1677,7 @@
     }
   },
   {
-    "slug": "faerie-fire",
+    "slug": "faerie_fire",
     "title": {
       "en": "Faerie Fire",
       "ru": "Огонь фей"
@@ -1694,7 +1692,7 @@
     "info": {
       "level": 1,
       "school": "evocation",
-      "time": "action",
+      "time": "A",
       "range": "60,ft",
       "dc": "dex",
       "components": "v",
@@ -1745,7 +1743,7 @@
     "info": {
       "level": 1,
       "school": "conjuration",
-      "time": "action",
+      "time": "A",
       "range": "90,ft",
       "dc": "str",
       "components": "v,s",
@@ -1756,7 +1754,7 @@
     }
   },
   {
-    "slug": "ensnaring-strike",
+    "slug": "ensnaring_strike",
     "title": {
       "en": "Ensnaring Strike",
       "ru": "Опутывающий удар"
@@ -1771,7 +1769,7 @@
     "info": {
       "level": 1,
       "school": "conjuration",
-      "time": "bonus_action",
+      "time": "BA",
       "range": "self",
       "dc": "str",
       "components": "v",
@@ -1782,7 +1780,7 @@
     }
   },
   {
-    "slug": "charm-person",
+    "slug": "charm_person",
     "title": {
       "en": "Charm Person",
       "ru": "Очарование личности"
@@ -1797,7 +1795,7 @@
     "info": {
       "level": 1,
       "school": "enchantment",
-      "time": "action",
+      "time": "A",
       "range": "30,ft",
       "dc": "wis",
       "components": "v,s",
@@ -1807,7 +1805,7 @@
     }
   },
   {
-    "slug": "purify-food-and-drink",
+    "slug": "purify_food_and_drink",
     "title": {
       "en": "Purify Food and Drink",
       "ru": "Очищение пищи и питья"
@@ -1822,7 +1820,7 @@
     "info": {
       "level": 1,
       "school": "transmutation",
-      "time": "action",
+      "time": "A",
       "range": "10,ft",
       "components": "v,s",
       "duration": "instant",
@@ -1831,7 +1829,7 @@
     }
   },
   {
-    "slug": "feather-fall",
+    "slug": "feather_fall",
     "title": {
       "en": "Feather Fall",
       "ru": "Падение пёрышком"
@@ -1846,7 +1844,7 @@
     "info": {
       "level": 1,
       "school": "transmutation",
-      "time": "reaction",
+      "time": "R",
       "range": "60,ft",
       "components": "v,m",
       "duration": "1,m",
@@ -1855,7 +1853,7 @@
     }
   },
   {
-    "slug": "searing-smite",
+    "slug": "searing_smite",
     "title": {
       "en": "Searing Smite",
       "ru": "Палящая кара"
@@ -1870,7 +1868,7 @@
     "info": {
       "level": 1,
       "school": "evocation",
-      "time": "bonus_action",
+      "time": "BA",
       "range": "self",
       "components": "v",
       "concentration": true,
@@ -1880,7 +1878,7 @@
     }
   },
   {
-    "slug": "find-familiar",
+    "slug": "find_familiar",
     "title": {
       "en": "Find Familiar",
       "ru": "Поиск фамильяра"
@@ -1904,7 +1902,7 @@
     }
   },
   {
-    "slug": "comprehend-languages",
+    "slug": "comprehend_languages",
     "title": {
       "en": "Comprehend Languages",
       "ru": "Понимание языков"
@@ -1944,7 +1942,7 @@
     "info": {
       "level": 1,
       "school": "enchantment",
-      "time": "action",
+      "time": "A",
       "range": "30,ft",
       "dc": "cha",
       "components": "v,s,m",
@@ -1955,7 +1953,7 @@
     }
   },
   {
-    "slug": "expeditious-retreat",
+    "slug": "expeditious_retreat",
     "title": {
       "en": "Expeditious Retreat",
       "ru": "Поспешное отступление"
@@ -1970,7 +1968,7 @@
     "info": {
       "level": 1,
       "school": "transmutation",
-      "time": "bonus_action",
+      "time": "BA",
       "range": "self",
       "components": "v,s",
       "concentration": true,
@@ -1995,7 +1993,7 @@
     "info": {
       "level": 1,
       "school": "enchantment",
-      "time": "action",
+      "time": "A",
       "range": "60,ft",
       "dc": "wis",
       "components": "v",
@@ -2020,7 +2018,7 @@
     "info": {
       "level": 1,
       "school": "transmutation",
-      "time": "bonus_action",
+      "time": "BA",
       "range": "touch",
       "components": "v,s,m",
       "duration": "1,m",
@@ -2029,7 +2027,7 @@
     }
   },
   {
-    "slug": "false-life",
+    "slug": "false_life",
     "title": {
       "en": "False Life",
       "ru": "Псевдожизнь"
@@ -2044,7 +2042,7 @@
     "info": {
       "level": 1,
       "school": "necromancy",
-      "time": "action",
+      "time": "A",
       "range": "self",
       "components": "v,s,m",
       "duration": "instant",
@@ -2053,7 +2051,7 @@
     }
   },
   {
-    "slug": "speak-with-animals",
+    "slug": "speak_with_animals",
     "title": {
       "en": "Speak with Animals",
       "ru": "Разговор с животными"
@@ -2068,7 +2066,7 @@
     "info": {
       "level": 1,
       "school": "divination",
-      "time": "action",
+      "time": "A",
       "range": "self",
       "components": "v,s",
       "duration": "10,m",
@@ -2078,7 +2076,7 @@
     }
   },
   {
-    "slug": "arms-of-hadar",
+    "slug": "arms_of_hadar",
     "title": {
       "en": "Arms of Hadar",
       "ru": "Руки Хадара"
@@ -2093,7 +2091,7 @@
     "info": {
       "level": 1,
       "school": "conjuration",
-      "time": "action",
+      "time": "A",
       "range": "self",
       "dc": "str",
       "components": "v",
@@ -2104,7 +2102,7 @@
     }
   },
   {
-    "slug": "color-spray",
+    "slug": "color_spray",
     "title": {
       "en": "Color Spray",
       "ru": "Сверкающие брызги"
@@ -2119,7 +2117,7 @@
     "info": {
       "level": 1,
       "school": "illusion",
-      "time": "action",
+      "time": "A",
       "range": "self",
       "dc": "con",
       "components": "v,s,m",
@@ -2145,7 +2143,7 @@
     "info": {
       "level": 1,
       "school": "enchantment",
-      "time": "bonus_action",
+      "time": "BA",
       "range": "90,ft",
       "components": "v,s,m",
       "concentration": true,
@@ -2193,7 +2191,7 @@
     "info": {
       "level": 1,
       "school": "conjuration",
-      "time": "action",
+      "time": "A",
       "range": "60,ft",
       "components": "v,s,m",
       "duration": "1,m",
@@ -2216,7 +2214,7 @@
     "info": {
       "level": 1,
       "school": "transmutation",
-      "time": "action",
+      "time": "A",
       "range": "touch",
       "components": "v,s,m",
       "duration": "1,h",
@@ -2225,7 +2223,7 @@
     }
   },
   {
-    "slug": "create-or-destroy-water",
+    "slug": "create_or_destroy_water",
     "title": {
       "en": "Create or Destroy Water",
       "ru": "Сотворение или уничтожение воды"
@@ -2240,7 +2238,7 @@
     "info": {
       "level": 1,
       "school": "transmutation",
-      "time": "action",
+      "time": "A",
       "range": "30,ft",
       "components": "v,s,m",
       "duration": "instant",
@@ -2248,7 +2246,7 @@
     }
   },
   {
-    "slug": "tenser-s-floating-disk",
+    "slug": "tenser_floating_disk",
     "title": {
       "en": "Tenser`s Floating Disk",
       "ru": "Тензеров парящий диск"
@@ -2263,7 +2261,7 @@
     "info": {
       "level": 1,
       "school": "conjuration",
-      "time": "action",
+      "time": "A",
       "range": "30,ft",
       "components": "v,s,m",
       "concentration": true,
@@ -2273,7 +2271,7 @@
     }
   },
   {
-    "slug": "fog-cloud",
+    "slug": "fog_cloud",
     "title": {
       "en": "Fog Cloud",
       "ru": "Туманное облако"
@@ -2288,7 +2286,7 @@
     "info": {
       "level": 1,
       "school": "conjuration",
-      "time": "action",
+      "time": "A",
       "range": "120,ft",
       "components": "v,s",
       "concentration": true,
@@ -2312,7 +2310,7 @@
     "info": {
       "level": 1,
       "school": "abjuration",
-      "time": "bonus_action",
+      "time": "BA",
       "range": "30,ft",
       "components": "v,s,m",
       "duration": "1,m",
@@ -2336,7 +2334,7 @@
     "info": {
       "level": 1,
       "school": "enchantment",
-      "time": "action",
+      "time": "A",
       "range": "60,ft",
       "dc": "wis",
       "components": "v,s,m",
@@ -2348,7 +2346,7 @@
     }
   },
   {
-    "slug": "chromatic-orb",
+    "slug": "chromatic_orb",
     "title": {
       "en": "Chromatic Orb",
       "ru": "Цветной шарик"
@@ -2363,7 +2361,7 @@
     "info": {
       "level": 1,
       "school": "evocation",
-      "time": "action",
+      "time": "A",
       "range": "90,ft",
       "hit": true,
       "components": "v,s,m",
@@ -2388,7 +2386,7 @@
     "info": {
       "level": 1,
       "school": "conjuration",
-      "time": "action",
+      "time": "A",
       "range": "self",
       "components": "v,s,m",
       "duration": "24,h",
@@ -2411,7 +2409,7 @@
     "info": {
       "level": 1,
       "school": "abjuration",
-      "time": "reaction",
+      "time": "R",
       "range": "self",
       "components": "v,s",
       "duration": "1,r",
@@ -2420,7 +2418,7 @@
     }
   },
   {
-    "slug": "shield-of-faith",
+    "slug": "shield_of_faith",
     "title": {
       "en": "Shield of Faith",
       "ru": "Щит веры"
@@ -2435,7 +2433,7 @@
     "info": {
       "level": 1,
       "school": "abjuration",
-      "time": "bonus_action",
+      "time": "BA",
       "range": "60,ft",
       "components": "v,s,m",
       "concentration": true,
@@ -2445,7 +2443,7 @@
     }
   },
   {
-    "slug": "arcane-vigor",
+    "slug": "arcane_vigor",
     "title": {
       "en": "Arcane Vigor",
       "ru": "Арканная регенерация"
@@ -2460,7 +2458,7 @@
     "info": {
       "level": 2,
       "school": "abjuration",
-      "time": "bonus_action",
+      "time": "BA",
       "range": "self",
       "components": "v,s",
       "duration": "instant",
@@ -2469,7 +2467,7 @@
     }
   },
   {
-    "slug": "pass-without-trace",
+    "slug": "pass_without_trace",
     "title": {
       "en": "Pass without Trace",
       "ru": "Бесследное передвижение"
@@ -2484,7 +2482,7 @@
     "info": {
       "level": 2,
       "school": "abjuration",
-      "time": "action",
+      "time": "A",
       "range": "self",
       "components": "v,s,m",
       "concentration": true,
@@ -2495,7 +2493,7 @@
     }
   },
   {
-    "slug": "spiritual-weapon",
+    "slug": "spiritual_weapon",
     "title": {
       "en": "Spiritual Weapon",
       "ru": "Божественное оружие"
@@ -2510,7 +2508,7 @@
     "info": {
       "level": 2,
       "school": "evocation",
-      "time": "bonus_action",
+      "time": "BA",
       "range": "60,ft",
       "hit": true,
       "components": "v,s",
@@ -2521,7 +2519,7 @@
     }
   },
   {
-    "slug": "continual-flame",
+    "slug": "continual_flame",
     "title": {
       "en": "Continual Flame",
       "ru": "Вечный огонь"
@@ -2536,15 +2534,14 @@
     "info": {
       "level": 2,
       "school": "evocation",
-      "time": "action",
+      "time": "A",
       "range": "touch",
       "components": "v,s,m",
-      "duration": "none",
       "source": "PHB"
     }
   },
   {
-    "slug": "see-invisibility",
+    "slug": "see_invisibility",
     "title": {
       "en": "See Invisibility",
       "ru": "Видение невидимого"
@@ -2559,7 +2556,7 @@
     "info": {
       "level": 2,
       "school": "divination",
-      "time": "action",
+      "time": "A",
       "range": "self",
       "components": "v,s,m",
       "duration": "1,h",
@@ -2583,7 +2580,7 @@
     "info": {
       "level": 2,
       "school": "enchantment",
-      "time": "action",
+      "time": "A",
       "range": "30,ft",
       "dc": "wis",
       "components": "v,s,m",
@@ -2594,7 +2591,7 @@
     }
   },
   {
-    "slug": "magic-mouth",
+    "slug": "magic_mouth",
     "title": {
       "en": "Magic Mouth",
       "ru": "Волшебные уста"
@@ -2612,12 +2609,11 @@
       "time": "1,m",
       "range": "30,ft",
       "components": "v,s,m",
-      "duration": "none",
       "source": "PHB"
     }
   },
   {
-    "slug": "arcane-lock",
+    "slug": "arcane_lock",
     "title": {
       "en": "Arcane Lock",
       "ru": "Волшебный замок"
@@ -2632,15 +2628,14 @@
     "info": {
       "level": 2,
       "school": "abjuration",
-      "time": "action",
+      "time": "A",
       "range": "touch",
       "components": "v,s,m",
-      "duration": "none",
       "source": "PHB"
     }
   },
   {
-    "slug": "phantasmal-force",
+    "slug": "phantasmal_force",
     "title": {
       "en": "Phantasmal Force",
       "ru": "Воображаемая сила"
@@ -2655,7 +2650,7 @@
     "info": {
       "level": 2,
       "school": "illusion",
-      "time": "action",
+      "time": "A",
       "range": "60,ft",
       "dc": "int",
       "components": "v,s,m",
@@ -2688,7 +2683,7 @@
     }
   },
   {
-    "slug": "blindness-deafness",
+    "slug": "blindness_deafness",
     "title": {
       "en": "Blindness/Deafness",
       "ru": "Глухота/слепота"
@@ -2703,7 +2698,7 @@
     "info": {
       "level": 2,
       "school": "transmutation",
-      "time": "action",
+      "time": "A",
       "range": "120,ft",
       "dc": "con",
       "components": "v",
@@ -2713,7 +2708,7 @@
     }
   },
   {
-    "slug": "flame-blade",
+    "slug": "flame_blade",
     "title": {
       "en": "Flame Blade",
       "ru": "Горящий клинок"
@@ -2728,7 +2723,7 @@
     "info": {
       "level": 2,
       "school": "evocation",
-      "time": "bonus_action",
+      "time": "BA",
       "range": "self",
       "hit": true,
       "components": "v,s,m",
@@ -2754,7 +2749,7 @@
     "info": {
       "level": 2,
       "school": "evocation",
-      "time": "action",
+      "time": "A",
       "range": "60,ft",
       "dc": "con",
       "components": "v,s,m",
@@ -2780,7 +2775,7 @@
     "info": {
       "level": 2,
       "school": "transmutation",
-      "time": "bonus_action",
+      "time": "BA",
       "range": "touch",
       "components": "v,s,m",
       "duration": "1,h",
@@ -2789,7 +2784,7 @@
     }
   },
   {
-    "slug": "dragon-s-breath",
+    "slug": "dragon_breath",
     "title": {
       "en": "Dragon's Breath",
       "ru": "Дыхание дракона"
@@ -2804,7 +2799,7 @@
     "info": {
       "level": 2,
       "school": "transmutation",
-      "time": "bonus_action",
+      "time": "BA",
       "range": "touch",
       "components": "v,s,m",
       "duration": "1,m",
@@ -2813,7 +2808,7 @@
     }
   },
   {
-    "slug": "beast-sense",
+    "slug": "beast_sense",
     "title": {
       "en": "Beast Sense",
       "ru": "Животные чувства"
@@ -2828,7 +2823,7 @@
     "info": {
       "level": 2,
       "school": "divination",
-      "time": "action",
+      "time": "A",
       "range": "touch",
       "components": "s",
       "concentration": true,
@@ -2838,7 +2833,7 @@
     }
   },
   {
-    "slug": "cordon-of-arrows",
+    "slug": "cordon_of_arrows",
     "title": {
       "en": "Cordon of Arrows",
       "ru": "Завеса стрел"
@@ -2853,7 +2848,7 @@
     "info": {
       "level": 2,
       "school": "transmutation",
-      "time": "action",
+      "time": "A",
       "range": "touch",
       "components": "v,s,m",
       "duration": "8,h",
@@ -2861,7 +2856,7 @@
     }
   },
   {
-    "slug": "protection-from-poison",
+    "slug": "protection_from_poison",
     "title": {
       "en": "Protection from Poison",
       "ru": "Защита от яда"
@@ -2876,7 +2871,7 @@
     "info": {
       "level": 2,
       "school": "abjuration",
-      "time": "action",
+      "time": "A",
       "range": "touch",
       "components": "v,s",
       "duration": "1,h",
@@ -2885,7 +2880,7 @@
     }
   },
   {
-    "slug": "crown-of-madness",
+    "slug": "crown_of_madness",
     "title": {
       "en": "Crown of Madness",
       "ru": "Корона безумия"
@@ -2900,7 +2895,7 @@
     "info": {
       "level": 2,
       "school": "enchantment",
-      "time": "action",
+      "time": "A",
       "range": "120,ft",
       "dc": "wis",
       "components": "v,s",
@@ -2926,7 +2921,7 @@
     "info": {
       "level": 2,
       "school": "transmutation",
-      "time": "action",
+      "time": "A",
       "range": "60,ft",
       "dc": "con",
       "components": "v,s,m",
@@ -2952,7 +2947,7 @@
     "info": {
       "level": 2,
       "school": "evocation",
-      "time": "action",
+      "time": "A",
       "range": "120,ft",
       "dc": "con",
       "components": "v,s,m",
@@ -2964,7 +2959,7 @@
     }
   },
   {
-    "slug": "ray-of-enfeeblement",
+    "slug": "ray_of_enfeeblement",
     "title": {
       "en": "Ray of Enfeeblement",
       "ru": "Луч слабости"
@@ -2979,7 +2974,7 @@
     "info": {
       "level": 2,
       "school": "necromancy",
-      "time": "action",
+      "time": "A",
       "range": "60,ft",
       "dc": "con",
       "components": "v,s",
@@ -2990,7 +2985,7 @@
     }
   },
   {
-    "slug": "magic-weapon",
+    "slug": "magic_weapon",
     "title": {
       "en": "Magic Weapon",
       "ru": "Магическое оружие"
@@ -3005,7 +3000,7 @@
     "info": {
       "level": 2,
       "school": "transmutation",
-      "time": "bonus_action",
+      "time": "BA",
       "range": "touch",
       "components": "v,s",
       "duration": "1,h",
@@ -3014,7 +3009,7 @@
     }
   },
   {
-    "slug": "lesser-restoration",
+    "slug": "lesser_restoration",
     "title": {
       "en": "Lesser Restoration",
       "ru": "Малое восстановление"
@@ -3029,7 +3024,7 @@
     "info": {
       "level": 2,
       "school": "abjuration",
-      "time": "bonus_action",
+      "time": "BA",
       "range": "touch",
       "components": "v,s",
       "duration": "instant",
@@ -3038,7 +3033,7 @@
     }
   },
   {
-    "slug": "melf-s-acid-arrow",
+    "slug": "melf_acid_arrow",
     "title": {
       "en": "Melf's Acid Arrow",
       "ru": "Мельфова кислотная стрела"
@@ -3053,7 +3048,7 @@
     "info": {
       "level": 2,
       "school": "evocation",
-      "time": "action",
+      "time": "A",
       "range": "90,ft",
       "hit": true,
       "components": "v,s,m",
@@ -3063,7 +3058,7 @@
     }
   },
   {
-    "slug": "prayer-of-healing",
+    "slug": "prayer_of_healing",
     "title": {
       "en": "Prayer of Healing",
       "ru": "Молебен лечения"
@@ -3102,7 +3097,7 @@
     "info": {
       "level": 2,
       "school": "illusion",
-      "time": "action",
+      "time": "A",
       "range": "touch",
       "components": "v,s,m",
       "concentration": true,
@@ -3112,7 +3107,7 @@
     }
   },
   {
-    "slug": "gentle-repose",
+    "slug": "gentle_repose",
     "title": {
       "en": "Gentle Repose",
       "ru": "Нетленные останки"
@@ -3127,7 +3122,7 @@
     "info": {
       "level": 2,
       "school": "necromancy",
-      "time": "action",
+      "time": "A",
       "range": "touch",
       "components": "v,s,m",
       "duration": "10,d",
@@ -3136,7 +3131,7 @@
     }
   },
   {
-    "slug": "nystul-s-magic-aura",
+    "slug": "nystul_magic_aura",
     "title": {
       "en": "Nystul's Magic Aura",
       "ru": "Нистулова ложная магия"
@@ -3151,7 +3146,7 @@
     "info": {
       "level": 2,
       "school": "illusion",
-      "time": "action",
+      "time": "A",
       "range": "touch",
       "components": "v,s,m",
       "duration": "24,h",
@@ -3160,7 +3155,7 @@
     }
   },
   {
-    "slug": "cloud-of-daggers",
+    "slug": "cloud_of_daggers",
     "title": {
       "en": "Cloud of Daggers",
       "ru": "Облако кинжалов"
@@ -3175,7 +3170,7 @@
     "info": {
       "level": 2,
       "school": "conjuration",
-      "time": "action",
+      "time": "A",
       "range": "60,ft",
       "components": "v,s,m",
       "duration": "1,m",
@@ -3185,7 +3180,7 @@
     }
   },
   {
-    "slug": "zone-of-truth",
+    "slug": "zone_of_truth",
     "title": {
       "en": "Zone of Truth",
       "ru": "Область истины"
@@ -3200,7 +3195,7 @@
     "info": {
       "level": 2,
       "school": "enchantment",
-      "time": "action",
+      "time": "A",
       "range": "60,ft",
       "dc": "cha",
       "components": "v,s",
@@ -3211,7 +3206,7 @@
     }
   },
   {
-    "slug": "detect-thoughts",
+    "slug": "detect_thoughts",
     "title": {
       "en": "Detect Thoughts",
       "ru": "Обнаружение мыслей"
@@ -3226,7 +3221,7 @@
     "info": {
       "level": 2,
       "school": "divination",
-      "time": "action",
+      "time": "A",
       "range": "self",
       "components": "v,s,m",
       "concentration": true,
@@ -3236,7 +3231,7 @@
     }
   },
   {
-    "slug": "mirror-image",
+    "slug": "mirror_image",
     "title": {
       "en": "Mirror Image",
       "ru": "Отражения"
@@ -3251,7 +3246,7 @@
     "info": {
       "level": 2,
       "school": "illusion",
-      "time": "action",
+      "time": "A",
       "range": "self",
       "components": "v,s",
       "duration": "1,m",
@@ -3260,7 +3255,7 @@
     }
   },
   {
-    "slug": "warding-bond",
+    "slug": "warding_bond",
     "title": {
       "en": "Warding Bond",
       "ru": "Охраняющая связь"
@@ -3275,7 +3270,7 @@
     "info": {
       "level": 2,
       "school": "abjuration",
-      "time": "action",
+      "time": "A",
       "range": "touch",
       "components": "v,s,m",
       "duration": "1,h",
@@ -3284,7 +3279,7 @@
     }
   },
   {
-    "slug": "scorching-ray",
+    "slug": "scorching_ray",
     "title": {
       "en": "Scorching Ray",
       "ru": "Палящий луч"
@@ -3299,7 +3294,7 @@
     "info": {
       "level": 2,
       "school": "evocation",
-      "time": "action",
+      "time": "A",
       "range": "120,ft",
       "hit": true,
       "components": "v,s",
@@ -3309,7 +3304,7 @@
     }
   },
   {
-    "slug": "spider-climb",
+    "slug": "spider_climb",
     "title": {
       "en": "Spider Climb",
       "ru": "Паук"
@@ -3324,7 +3319,7 @@
     "info": {
       "level": 2,
       "school": "transmutation",
-      "time": "action",
+      "time": "A",
       "range": "touch",
       "components": "v,s,m",
       "concentration": true,
@@ -3349,7 +3344,7 @@
     "info": {
       "level": 2,
       "school": "conjuration",
-      "time": "action",
+      "time": "A",
       "range": "60,ft",
       "components": "v,s,m",
       "concentration": true,
@@ -3373,7 +3368,7 @@
     "info": {
       "level": 2,
       "school": "abjuration",
-      "time": "action",
+      "time": "A",
       "range": "30,ft",
       "components": "v,s,m",
       "duration": "8,h",
@@ -3382,7 +3377,7 @@
     }
   },
   {
-    "slug": "locate-animals-or-plants",
+    "slug": "locate_animals_or_plants",
     "title": {
       "en": "Locate Animals or Plants",
       "ru": "Поиск животных или растений"
@@ -3397,7 +3392,7 @@
     "info": {
       "level": 2,
       "school": "divination",
-      "time": "action",
+      "time": "A",
       "range": "self",
       "components": "v,s,m",
       "duration": "instant",
@@ -3406,7 +3401,7 @@
     }
   },
   {
-    "slug": "find-traps",
+    "slug": "find_traps",
     "title": {
       "en": "Find Traps",
       "ru": "Поиск ловушек"
@@ -3421,7 +3416,7 @@
     "info": {
       "level": 2,
       "school": "divination",
-      "time": "action",
+      "time": "A",
       "range": "120,ft",
       "components": "v,s",
       "duration": "instant",
@@ -3429,7 +3424,7 @@
     }
   },
   {
-    "slug": "locate-object",
+    "slug": "locate_object",
     "title": {
       "en": "Locate Object",
       "ru": "Поиск объекта"
@@ -3444,7 +3439,7 @@
     "info": {
       "level": 2,
       "school": "divination",
-      "time": "action",
+      "time": "A",
       "range": "self",
       "components": "v,s,m",
       "concentration": true,
@@ -3454,7 +3449,7 @@
     }
   },
   {
-    "slug": "find-steed",
+    "slug": "find_steed",
     "title": {
       "en": "Find Steed",
       "ru": "Поиск скакуна"
@@ -3469,7 +3464,7 @@
     "info": {
       "level": 2,
       "school": "conjuration",
-      "time": "action",
+      "time": "A",
       "range": "30,ft",
       "components": "v,s",
       "duration": "instant",
@@ -3477,7 +3472,7 @@
     }
   },
   {
-    "slug": "gust-of-wind",
+    "slug": "gust_of_wind",
     "title": {
       "en": "Gust of Wind",
       "ru": "Порыв ветра"
@@ -3492,7 +3487,7 @@
     "info": {
       "level": 2,
       "school": "evocation",
-      "time": "action",
+      "time": "A",
       "range": "self",
       "dc": "str",
       "components": "v,s,m",
@@ -3502,7 +3497,7 @@
     }
   },
   {
-    "slug": "animal-messenger",
+    "slug": "animal_messenger",
     "title": {
       "en": "Animal Messenger",
       "ru": "Почтовое животное"
@@ -3517,7 +3512,7 @@
     "info": {
       "level": 2,
       "school": "enchantment",
-      "time": "action",
+      "time": "A",
       "range": "30,ft",
       "dc": "cha",
       "components": "v,s,m",
@@ -3527,7 +3522,7 @@
     }
   },
   {
-    "slug": "summon-beast",
+    "slug": "summon_beast",
     "title": {
       "en": "Summon Beast",
       "ru": "Призыв духа зверя"
@@ -3542,7 +3537,7 @@
     "info": {
       "level": 2,
       "school": "conjuration",
-      "time": "action",
+      "time": "A",
       "range": "90,ft",
       "components": "v,s,m",
       "concentration": true,
@@ -3551,7 +3546,7 @@
     }
   },
   {
-    "slug": "mind-spike",
+    "slug": "mind_spike",
     "title": {
       "en": "Mind Spike",
       "ru": "Пронзание разума"
@@ -3566,7 +3561,7 @@
     "info": {
       "level": 2,
       "school": "divination",
-      "time": "action",
+      "time": "A",
       "range": "120,ft",
       "dc": "wis",
       "components": "s",
@@ -3577,7 +3572,7 @@
     }
   },
   {
-    "slug": "flaming-sphere",
+    "slug": "flaming_sphere",
     "title": {
       "en": "Flaming Sphere",
       "ru": "Пылающий шар"
@@ -3592,7 +3587,7 @@
     "info": {
       "level": 2,
       "school": "conjuration",
-      "time": "action",
+      "time": "A",
       "range": "60,ft",
       "dc": "dex",
       "components": "v,s,m",
@@ -3618,7 +3613,7 @@
     "info": {
       "level": 2,
       "school": "illusion",
-      "time": "action",
+      "time": "A",
       "range": "self",
       "components": "v",
       "concentration": true,
@@ -3628,7 +3623,7 @@
     }
   },
   {
-    "slug": "heat-metal",
+    "slug": "heat_metal",
     "title": {
       "en": "Heat Metal",
       "ru": "Раскалённый металл"
@@ -3643,7 +3638,7 @@
     "info": {
       "level": 2,
       "school": "transmutation",
-      "time": "action",
+      "time": "A",
       "range": "60,ft",
       "dc": "con",
       "components": "v,s,m",
@@ -3669,7 +3664,7 @@
     "info": {
       "level": 2,
       "school": "enchantment",
-      "time": "action",
+      "time": "A",
       "range": "60,ft",
       "dc": "wis",
       "components": "v,s",
@@ -3680,7 +3675,7 @@
     }
   },
   {
-    "slug": "shining-smite",
+    "slug": "shining_smite",
     "title": {
       "en": "Shining Smite",
       "ru": "Сияющая кара"
@@ -3695,7 +3690,7 @@
     "info": {
       "level": 2,
       "school": "transmutation",
-      "time": "bonus_action",
+      "time": "BA",
       "range": "self",
       "components": "v",
       "concentration": true,
@@ -3705,7 +3700,7 @@
     }
   },
   {
-    "slug": "alter-self",
+    "slug": "alter_self",
     "title": {
       "en": "Alter Self",
       "ru": "Смена обличья"
@@ -3720,7 +3715,7 @@
     "info": {
       "level": 2,
       "school": "transmutation",
-      "time": "action",
+      "time": "A",
       "range": "self",
       "components": "v,s",
       "concentration": true,
@@ -3745,7 +3740,7 @@
     "info": {
       "level": 2,
       "school": "transmutation",
-      "time": "action",
+      "time": "A",
       "range": "60,ft",
       "components": "v",
       "duration": "instant",
@@ -3768,7 +3763,7 @@
     "info": {
       "level": 2,
       "school": "transmutation",
-      "time": "action",
+      "time": "A",
       "range": "touch",
       "components": "v,s,m",
       "duration": "8,h",
@@ -3792,7 +3787,7 @@
     "info": {
       "level": 2,
       "school": "illusion",
-      "time": "action",
+      "time": "A",
       "range": "120,ft",
       "components": "v,s",
       "concentration": true,
@@ -3802,7 +3797,7 @@
     }
   },
   {
-    "slug": "rope-trick",
+    "slug": "rope_trick",
     "title": {
       "en": "Rope Trick",
       "ru": "Трюк с верёвкой"
@@ -3817,7 +3812,7 @@
     "info": {
       "level": 2,
       "school": "transmutation",
-      "time": "action",
+      "time": "A",
       "range": "touch",
       "components": "v,s,m",
       "duration": "1,h",
@@ -3825,7 +3820,7 @@
     }
   },
   {
-    "slug": "misty-step",
+    "slug": "misty_step",
     "title": {
       "en": "Misty Step",
       "ru": "Туманный шаг"
@@ -3840,7 +3835,7 @@
     "info": {
       "level": 2,
       "school": "conjuration",
-      "time": "bonus_action",
+      "time": "BA",
       "range": "self",
       "components": "v",
       "duration": "instant",
@@ -3863,7 +3858,7 @@
     "info": {
       "level": 2,
       "school": "evocation",
-      "time": "action",
+      "time": "A",
       "range": "60,ft",
       "components": "v,s,m",
       "concentration": true,
@@ -3872,7 +3867,7 @@
     }
   },
   {
-    "slug": "enlarge-reduce",
+    "slug": "enlarge_reduce",
     "title": {
       "en": "Enlarge/Reduce",
       "ru": "Увеличение/уменьшение"
@@ -3887,7 +3882,7 @@
     "info": {
       "level": 2,
       "school": "transmutation",
-      "time": "action",
+      "time": "A",
       "range": "30,ft",
       "dc": "con",
       "components": "v,s,m",
@@ -3898,7 +3893,7 @@
     }
   },
   {
-    "slug": "hold-person",
+    "slug": "hold_person",
     "title": {
       "en": "Hold Person",
       "ru": "Удержание личности"
@@ -3913,7 +3908,7 @@
     "info": {
       "level": 2,
       "school": "enchantment",
-      "time": "action",
+      "time": "A",
       "range": "60,ft",
       "dc": "wis",
       "components": "v,s,m",
@@ -3924,7 +3919,7 @@
     }
   },
   {
-    "slug": "enhance-ability",
+    "slug": "enhance_ability",
     "title": {
       "en": "Enhance Ability",
       "ru": "Улучшение характеристики"
@@ -3939,7 +3934,7 @@
     "info": {
       "level": 2,
       "school": "transmutation",
-      "time": "action",
+      "time": "A",
       "range": "touch",
       "components": "v,s,m",
       "concentration": true,
@@ -3949,7 +3944,7 @@
     }
   },
   {
-    "slug": "calm-emotions",
+    "slug": "calm_emotions",
     "title": {
       "en": "Calm Emotions",
       "ru": "Умиротворение"
@@ -3964,7 +3959,7 @@
     "info": {
       "level": 2,
       "school": "enchantment",
-      "time": "action",
+      "time": "A",
       "range": "60,ft",
       "dc": "cha",
       "components": "v,s",
@@ -3976,7 +3971,7 @@
     }
   },
   {
-    "slug": "spike-growth",
+    "slug": "spike_growth",
     "title": {
       "en": "Spike Growth",
       "ru": "Шипастая поросль"
@@ -3991,7 +3986,7 @@
     "info": {
       "level": 2,
       "school": "transmutation",
-      "time": "action",
+      "time": "A",
       "range": "150,ft",
       "components": "v,s,m",
       "concentration": true,
@@ -4000,7 +3995,7 @@
     }
   },
   {
-    "slug": "aura-of-vitality",
+    "slug": "aura_of_vitality",
     "title": {
       "en": "Aura of Vitality",
       "ru": "Аура живучести"
@@ -4015,7 +4010,7 @@
     "info": {
       "level": 3,
       "school": "evocation",
-      "time": "action",
+      "time": "A",
       "range": "self",
       "components": "v",
       "concentration": true,
@@ -4026,7 +4021,7 @@
     }
   },
   {
-    "slug": "conjure-animals",
+    "slug": "conjure_animals",
     "title": {
       "en": "Conjure Animals",
       "ru": "Вызов животных"
@@ -4041,7 +4036,7 @@
     "info": {
       "level": 3,
       "school": "conjuration",
-      "time": "action",
+      "time": "A",
       "range": "60,ft",
       "components": "v,s",
       "concentration": true,
@@ -4051,7 +4046,7 @@
     }
   },
   {
-    "slug": "conjure-barrage",
+    "slug": "conjure_barrage",
     "title": {
       "en": "Conjure Barrage",
       "ru": "Вызов шквала снарядов"
@@ -4066,7 +4061,7 @@
     "info": {
       "level": 3,
       "school": "conjuration",
-      "time": "action",
+      "time": "A",
       "range": "self",
       "dc": "dex",
       "components": "v,s,m",
@@ -4077,7 +4072,7 @@
     }
   },
   {
-    "slug": "gaseous-form",
+    "slug": "gaseous_form",
     "title": {
       "en": "Gaseous Form",
       "ru": "Газообразная форма"
@@ -4092,7 +4087,7 @@
     "info": {
       "level": 3,
       "school": "transmutation",
-      "time": "action",
+      "time": "A",
       "range": "touch",
       "components": "v,s,m",
       "concentration": true,
@@ -4101,7 +4096,7 @@
     }
   },
   {
-    "slug": "hypnotic-pattern",
+    "slug": "hypnotic_pattern",
     "title": {
       "en": "Hypnotic Pattern",
       "ru": "Гипнотический узор"
@@ -4116,7 +4111,7 @@
     "info": {
       "level": 3,
       "school": "illusion",
-      "time": "action",
+      "time": "A",
       "range": "120,ft",
       "dc": "wis",
       "components": "v,s,m",
@@ -4128,7 +4123,7 @@
     }
   },
   {
-    "slug": "hunger-of-hadar",
+    "slug": "hunger_of_hadar",
     "title": {
       "en": "Hunger of Hadar",
       "ru": "Голод Хадара"
@@ -4143,7 +4138,7 @@
     "info": {
       "level": 3,
       "school": "conjuration",
-      "time": "action",
+      "time": "A",
       "range": "150,ft",
       "components": "v,s,m",
       "concentration": true,
@@ -4168,7 +4163,7 @@
     "info": {
       "level": 3,
       "school": "evocation",
-      "time": "action",
+      "time": "A",
       "range": "60,ft",
       "components": "v,s",
       "duration": "1,h",
@@ -4176,7 +4171,7 @@
     }
   },
   {
-    "slug": "spirit-guardians",
+    "slug": "spirit_guardians",
     "title": {
       "en": "Spirit Guardians",
       "ru": "Духовные стражи"
@@ -4191,7 +4186,7 @@
     "info": {
       "level": 3,
       "school": "conjuration",
-      "time": "action",
+      "time": "A",
       "range": "self",
       "dc": "wis",
       "components": "v,s,m",
@@ -4218,7 +4213,7 @@
     "info": {
       "level": 3,
       "school": "transmutation",
-      "time": "action",
+      "time": "A",
       "range": "120,ft",
       "dc": "wis",
       "components": "v,s,m",
@@ -4230,7 +4225,7 @@
     }
   },
   {
-    "slug": "protection-from-energy",
+    "slug": "protection_from_energy",
     "title": {
       "en": "Protection from Energy",
       "ru": "Защита от энергии"
@@ -4245,7 +4240,7 @@
     "info": {
       "level": 3,
       "school": "abjuration",
-      "time": "action",
+      "time": "A",
       "range": "touch",
       "components": "v,s",
       "concentration": true,
@@ -4255,7 +4250,7 @@
     }
   },
   {
-    "slug": "stinking-cloud",
+    "slug": "stinking_cloud",
     "title": {
       "en": "Stinking Cloud",
       "ru": "Зловонное облако"
@@ -4270,7 +4265,7 @@
     "info": {
       "level": 3,
       "school": "conjuration",
-      "time": "action",
+      "time": "A",
       "range": "90,ft",
       "dc": "con",
       "components": "v,s,m",
@@ -4297,7 +4292,7 @@
     "info": {
       "level": 3,
       "school": "abjuration",
-      "time": "reaction",
+      "time": "R",
       "range": "60,ft",
       "dc": "con",
       "components": "s",
@@ -4306,7 +4301,7 @@
     }
   },
   {
-    "slug": "leomund-s-tiny-hut",
+    "slug": "leomund_tiny_hut",
     "title": {
       "en": "Leomund's Tiny Hut",
       "ru": "Леомундова хижина"
@@ -4330,7 +4325,7 @@
     }
   },
   {
-    "slug": "magic-circle",
+    "slug": "magic_circle",
     "title": {
       "en": "Magic Circle",
       "ru": "Магический круг"
@@ -4355,7 +4350,7 @@
     }
   },
   {
-    "slug": "crusader-s-mantle",
+    "slug": "crusader_mantle",
     "title": {
       "en": "Crusader's Mantle",
       "ru": "Мантия крестоносца"
@@ -4370,7 +4365,7 @@
     "info": {
       "level": 3,
       "school": "evocation",
-      "time": "action",
+      "time": "A",
       "range": "self",
       "components": "v",
       "concentration": true,
@@ -4381,7 +4376,7 @@
     }
   },
   {
-    "slug": "beacon-of-hope",
+    "slug": "beacon_of_hope",
     "title": {
       "en": "Beacon of Hope",
       "ru": "Маяк надежды"
@@ -4396,7 +4391,7 @@
     "info": {
       "level": 3,
       "school": "abjuration",
-      "time": "action",
+      "time": "A",
       "range": "30,ft",
       "components": "v,s",
       "concentration": true,
@@ -4421,7 +4416,7 @@
     "info": {
       "level": 3,
       "school": "transmutation",
-      "time": "action",
+      "time": "A",
       "range": "self",
       "components": "v,s",
       "duration": "1,m",
@@ -4429,7 +4424,7 @@
     }
   },
   {
-    "slug": "sleet-storm",
+    "slug": "sleet_storm",
     "title": {
       "en": "Sleet Storm",
       "ru": "Метель"
@@ -4444,8 +4439,8 @@
     "info": {
       "level": 3,
       "school": "conjuration",
-      "time": "action",
-      "range": "150",
+      "time": "A",
+      "range": "150,ft",
       "concentration": true,
       "duration": "1,m",
       "components": "v,s,m",
@@ -4453,7 +4448,7 @@
     }
   },
   {
-    "slug": "mass-healing-word",
+    "slug": "mass_healing_word",
     "title": {
       "en": "Mass Healing Word",
       "ru": "Множественное лечащее слово"
@@ -4468,7 +4463,7 @@
     "info": {
       "level": 3,
       "school": "abjuration",
-      "time": "bonus_action",
+      "time": "BA",
       "range": "60,ft",
       "components": "v",
       "duration": "instant",
@@ -4477,7 +4472,7 @@
     }
   },
   {
-    "slug": "lightning-bolt",
+    "slug": "lightning_bolt",
     "title": {
       "en": "Lightning Bolt",
       "ru": "Молния"
@@ -4492,7 +4487,7 @@
     "info": {
       "level": 3,
       "school": "evocation",
-      "time": "action",
+      "time": "A",
       "range": "self",
       "dc": "dex",
       "components": "v,s,m",
@@ -4517,7 +4512,7 @@
     "info": {
       "level": 3,
       "school": "abjuration",
-      "time": "action",
+      "time": "A",
       "range": "touch",
       "components": "v,s,m",
       "duration": "8,h",
@@ -4541,7 +4536,7 @@
     "info": {
       "level": 3,
       "school": "necromancy",
-      "time": "action",
+      "time": "A",
       "range": "touch",
       "components": "v,s,m",
       "duration": "instant",
@@ -4549,7 +4544,7 @@
     }
   },
   {
-    "slug": "major-image",
+    "slug": "major_image",
     "title": {
       "en": "Major Image",
       "ru": "Образ"
@@ -4564,7 +4559,7 @@
     "info": {
       "level": 3,
       "school": "illusion",
-      "time": "action",
+      "time": "A",
       "range": "120,ft",
       "components": "v,s,m",
       "duration": "instant",
@@ -4587,7 +4582,7 @@
     "info": {
       "level": 3,
       "school": "evocation",
-      "time": "action",
+      "time": "A",
       "range": "150,ft",
       "dc": "dex",
       "components": "v,s,m",
@@ -4598,7 +4593,7 @@
     }
   },
   {
-    "slug": "animate-dead",
+    "slug": "animate_dead",
     "title": {
       "en": "Animate Dead",
       "ru": "Оживление мертвецов"
@@ -4621,7 +4616,7 @@
     }
   },
   {
-    "slug": "blinding-smite",
+    "slug": "blinding_smite",
     "title": {
       "en": "Blinding Smite",
       "ru": "Ослепляющая кара"
@@ -4636,7 +4631,7 @@
     "info": {
       "level": 3,
       "school": "evocation",
-      "time": "bonus_action",
+      "time": "BA",
       "range": "self",
       "components": "v",
       "duration": "1,m",
@@ -4645,7 +4640,7 @@
     }
   },
   {
-    "slug": "glyph-of-warding",
+    "slug": "glyph_of_warding",
     "title": {
       "en": "Glyph of Warding",
       "ru": "Охранные руны"
@@ -4664,14 +4659,13 @@
       "range": "touch",
       "dc": "dex",
       "components": "v,s,m",
-      "duration": "none",
       "effects": ["damage,5d8"],
       "area": "sphere,20",
       "source": "PHB"
     }
   },
   {
-    "slug": "water-breathing",
+    "slug": "water_breathing",
     "title": {
       "en": "Water Breathing",
       "ru": "Подводное дыхание"
@@ -4686,7 +4680,7 @@
     "info": {
       "level": 3,
       "school": "transmutation",
-      "time": "action",
+      "time": "A",
       "range": "30,ft",
       "components": "v,s,m",
       "duration": "instant",
@@ -4736,7 +4730,7 @@
     "info": {
       "level": 3,
       "school": "transmutation",
-      "time": "action",
+      "time": "A",
       "range": "touch",
       "components": "v,s,m",
       "concentration": true,
@@ -4761,7 +4755,7 @@
     "info": {
       "level": 3,
       "school": "divination",
-      "time": "action",
+      "time": "A",
       "range": "none",
       "components": "v,s,m",
       "duration": "instant",
@@ -4769,7 +4763,7 @@
     }
   },
   {
-    "slug": "phantom-steed",
+    "slug": "phantom_steed",
     "title": {
       "en": "Phantom Steed",
       "ru": "Призрачный скакун"
@@ -4792,7 +4786,7 @@
     }
   },
   {
-    "slug": "summon-undead",
+    "slug": "summon_undead",
     "title": {
       "en": "Summon Undead",
       "ru": "Призыв духа нежити"
@@ -4807,7 +4801,7 @@
     "info": {
       "level": 3,
       "school": "necromancy",
-      "time": "action",
+      "time": "A",
       "range": "90,ft",
       "components": "v,s,m",
       "concentration": true,
@@ -4816,7 +4810,7 @@
     }
   },
   {
-    "slug": "summon-fey",
+    "slug": "summon_fey",
     "title": {
       "en": "Summon Fey",
       "ru": "Призыв духа феи"
@@ -4831,7 +4825,7 @@
     "info": {
       "level": 3,
       "school": "conjuration",
-      "time": "action",
+      "time": "A",
       "range": "90,ft",
       "components": "v,s,m",
       "concentration": true,
@@ -4840,7 +4834,7 @@
     }
   },
   {
-    "slug": "call-lightning",
+    "slug": "call_lightning",
     "title": {
       "en": "Call Lightning",
       "ru": "Призыв молнии"
@@ -4855,7 +4849,7 @@
     "info": {
       "level": 3,
       "school": "conjuration",
-      "time": "action",
+      "time": "A",
       "range": "120,ft",
       "dc": "dex",
       "components": "v,s",
@@ -4867,7 +4861,7 @@
     }
   },
   {
-    "slug": "vampiric-touch",
+    "slug": "vampiric_touch",
     "title": {
       "en": "Vampiric Touch",
       "ru": "Прикосновение вампира"
@@ -4882,7 +4876,7 @@
     "info": {
       "level": 3,
       "school": "necromancy",
-      "time": "action",
+      "time": "A",
       "range": "self",
       "hit": true,
       "components": "v,s",
@@ -4893,7 +4887,7 @@
     }
   },
   {
-    "slug": "feign-death",
+    "slug": "feign_death",
     "title": {
       "en": "Feign Death",
       "ru": "Притворная смерть"
@@ -4908,7 +4902,7 @@
     "info": {
       "level": 3,
       "school": "necromancy",
-      "time": "action",
+      "time": "A",
       "range": "touch",
       "components": "v,s,m",
       "duration": "1,h",
@@ -4918,7 +4912,7 @@
     }
   },
   {
-    "slug": "bestow-curse",
+    "slug": "bestow_curse",
     "title": {
       "en": "Bestow Curse",
       "ru": "Проклятие"
@@ -4933,7 +4927,7 @@
     "info": {
       "level": 3,
       "school": "necromancy",
-      "time": "action",
+      "time": "A",
       "range": "touch",
       "dc": "wis",
       "components": "v,s",
@@ -4944,7 +4938,7 @@
     }
   },
   {
-    "slug": "speak-with-dead",
+    "slug": "speak_with_dead",
     "title": {
       "en": "Speak with Dead",
       "ru": "Разговор с мёртвыми"
@@ -4959,7 +4953,7 @@
     "info": {
       "level": 3,
       "school": "necromancy",
-      "time": "action",
+      "time": "A",
       "range": "10,ft",
       "components": "v,s,m",
       "duration": "10,m",
@@ -4967,7 +4961,7 @@
     }
   },
   {
-    "slug": "speak-with-plants",
+    "slug": "speak_with_plants",
     "title": {
       "en": "Speak with Plants",
       "ru": "Разговор с растениями"
@@ -4982,7 +4976,7 @@
     "info": {
       "level": 3,
       "school": "transmutation",
-      "time": "action",
+      "time": "A",
       "range": "self",
       "components": "v,s",
       "duration": "10,m",
@@ -4990,7 +4984,7 @@
     }
   },
   {
-    "slug": "dispel-magic",
+    "slug": "dispel_magic",
     "title": {
       "en": "Dispel Magic",
       "ru": "Рассеивание магии"
@@ -5005,7 +4999,7 @@
     "info": {
       "level": 3,
       "school": "abjuration",
-      "time": "action",
+      "time": "A",
       "range": "120,ft",
       "components": "v,s",
       "concentration": true,
@@ -5014,7 +5008,7 @@
     }
   },
   {
-    "slug": "plant-growth",
+    "slug": "plant_growth",
     "title": {
       "en": "Plant Growth",
       "ru": "Рост растений"
@@ -5029,7 +5023,7 @@
     "info": {
       "level": 3,
       "school": "transmutation",
-      "time": "action",
+      "time": "A",
       "range": "150,ft",
       "components": "v,s",
       "duration": "instant",
@@ -5037,7 +5031,7 @@
     }
   },
   {
-    "slug": "meld-into-stone",
+    "slug": "meld_into_stone",
     "title": {
       "en": "Meld Into Stone",
       "ru": "Слияние с камнем"
@@ -5052,7 +5046,7 @@
     "info": {
       "level": 3,
       "school": "transmutation",
-      "time": "action",
+      "time": "A",
       "range": "touch",
       "components": "v,s",
       "duration": "8,h",
@@ -5061,7 +5055,7 @@
     }
   },
   {
-    "slug": "remove-curse",
+    "slug": "remove_curse",
     "title": {
       "en": "Remove Curse",
       "ru": "Снятие проклятья"
@@ -5076,7 +5070,7 @@
     "info": {
       "level": 3,
       "school": "abjuration",
-      "time": "action",
+      "time": "A",
       "range": "touch",
       "components": "v,s",
       "duration": "instant",
@@ -5084,7 +5078,7 @@
     }
   },
   {
-    "slug": "create-food-and-water",
+    "slug": "create_food_and_water",
     "title": {
       "en": "Create Food and Water",
       "ru": "Сотворение пищи и воды"
@@ -5099,7 +5093,7 @@
     "info": {
       "level": 3,
       "school": "conjuration",
-      "time": "action",
+      "time": "A",
       "range": "30,ft",
       "components": "v,s",
       "duration": "instant",
@@ -5107,7 +5101,7 @@
     }
   },
   {
-    "slug": "wind-wall",
+    "slug": "wind_wall",
     "title": {
       "en": "Wind Wall",
       "ru": "Стена ветра"
@@ -5122,7 +5116,7 @@
     "info": {
       "level": 3,
       "school": "conjuration",
-      "time": "action",
+      "time": "A",
       "range": "120,ft",
       "dc": "str",
       "components": "v,s,m",
@@ -5133,7 +5127,7 @@
     }
   },
   {
-    "slug": "elemental-weapon",
+    "slug": "elemental_weapon",
     "title": {
       "en": "Elemental Weapon",
       "ru": "Стихийное оружие"
@@ -5148,7 +5142,7 @@
     "info": {
       "level": 3,
       "school": "transmutation",
-      "time": "action",
+      "time": "A",
       "range": "touch",
       "components": "v,s",
       "concentration": true,
@@ -5158,7 +5152,7 @@
     }
   },
   {
-    "slug": "lightning-arrow",
+    "slug": "lightning_arrow",
     "title": {
       "en": "Lightning Arrow",
       "ru": "Стрела-молния"
@@ -5173,7 +5167,7 @@
     "info": {
       "level": 3,
       "school": "transmutation",
-      "time": "bonus_action",
+      "time": "BA",
       "range": "self",
       "hit": true,
       "components": "v,s",
@@ -5198,7 +5192,7 @@
     "info": {
       "level": 3,
       "school": "illusion",
-      "time": "action",
+      "time": "A",
       "range": "self",
       "dc": "wis",
       "components": "v,s,m",
@@ -5225,7 +5219,7 @@
     "info": {
       "level": 3,
       "school": "transmutation",
-      "time": "action",
+      "time": "A",
       "range": "30,ft",
       "components": "v,s,m",
       "concentration": true,
@@ -5235,7 +5229,7 @@
     }
   },
   {
-    "slug": "water-walk",
+    "slug": "water_walk",
     "title": {
       "en": "Water Walk",
       "ru": "Хождение по воде"
@@ -5250,7 +5244,7 @@
     "info": {
       "level": 3,
       "school": "transmutation",
-      "time": "action",
+      "time": "A",
       "range": "30,ft",
       "components": "v,s,m",
       "duration": "1,h",
@@ -5275,17 +5269,16 @@
     "info": {
       "level": 3,
       "school": "divination",
-      "time": "ritual",
+      "time": "action",
       "range": "touch",
       "components": "v,s,m",
       "duration": "1,h",
       "effects": ["buff"],
-      "ritual": true,
       "source": "PHB"
     }
   },
   {
-    "slug": "aura-of-life",
+    "slug": "aura_of_life",
     "title": {
       "en": "Aura of Life",
       "ru": "Аура жизни"
@@ -5300,7 +5293,7 @@
     "info": {
       "level": 4,
       "school": "abjuration",
-      "time": "action",
+      "time": "A",
       "range": "self",
       "components": "v",
       "concentration": true,
@@ -5311,7 +5304,7 @@
     }
   },
   {
-    "slug": "aura-of-purity",
+    "slug": "aura_of_purity",
     "title": {
       "en": "Aura of Purity",
       "ru": "Аура очищения"
@@ -5326,7 +5319,7 @@
     "info": {
       "level": 4,
       "school": "abjuration",
-      "time": "action",
+      "time": "A",
       "range": "self",
       "components": "v",
       "concentration": true,
@@ -5337,7 +5330,7 @@
     }
   },
   {
-    "slug": "mordenkainen-s-faithful-hound",
+    "slug": "mordenkainen_faithful_hound",
     "title": {
       "en": "Mordenkainen`s Faithful Hound",
       "ru": "Верный пёс Морденкайнена"
@@ -5352,7 +5345,7 @@
     "info": {
       "level": 4,
       "school": "conjuration",
-      "time": "action",
+      "time": "A",
       "range": "30,ft",
       "components": "v,s,m",
       "duration": "8,h",
@@ -5360,7 +5353,7 @@
     }
   },
   {
-    "slug": "control-water",
+    "slug": "control_water",
     "title": {
       "en": "Control Water",
       "ru": "Власть над водами"
@@ -5375,7 +5368,7 @@
     "info": {
       "level": 4,
       "school": "transmutation",
-      "time": "action",
+      "time": "A",
       "range": "300,ft",
       "components": "v,s,m",
       "concentration": true,
@@ -5384,7 +5377,7 @@
     }
   },
   {
-    "slug": "phantasmal-killer",
+    "slug": "phantasmal_killer",
     "title": {
       "en": "Phantasmal Killer",
       "ru": "Воображаемый убийца"
@@ -5399,7 +5392,7 @@
     "info": {
       "level": 4,
       "school": "illusion",
-      "time": "action",
+      "time": "A",
       "range": "120,ft",
       "dc": "wis",
       "components": "v,s",
@@ -5410,7 +5403,7 @@
     }
   },
   {
-    "slug": "conjure-woodland-beings",
+    "slug": "conjure_woodland_beings",
     "title": {
       "en": "Conjure Woodland Beings",
       "ru": "Вызов лесных обитателей"
@@ -5425,7 +5418,7 @@
     "info": {
       "level": 4,
       "school": "conjuration",
-      "time": "action",
+      "time": "A",
       "range": "self",
       "dc": "wis",
       "components": "v,s",
@@ -5437,7 +5430,7 @@
     }
   },
   {
-    "slug": "conjure-minor-elementals",
+    "slug": "conjure_minor_elementals",
     "title": {
       "en": "Conjure Minor Elementals",
       "ru": "Вызов малых элементалей"
@@ -5452,7 +5445,7 @@
     "info": {
       "level": 4,
       "school": "conjuration",
-      "time": "action",
+      "time": "A",
       "range": "self",
       "components": "v,s",
       "concentration": true,
@@ -5463,7 +5456,7 @@
     }
   },
   {
-    "slug": "greater-invisibility",
+    "slug": "greater_invisibility",
     "title": {
       "en": "Greater Invisibility",
       "ru": "Высшая невидимость"
@@ -5478,7 +5471,7 @@
     "info": {
       "level": 4,
       "school": "illusion",
-      "time": "action",
+      "time": "A",
       "range": "touch",
       "components": "v,s",
       "concentration": true,
@@ -5488,7 +5481,7 @@
     }
   },
   {
-    "slug": "giant-insect",
+    "slug": "giant_insect",
     "title": {
       "en": "Giant Insect",
       "ru": "Гигантское насекомое"
@@ -5503,7 +5496,7 @@
     "info": {
       "level": 4,
       "school": "conjuration",
-      "time": "action",
+      "time": "A",
       "range": "60,ft",
       "components": "v,s",
       "concentration": true,
@@ -5512,7 +5505,7 @@
     }
   },
   {
-    "slug": "ice-storm",
+    "slug": "ice_storm",
     "title": {
       "en": "Ice Storm",
       "ru": "Град"
@@ -5527,7 +5520,7 @@
     "info": {
       "level": 4,
       "school": "evocation",
-      "time": "action",
+      "time": "A",
       "range": "300,ft",
       "dc": "dex",
       "components": "v,s,m",
@@ -5538,7 +5531,7 @@
     }
   },
   {
-    "slug": "vitriolic-sphere",
+    "slug": "vitriolic_sphere",
     "title": {
       "en": "Vitriolic Sphere",
       "ru": "Едкий шар"
@@ -5553,7 +5546,7 @@
     "info": {
       "level": 4,
       "school": "evocation",
-      "time": "action",
+      "time": "A",
       "range": "150,ft",
       "dc": "dex",
       "components": "v,s,m",
@@ -5565,7 +5558,7 @@
     }
   },
   {
-    "slug": "death-ward",
+    "slug": "death_ward",
     "title": {
       "en": "Death Ward",
       "ru": "Защита от смерти"
@@ -5580,7 +5573,7 @@
     "info": {
       "level": 4,
       "school": "abjuration",
-      "time": "action",
+      "time": "A",
       "range": "touch",
       "components": "v,s",
       "duration": "8,h",
@@ -5604,7 +5597,7 @@
     "info": {
       "level": 4,
       "school": "abjuration",
-      "time": "action",
+      "time": "A",
       "range": "30,ft",
       "dc": "cha",
       "components": "v,s,m",
@@ -5638,7 +5631,7 @@
     }
   },
   {
-    "slug": "stone-shape",
+    "slug": "stone_shape",
     "title": {
       "en": "Stone Shape",
       "ru": "Изменение формы камня"
@@ -5653,7 +5646,7 @@
     "info": {
       "level": 4,
       "school": "transmutation",
-      "time": "action",
+      "time": "A",
       "range": "touch",
       "components": "v,s,m",
       "duration": "instant",
@@ -5661,7 +5654,7 @@
     }
   },
   {
-    "slug": "fount-of-moonlight",
+    "slug": "fount_of_moonlight",
     "title": {
       "en": "Fount of Moonlight",
       "ru": "Источник лунного света"
@@ -5676,7 +5669,7 @@
     "info": {
       "level": 4,
       "school": "evocation",
-      "time": "action",
+      "time": "A",
       "range": "self",
       "components": "v,s",
       "concentration": true,
@@ -5686,7 +5679,7 @@
     }
   },
   {
-    "slug": "mordenkainen-s-private-sanctum",
+    "slug": "mordenkainen_private_sanctum",
     "title": {
       "en": "Mordenkainen`s Private Sanctum",
       "ru": "Кабинет Морденкайнена"
@@ -5724,7 +5717,7 @@
     "info": {
       "level": 4,
       "school": "transmutation",
-      "time": "action",
+      "time": "A",
       "range": "touch",
       "components": "v,s,m",
       "concentration": true,
@@ -5734,7 +5727,7 @@
     }
   },
   {
-    "slug": "leomund-s-secret-chest",
+    "slug": "leomund_secret_chest",
     "title": {
       "en": "Leomund's Secret Chest",
       "ru": "Леомундов потайной сундук"
@@ -5749,15 +5742,14 @@
     "info": {
       "level": 4,
       "school": "conjuration",
-      "time": "action",
+      "time": "A",
       "range": "touch",
       "components": "v,s,m",
-      "duration": "none",
       "source": "PHB"
     }
   },
   {
-    "slug": "arcane-eye",
+    "slug": "arcane_eye",
     "title": {
       "en": "Arcane Eye",
       "ru": "Магический глаз"
@@ -5772,7 +5764,7 @@
     "info": {
       "level": 4,
       "school": "divination",
-      "time": "action",
+      "time": "A",
       "range": "30,ft",
       "components": "v,s,m",
       "concentration": true,
@@ -5781,7 +5773,7 @@
     }
   },
   {
-    "slug": "hallucinatory-terrain",
+    "slug": "hallucinatory_terrain",
     "title": {
       "en": "Hallucinatory Terrain",
       "ru": "Мираж"
@@ -5804,7 +5796,7 @@
     }
   },
   {
-    "slug": "staggering-smite",
+    "slug": "staggering_smite",
     "title": {
       "en": "Staggering Smite",
       "ru": "Оглушающая кара"
@@ -5819,7 +5811,7 @@
     "info": {
       "level": 4,
       "school": "enchantment",
-      "time": "bonus_action",
+      "time": "BA",
       "range": "self",
       "dc": "wis",
       "components": "v",
@@ -5829,7 +5821,7 @@
     }
   },
   {
-    "slug": "fire-shield",
+    "slug": "fire_shield",
     "title": {
       "en": "Fire Shield",
       "ru": "Огненный щит"
@@ -5844,7 +5836,7 @@
     "info": {
       "level": 4,
       "school": "evocation",
-      "time": "action",
+      "time": "A",
       "range": "self",
       "components": "v,s,m",
       "duration": "10,m",
@@ -5853,7 +5845,7 @@
     }
   },
   {
-    "slug": "otiluke-s-resilient-sphere",
+    "slug": "otiluke_resilient_sphere",
     "title": {
       "en": "Otiluke's Resilient Sphere",
       "ru": "Отилюков упругий шар"
@@ -5868,7 +5860,7 @@
     "info": {
       "level": 4,
       "school": "abjuration",
-      "time": "action",
+      "time": "A",
       "range": "30,ft",
       "dc": "dex",
       "components": "v,s,m",
@@ -5878,7 +5870,7 @@
     }
   },
   {
-    "slug": "charm-monster",
+    "slug": "charm_monster",
     "title": {
       "en": "Charm Monster",
       "ru": "Очарование монстра"
@@ -5893,7 +5885,7 @@
     "info": {
       "level": 4,
       "school": "enchantment",
-      "time": "action",
+      "time": "A",
       "range": "30,ft",
       "dc": "wis",
       "components": "v,s",
@@ -5903,7 +5895,7 @@
     }
   },
   {
-    "slug": "dimension-door",
+    "slug": "dimension_door",
     "title": {
       "en": "Dimension Door",
       "ru": "Переносящая дверь"
@@ -5918,7 +5910,7 @@
     "info": {
       "level": 4,
       "school": "conjuration",
-      "time": "action",
+      "time": "A",
       "range": "500,ft",
       "components": "v",
       "duration": "instant",
@@ -5926,7 +5918,7 @@
     }
   },
   {
-    "slug": "dominate-beast",
+    "slug": "dominate_beast",
     "title": {
       "en": "Dominate Beast",
       "ru": "Подчинение зверя"
@@ -5941,7 +5933,7 @@
     "info": {
       "level": 4,
       "school": "enchantment",
-      "time": "action",
+      "time": "A",
       "range": "60,ft",
       "dc": "wis",
       "components": "v,s",
@@ -5952,7 +5944,7 @@
     }
   },
   {
-    "slug": "locate-creature",
+    "slug": "locate_creature",
     "title": {
       "en": "Locate Creature",
       "ru": "Поиск существа"
@@ -5967,7 +5959,7 @@
     "info": {
       "level": 4,
       "school": "divination",
-      "time": "action",
+      "time": "A",
       "range": "self",
       "components": "v,s,m",
       "concentration": true,
@@ -5991,7 +5983,7 @@
     "info": {
       "level": 4,
       "school": "transmutation",
-      "time": "action",
+      "time": "A",
       "range": "60,ft",
       "dc": "wis",
       "components": "v,s,m",
@@ -6017,7 +6009,7 @@
     "info": {
       "level": 4,
       "school": "divination",
-      "time": "action",
+      "time": "A",
       "range": "self",
       "components": "v,s,m",
       "ritual": true,
@@ -6026,7 +6018,7 @@
     }
   },
   {
-    "slug": "summon-aberration",
+    "slug": "summon_aberration",
     "title": {
       "en": "Summon Aberration",
       "ru": "Призыв духа аберрации"
@@ -6041,7 +6033,7 @@
     "info": {
       "level": 4,
       "school": "conjuration",
-      "time": "action",
+      "time": "A",
       "range": "90,ft",
       "components": "v,s,m",
       "concentration": true,
@@ -6050,7 +6042,7 @@
     }
   },
   {
-    "slug": "summon-construct",
+    "slug": "summon_construct",
     "title": {
       "en": "Summon Construct",
       "ru": "Призыв духа конструкта"
@@ -6065,7 +6057,7 @@
     "info": {
       "level": 4,
       "school": "conjuration",
-      "time": "action",
+      "time": "A",
       "range": "90,ft",
       "components": "v,s,m",
       "concentration": true,
@@ -6074,7 +6066,7 @@
     }
   },
   {
-    "slug": "summon-elemental",
+    "slug": "summon_elemental",
     "title": {
       "en": "Summon Elemental",
       "ru": "Призыв духа элементаля"
@@ -6089,7 +6081,7 @@
     "info": {
       "level": 4,
       "school": "conjuration",
-      "time": "action",
+      "time": "A",
       "range": "90,ft",
       "components": "v,s,m",
       "concentration": true,
@@ -6113,7 +6105,7 @@
     "info": {
       "level": 4,
       "school": "enchantment",
-      "time": "action",
+      "time": "A",
       "range": "30,ft",
       "dc": "wis",
       "components": "v,s",
@@ -6124,7 +6116,7 @@
     }
   },
   {
-    "slug": "freedom-of-movement",
+    "slug": "freedom_of_movement",
     "title": {
       "en": "Freedom of Movement",
       "ru": "Свобода перемещения"
@@ -6139,7 +6131,7 @@
     "info": {
       "level": 4,
       "school": "abjuration",
-      "time": "action",
+      "time": "A",
       "range": "touch",
       "components": "v,s,m",
       "duration": "1,h",
@@ -6163,7 +6155,7 @@
     "info": {
       "level": 4,
       "school": "enchantment",
-      "time": "action",
+      "time": "A",
       "range": "90,ft",
       "dc": "wis",
       "components": "v,s,m",
@@ -6175,7 +6167,7 @@
     }
   },
   {
-    "slug": "wall-of-fire",
+    "slug": "wall_of_fire",
     "title": {
       "en": "Wall of Fire",
       "ru": "Стена огня"
@@ -6190,7 +6182,7 @@
     "info": {
       "level": 4,
       "school": "evocation",
-      "time": "action",
+      "time": "A",
       "range": "120,ft",
       "dc": "dex",
       "components": "v,s,m",
@@ -6201,7 +6193,7 @@
     }
   },
   {
-    "slug": "guardian-of-faith",
+    "slug": "guardian_of_faith",
     "title": {
       "en": "Guardian of Faith",
       "ru": "Страж веры"
@@ -6216,7 +6208,7 @@
     "info": {
       "level": 4,
       "school": "conjuration",
-      "time": "action",
+      "time": "A",
       "range": "30,ft",
       "components": "v",
       "duration": "8,h",
@@ -6239,7 +6231,7 @@
     "info": {
       "level": 4,
       "school": "necromancy",
-      "time": "action",
+      "time": "A",
       "range": "30,ft",
       "dc": "con",
       "components": "v,s",
@@ -6249,7 +6241,7 @@
     }
   },
   {
-    "slug": "grasping-vine",
+    "slug": "grasping_vine",
     "title": {
       "en": "Grasping Vine",
       "ru": "Цепкая лоза"
@@ -6264,7 +6256,7 @@
     "info": {
       "level": 4,
       "school": "conjuration",
-      "time": "bonus_action",
+      "time": "BA",
       "range": "60,ft",
       "hit": true,
       "components": "v,s",
@@ -6275,7 +6267,7 @@
     }
   },
   {
-    "slug": "evard-s-black-tentacles",
+    "slug": "evard_black_tentacles",
     "title": {
       "en": "Evard's Black Tentacles",
       "ru": "Эвардовы чёрные щупальца"
@@ -6290,7 +6282,7 @@
     "info": {
       "level": 4,
       "school": "conjuration",
-      "time": "action",
+      "time": "A",
       "range": "90,ft",
       "dc": "dex",
       "components": "v,s,m",
@@ -6302,7 +6294,7 @@
     }
   },
   {
-    "slug": "swift-quiver",
+    "slug": "swift_quiver",
     "title": {
       "en": "Swift Quiver",
       "ru": "Быстрый колчан"
@@ -6317,7 +6309,7 @@
     "info": {
       "level": 5,
       "school": "transmutation",
-      "time": "bonus_action",
+      "time": "BA",
       "range": "self",
       "components": "v,s,m",
       "concentration": true,
@@ -6327,7 +6319,7 @@
     }
   },
   {
-    "slug": "yolande-s-regal-presence",
+    "slug": "yolande_regal_presence",
     "title": {
       "en": "Yolande's Regal Presence",
       "ru": "Величественное присутствие Йоланды"
@@ -6342,7 +6334,7 @@
     "info": {
       "level": 5,
       "school": "enchantment",
-      "time": "action",
+      "time": "A",
       "range": "self",
       "dc": "wis",
       "components": "v,s,m",
@@ -6354,7 +6346,7 @@
     }
   },
   {
-    "slug": "raise-dead",
+    "slug": "raise_dead",
     "title": {
       "en": "Raise Dead",
       "ru": "Воскрешение"
@@ -6377,7 +6369,7 @@
     }
   },
   {
-    "slug": "conjure-volley",
+    "slug": "conjure_volley",
     "title": {
       "en": "Conjure Volley",
       "ru": "Вызов залпа"
@@ -6392,7 +6384,7 @@
     "info": {
       "level": 5,
       "school": "conjuration",
-      "time": "action",
+      "time": "A",
       "range": "150,ft",
       "dc": "dex",
       "components": "v,s,m",
@@ -6403,7 +6395,7 @@
     }
   },
   {
-    "slug": "conjure-elemental",
+    "slug": "conjure_elemental",
     "title": {
       "en": "Conjure Elemental",
       "ru": "Вызов элементаля"
@@ -6418,7 +6410,7 @@
     "info": {
       "level": 5,
       "school": "conjuration",
-      "time": "action",
+      "time": "A",
       "range": "60,ft",
       "components": "v,s",
       "concentration": true,
@@ -6427,7 +6419,7 @@
     }
   },
   {
-    "slug": "greater-restoration",
+    "slug": "greater_restoration",
     "title": {
       "en": "Greater Restoration",
       "ru": "Высшее восстановление"
@@ -6442,7 +6434,7 @@
     "info": {
       "level": 5,
       "school": "abjuration",
-      "time": "action",
+      "time": "A",
       "range": "touch",
       "components": "v,s,m",
       "duration": "instant",
@@ -6450,7 +6442,7 @@
     }
   },
   {
-    "slug": "bigby-s-hand",
+    "slug": "bigby_hand",
     "title": {
       "en": "Bigby`s Hand",
       "ru": "Длань Бигби"
@@ -6465,7 +6457,7 @@
     "info": {
       "level": 5,
       "school": "evocation",
-      "time": "action",
+      "time": "A",
       "range": "120,ft",
       "components": "v,s,m",
       "concentration": true,
@@ -6474,7 +6466,7 @@
     }
   },
   {
-    "slug": "tree-stride",
+    "slug": "tree_stride",
     "title": {
       "en": "Tree Stride",
       "ru": "Древесный путь"
@@ -6489,7 +6481,7 @@
     "info": {
       "level": 5,
       "school": "conjuration",
-      "time": "action",
+      "time": "A",
       "range": "self",
       "components": "v,s",
       "concentration": true,
@@ -6513,7 +6505,7 @@
     "info": {
       "level": 5,
       "school": "necromancy",
-      "time": "action",
+      "time": "A",
       "range": "touch",
       "components": "v,s",
       "duration": "7,d",
@@ -6522,7 +6514,7 @@
     }
   },
   {
-    "slug": "legend-lore",
+    "slug": "legend_lore",
     "title": {
       "en": "Legend Lore",
       "ru": "Знание легенд"
@@ -6545,7 +6537,7 @@
     }
   },
   {
-    "slug": "banishing-smite",
+    "slug": "banishing_smite",
     "title": {
       "en": "Banishing Smite",
       "ru": "Изгоняющая кара"
@@ -6560,7 +6552,7 @@
     "info": {
       "level": 5,
       "school": "conjuration",
-      "time": "bonus_action",
+      "time": "BA",
       "range": "self",
       "dc": "cha",
       "components": "v",
@@ -6571,7 +6563,7 @@
     }
   },
   {
-    "slug": "modify-memory",
+    "slug": "modify_memory",
     "title": {
       "en": "Modify Memory",
       "ru": "Изменение памяти"
@@ -6586,7 +6578,7 @@
     "info": {
       "level": 5,
       "school": "enchantment",
-      "time": "action",
+      "time": "A",
       "range": "30,ft",
       "dc": "wis",
       "components": "v,s",
@@ -6597,7 +6589,7 @@
     }
   },
   {
-    "slug": "cone-of-cold",
+    "slug": "cone_of_cold",
     "title": {
       "en": "Cone of Cold",
       "ru": "Конус холода"
@@ -6612,7 +6604,7 @@
     "info": {
       "level": 5,
       "school": "evocation",
-      "time": "action",
+      "time": "A",
       "range": "self",
       "dc": "con",
       "components": "v,s,m",
@@ -6622,7 +6614,7 @@
     }
   },
   {
-    "slug": "circle-of-power",
+    "slug": "circle_of_power",
     "title": {
       "en": "Circle of Power",
       "ru": "Круг силы"
@@ -6637,7 +6629,7 @@
     "info": {
       "level": 5,
       "school": "abjuration",
-      "time": "action",
+      "time": "A",
       "range": "self",
       "components": "v",
       "concentration": true,
@@ -6647,7 +6639,7 @@
     }
   },
   {
-    "slug": "teleportation-circle",
+    "slug": "teleportation_circle",
     "title": {
       "en": "Teleportation Circle",
       "ru": "Круг телепортации"
@@ -6670,7 +6662,7 @@
     }
   },
   {
-    "slug": "rary-s-telepathic-bond",
+    "slug": "rary_telepathic_bond",
     "title": {
       "en": "Rary's Telepathic Bond",
       "ru": "Ментальная связь Рэри"
@@ -6685,7 +6677,7 @@
     "info": {
       "level": 5,
       "school": "divination",
-      "time": "action",
+      "time": "A",
       "range": "30,ft",
       "components": "v,s,m",
       "ritual": true,
@@ -6694,7 +6686,7 @@
     }
   },
   {
-    "slug": "mass-cure-wounds",
+    "slug": "mass_cure_wounds",
     "title": {
       "en": "Mass Cure Wounds",
       "ru": "Множественное лечение ран"
@@ -6709,7 +6701,7 @@
     "info": {
       "level": 5,
       "school": "abjuration",
-      "time": "action",
+      "time": "A",
       "range": "60,ft",
       "components": "v,s",
       "duration": "instant",
@@ -6744,7 +6736,7 @@
     }
   },
   {
-    "slug": "insect-plague",
+    "slug": "insect_plague",
     "title": {
       "en": "Insect Plague",
       "ru": "Нашествие насекомых"
@@ -6759,7 +6751,7 @@
     "info": {
       "level": 5,
       "school": "conjuration",
-      "time": "action",
+      "time": "A",
       "range": "300,ft",
       "dc": "con",
       "components": "v,s,m",
@@ -6771,7 +6763,7 @@
     }
   },
   {
-    "slug": "flame-strike",
+    "slug": "flame_strike",
     "title": {
       "en": "Flame Strike",
       "ru": "Небесный огонь"
@@ -6786,7 +6778,7 @@
     "info": {
       "level": 5,
       "school": "evocation",
-      "time": "action",
+      "time": "A",
       "range": "60,ft",
       "dc": "dex",
       "components": "v,s,m",
@@ -6837,7 +6829,7 @@
     "info": {
       "level": 5,
       "school": "conjuration",
-      "time": "action",
+      "time": "A",
       "range": "120,ft",
       "dc": "con",
       "components": "v,s",
@@ -6872,7 +6864,7 @@
     }
   },
   {
-    "slug": "commune-with-nature",
+    "slug": "commune_with_nature",
     "title": {
       "en": "Commune with Nature",
       "ru": "Общение с природой"
@@ -6895,7 +6887,7 @@
     }
   },
   {
-    "slug": "animate-objects",
+    "slug": "animate_objects",
     "title": {
       "en": "Animate Objects",
       "ru": "Оживление вещей"
@@ -6910,7 +6902,7 @@
     "info": {
       "level": 5,
       "school": "transmutation",
-      "time": "action",
+      "time": "A",
       "range": "120,ft",
       "components": "v,s",
       "concentration": true,
@@ -6919,7 +6911,7 @@
     }
   },
   {
-    "slug": "planar-binding",
+    "slug": "planar_binding",
     "title": {
       "en": "Planar Binding",
       "ru": "Планарные узы"
@@ -6944,7 +6936,7 @@
     }
   },
   {
-    "slug": "dominate-person",
+    "slug": "dominate_person",
     "title": {
       "en": "Dominate Person",
       "ru": "Подчинение личности"
@@ -6959,7 +6951,7 @@
     "info": {
       "level": 5,
       "school": "enchantment",
-      "time": "action",
+      "time": "A",
       "range": "60,ft",
       "dc": "wis",
       "components": "v,s",
@@ -6970,7 +6962,7 @@
     }
   },
   {
-    "slug": "antilife-shell",
+    "slug": "antilife_shell",
     "title": {
       "en": "Antilife Shell",
       "ru": "Преграда жизни"
@@ -6985,7 +6977,7 @@
     "info": {
       "level": 5,
       "school": "abjuration",
-      "time": "action",
+      "time": "A",
       "range": "self",
       "components": "v,s",
       "concentration": true,
@@ -6994,7 +6986,7 @@
     }
   },
   {
-    "slug": "summon-dragon",
+    "slug": "summon_dragon",
     "title": {
       "en": "Summon Dragon",
       "ru": "Призыв духа дракона"
@@ -7009,7 +7001,7 @@
     "info": {
       "level": 5,
       "school": "conjuration",
-      "time": "action",
+      "time": "A",
       "range": "60,ft",
       "components": "v,s,m",
       "concentration": true,
@@ -7018,7 +7010,7 @@
     }
   },
   {
-    "slug": "summon-celestial",
+    "slug": "summon_celestial",
     "title": {
       "en": "Summon Celestial",
       "ru": "Призыв духа небожителя"
@@ -7033,7 +7025,7 @@
     "info": {
       "level": 5,
       "school": "conjuration",
-      "time": "action",
+      "time": "A",
       "range": "90,ft",
       "components": "v,s,m",
       "concentration": true,
@@ -7057,7 +7049,7 @@
     "info": {
       "level": 5,
       "school": "illusion",
-      "time": "action",
+      "time": "A",
       "range": "30,ft",
       "dc": "cha",
       "components": "v,s",
@@ -7091,7 +7083,7 @@
     }
   },
   {
-    "slug": "destructive-wave",
+    "slug": "destructive_wave",
     "title": {
       "en": "Destructive Wave",
       "ru": "Разрушительная волна"
@@ -7106,7 +7098,7 @@
     "info": {
       "level": 5,
       "school": "evocation",
-      "time": "action",
+      "time": "A",
       "range": "self",
       "dc": "con",
       "components": "v",
@@ -7117,7 +7109,7 @@
     }
   },
   {
-    "slug": "dispel-evil-and-good",
+    "slug": "dispel_evil_and_good",
     "title": {
       "en": "Dispel Evil and Good",
       "ru": "Рассеивание добра и зла"
@@ -7132,7 +7124,7 @@
     "info": {
       "level": 5,
       "school": "abjuration",
-      "time": "action",
+      "time": "A",
       "range": "self",
       "dc": "cha",
       "components": "v,s,m",
@@ -7166,7 +7158,7 @@
     }
   },
   {
-    "slug": "contact-other-plane",
+    "slug": "contact_other_plane",
     "title": {
       "en": "Contact Other Plane",
       "ru": "Связь с иным планом"
@@ -7209,12 +7201,11 @@
       "time": "24,h",
       "range": "touch",
       "components": "v,s,m",
-      "duration": "none",
       "source": "PHB"
     }
   },
   {
-    "slug": "synaptic-static",
+    "slug": "synaptic_static",
     "title": {
       "en": "Synaptic Static",
       "ru": "Синаптический разряд"
@@ -7229,7 +7220,7 @@
     "info": {
       "level": 5,
       "school": "enchantment",
-      "time": "action",
+      "time": "A",
       "range": "120,ft",
       "dc": "int",
       "components": "v,s",
@@ -7240,7 +7231,7 @@
     }
   },
   {
-    "slug": "jallarzi-s-storm-of-radiance",
+    "slug": "jallarzi_storm_of_radiance",
     "title": {
       "en": "Jallarzi's Storm of Radiance",
       "ru": "Сияющий шторм Джалларзи"
@@ -7255,7 +7246,7 @@
     "info": {
       "level": 5,
       "school": "enchantment",
-      "time": "action",
+      "time": "A",
       "range": "120,ft",
       "dc": "con",
       "components": "v,s,m",
@@ -7305,7 +7296,7 @@
     "info": {
       "level": 5,
       "school": "transmutation",
-      "time": "action",
+      "time": "A",
       "range": "30,ft",
       "components": "v,s,m",
       "duration": "1,h",
@@ -7335,7 +7326,7 @@
     }
   },
   {
-    "slug": "wall-of-stone",
+    "slug": "wall_of_stone",
     "title": {
       "en": "Wall of Stone",
       "ru": "Стена камня"
@@ -7350,7 +7341,7 @@
     "info": {
       "level": 5,
       "school": "evocation",
-      "time": "action",
+      "time": "A",
       "range": "120,ft",
       "components": "v,s,m",
       "concentration": true,
@@ -7359,7 +7350,7 @@
     }
   },
   {
-    "slug": "wall-of-force",
+    "slug": "wall_of_force",
     "title": {
       "en": "Wall of Force",
       "ru": "Стена силы"
@@ -7374,7 +7365,7 @@
     "info": {
       "level": 5,
       "school": "evocation",
-      "time": "action",
+      "time": "A",
       "range": "120,ft",
       "components": "v,s,m",
       "concentration": true,
@@ -7398,7 +7389,7 @@
     "info": {
       "level": 5,
       "school": "transmutation",
-      "time": "action",
+      "time": "A",
       "range": "60,ft",
       "components": "v,s",
       "concentration": true,
@@ -7407,7 +7398,7 @@
     }
   },
   {
-    "slug": "steel-wind-strike",
+    "slug": "steel_wind_strike",
     "title": {
       "en": "Steel Wind Strike",
       "ru": "Удар стального ветра"
@@ -7422,7 +7413,7 @@
     "info": {
       "level": 5,
       "school": "conjuration",
-      "time": "action",
+      "time": "A",
       "range": "30,ft",
       "hit": true,
       "components": "v,s,m",
@@ -7432,7 +7423,7 @@
     }
    },
   {
-    "slug": "hold-monster",
+    "slug": "hold_monster",
     "title": {
       "en": "Hold Monster",
       "ru": "Удержание чудовища"
@@ -7447,7 +7438,7 @@
     "info": {
       "level": 5,
       "school": "enchantment",
-      "time": "action",
+      "time": "A",
       "range": "90,ft",
       "dc": "wis",
       "components": "v,s,m",
@@ -7473,7 +7464,7 @@
     "info": {
       "level": 5,
       "school": "illusion",
-      "time": "action",
+      "time": "A",
       "range": "self",
       "components": "s",
       "concentration": true,
@@ -7483,7 +7474,7 @@
     }
   },
   {
-    "slug": "tasha-s-bubbling-cauldron",
+    "slug": "tasha_bubbling_cauldron",
     "title": {
       "en": "Tasha's Bubbling Cauldron",
       "ru": "Бурлящий котёл Таши"
@@ -7498,7 +7489,7 @@
     "info": {
       "level": 6,
       "school": "conjuration",
-      "time": "action",
+      "time": "A",
       "range": "5,ft",
       "components": "v,s,m",
       "duration": "10,m",
@@ -7506,7 +7497,7 @@
     }
   },
   {
-    "slug": "magic-jar",
+    "slug": "magic_jar",
     "title": {
       "en": "Magic Jar",
       "ru": "Волшебный сосуд"
@@ -7524,12 +7515,11 @@
       "time": "1,m",
       "range": "self",
       "components": "v,s,m",
-      "duration": "1,y",
       "source": "PHB"
     }
   },
   {
-    "slug": "conjure-fey",
+    "slug": "conjure_fey",
     "title": {
       "en": "Conjure Fey",
       "ru": "Вызов феи"
@@ -7544,7 +7534,7 @@
     "info": {
       "level": 6,
       "school": "conjuration",
-      "time": "action",
+      "time": "A",
       "range": "60,ft",
       "components": "v,s",
       "concentration": true,
@@ -7553,7 +7543,7 @@
     }
   },
   {
-    "slug": "move-earth",
+    "slug": "move_earth",
     "title": {
       "en": "Move Earth",
       "ru": "Движение почвы"
@@ -7568,7 +7558,7 @@
     "info": {
       "level": 6,
       "school": "transmutation",
-      "time": "action",
+      "time": "A",
       "range": "120,ft",
       "components": "v,s,m",
       "concentration": true,
@@ -7577,7 +7567,7 @@
     }
   },
   {
-    "slug": "drawmij-s-instant-summons",
+    "slug": "drawmij_instant_summons",
     "title": {
       "en": "Drawmij's Instant Summons",
       "ru": "Дромиджево появление"
@@ -7595,12 +7585,11 @@
       "time": "1,m",
       "range": "touch",
       "components": "v,s,m",
-      "duration": "none",
       "source": "PHB"
     }
   },
   {
-    "slug": "programmed-illusion",
+    "slug": "programmed_illusion",
     "title": {
       "en": "Programmed Illusion",
       "ru": "Заданная иллюзия"
@@ -7615,10 +7604,9 @@
     "info": {
       "level": 6,
       "school": "illusion",
-      "time": "action",
+      "time": "A",
       "range": "120,ft",
       "components": "v,s,m",
-      "duration": "none",
       "source": "PHB"
     }
   },
@@ -7638,7 +7626,7 @@
     "info": {
       "level": 6,
       "school": "abjuration",
-      "time": "action",
+      "time": "A",
       "range": "touch",
       "components": "v,s,m",
       "ritual": true,
@@ -7647,7 +7635,7 @@
     }
   },
   {
-    "slug": "true-seeing",
+    "slug": "true_seeing",
     "title": {
       "en": "True Seeing",
       "ru": "Истинное зрение"
@@ -7662,7 +7650,7 @@
     "info": {
       "level": 6,
       "school": "divination",
-      "time": "action",
+      "time": "A",
       "range": "touch",
       "components": "v,s,m",
       "duration": "1,h",
@@ -7686,7 +7674,7 @@
     "info": {
       "level": 6,
       "school": "abjuration",
-      "time": "action",
+      "time": "A",
       "range": "60,ft",
       "components": "v,s",
       "duration": "instant",
@@ -7695,7 +7683,7 @@
     }
   },
   {
-    "slug": "circle-of-death",
+    "slug": "circle_of_death",
     "title": {
       "en": "Circle of Death",
       "ru": "Круг смерти"
@@ -7710,7 +7698,7 @@
     "info": {
       "level": 6,
       "school": "necromancy",
-      "time": "action",
+      "time": "A",
       "range": "150,ft",
       "dc": "con",
       "components": "v,s,m",
@@ -7721,7 +7709,7 @@
     }
   },
   {
-    "slug": "arcane-gate",
+    "slug": "arcane_gate",
     "title": {
       "en": "Arcane Gate",
       "ru": "Магические врата"
@@ -7736,7 +7724,7 @@
     "info": {
       "level": 6,
       "school": "conjuration",
-      "time": "action",
+      "time": "A",
       "range": "500,ft",
       "components": "v,s",
       "concentration": true,
@@ -7745,7 +7733,7 @@
     }
   },
   {
-    "slug": "mass-suggestion",
+    "slug": "mass_suggestion",
     "title": {
       "en": "Mass Suggestion",
       "ru": "Множественное внушение"
@@ -7760,7 +7748,7 @@
     "info": {
       "level": 6,
       "school": "enchantment",
-      "time": "action",
+      "time": "A",
       "range": "60,ft",
       "dc": "wis",
       "components": "v,m",
@@ -7770,7 +7758,7 @@
     }
   },
   {
-    "slug": "otto-s-irresistible-dance",
+    "slug": "otto_irresistible_dance",
     "title": {
       "en": "Otto’s Irresistible Dance",
       "ru": "Неудержимая пляска Отто"
@@ -7785,7 +7773,7 @@
     "info": {
       "level": 6,
       "school": "enchantment",
-      "time": "action",
+      "time": "A",
       "range": "30,ft",
       "dc": "wis",
       "components": "v",
@@ -7796,7 +7784,7 @@
     }
   },
   {
-    "slug": "flesh-to-stone",
+    "slug": "flesh_to_stone",
     "title": {
       "en": "Flesh to Stone",
       "ru": "Окаменение"
@@ -7811,7 +7799,7 @@
     "info": {
       "level": 6,
       "school": "transmutation",
-      "time": "action",
+      "time": "A",
       "range": "60,ft",
       "dc": "con",
       "components": "v,s,m",
@@ -7822,7 +7810,7 @@
     }
   },
   {
-    "slug": "otiluke-s-freezing-sphere",
+    "slug": "otiluke_freezing_sphere",
     "title": {
       "en": "Otiluke's Freezing Sphere",
       "ru": "Отилюков ледяной шар"
@@ -7837,7 +7825,7 @@
     "info": {
       "level": 6,
       "school": "transmutation",
-      "time": "action",
+      "time": "A",
       "range": "300,ft",
       "dc": "con",
       "components": "v,s,m",
@@ -7848,7 +7836,7 @@
     }
   },
   {
-    "slug": "heroes-feast",
+    "slug": "heroes_feast",
     "title": {
       "en": "Heroes' Feast",
       "ru": "Пир героев"
@@ -7871,7 +7859,7 @@
     }
   },
   {
-    "slug": "planar-ally",
+    "slug": "planar_ally",
     "title": {
       "en": "Planar Ally",
       "ru": "Планарный союзник"
@@ -7894,7 +7882,7 @@
     }
   },
   {
-    "slug": "find-the-path",
+    "slug": "find_the_path",
     "title": {
       "en": "Find the Path",
       "ru": "Поиск пути"
@@ -7933,7 +7921,7 @@
     "info": {
       "level": 6,
       "school": "necromancy",
-      "time": "action",
+      "time": "A",
       "range": "60,ft",
       "dc": "con",
       "components": "v,s",
@@ -7966,7 +7954,7 @@
     }
   },
   {
-    "slug": "summon-fiend",
+    "slug": "summon_fiend",
     "title": {
       "en": "Summon Fiend",
       "ru": "Призыв духа исчадия"
@@ -7981,7 +7969,7 @@
     "info": {
       "level": 6,
       "school": "conjuration",
-      "time": "action",
+      "time": "A",
       "range": "90,ft",
       "components": "v,s,m",
       "concentration": true,
@@ -7990,7 +7978,7 @@
     }
   },
   {
-    "slug": "transport-via-plants",
+    "slug": "transport_via_plants",
     "title": {
       "en": "Transport via Plants",
       "ru": "Путешествие через растения"
@@ -8005,7 +7993,7 @@
     "info": {
       "level": 6,
       "school": "conjuration",
-      "time": "action",
+      "time": "A",
       "range": "10,ft",
       "components": "v,s",
       "duration": "1,m",
@@ -8028,7 +8016,7 @@
     "info": {
       "level": 6,
       "school": "necromancy",
-      "time": "action",
+      "time": "A",
       "range": "self",
       "dc": "wis",
       "components": "v,s",
@@ -8054,7 +8042,7 @@
     "info": {
       "level": 6,
       "school": "transmutation",
-      "time": "action",
+      "time": "A",
       "range": "60,ft",
       "dc": "dex",
       "components": "v,s,m",
@@ -8064,7 +8052,7 @@
     }
   },
   {
-    "slug": "word-of-recall",
+    "slug": "word_of_recall",
     "title": {
       "en": "Word of Recall",
       "ru": "Слово возврата"
@@ -8079,7 +8067,7 @@
     "info": {
       "level": 6,
       "school": "conjuration",
-      "time": "action",
+      "time": "A",
       "range": "5,ft",
       "components": "v",
       "duration": "instant",
@@ -8102,7 +8090,7 @@
     "info": {
       "level": 6,
       "school": "evocation",
-      "time": "action",
+      "time": "A",
       "range": "self",
       "dc": "con",
       "components": "v,s,m",
@@ -8114,7 +8102,7 @@
     }
   },
   {
-    "slug": "create-undead",
+    "slug": "create_undead",
     "title": {
       "en": "Create Undead",
       "ru": "Сотворение нежити"
@@ -8137,7 +8125,7 @@
     }
   },
   {
-    "slug": "blade-barrier",
+    "slug": "blade_barrier",
     "title": {
       "en": "Blade Barrier",
       "ru": "Стена клинков"
@@ -8152,7 +8140,7 @@
     "info": {
       "level": 6,
       "school": "evocation",
-      "time": "action",
+      "time": "A",
       "range": "90,ft",
       "dc": "dex",
       "components": "v,s",
@@ -8163,7 +8151,7 @@
     }
   },
   {
-    "slug": "wall-of-ice",
+    "slug": "wall_of_ice",
     "title": {
       "en": "Wall of Ice",
       "ru": "Стена льда"
@@ -8178,7 +8166,7 @@
     "info": {
       "level": 6,
       "school": "evocation",
-      "time": "action",
+      "time": "A",
       "range": "120,ft",
       "dc": "dex",
       "components": "v,s,m",
@@ -8189,7 +8177,7 @@
     }
   },
   {
-    "slug": "wall-of-thorns",
+    "slug": "wall_of_thorns",
     "title": {
       "en": "Wall of Thorns",
       "ru": "Стена шипов "
@@ -8204,7 +8192,7 @@
     "info": {
       "level": 6,
       "school": "conjuration",
-      "time": "action",
+      "time": "A",
       "range": "120,ft",
       "dc": "dex",
       "components": "v,s,m",
@@ -8215,7 +8203,7 @@
     }
   },
   {
-    "slug": "guards-and-wards",
+    "slug": "guards_and_wards",
     "title": {
       "en": "Guards and Wards",
       "ru": "Стражи"
@@ -8238,7 +8226,7 @@
     }
   },
   {
-    "slug": "globe-of-invulnerability",
+    "slug": "globe_of_invulnerability",
     "title": {
       "en": "Globe of Invulnerability",
       "ru": "Сфера неуязвимости"
@@ -8253,7 +8241,7 @@
     "info": {
       "level": 6,
       "school": "abjuration",
-      "time": "action",
+      "time": "A",
       "range": "self",
       "components": "v,s,m",
       "concentration": true,
@@ -8262,7 +8250,7 @@
     }
   },
   {
-    "slug": "wind-walk",
+    "slug": "wind_walk",
     "title": {
       "en": "Wind Walk",
       "ru": "Хождение по ветру"
@@ -8285,7 +8273,7 @@
     }
   },
   {
-    "slug": "chain-lightning",
+    "slug": "chain_lightning",
     "title": {
       "en": "Chain Lightning",
       "ru": "Цепная молния"
@@ -8300,7 +8288,7 @@
     "info": {
       "level": 6,
       "school": "evocation",
-      "time": "action",
+      "time": "A",
       "range": "150,ft",
       "dc": "dex",
       "components": "v,s,m",
@@ -8310,7 +8298,7 @@
     }
   },
   {
-    "slug": "divine-word",
+    "slug": "divine_word",
     "title": {
       "en": "Divine Word",
       "ru": "Божественное слово"
@@ -8325,7 +8313,7 @@
     "info": {
       "level": 7,
       "school": "evocation",
-      "time": "bonus_action",
+      "time": "BA",
       "range": "30,ft",
       "dc": "cha",
       "components": "v",
@@ -8335,7 +8323,7 @@
     }
   },
   {
-    "slug": "mordenkainen-s-magnificent-mansion",
+    "slug": "mordenkainen_magnificent_mansion",
     "title": {
       "en": "Mordenkainen's Magnificent Mansion",
       "ru": "Великолепный особняк Морденкайнена"
@@ -8358,7 +8346,7 @@
     }
   },
   {
-    "slug": "conjure-celestial",
+    "slug": "conjure_celestial",
     "title": {
       "en": "Conjure Celestial",
       "ru": "Вызов небожителя"
@@ -8406,7 +8394,7 @@
     }
   },
   {
-    "slug": "delayed-blast-fireball",
+    "slug": "delayed_blast_fireball",
     "title": {
       "en": "Delayed Blast Fireball",
       "ru": "Замедленный огненный шар"
@@ -8421,7 +8409,7 @@
     "info": {
       "level": 7,
       "school": "evocation",
-      "time": "action",
+      "time": "A",
       "range": "150,ft",
       "dc": "dex",
       "components": "v,s,m",
@@ -8451,12 +8439,11 @@
       "time": "1,m",
       "range": "touch",
       "components": "v,s,m",
-      "duration": "none",
       "source": "PHB"
     }
   },
   {
-    "slug": "reverse-gravity",
+    "slug": "reverse_gravity",
     "title": {
       "en": "Reverse Gravity",
       "ru": "Изменение тяготения"
@@ -8471,7 +8458,7 @@
     "info": {
       "level": 7,
       "school": "transmutation",
-      "time": "action",
+      "time": "A",
       "range": "100,ft",
       "dc": "dex",
       "components": "v,s,m",
@@ -8498,15 +8485,14 @@
     "info": {
       "level": 7,
       "school": "transmutation",
-      "time": "action",
+      "time": "A",
       "range": "touch",
       "components": "v,s,m",
-      "duration": "none",
       "source": "PHB"
     }
   },
   {
-    "slug": "mordenkainen-s-sword",
+    "slug": "mordenkainen_sword",
     "title": {
       "en": "Mordenkainen's Sword",
       "ru": "Меч Морденкайнена"
@@ -8521,7 +8507,7 @@
     "info": {
       "level": 7,
       "school": "evocation",
-      "time": "action",
+      "time": "A",
       "range": "90,ft",
       "hit": true,
       "components": "v,s,m",
@@ -8532,7 +8518,7 @@
     }
   },
   {
-    "slug": "fire-storm",
+    "slug": "fire_storm",
     "title": {
       "en": "Fire Storm",
       "ru": "Огненная буря"
@@ -8547,7 +8533,7 @@
     "info": {
       "level": 7,
       "school": "evocation",
-      "time": "action",
+      "time": "A",
       "range": "150,ft",
       "dc": "dex",
       "components": "v,s",
@@ -8558,7 +8544,7 @@
     }
   },
   {
-    "slug": "finger-of-death",
+    "slug": "finger_of_death",
     "title": {
       "en": "Finger of Death",
       "ru": "Перст смерти"
@@ -8573,7 +8559,7 @@
     "info": {
       "level": 7,
       "school": "necromancy",
-      "time": "action",
+      "time": "A",
       "range": "60,ft",
       "dc": "con",
       "components": "v,s",
@@ -8601,12 +8587,11 @@
       "time": "12,h",
       "range": "touch",
       "components": "v,s,m",
-      "duration": "none",
       "source": "PHB"
     }
   },
   {
-    "slug": "project-image",
+    "slug": "project_image",
     "title": {
       "en": "Project Image",
       "ru": "Проекция"
@@ -8621,7 +8606,7 @@
     "info": {
       "level": 7,
       "school": "illusion",
-      "time": "action",
+      "time": "A",
       "range": "500,mile",
       "components": "v,s,m",
       "concentration": true,
@@ -8630,7 +8615,7 @@
     }
   },
   {
-    "slug": "prismatic-spray",
+    "slug": "prismatic_spray",
     "title": {
       "en": "Prismatic Spray",
       "ru": "Радужные брызги"
@@ -8645,7 +8630,7 @@
     "info": {
       "level": 7,
       "school": "evocation",
-      "time": "action",
+      "time": "A",
       "range": "self",
       "dc": "dex",
       "components": "v,s",
@@ -8695,7 +8680,7 @@
     "info": {
       "level": 7,
       "school": "evocation",
-      "time": "action",
+      "time": "A",
       "range": "100,ft",
       "components": "v,s,m",
       "concentration": true,
@@ -8704,7 +8689,7 @@
     }
   },
   {
-    "slug": "power-word-fortify",
+    "slug": "power_word_fortify",
     "title": {
       "en": "Power Word Fortify",
       "ru": "Слово силы: Укрепление"
@@ -8719,7 +8704,7 @@
     "info": {
       "level": 7,
       "school": "enchantment",
-      "time": "action",
+      "time": "A",
       "range": "60,ft",
       "components": "v",
       "duration": "instant",
@@ -8728,7 +8713,7 @@
     }
   },
   {
-    "slug": "mirage-arcane",
+    "slug": "mirage_arcane",
     "title": {
       "en": "Mirage Arcane",
       "ru": "Таинственный мираж"
@@ -8766,7 +8751,7 @@
     "info": {
       "level": 7,
       "school": "conjuration",
-      "time": "action",
+      "time": "A",
       "range": "10,ft",
       "components": "v",
       "duration": "instant",
@@ -8774,7 +8759,7 @@
     }
   },
   {
-    "slug": "plane-shift",
+    "slug": "plane_shift",
     "title": {
       "en": "Plane Shift",
       "ru": "Уход в иной план"
@@ -8789,7 +8774,7 @@
     "info": {
       "level": 7,
       "school": "conjuration",
-      "time": "action",
+      "time": "A",
       "range": "touch",
       "components": "v,s,m",
       "duration": "instant",
@@ -8812,7 +8797,7 @@
     "info": {
       "level": 7,
       "school": "conjuration",
-      "time": "action",
+      "time": "A",
       "range": "self",
       "components": "v,s",
       "duration": "8,h",
@@ -8820,7 +8805,7 @@
     }
   },
   {
-    "slug": "antipathy-sympathy",
+    "slug": "antipathy_sympathy",
     "title": {
       "en": "Antipathy/Sympathy",
       "ru": "Антипатия/симпатия"
@@ -8845,7 +8830,7 @@
     }
   },
   {
-    "slug": "holy-aura",
+    "slug": "holy_aura",
     "title": {
       "en": "Holy Aura",
       "ru": "Аура святости"
@@ -8860,7 +8845,7 @@
     "info": {
       "level": 8,
       "school": "abjuration",
-      "time": "action",
+      "time": "A",
       "range": "self",
       "components": "v,s,m",
       "concentration": true,
@@ -8871,7 +8856,7 @@
     }
   },
   {
-    "slug": "control-weather",
+    "slug": "control_weather",
     "title": {
       "en": "Control Weather",
       "ru": "Власть над погодой"
@@ -8895,7 +8880,7 @@
     }
   },
   {
-    "slug": "incendiary-cloud",
+    "slug": "incendiary_cloud",
     "title": {
       "en": "Incendiary Cloud",
       "ru": "Воспламеняющаяся туча"
@@ -8910,7 +8895,7 @@
     "info": {
       "level": 8,
       "school": "conjuration",
-      "time": "action",
+      "time": "A",
       "range": "150,ft",
       "dc": "dex",
       "components": "v,s",
@@ -8960,7 +8945,7 @@
     "info": {
       "level": 8,
       "school": "conjuration",
-      "time": "action",
+      "time": "A",
       "range": "60,ft",
       "components": "s",
       "duration": "1,h",
@@ -8983,7 +8968,7 @@
     "info": {
       "level": 8,
       "school": "enchantment",
-      "time": "action",
+      "time": "A",
       "range": "150,ft",
       "dc": "int",
       "components": "v,s,m",
@@ -9008,7 +8993,7 @@
     "info": {
       "level": 8,
       "school": "transmutation",
-      "time": "action",
+      "time": "A",
       "range": "500,ft",
       "dc": "dex",
       "components": "v,s,m",
@@ -9035,7 +9020,7 @@
     "info": {
       "level": 8,
       "school": "conjuration",
-      "time": "action",
+      "time": "A",
       "range": "60,ft",
       "components": "v,s",
       "concentration": true,
@@ -9060,7 +9045,7 @@
     "info": {
       "level": 8,
       "school": "enchantment",
-      "time": "action",
+      "time": "A",
       "range": "self",
       "components": "v",
       "duration": "1,h",
@@ -9069,7 +9054,7 @@
     }
   },
   {
-    "slug": "dominate-monster",
+    "slug": "dominate_monster",
     "title": {
       "en": "Dominate Monster",
       "ru": "Подчинение чудовища"
@@ -9084,7 +9069,7 @@
     "info": {
       "level": 8,
       "school": "enchantment",
-      "time": "action",
+      "time": "A",
       "range": "60,ft",
       "dc": "wis",
       "components": "v,s",
@@ -9095,7 +9080,7 @@
     }
   },
   {
-    "slug": "antimagic-field",
+    "slug": "antimagic_field",
     "title": {
       "en": "Antimagic Field",
       "ru": "Поле антимагии"
@@ -9110,7 +9095,7 @@
     "info": {
       "level": 8,
       "school": "abjuration",
-      "time": "action",
+      "time": "A",
       "range": "self",
       "components": "v,s,m",
       "concentration": true,
@@ -9121,7 +9106,7 @@
     }
   },
   {
-    "slug": "animal-shapes",
+    "slug": "animal_shapes",
     "title": {
       "en": "Animal Shapes",
       "ru": "Превращение в животных"
@@ -9136,7 +9121,7 @@
     "info": {
       "level": 8,
       "school": "transmutation",
-      "time": "action",
+      "time": "A",
       "range": "30,ft",
       "components": "v,s",
       "concentration": true,
@@ -9145,7 +9130,7 @@
     }
   },
   {
-    "slug": "power-word-stun",
+    "slug": "power_word_stun",
     "title": {
       "en": "Power Word Stun",
       "ru": "Слово силы: Ошеломление"
@@ -9160,7 +9145,7 @@
     "info": {
       "level": 8,
       "school": "enchantment",
-      "time": "action",
+      "time": "A",
       "range": "60,ft",
       "dc": "con",
       "components": "v",
@@ -9170,7 +9155,7 @@
     }
   },
   {
-    "slug": "mind-blank",
+    "slug": "mind_blank",
     "title": {
       "en": "Mind Blank",
       "ru": "Сокрытие разума"
@@ -9185,7 +9170,7 @@
     "info": {
       "level": 8,
       "school": "abjuration",
-      "time": "action",
+      "time": "A",
       "range": "touch",
       "components": "v,s",
       "duration": "24,h",
@@ -9209,7 +9194,7 @@
     "info": {
       "level": 8,
       "school": "evocation",
-      "time": "action",
+      "time": "A",
       "range": "150,ft",
       "dc": "con",
       "components": "v,s,m",
@@ -9235,7 +9220,7 @@
     "info": {
       "level": 8,
       "school": "divination",
-      "time": "action",
+      "time": "A",
       "range": "none",
       "components": "v,s,m",
       "duration": "24,h",
@@ -9284,7 +9269,7 @@
     "info": {
       "level": 9,
       "school": "conjuration",
-      "time": "action",
+      "time": "A",
       "range": "60,ft",
       "components": "v,s,m",
       "concentration": true,
@@ -9293,7 +9278,7 @@
     }
   },
   {
-    "slug": "storm-of-vengeance",
+    "slug": "storm_of_vengeance",
     "title": {
       "en": "Storm of Vengeance",
       "ru": "Гроза гнева"
@@ -9308,7 +9293,7 @@
     "info": {
       "level": 9,
       "school": "conjuration",
-      "time": "action",
+      "time": "A",
       "range": "1,mile",
       "dc": "con",
       "components": "v,s",
@@ -9335,7 +9320,7 @@
     "info": {
       "level": 9,
       "school": "conjuration",
-      "time": "action",
+      "time": "A",
       "range": "self",
       "components": "v",
       "duration": "instant",
@@ -9358,7 +9343,7 @@
     "info": {
       "level": 9,
       "school": "illusion",
-      "time": "action",
+      "time": "A",
       "range": "120,ft",
       "dc": "wis",
       "components": "v,s",
@@ -9389,13 +9374,12 @@
       "range": "30,ft",
       "dc": "wis",
       "components": "v,s,m",
-      "duration": "none",
       "effects": ["debuff"],
       "source": "PHB"
     }
   },
   {
-    "slug": "true-resurrection",
+    "slug": "true_resurrection",
     "title": {
       "en": "True Resurrection",
       "ru": "Истинное воскрешение"
@@ -9418,7 +9402,7 @@
     }
   },
   {
-    "slug": "true-polymorph",
+    "slug": "true_polymorph",
     "title": {
       "en": "True Polymorph",
       "ru": "Истинный полиморф"
@@ -9433,7 +9417,7 @@
     "info": {
       "level": 9,
       "school": "transmutation",
-      "time": "action",
+      "time": "A",
       "range": "30,ft",
       "dc": "wis",
       "components": "v,s,m",
@@ -9444,7 +9428,7 @@
     }
   },
   {
-    "slug": "meteor-swarm",
+    "slug": "meteor_swarm",
     "title": {
       "en": "Meteor Swarm",
       "ru": "Метеоритный дождь"
@@ -9459,7 +9443,7 @@
     "info": {
       "level": 9,
       "school": "evocation",
-      "time": "action",
+      "time": "A",
       "range": "1,mile",
       "dc": "dex",
       "components": "v,s",
@@ -9470,7 +9454,7 @@
     }
   },
   {
-    "slug": "mass-heal",
+    "slug": "mass_heal",
     "title": {
       "en": "Mass Heal",
       "ru": "Множественное исцеление"
@@ -9485,7 +9469,7 @@
     "info": {
       "level": 9,
       "school": "abjuration",
-      "time": "action",
+      "time": "A",
       "range": "60,ft",
       "components": "v,s",
       "duration": "instant",
@@ -9494,7 +9478,7 @@
     }
   },
   {
-    "slug": "time-stop",
+    "slug": "time_stop",
     "title": {
       "en": "Time Stop",
       "ru": "Остановка времени"
@@ -9509,7 +9493,7 @@
     "info": {
       "level": 9,
       "school": "transmutation",
-      "time": "action",
+      "time": "A",
       "range": "self",
       "components": "v",
       "duration": "instant",
@@ -9533,7 +9517,7 @@
     "info": {
       "level": 9,
       "school": "transmutation",
-      "time": "action",
+      "time": "A",
       "range": "self",
       "components": "v,s,m",
       "concentration": true,
@@ -9566,7 +9550,7 @@
     }
   },
   {
-    "slug": "astral-projection",
+    "slug": "astral_projection",
     "title": {
       "en": "Astral Projection",
       "ru": "Проекция в астрал"
@@ -9584,12 +9568,11 @@
       "time": "1,h",
       "range": "10,ft",
       "components": "v,s,m",
-      "duration": "none",
       "source": "PHB"
     }
   },
   {
-    "slug": "prismatic-wall",
+    "slug": "prismatic_wall",
     "title": {
       "en": "Prismatic Wall",
       "ru": "Радужная стена"
@@ -9604,7 +9587,7 @@
     "info": {
       "level": 9,
       "school": "abjuration",
-      "time": "action",
+      "time": "A",
       "range": "60,ft",
       "components": "v,s",
       "duration": "10,m",
@@ -9612,7 +9595,7 @@
     }
   },
   {
-    "slug": "power-word-heal",
+    "slug": "power_word_heal",
     "title": {
       "en": "Power Word Heal",
       "ru": "Слово силы: Исцеление"
@@ -9627,7 +9610,7 @@
     "info": {
       "level": 9,
       "school": "enchantment",
-      "time": "action",
+      "time": "A",
       "range": "60,ft",
       "components": "v",
       "duration": "instant",
@@ -9636,7 +9619,7 @@
     }
   },
   {
-    "slug": "power-word-kill",
+    "slug": "power_word_kill",
     "title": {
       "en": "Power Word Kill",
       "ru": "Слово силы: Смерть"
@@ -9651,7 +9634,7 @@
     "info": {
       "level": 9,
       "school": "enchantment",
-      "time": "action",
+      "time": "A",
       "range": "60,ft",
       "components": "v",
       "duration": "instant",

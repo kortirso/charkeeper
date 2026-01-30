@@ -19,10 +19,10 @@ module Dnd2024Character
 
       def find_cantrip(result)
         cantrip =
-          Dnd2024::Spell
-            .where('available_for && ?', '{wizard}')
-            .where("data ->> 'level' = '0'")
-            .where("name ->> 'en' = :name OR name ->> 'ru' = :name", name: selected_features['high_elf_legacy_0'])
+          Dnd2024::Feat
+            .where('origin_values && ?', '{wizard}')
+            .where("info ->> 'level' = '0'")
+            .where("title ->> 'en' = :name OR title ->> 'ru' = :name", name: selected_features['high_elf_legacy_0'])
             .first
         return if cantrip.nil?
 
