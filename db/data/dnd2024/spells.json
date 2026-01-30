@@ -2683,7 +2683,7 @@
     }
   },
   {
-    "slug": "blindness_deafness",
+    "slug": "blindness_or_deafness",
     "title": {
       "en": "Blindness/Deafness",
       "ru": "Глухота/слепота"
@@ -3867,7 +3867,7 @@
     }
   },
   {
-    "slug": "enlarge_reduce",
+    "slug": "enlarge_or_reduce",
     "title": {
       "en": "Enlarge/Reduce",
       "ru": "Увеличение/уменьшение"
@@ -8805,7 +8805,7 @@
     }
   },
   {
-    "slug": "antipathy_sympathy",
+    "slug": "antipathy_or_sympathy",
     "title": {
       "en": "Antipathy/Sympathy",
       "ru": "Антипатия/симпатия"
