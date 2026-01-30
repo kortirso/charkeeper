@@ -39,6 +39,8 @@ en:
       trait: TYPE
       count: COUNT
       equipment: EQUIPMENT
+      spells: SPELLS
+      slots: SPELL SLOTS
       equipments:
         hands: In hands
         equipment: On body
@@ -49,6 +51,9 @@ en:
         handfuls: Handfuls
         bags: Bags
         chests: Chests
+        copper: Copper
+        silver: Silver
+        gold: Gold
       pathfinder:
         armor_class: Armor class
         perception: Perception
@@ -66,6 +71,51 @@ en:
         failure: Failure
         saving_throws: SAVING THROWS
         attacks: ATTACKS
+        spells:
+          concentration: C
+          ritual: R
+          action: Action
+          dist: Distance
+          hit: Hit / DC
+          comp: Components
+          duration: Duration
+          area: Area
+          effects: Effects
+        actions:
+          A: A
+          BA: BA
+          R: R
+          h: hr
+          m: min
+        ranges:
+          self: Self
+          touch: Touch
+          none: ''
+          ft: ft
+          mile: mil
+        components:
+          v: V
+          s: S
+          m: M
+        durations:
+          instant: Inst
+          r: rn
+          m: min
+          h: hr
+          d: d
+        areas:
+          cube: Cube
+          cone: Cone
+          line: Line
+          sphere: Sphere
+          emanation: Emanation
+          cylinder: Cylinder
+          square: Square
+        effects:
+          buff: Buff
+          debuff: Debuff
+          heal: Heal
+          damage: Dmg
       daggerheart:
         proficiency: Proficiency
         evasion: Evasion

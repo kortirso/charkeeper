@@ -39,6 +39,8 @@ ru:
       trait: ТИП
       count: КОЛ-ВО
       equipment: СНАРЯЖЕНИЕ
+      spells: ЗАКЛИНАНИЯ
+      slots: ЯЧЕЙКИ ЗАКЛИНАНИЙ
       equipments:
         hands: В руках
         equipment: На теле
@@ -49,6 +51,9 @@ ru:
         handfuls: Горсти
         bags: Мешочки
         chests: Сундучки
+        copper: Медь
+        silver: Серебро
+        gold: Золото
       pathfinder:
         armor_class: Класс брони
         perception: Восприятие
@@ -66,6 +71,51 @@ ru:
         failure: Провал
         saving_throws: СПАСБРОСКИ
         attacks: АТАКИ
+        spells:
+          concentration: К
+          ritual: Р
+          action: Действие
+          dist: Дистанция
+          hit: Атака / СБ
+          comp: Компоненты
+          duration: Длительность
+          area: Область
+          effects: Эффекты
+        actions:
+          A: Д
+          BA: БД
+          R: Р
+          h: ч
+          m: мин
+        ranges:
+          self: На себя
+          touch: Касание
+          none: ''
+          ft: фт
+          mile: мл
+        components:
+          v: В
+          s: С
+          m: М
+        durations:
+          instant: Мгн
+          r: рн
+          m: мин
+          h: ч
+          d: д
+        areas:
+          cube: Куб
+          cone: Конус
+          line: Линия
+          sphere: Сфера
+          emanation: Эманация
+          cylinder: Цилиндр
+          square: Квадрат
+        effects:
+          buff: Бафф
+          debuff: Дебафф
+          heal: Лечение
+          damage: Урон
       daggerheart:
         proficiency: Мастерство
         evasion: Уклонение
