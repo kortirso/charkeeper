@@ -4,9 +4,8 @@ import { useAppLocale } from '../../../../../context';
 
 const DIRECT_VALUES = ['A', 'BA', 'R'];
 
-const TRANSLATIONS = {
+const TRANSLATION = {
   en: {
-    'ritual': 'R',
     'A': 'A',
     'BA': 'BA',
     'R': 'R',
@@ -14,7 +13,6 @@ const TRANSLATIONS = {
     'm': 'min'
   },
   ru: {
-    'ritual': 'Р',
     'A': 'Д',
     'BA': 'БД',
     'R': 'Р',
@@ -29,7 +27,7 @@ export const SpellCastTime = (props) => {
   const transformTime = () => {
     const values = props.value.split(',');
 
-    return `${values[0]} ${TRANSLATIONS[locale()][values[1]]}`;
+    return `${values[0]}${TRANSLATION[locale()][values[1]]}`;
   }
 
   return (
@@ -38,9 +36,8 @@ export const SpellCastTime = (props) => {
         when={DIRECT_VALUES.includes(props.value)}
         fallback={transformTime()}
       >
-        {TRANSLATIONS[locale()][props.value]}
+        {TRANSLATION[locale()][props.value]}
       </Show>
-      <Show when={props.ritual}><span class="ml-2">({TRANSLATIONS[locale()].ritual})</span></Show>
     </p>
   );
 }

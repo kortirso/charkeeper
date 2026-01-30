@@ -1,6 +1,6 @@
 import { createSignal, createEffect, For, Show, createMemo, batch, Switch, Match } from 'solid-js';
 
-import { SpellsTable } from './SpellsTable';
+import { SpellsToggleList } from './SpellsToggleList';
 import { SpellCastTime, SpellRange, SpellAttack, SpellComponents, SpellDuration, SpellEffects } from '../../../../pages';
 import { StatsBlock, ErrorWrapper, Button, Toggle, Checkbox, Select, GuideWrapper, Dice } from '../../../../components';
 import config from '../../../../data/dnd2024.json';
@@ -15,6 +15,7 @@ import { createCharacterSpellRequest } from '../../../../requests/createCharacte
 import { updateCharacterSpellRequest } from '../../../../requests/updateCharacterSpellRequest';
 import { removeCharacterSpellRequest } from '../../../../requests/removeCharacterSpellRequest';
 import { updateCharacterRequest } from '../../../../requests/updateCharacterRequest';
+import { fetchSpellRequest } from '../../../../requests/fetchSpellRequest';
 import { modifier } from '../../../../helpers';
 
 const DND2024_CLASSES_PREPARE_SPELLS = [
@@ -39,7 +40,8 @@ const TRANSLATION = {
     customSpellAbility: 'Learn with custom spell ability',
     back: 'Back',
     noValue: 'Default',
-    filterByClass: 'Filter by class'
+    filterByClass: 'Filter by class',
+    damageUp: '<p>The damage increases by 1 dice when you reach levels 5, 11 and 17.</p>'
   },
   ru: {
     cantrips: 'Заговоры',
@@ -54,7 +56,8 @@ const TRANSLATION = {
     customSpellAbility: 'Изучить с магической характеристикой',
     back: 'Назад',
     noValue: 'Стандартная',
-    filterByClass: 'Фильтр по классам'
+    filterByClass: 'Фильтр по классам',
+    damageUp: '<p>Урон увеличивается на 1 кость, когда вы достигаете 5, 11 и 17 уровня.</p>'
   }
 }
 
@@ -67,6 +70,8 @@ export const Dnd2024Spells = (props) => {
   const [spells, setSpells] = createSignal(undefined);
   const [spentSpellSlots, setSpentSpellSlots] = createSignal(undefined);
   const [activeSpellClass, setActiveSpellClass] = createSignal(undefined);
+  const [descriptions, setDescriptions] = createSignal({});
+  const [openDescriptions, setOpenDescriptions] = createSignal({});
 
   const [spellsSelectingMode, setSpellsSelectingMode] = createSignal(false);
   const [availableSpellFilter, setAvailableSpellFilter] = createSignal(true);
@@ -105,6 +110,12 @@ export const Dnd2024Spells = (props) => {
       setLastActiveCharacterId(character().id);
       setSpellsSelectingMode(false);
     })
+  });
+
+  const cantripsDamageDice = createMemo(() => {
+    const level = character().level;
+    const modifier = level >= 17 ? 4 : (level >= 11 ? 3 : (level >= 5 ? 2 : 1));
+    return `${modifier}d`;
   });
 
   // все заклинания доступные для изучения
@@ -159,17 +170,21 @@ export const Dnd2024Spells = (props) => {
     return DND2024_CLASSES_PREPARE_SPELLS.includes(activeSpellClass());
   });
 
-  const learnSpell = async (spellId, targetSpellClass) => {
+  const learnSpell = async (event, spellId) => {
+    event.stopPropagation();
+
     const result = await createCharacterSpellRequest(
       appState.accessToken,
       props.character.provider,
       props.character.id,
-      { spell_id: spellId, target_spell_class: targetSpellClass, spell_ability: spellAbility() }
+      { spell_id: spellId, target_spell_class: activeSpellClass(), spell_ability: spellAbility() }
     );
     if (result.errors_list === undefined) setCharacterSpells(characterSpells().concat(result.spell));
   }
 
-  const forgetSpell = async (spellId) => {
+  const forgetSpell = async (event, spellId) => {
+    event.stopPropagation();
+
     const result = await removeCharacterSpellRequest(appState.accessToken, props.character.provider, props.character.id, spellId);
     if (result.errors_list === undefined) setCharacterSpells(characterSpells().filter((item) => item.feat_id !== spellId));
   }
@@ -216,6 +231,26 @@ export const Dnd2024Spells = (props) => {
     }
   }
 
+  const showInfo = async (spell) => {
+    if (descriptions()[spell.id]) {
+      setOpenDescriptions({ ...openDescriptions(), [spell.id]: !openDescriptions()[spell.id] })
+    } else {
+      const result = await fetchSpellRequest(appState.accessToken, props.character.provider, spell.id);
+
+      if (result.errors_list === undefined) {
+        let value = result.description;
+        if (spell.damage_up) {
+          value = value.replace('1d', cantripsDamageDice());
+          value += TRANSLATION[locale()].damageUp;
+        }
+        batch(() => {
+          setDescriptions({ ...descriptions(), [spell.id]: value });
+          setOpenDescriptions({ ...openDescriptions(), [spell.id]: true })
+        });
+      }
+    }
+  }
+
   return (
     <ErrorWrapper payload={{ character_id: character().id, key: 'Dnd2024Spells' }}>
       <GuideWrapper character={character()}>
@@ -258,57 +293,84 @@ export const Dnd2024Spells = (props) => {
               <Button default textable classList="mb-2" onClick={() => setSpellsSelectingMode(false)}>{TRANSLATION[locale()]['back']}</Button>
               <For each={[...Array(character().available_spell_level + 1).keys()]}>
                 {(level) =>
-                  <div class="dnd2024-spells">
-                    <Toggle title={level === 0 ? TRANSLATION[locale()]['cantrips'] : `${level} ${TRANSLATION[locale()]['level']}`}>
-                      <For each={filteredSpellsList().filter((item) => item.level === level)}>
-                        {(spell) =>
-                          <div class="dnd2024-spell">
-                            <div class="dnd2024-spell-header">
-                              <div>
-                                <p class="dnd2024-spell-title">{spell.title}</p>
-                                <Show
-                                  when={!availableSpellFilter()}
-                                  fallback={
-                                    <Show when={knownSpellIds().includes(spell.id) && !staticSpellIds().includes(spell.id)}>
-                                      <p class="text-xs mt-1">
-                                        {config.classes[characterSpells().find((item) => item.feat_id === spell.id).prepared_by]['name'][locale()]}
-                                      </p>
-                                    </Show>
-                                  }
-                                >
-                                  <p class="text-xs text-wrap">
-                                    {spell.origin_values.map((item) => config.classes[item]['name'][locale()]).join(' * ')}
-                                  </p>
-                                </Show>
+                  <>
+                    <div class="mb-2 px-4 py-2">
+                      <h2 class="text-lg dark:text-snow">
+                        <Show when={level !== 0} fallback={TRANSLATION[locale()]['cantrips']}>
+                          {level} {TRANSLATION[locale()]['level']}
+                        </Show>
+                      </h2>
+                    </div>
+                    <For each={filteredSpellsList().filter((item) => item.level === level)}>
+                      {(spell) =>
+                        <Toggle
+                          disabled
+                          onParentClick={() => showInfo(spell)}
+                          isOpenByParent={openDescriptions()[spell.id]}
+                          containerClassList="mb-1!"
+                          title={
+                            <div class="dnd2024-spell">
+                              <div class="dnd2024-spell-header">
+                                <div>
+                                  <div class="dnd2024-spell-titlebox">
+                                    <p class="dnd2024-spell-title">
+                                      {spell.title}
+                                    </p>
+                                    <Show when={spell.ritual}><span>{TRANSLATION[locale()].ritual}</span></Show>
+                                    <Show when={spell.concentration}><span class="ml-1">{TRANSLATION[locale()].concentration}</span></Show>
+                                  </div>
+                                  <Show
+                                    when={!availableSpellFilter()}
+                                    fallback={
+                                      <Show when={knownSpellIds().includes(spell.id) && !staticSpellIds().includes(spell.id)}>
+                                        <p class="text-xs mt-1">
+                                          {config.classes[characterSpells().find((item) => item.feat_id === spell.id).prepared_by]['name'][locale()]}
+                                        </p>
+                                      </Show>
+                                    }
+                                  >
+                                    <p class="text-xs text-wrap">
+                                      {spell.origin_values.map((item) => config.classes[item]['name'][locale()]).join(' * ')}
+                                    </p>
+                                  </Show>
+                                </div>
+                                <div>
+                                  <Switch fallback={<></>}>
+                                    <Match when={!knownSpellIds().includes(spell.id)}>
+                                      <Button default size="small" onClick={(event) => learnSpell(event, spell.id)}>
+                                        <Plus width={20} height={20} />
+                                      </Button>
+                                    </Match>
+                                    <Match when={!staticSpellIds().includes(spell.id)}>
+                                      <Button default size="small" onClick={(event) => forgetSpell(event, spell.id)}>
+                                        <Minus width={20} height={20} />
+                                      </Button>
+                                    </Match>
+                                  </Switch>
+                                </div>
                               </div>
-                              <div>
-                                <Switch fallback={<></>}>
-                                  <Match when={!knownSpellIds().includes(spell.id)}>
-                                    <Button default size="small" onClick={() => learnSpell(spell.id, activeSpellClass())}>
-                                      <Plus width={20} height={20} />
-                                    </Button>
-                                  </Match>
-                                  <Match when={!staticSpellIds().includes(spell.id)}>
-                                    <Button default size="small" onClick={() => forgetSpell(spell.id)}>
-                                      <Minus width={20} height={20} />
-                                    </Button>
-                                  </Match>
-                                </Switch>
+                              <div class="dnd2024-spell-tooltips">
+                                <SpellCastTime value={spell.time} />
+                                <SpellRange value={spell.range} />
+                                <SpellAttack hit={spell.hit} dc={spell.dc} character={character()} activeSpellClass={activeSpellClass()} />
+                                <SpellEffects
+                                  value={spell.effects}
+                                  cantripsDamageDice={spell.damage_up ? cantripsDamageDice() : null}
+                                />
+                                <SpellComponents value={spell.components} />
+                                <SpellDuration value={spell.duration} />
                               </div>
                             </div>
-                            <div class="dnd2024-spell-tooltips">
-                              <SpellCastTime value={spell.time} ritual={spell.ritual} />
-                              <SpellRange value={spell.range} />
-                              <SpellAttack hit={spell.hit} dc={spell.dc} character={character()} activeSpellClass={activeSpellClass()} />
-                              <SpellEffects value={spell.effects} />
-                              <SpellComponents value={spell.components} />
-                              <SpellDuration value={spell.duration} concentration={spell.concentration} />
-                            </div>
-                          </div>
-                        }
-                      </For>
-                    </Toggle>
-                  </div>
+                          }
+                        >
+                          <p
+                            class="feat-markdown"
+                            innerHTML={descriptions()[spell.id]} // eslint-disable-line solid/no-innerhtml
+                          />
+                        </Toggle>
+                      }
+                    </For>
+                  </>
                 }
               </For>
             </>
@@ -378,7 +440,7 @@ export const Dnd2024Spells = (props) => {
                 {TRANSLATION[locale()].knownSpells}
               </Button>
             </Show>
-            <SpellsTable
+            <SpellsToggleList
               level={0}
               character={character()}
               activeSpellClass={activeSpellClass()}
@@ -391,7 +453,7 @@ export const Dnd2024Spells = (props) => {
             />
             <For each={Array.from([...Array(character().available_spell_level).keys()], (x) => x + 1)}>
               {(level) =>
-                <SpellsTable
+                <SpellsToggleList
                   level={level}
                   character={character()}
                   activeSpellClass={activeSpellClass()}

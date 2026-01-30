@@ -13,8 +13,9 @@ export const SpellEffects = (props) => {
       return <span><Component width="20" height="20" /></span>;
     } else {
       const values = value.split(',');
+      const damage = props.cantripsDamageDice ? values[values.length - 1].replace('1d', props.cantripsDamageDice) : values[values.length - 1];
 
-      return <span class="flex items-center gap-x-1"><Damage width="20" height="20" /> {values[values.length - 1]}</span>;
+      return <span class="flex items-center gap-x-1"><Damage width="20" height="20" /> {damage}</span>;
     }
   }
 

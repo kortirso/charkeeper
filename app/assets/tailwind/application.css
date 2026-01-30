@@ -453,21 +453,19 @@ nav.pagy.nav a.gap {
 }
 
 .dnd2024-spell {
-  @apply p-2;
-  @apply odd:bg-stone-200 dark:odd:bg-dark-dusty;
-  @apply border-b border-gray-200 dark:border-neutral-800;
-}
-
-.dnd2024-spells .dnd2024-spell:last-of-type {
-  @apply border-0;
+  @apply cursor-pointer;
 }
 
 .dnd2024-spell-header {
   @apply flex items-center justify-between;
 }
 
+.dnd2024-spell-titlebox {
+  @apply flex items-center;
+}
+
 .dnd2024-spell-title {
-  @apply uppercase cursor-pointer;
+  @apply uppercase cursor-pointer mr-4;
 }
 
 .dnd2024-spell-tooltips {
@@ -475,5 +473,9 @@ nav.pagy.nav a.gap {
 }
 
 .spell-attribute {
-  @apply flex-1 flex justify-center items-center;
+  @apply flex-1 flex justify-center items-center dark:border-r dark:border-neutral-800;
+}
+
+.spell-attribute:last-of-type {
+  @apply border-r-0;
 }

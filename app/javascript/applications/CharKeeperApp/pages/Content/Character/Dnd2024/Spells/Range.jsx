@@ -4,7 +4,7 @@ import { useAppLocale } from '../../../../../context';
 
 const DIRECT_VALUES = ['self', 'touch', 'none'];
 
-const TRANSLATIONS = {
+const TRANSLATION = {
   en: {
     'self': 'Self',
     'touch': 'Touch',
@@ -27,7 +27,7 @@ export const SpellRange = (props) => {
   const transformTime = () => {
     const values = props.value.split(',');
 
-    return `${values[0]} ${TRANSLATIONS[locale()][values[1]]}`;
+    return `${values[0]}${TRANSLATION[locale()][values[1]]}`;
   }
 
   return (
@@ -36,7 +36,7 @@ export const SpellRange = (props) => {
         when={DIRECT_VALUES.includes(props.value)}
         fallback={transformTime()}
       >
-        {TRANSLATIONS[locale()][props.value]}
+        {TRANSLATION[locale()][props.value]}
       </Show>
     </p>
   );

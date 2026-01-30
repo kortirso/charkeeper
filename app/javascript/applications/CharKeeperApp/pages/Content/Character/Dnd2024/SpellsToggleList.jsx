@@ -1,41 +1,53 @@
-import { createSignal, For, Show, batch } from 'solid-js';
+import { createSignal, createMemo, For, Show, batch } from 'solid-js';
 
 import { SpellCastTime, SpellRange, SpellAttack, SpellComponents, SpellDuration, SpellEffects } from '../../../../pages';
-import { Button, Checkbox, createModal, TextArea } from '../../../../components';
+import { Button, Checkbox, createModal, TextArea, Toggle } from '../../../../components';
 import config from '../../../../data/dnd2024.json';
 import { Minus, Plus } from '../../../../assets';
-import { useAppLocale } from '../../../../context';
+import { useAppState, useAppLocale } from '../../../../context';
+import { fetchSpellRequest } from '../../../../requests/fetchSpellRequest';
 
 const TRANSLATION = {
   en: {
-    attackBonus: 'attack bonus',
-    saveDC: 'save DC',
+    ritual: 'R',
+    concentration: 'C',
     perDay: 'per day',
     spellLevel: 'as level',
     cantrips: 'Cantrips',
     level: 'level',
     spellNote: 'Spell note',
     static: 'Static',
-    save: 'Save'
+    save: 'Save',
+    damageUp: '<p>The damage increases by 1 dice when you reach levels 5, 11 and 17.</p>'
   },
   ru: {
-    attackBonus: 'бонус атаки',
-    saveDC: 'УС',
+    ritual: 'Р',
+    concentration: 'К',
     perDay: 'раз в день',
     spellLevel: 'как на уровне',
     cantrips: 'Заговоры',
     level: 'уровень',
     spellNote: 'Заметка о заклинании',
     static: 'Врождённое',
-    save: 'Сохранить'
+    save: 'Сохранить',
+    damageUp: '<p>Урон увеличивается на 1 кость, когда вы достигаете 5, 11 и 17 уровня.</p>'
   }
 }
 
-export const SpellsTable = (props) => {
+export const SpellsToggleList = (props) => {
   const [changingSpell, setChangingSpell] = createSignal(null);
+  const [descriptions, setDescriptions] = createSignal({});
+  const [openDescriptions, setOpenDescriptions] = createSignal({});
 
   const { Modal, openModal, closeModal } = createModal();
+  const [appState] = useAppState();
   const [locale] = useAppLocale();
+
+  const cantripsDamageDice = createMemo(() => {
+    const level = props.character.level;
+    const modifier = level >= 17 ? 4 : (level >= 11 ? 3 : (level >= 5 ? 2 : 1));
+    return `${modifier}d`;
+  });
 
   const renderSpellData = (data) => {
     const result = [];
@@ -45,11 +57,42 @@ export const SpellsTable = (props) => {
     return result.join(', ');
   }
 
-  const changeSpell = (spell) => {
+  const changeSpell = (event, spell) => {
+    event.stopPropagation();
     batch(() => {
       setChangingSpell(spell);
       openModal();
     });
+  }
+
+  const showInfo = async (spell) => {
+    if (descriptions()[spell.id]) {
+      setOpenDescriptions({ ...openDescriptions(), [spell.id]: !openDescriptions()[spell.id] })
+    } else {
+      const result = await fetchSpellRequest(appState.accessToken, props.character.provider, spell.id);
+
+      if (result.errors_list === undefined) {
+        let value = result.description;
+        if (spell.damage_up) {
+          value = value.replace('1d', cantripsDamageDice());
+          value += TRANSLATION[locale()].damageUp;
+        }
+        batch(() => {
+          setDescriptions({ ...descriptions(), [spell.id]: value });
+          setOpenDescriptions({ ...openDescriptions(), [spell.id]: true })
+        });
+      }
+    }
+  }
+
+  const enableSpell = (event, characterSpellId) => {
+    event.stopPropagation();
+    props.onEnableSpell(characterSpellId);
+  }
+
+  const disableSpell = (event, characterSpellId) => {
+    event.stopPropagation();
+    props.onDisableSpell(characterSpellId);
   }
 
   const updateSpell = () => {
@@ -59,9 +102,9 @@ export const SpellsTable = (props) => {
 
   return (
     <>
-      <div class="blockable mb-2 p-4">
+      <div class="mb-2 px-4 py-2">
         <div class="flex justify-between items-center">
-          <h2 class="text-lg mb-4">
+          <h2 class="text-lg dark:text-snow">
             <Show when={props.level !== 0} fallback={TRANSLATION[locale()]['cantrips']}>
               {props.level} {TRANSLATION[locale()]['level']}
             </Show>
@@ -81,27 +124,35 @@ export const SpellsTable = (props) => {
             </div>
           </Show>
         </div>
-        <div class="dnd2024-spells">
-          <For each={props.spells}>
-            {(characterSpell) =>
+      </div>
+      <For each={props.spells}>
+        {(characterSpell) =>
+          <Toggle
+            disabled
+            onParentClick={() => showInfo(characterSpell.spell)}
+            isOpenByParent={openDescriptions()[characterSpell.spell.id]}
+            containerClassList="mb-1!"
+            title={
               <div class="dnd2024-spell">
                 <div class="dnd2024-spell-header">
-                  <div>
-                    <p class="dnd2024-spell-title" onClick={() => characterSpell.data ? null : changeSpell(characterSpell)}>
+                  <div class="dnd2024-spell-titlebox">
+                    <p class="dnd2024-spell-title" onClick={(event) => characterSpell.data ? null : changeSpell(event, characterSpell)}>
                       {characterSpell.spell.title}
                     </p>
+                    <Show when={characterSpell.spell.ritual}><span>{TRANSLATION[locale()].ritual}</span></Show>
+                    <Show when={characterSpell.spell.concentration}><span class="ml-1">{TRANSLATION[locale()].concentration}</span></Show>
                   </div>
                   <div>
                     <Show when={!characterSpell.data && props.canPrepareSpells}>
                       <Show
                         when={characterSpell.ready_to_use}
                         fallback={
-                          <Button default size="small" onClick={() => props.onEnableSpell(characterSpell.id)}>
+                          <Button default size="small" onClick={(event) => enableSpell(event, characterSpell.id)}>
                             <Plus width={20} height={20} />
                           </Button>
                         }
                       >
-                        <Button default size="small" onClick={() => props.onDisableSpell(characterSpell.id)}>
+                        <Button default size="small" onClick={(event) => disableSpell(event, characterSpell.id)}>
                           <Minus width={20} height={20} />
                         </Button>
                       </Show>
@@ -114,7 +165,7 @@ export const SpellsTable = (props) => {
                   </p>
                 </Show>
                 <div class="dnd2024-spell-tooltips">
-                  <SpellCastTime value={characterSpell.spell.time} ritual={characterSpell.spell.ritual} />
+                  <SpellCastTime value={characterSpell.spell.time} />
                   <SpellRange value={characterSpell.spell.range} />
                   <SpellAttack
                     withDice
@@ -126,28 +177,36 @@ export const SpellsTable = (props) => {
                     alterHit={characterSpell.spell.data?.attack_bonus}
                     alterDc={characterSpell.spell.data?.save_dc}
                   />
-                  <SpellEffects value={characterSpell.spell.effects} />
+                  <SpellEffects
+                    value={characterSpell.spell.effects}
+                    cantripsDamageDice={characterSpell.spell.damage_up ? cantripsDamageDice() : null}
+                  />
                   <SpellComponents value={characterSpell.spell.components} />
-                  <SpellDuration value={characterSpell.spell.duration} concentration={characterSpell.spell.concentration} />
+                  <SpellDuration value={characterSpell.spell.duration} />
                 </div>
 
                 <Show when={characterSpell.data}><p class="text-xs">{renderSpellData(characterSpell.data)}</p></Show>
                 <Show when={characterSpell.notes}><p class="text-xs mt-2">{characterSpell.notes}</p></Show>
               </div>
             }
-          </For>
-        </div>
-      </div>
+          >
+            <p
+              class="feat-markdown"
+              innerHTML={descriptions()[characterSpell.spell.id]} // eslint-disable-line solid/no-innerhtml
+            />
+          </Toggle>
+        }
+      </For>
       <Modal>
         <Show when={changingSpell()}>
           <p class="flex-1 text-xl text-left dark:text-snow mb-2">{changingSpell().name}</p>
           <TextArea
             rows="2"
-            labelText={TRANSLATION[locale()]['spellNote']}
+            labelText={TRANSLATION[locale()].spellNote}
             onChange={(value) => setChangingSpell({ ...changingSpell(), notes: value })}
             value={changingSpell().notes}
           />
-          <Button default textable classList="mt-2" onClick={updateSpell}>{TRANSLATION[locale()]['save']}</Button>
+          <Button default textable classList="mt-2" onClick={updateSpell}>{TRANSLATION[locale()].save}</Button>
         </Show>
       </Modal>
     </>

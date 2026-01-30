@@ -1,6 +1,6 @@
 import { useAppLocale } from '../../../../../context';
 
-const TRANSLATIONS = {
+const TRANSLATION = {
   en: {
     'v': 'V',
     's': 'S',
@@ -18,7 +18,7 @@ export const SpellComponents = (props) => {
 
   return (
     <p class="spell-attribute">
-      {props.value.split(',').map((item) => TRANSLATIONS[locale()][item]).join('/')}
+      {props.value.split(',').map((item) => TRANSLATION[locale()][item]).join('/')}
     </p>
   );
 }
