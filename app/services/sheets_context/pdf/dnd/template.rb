@@ -224,10 +224,13 @@ module SheetsContext
                   text_box "#{'+' if value.positive?}#{value}", at: [302, 681 - (index * 22)], width: 40, height: 14, align: :center
                 end
                 if spell.info['dc'] && (character.spell_classes[prepared_by] || static_data['save_dc'])
-                  ability = ::Dnd2024::Character.abilities.dig(spell.info['dc'], 'shortName', I18n.locale.to_s).upcase
-                  value = static_data['save_dc'] || character.spell_classes.dig(prepared_by, :save_dc)
+                  ability = ::Dnd2024::Character.abilities.dig(spell.info['dc'], 'shortName', I18n.locale.to_s)&.upcase
 
-                  text_box "#{ability} #{value}", at: [302, 681 - (index * 22)], width: 40, height: 14, align: :center
+                  if ability
+                    value = static_data['save_dc'] || character.spell_classes.dig(prepared_by, :save_dc)
+
+                    text_box "#{ability} #{value}", at: [302, 681 - (index * 22)], width: 40, height: 14, align: :center
+                  end
                 end
 
                 if spell.info['effects']
