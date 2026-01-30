@@ -186,21 +186,19 @@ module CharactersContext
         input[:added_classes].each do |added_class|
           next if ::Dnd2024::Character::CLASSES_KNOW_SPELLS_LIST.exclude?(added_class)
 
-          spells =
-            ::Dnd2024::Spell
-              .where('available_for && ?', "{#{added_class}}")
-              .map do |spell|
-                {
-                  character_id: input[:character].id,
-                  spell_id: spell.id,
-                  data: { ready_to_use: false, prepared_by: added_class }
-                }
-              end
-          ::Character::Spell.upsert_all(spells) if spells.any?
+          spells = ::Dnd2024::Feat.where(origin: 6).where('origin_values && ?', "{#{added_class}}").map do |feat|
+            {
+              character_id: character.id,
+              feat_id: feat.id,
+              ready_to_use: false,
+              value: { prepared_by: added_class }
+            }
+          end
+          ::Character::Feat.upsert_all(spells) if spells.any?
         end
 
         input[:removed_classes].each do |removed_class|
-          input[:character].spells.where("data -> 'prepared_by' ? :prepared_by", prepared_by: removed_class).delete_all
+          input[:character].feats.where("value -> 'prepared_by' ? :prepared_by", prepared_by: removed_class).delete_all
         end
       end
 

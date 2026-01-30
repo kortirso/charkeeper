@@ -35,13 +35,12 @@ module Adminbook
     def spell_class
       case params[:provider]
       when 'dnd5' then ::Dnd5::Spell
-      when 'dnd2024' then ::Dnd2024::Spell
       end
     end
 
     def order_sql
       case params[:provider]
-      when 'dnd5', 'dnd2024' then Arel.sql("data ->> 'school' ASC, data ->> 'level' ASC")
+      when 'dnd5' then Arel.sql("data ->> 'school' ASC, data ->> 'level' ASC")
       end
     end
 
