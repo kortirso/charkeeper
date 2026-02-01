@@ -1,10 +1,11 @@
 # frozen_string_literal: true
 
 class FeaturesBaseDecorator
-  attr_accessor :wrapped
+  attr_accessor :wrapped, :exclude_feature_origins
 
-  def initialize(obj)
+  def initialize(obj, exclude_feature_origins: [])
     @wrapped = obj
+    @exclude_feature_origins = exclude_feature_origins
   end
 
   def method_missing(method, *_args)
@@ -27,7 +28,11 @@ class FeaturesBaseDecorator
   end
 
   def available_features
-    @available_features ||= wrapped.feats.includes(:feat).order('feats.origin ASC, feats.created_at ASC')
+    @available_features ||= begin
+      relation = wrapped.feats.includes(:feat).order('feats.origin ASC, feats.created_at ASC')
+      relation = relation.where.not(feats: { origin: exclude_feature_origins }) if exclude_feature_origins.any?
+      relation
+    end
   end
 
   def dynamic_bonuses

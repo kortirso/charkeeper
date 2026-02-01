@@ -154,7 +154,7 @@ module Dnd2024
 
     def decorator(simple: false, version: nil)
       base_decorator = ::Dnd2024Character::BaseDecorator.new(self)
-      base_features_decorator = ::FeaturesBaseDecorator.new(base_decorator)
+      base_features_decorator = ::FeaturesBaseDecorator.new(base_decorator, exclude_feature_origins: [6])
       base_features_decorator.features unless simple
       stats_decorator = ::Dnd2024Character::StatsDecorator.new(base_features_decorator)
       species_decorator = ::Dnd2024Character::SpeciesDecorateWrapper.new(stats_decorator)

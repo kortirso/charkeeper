@@ -7,7 +7,7 @@ module SheetsContext
         include Deps[markdown: 'markdown']
 
         # rubocop: disable Metrics/AbcSize, Metrics/MethodLength, Metrics/PerceivedComplexity, Style/NestedTernaryOperator, Metrics/CyclomaticComplexity, Layout/LineLength
-        def to_pdf(character:)
+        def to_pdf(character:, phtml: nil)
           super
 
           traits_names = ::Daggerheart::Character.traits
@@ -134,11 +134,15 @@ module SheetsContext
                 fill_color '000000'
                 text_box feat.feat.title[I18n.locale.to_s], at: [52 + (index * 175), 788 - (group_index * 127)], width: 140, height: 14
 
-                font_size 5
-                card_text = markdown.call(value: feat.feat.description[I18n.locale.to_s], version: '0.4.4')
-                text_box card_text.gsub(%r{</?p[^>]*>}i, '').gsub(/{{[a-z]+}}/, 'x'), at: [48 + (index * 175), 758 - (group_index * 127)], width: 160, height: 90, inline_format: true
+                card_text =
+                  markdown.call(value: feat.feat.description[I18n.locale.to_s], version: '0.4.4').gsub(/{{[a-z]+}}/, 'x')
+                bounding_box([48 + (index * 175), 766 - (group_index * 127)], width: 160, height: 90) do
+                  phtml.append(html: "<div style='font-size: 8px'>#{card_text}</div>")
+                end
               end
             end
+
+          render_features_page(character, phtml: phtml, except: ['domain_card'])
 
           render
         end

@@ -10,7 +10,7 @@ module SheetsContext
         DIRECT_EFFECT_VALUES = %w[buff debuff heal].freeze
 
         # rubocop: disable Metrics/AbcSize, Layout/LineLength, Metrics/MethodLength, Style/NestedTernaryOperator, Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity
-        def to_pdf(character:)
+        def to_pdf(character:, phtml: nil)
           super
 
           abilities_names = ::Dnd2024::Character.abilities
@@ -131,12 +131,14 @@ module SheetsContext
           %w[copper silver gold].each_with_index do |key, index|
             font_size 6
             fill_color 'FFFFFF'
-            text_box I18n.t("services.sheets_context.gold.#{key}"), at: [80 + (index * 59), 759], width: 48, align: :center
+            text_box I18n.t("services.sheets_context.gold.#{key}"), at: [75 + (index * 59), 759], width: 48, align: :center
 
             font_size 12
             fill_color '000000'
-            text_box character.coins[key].to_s, at: [83 + (index * 59), 781], width: 42, height: 14, align: :center
+            text_box character.coins[key].to_s, at: [78 + (index * 59), 781], width: 42, height: 14, align: :center
           end
+
+          render_features_page(character, phtml: phtml)
 
           start_new_page
 
