@@ -122,12 +122,10 @@ export const Daggerheart = (props) => {
                 <DaggerheartBeastform character={character()} onReplaceCharacter={props.onReplaceCharacter} />
               </div>
               <div class="mt-4">
-                <Feats
-                  character={character()}
-                  filters={featFilters()}
-                  onReplaceCharacter={props.onReplaceCharacter}
-                  onReloadCharacter={props.onReloadCharacter}
-                />
+                <DaggerheartStances character={character()} onReplaceCharacter={props.onReplaceCharacter} />
+              </div>
+              <div class="mt-4">
+                <Conditions character={character()} />
               </div>
             </Match>
             <Match when={activeMobileTab() === 'combat'}>
@@ -141,6 +139,14 @@ export const Daggerheart = (props) => {
                   openDiceRoll={openDiceRoll}
                   openSimpleDiceRoll={openSimpleDiceRoll}
                   onReplaceCharacter={props.onReplaceCharacter}
+                />
+              </div>
+              <div class="mt-4">
+                <Feats
+                  character={character()}
+                  filters={featFilters()}
+                  onReplaceCharacter={props.onReplaceCharacter}
+                  onReloadCharacter={props.onReloadCharacter}
                 />
               </div>
             </Match>
@@ -191,12 +197,6 @@ export const Daggerheart = (props) => {
             </Match>
             <Match when={activeMobileTab() === 'states'}>
               <DaggerheartTransform character={character()} onReplaceCharacter={props.onReplaceCharacter} />
-              <div class="mt-4">
-                <DaggerheartStances character={character()} onReplaceCharacter={props.onReplaceCharacter} />
-              </div>
-              <div class="mt-4">
-                <Conditions character={character()} />
-              </div>
               <div class="mt-4">
                 <DaggerheartScars character={character()} onReloadCharacter={props.onReloadCharacter} />
               </div>
@@ -265,12 +265,10 @@ export const Daggerheart = (props) => {
           <DaggerheartBeastform character={character()} onReplaceCharacter={props.onReplaceCharacter} />
         </div>
         <div class="mt-4">
-          <Feats
-            character={character()}
-            filters={featFilters()}
-            onReplaceCharacter={props.onReplaceCharacter}
-            onReloadCharacter={props.onReloadCharacter}
-          />
+          <DaggerheartStances character={character()} onReplaceCharacter={props.onReplaceCharacter} />
+        </div>
+        <div class="mt-4">
+          <Conditions character={character()} />
         </div>
       </>
     );
@@ -298,6 +296,14 @@ export const Daggerheart = (props) => {
                   openDiceRoll={openDiceRoll}
                   openSimpleDiceRoll={openSimpleDiceRoll}
                   onReplaceCharacter={props.onReplaceCharacter}
+                />
+              </div>
+              <div class="mt-4">
+                <Feats
+                  character={character()}
+                  filters={featFilters()}
+                  onReplaceCharacter={props.onReplaceCharacter}
+                  onReloadCharacter={props.onReloadCharacter}
                 />
               </div>
             </Match>
@@ -348,12 +354,6 @@ export const Daggerheart = (props) => {
             </Match>
             <Match when={activeTab() === 'states'}>
               <DaggerheartTransform character={character()} onReplaceCharacter={props.onReplaceCharacter} />
-              <div class="mt-4">
-                <DaggerheartStances character={character()} onReplaceCharacter={props.onReplaceCharacter} />
-              </div>
-              <div class="mt-4">
-                <Conditions character={character()} />
-              </div>
               <div class="mt-4">
                 <DaggerheartScars character={character()} onReloadCharacter={props.onReloadCharacter} />
               </div>
