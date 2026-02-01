@@ -8,6 +8,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Added
 - rendering character features in PDF
 
+### Modified
+- blocks structure for Daggerheart characters
+
 ## [0.4.5] - 2026-01-30
 ### Added
 - campaign notes
