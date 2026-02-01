@@ -113,6 +113,8 @@ module Daggerheart
 
     attribute :data, Daggerheart::CharacterData.to_type
 
+    has_many :projects, class_name: 'Daggerheart::Project', dependent: :destroy
+
     def tier
       return 4 if data.level >= 8
       return 3 if data.level >= 5
