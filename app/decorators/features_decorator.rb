@@ -73,7 +73,7 @@ class FeaturesDecorator
       slug: item[2],
       kind: 'static',
       title: item[1][I18n.locale.to_s],
-      description: feature[I18n.locale.to_s],
+      description: markdown.call(value: feature[I18n.locale.to_s], version: version),
       origin: 'equipment',
       price: {},
       info: {}
@@ -88,10 +88,7 @@ class FeaturesDecorator
     description = feature.feat.description[I18n.locale.to_s]
     return if description.blank?
 
-    result = Charkeeper::Container.resolve('markdown').call(
-      value: description,
-      version: version
-    )
+    result = markdown.call(value: description, version: version)
     feature.feat.description_eval_variables.each { |key, value| result.gsub!("{{#{key}}}", value.to_s) }
     result
   end
@@ -113,5 +110,9 @@ class FeaturesDecorator
       metadata: { slug: feat.slug, message: exception.message },
       severity: :info
     )
+  end
+
+  def markdown
+    Charkeeper::Container.resolve('markdown')
   end
 end

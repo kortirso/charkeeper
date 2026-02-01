@@ -41,6 +41,8 @@ ru:
       equipment: СНАРЯЖЕНИЕ
       spells: ЗАКЛИНАНИЯ
       slots: ЯЧЕЙКИ ЗАКЛИНАНИЙ
+      features: СПОСОБНОСТИ
+      uses_left: Осталось зарядов
       equipments:
         hands: В руках
         equipment: На теле

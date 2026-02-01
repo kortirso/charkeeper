@@ -4,7 +4,7 @@ module SheetsContext
   module Pdf
     module Dnd2024
       class Template < SheetsContext::Pdf::Dnd::Template
-        def to_pdf(character:)
+        def to_pdf(character:, phtml: nil)
           super
 
           render

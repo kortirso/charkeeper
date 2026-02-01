@@ -79,6 +79,7 @@ GEM
       uri (>= 0.13.1)
     airbrussh (1.5.3)
       sshkit (>= 1.6.1, != 1.7.0)
+    ansi (1.5.0)
     ast (2.4.3)
     authkeeper (0.1.14)
       rails (>= 7.2.2)
@@ -295,6 +296,9 @@ GEM
       racc (~> 1.4)
     nokogiri (1.19.0-x86_64-linux-musl)
       racc (~> 1.4)
+    oga (3.4)
+      ast
+      ruby-ll (~> 2.1)
     oj (3.16.13)
       bigdecimal (>= 3.0)
       ostruct (>= 0.2)
@@ -323,6 +327,9 @@ GEM
       matrix (~> 0.4)
       pdf-core (~> 0.10.0)
       ttfunk (~> 1.8)
+    prawn-html (0.7.1)
+      oga (~> 3.3)
+      prawn (~> 2.4)
     prettyprint (0.2.0)
     prism (1.8.0)
     props_template (0.38.0)
@@ -459,6 +466,9 @@ GEM
       lint_roller (~> 1.1)
       rubocop (~> 1.72, >= 1.72.1)
       rubocop-rspec (~> 3.5)
+    ruby-ll (2.1.4)
+      ansi
+      ast
     ruby-next-core (1.2.0)
     ruby-progressbar (1.13.0)
     ruby-rc4 (0.1.5)
@@ -578,6 +588,7 @@ DEPENDENCIES
   pg (~> 1.1)
   pghero
   prawn
+  prawn-html
   props_template
   puma (= 6.5.0)
   rack (~> 3.0)

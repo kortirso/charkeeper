@@ -17,10 +17,8 @@ module SheetsContext
       def daggerheart_pdf(character)
         pdf = CombinePDF.load Rails.root.join('app/services/sheets_context/pdf/daggerheart/template.pdf')
 
-        pdf_data =
-          SheetsContext::Pdf::Daggerheart::Template.new(
-            page_size: 'A4', page_layout: :portrait, margin: 0
-          ).to_pdf(character: character.decorator)
+        document = SheetsContext::Pdf::Daggerheart::Template.new(page_size: 'A4', page_layout: :portrait, margin: 0)
+        pdf_data = document.to_pdf(character: character.decorator(version: '0.4.5'), phtml: phtml(document))
 
         add_data_to_template(pdf, pdf_data)
       end
@@ -28,10 +26,8 @@ module SheetsContext
       def dnd5_pdf(character)
         pdf = CombinePDF.load Rails.root.join('app/services/sheets_context/pdf/dnd/template.pdf')
 
-        pdf_data =
-          SheetsContext::Pdf::Dnd5::Template.new(
-            page_size: 'A4', page_layout: :portrait, margin: 0
-          ).to_pdf(character: character.decorator)
+        document = SheetsContext::Pdf::Dnd5::Template.new(page_size: 'A4', page_layout: :portrait, margin: 0)
+        pdf_data = document.to_pdf(character: character.decorator(version: '0.4.5'), phtml: phtml(document))
 
         add_data_to_template(pdf, pdf_data)
       end
@@ -39,10 +35,8 @@ module SheetsContext
       def dnd2024_pdf(character)
         pdf = CombinePDF.load Rails.root.join('app/services/sheets_context/pdf/dnd/template.pdf')
 
-        pdf_data =
-          SheetsContext::Pdf::Dnd2024::Template.new(
-            page_size: 'A4', page_layout: :portrait, margin: 0
-          ).to_pdf(character: character.decorator)
+        document = SheetsContext::Pdf::Dnd2024::Template.new(page_size: 'A4', page_layout: :portrait, margin: 0)
+        pdf_data = document.to_pdf(character: character.decorator(version: '0.4.5'), phtml: phtml(document))
 
         add_data_to_template(pdf, pdf_data)
       end
@@ -50,10 +44,8 @@ module SheetsContext
       def pathfinder2_pdf(character)
         pdf = CombinePDF.load Rails.root.join('app/services/sheets_context/pdf/pathfinder2/template.pdf')
 
-        pdf_data =
-          SheetsContext::Pdf::Pathfinder2::Template.new(
-            page_size: 'A4', page_layout: :portrait, margin: 0
-          ).to_pdf(character: character.decorator)
+        document = SheetsContext::Pdf::Pathfinder2::Template.new(page_size: 'A4', page_layout: :portrait, margin: 0)
+        pdf_data = document.to_pdf(character: character.decorator(version: '0.4.5'), phtml: phtml(document))
 
         add_data_to_template(pdf, pdf_data)
       end
@@ -64,6 +56,15 @@ module SheetsContext
           page << parsed_pdf.pages[index]
         end
         pdf
+      end
+
+      def phtml(document)
+        phtml = PrawnHtml::Instance.new(document)
+        css = <<~CSS
+          ul { margin-left: -16px }
+        CSS
+        phtml.append(css: css)
+        phtml
       end
     end
   end

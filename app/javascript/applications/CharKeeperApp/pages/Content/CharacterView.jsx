@@ -14,14 +14,14 @@ export const CharacterView = (props) => {
 
   const [appState] = useAppState();
   const [{ renderNotice }] = useAppAlert();
-  const [, dict] = useAppLocale();
+  const [locale, dict] = useAppLocale();
 
   const t = i18n.translator(dict);
 
   createEffect(() => {
     if (appState.activePageParams.id === characterId()) return;
 
-    const fetchCharacterView = async () => await fetchCharacterViewRequest(appState.accessToken, appState.activePageParams.id);
+    const fetchCharacterView = async () => await fetchCharacterViewRequest(appState.accessToken, appState.activePageParams.id, locale());
 
     Promise.all([fetchCharacterView()]).then(
       ([characterViewData]) => {
@@ -70,7 +70,7 @@ export const CharacterView = (props) => {
   }
 
   const copy = () => {
-    copyToClipboard(`https://${appState.rootHost}/characters/${appState.activePageParams.id}.pdf`);
+    copyToClipboard(`https://${appState.rootHost}/${locale()}/characters/${appState.activePageParams.id}.pdf`);
     renderNotice(t('alerts.copied'));
   }
 

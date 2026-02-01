@@ -5,7 +5,7 @@ module SheetsContext
     module Pathfinder2
       class Template < SheetsContext::Pdf::Template
         # rubocop: disable Metrics/AbcSize, Layout/LineLength, Metrics/MethodLength, Metrics/PerceivedComplexity, Metrics/CyclomaticComplexity
-        def to_pdf(character:)
+        def to_pdf(character:, phtml: nil)
           super
 
           abilities_names = ::Pathfinder2::Character.abilities

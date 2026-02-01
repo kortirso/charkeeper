@@ -80,6 +80,7 @@ gem 'rbnacl'
 # PDF generating
 gem 'combine_pdf'
 gem 'prawn'
+gem 'prawn-html'
 
 # view pagination
 gem 'pagy', '~> 9.0'
