@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## Unreleased
 ### Added
 - rendering character features in PDF
+- changing community for Daggerheart characters
 
 ### Modified
 - blocks structure for Daggerheart characters

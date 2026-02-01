@@ -1,9 +1,12 @@
-import { createSignal, createEffect, Show, batch } from 'solid-js';
+import { createSignal, createEffect, createMemo, Show, batch } from 'solid-js';
 import * as i18n from '@solid-primitives/i18n';
 
-import { Button, Input, Label } from '../../components';
+import { Button, Input, Label, Select } from '../../components';
 import { useAppState, useAppLocale, useAppAlert } from '../../context';
+import daggerheartConfig from '../../data/daggerheart.json';
+import { fetchHomebrewsRequest } from '../../requests/fetchHomebrewsRequest';
 import { updateCharacterRequest } from '../../requests/updateCharacterRequest';
+import { translate } from '../../helpers';
 
 const TRANSLATION = {
   en: {
@@ -11,19 +14,23 @@ const TRANSLATION = {
     avatarFile: 'Select avatar file',
     avatarUrl: 'or paste link to image',
     avatarTransform: 'Image will be converted to square format',
-    heritageName: 'Mixed ancestry name'
+    heritageName: 'Mixed ancestry name',
+    communityName: 'Community name'
   },
   ru: {
     fileSizeLimit: 'Размер файла должен быть меньше 1 МБ',
     avatarFile: 'Выберите файл аватара',
     avatarUrl: 'или укажите ссылку на изображение',
     avatarTransform: 'Изображение будет конфертировано в квадратный формат',
-    heritageName: 'Название расы'
+    heritageName: 'Название расы',
+    communityName: 'Название общества'
   }
 }
 
 export const Avatar = (props) => {
   const character = () => props.character;
+
+  const [homebrews, setHomebrews] = createSignal(undefined);
 
   const [lastActiveCharacterId, setLastActiveCharacterId] = createSignal(undefined);
   const [loading, setLoading] = createSignal(false);
@@ -32,6 +39,7 @@ export const Avatar = (props) => {
   
   const [name, setName] = createSignal(undefined);
   const [heritageName, setHeritageName] = createSignal(undefined);
+  const [community, setCommunity] = createSignal(undefined);
 
   const [appState] = useAppState();
   const [{ renderAlert, renderAlerts, renderNotice }] = useAppAlert();
@@ -39,14 +47,34 @@ export const Avatar = (props) => {
 
   const t = i18n.translator(dict);
 
+  const fetchHomebrews = async () => await fetchHomebrewsRequest(appState.accessToken);
+
   createEffect(() => {
     if (lastActiveCharacterId() === character().id) return;
 
+    if (character().provider === 'daggerheart' && homebrews() === undefined) {
+      Promise.all([fetchHomebrews()]).then(
+        ([homebrewsData]) => {
+          setHomebrews(homebrewsData);
+        }
+      );
+    }
+
     batch(() => {
       setName(character().name);
-      setHeritageName(character().heritage_name);
       setLastActiveCharacterId(character().id);
+
+      if (character().provider === 'daggerheart') {
+        setHeritageName(character().heritage_name);
+        setCommunity(character().community);
+      }
     });
+  });
+
+  const daggerheartCommunities = createMemo(() => {
+    if (homebrews() === undefined) return {};
+
+    return { ...daggerheartConfig.communities, ...homebrews().daggerheart.communities };
   });
 
   const handleFileChange = (event) => {
@@ -65,6 +93,7 @@ export const Avatar = (props) => {
     const characterFormData = new FormData();
     if (character().name !== name()) characterFormData.append('name', name());
     if (character().heritage_name !== heritageName()) characterFormData.append('heritage_name', heritageName());
+    if (character().community !== community()) characterFormData.append('community', community());
     if (selectedFile()) characterFormData.append('file', selectedFile());
     if (avatarUrl().length > 0) characterFormData.append('avatar_url', avatarUrl());
     characterFormData.append('only_head', true);
@@ -103,12 +132,21 @@ export const Avatar = (props) => {
         value={name()}
         onInput={setName}
       />
-      <Show when={character().provider === 'daggerheart' && heritageName()}>
-        <Input
+      <Show when={character().provider === 'daggerheart'}>
+        <Show when={heritageName()}>
+          <Input
+            containerClassList="mt-4"
+            labelText={TRANSLATION[locale()].heritageName}
+            value={heritageName()}
+            onInput={setHeritageName}
+          />
+        </Show>
+        <Select
           containerClassList="mt-4"
-          labelText={TRANSLATION[locale()].heritageName}
-          value={heritageName()}
-          onInput={setHeritageName}
+          labelText={TRANSLATION[locale()].communityName}
+          items={translate(daggerheartCommunities(), locale())}
+          selectedValue={community()}
+          onSelect={setCommunity}
         />
       </Show>
       <Button default classList="mt-4" onClick={() => loading() ? null : updateCharacter()}>{loading() ? t('saving') : t('save')}</Button>

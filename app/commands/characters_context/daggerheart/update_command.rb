@@ -10,6 +10,10 @@ module CharactersContext
         cache: 'cache.avatars'
       ]
 
+      REFRESH_ATTRIBUTES = %i[
+        level classes subclasses subclasses_mastery transformation beastform selected_features community
+      ].freeze
+
       # rubocop: disable Metrics/BlockLength
       use_contract do
         config.messages.namespace = :daggerheart_character
@@ -67,6 +71,7 @@ module CharactersContext
             required(:name).filled(:string, max_size?: 500)
           end
           optional(:heritage_name).filled(:string, max_size?: 50)
+          required(:community).filled(:string)
         end
 
         rule(:avatar_file, :avatar_url, :file).validate(:check_only_one_present)
@@ -103,11 +108,12 @@ module CharactersContext
 
       def do_persist(input) # rubocop: disable Metrics/AbcSize
         input[:character].data =
-          input[:character].data.attributes.merge(input.except(:character, :avatar_file, :avatar_url, :name).stringify_keys)
+          input[:character].data
+            .attributes.merge(input.except(:character, :avatar_file, :avatar_url, :name).stringify_keys)
         input[:character].assign_attributes(input.slice(:name))
         input[:character].save!
 
-        if %i[level classes subclasses subclasses_mastery transformation beastform selected_features].intersect?(input.keys)
+        if REFRESH_ATTRIBUTES.intersect?(input.keys)
           refresh_feats.call(character: input[:character])
         end
         upload_avatar(input)
@@ -115,7 +121,9 @@ module CharactersContext
         { result: input[:character] }
       end
 
-      def upload_avatar(input)
+      def upload_avatar(input) # rubocop: disable Metrics/AbcSize
+        return if input.slice(:avatar_file, :avatar_url, :file).keys.blank?
+
         attach_avatar_by_file.call({ character: input[:character], file: input[:avatar_file] }) if input[:avatar_file]
         attach_avatar_by_url.call({ character: input[:character], url: input[:avatar_url] }) if input[:avatar_url]
         input[:character].avatar.attach(input[:file]) if input[:file]
