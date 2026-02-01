@@ -92,9 +92,9 @@ module SheetsContext
           title_box.render(dry_run: true)
 
           uses_left = nil
-          if feature[:limit]
-            uses_left = feature[:limit].zero? ? feature[:used_count] : (feature[:limit] - feature[:used_count])
-          end
+          # if feature[:limit]
+          #   uses_left = feature[:limit].zero? ? feature[:used_count] : (feature[:limit] - feature[:used_count])
+          # end
 
           font_size 8
           description_box = ::Prawn::Text::Formatted::Box.new([{ text: feature[:description] }], {
