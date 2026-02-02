@@ -105,6 +105,11 @@ module Charkeeper
       CharactersContext::Dnd2024::Homebrew::AddItemCommand.new
     }
 
+    register('commands.characters_context.daggerheart.projects.add') { CharactersContext::Daggerheart::Projects::AddCommand.new }
+    register('commands.characters_context.daggerheart.projects.change') {
+      CharactersContext::Daggerheart::Projects::ChangeCommand.new
+    }
+
     register('commands.image_processing.attach_avatar_by_file') { ImageProcessingContext::AttachAvatarByFileCommand.new }
     register('commands.image_processing.attach_avatar_by_url') { ImageProcessingContext::AttachAvatarByUrlCommand.new }
 
