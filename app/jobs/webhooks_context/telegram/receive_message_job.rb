@@ -5,6 +5,8 @@ module WebhooksContext
     class ReceiveMessageJob < ApplicationJob
       queue_as :default
 
+      retry_on StandardError, attempts: 0
+
       def perform(message:)
         message_webhook.call({ message: message })
       end
