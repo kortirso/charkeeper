@@ -1,9 +1,8 @@
 import { createSignal, createEffect, batch, For, Show } from 'solid-js';
 import { createStore } from 'solid-js/store';
-import * as i18n from '@solid-primitives/i18n';
 
 import {
-  Button, IconButton, ErrorWrapper, Levelbox, Checkbox, GuideWrapper, Toggle, Input, TextArea
+  Button, IconButton, ErrorWrapper, Levelbox, Checkbox, GuideWrapper, Toggle, Input, TextArea, Select
 } from '../../../../components';
 import { useAppState, useAppLocale, useAppAlert } from '../../../../context';
 import { Close, Edit } from '../../../../assets';
@@ -16,16 +15,21 @@ import { replace } from '../../../../helpers';
 
 const TRANSLATION = {
   en: {
-    short: 'Short rest',
-    long: 'Long rest',
-    session: 'Session rest',
-    description: "At rest player can move domain cards between its loadout and vault for free, then choose twice from the list of downtime moves.",
+    values: {
+      short: 'Short rest',
+      long: 'Long rest',
+      session: 'Session rest'
+    },
+    description: "At rest player can move domain cards between its loadout and vault for free, then choose twice from the list of downtime moves. You also can help with clearing HP and armor slots for your party members, but these options are not visible here.",
     makeRolls: 'Make auto rolls',
-    clear_health: 'Clear 1d4+{{tier}} or all Hit Points for yourself',
-    clear_stress: 'Clear 1d4+{{tier}} or all Stress',
-    clear_armor_slots: 'Clear 1d4+{{tier}} or all Armor Slots from your armor',
-    gain_hope: 'Gain a Hope',
-    gain_double_hope: 'Gain 2 Hope',
+    clear_health_short: 'Clear 1d4+{{tier}} Hit Points for yourself',
+    clear_stress_short: 'Clear 1d4+{{tier}} Stress',
+    clear_armor_slots_short: 'Clear 1d4+{{tier}} Armor Slots from your armor',
+    clear_health_long: 'Clear all Hit Points for yourself',
+    clear_stress_long: 'Clear all Stress',
+    clear_armor_slots_long: 'Clear all Armor Slots from your armor',
+    gain_hope: 'Gain a Hope for prepare',
+    gain_double_hope: 'Gain 2 Hope for prepare with party member',
     title: 'Projects',
     projectTitle: "Project's title",
     projectDescription: "Project's description",
@@ -34,19 +38,27 @@ const TRANSLATION = {
     save: 'Save',
     cancel: 'Cancel',
     newProject: 'ADD NEW PROJECT',
-    progress: "Project's progress"
+    progress: "Project's progress",
+    valueLabel: 'Select type of rest',
+    rest: 'Make rest',
+    complete: 'Rest is completed'
   },
   ru: {
-    short: 'Короткий отдых',
-    long: 'Длинный отдых',
-    session: 'Между сессиями',
-    description: 'Во время отдыха игрок может свободно перемещать карты домена между инвентарём и хранилищем, затем дважды выбрать из списка ходов отдыха.',
+    values: {
+      short: 'Короткий отдых',
+      long: 'Длинный отдых',
+      session: 'Между сессиями'
+    },
+    description: 'Во время отдыха игрок может свободно перемещать карты домена между инвентарём и хранилищем, затем дважды выбрать из списка ходов отдыха. Вы также можете помочь с очисткой ран и слотов доспеха товарищам, но эти опции тут не учтены.',
     makeRolls: 'Автоматические броски',
-    clear_health: 'Очистить 1d4+{{tier}} или все ХП для себя',
-    clear_stress: 'Очистить 1d4+{{tier}} или все стресса',
-    clear_armor_slots: 'Очистить 1d4+{{tier}} или все слотов доспеха для себя',
-    gain_hope: 'Получить Надежду',
-    gain_double_hope: 'Получить 2 Надежды',
+    clear_health_short: 'Очистить 1d4+{{tier}} ран для себя',
+    clear_stress_short: 'Очистить 1d4+{{tier}} ячеек стресса',
+    clear_armor_slots_short: 'Очистить 1d4+{{tier}} слотов доспеха для себя',
+    clear_health_long: 'Очистить все раны для себя',
+    clear_stress_long: 'Очистить все ячейки стресса',
+    clear_armor_slots_long: 'Очистить все слоты доспеха для себя',
+    gain_hope: 'Получить Надежду за подготовку',
+    gain_double_hope: 'Получить 2 Надежды за подготовку с товарищем',
     title: 'Проекты',
     projectTitle: 'Название проекта',
     projectDescription: 'Описание проекта',
@@ -55,7 +67,10 @@ const TRANSLATION = {
     save: 'Сохранить',
     cancel: 'Отменить',
     newProject: 'ДОБАВИТЬ ПРОЕКТ',
-    progress: 'Прогресс выполнения проекта'
+    progress: 'Прогресс выполнения проекта',
+    valueLabel: 'Выберите тип отдыха',
+    rest: 'Провести отдых',
+    complete: 'Отдых завершён'
   }
 }
 
@@ -79,12 +94,11 @@ export const DaggerheartRest = (props) => {
     description: '',
     complexity: 1
   });
+  const [value, setValue] = createSignal(null);
 
   const [appState] = useAppState();
   const [{ renderNotice, renderAlerts }] = useAppAlert();
-  const [locale, dict] = useAppLocale();
-
-  const t = i18n.translator(dict);
+  const [locale] = useAppLocale();
 
   createEffect(() => {
     if (lastActiveCharacterId() === character().id) return;
@@ -105,19 +119,19 @@ export const DaggerheartRest = (props) => {
     setRestOptions({ ...restOptions, [value]: newValue });
   }
 
-  const restCharacter = async (payload) => {
+  const restCharacter = async () => {
     const result = await createCharacterRestRequest(
       appState.accessToken,
       character().provider,
       character().id,
-      { ...payload, options: restOptions, make_rolls: makeRolls() }
+      { value: value(), options: restOptions, make_rolls: makeRolls() }
     );
     if (result.errors_list === undefined) {
       batch(() => {
         props.onReloadCharacter();
         setRestOptions({ clear_health: 0, clear_stress: 0, clear_armor_slots: 0, gain_hope: 0, gain_double_hope: 0 });
         setMakeRolls(false);
-        renderNotice(t('alerts.restIsFinished'));
+        renderNotice(TRANSLATION[locale()].complete);
       });
     } else renderAlerts(result.errors_list);
   }
@@ -177,40 +191,40 @@ export const DaggerheartRest = (props) => {
       <GuideWrapper character={character()}>
         <div class="blockable p-4">
           <p class="mb-4">{TRANSLATION[locale()].description}</p>
-          <For each={['clear_health', 'clear_stress', 'clear_armor_slots', 'gain_hope', 'gain_double_hope']}>
-            {(item) =>
-              <Levelbox
-                number
-                classList="mb-1"
-                labelText={replace(TRANSLATION[locale()][item], { tier: character().tier })}
-                labelPosition="right"
-                labelClassList="ml-2"
-                value={restOptions[item]}
-                onToggle={() => updateOption(item)}
-              />
-            }
-          </For>
-          <Checkbox
-            classList="mb-4"
-            labelText={TRANSLATION[locale()].makeRolls}
-            labelPosition="right"
-            labelClassList="ml-2"
-            checked={makeRolls()}
-            onToggle={() => setMakeRolls(!makeRolls())}
-          />
-          <div class="grid grid-cols-1 lg:grid-cols-3 lg:gap-4">
-            <Button default textable classList="mb-2 lg:mb-0" onClick={() => restCharacter({ value: 'short' })}>
-              {TRANSLATION[locale()].short}
-            </Button>
-            <Button default textable classList="mb-2 lg:mb-0" onClick={() => restCharacter({ value: 'long' })}>
-              {TRANSLATION[locale()].long}
-            </Button>
-            <Button default textable onClick={() => restCharacter({ value: 'session' })}>
-              {TRANSLATION[locale()].session}
-            </Button>
-          </div>
-        </div>
 
+          <Select
+            containerClassList="w-full mb-4"
+            labelText={TRANSLATION[locale()].valueLabel}
+            items={TRANSLATION[locale()].values}
+            selectedValue={value()}
+            onSelect={setValue}
+          />
+
+          <Show when={value() && value() !== 'session'}>
+            <For each={[`clear_health`, `clear_stress`, `clear_armor_slots`, 'gain_hope', 'gain_double_hope']}>
+              {(item) =>
+                <Levelbox
+                  number
+                  classList="mb-1"
+                  labelText={replace(TRANSLATION[locale()][item.startsWith('clear') ? `${item}_${value()}` : item], { tier: character().tier })}
+                  labelPosition="right"
+                  labelClassList="ml-2"
+                  value={restOptions[item]}
+                  onToggle={() => updateOption(item)}
+                />
+              }
+            </For>
+            <Checkbox
+              classList="mb-4"
+              labelText={TRANSLATION[locale()].makeRolls}
+              labelPosition="right"
+              labelClassList="ml-2"
+              checked={makeRolls()}
+              onToggle={() => setMakeRolls(!makeRolls())}
+            />
+          </Show>
+          <Button default textable onClick={restCharacter}>{TRANSLATION[locale()].rest}</Button>
+        </div>
         <Show
           when={!projectsEditMode()}
           fallback={
