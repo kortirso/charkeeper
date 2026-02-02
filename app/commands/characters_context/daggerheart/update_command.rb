@@ -71,7 +71,7 @@ module CharactersContext
             required(:name).filled(:string, max_size?: 500)
           end
           optional(:heritage_name).filled(:string, max_size?: 50)
-          required(:community).filled(:string)
+          optional(:community).filled(:string)
         end
 
         rule(:avatar_file, :avatar_url, :file).validate(:check_only_one_present)
