@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - rendering character features in PDF
 - changing community for Daggerheart characters
 - projects for Daggerheart characters
+- creating homebrew items for D&D
 
 ### Modified
 - blocks structure for Daggerheart characters

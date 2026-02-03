@@ -15,7 +15,7 @@ module Homebrews
     end
 
     def show
-      serialize_resource(@item, serializer, :item, {}, :ok, { bonuses: @bonuses })
+      serialize_resource(@item, serializer, :item, {}, :ok, { bonuses: @bonuses, current_user_id: current_user.id })
     end
 
     def create
@@ -41,7 +41,8 @@ module Homebrews
     def copy
       case copy_item.call({ item: @item, user: current_user })
       in { errors: errors, errors_list: errors_list } then unprocessable_response(errors, errors_list)
-      in { result: result } then serialize_resource(result, serializer, :item, {}, :created)
+      in { result: result }
+        serialize_resource(result, serializer, :item, {}, :created, { bonuses: result.bonuses, current_user_id: current_user.id })
       end
     end
 

@@ -193,7 +193,9 @@ Rails.application.routes.draw do
     end
 
     namespace :dnd do
-      resources :items, only: %i[index show create update destroy]
+      resources :items, only: %i[index show create update destroy] do
+        post :copy, on: :member
+      end
     end
 
     namespace :users do

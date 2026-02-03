@@ -21,7 +21,12 @@ module HomebrewContext
           input[:item].attributes
             .slice('kind', 'info')
             .symbolize_keys
-            .merge({ user: input[:user], name: input[:item].name['en'], description: input[:item].description['en'] })
+            .merge({
+              user: input[:user],
+              name: input[:item].name['en'],
+              description: input[:item].description['en'],
+              public: false
+            })
         )[:result]
 
         { result: result }

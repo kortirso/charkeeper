@@ -3,7 +3,7 @@
 module Homebrews
   module Dnd
     class ItemSerializer < ApplicationSerializer
-      attributes :id, :name, :kind, :description, :bonuses, :info, :data
+      attributes :id, :name, :kind, :description, :bonuses, :info, :data, :public, :own
 
       def bonuses
         return [] unless context
@@ -16,6 +16,13 @@ module Homebrews
             dynamic_value: item.dynamic_value
           }
         end
+      end
+
+      def own # rubocop: disable Naming/PredicateMethod
+        return false unless context
+        return false unless context[:current_user_id]
+
+        object.user_id == context[:current_user_id]
       end
     end
   end

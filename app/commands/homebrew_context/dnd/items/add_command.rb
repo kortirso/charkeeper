@@ -12,7 +12,7 @@ module HomebrewContext
         use_contract do
           config.messages.namespace = :homebrew_item
 
-          Kinds = Dry::Types['strict.string'].enum('item', 'potion', 'ammo', 'focus', 'tools', 'music')
+          Kinds = Dry::Types['strict.string'].enum('item', 'potion', 'ammo', 'focus', 'tools', 'music', 'weapon')
           Types = Dry::Types['strict.string'].enum('Feat')
           ConsumeAttributes = Dry::Types['strict.string'].enum('health')
 
@@ -24,6 +24,7 @@ module HomebrewContext
             optional(:itemable_type).maybe(Types)
             optional(:itemable_id).maybe(:string, :uuid_v4?)
             optional(:data).hash
+            optional(:info).hash
             optional(:bonuses).maybe(:array).each(:hash) do
               required(:id).filled(type_included_in?: [Integer, String])
               required(:type).filled(:string)

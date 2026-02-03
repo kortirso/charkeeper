@@ -19,3 +19,4 @@ export * from './Content/Daggerheart/Recipes';
 export * from './Content/Daggerheart/Features';
 
 export * from './Content/Dnd/Items';
+export * from './Content/Dnd/Weapons';
