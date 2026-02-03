@@ -148,11 +148,14 @@ Rails.application.routes.draw do
 
     namespace :daggerheart do
       resources :characters, only: %i[create update] do
-        resources :spells, only: %i[index create update destroy], module: 'characters'
-        resources :rest, only: %i[create], module: 'characters'
-        resources :craft, only: %i[index create], module: 'characters'
-        resource :companions, only: %i[show create update destroy], module: 'characters'
-        resources :homebrew_items, only: %i[create], module: 'characters'
+        scope module: :characters do
+          resources :projects, only: %i[index create update destroy]
+          resources :spells, only: %i[index create update destroy]
+          resources :rest, only: %i[create]
+          resources :craft, only: %i[index create]
+          resource :companions, only: %i[show create update destroy]
+          resources :homebrew_items, only: %i[create]
+        end
       end
       resources :spells, only: %i[index]
     end

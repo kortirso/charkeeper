@@ -21,6 +21,7 @@ module Charkeeper
     register('markdown') { ActiveMarkdown.new }
     register('to_bool') { ToBool.new }
     register('roll') { Roll.new }
+    register('duality_roll') { DualityRoll.new }
     register('formula') { Formula.new }
     register('monitoring.providers.rails') { Monitoring::Providers::Rails.new }
     register('monitoring.client') { Monitoring::Client.new }
@@ -103,6 +104,11 @@ module Charkeeper
     }
     register('commands.characters_context.dnd2024.homebrew.add_item') {
       CharactersContext::Dnd2024::Homebrew::AddItemCommand.new
+    }
+
+    register('commands.characters_context.daggerheart.projects.add') { CharactersContext::Daggerheart::Projects::AddCommand.new }
+    register('commands.characters_context.daggerheart.projects.change') {
+      CharactersContext::Daggerheart::Projects::ChangeCommand.new
     }
 
     register('commands.image_processing.attach_avatar_by_file') { ImageProcessingContext::AttachAvatarByFileCommand.new }

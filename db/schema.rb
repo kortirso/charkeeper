@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_01_30_191559) do
+ActiveRecord::Schema[8.1].define(version: 2026_02_01_185351) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
   enable_extension "pgcrypto"
@@ -210,6 +210,20 @@ ActiveRecord::Schema[8.1].define(version: 2026_01_30_191559) do
     t.datetime "updated_at", null: false
     t.uuid "user_id", null: false
     t.index ["user_id"], name: "index_daggerheart_homebrew_transformations_on_user_id"
+  end
+
+  create_table "daggerheart_projects", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "character_id", null: false
+    t.integer "complexity", default: 1, null: false
+    t.datetime "created_at", null: false
+    t.string "description"
+    t.uuid "goal_id"
+    t.string "goal_type"
+    t.integer "progress", default: 0, null: false
+    t.string "title", null: false
+    t.datetime "updated_at", null: false
+    t.index ["character_id"], name: "index_daggerheart_projects_on_character_id"
+    t.index ["goal_id", "goal_type"], name: "index_daggerheart_projects_on_goal_id_and_goal_type", where: "((goal_id IS NOT NULL) AND (goal_type IS NOT NULL))"
   end
 
   create_table "dnd2024_character_features", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
