@@ -1,9 +1,7 @@
-import { createSignal, createEffect, batch, For, Show } from 'solid-js';
+import { createSignal, createEffect, createMemo, batch, For, Show } from 'solid-js';
 import { createStore } from 'solid-js/store';
 
-import {
-  Button, IconButton, ErrorWrapper, Levelbox, Checkbox, GuideWrapper, Toggle, Input, TextArea, Select
-} from '../../../../components';
+import { Button, IconButton, ErrorWrapper, Checkbox, GuideWrapper, Toggle, Input, TextArea, Select } from '../../../../components';
 import { useAppState, useAppLocale, useAppAlert } from '../../../../context';
 import { Close, Edit } from '../../../../assets';
 import { createCharacterRestRequest } from '../../../../requests/createCharacterRestRequest';
@@ -41,7 +39,14 @@ const TRANSLATION = {
     progress: "Project's progress",
     valueLabel: 'Select type of rest',
     rest: 'Make rest',
-    complete: 'Rest is completed'
+    complete: 'Rest is completed',
+    firstAction: 'First downtime action',
+    secondAction: 'Second downtime action',
+    workOnProject: 'Work on project',
+    makeProjectRolls: 'Make project rolls against difficulty',
+    projectDc: "Progress check difficulty",
+    projectRoll: 'Project progress',
+    completed: ' (Completed)'
   },
   ru: {
     values: {
@@ -70,9 +75,17 @@ const TRANSLATION = {
     progress: 'Прогресс выполнения проекта',
     valueLabel: 'Выберите тип отдыха',
     rest: 'Провести отдых',
-    complete: 'Отдых завершён'
+    complete: 'Отдых завершён',
+    firstAction: 'Первое действие отдыха',
+    secondAction: 'Второе действие отдыха',
+    workOnProject: 'Работа над проектом',
+    makeProjectRolls: 'Авто броски против сложности',
+    projectDc: 'Сложность проверки прогресса',
+    projectRoll: 'Прогресс проекта',
+    completed: ' (Завершён)'
   }
 }
+const DOWNTIME_ACTIONS = ['clear_health', 'clear_stress', 'clear_armor_slots', 'gain_hope', 'gain_double_hope'];
 
 export const DaggerheartRest = (props) => {
   const character = () => props.character;
@@ -82,28 +95,22 @@ export const DaggerheartRest = (props) => {
 
   const [projectsEditMode, setProjectsEditMode] = createSignal(false);
   const [makeRolls, setMakeRolls] = createSignal(false);
-  const [restOptions, setRestOptions] = createStore({
-    clear_health: 0,
-    clear_stress: 0,
-    clear_armor_slots: 0,
-    gain_hope: 0,
-    gain_double_hope: 0
-  });
-  const [projectForm, setProjectForm] = createStore({
-    title: '',
-    description: '',
-    complexity: 1
-  });
+  const [makeProjectRolls, setMakeProjectRolls] = createSignal(false);
+  const [projectRoll, setProjectRoll] = createSignal(1);
+  const [firstAction, setFirstAction] = createSignal(null);
+  const [secondAction, setSecondAction] = createSignal(null);
+  const [workOnProject, setWorkOnProject] = createSignal(null);
+  const [projectForm, setProjectForm] = createStore({ title: '', description: '', complexity: 1 });
   const [value, setValue] = createSignal(null);
 
   const [appState] = useAppState();
   const [{ renderNotice, renderAlerts }] = useAppAlert();
   const [locale] = useAppLocale();
 
+  const fetchProjects = async () => await fetchDaggerheartProjectsRequest(appState.accessToken, character().id);
+
   createEffect(() => {
     if (lastActiveCharacterId() === character().id) return;
-
-    const fetchProjects = async () => await fetchDaggerheartProjectsRequest(appState.accessToken, character().id);
 
     Promise.all([fetchProjects()]).then(
       ([projectsData]) => {
@@ -114,25 +121,55 @@ export const DaggerheartRest = (props) => {
     setLastActiveCharacterId(character().id);
   });
 
-  const updateOption = (value) => {
-    const newValue = restOptions[value] === 2 ? 0 : (restOptions[value] + 1);
-    setRestOptions({ ...restOptions, [value]: newValue });
+  const updateType = (value) => {
+    batch(() => {
+      setValue(value);
+      setFirstAction(null);
+      setSecondAction(null);
+      setWorkOnProject(null);
+    });
   }
 
+  const restActions = createMemo(() => {
+    if (value() === null) return {};
+
+    const result = DOWNTIME_ACTIONS.reduce((acc, key) => {
+      acc[key] = replace(TRANSLATION[locale()][key.startsWith('clear') ? `${key}_${value()}` : key], { tier: character().tier });
+      return acc;
+    }, {});
+
+    if (value() === 'long') result.project = TRANSLATION[locale()].workOnProject;
+
+    return result;
+  });
+
   const restCharacter = async () => {
+    const restOptions = { clear_health: 0, clear_stress: 0, clear_armor_slots: 0, gain_hope: 0, gain_double_hope: 0, project: 0 };
+    const projectOptions = {
+      id: workOnProject(), manual_roll: (makeProjectRolls() ? null : parseInt(projectRoll())), dc: (makeProjectRolls() ? parseInt(projectRoll()) : null)
+    };
+    if (firstAction()) restOptions[firstAction()] += 1;
+    if (secondAction()) restOptions[secondAction()] += 1;
+
     const result = await createCharacterRestRequest(
       appState.accessToken,
       character().provider,
       character().id,
-      { value: value(), options: restOptions, make_rolls: makeRolls() }
+      { value: value(), options: restOptions, make_rolls: makeRolls(), project: projectOptions }
     );
     if (result.errors_list === undefined) {
       batch(() => {
         props.onReloadCharacter();
-        setRestOptions({ clear_health: 0, clear_stress: 0, clear_armor_slots: 0, gain_hope: 0, gain_double_hope: 0 });
+        setFirstAction(null);
+        setSecondAction(null);
+        workOnProject(null);
         setMakeRolls(false);
         renderNotice(TRANSLATION[locale()].complete);
       });
+      if (workOnProject()) {
+        const projectsData = await fetchProjects();
+        setProjects(projectsData.projects);
+      }
     } else renderAlerts(result.errors_list);
   }
 
@@ -190,40 +227,66 @@ export const DaggerheartRest = (props) => {
     <ErrorWrapper payload={{ character_id: character().id, key: 'DaggerheartRest' }}>
       <GuideWrapper character={character()}>
         <div class="blockable p-4">
-          <p class="mb-4">{TRANSLATION[locale()].description}</p>
-
+          <p>{TRANSLATION[locale()].description}</p>
           <Select
-            containerClassList="w-full mb-4"
+            containerClassList="w-full mt-4"
             labelText={TRANSLATION[locale()].valueLabel}
             items={TRANSLATION[locale()].values}
             selectedValue={value()}
-            onSelect={setValue}
+            onSelect={updateType}
           />
-
           <Show when={value() && value() !== 'session'}>
-            <For each={[`clear_health`, `clear_stress`, `clear_armor_slots`, 'gain_hope', 'gain_double_hope']}>
-              {(item) =>
-                <Levelbox
-                  number
-                  classList="mb-1"
-                  labelText={replace(TRANSLATION[locale()][item.startsWith('clear') ? `${item}_${value()}` : item], { tier: character().tier })}
-                  labelPosition="right"
-                  labelClassList="ml-2"
-                  value={restOptions[item]}
-                  onToggle={() => updateOption(item)}
-                />
-              }
-            </For>
             <Checkbox
-              classList="mb-4"
+              classList="mt-2"
               labelText={TRANSLATION[locale()].makeRolls}
               labelPosition="right"
               labelClassList="ml-2"
               checked={makeRolls()}
               onToggle={() => setMakeRolls(!makeRolls())}
             />
+            <Select
+              containerClassList="w-full mt-2"
+              labelText={TRANSLATION[locale()].firstAction}
+              items={restActions()}
+              selectedValue={firstAction()}
+              onSelect={setFirstAction}
+            />
+            <Select
+              containerClassList="w-full mt-2"
+              labelText={TRANSLATION[locale()].secondAction}
+              items={restActions()}
+              selectedValue={secondAction()}
+              onSelect={setSecondAction}
+            />
+            <Show when={firstAction() === 'project' || secondAction() === 'project'}>
+              <Select
+                containerClassList="w-full mt-2"
+                labelText={TRANSLATION[locale()].workOnProject}
+                items={Object.fromEntries(projects().map((item) => [item.id, item.title]))}
+                selectedValue={workOnProject()}
+                onSelect={setWorkOnProject}
+              />
+              <Show when={workOnProject()}>
+                <Checkbox
+                  classList="mt-2"
+                  labelText={TRANSLATION[locale()].makeProjectRolls}
+                  labelPosition="right"
+                  labelClassList="ml-2"
+                  checked={makeProjectRolls()}
+                  onToggle={() => setMakeProjectRolls(!makeProjectRolls())}
+                />
+
+                <Input
+                  numeric
+                  containerClassList="mt-2"
+                  labelText={makeProjectRolls() ? TRANSLATION[locale()].projectDc : TRANSLATION[locale()].projectRoll}
+                  value={projectRoll()}
+                  onInput={setProjectRoll}
+                />
+              </Show>
+            </Show>
           </Show>
-          <Button default textable onClick={restCharacter}>{TRANSLATION[locale()].rest}</Button>
+          <Button default textable classList="mt-4" onClick={restCharacter}>{TRANSLATION[locale()].rest}</Button>
         </div>
         <Show
           when={!projectsEditMode()}
@@ -271,7 +334,12 @@ export const DaggerheartRest = (props) => {
               {(project) =>
                 <Toggle title={
                   <div class="flex items-center">
-                    <p class="flex-1">{project.title}</p>
+                    <p class="flex-1">
+                      {project.title}
+                      <Show when={project.progress >= project.complexity}>
+                        {TRANSLATION[locale()].completed}
+                      </Show>
+                    </p>
                     <IconButton onClick={(e) => removeProject(e, project.id)}>
                       <Close />
                     </IconButton>

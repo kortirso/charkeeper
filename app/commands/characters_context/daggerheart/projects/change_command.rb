@@ -12,6 +12,7 @@ module CharactersContext
             optional(:title).filled(:string, max_size?: 100)
             optional(:description).filled(:string, max_size?: 1000)
             optional(:complexity).filled(:integer, gt?: 0)
+            optional(:progress).filled(:integer, gt?: 0)
           end
         end
 

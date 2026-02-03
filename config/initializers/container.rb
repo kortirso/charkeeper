@@ -21,6 +21,7 @@ module Charkeeper
     register('markdown') { ActiveMarkdown.new }
     register('to_bool') { ToBool.new }
     register('roll') { Roll.new }
+    register('duality_roll') { DualityRoll.new }
     register('formula') { Formula.new }
     register('monitoring.providers.rails') { Monitoring::Providers::Rails.new }
     register('monitoring.client') { Monitoring::Client.new }

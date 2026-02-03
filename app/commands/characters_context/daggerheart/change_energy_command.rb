@@ -3,7 +3,11 @@
 module CharactersContext
   module Daggerheart
     class ChangeEnergyCommand < BaseCommand
-      include Deps[roll: 'roll']
+      include Deps[
+        roll: 'roll',
+        duality_roll: 'duality_roll',
+        change_project: 'commands.characters_context.daggerheart.projects.change'
+      ]
 
       use_contract do
         config.messages.namespace = :daggerheart_rest
@@ -19,8 +23,14 @@ module CharactersContext
             required(:clear_armor_slots).filled(:integer, gteq?: 0, lteq?: 2)
             required(:gain_hope).filled(:integer, gteq?: 0, lteq?: 2)
             required(:gain_double_hope).filled(:integer, gteq?: 0, lteq?: 2)
+            optional(:project).filled(:integer, gteq?: 0, lteq?: 2)
           end
           optional(:make_rolls).filled(:bool)
+          optional(:project).hash do
+            optional(:id).maybe(:string, :uuid_v4?)
+            optional(:dc).maybe(:integer, gt?: 0)
+            optional(:manual_roll).maybe(:integer, gt?: 0)
+          end
         end
 
         rule(:options) do
@@ -76,9 +86,10 @@ module CharactersContext
       # rubocop: enable Metrics/AbcSize, Metrics/CyclomaticComplexity, Metrics/MethodLength, Metrics/PerceivedComplexity, Style/GuardClause
 
       def do_persist(input)
-        update_refresh(input)
-        update_reverse_refresh(input)
+        refresh_feats(input)
+        refresh_reverse_feats(input)
         refresh_companion(input) if input[:companion_stress_marked]
+        refresh_project(input) if input.dig(:project, :id)
 
         if input[:data]
           input[:character].data = ::Daggerheart::CharacterData.new(input[:character].data.attributes.merge(input[:data]))
@@ -94,11 +105,11 @@ module CharactersContext
         input[:character].companion.save
       end
 
-      def update_refresh(input)
+      def refresh_feats(input)
         input[:character].feats.where(limit_refresh: limit_refresh(input)).update_all(used_count: 0)
       end
 
-      def update_reverse_refresh(input)
+      def refresh_reverse_feats(input)
         input[:character].feats
           .joins(:feat)
           .where(feats: { reverse_refresh: true })
@@ -111,6 +122,28 @@ module CharactersContext
         when 'long' then [0, 1]
         when 'short' then 0
         when 'session' then 2
+        end
+      end
+
+      def refresh_project(input) # rubocop: disable Metrics/AbcSize, Metrics/PerceivedComplexity
+        project = input[:character].projects.find_by(id: input.dig(:project, :id))
+        return unless project
+        return unless input.dig(:options, :project).positive?
+
+        if input.dig(:project, :manual_roll)
+          change_project.call(project: project, progress: project.progress + input.dig(:project, :manual_roll))
+        elsif input.dig(:project, :dc)
+          total = 0
+          input.dig(:options, :project).times do
+            result = duality_roll.call
+
+            next total += 4 if result[:hope] == result[:fear]
+            next total += 3 if result[:total] >= input.dig(:project, :dc) && result[:hope] > result[:fear]
+            next total += 2 if result[:total] >= input.dig(:project, :dc)
+
+            total += 1
+          end
+          change_project.call(project: project, progress: project.progress + total)
         end
       end
     end
