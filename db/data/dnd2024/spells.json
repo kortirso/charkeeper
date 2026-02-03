@@ -448,6 +448,7 @@
       "time": "1,m",
       "range": "touch",
       "components": "v,s,m",
+      "duration": "instant",
       "source": "PHB"
     }
   },
