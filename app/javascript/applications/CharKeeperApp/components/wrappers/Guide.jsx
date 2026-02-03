@@ -3,7 +3,7 @@ import { createSignal, createEffect, Show } from 'solid-js';
 import { Button } from '../../components';
 import { useAppState, useAppLocale } from '../../context';
 import { updateCharacterRequest } from '../../requests/updateCharacterRequest';
-import { readFromCache, writeToCache } from '../../helpers';
+import { readFromCache, writeToCache, localize } from '../../helpers';
 
 const RENDER_GUIDE_CACHE_NAME = 'RenderGuideSettings';
 const TRANSLATION = {
@@ -69,16 +69,16 @@ export const GuideWrapper = (props) => {
           <div class="warning">
             <p class="text-sm">{props.helpMessage}</p>
             <div class="flex justify-end gap-x-4 mt-2">
-              <Button default textable size="small" onClick={clickSkip}>{TRANSLATION[locale()].skip}</Button>
+              <Button default textable size="small" onClick={clickSkip}>{localize(TRANSLATION, locale()).skip}</Button>
               <Show
                 when={props.finishGuideStep}
                 fallback={
                   <Button default textable size="small" onClick={() => clickNext(character().guide_step + 1)}>
-                    {TRANSLATION[locale()].next}
+                    {localize(TRANSLATION, locale()).next}
                   </Button>
                 }
               >
-                <Button default textable size="small" onClick={() => clickNext(null)}>{TRANSLATION[locale()].finish}</Button>
+                <Button default textable size="small" onClick={() => clickNext(null)}>{localize(TRANSLATION, locale()).finish}</Button>
               </Show>
             </div>
           </div>

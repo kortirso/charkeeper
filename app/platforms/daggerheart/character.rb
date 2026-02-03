@@ -135,16 +135,16 @@ module Daggerheart
       return data.heritage_name if data.heritage.nil?
 
       default = ::Daggerheart::Character.heritage_info(data.heritage)
-      return default.dig('name', I18n.locale.to_s) if default
+      return translate(default['name']) if default
 
-      daggerheart_names.fetch_item(key: :ancestries, id: data.heritage).dig(:name, I18n.locale)
+      translate(daggerheart_names.fetch_item(key: :ancestries, id: data.heritage)[:name])
     end
 
     def community_name
       default = ::Daggerheart::Character.community_info(data.community)
-      return default.dig('name', I18n.locale.to_s) if default
+      return translate(default['name']) if default
 
-      daggerheart_names.fetch_item(key: :communities, id: data.community).dig(:name, I18n.locale)
+      translate(daggerheart_names.fetch_item(key: :communities, id: data.community)[:name])
     end
 
     def subclass_names
@@ -167,16 +167,16 @@ module Daggerheart
 
     def class_name(class_slug)
       default = ::Daggerheart::Character.class_info(class_slug)
-      return default.dig('name', I18n.locale.to_s) if default
+      return translate(default['name']) if default
 
-      daggerheart_names.fetch_item(key: :classes, id: class_slug).dig(:name, I18n.locale)
+      translate(daggerheart_names.fetch_item(key: :classes, id: class_slug)[:name])
     end
 
     def subclass_name(class_slug, subclass_slug)
       default = ::Daggerheart::Character.subclass_info(class_slug, subclass_slug)
-      return default.dig('name', I18n.locale.to_s) if default
+      return translate(default['name']) if default
 
-      daggerheart_names.fetch_item(key: :subclasses, id: subclass_slug).dig(:name, I18n.locale)
+      translate(daggerheart_names.fetch_item(key: :subclasses, id: subclass_slug)[:name])
     end
 
     def daggerheart_names = Charkeeper::Container.resolve('cache.daggerheart_names')

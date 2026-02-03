@@ -3,7 +3,7 @@ import { createSignal, For, Show } from 'solid-js';
 import { Button, IconButton } from '../../components';
 import { useAppLocale } from '../../context';
 import { Hands, Equipment, Backpack, Storage, Dots, Drink } from '../../assets';
-import { clickOutside } from '../../helpers';
+import { clickOutside, localize } from '../../helpers';
 
 const STATE_ICONS = { 'hands': Hands, 'equipment': Equipment, 'backpack': Backpack, 'storage': Storage }
 
@@ -45,7 +45,7 @@ export const ItemsTable = (props) => {
           <thead>
             <tr>
               <td />
-              <td class="text-center text-nowrap px-2">{TRANSLATION[locale()].quantity}</td>
+              <td class="text-center text-nowrap px-2">{localize(TRANSLATION, locale()).quantity}</td>
               <td />
             </tr>
           </thead>
@@ -99,11 +99,11 @@ export const ItemsTable = (props) => {
                         </IconButton>
                         <Show when={isOpen() === item}>
                           <div class="absolute z-9 right-0 border border-gray-200 rounded overflow-hidden">
-                            <p class="dots-item" onClick={() => props.onChangeItem(item)}>{TRANSLATION[locale()].change}</p>
+                            <p class="dots-item" onClick={() => props.onChangeItem(item)}>{localize(TRANSLATION, locale()).change}</p>
                             <Show when={ITEMS_INFO.includes(props.provider)}>
-                              <p class="dots-item" onClick={() => props.onInfoItem(item)}>{TRANSLATION[locale()].info}</p>
+                              <p class="dots-item" onClick={() => props.onInfoItem(item)}>{localize(TRANSLATION, locale()).info}</p>
                             </Show>
-                            <p class="dots-item" onClick={() => props.onRemoveCharacterItem(item)}>{TRANSLATION[locale()].delete}</p>
+                            <p class="dots-item" onClick={() => props.onRemoveCharacterItem(item)}>{localize(TRANSLATION, locale()).delete}</p>
                           </div>
                         </Show>
                       </div>

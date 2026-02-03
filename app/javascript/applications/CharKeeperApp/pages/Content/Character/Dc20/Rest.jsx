@@ -3,6 +3,7 @@ import { createSignal, batch, Show } from 'solid-js';
 import { Button, ErrorWrapper, GuideWrapper, Select } from '../../../../components';
 import { useAppState, useAppLocale, useAppAlert } from '../../../../context';
 import { createCharacterRestRequest } from '../../../../requests/createCharacterRestRequest';
+import { localize } from '../../../../helpers';
 
 const TRANSLATION = {
   en: {
@@ -59,7 +60,7 @@ export const Dc20Rest = (props) => {
         props.onReloadCharacter();
         setValue(null);
         setSpendRestPoints(0);
-        renderNotice(TRANSLATION[locale()].complete);
+        renderNotice(localize(TRANSLATION, locale()).complete);
       });
     } else renderAlerts(result.errors_list);
   }
@@ -68,24 +69,24 @@ export const Dc20Rest = (props) => {
     <ErrorWrapper payload={{ character_id: character().id, key: 'Dc20Rest' }}>
       <GuideWrapper character={character()}>
         <div class="blockable p-4">
-          <p class="mb-4">{TRANSLATION[locale()].description}</p>
+          <p class="mb-4">{localize(TRANSLATION, locale()).description}</p>
           <Select
             containerClassList="w-full mb-4"
-            labelText={TRANSLATION[locale()].valueLabel}
-            items={TRANSLATION[locale()].values}
+            labelText={localize(TRANSLATION, locale()).valueLabel}
+            items={localize(TRANSLATION, locale()).values}
             selectedValue={value()}
             onSelect={setValue}
           />
           <Show when={['quick', 'short'].includes(value())}>
             <Select
               containerClassList="w-full mb-4"
-              labelText={TRANSLATION[locale()].pointsLabel}
+              labelText={localize(TRANSLATION, locale()).pointsLabel}
               items={Array.from([...Array(character().rest_points.current).keys()], (x) => x + 1).reduce((acc, item) => { acc[item] = item; return acc; }, {})}
               selectedValue={spendRestPoints()}
               onSelect={setSpendRestPoints}
             />
           </Show>
-          <Button default textable onClick={restCharacter}>{TRANSLATION[locale()].rest}</Button>
+          <Button default textable onClick={restCharacter}>{localize(TRANSLATION, locale()).rest}</Button>
         </div>
       </GuideWrapper>
     </ErrorWrapper>

@@ -7,7 +7,7 @@ import pathfinder2Config from '../../data/pathfinder2.json';
 import dc20Config from '../../data/dc20.json';
 import { useAppState, useAppLocale } from '../../context';
 import { updateCharacterRequest } from '../../requests/updateCharacterRequest';
-import { translate } from '../../helpers';
+import { translate, localize } from '../../helpers';
 
 const TRANSLATION = {
   en: {
@@ -58,11 +58,11 @@ export const Conditions = (props) => {
     <ErrorWrapper payload={{ character_id: character().id, key: 'Conditions' }}>
       <GuideWrapper character={character()}>
         <div class="blockable p-4">
-          <h2 class="text-lg mb-2 dark:text-snow">{TRANSLATION[locale()]['conditions']}</h2>
+          <h2 class="text-lg mb-2 dark:text-snow">{localize(TRANSLATION, locale())['conditions']}</h2>
           <Select
             multi
             containerClassList="w-full"
-            labelText={TRANSLATION[locale()]['selectedConditions']}
+            labelText={localize(TRANSLATION, locale())['selectedConditions']}
             items={translate(providerConfig().conditions, locale())}
             selectedValues={selectedConditions()}
             onSelect={(value) => updateMultiFeatureValue(value)}

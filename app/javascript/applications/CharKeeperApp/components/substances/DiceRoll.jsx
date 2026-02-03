@@ -3,7 +3,7 @@ import { createSignal, Show, batch, Switch, Match, For } from 'solid-js';
 
 import { Dice, DualityDice, Button } from '../../components';
 import { useAppState, useAppLocale } from '../../context';
-import { clickOutside, modifier } from '../../helpers';
+import { clickOutside, modifier, localize } from '../../helpers';
 import { Close } from '../../assets';
 import { createBotRequest } from '../../requests/createBotRequest';
 
@@ -309,15 +309,15 @@ export const createDiceRoll = () => {
                           <Switch>
                             <Match when={props.provider === 'dnd' || props.provider === 'dc20'}>
                               <Switch>
-                                <Match when={rollResult().status === 'crit_success'}>{TRANSLATION[locale()]['crit']}</Match>
-                                <Match when={rollResult().status === 'crit_failure'}>{TRANSLATION[locale()]['critFailure']}</Match>
+                                <Match when={rollResult().status === 'crit_success'}>{localize(TRANSLATION, locale())['crit']}</Match>
+                                <Match when={rollResult().status === 'crit_failure'}>{localize(TRANSLATION, locale())['critFailure']}</Match>
                               </Switch>
                             </Match>
                             <Match when={props.provider === 'daggerheart'}>
                               <Switch>
-                                <Match when={rollResult().status === 'crit_success'}>{TRANSLATION[locale()]['crit']}</Match>
-                                <Match when={rollResult().status === 'with_hope'}>{TRANSLATION[locale()]['hope']}</Match>
-                                <Match when={rollResult().status === 'with_fear'}>{TRANSLATION[locale()]['fear']}</Match>
+                                <Match when={rollResult().status === 'crit_success'}>{localize(TRANSLATION, locale())['crit']}</Match>
+                                <Match when={rollResult().status === 'with_hope'}>{localize(TRANSLATION, locale())['hope']}</Match>
+                                <Match when={rollResult().status === 'with_fear'}>{localize(TRANSLATION, locale())['fear']}</Match>
                               </Switch>
                             </Match>
                           </Switch>
@@ -327,8 +327,8 @@ export const createDiceRoll = () => {
                   </div>
                   <div class="flex gap-x-4 mt-4">
                     <div class="flex-1">
-                      <p class="mb-1 dice-button" onClick={() => updateAdvantage(1)}>{TRANSLATION[locale()]['advantage']}</p>
-                      <p class="dice-button" onClick={() => updateAdvantage(-1)}>{TRANSLATION[locale()]['disadvantage']}</p>
+                      <p class="mb-1 dice-button" onClick={() => updateAdvantage(1)}>{localize(TRANSLATION, locale())['advantage']}</p>
+                      <p class="dice-button" onClick={() => updateAdvantage(-1)}>{localize(TRANSLATION, locale())['disadvantage']}</p>
                     </div>
                     <div class="flex-1">
                       <p class="mb-1 py-1 px-2 text-center border border-dusty rounded dark:border-snow dark:text-snow">{additionalBonus()}</p>
@@ -339,7 +339,7 @@ export const createDiceRoll = () => {
                     </div>
                   </div>
                   <div class="mt-2">
-                    <Button withSuspense default textable classList="flex-1" onClick={makeRoll}>{TRANSLATION[locale()]['roll']}</Button>
+                    <Button withSuspense default textable classList="flex-1" onClick={makeRoll}>{localize(TRANSLATION, locale())['roll']}</Button>
                   </div>
                 </div>
               </Show>
@@ -378,9 +378,9 @@ export const createDiceRoll = () => {
                             <Switch>
                               <Match when={props.provider === 'daggerheart'}>
                                 <Switch>
-                                  <Match when={rollResult().status === 'crit_success'}>{TRANSLATION[locale()].crit}</Match>
-                                  <Match when={rollResult().status === 'with_hope'}>{TRANSLATION[locale()].hope}</Match>
-                                  <Match when={rollResult().status === 'with_fear'}>{TRANSLATION[locale()].fear}</Match>
+                                  <Match when={rollResult().status === 'crit_success'}>{localize(TRANSLATION, locale()).crit}</Match>
+                                  <Match when={rollResult().status === 'with_hope'}>{localize(TRANSLATION, locale()).hope}</Match>
+                                  <Match when={rollResult().status === 'with_fear'}>{localize(TRANSLATION, locale()).fear}</Match>
                                 </Switch>
                               </Match>
                             </Switch>
@@ -396,7 +396,7 @@ export const createDiceRoll = () => {
                     </div>
                   </div>
                   <div class="mt-2 flex gap-x-2">
-                    <Button withSuspense default textable classList="flex-1" onClick={makeSimpleRoll}>{TRANSLATION[locale()]['roll']}</Button>
+                    <Button withSuspense default textable classList="flex-1" onClick={makeSimpleRoll}>{localize(TRANSLATION, locale())['roll']}</Button>
                     <Show when={props.provider === 'daggerheart'}>
                       <DualityDice onClick={() => setDualityMode(!dualityMode())} />
                     </Show>

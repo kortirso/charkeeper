@@ -8,7 +8,7 @@ import { Minus, Plus } from '../../../../assets';
 import { fetchCompanionRequest } from '../../../../requests/fetchCompanionRequest';
 import { createCompanionRequest } from '../../../../requests/createCompanionRequest';
 import { updateCompanionRequest } from '../../../../requests/updateCompanionRequest';
-import { readFromCache } from '../../../../helpers';
+import { readFromCache, localize } from '../../../../helpers';
 
 const DAMAGE = ['d6', 'd8', 'd10', 'd12'];
 const DISTANCE = ['melee', 'very close', 'close', 'far'];
@@ -154,16 +154,16 @@ export const DaggerheartCompanion = (props) => {
 
   const renderAttackDistance = (distance) => {
     if (settings().daggerheart === 'narrative' || settings().daggerheart === undefined) {
-      return TRANSLATION[locale()].distances[distance];
+      return localize(TRANSLATION, locale()).distances[distance];
     }
 
     const squares = DH_SQUARE_DISTANCES[distance];
     if (!squares) return '';
 
-    if (settings().daggerheart === 'imperial') return `${squares * 5} ${TRANSLATION[locale()].feet}`;
-    if (settings().daggerheart === 'metric') return `${squares * 1.5} ${TRANSLATION[locale()].meters}`;
+    if (settings().daggerheart === 'imperial') return `${squares * 5} ${localize(TRANSLATION, locale()).feet}`;
+    if (settings().daggerheart === 'metric') return `${squares * 1.5} ${localize(TRANSLATION, locale()).meters}`;
 
-    return `${squares} ${TRANSLATION[locale()].squares}`;
+    return `${squares} ${localize(TRANSLATION, locale()).squares}`;
   }
 
   const createCompanion = async () => {
@@ -243,7 +243,7 @@ export const DaggerheartCompanion = (props) => {
               <>
                 <Input
                   containerClassList="mb-4"
-                  labelText={TRANSLATION[locale()].name}
+                  labelText={localize(TRANSLATION, locale()).name}
                   value={name()}
                   onInput={setName}
                 />
@@ -263,7 +263,7 @@ export const DaggerheartCompanion = (props) => {
                     <Show when={editNameMode()} fallback={<p class="text-xl">{companion().name}</p>}>
                       <Input
                         containerClassList="mb-4"
-                        labelText={TRANSLATION[locale()].name}
+                        labelText={localize(TRANSLATION, locale()).name}
                         value={nameData()}
                         onInput={setNameData}
                       />
@@ -294,13 +294,13 @@ export const DaggerheartCompanion = (props) => {
                   <div class="blockable p-4 mt-4">
                     <div class="grid grid-cols-3 gap-2">
                       <div>
-                        <p class="text-sm uppercase text-center mb-4">{TRANSLATION[locale()].evasion}</p>
+                        <p class="text-sm uppercase text-center mb-4">{localize(TRANSLATION, locale()).evasion}</p>
                         <p class="font-normal! text-center">
                           {companion().evasion}
                         </p>
                       </div>
                       <div>
-                        <p class="text-sm uppercase text-center mb-4">{TRANSLATION[locale()].damage}</p>
+                        <p class="text-sm uppercase text-center mb-4">{localize(TRANSLATION, locale()).damage}</p>
                         <p class="font-normal! text-center">
                           {editDamageMode() ? damageData() : `${character().proficiency}${companion().damage}`}
                         </p>
@@ -312,7 +312,7 @@ export const DaggerheartCompanion = (props) => {
                         </Show>
                       </div>
                       <div>
-                        <p class="text-sm uppercase text-center mb-4">{TRANSLATION[locale()].distance}</p>
+                        <p class="text-sm uppercase text-center mb-4">{localize(TRANSLATION, locale()).distance}</p>
                         <p class="font-normal! text-center">
                           {editDamageMode() ? renderAttackDistance(distanceData()) : renderAttackDistance(companion().distance)}
                         </p>
@@ -332,8 +332,8 @@ export const DaggerheartCompanion = (props) => {
               </div>
               <div class="flex-1">
                 <div class="p-4 blockable">
-                  <h2 class="text-lg mb-2">{TRANSLATION[locale()].training}</h2>
-                  <p class="text-sm mb-4">{TRANSLATION[locale()].availableTraining} - {character().level - 1}</p>
+                  <h2 class="text-lg mb-2">{localize(TRANSLATION, locale()).training}</h2>
+                  <p class="text-sm mb-4">{localize(TRANSLATION, locale()).availableTraining} - {character().level - 1}</p>
                   <For
                     each={[
                       { max: 3, attribute: 'intelligent' },
@@ -349,7 +349,7 @@ export const DaggerheartCompanion = (props) => {
                     {(item, index) =>
                       <div class="p-2" classList={{ 'bg-gray-50 dark:bg-neutral-700': index() % 2 === 1 }}>
                         <div class="flex items-center mb-1">
-                          <p class="text-sm/4 uppercase mr-4">{TRANSLATION[locale()].leveling[item.attribute]}</p>
+                          <p class="text-sm/4 uppercase mr-4">{localize(TRANSLATION, locale()).leveling[item.attribute]}</p>
                           <div class="flex">
                             <For each={Array.from([...Array(item.max).keys()], (x) => x + 1)}>
                               {(index) =>
@@ -363,7 +363,7 @@ export const DaggerheartCompanion = (props) => {
                             </For>
                           </div>
                         </div>
-                        <p class="text-xs">{TRANSLATION[locale()].levelingDescriptions[item.attribute]}</p>
+                        <p class="text-xs">{localize(TRANSLATION, locale()).levelingDescriptions[item.attribute]}</p>
                       </div>
                     }
                   </For>

@@ -5,8 +5,9 @@ import { Select, ErrorWrapper, GuideWrapper } from '../../../../components';
 import config from '../../../../data/daggerheart.json';
 import { useAppState, useAppLocale, useAppAlert } from '../../../../context';
 import { updateCharacterRequest } from '../../../../requests/updateCharacterRequest';
+import { localize } from '../../../../helpers';
 
-const translation = {
+const TRANSLATION = {
   en: {
     desc: 'While in Beastform, you cannot use weapons or cast spells from Domain Cards. You can still use class features, abilities, and Beastform-specific actions.',
     examples: 'Examples: ',
@@ -29,7 +30,7 @@ export const DaggerheartBeastform = (props) => {
   const t = i18n.translator(dict);
 
   const beastformsSelect = createMemo(() => {
-    const result = Object.entries(config.beastforms).filter(([, values]) => values.tier <= character().tier).map(([key, values]) => [key, `${values.name[locale()]} T${values.tier}`])
+    const result = Object.entries(config.beastforms).filter(([, values]) => values.tier <= character().tier).map(([key, values]) => [key, `${localize(values.name, locale())} T${values.tier}`])
     return Object.fromEntries([['none', t('daggerheart.beast.naturalForm')]].concat(result));
   });
 
@@ -56,9 +57,9 @@ export const DaggerheartBeastform = (props) => {
               onSelect={(value) => changeBeastform(value)}
             />
             <Show when={character().beastform}>
-              <p class="text-sm mt-2">{translation[locale()]['desc']}</p>
-              <p class="mt-1">{translation[locale()]['examples']} {config.beastforms[character().beastform].examples[locale()]}</p>
-              <p class="mt-1">{translation[locale()]['adv']} {config.beastforms[character().beastform].adv[locale()]}</p>
+              <p class="text-sm mt-2">{localize(TRANSLATION, locale())['desc']}</p>
+              <p class="mt-1">{localize(TRANSLATION, locale())['examples']} {localize(config.beastforms[character().beastform].examples, locale())}</p>
+              <p class="mt-1">{localize(TRANSLATION, locale())['adv']} {localize(config.beastforms[character().beastform].adv, locale())}</p>
             </Show>
           </div>
         </GuideWrapper>

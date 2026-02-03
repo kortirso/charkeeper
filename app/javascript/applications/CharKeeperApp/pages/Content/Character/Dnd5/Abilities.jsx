@@ -5,7 +5,7 @@ import config from '../../../../data/dnd2024.json';
 import { useAppState, useAppLocale, useAppAlert } from '../../../../context';
 import { Minus, Plus } from '../../../../assets';
 import { updateCharacterRequest } from '../../../../requests/updateCharacterRequest';
-import { modifier } from '../../../../helpers';
+import { modifier, localize } from '../../../../helpers';
 
 const TRANSLATION = {
   en: {
@@ -73,22 +73,22 @@ export const Dnd5Abilities = (props) => {
       <GuideWrapper
         character={character()}
         guideStep={1}
-        helpMessage={TRANSLATION[locale()]['helpMessage']}
+        helpMessage={localize(TRANSLATION, locale())['helpMessage']}
         onReloadCharacter={props.onReloadCharacter}
       >
         <Show when={character().guide_step && character().ability_boosts.length > 0}>
           <div class="warning">
-            <p class="text-sm">{TRANSLATION[locale()]['abilityBoosts']} {Object.entries(config.abilities).filter(([slug]) => character().ability_boosts.includes(slug)).map(([, values]) => values.name[locale()]).join(', ')}</p>
+            <p class="text-sm">{localize(TRANSLATION, locale())['abilityBoosts']} {Object.entries(config.abilities).filter(([slug]) => character().ability_boosts.includes(slug)).map(([, values]) => values.name[locale()]).join(', ')}</p>
           </div>
         </Show>
         <Show when={character().leveling_ability_boosts > 0}>
           <div class="warning">
-            <p class="text-sm">{TRANSLATION[locale()]['levelingAbilityBoosts']}, {character().leveling_ability_boosts}</p>
+            <p class="text-sm">{localize(TRANSLATION, locale())['levelingAbilityBoosts']}, {character().leveling_ability_boosts}</p>
             <Show
               when={character().leveling_ability_boosts_list.length > 0}
-              fallback={<p class="text-sm">{TRANSLATION[locale()]['anySplitBoosts']}</p>}
+              fallback={<p class="text-sm">{localize(TRANSLATION, locale())['anySplitBoosts']}</p>}
             >
-              <p class="text-sm">{TRANSLATION[locale()]['splitBoosts']} {Object.entries(config.abilities).filter(([slug]) => character().leveling_ability_boosts_list.includes(slug)).map(([, values]) => values.name[locale()]).join(', ')}</p>
+              <p class="text-sm">{localize(TRANSLATION, locale())['splitBoosts']} {Object.entries(config.abilities).filter(([slug]) => character().leveling_ability_boosts_list.includes(slug)).map(([, values]) => values.name[locale()]).join(', ')}</p>
             </Show>
           </div>
         </Show>

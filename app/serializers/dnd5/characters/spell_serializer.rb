@@ -12,7 +12,7 @@ module Dnd5
       delegate :data, to: :object
 
       def name
-        object.spell.name[I18n.locale.to_s]
+        translate(object.spell.name)
       end
 
       def level

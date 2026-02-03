@@ -6,7 +6,7 @@ class ItemSerializer < ApplicationSerializer
   attributes(*ATTRIBUTES)
 
   def name
-    object.name[I18n.locale.to_s]
+    translate(object.name)
   end
 
   def homebrew # rubocop: disable Naming/PredicateMethod
@@ -14,6 +14,6 @@ class ItemSerializer < ApplicationSerializer
   end
 
   def has_description # rubocop: disable Naming/PredicateMethod, Naming/PredicatePrefix
-    object.description[I18n.locale.to_s].present?
+    translate(object.description).present?
   end
 end

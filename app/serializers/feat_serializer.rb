@@ -6,12 +6,12 @@ class FeatSerializer < ApplicationSerializer
   attributes(*ATTRIBUTES)
 
   def title
-    object.title[I18n.locale.to_s]
+    translate(object.title)
   end
 
   def description
     result = Charkeeper::Container.resolve('markdown').call(
-      value: object.description[I18n.locale.to_s],
+      value: translate(object.description),
       version: (context ? (context[:version] || nil) : nil),
       initial_version: '0.3.20'
     )

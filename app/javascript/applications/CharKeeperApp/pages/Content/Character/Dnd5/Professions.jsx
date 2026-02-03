@@ -5,6 +5,7 @@ import { ErrorWrapper, Toggle, Checkbox, GuideWrapper } from '../../../../compon
 import config from '../../../../data/dnd2024.json';
 import { useAppLocale, useAppState } from '../../../../context';
 import { fetchItemsRequest } from '../../../../requests/fetchItemsRequest';
+import { localize } from '../../../../helpers';
 
 const TRANSLATION = {
   en: {
@@ -129,7 +130,7 @@ export const Dnd5Professions = (props) => {
           </For>
         </Toggle>
         <Show when={character().provider === 'dnd2024'}>
-          <Toggle title={TRANSLATION[locale()]['weaponMastery']}>
+          <Toggle title={localize(TRANSLATION, locale())['weaponMastery']}>
             <For each={Object.entries(config.weaponMasteries)}>
               {([slug, names]) =>
                 <div class="mb-1">

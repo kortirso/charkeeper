@@ -163,7 +163,7 @@ module Dc20Character
 
     def unarmed_attack
       {
-        name: { en: 'Unarmed', ru: 'Безоружная' }[I18n.locale],
+        name: translate({ en: 'Unarmed', ru: 'Безоружная' }),
         attack_bonus: attack,
         damage: 0,
         damage_types: ['b'],
@@ -180,7 +180,7 @@ module Dc20Character
       return if combat_expertise.exclude?(equiped_shield_info['type'])
 
       {
-        name: { en: 'Shield attack', ru: 'Удар щитом' }[I18n.locale],
+        name: translate({ en: 'Shield attack', ru: 'Удар щитом' }),
         attack_bonus: attack,
         damage: 1,
         damage_types: ['b'],
@@ -195,7 +195,7 @@ module Dc20Character
     # rubocop: disable Metrics/AbcSize
     def calculate_attack(item)
       result = {
-        name: item.dig(:items_name, I18n.locale.to_s),
+        name: translate(item[:items_name]),
         attack_bonus: attack,
         distance: item.dig(:items_info, 'distance'),
         damage: item.dig(:items_info, 'damage'),

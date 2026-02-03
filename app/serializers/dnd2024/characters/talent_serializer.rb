@@ -8,7 +8,7 @@ module Dnd2024
       attributes(*ATTRIBUTES)
 
       def title
-        object.title[I18n.locale.to_s]
+        translate(object.title)
       end
 
       def multiple
@@ -17,7 +17,7 @@ module Dnd2024
 
       def description
         Charkeeper::Container.resolve('markdown').call(
-          value: object.description[I18n.locale.to_s],
+          value: translate(object.description),
           version: (context ? (context[:version] || nil) : nil),
           initial_version: '0.3.20'
         )&.gsub(/{{[a-z]+}}/, 'x')

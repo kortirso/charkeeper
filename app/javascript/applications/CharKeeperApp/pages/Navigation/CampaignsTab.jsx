@@ -10,6 +10,7 @@ import { fetchCampaignsRequest } from '../../requests/fetchCampaignsRequest';
 import { createCampaignRequest } from '../../requests/createCampaignRequest';
 import { removeCampaignRequest } from '../../requests/removeCampaignRequest';
 import { fetchCampaignJoinRequest } from '../../requests/fetchCampaignJoinRequest';
+import { localize } from '../../helpers';
 
 const TRANSLATION = {
   en: {
@@ -158,7 +159,7 @@ export const CampaignsTab = () => {
               <Input
                 containerClassList="ml-4 flex-1"
                 labelText={t('pages.campaignsPage.findCampaignId')}
-                placeholder={TRANSLATION[locale()].askDm}
+                placeholder={localize(TRANSLATION, locale()).askDm}
                 value={findCampaignId()}
                 onInput={(value) => setFindCampaignId(value)}
               />

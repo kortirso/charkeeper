@@ -16,6 +16,7 @@ import { fetchItemInfoRequest } from '../../requests/fetchItemInfoRequest';
 import { createCharacterHomebrewItemRequest } from '../../requests/createCharacterHomebrewItemRequest';
 import { consumeCharacterBonusRequest } from '../../requests/consumeCharacterBonusRequest';
 import { consumeCharacterItemRequest } from '../../requests/consumeCharacterItemRequest';
+import { localize } from '../../helpers';
 
 const TRANSLATION = {
   en: {
@@ -322,12 +323,12 @@ export const Equipment = (props) => {
               <div class="mb-2 flex">
                 <Input
                   containerClassList="mr-2 flex-1"
-                  placeholder={TRANSLATION[locale()].searchByName}
+                  placeholder={localize(TRANSLATION, locale()).searchByName}
                   value={filterByName()}
                   onInput={(value) => setFilterByName(value)}
                 />
                 <Button default size="small" classList="px-2" onClick={() => setFilterByName('')}>
-                  {TRANSLATION[locale()].clear}
+                  {localize(TRANSLATION, locale()).clear}
                 </Button>
               </div>
               <For each={props.itemFilters}>
@@ -389,8 +390,8 @@ export const Equipment = (props) => {
               {(state) =>
                 <ItemsTable
                   provider={character().provider}
-                  title={TRANSLATION[locale()].in[state].title}
-                  subtitle={TRANSLATION[locale()].in[state].description}
+                  title={localize(TRANSLATION, locale()).in[state].title}
+                  subtitle={localize(TRANSLATION, locale()).in[state].description}
                   state={state}
                   items={characterItems().filter((item) => item.states[state] > 0)}
                   onConsumeItem={consumeItem}
@@ -404,25 +405,25 @@ export const Equipment = (props) => {
               }
             </For>
             <Show when={CREATE_HOMEBREW_ITEMS.includes(character().provider)}>
-              <Toggle title={TRANSLATION[locale()].createHomebrew}>
+              <Toggle title={localize(TRANSLATION, locale()).createHomebrew}>
                 <Input
                   containerClassList="mb-2"
-                  labelText={TRANSLATION[locale()].homebrewName}
+                  labelText={localize(TRANSLATION, locale()).homebrewName}
                   value={homebrewItem.name}
                   onInput={(value) => setHomebrewItem({ ...homebrewItem, name: value })}
                 />
                 <TextArea
                   rows="4"
                   containerClassList="mb-2"
-                  labelText={TRANSLATION[locale()].homebrewDescription}
+                  labelText={localize(TRANSLATION, locale()).homebrewDescription}
                   value={homebrewItem.description}
                   onChange={(value) => setHomebrewItem({ ...homebrewItem, description: value })}
                 />
                 <p
                   class="mb-4 text-sm"
-                  innerHTML={TRANSLATION[locale()].tooltip} // eslint-disable-line solid/no-innerhtml
+                  innerHTML={localize(TRANSLATION, locale()).tooltip} // eslint-disable-line solid/no-innerhtml
                 />
-                <Button default onClick={addHomebrewItem}>{TRANSLATION[locale()].add}</Button>
+                <Button default onClick={addHomebrewItem}>{localize(TRANSLATION, locale()).add}</Button>
               </Toggle>
             </Show>
             <Show when={props.withWeight}>
@@ -443,7 +444,7 @@ export const Equipment = (props) => {
               {(state) =>
                 <Input
                   numeric
-                  labelText={TRANSLATION[locale()].in[state].title}
+                  labelText={localize(TRANSLATION, locale()).in[state].title}
                   value={changingItem().states[state]}
                   onInput={(value) => setChangingItem({ ...changingItem(), states: { ...changingItem().states, [state]: parseInt(value) } })}
                 />
@@ -467,10 +468,10 @@ export const Equipment = (props) => {
         </Show>
         <Show when={movingItem.item}>
           <p class="text-lg mb-2">{movingItem.item.name}</p>
-          <p class="text-sm mb-1">{TRANSLATION[locale()].was} {TRANSLATION[locale()].in[movingItem.fromState].title.toLowerCase()}, {TRANSLATION[locale()].will} {TRANSLATION[locale()].in[movingItem.toState].title.toLowerCase()}</p>
+          <p class="text-sm mb-1">{localize(TRANSLATION, locale()).was} {localize(TRANSLATION, locale()).in[movingItem.fromState].title.toLowerCase()}, {localize(TRANSLATION, locale()).will} {localize(TRANSLATION, locale()).in[movingItem.toState].title.toLowerCase()}</p>
           <Input
             numeric
-            labelText={TRANSLATION[locale()].amount}
+            labelText={localize(TRANSLATION, locale()).amount}
             value={movingItem.amount}
             onInput={(value) => setMovingItem({ ...movingItem, amount: parseInt(value) })}
           />

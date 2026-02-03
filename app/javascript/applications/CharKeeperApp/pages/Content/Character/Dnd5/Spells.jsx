@@ -14,7 +14,7 @@ import { createCharacterSpellRequest } from '../../../../requests/createCharacte
 import { updateCharacterSpellRequest } from '../../../../requests/updateCharacterSpellRequest';
 import { removeCharacterSpellRequest } from '../../../../requests/removeCharacterSpellRequest';
 import { updateCharacterRequest } from '../../../../requests/updateCharacterRequest';
-import { modifier } from '../../../../helpers';
+import { modifier, localize } from '../../../../helpers';
 
 const DND5_CLASSES_PREPARE_SPELLS = ['cleric', 'druid', 'paladin', 'artificer', 'wizard'];
 const DND2024_CLASSES_PREPARE_SPELLS = [
@@ -225,7 +225,7 @@ export const Dnd5Spells = (props) => {
             <>
               <div class="flex justify-between items-center mb-2">
                 <Checkbox
-                  labelText={TRANSLATION[locale()]['onlyAvailableSpells']}
+                  labelText={localize(TRANSLATION, locale())['onlyAvailableSpells']}
                   labelPosition="right"
                   labelClassList="ml-2"
                   checked={availableSpellFilter()}
@@ -249,16 +249,16 @@ export const Dnd5Spells = (props) => {
               </div>
               <div class="mb-4 flex">
                 <Select
-                  labelText={TRANSLATION[locale()]['customSpellAbility']}
-                  items={{ 'null': TRANSLATION[locale()]['noValue'], 'int': config.abilities.int.name[locale()], 'wis': config.abilities.wis.name[locale()], 'cha': config.abilities.cha.name[locale()] }}
+                  labelText={localize(TRANSLATION, locale())['customSpellAbility']}
+                  items={{ 'null': localize(TRANSLATION, locale())['noValue'], 'int': config.abilities.int.name[locale()], 'wis': config.abilities.wis.name[locale()], 'cha': config.abilities.cha.name[locale()] }}
                   selectedValue={spellAbility()}
                   onSelect={(value) => setSpellAbility(value === 'null' ? null : value)}
                 />
               </div>
-              <Button default textable classList="mb-2" onClick={() => setSpellsSelectingMode(false)}>{TRANSLATION[locale()]['back']}</Button>
+              <Button default textable classList="mb-2" onClick={() => setSpellsSelectingMode(false)}>{localize(TRANSLATION, locale())['back']}</Button>
               <For each={[...Array(character().available_spell_level + 1).keys()]}>
                 {(level) =>
-                  <Toggle title={level === 0 ? TRANSLATION[locale()]['cantrips'] : `${level} ${TRANSLATION[locale()]['level']}`}>
+                  <Toggle title={level === 0 ? localize(TRANSLATION, locale())['cantrips'] : `${level} ${localize(TRANSLATION, locale())['level']}`}>
                     <table class="w-full table first-column-full-width">
                       <tbody>
                         <For each={filteredSpellsList().filter((item) => item.level === level)}>
@@ -311,7 +311,7 @@ export const Dnd5Spells = (props) => {
               <StatsBlock
                 items={[
                   {
-                    title: TRANSLATION[locale()]['spellAttack'],
+                    title: localize(TRANSLATION, locale())['spellAttack'],
                     value:
                       <Dice
                         width="36"
@@ -320,27 +320,27 @@ export const Dnd5Spells = (props) => {
                         onClick={() => props.openDiceRoll('/check attack spell', character().spell_classes[activeSpellClass()].attack_bonus)}
                       />
                   },
-                  { title: TRANSLATION[locale()]['saveDC'], value: character().spell_classes[activeSpellClass()].save_dc }
+                  { title: localize(TRANSLATION, locale())['saveDC'], value: character().spell_classes[activeSpellClass()].save_dc }
                 ]}
               />
               <div class="mb-2 p-4 flex blockable">
                 <div class="flex-1 flex flex-col items-center dark:text-snow">
-                  <p class="uppercase text-xs mb-1">{TRANSLATION[locale()]['cantrips']}</p>
+                  <p class="uppercase text-xs mb-1">{localize(TRANSLATION, locale())['cantrips']}</p>
                   <p class="text-2xl mb-1">
                     {character().spell_classes[activeSpellClass()].cantrips_amount}
                   </p>
                 </div>
                 <Show when={character().provider === 'dnd5'}>
                   <div class="flex-1 flex flex-col items-center dark:text-snow">
-                    <p class="uppercase text-xs mb-1">{TRANSLATION[locale()]['known']}</p>
+                    <p class="uppercase text-xs mb-1">{localize(TRANSLATION, locale())['known']}</p>
                     <p class="text-2xl mb-1 flex gap-2 items-start">
                       <span>{character().spell_classes[activeSpellClass()].spells_amount || '-'}</span>
-                      <span class="text-sm">{character().spell_classes[activeSpellClass()].max_spell_level} {TRANSLATION[locale()]['level']}</span>
+                      <span class="text-sm">{character().spell_classes[activeSpellClass()].max_spell_level} {localize(TRANSLATION, locale())['level']}</span>
                     </p>
                   </div>
                 </Show>
                 <div class="flex-1 flex flex-col items-center dark:text-snow">
-                  <p class="uppercase text-xs mb-1">{TRANSLATION[locale()]['prepared']}</p>
+                  <p class="uppercase text-xs mb-1">{localize(TRANSLATION, locale())['prepared']}</p>
                   <p class="text-2xl mb-1">
                     {character().spell_classes[activeSpellClass()].prepared_spells_amount}
                   </p>
@@ -350,7 +350,7 @@ export const Dnd5Spells = (props) => {
             <div class="flex justify-between items-center mb-2">
               <Show when={activeSpellClass() !== undefined && activeSpellClass() !== 'static'} fallback={<span />}>
                 <Checkbox
-                  labelText={TRANSLATION[locale()]['onlyPreparedSpells']}
+                  labelText={localize(TRANSLATION, locale())['onlyPreparedSpells']}
                   labelPosition="right"
                   labelClassList="ml-2"
                   checked={preparedSpellFilter()}
@@ -359,7 +359,7 @@ export const Dnd5Spells = (props) => {
               </Show>
               <Show when={spellClassesList().length > 1}>
                 <div class="flex items-center gap-x-1">
-                  <span class="text-xs dark:text-snow">{TRANSLATION[locale()].filterByClass}</span>
+                  <span class="text-xs dark:text-snow">{localize(TRANSLATION, locale()).filterByClass}</span>
                   <For each={Object.entries(CLASS_ICONS).filter(([className,]) => spellClassesList().includes(className))}>
                     {([className, Component]) =>
                       <span
@@ -376,7 +376,7 @@ export const Dnd5Spells = (props) => {
             </div>
             <Show when={activeSpellClass() !== undefined && activeSpellClass() !== 'static'}>
               <Button default textable classList="mb-2" onClick={() => setSpellsSelectingMode(true)}>
-                {TRANSLATION[locale()].knownSpells}
+                {localize(TRANSLATION, locale()).knownSpells}
               </Button>
             </Show>
             <SpellsTable

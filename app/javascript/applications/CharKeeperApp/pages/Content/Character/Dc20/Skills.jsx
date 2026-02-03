@@ -5,7 +5,7 @@ import { ErrorWrapper, Checkbox, Levelbox, EditWrapper, GuideWrapper, Input, Sel
 import config from '../../../../data/dc20.json';
 import { useAppState, useAppLocale, useAppAlert } from '../../../../context';
 import { updateCharacterRequest } from '../../../../requests/updateCharacterRequest';
-import { modifier, translate } from '../../../../helpers';
+import { modifier, translate, localize } from '../../../../helpers';
 
 const TRANSLATION = {
   en: {
@@ -299,28 +299,28 @@ export const Dc20Skills = (props) => {
       <GuideWrapper
         character={character()}
         guideStep={2}
-        helpMessage={TRANSLATION[locale()]['helpMessage']}
+        helpMessage={localize(TRANSLATION, locale())['helpMessage']}
         onReloadCharacter={props.onReloadCharacter}
         onNextClick={props.onNextGuideStepClick}
       >
         <div class="blockable pb-2">
           <div class="p-4 pb-0 sm:pb-4 flex flex-col sm:flex-row">
             <div class="dc20-points-caption">
-              <p>{TRANSLATION[locale()]['skillPoints']} {skillPoints.skillPoints}</p>
-              <p>{TRANSLATION[locale()]['expertisePoints']} {skillPoints.skillExpertisePoints}</p>
+              <p>{localize(TRANSLATION, locale())['skillPoints']} {skillPoints.skillPoints}</p>
+              <p>{localize(TRANSLATION, locale())['expertisePoints']} {skillPoints.skillExpertisePoints}</p>
             </div>
             <div class="dc20-points-convert" onClick={convertSkillPoint}>
               <p>1:2</p>
             </div>
             <div class="dc20-points-caption">
-              <p>{TRANSLATION[locale()]['tradePoints']} {skillPoints.tradePoints}</p>
-              <p>{TRANSLATION[locale()]['expertisePoints']} {skillPoints.tradeExpertisePoints}</p>
+              <p>{localize(TRANSLATION, locale())['tradePoints']} {skillPoints.tradePoints}</p>
+              <p>{localize(TRANSLATION, locale())['expertisePoints']} {skillPoints.tradeExpertisePoints}</p>
             </div>
             <div class="dc20-points-convert" onClick={convertTradePoint}>
               <p>1:2</p>
             </div>
             <div class="dc20-points-caption">
-              <p>{TRANSLATION[locale()]['langPoints']} {skillPoints.languagePoints}</p>
+              <p>{localize(TRANSLATION, locale())['langPoints']} {skillPoints.languagePoints}</p>
               <p />
             </div>
           </div>
@@ -334,7 +334,7 @@ export const Dc20Skills = (props) => {
               onSaveChanges={updateCharacterSkills}
             >
               <div class="blockable p-4 mb-2">
-                <p class="text-lg dark:text-snow mb-2">{TRANSLATION[locale()]['skills']}</p>
+                <p class="text-lg dark:text-snow mb-2">{localize(TRANSLATION, locale())['skills']}</p>
                 <For each={['prime'].concat(Object.keys(config.abilities))}>
                   {(slug) =>
                     <For each={(editSkillsMode() ? skillsData() : character().skills).filter((item) => item.ability === slug)}>
@@ -386,7 +386,7 @@ export const Dc20Skills = (props) => {
               onSaveChanges={updateCharacterTrades}
             >
               <div class="blockable p-4">
-                <p class="text-lg dark:text-snow mb-2">{TRANSLATION[locale()]['trades']}</p>
+                <p class="text-lg dark:text-snow mb-2">{localize(TRANSLATION, locale())['trades']}</p>
                 <For each={Object.keys(config.abilities)}>
                   {(slug) =>
                     <For each={(editTradesMode() ? tradesData() : character().trades).filter((item) => item.ability === slug)}>
@@ -437,7 +437,7 @@ export const Dc20Skills = (props) => {
                       selectedValue={tradeKnowledgeForm.ability}
                       onSelect={(value) => setTradeKnowledgeForm({ ...tradeKnowledgeForm, ability: value })}
                     />
-                    <Button default textable onClick={saveTradeKnowledge}>{TRANSLATION[locale()]['add']}</Button>
+                    <Button default textable onClick={saveTradeKnowledge}>{localize(TRANSLATION, locale())['add']}</Button>
                   </div>
                 </Show>
               </div>
@@ -449,7 +449,7 @@ export const Dc20Skills = (props) => {
               onSaveChanges={updateCharacterLanguages}
             >
               <div class="blockable p-4 mt-2">
-                <p class="text-lg dark:text-snow mb-2">{TRANSLATION[locale()]['languages']}</p>
+                <p class="text-lg dark:text-snow mb-2">{localize(TRANSLATION, locale())['languages']}</p>
                 <For each={Object.entries(editLanguagesMode() ? languagesData() : character().language_levels)}>
                   {([name, level]) =>
                     <div class="flex items-center mb-1 dark:text-snow">
@@ -487,7 +487,7 @@ export const Dc20Skills = (props) => {
                       value={languageName()}
                       onInput={(value) => setLanguageName(value)}
                     />
-                    <Button default textable onClick={saveLanguage}>{TRANSLATION[locale()]['add']}</Button>
+                    <Button default textable onClick={saveLanguage}>{localize(TRANSLATION, locale())['add']}</Button>
                   </div>
                 </Show>
               </div>

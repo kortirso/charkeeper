@@ -3,6 +3,7 @@ import { createMemo, For, Show, Switch, Match } from 'solid-js';
 import { Button } from '../../../../components';
 import { useAppLocale } from '../../../../context';
 import { Close, Arrow } from '../../../../assets';
+import { localize } from '../../../../helpers';
 
 const TRANSLATION = {
   en: {
@@ -62,7 +63,7 @@ export const DomainCardsTable = (props) => {
                   <p class="font-normal! text-lg">{spell.title}</p>
                   <Show when={spell.info.type}>
                     <p class="text-sm">
-                      {props.domains[spell.origin_value].name[locale()]} ({spell.level} {TRANSLATION[locale()].level}), {TRANSLATION[locale()][spell.info.type]}
+                      {props.domains[spell.origin_value].name[locale()]} ({spell.level} {localize(TRANSLATION, locale()).level}), {localize(TRANSLATION, locale())[spell.info.type]}
                     </p>
                   </Show>
                 </div>

@@ -7,6 +7,7 @@ import { Arrow, Google, Discord, Telegram, Close } from '../../assets';
 import { useAppState, useAppLocale, useAppAlert } from '../../context';
 import { updateUserRequest } from '../../requests/updateUserRequest';
 import { removeIdentityRequest } from '../../requests/removeIdentityRequest';
+import { localize } from '../../helpers';
 
 const TRANSLATION = {
   en: {
@@ -93,21 +94,21 @@ export const UsernameTab = (props) => {
       <div class="p-4 flex-1 flex flex-col overflow-y-auto">
         <Input
           containerClassList="mb-2"
-          labelText={TRANSLATION[locale()]['username']}
+          labelText={localize(TRANSLATION, locale())['username']}
           value={username()}
           onInput={(value) => setUsername(value)}
         />
         <Select
           containerClassList="mb-2"
-          labelText={TRANSLATION[locale()]['locale']}
+          labelText={localize(TRANSLATION, locale())['locale']}
           items={{ 'en': 'English', 'ru': 'Русский' }}
           selectedValue={localeValue()}
           onSelect={(value) => setLocaleValue(value)}
         />
         <Select
           containerClassList="mb-2"
-          labelText={TRANSLATION[locale()]['colorSchema']}
-          items={{ 'light': TRANSLATION[locale()]['light'], 'dark': TRANSLATION[locale()]['dark'] }}
+          labelText={localize(TRANSLATION, locale())['colorSchema']}
+          items={{ 'light': localize(TRANSLATION, locale())['light'], 'dark': localize(TRANSLATION, locale())['dark'] }}
           selectedValue={colorSchema()}
           onSelect={(value) => setColorSchema(value)}
         />
@@ -115,7 +116,7 @@ export const UsernameTab = (props) => {
         <Show when={appState.identities !== undefined}>
           <div class="mb-2 grid grid-cols-1 emd:grid-cols-2 gap-2">
             <div>
-              <Label labelText={TRANSLATION[locale()]['existingIdentities']} />
+              <Label labelText={localize(TRANSLATION, locale())['existingIdentities']} />
               <table class="table border border-gray-200 bg-white dark:bg-neutral-700 dark:border-gray-500 dark:text-snow">
                 <tbody>
                   <For each={appState.identities}>
@@ -141,11 +142,11 @@ export const UsernameTab = (props) => {
               </table>
             </div>
             <div>
-              <Label labelText={TRANSLATION[locale()]['availableIdentities']} />
+              <Label labelText={localize(TRANSLATION, locale())['availableIdentities']} />
               <Show
                 when={['google', 'discord', 'telegram'].filter((item) => !identityProviders().includes(item)).length > 0}
                 fallback={
-                  <p>{TRANSLATION[locale()]['connected']}</p>
+                  <p>{localize(TRANSLATION, locale())['connected']}</p>
                 }
               >
                 <div class="p-1">

@@ -1,0 +1,326 @@
+{
+  "loading": "Pantalla de carga",
+  "pages": {
+    "loginPage": {
+      "signin": "Iniciar sesión",
+      "signup": "Registrarse",
+      "username": "Nombre de usuario",
+      "password": "Contraseña (al menos 10 caracteres)",
+      "passwordConfirmation": "Confirmación de contraseña",
+      "haveAccount": "¿Ya tienes una cuenta?",
+      "noAccount": "¿No tienes una cuenta?"
+    },
+    "settingsPage": {
+      "logout": "Cerrar sesion",
+      "version": "Version",
+      "title": "Configuración",
+      "changePassword": "Contraseña",
+      "feedback": "Recomendaciones",
+      "profile": "Perfil",
+      "socials": "Enlaces de la comunidad",
+      "notifications": "Notificaciones",
+      "profileDeleting": "Borrando perfil",
+      "deleteProfileConfirm1": "¿Estás seguro de que deseas eliminar tu perfil?",
+      "deleteProfileConfirm2": "Esta acción no es reversible, los datos añadidos se eliminarán."
+    },
+    "characterNavigation": {
+      "allFilter": "Todos",
+      "dc20": "DC20",
+      "dnd5": "D&D 5",
+      "dnd2024": "D&D 2024",
+      "pathfinder2": "Pathfinder 2",
+      "daggerheart": "Daggerheart",
+      "traits": "Atributos",
+      "combat": "Combate",
+      "equipment": "Equipamiento",
+      "domainCards": "Dominios",
+      "bonuses": "Bonificaciones",
+      "rest": "Descansar",
+      "notes": "Notas",
+      "classLevels": "Nivel",
+      "avatar": "Personal",
+      "abilities": "Habilidades",
+      "professions": "Maestría",
+      "spells": "Hechizos",
+      "companion": "Compañero",
+      "ancestry": "Herencia",
+      "community": "Comunidad",
+      "class": "Clase",
+      "subclass": "Subclase",
+      "beastform": "Forma de bestia",
+      "race": "Raza",
+      "subrace": "Subraza",
+      "species": "Especies",
+      "legacy": "Legado",
+      "feat": "Proeza",
+      "personal": "Personal",
+      "transformation": "Transformación",
+      "maneuver": "Maniobra",
+      "states": "Estados",
+      "craft": "Creación",
+      "campaignCharacters": "Personajes"
+    },
+    "campaignsPage": {
+      "title": "Campañas",
+      "newTitle": "Nueva campaña",
+      "provider": "Plataforma",
+      "name": "Nombre de la campaña",
+      "onDeleteCampaign": "Borrar",
+      "deleteCampaignTitle": "Borrando campaña",
+      "confirmDeleting": "¿Estás seguro de que quieres eliminar este personaje?",
+      "idForSearch": "Para ayudar a los jugadores a encontrar tu campaña, pueden utilizar el siguiente ID para realizar la búsqueda",
+      "join": "Unirse a la campaña",
+      "selectCharacterForJoining": "Selecciona el personaje con el que quieres unirte a la campaña",
+      "noCampaigns": "Aún no hay campañas."
+    },
+    "botPage": {
+      "title": "Comandos del bot",
+      "link": "Lista de comandos disponibles que puede consultar <a href='https://charkeeper.org/bot_commands' class='underline' target='_blank' rel='noopener noreferrer'>here</a>"
+    }
+  },
+  "daggerheart": {
+    "terms": {
+      "traits": "Atributos",
+      "thresholds": "Umbrales de daño"
+    },
+    "static": {
+      "proficiency": "Competencia",
+      "evasion": "Evasión",
+      "armor_score": "Puntuación de armadura"
+    },
+    "health": {
+      "armorScore": "Puntuación de armadura",
+      "armorSlots": "Ranuras de armadura",
+      "minor": "Daño menor",
+      "major": "Daño mayor",
+      "severe": "Daño severo",
+      "minorDamage": "Marca 1 PV",
+      "majorDamage": "Marca 2 PV",
+      "severeDamage": "Marca 3 PV",
+      "health": "Salud",
+      "stress": "Estrés",
+      "hope": "Esperanza"
+    },
+    "domainCards": {
+      "limit": "Límite de cartas",
+      "spellcastTraits": "Atributos de conjuro",
+      "loadout": "Carga",
+      "vault": "Baúl",
+      "select": "Añadir cartas de Dominio",
+      "cardNote": "Nota de carta de Dominio"
+    },
+    "experience": {
+      "title": "Experiencia"
+    },
+    "bonuses": {
+      "title": "Bonificaciones",
+      "health": "Salud",
+      "stress": "Estrés",
+      "evasion": "Evasión",
+      "armor_score": "Armadura",
+      "attack": "Ataque",
+      "proficiency": "Competencia"
+    },
+    "beast": {
+      "transformation": "Transformación a bestia",
+      "naturalForm": "Forma natural"
+    },
+    "transformation": {
+      "transformation": "Transformación",
+      "naturalForm": "Forma natural"
+    }
+  },
+  "combat": {
+    "list": {
+      "equipment": "Listo para usar",
+      "backpack": "Mochila"
+    }
+  },
+  "notes": {
+    "newNote": "Añadir nueva nota",
+    "newNoteTitle": "Título",
+    "newNoteValue": "Texto de nota"
+  },
+  "equipment": {
+    "weight": "Peso",
+    "cost": "Costo",
+    "addItems": "Añadir objetos",
+    "itemNote": "Nota de objeto",
+    "weaponsList": "Arman",
+    "primaryWeapon": "Arma principal",
+    "secondaryWeapon": "Arma secundaria",
+    "armorList": "Lista de armaduras",
+    "shieldList": "Lista de escudos",
+    "itemsList": "Objetos",
+    "ammoList": "Munición",
+    "focusList": "Enfoque",
+    "toolsList": "Herramientas artesanales",
+    "musicList": "Instrumentos músicales",
+    "consumables": "Consumibles",
+    "primaryWeaponMagic": "Magia de arma principal",
+    "recipes": "Recetas"
+  },
+  "create": "Crear",
+  "back": "Retroceder",
+  "save": "Guardar",
+  "find": "Encontrar",
+  "saving": "Guardando",
+  "cancel": "Cancelar",
+  "delete": "Borrar",
+  "copy": "Copiar",
+  "alerts": {
+    "error": "Se ha producido un error al procesar los datos. ¡Se ha enviado un informe de error al desarrollador!",
+    "restIsFinished": "El descanso ha finalizado",
+    "itemIsAdded": "El obejto fue añadido",
+    "characterIsUpdated": "El personaje fue actulizado",
+    "invalidSubclassesList": "Debes seleccionar subclases para todas las clases.",
+    "feedbackIsAdded": "Se ha añadido la recomendación. ¡Muchas gracias por utilizar CharKeeper!",
+    "userIsUpdated": "El usuario fue actualizado",
+    "copied": "Copiado, puedes compartir el valor copiado."
+  },
+  "charactersPage": {
+    "title": "Lista de personajes",
+    "level": "Nivel",
+    "new": "Crear un nuevo personaje",
+    "onCopyCharacter": "Compartir",
+    "download": "Descargar",
+    "sharePdf": "Compartir enlace del PDF"
+  },
+  "newCharacterPage": {
+    "title": "Crear Personaje",
+    "name": "Nombre",
+    "platform": "Plataforma",
+    "dnd5": {
+      "race": "Raza",
+      "subrace": "Subraza",
+      "mainClass": "Clase principal",
+      "alignment": "Alineamiento"
+    },
+    "dnd2024": {
+      "species": "Especies",
+      "legacy": "Legado",
+      "size": "Tamaño",
+      "mainClass": "Clase principal",
+      "alignment": "Alineamiento",
+      "sizes": {
+        "small": "Pequeño",
+        "medium": "Medio",
+        "large": "Grande"
+      }
+    },
+    "pathfinder2": {
+      "race": "Raza",
+      "subrace": "Subraza",
+      "mainClass": "Clase principal",
+      "background": "Trasfondo",
+      "mainAbility": "Habilidad principal"
+    },
+    "daggerheart": {
+      "ancestry": "Herencia",
+      "community": "Comunidad",
+      "mainClass": "Clase principal",
+      "subclass": "Subclase",
+      "customAncestry": "Herencia mixta",
+      "ancestryName": "Nombre de la herecia",
+      "mainFeature": "Característica principal",
+      "secondaryFeature": "Característica secundaria"
+    }
+  },
+  "itemsPage": {
+    "title": "Objetos"
+  },
+  "spellsPage": {
+    "title": "Hechizos"
+  },
+  "character": {
+    "thresholds": "Umbrales de daño",
+    "changeLevels": "Cambiar niveles de clase",
+    "changeClasses": "Cambiar clases del personaje",
+    "items": "Añadir equipamiento",
+    "damage": "Daño",
+    "heal": "Curar",
+    "damageConditions": "Resistencias de daño",
+    "vulnerability": "Vulner",
+    "resistance": "Resist",
+    "immunity": "Inmune", 
+    "ammoList": "Munición",
+    "itemNote": "Nota de objeto",
+    "deathSavingThrows": "Tiradas de salvación contra la muerte",
+    "deathSuccess": "Éxito",
+    "deathFailure": "Fallo",
+    "dyingConditionValue": "Valor de la condición de muerte"
+  },
+  "professionsPage": {
+    "fightingFeats": "Estilo de pelea",
+    "languages": "Languajes",
+    "weaponCoreSkill": "Habilidades esenciales con armas",
+    "weaponSkills": "Habilidades del arma",
+    "lightWeaponSkills": "Arma ligera",
+    "martialWeaponSkills": "Arma marcial",
+    "tools": "Herramientas artesanales",
+    "music": "Instrumentos muscicales"
+  },
+  "terms": {
+    "armorClass": "Clase de armadura",
+    "initiative": "Iniciativa",
+    "perception": "Percepción",
+    "speed": "Velocidad",
+    "health": {
+      "current": "Salud",
+      "max": "Salud máxima",
+      "temp": "Salud temporal"
+    }
+  },
+  "damage": {
+    "bludge": "Contundente",
+    "pierce": "Perforante",
+    "slash": "Cortante",
+    "acid": "Ácido",
+    "cold": "Hielo",
+    "fire": "Fuego",
+    "force": "Fuerza",
+    "lighting": "Rayo",
+    "necrotic": "Necrótico",
+    "poison": "Veneno",
+    "psychic": "Psíquico",
+    "radiant": "Radiante",
+    "thunder": "Trueno"
+  },
+  "dnd": {
+    "alignments": {
+      "lawful_good": "Legal bueno",
+      "lawful_neutral": "Legal neutral",
+      "lawful_evil": "Legal malvado",
+      "neutral_good": "Neutral bueno",
+      "neutral": "Neutral",
+      "neutral_evil": "Neutral malvado",
+      "chaotic_good": "Caótico bueno",
+      "chaotic_neutral": "Caótico neutral",
+      "chaotic_evil": "Caótico malvado"
+    },
+    "languages": {
+      "common": "Común",
+      "dwarvish": "Enano",
+      "elvish": "Élfico",
+      "giant": "Gigante",
+      "gnomish": "Gnomo",
+      "goblin": "Goblin",
+      "halfling": "Mediano",
+      "orc": "Orco",
+      "draconic": "Draconico",
+      "undercommon": "Infracomún",
+      "infernal": "Infernal",
+      "druidic": "Druidico"
+    },
+    "coreWeaponSkills": {
+      "light": "Arma ligera",
+      "martial": "Arma marcial"
+    },
+    "coreArmorSkills": {
+      "light": "Armadura ligera",
+      "medium": "Armadura media",
+      "heavy": "Armadura pesada",
+      "shield": "Escudo"
+    }
+  }
+}

@@ -3,7 +3,7 @@ import { For } from 'solid-js';
 import { ErrorWrapper, Dice, GuideWrapper } from '../../../../components';
 import config from '../../../../data/dnd2024.json';
 import { useAppLocale } from '../../../../context';
-import { modifier } from '../../../../helpers';
+import { modifier, localize } from '../../../../helpers';
 
 const TRANSLATION = {
   en: {
@@ -23,7 +23,7 @@ export const Dnd5SavingThrows = (props) => {
     <ErrorWrapper payload={{ character_id: character().id, key: 'Dnd5SavingThrows' }}>
       <GuideWrapper character={character()}>
         <div class="blockable pt-2 pb-4">
-          <p class="text-lg dark:text-snow mb-2 text-center">{TRANSLATION[locale()]['savings']}</p>
+          <p class="text-lg dark:text-snow mb-2 text-center">{localize(TRANSLATION, locale())['savings']}</p>
           <div class="grid grid-cols-3 emd:grid-cols-6 elg:grid-cols-3 exl:grid-cols-6 gap-2">
             <For each={Object.entries(config.abilities)}>
               {([slug, ability]) =>

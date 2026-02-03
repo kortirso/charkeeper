@@ -4,7 +4,7 @@ import { ErrorWrapper, GuideWrapper, SharedBonuses } from '../../../../component
 import config from '../../../../data/daggerheart.json';
 import { useAppLocale, useAppState } from '../../../../context';
 import { createCharacterBonusRequest } from '../../../../requests/createCharacterBonusRequest';
-import { modifier } from '../../../../helpers';
+import { modifier, localize } from '../../../../helpers';
 
 const MAPPING = {
   en: {
@@ -66,7 +66,7 @@ export const DaggerheartBonuses = (props) => {
                 {(slug) =>
                   <Show when={bonusSlug === slug}>
                     <p class="bonus">
-                      {modifier(value)} {MAPPING[locale()][slug]}
+                      {modifier(value)} {localize(MAPPING, locale())[slug]}
                     </p>
                   </Show>
                 }
@@ -77,7 +77,7 @@ export const DaggerheartBonuses = (props) => {
               <For each={Object.entries(value)}>
                 {([slug, value]) =>
                   <p class="bonus">
-                    {modifier(value)} {config.traits[slug].name[locale()]}
+                    {modifier(value)} {localize(config.traits[slug].name, locale())}
                   </p>
                 }
               </For>
@@ -86,7 +86,7 @@ export const DaggerheartBonuses = (props) => {
               <For each={Object.entries(value)}>
                 {([slug, value]) =>
                   <p class="bonus">
-                    {modifier(value)} {MAPPING[locale()][slug]}
+                    {modifier(value)} {localize(MAPPING, locale())[slug]}
                   </p>
                 }
               </For>
@@ -103,7 +103,7 @@ export const DaggerheartBonuses = (props) => {
                   {(slug) =>
                     <Show when={bonusSlug === slug}>
                       <p class="bonus">
-                        {`+[${MAPPING[locale()][value] ? MAPPING[locale()][value] : DYNAMIC_ITEMS[value].name[locale()]}]`} {MAPPING[locale()][slug]}
+                        {`+[${localize(MAPPING, locale())[value] ? localize(MAPPING, locale())[value] : localize(DYNAMIC_ITEMS[value].name, locale())}]`} {localize(MAPPING, locale())[slug]}
                       </p>
                     </Show>
                   }
@@ -114,7 +114,7 @@ export const DaggerheartBonuses = (props) => {
                 <For each={Object.entries(value)}>
                   {([slug, value]) =>
                     <p class="bonus">
-                      {`+[${MAPPING[locale()][value] ? MAPPING[locale()][value] : DYNAMIC_ITEMS[value].name[locale()]}]`} {config.traits[slug].name[locale()]}
+                      {`+[${localize(MAPPING, locale())[value] ? localize(MAPPING, locale())[value] : localize(DYNAMIC_ITEMS[value].name, locale())}]`} {localize(config.traits[slug].name, locale())}
                     </p>
                   }
                 </For>
@@ -123,7 +123,7 @@ export const DaggerheartBonuses = (props) => {
                 <For each={Object.entries(value)}>
                   {([slug, value]) =>
                     <p class="bonus">
-                      {`+[${MAPPING[locale()][value] ? MAPPING[locale()][value] : DYNAMIC_ITEMS[value].name[locale()]}]`} {MAPPING[locale()][slug]}
+                      {`+[${localize(MAPPING, locale())[value] ? localize(MAPPING, locale())[value] : localize(DYNAMIC_ITEMS[value].name, locale())}]`} {localize(MAPPING, locale())[slug]}
                     </p>
                   }
                 </For>
@@ -177,7 +177,7 @@ export const DaggerheartBonuses = (props) => {
         <SharedBonuses
           character={character()}
           bonusComponent={BonusComponent}
-          mapping={MAPPING[locale()]}
+          mapping={localize(MAPPING, locale())}
           dynamicItems={DYNAMIC_ITEMS}
           proficiencyName="proficiency"
           onSaveBonus={saveBonus}

@@ -4,6 +4,7 @@ import { Select, ErrorWrapper, GuideWrapper } from '../../../../components';
 import config from '../../../../data/daggerheart.json';
 import { useAppState, useAppLocale, useAppAlert } from '../../../../context';
 import { updateCharacterRequest } from '../../../../requests/updateCharacterRequest';
+import { localize } from '../../../../helpers';
 
 const TRANSLATION = {
   en: {
@@ -36,7 +37,7 @@ export const DaggerheartStances = (props) => {
 
   const stancesSelect = createMemo(() => {
     const result = Object.entries(config.stances).filter(([key,]) => selectedStances().includes(key)).map(([key, values]) => [key, values.name[locale()]]);
-    return Object.fromEntries([['null', TRANSLATION[locale()]['noStance']]].concat(result));
+    return Object.fromEntries([['null', localize(TRANSLATION, locale())['noStance']]].concat(result));
   });
 
   const updateMultiFeatureValue = (value) => {
@@ -64,18 +65,18 @@ export const DaggerheartStances = (props) => {
       <GuideWrapper character={character()}>
         <Show when={character().can_have_stances}>
           <div class="blockable p-4">
-            <h2 class="text-lg mb-2 dark:text-snow">{TRANSLATION[locale()]['stances']}</h2>
+            <h2 class="text-lg mb-2 dark:text-snow">{localize(TRANSLATION, locale())['stances']}</h2>
             <Select
               multi
               containerClassList="w-full"
-              labelText={TRANSLATION[locale()]['selectedStances']}
+              labelText={localize(TRANSLATION, locale())['selectedStances']}
               items={availableStances()}
               selectedValues={selectedStances()}
               onSelect={(value) => updateMultiFeatureValue(value)}
             />
             <Select
               containerClassList="mt-2 w-full"
-              labelText={TRANSLATION[locale()]['activeStance']}
+              labelText={localize(TRANSLATION, locale())['activeStance']}
               items={stancesSelect()}
               selectedValue={character().stance}
               onSelect={(value) => updateCharacter({ stance: value === 'null' ? null : value })}

@@ -11,6 +11,7 @@ import {
   CharacterNavigation, Equipment, Notes, Avatar, ContentWrapper, Feats, createDiceRoll, Conditions, Combat, Gold
 } from '../../../components';
 import { useAppLocale } from '../../../context';
+import { localize } from '../../../helpers';
 
 const TRANSLATION = {
   en: {
@@ -178,7 +179,7 @@ export const Daggerheart = (props) => {
                 onReloadCharacter={props.onReloadCharacter}
                 currentGuideStep={character().guide_step}
                 guideStep={3}
-                helpMessage={TRANSLATION[locale()]['helpMessage']}
+                helpMessage={localize(TRANSLATION, locale())['helpMessage']}
                 onNextGuideStepClick={() => setActiveMobileTab('domainCards')}
               >
                 <Gold character={character()} onReplaceCharacter={props.onReplaceCharacter} />
@@ -190,7 +191,7 @@ export const Daggerheart = (props) => {
                 onReloadCharacter={props.onReloadCharacter}
                 currentGuideStep={character().guide_step}
                 guideStep={4}
-                helpMessage={TRANSLATION[locale()]['domainHelpMessage']}
+                helpMessage={localize(TRANSLATION, locale())['domainHelpMessage']}
                 onNextGuideStepClick={() => setActiveMobileTab('classLevels')}
                 openDiceRoll={openDiceRoll}
               />
@@ -220,7 +221,7 @@ export const Daggerheart = (props) => {
                 onReloadCharacter={props.onReloadCharacter}
                 currentGuideStep={character().guide_step}
                 guideStep={5}
-                helpMessage={TRANSLATION[locale()]['levelingHelpMessage']}
+                helpMessage={localize(TRANSLATION, locale())['levelingHelpMessage']}
                 finishGuideStep={true}
               />
             </Match>
@@ -335,7 +336,7 @@ export const Daggerheart = (props) => {
                 onReloadCharacter={props.onReloadCharacter}
                 currentGuideStep={character().guide_step}
                 guideStep={3}
-                helpMessage={TRANSLATION[locale()]['helpMessage']}
+                helpMessage={localize(TRANSLATION, locale())['helpMessage']}
                 onNextGuideStepClick={() => setActiveTab('domainCards')}
               >
                 <Gold character={character()} onReplaceCharacter={props.onReplaceCharacter} />
@@ -347,7 +348,7 @@ export const Daggerheart = (props) => {
                 onReloadCharacter={props.onReloadCharacter}
                 currentGuideStep={character().guide_step}
                 guideStep={4}
-                helpMessage={TRANSLATION[locale()]['domainHelpMessage']}
+                helpMessage={localize(TRANSLATION, locale())['domainHelpMessage']}
                 onNextGuideStepClick={() => setActiveTab('classLevels')}
                 openDiceRoll={openDiceRoll}
               />
@@ -377,7 +378,7 @@ export const Daggerheart = (props) => {
                 onReloadCharacter={props.onReloadCharacter}
                 currentGuideStep={character().guide_step}
                 guideStep={5}
-                helpMessage={TRANSLATION[locale()]['levelingHelpMessage']}
+                helpMessage={localize(TRANSLATION, locale())['levelingHelpMessage']}
                 finishGuideStep={true}
               />
             </Match>

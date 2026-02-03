@@ -140,7 +140,7 @@ module Dnd2024Character
     def unarmed_attack
       {
         type: 'unarmed',
-        name: { en: 'Unarmed', ru: 'Безоружная' }[I18n.locale],
+        name: translate({ en: 'Unarmed', ru: 'Безоружная' }),
         attack_bonus: modifiers['str'] + proficiency_bonus + attack_bonuses,
         damage: '1',
         damage_bonus: modifiers['str'],
@@ -191,7 +191,7 @@ module Dnd2024Character
       {
         type: 'melee',
         slug: item[:items_slug],
-        name: item[:items_name][I18n.locale.to_s],
+        name: translate(item[:items_name]),
         attack_bonus: (weapon_proficiency?(item) ? (key_ability_bonus + proficiency_bonus) : key_ability_bonus) + attack_bonuses,
         distance: item[:items_info]['type'] == 'thrown' ? item[:items_info]['dist'] : (captions.include?('reach') ? 10 : nil), # rubocop: disable Style/NestedTernaryOperator
         damage: item[:items_info]['damage'],
@@ -226,7 +226,7 @@ module Dnd2024Character
       {
         type: type,
         slug: item[:items_slug],
-        name: item[:items_name][I18n.locale.to_s],
+        name: translate(item[:items_name]),
         attack_bonus: (weapon_proficiency?(item) ? (base_bonus + proficiency_bonus) : base_bonus) + attack_bonuses,
         distance: item[:items_info]['dist'],
         damage: item[:items_info]['damage'],

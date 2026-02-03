@@ -4,7 +4,7 @@ import { ErrorWrapper, Button, GuideWrapper } from '../../../../components';
 import { useAppState, useAppLocale, useAppAlert } from '../../../../context';
 import { updateCharacterRequest } from '../../../../requests/updateCharacterRequest';
 import { Minus, Plus } from '../../../../assets';
-import { modifier } from '../../../../helpers';
+import { modifier, localize } from '../../../../helpers';
 
 const TRANSLATION = {
   en: {
@@ -62,7 +62,7 @@ export const Dnd5Proficiency = (props) => {
         <div class="blockable mb-2 p-4 dark:text-snow">
           <div class="grid grid-cols-2 emd:grid-cols-4 gap-2">
             <div>
-              <p class="text-sm mb-2 text-center h-10">{TRANSLATION[locale()]['heroic']}</p>
+              <p class="text-sm mb-2 text-center h-10">{localize(TRANSLATION, locale())['heroic']}</p>
               <div class="flex justify-center items-center">
                 <p
                   class="leading-12 mx-2 text-center uppercase text-lg cursor-pointer"
@@ -74,7 +74,7 @@ export const Dnd5Proficiency = (props) => {
               </div>
             </div>
             <div>
-              <p class="text-sm mb-2 text-center h-10">{TRANSLATION[locale()]['bardic']}</p>
+              <p class="text-sm mb-2 text-center h-10">{localize(TRANSLATION, locale())['bardic']}</p>
               <div class="flex justify-center items-center">
                 <Button default size="small" onClick={() => bardic() === 6 ? null : setBardic(bardic() - 2)}>
                   <Minus />
@@ -92,11 +92,11 @@ export const Dnd5Proficiency = (props) => {
               </div>
             </div>
             <div class="flex flex-col items-center">
-              <p class="text-sm mb-2 text-center h-10">{TRANSLATION[locale()]['proficiencyBonus']}</p>
+              <p class="text-sm mb-2 text-center h-10">{localize(TRANSLATION, locale())['proficiencyBonus']}</p>
               <p class="text-2xl leading-12">{modifier(character().proficiency_bonus)}</p>
             </div>
             <div>
-              <p class="text-sm mb-2 text-center h-10">{TRANSLATION[locale()]['hitDices']}</p>
+              <p class="text-sm mb-2 text-center h-10">{localize(TRANSLATION, locale())['hitDices']}</p>
               <For each={Object.entries(character().hit_dice).filter(([, value]) => value > 0)}>
                 {([dice, maxValue]) =>
                   <div class="flex justify-center items-center min-h-12">

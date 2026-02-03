@@ -4,7 +4,7 @@ import { Button, Checkbox, createModal, TextArea } from '../../../../components'
 import config from '../../../../data/dnd2024.json';
 import { Minus, Plus } from '../../../../assets';
 import { useAppLocale } from '../../../../context';
-import { modifier } from '../../../../helpers';
+import { modifier, localize } from '../../../../helpers';
 
 const TRANSLATION = {
   en: {
@@ -39,15 +39,15 @@ export const SpellsTable = (props) => {
 
   const renderDescription = (spellAbility) => {
     const bonus = props.character.proficiency_bonus + props.character.modifiers[spellAbility];
-    return `${TRANSLATION[locale()]['attackBonus']} ${modifier(bonus)}, ${TRANSLATION[locale()]['saveDC']} ${8 + bonus}`;
+    return `${localize(TRANSLATION, locale())['attackBonus']} ${modifier(bonus)}, ${localize(TRANSLATION, locale())['saveDC']} ${8 + bonus}`;
   }
 
   const renderSpellData = (data) => {
     const result = [];
-    if (data.limit) result.push(`${data.limit} ${TRANSLATION[locale()]['perDay']}`);
-    if (data.level) result.push(`${TRANSLATION[locale()]['spellLevel']} ${data.level}`);
-    if (data.attack_bonus) result.push(`${TRANSLATION[locale()]['attackBonus']} ${modifier(data.attack_bonus)}`);
-    if (data.save_dc) result.push(`${TRANSLATION[locale()]['saveDC']} ${data.save_dc}`);
+    if (data.limit) result.push(`${data.limit} ${localize(TRANSLATION, locale())['perDay']}`);
+    if (data.level) result.push(`${localize(TRANSLATION, locale())['spellLevel']} ${data.level}`);
+    if (data.attack_bonus) result.push(`${localize(TRANSLATION, locale())['attackBonus']} ${modifier(data.attack_bonus)}`);
+    if (data.save_dc) result.push(`${localize(TRANSLATION, locale())['saveDC']} ${data.save_dc}`);
 
     return result.join(', ');
   }
@@ -69,8 +69,8 @@ export const SpellsTable = (props) => {
       <div class="blockable mb-2 p-4">
         <div class="flex justify-between items-center">
           <h2 class="text-lg dark:text-snow">
-            <Show when={props.level !== 0} fallback={TRANSLATION[locale()]['cantrips']}>
-              {props.level} {TRANSLATION[locale()]['level']}
+            <Show when={props.level !== 0} fallback={localize(TRANSLATION, locale())['cantrips']}>
+              {props.level} {localize(TRANSLATION, locale())['level']}
             </Show>
           </h2>
           <Show when={props.spentSpellSlots}>
@@ -121,7 +121,7 @@ export const SpellsTable = (props) => {
                     </Show>
                     <Show when={props.activeSpellClass === undefined}>
                       <p class="text-xs text-right">
-                        {spell.prepared_by ? config.classes[spell.prepared_by]['name'][locale()] : TRANSLATION[locale()]['static']}
+                        {spell.prepared_by ? config.classes[spell.prepared_by]['name'][locale()] : localize(TRANSLATION, locale())['static']}
                       </p>
                     </Show>
                   </td>
@@ -136,11 +136,11 @@ export const SpellsTable = (props) => {
           <p class="flex-1 text-xl text-left dark:text-snow mb-2">{changingSpell().name}</p>
           <TextArea
             rows="2"
-            labelText={TRANSLATION[locale()]['spellNote']}
+            labelText={localize(TRANSLATION, locale())['spellNote']}
             onChange={(value) => setChangingSpell({ ...changingSpell(), notes: value })}
             value={changingSpell().notes}
           />
-          <Button default textable classList="mt-2" onClick={updateSpell}>{TRANSLATION[locale()]['save']}</Button>
+          <Button default textable classList="mt-2" onClick={updateSpell}>{localize(TRANSLATION, locale())['save']}</Button>
         </Show>
       </Modal>
     </>

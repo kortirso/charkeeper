@@ -4,7 +4,7 @@
                identities: @identities,
                oauth_links: @oauth_links,
                oauth_credentials: @oauth_credentials,
-               locale: current_user.locale,
+               locale: current_user.locale == 'es' ? 'en' : current_user.locale,
                username: current_user.username,
                admin: current_user.admin?,
                color_schema: current_user.color_schema,

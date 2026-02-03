@@ -5,7 +5,7 @@ import config from '../../../../data/pathfinder2.json';
 import { useAppState, useAppLocale, useAppAlert } from '../../../../context';
 import { Minus, Plus } from '../../../../assets';
 import { updateCharacterRequest } from '../../../../requests/updateCharacterRequest';
-import { modifier } from '../../../../helpers';
+import { modifier, localize } from '../../../../helpers';
 
 const TRANSLATION = {
   en: {
@@ -62,11 +62,11 @@ export const Pathfinder2Abilities = (props) => {
 
       result.push(`${key.split('_').map((item) => config.abilities[item].name[locale()]).join('/')} - ${ability_boosts[key]}`)
     });
-    if (ability_boosts.free) result.push(`${TRANSLATION[locale()].free} - ${ability_boosts.free}`);
+    if (ability_boosts.free) result.push(`${localize(TRANSLATION, locale()).free} - ${ability_boosts.free}`);
 
     return (
       <p class="text-sm">
-        <span class="font-medium!">{TRANSLATION[locale()][source]} </span>
+        <span class="font-medium!">{localize(TRANSLATION, locale())[source]} </span>
         <span>{result.join('; ')}</span>
       </p>
     );
@@ -97,7 +97,7 @@ export const Pathfinder2Abilities = (props) => {
       >
         <Show when={character().ability_boosts_v2}>
           <div class="warning">
-            <p class="text-sm">{TRANSLATION[locale()].abilityBoosts}</p>
+            <p class="text-sm">{localize(TRANSLATION, locale()).abilityBoosts}</p>
             {renderAbilityBoost(character().ability_boosts_v2.background, 'background')}
             {renderAbilityBoost(character().ability_boosts_v2.race, 'race')}
             {renderAbilityBoost(character().ability_boosts_v2.base, 'base')}

@@ -8,7 +8,7 @@ import dnd2024Config from '../../../data/dnd2024.json';
 import dnd5Config from '../../../data/dnd5.json';
 import dc20Config from '../../../data/dc20.json';
 import { useAppState, useAppLocale, useAppAlert } from '../../../context';
-import { clickOutside, copyToClipboard } from '../../../helpers';
+import { clickOutside, copyToClipboard, localize } from '../../../helpers';
 
 const AVAILABLE_JSON = ['daggerheart'];
 const AVAILABLE_PDF = ['daggerheart', 'dnd5', 'dnd2024', 'pathfinder2'];
@@ -68,19 +68,19 @@ export const CharactersListItem = (props) => {
 
   const firstText = createMemo(() => {
     if (character().provider === 'dnd5') {
-      return `${t('charactersPage.level')} ${character().level} | ${character().subrace ? dnd5Config.races[character().race].subraces[character().subrace].name[locale()] : dnd5Config.races[character().race].name[locale()]}`;
+      return `${t('charactersPage.level')} ${character().level} | ${character().subrace ? localize(dnd5Config.races[character().race].subraces[character().subrace].name, locale()) : localize(dnd5Config.races[character().race].name,locale())}`;
     }
     if (character().provider === 'dnd2024') {
-      return `${t('charactersPage.level')} ${character().level} | ${character().legacy ? props.dnd2024Races[character().species].legacies[character().legacy].name[locale()] : props.dnd2024Races[character().species].name[locale()]}`;
+      return `${t('charactersPage.level')} ${character().level} | ${character().legacy ? localize(props.dnd2024Races[character().species].legacies[character().legacy].name, locale()) : localize(props.dnd2024Races[character().species].name, locale())}`;
     }
     if (character().provider === 'pathfinder2') {
-      return `${t('charactersPage.level')} ${character().level} | ${character().subrace ? pathfinder2Config.races[character().race].subraces[character().subrace].name[locale()] : pathfinder2Config.races[character().race].name[locale()]}`;
+      return `${t('charactersPage.level')} ${character().level} | ${character().subrace ? localize(pathfinder2Config.races[character().race].subraces[character().subrace].name, locale()) : localize(pathfinder2Config.races[character().race].name, locale())}`;
     }
     if (character().provider === 'daggerheart') {
       return `${t('charactersPage.level')} ${character().level} | ${character().names.ancestry_name}`;
     }
     if (character().provider === 'dc20') {
-      return `${t('charactersPage.level')} ${character().level} | ${character().ancestries.map((item) => dc20Config.ancestries[item].name[locale()]).join(' * ')}`;
+      return `${t('charactersPage.level')} ${character().level} | ${character().ancestries.map((item) => localize(dc20Config.ancestries[item].name, locale())).join(' * ')}`;
     }
   });
 
@@ -142,9 +142,9 @@ export const CharactersListItem = (props) => {
           </IconButton>
           <Show when={isOpen()}>
             <div class="absolute z-9 right-0 border border-gray-200 rounded overflow-hidden">
-              <p class="dots-item" onClick={deleteClick}>{TRANSLATION[locale()].delete}</p>
+              <p class="dots-item" onClick={deleteClick}>{localize(TRANSLATION, locale()).delete}</p>
               <Show when={AVAILABLE_RESET.includes(character().provider)}>
-                <p class="dots-item" onClick={resetClick}>{TRANSLATION[locale()].reset}</p>
+                <p class="dots-item" onClick={resetClick}>{localize(TRANSLATION, locale()).reset}</p>
               </Show>
               <Show when={AVAILABLE_JSON.includes(character().provider)}>
                 <p class="dots-item" onClick={copy}>{t('charactersPage.onCopyCharacter')}</p>

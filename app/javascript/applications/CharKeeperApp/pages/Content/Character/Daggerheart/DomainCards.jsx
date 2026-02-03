@@ -11,7 +11,7 @@ import { fetchCharacterSpellsRequest } from '../../../../requests/fetchCharacter
 import { createCharacterSpellRequest } from '../../../../requests/createCharacterSpellRequest';
 import { updateCharacterSpellRequest } from '../../../../requests/updateCharacterSpellRequest';
 import { removeCharacterSpellRequest } from '../../../../requests/removeCharacterSpellRequest';
-import { modifier } from '../../../../helpers';
+import { modifier, localize } from '../../../../helpers';
 
 const TRANSLATION = {
   en: {
@@ -104,7 +104,7 @@ export const DaggerheartDomainCards = (props) => {
     if (result.errors_list === undefined) {
       batch(() => {
         setCharacterSpells([result.spell].concat(characterSpells()));
-        renderNotice(TRANSLATION[locale()]['domainCardIsAdded']);
+        renderNotice(localize(TRANSLATION, locale())['domainCardIsAdded']);
       });
       props.onReloadCharacter();
     }
@@ -181,7 +181,7 @@ export const DaggerheartDomainCards = (props) => {
             <>
               <div class="flex justify-between items-center mb-2">
                 <Checkbox
-                  labelText={TRANSLATION[locale()]['onlyAvailableSpells']}
+                  labelText={localize(TRANSLATION, locale())['onlyAvailableSpells']}
                   labelPosition="right"
                   labelClassList="ml-2"
                   checked={availableDomainsFilter()}
@@ -198,7 +198,7 @@ export const DaggerheartDomainCards = (props) => {
                             <div class="flex items-center justify-between mb-2">
                               <p class="font-normal! text-lg">{spell.title}</p>
                               <Show when={spell.info.type}>
-                                {TRANSLATION[locale()][spell.info.type]} ({spell.conditions.level} {TRANSLATION[locale()].level})
+                                {localize(TRANSLATION, locale())[spell.info.type]} ({spell.conditions.level} {localize(TRANSLATION, locale()).level})
                               </Show>
                             </div>
                             <p
@@ -236,7 +236,7 @@ export const DaggerheartDomainCards = (props) => {
             <DomainCardsTable
               countCards
               title={t('daggerheart.domainCards.loadout')}
-              subtitle={`${TRANSLATION[locale()]['loadoutLimit']} - 5`}
+              subtitle={`${localize(TRANSLATION, locale())['loadoutLimit']} - 5`}
               spells={characterSpells().filter((spell) => spell.ready_to_use)}
               domains={daggerheartDomains()}
               onChangeSpell={changeSpell}

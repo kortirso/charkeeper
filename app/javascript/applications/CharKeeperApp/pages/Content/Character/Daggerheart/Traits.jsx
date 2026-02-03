@@ -5,7 +5,7 @@ import config from '../../../../data/daggerheart.json';
 import { useAppState, useAppLocale, useAppAlert } from '../../../../context';
 import { Minus, Plus } from '../../../../assets';
 import { updateCharacterRequest } from '../../../../requests/updateCharacterRequest';
-import { modifier } from '../../../../helpers';
+import { modifier, localize } from '../../../../helpers';
 
 const TRANSLATION = {
   en: {
@@ -74,12 +74,12 @@ export const DaggerheartTraits = (props) => {
         <GuideWrapper
           character={character()}
           guideStep={1}
-          helpMessage={TRANSLATION[locale()]['helpMessage']}
+          helpMessage={localize(TRANSLATION, locale())['helpMessage']}
           onReloadCharacter={props.onReloadCharacter}
         >
           <div class="blockable py-4">
             <div class="grid grid-cols-3 emd:grid-cols-6 elg:grid-cols-3 exl:grid-cols-6 gap-x-2 gap-y-4">
-              <For each={Object.entries(config.traits).map(([key, values]) => [key, values.name[locale()]])}>
+              <For each={Object.entries(config.traits).map(([key, values]) => [key, localize(values.name, locale())])}>
                 {([slug, trait]) =>
                   <div>
                     <p class="text-sm uppercase text-center mb-2 dark:text-white">{trait}</p>

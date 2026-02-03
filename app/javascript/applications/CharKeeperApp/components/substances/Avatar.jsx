@@ -6,7 +6,7 @@ import { useAppState, useAppLocale, useAppAlert } from '../../context';
 import daggerheartConfig from '../../data/daggerheart.json';
 import { fetchHomebrewsRequest } from '../../requests/fetchHomebrewsRequest';
 import { updateCharacterRequest } from '../../requests/updateCharacterRequest';
-import { translate } from '../../helpers';
+import { translate, localize } from '../../helpers';
 
 const TRANSLATION = {
   en: {
@@ -81,7 +81,7 @@ export const Avatar = (props) => {
     const target = event.target;
     if (target.files && target.files.length > 0) {
       const file = target.files[0];
-      if (file.size > 1000000) return renderAlert(TRANSLATION[locale()].fileSizeLimit);
+      if (file.size > 1000000) return renderAlert(localize(TRANSLATION, locale()).fileSizeLimit);
 
       setSelectedFile(file);
     }
@@ -117,14 +117,14 @@ export const Avatar = (props) => {
   return (
     <div class="blockable p-4 mb-4">
       <div>
-        <Label labelText={TRANSLATION[locale()].avatarFile} />
+        <Label labelText={localize(TRANSLATION, locale()).avatarFile} />
         <input class="block mb-2 dark:text-gray-200" type="file" accept="image/jpeg, image/png" onChange={handleFileChange} />
         <Input
-          labelText={TRANSLATION[locale()].avatarUrl}
+          labelText={localize(TRANSLATION, locale()).avatarUrl}
           value={avatarUrl()}
           onInput={(value) => setAvatarUrl(value)}
         />
-        <Label labelText={TRANSLATION[locale()].avatarTransform} />
+        <Label labelText={localize(TRANSLATION, locale()).avatarTransform} />
       </div>
       <Input
         containerClassList="mt-4"
@@ -136,14 +136,14 @@ export const Avatar = (props) => {
         <Show when={heritageName()}>
           <Input
             containerClassList="mt-4"
-            labelText={TRANSLATION[locale()].heritageName}
+            labelText={localize(TRANSLATION, locale()).heritageName}
             value={heritageName()}
             onInput={setHeritageName}
           />
         </Show>
         <Select
           containerClassList="mt-4"
-          labelText={TRANSLATION[locale()].communityName}
+          labelText={localize(TRANSLATION, locale()).communityName}
           items={translate(daggerheartCommunities(), locale())}
           selectedValue={community()}
           onSelect={setCommunity}

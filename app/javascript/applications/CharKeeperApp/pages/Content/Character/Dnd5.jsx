@@ -11,6 +11,7 @@ import {
 } from '../../../components';
 import { useAppState, useAppLocale } from '../../../context';
 import { updateCharacterRequest } from '../../../requests/updateCharacterRequest';
+import { localize } from '../../../helpers';
 
 const TRANSLATION = {
   en: {
@@ -194,7 +195,7 @@ export const Dnd5 = (props) => {
                 onReplaceCharacter={props.onReplaceCharacter}
                 onReloadCharacter={props.onReloadCharacter}
                 guideStep={3}
-                helpMessage={TRANSLATION[locale()]['equipmentHelpMessage']}
+                helpMessage={localize(TRANSLATION, locale())['equipmentHelpMessage']}
                 onNextGuideStepClick={() => setActiveMobileTab('classLevels')}
               >
                 <Gold character={character()} onReplaceCharacter={props.onReplaceCharacter} />
@@ -219,7 +220,7 @@ export const Dnd5 = (props) => {
                 onReplaceCharacter={props.onReplaceCharacter}
                 onReloadCharacter={props.onReloadCharacter}
                 currentGuideStep={character().guide_step}
-                helpMessage={TRANSLATION[locale()]['levelingHelpMessage']}
+                helpMessage={localize(TRANSLATION, locale())['levelingHelpMessage']}
               />
             </Match>
             <Match when={activeMobileTab() === 'professions'}>
@@ -351,7 +352,7 @@ export const Dnd5 = (props) => {
                 onReplaceCharacter={props.onReplaceCharacter}
                 onReloadCharacter={props.onReloadCharacter}
                 guideStep={3}
-                helpMessage={TRANSLATION[locale()]['equipmentHelpMessage']}
+                helpMessage={localize(TRANSLATION, locale())['equipmentHelpMessage']}
                 onNextGuideStepClick={() => setActiveTab('classLevels')}
               >
                 <Gold character={character()} onReplaceCharacter={props.onReplaceCharacter} />
@@ -379,7 +380,7 @@ export const Dnd5 = (props) => {
                 onReplaceCharacter={props.onReplaceCharacter}
                 onReloadCharacter={props.onReloadCharacter}
                 currentGuideStep={character().guide_step}
-                helpMessage={TRANSLATION[locale()]['levelingHelpMessage']}
+                helpMessage={localize(TRANSLATION, locale())['levelingHelpMessage']}
               />
             </Match>
             <Match when={activeTab() === 'professions'}>

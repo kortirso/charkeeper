@@ -5,7 +5,7 @@ import { Button, Input, ErrorWrapper, Toggle, GuideWrapper } from '../../../../c
 import { useAppState, useAppLocale, useAppAlert } from '../../../../context';
 import { Plus, Minus, Close, Check } from '../../../../assets';
 import { updateCharacterRequest } from '../../../../requests/updateCharacterRequest';
-import { modifier } from '../../../../helpers';
+import { modifier, localize } from '../../../../helpers';
 
 const TRANSLATION = {
   en: {
@@ -105,7 +105,7 @@ export const DaggerheartExperience = (props) => {
       <GuideWrapper
         character={object()}
         guideStep={2}
-        helpMessage={TRANSLATION[locale()]['helpMessage']}
+        helpMessage={localize(TRANSLATION, locale())['helpMessage']}
         onReloadCharacter={props.onReloadCharacter}
         onNextClick={props.onNextGuideStepClick}
       >

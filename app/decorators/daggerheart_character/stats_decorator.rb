@@ -144,7 +144,7 @@ module DaggerheartCharacter
       beast_attack = beastform_config['attack']
 
       {
-        name: { en: 'Beast attack', ru: 'Атака' }[I18n.locale],
+        name: translate({ en: 'Beast attack', ru: 'Атака' }),
         range: beast_attack['range'],
         trait: use_max_trait_for_attack ? max_trait : beast_attack['trait'],
         attack_bonus: (use_max_trait_for_attack ? max_trait_value : modified_traits[beast_attack['trait']]) + attack_bonuses,
@@ -161,7 +161,7 @@ module DaggerheartCharacter
 
     def unarmed_attack
       {
-        name: { en: 'Unarmed', ru: 'Безоружная' }[I18n.locale],
+        name: translate({ en: 'Unarmed', ru: 'Безоружная' }),
         range: 'melee',
         trait: use_max_trait_for_attack ? max_trait : max_unarmed_trait,
         attack_bonus: (use_max_trait_for_attack ? max_trait_value : [modified_traits['str'], modified_traits['fin']].max) + attack_bonuses + stance_attack_bonus, # rubocop: disable Layout/LineLength
@@ -178,7 +178,7 @@ module DaggerheartCharacter
 
     def calculate_attack(item) # rubocop: disable Metrics/AbcSize, Metrics/MethodLength, Metrics/PerceivedComplexity
       response = [{
-        name: item[:items_name][I18n.locale.to_s],
+        name: translate(item[:items_name]),
         range: item[:items_info]['range'],
         trait: use_max_trait_for_attack ? max_trait : item[:items_info]['trait'],
         attack_bonus: (use_max_trait_for_attack ? max_trait_value : trait_bonus(item)) + attack_bonuses + stance_attack_bonus +

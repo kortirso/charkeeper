@@ -5,7 +5,7 @@ import { Input, Button, Select } from '../components';
 import { useAppState, useAppLocale, useAppAlert } from '../context';
 import { signUpRequest } from '../requests/signUpRequest';
 import { signInRequest } from '../requests/signInRequest';
-import { writeToCache } from '../helpers';
+import { writeToCache, localize } from '../helpers';
 
 const CHARKEEPER_HOST_CACHE_NAME = 'CharKeeperHost';
 const TRANSLATION = {
@@ -99,15 +99,15 @@ export const LoginPage = () => {
         <Show when={window.__TAURI_INTERNALS__}>
           <Select
             containerClassList="mb-1"
-            labelText={TRANSLATION[locale()].region}
+            labelText={localize(TRANSLATION, locale()).region}
             items={{
-              'charkeeper.org': TRANSLATION[locale()].euRegion,
-              'charkeeper.ru': TRANSLATION[locale()].ruRegion,
+              'charkeeper.org': localize(TRANSLATION, locale()).euRegion,
+              'charkeeper.ru': localize(TRANSLATION, locale()).ruRegion,
             }}
             selectedValue={region()}
             onSelect={setRegion}
           />
-          <p class="text-sm mb-2">{TRANSLATION[locale()].regionHelp}</p>
+          <p class="text-sm mb-2">{localize(TRANSLATION, locale()).regionHelp}</p>
         </Show>
         <Input
           containerClassList="form-field mb-2"

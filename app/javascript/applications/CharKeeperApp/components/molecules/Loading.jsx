@@ -1,6 +1,7 @@
 import { createSignal, onCleanup, Show } from 'solid-js';
 
 import { useAppLocale } from '../../context';
+import { localize } from '../../helpers';
 
 const TRANSLATION = {
   en: {
@@ -25,7 +26,7 @@ export const Loading = (props) => {
         when={props.spinner}
         fallback={
           <p class="dark:text-snow text-lg">
-            {TRANSLATION[locale()].loading}
+            {localize(TRANSLATION, locale()).loading}
             <span class="inline-block w-8">{Array((count() % 4) + 1).join('.')}</span>
           </p>
         }

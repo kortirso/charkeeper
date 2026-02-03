@@ -1,6 +1,6 @@
 <%=
   js_component 'HomebrewsApp',
                access_token: @access_token,
-               locale: current_user.locale,
+               locale: current_user.locale == 'es' ? 'en' : current_user.locale,
                component_id: 'root'
 %>

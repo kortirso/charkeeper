@@ -2,6 +2,7 @@ import { For } from 'solid-js';
 
 import { ErrorWrapper, GuideWrapper } from '../../../../components';
 import { useAppLocale } from '../../../../context';
+import { localize } from '../../../../helpers';
 
 const TRANSLATION = {
   en: {
@@ -21,7 +22,7 @@ export const BeastFeatures = (props) => {
     <ErrorWrapper payload={{ character_id: character().id, key: 'BeastFeatures' }}>
       <GuideWrapper character={character()}>
         <div class="p-4 blockable mb-2">
-          <h2 class="text-lg font-normal! mb-2 dark:text-snow">{TRANSLATION[locale()]['title']}</h2>
+          <h2 class="text-lg font-normal! mb-2 dark:text-snow">{localize(TRANSLATION, locale())['title']}</h2>
           <table class="w-full table first-column-full-width table-top">
             <thead>
               <tr>

@@ -10,6 +10,7 @@ import {
   CharacterNavigation, Notes, Avatar, ContentWrapper, createDiceRoll, Conditions, Equipment, Combat, Feats
 } from '../../../components';
 import { useAppLocale } from '../../../context';
+import { localize } from '../../../helpers';
 
 const TRANSLATION = {
   en: {
@@ -129,7 +130,7 @@ export const Dc20 = (props) => {
                 onReplaceCharacter={props.onReplaceCharacter}
                 onReloadCharacter={props.onReloadCharacter}
                 guideStep={3}
-                helpMessage={TRANSLATION[locale()]['equipmentHelpMessage']}
+                helpMessage={localize(TRANSLATION, locale())['equipmentHelpMessage']}
                 onNextGuideStepClick={() => setActiveMobileTab('classLevels')}
               />
             </Match>
@@ -139,7 +140,7 @@ export const Dc20 = (props) => {
                 onReplaceCharacter={props.onReplaceCharacter}
                 onReloadCharacter={props.onReloadCharacter}
                 currentGuideStep={character().guide_step}
-                helpMessage={TRANSLATION[locale()]['levelingHelpMessage']}
+                helpMessage={localize(TRANSLATION, locale())['levelingHelpMessage']}
               />
             </Match>
             <Match when={activeMobileTab() === 'spells'}>
@@ -242,7 +243,7 @@ export const Dc20 = (props) => {
                 onReplaceCharacter={props.onReplaceCharacter}
                 onReloadCharacter={props.onReloadCharacter}
                 guideStep={3}
-                helpMessage={TRANSLATION[locale()]['equipmentHelpMessage']}
+                helpMessage={localize(TRANSLATION, locale())['equipmentHelpMessage']}
                 onNextGuideStepClick={() => setActiveTab('classLevels')}
               />
             </Match>
@@ -252,7 +253,7 @@ export const Dc20 = (props) => {
                 onReplaceCharacter={props.onReplaceCharacter}
                 onReloadCharacter={props.onReloadCharacter}
                 currentGuideStep={character().guide_step}
-                helpMessage={TRANSLATION[locale()]['levelingHelpMessage']}
+                helpMessage={localize(TRANSLATION, locale())['levelingHelpMessage']}
               />
             </Match>
             <Match when={activeTab() === 'spells'}>

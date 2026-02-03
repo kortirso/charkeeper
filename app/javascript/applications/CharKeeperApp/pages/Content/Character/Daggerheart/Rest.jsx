@@ -9,7 +9,7 @@ import { fetchDaggerheartProjectsRequest } from '../../../../requests/fetchDagge
 import { createDaggerheartProjectRequest } from '../../../../requests/createDaggerheartProjectRequest';
 import { updateDaggerheartProjectRequest } from '../../../../requests/updateDaggerheartProjectRequest';
 import { removeDaggerheartProjectRequest } from '../../../../requests/removeDaggerheartProjectRequest';
-import { replace } from '../../../../helpers';
+import { replace, localize } from '../../../../helpers';
 
 const TRANSLATION = {
   en: {
@@ -134,11 +134,11 @@ export const DaggerheartRest = (props) => {
     if (value() === null) return {};
 
     const result = DOWNTIME_ACTIONS.reduce((acc, key) => {
-      acc[key] = replace(TRANSLATION[locale()][key.startsWith('clear') ? `${key}_${value()}` : key], { tier: character().tier });
+      acc[key] = replace(localize(TRANSLATION, locale())[key.startsWith('clear') ? `${key}_${value()}` : key], { tier: character().tier });
       return acc;
     }, {});
 
-    if (value() === 'long') result.project = TRANSLATION[locale()].workOnProject;
+    if (value() === 'long') result.project = localize(TRANSLATION, locale()).workOnProject;
 
     return result;
   });
@@ -164,7 +164,7 @@ export const DaggerheartRest = (props) => {
         setSecondAction(null);
         workOnProject(null);
         setMakeRolls(false);
-        renderNotice(TRANSLATION[locale()].complete);
+        renderNotice(localize(TRANSLATION, locale()).complete);
       });
       if (workOnProject()) {
         const projectsData = await fetchProjects();
@@ -227,18 +227,18 @@ export const DaggerheartRest = (props) => {
     <ErrorWrapper payload={{ character_id: character().id, key: 'DaggerheartRest' }}>
       <GuideWrapper character={character()}>
         <div class="blockable p-4">
-          <p>{TRANSLATION[locale()].description}</p>
+          <p>{localize(TRANSLATION, locale()).description}</p>
           <Select
             containerClassList="w-full mt-4"
-            labelText={TRANSLATION[locale()].valueLabel}
-            items={TRANSLATION[locale()].values}
+            labelText={localize(TRANSLATION, locale()).valueLabel}
+            items={localize(TRANSLATION, locale()).values}
             selectedValue={value()}
             onSelect={updateType}
           />
           <Show when={value() && value() !== 'session'}>
             <Checkbox
               classList="mt-2"
-              labelText={TRANSLATION[locale()].makeRolls}
+              labelText={localize(TRANSLATION, locale()).makeRolls}
               labelPosition="right"
               labelClassList="ml-2"
               checked={makeRolls()}
@@ -246,14 +246,14 @@ export const DaggerheartRest = (props) => {
             />
             <Select
               containerClassList="w-full mt-2"
-              labelText={TRANSLATION[locale()].firstAction}
+              labelText={localize(TRANSLATION, locale()).firstAction}
               items={restActions()}
               selectedValue={firstAction()}
               onSelect={setFirstAction}
             />
             <Select
               containerClassList="w-full mt-2"
-              labelText={TRANSLATION[locale()].secondAction}
+              labelText={localize(TRANSLATION, locale()).secondAction}
               items={restActions()}
               selectedValue={secondAction()}
               onSelect={setSecondAction}
@@ -261,7 +261,7 @@ export const DaggerheartRest = (props) => {
             <Show when={firstAction() === 'project' || secondAction() === 'project'}>
               <Select
                 containerClassList="w-full mt-2"
-                labelText={TRANSLATION[locale()].workOnProject}
+                labelText={localize(TRANSLATION, locale()).workOnProject}
                 items={Object.fromEntries(projects().map((item) => [item.id, item.title]))}
                 selectedValue={workOnProject()}
                 onSelect={setWorkOnProject}
@@ -269,7 +269,7 @@ export const DaggerheartRest = (props) => {
               <Show when={workOnProject()}>
                 <Checkbox
                   classList="mt-2"
-                  labelText={TRANSLATION[locale()].makeProjectRolls}
+                  labelText={localize(TRANSLATION, locale()).makeProjectRolls}
                   labelPosition="right"
                   labelClassList="ml-2"
                   checked={makeProjectRolls()}
@@ -279,14 +279,14 @@ export const DaggerheartRest = (props) => {
                 <Input
                   numeric
                   containerClassList="mt-2"
-                  labelText={makeProjectRolls() ? TRANSLATION[locale()].projectDc : TRANSLATION[locale()].projectRoll}
+                  labelText={makeProjectRolls() ? localize(TRANSLATION, locale()).projectDc : localize(TRANSLATION, locale()).projectRoll}
                   value={projectRoll()}
                   onInput={setProjectRoll}
                 />
               </Show>
             </Show>
           </Show>
-          <Button default textable classList="mt-4" onClick={restCharacter}>{TRANSLATION[locale()].rest}</Button>
+          <Button default textable classList="mt-4" onClick={restCharacter}>{localize(TRANSLATION, locale()).rest}</Button>
         </div>
         <Show
           when={!projectsEditMode()}
@@ -294,40 +294,40 @@ export const DaggerheartRest = (props) => {
             <div class="p-4 flex-1 flex flex-col blockable mt-4">
               <div class="flex-1">
                 <Input
-                  labelText={TRANSLATION[locale()].projectTitle}
+                  labelText={localize(TRANSLATION, locale()).projectTitle}
                   value={projectForm.title}
                   onInput={(value) => setProjectForm({ ...projectForm, title: value })}
                 />
                 <TextArea
                   rows="5"
                   containerClassList="mt-2"
-                  labelText={TRANSLATION[locale()].projectDescription}
+                  labelText={localize(TRANSLATION, locale()).projectDescription}
                   value={projectForm.description}
                   onChange={(description) => setProjectForm({ ...projectForm, description: description })}
                 />
-                <p class="text-sm mt-1">{TRANSLATION[locale()].textHelp}</p>
+                <p class="text-sm mt-1">{localize(TRANSLATION, locale()).textHelp}</p>
                 <Input
                   numeric
                   containerClassList="mt-2"
-                  labelText={TRANSLATION[locale()].complexity}
+                  labelText={localize(TRANSLATION, locale()).complexity}
                   value={projectForm.complexity}
                   onInput={(value) => setProjectForm({ ...projectForm, complexity: parseInt(value) })}
                 />
               </div>
               <div class="flex justify-end mt-4">
-                <Button outlined textable size="small" classList="mr-4" onClick={cancelProject}>{TRANSLATION[locale()].cancel}</Button>
+                <Button outlined textable size="small" classList="mr-4" onClick={cancelProject}>{localize(TRANSLATION, locale()).cancel}</Button>
                 <Button
                   default
                   textable
                   size="small"
                   onClick={() => projectForm.id === undefined ? createProject() : updateProject()}
-                >{TRANSLATION[locale()].save}</Button>
+                >{localize(TRANSLATION, locale()).save}</Button>
               </div>
             </div>
           }
         >
           <Button default textable classList="mt-4 mb-2 w-full" onClick={addProject}>
-            {TRANSLATION[locale()].newProject}
+            {localize(TRANSLATION, locale()).newProject}
           </Button>
           <Show when={projects() !== undefined}>
             <For each={projects()}>
@@ -337,7 +337,7 @@ export const DaggerheartRest = (props) => {
                     <p class="flex-1">
                       {project.title}
                       <Show when={project.progress >= project.complexity}>
-                        {TRANSLATION[locale()].completed}
+                        {localize(TRANSLATION, locale()).completed}
                       </Show>
                     </p>
                     <IconButton onClick={(e) => removeProject(e, project.id)}>
@@ -346,7 +346,7 @@ export const DaggerheartRest = (props) => {
                   </div>
                 }>
                   <div class="relative">
-                    <p>{TRANSLATION[locale()].progress} - {project.progress}/{project.complexity}</p>
+                    <p>{localize(TRANSLATION, locale()).progress} - {project.progress}/{project.complexity}</p>
                     <p
                       class="feat-markdown mt-2"
                       innerHTML={project.markdown_description} // eslint-disable-line solid/no-innerhtml

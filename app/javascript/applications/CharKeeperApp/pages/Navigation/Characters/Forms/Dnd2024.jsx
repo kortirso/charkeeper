@@ -6,7 +6,7 @@ import { CharacterForm } from '../../../../pages';
 import { Select, Input, Checkbox } from '../../../../components';
 import dnd2024Config from '../../../../data/dnd2024.json';
 import { useAppLocale } from '../../../../context';
-import { translate, readFromCache } from '../../../../helpers';
+import { translate, readFromCache, localize } from '../../../../helpers';
 
 const DND2024_DEFAULT_FORM = {
   name: '', species: undefined, legacy: undefined, size: undefined, background: undefined,
@@ -105,7 +105,7 @@ export const Dnd2024CharacterForm = (props) => {
         onSelect={(value) => setCharacterDnd2024Form({ ...characterDnd2024Form, alignment: value })}
       />
       <Checkbox
-        labelText={TRANSLATION[locale()].skipGuide}
+        labelText={localize(TRANSLATION, locale()).skipGuide}
         labelPosition="right"
         labelClassList="ml-2"
         checked={characterDnd2024Form.skip_guide}

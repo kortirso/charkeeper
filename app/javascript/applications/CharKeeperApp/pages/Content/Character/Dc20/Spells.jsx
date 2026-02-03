@@ -10,7 +10,7 @@ import { createCharacterSpellRequest } from '../../../../requests/createCharacte
 import { removeCharacterSpellRequest } from '../../../../requests/removeCharacterSpellRequest';
 import { fetchCharacterItemsRequest } from '../../../../requests/fetchCharacterItemsRequest';
 import { fetchTagInfoRequest } from '../../../../requests/fetchTagInfoRequest';
-import { modifier } from '../../../../helpers';
+import { modifier, localize } from '../../../../helpers';
 
 const TRANSLATION = {
   en: {
@@ -131,23 +131,23 @@ export const Dc20Spells = (props) => {
 
   const renderSpellPrice = (price) => {
     return Object.entries(price).map(([slug, price]) => {
-      if (price === null) return `X ${TRANSLATION[locale()].prices[slug]}`;
+      if (price === null) return `X ${localize(TRANSLATION, locale()).prices[slug]}`;
 
-      return `${price} ${TRANSLATION[locale()].prices[slug]}`;
+      return `${price} ${localize(TRANSLATION, locale()).prices[slug]}`;
     }).join(', ');
   }
 
   const renderSpellRange = (range) => {
-    if (range === 'self') return TRANSLATION[locale()].self;
+    if (range === 'self') return localize(TRANSLATION, locale()).self;
 
-    return `${range} ${TRANSLATION[locale()].squares}`;
+    return `${range} ${localize(TRANSLATION, locale()).squares}`;
   }
 
   const renderSpellDuration = (duration) => {
-    if (duration === 'instant') return `${TRANSLATION[locale()].duration}: ${TRANSLATION[locale()].instant}`;
-    if (duration >= 60) return `${TRANSLATION[locale()].duration} (${TRANSLATION[locale()].hours}): ${duration / 60}`;
+    if (duration === 'instant') return `${localize(TRANSLATION, locale()).duration}: ${localize(TRANSLATION, locale()).instant}`;
+    if (duration >= 60) return `${localize(TRANSLATION, locale()).duration} (${localize(TRANSLATION, locale()).hours}): ${duration / 60}`;
 
-    return `${TRANSLATION[locale()].duration} (${TRANSLATION[locale()].minutes}): ${duration}`;
+    return `${localize(TRANSLATION, locale()).duration} (${localize(TRANSLATION, locale()).minutes}): ${duration}`;
   }
 
   const showTagInfo = async (tag, value) => {
@@ -169,7 +169,7 @@ export const Dc20Spells = (props) => {
     if (result.errors_list === undefined) {
       batch(() => {
         setCharacterSpells([result.spell].concat(characterSpells()));
-        renderNotice(TRANSLATION[locale()].spellIsLearned);
+        renderNotice(localize(TRANSLATION, locale()).spellIsLearned);
       });
     }
   }
@@ -190,7 +190,7 @@ export const Dc20Spells = (props) => {
             <>
               <div class="flex justify-between items-center mb-2">
                 <Checkbox
-                  labelText={TRANSLATION[locale()].onlyAvailableSpells}
+                  labelText={localize(TRANSLATION, locale()).onlyAvailableSpells}
                   labelPosition="right"
                   labelClassList="ml-2"
                   checked={availableListFilter()}
@@ -236,17 +236,17 @@ export const Dc20Spells = (props) => {
                   </Toggle>
                 }
               </For>
-              <Button default textable onClick={() => setSpellsSelectingMode(false)}>{TRANSLATION[locale()].back}</Button>
+              <Button default textable onClick={() => setSpellsSelectingMode(false)}>{localize(TRANSLATION, locale()).back}</Button>
             </>
           }
         >
           <Show when={characterSpells() !== undefined}>
             <StatsBlock
               items={[
-                { title: TRANSLATION[locale()].mana_spend_limit, value: character().mana_spend_limit },
-                { title: TRANSLATION[locale()].spells, value: character().spells },
+                { title: localize(TRANSLATION, locale()).mana_spend_limit, value: character().mana_spend_limit },
+                { title: localize(TRANSLATION, locale()).spells, value: character().spells },
                 {
-                  title: TRANSLATION[locale()].attack,
+                  title: localize(TRANSLATION, locale()).attack,
                   value:
                     <Dice
                       width="36"
@@ -267,8 +267,8 @@ export const Dc20Spells = (props) => {
                       <div class="flex flex-wrap gap-x-2 gap-y-1 mt-1">
                         <For each={item.info.features}>
                           {(feature) =>
-                            <p class="tag" onClick={() => showTagInfo(feature, TRANSLATION[locale()].features[feature])}>
-                              {TRANSLATION[locale()].features[feature]}
+                            <p class="tag" onClick={() => showTagInfo(feature, localize(TRANSLATION, locale()).features[feature])}>
+                              {localize(TRANSLATION, locale()).features[feature]}
                             </p>
                           }
                         </For>
@@ -285,10 +285,10 @@ export const Dc20Spells = (props) => {
                     <Toggle title={spell.title}>
                       <div>
                         <Show when={spell.price}>
-                          <p class="text-sm mt-1">{TRANSLATION[locale()].price}: {renderSpellPrice(spell.price)}</p>
+                          <p class="text-sm mt-1">{localize(TRANSLATION, locale()).price}: {renderSpellPrice(spell.price)}</p>
                         </Show>
                         <Show when={spell.info.range}>
-                          <p class="text-sm mt-1">{TRANSLATION[locale()].range}: {renderSpellRange(spell.info.range)}</p>
+                          <p class="text-sm mt-1">{localize(TRANSLATION, locale()).range}: {renderSpellRange(spell.info.range)}</p>
                         </Show>
                         <Show when={spell.info.duration}>
                           <p class="text-sm mt-1">{renderSpellDuration(spell.info.duration)}</p>
@@ -299,7 +299,7 @@ export const Dc20Spells = (props) => {
                         innerHTML={spell.description} // eslint-disable-line solid/no-innerhtml
                       />
                       <div class="mt-4">
-                        <p class="font-normal!">{TRANSLATION[locale()].enhancements}</p>
+                        <p class="font-normal!">{localize(TRANSLATION, locale()).enhancements}</p>
                         <For each={spell.info.enhancements}>
                           {(enhancement) =>
                             <p class="feat-markdown text-sm mt-1">
@@ -316,7 +316,7 @@ export const Dc20Spells = (props) => {
               </div>
             </Show>
             <Button default textable classList="mt-2" onClick={() => setSpellsSelectingMode(true)}>
-              {TRANSLATION[locale()].selectSpells}
+              {localize(TRANSLATION, locale()).selectSpells}
             </Button>
           </Show>
         </Show>

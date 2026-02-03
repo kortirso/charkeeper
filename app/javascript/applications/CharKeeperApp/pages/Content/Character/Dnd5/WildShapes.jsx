@@ -4,6 +4,7 @@ import { Select, ErrorWrapper, GuideWrapper } from '../../../../components';
 import config from '../../../../data/dnd2024.json';
 import { useAppState, useAppLocale, useAppAlert } from '../../../../context';
 import { updateCharacterRequest } from '../../../../requests/updateCharacterRequest';
+import { localize } from '../../../../helpers';
 
 const TRANSLATION = {
   en: {
@@ -36,7 +37,7 @@ export const Dnd2024WildShapes = (props) => {
 
   const beastformsSelect = createMemo(() => {
     const result = Object.entries(config.beastforms).filter(([key,]) => selectedBeastforms().includes(key)).map(([key, values]) => [key, values.name[locale()]]);
-    return Object.fromEntries([['null', TRANSLATION[locale()]['noShape']]].concat(result));
+    return Object.fromEntries([['null', localize(TRANSLATION, locale())['noShape']]].concat(result));
   });
 
   const updateMultiFeatureValue = (value) => {
@@ -63,18 +64,18 @@ export const Dnd2024WildShapes = (props) => {
     <ErrorWrapper payload={{ character_id: character().id, key: 'Dnd2024Beastforms' }}>
       <GuideWrapper character={character()}>
         <div class="blockable p-4">
-          <h2 class="text-lg mb-2">{TRANSLATION[locale()].beastforms}</h2>
+          <h2 class="text-lg mb-2">{localize(TRANSLATION, locale()).beastforms}</h2>
           <Select
             multi
             containerClassList="w-full"
-            labelText={TRANSLATION[locale()].selectedBeastforms}
+            labelText={localize(TRANSLATION, locale()).selectedBeastforms}
             items={availableBeastforms()}
             selectedValues={selectedBeastforms()}
             onSelect={(value) => updateMultiFeatureValue(value)}
           />
           <Select
             containerClassList="mt-2 w-full"
-            labelText={TRANSLATION[locale()].activeBeastform}
+            labelText={localize(TRANSLATION, locale()).activeBeastform}
             items={beastformsSelect()}
             selectedValue={character().beastform}
             onSelect={(value) => updateCharacter({ beastform: value === 'null' ? null : value })}

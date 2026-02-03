@@ -5,7 +5,7 @@ import { ErrorWrapper, Levelbox, Input, EditWrapper, Dice } from '../../../../co
 import config from '../../../../data/pathfinder2.json';
 import { useAppState, useAppLocale, useAppAlert } from '../../../../context';
 import { updateCharacterRequest } from '../../../../requests/updateCharacterRequest';
-import { modifier } from '../../../../helpers';
+import { modifier, localize } from '../../../../helpers';
 
 const TRANSLATION = {
   en: {
@@ -49,7 +49,7 @@ export const Pathfinder2Skills = (props) => {
 
       result.push(`${key.split('_').map((item) => config.skills[item].name[locale()]).join('/')} - ${skillBoosts[key]}`)
     });
-    if (skillBoosts.free) result.push(`${TRANSLATION[locale()].free} - ${skillBoosts.free}`);
+    if (skillBoosts.free) result.push(`${localize(TRANSLATION, locale()).free} - ${skillBoosts.free}`);
 
     return result.join('; ');
   }
@@ -117,7 +117,7 @@ export const Pathfinder2Skills = (props) => {
       >
         <Show when={character().skill_boosts}>
           <div class="warning">
-            <p class="text-sm">{TRANSLATION[locale()].skillBoosts}</p>
+            <p class="text-sm">{localize(TRANSLATION, locale()).skillBoosts}</p>
             <p class="text-sm">{renderSkillBoosts(character().skill_boosts)}</p>
           </div>
         </Show>

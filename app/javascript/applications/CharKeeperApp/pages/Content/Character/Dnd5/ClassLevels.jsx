@@ -9,7 +9,7 @@ import { PlusSmall, Minus } from '../../../../assets';
 import { updateCharacterRequest } from '../../../../requests/updateCharacterRequest';
 import { fetchTalentsRequest } from '../../../../requests/fetchTalentsRequest';
 import { createTalentRequest } from '../../../../requests/createTalentRequest';
-import { translate } from '../../../../helpers';
+import { translate, localize } from '../../../../helpers';
 
 const TRANSLATION = {
   en: {
@@ -74,7 +74,7 @@ export const Dnd5ClassLevels = (props) => {
   const availableTalents = createMemo(() => {
     if (talents() === undefined) return {};
 
-    return talents().filter((item) => item.multiple || !item.selected).reduce((acc, item) => { acc[item.id] = `${item.title} (${TRANSLATION[locale()][item.origin_value]})`; return acc }, {});
+    return talents().filter((item) => item.multiple || !item.selected).reduce((acc, item) => { acc[item.id] = `${item.title} (${localize(TRANSLATION, locale())[item.origin_value]})`; return acc }, {});
   });
 
   const classes = () => translate(currentConfig().classes, locale());
@@ -225,13 +225,13 @@ export const Dnd5ClassLevels = (props) => {
             containerClassList="mt-2"
             title={
               <div class="flex justify-between">
-                <p>{TRANSLATION[locale()].talents}</p>
-                <p>{TRANSLATION[locale()].existingTalentPoints} - {character().available_talents - Object.values(character().selected_talents).reduce((acc, value) => acc + value, 0)}</p>
+                <p>{localize(TRANSLATION, locale()).talents}</p>
+                <p>{localize(TRANSLATION, locale()).existingTalentPoints} - {character().available_talents - Object.values(character().selected_talents).reduce((acc, value) => acc + value, 0)}</p>
               </div>
             }
           >
             <Show when={talents()}>
-              <p class="text-sm mb-2">{TRANSLATION[locale()].selectedTalents}</p>
+              <p class="text-sm mb-2">{localize(TRANSLATION, locale()).selectedTalents}</p>
               <For each={Object.entries(character().selected_talents)}>
                 {([id, amount]) =>
                   <p class="text-lg">{talents().find((item) => item.id === id).title}{amount > 1 ? ` - ${amount}` : ''}</p>
@@ -241,7 +241,7 @@ export const Dnd5ClassLevels = (props) => {
             </Show>
             <Show when={character().available_talents > Object.values(character().selected_talents).reduce((acc, value) => acc + value, 0)}>
               <Select
-                labelText={TRANSLATION[locale()].selectTalent}
+                labelText={localize(TRANSLATION, locale()).selectTalent}
                 containerClassList="flex-1"
                 items={availableTalents()}
                 selectedValue={selectedTalent()?.id}
@@ -253,7 +253,7 @@ export const Dnd5ClassLevels = (props) => {
                   innerHTML={selectedTalent().description} // eslint-disable-line solid/no-innerhtml
                 />
                 <Button default textable size="small" classList="inline-block mt-2" onClick={saveTalent}>
-                  {TRANSLATION[locale()].saveButton}
+                  {localize(TRANSLATION, locale()).saveButton}
                 </Button>
               </Show>
             </Show>

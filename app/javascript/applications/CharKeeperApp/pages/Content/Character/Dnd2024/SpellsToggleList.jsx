@@ -6,6 +6,7 @@ import config from '../../../../data/dnd2024.json';
 import { Minus, Plus } from '../../../../assets';
 import { useAppState, useAppLocale } from '../../../../context';
 import { fetchSpellRequest } from '../../../../requests/fetchSpellRequest';
+import { localize } from '../../../../helpers';
 
 const TRANSLATION = {
   en: {
@@ -51,8 +52,8 @@ export const SpellsToggleList = (props) => {
 
   const renderSpellData = (data) => {
     const result = [];
-    if (data.limit) result.push(`${data.limit} ${TRANSLATION[locale()]['perDay']}`);
-    if (data.level) result.push(`${TRANSLATION[locale()]['spellLevel']} ${data.level}`);
+    if (data.limit) result.push(`${data.limit} ${localize(TRANSLATION, locale())['perDay']}`);
+    if (data.level) result.push(`${localize(TRANSLATION, locale())['spellLevel']} ${data.level}`);
 
     return result.join(', ');
   }
@@ -75,7 +76,7 @@ export const SpellsToggleList = (props) => {
         let value = result.description;
         if (spell.damage_up) {
           value = value.replace('1d', cantripsDamageDice());
-          value += TRANSLATION[locale()].damageUp;
+          value += localize(TRANSLATION, locale()).damageUp;
         }
         batch(() => {
           setDescriptions({ ...descriptions(), [spell.id]: value });
@@ -105,8 +106,8 @@ export const SpellsToggleList = (props) => {
       <div class="mb-2 px-4 py-2">
         <div class="flex justify-between items-center">
           <h2 class="text-lg dark:text-snow">
-            <Show when={props.level !== 0} fallback={TRANSLATION[locale()]['cantrips']}>
-              {props.level} {TRANSLATION[locale()]['level']}
+            <Show when={props.level !== 0} fallback={localize(TRANSLATION, locale())['cantrips']}>
+              {props.level} {localize(TRANSLATION, locale())['level']}
             </Show>
           </h2>
           <Show when={props.spentSpellSlots}>
@@ -139,8 +140,8 @@ export const SpellsToggleList = (props) => {
                     <p class="dnd2024-spell-title" onClick={(event) => characterSpell.data ? null : changeSpell(event, characterSpell)}>
                       {characterSpell.spell.title}
                     </p>
-                    <Show when={characterSpell.spell.ritual}><span>{TRANSLATION[locale()].ritual}</span></Show>
-                    <Show when={characterSpell.spell.concentration}><span class="ml-1">{TRANSLATION[locale()].concentration}</span></Show>
+                    <Show when={characterSpell.spell.ritual}><span>{localize(TRANSLATION, locale()).ritual}</span></Show>
+                    <Show when={characterSpell.spell.concentration}><span class="ml-1">{localize(TRANSLATION, locale()).concentration}</span></Show>
                   </div>
                   <div>
                     <Show when={!characterSpell.data && props.canPrepareSpells}>
@@ -161,7 +162,7 @@ export const SpellsToggleList = (props) => {
                 </div>
                 <Show when={props.activeSpellClass === undefined}>
                   <p class="text-xs">
-                    {characterSpell.prepared_by ? config.classes[characterSpell.prepared_by]['name'][locale()] : TRANSLATION[locale()]['static']}
+                    {characterSpell.prepared_by ? config.classes[characterSpell.prepared_by]['name'][locale()] : localize(TRANSLATION, locale())['static']}
                   </p>
                 </Show>
                 <div class="dnd2024-spell-tooltips">
@@ -202,11 +203,11 @@ export const SpellsToggleList = (props) => {
           <p class="flex-1 text-xl text-left dark:text-snow mb-2">{changingSpell().name}</p>
           <TextArea
             rows="2"
-            labelText={TRANSLATION[locale()].spellNote}
+            labelText={localize(TRANSLATION, locale()).spellNote}
             onChange={(value) => setChangingSpell({ ...changingSpell(), notes: value })}
             value={changingSpell().notes}
           />
-          <Button default textable classList="mt-2" onClick={updateSpell}>{TRANSLATION[locale()].save}</Button>
+          <Button default textable classList="mt-2" onClick={updateSpell}>{localize(TRANSLATION, locale()).save}</Button>
         </Show>
       </Modal>
     </>

@@ -33,7 +33,7 @@ module Dnd5Character
         {
           id: spell.id,
           slug: spell.slug,
-          name: spell.name[I18n.locale.to_s],
+          name: translate(spell.name),
           level: spell.data.level,
           data: static_spell,
           ready_to_use: true

@@ -6,7 +6,7 @@ import { CharacterForm } from '../../../../pages';
 import { Select, Input, Checkbox } from '../../../../components';
 import daggerheartConfig from '../../../../data/daggerheart.json';
 import { useAppLocale } from '../../../../context';
-import { translate, readFromCache } from '../../../../helpers';
+import { translate, readFromCache, localize } from '../../../../helpers';
 
 const DAGGERHEART_DEFAULT_FORM = {
   name: '', heritage: undefined, heritage_name: '', heritage_features: [], main_feature: undefined,
@@ -111,7 +111,7 @@ export const DaggerheartCharacterForm = (props) => {
 
   return (
     <CharacterForm setCurrentTab={props.setCurrentTab} onSaveCharacter={saveCharacter}>
-      <p class="dark:text-snow mb-2">{TRANSLATION[locale()]['options']}</p>
+      <p class="dark:text-snow mb-2">{localize(TRANSLATION, locale())['options']}</p>
       <Input
         containerClassList="mb-2"
         labelText={t('newCharacterPage.name')}
@@ -183,7 +183,7 @@ export const DaggerheartCharacterForm = (props) => {
         />
       </Show>
       <Checkbox
-        labelText={TRANSLATION[locale()].skipGuide}
+        labelText={localize(TRANSLATION, locale()).skipGuide}
         labelPosition="right"
         labelClassList="ml-2"
         checked={characterDaggerheartForm.skip_guide}

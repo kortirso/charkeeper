@@ -4,6 +4,7 @@ import { ErrorWrapper, GuideWrapper, Button, Select, Input } from '../../compone
 import { useAppState, useAppLocale, useAppAlert } from '../../context';
 import { PlusSmall, Minus } from '../../assets';
 import { updateCharacterRequest } from '../../requests/updateCharacterRequest';
+import { localize } from '../../helpers';
 
 const TRANSLATION = {
   en: {
@@ -78,8 +79,8 @@ export const Gold = (props) => {
   const updateMoney = async (value) => {
     const moneyChange = coinsChange() * value * (10 ** Object.keys(TRANSLATION.en[goldFormat()]).indexOf(measure()));
     const newAmount = character().money + moneyChange;
-    if (newAmount < 0) return renderAlert(TRANSLATION[locale()].negativeMoney);
-    if (newAmount > 100000000) return renderAlert(TRANSLATION[locale()].tooMuchMoney);
+    if (newAmount < 0) return renderAlert(localize(TRANSLATION, locale()).negativeMoney);
+    if (newAmount > 100000000) return renderAlert(localize(TRANSLATION, locale()).tooMuchMoney);
 
     const payload = { money: newAmount };
     const result = await updateCharacterRequest(
@@ -100,10 +101,10 @@ export const Gold = (props) => {
               'grid grid-cols-3': goldFormat() === 'dnd'
             }}
           >
-            <For each={Object.keys(TRANSLATION[locale()][goldFormat()])}>
+            <For each={Object.keys(localize(TRANSLATION, locale())[goldFormat()])}>
               {(item) =>
                 <div class="flex-1 flex flex-col items-center">
-                  <p class="uppercase text-sm mb-1 dark:text-snow">{TRANSLATION[locale()][goldFormat()][item]}</p>
+                  <p class="uppercase text-sm mb-1 dark:text-snow">{localize(TRANSLATION, locale())[goldFormat()][item]}</p>
                   <p class="text-2xl mb-1 dark:text-snow">{gold()[item]}</p>
                 </div>
               }
@@ -113,15 +114,15 @@ export const Gold = (props) => {
             <Button default classList="mt-6" size="small" onClick={() => updateMoney(-1)}><Minus /></Button>
             <Select
               containerClassList="w-40"
-              labelText={TRANSLATION[locale()].measure}
-              items={TRANSLATION[locale()][goldFormat()]}
+              labelText={localize(TRANSLATION, locale()).measure}
+              items={localize(TRANSLATION, locale())[goldFormat()]}
               selectedValue={measure()}
               onSelect={setMeasure}
             />
             <Input
               numeric
               containerClassList="w-20"
-              labelText={TRANSLATION[locale()].amount}
+              labelText={localize(TRANSLATION, locale()).amount}
               value={coinsChange()}
               onInput={setCoinsChange}
             />

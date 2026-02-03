@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class ApplicationDecorator < SimpleDelegator
+  include TranslateHelper
+
   attr_accessor :logger
 
   def initialize(service)

@@ -5,7 +5,7 @@ import { CharacterForm } from '../../../../pages';
 import { Select, Input, Checkbox, Toggle } from '../../../../components';
 import config from '../../../../data/dc20.json';
 import { useAppLocale, useAppState } from '../../../../context';
-import { translate, readFromCache } from '../../../../helpers';
+import { translate, readFromCache, localize } from '../../../../helpers';
 import { fetchDc20AncestriesRequest } from '../../../../requests/fetchDc20AncestriesRequest';
 
 const TRANSLATION = {
@@ -113,13 +113,13 @@ export const Dc20CharacterForm = (props) => {
     <CharacterForm setCurrentTab={props.setCurrentTab} onSaveCharacter={saveCharacter}>
       <Input
         containerClassList="mb-2"
-        labelText={TRANSLATION[locale()]['name']}
+        labelText={localize(TRANSLATION, locale())['name']}
         value={characterDc20Form.name}
         onInput={(value) => setCharacterDc20Form({ ...characterDc20Form, name: value })}
       />
       <Select
         containerClassList="mb-4"
-        labelText={TRANSLATION[locale()]['class']}
+        labelText={localize(TRANSLATION, locale())['class']}
         items={translate(config.classes, locale())}
         selectedValue={characterDc20Form.main_class}
         onSelect={(value) => setCharacterDc20Form({ ...characterDc20Form, main_class: value })}
@@ -129,8 +129,8 @@ export const Dc20CharacterForm = (props) => {
           noInnerPadding
           title={
             <div class="flex items-center justify-between">
-              <p>{TRANSLATION[locale()]['ancestry']}</p>
-              <p>{`${TRANSLATION[locale()]['pointsLeft']} - ${characterDc20Form.ancestryPoints}`}</p>
+              <p>{localize(TRANSLATION, locale())['ancestry']}</p>
+              <p>{`${localize(TRANSLATION, locale())['pointsLeft']} - ${characterDc20Form.ancestryPoints}`}</p>
             </div>
           }
         >
@@ -157,7 +157,7 @@ export const Dc20CharacterForm = (props) => {
         </Toggle>
       </Show>
       <Checkbox
-        labelText={TRANSLATION[locale()].skipGuide}
+        labelText={localize(TRANSLATION, locale()).skipGuide}
         labelPosition="right"
         labelClassList="ml-2"
         checked={characterDc20Form.skip_guide}
@@ -165,13 +165,13 @@ export const Dc20CharacterForm = (props) => {
         onToggle={() => setCharacterDc20Form({ ...characterDc20Form, skip_guide: !characterDc20Form.skip_guide })}
       />
       <Show when={Object.keys(characterDc20Form.ancestry_feats).length > 2}>
-        <p class="warning">{TRANSLATION[locale()]['manyAncestriesAlert']}</p>
+        <p class="warning">{localize(TRANSLATION, locale())['manyAncestriesAlert']}</p>
       </Show>
       <Show when={validations.minorTraits > 1}>
-        <p class="warning">{TRANSLATION[locale()]['minorTraitsAlert']}</p>
+        <p class="warning">{localize(TRANSLATION, locale())['minorTraitsAlert']}</p>
       </Show>
       <Show when={validations.negativeTraits > 2}>
-        <p class="warning">{TRANSLATION[locale()]['negativeTraitsAlert']}</p>
+        <p class="warning">{localize(TRANSLATION, locale())['negativeTraitsAlert']}</p>
       </Show>
     </CharacterForm>
   );

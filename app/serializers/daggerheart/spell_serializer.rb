@@ -10,7 +10,7 @@ module Daggerheart
     delegate :data, to: :object
 
     def name
-      object.name[I18n.locale.to_s]
+      translate(object.name)
     end
   end
 end

@@ -4,7 +4,7 @@ import { ErrorWrapper, GuideWrapper, SharedBonuses } from '../../../../component
 import config from '../../../../data/dnd2024.json';
 import { useAppLocale, useAppState } from '../../../../context';
 import { createCharacterBonusRequest } from '../../../../requests/createCharacterBonusRequest';
-import { modifier } from '../../../../helpers';
+import { modifier, localize } from '../../../../helpers';
 
 const MAPPING = {
   en: {
@@ -105,7 +105,7 @@ export const Dnd5Bonuses = (props) => {
               <For each={Object.entries(value)}>
                 {([slug, value]) =>
                   <p class="bonus">
-                    {modifier(value)} {config.abilities[slug].name[locale()]} {TRANSLATION[locale()].save}
+                    {modifier(value)} {config.abilities[slug].name[locale()]} {localize(TRANSLATION, locale()).save}
                   </p>
                 }
               </For>
@@ -142,7 +142,7 @@ export const Dnd5Bonuses = (props) => {
                 <For each={Object.entries(value)}>
                   {([slug, value]) =>
                     <p class="bonus">
-                      {`+[${MAPPING[locale()][value]}]`} {config.abilities[slug].name[locale()]} {TRANSLATION[locale()].save}
+                      {`+[${MAPPING[locale()][value]}]`} {config.abilities[slug].name[locale()]} {localize(TRANSLATION, locale()).save}
                     </p>
                   }
                 </For>

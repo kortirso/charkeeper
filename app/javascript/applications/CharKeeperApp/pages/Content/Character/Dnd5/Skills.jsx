@@ -4,7 +4,7 @@ import { ErrorWrapper, Levelbox, EditWrapper, Dice, GuideWrapper } from '../../.
 import config from '../../../../data/dnd2024.json';
 import { useAppState, useAppLocale, useAppAlert } from '../../../../context';
 import { updateCharacterRequest } from '../../../../requests/updateCharacterRequest';
-import { modifier } from '../../../../helpers';
+import { modifier, localize } from '../../../../helpers';
 
 const TRANSLATION = {
   en: {
@@ -94,20 +94,20 @@ export const Dnd5Skills = (props) => {
       <GuideWrapper
         character={character()}
         guideStep={2}
-        helpMessage={TRANSLATION[locale()]['helpMessage']}
+        helpMessage={localize(TRANSLATION, locale())['helpMessage']}
         onReloadCharacter={props.onReloadCharacter}
         onNextClick={props.onNextGuideStepClick}
       >
         <Show when={character().skill_boosts > 0 || character().any_skill_boosts > 0}>
           <div class="warning">
             <Show when={character().any_skill_boosts > 0}>
-              <p class="text-sm">{TRANSLATION[locale()]['anySkillBoosts']} {character().any_skill_boosts}</p>
+              <p class="text-sm">{localize(TRANSLATION, locale())['anySkillBoosts']} {character().any_skill_boosts}</p>
             </Show>
             <Show when={character().skill_boosts > 0}>
               <Show when={character().any_skill_boosts > 0}>
                 <div class="mt-2" />
               </Show>
-              <p class="text-sm">{TRANSLATION[locale()]['skillBoosts']} {character().skill_boosts}</p>
+              <p class="text-sm">{localize(TRANSLATION, locale())['skillBoosts']} {character().skill_boosts}</p>
               <p class="text-sm">{Object.entries(config.skills).filter(([slug]) => character().skill_boosts_list.includes(slug)).map(([, values]) => values.name[locale()]).join(', ')}</p>
             </Show>
           </div>

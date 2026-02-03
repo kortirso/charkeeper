@@ -9,7 +9,7 @@ module Signable
     access_token = Authkeeper::Container.resolve('services.generate_token').call(user_session: user_session)[:result]
     render json: {
       access_token: access_token,
-      locale: user_session.user.locale,
+      locale: user_session.user.locale == 'es' ? 'en' : user_session.user.locale,
       username: user_session.user.username,
       admin: user_session.user.admin?,
       color_schema: user_session.user.color_schema

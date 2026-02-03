@@ -11,7 +11,7 @@ module Daggerheart
       delegate :feat, to: :object
 
       def title
-        feat.title[I18n.locale.to_s]
+        translate(feat.title)
       end
 
       def level
@@ -20,7 +20,7 @@ module Daggerheart
 
       def description
         result = Charkeeper::Container.resolve('markdown').call(
-          value: feat.description[I18n.locale.to_s],
+          value: translate(feat.description),
           version: (context ? (context[:version] || nil) : nil),
           initial_version: '0.3.20'
         )

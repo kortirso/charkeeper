@@ -1,6 +1,6 @@
 import { ErrorWrapper, GuideWrapper, Dice } from '../../../../components';
 import { useAppLocale } from '../../../../context';
-import { modifier } from '../../../../helpers';
+import { modifier, localize } from '../../../../helpers';
 
 const TRANSLATION = {
   en: {
@@ -28,13 +28,13 @@ export const Dc20CombatStatic = (props) => {
         <div class="blockable py-4 dark:text-snow">
           <div class="grid grid-cols-2 emd:grid-cols-4 justify-center gap-x-2 gap-y-4">
             <div>
-              <p class="text-sm uppercase text-center mb-2">{TRANSLATION[locale()]['combatMastery']}</p>
+              <p class="text-sm uppercase text-center mb-2">{localize(TRANSLATION, locale())['combatMastery']}</p>
               <div class="mx-auto flex items-center justify-center">
                 <p class="text-2xl font-normal! leading-10">{character().combat_mastery}</p>
               </div>
             </div>
             <div>
-              <p class="text-sm uppercase text-center mb-2">{TRANSLATION[locale()]['initiative']}</p>
+              <p class="text-sm uppercase text-center mb-2">{localize(TRANSLATION, locale())['initiative']}</p>
               <div class="mx-auto flex items-center justify-center">
                 <p class="text-2xl font-normal!">
                   <Dice
@@ -45,13 +45,13 @@ export const Dc20CombatStatic = (props) => {
               </div>
             </div>
             <div>
-              <p class="text-sm uppercase text-center mb-2">{TRANSLATION[locale()]['precision']}</p>
+              <p class="text-sm uppercase text-center mb-2">{localize(TRANSLATION, locale())['precision']}</p>
               <div class="mx-auto flex items-center justify-center">
                 <p class="text-2xl font-normal! leading-10">{character().precision_defense.default}</p>
               </div>
             </div>
             <div>
-              <p class="text-sm uppercase text-center mb-2">{TRANSLATION[locale()]['area']}</p>
+              <p class="text-sm uppercase text-center mb-2">{localize(TRANSLATION, locale())['area']}</p>
               <div class="mx-auto flex items-center justify-center">
                 <p class="text-2xl font-normal! leading-10">{character().area_defense.default}</p>
               </div>

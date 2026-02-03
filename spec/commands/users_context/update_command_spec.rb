@@ -34,7 +34,7 @@ describe UsersContext::UpdateCommand do
     let(:params) { { user: user, locale: locale } }
 
     context 'for invalid locale' do
-      let(:locale) { 'es' }
+      let(:locale) { 'fr' }
 
       it 'does not update user', :aggregate_failures do
         expect(command_call[:errors]).not_to be_nil

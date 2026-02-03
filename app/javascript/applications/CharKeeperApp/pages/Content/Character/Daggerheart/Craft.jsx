@@ -4,6 +4,7 @@ import { ErrorWrapper, GuideWrapper, Select, Input, Button } from '../../../../c
 import { useAppLocale, useAppState, useAppAlert } from '../../../../context';
 import { fetchCraftsRequest } from '../../../../requests/fetchCraftsRequest';
 import { createCraftRequest } from '../../../../requests/createCraftRequest';
+import { localize } from '../../../../helpers';
 
 const TRANSLATION = {
   en: {
@@ -86,7 +87,7 @@ export const DaggerheartCraft = (props) => {
     )
 
     if (result.errors_list === undefined) {
-      renderNotice(TRANSLATION[locale()].crafted);
+      renderNotice(localize(TRANSLATION, locale()).crafted);
       props.onReloadCharacter();
     } else renderAlerts(result.errors_list);
   }
@@ -97,12 +98,12 @@ export const DaggerheartCraft = (props) => {
         <div class="blockable p-4">
           <Show
             when={tools().length > 0}
-            fallback={<p>{TRANSLATION[locale()].noTools}</p>}
+            fallback={<p>{localize(TRANSLATION, locale()).noTools}</p>}
           >
             <Select
               containerClassList="w-full"
-              labelText={TRANSLATION[locale()].selectTool}
-              items={Object.fromEntries(tools().map((item) => [item.id, item.name[locale()]]))}
+              labelText={localize(TRANSLATION, locale()).selectTool}
+              items={Object.fromEntries(tools().map((item) => [item.id, localize(item.name, locale())]))}
               selectedValue={tool()?.id}
               onSelect={changeTool}
             />
@@ -110,8 +111,8 @@ export const DaggerheartCraft = (props) => {
               <p class="mt-1 text-sm text-stone-800 dark:text-stone-200">{tool().description}</p>
               <Select
                 containerClassList="w-full mt-4"
-                labelText={TRANSLATION[locale()].selectItem}
-                items={Object.fromEntries(craftItems().map((item) => [item.id, item.name[locale()]]))}
+                labelText={localize(TRANSLATION, locale()).selectItem}
+                items={Object.fromEntries(craftItems().map((item) => [item.id, localize(item.name, locale())]))}
                 selectedValue={item()?.id}
                 onSelect={changeCraftItem}
               />
@@ -124,12 +125,12 @@ export const DaggerheartCraft = (props) => {
                 <Input
                   numeric
                   containerClassList="flex-1"
-                  labelText={TRANSLATION[locale()].amount}
+                  labelText={localize(TRANSLATION, locale()).amount}
                   value={amount()}
                   onInput={setAmount}
                 />
               </div>
-              <Button default classList="mt-4" onClick={craft}>{TRANSLATION[locale()].craft}</Button>
+              <Button default classList="mt-4" onClick={craft}>{localize(TRANSLATION, locale()).craft}</Button>
             </Show>
           </Show>
         </div>

@@ -4,6 +4,7 @@ import { Button, TextArea, ErrorWrapper, Toggle, GuideWrapper } from '../../../.
 import { useAppState, useAppLocale, useAppAlert } from '../../../../context';
 import { Plus, Close, Check } from '../../../../assets';
 import { updateCharacterRequest } from '../../../../requests/updateCharacterRequest';
+import { localize } from '../../../../helpers';
 
 const TRANSLATION = {
   en: {
@@ -79,7 +80,7 @@ export const DaggerheartScars = (props) => {
           isOpen
           title={
             <div class="flex justify-between items-center">
-              <h2 class="flex-1 text-lg dark:text-snow">{TRANSLATION[locale()].title}</h2>
+              <h2 class="flex-1 text-lg dark:text-snow">{localize(TRANSLATION, locale()).title}</h2>
               <Show when={!editMode()}>
                 <Button default size="small" onClick={() => setEditMode(true)}>
                   <Plus />
@@ -92,8 +93,8 @@ export const DaggerheartScars = (props) => {
             <div class="flex items-center gap-2">
               <TextArea
                 rows="3"
-                labelText={TRANSLATION[locale()].label}
-                placeholder={TRANSLATION[locale()].placeholder}
+                labelText={localize(TRANSLATION, locale()).label}
+                placeholder={localize(TRANSLATION, locale()).placeholder}
                 containerClassList="flex-1"
                 value={name()}
                 onChange={(value) => setName(value)}

@@ -19,11 +19,11 @@ module Characters
     end
 
     def name
-      item.name[I18n.locale.to_s]
+      translate(item.name)
     end
 
     def has_description # rubocop: disable Naming/PredicateMethod, Naming/PredicatePrefix
-      item.description[I18n.locale.to_s].present?
+      translate(item.description).present?
     end
 
     # DEPRECATED

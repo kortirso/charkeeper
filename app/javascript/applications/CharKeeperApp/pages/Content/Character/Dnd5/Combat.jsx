@@ -7,7 +7,7 @@ import {
 import { useAppState, useAppLocale } from '../../../../context';
 import { updateCharacterRequest } from '../../../../requests/updateCharacterRequest';
 import { createCharacterHealthRequest } from '../../../../requests/createCharacterHealthRequest';
-import { modifier } from '../../../../helpers';
+import { modifier, localize } from '../../../../helpers';
 
 const TRANSLATION = {
   en: {
@@ -142,7 +142,7 @@ export const Dnd5Combat = (props) => {
             <div class="pt-0 p-4">
               <For each={Object.entries(character().speeds)}>
                 {([slug, value]) =>
-                  <p class="dark:text-snow text-sm">{TRANSLATION[locale()][slug]} - {value}</p>
+                  <p class="dark:text-snow text-sm">{localize(TRANSLATION, locale())[slug]} - {value}</p>
                 }
               </For>
             </div>

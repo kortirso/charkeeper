@@ -19,7 +19,7 @@ module Dnd2024
     end
 
     def title
-      object.title[I18n.locale.to_s]
+      translate(object.title)
     end
 
     def extract_info

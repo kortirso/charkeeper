@@ -5,7 +5,7 @@ import config from '../../../../data/dc20.json';
 import { useAppState, useAppLocale, useAppAlert } from '../../../../context';
 import { Minus, Plus } from '../../../../assets';
 import { updateCharacterRequest } from '../../../../requests/updateCharacterRequest';
-import { modifier } from '../../../../helpers';
+import { modifier, localize } from '../../../../helpers';
 
 const TRANSLATION = {
   en: {
@@ -85,12 +85,12 @@ export const Dc20Abilities = (props) => {
       <GuideWrapper
         character={character()}
         guideStep={1}
-        helpMessage={TRANSLATION[locale()].helpMessage}
+        helpMessage={localize(TRANSLATION, locale()).helpMessage}
         onReloadCharacter={props.onReloadCharacter}
       >
         <Show when={character().attribute_points > 0}>
           <div class="warning">
-            <p class="text-sm">{TRANSLATION[locale()].attributePoints} - {attributePointsLeft()}</p>
+            <p class="text-sm">{localize(TRANSLATION, locale()).attributePoints} - {attributePointsLeft()}</p>
           </div>
         </Show>
         <EditWrapper

@@ -11,3 +11,5 @@ export const replace = (initialValue, values) => {
   });
   return resultValue;
 }
+
+export const localize = (dict, locale) => dict[locale] || dict.en;

@@ -4,7 +4,7 @@ import { ErrorWrapper, Dice, GuideWrapper, createModal, Button, Select } from '.
 import daggerheartConfig from '../../data/daggerheart.json';
 import { useAppState, useAppLocale } from '../../context';
 import { Edit } from '../../assets';
-import { modifier, readFromCache, writeToCache } from '../../helpers';
+import { modifier, readFromCache, writeToCache, localize } from '../../helpers';
 import { fetchTagInfoRequest } from '../../requests/fetchTagInfoRequest';
 
 const DISTANCE_SETTINGS_CACHE_NAME = 'DistanceSettings';
@@ -90,13 +90,13 @@ export const Combat = (props) => {
   const distanceOptions = createMemo(() => {
     const result = {}
 
-    if (character().provider === 'daggerheart') result.narrative = TRANSLATION[locale()].narrative;
+    if (character().provider === 'daggerheart') result.narrative = localize(TRANSLATION, locale()).narrative;
 
     return {
       ...result,
-      'showSquares': TRANSLATION[locale()].showSquares,
-      'imperial': TRANSLATION[locale()].imperial,
-      'metric': TRANSLATION[locale()].metric
+      'showSquares': localize(TRANSLATION, locale()).showSquares,
+      'imperial': localize(TRANSLATION, locale()).imperial,
+      'metric': localize(TRANSLATION, locale()).metric
     };
   });
 
@@ -135,17 +135,17 @@ export const Combat = (props) => {
     const provider = character().provider;
     if (provider === 'daggerheart') {
       if (settings()[provider] === 'narrative' || settings()[provider] === undefined) {
-        return TRANSLATION[locale()].daggerheart[attack.range];
+        return localize(TRANSLATION, locale()).daggerheart[attack.range];
       }
     }
 
     const squares = provider === 'daggerheart' ? DH_SQUARE_DISTANCES[attack.range] : (attack.distance || attack.range);
     if (!squares) return '';
 
-    if (settings()[provider] === 'imperial') return `${squares * 5} ${TRANSLATION[locale()].feet}`;
-    if (settings()[provider] === 'metric') return `${squares * 1.5} ${TRANSLATION[locale()].meters}`;
+    if (settings()[provider] === 'imperial') return `${squares * 5} ${localize(TRANSLATION, locale()).feet}`;
+    if (settings()[provider] === 'metric') return `${squares * 1.5} ${localize(TRANSLATION, locale()).meters}`;
 
-    return `${squares} ${TRANSLATION[locale()].squares}`;
+    return `${squares} ${localize(TRANSLATION, locale()).squares}`;
   }
 
   const renderAttacksBox = (title, values) => {
@@ -158,9 +158,9 @@ export const Combat = (props) => {
           <thead>
             <tr>
               <td />
-              <td class="text-center">{TRANSLATION[locale()].attack}</td>
-              <td class="text-center px-1">{TRANSLATION[locale()].damage}</td>
-              <td class="text-center px-1">{TRANSLATION[locale()].distance}</td>
+              <td class="text-center">{localize(TRANSLATION, locale()).attack}</td>
+              <td class="text-center px-1">{localize(TRANSLATION, locale()).damage}</td>
+              <td class="text-center px-1">{localize(TRANSLATION, locale()).distance}</td>
             </tr>
           </thead>
           <tbody>
@@ -252,15 +252,15 @@ export const Combat = (props) => {
             <div class="p-4 pb-0">
               <Select
                 containerClassList="w-full md:w-1/2 mb-2"
-                labelText={TRANSLATION[locale()].settings}
+                labelText={localize(TRANSLATION, locale()).settings}
                 items={distanceOptions()}
                 selectedValue={settings()[character().provider]}
                 onSelect={updateSettings}
               />
             </div>
           </Show>
-          {renderAttacksBox(TRANSLATION[locale()]['primary'], character().attacks.filter((item) => item.ready_to_use))}
-          {renderAttacksBox(TRANSLATION[locale()]['additional'], character().attacks.filter((item) => !item.ready_to_use))}
+          {renderAttacksBox(localize(TRANSLATION, locale())['primary'], character().attacks.filter((item) => item.ready_to_use))}
+          {renderAttacksBox(localize(TRANSLATION, locale())['additional'], character().attacks.filter((item) => !item.ready_to_use))}
           <Button
             default
             classList='absolute top-0 right-0 rounded min-w-6 min-h-6 opacity-50 m-0!'

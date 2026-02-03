@@ -12,7 +12,7 @@ module Homebrews
           races: ::Daggerheart::Homebrew::Race.where(id: object_items['Daggerheart::Homebrew::Race']).pluck(:name),
           communities: ::Daggerheart::Homebrew::Community.where(id: object_items['Daggerheart::Homebrew::Community']).pluck(:name),
           classes: subclasses_info(object_items),
-          items: ::Daggerheart::Item.where(id: object_items['Daggerheart::Item']).pluck(:name).pluck(I18n.locale.to_s),
+          items: ::Daggerheart::Item.where(id: object_items['Daggerheart::Item']).pluck(:name).map { |item| translate(item) },
           transformations: ::Daggerheart::Homebrew::Transformation.where(id: object_items['Daggerheart::Homebrew::Transformation']).pluck(:name),
           domains: ::Daggerheart::Homebrew::Domain.where(id: object_items['Daggerheart::Homebrew::Domain']).pluck(:name)
         }

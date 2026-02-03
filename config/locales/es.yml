@@ -1,0 +1,437 @@
+es:
+  forbidden: Prohibido
+  not_found: Object is not found
+  change_locale: Cambiar locale
+  close_cookie: Cerrar cookie
+  validation_error: Error de validación
+  tips:
+    title: Sugerencias
+    description: CharKeeper es totalmente gratuito, pero si te gusta utilizar CharKeeper y deseas contribuir al desarrollo de la aplicación, puedes realizar una pequeña donación mediante alguna de las formas que se indican a continuación. Ahora solo se necesitan fondos para pagar el nombre de dominio y el alojamiento, pero hay planes para pagar el trabajo de los entusiastas que están llenando la aplicación con datos de varios sistemas de juegos de rol, y para lanzar CharKeeper en iOS (es necesario pagar una cuenta de desarrollador de Apple). Agradecería cualquier ayuda.
+    buymeacoffee: Buy Me a Coffee
+    boosty: Boosty
+  cookie_banner:
+    title: Banner de cookie
+    p1: Charkeeper no utiliza cookies de terceros, solo una única cookie interna.
+    p2: No se envían datos a terceros.
+  providerss:
+    daggerheart: Daggerheart
+    dnd5: D&D 5
+    dnd2024: D&D 2024
+    pathfinder2: Pathfinder 2
+    dc20: DC20
+  commands:
+    campaigns_context:
+      join_campaign:
+        provider_mismatch: Los sistemas no coinciden
+    characters_context:
+      dnd2024:
+        craft:
+          no_money: No hay suficiente dinero
+      items:
+        consume:
+          done: "%{value} es consumimdo, tira - %{roll}"
+  services:
+    sheets_context:
+      level: Nivel
+      attack: ATAQUE
+      dist: DISTANCIA
+      damage: DAÑO
+      trait: TIPO
+      count: CONTEO
+      equipment: EQUIPAMIENTO
+      spells: HECHIZOS
+      slots: RANURA DE HECHIZOS
+      features: CARACTERÍSTICAS
+      uses_left: Usos restantes
+      equipments:
+        hands: En las manos
+        equipment: En el cuerpo
+        backpack: En la mochila
+        storage: Almacenado
+      gold:
+        coins: Monedas
+        handfuls: Puñado
+        bags: Bolsas
+        chests: Cofres
+        copper: Cobre
+        silver: Plata
+        gold: Oro
+      pathfinder:
+        armor_class: Clase de armadura
+        perception: Percepción
+        speed: Velocidad
+      dnd:
+        initiative: Iniciativa
+        armor_class: Clase de armadura
+        speed: Velocidad
+        health: SALUD
+        skills: HABILIDADES
+        current_health: Actual
+        max_health: Max
+        temp_health: Temp
+        success: Éxito
+        failure: Fallo
+        saving_throws: TIRADA DE SALVACIÓN
+        attacks: ATAQUES
+        spells:
+          concentration: C
+          ritual: R
+          action: Acción
+          dist: Distancia
+          hit: Golpe / DC
+          comp: Componentes
+          duration: Duración
+          area: Area
+          effects: Efectos
+        actions:
+          A: A
+          BA: BA
+          R: R
+          h: hr
+          m: min
+        ranges:
+          self: Uno mismo
+          touch: Toque
+          none: ''
+          ft: ft
+          mile: milla
+        components:
+          v: V
+          s: S
+          m: Vr
+        durations:
+          instant: Inst
+          r: inme
+          m: min
+          h: hr
+          d: d
+        areas:
+          cube: Cubo
+          cone: Cono
+          line: Linea
+          sphere: Esfera
+          emanation: Emanación
+          cylinder: Cilindro
+          square: Cuadrado
+        effects:
+          buff: Mejorar
+          debuff: Penalización
+          heal: Curar
+          damage: Daño
+      daggerheart:
+        proficiency: Competencia
+        evasion: Evasión
+        armor_score: Puntuación de armadura
+        armor_slots: ARMADURA
+        hp: PV
+        stress: ESTRÉS
+        hope: ESPERANZA
+        experience: EXPERIENCIA
+        health: SALUD
+        minor: Menor
+        major: Mayor
+        severe: Severo
+        domain_cards: CARTAS DE DOMINIO
+        level: "%{value} nivel"
+    bot_context:
+      representers:
+        check:
+          result: Resultado de tirada - %{result}
+          dnd:
+            crit_success: Éxito crítico
+            crit_failure: Fallo crítico
+            success: "%{result}"
+            attr: Hace una tirada de, %{attr}
+            save: Have una tirada de salvación de, %{attr}
+            skill: Hace una tirada de habilidad de, %{attr}
+            attack: Hace una tirada de ataque con, %{target}
+          daggerheart:
+            crit_success: Éxito crítico
+            with_hope: "%{result} con esperanza"
+            with_fear: "%{result} con miedo"
+            attr: Hace una tirada de %{attr}
+            attack: Hace una tirada de ataque con, %{target}
+        roll:
+          result: Resultado
+          total: Total
+          nothing: No hay resultado
+        campaign:
+          create:
+            result: "La campaña \"%{name}\" fue creada"
+          remove:
+            result: La campaña fue borrada
+          show:
+            characters: "Personajes de la campaña"
+  decorators:
+    pathfinder2:
+      boosts: "Puedes mejorar habilidades: %{ability_boosts_text}.\nPuedes aprender habilidades: %{skill_boosts_text}"
+      free: libre
+      int: + modificador Int
+  frontend:
+    homebrews:
+      transformations:
+        daggerheart:
+          character_exists: Existe un personaje con tal transformación
+  web:
+    welcome:
+      index:
+        title: Hojas de personaje interactivas para cualquier juego de mesa en un solo lugar.
+        description1: Charkeeper es un agregador de hojas de personaje que calcula automáticamente diversas estadísticas de los personajes, para que no tengas que estar consultando constantemente el libro de reglas, y te permite realizar un seguimiento de las habilidades, hechizos y ataques disponibles de tus personajes.
+        description2: Disponible desde cualquier dispositivo en la web y como aplicación móvil en Android e iOS.
+        description3: Desde el 23 de enero de 2026, Charkeeper se ejecuta en dos servidores separados como dos aplicaciones independientes. Se puede cambiar de servidor, pero añadir, actualizar o eliminar datos solo afectará al servidor actual. La aplicación móvil también se puede cambiar para utilizar un servidor más adecuado.
+        switch_ru: Cambiar a RU
+        switch_eu: Cambiar a EU
+        features_title: Características de Charkeeper
+        feature_1: Guardar personajes compatibles con las reglas de D&D 5, Pathfinder 2, Daggerheart y DC20.
+        feature_2: La información de la cuenta y los personajes guardados se comparten entre todos los dispositivos.
+        feature_3: Subir avatares para tus personaje.
+        feature_4: CharKeeper tiene un diseño adaptable para facilitar su uso en cualquier dispositivo, con la posibilidad de cambiar entre los modos claro y oscuro.
+        feature_5: Y muchas características adicionales específicas para sistemas de juegos.
+        feature_6: Generación de hojas de personaje en PDF con los datos reales de tus personajes.
+        work_on: Funciona en
+        telegram: Mini app de Telegram
+        telegram_description: Simplemente inicia %{href} en Telegram messenger
+        telegram_link: aplicación de vista web
+        web: Aplicación web en navegadores
+        web_description: Simplemente incia %{href}
+        web_link: panel
+        dashboard_link: Personajes
+        homebrews_link: Homebrews
+        macos: Aplicación MacOS
+        macos_description: Simplemente descarga e inicia %{href}
+        macos_link: instalador
+        apk: Android aplicación
+        apk_description: Simplemente descarga e inicia %{href}
+        apk_link: instalalador
+        mobile_apps: Aplicaciones móviles para iOS y Android
+        app_store: Además puedes instalar la aplicación a través de %{href} (para actualizaciones rápidas)
+        app_store_link: TestFlight en la App Store
+        daggerheart:
+          title: Compatibilidad con Daggerheart
+          feature_1: Crea personajes de razas/clases estándar, utiliza razas mixtas o utiliza tus propias razas/clases/subclases para crear personajes totalmente personalizados.
+          feature_2: Edita cualquier estadística, experiencia, equipamiento, cartas de dominio, niveles y clases.
+          feature_3: Cálculo automático de posibles ataques en función del equipo.
+          feature_4: Gestión del compañero del Ranger y cálculo automático de las transformaciones de bestia del druida.
+          feature_5: Tiene en cuenta las bonificaciones y penalizaciones.
+          feature_6: Aplicar automáticamente los resultados de los efectos del tiempo de descanso.
+        dnd:
+          title: Compatibilidad con D&D 5 y 2024
+          feature_1: Crea personajes de razas y clases estándar.
+          feature_2: Edita cualquier estadística, habilidad, equipo, hechizo, nivel, clase o subclase.
+          feature_3: Cálculo automático de posibles ataques en función del equipo, sus bonificaciones y el daño.
+          feature_4: Fácil gestión de la salud.
+          feature_5: Sistema de gestión de hechizos con marcado de las ranuras de hechizo gastados.
+          feature_6: Cálculo automático de los efectos del descanso.
+          feature_7: Representación automática de las hazañas disponibles con valores prellenados de daño y otras estadísticas de proezas.
+        dc20:
+          title: Compatibilidad con DC20
+          feature_1: Creación de personajes con selección de rasgos raciales.
+          feature_2: Edición de estadísticas, habilidades, oficios, idiomas y equipamiento.
+          feature_3: Cálculo automático de posibles ataques en función del equipamiento, sus bonificaciones y el daño.
+          feature_4: Fácil gestión de recursos.
+          feature_5: Representación automática de las proezas disponibles con valores preestablecidos de daño y otras estadísticas de proezas.
+        homebrews:
+          title: Sistema de gestión de creaciones propias
+          feature_1: Crea y comparte tus propias razas, clases, subclases y objetos.
+          feature_2: Combina tus creaciones propias en libros para compartirlas fácilmente con tus jugadores.
+        bots:
+          title: Integraciones de bots en Discord y Telegram
+          feature_1: Gestión de campañas
+          feature_2: Envío de resultados de tiradas
+          feature_3: Gestión de creaciones propias
+          telegram: Para el bot de Telegram solo encuentra %{href} y añadelo a cualquiera de tus grupos
+          telegram_link: usuario bot
+          discord: Para el bot de Discord solo invita al bot por %{href} a alguno de tus canales
+          discord_link: enlace
+    users:
+      auth:
+        notice: La autenticación se ha realizado correctamente
+        alert: Error en la autenticación
+        spam: Alerta de spam
+      signup:
+        title: Registrarse
+        username: Nombre de usuario
+        password: Contraseña
+        confirmation: Confirmación de contraseña
+        have: ¿Ya tienes una cuenta?
+        login: Iniciar sesión
+        create: Crear
+      signin:
+        title: Iniciar sesión
+        have_not: ¿No tienes una cuenta?
+        signup: Registrarse
+        create: Iniciar sesión
+        logout: Cerrar sesión
+  telegram_webhook:
+    unknown: "No sé qué decir, lo siento :("
+    start: "¡Hola, %{sender}! Soy Charkeeper, ¡una hoja de personaje electrónica! Te ayudaré a llevar un registro de los personajes con los que juegas a juegos de rol de mesa. Encontrarás el botón del mini lanzador de aplicaciones en la parte inferior izquierda.\n\nLo que puedo hacer ahora: crear personajes según las reglas de D&D 5 y 2024, Daggerheart y, en menor medida, Pathfinder 2; tener en cuenta el equipo y los hechizos conocidos; mostrar las habilidades raciales y de clase disponibles para el personaje en función de su nivel; tener en cuenta los espacios de hechizo gastados; actualizar las habilidades disponibles después del descanso; mostrar todas las habilidades de ataque posibles y ayudar a mantener la hoja de personaje de todas las formas posibles.\n\nLo que puedo hacer ahora: crear personajes según las reglas de D&D 5 y 2024, Daggerheart y, en menor medida, Pathfinder 2; tener en cuenta el equipo y los hechizos conocidos; mostrar las habilidades raciales y de clase disponibles para el personaje en función de su nivel; tener en cuenta los espacios de hechizo gastados; actualizar las habilidades disponibles después del descanso; mostrar todas las habilidades de ataque posibles y ayudar a mantener la hoja de personaje de todas las formas posibles.\n\nPara darte de baja de la lista de noticias del bot, introduce el comando /unsubscribe o elimina este chat con el bot de bloqueo."
+    contacts: "Si tienes alguna pregunta, comentario, sugerencia o informe de error, o si deseas colaborar con el proyecto, puedes escribir directamente en Telegram: @kortirso.\n\nO suscríbete a los grupos principales: @charkeeper en Telegram, https://vk.com/char_keeper en VK y https://discord.gg/CmT8RgyECQ en Discord."
+    unsubscribe: "Ha cancelado su suscripción para recibir noticias del proyecto.\n\nPara volver a suscribirse, utilice el comando /subscribe."
+    subscribe: "Se ha suscrito para recibir noticias del proyecto.\n\nPara cancelar la suscripción, utilice el comando /unsubscribe."
+    commands: "Puedes utilizar varios comandos del bot tanto en este chat como incluir el bot en tus grupos y ejecutar comandos allí.\n\nPuedes encontrar una lista completa de comandos en https://charkeeper.org/bot_commands"
+    help: "Si deseas ayudar a desarrollar la aplicación de alguna manera, puedes ponerte en contacto con nosotros con cualquier pregunta utilizando la información de contacto proporcionada, o simplemente hacer una donación para cubrir los gastos a través de:\n\nBoosty https://boosty.to/kortirso\ncrypto USDT (TRC20 | TRON) TT1T8m3ffwh9f8AVYqLkDB7miuJpAq1ji9"
+  tags:
+    dnd:
+      weapon:
+        ammo: Solo puedes usar un arma que tenga la munición adecuada para realizar un ataque a distancia si tienes munición para disparar con el arma.
+        2handed: Esta arma requiere dos manos para usarla.
+        heavy: Las criaturas pequeñas tienen desventaja en las tiradas de ataque con armas pesadas. 
+        light: Un arma ligera es pequeña y fácil de manejar, lo que la hace ideal para usar cuando se lucha con dos armas.
+        reload: Solo puedes disparar una bala por acción.
+        reach: Esta arma añade 5 pies a tu alcance cuando atacas con ella.
+        thrown: Puedes lanzar el arma para realizar un ataque a distancia.
+        versatile: Esta arma se puede usar con una o dos manos. Aumenta el tipo de dado para el daño a dos manos.
+        unwieldy: Tienes desventaja en los ataques realizados con el arma contra objetivos que se encuentren a menos de 5 pies de ti.
+        monk: Arma especial de monje.
+        bludge: Cosas que te golpean contundentemente, como un martillo o un puño.
+        pierce: Cosas que te atraviesan, como una flecha o unos colmillos.
+        slash: Cosas que te cortan, como una cuchilla o una garra.
+        cleave: Si golpeas a una criatura con una tirada de ataque a melee usando esta arma, puedes realizar una tirada de ataque a melee con el arma contra una segunda criatura que se encuentre a menos de 5 pies de la primera y que también esté a tu alcance. Si aciertas, la segunda criatura recibe el daño del arma, pero no añadas tu modificador de habilidad a ese daño a menos que dicho modificador sea negativo. Solo puedes realizar este ataque adicional una vez por turno.
+        graze: Si tu tirada de ataque con esta arma falla al golpear a una criatura, puedes infligirle un daño igual al modificador de habilidad que hayas utilizado para realizar la tirada de ataque. Este daño es del mismo tipo que el infligido por el arma, y solo puede aumentarse incrementando el modificador de habilidad.
+        nick: Cuando realizas un ataque adicional con propiedad Ligera, puedes hacerlo como parte de la acción Atacar en lugar de como una acción adicional. Solo puedes realizar este ataque adicional una vez por turno.
+        push: Si golpeas a una criatura con esta arma, puedes empujarla hasta 10 pies en línea recta alejándola de ti si es grande o pequeña.
+        sap: Si golpeas a una criatura con esta arma, esa criatura tiene desventaja en su siguiente tirada de ataque antes del comienzo de tu siguiente turno.
+        slow: Si golpeas a una criatura con esta arma y le infliges daño, puedes reducir su velocidad en 10 pies hasta el comienzo de tu siguiente turno. Si la criatura recibe más de un golpe con armas que tengan esta propiedad, la reducción de velocidad no superará los 10 pies.
+        topple: Si golpeas a una criatura con esta arma, puedes obligarla a realizar una tirada de salvación de Constitución (DC 8 más el modificador del atributo utilizado para realizar la tirada de ataque y tu bonificación de competencia). Si falla la tirada, la criatura queda en condición de derribado.
+        vex: Si golpeas a una criatura con esta arma y le infliges daño, obtienes ventaja en tu siguiente tirada de ataque contra esa criatura antes de que termine tu siguiente turno.
+        psychic: Daño psíquico.
+        title:
+          ammo: Munición
+          2handed: A dos manos
+          heavy: Pesado
+          light: Ligero
+          reload: Cargando
+          reach: Alcance
+          thrown: Lanzado
+          versatile: Versatil
+          unwieldy: Difícil de manejar
+          monk: Monje
+          bludge: Contundente
+          pierce: Perforante
+          slash: Cortante
+          cleave: Desgarrar
+          graze: Desgastar
+          nick: Nick
+          push: Empujar
+          sap: Atontar
+          slow: Lento
+          topple: Derribar
+          vex: Vex
+          psychic: Psíquico
+    daggerheart:
+      weapon:
+        physical: El daño físico proviene de cualquier arma que corte, apuñale o golpee.
+        magic: El daño mágico es causado o potenciado por la magia.
+        Two-Handed: El arma requiere 2 manos cuando atacas con ella.
+        primary_weapon: Las armas principales son las armas con las que tu personaje probablemente luchará durante un encuentro. Un personaje solo puede llevar una arma principal a la vez.
+        secondary_weapon: Las armas secundarias suelen ser piezas auxiliares del equipamiento que aumentan la capacidad de combate de tu personaje, como escudos, dagas o espadas pequeñas. Si el arma principal de un personaje es de una sola mano, te recomendamos que también lleves un arma secundaria (pero no podrás empuñar tu arma secundaria si cambias a un arma principal que requiera dos manos).
+        title:
+          physical: Daño físico
+          magic: Daño mágico
+          Two-Handed: A dos manos
+          primary_weapon: Principal
+          secondary_weapon: Secundaria
+    pathfinder2:
+      weapon:
+        bludge: Cosas que te golpean con contundencia, como un martillo o un puño.
+        pierce: Cosas que te perforan, como una flecha o unos colmillos.
+        slash: Cosas que te cortan, como una espada o una garra.
+        agile: La penalización por ataque múltiple que recibes con esta arma en el segundo ataque de tu turno es de –4 en lugar de –5.
+        backstabber: Cuando golpeas a una criatura desprevenida, esta arma inflige 1 punto de daño de precisión además de su daño normal. El daño de precisión aumenta a 2 si el arma es un arma +3.
+        backswing: Después de fallar con esta arma en tu turno, obtienes una bonificación circunstancial de +1 a tu siguiente ataque con esta arma antes de que termine tu turno.
+        concealable: Obtienes una bonificación circunstancial de +2 a las tiradas de Sigilo y a las DCs para ocultar o disimular un arma con esta característica.
+        deadly: "En un golpe crítico, el arma añade un dado de daño de arma del tamaño indicado. Tira este dado después de duplicar el daño del arma. Esto aumenta a dos dados si el arma tiene una runa de golpe grandioso y a tres dados si el arma tiene una runa de golpe mayor"
+        disarm: "Puedes usar esta arma para desarmar con la habilidad Atletismo aunque no tengas una mano libre. Esto utiliza el alcance del arma (si es diferente al tuyo) y añade la bonificación del arma a las tiradas de ataque (si la hay) como bonificación a la tirada de Atletismo. Si fallas críticamente una tirada para desarmar usando el arma, puedes soltar el arma para sufrir los efectos de un fallo en lugar de un fallo crítico. En caso de éxito crítico, seguirás necesitando una mano libre si quieres coger el objeto."
+        fatal: El rasgo fatal incluye un tamaño de dado. En caso de golpe crítico, el dado de daño del arma aumenta a ese tamaño de dado en lugar del tamaño normal, y el arma añade un dado de daño adicional del tamaño indicado.
+        forceful: Cuando atacas con ella más de una vez en tu turno, el segundo ataque obtiene una bonificación circunstancial al daño igual al número de dados de daño del arma, y cada ataque posterior obtiene una bonificación circunstancial al daño igual al doble del número de dados de daño.
+        free_hand: "Esta arma no ocupa tu mano, normalmente porque está integrada en tu armadura. Un arma de mano libre no puede ser desarmada. Puedes usar la mano cubierta por tu arma de mano libre para empuñar otros objetos, realizar acciones de manipulación, etc. No puedes atacar con un arma de mano libre si estás empuñando algo con esa mano o utilizándola para otra cosa. Cuando no estás empuñando nada y no estás utilizando la mano para otra cosa, puedes usar habilidades que requieran tener una mano libre, así como aquellas que requieran empuñar un arma con esa mano. Cada una de tus manos solo puede tener un arma de mano libre."
+        grapple: "Puedes usar esta arma para agarrar con la habilidad Atletismo aunque no tengas una mano libre. Esto usa el alcance del arma (si es diferente al tuyo) y añade la bonificación del arma a las tiradas de ataque como bonificación a la tirade de Atletismo. Si fallas críticamente una tirada para agarrar usando el arma, puedes soltar el arma para sufrir los efectos de un fallo en lugar de un fallo crítico."
+        jousting: cuando estés montado, si te has movido al menos 10 pies en la acción anterior a tu ataque, añade una bonificación circunstancial al daño de ese ataque igual al número de dados de daño del arma. Además, mientras estés montado, puedes empuñar el arma con una sola mano, cambiando el dado de daño al valor indicado.
+        monk: Muchos monjes aprenden a usar estas armas.
+        nonlethal: Los ataques con esta arma no son letales y se utilizan para dejar inconscientes a las criaturas en lugar de matarlas. Puedes usar un arma no letal para realizar un ataque letal con una penalización circunstancial de -2.
+        parry: Mientras empuñas esta arma, si tu competencia con ella es entrenada o superior, puedes gastar una sola acción para colocar tu arma en posición defensiva, obteniendo una bonificación circunstancial de +1 a la CA hasta el comienzo de tu siguiente turno.
+        ranged_trip: "El arma se puede usar para derribar con la habilidad de Atletismo dentro del primer incremento de alcance del arma. La tirada de habilidad tiene una penalización circunstancial de -2. Puedes añadir la bonificación del objeto del arma a las tiradas de ataque como bonificación a la prueba. Un arma para derribar a distancia no inflige ningún daño cuando se usa para derribar. Estas armas suelen lanzarse"
+        shove: "Puedes usar esta arma para empujar con la habilidad de Atletismo incluso si no tienes una mano libre. Esto usa el alcance del arma (si es diferente al tuyo) y añade la bonificación del objeto del arma a las tiradas de ataque como bonificación del objeto a la tirade de Atletismo. Si fallas críticamente una tirada para empujar usando el arma, puedes soltar el arma para sufrir los efectos de un fallo en lugar de un fallo crítico"
+        sweep: Cuando atacas con esta arma, obtienes una bonificación circunstancial de +1 a tu tirada de ataque si ya has intentado atacar a otro objetivo en este turno con esta arma.
+        thrown: Puedes lanzar esta arma como un ataque a distancia; cuando se lanza, se considera un arma a distancia.
+        trip: "Puedes usar esta arma para derribar con la habilidad Atletismo aunque no tengas una mano libre. Esto usa el alcance del arma (si es diferente al tuyo) y añade la bonificación del arma a las tiradas de ataque como bonificación de objeto a la tirada de Atletismo. Si fallas críticamente una tirada para derribar usando el arma, puedes soltar el arma para sufrir los efectos de un fallo en lugar de un fallo crítico"
+        twin: "Cuando atacas con un arma gemela, añades una bonificación circunstancial a la tirada de daño igual al número de dados de daño del arma si has atacado previamente con un arma diferente del mismo tipo en este turno. Las armas deben ser del mismo tipo, pero no es necesario que tengan las mismas runas"
+        two_hand: "Esta arma se puede empuñar con las dos manos para cambiar su dado de daño al valor indicado. Este cambio se aplica a todos los dados de daño del arma."
+        volley: Tus ataques contra objetivos que se encuentran a una distancia dentro del rango indicado reciben una penalización de -2.
+        title:
+          bludge: Contundente
+          pierce: Perforante
+          slash: Cortante
+          agile: Ágil
+          backstabber: Ataque sorpresa
+          backswing: Contragolpe
+          concealable: Ocultable
+          deadly: Mortal %{value}
+          disarm: Desarmar
+          fatal: Fatal %{value}
+          forceful: Forzoso
+          free_hand: Mano libre
+          grapple: Agarre
+          jousting: Combate montado %{value}
+          monk: Monje
+          nonlethal: No letal
+          parry: Parry
+          ranged_trip: Derribar a distancia
+          shove: Empujar
+          sweep: Barrido
+          thrown: Lanzar %{value}
+          trip: Derribar
+          twin: Gemela
+          two_hand: A dos manos %{value}
+          volley: Volley %{value}
+    dc20:
+      focus:
+        Long-Ranged: Los hechizos que lances con un alcance superior a 1 aumentarán su alcance en 5 espacios.
+      weapon:
+        Axe: Infliges +1 de daño situacional a las criaturas que estén Sangrando.
+        Bow: Infliges +1 de daño situacional a las criaturas que estén Ralentizadas.
+        Chained: Tus ataques ignoran los Escudos y la Cobertura 1/2, e infliges +1 de daño situacional contra objetivos que empuñan un Escudo o se encuentran detrás de una Cobertura 1/2.
+        Hammer: Infliges +1 de daño situacional contra criaturas que estén Aturdidas o Petrificadas.
+        Pick: Infliges +1 punto de daño situacional a las criaturas que estén Incapacitadas.
+        Spear: Infliges +1 de daño situacional a una criatura si te has movido 2 casillas hacia ella inmediatamente antes de realizar el ataque o si está montado. Además, no tienes desventaja en las tiradas de ataque realizadas con el arma por estar bajo el agua.
+        Staff: Infliges +1 punto de daño situacional a las criaturas que estén Entorpecidas.
+        Sword: Infliges +1 punto de daño situacional a las criaturas que estén Expuestas.
+        Ammo: Puedes cargar un arma como parte de un ataque realizado con ella.
+        Concealable: Desenvainar el arma no provoca ataques de oportunidad. Si desenvainas el arma como parte de un ataque, tienes ventaja en el ataque. Solo puedes obtener esta ventaja una vez contra cada criatura por combate.
+        Guard: Ganas +1 DF mientras empuñas el arma.
+        Impact: Infliges +1 de daño situacional con los Golpes Pesados.
+        Multi-Faceted: Debes elegir qué Estilo de arma utilizar. El Estilo de arma elegido determina el tipo de daño del Etaque.
+        Reach: Esta arma añade 1 espacio a tu Melee cuando atacas con ella..
+        Silent: Cuando realizas un ataque a distancia con el arma mientras estás Oculto, sigues sin ser Oído por las criaturas de las que te Ocultas.
+        Toss: Puedes lanzar el arma para realizar un ataque marcial a distancia.
+        Thrown: Puedes lanzar el arma para realizar un ataque marcial a distancia.
+        Two-Handed: El arma requiere 2 manos cuando atacas con ella.
+        Unwieldy: Tienes Desventaja en los Ataques realizados con el arma contra objetivos que se encuentren a 1 espacio de distancia de ti.
+        Versatile: Esta arma se puede empuñar con 1 o 2 manos. Cuando la empuñas con 2 manos, obtienes una bonificación situacional de +2 para golpear con ella.
+        b: Cosas que te golpean con contundencia, como un martillo o un puño.
+        p: Cosas que te perforan, como una flecha o unos colmillos.
+        s: Cosas que te cortan, como una espada o una garra.
+        title:
+          Axe: Hacha
+          Bow: Arco
+          Chained: Encadenado
+          Hammer: Martillo
+          Pick: Pica
+          Spear: Lanza
+          Staff: Bastón
+          Sword: Espada
+          Ammo: Munición
+          Concealable: Ocultable
+          Guard: Guardia
+          Impact: Impacto
+          Multi-Faceted: Multifaceta
+          Reach: Alcance
+          Silent: Silenciosa
+          Toss: Tirar
+          Thrown: Lanzar
+          Two-Handed: A dos manos
+          Unwieldy: Díficil de manejar
+          Versatile: Versatíl
+          b: Contundente
+          p: Perforante
+          s: Cortante

@@ -7,7 +7,7 @@ import { Close, Trash } from '../../assets';
 import { fetchCharacterBonusesRequest } from '../../requests/fetchCharacterBonusesRequest';
 import { updateCharacterBonusRequest } from '../../requests/updateCharacterBonusRequest';
 import { removeCharacterBonusRequest } from '../../requests/removeCharacterBonusRequest';
-import { translate } from '../../helpers';
+import { translate, localize } from '../../helpers';
 
 const TRANSLATION = {
   en: {
@@ -98,7 +98,7 @@ export const SharedBonuses = (props) => {
 
   const saveBonus = async () => {
     const bonusesWithValues = bonusesList().filter((item) => item.modify && item.value);
-    if (bonusesWithValues.length === 0) return renderAlert(TRANSLATION[locale()].noValues);
+    if (bonusesWithValues.length === 0) return renderAlert(localize(TRANSLATION, locale()).noValues);
 
     const result = await props.onSaveBonus(bonusesWithValues, bonusComment());
 
@@ -144,7 +144,7 @@ export const SharedBonuses = (props) => {
         when={!createMode()}
         fallback={
           <div class="p-4 flex-1 flex flex-col blockable">
-            <Input labelText={TRANSLATION[locale()].newBonusComment} value={bonusComment()} onInput={setBonusComment} />
+            <Input labelText={localize(TRANSLATION, locale()).newBonusComment} value={bonusComment()} onInput={setBonusComment} />
             <Show when={bonusesList().length > 0}>
               <Key each={bonusesList()} by={item => item.id}>
                 {(bonus) =>
@@ -152,7 +152,7 @@ export const SharedBonuses = (props) => {
                     <div class="flex gap-x-2 items-end py-1 mt-2">
                       <Select
                         containerClassList="flex-1"
-                        labelText={TRANSLATION[locale()].bonusModify}
+                        labelText={localize(TRANSLATION, locale()).bonusModify}
                         items={props.mapping}
                         selectedValue={bonus().modify}
                         onSelect={(value) => updateNewBonus(bonus(), 'modify', value)}
@@ -165,7 +165,7 @@ export const SharedBonuses = (props) => {
                       <div class="flex gap-x-2 mt-2">
                         <Select
                           containerClassList="flex-1"
-                          labelText={TRANSLATION[locale()].bonusType}
+                          labelText={localize(TRANSLATION, locale()).bonusType}
                           items={translate(bonus().modify === props.proficiencyName ? { "static": { "name": { "en": "Static", "ru": "Статичный" } } } : { "static": { "name": { "en": "Static", "ru": "Статичный" } }, "dynamic": { "name": { "en": "Dynamic", "ru": "Динамический" } } }, locale())}
                           selectedValue={bonus().type}
                           onSelect={(value) => updateNewBonus(bonus(), 'type', value)}
@@ -175,7 +175,7 @@ export const SharedBonuses = (props) => {
                           fallback={
                             <Select
                               containerClassList="flex-1"
-                              labelText={TRANSLATION[locale()].bonusValue}
+                              labelText={localize(TRANSLATION, locale()).bonusValue}
                               items={translate(props.dynamicItems, locale())}
                               selectedValue={bonus().value}
                               onSelect={(value) => updateNewBonus(bonus(), 'value', value)}
@@ -185,7 +185,7 @@ export const SharedBonuses = (props) => {
                           <Input
                             nemeric
                             containerClassList="flex-1"
-                            labelText={TRANSLATION[locale()].bonusValue}
+                            labelText={localize(TRANSLATION, locale()).bonusValue}
                             value={bonus().value}
                             onInput={(value) => updateNewBonus(bonus(), 'value', value)}
                           />
@@ -196,16 +196,16 @@ export const SharedBonuses = (props) => {
                 }
               </Key>
             </Show>
-            <Button default small classList="p-1 mt-2" onClick={addNewBonus}>{TRANSLATION[locale()].addBonus}</Button>
+            <Button default small classList="p-1 mt-2" onClick={addNewBonus}>{localize(TRANSLATION, locale()).addBonus}</Button>
             <div class="flex justify-end mt-4">
-              <Button outlined textable size="small" classList="mr-4" onClick={cancelBonus}>{TRANSLATION[locale()].cancel}</Button>
-              <Button default textable size="small" onClick={saveBonus}>{TRANSLATION[locale()].save}</Button>
+              <Button outlined textable size="small" classList="mr-4" onClick={cancelBonus}>{localize(TRANSLATION, locale()).cancel}</Button>
+              <Button default textable size="small" onClick={saveBonus}>{localize(TRANSLATION, locale()).save}</Button>
             </div>
           </div>
         }
       >
         <Button default textable classList="w-full uppercase" onClick={activateCreateMode}>
-          {TRANSLATION[locale()].newBonus}
+          {localize(TRANSLATION, locale()).newBonus}
         </Button>
         <Show when={bonuses() !== undefined}>
           <For each={bonuses()}>
@@ -222,7 +222,7 @@ export const SharedBonuses = (props) => {
                   <BonusComponent bonus={bonus} />
                 </div>
                 <Checkbox
-                  labelText={bonus.enabled ? TRANSLATION[locale()].enabled : TRANSLATION[locale()].disabled}
+                  labelText={bonus.enabled ? localize(TRANSLATION, locale()).enabled : localize(TRANSLATION, locale()).disabled}
                   labelPosition="right"
                   labelClassList="ml-2"
                   checked={bonus.enabled}

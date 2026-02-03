@@ -4,6 +4,7 @@ import { ErrorWrapper, GuideWrapper, Button } from '../../../../components';
 import { useAppState, useAppLocale, useAppAlert } from '../../../../context';
 import { Minus, PlusSmall } from '../../../../assets';
 import { updateCharacterRequest } from '../../../../requests/updateCharacterRequest';
+import { localize } from '../../../../helpers';
 
 const TRANSLATION = {
   en: {
@@ -72,12 +73,12 @@ export const Dc20Resources = (props) => {
   const healthStatus = createMemo(() => {
     const totalHealth = character().health.current + character().health.temp;
 
-    if (totalHealth > character().health.bloodied) return TRANSLATION[locale()].healthy;
-    if (totalHealth > character().health.well_bloodied) return TRANSLATION[locale()].bloodied;
-    if (totalHealth > 0) return TRANSLATION[locale()].wellBloodied;
-    if (totalHealth > character().health.death_threshold) return TRANSLATION[locale()].door;
+    if (totalHealth > character().health.bloodied) return localize(TRANSLATION, locale()).healthy;
+    if (totalHealth > character().health.well_bloodied) return localize(TRANSLATION, locale()).bloodied;
+    if (totalHealth > 0) return localize(TRANSLATION, locale()).wellBloodied;
+    if (totalHealth > character().health.death_threshold) return localize(TRANSLATION, locale()).door;
 
-    return TRANSLATION[locale()].dead;
+    return localize(TRANSLATION, locale()).dead;
   });
 
   const updateTempResource = (attribute) => {
@@ -122,7 +123,7 @@ export const Dc20Resources = (props) => {
   const renderAttribute = (points, slug) => (
     <Show when={points.max !== 0} fallback={<></>}>
       <div class="flex items-center mb-2 dark:text-snow">
-        <p class="text-sm/4 w-56">{TRANSLATION[locale()][slug]}</p>
+        <p class="text-sm/4 w-56">{localize(TRANSLATION, locale())[slug]}</p>
         <div class="flex items-center">
           <Button default size="small" onClick={() => updateResource(slug, -1)}>
             <Minus />
@@ -137,7 +138,7 @@ export const Dc20Resources = (props) => {
       </div>
       <Show when={points.temp !== undefined}>
         <div class="flex items-center mb-2">
-          <p class="text-sm/4 w-56">{TRANSLATION[locale()].temp[slug]}</p>
+          <p class="text-sm/4 w-56">{localize(TRANSLATION, locale()).temp[slug]}</p>
           <div class="flex items-center">
             <div class="w-6" />
             <p class="w-32 text-center">
@@ -157,7 +158,7 @@ export const Dc20Resources = (props) => {
       <GuideWrapper character={character()}>
         <div class="blockable p-4 mb-2 grid grid-cols-1 emd:grid-cols-3 gap-x-2 gap-y-4">
           <div class="col-span-2">
-            <h2 class="text-lg font-normal! mb-2">{TRANSLATION[locale()]['title']}</h2>
+            <h2 class="text-lg font-normal! mb-2">{localize(TRANSLATION, locale())['title']}</h2>
             <div class="flex mb-2">
               <p class="w-56" />
               <div class="flex">
@@ -173,16 +174,16 @@ export const Dc20Resources = (props) => {
             {renderAttribute(character().grit_points, 'grit_points')}
           </div>
           <div class="">
-            <h2 class="text-lg font-normal! mb-4">{TRANSLATION[locale()].environment}</h2>
-            <h3 class="font-normal! mb-2">{TRANSLATION[locale()].speedTitle}</h3>
-            <p class="text-sm mb-2">{TRANSLATION[locale()].speeds.ground} - {character().speeds.ground}</p>
+            <h2 class="text-lg font-normal! mb-4">{localize(TRANSLATION, locale()).environment}</h2>
+            <h3 class="font-normal! mb-2">{localize(TRANSLATION, locale()).speedTitle}</h3>
+            <p class="text-sm mb-2">{localize(TRANSLATION, locale()).speeds.ground} - {character().speeds.ground}</p>
             <For each={Object.entries(character().speeds).filter(([slug,]) => slug !== 'ground')}>
               {([slug, value]) =>
-                <p class="text-sm mb-2">{TRANSLATION[locale()].speeds[slug]} - {value}</p>
+                <p class="text-sm mb-2">{localize(TRANSLATION, locale()).speeds[slug]} - {value}</p>
               }
             </For>
-            <p class="text-sm mt-4">{TRANSLATION[locale()].jump} - {character().jump}</p>
-            <p class="text-sm mt-4">{TRANSLATION[locale()].breath} - {character().breath}</p>
+            <p class="text-sm mt-4">{localize(TRANSLATION, locale()).jump} - {character().jump}</p>
+            <p class="text-sm mt-4">{localize(TRANSLATION, locale()).breath} - {character().breath}</p>
           </div>
         </div>
       </GuideWrapper>

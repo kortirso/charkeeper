@@ -5,6 +5,7 @@ import * as i18n from '@solid-primitives/i18n';
 import { ErrorWrapper, Button, Levelbox, Checkbox, GuideWrapper } from '../../../../components';
 import { useAppState, useAppLocale, useAppAlert } from '../../../../context';
 import { createCharacterRestRequest } from '../../../../requests/createCharacterRestRequest';
+import { localize } from '../../../../helpers';
 
 const TRANSLATION = {
   en: {
@@ -63,7 +64,7 @@ export const Dnd5Rest = (props) => {
     <ErrorWrapper payload={{ character_id: character().id, key: 'Dnd5Rest' }}>
       <GuideWrapper character={character()}>
         <div class="blockable p-4">
-          <p class="mb-4 dark:text-snow">{TRANSLATION[locale()].shortDesc}</p>
+          <p class="mb-4 dark:text-snow">{localize(TRANSLATION, locale()).shortDesc}</p>
           <For each={Object.entries(character().hit_dice).filter(([, value]) => value > 0)}>
             {([dice, maxValue]) =>
               <Levelbox
@@ -79,19 +80,19 @@ export const Dnd5Rest = (props) => {
           </For>
           <Checkbox
             classList="mb-4"
-            labelText={TRANSLATION[locale()].makeRolls}
+            labelText={localize(TRANSLATION, locale()).makeRolls}
             labelPosition="right"
             labelClassList="ml-2"
             checked={makeRolls()}
             onToggle={() => setMakeRolls(!makeRolls())}
           />
-          <p class="mb-4 dark:text-snow">{TRANSLATION[locale()].longDesc}</p>
+          <p class="mb-4 dark:text-snow">{localize(TRANSLATION, locale()).longDesc}</p>
           <div class="flex justify-center items-center">
             <Button default textable classList="flex-1 mr-2" onClick={() => restCharacter({ value: 'short_rest' })}>
-              <span>{TRANSLATION[locale()].short}</span>
+              <span>{localize(TRANSLATION, locale()).short}</span>
             </Button>
             <Button default textable classList="flex-1 ml-2" onClick={() => restCharacter({ value: 'long_rest' })}>
-              <span>{TRANSLATION[locale()].long}</span>
+              <span>{localize(TRANSLATION, locale()).long}</span>
             </Button>
           </div>
         </div>

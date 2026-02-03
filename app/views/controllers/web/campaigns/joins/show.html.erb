@@ -1,7 +1,7 @@
 <%=
   js_component 'CharKeeperApp',
                access_token: @access_token,
-               locale: current_user.locale,
+               locale: locale: current_user.locale == 'es' ? 'en' : current_user.locale,
                username: current_user.username,
                admin: current_user.admin?,
                color_schema: current_user.color_schema,

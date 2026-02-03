@@ -8,7 +8,7 @@ import { updateCharacterRequest } from '../../../../requests/updateCharacterRequ
 import { fetchTalentsRequest } from '../../../../requests/fetchTalentsRequest';
 import { createTalentRequest } from '../../../../requests/createTalentRequest';
 import { fetchTalentFeaturesRequest } from '../../../../requests/fetchTalentFeaturesRequest';
-import { translate } from '../../../../helpers';
+import { translate, localize } from '../../../../helpers';
 
 const TRANSLATION = {
   en: {
@@ -117,8 +117,8 @@ export const Dc20Leveling = (props) => {
   });
 
   const talentOrigin = (item) => {
-    if (item.origin_value === 'general') return `${item.title} (${TRANSLATION[locale()].general})`;
-    if (item.origin_value === 'multiclass') return `${item.title} (${TRANSLATION[locale()].multiclass})`;
+    if (item.origin_value === 'general') return `${item.title} (${localize(TRANSLATION, locale()).general})`;
+    if (item.origin_value === 'multiclass') return `${item.title} (${localize(TRANSLATION, locale()).multiclass})`;
 
     return `${item.title} (${config.classes[item.origin_value].name[locale()]})`;
   }
@@ -132,7 +132,7 @@ export const Dc20Leveling = (props) => {
   const availableSubclasses = createMemo(() => {
     const result = translate(config.classes[character().main_class].subclasses, locale());
 
-    result['paragon'] = TRANSLATION[locale()].paragon;
+    result['paragon'] = localize(TRANSLATION, locale()).paragon;
 
     return result;
   });
@@ -204,14 +204,14 @@ export const Dc20Leveling = (props) => {
                 when={character().subclass}
                 fallback={config.classes[character().main_class].name[locale()]}
               >
-                {character().subclass === 'paragon' ? TRANSLATION[locale()].paragon : config.classes[character().main_class].subclasses[character().subclass].name[locale()]}
+                {character().subclass === 'paragon' ? localize(TRANSLATION, locale()).paragon : config.classes[character().main_class].subclasses[character().subclass].name[locale()]}
               </Show>
-              {' '}- {character().level} {TRANSLATION[locale()].currentLevel}
+              {' '}- {character().level} {localize(TRANSLATION, locale()).currentLevel}
             </p>
           </div>
           <Show when={character().level >= 3 && !character().subclass}>
             <Select
-              labelText={TRANSLATION[locale()].selectSubclass}
+              labelText={localize(TRANSLATION, locale()).selectSubclass}
               containerClassList="mt-2"
               items={availableSubclasses()}
               selectedValue={subclass()}
@@ -219,7 +219,7 @@ export const Dc20Leveling = (props) => {
             />
             <Show when={subclass()}>
               <Button default textable size="small" classList="inline-block mt-2" onClick={() => updateCharacter({ subclass: subclass() })}>
-                {TRANSLATION[locale()].saveButton}
+                {localize(TRANSLATION, locale()).saveButton}
               </Button>
             </Show>
           </Show>
@@ -227,12 +227,12 @@ export const Dc20Leveling = (props) => {
         <Toggle
           title={
             <div class="flex justify-between">
-              <p>{TRANSLATION[locale()]['paths']}</p>
-              <p>{TRANSLATION[locale()]['existingPoints']} - {character().path_points}</p>
+              <p>{localize(TRANSLATION, locale())['paths']}</p>
+              <p>{localize(TRANSLATION, locale())['existingPoints']} - {character().path_points}</p>
             </div>
           }
         >
-          <p class="dark:text-snow mb-2 text-sm">{TRANSLATION[locale()]['title']}</p>
+          <p class="dark:text-snow mb-2 text-sm">{localize(TRANSLATION, locale())['title']}</p>
           <div class="flex items-center gap-x-4 mb-2">
             <Show when={character().path_points > 0}>
               <Button
@@ -243,7 +243,7 @@ export const Dc20Leveling = (props) => {
                 <PlusSmall />
               </Button>
             </Show>
-            <p class="dark:text-snow">{TRANSLATION[locale()]['martialPathLevel']} - {character().paths.martial}</p>
+            <p class="dark:text-snow">{localize(TRANSLATION, locale())['martialPathLevel']} - {character().paths.martial}</p>
           </div>
           <div class="flex items-center gap-x-4">
             <Show when={character().path_points > 0}>
@@ -255,22 +255,22 @@ export const Dc20Leveling = (props) => {
                 <PlusSmall />
               </Button>
             </Show>
-            <p class="dark:text-snow">{TRANSLATION[locale()]['spellcasterPathLevel']} - {character().paths.spellcaster}</p>
+            <p class="dark:text-snow">{localize(TRANSLATION, locale())['spellcasterPathLevel']} - {character().paths.spellcaster}</p>
           </div>
         </Toggle>
         <Toggle
           title={
             <div class="flex justify-between">
-              <p>{TRANSLATION[locale()]['maneuvers']}</p>
-              <p>{TRANSLATION[locale()]['maneuverPoints']} - {character().maneuver_points - character().maneuvers.length}</p>
+              <p>{localize(TRANSLATION, locale())['maneuvers']}</p>
+              <p>{localize(TRANSLATION, locale())['maneuverPoints']} - {character().maneuver_points - character().maneuvers.length}</p>
             </div>
           }
         >
           <For each={['attack', 'save', 'grapple', 'defense']}>
             {(item) =>
               <div class="mb-8">
-                <p class="dark:text-snow mb-2">{TRANSLATION[locale()][item]['title']}</p>
-                <p class="dark:text-snow mb-2 text-sm">{TRANSLATION[locale()][item]['description']}</p>
+                <p class="dark:text-snow mb-2">{localize(TRANSLATION, locale())[item]['title']}</p>
+                <p class="dark:text-snow mb-2 text-sm">{localize(TRANSLATION, locale())[item]['description']}</p>
                 <div class="flex flex-wrap gap-x-4 gap-y-2">
                   <For each={Object.entries(config.maneuvers).filter(([, values]) => values.type === item)}>
                     {([slug, values]) =>
@@ -291,13 +291,13 @@ export const Dc20Leveling = (props) => {
         <Toggle
           title={
             <div class="flex justify-between">
-              <p>{TRANSLATION[locale()].talents}</p>
-              <p>{TRANSLATION[locale()].existingTalentPoints} - {character().talent_points - Object.values(character().selected_talents).reduce((acc, value) => acc + value, 0)}</p>
+              <p>{localize(TRANSLATION, locale()).talents}</p>
+              <p>{localize(TRANSLATION, locale()).existingTalentPoints} - {character().talent_points - Object.values(character().selected_talents).reduce((acc, value) => acc + value, 0)}</p>
             </div>
           }
         >
           <Show when={talents() && Object.values(character().selected_talents).reduce((acc, value) => acc + value, 0) > 0}>
-            <p class="text-sm mb-2">{TRANSLATION[locale()].selectedTalents}</p>
+            <p class="text-sm mb-2">{localize(TRANSLATION, locale()).selectedTalents}</p>
             <For each={Object.entries(character().selected_talents)}>
               {([id, amount]) =>
                 <p class="text-lg">{talents().find((item) => item.id === id).title}{amount > 1 ? ` - ${amount}` : ''}</p>
@@ -307,7 +307,7 @@ export const Dc20Leveling = (props) => {
           </Show>
           <Show when={character().talent_points > Object.values(character().selected_talents).reduce((acc, value) => acc + value, 0)}>
             <Select
-              labelText={TRANSLATION[locale()].selectTalent}
+              labelText={localize(TRANSLATION, locale()).selectTalent}
               containerClassList="flex-1"
               items={availableTalents()}
               selectedValue={selectedTalent()?.id}
@@ -320,7 +320,7 @@ export const Dc20Leveling = (props) => {
               />
               <Show when={selectedTalent().origin_value === 'multiclass' && talentFeatures()}>
                 <Select
-                  labelText={TRANSLATION[locale()].selectMulticlassFeature}
+                  labelText={localize(TRANSLATION, locale()).selectMulticlassFeature}
                   containerClassList="flex-1 mt-1"
                   items={talentFeatures().reduce((acc, item) => { acc[item.id] = `${item.title} (${config.classes[item.origin_value] ? config.classes[item.origin_value].name[locale()] : ''})`; return acc }, {})}
                   selectedValue={selectedMultiTalent()?.id}
@@ -328,7 +328,7 @@ export const Dc20Leveling = (props) => {
                 />
               </Show>
               <Button default textable size="small" classList="inline-block mt-2" onClick={saveTalent}>
-                {TRANSLATION[locale()].saveButton}
+                {localize(TRANSLATION, locale()).saveButton}
               </Button>
             </Show>
           </Show>

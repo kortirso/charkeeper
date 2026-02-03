@@ -7,11 +7,11 @@ module Dc20
     attributes(*ATTRIBUTES)
 
     def title
-      object.title[I18n.locale.to_s]
+      translate(object.title)
     end
 
     def description
-      object.description[I18n.locale.to_s]
+      translate(object.description)
     end
 
     def origin_value

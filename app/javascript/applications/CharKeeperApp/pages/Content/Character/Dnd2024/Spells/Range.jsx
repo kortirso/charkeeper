@@ -1,6 +1,7 @@
 import { Show } from 'solid-js';
 
 import { useAppLocale } from '../../../../../context';
+import { localize } from '../../../../../helpers';
 
 const DIRECT_VALUES = ['self', 'touch', 'none'];
 
@@ -27,7 +28,7 @@ export const SpellRange = (props) => {
   const transformTime = () => {
     const values = props.value.split(',');
 
-    return `${values[0]}${TRANSLATION[locale()][values[1]]}`;
+    return `${values[0]}${localize(TRANSLATION, locale())[values[1]]}`;
   }
 
   return (
@@ -36,7 +37,7 @@ export const SpellRange = (props) => {
         when={DIRECT_VALUES.includes(props.value)}
         fallback={transformTime()}
       >
-        {TRANSLATION[locale()][props.value]}
+        {localize(TRANSLATION, locale())[props.value]}
       </Show>
     </p>
   );

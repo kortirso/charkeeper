@@ -4,6 +4,7 @@ import { ErrorWrapper, GuideWrapper, Select, Input, Button } from '../../../../c
 import { useAppLocale, useAppState, useAppAlert } from '../../../../context';
 import { fetchCraftsRequest } from '../../../../requests/fetchCraftsRequest';
 import { createCraftRequest } from '../../../../requests/createCraftRequest';
+import { localize } from '../../../../helpers';
 
 const TRANSLATION = {
   en: {
@@ -106,7 +107,7 @@ export const Dnd5Craft = (props) => {
     )
 
     if (result.errors_list === undefined) {
-      renderNotice(TRANSLATION[locale()].crafted);
+      renderNotice(localize(TRANSLATION, locale()).crafted);
       props.onReloadCharacter();
     } else renderAlerts(result.errors_list);
   }
@@ -118,12 +119,12 @@ export const Dnd5Craft = (props) => {
           <Show
             when={tools().length > 0}
             fallback={
-              <p>{TRANSLATION[locale()].noTools}</p>
+              <p>{localize(TRANSLATION, locale()).noTools}</p>
             }
           >
             <Select
               containerClassList="w-full mb-2"
-              labelText={TRANSLATION[locale()].selectTool}
+              labelText={localize(TRANSLATION, locale()).selectTool}
               items={Object.fromEntries(tools().map((item) => [item.id, item.name[locale()]]))}
               selectedValue={toolId()}
               onSelect={changeTool}
@@ -131,7 +132,7 @@ export const Dnd5Craft = (props) => {
             <Show when={toolId()}>
               <Select
                 containerClassList="w-full mb-2"
-                labelText={TRANSLATION[locale()].selectItem}
+                labelText={localize(TRANSLATION, locale()).selectItem}
                 items={Object.fromEntries(craftItems().map((item) => [item.id, item.name[locale()]]))}
                 selectedValue={itemId()}
                 onSelect={changeCraftItem}
@@ -142,20 +143,20 @@ export const Dnd5Craft = (props) => {
                 <Input
                   numeric
                   containerClassList="flex-1"
-                  labelText={TRANSLATION[locale()].amount}
+                  labelText={localize(TRANSLATION, locale()).amount}
                   value={amount()}
                   onInput={changeAmount}
                 />
                 <Input
                   numeric
                   containerClassList="flex-1"
-                  labelText={TRANSLATION[locale()].price}
+                  labelText={localize(TRANSLATION, locale()).price}
                   value={price()}
                   onInput={setPrice}
                 />
               </div>
-              <p class="mb-4">{TRANSLATION[locale()].craftTime} - {amount() / craftItem().output_per_day}</p>
-              <Button default onClick={craft}>{TRANSLATION[locale()].craft}</Button>
+              <p class="mb-4">{localize(TRANSLATION, locale()).craftTime} - {amount() / craftItem().output_per_day}</p>
+              <Button default onClick={craft}>{localize(TRANSLATION, locale()).craft}</Button>
             </Show>
           </Show>
         </div>

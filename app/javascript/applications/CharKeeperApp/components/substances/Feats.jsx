@@ -8,7 +8,7 @@ import {
 import { useAppState, useAppLocale, useAppAlert } from '../../context';
 import { Edit } from '../../assets';
 import { updateCharacterFeatRequest } from '../../requests/updateCharacterFeatRequest';
-import { readFromCache, writeToCache } from '../../helpers';
+import { readFromCache, writeToCache, localize } from '../../helpers';
 
 const FEATURES_FILTER_NAME = 'FeaturesFiltersStatus';
 const TRANSLATION = {
@@ -145,7 +145,7 @@ export const Feats = (props) => {
           when={filtering() === undefined || filtering().includes('groupFeatures')}
           fallback={
             <div id="character-navigation">
-              <p class="active">{TRANSLATION[locale()]['allFeatures']}</p>
+              <p class="active">{localize(TRANSLATION, locale())['allFeatures']}</p>
               <Button default classList='rounded min-w-6 min-h-6 opacity-50 m-0!' onClick={() => setShowFilters(!showFilters())}>
                 <Edit />
               </Button>
@@ -168,19 +168,19 @@ export const Feats = (props) => {
               <Select
                 multi
                 containerClassList="w-full md:w-1/2 mb-2"
-                labelText={TRANSLATION[locale()]['settings']}
+                labelText={localize(TRANSLATION, locale())['settings']}
                 items={{
-                  'showPersonal': TRANSLATION[locale()].showPersonal,
-                  'groupFeatures': TRANSLATION[locale()].groupFeatures,
-                  'showPassive': TRANSLATION[locale()].showPassive,
-                  'expandAll': TRANSLATION[locale()].expandAll
+                  'showPersonal': localize(TRANSLATION, locale()).showPersonal,
+                  'groupFeatures': localize(TRANSLATION, locale()).groupFeatures,
+                  'showPassive': localize(TRANSLATION, locale()).showPassive,
+                  'expandAll': localize(TRANSLATION, locale()).expandAll
                 }}
                 selectedValues={filtering() || []}
                 onSelect={(value) => updateFiltering(value)}
               />
             </Show>
             <Show when={activeFilter() === 'personal'}>
-              <p class="dark:text-snow mb-2 text-sm">{TRANSLATION[locale()].personalFeats}</p>
+              <p class="dark:text-snow mb-2 text-sm">{localize(TRANSLATION, locale()).personalFeats}</p>
             </Show>
             <Key
               each={filteredFeatures()}
@@ -237,7 +237,7 @@ export const Feats = (props) => {
                       <div class="mt-2 flex justify-end">
                         <Checkbox
                           filled
-                          labelText={TRANSLATION[locale()]['activeFeat']}
+                          labelText={localize(TRANSLATION, locale())['activeFeat']}
                           labelPosition="right"
                           labelClassList="ml-2"
                           checked={feature().active}

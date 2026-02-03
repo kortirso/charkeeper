@@ -6,7 +6,7 @@ import { useAppState, useAppLocale, useAppAlert } from '../../../../context';
 import { Arrow } from '../../../../assets';
 import { updateCharacterRequest } from '../../../../requests/updateCharacterRequest';
 import { fetchHomebrewsRequest } from '../../../../requests/fetchHomebrewsRequest';
-import { translate } from '../../../../helpers';
+import { translate, localize } from '../../../../helpers';
 
 const TRANSLATION = {
   en: {
@@ -179,7 +179,7 @@ export const DaggerheartLeveling = (props) => {
   const levelUp = () => {
     const availableLevelPoints = levelPoints() - spendLevelPoints();
     if (availableLevelPoints > 0 && (character().level === 4 || character().level === 7)) {
-      return renderAlert(TRANSLATION[locale()].warning);
+      return renderAlert(localize(TRANSLATION, locale()).warning);
     }
 
     updateCharacter({ level: character().level + 1 });
@@ -235,19 +235,19 @@ export const DaggerheartLeveling = (props) => {
             <Button default classList="rounded mr-4" onClick={levelUp}>
               <Arrow top />
             </Button>
-            <p>{TRANSLATION[locale()]['currentLevel']} - {character().level}</p>
+            <p>{localize(TRANSLATION, locale())['currentLevel']} - {character().level}</p>
           </div>
-          <p class="text-sm mb-4">{TRANSLATION[locale()].levelTooltip}</p>
+          <p class="text-sm mb-4">{localize(TRANSLATION, locale()).levelTooltip}</p>
           <Show when={levelingData() && character().level > 1}>
-            <p class="my-2">{TRANSLATION[locale()]['title']} - {levelPoints() - spendLevelPoints()}</p>
+            <p class="my-2">{localize(TRANSLATION, locale())['title']} - {levelPoints() - spendLevelPoints()}</p>
             <For
               each={[
-                { css: 'mt-4 mb-2', title: TRANSLATION[locale()]['traits'], amount: 3, attribute: 'traits' },
-                { css: 'mb-2', title: TRANSLATION[locale()]['health'], amount: 2, attribute: 'health' },
-                { css: 'mb-2', title: TRANSLATION[locale()]['stress'], amount: 2, attribute: 'stress' },
-                { css: 'mb-2', title: TRANSLATION[locale()]['experience'], amount: 1, attribute: 'experience' },
-                { css: 'mb-2', title: TRANSLATION[locale()]['domainCards'], amount: 1, attribute: 'domain_cards' },
-                { css: 'mb-2', title: TRANSLATION[locale()]['evasion'], amount: 1, attribute: 'evasion' }
+                { css: 'mt-4 mb-2', title: localize(TRANSLATION, locale())['traits'], amount: 3, attribute: 'traits' },
+                { css: 'mb-2', title: localize(TRANSLATION, locale())['health'], amount: 2, attribute: 'health' },
+                { css: 'mb-2', title: localize(TRANSLATION, locale())['stress'], amount: 2, attribute: 'stress' },
+                { css: 'mb-2', title: localize(TRANSLATION, locale())['experience'], amount: 1, attribute: 'experience' },
+                { css: 'mb-2', title: localize(TRANSLATION, locale())['domainCards'], amount: 1, attribute: 'domain_cards' },
+                { css: 'mb-2', title: localize(TRANSLATION, locale())['evasion'], amount: 1, attribute: 'evasion' }
               ]}
             >
               {(item) =>
@@ -285,9 +285,9 @@ export const DaggerheartLeveling = (props) => {
             <Show when={character().tier > 2}>
               <For
                 each={[
-                  { title: TRANSLATION[locale()]['proficiency'], amount: character().tier - 2, attribute: 'proficiency', changeable: true },
-                  { title: TRANSLATION[locale()]['subclass'], amount: character().tier - 2 - levelingData().multiclass, attribute: 'subclass', changeable: Object.values(character().subclasses_mastery).filter((item) => item > 1).reduce((acc, value) => acc + value - 1, 0) !== character().leveling.subclass },
-                  { title: TRANSLATION[locale()]['multiclass'], amount: character().tier - 2 - levelingData().subclass, attribute: 'multiclass', changeable: Object.keys(character().classes).length !== levelingData().multiclass + 1 }
+                  { title: localize(TRANSLATION, locale())['proficiency'], amount: character().tier - 2, attribute: 'proficiency', changeable: true },
+                  { title: localize(TRANSLATION, locale())['subclass'], amount: character().tier - 2 - levelingData().multiclass, attribute: 'subclass', changeable: Object.values(character().subclasses_mastery).filter((item) => item > 1).reduce((acc, value) => acc + value - 1, 0) !== character().leveling.subclass },
+                  { title: localize(TRANSLATION, locale())['multiclass'], amount: character().tier - 2 - levelingData().subclass, attribute: 'multiclass', changeable: Object.keys(character().classes).length !== levelingData().multiclass + 1 }
                 ]}
               >
                 {(item) =>
@@ -315,7 +315,7 @@ export const DaggerheartLeveling = (props) => {
               <Select
                 multi
                 containerClassList="w-full mb-2"
-                labelText={TRANSLATION[locale()]['traitsSelect']}
+                labelText={localize(TRANSLATION, locale())['traitsSelect']}
                 items={translate(config.traits, locale())}
                 selectedValues={levelingData().selected_traits[character().tier]}
                 onSelect={selectTrait}
@@ -324,7 +324,7 @@ export const DaggerheartLeveling = (props) => {
             <Show when={Object.keys(character().classes).length <= character().leveling.multiclass}>
               <Select
                 containerClassList="w-full mb-2"
-                labelText={TRANSLATION[locale()]['classSelect']}
+                labelText={localize(TRANSLATION, locale())['classSelect']}
                 items={translate(daggerheartClasses(), locale())}
                 selectedValue={newClass()}
                 onSelect={setNewClass}
@@ -332,34 +332,34 @@ export const DaggerheartLeveling = (props) => {
               <Show when={newClass()}>
                 <Select
                   containerClassList="w-full mb-2"
-                  labelText={TRANSLATION[locale()]['subclassSelect']}
+                  labelText={localize(TRANSLATION, locale())['subclassSelect']}
                   items={translate(daggerheartClasses()[newClass()].subclasses, locale())}
                   selectedValue={newSubclass()}
                   onSelect={setNewSubclass}
                 />
                 <Select
                   containerClassList="w-full mb-2"
-                  labelText={TRANSLATION[locale()]['selectDomain']}
+                  labelText={localize(TRANSLATION, locale())['selectDomain']}
                   items={Object.fromEntries(Object.entries(classDomains()).filter(([key,]) => daggerheartClasses()[newClass()].domains.includes(key)))}
                   selectedValue={domainsData()[newClass()]}
                   onSelect={(value) => selectDomain(newClass(), value)}
                 />
               </Show>
-              <p class="text-sm mb-4">{TRANSLATION[locale()].multiclassTooltip}</p>
+              <p class="text-sm mb-4">{localize(TRANSLATION, locale()).multiclassTooltip}</p>
             </Show>
             <Show when={Object.values(character().subclasses_mastery).filter((item) => item > 1).reduce((acc, value) => acc + value - 1, 0) < character().leveling.subclass}>
               <Select
                 containerClassList="w-full mb-2"
-                labelText={TRANSLATION[locale()]['subclassMasterySelect']}
+                labelText={localize(TRANSLATION, locale())['subclassMasterySelect']}
                 items={translate(existingClasses(), locale())}
                 selectedValue={newClass()}
                 onSelect={setNewClass}
               />
-              <p class="text-sm mb-4">{TRANSLATION[locale()].subclassTooltip}</p>
+              <p class="text-sm mb-4">{localize(TRANSLATION, locale()).subclassTooltip}</p>
             </Show>
           </Show>
           <div class="flex mt-2 gap-x-4">
-            <Button default textable classList="flex-1" onClick={updateClasses}>{TRANSLATION[locale()]['save']}</Button>
+            <Button default textable classList="flex-1" onClick={updateClasses}>{localize(TRANSLATION, locale())['save']}</Button>
           </div>
         </div>
       </GuideWrapper>

@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class FeaturesDecorator
+  include TranslateHelper
+
   attr_accessor :wrapped, :version, :logger
 
   def initialize(obj, version: nil)
@@ -52,7 +54,7 @@ class FeaturesDecorator
       id: feature.id,
       slug: feature.feat.slug || feature.id,
       kind: feature.feat.kind,
-      title: feature.feat.title[I18n.locale.to_s],
+      title: translate(feature.feat.title),
       description: update_feature_description(feature),
       limit: feature.feat.description_eval_variables['limit'],
       limit_refresh: feature.feat.limit_refresh,
@@ -72,8 +74,8 @@ class FeaturesDecorator
       id: item[2],
       slug: item[2],
       kind: 'static',
-      title: item[1][I18n.locale.to_s],
-      description: markdown.call(value: feature[I18n.locale.to_s], version: version),
+      title: translate(item[1]),
+      description: markdown.call(value: translate(feature), version: version),
       origin: 'equipment',
       price: {},
       info: {}
@@ -85,7 +87,7 @@ class FeaturesDecorator
   end
 
   def update_feature_description(feature)
-    description = feature.feat.description[I18n.locale.to_s]
+    description = translate(feature.feat.description)
     return if description.blank?
 
     result = markdown.call(value: description, version: version)

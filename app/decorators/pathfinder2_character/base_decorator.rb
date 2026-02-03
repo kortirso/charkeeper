@@ -75,7 +75,7 @@ module Pathfinder2Character
       key_ability_bonus = find_key_ability_bonus('melee', ['finesse'])
       {
         slug: 'unarmed',
-        name: { en: 'Unarmed', ru: 'Безоружная' }[I18n.locale],
+        name: translate({ en: 'Unarmed', ru: 'Безоружная' }),
         attack_bonus: key_ability_bonus + proficiency_bonus(weapon_skills['unarmed']),
         damage: '1d4',
         damage_bonus: abilities['str'],
@@ -132,7 +132,7 @@ module Pathfinder2Character
       damage_types = item[:items_info]['damage_type'].split('-')
       {
         slug: item[:items_slug],
-        name: item[:items_name][I18n.locale.to_s],
+        name: translate(item[:items_name]),
         attack_bonus: key_ability_bonus + proficiency_bonus(weapon_skills[item[:items_info]['weapon_skill']]),
         damage: item[:items_info]['damage'],
         notes: item[:notes],
@@ -225,7 +225,7 @@ module Pathfinder2Character
           next "#{I18n.t('decorators.pathfinder2.free')} - #{value}"
         end
 
-        slugs = slug.split('_').map { |item| config.dig(key, item, 'name', I18n.locale.to_s) }.join('/')
+        slugs = slug.split('_').map { |item| translate(config.dig(key, item, 'name')) }.join('/')
         "#{slugs} - #{value}"
       end
     end

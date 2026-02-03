@@ -3,6 +3,7 @@ import { Show, For } from 'solid-js';
 import { Button } from '../../components';
 import { useAppLocale } from '../../context';
 import { PlusSmall, Minus, Campfire, LongCampfire, Moon, Picnic, Combat, Ability, Spell, Grimoire } from '../../assets';
+import { localize } from '../../helpers';
 
 const FEATURE_ICONS = {
   'one_at_short_rest': Picnic, 'short_rest': Campfire, 'long_rest': LongCampfire, 'session': Moon, 'combat': Combat
@@ -53,8 +54,8 @@ export const FeatureTitle = (props) => {
           <div class="flex gap-x-2">
             <For each={Object.entries(feature().price)}>
               {([slug, value]) =>
-                <Show when={TRANSLATION[locale()][slug]}>
-                  <p class="text-xs">{TRANSLATION[locale()][slug]} {value}</p>
+                <Show when={localize(TRANSLATION, locale())[slug]}>
+                  <p class="text-xs">{localize(TRANSLATION, locale())[slug]} {value}</p>
                 </Show>
               }
             </For>
@@ -70,7 +71,7 @@ export const FeatureTitle = (props) => {
             <p class="flex items-center justify-center mx-2">
               <span class="w-6 text-center">{feature().limit === 0 ? -feature().used_count : feature().limit - (feature().used_count === null ? feature().limit : feature().used_count)}</span>
               <Show when={IconComponent}>
-                <span title={TRANSLATION[locale()][feature().limit_refresh]}><IconComponent /></span>
+                <span title={localize(TRANSLATION, locale())[feature().limit_refresh]}><IconComponent /></span>
               </Show>
             </p>
             <Button default size="small" onClick={(event) => feature().limit === 0 || feature().used_count === null || feature().used_count > 0 ? props.onRestoreEnergy(event, feature()) : event.stopPropagation()}>

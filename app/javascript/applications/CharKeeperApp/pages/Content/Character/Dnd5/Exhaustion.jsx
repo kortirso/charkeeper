@@ -4,6 +4,7 @@ import { ErrorWrapper, GuideWrapper, Button } from '../../../../components';
 import { useAppState, useAppLocale } from '../../../../context';
 import { PlusSmall, Minus } from '../../../../assets';
 import { updateCharacterRequest } from '../../../../requests/updateCharacterRequest';
+import { localize } from '../../../../helpers';
 
 const TRANSLATION = {
   en: {
@@ -54,7 +55,7 @@ export const Dnd2024Exhaustion = (props) => {
     <ErrorWrapper payload={{ character_id: character().id, key: 'Dnd2024Exhaustion' }}>
       <GuideWrapper character={character()}>
         <div class="blockable p-4">
-          <h2 class="text-lg">{TRANSLATION[locale()].exhaustion}</h2>
+          <h2 class="text-lg">{localize(TRANSLATION, locale()).exhaustion}</h2>
           <div class="flex justify-between items-center w-24 mt-2">
             <Button default size="small" onClick={decreaseExhaustion}>
               <Minus />
@@ -67,12 +68,12 @@ export const Dnd2024Exhaustion = (props) => {
           <Show
             when={character().exhaustion > 0}
             fallback={
-              <p class="text-sm mt-4">{TRANSLATION[locale()].noPenalty}</p>
+              <p class="text-sm mt-4">{localize(TRANSLATION, locale()).noPenalty}</p>
             }
           >
-            <p class="text-sm mt-4">{TRANSLATION[locale()].speedPenalty} {character().exhaustion * 5}</p>
-            <p class="text-sm mt-2">{TRANSLATION[locale()].rollPenalty} {character().exhaustion * 2}</p>
-            <p class="text-sm mt-2">{TRANSLATION[locale()].death}</p>
+            <p class="text-sm mt-4">{localize(TRANSLATION, locale()).speedPenalty} {character().exhaustion * 5}</p>
+            <p class="text-sm mt-2">{localize(TRANSLATION, locale()).rollPenalty} {character().exhaustion * 2}</p>
+            <p class="text-sm mt-2">{localize(TRANSLATION, locale()).death}</p>
           </Show>
         </div>
       </GuideWrapper>

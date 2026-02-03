@@ -9,6 +9,7 @@ import { fetchNotesRequest } from '../../requests/fetchNotesRequest';
 import { createNoteRequest } from '../../requests/createNoteRequest';
 import { updateNoteRequest } from '../../requests/updateNoteRequest';
 import { removeNoteRequest } from '../../requests/removeNoteRequest';
+import { localize } from '../../helpers';
 
 const TRANSLATION = {
   en: {
@@ -119,7 +120,7 @@ export const Notes = (props) => {
                 value={noteForm.value}
                 onChange={(value) => setNoteForm({ ...noteForm, value: value })}
               />
-              <p class="text-sm mt-1">{TRANSLATION[locale()].textHelp}</p>
+              <p class="text-sm mt-1">{localize(TRANSLATION, locale()).textHelp}</p>
             </div>
             <div class="flex justify-end mt-4">
               <Button outlined textable size="small" classList="mr-4" onClick={cancelNote}>{t('cancel')}</Button>

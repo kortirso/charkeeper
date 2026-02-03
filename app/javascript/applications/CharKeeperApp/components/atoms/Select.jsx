@@ -3,7 +3,7 @@ import { createSignal, createMemo, Show, For, Switch, Match, splitProps } from '
 import { Label } from './Label';
 import { useAppLocale } from '../../context';
 import { Chevron } from '../../assets';
-import { clickOutside } from '../../helpers';
+import { clickOutside, localize } from '../../helpers';
 
 const TRANSLATION = {
   en: {
@@ -24,7 +24,7 @@ export const Select = (props) => {
   const itemsForSelect = createMemo(() => {
     if (!props.withNull) return Object.entries(props.items);
 
-    return [['null', TRANSLATION[locale()]['clear']]].concat(Object.entries(props.items));
+    return [['null', localize(TRANSLATION, locale())['clear']]].concat(Object.entries(props.items));
   });
 
   const onSelect = (value) => {

@@ -76,19 +76,19 @@ module Dnd5Character
           result = __getobj__.features
           if draconic_ancestry
             ancestry_abilities = ANCESTRIES[draconic_ancestry]
-            damage_type = ancestry_abilities.dig('damage_type', I18n.locale.to_s)
-            attack_type = ancestry_abilities.dig('attack_type', I18n.locale.to_s)
-            save_type = ancestry_abilities.dig('save_type', I18n.locale.to_s)
+            damage_type = translate(ancestry_abilities['damage_type'])
+            attack_type = translate(ancestry_abilities['attack_type'])
+            save_type = translate(ancestry_abilities['save_type'])
             save_dc = 8 + modifiers['con'] + proficiency_bonus
 
             result << {
               slug: 'breath_weapon',
               kind: 'static',
-              title: { en: 'Breath Weapon', ru: 'Оружие дыхания' }[I18n.locale],
-              description: {
+              title: translate({ en: 'Breath Weapon', ru: 'Оружие дыхания' }),
+              description: translate({
                 en: "Each creature in the area of the exhalation (#{attack_type}, #{ancestry_abilities['dist']}) must make a saving throw #{save_type} (DC #{save_dc}). A creature takes #{draconic_ancestry_damage} damage (#{damage_type}) on a failed save, and half as much damage on a successful one.",
                 ru: "Все существа в зоне выдоха (#{attack_type}, #{ancestry_abilities['dist']}) должны совершить спасбросок #{save_type} (УС #{save_dc}). Существа получают #{draconic_ancestry_damage} урона (#{damage_type}) в случае проваленного спасброска, или половину этого урона, если спасбросок был успешен."
-              }[I18n.locale],
+              }),
               limit: 1,
               limit_refresh: 'short_rest'
             }

@@ -1,0 +1,213 @@
+es:
+  dry_schema:
+    rules:
+      dnd5_character: D&D 5 character
+      pathfinder2_character: Pathfinder 2 character
+      daggerheart_character: Daggerheart character
+    errors:
+      unexpected_key: Unknown param
+      included_in?: Unknown value
+      max_size?: Too long value
+      homebrew_book:
+        rules:
+          provider:
+            included_in?: Unknown value
+      daggerheart_rest:
+        rules:
+          options:
+            too_many_expectations: Select only 2 options
+      campaign:
+        rules:
+          name:
+            filled?: Name can't be blank
+            max_size?: Name's size cannot be greater than 50
+          provider:
+            filled?: Provider can't be blank
+      homebrew_speciality:
+        rules:
+          name:
+            filled?: Name can't be blank
+            max_size?: Name's size cannot be greater than 50
+          domains:
+            filled?: Domains can't be blank
+            only_two: Domains list should contain 2 values
+      homebrew_item:
+        rules:
+          name:
+            filled?: Name can't be blank
+            max_size?: Name's size cannot be greater than 50
+          kind:
+            filled?: Kind can't be blank
+      homebrew_feat:
+        rules:
+          title:
+            filled?: Title can't be blank
+            max_size?: Title's size cannot be greater than 50
+          description:
+            filled?: Description can't be blank
+            max_size?: Description's size cannot be greater than 250
+          origin:
+            filled?: Origin can't be blank
+            included_in?: Unknown value of origin
+            not_found: Origin is not found
+          origin_value:
+            filled?: Origin value can't be blank
+          kind:
+            filled?: Kind can't be blank
+          limit:
+            filled?: Limit can't be blank
+          limit_refresh:
+            filled?: Limit refresh can't be blank
+      homebrew_race:
+        rules:
+          name:
+            filled?: Name can't be blank
+      homebrew_community:
+        rules:
+          name:
+            filled?: Name can't be blank
+      character_companion:
+        rules:
+          character:
+            must_be_beastbound: Only ranger subclass beastbound can have companion
+      character_item:
+        rules:
+          ready_to_use:
+            only_one: Active armor should be only 1
+      character_bonus:
+        rules:
+          comment:
+            key?: Comment is required
+            filled?: Comment is required
+      user:
+        password_length: Password must be greater or equal %{length} characters
+        exists: Username already exists
+        invalid: Invalid credentials
+        rules:
+          password:
+            filled?: Password can't be blank
+            min_size?: Password's size cannot be less than 10
+          password_confirmation:
+            filled?: Password confirmation can't be blank
+            min_size?: Password confirmation's size cannot be less than 10
+          passwords:
+            different: Passwords must be equal
+          username:
+            invalid: Username has invalid format
+          locale:
+            filled?: Locale must be filled
+            included_in?: Invalid locale value
+      dnd5_character:
+        rules:
+          name:
+            key?: Name is required
+            filled?: Name must be filled
+          race:
+            key?: Race is required
+            filled?: Race must be filled
+            included_in?: Invalid race value
+          species:
+            key?: Species is required
+            filled?: Species must be filled
+            included_in?: Invalid species value
+          size:
+            key?: Size is required
+            filled?: Size must be filled
+            included_in?: Invalid size value
+          main_class:
+            key?: Class is required
+            filled?: Class must be filled
+            included_in?: Invalid class value
+          alignment:
+            key?: Alignment is required
+            filled?: Alignment must be filled
+            included_in?: Invalid Alignment value
+          classes:
+            invalid_class_name: Invalid class name
+            invalid_level: Invalid level
+          subclasses:
+            invalid_class_name: Invalid class name
+            invalid_subclass: Invalid subclass name
+          energy:
+            invalid_class_name: Invalid class name
+            invalid_level: Invalid level
+          subrace:
+            invalid: Invalid subrace
+          legacy:
+            invalid: Invalid legacy
+          abilities:
+            invalid_value: Ability value should be positive and less than 30
+          coins:
+            invalid_value: Coins values should not be negative
+          health:
+            invalid_value: Health values should not be negative
+      pathfinder2_character:
+        rules:
+          name:
+            key?: Name is required
+            filled?: Name must be filled
+          race:
+            key?: Race is required
+            filled?: Race must be filled
+            included_in?: Invalid race value
+          main_class:
+            key?: Class is required
+            filled?: Class must be filled
+            included_in?: Invalid class value
+          classes:
+            invalid_class_name: Invalid class name
+            invalid_level: Invalid level
+          subrace:
+            invalid: Invalid subrace
+          health:
+            invalid_value: Health values should not be negative
+      dc20_character:
+        rules:
+          name:
+            key?: Name is required
+            filled?: Name must be filled
+          main_class:
+            key?: Class is required
+            filled?: Class must be filled
+            included_in?: Invalid class value
+      daggerheart_character:
+        rules:
+          name:
+            key?: Name is required
+            filled?: Name must be filled
+          community:
+            key?: Community is required
+            filled?: Community must be filled
+          heritage:
+            key?: Heritage is required
+            filled?: Heritage must be filled
+            included_in?: Invalid heritage value
+            only_one_present: Too many heritages
+            at_least_one_present: Should be at least 1 heritage
+          heritage_features:
+            filled?: Heritage features must be filled
+          heritage_name:
+            filled?: Heritage name must be filled
+            only_one_present: Too many heritages
+            at_least_one_present: Should be at least 1 heritage
+          main_class:
+            key?: Class is required
+            filled?: Class must be filled
+            included_in?: Invalid class value
+          subclass:
+            key?: Subclass is required
+            filled?: Subclass must be filled
+            invalid: Invalid subclass name
+          classes:
+            invalid_class_name: Invalid class name
+            invalid_level: Invalid level
+          exp_name:
+            key?: Experience name is required
+            filled?: Experience name must be filled
+          exp_level:
+            key?: Experience level is required
+            filled?: Experience level must be filled
+          avatar_file:
+            only_one_present: Too many avatars
+          avatar_url:
+            only_one_present: Too many avatars
