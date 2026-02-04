@@ -14,7 +14,7 @@ module SheetsContext
           font_size 6
           fill_color 'FFFFFF'
           %w[str agi fin ins pre know].each_with_index do |item, index|
-            trait_name = traits_names[item].dig('name', I18n.locale.to_s)
+            trait_name = translate(traits_names[item]['name'])
             text_box trait_name, at: [233 + (55 * index), 736], width: 43, align: :center
           end
 
@@ -71,7 +71,7 @@ module SheetsContext
 
             font_size 6
             text_box "#{'+' if attack[:attack_bonus].positive?}#{attack[:attack_bonus]}", at: [430, 629 - (index * 52)], width: 25, height: 14, align: :center
-            text_box ::Daggerheart::Character.traits.dig(attack[:trait], 'shortName', I18n.locale.to_s).to_s, at: [455, 629 - (index * 52)], width: 30, height: 14, align: :center
+            text_box translate(::Daggerheart::Character.traits.dig(attack[:trait], 'shortName')).to_s, at: [455, 629 - (index * 52)], width: 30, height: 14, align: :center
 
             damage = attack[:damage].include?('d') ? "#{attack[:damage]}#{'+' if attack[:damage_bonus].positive?}#{attack[:damage_bonus] unless attack[:damage_bonus].zero?}" : ((attack[:damage].to_i + attack[:damage_bonus]).positive? ? (attack[:damage].to_i + attack[:damage_bonus]).to_s : '-')
             text_box damage, at: [485, 629 - (index * 52)], width: 35, height: 14, align: :center
@@ -81,7 +81,7 @@ module SheetsContext
 
             if attack[:features].any?
               font_size 5
-              text_box attack[:features][0][I18n.locale.to_s], at: [327, 601 - (index * 52)], width: 200, height: 14
+              text_box translate(attack[:features][0]), at: [327, 601 - (index * 52)], width: 200, height: 14
             end
           end
 
@@ -132,10 +132,10 @@ module SheetsContext
 
                 font_size 10
                 fill_color '000000'
-                text_box feat.feat.title[I18n.locale.to_s], at: [52 + (index * 175), 788 - (group_index * 127)], width: 140, height: 14
+                text_box translate(feat.feat.title), at: [52 + (index * 175), 788 - (group_index * 127)], width: 140, height: 14
 
                 card_text =
-                  markdown.call(value: feat.feat.description[I18n.locale.to_s], version: '0.4.4').gsub(/{{[a-z]+}}/, 'x')
+                  markdown.call(value: translate(feat.feat.description), version: '0.4.4').gsub(/{{[a-z]+}}/, 'x')
                 bounding_box([48 + (index * 175), 766 - (group_index * 127)], width: 160, height: 90) do
                   phtml.append(html: "<div style='font-size: 8px'>#{card_text}</div>")
                 end

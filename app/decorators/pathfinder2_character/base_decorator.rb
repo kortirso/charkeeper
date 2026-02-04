@@ -2,6 +2,8 @@
 
 module Pathfinder2Character
   class BaseDecorator < SimpleDelegator
+    include TranslateHelper
+
     FLEXIBLE_SKILLS = %w[acrobatics athletics].freeze
     ARMOR_ABILITIES = %w[str dex].freeze
 

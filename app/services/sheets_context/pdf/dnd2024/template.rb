@@ -26,27 +26,27 @@ module SheetsContext
 
         def race(character)
           default = ::Dnd2024::Character.species_info(character.data.species)
-          default ? default.dig('name', I18n.locale.to_s) : ::Dnd2024::Homebrew::Race.find(character.data.species).name
+          default ? translate(default['name']) : ::Dnd2024::Homebrew::Race.find(character.data.species).name
         end
 
         def subrace(character)
           return unless character.legacy
 
-          ::Dnd2024::Character.legacy_info(character.species, character.legacy).dig('name', I18n.locale.to_s)
+          translate(::Dnd2024::Character.legacy_info(character.species, character.legacy)['name'])
         end
 
         def background(character)
           return unless character.background
 
-          ::Dnd2024::Character.backgrounds.dig(character.background, 'name', I18n.locale.to_s)
+          translate(::Dnd2024::Character.backgrounds.dig(character.background, 'name'))
         end
 
         def class_name(class_slug)
-          ::Dnd2024::Character.class_info(class_slug).dig('name', I18n.locale.to_s)
+          translate(::Dnd2024::Character.class_info(class_slug)['name'])
         end
 
         def subclass_name(class_slug, subclass_slug)
-          ::Dnd2024::Character.subclass_info(class_slug, subclass_slug).dig('name', I18n.locale.to_s)
+          translate(::Dnd2024::Character.subclass_info(class_slug, subclass_slug)['name'])
         end
       end
     end

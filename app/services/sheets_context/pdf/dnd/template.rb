@@ -16,7 +16,7 @@ module SheetsContext
           abilities_names = ::Dnd2024::Character.abilities
           fill_color 'FFFFFF'
           %w[str dex con int wis cha].each_with_index do |item, index|
-            ability_name = abilities_names[item].dig('name', I18n.locale.to_s)
+            ability_name = translate(abilities_names[item]['name'])
 
             font_size 6
             text_box ability_name, at: [233 + (55 * index), 736], width: 43, align: :center
@@ -68,7 +68,7 @@ module SheetsContext
           fill_color '000000'
           skills_names = ::Dnd2024::Character.skills
           character.skills.map { |skill|
-            skill[:name] = skills_names[skill[:slug]].dig('name', I18n.locale.to_s)
+            skill[:name] = translate(skills_names[skill[:slug]]['name'])
             skill
           }.sort_by { |item| item[:name] }.each_with_index do |skill, index| # rubocop: disable Style/MultilineBlockChain
             text_box skill[:name], at: [52, 467 - (index * 20)], width: 140
@@ -193,7 +193,7 @@ module SheetsContext
 
             # rubocop: disable Metrics/BlockLength
             ::Dnd2024::Feat.where(id: spell_ids.keys).or(::Dnd2024::Feat.where(origin: 6, slug: character.static_spells.keys))
-              .sort_by { |item| [item.info['level'], item.title[I18n.locale.to_s]] }
+              .sort_by { |item| [item.info['level'], translate(item.title)] }
               .each_with_index do |spell, index|
                 static_data = character.static_spells[spell.slug] || {}
                 prepared_by = spell_ids.dig(spell.id, 'prepared_by')&.to_sym
@@ -202,7 +202,7 @@ module SheetsContext
                 text_box spell.info['level'].to_s, at: [47, 679 - (index * 22)], width: 10, height: 14 if spell.info['level'].positive?
 
                 font_size 8
-                text_box spell.title[I18n.locale.to_s], at: [62, 681 - (index * 22)], width: 140, height: 14
+                text_box translate(spell.title), at: [62, 681 - (index * 22)], width: 140, height: 14
 
                 font_size 6
                 values = []
@@ -226,7 +226,7 @@ module SheetsContext
                   text_box "#{'+' if value.positive?}#{value}", at: [302, 681 - (index * 22)], width: 40, height: 14, align: :center
                 end
                 if spell.info['dc'] && (character.spell_classes[prepared_by] || static_data['save_dc'])
-                  ability = ::Dnd2024::Character.abilities.dig(spell.info['dc'], 'shortName', I18n.locale.to_s)&.upcase
+                  ability = translate(::Dnd2024::Character.abilities.dig(spell.info['dc'], 'shortName'))&.upcase
 
                   if ability
                     value = static_data['save_dc'] || character.spell_classes.dig(prepared_by, :save_dc)
@@ -266,6 +266,7 @@ module SheetsContext
 
         def duration(value)
           return I18n.t("services.sheets_context.dnd.durations.#{value}") if DIRECT_DURATION_VALUES.include?(value)
+          return '' unless value
 
           values = value.split(',')
           "#{values[0]} #{I18n.t("services.sheets_context.dnd.durations.#{values[1]}")}"

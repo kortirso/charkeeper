@@ -2,6 +2,8 @@
 
 module Dnd5Character
   class BaseDecorator < SimpleDelegator
+    include TranslateHelper
+
     delegate :id, :name, :data, :feats, to: :__getobj__
     delegate :race, :subrace, :main_class, :classes, :subclasses, :level, :languages, :health, :abilities, :selected_skills,
              :selected_feats, :resistance, :immunity, :vulnerability, :coins, :money, :conditions,

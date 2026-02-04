@@ -3,6 +3,8 @@
 module SheetsContext
   module Pdf
     class Template < Prawn::Document
+      include TranslateHelper
+
       # rubocop: disable Metrics/AbcSize, Layout/LineLength
       def to_pdf(character:, phtml: nil) # rubocop: disable Lint/UnusedMethodArgument
         font_families.update(
@@ -45,7 +47,7 @@ module SheetsContext
 
         row_index = 0
         column_index = 0
-        items = character.parent.items.includes(:item).to_a.sort_by { |item| item.item.name[I18n.locale.to_s] }
+        items = character.parent.items.includes(:item).to_a.sort_by { |item| translate(item.item.name) }
 
         fill_color '000000'
         %w[hands equipment backpack storage].each do |key|
@@ -55,7 +57,7 @@ module SheetsContext
             next if column_index == 2
 
             font_size 8
-            text_box item.item.name[I18n.locale.to_s], at: [52 + (column_index * 267), 726 - (row_index * 28)], width: 140, height: 14
+            text_box translate(item.item.name), at: [52 + (column_index * 267), 726 - (row_index * 28)], width: 140, height: 14
             text_box item.states[key].to_s, at: [242 + (column_index * 267), 726 - (row_index * 28)], width: 40, height: 14, align: :center
 
             font_size 5

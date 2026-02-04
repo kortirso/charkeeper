@@ -25,21 +25,21 @@ module SheetsContext
         end
 
         def race(character)
-          ::Dnd5::Character.race_info(character.race).dig('name', I18n.locale.to_s)
+          translate(::Dnd5::Character.race_info(character.race)['name'])
         end
 
         def subrace(character)
           return unless character.subrace
 
-          ::Dnd5::Character.subrace_info(character.race, character.subrace).dig('name', I18n.locale.to_s)
+          translate(::Dnd5::Character.subrace_info(character.race, character.subrace)['name'])
         end
 
         def class_name(class_slug)
-          ::Dnd5::Character.class_info(class_slug).dig('name', I18n.locale.to_s)
+          translate(::Dnd5::Character.class_info(class_slug)['name'])
         end
 
         def subclass_name(class_slug, subclass_slug)
-          ::Dnd5::Character.subclass_info(class_slug, subclass_slug).dig('name', I18n.locale.to_s)
+          translate(::Dnd5::Character.subclass_info(class_slug, subclass_slug)['name'])
         end
       end
     end

@@ -12,14 +12,14 @@ module SheetsContext
           font_size 6
           fill_color 'FFFFFF'
           %w[str dex con int wis cha].each_with_index do |item, index|
-            ability_name = abilities_names[item].dig('name', I18n.locale.to_s)
+            ability_name = translate(abilities_names[item]['name'])
             text_box ability_name, at: [233 + (55 * index), 736], width: 43, align: :center
           end
 
           saving_throws = ::Pathfinder2::Character.saving_throws
           font_size 5
           %w[fortitude reflex will].each_with_index do |item, index|
-            saving_throw = saving_throws[item].dig('name', I18n.locale.to_s)
+            saving_throw = translate(saving_throws[item]['name'])
             text_box saving_throw, at: [365 + (54 * index), 599.5], width: 36, align: :center
           end
 
@@ -53,7 +53,7 @@ module SheetsContext
 
           skills_names = ::Pathfinder2::Character.skills
           character.skills.map { |skill|
-            skill[:name] = skill[:name] || skills_names[skill[:slug]].dig('name', I18n.locale.to_s)
+            skill[:name] = skill[:name] || translate(skills_names[skill[:slug]]['name'])
             skill
           }.sort_by { |item| item[:name] }.each_with_index do |skill, index| # rubocop: disable Style/MultilineBlockChain
             text_box skill[:name], at: [52, 511 - (index * 20)], width: 140
@@ -86,19 +86,19 @@ module SheetsContext
         end
 
         def subrace(character)
-          ::Pathfinder2::Character.subrace_info(character.race, character.subrace).dig('name', I18n.locale.to_s)
+          translate(::Pathfinder2::Character.subrace_info(character.race, character.subrace)['name'])
         end
 
         def background(character)
-          ::Pathfinder2::Character.backgrounds.dig(character.background, 'name', I18n.locale.to_s)
+          translate(::Pathfinder2::Character.backgrounds.dig(character.background, 'name'))
         end
 
         def class_name(class_slug)
-          ::Pathfinder2::Character.class_info(class_slug).dig('name', I18n.locale.to_s)
+          translate(::Pathfinder2::Character.class_info(class_slug)['name'])
         end
 
         def subclass_name(class_slug, subclass_slug)
-          ::Pathfinder2::Character.subclass_info(class_slug, subclass_slug).dig('name', I18n.locale.to_s)
+          translate(::Pathfinder2::Character.subclass_info(class_slug, subclass_slug)['name'])
         end
       end
     end
