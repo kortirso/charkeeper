@@ -1,12 +1,12 @@
 # frozen_string_literal: true
 
 module Homebrews
-  module Daggerheart
+  module Dnd
     class BooksController < Homebrews::BooksController
       private
 
-      def serializer = ::Homebrews::Daggerheart::BookSerializer
-      def provider = 'daggerheart'
+      def serializer = ::Homebrews::Dnd::BookSerializer
+      def provider = 'dnd'
     end
   end
 end

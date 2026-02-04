@@ -4,7 +4,7 @@ import { createStore } from 'solid-js/store';
 import { useAppState, useAppLocale, useAppAlert } from '../../../context';
 import { Button, Input, createModal, DaggerheartFeatForm, DaggerheartFeat, Select, Checkbox } from '../../../components';
 import { Edit, Trash, Stroke, Copy, Plus } from '../../../assets';
-import { fetchDaggerheartBooks } from '../../../requests/fetchDaggerheartBooks';
+import { fetchBooksRequest } from '../../../requests/books/fetchBooksRequest';
 import { changeBookContent } from '../../../requests/changeBookContent';
 import { fetchDaggerheartCommunities } from '../../../requests/fetchDaggerheartCommunities';
 import { fetchDaggerheartCommunity } from '../../../requests/fetchDaggerheartCommunity';
@@ -60,7 +60,7 @@ export const DaggerheartCommunities = () => {
   const { Modal, openModal, closeModal } = createModal();
 
   createEffect(() => {
-    const fetchBooks = async () => await fetchDaggerheartBooks(appState.accessToken);
+    const fetchBooks = async () => await fetchBooksRequest(appState.accessToken, 'daggerheart');
     const fetchCommunities = async () => await fetchDaggerheartCommunities(appState.accessToken);
 
     Promise.all([fetchCommunities(), fetchBooks()]).then(

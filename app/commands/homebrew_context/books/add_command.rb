@@ -6,7 +6,7 @@ module HomebrewContext
       use_contract do
         config.messages.namespace = :homebrew_book
 
-        Providers = Dry::Types['strict.string'].enum('daggerheart')
+        Providers = Dry::Types['strict.string'].enum('daggerheart', 'dnd')
 
         params do
           required(:user).filled(type?: ::User)

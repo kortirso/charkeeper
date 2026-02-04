@@ -7,7 +7,7 @@ import { useAppState, useAppLocale, useAppAlert } from '../../../context';
 import { Button, Input, createModal, DaggerheartFeatForm, DaggerheartFeat, Select, Checkbox } from '../../../components';
 import { Edit, Trash, Stroke, Copy } from '../../../assets';
 import { fetchHomebrewsList } from '../../../requests/fetchHomebrewsList';
-import { fetchDaggerheartBooks } from '../../../requests/fetchDaggerheartBooks';
+import { fetchBooksRequest } from '../../../requests/books/fetchBooksRequest';
 import { changeBookContent } from '../../../requests/changeBookContent';
 import { fetchDaggerheartSubclasses } from '../../../requests/fetchDaggerheartSubclasses';
 import { fetchDaggerheartSubclass } from '../../../requests/fetchDaggerheartSubclass';
@@ -80,7 +80,7 @@ export const DaggerheartSubclasses = () => {
   const fetchSubclasses = async () => await fetchDaggerheartSubclasses(appState.accessToken);
 
   createEffect(() => {
-    const fetchBooks = async () => await fetchDaggerheartBooks(appState.accessToken);
+    const fetchBooks = async () => await fetchBooksRequest(appState.accessToken, 'daggerheart');
     const fetchHomebrews = async () => await fetchHomebrewsList(appState.accessToken, 'daggerheart');
 
     Promise.all([fetchSubclasses(), fetchHomebrews(), fetchBooks()]).then(

@@ -6,7 +6,7 @@ import config from '../../../../CharKeeperApp/data/daggerheart.json';
 import { useAppState, useAppLocale, useAppAlert } from '../../../context';
 import { Button, Input, TextArea, Select, createModal, Checkbox, ItemBonuses, Bonuses } from '../../../components';
 import { Edit, Trash, Copy } from '../../../assets';
-import { fetchDaggerheartBooks } from '../../../requests/fetchDaggerheartBooks';
+import { fetchBooksRequest } from '../../../requests/books/fetchBooksRequest';
 import { changeBookContent } from '../../../requests/changeBookContent';
 import { fetchHomebrewsList } from '../../../requests/fetchHomebrewsList';
 import { fetchItemsRequest } from '../../../requests/fetchItemsRequest';
@@ -116,7 +116,7 @@ export const DaggerheartWeapons = () => {
   const { Modal, openModal, closeModal } = createModal();
 
   createEffect(() => {
-    const fetchBooks = async () => await fetchDaggerheartBooks(appState.accessToken);
+    const fetchBooks = async () => await fetchBooksRequest(appState.accessToken, 'daggerheart');
     const fetchHomebrews = async () => await fetchHomebrewsList(appState.accessToken, 'daggerheart');
     const fetchItems = async () => await fetchItemsRequest(appState.accessToken, 'daggerheart', 'primary weapon,secondary weapon');
 

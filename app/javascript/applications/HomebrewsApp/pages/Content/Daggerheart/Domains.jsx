@@ -4,7 +4,7 @@ import { createStore } from 'solid-js/store';
 import { useAppState, useAppLocale, useAppAlert } from '../../../context';
 import { Button, Input, createModal, DaggerheartFeatForm, DaggerheartFeat, Toggle, Select } from '../../../components';
 import { Edit, Trash, Stroke } from '../../../assets';
-import { fetchDaggerheartBooks } from '../../../requests/fetchDaggerheartBooks';
+import { fetchBooksRequest } from '../../../requests/books/fetchBooksRequest';
 import { changeBookContent } from '../../../requests/changeBookContent';
 import { fetchDaggerheartDomains } from '../../../requests/fetchDaggerheartDomains';
 import { fetchDaggerheartDomain } from '../../../requests/fetchDaggerheartDomain';
@@ -53,7 +53,7 @@ export const DaggerheartDomains = () => {
   const { Modal, openModal, closeModal } = createModal();
 
   createEffect(() => {
-    const fetchBooks = async () => await fetchDaggerheartBooks(appState.accessToken);
+    const fetchBooks = async () => await fetchBooksRequest(appState.accessToken, 'daggerheart');
     const fetchDomains = async () => await fetchDaggerheartDomains(appState.accessToken);
 
     Promise.all([fetchDomains(), fetchBooks()]).then(

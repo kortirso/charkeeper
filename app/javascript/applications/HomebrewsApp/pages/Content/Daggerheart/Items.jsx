@@ -5,7 +5,7 @@ import { Key } from '@solid-primitives/keyed';
 import { useAppState, useAppLocale, useAppAlert } from '../../../context';
 import { Button, Input, TextArea, Select, createModal, Checkbox, ItemBonuses, Bonuses } from '../../../components';
 import { Edit, Trash, Copy } from '../../../assets';
-import { fetchDaggerheartBooks } from '../../../requests/fetchDaggerheartBooks';
+import { fetchBooksRequest } from '../../../requests/books/fetchBooksRequest';
 import { changeBookContent } from '../../../requests/changeBookContent';
 import { fetchItemsRequest } from '../../../requests/fetchItemsRequest';
 import { fetchItemRequest } from '../../../requests/fetchItemRequest';
@@ -92,7 +92,7 @@ export const DaggerheartItems = () => {
   const { Modal, openModal, closeModal } = createModal();
 
   createEffect(() => {
-    const fetchBooks = async () => await fetchDaggerheartBooks(appState.accessToken);
+    const fetchBooks = async () => await fetchBooksRequest(appState.accessToken, 'daggerheart');
     const fetchItems = async () => await fetchItemsRequest(appState.accessToken, 'daggerheart', 'item,consumables,recipe');
 
     Promise.all([fetchItems(), fetchBooks()]).then(

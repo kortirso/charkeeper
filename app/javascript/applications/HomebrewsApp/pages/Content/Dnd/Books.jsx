@@ -13,12 +13,7 @@ import { changeUserBook } from '../../../requests/changeUserBook';
 const TRANSLATION = {
   en: {
     add: 'Add book',
-    races: 'Ancestries',
-    communities: 'Communities',
-    classes: 'Classes',
     items: 'Items',
-    transformations: 'Transformations',
-    domains: 'Domains',
     enabled: 'Enabled',
     disabled: 'Disabled',
     newBookTitle: 'Book form',
@@ -30,12 +25,7 @@ const TRANSLATION = {
   },
   ru: {
     add: 'Добавить книгу',
-    races: 'Расы',
-    communities: 'Общества',
-    classes: 'Классы',
     items: 'Предметы',
-    transformations: 'Трансформации',
-    domains: 'Домены',
     enabled: 'Подключено',
     disabled: 'Отключено',
     newBookTitle: 'Редактирование книги',
@@ -47,7 +37,7 @@ const TRANSLATION = {
   }
 }
 
-export const DaggerheartBooks = () => {
+export const DndBooks = () => {
   const [bookForm, setBookForm] = createStore({ name: '', public: false });
 
   const [books, setBooks] = createSignal(undefined);
@@ -61,7 +51,7 @@ export const DaggerheartBooks = () => {
   createEffect(() => {
     if (books() !== undefined) return;
 
-    const fetchBooks = async () => await fetchBooksRequest(appState.accessToken, 'daggerheart');
+    const fetchBooks = async () => await fetchBooksRequest(appState.accessToken, 'dnd');
 
     Promise.all([fetchBooks()]).then(
       ([booksData]) => {
@@ -99,7 +89,7 @@ export const DaggerheartBooks = () => {
   }
 
   const createBook = async () => {
-    const result = await createBookRequest(appState.accessToken, 'daggerheart', { brewery: bookForm });
+    const result = await createBookRequest(appState.accessToken, 'dnd', { brewery: bookForm });
 
     if (result.errors_list === undefined) {
       batch(() => {
@@ -111,7 +101,7 @@ export const DaggerheartBooks = () => {
   }
 
   const updateBook = async () => {
-    const result = await changeBookRequest(appState.accessToken, 'daggerheart', bookForm.id, { brewery: bookForm, only_head: true });
+    const result = await changeBookRequest(appState.accessToken, 'dnd', bookForm.id, { brewery: bookForm, only_head: true });
 
     if (result.errors_list === undefined) {
       const newBooks = books().map((item) => {
@@ -129,7 +119,7 @@ export const DaggerheartBooks = () => {
   }
 
   const removeBook = async (book) => {
-    const result = await removeBookRequest(appState.accessToken, 'daggerheart', book.id);
+    const result = await removeBookRequest(appState.accessToken, 'dnd', book.id);
 
     if (result.errors_list === undefined) {
       setBooks(books().filter(({ id }) => id !== book.id ));
@@ -164,29 +154,13 @@ export const DaggerheartBooks = () => {
                   <p class="font-medium!">{TRANSLATION[locale()].official}</p>
                 </Show>
               </div>
-              <For each={['races', 'communities', 'classes', 'items', 'transformations', 'domains']}>
+              <For each={['items']}>
                 {(kind) =>
-                  <Show
-                    when={kind !== 'classes'}
-                    fallback={
-                      <Show when={Object.keys(book.items.classes).length > 0}>
-                        <div class="mb-4">
-                          <p class="font-medium! mb-2">{TRANSLATION[locale()][kind]}</p>
-                          <For each={Object.entries(book.items.classes)}>
-                            {([className, subclasses]) =>
-                              <p>{className} - {subclasses.join(', ')}</p>
-                            }
-                          </For>
-                        </div>
-                      </Show>
-                    }
-                  >
-                    <Show when={book.items[kind].length > 0}>
-                      <div class="mb-4">
-                        <p class="font-medium! mb-2">{TRANSLATION[locale()][kind]}</p>
-                        <p>{book.items[kind].join(', ')}</p>
-                      </div>
-                    </Show>
+                  <Show when={book.items[kind].length > 0}>
+                    <div class="mb-4">
+                      <p class="font-medium! mb-2">{TRANSLATION[locale()][kind]}</p>
+                      <p>{book.items[kind].join(', ')}</p>
+                    </div>
                   </Show>
                 }
               </For>
