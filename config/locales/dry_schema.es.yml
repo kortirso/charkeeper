@@ -1,213 +1,213 @@
 es:
   dry_schema:
     rules:
-      dnd5_character: D&D 5 character
-      pathfinder2_character: Pathfinder 2 character
-      daggerheart_character: Daggerheart character
+      dnd5_character: Personaje de D&D 5
+      pathfinder2_character: Personaje de Pathfinder 2
+      daggerheart_character: Peronaje de Daggerheart
     errors:
-      unexpected_key: Unknown param
-      included_in?: Unknown value
-      max_size?: Too long value
+      unexpected_key: Párametros desconocidos
+      included_in?: Valor desconocido
+      max_size?: Valor muy largo
       homebrew_book:
         rules:
           provider:
-            included_in?: Unknown value
+            included_in?: Valor desconocido
       daggerheart_rest:
         rules:
           options:
-            too_many_expectations: Select only 2 options
+            too_many_expectations: Seleccione solo 2 opciones
       campaign:
         rules:
           name:
-            filled?: Name can't be blank
-            max_size?: Name's size cannot be greater than 50
+            filled?: El nombre no puede estar en blanco
+            max_size?: El tamaño del nombre no puede ser más de 50
           provider:
-            filled?: Provider can't be blank
+            filled?: El proveedor no puede estar en blanco Provider
       homebrew_speciality:
         rules:
           name:
-            filled?: Name can't be blank
-            max_size?: Name's size cannot be greater than 50
+            filled?: El nombre no puede estar en blanco
+            max_size?: El tamaño del nombre no puede ser más de 50
           domains:
-            filled?: Domains can't be blank
-            only_two: Domains list should contain 2 values
+            filled?: Los Dominios no pueden estar en blanco
+            only_two: La lista de Dominios debería contener 2 valores
       homebrew_item:
         rules:
           name:
-            filled?: Name can't be blank
-            max_size?: Name's size cannot be greater than 50
+            filled?: El nombre no puede estar en blanco
+            max_size?: El tamaño del nombre no puede ser más de 50
           kind:
-            filled?: Kind can't be blank
+            filled?: El tipo no puede estar en blanco
       homebrew_feat:
         rules:
           title:
-            filled?: Title can't be blank
-            max_size?: Title's size cannot be greater than 50
+            filled?: El título no puede estar en blanco
+            max_size?: El tamaño del título no puede ser más de 50
           description:
-            filled?: Description can't be blank
-            max_size?: Description's size cannot be greater than 250
+            filled?: La descripción no puede estar en blanco
+            max_size?: El tamaño de la descripción no puede ser más de 250
           origin:
-            filled?: Origin can't be blank
-            included_in?: Unknown value of origin
-            not_found: Origin is not found
+            filled?: El origen no puede estar en blanco
+            included_in?: Valor de origen desconocido
+            not_found: El origen no fue encontrado
           origin_value:
-            filled?: Origin value can't be blank
+            filled?: El valor del origen no puede estar en blanco
           kind:
-            filled?: Kind can't be blank
+            filled?: El tipo no puede estar en blanco
           limit:
-            filled?: Limit can't be blank
+            filled?: El límite no puede estar en blanco
           limit_refresh:
-            filled?: Limit refresh can't be blank
+            filled?: La recarga del límite no puede estar en blanco
       homebrew_race:
         rules:
           name:
-            filled?: Name can't be blank
+            filled?: El nombre no puede estar en blanco
       homebrew_community:
         rules:
           name:
-            filled?: Name can't be blank
+            filled?: El nombre no puede estar en blanco
       character_companion:
         rules:
           character:
-            must_be_beastbound: Only ranger subclass beastbound can have companion
+            must_be_beastbound: Solo la subclase del Explorador, Vínculo bestial, puede tener un compañero
       character_item:
         rules:
           ready_to_use:
-            only_one: Active armor should be only 1
+            only_one: Solo debe haber una armadura activa
       character_bonus:
         rules:
           comment:
-            key?: Comment is required
-            filled?: Comment is required
+            key?: Se requiere el comentario
+            filled?: Se requiere el comentario
       user:
-        password_length: Password must be greater or equal %{length} characters
-        exists: Username already exists
-        invalid: Invalid credentials
+        password_length: La contraseña debe ser igual o mayor a %{length} caracteres
+        exists: El nombre de usuario ya existe
+        invalid: Credenciales invalidas
         rules:
           password:
-            filled?: Password can't be blank
-            min_size?: Password's size cannot be less than 10
+            filled?: La contraseña no puede estar en blanco
+            min_size?: El tamaño de la contraseña no puede tener menos de 10
           password_confirmation:
-            filled?: Password confirmation can't be blank
-            min_size?: Password confirmation's size cannot be less than 10
+            filled?: La confirmación de la contraseña no puede estar en blanco
+            min_size?: El tamaño de la confirmación de la contraseña no puede tener menos 10
           passwords:
-            different: Passwords must be equal
+            different: Las contraseñas deben coincidir
           username:
-            invalid: Username has invalid format
+            invalid: El nombre de usuario tiene un formado inválido
           locale:
-            filled?: Locale must be filled
-            included_in?: Invalid locale value
+            filled?: Locale debe ser completado
+            included_in?: Valor locale inválido
       dnd5_character:
         rules:
           name:
-            key?: Name is required
-            filled?: Name must be filled
+            key?: Se requiere un nombre
+            filled?: Se debe poner un nombre
           race:
-            key?: Race is required
-            filled?: Race must be filled
-            included_in?: Invalid race value
+            key?: Se requiere una raza
+            filled?: Se debe poner una raza
+            included_in?: Valor de raza inválido
           species:
-            key?: Species is required
-            filled?: Species must be filled
-            included_in?: Invalid species value
+            key?: Se requiere una especie
+            filled?: Se debe poner una especie
+            included_in?: Valor de especie inválido
           size:
-            key?: Size is required
-            filled?: Size must be filled
-            included_in?: Invalid size value
+            key?: Se requiere un tamaño
+            filled?: Se debe poner un tamaño
+            included_in?: Valor de tamaño inválido
           main_class:
-            key?: Class is required
-            filled?: Class must be filled
-            included_in?: Invalid class value
+            key?: Se requiere una clase
+            filled?: Se debe poner una clase
+            included_in?: Valor inválido de Cclase
           alignment:
-            key?: Alignment is required
-            filled?: Alignment must be filled
-            included_in?: Invalid Alignment value
+            key?: Se requiere un alineamiento
+            filled?: Se debe poner un alineamiento
+            included_in?: Valor de alineamiento inválido
           classes:
-            invalid_class_name: Invalid class name
-            invalid_level: Invalid level
+            invalid_class_name: Nombre de clase inválido
+            invalid_level: Nivel inválido
           subclasses:
-            invalid_class_name: Invalid class name
-            invalid_subclass: Invalid subclass name
+            invalid_class_name: Nombre de clase inválido
+            invalid_subclass: Nombre de subclase inválido
           energy:
-            invalid_class_name: Invalid class name
-            invalid_level: Invalid level
+            invalid_class_name: Nombre de clase inválido
+            invalid_level: Nivel inválido
           subrace:
-            invalid: Invalid subrace
+            invalid: Subraza inválida
           legacy:
-            invalid: Invalid legacy
+            invalid: Legado inválido
           abilities:
-            invalid_value: Ability value should be positive and less than 30
+            invalid_value: El valor de la habilidad debería ser positivo y menor que 30
           coins:
-            invalid_value: Coins values should not be negative
+            invalid_value: El valor de las monedas no debería ser negativo
           health:
-            invalid_value: Health values should not be negative
+            invalid_value: El valor de la salud no debería ser negativo
       pathfinder2_character:
         rules:
           name:
-            key?: Name is required
-            filled?: Name must be filled
+            key?: Se requiere un nombre
+            filled?: Se requiere un nombre
           race:
-            key?: Race is required
-            filled?: Race must be filled
-            included_in?: Invalid race value
+            key?: Se requiere una raza
+            filled?: Se debe poner una raza
+            included_in?: Valor de raza inválido
           main_class:
-            key?: Class is required
-            filled?: Class must be filled
-            included_in?: Invalid class value
+            key?: Se requiere una clase
+            filled?: Se debe poner una clase
+            included_in?: Valor de clase inválido
           classes:
-            invalid_class_name: Invalid class name
-            invalid_level: Invalid level
+            invalid_class_name: Nombre de clase inválido
+            invalid_level: Nivel inválido
           subrace:
-            invalid: Invalid subrace
+            invalid: Subraza inválido
           health:
-            invalid_value: Health values should not be negative
+            invalid_value: Los valores de vida no deberían ser negativos
       dc20_character:
         rules:
           name:
-            key?: Name is required
-            filled?: Name must be filled
+            key?: Se requiere un nombre
+            filled?: Se debe poner un nombre
           main_class:
-            key?: Class is required
-            filled?: Class must be filled
-            included_in?: Invalid class value
+            key?: Se requiere una clase
+            filled?: Se debe poner una clase
+            included_in?: valor de clase inválido
       daggerheart_character:
         rules:
           name:
-            key?: Name is required
-            filled?: Name must be filled
+            key?: Se requiere un nombre
+            filled?: Se debe poner un nombre
           community:
-            key?: Community is required
-            filled?: Community must be filled
+            key?: Se requiere una comunidad
+            filled?: Se debe poner una comunidad
           heritage:
-            key?: Heritage is required
-            filled?: Heritage must be filled
-            included_in?: Invalid heritage value
-            only_one_present: Too many heritages
-            at_least_one_present: Should be at least 1 heritage
+            key?: Se requiere una herencia
+            filled?: Se debe poner una herencia
+            included_in?: Valor de herencia inválido
+            only_one_present: Demasiadas herencias
+            at_least_one_present: Debería haber al menos 1 herencia
           heritage_features:
-            filled?: Heritage features must be filled
+            filled?: Se deben poner las características de la herencia
           heritage_name:
-            filled?: Heritage name must be filled
-            only_one_present: Too many heritages
-            at_least_one_present: Should be at least 1 heritage
+            filled?: Se debe poner el nombre de la herencia
+            only_one_present: Demasiadas herencias
+            at_least_one_present: Debería haber al menos 1 herencia
           main_class:
-            key?: Class is required
-            filled?: Class must be filled
-            included_in?: Invalid class value
+            key?: Se requiere la clase
+            filled?: Se debe poner la clase
+            included_in?: Valor de clase inválido
           subclass:
-            key?: Subclass is required
-            filled?: Subclass must be filled
-            invalid: Invalid subclass name
+            key?: Se requiere la subclase
+            filled?: Se debe poner la subclase
+            invalid: Nombre de subclase inválido
           classes:
-            invalid_class_name: Invalid class name
-            invalid_level: Invalid level
+            invalid_class_name: Nombre de clase inválido
+            invalid_level: Nivel inválido
           exp_name:
-            key?: Experience name is required
-            filled?: Experience name must be filled
+            key?: Se requiere nombre de la experiencia
+            filled?: Se debe poner el nombre de la experiencia
           exp_level:
-            key?: Experience level is required
-            filled?: Experience level must be filled
+            key?: Se requiere el nivel de la experiecia
+            filled?: Se debe poner el nivel de la experiencia
           avatar_file:
-            only_one_present: Too many avatars
+            only_one_present: Demasiados avatares
           avatar_url:
-            only_one_present: Too many avatars
+            only_one_present: Demasiados Avatares
