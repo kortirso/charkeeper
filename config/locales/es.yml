@@ -190,18 +190,18 @@ es:
         feature_6: Generación de hojas de personaje en PDF con los datos reales de tus personajes.
         work_on: Funciona en
         telegram: Mini app de Telegram
-        telegram_description: Simplemente inicia %{href} en Telegram messenger
+        telegram_description: Simplemente inicia la %{href} en Telegram messenger
         telegram_link: aplicación de vista web
         web: Aplicación web en navegadores
         web_description: Simplemente incia %{href}
         web_link: panel
         dashboard_link: Personajes
-        homebrews_link: Homebrews
+        homebrews_link: Creaciones personalizadas
         macos: Aplicación MacOS
-        macos_description: Simplemente descarga e inicia %{href}
+        macos_description: Simplemente descarga e inicia el %{href}
         macos_link: instalador
-        apk: Android aplicación
-        apk_description: Simplemente descarga e inicia %{href}
+        apk: Aplicación Android
+        apk_description: Simplemente descarga e inicia el %{href}
         apk_link: instalalador
         mobile_apps: Aplicaciones móviles para iOS y Android
         app_store: Además puedes instalar la aplicación a través de %{href} (para actualizaciones rápidas)
@@ -211,7 +211,7 @@ es:
           feature_1: Crea personajes de razas/clases estándar, utiliza razas mixtas o utiliza tus propias razas/clases/subclases para crear personajes totalmente personalizados.
           feature_2: Edita cualquier estadística, experiencia, equipamiento, cartas de dominio, niveles y clases.
           feature_3: Cálculo automático de posibles ataques en función del equipo.
-          feature_4: Gestión del compañero del Ranger y cálculo automático de las transformaciones de bestia del druida.
+          feature_4: Gestión del compañero del Explorador y cálculo automático de las transformaciones de bestia del Druida.
           feature_5: Tiene en cuenta las bonificaciones y penalizaciones.
           feature_6: Aplicar automáticamente los resultados de los efectos del tiempo de descanso.
         dnd:
@@ -231,14 +231,14 @@ es:
           feature_4: Fácil gestión de recursos.
           feature_5: Representación automática de las proezas disponibles con valores preestablecidos de daño y otras estadísticas de proezas.
         homebrews:
-          title: Sistema de gestión de creaciones propias
+          title: Sistema de gestión de creaciones personalizadas
           feature_1: Crea y comparte tus propias razas, clases, subclases y objetos.
-          feature_2: Combina tus creaciones propias en libros para compartirlas fácilmente con tus jugadores.
+          feature_2: Combina tus creaciones personalizadas en libros para compartirlas fácilmente con tus jugadores.
         bots:
           title: Integraciones de bots en Discord y Telegram
           feature_1: Gestión de campañas
           feature_2: Envío de resultados de tiradas
-          feature_3: Gestión de creaciones propias
+          feature_3: Gestión de creaciones personalizadas
           telegram: Para el bot de Telegram solo encuentra %{href} y añadelo a cualquiera de tus grupos
           telegram_link: usuario bot
           discord: Para el bot de Discord solo invita al bot por %{href} a alguno de tus canales
