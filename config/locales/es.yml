@@ -196,7 +196,7 @@ es:
         web_description: Simplemente incia %{href}
         web_link: panel
         dashboard_link: Personajes
-        homebrews_link: Creaciones personalizadas
+        homebrews_link: Homebrews
         macos: Aplicación MacOS
         macos_description: Simplemente descarga e inicia el %{href}
         macos_link: instalador
