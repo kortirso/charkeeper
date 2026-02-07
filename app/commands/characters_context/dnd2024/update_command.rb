@@ -187,7 +187,7 @@ module CharactersContext
 
           spells = ::Dnd2024::Feat.where(origin: 6).where('origin_values && ?', "{#{added_class}}").map do |feat|
             {
-              character_id: character.id,
+              character_id: input[:character].id,
               feat_id: feat.id,
               ready_to_use: false,
               value: { prepared_by: added_class }
