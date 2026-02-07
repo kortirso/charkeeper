@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - changing community for Daggerheart characters
 - projects for Daggerheart characters
 - creating homebrew items for D&D
+- Fate system integration
 
 ### Modified
 - blocks structure for Daggerheart characters

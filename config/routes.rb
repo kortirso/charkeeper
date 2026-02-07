@@ -123,6 +123,10 @@ Rails.application.routes.draw do
       end
     end
 
+    namespace :fate do
+      resources :characters, only: %i[create update]
+    end
+
     namespace :dc20 do
       resources :characters, only: %i[create update] do
         scope module: :characters do
