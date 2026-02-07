@@ -7,6 +7,7 @@ export * from './atoms/IconButton';
 export * from './atoms/Button';
 export * from './atoms/TextArea';
 export * from './atoms/Label';
+export * from './atoms/Text';
 
 export * from './molecules/Modal';
 export * from './molecules/StatsBlock';

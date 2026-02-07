@@ -1,7 +1,7 @@
 import { createSignal, createMemo, Switch, Match } from 'solid-js';
 import { createWindowSize } from '@solid-primitives/resize-observer';
 
-// import {  } from '../../../pages';
+import { FateAspects } from '../../../pages';
 import { CharacterNavigation, Notes, Avatar, ContentWrapper } from '../../../components';
 // import { useAppState, useAppLocale } from '../../../context';
 
@@ -30,7 +30,7 @@ export const Fate = (props) => {
         <div class="p-2 pb-16 flex-1 overflow-y-auto">
           <Switch>
             <Match when={activeMobileTab() === 'aspects'}>
-              
+              <FateAspects character={character()} />
             </Match>
             <Match when={activeMobileTab() === 'notes'}>
               <Notes />
@@ -49,6 +49,7 @@ export const Fate = (props) => {
 
     return (
       <>
+        <FateAspects character={character()} />
       </>
     );
   });

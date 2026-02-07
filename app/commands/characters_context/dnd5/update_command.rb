@@ -159,7 +159,9 @@ module CharactersContext
 
       def do_persist(input)
         input[:character].data =
-          input[:character].data.attributes.merge(input.except(:character, :avatar_file, :avatar_url, :name).stringify_keys)
+          input[:character].data.attributes.merge(
+            input.except(:character, :avatar_file, :avatar_url, :file, :name).stringify_keys
+          )
         input[:character].assign_attributes(input.slice(:name))
         input[:character].save!
 
