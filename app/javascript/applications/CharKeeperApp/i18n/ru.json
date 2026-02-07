@@ -252,7 +252,6 @@
   },
   "professionsPage": {
     "fightingFeats": "Боевые стили",
-    "languages": "Известные языки",
     "weaponCoreSkill": "Базовые оружейные навыки",
     "weaponSkills": "Оружейные навыки",
     "lightWeaponSkills": "Простое оружие",
@@ -297,20 +296,6 @@
       "chaotic_good": "Хаотично добрый",
       "chaotic_neutral": "Хаотично нейтральный",
       "chaotic_evil": "Хаотично злой"
-    },
-    "languages": {
-      "common": "Общий",
-      "dwarvish": "Дварфский",
-      "elvish": "Эльфийский",
-      "giant": "Великаний",
-      "gnomish": "Гномий",
-      "goblin": "Гоблинский",
-      "halfling": "Полуросликов",
-      "orc": "Орочий",
-      "draconic": "Драконий",
-      "undercommon": "Подземный",
-      "infernal": "Инфернальный",
-      "druidic": "Друидический"
     },
     "coreWeaponSkills": {
       "light": "Простое оружие",

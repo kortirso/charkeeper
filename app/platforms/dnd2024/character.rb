@@ -22,7 +22,7 @@ module Dnd2024
     attribute :selected_skills, array: true, default: {} # { 'history' => 1 }
     attribute :selected_features, array: true, default: {} # { 'fighting_style' => ['fighting_style_defense'] }
     attribute :selected_feats, array: true, default: []
-    attribute :languages, array: true
+    attribute :languages, array: true, default: []
     attribute :weapon_core_skills, array: true
     attribute :weapon_skills, array: true
     attribute :weapon_mastery, array: true, default: [] # Оружейные приёмы

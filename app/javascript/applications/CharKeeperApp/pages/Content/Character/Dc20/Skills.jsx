@@ -485,7 +485,7 @@ export const Dc20Skills = (props) => {
                     <Input
                       containerClassList="flex-1"
                       value={languageName()}
-                      onInput={(value) => setLanguageName(value)}
+                      onInput={setLanguageName}
                     />
                     <Button default textable onClick={saveLanguage}>{localize(TRANSLATION, locale())['add']}</Button>
                   </div>

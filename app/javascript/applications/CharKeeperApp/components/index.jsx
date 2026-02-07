@@ -32,5 +32,6 @@ export * from './substances/DiceRoll';
 export * from './substances/Conditions';
 export * from './substances/Combat';
 export * from './substances/Gold';
+export * from './substances/Languages';
 
 export * from './wrappers/Guide';

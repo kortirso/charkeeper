@@ -271,5 +271,19 @@
     "slow": { "name": { "en": "Slow", "ru": "Замедление" } },
     "topple": { "name": { "en": "Topple", "ru": "Опрокидывание" } },
     "vex": { "name": { "en": "Vex", "ru": "Подавление" } }
+  },
+  "languages": {
+    "common": { "name": { "en": "Common", "ru": "Общий", "es": "Común" } },
+    "dwarvish": { "name": { "en": "Dwarvish", "ru": "Дварфский", "es": "Enano" } },
+    "elvish": { "name": { "en": "Elvish", "ru": "Эльфийский", "es": "Élfico" } },
+    "giant": { "name": { "en": "Giant", "ru": "Великаний", "es": "Gigante" } },
+    "gnomish": { "name": { "en": "Gnomish", "ru": "Гномий", "es": "Gnomo" } },
+    "goblin": { "name": { "en": "Goblin", "ru": "Гоблинский", "es": "Goblin" } },
+    "halfling": { "name": { "en": "Halfling", "ru": "Полуросликов", "es": "Mediano" } },
+    "orc": { "name": { "en": "Orc", "ru": "Орочий", "es": "Orco" } },
+    "draconic": { "name": { "en": "Draconic", "ru": "Драконий", "es": "Draconico" } },
+    "undercommon": { "name": { "en": "Undercommon", "ru": "Подземный", "es": "Infracomún" } },
+    "infernal": { "name": { "en": "Infernal", "ru": "Инфернальный", "es": "Infernal" } },
+    "druidic": { "name": { "en": "Druidic", "ru": "Друидический", "es": "Druidico" } }
   }
 }
