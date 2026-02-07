@@ -3,7 +3,7 @@
 module PlatformConfig
   extend self
 
-  def data(provider, version: '0.4.5/v2')
+  def data(provider, version: '0.4.5/v3')
     Rails.cache.fetch("#{provider}/#{version}") { load_data(provider) }
   end
 

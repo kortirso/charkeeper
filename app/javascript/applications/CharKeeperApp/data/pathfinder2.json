@@ -265,5 +265,17 @@
         "ru": "Любая обычная местность считается для вас пересечённой местностью. Вы автоматически критически проваливаете проверки Внимания, требующие зрения, и если зрение было вашим единственным точным способом восприятия, вы получаете штраф состояния -4 к проверкам Внимания. Вы невосприимчивы к эффектам с дескриптором Зрение."
       }
     }
+  },
+  "languages": {
+    "common": { "name": { "en": "Common", "ru": "Всеобщий", "es": "Común" } },
+    "dwarven": { "name": { "en": "Dwarven", "ru": "Дварфийский", "es": "Enano" } },
+    "elven": { "name": { "en": "Elven", "ru": "Эльфийский", "es": "Élfico" } },
+    "gnomish": { "name": { "en": "Gnomish", "ru": "Гномий", "es": "Gnomo" } },
+    "goblin": { "name": { "en": "Goblin", "ru": "Гоблинский", "es": "Goblin" } },
+    "orcish": { "name": { "en": "Orcish", "ru": "Орочий", "es": "Orco" } },
+    "fey": { "name": { "en": "Fey", "ru": "Язык фей", "es": "" } },
+    "halfling": { "name": { "en": "Halfling", "ru": "Полуросличий", "es": "Mediano" } },
+    "draconic": { "name": { "en": "Draconic", "ru": "Драконий", "es": "Draconico" } },
+    "undercommon": { "name": { "en": "Undercommon", "ru": "Подземный", "es": "Infracomún" } }
   }
 }

@@ -252,7 +252,6 @@
   },
   "professionsPage": {
     "fightingFeats": "Estilo de pelea",
-    "languages": "Languajes",
     "weaponCoreSkill": "Habilidades esenciales con armas",
     "weaponSkills": "Habilidades del arma",
     "lightWeaponSkills": "Arma ligera",
@@ -297,20 +296,6 @@
       "chaotic_good": "Caótico bueno",
       "chaotic_neutral": "Caótico neutral",
       "chaotic_evil": "Caótico malvado"
-    },
-    "languages": {
-      "common": "Común",
-      "dwarvish": "Enano",
-      "elvish": "Élfico",
-      "giant": "Gigante",
-      "gnomish": "Gnomo",
-      "goblin": "Goblin",
-      "halfling": "Mediano",
-      "orc": "Orco",
-      "draconic": "Draconico",
-      "undercommon": "Infracomún",
-      "infernal": "Infernal",
-      "druidic": "Druidico"
     },
     "coreWeaponSkills": {
       "light": "Arma ligera",

@@ -8,7 +8,7 @@ module Pathfinder2Character
       def call(result:)
         result[:speed] = 25
         result[:health] = 8
-        result[:languages] = result[:languages].split(', ').concat(LANGUAGES).uniq.join(', ')
+        result[:languages] = result[:languages].concat(LANGUAGES).uniq
         result[:ability_boosts].merge!({ free: 2 }) { |_, oldval, newval| oldval + newval }
 
         result[:ability_boosts_v2][:race] = { free: 2 }

@@ -35,7 +35,7 @@ module CharactersContext
             required(:temp).filled(:integer)
           end
           optional(:dying_condition_value).filled(:integer)
-          optional(:languages).filled(:string)
+          optional(:languages).maybe(:array).each(:string)
           optional(:saving_throws).hash do
             required(:fortitude).filled(:integer)
             required(:reflex).filled(:integer)

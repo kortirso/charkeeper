@@ -16,7 +16,6 @@ module CharactersContext
       ].freeze
       WEAPON_CORE_SKILLS = %w[light martial].freeze
       ARMOR_PROFICIENCY = %w[light medium heavy shield].freeze
-      LANGUAGES = %w[common dwarvish elvish giant gnomish goblin halfling orc draconic undercommon infernal druidic].freeze
       DAMAGE_TYPES = %w[
         bludge pierce slash acid cold fire force lighting necrotic
         poison psychic radiant thunder
@@ -60,7 +59,7 @@ module CharactersContext
             included_in?: ::Dnd5::Item.where(kind: %w[light martial]).pluck(:slug).sort
           )
           optional(:armor_proficiency).value(:array).each(included_in?: ARMOR_PROFICIENCY)
-          optional(:languages).value(:array).each(included_in?: LANGUAGES)
+          optional(:languages).value(:array).each(:string)
           optional(:spent_spell_slots).hash
           optional(:spent_hit_dice).hash
           optional(:tools).value(:array).each(:string)

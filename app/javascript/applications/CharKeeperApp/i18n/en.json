@@ -252,7 +252,6 @@
   },
   "professionsPage": {
     "fightingFeats": "Fighting style",
-    "languages": "Languages",
     "weaponCoreSkill": "Weapon core skills",
     "weaponSkills": "Weapon skills",
     "lightWeaponSkills": "Light weapon",
@@ -297,20 +296,6 @@
       "chaotic_good": "Chaotic good",
       "chaotic_neutral": "Chaotic neutral",
       "chaotic_evil": "Chaotic evil"
-    },
-    "languages": {
-      "common": "Common",
-      "dwarvish": "Dwarvish",
-      "elvish": "Elvish",
-      "giant": "Giant",
-      "gnomish": "Gnomish",
-      "goblin": "Goblin",
-      "halfling": "Halfling",
-      "orc": "Orc",
-      "draconic": "Draconic",
-      "undercommon": "Undercommon",
-      "infernal": "Infernal",
-      "druidic": "Druidic"
     },
     "coreWeaponSkills": {
       "light": "Light Weapon",

@@ -17,7 +17,7 @@ module Dnd5
     attribute :speed, :integer
     attribute :selected_skills, array: true, default: [] # ['history']
     attribute :selected_feats, array: true, default: {} # { 'fighting_style' => ['fighting_style_defense'] }
-    attribute :languages, array: true
+    attribute :languages, array: true, default: []
     attribute :weapon_core_skills, array: true
     attribute :weapon_skills, array: true
     attribute :armor_proficiency, array: true
