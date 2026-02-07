@@ -85,6 +85,7 @@ export * from './Content/Character/Dc20/Rest';
 export * from './Content/Character/Dc20/Bonuses';
 
 export * from './Content/Character/Fate';
+export * from './Content/Character/Fate/Aspects';
 
 export * from './Navigation/Characters/ListItem';
 export * from './Navigation/Characters/CharacterForm';

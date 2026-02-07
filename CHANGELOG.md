@@ -11,6 +11,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - projects for Daggerheart characters
 - creating homebrew items for D&D
 - Fate system integration
+- aspects management for Fate characters
 
 ### Modified
 - blocks structure for Daggerheart characters
