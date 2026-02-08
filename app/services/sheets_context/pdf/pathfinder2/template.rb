@@ -13,14 +13,14 @@ module SheetsContext
           fill_color 'FFFFFF'
           %w[str dex con int wis cha].each_with_index do |item, index|
             ability_name = translate(abilities_names[item]['name'])
-            text_box ability_name, at: [233 + (55 * index), 736], width: 43, align: :center
+            text_box ability_name, at: [233 + (55 * index), 737], width: 43, align: :center
           end
 
           saving_throws = ::Pathfinder2::Character.saving_throws
           font_size 5
           %w[fortitude reflex will].each_with_index do |item, index|
             saving_throw = translate(saving_throws[item]['name'])
-            text_box saving_throw, at: [365 + (54 * index), 599.5], width: 36, align: :center
+            text_box saving_throw, at: [365 + (54 * index), 600], width: 36, align: :center
           end
 
           text_box I18n.t('services.sheets_context.pathfinder.armor_class'), at: [48, 700], width: 43, align: :center
@@ -31,17 +31,17 @@ module SheetsContext
           fill_color '000000'
           %w[str dex con int wis cha].each_with_index do |item, index|
             value = "#{'+' if character.abilities[item].positive?}#{character.abilities[item]}"
-            text_box value, at: [242 + (index * 55), 718], width: 25, height: 14, align: :center
+            text_box value, at: [242 + (index * 55), 719], width: 25, align: :center
           end
 
           %w[fortitude reflex will].each_with_index do |item, index|
             value = "#{'+' if character.saving_throws_value[item.to_sym].positive?}#{character.saving_throws_value[item.to_sym]}"
-            text_box value, at: [368 + (index * 54), 620], width: 30, height: 14, align: :center
+            text_box value, at: [368 + (index * 54), 621], width: 30, align: :center
           end
 
-          text_box character.armor_class.to_s, at: [51, 722], width: 37, height: 14, align: :center
-          text_box "+#{character.perception}", at: [104, 722], width: 37, height: 14, align: :center
-          text_box character.speed.to_s, at: [157, 722], width: 37, height: 14, align: :center
+          text_box character.armor_class.to_s, at: [51, 722], width: 37, align: :center
+          text_box "+#{character.perception}", at: [104, 722], width: 37, align: :center
+          text_box character.speed.to_s, at: [157, 722], width: 37, align: :center
 
           font_size 16
           text_box character.health['current'].to_s, at: [30, 624], width: 70, align: :center
@@ -56,13 +56,13 @@ module SheetsContext
             skill[:name] = skill[:name] || translate(skills_names[skill[:slug]]['name'])
             skill
           }.sort_by { |item| item[:name] }.each_with_index do |skill, index| # rubocop: disable Style/MultilineBlockChain
-            text_box skill[:name], at: [52, 511 - (index * 20)], width: 140
-            text_box "#{'+' if skill[:modifier].positive?}#{skill[:modifier]}", at: [200, 511 - (index * 20)], width: 38, align: :center
+            text_box skill[:name], at: [52, 512 - (index * 20)], width: 140
+            text_box "#{'+' if skill[:modifier].positive?}#{skill[:modifier]}", at: [200, 513 - (index * 20)], width: 38, align: :center
           end
 
-          text_box I18n.t('services.sheets_context.dnd.health'), at: [70, 659], width: 150, align: :center
-          text_box I18n.t('services.sheets_context.dnd.saving_throws'), at: [346, 659], width: 175, align: :center
-          text_box I18n.t('services.sheets_context.dnd.skills'), at: [70, 538], width: 150, align: :center
+          text_box I18n.t('services.sheets_context.dnd.health'), at: [70, 660], width: 150, align: :center
+          text_box I18n.t('services.sheets_context.dnd.saving_throws'), at: [365, 660], width: 145, align: :center
+          text_box I18n.t('services.sheets_context.dnd.skills'), at: [70, 539], width: 150, align: :center
 
           font_size 6
           text_box I18n.t('services.sheets_context.dnd.current_health').upcase, at: [30, 600], width: 70, align: :center

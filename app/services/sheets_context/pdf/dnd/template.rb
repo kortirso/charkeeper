@@ -19,10 +19,10 @@ module SheetsContext
             ability_name = translate(abilities_names[item]['name'])
 
             font_size 6
-            text_box ability_name, at: [233 + (55 * index), 736], width: 43, align: :center
+            text_box ability_name, at: [233 + (55 * index), 737], width: 43, align: :center
 
             font_size 5
-            text_box ability_name, at: [311 + (42 * index), 599.5], width: 36, align: :center
+            text_box ability_name, at: [311 + (42 * index), 600], width: 36, align: :center
           end
 
           text_box I18n.t('services.sheets_context.dnd.armor_class'), at: [48, 700], width: 43, align: :center
@@ -33,36 +33,36 @@ module SheetsContext
           %w[str dex con int wis cha].each_with_index do |item, index|
             font_size 12
             value = "#{'+' if character.modifiers[item].positive?}#{character.modifiers[item]}"
-            text_box value, at: [242 + (index * 55), 720], width: 25, height: 14, align: :center
+            text_box value, at: [242 + (index * 55), 721], width: 25, align: :center
 
             font_size 10
-            text_box character.modified_abilities[item].to_s, at: [245.5 + (index * 55), 699], width: 18, height: 14, align: :center
+            text_box character.modified_abilities[item].to_s, at: [245.5 + (index * 55), 700], width: 18, align: :center
 
             font_size 12
             value = "#{'+' if character.save_dc[item].positive?}#{character.save_dc[item]}"
-            text_box value, at: [314 + (index * 42), 620], width: 30, height: 14, align: :center
+            text_box value, at: [314 + (index * 42), 621], width: 30, align: :center
           end
 
           font_size 12
-          text_box character.armor_class.to_s, at: [51, 722], width: 37, height: 14, align: :center
-          text_box "#{'+' if character.initiative.positive?}#{character.initiative}", at: [104, 722], width: 37, height: 14, align: :center
-          text_box character.speed.to_s, at: [157, 722], width: 37, height: 14, align: :center
+          text_box character.armor_class.to_s, at: [51, 723], width: 37, align: :center
+          text_box "#{'+' if character.initiative.positive?}#{character.initiative}", at: [104, 723], width: 37, align: :center
+          text_box character.speed.to_s, at: [157, 723], width: 37, align: :center
 
           font_size 16
-          text_box character.health['current'].to_s, at: [30, 624], width: 70, align: :center
-          text_box character.health['max'].to_s, at: [110, 624], width: 70, align: :center
-          text_box character.health['temp'].to_s, at: [190, 624], width: 70, align: :center
+          text_box character.health['current'].to_s, at: [30, 625], width: 70, align: :center
+          text_box character.health['max'].to_s, at: [110, 625], width: 70, align: :center
+          text_box character.health['temp'].to_s, at: [190, 625], width: 70, align: :center
 
           font_size 8
-          text_box 'd6', at: [50, 576], width: 40
-          text_box 'd8', at: [50, 561], width: 40
-          text_box 'd10', at: [50, 546], width: 40
-          text_box 'd12', at: [50, 531], width: 40
+          text_box 'd6', at: [50, 577], width: 40
+          text_box 'd8', at: [50, 562], width: 40
+          text_box 'd10', at: [50, 547], width: 40
+          text_box 'd12', at: [50, 532], width: 40
 
-          text_box "#{character.hit_dice['6'] - character.spent_hit_dice['6'].to_i} / #{character.hit_dice['6']}", at: [100, 576], width: 40
-          text_box "#{character.hit_dice['8'] - character.spent_hit_dice['8'].to_i} / #{character.hit_dice['8']}", at: [100, 561], width: 40
-          text_box "#{character.hit_dice['10'] - character.spent_hit_dice['10'].to_i} / #{character.hit_dice['10']}", at: [100, 546], width: 40
-          text_box "#{character.hit_dice['12'] - character.spent_hit_dice['12'].to_i} / #{character.hit_dice['12']}", at: [100, 531], width: 40
+          text_box "#{character.hit_dice['6'] - character.spent_hit_dice['6'].to_i} / #{character.hit_dice['6']}", at: [100, 577], width: 40
+          text_box "#{character.hit_dice['8'] - character.spent_hit_dice['8'].to_i} / #{character.hit_dice['8']}", at: [100, 562], width: 40
+          text_box "#{character.hit_dice['10'] - character.spent_hit_dice['10'].to_i} / #{character.hit_dice['10']}", at: [100, 547], width: 40
+          text_box "#{character.hit_dice['12'] - character.spent_hit_dice['12'].to_i} / #{character.hit_dice['12']}", at: [100, 532], width: 40
 
           font_size 10
           fill_color '000000'
@@ -71,8 +71,8 @@ module SheetsContext
             skill[:name] = translate(skills_names[skill[:slug]]['name'])
             skill
           }.sort_by { |item| item[:name] }.each_with_index do |skill, index| # rubocop: disable Style/MultilineBlockChain
-            text_box skill[:name], at: [52, 467 - (index * 20)], width: 140
-            text_box "#{'+' if skill[:modifier].positive?}#{skill[:modifier]}", at: [200, 467 - (index * 20)], width: 38, align: :center
+            text_box skill[:name], at: [52, 468 - (index * 20)], width: 140
+            text_box "#{'+' if skill[:modifier].positive?}#{skill[:modifier]}", at: [200, 469 - (index * 20)], width: 38, align: :center
           end
 
           font_size 4
@@ -104,19 +104,19 @@ module SheetsContext
           end
 
           font_size 10
-          text_box I18n.t('services.sheets_context.dnd.health'), at: [70, 659], width: 150, align: :center
-          text_box I18n.t('services.sheets_context.dnd.saving_throws'), at: [346, 659], width: 175, align: :center
-          text_box I18n.t('services.sheets_context.dnd.skills'), at: [70, 494], width: 150, align: :center
-          text_box I18n.t('services.sheets_context.dnd.attacks'), at: [346, 564], width: 175, align: :center
+          text_box I18n.t('services.sheets_context.dnd.health'), at: [70, 660], width: 150, align: :center
+          text_box I18n.t('services.sheets_context.dnd.saving_throws'), at: [346, 660], width: 175, align: :center
+          text_box I18n.t('services.sheets_context.dnd.skills'), at: [70, 495], width: 150, align: :center
+          text_box I18n.t('services.sheets_context.dnd.attacks'), at: [346, 565], width: 175, align: :center
 
           font_size 6
-          text_box I18n.t('services.sheets_context.dnd.current_health').upcase, at: [30, 600], width: 70, align: :center
-          text_box I18n.t('services.sheets_context.dnd.max_health').upcase, at: [110, 600], width: 70, align: :center
-          text_box I18n.t('services.sheets_context.dnd.temp_health').upcase, at: [190, 600], width: 70, align: :center
+          text_box I18n.t('services.sheets_context.dnd.current_health').upcase, at: [30, 601], width: 70, align: :center
+          text_box I18n.t('services.sheets_context.dnd.max_health').upcase, at: [110, 601], width: 70, align: :center
+          text_box I18n.t('services.sheets_context.dnd.temp_health').upcase, at: [190, 601], width: 70, align: :center
 
           font_size 8
-          text_box I18n.t('services.sheets_context.dnd.success'), at: [168, 576], width: 40
-          text_box I18n.t('services.sheets_context.dnd.failure'), at: [168, 561], width: 40
+          text_box I18n.t('services.sheets_context.dnd.success'), at: [168, 577], width: 40
+          text_box I18n.t('services.sheets_context.dnd.failure'), at: [168, 562], width: 40
 
           fill_color 'C6515C'
           character.death_saving_throws['success'].times do |index|
@@ -131,11 +131,11 @@ module SheetsContext
           %w[copper silver gold].each_with_index do |key, index|
             font_size 6
             fill_color 'FFFFFF'
-            text_box I18n.t("services.sheets_context.gold.#{key}"), at: [75 + (index * 59), 759], width: 48, align: :center
+            text_box I18n.t("services.sheets_context.gold.#{key}"), at: [75 + (index * 59), 760], width: 48, align: :center
 
             font_size 12
             fill_color '000000'
-            text_box character.coins[key].to_s, at: [78 + (index * 59), 781], width: 42, height: 14, align: :center
+            text_box character.coins[key].to_s, at: [78 + (index * 59), 782], width: 42, align: :center
           end
 
           render_features_page(character, phtml: phtml)
@@ -144,7 +144,7 @@ module SheetsContext
 
           font_size 10
           fill_color '000000'
-          text_box I18n.t('services.sheets_context.spells'), at: [210, 818], width: 175, align: :center
+          text_box I18n.t('services.sheets_context.spells'), at: [210, 819], width: 175, align: :center
 
           font_size 8
           text_box I18n.t('services.sheets_context.slots'), at: [352, 784], width: 150, align: :center
@@ -199,10 +199,10 @@ module SheetsContext
                 prepared_by = spell_ids.dig(spell.id, 'prepared_by')&.to_sym
 
                 font_size 6
-                text_box spell.info['level'].to_s, at: [47, 679 - (index * 22)], width: 10, height: 14 if spell.info['level'].positive?
+                text_box spell.info['level'].to_s, at: [47, 680 - (index * 22)], width: 10, height: 14 if spell.info['level'].positive?
 
                 font_size 8
-                text_box translate(spell.title), at: [62, 681 - (index * 22)], width: 140, height: 14
+                text_box translate(spell.title), at: [62, 682 - (index * 22)], width: 140, height: 14
 
                 font_size 6
                 values = []
