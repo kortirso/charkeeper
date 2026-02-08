@@ -2,7 +2,7 @@ import { createSignal, createMemo, Switch, Match } from 'solid-js';
 import { createWindowSize } from '@solid-primitives/resize-observer';
 
 import { FateAspects, FateSkills } from '../../../pages';
-import { CharacterNavigation, Notes, Avatar, ContentWrapper } from '../../../components';
+import { CharacterNavigation, Notes, Avatar, ContentWrapper, createFateDiceRoll } from '../../../components';
 
 export const Fate = (props) => {
   const size = createWindowSize();
@@ -10,6 +10,8 @@ export const Fate = (props) => {
 
   const [activeMobileTab, setActiveMobileTab] = createSignal('aspects');
   const [activeTab, setActiveTab] = createSignal('skills');
+
+  const { DiceRoll, openDiceRoll } = createFateDiceRoll();
 
   const characterTabs = createMemo(() => {
     return ['skills', 'notes', 'avatar'];
@@ -31,7 +33,7 @@ export const Fate = (props) => {
               <FateAspects character={character()} />
             </Match>
             <Match when={activeMobileTab() === 'skills'}>
-              <FateSkills character={character()} onReplaceCharacter={props.onReplaceCharacter} />
+              <FateSkills character={character()} openDiceRoll={openDiceRoll} onReplaceCharacter={props.onReplaceCharacter} />
             </Match>
             <Match when={activeMobileTab() === 'notes'}>
               <Notes />
@@ -68,7 +70,7 @@ export const Fate = (props) => {
         <div class="p-2 pb-16 flex-1">
           <Switch>
             <Match when={activeTab() === 'skills'}>
-              <FateSkills character={character()} onReplaceCharacter={props.onReplaceCharacter} />
+              <FateSkills character={character()} openDiceRoll={openDiceRoll} onReplaceCharacter={props.onReplaceCharacter} />
             </Match>
             <Match when={activeTab() === 'notes'}>
               <Notes />
@@ -85,6 +87,7 @@ export const Fate = (props) => {
   return (
     <>
       <ContentWrapper mobileView={mobileView()} leftView={leftView()} rightView={rightView()} />
+      <DiceRoll characterId={character().id} />
     </>
   );
 }

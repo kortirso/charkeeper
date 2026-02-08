@@ -151,6 +151,8 @@ en:
             with_fear: "%{result} with fear"
             attr: makes an %{attr} check
             attack: makes an attack check with %{target}
+          fate:
+            skill: makes an %{attr} skill check
         roll:
           result: Result
           total: Total

@@ -14,6 +14,8 @@ module BotContext
           BotContext::Commands::Checks::Daggerheart.new.call(character: data[:character], arguments: arguments)
         when 'Dc20::Character'
           BotContext::Commands::Checks::Dc20.new.call(character: data[:character], arguments: arguments)
+        when 'Fate::Character'
+          BotContext::Commands::Checks::Fate.new.call(character: data[:character], arguments: arguments)
         end
       end
     end

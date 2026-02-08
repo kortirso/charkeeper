@@ -141,16 +141,18 @@ es:
             crit_success: Éxito crítico
             crit_failure: Fallo crítico
             success: "%{result}"
-            attr: Hace una tirada de, %{attr}
-            save: Have una tirada de salvación de, %{attr}
-            skill: Hace una tirada de habilidad de, %{attr}
-            attack: Hace una tirada de ataque con, %{target}
+            attr: hace una tirada de, %{attr}
+            save: have una tirada de salvación de, %{attr}
+            skill: hace una tirada de habilidad de, %{attr}
+            attack: hace una tirada de ataque con, %{target}
           daggerheart:
             crit_success: Éxito crítico
             with_hope: "%{result} con esperanza"
             with_fear: "%{result} con miedo"
-            attr: Hace una tirada de %{attr}
-            attack: Hace una tirada de ataque con, %{target}
+            attr: hace una tirada de %{attr}
+            attack: hace una tirada de ataque con, %{target}
+          fate:
+            skill: hace una tirada de habilidad de, %{attr}
         roll:
           result: Resultado
           total: Total

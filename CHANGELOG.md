@@ -13,6 +13,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Fate system integration
 - aspects management for Fate characters
 - core skills management for Fate characters
+- fate dice rolls
 
 ### Modified
 - blocks structure for Daggerheart characters

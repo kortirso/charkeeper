@@ -7,7 +7,8 @@ module CampaignsContext
       'Dnd2024::Character' => 'dnd2024',
       'Daggerheart::Character' => 'daggerheart',
       'Pathfinder2::Character' => 'pathfinder2',
-      'Dc20::Character' => 'dc20'
+      'Dc20::Character' => 'dc20',
+      'Fate::Character' => 'fate'
     }.freeze
 
     use_contract do
