@@ -151,6 +151,8 @@ ru:
             with_fear: "%{result} со страхом"
             attr: делает проверку атрибута %{attr}
             attack: делает проверку атаки, %{target}
+          fate:
+            skill: делает проверку навыка, %{attr}
         roll:
           result: Результат
           total: Сумма

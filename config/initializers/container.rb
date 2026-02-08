@@ -22,6 +22,7 @@ module Charkeeper
     register('to_bool') { ToBool.new }
     register('roll') { Roll.new }
     register('duality_roll') { DualityRoll.new }
+    register('rolls.fate') { Rolls::Fate.new }
     register('formula') { Formula.new }
     register('monitoring.providers.rails') { Monitoring::Providers::Rails.new }
     register('monitoring.client') { Monitoring::Client.new }
@@ -223,6 +224,8 @@ module Charkeeper
     register('services.bot_context.commands.check') { BotContext::Commands::Check.new }
     register('services.bot_context.commands.campaign') { BotContext::Commands::Campaign.new }
     register('services.bot_context.commands.character') { BotContext::Commands::Character.new }
+
+    register('services.bot_context.commands.rolls.fate') { BotContext::Commands::Rolls::Fate.new }
 
     register('services.bot_context.represent_command') { BotContext::RepresentCommandService.new }
     register('services.bot_context.represent_raw_command') { BotContext::RepresentRawCommandService.new }

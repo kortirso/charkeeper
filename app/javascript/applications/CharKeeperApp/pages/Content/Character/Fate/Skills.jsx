@@ -39,6 +39,7 @@ export const FateSkills = (props) => {
       <Match when={character().skills_system === 'core'}>
         <FateCoreSkills
           character={character()}
+          openDiceRoll={props.openDiceRoll}
           selectedSkills={selectedSkills()}
           setSelectedSkills={setSelectedSkills}
           updateCharacter={updateCharacter}

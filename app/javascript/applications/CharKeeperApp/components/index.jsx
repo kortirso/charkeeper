@@ -23,6 +23,8 @@ export * from './molecules/Dice';
 export * from './molecules/DualityDice';
 export * from './molecules/Loading';
 
+export * from './rolls/Fate';
+
 export * from './substances/Avatar';
 export * from './substances/Notes';
 export * from './substances/SharedBonuses';

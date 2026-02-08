@@ -1,38 +1,39 @@
 import { createSignal, For, Show, batch } from 'solid-js';
 
-import { EditWrapper, Levelbox, Label } from '../../../../../components';
+import { EditWrapper, Levelbox, Label, Dice } from '../../../../../components';
 import { useAppLocale } from '../../../../../context';
 import config from '../../../../../data/fate.json';
+import { modifier } from '../../../../../helpers';
 
 const TRANSLATION = {
   en: {
     title: 'Skills',
     ladder: {
-      superb: 'Superb +5',
-      great: 'Great +4',
-      good: 'Good +3',
-      fair: 'Fair +2',
-      average: 'Average +1'
+      superb: 'Superb',
+      great: 'Great',
+      good: 'Good',
+      fair: 'Fair',
+      average: 'Average'
     }
   },
   ru: {
     title: 'Навыки',
     ladder: {
-      superb: 'Великолепный +5',
-      great: 'Отличный +4',
-      good: 'Хороший +3',
-      fair: 'Неплохой +2',
-      average: 'Средний +1'
+      superb: 'Великолепный',
+      great: 'Отличный',
+      good: 'Хороший',
+      fair: 'Неплохой',
+      average: 'Средний'
     }
   },
   es: {
     title: 'Skills',
     ladder: {
-      superb: 'Superb +5',
-      great: 'Great +4',
-      good: 'Good +3',
-      fair: 'Fair +2',
-      average: 'Average +1'
+      superb: 'Superb',
+      great: 'Great',
+      good: 'Good',
+      fair: 'Fair',
+      average: 'Average'
     }
   }
 }
@@ -81,9 +82,16 @@ export const FateCoreSkills = (props) => {
                   <Label labelText={TRANSLATION[locale()].ladder[ladder]} labelClassList="text-xs!" />
                   <div class="flex items-center gap-x-2 flex-wrap mt-1">
                     <For each={Object.entries(character().selected_skills).filter(([, value]) => value === parseInt(level))}>
-                      {([slug]) =>
-                        <p class="tag">
+                      {([slug, value]) =>
+                        <p class="flex items-center gap-x-2 p-2">
                           {config.skills[slug].name[locale()]}
+                          <Dice
+                            width="24"
+                            height="24"
+                            text={modifier(value)}
+                            textClassList=""
+                            onClick={() => props.openDiceRoll(`/check skill ${slug}`, character().selected_skills[slug])}
+                          />
                         </p>
                       }
                     </For>
