@@ -1,0 +1,22 @@
+{
+  "skills": {
+    "athletics": { "name": { "en": "Athletics", "ru": "Атлетика" } },
+    "burglary": { "name": { "en": "Burglary", "ru": "Воровство" } },
+    "contacts": { "name": { "en": "Contacts", "ru": "Контакты" } },
+    "crafts": { "name": { "en": "Crafts", "ru": "Ремесло" } },
+    "deceive": { "name": { "en": "Deceive", "ru": "Обман" } },
+    "drive": { "name": { "en": "Drive", "ru": "Вождение" } },
+    "empathy": { "name": { "en": "Empathy", "ru": "Эмпатия" } },
+    "fight": { "name": { "en": "Fight", "ru": "Драка" } },
+    "investigate": { "name": { "en": "Investigate", "ru": "Расследование" } },
+    "lore": { "name": { "en": "Lore", "ru": "Знания" } },
+    "notice": { "name": { "en": "Notice", "ru": "Внимательность" } },
+    "physique": { "name": { "en": "Physique", "ru": "Телосложение" } },
+    "provoke": { "name": { "en": "Provoke", "ru": "Провокация" } },
+    "rapport": { "name": { "en": "Rapport", "ru": "Взаимопонимание" } },
+    "resources": { "name": { "en": "Resources", "ru": "Ресурсы" } },
+    "shoot": { "name": { "en": "Shoot", "ru": "Стрельба" } },
+    "stealth": { "name": { "en": "Stealth", "ru": "Скрытность" } },
+    "will": { "name": { "en": "Will", "ru": "Воля" } }
+  }
+}

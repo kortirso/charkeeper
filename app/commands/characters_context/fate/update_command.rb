@@ -23,6 +23,7 @@ module CharactersContext
             required(:b).maybe(:string, max_size?: 1000)
             required(:c).maybe(:string, max_size?: 1000)
           end
+          optional(:selected_skills).hash
           optional(:file)
         end
       end

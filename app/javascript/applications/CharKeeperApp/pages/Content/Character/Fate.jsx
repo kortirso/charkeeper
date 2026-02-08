@@ -1,20 +1,18 @@
 import { createSignal, createMemo, Switch, Match } from 'solid-js';
 import { createWindowSize } from '@solid-primitives/resize-observer';
 
-import { FateAspects } from '../../../pages';
+import { FateAspects, FateSkills } from '../../../pages';
 import { CharacterNavigation, Notes, Avatar, ContentWrapper } from '../../../components';
-// import { useAppState, useAppLocale } from '../../../context';
 
 export const Fate = (props) => {
   const size = createWindowSize();
   const character = () => props.character;
 
-  // page state
   const [activeMobileTab, setActiveMobileTab] = createSignal('aspects');
-  const [activeTab, setActiveTab] = createSignal('notes');
+  const [activeTab, setActiveTab] = createSignal('skills');
 
   const characterTabs = createMemo(() => {
-    return ['notes', 'avatar'];
+    return ['skills', 'notes', 'avatar'];
   });
 
   const mobileView = createMemo(() => {
@@ -31,6 +29,9 @@ export const Fate = (props) => {
           <Switch>
             <Match when={activeMobileTab() === 'aspects'}>
               <FateAspects character={character()} />
+            </Match>
+            <Match when={activeMobileTab() === 'skills'}>
+              <FateSkills character={character()} onReplaceCharacter={props.onReplaceCharacter} />
             </Match>
             <Match when={activeMobileTab() === 'notes'}>
               <Notes />
@@ -66,6 +67,9 @@ export const Fate = (props) => {
         />
         <div class="p-2 pb-16 flex-1">
           <Switch>
+            <Match when={activeTab() === 'skills'}>
+              <FateSkills character={character()} onReplaceCharacter={props.onReplaceCharacter} />
+            </Match>
             <Match when={activeTab() === 'notes'}>
               <Notes />
             </Match>

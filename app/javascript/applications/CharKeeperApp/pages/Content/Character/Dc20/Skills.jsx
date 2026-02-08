@@ -334,7 +334,7 @@ export const Dc20Skills = (props) => {
               onSaveChanges={updateCharacterSkills}
             >
               <div class="blockable p-4 mb-2">
-                <p class="text-lg dark:text-snow mb-2">{localize(TRANSLATION, locale())['skills']}</p>
+                <p class="text-lg mb-2">{localize(TRANSLATION, locale())['skills']}</p>
                 <For each={['prime'].concat(Object.keys(config.abilities))}>
                   {(slug) =>
                     <For each={(editSkillsMode() ? skillsData() : character().skills).filter((item) => item.ability === slug)}>
@@ -386,7 +386,7 @@ export const Dc20Skills = (props) => {
               onSaveChanges={updateCharacterTrades}
             >
               <div class="blockable p-4">
-                <p class="text-lg dark:text-snow mb-2">{localize(TRANSLATION, locale())['trades']}</p>
+                <p class="text-lg mb-2">{localize(TRANSLATION, locale())['trades']}</p>
                 <For each={Object.keys(config.abilities)}>
                   {(slug) =>
                     <For each={(editTradesMode() ? tradesData() : character().trades).filter((item) => item.ability === slug)}>

@@ -4,10 +4,11 @@ module Fate
   class CharacterSerializer < ApplicationSerializer
     include Deps[cache: 'cache.avatars']
 
-    attributes :provider, :id, :name, :created_at, :avatar, :aspects, :phase_trio
+    attributes :provider, :id, :name, :created_at, :avatar, :aspects, :phase_trio, :skills_system, :custom_skills,
+               :selected_skills
 
     delegate :data, to: :object
-    delegate :aspects, :phase_trio, to: :data
+    delegate :aspects, :phase_trio, :skills_system, :custom_skills, :selected_skills, to: :data
 
     def provider
       'fate'
