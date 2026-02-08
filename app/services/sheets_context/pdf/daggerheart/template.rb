@@ -15,46 +15,46 @@ module SheetsContext
           fill_color 'FFFFFF'
           %w[str agi fin ins pre know].each_with_index do |item, index|
             trait_name = translate(traits_names[item]['name'])
-            text_box trait_name, at: [233 + (55 * index), 736], width: 43, align: :center
+            text_box trait_name, at: [233 + (55 * index), 737], width: 43, align: :center
           end
 
-          text_box I18n.t('services.sheets_context.daggerheart.proficiency'), at: [48, 700], width: 43, align: :center
-          text_box I18n.t('services.sheets_context.daggerheart.evasion'), at: [101, 700], width: 43, align: :center
-          text_box I18n.t('services.sheets_context.daggerheart.armor_score'), at: [154, 700], width: 43, align: :center
+          text_box I18n.t('services.sheets_context.daggerheart.proficiency'), at: [48, 701], width: 43, align: :center
+          text_box I18n.t('services.sheets_context.daggerheart.evasion'), at: [101, 701], width: 43, align: :center
+          text_box I18n.t('services.sheets_context.daggerheart.armor_score'), at: [154, 701], width: 43, align: :center
 
           font_size 12
           fill_color '000000'
           %w[str agi fin ins pre know].each_with_index do |item, index|
             value = "#{'+' if character.modified_traits[item].positive?}#{character.modified_traits[item]}"
-            text_box value, at: [242 + (index * 55), 718], width: 25, height: 14, align: :center
+            text_box value, at: [242 + (index * 55), 719], width: 25, align: :center
           end
 
-          text_box character.proficiency.to_s, at: [51, 722], width: 37, height: 14, align: :center
-          text_box character.evasion.to_s, at: [104, 722], width: 37, height: 14, align: :center
-          text_box character.armor_score.to_s, at: [157, 722], width: 37, height: 14, align: :center
+          text_box character.proficiency.to_s, at: [51, 723], width: 37, align: :center
+          text_box character.evasion.to_s, at: [104, 723], width: 37, align: :center
+          text_box character.armor_score.to_s, at: [157, 723], width: 37, align: :center
 
-          text_box character.damage_thresholds['major'].to_s, at: [78, 622], width: 35, height: 14, align: :center
-          text_box character.damage_thresholds['severe'].to_s, at: [173, 622], width: 35, height: 14, align: :center
+          text_box character.damage_thresholds['major'].to_s, at: [78, 623], width: 35, align: :center
+          text_box character.damage_thresholds['severe'].to_s, at: [173, 623], width: 35, align: :center
 
           # armor slots
           character.armor_score.times do |index|
             fill_color character.spent_armor_slots >= index + 1 ? 'C6515C' : 'FFFFFF'
-            fill_and_stroke_rounded_rectangle [104 + (index * 13), 578], 11, 11, 1
+            fill_and_stroke_rounded_rectangle [104 + (index * 13), 579], 11, 11, 1
           end
           # health
           character.health_max.times do |index|
             fill_color character.health_marked >= index + 1 ? 'C6515C' : 'FFFFFF'
-            fill_and_stroke_rounded_rectangle [104 + (index * 13), 563], 11, 11, 1
+            fill_and_stroke_rounded_rectangle [104 + (index * 13), 564], 11, 11, 1
           end
           # stress
           character.stress_max.times do |index|
             fill_color character.stress_marked >= index + 1 ? 'C6515C' : 'FFFFFF'
-            fill_and_stroke_rounded_rectangle [104 + (index * 13), 548], 11, 11, 1
+            fill_and_stroke_rounded_rectangle [104 + (index * 13), 549], 11, 11, 1
           end
           # hope
           character.hope_max.times do |index|
             fill_color character.hope_marked >= index + 1 ? 'C6515C' : 'FFFFFF'
-            fill_and_stroke_rounded_rectangle [104 + (index * 13), 533], 11, 11, 1
+            fill_and_stroke_rounded_rectangle [104 + (index * 13), 534], 11, 11, 1
           end
 
           font_size 4
@@ -92,35 +92,35 @@ module SheetsContext
             text_box "+#{experience['exp_level']}", at: [200, 467 - (index * 20)], width: 38, align: :center
           end
 
-          text_box I18n.t('services.sheets_context.daggerheart.health'), at: [70, 659], width: 150, align: :center
-          text_box I18n.t('services.sheets_context.daggerheart.experience'), at: [70, 494], width: 150, align: :center
-          text_box I18n.t('services.sheets_context.dnd.attacks'), at: [346, 659], width: 175, align: :center
+          text_box I18n.t('services.sheets_context.daggerheart.health'), at: [70, 660], width: 150, align: :center
+          text_box I18n.t('services.sheets_context.daggerheart.experience'), at: [70, 496], width: 150, align: :center
+          text_box I18n.t('services.sheets_context.dnd.attacks'), at: [346, 660], width: 175, align: :center
 
-          text_box I18n.t('services.sheets_context.daggerheart.armor_slots'), at: [32, 578], width: 150
-          text_box I18n.t('services.sheets_context.daggerheart.hp'), at: [32, 563], width: 150
-          text_box I18n.t('services.sheets_context.daggerheart.stress'), at: [32, 548], width: 150
-          text_box I18n.t('services.sheets_context.daggerheart.hope'), at: [32, 533], width: 150
+          text_box I18n.t('services.sheets_context.daggerheart.armor_slots'), at: [32, 579], width: 150
+          text_box I18n.t('services.sheets_context.daggerheart.hp'), at: [32, 564], width: 150
+          text_box I18n.t('services.sheets_context.daggerheart.stress'), at: [32, 549], width: 150
+          text_box I18n.t('services.sheets_context.daggerheart.hope'), at: [32, 534], width: 150
 
-          text_box I18n.t('services.sheets_context.daggerheart.minor'), at: [20, 621], width: 60, align: :center
-          text_box I18n.t('services.sheets_context.daggerheart.major'), at: [115, 621], width: 60, align: :center
-          text_box I18n.t('services.sheets_context.daggerheart.severe'), at: [210, 621], width: 60, align: :center
+          text_box I18n.t('services.sheets_context.daggerheart.minor'), at: [20, 622], width: 60, align: :center
+          text_box I18n.t('services.sheets_context.daggerheart.major'), at: [115, 622], width: 60, align: :center
+          text_box I18n.t('services.sheets_context.daggerheart.severe'), at: [210, 622], width: 60, align: :center
 
           render_equipment_page(character)
 
           %w[coins handfuls bags chests].each_with_index do |key, index|
             font_size 6
             fill_color 'FFFFFF'
-            text_box I18n.t("services.sheets_context.gold.#{key}"), at: [51 + (index * 59), 759], width: 48, align: :center
+            text_box I18n.t("services.sheets_context.gold.#{key}"), at: [51 + (index * 59), 760], width: 48, align: :center
 
             font_size 12
             fill_color '000000'
-            text_box character.gold[key].to_s, at: [54 + (index * 59), 781], width: 42, height: 14, align: :center
+            text_box character.gold[key].to_s, at: [54 + (index * 59), 782], width: 42, align: :center
           end
 
           start_new_page
 
           font_size 10
-          text_box I18n.t('services.sheets_context.daggerheart.domain_cards'), at: [210, 818], width: 175, align: :center
+          text_box I18n.t('services.sheets_context.daggerheart.domain_cards'), at: [210, 819], width: 175, align: :center
 
           character.parent.feats.includes(:feat).where(feats: { origin: 7 })
             .sort_by { |item| item[:ready_to_use] ? 0 : 1 }
@@ -128,15 +128,15 @@ module SheetsContext
               group.each_with_index do |feat, index|
                 font_size 6
                 fill_color '444444'
-                text_box I18n.t('services.sheets_context.daggerheart.level', value: feat.feat.conditions['level']), at: [52 + (index * 175), 770 - (group_index * 127)], width: 150, height: 14, align: :right
+                text_box I18n.t('services.sheets_context.daggerheart.level', value: feat.feat.conditions['level']), at: [52 + (index * 175), 771 - (group_index * 127)], width: 150, align: :right
 
                 font_size 10
                 fill_color '000000'
-                text_box translate(feat.feat.title), at: [52 + (index * 175), 788 - (group_index * 127)], width: 140, height: 14
+                text_box translate(feat.feat.title), at: [52 + (index * 175), 789 - (group_index * 127)], width: 140
 
                 card_text =
                   markdown.call(value: translate(feat.feat.description), version: '0.4.4').gsub(/{{[a-z]+}}/, 'x')
-                bounding_box([48 + (index * 175), 766 - (group_index * 127)], width: 160, height: 90) do
+                bounding_box([48 + (index * 175), 767 - (group_index * 127)], width: 160, height: 90) do
                   phtml.append(html: "<div style='font-size: 8px'>#{card_text}</div>")
                 end
               end

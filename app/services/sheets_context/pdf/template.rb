@@ -8,29 +8,29 @@ module SheetsContext
       # rubocop: disable Metrics/AbcSize, Layout/LineLength
       def to_pdf(character:, phtml: nil) # rubocop: disable Lint/UnusedMethodArgument
         font_families.update(
-          'CascadiaMono' => {
-            normal: Rails.root.join('app/assets/fonts/CascadiaMono-Light.ttf'),
-            bold: Rails.root.join('app/assets/fonts/CascadiaMono-Regular.ttf'),
-            italic: Rails.root.join('app/assets/fonts/CascadiaMono-LightItalic.ttf')
+          'NotoSans' => {
+            normal: Rails.root.join('app/assets/fonts/NotoSans-Light.ttf'),
+            bold: Rails.root.join('app/assets/fonts/NotoSans-Regular.ttf'),
+            italic: Rails.root.join('app/assets/fonts/NotoSans-LightItalic.ttf')
           }
         )
-        font 'CascadiaMono'
+        font 'NotoSans'
 
         font_size 12
         fill_color 'FFFFFF'
-        text_box character.name, at: [30, 812], width: 180
+        text_box character.name, at: [30, 813], width: 180
 
         font_size 6
-        text_box I18n.t('services.sheets_context.level'), at: [531, 785], width: 40, align: :center
+        text_box I18n.t('services.sheets_context.level'), at: [531, 786], width: 40, align: :center
 
         font_size 8
         fill_color '000000'
-        text_box heritage(character), at: [270, 815], width: 230
-        text_box classes(character), at: [270, 796], width: 230
+        text_box heritage(character), at: [270, 816], width: 230
+        text_box classes(character), at: [270, 797], width: 230
 
         font_size 14
         stroke_color '000000'
-        text_box character.level.to_s, at: [533, 809], width: 37, height: 18, align: :center
+        text_box character.level.to_s, at: [533, 810], width: 37, height: 20, align: :center
       end
 
       def render_equipment_page(character) # rubocop: disable Metrics/MethodLength, Metrics/PerceivedComplexity
@@ -38,7 +38,7 @@ module SheetsContext
 
         font_size 10
         fill_color '000000'
-        text_box I18n.t('services.sheets_context.equipment'), at: [210, 818], width: 175, align: :center
+        text_box I18n.t('services.sheets_context.equipment'), at: [210, 819], width: 175, align: :center
 
         font_size 4
         fill_color '444444'
@@ -78,7 +78,7 @@ module SheetsContext
 
         font_size 10
         fill_color '000000'
-        text_box I18n.t('services.sheets_context.features'), at: [210, 818], width: 175, align: :center
+        text_box I18n.t('services.sheets_context.features'), at: [210, 819], width: 175, align: :center
 
         column_index = 0
         row_index = 790
