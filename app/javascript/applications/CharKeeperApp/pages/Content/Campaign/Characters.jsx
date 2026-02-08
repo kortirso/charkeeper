@@ -5,6 +5,8 @@ import { ErrorWrapper, Button } from '../../../components';
 import { useAppState, useAppLocale } from '../../../context';
 import { Minus } from '../../../assets';
 
+const AVAILABLE_PDF = ['daggerheart', 'dnd5', 'dnd2024', 'pathfinder2'];
+
 export const CampaignCharacters = (props) => {
   const campaign = () => props.campaign;
 
@@ -28,7 +30,7 @@ export const CampaignCharacters = (props) => {
                       <td class="py-1 pl-1">
                         <p>{character.name}</p>
                       </td>
-                      <Show when={!window.__TAURI_INTERNALS__}>
+                      <Show when={!window.__TAURI_INTERNALS__ && AVAILABLE_PDF.includes(campaign().provider)}>
                         <td>
                           <p
                             class="cursor-pointer"
