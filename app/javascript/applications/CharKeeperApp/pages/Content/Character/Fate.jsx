@@ -1,7 +1,7 @@
 import { createSignal, createMemo, Switch, Match } from 'solid-js';
 import { createWindowSize } from '@solid-primitives/resize-observer';
 
-import { FateAspects, FateSkills } from '../../../pages';
+import { FateAspects, FateSkills, FateVitals, FateConsequences } from '../../../pages';
 import { CharacterNavigation, Notes, Avatar, ContentWrapper, createFateDiceRoll } from '../../../components';
 
 export const Fate = (props) => {
@@ -14,7 +14,7 @@ export const Fate = (props) => {
   const { DiceRoll, openDiceRoll } = createFateDiceRoll();
 
   const characterTabs = createMemo(() => {
-    return ['skills', 'notes', 'avatar'];
+    return ['skills', 'vitals', 'notes', 'avatar'];
   });
 
   const mobileView = createMemo(() => {
@@ -34,6 +34,12 @@ export const Fate = (props) => {
             </Match>
             <Match when={activeMobileTab() === 'skills'}>
               <FateSkills character={character()} openDiceRoll={openDiceRoll} onReplaceCharacter={props.onReplaceCharacter} />
+            </Match>
+            <Match when={activeMobileTab() === 'vitals'}>
+              <FateVitals character={character()} onReplaceCharacter={props.onReplaceCharacter} />
+              <div class="mt-4">
+                <FateConsequences character={character()} onReplaceCharacter={props.onReplaceCharacter} />
+              </div>
             </Match>
             <Match when={activeMobileTab() === 'notes'}>
               <Notes />
@@ -71,6 +77,12 @@ export const Fate = (props) => {
           <Switch>
             <Match when={activeTab() === 'skills'}>
               <FateSkills character={character()} openDiceRoll={openDiceRoll} onReplaceCharacter={props.onReplaceCharacter} />
+            </Match>
+            <Match when={activeTab() === 'vitals'}>
+              <FateVitals character={character()} onReplaceCharacter={props.onReplaceCharacter} />
+              <div class="mt-4">
+                <FateConsequences character={character()} onReplaceCharacter={props.onReplaceCharacter} />
+              </div>
             </Match>
             <Match when={activeTab() === 'notes'}>
               <Notes />

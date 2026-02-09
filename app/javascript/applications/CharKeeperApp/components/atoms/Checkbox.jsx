@@ -13,7 +13,7 @@ export const Checkbox = (props) => {
       </Show>
       <div
         class="toggle"
-        classList={{ 'checked': props.checked, 'outlined': props.outlined, 'disabled': props.disabled }}
+        classList={{ 'checked': props.checked, 'outlined': props.outlined, 'disabled': props.disabled, 'big': props.big }}
         onClick={() => props.disabled ? null : props.onToggle()}
       >
         <Show when={props.checked && !props.filled}>
