@@ -88,6 +88,8 @@ export * from './Content/Character/Dc20/Bonuses';
 export * from './Content/Character/Fate';
 export * from './Content/Character/Fate/Aspects';
 export * from './Content/Character/Fate/Skills';
+export * from './Content/Character/Fate/Vitals';
+export * from './Content/Character/Fate/Consequences';
 
 export * from './Navigation/Characters/ListItem';
 export * from './Navigation/Characters/CharacterForm';

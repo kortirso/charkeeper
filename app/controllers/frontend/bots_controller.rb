@@ -13,7 +13,7 @@ module Frontend
     private
 
     def character
-      current_user.characters.find_by(id: params[:character_id])
+      current_user.characters.find_by(id: params[:character_id]) if params[:character_id]
     end
   end
 end

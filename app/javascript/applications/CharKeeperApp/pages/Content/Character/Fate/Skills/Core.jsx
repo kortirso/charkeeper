@@ -86,8 +86,8 @@ export const FateCoreSkills = (props) => {
                         <p class="flex items-center gap-x-2 p-2">
                           {config.skills[slug].name[locale()]}
                           <Dice
-                            width="24"
-                            height="24"
+                            width="30"
+                            height="30"
                             text={modifier(value)}
                             textClassList=""
                             onClick={() => props.openDiceRoll(`/check skill ${slug}`, character().selected_skills[slug])}

@@ -24,6 +24,8 @@ module CharactersContext
             required(:c).maybe(:string, max_size?: 1000)
           end
           optional(:selected_skills).hash
+          optional(:selected_stress).hash
+          optional(:consequences).hash
           optional(:file)
         end
       end
