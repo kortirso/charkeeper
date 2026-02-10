@@ -5,12 +5,13 @@ module Fate
     include Deps[cache: 'cache.avatars']
 
     attributes :provider, :id, :name, :created_at, :avatar, :aspects, :phase_trio, :skills_system, :custom_skills,
-               :selected_skills, :stress_system, :custom_stress, :selected_stress, :max_stress, :consequences, :stunts
+               :selected_skills, :stress_system, :custom_stress, :selected_stress, :max_stress, :consequences, :stunts,
+               :fate_points, :refresh_points
 
-    delegate :max_stress, to: :decorator
+    delegate :max_stress, :refresh_points, to: :decorator
     delegate :data, to: :object
     delegate :aspects, :phase_trio, :skills_system, :custom_skills, :selected_skills, :stress_system, :custom_stress,
-             :selected_stress, :consequences, :stunts, to: :data
+             :selected_stress, :consequences, :stunts, :fate_points, to: :data
 
     def provider
       'fate'

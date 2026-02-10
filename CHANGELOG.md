@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Added
 - vitals management for Fate characters
 - stunts management for Fate characters
+- rendering fate points for Fate characters
 
 ## [0.4.6] - 2026-02-09
 ### Added
