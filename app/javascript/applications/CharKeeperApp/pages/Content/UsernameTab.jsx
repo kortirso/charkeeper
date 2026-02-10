@@ -112,7 +112,6 @@ export const UsernameTab = (props) => {
           selectedValue={colorSchema()}
           onSelect={(value) => setColorSchema(value)}
         />
-
         <Show when={appState.identities !== undefined}>
           <div class="mb-2 grid grid-cols-1 emd:grid-cols-2 gap-2">
             <div>

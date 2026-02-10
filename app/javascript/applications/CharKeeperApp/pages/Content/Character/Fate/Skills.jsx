@@ -35,17 +35,17 @@ export const FateSkills = (props) => {
 
   return (
     <ErrorWrapper payload={{ character_id: character().id, key: 'FateSkills' }}>
-    <Switch>
-      <Match when={character().skills_system === 'core'}>
-        <FateCoreSkills
-          character={character()}
-          openDiceRoll={props.openDiceRoll}
-          selectedSkills={selectedSkills()}
-          setSelectedSkills={setSelectedSkills}
-          updateCharacter={updateCharacter}
-        />
-      </Match>
-    </Switch>
+      <Switch>
+        <Match when={character().skills_system === 'core'}>
+          <FateCoreSkills
+            character={character()}
+            openDiceRoll={props.openDiceRoll}
+            selectedSkills={selectedSkills()}
+            setSelectedSkills={setSelectedSkills}
+            updateCharacter={updateCharacter}
+          />
+        </Match>
+      </Switch>
     </ErrorWrapper>
   );
 }
