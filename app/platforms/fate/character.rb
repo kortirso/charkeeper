@@ -14,6 +14,7 @@ module Fate
     attribute :selected_stress, array: true, default: {} # physical 3, mental: 3
     attribute :consequences, array: true, default: {} # mild,moderate,severe, physical/mental
     attribute :stunts, array: true, default: [] # [{ id: 1, title: '', description: '', skill: nil }]
+    attribute :fate_points, :integer, default: 0
   end
 
   class Character < Character

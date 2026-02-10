@@ -33,6 +33,7 @@ module CharactersContext
             required(:description).maybe(:string, max_size?: 500)
             required(:skill).maybe(:string)
           end
+          optional(:fate_points).filled(:integer, gteq?: 0)
           optional(:file)
         end
       end

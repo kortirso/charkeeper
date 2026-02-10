@@ -1,7 +1,8 @@
 import { createSignal, createEffect, For, Show, batch } from 'solid-js';
 
-import { ErrorWrapper, EditWrapper, Text, Input, TextArea } from '../../../../components';
+import { ErrorWrapper, EditWrapper, Text, Input, TextArea, Button } from '../../../../components';
 import { useAppState, useAppLocale, useAppAlert } from '../../../../context';
+import { Minus, PlusSmall } from '../../../../assets';
 import { updateCharacterRequest } from '../../../../requests/updateCharacterRequest';
 
 const TRANSLATION = {
@@ -10,21 +11,24 @@ const TRANSLATION = {
     highConcept: 'High concept',
     trouble: 'Trouble',
     aspect: 'Aspect',
-    description: 'Description'
+    description: 'Description',
+    points: 'Fate points'
   },
   ru: {
     title: 'Аспекты',
     highConcept: 'Концепция',
     trouble: 'Проблема',
     aspect: 'Аспект',
-    description: 'Описание аспекта'
+    description: 'Описание аспекта',
+    points: 'Жетоны судьбы'
   },
   es: {
     title: 'Aspectos',
     highConcept: 'Concepto',
     trouble: 'Problema',
     aspect: 'Aspecto',
-    description: 'Descripción del aspecto'
+    description: 'Descripción del aspecto',
+    points: 'Puntos de destino'
   }
 }
 
@@ -58,6 +62,18 @@ export const FateAspects = (props) => {
     });
   }
 
+  const updatePoints = async (value) => {
+    const newValue = character().fate_points + value;
+    if (newValue < 0) return;
+
+    const result = await updateCharacterRequest(
+      appState.accessToken, character().provider, character().id, { character: { fate_points: newValue }, only_head: true }
+    );
+
+    if (result.errors_list === undefined) props.onReplaceCharacter({ fate_points: newValue });
+    else renderAlerts(result.errors_list);
+  }
+
   const updateCharacter = async () => {
     const result = await updateCharacterRequest(
       appState.accessToken,
@@ -79,6 +95,14 @@ export const FateAspects = (props) => {
         onSaveChanges={updateCharacter}
       >
         <div class="blockable p-4">
+          <div class="flex items-center mb-4">
+            <p class="text-lg mr-8">{TRANSLATION[locale()].points}</p>
+            <div class="flex items-center">
+              <Button default size="small" onClick={() => updatePoints(-1)}><Minus /></Button>
+              <p class="w-24 text-center">{character().fate_points} / {character().refresh_points}</p>
+              <Button default size="small" onClick={() => updatePoints(1)}><PlusSmall /></Button>
+            </div>
+          </div>
           <h2 class="text-lg">{TRANSLATION[locale()].title}</h2>
           <Show
             when={editMode()}

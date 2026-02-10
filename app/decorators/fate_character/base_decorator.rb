@@ -3,7 +3,7 @@
 module FateCharacter
   class BaseDecorator < SimpleDelegator
     delegate :data, to: :__getobj__
-    delegate :stress_system, :selected_skills, to: :data
+    delegate :stress_system, :selected_skills, :stunts, to: :data
 
     def method_missing(method, *args) # rubocop: disable Lint/UnusedMethodArgument
       __getobj__.respond_to?(method.to_sym) ? __getobj__.public_send(method) : nil
@@ -14,6 +14,10 @@ module FateCharacter
         physical: stress_physical_max,
         mental: stress_mental_max
       }
+    end
+
+    def refresh_points
+      3 - [stunts.count - 3, 0].max
     end
 
     private

@@ -30,7 +30,7 @@ export const Fate = (props) => {
         <div class="p-2 pb-20 flex-1 overflow-y-auto">
           <Switch>
             <Match when={activeMobileTab() === 'aspects'}>
-              <FateAspects character={character()} />
+              <FateAspects character={character()} onReplaceCharacter={props.onReplaceCharacter} />
             </Match>
             <Match when={activeMobileTab() === 'skills'}>
               <FateSkills character={character()} openDiceRoll={openDiceRoll} onReplaceCharacter={props.onReplaceCharacter} />
@@ -61,7 +61,7 @@ export const Fate = (props) => {
 
     return (
       <>
-        <FateAspects character={character()} />
+        <FateAspects character={character()} onReplaceCharacter={props.onReplaceCharacter} />
       </>
     );
   });
