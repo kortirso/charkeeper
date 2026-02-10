@@ -11,7 +11,7 @@ module BotContext
           target = arguments.shift
           result =
             case type
-            when 'skill' then check(character, target, arguments)
+            when 'skill', 'stunt' then check(character, target, arguments)
             end
 
           {
