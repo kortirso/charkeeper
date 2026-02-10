@@ -5,6 +5,7 @@ module CharactersContext
     class UpdateCommand < BaseCommand
       include Deps[cache: 'cache.avatars']
 
+      # rubocop: disable Metrics/BlockLength
       use_contract do
         config.messages.namespace = :fate_character
 
@@ -26,9 +27,16 @@ module CharactersContext
           optional(:selected_skills).hash
           optional(:selected_stress).hash
           optional(:consequences).hash
+          optional(:stunts).maybe(:array).each(:hash) do
+            required(:id).filled(type?: Integer)
+            required(:title).filled(:string, max_size?: 50)
+            required(:description).maybe(:string, max_size?: 500)
+            required(:skill).maybe(:string)
+          end
           optional(:file)
         end
       end
+      # rubocop: enable Metrics/BlockLength
 
       private
 

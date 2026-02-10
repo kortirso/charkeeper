@@ -89,7 +89,6 @@ export const FateCoreSkills = (props) => {
                             width="30"
                             height="30"
                             text={modifier(value)}
-                            textClassList=""
                             onClick={() => props.openDiceRoll(`/check skill ${slug}`, character().selected_skills[slug])}
                           />
                         </p>
