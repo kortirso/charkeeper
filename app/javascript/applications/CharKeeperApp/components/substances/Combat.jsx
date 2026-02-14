@@ -195,9 +195,12 @@ export const Combat = (props) => {
                     </td>
                     <td class="pt-2 pb-1">
                       <div class="flex items-center justify-center h-7 cursor-pointer">
-                        <p onClick={() => openAttackRoll(attack)}>
-                          {attack.damage}{attack.damage_bonus !== 0 ? modifier(attack.damage_bonus) : ''}
-                        </p>
+                        <Dice
+                          width="28"
+                          height="28"
+                          text={`${attack.damage}${attack.damage_bonus !== 0 ? modifier(attack.damage_bonus) : ''}`}
+                          onClick={() => openAttackRoll(attack)}
+                        />
                       </div>
                     </td>
                     <td class="pt-2 pb-1">
