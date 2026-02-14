@@ -231,6 +231,17 @@ module Charkeeper
     register('services.bot_context.represent_raw_command') { BotContext::RepresentRawCommandService.new }
 
     register('services.homebrews_context.refresh_user_data') { HomebrewsContext::RefreshUserDataService.new }
+
+    register('services.bot_context_v2.character_bot') { BotContextV2::CharacterBot.new }
+    register('services.bot_context_v2.represent_character_bot') { BotContextV2::RepresentCharacterBot.new }
+
+    register('services.bot_context_v2.handle_command') { BotContextV2::HandleCommandService.new }
+
+    register('services.bot_context_v2.commands.check') { BotContextV2::Commands::Check.new }
+
+    register('services.bot_context_v2.commands.rolls.default') { BotContextV2::Commands::Rolls::Default.new }
+    register('services.bot_context_v2.commands.rolls.duality') { BotContextV2::Commands::Rolls::Duality.new }
+    register('services.bot_context_v2.commands.rolls.fate') { BotContextV2::Commands::Rolls::Fate.new }
   end
 end
 

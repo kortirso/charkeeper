@@ -5,7 +5,7 @@ import { Dice, DualityDice, Button } from '../../components';
 import { useAppState, useAppLocale } from '../../context';
 import { clickOutside, modifier, localize } from '../../helpers';
 import { Close } from '../../assets';
-import { createBotRequest } from '../../requests/createBotRequest';
+import { createCharacterBotRequest } from '../../requests/createCharacterBotRequest';
 
 const TRANSLATION = {
   en: {
@@ -99,17 +99,14 @@ export const createDiceRoll = () => {
         if (bonus() + additionalBonus() < 0) options.push(`--penalty ${Math.abs(bonus() + additionalBonus())}`);
 
         const botCommandWithOptions = options.length > 0 ? `${botCommand()} ${options.join(' ')}` : botCommand();
-        const result = await createBotRequest(
-          appState.accessToken, { source: 'raw', value: botCommandWithOptions, character_id: props.characterId }
-        );
-
-        setRollResult(result.result);
+        const result = await createCharacterBotRequest(appState.accessToken, props.characterId, { values: [botCommandWithOptions] });
+        setRollResult(result.result[0].result);
       }
 
       const rerollDndDice = async (index) => {
-        const result = await createBotRequest(appState.accessToken, { source: 'raw', value: '/roll d20' });
+        const result = await createCharacterBotRequest(appState.accessToken, props.characterId, { values: ['/roll d20'] });
 
-        const newRollResults = [...rollResult().rolls.slice(0, index), result.result.rolls[0], ...rollResult().rolls.slice(index + 1)];
+        const newRollResults = [...rollResult().rolls.slice(0, index), result.result[0].result.rolls[0], ...rollResult().rolls.slice(index + 1)];
 
         let total = bonus() + additionalBonus();
         let status = null;
@@ -133,9 +130,9 @@ export const createDiceRoll = () => {
       }
 
       const rerollDhDice = async (dice, index) => {
-        const result = await createBotRequest(appState.accessToken, { source: 'raw', value: `/roll ${dice}` });
+        const result = await createCharacterBotRequest(appState.accessToken, props.characterId, { values: [`/roll ${dice}`] });
 
-        const newRollResults = [...rollResult().rolls.slice(0, index), result.result.rolls[0], ...rollResult().rolls.slice(index + 1)];
+        const newRollResults = [...rollResult().rolls.slice(0, index), result.result[0].result.rolls[0], ...rollResult().rolls.slice(index + 1)];
 
         let total = newRollResults.slice(0, 2).reduce((acc, item) => acc + item[1], 0) + bonus() + additionalBonus();
         if (advantage() > 0) total += newRollResults[2][1];
@@ -154,8 +151,8 @@ export const createDiceRoll = () => {
         value += ` ${dices().join(' ').toLowerCase()}`;
         if (additionalBonus() !== 0) value += ` ${additionalBonus()}`;
 
-        const result = await createBotRequest(appState.accessToken, { source: 'raw', value: value });
-        setRollResult(result.result);
+        const result = await createCharacterBotRequest(appState.accessToken, props.characterId, { values: [value] });
+        setRollResult(result.result[0].result);
       }
 
       const addDice = (dice) => setDices([...dices(), dice]);

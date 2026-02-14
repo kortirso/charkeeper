@@ -5,7 +5,7 @@ import { Dice, Button } from '../../components';
 import { useAppState, useAppLocale } from '../../context';
 import { clickOutside, modifier, localize } from '../../helpers';
 import { Close } from '../../assets';
-import { createBotRequest } from '../../requests/createBotRequest';
+import { createCharacterBotRequest } from '../../requests/createCharacterBotRequest';
 
 const TRANSLATION = {
   en: {
@@ -58,16 +58,14 @@ export const createFateDiceRoll = () => {
         if (bonus() + additionalBonus() < 0) options.push(`--penalty ${Math.abs(bonus() + additionalBonus())}`);
 
         const botCommandWithOptions = options.length > 0 ? `${botCommand()} ${options.join(' ')}` : botCommand();
-        const result = await createBotRequest(
-          appState.accessToken, { source: 'raw', value: botCommandWithOptions, character_id: props.characterId }
-        );
+        const result = await createCharacterBotRequest(appState.accessToken, props.characterId, { values: [botCommandWithOptions] });
 
-        setRollResult(result.result);
+        setRollResult(result.result[0].result);
       }
 
       const makeSimpleRoll = async () => {
-        const result = await createBotRequest(appState.accessToken, { source: 'raw', value: `/fateRoll ${additionalBonus()}` });
-        setRollResult(result.result);
+        const result = await createCharacterBotRequest(appState.accessToken, props.characterId, { values: [`/fateRoll ${additionalBonus()}`] });
+        setRollResult(result.result[0].result);
       }
 
       const setSimpleBonus = (modifier) => {

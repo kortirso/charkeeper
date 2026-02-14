@@ -88,5 +88,15 @@ FactoryBot.define do
         }
       }
     end
+
+    trait :fate do
+      type { 'Fate::Character' }
+      data { {} }
+    end
+
+    trait :dc20 do
+      type { 'Dc20::Character' }
+      data { {} }
+    end
   end
 end

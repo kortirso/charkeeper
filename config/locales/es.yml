@@ -145,6 +145,7 @@ es:
             save: have una tirada de salvación de, %{attr}
             skill: hace una tirada de habilidad de, %{attr}
             attack: hace una tirada de ataque con, %{target}
+            initiative: hace una tirada de iniciativa
           daggerheart:
             crit_success: Éxito crítico
             with_hope: "%{result} con esperanza"
@@ -153,9 +154,11 @@ es:
             attack: hace una tirada de ataque con, %{target}
           fate:
             skill: hace una tirada de habilidad de, %{attr}
+            stunt: hace una prueba de acrobacia de, %{attr}
         roll:
           result: Resultado
-          total: Total
+          rolls: hace tiradas de dados
+          total: Tiradas de dados
           nothing: No hay resultado
         campaign:
           create:
