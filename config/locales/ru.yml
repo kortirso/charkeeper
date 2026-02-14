@@ -145,6 +145,7 @@ ru:
             save: делает проверку спасброска, %{attr}
             skill: делает проверку умения, %{attr}
             attack: делает проверку атаки, %{target}
+            initiative: делает проверку инициативы
           daggerheart:
             crit_success: Критический успех
             with_hope: "%{result} с надеждой"
@@ -153,9 +154,11 @@ ru:
             attack: делает проверку атаки, %{target}
           fate:
             skill: делает проверку навыка, %{attr}
+            stunt: делает проверку трюка, %{attr}
         roll:
-          result: Результат
-          total: Сумма
+          result: Броски
+          rolls: делает броски
+          total: Результат
           nothing: Нет результата
         campaign:
           create:

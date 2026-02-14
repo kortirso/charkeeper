@@ -25,7 +25,7 @@ describe Frontend::BotsController do
         it 'returns result', :aggregate_failures do
           request
 
-          expect(response.parsed_body[:result].include?('Результат: d20')).to be_truthy
+          expect(response.parsed_body[:result].include?('Броски: d20')).to be_truthy
           expect(response.parsed_body[:errors]).to be_nil
           expect(response).to have_http_status :ok
         end

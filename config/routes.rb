@@ -59,6 +59,11 @@ Rails.application.routes.draw do
   end
 
   namespace :frontend do
+    namespace :bots do
+      resources :characters, only: %i[] do
+        post :create, on: :member
+      end
+    end
     resources :bots, only: %i[create]
     namespace :homebrews do
       get ':provider', to: 'list#index'

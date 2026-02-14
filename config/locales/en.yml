@@ -145,6 +145,7 @@ en:
             save: makes an %{attr} save
             skill: makes an %{attr} skill check
             attack: makes an attack check with %{target}
+            initiative: makes an initiative check
           daggerheart:
             crit_success: Critical success
             with_hope: "%{result} with hope"
@@ -153,9 +154,11 @@ en:
             attack: makes an attack check with %{target}
           fate:
             skill: makes an %{attr} skill check
+            stunt: makes an %{attr} stunt check
         roll:
-          result: Result
-          total: Total
+          result: Rolls
+          rolls: makes dice rolls
+          total: Result
           nothing: No result
         campaign:
           create:

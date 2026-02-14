@@ -116,7 +116,7 @@ describe BotContext::HandleService do
     let(:source) { :web }
 
     it 'sends response message', :aggregate_failures do
-      expect(service_call[:result].include?('Result: d20')).to be_truthy
+      expect(service_call[:result].include?('Rolls: d20')).to be_truthy
       expect(client).not_to have_received(:send_message)
     end
 
@@ -124,7 +124,7 @@ describe BotContext::HandleService do
       let(:text) { '/roll 20' }
 
       it 'sends response message', :aggregate_failures do
-        expect(service_call[:result].include?('Result: 20')).to be_truthy
+        expect(service_call[:result].include?('Rolls: 20')).to be_truthy
         expect(client).not_to have_received(:send_message)
       end
     end
