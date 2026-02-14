@@ -41,7 +41,8 @@ const TRANSLATION = {
     back: 'Back',
     noValue: 'Default',
     filterByClass: 'Filter by class',
-    damageUp: '<p>The damage increases by 1 dice when you reach levels 5, 11 and 17.</p>'
+    damageUp: '<p>The damage increases by 1 dice when you reach levels 5, 11 and 17.</p>',
+    check: 'Spell attack'
   },
   ru: {
     cantrips: 'Заговоры',
@@ -57,7 +58,8 @@ const TRANSLATION = {
     back: 'Назад',
     noValue: 'Стандартная',
     filterByClass: 'Фильтр по классам',
-    damageUp: '<p>Урон увеличивается на 1 кость, когда вы достигаете 5, 11 и 17 уровня.</p>'
+    damageUp: '<p>Урон увеличивается на 1 кость, когда вы достигаете 5, 11 и 17 уровня.</p>',
+    check: 'Атака заклинанием'
   }
 }
 
@@ -387,7 +389,7 @@ export const Dnd2024Spells = (props) => {
                         width="36"
                         height="36"
                         text={modifier(character().spell_classes[activeSpellClass()].attack_bonus)}
-                        onClick={() => props.openDiceRoll('/check attack spell', character().spell_classes[activeSpellClass()].attack_bonus)}
+                        onClick={() => props.openDiceRoll('/check attack spell', character().spell_classes[activeSpellClass()].attack_bonus, localize(TRANSLATION, locale())['check'])}
                       />
                   },
                   { title: localize(TRANSLATION, locale())['saveDC'], value: character().spell_classes[activeSpellClass()].save_dc }

@@ -24,7 +24,7 @@ export const SpellAttack = (props) => {
               text={
                 modifier(props.alterHit ? props.alterHit : props.character.spell_classes[props.activeSpellClass].attack_bonus)
               }
-              onClick={() => props.openDiceRoll('/check attack spell', props.alterHit ? props.alterHit : props.character.spell_classes[props.activeSpellClass].attack_bonus)}
+              onClick={(event) => { event.stopPropagation(); props.openDiceRoll('/check attack spell', props.alterHit ? props.alterHit : props.character.spell_classes[props.activeSpellClass].attack_bonus, props.title) }}
             />
           </div>
         </Show>

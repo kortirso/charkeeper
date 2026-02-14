@@ -324,14 +324,14 @@ export const Dnd5Spells = (props) => {
                 ]}
               />
               <div class="mb-2 p-4 flex blockable">
-                <div class="flex-1 flex flex-col items-center dark:text-snow">
+                <div class="flex-1 flex flex-col items-center">
                   <p class="uppercase text-xs mb-1">{localize(TRANSLATION, locale())['cantrips']}</p>
                   <p class="text-2xl mb-1">
                     {character().spell_classes[activeSpellClass()].cantrips_amount}
                   </p>
                 </div>
                 <Show when={character().provider === 'dnd5'}>
-                  <div class="flex-1 flex flex-col items-center dark:text-snow">
+                  <div class="flex-1 flex flex-col items-center">
                     <p class="uppercase text-xs mb-1">{localize(TRANSLATION, locale())['known']}</p>
                     <p class="text-2xl mb-1 flex gap-2 items-start">
                       <span>{character().spell_classes[activeSpellClass()].spells_amount || '-'}</span>
@@ -339,7 +339,7 @@ export const Dnd5Spells = (props) => {
                     </p>
                   </div>
                 </Show>
-                <div class="flex-1 flex flex-col items-center dark:text-snow">
+                <div class="flex-1 flex flex-col items-center">
                   <p class="uppercase text-xs mb-1">{localize(TRANSLATION, locale())['prepared']}</p>
                   <p class="text-2xl mb-1">
                     {character().spell_classes[activeSpellClass()].prepared_spells_amount}

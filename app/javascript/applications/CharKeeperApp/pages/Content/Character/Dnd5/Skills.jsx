@@ -10,12 +10,14 @@ const TRANSLATION = {
   en: {
     helpMessage: 'Fill data about skills.',
     anySkillBoosts: 'You can learn any skills, amount - ',
-    skillBoosts: 'You can learn skills from the following list, amount - '
+    skillBoosts: 'You can learn skills from the following list, amount - ',
+    check: 'Skill'
   },
   ru: {
     helpMessage: 'Заполните данные по умениям.',
     anySkillBoosts: 'Вы можете изучить любые умения, кол-во - ',
-    skillBoosts: 'Вы можете изучить умения из следующего списка, кол-во - '
+    skillBoosts: 'Вы можете изучить умения из следующего списка, кол-во - ',
+    check: 'Умение'
   }
 }
 
@@ -152,7 +154,7 @@ export const Dnd5Skills = (props) => {
                         width="28"
                         height="28"
                         text={modifier(skill.modifier)}
-                        onClick={() => props.openDiceRoll(`/check skill ${skill.slug}`, skill.modifier)}
+                        onClick={() => props.openDiceRoll(`/check skill ${skill.slug}`, skill.modifier, `${localize(TRANSLATION, locale())['check']}, ${config.skills[skill.slug].name[locale()]}`)}
                       />
                     </div>
                   }

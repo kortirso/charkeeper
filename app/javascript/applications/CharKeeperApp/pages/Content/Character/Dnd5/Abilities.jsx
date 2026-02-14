@@ -13,14 +13,16 @@ const TRANSLATION = {
     levelingAbilityBoosts: 'You have available ability boosts',
     splitBoosts: 'Share boosts between:',
     anySplitBoosts: 'Share boosts between any abilities',
-    helpMessage: 'Your character can start with a standard set of abilities, or you can generate them in any way according to the rules.'
+    helpMessage: 'Your character can start with a standard set of abilities, or you can generate them in any way according to the rules.',
+    check: 'Checking'
   },
   ru: {
     abilityBoosts: 'Дополнительно распределите 3 очка по, как минимум, 2 характеристикам из списка:',
     levelingAbilityBoosts: 'У вас есть доступные повышения характеристик',
     splitBoosts: 'Распределите повышения между:',
     anySplitBoosts: 'Распределите между любыми характеристиками',
-    helpMessage: 'Ваш персонаж может начать со стандартным набором характеристик. Или вы можете сгенерировать их любым способом согласно правилам.'
+    helpMessage: 'Ваш персонаж может начать со стандартным набором характеристик. Или вы можете сгенерировать их любым способом согласно правилам.',
+    check: 'Проверка'
   }
 }
 
@@ -110,7 +112,7 @@ export const Dnd5Abilities = (props) => {
                         height="64"
                         text={modifier(character().modifiers[slug])}
                         textClassList="text-4xl"
-                        onClick={() => props.openDiceRoll(`/check attr ${slug}`, character().modifiers[slug])}
+                        onClick={() => props.openDiceRoll(`/check attr ${slug}`, character().modifiers[slug], `${localize(TRANSLATION, locale())['check']}, ${values.name[locale()]}`)}
                       />
                       <div class="absolute -right-4 -bottom-0 w-8 h-8 rounded-full border border-gray-200 bg-white flex items-center justify-center opacity-75 dark:text-neutral-800">
                         <p class="text-xl">{editMode() ? abilitiesData()[slug] : character().modified_abilities[slug]}</p>

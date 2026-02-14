@@ -170,6 +170,7 @@ export const SpellsToggleList = (props) => {
                   <SpellRange value={characterSpell.spell.range} />
                   <SpellAttack
                     withDice
+                    title={characterSpell.spell.title}
                     hit={characterSpell.spell.hit}
                     dc={characterSpell.spell.dc}
                     character={props.character}

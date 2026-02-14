@@ -13,12 +13,14 @@ const TRANSLATION = {
   en: {
     flight: 'Flight speeds',
     swim: 'Swim speed',
-    climb: 'Climb speed'
+    climb: 'Climb speed',
+    check: 'Initiative'
   },
   ru: {
     flight: 'Скорость полёта',
     swim: 'Скорость плавания',
-    climb: 'Скорость лазания'
+    climb: 'Скорость лазания',
+    check: 'Инициатива'
   }
 }
 
@@ -131,7 +133,7 @@ export const Dnd5Combat = (props) => {
                   width="36"
                   height="36"
                   text={modifier(character().initiative)}
-                  onClick={() => props.openDiceRoll('/check initiative empty', character().initiative)}
+                  onClick={() => props.openDiceRoll('/check initiative empty', character().initiative, localize(TRANSLATION, locale())['check'])}
                 />
               
             },

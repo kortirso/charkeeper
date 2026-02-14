@@ -31,6 +31,7 @@ const TRANSLATION = {
 export const createDiceRoll = () => {
   const [isOpen, setIsOpen] = createSignal(undefined);
 
+  const [title, setTitle] = createSignal('');
   const [botCommand, setBotCommand] = createSignal('');
   const [bonus, setBonus] = createSignal(0);
   const [additionalBonus, setAdditionalBonus] = createSignal(0);
@@ -43,7 +44,7 @@ export const createDiceRoll = () => {
   const [locale] = useAppLocale();
 
   return {
-    openDiceRoll(botCommand, bonus) {
+    openDiceRoll(botCommand, bonus, title) {
       batch(() => {
         setIsOpen('botCommand');
         setBotCommand(botCommand);
@@ -51,6 +52,7 @@ export const createDiceRoll = () => {
         setAdditionalBonus(0);
         setRollResult(undefined);
         setAdvantage(0);
+        setTitle(title);
       });
     },
     openSimpleDiceRoll(dices, bonus) {
@@ -196,6 +198,9 @@ export const createDiceRoll = () => {
             <div class="flex-1 flex justify-end items-end">
               <Show when={isOpen() === 'botCommand'}>
                 <div class="p-4 blockable w-full sm:w-xs">
+                  <Show when={title()}>
+                    <p class="mb-2">{title()}</p>
+                  </Show>
                   <div class="flex flex-wrap items-center gap-2">
                     <Switch>
                       <Match when={props.provider === 'dnd'}>
