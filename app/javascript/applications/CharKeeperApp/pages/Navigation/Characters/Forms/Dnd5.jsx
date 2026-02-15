@@ -5,6 +5,7 @@ import * as i18n from '@solid-primitives/i18n';
 import { CharacterForm } from '../../../../pages';
 import { Select, Input } from '../../../../components';
 import dnd5Config from '../../../../data/dnd5.json';
+import dnd2024Config from '../../../../data/dnd2024.json';
 import { useAppLocale } from '../../../../context';
 import { translate } from '../../../../helpers';
 
@@ -65,7 +66,7 @@ export const Dnd5CharacterForm = (props) => {
       />
       <Select
         labelText={t('newCharacterPage.dnd5.alignment')}
-        items={dict().dnd.alignments}
+        items={translate(dnd2024Config.alignments, locale())}
         selectedValue={characterDnd5Form.alignment}
         onSelect={(value) => setCharacterDnd5Form({ ...characterDnd5Form, alignment: value })}
       />

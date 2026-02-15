@@ -8,6 +8,17 @@ ru:
       unexpected_key: Неизвестный параметр
       included_in?: Неизвестное значение
       max_size?: Размер превышен
+      daggerheart_project:
+        rules:
+          title:
+            filled?: Необходимо указать название
+            max_size?: Название не может быть длиннее, чем 100 символов
+          description:
+            filled?: Необходимо указать описание
+            max_size?: Описание не может быть длиннее, чем 1000 символов
+          complexity:
+            filled?: Необходимо указать сложность
+            gt?: Сложность должна быть больше, чем 0
       homebrew_book:
         rules:
           provider:

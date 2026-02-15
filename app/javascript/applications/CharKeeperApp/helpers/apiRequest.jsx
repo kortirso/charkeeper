@@ -2,6 +2,13 @@ import { readFromCache } from '../helpers';
 
 const CHARKEEPER_HOST_CACHE_NAME = 'CharKeeperHost';
 
+export const isSuccessResponse = (response) => response.error === undefined && response.errors_list === undefined;
+
+export const performResponse = (response, successCallback, errorCallback) => {
+  if (isSuccessResponse(response)) successCallback();
+  else if (errorCallback) errorCallback();
+};
+
 export const apiRequest = async ({ url, options }) => {
   if (window.__TAURI_INTERNALS__) {
     const { platform } = window.__TAURI__.os;

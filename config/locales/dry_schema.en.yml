@@ -8,6 +8,17 @@ en:
       unexpected_key: Unknown param
       included_in?: Unknown value
       max_size?: Too long value
+      daggerheart_project:
+        rules:
+          title:
+            filled?: A title is required
+            max_size?: The title cannot be longer than 100 characters
+          description:
+            filled?: A description is required
+            max_size?: The description cannot be longer than 1000 characters
+          complexity:
+            filled?: A complexity is required
+            gt?: Сomplexity must be positive
       homebrew_book:
         rules:
           provider:

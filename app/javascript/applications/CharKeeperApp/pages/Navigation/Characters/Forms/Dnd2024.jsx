@@ -100,7 +100,7 @@ export const Dnd2024CharacterForm = (props) => {
       />
       <Select
         labelText={t('newCharacterPage.dnd2024.alignment')}
-        items={dict().dnd.alignments}
+        items={translate(dnd2024Config.alignments, locale())}
         selectedValue={characterDnd2024Form.alignment}
         onSelect={(value) => setCharacterDnd2024Form({ ...characterDnd2024Form, alignment: value })}
       />
