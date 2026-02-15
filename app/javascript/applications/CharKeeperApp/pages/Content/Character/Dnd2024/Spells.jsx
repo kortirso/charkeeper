@@ -70,7 +70,6 @@ export const Dnd2024Spells = (props) => {
 
   const [characterSpells, setCharacterSpells] = createSignal(undefined);
   const [spells, setSpells] = createSignal(undefined);
-  const [spentSpellSlots, setSpentSpellSlots] = createSignal(undefined);
   const [activeSpellClass, setActiveSpellClass] = createSignal(undefined);
   const [descriptions, setDescriptions] = createSignal({});
   const [openDescriptions, setOpenDescriptions] = createSignal({});
@@ -107,7 +106,6 @@ export const Dnd2024Spells = (props) => {
     );
 
     batch(() => {
-      setSpentSpellSlots(character().spent_spell_slots);
       setActiveSpellClass(Object.keys(character().spell_classes)[0] || 'static');
       setLastActiveCharacterId(character().id);
       setSpellsSelectingMode(false);
@@ -196,25 +194,25 @@ export const Dnd2024Spells = (props) => {
 
   const spendSpellSlot = async (level) => {
     let newValue;
-    if (spentSpellSlots()[level]) {
-      newValue = { ...spentSpellSlots(), [level]: spentSpellSlots()[level] + 1 };
+    if (character().spent_spell_slots[level]) {
+      newValue = { ...character().spent_spell_slots, [level]: character().spent_spell_slots[level] + 1 };
     } else {
-      newValue = { ...spentSpellSlots(), [level]: 1 };
+      newValue = { ...character().spent_spell_slots, [level]: 1 };
     }
 
     const result = await updateCharacterRequest(
       appState.accessToken, character().provider, character().id, { character: { spent_spell_slots: newValue }, only_head: true }
     );
-    if (result.errors_list === undefined) setSpentSpellSlots(newValue);
+    if (result.errors_list === undefined) props.onReplaceCharacter({ spent_spell_slots: newValue });
   }
 
   const freeSpellSlot = async (level) => {
-    const newValue = { ...spentSpellSlots(), [level]: spentSpellSlots()[level] - 1 };
+    const newValue = { ...character().spent_spell_slots, [level]: character().spent_spell_slots[level] - 1 };
 
     const result = await updateCharacterRequest(
       appState.accessToken, character().provider, character().id, { character: { spent_spell_slots: newValue }, only_head: true }
     );
-    if (result.errors_list === undefined) setSpentSpellSlots(newValue);
+    if (result.errors_list === undefined) props.onReplaceCharacter({ spent_spell_slots: newValue });
   }
 
   const updateCharacterSpell = async (spellId, payload) => {
@@ -461,7 +459,7 @@ export const Dnd2024Spells = (props) => {
                   character={character()}
                   activeSpellClass={activeSpellClass()}
                   spells={filteredCharacterSpells().filter((item) => item.spell.level === level)}
-                  spentSpellSlots={spentSpellSlots()}
+                  spentSpellSlots={character().spent_spell_slots}
                   canPrepareSpells={canPrepareSpells()}
                   slotsAmount={character().spells_slots[level]}
                   onEnableSpell={enableSpell}

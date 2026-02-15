@@ -36,6 +36,8 @@ const TRANSLATION = {
 }
 
 export const SpellsToggleList = (props) => {
+  const spentSpellSlots = () => props.spentSpellSlots
+
   const [changingSpell, setChangingSpell] = createSignal(null);
   const [descriptions, setDescriptions] = createSignal({});
   const [openDescriptions, setOpenDescriptions] = createSignal({});
@@ -110,14 +112,14 @@ export const SpellsToggleList = (props) => {
               {props.level} {localize(TRANSLATION, locale())['level']}
             </Show>
           </h2>
-          <Show when={props.spentSpellSlots}>
+          <Show when={spentSpellSlots()}>
             <div class="flex">
-              <For each={[...Array((props.spentSpellSlots[props.level] || 0)).keys()]}>
+              <For each={[...Array((spentSpellSlots()[props.level] || 0)).keys()]}>
                 {() =>
                   <Checkbox filled checked classList="mr-1" onToggle={() => props.onFreeSpellSlot(props.level)} />
                 }
               </For>
-              <For each={[...Array(props.slotsAmount - (props.spentSpellSlots[props.level] || 0)).keys()]}>
+              <For each={[...Array(props.slotsAmount - (spentSpellSlots()[props.level] || 0)).keys()]}>
                 {() =>
                   <Checkbox filled classList="mr-1" onToggle={() => props.onSpendSpellSlot(props.level)} />
                 }
