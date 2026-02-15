@@ -8,6 +8,26 @@ import { modifier } from '../../../../../helpers';
 export const SpellAttack = (props) => {
   const [locale] = useAppLocale();
 
+  const rollAttack = (event) => {
+    event.stopPropagation();
+    const damage = props.effects.find((item) => item.includes('damage,'))
+
+    if (damage) {
+      const values = damage.split(',');
+      const damageDice = props.cantripsDamageDice ? values[values.length - 1].replace('1d', props.cantripsDamageDice) : values[values.length - 1];
+
+      const dices = [];
+      const parsedItem = damageDice.split('d');
+      for (var i = 0; i < parsedItem[0]; i++) {
+        dices.push(`D${parsedItem[1]}`)
+      }
+
+      props.openAttackRoll('/check attack spell', props.alterHit ? props.alterHit : props.character.spell_classes[props.activeSpellClass].attack_bonus, props.title, dices, 0);
+    } else {
+      props.openDiceRoll('/check attack spell', props.alterHit ? props.alterHit : props.character.spell_classes[props.activeSpellClass].attack_bonus, props.title);
+    }
+  }
+
   return (
     <p class="spell-attribute">
       <Show when={props.hit && (props.character.spell_classes[props.activeSpellClass] || props.alterHit)}>
@@ -24,7 +44,7 @@ export const SpellAttack = (props) => {
               text={
                 modifier(props.alterHit ? props.alterHit : props.character.spell_classes[props.activeSpellClass].attack_bonus)
               }
-              onClick={(event) => { event.stopPropagation(); props.openDiceRoll('/check attack spell', props.alterHit ? props.alterHit : props.character.spell_classes[props.activeSpellClass].attack_bonus, props.title) }}
+              onClick={(event) => rollAttack(event)}
             />
           </div>
         </Show>

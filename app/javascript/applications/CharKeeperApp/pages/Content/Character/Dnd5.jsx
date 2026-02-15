@@ -32,7 +32,7 @@ export const Dnd5 = (props) => {
   const [activeMobileTab, setActiveMobileTab] = createSignal('abilities');
   const [activeTab, setActiveTab] = createSignal('combat');
 
-  const { DiceRoll, openDiceRoll, openSimpleDiceRoll } = createDiceRoll();
+  const { DiceRoll, openDiceRoll, openAttackRoll } = createDiceRoll();
   const [appState] = useAppState();
   const [locale, dict] = useAppLocale();
 
@@ -165,7 +165,7 @@ export const Dnd5 = (props) => {
                   <Combat
                     character={character()}
                     openDiceRoll={openDiceRoll}
-                    openSimpleDiceRoll={openSimpleDiceRoll}
+                    openAttackRoll={openAttackRoll}
                     onReplaceCharacter={props.onReplaceCharacter}
                   />
                 </Show>
@@ -205,7 +205,12 @@ export const Dnd5 = (props) => {
               <Show
                 when={character().provider === 'dnd5'}
                 fallback={
-                  <Dnd2024Spells character={character()} openDiceRoll={openDiceRoll} onReplaceCharacter={props.onReplaceCharacter} />
+                  <Dnd2024Spells
+                    character={character()}
+                    openDiceRoll={openDiceRoll}
+                    openAttackRoll={openAttackRoll}
+                    onReplaceCharacter={props.onReplaceCharacter}
+                  />
                 }
               >
                 <Dnd5Spells character={character()} openDiceRoll={openDiceRoll} onReplaceCharacter={props.onReplaceCharacter} />
@@ -317,7 +322,7 @@ export const Dnd5 = (props) => {
                   <Combat
                     character={character()}
                     openDiceRoll={openDiceRoll}
-                    openSimpleDiceRoll={openSimpleDiceRoll}
+                    openAttackRoll={openAttackRoll}
                     onReplaceCharacter={props.onReplaceCharacter}
                   />
                 </Show>
@@ -362,7 +367,12 @@ export const Dnd5 = (props) => {
               <Show
                 when={character().provider === 'dnd5'}
                 fallback={
-                  <Dnd2024Spells character={character()} openDiceRoll={openDiceRoll} onReplaceCharacter={props.onReplaceCharacter} />
+                  <Dnd2024Spells
+                    character={character()}
+                    openDiceRoll={openDiceRoll}
+                    openAttackRoll={openAttackRoll}
+                    onReplaceCharacter={props.onReplaceCharacter}
+                  />
                 }
               >
                 <Dnd5Spells character={character()} openDiceRoll={openDiceRoll} onReplaceCharacter={props.onReplaceCharacter} />

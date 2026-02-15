@@ -452,6 +452,7 @@ export const Dnd2024Spells = (props) => {
               onDisableSpell={disableSpell}
               onUpdateCharacterSpell={updateCharacterSpell}
               openDiceRoll={props.openDiceRoll}
+              openAttackRoll={props.openAttackRoll}
             />
             <For each={Array.from([...Array(character().available_spell_level).keys()], (x) => x + 1)}>
               {(level) =>
@@ -469,6 +470,7 @@ export const Dnd2024Spells = (props) => {
                   onFreeSpellSlot={freeSpellSlot}
                   onUpdateCharacterSpell={updateCharacterSpell}
                   openDiceRoll={props.openDiceRoll}
+                  openAttackRoll={props.openAttackRoll}
                 />
               }
             </For>

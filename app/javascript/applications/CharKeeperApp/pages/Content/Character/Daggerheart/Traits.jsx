@@ -9,10 +9,12 @@ import { modifier, localize } from '../../../../helpers';
 
 const TRANSLATION = {
   en: {
-    helpMessage: "Distribute the following starting modifiers across your character's traits in any order you wish: +2, +1, +1, 0, 0, −1."
+    helpMessage: "Distribute the following starting modifiers across your character's traits in any order you wish: +2, +1, +1, 0, 0, −1.",
+    check: 'Trait'
   },
   ru: {
-    helpMessage: "Распределите следующие модификаторы между характеристиками вашего персонажа в любом порядке: +2, +1, +1, 0, 0, −1."
+    helpMessage: "Распределите следующие модификаторы между характеристиками вашего персонажа в любом порядке: +2, +1, +1, 0, 0, −1.",
+    check: 'Характеристика'
   }
 }
 
@@ -82,9 +84,9 @@ export const DaggerheartTraits = (props) => {
               <For each={Object.entries(config.traits).map(([key, values]) => [key, localize(values.name, locale())])}>
                 {([slug, trait]) =>
                   <div>
-                    <p class="text-sm uppercase text-center mb-2 dark:text-white">{trait}</p>
+                    <p class="text-sm uppercase text-center mb-2">{trait}</p>
                     <div class="mx-auto flex items-center justify-center">
-                      <p class="text-2xl font-normal! dark:text-snow">
+                      <p class="text-2xl font-normal!">
                         {editMode() ?
                           traitsData()[slug] :
                           <Dice
@@ -92,7 +94,7 @@ export const DaggerheartTraits = (props) => {
                             height="64"
                             text={modifier(character().modified_traits[slug])}
                             textClassList="text-4xl"
-                            onClick={() => props.openDiceRoll(`/check attr ${slug}`, character().modified_traits[slug])}
+                            onClick={() => props.openDiceRoll(`/check attr ${slug}`, character().modified_traits[slug], `${localize(TRANSLATION, locale()).check}, ${trait}`)}
                           />
                         }
                       </p>

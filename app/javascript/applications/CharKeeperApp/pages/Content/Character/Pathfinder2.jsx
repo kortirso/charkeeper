@@ -18,7 +18,7 @@ export const Pathfinder2 = (props) => {
   const [activeMobileTab, setActiveMobileTab] = createSignal('abilities');
   const [activeTab, setActiveTab] = createSignal('combat');
 
-  const { DiceRoll, openDiceRoll, openSimpleDiceRoll } = createDiceRoll();
+  const { DiceRoll, openDiceRoll, openAttackRoll } = createDiceRoll();
   const [, dict] = useAppLocale();
 
   const t = i18n.translator(dict);
@@ -71,7 +71,7 @@ export const Pathfinder2 = (props) => {
                 <Combat
                   character={character()}
                   openDiceRoll={openDiceRoll}
-                  openSimpleDiceRoll={openSimpleDiceRoll}
+                  openAttackRoll={openAttackRoll}
                   onReplaceCharacter={props.onReplaceCharacter}
                 />
               </div>
@@ -160,7 +160,7 @@ export const Pathfinder2 = (props) => {
                 <Combat
                   character={character()}
                   openDiceRoll={openDiceRoll}
-                  openSimpleDiceRoll={openSimpleDiceRoll}
+                  openAttackRoll={openAttackRoll}
                   onReplaceCharacter={props.onReplaceCharacter}
                 />
               </div>
