@@ -285,5 +285,16 @@
     "undercommon": { "name": { "en": "Undercommon", "ru": "Подземный", "es": "Infracomún" } },
     "infernal": { "name": { "en": "Infernal", "ru": "Инфернальный", "es": "Infernal" } },
     "druidic": { "name": { "en": "Druidic", "ru": "Друидический", "es": "Druidico" } }
+  },
+  "alignments": {
+    "lawful_good": { "name": { "en": "Lawful good", "es": "Legal bueno", "ru": "Законопослушно добрый" } },
+    "lawful_neutral": { "name": { "en": "Lawful neutral", "es": "Legal neutral", "ru": "Законопослушно нейтральный" } },
+    "lawful_evil": { "name": { "en": "Lawful evil", "es": "Legal malvado", "ru": "Законопослушно злой" } },
+    "neutral_good": { "name": { "en": "Neutral good", "es": "Neutral bueno", "ru": "Нейтрально добрый" } },
+    "neutral": { "name": { "en": "Neutral", "es": "Neutral", "ru": "Нейтральный" } },
+    "neutral_evil": { "name": { "en": "Neutral evil", "es": "Neutral malvado", "ru": "Нейтрально злой" } },
+    "chaotic_good": { "name": { "en": "Chaotic good", "es": "Caótico bueno", "ru": "Хаотично добрый" } },
+    "chaotic_neutral": { "name": { "en": "Chaotic neutral", "es": "Caótico neutral", "ru": "Хаотично нейтральный" } },
+    "chaotic_evil": { "name": { "en": "Chaotic evil", "es": "Caótico malvado", "ru": "Хаотично злой" } }
   }
 }

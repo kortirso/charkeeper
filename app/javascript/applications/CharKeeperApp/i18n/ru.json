@@ -290,17 +290,6 @@
     "thunder": "Звук"
   },
   "dnd": {
-    "alignments": {
-      "lawful_good": "Законопослушно добрый",
-      "lawful_neutral": "Законопослушно нейтральный",
-      "lawful_evil": "Законопослушно злой",
-      "neutral_good": "Нейтрально добрый",
-      "neutral": "Нейтральный",
-      "neutral_evil": "Нейтрально злой",
-      "chaotic_good": "Хаотично добрый",
-      "chaotic_neutral": "Хаотично нейтральный",
-      "chaotic_evil": "Хаотично злой"
-    },
     "coreWeaponSkills": {
       "light": "Простое оружие",
       "martial": "Воинское оружие"

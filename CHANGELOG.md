@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## Unreleased
 ### Added
 - combination of attack and damage rolls
+- character info block
 
 ### Modified
 - character rolls from application
