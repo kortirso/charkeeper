@@ -5,7 +5,7 @@ const CHARKEEPER_HOST_CACHE_NAME = 'CharKeeperHost';
 export const apiRequest = async ({ url, options }) => {
   if (window.__TAURI_INTERNALS__) {
     const { platform } = window.__TAURI__.os;
-    const platformData = `platform=${platform()}&version=0.4.7`;
+    const platformData = `platform=${platform()}&version=0.4.8`;
 
     const cacheValue = await readFromCache(CHARKEEPER_HOST_CACHE_NAME);
     const base_host = cacheValue === null || cacheValue === undefined ? 'charkeeper.org' : cacheValue;
@@ -13,7 +13,7 @@ export const apiRequest = async ({ url, options }) => {
     if (url.endsWith('.json')) url = `https://${base_host}${url}?${platformData}`;
     else url = `https://${base_host}${url}&${platformData}`;
   } else {
-    const platformData = `platform=web&version=0.4.7`;
+    const platformData = `platform=web&version=0.4.8`;
 
     if (url.endsWith('.json')) url = `${url}?${platformData}`;
     else url = `${url}&${platformData}`;
