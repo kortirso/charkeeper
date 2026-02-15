@@ -3,17 +3,19 @@
 module NotesContext
   class ChangeCommand < BaseCommand
     use_contract do
+      config.messages.namespace = :note
+
       params do
         required(:note).filled(type_included_in?: [::Character::Note, ::Campaign::Note])
-        optional(:value).filled(:string, max_size?: 200)
         optional(:title).filled(:string, max_size?: 50)
+        optional(:value).filled(:string, max_size?: 500)
       end
     end
 
     private
 
     def do_prepare(input)
-      input[:value] = sanitize(input[:value])
+      input[:value] = sanitize(input[:value]) if input[:value]
     end
 
     def do_persist(input)

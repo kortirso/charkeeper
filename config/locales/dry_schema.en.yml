@@ -8,6 +8,14 @@ en:
       unexpected_key: Unknown param
       included_in?: Unknown value
       max_size?: Too long value
+      note:
+        rules:
+          title:
+            filled?: A title is required
+            max_size?: The title cannot be longer than 50 characters
+          description:
+            filled?: A description is required
+            max_size?: The description cannot be longer than 500 characters
       daggerheart_project:
         rules:
           title:

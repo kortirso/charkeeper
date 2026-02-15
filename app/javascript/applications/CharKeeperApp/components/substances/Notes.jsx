@@ -3,20 +3,32 @@ import { createStore } from 'solid-js/store';
 import * as i18n from '@solid-primitives/i18n';
 
 import { Input, Toggle, Button, IconButton, ErrorWrapper, TextArea } from '../../components';
-import { useAppState, useAppLocale } from '../../context';
+import { useAppState, useAppLocale, useAppAlert } from '../../context';
 import { Close, Edit } from '../../assets';
 import { fetchNotesRequest } from '../../requests/fetchNotesRequest';
 import { createNoteRequest } from '../../requests/createNoteRequest';
 import { updateNoteRequest } from '../../requests/updateNoteRequest';
 import { removeNoteRequest } from '../../requests/removeNoteRequest';
-import { localize } from '../../helpers';
+import { localize, performResponse } from '../../helpers';
 
 const TRANSLATION = {
   en: {
-    textHelp: 'You can use Markdown for editing description'
+    textHelp: 'You can use Markdown for editing description',
+    newNote: 'Add new note',
+    newNoteTitle: 'Title',
+    newNoteValue: 'Note text'
   },
   ru: {
-    textHelp: 'Вы можете использовать Markdown для редактирования описания'
+    textHelp: 'Вы можете использовать Markdown для редактирования описания',
+    newNote: 'Добавить новую заметку',
+    newNoteTitle: 'Заголовок',
+    newNoteValue: 'Текст заметки'
+  },
+  es: {
+    textHelp: 'Puedes usar Markdown para editar la descripción.',
+    newNote: 'Añadir nueva nota',
+    newNoteTitle: 'Título',
+    newNoteValue: 'Texto de nota'
   }
 }
 
@@ -32,6 +44,7 @@ export const Notes = (props) => {
   });
 
   const [appState] = useAppState();
+  const [{ renderAlerts }] = useAppAlert();
   const [locale, dict] = useAppLocale();
 
   const t = i18n.translator(dict);
@@ -67,24 +80,30 @@ export const Notes = (props) => {
 
   const createNote = async () => {
     const result = await createNoteRequest(appState.accessToken, type(), appState.activePageParams.id, { note: noteForm });
-
-    if (result.errors_list === undefined) {
-      setNotes([result.note].concat(notes()));
-      cancelNote();
-    }
+    performResponse(
+      result,
+      function() { // eslint-disable-line solid/reactivity
+        setNotes([result.note].concat(notes()));
+        cancelNote();
+      },
+      function() { renderAlerts(result.errors_list) }
+    );
   }
 
   const updateNote = async () => {
     const result = await updateNoteRequest(appState.accessToken, type(), appState.activePageParams.id, noteForm.id, { note: noteForm });
+    performResponse(
+      result,
+      function() { // eslint-disable-line solid/reactivity
+        setNotes(notes().slice().map((item) => {
+          if (item.id !== noteForm.id) return item;
 
-    if (result.errors_list === undefined) {
-      setNotes(notes().slice().map((item) => {
-        if (item.id !== noteForm.id) return item;
-
-        return result.note;
-      }));
-      cancelNote();
-    }
+          return result.note;
+        }));
+        cancelNote();
+      },
+      function() { renderAlerts(result.errors_list) }
+    );
   }
 
   const cancelNote = () => {
@@ -96,9 +115,14 @@ export const Notes = (props) => {
 
   const removeNote = async (event, noteId) => {
     event.stopPropagation();
-
     const result = await removeNoteRequest(appState.accessToken, type(), appState.activePageParams.id, noteId);
-    if (result.errors_list === undefined) setNotes(notes().filter((item) => item.id !== noteId));
+    performResponse(
+      result,
+      function() { // eslint-disable-line solid/reactivity
+        setNotes(notes().filter((item) => item.id !== noteId));
+      },
+      function() { renderAlerts(result.errors_list) }
+    );
   }
 
   return (
@@ -110,13 +134,13 @@ export const Notes = (props) => {
             <div class="flex-1">
               <Input
                 containerClassList="mb-2"
-                labelText={t('notes.newNoteTitle')}
+                labelText={TRANSLATION[locale()].newNoteTitle}
                 value={noteForm.title}
                 onInput={(value) => setNoteForm({ ...noteForm, title: value })}
               />
               <TextArea
                 rows="5"
-                labelText={t('notes.newNoteValue')}
+                labelText={TRANSLATION[locale()].newNoteValue}
                 value={noteForm.value}
                 onChange={(value) => setNoteForm({ ...noteForm, value: value })}
               />
@@ -124,18 +148,15 @@ export const Notes = (props) => {
             </div>
             <div class="flex justify-end mt-4">
               <Button outlined textable size="small" classList="mr-4" onClick={cancelNote}>{t('cancel')}</Button>
-              <Button
-                default
-                textable
-                size="small"
-                onClick={() => noteForm.id === undefined ? createNote() : updateNote()}
-              >{t('save')}</Button>
+              <Button default textable size="small" onClick={() => noteForm.id === undefined ? createNote() : updateNote()}>
+                {t('save')}
+              </Button>
             </div>
           </div>
         }
       >
         <Button default textable classList="mb-2 w-full uppercase" onClick={addNote}>
-          {t('notes.newNote')}
+          {TRANSLATION[locale()].newNote}
         </Button>
         <Show when={notes() !== undefined}>
           <For each={notes()}>
@@ -153,11 +174,7 @@ export const Notes = (props) => {
                     class="feat-markdown"
                     innerHTML={note.markdown_value} // eslint-disable-line solid/no-innerhtml
                   />
-                  <Button
-                    default
-                    classList="absolute -bottom-4 -right-4 rounded opacity-50"
-                    onClick={() => editNote(note)}
-                  >
+                  <Button default classList="absolute -bottom-4 -right-4 rounded opacity-50" onClick={() => editNote(note)}>
                     <Edit width={20} height={20} />
                   </Button>
                 </div>

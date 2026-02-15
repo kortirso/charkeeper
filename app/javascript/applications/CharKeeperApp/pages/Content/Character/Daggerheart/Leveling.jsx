@@ -92,9 +92,10 @@ export const DaggerheartLeveling = (props) => {
     Promise.all([fetchHomebrews()]).then(
       ([homebrewsData]) => {
         setHomebrews(homebrewsData);
-        setDomainsData(character().domains);
       }
     );
+
+    setDomainsData(character().domains);
   });
 
   const daggerheartClasses = createMemo(() => {

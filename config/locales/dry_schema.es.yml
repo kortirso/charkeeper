@@ -8,6 +8,14 @@ es:
       unexpected_key: Párametros desconocidos
       included_in?: Valor desconocido
       max_size?: Valor muy largo
+      note:
+        rules:
+          title:
+            filled?: Se requiere un título
+            max_size?: El título no puede tener más de 50 caracteres
+          description:
+            filled?: Se requiere una descripción
+            max_size?: El descripción no puede tener más de 500 caracteres
       daggerheart_project:
         rules:
           title:

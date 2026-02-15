@@ -140,11 +140,6 @@
       "backpack": "Mochila"
     }
   },
-  "notes": {
-    "newNote": "Añadir nueva nota",
-    "newNoteTitle": "Título",
-    "newNoteValue": "Texto de nota"
-  },
   "equipment": {
     "weight": "Peso",
     "cost": "Costo",

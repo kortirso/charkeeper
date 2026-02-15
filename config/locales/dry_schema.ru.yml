@@ -8,6 +8,14 @@ ru:
       unexpected_key: Неизвестный параметр
       included_in?: Неизвестное значение
       max_size?: Размер превышен
+      note:
+        rules:
+          title:
+            filled?: Необходимо указать заголовок
+            max_size?: Заголовок не может быть длиннее, чем 50 символов
+          value:
+            filled?: Необходимо указать описание
+            max_size?: Описание не может быть длиннее, чем 500 символов
       daggerheart_project:
         rules:
           title:

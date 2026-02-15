@@ -3,10 +3,12 @@
 module NotesContext
   class AddCommand < BaseCommand
     use_contract do
+      config.messages.namespace = :note
+
       params do
         required(:noteable).filled(type_included_in?: [::Character, ::Campaign])
-        required(:value).filled(:string, max_size?: 200)
         required(:title).filled(:string, max_size?: 50)
+        required(:value).filled(:string, max_size?: 500)
       end
     end
 

@@ -140,11 +140,6 @@
       "backpack": "Рюкзак"
     }
   },
-  "notes": {
-    "newNote": "Добавить новую заметку",
-    "newNoteTitle": "Заголовок",
-    "newNoteValue": "Текст заметки"
-  },
   "equipment": {
     "weight": "Вес",
     "cost": "Цена",

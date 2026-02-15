@@ -133,7 +133,7 @@ export const DaggerheartRest = (props) => {
   const restActions = createMemo(() => {
     if (value() === null) return {};
 
-    const result = DOWNTIME_ACTIONS.reduce((acc, key) => {
+    const result = DOWNTIME_ACTIONS.reduce((acc, key) => { // eslint-disable-line solid/reactivity
       acc[key] = replace(localize(TRANSLATION, locale())[key.startsWith('clear') ? `${key}_${value()}` : key], { tier: character().tier });
       return acc;
     }, {});
@@ -192,7 +192,7 @@ export const DaggerheartRest = (props) => {
 
     performResponse(
       result,
-      function() {
+      function() { // eslint-disable-line solid/reactivity
         setProjects([result.project].concat(projects()));
         cancelProject();
       },
@@ -205,7 +205,7 @@ export const DaggerheartRest = (props) => {
 
     performResponse(
       result,
-      function() {
+      function() { // eslint-disable-line solid/reactivity
         setProjects(projects().slice().map((item) => {
           if (item.id !== projectForm.id) return item;
 
@@ -230,7 +230,7 @@ export const DaggerheartRest = (props) => {
     const result = await removeDaggerheartProjectRequest(appState.accessToken, appState.activePageParams.id, projectId);
     performResponse(
       result,
-      function() {
+      function() { // eslint-disable-line solid/reactivity
         setProjects(projects().filter((item) => item.id !== projectId));
       },
       function() { renderAlerts(result.errors_list) }
