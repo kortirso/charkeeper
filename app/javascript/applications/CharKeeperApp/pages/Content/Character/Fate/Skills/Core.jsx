@@ -3,7 +3,7 @@ import { createSignal, For, Show, batch } from 'solid-js';
 import { EditWrapper, Levelbox, Label, Dice } from '../../../../../components';
 import { useAppLocale } from '../../../../../context';
 import config from '../../../../../data/fate.json';
-import { modifier } from '../../../../../helpers';
+import { modifier, localize } from '../../../../../helpers';
 
 const TRANSLATION = {
   en: {
@@ -14,7 +14,8 @@ const TRANSLATION = {
       good: 'Good',
       fair: 'Fair',
       average: 'Average'
-    }
+    },
+    check: 'Skill'
   },
   ru: {
     title: 'Навыки',
@@ -24,7 +25,8 @@ const TRANSLATION = {
       good: 'Хороший',
       fair: 'Неплохой',
       average: 'Средний'
-    }
+    },
+    check: 'Навык'
   },
   es: {
     title: 'Skills',
@@ -34,7 +36,8 @@ const TRANSLATION = {
       good: 'Good',
       fair: 'Fair',
       average: 'Average'
-    }
+    },
+    check: 'Skill'
   }
 }
 
@@ -89,7 +92,7 @@ export const FateCoreSkills = (props) => {
                             width="30"
                             height="30"
                             text={modifier(value)}
-                            onClick={() => props.openDiceRoll(`/check skill ${slug}`, character().selected_skills[slug])}
+                            onClick={() => props.openDiceRoll(`/check skill ${slug}`, character().selected_skills[slug], `${localize(TRANSLATION, locale()).check}, ${config.skills[slug].name[locale()]}`)}
                           />
                         </p>
                       }

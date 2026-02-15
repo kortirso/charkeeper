@@ -117,8 +117,8 @@ export const Combat = (props) => {
     })
   }
 
-  const openAttackRoll = (attack) => {
-    const dices = attack.damage.split('+').reduce((acc, item) => {
+  const openAttackRoll = (attack, attackBonus) => {
+    const dices = attack.damage.toString().split('+').reduce((acc, item) => {
       if (!item.includes('d')) return acc;
 
       const parsedItem = item.split('d');
@@ -128,7 +128,11 @@ export const Combat = (props) => {
       return acc;
     }, []);
 
-    if (dices.length > 0) props.openSimpleDiceRoll(dices, attack.damage_bonus);
+    if (dices.length > 0) {
+      props.openAttackRoll(`/check attack ${attack.name}`, attackBonus, attack.name, dices, attack.damage_bonus);
+    } else {
+      props.openDiceRoll(`/check attack ${attack.name}`, attackBonus, attack.name);
+    }
   }
 
   const renderAttackDistance = (attack) => {
@@ -180,7 +184,7 @@ export const Combat = (props) => {
                           width="28"
                           height="28"
                           text={modifier(attack.attack_bonus)}
-                          onClick={() => props.openDiceRoll(`/check attack ${attack.name}`, attack.attack_bonus)}
+                          onClick={() => openAttackRoll(attack, attack.attack_bonus)}
                         />
                         <Show when={attack.thrown_attack_bonus}>
                           <span> / </span>
@@ -188,20 +192,13 @@ export const Combat = (props) => {
                             width="28"
                             height="28"
                             text={modifier(attack.thrown_attack_bonus)}
-                            onClick={() => props.openDiceRoll(`/check attack ${attack.name}`, attack.thrown_attack_bonus)}
+                            onClick={() => openAttackRoll(attack, attack.thrown_attack_bonus)}
                           />
                         </Show>
                       </div>
                     </td>
                     <td class="pt-2 pb-1">
-                      <div class="flex items-center justify-center h-7 cursor-pointer">
-                        <Dice
-                          width="28"
-                          height="28"
-                          text={`${attack.damage}${attack.damage_bonus !== 0 ? modifier(attack.damage_bonus) : ''}`}
-                          onClick={() => openAttackRoll(attack)}
-                        />
-                      </div>
+                      <p class="text-center h-7">{attack.damage}{attack.damage_bonus !== 0 ? modifier(attack.damage_bonus) : ''}</p>
                     </td>
                     <td class="pt-2 pb-1">
                       <div class="flex items-center justify-center h-7">

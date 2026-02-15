@@ -5,7 +5,7 @@ import { ErrorWrapper, EditWrapper, Button, Input, TextArea, Select, Dice } from
 import { useAppState, useAppAlert, useAppLocale } from '../../../../context';
 import config from '../../../../data/fate.json';
 import { updateCharacterRequest } from '../../../../requests/updateCharacterRequest';
-import { translate, modifier } from '../../../../helpers';
+import { translate, modifier, localize } from '../../../../helpers';
 
 const TRANSLATION = {
   en: {
@@ -14,7 +14,8 @@ const TRANSLATION = {
     stuntTitle: 'Title',
     description: 'Description',
     skill: 'Skill',
-    removeStunt: 'Remove stunt'
+    removeStunt: 'Remove stunt',
+    check: 'Stunt'
   },
   ru: {
     title: 'Трюки',
@@ -22,7 +23,8 @@ const TRANSLATION = {
     stuntTitle: 'Заголовок',
     description: 'Описание',
     skill: 'Навык',
-    removeStunt: 'Удалить трюк'
+    removeStunt: 'Удалить трюк',
+    check: 'Трюк'
   },
   es: {
     title: 'Trucos',
@@ -30,7 +32,8 @@ const TRANSLATION = {
     stuntTitle: 'Título',
     description: 'Descripción',
     skill: 'Habilidad',
-    removeStunt: 'Eliminar truco'
+    removeStunt: 'Eliminar truco',
+    check: 'Truco'
   }
 }
 
@@ -112,7 +115,7 @@ export const FateStunts = (props) => {
                           width="30"
                           height="30"
                           text={modifier(character().selected_skills[stunt.skill] + 2)}
-                          onClick={() => props.openDiceRoll(`/check stunt ${stunt.title}`, character().selected_skills[stunt.skill] + 2)}
+                          onClick={() => props.openDiceRoll(`/check stunt ${stunt.title}`, character().selected_skills[stunt.skill] + 2, `${localize(TRANSLATION, locale()).check}, ${stunt.title}`)}
                         />
                       </Show>
                     </p>
