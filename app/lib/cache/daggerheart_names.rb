@@ -14,7 +14,7 @@ module Cache
 
     def push_item(key:, item:)
       list = fetch_list
-      list[key][item.id] = new_item_value
+      list[key][item.id] = new_item_value(item)
       Rails.cache.write(CACHE_KEY, list, expires_in: 1.day)
     end
 

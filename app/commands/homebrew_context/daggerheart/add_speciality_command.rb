@@ -3,6 +3,8 @@
 module HomebrewContext
   module Daggerheart
     class AddSpecialityCommand < BaseCommand
+      include Deps[cache: 'cache.daggerheart_names']
+
       use_contract do
         config.messages.namespace = :homebrew_speciality
 
@@ -28,6 +30,8 @@ module HomebrewContext
 
       def do_persist(input)
         result = ::Daggerheart::Homebrew::Speciality.create!(input[:attributes].merge(input[:data]))
+
+        cache.push_item(key: :classes, item: result)
 
         { result: result }
       end

@@ -3,6 +3,8 @@
 module HomebrewContext
   module Daggerheart
     class AddRaceCommand < BaseCommand
+      include Deps[cache: 'cache.daggerheart_names']
+
       use_contract do
         config.messages.namespace = :homebrew_race
 
@@ -17,6 +19,8 @@ module HomebrewContext
 
       def do_persist(input)
         result = ::Daggerheart::Homebrew::Race.create!(input)
+
+        cache.push_item(key: :ancestries, item: result)
 
         { result: result }
       end

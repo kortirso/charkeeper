@@ -3,6 +3,8 @@
 module HomebrewContext
   module Daggerheart
     class AddCommunityCommand < BaseCommand
+      include Deps[cache: 'cache.daggerheart_names']
+
       use_contract do
         config.messages.namespace = :homebrew_community
 
@@ -17,6 +19,8 @@ module HomebrewContext
 
       def do_persist(input)
         result = ::Daggerheart::Homebrew::Community.create!(input)
+
+        cache.push_item(key: :communities, item: result)
 
         { result: result }
       end
