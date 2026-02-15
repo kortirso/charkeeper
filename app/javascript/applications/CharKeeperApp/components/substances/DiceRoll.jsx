@@ -233,6 +233,20 @@ export const createDiceRoll = () => {
         });
       }
 
+      const refreshDice = async (index) => {
+        if (damageResult()) {
+          const dice = damageResult().rolls[index][0]
+
+          const result = await createCharacterBotRequest(appState.accessToken, props.characterId, { values: [`/roll ${dice}`] });
+          const newDamageResults = [...damageResult().rolls.slice(0, index), result.result[0].result.rolls[0], ...damageResult().rolls.slice(index + 1)];
+
+          const total = newDamageResults.reduce((acc, item) => acc + item[1], 0);
+          setDamageResult({ ...damageResult(), rolls: newDamageResults, total: total });
+        } else {
+          removeDice(index);
+        }
+      }
+
       const dualityColor = (index) => {
         if (index === 0) return 'hope';
         if (index === 1) return 'fear';
@@ -414,7 +428,7 @@ export const createDiceRoll = () => {
                             fallback={
                               <Dice
                                 type={dice}
-                                onClick={() => removeDice(index())}
+                                onClick={() => refreshDice(index())}
                                 text={damageResult() ? (damageResult().rolls.length - 1 >= index() && damageResult().rolls[index()][0].includes('d') ? damageResult().rolls[index()][1] : dice) : dice}
                               />
                             }
@@ -454,7 +468,7 @@ export const createDiceRoll = () => {
                       <div class="flex items-center gap-x-2">
                         <p class="dice-button flex-1" onClick={() => setSimpleBonus(-1)}>-</p>
                         <p class="dice-button flex-1" onClick={() => setSimpleBonus(1)}>+</p>
-                        <Show when={props.provider === 'daggerheart'}>
+                        <Show when={props.provider === 'daggerheart' && isOpen() !== 'attackCommand'}>
                           <DualityDice onClick={() => setDualityMode(!dualityMode())} />
                         </Show>
                       </div>

@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Modified
 - character rolls from application
+- re-rolling damage dices
 
 ## [0.4.7] - 2026-02-11
 ### Added
