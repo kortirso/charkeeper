@@ -290,17 +290,6 @@
     "thunder": "Trueno"
   },
   "dnd": {
-    "alignments": {
-      "lawful_good": "Legal bueno",
-      "lawful_neutral": "Legal neutral",
-      "lawful_evil": "Legal malvado",
-      "neutral_good": "Neutral bueno",
-      "neutral": "Neutral",
-      "neutral_evil": "Neutral malvado",
-      "chaotic_good": "Caótico bueno",
-      "chaotic_neutral": "Caótico neutral",
-      "chaotic_evil": "Caótico malvado"
-    },
     "coreWeaponSkills": {
       "light": "Arma ligera",
       "martial": "Arma marcial"

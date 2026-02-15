@@ -40,6 +40,7 @@ export * from './Content/Character/Dnd5/BeastFeatures';
 export * from './Content/Character/Dnd5/Craft';
 export * from './Content/Character/Dnd5/Bonuses';
 export * from './Content/Character/Dnd5/Exhaustion';
+export * from './Content/Character/Dnd5/Info';
 
 export * from './Content/Character/Dnd2024/Spells';
 export * from './Content/Character/Dnd2024/Spells/CastTime';
@@ -73,6 +74,7 @@ export * from './Content/Character/Daggerheart/Stances';
 export * from './Content/Character/Daggerheart/Bonuses';
 export * from './Content/Character/Daggerheart/Craft';
 export * from './Content/Character/Daggerheart/Scars';
+export * from './Content/Character/Daggerheart/Info';
 
 export * from './Content/Character/Dc20';
 export * from './Content/Character/Dc20/Abilities';
