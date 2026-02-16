@@ -50,18 +50,18 @@ describe BotContext::Commands::Campaign do
 
       it 'creates campaign and attaches to channel', :aggregate_failures do
         expect { service_call }.to change(Campaign, :count).by(1)
-        expect(channel.campaign).to eq Campaign.last
+        expect(channel.reload.campaign).to eq Campaign.last
       end
 
       context 'with existing campaign' do
         before do
           campaign = create :campaign, :daggerheart
-          create :campaign_channel, campaign: campaign, channel: channel
+          channel.update!(campaign: campaign)
         end
 
-        it 'creates campaign and does not attach to channel', :aggregate_failures do
+        it 'creates campaign and attaches to channel', :aggregate_failures do
           expect { service_call }.to change(Campaign, :count).by(1)
-          expect(channel.campaign).not_to eq Campaign.last
+          expect(channel.reload.campaign).to eq Campaign.last
         end
       end
     end
@@ -130,7 +130,7 @@ describe BotContext::Commands::Campaign do
         context 'with existing campaign' do
           let!(:campaign) { create :campaign, :daggerheart }
 
-          before { create :campaign_channel, campaign: campaign, channel: channel }
+          before { channel.update!(campaign: campaign) }
 
           it 'returns channel campaign', :aggregate_failures do
             expect { service_call }.not_to change(Campaign::Channel, :count)
@@ -164,13 +164,13 @@ describe BotContext::Commands::Campaign do
 
         it 'attaches campaign to channel', :aggregate_failures do
           expect { service_call }.not_to change(Channel, :count)
-          expect(channel.campaign).to eq campaign
+          expect(channel.reload.campaign).to eq campaign
         end
 
         context 'with existing campaign' do
           before do
             campaign = create :campaign, :daggerheart
-            create :campaign_channel, campaign: campaign, channel: channel
+            channel.update!(campaign: campaign)
           end
 
           it 'does not attach campaign to channel' do

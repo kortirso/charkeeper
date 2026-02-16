@@ -25,7 +25,7 @@ module BotContext
 
       private
 
-      def create_campaign(*arguments, data) # rubocop: disable Metrics/AbcSize
+      def create_campaign(*arguments, data)
         values = BotContext::Commands::Parsers::CreateCampaign.new.call(arguments: arguments)
         result = add_campaign_command.call(user: data[:user], name: values[:name], provider: values[:system])
 
@@ -33,8 +33,7 @@ module BotContext
           external_id = data.dig(:raw_message, :chat, :id)
           if external_id
             channel = add_channel.call(provider: 'telegram', external_id: external_id.to_s)[:result]
-
-            result[:result].campaign_channels.create(channel: channel) if channel.campaign.blank?
+            channel.update!(campaign: result[:result])
           end
         end
 
@@ -66,7 +65,7 @@ module BotContext
         return unless source.in?(TELEGRAM_SOURCES)
 
         external_id = data.dig(:raw_message, :chat, :id)
-        channel = add_channel.call(provider: 'telegram', external_id: external_id.to_s)[:result]
+        channel = Channel.find_or_create_by!(provider: 'telegram', external_id: external_id.to_s)
 
         {
           type: 'show',
@@ -79,10 +78,11 @@ module BotContext
         return unless source.in?(TELEGRAM_SOURCES)
 
         external_id = data.dig(:raw_message, :chat, :id)
-        channel = add_channel.call(provider: 'telegram', external_id: external_id.to_s)[:result]
+        channel = Channel.find_or_create_by!(provider: 'telegram', external_id: external_id.to_s)
 
-        if channel.campaign.blank?
-          data[:user].campaigns.find_by!(name: name).campaign_channels.create(channel: channel)
+        if channel.campaign_id.nil?
+          campaign = data[:user].campaigns.find_by!(name: name)
+          channel.update!(campaign: campaign)
         end
         {
           type: 'set',

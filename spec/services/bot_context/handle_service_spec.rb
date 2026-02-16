@@ -36,7 +36,6 @@ describe BotContext::HandleService do
     end
 
     context 'for campaign commands' do
-      let!(:channel) { create :channel, external_id: '1' }
       let!(:campaign) { create :campaign, :daggerheart }
       let!(:character1) { create :character, :daggerheart }
       let!(:character2) { create :character, :daggerheart }
@@ -44,7 +43,7 @@ describe BotContext::HandleService do
       before do
         create :campaign_character, campaign: campaign, character: character1
         create :campaign_character, campaign: campaign, character: character2
-        create :campaign_channel, campaign: campaign, channel: channel
+        create :channel, external_id: '1', campaign: campaign
       end
 
       context 'when show' do
@@ -64,8 +63,6 @@ describe BotContext::HandleService do
     end
 
     context 'for check commands' do
-      let!(:channel) { create :channel, external_id: '1' }
-
       context 'for dnd' do
         let!(:campaign) { create :campaign, :dnd5 }
         let!(:character) { create :character }
@@ -77,7 +74,7 @@ describe BotContext::HandleService do
 
           before do
             create :campaign_character, campaign: campaign, character: character
-            create :campaign_channel, campaign: campaign, channel: channel
+            create :channel, external_id: '1', campaign: campaign
           end
 
           it 'sends message' do
@@ -99,7 +96,7 @@ describe BotContext::HandleService do
 
           before do
             create :campaign_character, campaign: campaign, character: character
-            create :campaign_channel, campaign: campaign, channel: channel
+            create :channel, external_id: '1', campaign: campaign
           end
 
           it 'sends message' do

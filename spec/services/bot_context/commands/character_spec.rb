@@ -81,7 +81,7 @@ describe BotContext::Commands::Character do
       end
 
       context 'with existing campaign' do
-        before { create :campaign_channel, campaign: campaign, channel: channel }
+        before { channel.update(campaign: campaign) }
 
         it 'attaches character to campaign' do
           expect { service_call }.to change(Campaign::Character, :count).by(1)
