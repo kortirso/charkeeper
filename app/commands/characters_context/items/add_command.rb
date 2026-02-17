@@ -13,6 +13,9 @@ module CharactersContext
 
       private
 
+      def lock_key(input) = "character_item_add_#{input[:character].id}_#{input[:item]&.id}"
+      def lock_time = 0
+
       def do_prepare(input)
         input[:state] ||= 'backpack'
       end
