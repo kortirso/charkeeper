@@ -112,6 +112,7 @@ es:
           passwords:
             different: Las contraseñas deben coincidir
           username:
+            filled?: El nombre de usuario no puede estar en blanco
             invalid: El nombre de usuario tiene un formado inválido
           locale:
             filled?: Locale debe ser completado

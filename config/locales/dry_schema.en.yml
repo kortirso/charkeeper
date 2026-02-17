@@ -112,6 +112,7 @@ en:
           passwords:
             different: Passwords must be equal
           username:
+            filled?: Username can't be blank
             invalid: Username has invalid format
           locale:
             filled?: Locale must be filled
