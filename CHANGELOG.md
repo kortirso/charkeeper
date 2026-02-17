@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Fixed
 - bug with creating pathfinder character without subclass
+- bug with rendering info for D&D 5 character
 
 ## [0.4.8] - 2026-02-15
 ### Added

@@ -43,7 +43,7 @@ export const Dnd5Info = (props) => {
     if (item === 'legacy' && character().legacy) return configNext.species[character().species].legacies[character().legacy].name[locale()];
     if (item === 'background' && character().background) return configNext.backgrounds[character().background].name[locale()];
     if (item === 'race' && character().race) return config.races[character().race].name[locale()];
-    if (item === 'subrace' && character().subrace) return configNext.races[character().race].subraces[character().subrace].name[locale()];
+    if (item === 'subrace' && character().subrace) return config.races[character().race].subraces[character().subrace].name[locale()];
 
     return character()[item];
   }
