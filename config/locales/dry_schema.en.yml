@@ -178,9 +178,15 @@ en:
             invalid_class_name: Invalid class name
             invalid_level: Invalid level
           subrace:
+            key?: Subrace is required
+            filled?: Subrace must be filled
             invalid: Invalid subrace
           health:
             invalid_value: Health values should not be negative
+          background:
+            key?: Background is required
+            filled?: Background must be filled
+            included_in?: Invalid background value
       dc20_character:
         rules:
           name:

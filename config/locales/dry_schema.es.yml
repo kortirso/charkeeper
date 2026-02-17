@@ -178,9 +178,15 @@ es:
             invalid_class_name: Nombre de clase inválido
             invalid_level: Nivel inválido
           subrace:
+            key?: Se requiere una subraza
+            filled?: Se debe poner una subraza
             invalid: Subraza inválido
           health:
             invalid_value: Los valores de vida no deberían ser negativos
+          background:
+            key?: Se requiere el origen
+            filled?: Se debe poner el origen
+            included_in?: Valor el origen inválido
       dc20_character:
         rules:
           name:
