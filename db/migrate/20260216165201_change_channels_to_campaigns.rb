@@ -11,7 +11,6 @@ class ChangeChannelsToCampaigns < ActiveRecord::Migration[8.1]
 
       channel.update(campaign_id: campaign_channel.campaign_id)
     end
-    Channel.where(campaign_id: nil).destroy_all
   end
 
   def down
