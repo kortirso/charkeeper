@@ -97,6 +97,9 @@ gem 'dentaku'
 # soft deleting
 gem 'discard', '~> 1.4'
 
+# advisory locking for processes
+gem 'with_advisory_lock'
+
 group :development, :production, :ru_production do
   gem 'get_process_mem'
   gem 'rails_performance'

@@ -87,6 +87,9 @@ module CharactersContext
 
       private
 
+      def lock_key(input) = "character_update_#{input[:character].id}"
+      def lock_time = 0
+
       def do_prepare(input) # rubocop: disable Metrics/AbcSize
         %i[traits energy].each do |key|
           input[key]&.transform_values!(&:to_i)

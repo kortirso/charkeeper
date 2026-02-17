@@ -104,6 +104,9 @@ module CharactersContext
 
       private
 
+      def lock_key(input) = "character_update_#{input[:character].id}"
+      def lock_time = 0
+
       # rubocop: disable Metrics/AbcSize, Metrics/PerceivedComplexity, Metrics/CyclomaticComplexity
       def do_prepare(input)
         input[:level] = input[:classes].values.sum(&:to_i) if input[:classes]

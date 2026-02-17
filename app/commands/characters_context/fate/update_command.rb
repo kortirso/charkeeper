@@ -41,6 +41,9 @@ module CharactersContext
 
       private
 
+      def lock_key(input) = "character_update_#{input[:character].id}"
+      def lock_time = 0
+
       def do_prepare(input)
         input[:data] = input[:character].data.attributes.merge(input.except(:character, :name, :file).stringify_keys)
       end

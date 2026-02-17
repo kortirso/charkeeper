@@ -22,6 +22,8 @@ class BaseCommand
       do_prepare(input)
       do_persist(input)
     end
+  rescue WithAdvisoryLock::FailedToAcquireLock => _e
+    { errors: ['Double saving'], errors_list: ['Double saving'] }
   end
 
   private
@@ -30,7 +32,7 @@ class BaseCommand
     lock_key_value = lock_key(input)
     return yield unless with_lock?(lock_key_value)
 
-    ApplicationRecord.with_advisory_lock(lock_key_value, &block)
+    ApplicationRecord.with_advisory_lock!(lock_key_value, timeout_seconds: lock_time, &block)
   end
 
   def with_lock?(lock_key_value)
@@ -38,6 +40,7 @@ class BaseCommand
   end
 
   def lock_key(input); end
+  def lock_time = nil
 
   def validate_contract(input)
     return { result: input, errors: {} } if contract.nil?
