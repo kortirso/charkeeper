@@ -151,7 +151,7 @@ export const DaggerheartTransformations = () => {
           closeModal();
         });
       }
-    }
+    } else renderAlerts(result.errors_list);
   }
 
   const updateFeature = async (id, originId, payload) => {
@@ -172,7 +172,7 @@ export const DaggerheartTransformations = () => {
           closeModal();
         });
       }
-    }
+    } else renderAlerts(result.errors_list);
   }
 
   const removeFeature = async (feature) => {
@@ -190,7 +190,7 @@ export const DaggerheartTransformations = () => {
 
         setTransformations(newTransformations);
       }
-    }
+    } else renderAlerts(result.errors_list);
   }
 
   const addToBook = async () => {

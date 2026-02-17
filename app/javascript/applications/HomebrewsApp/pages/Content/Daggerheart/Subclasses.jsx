@@ -185,7 +185,7 @@ export const DaggerheartSubclasses = () => {
     if (subclass.errors_list === undefined) {
       setSubclasses([subclass.subclass].concat(subclasses()));
       renderNotice(TRANSLATION[locale()].copyCompleted);
-    }
+    } else renderAlerts(result.errors_list);
   }
 
   const createSubclassFeature = async (payload) => {
@@ -208,7 +208,7 @@ export const DaggerheartSubclasses = () => {
           closeModal();
         });
       }
-    }
+    } else renderAlerts(result.errors_list);
   }
 
   const removeFeature = async (feature) => {
@@ -226,7 +226,7 @@ export const DaggerheartSubclasses = () => {
 
         setSubclasses(newSubclasses);
       }
-    }
+    } else renderAlerts(result.errors_list);
   }
 
   const addToBook = async () => {

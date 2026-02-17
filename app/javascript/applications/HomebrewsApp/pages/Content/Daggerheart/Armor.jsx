@@ -81,7 +81,7 @@ export const DaggerheartArmor = () => {
   const [open, setOpen] = createSignal(false);
 
   const [appState] = useAppState();
-  const [{ renderAlert, renderNotice }] = useAppAlert();
+  const [{ renderAlert, renderNotice, renderAlerts }] = useAppAlert();
   const [locale] = useAppLocale();
   const { Modal, openModal, closeModal } = createModal();
 
@@ -161,7 +161,7 @@ export const DaggerheartArmor = () => {
         setItemBonuses([]);
         closeModal();
       });
-    }
+    } else renderAlerts(result.errors_list);
   }
 
   const updateItem = async (formData) => {
@@ -188,7 +188,7 @@ export const DaggerheartArmor = () => {
         setItemBonuses([]);
         closeModal();
       });
-    }
+    } else renderAlerts(result.errors_list);
   }
 
   const removeItem = async (item) => {
@@ -196,7 +196,7 @@ export const DaggerheartArmor = () => {
 
     if (result.errors_list === undefined) {
       setItems(items().filter(({ id }) => id !== item.id ));
-    }
+    } else renderAlerts(result.errors_list);
   }
 
   const copyItem = async (itemId) => {
@@ -205,7 +205,7 @@ export const DaggerheartArmor = () => {
     if (item.errors_list === undefined) {
       setItems([item.item].concat(items()));
       renderNotice(TRANSLATION[locale()].copyCompleted);
-    }
+    } else renderAlerts(result.errors_list);
   }
 
   const addToBook = async () => {
@@ -217,7 +217,7 @@ export const DaggerheartArmor = () => {
         setSelectedIds([]);
       });
       renderNotice(TRANSLATION[locale()].added)
-    }
+    } else renderAlerts(result.errors_list);
   }
 
   return (

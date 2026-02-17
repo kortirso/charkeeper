@@ -182,7 +182,7 @@ export const DaggerheartDomains = () => {
         setSelectedIds([]);
       });
       renderNotice(TRANSLATION[locale()].added)
-    }
+    } else renderAlerts(result.errors_list);
   }
 
   return (

@@ -151,7 +151,7 @@ export const DaggerheartCommunities = () => {
     if (community.errors_list === undefined) {
       setCommunities([community.community].concat(communities()));
       renderNotice(TRANSLATION[locale()].copyCompleted);
-    }
+    } else renderAlerts(result.errors_list);
   }
 
   const createCommunityFeature = async (payload) => {
@@ -174,7 +174,7 @@ export const DaggerheartCommunities = () => {
           closeModal();
         });
       }
-    }
+    } else renderAlerts(result.errors_list);
   }
 
   const updateFeature = async (id, originId, payload) => {
@@ -197,7 +197,7 @@ export const DaggerheartCommunities = () => {
           closeModal();
         });
       }
-    }
+    } else renderAlerts(result.errors_list);
   }
 
   const removeFeature = async (feature) => {
@@ -215,7 +215,7 @@ export const DaggerheartCommunities = () => {
 
         setCommunities(newCommunities);
       }
-    }
+    } else renderAlerts(result.errors_list);
   }
 
   const addToBook = async () => {
@@ -227,7 +227,7 @@ export const DaggerheartCommunities = () => {
         setSelectedIds([]);
       });
       renderNotice(TRANSLATION[locale()].added)
-    }
+    } else renderAlerts(result.errors_list);
   }
 
   return (

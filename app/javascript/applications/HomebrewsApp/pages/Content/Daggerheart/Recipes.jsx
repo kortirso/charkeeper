@@ -42,7 +42,7 @@ export const DaggerheartRecipes = () => {
   const [open, setOpen] = createSignal(false);
 
   const [appState] = useAppState();
-  const [{ renderNotice }] = useAppAlert();
+  const [{ renderNotice, renderAlerts }] = useAppAlert();
   const [locale] = useAppLocale();
   const { Modal, openModal, closeModal } = createModal();
 
@@ -88,7 +88,7 @@ export const DaggerheartRecipes = () => {
         setRecipeForm({ tool_id: null, item_id: null, own: true, public: false });
         closeModal();
       });
-    }
+    } else renderAlerts(result.errors_list);
   }
 
   const removeRecipe = async (item) => {
@@ -96,7 +96,7 @@ export const DaggerheartRecipes = () => {
 
     if (result.errors_list === undefined) {
       setRecipes(recipes().filter(({ id }) => id !== item.id ));
-    }
+    } else renderAlerts(result.errors_list);
   }
 
   const copyRecipe = async (itemId) => {

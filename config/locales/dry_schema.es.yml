@@ -55,6 +55,8 @@ es:
           name:
             filled?: El nombre no puede estar en blanco
             max_size?: El tamaño del nombre no puede ser más de 50
+          description:
+            max_size?: El tamaño de la descripción no puede ser más de 500
           kind:
             filled?: El tipo no puede estar en blanco
       homebrew_feat:
