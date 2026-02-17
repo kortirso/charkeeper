@@ -49,19 +49,27 @@ module BotContextV2
 
     def send_message_to_channels(command, command_result, character)
       command_result[:character] = character
-      character.channels.each do |channel|
-        formatted_result =
-          represent_character_command.call(
-            command: command,
-            provider: PROVIDER_BASED_COMMANDS.include?(command) ? character_provider(character.class.name) : nil,
-            command_result: command_result
-          )
 
-        send_result_message(channel.external_id, formatted_result)
+      formatted_result =
+        represent_character_command.call(
+          command: command,
+          provider: PROVIDER_BASED_COMMANDS.include?(command) ? character_provider(character.class.name) : nil,
+          command_result: command_result
+        )
+
+      send_to_channels(character, formatted_result)
+    end
+
+    def send_to_channels(character, formatted_result)
+      character.channels.uniq.each do |channel|
+        case channel.provider
+        when Channel::TELEGRAM then send_telegram_message(channel.external_id, formatted_result)
+        when Channel::OWLBEAR then send_owlbear_message(channel.campaign, formatted_result)
+        end
       end
     end
 
-    def send_result_message(external_id, formatted_result)
+    def send_telegram_message(external_id, formatted_result)
       BotContext::Channels::SendToTelegramJob.perform_later(
         external_id,
         formatted_result[:errors] ? formatted_result.dig(:errors, 0) : formatted_result[:result]
@@ -74,6 +82,10 @@ module BotContextV2
       when 'Daggerheart::Character' then 'daggerheart'
       when 'Fate::Character' then 'fate'
       end
+    end
+
+    def send_owlbear_message(campaign, formatted_result)
+      CampaignChannel.broadcast_to(campaign, { message: formatted_result[:result] })
     end
   end
 end

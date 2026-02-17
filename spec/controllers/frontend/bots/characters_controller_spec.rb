@@ -50,11 +50,10 @@ describe Frontend::Bots::CharactersController do
 
             context 'when channel is present' do
               let!(:campaign) { create :campaign, provider: 'dnd5' }
-              let!(:channel) { create :channel }
 
               before do
-                create :campaign_channel, campaign: campaign, channel: channel
                 create :campaign_character, campaign: campaign, character: character
+                create :channel, campaign: campaign
               end
 
               it 'returns result', :aggregate_failures do

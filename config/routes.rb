@@ -1,9 +1,10 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  mount SolidErrors::Engine, at: '/solid_errors'
-  mount GoodJob::Engine => 'good_job'
+  mount SolidErrors::Engine, at: 'solid_errors'
+  mount GoodJob::Engine, at: 'good_job'
   mount PgHero::Engine, at: 'pghero'
+  mount ActionCable.server, at: '/cable'
 
   get 'web_telegram', to: 'web_telegram#index'
 
@@ -221,6 +222,10 @@ Rails.application.routes.draw do
   namespace :webhooks do
     resource :telegram, only: %i[create]
     resource :discord, only: %i[create]
+  end
+
+  namespace :owlbear do
+    resources :campaigns, only: %i[show]
   end
 
   scope '(:locale)', locale: /#{I18n.available_locales.join('|')}/, defaults: { locale: nil } do

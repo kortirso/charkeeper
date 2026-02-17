@@ -5,6 +5,9 @@ require 'active_support/core_ext/integer/time'
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
+  config.action_cable.url = 'wss://charkeeper.ru/cable'
+  config.action_cable.allowed_request_origins = [%r{\Ahttps?://(.+\.)?owlbear\.rodeo\z}]
+
   # Code is not reloaded between requests.
   config.enable_reloading = false
 

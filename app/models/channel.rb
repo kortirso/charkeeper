@@ -2,9 +2,9 @@
 
 class Channel < ApplicationRecord
   TELEGRAM = 'telegram'
+  OWLBEAR = 'owlbear'
 
-  has_one :campaign_channel, class_name: 'Campaign::Channel', dependent: :destroy
-  has_one :campaign, through: :campaign_channel
+  belongs_to :campaign, optional: true
 
-  enum :provider, { TELEGRAM => 0 }
+  enum :provider, { TELEGRAM => 0, OWLBEAR => 1 }
 end

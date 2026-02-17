@@ -6,8 +6,7 @@ class Campaign < ApplicationRecord
   has_many :campaign_characters, class_name: '::Campaign::Character', dependent: :destroy
   has_many :characters, through: :campaign_characters
 
-  has_many :campaign_channels, class_name: '::Campaign::Channel', dependent: :destroy
-  has_many :channels, through: :campaign_channels
+  has_many :channels, class_name: '::Channel', dependent: :destroy
   has_many :notes, class_name: '::Campaign::Note', dependent: :destroy
 
   scope :dnd5, -> { where(provider: 'dnd5') }
