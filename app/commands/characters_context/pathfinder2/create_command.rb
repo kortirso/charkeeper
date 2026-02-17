@@ -18,7 +18,7 @@ module CharactersContext
           required(:background).filled(Backgrounds)
           required(:main_class).filled(Classes)
           required(:subrace).filled(:string)
-          required(:subclass).filled(:string)
+          optional(:subclass).filled(:string)
           optional(:main_ability).filled(:string)
         end
 

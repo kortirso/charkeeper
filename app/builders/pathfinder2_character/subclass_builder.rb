@@ -9,6 +9,8 @@ module Pathfinder2Character
     private
 
     def subclass_builder(subclass_name)
+      return DummyBuilder.new if subclass_name.nil?
+
       "Pathfinder2Character::Subclasses::#{subclass_name.camelize}Builder".constantize.new
     rescue NameError => _e
       DummyBuilder.new

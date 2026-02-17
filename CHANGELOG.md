@@ -8,6 +8,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Added
 - Owlbear Rodeo integration from backend
 
+### Fixed
+- bug with creating pathfinder character without subclass
+
 ## [0.4.8] - 2026-02-15
 ### Added
 - combination of attack and damage rolls
