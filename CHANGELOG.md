@@ -8,6 +8,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Added
 - Owlbear Rodeo integration from backend
 
+### Modified
+- rendering errors during homebrew creation
+
 ### Fixed
 - bug with creating pathfinder character without subclass
 - bug with rendering info for D&D 5 character

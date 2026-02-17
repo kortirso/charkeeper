@@ -151,7 +151,7 @@ export const DaggerheartAncestries = () => {
     if (ancestry.errors_list === undefined) {
       setAncestries([ancestry.ancestry].concat(ancestries()));
       renderNotice(TRANSLATION[locale()].copyCompleted);
-    }
+    } else renderAlerts(result.errors_list);
   }
 
   const createAncestryFeature = async (payload) => {
@@ -174,7 +174,7 @@ export const DaggerheartAncestries = () => {
           closeModal();
         });
       }
-    }
+    } else renderAlerts(result.errors_list);
   }
 
   const updateFeature = async (id, originId, payload) => {

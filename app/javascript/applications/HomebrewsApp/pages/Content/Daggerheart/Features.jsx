@@ -1,6 +1,6 @@
 import { createSignal, createEffect, Show, For, batch } from 'solid-js';
 
-import { useAppState, useAppLocale } from '../../../context';
+import { useAppState, useAppLocale, useAppAlert } from '../../../context';
 import { Button, createModal, DaggerheartFeatForm, Select } from '../../../components';
 import { Trash } from '../../../assets';
 import { translate } from '../../../helpers';
@@ -35,6 +35,7 @@ export const DaggerheartFeatures = () => {
   const [appState] = useAppState();
   const [locale] = useAppLocale();
   const { Modal, openModal, closeModal } = createModal();
+  const [{ renderAlerts }] = useAppAlert();
 
   createEffect(() => {
     if (characters() !== undefined) return;
@@ -62,7 +63,7 @@ export const DaggerheartFeatures = () => {
         setCharacterId(null);
         closeModal();
       });
-    }
+    } else renderAlerts(result.errors_list);
   }
 
   const removeFeature = async (feature) => {
@@ -70,7 +71,7 @@ export const DaggerheartFeatures = () => {
 
     if (result.errors_list === undefined) {
       setFeatures(features().filter((item) => item.id !== feature.id));
-    }
+    } else renderAlerts(result.errors_list);
   }
 
   return (

@@ -18,7 +18,7 @@ module HomebrewContext
         params do
           required(:item).filled(type?: ::Daggerheart::Item)
           optional(:name).filled(:string, max_size?: 50)
-          optional(:description).maybe(:string, max_size?: 250)
+          optional(:description).maybe(:string, max_size?: 500)
           optional(:info).hash
           optional(:public).filled(:bool)
           optional(:bonuses).maybe(:array).each(:hash) do

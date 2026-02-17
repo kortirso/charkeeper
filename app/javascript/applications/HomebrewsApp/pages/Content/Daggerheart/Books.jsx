@@ -107,7 +107,7 @@ export const DaggerheartBooks = () => {
         setBookForm({ id: null, name: '', public: false });
         closeModal();
       });
-    }
+    } else renderAlerts(result.errors_list);
   }
 
   const updateBook = async () => {
@@ -133,7 +133,7 @@ export const DaggerheartBooks = () => {
 
     if (result.errors_list === undefined) {
       setBooks(books().filter(({ id }) => id !== book.id ));
-    }
+    } else renderAlerts(result.errors_list);
   }
 
   const toggleBook = async (bookId) => {

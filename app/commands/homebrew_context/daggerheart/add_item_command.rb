@@ -19,7 +19,7 @@ module HomebrewContext
           required(:user).filled(type?: ::User)
           required(:name).filled(:string, max_size?: 50)
           required(:kind).filled(Kinds)
-          optional(:description).maybe(:string, max_size?: 250)
+          optional(:description).maybe(:string, max_size?: 500)
           optional(:itemable_type).maybe(Types)
           optional(:itemable_id).maybe(:string, :uuid_v4?)
           optional(:info).hash
