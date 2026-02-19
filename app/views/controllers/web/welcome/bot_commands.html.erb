@@ -1,37 +1,39 @@
-<section class="py-8 lg:py-12 max-w-7xl mx-auto">
-  <h1 class="mb-4 font-medium! text-2xl">Bot commands</h1>
-  <p class="mb-8 light-color">All bot commands are available for in-app use, <a href="https://t.me/charkeeper_bot" class="underline" target="_blank" rel="noopener noreferrer">Telegram bot and Telegram group bot</a> and Discord bot (in progress). They use the same interface and arguments.</p>
-  <h2 class="mb-2 font-medium! text-lg">/roll</h2>
-  <p class="mb-2 light-color">Simple command for roll dices.</p>
-  <h3 class="mb-2 font-medium!">Examples</h3>
-  <ul>
-    <li><code>/roll d20</code> - roll one d20</li>
-    <li><code>/roll 2d20+4</code> - roll two d20 with modifier</li>
-    <li><code>/roll 2d20+4 2d12</code> - roll two d20 with modifier and two d12</li>
-  </ul>
-  <h2 class="mt-8 mb-2 font-medium! text-lg">/campaign</h2>
-  <p class="mb-2 light-color">Command for managing campaigns.</p>
-  <h3 class="mb-2 font-medium!">Examples</h3>
-  <ul>
-    <li><code>/campaign list</code> - render list of campaigns</li>
-    <li><code>/campaign create --system daggerheart --name "Dark Sun"</code> - create new campaign</li>
-    <div class="pl-4 mt-2">
-      <p>Required arguments</p>
-      <ul>
-        <li><code>--system dnd2024</code> - select campaign system, options are: <code>dnd5</code>, <code>dnd2024</code>, <code>daggerheart</code>, <code>pathfinder2</code>, <code>dc20</code></li>
-        <li><code>--name "Campaign name"</code> - set campaign name</li>
-      </ul>
-      <br />
-    </div>
-    <li><code>/campaign set "Dark Sun"</code> - set campaign with specific name as active (only for Telegram)</li>
-    <li><code>/campaign show</code> - show active campaign (only for Telegram)</li>
-    <li><code>/campaign remove "Dark Sun"</code> - remove campaign</li>
-  </ul>
-  <h2 class="mt-8 mb-2 font-medium! text-lg">/character</h2>
-  <p class="mb-2 light-color">Command for managing characters.</p>
-  <h3 class="mb-2 font-medium!">Examples</h3>
-  <ul>
-    <li><code>/character list</code> - render list of characters</li>
-    <li><code>/character joinCampaign "Characterio"</code> - join campaign by specific user character (only for Telegram)</li>
-  </ul>
-</section>
+<div class="bg-cosmos">
+  <section class="py-8 lg:py-12 max-w-7xl mx-auto">
+    <h1 class="mb-4 font-medium! text-2xl">Bot commands</h1>
+    <p class="mb-8 light-color">All bot commands are available for in-app use, <a href="https://t.me/charkeeper_bot" class="underline" target="_blank" rel="noopener noreferrer">Telegram bot and Telegram group bot</a> and Discord bot (in progress). They use the same interface and arguments.</p>
+    <h2 class="mb-2 font-medium! text-lg">/roll</h2>
+    <p class="mb-2 light-color">Simple command for roll dices.</p>
+    <h3 class="mb-2 font-medium!">Examples</h3>
+    <ul>
+      <li><code>/roll d20</code> - roll one d20</li>
+      <li><code>/roll 2d20+4</code> - roll two d20 with modifier</li>
+      <li><code>/roll 2d20+4 2d12</code> - roll two d20 with modifier and two d12</li>
+    </ul>
+    <h2 class="mt-8 mb-2 font-medium! text-lg">/campaign</h2>
+    <p class="mb-2 light-color">Command for managing campaigns.</p>
+    <h3 class="mb-2 font-medium!">Examples</h3>
+    <ul>
+      <li><code>/campaign list</code> - render list of campaigns</li>
+      <li><code>/campaign create --system daggerheart --name "Dark Sun"</code> - create new campaign</li>
+      <div class="pl-4 mt-2">
+        <p>Required arguments</p>
+        <ul>
+          <li><code>--system dnd2024</code> - select campaign system, options are: <code>dnd5</code>, <code>dnd2024</code>, <code>daggerheart</code>, <code>pathfinder2</code>, <code>dc20</code></li>
+          <li><code>--name "Campaign name"</code> - set campaign name</li>
+        </ul>
+        <br />
+      </div>
+      <li><code>/campaign set "Dark Sun"</code> - set campaign with specific name as active (only for Telegram)</li>
+      <li><code>/campaign show</code> - show active campaign (only for Telegram)</li>
+      <li><code>/campaign remove "Dark Sun"</code> - remove campaign</li>
+    </ul>
+    <h2 class="mt-8 mb-2 font-medium! text-lg">/character</h2>
+    <p class="mb-2 light-color">Command for managing characters.</p>
+    <h3 class="mb-2 font-medium!">Examples</h3>
+    <ul>
+      <li><code>/character list</code> - render list of characters</li>
+      <li><code>/character joinCampaign "Characterio"</code> - join campaign by specific user character (only for Telegram)</li>
+    </ul>
+  </section>
+</div>

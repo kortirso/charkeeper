@@ -32,6 +32,9 @@
   --color-dark-dusty: #404040;
   --color-snow: #FBFBFB;
   --color-fuzzy-red: #C6515C;
+
+  --color-dark-gunmetal: #1E2231;
+  --color-cosmos: #222639;
 }
 
 @utility bordered {
@@ -502,4 +505,12 @@ nav.pagy.nav a.gap {
 
 .character-info-text {
   @apply text-[11px] uppercase;
+}
+
+#head {
+  background: linear-gradient(#C6515C 0%, #1E2231 50%);
+}
+
+body.web {
+  @apply bg-dark-gunmetal text-snow;
 }

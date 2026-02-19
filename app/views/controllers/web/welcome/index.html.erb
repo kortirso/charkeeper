@@ -1,139 +1,93 @@
-<div class="max-w-7xl mx-auto py-32 px-8 xl:px-0">
-  <h1 class="text-6xl mb-16 font-normal!"><%= t('web.welcome.index.title') %></h1>
-  <div class="grid grid-cols-1 lg:grid-cols-3 gap-x-8 gap-y-16">
-    <div>
-      <p class="text-xl mb-4"><%= t('web.welcome.index.description1') %></p>
-      <p class="text-xl"><%= t('web.welcome.index.description2') %></p>
-      <% if current_user %>
-        <div class="mt-4 flex gap-x-4">
-          <%= link_to t('web.welcome.index.dashboard_link'), dashboard_path, class: 'btn-big btn-primary inline-block' %>
-          <%= link_to t('web.welcome.index.homebrews_link'), homebrews_path, class: 'btn-big btn-primary inline-block' %>
-        </div>
+<section id="head" class="w-full px-8">
+  <div class="max-w-7xl mx-auto py-8 lg:py-12 flex flex-col items-center">
+    <h1 class="mb-4 text-center font-medium! text-[40px]">CharKeeper</h1>
+    <p class="mb-8 text-center text-lg"><%= t('web.welcome.index_v2.title') %></p>
+    <% if current_user %>
+      <div class="mb-8 flex gap-x-4">
+        <%= link_to t('web.welcome.index_v2.dashboard_link'), dashboard_path, class: 'btn btn-primary inline-block' %>
+        <%= link_to t('web.welcome.index_v2.homebrews_link'), homebrews_path, class: 'btn btn-primary inline-block' %>
+      </div>
+    <% end %>
+    <div class="mb-16">
+      <%= image_tag 'screenshots/general.webp', alt: 'charkeeper', width: 900, height: 526 %>
+    </div>
+    <div class="max-w-5xl">
+      <p class="text-lg mb-4"><%= t('web.welcome.index_v2.description3') %></p>
+      <% if Rails.env.production? %>
+        <%= link_to t('web.welcome.index_v2.switch_ru'), 'https://charkeeper.ru', target: '_blank', rel: 'noopener noreferrer', class: 'btn btn-primary inline-block' %>
+      <% else %>
+        <%= link_to t('web.welcome.index_v2.switch_eu'), 'https://charkeeper.org', target: '_blank', rel: 'noopener noreferrer', class: 'btn btn-primary inline-block' %>
       <% end %>
     </div>
-    <div class="lg:col-span-2">
-      <%= image_tag 'charkeeper.webp', alt: 'charkeeper', class: 'mx-auto rounded', width: 800, height: 533 %>
+  </div>
+</section>
+<section class="w-full bg-cosmos px-8">
+  <div class="max-w-7xl mx-auto py-8 lg:py-12 flex flex-col lg:flex-row gap-8 items-center">
+    <div class="flex-1">
+      <%= image_tag 'screenshots/dnd.webp', alt: 'dnd', width: 624, height: 414 %>
+    </div>
+    <div class="flex-1 flex flex-col items-center lg:items-start">
+      <h2 class="text-2xl mb-4 lg:text-4xl"><%= t('web.welcome.index_v2.ttrpgs') %></h2>
+      <p class="text-center lg:text-left"><%= t('web.welcome.index_v2.ttrpgs_desc') %></p>
     </div>
   </div>
-</div>
-<div class="max-w-5xl mx-auto mb-16">
-  <p class="text-xl mb-4"><%= t('web.welcome.index.description3') %></p>
-  <% if Rails.env.production? %>
-    <%= link_to t('web.welcome.index.switch_ru'), 'https://charkeeper.ru', target: '_blank', rel: 'noopener noreferrer', class: 'btn-big btn-primary inline-block' %>
-  <% else %>
-    <%= link_to t('web.welcome.index.switch_eu'), 'https://charkeeper.org', target: '_blank', rel: 'noopener noreferrer', class: 'btn-big btn-primary inline-block' %>
-  <% end %>
-</div>
-<div class="max-w-7xl mx-auto mb-16 px-8 xl:px-0 grid grid-cols-1 lg:grid-cols-2 gap-x-8 gap-y-16">
-  <div>
-    <h2 class="text-4xl mb-4"><%= t('web.welcome.index.features_title') %></h2>
-    <p class="mb-2"><%= t('web.welcome.index.feature_2') %></p>
-    <p class="mb-2"><%= t('web.welcome.index.feature_1') %></p>
-    <p class="mb-2"><%= t('web.welcome.index.feature_4') %></p>
-    <p class="mb-2"><%= t('web.welcome.index.feature_3') %></p>
-    <p class="mb-2"><%= t('web.welcome.index.feature_5') %></p>
-    <p class="mb-2"><%= t('web.welcome.index.feature_6') %></p>
-  </div>
-  <div>
-    <h2 class="text-4xl mb-4"><%= t('web.welcome.index.work_on') %></h2>
-    <p class="text-lg font-normal!"><%= t('web.welcome.index.web') %></p>
-    <p class="mb-4">
-      <%= t('web.welcome.index.web_description', href: link_to(t('web.welcome.index.web_link'), dashboard_path, class: 'underline', target: '_blank', rel: 'noopener noreferrer')).html_safe %>
-    </p>
-    <p class="text-lg font-normal!"><%= t('web.welcome.index.mobile_apps') %></p>
-    <div class="flex gap-x-4 my-2">
-      <%= link_to 'https://apps.apple.com/us/app/charkeeper/id6752808498', target: '_blank', rel: 'noopener noreferrer' do %>
-        <%= image_tag 'app_store.svg', alt: 'App store', width: 132, height: 44 %>
-      <% end %>
-      <%= link_to 'https://play.google.com/store/apps/details?id=org.kortirso.charkeeper', target: '_blank', rel: 'noopener noreferrer' do %>
-        <%= image_tag 'google_store.svg', alt: 'Google store', width: 149, height: 44 %>
-      <% end %>
-    </div>
-    <p class="mb-4">
-      <%= t('web.welcome.index.app_store', href: link_to(t('web.welcome.index.app_store_link'), 'https://testflight.apple.com/join/Fh1SjU8g', class: 'underline', target: '_blank', rel: 'noopener noreferrer')).html_safe %>
-    </p>
-    <p class="text-lg font-normal!"><%= t('web.welcome.index.macos') %></p>
-    <p class="mb-4">
-      <%= t('web.welcome.index.macos_description', href: link_to(t('web.welcome.index.macos_link'), 'https://charkeeper.org/Charkeeper_aarch64.dmg', class: 'underline', download: 'Charkeeper_aarch64.dmg')).html_safe %>
-    </p>
-    <p class="text-lg font-normal!"><%= t('web.welcome.index.apk') %></p>
-    <p class="mb-4">
-      <%= t('web.welcome.index.apk_description', href: link_to(t('web.welcome.index.apk_link'), 'https://charkeeper.org/Charkeeper.apk', class: 'underline', download: 'Charkeeper.apk')).html_safe %>
-    </p>
-    <p class="text-lg font-normal!"><%= t('web.welcome.index.telegram') %></p>
-    <p class="mb-4">
-      <%= t('web.welcome.index.telegram_description', href: link_to(t('web.welcome.index.telegram_link'), (Rails.env.ru_production? ? 'https://t.me/charkeeper_ru_bot' : 'https://t.me/charkeeper_bot'), class: 'underline', target: '_blank', rel: 'noopener noreferrer')).html_safe %>
-    </p>
-  </div>
-</div>
-<div class="max-w-7xl mx-auto mb-16 px-8 xl:px-0 grid grid-cols-1 lg:grid-cols-2 gap-x-8 gap-y-16">
-  <div class="order-1 lg:order-1">
-    <h2 class="text-4xl mb-4"><%= t('web.welcome.index.dnd.title') %></h2>
-    <p class="mb-2"><%= t('web.welcome.index.dnd.feature_1') %></p>
-    <p class="mb-2"><%= t('web.welcome.index.dnd.feature_2') %></p>
-    <p class="mb-2"><%= t('web.welcome.index.dnd.feature_3') %></p>
-    <p class="mb-2"><%= t('web.welcome.index.dnd.feature_4') %></p>
-    <p class="mb-2"><%= t('web.welcome.index.dnd.feature_5') %></p>
-    <p class="mb-2"><%= t('web.welcome.index.dnd.feature_6') %></p>
-    <p class="mb-2"><%= t('web.welcome.index.dnd.feature_7') %></p>
-  </div>
-  <div class="order-2 lg:order-2">
-    <%= image_tag 'dnd.webp', alt: 'dnd', class: 'rounded shadow', width: 624, height: 288 %>
-  </div>
-</div>
-<div class="max-w-7xl mx-auto mb-16 px-8 xl:px-0 grid grid-cols-1 lg:grid-cols-2 gap-x-8 gap-y-16">
-  <div class="order-2 lg:order-1">
-    <%= image_tag 'daggerheart_traits.webp', alt: 'daggerheart', class: 'rounded shadow', width: 624, height: 288 %>
-  </div>
-  <div class="order-1 lg:order-2">
-    <h2 class="text-4xl mb-4"><%= t('web.welcome.index.daggerheart.title') %></h2>
-    <p class="mb-2"><%= t('web.welcome.index.daggerheart.feature_1') %></p>
-    <p class="mb-2"><%= t('web.welcome.index.daggerheart.feature_2') %></p>
-    <p class="mb-2"><%= t('web.welcome.index.daggerheart.feature_3') %></p>
-    <p class="mb-2"><%= t('web.welcome.index.daggerheart.feature_4') %></p>
-    <p class="mb-2"><%= t('web.welcome.index.daggerheart.feature_5') %></p>
-    <p class="mb-2"><%= t('web.welcome.index.daggerheart.feature_6') %></p>
-  </div>
-</div>
-<div class="max-w-7xl mx-auto mb-16 px-8 xl:px-0 grid grid-cols-1 lg:grid-cols-2 gap-x-8 gap-y-16">
-  <div class="order-1 lg:order-1">
-    <h2 class="text-4xl mb-4"><%= t('web.welcome.index.dc20.title') %></h2>
-    <p class="mb-2"><%= t('web.welcome.index.dc20.feature_1') %></p>
-    <p class="mb-2"><%= t('web.welcome.index.dc20.feature_2') %></p>
-    <p class="mb-2"><%= t('web.welcome.index.dc20.feature_3') %></p>
-    <p class="mb-2"><%= t('web.welcome.index.dc20.feature_4') %></p>
-    <p class="mb-2"><%= t('web.welcome.index.dc20.feature_5') %></p>
-  </div>
-  <div class="order-2 lg:order-2">
-    <%= image_tag 'dc20.webp', alt: 'dc20', class: 'rounded shadow', width: 624, height: 288 %>
-  </div>
-</div>
-<div class="max-w-7xl mx-auto mb-16 px-8 xl:px-0 grid grid-cols-1 lg:grid-cols-2 gap-x-8 gap-y-16">
-  <div class="order-2 lg:order-1">
-    <%= image_tag 'homebrews.webp', alt: 'homebrews', class: 'rounded shadow', width: 624, height: 288 %>
-  </div>
-  <div class="order-1 lg:order-2">
-    <h2 class="text-4xl mb-4"><%= t('web.welcome.index.homebrews.title') %></h2>
-    <p class="mb-2"><%= t('web.welcome.index.homebrews.feature_1') %></p>
-    <p class="mb-2"><%= t('web.welcome.index.homebrews.feature_2') %></p>
-  </div>
-</div>
-<% if false %>
-  <div class="max-w-7xl mx-auto mb-16 px-8 xl:px-0 grid grid-cols-1 lg:grid-cols-2 gap-x-8 gap-y-16">
-    <div class="order-1 lg:order-1">
-      <h2 class="text-4xl mb-4"><%= t('web.welcome.index.bots.title') %></h2>
-      <p class="mb-2"><%= t('web.welcome.index.bots.feature_1') %></p>
-      <p class="mb-2"><%= t('web.welcome.index.bots.feature_2') %></p>
-      <p class="mb-2"><%= t('web.welcome.index.bots.feature_3') %></p>
-      <p class="mb-2">
-        <%= t('web.welcome.index.bots.telegram', href: link_to(t('web.welcome.index.bots.telegram_link'), 'https://t.me/charkeeper_bot', class: 'underline', target: '_blank', rel: 'noopener noreferrer')).html_safe %>
-      </p>
-      <p class="mb-2">
-        <%= t('web.welcome.index.bots.discord', href: link_to(t('web.welcome.index.bots.discord_link'), 'https://discord.com/api/oauth2/authorize?client_id=1408454100642955296&permissions=274878000128&scope=bot%20applications.commands', class: 'underline', target: '_blank', rel: 'noopener noreferrer')).html_safe %>
+</section>
+<section class="w-full px-8">
+  <div class="max-w-7xl mx-auto py-8 lg:py-12 flex flex-col-reverse lg:flex-row gap-8 items-center">
+    <div class="flex-1 flex flex-col items-center lg:items-start">
+      <h2 class="text-2xl mb-4 lg:text-4xl"><%= t('web.welcome.index_v2.cross') %></h2>
+      <p class="mb-4 text-center lg:text-left"><%= t('web.welcome.index_v2.cross_desc') %></p>
+      <div class="mb-4 flex gap-x-4">
+        <%= link_to 'https://apps.apple.com/us/app/charkeeper/id6752808498', target: '_blank', rel: 'noopener noreferrer' do %>
+          <%= image_tag 'app_store.svg', alt: 'App store', width: 132, height: 44 %>
+        <% end %>
+        <%= link_to 'https://play.google.com/store/apps/details?id=org.kortirso.charkeeper', target: '_blank', rel: 'noopener noreferrer' do %>
+          <%= image_tag 'google_store.svg', alt: 'Google store', width: 149, height: 44 %>
+        <% end %>
+      </div>
+      <p class="mb-4"><%= t('web.welcome.index_v2.app_for') %> <%= link_to 'MacOS', 'https://charkeeper.org/Charkeeper_aarch64.dmg', class: 'underline', download: 'Charkeeper_aarch64.dmg' %></p>
+      <p class="mb-4"><%= t('web.welcome.index_v2.app_for') %> <%= link_to 'Android', 'https://charkeeper.org/Charkeeper.apk', class: 'underline', download: 'Charkeeper.apk' %></p>
+      <p>
+        <%= t('web.welcome.index_v2.telegram_description', href: link_to(t('web.welcome.index_v2.telegram_link'), (Rails.env.ru_production? ? 'https://t.me/charkeeper_ru_bot' : 'https://t.me/charkeeper_bot'), class: 'underline', target: '_blank', rel: 'noopener noreferrer')).html_safe %>
       </p>
     </div>
-    <div class="order-2 lg:order-2">
-      <%= image_tag 'dnd.webp', alt: 'dnd', class: 'rounded', width: 624, height: 288 %>
+    <div class="flex-1">
+      <%= image_tag 'screenshots/apps.webp', alt: 'apps' %>
     </div>
   </div>
-<% end %>
+</section>
+<section class="w-full bg-cosmos px-8">
+  <div class="max-w-7xl mx-auto py-8 lg:py-12 flex flex-col lg:flex-row gap-8 items-center">
+    <div class="flex-1">
+      <%= image_tag 'screenshots/integrations.webp', alt: 'integrations', width: 624, height: 509 %>
+    </div>
+    <div class="flex-1 flex flex-col items-center lg:items-start">
+      <h2 class="text-2xl mb-4 lg:text-4xl"><%= t('web.welcome.index_v2.integrations') %></h2>
+      <p class="text-center lg:text-left"><%= t('web.welcome.index_v2.integrations_desc') %></p>
+    </div>
+  </div>
+</section>
+<section class="w-full px-8">
+  <div class="max-w-7xl mx-auto py-8 lg:py-12 flex flex-col-reverse lg:flex-row gap-8 items-center">
+    <div class="flex-1 flex flex-col items-center lg:items-start">
+      <h2 class="text-2xl mb-4 lg:text-4xl"><%= t('web.welcome.index_v2.homebrews.title') %></h2>
+      <p class="mb-4 text-center lg:text-left"><%= t('web.welcome.index_v2.homebrews.feature_1') %></p>
+      <p class="text-center lg:text-left"><%= t('web.welcome.index_v2.homebrews.feature_2') %></p>
+    </div>
+    <div class="flex-1">
+      <%= image_tag 'screenshots/homebrews.webp', alt: 'homebrews', width: 624, height: 414 %>
+    </div>
+  </div>
+</section>
+<section class="w-full bg-cosmos px-8">
+  <div class="max-w-7xl mx-auto py-8 lg:py-12 flex flex-col lg:flex-row gap-8 items-center">
+    <div class="flex-1">
+      <%= image_tag 'screenshots/open-source.webp', alt: 'open source', width: 624, height: 414 %>
+    </div>
+    <div class="flex-1 flex flex-col items-center lg:items-start">
+      <h2 class="text-2xl mb-4 lg:text-4xl"><%= t('web.welcome.index_v2.open_source') %></h2>
+      <p class="mb-4 text-center lg:text-left"><%= t('web.welcome.index_v2.os_desc') %></p>
+      <%= link_to t('web.welcome.index_v2.os_link'), 'https://github.com/kortirso/charkeeper', class: 'btn btn-primary inline-block', target: '_blank', rel: 'noopener noreferrer' %>
+    </div>
+  </div>
+</section>

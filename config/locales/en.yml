@@ -179,75 +179,29 @@ en:
           character_exists: Character with such transformation exists
   web:
     welcome:
-      index:
+      index_v2:
         title: Interactive character sheets for any tabletop games in one place
-        description1: Charkeeper is a character sheet aggregator that automatically calculates various character stats, so you don't have to constantly look at the rulebook, and allows you to track your characters' available abilities, spells, and attacks.
-        description2: Available from any device on the web and as a mobile app on Android and iOS.
+        dashboard_link: Characters
+        homebrews_link: Homebrews
         description3: Since January 23, 2026, Charkeeper runs on 2 separate servers as 2 independent applications. You can switch between servers, but adding/updating/deleting any data will only change on the current server. The mobile application can also be switched to use a more suitable server.
         switch_ru: Switch to RU
         switch_eu: Switch to EU
-        features_title: Charkeeper features
-        feature_1: Saving characters compatible with D&D 5, Pathfinder 2, Daggerheart and DC20 rules.
-        feature_2: Account information and saved characters are shared between all devices.
-        feature_3: Uploading avatars for your characters.
-        feature_4: CharKeeper has an adaptive design for easy use on any device with switching between light and dark modes.
-        feature_5: And a lot of additional features specific for game systems.
-        feature_6: Generating PDF character sheets with actual data of your characters.
-        work_on: Work on
-        telegram: Telegram mini app
-        telegram_description: Simply run %{href} in Telegram messenger
-        telegram_link: web view application
-        web: Web application in browsers
-        web_description: Simply run %{href}
-        web_link: dashboard
-        dashboard_link: Characters
-        homebrews_link: Homebrews
-        macos: MacOS application
-        macos_description: Simply download and run %{href}
-        macos_link: installer
-        apk: Android application
-        apk_description: Simply download and run %{href}
-        apk_link: installer
-        mobile_apps: iOS and Android mobile applications
-        app_store: In addition you can install application through %{href} (for faster updates)
-        app_store_link: TestFlight in App Store
-        daggerheart:
-          title: Daggerheart compability
-          feature_1: Create characters of standard races/classes, use mixed races or use your own races/classes/subclasses for fully custom characters.
-          feature_2: Edit any stats, experience, equipment, domain cards, levels and classes.
-          feature_3: Automatic calculation of possible attacks depending on equipment.
-          feature_4: Ranger companion management and automatic calculation of druid beast transformations.
-          feature_5: Account for any bonuses and penalties.
-          feature_6: Automatically apply the results of downtime effects.
-        dnd:
-          title: D&D 5 and 2024 compability
-          feature_1: Create characters of standard races/classes.
-          feature_2: Edit any stats, skills, equipment, spells, levels/classes/subclasses.
-          feature_3: Automatic calculation of possible attacks depending on equipment, their bonuses and damage.
-          feature_4: Easy health management.
-          feature_5: Spells management system with marking spent spell slots.
-          feature_6: Automatic calculation of rest effects.
-          feature_7: Automatic rendering available feats with prefilled values of damage and other feat stats.
-        dc20:
-          title: DC20 compability
-          feature_1: Create characters with selecting race features.
-          feature_2: Edit any stats, skills, trades, languages, equipment.
-          feature_3: Automatic calculation of possible attacks depending on equipment, their bonuses and damage.
-          feature_4: Easy resources management.
-          feature_5: Automatic rendering available feats with prefilled values of damage and other feat stats.
+        ttrpgs: Support for various tabletop rpgs
+        ttrpgs_desc: "CharKeeper currently supports various tabletop game systems: D&D 2014 and 2024, Daggerheart, Pathfinder 2, Fate and DC20. You can save your character data without limitations."
+        integrations: Integrations
+        integrations_desc: CharKeeper has integration capabilities with Owlbear Rodeo and Telegram to display dice roll results within the app and execute various commands.
+        cross: Cross-platform
+        cross_desc: CharKeeper is available as a web app, runs on iOS and Android mobile devices, and has a MacOS app.
         homebrews:
           title: Homebrews management system
           feature_1: Create and share your homebrew races, classes, subclasses, items.
           feature_2: Combine your homebrews to books for easy sharing with your players.
-        bots:
-          title: Bots integrations in Discord and Telegram
-          feature_1: Campaigns management
-          feature_2: Sending roll results
-          feature_3: Homebrews management
-          telegram: For Telegram bot just find %{href} and add it to any of your groups
-          telegram_link: bot user
-          discord: For Discord bot just invite bot by %{href} to your channels
-          discord_link: link
+        app_for: Application for
+        telegram_description: Available through %{href} in Telegram
+        telegram_link: bot
+        open_source: Open source
+        os_desc: CharKeeper is available as open source on GitHub. You can open issues with feedback or bug reports or contribute to CharKeeper development.
+        os_link: Learn more
     users:
       auth:
         notice: Authentication succeeds

@@ -179,75 +179,29 @@ es:
           character_exists: Existe un personaje con tal transformación
   web:
     welcome:
-      index:
+      index_v2:
         title: Hojas de personaje interactivas para cualquier juego de mesa en un solo lugar.
-        description1: Charkeeper es un agregador de hojas de personaje que calcula automáticamente diversas estadísticas de los personajes, para que no tengas que estar consultando constantemente el libro de reglas, y te permite realizar un seguimiento de las habilidades, hechizos y ataques disponibles de tus personajes.
-        description2: Disponible desde cualquier dispositivo en la web y como aplicación móvil en Android e iOS.
+        dashboard_link: Personajes
+        homebrews_link: Homebrews
         description3: Desde el 23 de enero de 2026, Charkeeper se ejecuta en dos servidores separados como dos aplicaciones independientes. Se puede cambiar de servidor, pero añadir, actualizar o eliminar datos solo afectará al servidor actual. La aplicación móvil también se puede cambiar para utilizar un servidor más adecuado.
         switch_ru: Cambiar a RU
         switch_eu: Cambiar a EU
-        features_title: Características de Charkeeper
-        feature_1: Guardar personajes compatibles con las reglas de D&D 5, Pathfinder 2, Daggerheart y DC20.
-        feature_2: La información de la cuenta y los personajes guardados se comparten entre todos los dispositivos.
-        feature_3: Subir avatares para tus personaje.
-        feature_4: CharKeeper tiene un diseño adaptable para facilitar su uso en cualquier dispositivo, con la posibilidad de cambiar entre los modos claro y oscuro.
-        feature_5: Y muchas características adicionales específicas para sistemas de juegos.
-        feature_6: Generación de hojas de personaje en PDF con los datos reales de tus personajes.
-        work_on: Funciona en
-        telegram: Mini app de Telegram
-        telegram_description: Simplemente inicia la %{href} en Telegram messenger
-        telegram_link: aplicación de vista web
-        web: Aplicación web en navegadores
-        web_description: Simplemente incia %{href}
-        web_link: panel
-        dashboard_link: Personajes
-        homebrews_link: Homebrews
-        macos: Aplicación MacOS
-        macos_description: Simplemente descarga e inicia el %{href}
-        macos_link: instalador
-        apk: Aplicación Android
-        apk_description: Simplemente descarga e inicia el %{href}
-        apk_link: instalalador
-        mobile_apps: Aplicaciones móviles para iOS y Android
-        app_store: Además puedes instalar la aplicación a través de %{href} (para actualizaciones rápidas)
-        app_store_link: TestFlight en la App Store
-        daggerheart:
-          title: Compatibilidad con Daggerheart
-          feature_1: Crea personajes de razas/clases estándar, utiliza razas mixtas o utiliza tus propias razas/clases/subclases para crear personajes totalmente personalizados.
-          feature_2: Edita cualquier estadística, experiencia, equipamiento, cartas de dominio, niveles y clases.
-          feature_3: Cálculo automático de posibles ataques en función del equipo.
-          feature_4: Gestión del compañero del Explorador y cálculo automático de las transformaciones de bestia del Druida.
-          feature_5: Tiene en cuenta las bonificaciones y penalizaciones.
-          feature_6: Aplicar automáticamente los resultados de los efectos del tiempo de descanso.
-        dnd:
-          title: Compatibilidad con D&D 5 y 2024
-          feature_1: Crea personajes de razas y clases estándar.
-          feature_2: Edita cualquier estadística, habilidad, equipo, hechizo, nivel, clase o subclase.
-          feature_3: Cálculo automático de posibles ataques en función del equipo, sus bonificaciones y el daño.
-          feature_4: Fácil gestión de la salud.
-          feature_5: Sistema de gestión de hechizos con marcado de las ranuras de hechizo gastados.
-          feature_6: Cálculo automático de los efectos del descanso.
-          feature_7: Representación automática de las hazañas disponibles con valores prellenados de daño y otras estadísticas de proezas.
-        dc20:
-          title: Compatibilidad con DC20
-          feature_1: Creación de personajes con selección de rasgos raciales.
-          feature_2: Edición de estadísticas, habilidades, oficios, idiomas y equipamiento.
-          feature_3: Cálculo automático de posibles ataques en función del equipamiento, sus bonificaciones y el daño.
-          feature_4: Fácil gestión de recursos.
-          feature_5: Representación automática de las proezas disponibles con valores preestablecidos de daño y otras estadísticas de proezas.
+        ttrpgs: Soporte para varios juegos de rol de mesa
+        ttrpgs_desc: "CharKeeper es compatible actualmente con varios sistemas de juego de mesa: D&D 2014 y 2024, Daggerheart, Pathfinder 2, Fate y DC20. Puedes guardar los datos de tu personaje sin limitaciones."
+        integrations: Integraciones
+        integrations_desc: CharKeeper tiene capacidades de integración con Owlbear Rodeo y Telegram para mostrar los resultados de las tiradas de dados dentro de la aplicación y ejecutar varios comandos.
+        cross: Multiplataforma
+        cross_desc: CharKeeper está disponible como una aplicación web, funciona en dispositivos móviles iOS y Android y tiene una aplicación para MacOS.
         homebrews:
           title: Sistema de gestión de creaciones personalizadas
           feature_1: Crea y comparte tus propias razas, clases, subclases y objetos.
           feature_2: Combina tus creaciones personalizadas en libros para compartirlas fácilmente con tus jugadores.
-        bots:
-          title: Integraciones de bots en Discord y Telegram
-          feature_1: Gestión de campañas
-          feature_2: Envío de resultados de tiradas
-          feature_3: Gestión de creaciones personalizadas
-          telegram: Para el bot de Telegram solo encuentra %{href} y añadelo a cualquiera de tus grupos
-          telegram_link: usuario bot
-          discord: Para el bot de Discord solo invita al bot por %{href} a alguno de tus canales
-          discord_link: enlace
+        app_for: Aplicación de
+        telegram_description: Disponible a través %{href} en Telegram
+        telegram_link: de bot
+        open_source: Código abierto
+        os_desc: CharKeeper está disponible como código abierto en GitHub. Puedes publicar problemas con comentarios o reportar errores, o contribuir al desarrollo de CharKeeper.
+        os_link: Más información
     users:
       auth:
         notice: La autenticación se ha realizado correctamente

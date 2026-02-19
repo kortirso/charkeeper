@@ -145,7 +145,7 @@ export const UsernameTab = (props) => {
               <Show
                 when={['google', 'discord', 'telegram'].filter((item) => !identityProviders().includes(item)).length > 0}
                 fallback={
-                  <p>{localize(TRANSLATION, locale())['connected']}</p>
+                  <p class="dark:text-snow">{localize(TRANSLATION, locale())['connected']}</p>
                 }
               >
                 <div class="p-1">
