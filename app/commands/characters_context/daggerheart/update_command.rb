@@ -11,7 +11,7 @@ module CharactersContext
       ]
 
       REFRESH_ATTRIBUTES = %i[
-        level classes subclasses subclasses_mastery transformation beastform selected_features community
+        level classes subclasses subclasses_mastery transformation beastform beast hybrid selected_features community
       ].freeze
 
       # rubocop: disable Metrics/BlockLength

@@ -264,7 +264,7 @@
       "adv": { "en": "locate, protect, scare, sprint", "ru": "обнаружении, защите, устрашении, спринте" },
       "examples": { "en": "Elephant, Mammoth, Rhinoceros", "ru": "Слон, Мамонт, Носорог" },
       "features": {
-        "carrier": { "en": "Carrier", "ru": "Перевозчик" },
+        "massive_behemoth_carrier": { "en": "Carrier", "ru": "Перевозчик" },
         "demolish": { "en": "Demolish", "ru": "Снос" }
       }
     },
@@ -286,7 +286,7 @@
       "adv": { "en": "attack, deceive, locate, navigate", "ru": "атаке, обмане, обнаружении, навигации" },
       "examples": { "en": "Dragon, Pterodactyl, Roc, Wyvern", "ru": "Дракон, Птеродактиль, Птица Рух, Виверна" },
       "features": {
-        "carrier": { "en": "Carrier", "ru": "Перевозчик" },
+        "mythic_aerial_hunter_carrier": { "en": "Carrier", "ru": "Перевозчик" },
         "deadly_raptor": { "en": "Deadly Raptor", "ru": "Смертоносные когти" }
       }
     },
@@ -340,7 +340,7 @@
       "examples": { "en": "Giant Eagle, Falcon", "ru": "Гигантский орёл, Сокол" },
       "features": {
         "bird_eye_view": { "en": "Bird's-Eye View", "ru": "Высота птичьего полёта" },
-        "carrier": { "en": "Carrier", "ru": "Перевозчик" }
+        "great_winged_beast_carrier": { "en": "Carrier", "ru": "Перевозчик" }
       }
     },
     "aquatic_predator": {
@@ -351,7 +351,7 @@
       "examples": { "en": "Dolphin, Orca, Shark", "ru": "Дельфин, Косатка, Акула" },
       "features": {
         "aquatic": { "en": "Aquatic", "ru": "Водное" },
-        "vicious_maul": { "en": "Vicious Maul", "ru": "Свирепость" }
+        "aquatic_predator_vicious_maul": { "en": "Vicious Maul", "ru": "Свирепость" }
       }
     },
     "armored_sentry": {
@@ -439,7 +439,7 @@
       "examples": { "en": "Cat, Dog, Rabbit", "ru": "Кот, Собака, Кролик" },
       "features": {
         "companion": { "en": "Companion", "ru": "Компаньон" },
-        "fragile": { "en": "Fragile", "ru": "Хрупкость" }
+        "household_friend_fragile": { "en": "Fragile", "ru": "Хрупкость" }
       }
     },
     "nimble_grazer": {
@@ -450,7 +450,7 @@
       "examples": { "en": "Deer, Gazelle, Goat", "ru": "Олень, Газель, Коза" },
       "features": {
         "elusive_prey": { "en": "Elusive Prey", "ru": "Неуловимая добыча" },
-        "fragile": { "en": "Fragile", "ru": "Хрупкость" }
+        "nimble_grazer_fragile": { "en": "Fragile", "ru": "Хрупкость" }
       }
     },
     "pack_predator": {
@@ -472,7 +472,7 @@
       "examples": { "en": "Eel, Fish, Octopus", "ru": "Угорь, Рыба, Осьминог" },
       "features": {
         "aquatic": { "en": "Aquatic", "ru": "Водное" },
-        "fragile": { "en": "Fragile", "ru": "Хрупкость" }
+        "aquatic_scout_fragile": { "en": "Fragile", "ru": "Хрупкость" }
       }
     },
     "stalking_arachnid": {
