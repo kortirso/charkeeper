@@ -11,14 +11,12 @@ module CharactersContext
       ]
 
       REFRESH_ATTRIBUTES = %i[
-        level classes subclasses subclasses_mastery transformation beastform selected_features community
+        level classes subclasses subclasses_mastery transformation beastform beast hybrid selected_features community
       ].freeze
 
       # rubocop: disable Metrics/BlockLength
       use_contract do
         config.messages.namespace = :daggerheart_character
-
-        Beastforms = Dry::Types['strict.string'].enum(*::Daggerheart::Character.beastforms.keys)
 
         params do
           required(:character).filled(type?: ::Daggerheart::Character)
@@ -59,7 +57,9 @@ module CharactersContext
             required(:exp_name).filled(:string, max_size?: 50)
             required(:exp_level).filled(:integer, gteq?: 0)
           end
-          optional(:beastform).maybe(Beastforms)
+          optional(:beastform).maybe(:string)
+          optional(:beast).maybe(:string)
+          optional(:hybrid).maybe(:hash)
           optional(:transformation).maybe(:string)
           optional(:selected_stances).maybe(:array).each(:string)
           optional(:stance).maybe(:string)

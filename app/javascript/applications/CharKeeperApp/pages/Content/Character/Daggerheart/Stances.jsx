@@ -63,29 +63,27 @@ export const DaggerheartStances = (props) => {
   return (
     <ErrorWrapper payload={{ character_id: character().id, key: 'DaggerheartStances' }}>
       <GuideWrapper character={character()}>
-        <Show when={character().can_have_stances}>
-          <div class="blockable p-4">
-            <h2 class="text-lg mb-2 dark:text-snow">{localize(TRANSLATION, locale())['stances']}</h2>
-            <Select
-              multi
-              containerClassList="w-full"
-              labelText={localize(TRANSLATION, locale())['selectedStances']}
-              items={availableStances()}
-              selectedValues={selectedStances()}
-              onSelect={(value) => updateMultiFeatureValue(value)}
-            />
-            <Select
-              containerClassList="mt-2 w-full"
-              labelText={localize(TRANSLATION, locale())['activeStance']}
-              items={stancesSelect()}
-              selectedValue={character().stance}
-              onSelect={(value) => updateCharacter({ stance: value === 'null' ? null : value })}
-            />
-            <Show when={character().stance}>
-              <p class="mt-2 dark:text-snow">{config.stances[character().stance].feature[locale()]}</p>
-            </Show>
-          </div>
-        </Show>
+        <div class="blockable p-4">
+          <h2 class="text-lg mb-2 dark:text-snow">{localize(TRANSLATION, locale())['stances']}</h2>
+          <Select
+            multi
+            containerClassList="w-full"
+            labelText={localize(TRANSLATION, locale())['selectedStances']}
+            items={availableStances()}
+            selectedValues={selectedStances()}
+            onSelect={(value) => updateMultiFeatureValue(value)}
+          />
+          <Select
+            containerClassList="mt-2 w-full"
+            labelText={localize(TRANSLATION, locale())['activeStance']}
+            items={stancesSelect()}
+            selectedValue={character().stance}
+            onSelect={(value) => updateCharacter({ stance: value === 'null' ? null : value })}
+          />
+          <Show when={character().stance}>
+            <p class="mt-2 dark:text-snow">{config.stances[character().stance].feature[locale()]}</p>
+          </Show>
+        </div>
       </GuideWrapper>
     </ErrorWrapper>
   );

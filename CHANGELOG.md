@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Modified
 - rendering errors during homebrew creation
+- selecting improved beast as beastform for DH characters
 
 ### Fixed
 - bug with creating pathfinder character without subclass

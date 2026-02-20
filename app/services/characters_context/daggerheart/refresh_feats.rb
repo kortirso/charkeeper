@@ -59,25 +59,46 @@ module CharactersContext
         character.data.selected_features.values.flatten
       end
 
-      def feats(character) # rubocop: disable Metrics/AbcSize
+      def feats(character) # rubocop: disable Metrics/AbcSize, Metrics/MethodLength, Metrics/PerceivedComplexity
         data = character.data
-        ::Daggerheart::Feat.where(
-          origin_value: [
-            data.heritage, data.community, data.classes.keys, data.subclasses.values, data.beastform, character.id,
-            data.transformation
-          ].flatten.compact.uniq
-        ).or(
-          ::Daggerheart::Feat.where(origin: 'ancestry', slug: data.heritage_features)
-        ).or(
-          ::Daggerheart::Feat.where(origin: 'ancestry', id: data.heritage_features)
-        ).or(
-          ::Daggerheart::Feat.where(origin: 'domain_card', slug: data.selected_features.values.flatten.compact)
-        ).or(
+        relation =
           ::Daggerheart::Feat.where(
-            origin: 'parent',
-            origin_value: character.feats.where(ready_to_use: true).joins(:feat).where(feats: { kind: 5 }).pluck('feats.slug')
+            origin_value: [
+              data.heritage, data.community, data.classes.keys, data.subclasses.values, character.id, data.transformation
+            ].flatten.compact.uniq
+          ).or(
+            ::Daggerheart::Feat.where(origin: 'ancestry', slug: data.heritage_features)
+          ).or(
+            ::Daggerheart::Feat.where(origin: 'ancestry', id: data.heritage_features)
+          ).or(
+            ::Daggerheart::Feat.where(origin: 'domain_card', slug: data.selected_features.values.flatten.compact)
+          ).or(
+            ::Daggerheart::Feat.where(
+              origin: 'parent',
+              origin_value: character.feats.where(ready_to_use: true).joins(:feat).where(feats: { kind: 5 }).pluck('feats.slug')
+            )
           )
-        )
+        if data.beastform
+          relation =
+            if data.beast
+              relation.or(::Daggerheart::Feat.where(origin: 'beastform', origin_value: data.beast))
+            elsif data.hybrid.any?
+              result = []
+              feats = ::Daggerheart::Feat.where(origin: 'beastform').to_a
+              data.hybrid.each do |slug, values|
+                values['features'].each do |feature|
+                  feat = feats.find { |item| item.origin_value == slug && feature == item.slug }
+                  next unless feat
+
+                  result << feat.id
+                end
+              end
+              relation.or(::Daggerheart::Feat.where(id: result))
+            else
+              relation.or(::Daggerheart::Feat.where(origin: 'beastform', origin_value: data.beastform))
+            end
+        end
+        relation
       end
     end
   end
