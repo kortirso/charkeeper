@@ -92,7 +92,7 @@ export const FateCoreSkills = (props) => {
                             width="30"
                             height="30"
                             text={modifier(value)}
-                            onClick={() => props.openDiceRoll(`/check skill ${slug}`, character().selected_skills[slug], `${localize(TRANSLATION, locale()).check}, ${config.skills[slug].name[locale()]}`)}
+                            onClick={() => props.openDiceRoll(`/check skill "${slug}"`, character().selected_skills[slug], `${localize(TRANSLATION, locale()).check}, ${config.skills[slug].name[locale()]}`)}
                           />
                         </p>
                       }

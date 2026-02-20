@@ -154,7 +154,7 @@ export const Dnd5Skills = (props) => {
                         width="28"
                         height="28"
                         text={modifier(skill.modifier)}
-                        onClick={() => props.openDiceRoll(`/check skill ${skill.slug}`, skill.modifier, `${localize(TRANSLATION, locale())['check']}, ${config.skills[skill.slug].name[locale()]}`)}
+                        onClick={() => props.openDiceRoll(`/check skill "${skill.slug}"`, skill.modifier, `${localize(TRANSLATION, locale())['check']}, ${config.skills[skill.slug].name[locale()]}`)}
                       />
                     </div>
                   }
