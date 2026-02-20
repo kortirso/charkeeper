@@ -125,10 +125,6 @@
       "attack": "Ataque",
       "proficiency": "Competencia"
     },
-    "beast": {
-      "transformation": "Transformación a bestia",
-      "naturalForm": "Forma natural"
-    },
     "transformation": {
       "transformation": "Transformación",
       "naturalForm": "Forma natural"

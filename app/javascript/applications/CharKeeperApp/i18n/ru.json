@@ -125,10 +125,6 @@
       "attack": "Атака",
       "proficiency": "Мастерство"
     },
-    "beast": {
-      "transformation": "Превращение в зверя",
-      "naturalForm": "Естественная форма"
-    },
     "transformation": {
       "transformation": "Трансформация",
       "naturalForm": "Естественная форма"

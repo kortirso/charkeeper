@@ -18,8 +18,6 @@ module CharactersContext
       use_contract do
         config.messages.namespace = :daggerheart_character
 
-        Beastforms = Dry::Types['strict.string'].enum(*::Daggerheart::Character.beastforms.keys)
-
         params do
           required(:character).filled(type?: ::Daggerheart::Character)
           optional(:level).filled(:integer)
@@ -59,7 +57,8 @@ module CharactersContext
             required(:exp_name).filled(:string, max_size?: 50)
             required(:exp_level).filled(:integer, gteq?: 0)
           end
-          optional(:beastform).maybe(Beastforms)
+          optional(:beastform).maybe(:string)
+          optional(:beast).maybe(:string)
           optional(:transformation).maybe(:string)
           optional(:selected_stances).maybe(:array).each(:string)
           optional(:stance).maybe(:string)

@@ -236,141 +236,139 @@ export const DaggerheartCompanion = (props) => {
   return (
     <ErrorWrapper payload={{ character_id: character().id, key: 'DaggerheartCompanion' }}>
       <GuideWrapper character={character()}>
-        <Show when={character().can_have_companion}>
-          <Show
-            when={companion()}
-            fallback={
-              <>
-                <Input
-                  containerClassList="mb-4"
-                  labelText={localize(TRANSLATION, locale()).name}
-                  value={name()}
-                  onInput={setName}
-                />
-                <Button default onClick={createCompanion}>{t('create')}</Button>
-              </>
-            }
-          >
-            <div class="flex flex-col emd:flex-row gap-4">
-              <div class="flex-1">
-                <EditWrapper
-                  editMode={editNameMode()}
-                  onSetEditMode={setEditNameMode}
-                  onCancelEditing={cancelNameEditing}
-                  onSaveChanges={() => updateCompanion({ name: nameData() }, setEditNameMode)}
-                >
-                  <div class="p-4 blockable">
-                    <Show when={editNameMode()} fallback={<p class="text-xl">{companion().name}</p>}>
-                      <Input
-                        containerClassList="mb-4"
-                        labelText={localize(TRANSLATION, locale()).name}
-                        value={nameData()}
-                        onInput={setNameData}
-                      />
-                    </Show>
-                    <div class="mt-4">
-                      <p class="text-sm/4 uppercase mb-1">{t('daggerheart.health.stress')}</p>
-                      <div class="flex">
-                        <For each={Array.from([...Array(companion().stress_max).keys()], (x) => x + 1)}>
-                          {(index) =>
-                            <Checkbox
-                              filled
-                              checked={companion().stress_marked >= index}
-                              classList="mr-1"
-                              onToggle={() => updateStress(index)}
-                            />
-                          }
-                        </For>
-                      </div>
-                    </div>
-                  </div>
-                </EditWrapper>
-                <EditWrapper
-                  editMode={editDamageMode()}
-                  onSetEditMode={setEditDamageMode}
-                  onCancelEditing={cancelDamageEditing}
-                  onSaveChanges={() => updateCompanion({ damage: damageData(), distance: distanceData() }, setEditDamageMode)}
-                >
-                  <div class="blockable p-4 mt-4">
-                    <div class="grid grid-cols-3 gap-2">
-                      <div>
-                        <p class="text-sm uppercase text-center mb-4">{localize(TRANSLATION, locale()).evasion}</p>
-                        <p class="font-normal! text-center">
-                          {companion().evasion}
-                        </p>
-                      </div>
-                      <div>
-                        <p class="text-sm uppercase text-center mb-4">{localize(TRANSLATION, locale()).damage}</p>
-                        <p class="font-normal! text-center">
-                          {editDamageMode() ? damageData() : `${character().proficiency}${companion().damage}`}
-                        </p>
-                        <Show when={editDamageMode()}>
-                          <div class="mt-2 flex justify-center gap-2">
-                            <Button default size="small" onClick={() => changeDamage(-1)}><Minus /></Button>
-                            <Button default size="small" onClick={() => changeDamage(1)}><Plus /></Button>
-                          </div>
-                        </Show>
-                      </div>
-                      <div>
-                        <p class="text-sm uppercase text-center mb-4">{localize(TRANSLATION, locale()).distance}</p>
-                        <p class="font-normal! text-center">
-                          {editDamageMode() ? renderAttackDistance(distanceData()) : renderAttackDistance(companion().distance)}
-                        </p>
-                        <Show when={editDamageMode()}>
-                          <div class="mt-2 flex justify-center gap-2">
-                            <Button default size="small" onClick={() => changeDistance(-1)}><Minus /></Button>
-                            <Button default size="small" onClick={() => changeDistance(1)}><Plus /></Button>
-                          </div>
-                        </Show>
-                      </div>
-                    </div>
-                  </div>
-                </EditWrapper>
-                <div class="mt-4">
-                  <DaggerheartExperience object={companion()} callback={updateCompanion} />
-                </div>
-              </div>
-              <div class="flex-1">
+        <Show
+          when={companion()}
+          fallback={
+            <>
+              <Input
+                containerClassList="mb-4"
+                labelText={localize(TRANSLATION, locale()).name}
+                value={name()}
+                onInput={setName}
+              />
+              <Button default onClick={createCompanion}>{t('create')}</Button>
+            </>
+          }
+        >
+          <div class="flex flex-col emd:flex-row gap-4">
+            <div class="flex-1">
+              <EditWrapper
+                editMode={editNameMode()}
+                onSetEditMode={setEditNameMode}
+                onCancelEditing={cancelNameEditing}
+                onSaveChanges={() => updateCompanion({ name: nameData() }, setEditNameMode)}
+              >
                 <div class="p-4 blockable">
-                  <h2 class="text-lg mb-2">{localize(TRANSLATION, locale()).training}</h2>
-                  <p class="text-sm mb-4">{localize(TRANSLATION, locale()).availableTraining} - {character().level - 1}</p>
-                  <For
-                    each={[
-                      { max: 3, attribute: 'intelligent' },
-                      { max: 1, attribute: 'light' },
-                      { max: 1, attribute: 'comfort' },
-                      { max: 1, attribute: 'armored' },
-                      { max: 3, attribute: 'vicious' },
-                      { max: 3, attribute: 'resilient' },
-                      { max: 1, attribute: 'bonded' },
-                      { max: 3, attribute: 'aware' }
-                    ]}
-                  >
-                    {(item, index) =>
-                      <div class="p-2" classList={{ 'bg-gray-50 dark:bg-neutral-700': index() % 2 === 1 }}>
-                        <div class="flex items-center mb-1">
-                          <p class="text-sm/4 uppercase mr-4">{localize(TRANSLATION, locale()).leveling[item.attribute]}</p>
-                          <div class="flex">
-                            <For each={Array.from([...Array(item.max).keys()], (x) => x + 1)}>
-                              {(index) =>
-                                <Checkbox
-                                  filled
-                                  checked={companion().leveling[item.attribute] >= index}
-                                  classList="mr-1"
-                                  onToggle={() => updateLeveling(item.attribute, index)}
-                                />
-                              }
-                            </For>
-                          </div>
-                        </div>
-                        <p class="text-xs">{localize(TRANSLATION, locale()).levelingDescriptions[item.attribute]}</p>
-                      </div>
-                    }
-                  </For>
+                  <Show when={editNameMode()} fallback={<p class="text-xl">{companion().name}</p>}>
+                    <Input
+                      containerClassList="mb-4"
+                      labelText={localize(TRANSLATION, locale()).name}
+                      value={nameData()}
+                      onInput={setNameData}
+                    />
+                  </Show>
+                  <div class="mt-4">
+                    <p class="text-sm/4 uppercase mb-1">{t('daggerheart.health.stress')}</p>
+                    <div class="flex">
+                      <For each={Array.from([...Array(companion().stress_max).keys()], (x) => x + 1)}>
+                        {(index) =>
+                          <Checkbox
+                            filled
+                            checked={companion().stress_marked >= index}
+                            classList="mr-1"
+                            onToggle={() => updateStress(index)}
+                          />
+                        }
+                      </For>
+                    </div>
+                  </div>
                 </div>
+              </EditWrapper>
+              <EditWrapper
+                editMode={editDamageMode()}
+                onSetEditMode={setEditDamageMode}
+                onCancelEditing={cancelDamageEditing}
+                onSaveChanges={() => updateCompanion({ damage: damageData(), distance: distanceData() }, setEditDamageMode)}
+              >
+                <div class="blockable p-4 mt-4">
+                  <div class="grid grid-cols-3 gap-2">
+                    <div>
+                      <p class="text-sm uppercase text-center mb-4">{localize(TRANSLATION, locale()).evasion}</p>
+                      <p class="font-normal! text-center">
+                        {companion().evasion}
+                      </p>
+                    </div>
+                    <div>
+                      <p class="text-sm uppercase text-center mb-4">{localize(TRANSLATION, locale()).damage}</p>
+                      <p class="font-normal! text-center">
+                        {editDamageMode() ? damageData() : `${character().proficiency}${companion().damage}`}
+                      </p>
+                      <Show when={editDamageMode()}>
+                        <div class="mt-2 flex justify-center gap-2">
+                          <Button default size="small" onClick={() => changeDamage(-1)}><Minus /></Button>
+                          <Button default size="small" onClick={() => changeDamage(1)}><Plus /></Button>
+                        </div>
+                      </Show>
+                    </div>
+                    <div>
+                      <p class="text-sm uppercase text-center mb-4">{localize(TRANSLATION, locale()).distance}</p>
+                      <p class="font-normal! text-center">
+                        {editDamageMode() ? renderAttackDistance(distanceData()) : renderAttackDistance(companion().distance)}
+                      </p>
+                      <Show when={editDamageMode()}>
+                        <div class="mt-2 flex justify-center gap-2">
+                          <Button default size="small" onClick={() => changeDistance(-1)}><Minus /></Button>
+                          <Button default size="small" onClick={() => changeDistance(1)}><Plus /></Button>
+                        </div>
+                      </Show>
+                    </div>
+                  </div>
+                </div>
+              </EditWrapper>
+              <div class="mt-4">
+                <DaggerheartExperience object={companion()} callback={updateCompanion} />
               </div>
             </div>
-          </Show>
+            <div class="flex-1">
+              <div class="p-4 blockable">
+                <h2 class="text-lg mb-2">{localize(TRANSLATION, locale()).training}</h2>
+                <p class="text-sm mb-4">{localize(TRANSLATION, locale()).availableTraining} - {character().level - 1}</p>
+                <For
+                  each={[
+                    { max: 3, attribute: 'intelligent' },
+                    { max: 1, attribute: 'light' },
+                    { max: 1, attribute: 'comfort' },
+                    { max: 1, attribute: 'armored' },
+                    { max: 3, attribute: 'vicious' },
+                    { max: 3, attribute: 'resilient' },
+                    { max: 1, attribute: 'bonded' },
+                    { max: 3, attribute: 'aware' }
+                  ]}
+                >
+                  {(item, index) =>
+                    <div class="p-2" classList={{ 'bg-gray-50 dark:bg-neutral-700': index() % 2 === 1 }}>
+                      <div class="flex items-center mb-1">
+                        <p class="text-sm/4 uppercase mr-4">{localize(TRANSLATION, locale()).leveling[item.attribute]}</p>
+                        <div class="flex">
+                          <For each={Array.from([...Array(item.max).keys()], (x) => x + 1)}>
+                            {(index) =>
+                              <Checkbox
+                                filled
+                                checked={companion().leveling[item.attribute] >= index}
+                                classList="mr-1"
+                                onToggle={() => updateLeveling(item.attribute, index)}
+                              />
+                            }
+                          </For>
+                        </div>
+                      </div>
+                      <p class="text-xs">{localize(TRANSLATION, locale()).levelingDescriptions[item.attribute]}</p>
+                    </div>
+                  }
+                </For>
+              </div>
+            </div>
+          </div>
         </Show>
       </GuideWrapper>
     </ErrorWrapper>

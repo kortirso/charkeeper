@@ -10,6 +10,10 @@ module DaggerheartCharacter
     def can_have_stances
       available_mechanics.include?('stances')
     end
+
+    def can_have_beastform
+      available_mechanics.include?('beastform')
+    end
     # rubocop: enable Naming/PredicateMethod
 
     def modified_traits # rubocop: disable Metrics/AbcSize
@@ -105,7 +109,7 @@ module DaggerheartCharacter
 
     def attacks
       @attacks ||=
-        beastform.blank? ? ([unarmed_attack] + weapons.flat_map { |item| calculate_attack(item) }) : [beastform_attack]
+        beastform.blank? ? ([unarmed_attack] + weapons.flat_map { |item| calculate_attack(item) }) : beastform_attack
     end
 
     def domain_cards_max
@@ -128,6 +132,7 @@ module DaggerheartCharacter
         end.flatten.uniq # rubocop: disable Style/MethodCalledOnDoEndBlock
     end
 
+    # TODO: DEPRECATED
     def beastforms
       return [] if available_mechanics.exclude?('beastform')
 
@@ -141,22 +146,25 @@ module DaggerheartCharacter
     end
 
     def beastform_attack # rubocop: disable Metrics/AbcSize
-      beast_attack = beastform_config['attack']
+      return [] unless beastform_config
 
-      {
-        name: translate({ en: 'Beast attack', ru: 'Атака' }),
-        range: beast_attack['range'],
-        trait: use_max_trait_for_attack ? max_trait : beast_attack['trait'],
-        attack_bonus: (use_max_trait_for_attack ? max_trait_value : modified_traits[beast_attack['trait']]) + attack_bonuses,
-        damage: "#{proficiency}#{beast_attack['damage']}",
-        damage_bonus: beast_attack['damage_bonus'],
-        damage_type: beast_attack['damage_type'],
-        kind: 'primary weapon',
-        features: [],
-        notes: [],
-        ready_to_use: true,
-        tags: { beast_attack['damage_type'] => I18n.t("tags.daggerheart.weapon.title.#{beast_attack['damage_type']}") }
-      }
+      beast_attack = beastform_config['attack']
+      [
+        {
+          name: translate({ en: 'Beast attack', ru: 'Атака' }),
+          range: beast_attack['range'],
+          trait: use_max_trait_for_attack ? max_trait : beast_attack['trait'],
+          attack_bonus: (use_max_trait_for_attack ? max_trait_value : modified_traits[beast_attack['trait']]) + attack_bonuses,
+          damage: "#{proficiency}#{beast_attack['damage']}",
+          damage_bonus: beast_attack['damage_bonus'],
+          damage_type: beast_attack['damage_type'],
+          kind: 'primary weapon',
+          features: [],
+          notes: [],
+          ready_to_use: true,
+          tags: { beast_attack['damage_type'] => I18n.t("tags.daggerheart.weapon.title.#{beast_attack['damage_type']}") }
+        }
+      ]
     end
 
     def unarmed_attack
@@ -298,8 +306,33 @@ module DaggerheartCharacter
     end
 
     def beastform_config
-      @beastform_config ||=
-        beastform.blank? ? { 'traits' => {}, 'evasion' => 0 } : Config.data('daggerheart', 'beastforms')[beastform]
+      @beastform_config ||= find_beastform_config
+    end
+
+    def find_beastform_config
+      return { 'traits' => {}, 'evasion' => 0 } if beastform.blank?
+
+      base_beastform = Config.data('daggerheart', 'beastforms')[beastform]
+      return base_beastform if base_beastform
+      return { 'traits' => {}, 'evasion' => 0 } if beast.blank?
+      return legendary_beast_stats(Config.data('daggerheart', 'beastforms')[beast]) if beastform == 'legendary_beast'
+      return mythic_beast_stats(Config.data('daggerheart', 'beastforms')[beast]) if beastform == 'mythic_beast'
+
+      { 'traits' => {}, 'evasion' => 0 }
+    end
+
+    def legendary_beast_stats(base_beastform)
+      base_beastform['traits'].transform_values! { |value| value + 1 }
+      base_beastform['evasion'] += 2
+      base_beastform['attack']['damage_bonus'] += 6
+      base_beastform
+    end
+
+    def mythic_beast_stats(base_beastform)
+      base_beastform['traits'].transform_values! { |value| value + 2 }
+      base_beastform['evasion'] += 3
+      base_beastform['attack']['damage_bonus'] += 9
+      base_beastform
     end
 
     def spellcast_for_homebrew_subclass(subclass)

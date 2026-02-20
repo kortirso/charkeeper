@@ -1,4 +1,4 @@
-import { createSignal, createMemo, Switch, Match } from 'solid-js';
+import { createSignal, createMemo, Show, Switch, Match } from 'solid-js';
 import * as i18n from '@solid-primitives/i18n';
 import { createWindowSize } from '@solid-primitives/resize-observer';
 
@@ -122,12 +122,16 @@ export const Daggerheart = (props) => {
                   onNextGuideStepClick={() => setActiveMobileTab('equipment')}
                 />
               </div>
-              <div class="mt-4">
-                <DaggerheartBeastform character={character()} onReplaceCharacter={props.onReplaceCharacter} />
-              </div>
-              <div class="mt-4">
-                <DaggerheartStances character={character()} onReplaceCharacter={props.onReplaceCharacter} />
-              </div>
+              <Show when={character().can_have_beastform}>
+                <div class="mt-4">
+                  <DaggerheartBeastform character={character()} onReplaceCharacter={props.onReplaceCharacter} />
+                </div>
+              </Show>
+              <Show when={character().can_have_stances}>
+                <div class="mt-4">
+                  <DaggerheartStances character={character()} onReplaceCharacter={props.onReplaceCharacter} />
+                </div>
+              </Show>
               <div class="mt-4">
                 <Conditions character={character()} />
               </div>
@@ -268,12 +272,16 @@ export const Daggerheart = (props) => {
             onNextGuideStepClick={() => setActiveTab('equipment')}
           />
         </div>
-        <div class="mt-4">
-          <DaggerheartBeastform character={character()} onReplaceCharacter={props.onReplaceCharacter} />
-        </div>
-        <div class="mt-4">
-          <DaggerheartStances character={character()} onReplaceCharacter={props.onReplaceCharacter} />
-        </div>
+        <Show when={character().can_have_beastform}>
+          <div class="mt-4">
+            <DaggerheartBeastform character={character()} onReplaceCharacter={props.onReplaceCharacter} />
+          </div>
+        </Show>
+        <Show when={character().can_have_stances}>
+          <div class="mt-4">
+            <DaggerheartStances character={character()} onReplaceCharacter={props.onReplaceCharacter} />
+          </div>
+        </Show>
         <div class="mt-4">
           <Conditions character={character()} />
         </div>

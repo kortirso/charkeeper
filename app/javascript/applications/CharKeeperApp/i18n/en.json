@@ -125,10 +125,6 @@
       "attack": "Attack",
       "proficiency": "Proficiency"
     },
-    "beast": {
-      "transformation": "Transformation to beast",
-      "naturalForm": "Natural form"
-    },
     "transformation": {
       "transformation": "Transformation",
       "naturalForm": "Natural form"
