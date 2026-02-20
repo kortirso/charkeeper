@@ -146,9 +146,9 @@ module DaggerheartCharacter
     end
 
     def beastform_attack # rubocop: disable Metrics/AbcSize
-      return [] unless beastform_config
-
       beast_attack = beastform_config['attack']
+      return [] unless beast_attack
+
       [
         {
           name: translate({ en: 'Beast attack', ru: 'Атака' }),
@@ -332,7 +332,18 @@ module DaggerheartCharacter
       base_beastform['traits'].transform_values! { |value| value + 2 }
       base_beastform['evasion'] += 3
       base_beastform['attack']['damage_bonus'] += 9
+      base_beastform['attack']['damage'] = next_dice[base_beastform.dig('attack', 'damage')]
       base_beastform
+    end
+
+    def next_dice
+      {
+        'd12' => 'd20',
+        'd10' => 'd12',
+        'd8' => 'd10',
+        'd6' => 'd8',
+        'd4' => 'd6'
+      }
     end
 
     def spellcast_for_homebrew_subclass(subclass)

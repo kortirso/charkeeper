@@ -3,10 +3,10 @@ import { Show } from 'solid-js';
 import { Button } from '../../components';
 import { Close, Edit, Check } from '../../assets';
 
-export const EditWrapper = (props) => {
-  return (
-    <div class="relative">
-      {props.children}
+export const EditWrapper = (props) => (
+  <div class="relative">
+    {props.children}
+    <Show when={!props.hidden}>
       <Show
         when={props.editMode}
         fallback={
@@ -28,6 +28,6 @@ export const EditWrapper = (props) => {
           </Button>
         </div>
       </Show>
-    </div>
-  );
-}
+    </Show>
+  </div>
+);

@@ -118,5 +118,17 @@
     "traits": { "str": 3 },
     "evasion": 1,
     "attack": { "trait": "str", "range": "melee", "damage": "d12", "damage_bonus": 12, "damage_type": "physical" }
+  },
+  "legendary_hybrid": {
+    "tier": 3,
+    "traits": { "str": 2 },
+    "evasion": 3,
+    "attack": { "trait": "str", "range": "melee", "damage": "d10", "damage_bonus": 8, "damage_type": "physical" }
+  },
+  "mythic_hybrid": {
+    "tier": 4,
+    "traits": { "str": 3 },
+    "evasion": 2,
+    "attack": { "trait": "agi", "range": "melee", "damage": "d12", "damage_bonus": 10, "damage_type": "physical" }
   }
 }

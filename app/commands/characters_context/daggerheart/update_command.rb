@@ -59,6 +59,7 @@ module CharactersContext
           end
           optional(:beastform).maybe(:string)
           optional(:beast).maybe(:string)
+          optional(:hybrid).maybe(:hash)
           optional(:transformation).maybe(:string)
           optional(:selected_stances).maybe(:array).each(:string)
           optional(:stance).maybe(:string)

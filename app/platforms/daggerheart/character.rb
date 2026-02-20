@@ -42,6 +42,7 @@ module Daggerheart
     attribute :experience, array: true, default: []
     attribute :beastform, :string
     attribute :beast, :string
+    attribute :hybrid, array: true, default: {} # { 'terrible_lizard' => { 'adv': [], 'features': [] } }
     attribute :transformation, :string
     attribute :selected_stances, array: true, default: []
     attribute :stance, :string
