@@ -367,7 +367,7 @@ export const Dc20Skills = (props) => {
                               width="28"
                               height="28"
                               text={modifier(skill.modifier)}
-                              onClick={() => props.openDiceRoll(`/check skill ${skill.slug}`, skill.modifier)}
+                              onClick={() => props.openDiceRoll(`/check skill "${skill.slug}"`, skill.modifier)}
                             />
                           </span>
                         </div>

@@ -15,6 +15,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - bug with creating pathfinder character without subclass
 - bug with rendering info for D&D 5 character
 - bug with rendering item info
+- bug with sending check rolls for items with multiword names
 
 ## [0.4.8] - 2026-02-15
 ### Added

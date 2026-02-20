@@ -115,7 +115,7 @@ export const FateStunts = (props) => {
                           width="30"
                           height="30"
                           text={modifier(character().selected_skills[stunt.skill] + 2)}
-                          onClick={() => props.openDiceRoll(`/check stunt ${stunt.title}`, character().selected_skills[stunt.skill] + 2, `${localize(TRANSLATION, locale()).check}, ${stunt.title}`)}
+                          onClick={() => props.openDiceRoll(`/check stunt "${stunt.title}"`, character().selected_skills[stunt.skill] + 2, `${localize(TRANSLATION, locale()).check}, ${stunt.title}`)}
                         />
                       </Show>
                     </p>

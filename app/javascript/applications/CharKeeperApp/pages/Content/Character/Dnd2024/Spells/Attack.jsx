@@ -22,9 +22,9 @@ export const SpellAttack = (props) => {
         dices.push(`D${parsedItem[1]}`)
       }
 
-      props.openAttackRoll(`/check attack ${props.title}`, props.alterHit ? props.alterHit : props.character.spell_classes[props.activeSpellClass].attack_bonus, props.title, dices, 0);
+      props.openAttackRoll(`/check attack "${props.title}"`, props.alterHit ? props.alterHit : props.character.spell_classes[props.activeSpellClass].attack_bonus, props.title, dices, 0);
     } else {
-      props.openDiceRoll(`/check attack ${props.title}`, props.alterHit ? props.alterHit : props.character.spell_classes[props.activeSpellClass].attack_bonus, props.title);
+      props.openDiceRoll(`/check attack "${props.title}"`, props.alterHit ? props.alterHit : props.character.spell_classes[props.activeSpellClass].attack_bonus, props.title);
     }
   }
 
