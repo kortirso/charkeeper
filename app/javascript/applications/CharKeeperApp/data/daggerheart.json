@@ -262,28 +262,44 @@
       "tier": 4,
       "advantages": ["locate", "protect", "scare", "sprint"],
       "adv": { "en": "locate, protect, scare, sprint", "ru": "обнаружении, защите, устрашении, спринте" },
-      "examples": { "en": "Elephant, Mammoth, Rhinoceros", "ru": "Слон, Мамонт, Носорог" }
+      "examples": { "en": "Elephant, Mammoth, Rhinoceros", "ru": "Слон, Мамонт, Носорог" },
+      "features": {
+        "carrier": { "en": "Carrier", "ru": "Перевозчик" },
+        "demolish": { "en": "Demolish", "ru": "Снос" }
+      }
     },
     "terrible_lizard": {
       "name": { "en": "Terrible Lizard", "ru": "Ужасный ящер" },
       "tier": 4,
       "advantages": ["attack", "deceive", "scare", "track"],
       "adv": { "en": "attack, deceive, scare, track", "ru": "атаке, обмане, устрашении, выслеживании" },
-      "examples": { "en": "Brachiosaurus, Tyrannosaurus", "ru": "Брахиозавр, Тираннозавр" }
+      "examples": { "en": "Brachiosaurus, Tyrannosaurus", "ru": "Брахиозавр, Тираннозавр" },
+      "features": {
+        "devastating_strikes": { "en": "Devastating Strikes", "ru": "Сокрушительный удар" },
+        "massive_stride": { "en": "Massive Stride", "ru": "Широкий шаг" }
+      }
     },
     "mythic_aerial_hunter": {
       "name": { "en": "Mythic Aerial Hunter", "ru": "Мифический крылатый хищник" },
       "tier": 4,
       "advantages": ["attack", "deceive", "locate", "navigate"],
       "adv": { "en": "attack, deceive, locate, navigate", "ru": "атаке, обмане, обнаружении, навигации" },
-      "examples": { "en": "Dragon, Pterodactyl, Roc, Wyvern", "ru": "Дракон, Птеродактиль, Птица Рух, Виверна" }
+      "examples": { "en": "Dragon, Pterodactyl, Roc, Wyvern", "ru": "Дракон, Птеродактиль, Птица Рух, Виверна" },
+      "features": {
+        "carrier": { "en": "Carrier", "ru": "Перевозчик" },
+        "deadly_raptor": { "en": "Deadly Raptor", "ru": "Смертоносные когти" }
+      }
     },
     "epic_aquatic_beast": {
       "name": { "en": "Epic Aquatic Beast", "ru": "Эпический водный зверь" },
       "tier": 4,
       "advantages": ["locate", "protect", "scare", "track"],
       "adv": { "en": "locate, protect, scare, track", "ru": "обнаружении, защите, устрашении, выслеживании" },
-      "examples": { "en": "Giant Squid, Whale", "ru": "Гигантский кальмар, Кит" }
+      "examples": { "en": "Giant Squid, Whale", "ru": "Гигантский кальмар, Кит" },
+      "features": {
+        "ocean_master": { "en": "Ocean Master", "ru": "Повелитель морей" },
+        "unyielding": { "en": "Unyielding", "ru": "Непоколебимый" }
+      }
     },
     "legendary_hybrid": {
       "name": { "en": "Legendary Hybrid", "ru": "Легендарный гибрид" },
@@ -299,112 +315,176 @@
       "tier": 3,
       "advantages": ["attack", "sneak", "sprint"],
       "adv": { "en": "attack, sneak, sprint", "ru": "атаке, скрытности, спринте" },
-      "examples": { "en": "Dire Wolf, Velociraptor, Sabertooth Tiger", "ru": "Ужасный волк, Велоцираптор, Саблезубый тигр" }
+      "examples": { "en": "Dire Wolf, Velociraptor, Sabertooth Tiger", "ru": "Ужасный волк, Велоцираптор, Саблезубый тигр" },
+      "features": {
+        "carrier": { "en": "Carrier", "ru": "Перевозчик" },
+        "vicious_maul": { "en": "Vicious Maul", "ru": "Свирепость" }
+      }
     },
     "mighty_lizard": {
       "name": { "en": "Mighty Lizard", "ru": "Крупный ящер" },
       "tier": 3,
       "advantages": ["attack", "sneak", "track"],
       "adv": { "en": "attack, sneak, track", "ru": "атаке, скрытности, выслеживании" },
-      "examples": { "en": "Alligator, Crocodile, Gila Monster", "ru": "Аллигатор, Крокодил, Аризонский ядозуб" }
+      "examples": { "en": "Alligator, Crocodile, Gila Monster", "ru": "Аллигатор, Крокодил, Аризонский ядозуб" },
+      "features": {
+        "physical_defense": { "en": "Physical Defense", "ru": "Толстая чешуя" },
+        "snapping_strike": { "en": "Snapping Strike", "ru": "Мощный укус" }
+      }
     },
     "great_winged_beast": {
       "name": { "en": "Great Winged Beast", "ru": "Великий крылатый зверь" },
       "tier": 3,
       "advantages": ["deceive", "distract", "locate"],
       "adv": { "en": "deceive, distract, locate", "ru": "обмане, отвлечении, обнаружении" },
-      "examples": { "en": "Giant Eagle, Falcon", "ru": "Гигантский орёл, Сокол" }
+      "examples": { "en": "Giant Eagle, Falcon", "ru": "Гигантский орёл, Сокол" },
+      "features": {
+        "bird_eye_view": { "en": "Bird's-Eye View", "ru": "Высота птичьего полёта" },
+        "carrier": { "en": "Carrier", "ru": "Перевозчик" }
+      }
     },
     "aquatic_predator": {
       "name": { "en": "Aquatic Predator", "ru": "Водный хищник" },
       "tier": 3,
       "advantages": ["attack", "swim", "track"],
       "adv": { "en": "attack, swim, track", "ru": "атаке, плавании, выслеживании" },
-      "examples": { "en": "Dolphin, Orca, Shark", "ru": "Дельфин, Косатка, Акула" }
+      "examples": { "en": "Dolphin, Orca, Shark", "ru": "Дельфин, Косатка, Акула" },
+      "features": {
+        "aquatic": { "en": "Aquatic", "ru": "Водное" },
+        "vicious_maul": { "en": "Vicious Maul", "ru": "Свирепость" }
+      }
     },
     "armored_sentry": {
       "name": { "en": "Armored sentry", "ru": "Бронированное панцирное" },
       "tier": 2,
       "advantages": ["dig", "locate", "protect"],
       "adv": { "en": "dig, locate, protect", "ru": "раскопке, обнаружении, защите" },
-      "examples": { "en": "Armadillo, Pangolin, Turtle", "ru": "Броненосец, Панголин, Черепаха" }
+      "examples": { "en": "Armadillo, Pangolin, Turtle", "ru": "Броненосец, Панголин, Черепаха" },
+      "features": {
+        "armored_shell": { "en": "Armored Shell", "ru": "Крепкий панцирь" },
+        "cannonball": { "en": "Cannonball", "ru": "Пушечное ядро" }
+      }
     },
     "powerful_beast": {
       "name": { "en": "Powerful beast", "ru": "Крупный зверь" },
       "tier": 2,
       "advantages": ["navigate", "protect", "scare"],
       "adv": { "en": "navigate, protect, scare", "ru": "навигации, защите, испуге" },
-      "examples": { "en": "Bear, Bull, Moose", "ru": "Медведь, Бык, Лось" }
+      "examples": { "en": "Bear, Bull, Moose", "ru": "Медведь, Бык, Лось" },
+      "features": {
+        "rampage": { "en": "Rampage", "ru": "Буйство" },
+        "thick_hide": { "en": "Thick Hide", "ru": "Толстая шкура" }
+      }
     },
     "mighty_strider": {
       "name": { "en": "Mighty strider", "ru": "Выносливый скакун" },
       "tier": 2,
       "advantages": ["leap", "navigate", "sprint"],
       "adv": { "en": "leap, navigate, sprint", "ru": "прыжках, навигации, галопе" },
-      "examples": { "en": "Camel, Horse, Zebra", "ru": "Верблюд, Лошадь, Зебра" }
+      "examples": { "en": "Camel, Horse, Zebra", "ru": "Верблюд, Лошадь, Зебра" },
+      "features": {
+        "carrier": { "en": "Carrier", "ru": "Перевозчик" },
+        "trample": { "en": "Trample", "ru": "Затоптать" }
+      }
     },
     "striking_serpent": {
       "name": { "en": "Striking serpent", "ru": "Ужасающий змей" },
       "tier": 2,
       "advantages": ["climb", "deceive", "sprint"],
       "adv": { "en": "climb, deceive, sprint", "ru": "взбирании, обмане, беге" },
-      "examples": { "en": "Cobra, Rattlesnake, Viper", "ru": "Кобра, Гремучая змея, Гадюка" }
+      "examples": { "en": "Cobra, Rattlesnake, Viper", "ru": "Кобра, Гремучая змея, Гадюка" },
+      "features": {
+        "venomous_strike": { "en": "Venomous Strike", "ru": "Ядовитый укус" },
+        "warning_hiss": { "en": "Warning Hiss", "ru": "Шипение" }
+      }
     },
     "pouncing_predator": {
       "name": { "en": "Pouncing predator", "ru": "Свирепый хищник" },
       "tier": 2,
       "advantages": ["attack", "climb", "sneak"],
       "adv": { "en": "attack, climb, sneak", "ru": "атаке, взбирании, скрытности" },
-      "examples": { "en": "Cheetah, Lion, Panther", "ru": "Гепард, Лев, Пантера" }
+      "examples": { "en": "Cheetah, Lion, Panther", "ru": "Гепард, Лев, Пантера" },
+      "features": {
+        "fleet": { "en": "Fleet", "ru": "Проворство" },
+        "takedown": { "en": "Takedown", "ru": "Наповал" }
+      }
     },
     "winged_beast": {
       "name": { "en": "Winged beast", "ru": "Крылатый зверь" },
       "tier": 2,
       "advantages": ["deceive", "locate", "scare"],
       "adv": { "en": "deceive, locate, scare", "ru": "обмане, обнаружении, испуге" },
-      "examples": { "en": "Hawk, Owl, Raven", "ru": "Ястреб, Сова, Ворон" }
+      "examples": { "en": "Hawk, Owl, Raven", "ru": "Ястреб, Сова, Ворон" },
+      "features": {
+        "bird_eye_view": { "en": "Bird's-Eye View", "ru": "Высота птичьего полёта" },
+        "hollow_bones": { "en": "Hollow Bones", "ru": "Полые кости" }
+      }
     },
     "agile_scout": {
       "name": { "en": "Agile scout", "ru": "Ловкий разведчик" },
       "tier": 1,
       "advantages": ["deceive", "locate", "sneak"],
       "adv": { "en": "deceive, locate, sneak", "ru": "обмане, обнаружении, скрытности" },
-      "examples": { "en": "Fox, Mouse, Weasel", "ru": "Лиса, Мышь, Ласка" }
+      "examples": { "en": "Fox, Mouse, Weasel", "ru": "Лиса, Мышь, Ласка" },
+      "features": {
+        "agile": { "en": "Agile", "ru": "Ловкость" },
+        "fragile": { "en": "Fragile", "ru": "Хрупкость" }
+      }
     },
     "household_friend": {
       "name": { "en": "Household friend", "ru": "Домашний питомец" },
       "tier": 1,
       "advantages": ["climb", "locate", "protect"],
       "adv": { "en": "climb, locate, protect", "ru": "взбирании, обнаружении, защите" },
-      "examples": { "en": "Cat, Dog, Rabbit", "ru": "Кот, Собака, Кролик" }
+      "examples": { "en": "Cat, Dog, Rabbit", "ru": "Кот, Собака, Кролик" },
+      "features": {
+        "companion": { "en": "Companion", "ru": "Компаньон" },
+        "fragile": { "en": "Fragile", "ru": "Хрупкость" }
+      }
     },
     "nimble_grazer": {
       "name": { "en": "Nimble grazer", "ru": "Проворное копытное" },
       "tier": 1,
       "advantages": ["leap", "sneak", "sprint"],
       "adv": { "en": "leap, sneak, sprint", "ru": "прыжках, скрытности, галопе" },
-      "examples": { "en": "Deer, Gazelle, Goat", "ru": "Олень, Газель, Коза" }
+      "examples": { "en": "Deer, Gazelle, Goat", "ru": "Олень, Газель, Коза" },
+      "features": {
+        "elusive_prey": { "en": "Elusive Prey", "ru": "Неуловимая добыча" },
+        "fragile": { "en": "Fragile", "ru": "Хрупкость" }
+      }
     },
     "pack_predator": {
       "name": { "en": "Pack predator", "ru": "Стайный хищник" },
       "tier": 1,
       "advantages": ["attack", "sprint", "track"],
       "adv": { "en": "attack, sprint, track", "ru": "атаке, беге, выслеживании" },
-      "examples": { "en": "Coyote, Hyena, Wolf", "ru": "Койот, Гиена, Волк" }
+      "examples": { "en": "Coyote, Hyena, Wolf", "ru": "Койот, Гиена, Волк" },
+      "features": {
+        "hobbling_strike": { "en": "Hobbling Strike", "ru": "Калечащий удар" },
+        "pack_hunting": { "en": "Pack Hunting", "ru": "Стайная охота" }
+      }
     },
     "aquatic_scout": {
       "name": { "en": "Aquatic scout", "ru": "Водный разведчик" },
       "tier": 1,
       "advantages": ["navigate", "sneak", "swim"],
       "adv": { "en": "navigate, sneak, swim", "ru": "навигации, скрытности, плавании" },
-      "examples": { "en": "Eel, Fish, Octopus", "ru": "Угорь, Рыба, Осьминог" }
+      "examples": { "en": "Eel, Fish, Octopus", "ru": "Угорь, Рыба, Осьминог" },
+      "features": {
+        "aquatic": { "en": "Aquatic", "ru": "Водное" },
+        "fragile": { "en": "Fragile", "ru": "Хрупкость" }
+      }
     },
     "stalking_arachnid": {
       "name": { "en": "Stalking arachnid", "ru": "Выслеживающий арахнид" },
       "tier": 1,
       "advantages": ["attack", "climb", "sneak"],
       "adv": { "en": "attack, climb, sneak", "ru": "атаке, взбирании, скрытности" },
-      "examples": { "en": "Tarantula, Wolf Spider", "ru": "Тарантул, Паук-волк" }
+      "examples": { "en": "Tarantula, Wolf Spider", "ru": "Тарантул, Паук-волк" },
+      "features": {
+        "venomous_bite": { "en": "Venomous Bite", "ru": "Ядовитый укус" },
+        "webslinger": { "en": "Webslinger", "ru": "Шелкопряд" }
+      }
     }
   },
   "stances": {

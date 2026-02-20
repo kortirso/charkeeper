@@ -14,7 +14,11 @@ const TRANSLATION = {
     naturalForm: 'Natural form',
     transformation: 'Transformation to beast',
     beast: 'Select base beastform',
-    hybridBeasts: 'Select base beastforms for hybrid'
+    hybridBeasts: 'Select base beastforms for hybrid',
+    legendaryHybridHelp: 'Choose a total of four advantages and two features from those options.',
+    myphicHybridHelp: 'Choose a total of five advantages and three features from those options.',
+    legendaryHybrid: 'To transform into this creature, mark an additional Stress. Choose any two Beastform options.',
+    myphicHybrid: 'To transform into this creature, mark 2 additional Stress. Choose any three Beastform options.'
   },
   ru: {
     desc: 'Во время трансформации вы не можете использовать оружие или заклинания из карт домена, но вы по-прежнему можете использовать другие функции или способности, к которым у вас есть доступ.',
@@ -23,7 +27,11 @@ const TRANSLATION = {
     naturalForm: 'Естественная форма',
     transformation: 'Превращение в зверя',
     beast: 'Выберите базовую форму зверя',
-    hybridBeasts: 'Выберите базовые формы для гибрида'
+    hybridBeasts: 'Выберите базовые формы для гибрида',
+    legendaryHybridHelp: 'Выберите в сумме 4 преимущества и 2 способности выбранных зверей',
+    myphicHybridHelp: 'Выберите в сумме 5 преимуществ и 3 способности выбранных зверей',
+    legendaryHybrid: 'Для превращения в это существо отметьте Стресс. Выберите 2 любые формы зверя из списка.',
+    myphicHybrid: 'Для превращения в это существо отметьте 2 Стресса. Выберите 3 любые формы зверя из списка.'
   },
   es: {
     desc: 'While in Beastform, you cannot use weapons or cast spells from Domain Cards. You can still use class features, abilities, and Beastform-specific actions.',
@@ -32,7 +40,11 @@ const TRANSLATION = {
     naturalForm: 'Forma natural',
     transformation: 'Transformación a bestia',
     beast: 'Select base beastform',
-    hybridBeasts: 'Select base beastforms for hybrid'
+    hybridBeasts: 'Select base beastforms for hybrid',
+    legendaryHybridHelp: 'Choose a total of four advantages and two features from those options.',
+    myphicHybridHelp: 'Choose a total of five advantages and three features from those options.',
+    legendaryHybrid: 'To transform into this creature, mark an additional Stress. Choose any two Beastform options.',
+    myphicHybrid: 'To transform into this creature, mark 2 additional Stress. Choose any three Beastform options.'
   }
 }
 
@@ -140,17 +152,17 @@ export const DaggerheartBeastform = (props) => {
     setCurrentHybrid(newValue);
   }
 
-  const changeHybridAdvantage = (slug, advantage) => {
+  const changeHybridAttribute = (attribute, slug, value) => {
     let newValue;
 
     const changedHybrid = hybrid()[slug];
-    if (changedHybrid.adv.includes(advantage)) {
-      newValue = changedHybrid.adv.filter((item) => item !== advantage);
+    if (changedHybrid[attribute].includes(value)) {
+      newValue = changedHybrid[attribute].filter((item) => item !== value);
     } else {
-      newValue = changedHybrid.adv.concat([advantage]);
+      newValue = changedHybrid[attribute].concat([value]);
     }
 
-    setHybrid({ ...hybrid(), [slug]: { ...changedHybrid, adv: newValue } });
+    setHybrid({ ...hybrid(), [slug]: { ...changedHybrid, [attribute]: newValue } });
   }
 
   const saveHybrid = () => {
@@ -196,32 +208,43 @@ export const DaggerheartBeastform = (props) => {
                   onSelect={changeBeast}
                 />
               </Show>
-
-
-
               <Show when={beastform() === 'legendary_hybrid' || beastform() === 'mythic_hybrid'}>
                 <Show
                   when={editMode()}
                   fallback={
-                    <Select
-                      multi
-                      containerClassList="w-full mt-2"
-                      labelText={localize(TRANSLATION, locale()).hybridBeasts}
-                      items={beastSelectOptions()}
-                      selectedValues={Object.keys(currentHybrid())}
-                      onSelect={changeHybrid}
-                    />
+                    <>
+                      <Show when={beastform() === 'legendary_hybrid'}>
+                        <p class="mt-4 text-sm">{localize(TRANSLATION, locale()).legendaryHybrid}</p>
+                      </Show>
+                      <Show when={beastform() === 'mythic_hybrid'}>
+                        <p class="mt-4 text-sm">{localize(TRANSLATION, locale()).myphicHybrid}</p>
+                      </Show>
+                      <Select
+                        multi
+                        containerClassList="w-full mt-4"
+                        labelText={localize(TRANSLATION, locale()).hybridBeasts}
+                        items={beastSelectOptions()}
+                        selectedValues={Object.keys(currentHybrid())}
+                        onSelect={changeHybrid}
+                      />
+                    </>
                   }
                 >
                   <div class="mt-4 mb-2">
-                    <div class="flex items-center">
+                    <Show when={beastform() === 'legendary_hybrid'}>
+                      <p class="mt-4 text-sm">{localize(TRANSLATION, locale()).legendaryHybridHelp}</p>
+                    </Show>
+                    <Show when={beastform() === 'mythic_hybrid'}>
+                      <p class="mt-4 text-sm">{localize(TRANSLATION, locale()).myphicHybridHelp}</p>
+                    </Show>
+                    <div class="flex items-center mt-4">
                       <For each={Object.keys(hybrid())}>
                         {(slug) =>
                           <p class="flex-1 text-sm text-center">{localize(config.beastforms[slug].name, locale())}</p>
                         }
                       </For>
                     </div>
-                    <div class="flex items-center">
+                    <div class="flex items-center mt-4">
                       <For each={Object.entries(hybrid())}>
                         {([slug, values]) =>
                           <div class="flex-1">
@@ -234,7 +257,28 @@ export const DaggerheartBeastform = (props) => {
                                   labelPosition="right"
                                   checked={values.adv.includes(advantage)}
                                   classList="mt-1"
-                                  onToggle={() => changeHybridAdvantage(slug, advantage)}
+                                  onToggle={() => changeHybridAttribute('adv', slug, advantage)}
+                                />
+                              }
+                            </For>
+                          </div>
+                        }
+                      </For>
+                    </div>
+                    <div class="flex items-center mt-4">
+                      <For each={Object.entries(hybrid())}>
+                        {([slug, values]) =>
+                          <div class="flex-1">
+                            <For each={Object.entries(config.beastforms[slug].features)}>
+                              {([feature, names]) =>
+                                <Checkbox
+                                  filled
+                                  labelText={localize(names, locale())}
+                                  labelClassList="ml-2"
+                                  labelPosition="right"
+                                  checked={values.features.includes(feature)}
+                                  classList="mt-1"
+                                  onToggle={() => changeHybridAttribute('features', slug, feature)}
                                 />
                               }
                             </For>
@@ -245,10 +289,7 @@ export const DaggerheartBeastform = (props) => {
                   </div>
                 </Show>
               </Show>
-
-
-
-              <p class="text-sm mt-2">{localize(TRANSLATION, locale())['desc']}</p>
+              <p class="text-sm mt-4">{localize(TRANSLATION, locale())['desc']}</p>
               <Show when={currentBaseBeast()}>
                 <Show when={currentBaseBeast().examples}>
                   <p class="mt-1">{localize(TRANSLATION, locale()).examples} {localize(currentBaseBeast().examples, locale())}</p>
