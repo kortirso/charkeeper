@@ -312,11 +312,12 @@ module DaggerheartCharacter
     def find_beastform_config
       return { 'traits' => {}, 'evasion' => 0 } if beastform.blank?
 
-      base_beastform = Config.data('daggerheart', 'beastforms')[beastform]
+      config = Config.data('daggerheart', 'beastforms')
+      base_beastform = config.select { |_, value| value['advantages'] }[beastform]
       return base_beastform if base_beastform
       return { 'traits' => {}, 'evasion' => 0 } if beast.blank?
-      return legendary_beast_stats(Config.data('daggerheart', 'beastforms')[beast]) if beastform == 'legendary_beast'
-      return mythic_beast_stats(Config.data('daggerheart', 'beastforms')[beast]) if beastform == 'mythic_beast'
+      return legendary_beast_stats(config[beast]) if beastform == 'legendary_beast'
+      return mythic_beast_stats(config[beast]) if beastform == 'mythic_beast'
 
       { 'traits' => {}, 'evasion' => 0 }
     end

@@ -1,0 +1,16 @@
+{
+  "locate": { "en": "Locate", "ru": "Обнаружение" },
+  "protect": { "en": "Protect", "ru": "Защита" },
+  "scare": { "en": "Scare", "ru": "Устрашение" },
+  "sprint": { "en": "Sprint", "ru": "Спринт" },
+  "attack": { "en": "Attack", "ru": "Атака" },
+  "deceive": { "en": "Deceive", "ru": "Обман" },
+  "track": { "en": "Track", "ru": "Выслеживание" },
+  "navigate": { "en": "Navigate", "ru": "Навигация" },
+  "sneak": { "en": "Sneak", "ru": "Скрытность" },
+  "distract": { "en": "Distract", "ru": "Отвлечение" },
+  "swim": { "en": "Swim", "ru": "Плавание" },
+  "dig": { "en": "Dig", "ru": "Раскопка" },
+  "leap": { "en": "Leap", "ru": "Прыжок" },
+  "climb": { "en": "Climb", "ru": "Взбирание" }
+}

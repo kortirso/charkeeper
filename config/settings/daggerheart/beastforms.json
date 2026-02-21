@@ -1,134 +1,286 @@
 {
-  "agile_scout": {
-    "tier": 1,
-    "traits": { "agi": 1 },
-    "evasion": 2,
-    "attack": { "trait": "agi", "range": "melee", "damage": "d8", "damage_bonus": 0, "damage_type": "physical" }
-  },
-  "household_friend": {
-    "tier": 1,
-    "traits": { "ins": 1 },
-    "evasion": 1,
-    "attack": { "trait": "ins", "range": "melee", "damage": "d6", "damage_bonus": 0, "damage_type": "physical" }
-  },
-  "nimble_grazer": {
-    "tier": 1,
-    "traits": { "agi": 1 },
-    "evasion": 3,
-    "attack": { "trait": "agi", "range": "melee", "damage": "d6", "damage_bonus": 0, "damage_type": "physical" }
-  },
-  "pack_predator": {
-    "tier": 1,
-    "traits": { "str": 2 },
-    "evasion": 1,
-    "attack": { "trait": "str", "range": "melee", "damage": "d8", "damage_bonus": 2, "damage_type": "physical" }
-  },
-  "aquatic_scout": {
-    "tier": 1,
-    "traits": { "agi": 1 },
-    "evasion": 2,
-    "attack": { "trait": "agi", "range": "melee", "damage": "d4", "damage_bonus": 0, "damage_type": "physical" }
-  },
-  "stalking_arachnid": {
-    "tier": 1,
-    "traits": { "fin": 1 },
-    "evasion": 2,
-    "attack": { "trait": "fin", "range": "melee", "damage": "d6", "damage_bonus": 1, "damage_type": "physical" }
-  },
-  "armored_sentry": {
-    "tier": 2,
-    "traits": { "str": 1 },
-    "evasion": 1,
-    "attack": { "trait": "str", "range": "melee", "damage": "d8", "damage_bonus": 2, "damage_type": "physical" }
-  },
-  "powerful_beast": {
-    "tier": 2,
+  "mythic_hybrid": {
+    "tier": 4,
     "traits": { "str": 3 },
-    "evasion": 1,
-    "attack": { "trait": "str", "range": "melee", "damage": "d10", "damage_bonus": 4, "damage_type": "physical" }
-  },
-  "mighty_strider": {
-    "tier": 2,
-    "traits": { "agi": 1 },
     "evasion": 2,
-    "attack": { "trait": "agi", "range": "melee", "damage": "d8", "damage_bonus": 1, "damage_type": "physical" }
+    "attack": { "trait": "agi", "range": "melee", "damage": "d12", "damage_bonus": 10, "damage_type": "physical" },
+    "name": { "en": "Mythic Hybrid", "ru": "Мифический гибрид" },
+    "examples": { "en": "Chimera, Cockatrice, Manticore", "ru": "Химера, Василиск, Мантикора" }
   },
-  "striking_serpent": {
-    "tier": 2,
-    "traits": { "fin": 1 },
-    "evasion": 2,
-    "attack": { "trait": "fin", "range": "melee", "damage": "d8", "damage_bonus": 4, "damage_type": "physical" }
-  },
-  "pouncing_predator": {
-    "tier": 2,
-    "traits": { "ins": 1 },
-    "evasion": 3,
-    "attack": { "trait": "ins", "range": "melee", "damage": "d8", "damage_bonus": 6, "damage_type": "physical" }
-  },
-  "winged_beast": {
-    "tier": 2,
-    "traits": { "fin": 1 },
-    "evasion": 3,
-    "attack": { "trait": "fin", "range": "melee", "damage": "d4", "damage_bonus": 2, "damage_type": "physical" }
-  },
-  "aquatic_predator": {
-    "tier": 3,
-    "traits": { "agi": 2 },
-    "evasion": 4,
-    "attack": { "trait": "agi", "range": "melee", "damage": "d10", "damage_bonus": 6, "damage_type": "physical" }
-  },
-  "great_winged_beast": {
-    "tier": 3,
-    "traits": { "fin": 2 },
-    "evasion": 3,
-    "attack": { "trait": "fin", "range": "melee", "damage": "d8", "damage_bonus": 6, "damage_type": "physical" }
-  },
-  "mighty_lizard": {
-    "tier": 3,
-    "traits": { "ins": 2 },
-    "evasion": 1,
-    "attack": { "trait": "ins", "range": "melee", "damage": "d10", "damage_bonus": 7, "damage_type": "physical" }
-  },
-  "great_predator": {
-    "tier": 3,
-    "traits": { "str": 2 },
-    "evasion": 2,
-    "attack": { "trait": "str", "range": "melee", "damage": "d12", "damage_bonus": 8, "damage_type": "physical" }
+  "mythic_beast": {
+    "name": { "en": "Mythic Beast", "ru": "Мифический зверь" },
+    "tier": 4
   },
   "epic_aquatic_beast": {
     "tier": 4,
     "traits": { "agi": 3 },
     "evasion": 3,
-    "attack": { "trait": "agi", "range": "melee", "damage": "d10", "damage_bonus": 10, "damage_type": "physical" }
+    "attack": { "trait": "agi", "range": "melee", "damage": "d10", "damage_bonus": 10, "damage_type": "physical" },
+    "name": { "en": "Epic Aquatic Beast", "ru": "Эпический водный зверь" },
+    "advantages": ["locate", "protect", "scare", "track"],
+    "examples": { "en": "Giant Squid, Whale", "ru": "Гигантский кальмар, Кит" },
+    "features": {
+      "ocean_master": { "en": "Ocean Master", "ru": "Повелитель морей" },
+      "unyielding": { "en": "Unyielding", "ru": "Непоколебимый" }
+    }
   },
   "mythic_aerial_hunter": {
     "tier": 4,
     "traits": { "fin": 3 },
     "evasion": 4,
-    "attack": { "trait": "fin", "range": "melee", "damage": "d10", "damage_bonus": 11, "damage_type": "physical" }
+    "attack": { "trait": "fin", "range": "melee", "damage": "d10", "damage_bonus": 11, "damage_type": "physical" },
+    "name": { "en": "Mythic Aerial Hunter", "ru": "Мифический крылатый хищник" },
+    "advantages": ["attack", "deceive", "locate", "navigate"],
+    "examples": { "en": "Dragon, Pterodactyl, Roc, Wyvern", "ru": "Дракон, Птеродактиль, Птица Рух, Виверна" },
+    "features": {
+      "mythic_aerial_hunter_carrier": { "en": "Carrier", "ru": "Перевозчик" },
+      "deadly_raptor": { "en": "Deadly Raptor", "ru": "Смертоносные когти" }
+    }
   },
   "terrible_lizard": {
     "tier": 4,
     "traits": { "str": 3 },
     "evasion": 2,
-    "attack": { "trait": "str", "range": "melee", "damage": "d12", "damage_bonus": 10, "damage_type": "physical" }
+    "attack": { "trait": "str", "range": "melee", "damage": "d12", "damage_bonus": 10, "damage_type": "physical" },
+    "name": { "en": "Terrible Lizard", "ru": "Ужасный ящер" },
+    "advantages": ["attack", "deceive", "scare", "track"],
+    "examples": { "en": "Brachiosaurus, Tyrannosaurus", "ru": "Брахиозавр, Тираннозавр" },
+    "features": {
+      "devastating_strikes": { "en": "Devastating Strikes", "ru": "Сокрушительный удар" },
+      "massive_stride": { "en": "Massive Stride", "ru": "Широкий шаг" }
+    }
   },
   "massive_behemoth": {
     "tier": 4,
     "traits": { "str": 3 },
     "evasion": 1,
-    "attack": { "trait": "str", "range": "melee", "damage": "d12", "damage_bonus": 12, "damage_type": "physical" }
+    "attack": { "trait": "str", "range": "melee", "damage": "d12", "damage_bonus": 12, "damage_type": "physical" },
+    "name": { "en": "Massive Behemoth", "ru": "Могучий гигант" },
+    "advantages": ["locate", "protect", "scare", "sprint"],
+    "examples": { "en": "Elephant, Mammoth, Rhinoceros", "ru": "Слон, Мамонт, Носорог" },
+    "features": {
+      "massive_behemoth_carrier": { "en": "Carrier", "ru": "Перевозчик" },
+      "demolish": { "en": "Demolish", "ru": "Снос" }
+    }
   },
   "legendary_hybrid": {
     "tier": 3,
     "traits": { "str": 2 },
     "evasion": 3,
-    "attack": { "trait": "str", "range": "melee", "damage": "d10", "damage_bonus": 8, "damage_type": "physical" }
+    "attack": { "trait": "str", "range": "melee", "damage": "d10", "damage_bonus": 8, "damage_type": "physical" },
+    "name": { "en": "Legendary Hybrid", "ru": "Легендарный гибрид" },
+    "examples": { "en": "Griffon, Sphinx", "ru": "Грифон, Сфинкс" }
   },
-  "mythic_hybrid": {
-    "tier": 4,
-    "traits": { "str": 3 },
+  "legendary_beast": {
+    "name": { "en": "Legendary Beast", "ru": "Легендарный зверь" },
+    "tier": 3
+  },
+  "aquatic_predator": {
+    "tier": 3,
+    "traits": { "agi": 2 },
+    "evasion": 4,
+    "attack": { "trait": "agi", "range": "melee", "damage": "d10", "damage_bonus": 6, "damage_type": "physical" },
+    "name": { "en": "Aquatic Predator", "ru": "Водный хищник" },
+    "advantages": ["attack", "swim", "track"],
+    "examples": { "en": "Dolphin, Orca, Shark", "ru": "Дельфин, Косатка, Акула" },
+    "features": {
+      "aquatic": { "en": "Aquatic", "ru": "Водное" },
+      "aquatic_predator_vicious_maul": { "en": "Vicious Maul", "ru": "Свирепость" }
+    }
+  },
+  "great_winged_beast": {
+    "tier": 3,
+    "traits": { "fin": 2 },
+    "evasion": 3,
+    "attack": { "trait": "fin", "range": "melee", "damage": "d8", "damage_bonus": 6, "damage_type": "physical" },
+    "name": { "en": "Great Winged Beast", "ru": "Великий крылатый зверь" },
+    "advantages": ["deceive", "distract", "locate"],
+    "examples": { "en": "Giant Eagle, Falcon", "ru": "Гигантский орёл, Сокол" },
+    "features": {
+      "bird_eye_view": { "en": "Bird's-Eye View", "ru": "Высота птичьего полёта" },
+      "great_winged_beast_carrier": { "en": "Carrier", "ru": "Перевозчик" }
+    }
+  },
+  "mighty_lizard": {
+    "tier": 3,
+    "traits": { "ins": 2 },
+    "evasion": 1,
+    "attack": { "trait": "ins", "range": "melee", "damage": "d10", "damage_bonus": 7, "damage_type": "physical" },
+    "name": { "en": "Mighty Lizard", "ru": "Крупный ящер" },
+    "advantages": ["attack", "sneak", "track"],
+    "examples": { "en": "Alligator, Crocodile, Gila Monster", "ru": "Аллигатор, Крокодил, Аризонский ядозуб" },
+    "features": {
+      "physical_defense": { "en": "Physical Defense", "ru": "Толстая чешуя" },
+      "snapping_strike": { "en": "Snapping Strike", "ru": "Мощный укус" }
+    }
+  },
+  "great_predator": {
+    "tier": 3,
+    "traits": { "str": 2 },
     "evasion": 2,
-    "attack": { "trait": "agi", "range": "melee", "damage": "d12", "damage_bonus": 10, "damage_type": "physical" }
+    "attack": { "trait": "str", "range": "melee", "damage": "d12", "damage_bonus": 8, "damage_type": "physical" },
+    "name": { "en": "Great Predator", "ru": "Великий хищник" },
+    "advantages": ["attack", "sneak", "sprint"],
+    "examples": { "en": "Dire Wolf, Velociraptor, Sabertooth Tiger", "ru": "Ужасный волк, Велоцираптор, Саблезубый тигр" },
+    "features": {
+      "carrier": { "en": "Carrier", "ru": "Перевозчик" },
+      "vicious_maul": { "en": "Vicious Maul", "ru": "Свирепость" }
+    }
+  },
+  "armored_sentry": {
+    "tier": 2,
+    "traits": { "str": 1 },
+    "evasion": 1,
+    "attack": { "trait": "str", "range": "melee", "damage": "d8", "damage_bonus": 2, "damage_type": "physical" },
+    "name": { "en": "Armored sentry", "ru": "Бронированное панцирное" },
+    "advantages": ["dig", "locate", "protect"],
+    "examples": { "en": "Armadillo, Pangolin, Turtle", "ru": "Броненосец, Панголин, Черепаха" },
+    "features": {
+      "armored_shell": { "en": "Armored Shell", "ru": "Крепкий панцирь" },
+      "cannonball": { "en": "Cannonball", "ru": "Пушечное ядро" }
+    }
+  },
+  "powerful_beast": {
+    "tier": 2,
+    "traits": { "str": 3 },
+    "evasion": 1,
+    "attack": { "trait": "str", "range": "melee", "damage": "d10", "damage_bonus": 4, "damage_type": "physical" },
+    "name": { "en": "Powerful beast", "ru": "Крупный зверь" },
+    "advantages": ["navigate", "protect", "scare"],
+    "examples": { "en": "Bear, Bull, Moose", "ru": "Медведь, Бык, Лось" },
+    "features": {
+      "rampage": { "en": "Rampage", "ru": "Буйство" },
+      "thick_hide": { "en": "Thick Hide", "ru": "Толстая шкура" }
+    }
+  },
+  "mighty_strider": {
+    "tier": 2,
+    "traits": { "agi": 1 },
+    "evasion": 2,
+    "attack": { "trait": "agi", "range": "melee", "damage": "d8", "damage_bonus": 1, "damage_type": "physical" },
+    "name": { "en": "Mighty strider", "ru": "Выносливый скакун" },
+    "advantages": ["leap", "navigate", "sprint"],
+    "examples": { "en": "Camel, Horse, Zebra", "ru": "Верблюд, Лошадь, Зебра" },
+    "features": {
+      "carrier": { "en": "Carrier", "ru": "Перевозчик" },
+      "trample": { "en": "Trample", "ru": "Затоптать" }
+    }
+  },
+  "striking_serpent": {
+    "tier": 2,
+    "traits": { "fin": 1 },
+    "evasion": 2,
+    "attack": { "trait": "fin", "range": "melee", "damage": "d8", "damage_bonus": 4, "damage_type": "physical" },
+    "name": { "en": "Striking serpent", "ru": "Ужасающий змей" },
+    "advantages": ["climb", "deceive", "sprint"],
+    "examples": { "en": "Cobra, Rattlesnake, Viper", "ru": "Кобра, Гремучая змея, Гадюка" },
+    "features": {
+      "venomous_strike": { "en": "Venomous Strike", "ru": "Ядовитый укус" },
+      "warning_hiss": { "en": "Warning Hiss", "ru": "Шипение" }
+    }
+  },
+  "pouncing_predator": {
+    "tier": 2,
+    "traits": { "ins": 1 },
+    "evasion": 3,
+    "attack": { "trait": "ins", "range": "melee", "damage": "d8", "damage_bonus": 6, "damage_type": "physical" },
+    "name": { "en": "Pouncing predator", "ru": "Свирепый хищник" },
+    "advantages": ["attack", "climb", "sneak"],
+    "examples": { "en": "Cheetah, Lion, Panther", "ru": "Гепард, Лев, Пантера" },
+    "features": {
+      "fleet": { "en": "Fleet", "ru": "Проворство" },
+      "takedown": { "en": "Takedown", "ru": "Наповал" }
+    }
+  },
+  "winged_beast": {
+    "tier": 2,
+    "traits": { "fin": 1 },
+    "evasion": 3,
+    "attack": { "trait": "fin", "range": "melee", "damage": "d4", "damage_bonus": 2, "damage_type": "physical" },
+    "name": { "en": "Winged beast", "ru": "Крылатый зверь" },
+    "advantages": ["deceive", "locate", "scare"],
+    "examples": { "en": "Hawk, Owl, Raven", "ru": "Ястреб, Сова, Ворон" },
+    "features": {
+      "bird_eye_view": { "en": "Bird's-Eye View", "ru": "Высота птичьего полёта" },
+      "hollow_bones": { "en": "Hollow Bones", "ru": "Полые кости" }
+    }
+  },
+  "agile_scout": {
+    "tier": 1,
+    "traits": { "agi": 1 },
+    "evasion": 2,
+    "attack": { "trait": "agi", "range": "melee", "damage": "d8", "damage_bonus": 0, "damage_type": "physical" },
+    "name": { "en": "Agile scout", "ru": "Ловкий разведчик" },
+    "advantages": ["deceive", "locate", "sneak"],
+    "examples": { "en": "Fox, Mouse, Weasel", "ru": "Лиса, Мышь, Ласка" },
+    "features": {
+      "agile": { "en": "Agile", "ru": "Ловкость" },
+      "fragile": { "en": "Fragile", "ru": "Хрупкость" }
+    }
+  },
+  "household_friend": {
+    "tier": 1,
+    "traits": { "ins": 1 },
+    "evasion": 1,
+    "attack": { "trait": "ins", "range": "melee", "damage": "d6", "damage_bonus": 0, "damage_type": "physical" },
+    "name": { "en": "Household friend", "ru": "Домашний питомец" },
+    "advantages": ["climb", "locate", "protect"],
+    "examples": { "en": "Cat, Dog, Rabbit", "ru": "Кот, Собака, Кролик" },
+    "features": {
+      "companion": { "en": "Companion", "ru": "Компаньон" },
+      "household_friend_fragile": { "en": "Fragile", "ru": "Хрупкость" }
+    }
+  },
+  "nimble_grazer": {
+    "tier": 1,
+    "traits": { "agi": 1 },
+    "evasion": 3,
+    "attack": { "trait": "agi", "range": "melee", "damage": "d6", "damage_bonus": 0, "damage_type": "physical" },
+    "name": { "en": "Nimble grazer", "ru": "Проворное копытное" },
+    "advantages": ["leap", "sneak", "sprint"],
+    "examples": { "en": "Deer, Gazelle, Goat", "ru": "Олень, Газель, Коза" },
+    "features": {
+      "elusive_prey": { "en": "Elusive Prey", "ru": "Неуловимая добыча" },
+      "nimble_grazer_fragile": { "en": "Fragile", "ru": "Хрупкость" }
+    }
+  },
+  "pack_predator": {
+    "tier": 1,
+    "traits": { "str": 2 },
+    "evasion": 1,
+    "attack": { "trait": "str", "range": "melee", "damage": "d8", "damage_bonus": 2, "damage_type": "physical" },
+    "name": { "en": "Pack predator", "ru": "Стайный хищник" },
+    "advantages": ["attack", "sprint", "track"],
+    "examples": { "en": "Coyote, Hyena, Wolf", "ru": "Койот, Гиена, Волк" },
+    "features": {
+      "hobbling_strike": { "en": "Hobbling Strike", "ru": "Калечащий удар" },
+      "pack_hunting": { "en": "Pack Hunting", "ru": "Стайная охота" }
+    }
+  },
+  "aquatic_scout": {
+    "tier": 1,
+    "traits": { "agi": 1 },
+    "evasion": 2,
+    "attack": { "trait": "agi", "range": "melee", "damage": "d4", "damage_bonus": 0, "damage_type": "physical" },
+    "name": { "en": "Aquatic scout", "ru": "Водный разведчик" },
+    "advantages": ["navigate", "sneak", "swim"],
+    "examples": { "en": "Eel, Fish, Octopus", "ru": "Угорь, Рыба, Осьминог" },
+    "features": {
+      "aquatic": { "en": "Aquatic", "ru": "Водное" },
+      "aquatic_scout_fragile": { "en": "Fragile", "ru": "Хрупкость" }
+    }
+  },
+  "stalking_arachnid": {
+    "tier": 1,
+    "traits": { "fin": 1 },
+    "evasion": 2,
+    "attack": { "trait": "fin", "range": "melee", "damage": "d6", "damage_bonus": 1, "damage_type": "physical" },
+    "name": { "en": "Stalking arachnid", "ru": "Выслеживающий арахнид" },
+    "advantages": ["attack", "climb", "sneak"],
+    "examples": { "en": "Tarantula, Wolf Spider", "ru": "Тарантул, Паук-волк" },
+    "features": {
+      "venomous_bite": { "en": "Venomous Bite", "ru": "Ядовитый укус" },
+      "webslinger": { "en": "Webslinger", "ru": "Шелкопряд" }
+    }
   }
 }

@@ -160,6 +160,9 @@ Rails.application.routes.draw do
     end
 
     namespace :daggerheart do
+      namespace :config do
+        resources :beastforms, only: %i[index]
+      end
       resources :characters, only: %i[create update] do
         scope module: :characters do
           resources :projects, only: %i[index create update destroy]

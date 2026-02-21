@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## Unreleased
 ### Added
 - Owlbear Rodeo integration from backend
+- fetching beastforms for DH characters by separate endpoint
 
 ### Modified
 - rendering errors during homebrew creation
