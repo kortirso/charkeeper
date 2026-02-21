@@ -1,8 +1,8 @@
 import { createSignal, createEffect, createMemo, Show, For, batch } from 'solid-js';
 
 import { Select, ErrorWrapper, GuideWrapper, EditWrapper, Checkbox } from '../../../../components';
-import config from '../../../../data/daggerheart.json';
 import { useAppState, useAppLocale, useAppAlert } from '../../../../context';
+import { fetchProviderConfigRequest } from '../../../../requests/fetchProviderConfigRequest';
 import { updateCharacterRequest } from '../../../../requests/updateCharacterRequest';
 import { localize } from '../../../../helpers';
 
@@ -52,6 +52,9 @@ export const DaggerheartBeastform = (props) => {
   const character = () => props.character;
 
   const [lastActiveCharacterId, setLastActiveCharacterId] = createSignal(undefined);
+  const [beastforms, setBeastforms] = createSignal({});
+  const [advantages, setAdvantages] = createSignal({});
+
   const [beastform, setBeastform] = createSignal(undefined);
   const [beast, setBeast] = createSignal(undefined);
   const [hybrid, setHybrid] = createSignal({}); // form value
@@ -65,6 +68,19 @@ export const DaggerheartBeastform = (props) => {
 
   createEffect(() => {
     if (lastActiveCharacterId() === character().id) return;
+
+    const fetchBeastforms = async () => await fetchProviderConfigRequest(appState.accessToken, 'daggerheart', 'beastforms');
+
+    Promise.all([fetchBeastforms()]).then(
+      ([beatsformsData]) => {
+        if (!beatsformsData.errors) {
+          batch(() => {
+            setBeastforms(beatsformsData.beastforms);
+            setAdvantages(beatsformsData.advantages);
+          });
+        }
+      }
+    );
 
     batch(() => {
       setBeastform(character().beastform);
@@ -83,8 +99,8 @@ export const DaggerheartBeastform = (props) => {
   }
 
   const currentBaseBeast = createMemo(() => {
-    if (config.beastforms[beast()]) return config.beastforms[beast()];
-    if (config.beastforms[beastform()]) return config.beastforms[beastform()];
+    if (beastforms()[beast()]) return beastforms()[beast()];
+    if (beastforms()[beastform()]) return beastforms()[beastform()];
 
     return null;
   });
@@ -107,11 +123,11 @@ export const DaggerheartBeastform = (props) => {
         tier = 0;
     }
 
-    return Object.fromEntries(Object.entries(config.beastforms).filter(([, values]) => values.tier <= tier && values.adv).map(([key, values]) => [key, `${localize(values.name, locale())} T${values.tier}`]));
+    return Object.fromEntries(Object.entries(beastforms()).filter(([, values]) => values.tier <= tier && values.advantages).map(([key, values]) => [key, `${localize(values.name, locale())} T${values.tier}`]));
   })
 
   const beastformsSelect = createMemo(() => {
-    let result = Object.entries(config.beastforms).filter(([, values]) => values.tier <= character().tier).map(([key, values]) => [key, `${localize(values.name, locale())} T${values.tier}`]);
+    let result = Object.entries(beastforms()).filter(([, values]) => values.tier <= character().tier).map(([key, values]) => [key, `${localize(values.name, locale())} T${values.tier}`]);
 
     return Object.fromEntries([['none', localize(TRANSLATION, locale()).naturalForm]].concat(result));
   });
@@ -240,7 +256,7 @@ export const DaggerheartBeastform = (props) => {
                     <div class="flex items-center mt-4">
                       <For each={Object.keys(hybrid())}>
                         {(slug) =>
-                          <p class="flex-1 text-sm text-center">{localize(config.beastforms[slug].name, locale())}</p>
+                          <p class="flex-1 text-sm text-center">{localize(beastforms()[slug].name, locale())}</p>
                         }
                       </For>
                     </div>
@@ -248,11 +264,11 @@ export const DaggerheartBeastform = (props) => {
                       <For each={Object.entries(hybrid())}>
                         {([slug, values]) =>
                           <div class="flex-1">
-                            <For each={config.beastforms[slug].advantages}>
+                            <For each={beastforms()[slug].advantages}>
                               {(advantage) =>
                                 <Checkbox
                                   filled
-                                  labelText={localize(config.advantages[advantage], locale())}
+                                  labelText={localize(advantages()[advantage], locale())}
                                   labelClassList="ml-2"
                                   labelPosition="right"
                                   checked={values.adv.includes(advantage)}
@@ -269,7 +285,7 @@ export const DaggerheartBeastform = (props) => {
                       <For each={Object.entries(hybrid())}>
                         {([slug, values]) =>
                           <div class="flex-1">
-                            <For each={Object.entries(config.beastforms[slug].features)}>
+                            <For each={Object.entries(beastforms()[slug].features)}>
                               {([feature, names]) =>
                                 <Checkbox
                                   filled
@@ -301,13 +317,13 @@ export const DaggerheartBeastform = (props) => {
                       <p class="mt-1">
                         {localize(TRANSLATION, locale()).adv}
                         <span>
-                          {Object.values(currentHybrid()).map((item) => item.adv).flat().map((item) => localize(config.advantages[item], locale())).join(', ')}
+                          {Object.values(currentHybrid()).map((item) => item.adv).flat().map((item) => localize(advantages()[item], locale())).join(', ')}
                         </span>
                       </p>
                     </Show>
                   }
                 >
-                  <p class="mt-1">{localize(TRANSLATION, locale()).adv} {currentBaseBeast().advantages.map((item) => localize(config.advantages[item], locale())).join(', ')}</p>
+                  <p class="mt-1">{localize(TRANSLATION, locale()).adv} {currentBaseBeast().advantages.map((item) => localize(advantages()[item], locale())).join(', ')}</p>
                 </Show>
               </Show>
             </Show>
