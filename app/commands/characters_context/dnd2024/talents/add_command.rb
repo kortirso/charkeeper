@@ -8,18 +8,20 @@ module CharactersContext
           params do
             required(:character).filled(type?: ::Dnd2024::Character)
             required(:talent).filled(type?: ::Dnd2024::Feat)
+            optional(:additional).filled(:bool)
           end
         end
 
         private
 
-        def do_persist(input) # rubocop: disable Metrics/AbcSize
+        def do_persist(input) # rubocop: disable Metrics/AbcSize, Metrics/PerceivedComplexity
           ActiveRecord::Base.transaction do
             feat_id = input[:talent].id
 
             selected_talents = input[:character].data.selected_talents
             selected_talents.key?(feat_id) ? selected_talents[feat_id] += 1 : selected_talents[feat_id] = 1
             input[:character].data.selected_talents = selected_talents
+            input[:character].data.selected_additional_talents += 1 if input[:additional]
             input[:character].data.selected_feats = []
 
             input[:character].feats.create_with(ready_to_use: true).find_or_create_by(feat_id: feat_id)
