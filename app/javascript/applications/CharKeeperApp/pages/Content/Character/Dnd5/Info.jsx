@@ -1,4 +1,4 @@
-import { For, Show } from 'solid-js';
+import { createMemo, For, Show } from 'solid-js';
 
 import { ErrorWrapper, GuideWrapper, Text } from '../../../../components';
 import config from '../../../../data/dnd5.json';
@@ -37,12 +37,20 @@ export const Dnd5Info = (props) => {
 
   const [locale] = useAppLocale();
 
+  const availableKeys = createMemo(() => {
+    if (character().provider === 'dnd5') return ['alignment', 'race', 'subrace'];
+    if (character().provider === 'dnd2024') return ['alignment', 'species', 'legacy', 'background'];
+
+    return [];
+  })
+
   const renderValue = (item) => {
     if (item === 'alignment') return configNext.alignments[character().alignment].name[locale()];
-    if (item === 'species' && character().species) return configNext.species[character().species].name[locale()];
+    if (item === 'species') return configNext.species[character().species].name[locale()];
     if (item === 'legacy' && character().legacy) return configNext.species[character().species].legacies[character().legacy].name[locale()];
-    if (item === 'background' && character().background) return configNext.backgrounds[character().background].name[locale()];
-    if (item === 'race' && character().race) return config.races[character().race].name[locale()];
+    if (item === 'background') return configNext.backgrounds[character().background].name[locale()];
+
+    if (item === 'race') return config.races[character().race].name[locale()];
     if (item === 'subrace' && character().subrace) return config.races[character().race].subraces[character().subrace].name[locale()];
 
     return character()[item];
@@ -54,11 +62,10 @@ export const Dnd5Info = (props) => {
         <div class="character-info-block">
           <p class="character-info-title">{character().name}</p>
           <div class="character-info-grid">
-            <For each={['alignment', 'species', 'legacy', 'race', 'subrace', 'background']}>
+            <For each={availableKeys()}>
               {(item) =>
                 <Show when={character()[item]}>
                   <Text
-                    containerClassList="character-info-item"
                     labelText={TRANSLATION[locale()][item]}
                     labelClassList="character-info-text"
                     text={renderValue(item)}
