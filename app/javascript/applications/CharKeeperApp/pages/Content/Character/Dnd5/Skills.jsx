@@ -120,7 +120,7 @@ export const Dnd5Skills = (props) => {
           onCancelEditing={cancelEditing}
           onSaveChanges={updateCharacter}
         >
-          <div class="blockable p-4 mb-2">
+          <div class="blockable p-4 pb-8 mb-2">
             <For each={Object.keys(config.abilities)}>
               {(slug) =>
                 <For each={(editMode() ? skillsData() : character().skills).filter((item) => item.ability === slug)}>

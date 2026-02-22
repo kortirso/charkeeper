@@ -121,7 +121,7 @@ export const Pathfinder2Skills = (props) => {
             <p class="text-sm">{renderSkillBoosts(character().skill_boosts)}</p>
           </div>
         </Show>
-        <div class="blockable p-4 mb-2">
+        <div class="blockable p-4 pb-8 mb-2">
           <For each={Object.keys(config.abilities)}>
             {(slug) =>
               <Key
