@@ -13,6 +13,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - rendering errors during homebrew creation
 - selecting improved beast as beastform for DH characters
 - trading skill points for DC20 characters
+- selecting feats for D&D 2024 characters
 
 ### Fixed
 - bug with creating pathfinder character without subclass

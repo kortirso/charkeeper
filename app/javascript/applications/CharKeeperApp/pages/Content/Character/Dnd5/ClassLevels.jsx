@@ -9,7 +9,7 @@ import { PlusSmall, Minus } from '../../../../assets';
 import { updateCharacterRequest } from '../../../../requests/updateCharacterRequest';
 import { fetchTalentsRequest } from '../../../../requests/fetchTalentsRequest';
 import { createTalentRequest } from '../../../../requests/createTalentRequest';
-import { translate, localize } from '../../../../helpers';
+import { translate, localize, performResponse } from '../../../../helpers';
 
 const TRANSLATION = {
   en: {
@@ -20,7 +20,8 @@ const TRANSLATION = {
     selectedTalents: 'Selected feats',
     origin: 'Origin',
     general: 'General',
-    epic: 'Epic'
+    epic: 'Epic',
+    selectAdditionalTalent: 'Select additional feat (if you need)'
   },
   ru: {
     talents: 'Черты',
@@ -30,7 +31,8 @@ const TRANSLATION = {
     selectedTalents: 'Выбранные черты',
     origin: 'Происхождение',
     general: 'Общее',
-    epic: 'Эпическая'
+    epic: 'Эпическая',
+    selectAdditionalTalent: 'Выберите дополнительную черту (если хотите)'
   }
 }
 
@@ -41,7 +43,9 @@ export const Dnd5ClassLevels = (props) => {
   const [lastActiveCharacterId, setLastActiveCharacterId] = createSignal(undefined);
   const [classesData, setClassesData] = createSignal(character().classes);
   const [subclassesData, setSubclassesData] = createSignal(character().subclasses);
+
   const [selectedTalent, setSelectedTalent] = createSignal(null);
+  const [additionalTalent, setAdditionalTalent] = createSignal(null);
 
   const [talents, setTalents] = createSignal(undefined);
 
@@ -76,6 +80,10 @@ export const Dnd5ClassLevels = (props) => {
 
     return talents().filter((item) => item.multiple || !item.selected).reduce((acc, item) => { acc[item.id] = `${item.title} (${localize(TRANSLATION, locale())[item.origin_value]})`; return acc }, {});
   });
+
+  const selectedTalentsCount = createMemo(() => {
+    return Object.values(character().selected_talents).reduce((acc, value) => acc + value, 0) - character().selected_additional_talents;
+  })
 
   const classes = () => translate(currentConfig().classes, locale());
 
@@ -133,11 +141,26 @@ export const Dnd5ClassLevels = (props) => {
 
   const saveTalent = async () => {
     const result = await createTalentRequest(appState.accessToken, character().provider, character().id, { talent_id: selectedTalent().id });
+    performResponse(
+      result,
+      function() { // eslint-disable-line solid/reactivity
+        props.onReloadCharacter();
+        setSelectedTalent(null);
+      },
+      function() { renderAlerts(result.errors_list) }
+    );
+  }
 
-    if (result.errors_list === undefined) {
-      props.onReloadCharacter();
-      setSelectedTalent(null);
-    }
+  const saveAdditionalTalent = async () => {
+    const result = await createTalentRequest(appState.accessToken, character().provider, character().id, { talent_id: additionalTalent().id, additional: true });
+    performResponse(
+      result,
+      function() { // eslint-disable-line solid/reactivity
+        props.onReloadCharacter();
+        setAdditionalTalent(null);
+      },
+      function() { renderAlerts(result.errors_list) }
+    );
   }
 
   return (
@@ -151,13 +174,13 @@ export const Dnd5ClassLevels = (props) => {
       >
         <div class="blockable p-4 flex flex-col">
           <div class="mb-1">
-            <p class="dark:text-snow">{character().subclasses[character().main_class] ? `${classes()[character().main_class]} - ${translate(currentConfig().classes[character().main_class].subclasses, locale())[character().subclasses[character().main_class]]}` : classes()[character().main_class]}</p>
+            <p>{character().subclasses[character().main_class] ? `${classes()[character().main_class]} - ${translate(currentConfig().classes[character().main_class].subclasses, locale())[character().subclasses[character().main_class]]}` : classes()[character().main_class]}</p>
             <div class="my-2 flex items-center">
               <div class="flex justify-between items-center mr-4 w-24">
                 <Button default size="small" onClick={() => changeClassLevel(character().main_class, 'down')}>
                   <Minus />
                 </Button>
-                <p class="dark:text-snow">{classesData()[character().main_class]}</p>
+                <p>{classesData()[character().main_class]}</p>
                 <Button default size="small" onClick={() => changeClassLevel(character().main_class, 'up')}>
                   <PlusSmall />
                 </Button>
@@ -194,7 +217,7 @@ export const Dnd5ClassLevels = (props) => {
                         <Button default size="small" onClick={() => changeClassLevel(slug, 'down')}>
                           <Minus />
                         </Button>
-                        <p class="dark:text-snow">{classesData()[slug]}</p>
+                        <p>{classesData()[slug]}</p>
                         <Button default size="small" onClick={() => changeClassLevel(slug, 'up')}>
                           <PlusSmall />
                         </Button>
@@ -226,36 +249,58 @@ export const Dnd5ClassLevels = (props) => {
             title={
               <div class="flex justify-between">
                 <p>{localize(TRANSLATION, locale()).talents}</p>
-                <p>{localize(TRANSLATION, locale()).existingTalentPoints} - {character().available_talents - Object.values(character().selected_talents).reduce((acc, value) => acc + value, 0)}</p>
+                <p>{localize(TRANSLATION, locale()).existingTalentPoints} - {character().available_talents - selectedTalentsCount()}</p>
               </div>
             }
           >
             <Show when={talents()}>
               <p class="text-sm mb-2">{localize(TRANSLATION, locale()).selectedTalents}</p>
+              <Show when={Object.keys(character().selected_talents).length === 0}>-</Show>
               <For each={Object.entries(character().selected_talents)}>
                 {([id, amount]) =>
                   <p class="text-lg">{talents().find((item) => item.id === id).title}{amount > 1 ? ` - ${amount}` : ''}</p>
                 }
               </For>
-              <div class="mb-2" />
             </Show>
-            <Show when={character().available_talents > Object.values(character().selected_talents).reduce((acc, value) => acc + value, 0)}>
-              <Select
-                labelText={localize(TRANSLATION, locale()).selectTalent}
-                containerClassList="flex-1"
-                items={availableTalents()}
-                selectedValue={selectedTalent()?.id}
-                onSelect={(value) => setSelectedTalent(talents().find((item) => item.id === value))}
-              />
-              <Show when={selectedTalent()}>
-                <p
-                  class="feat-markdown text-xs mt-1"
-                  innerHTML={selectedTalent().description} // eslint-disable-line solid/no-innerhtml
+            <Show
+              when={character().available_talents > selectedTalentsCount()}
+              fallback={
+                <div class="mt-2">
+                  <Select
+                    labelText={localize(TRANSLATION, locale()).selectAdditionalTalent}
+                    items={availableTalents()}
+                    selectedValue={additionalTalent()?.id}
+                    onSelect={(value) => setAdditionalTalent(talents().find((item) => item.id === value))}
+                  />
+                  <Show when={additionalTalent()}>
+                    <p
+                      class="feat-markdown text-xs mt-1"
+                      innerHTML={additionalTalent().description} // eslint-disable-line solid/no-innerhtml
+                    />
+                    <Button default textable size="small" classList="inline-block mt-2" onClick={saveAdditionalTalent}>
+                      {localize(TRANSLATION, locale()).saveButton}
+                    </Button>
+                  </Show>
+                </div>
+              }
+            >
+              <div class="mt-2">
+                <Select
+                  labelText={localize(TRANSLATION, locale()).selectTalent}
+                  items={availableTalents()}
+                  selectedValue={selectedTalent()?.id}
+                  onSelect={(value) => setSelectedTalent(talents().find((item) => item.id === value))}
                 />
-                <Button default textable size="small" classList="inline-block mt-2" onClick={saveTalent}>
-                  {localize(TRANSLATION, locale()).saveButton}
-                </Button>
-              </Show>
+                <Show when={selectedTalent()}>
+                  <p
+                    class="feat-markdown text-xs mt-1"
+                    innerHTML={selectedTalent().description} // eslint-disable-line solid/no-innerhtml
+                  />
+                  <Button default textable size="small" classList="inline-block mt-2" onClick={saveTalent}>
+                    {localize(TRANSLATION, locale()).saveButton}
+                  </Button>
+                </Show>
+              </div>
             </Show>
           </Toggle>
         </Show>
