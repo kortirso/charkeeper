@@ -291,39 +291,16 @@
   @apply dark:border-fuzzy-red dark:text-dusty;
 }
 
-.dc20-points-caption {
-  @apply flex-1 flex flex-col items-center;
+.dc20-skill-box {
+  @apply blockable p-4 pb-8 mb-2;
 }
 
-.dc20-points-caption p:nth-of-type(1) {
-  @apply flex-1 text-center flex items-center uppercase font-medium! dark:text-snow sm:py-4 px-2 mb-2 sm:mb-0;
+.dc20-skill-box-title {
+  @apply text-lg mb-2;
 }
 
-.dc20-points-caption p:nth-of-type(2) {
-  @apply text-sm dark:text-snow sm:h-4 mb-2 sm:mb-0;
-}
-
-.dc20-points-convert {
-  @apply flex items-center justify-center sm:justify-start pb-4 relative cursor-pointer mb-4 sm:mb-0;
-
-  padding-right: 11px;
-}
-
-.dc20-points-convert::before {
-  @apply absolute sm:bottom-auto! sm:right-0 bg-white border border-blue-400 content-[''] rotate-45;
-
-  width: 22px;
-  height: 22px;
-  bottom: 5px;
-}
-
-.dark .dc20-points-convert::before {
-  @apply border-fuzzy-red;
-}
-
-.dc20-points-convert p {
-  @apply text-center border border-blue-400 bg-white w-8 h-8 py-1 font-normal! text-sm border-b-0 sm:border-b-1 sm:border-r-0 relative z-10;
-  @apply dark:border-fuzzy-red dark:text-dusty;
+.dc20-skill-converter {
+  @apply flex items-center justify-between text-sm mb-2;
 }
 
 .experiences .experience {
