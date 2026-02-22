@@ -5,7 +5,7 @@ import { ErrorWrapper, Checkbox, Levelbox, EditWrapper, GuideWrapper, Input, Sel
 import config from '../../../../data/dc20.json';
 import { useAppState, useAppLocale, useAppAlert } from '../../../../context';
 import { updateCharacterRequest } from '../../../../requests/updateCharacterRequest';
-import { modifier, translate, localize } from '../../../../helpers';
+import { modifier, translate, localize, performResponse } from '../../../../helpers';
 
 const TRANSLATION = {
   en: {
@@ -17,7 +17,10 @@ const TRANSLATION = {
     add: 'Add',
     skills: 'Skills',
     trades: 'Trades',
-    languages: 'Languages'
+    languages: 'Languages',
+    convert: 'Convert',
+    toTrades: 'to 2 trades',
+    toLangs: 'to 2 langs'
   },
   ru: {
     helpMessage: 'Заполните данные по навыкам, ремёслам и языкам вашего персонажа. Конвертация очков необратима.',
@@ -26,9 +29,12 @@ const TRANSLATION = {
     tradePoints: 'Очки ремёсел',
     langPoints: 'Очки языков',
     add: 'Добавить',
-    skills: 'Изученные навыки',
-    trades: 'Изученные ремёсла',
-    languages: 'Изученные языки'
+    skills: 'Навыки',
+    trades: 'Ремёсла',
+    languages: 'Языки',
+    convert: 'Обменять',
+    toTrades: 'на 2 ремесла',
+    toLangs: 'на 2 языка'
   }
 }
 
@@ -36,10 +42,7 @@ export const Dc20Skills = (props) => {
   const character = () => props.character;
 
   const [skillPoints, setSkillPoints] = createStore({});
-  const [tradeKnowledgeForm, setTradeKnowledgeForm] = createStore({
-    name: '',
-    ability: 'mig'
-  });
+  const [tradeKnowledgeForm, setTradeKnowledgeForm] = createStore({ name: '', ability: 'mig' });
   const [languageName, setLanguageName] = createSignal('');
 
   const [lastActiveCharacterId, setLastActiveCharacterId] = createSignal(undefined);
@@ -78,27 +81,23 @@ export const Dc20Skills = (props) => {
   });
 
   const convertSkillPoint = async () => {
-    if (skillPoints.skillPoints > 0) {
-      await updateCharacterRequest(
-        appState.accessToken,
-        character().provider,
-        character().id,
-        { character: { skill_points: skillPoints.skillPoints - 1, trade_points: skillPoints.tradePoints + 2 }, only_head: true }
-      );
-      setSkillPoints({ ...skillPoints, skillPoints: skillPoints.skillPoints - 1, tradePoints: skillPoints.tradePoints + 2 });
-    }
+    if (skillPoints.skillPoints <= 0) return;
+
+    updateCharacter(
+      { character: { skill_points: skillPoints.skillPoints - 1, trade_points: skillPoints.tradePoints + 2 }, only_head: true },
+      setSkillPoints,
+      { ...skillPoints, skillPoints: skillPoints.skillPoints - 1, tradePoints: skillPoints.tradePoints + 2 }
+    );
   }
 
-  const convertTradePoint = async () => {
-    if (skillPoints.tradePoints > 0) {
-      await updateCharacterRequest(
-        appState.accessToken,
-        character().provider,
-        character().id,
-        { character: { trade_points: skillPoints.tradePoints - 1, language_points: skillPoints.languagePoints + 2 }, only_head: true }
-      );
-      setSkillPoints({ ...skillPoints, tradePoints: skillPoints.tradePoints - 1, languagePoints: skillPoints.languagePoints + 2 });
-    }
+  const convertTradePoint = () => {
+    if (skillPoints.tradePoints <= 0) return;
+
+    updateCharacter(
+      { character: { trade_points: skillPoints.tradePoints - 1, language_points: skillPoints.languagePoints + 2 }, only_head: true },
+      setSkillPoints,
+      { ...skillPoints, tradePoints: skillPoints.tradePoints - 1, languagePoints: skillPoints.languagePoints + 2 }
+    );
   }
 
   const toggleSkillExpertise = (slug) => {
@@ -240,58 +239,39 @@ export const Dc20Skills = (props) => {
     });
   }
 
-  const updateCharacterSkills = async () => {
+  const updateCharacterSkills = () => {
     const skillLevels = skillsData().reduce((acc, item) => { acc[item.slug] = item.level; return acc }, {});
     const skillExpertise = skillsData().filter((item) => item.expertise).map((item) => item.slug);
 
-    const result = await updateCharacterRequest(
-      appState.accessToken,
-      character().provider,
-      character().id,
-      { character: { skill_levels: skillLevels, skill_expertise: skillExpertise } }
-    );
-
-    if (result.errors_list === undefined) {
-      batch(() => {
-        props.onReplaceCharacter(result.character);
-        setEditSkillsMode(false);
-      });
-    } else renderAlerts(result.errors_list);
+    updateCharacter({ character: { skill_levels: skillLevels, skill_expertise: skillExpertise } }, setEditSkillsMode, false);
   }
 
-  const updateCharacterTrades = async () => {
+  const updateCharacterTrades = () => {
     const tradeLevels = tradesData().reduce((acc, item) => { acc[item.slug] = item.level; return acc }, {});
     const tradeExpertise = tradesData().filter((item) => item.expertise).map((item) => item.slug);
 
-    const result = await updateCharacterRequest(
-      appState.accessToken,
-      character().provider,
-      character().id,
-      { character: { trade_levels: tradeLevels, trade_expertise: tradeExpertise, trade_knowledge: tradeKnowledge() } }
+    updateCharacter(
+      { character: { trade_levels: tradeLevels, trade_expertise: tradeExpertise, trade_knowledge: tradeKnowledge() } },
+      setEditTradesMode,
+      false
     );
-
-    if (result.errors_list === undefined) {
-      batch(() => {
-        props.onReplaceCharacter(result.character);
-        setEditTradesMode(false);
-      });
-    } else renderAlerts(result.errors_list);
   }
 
-  const updateCharacterLanguages = async () => {
-    const result = await updateCharacterRequest(
-      appState.accessToken,
-      character().provider,
-      character().id,
-      { character: { language_levels: languagesData() } }
-    );
+  const updateCharacterLanguages = () => updateCharacter({ character: { language_levels: languagesData() } }, setEditLanguagesMode, false);
 
-    if (result.errors_list === undefined) {
-      batch(() => {
-        props.onReplaceCharacter(result.character);
-        setEditLanguagesMode(false);
-      });
-    } else renderAlerts(result.errors_list);
+  const updateCharacter = async (payload, callback, callbackPayload) => {
+    const result = await updateCharacterRequest(appState.accessToken, character().provider, character().id, payload);
+
+    performResponse(
+      result,
+      function() { // eslint-disable-line solid/reactivity
+        batch(() => {
+          props.onReplaceCharacter(result.character);
+          callback(callbackPayload);
+        });
+      },
+      function() { renderAlerts(result.errors_list) }
+    );
   }
 
   return (
@@ -299,32 +279,10 @@ export const Dc20Skills = (props) => {
       <GuideWrapper
         character={character()}
         guideStep={2}
-        helpMessage={localize(TRANSLATION, locale())['helpMessage']}
+        helpMessage={localize(TRANSLATION, locale()).helpMessage}
         onReloadCharacter={props.onReloadCharacter}
         onNextClick={props.onNextGuideStepClick}
       >
-        <div class="blockable pb-2">
-          <div class="p-4 pb-0 sm:pb-4 flex flex-col sm:flex-row">
-            <div class="dc20-points-caption">
-              <p>{localize(TRANSLATION, locale())['skillPoints']} {skillPoints.skillPoints}</p>
-              <p>{localize(TRANSLATION, locale())['expertisePoints']} {skillPoints.skillExpertisePoints}</p>
-            </div>
-            <div class="dc20-points-convert" onClick={convertSkillPoint}>
-              <p>1:2</p>
-            </div>
-            <div class="dc20-points-caption">
-              <p>{localize(TRANSLATION, locale())['tradePoints']} {skillPoints.tradePoints}</p>
-              <p>{localize(TRANSLATION, locale())['expertisePoints']} {skillPoints.tradeExpertisePoints}</p>
-            </div>
-            <div class="dc20-points-convert" onClick={convertTradePoint}>
-              <p>1:2</p>
-            </div>
-            <div class="dc20-points-caption">
-              <p>{localize(TRANSLATION, locale())['langPoints']} {skillPoints.languagePoints}</p>
-              <p />
-            </div>
-          </div>
-        </div>
         <div class="flex flex-col emd:flex-row emd:gap-2 mt-2">
           <div class="flex-1">
             <EditWrapper
@@ -333,13 +291,29 @@ export const Dc20Skills = (props) => {
               onCancelEditing={cancelSkillsEditing}
               onSaveChanges={updateCharacterSkills}
             >
-              <div class="blockable p-4 mb-2">
-                <p class="text-lg mb-2">{localize(TRANSLATION, locale())['skills']}</p>
+              <div class="dc20-skill-box">
+                <p class="dc20-skill-box-title">{localize(TRANSLATION, locale()).skills}</p>
+                <Show when={skillPoints.skillPoints > 0 || skillPoints.skillExpertisePoints > 0}>
+                  <div class="dc20-skill-converter">
+                    <div>
+                      <p>{localize(TRANSLATION, locale()).skillPoints} {skillPoints.skillPoints}</p>
+                      <p>{localize(TRANSLATION, locale()).expertisePoints} {skillPoints.skillExpertisePoints}</p>
+                    </div>
+                    <Show when={skillPoints.skillPoints > 0}>
+                      <Button default classList="rounded py-1 px-2" onClick={convertSkillPoint}>
+                        <div>
+                          <p class="text-center">{localize(TRANSLATION, locale()).convert}</p>
+                          <p>{localize(TRANSLATION, locale()).toTrades}</p>
+                        </div>
+                      </Button>
+                    </Show>
+                  </div>
+                </Show>
                 <For each={['prime'].concat(Object.keys(config.abilities))}>
                   {(slug) =>
                     <For each={(editSkillsMode() ? skillsData() : character().skills).filter((item) => item.ability === slug)}>
                       {(skill) =>
-                        <div class="flex items-center mb-1 dark:text-snow">
+                        <div class="flex items-center mb-1">
                           <Show
                             when={editSkillsMode()}
                             fallback={<Levelbox classList="mr-2" value={skill.level} />}
@@ -385,13 +359,29 @@ export const Dc20Skills = (props) => {
               onCancelEditing={cancelTradesEditing}
               onSaveChanges={updateCharacterTrades}
             >
-              <div class="blockable p-4">
-                <p class="text-lg mb-2">{localize(TRANSLATION, locale())['trades']}</p>
+              <div class="dc20-skill-box">
+                <p class="dc20-skill-box-title">{localize(TRANSLATION, locale()).trades}</p>
+                <Show when={skillPoints.tradePoints > 0 || skillPoints.tradeExpertisePoints > 0}>
+                  <div class="dc20-skill-converter">
+                    <div>
+                      <p>{localize(TRANSLATION, locale()).tradePoints} {skillPoints.tradePoints}</p>
+                      <p>{localize(TRANSLATION, locale()).expertisePoints} {skillPoints.tradeExpertisePoints}</p>
+                    </div>
+                    <Show when={skillPoints.tradePoints > 0}>
+                      <Button default classList="rounded py-1 px-2" onClick={convertTradePoint}>
+                        <div>
+                          <p class="text-center">{localize(TRANSLATION, locale()).convert}</p>
+                          <p>{localize(TRANSLATION, locale()).toLangs}</p>
+                        </div>
+                      </Button>
+                    </Show>
+                  </div>
+                </Show>
                 <For each={Object.keys(config.abilities)}>
                   {(slug) =>
                     <For each={(editTradesMode() ? tradesData() : character().trades).filter((item) => item.ability === slug)}>
                       {(trade) =>
-                        <div class="flex items-center mb-1 dark:text-snow">
+                        <div class="flex items-center mb-1">
                           <Show
                             when={editTradesMode()}
                             fallback={<Levelbox classList="mr-2" value={trade.level} />}
@@ -437,7 +427,7 @@ export const Dc20Skills = (props) => {
                       selectedValue={tradeKnowledgeForm.ability}
                       onSelect={(value) => setTradeKnowledgeForm({ ...tradeKnowledgeForm, ability: value })}
                     />
-                    <Button default textable onClick={saveTradeKnowledge}>{localize(TRANSLATION, locale())['add']}</Button>
+                    <Button default textable onClick={saveTradeKnowledge}>{localize(TRANSLATION, locale()).add}</Button>
                   </div>
                 </Show>
               </div>
@@ -448,11 +438,14 @@ export const Dc20Skills = (props) => {
               onCancelEditing={cancelLanguagesEditing}
               onSaveChanges={updateCharacterLanguages}
             >
-              <div class="blockable p-4 mt-2">
-                <p class="text-lg dark:text-snow mb-2">{localize(TRANSLATION, locale())['languages']}</p>
+              <div class="dc20-skill-box">
+                <p class="dc20-skill-box-title">{localize(TRANSLATION, locale()).languages}</p>
+                <Show when={skillPoints.languagePoints > 0}>
+                  <p class="text-sm mb-2">{localize(TRANSLATION, locale()).langPoints} {skillPoints.languagePoints}</p>
+                </Show>
                 <For each={Object.entries(editLanguagesMode() ? languagesData() : character().language_levels)}>
                   {([name, level]) =>
-                    <div class="flex items-center mb-1 dark:text-snow">
+                    <div class="flex items-center mb-1">
                       <Show
                         when={editLanguagesMode()}
                         fallback={<Levelbox classList="mr-2" value={level} />}
@@ -487,7 +480,7 @@ export const Dc20Skills = (props) => {
                       value={languageName()}
                       onInput={setLanguageName}
                     />
-                    <Button default textable onClick={saveLanguage}>{localize(TRANSLATION, locale())['add']}</Button>
+                    <Button default textable onClick={saveLanguage}>{localize(TRANSLATION, locale()).add}</Button>
                   </div>
                 </Show>
               </div>
