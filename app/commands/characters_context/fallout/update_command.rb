@@ -40,16 +40,16 @@ module CharactersContext
 
       # rubocop: disable Style/GuardClause
       def do_prepare(input)
-        %i[attributes].each do |key|
+        %i[abilities].each do |key|
           input[key]&.transform_values!(&:to_i)
         end
 
-        if input.key?(:attributes)
-          input[:attibute_boosts] = nil
+        if input.key?(:abilities)
+          input[:ability_boosts] = nil
 
           if input[:character].data.skill_boosts.present?
             input[:skill_boosts] = input[:character].data.skill_boosts
-            input[:skill_boosts] += input.dig(:attributes, :int)
+            input[:skill_boosts] += input.dig(:abilities, :int)
           end
         end
       end
@@ -66,9 +66,9 @@ module CharactersContext
       end
 
       def upload_avatar(input)
-        return if input.slice(:file).keys.blank?
+        return unless input.key?(:file)
 
-        input[:character].avatar.attach(input[:file]) if input[:file]
+        input[:character].avatar.attach(input[:file])
         cache.push_item(item: input[:character].avatar)
       rescue StandardError => _e
       end
