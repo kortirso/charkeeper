@@ -8,6 +8,7 @@ module Frontend
     DAGGERHEART_SERIALIZE_FIELDS = %i[id name level heritage heritage_name classes provider avatar names].freeze
     DC20_SERIALIZE_FIELDS = %i[id name level classes main_class ancestries provider avatar].freeze
     FATE_SERIALIZE_FIELDS = %i[id name provider avatar].freeze
+    FALLOUT_SERIALIZE_FIELDS = %i[id name origin level provider avatar].freeze
 
     before_action :find_character, only: %i[show destroy]
 
@@ -51,6 +52,7 @@ module Frontend
       when 'Daggerheart::Character' then ::Daggerheart::CharacterSerializer
       when 'Dc20::Character' then ::Dc20::CharacterSerializer
       when 'Fate::Character' then ::Fate::CharacterSerializer
+      when 'Fallout::Character' then ::Fallout::CharacterSerializer
       end
     end
 
@@ -60,6 +62,7 @@ module Frontend
       when 'Daggerheart::Character' then DAGGERHEART_SERIALIZE_FIELDS
       when 'Dc20::Character' then DC20_SERIALIZE_FIELDS
       when 'Fate::Character' then FATE_SERIALIZE_FIELDS
+      when 'Fallout::Character' then FALLOUT_SERIALIZE_FIELDS
       end
     end
   end

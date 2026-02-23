@@ -198,6 +198,15 @@ en:
             key?: Class is required
             filled?: Class must be filled
             included_in?: Invalid class value
+      fallout_character:
+        rules:
+          name:
+            key?: Name is required
+            filled?: Name must be filled
+          origin:
+            key?: Origin is required
+            filled?: Origin must be filled
+            included_in?: Invalid origin value
       daggerheart_character:
         rules:
           name:

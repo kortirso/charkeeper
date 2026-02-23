@@ -102,4 +102,5 @@ export * from './Navigation/Characters/Forms/Pathfinder2';
 export * from './Navigation/Characters/Forms/Dnd5';
 export * from './Navigation/Characters/Forms/Dnd2024';
 export * from './Navigation/Characters/Forms/Fate';
+export * from './Navigation/Characters/Forms/Fallout';
 export * from './Navigation/Campaigns/ListItem';

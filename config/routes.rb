@@ -136,6 +136,10 @@ Rails.application.routes.draw do
       resources :characters, only: %i[create update]
     end
 
+    namespace :fallout do
+      resources :characters, only: %i[create update]
+    end
+
     namespace :dc20 do
       resources :characters, only: %i[create update] do
         scope module: :characters do

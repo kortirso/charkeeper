@@ -1,0 +1,10 @@
+{
+  "origins": {
+    "brotherhood": { "name": { "en": "Brotherhood of Steel", "ru": "Братство Стали" } },
+    "ghoul": { "name": { "en": "Ghoul", "ru": "Гуль" } },
+    "mutant": { "name": { "en": "Super Mutant", "ru": "Супермутант" } },
+    "mr_handy": { "name": { "en": "Mr Handy", "ru": "Мистер Помощник" } },
+    "survivor": { "name": { "en": "Survivor", "ru": "Выживший" } },
+    "dweller": { "name": { "en": "Vault Dweller", "ru": "Обитатель убежища" } }
+  }
+}
