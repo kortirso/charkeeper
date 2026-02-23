@@ -59,7 +59,7 @@ module CharactersContext
         character.data.selected_features.values.flatten
       end
 
-      def feats(character) # rubocop: disable Metrics/AbcSize, Metrics/MethodLength, Metrics/PerceivedComplexity
+      def feats(character) # rubocop: disable Metrics/AbcSize, Metrics/MethodLength, Metrics/PerceivedComplexity, Metrics/CyclomaticComplexity
         data = character.data
         relation =
           ::Daggerheart::Feat.where(
@@ -78,6 +78,16 @@ module CharactersContext
               origin_value: character.feats.where(ready_to_use: true).joins(:feat).where(feats: { kind: 5 }).pluck('feats.slug')
             )
           )
+
+        if character.companion
+          relation = relation.or(
+            ::Daggerheart::Feat.where(
+              origin: 'companion',
+              slug: character.companion.data.leveling.select { |_, value| value.positive? }.keys
+            )
+          )
+        end
+
         if data.beastform
           relation =
             if data.beast

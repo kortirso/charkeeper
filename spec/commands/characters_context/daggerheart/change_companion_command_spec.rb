@@ -8,7 +8,8 @@ describe CharactersContext::Daggerheart::ChangeCompanionCommand do
   end
 
   let(:instance) { described_class.new }
-  let!(:companion) { create :character_companion, :daggerheart }
+  let!(:character) { create :character, :daggerheart }
+  let!(:companion) { create :character_companion, :daggerheart, character: character }
   let(:name) { 'Compy' }
 
   it 'updates companion', :aggregate_failures do

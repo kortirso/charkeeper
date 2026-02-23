@@ -5,7 +5,9 @@ describe Frontend::Daggerheart::Characters::CompanionsController do
   let(:access_token) { Authkeeper::GenerateTokenService.new.call(user_session: user_session)[:result] }
   let!(:character) { create :character, :daggerheart }
   let!(:user_character) {
-    create :character, :daggerheart, user: user_session.user, data: { subclasses: { ranger: 'beastbound' } }
+    create :character, :daggerheart, user: user_session.user, data: {
+      subclasses: { ranger: 'beastbound' }, classes: { ranger: 1 }
+    }
   }
 
   describe 'GET#show' do
