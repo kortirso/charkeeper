@@ -3,7 +3,7 @@ import * as i18n from '@solid-primitives/i18n';
 
 import {
   CharactersListItem, Dc20CharacterForm, DaggerheartCharacterForm, Dnd5CharacterForm, Dnd2024CharacterForm,
-  Pathfinder2CharacterForm, FateCharacterForm
+  Pathfinder2CharacterForm, FateCharacterForm, FalloutCharacterForm
 } from '../../pages';
 import { CharacterNavigation, createModal, PageHeader, Select, Input, Button, Loading } from '../../components';
 import { Plus } from '../../assets';
@@ -181,7 +181,7 @@ export const CharactersTab = () => {
             </Button>
           </Show>
           <CharacterNavigation
-            tabsList={['allFilter'].concat(['dnd5', 'dnd2024', 'pathfinder2', 'daggerheart', 'fate', 'dc20'].filter((item) => characterProviders().includes(item)))}
+            tabsList={['allFilter'].concat(['dnd5', 'dnd2024', 'pathfinder2', 'daggerheart', 'fate', 'fallout', 'dc20'].filter((item) => characterProviders().includes(item)))}
             activeTab={activeFilter()}
             setActiveTab={setActiveFilter}
           />
@@ -227,7 +227,7 @@ export const CharactersTab = () => {
               containerClassList="mb-2"
               classList="w-full"
               labelText={t('newCharacterPage.platform')}
-              items={{ 'dnd5': 'D&D 5', 'dnd2024': 'D&D 2024', 'daggerheart': 'Daggerheart', 'pathfinder2': 'Pathfinder 2', 'fate': 'Fate', 'dc20': 'DC20 0.10' }}
+              items={{ 'dnd5': 'D&D 5', 'dnd2024': 'D&D 2024', 'daggerheart': 'Daggerheart', 'pathfinder2': 'Pathfinder 2', 'fate': 'Fate', 'fallout': 'Fallout 2d20', 'dc20': 'DC20 0.10' }}
               selectedValue={platform()}
               onSelect={(value) => setPlatform(value)}
             />
@@ -249,6 +249,9 @@ export const CharactersTab = () => {
               </Match>
               <Match when={platform() === 'dc20'}>
                 <Dc20CharacterForm onCreateCharacter={saveCharacter} setCurrentTab={setCurrentTab} />
+              </Match>
+              <Match when={platform() === 'fallout'}>
+                <FalloutCharacterForm onCreateCharacter={saveCharacter} setCurrentTab={setCurrentTab} />
               </Match>
             </Switch>
             <Show when={platform() === undefined}>

@@ -197,7 +197,16 @@ es:
           main_class:
             key?: Se requiere una clase
             filled?: Se debe poner una clase
-            included_in?: valor de clase inválido
+            included_in?: Valor de clase inválido
+      fallout_character:
+        rules:
+          name:
+            key?: Se requiere un nombre
+            filled?: Se debe poner un nombre
+          origin:
+            key?: El origen no puede estar en blanco
+            filled?: El origen no puede estar en blanco
+            included_in?: Valor de origen desconocido
       daggerheart_character:
         rules:
           name:

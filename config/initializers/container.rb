@@ -89,6 +89,9 @@ module Charkeeper
     register('commands.characters_context.fate.create') { CharactersContext::Fate::CreateCommand.new }
     register('commands.characters_context.fate.update') { CharactersContext::Fate::UpdateCommand.new }
 
+    register('commands.characters_context.fallout.create') { CharactersContext::Fallout::CreateCommand.new }
+    register('commands.characters_context.fallout.update') { CharactersContext::Fallout::UpdateCommand.new }
+
     register('commands.characters_context.daggerheart.reset') { CharactersContext::Daggerheart::Reset::PerformCommand.new }
     register('commands.characters_context.daggerheart.craft.perform') {
       CharactersContext::Daggerheart::Craft::PerformCommand.new
