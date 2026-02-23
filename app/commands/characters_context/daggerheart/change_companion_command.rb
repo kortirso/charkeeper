@@ -3,6 +3,10 @@
 module CharactersContext
   module Daggerheart
     class ChangeCompanionCommand < BaseCommand
+      include Deps[
+        refresh_feats: 'services.characters_context.daggerheart.refresh_feats'
+      ]
+
       # rubocop: disable Metrics/BlockLength
       use_contract do
         config.messages.namespace = :character_companion
@@ -47,6 +51,8 @@ module CharactersContext
         input[:companion].data = input[:companion].data.attributes.merge(input[:data_attributes])
         input[:companion].assign_attributes(input[:attributes])
         input[:companion].save!
+
+        refresh_feats.call(character: input[:companion].character)
 
         { result: input[:companion] }
       end

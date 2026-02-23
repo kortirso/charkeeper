@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Added
 - fallout 2d20 base integration
 - attributes management for Fallout characters
+- rendering companion features for DH characters
 
 ## [0.4.9] - 2026-02-23
 ### Added

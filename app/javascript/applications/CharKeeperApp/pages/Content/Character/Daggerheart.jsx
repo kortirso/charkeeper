@@ -67,6 +67,7 @@ export const Daggerheart = (props) => {
   const transformationFilter = (item) => item.origin === 'transformation';
   const domainCardFilter = (item) => (item.origin === 'domain_card' && item.ready_to_use) || item.origin === 'parent';
   const equipmentFilter = (item) => item.origin === 'equipment';
+  const companionFilter = (item) => item.origin === 'companion';
 
   const featFilters = createMemo(() => {
     const result = [
@@ -80,6 +81,7 @@ export const Daggerheart = (props) => {
 
     if (character().beastform !== null) result.push({ title: 'beastform', callback: beastformFilter });
     if (character().transformation !== null) result.push({ title: 'transformation', callback: transformationFilter });
+    if (character().can_have_companion) result.push({ title: 'companion', callback: companionFilter });
     result.push({ title: 'personal', callback: personalFilter });
     return result;
   });
