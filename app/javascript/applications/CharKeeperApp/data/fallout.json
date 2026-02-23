@@ -6,5 +6,14 @@
     "mr_handy": { "name": { "en": "Mr Handy", "ru": "Мистер Помощник" } },
     "survivor": { "name": { "en": "Survivor", "ru": "Выживший" } },
     "dweller": { "name": { "en": "Vault Dweller", "ru": "Обитатель убежища" } }
+  },
+  "abilities": {
+    "str": { "name": { "en": "Strength", "ru": "Сила" }, "shortName": { "en": "Str", "ru": "Сил" } },
+    "per": { "name": { "en": "Perception", "ru": "Восприятие" }, "shortName": { "en": "Per", "ru": "Вос" } },
+    "end": { "name": { "en": "Endurance", "ru": "Выносливость" }, "shortName": { "en": "End", "ru": "Вын" } },
+    "cha": { "name": { "en": "Charisma", "ru": "Харизма" }, "shortName": { "en": "Cha", "ru": "Хар" } },
+    "int": { "name": { "en": "Intelligence", "ru": "Интеллект" }, "shortName": { "en": "Int", "ru": "Инт" } },
+    "agi": { "name": { "en": "Agility", "ru": "Ловкость" }, "shortName": { "en": "Agi", "ru": "Лов" } },
+    "lck": { "name": { "en": "Luck", "ru": "Удача" }, "shortName": { "en": "Lck", "ru": "Удч" } }
   }
 }

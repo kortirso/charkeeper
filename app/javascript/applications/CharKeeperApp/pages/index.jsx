@@ -94,6 +94,9 @@ export * from './Content/Character/Fate/Vitals';
 export * from './Content/Character/Fate/Consequences';
 export * from './Content/Character/Fate/Stunts';
 
+export * from './Content/Character/Fallout';
+export * from './Content/Character/Fallout/Abilities';
+
 export * from './Navigation/Characters/ListItem';
 export * from './Navigation/Characters/CharacterForm';
 export * from './Navigation/Characters/Forms/Dc20';
