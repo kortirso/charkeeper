@@ -21,7 +21,7 @@ module Frontend
         end
 
         def create
-          case add_talent.call({ character: @character, talent: @talent, feat: @feat })
+          case add_talent.call({ character: @character, talent: @talent, feat: @feat, additional: params[:additional] }.compact)
           in { errors: errors, errors_list: errors_list } then unprocessable_response(errors, errors_list)
           else only_head_response
           end

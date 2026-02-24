@@ -13,6 +13,7 @@ module CharactersContext
             required(:character).filled(type?: ::Dc20::Character)
             required(:talent).filled(type?: ::Dc20::Feat)
             optional(:feat).maybe(type?: ::Dc20::Feat)
+            optional(:additional).filled(:bool)
           end
         end
 
@@ -27,6 +28,7 @@ module CharactersContext
             selected_talents = input[:character].data.selected_talents
             selected_talents.key?(feat_id) ? selected_talents[feat_id] += 1 : selected_talents[feat_id] = 1
             input[:character].data.selected_talents = selected_talents
+            input[:character].data.selected_additional_talents += 1 if input[:additional]
 
             input[:talent].info['rewrite']&.each { |key, value| input[:character].data[key] = value }
             input[:talent].info['increase']&.each { |key, value| input[:character].data[key] += value }

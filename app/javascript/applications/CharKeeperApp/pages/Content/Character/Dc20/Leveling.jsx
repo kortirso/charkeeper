@@ -2,13 +2,13 @@ import { createSignal, createEffect, createMemo, Show, For, batch } from 'solid-
 
 import { Button, ErrorWrapper, GuideWrapper, Toggle, Checkbox, Select } from '../../../../components';
 import config from '../../../../data/dc20.json';
-import { useAppState, useAppLocale } from '../../../../context';
+import { useAppState, useAppLocale, useAppAlert } from '../../../../context';
 import { Arrow, PlusSmall } from '../../../../assets';
 import { updateCharacterRequest } from '../../../../requests/updateCharacterRequest';
 import { fetchTalentsRequest } from '../../../../requests/fetchTalentsRequest';
 import { createTalentRequest } from '../../../../requests/createTalentRequest';
 import { fetchTalentFeaturesRequest } from '../../../../requests/fetchTalentFeaturesRequest';
-import { translate, localize } from '../../../../helpers';
+import { translate, localize, performResponse } from '../../../../helpers';
 
 const TRANSLATION = {
   en: {
@@ -45,7 +45,8 @@ const TRANSLATION = {
     selectSubclass: 'Select subclass',
     paragon: 'Paragon',
     general: 'General',
-    multiclass: 'Multiclass'
+    multiclass: 'Multiclass',
+    selectAdditionalTalent: 'Select additional talent (if you need)'
   },
   ru: {
     currentLevel: 'уровень',
@@ -81,7 +82,8 @@ const TRANSLATION = {
     selectSubclass: 'Выберите подкласс',
     paragon: 'Эталон',
     general: 'Общий',
-    multiclass: 'Мультикласс'
+    multiclass: 'Мультикласс',
+    selectAdditionalTalent: 'Выберите дополнительную черту (если хотите)'
   }
 }
 
@@ -90,6 +92,7 @@ export const Dc20Leveling = (props) => {
 
   const [lastActiveCharacterId, setLastActiveCharacterId] = createSignal(undefined);
   const [selectedTalent, setSelectedTalent] = createSignal(null);
+  const [additionalTalent, setAdditionalTalent] = createSignal(null);
   const [selectedMultiTalent, setSelectedMultiTalent] = createSignal(null);
   const [subclass, setSubclass] = createSignal(null);
 
@@ -97,6 +100,7 @@ export const Dc20Leveling = (props) => {
   const [talentFeatures, setTalentFeatures] = createSignal(undefined);
 
   const [appState] = useAppState();
+  const [{ renderAlerts }] = useAppAlert();
   const [locale] = useAppLocale();
 
   const fetchTalents = async () => await fetchTalentsRequest(appState.accessToken, character().provider, character().id);
@@ -122,6 +126,10 @@ export const Dc20Leveling = (props) => {
 
     return `${item.title} (${config.classes[item.origin_value].name[locale()]})`;
   }
+
+  const selectedTalentsCount = createMemo(() => {
+    return Object.values(character().selected_talents).reduce((acc, value) => acc + value, 0) - character().selected_additional_talents;
+  })
 
   const availableTalents = createMemo(() => {
     if (talents() === undefined) return {};
@@ -155,10 +163,10 @@ export const Dc20Leveling = (props) => {
     if (result.errors_list === undefined) props.onReplaceCharacter(result.character);
   }
 
-  const modifySelectedTalent = async (value) => {
+  const modifySelectedTalent = async (value, additional) => {
     const talent = talents().find((item) => item.id === value);
 
-    setSelectedTalent(talent);
+    additional ? setAdditionalTalent(talent) : setSelectedTalent(talent);
 
     if (talent.origin_value === 'multiclass') {
       const result = await fetchTalentFeatures(1);
@@ -178,11 +186,26 @@ export const Dc20Leveling = (props) => {
 
   const saveTalent = async () => {
     const result = await createTalentRequest(appState.accessToken, character().provider, character().id, { talent_id: selectedTalent().id, talent_feature_id: selectedMultiTalent()?.id });
+    performResponse(
+      result,
+      function() { // eslint-disable-line solid/reactivity
+        props.onReloadCharacter();
+        setSelectedTalent(null);
+      },
+      function() { renderAlerts(result.errors_list) }
+    );
+  }
 
-    if (result.errors_list === undefined) {
-      props.onReloadCharacter();
-      setSelectedTalent(null);
-    }
+  const saveAdditionalTalent = async () => {
+    const result = await createTalentRequest(appState.accessToken, character().provider, character().id, { talent_id: additionalTalent().id, talent_feature_id: selectedMultiTalent()?.id, additional: true });
+    performResponse(
+      result,
+      function() { // eslint-disable-line solid/reactivity
+        props.onReloadCharacter();
+        setAdditionalTalent(null);
+      },
+      function() { renderAlerts(result.errors_list) }
+    );
   }
 
   return (
@@ -199,7 +222,7 @@ export const Dc20Leveling = (props) => {
             <Button default classList="rounded mr-4" onClick={levelUp}>
               <Arrow top />
             </Button>
-            <p class="dark:text-snow">
+            <p>
               <Show
                 when={character().subclass}
                 fallback={config.classes[character().main_class].name[locale()]}
@@ -232,7 +255,7 @@ export const Dc20Leveling = (props) => {
             </div>
           }
         >
-          <p class="dark:text-snow mb-2 text-sm">{localize(TRANSLATION, locale())['title']}</p>
+          <p class="mb-2 text-sm">{localize(TRANSLATION, locale())['title']}</p>
           <div class="flex items-center gap-x-4 mb-2">
             <Show when={character().path_points > 0}>
               <Button
@@ -243,7 +266,7 @@ export const Dc20Leveling = (props) => {
                 <PlusSmall />
               </Button>
             </Show>
-            <p class="dark:text-snow">{localize(TRANSLATION, locale())['martialPathLevel']} - {character().paths.martial}</p>
+            <p>{localize(TRANSLATION, locale())['martialPathLevel']} - {character().paths.martial}</p>
           </div>
           <div class="flex items-center gap-x-4">
             <Show when={character().path_points > 0}>
@@ -255,7 +278,7 @@ export const Dc20Leveling = (props) => {
                 <PlusSmall />
               </Button>
             </Show>
-            <p class="dark:text-snow">{localize(TRANSLATION, locale())['spellcasterPathLevel']} - {character().paths.spellcaster}</p>
+            <p>{localize(TRANSLATION, locale())['spellcasterPathLevel']} - {character().paths.spellcaster}</p>
           </div>
         </Toggle>
         <Toggle
@@ -269,8 +292,8 @@ export const Dc20Leveling = (props) => {
           <For each={['attack', 'save', 'grapple', 'defense']}>
             {(item) =>
               <div class="mb-8">
-                <p class="dark:text-snow mb-2">{localize(TRANSLATION, locale())[item]['title']}</p>
-                <p class="dark:text-snow mb-2 text-sm">{localize(TRANSLATION, locale())[item]['description']}</p>
+                <p class="mb-2">{localize(TRANSLATION, locale())[item]['title']}</p>
+                <p class="mb-2 text-sm">{localize(TRANSLATION, locale())[item]['description']}</p>
                 <div class="flex flex-wrap gap-x-4 gap-y-2">
                   <For each={Object.entries(config.maneuvers).filter(([, values]) => values.type === item)}>
                     {([slug, values]) =>
@@ -292,7 +315,7 @@ export const Dc20Leveling = (props) => {
           title={
             <div class="flex justify-between">
               <p>{localize(TRANSLATION, locale()).talents}</p>
-              <p>{localize(TRANSLATION, locale()).existingTalentPoints} - {character().talent_points - Object.values(character().selected_talents).reduce((acc, value) => acc + value, 0)}</p>
+              <p>{localize(TRANSLATION, locale()).existingTalentPoints} - {character().talent_points - selectedTalentsCount()}</p>
             </div>
           }
         >
@@ -305,13 +328,47 @@ export const Dc20Leveling = (props) => {
             </For>
             <div class="mb-2" />
           </Show>
-          <Show when={character().talent_points > Object.values(character().selected_talents).reduce((acc, value) => acc + value, 0)}>
+          <Show
+            when={character().talent_points > selectedTalentsCount()}
+            fallback={
+
+              <>
+                <Select
+                  labelText={localize(TRANSLATION, locale()).selectAdditionalTalent}
+                  containerClassList="flex-1"
+                  items={availableTalents()}
+                  selectedValue={additionalTalent()?.id}
+                  onSelect={(value) => modifySelectedTalent(value, true)}
+                />
+                <Show when={additionalTalent()}>
+                  <p
+                    class="feat-markdown text-xs mt-1"
+                    innerHTML={additionalTalent().description} // eslint-disable-line solid/no-innerhtml
+                  />
+                  <Show when={additionalTalent().origin_value === 'multiclass' && talentFeatures()}>
+                    <Select
+                      labelText={localize(TRANSLATION, locale()).selectMulticlassFeature}
+                      containerClassList="flex-1 mt-1"
+                      items={talentFeatures().reduce((acc, item) => { acc[item.id] = `${item.title} (${config.classes[item.origin_value] ? config.classes[item.origin_value].name[locale()] : ''})`; return acc }, {})}
+                      selectedValue={selectedMultiTalent()?.id}
+                      onSelect={modifySelectedMultiTalent}
+                    />
+                  </Show>
+                  <Button default textable size="small" classList="inline-block mt-2" onClick={saveAdditionalTalent}>
+                    {localize(TRANSLATION, locale()).saveButton}
+                  </Button>
+                </Show>
+              </>
+
+
+            }
+          >
             <Select
               labelText={localize(TRANSLATION, locale()).selectTalent}
               containerClassList="flex-1"
               items={availableTalents()}
               selectedValue={selectedTalent()?.id}
-              onSelect={modifySelectedTalent}
+              onSelect={(value) => modifySelectedTalent(value, false)}
             />
             <Show when={selectedTalent()}>
               <p
