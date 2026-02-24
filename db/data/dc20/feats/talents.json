@@ -13,13 +13,13 @@
     "info": {
       "multiple": true,
       "increase": {
-        "attribute_points": 1
+        "attribute_points": 2
       }
     }
   },
   {
     "slug": "skill_or_trade_increase",
-    "title": { "en": "Skill or Trade Increase", "ru": "Повышение навыков или ремёсел" },
+    "title": { "en": "Skill Increase", "ru": "Повышение навыков" },
     "description": {
       "en": "",
       "ru": ""
@@ -31,7 +31,7 @@
     "info": {
       "multiple": true,
       "increase": {
-        "skill_points": 3
+        "skill_points": 4
       }
     }
   },
@@ -47,8 +47,7 @@
     "kind": "hidden",
     "conditions": { "level": 1 },
     "eval_variables": {
-      "maneuver_points": "maneuver_points + 2",
-      "technique_points": "technique_points + 1"
+      "maneuver_points": "maneuver_points + 2"
     },
     "info": {
       "multiple": false,
@@ -69,8 +68,7 @@
     "kind": "hidden",
     "conditions": { "level": 1 },
     "eval_variables": {
-      "mana_points": "mana_points + 2",
-      "spells": "spells + 1",
+      "spells": "spells + 3",
       "spell_lists_amount": "spell_lists_amount + 1"
     },
     "info": {

@@ -29,6 +29,7 @@ module Dc20
     attribute :path, array: true, default: []
     attribute :spell_list, array: true, default: [] # доступные списки заклинаний
     attribute :selected_talents, array: true, default: {}
+    attribute :selected_additional_talents, array: true, default: 0
     attribute :selected_features, array: true, default: {} # { 'fighting_style' => ['fighting_style_defense'] }
     # доступные очки для распределения
     attribute :guide_step, :integer # этап помощи при создании персонажа
