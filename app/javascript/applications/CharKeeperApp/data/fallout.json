@@ -15,5 +15,24 @@
     "int": { "name": { "en": "Intelligence", "ru": "Интеллект" }, "shortName": { "en": "Int", "ru": "Инт" } },
     "agi": { "name": { "en": "Agility", "ru": "Ловкость" }, "shortName": { "en": "Agi", "ru": "Лов" } },
     "lck": { "name": { "en": "Luck", "ru": "Удача" }, "shortName": { "en": "Lck", "ru": "Удч" } }
+  },
+  "skills": {
+    "athletics": { "name": { "en": "athletics", "ru": "Атлетика" } },
+    "barter": { "name": { "en": "Barter", "ru": "Бартер" } },
+    "big_guns": { "name": { "en": "Big Guns", "ru": "Тяжёлое оружие" } },
+    "energy_weapons": { "name": { "en": "Energy Weapons", "ru": "Энергооружие" } },
+    "explosives": { "name": { "en": "Explosives", "ru": "Взрывчатка" } },
+    "lockpick": { "name": { "en": "Lockpick", "ru": "Отмычки" } },
+    "medicine": { "name": { "en": "Medicine", "ru": "Медицина" } },
+    "melee_weapons": { "name": { "en": "Melee Weapons", "ru": "Ближний бой" } },
+    "pilot": { "name": { "en": "Pilot", "ru": "Управление ТС" } },
+    "repair": { "name": { "en": "Repair", "ru": "Ремонт" } },
+    "science": { "name": { "en": "Science", "ru": "Наука" } },
+    "small_guns": { "name": { "en": "Small Guns", "ru": "Стрелковое оружие" } },
+    "sneak": { "name": { "en": "Sneak", "ru": "Скрытность" } },
+    "speech": { "name": { "en": "Speach", "ru": "Красноречие" } },
+    "survival": { "name": { "en": "Survival", "ru": "Выживание" } },
+    "throwing": { "name": { "en": "Throwing", "ru": "Метание" } },
+    "unarmed": { "name": { "en": "Unarmed", "ru": "Рукопашная" } }
   }
 }

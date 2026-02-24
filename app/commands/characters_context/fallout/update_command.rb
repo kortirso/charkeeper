@@ -21,6 +21,8 @@ module CharactersContext
             required(:agi).filled(:integer)
             required(:lck).filled(:integer)
           end
+          optional(:skills).hash
+          optional(:tag_skills).value(:array).each(:string)
           optional(:name).filled(:string, max_size?: 50)
           optional(:file)
           optional(:guide_step).maybe(:integer)
@@ -40,7 +42,7 @@ module CharactersContext
       def lock_time = 0
 
       # rubocop: disable Style/GuardClause
-      def do_prepare(input)
+      def do_prepare(input) # rubocop: disable Metrics/AbcSize
         %i[abilities].each do |key|
           input[key]&.transform_values!(&:to_i)
         end
@@ -52,6 +54,11 @@ module CharactersContext
             input[:skill_boosts] = input[:character].data.skill_boosts
             input[:skill_boosts] += input.dig(:abilities, :int)
           end
+        end
+
+        if input.key?(:skills)
+          input[:skill_boosts] = nil
+          input[:tag_skill_boosts] = nil
         end
       end
       # rubocop: enable Style/GuardClause

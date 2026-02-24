@@ -331,7 +331,7 @@ export const Dc20Skills = (props) => {
                           </Show>
                           <p class="uppercase mr-4">{skill.ability === 'prime' ? 'prm' : skill.ability}</p>
                           <p
-                            class="flex-1 flex items-center"
+                            class="flex-1 flex"
                             classList={{ 'font-medium!': skill.level > 0 }}
                           >
                             {config.skills[skill.slug].name[locale()]}
@@ -398,7 +398,7 @@ export const Dc20Skills = (props) => {
                             />
                           </Show>
                           <p class="uppercase mr-4">{trade.ability}</p>
-                          <p class={`flex-1 flex items-center ${trade.level > 0 ? 'font-normal!' : ''}`}>
+                          <p class={`flex-1 flex ${trade.level > 0 ? 'font-normal!' : ''}`}>
                             {config.trades[trade.slug] ? config.trades[trade.slug].name[locale()] : trade.slug}
                           </p>
                           <span>
@@ -456,7 +456,7 @@ export const Dc20Skills = (props) => {
                           onToggle={() => updateLanguage(name)}
                         />
                       </Show>
-                      <p class={`flex-1 flex items-center ${level > 0 ? 'font-normal!' : ''}`}>{name}</p>
+                      <p class={`flex-1 flex ${level > 0 ? 'font-normal!' : ''}`}>{name}</p>
                       <span>
                         {level == 2 || level == 0 ? (
                             '-'
