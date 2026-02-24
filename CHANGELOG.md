@@ -11,6 +11,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - rendering companion features for DH characters
 - skills management for Fallout characters
 
+### Modified
+- rendering spells for DnD characters on mobile devices
+
 ## [0.4.9] - 2026-02-23
 ### Added
 - Owlbear Rodeo integration from backend

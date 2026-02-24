@@ -453,15 +453,19 @@ nav.pagy.nav a.gap {
 }
 
 .dnd2024-spell-tooltips {
-  @apply flex text-sm mt-2;
+  @apply grid grid-cols-3 sm:grid-cols-6 gap-y-2 text-sm mt-2;
 }
 
 .spell-attribute {
   @apply flex-1 flex justify-center items-center dark:border-r dark:border-neutral-800;
 }
 
+.spell-attribute:nth-of-type(3), .spell-attribute:nth-of-type(6) {
+  @apply border-r-0 sm:border-r-1;
+}
+
 .spell-attribute:last-of-type {
-  @apply border-r-0;
+  @apply sm:border-r-0;
 }
 
 .character-info-block {
