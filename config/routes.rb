@@ -19,6 +19,9 @@ Rails.application.routes.draw do
     resources :feedbacks, only: %i[index]
     resources :notifications, only: %i[index new create]
 
+    namespace :fallout do
+      resources :characters, only: %i[index]
+    end
     namespace :fate do
       resources :characters, only: %i[index]
     end
