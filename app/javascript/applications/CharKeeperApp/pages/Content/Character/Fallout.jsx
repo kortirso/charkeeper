@@ -1,7 +1,7 @@
 import { createSignal, createMemo, Switch, Match } from 'solid-js';
 import { createWindowSize } from '@solid-primitives/resize-observer';
 
-import { FalloutAbilities } from '../../../pages';
+import { FalloutAbilities, FalloutSkills } from '../../../pages';
 import { CharacterNavigation, Notes, Avatar, ContentWrapper } from '../../../components';
 
 export const Fallout = (props) => {
@@ -28,7 +28,18 @@ export const Fallout = (props) => {
         <div class="p-2 pb-20 flex-1 overflow-y-auto">
           <Switch>
             <Match when={activeMobileTab() === 'abilities'}>
-              <FalloutAbilities character={character()} onReplaceCharacter={props.onReplaceCharacter} />
+              <FalloutAbilities
+                character={character()}
+                onReplaceCharacter={props.onReplaceCharacter}
+                onReloadCharacter={props.onReloadCharacter}
+              />
+              <div class="mt-4">
+                <FalloutSkills
+                  character={character()}
+                  onReplaceCharacter={props.onReplaceCharacter}
+                  onReloadCharacter={props.onReloadCharacter}
+                />
+              </div>
             </Match>
             <Match when={activeMobileTab() === 'notes'}>
               <Notes />
@@ -47,7 +58,18 @@ export const Fallout = (props) => {
 
     return (
       <>
-        <FalloutAbilities character={character()} onReplaceCharacter={props.onReplaceCharacter} />
+        <FalloutAbilities
+          character={character()}
+          onReplaceCharacter={props.onReplaceCharacter}
+          onReloadCharacter={props.onReloadCharacter}
+        />
+        <div class="mt-4">
+          <FalloutSkills
+            character={character()}
+            onReplaceCharacter={props.onReplaceCharacter}
+            onReloadCharacter={props.onReloadCharacter}
+          />
+        </div>
       </>
     );
   });

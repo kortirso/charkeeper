@@ -86,7 +86,6 @@ export const FalloutAbilities = (props) => {
         guideStep={1}
         helpMessage={localize(TRANSLATION, locale()).helpMessage}
         onReloadCharacter={props.onReloadCharacter}
-        finishGuideStep={true}
       >
         <Show when={character().guide_step && character().ability_boosts > 0}>
           <div class="warning">
