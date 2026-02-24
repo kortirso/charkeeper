@@ -8,7 +8,8 @@ module CampaignsContext
       'Daggerheart::Character' => 'daggerheart',
       'Pathfinder2::Character' => 'pathfinder2',
       'Dc20::Character' => 'dc20',
-      'Fate::Character' => 'fate'
+      'Fate::Character' => 'fate',
+      'Fallout::Character' => 'fallout'
     }.freeze
 
     use_contract do

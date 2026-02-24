@@ -1,7 +1,7 @@
-import { createSignal, createEffect, Show, Switch, Match, batch } from 'solid-js';
+import { createSignal, createEffect, Show, batch } from 'solid-js';
 import { createWindowSize } from '@solid-primitives/resize-observer';
 
-import { CampaignDnd5, CampaignPathfinder2, CampaignDaggerheart, CampaignDc20, CampaignFate } from '../../pages';
+import { CampaignPage } from '../../pages';
 import { PageHeader, IconButton } from '../../components';
 import { Arrow } from '../../assets';
 import { useAppState, useAppAlert } from '../../context';
@@ -52,23 +52,7 @@ export const CampaignTab = (props) => {
           <p>{campaign().name}</p>
         </PageHeader>
       </Show>
-      <Switch>
-        <Match when={campaign().provider === 'dnd5' || campaign().provider === 'dnd2024'}>
-          <CampaignDnd5 campaign={campaign()} characters={characters()} onDeleteCharacter={deleteCharacter} />
-        </Match>
-        <Match when={campaign().provider === 'pathfinder2'}>
-          <CampaignPathfinder2 campaign={campaign()} characters={characters()} onDeleteCharacter={deleteCharacter} />
-        </Match>
-        <Match when={campaign().provider === 'daggerheart'}>
-          <CampaignDaggerheart campaign={campaign()} characters={characters()} onDeleteCharacter={deleteCharacter} />
-        </Match>
-        <Match when={campaign().provider === 'dc20'}>
-          <CampaignDc20 campaign={campaign()} characters={characters()} onDeleteCharacter={deleteCharacter} />
-        </Match>
-        <Match when={campaign().provider === 'fate'}>
-          <CampaignFate campaign={campaign()} characters={characters()} onDeleteCharacter={deleteCharacter} />
-        </Match>
-      </Switch>
+      <CampaignPage campaign={campaign()} characters={characters()} onDeleteCharacter={deleteCharacter} />
     </>
   );
 }

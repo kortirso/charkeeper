@@ -18,11 +18,7 @@ export * from './Content/CampaignTab';
 export * from './Content/CampaignJoinTab';
 
 export * from './Content/Campaign/Characters';
-export * from './Content/Campaign/Dnd5';
-export * from './Content/Campaign/Pathfinder2';
-export * from './Content/Campaign/Daggerheart';
-export * from './Content/Campaign/Dc20';
-export * from './Content/Campaign/Fate';
+export * from './Content/Campaign/Page';
 
 export * from './Content/Character/Dnd5';
 export * from './Content/Character/Dnd5/Abilities';

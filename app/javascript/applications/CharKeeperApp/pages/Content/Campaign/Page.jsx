@@ -4,7 +4,7 @@ import { createWindowSize } from '@solid-primitives/resize-observer';
 import { CampaignCharacters } from '../../../pages';
 import { CharacterNavigation, Notes, ContentWrapper } from '../../../components';
 
-export const CampaignFate = (props) => {
+export const CampaignPage = (props) => {
   const size = createWindowSize();
   const campaign = () => props.campaign;
 

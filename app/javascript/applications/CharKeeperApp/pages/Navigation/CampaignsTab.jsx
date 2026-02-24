@@ -127,7 +127,7 @@ export const CampaignsTab = () => {
             <Plus />
           </Button>
           <CharacterNavigation
-            tabsList={['allFilter'].concat(['dnd5', 'dnd2024', 'pathfinder2', 'daggerheart', 'dc20', 'fate'].filter((item) => campaignProviders().includes(item)))}
+            tabsList={['allFilter'].concat(['dnd5', 'dnd2024', 'pathfinder2', 'daggerheart', 'dc20', 'fallout', 'fate'].filter((item) => campaignProviders().includes(item)))}
             activeTab={activeFilter()}
             setActiveTab={setActiveFilter}
           />
@@ -170,10 +170,11 @@ export const CampaignsTab = () => {
           <div class="p-4 flex-1 flex flex-col overflow-y-auto">
             <div class="flex-1">
               <Select
+                showAll
                 containerClassList="mb-2"
                 classList="w-full"
                 labelText={t('pages.campaignsPage.provider')}
-                items={{ 'dnd5': 'D&D 5', 'dnd2024': 'D&D 2024', 'daggerheart': 'Daggerheart', 'pathfinder2': 'Pathfinder 2', 'fate': 'Fate', 'dc20': 'DC20' }}
+                items={{ 'dnd5': 'D&D 5', 'dnd2024': 'D&D 2024', 'daggerheart': 'Daggerheart', 'pathfinder2': 'Pathfinder 2', 'fate': 'Fate', 'fallout': 'Fallout 2D20', 'dc20': 'DC20' }}
                 selectedValue={campaignForm.provider}
                 onSelect={(value) => setCampaignForm({ ...campaignForm, provider: value })}
               />
