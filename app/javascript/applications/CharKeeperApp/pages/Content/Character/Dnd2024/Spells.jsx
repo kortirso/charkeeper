@@ -16,7 +16,7 @@ import { updateCharacterSpellRequest } from '../../../../requests/updateCharacte
 import { removeCharacterSpellRequest } from '../../../../requests/removeCharacterSpellRequest';
 import { updateCharacterRequest } from '../../../../requests/updateCharacterRequest';
 import { fetchSpellRequest } from '../../../../requests/fetchSpellRequest';
-import { modifier, localize } from '../../../../helpers';
+import { modifier, localize, readFromCache, writeToCache } from '../../../../helpers';
 
 const DND2024_CLASSES_PREPARE_SPELLS = [
   'bard', 'ranger', 'sorcerer', 'warlock', 'cleric', 'druid', 'paladin', 'artificer', 'wizard'
@@ -82,6 +82,14 @@ export const Dnd2024Spells = (props) => {
   const [appState] = useAppState();
   const [locale] = useAppLocale();
 
+  const readActiveSpellClass = async () => {
+    const cacheValue = await readFromCache(`activeSpellClass-${character().id}`);
+
+    if (cacheValue === null) setActiveSpellClass(Object.keys(character().spell_classes)[0] || 'static');
+    else if (cacheValue === 'undefined') setActiveSpellClass(undefined);
+    else setActiveSpellClass(cacheValue);
+  }
+
   createEffect(() => {
     if (lastActiveCharacterId() === character().id) return;
 
@@ -106,10 +114,10 @@ export const Dnd2024Spells = (props) => {
     );
 
     batch(() => {
-      setActiveSpellClass(Object.keys(character().spell_classes)[0] || 'static');
       setLastActiveCharacterId(character().id);
       setSpellsSelectingMode(false);
-    })
+    });
+    readActiveSpellClass();
   });
 
   const cantripsDamageDice = createMemo(() => {
@@ -166,9 +174,12 @@ export const Dnd2024Spells = (props) => {
     return characterSpells().map(({ feat_id }) => feat_id).concat(staticSpellIds());
   });
 
-  const canPrepareSpells = createMemo(() => {
-    return DND2024_CLASSES_PREPARE_SPELLS.includes(activeSpellClass());
-  });
+  const canPrepareSpells = createMemo(() => DND2024_CLASSES_PREPARE_SPELLS.includes(activeSpellClass()));
+
+  const switchSpellClass = (value) => {
+    writeToCache(`activeSpellClass-${character().id}`, value);
+    setActiveSpellClass(value);
+  }
 
   const learnSpell = async (event, spellId) => {
     event.stopPropagation();
@@ -273,7 +284,7 @@ export const Dnd2024Spells = (props) => {
                         <span
                           class="cursor-pointer dark:text-snow w-8 h-8 rounded-full bg-dusty flex justify-center items-center"
                           classList={{ 'opacity-50': className !== activeSpellClass() }}
-                          onClick={() => setActiveSpellClass(className)}
+                          onClick={() => switchSpellClass(className)}
                         >
                           <Component width="24" height="24" />
                         </span>
@@ -426,7 +437,7 @@ export const Dnd2024Spells = (props) => {
                       <span
                         class="cursor-pointer dark:text-snow w-8 h-8 rounded-full bg-dusty flex justify-center items-center"
                         classList={{ 'opacity-50': className !== activeSpellClass() }}
-                        onClick={() => activeSpellClass() === className ? setActiveSpellClass(undefined) : setActiveSpellClass(className)}
+                        onClick={() => activeSpellClass() === className ? switchSpellClass(undefined) : switchSpellClass(className)}
                       >
                         <Component width="24" height="24" />
                       </span>
