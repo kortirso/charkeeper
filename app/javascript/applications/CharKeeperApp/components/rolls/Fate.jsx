@@ -89,7 +89,7 @@ export const createFateDiceRoll = () => {
       return (
         <Portal>
           <div
-            class="fixed bottom-0 right-0 px-6 pb-4 sm:pr-6 z-40 flex items-center justify-end sm:justify-center"
+            class="fixed bottom-0 right-0 px-6 pb-8 sm:pb-4 sm:pr-6 z-40 flex items-center justify-end sm:justify-center"
             classList={{ 'dark': appState.colorSchema === 'dark', 'w-full sm:w-auto': isOpen() }}
             use:clickOutside={() => setIsOpen(undefined)}
           >

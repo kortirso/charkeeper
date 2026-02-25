@@ -146,7 +146,7 @@ export const FalloutSkills = (props) => {
                 <p>{localize(TRANSLATION, locale()).skillTagBoosts} {skillPoints.skillTagBoosts}</p>
               </div>
             </Show>
-            <div class="grid grid-cols-2 gap-y-2 gap-x-8 mt-2">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-y-2 gap-x-8 mt-2">
               <For each={Object.keys(config.abilities)}>
                 {(slug) =>
                   <For each={(editMode() ? skillsData() : character().skills).filter((item) => item.ability === slug)}>
