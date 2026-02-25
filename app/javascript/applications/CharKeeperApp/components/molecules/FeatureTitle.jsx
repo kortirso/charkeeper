@@ -18,6 +18,7 @@ const TRANSLATION = {
     combat: 'Combat rest',
     ap: 'AP',
     sp: 'SP',
+    mp: 'MP',
     hope: 'Hope',
     stress: 'Stress'
   },
@@ -29,6 +30,7 @@ const TRANSLATION = {
     combat: 'Между боями',
     ap: 'ОД',
     sp: 'ОВ',
+    mp: 'ОМ',
     hope: 'Надежда',
     stress: 'Стресс'
   }

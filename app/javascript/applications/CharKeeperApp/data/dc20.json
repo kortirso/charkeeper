@@ -5,6 +5,12 @@
     "dwarf": { "name": { "en": "Dwarf", "ru": "Дварф" } }
   },
   "classes": {
+    "barbarian": {
+      "name": { "en": "Barbarian", "ru": "Варвар" },
+      "subclasses": {
+        "spirit_guardian": { "name": { "en": "Spirit Guardian", "ru": "Духовный защитник" } }
+      }
+    },
     "commander": {
       "name": { "en": "Commander", "ru": "Командир" },
       "subclasses": {

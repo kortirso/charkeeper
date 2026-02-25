@@ -31,7 +31,8 @@
     "origin": "class",
     "origin_value": "wizard",
     "kind": "text",
-    "conditions": { "level": 1 }
+    "conditions": { "level": 1 },
+    "price": { "ap": 1, "mp": 1 }
   },
   {
     "slug": "ritual_caster",
@@ -67,7 +68,8 @@
     "origin": "subclass",
     "origin_value": "portal_mage",
     "kind": "static",
-    "conditions": { "level": 3 }
+    "conditions": { "level": 3 },
+    "price": { "mp": 1 }
   },
   {
     "slug": "portal_sage",

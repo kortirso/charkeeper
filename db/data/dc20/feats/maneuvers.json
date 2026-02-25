@@ -4,7 +4,7 @@
     "title": { "en": "Extend Attack", "ru": "Удлинить атаку" },
     "description": {
       "en": "Your Melee Attack Range is increased by 1 Space (or your Ranged Attack Range is increased by 5 Spaces) for the Attack.",
-      "ru": "Досягаемость этой Атаки увеличивается на 1 Клетку (или Дальность - на 5 Клеток)."
+      "ru": "Досягаемость этой атаки увеличивается на 1 клетку (или дальность - на 5 Клеток)."
     },
     "origin": "maneuver",
     "origin_value": "attack",
@@ -16,7 +16,7 @@
     "title": { "en": "Power Attack", "ru": "Усилить атаку" },
     "description": {
       "en": "You deal +1 damage with the Attack. You can use this Maneuver multiple times.",
-      "ru": "Эта Атака наносит +1 урона. Вы можете использовать этот Приём несколько раз."
+      "ru": "Эта атака наносит +1 урона. Вы можете использовать этот приём несколько раз."
     },
     "origin": "maneuver",
     "origin_value": "attack",
@@ -28,7 +28,7 @@
     "title": { "en": "Sweep Attack", "ru": "Расширить атаку" },
     "description": {
       "en": "Choose 1 additional target within 1 Space of the original target that's within your Attack Range. Make 1 Attack Check against all targets. Attack Hit: The original target takes your Attack's damage, and each additional target Hit takes 1 damage of the same type. You can use this Maneuver multiple times.",
-      "ru": "Выберите 1 дополнительную цель в 1 Клетке от первоначальной цели, которая также находится в пределах вашей Дальности Атаки. Совершите 1 Проверку Атаки против всех целей. Попадание: Первоначальная цель получает урон от Атаки, а каждая дополнительная цель при Попадании по ней получает 1 урона того же типа (На обе цели по-прежнему влияют Сильные и Жестокие Удары). Вы можете использовать этот Приём несколько раз."
+      "ru": "Выберите 1 дополнительную цель в 1 клетке от первоначальной цели, которая также находится в пределах вашей дальности атаки. Совершите 1 проверку атаки против всех целей. Попадание: Первоначальная цель получает урон от атаки, а каждая дополнительная цель при попадании по ней получает 1 урона того же типа (На обе цели по-прежнему влияют сильные и жестокие удары). Вы можете использовать этот приём несколько раз."
     },
     "origin": "maneuver",
     "origin_value": "attack",
@@ -40,7 +40,7 @@
     "title": { "en": "Bleed", "ru": "Ранить" },
     "description": {
       "en": "The target begins Bleeding (1 True damage at the start of their turn).",
-      "ru": "Цель Ранена (получает 1 Истинного урона в начале каждого своего Хода)."
+      "ru": "Цель ранена (получает 1 истинного урона в начале каждого своего хода)."
     },
     "origin": "maneuver",
     "origin_value": "save",

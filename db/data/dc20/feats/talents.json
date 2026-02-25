@@ -4,7 +4,7 @@
     "title": { "en": "Attribute Increase", "ru": "Повышение атрибутов" },
     "description": {
       "en": "You gain 2 Attribute Points to put into any Attribute of your choice.",
-      "ru": "Вы получаете 2 Очков атрибутов, которое можете вложить в любой Атрибут."
+      "ru": "Вы получаете 2 очка атрибутов, которые можете вложить в любой атрибут."
     },
     "origin": "talent",
     "origin_value": "general",
@@ -22,7 +22,7 @@
     "title": { "en": "Skill Increase", "ru": "Повышение навыков" },
     "description": {
       "en": "You gain 4 Skill Points.",
-      "ru": "Вы получаете 4 Очка навыков"
+      "ru": "Вы получаете 4 очка навыков"
     },
     "origin": "talent",
     "origin_value": "general",
@@ -76,91 +76,11 @@
     }
   },
   {
-    "slug": "seize_momentum",
-    "title": { "en": "Seize Momentum", "ru": "Быстрое реагирование" },
-    "description": {
-      "en": "When an ally within your Commanding Aura scores a Heavy Hit, you can use your Commander's Call as a Reaction.",
-      "ru": "Когда союзник в вашей Ауре командования наносит Тяжёлый удар, вы можете использовать Приказ командира в качестве Реакции."
-    },
-    "origin": "talent",
-    "origin_value": "commander",
-    "kind": "static",
-    "conditions": { "level": 3 },
-    "info": {
-      "multiple": false,
-      "required_features": ["commander_call", "commanding_aura"]
-    }
-  },
-  {
-    "slug": "coordinated_command",
-    "title": { "en": "Coordinated Command", "ru": "Координирующий приказ" },
-    "description": {
-      "en": "Once per Round, when you use your Commander's Call, you can spend 1 additional SP to target a second creature within range (including yourself), they also gain the benefits of the chosen command. You choose who acts first between the targeted creatures.",
-      "ru": "Один раз за Ход, когда вы используете Приказ командира, вы можете дополнительно потратить 1 ОВ чтобы отдать этот же приказ второму существу в Дальности (включая себя). Вы выбираете, кто из них ходит первым."
-    },
-    "origin": "talent",
-    "origin_value": "commander",
-    "kind": "static",
-    "conditions": { "level": 3 },
-    "info": {
-      "multiple": false,
-      "required_features": ["commander_call"]
-    }
-  },
-  {
-    "slug": "expanded_disciplines",
-    "title": { "en": "Expanded Disciplines", "ru": "Расширение дисциплин" },
-    "description": {
-      "en": "You gain 2 additional Spellblade Disciplines. You can't choose the same option more than once.",
-      "ru": "Вы получаете +2 Дисциплины Мага Клинка"
-    },
-    "origin": "talent",
-    "origin_value": "spellblade",
-    "kind": "static",
-    "conditions": { "level": 3 },
-    "info": {
-      "multiple": false,
-      "required_features": ["spellblade_disciplines"]
-    }
-  },
-  {
-    "slug": "sling_blade",
-    "title": { "en": "Sling-Blade", "ru": "Хлестающий клинок" },
-    "description": {
-      "en": "You are able to sling magic off your blade to extend the range of your Spells and Attacks in the following ways:\n\n- The range of your Attacks with Melee Weapons is increased by 2.\n- When you use Spellstrike, the range of the Spell changes to match your Weapon's range.",
-      "ru": "Вы получаете следующие бонусы:\n\n- Ваши Ближние Атаки любым Оружием получают +2 Клетки Досягаемости.\n- Когда вы используете Удар Заклинанием, Дальность Заклинания изменяется на Досягаемость или Дальность вашего Оружия."
-    },
-    "origin": "talent",
-    "origin_value": "spellblade",
-    "kind": "static",
-    "conditions": { "level": 3 },
-    "info": {
-      "multiple": false,
-      "required_features": ["bound_weapon", "spellstrike"]
-    }
-  },
-  {
-    "slug": "adaptive_bond",
-    "title": { "en": "Adaptive Bond", "ru": "Изменчивая связь" },
-    "description": {
-      "en": "You gain the following benefits:\n\n- At the start of your turn, you can switch your Bound Damage type for free, or you can spend 1 AP do to so during your turn.\n- After you take Elemental or Mystical damage from an Attack, you can immediately change your Bound Damage type to a damage type dealt by the Attack for free.\n- You gain Resistance (1) to your Bound Damage",
-      "ru": "Вы получаете следующие бонусы:\n\n- В начале вашего Хода вы можете бесплатно изменить тип вашего Связанного Урона. Т акже вы можете потратить 1 ОД чтобы сделать это в течение Хода.\n- После получения Стихийного или Мистического урона от Атаки, вы можете Реакцией изменить тип вашего Связанного Урона на полученный от этой Атаки.\n- Вы получаете Сопротивление (1) вашему Связанному Урону."
-    },
-    "origin": "talent",
-    "origin_value": "spellblade",
-    "kind": "static",
-    "conditions": { "level": 3 },
-    "info": {
-      "multiple": false,
-      "required_features": ["bound_weapon"]
-    }
-  },
-  {
     "slug": "novice_multiclass",
     "title": { "en": "Novice Multiclass", "ru": "Новичок мультикласса" },
     "description": {
       "en": "You can choose a 1st Level Class Feature from any Class.",
-      "ru": "Вы получаете Черту Класса 1-го Уровня из любого Класса."
+      "ru": "Вы получаете черту класса 1-го уровня из любого класса."
     },
     "origin": "talent",
     "origin_value": "multiclass",

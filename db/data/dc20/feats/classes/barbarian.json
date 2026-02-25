@@ -1,0 +1,131 @@
+[
+  {
+    "slug": "rage",
+    "title": { "en": "Rage", "ru": "Ярость" },
+    "description": {
+      "en": "You can spend **1 AP** and **1 SP** to enter a **Rage** for 1 minute. For the duration, you're subjected to the following effects:\n\n- You deal +1 damage on Martial Attacks made using Unarmed Strikes or Melee Weapons.\n- You have ADV on Might Saves.\n- Your PD gain calculated penalty -5.\n- You gain Resistance (Half) to Elemental and Physical damage.\n**Ending Early:** Your Rage ends early if you fall Unconscious, die, or you choose to end it for free on your turn.",
+      "ru": "Во время боя вы можете потратить **1 ОД** и **1 ОВ**, чтобы войти в состояние **Ярости** на 1 минуту. В течение этого времени на вас действуют следующие эффекты:\n\n- Вы наносите +1 урона бойцовскими атаками, используя рукопашные атаки или атаки оружием.\n- Вы получаете преимущество на спасы мощи.\n- Вы получаете добавленный штраф -5 к ТЗ.\n- Вы получаете сопротивление (половина) к стихийному и физическому урону.\n**Окончание:** Ваша **Ярость** заканчивается, если вы вырубаетесь, умираете или решаете бесплатно окончить её во время своего хода."
+    },
+    "origin": "class",
+    "origin_value": "barbarian",
+    "kind": "static",
+    "conditions": { "level": 1 },
+    "price": { "ap": 1, "sp": 1 },
+    "eval_variables": {
+      "precision_defense": "precision_defense.transform_values { |value| value - 5 }"
+    },
+    "continious": true
+  },
+  {
+    "slug": "berserker",
+    "title": { "en": "Berserker", "ru": "Берсерк" },
+    "description": {
+      "en": "When you make a Melee Martial Attack on your turn, you can move up to 2 Spaces immediately before making the Attack.",
+      "ru": "В свой ход сразу перед вашей ближней бойцовской атакой вы можете переместиться на 2 клетки."
+    },
+    "origin": "class",
+    "origin_value": "barbarian",
+    "kind": "static",
+    "conditions": { "level": 1 },
+    "eval_variables": {
+      "area_defense": "equiped_armor_info ? area_defense : area_defense.transform_values { |value| value + 2 }",
+      "speeds": "speeds.merge({ 'ground' => speeds['ground'] + 1 })",
+      "jump": "[modified_abilities['agi'], modified_abilities['mig'], 1].max"
+    }
+  },
+  {
+    "slug": "shattering_force",
+    "title": { "en": "Shattering Force", "ru": "Сокрушительная сила" },
+    "description": {
+      "en": "When you Hit a structure or mundane object with a Melee Attack, it's considered a Critical Hit.",
+      "ru": "Если вы попадаете ближней атакой по строению или немагическому предмету, это считается Критическим Ударом."
+    },
+    "origin": "class_flavor",
+    "origin_value": "barbarian",
+    "kind": "static",
+    "conditions": { "level": 1 }
+  },
+  {
+    "slug": "battlecry",
+    "title": { "en": "Battlecry", "ru": "Боевой клич" },
+    "description": {
+      "en": "You can spend **1 AP** and **1 SP** to release a shout of your choice listed below. Until the start of your next turn, you and creatures of your choice within 5 Spaces that can see or hear you are subjected to the effects of your shout. A creature can only benefit from the same type of shout once at a time.\n\n- **Fortitude Shout:** Each creature gains Resistance (1) against the next source of Physical or Elemental damage.\n- **Fury Shout:** Each creature deals +1 damage on their next Attack against 1 target.\n- **Urgent Shout:** Each creature gains +1 Speed until the start of your next turn.",
+      "ru": "Вы можете потратить **1 ОД** и **1 ОВ**, чтобы издать один из нижеперечисленных кличей. До начала вашего следующего хода на вас и всех выбранных вами существ в пределах 5 клеток, которые могут вас видеть или слышать, действует эффект выбранного клича. Если на существо действует два или больше одинаковых клича, оно получает бонусы только от одного из них.\n\n- **Клич стойкости:** Каждое существо получает сопротивление (1) к первому прошедшему по нему физическому или стихийному урону.\n- **Клич неистовства:** Каждое существо наносит +1 урона при следующей атаке.\n- **Клич спешки:** Каждое существо получает +1 к скорости до начала вашего следующего хода."
+    },
+    "origin": "class",
+    "origin_value": "barbarian",
+    "kind": "static",
+    "conditions": { "level": 2 },
+    "price": { "ap": 1, "sp": 1 },
+    "eval_variables": {
+      "precision_defense": "precision_defense.transform_values { |value| value - 5 }"
+    },
+    "continious": true
+  },
+  {
+    "slug": "ancestral_guardian",
+    "title": { "en": "Ancestral Guardian", "ru": "Родовой защитник" },
+    "description": {
+      "en": "- **Bestowed Protection:** You learn 1 of the following Maneuvers: Brace, Parry, or Protect. If you already know all 3, then you can learn any Maneuver of your choice instead.\n- **Spiritual Aura:** While Raging, you gain Mystical Resistance (1) and a 5 Space Aura that grants the following benefits:\n\n- You can use the Shove Action on any creature within your Aura. When you do, the creature is pushed horizontally in a direction of your choice.\n- You can use the Brace, Parry, or Protect Maneuvers on any creature within your Aura, provided you know the Maneuver.",
+      "ru": "- **Наследственная защита:** Вы изучаете +1 приём из следующих: Парировать, Защитить или Поднять Щит. Если все они уже изучены, взамен вы можете изучить любой приём на ваш выбор.\n- **Аура духов:** Находясь в **Ярости**, вы получаете сопротивление мистическому урону (1) и ауру в 5 Клеток, дающую следующие бонусы:\n\n- Вы можете толкать существ в вашей ауре. При этом цель отталкивается горизонтально в направлении на ваш выбор.\n- Вы можете использовать изученные приёмы парировать, поднять щит и защитить на существ в вашей ауре. При этом поднять щит не требует от вас использования щита."
+    },
+    "origin": "subclass",
+    "origin_value": "spirit_guardian",
+    "kind": "static",
+    "conditions": { "level": 3 },
+    "eval_variables": {
+      "maneuver_points": "maneuver_points + 1"
+    }
+  },
+  {
+    "slug": "ancestral_knowledge",
+    "title": { "en": "Ancestral Knowledge", "ru": "Знания предков" },
+    "description": {
+      "en": "You have ADV on Checks to recall information about the history of your Ancestries (such as Human, Dwarf, or Elf). Additionally, once per Long Rest when you make a Trade or Language Check, you can choose to gain ADV on the Check as a spirit lends you its experience.",
+      "ru": "Вы получаете преимущество на проверки, позволяющие узнать информацию об истории вашей родословной. Также, один раз после длинного отдыха, когда вы совершает проверку ремесла или языка, вы можете получить преимущество на эту проверку, так как дух делится с вами своей мудростью."
+    },
+    "origin": "subclass_flavor",
+    "origin_value": "spirit_guardian",
+    "kind": "static",
+    "conditions": { "level": 3 },
+    "eval_variables": {
+      "maneuver_points": "maneuver_points + 1"
+    },
+    "description_eval_variables": {
+      "limit": "1"
+    },
+    "limit_refresh": "long_rest"
+  },
+  {
+    "slug": "unfathomable_strength",
+    "title": { "en": "Unfathomable Strength", "ru": "Неизмеримая сила" },
+    "description": {
+      "en": "- **Titan Grip:** While Raging, you can wield Two-Handed Weapons using only one hand.\n- **Titanic Leap:** Your Jump Distance gain situation bonus +1.",
+      "ru": "- **Титанический хват:** Находясь в **Ярости** вы можете использовать двуручное оружие одной рукой.\n- **Титанический прыжок:** Вы получаете ситуативный бонус +1 к дальности прыжка."
+    },
+    "origin": "talent",
+    "origin_value": "barbarian",
+    "kind": "static",
+    "conditions": { "level": 3 },
+    "info": {
+      "multiple": false,
+      "required_features": ["rage"]
+    }
+  },
+  {
+    "slug": "swift_berserker",
+    "title": { "en": "Swift Berserker", "ru": "Стремительный берсерк" },
+    "description": {
+      "en": "- **Quick to Anger:** You can immediately enter a Rage for free upon rolling for Initiative.\n- **Unstoppable Charge:** The movement granted by your Charge ignores Difficult Terrain and doesn't provoke Opportunity Attacks.",
+      "ru": "- **Поспешный гнев:** Когда вы бросаете инициативу, вы можете немедленно впасть в **Ярость** в качестве реакции.\n- **Неудержимый натиск:** При использовании натиска вы игнорируете труднопроходимую местность и не провоцируете атаки по возможности."
+    },
+    "origin": "talent",
+    "origin_value": "barbarian",
+    "kind": "static",
+    "conditions": { "level": 3 },
+    "info": {
+      "multiple": false,
+      "required_features": ["rage", "berserker"]
+    }
+  }
+]

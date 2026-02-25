@@ -21,7 +21,7 @@
     "title": { "en": "Skill Expertise", "ru": "Компетентность в навыке" },
     "description": {
       "en": "Your Mastery Cap and Mastery Level in the chosen Skill both increase by 1.",
-      "ru": "Вы получаете Компетентность в навыке и повышаете его Ступень Мастерства."
+      "ru": "Вы получаете компетентность в навыке и повышаете его ступень мастерства."
     },
     "origin": "ancestry",
     "origin_value": "human",
@@ -38,7 +38,7 @@
     "title": { "en": "Trade Expertise", "ru": "Компетентность в ремесле" },
     "description": {
       "en": "Your Mastery Cap and Mastery Level in the chosen Trade both increase by 1.",
-      "ru": "Вы получаете Компетентность в ремесле и повышаете его Ступень Мастерства."
+      "ru": "Вы получаете компетентность в ремесле и повышаете его ступень мастерства."
     },
     "origin": "ancestry",
     "origin_value": "human",
@@ -69,10 +69,10 @@
   },
   {
     "slug": "human_resolve",
-    "title": { "en": "Human Resolve", "ru": "Человеческое Упорство" },
+    "title": { "en": "Human Resolve", "ru": "Человеческое упорство" },
     "description": {
       "en": "Your Death's Door Threshold value is expanded by 1.",
-      "ru": "К значению вашего Порога Смерти добавляется -1."
+      "ru": "К значению вашего порога смерти добавляется -1."
     },
     "origin": "ancestry",
     "origin_value": "human",
@@ -89,7 +89,7 @@
     "title": { "en": "Undying", "ru": "Неумирающий" },
     "description": {
       "en": "You have ADV on Saves against the Doomed Condition.",
-      "ru": "Вы получаете Преимущество на Спасы от Обречённости."
+      "ru": "Вы получаете преимущество на спасы от обречённости."
     },
     "origin": "ancestry",
     "origin_value": "human",
@@ -100,10 +100,10 @@
   },
   {
     "slug": "human_determination",
-    "title": { "en": "Human Determination", "ru": "Человеческая Решительность" },
+    "title": { "en": "Human Determination", "ru": "Человеческая решительность" },
     "description": {
       "en": "You can give yourself ADV on an Attack Check or Spell Check while Bloodied.",
-      "ru": "Вы можете дать себе Преимущество на Проверку Атаки или Проверку Заклинания, если вы Изранены."
+      "ru": "Вы можете дать себе преимущество на проверку атаки или проверку заклинания, если вы изранены."
     },
     "origin": "ancestry",
     "origin_value": "human",
@@ -121,7 +121,7 @@
     "title": { "en": "Unbreakable", "ru": "Несломимый" },
     "description": {
       "en": "You have ADV on Death Saves.",
-      "ru": "Вы получаете Преимущество на Спасы от Смерти."
+      "ru": "Вы получаете преимущество на спасы от смерти."
     },
     "origin": "ancestry",
     "origin_value": "human",
@@ -135,7 +135,7 @@
     "title": { "en": "Elven Will", "ru": "Эльфийская воля" },
     "description": {
       "en": "You have ADV on Checks and Saves against being Charmed and put to Sleep.",
-      "ru": "Вы получаете Преимущество на Проверки и Спасы против Очарования и Усыпления."
+      "ru": "Вы получаете преимущество на проверки и спасы против очарования и усыпления."
     },
     "origin": "ancestry",
     "origin_value": "elf",
@@ -149,7 +149,7 @@
     "title": { "en": "Nimble", "ru": "Подвижный" },
     "description": {
       "en": "When you take the Dodge Action, you instead gain the benefits of the Full Dodge Action.",
-      "ru": "Когда вы Уклоняетесь, вы получаете бонусы, как если бы Активно Уклонялись."
+      "ru": "Когда вы уклоняетесь, вы получаете бонусы, как если бы активно уклонялись."
     },
     "origin": "ancestry",
     "origin_value": "elf",
@@ -163,7 +163,7 @@
     "title": { "en": "Agile Explorer", "ru": "Ловкий исследователь" },
     "description": {
       "en": "You're not affected by Difficult Terrain.",
-      "ru": "На вас не влияет Труднопроходимая Местность."
+      "ru": "На вас не влияет труднопроходимая местность."
     },
     "origin": "ancestry",
     "origin_value": "elf",
@@ -177,7 +177,7 @@
     "title": { "en": "Discerning Sight", "ru": "Распознающий взор" },
     "description": {
       "en": "You have ADV on Checks and Saves made to discern through visual illusions.",
-      "ru": "Вы получаете Преимущество на Проверки и Спасы, направленные на распознавание визуальных иллюзий."
+      "ru": "Вы получаете преимущество на проверки и спасы, направленные на распознавание визуальных иллюзий."
     },
     "origin": "ancestry",
     "origin_value": "elf",
@@ -190,8 +190,8 @@
     "slug": "quick_reactions",
     "title": { "en": "Quick Reactions", "ru": "Быстрая реакция" },
     "description": {
-      "en": "While you aren't wearing Armor, you gain +1 PD.",
-      "ru": "Без Брони вы получаете +1 ТЗ."
+      "en": "While you aren't wearing Armor, you gain calculated bonus +1 to PD.",
+      "ru": "Без брони вы получаете добавленный бонус +1 к ТЗ."
     },
     "origin": "ancestry",
     "origin_value": "elf",
@@ -208,7 +208,7 @@
     "title": { "en": "Peerless Sight", "ru": "Острый взор" },
     "description": {
       "en": "You don't have DisADV as a result of making an Attack with a Weapon at Long Range.",
-      "ru": "Вы не получаете Помеху при Атаке Оружием на Предельную Дальность."
+      "ru": "Вы не получаете помеху при атаке оружием на предельную дальность."
     },
     "origin": "ancestry",
     "origin_value": "elf",
@@ -222,7 +222,7 @@
     "title": { "en": "Climb Speed", "ru": "Скорость лазания" },
     "description": {
       "en": "You gain a Climb Speed equal to your Movement Speed.",
-      "ru": "Вы получаете Скорость Лазания, равную вашей обычной Скорости."
+      "ru": "Вы получаете скорость лазания, равную вашей обычной скорости."
     },
     "origin": "ancestry",
     "origin_value": "elf",
@@ -239,7 +239,7 @@
     "title": { "en": "Speed Increase", "ru": "Увеличение скорости" },
     "description": {
       "en": "Your Speed increases by 1 Space.",
-      "ru": "Ваша Скорость увеличивается на 1 Клетку."
+      "ru": "Ваша скорость увеличивается на 1 клетку."
     },
     "origin": "ancestry",
     "origin_value": "elf",
@@ -256,7 +256,7 @@
     "title": { "en": "Trade Expertise", "ru": "Компетентность в ремесле" },
     "description": {
       "en": "Your Mastery Cap and Mastery Level in the chosen Trade both increase by 1.",
-      "ru": "Вы получаете Компетентность в ремесле и повышаете его Ступень Мастерства."
+      "ru": "Вы получаете компетентность в ремесле и повышаете его ступень мастерства."
     },
     "origin": "ancestry",
     "origin_value": "elf",
@@ -273,7 +273,7 @@
     "title": { "en": "Plant Knowledge", "ru": "Знание растений" },
     "description": {
       "en": "While within forests, jungles, and swamps, you have ADV on Survival Checks. Additionally, you have ADV on Nature Checks made to recall information about plants.",
-      "ru": "Вы получаете Преимущество на Проверки Выживания, находясь в лесах, джунглях и болотах. Также вы получаете Преимущество на Проверки Природы, связанные с растениями."
+      "ru": "Вы получаете преимущество на проверки выживания, находясь в лесах, джунглях и болотах. Также вы получаете преимущество на проверки природы, связанные с растениями."
     },
     "origin": "ancestry",
     "origin_value": "elf",
@@ -286,8 +286,8 @@
     "slug": "brittle",
     "title": { "en": "Brittle", "ru": "Тощий" },
     "description": {
-      "en": "Your AD decreases by 1.",
-      "ru": "Вы получаете -1 ПЗ."
+      "en": "You gain calculated penalty -1 to AD.",
+      "ru": "Вы получаете добавленный штраф -1 ПЗ."
     },
     "origin": "ancestry",
     "origin_value": "elf",
@@ -321,7 +321,7 @@
     "title": { "en": "Might Attribute Decrease", "ru": "Уменьшение атрибута мощи" },
     "description": {
       "en": "You decrease your Might by 1.",
-      "ru": "Ваша Мощь уменьшается на 1."
+      "ru": "Ваша мощь уменьшается на 1."
     },
     "origin": "ancestry",
     "origin_value": "elf",
@@ -355,7 +355,7 @@
     "title": { "en": "Toxic Fortitude", "ru": "Устойчивость к токсинам" },
     "description": {
       "en": "You have Poison Resistance (Half) and ADV on Saves against being Poisoned.",
-      "ru": "Вы получаете Сопротивление Ядовитому (Половина) и Преимущество на Спасы от Отравления."
+      "ru": "Вы получаете сопротивление ядовитому (половина) и преимущество на спасы от отравления."
     },
     "origin": "ancestry",
     "origin_value": "dwarf",
@@ -369,7 +369,7 @@
     "title": { "en": "Physically Sturdy", "ru": "Крепость тела" },
     "description": {
       "en": "You have ADV on Saves against being Impaired, Deafened, or Petrified.",
-      "ru": "Вы получаете Преимущество на Спасы от Ослабления, Оглушения и Окаменения."
+      "ru": "Вы получаете преимущество на спасы от ослабления, оглушения и окаменения."
     },
     "origin": "ancestry",
     "origin_value": "dwarf",
@@ -383,7 +383,7 @@
     "title": { "en": "Iron Stomach", "ru": "Железный желудок" },
     "description": {
       "en": "You have ADV on Saves against effects that come from consuming food or liquids.",
-      "ru": "Вы получаете ПРЕИМ на Спасы от эффектов, вызванных употреблением веществ в пищу."
+      "ru": "Вы получаете преимущество на спасы от эффектов, вызванных употреблением веществ в пищу."
     },
     "origin": "ancestry",
     "origin_value": "dwarf",
@@ -396,8 +396,8 @@
     "slug": "thick-skinned",
     "title": { "en": "Thick-Skinned", "ru": "Толстокожий" },
     "description": {
-      "en": "While you aren't wearing Armor, you gain +1 AD.",
-      "ru": "Без Брони вы получаете +1 ПЗ."
+      "en": "While you aren't wearing Armor, you gain calculated bonus +1 to AD.",
+      "ru": "Без брони вы получаете добавленный бонус +1 к ПЗ."
     },
     "origin": "ancestry",
     "origin_value": "dwarf",
@@ -414,7 +414,7 @@
     "title": { "en": "Natural Combatant", "ru": "Прирождённый боец" },
     "description": {
       "en": "You gain Combat Training with Heavy Armor and All Shields.",
-      "ru": "Вы получаете Подготовку Оружия, Брони и всех Щитов."
+      "ru": "Вы получаете подготовку оружия, брони и всех щитов."
     },
     "origin": "ancestry",
     "origin_value": "dwarf",
@@ -431,7 +431,7 @@
     "title": { "en": "Stone Blood", "ru": "Каменная кровь" },
     "description": {
       "en": "You have ADV on Saves against Bleeding. Additionally, you can spend 1 AP to end the Bleeding Condition on yourself.",
-      "ru": "Вы получаете Преимущество на Спасы от Ранения. Также вы можете потратить 1 ОД, чтобы избавиться от Ранения."
+      "ru": "Вы получаете преимущество на спасы от ранения. Также вы можете потратить 1 ОД, чтобы избавиться от ранения."
     },
     "origin": "ancestry",
     "origin_value": "dwarf",
@@ -445,7 +445,7 @@
     "title": { "en": "Minor Tremorsense", "ru": "Малое чувство вибрации" },
     "description": {
       "en": "You have Tremorsense 3 Spaces.",
-      "ru": "Вы получаете Чувство Вибрации на 3 Клетки."
+      "ru": "Вы получаете чувство вибрации на 3 клетки."
     },
     "origin": "ancestry",
     "origin_value": "dwarf",
@@ -459,7 +459,7 @@
     "title": { "en": "Stubborn", "ru": "Упрямый" },
     "description": {
       "en": "You have ADV on Saves against being Taunted and against being forcibly moved.",
-      "ru": "Вы получаете Преимущество на Спасы от Провокации и принудительного перемещения."
+      "ru": "Вы получаете преимущество на спасы от провокации и принудительного перемещения."
     },
     "origin": "ancestry",
     "origin_value": "dwarf",
@@ -473,7 +473,7 @@
     "title": { "en": "Trade Expertise", "ru": "Компетентность в ремесле" },
     "description": {
       "en": "Your Mastery Cap and Mastery Level in the chosen Trade both increase by 1.",
-      "ru": "Вы получаете Компетентность в ремесле и повышаете его Ступень Мастерства."
+      "ru": "Вы получаете компетентность в ремесле и повышаете его ступень мастерства."
     },
     "origin": "ancestry",
     "origin_value": "dwarf",
@@ -490,7 +490,7 @@
     "title": { "en": "Earthen Knowledge", "ru": "Знание земли" },
     "description": {
       "en": "While within mountainous and subterranean environments, you have ADV on Survival Checks. Additionally, you have ADV on Nature Checks made to recall information about rocks, soil, crystals, and gems.",
-      "ru": "Вы получаете ПРЕИМ на Проверки Выживания, находясь в горной или подземной местности. Также вы получаете ПРЕИМ на Проверки Природы, связанные с камнями, почвой, кристаллами и драгоценностями."
+      "ru": "Вы получаете преимущество на проверки выживания, находясь в горной или подземной местности. Также вы получаете преимущество на проверки природы, связанные с камнями, почвой, кристаллами и драгоценностями."
     },
     "origin": "ancestry",
     "origin_value": "dwarf",
@@ -504,7 +504,7 @@
     "title": { "en": "Charisma Attribute Decrease", "ru": "Уменьшение атрибута харизмы" },
     "description": {
       "en": "You decrease your Charisma by 1.",
-      "ru": "Ваша Харизма уменьшается на 1."
+      "ru": "Ваша харизма уменьшается на 1."
     },
     "origin": "ancestry",
     "origin_value": "dwarf",
@@ -521,7 +521,7 @@
     "title": { "en": "Short-Legged", "ru": "Коротконогий" },
     "description": {
       "en": "Your Speed decreases by 1 Space.",
-      "ru": "Ваша Скорость уменьшается на 1 Клетку."
+      "ru": "Ваша скорость уменьшается на 1 клетку."
     },
     "origin": "ancestry",
     "origin_value": "dwarf",

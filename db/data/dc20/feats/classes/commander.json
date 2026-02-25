@@ -1,0 +1,132 @@
+[
+  {
+    "slug": "inspiring_presence",
+    "title": { "en": "Inspiring Presence", "ru": "Вдохновляющее присутствие" },
+    "description": {
+      "en": "Whenever you spend SP while in Combat, you can restore an amount of HP equal to the SP spent. Choose any creatures within 5 Spaces that can see or hear you, and divide the HP among them.",
+      "ru": "Когда вы тратите ОВ во время Боя, вы можете восстановить ОЗ в количестве, равном потраченным ОВ. Выберите любое количество существ в пределах 5 Клеток, которые могут видеть или слышать вас, и распределите эти ОЗ между ними."
+    },
+    "origin": "class",
+    "origin_value": "commander",
+    "kind": "static",
+    "conditions": { "level": 1 }
+  },
+  {
+    "slug": "commander_call",
+    "title": { "en": "Commander's Call", "ru": "Приказ командира" },
+    "description": {
+      "en": "You can spend **1 AP** and **1 SP** to command a willing creature that you can see within 5 Spaces that can also see or hear you. The chosen creature can immediately take 1 of the following Actions of your choice as a Reaction for free. You can only use each of the following commands once on each of your turns.\n\n- The creature makes an Attack with ADV. They can't spend any resources on this Attack.\n- The creature takes the Full Dodge Action.\n- The creature moves up to their Speed without provoking Opportunity Attacks.",
+      "ru": "Вы можете потратить **1 ОД** и **1 ОВ**, чтобы отдать приказ согласному существу, которое видите в пределах 5 Клеток и которое также может видеть или слышать вас. Выберите одно из нижеперечисленных действий. Выбранное существо может немедленно выполнить его в качестве реакции бесплатно. Вы можете использовать каждый из этих приказов только один раз за ваш ход.\n\n- Существо атакует с преимуществом. Оно не может тратить на эту атаку ресурсы.\n- Существо активно уклоняется.\n- Существо перемещается до своей скорости, не провоцируя атаки по возможности."
+    },
+    "origin": "class",
+    "origin_value": "commander",
+    "kind": "static",
+    "conditions": { "level": 1 },
+    "price": { "ap": 1, "sp": 1 }
+  },
+  {
+    "slug": "natural_leader",
+    "title": { "en": "Natural Leader", "ru": "Прирождённый лидер" },
+    "description": {
+      "en": "You have ADV on Checks made to convince creatures that you are an authority figure. Additionally, you have ADV on the first Charisma Check made to interact with non-hostile members of military groups.",
+      "ru": "Вы получаете преимуществом на проверки, направленные на внушение своего авторитета существам. Также вы получаете преимущество на первую проверку харизмы при взаимодействии с неагрессивными членами военных организаций."
+    },
+    "origin": "class_flavor",
+    "origin_value": "commander",
+    "kind": "static",
+    "conditions": { "level": 1 }
+  },
+  {
+    "slug": "commanding_aura",
+    "title": { "en": "Commanding Aura", "ru": "Аура командования" },
+    "description": {
+      "en": "You're surrounded by a 5 Space Aura. You can target any creature within your Aura to grant one of the followingeffects below, provided the target can see or hear you.\n\n- (1 AP) You take the Help Action to aid the target with an Attack. You can also do so as a Reaction whenever a valid target makes an Attack.\n- (1 AP) You grant creatures of your choice (including yourself) 1 Temp HP.\n- (1 AP) When a creature in your aura is targeted by an Attack, you can impose DisADV on the Attack as a Reaction.",
+      "ru": "Вы окружены аурой в 5 Клеток. Вы можете нацелиться на любое существо в вашей ауре, чтобы дать ему один из следующих эффектов, при условии, что цель может видеть или слышать вас.\n\n- (1 ОД) Вы помогаете цели с атакой. Вы также можете сделать это в качестве реакции, когда подходящая цель совершает атаку.\n- (1 ОД) Вы даёте всем выбранным вами существам (включая себя) 1 временный ОЗ.\n- (1 ОД) Когда существо в вашей ауре становится целью атаки, вы можете в качестве реакции наложить помеху на эту атаку."
+    },
+    "origin": "class",
+    "origin_value": "commander",
+    "kind": "static",
+    "conditions": { "level": 2 }
+  },
+  {
+    "slug": "virtuous_vanguard",
+    "title": { "en": "Virtuous Vanguard", "ru": "Доблестный авангард" },
+    "description": {
+      "en": "\n- **Aura of Courage:** While within your Commanding Aura, creatures of your choice have Resistance to Frightened and Intimidated.\n- **Protective Orders:** When a creature gains the benefits of your Commander's Call, they also gain Resistance (1) against the next damage they take before the start of your next turn.\n- **Restoring Rally:** When you grant a Bloodied creature Temp HP in Combat using Rally (Commanding Aura), they regain that amount of HP instead.",
+      "ru": "\n- **Аура доблести:** Пока существа на ваш выбор находятся в вашей **Ауре командования**, они получают сопротивление устрашению и запугиванию.\n- **Приказ к обороне:** Когда существо получает бонусы вашего **Приказа командира**, оно также получает сопротивление (1) первому типу урона, который получит до начала его следующего хода.\n- **Вдохновляющее сплочение:** Во время боя, если вы даёте израненному существу временные ОЗ, используя укрепление от **Ауры командования**, вы вместо этого восстанавливаете ему ОЗ в том же количестве."
+    },
+    "origin": "subclass",
+    "origin_value": "crusader",
+    "kind": "static",
+    "conditions": { "level": 3 }
+  },
+  {
+    "slug": "gallant_hero",
+    "title": { "en": "Gallant Hero", "ru": "Отважный лидер" },
+    "description": {
+      "en": "Your presence is a symbol of hope and safety to those around you. You have ADV on Checks to convince creatures not to be afraid.",
+      "ru": "Ваше присутствие является символом надежды и безопасности для окружающих. Вы получаете преимущество на проверки, направленные на то, чтобы убедить существ преодолеть страх."
+    },
+    "origin": "subclass_flavor",
+    "origin_value": "crusader",
+    "kind": "static",
+    "conditions": { "level": 3 }
+  },
+  {
+    "slug": "offensive_tactics",
+    "title": { "en": "Offensive Tactics", "ru": "Наступательные тактики" },
+    "description": {
+      "en": "\n- **Morale Breaker:** Once per Combat when you use your Commander's Call, you can use the Intimidate Action for free against a creature of your choice within 10 Spaces.\n- **Battlefield Tactics:** Allies within your Commanding Aura deal +1 damage on their first Melee Attack on each of their turns against a creature they're Flanking.\nYou gain a new Commanding Aura option:\n\n- **Priority Target: (1 AP + 1 SP)** Choose a creature within 10 Spaces. Until the start of your next turn, each creature within your Aura has ADV on the first Attack it makes on each of its turns against the chosen creature.",
+      "ru": "\n- **Подавление:** Один раз за бой, при использовании **Приказа командира** вы можете бесплатно запугать существо в пределах 15 Клеток.\n- **Тактика боя:** Первая ближняя атака каждого союзника в вашей **Ауре командования** по окружённым им существам наносит +1 урона.\nВы получаете следующее использование **Ауры командования**:\n\n- **Приоритетная цель (1 ОД + 1 ОВ):** Выберите цель в пределах 15 клеток. До начала вашего следующего хода, каждое существо в вашей **Ауре командования** в свой ход получает преимущество на свою первую атаку по этой цели."
+    },
+    "origin": "subclass",
+    "origin_value": "warlord",
+    "kind": "static",
+    "conditions": { "level": 3 }
+  },
+  {
+    "slug": "battlefield_tactician",
+    "title": { "en": "Battlefield Tactician", "ru": "Военный тактик" },
+    "description": {
+      "en": "Through years of study and experience, you’ve mastered military history and strategy. You gain ADV on Checks related to analyzing fields of battle, understanding historical battles and military organizations, or deciphering complex tactical maneuvers.",
+      "ru": "Ваш боевой опыт и обучение сделали вас мастером военной истории и стратегии. Вы получаете преимущества на проверки, направленные на анализ ситуации на поле боя, разбор исторических битв, сбор информации о военных организациях и расшифровку сложных тактических приёмов."
+    },
+    "origin": "subclass_flavor",
+    "origin_value": "warlord",
+    "kind": "static",
+    "conditions": { "level": 3 }
+  },
+  {
+    "slug": "seize_momentum",
+    "title": { "en": "Seize Momentum", "ru": "Быстрое реагирование" },
+    "description": {
+      "en": "When an ally within your Commanding Aura scores a Heavy Hit, you can use your Commander's Call as a Reaction.",
+      "ru": "Когда союзник в вашей **Ауре командования** наносит тяжёлый удар, вы можете использовать **Приказ командира** в качестве реакции."
+    },
+    "origin": "talent",
+    "origin_value": "commander",
+    "kind": "static",
+    "conditions": { "level": 3 },
+    "info": {
+      "multiple": false,
+      "required_features": ["commander_call", "commanding_aura"]
+    }
+  },
+  {
+    "slug": "coordinated_command",
+    "title": { "en": "Coordinated Command", "ru": "Координирующий приказ" },
+    "description": {
+      "en": "Once per Round, when you use your Commander's Call, you can spend 1 additional SP to target a second creature within range (including yourself), they also gain the benefits of the chosen command. You choose who acts first between the targeted creatures.",
+      "ru": "Один раз за ход, когда вы используете **Приказ командира**, вы можете дополнительно потратить 1 ОВ чтобы отдать этот же приказ второму существу в пределах дальности (включая себя). Вы выбираете, кто из них ходит первым."
+    },
+    "origin": "talent",
+    "origin_value": "commander",
+    "kind": "static",
+    "conditions": { "level": 3 },
+    "info": {
+      "multiple": false,
+      "required_features": ["commander_call"]
+    },
+    "price": { "sp": 1 }
+  }
+]
