@@ -21,5 +21,9 @@ module Dc20
     def school
       object.info['school']
     end
+
+    def origin_values
+      object.origin_values.map { |item| I18n.t("tags.dc20.spell_tags.#{item}") }
+    end
   end
 end

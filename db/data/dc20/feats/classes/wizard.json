@@ -1,0 +1,168 @@
+[
+  {
+    "slug": "spell_school_initiate",
+    "title": { "en": "Spell School Initiate", "ru": "Посвященный школы заклинаний" },
+    "description": {
+      "en": "Choose a Spell School. You learn 2 Arcane Spells from this Spell School.\n\n- **Signature School:** When you cast a Spell from the chosen School, you can reduce its MP cost by 1. Its total MP cost before the reduction can't exceed your Mana Spend Limit. You can use this Feature once per Long Rest, but regain the ability to use it again when you roll for Initiative.",
+      "ru": "Выберите школу заклинаний. Вы изучаете 2 арканных заклинания этой школы.\n\n- **Фирменная школа:** Один раз после длинного отдыха или броска инициативы, когда вы накладываете заклинание из выбранной школы, вы можете снизить его стоимость на 1 ОМ. Общая стоимость в ОМ до снижения не может превышать ваш предел траты маны."
+    },
+    "origin": "class",
+    "origin_value": "wizard",
+    "kind": "many_from_list",
+    "options": {
+      "astromancy": { "en": "Astromancy", "ru": "Астромантия" },
+      "conjuration": { "en": "Conjuration", "ru": "Вызов" },
+      "divination": { "en": "Divination", "ru": "Прорицание" },
+      "elemental": { "en": "Elemental", "ru": "Элементализм" },
+      "enchantment": { "en": "Enchantment", "ru": "Очарование" },
+      "invocation": { "en": "Invocation", "ru": "Призыв" },
+      "nullification": { "en": "Nullification", "ru": "Аннулирование" },
+      "transmutation": { "en": "Transmutation", "ru": "Преобразование" }
+    },
+    "conditions": { "level": 1 }
+  },
+  {
+    "slug": "arcane_sigil",
+    "title": { "en": "Arcane Sigil", "ru": "Арканный символ" },
+    "description": {
+      "en": "You can spend **1 AP** and **1 MP** to choose a Spell School or Spell Tag and create a 1 Space diameter Circle on a surface within a Space you're occupying. The Circle is your **Arcane Sigil** which lasts for 1 minute. You can't place more than 1 Arcane Sigil in the same Space.\n**Using a Sigil:** While within the area of your Arcane Sigil, creatures gain ADV on Checks they make to cast or produce the effects of Spells with the chosen Spell School or Spell Tag.\n**Moving a Sigil:** You can spend 1 AP to teleport one of your Arcane Sigils that's within 10 Spaces to a surface within a Space you're occupying, provided the Space doesn't already have an Arcane Sigil.",
+      "ru": "Вы можете потратить **1 ОД** и **1 ОМ**, чтобы создать на земле под собой **Арканный символ** диаметром в 1 Клетку, существующий 1 минуту. При создании выберите 1 школу заклинаний или 1 признак заклинания.\n\n- **Использование символа:** Пока существо находится в клетке с вашим символом, оно получает преимущество на проверки заклинаний, требующиеся для наложения заклинаний, относящихся к выбранной школе или имеющих выбранный признак.\n- **Перемещение символа:** Вы можете потратить 1 ОД, чтобы переместить один из ваших символов, находящийся в пределах 10 Клеток, в вашу клетку. В одной клетке может находиться только один символ."
+    },
+    "origin": "class",
+    "origin_value": "wizard",
+    "kind": "text",
+    "conditions": { "level": 1 }
+  },
+  {
+    "slug": "ritual_caster",
+    "title": { "en": "Ritual Caster", "ru": "Ритуалист" },
+    "description": {
+      "en": "You learn 1 Ritual. Additionally, when you encounter a Ritual in a form you can study, you can learn it over the course of a Short Rest.",
+      "ru": "Вы изучаете 1 ритуал. Когда вы находите ритуальное арканное заклинание в форме, поддающейся изучению, вы можете изучить его за период короткого отдыха."
+    },
+    "origin": "class_flavor",
+    "origin_value": "wizard",
+    "kind": "static",
+    "conditions": { "level": 1 }
+  },
+  {
+    "slug": "prepared_spell",
+    "title": { "en": "Prepared Spell", "ru": "Подготовленное заклинание" },
+    "description": {
+      "en": "When you complete a Long Rest, choose 1 Spell you know. The chosen Spell becomes your Prepared Spell until your next Long Rest.\n\n- **Mana Limit Break:** When you cast your Prepared Spell, you can increase your Mana Spend Limit by 1 for the casting. You can use this Feature once per Long Rest, but you regain the ability to use it when you roll for Initiative.\n- **Rehearsed Casting:** When creatures Challenge your Spell as part of a Spell Duel, they have DisADV on Checks made to stop your Spell.",
+      "ru": "Когда вы завершаете длинный отдых, выберите одно известное вам заклинание. Оно становится вашим **Подготовленным заклинанием** до следующего длинного отдыха.\n\n- **Прорыв предела маны:** Когда вы накладываете это заклинание, вы можете увеличить ваш предел траты маны на 1. Вы можете использовать эту черту один раз после длинного отдыха или броска инициативы.\n- **Отработанное наложение:** Когда противники используют дуэль заклинаний против вашего **Подготовленного заклинания**, они получают помеху на соответствующую проверку заклинаний."
+    },
+    "origin": "class",
+    "origin_value": "wizard",
+    "kind": "static",
+    "conditions": { "level": 2 }
+  },
+  {
+    "slug": "portal_magic",
+    "title": { "en": "Portal Magic", "ru": "Портальная магия" },
+    "description": {
+      "en": "When you create an Arcane Sigil, you can spend 1 additional MP to create an identical Arcane Sigil on a surface within a Space you can see within 10 Spaces.\n\n- **Arcane Portal:** A portal connects the two Arcane Sigils. Creatures of your choice within 1 Space of either Arcane Sigil can spend 1 Space of movement to teleport to an unoccupied Space within 1 Space of the other Arcane Sigil.\n**Linked Magic:** While within 1 Space of a connected Arcane Sigil, you can make an Attack or cast a Spell as if you were standing in the Space of the other connected Arcane Sigil.\n**Teleportation Expert:** When you learn a new Spell, you can choose any Spell with the Teleportation Spell Tag.",
+      "ru": "Когда вы используете **Арканный символ**, вы можете потратить +1 ОМ, чтобы создать один идентичный **Арканный символ** в клетке, которую видите в пределах 10 Клеток, и связать его с этим символом.\n\n- **Арканный портал:** Находящиеся в пределах 1 клетки от любого символа существа на ваш выбор могут потратить 1 клетку движения, чтобы телепортироваться в незанятую клетку, соседнюю к клетке связанного символа.\n- **Магическая связь:** Пока вы находитесь в пределах 1 клетки от символа, вы можете атаковать и накладывать заклинания так, как если бы находились в клетке связанного символа.\n- **Эксперт телепортации:** При изучении нового заклинания вы можете выбирать его из заклинаний с признаком **Телепортация**."
+    },
+    "origin": "subclass",
+    "origin_value": "portal_mage",
+    "kind": "static",
+    "conditions": { "level": 3 }
+  },
+  {
+    "slug": "portal_sage",
+    "title": { "en": "Portal Sage", "ru": "Знаток порталов" },
+    "description": {
+      "en": "You have ADV on Checks to learn about the Astromancy Spell School (such as Teleportation magic or Portals). Additionally, if you spend 1 minute observing a portal or teleportation runes, you can make a DC 10 Spell Check to try to understand the inner mechanism of a Portal within 5 Spaces. **Success:** You learn where it leads to and for how long it has been open. **Success (5):** You learn how to activate and deactivate it (such as its passphrase, procedures, or any required special item).",
+      "ru": "Вы получаете преимущество на проверки, направленные на опознание заклинаний школы астромантии. Также, если вы в течение 1 минуты изучаете портал или телепортационные руны в пределах 5 клеток от вас, вы можете совершить проверку заклинания со СЛ 10 чтобы понять их внутреннее устройство. **Успех:** Вы понимаете, куда портал ведёт и как давно открыт. **Успех (5):** Вы понимаете, как его активировать и деактивировать (кодовое слово, особые действия или необходимые предметы)."
+    },
+    "origin": "subclass_flavor",
+    "origin_value": "portal_mage",
+    "kind": "static",
+    "conditions": { "level": 3 }
+  },
+  {
+    "slug": "coven's_gift",
+    "title": { "en": "Coven's Gift", "ru": "Дар Ковена" },
+    "description": {
+      "en": "You learn 1 Spell of your choice with the Curse Spell Tag. When you learn a new Spell, you can choose any Spell with the Curse Spell Tag. Spells with the Curse Spell Tag count as being part of your chosen Spell School for the purposes of your **Spell School Initiate** Feature.",
+      "ru": "Вы изучаете 1 заклинание с признаком **Проклятье**. Когда вы изучаете новое заклинание, вы можете выбрать его из заклинаний с признаком **Проклятье**. Эти заклинания считаются частью вашей **Фирменной школы** из **Посвящённого школы заклинаний**."
+    },
+    "origin": "subclass",
+    "origin_value": "witch",
+    "kind": "static",
+    "conditions": { "level": 3 }
+  },
+  {
+    "slug": "hex_enhancements",
+    "title": { "en": "Hex Enhancements", "ru": "Ведьмовской сглаз" },
+    "description": {
+      "en": "You can add the Spell Enhancements below to any Spell you cast, but you can only add 1 at a time. MP spent on these Spell Enhancements doesn't count against your Mana Spend Limit.\nWhen you use one of these Spell Enhancements, 1 creature of your choice that's targeted by the Spell must make a Repeated Charisma Save against your Check. If the Spell doesn't normally require a Check, you must make a Spell Check when using one of these Spell Enhancements. **Save Failure:** The target is subjected to the chosen Hex for 1 minute:\n\n- **Bewitching Hex: (1 MP)** The target becomes Charmed by you for the duration.\n- **Reaping Hex: (1 MP)** The target takes 1 True damage and you regain 1 HP. This effect repeats at the end of each of its turns for the duration.\n- **Vermin Hex: (1 MP)** The target can't speak and if its Size is Large or smaller its Size decreases by 1. Its Size decreases by 1 again at the end of each of its turns for the duration until it becomes Tiny.",
+      "ru": "Вы изучаете улучшения заклинания из списка ниже. Вы можете использовать только один сглаз за заклинание. Потраченные на сглаз ОМ не учитываются для предела траты маны. Даже если заклинание не требует проверки заклинания, при использовании сглаза вы совершаете проверку заклинания против повторяемого **спаса харизмы** одной из целей заклинаний. **Провал спаса:** Цель подвержена выбранному сглазу на 1 минуту.\n\n- **Приворот: (1 ОМ)** Цель очарована вами.\n- **Вытягивание жизни: (1 ОМ)** Цель получает 1 истинного урона и вы восстанавливаете 1 ОЗ. Эффект повторяется в конце каждого из ходов цели.\n- **Оборот: (1 ОМ)** Цель теряет способность говорить, и если цель большая или меньше, её размер уменьшается на 1. Её размер уменьшается вновь в конце каждого из ходов цели пока цель не станет крошечной."
+    },
+    "origin": "subclass_flavor",
+    "origin_value": "witch",
+    "kind": "static",
+    "conditions": { "level": 3 }
+  },
+  {
+    "slug": "curse_expert",
+    "title": { "en": "Curse Expert", "ru": "Знаток проклятий" },
+    "description": {
+      "en": "You can spend 1 minute focusing your mind to detect the presence of Curses within 20 Spaces. You learn the location of any Cursed creature or Cursed object within range. If you spend 10 minutes in contact with a Cursed creature or object, you learn the nature of the Curse but not the knowledge of how to remove it.",
+      "ru": "Вы можете сосредоточиться на 1 минуту, чтобы определить местоположение всех проклятых существ и предметов в радиусе 20 Клеток. Также, вы можете потратить 10 минут, прикасаясь к проклятому существу или предмету, чтобы опознать природу проклятия (но не способ его снять)."
+    },
+    "origin": "subclass_flavor",
+    "origin_value": "witch",
+    "kind": "static",
+    "conditions": { "level": 3 }
+  },
+  {
+    "slug": "expanded_spell_school",
+    "title": { "en": "Expanded Spell School", "ru": "Расширение школ заклинаний" },
+    "description": {
+      "en": "Choose 1 additional Spell School. You can't choose the same School more than once. You learn 2 Arcane Spells from this Spell School, and you can use **Signature School** once per chosen Spell School.",
+      "ru": "Выберите 1 дополнительную школу заклинаний. Нельзя выбирать туже школу дважды. Вы изучаете 2 арканных заклинания из этой школы, вы можете использовать **Фирменную школу** один раз для каждой выбранной школы."
+    },
+    "origin": "talent",
+    "origin_value": "wizard",
+    "kind": "static",
+    "info": {
+      "multiple": false,
+      "required_features": ["spell_school_initiate"]
+    },
+    "conditions": { "level": 3 }
+  },
+  {
+    "slug": "crowned_sigil",
+    "title": { "en": "Crowned Sigil", "ru": "Переносной символ" },
+    "description": {
+      "en": "When you create an Arcane Sigil, you can bind it to a willing creature within 1 Space. While bound, the Arcane Sigil moves with the creature and grants it a +2 bonus to its AD. A creature can only be bound to one Arcane Sigil at a time. You can spend 1 AP to unbind the Arcane Sigil and place it on the ground within 1 Space of the creature.",
+      "ru": "Когда вы создаёте **Арканный символ**, вы можете привязать его к согласному существу в пределах 1 клетки. Привязанный **Арканный символ** перемещается вместе с целью и даёт +2 ПЗ. К существу может быть привязан только один **Арканный символ** одновременно. Вы можете потратить 1 ОД чтобы отвязать **Арканный символ** и разместить его на земле в пределах 1 Клетки."
+    },
+    "origin": "talent",
+    "origin_value": "wizard",
+    "kind": "static",
+    "conditions": { "level": 3 },
+    "info": {
+      "multiple": false,
+      "required_features": ["arcane_sigil"]
+    }
+  },
+  {
+    "slug": "overly_prepared_spellcaster",
+    "title": { "en": "Overly Prepared Spellcaster", "ru": "Сверхподготовленное заклинание" },
+    "description": {
+      "en": "\n- You gain Dazed Resistance.\n- You can change your Prepared Spell when you complete a Quick or Short Rest.\n- When you declare a Spell Duel using your Prepared Spell, you gain ADV on your Spell Check.\n- You can use Signature School on your Prepared Spell, even if it's not from the chosen Spell School.\n- When you use Mana Limit Break, you have ADV on the Check made to cast the Spell.",
+      "ru": "\n- Вы получаете сопротивление потрясению.\n- Вы можете изменить ваше **Подготовленное заклинание** после быстрого или короткого отдыха.\n- Когда вы объявляете дуэль заклинаний **Подготовленным заклинанием**, вы получаете преимущество на вашу проверку заклинания.\n- Вы можете использовать **Фирменную школу** на ваше **Подготовленное заклинание**, даже если оно не из выбранной школы.\n- Когда вы используете предел траты маны, вы получаете преимущество для проверки заклинания."
+    },
+    "origin": "talent",
+    "origin_value": "wizard",
+    "kind": "static",
+    "conditions": { "level": 3 },
+    "info": {
+      "multiple": false,
+      "required_features": ["prepared_spell", "spell_school_initiate"]
+    }
+  }
+]

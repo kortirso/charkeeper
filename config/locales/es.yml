@@ -344,6 +344,13 @@ es:
           two_hand: A dos manos %{value}
           volley: Volley %{value}
     dc20:
+      spell_tags:
+        Ailment: Ailment
+        Bludgeoning: Bludgeoning
+        Embolden: Embolden
+        Piercing: Piercing
+        Slashing: Slashing
+        Ward: Ward
       focus:
         Long-Ranged: Los hechizos que lances con un alcance superior a 1 aumentarán su alcance en 5 espacios.
       weapon:
