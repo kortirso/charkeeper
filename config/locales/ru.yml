@@ -344,6 +344,13 @@ ru:
           two_hand: Полуторное %{value}
           volley: Залповое %{value}
     dc20:
+      spell_tags:
+        Ailment: Болезнь
+        Bludgeoning: Дробящее
+        Embolden: Воодушевление
+        Piercing: Колющее
+        Slashing: Режущее
+        Ward: Защита
       focus:
         Long-Ranged: Если заклинание имеет дальность больше 1, то эта дальность увеличивается на 5 квадратов.
       weapon:

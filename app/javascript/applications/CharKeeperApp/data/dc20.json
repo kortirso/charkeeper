@@ -21,7 +21,10 @@
     },
     "wizard": {
       "name": { "en": "Wizard", "ru": "Волшебник" },
-      "subclasses": {}
+      "subclasses": {
+        "portal_mage": { "name": { "en": "Portal Mage", "ru": "Порталист" } },
+        "witch": { "name": { "en": "Witch", "ru": "Ведьма" } }
+      }
     }
   },
   "spell_lists": {

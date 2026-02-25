@@ -16,6 +16,7 @@ module Dc20
     HIDDEN = 'hidden'
     ONE_FROM_LIST = 'one_from_list' # рендерится список, выбирается одно значение
     MANY_FROM_LIST = 'many_from_list' # рендерится список, выбирается несколько значений
+    TEXT = 'text' # может вводиться текст
 
     SHORT_REST = 'short_rest'
     LONG_REST = 'long_rest'
@@ -33,7 +34,7 @@ module Dc20
       SUBCLASS_FLAVOR_ORIGIN => 6,
       SPELL_ORIGIN => 7
     }
-    enum :kind, { STATIC => 0, UPDATE_RESULT => 1, HIDDEN => 2, ONE_FROM_LIST => 3, MANY_FROM_LIST => 4 }
+    enum :kind, { STATIC => 0, UPDATE_RESULT => 1, HIDDEN => 2, ONE_FROM_LIST => 3, MANY_FROM_LIST => 4, TEXT => 5 }
     enum :limit_refresh, { SHORT_REST => 0, LONG_REST => 1, COMBAT => 2 }
   end
 end

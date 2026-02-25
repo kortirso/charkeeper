@@ -3,8 +3,8 @@
     "slug": "attribute_increase",
     "title": { "en": "Attribute Increase", "ru": "Повышение атрибутов" },
     "description": {
-      "en": "You gain 1 Attribute Point to put into any Attribute of your choice.",
-      "ru": "Вы получаете 1 Очко Атрибутов, которое можете вложить в любой Атрибут."
+      "en": "You gain 2 Attribute Points to put into any Attribute of your choice.",
+      "ru": "Вы получаете 2 Очков атрибутов, которое можете вложить в любой Атрибут."
     },
     "origin": "talent",
     "origin_value": "general",
@@ -21,8 +21,8 @@
     "slug": "skill_or_trade_increase",
     "title": { "en": "Skill Increase", "ru": "Повышение навыков" },
     "description": {
-      "en": "",
-      "ru": ""
+      "en": "You gain 4 Skill Points.",
+      "ru": "Вы получаете 4 Очка навыков"
     },
     "origin": "talent",
     "origin_value": "general",

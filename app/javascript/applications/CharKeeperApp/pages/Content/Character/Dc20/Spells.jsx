@@ -207,9 +207,16 @@ export const Dc20Spells = (props) => {
                             class="even:bg-stone-100 dark:even:bg-dark-dusty p-1"
                             classList={{ 'opacity-50': learnedSpellIds().includes(spell.id) }}
                           >
-                            <div class="flex items-center justify-between mb-2">
+                            <div class="flex items-center justify-between mb-1">
                               <p class="font-normal! text-lg">{spell.title}</p>
                               <p>{schools()[spell.school].name[locale()]}</p>
+                            </div>
+                            <div class="flex gap-x-2 flex-wrap mb-2">
+                              <For each={spell.origin_values}>
+                                {(tag) =>
+                                  <span class="text-sm tag">{tag}</span>
+                                }
+                              </For>
                             </div>
                             <p
                               class="feat-markdown text-xs"
@@ -282,8 +289,22 @@ export const Dc20Spells = (props) => {
               <div class="mt-2">
                 <For each={learnedSpells()}>
                   {(spell) =>
-                    <Toggle title={spell.title}>
+                    <Toggle
+                      title={
+                        <div class="flex items-center justify-between">
+                          <p>{spell.title}</p>
+                          <p>{schools()[spell.school].name[locale()]}</p>
+                        </div>
+                      }
+                    >
                       <div>
+                        <div class="flex gap-x-2 flex-wrap mb-1">
+                          <For each={spell.origin_values}>
+                            {(tag) =>
+                              <span class="text-sm tag">{tag}</span>
+                            }
+                          </For>
+                        </div>
                         <Show when={spell.price}>
                           <p class="text-sm mt-1">{localize(TRANSLATION, locale()).price}: {renderSpellPrice(spell.price)}</p>
                         </Show>
