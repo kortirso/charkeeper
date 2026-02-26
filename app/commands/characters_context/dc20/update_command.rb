@@ -7,7 +7,8 @@ module CharactersContext
         attach_avatar_by_url: 'commands.image_processing.attach_avatar_by_url',
         attach_avatar_by_file: 'commands.image_processing.attach_avatar_by_file',
         refresh_feats: 'services.characters_context.dc20.refresh_feats',
-        cache: 'cache.avatars'
+        cache: 'cache.avatars',
+        add_feat: 'commands.characters_context.dc20.feats.add'
       ]
 
       LEVELING = {
@@ -167,16 +168,14 @@ module CharactersContext
         character.save
       end
 
-      def refresh_ancestry_feats(input)
-        input[:character].feats.joins(:feat).where(feats: { origin: 0 }).delete_all
-        feats_for_adding = ::Dc20::Feat.where(origin: 0, slug: input[:ancestry_feats].values.flatten).map do |feat|
-          {
-            feat_id: feat.id,
-            character_id: input[:character].id,
-            ready_to_use: true
-          }
+      def refresh_ancestry_feats(input) # rubocop: disable Metrics/AbcSize
+        current_slugs = input[:ancestry_feats].values.flatten
+        existing_slugs = input[:character].feats.joins(:feat).where(feats: { origin: 0 }).pluck('feats.slug')
+
+        input[:character].feats.joins(:feat).where(feats: { origin: 0, slug: (existing_slugs - current_slugs) }).delete_all
+        ::Dc20::Feat.where(origin: 0, slug: (current_slugs - existing_slugs)).map do |feat|
+          add_feat.call({ character: input[:character], feat: feat })
         end
-        ::Character::Feat.upsert_all(feats_for_adding) if feats_for_adding.any?
       end
 
       def refresh_maneuver_feats(character)
