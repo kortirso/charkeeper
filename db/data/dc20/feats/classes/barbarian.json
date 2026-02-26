@@ -12,7 +12,8 @@
     "conditions": { "level": 1 },
     "price": { "ap": 1, "sp": 1 },
     "eval_variables": {
-      "precision_defense": "precision_defense.transform_values { |value| value - 5 }"
+      "precision_defense": "precision_defense.transform_values { |value| value - 5 }",
+      "damages": "damages.concat([['elemental', 'resist', 'half'], ['physical', 'resist', 'half']])"
     },
     "continious": true
   },

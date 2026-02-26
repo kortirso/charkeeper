@@ -83,6 +83,7 @@ export * from './Content/Character/Dc20/Spells';
 export * from './Content/Character/Dc20/Rest';
 export * from './Content/Character/Dc20/Bonuses';
 export * from './Content/Character/Dc20/Ancestries';
+export * from './Content/Character/Dc20/Damages';
 
 export * from './Content/Character/Fate';
 export * from './Content/Character/Fate/Aspects';
