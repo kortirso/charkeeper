@@ -27,7 +27,7 @@ export const Toggle = (props) => {
       >
         {props.title}
       </div>
-      <Show when={props.isOpenByParent ? props.isOpenByParent : isOpen()}>
+      <Show when={props.isOpenByParent !== undefined ? props.isOpenByParent : isOpen()}>
         <div
           classList={{
             'p-4 border-t border-gray-200 dark:border-gray-500': !props.noInnerPadding,

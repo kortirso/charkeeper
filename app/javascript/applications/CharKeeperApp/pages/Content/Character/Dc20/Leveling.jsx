@@ -1,5 +1,6 @@
 import { createSignal, createEffect, createMemo, Show, For, batch } from 'solid-js';
 
+import { Dc20Ancestries } from '../../../../pages';
 import { Button, ErrorWrapper, GuideWrapper, Toggle, Checkbox, Select } from '../../../../components';
 import config from '../../../../data/dc20.json';
 import { useAppState, useAppLocale, useAppAlert } from '../../../../context';
@@ -46,7 +47,8 @@ const TRANSLATION = {
     paragon: 'Paragon',
     general: 'General',
     multiclass: 'Multiclass',
-    selectAdditionalTalent: 'Select additional talent (if you need)'
+    selectAdditionalTalent: 'Select additional talent (if you need)',
+    updated: 'Character is updated'
   },
   ru: {
     currentLevel: 'уровень',
@@ -83,7 +85,8 @@ const TRANSLATION = {
     paragon: 'Эталон',
     general: 'Общий',
     multiclass: 'Мультикласс',
-    selectAdditionalTalent: 'Выберите дополнительную черту (если хотите)'
+    selectAdditionalTalent: 'Выберите дополнительную черту (если хотите)',
+    updated: 'Персонаж обновлён'
   }
 }
 
@@ -100,7 +103,7 @@ export const Dc20Leveling = (props) => {
   const [talentFeatures, setTalentFeatures] = createSignal(undefined);
 
   const [appState] = useAppState();
-  const [{ renderAlerts }] = useAppAlert();
+  const [{ renderAlerts, renderNotice }] = useAppAlert();
   const [locale] = useAppLocale();
 
   const fetchTalents = async () => await fetchTalentsRequest(appState.accessToken, character().provider, character().id);
@@ -111,9 +114,7 @@ export const Dc20Leveling = (props) => {
 
     Promise.all([fetchTalents()]).then(
       ([talentsData]) => {
-        batch(() => {
-          setTalents(talentsData.talents);
-        });
+        setTalents(talentsData.talents);
       }
     );
 
@@ -208,6 +209,18 @@ export const Dc20Leveling = (props) => {
     );
   }
 
+  const saveAncestries = async (payload) => {
+    const result = await updateCharacterRequest(appState.accessToken, character().provider, character().id, { character: payload });
+    performResponse(
+      result,
+      function() { // eslint-disable-line solid/reactivity
+        props.onReloadCharacter();
+        renderNotice(localize(TRANSLATION, locale()).updated);
+      },
+      function() { renderAlerts(result.errors_list) }
+    );
+  }
+
   return (
     <ErrorWrapper payload={{ character_id: character().id, key: 'Dc20Leveling' }}>
       <GuideWrapper
@@ -247,6 +260,7 @@ export const Dc20Leveling = (props) => {
             </Show>
           </Show>
         </div>
+        <Dc20Ancestries character={character()} onSave={saveAncestries} />
         <Toggle
           title={
             <div class="flex justify-between">
@@ -331,7 +345,6 @@ export const Dc20Leveling = (props) => {
           <Show
             when={character().talent_points > selectedTalentsCount()}
             fallback={
-
               <>
                 <Select
                   labelText={localize(TRANSLATION, locale()).selectAdditionalTalent}
@@ -359,8 +372,6 @@ export const Dc20Leveling = (props) => {
                   </Button>
                 </Show>
               </>
-
-
             }
           >
             <Select
