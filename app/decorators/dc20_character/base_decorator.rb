@@ -50,6 +50,10 @@ module Dc20Character
       @dynamic_bonuses ||= __getobj__.bonuses.enabled.pluck(:dynamic_value).compact
     end
 
+    def damages
+      []
+    end
+
     # DEPRECATED
     def cantrips = 0
   end

@@ -181,5 +181,19 @@
       "name": { "en": "Taunt", "ru": "Спровоцировать" },
       "type": "defense"
     }
+  },
+  "damages": {
+    "bludge": { "name": { "en": "Bludgeoning", "ru": "Дробящий" } },
+    "pierce": { "name": { "en": "Piercing", "ru": "Колющий" } },
+    "slash": { "name": { "en": "Slashing", "ru": "Рубящий" } },
+    "fire": { "name": { "en": "Fire", "ru": "Огненный" } },
+    "cold": { "name": { "en": "Cold", "ru": "Морозный" } },
+    "lightning": { "name": { "en": "Lightning", "ru": "Электрический" } },
+    "poison": { "name": { "en": "Poison", "ru": "Ядовитый" } },
+    "corrosion": { "name": { "en": "Corrosion", "ru": "Кислотный" } },
+    "psychic": { "name": { "en": "Psychic", "ru": "Психический" } },
+    "radiant": { "name": { "en": "Radiant", "ru": "Сияющий" } },
+    "umbral": { "name": { "en": "Umbral", "ru": "Сумрачный" } },
+    "true": { "name": { "en": "True", "ru": "Истинный" } }
   }
 }

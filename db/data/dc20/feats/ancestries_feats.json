@@ -355,13 +355,16 @@
     "title": { "en": "Toxic Fortitude", "ru": "Устойчивость к токсинам" },
     "description": {
       "en": "You have Poison Resistance (Half) and ADV on Saves against being Poisoned.",
-      "ru": "Вы получаете сопротивление ядовитому (половина) и преимущество на спасы от отравления."
+      "ru": "Вы получаете сопротивление урону ядом (половина) и преимущество на спасы от отравления."
     },
     "origin": "ancestry",
     "origin_value": "dwarf",
     "kind": "static",
     "info": {
       "price": 2
+    },
+    "eval_variables": {
+      "damages": "damages.concat([['poison', 'resist', 'half']])"
     }
   },
   {

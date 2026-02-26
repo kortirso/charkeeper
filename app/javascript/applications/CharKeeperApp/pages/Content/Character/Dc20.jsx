@@ -4,7 +4,7 @@ import { createWindowSize } from '@solid-primitives/resize-observer';
 
 import {
   Dc20Abilities, Dc20Skills, Dc20Saves, Dc20CombatStatic, Dc20Leveling, Dc20Resources, Dc20Spells, Dc20Rest,
-  Dc20Bonuses
+  Dc20Bonuses, Dc20Damages
 } from '../../../pages';
 import {
   CharacterNavigation, Notes, Avatar, ContentWrapper, createDiceRoll, Conditions, Equipment, Combat, Feats
@@ -113,6 +113,9 @@ export const Dc20 = (props) => {
                 <Dc20Resources character={character()} onReplaceCharacter={props.onReplaceCharacter} />
               </div>
               <div class="mt-4">
+                <Dc20Damages character={character()} />
+              </div>
+              <div class="mt-4">
                 <Combat
                   character={character()}
                   openDiceRoll={openDiceRoll}
@@ -216,6 +219,9 @@ export const Dc20 = (props) => {
               <Dc20CombatStatic character={character()} openDiceRoll={openDiceRoll} />
               <div class="mt-4">
                 <Dc20Resources character={character()} onReplaceCharacter={props.onReplaceCharacter} />
+              </div>
+              <div class="mt-4">
+                <Dc20Damages character={character()} />
               </div>
               <div class="mt-4">
                 <Combat
