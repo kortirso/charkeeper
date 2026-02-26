@@ -1,4 +1,4 @@
-import { createSignal, createEffect, createMemo, Switch, Match, batch, Show } from 'solid-js';
+import { createSignal, createEffect, createMemo, Switch, Match, batch, Show, For } from 'solid-js';
 import * as i18n from '@solid-primitives/i18n';
 import { Key } from '@solid-primitives/keyed';
 
@@ -20,7 +20,15 @@ const TRANSLATION = {
     showPersonal: 'Show personal',
     groupFeatures: 'Group features',
     showPassive: 'Show passive',
-    expandAll: 'Expand all'
+    expandAll: 'Expand all',
+    dc20Range: 'Range',
+    enhancements: 'Enhancements',
+    repeatable: 'Repeatable',
+    prices: {
+      ap: 'AP',
+      sp: 'SP',
+      'ap/sp': 'AP/SP'
+    }
   },
   ru: {
     activeFeat: 'Активен',
@@ -30,7 +38,15 @@ const TRANSLATION = {
     showPersonal: 'Показать личные',
     groupFeatures: 'Группировать',
     showPassive: 'Показать пассивные',
-    expandAll: 'Раскрывать все'
+    expandAll: 'Раскрывать все',
+    dc20Range: 'Дальность',
+    enhancements: 'Улучшения',
+    repeatable: 'Многократное',
+    prices: {
+      ap: 'ОД',
+      sp: 'ОВ',
+      'ap/sp': 'ОД/ОВ'
+    }
   }
 }
 
@@ -138,6 +154,18 @@ export const Feats = (props) => {
     })
   }
 
+  const renderFeatPrice = (enhancement) => {
+    const result = Object.entries(enhancement.price).map(([slug, price]) => {
+      if (price === null) return `X ${localize(TRANSLATION, locale()).prices[slug]}`;
+
+      return `${price} ${localize(TRANSLATION, locale()).prices[slug]}`;
+    });
+
+    if (enhancement.repeatable) result.push(localize(TRANSLATION, locale()).repeatable);
+
+    return result.join(', ');
+  }
+
   return (
     <ErrorWrapper payload={{ character_id: character().id, key: 'Feats' }}>
       <GuideWrapper character={character()}>
@@ -196,6 +224,28 @@ export const Feats = (props) => {
                     class="feat-markdown"
                     innerHTML={feature().description} // eslint-disable-line solid/no-innerhtml
                   />
+                  <Show when={character().provider === 'dc20'}>
+                    <Show when={feature().info.range}>
+                      <p class="text-sm mt-2">{localize(TRANSLATION, locale()).dc20Range}: {localize(feature().info.range, locale())}</p>
+                    </Show>
+                    <Show when={feature().info.enhancements && feature().info.enhancements.length > 0}>
+                      <div class="mt-2">
+                        <p class="font-normal!">{localize(TRANSLATION, locale()).enhancements}</p>
+                        <For each={feature().info.enhancements}>
+                          {(enhancement) =>
+                            <p class="feat-markdown text-sm mt-1">
+                              <span class="font-medium!">{enhancement.name[locale()]}</span>
+                              : ({renderFeatPrice(enhancement)})
+                              <span
+                                class="feat-markdown"
+                                innerHTML={enhancement.description[locale()]} // eslint-disable-line solid/no-innerhtml
+                              />
+                            </p>
+                          }
+                        </For>
+                      </div>
+                    </Show>
+                  </Show>
                   <Switch fallback={<></>}>
                     <Match when={feature().kind === 'text'}>
                       <TextArea

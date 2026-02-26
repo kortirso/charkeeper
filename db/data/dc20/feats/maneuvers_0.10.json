@@ -1,0 +1,195 @@
+[
+  {
+    "slug": "heroic_bash",
+    "title": { "en": "Heroic Bash", "ru": "Героический удар" },
+    "description": {
+      "en": "Make a Melee Martial Attack against the PD of a target within range, and it makes a Might Save against your Save DC. **Hit:** The target takes the damage of your Weapon or Unarmed Strike. **Save Failure:** The target is pushed 1 Space away from you. **Save Failure (each 5):** The target is pushed up to 1 additional Space.\n\n**Knock Prone:** After the result, you can choose to reduce the total distance a target is pushed by 1 Space to knock them Prone instead.\n\n**Airborne:** When you choose to push them upward into the air, the distance they're pushed is halved.",
+      "ru": "Make a Melee Martial Attack against the PD of a target within range, and it makes a Might Save against your Save DC. **Hit:** The target takes the damage of your Weapon or Unarmed Strike. **Save Failure:** The target is pushed 1 Space away from you. **Save Failure (each 5):** The target is pushed up to 1 additional Space.\n\n**Knock Prone:** After the result, you can choose to reduce the total distance a target is pushed by 1 Space to knock them Prone instead.\n\n**Airborne:** When you choose to push them upward into the air, the distance they're pushed is halved."
+    },
+    "origin": "maneuver",
+    "origin_value": "attack",
+    "kind": "static",
+    "price": { "ap": 1, "sp": 1 },
+    "info": {
+      "range": { "en": "Weapon or Unarmed Strike", "ru": "Weapon or Unarmed Strike" },
+      "enhancements": [
+        {
+          "name": { "en": "Increased Distance", "ru": "Увеличенная дальность" },
+          "price": { "sp": 1 },
+          "repeatable": true,
+          "description": {
+            "en": "The distance pushed increases by 1 Space.",
+            "ru": "The distance pushed increases by 1 Space."
+          }
+        },
+        {
+          "name": { "en": "Bowling Ball", "ru": "Как снежный ком" },
+          "price": { "sp": 1 },
+          "repeatable": false,
+          "description": {
+            "en": "If the target collides with another creature as part of this movement, they both take Collision Damage as normal, and the creature it collides with must make a Might Save against your Save DC. Save Failure: The target is knocked Prone. Save Failure (each 5): The target is also pushed 1 Space away from you.",
+            "ru": "If the target collides with another creature as part of this movement, they both take Collision Damage as normal, and the creature it collides with must make a Might Save against your Save DC. Save Failure: The target is knocked Prone. Save Failure (each 5): The target is also pushed 1 Space away from you."
+          }
+        }
+      ]
+    }
+  },
+  {
+    "slug": "savage_strike",
+    "title": { "en": "Savage Strike", "ru": "Дикий удар" },
+    "description": {
+      "en": "Make a Martial Attack against the PD of a target within range, and it makes a Repeated Physical Save against your Save DC. **Hit:** The target takes the damage of your Weapon or Unarmed Strike. **Save Failure:** The target becomes Impaired for 1 minute or begins Bleeding (your choice).",
+      "ru": "Make a Martial Attack against the PD of a target within range, and it makes a Repeated Physical Save against your Save DC. **Hit:** The target takes the damage of your Weapon or Unarmed Strike. **Save Failure:** The target becomes Impaired for 1 minute or begins Bleeding (your choice)."
+    },
+    "origin": "maneuver",
+    "origin_value": "attack",
+    "kind": "static",
+    "price": { "ap": 1, "sp": 1 },
+    "info": {
+      "range": { "en": "Weapon or Unarmed Strike", "ru": "Weapon or Unarmed Strike" },
+      "enhancements": [
+        {
+          "name": { "en": "Improved Bleed", "ru": "Улучшенное ранение" },
+          "price": { "sp": 1 },
+          "repeatable": true,
+          "description": {
+            "en": "The target gains a stack of Bleeding.",
+            "ru": "The target gains a stack of Bleeding."
+          }
+        },
+        {
+          "name": { "en": "Improved Impaired", "ru": "Улучшенное ослабление" },
+          "price": { "sp": 1 },
+          "repeatable": true,
+          "description": {
+            "en": "The target gains a stack of Impaired.",
+            "ru": "The target gains a stack of Impaired."
+          }
+        },
+        {
+          "name": { "en": "Weakened", "ru": "Обессиленый" },
+          "price": { "sp": 2 },
+          "repeatable": false,
+          "description": {
+            "en": "The target gains a stack of Weakened.",
+            "ru": "The target gains a stack of Weakened."
+          }
+        }
+      ]
+    }
+  },
+  {
+    "slug": "parry",
+    "title": { "en": "Parry", "ru": "Парирование" },
+    "description": {
+      "en": "**Trigger:** A target you can see within range (including yourself) is targeted by an Attack against its PD.\n**Reaction:** You grant the target a +5 bonus to its PD against this Attack.",
+      "ru": "Trigger:** A target you can see within range (including yourself) is targeted by an Attack against its PD.\n**Reaction:** You grant the target a +5 bonus to its PD against this Attack."
+    },
+    "origin": "maneuver",
+    "origin_value": "defense",
+    "kind": "static",
+    "price": { "ap": 1 },
+    "info": {
+      "range": { "en": "Self (or 1 Space if wielding a Melee Weapon or Shield)", "ru": "Self (or 1 Space if wielding a Melee Weapon or Shield)" },
+      "enhancements": [
+        {
+          "name": { "en": "Alert", "ru": "Бдительность" },
+          "price": { "sp": 1 },
+          "repeatable": false,
+          "description": {
+            "en": "The Attacker's next Attack this turn against the target has DisADV.",
+            "ru": "The Attacker's next Attack this turn against the target has DisADV."
+          }
+        },
+        {
+          "name": { "en": "Disarm", "ru": "Обезоруживание" },
+          "price": { "sp": 1 },
+          "repeatable": false,
+          "description": {
+            "en": "If the Attacker is within 1 Space of you or the target, they make a Physical Save. Save Failure: The target drops the Weapon used for the Attack to the ground once the Attack is resolved. Save Failure (5): You gain possession of the Weapon, provided you have a free hand to hold it.",
+            "ru": "If the Attacker is within 1 Space of you or the target, they make a Physical Save. Save Failure: The target drops the Weapon used for the Attack to the ground once the Attack is resolved. Save Failure (5): You gain possession of the Weapon, provided you have a free hand to hold it."
+          }
+        }
+      ]
+    }
+  },
+  {
+    "slug": "slam",
+    "title": { "en": "Slam", "ru": "Удар" },
+    "description": {
+      "en": "Make a Melee Martial Attack against the target's AD. **Hit:** The target takes 1 Bludgeoning damage.",
+      "ru": "Make a Melee Martial Attack against the target's AD. **Hit:** The target takes 1 Bludgeoning damage."
+    },
+    "origin": "maneuver",
+    "origin_value": "grapple",
+    "kind": "static",
+    "price": { "ap": 1 },
+    "info": {
+      "range": { "en": "Melee", "ru": "Melee" },
+      "enhancements": [
+        {
+          "name": { "en": "Multi-Slam", "ru": "Несколько ударов" },
+          "price": { "sp": 1, "ap": 1 },
+          "repeatable": true,
+          "description": {
+            "en": "This Attack targets another creature you have Grappled.",
+            "ru": "This Attack targets another creature you have Grappled."
+          }
+        },
+        {
+          "name": { "en": "Charging Slam", "ru": "Удар с разбегом" },
+          "price": { "sp": 1, "ap": 1 },
+          "repeatable": true,
+          "description": {
+            "en": "You move up to your Speed pulling the Grappled creatures with you. 1 Grappled creature takes additional damage equal to the number of Spaces moved as you slam them.",
+            "ru": "You move up to your Speed pulling the Grappled creatures with you. 1 Grappled creature takes additional damage equal to the number of Spaces moved as you slam them."
+          }
+        },
+        {
+          "name": { "en": "Wall Rake", "ru": "Протащить вдоль стены" },
+          "price": { "sp": 1, "ap": 1 },
+          "repeatable": true,
+          "description": {
+            "en": "You slam 1 Grappled creature into a wall within 1 Space and move up to your Speed along the wall, ending your movement within 1 Space of the wall. The target makes a Repeated Might Save against your Save DC. Save Failure: They gain 1 stack of Bleeding per Space moved.",
+            "ru": "You slam 1 Grappled creature into a wall within 1 Space and move up to your Speed along the wall, ending your movement within 1 Space of the wall. The target makes a Repeated Might Save against your Save DC. Save Failure: They gain 1 stack of Bleeding per Space moved."
+          }
+        }
+      ]
+    }
+  },
+  {
+    "slug": "recover",
+    "title": { "en": "Recover", "ru": "Восстановление" },
+    "description": {
+      "en": "You attempt to spend Rest Points to regain HP equal to the Rest Points spent. Make a DC 15 Martial Check. **Failure:** You can spend 2 Rest Points. **Success:** You can spend up to 3 Rest Points. **Success (each 5):** You can spend 1 additional Rest Point.",
+      "ru": "You attempt to spend Rest Points to regain HP equal to the Rest Points spent. Make a DC 15 Martial Check. **Failure:** You can spend 2 Rest Points. **Success:** You can spend up to 3 Rest Points. **Success (each 5):** You can spend 1 additional Rest Point."
+    },
+    "origin": "maneuver",
+    "origin_value": "utility",
+    "kind": "static",
+    "price": { "ap": 1 },
+    "info": {
+      "range": { "en": "Self", "ru": "На себя" },
+      "enhancements": [
+        {
+          "name": { "en": "Increased Healing", "ru": "Усиленное лечение" },
+          "price": { "ap/sp": 1 },
+          "repeatable": true,
+          "description": {
+            "en": "You can spend 1 additional Rest Point.",
+            "ru": "You can spend 1 additional Rest Point."
+          }
+        },
+        {
+          "name": { "en": "Repeat Save", "ru": "Повторный спас" },
+          "price": { "ap/sp": 1 },
+          "repeatable": true,
+          "description": {
+            "en": "You can repeat a Save against an effect you're subjected to.",
+            "ru": "You can repeat a Save against an effect you're subjected to."
+          }
+        }
+      ]
+    }
+  }
+]

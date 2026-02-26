@@ -18,6 +18,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - rendering spells for DnD characters on mobile devices
 - remembering active spell class for DnD characters
 - spells rendering for DC20 characters
+- maneuvers for DC20 characters
 
 ## [0.4.9] - 2026-02-23
 ### Added
