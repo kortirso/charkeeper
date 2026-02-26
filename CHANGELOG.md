@@ -11,6 +11,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - rendering companion features for DH characters
 - skills management for Fallout characters
 - selecting additional talents for DC20 characters
+- refunding ancestries for DC20 characters
 
 ### Modified
 - rendering spells for DnD characters on mobile devices

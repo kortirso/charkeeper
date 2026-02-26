@@ -75,6 +75,8 @@ module CharactersContext
           end
           optional(:maneuvers).value(:array)
           optional(:selected_features).hash
+          optional(:ancestry_feats).hash
+          optional(:ancestry_points).filled(:integer)
         end
 
         rule(:avatar_file, :avatar_url, :file).validate(:check_only_one_present)
@@ -93,9 +95,12 @@ module CharactersContext
       def lock_key(input) = "character_update_#{input[:character].id}"
       def lock_time = 0
 
-      def do_prepare(input) # rubocop: disable Metrics/AbcSize, Metrics/MethodLength
+      def do_prepare(input) # rubocop: disable Metrics/AbcSize, Metrics/MethodLength, Metrics/PerceivedComplexity
         data = input[:character].data
 
+        if input.key?(:ancestry_feats)
+          input[:ancestries] = input[:ancestry_feats].keys
+        end
         if input.key?(:abilities)
           input[:attribute_points] = 0
           if data.guide_step == 1
@@ -140,13 +145,16 @@ module CharactersContext
       def do_persist(input) # rubocop: disable Metrics/AbcSize
         input[:character].data =
           input[:character].data.attributes.merge(
-            input.except(:character, :avatar_file, :avatar_url, :file, :name).stringify_keys
+            input.except(:character, :avatar_file, :avatar_url, :file, :name, :ancestry_feats).stringify_keys
           )
         input[:character].assign_attributes(input.slice(:name))
         input[:character].save!
 
         refresh_points(input[:character]) if input.key?(:level)
+
+        refresh_ancestry_feats(input) if input.key?(:ancestry_feats)
         refresh_maneuver_feats(input[:character]) if input.key?(:maneuvers)
+
         refresh_feats.call(character: input[:character]) if %i[level subclass selected_features].intersect?(input.keys)
         upload_avatar(input)
 
@@ -157,6 +165,18 @@ module CharactersContext
         character.data =
           character.data.attributes.merge(LEVELING[character.data.level]) { |_key, oldval, newval| newval + oldval }
         character.save
+      end
+
+      def refresh_ancestry_feats(input)
+        input[:character].feats.joins(:feat).where(feats: { origin: 0 }).delete_all
+        feats_for_adding = ::Dc20::Feat.where(origin: 0, slug: input[:ancestry_feats].values.flatten).map do |feat|
+          {
+            feat_id: feat.id,
+            character_id: input[:character].id,
+            ready_to_use: true
+          }
+        end
+        ::Character::Feat.upsert_all(feats_for_adding) if feats_for_adding.any?
       end
 
       def refresh_maneuver_feats(character)
@@ -176,8 +196,9 @@ module CharactersContext
 
         attach_avatar_by_file.call({ character: input[:character], file: input[:avatar_file] }) if input[:avatar_file]
         attach_avatar_by_url.call({ character: input[:character], url: input[:avatar_url] }) if input[:avatar_url]
-        input[:character].avatar.attach(input[:file]) if input[:file]
+        return unless input[:file]
 
+        input[:character].avatar.attach(input[:file])
         cache.push_item(item: input[:character].avatar)
       rescue StandardError => _e
       end
