@@ -155,6 +155,7 @@ Rails.application.routes.draw do
         resources :talents, only: %i[index create], module: 'characters'
         resources :rest, only: %i[create], module: 'characters'
       end
+      resources :maneuvers, only: %i[index]
       resources :ancestries, only: %i[index]
       resources :spells, only: %i[index]
     end

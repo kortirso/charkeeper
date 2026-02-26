@@ -9,6 +9,7 @@ import { updateCharacterRequest } from '../../../../requests/updateCharacterRequ
 import { fetchTalentsRequest } from '../../../../requests/fetchTalentsRequest';
 import { createTalentRequest } from '../../../../requests/createTalentRequest';
 import { fetchTalentFeaturesRequest } from '../../../../requests/fetchTalentFeaturesRequest';
+import { fetchDc20ManeuversRequest } from '../../../../requests/fetchDc20ManeuversRequest';
 import { translate, localize, performResponse } from '../../../../helpers';
 
 const TRANSLATION = {
@@ -22,20 +23,16 @@ const TRANSLATION = {
     maneuvers: 'Maneuvers',
     maneuverPoints: 'Available maneuvers',
     attack: {
-      title: 'Attack maneuvers',
-      description: 'Attack Maneuvers modify your Martial Attacks with additional damage, range, or targets.'
-    },
-    save: {
-      title: 'Save maneuvers',
-      description: 'Save Maneuvers modify your Martial Attacks with additional effects that impose debilitating Conditions.'
-    },
-    grapple: {
-      title: 'Grapple maneuvers',
-      description: 'Grapple Maneuvers modify your Grapple Checks with additional slams, pins, throws, and other effects.'
+      title: 'Attack maneuvers'
     },
     defense: {
-      title: 'Defense maneuvers',
-      description: 'Defense Maneuvers enable you to avoid or mitigate taking damage by blocking, deflecting, or dodging Attacks.'
+      title: 'Defense maneuvers'
+    },
+    grapple: {
+      title: 'Grapple maneuvers'
+    },
+    utility: {
+      title: 'Utility maneuvers'
     },
     talents: 'Talents',
     existingTalentPoints: 'Available talents',
@@ -60,20 +57,16 @@ const TRANSLATION = {
     maneuvers: 'Приёмы',
     maneuverPoints: 'Доступные приёмы',
     attack: {
-      title: 'Приёмы атаки',
-      description: 'Улучшают ваши Бойцовские Атаки, увеличивая урон, дальность или количество целей.'
-    },
-    save: {
-      title: 'Приёмы со спасом',
-      description: 'Дополняют ваши Бойцовские Атакиэффектами, накладывающими Состояния.'
-    },
-    grapple: {
-      title: 'Приёмы захвата',
-      description: 'Дополняют ваши Проверки Захвата, бросками, толчками и другими эффектами.'
+      title: 'Приёмы атаки'
     },
     defense: {
-      title: 'Приёмы защиты',
-      description: 'Позволяют вам снижать получаемый урон или избегать его, используя блокирование, парирование и уклонение.'
+      title: 'Приёмы защиты'
+    },
+    grapple: {
+      title: 'Захваты'
+    },
+    utility: {
+      title: 'Вспомогательные приёмы'
     },
     talents: 'Таланты',
     existingTalentPoints: 'Доступно талантов',
@@ -99,6 +92,7 @@ export const Dc20Leveling = (props) => {
   const [selectedMultiTalent, setSelectedMultiTalent] = createSignal(null);
   const [subclass, setSubclass] = createSignal(null);
 
+  const [maneuvers, setManeuvers] = createSignal(undefined);
   const [talents, setTalents] = createSignal(undefined);
   const [talentFeatures, setTalentFeatures] = createSignal(undefined);
 
@@ -106,15 +100,19 @@ export const Dc20Leveling = (props) => {
   const [{ renderAlerts, renderNotice }] = useAppAlert();
   const [locale] = useAppLocale();
 
+  const fetchManeuvers = async () => await fetchDc20ManeuversRequest(appState.accessToken);
   const fetchTalents = async () => await fetchTalentsRequest(appState.accessToken, character().provider, character().id);
   const fetchTalentFeatures = async (level) => await fetchTalentFeaturesRequest(appState.accessToken, character().provider, character().id, level);
 
   createEffect(() => {
     if (lastActiveCharacterId() === character().id) return;
 
-    Promise.all([fetchTalents()]).then(
-      ([talentsData]) => {
-        setTalents(talentsData.talents);
+    Promise.all([fetchTalents(), fetchManeuvers()]).then(
+      ([talentsData, maneuversData]) => {
+        batch(() => {
+          setTalents(talentsData.talents);
+          setManeuvers(maneuversData.maneuvers);
+        });
       }
     );
 
@@ -295,36 +293,37 @@ export const Dc20Leveling = (props) => {
             <p>{localize(TRANSLATION, locale())['spellcasterPathLevel']} - {character().paths.spellcaster}</p>
           </div>
         </Toggle>
-        <Toggle
-          title={
-            <div class="flex justify-between">
-              <p>{localize(TRANSLATION, locale())['maneuvers']}</p>
-              <p>{localize(TRANSLATION, locale())['maneuverPoints']} - {character().maneuver_points - character().maneuvers.length}</p>
-            </div>
-          }
-        >
-          <For each={['attack', 'save', 'grapple', 'defense']}>
-            {(item) =>
-              <div class="mb-8">
-                <p class="mb-2">{localize(TRANSLATION, locale())[item]['title']}</p>
-                <p class="mb-2 text-sm">{localize(TRANSLATION, locale())[item]['description']}</p>
-                <div class="flex flex-wrap gap-x-4 gap-y-2">
-                  <For each={Object.entries(config.maneuvers).filter(([, values]) => values.type === item)}>
-                    {([slug, values]) =>
-                      <Checkbox
-                        labelText={values.name[locale()]}
-                        labelPosition="right"
-                        labelClassList="ml-2"
-                        checked={character().maneuvers.includes(slug)}
-                        onToggle={() => changeManeuver(slug)}
-                      />
-                    }
-                  </For>
-                </div>
+        <Show when={maneuvers()}>
+          <Toggle
+            title={
+              <div class="flex justify-between">
+                <p>{localize(TRANSLATION, locale()).maneuvers}</p>
+                <p>{localize(TRANSLATION, locale()).maneuverPoints} - {character().maneuver_points - character().maneuvers.length}</p>
               </div>
             }
-          </For>
-        </Toggle>
+          >
+            <For each={['attack', 'defense', 'grapple', 'utility']}>
+              {(item) =>
+                <div class="mb-4">
+                  <p class="mb-2">{localize(TRANSLATION, locale())[item].title}</p>
+                  <div class="flex flex-wrap gap-x-4 gap-y-2">
+                    <For each={maneuvers().filter((maneuver) => maneuver.origin_value === item)}>
+                      {(maneuver) =>
+                        <Checkbox
+                          labelText={maneuver.title}
+                          labelPosition="right"
+                          labelClassList="ml-2"
+                          checked={character().maneuvers.includes(maneuver.slug)}
+                          onToggle={() => changeManeuver(maneuver.slug)}
+                        />
+                      }
+                    </For>
+                  </div>
+                </div>
+              }
+            </For>
+          </Toggle>
+        </Show>
         <Toggle
           title={
             <div class="flex justify-between">
