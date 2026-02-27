@@ -1,0 +1,210 @@
+{
+  "bleeding": {
+    "name": { "en": "Bleeding", "ru": "Ранен" },
+    "value": true,
+    "description": {
+      "en": "You take X True damage at the start of each of your turns.",
+      "ru": "Вы получаете Х истинного урона в начале каждого вашего хода."
+    }
+  },
+  "blinded": {
+    "name": { "en": "Blinded", "ru": "Ослеплён" },
+    "description": {
+      "en": "- You can't see.\n- All terrain is considered Difficult Terrain for you unless you're guided by another creature.\n- Attack rolls against you have ADV, and your attack rolls have DisADV.",
+      "ru": "- Вы не видите.\n- Вся местность для вас считается Труднопроходимой, только если вас не ведёт другое существо.\n- Броски атаки против вас совершаются с преимуществом, а ваши броски атаки совершаются с помехой."
+    }
+  },
+  "burning": {
+    "name": { "en": "Burning", "ru": "Подожжён" },
+    "value": true,
+    "description": {
+      "en": "You take X Fire damage at the start of each of your turns.",
+      "ru": "Вы получаете Х огненного урона в начале каждого вашего хода."
+    }
+  },
+  "charmed": {
+    "name": { "en": "Charmed", "ru": "Очарован" },
+    "description": {
+      "en": "- Your Charmer has ADV on Charisma Checks made against you.\n- You can't target your Charmer with harmful Attacks or effects.",
+      "ru": "- Ваш очарователь получает преимущество на проверки харизмы против вас.\n- Вы не можете выбирать очарователя целью вредоносных атак и эффектов."
+    }
+  },
+  "dazed": {
+    "name": { "en": "Dazed", "ru": "Потрясён" },
+    "value": true,
+    "description": {
+      "en": "You have DisADV X on Mental Checks.",
+      "ru": "Вы получаете помеху Х на ментальные проверки."
+    }
+  },
+  "deafened": {
+    "name": { "en": "Deafened", "ru": "Оглушён" },
+    "description": {
+      "en": "You can't hear.",
+      "ru": "Вы не слышите."
+    }
+  },
+  "disoriented": {
+    "name": { "en": "Disoriented", "ru": "Дезориентирован" },
+    "value": true,
+    "description": {
+      "en": "You have DisADV X on Mental Saves.",
+      "ru": "Вы получаете помеху Х на ментальные спасы."
+    }
+  },
+  "doomed": {
+    "name": { "en": "Doomed", "ru": "Обречён" },
+    "value": true,
+    "description": {
+      "en": "- Your current and maximum HP is reduced by the value of X.\n- When an effect restores your HP, you regain X less HP than normal.",
+      "ru": "- Ваши текущие ОЗ и максимум ОЗ снижаются на Х.\n- Вы восстанавливаете на Х меньше ОЗ из всех источников."
+    }
+  },
+  "exhaustion": {
+    "name": { "en": "Exhaustion", "ru": "Истощён" },
+    "value": true,
+    "description": {
+      "en": "- You gain a penalty equal to X on all Checks and Saves you make.\n- Your Speed and Save DC is reduced by X.",
+      "ru": "- Вы получаете штраф, равный X, на все проверки и спасы.\n- Ваши скорость и СЛ спаса уменьшаются на X."
+    }
+  },
+  "exposed": {
+    "name": { "en": "Exposed", "ru": "Раскрыт" },
+    "value": true,
+    "description": {
+      "en": "Attacks against you have ADV X.",
+      "ru": "Атаки по вам получают преимущество Х."
+    }
+  },
+  "frightened": {
+    "name": { "en": "Frightened", "ru": "Устрашён" },
+    "description": {
+      "en": "- You can't willingly move closer to the source.\n- You have DisADV on all Checks made against the source.",
+      "ru": "- Вы не можете добровольно приближаться к источнику состояния.\n- Вы получаете помеху на все проверки против источника состояния."
+    }
+  },
+  "hindered": {
+    "name": { "en": "Hindered", "ru": "Скован" },
+    "value": true,
+    "description": {
+      "en": "You have DisADV X on Attacks.",
+      "ru": "Вы получаете помеху Х на атаки."
+    }
+  },
+  "immobilized": {
+    "name": { "en": "Immobilized", "ru": "Остановлен" },
+    "description": {
+      "en": "You can't move and you have DisADV on Agility Saves.",
+      "ru": "Вы не можете передвигаться и получаете помеху на спасы ловкости."
+    }
+  },
+  "impaired": {
+    "name": { "en": "Impaired", "ru": "Ослаблен" },
+    "value": true,
+    "description": {
+      "en": "You have DisADV X on Physical Checks.",
+      "ru": "Вы получаете помеху Х на физические проверки."
+    }
+  },
+  "incapacitated": {
+    "name": { "en": "Incapacitated", "ru": "Шокирован" },
+    "description": {
+      "en": "- You can't move or speak.\n- You can't spend Actions Points or use Minor Actions.",
+      "ru": "- Вы не можете передвигаться и говорить.\n- Вы не можете тратить ОД или совершать малые действия."
+    }
+  },
+  "intimidated": {
+    "name": { "en": "Intimidated", "ru": "Запуган" },
+    "description": {
+      "en": "You have DisADV on all Checks made against the source.",
+      "ru": "Вы получаете помеху на все проверки против источника состояния."
+    }
+  },
+  "invisible": {
+    "name": { "en": "Invisible", "ru": "Невидим" },
+    "description": {
+      "en": "Creatures can't see you unless they have the ability to see the Invisible. Attack rolls against you have DisADV, and your attack rolls have ADV.",
+      "ru": "Существа не видят вас, только если у них нет возможности видеть невидимое. Броски атаки против вас совершаются с помехой, а ваши броски атаки совершаются с преимуществом."
+    }
+  },
+  "paralyzed": {
+    "name": { "en": "Paralyzed", "ru": "Парализован" },
+    "description": {
+      "en": "- You're Incapacitated.\n- You automatically fail Physical Saves (except against Poisons and Diseases).\n- Attacks against you have ADV.\n- Attacks made within 1 Space are considered Critical Hits.",
+      "ru": "- Вы шокированы.\n- Атаки по вам получают преимущество.\n- Вы автоматически проваливаете физические спасы (кроме как против ядов или болезней).\n- Атаки по вам из соседней клетки считаются критическими ударами."
+    }
+  },
+  "petrified": {
+    "name": { "en": "Petrified", "ru": "Окаменевший" },
+    "description": {
+      "en": "You and your mundane belongings are turned into a inanimate substance (often stone). While Petrified, you count as both an object and a creature, and you're subjected to the following effects:\n\n- You're not aware of your surroundings.\n- You're 10 times heavier than normal.\n- You're Incapacitated.\n- You automatically fail Physical Saves.\n- Attacks against you have ADV.\n- You gain Bludgeoning Vulnerability (Double) and Resistance (Half) to all other damage.\n- Curses, Diseases, Poisons, or Conditions afflicting you are suspended (unless it imposed the Petrified Condition), and you're immune to gaining new ones.",
+      "ru": "Вы и ваши немагические вещи становятся неживой материей (чаще всего камнем). Будучи окаменевшим, вы считаетесь и существом, и предметом, и вы подвержены следующим эффектам:\n\n- Вы не осознаёте происходящее.\n- Вы в 10 раз тяжелее обычного.\n- Вы шокированы.\n- Атаки по вам получают преимущество.\n- Вы автоматически проваливаете физические спасы (кроме как против ядов или болезней).\n- Вы получаете уязвимость дробящему (двойной) и сопротивление (половина) всему прочему урону.\n- Проклятия, болезни, яды и состояния на вас приостанавливают свой эффект, и вы невосприимчивы к получению новых."
+    }
+  },
+  "restrained": {
+    "name": { "en": "Restrained", "ru": "Обездвижен" },
+    "description": {
+      "en": "- You're Immobilized.\n- Your Attacks have DisADV.\n- Attacks against you have ADV.",
+      "ru": "- Вы остановлены.\n- Ваши атаки получают помеху.\n- Атаки по вам получают преимущество."
+    }
+  },
+  "slowed": {
+    "name": { "en": "Slowed", "ru": "Замедлен" },
+    "value": true,
+    "description": {
+      "en": "Every 1 Space you move costs an extra X Spaces of movement.",
+      "ru": "Перемещение на каждую клетку расходует +Х клеток движения."
+    }
+  },
+  "stunned": {
+    "name": { "en": "Stunned", "ru": "Ошеломлён" },
+    "value": true,
+    "description": {
+      "en": "Your current and maximum AP is reduced by X. While you're Stunned 4 or higher, you are subjected to the following effects:\n\n- You're Incapacitated.\n- Attacks against you have ADV.\n- You automatically fail Physical Saves (except against Poisons and Diseases).",
+      "ru": "Ваши текущие ОД и максимум ОД снижен на Х. Когда вы ошеломлены 4 или больше, вы подвержены следующим эффектам:\n\n- Вы шокированы.\n- Атаки по вам получают преимущество.\n- Вы автоматически проваливаете физические спасы (кроме как против ядов или болезней)."
+    }
+  },
+  "surprised": {
+    "name": { "en": "Surprised", "ru": "Удивлён" },
+    "description": {
+      "en": "Your current and maximum AP is reduced by 2.",
+      "ru": "Ваши текущие и максимальные ОД уменьшаются на 2."
+    }
+  },
+  "taunted": {
+    "name": { "en": "Taunted", "ru": "Спровоцирован" },
+    "description": {
+      "en": "You have DisADV on Attacks against targets other than the source.",
+      "ru": "Вы получаете помеху на атаки по всем кроме источника."
+    }
+  },
+  "terrified": {
+    "name": { "en": "Terrified", "ru": "В ужасе" },
+    "description": {
+      "en": "- You must spend your turns trying to move as far away as you can from the source as possible.\n- The only Action you can take is the Move Action to try to run away, or the Dodge Action if you are prevented from moving or there's nowhere farther to move.",
+      "ru": "- Вы должны тратить все свои ходы чтобы оказаться как можно дальше от источника состояния.\n- Единственное доступное вам действие — двигаться, чтобы сбежать, либо уклоняться, если вы не можете или вам некуда бежать."
+    }
+  },
+  "tethered": {
+    "name": { "en": "Tethered", "ru": "Привязан" },
+    "description": {
+      "en": "You are Tethered to a creature or Space. While Tethered, you can't move farther than the specified Spaces from the location of your Tether.",
+      "ru": "Пока вы привязаны к существу или клетке, вы не можете отдаляться от источника дальше указанных клеток."
+    }
+  },
+  "unconscious": {
+    "name": { "en": "Unconscious", "ru": "Вырублен" },
+    "description": {
+      "en": "When you become Unconscious, you immediately drop whatever you are holding and fall Prone. While Unconscious, you're subjected to the following effects:\n\n- You're Incapacitated.\n- You're not aware of your surroundings.\n- You automatically fail Physical Saves (except against Poisons and Diseases).\n- Attacks against you have ADV.\n- Attacks made within 1 Space are considered Critical Hits.",
+      "ru": "Когда вас вырубают, вы немедленно роняете всё, что держали, и становитесь повалены. Пока вы вырублены, вы подвержены следующим эффектам:\n\n- Вы не осознаёте происходящее.\n- Вы шокированы.\n- Атаки по вам получают преимущество.\n- Вы автоматически проваливаете физические спасы (кроме как против ядов или болезней).\n- Атаки по вам из соседней клетки считаются критическими ударами."
+    }
+  },
+  "weakened": {
+    "name": { "en": "Weakened", "ru": "Обессилен" },
+    "value": true,
+    "description": {
+      "en": "You have DisADV X on Physical Saves.",
+      "ru": "Вы получаете помеху Х на физические спасы."
+    }
+  }
+}

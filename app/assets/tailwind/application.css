@@ -311,6 +311,18 @@
   @apply bg-gray-50 dark:bg-neutral-700;
 }
 
+.dc20-conditions .dc20-condition {
+  @apply flex flex-col dark:text-snow p-2;
+}
+
+.dc20-conditions .dc20-condition:nth-of-type(2n) {
+  @apply bg-gray-50 dark:bg-dusty;
+}
+
+.dc20-condition-data {
+  @apply flex items-center;
+}
+
 .truncate-text {
   display: -webkit-box;
   -webkit-box-orient: vertical;
