@@ -83,7 +83,7 @@
     "title": { "en": "Parry", "ru": "Парирование" },
     "description": {
       "en": "**Trigger:** A target you can see within range (including yourself) is targeted by an Attack against its PD.\n**Reaction:** You grant the target a +5 bonus to its PD against this Attack.",
-      "ru": "Trigger:** A target you can see within range (including yourself) is targeted by an Attack against its PD.\n**Reaction:** You grant the target a +5 bonus to its PD against this Attack."
+      "ru": "**Trigger:** A target you can see within range (including yourself) is targeted by an Attack against its PD.\n**Reaction:** You grant the target a +5 bonus to its PD against this Attack."
     },
     "origin": "maneuver",
     "origin_value": "defense",

@@ -86,7 +86,7 @@
   {
     "slug": "highly_defensive",
     "kind": "armor",
-    "name": { "en": "Highly Defensive armor", "ru": "Сверхзащищенная бро" },
+    "name": { "en": "Highly Defensive armor", "ru": "Сверхзащищенная броня" },
     "info": {
       "type": "heavy_armor",
       "pd": 2,

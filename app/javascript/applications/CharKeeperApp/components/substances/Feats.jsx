@@ -235,7 +235,7 @@ export const Feats = (props) => {
                           {(enhancement) =>
                             <p class="feat-markdown text-sm mt-1">
                               <span class="font-medium!">{enhancement.name[locale()]}</span>
-                              : ({renderFeatPrice(enhancement)})
+                              <span>: ({renderFeatPrice(enhancement)}) </span>
                               <span
                                 class="feat-markdown"
                                 innerHTML={enhancement.description[locale()]} // eslint-disable-line solid/no-innerhtml

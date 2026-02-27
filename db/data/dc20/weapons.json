@@ -13,6 +13,32 @@
     }
   },
   {
+    "slug": "sickle",
+    "kind": "weapon",
+    "name": { "en": "Sickle", "ru": "Серп" },
+    "info": {
+      "range": "melee",
+      "distance": "5/10",
+      "damage": 1,
+      "styles": ["Axe"],
+      "damage_types": ["s"],
+      "features": ["Concealable", "Toss"]
+    }
+  },
+  {
+    "slug": "throwing_star",
+    "kind": "weapon",
+    "name": { "en": "Throwing Star", "ru": "Метательная звёздочка" },
+    "info": {
+      "range": "melee",
+      "distance": "5/10",
+      "damage": 1,
+      "styles": ["Axe"],
+      "damage_types": ["s"],
+      "features": ["Concealable", "Toss"]
+    }
+  },
+  {
     "slug": "short_sword",
     "kind": "weapon",
     "name": { "en": "Short sword", "ru": "Короткий меч" },
@@ -51,6 +77,107 @@
     }
   },
   {
+    "slug": "brass_knuckles",
+    "kind": "weapon",
+    "name": { "en": "Brass Knuckles", "ru": "Кастет" },
+    "info": {
+      "range": "melee",
+      "damage": 1,
+      "styles": ["Fist"],
+      "damage_types": ["b"],
+      "features": ["Concealable", "Impact"]
+    }
+  },
+  {
+    "slug": "club",
+    "kind": "weapon",
+    "name": { "en": "Club", "ru": "Дубинка" },
+    "info": {
+      "range": "melee",
+      "distance": "5/10",
+      "damage": 1,
+      "styles": ["Hammer"],
+      "damage_types": ["b"],
+      "features": ["Concealable", "Toss"]
+    }
+  },
+  {
+    "slug": "boomerang",
+    "kind": "weapon",
+    "name": { "en": "Boomerang", "ru": "Бумеранг" },
+    "info": {
+      "range": "melee",
+      "distance": "5/10",
+      "damage": 1,
+      "styles": ["Hammer"],
+      "damage_types": ["b"],
+      "features": ["Toss", "Returning"]
+    }
+  },
+  {
+    "slug": "mining_pick",
+    "kind": "weapon",
+    "name": { "en": "Mining Pick", "ru": "Горная кирка" },
+    "info": {
+      "range": "melee",
+      "distance": "5/10",
+      "damage": 1,
+      "styles": ["Pick"],
+      "damage_types": ["p"],
+      "features": ["Impact", "Toss"]
+    }
+  },
+  {
+    "slug": "dart",
+    "kind": "weapon",
+    "name": { "en": "Dart", "ru": "Дротик" },
+    "info": {
+      "range": "melee",
+      "distance": "5/10",
+      "damage": 1,
+      "styles": ["Spear"],
+      "damage_types": ["p"],
+      "features": ["Concealable", "Toss"]
+    }
+  },
+  {
+    "slug": "throwing_dagger",
+    "kind": "weapon",
+    "name": { "en": "Throwing Dagger", "ru": "Метательный кинжал" },
+    "info": {
+      "range": "melee",
+      "distance": "5/10",
+      "damage": 1,
+      "styles": ["Sword"],
+      "damage_types": ["s"],
+      "features": ["Concealable", "Toss"]
+    }
+  },
+  {
+    "slug": "rapier",
+    "kind": "weapon",
+    "name": { "en": "Rapier", "ru": "Рапира" },
+    "info": {
+      "range": "melee",
+      "damage": 1,
+      "styles": ["Sword", "Spear"],
+      "damage_types": ["s", "p"],
+      "features": ["Guard", "Multi-Faceted"]
+    }
+  },
+  {
+    "slug": "chain_whip",
+    "kind": "weapon",
+    "name": { "en": "Chain Whip", "ru": "Цепной хлыст" },
+    "info": {
+      "range": "melee",
+      "damage": 1,
+      "styles": ["Whip"],
+      "damage_types": ["s"],
+      "features": ["Reach", "Impact"]
+    }
+  },
+  {
     "slug": "battleaxe",
     "kind": "weapon",
     "name": { "en": "Battleaxe", "ru": "Боевой топор" },
@@ -75,9 +202,9 @@
     }
   },
   {
-    "slug": "quarterstaff",
+    "slug": "bo_staff",
     "kind": "weapon",
-    "name": { "en": "Bo Staff", "ru": "Боевой посох" },
+    "name": { "en": "Bo Staff", "ru": "" },
     "info": {
       "range": "melee",
       "damage": 1,
@@ -99,6 +226,91 @@
     }
   },
   {
+    "slug": "flail",
+    "kind": "weapon",
+    "name": { "en": "Flail", "ru": "Цеп" },
+    "info": {
+      "range": "melee",
+      "damage": 1,
+      "styles": ["Hammer", "Whip"],
+      "damage_types": ["b", "s"],
+      "features": ["Versatile", "Multi-Faceted"]
+    }
+  },
+  {
+    "slug": "morningstar",
+    "kind": "weapon",
+    "name": { "en": "Morningstar", "ru": "Моргенштерн" },
+    "info": {
+      "range": "melee",
+      "damage": 1,
+      "styles": ["Hammer", "Pick"],
+      "damage_types": ["b", "p"],
+      "features": ["Versatile", "Multi-Faceted"]
+    }
+  },
+  {
+    "slug": "warhammer",
+    "kind": "weapon",
+    "name": { "en": "Warhammer", "ru": "Боевой молот" },
+    "info": {
+      "range": "melee",
+      "damage": 1,
+      "styles": ["Hammer", "Pick"],
+      "damage_types": ["b", "p"],
+      "features": ["Versatile", "Multi-Faceted"]
+    }
+  },
+  {
+    "slug": "pickaxe",
+    "kind": "weapon",
+    "name": { "en": "Pickaxe", "ru": "" },
+    "info": {
+      "range": "melee",
+      "damage": 1,
+      "styles": ["Pick"],
+      "damage_types": ["p"],
+      "features": ["Versatile", "Impact"]
+    }
+  },
+  {
+    "slug": "spear",
+    "kind": "weapon",
+    "name": { "en": "Spear", "ru": "Копьё" },
+    "info": {
+      "range": "melee",
+      "distance": "5/10",
+      "damage": 1,
+      "styles": ["Spear"],
+      "damage_types": ["p"],
+      "features": ["Versatile", "Toss"]
+    }
+  },
+  {
+    "slug": "bastard_sword",
+    "kind": "weapon",
+    "name": { "en": "Bastard Sword", "ru": "" },
+    "info": {
+      "range": "melee",
+      "damage": 1,
+      "styles": ["Sword"],
+      "damage_types": ["s"],
+      "features": ["Versatile", "Impact"]
+    }
+  },
+  {
+    "slug": "bull_whip",
+    "kind": "weapon",
+    "name": { "en": "Bull Whip", "ru": "Бычий хлыст" },
+    "info": {
+      "range": "melee",
+      "damage": 1,
+      "styles": ["Whip"],
+      "damage_types": ["s"],
+      "features": ["Versatile", "Reach", "Unwieldy", "Impact"]
+    }
+  },
+  {
     "slug": "war_flail",
     "kind": "weapon",
     "name": { "en": "War Flail", "ru": "Боевой цеп" },
@@ -107,7 +319,7 @@
       "damage": 2,
       "styles": ["Hammer", "Whip"],
       "damage_types": ["b", "s"],
-      "features": ["Two-Handed"]
+      "features": ["Two-Handed", "Multi-Faceted"]
     }
   },
   {
@@ -119,7 +331,7 @@
       "damage": 1,
       "styles": ["Axe", "Pick"],
       "damage_types": ["s", "p"],
-      "features": ["Two-Handed", "Reach", "Impact"]
+      "features": ["Two-Handed", "Reach", "Impact", "Multi-Faceted"]
     }
   },
   {
@@ -132,6 +344,141 @@
       "styles": ["Axe"],
       "damage_types": ["s"],
       "features": ["Two-Handed", "Reach"]
+    }
+  },
+  {
+    "slug": "greataxe",
+    "kind": "weapon",
+    "name": { "en": "Greataxe", "ru": "Секира" },
+    "info": {
+      "range": "melee",
+      "damage": 2,
+      "styles": ["Axe"],
+      "damage_types": ["s"],
+      "features": ["Two-Handed", "Impact"]
+    }
+  },
+  {
+    "slug": "meteor_hammer",
+    "kind": "weapon",
+    "name": { "en": "Meteor Hammer", "ru": "" },
+    "info": {
+      "range": "melee",
+      "damage": 2,
+      "styles": ["Hammer", "Whip"],
+      "damage_types": ["b", "s"],
+      "features": ["Two-Handed", "Multi-Faceted", "Reach", "Unwieldy"]
+    }
+  },
+  {
+    "slug": "greatmaul",
+    "kind": "weapon",
+    "name": { "en": "Greatmaul", "ru": "Двуручный молот" },
+    "info": {
+      "range": "melee",
+      "damage": 2,
+      "styles": ["Hammer"],
+      "damage_types": ["b"],
+      "features": ["Two-Handed", "Impact"]
+    }
+  },
+  {
+    "slug": "pike",
+    "kind": "weapon",
+    "name": { "en": "Pike", "ru": "Пика" },
+    "info": {
+      "range": "melee",
+      "damage": 2,
+      "styles": ["Spear"],
+      "damage_types": ["p"],
+      "features": ["Two-Handed", "Reach", "Impact", "Unwieldy"]
+    }
+  },
+  {
+    "slug": "quarterstaff",
+    "kind": "weapon",
+    "name": { "en": "Quarterstaff", "ru": "Боевой посох" },
+    "info": {
+      "range": "melee",
+      "damage": 1,
+      "styles": ["Staff"],
+      "damage_types": ["b"],
+      "features": ["Two-Handed", "Guard", "Reach", "Impact"]
+    }
+  },
+  {
+    "slug": "glaive",
+    "kind": "weapon",
+    "name": { "en": "Glaive", "ru": "Глефа" },
+    "info": {
+      "range": "melee",
+      "damage": 2,
+      "styles": ["Sword"],
+      "damage_types": ["s"],
+      "features": ["Two-Handed", "Reach"]
+    }
+  },
+  {
+    "slug": "greatsword",
+    "kind": "weapon",
+    "name": { "en": "Greatsword", "ru": "Двуручный меч" },
+    "info": {
+      "range": "melee",
+      "damage": 2,
+      "styles": ["Sword"],
+      "damage_types": ["s"],
+      "features": ["Two-Handed", "Impact"]
+    }
+  },
+  {
+    "slug": "great_whip",
+    "kind": "weapon",
+    "name": { "en": "Great Whip", "ru": "Двуручный хлыст" },
+    "info": {
+      "range": "melee",
+      "damage": 2,
+      "styles": ["Whip"],
+      "damage_types": ["s"],
+      "features": ["Two-Handed", "Reach", "Impact", "Unwieldy"]
+    }
+  },
+  {
+    "slug": "sling",
+    "kind": "weapon",
+    "name": { "en": "Sling", "ru": "Праща" },
+    "info": {
+      "range": "ranged",
+      "distance": "15/45",
+      "damage": 1,
+      "styles": ["Sling"],
+      "damage_types": ["b"],
+      "features": ["Ammo", "Impact"]
+    }
+  },
+  {
+    "slug": "hand_crossbow",
+    "kind": "weapon",
+    "name": { "en": "Hand Crossbow", "ru": "Ручной арбалет" },
+    "info": {
+      "range": "ranged",
+      "distance": "15/45",
+      "damage": 2,
+      "styles": ["Crossbow"],
+      "damage_types": ["p"],
+      "features": ["Ammo", "Reload", "Deft", "Impact"]
+    }
+  },
+  {
+    "slug": "hand_stonebow",
+    "kind": "weapon",
+    "name": { "en": "Hand Stonebow", "ru": "" },
+    "info": {
+      "range": "ranged",
+      "distance": "15/45",
+      "damage": 2,
+      "styles": ["Crossbow", "Sling"],
+      "damage_types": ["b", "p"],
+      "features": ["Ammo", "Reload", "Deft", "Multi-Faceted"]
     }
   },
   {
@@ -158,6 +505,97 @@
       "styles": ["Bow"],
       "damage_types": ["p"],
       "features": ["Two-Handed", "Ammo", "Impact"]
+    }
+  },
+  {
+    "slug": "greatbow",
+    "kind": "weapon",
+    "name": { "en": "Greatbow", "ru": "Большой лук" },
+    "info": {
+      "range": "ranged",
+      "distance": "15/45",
+      "damage": 2,
+      "styles": ["Bow"],
+      "damage_types": ["p"],
+      "features": ["Two-Handed", "Ammo", "Impact", "Heavy", "Cumbersome"]
+    }
+  },
+  {
+    "slug": "blowgun",
+    "kind": "weapon",
+    "name": { "en": "Blowgun", "ru": "Духовая трубка" },
+    "info": {
+      "range": "ranged",
+      "distance": "15/45",
+      "damage": 1,
+      "styles": ["Crossbow"],
+      "damage_types": ["p"],
+      "features": ["Two-Handed", "Ammo", "Deft", "Silent"]
+    }
+  },
+  {
+    "slug": "light_crossbow",
+    "kind": "weapon",
+    "name": { "en": "Light Crossbow", "ru": "Лёгкий арбалет" },
+    "info": {
+      "range": "ranged",
+      "distance": "15/45",
+      "damage": 3,
+      "styles": ["Crossbow"],
+      "damage_types": ["p"],
+      "features": ["Two-Handed", "Ammo", "Reload", "Deft"]
+    }
+  },
+  {
+    "slug": "heavy_crossbow",
+    "kind": "weapon",
+    "name": { "en": "Heavy Crossbow", "ru": "Тяжёлый арбалет" },
+    "info": {
+      "range": "ranged",
+      "distance": "15/45",
+      "damage": 3,
+      "styles": ["Crossbow"],
+      "damage_types": ["p"],
+      "features": ["Two-Handed", "Ammo", "Reload", "Deft", "Impact", "Cumbersome"]
+    }
+  },
+  {
+    "slug": "stonebow",
+    "kind": "weapon",
+    "name": { "en": "Stonebow", "ru": "" },
+    "info": {
+      "range": "ranged",
+      "distance": "15/45",
+      "damage": 3,
+      "styles": ["Crossbow", "Sling"],
+      "damage_types": ["b", "p"],
+      "features": ["Two-Handed", "Ammo", "Reload", "Deft", "Multi-Faceted", "Cumbersome"]
+    }
+  },
+  {
+    "slug": "slingshot",
+    "kind": "weapon",
+    "name": { "en": "Slingshot", "ru": "" },
+    "info": {
+      "range": "ranged",
+      "distance": "15/45",
+      "damage": 1,
+      "styles": ["Sling"],
+      "damage_types": ["b"],
+      "features": ["Two-Handed", "Ammo", "Impact", "Silent"]
+    }
+  },
+  {
+    "slug": "war_sling",
+    "kind": "weapon",
+    "name": { "en": "War Sling", "ru": "Воинская праща" },
+    "info": {
+      "range": "ranged",
+      "distance": "15/45",
+      "damage": 2,
+      "styles": ["Sling"],
+      "damage_types": ["b"],
+      "features": ["Two-Handed", "Ammo"]
     }
   }
 ]
