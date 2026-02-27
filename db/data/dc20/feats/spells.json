@@ -3,8 +3,8 @@
     "slug": "arcane_bolt",
     "title": { "en": "Arcane Bolt", "ru": "Арканный снаряд" },
     "description": {
-      "en": "You conjure a bolt of pure magical energy that homes in on a target. Make a Ranged Spell Attack against the AD of a target within range. Hit: The target takes 1 Bludgeoning, Slashing or Piercing damage (your choice).",
-      "ru": "Вы создаёте сгусток чистой магической энергии, который наводится на цель. Совершите дистанционную атаку заклинанием против ТЗ цели в пределах досягаемости. Попадание: Цель получает 1 дробящий, рубящий или колющий урон (на ваш выбор)."
+      "en": "You conjure a bolt of pure magical energy that homes in on a target. Make a Ranged Spell Attack against the AD of a target within range. **Hit:** The target takes 1 Bludgeoning, Slashing or Piercing damage (your choice).",
+      "ru": "Вы создаёте сгусток чистой магической энергии, который наводится на цель. Совершите дистанционную атаку заклинанием против ТЗ цели в пределах досягаемости. **Попадание:** Цель получает 1 дробящий, рубящий или колющий урон (на ваш выбор)."
     },
     "origin": "spell",
     "origin_value": "arcane",
@@ -20,7 +20,7 @@
           "name": { "en": "Range", "ru": "Дальность" },
           "price": { "ap": 1 },
           "repeatable": 2,
-          "description": { "en": "The range of the Spell increases by 5 Spaces.", "ru": "Дальность заклинания увеличивается на 5 квадратов." }
+          "description": { "en": "The range of the Spell increases by 5 Spaces.", "ru": "Дальность заклинания увеличивается на 5 клеток." }
         },
         {
           "name": { "en": "Damage", "ru": "Урон" },
@@ -36,7 +36,7 @@
         {
           "name": { "en": "Autonomous", "ru": "Самонаведение" },
           "price": { "mp": 1 },
-          "description": { "en": "You can Attack a target you've seen since the start of your last turn, provided it's within range and there's a path between you and the target the projectile can follow. This attack ignores 1/2 or 3/4 Cover and you don't have DisADV if the target is Unseen by you.", "ru": "Вы можете атаковать цель, которую видели с начала своего последнего хода, при условии, что она находится в пределах досягаемости и между вами и целью есть путь, по которому может следовать снаряд. Эта атака игнорирует укрытие на 1/2 или 3/4, и у вас нет штрафа за снижение урона, если цель не видна вам." }
+          "description": { "en": "You can Attack a target you've seen since the start of your last turn, provided it's within range and there's a path between you and the target the projectile can follow. This attack ignores 1/2 or 3/4 Cover and you don't have DisADV if the target is Unseen by you.", "ru": "Вы можете атаковать цель, которую видели с начала своего последнего хода, при условии, что она находится в пределах досягаемости и между вами и целью есть путь, по которому может следовать снаряд. Эта атака игнорирует укрытие на 1/2 или 3/4, и у вас нет помехи, если цель не видна вам." }
         }
       ]
     }
@@ -56,13 +56,13 @@
     "info": {
       "school": "conjuration",
       "range": 5,
-      "duration": 60,
+      "duration": "1,h",
       "enhancements": [
         {
           "name": { "en": "Range", "ru": "Дальность" },
           "price": { "ap": 1 },
           "repeatable": 2,
-          "description": { "en": "The range of the Spell increases by 5 Spaces.", "ru": "Дальность заклинания увеличивается на 5 квадратов." }
+          "description": { "en": "The range of the Spell increases by 5 Spaces.", "ru": "Дальность заклинания увеличивается на 5 клеток." }
         },
         {
           "name": { "en": "Duration", "ru": "Длительность" },
@@ -73,12 +73,560 @@
         {
           "name": { "en": "Greater Armor", "ru": "Улучшенный доспех" },
           "price": { "mp": 1 },
-          "description": { "en": "The target gain an additional +1 AD.", "ru": "Цель получает дополнительно + 1 ПЗ." }
+          "description": { "en": "The target gain an additional +1 AD.", "ru": "Цель получает дополнительно +1 ПЗ." }
         },
         {
           "name": { "en": "Heavily Warded", "ru": "Сильно защищённый" },
           "price": { "mp": 1 },
-          "description": { "en": "The target gains PDR.", "ru": "Цель получает PDR." }
+          "description": { "en": "The target gains PDR.", "ru": "Цель получает ФСУ." }
+        }
+      ]
+    }
+  },
+  {
+    "slug": "entangle",
+    "title": { "en": "Entangle", "ru": "Запутывание" },
+    "description": {
+      "en": "You conjure an area of entangling plants or other natural effect on the surfaces in a 2 Space diameter Sphere, the area becomes Entangled for the duration. Make a Spell Check against the Agility Save of each target in the area. **Check Success:** The target is Immobilized. A creature can spend 1 AP to attempt this Save again, alternatively the Condition ends if the Entangled Space it is in is cleared.\n\n**Entangled:** Entangled Spaces are Difficult Terrain. These Spaces are cleared if they take Elemental or Slashing damage equal to the MP spent on this Spell and have a PD and AD equal to your Save DC.",
+      "ru": "You conjure an area of entangling plants or other natural effect on the surfaces in a 2 Space diameter Sphere, the area becomes Entangled for the duration. Make a Spell Check against the Agility Save of each target in the area. **Check Success:** The target is Immobilized. A creature can spend 1 AP to attempt this Save again, alternatively the Condition ends if the Entangled Space it is in is cleared.\n\n**Entangled:** Entangled Spaces are Difficult Terrain. These Spaces are cleared if they take Elemental or Slashing damage equal to the MP spent on this Spell and have a PD and AD equal to your Save DC."
+    },
+    "origin": "spell",
+    "origin_value": "primal",
+    "origin_values": ["Immobilized", "Plants", "Piercing", "Restrained"],
+    "kind": "static",
+    "price": { "ap": 2, "mp": 1 },
+    "info": {
+      "school": "conjuration",
+      "range": 5,
+      "duration": "1,m",
+      "enhancements": [
+        {
+          "name": { "en": "Range", "ru": "Дальность" },
+          "price": { "ap": 1 },
+          "repeatable": 2,
+          "description": { "en": "The range of the Spell increases by 5 Spaces.", "ru": "The range of the Spell increases by 5 Spaces." }
+        },
+        {
+          "name": { "en": "Area", "ru": "Область" },
+          "price": { "mp": 1 },
+          "repeatable": true,
+          "description": { "en": "The diameter of the Sphere increases by 1 Space.", "ru": "The diameter of the Sphere increases by 1 Space." }
+        },
+        {
+          "name": { "en": "Grasping", "ru": "Захват" },
+          "price": { "mp": 1 },
+          "sustained": true,
+          "description": { "en": "When a creature enters the area for the first time on its turn or starts its turn there, it makes an Agility Save against your Save DC. Save Failure: The target is Immobilized.", "ru": "When a creature enters the area for the first time on its turn or starts its turn there, it makes an Agility Save against your Save DC. Save Failure: The target is Immobilized." }
+        },
+        {
+          "name": { "en": "Restrained", "ru": "Обездвиживание" },
+          "price": { "mp": 2 },
+          "description": { "en": "Creatures Immobilized by Entangle are Restrained.", "ru": "Creatures Immobilized by Entangle are Restrained." }
+        },
+        {
+          "name": { "en": "Spikey Terrain", "ru": "Шипованная поверхность" },
+          "price": { "mp": null },
+          "description": { "en": "Creatures take X (by spent MP) Piercing damage when they enter an Entangled Space after the Spell has been cast. They also take this damage if they fail a Save to end the Immobilized Condition inflicted by this Spell.", "ru": "Creatures take X (by spent MP) Piercing damage when they enter an Entangled Space after the Spell has been cast. They also take this damage if they fail a Save to end the Immobilized Condition inflicted by this Spell." }
+        }
+      ]
+    }
+  },
+  {
+    "slug": "unholy_aura",
+    "title": { "en": "Unholy Aura", "ru": "Нечестивая аура" },
+    "description": {
+      "en": "Umbral energy surrounds you in a 1 Space Aura for the duration. When you cast the Spell, make a Spell Check against the Repeated Charisma Save of each target within the area. **Check Success:** The target is Doomed for the duration.\n\n**Doomed Area:** When a creature enters the area for the first time on its turn or starts its turn there, it makes a Repeated Charisma Save against your Save DC. **Save Failure:** The target is Doomed for the duration.\n\n**Spell Passive:** Obscure Mundane lights produced by tiny or smaller sources stop working while within the Aura.",
+      "ru": "Umbral energy surrounds you in a 1 Space Aura for the duration. When you cast the Spell, make a Spell Check against the Repeated Charisma Save of each target within the area. **Check Success:** The target is Doomed for the duration.\n\n**Doomed Area:** When a creature enters the area for the first time on its turn or starts its turn there, it makes a Repeated Charisma Save against your Save DC. **Save Failure:** The target is Doomed for the duration.\n\n**Spell Passive:** Obscure Mundane lights produced by tiny or smaller sources stop working while within the Aura."
+    },
+    "origin": "spell",
+    "origin_value": "divine",
+    "origin_values": ["Death", "Doomed", "Shadow", "Tethered"],
+    "kind": "static",
+    "price": { "ap": 2, "mp": 2 },
+    "info": {
+      "school": "conjuration",
+      "range": "self",
+      "duration": "1,m",
+      "enhancements": [
+        {
+          "name": { "en": "Area", "ru": "Область" },
+          "price": { "mp": 1 },
+          "repeatable": true,
+          "description": { "en": "The radius of the Aura increases by 1.", "ru": "The radius of the Aura increases by 1." }
+        },
+        {
+          "name": { "en": "Doomed", "ru": "Обречение" },
+          "price": { "mp": 2 },
+          "repeatable": true,
+          "description": { "en": "Whenever a target gains Doomed from this Spell, it gains an additional stack for each time you use this Enhancement.", "ru": "Whenever a target gains Doomed from this Spell, it gains an additional stack for each time you use this Enhancement." }
+        },
+        {
+          "name": { "en": "Deathly Conversion", "ru": "Смертельное обращение" },
+          "price": { "mp": 1 },
+          "repeatable": true,
+          "description": { "en": "When a Doomed creature dies within the Aura, you gain 2 Temp HP. The Temp HP increases by 2 each time you use this Enhancement.", "ru": "When a Doomed creature dies within the Aura, you gain 2 Temp HP. The Temp HP increases by 2 each time you use this Enhancement." }
+        },
+        {
+          "name": { "en": "Grasping Wisps", "ru": "Хватающие духи" },
+          "price": { "mp": 1 },
+          "description": { "en": "Creatures Doomed by this Spell are also Tethered to the Unholy Aura.", "ru": "Creatures Doomed by this Spell are also Tethered to the Unholy Aura." }
+        }
+      ]
+    }
+  },
+  {
+    "slug": "bless",
+    "title": { "en": "Bless", "ru": "Благословение" },
+    "description": {
+      "en": "A creature of your choice within range gains 1 of the blessings from the list below for the duration. Make a DC 15 Spell Check. **Failure:** The blessing is a d6. **Success:** The blessing is a d8. **Success (5):** The Blessing is a d10.\n\nBlessings\n\n- **Attacks:** The target adds the die to its Attack Checks for the duration.\n- **Checks:** The target adds the die to its Checks (except Attack Checks) for the duration.\n- **Saves:** The target adds the die to its Saves for the duration.",
+      "ru": "A creature of your choice within range gains 1 of the blessings from the list below for the duration. Make a DC 15 Spell Check. **Failure:** The blessing is a d6. **Success:** The blessing is a d8. **Success (5):** The Blessing is a d10.\n\nBlessings\n\n- **Attacks:** The target adds the die to its Attack Checks for the duration.\n- **Checks:** The target adds the die to its Checks (except Attack Checks) for the duration.\n- **Saves:** The target adds the die to its Saves for the duration."
+    },
+    "origin": "spell",
+    "origin_value": "divine",
+    "origin_values": ["Embolden"],
+    "kind": "static",
+    "price": { "ap": 1, "mp": 1 },
+    "info": {
+      "school": "divination",
+      "range": 5,
+      "duration": "1,m",
+      "sustained": true,
+      "enhancements": [
+        {
+          "name": { "en": "Range", "ru": "Дальность" },
+          "price": { "ap": 1 },
+          "repeatable": 2,
+          "description": { "en": "The range of the Spell increases by 5 Spaces.", "ru": "The range of the Spell increases by 5 Spaces." }
+        },
+        {
+          "name": { "en": "Targets", "ru": "Цели" },
+          "price": { "ap": 1, "mp": null },
+          "description": { "en": "You increase the number of targets by X (by spent MP).", "ru": "You increase the number of targets by X (by spent MP)." }
+        },
+        {
+          "name": { "en": "Full Bless", "ru": "Полное благословение" },
+          "price": { "mp": 1 },
+          "description": { "en": "The target benefits from all 3 Blessings. The cost of this Enhancement increases to 2 MP if you use the Targets Enhancement.", "ru": "The target benefits from all 3 Blessings. The cost of this Enhancement increases to 2 MP if you use the Targets Enhancement." }
+        },
+        {
+          "name": { "en": "Greater Bless", "ru": "Мощное благословение" },
+          "price": { "mp": 1 },
+          "description": { "en": "The size of the die granted increases by 1 step.", "ru": "The size of the die granted increases by 1 step." }
+        }
+      ]
+    }
+  },
+  {
+    "slug": "cone_of_cold",
+    "title": { "en": "Cone of Cold", "ru": "Конус холода" },
+    "description": {
+      "en": "You produce a rush of freezing air that envelops a 2 Space Cone. Make an Area Spell Attack against the AD of every target within the area. **Hit:** The target takes 1 Cold damage.\n\n**Freezing:** Liquids and objects not being held or carried in the area frost over, causing them to adhere to nearby surfaces. A creature can use a Minor Action to make a Might Check against your Save DC to dislodge an object.",
+      "ru": "You produce a rush of freezing air that envelops a 2 Space Cone. Make an Area Spell Attack against the AD of every target within the area. **Hit:** The target takes 1 Cold damage.\n\n**Freezing:** Liquids and objects not being held or carried in the area frost over, causing them to adhere to nearby surfaces. A creature can use a Minor Action to make a Might Check against your Save DC to dislodge an object."
+    },
+    "origin": "spell",
+    "origin_value": "arcane,primal",
+    "origin_values": ["Cold", "Slowed", "Stunned"],
+    "kind": "static",
+    "price": { "ap": 2 },
+    "info": {
+      "school": "elemental",
+      "range": "self",
+      "duration": "instant",
+      "enhancements": [
+        {
+          "name": { "en": "Damage", "ru": "Урон" },
+          "price": { "mp": 1 },
+          "repeatable": true,
+          "description": { "en": "The damage increases by 1.", "ru": "The damage increases by 1." }
+        },
+        {
+          "name": { "en": "Area", "ru": "Область" },
+          "price": { "mp": 1 },
+          "repeatable": true,
+          "description": { "en": "The length of the Cone increases by 1 Space.", "ru": "The length of the Cone increases by 1 Space." }
+        },
+        {
+          "name": { "en": "Slow", "ru": "Замедление" },
+          "price": { "mp": 1 },
+          "repeatable": true,
+          "description": { "en": "Each target makes a Might Save. Save Failure: The target is Slowed for 1 Round.", "ru": "Each target makes a Might Save. Save Failure: The target is Slowed for 1 Round." }
+        },
+        {
+          "name": { "en": "Frozen Stiff", "ru": "Твёрдая заморозка" },
+          "price": { "mp": 2 },
+          "repeatable": true,
+          "description": { "en": "Each target makes a Physical Save. Save Failure: The target is Stunned for 1 Round.", "ru": "Each target makes a Physical Save. Save Failure: The target is Stunned for 1 Round." }
+        }
+      ]
+    }
+  },
+  {
+    "slug": "corrosive_bolt",
+    "title": { "en": "Corrosive Bolt", "ru": "Кислотный снаряд" },
+    "description": {
+      "en": "You conjure a bolt of acid that flies towards a target of your choice. Make a Ranged Spell Attack against the PD of a target within range. **Hit:** The target takes 1 Corrosion damage.\n\n**Acidic:** Mundane materials in the target's Space (wood, leather, rope, non-magical metals) that are not being worn or held partially erode or decay, weakening structures and gear.",
+      "ru": "You conjure a bolt of acid that flies towards a target of your choice. Make a Ranged Spell Attack against the PD of a target within range. **Hit:** The target takes 1 Corrosion damage.\n\n**Acidic:** Mundane materials in the target's Space (wood, leather, rope, non-magical metals) that are not being worn or held partially erode or decay, weakening structures and gear."
+    },
+    "origin": "spell",
+    "origin_value": "arcane,primal",
+    "origin_values": ["Corrosion", "Enfeeble", "Hindered"],
+    "kind": "static",
+    "price": { "ap": 1 },
+    "info": {
+      "school": "elemental",
+      "range": 10,
+      "duration": "instant",
+      "enhancements": [
+        {
+          "name": { "en": "Range", "ru": "Дальность" },
+          "price": { "ap": 1 },
+          "repeatable": 2,
+          "description": { "en": "The range of the Spell increases by 5 Spaces.", "ru": "The range of the Spell increases by 5 Spaces." }
+        },
+        {
+          "name": { "en": "Damage", "ru": "Урон" },
+          "price": { "ap": 1 },
+          "repeatable": true,
+          "description": { "en": "The damage increases by 1.", "ru": "The damage increases by 1." }
+        },
+        {
+          "name": { "en": "Dissolve", "ru": "Растворение" },
+          "price": { "ap": 1 },
+          "description": { "en": "1 target makes a Repeated Agility Save. Save Failure: The target no longer benefits from PDR or EDR for 1 minute.", "ru": "1 target makes a Repeated Agility Save. Save Failure: The target no longer benefits from PDR or EDR for 1 minute." }
+        },
+        {
+          "name": { "en": "Acid", "ru": "Кислота" },
+          "price": { "mp": null },
+          "description": { "en": "The target makes a Repeated Agility Save. **Save Failure:** The Target becomes covered in acid for 1 minute. While covered in acid, the target is Hindered and take X (by spent MP) Corrosion damage at the start of each of their turns. A creature within 1 Space (including itself) spends 1 AP to make a Survival Check against your Save DC, removing the acid on a Success.", "ru": "The target makes a Repeated Agility Save. **Save Failure:** The Target becomes covered in acid for 1 minute. While covered in acid, the target is Hindered and take X (by spent MP) Corrosion damage at the start of each of their turns. A creature within 1 Space (including itself) spends 1 AP to make a Survival Check against your Save DC, removing the acid on a Success." }
+        }
+      ]
+    }
+  },
+  {
+    "slug": "fireball",
+    "title": { "en": "Fireball", "ru": "Огненный шар" },
+    "description": {
+      "en": "You produce a brilliant flame that envelops a 2 Space Diameter Sphere area within range. Make an Area Spell Attack against the AD of every target within the area. **Hit:** The target takes 1 Fire damage.\n\n**Ignite:** Flammable objects that are not being worn or held in the target's Space catch fire. A creature can spend 1 AP to put out a mundane fire within 1 Space of them.",
+      "ru": "You produce a brilliant flame that envelops a 2 Space Diameter Sphere area within range. Make an Area Spell Attack against the AD of every target within the area. **Hit:** The target takes 1 Fire damage.\n\n**Ignite:** Flammable objects that are not being worn or held in the target's Space catch fire. A creature can spend 1 AP to put out a mundane fire within 1 Space of them."
+    },
+    "origin": "spell",
+    "origin_value": "arcane,primal",
+    "origin_values": ["Burning", "Fire"],
+    "kind": "static",
+    "price": { "ap": 2 },
+    "info": {
+      "school": "elemental",
+      "range": 5,
+      "duration": "instant",
+      "enhancements": [
+        {
+          "name": { "en": "Range", "ru": "Дальность" },
+          "price": { "ap": 1 },
+          "description": { "en": "The range of the Spell increases by 5 Spaces.", "ru": "The range of the Spell increases by 5 Spaces." }
+        },
+        {
+          "name": { "en": "Damage", "ru": "Урон" },
+          "price": { "mp": 1 },
+          "repeatable": true,
+          "description": { "en": "The damage increases by 1.", "ru": "The damage increases by 1." }
+        },
+        {
+          "name": { "en": "Area", "ru": "Область" },
+          "price": { "mp": 1 },
+          "repeatable": true,
+          "description": { "en": "The diameter of a Sphere of your choice increases by 1 Space.", "ru": "The diameter of a Sphere of your choice increases by 1 Space." }
+        },
+        {
+          "name": { "en": "Burning", "ru": "Горение" },
+          "price": { "mp": 1 },
+          "repeatable": true,
+          "description": { "en": "Each target makes a Repeated Physical Save. Save Failure: The target begins Burning for 1 minute.", "ru": "Each target makes a Repeated Physical Save. Save Failure: The target begins Burning for 1 minute." }
+        },
+        {
+          "name": { "en": "Fireball Swarm", "ru": "Рой огненных шаров" },
+          "price": { "mp": 2 },
+          "repeatable": true,
+          "description": { "en": "You produce another 2 Space diameter Sphere within range using the same Spell Attack for all targets in each area.", "ru": "You produce another 2 Space diameter Sphere within range using the same Spell Attack for all targets in each area." }
+        }
+      ]
+    }
+  },
+  {
+    "slug": "charm",
+    "title": { "en": "Charm", "ru": "Очарование" },
+    "description": {
+      "en": "Choose a non-hostile creature that can see or hear you within range. Make a Spell Check against the target's Charisma Save. **Check Success:** The target is Charmed by you for the duration or until it takes damage or makes a Save. When the Spell effect ends, the creature realizes that you used magic to influence its mood and may become hostile toward you.",
+      "ru": "Choose a non-hostile creature that can see or hear you within range. Make a Spell Check against the target's Charisma Save. **Check Success:** The target is Charmed by you for the duration or until it takes damage or makes a Save. When the Spell effect ends, the creature realizes that you used magic to influence its mood and may become hostile toward you."
+    },
+    "origin": "spell",
+    "origin_value": "arcane,divine",
+    "origin_values": ["Charmed", "Curse", "Emotions", "Thoughts"],
+    "kind": "static",
+    "price": { "ap": 1 },
+    "info": {
+      "school": "enchantment",
+      "range": 10,
+      "duration": "1,m",
+      "enhancements": [
+        {
+          "name": { "en": "Range", "ru": "Дальность" },
+          "price": { "ap": 1 },
+          "repeatable": 2,
+          "description": { "en": "The range of the Spell increases by 5 Spaces.", "ru": "The range of the Spell increases by 5 Spaces." }
+        },
+        {
+          "name": { "en": "Hostile Charm", "ru": "Враждебное очарование" },
+          "price": { "mp": 1 },
+          "description": { "en": "You can target hostile creatures.", "ru": "You can target hostile creatures." }
+        },
+        {
+          "name": { "en": "Clear Suspicion", "ru": "Вне подозрений" },
+          "price": { "mp": 1 },
+          "description": { "en": "The target doesn't realize that magic was used on them when the Spell ends.", "ru": "The target doesn't realize that magic was used on them when the Spell ends." }
+        },
+        {
+          "name": { "en": "Mass Charm", "ru": "Массовое очарование" },
+          "price": { "ap": 1, "mp": 1 },
+          "description": { "en": "You instead target each creature of your choice within range that can see or hear you. When you choose this Enhancement, the cost of all other Enhancements is doubled. The Action Point cost of this Enhancement can't be paid for with MP (See Mana Points on AP Enhancements).", "ru": "You instead target each creature of your choice within range that can see or hear you. When you choose this Enhancement, the cost of all other Enhancements is doubled. The Action Point cost of this Enhancement can't be paid for with MP (See Mana Points on AP Enhancements)." }
+        }
+      ]
+    }
+  },
+  {
+    "slug": "hex",
+    "title": { "en": "Hex", "ru": "Сглаз" },
+    "description": {
+      "en": "Make a Spell Check against the Repeated Charisma Save of a target within range. **Check Success:** The target is Cursed for the duration. While Cursed this way, it gains Vulnerability (1) to a damage type of your choice. The Curse can be removed by any effect that ends a Basic Curse.",
+      "ru": "Make a Spell Check against the Repeated Charisma Save of a target within range. **Check Success:** The target is Cursed for the duration. While Cursed this way, it gains Vulnerability (1) to a damage type of your choice. The Curse can be removed by any effect that ends a Basic Curse."
+    },
+    "origin": "spell",
+    "origin_value": "arcane,divine",
+    "origin_values": ["Curse", "Enfeeble"],
+    "kind": "static",
+    "price": { "ap": 1, "mp": 1 },
+    "info": {
+      "school": "enchantment",
+      "range": 10,
+      "duration": "1,m",
+      "enhancements": [
+        {
+          "name": { "en": "Range", "ru": "Дальность" },
+          "price": { "ap": 1 },
+          "repeatable": 2,
+          "description": { "en": "The range of the Spell increases by 5 Spaces.", "ru": "The range of the Spell increases by 5 Spaces." }
+        },
+        {
+          "name": { "en": "Expanded", "ru": "Расширенное" },
+          "price": { "mp": 1 },
+          "description": { "en": "The target becomes Vulnerable to a category of damage (Physical, Elemental or Mystical) of your choice instead of 1 damage type.", "ru": "The target becomes Vulnerable to a category of damage (Physical, Elemental or Mystical) of your choice instead of 1 damage type." }
+        },
+        {
+          "name": { "en": "Break Resistance", "ru": "Сломать сопротивление" },
+          "price": { "mp": 1 },
+          "description": { "en": "The target doesn't benefit from Resistance to the damage types they're Vulnerable to due to the Curse for the duration.", "ru": "The target doesn't benefit from Resistance to the damage types they're Vulnerable to due to the Curse for the duration." }
+        },
+        {
+          "name": { "en": "Improved Vulnerability", "ru": "Улучшенная уязвимость" },
+          "price": { "mp": 1 },
+          "repeatable": true,
+          "description": { "en": "The Vulnerability increases by 1.", "ru": "The Vulnerability increases by 1." }
+        }
+      ]
+    }
+  },
+  {
+    "slug": "close_wounds",
+    "title": { "en": "Close Wounds", "ru": "Заживление ран" },
+    "description": {
+      "en": "You accelerate the natural healing process of a target within range. Make a DC 15 Spell Check. **Failure:** The target can spend up to 1 Rest Point, regaining HP equal to the Rest Points Spent. **Success:** The target can spend up to 2 Rest Points. **Success (each 5):** The target can spend 1 additional Rest Point.",
+      "ru": "You accelerate the natural healing process of a target within range. Make a DC 15 Spell Check. **Failure:** The target can spend up to 1 Rest Point, regaining HP equal to the Rest Points Spent. **Success:** The target can spend up to 2 Rest Points. **Success (each 5):** The target can spend 1 additional Rest Point."
+    },
+    "origin": "spell",
+    "origin_value": "arcane,divine,primal",
+    "origin_values": ["Cleansing", "Healing", "Time"],
+    "kind": "static",
+    "price": { "ap": 1 },
+    "info": {
+      "school": "invocation",
+      "range": 5,
+      "duration": "instant",
+      "enhancements": [
+        {
+          "name": { "en": "Range", "ru": "Дальность" },
+          "price": { "ap": 1 },
+          "repeatable": 2,
+          "description": { "en": "The range of the Spell increases by 5 Spaces.", "ru": "The range of the Spell increases by 5 Spaces." }
+        },
+        {
+          "name": { "en": "Increased Healing", "ru": "Усиленное лечение" },
+          "price": { "ap": 1 },
+          "repeatable": true,
+          "description": { "en": "The target can spend 2 additional Rest Point.", "ru": "The target can spend 2 additional Rest Point." }
+        },
+        {
+          "name": { "en": "Repeat Save", "ru": "Повторный спас" },
+          "price": { "ap": 1 },
+          "description": { "en": "The target can make a Repeated Save against an effect they're subjected to.", "ru": "The target can make a Repeated Save against an effect they're subjected to." }
+        }
+      ]
+    }
+  },
+  {
+    "slug": "arcane_shield",
+    "title": { "en": "Arcane Shield", "ru": "Арканный щит" },
+    "description": {
+      "en": "You create a barrier of magic to protect yourself or another creature nearby.\n\n**Trigger:** When a target you can see within range (including yourself) is targeted by an Attack against its AD.\n\n**Reaction:** You grant the target a +5 bonus to its AD.",
+      "ru": "You create a barrier of magic to protect yourself or another creature nearby.\n\n**Trigger:** When a target you can see within range (including yourself) is targeted by an Attack against its AD.\n\n**Reaction:** You grant the target a +5 bonus to its AD."
+    },
+    "origin": "spell",
+    "origin_value": "arcane",
+    "origin_values": ["Ward"],
+    "kind": "static",
+    "price": { "ap": 1 },
+    "info": {
+      "school": "nullification",
+      "range": 1,
+      "duration": "instant",
+      "enhancements": [
+        {
+          "name": { "en": "Multiple Targets", "ru": "Несколько целей" },
+          "price": { "ap": 1 },
+          "repeatable": true,
+          "description": { "en": "You target 1 additional creature within range that's also targeted by the same Attack.", "ru": "You target 1 additional creature within range that's also targeted by the same Attack." }
+        },
+        {
+          "name": { "en": "Arcane Absorption", "ru": "Арканное поглощение" },
+          "price": { "mp": 1 },
+          "repeatable": true,
+          "description": { "en": "Immediately after the Attack, you gain 2 Temp HP. The Temp HP increases by 2 each time you use this Enhancement.", "ru": "Immediately after the Attack, you gain 2 Temp HP. The Temp HP increases by 2 each time you use this Enhancement." }
+        }
+      ]
+    }
+  },
+  {
+    "slug": "vampiric_touch",
+    "title": { "en": "Vampiric Touch", "ru": "Касание вампира" },
+    "description": {
+      "en": "Make a Melee Spell Attack against the PD of a creature in range. Hit: The target takes 1 Umbral damage and you can spend 1 Rest Point to regain 1 HP.",
+      "ru": "Make a Melee Spell Attack against the PD of a creature in range. Hit: The target takes 1 Umbral damage and you can spend 1 Rest Point to regain 1 HP."
+    },
+    "origin": "spell",
+    "origin_value": "arcane,divine",
+    "origin_values": ["Blood", "Doomed", "Healing", "Slowed", "Umbral"],
+    "kind": "static",
+    "price": { "ap": 1 },
+    "info": {
+      "school": "nullification",
+      "range": 1,
+      "duration": "instant",
+      "enhancements": [
+        {
+          "name": { "en": "Range", "ru": "Дальность" },
+          "price": { "ap": 1 },
+          "repeatable": 2,
+          "description": { "en": "The range of the Spell increases by 1 Space.", "ru": "The range of the Spell increases by 1 Space." }
+        },
+        {
+          "name": { "en": "Leeching Grab", "ru": "Высасывающий захват" },
+          "price": { "ap": 1 },
+          "description": { "en": "The target makes a Might Save against your Save DC. Save Failure: The target is Slowed for 1 round.", "ru": "The target makes a Might Save against your Save DC. Save Failure: The target is Slowed for 1 round." }
+        },
+        {
+          "name": { "en": "Doomed", "ru": "Обречение" },
+          "price": { "ap": 1 },
+          "repeatable": true,
+          "description": { "en": "The target makes a Repeated Charisma Save against your Save DC. Save Failure: The target is Doomed for 1 minute.", "ru": "The target makes a Repeated Charisma Save against your Save DC. Save Failure: The target is Doomed for 1 minute." }
+        },
+        {
+          "name": { "en": "Life Drain", "ru": "Высасывание жизни" },
+          "price": { "mp": 1 },
+          "repeatable": true,
+          "description": { "en": "The damage increases by 1 and you regain 1 HP on a Hit (You regain this HP without spending Rest Points).", "ru": "The damage increases by 1 and you regain 1 HP on a Hit (You regain this HP without spending Rest Points)." }
+        }
+      ]
+    }
+  },
+  {
+    "slug": "invisibility",
+    "title": { "en": "Invisibility", "ru": "Невидимость" },
+    "description": {
+      "en": "You magically cloak a target within range for the duration. Make a DC 15 Spell Check. **Failure:** The target is Invisible. **Success:** The target is Invisible and can immediately take the Hide Action for free. The Spell ends early if the target takes any Action or Reaction beside the Move, Dodge or Hide Actions.",
+      "ru": "You magically cloak a target within range for the duration. Make a DC 15 Spell Check. **Failure:** The target is Invisible. **Success:** The target is Invisible and can immediately take the Hide Action for free. The Spell ends early if the target takes any Action or Reaction beside the Move, Dodge or Hide Actions."
+    },
+    "origin": "spell",
+    "origin_value": "arcane,divine",
+    "origin_values": ["Illusion", "Invisible"],
+    "kind": "static",
+    "price": { "ap": 1, "mp": 1 },
+    "info": {
+      "school": "transmutation",
+      "range": 5,
+      "duration": "1,m",
+      "sustained": true,
+      "enhancements": [
+        {
+          "name": { "en": "Range", "ru": "Дальность" },
+          "price": { "ap": 1 },
+          "repeatable": 2,
+          "description": { "en": "The range of the Spell increases by 5 Spaces.", "ru": "The range of the Spell increases by 5 Spaces." }
+        },
+        {
+          "name": { "en": "Duration", "ru": "Длительность" },
+          "price": { "mp": 1 },
+          "repeatable": true,
+          "description": { "en": "The duration increases by 1 step. (1 min -> 10 min -> 1 hour -> 8 hours -> until Long Rest).", "ru": "Длительность увеличивается на 1 шаг (1 минута -> 10 минут -> 1 час -> 8 часов -> до длинного отдыха)." }
+        },
+        {
+          "name": { "en": "Mass Invisibility", "ru": "Массовая невидимость" },
+          "price": { "ap": 1, "mp": null },
+          "description": { "en": "You can target X (by spent MP) additional creatures within range.", "ru": "You can target X (by spent MP) additional creatures within range." }
+        },
+        {
+          "name": { "en": "Greater Invisibility", "ru": "Улучшенная невидимость" },
+          "price": { "mp": 3 },
+          "description": { "en": "Choose 1 target. The Spell no longer ends early when the target takes any Action or Reaction.", "ru": "Choose 1 target. The Spell no longer ends early when the target takes any Action or Reaction." }
+        }
+      ]
+    }
+  },
+  {
+    "slug": "teleport",
+    "title": { "en": "Teleport", "ru": "Телепорт" },
+    "description": {
+      "en": "You teleport to a new location. Make a DC 15 Spell Check. **Failure:** You teleport up to 3 Spaces. **Success:** You teleport up to 5 Spaces to an unoccupied Space that you can see. **Success (each 5):** +2 Space.",
+      "ru": "You teleport to a new location. Make a DC 15 Spell Check. **Failure:** You teleport up to 3 Spaces. **Success:** You teleport up to 5 Spaces to an unoccupied Space that you can see. **Success (each 5):** +2 Space."
+    },
+    "origin": "spell",
+    "origin_value": "arcane",
+    "origin_values": ["Teleportation", "Motion", "Slowed"],
+    "kind": "static",
+    "price": { "ap": 1, "mp": 1 },
+    "info": {
+      "school": "astromancy",
+      "range": "self",
+      "duration": "instant",
+      "enhancements": [
+        {
+          "name": { "en": "Distance", "ru": "" },
+          "price": { "mp": 1 },
+          "repeatable": true,
+          "description": { "en": "The distance of the teleport increases by 3 Spaces.", "ru": "The distance of the teleport increases by 3 Spaces." }
+        },
+        {
+          "name": { "en": "Passenger", "ru": "" },
+          "price": { "ap": 1, "mp": null },
+          "description": { "en": "X (by spent MP) willing creatures within 2 Spaces of you are also teleported, appearing in an unoccupied space within 2 Spaces of where you appear after teleporting.", "ru": "X (by spent MP) willing creatures within 2 Spaces of you are also teleported, appearing in an unoccupied space within 2 Spaces of where you appear after teleporting." }
+        },
+        {
+          "name": { "en": "Temporal Shiver", "ru": "" },
+          "price": { "mp": 1 },
+          "repeatable": true,
+          "description": { "en": "Creatures within 1 Spaces of you before you teleport make an Intelligence Save against your Save DC. Save Failure: The target is Slowed for 1 Round.", "ru": "Creatures within 1 Spaces of you before you teleport make an Intelligence Save against your Save DC. Save Failure: The target is Slowed for 1 Round." }
+        },
+        {
+          "name": { "en": "Temporal Repulse", "ru": "" },
+          "price": { "mp": null },
+          "description": { "en": "After you teleport, creatures within 1 Space of you make a Might Save against your Save DC. Save Failure: The target is pushed X (by spent MP) Spaces away from you.", "ru": "After you teleport, creatures within 1 Space of you make a Might Save against your Save DC. Save Failure: The target is pushed X (by spent MP) Spaces away from you." }
         }
       ]
     }

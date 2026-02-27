@@ -348,10 +348,38 @@ ru:
     dc20:
       spell_tags:
         Ailment: Болезнь
+        Blood: Кровь
         Bludgeoning: Дробящее
+        Burning: Горение
+        Charmed: Очарование
+        Cleansing: Очищение
+        Cold: Холод
+        Corrosion: Кислота
+        Curse: Проклятье
+        Death: Смерть
+        Doomed: Обречение
         Embolden: Воодушевление
+        Emotions: Эмоции
+        Enfeeble: Ослабление
+        Fire: Огонь
+        Healing: Лечение
+        Hindered: Затруднение
+        Illusion: Иллюзия
+        Immobilized: Обездвиживание
+        Invisible: Невидимость
+        Motion: Движение
         Piercing: Колющее
+        Plants: Растения
+        Restrained: Сдерживание
+        Shadow: Тень
         Slashing: Режущее
+        Slowed: Замедление
+        Stunned: Оглушение
+        Teleportation: Телепортация
+        Tethered: Связывание
+        Time: Время
+        Thoughts: Мысли
+        Umbral: Тьма
         Ward: Защита
       focus:
         Long-Ranged: Если заклинание имеет дальность больше 1, то эта дальность увеличивается на 5 квадратов.

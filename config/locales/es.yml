@@ -348,10 +348,38 @@ es:
     dc20:
       spell_tags:
         Ailment: Ailment
+        Blood: Blood
         Bludgeoning: Bludgeoning
+        Burning: Burning
+        Charmed: Charmed
+        Cleansing: Cleansing
+        Cold: Cold
+        Corrosion: Corrosion
+        Curse: Curse
+        Death: Death
+        Doomed: Doomed
         Embolden: Embolden
+        Emotions: Emotions
+        Enfeeble: Enfeeble
+        Fire: Fire
+        Healing: Healing
+        Hindered: Hindered
+        Illusion: Illusion
+        Immobilized: Immobilized
+        Invisible: Invisible
+        Motion: Motion
         Piercing: Piercing
+        Plants: Plants
+        Restrained: Restrained
+        Shadow: Shadow
         Slashing: Slashing
+        Slowed: Slowed
+        Stunned: Stunned
+        Teleportation: Teleportation
+        Tethered: Tethered
+        Time: Time
+        Thoughts: Thoughts
+        Umbral: Umbral
         Ward: Ward
       focus:
         Long-Ranged: Los hechizos que lances con un alcance superior a 1 aumentarán su alcance en 5 espacios.

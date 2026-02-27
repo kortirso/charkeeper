@@ -11,7 +11,11 @@ module Dc20
     end
 
     def description
-      translate(object.description)
+      Charkeeper::Container.resolve('markdown').call(
+        value: translate(object.description),
+        version: (context ? (context[:version] || nil) : nil),
+        initial_version: '0.4.0'
+      )
     end
 
     def origin_value

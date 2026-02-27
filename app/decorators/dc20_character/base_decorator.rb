@@ -26,12 +26,14 @@ module Dc20Character
       @mana_spend_limit ||= (level / 2.0).round
     end
 
+    # rubocop: disable Style/NumericPredicate
     def damages
       [
-        equiped_armor_info && equiped_armor_info['pdr'].zero? ? nil : ['physical', 'resist', equiped_armor_info['pdr']],
-        equiped_armor_info && equiped_armor_info['edr'].zero? ? nil : ['elemental', 'resist', equiped_armor_info['edr']]
+        equiped_armor_info.nil? || equiped_armor_info['pdr'] == 0 ? nil : ['physical', 'resist', equiped_armor_info['pdr']],
+        equiped_armor_info.nil? || equiped_armor_info['edr'] == 0 ? nil : ['elemental', 'resist', equiped_armor_info['edr']]
       ].compact
     end
+    # rubocop: enable Style/NumericPredicate
 
     def equiped_armor_info
       @equiped_armor_info ||=
