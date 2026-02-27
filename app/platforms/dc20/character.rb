@@ -32,6 +32,7 @@ module Dc20
     attribute :selected_talents, array: true, default: {}
     attribute :selected_additional_talents, array: true, default: 0
     attribute :selected_features, array: true, default: {} # { 'fighting_style' => ['fighting_style_defense'] }
+    attribute :resistances, array: true, default: []
     # доступные очки для распределения
     attribute :guide_step, :integer # этап помощи при создании персонажа
     attribute :ancestry_points, :integer, default: 0
