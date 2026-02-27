@@ -74,16 +74,6 @@ module Dc20Character
       @grit_points ||= data.grit_points.merge('max' => modified_abilities['cha'] + 2)
     end
 
-    def equiped_armor_info
-      @equiped_armor_info ||=
-        __getobj__
-        .items
-        .where(state: ::Character::Item::ACTIVE_STATES)
-        .joins(:item)
-        .where(items: { kind: 'armor' })
-        .pick('items.info')
-    end
-
     def health
       @health ||= __getobj__.data.health.merge(
         'death_threshold' => 0 - modified_abilities['prime'] - combat_mastery
@@ -171,13 +161,18 @@ module Dc20Character
         features_text: [],
         notes: [],
         ready_to_use: true,
-        tags: { 'b' => I18n.t('tags.dc20.weapon.title.b') }
+        tags: { 'b' => I18n.t('tags.dc20.weapon.title.b'), 'Fist' => I18n.t('tags.dc20.weapon.title.Fist') }
       }
     end
 
     def shield_attack
       return if equiped_shield_info.nil?
       return if combat_expertise.exclude?(equiped_shield_info['type'])
+
+      tags =
+        equiped_shield_info['features']
+          .index_with { |type| I18n.t("tags.dc20.weapon.title.#{type}") }
+          .merge({ 'b' => I18n.t('tags.dc20.weapon.title.b') })
 
       {
         name: translate({ en: 'Shield attack', ru: 'Удар щитом' }),
@@ -188,7 +183,7 @@ module Dc20Character
         features_text: [],
         notes: [],
         ready_to_use: true,
-        tags: { 'b' => I18n.t('tags.dc20.weapon.title.b') }
+        tags: tags
       }
     end
 

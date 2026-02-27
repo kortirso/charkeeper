@@ -19,6 +19,8 @@ es:
     dnd2024: D&D 2024
     pathfinder2: Pathfinder 2
     dc20: DC20
+    fate: Fate
+    fallout: Fallout 2D20
   commands:
     campaigns_context:
       join_campaign:
@@ -354,50 +356,68 @@ es:
       focus:
         Long-Ranged: Los hechizos que lances con un alcance superior a 1 aumentarán su alcance en 5 espacios.
       weapon:
-        Axe: Infliges +1 de daño situacional a las criaturas que estén Sangrando.
-        Bow: Infliges +1 de daño situacional a las criaturas que estén Ralentizadas.
-        Chained: Tus ataques ignoran los Escudos y la Cobertura 1/2, e infliges +1 de daño situacional contra objetivos que empuñan un Escudo o se encuentran detrás de una Cobertura 1/2.
-        Hammer: Infliges +1 de daño situacional contra criaturas que estén Aturdidas o Petrificadas.
-        Pick: Infliges +1 punto de daño situacional a las criaturas que estén Incapacitadas.
-        Spear: Infliges +1 de daño situacional a una criatura si te has movido 2 casillas hacia ella inmediatamente antes de realizar el ataque o si está montado. Además, no tienes desventaja en las tiradas de ataque realizadas con el arma por estar bajo el agua.
-        Staff: Infliges +1 punto de daño situacional a las criaturas que estén Entorpecidas.
-        Sword: Infliges +1 punto de daño situacional a las criaturas que estén Expuestas.
+        Axe: "The target makes a Repeated Physical Save. Failure: The target begins Bleeding."
+        Bow:" The target makes an Agility Save. Failure: The target is Slowed until the end of its next turn."
+        Crossbow: You add a d4 to your Attack Check.
+        Fist: "Fist Weapons are considered to be a free hand for the purposes of Grappling. Grapple: The target makes a Physical Save. Failure: The target becomes Grappled by you."
+        Hammer: "The target makes a Might Save. Failure: The target is pushed 1 Space away. Each time you use this Enhancement, the target is pushed 1 additional Space."
+        Pick: "The target makes an Agility Save. Failure: The target becomes Hindered until the end of their next turn."
+        Sling: "The target makes an Agility Save. Failure: The target becomes Hindered until the end of their next turn."
+        Spear: "The target makes an Agility Save. Failure: The target becomes Slowed until the end of their next turn."
+        Staff: "The target makes a Physical Save. Failure: The target falls Prone."
+        Sword: You add a d4 to your Attack Check.
+        Whip: "The target makes a Might Save. Failure: The target is moved horizontally 1 Space toward you or to your left or right. Each time you use this Enhancement, the target is moved 1 additional Space."
         Ammo: Puedes cargar un arma como parte de un ataque realizado con ella.
         Concealable: Desenvainar el arma no provoca ataques de oportunidad. Si desenvainas el arma como parte de un ataque, tienes ventaja en el ataque. Solo puedes obtener esta ventaja una vez contra cada criatura por combate.
+        Cumbersome: It takes 1 AP to draw, stow, or pick up this Weapon.
+        Deft: Ranged Attacks with this Weapon don't have DisADV as a result of you being Prone.
         Guard: Ganas +1 DF mientras empuñas el arma.
         Impact: Infliges +1 de daño situacional con los Golpes Pesados.
         Multi-Faceted: Debes elegir qué Estilo de arma utilizar. El Estilo de arma elegido determina el tipo de daño del Etaque.
-        Reach: Esta arma añade 1 espacio a tu Melee cuando atacas con ella..
+        Reach: Esta arma añade 1 espacio a tu Melee cuando atacas con ella.
+        Reload: You must spend 1 AP or 1 SP and use a free hand to reload the Weapon. If the Weapon stops being held, it must be loaded again.
         Silent: Cuando realizas un ataque a distancia con el arma mientras estás Oculto, sigues sin ser Oído por las criaturas de las que te Ocultas.
         Toss: Puedes lanzar el arma para realizar un ataque marcial a distancia.
         Thrown: Puedes lanzar el arma para realizar un ataque marcial a distancia.
         Two-Handed: El arma requiere 2 manos cuando atacas con ella.
         Unwieldy: Tienes Desventaja en los Ataques realizados con el arma contra objetivos que se encuentren a 1 espacio de distancia de ti.
         Versatile: Esta arma se puede empuñar con 1 o 2 manos. Cuando la empuñas con 2 manos, obtienes una bonificación situacional de +2 para golpear con ella.
+        Returning: When you Miss a Ranged Attack with the Weapon, it returns to your hand.
+        Grasp: The Shield is considered to be a free hand when Grappling, Reloading a Weapon, or Attacking with Versatile Weapon.
+        Mounted: The Shield's Bonus also applies to your Mount's Defense.
         b: Cosas que te golpean con contundencia, como un martillo o un puño.
         p: Cosas que te perforan, como una flecha o unos colmillos.
         s: Cosas que te cortan, como una espada o una garra.
         title:
           Axe: Hacha
           Bow: Arco
-          Chained: Encadenado
+          Crossbow: Crossbow
+          Fist: Fist
           Hammer: Martillo
           Pick: Pica
+          Sling: Sling
           Spear: Lanza
           Staff: Bastón
           Sword: Espada
+          Whip: Whip
           Ammo: Munición
           Concealable: Ocultable
+          Cumbersome: Cumbersome
+          Deft: Deft
           Guard: Guardia
           Impact: Impacto
           Multi-Faceted: Multifaceta
           Reach: Alcance
+          Reload: Reload
           Silent: Silenciosa
           Toss: Tirar
           Thrown: Lanzar
           Two-Handed: A dos manos
           Unwieldy: Díficil de manejar
           Versatile: Versatíl
+          Returning: Returning
+          Grasp: Grasp
+          Mounted: Mounted
           b: Contundente
           p: Perforante
           s: Cortante

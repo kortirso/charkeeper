@@ -77,7 +77,7 @@
   {
     "slug": "quarterstaff",
     "kind": "weapon",
-    "name": { "en": "Quarterstaff", "ru": "Боевой посох" },
+    "name": { "en": "Bo Staff", "ru": "Боевой посох" },
     "info": {
       "range": "melee",
       "damage": 1,
@@ -105,9 +105,9 @@
     "info": {
       "range": "melee",
       "damage": 2,
-      "styles": ["Chained"],
-      "damage_types": ["b"],
-      "features": ["Two-Handed", "Impact"]
+      "styles": ["Hammer", "Whip"],
+      "damage_types": ["b", "s"],
+      "features": ["Two-Handed"]
     }
   },
   {
@@ -144,7 +144,7 @@
       "damage": 1,
       "styles": ["Bow"],
       "damage_types": ["p"],
-      "features": ["Two-Handed", "Ammo", "Silent"]
+      "features": ["Two-Handed", "Ammo", "Silent", "Impact"]
     }
   },
   {
@@ -157,7 +157,7 @@
       "damage": 1,
       "styles": ["Bow"],
       "damage_types": ["p"],
-      "features": ["Two-Handed", "Ammo", "Unwieldy", "Impact"]
+      "features": ["Two-Handed", "Ammo", "Impact"]
     }
   }
 ]

@@ -26,6 +26,23 @@ module Dc20Character
       @mana_spend_limit ||= (level / 2.0).round
     end
 
+    def damages
+      [
+        equiped_armor_info && equiped_armor_info['pdr'].zero? ? nil : ['physical', 'resist', equiped_armor_info['pdr']],
+        equiped_armor_info && equiped_armor_info['edr'].zero? ? nil : ['elemental', 'resist', equiped_armor_info['edr']]
+      ].compact
+    end
+
+    def equiped_armor_info
+      @equiped_armor_info ||=
+        __getobj__
+        .items
+        .where(state: ::Character::Item::ACTIVE_STATES)
+        .joins(:item)
+        .where(items: { kind: 'armor' })
+        .pick('items.info')
+    end
+
     def equiped_shield_info
       @equiped_shield_info ||=
         __getobj__
@@ -48,10 +65,6 @@ module Dc20Character
 
     def dynamic_bonuses
       @dynamic_bonuses ||= __getobj__.bonuses.enabled.pluck(:dynamic_value).compact
-    end
-
-    def damages
-      []
     end
 
     # DEPRECATED

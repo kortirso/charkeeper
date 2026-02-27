@@ -82,5 +82,19 @@
       "pdr": "half",
       "edr": 0
     }
+  },
+  {
+    "slug": "highly_defensive",
+    "kind": "armor",
+    "name": { "en": "Highly Defensive armor", "ru": "Сверхзащищенная бро" },
+    "info": {
+      "type": "heavy_armor",
+      "pd": 2,
+      "ad": 2,
+      "speed": -1,
+      "agi_check": true,
+      "pdr": 0,
+      "edr": 0
+    }
   }
 ]

@@ -334,7 +334,7 @@ export const Equipment = (props) => {
               <For each={props.itemFilters}>
                 {(itemFilter) =>
                   <Show when={filteredItems().filter(itemFilter.callback).length > 0}>
-                    <Toggle isOpenByParent={filterByName().length >= 3} title={itemFilter.title}>
+                    <Toggle isOpenByParent={filterByName().length >= 3 ? true : undefined} title={itemFilter.title}>
                       <table class="w-full table first-column-full-width">
                         <thead>
                           <tr>
