@@ -4,10 +4,10 @@ import { createWindowSize } from '@solid-primitives/resize-observer';
 
 import {
   Dc20Abilities, Dc20Skills, Dc20Saves, Dc20CombatStatic, Dc20Leveling, Dc20Resources, Dc20Spells, Dc20Rest,
-  Dc20Bonuses, Dc20Damages
+  Dc20Bonuses, Dc20Damages, Dc20Conditions
 } from '../../../pages';
 import {
-  CharacterNavigation, Notes, Avatar, ContentWrapper, createDiceRoll, Conditions, Equipment, Combat, Feats
+  CharacterNavigation, Notes, Avatar, ContentWrapper, createDiceRoll, Equipment, Combat, Feats
 } from '../../../components';
 import { useAppLocale } from '../../../context';
 import { localize } from '../../../helpers';
@@ -87,7 +87,7 @@ export const Dc20 = (props) => {
                 <Dc20Saves character={character()} openDiceRoll={openDiceRoll} />
               </div>
               <div class="mt-4">
-                <Conditions character={character()} />
+                <Dc20Conditions character={character()} onReloadCharacter={props.onReloadCharacter} />
               </div>
               <div class="mt-4">
                 <Dc20Skills
@@ -186,7 +186,7 @@ export const Dc20 = (props) => {
           <Dc20Saves character={character()} openDiceRoll={openDiceRoll} />
         </div>
         <div class="mt-4">
-          <Conditions character={character()} />
+          <Dc20Conditions character={character()} onReloadCharacter={props.onReloadCharacter} />
         </div>
         <div class="mt-4">
           <Dc20Skills
