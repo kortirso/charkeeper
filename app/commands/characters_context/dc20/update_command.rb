@@ -60,6 +60,7 @@ module CharactersContext
           optional(:trade_points).filled(:integer)
           optional(:language_points).filled(:integer)
           optional(:conditions).maybe(:array).each(:string)
+          optional(:conditions_v2).hash
           optional(:paths).hash
           optional(:path_points).filled(:integer)
           optional(:stamina_points).hash do

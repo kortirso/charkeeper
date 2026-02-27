@@ -144,6 +144,9 @@ Rails.application.routes.draw do
     end
 
     namespace :dc20 do
+      namespace :config do
+        resources :conditions, only: %i[index]
+      end
       resources :characters, only: %i[create update] do
         scope module: :characters do
           resources :ancestries, only: %i[index]

@@ -13,6 +13,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - selecting additional talents for DC20 characters
 - refunding ancestries for DC20 characters
 - damage impact calculations for DC20 characters
+- conditions management for DC20 characters
 
 ### Modified
 - rendering spells for DnD characters on mobile devices
