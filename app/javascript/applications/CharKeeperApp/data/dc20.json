@@ -105,5 +105,10 @@
     "radiant": { "name": { "en": "Radiant", "ru": "Сияющий" } },
     "umbral": { "name": { "en": "Umbral", "ru": "Сумрачный" } },
     "true": { "name": { "en": "True", "ru": "Истинный" } }
+  },
+  "damageGroups": {
+    "physical": { "name": { "en": "Physical", "ru": "Физический" } },
+    "elemental": { "name": { "en": "Elemental", "ru": "Элементальный" } },
+    "mystical": { "name": { "en": "Mystical", "ru": "Мистический" } }
   }
 }

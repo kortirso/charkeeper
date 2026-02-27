@@ -78,6 +78,7 @@ module CharactersContext
           optional(:selected_features).hash
           optional(:ancestry_feats).hash
           optional(:ancestry_points).filled(:integer)
+          optional(:resistances).filled(:array)
         end
 
         rule(:avatar_file, :avatar_url, :file).validate(:check_only_one_present)

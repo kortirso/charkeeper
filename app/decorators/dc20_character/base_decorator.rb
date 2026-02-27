@@ -6,7 +6,7 @@ module Dc20Character
     delegate :abilities, :main_class, :level, :combat_expertise, :classes, :attribute_points, :ancestries, :skill_levels,
              :skill_expertise, :skill_points, :skill_expertise_points, :trade_points, :trade_expertise_points, :language_points,
              :trade_levels, :trade_expertise, :trade_knowledge, :language_levels, :conditions, :stamina_points, :path_points,
-             :paths, :mana_points, :maneuvers, :rest_points, :path, :spell_list, :talent_points, :speeds, to: :data
+             :paths, :mana_points, :maneuvers, :rest_points, :path, :spell_list, :talent_points, :speeds, :resistances, to: :data
 
     def parent = __getobj__
 
@@ -28,10 +28,11 @@ module Dc20Character
 
     # rubocop: disable Style/NumericPredicate
     def damages
-      [
-        equiped_armor_info.nil? || equiped_armor_info['pdr'] == 0 ? nil : ['physical', 'resist', equiped_armor_info['pdr']],
-        equiped_armor_info.nil? || equiped_armor_info['edr'] == 0 ? nil : ['elemental', 'resist', equiped_armor_info['edr']]
-      ].compact
+      resistances +
+        [
+          equiped_armor_info.nil? || equiped_armor_info['pdr'] == 0 ? nil : ['physical', 'resist', equiped_armor_info['pdr']],
+          equiped_armor_info.nil? || equiped_armor_info['edr'] == 0 ? nil : ['elemental', 'resist', equiped_armor_info['edr']]
+        ].compact
     end
     # rubocop: enable Style/NumericPredicate
 

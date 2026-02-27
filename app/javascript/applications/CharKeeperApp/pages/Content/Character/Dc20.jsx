@@ -113,7 +113,7 @@ export const Dc20 = (props) => {
                 <Dc20Resources character={character()} onReplaceCharacter={props.onReplaceCharacter} />
               </div>
               <div class="mt-4">
-                <Dc20Damages character={character()} />
+                <Dc20Damages character={character()} onReloadCharacter={props.onReloadCharacter} />
               </div>
               <div class="mt-4">
                 <Combat
@@ -221,7 +221,7 @@ export const Dc20 = (props) => {
                 <Dc20Resources character={character()} onReplaceCharacter={props.onReplaceCharacter} />
               </div>
               <div class="mt-4">
-                <Dc20Damages character={character()} />
+                <Dc20Damages character={character()} onReloadCharacter={props.onReloadCharacter} />
               </div>
               <div class="mt-4">
                 <Combat
