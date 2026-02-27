@@ -28,7 +28,7 @@
   {
     "slug": "throwing_star",
     "kind": "weapon",
-    "name": { "en": "Throwing Star", "ru": "Метательная звёздочка" },
+    "name": { "en": "Throwing Star", "ru": "Сюрикен" },
     "info": {
       "range": "melee",
       "distance": "5/10",
@@ -117,7 +117,7 @@
   {
     "slug": "mining_pick",
     "kind": "weapon",
-    "name": { "en": "Mining Pick", "ru": "Горная кирка" },
+    "name": { "en": "Mining Pick", "ru": "Шахтёрская кирка" },
     "info": {
       "range": "melee",
       "distance": "5/10",
@@ -204,7 +204,7 @@
   {
     "slug": "bo_staff",
     "kind": "weapon",
-    "name": { "en": "Bo Staff", "ru": "" },
+    "name": { "en": "Bo Staff", "ru": "Посох Бо" },
     "info": {
       "range": "melee",
       "damage": 1,
@@ -264,7 +264,7 @@
   {
     "slug": "pickaxe",
     "kind": "weapon",
-    "name": { "en": "Pickaxe", "ru": "" },
+    "name": { "en": "Pickaxe", "ru": "Кирка" },
     "info": {
       "range": "melee",
       "damage": 1,
@@ -289,7 +289,7 @@
   {
     "slug": "bastard_sword",
     "kind": "weapon",
-    "name": { "en": "Bastard Sword", "ru": "" },
+    "name": { "en": "Bastard Sword", "ru": "Полуторный меч" },
     "info": {
       "range": "melee",
       "damage": 1,
@@ -361,7 +361,7 @@
   {
     "slug": "meteor_hammer",
     "kind": "weapon",
-    "name": { "en": "Meteor Hammer", "ru": "" },
+    "name": { "en": "Meteor Hammer", "ru": "Гасило" },
     "info": {
       "range": "melee",
       "damage": 2,
@@ -373,7 +373,7 @@
   {
     "slug": "greatmaul",
     "kind": "weapon",
-    "name": { "en": "Greatmaul", "ru": "Двуручный молот" },
+    "name": { "en": "Greatmaul", "ru": "Большой молот" },
     "info": {
       "range": "melee",
       "damage": 2,
@@ -433,7 +433,7 @@
   {
     "slug": "great_whip",
     "kind": "weapon",
-    "name": { "en": "Great Whip", "ru": "Двуручный хлыст" },
+    "name": { "en": "Great Whip", "ru": "Большой кнут" },
     "info": {
       "range": "melee",
       "damage": 2,
@@ -471,7 +471,7 @@
   {
     "slug": "hand_stonebow",
     "kind": "weapon",
-    "name": { "en": "Hand Stonebow", "ru": "" },
+    "name": { "en": "Hand Stonebow", "ru": "Ручной аркебуз" },
     "info": {
       "range": "ranged",
       "distance": "15/45",
@@ -562,7 +562,7 @@
   {
     "slug": "stonebow",
     "kind": "weapon",
-    "name": { "en": "Stonebow", "ru": "" },
+    "name": { "en": "Stonebow", "ru": "Аркебуз" },
     "info": {
       "range": "ranged",
       "distance": "15/45",
@@ -575,7 +575,7 @@
   {
     "slug": "slingshot",
     "kind": "weapon",
-    "name": { "en": "Slingshot", "ru": "" },
+    "name": { "en": "Slingshot", "ru": "Рогатка" },
     "info": {
       "range": "ranged",
       "distance": "15/45",
