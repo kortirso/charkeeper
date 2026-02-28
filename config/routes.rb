@@ -183,6 +183,9 @@ Rails.application.routes.draw do
           resources :craft, only: %i[index create]
           resource :companions, only: %i[show create update destroy]
           resources :homebrew_items, only: %i[create]
+          resources :items, only: %i[] do
+            resources :upgrade, only: %i[create], module: :items
+          end
         end
       end
       resources :spells, only: %i[index]

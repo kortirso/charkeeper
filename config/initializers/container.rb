@@ -96,6 +96,9 @@ module Charkeeper
     register('commands.characters_context.daggerheart.craft.perform') {
       CharactersContext::Daggerheart::Craft::PerformCommand.new
     }
+    register('commands.characters_context.daggerheart.upgrade.perform') {
+      CharactersContext::Daggerheart::Upgrade::PerformCommand.new
+    }
     register('commands.characters_context.daggerheart.create') { CharactersContext::Daggerheart::CreateCommand.new }
     register('commands.characters_context.daggerheart.update') { CharactersContext::Daggerheart::UpdateCommand.new }
     register('commands.characters_context.daggerheart.add_bonus') { CharactersContext::Daggerheart::AddBonusCommand.new }

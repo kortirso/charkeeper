@@ -280,6 +280,12 @@ export const Equipment = (props) => {
   }
 
   // rendering
+  const upgradeItems = createMemo(() => {
+    if (!items()) return [];
+
+    return items().filter((item) => item.kind === 'upgrade');
+  });
+
   const calculateCurrentLoad = createMemo(() => {
     if (characterItems() === undefined) return 0;
 
@@ -305,6 +311,12 @@ export const Equipment = (props) => {
         setHomebrewItem({ name: '', description: '' })
       });
     } else renderAlerts(result.errors_list);
+  }
+
+  const completeUpgrade = async (value) => {
+    setItems(items().concat([value.item]).sort((a, b) => a.name > b.name));
+    reloadCharacterItems();
+    props.onReloadCharacter();
   }
 
   return (
@@ -389,11 +401,15 @@ export const Equipment = (props) => {
             <For each={['hands', 'equipment', 'backpack', 'storage']}>
               {(state) =>
                 <ItemsTable
+                  upgrades={props.upgrades}
                   provider={character().provider}
+                  characterId={character().id}
                   title={localize(TRANSLATION, locale()).in[state].title}
                   subtitle={localize(TRANSLATION, locale()).in[state].description}
                   state={state}
                   items={characterItems().filter((item) => item.states[state] > 0)}
+                  upgradeItems={upgradeItems()}
+                  completeUpgrade={completeUpgrade}
                   onConsumeItem={consumeItem}
                   onConsumeCharacterItem={consumeCharacterItem}
                   onMoveCharacterItem={moveItem}

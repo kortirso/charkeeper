@@ -86,7 +86,8 @@ const COMPONENTS = {
     'item': DaggerheartItem,
     'recipe': DaggerheartItem,
     'consumables': DaggerheartItem,
-    'armor': DaggerheartArmor
+    'armor': DaggerheartArmor,
+    'upgrade': DaggerheartItem
   }
 }
 
