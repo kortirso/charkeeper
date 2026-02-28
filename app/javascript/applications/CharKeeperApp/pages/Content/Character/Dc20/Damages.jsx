@@ -25,7 +25,10 @@ const TRANSLATION = {
       resist: 'Resistance',
       vulner: 'Vulnerability'
     },
-    manual: 'Manual values'
+    manual: 'Manual values',
+    impact: 'Damage impact',
+    impactType: 'Damage type',
+    impactValue: 'Value'
   },
   ru: {
     title: 'Воздействие урона',
@@ -44,7 +47,10 @@ const TRANSLATION = {
       resist: 'Сопротивление',
       vulner: 'Уязвимость'
     },
-    manual: 'Персональные значения'
+    manual: 'Персональные значения',
+    impact: 'Тип воздействия',
+    impactType: 'Тип урона',
+    impactValue: 'Значение'
   }
 }
 
@@ -212,14 +218,14 @@ export const Dc20Damages = (props) => {
                   <div class="flex items-center gap-x-4 mt-2">
                     <Select
                       containerClassList="flex-1"
-                      labelText="Тип воздействия"
+                      labelText={localize(TRANSLATION, locale()).impact}
                       items={localize(TRANSLATION, locale()).impacts}
                       selectedValue={impact()}
                       onSelect={setImpact}
                     />
                     <Select
                       containerClassList="flex-1"
-                      labelText="Тип урона"
+                      labelText={localize(TRANSLATION, locale()).impactType}
                       items={impactTypes()}
                       selectedValue={impactType()}
                       onSelect={setImpactType}
@@ -227,7 +233,7 @@ export const Dc20Damages = (props) => {
                     <Show when={impact() && impact() !== 'immune'}>
                       <Select
                         containerClassList="flex-1"
-                        labelText="Значение"
+                        labelText={localize(TRANSLATION, locale()).impactValue}
                         items={impactValues()}
                         selectedValue={impactValue()}
                         onSelect={setImpactValue}
