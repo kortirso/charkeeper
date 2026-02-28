@@ -8,6 +8,15 @@ en:
       unexpected_key: Unknown param
       included_in?: Unknown value
       max_size?: Too long value
+      daggerheart_item_upgrade:
+        rules:
+          name:
+            filled?: Name is required
+            max_size?: The name cannot be longer than 50 characters
+          upgrades:
+            empty: Upgrades are required
+            invalid_key: Unknown upgrade
+            feature_exist: Feature already exists
       note:
         rules:
           title:

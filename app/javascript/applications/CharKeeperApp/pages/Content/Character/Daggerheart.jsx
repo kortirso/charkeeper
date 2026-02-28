@@ -57,6 +57,7 @@ export const Daggerheart = (props) => {
   const itemsFilter = (item) => item.kind === 'item';
   const consumablesFilter = (item) => item.kind === 'consumables';
   const recipesFilter = (item) => item.kind === 'recipe';
+  const upgradesFilter = (item) => item.kind === 'upgrade';
 
   const ancestryFilter = (item) => item.origin === 'ancestry';
   const communityFilter = (item) => item.origin === 'community';
@@ -162,6 +163,7 @@ export const Daggerheart = (props) => {
             </Match>
             <Match when={activeMobileTab() === 'equipment'}>
               <Equipment
+                upgrades={['primary weapon', 'secondary weapon', 'armor']}
                 character={character()}
                 itemFilters={[
                   { title: `${t('equipment.primaryWeapon')} T1`, callback: primaryWeaponFilterT1 },
@@ -182,7 +184,8 @@ export const Daggerheart = (props) => {
                   { title: `${t('equipment.armorList')} T4`, callback: armorFilterT4 },
                   { title: t('equipment.itemsList'), callback: itemsFilter },
                   { title: t('equipment.consumables'), callback: consumablesFilter },
-                  { title: t('equipment.recipes'), callback: recipesFilter }
+                  { title: t('equipment.recipes'), callback: recipesFilter },
+                  { title: t('equipment.upgrades'), callback: upgradesFilter }
                 ]}
                 onReplaceCharacter={props.onReplaceCharacter}
                 onReloadCharacter={props.onReloadCharacter}
@@ -326,6 +329,7 @@ export const Daggerheart = (props) => {
             </Match>
             <Match when={activeTab() === 'equipment'}>
               <Equipment
+                upgrades={['primary weapon', 'secondary weapon', 'armor']}
                 character={character()}
                 itemFilters={[
                   { title: `${t('equipment.primaryWeapon')} T1`, callback: primaryWeaponFilterT1 },
@@ -346,7 +350,8 @@ export const Daggerheart = (props) => {
                   { title: `${t('equipment.armorList')} T4`, callback: armorFilterT4 },
                   { title: t('equipment.itemsList'), callback: itemsFilter },
                   { title: t('equipment.consumables'), callback: consumablesFilter },
-                  { title: t('equipment.recipes'), callback: recipesFilter }
+                  { title: t('equipment.recipes'), callback: recipesFilter },
+                  { title: t('equipment.upgrades'), callback: upgradesFilter }
                 ]}
                 onReplaceCharacter={props.onReplaceCharacter}
                 onReloadCharacter={props.onReloadCharacter}
