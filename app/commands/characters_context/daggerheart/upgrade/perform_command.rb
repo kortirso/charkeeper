@@ -67,6 +67,7 @@ module CharactersContext
             item = ::Daggerheart::Item.create!(input[:attributes])
             add_character_item.call(character: input[:character], item: item, state: input[:state])
             update_old_item(input)
+            remove_upgrades(input)
             item
           end
 
@@ -93,6 +94,22 @@ module CharactersContext
           return input[:character_item].destroy if input[:states].values.sum.zero?
 
           input[:character_item].update(states: input[:states])
+        end
+
+        def remove_upgrades(input) # rubocop: disable Metrics/AbcSize
+          input[:upgrades].values.each do |item_id|
+            item = input[:character].items.find_by(item_id: item_id)
+            next unless item
+
+            total_count = item.states.values.sum
+            next if total_count.zero?
+            next item.destroy if total_count == 1
+
+            state, value = item.states.find { |_, value| value.positive? }
+            next unless state
+
+            item.update!(states: item.states.merge({ state => value - 1 }))
+          end
         end
       end
     end

@@ -67,6 +67,20 @@ describe CharactersContext::Daggerheart::Upgrade::PerformCommand do
         expect(command_call[:errors_list]).to be_nil
         expect(Item.last.info['trait']).to eq 'agi'
       end
+
+      context 'when gem is present in storage' do
+        let!(:gem_item) { create :character_item, character: character, item: gem_upgrade, states: { state => 2 } }
+
+        it 'creates item', :aggregate_failures do
+          expect { command_call }.to(
+            change(Item, :count).by(1)
+              .and(change(Character::Item, :count).by(1))
+          )
+          expect(command_call[:errors_list]).to be_nil
+          expect(Item.last.info['trait']).to eq 'agi'
+          expect(gem_item.reload.states).to eq({ state => 1 })
+        end
+      end
     end
 
     context 'with stone upgrade' do

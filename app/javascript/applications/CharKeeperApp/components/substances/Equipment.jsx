@@ -281,9 +281,9 @@ export const Equipment = (props) => {
 
   // rendering
   const upgradeItems = createMemo(() => {
-    if (!items()) return [];
+    if (!characterItems()) return [];
 
-    return items().filter((item) => item.kind === 'upgrade');
+    return characterItems().filter((item) => item.kind === 'upgrade');
   });
 
   const calculateCurrentLoad = createMemo(() => {

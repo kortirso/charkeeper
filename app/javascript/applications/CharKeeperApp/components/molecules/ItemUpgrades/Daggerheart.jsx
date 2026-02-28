@@ -79,7 +79,7 @@ export const DaggerheartItemUpgrade = (props) => {
             <Select
               containerClassList="mt-2"
               labelText={localize(TRANSLATION, locale()).types[upgradeType]}
-              items={Object.fromEntries(props.upgradeItems.filter((item) => item.info.type === upgradeType).map((item) => [item.id, item.name]))}
+              items={Object.fromEntries(props.upgradeItems.filter((item) => item.info.type === upgradeType).map((item) => [item.item_id, item.name]))}
               selectedValue={upgrades[upgradeType]}
               onSelect={(value) => setUpgrades({ ...upgrades, [upgradeType]: value })}
             />
@@ -87,10 +87,10 @@ export const DaggerheartItemUpgrade = (props) => {
               <Show
                 when={upgradeType === 'gem'}
                 fallback={
-                  <p class="text-sm mt-1">{props.upgradeItems.find(({ id }) => upgrades[upgradeType] === id).info.feature[locale()]}</p>
+                  <p class="text-sm mt-1">{props.upgradeItems.find(({ item_id }) => upgrades[upgradeType] === item_id).info.feature[locale()]}</p>
                 }
               >
-                <p class="text-sm mt-1">Характеристика для атак - {localize(config.traits[props.upgradeItems.find(({ id }) => upgrades[upgradeType] === id).info.trait].name, locale())}</p>
+                <p class="text-sm mt-1">Характеристика для атак - {localize(config.traits[props.upgradeItems.find(({ item_id }) => upgrades[upgradeType] === item_id).info.trait].name, locale())}</p>
               </Show>
             </Show>
           </>
