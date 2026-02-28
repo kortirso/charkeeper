@@ -63,6 +63,7 @@ export const Dc20Conditions = (props) => {
 
   const addCondition = () => {
     const value = parseInt(conditionValue());
+    if (!Number.isInteger(value)) return;
     if (value <= 0) return;
 
     const payload = { ...currentConditions(), [condition()]: value };
