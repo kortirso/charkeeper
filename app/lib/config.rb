@@ -3,7 +3,7 @@
 module Config
   extend self
 
-  def data(provider, key, version: '0.4.10')
+  def data(provider, key, version: '0.4.11')
     Rails.cache.fetch("#{provider}/#{key}/#{version}", expires_in: 3.days) { load_data(provider, key) }
   end
 
