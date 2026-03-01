@@ -181,9 +181,11 @@ module Pathfinder2Character
     def armor_penalty(slug, ability)
       equiped_armor = defense_gear[:armor]
       return 0 if equiped_armor.nil?
-      return equiped_armor.dig(:items_info, 'skills_penalty') if slug == 'stealth' && armor_traits[:noisy]
+
+      skills_penalty = equiped_armor.dig(:items_info, 'skills_penalty').to_i
+      return skills_penalty if slug == 'stealth' && armor_traits[:noisy]
       return 0 if slug.in?(FLEXIBLE_SKILLS) && armor_traits[:flexible]
-      return equiped_armor.dig(:items_info, 'skills_penalty') if ability.in?(ARMOR_ABILITIES) && !armor_traits[:strength_enough]
+      return skills_penalty if ability.in?(ARMOR_ABILITIES) && !armor_traits[:strength_enough]
 
       0
     end

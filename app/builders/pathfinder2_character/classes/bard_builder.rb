@@ -7,7 +7,7 @@ module Pathfinder2Character
       def call(result:)
         result[:health] = { current: result[:health] + 8, max: result[:health] + 8, temp: 0 }
         result[:abilities].merge!({ cha: 2 }) { |_, oldval, newval| oldval + newval }
-        result[:skill_boosts].merge!({ occultism: 1, performace: 1, free: 4 }) { |_, oldval, newval| oldval + newval }
+        result[:skill_boosts].merge!({ occultism: 1, performance: 1, free: 4 }) { |_, oldval, newval| oldval + newval }
 
         result[:weapon_skills] = { unarmed: 1, simple: 1, martial: 1, advanced: 0 }
         result[:armor_skills] = { unarmored: 1, light: 1, medium: 0, heavy: 0 }
