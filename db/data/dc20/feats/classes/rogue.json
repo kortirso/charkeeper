@@ -1,0 +1,131 @@
+[
+  {
+    "slug": "debilitating_strike",
+    "title": { "en": "Debilitating Strike", "ru": "Изнуряющий удар" },
+    "description": {
+      "en": "When you make a Weapon Attack, you can spend **1 SP** to force the target to make a Physical Save against your Save DC. **Save Failure:** The target suffers 1 of the following effects of your choice for 1 Round: Deafened, Exposed, Hindered, or Slowed 2. A target can't be affected by the same option more than once at a time.",
+      "ru": "Когда вы совершаете атаку оружием, вы можете потратить **1 ОВ**, чтобы заставить цель совершить физический спас против вашей СЛ спасов. **Провал:** На 1 раунд цель подвергается одному из следующих состояний на ваш выбор: оглушён, раскрыт, скован или замедлен 2. На цель не могут одновременно действовать два одинаковых эффекта **Изнуряющего удара**."
+    },
+    "origin": "class",
+    "origin_value": "rogue",
+    "kind": "static",
+    "conditions": { "level": 1 },
+    "price": { "sp": 1 }
+  },
+  {
+    "slug": "roguish_finesse",
+    "title": { "en": "Roguish Finesse", "ru": "Точность плута" },
+    "description": {
+      "en": "- **Cunning Action:** You gain movement equal to half your Speed when you take the Disengage, Feint, or Hide Actions. You can use this movement immediately before or after you take the Action.\n- **Skill Expertise:** Your Skill Mastery Limit increases by 1, up to Grandmaster (+10).\n- **Multi-Skilled:** You gain 1 Skill Point.",
+      "ru": "- **Хитрое действие:** Когда вы отступаете, подлавливаете или скрываетесь, вы получаете клетки движения в количестве, равном половине вашей скорости. Вы можете потратить их на передвижение сразу до или после совершения этого действия.\n- **Компетентность в навыке:** Вы получаете компетентность во всех навыках.\n- **Умелый:** Вы получаете +1 очко навыков."
+    },
+    "origin": "class",
+    "origin_value": "rogue",
+    "kind": "static",
+    "conditions": { "level": 1 }
+  },
+  {
+    "slug": "cypher_speech",
+    "title": { "en": "Cypher Speech", "ru": "Зашифрованный язык" },
+    "description": {
+      "en": "You become Fluent in a Mortal Language of your choice. Additionally, you understand how to speak in code with a specific demographic of your choice. Your coded messages can be concealed in normal conversation and written communications. This allows you to leave simple messages such as Safety, Threat, or Wealth, or mark the location of a cache, a secret passageway, a safehouse, or an area of danger.",
+      "ru": "Вы полностью владеете одним дополнительным смертным языком на ваш выбор. Кроме того, вы изучаете набор секретных кодовых слов, жаргонизмов, знаков и символов, который можете использовать для общения с определённой группой. Этот способ общения позволяет скрывать в обычной беседе и письмах секретные сообщения, такие как местоположение тайника, секретного прохода, безопасного укрытия или опасной зоны."
+    },
+    "origin": "class_flavor",
+    "origin_value": "rogue",
+    "kind": "static",
+    "conditions": { "level": 1 }
+  },
+  {
+    "slug": "cheap_shot",
+    "title": { "en": "Cheap Shot", "ru": "Коварный удар" },
+    "description": {
+      "en": "You deal +1 damage on Martial Attacks against a creature that fulfills at least one of the following:\n\n- It's Flanked or Prone.\n- It has any Condition other than Invisibile.\n- You're Hidden from it.",
+      "ru": "Вы наносите +1 урона бойцовскими атаками по существу, если:\n\n- Оно окружено или повалено.\n- Оно подвергнуто хотя бы 1 состоянию кроме невидимости.\n- Вы для него скрыты."
+    },
+    "origin": "class",
+    "origin_value": "rogue",
+    "kind": "static",
+    "conditions": { "level": 2 }
+  },
+  {
+    "slug": "thousand_cuts",
+    "title": { "en": "Thousand Cuts", "ru": "Тысяча ран" },
+    "description": {
+      "en": "When a creature fails its Save against your **Debilitating Strike**, it also begins Bleeding (even if it’s immune to the Condition). If a creature is affected by Bleeding from this Feature, the DC to end any Bleeding on it is equal to your Save DC and it can no longer be ended by regaining HP.",
+      "ru": "Когда существо проваливает спас от вашего **Изнуряющего удара**, оно также становится ранено (даже при иммунитете). Если существо ранено этой чертой, СЛ снятия пунктов ранения становится равна вашей СЛ спаса, а снять его исцелением невозможно."
+    },
+    "origin": "subclass",
+    "origin_value": "long_death",
+    "kind": "static",
+    "conditions": { "level": 3 }
+  },
+  {
+    "slug": "hundred_ways_to_die",
+    "title": { "en": "Hundred Ways to Die", "ru": "Сто способов умереть" },
+    "description": {
+      "en": "You are an expert at studying and identifying weaknesses in bodies and how best to kill creatures. You have ADV on any Check made to determine how something died or could die easier. This also extends to poisons, toxins, or identifying other materials used to kill.",
+      "ru": "Вы достигли мастерства в изучении и определении слабостей и уязвимостей существ. Вы получаете преимущество на проверки, направленные на определение причин смерти или поиск оптимальных способов убийства. Ваш опыт также включает знания о ядах, токсинах и прочих способах убийства."
+    },
+    "origin": "subclass_flavor",
+    "origin_value": "long_death",
+    "kind": "static",
+    "conditions": { "level": 3 }
+  },
+  {
+    "slug": "renegade_duelist",
+    "title": { "en": "Renegade Duelist", "ru": "Мятежный дуэлянт" },
+    "description": {
+      "en": "- **Flourishes:** Your Cunning Action now also includes the Disarm and Dodge Actions.\n- **Taunting Shot:** Once per round, when you make an Attack against a creature that fulfills the criteria for Cheap Shot, you can forgo your Cheap Shot damage to force the target to make a Charisma Save instead. **Failure:** The target is Taunted by you until the end of your next turn.\n- **Riposte:** When a creature within your Melee Range misses you with an Attack, it provokes an Opportunity Attack from you.",
+      "ru": "- **Росчерк Клинка:** Вы также получаете бонусы **Хитрого действия** когда разоружаете или уклоняетесь.\n- **Провоцирующий удар:** Один раз за каждый свой ход, когда вы атакуете существо, вместо урона **Коварного удара** вы можете заставить цель совершить спас харизмы. **Провал:** Цель спровоцирована вами до конца вашего следующего хода.\n- **Ответный удар:** Когда существо в вашей досягаемости промахивается по вам атакой, вы можете совершить по нему атаку по возможности."
+    },
+    "origin": "subclass",
+    "origin_value": "swashbuckler",
+    "kind": "static",
+    "conditions": { "level": 3 }
+  },
+  {
+    "slug": "tall_tales",
+    "title": { "en": "Tall Tales", "ru": "Небылицы" },
+    "description": {
+      "en": "You know how to play to a crowd. You can spend up to 5 minutes telling a story to a crowd of creatures (that are not immediately hostile to you) and keep their rapt attention the entire time. During this story, creatures within the crowd have DisADV on Awareness Checks.",
+      "ru": "Вы знаете, как завлечь публику. Вы можете потратить до 5 минут, рассказывая историю существам, которые не относятся к вам явно враждебно, чтобы завладеть их пристальным вниманием. При этом они получают помеху на проверки бдительности."
+    },
+    "origin": "subclass_flavor",
+    "origin_value": "swashbuckler",
+    "kind": "static",
+    "conditions": { "level": 3 }
+  },
+  {
+    "slug": "unseen_ambusher",
+    "title": { "en": "Unseen Ambusher", "ru": "Незаметная засада" },
+    "description": {
+      "en": "- **Skulker:** You have ADV on Stealth Checks made in Combat.\n- **Backstab:** Enemies you are Hidden from have DisADV on their Saves against your Debilitating Strikes.",
+      "ru": "- **Таящийся:** Вы получаете преимущество на проверки скрытности в бою.\n- **Удар в спину:** Враги, для которых вы скрыты, получают помеху на спас от вашего **Изнуряющего удара**."
+    },
+    "origin": "talent",
+    "origin_value": "rogue",
+    "kind": "static",
+    "conditions": { "level": 3 },
+    "info": {
+      "multiple": false,
+      "required_features": ["debilitating_strike"]
+    }
+  },
+  {
+    "slug": "sinister_shot",
+    "title": { "en": "Sinister Shot", "ru": "Добивающий удар" },
+    "description": {
+      "en": "Your Cheap Shot deals +1 damage for each additional Condition on the target. Multiple stacks of the same Condition count only once.",
+      "ru": "Ваш **Коварный удар** наносит +1 урона за каждое дополнительное состояние на цели. Складывающиеся состояния считаются за одно."
+    },
+    "origin": "talent",
+    "origin_value": "rogue",
+    "kind": "static",
+    "conditions": { "level": 3 },
+    "info": {
+      "multiple": false,
+      "required_features": ["cheap_shot"]
+    }
+  }
+]

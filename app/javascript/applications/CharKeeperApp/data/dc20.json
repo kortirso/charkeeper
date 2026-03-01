@@ -44,6 +44,13 @@
         "portal_mage": { "name": { "en": "Portal Mage", "ru": "Порталист" } },
         "witch": { "name": { "en": "Witch", "ru": "Ведьма" } }
       }
+    },
+    "rogue": {
+      "name": { "en": "Rogue", "ru": "Плут" },
+      "subclasses": {
+        "long_death": { "name": { "en": "Long Death", "ru": "Долгая смерть" } },
+        "swashbuckler": { "name": { "en": "Swashbuckler", "ru": "Дуэлянт" } }
+      }
     }
   },
   "spell_lists": {
