@@ -10,7 +10,7 @@ module Frontend
           ::Dc20::Feat.where(origin: 7),
           ::Dc20::SpellSerializer,
           :spells,
-          cache_options: { key: 'dc20_spells/v1', expires_in: 24.hours }
+          cache_options: { key: "dc20_spells/#{I18n.locale}/v1", expires_in: 24.hours }
         )
       end
     end
