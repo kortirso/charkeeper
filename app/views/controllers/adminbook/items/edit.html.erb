@@ -24,6 +24,10 @@
     </div>
   <% end %>
   <div class="form-field mb-2">
+    <div><%= form.label 'Тип', class: 'form-label' %></div>
+    <div><%= form.text_field :kind, value: @item.kind, required: true, class: 'form-value w-80' %></div>
+  </div>
+  <div class="form-field mb-2">
     <div><%= form.label 'Вес/Цена', class: 'form-label' %></div>
     <div><%= form.textarea :data, value: @item.data.attributes, class: 'form-text text-sm', required: true, size: '100x7' %></div>
   </div>
