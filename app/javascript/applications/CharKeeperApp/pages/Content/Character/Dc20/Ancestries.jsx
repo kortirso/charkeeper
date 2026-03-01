@@ -30,6 +30,7 @@ export const Dc20Ancestries = (props) => {
   const character = () => props.character;
 
   const [ancestries, setAncestries] = createSignal(undefined);
+  const [availableAncestries, setAvailableAncestries] = createSignal([]);
 
   const [ancestriesForm, setAncestriesForm] = createSignal({ ancestry_feats: {}, ancestry_points: 5 });
   const [validations, setValidations] = createSignal({ negativeTraits: 0, minorTraits: 0 });
@@ -61,6 +62,7 @@ export const Dc20Ancestries = (props) => {
 
           batch(() => {
             setAncestries(ancestriesData.ancestries);
+            setAvailableAncestries([...new Set(ancestriesData.ancestries.map((item) => item.origin_value))]);
             setAncestriesForm({ ancestry_feats: characterAncestriesData, ancestry_points: character().ancestry_points });
             setValidations(validations);
           });
@@ -69,7 +71,10 @@ export const Dc20Ancestries = (props) => {
     } else {
       Promise.all([fetchAncestries()]).then(
         ([ancestriesData]) => {
-          setAncestries(ancestriesData.ancestries);
+          batch(() => {
+            setAncestries(ancestriesData.ancestries);
+            setAvailableAncestries([...new Set(ancestriesData.ancestries.map((item) => item.origin_value))]);
+          });
         }
       );
     }
@@ -130,13 +135,13 @@ export const Dc20Ancestries = (props) => {
           }
         >
           <>
-            <For each={Object.entries(config.ancestries)}>
+            <For each={Object.entries(config.ancestries).filter(([ancestry]) => availableAncestries().includes(ancestry))}>
               {([ancestry, values]) =>
                 <Show when={Object.keys(ancestriesForm().ancestry_feats).length < 2 || ancestriesForm().ancestry_feats[ancestry]}>
                   <Toggle
                     title={<p>{values.name[locale()]}{ancestriesForm().ancestry_feats[ancestry] ? ` (${ancestriesForm().ancestry_feats[ancestry].length})` : ''}</p>}
                   >
-                    <For each={ancestries().filter((item) => item.origin_value === ancestry)}>
+                    <For each={ancestries().filter((item) => item.origin_value === ancestry).sort((a, b) => a.price < b.price)}>
                       {(item) =>
                         <Checkbox
                           labelText={`${item.title} (${item.price})`}

@@ -503,3 +503,7 @@ nav.pagy.nav a.gap {
 body.web {
   @apply bg-dark-gunmetal text-snow;
 }
+
+.stat-title {
+  @apply uppercase text-sm mb-2 text-center;
+}

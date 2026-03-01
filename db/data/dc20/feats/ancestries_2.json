@@ -1,0 +1,599 @@
+[
+  {
+    "slug": "small_sized",
+    "title": { "en": "Small-Sized", "ru": "Маленький" },
+    "description": {
+      "en": "Your Size is considered Small.",
+      "ru": "Ваш размер изменяется на маленький."
+    },
+    "origin": "ancestry",
+    "origin_value": "halfling",
+    "kind": "hidden",
+    "info": {
+      "price": -1
+    },
+    "eval_variables": {
+      "size": "'small'"
+    }
+  },
+  {
+    "slug": "elusive",
+    "title": { "en": "Elusive", "ru": "Неуловимый" },
+    "description": {
+      "en": "When you take the Disengage Action, you instead gain the benefits of the Full Disengage Action.",
+      "ru": "Когда вы отступаете, вы получаете бонусы, как если бы активно отступали."
+    },
+    "origin": "ancestry",
+    "origin_value": "halfling",
+    "kind": "static",
+    "info": {
+      "price": 2
+    }
+  },
+  {
+    "slug": "halfling_bravery",
+    "title": { "en": "Halfling Bravery", "ru": "Полуросличья храбрость" },
+    "description": {
+      "en": "You have ADV on Saves against being Frightened, Intimidated, or Terrified.",
+      "ru": "Вы получаете преимущество на cпасы от запуганности, смятения и устрашения."
+    },
+    "origin": "ancestry",
+    "origin_value": "halfling",
+    "kind": "static",
+    "info": {
+      "price": 2
+    }
+  },
+  {
+    "slug": "halfling_endurance",
+    "title": { "en": "Halfling Endurance", "ru": "Полуросличья выносливость" },
+    "description": {
+      "en": "You have Exhaustion Resistance.",
+      "ru": "Вы получаете сопротивление истощению."
+    },
+    "origin": "ancestry",
+    "origin_value": "halfling",
+    "kind": "static",
+    "info": {
+      "price": 1
+    }
+  },
+  {
+    "slug": "deft_footwork",
+    "title": { "en": "Deft Footwork", "ru": "Проворные ноги" },
+    "description": {
+      "en": "You can move through the space of a hostile creature 1 size larger than you as if it were Difficult Terrain.",
+      "ru": "Вы можете перемещаться через пространство враждебных существ, которые на 1 размер больше вас, как через труднопроходимую местность."
+    },
+    "origin": "ancestry",
+    "origin_value": "halfling",
+    "kind": "static",
+    "info": {
+      "price": 1
+    }
+  },
+  {
+    "slug": "beast_whisperer",
+    "title": { "en": "Beast Whisperer", "ru": "Шепчущий зверям" },
+    "description": {
+      "en": "You can speak to Beasts in a limited manner. They can understand the meanings of simple words, concepts, or states of emotion. You don't have a special ability to understand them in return.",
+      "ru": "Вы получаете ограниченную способность разговаривать со зверями. При общении они понимают значения ваших простых слов, концепций и эмоций. Эта черта не даёт вам возможности понимать зверей в ответ."
+    },
+    "origin": "ancestry",
+    "origin_value": "halfling",
+    "kind": "static",
+    "info": {
+      "price": 0
+    }
+  },
+  {
+    "slug": "beast_insight",
+    "title": { "en": "Beast Insight", "ru": "Понимание зверей" },
+    "description": {
+      "en": "You can understand Beasts in a limited manner. You can understand the meaning of their noises and behaviors, though they have no special ability to understand you in return.",
+      "ru": "Вы получаете ограниченную способность понимать зверей. Вы понимаете смысл их звуков и поведения. Эта черта не даёт зверям возможности понимать вас в ответ."
+    },
+    "origin": "ancestry",
+    "origin_value": "halfling",
+    "kind": "static",
+    "info": {
+      "price": 1
+    }
+  },
+  {
+    "slug": "burst_of_bravery",
+    "title": { "en": "Burst of Bravery", "ru": "Порыв храбрости" },
+    "description": {
+      "en": "You can end the Frightened, Intimidated, or Terrified Condition on yourself for free at any time.",
+      "ru": "В любой момент раунда вы можете бесплатно снять с себя состояние запуганности, смятения или устрашения."
+    },
+    "origin": "ancestry",
+    "origin_value": "halfling",
+    "kind": "static",
+    "description_eval_variables": {
+      "limit": "1"
+    },
+    "limit_refresh": "combat",
+    "info": {
+      "price": 1
+    }
+  },
+  {
+    "slug": "halfling_trade_expertise",
+    "title": { "en": "Trade Expertise", "ru": "Компетентность в ремесле" },
+    "description": {
+      "en": "Your Mastery Cap and Mastery Level in the chosen Trade both increase by 1.",
+      "ru": "Вы получаете компетентность в ремесле и повышаете его ступень мастерства."
+    },
+    "origin": "ancestry",
+    "origin_value": "halfling",
+    "kind": "hidden",
+    "info": {
+      "price": 1,
+      "increase": {
+        "trade_expertise_points": 1
+      }
+    }
+  },
+  {
+    "slug": "critter_knowledge",
+    "title": { "en": "Critter Knowledge", "ru": "Знание живности" },
+    "description": {
+      "en": "You have ADV on Nature, Survival, and Animal Checks involving Small size creatures and smaller.",
+      "ru": "Вы получаете преимущество на проверки природы, выживания и животных, связанные с существами маленького размера и меньше."
+    },
+    "origin": "ancestry",
+    "origin_value": "halfling",
+    "kind": "static",
+    "info": {
+      "price": 1
+    }
+  },
+  {
+    "slug": "halfling_brittle",
+    "title": { "en": "Brittle", "ru": "Тощий" },
+    "description": {
+      "en": "You gain calculated penalty -1 to AD.",
+      "ru": "Вы получаете добавленный штраф -1 ПЗ."
+    },
+    "origin": "ancestry",
+    "origin_value": "halfling",
+    "kind": "update_result",
+    "info": {
+      "price": -1
+    },
+    "eval_variables": {
+      "area_defense": "area_defense.transform_values { |value| value - 1 }"
+    }
+  },
+  {
+    "slug": "intelligence_attribute_decrease",
+    "title": { "en": "Intelligence Attribute Decrease", "ru": "Уменьшение атрибута интеллекта" },
+    "description": {
+      "en": "You decrease your Intelligence by 1.",
+      "ru": "Ваша интеллект уменьшается на 1."
+    },
+    "origin": "ancestry",
+    "origin_value": "halfling",
+    "kind": "hidden",
+    "info": {
+      "price": -1
+    },
+    "bonus_eval_variables": {
+      "modified_abilities": "modified_abilities.merge({ 'int' => modified_abilities['int'] - 1 })"
+    }
+  },
+  {
+    "slug": "halfling_short-legged",
+    "title": { "en": "Short-Legged", "ru": "Коротконогий" },
+    "description": {
+      "en": "Your Speed decreases by 1 Space.",
+      "ru": "Ваша скорость уменьшается на 1 клетку."
+    },
+    "origin": "ancestry",
+    "origin_value": "halfling",
+    "kind": "update_result",
+    "info": {
+      "price": -1
+    },
+    "eval_variables": {
+      "speeds": "speeds.merge({ 'ground' => speeds['ground'] - 1 })"
+    }
+  },
+  {
+    "slug": "gnome_small_sized",
+    "title": { "en": "Small-Sized", "ru": "Маленький" },
+    "description": {
+      "en": "Your Size is considered Small.",
+      "ru": "Ваш размер изменяется на маленький."
+    },
+    "origin": "ancestry",
+    "origin_value": "gnome",
+    "kind": "hidden",
+    "info": {
+      "price": -1
+    },
+    "eval_variables": {
+      "size": "'small'"
+    }
+  },
+  {
+    "slug": "escape_artist",
+    "title": { "en": "Escape Artist", "ru": "Изворотливый" },
+    "description": {
+      "en": "You have ADV on Checks and Saves to avoid or escape being Grappled or Restrained.",
+      "ru": "Вы получаете преимущество на проверки и спасы, совершённые для избегания или выхода из захвата или обездвиживания."
+    },
+    "origin": "ancestry",
+    "origin_value": "gnome",
+    "kind": "static",
+    "info": {
+      "price": 2
+    }
+  },
+  {
+    "slug": "magnified_vision",
+    "title": { "en": "Magnified Vision", "ru": "Детальный взор" },
+    "description": {
+      "en": "You have ADV on Investigation Checks made on something you're holding or touching.",
+      "ru": "Вы получаете преимущество на проверки анализа, связанные с изучением объектов, которые вы держите или которых касаетесь."
+    },
+    "origin": "ancestry",
+    "origin_value": "gnome",
+    "kind": "static",
+    "info": {
+      "price": 1
+    }
+  },
+  {
+    "slug": "mental_clarity",
+    "title": { "en": "Mental Clarity", "ru": "Ясность ума" },
+    "description": {
+      "en": "You have ADV on Saves against being Dazed or Stunned.",
+      "ru": "Вы получаете преимущество на спасы от потрясения и ошеломления."
+    },
+    "origin": "ancestry",
+    "origin_value": "gnome",
+    "kind": "static",
+    "info": {
+      "price": 2
+    }
+  },
+  {
+    "slug": "strong_minded",
+    "title": { "en": "Strong-Minded", "ru": "Волевой" },
+    "description": {
+      "en": "You gain Psychic Resistance (1).",
+      "ru": "Вы получаете сопротивление психическому урону (1)."
+    },
+    "origin": "ancestry",
+    "origin_value": "gnome",
+    "kind": "update_result",
+    "info": {
+      "price": 1
+    },
+    "eval_variables": {
+      "damages": "damages.concat([['psychic', 'resist', 1]])"
+    }
+  },
+  {
+    "slug": "predict_weather",
+    "title": { "en": "Predict Weather", "ru": "Предсказание погоды" },
+    "description": {
+      "en": "You can naturally tell what the weather is going to be in the next hour in the area within 1 mile of you. You don't have DisADV on Checks or Saves as a result of naturally occurring weather.",
+      "ru": "Вы можете определять, какой будет погода в течение следующего часа в радиусе 1 мили. Вы не получаете помеху на проверки или спасы из-за естественных погодных условий."
+    },
+    "origin": "ancestry",
+    "origin_value": "gnome",
+    "kind": "static",
+    "info": {
+      "price": 0
+    }
+  },
+  {
+    "slug": "mana_increase",
+    "title": { "en": "Mana Increase", "ru": "Увеличение запаса маны" },
+    "description": {
+      "en": "Your MP maximum increases by 1.",
+      "ru": "Ваш максимум ОМ увеличивается на 1."
+    },
+    "origin": "ancestry",
+    "origin_value": "gnome",
+    "kind": "update_result",
+    "info": {
+      "price": 1
+    },
+    "eval_variables": {
+      "mana_points": "mana_points.merge('max' => mana_points['max'] + 1)"
+    }
+  },
+  {
+    "slug": "trapper",
+    "title": { "en": "Trapper", "ru": "Мастер ловушек" },
+    "description": {
+      "en": "You have ADV on Investigation Checks to spot Traps and on Trickery Checks to Hide Traps.",
+      "ru": "Вы получаете преимущество на проверки анализа, чтобы обнаружить ловушки, и на проверки уловок, чтобы их спрятать."
+    },
+    "origin": "ancestry",
+    "origin_value": "gnome",
+    "kind": "static",
+    "info": {
+      "price": 1
+    }
+  },
+  {
+    "slug": "lightning_insulation",
+    "title": { "en": "Lightning Insulation", "ru": "Электростойкий" },
+    "description": {
+      "en": "You have Lightning Resistance (Half) and can't be struck by natural lightning.",
+      "ru": "Вы получаете сопротивление электрическому урону (половина), и в вас не может ударить естественная молния."
+    },
+    "origin": "ancestry",
+    "origin_value": "gnome",
+    "kind": "update_result",
+    "info": {
+      "price": 2
+    },
+    "eval_variables": {
+      "damages": "damages.concat([['lightning', 'resist', 'half']])"
+    }
+  },
+  {
+    "slug": "gnome_trade_expertise",
+    "title": { "en": "Trade Expertise", "ru": "Компетентность в ремесле" },
+    "description": {
+      "en": "Choose a Crafting or Subterfuge Trade. Your Mastery Cap and Mastery Level in the chosen Trade both increase by 1.",
+      "ru": "Вы получаете компетентность в производственном или теневом ремесле и повышаете его ступень мастерства."
+    },
+    "origin": "ancestry",
+    "origin_value": "gnome",
+    "kind": "update_result",
+    "info": {
+      "price": 1,
+      "increase": {
+        "trade_expertise_points": 1
+      }
+    }
+  },
+  {
+    "slug": "storm_knowledge",
+    "title": { "en": "Storm Knowledge", "ru": "Знание непогоды" },
+    "description": {
+      "en": "While within rainy, snowy, or stormy environments, you have ADV on Survival Checks. Additionally, you have ADV on Knowledge Checks made to recall information about rain, snow, and storms.",
+      "ru": "Вы получаете преимущество на проверки выживания, находясь там, где идёт дождь, падает снег или бушует буря. Также вы получаете преимущество на проверки знаний, связанные с дождем, снегом и бурями."
+    },
+    "origin": "ancestry",
+    "origin_value": "gnome",
+    "kind": "static",
+    "info": {
+      "price": 1
+    }
+  },
+  {
+    "slug": "agility_attribute_decrease",
+    "title": { "en": "Agility Attribute Decrease", "ru": "Уменьшение атрибута ловкости" },
+    "description": {
+      "en": "You decrease your Agility by 1.",
+      "ru": "Ваша ловкость уменьшается на 1."
+    },
+    "origin": "ancestry",
+    "origin_value": "gnome",
+    "kind": "hidden",
+    "info": {
+      "price": -1
+    },
+    "bonus_eval_variables": {
+      "modified_abilities": "modified_abilities.merge({ 'agi' => modified_abilities['agi'] - 1 })"
+    }
+  },
+  {
+    "slug": "gnome_short-legged",
+    "title": { "en": "Short-Legged", "ru": "Коротконогий" },
+    "description": {
+      "en": "Your Speed decreases by 1 Space.",
+      "ru": "Ваша скорость уменьшается на 1 клетку."
+    },
+    "origin": "ancestry",
+    "origin_value": "gnome",
+    "kind": "update_result",
+    "info": {
+      "price": -1
+    },
+    "eval_variables": {
+      "speeds": "speeds.merge({ 'ground' => speeds['ground'] - 1 })"
+    }
+  },
+  {
+    "slug": "cursed_mind",
+    "title": { "en": "Cursed Mind", "ru": "Проклятый разум" },
+    "description": {
+      "en": "You gain Psychic Vulnerability (1).",
+      "ru": "Вы получаете уязвимость психическому урону (1)."
+    },
+    "origin": "ancestry",
+    "origin_value": "orc",
+    "kind": "update_result",
+    "info": {
+      "price": -1
+    },
+    "eval_variables": {
+      "damages": "damages.concat([['psychic', 'vulner', 1]])"
+    }
+  },
+  {
+    "slug": "orc_rush",
+    "title": { "en": "Orc Rush", "ru": "Орочье неистовство" },
+    "description": {
+      "en": "When you willingly move toward an enemy, you can spend 1 AP to gain Temp HP equal to your Prime Modifier.",
+      "ru": "Когда вы добровольно передвигаетесь в сторону врага, вы можете потратить 1 ОД, чтобы получить временные ОЗ в количестве, равном вашему высшему модификатору."
+    },
+    "origin": "ancestry",
+    "origin_value": "orc",
+    "kind": "static",
+    "description_eval_variables": {
+      "limit": "1"
+    },
+    "limit_refresh": "combat",
+    "info": {
+      "price": 2
+    }
+  },
+  {
+    "slug": "brutal_strikes",
+    "title": { "en": "Brutal Strikes", "ru": "Жестокие удары" },
+    "description": {
+      "en": "You deal +1 damage when you score a Brutal or Critical Hit with a Melee Weapon or Unarmed Strike.",
+      "ru": "Ваши жестокие или критические удары ближним оружием и безоружными атаками наносят +1 урона."
+    },
+    "origin": "ancestry",
+    "origin_value": "orc",
+    "kind": "static",
+    "info": {
+      "price": 2
+    }
+  },
+  {
+    "slug": "orc_tough",
+    "title": { "en": "Tough", "ru": "Крепкий" },
+    "description": {
+      "en": "Your HP maximum increases by 1.",
+      "ru": "Ваш максимум ОЗ увеличивается на 1."
+    },
+    "origin": "ancestry",
+    "origin_value": "orc",
+    "kind": "update_result",
+    "info": {
+      "price": 1
+    },
+    "eval_variables": {
+      "max_health": "max_health + 1"
+    }
+  },
+  {
+    "slug": "orcish_resolve",
+    "title": { "en": "Orcish Resolve", "ru": "Орочье упорство" },
+    "description": {
+      "en": "You gain 1 additional AP while on Death's Door.",
+      "ru": "При смерти вы получаете +1 к максимуму ОД."
+    },
+    "origin": "ancestry",
+    "origin_value": "orc",
+    "kind": "static",
+    "info": {
+      "price": 1
+    }
+  },
+  {
+    "slug": "already_cursed",
+    "title": { "en": "Already Cursed", "ru": "Уже проклятый" },
+    "description": {
+      "en": "You have ADV on Saves against Curses.",
+      "ru": "Вы получаете преимущества на спасы от проклятий."
+    },
+    "origin": "ancestry",
+    "origin_value": "orc",
+    "kind": "static",
+    "info": {
+      "price": 0
+    }
+  },
+  {
+    "slug": "intimidating_shout",
+    "title": { "en": "Intimidating Shout", "ru": "Пугающий крик" },
+    "description": {
+      "en": "You can spend **1 AP** to let out an Intimidating Shout. All creatures within 5 Spaces that can hear you must make a Charisma Save contested by your Attack Check. **Failure:** A target is Hindered on the next Attack Check or Spell Attack it makes before the start of your next turn.",
+      "ru": "Вы можете потратить 1 ОД, чтобы издать **Пугающий крик**. Совершите проверку атаки против спаса харизмы всех существ в пределах 5 Клеток, которые могут вас слышать. **Провал:** Цель скована для своей следующей атаки, совершённой до начала вашего следующего хода."
+    },
+    "origin": "ancestry",
+    "origin_value": "orc",
+    "kind": "static",
+    "description_eval_variables": {
+      "limit": "1"
+    },
+    "limit_refresh": "combat",
+    "info": {
+      "price": 2
+    }
+  },
+  {
+    "slug": "orc_dash",
+    "title": { "en": "Orc Dash", "ru": "Орочий рывок" },
+    "description": {
+      "en": "You can use your Minor Action to move, as long as that movement is towards an enemy.",
+      "ru": "Вы можете использовать свое малое действие, чтобы двигаться, при условии, что перемещаетесь по направлению к врагу."
+    },
+    "origin": "ancestry",
+    "origin_value": "orc",
+    "kind": "static",
+    "description_eval_variables": {
+      "limit": "1"
+    },
+    "limit_refresh": "combat",
+    "info": {
+      "price": 1
+    }
+  },
+  {
+    "slug": "finishing_blow",
+    "title": { "en": "Finishing Blow", "ru": "Добивающий удар" },
+    "description": {
+      "en": "You deal +1 damage to creatures who are Well-Bloodied.",
+      "ru": "Вы наносите +1 урона существам, которые тяжело изранены."
+    },
+    "origin": "ancestry",
+    "origin_value": "orc",
+    "kind": "static",
+    "info": {
+      "price": 1
+    }
+  },
+  {
+    "slug": "imposing_presence",
+    "title": { "en": "Imposing Presence", "ru": "Внушительная наружность" },
+    "description": {
+      "en": "When a creature makes an Attack against you, you can force them to make a Charisma Save. **Failure:** They must choose a new target for the Attack. If there are no other targets, then the Attack is wasted.",
+      "ru": "Когда существо атакует вас, вы можете заставить его совершить спас харизмы. **Провал:** Оно должно выбрать новую цель для этой атаки. Если других доступных целей нет, атака теряется."
+    },
+    "origin": "ancestry",
+    "origin_value": "orc",
+    "kind": "static",
+    "description_eval_variables": {
+      "limit": "1"
+    },
+    "limit_refresh": "combat",
+    "info": {
+      "price": 1
+    }
+  },
+  {
+    "slug": "provocation",
+    "title": { "en": "Provocation", "ru": "Вспыльчивый" },
+    "description": {
+      "en": "You have DisADV on Checks and Saves against being Taunted.",
+      "ru": "Вы получаете помеху на проверки и спасы от провокации."
+    },
+    "origin": "ancestry",
+    "origin_value": "orc",
+    "kind": "static",
+    "info": {
+      "price": -1
+    }
+  },
+  {
+    "slug": "reckless",
+    "title": { "en": "Reckless", "ru": "Безрассудный" },
+    "description": {
+      "en": "You gain calculated penalty -1 to PD.",
+      "ru": "Вы получаете добавленный штраф -1 к ТЗ."
+    },
+    "origin": "ancestry",
+    "origin_value": "orc",
+    "kind": "update_result",
+    "info": {
+      "price": -1
+    },
+    "eval_variables": {
+      "precision_defense": "precision_defense.transform_values { |value| value - 1 }"
+    }
+  }
+]

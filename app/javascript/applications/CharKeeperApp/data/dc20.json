@@ -1,8 +1,21 @@
 {
+  "sizes": {
+    "small": { "name": { "en": "Small", "ru": "Маленький" } },
+    "medium": { "name": { "en": "Medium", "ru": "Средний" } },
+    "large": { "name": { "en": "Large", "ru": "Большой" } }
+  },
   "ancestries": {
     "human": { "name": { "en": "Human", "ru": "Человек" } },
     "elf": { "name": { "en": "Elf", "ru": "Эльф" } },
-    "dwarf": { "name": { "en": "Dwarf", "ru": "Дварф" } }
+    "dwarf": { "name": { "en": "Dwarf", "ru": "Дварф" } },
+    "halfling": { "name": { "en": "Halfling", "ru": "Полурослик" } },
+    "gnome": { "name": { "en": "Gnome", "ru": "Гном" } },
+    "orc": { "name": { "en": "Orc", "ru": "Орк" } },
+    "dragonborn": { "name": { "en": "Dragonborn", "ru": "Драконорожденный" } },
+    "giantborn": { "name": { "en": "Giantborn", "ru": "Великанорожденный" } },
+    "angelborn": { "name": { "en": "Angelborn", "ru": "Ангелорожденный" } },
+    "fiendborn": { "name": { "en": "Fiendborn", "ru": "Демонорожденный" } },
+    "beastborn": { "name": { "en": "Beastborn", "ru": "Зверорожденный" } }
   },
   "classes": {
     "barbarian": {

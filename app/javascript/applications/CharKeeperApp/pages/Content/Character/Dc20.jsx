@@ -4,7 +4,7 @@ import { createWindowSize } from '@solid-primitives/resize-observer';
 
 import {
   Dc20Abilities, Dc20Skills, Dc20Saves, Dc20CombatStatic, Dc20Leveling, Dc20Resources, Dc20Spells, Dc20Rest,
-  Dc20Bonuses, Dc20Damages, Dc20Conditions
+  Dc20Bonuses, Dc20Damages, Dc20Conditions, Dc20Info
 } from '../../../pages';
 import {
   CharacterNavigation, Notes, Avatar, ContentWrapper, createDiceRoll, Equipment, Combat, Feats
@@ -77,12 +77,15 @@ export const Dc20 = (props) => {
         <div class="p-2 pb-16 flex-1 overflow-y-auto">
           <Switch>
             <Match when={activeMobileTab() === 'abilities'}>
-              <Dc20Abilities
-                character={character()}
-                openDiceRoll={openDiceRoll}
-                onReplaceCharacter={props.onReplaceCharacter}
-                onReloadCharacter={props.onReloadCharacter}
-              />
+              <Dc20Info character={character()} />
+              <div class="mt-4">
+                <Dc20Abilities
+                  character={character()}
+                  openDiceRoll={openDiceRoll}
+                  onReplaceCharacter={props.onReplaceCharacter}
+                  onReloadCharacter={props.onReloadCharacter}
+                />
+              </div>
               <div class="mt-4">
                 <Dc20Saves character={character()} openDiceRoll={openDiceRoll} />
               </div>
@@ -176,12 +179,15 @@ export const Dc20 = (props) => {
 
     return (
       <>
-        <Dc20Abilities
-          character={character()}
-          openDiceRoll={openDiceRoll}
-          onReplaceCharacter={props.onReplaceCharacter}
-          onReloadCharacter={props.onReloadCharacter}
-        />
+        <Dc20Info character={character()} />
+        <div class="mt-4">
+          <Dc20Abilities
+            character={character()}
+            openDiceRoll={openDiceRoll}
+            onReplaceCharacter={props.onReplaceCharacter}
+            onReloadCharacter={props.onReloadCharacter}
+          />
+        </div>
         <div class="mt-4">
           <Dc20Saves character={character()} openDiceRoll={openDiceRoll} />
         </div>

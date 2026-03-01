@@ -8,6 +8,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Added
 - upgrading items for DH characters
 
+### Modified
+- ancestries for DC20 characters
+
 ## [0.4.10] - 2026-02-28
 ### Added
 - fallout 2d20 base integration

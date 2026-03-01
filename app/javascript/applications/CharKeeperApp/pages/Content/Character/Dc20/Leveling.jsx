@@ -16,7 +16,7 @@ const TRANSLATION = {
   en: {
     currentLevel: 'level',
     paths: 'Character paths',
-    existingPoints: 'Available path points',
+    existingPoints: 'Path points',
     martialPathLevel: 'Martial path level',
     spellcasterPathLevel: 'Spellcaster path level',
     title: 'You gain additional benefits from a Talent Path: Martial Path or Spellcaster Path',
@@ -50,7 +50,7 @@ const TRANSLATION = {
   ru: {
     currentLevel: 'уровень',
     paths: 'Пути персонажа',
-    existingPoints: 'Доступные очки пути',
+    existingPoints: 'Очки пути',
     martialPathLevel: 'Развитие пути бойца',
     spellcasterPathLevel: 'Развитие пути мага',
     title: 'Вы получаете дополнительные преимущества от Пути Таланта: Пути бойца или Пути мага',

@@ -13,7 +13,7 @@ export const StatsBlock = (props) => {
         <For each={props.items}>
           {(item) =>
             <div class="flex-1 flex flex-col items-center">
-              <p class="uppercase text-sm mb-1">{item.title}</p>
+              <p class="stat-title">{item.title}</p>
               <p class="text-2xl mb-1">{item.value}</p>
             </div>
           }

@@ -6,13 +6,12 @@ module Frontend
       include SerializeRelation
 
       def index
-        serialize_relation(relation, ::Dc20::SpellSerializer, :spells)
-      end
-
-      private
-
-      def relation
-        ::Dc20::Feat.where(origin: 7)
+        serialize_relation_v2(
+          ::Dc20::Feat.where(origin: 7),
+          ::Dc20::SpellSerializer,
+          :spells,
+          cache_options: { key: 'dc20_spells/v1', expires_in: 24.hours }
+        )
       end
     end
   end
