@@ -118,6 +118,13 @@ Dir[File.join(Rails.root.join('db/data/dc20/feats/*.json'))].each do |filename|
   end
 end
 
+Dir[File.join(Rails.root.join('db/data/pathfinder2/feats/*.json'))].each do |filename|
+  puts "seeding - #{filename}"
+  JSON.parse(File.read(filename)).each do |feat|
+    ::Pathfinder2::Feat.create!(feat)
+  end
+end
+
 # file_content = File.read('db/data/dnd2024/spells.json')
 # data_hash = JSON.parse(file_content)
 

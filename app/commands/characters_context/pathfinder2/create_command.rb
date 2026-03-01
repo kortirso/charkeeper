@@ -3,6 +3,10 @@
 module CharactersContext
   module Pathfinder2
     class CreateCommand < BaseCommand
+      include Deps[
+        add_feat: 'commands.characters_context.pathfinder2.feats.add'
+      ]
+
       # rubocop: disable Metrics/BlockLength
       use_contract do
         config.messages.namespace = :pathfinder2_character
@@ -54,6 +58,8 @@ module CharactersContext
       def do_persist(input)
         character = ::Pathfinder2::Character.create!(input.slice(:user, :name, :data))
 
+        add_background_feat(character)
+
         { result: character }
       end
 
@@ -64,6 +70,16 @@ module CharactersContext
           .then { |result| Pathfinder2Character::BackgroundBuilder.new.call(result: result) }
           .then { |result| Pathfinder2Character::ClassBuilder.new.call(result: result) }
           .then { |result| Pathfinder2Character::SubclassBuilder.new.call(result: result) }
+      end
+
+      def add_background_feat(character)
+        background = Config.data('pathfinder2', 'backgrounds')[character.data.background]
+        return unless background
+
+        feat = ::Pathfinder2::Feat.find_by(slug: background['feat'])
+        return unless feat
+
+        add_feat.call(character: character, feat: feat)
       end
     end
   end

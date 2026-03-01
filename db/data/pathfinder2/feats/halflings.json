@@ -1,0 +1,18 @@
+[
+  {
+    "slug": "halfling_luck",
+    "title": { "en": "Halfling Luck", "ru": "Удача полурослика" },
+    "description": {
+      "en": "- **Trigger:** You fail a skill check or saving throw.\nYour happy-go-lucky nature makes it seem like misfortune avoids you, and to an extent, that might even be true. You can reroll the triggering check, but you must use the new result, even if it's worse.",
+      "ru": "- **Условие:** Вы проваливаете проверку навыка или испытание.\nИз-за вашего оптимизма кажется, что невзгоды обходят вас стороной, и это в какой-то степени правда. Вы можете перебросить спровоцировавшую проверку или испытание, но должны использовать результат повторного броска, даже если он хуже."
+    },
+    "origin": "ancestry",
+    "origin_values": ["fortune", "halfling"],
+    "kind": "static",
+    "conditions": { "level": 1 },
+    "description_eval_variables": {
+      "limit": "1"
+    },
+    "limit_refresh": "long_rest"
+  }
+]

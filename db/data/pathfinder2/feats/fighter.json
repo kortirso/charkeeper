@@ -1,0 +1,15 @@
+[
+  {
+    "slug": "reactive_shield",
+    "title": { "en": "Reactive Shield", "ru": "Рефлекторная защита" },
+    "description": {
+      "en": "- **Trigger:** An enemy hits you with a melee Strike.\n- **Requirements:** You are wielding a shield.\nYou can snap your shield into place just as you would take a blow, avoiding the hit at the last second. You immediately use the Raise a Shield action and gain your shield's bonus to AC. The circumstance bonus from the shield applies to your AC when you're determining the outcome of the triggering attack.",
+      "ru": "- **Условие:** противник должен попасть по вам Ударом в ближнем бою.\n- **Требования:** вы используете щит\nВы поднимаете щит за секунду до того, как получаете удар, и отводите атаку в сторону. Вы немедленно совершаете действие Поднятие щита и получаете бонус щита к КБ. Ситуативный бонус щита к вашему КБ учитывается при определении успешности спровоцировавшей это ответное действие атаки."
+    },
+    "origin": "class",
+    "origin_values": ["fighter"],
+    "kind": "static",
+    "conditions": { "level": 1 },
+    "info": { "time": "r" }
+  }
+]

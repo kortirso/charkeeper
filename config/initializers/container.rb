@@ -86,6 +86,8 @@ module Charkeeper
     register('commands.characters_context.pathfinder2.update') { CharactersContext::Pathfinder2::UpdateCommand.new }
     register('commands.characters_context.pathfinder2.change_health') { CharactersContext::Pathfinder2::ChangeHealthCommand.new }
 
+    register('commands.characters_context.pathfinder2.feats.add') { CharactersContext::Pathfinder2::Feats::AddCommand.new }
+
     register('commands.characters_context.fate.create') { CharactersContext::Fate::CreateCommand.new }
     register('commands.characters_context.fate.update') { CharactersContext::Fate::UpdateCommand.new }
 

@@ -1,0 +1,14 @@
+[
+  {
+    "slug": "iron_fists",
+    "title": { "en": "Iron Fists", "ru": "Железные кулаки" },
+    "description": {
+      "en": "Your fists have been forged by battle, your naturally tough skin and dense bone further hardened by conflict. Your fist unarmed attacks no longer have the *nonlethal* trait and gain the *shove* weapon trait.",
+      "ru": "Вы набили кулаки во множестве драк, и ваши крепкие кости и кожа стали ещё прочнее. Ваши безоружные атаки кулаками лишаются дескриптора *несмертельное* и получают дескриптор *толкающее*."
+    },
+    "origin": "ancestry",
+    "origin_values": ["orc"],
+    "kind": "static",
+    "conditions": { "level": 1 }
+  }
+]
