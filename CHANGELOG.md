@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## Unreleased
 ### Modified
 - rendering equipment table for mobiles
+- rendering domain cards for DH characters
 
 ### Fixed
 - rendering Pathfinder 2 characters

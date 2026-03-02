@@ -547,3 +547,31 @@ body.web {
 .hybrid-edit-block {
   @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 mt-2;
 }
+
+.domain-cards {
+  @apply blockable px-2 md:px-4 py-4 mb-2;
+}
+
+.domain-card {
+  @apply even:bg-stone-100 dark:even:bg-dark-dusty p-1;
+}
+
+.domain-card-title {
+  @apply flex items-center justify-between mb-2;
+}
+
+.domain-card-actions {
+  @apply flex flex-row items-center justify-end gap-y-4 gap-x-2;
+}
+
+.domain-card-recall-cost {
+  @apply px-1 text-center font-normal! text-lg;
+}
+
+.domain-card-desc {
+  @apply text-xs mb-1;
+}
+
+.domain-card-learn {
+  @apply flex flex-col flex-col-reverse md:flex-row items-center justify-end gap-y-4 gap-x-2;
+}

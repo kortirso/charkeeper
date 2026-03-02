@@ -194,19 +194,19 @@ export const DaggerheartDomainCards = (props) => {
                     <div>
                       <For each={spells().filter((spell) => spell.origin_value === domain).sort((a, b) => a.conditions.level - b.conditions.level)}>
                         {(spell) =>
-                          <div class="even:bg-stone-100 dark:even:bg-dark-dusty p-1" classList={{ 'opacity-50': learnedSpells().includes(spell.slug) }}>
-                            <div class="flex items-center justify-between mb-2">
+                          <div class="domain-card" classList={{ 'opacity-50': learnedSpells().includes(spell.slug) }}>
+                            <div class="domain-card-title">
                               <p class="font-normal! text-lg">{spell.title}</p>
                               <Show when={spell.info.type}>
                                 {localize(TRANSLATION, locale())[spell.info.type]} ({spell.conditions.level} {localize(TRANSLATION, locale()).level})
                               </Show>
                             </div>
                             <p
-                              class="feat-markdown text-xs mb-1"
+                              class="feat-markdown domain-card-desc"
                               innerHTML={spell.description} // eslint-disable-line solid/no-innerhtml
                             />
                             <Show when={!learnedSpells().includes(spell.slug)}>
-                              <div class="flex flex-col flex-col-reverse md:flex-row items-center justify-end gap-y-4 gap-x-2">
+                              <div class="domain-card-learn">
                                 <Button default size="small" onClick={() => selectDomainCard(spell.id)}>
                                   <PlusSmall />
                                 </Button>
