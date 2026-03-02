@@ -151,7 +151,7 @@ module DaggerheartCharacter
 
       [
         {
-          name: translate({ en: 'Beast attack', ru: 'Атака' }),
+          name: translate({ en: 'Beast attack', ru: 'Атака зверя' }),
           range: beast_attack['range'],
           trait: use_max_trait_for_attack ? max_trait : beast_attack['trait'],
           attack_bonus: (use_max_trait_for_attack ? max_trait_value : modified_traits[beast_attack['trait']]) + attack_bonuses,

@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Fixed
 - rendering Pathfinder 2 characters
 - session rest option for DH characters
+- bug with full attack rolls
 
 ## [0.4.11] - 2026-03-01
 ### Added

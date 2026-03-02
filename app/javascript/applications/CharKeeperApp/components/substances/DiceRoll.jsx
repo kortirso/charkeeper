@@ -79,7 +79,7 @@ export const createDiceRoll = () => {
         setTitle(title);
         setBotCommand(botCommand);
         setBonus(bonus);
-        setAdditionalBonus(damageBonus);
+        setAdditionalBonus(0);
         setAdvantage(0);
         setDices(dices);
         setDamageBonus(damageBonus);
