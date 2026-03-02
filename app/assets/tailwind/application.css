@@ -377,6 +377,10 @@ nav.pagy.nav a.gap {
   @apply dark:bg-neutral-800 dark:border-neutral-800 dark:text-snow;
 }
 
+.dots {
+  @apply absolute z-9 right-0 border border-gray-200 rounded overflow-hidden;
+}
+
 .dots-item {
   @apply px-2 py-1 text-sm bg-white hover:bg-gray-200 cursor-pointer;
   @apply dark:bg-dusty dark:hover:bg-neutral-800;
@@ -506,4 +510,36 @@ body.web {
 
 .stat-title {
   @apply uppercase text-sm mb-2 text-center;
+}
+
+.equipment {
+  @apply blockable px-2 py-4 md:px-4 mb-2;
+}
+
+.equipment-title {
+  @apply text-lg mb-2 flex items-center gap-x-2;
+}
+
+.equipment-subtitle {
+  @apply text-sm mb-2;
+}
+
+.equipment-item {
+  @apply flex p-0.5;
+}
+
+.equipment-item:nth-of-type(n+2) {
+  @apply border-t border-gray-200 dark:border-neutral-800
+}
+
+.equipment-item:nth-of-type(2n) {
+  @apply bg-gray-50 dark:bg-neutral-700;
+}
+
+.equipment-item-name {
+  @apply text-sm md:text-base leading-6 line-clamp-1;
+}
+
+.equipment-item-notes {
+  @apply text-xs mt-1 text-stone-800 dark:text-stone-300;
 }
