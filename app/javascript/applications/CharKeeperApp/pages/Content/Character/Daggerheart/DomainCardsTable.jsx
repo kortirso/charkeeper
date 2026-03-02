@@ -1,4 +1,4 @@
-import { createMemo, For, Show, Switch, Match } from 'solid-js';
+import { createMemo, For, Show } from 'solid-js';
 
 import { Button } from '../../../../components';
 import { useAppLocale } from '../../../../context';
@@ -36,7 +36,7 @@ export const DomainCardsTable = (props) => {
   });
 
   return (
-    <div class="blockable p-4 mb-2 dark:text-snow">
+    <div class="domain-cards">
       <div class="flex justify-between">
         <div>
           <h2 class="text-lg">{props.title}</h2>
@@ -58,7 +58,7 @@ export const DomainCardsTable = (props) => {
         <div class="mt-4">
           <For each={spells()}>
             {(spell) =>
-              <div class="even:bg-stone-100 dark:even:bg-dark-dusty p-1">
+              <div class="domain-card">
                 <div class="cursor-pointer mb-2" onClick={() => props.onChangeSpell(spell)}>
                   <p class="font-normal! text-lg">{spell.title}</p>
                   <Show when={spell.info.type}>
@@ -68,32 +68,23 @@ export const DomainCardsTable = (props) => {
                   </Show>
                 </div>
                 <p
-                  class="feat-markdown text-xs mb-1"
+                  class="domain-card-desc feat-markdown"
                   innerHTML={spell.description} // eslint-disable-line solid/no-innerhtml
                 />
                 <Show when={spell.notes}>
                   <p class="text-sm mb-1">{spell.notes}</p>
                 </Show>
-                <div class="flex flex-row items-center justify-end gap-y-4 gap-x-2">
-                  <Switch>
-                    <Match when={spell.ready_to_use}>
-                      <Button default size="small" onClick={() => props.onUpdateCharacterSpell(spell, { character_spell: { ready_to_use: false } })}>
-                        <Arrow bottom width={16} height={16} />
-                      </Button>
-                    </Match>
-                    <Match when={!spell.ready_to_use}>
-                      <Button default size="small" classList="px-1" onClick={() => props.onUpdateCharacterSpell(spell, { character_spell: { ready_to_use: true } })}>
-                        <div class="flex items-center">
-                          <Show when={spell.info.recall !== undefined}>
-                            <p class="px-1 text-center font-normal! text-lg">
-                              {spell.info.recall}
-                            </p>
-                          </Show>
-                          <Arrow top width={16} height={16} />
-                        </div>
-                      </Button>
-                    </Match>
-                  </Switch>
+                <div class="domain-card-actions">
+                  <Button default size="small" classList="px-1" onClick={() => props.onUpdateCharacterSpell(spell, { character_spell: { ready_to_use: !spell.ready_to_use } })}>
+                    <div class="flex items-center">
+                      <Show when={spell.info.recall !== undefined}>
+                        <p class="domain-card-recall-cost">
+                          {spell.info.recall}
+                        </p>
+                      </Show>
+                      <Arrow bottom={spell.ready_to_use} top={!spell.ready_to_use} width={16} height={16} />
+                    </div>
+                  </Button>
                   <Button default size="small" classList="py-0.5" onClick={() => props.onRemoveCharacterSpell(spell)}>
                     <Close />
                   </Button>
