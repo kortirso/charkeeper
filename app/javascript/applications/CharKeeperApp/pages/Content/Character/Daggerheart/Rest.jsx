@@ -131,7 +131,7 @@ export const DaggerheartRest = (props) => {
   }
 
   const restActions = createMemo(() => {
-    if (value() === null) return {};
+    if (value() === null || value() === 'session') return {};
 
     const result = DOWNTIME_ACTIONS.reduce((acc, key) => { // eslint-disable-line solid/reactivity
       acc[key] = replace(localize(TRANSLATION, locale())[key.startsWith('clear') ? `${key}_${value()}` : key], { tier: character().tier });
