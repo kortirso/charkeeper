@@ -109,7 +109,11 @@ module DaggerheartCharacter
 
     def attacks
       @attacks ||=
-        beastform.blank? ? ([unarmed_attack] + weapons.flat_map { |item| calculate_attack(item) }) : beastform_attack
+        if beastform_config['tier'].blank?
+          ([unarmed_attack] + weapons.flat_map { |item| calculate_attack(item) })
+        else
+          beastform_attack
+        end
     end
 
     def domain_cards_max
@@ -313,7 +317,7 @@ module DaggerheartCharacter
       return { 'traits' => {}, 'evasion' => 0 } if beastform.blank?
 
       config = Config.data('daggerheart', 'beastforms')
-      base_beastform = config.select { |_, value| value['advantages'] }[beastform]
+      base_beastform = config.select { |_, value| value['attack'] }[beastform]
       return base_beastform if base_beastform
       return { 'traits' => {}, 'evasion' => 0 } if beast.blank?
       return legendary_beast_stats(config[beast]) if beastform == 'legendary_beast'
