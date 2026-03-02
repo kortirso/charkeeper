@@ -1,10 +1,11 @@
 import { createSignal, createEffect, createMemo, Show, For, batch } from 'solid-js';
 
-import { Select, ErrorWrapper, GuideWrapper, EditWrapper, Checkbox } from '../../../../components';
+import { Select, ErrorWrapper, GuideWrapper, Checkbox, Toggle, Button } from '../../../../components';
 import { useAppState, useAppLocale, useAppAlert } from '../../../../context';
+import { Close, Check } from '../../../../assets';
 import { fetchProviderConfigRequest } from '../../../../requests/fetchProviderConfigRequest';
 import { updateCharacterRequest } from '../../../../requests/updateCharacterRequest';
-import { localize } from '../../../../helpers';
+import { localize, performResponse } from '../../../../helpers';
 
 const TRANSLATION = {
   en: {
@@ -18,7 +19,9 @@ const TRANSLATION = {
     legendaryHybridHelp: 'Choose a total of four advantages and two features from those options.',
     myphicHybridHelp: 'Choose a total of five advantages and three features from those options.',
     legendaryHybrid: 'To transform into this creature, mark an additional Stress. Choose any two Beastform options.',
-    myphicHybrid: 'To transform into this creature, mark 2 additional Stress. Choose any three Beastform options.'
+    myphicHybrid: 'To transform into this creature, mark 2 additional Stress. Choose any three Beastform options.',
+    updated: 'Character is updated',
+    settings: 'Hybrid settings'
   },
   ru: {
     desc: 'Во время трансформации вы не можете использовать оружие или заклинания из карт домена, но вы по-прежнему можете использовать другие функции или способности, к которым у вас есть доступ.',
@@ -31,7 +34,9 @@ const TRANSLATION = {
     legendaryHybridHelp: 'Выберите в сумме 4 преимущества и 2 способности выбранных зверей',
     myphicHybridHelp: 'Выберите в сумме 5 преимуществ и 3 способности выбранных зверей',
     legendaryHybrid: 'Для превращения в это существо отметьте Стресс. Выберите 2 любые формы зверя из списка.',
-    myphicHybrid: 'Для превращения в это существо отметьте 2 Стресса. Выберите 3 любые формы зверя из списка.'
+    myphicHybrid: 'Для превращения в это существо отметьте 2 Стресса. Выберите 3 любые формы зверя из списка.',
+    updated: 'Персонаж обновлён',
+    settings: 'Настройка гибрида'
   },
   es: {
     desc: 'While in Beastform, you cannot use weapons or cast spells from Domain Cards. You can still use class features, abilities, and Beastform-specific actions.',
@@ -44,7 +49,9 @@ const TRANSLATION = {
     legendaryHybridHelp: 'Choose a total of four advantages and two features from those options.',
     myphicHybridHelp: 'Choose a total of five advantages and three features from those options.',
     legendaryHybrid: 'To transform into this creature, mark an additional Stress. Choose any two Beastform options.',
-    myphicHybrid: 'To transform into this creature, mark 2 additional Stress. Choose any three Beastform options.'
+    myphicHybrid: 'To transform into this creature, mark 2 additional Stress. Choose any three Beastform options.',
+    updated: 'Character is updated',
+    settings: 'Hybrid settings'
   }
 }
 
@@ -60,10 +67,8 @@ export const DaggerheartBeastform = (props) => {
   const [hybrid, setHybrid] = createSignal({}); // form value
   const [currentHybrid, setCurrentHybrid] = createSignal({}); // database value
 
-  const [editMode, setEditMode] = createSignal(false);
-
   const [appState] = useAppState();
-  const [{ renderAlerts }] = useAppAlert();
+  const [{ renderAlerts, renderNotice }] = useAppAlert();
   const [locale] = useAppLocale();
 
   createEffect(() => {
@@ -90,13 +95,6 @@ export const DaggerheartBeastform = (props) => {
       setLastActiveCharacterId(character().id);
     });
   });
-
-  const cancelEditing = () => {
-    batch(() => {
-      setEditMode(false);
-      setHybrid({ ...currentHybrid() });
-    });
-  }
 
   const currentBaseBeast = createMemo(() => {
     if (beastforms()[beast()]) return beastforms()[beast()];
@@ -152,8 +150,9 @@ export const DaggerheartBeastform = (props) => {
   }
 
   const changeHybrid = (value) => {
-    let newValue;
+    if (character().tier < 3) return;
 
+    let newValue;
     if (Object.keys(currentHybrid()).includes(value)) {
       const { [value]: unused, ...leftValue } = currentHybrid();
       console.log(unused)
@@ -161,7 +160,8 @@ export const DaggerheartBeastform = (props) => {
     } else {
       newValue = { ...currentHybrid(), [value]: { adv: [], features: [] } }
     }
-    if (Object.keys(newValue).length > 3) return;
+    if (character().tier === 3 && Object.keys(newValue).length > 2) return;
+    if (character().tier === 4 && Object.keys(newValue).length > 3) return;
 
     updateCharacter({ hybrid: newValue });
     setHybrid(newValue);
@@ -181,154 +181,146 @@ export const DaggerheartBeastform = (props) => {
     setHybrid({ ...hybrid(), [slug]: { ...changedHybrid, [attribute]: newValue } });
   }
 
+  const cancelHybrid = () => {
+    setHybrid({ ...currentHybrid() });
+  }
+
   const saveHybrid = () => {
     updateCharacter({ hybrid: hybrid() });
-    batch(() => {
-      setEditMode(false);
-      setCurrentHybrid({ ...hybrid() });
-    });
+    setCurrentHybrid({ ...hybrid() });
   }
 
   const updateCharacter = async (payload) => {
     const result = await updateCharacterRequest(appState.accessToken, character().provider, character().id, { character: payload });
-
-    if (result.errors_list === undefined) props.onReplaceCharacter(result.character);
-    else renderAlerts(result.errors_list);
+    performResponse(
+      result,
+      function() { // eslint-disable-line solid/reactivity
+        props.onReplaceCharacter(result.character);
+        renderNotice(localize(TRANSLATION, locale()).updated);
+      },
+      function() { renderAlerts(result.errors_list) }
+    );
   }
 
   return (
     <ErrorWrapper payload={{ character_id: character().id, key: 'DaggerheartBeastform' }}>
       <GuideWrapper character={character()}>
-        <EditWrapper
-          hidden={Object.keys(currentHybrid()).length === 0}
-          editMode={editMode()}
-          onSetEditMode={setEditMode}
-          onCancelEditing={cancelEditing}
-          onSaveChanges={saveHybrid}
-        >
-          <div class="blockable p-4">
-            <h2 class="text-lg">{localize(TRANSLATION, locale()).transformation}</h2>
-            <Select
-              containerClassList="w-full mt-2"
-              items={beastformsSelect()}
-              selectedValue={beastform() === null ? 'none' : beastform()}
-              onSelect={changeBeastform}
-            />
-            <Show when={beastform()}>
-              <Show when={beastform() === 'legendary_beast' || beastform() === 'mythic_beast'}>
-                <Select
-                  containerClassList="w-full mt-2"
-                  labelText={localize(TRANSLATION, locale()).beast}
-                  items={beastSelectOptions()}
-                  selectedValue={beast() === null ? 'none' : beast()}
-                  onSelect={changeBeast}
-                />
+        <div class="blockable p-4">
+          <h2 class="text-lg">{localize(TRANSLATION, locale()).transformation}</h2>
+          <Select
+            containerClassList="w-full mt-2"
+            items={beastformsSelect()}
+            selectedValue={beastform() === null ? 'none' : beastform()}
+            onSelect={changeBeastform}
+          />
+          <Show when={Object.keys(beastforms()).length > 0}>
+            <Show when={beastform() === 'legendary_beast' || beastform() === 'mythic_beast'}>
+              <Select
+                containerClassList="w-full mt-2"
+                labelText={localize(TRANSLATION, locale()).beast}
+                items={beastSelectOptions()}
+                selectedValue={beast() === null ? 'none' : beast()}
+                onSelect={changeBeast}
+              />
+            </Show>
+            <Show when={beastform() === 'legendary_hybrid' || beastform() === 'mythic_hybrid'}>
+              <Show when={beastform() === 'legendary_hybrid'}>
+                <p class="mt-4 text-sm">{localize(TRANSLATION, locale()).legendaryHybrid}</p>
               </Show>
-              <Show when={beastform() === 'legendary_hybrid' || beastform() === 'mythic_hybrid'}>
-                <Show
-                  when={editMode()}
-                  fallback={
-                    <>
-                      <Show when={beastform() === 'legendary_hybrid'}>
-                        <p class="mt-4 text-sm">{localize(TRANSLATION, locale()).legendaryHybrid}</p>
-                      </Show>
-                      <Show when={beastform() === 'mythic_hybrid'}>
-                        <p class="mt-4 text-sm">{localize(TRANSLATION, locale()).myphicHybrid}</p>
-                      </Show>
-                      <Select
-                        multi
-                        containerClassList="w-full mt-4"
-                        labelText={localize(TRANSLATION, locale()).hybridBeasts}
-                        items={beastSelectOptions()}
-                        selectedValues={Object.keys(currentHybrid())}
-                        onSelect={changeHybrid}
-                      />
-                    </>
-                  }
-                >
-                  <div class="mt-4 mb-2">
+              <Show when={beastform() === 'mythic_hybrid'}>
+                <p class="mt-4 text-sm">{localize(TRANSLATION, locale()).myphicHybrid}</p>
+              </Show>
+              <Select
+                multi
+                containerClassList="w-full mt-4"
+                labelText={localize(TRANSLATION, locale()).hybridBeasts}
+                items={beastSelectOptions()}
+                selectedValues={Object.keys(currentHybrid())}
+                onSelect={changeHybrid}
+              />
+              <Show when={Object.keys(hybrid()).length > 0}>
+                <Toggle title={localize(TRANSLATION, locale()).settings} containerClassList="mt-2">
+                  <div class="relative">
                     <Show when={beastform() === 'legendary_hybrid'}>
-                      <p class="mt-4 text-sm">{localize(TRANSLATION, locale()).legendaryHybridHelp}</p>
+                      <p class="text-sm">{localize(TRANSLATION, locale()).legendaryHybridHelp}</p>
                     </Show>
                     <Show when={beastform() === 'mythic_hybrid'}>
-                      <p class="mt-4 text-sm">{localize(TRANSLATION, locale()).myphicHybridHelp}</p>
+                      <p class="text-sm">{localize(TRANSLATION, locale()).myphicHybridHelp}</p>
                     </Show>
-                    <div class="flex items-center mt-4">
-                      <For each={Object.keys(hybrid())}>
-                        {(slug) =>
-                          <p class="flex-1 text-sm text-center">{localize(beastforms()[slug].name, locale())}</p>
-                        }
-                      </For>
-                    </div>
-                    <div class="flex items-center mt-4">
+                    <div class="hybrid-edit-block">
                       <For each={Object.entries(hybrid())}>
                         {([slug, values]) =>
-                          <div class="flex-1">
-                            <For each={beastforms()[slug].advantages}>
-                              {(advantage) =>
-                                <Checkbox
-                                  filled
-                                  labelText={localize(advantages()[advantage], locale())}
-                                  labelClassList="ml-2"
-                                  labelPosition="right"
-                                  checked={values.adv.includes(advantage)}
-                                  classList="mt-1"
-                                  onToggle={() => changeHybridAttribute('adv', slug, advantage)}
-                                />
-                              }
-                            </For>
+                          <div>
+                            <p class="text-sm text-center">{localize(beastforms()[slug].name, locale())}</p>
+                            <div class="mt-2">
+                              <For each={beastforms()[slug].advantages}>
+                                {(advantage) =>
+                                  <Checkbox
+                                    filled
+                                    labelText={localize(advantages()[advantage], locale())}
+                                    labelClassList="ml-2"
+                                    labelPosition="right"
+                                    checked={values.adv.includes(advantage)}
+                                    classList="mt-1"
+                                    onToggle={() => changeHybridAttribute('adv', slug, advantage)}
+                                  />
+                                }
+                              </For>
+                            </div>
+                            <div class="mt-4">
+                              <For each={Object.entries(beastforms()[slug].features)}>
+                                {([feature, names]) =>
+                                  <Checkbox
+                                    filled
+                                    labelText={localize(names, locale())}
+                                    labelClassList="ml-2"
+                                    labelPosition="right"
+                                    checked={values.features.includes(feature)}
+                                    classList="mt-1"
+                                    onToggle={() => changeHybridAttribute('features', slug, feature)}
+                                  />
+                                }
+                              </For>
+                            </div>
                           </div>
                         }
                       </For>
                     </div>
-                    <div class="flex items-center mt-4">
-                      <For each={Object.entries(hybrid())}>
-                        {([slug, values]) =>
-                          <div class="flex-1">
-                            <For each={Object.entries(beastforms()[slug].features)}>
-                              {([feature, names]) =>
-                                <Checkbox
-                                  filled
-                                  labelText={localize(names, locale())}
-                                  labelClassList="ml-2"
-                                  labelPosition="right"
-                                  checked={values.features.includes(feature)}
-                                  classList="mt-1"
-                                  onToggle={() => changeHybridAttribute('features', slug, feature)}
-                                />
-                              }
-                            </For>
-                          </div>
-                        }
-                      </For>
+                    <div class="absolute -bottom-8 -right-2 flex justify-end z-10">
+                      <Button outlined classList="rounded min-w-6 min-h-6 mr-2" onClick={cancelHybrid}>
+                        <Close width="30" height="30" />
+                      </Button>
+                      <Button default classList="rounded min-w-6 min-h-6" onClick={saveHybrid}>
+                        <Check width="20" height="20" />
+                      </Button>
                     </div>
                   </div>
-                </Show>
-              </Show>
-              <p class="text-sm mt-4">{localize(TRANSLATION, locale())['desc']}</p>
-              <Show when={currentBaseBeast()}>
-                <Show when={currentBaseBeast().examples}>
-                  <p class="mt-1">{localize(TRANSLATION, locale()).examples} {localize(currentBaseBeast().examples, locale())}</p>
-                </Show>
-                <Show
-                  when={currentBaseBeast().advantages}
-                  fallback={
-                    <Show when={Object.keys(currentHybrid()).length > 0}>
-                      <p class="mt-1">
-                        {localize(TRANSLATION, locale()).adv}
-                        <span>
-                          {Object.values(currentHybrid()).map((item) => item.adv).flat().map((item) => localize(advantages()[item], locale())).join(', ')}
-                        </span>
-                      </p>
-                    </Show>
-                  }
-                >
-                  <p class="mt-1">{localize(TRANSLATION, locale()).adv} {currentBaseBeast().advantages.map((item) => localize(advantages()[item], locale())).join(', ')}</p>
-                </Show>
+                </Toggle>
               </Show>
             </Show>
-          </div>
-        </EditWrapper>
+            <p class="text-sm mt-4">{localize(TRANSLATION, locale()).desc}</p>
+            <Show when={currentBaseBeast()}>
+              <Show when={currentBaseBeast().examples}>
+                <p class="mt-1">{localize(TRANSLATION, locale()).examples} {localize(currentBaseBeast().examples, locale())}</p>
+              </Show>
+              <Show
+                when={currentBaseBeast().advantages}
+                fallback={
+                  <Show when={Object.keys(currentHybrid()).length > 0}>
+                    <p class="mt-1">
+                      {localize(TRANSLATION, locale()).adv}
+                      <span>
+                        {Object.values(currentHybrid()).map((item) => item.adv).flat().map((item) => localize(advantages()[item], locale())).join(', ')}
+                      </span>
+                    </p>
+                  </Show>
+                }
+              >
+                <p class="mt-1">{localize(TRANSLATION, locale()).adv} {currentBaseBeast().advantages.map((item) => localize(advantages()[item], locale())).join(', ')}</p>
+              </Show>
+            </Show>
+          </Show>
+        </div>
       </GuideWrapper>
     </ErrorWrapper>
   );
