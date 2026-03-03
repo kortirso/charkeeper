@@ -133,6 +133,8 @@ GEM
     connection_pool (3.0.2)
     crass (1.0.6)
     csv (3.3.5)
+    cypress-on-rails (1.20.0)
+      rack
     database_cleaner (2.1.0)
       database_cleaner-active_record (>= 2, < 3)
     database_cleaner-active_record (2.2.2)
@@ -571,6 +573,7 @@ DEPENDENCIES
   capistrano-rvm
   combine_pdf
   csv
+  cypress-on-rails (= 1.20.0)
   database_cleaner (~> 2.0)
   dentaku
   discard (~> 1.4)

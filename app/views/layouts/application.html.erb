@@ -47,7 +47,7 @@
           <p class="mb-2"><%= t('cookie_banner.p1') %></p>
           <p><%= t('cookie_banner.p2') %></p>
           <div class="absolute top-2 right-2">
-            <%= link_to close_cookie_banner, aria: { label: t('close_cookie') } do %>
+            <%= link_to close_cookie_banner, aria: { label: t('close_cookie') }, data: { 'test-id' => 'close-cookie-banner' } do %>
               <%= image_tag 'close.svg', class: 'w-10 h-10', alt: 'close', width: 40, height: 40 %>
             <% end %>
           </div>

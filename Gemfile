@@ -108,6 +108,7 @@ group :development, :production, :ru_production do
 end
 
 group :development, :test do
+  gem 'cypress-on-rails', '1.20.0'
   gem 'rubocop', '~> 1.35', require: false
   gem 'rubocop-factory_bot', '~> 2.0', require: false
   gem 'rubocop-performance', '~> 1.14', require: false
