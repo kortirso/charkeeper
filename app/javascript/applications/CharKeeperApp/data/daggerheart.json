@@ -284,8 +284,8 @@
     }
   },
   "traits": {
-    "str": { "name": { "en": "Strength", "ru": "Сила" }, "shortName": { "en": "Str", "ru": "Сил" } },
     "agi": { "name": { "en": "Agility", "ru": "Проворность" }, "shortName": { "en": "Agi", "ru": "Пров" } },
+    "str": { "name": { "en": "Strength", "ru": "Сила" }, "shortName": { "en": "Str", "ru": "Сил" } },
     "fin": { "name": { "en": "Finesse", "ru": "Искусность" }, "shortName": { "en": "Fin", "ru": "Иск" } },
     "ins": { "name": { "en": "Instinct", "ru": "Инстинкт" }, "shortName": { "en": "Ins", "ru": "Инс" } },
     "pre": { "name": { "en": "Presence", "ru": "Влияние" }, "shortName": { "en": "Pre", "ru": "Влн" } },
