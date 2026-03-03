@@ -13,7 +13,7 @@ module SheetsContext
           traits_names = ::Daggerheart::Character.traits
           font_size 6
           fill_color 'FFFFFF'
-          %w[str agi fin ins pre know].each_with_index do |item, index|
+          %w[agi str fin ins pre know].each_with_index do |item, index|
             trait_name = translate(traits_names[item]['name'])
             text_box trait_name, at: [233 + (55 * index), 737], width: 43, align: :center
           end
@@ -24,7 +24,7 @@ module SheetsContext
 
           font_size 12
           fill_color '000000'
-          %w[str agi fin ins pre know].each_with_index do |item, index|
+          %w[agi str fin ins pre know].each_with_index do |item, index|
             value = "#{'+' if character.modified_traits[item].positive?}#{character.modified_traits[item]}"
             text_box value, at: [242 + (index * 55), 719], width: 25, align: :center
           end
