@@ -31,7 +31,7 @@
             <% if current_user %>
               <%= link_to t('web.users.signin.logout'), logout_path, class: 'underline' %>
             <% else %>
-              <%= link_to t('web.users.signin.title'), new_signin_path, class: 'mr-4 underline' %>
+              <%= link_to t('web.users.signin.title'), new_signin_path, class: 'mr-4 underline', data: { 'test-id' => 'signin-link' } %>
               <%= link_to t('web.users.signup.title'), new_signup_path, class: 'underline' %>
             <% end %>
           </div>

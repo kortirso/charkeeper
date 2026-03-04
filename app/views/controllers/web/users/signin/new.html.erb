@@ -3,11 +3,11 @@
     <h2 class="text-2xl mb-4"><%= t('web.users.signin.title') %></h2>
     <div class="form-field mb-2">
       <%= form.label :username, t('web.users.signup.username'), class: 'form-label' %>
-      <%= form.text_field :username, class: 'form-value w-full' %>
+      <%= form.text_field :username, class: 'form-value w-full', data: { 'test-id' => 'username-input' } %>
     </div>
     <div class="form-field mb-2">
       <%= form.label :password, t('web.users.signup.password'), class: 'form-label' %>
-      <%= form.password_field :password, class: 'form-value w-full' %>
+      <%= form.password_field :password, class: 'form-value w-full', data: { 'test-id' => 'password-input' } %>
     </div>
     <div class="mb-2 flex items-center gap-4">
       <%= link_to omniauth_link(:google) do %>
@@ -31,6 +31,6 @@
       <%= t('web.users.signin.have_not') %>
       <%= link_to t('web.users.signin.signup'), new_signup_path, class: 'underline' %>
     </div>
-    <%= form.submit t('web.users.signin.create'), class: 'btn btn-primary' %>
+    <%= form.submit t('web.users.signin.create'), class: 'btn btn-primary', data: { 'test-id' => 'signin-button' } %>
   <% end %>
 </div>

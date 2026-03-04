@@ -117,6 +117,7 @@ export const DaggerheartCharacterForm = (props) => {
         labelText={t('newCharacterPage.name')}
         value={characterDaggerheartForm.name}
         onInput={(value) => setCharacterDaggerheartForm({ ...characterDaggerheartForm, name: value })}
+        dataTestId="character-name-input"
       />
       <Checkbox
         labelText={t('newCharacterPage.daggerheart.customAncestry')}
@@ -135,6 +136,7 @@ export const DaggerheartCharacterForm = (props) => {
             items={translate(daggerheartHeritages(), locale())}
             selectedValue={characterDaggerheartForm.heritage}
             onSelect={(value) => setCharacterDaggerheartForm({ ...characterDaggerheartForm, heritage: value })}
+            dataTestId="character-ancestry-select"
           />
         }
       >
@@ -165,6 +167,7 @@ export const DaggerheartCharacterForm = (props) => {
         items={translate(daggerheartCommunities(), locale())}
         selectedValue={characterDaggerheartForm.community}
         onSelect={(value) => setCharacterDaggerheartForm({ ...characterDaggerheartForm, community: value })}
+        dataTestId="character-community-select"
       />
       <Select
         containerClassList="mb-2"
@@ -172,6 +175,7 @@ export const DaggerheartCharacterForm = (props) => {
         items={translate(daggerheartClasses(), locale())}
         selectedValue={characterDaggerheartForm.main_class}
         onSelect={(value) => setCharacterDaggerheartForm({ ...characterDaggerheartForm, main_class: value, subclass: undefined })}
+        dataTestId="character-class-select"
       />
       <Show when={characterDaggerheartForm.main_class}>
         <Select
@@ -180,6 +184,7 @@ export const DaggerheartCharacterForm = (props) => {
           items={translate(daggerheartSubclasses(), locale())}
           selectedValue={characterDaggerheartForm.subclass}
           onSelect={(value) => setCharacterDaggerheartForm({ ...characterDaggerheartForm, subclass: value })}
+          dataTestId="character-subclass-select"
         />
       </Show>
       <Checkbox
@@ -189,6 +194,7 @@ export const DaggerheartCharacterForm = (props) => {
         checked={characterDaggerheartForm.skip_guide}
         classList="mt-4"
         onToggle={() => setCharacterDaggerheartForm({ ...characterDaggerheartForm, skip_guide: !characterDaggerheartForm.skip_guide })}
+        dataTestId="character-skip-guide-checkbox"
       />
     </CharacterForm>
   );
