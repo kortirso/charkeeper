@@ -54,7 +54,7 @@ export const Select = (props) => {
           <Show
             when={props.searchable && isOpen()}
             fallback={
-              <Switch fallback={<></>}>
+              <Switch fallback={<span></span>}>
                 <Match when={props.selectedValue}>
                   <span class="truncate">{props.items[props.selectedValue]}</span>
                 </Match>
