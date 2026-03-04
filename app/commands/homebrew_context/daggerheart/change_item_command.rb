@@ -37,6 +37,13 @@ module HomebrewContext
 
       private
 
+      def validate_content(input)
+        return unless input.key?(:consume)
+        return if input[:consume].all? { |consume| formula.call(formula: consume[:formula]).present? }
+
+        [I18n.t('commands.homebrew_context.daggerheart.items.add.invalid_formula')]
+      end
+
       # rubocop: disable Style/GuardClause
       def do_prepare(input)
         input[:name] = { en: input[:name], ru: input[:name] }

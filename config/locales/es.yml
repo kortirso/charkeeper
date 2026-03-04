@@ -32,6 +32,11 @@ es:
       items:
         consume:
           done: "%{value} es consumimdo, tira - %{roll}"
+    homebrew_context:
+      daggerheart:
+        items:
+          add:
+            invalid_formula: Invalid formula
   services:
     sheets_context:
       level: Nivel

@@ -32,6 +32,11 @@ ru:
       items:
         consume:
           done: "%{value} использовано, бросок - %{roll}"
+    homebrew_context:
+      daggerheart:
+        items:
+          add:
+            invalid_formula: Некорректная формула
   services:
     sheets_context:
       level: Уровень

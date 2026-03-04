@@ -42,7 +42,7 @@ const TRANSLATION = {
     consumeFormula: 'Formula',
     formulas1: 'Formula can contain math expressions.',
     formulas2: 'For dice rolls use D(x), where x - dices amount.',
-    formulas3: "For example, 'D(4)+2', '-1 * 2 * D(4) + 3'."
+    formulas3: "For example, 'D(4)+2', '-1 * 2 * D(4) + 3', '3', '-2'."
   },
   ru: {
     added: 'Контент добавлен в книгу',
@@ -70,7 +70,7 @@ const TRANSLATION = {
     consumeFormula: 'Формула',
     formulas1: 'Формула может содержать математические выражения.',
     formulas2: 'Для броска кубика используёте D(x), где x - кол-во граней.',
-    formulas3: "Например, 'D(4)+2', '-1 * 2 * D(4) + 3'."
+    formulas3: "Например, 'D(4)+2', '-1 * 2 * D(4) + 3', '3', '-2'."
   }
 }
 
