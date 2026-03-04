@@ -83,9 +83,9 @@ export const Dnd2024Spells = (props) => {
   const [locale] = useAppLocale();
 
   const readActiveSpellClass = async () => {
-    const cacheValue = await readFromCache(`activeSpellClass-${character().id}`);
+    const cacheValue = await readFromCache(`activeSpellClass-${character().id}-v2`);
 
-    if (cacheValue === null) setActiveSpellClass(Object.keys(character().spell_classes)[0] || 'static');
+    if (cacheValue === null || cacheValue === undefined) setActiveSpellClass(Object.keys(character().spell_classes)[0] || 'static');
     else if (cacheValue === 'undefined') setActiveSpellClass(undefined);
     else setActiveSpellClass(cacheValue);
   }
@@ -177,7 +177,7 @@ export const Dnd2024Spells = (props) => {
   const canPrepareSpells = createMemo(() => DND2024_CLASSES_PREPARE_SPELLS.includes(activeSpellClass()));
 
   const switchSpellClass = (value) => {
-    writeToCache(`activeSpellClass-${character().id}`, value);
+    writeToCache(`activeSpellClass-${character().id}-v2`, value === undefined ? 'undefined' : value);
     setActiveSpellClass(value);
   }
 
