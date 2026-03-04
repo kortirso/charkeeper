@@ -7,20 +7,10 @@ module CharactersContext
 
       private
 
-      def remove_redundant_feats(character)
-        remove_redundant_spells(character)
-      end
+      def remove_redundant_feats(...); end
 
       def exclude_origins_from_remove
         ::Daggerheart::Feat::SELECTABLE_ORIGINS
-      end
-
-      def remove_redundant_spells(character)
-        all_slugs = ::Daggerheart::Feat.where(origin: 'domain_card', kind: 'static_list').pluck(:options).flat_map(&:keys)
-        existing_slugs = character.data.selected_features.values.flatten
-
-        feats = ::Daggerheart::Feat.where(slug: all_slugs - existing_slugs).ids
-        Character::Feat.where(feat_id: feats, character: character).delete_all
       end
 
       def filter_available_feats(character)

@@ -66,7 +66,7 @@ export const DaggerheartDomainCards = (props) => {
     Promise.all([fetchCharacterSpells(), fetchSpells()]).then(
       ([characterSpellsData, spellsData]) => {
         batch(() => {
-          setCharacterSpells(characterSpellsData.spells.filter((item) => item.title));
+          setCharacterSpells(characterSpellsData.spells);
           setSpells(spellsData.spells.sort((a, b) => a.name > b.name));
         });
       }

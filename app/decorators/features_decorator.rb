@@ -63,7 +63,6 @@ class FeaturesDecorator
       origin: feature.feat.origin == 'parent' ? available_features.find { |f| f.feat.slug == feature.feat.origin_value }.feat.origin : feature.feat.origin, # rubocop: disable Layout/LineLength
       active: feature.active,
       continious: feature.feat.continious,
-      ready_to_use: feature.ready_to_use,
       price: feature.feat.price,
       info: feature.feat.info
     }.compact

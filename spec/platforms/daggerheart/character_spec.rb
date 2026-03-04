@@ -19,7 +19,7 @@ describe Daggerheart::Character do
       create :character_item, character: character, item: secondary_weapon, ready_to_use: true
       create :character_item, character: character, item: armor, ready_to_use: true
 
-      create :character_feat, character: character, feat: feat
+      create :character_feat, character: character, feat: feat, ready_to_use: true
     end
 
     it 'calculates everything without errors', :aggregate_failures do

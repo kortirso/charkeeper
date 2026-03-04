@@ -31,7 +31,7 @@ class FeaturesBaseDecorator
     @available_features ||= begin
       relation = wrapped.feats.includes(:feat).order('feats.origin ASC, feats.created_at ASC')
       relation = relation.where.not(feats: { origin: exclude_feature_origins }) if exclude_feature_origins.any?
-      relation
+      relation.where(ready_to_use: true)
     end
   end
 
