@@ -1,7 +1,7 @@
 <footer class="px-8 py-4">
   <div class="flex flex-col md:flex-row gap-4 justify-between items-center w-full max-w-7xl mx-auto">
     <p>
-      <span>&copy;</span> Since 2025, CharKeeper,
+      <span>&copy;</span> Since 2025, CharKeeper 0.4.12,
       <% I18n.available_locales.each do |locale| %>
         <%= link_to locale, change_locale(locale), class: 'ml-2', aria: { label: t('change_locale') } %>
       <% end %>
@@ -11,7 +11,7 @@
       <%= link_to 'Privacy policy', privacy_path, class: 'ml-2 underline', data: { 'test-id' => 'footer-privacy-link' } %>
     </p>
     <div class="flex">
-      <a href="https://buymeacoffee.com/ilyabogdanov" target="_blank">
+      <a href="https://buymeacoffee.com/ilyabogdanov" target="_blank" rel="noopener noreferrer">
         <%= image_tag 'coffee.svg', class: 'w-6 h-6 mr-2', alt: 'buymeacoffee', width: 24, height: 24 %>
       </a>
       <a href="https://boosty.to/kortirso" target="_blank" rel="noopener noreferrer" class="opacity-75 hover:opacity-100">

@@ -208,7 +208,7 @@ en:
         telegram_link: bot
         open_source: Open source
         os_desc: CharKeeper is available as open source on GitHub. You can open issues with feedback or bug reports or contribute to CharKeeper development.
-        os_link: Learn more
+        os_link: Source code link
     users:
       auth:
         notice: Authentication succeeds
