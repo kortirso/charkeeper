@@ -297,7 +297,7 @@ export const Equipment = (props) => {
     if (filterByName().length < 3) return items();
 
     const searchPattern = filterByName().toLowerCase();
-    return items().filter((item) => item.name.toLowerCase().includes(searchPattern));
+    return items().filter((item) => item.name.toLowerCase().includes(searchPattern) || item.original_name?.toLowerCase()?.includes(searchPattern));
   });
 
   const addHomebrewItem = async () => {
@@ -363,6 +363,9 @@ export const Equipment = (props) => {
                                 <td class="py-1 pl-1">
                                   <p>
                                     {item.name}
+                                    <Show when={filterByName().length >= 3 && item.original_name && locale() !== 'en'}>
+                                      <span class="text-xs"> ({item.original_name})</span>
+                                    </Show>
                                     <Show when={item.homebrew}>
                                       <span title="Homebrew" class="text-xs ml-2">HB</span>
                                     </Show>

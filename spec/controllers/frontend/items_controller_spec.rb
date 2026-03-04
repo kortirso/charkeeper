@@ -17,7 +17,7 @@ describe Frontend::ItemsController do
           expect(response).to have_http_status :ok
           expect(response.parsed_body['items'].size).to eq 1
           expect(response_values.keys).to(
-            contain_exactly('id', 'slug', 'kind', 'name', 'data', 'info', 'homebrew', 'has_description')
+            contain_exactly('id', 'slug', 'kind', 'name', 'data', 'info', 'homebrew', 'has_description', 'original_name')
           )
         end
       end
@@ -33,7 +33,7 @@ describe Frontend::ItemsController do
           expect(response).to have_http_status :ok
           expect(response.parsed_body['items'].size).to eq 1
           expect(response_values.keys).to(
-            contain_exactly('id', 'slug', 'kind', 'name', 'data', 'info', 'homebrew', 'has_description')
+            contain_exactly('id', 'slug', 'kind', 'name', 'data', 'info', 'homebrew', 'has_description', 'original_name')
           )
         end
       end
@@ -57,7 +57,7 @@ describe Frontend::ItemsController do
           expect(response).to have_http_status :ok
           expect(response.parsed_body['items'].size).to eq 3
           expect(response_values.keys).to(
-            contain_exactly('id', 'slug', 'kind', 'name', 'data', 'info', 'homebrew', 'has_description')
+            contain_exactly('id', 'slug', 'kind', 'name', 'data', 'info', 'homebrew', 'has_description', 'original_name')
           )
         end
       end
