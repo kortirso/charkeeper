@@ -63,7 +63,7 @@ module Frontend
         def spells
           return [] if params[:version].blank?
 
-          @character.feats.includes(:feat).where(feats: { origin: 7 })
+          @character.feats.includes(:feat).where(feats: { origin: 7 }).where.not(feats: { origin_value: '' })
         end
 
         def update_params

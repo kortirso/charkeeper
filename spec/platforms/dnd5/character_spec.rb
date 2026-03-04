@@ -20,7 +20,7 @@ describe Dnd5::Character do
       create :character_item, character: character, item: armor, ready_to_use: true
 
       feat = create :feat, :dnd5_bardic_inspiration
-      create :character_feat, feat: feat, character: character
+      create :character_feat, feat: feat, character: character, ready_to_use: true
     end
 
     it 'calculates everything without errors', :aggregate_failures do
