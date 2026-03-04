@@ -40,5 +40,6 @@ module Daggerheart
     }
     enum :kind, { STATIC => 0, TEXT => 1, UPDATE_RESULT => 2, STATIC_LIST => 3, MANY_FROM_LIST => 4, HIDDEN => 5 }
     enum :limit_refresh, { SHORT_REST => 0, LONG_REST => 1, SESSION => 2 }
+    enum :reset_on_rest, { SHORT_REST => 0, LONG_REST => 1, SESSION => 2 }, prefix: :reset
   end
 end

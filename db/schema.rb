@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_02_16_182425) do
+ActiveRecord::Schema[8.1].define(version: 2026_03_04_115248) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
   enable_extension "pgcrypto"
@@ -284,6 +284,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_02_16_182425) do
     t.string "origin_value", comment: "Значение применимости навыка"
     t.string "origin_values", comment: "Несколько источников, которые могут иметь навык", array: true
     t.jsonb "price", default: {}, comment: "Цена активации способности"
+    t.integer "reset_on_rest", limit: 2, comment: "Сбрасывать выбор на отдыхе"
     t.boolean "reverse_refresh", default: false
     t.string "slug"
     t.jsonb "title", default: {}, null: false

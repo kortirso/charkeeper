@@ -19,12 +19,24 @@ describe CharactersContext::Daggerheart::ChangeEnergyCommand do
   let!(:feat1) { create :feat, :rally }
   let!(:feat2) { create :feat, :rally }
   let!(:feat3) { create :feat, :rally }
+  let!(:feat4) { create :feat, :rally, slug: 'elemental_incarnation', reset_on_rest: 0 }
+  let!(:feat5) do
+    create :feat, :rally, slug: 'air_elemental_incarnation', conditions: { 'selected_feature' => 'elemental_incarnation_air' }
+  end
   let!(:character_feat1) { create :character_feat, character: character, feat: feat1, used_count: 1, limit_refresh: 0 }
   let!(:character_feat2) { create :character_feat, character: character, feat: feat2, used_count: 1, limit_refresh: 1 }
   let!(:character_feat3) { create :character_feat, character: character, feat: feat3, used_count: 1, limit_refresh: 2 }
+  let!(:character_feat4) { create :character_feat, character: character, feat: feat4, value: 'air_elemental_incarnation' }
 
   before do
-    character.data.to_h.merge!({ 'health_marked' => 3, 'stress_marked' => 4, 'spent_armor_slots' => 2, 'hope_marked' => 1 })
+    create :character_feat, character: character, feat: feat5
+    character.data.to_h.merge!({
+      'health_marked' => 3,
+      'stress_marked' => 4,
+      'spent_armor_slots' => 2,
+      'hope_marked' => 1,
+      'selected_features' => { feat4.slug => feat5.slug }
+    })
     character.save
   end
 
@@ -32,11 +44,12 @@ describe CharactersContext::Daggerheart::ChangeEnergyCommand do
     let(:value) { 'short' }
 
     it 'updates only short limit', :aggregate_failures do
-      command_call
-
+      expect { command_call }.to change(Character::Feat, :count).by(-1)
       expect(character_feat1.reload.used_count).to eq 0
       expect(character_feat2.reload.used_count).to eq 1
       expect(character_feat3.reload.used_count).to eq 1
+      expect(character_feat4.reload.value).to be_nil
+      expect(character.reload.data.selected_features).to eq({})
     end
 
     context 'with making rolls' do
@@ -44,8 +57,7 @@ describe CharactersContext::Daggerheart::ChangeEnergyCommand do
       let(:options) { { clear_health: 1, clear_stress: 1, clear_armor_slots: 0, gain_hope: 0, gain_double_hope: 0 } }
 
       it 'updates only short limit', :aggregate_failures do
-        command_call
-
+        expect { command_call }.to change(Character::Feat, :count).by(-1)
         expect(character_feat1.reload.used_count).to eq 0
         expect(character_feat2.reload.used_count).to eq 1
         expect(character_feat3.reload.used_count).to eq 1
@@ -61,14 +73,15 @@ describe CharactersContext::Daggerheart::ChangeEnergyCommand do
     let(:options) { { clear_health: 1, clear_stress: 1, clear_armor_slots: 0, gain_hope: 0, gain_double_hope: 0 } }
 
     it 'updates except session limit', :aggregate_failures do
-      command_call
-
+      expect { command_call }.to change(Character::Feat, :count).by(-1)
       expect(character_feat1.reload.used_count).to eq 0
       expect(character_feat2.reload.used_count).to eq 0
       expect(character_feat3.reload.used_count).to eq 1
+      expect(character_feat4.reload.value).to be_nil
       expect(character.reload.data.health_marked).to eq 0
       expect(character.data.stress_marked).to eq 0
       expect(character.data.spent_armor_slots).to eq 2
+      expect(character.data.selected_features).to eq({})
     end
 
     context 'with updating hope' do
@@ -97,6 +110,7 @@ describe CharactersContext::Daggerheart::ChangeEnergyCommand do
       expect(character_feat1.reload.used_count).to eq 1
       expect(character_feat2.reload.used_count).to eq 1
       expect(character_feat3.reload.used_count).to eq 0
+      expect(character_feat4.reload.value).not_to be_nil
     end
   end
 end

@@ -6,7 +6,8 @@ module CharactersContext
       include Deps[
         roll: 'roll',
         duality_roll: 'duality_roll',
-        change_project: 'commands.characters_context.daggerheart.projects.change'
+        change_project: 'commands.characters_context.daggerheart.projects.change',
+        refresh_feats: 'services.characters_context.daggerheart.refresh_feats'
       ]
 
       use_contract do
@@ -85,8 +86,8 @@ module CharactersContext
       end
       # rubocop: enable Metrics/AbcSize, Metrics/CyclomaticComplexity, Metrics/MethodLength, Metrics/PerceivedComplexity, Style/GuardClause
 
-      def do_persist(input)
-        refresh_feats(input)
+      def do_persist(input) # rubocop: disable Metrics/AbcSize
+        refresh_feats_limit(input)
         refresh_reverse_feats(input)
         refresh_companion(input) if input[:companion_stress_marked]
         refresh_project(input) if input.dig(:project, :id)
@@ -95,6 +96,8 @@ module CharactersContext
           input[:character].data = ::Daggerheart::CharacterData.new(input[:character].data.attributes.merge(input[:data]))
           input[:character].save
         end
+
+        refresh_feats.call(character: input[:character])
 
         { result: input[:character] }
       end
@@ -105,8 +108,26 @@ module CharactersContext
         input[:character].companion.save
       end
 
-      def refresh_feats(input)
+      def refresh_feats_limit(input)
         input[:character].feats.where(limit_refresh: limit_refresh(input)).update_all(used_count: 0)
+
+        selected_for_reset = input[:character].feats.joins(:feat).where(feats: { reset_on_rest: limit_refresh(input) })
+        selected_for_reset.update_all(value: nil)
+
+        refresh_selected_features(selected_for_reset, input[:character])
+      end
+
+      def refresh_selected_features(selected_for_reset, character)
+        selected_slugs_for_reset = selected_for_reset.pluck('feats.slug').uniq.compact
+        selected_features = character.data.selected_features
+        character.data.selected_features.each_key do |key|
+          next if selected_slugs_for_reset.exclude?(key)
+
+          selected_features[key] = nil
+        end
+
+        character.data.selected_features = selected_features.compact
+        character.save
       end
 
       def refresh_reverse_feats(input)

@@ -12,6 +12,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - creating homebrew items for DH characters
 - Select component with filtering opportunity
 - items search by original name
+- refreshing feats during rest for DH characters
 
 ## [0.4.12] - 2026-03-02
 ### Modified
