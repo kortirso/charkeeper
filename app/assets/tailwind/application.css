@@ -675,3 +675,11 @@ body.web {
 .dh-attribute-title {
   @apply text-sm/4 uppercase mb-1;
 }
+
+.select-input {
+  @apply outline-none w-full;
+}
+
+.select-input::placeholder {
+  @apply text-gray-200 opacity-100 text-sm;
+}
