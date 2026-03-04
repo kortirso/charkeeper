@@ -174,8 +174,9 @@ export const CharactersTab = () => {
           <Show when={filteredCharacters()}>
             <Button
               default
-              classList="absolute right-4 bottom-4 rounded-full w-12 h-12 z-10"
+              classList="absolute right-4 bottom-4 rounded-full! w-12 h-12 z-10"
               onClick={() => setCurrentTab('newCharacter')}
+              dataTestId="new-character-button"
             >
               <Plus />
             </Button>
@@ -230,6 +231,7 @@ export const CharactersTab = () => {
               items={{ 'dnd5': 'D&D 5', 'dnd2024': 'D&D 2024', 'daggerheart': 'Daggerheart', 'pathfinder2': 'Pathfinder 2', 'fate': 'Fate', 'fallout': 'Fallout 2D20', 'dc20': 'DC20 0.10' }}
               selectedValue={platform()}
               onSelect={(value) => setPlatform(value)}
+              dataTestId="new-character-platform-select"
             />
             <Switch>
               <Match when={platform() === 'dnd5'}>

@@ -46,9 +46,9 @@ export const Select = (props) => {
       use:clickOutside={() => setIsOpen(false)}
     >
       <Label { ...labelProps } />
-      <div class={[props.classList, 'relative cursor-pointer'].join(' ')}>
+      <div class={[props.classList, 'relative cursor-pointer'].join(' ')} dataTestId={props.dataTestId}>
         <div
-          class={[isOpen() ? 'is-open' : '', 'form-value flex justify-between items-center h-12'].join(' ')}
+          class={[isOpen() ? 'is-open' : '', 'form-value default-select'].join(' ')}
           onClick={() => props.disabled || (props.searchable && isOpen()) ? null : setIsOpen(!isOpen())}
         >
           <Show
