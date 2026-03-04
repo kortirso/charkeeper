@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - rendering not ready features in features section
 - rendering blocks for DH characters
 - creating homebrew items for DH characters
+- Select component with filtering opportunity
 
 ## [0.4.12] - 2026-03-02
 ### Modified

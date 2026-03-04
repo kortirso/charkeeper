@@ -208,6 +208,7 @@ export const DaggerheartBeastform = (props) => {
         <div class="blockable py-4 px-2 md:px-4">
           <h2 class="text-lg">{localize(TRANSLATION, locale()).transformation}</h2>
           <Select
+            searchable
             containerClassList="w-full mt-2"
             items={beastformsSelect()}
             selectedValue={beastform() === null ? 'none' : beastform()}
