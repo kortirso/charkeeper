@@ -11,29 +11,19 @@ export const Toggle = (props) => {
   return (
     <div
       class={['mb-2 flex flex-col', props.containerClassList].join(' ')}
-      classList={{
-        'blockable': !props.noInnerPadding,
-        '': props.noInnerPadding
-      }}
+      classList={{ 'blockable': !props.noInnerPadding, '': props.noInnerPadding }}
     >
       <div
-        classList={{
-          '': !props.noInnerPadding,
-          'blockable': props.noInnerPadding,
-          'cursor-pointer': !props.disabled
-        }}
-        class="py-2 px-4 dark:text-snow"
+        classList={{ '': !props.noInnerPadding, 'blockable': props.noInnerPadding, 'cursor-pointer': !props.disabled }}
+        class="toggle-title"
         onClick={() => props.disabled ? (props.onParentClick ? props.onParentClick() : null) : setIsOpen(!isOpen())}
       >
         {props.title}
       </div>
       <Show when={props.isOpenByParent !== undefined ? props.isOpenByParent : isOpen()}>
         <div
-          classList={{
-            'p-4 border-t border-gray-200 dark:border-gray-500': !props.noInnerPadding,
-            'p-2': props.noInnerPadding
-          }}
-          class="flex-1 dark:text-snow relative dark:bg-neutral-700"
+          classList={{ 'toggle-inner': !props.noInnerPadding, 'p-2': props.noInnerPadding }}
+          class="toggle-inner-default"
         >
           {safeChildren()}
         </div>

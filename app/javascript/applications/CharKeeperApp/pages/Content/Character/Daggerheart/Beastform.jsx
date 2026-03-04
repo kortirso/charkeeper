@@ -205,7 +205,7 @@ export const DaggerheartBeastform = (props) => {
   return (
     <ErrorWrapper payload={{ character_id: character().id, key: 'DaggerheartBeastform' }}>
       <GuideWrapper character={character()}>
-        <div class="blockable p-4">
+        <div class="blockable py-4 px-2 md:px-4">
           <h2 class="text-lg">{localize(TRANSLATION, locale()).transformation}</h2>
           <Select
             containerClassList="w-full mt-2"

@@ -88,11 +88,6 @@
       "traits": "Traits",
       "thresholds": "Damage thresholds"
     },
-    "static": {
-      "proficiency": "Proficiency",
-      "evasion": "Evasion",
-      "armor_score": "Armor Score"
-    },
     "health": {
       "armorScore": "Armor Score",
       "armorSlots": "Armor Slots",
@@ -113,9 +108,6 @@
       "vault": "Vault",
       "select": "Add domain cards",
       "cardNote": "Domain card note"
-    },
-    "experience": {
-      "title": "Experience"
     },
     "bonuses": {
       "title": "Bonuses",

@@ -33,8 +33,8 @@ export const DaggerheartTransform = (props) => {
     <ErrorWrapper payload={{ character_id: character().id, key: 'DaggerheartTransformation' }}>
       <GuideWrapper character={character()}>
         <Show when={Object.keys(character().transformations).length > 0}>
-          <div class="blockable p-4">
-            <h2 class="text-lg mb-2 dark:text-snow">{t('daggerheart.transformation.transformation')}</h2>
+          <div class="blockable py-4 px-2 md:px-2">
+            <h2 class="text-lg mb-2">{t('daggerheart.transformation.transformation')}</h2>
             <Select
               containerClassList="w-full"
               items={transformationsSelect()}

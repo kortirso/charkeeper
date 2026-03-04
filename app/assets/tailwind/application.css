@@ -161,8 +161,20 @@
   @apply w-8 h-8;
 }
 
+.toggle-title {
+  @apply py-2 px-2 md:px-4; dark:text-snow;
+}
+
 .toggle.disabled {
   @apply bg-neutral-400;
+}
+
+.toggle-inner {
+  @apply py-4 px-2 md:px-4 border-t border-gray-200 dark:border-gray-500;
+}
+
+.toggle-inner-default {
+  @apply flex-1 dark:text-snow relative dark:bg-neutral-700;
 }
 
 .form-field .form-value {
@@ -262,15 +274,15 @@
 }
 
 .damage-caption p:nth-of-type(1) {
-  @apply flex-1 text-center flex items-center uppercase font-medium! dark:text-snow py-4 px-2 text-sm md:text-base;
+  @apply flex-1 text-center flex items-center uppercase font-medium! p-2 pt-4 text-sm md:text-base;
 }
 
 .damage-caption p:nth-of-type(2) {
-  @apply text-xs dark:text-snow;
+  @apply text-xs;
 }
 
 .damage-threshold {
-  @apply flex items-center pb-4 relative;
+  @apply flex items-center pb-2 relative;
 
   padding-right: 13.5px;
 }
@@ -303,12 +315,28 @@
   @apply flex items-center justify-between text-sm mb-2;
 }
 
-.experiences .experience {
-  @apply flex dark:text-snow items-center pl-2 py-1;
+.experience-title-box {
+  @apply flex justify-between items-center;
 }
 
-.experiences .experience:nth-of-type(2n) {
-  @apply bg-gray-50 dark:bg-neutral-700;
+.experience-title {
+  @apply flex-1 text-lg dark:text-snow;
+}
+
+.experience-new-box {
+  @apply flex items-center gap-2;
+}
+
+.experience {
+  @apply flex dark:text-snow items-center py-1;
+}
+
+.experience:nth-of-type(2n) {
+  @apply bg-gray-50 dark:bg-dusty;
+}
+
+.experience:nth-of-type(n+2) {
+  @apply border-t border-gray-200 dark:border-neutral-800;
 }
 
 .dc20-conditions .dc20-condition {
@@ -373,7 +401,7 @@ nav.pagy.nav a.gap {
 }
 
 .tag {
-  @apply px-1 border rounded bg-white border-gray-500 cursor-pointer;
+  @apply px-1 border rounded bg-white border-gray-500 cursor-pointer text-sm md:text-base;
   @apply dark:bg-neutral-800 dark:border-neutral-800 dark:text-snow;
 }
 
@@ -485,7 +513,7 @@ nav.pagy.nav a.gap {
 }
 
 .character-info-block {
-  @apply blockable p-4;
+  @apply blockable py-4 px-2 md:px-4;
 }
 
 .character-info-title {
@@ -512,6 +540,58 @@ body.web {
   @apply uppercase text-sm mb-2 text-center;
 }
 
+.weapon-title {
+  @apply text-lg font-normal! mb-2;
+}
+
+.weapon-item {
+  @apply p-0.5;
+}
+
+.weapon-item:nth-of-type(n+2) {
+  @apply border-t border-gray-200 dark:border-neutral-800;
+}
+
+.weapon-item:nth-of-type(2n) {
+  @apply bg-gray-50 dark:bg-neutral-700;
+}
+
+.weapon-item-header {
+  @apply flex flex-col md:flex-row md:justify-between md:items-center gap-y-1;
+}
+
+.weapon-item-name {
+  @apply line-clamp-1 text-sm md:text-base;
+}
+
+.weapon-item-stats {
+  @apply flex items-center gap-x-4;
+}
+
+.weapon-damage {
+  @apply flex items-center justify-center;
+}
+
+.weapon-damage-trait {
+  @apply mr-2 text-sm uppercase;
+}
+
+.weapon-tags {
+  @apply flex flex-wrap gap-x-2 gap-y-1 mt-2;
+}
+
+.weapon-features {
+  @apply text-xs mt-2;
+}
+
+.weapon-settings {
+  @apply absolute top-0 right-0 rounded opacity-50 m-0!;
+}
+
+.weapon-settings-select {
+  @apply w-full md:w-1/2 mb-2;
+}
+
 .equipment {
   @apply blockable px-2 py-4 md:px-4 mb-2;
 }
@@ -529,7 +609,7 @@ body.web {
 }
 
 .equipment-item:nth-of-type(n+2) {
-  @apply border-t border-gray-200 dark:border-neutral-800
+  @apply border-t border-gray-200 dark:border-neutral-800;
 }
 
 .equipment-item:nth-of-type(2n) {
@@ -556,6 +636,14 @@ body.web {
   @apply even:bg-stone-100 dark:even:bg-dark-dusty p-1;
 }
 
+.domain-card:nth-of-type(n+2) {
+  @apply border-t border-gray-200 dark:border-neutral-800;
+}
+
+.domain-card.reverse {
+  @apply even:bg-stone-100 dark:even:bg-dusty p-1;
+}
+
 .domain-card-title {
   @apply flex items-center justify-between mb-2;
 }
@@ -572,6 +660,18 @@ body.web {
   @apply text-xs mb-1;
 }
 
-.domain-card-learn {
-  @apply flex flex-col flex-col-reverse md:flex-row items-center justify-end gap-y-4 gap-x-2;
+.dh-static-box {
+  @apply blockable py-4 px-2 md:px-4 flex justify-center gap-2;
+}
+
+.dh-static-title {
+  @apply text-sm uppercase text-center mb-4;
+}
+
+.dh-static-value {
+  @apply mx-auto flex items-center justify-center text-2xl font-normal!;
+}
+
+.dh-attribute-title {
+  @apply text-sm/4 uppercase mb-1;
 }

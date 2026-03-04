@@ -88,11 +88,6 @@
       "traits": "Способности",
       "thresholds": "Пороги урона"
     },
-    "static": {
-      "proficiency": "Мастерство",
-      "evasion": "Уклонение",
-      "armor_score": "Очки Доспеха"
-    },
     "health": {
       "armorScore": "Очки Доспеха",
       "armorSlots": "Слоты Доспеха",
@@ -113,9 +108,6 @@
       "vault": "Хранилище",
       "select": "Добавить карты",
       "cardNote": "Заметка"
-    },
-    "experience": {
-      "title": "Опытность"
     },
     "bonuses": {
       "title": "Бонусы",

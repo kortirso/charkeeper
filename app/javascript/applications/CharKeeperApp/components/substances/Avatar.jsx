@@ -115,7 +115,7 @@ export const Avatar = (props) => {
   }
 
   return (
-    <div class="blockable p-4 mb-4">
+    <div class="blockable py-4 px-2 md:px-4 mb-4">
       <div>
         <Label labelText={localize(TRANSLATION, locale()).avatarFile} />
         <input class="block mb-2 dark:text-gray-200" type="file" accept="image/jpeg, image/png" onChange={handleFileChange} />

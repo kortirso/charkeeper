@@ -156,90 +156,47 @@ export const Combat = (props) => {
     if (values.length === 0) return <></>;
 
     return (
-      <div class="p-4 mb-2 dark:text-snow">
-        <h2 class="text-lg font-normal! mb-2">{title}</h2>
-        <table class="w-full table no-darks first-column-full-width table-top">
-          <thead>
-            <tr>
-              <td />
-              <td class="text-center">{localize(TRANSLATION, locale()).attack}</td>
-              <td class="text-center px-1">{localize(TRANSLATION, locale()).damage}</td>
-              <td class="text-center px-1">{localize(TRANSLATION, locale()).distance}</td>
-            </tr>
-          </thead>
-          <tbody>
-            <For each={values}>
-              {(attack, index) =>
-                <>
-                  <tr class="border-t border-gray-200 dark:border-neutral-800" classList={{ 'bg-gray-50 dark:bg-neutral-700': index() % 2 === 1 }}>
-                    <td class="pt-2 pb-1 pl-1">
-                      <p>{attack.name}</p>
-                    </td>
-                    <td class="pt-2 pb-1">
-                      <div class="flex items-center justify-center">
-                        <Show when={character().provider === 'daggerheart' && attack.trait}>
-                          <span class="mr-2 text-sm uppercase">{daggerheartConfig.traits[attack.trait].shortName[locale()]}</span>
-                        </Show>
-                        <Dice
-                          width="28"
-                          height="28"
-                          text={modifier(attack.attack_bonus)}
-                          onClick={() => openAttackRoll(attack, attack.attack_bonus)}
-                        />
-                        <Show when={attack.thrown_attack_bonus}>
-                          <span> / </span>
-                          <Dice
-                            width="28"
-                            height="28"
-                            text={modifier(attack.thrown_attack_bonus)}
-                            onClick={() => openAttackRoll(attack, attack.thrown_attack_bonus)}
-                          />
-                        </Show>
-                      </div>
-                    </td>
-                    <td class="pt-2 pb-1">
-                      <p class="text-center h-7">{attack.damage}{attack.damage_bonus !== 0 ? modifier(attack.damage_bonus) : ''}</p>
-                    </td>
-                    <td class="pt-2 pb-1">
-                      <div class="flex items-center justify-center h-7">
-                        <p class="text-sm">{renderAttackDistance(attack)}</p>
-                      </div>
-                    </td>
-                  </tr>
-                  <Show when={attack.tags && Object.keys(attack.tags).length > 0}>
-                    <tr classList={{ 'bg-gray-50 dark:bg-neutral-700': index() % 2 === 1 }}>
-                      <td colspan="4" class="p-1">
-                        <div class="flex flex-wrap gap-x-2 gap-y-1">
-                          <For each={Object.entries(attack.tags)}>
-                            {([tag, value]) =>
-                              <p class="tag" onClick={() => showTagInfo(tag, value)}>{value}</p>
-                            }
-                          </For>
-                        </div>
-                      </td>
-                    </tr>
-                  </Show>
-                  <Show when={(attack.tags === undefined || character().provider === 'daggerheart') && attack.features && attack.features.length > 0}>
-                    <tr classList={{ 'bg-gray-50 dark:bg-neutral-700': index() % 2 === 1 }}>
-                      <td colspan="4" class="p-1">
-                        <p class="text-xs">
-                          {typeof attack.features[0] === 'string' ? attack.features.join(', ') : attack.features.map((item) => item[locale()]).join(', ')}
-                        </p>
-                      </td>
-                    </tr>
-                  </Show>
-                  <Show when={attack.notes && attack.notes.length > 0}>
-                    <tr classList={{ 'bg-gray-50 dark:bg-neutral-700': index() % 2 === 1 }}>
-                      <td colspan="4" class="p-1">
-                        <p class="text-xs">{attack.notes}</p>
-                      </td>
-                    </tr>
-                  </Show>
-                </>
-              }
-            </For>
-          </tbody>
-        </table>
+      <div class="py-4 px-2 md:px-4 mb-2">
+        <h2 class="weapon-title">{title}</h2>
+        <div>
+          <For each={values}>
+            {(attack) =>
+              <div class="weapon-item">
+                <div class="weapon-item-header">
+                  <p class="weapon-item-name">{attack.name}</p>
+                  <div class="weapon-item-stats">
+                    <div class="weapon-damage">
+                      <Show when={character().provider === 'daggerheart' && attack.trait}>
+                        <span class="weapon-damage-trait">{daggerheartConfig.traits[attack.trait].shortName[locale()]}</span>
+                      </Show>
+                      <Dice width="28" height="28" text={modifier(attack.attack_bonus)} onClick={() => openAttackRoll(attack, attack.attack_bonus)} />
+                      <Show when={attack.thrown_attack_bonus}>
+                        <span> / </span>
+                        <Dice width="28" height="28" text={modifier(attack.thrown_attack_bonus)} onClick={() => openAttackRoll(attack, attack.thrown_attack_bonus)} />
+                      </Show>
+                    </div>
+                    <p>{attack.damage}{attack.damage_bonus !== 0 ? modifier(attack.damage_bonus) : ''}</p>
+                    <p class="text-sm">{renderAttackDistance(attack)}</p>
+                  </div>
+                </div>
+                <Show when={attack.tags && Object.keys(attack.tags).length > 0}>
+                  <div class="weapon-tags">
+                    <For each={Object.entries(attack.tags)}>
+                      {([tag, value]) =>
+                        <p class="tag" onClick={() => showTagInfo(tag, value)}>{value}</p>
+                      }
+                    </For>
+                  </div>
+                </Show>
+                <Show when={(attack.tags === undefined || character().provider === 'daggerheart') && attack.features && attack.features.length > 0}>
+                  <p class="weapon-features">
+                    {typeof attack.features[0] === 'string' ? attack.features.join(', ') : attack.features.map((item) => item[locale()]).join(', ')}
+                  </p>
+                </Show>
+              </div>
+            }
+          </For>
+        </div>
       </div>
     );
   }
@@ -251,7 +208,7 @@ export const Combat = (props) => {
           <Show when={showSettings()}>
             <div class="p-4 pb-0">
               <Select
-                containerClassList="w-full md:w-1/2 mb-2"
+                containerClassList="weapon-settings-select"
                 labelText={localize(TRANSLATION, locale()).settings}
                 items={distanceOptions()}
                 selectedValue={settings()[character().provider]}
@@ -259,15 +216,9 @@ export const Combat = (props) => {
               />
             </div>
           </Show>
-          {renderAttacksBox(localize(TRANSLATION, locale())['primary'], character().attacks.filter((item) => item.ready_to_use))}
-          {renderAttacksBox(localize(TRANSLATION, locale())['additional'], character().attacks.filter((item) => !item.ready_to_use))}
-          <Button
-            default
-            classList='absolute top-0 right-0 rounded min-w-6 min-h-6 opacity-50 m-0!'
-            onClick={() => setShowSettings(!showSettings())}
-          >
-            <Edit />
-          </Button>
+          {renderAttacksBox(localize(TRANSLATION, locale()).primary, character().attacks.filter((item) => item.ready_to_use))}
+          {renderAttacksBox(localize(TRANSLATION, locale()).additional, character().attacks.filter((item) => !item.ready_to_use))}
+          <Button default classList="weapon-settings min-w-6 min-h-6" onClick={() => setShowSettings(!showSettings())}><Edit /></Button>
         </div>
         <Modal classList="md:max-w-md!">
           <p class="mb-3 text-xl">{tagInfo()[0]}</p>

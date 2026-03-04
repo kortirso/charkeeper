@@ -57,12 +57,12 @@ export const Conditions = (props) => {
   return (
     <ErrorWrapper payload={{ character_id: character().id, key: 'Conditions' }}>
       <GuideWrapper character={character()}>
-        <div class="blockable p-4">
-          <h2 class="text-lg mb-2 dark:text-snow">{localize(TRANSLATION, locale())['conditions']}</h2>
+        <div class="blockable py-4 px-2 md:px-4">
+          <h2 class="text-lg mb-2">{localize(TRANSLATION, locale()).conditions}</h2>
           <Select
             multi
             containerClassList="w-full"
-            labelText={localize(TRANSLATION, locale())['selectedConditions']}
+            labelText={localize(TRANSLATION, locale()).selectedConditions}
             items={translate(providerConfig().conditions, locale())}
             selectedValues={selectedConditions()}
             onSelect={(value) => updateMultiFeatureValue(value)}
@@ -70,7 +70,7 @@ export const Conditions = (props) => {
           <Show when={selectedConditions().length > 0}>
             <For each={selectedConditions()}>
               {(condition) =>
-                <p class="mt-2 dark:text-snow text-sm">{providerConfig().conditions[condition].description[locale()]}</p>
+                <p class="mt-2 text-sm">{providerConfig().conditions[condition].description[locale()]}</p>
               }
             </For>
           </Show>

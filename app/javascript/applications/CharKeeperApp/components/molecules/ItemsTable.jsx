@@ -84,7 +84,7 @@ export const ItemsTable = (props) => {
                           onMoveCharacterItem={props.onMoveCharacterItem}
                           onConsumeItem={props.onConsumeItem}
                           onConsumeCharacterItem={props.onConsumeCharacterItem}
-                          onUpgradeItem={upgradeItem}
+                          upgradeItem={upgradeItem}
                         />
                       </div>
                     </Show>
@@ -103,7 +103,7 @@ export const ItemsTable = (props) => {
                                 onMoveCharacterItem={props.onMoveCharacterItem}
                                 onConsumeItem={props.onConsumeItem}
                                 onConsumeCharacterItem={props.onConsumeCharacterItem}
-                                onUpgradeItem={upgradeItem}
+                                upgradeItem={upgradeItem}
                               />
                             </div>
                           </Show>

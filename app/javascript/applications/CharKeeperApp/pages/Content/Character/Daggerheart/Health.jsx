@@ -27,8 +27,8 @@ export const DaggerheartHealth = (props) => {
 
   const renderAttribute = (title, maxValue, slug, disabled=0) => (
     <Show when={maxValue !== 0} fallback={<></>}>
-      <div class="px-4 mb-2">
-        <p class="text-sm/4 uppercase mb-1 dark:text-snow">{title}</p>
+      <div class="mt-2">
+        <p class="dh-attribute-title">{title}</p>
         <div class="flex">
           <For each={Array.from([...Array(maxValue).keys()], (x) => x + 1)}>
             {(index) =>
@@ -50,8 +50,8 @@ export const DaggerheartHealth = (props) => {
   return (
     <ErrorWrapper payload={{ character_id: character().id, key: 'DaggerheartHealth' }}>
       <GuideWrapper character={character()}>
-        <div class="blockable pb-2">
-          <div class="p-4 flex mb-2">
+        <div class="blockable py-4 px-2 md:px-4">
+          <div class="flex mb-4">
             <div class="damage-caption">
               <p>{t('daggerheart.health.minor')}</p>
               <p>{t('daggerheart.health.minorDamage')}</p>

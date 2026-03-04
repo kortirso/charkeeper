@@ -79,8 +79,8 @@ export const DaggerheartScars = (props) => {
           disabled
           isOpen
           title={
-            <div class="flex justify-between items-center">
-              <h2 class="flex-1 text-lg dark:text-snow">{localize(TRANSLATION, locale()).title}</h2>
+            <div class="experience-title-box">
+              <h2 class="experience-title">{localize(TRANSLATION, locale()).title}</h2>
               <Show when={!editMode()}>
                 <Button default size="small" onClick={() => setEditMode(true)}>
                   <Plus />
@@ -90,7 +90,7 @@ export const DaggerheartScars = (props) => {
           }
         >
           <Show when={editMode()}>
-            <div class="flex items-center gap-2">
+            <div class="experience-new-box">
               <TextArea
                 rows="3"
                 labelText={localize(TRANSLATION, locale()).label}
@@ -104,15 +104,14 @@ export const DaggerheartScars = (props) => {
                 <Button default onClick={addScar}><Check width="20" height="20" /></Button>
               </Show>
             </div>
+            <Show when={character().scars.length > 0}><div class="mt-2" /></Show>
           </Show>
-          <div class="experiences">
+          <div>
             <For each={character().scars}>
               {(scar) =>
-                <div class="experience mt-2">
+                <div class="experience">
                   <p class="flex-1">{scar.name}</p>
-                  <Button default size="small" classList="ml-4 opacity-75" onClick={() => removeScar(scar.id)}>
-                    <Close />
-                  </Button>
+                  <Button default size="small" classList="ml-4 opacity-75" onClick={() => removeScar(scar.id)}><Close /></Button>
                 </div>
               }
             </For>

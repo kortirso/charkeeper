@@ -231,7 +231,7 @@ export const DaggerheartLeveling = (props) => {
         onReloadCharacter={props.onReloadCharacter}
         finishGuideStep={props.finishGuideStep}
       >
-        <div class="blockable p-4 flex flex-col mb-4">
+        <div class="blockable p-4 px-2 md:px-4 flex flex-col mb-4">
           <div class="flex items-center mb-2">
             <Button default classList="rounded mr-4" onClick={levelUp}>
               <Arrow top />
