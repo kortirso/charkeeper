@@ -108,44 +108,30 @@ export const CharactersListItem = (props) => {
 
   return (
     <div
-      class="p-4 pb-0 pr-0 flex items-center cursor-pointer relative"
-      classList={{
-        'bg-white hover:bg-gray-100 dark:bg-neutral-800 dark:hover:bg-dusty': !props.isActive,
-        'bg-blue-400 dark:bg-fuzzy-red': props.isActive
-      }}
+      class="character-item"
+      classList={{ 'character-item-not-active': !props.isActive, 'character-item-active': props.isActive }}
       onClick={props.onClick} // eslint-disable-line solid/reactivity
     >
-      <div class="mr-3 pb-4 dark:text-snow">
-        <Show
-          when={character().avatar}
-          fallback={<Avatar width={64} height={64} />}
-        >
-          <img src={character().avatar} class="w-16 h-16 rounded" />
+      <div class="avatar-block">
+        <Show when={character().avatar} fallback={<Avatar width={64} height={64} />}>
+          <img src={character().avatar} class="avatar" />
         </Show>
       </div>
       <div
-        class="flex-1 flex pb-4 pr-4"
-        classList={{
-          'border-b border-gray-200 dark:border-dusty': !props.isActive,
-          'border-b border-blue-400 dark:border-fuzzy-red': props.isActive
-        }}>
+        class="character-item-box"
+        classList={{ 'character-item-box-not-active': !props.isActive, 'character-item-box-active': props.isActive }}
+      >
         <div class="flex-1 overflow-hidden">
-          <p class="font-normal! text-lg dark:text-snow truncate-text" classList={{ 'text-white': props.isActive }}>
-            {character().name}
-          </p>
-          <p class="text-xs/4 text-gray-400 dark:text-gray-300" classList={{ 'text-white': props.isActive }}>
-            {firstText()}
-          </p>
-          <p class="text-xs/4 text-gray-400 dark:text-gray-300" classList={{ 'text-white': props.isActive }}>
-            {secondText()}
-          </p>
+          <p class="character-item-name truncate-text" classList={{ 'text-white!': props.isActive }}>{character().name}</p>
+          <p class="character-item-first-text" classList={{ 'text-white!': props.isActive }}>{firstText()}</p>
+          <p class="character-item-second-text" classList={{ 'text-white!': props.isActive }}>{secondText()}</p>
         </div>
-        <div class="relative h-16 dark:text-snow" use:clickOutside={() => setIsOpen(false)}>
+        <div class="character-item-dots" use:clickOutside={() => setIsOpen(false)}>
           <IconButton onClick={toggleMenu}>
             <Dots />
           </IconButton>
           <Show when={isOpen()}>
-            <div class="absolute z-9 right-0 border border-gray-200 rounded overflow-hidden">
+            <div class="character-item-dots-dropdown">
               <p class="dots-item" onClick={deleteClick}>{localize(TRANSLATION, locale()).delete}</p>
               <Show when={AVAILABLE_RESET.includes(character().provider)}>
                 <p class="dots-item" onClick={resetClick}>{localize(TRANSLATION, locale()).reset}</p>

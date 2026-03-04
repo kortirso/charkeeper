@@ -19,7 +19,7 @@ export const CharacterForm = (props) => {
         <Button withSuspense outlined classList="flex-1" onClick={() => props.setCurrentTab('characters')}>
           {t('back')}
         </Button>
-        <Button withSuspense default classList="flex-1" onClick={props.onSaveCharacter}>
+        <Button withSuspense default classList="flex-1" onClick={props.onSaveCharacter} dataTestId="character-save-button">
           {t('save')}
         </Button>
       </div>

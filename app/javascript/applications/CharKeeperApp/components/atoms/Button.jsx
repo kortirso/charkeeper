@@ -19,15 +19,16 @@ export const Button = (props) => {
 
   return (
     <p
-      class={[props.classList, 'rounded cursor-pointer flex justify-center items-center font-normal!'].join(' ')}
+      class={[props.classList, 'default-button'].join(' ')}
       classList={{
-        'min-h-10 min-w-10': props.size === undefined || props.size === 'default',
-        'min-h-6 min-w-6 text-sm': props.size === 'small',
-        'bg-blue-400 text-snow dark:bg-fuzzy-red': props.default,
-        'bg-white text-blue-400 border border-blue-400 dark:text-black dark:border-fuzzy-red': props.outlined,
+        'default-button-size': props.size === undefined || props.size === 'default',
+        'small-button-size': props.size === 'small',
+        'default-button-color': props.default,
+        'outlined-button-color': props.outlined,
         'px-2 py-1': props.textable
       }}
       onClick={click}
+      dataTestId={props.dataTestId}
     >
       <Show when={!loading()} fallback={<Loading spinner />}>
         {safeChildren()}

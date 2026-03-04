@@ -7,7 +7,7 @@ export const Checkbox = (props) => {
   const [labelProps] = splitProps(props, ['labelText', 'labelClassList']);
 
   return (
-    <div class={[props.classList, 'flex items-center'].join(' ')}>
+    <div class={[props.classList, 'flex items-center'].join(' ')} dataTestId={props.dataTestId}>
       <Show when={props.labelPosition === 'left'}>
         <Label { ...labelProps } onClick={() => props.disabled ? null : props.onToggle()} />
       </Show>

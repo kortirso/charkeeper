@@ -525,7 +525,7 @@ nav.pagy.nav a.gap {
 }
 
 .character-info-text {
-  @apply text-[11px] uppercase;
+  @apply text-[11px]! uppercase;
 }
 
 #head {
@@ -682,4 +682,89 @@ body.web {
 
 .select-input::placeholder {
   @apply text-gray-200 opacity-100 text-sm;
+}
+
+.default-input {
+  @apply w-full h-12 px-2 border border-gray-200 text-sm bg-white rounded;
+  @apply dark:bg-neutral-700 dark:border-gray-500 dark:text-snow;
+}
+
+.default-label {
+  @apply text-sm/4 text-gray-400 dark:text-gray-200 flex-1;
+}
+
+.default-select {
+  @apply flex justify-between items-center h-12;
+}
+
+.default-button {
+  @apply rounded cursor-pointer flex justify-center items-center font-normal!;
+}
+
+.default-button-size {
+  @apply min-h-10 min-w-10;
+}
+
+.small-button-size {
+  @apply min-h-6 min-w-6 text-sm;
+}
+
+.default-button-color {
+  @apply bg-blue-400 text-snow dark:bg-fuzzy-red;
+}
+
+.outlined-button-color {
+  @apply bg-white text-blue-400 border border-blue-400 dark:text-black dark:border-fuzzy-red;
+}
+
+.character-item {
+  @apply p-4 pb-0 pr-0 flex items-center cursor-pointer relative;
+}
+
+.character-item-not-active {
+  @apply bg-white hover:bg-gray-100 dark:bg-neutral-800 dark:hover:bg-dusty;
+}
+
+.character-item-active {
+  @apply bg-blue-400 dark:bg-fuzzy-red;
+}
+
+.avatar-block {
+  @apply mr-3 pb-4 dark:text-snow;
+}
+
+.avatar {
+  @apply w-16 h-16 rounded;
+}
+
+.character-item-dots {
+  @apply relative h-16 dark:text-snow;
+}
+
+.character-item-dots-dropdown {
+  @apply absolute z-9 right-0 border border-gray-200 rounded overflow-hidden;
+}
+
+.character-item-name {
+  @apply font-normal! text-lg dark:text-snow;
+}
+
+.character-item-first-text {
+  @apply text-xs/4 text-gray-400 dark:text-gray-300;
+}
+
+.character-item-second-text {
+  @apply text-xs/4 text-gray-400 dark:text-gray-300;
+}
+
+.character-item-box {
+  @apply flex-1 flex pb-4 pr-4;
+}
+
+.character-item-box-active {
+  @apply border-b border-blue-400 dark:border-fuzzy-red;
+}
+
+.character-item-box-not-active {
+  @apply border-b border-gray-200 dark:border-dusty;
 }
