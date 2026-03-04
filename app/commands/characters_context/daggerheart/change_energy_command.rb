@@ -113,7 +113,9 @@ module CharactersContext
 
         selected_for_reset = input[:character].feats.joins(:feat).where(feats: { reset_on_rest: limit_refresh(input) })
         selected_for_reset.update_all(value: nil)
+        return if input[:value] == 'session'
 
+        input[:character].feats.where(active: true).update_all(active: false)
         refresh_selected_features(selected_for_reset, input[:character])
       end
 

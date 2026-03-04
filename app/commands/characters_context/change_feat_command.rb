@@ -6,7 +6,8 @@ module CharactersContext
       character_dnd5_update: 'commands.characters_context.dnd5.update',
       character_dnd2024_update: 'commands.characters_context.dnd2024.update',
       character_daggerheart_update: 'commands.characters_context.daggerheart.update',
-      character_dc20_update: 'commands.characters_context.dc20.update'
+      character_dc20_update: 'commands.characters_context.dc20.update',
+      refresh_daggerheart_feats: 'services.characters_context.daggerheart.refresh_feats'
     ]
 
     use_contract do
@@ -35,8 +36,7 @@ module CharactersContext
       input[input[:key]] = { input[:character_feat].feat.slug => input[:value] }
     end
 
-    # rubocop: disable Metrics/AbcSize
-    def do_persist(input)
+    def do_persist(input) # rubocop: disable Metrics/AbcSize
       input[:character_feat].update!(input.except(:character_feat, :selected_feats, :selected_features, :key))
 
       if input[:key]
@@ -47,9 +47,12 @@ module CharactersContext
         )
       end
 
+      if input.key?(:active)
+        refresh_feats_service(input)&.call(character: input[:character_feat].character)
+      end
+
       { result: input[:character_feat] }
     end
-    # rubocop: enable Metrics/AbcSize
 
     def refresh_character(input)
       case input[:character_feat].character.type
@@ -57,6 +60,12 @@ module CharactersContext
       when 'Dnd2024::Character' then character_dnd2024_update
       when 'Daggerheart::Character' then character_daggerheart_update
       when 'Dc20::Character' then character_dc20_update
+      end
+    end
+
+    def refresh_feats_service(input)
+      case input[:character_feat].character.type
+      when 'Daggerheart::Character' then refresh_daggerheart_feats
       end
     end
   end

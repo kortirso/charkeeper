@@ -13,6 +13,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Select component with filtering opportunity
 - items search by original name
 - refreshing feats during rest for DH characters
+- working with Elemental incarnations for DH characters
 
 ## [0.4.12] - 2026-03-02
 ### Modified
