@@ -15,18 +15,20 @@ module CharactersContext
 
       def filter_available_feats(character)
         selected_feats = find_selected_feats(character)
+        active_feats = find_active_feats(character)
 
         feats(character).select(*REQUIRED_ATTRIBUTES).filter_map do |item|
           next item if item.conditions.blank?
 
-          filter_feat(item, character, selected_feats)
+          filter_feat(item, character, selected_feats, active_feats)
         end
       end
 
-      def filter_feat(item, character, selected_feats)
+      def filter_feat(item, character, selected_feats, active_feats)
         conditions = item.conditions
         return unless match_by_subclass_mastery?(conditions['subclass_mastery'], item, character)
         return unless match_by_selected_feats?(conditions['selected_feature'], selected_feats)
+        return unless match_by_active_feats?(conditions['active'], active_feats)
 
         item
       end
@@ -45,8 +47,18 @@ module CharactersContext
         true
       end
 
+      def match_by_active_feats?(condition, active_feats)
+        return true unless condition
+
+        active_feats.include?(condition)
+      end
+
       def find_selected_feats(character)
         character.data.selected_features.values.flatten
+      end
+
+      def find_active_feats(character)
+        character.feats.where(active: true).joins(:feat).pluck('feats.slug').uniq.compact
       end
 
       def feats(character) # rubocop: disable Metrics/AbcSize, Metrics/MethodLength, Metrics/PerceivedComplexity, Metrics/CyclomaticComplexity
