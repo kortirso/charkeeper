@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Modified
 - order of traits for DH characters
 - rendering not ready features in features section
+- rendering blocks for DH characters
 
 ## [0.4.12] - 2026-03-02
 ### Modified

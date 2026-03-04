@@ -1,18 +1,23 @@
 import { createSignal, createEffect, For, Show, batch } from 'solid-js';
-import * as i18n from '@solid-primitives/i18n';
 
 import { Button, Input, ErrorWrapper, Toggle, GuideWrapper } from '../../../../components';
 import { useAppState, useAppLocale, useAppAlert } from '../../../../context';
 import { Plus, Minus, Close, Check } from '../../../../assets';
 import { updateCharacterRequest } from '../../../../requests/updateCharacterRequest';
-import { modifier, localize } from '../../../../helpers';
+import { modifier } from '../../../../helpers';
 
 const TRANSLATION = {
   en: {
-    helpMessage: "Your character starts with two Experiences (each with a +2 modifier)."
+    helpMessage: 'Your character starts with two Experiences (each with a +2 modifier).',
+    title: 'Experience'
   },
   ru: {
-    helpMessage: "Ваш персонаж начинает приключение с 2 опытами (каждый с модификатором +2)."
+    helpMessage: 'Ваш персонаж начинает приключение с 2 опытами (каждый с модификатором +2).',
+    title: 'Опытность'
+  },
+  es: {
+    helpMessage: 'Your character starts with two Experiences (each with a +2 modifier).',
+    title: 'Experiencia'
   }
 }
 
@@ -26,9 +31,7 @@ export const DaggerheartExperience = (props) => {
 
   const [appState] = useAppState();
   const [{ renderAlerts }] = useAppAlert();
-  const [locale, dict] = useAppLocale();
-
-  const t = i18n.translator(dict);
+  const [locale] = useAppLocale();
 
   createEffect(() => {
     if (lastActiveObjectId() === object().id && object().guide_step !== 1) {
@@ -105,7 +108,7 @@ export const DaggerheartExperience = (props) => {
       <GuideWrapper
         character={object()}
         guideStep={2}
-        helpMessage={localize(TRANSLATION, locale())['helpMessage']}
+        helpMessage={TRANSLATION[locale()].helpMessage}
         onReloadCharacter={props.onReloadCharacter}
         onNextClick={props.onNextGuideStepClick}
       >
@@ -113,30 +116,25 @@ export const DaggerheartExperience = (props) => {
           disabled
           isOpen
           title={
-            <div class="flex justify-between items-center">
-              <h2 class="flex-1 text-lg dark:text-snow">{t('daggerheart.experience.title')}</h2>
+            <div class="experience-title-box">
+              <h2 class="experience-title">{TRANSLATION[locale()].title}</h2>
               <Show when={!editMode()}>
-                <Button default size="small" onClick={() => setEditMode(true)}>
-                  <Plus />
-                </Button>
+                <Button default size="small" onClick={() => setEditMode(true)}><Plus /></Button>
               </Show>
             </div>
           }
         >
           <Show when={editMode()}>
-            <div class="flex items-center gap-2 mb-4">
-              <Input
-                containerClassList="flex-1"
-                value={name()}
-                onInput={(value) => setName(value)}
-              />
+            <div class="experience-new-box">
+              <Input containerClassList="flex-1" value={name()} onInput={(value) => setName(value)} />
               <Show when={name().length > 0}>
                 <Button outlined onClick={cancelEditing}><Close width="30" height="30" /></Button>
                 <Button default onClick={addExperience}><Check width="20" height="20" /></Button>
               </Show>
             </div>
+            <Show when={object().experience.length > 0}><div class="mt-2" /></Show>
           </Show>
-          <div class="experiences">
+          <div>
             <For each={object().experience}>
               {(exp) =>
                 <div class="experience">

@@ -1,29 +1,40 @@
 import { For } from 'solid-js';
-import * as i18n from '@solid-primitives/i18n';
 
 import { ErrorWrapper, GuideWrapper } from '../../../../components';
 import { useAppLocale } from '../../../../context';
 
+const TRANSLATION = {
+  en: {
+    proficiency: 'Proficiency',
+    evasion: 'Evasion',
+    armor_score: 'Armor Score'
+  },
+  ru: {
+    proficiency: 'Мастерство',
+    evasion: 'Уклонение',
+    armor_score: 'Очки Доспеха'
+  },
+  es: {
+    proficiency: 'Competencia',
+    evasion: 'Evasión',
+    armor_score: 'Puntuación de armadura'
+  }
+}
+
 export const DaggerheartStatic = (props) => {
   const character = () => props.character;
 
-  const [, dict] = useAppLocale();
-
-  const t = i18n.translator(dict);
+  const [locale] = useAppLocale();
 
   return (
     <ErrorWrapper payload={{ character_id: character().id, key: 'DaggerheartStatic' }}>
       <GuideWrapper character={character()}>
-        <div class="flex flex-wrap justify-center gap-2">
+        <div class="dh-static-box">
           <For each={['proficiency', 'evasion', 'armor_score']}>
             {(slug) =>
-              <div class="flex-1 emd:w-1/4">
-                <div class="blockable py-4">
-                  <p class="text-sm uppercase text-center mb-4 dark:text-snow">{t(`daggerheart.static.${slug}`)}</p>
-                  <div class="mx-auto flex items-center justify-center">
-                    <p class="text-2xl font-normal! dark:text-snow">{character()[slug]}</p>
-                  </div>
-                </div>
+              <div class="flex-1">
+                <p class="dh-static-title">{TRANSLATION[locale()][slug]}</p>
+                <p class="dh-static-value">{character()[slug]}</p>
               </div>
             }
           </For>

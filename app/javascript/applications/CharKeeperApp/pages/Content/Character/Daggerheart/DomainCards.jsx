@@ -181,7 +181,7 @@ export const DaggerheartDomainCards = (props) => {
             <>
               <div class="flex justify-between items-center mb-2">
                 <Checkbox
-                  labelText={localize(TRANSLATION, locale())['onlyAvailableSpells']}
+                  labelText={localize(TRANSLATION, locale()).onlyAvailableSpells}
                   labelPosition="right"
                   labelClassList="ml-2"
                   checked={availableDomainsFilter()}
@@ -194,7 +194,7 @@ export const DaggerheartDomainCards = (props) => {
                     <div>
                       <For each={spells().filter((spell) => spell.origin_value === domain).sort((a, b) => a.conditions.level - b.conditions.level)}>
                         {(spell) =>
-                          <div class="domain-card" classList={{ 'opacity-50': learnedSpells().includes(spell.slug) }}>
+                          <div class="domain-card reverse" classList={{ 'opacity-50': learnedSpells().includes(spell.slug) }}>
                             <div class="domain-card-title">
                               <p class="font-normal! text-lg">{spell.title}</p>
                               <Show when={spell.info.type}>
@@ -206,7 +206,7 @@ export const DaggerheartDomainCards = (props) => {
                               innerHTML={spell.description} // eslint-disable-line solid/no-innerhtml
                             />
                             <Show when={!learnedSpells().includes(spell.slug)}>
-                              <div class="domain-card-learn">
+                              <div class="domain-card-actions">
                                 <Button default size="small" onClick={() => selectDomainCard(spell.id)}>
                                   <PlusSmall />
                                 </Button>

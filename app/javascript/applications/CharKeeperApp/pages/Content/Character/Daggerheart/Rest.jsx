@@ -240,7 +240,7 @@ export const DaggerheartRest = (props) => {
   return (
     <ErrorWrapper payload={{ character_id: character().id, key: 'DaggerheartRest' }}>
       <GuideWrapper character={character()}>
-        <div class="blockable p-4">
+        <div class="blockable py-4 px-2 md:px-4">
           <p>{localize(TRANSLATION, locale()).description}</p>
           <Select
             containerClassList="w-full mt-4"

@@ -88,11 +88,6 @@
       "traits": "Atributos",
       "thresholds": "Umbrales de daño"
     },
-    "static": {
-      "proficiency": "Competencia",
-      "evasion": "Evasión",
-      "armor_score": "Puntuación de armadura"
-    },
     "health": {
       "armorScore": "Puntuación de armadura",
       "armorSlots": "Ranuras de armadura",
@@ -113,9 +108,6 @@
       "vault": "Baúl",
       "select": "Añadir cartas de Dominio",
       "cardNote": "Nota de carta de Dominio"
-    },
-    "experience": {
-      "title": "Experiencia"
     },
     "bonuses": {
       "title": "Bonificaciones",
