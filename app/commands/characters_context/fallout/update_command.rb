@@ -43,9 +43,14 @@ module CharactersContext
       def lock_time = 0
 
       # rubocop: disable Style/GuardClause
-      def do_prepare(input)
+      def do_prepare(input) # rubocop: disable Metrics/AbcSize
         %i[abilities].each do |key|
           input[key]&.transform_values!(&:to_i)
+        end
+
+        if input.key?(:level)
+          input[:skill_boosts] = input[:character].data.skill_boosts + 1
+          input[:perks_boosts] = input[:character].data.perks_boosts + 1
         end
 
         if input.key?(:abilities)

@@ -53,6 +53,7 @@ export const Fallout = (props) => {
                   character={character()}
                   onReplaceCharacter={props.onReplaceCharacter}
                   onReloadCharacter={props.onReloadCharacter}
+                  onNextGuideStepClick={() => setActiveMobileTab('classLevels')}
                 />
               </div>
             </Match>
@@ -92,6 +93,7 @@ export const Fallout = (props) => {
             character={character()}
             onReplaceCharacter={props.onReplaceCharacter}
             onReloadCharacter={props.onReloadCharacter}
+            onNextGuideStepClick={() => setActiveTab('classLevels')}
           />
         </div>
       </>

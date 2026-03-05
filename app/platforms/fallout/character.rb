@@ -19,6 +19,7 @@ module Fallout
     attribute :ability_boosts, :integer, default: 5 # повышение атрибутов
     attribute :tag_skill_boosts, :integer, default: 3 # мастерство навыков
     attribute :skill_boosts, :integer, default: 9 # ранги навыков
+    attribute :perks_boosts, :integer, default: 1 # очки перков
   end
 
   class Character < Character

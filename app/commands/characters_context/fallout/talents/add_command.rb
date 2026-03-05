@@ -27,6 +27,7 @@ module CharactersContext
 
             input[:character].feats.create_with(ready_to_use: true).find_or_create_by(feat_id: feat_id)
             input[:character].data.perks = input[:character].data.perks.merge(feat_id => input[:current_ranks] + 1)
+            input[:character].data.perks_boosts -= 1
             input[:character].data.additional_perks += 1 if input[:additional]
 
             input[:talent].info['rewrite']&.each { |key, value| input[:character].data[key] = value }

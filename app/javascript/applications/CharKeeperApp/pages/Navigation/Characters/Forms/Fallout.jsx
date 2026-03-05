@@ -4,8 +4,8 @@ import { createStore } from 'solid-js/store';
 import { CharacterForm } from '../../../../pages';
 import { Select, Input, Checkbox } from '../../../../components';
 import config from '../../../../data/fallout.json';
-import { useAppLocale, useAppAlert } from '../../../../context';
-import { translate, readFromCache, localize, performResponse } from '../../../../helpers';
+import { useAppLocale } from '../../../../context';
+import { translate, readFromCache, localize } from '../../../../helpers';
 
 const TRANSLATION = {
   en: {
@@ -26,7 +26,6 @@ const RENDER_GUIDE_CACHE_NAME = 'RenderGuideSettings';
 export const FalloutCharacterForm = (props) => {
   const [characterFalloutForm, setCharacterFalloutForm] = createStore(FALLOUT_DEFAULT_FORM);
 
-  const [{ renderAlerts }] = useAppAlert();
   const [locale] = useAppLocale();
 
   const readGuideSettings = async () => {
@@ -42,13 +41,9 @@ export const FalloutCharacterForm = (props) => {
 
   const saveCharacter = async () => {
     const result = await props.onCreateCharacter(characterFalloutForm);
-    performResponse(
-      result,
-      function() {
-        setCharacterFalloutForm({ name: '', origin: '', skip_guide: true });
-      },
-      function() { renderAlerts(result.errors_list) }
-    );
+    if (result === null) {
+      setCharacterFalloutForm({ name: '', origin: '', skip_guide: true });
+    }
   }
 
   return (

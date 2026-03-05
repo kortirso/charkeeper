@@ -74,8 +74,7 @@ export const FalloutLeveling = (props) => {
     );
   }
 
-  const selectedPerksCount = createMemo(() => Object.values(character().perks).reduce((acc, value) => acc + value, 0) - character().additional_perks);
-  const defaultPerk = createMemo(() => character().level > selectedPerksCount());
+  const defaultPerk = createMemo(() => character().perks_boosts > 0);
 
   const availablePerks = createMemo(() => {
     if (perks() === undefined) return {};
@@ -159,7 +158,7 @@ export const FalloutLeveling = (props) => {
           title={
             <div class="flex justify-between">
               <p>{localize(TRANSLATION, locale()).perks}</p>
-              <p>{localize(TRANSLATION, locale()).existingPerkPoints} - {character().level - selectedPerksCount()}</p>
+              <p>{localize(TRANSLATION, locale()).existingPerkPoints} - {character().perks_boosts}</p>
             </div>
           }
         >

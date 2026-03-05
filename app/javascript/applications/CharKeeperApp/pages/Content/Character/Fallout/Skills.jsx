@@ -130,7 +130,7 @@ export const FalloutSkills = (props) => {
         guideStep={2}
         helpMessage={localize(TRANSLATION, locale()).helpMessage}
         onReloadCharacter={props.onReloadCharacter}
-        finishGuideStep={true}
+        onNextClick={props.onNextGuideStepClick}
       >
         <EditWrapper
           editMode={editMode()}

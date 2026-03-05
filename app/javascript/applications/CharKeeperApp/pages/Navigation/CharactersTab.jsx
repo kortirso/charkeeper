@@ -153,13 +153,10 @@ export const CharactersTab = () => {
         setPlatform(undefined);
         setCurrentTab('characters');
       });
+      return null;
     } else {
-      batch(() => {
-        renderAlerts(result.errors_list);
-      })
+      renderAlerts(result.errors_list);
     }
-
-    return null;
   }
 
   return (
