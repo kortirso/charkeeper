@@ -97,6 +97,7 @@ export * from './Content/Character/Fate/Stunts';
 export * from './Content/Character/Fallout';
 export * from './Content/Character/Fallout/Abilities';
 export * from './Content/Character/Fallout/Skills';
+export * from './Content/Character/Fallout/Leveling';
 
 export * from './Navigation/Characters/ListItem';
 export * from './Navigation/Characters/CharacterForm';

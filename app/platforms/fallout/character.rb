@@ -13,12 +13,12 @@ module Fallout
     attribute :skills, array: true, default: {} # { barter: 1 }
     attribute :tag_skills, array: true, default: []
     attribute :perks, array: true, default: {}
+    attribute :additional_perks, array: true, default: 0
     # только для 1 уровня
     attribute :guide_step, :integer # этап помощи при создании персонажа
     attribute :ability_boosts, :integer, default: 5 # повышение атрибутов
     attribute :tag_skill_boosts, :integer, default: 3 # мастерство навыков
     attribute :skill_boosts, :integer, default: 9 # ранги навыков
-    attribute :perks_boosts, :integer, default: 1
   end
 
   class Character < Character
@@ -32,8 +32,14 @@ module Fallout
 
     attribute :data, Fallout::CharacterData.to_type
 
-    def decorator
-      ::FalloutCharacter::BaseDecorator.new(self)
+    def decorator(simple: false, version: nil)
+      base_decorator = ::FalloutCharacter::BaseDecorator.new(self)
+      base_features_decorator = ::FeaturesBaseDecorator.new(base_decorator)
+      base_features_decorator.features unless simple
+      stats_decorator = ::FalloutCharacter::StatsDecorator.new(base_features_decorator)
+      features_decorator = ::FeaturesDecorator.new(stats_decorator, version: version)
+      features_decorator.features unless simple
+      ::FalloutCharacter::OverallDecorator.new(features_decorator)
     end
   end
 end

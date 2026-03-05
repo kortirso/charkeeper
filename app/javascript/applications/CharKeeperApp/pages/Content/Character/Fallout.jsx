@@ -1,18 +1,31 @@
 import { createSignal, createMemo, Switch, Match } from 'solid-js';
 import { createWindowSize } from '@solid-primitives/resize-observer';
 
-import { FalloutAbilities, FalloutSkills } from '../../../pages';
+import { FalloutAbilities, FalloutSkills, FalloutLeveling } from '../../../pages';
 import { CharacterNavigation, Notes, Avatar, ContentWrapper } from '../../../components';
+import { useAppLocale } from '../../../context';
+import { localize } from '../../../helpers';
+
+const TRANSLATION = {
+  en: {
+    levelingHelpMessage: 'In the future on this tab you can level up your character.'
+  },
+  ru: {
+    levelingHelpMessage: 'В будущем на этой вкладке вы сможете указывать уровень вашего персонажа.'
+  }
+}
 
 export const Fallout = (props) => {
   const size = createWindowSize();
   const character = () => props.character;
 
   const [activeMobileTab, setActiveMobileTab] = createSignal('abilities');
-  const [activeTab, setActiveTab] = createSignal('notes');
+  const [activeTab, setActiveTab] = createSignal('classLevels');
+
+  const [locale] = useAppLocale();
 
   const characterTabs = createMemo(() => {
-    return ['notes', 'avatar'];
+    return ['classLevels', 'notes', 'avatar'];
   });
 
   const mobileView = createMemo(() => {
@@ -24,6 +37,8 @@ export const Fallout = (props) => {
           tabsList={['abilities'].concat(characterTabs())}
           activeTab={activeMobileTab()}
           setActiveTab={setActiveMobileTab}
+          currentGuideStep={character().guide_step}
+          markedTabs={{ '3': 'classLevels' }}
         />
         <div class="p-2 pb-20 flex-1 overflow-y-auto">
           <Switch>
@@ -40,6 +55,15 @@ export const Fallout = (props) => {
                   onReloadCharacter={props.onReloadCharacter}
                 />
               </div>
+            </Match>
+            <Match when={activeMobileTab() === 'classLevels'}>
+              <FalloutLeveling
+                character={character()}
+                onReplaceCharacter={props.onReplaceCharacter}
+                onReloadCharacter={props.onReloadCharacter}
+                currentGuideStep={character().guide_step}
+                helpMessage={localize(TRANSLATION, locale()).levelingHelpMessage}
+              />
             </Match>
             <Match when={activeMobileTab() === 'notes'}>
               <Notes />
@@ -86,6 +110,15 @@ export const Fallout = (props) => {
         />
         <div class="p-2 pb-20 flex-1">
           <Switch>
+            <Match when={activeTab() === 'classLevels'}>
+              <FalloutLeveling
+                character={character()}
+                onReplaceCharacter={props.onReplaceCharacter}
+                onReloadCharacter={props.onReloadCharacter}
+                currentGuideStep={character().guide_step}
+                helpMessage={localize(TRANSLATION, locale()).levelingHelpMessage}
+              />
+            </Match>
             <Match when={activeTab() === 'notes'}>
               <Notes />
             </Match>

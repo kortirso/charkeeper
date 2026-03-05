@@ -140,7 +140,9 @@ Rails.application.routes.draw do
     end
 
     namespace :fallout do
-      resources :characters, only: %i[create update]
+      resources :characters, only: %i[create update] do
+        resources :talents, only: %i[index create], module: 'characters'
+      end
     end
 
     namespace :dc20 do
