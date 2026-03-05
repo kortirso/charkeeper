@@ -12,6 +12,7 @@ module CharactersContext
 
         params do
           required(:character).filled(type?: ::Fallout::Character)
+          optional(:level).filled(:integer)
           optional(:abilities).hash do
             required(:str).filled(:integer)
             required(:per).filled(:integer)
@@ -42,23 +43,22 @@ module CharactersContext
       def lock_time = 0
 
       # rubocop: disable Style/GuardClause
-      def do_prepare(input) # rubocop: disable Metrics/AbcSize
+      def do_prepare(input)
         %i[abilities].each do |key|
           input[key]&.transform_values!(&:to_i)
         end
 
         if input.key?(:abilities)
-          input[:ability_boosts] = nil
+          input[:ability_boosts] = 0
 
           if input[:character].data.skill_boosts.present?
-            input[:skill_boosts] = input[:character].data.skill_boosts
-            input[:skill_boosts] += input.dig(:abilities, :int)
+            input[:skill_boosts] = input[:character].data.skill_boosts + input.dig(:abilities, :int)
           end
         end
 
         if input.key?(:skills)
-          input[:skill_boosts] = nil
-          input[:tag_skill_boosts] = nil
+          input[:skill_boosts] = 0
+          input[:tag_skill_boosts] = 0
         end
       end
       # rubocop: enable Style/GuardClause

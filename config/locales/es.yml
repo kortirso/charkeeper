@@ -32,6 +32,10 @@ es:
       items:
         consume:
           done: "%{value} es consumimdo, tira - %{roll}"
+      fallout:
+        talents:
+          add:
+            full_rank: Достигнут максимальный ранг
     homebrew_context:
       daggerheart:
         items:

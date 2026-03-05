@@ -87,7 +87,7 @@ export const FalloutAbilities = (props) => {
         helpMessage={localize(TRANSLATION, locale()).helpMessage}
         onReloadCharacter={props.onReloadCharacter}
       >
-        <Show when={character().guide_step && character().ability_boosts > 0}>
+        <Show when={character().ability_boosts > 0}>
           <div class="warning">
             <p class="text-sm">
               {localize(TRANSLATION, locale()).abilityBoosts} - {character().ability_boosts - spentAbilityPoints()}

@@ -1,0 +1,67 @@
+[
+  {
+    "slug": "cap_collector",
+    "title": { "en": "Cap Collector", "ru": "Коллекционер крышек" },
+    "description": {
+      "en": "When you buy or sell items, you may increase or decrease the price of the goods being traded by 10%.",
+      "ru": "Когда вы покупаете или продаете товары, вы можете увеличить или уменьшить цену продаваемых товаров на 10%."
+    },
+    "origin": "general",
+    "kind": "static",
+    "conditions": { "attrs": { "cha": 5 } },
+    "info": {
+      "ranks": 1
+    }
+  },
+  {
+    "slug": "healer",
+    "title": { "en": "Healer", "ru": "Лекарь" },
+    "description": {
+      "en": "When you heal a patient's HP using the **First Aid** action, increase the amount of HP healed by +1 per rank in this perk.",
+      "ru": "Когда вы восстанавливаете ОЗ пациента с помощью действия **Первая помощь**, количество исцеленных ОЗ увеличивается на +1 за каждый ранг этого перка."
+    },
+    "origin": "general",
+    "kind": "static",
+    "conditions": { "attrs": { "int": 7 }, "level": 1 },
+    "info": {
+      "ranks": 3,
+      "level_increase": 5
+    }
+  },
+  {
+    "slug": "intense_training",
+    "title": { "en": "Intense Training", "ru": "Интенсивные тренировки" },
+    "description": {
+      "en": "Increase any one attribute by 1 rank. As usual, your attributes cannot be increased beyond 10 using this method.",
+      "ru": "Повысьте любой атрибут на 1 ранг. Атрибуты по прежнему не могут быть увеличены выше 10 с помощью этого метода."
+    },
+    "origin": "general",
+    "kind": "hidden",
+    "conditions": { "level": 2 },
+    "info": {
+      "ranks": 10,
+      "level_increase": 2,
+      "increase": {
+        "ability_boosts": 1
+      }
+    }
+  },
+  {
+    "slug": "life_giver",
+    "title": { "en": "Life Giver", "ru": "Дающий жизнь" },
+    "description": {
+      "en": "Increase your maximum health points by your Endurance rank.",
+      "ru": "Увеличьте максимальное количество очков здоровья на уровень Выносливости."
+    },
+    "origin": "general",
+    "kind": "hidden",
+    "conditions": { "level": 5 },
+    "info": {
+      "ranks": 5,
+      "level_increase": 5
+    },
+    "eval_variables": {
+      "max_health": "max_health + (modified_abilities['end'] * perk_ranks['life_giver'])"
+    }
+  }
+]

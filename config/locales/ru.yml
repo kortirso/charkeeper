@@ -32,6 +32,10 @@ ru:
       items:
         consume:
           done: "%{value} использовано, бросок - %{roll}"
+      fallout:
+        talents:
+          add:
+            full_rank: Достигнут максимальный ранг
     homebrew_context:
       daggerheart:
         items:
