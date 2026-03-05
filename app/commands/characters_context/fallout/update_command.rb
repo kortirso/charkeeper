@@ -56,7 +56,7 @@ module CharactersContext
         if input.key?(:abilities)
           input[:ability_boosts] = 0
 
-          if input[:character].data.skill_boosts.present?
+          if input[:character].data.level == 1
             input[:skill_boosts] = input[:character].data.skill_boosts + input.dig(:abilities, :int)
           end
         end

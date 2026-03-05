@@ -10,11 +10,13 @@ import { localize } from '../../../../helpers';
 const TRANSLATION = {
   en: {
     abilityBoosts: 'You have attribute points for distribution',
-    helpMessage: 'Your character can start with a standard set of abilities, or you can generate them in any way according to the rules.'
+    helpMessage: 'Your character can start with a standard set of abilities.',
+    needSpend: 'Please spend all ability points'
   },
   ru: {
     abilityBoosts: 'У вас есть очки атрибутов для распределения',
-    helpMessage: 'Ваш персонаж может начать со стандартным набором характеристик. Или вы можете сгенерировать их любым способом согласно правилам.'
+    helpMessage: 'Ваш персонаж может начать со стандартным набором характеристик.',
+    needSpend: 'Необходимо потратить все очки атрибутов'
   }
 }
 
@@ -26,7 +28,7 @@ export const FalloutAbilities = (props) => {
   const [abilitiesData, setAbilitiesData] = createSignal(character().abilities);
 
   const [appState] = useAppState();
-  const [{ renderAlerts }] = useAppAlert();
+  const [{ renderAlerts, renderAlert }] = useAppAlert();
   const [locale] = useAppLocale();
 
   createEffect(() => {
@@ -67,6 +69,8 @@ export const FalloutAbilities = (props) => {
   }
 
   const updateCharacter = async () => {
+    if (character().ability_boosts - spentAbilityPoints() !== 0) return renderAlert(localize(TRANSLATION, locale()).needSpend);
+
     const result = await updateCharacterRequest(
       appState.accessToken, character().provider, character().id, { character: { abilities: abilitiesData() } }
     );
@@ -99,6 +103,7 @@ export const FalloutAbilities = (props) => {
           onSetEditMode={setEditMode}
           onCancelEditing={cancelEditing}
           onSaveChanges={updateCharacter}
+          hidden={character().ability_boosts === 0}
         >
           <div class="blockable py-4">
             <div class="flex flex-wrap gap-y-4 justify-center">

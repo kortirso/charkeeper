@@ -12,13 +12,19 @@ const TRANSLATION = {
     helpMessage: 'Fill data about skills.',
     skillBoosts: 'Skill points',
     skillTagBoosts: 'Tag skills',
-    skills: 'Skills'
+    skills: 'Skills',
+    needSpend: 'Need spend all skill points',
+    overQualified: 'Too many skill points spent per skill',
+    overLeveled: 'Too many skill points spent per skill at 1 level'
   },
   ru: {
     helpMessage: 'Заполните данные по навыкам.',
     skillBoosts: 'Очки навыков',
     skillTagBoosts: 'Владение навыками',
-    skills: 'Навыки'
+    skills: 'Навыки',
+    needSpend: 'Нужно потратить все очки навыков',
+    overQualified: 'Потрачено много очков навыков на навыки',
+    overLeveled: 'Потрачено много очков навыков на навыки на 1 уровне'
   }
 }
 
@@ -32,7 +38,7 @@ export const FalloutSkills = (props) => {
   const [skillsData, setSkillsData] = createSignal([]);
 
   const [appState] = useAppState();
-  const [{ renderAlerts }] = useAppAlert();
+  const [{ renderAlerts, renderAlert }] = useAppAlert();
   const [locale] = useAppLocale();
 
   createEffect(() => {
@@ -59,20 +65,10 @@ export const FalloutSkills = (props) => {
 
       return { ...item, expertise: !item.expertise } 
     });
+    if (skillPoints.skillTagBoosts === 0 && modifier > 0) return;
+
     batch(() => {
-      if (modifier > 0) {
-        if (skillPoints.skillTagBoosts > 0) {
-          setSkillPoints({ ...skillPoints, skillTagBoosts: skillPoints.skillTagBoosts - 1 });
-        } else {
-          setSkillPoints({ ...skillPoints, skillBoosts: skillPoints.skillBoosts - 1 });
-        }
-      } else {
-        if (skillsData().filter((item) => item.expertise).length > character().tag_skill_boosts) {
-          setSkillPoints({ ...skillPoints, skillBoosts: skillPoints.skillBoosts + 1 });
-        } else {
-          setSkillPoints({ ...skillPoints, skillTagBoosts: skillPoints.skillTagBoosts +1 });
-        }
-      }
+      setSkillPoints({ ...skillPoints, skillTagBoosts: skillPoints.skillTagBoosts - modifier });
       setSkillsData(result);
     });
   }
@@ -82,9 +78,10 @@ export const FalloutSkills = (props) => {
     const result = skillsData().slice().map((item) => {
       if (item.slug !== slug) return item;
 
-      const maxLevel = 4 + (item.expertise ? 0 : 2);
+      let maxLevel = 4 + (item.expertise ? 0 : 2);
+      if (character().level === 1) maxLevel -= 3;
 
-      const newValue = item.level === maxLevel ? 0 : (item.level === undefined ? 1 : (item.level + 1));
+      const newValue = item.level >= maxLevel ? 0 : (item.level === undefined ? 1 : (item.level + 1));
       difference = newValue - item.level;
       return { ...item, level: newValue } 
     });
@@ -102,13 +99,23 @@ export const FalloutSkills = (props) => {
   }
 
   const updateCharacterSkills = () => {
+    const overQualified = skillsData().filter((item) => (item.level + (item.expertise ? 2 : 0)) > 6).map((item) => localize(config.skills[item.slug].name, locale()));
+    if (overQualified.length > 0) return renderAlert(`${localize(TRANSLATION, locale()).overQualified}: ${overQualified.join(', ')}`);
+
+    if (character().level === 1) {
+      const overLeveled = skillsData().filter((item) => (item.level + (item.expertise ? 2 : 0)) > 3).map((item) => localize(config.skills[item.slug].name, locale()));
+      if (overLeveled.length > 0) return renderAlert(`${localize(TRANSLATION, locale()).overLeveled}: ${overLeveled.join(', ')}`);
+    }
+
+    if (skillPoints.skillBoosts !== 0 || skillPoints.skillTagBoosts !== 0) return renderAlert(localize(TRANSLATION, locale()).needSpend);
+
     const skills = skillsData().reduce((acc, item) => { acc[item.slug] = item.level; return acc }, {});
     const tagSkills = skillsData().filter((item) => item.expertise).map((item) => item.slug);
 
-    updateCharacter({ character: { skills: skills, tag_skills: tagSkills } }, setEditMode, false);
+    updateCharacter({ character: { skills: skills, tag_skills: tagSkills } });
   }
 
-  const updateCharacter = async (payload, callback, callbackPayload) => {
+  const updateCharacter = async (payload) => {
     const result = await updateCharacterRequest(appState.accessToken, character().provider, character().id, payload);
 
     performResponse(
@@ -116,7 +123,7 @@ export const FalloutSkills = (props) => {
       function() { // eslint-disable-line solid/reactivity
         batch(() => {
           props.onReplaceCharacter(result.character);
-          callback(callbackPayload);
+          setEditMode(false);
         });
       },
       function() { renderAlerts(result.errors_list) }
@@ -140,12 +147,10 @@ export const FalloutSkills = (props) => {
         >
           <div class="blockable p-4 pb-8">
             <p class="text-lg">{localize(TRANSLATION, locale()).skills}</p>
-            <Show when={skillPoints.skillBoosts > 0 || skillPoints.skillTagBoosts > 0}>
-              <div class="mt-2">
-                <p>{localize(TRANSLATION, locale()).skillBoosts} {skillPoints.skillBoosts}</p>
-                <p>{localize(TRANSLATION, locale()).skillTagBoosts} {skillPoints.skillTagBoosts}</p>
-              </div>
-            </Show>
+            <div class="mt-2">
+              <p>{localize(TRANSLATION, locale()).skillBoosts} {skillPoints.skillBoosts}</p>
+              <p>{localize(TRANSLATION, locale()).skillTagBoosts} {skillPoints.skillTagBoosts}</p>
+            </div>
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-y-2 gap-x-8 mt-2">
               <For each={Object.keys(config.abilities)}>
                 {(slug) =>
