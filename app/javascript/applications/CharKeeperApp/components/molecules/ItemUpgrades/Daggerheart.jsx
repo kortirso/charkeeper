@@ -1,4 +1,4 @@
-import { createSignal, createMemo, For, Show } from 'solid-js';
+import { createSignal, createMemo, For, Show, batch } from 'solid-js';
 import { createStore } from 'solid-js/store';
 
 import { Input, Select, Button } from '../../../components';
@@ -58,6 +58,10 @@ export const DaggerheartItemUpgrade = (props) => {
     performResponse(
       result,
       function() { // eslint-disable-line solid/reactivity
+        batch(() => {
+          setName('');
+          setUpgrades({});
+        });
         props.completeUpgrade(result);
       },
       function() { renderAlerts(result.errors_list) }
@@ -83,7 +87,7 @@ export const DaggerheartItemUpgrade = (props) => {
               selectedValue={upgrades[upgradeType]}
               onSelect={(value) => setUpgrades({ ...upgrades, [upgradeType]: value })}
             />
-            <Show when={upgrades[upgradeType]}>
+            <Show when={upgrades[upgradeType] && props.upgradeItems.find(({ item_id }) => upgrades[upgradeType] === item_id)}>
               <Show
                 when={upgradeType === 'gem'}
                 fallback={
