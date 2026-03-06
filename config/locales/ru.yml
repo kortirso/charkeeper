@@ -166,6 +166,9 @@ ru:
           fate:
             skill: делает проверку навыка, %{attr}
             stunt: делает проверку трюка, %{attr}
+          fallout:
+            result: Успехи - %{successes}, Осложнения - %{complications}
+            skill: делает проверку навыка, %{attr}
         roll:
           result: Броски
           rolls: делает броски

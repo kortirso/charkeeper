@@ -31,6 +31,10 @@ module Fallout
       config['origins']
     end
 
+    def self.skills
+      config['skills']
+    end
+
     attribute :data, Fallout::CharacterData.to_type
 
     def decorator(simple: false, version: nil)

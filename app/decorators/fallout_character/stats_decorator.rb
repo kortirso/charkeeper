@@ -29,7 +29,8 @@ module FalloutCharacter
         ability: ability,
         modifier: [level + (expertise ? 2 : 0), 6].min,
         level: level,
-        expertise: expertise
+        expertise: expertise,
+        attribute_modifier: modified_abilities[ability]
       }
     end
   end

@@ -26,6 +26,7 @@ export * from './molecules/Loading';
 export * from './molecules/ItemUpgrades/Daggerheart';
 
 export * from './rolls/Fate';
+export * from './rolls/Fallout';
 
 export * from './substances/Avatar';
 export * from './substances/Notes';

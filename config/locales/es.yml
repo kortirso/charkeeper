@@ -166,6 +166,9 @@ es:
           fate:
             skill: hace una tirada de habilidad de, %{attr}
             stunt: hace una prueba de acrobacia de, %{attr}
+          fallout:
+            result: Successes - %{successes}, Complications - %{complications}
+            skill: hace una tirada de habilidad de, %{attr}
         roll:
           result: Resultado
           rolls: hace tiradas de dados

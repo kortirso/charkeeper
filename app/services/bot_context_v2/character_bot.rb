@@ -81,6 +81,7 @@ module BotContextV2
       when 'Dnd5::Character', 'Dnd2024::Character', 'Dc20::Character', 'Pathfinder2::Character' then 'dnd'
       when 'Daggerheart::Character' then 'daggerheart'
       when 'Fate::Character' then 'fate'
+      when 'Fallout::Character' then 'fallout'
       end
     end
 
