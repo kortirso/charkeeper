@@ -2,7 +2,9 @@ import { createSignal, createMemo, Switch, Match } from 'solid-js';
 import { createWindowSize } from '@solid-primitives/resize-observer';
 
 import { FalloutAbilities, FalloutSkills, FalloutLeveling } from '../../../pages';
-import { CharacterNavigation, Notes, Avatar, ContentWrapper, createFalloutDiceRoll, Equipment } from '../../../components';
+import {
+  CharacterNavigation, Notes, Avatar, ContentWrapper, createFalloutDiceRoll, Equipment, Combat
+} from '../../../components';
 import { useAppLocale } from '../../../context';
 import { localize } from '../../../helpers';
 
@@ -30,9 +32,9 @@ export const Fallout = (props) => {
   const character = () => props.character;
 
   const [activeMobileTab, setActiveMobileTab] = createSignal('abilities');
-  const [activeTab, setActiveTab] = createSignal('equipment');
+  const [activeTab, setActiveTab] = createSignal('combat');
 
-  const { DiceRoll, openDiceRoll } = createFalloutDiceRoll();
+  const { DiceRoll, openDiceRoll, openAttackRoll } = createFalloutDiceRoll();
 
   const [locale] = useAppLocale();
 
@@ -40,7 +42,7 @@ export const Fallout = (props) => {
   const smallGungsFilter = (item) => item.kind.includes('small_guns');
 
   const characterTabs = createMemo(() => {
-    return ['equipment', 'classLevels', 'notes', 'avatar'];
+    return ['combat', 'equipment', 'classLevels', 'notes', 'avatar'];
   });
 
   const mobileView = createMemo(() => {
@@ -72,6 +74,14 @@ export const Fallout = (props) => {
                   onNextGuideStepClick={() => setActiveMobileTab('equipment')}
                 />
               </div>
+            </Match>
+            <Match when={activeMobileTab() === 'combat'}>
+              <Combat
+                character={character()}
+                openDiceRoll={openDiceRoll}
+                openAttackRoll={openAttackRoll}
+                onReplaceCharacter={props.onReplaceCharacter}
+              />
             </Match>
             <Match when={activeMobileTab() === 'equipment'}>
               <Equipment
@@ -145,6 +155,14 @@ export const Fallout = (props) => {
         />
         <div class="p-2 pb-20 flex-1">
           <Switch>
+            <Match when={activeTab() === 'combat'}>
+              <Combat
+                character={character()}
+                openDiceRoll={openDiceRoll}
+                openAttackRoll={openAttackRoll}
+                onReplaceCharacter={props.onReplaceCharacter}
+              />
+            </Match>
             <Match when={activeTab() === 'equipment'}>
               <Equipment
                 character={character()}

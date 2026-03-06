@@ -5,6 +5,8 @@ module FalloutCharacter
     delegate :data, to: :__getobj__
     delegate :abilities, :tag_skills, :level, :perks, to: :data
 
+    def parent = __getobj__
+
     def method_missing(method, *args) # rubocop: disable Lint/UnusedMethodArgument
       __getobj__.respond_to?(method.to_sym) ? __getobj__.public_send(method) : nil
     end
