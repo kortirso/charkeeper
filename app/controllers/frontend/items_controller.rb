@@ -38,6 +38,7 @@ module Frontend
       when 'pathfinder2' then ::Item.pathfinder2.order(kind: :asc)
       when 'daggerheart' then ::Item.daggerheart.order(kind: :asc)
       when 'dc20' then ::Item.dc20.order(kind: :asc)
+      when 'fallout' then ::Item.fallout.order(kind: :asc)
       else raise(ActiveRecord::RecordNotFound)
       end
     end

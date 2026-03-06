@@ -72,6 +72,7 @@ module Frontend
         when 'pathfinder2' then authorized_scope(Character.all).pathfinder2
         when 'daggerheart' then authorized_scope(Character.all).daggerheart
         when 'dc20' then authorized_scope(Character.all).dc20
+        when 'fallout' then authorized_scope(Character.all).fallout
         else Character.none
         end
       end
@@ -82,6 +83,7 @@ module Frontend
         when 'pathfinder2' then ::Item.pathfinder2
         when 'daggerheart' then ::Item.daggerheart
         when 'dc20' then ::Item.dc20
+        when 'fallout' then ::Item.fallout
         else []
         end
       end

@@ -143,7 +143,7 @@ export const FalloutLeveling = (props) => {
     <ErrorWrapper payload={{ character_id: character().id, key: 'FalloutLeveling' }}>
       <GuideWrapper
         character={character()}
-        guideStep={3}
+        guideStep={4}
         helpMessage={props.helpMessage}
         onReloadCharacter={props.onReloadCharacter}
         finishGuideStep={true}
