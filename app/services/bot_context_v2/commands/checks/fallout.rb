@@ -11,7 +11,8 @@ module BotContextV2
           target = arguments.shift
           result =
             case type
-            when 'skill' then check(arguments)
+            when 'skill' then check_skill(arguments)
+            when 'damage' then check_damage(arguments)
             end
 
           {
@@ -24,8 +25,8 @@ module BotContextV2
 
         private
 
-        def check(arguments)
-          values = rolls(arguments)
+        def check_skill(arguments)
+          values = skill_rolls(arguments)
           {
             rolls: values[..-3],
             successes: values[-2],
@@ -33,7 +34,21 @@ module BotContextV2
           }
         end
 
-        def rolls(arguments)
+        def check_damage(arguments)
+          values = BotContextV2::Commands::Parsers::MakeCheck.new.call(arguments: arguments)
+
+          character_item = Character::Item.find_by(id: values[:id])
+          return {} unless character_item
+
+          result = { damage: 0, effects: 0 }
+          values[:target].times do
+            check_damage_roll_result(roll_command.call(arguments: ['d6']).dig(:result, :total), result)
+          end
+          modify_result_by_effects(result, character_item)
+          result.except(:effects)
+        end
+
+        def skill_rolls(arguments)
           values = BotContextV2::Commands::Parsers::MakeCheck.new.call(arguments: arguments) # { bonus: 1 }
 
           rolls = []
@@ -56,6 +71,28 @@ module BotContextV2
           successes += 1 if roll_result > expertise && roll_result <= target
 
           [successes, complications]
+        end
+
+        def check_damage_roll_result(roll_result, result)
+          if roll_result >= 5
+            result[:damage] += 1
+            result[:effects] += 1
+          end
+          result[:damage] += 1 if roll_result == 1
+          result[:damage] += 2 if roll_result == 2
+        end
+
+        def modify_result_by_effects(result, character_item) # rubocop: disable Metrics/AbcSize
+          effects = character_item.item.info['effects']
+          return if result[:effects].zero?
+
+          result[:damage] += result[:effects] if effects.include?('vicious')
+          if effects.include?('spread')
+            result[:spread_targets] = result[:effects]
+            result[:spread] = result[:damage] / 2
+          end
+          result[:radioactive] = result[:effects] if effects.include?('radioactive')
+          result[:burst] = result[:effects] if effects.include?('burst')
         end
       end
     end

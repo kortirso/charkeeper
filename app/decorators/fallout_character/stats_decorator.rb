@@ -19,6 +19,10 @@ module FalloutCharacter
       ].map { |item| skill_payload(item[0], item[1]) }
     end
 
+    def attacks
+      @attacks ||= character_weapons.map { |item| calculate_attack(item) }
+    end
+
     private
 
     def skill_payload(slug, ability)
@@ -32,6 +36,28 @@ module FalloutCharacter
         expertise: expertise,
         attribute_modifier: modified_abilities[ability]
       }
+    end
+
+    def calculate_attack(item)
+      {
+        id: item[:id],
+        name: translate(item[:items_name]),
+        kind: item[:items_kind],
+        damage: item.dig(:items_info, 'rating'),
+        distance: item.dig(:items_info, 'range'),
+        notes: item[:notes] || [],
+        damage_types: [item.dig(:items_info, 'damage')],
+        ready_to_use: item[:state] ? item[:state].in?(::Character::Item::HANDS) : true,
+        tags: {}
+      }
+    end
+
+    def character_weapons
+      parent
+        .items
+        .joins(:item)
+        .where(items: { kind: %w[melee_weapons small_guns] })
+        .hashable_pluck('items.name', 'items.kind', 'items.info', :notes, :state, :id)
     end
   end
 end

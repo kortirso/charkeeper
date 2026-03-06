@@ -11,13 +11,19 @@ const TRANSLATION = {
     roll: 'Roll',
     targetNumber: 'Target number',
     successes: 'Successes',
-    complications: 'Complications'
+    complications: 'Complications',
+    damage: 'Damage',
+    damageResult: 'Damage result',
+    burstTargets: 'Additional targets by burst'
   },
   ru: {
     roll: 'Бросить',
     targetNumber: 'Значение успеха',
     successes: 'Успехи',
-    complications: 'Осложнения'
+    complications: 'Осложнения',
+    damage: 'Урон',
+    damageResult: 'Нанесённый урон',
+    burstTargets: 'Дополнительные цели от очереди'
   }
 }
 
@@ -31,7 +37,13 @@ export const createFalloutDiceRoll = () => {
   const [target, setTarget] = createSignal(0);
   const [expertise, setExpertise] = createSignal(0);
 
+  // lower dice block
+  const [dices, setDices] = createSignal(0);
+  const [damageBonus, setDamageBonus] = createSignal(0);
+  const [attackId, setAttackId] = createSignal(undefined);
+
   const [rollResult, setRollResult] = createSignal(undefined);
+  const [damageResult, setDamageResult] = createSignal(undefined);
 
   const [appState] = useAppState();
   const [locale] = useAppLocale();
@@ -45,6 +57,20 @@ export const createFalloutDiceRoll = () => {
         setBonus(0);
         setTarget(target);
         setExpertise(expertise);
+        setRollResult(undefined);
+      });
+    },
+    openAttackRoll(botCommand, title, target, expertise, damage, attackId) {
+      batch(() => {
+        setIsOpen('attackCommand');
+        setTitle(title);
+        setBotCommand(botCommand);
+        setBonus(0);
+        setTarget(target);
+        setExpertise(expertise);
+        setDices(damage);
+        setDamageBonus(0)
+        setAttackId(attackId)
         setRollResult(undefined);
       });
     },
@@ -63,6 +89,17 @@ export const createFalloutDiceRoll = () => {
         setRollResult(result.result[0].result);
       }
 
+      const makeAttackRoll = async () => {
+        const result = await createCharacterBotRequest(
+          appState.accessToken, props.characterId, { values: [generateCheckRollValue(), generateDamageRollValue()] }
+        );
+
+        batch(() => {
+          setRollResult(result.result[0].result);
+          setDamageResult(result.result[1].result);
+        });
+      }
+
       const generateCheckRollValue = () => {
         const options = [`--expertise ${expertise()}`];
         if (bonus() === -1) options.push(`--penalty 1`);
@@ -71,6 +108,8 @@ export const createFalloutDiceRoll = () => {
 
         return options.length > 0 ? `${botCommand()} ${options.join(' ')}` : botCommand();
       }
+
+      const generateDamageRollValue = () => `/check damage ${title()} --target ${dices() + damageBonus()} --id "${attackId()}"`;
 
       const rerollDice = async (index) => {
         const result = await createCharacterBotRequest(appState.accessToken, props.characterId, { values: ['/roll d20'] });
@@ -95,6 +134,12 @@ export const createFalloutDiceRoll = () => {
 
       const performRoll = () => {
         if (isOpen() === 'botCommand') makeRoll();
+        if (isOpen() === 'attackCommand') makeAttackRoll();
+      }
+
+      const renderDamageResult = (slug, value) => {
+        if (slug === 'damage') return `${localize(TRANSLATION, locale()).damageResult} ${value}`;
+        if (slug === 'burst') return `${localize(TRANSLATION, locale()).burstTargets} ${value}`;
       }
 
       return (
@@ -106,7 +151,7 @@ export const createFalloutDiceRoll = () => {
           >
             <div class="flex-1 flex justify-end items-end">
               <div>
-                <Show when={isOpen() === 'botCommand'}>
+                <Show when={isOpen() === 'botCommand' || isOpen() === 'attackCommand'}>
                   <div class="p-4 blockable w-full sm:w-xs">
                     <Show when={title()}>
                       <p class="mb-2">{title()}</p>
@@ -153,13 +198,39 @@ export const createFalloutDiceRoll = () => {
                         <p class="dice-button" onClick={() => bonus() <= -1 ? null : updateBonus(bonus() - 1)}>-D20</p>
                       </div>
                       <div class="col-span-7">
-                        <p class="text-center text-sm mb-1 px-1 py-1.5 border border-dusty rounded dark:border-snow dark:text-snow">
+                        <p class="text-center text-sm mb-1 px-1 py-1.5 border border-dusty rounded dark:border-snow">
                           {localize(TRANSLATION, locale()).targetNumber} {target()}
                         </p>
                         <div class="flex gap-x-2">
                           <p class="dice-button flex-1" onClick={() => target() <= expertise() ? null : setTarget(target() - 1)}>-</p>
                           <p class="dice-button flex-1" onClick={() => target() >= 20 ? null : setTarget(target() + 1)}>+</p>
                         </div>
+                      </div>
+                    </div>
+                  </div>
+                </Show>
+                <Show when={isOpen() === 'attackCommand'}>
+                  <div class="p-4 blockable w-full sm:w-xs mt-2">
+                    <Show when={isOpen() === 'attackCommand'}>
+                      <p class="mb-2">{localize(TRANSLATION, locale()).damage}, {title()}</p>
+                    </Show>
+                    <div class="flex items-center flex-wrap gap-2">
+                      <p>{dices() + damageBonus()}x</p>
+                      <Dice type="D6" text="D6" />
+                    </div>
+                    <Show when={damageResult()}>
+                      <div>
+                        <For each={Object.entries(damageResult())}>
+                          {([slug, value]) =>
+                            <p class="mt-2 text-sm">{renderDamageResult(slug, value)}</p>
+                          }
+                        </For>
+                      </div>
+                    </Show>
+                    <div class="mt-2">
+                      <div class="flex items-center gap-x-2">
+                        <p class="dice-button flex-1" onClick={() => damageBonus() <= 0 ? null : setDamageBonus(damageBonus() - 1)}>-</p>
+                        <p class="dice-button flex-1" onClick={() => setDamageBonus(damageBonus() + 1)}>+</p>
                       </div>
                     </div>
                   </div>
