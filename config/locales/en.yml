@@ -166,6 +166,9 @@ en:
           fate:
             skill: makes an %{attr} skill check
             stunt: makes an %{attr} stunt check
+          fallout:
+            result: Successes - %{successes}, Complications - %{complications}
+            skill: makes an %{attr} skill check
         roll:
           result: Rolls
           rolls: makes dice rolls

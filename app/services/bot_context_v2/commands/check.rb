@@ -4,15 +4,18 @@ module BotContextV2
   module Commands
     class Check
       def call(arguments:, character:)
+        service(character).call(arguments: arguments)
+      end
+
+      private
+
+      def service(character)
         case character.class.name
-        when 'Dnd5::Character', 'Dnd2024::Character', 'Pathfinder2::Character'
-          BotContextV2::Commands::Checks::Dnd.new.call(arguments: arguments)
-        when 'Daggerheart::Character'
-          BotContextV2::Commands::Checks::Daggerheart.new.call(arguments: arguments)
-        when 'Dc20::Character'
-          BotContextV2::Commands::Checks::Dc20.new.call(arguments: arguments)
-        when 'Fate::Character'
-          BotContextV2::Commands::Checks::Fate.new.call(arguments: arguments)
+        when 'Dnd5::Character', 'Dnd2024::Character', 'Pathfinder2::Character' then BotContextV2::Commands::Checks::Dnd.new
+        when 'Daggerheart::Character' then BotContextV2::Commands::Checks::Daggerheart.new
+        when 'Dc20::Character' then BotContextV2::Commands::Checks::Dc20.new
+        when 'Fate::Character' then BotContextV2::Commands::Checks::Fate.new
+        when 'Fallout::Character' then BotContextV2::Commands::Checks::Fallout.new
         end
       end
     end

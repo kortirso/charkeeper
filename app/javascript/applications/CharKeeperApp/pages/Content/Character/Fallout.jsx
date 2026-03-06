@@ -2,7 +2,7 @@ import { createSignal, createMemo, Switch, Match } from 'solid-js';
 import { createWindowSize } from '@solid-primitives/resize-observer';
 
 import { FalloutAbilities, FalloutSkills, FalloutLeveling } from '../../../pages';
-import { CharacterNavigation, Notes, Avatar, ContentWrapper } from '../../../components';
+import { CharacterNavigation, Notes, Avatar, ContentWrapper, createFalloutDiceRoll } from '../../../components';
 import { useAppLocale } from '../../../context';
 import { localize } from '../../../helpers';
 
@@ -21,6 +21,8 @@ export const Fallout = (props) => {
 
   const [activeMobileTab, setActiveMobileTab] = createSignal('abilities');
   const [activeTab, setActiveTab] = createSignal('classLevels');
+
+  const { DiceRoll, openDiceRoll } = createFalloutDiceRoll();
 
   const [locale] = useAppLocale();
 
@@ -51,6 +53,7 @@ export const Fallout = (props) => {
               <div class="mt-4">
                 <FalloutSkills
                   character={character()}
+                  openDiceRoll={openDiceRoll}
                   onReplaceCharacter={props.onReplaceCharacter}
                   onReloadCharacter={props.onReloadCharacter}
                   onNextGuideStepClick={() => setActiveMobileTab('classLevels')}
@@ -91,6 +94,7 @@ export const Fallout = (props) => {
         <div class="mt-4">
           <FalloutSkills
             character={character()}
+            openDiceRoll={openDiceRoll}
             onReplaceCharacter={props.onReplaceCharacter}
             onReloadCharacter={props.onReloadCharacter}
             onNextGuideStepClick={() => setActiveTab('classLevels')}
@@ -136,6 +140,7 @@ export const Fallout = (props) => {
   return (
     <>
       <ContentWrapper mobileView={mobileView()} leftView={leftView()} rightView={rightView()} />
+      <DiceRoll characterId={character().id} />
     </>
   );
 }

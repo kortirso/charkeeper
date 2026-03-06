@@ -1,7 +1,7 @@
 import { createSignal, createEffect, For, Show, batch } from 'solid-js';
 import { createStore } from 'solid-js/store';
 
-import { ErrorWrapper, Checkbox, Levelbox, EditWrapper, GuideWrapper } from '../../../../components';
+import { ErrorWrapper, Checkbox, Levelbox, EditWrapper, GuideWrapper, Dice } from '../../../../components';
 import config from '../../../../data/fallout.json';
 import { useAppState, useAppLocale, useAppAlert } from '../../../../context';
 import { updateCharacterRequest } from '../../../../requests/updateCharacterRequest';
@@ -15,7 +15,8 @@ const TRANSLATION = {
     skills: 'Skills',
     needSpend: 'Need spend all skill points',
     overQualified: 'Too many skill points spent per skill',
-    overLeveled: 'Too many skill points spent per skill at 1 level'
+    overLeveled: 'Too many skill points spent per skill at 1 level',
+    check: 'Skill'
   },
   ru: {
     helpMessage: 'Заполните данные по навыкам.',
@@ -24,7 +25,8 @@ const TRANSLATION = {
     skills: 'Навыки',
     needSpend: 'Нужно потратить все очки навыков',
     overQualified: 'Потрачено много очков навыков на навыки',
-    overLeveled: 'Потрачено много очков навыков на навыки на 1 уровне'
+    overLeveled: 'Потрачено много очков навыков на навыки на 1 уровне',
+    check: 'Навык'
   }
 }
 
@@ -168,7 +170,19 @@ export const FalloutSkills = (props) => {
                         <p class="flex-1 flex" classList={{ 'font-medium!': skill.expertise }}>
                           {config.skills[skill.slug].name[locale()]}
                         </p>
-                        <p>{modifier(skill.modifier)}</p>
+                        <Show
+                          when={editMode()}
+                          fallback={
+                            <Dice
+                              width="30"
+                              height="30"
+                              text={modifier(skill.modifier + skill.attribute_modifier)}
+                              onClick={() => props.openDiceRoll(`/check skill "${config.skills[skill.slug].name[locale()]}"`, `${localize(TRANSLATION, locale()).check}, ${config.skills[skill.slug].name[locale()]}`, skill.modifier + skill.attribute_modifier, (skill.expertise ? skill.modifier : 1))}
+                            />
+                          }
+                        >
+                          <p>{modifier(skill.modifier)}</p>
+                        </Show>
                       </div>
                     }
                   </For>
