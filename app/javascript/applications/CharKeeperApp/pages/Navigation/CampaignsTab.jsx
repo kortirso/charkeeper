@@ -121,7 +121,7 @@ export const CampaignsTab = () => {
           </PageHeader>
           <Button
             default
-            classList='absolute right-4 bottom-4 rounded-full w-12 h-12 z-10'
+            classList='absolute right-4 bottom-4 rounded-full! w-12 h-12 z-10'
             onClick={() => setCurrentTab('newCampaign')}
           >
             <Plus />

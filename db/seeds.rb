@@ -125,7 +125,7 @@ Dir[File.join(Rails.root.join('db/data/pathfinder2/feats/*.json'))].each do |fil
   end
 end
 
-Dir[File.join(Rails.root.join('db/data/fallout/*.json'))].each do |filename|
+Dir[File.join(Rails.root.join('db/data/fallout/perks/*.json'))].each do |filename|
   puts "seeding - #{filename}"
   JSON.parse(File.read(filename)).each do |feat|
     ::Fallout::Feat.create!(feat)
@@ -231,6 +231,16 @@ json = {
 }
 
 Dnd5::Item.create!(json)
+
+Dir[File.join(Rails.root.join('db/data/fallout/weapons/*.json'))].each do |filename|
+  puts "seeding - #{filename}"
+  weapons = JSON.parse(File.read(filename))
+  Fallout::Item.upsert_all(weapons) if weapons.any?
+end
+
+weapons_file = File.read(Rails.root.join('db/data/fallout/weapons/*.json'))
+weapons = JSON.parse(weapons_file)
+Dc20::Item.upsert_all(weapons) if weapons.any?
 
 weapons_file = File.read(Rails.root.join('db/data/dc20/weapons.json'))
 weapons = JSON.parse(weapons_file)

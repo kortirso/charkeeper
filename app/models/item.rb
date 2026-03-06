@@ -15,6 +15,7 @@ class Item < ApplicationRecord
   scope :pathfinder2, -> { where(type: 'Pathfinder2::Item') }
   scope :daggerheart, -> { where(type: 'Daggerheart::Item') }
   scope :dc20, -> { where(type: 'Dc20::Item') }
+  scope :fallout, -> { where(type: 'Fallout::Item') }
 
   scope :visible, -> { where(itemable: nil) }
 end

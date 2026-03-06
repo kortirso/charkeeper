@@ -82,6 +82,7 @@ const TRANSLATION = {
 }
 const CREATE_HOMEBREW_ITEMS = ['daggerheart', 'dnd2024'];
 const ITEMS_INFO = ['daggerheart'];
+const HOMEBREWED_PROVIDERS = ['daggerheart', 'dnd2024']
 
 export const Equipment = (props) => {
   const safeChildren = children(() => props.children);
@@ -114,11 +115,18 @@ export const Equipment = (props) => {
 
     const fetchItems = async (homebrew) => await fetchItemsRequest(appState.accessToken, character().provider, homebrew);
 
-    Promise.all([fetchCharacterItems(), fetchItems(false), fetchItems(true)]).then(
+    const promises = [fetchCharacterItems(), fetchItems(false)];
+    if (HOMEBREWED_PROVIDERS.includes(character().provider)) promises.push(fetchItems(true));
+
+    Promise.all(promises).then(
       ([characterItemsData, itemsData, homebrewItemsData]) => {
         batch(() => {
           setCharacterItems(characterItemsData.items);
-          setItems(itemsData.items.concat(homebrewItemsData.items).sort((a, b) => a.name > b.name));
+          if (homebrewItemsData) {
+            setItems(itemsData.items.concat(homebrewItemsData.items).sort((a, b) => a.name > b.name));
+          } else {
+            setItems(itemsData.items.sort((a, b) => a.name > b.name));
+          }
         });
       }
     );
