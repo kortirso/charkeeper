@@ -1,7 +1,7 @@
 import { createMemo, For, Show } from 'solid-js';
 
 import { Button } from '../../../../components';
-import { useAppLocale } from '../../../../context';
+import { useAppState, useAppLocale } from '../../../../context';
 import { Close, Arrow } from '../../../../assets';
 import { localize } from '../../../../helpers';
 
@@ -23,7 +23,14 @@ const TRANSLATION = {
 export const DomainCardsTable = (props) => {
   const spells = () => props.spells;
 
+  const [appState] = useAppState();
   const [locale] = useAppLocale();
+
+  const currentLocale = createMemo(() => {
+    const providerLocale = appState.providerLocales['daggerheart'];
+    if (providerLocale && providerLocale.includes(`${locale()}-`)) return providerLocale;
+    return locale();
+  });
 
   const cardsByDomains = createMemo(() => {
     if (props.countCards === undefined) return undefined;
@@ -48,7 +55,7 @@ export const DomainCardsTable = (props) => {
           <div>
             <For each={cardsByDomains()}>
               {(item) =>
-                <p class="text-sm">{props.domains[item[0]].name[locale()]} - {item[1]}</p>
+                <p class="text-sm">{localize(props.domains[item[0]].name, currentLocale())} - {item[1]}</p>
               }
             </For>
           </div>
@@ -63,7 +70,7 @@ export const DomainCardsTable = (props) => {
                   <p class="font-normal! text-lg">{spell.title}</p>
                   <Show when={spell.info.type}>
                     <p class="text-sm">
-                      {props.domains[spell.origin_value].name[locale()]} ({spell.level} {localize(TRANSLATION, locale()).level}), {localize(TRANSLATION, locale())[spell.info.type]}
+                      {localize(props.domains[spell.origin_value].name, currentLocale())} ({spell.level} {localize(TRANSLATION, locale()).level}), {localize(TRANSLATION, locale())[spell.info.type]}
                     </p>
                   </Show>
                 </div>

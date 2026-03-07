@@ -3,7 +3,7 @@
 module Frontend
   module Dc20
     module Characters
-      class SpellsController < Frontend::BaseController
+      class SpellsController < Frontend::Dc20::BaseController
         include Deps[
           add_spell: 'commands.characters_context.dc20.spells.add',
           change_spell: 'commands.characters_context.dc20.spells.change'

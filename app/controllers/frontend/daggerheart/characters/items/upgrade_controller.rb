@@ -4,7 +4,7 @@ module Frontend
   module Daggerheart
     module Characters
       module Items
-        class UpgradeController < Frontend::BaseController
+        class UpgradeController < Frontend::Daggerheart::BaseController
           include Deps[
             upgrade_command: 'commands.characters_context.daggerheart.upgrade.perform'
           ]

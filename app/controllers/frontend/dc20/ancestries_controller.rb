@@ -2,7 +2,7 @@
 
 module Frontend
   module Dc20
-    class AncestriesController < Frontend::BaseController
+    class AncestriesController < Frontend::Dc20::BaseController
       include SerializeRelation
 
       def index

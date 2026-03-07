@@ -3,7 +3,7 @@
 module Frontend
   module Dc20
     module Characters
-      class TalentsController < Frontend::BaseController
+      class TalentsController < Frontend::Dc20::BaseController
         include Deps[
           add_talent: 'commands.characters_context.dc20.talents.add'
         ]

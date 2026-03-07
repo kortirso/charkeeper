@@ -3,7 +3,7 @@
 module Frontend
   module Daggerheart
     module Characters
-      class RestController < Frontend::BaseController
+      class RestController < Frontend::Daggerheart::BaseController
         include Deps[
           change_energy: 'commands.characters_context.daggerheart.change_energy'
         ]

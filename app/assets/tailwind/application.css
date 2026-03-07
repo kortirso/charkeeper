@@ -685,7 +685,7 @@ body.web {
 }
 
 .default-input {
-  @apply w-full h-12 px-2 border border-gray-200 text-sm bg-white rounded;
+  @apply w-full h-12 px-2 border border-gray-200 bg-white rounded;
   @apply dark:bg-neutral-700 dark:border-gray-500 dark:text-snow;
 }
 

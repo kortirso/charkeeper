@@ -1,6 +1,6 @@
 import { CharKeeperAppContent } from './CharKeeperAppContent';
 
-import { AppStateProvider, AppLocaleProvider, AppAlertProvider, AppI18nProvider } from './context';
+import { AppStateProvider, AppLocaleProvider, AppAlertProvider } from './context';
 
 export const CharKeeperApp = (props) => (
   <AppStateProvider
@@ -8,17 +8,16 @@ export const CharKeeperApp = (props) => (
     username={props.username}
     isAdmin={props.admin}
     colorSchema={props.colorSchema}
+    providerLocales={props.providerLocales}
     identities={props.identities}
     oauthLinks={props.oauthLinks}
     oauthCredentials={props.oauthCredentials}
     host={props.host}
   >
     <AppLocaleProvider locale={props.locale}>
-      <AppI18nProvider locale={props.locale}>
-        <AppAlertProvider>
-          <CharKeeperAppContent />
-        </AppAlertProvider>
-      </AppI18nProvider>
+      <AppAlertProvider>
+        <CharKeeperAppContent />
+      </AppAlertProvider>
     </AppLocaleProvider>
   </AppStateProvider>
 );

@@ -3,7 +3,7 @@
 module Frontend
   module Daggerheart
     module Characters
-      class SpellsController < Frontend::BaseController
+      class SpellsController < Frontend::Daggerheart::BaseController
         include Deps[
           to_bool: 'to_bool',
           add_spell: 'commands.characters_context.daggerheart.add_spell',

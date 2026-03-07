@@ -8,6 +8,7 @@ class ApplicationController < ActionController::Base
   authorize :user, through: :current_user
 
   before_action :authenticate, except: %i[not_found]
+  before_action :set_current_provider
   before_action :set_locale
   before_action do
     Rails.error.set_context(
@@ -33,7 +34,19 @@ class ApplicationController < ActionController::Base
     render template: 'web/shared/404', status: :not_found, formats: [:html]
   end
 
+  def set_current_provider; end
+
   def set_locale
-    I18n.locale = current_user&.locale || I18n.default_locale
+    I18n.locale =
+      if current_user
+        locale = current_user.provider_locales[@current_provider]
+        if locale && I18n.available_locales.include?(locale.to_sym) && locale.starts_with?(current_user.locale)
+          locale
+        else
+          current_user.locale || I18n.default_locale
+        end
+      else
+        I18n.default_locale
+      end
   end
 end

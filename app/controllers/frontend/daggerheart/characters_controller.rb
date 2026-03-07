@@ -2,7 +2,7 @@
 
 module Frontend
   module Daggerheart
-    class CharactersController < Frontend::BaseController
+    class CharactersController < Frontend::Daggerheart::BaseController
       include Deps[
         character_create: 'commands.characters_context.daggerheart.create',
         character_update: 'commands.characters_context.daggerheart.update',

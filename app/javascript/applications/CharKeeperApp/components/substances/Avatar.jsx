@@ -71,6 +71,12 @@ export const Avatar = (props) => {
     });
   });
 
+  const currentLocale = createMemo(() => {
+    const providerLocale = appState.providerLocales[character().provider];
+    if (providerLocale && providerLocale.includes(`${locale()}-`)) return providerLocale;
+    return locale();
+  });
+
   const daggerheartCommunities = createMemo(() => {
     if (homebrews() === undefined) return {};
 
@@ -144,7 +150,7 @@ export const Avatar = (props) => {
         <Select
           containerClassList="mt-4"
           labelText={localize(TRANSLATION, locale()).communityName}
-          items={translate(daggerheartCommunities(), locale())}
+          items={translate(daggerheartCommunities(), currentLocale())}
           selectedValue={community()}
           onSelect={setCommunity}
         />

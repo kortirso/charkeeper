@@ -87,6 +87,12 @@ export const Combat = (props) => {
     readDistanceSettings();
   });
 
+  const currentLocale = createMemo(() => {
+    const providerLocale = appState.providerLocales[character().provider];
+    if (providerLocale && providerLocale.includes(`${locale()}-`)) return providerLocale;
+    return locale();
+  });
+
   const distanceOptions = createMemo(() => {
     const result = {}
 
@@ -184,7 +190,7 @@ export const Combat = (props) => {
                         <>
                           <div class="weapon-damage">
                             <Show when={character().provider === 'daggerheart' && attack.trait}>
-                              <span class="weapon-damage-trait">{daggerheartConfig.traits[attack.trait].shortName[locale()]}</span>
+                              <span class="weapon-damage-trait">{localize(daggerheartConfig.traits[attack.trait].shortName, currentLocale())}</span>
                             </Show>
                             <Dice width="28" height="28" text={modifier(attack.attack_bonus)} onClick={() => openAttackRoll(attack, attack.attack_bonus)} />
                             <Show when={attack.thrown_attack_bonus}>

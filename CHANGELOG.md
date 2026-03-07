@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - dice rolls for skills checks for Fallout characters
 - equipment management for Fallout characters
 - attack damage calculations for Fallout characters
+- sub locales for alternative translations
 
 ## [0.4.13] - 2026-03-04
 ### Modified

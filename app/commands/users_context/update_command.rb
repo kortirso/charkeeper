@@ -15,6 +15,7 @@ module UsersContext
         optional(:color_schema).filled(ColorSchemas)
         optional(:password).filled(:string, min_size?: 10)
         optional(:password_confirmation).filled(:string, min_size?: 10)
+        optional(:provider_locales).hash
       end
 
       rule(:password, :password_confirmation).validate(:check_all_or_nothing_present)

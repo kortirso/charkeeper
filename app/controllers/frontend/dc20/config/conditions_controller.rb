@@ -3,7 +3,7 @@
 module Frontend
   module Dc20
     module Config
-      class ConditionsController < Frontend::BaseController
+      class ConditionsController < Frontend::Dc20::BaseController
         include Deps[markdown: 'markdown']
         include TranslateHelper
 

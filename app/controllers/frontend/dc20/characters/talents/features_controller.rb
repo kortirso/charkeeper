@@ -4,7 +4,7 @@ module Frontend
   module Dc20
     module Characters
       module Talents
-        class FeaturesController < Frontend::BaseController
+        class FeaturesController < Frontend::Dc20::BaseController
           include SerializeRelation
 
           before_action :find_character

@@ -3,7 +3,7 @@
 module Frontend
   module Daggerheart
     module Characters
-      class CraftController < Frontend::BaseController
+      class CraftController < Frontend::Daggerheart::BaseController
         include Deps[
           craft: 'commands.characters_context.daggerheart.craft.perform'
         ]

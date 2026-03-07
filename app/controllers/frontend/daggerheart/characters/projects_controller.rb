@@ -3,7 +3,7 @@
 module Frontend
   module Daggerheart
     module Characters
-      class ProjectsController < Frontend::BaseController
+      class ProjectsController < Frontend::Daggerheart::BaseController
         include Deps[
           add_project: 'commands.characters_context.daggerheart.projects.add',
           change_project: 'commands.characters_context.daggerheart.projects.change'

@@ -1,5 +1,4 @@
 import { Show, createEffect, createSignal, createMemo, batch, For, Switch, Match } from 'solid-js';
-import * as i18n from '@solid-primitives/i18n';
 import { createWindowSize } from '@solid-primitives/resize-observer';
 
 import { PageHeader, IconButton, Input, Button, Select, Label } from '../../components';
@@ -7,7 +6,7 @@ import { Arrow, Google, Discord, Telegram, Close } from '../../assets';
 import { useAppState, useAppLocale, useAppAlert } from '../../context';
 import { updateUserRequest } from '../../requests/updateUserRequest';
 import { removeIdentityRequest } from '../../requests/removeIdentityRequest';
-import { localize } from '../../helpers';
+import { localize, performResponse } from '../../helpers';
 
 const TRANSLATION = {
   en: {
@@ -18,7 +17,14 @@ const TRANSLATION = {
     dark: 'Dark',
     username: 'Username',
     locale: 'Locale',
-    colorSchema: 'Color schema'
+    colorSchema: 'Color schema',
+    profile: 'Profile',
+    save: 'Save',
+    alternatives: 'Alternative translations',
+    updated: 'Profile is updated',
+    providers: {
+      daggerheart: 'Daggerheart'
+    }
   },
   ru: {
     existingIdentities: 'Подключенные сервисы',
@@ -28,7 +34,23 @@ const TRANSLATION = {
     dark: 'Тёмная',
     username: 'Имя пользователя',
     locale: 'Язык',
-    colorSchema: 'Цветовая палитра'
+    colorSchema: 'Цветовая палитра',
+    profile: 'Профиль',
+    save: 'Сохранить',
+    alternatives: 'Альтернативные переводы',
+    updated: 'Профиль обновлён',
+    providers: {
+      daggerheart: 'Daggerheart'
+    }
+  }
+}
+
+const PROVIDER_LOCALES = {
+  'ru': {
+    'daggerheart': {
+      'ru': 'Стандартный (daggerheart.su)',
+      'ru-DHM': 'Modno (dagger-heart.ru)'
+    }
   }
 }
 
@@ -38,18 +60,18 @@ export const UsernameTab = (props) => {
   const [username, setUsername] = createSignal('');
   const [colorSchema, setColorSchema] = createSignal('');
   const [localeValue, setLocaleValue] = createSignal(undefined);
+  const [providerLocales, setProviderLocales] = createSignal({});
 
   const [appState, { changeUserInfo }] = useAppState();
-  const [{ renderAlerts }] = useAppAlert();
-  const [locale, dict, { setLocale }] = useAppLocale();
-
-  const t = i18n.translator(dict);
+  const [{ renderAlerts, renderNotice }] = useAppAlert();
+  const [locale, , { setLocale }] = useAppLocale();
 
   createEffect(() => {
     batch(() => {
       setUsername(appState.username);
       setColorSchema(appState.colorSchema);
       setLocaleValue(locale());
+      setProviderLocales(appState.providerLocales);
     });
   });
 
@@ -62,15 +84,21 @@ export const UsernameTab = (props) => {
   const updateProfile = async () => {
     let payload = { color_schema: colorSchema(), locale: localeValue() };
     if (username() !== appState.username) payload = { ...payload, username: username() };
+    if (providerLocales() !== appState.providerLocales) payload = { ...payload, provider_locales: providerLocales() };
 
     const result = await updateUserRequest(appState.accessToken, payload);
 
-    if (result.errors_list === undefined) {
-      batch(() => {
-        changeUserInfo({ username: username(), colorSchema: colorSchema() });
-        setLocale(localeValue());
-      });
-    } else renderAlerts(result.errors_list);
+    performResponse(
+      result,
+      function() { // eslint-disable-line solid/reactivity
+        batch(() => {
+          changeUserInfo({ username: username(), colorSchema: colorSchema(), providerLocales: providerLocales() });
+          setLocale(localeValue());
+        });
+        renderNotice(localize(TRANSLATION, locale()).updated);
+      },
+      function() { renderAlerts(result.errors_list) }
+    );
   }
 
   const removeIdentity = async (id) => {
@@ -88,34 +116,52 @@ export const UsernameTab = (props) => {
             </IconButton>
           }
         >
-          <p>{t('pages.settingsPage.profile')}</p>
+          <p>{localize(TRANSLATION, locale()).profile}</p>
         </PageHeader>
       </Show>
       <div class="p-4 flex-1 flex flex-col overflow-y-auto">
         <Input
           containerClassList="mb-2"
-          labelText={localize(TRANSLATION, locale())['username']}
+          labelText={localize(TRANSLATION, locale()).username}
           value={username()}
-          onInput={(value) => setUsername(value)}
+          onInput={setUsername}
         />
         <Select
           containerClassList="mb-2"
-          labelText={localize(TRANSLATION, locale())['locale']}
+          labelText={localize(TRANSLATION, locale()).locale}
           items={{ 'en': 'English', 'ru': 'Русский' }}
           selectedValue={localeValue()}
-          onSelect={(value) => setLocaleValue(value)}
+          onSelect={setLocaleValue}
         />
         <Select
           containerClassList="mb-2"
-          labelText={localize(TRANSLATION, locale())['colorSchema']}
-          items={{ 'light': localize(TRANSLATION, locale())['light'], 'dark': localize(TRANSLATION, locale())['dark'] }}
+          labelText={localize(TRANSLATION, locale()).colorSchema}
+          items={{ 'light': localize(TRANSLATION, locale()).light, 'dark': localize(TRANSLATION, locale()).dark }}
           selectedValue={colorSchema()}
-          onSelect={(value) => setColorSchema(value)}
+          onSelect={setColorSchema}
         />
+        <Show when={PROVIDER_LOCALES[locale()]}>
+          <div>
+            <Label labelText={localize(TRANSLATION, locale()).alternatives} />
+            <For each={Object.entries(PROVIDER_LOCALES[locale()])}>
+              {([provider, values]) =>
+                <div class="flex items-center mb-2">
+                  <span class="dark:text-snow">{localize(TRANSLATION, locale()).providers[provider]}</span>
+                  <Select
+                    containerClassList="ml-2 w-80"
+                    items={values}
+                    selectedValue={providerLocales()[provider] === null || providerLocales()[provider] === undefined ? 'ru' : providerLocales()[provider]}
+                    onSelect={(value) => setProviderLocales({ ...providerLocales(), [provider]: value })}
+                  />
+                </div>
+              }
+            </For>
+          </div>
+        </Show>
         <Show when={appState.identities !== undefined}>
           <div class="mb-2 grid grid-cols-1 emd:grid-cols-2 gap-2">
             <div>
-              <Label labelText={localize(TRANSLATION, locale())['existingIdentities']} />
+              <Label labelText={localize(TRANSLATION, locale()).existingIdentities} />
               <table class="table border border-gray-200 bg-white dark:bg-neutral-700 dark:border-gray-500 dark:text-snow">
                 <tbody>
                   <For each={appState.identities}>
@@ -141,11 +187,11 @@ export const UsernameTab = (props) => {
               </table>
             </div>
             <div>
-              <Label labelText={localize(TRANSLATION, locale())['availableIdentities']} />
+              <Label labelText={localize(TRANSLATION, locale()).availableIdentities} />
               <Show
                 when={['google', 'discord', 'telegram'].filter((item) => !identityProviders().includes(item)).length > 0}
                 fallback={
-                  <p class="dark:text-snow">{localize(TRANSLATION, locale())['connected']}</p>
+                  <p class="dark:text-snow">{localize(TRANSLATION, locale()).connected}</p>
                 }
               >
                 <div class="p-1">
@@ -174,7 +220,7 @@ export const UsernameTab = (props) => {
             </div>
           </div>
         </Show>
-        <Button default textable classList="mt-4" onClick={updateProfile}>{t('save')}</Button>
+        <Button default textable classList="mt-4" onClick={updateProfile}>{localize(TRANSLATION, locale()).save}</Button>
       </div>
     </>
   );
