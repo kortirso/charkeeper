@@ -3,7 +3,7 @@
 module Frontend
   module Daggerheart
     module Config
-      class BeastformsController < Frontend::BaseController
+      class BeastformsController < Frontend::Daggerheart::BaseController
         skip_before_action :authenticate
         skip_before_action :set_locale
 

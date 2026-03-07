@@ -11,6 +11,8 @@ module Frontend
     FALLOUT_SERIALIZE_FIELDS = %i[id name origin level provider avatar].freeze
 
     before_action :find_character, only: %i[show destroy]
+    before_action :set_current_provider, only: %i[show]
+    before_action :set_locale, only: %i[show]
 
     def index
       render json: Panko::Response.new(
@@ -31,6 +33,8 @@ module Frontend
 
     def characters
       current_user.characters.group_by(&:type).map do |character_type, characters|
+        set_current_provider(character_type)
+        set_locale
         Panko::ArraySerializer.new(
           characters,
           each_serializer: serializer(character_type),
@@ -42,6 +46,13 @@ module Frontend
 
     def find_character
       @character = authorized_scope(Character.all).find(params[:id])
+    end
+
+    def set_current_provider(character_type=nil)
+      @current_provider =
+        case character_type || @character.class.name
+        when 'Daggerheart::Character' then 'daggerheart'
+        end
     end
 
     def serializer(character_type)

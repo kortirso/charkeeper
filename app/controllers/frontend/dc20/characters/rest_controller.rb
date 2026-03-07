@@ -3,7 +3,7 @@
 module Frontend
   module Dc20
     module Characters
-      class RestController < Frontend::BaseController
+      class RestController < Frontend::Dc20::BaseController
         include Deps[
           perform: 'commands.characters_context.dc20.rest.perform'
         ]

@@ -2,7 +2,7 @@
 
 module Frontend
   module Dc20
-    class ManeuversController < Frontend::BaseController
+    class ManeuversController < Frontend::Dc20::BaseController
       include SerializeRelation
 
       def index

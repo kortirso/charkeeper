@@ -75,6 +75,12 @@ export const DaggerheartDomainCards = (props) => {
     setLastActiveCharacterId(character().id);
   });
 
+  const currentLocale = createMemo(() => {
+    const providerLocale = appState.providerLocales['daggerheart'];
+    if (providerLocale && providerLocale.includes(`${locale()}-`)) return providerLocale;
+    return locale();
+  });
+
   const daggerheartDomains = createMemo(() => {
     if (domains() === undefined) return {};
 
@@ -154,7 +160,7 @@ export const DaggerheartDomainCards = (props) => {
     <For each={spellcastTraits}>
       {(trait) =>
         <p class="text-base dark:text-snow flex items-center">
-          <span class="text-sm mr-2 uppercase">{traits()[trait].shortName[locale()]}</span>
+          <span class="text-sm mr-2 uppercase">{localize(traits()[trait].shortName, currentLocale())}</span>
           <Dice
             width="28"
             height="28"
@@ -190,7 +196,7 @@ export const DaggerheartDomainCards = (props) => {
               </div>
               <For each={renderingDomains()}>
                 {(domain) =>
-                  <Toggle title={daggerheartDomains()[domain].name[locale()]}>
+                  <Toggle title={localize(daggerheartDomains()[domain].name, currentLocale())}>
                     <div>
                       <For each={spells().filter((spell) => spell.origin_value === domain).sort((a, b) => a.conditions.level - b.conditions.level)}>
                         {(spell) =>
@@ -236,7 +242,7 @@ export const DaggerheartDomainCards = (props) => {
             <DomainCardsTable
               countCards
               title={t('daggerheart.domainCards.loadout')}
-              subtitle={`${localize(TRANSLATION, locale())['loadoutLimit']} - 5`}
+              subtitle={`${localize(TRANSLATION, locale()).loadoutLimit} - 5`}
               spells={characterSpells().filter((spell) => spell.ready_to_use)}
               domains={daggerheartDomains()}
               onChangeSpell={changeSpell}

@@ -51,7 +51,8 @@ export const CharKeeperAppContent = () => {
             changeUserInfo({
               username: accessTokenData.username,
               isAdmin: accessTokenData.admin,
-              colorSchema: accessTokenData.color_schema
+              colorSchema: accessTokenData.color_schema,
+              providerLocales: accessTokenData.provider_locales
             });
           });
         } else {

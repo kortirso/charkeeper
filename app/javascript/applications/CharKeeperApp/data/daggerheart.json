@@ -3,37 +3,37 @@
     "clank": {
       "name": { "en": "Clank", "ru": "Кланк" },
       "features": [
-        { "slug": "purposeful_design", "name": { "en": "Purposeful Design", "ru": "Целенаправленный дизайн" } },
-        { "slug": "efficient", "name": { "en": "Efficient", "ru": "Эффективность" } }
+        { "slug": "purposeful_design", "name": { "en": "Purposeful Design", "ru": "Целенаправленный дизайн", "ru-DHM": "Замысел создателя" } },
+        { "slug": "efficient", "name": { "en": "Efficient", "ru": "Эффективность", "ru-DHM": "Эффективный" } }
       ],
       "comment": "Механические существа"
     },
     "drakona": {
-      "name": { "en": "Drakona", "ru": "Дракона" },
+      "name": { "en": "Drakona", "ru": "Дракона", "ru-DHM": "Драконид" },
       "features": [
         { "slug": "scales", "name": { "en": "Scales", "ru": "Чешуя" } },
-        { "slug": "elemental_breath", "name": { "en": "Elemental Breath", "ru": "Элементальное дыхание" } }
+        { "slug": "elemental_breath", "name": { "en": "Elemental Breath", "ru": "Элементальное дыхание", "ru-DHM": "Стихийное дыхание" } }
       ],
       "comment": "Антропоморфные драконы"
     },
     "dwarf": {
       "name": { "en": "Dwarf", "ru": "Дварф" },
       "features": [
-        { "slug": "thick_skin", "name": { "en": "Thick Skin", "ru": "Толстая кожа" } },
+        { "slug": "thick_skin", "name": { "en": "Thick Skin", "ru": "Толстая кожа", "ru-DHM": "Толстокожий" } },
         { "slug": "increased_fortitude", "name": { "en": "Increased Fortitude", "ru": "Повышенная стойкость" } }
       ]
     },
     "elf": {
       "name": { "en": "Elf", "ru": "Эльф" },
       "features": [
-        { "slug": "quick_reactions", "name": { "en": "Quick Reactions", "ru": "Быстрые рефлексы" } },
-        { "slug": "celestial_trance", "name": { "en": "Celestial Trance", "ru": "Небесный транс" } }
+        { "slug": "quick_reactions", "name": { "en": "Quick Reactions", "ru": "Быстрые рефлексы", "ru-DHM": "Быстрая реакция" } },
+        { "slug": "celestial_trance", "name": { "en": "Celestial Trance", "ru": "Небесный транс", "ru-DHM": "Божественный транс" } }
       ]
     },
     "faerie": {
       "name": { "en": "Faerie", "ru": "Фейри" },
       "features": [
-        { "slug": "luckbender", "name": { "en": "Luckbender", "ru": "Везунчик" } },
+        { "slug": "luckbender", "name": { "en": "Luckbender", "ru": "Везунчик", "ru-DHM": "Контроль удачи" } },
         { "slug": "wings", "name": { "en": "Wings", "ru": "Крылья" } }
       ]
     },
@@ -41,21 +41,21 @@
       "name": { "en": "Faun", "ru": "Фавн" },
       "features": [
         { "slug": "caprine_leap", "name": { "en": "Caprine Leap", "ru": "Козлиный прыжок" } },
-        { "slug": "kick", "name": { "en": "Kick", "ru": "Удар копытом" } }
+        { "slug": "kick", "name": { "en": "Kick", "ru": "Удар копытом", "ru-DHM": "Пинок" } }
       ]
     },
     "firbolg": {
       "name": { "en": "Firbolg", "ru": "Фирболг" },
       "features": [
-        { "slug": "charge", "name": { "en": "Charge", "ru": "Таран" } },
+        { "slug": "charge", "name": { "en": "Charge", "ru": "Таран", "ru-DHM": "Натиск" } },
         { "slug": "unshakable", "name": { "en": "Unshakable", "ru": "Невозмутимость" } }
       ]
     },
     "fungril": {
-      "name": { "en": "Fungril", "ru": "Фангрил" },
+      "name": { "en": "Fungril", "ru": "Фангрил", "ru-DHM": "Фунгрил" },
       "features": [
-        { "slug": "fungril_network", "name": { "en": "Fungril Network", "ru": "Сеть фангрилов" } },
-        { "slug": "death_connection", "name": { "en": "Death Connection", "ru": "Связь со смертью" } }
+        { "slug": "fungril_network", "name": { "en": "Fungril Network", "ru": "Сеть фангрилов", "ru-DHM": "Мицелиальная сеть" } },
+        { "slug": "death_connection", "name": { "en": "Death Connection", "ru": "Связь со смертью", "ru-DHM": "Связь с умершими" } }
       ],
       "comment": "Антропоморфные грибы"
     },
@@ -63,7 +63,7 @@
       "name": { "en": "Galapa", "ru": "Галапа" },
       "features": [
         { "slug": "shell", "name": { "en": "Shell", "ru": "Панцирь" } },
-        { "slug": "retract", "name": { "en": "Retract", "ru": "Втягивание" } }
+        { "slug": "retract", "name": { "en": "Retract", "ru": "Втягивание", "ru-DHM": "Спрятаться в панцирь" } }
       ],
       "comment": "Антропоморфные черепахи"
     },
@@ -71,13 +71,13 @@
       "name": { "en": "Giant", "ru": "Великан" },
       "features": [
         { "slug": "endurance", "name": { "en": "Endurance", "ru": "Выносливость" } },
-        { "slug": "reach", "name": { "en": "Reach", "ru": "Досягаемость" } }
+        { "slug": "reach", "name": { "en": "Reach", "ru": "Досягаемость", "ru-DHM": "Большой рост" } }
       ]
     },
     "goblin": {
       "name": { "en": "Goblin", "ru": "Гоблин" },
       "features": [
-        { "slug": "surefooted", "name": { "en": "Surefooted", "ru": "Твёрдая поступь" } },
+        { "slug": "surefooted", "name": { "en": "Surefooted", "ru": "Твёрдая поступь", "ru-DHM": "Устойчивый" } },
         { "slug": "danger_sense", "name": { "en": "Danger Sensen", "ru": "Чувство опасности" } }
       ]
     },
@@ -91,15 +91,15 @@
     "human": {
       "name": { "en": "Human", "ru": "Человек" },
       "features": [
-        { "slug": "high_stamina", "name": { "en": "High Stamina", "ru": "Высокая выносливость" } },
-        { "slug": "adaptability", "name": { "en": "Adaptability", "ru": "Адаптивность" } }
+        { "slug": "high_stamina", "name": { "en": "High Stamina", "ru": "Высокая выносливость", "ru-DHM": "Упорный" } },
+        { "slug": "adaptability", "name": { "en": "Adaptability", "ru": "Адаптивность", "ru-DHM": "Адаптивный" } }
       ]
     },
     "infernis": {
       "name": { "en": "Infernis", "ru": "Инфернис" },
       "features": [
-        { "slug": "fearless", "name": { "en": "Fearless", "ru": "Бесстрашие" } },
-        { "slug": "dread_visage", "name": { "en": "Dread Visage", "ru": "Грозный облик" } }
+        { "slug": "fearless", "name": { "en": "Fearless", "ru": "Бесстрашие", "ru-DHM": "Бесстрашный" } },
+        { "slug": "dread_visage", "name": { "en": "Dread Visage", "ru": "Грозный облик", "ru-DHM": "Жуткий вид" } }
       ]
     },
     "katari": {
@@ -113,12 +113,12 @@
     "orc": {
       "name": { "en": "Orc", "ru": "Орк" },
       "features": [
-        { "slug": "sturdy", "name": { "en": "Sturdy", "ru": "Выносливость" } },
+        { "slug": "sturdy", "name": { "en": "Sturdy", "ru": "Выносливость", "ru-DHM": "Крепкий" } },
         { "slug": "tusks", "name": { "en": "Tusks", "ru": "Бивни" } }
       ]
     },
     "ribbet": {
-      "name": { "en": "Ribbet", "ru": "Риббет" },
+      "name": { "en": "Ribbet", "ru": "Риббет", "ru-DHM": "Кваква" },
       "features": [
         { "slug": "amphibious", "name": { "en": "Amphibious", "ru": "Амфибия" } },
         { "slug": "long_tongue", "name": { "en": "Long Tongue", "ru": "Длинный язык" } }
@@ -129,13 +129,13 @@
       "name": { "en": "Simiah", "ru": "Симиан" },
       "features": [
         { "slug": "natural_climber", "name": { "en": "Natural Climber", "ru": "Прирождённый скалолаз" } },
-        { "slug": "nimble", "name": { "en": "Nimble", "ru": "Ловкий" } }
+        { "slug": "nimble", "name": { "en": "Nimble", "ru": "Ловкий", "ru-DHM": "Проворный" } }
       ],
       "comment": "Антропоморфные обезьяны"
     }
   },
   "communities": {
-    "highborne": { "name": { "en": "Highborne", "ru": "Великородное" } },
+    "highborne": { "name": { "en": "Highborne", "ru": "Великородное", "ru-DHM": "Высшее" } },
     "loreborne": { "name": { "en": "Loreborne", "ru": "Научное" } },
     "orderborne": { "name": { "en": "Orderborne", "ru": "Догматичное" } },
     "ridgeborne": { "name": { "en": "Ridgeborne", "ru": "Горное" } },
@@ -150,7 +150,7 @@
       "name": { "en": "Bard", "ru": "Бард" },
       "subclasses": {
         "troubadour": { "name": { "en": "Troubadour", "ru": "Трубадур" }, "spellcast": "pre", "mechanics": [] },
-        "wordsmith": { "name": { "en": "Wordsmith", "ru": "Оратор" }, "spellcast": "pre", "mechanics": [] }
+        "wordsmith": { "name": { "en": "Wordsmith", "ru": "Оратор", "ru-DHM": "Мастер слова" }, "spellcast": "pre", "mechanics": [] }
       },
       "domains": ["codex", "grace"]
     },
@@ -165,7 +165,7 @@
     "guardian": {
       "name": { "en": "Guardian", "ru": "Страж" },
       "subclasses": {
-        "stalwart": { "name": { "en": "Stalwart", "ru": "Заступник" }, "spellcast": null, "mechanics": [] },
+        "stalwart": { "name": { "en": "Stalwart", "ru": "Заступник", "ru-DHM": "Непоколебимый" }, "spellcast": null, "mechanics": [] },
         "vengeance": { "name": { "en": "Vengeance", "ru": "Мститель" }, "spellcast": null, "mechanics": [] }
       },
       "domains": ["blade", "valor"]
@@ -174,14 +174,14 @@
       "name": { "en": "Ranger", "ru": "Следопыт" },
       "subclasses": {
         "beastbound": { "name": { "en": "Beastbound", "ru": "Звериные узы" }, "spellcast": "agi", "mechanics": ["companion"] },
-        "wayfinder": { "name": { "en": "Wayfinder", "ru": "Путевод" }, "spellcast": "agi", "mechanics": [] }
+        "wayfinder": { "name": { "en": "Wayfinder", "ru": "Путевод", "ru-DHM": "Охотник" }, "spellcast": "agi", "mechanics": [] }
       },
       "domains": ["bone", "sage"]
     },
     "rogue": {
       "name": { "en": "Rogue", "ru": "Плут" },
       "subclasses": {
-        "nightwalker": { "name": { "en": "Nightwalker", "ru": "Тень" }, "spellcast": "fin", "mechanics": [] },
+        "nightwalker": { "name": { "en": "Nightwalker", "ru": "Тень", "ru-DHM": "Путь ночи" }, "spellcast": "fin", "mechanics": [] },
         "syndicate": { "name": { "en": "Syndicate", "ru": "Синдикат" }, "spellcast": "fin", "mechanics": [] }
       },
       "domains": ["grace", "midnight"]
@@ -197,16 +197,16 @@
     "sorcerer": {
       "name": { "en": "Sorcerer", "ru": "Чародей" },
       "subclasses": {
-        "elemental_origin": { "name": { "en": "Elemental Origin", "ru": "Стихийное начало" }, "spellcast": "ins", "mechanics": [] },
-        "Primal_origin": { "name": { "en": "Primal Origin", "ru": "Первозданное начало" }, "spellcast": "ins", "mechanics": [] }
+        "elemental_origin": { "name": { "en": "Elemental Origin", "ru": "Стихийное начало", "ru-DHM": "Стихийный исток" }, "spellcast": "ins", "mechanics": [] },
+        "Primal_origin": { "name": { "en": "Primal Origin", "ru": "Первозданное начало", "ru-DHM": "Первородный исток" }, "spellcast": "ins", "mechanics": [] }
       },
       "domains": ["arcana", "midnight"]
     },
     "warrior": {
       "name": { "en": "Warrior", "ru": "Воин" },
       "subclasses": {
-        "call_of_the_brave": { "name": { "en": "Call of the Brave", "ru": "Зов храбреца" }, "spellcast": null, "mechanics": [] },
-        "call_of_the_slayer": { "name": { "en": "Call of the Slayer", "ru": "Зов истребителя" }, "spellcast": null, "mechanics": [] }
+        "call_of_the_brave": { "name": { "en": "Call of the Brave", "ru": "Зов храбреца", "ru-DHM": "Зов отваги" }, "spellcast": null, "mechanics": [] },
+        "call_of_the_slayer": { "name": { "en": "Call of the Slayer", "ru": "Зов истребителя", "ru-DHM": "Зов резни" }, "spellcast": null, "mechanics": [] }
       },
       "domains": ["blade", "bone"]
     },
@@ -224,7 +224,7 @@
     "blade": { "name": { "en": "Blade", "ru": "Клинок" } },
     "bone": { "name": { "en": "Bone", "ru": "Кость" } },
     "codex": { "name": { "en": "Codex", "ru": "Кодекс" } },
-    "grace": { "name": { "en": "Grace", "ru": "Грация" } },
+    "grace": { "name": { "en": "Grace", "ru": "Грация", "ru-DHM": "Изящество" } },
     "midnight": { "name": { "en": "Midnight", "ru": "Полночь" } },
     "sage": { "name": { "en": "Sage", "ru": "Мудрость" } },
     "splendor": { "name": { "en": "Splendor", "ru": "Величие" } },
@@ -287,7 +287,7 @@
     "agi": { "name": { "en": "Agility", "ru": "Проворность" }, "shortName": { "en": "Agi", "ru": "Пров" } },
     "str": { "name": { "en": "Strength", "ru": "Сила" }, "shortName": { "en": "Str", "ru": "Сил" } },
     "fin": { "name": { "en": "Finesse", "ru": "Искусность" }, "shortName": { "en": "Fin", "ru": "Иск" } },
-    "ins": { "name": { "en": "Instinct", "ru": "Инстинкт" }, "shortName": { "en": "Ins", "ru": "Инс" } },
+    "ins": { "name": { "en": "Instinct", "ru": "Инстинкт", "ru-DHM": "Чутьё" }, "shortName": { "en": "Ins", "ru": "Инс", "ru-DHM": "ЧУТ" } },
     "pre": { "name": { "en": "Presence", "ru": "Влияние" }, "shortName": { "en": "Pre", "ru": "Влн" } },
     "know": { "name": { "en": "Knowledge", "ru": "Знание" }, "shortName": { "en": "Know", "ru": "Знан" } }
   },

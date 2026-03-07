@@ -12,6 +12,7 @@ export const AppStateProvider = (props) => {
   const [appState, setAppState] = createStore({
     accessToken: props.accessToken, // eslint-disable-line solid/reactivity
     colorSchema: props.colorSchema || readFromCache(COLOR_SCHEMA) || 'light', // eslint-disable-line solid/reactivity
+    providerLocales: props.providerLocales || {}, // eslint-disable-line solid/reactivity
     isAdmin: props.isAdmin || false, // eslint-disable-line solid/reactivity
     username: props.username, // eslint-disable-line solid/reactivity
     activePage: null,

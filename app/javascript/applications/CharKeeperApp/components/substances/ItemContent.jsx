@@ -1,9 +1,9 @@
 import { createMemo, Show } from 'solid-js';
 
-import { useAppLocale } from '../../context';
+import { useAppState, useAppLocale } from '../../context';
 import { Hand, TwoHands } from '../../assets';
 import daggerheartConfig from '../../data/daggerheart.json';
-import { modifier } from '../../helpers';
+import { modifier, localize } from '../../helpers';
 
 const TRANSLATION = {
   en: {
@@ -34,14 +34,14 @@ const DaggerheartWeapon = (props) => {
       </div>
       <div class="flex items-center gap-x-2 mt-2">
         <p>{item().info.burden === 1 ? <Hand /> : <TwoHands />}</p>
-        <p>{daggerheartConfig.traits[item().info.trait].name[props.locale]},</p>
+        <p>{localize(daggerheartConfig.traits[item().info.trait].name, props.currentLocale)},</p>
         <Show when={item().info.range}>
-          <p>{daggerheartConfig.ranges[item().info.range].name[props.locale]}</p>
+          <p>{localize(daggerheartConfig.ranges[item().info.range].name, props.currentLocale)}</p>
         </Show>
       </div>
       <div class="flex items-center gap-x-2 mt-2">
         <p>{item().info.damage}{item().info.damage_bonus !== 0 ? modifier(item().info.damage_bonus) : ''}</p>
-        <p>{daggerheartConfig.damageTypes[item().info.damage_type].name[props.locale]}</p>
+        <p>{localize(daggerheartConfig.damageTypes[item().info.damage_type].name, props.currentLocale)}</p>
       </div>
       <Show when={item().info.features && item().info.features.length > 0}>
         <p class="mt-2 text-sm">{item().info.features[0][props.locale]}</p>
@@ -94,12 +94,19 @@ const COMPONENTS = {
 export const ItemContent = (props) => {
   const item = () => props.item;
 
+  const [appState] = useAppState();
   const [locale] = useAppLocale();
+
+  const currentLocale = createMemo(() => {
+    const providerLocale = appState.providerLocales['daggerheart'];
+    if (providerLocale && providerLocale.includes(`${locale()}-`)) return providerLocale;
+    return locale();
+  });
 
   const ItemComponent = createMemo(() => {
     const Component = COMPONENTS[props.provider][item().kind]
 
-    return <Component item={item()} locale={locale()} />;
+    return <Component item={item()} locale={locale()} currentLocale={currentLocale()} />;
   });
 
   return (

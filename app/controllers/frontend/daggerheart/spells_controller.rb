@@ -2,7 +2,7 @@
 
 module Frontend
   module Daggerheart
-    class SpellsController < Frontend::BaseController
+    class SpellsController < Frontend::Daggerheart::BaseController
       include SerializeRelation
 
       def index

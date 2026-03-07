@@ -3,7 +3,7 @@
 module Frontend
   module Daggerheart
     module Characters
-      class CompanionsController < Frontend::BaseController
+      class CompanionsController < Frontend::Daggerheart::BaseController
         include Deps[
           add_companion: 'commands.characters_context.daggerheart.add_companion',
           change_companion: 'commands.characters_context.daggerheart.change_companion'

@@ -1,4 +1,4 @@
-import { Switch, Match, For, Show } from 'solid-js';
+import { createMemo, Switch, Match, For, Show } from 'solid-js';
 
 import { ErrorWrapper, GuideWrapper, SharedBonuses } from '../../../../components';
 import config from '../../../../data/daggerheart.json';
@@ -56,6 +56,12 @@ export const DaggerheartBonuses = (props) => {
   const [appState] = useAppState();
   const [locale] = useAppLocale();
 
+  const currentLocale = createMemo(() => {
+    const providerLocale = appState.providerLocales['daggerheart'];
+    if (providerLocale && providerLocale.includes(`${locale()}-`)) return providerLocale;
+    return locale();
+  });
+
   const BonusComponent = (props) => (
     <>
       <For each={Object.entries(props.bonus.value)}>
@@ -77,7 +83,7 @@ export const DaggerheartBonuses = (props) => {
               <For each={Object.entries(value)}>
                 {([slug, value]) =>
                   <p class="bonus">
-                    {modifier(value)} {localize(config.traits[slug].name, locale())}
+                    {modifier(value)} {localize(config.traits[slug].name, currentLocale())}
                   </p>
                 }
               </For>
@@ -114,7 +120,7 @@ export const DaggerheartBonuses = (props) => {
                 <For each={Object.entries(value)}>
                   {([slug, value]) =>
                     <p class="bonus">
-                      {`+[${localize(MAPPING, locale())[value] ? localize(MAPPING, locale())[value] : localize(DYNAMIC_ITEMS[value].name, locale())}]`} {localize(config.traits[slug].name, locale())}
+                      {`+[${localize(MAPPING, locale())[value] ? localize(MAPPING, locale())[value] : localize(DYNAMIC_ITEMS[value].name, locale())}]`} {localize(config.traits[slug].name, currentLocale())}
                     </p>
                   }
                 </For>

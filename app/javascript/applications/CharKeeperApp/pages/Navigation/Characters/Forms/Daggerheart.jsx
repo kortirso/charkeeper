@@ -5,7 +5,7 @@ import * as i18n from '@solid-primitives/i18n';
 import { CharacterForm } from '../../../../pages';
 import { Select, Input, Checkbox } from '../../../../components';
 import daggerheartConfig from '../../../../data/daggerheart.json';
-import { useAppLocale } from '../../../../context';
+import { useAppState, useAppLocale } from '../../../../context';
 import { translate, readFromCache, localize } from '../../../../helpers';
 
 const DAGGERHEART_DEFAULT_FORM = {
@@ -30,6 +30,7 @@ export const DaggerheartCharacterForm = (props) => {
 
   const [characterDaggerheartForm, setCharacterDaggerheartForm] = createStore(DAGGERHEART_DEFAULT_FORM);
 
+  const [appState] = useAppState();
   const [locale, dict] = useAppLocale();
   const t = i18n.translator(dict);
 
@@ -42,6 +43,12 @@ export const DaggerheartCharacterForm = (props) => {
 
   createEffect(() => {
     readGuideSettings();
+  });
+
+  const currentLocale = createMemo(() => {
+    const providerLocale = appState.providerLocales['daggerheart'];
+    if (providerLocale && providerLocale.includes(`${locale()}-`)) return providerLocale;
+    return locale();
   });
 
   const daggerheartHeritages = createMemo(() => {
@@ -77,8 +84,8 @@ export const DaggerheartCharacterForm = (props) => {
     const secondaryFeatures = {};
 
     Object.values(daggerheartHeritages()).filter((item) => item.features.length > 1).forEach((item) => {
-      mainFeatures[item.features[0].slug] = `${item.name[locale()]} - ${item.features[0].name[locale()]}`;
-      secondaryFeatures[item.features[1].slug] = `${item.name[locale()]} - ${item.features[1].name[locale()]}`;
+      mainFeatures[item.features[0].slug] = `${localize(item.name, currentLocale())} - ${localize(item.features[0].name, currentLocale())}`;
+      secondaryFeatures[item.features[1].slug] = `${localize(item.name, currentLocale())} - ${localize(item.features[1].name, currentLocale())}`;
     })
 
     return [mainFeatures, secondaryFeatures];
@@ -111,7 +118,7 @@ export const DaggerheartCharacterForm = (props) => {
 
   return (
     <CharacterForm setCurrentTab={props.setCurrentTab} onSaveCharacter={saveCharacter}>
-      <p class="dark:text-snow mb-2">{localize(TRANSLATION, locale())['options']}</p>
+      <p class="dark:text-snow mb-2">{localize(TRANSLATION, locale()).options}</p>
       <Input
         containerClassList="mb-2"
         labelText={t('newCharacterPage.name')}
@@ -133,7 +140,7 @@ export const DaggerheartCharacterForm = (props) => {
           <Select
             containerClassList="mb-2"
             labelText={t('newCharacterPage.daggerheart.ancestry')}
-            items={translate(daggerheartHeritages(), locale())}
+            items={translate(daggerheartHeritages(), currentLocale())}
             selectedValue={characterDaggerheartForm.heritage}
             onSelect={(value) => setCharacterDaggerheartForm({ ...characterDaggerheartForm, heritage: value })}
             dataTestId="character-ancestry-select"
@@ -164,7 +171,7 @@ export const DaggerheartCharacterForm = (props) => {
       <Select
         containerClassList="mb-2"
         labelText={t('newCharacterPage.daggerheart.community')}
-        items={translate(daggerheartCommunities(), locale())}
+        items={translate(daggerheartCommunities(), currentLocale())}
         selectedValue={characterDaggerheartForm.community}
         onSelect={(value) => setCharacterDaggerheartForm({ ...characterDaggerheartForm, community: value })}
         dataTestId="character-community-select"
@@ -172,7 +179,7 @@ export const DaggerheartCharacterForm = (props) => {
       <Select
         containerClassList="mb-2"
         labelText={t('newCharacterPage.daggerheart.mainClass')}
-        items={translate(daggerheartClasses(), locale())}
+        items={translate(daggerheartClasses(), currentLocale())}
         selectedValue={characterDaggerheartForm.main_class}
         onSelect={(value) => setCharacterDaggerheartForm({ ...characterDaggerheartForm, main_class: value, subclass: undefined })}
         dataTestId="character-class-select"
@@ -181,7 +188,7 @@ export const DaggerheartCharacterForm = (props) => {
         <Select
           containerClassList="mb-2"
           labelText={t('newCharacterPage.daggerheart.subclass')}
-          items={translate(daggerheartSubclasses(), locale())}
+          items={translate(daggerheartSubclasses(), currentLocale())}
           selectedValue={characterDaggerheartForm.subclass}
           onSelect={(value) => setCharacterDaggerheartForm({ ...characterDaggerheartForm, subclass: value })}
           dataTestId="character-subclass-select"

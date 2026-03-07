@@ -1,4 +1,4 @@
-import { createSignal, createEffect, For, Show, batch } from 'solid-js';
+import { createSignal, createEffect, createMemo, For, Show, batch } from 'solid-js';
 
 import { Button, ErrorWrapper, EditWrapper, Dice, GuideWrapper } from '../../../../components';
 import config from '../../../../data/daggerheart.json';
@@ -37,6 +37,12 @@ export const DaggerheartTraits = (props) => {
       setEditMode(character().guide_step === 1);
       setLastActiveCharacterId(character().id);
     });
+  });
+
+  const currentLocale = createMemo(() => {
+    const providerLocale = appState.providerLocales['daggerheart'];
+    if (providerLocale && providerLocale.includes(`${locale()}-`)) return providerLocale;
+    return locale();
   });
 
   const decreaseTraitValue = (slug) => setTraitsData({ ...traitsData(), [slug]: traitsData()[slug] - 1 });
@@ -81,7 +87,7 @@ export const DaggerheartTraits = (props) => {
         >
           <div class="blockable py-4">
             <div class="grid grid-cols-3 emd:grid-cols-6 elg:grid-cols-3 exl:grid-cols-6 gap-x-2 gap-y-4">
-              <For each={Object.entries(config.traits).map(([key, values]) => [key, localize(values.name, locale())])}>
+              <For each={Object.entries(config.traits).map(([key, values]) => [key, localize(values.name, currentLocale())])}>
                 {([slug, trait]) =>
                   <div>
                     <p class="text-sm uppercase text-center mb-2">{trait}</p>

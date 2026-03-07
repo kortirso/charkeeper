@@ -2,7 +2,7 @@
 
 module Frontend
   module Dc20
-    class CharactersController < Frontend::BaseController
+    class CharactersController < Frontend::Dc20::BaseController
       include Deps[
         character_create: 'commands.characters_context.dc20.create',
         character_update: 'commands.characters_context.dc20.update',

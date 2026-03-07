@@ -8,7 +8,8 @@ module Frontend
           locale: current_user.locale,
           username: current_user.username,
           admin: current_user.admin?,
-          color_schema: current_user.color_schema
+          color_schema: current_user.color_schema,
+          provider_locales: current_user.provider_locales
         }, status: :ok
       end
     end

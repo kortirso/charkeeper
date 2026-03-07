@@ -16,7 +16,8 @@ describe Frontend::Users::InfosController do
           'locale' => user_session.user.locale,
           'username' => user_session.user.username,
           'admin' => user_session.user.admin?,
-          'color_schema' => user_session.user.color_schema
+          'color_schema' => user_session.user.color_schema,
+          'provider_locales' => {}
         })
       end
     end

@@ -3,7 +3,7 @@
 module Frontend
   module Dc20
     module Characters
-      class AncestriesController < Frontend::BaseController
+      class AncestriesController < Frontend::Dc20::BaseController
         before_action :find_character
 
         def index

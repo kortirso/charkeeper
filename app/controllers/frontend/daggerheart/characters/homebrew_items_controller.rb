@@ -3,7 +3,7 @@
 module Frontend
   module Daggerheart
     module Characters
-      class HomebrewItemsController < Frontend::BaseController
+      class HomebrewItemsController < Frontend::Daggerheart::BaseController
         include Deps[
           add_item: 'commands.characters_context.daggerheart.homebrew.add_item'
         ]

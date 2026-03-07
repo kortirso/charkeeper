@@ -98,6 +98,12 @@ export const DaggerheartLeveling = (props) => {
     setDomainsData(character().domains);
   });
 
+  const currentLocale = createMemo(() => {
+    const providerLocale = appState.providerLocales['daggerheart'];
+    if (providerLocale && providerLocale.includes(`${locale()}-`)) return providerLocale;
+    return locale();
+  });
+
   const daggerheartClasses = createMemo(() => {
     if (homebrews() === undefined) return {};
 
@@ -141,7 +147,7 @@ export const DaggerheartLeveling = (props) => {
   })
 
   const levelPoints = createMemo(() => (character().level - 1) * 2);
-  const classDomains = createMemo(() => translate(config.domains, locale()));
+  const classDomains = createMemo(() => translate(config.domains, currentLocale()));
 
   const spendLevelPoints = createMemo(() => {
     if (!levelingData()) return 0;
@@ -317,7 +323,7 @@ export const DaggerheartLeveling = (props) => {
                 multi
                 containerClassList="w-full mb-2"
                 labelText={localize(TRANSLATION, locale())['traitsSelect']}
-                items={translate(config.traits, locale())}
+                items={translate(config.traits, currentLocale())}
                 selectedValues={levelingData().selected_traits[character().tier]}
                 onSelect={selectTrait}
               />
@@ -326,7 +332,7 @@ export const DaggerheartLeveling = (props) => {
               <Select
                 containerClassList="w-full mb-2"
                 labelText={localize(TRANSLATION, locale())['classSelect']}
-                items={translate(daggerheartClasses(), locale())}
+                items={translate(daggerheartClasses(), currentLocale())}
                 selectedValue={newClass()}
                 onSelect={setNewClass}
               />
@@ -334,7 +340,7 @@ export const DaggerheartLeveling = (props) => {
                 <Select
                   containerClassList="w-full mb-2"
                   labelText={localize(TRANSLATION, locale())['subclassSelect']}
-                  items={translate(daggerheartClasses()[newClass()].subclasses, locale())}
+                  items={translate(daggerheartClasses()[newClass()].subclasses, currentLocale())}
                   selectedValue={newSubclass()}
                   onSelect={setNewSubclass}
                 />

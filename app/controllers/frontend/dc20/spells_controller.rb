@@ -2,7 +2,7 @@
 
 module Frontend
   module Dc20
-    class SpellsController < Frontend::BaseController
+    class SpellsController < Frontend::Dc20::BaseController
       include SerializeRelation
 
       def index
