@@ -82,6 +82,8 @@ export const Dnd5ClassLevels = (props) => {
   });
 
   const selectedTalentsCount = createMemo(() => {
+    if (!character().selected_talents) return 0;
+
     return Object.values(character().selected_talents).reduce((acc, value) => acc + value, 0) - character().selected_additional_talents;
   })
 
