@@ -40,13 +40,21 @@ class ApplicationController < ActionController::Base
     I18n.locale =
       if current_user
         locale = current_user.provider_locales[@current_provider]
-        if locale && I18n.available_locales.include?(locale.to_sym) && locale.starts_with?(current_user.locale)
+        if sublocaled? && locale && I18n.available_locales.include?(locale.to_sym) && locale.starts_with?(current_user.locale)
           locale
         else
-          current_user.locale || I18n.default_locale
+          user_locale
         end
       else
         I18n.default_locale
       end
+  end
+
+  def user_locale
+    current_user.locale || I18n.default_locale
+  end
+
+  def sublocaled?
+    Charkeeper::Container.resolve('feature_requirement').call(current: params[:version], initial: '0.4.14')
   end
 end
