@@ -21,6 +21,7 @@ module Dc20
     SHORT_REST = 'short_rest'
     LONG_REST = 'long_rest'
     COMBAT = 'combat'
+    ONE_AT_SHORT_REST = 'one_at_short_rest' # 1 заряд восстанавливается при коротком отдыхе
 
     SELECTABLE_ORIGINS = [0, 3, 4, 7].freeze
 
@@ -35,6 +36,6 @@ module Dc20
       SPELL_ORIGIN => 7
     }
     enum :kind, { STATIC => 0, UPDATE_RESULT => 1, HIDDEN => 2, ONE_FROM_LIST => 3, MANY_FROM_LIST => 4, TEXT => 5 }
-    enum :limit_refresh, { SHORT_REST => 0, LONG_REST => 1, COMBAT => 2 }
+    enum :limit_refresh, { SHORT_REST => 0, LONG_REST => 1, COMBAT => 2, ONE_AT_SHORT_REST => 3 }
   end
 end

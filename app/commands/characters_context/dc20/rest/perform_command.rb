@@ -24,6 +24,9 @@ module CharactersContext
 
         private
 
+        def lock_key(input) = "character_update_#{input[:character].id}"
+        def lock_time = 0
+
         def do_prepare(input) # rubocop: disable Metrics/AbcSize
           return if input[:options].nil?
           return if input[:value] == 'combat'
@@ -58,13 +61,19 @@ module CharactersContext
           return if input[:value].in?(NO_FEAT_REFRESH)
 
           input[:character].feats.where(limit_refresh: limit_refresh(input)).update_all(used_count: 0)
+          return if input[:value] != 'short' && input[:value] != 'half_long'
+
+          input[:character].feats
+            .where(limit_refresh: 3)
+            .where.not(used_count: 0)
+            .find_each { |item| item.decrement!(:used_count) }
         end
 
         def limit_refresh(input)
           case input[:value]
           when 'combat' then 2
           when 'short', 'half_long' then [0, 2]
-          when 'complete_long', 'full' then [0, 1, 2]
+          when 'complete_long', 'full' then [0, 1, 2, 3]
           else []
           end
         end

@@ -51,6 +51,13 @@
         "long_death": { "name": { "en": "Long Death", "ru": "Долгая смерть" } },
         "swashbuckler": { "name": { "en": "Swashbuckler", "ru": "Дуэлянт" } }
       }
+    },
+    "hunter": {
+      "name": { "en": "Hunter", "ru": "Охотник" },
+      "subclasses": {
+        "monster_slayer": { "name": { "en": "Monster Slayer", "ru": "Охотник на монстров" } },
+        "trapper": { "name": { "en": "Trapper", "ru": "Траппер" } }
+      }
     }
   },
   "spell_lists": {

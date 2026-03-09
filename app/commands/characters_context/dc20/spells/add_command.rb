@@ -15,6 +15,9 @@ module CharactersContext
 
         private
 
+        def lock_key(input) = "character_update_#{input[:character].id}"
+        def lock_time = 0
+
         def do_prepare(input)
           input[:existing_spell] = ::Dc20::Character::Feat.find_by(character_id: input[:character].id, feat_id: input[:spell].id)
           input[:feat] = input[:spell]

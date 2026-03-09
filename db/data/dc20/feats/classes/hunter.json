@@ -1,0 +1,440 @@
+[
+  {
+    "slug": "hunter_mark",
+    "title": { "en": "Hunter's Mark", "ru": "Метка охотника" },
+    "description": {
+      "en": "You can spend **1 AP** and **1 SP** to focus on and mark a creature you can see within 15 Spaces as your quarry. Alternatively, you can mark a creature by studying its tracks for at least 1 minute. While a creature is marked, you gain the following benefits:\n\n- You have ADV on Awareness and Survival Checks made to find the target.\n- The first Martial Attack against your target on your turn has ADV and ignores PDR.\n- When you score a Heavy or Critical Hit against the target, you automatically grant a d8 Help Die to the next Attack made against the target before the start of your next turn.\nThe target is marked as long as it's on the same Plane of Existence as you, and vanishes early if you complete a Long Rest, fall Unconscious, or use this Feature again to mark another creature.\nWhen a marked creature dies you can spend **1 AP** or **1 SP** as a reaction to immediately Mark another target within range.",
+      "ru": "Вы можете потратить **1 ОД** и **1 ОВ**, чтобы сосредоточиться на существе которое вы видите в пределах 15 клеток, и отметить его как вашу добычу. В качестве альтернативы, вы можете отметить существо, изучая его следы 1 минуту. Пока существо отмечено, вы получаете следующие бонусы:\n\n- Вы получаете преимущество на проверки бдительности и выживания для поиска цели.\n- Один раз за ход вы получаете преимущество на первую бойцовскую атаку по вашей отмеченной цели, и эта атака игнорирует ФСУ.\n- Если вы наносите сильный или критический удар по цели, вы автоматически даёте кость помощи d8 на следующую атаку по этой цели до начала вашего следующего хода.\nЦель остаётся отмеченной, пока она находится на том же плане существования, что и вы, и исчезает преждевременно, если вы завершаете длинный отдых, становитесь вырублены или используете **Метку охотника**, чтобы отметить другое существо.\nКогда отмеченное существо погибает, то вы можете потратить **1 ОД** или **1 ОВ** как реакцию, чтобы мгновенно отметить другое существо в области действия."
+    },
+    "origin": "class",
+    "origin_value": "hunter",
+    "kind": "static",
+    "conditions": { "level": 1 },
+    "price": { "ap": 1, "sp": 1 }
+  },
+  {
+    "slug": "favored terrain",
+    "title": { "en": "Favored Terrain", "ru": "Избранная местность" },
+    "description": {
+      "en": "You are particularly familiar with two types of environments and are adept at the skills unique to the region. While you're in one of your Favored Terrains, you have ADV on Stealth and Survival Checks and can't be Surprised. Choose 2 types of Favored Terrain listed below.",
+      "ru": "Вы особенно хорошо знакомы с двумя типами местности и обладаете умениями, необходимыми для обитания в них. Пока вы находитесь в одной из ваших **Избранных местностей**, вы получаете преимущество на проверки скрытности и выживания, и вас нельзя застать врасплох. Выберите 2 типа **Избранной местности** из приведённых ниже:"
+    },
+    "origin": "class",
+    "origin_value": "hunter",
+    "kind": "many_from_list",
+    "conditions": { "level": 1 },
+    "options": {
+      "coast": { "en": "Coast", "ru": "Побережье" },
+      "desert": { "en": "Desert", "ru": "Пустыня" },
+      "forest": { "en": "Forest", "ru": "Леса" },
+      "grassland": { "en": "Grassland", "ru": "Луга" },
+      "jungle": { "en": "Jungle", "ru": "Джунгли" },
+      "mountain": { "en": "Mountain", "ru": "Горы" },
+      "swamp": { "en": "Swamp", "ru": "Болота" },
+      "tundra": { "en": "Tundra", "ru": "Тундра" },
+      "subterranean": { "en": "Subterranean", "ru": "Подземелье" },
+      "urban": { "en": "Urban", "ru": "Город" }
+    }
+  },
+  {
+    "slug": "coast",
+    "title": { "en": "Coast", "ru": "Побережье" },
+    "description": {
+      "en": "You gain a calculated Swim Speed equal to your Speed (your Weapon Attacks no longer have DisADV as a result of being underwater), you can hold your breath twice as long as normal, and you have ADV on Awareness Checks while underwater.",
+      "ru": "Вы получаете добавленную скорость плавания, равную вашей наземной скорости (ваши бойцовские атаки больше не получают помеху из-за нахождения под водой), ваш запас дыхания удваивается, и вы получаете преимущество на проверки бдительности, пока находитесь под водой."
+    },
+    "origin": "class",
+    "origin_value": "hunter",
+    "kind": "static",
+    "conditions": { "selected_feature": "coast" },
+    "eval_variables": {
+      "speeds": "speeds.merge({ 'swim' => nil })",
+      "breath": "breath * 2"
+    },
+    "continious": true
+  },
+  {
+    "slug": "desert",
+    "title": { "en": "Desert", "ru": "Пустыня" },
+    "description": {
+      "en": "You gain Fire Resistance (Half) and Resistance to Exhaustion from hot temperatures.",
+      "ru": "Вы получаете добавленное сопротивление огненному урону (половина) и истощению от высоких температур."
+    },
+    "origin": "class",
+    "origin_value": "hunter",
+    "kind": "static",
+    "conditions": { "selected_feature": "desert" },
+    "eval_variables": {
+      "damages": "damages.concat([['fire', 'resist', 'half']])"
+    },
+    "continious": true
+  },
+  {
+    "slug": "forest",
+    "title": { "en": "Forest", "ru": "Леса" },
+    "description": {
+      "en": "You gain 2 Skill Points to use on up to 2 of the following Skills: Animal, Awareness, Medicine, Survival, and Stealth.",
+      "ru": "Вы повышаете ступень в 2 навыках из перечисленных: бдительность, выживание, животные, природа или скрытность."
+    },
+    "origin": "class",
+    "origin_value": "hunter",
+    "kind": "text",
+    "conditions": { "selected_feature": "forest" },
+    "continious": true
+  },
+  {
+    "slug": "grassland",
+    "title": { "en": "Grassland", "ru": "Луга" },
+    "description": {
+      "en": "Your Speed and Jump Distance gain calculated bonus +1.",
+      "ru": "Ваши скорость и дальность прыжка получают добавленный бонус +1."
+    },
+    "origin": "class",
+    "origin_value": "hunter",
+    "kind": "static",
+    "conditions": { "selected_feature": "grassland" },
+    "eval_variables": {
+      "speeds": "speeds.merge({ 'ground' => speeds['ground'] + 1 })",
+      "jump": "jump + 1"
+    },
+    "continious": true
+  },
+  {
+    "slug": "jungle",
+    "title": { "en": "Jungle", "ru": "Джунгли" },
+    "description": {
+      "en": "You ignore Difficult Terrain and gain Poisoned and Diseased Resistance.",
+      "ru": "Вы игнорируете труднопроходимую местность и получаете сопротивление отравлению и болезням."
+    },
+    "origin": "class",
+    "origin_value": "hunter",
+    "kind": "static",
+    "conditions": { "selected_feature": "jungle" },
+    "continious": true
+  },
+  {
+    "slug": "mountain",
+    "title": { "en": "Mountain", "ru": "Горы" },
+    "description": {
+      "en": "You gain a Climb Speed equal to your Speed, Resistance to Exhaustion from high altitudes, and Resistance (Half) to damage from Falling.",
+      "ru": "Вы получаете добавленную скорость лазания, равную вашей скорости, сопротивление (половина) урону от падения и истощению от больших высот."
+    },
+    "origin": "class",
+    "origin_value": "hunter",
+    "kind": "static",
+    "conditions": { "selected_feature": "mountain" },
+    "eval_variables": {
+      "speeds": "speeds.merge({ 'climb' => nil })"
+    },
+    "continious": true
+  },
+  {
+    "slug": "swamp",
+    "title": { "en": "Swamp", "ru": "Болота" },
+    "description": {
+      "en": "You gain Poison Resistance (Half) and Poisoned Resistance, and Diseased Resistance.",
+      "ru": "Вы получаете сопротивление ядовитому урону (половина) и преимущество на спасы от ядов и болезней."
+    },
+    "origin": "class",
+    "origin_value": "hunter",
+    "kind": "static",
+    "conditions": { "selected_feature": "swamp" },
+    "eval_variables": {
+      "damages": "damages.concat([['poison', 'resist', 'half']])"
+    },
+    "continious": true
+  },
+  {
+    "slug": "tundra",
+    "title": { "en": "Tundra", "ru": "Тундра" },
+    "description": {
+      "en": "You gain Cold Resistance (Half) and Resistance to Exhaustion from cold temperatures.",
+      "ru": "Вы получаете сопротивление морозному урону (половина) и истощению от низких температур."
+    },
+    "origin": "class",
+    "origin_value": "hunter",
+    "kind": "static",
+    "conditions": { "selected_feature": "tundra" },
+    "eval_variables": {
+      "damages": "damages.concat([['cold', 'resist', 'half']])"
+    },
+    "continious": true
+  },
+  {
+    "slug": "subterranean",
+    "title": { "en": "Subterranean", "ru": "Подземелье" },
+    "description": {
+      "en": "You gain Darkvision 10 Spaces. If you already have Darkvision, its range is increased by 5 Spaces. Additionally, you also gain a Tremorsense of 3 Spaces. If you already have a Tremorsense, it increases by 2 Spaces.",
+      "ru": "Вы получаете тёмное зрение на 10 клеток или увеличиваете его на 5 клеток. Также вы получаете чувство вибрации на 3 клетки или увеличиваете его на 2 клетки."
+    },
+    "origin": "class",
+    "origin_value": "hunter",
+    "kind": "static",
+    "conditions": { "selected_feature": "subterranean" },
+    "continious": true
+  },
+  {
+    "slug": "urban",
+    "title": { "en": "Urban", "ru": "Город" },
+    "description": {
+      "en": "You gain 2 Skill Points to use on up to 2 of the following Skills: Influence, Insight, Investigation, Intimidation, and Trickery.",
+      "ru": "Вы повышаете ступень в 2 навыках из перечисленных: анализ, влияние, история, проницательность или уловки."
+    },
+    "origin": "class",
+    "origin_value": "hunter",
+    "kind": "text",
+    "conditions": { "selected_feature": "urban" },
+    "continious": true
+  },
+  {
+    "slug": "bestiary",
+    "title": { "en": "Bestiary", "ru": "Бестиарий" },
+    "description": {
+      "en": "You have ADV on Checks made to learn or recall information about any creature recorded in your Bestiary.\n\n**Starting Entries:** Choose a Creature Type: Aberration, Beast, Celestial, Construct, Dragon, Elemental, Fey, Fiend, Giant, Humanoid, Monstrosity, Ooze, Plant, or Undead. Your Bestiary includes prerecorded notes about various creatures of the chosen type.\n**Making New Entries:** You can spend 10 minutes of Light Activity recording information into your Bestiary about a specific creature you have slain within the last 24 hours.",
+      "ru": "Вы получаете преимущество на проверки, совершенные для изучения или вспоминания информации о любом существе, записанном в вашем **Бестиарии**.\n\n**Начальные записи:** Выберите тип существ: Аберрация, Зверь, Небожитель, Конструкт, Дракон, Элементаль, Фея, Исчадие, Великан, Гуманоид, Чудовище, Слизь, Растение или Нежить. Ваш **Бестиарий** содержит записи о всех основных представителях этого типа.\n**Новые записи:** Вы можете потратить 10 минут лёгкой деятельности, чтобы записать в ваш **Бестиарий** информацию о конкретном существе, которое вы видели в течение последних 24 часов."
+    },
+    "origin": "class_flavor",
+    "origin_value": "hunter",
+    "kind": "text",
+    "conditions": { "level": 1 }
+  },
+  {
+    "slug": "hunter_strike",
+    "title": { "en": "Cheap Shot", "ru": "Удар охотника" },
+    "description": {
+      "en": "You can spend 1 SP as part of a Weapon Attack to add 1 of the unique Martial Enhancements listed below. You can only use 1 of these Enhancements per Attack. The damage increases by 1 for each SP spent beyond the first. If a Enhancement forces the target to make a Save, it does so against your Save DC.\n\n- Acid: The target takes 1 Corrosion damage and makes an Agility Save. Save Failure: The target becomes Hindered until the end of your next turn.\n- Fire: The target takes 1 Fire damage and makes a Might Save. Save Failure: The target begins Burning.\n- Piercing: The target takes 1 Piercing damage and makes a Might Save. Save Failure: The target begins Bleeding.\n- Snare: The target takes 1 Bludgeoning damage and makes an Agility Save. Save Failure: The target becomes Immobilized until the end of your next turn.\n- Toxin: The target takes 1 Poison damage and makes a Might Save. Save Failure: The target becomes Impaired until the end of your next turn.",
+      "ru": "Когда вы совершаете атаку оружием, вы можете потратить **1 ОВ**, чтобы добавить к ней 1 из нижеперечисленных эффектов. Вы можете использовать только 1 из этих эффектов за раз при каждой проверке атаки. Если эффект заставляет цель совершить спас, она совершает его против вашей СЛ.\n\n- **Шипы:** +1 колющего урона и физический спас от ранения.\n- **Силок:** +1 дробящего урона и физический спас от остановки.\n- **Кислота:** +1 разъедающего урона и спас ловкости от замедления до конца вашего следующего хода.\n- **Токсин:** +1 ядовитого урона и спас мощи от ослабления до конца вашего следующего хода.\n- **Горящее масло:** +1 огненного урона и физический спас от горения."
+    },
+    "origin": "class",
+    "origin_value": "hunter",
+    "kind": "static",
+    "conditions": { "level": 2 },
+    "price": { "sp": 1 }
+  },
+  {
+    "slug": "monstrous_concoctions",
+    "title": { "en": "Monstrous Concoctions", "ru": "Чудовищные снадобья" },
+    "description": {
+      "en": "**Concoction:** You learn how to create 3 Concoctions of your choice from the list below. You can use the Object Action to create a Concoction you know. You can create a number of Concoctions per Long Rest equal to your Prime Modifier. A Concoction becomes inert when you complete a Long Rest.\n**Administering:** You can use the Object Action to fully drink a Concoction or administer it to a willing creature within 1 Space. The drinker becomes subjected to the Concoctions effects for 10 minutes or until they drink another Concoction.",
+      "ru": "**Рецепты снадобий:** Вы изучаете 3 рецепта снадобий из списка ниже. После длинного отдыха вы подготавливаете ингредиенты для склянок в количестве, равном вашему высшему модификатору. Ингредиенты в склянках нестабильны и становятся бесполезными после следующего длинного отдыха, когда вы подготавливаете новые.\n**Снадобья:** Вы можете применить склянку, чтобы приготовить снадобье на ваш выбор и немедленно его выпить, либо влить в рот существу в пределах 1 клетки от вас. Снадобье даёт указанные ниже бонусы и действует 10 минут. Одновременно на вас может действовать эффект только одного снадобья. При употреблении нового снадобья эффект старого заканчивается."
+    },
+    "origin": "subclass",
+    "origin_value": "monster_slayer",
+    "kind": "many_from_list",
+    "conditions": { "level": 3 },
+    "options": {
+      "elemental_infusion": { "name": { "en": "Elemental Infusion", "ru": "Настой стихии" } },
+      "hydra_blood": { "name": { "en": "Hydra's Blood", "ru": "Кровь гидры" } },
+      "basilisk_eye": { "name": { "en": "Basilisk Eye", "ru": "Глаз василиска" } },
+      "ooze_gel": { "name": { "en": "Ooze Gel", "ru": "Желе из слизи" } },
+      "aberrant_tumor": { "name": { "en": "Aberrant Tumor", "ru": "Нарост аберрации" } },
+      "deathweed": { "name": { "en": "Deathweed", "ru": "Трупный мох" } },
+      "plant_fibers": { "name": { "en": "Plant Fibers", "ru": "Растительные волокна" } },
+      "divine_water": { "name": { "en": "Divine Water", "ru": "Вода небес" } }
+    },
+    "limit_refresh": "long_rest",
+    "description_eval_variables": {
+      "limit": "modified_abilities['prime']"
+    }
+  },
+  {
+    "slug": "elemental_infusion",
+    "title": { "en": "Elemental Infusion", "ru": "Настой стихии" },
+    "description": {
+      "en": "Choose an Elemental damage type when you make this Concoction.\n**Hunter's Mark:** Attacks you make against your Marked target deal +1 damage of the chosen Elemental Damage type.\n**Elemental Tolerance:** You gain Resistance (1) to the chosen Elemental Damage.",
+      "ru": "Выберите тип стихийного урона при приготовлении снадобья.\n**Метка охотника:** Атаки по вашей отмеченной цели наносят +1 выбранного стихийного урона.\n**Сопротивление стихии:** Вы получаете сопротивление (1) выбранному стихийному урону."
+    },
+    "origin": "subclass",
+    "origin_value": "monster_slayer",
+    "kind": "static",
+    "conditions": { "selected_feature": "elemental_infusion" }
+  },
+  {
+    "slug": "hydra_blood",
+    "title": { "en": "Hydra's Blood", "ru": "Кровь гидры" },
+    "description": {
+      "en": "**Hunter's Mark:** When you Heavy Hit your Marked target, you regain 1 HP.\n**Poisonous Blood:** You have Poisoned Resistance and when a creature within 1 Space of you deals damage to you with an Attack, they take 1 Poison damage.",
+      "ru": "**Метка охотника:** При нанесении сильного удара по вашей отмеченной цели вы восстанавливаете 1 ОЗ. \n**Ядовитая кровь:** Вы получаете сопротивление отравлению, а существа в пределах 1 клетки, наносящие вам урон атакой, получают 1 ядовитого урона."
+    },
+    "origin": "subclass",
+    "origin_value": "monster_slayer",
+    "kind": "static",
+    "conditions": { "selected_feature": "hydra_blood" }
+  },
+  {
+    "slug": "basilisk_eye",
+    "title": { "en": "Basilisk Eye", "ru": "Глаз василиска" },
+    "description": {
+      "en": "**Hunter's Mark:** You can sense the vibrations made by your Marked target, giving you Tremorsense 20 Spaces when locating them.\n**Stone Skin:** You gain Physical Resistance (1).",
+      "ru": "**Метка охотника:** Вы получаете чувство вибрации в 20 клеток для обнаружения вашей отмеченной цели.\n**Каменная кожа:** Вы получаете добавленное сопротивление физическому урону (1)."
+    },
+    "origin": "subclass",
+    "origin_value": "monster_slayer",
+    "kind": "static",
+    "conditions": { "selected_feature": "basilisk_eye" },
+    "eval_variables": {
+      "damages": "damages.concat([['physical', 'resist', 1]])"
+    },
+    "continious": true
+  },
+  {
+    "slug": "ooze_gel",
+    "title": { "en": "Ooze Gel", "ru": "Желе из слизи" },
+    "description": {
+      "en": "**Hunter's Mark:** When you Heavy Hit your Marked Target, you cover it in slime. It's Hindered until it or a creature within 1 Space of it spends 1 AP to remove the slime.\n**Amorphous Body:** You can squeeze through gaps as small as 2 inches (5 cm) and walk normally on solid surfaces regardless of their orientation (such as upside down on the ceiling) without falling or needing to Climb.",
+      "ru": "**Метка охотника:** При нанесении сильного удара по вашей отмеченной цели вы сковываете её слизью до тех пор, пока она или существо в пределах 1 клетки от неё не уберёт слизь, потратив 1 ОД.\n**Аморфное тело:** Вы можете взбираться по сложным поверхностям (в том числе по потолку) без проверок и пролезать в щели шириной от 5 сантиметров (2 дюймов)."
+    },
+    "origin": "subclass",
+    "origin_value": "monster_slayer",
+    "kind": "static",
+    "conditions": { "selected_feature": "ooze_gel" }
+  },
+  {
+    "slug": "aberrant_tumor",
+    "title": { "en": "Aberrant Tumor", "ru": "Нарост аберрации" },
+    "description": {
+      "en": "**Hunter's Mark:** While within 20 Spaces of your Marked target, you have ADV when you use Analyze Creature on them and you have ADV on Mental Saves your Marked target forces you to make.\n**Unreadable:** You gain Psychic Resistance (1) and your thoughts can't be read by others unless you allow it.",
+      "ru": "**Метка охотника:** Пока вы в 20 клетках от вашей отмеченной цели, вы получаете преимущество на её опознание как существа и преимущество на ментальные спасы, спровоцированные ею.\n**Непостижимый:** Вы получаете добавленное сопротивление психическому урону (1), и ваши мысли нельзя прочесть без вашего позволения."
+    },
+    "origin": "subclass",
+    "origin_value": "monster_slayer",
+    "kind": "static",
+    "conditions": { "selected_feature": "aberrant_tumor" },
+    "eval_variables": {
+      "damages": "damages.concat([['physical', 'resist', 1]])"
+    },
+    "continious": true
+  },
+  {
+    "slug": "deathweed",
+    "title": { "en": "Deathweed", "ru": "Трупный мох" },
+    "description": {
+      "en": "**Hunter's Mark:** When you score a Heavy Hit against a Marked target it bypasses their Physical Resistances and prevents them from regaining HP until the start of your next turn.\n**Death State:** You enter a state between life and death, granting you Umbral Resistance (Half), Doomed Immunity, and ADV on Death Saves.",
+      "ru": "**Метка охотника:** Ваши сильные удары по вашей отмеченной цели игнорируют сопротивление физическому урону и не позволяют цели восстанавливать ОЗ до начала вашего следующего хода.\n**Полусмерть:** Вы находитесь между жизнью и смертью, получая добавленное сопротивление сумрачному урону (половина), иммунитет от обречённости и преимущество на спасы от смерти."
+    },
+    "origin": "subclass",
+    "origin_value": "monster_slayer",
+    "kind": "static",
+    "conditions": { "selected_feature": "deathweed" },
+    "eval_variables": {
+      "damages": "damages.concat([['umbral', 'resist', 'half']])"
+    },
+    "continious": true
+  },
+  {
+    "slug": "plant_fibers",
+    "title": { "en": "Plant Fibers", "ru": "Растительные волокна" },
+    "description": {
+      "en": "**Hunter's Mark:** If your Marked Target fails a Save you force it to make, they can't move until the end of your next turn.\n**Plant Stitching:** You gain Bleeding Immunity and gain 1 Temp HP at the end of each of your turns.",
+      "ru": "**Метка охотника:** Если ваша отмеченная цель проваливает вызванный вами спас, она становится остановлена до конца вашего следующего хода.\n**Зарастание ран:** Вы получаете иммунитет к ранению, а также получаете 1 временное ОЗ в конце каждого вашего хода."
+    },
+    "origin": "subclass",
+    "origin_value": "monster_slayer",
+    "kind": "static",
+    "conditions": { "selected_feature": "plant_fibers" }
+  },
+  {
+    "slug": "divine_water",
+    "title": { "en": "Divine Water", "ru": "Вода небес" },
+    "description": {
+      "en": "**Hunter's Mark:** Once on each of your turns when you score a Heavy Hit against your Marked target, it also becomes Exposed on the next Attack against it before the end of your next turn.\n**Brilliant Essence:** You gain Radiant Resistance (Half) and radiate Bright Light in a 5 Space Radius.",
+      "ru": "**Метка охотника:** Один раз за ход, когда вы наносите сильный удар по вашей отмеченной цели, она становится раскрыта для первой атаки по ней до конца вашего следующего хода.\n**Сияющая сущность:** Вы получаете добавленное сопротивление сияющему урону (половину) и излучаете яркий свет в радиусе 5 клеток."
+    },
+    "origin": "subclass",
+    "origin_value": "monster_slayer",
+    "kind": "static",
+    "conditions": { "selected_feature": "divine_water" },
+    "eval_variables": {
+      "damages": "damages.concat([['radiant', 'resist', 'half']])"
+    },
+    "continious": true
+  },
+  {
+    "slug": "monster_hunter",
+    "title": { "en": "Monster Hunter", "ru": "Охотник на монстров" },
+    "description": {
+      "en": "You are a master at hunting monsters. If you have 3 entries of creatures with the same Creature Type in your Hunter's Bestiary, you can add the entire Creature Type as an entry.",
+      "ru": "Вы мастер в охоте на монстров. Если в вашем **Бестиарии** есть 3 существа одного типа, вы можете добавить в него весь тип существ."
+    },
+    "origin": "subclass_flavor",
+    "origin_value": "monster_slayer",
+    "kind": "static",
+    "conditions": { "level": 3 }
+  },
+  {
+    "slug": "dynamic_traps",
+    "title": { "en": "Dynamic Traps", "ru": "Адаптивные ловушки" },
+    "description": {
+      "en": "- **Creating Traps:** These Traps use your Save DC when they force a creature to make a Save or when a Check is made to interact with them.\n- **Setting a Trap:** You can spend **1 AP** to Set and Hide one of your Traps in a Space within 5 Spaces that doesn't already contain a Trap. The Trap is Hidden to creatures, and the DC to discover or disarm the Trap is equal to your Save DC. When you do, you can spend 1 SP to add the damage and effect of one of your Hunter's Strike options to the Trap. Once Set, your Traps are unstable and fall apart harmlessly after 1 hour.\n- **Triggering a Trap:** A Trap is Triggered when a creature other than you enters or leaves a Space occupied by the Trap. Alternatively, you can spend 1 AP to Trigger a Trap within 5 Spaces. When Triggered, the Trap makes an Attack for free against the AD of a creature in its Space using your Attack Check. This Attack ignores your Multiple Check Penalty and doesn't progress that penalty.\n- **Hit:** The Trap deals Bludgeoning, Piercing, or Slashing damage (your choice when you Set the Trap) equal to your Prime Modifier, plus the damage and effects of your Hunter's Strike (if used when you Set the Trap).n- **Recovering a Trap:** You can spend 1 AP while within 1 Space of one of your Set Traps to disarm and recover the use of the Trap. When you do, it loses any damage and effects of your Hunter's Mark (if applicable).",
+      "ru": "- **Создание ловушек:** Ловушки используют ваш СЛ спаса, когда вызывают спасы или противодействуют проверкам.\n- **Установка ловушки:** Вы можете потратить **1 ОД**, чтобы установить и спрятать ловушку в клетке, не содержащей других ловушек, в пределах 5 клеток от вас. Ловушка скрыта, и СЛ её обнаружения или обезвреживания равна вашей СЛ спаса. При этом вы можете потратить **1 ОВ**, чтобы добавить ловушке урон и эффект одного из ваших **Ударов охотника**. После установки ловушка становится нестабильной и самостоятельно обезвреживается через 1 час.\n- **Срабатывание ловушки:** Ловушка срабатывает, когда другое существо входит в клетку ловушки или покидает её. Также вы можете потратить **1 ОД**, чтобы активировать ловушку, находящуюся в пределах 5 клеток. При срабатывании ловушка совершает атаку по ПЗ цели в клетке, используя вашу проверку атаки. Эта атака игнорирует и не продвигает штраф повторных проверок.\n- **Попадание:** Ловушка наносит дробящий, колющий или рубящий урон (выбирается при установке), равный вашему высшему модификатору, плюс урон и эффект использованного **Удара охотника**.\n- **Разборка ловушки:** Находясь в пределах 1 клетки от своей ловушки, вы можете потратить **1 ОД**, чтобы обезвредить и восстановить её. При этом она теряет урон и эффекты **Удара охотника**."
+    },
+    "origin": "subclass",
+    "origin_value": "trapper",
+    "kind": "static",
+    "conditions": { "level": 3 },
+    "limit_refresh": "one_at_short_rest",
+    "description_eval_variables": {
+      "limit": "modified_abilities['prime']"
+    }
+  },
+  {
+    "slug": "discerning_eye",
+    "title": { "en": "Discerning Eye", "ru": "Зоркий глаз" },
+    "description": {
+      "en": "You have ADV on Awareness Checks to discover Hidden Traps and on Investigation Checks to discern how to disarm them.",
+      "ru": "Вы получаете преимущество на проверки бдительности для обнаружения скрытых ловушек и на проверки анализа для понимания, как их обезвредить."
+    },
+    "origin": "subclass_flavor",
+    "origin_value": "trapper",
+    "kind": "static",
+    "conditions": { "level": 3 }
+  },
+  {
+    "slug": "expanded_terrains",
+    "title": { "en": "expanded terrains", "ru": "Расширение местностей" },
+    "description": {
+      "en": "You gain 2 additional Favored Terrains. You can't choose the same option more than once.",
+      "ru": "Вы получаете +2 **Избранных местности**. Вы не можете повторно выбрать уже полученные варианты."
+    },
+    "origin": "talent",
+    "origin_value": "hunter",
+    "kind": "static",
+    "conditions": { "level": 3 },
+    "info": {
+      "multiple": false,
+      "required_features": ["favored_terrain"]
+    }
+  },
+  {
+    "slug": "pack_leader",
+    "title": { "en": "Pack Leader", "ru": "Вожак стаи" },
+    "description": {
+      "en": "Creatures of your choice can add a d4 to the first Attack they make on each of their turns against your Marked target.",
+      "ru": "Существа на ваш выбор могут каждый свой ход добавлять d4 к своей первой атаке по вашей отмеченной цели."
+    },
+    "origin": "talent",
+    "origin_value": "hunter",
+    "kind": "static",
+    "conditions": { "level": 3 },
+    "info": {
+      "multiple": false,
+      "required_features": ["hunter_mark"]
+    }
+  },
+  {
+    "slug": "big_game_hunter",
+    "title": { "en": "Big Game Hunter", "ru": "Охотник на крупную добычу" },
+    "description": {
+      "en": "You gain additional benefits against Marked targets that are Large or larger:\n\n- Your Martial Attacks deal +1 damage against them.\n- You have ADV on Saves they force you to make.\n- You have ADV on Checks you make as part of the Analyze Creature Action.",
+      "ru": "Вы получаете следующие бонусы против отмеченных целей большого размера или крупнее:\n\n- Ваши бойцовские атаки по цели наносят +1 урона.\n- Вы получаете преимущество на спасы против способностей цели.\n- Вы получаете преимущество на проверки опознания существа против цели."
+    },
+    "origin": "talent",
+    "origin_value": "hunter",
+    "kind": "static",
+    "conditions": { "level": 3 },
+    "info": {
+      "multiple": false,
+      "required_features": ["hunter_mark"]
+    }
+  }
+]
