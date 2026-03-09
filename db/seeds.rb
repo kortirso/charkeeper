@@ -132,6 +132,17 @@ Dir[File.join(Rails.root.join('db/data/fallout/perks/*.json'))].each do |filenam
   end
 end
 
+file_content = File.read('db/data/daggerheart/domains-output.txt')
+file_content.lines.each do |line|
+  names = line.split('|')
+  en_name = names[1]
+  ru_name = names[2].strip
+  feat = Daggerheart::Feat.where(origin: 7).find_by("title ->> 'en' = ?", en_name)
+  next unless feat
+
+  feat.update(title: feat.title.merge('ru-DHM' => ru_name)) if ru_name != feat.title['ru']
+end
+
 # file_content = File.read('db/data/dnd2024/spells.json')
 # data_hash = JSON.parse(file_content)
 

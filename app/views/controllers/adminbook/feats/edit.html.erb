@@ -12,6 +12,10 @@
       <div><%= title_form.label 'Заголовок (ru)', class: 'form-label' %></div>
       <div><%= title_form.text_field :ru, value: @feat.title['ru'], class: 'form-value w-80' %></div>
     </div>
+    <div class="form-field mb-2">
+      <div><%= title_form.label 'Заголовок (ru-DHM)', class: 'form-label' %></div>
+      <div><%= title_form.text_field 'ru-DHM', value: @feat.title['ru-DHM'], class: 'form-value w-80' %></div>
+    </div>
   <% end %>
   <%= form.fields_for :description, @feat.description do |description_form| %>
     <div class="form-field mb-2">
@@ -21,6 +25,10 @@
     <div class="form-field mb-2">
       <div><%= description_form.label 'Описание (ru)', class: 'form-label' %></div>
       <div><%= description_form.textarea :ru, value: @feat.description['ru'], class: 'form-text text-sm', size: '100x7' %></div>
+    </div>
+    <div class="form-field mb-2">
+      <div><%= description_form.label 'Описание (ru-DHM)', class: 'form-label' %></div>
+      <div><%= description_form.textarea 'ru-DHM', value: @feat.description['ru-DHM'], class: 'form-text text-sm', size: '100x7' %></div>
     </div>
   <% end %>
   <div class="form-field mb-2">
