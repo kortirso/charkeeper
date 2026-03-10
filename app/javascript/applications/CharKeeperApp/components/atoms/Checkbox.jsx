@@ -19,6 +19,9 @@ export const Checkbox = (props) => {
         <Show when={props.checked && !props.filled}>
           <Stroke />
         </Show>
+        <Show when={!props.checked && !props.filled}>
+          <Stroke currentColor="#EEE" />
+        </Show>
       </div>
       <Show when={props.labelPosition === 'right'}>
         <Label { ...labelProps } onClick={() => props.disabled ? null : props.onToggle()} />

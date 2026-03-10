@@ -12,7 +12,7 @@ export const Dice = (props) => {
       onClick={props.onClick ? props.onClick : null} // eslint-disable-line solid/reactivity
     >
       <Component mode={props.mode} width={props.width || 40} height={props.height || 40} />
-      <div class="absolute top-0 left-0 w-full h-full flex justify-center items-center">
+      <div class="dice-text-box">
         <p
           class={[props.textClassList, 'font-normal! text-snow'].join(' ')}
           classList={{ 'opacity-50': props.minimum }}
