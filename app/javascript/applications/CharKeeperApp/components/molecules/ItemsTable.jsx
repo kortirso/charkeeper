@@ -111,7 +111,7 @@ export const ItemsTable = (props) => {
                           <Show when={ITEMS_INFO.includes(props.provider)}>
                             <p class="dots-item" onClick={() => props.onInfoItem(item)}>{localize(TRANSLATION, locale()).info}</p>
                           </Show>
-                          <p class="dots-item" onClick={() => props.onRemoveCharacterItem(item)}>{localize(TRANSLATION, locale()).delete}</p>
+                          <p class="dots-item" onClick={() => props.onRemoveCharacterItem(item, props.state)}>{localize(TRANSLATION, locale()).delete}</p>
                         </div>
                       </Show>
                     </div>

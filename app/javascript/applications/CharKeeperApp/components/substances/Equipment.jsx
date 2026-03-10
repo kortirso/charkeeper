@@ -271,10 +271,13 @@ export const Equipment = (props) => {
     }
   }
 
-  const removeCharacterItem = async (item) => {
-    const result = await removeCharacterItemRequest(
-      appState.accessToken, character().provider, character().id, item.id
-    );
+  const removeCharacterItem = async (item, state) => {
+    const newStates = { ...item.states, [state]: 0 };
+    if (Object.values(newStates).reduce((acc, item) => acc + item, 0) > 0) {
+      return updateCharacterItem(item, { character_item: { states: newStates } });
+    }
+
+    const result = await removeCharacterItemRequest(appState.accessToken, character().provider, character().id, item.id);
     if (result.errors_list === undefined) {
       batch(() => {
         if (item.kind.includes('weapon') || item.state === 'hands') {
@@ -426,7 +429,6 @@ export const Equipment = (props) => {
                   onMoveCharacterItem={moveItem}
                   onChangeItem={changeItem}
                   onInfoItem={showInfo}
-                  onUpdateCharacterItem={updateCharacterItem}
                   onRemoveCharacterItem={removeCharacterItem}
                 />
               }
