@@ -2,7 +2,7 @@
 
 module FalloutCharacter
   class OverallDecorator < ApplicationDecorator
-    def carry_weight
+    def load
       150 + (modified_abilities['str'] * 10)
     end
 

@@ -106,6 +106,8 @@ export const Fallout = (props) => {
             </Match>
             <Match when={activeMobileTab() === 'equipment'}>
               <Equipment
+                withWeight
+                withPrice
                 character={character()}
                 itemFilters={[
                   { title: localize(TRANSLATION, locale()).weaponFilters.meleeWeapons, callback: meleeWeaponsFilter },
@@ -193,6 +195,8 @@ export const Fallout = (props) => {
             </Match>
             <Match when={activeTab() === 'equipment'}>
               <Equipment
+                withWeight
+                withPrice
                 character={character()}
                 itemFilters={[
                   { title: localize(TRANSLATION, locale()).weaponFilters.meleeWeapons, callback: meleeWeaponsFilter },
