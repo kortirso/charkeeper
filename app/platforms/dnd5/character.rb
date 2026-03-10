@@ -35,6 +35,9 @@ module Dnd5
     attribute :heroic_inspiration, :boolean, default: false
     attribute :bardic_inspiration, :integer
     attribute :exhaustion, :integer, default: 0
+    # back compability
+    attribute :selected_talents, array: true, default: {}
+    attribute :selected_additional_talents, array: true, default: 0
   end
 
   class Character < Character
