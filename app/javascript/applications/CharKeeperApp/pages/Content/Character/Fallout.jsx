@@ -3,7 +3,7 @@ import { createWindowSize } from '@solid-primitives/resize-observer';
 
 import { FalloutAbilities, FalloutSkills, FalloutLeveling } from '../../../pages';
 import {
-  CharacterNavigation, Notes, Avatar, ContentWrapper, createFalloutDiceRoll, Equipment, Combat
+  CharacterNavigation, Notes, Avatar, ContentWrapper, createFalloutDiceRoll, Equipment, Combat, Feats
 } from '../../../components';
 import { useAppLocale } from '../../../context';
 import { localize } from '../../../helpers';
@@ -62,6 +62,15 @@ export const Fallout = (props) => {
   const explosiveFilter = (item) => item.kind.includes('explosive');
   const athleticsFilter = (item) => item.kind.includes('athletics');
 
+  const generalFilter = (item) => item.origin === 'general';
+
+  const featFilters = createMemo(() => {
+    const result = [
+      { title: 'perks', callback: generalFilter }
+    ];
+    return result;
+  });
+
   const characterTabs = createMemo(() => {
     return ['combat', 'equipment', 'classLevels', 'notes', 'avatar'];
   });
@@ -103,6 +112,14 @@ export const Fallout = (props) => {
                 openAttackRoll={openAttackRoll}
                 onReplaceCharacter={props.onReplaceCharacter}
               />
+              <div class="mt-4">
+                <Feats
+                  character={character()}
+                  filters={featFilters()}
+                  onReplaceCharacter={props.onReplaceCharacter}
+                  onReloadCharacter={props.onReloadCharacter}
+                />
+              </div>
             </Match>
             <Match when={activeMobileTab() === 'equipment'}>
               <Equipment
@@ -192,6 +209,14 @@ export const Fallout = (props) => {
                 openAttackRoll={openAttackRoll}
                 onReplaceCharacter={props.onReplaceCharacter}
               />
+              <div class="mt-4">
+                <Feats
+                  character={character()}
+                  filters={featFilters()}
+                  onReplaceCharacter={props.onReplaceCharacter}
+                  onReloadCharacter={props.onReloadCharacter}
+                />
+              </div>
             </Match>
             <Match when={activeTab() === 'equipment'}>
               <Equipment

@@ -63,7 +63,8 @@
       "maneuver": "Приём",
       "states": "Состояния",
       "craft": "Крафт",
-      "campaignCharacters": "Персонажи"
+      "campaignCharacters": "Персонажи",
+      "perks": "Перки"
     },
     "campaignsPage": {
       "title": "Кампании",
