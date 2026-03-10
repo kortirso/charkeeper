@@ -1,11 +1,12 @@
-import { createSignal, createEffect, For, Show, batch } from 'solid-js';
+import { createSignal, createEffect, createMemo, For, Show, batch } from 'solid-js';
 import { createStore } from 'solid-js/store';
 
-import { ErrorWrapper, Checkbox, Levelbox, EditWrapper, GuideWrapper, Dice } from '../../../../components';
+import { ErrorWrapper, Checkbox, Levelbox, EditWrapper, GuideWrapper, Dice, Button } from '../../../../components';
 import config from '../../../../data/fallout.json';
 import { useAppState, useAppLocale, useAppAlert } from '../../../../context';
+import { Minus, Plus } from '../../../../assets';
 import { updateCharacterRequest } from '../../../../requests/updateCharacterRequest';
-import { modifier, localize, performResponse } from '../../../../helpers';
+import { localize, performResponse } from '../../../../helpers';
 
 const TRANSLATION = {
   en: {
@@ -16,7 +17,8 @@ const TRANSLATION = {
     needSpend: 'Need spend all skill points',
     overQualified: 'Too many skill points spent per skill',
     overLeveled: 'Too many skill points spent per skill at 1 level',
-    check: 'Skill'
+    check: 'Skill',
+    warning: 'The maximum rank at level 1 is 3, at the others it is 6, learning a skill gives +2 to the rank.'
   },
   ru: {
     helpMessage: 'Заполните данные по навыкам.',
@@ -26,7 +28,8 @@ const TRANSLATION = {
     needSpend: 'Нужно потратить все очки навыков',
     overQualified: 'Потрачено много очков навыков на навыки',
     overLeveled: 'Потрачено много очков навыков на навыки на 1 уровне',
-    check: 'Навык'
+    check: 'Навык',
+    warning: 'Максимальный ранг на 1 уровне - 3, на остальных - 6, обученность навыку даёт +2 к рангу.'
   }
 }
 
@@ -59,6 +62,8 @@ export const FalloutSkills = (props) => {
     });
   });
 
+  const maxSkillLevel = createMemo(() => character().level === 1 ? 3 : 6);
+
   const toggleSkillTag = (slug) => {
     let modifier;
     const result = skillsData().slice().map((item) => {
@@ -75,20 +80,14 @@ export const FalloutSkills = (props) => {
     });
   }
 
-  const updateSkill = (slug) => {
-    let difference;
+  const updateSkill = (slug, modifier) => {
     const result = skillsData().slice().map((item) => {
       if (item.slug !== slug) return item;
 
-      let maxLevel = 4 + (item.expertise ? 0 : 2);
-      if (character().level === 1) maxLevel -= 3;
-
-      const newValue = item.level >= maxLevel ? 0 : (item.level === undefined ? 1 : (item.level + 1));
-      difference = newValue - item.level;
-      return { ...item, level: newValue } 
+      return { ...item, level: item.level + modifier } 
     });
     batch(() => {
-      setSkillPoints({ ...skillPoints, skillBoosts: skillPoints.skillBoosts - difference });
+      setSkillPoints({ ...skillPoints, skillBoosts: skillPoints.skillBoosts - modifier });
       setSkillsData(result);
     });
   }
@@ -96,6 +95,10 @@ export const FalloutSkills = (props) => {
   const cancelEditing = () => {
     batch(() => {
       setSkillsData(character().skills);
+      setSkillPoints({
+        skillBoosts: character().skill_boosts,
+        skillTagBoosts: character().tag_skill_boosts
+      })
       setEditMode(false);
     });
   }
@@ -150,42 +153,65 @@ export const FalloutSkills = (props) => {
           <div class="blockable p-4 pb-8">
             <p class="text-lg">{localize(TRANSLATION, locale()).skills}</p>
             <div class="mt-2">
-              <p>{localize(TRANSLATION, locale()).skillBoosts} {skillPoints.skillBoosts}</p>
-              <p>{localize(TRANSLATION, locale()).skillTagBoosts} {skillPoints.skillTagBoosts}</p>
+              <p class="text-sm">{localize(TRANSLATION, locale()).skillBoosts} {skillPoints.skillBoosts}</p>
+              <p class="text-sm">{localize(TRANSLATION, locale()).skillTagBoosts} {skillPoints.skillTagBoosts}</p>
             </div>
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-y-2 gap-x-8 mt-2">
+            <Show when={editMode()}>
+              <div class="warning mt-2">
+                <p class="text-sm text-black!">{localize(TRANSLATION, locale()).warning}</p>
+              </div>
+            </Show>
+            <div class="fallout-skills">
               <For each={Object.keys(config.abilities)}>
                 {(slug) =>
-                  <For each={(editMode() ? skillsData() : character().skills).filter((item) => item.ability === slug)}>
-                    {(skill) =>
-                      <div class="flex items-center mb-1">
-                        <Show
-                          when={editMode()}
-                          fallback={<Levelbox classList="mr-2" value={skill.level} />}
-                        >
-                          <Checkbox classList="mr-2" checked={skill.expertise} onToggle={() => toggleSkillTag(skill.slug)} />
-                          <Levelbox classList="mr-2" value={skill.level} onToggle={() => updateSkill(skill.slug)} />
-                        </Show>
-                        <p class="uppercase mr-4">{localize(config.abilities[skill.ability].shortName, locale())}</p>
-                        <p class="flex-1 flex" classList={{ 'font-medium!': skill.expertise }}>
-                          {config.skills[skill.slug].name[locale()]}
-                        </p>
-                        <Show
-                          when={editMode()}
-                          fallback={
+                  <Show
+                    when={editMode()}
+                    fallback={
+                      <For each={character().skills.filter((item) => item.ability === slug)}>
+                        {(skill) =>
+                          <div class="fallout-skill">
+                            <Levelbox classList="mr-2" value={skill.modifier} />
+                            <p class="uppercase mr-4">{localize(config.abilities[skill.ability].shortName, locale())}</p>
+                            <p class="flex-1" classList={{ 'font-medium!': skill.expertise }}>
+                              {config.skills[skill.slug].name[locale()]}
+                            </p>
                             <Dice
                               width="30"
                               height="30"
-                              text={modifier(skill.modifier + skill.attribute_modifier)}
+                              text={skill.modifier + skill.attribute_modifier}
                               onClick={() => props.openDiceRoll(`/check skill "${config.skills[skill.slug].name[locale()]}"`, `${localize(TRANSLATION, locale()).check}, ${config.skills[skill.slug].name[locale()]}`, skill.modifier + skill.attribute_modifier, (skill.expertise ? skill.modifier : 1))}
                             />
-                          }
-                        >
-                          <p>{modifier(skill.modifier)}</p>
-                        </Show>
-                      </div>
+                          </div>
+                        }
+                      </For>
                     }
-                  </For>
+                  >
+                    <For each={skillsData().filter((item) => item.ability === slug)}>
+                      {(skill) =>
+                        <div class="fallout-skill">
+                          <Checkbox classList="mr-2" checked={skill.expertise} onToggle={() => toggleSkillTag(skill.slug)} />
+                          <p class="flex-1" classList={{ 'font-medium!': skill.expertise }}>
+                            {config.skills[skill.slug].name[locale()]}
+                          </p>
+                          <div class="fallout-skill-actions">
+                            <Button
+                              default
+                              size="small"
+                              disabled={skill.level === 0}
+                              onClick={() => skill.level === 0 ? null : updateSkill(skill.slug, -1)}
+                            ><Minus /></Button>
+                            <p>{skill.level}</p>
+                            <Button
+                              default
+                              size="small"
+                              disabled={skill.level >= maxSkillLevel() - (skill.expertise ? 2 : 0)}
+                              onClick={() => skill.level >= maxSkillLevel() - (skill.expertise ? 2 : 0) ? null : updateSkill(skill.slug, 1)}
+                            ><Plus /></Button>
+                          </div>
+                        </div>
+                      }
+                    </For>
+                  </Show>
                 }
               </For>
             </div>
