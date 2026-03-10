@@ -62,7 +62,12 @@ export const ItemsTable = (props) => {
               {(item) =>
                 <div class="equipment-item">
                   <div class="flex-1">
-                    <p class="equipment-item-name">{item.name} ({item.states[props.state]})</p>
+                    <p class="equipment-item-name">
+                      {item.name}
+                      <Show when={item.states[props.state] > 1}>
+                        <span> ({item.states[props.state]})</span>
+                      </Show>
+                    </p>
                     <Show when={item.notes}>
                       <p class="equipment-item-notes">{item.notes}</p>
                     </Show>

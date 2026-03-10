@@ -7,7 +7,7 @@ module Characters
 
     attributes(*ATTRIBUTES)
 
-    delegate :kind, :data, :info, to: :item
+    delegate :kind, :info, to: :item
     delegate :item, to: :object
 
     def bonuses
@@ -29,6 +29,10 @@ module Characters
     # DEPRECATED
     def ready_to_use # rubocop: disable Naming/PredicateMethod
       READY_TO_USE_STATES.include?(object.state)
+    end
+
+    def data
+      item.data.attributes
     end
   end
 end

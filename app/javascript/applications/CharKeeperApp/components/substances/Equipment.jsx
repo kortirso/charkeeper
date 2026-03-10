@@ -300,7 +300,11 @@ export const Equipment = (props) => {
   const calculateCurrentLoad = createMemo(() => {
     if (characterItems() === undefined) return 0;
 
-    return characterItems().reduce((acc, item) => acc + item.quantity * item.data.weight, 0);
+    return characterItems().reduce((acc, item) => {
+      const quantity = Object.values(item.states).reduce((total, value) => total + value, 0) - item.states.storage;
+      acc = acc + quantity * item.data.weight;
+      return acc;
+    }, 0);
   });
 
   const filteredItems = createMemo(() => {
