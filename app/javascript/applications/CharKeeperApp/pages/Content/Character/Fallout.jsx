@@ -14,7 +14,13 @@ const TRANSLATION = {
     levelingHelpMessage: 'In the future on this tab you can level up your character.',
     weaponFilters: {
       meleeWeapons: 'Melee Weapons',
-      smallGuns: 'Small Guns'
+      smallGuns: 'Small Guns',
+      bigGuns: 'Big Guns',
+      energyWeapon: 'Energy Weapon',
+      unarmed: 'Unarmed',
+      throwing: 'Throwing',
+      explosive: 'Explosive',
+      athletics: 'Athletics'
     }
   },
   ru: {
@@ -22,10 +28,19 @@ const TRANSLATION = {
     levelingHelpMessage: 'В будущем на этой вкладке вы сможете указывать уровень вашего персонажа.',
     weaponFilters: {
       meleeWeapons: 'Рукопашное оружие',
-      smallGuns: 'Стрелковое оружие'
+      smallGuns: 'Стрелковое оружие',
+      bigGuns: 'Тяжёлое оружие',
+      energyWeapon: 'Энергооружие',
+      unarmed: 'Оружие ближнего боя',
+      throwing: 'Метательное оружие',
+      explosive: 'Взрывчатка',
+      athletics: 'Атлетичное'
     }
   }
 }
+const WEAPON_KINDS = [
+  'melee_weapons', 'small_guns', 'big_guns', 'energy_weapon', 'unarmed', 'throwing', 'explosive', 'athletics'
+];
 
 export const Fallout = (props) => {
   const size = createWindowSize();
@@ -40,6 +55,12 @@ export const Fallout = (props) => {
 
   const meleeWeaponsFilter = (item) => item.kind.includes('melee_weapons');
   const smallGungsFilter = (item) => item.kind.includes('small_guns');
+  const bigGungsFilter = (item) => item.kind.includes('big_guns');
+  const energyWeaponFilter = (item) => item.kind.includes('energy_weapon');
+  const unarmedFilter = (item) => item.kind.includes('unarmed');
+  const throwingFilter = (item) => item.kind.includes('throwing');
+  const explosiveFilter = (item) => item.kind.includes('explosive');
+  const athleticsFilter = (item) => item.kind.includes('athletics');
 
   const characterTabs = createMemo(() => {
     return ['combat', 'equipment', 'classLevels', 'notes', 'avatar'];
@@ -88,8 +109,15 @@ export const Fallout = (props) => {
                 character={character()}
                 itemFilters={[
                   { title: localize(TRANSLATION, locale()).weaponFilters.meleeWeapons, callback: meleeWeaponsFilter },
-                  { title: localize(TRANSLATION, locale()).weaponFilters.smallGuns, callback: smallGungsFilter }
+                  { title: localize(TRANSLATION, locale()).weaponFilters.smallGuns, callback: smallGungsFilter },
+                  { title: localize(TRANSLATION, locale()).weaponFilters.bigGuns, callback: bigGungsFilter },
+                  { title: localize(TRANSLATION, locale()).weaponFilters.energyWeapon, callback: energyWeaponFilter },
+                  { title: localize(TRANSLATION, locale()).weaponFilters.unarmed, callback: unarmedFilter },
+                  { title: localize(TRANSLATION, locale()).weaponFilters.throwing, callback: throwingFilter },
+                  { title: localize(TRANSLATION, locale()).weaponFilters.explosive, callback: explosiveFilter },
+                  { title: localize(TRANSLATION, locale()).weaponFilters.athletics, callback: athleticsFilter }
                 ]}
+                weaponsKinds={WEAPON_KINDS}
                 onReplaceCharacter={props.onReplaceCharacter}
                 onReloadCharacter={props.onReloadCharacter}
                 guideStep={3}
@@ -168,8 +196,15 @@ export const Fallout = (props) => {
                 character={character()}
                 itemFilters={[
                   { title: localize(TRANSLATION, locale()).weaponFilters.meleeWeapons, callback: meleeWeaponsFilter },
-                  { title: localize(TRANSLATION, locale()).weaponFilters.smallGuns, callback: smallGungsFilter }
+                  { title: localize(TRANSLATION, locale()).weaponFilters.smallGuns, callback: smallGungsFilter },
+                  { title: localize(TRANSLATION, locale()).weaponFilters.bigGuns, callback: bigGungsFilter },
+                  { title: localize(TRANSLATION, locale()).weaponFilters.energyWeapon, callback: energyWeaponFilter },
+                  { title: localize(TRANSLATION, locale()).weaponFilters.unarmed, callback: unarmedFilter },
+                  { title: localize(TRANSLATION, locale()).weaponFilters.throwing, callback: throwingFilter },
+                  { title: localize(TRANSLATION, locale()).weaponFilters.explosive, callback: explosiveFilter },
+                  { title: localize(TRANSLATION, locale()).weaponFilters.athletics, callback: athleticsFilter }
                 ]}
+                weaponsKinds={WEAPON_KINDS}
                 onReplaceCharacter={props.onReplaceCharacter}
                 onReloadCharacter={props.onReloadCharacter}
                 guideStep={3}

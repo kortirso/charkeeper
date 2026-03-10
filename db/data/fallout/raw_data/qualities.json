@@ -1,0 +1,191 @@
+[
+  {
+    "id": "quality_burst",
+    "Name": "Очередь",
+    "Effect": "For each Effect rolled, you may spend an additional shot to hit another target within Close range of the primary target"
+  },
+  {
+    "id": "quality_breaking",
+    "Name": "Разрушающий",
+    "Effect": "For each Effect rolled, if the target is in cover, reduce the number of Cover Dice a piece of cover provides permantly by 1. Otherwise, reduce the damage resistance on the location struck by 1"
+  },
+  {
+    "id": "quality_persistent",
+    "Name": "Устойчивый",
+    "Effect": "Target suffers the weapon's damage again at the end each turn, for a number of rounds equal to the number of Effects rolled. They may spend a major action to make a test to stop the damage early; the difficulty is equal to the number of Effects rolled"
+  },
+  {
+    "id": "quality_piercing_x",
+    "Name": "Проникающий X",
+    "Effect": "Ignore X point of the target's damage reduction for each Effect rolled"
+  },
+  {
+    "id": "quality_radioactive",
+    "Name": "Радиоактивный",
+    "Effect": "For every Effect rolled, the target also suffers 1 point of Radiation damage"
+  },
+  {
+    "id": "quality_spread",
+    "Name": "Разброс",
+    "Effect": "For each Effect rolled, your attack inflicts one additional hit on the target. Each additional hit inflicts half the rolled damage and hits a random location"
+  },
+  {
+    "id": "quality_stun",
+    "Name": "Оглушающий",
+    "Effect": "If one or more Effects are rolled, the target loses their normal actions in their next turn. A stunned target may still spend AP to take additional actions"
+  },
+  {
+    "id": "quality_vicious",
+    "Name": "Порочный",
+    "Effect": "The attack inflicts +1 damage for each Effect rolled"
+  },
+  {
+    "id": "quality_accurate",
+    "Name": "Точное",
+    "Effect": "If you take the Aim minor action before attacking with an Accurate weapon, you may spend up to 3 AP to add +1 damage dice per AP to the attack's damage",
+    "Opposite": "Inaccurate"
+  },
+  {
+    "id": "quality_blast",
+    "Name": "Врыв",
+    "Effect": "Target a zone instead of a target, and make a check with difficulty 2. Success deals full damage to all characters, and failure deals half"
+  },
+  {
+    "id": "quality_close_quarters",
+    "Name": "Вплотную",
+    "Effect": "You suffer no penalty for attacking when within Reach of an enemy"
+  },
+  {
+    "id": "quality_concealed",
+    "Name": "Скрытное",
+    "Effect": "Enemies do not spot this weapon unless you're wielding it, or thet succeed at a PER + Survival test with a difficulty of 2"
+  },
+  {
+    "id": "quality_debilitating",
+    "Name": "Изнуряющий",
+    "Effect": "The difficulty of any skill test treat to injuries inflicted by this weapon increase by +1."
+  },
+  {
+    "id": "quality_gatling",
+    "Name": "Гатлинг",
+    "Effect": "Ammunition is spent at ten times the normal rate. Whenever spend ammunition to increase you damage, this weapon's damage, add +2 Damage Dice per shot"
+  },
+  {
+    "id": "quality_inaccurate",
+    "Name": "Неточное",
+    "Effect": "you cannot take the Aim minor action",
+    "Opposite": "Accurate"
+  },
+  {
+    "id": "quality_mine",
+    "Name": "Мина",
+    "Effect": "When a Mine is placed it inflicts its damage upon anyone who comes within Reach of it"
+  },
+  {
+    "id": "quality_night_vision",
+    "Name": "Ночное Видение",
+    "Effect": "When you Aim, you ignore any penalty due to darkness."
+  },
+  {
+    "id": "quality_parry",
+    "Name": "Паррирование",
+    "Effect": "When an enemy attempts a melee attack against you, you may spend 1 AP to add +1 to your Defense"
+  },
+  {
+    "id": "quality_recon",
+    "Name": "Разведовательный",
+    "Effect": "When you Aim, you may mark the target you aimed at. The next ally to attack that target may re-roll one d20 on their attack."
+  },
+  {
+    "id": "quality_reliable",
+    "Name": "Надежное",
+    "Effect": "During each combat encounter, ignore the first complication you roll",
+    "Opposite": "Unreliable"
+  },
+  {
+    "id": "quality_supressed",
+    "Name": "Тихое",
+    "Effect": "If an enemy is not aware of you when you attack, they do not notice the attack unless they are the target or they pass a PER+ Survival test with a difficulty of 2."
+  },
+  {
+    "id": "quality_two-handed",
+    "Name": "Двуручное",
+    "Effect": "Attacking with only one hand increases the difficulty by +2."
+  },
+  {
+    "id": "quality_unreliable",
+    "Name": "Ненадежное",
+    "Effect": "Increase the complication range of attacks by 1.",
+    "Opposite": "Reliable"
+  },
+  {
+    "id": "quality_re-roll_hit_location",
+    "Name": "Перевыбрать конечность",
+    "Effect": "You may choose to re-roll your hit-location die"
+  },
+  {
+    "id": "quality_bayonet",
+    "Name": "Штык",
+    "Effect": "You may make a Melee Weapon with 4 Physical Damage Dice and Piercing 1"
+  },
+  {
+    "id": "quality_crank_x",
+    "Name": "Ствол X",
+    "Effect": "Consumes X shots per attack"
+  },
+  {
+    "id": "quality_shredder",
+    "Name": "Крушащий",
+    "Effect": "Can be used as a melee weapon, with damage dice equal to Rate of Fire"
+  },
+  {
+    "id": "quality_disarm",
+    "Name": "Обезоруживающий",
+    "Effect": "After a successful attack, you may spend 1AP to disarm the target"
+  },
+  {
+    "id": "quality_sneak_attack",
+    "Name": "Скрытная атака",
+    "Effect": "+2 damage dice on sneak attacks"
+  },
+  {
+    "id": "quality_targetting_computer",
+    "Name": "Компьютер наведения",
+    "Effect": "When you Aim, you ignore cover. Additionally, the benifits of Aiming are applied to your next attack against the target."
+  },
+  {
+    "id": "quality_slow_load",
+    "Name": "Медленная перезарядка",
+    "Effect": "Must be reloaded with a minor action"
+  },
+  {
+    "id": "quality_freeze",
+    "Name": "Замораживающий",
+    "Effect": "If the number of Effects rolled are equal or more than half the target’s END/Body, then target cannot take actions on its next turn"
+  },
+  {
+    "id": "quality_arc",
+    "Name": "Дуга",
+    "Effect": "Each effect deals half damage to an enemy within close range of the target"
+  },
+  {
+    "id": "quality_recoil_x",
+    "Name": "Отдача X",
+    "Effect": "Increases difficulty unless STR greater than X or the weapon is braced"
+  },
+  {
+    "id": "quality_ammo-hungry_x",
+    "Name": "Пожиратель патронов X",
+    "Effect": "Whenever ammo is spent, spend X ammo instead"
+  },
+  {
+    "id": "quality_surge",
+    "Name": "Импульсный",
+    "Effect": "Vicious against Robots/Power Armor/Turrets etc."
+  },
+  {
+    "id": "quality_bombard",
+    "Name": "Бомбарда",
+    "Effect": "Blast, but also target adjacent zones by spending 2 ammo per zone"
+  }
+]

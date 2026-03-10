@@ -143,45 +143,37 @@ file_content.lines.each do |line|
   feat.update(title: feat.title.merge('ru-DHM' => ru_name)) if ru_name != feat.title['ru']
 end
 
-# file_content = File.read('db/data/dnd2024/spells.json')
-# data_hash = JSON.parse(file_content)
+file_content = File.read('db/data/fallout/raw_data/weapons.json')
+data_hash = JSON.parse(file_content)
 
-# classes = { 'Изобретатель' => 'artificer', 'Чародей' => 'sorcerer', 'Волшебник' => 'wizard', 'Бард' => 'bard', 'Друид' => 'druid', 'Колдун' => 'warlock', 'Жрец' => 'cleric', 'Паладин' => 'paladin', 'Следопыт' => 'ranger' }
-# schools = { 'Ограждение' => 'abjuration', 'Вызов' => 'conjuration', 'Прорицание' => 'divination', 'Очарование' => 'enchantment', 'Воплощение' => 'evocation', 'Иллюзия' => 'illusion', 'Некромантия' => 'necromancy', 'Преобразование' => 'transmutation' }
+ranges = { 'C' => 'close', 'M' => 'medium', 'L' => 'long' }
 
-# data_hash = data_hash.map do |item|
-#   {
-#     slug: item['url'],
-#     title: { en: item['name']['eng'], ru: item['name']['rus'] },
-#     description: {
-#       en: '',
-#       ru: item['description'].join("\n")
-#     },
-#     origin: 'spell',
-#     origin_values: item['affiliation']['classes'].map { |i| classes[i['name']] },
-#     kind: 'static',
-#     description_eval_variables: {},
-#     eval_variables: {},
-#     info: {
-#       level: item['level'],
-#       school: schools[item['school']],
-#       casting_time: item['castingTime'],
-#       range: item['range'],
-#       duration: item['duration'],
-#       components: item['components'],
-#       source: item['source']['name']['label']
-#     },
-#     different: {
-#       upper: item['upper']
-#     }
-#   }
-# end
+data_hash = data_hash.map do |item|
+  {
+    slug: item['imageName'].underscore.gsub(' ', '_'),
+    kind: item['Weapon Type'].underscore.gsub(' ', '_'),
+    name: { en: item['imageName'], ru: item['Name'] },
+    data: {
+      weight: item['Weight'] == '<1' ? 1 : item['Weight'].to_i,
+      price: item['Cost'],
+      rarity: item['Rarity']
+    },
+    info: {
+      rating: item['Damage Rating'],
+      effects: item['Damage Effects'].split(', ').map { |item| item.underscore.gsub(' ', '-') },
+      damage: item['Damage Type'].split(' / ').map { |item| item.underscore },
+      rate: item['Rate of Fire'],
+      range: item['Range'].present? ? ranges[item['Range']] : nil,
+      qualities: item['Qualities'].split(', ').map { |item| item.underscore.gsub(' ', '_') },
+    }.compact
+  }
+end
 
-# beautified_json_string = JSON.pretty_generate(data_hash)
-# # # Write the beautified JSON string to a file
-# File.open('db/data/dnd2024/spells1.json', 'w') do |file|
-#   file.write(beautified_json_string)
-# end
+beautified_json_string = JSON.pretty_generate(data_hash)
+# # Write the beautified JSON string to a file
+File.open('db/data/fallout/weapons.json', 'w') do |file|
+  file.write(beautified_json_string)
+end
 
 # file_content = File.read('db/data/daggerheart/spells-en.json')
 # data_hash_en = JSON.parse(file_content)['data']
@@ -243,7 +235,7 @@ json = {
 
 Dnd5::Item.create!(json)
 
-Dir[File.join(Rails.root.join('db/data/fallout/weapons/*.json'))].each do |filename|
+Dir[File.join(Rails.root.join('db/data/fallout/weapons.json'))].each do |filename|
   puts "seeding - #{filename}"
   weapons = JSON.parse(File.read(filename))
   Fallout::Item.upsert_all(weapons) if weapons.any?

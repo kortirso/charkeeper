@@ -37,9 +37,7 @@ module BotContextV2
         def check_damage(arguments)
           values = BotContextV2::Commands::Parsers::MakeCheck.new.call(arguments: arguments)
 
-          character_item = Character::Item.find_by(id: values[:id])
-          return {} unless character_item
-
+          character_item = values[:id] ? Character::Item.find_by(id: values[:id]) : nil
           result = { damage: 0, effects: 0 }
           values[:target].times do
             check_damage_roll_result(roll_command.call(arguments: ['d6']).dig(:result, :total), result)
@@ -83,6 +81,8 @@ module BotContextV2
         end
 
         def modify_result_by_effects(result, character_item) # rubocop: disable Metrics/AbcSize
+          return unless character_item
+
           effects = character_item.item.info['effects']
           return if result[:effects].zero?
 

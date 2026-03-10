@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Modified
 - clearing state for items while deleting
 - skills management for DC20 and Fallout characters
+- items description for D&D items
 
 ## [0.4.14] - 2026-03-09
 ### Added
