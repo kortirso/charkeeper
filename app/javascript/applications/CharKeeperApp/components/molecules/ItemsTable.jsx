@@ -22,7 +22,7 @@ const TRANSLATION = {
     info: 'Информация'
   }
 }
-const ITEMS_INFO = ['daggerheart'];
+const ITEMS_INFO = ['daggerheart', 'dnd2024', 'dnd5'];
 
 export const ItemsTable = (props) => {
   const size = createWindowSize();

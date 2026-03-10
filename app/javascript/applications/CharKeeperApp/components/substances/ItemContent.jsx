@@ -12,7 +12,43 @@ const TRANSLATION = {
     'tier': 'Tier',
     'armor': 'Armor',
     'thresholds': 'Damage thresholds',
-    'score': 'Armor Score'
+    'score': 'Armor Score',
+    'dnd': {
+      type: {
+        light: 'Light',
+        martial: 'Martial'
+      },
+      armorType: {
+        light: 'Light Armor',
+        medium: 'Medium Armor',
+        heavy: 'Heavy Armor'
+      },
+      melee: 'Melee weapon',
+      thrown: 'Melee/Thrown weapon',
+      range: 'Range weapon',
+      weight: 'Weight',
+      price: 'Price',
+      gold: 'gold',
+      silver: 'silver',
+      copper: 'copper',
+      bludge: 'Bludgeoning',
+      pierce: 'Piercing',
+      slash: 'Slasing',
+      damage: 'Damage',
+      reach: 'Reach',
+      heavy: 'Heavy',
+      '2handed': 'Two-Handed',
+      finesse: 'Finess',
+      light: 'Light',
+      versatile: 'Versatile',
+      reload: 'Reload',
+      caption: 'Captions',
+      ac: 'Armor Class',
+      maxDex: 'Maximum Dex',
+      strReq: 'Strength requirements',
+      stealth: 'Stealth',
+      disadv: 'Disadvantage'
+    }
   },
   ru: {
     'primary weapon': 'Основное оружие',
@@ -20,7 +56,43 @@ const TRANSLATION = {
     'tier': 'Ранг',
     'armor': 'Доспех',
     'thresholds': 'Пороги урона',
-    'score': 'Очки доспеха'
+    'score': 'Очки доспеха',
+    'dnd': {
+      type: {
+        light: 'Простое',
+        martial: 'Воинское'
+      },
+      armorType: {
+        light: 'Лёгкий доспех',
+        medium: 'Средний доспех',
+        heavy: 'Тяжёлый доспех'
+      },
+      melee: 'Рукопашное оружие',
+      thrown: 'Рукопашное/метательное оружие',
+      range: 'Дистанционное оружие',
+      weight: 'Вес',
+      price: 'Цена',
+      gold: 'зм',
+      silver: 'см',
+      copper: 'мм',
+      bludge: 'дробящий',
+      pierce: 'колющий',
+      slash: 'режущий',
+      damage: 'Урон',
+      reach: 'Досягаемость',
+      heavy: 'Тяжёлое',
+      '2handed': 'Двуручное',
+      finesse: 'Фехтовальное',
+      light: 'Лёгкое',
+      versatile: 'Универсальное',
+      reload: 'Перезарядка',
+      caption: 'Свойства',
+      ac: 'Класс доспеха',
+      maxDex: 'Максимальная ловкость',
+      strReq: 'Требования силы',
+      stealth: 'Скрытность',
+      disadv: 'помеха'
+    }
   }
 };
 
@@ -29,7 +101,7 @@ const DaggerheartWeapon = (props) => {
 
   return (
     <>
-      <div class="flex items-center gap-x-2 mt-4">
+      <div class="mt-4">
         <p>{TRANSLATION[props.locale][item().kind]}, {TRANSLATION[props.locale].tier} {[item().info.tier]}</p>
       </div>
       <div class="flex items-center gap-x-2 mt-2">
@@ -79,6 +151,57 @@ const DaggerheartItem = (props) => {
   );
 }
 
+const renderDndPrice = (value, locale) => {
+  if (value >= 100) return `${value / 100} ${localize(TRANSLATION, locale).dnd.gold}`;
+  if (value >= 10) return `${value / 10} ${localize(TRANSLATION, locale).dnd.silver}`;
+  return `${value} ${localize(TRANSLATION, locale).dnd.copper}`;
+}
+
+const DndWeapon = (props) => {
+  const item = () => props.item;
+
+  return (
+    <>
+      <p class="mt-4">{localize(TRANSLATION, props.locale).dnd.type[item().info.weapon_skill]}, {localize(TRANSLATION, props.locale).dnd[item().info.type]}</p>
+      <p class="text-sm mt-2">{localize(TRANSLATION, props.locale).dnd.weight}: {item().data.weight}</p>
+      <p class="text-sm mt-1">{localize(TRANSLATION, props.locale).dnd.price}: {renderDndPrice(item().data.price, props.locale)}</p>
+      <p class="mt-2">{localize(TRANSLATION, props.locale).dnd.damage}: {item().info.damage} {localize(TRANSLATION, props.locale).dnd[item().info.damage_type]}</p>
+      <p class="mt-2">{localize(TRANSLATION, props.locale).dnd.caption}: {Object.keys(item().info.caption).map((element) => localize(TRANSLATION, props.locale).dnd[element]).join(', ')}</p>
+    </>
+  );
+}
+
+const DndArmor = (props) => {
+  const item = () => props.item;
+
+  return (
+    <>
+      <p class="mt-4">{localize(TRANSLATION, props.locale).dnd.armorType[item().info.armor_skill]}</p>
+      <p class="text-sm mt-2">{localize(TRANSLATION, props.locale).dnd.weight}: {item().data.weight}</p>
+      <p class="text-sm mt-1">{localize(TRANSLATION, props.locale).dnd.price}: {renderDndPrice(item().data.price, props.locale)}</p>
+      <p class="mt-2">{localize(TRANSLATION, props.locale).dnd.ac}: {item().info.ac}</p>
+      <Show when={item().info.max_dex}>
+        <p class="mt-2">{localize(TRANSLATION, props.locale).dnd.maxDex}: {modifier(item().info.max_dex)}</p>
+      </Show>
+      <Show when={item().info.str_req}>
+        <p class="mt-2">{localize(TRANSLATION, props.locale).dnd.strReq}: {item().info.str_req}</p>
+      </Show>
+      <p class="mt-2">{localize(TRANSLATION, props.locale).dnd.stealth}: {item().info.stealth ? '-' : localize(TRANSLATION, props.locale).dnd.disadv}</p>
+    </>
+  );
+}
+
+const DndItem = (props) => {
+  const item = () => props.item;
+
+  return (
+    <>
+      <p class="text-sm mt-2">{localize(TRANSLATION, props.locale).dnd.weight}: {item().data.weight}</p>
+      <p class="text-sm mt-1">{localize(TRANSLATION, props.locale).dnd.price}: {renderDndPrice(item().data.price, props.locale)}</p>
+    </>
+  );
+}
+
 const COMPONENTS = {
   'daggerheart': {
     'primary weapon': DaggerheartWeapon,
@@ -88,6 +211,28 @@ const COMPONENTS = {
     'consumables': DaggerheartItem,
     'armor': DaggerheartArmor,
     'upgrade': DaggerheartItem
+  },
+  'dnd5': {
+    'weapon': DndWeapon,
+    'armor': DndArmor,
+    'shield': DndItem,
+    'item': DndItem,
+    'ammo': DndItem,
+    'focus': DndItem,
+    'tools': DndItem,
+    'music': DndItem,
+    'potion': DndItem
+  },
+  'dnd2024': {
+    'weapon': DndWeapon,
+    'armor': DndArmor,
+    'shield': DndItem,
+    'item': DndItem,
+    'ammo': DndItem,
+    'focus': DndItem,
+    'tools': DndItem,
+    'music': DndItem,
+    'potion': DndItem
   }
 }
 

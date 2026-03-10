@@ -20,4 +20,8 @@ class ItemSerializer < ApplicationSerializer
   def has_description # rubocop: disable Naming/PredicateMethod, Naming/PredicatePrefix
     translate(object.description).present?
   end
+
+  def data
+    object.data.attributes
+  end
 end

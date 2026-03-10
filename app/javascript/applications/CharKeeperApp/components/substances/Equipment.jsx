@@ -81,7 +81,7 @@ const TRANSLATION = {
   }
 }
 const CREATE_HOMEBREW_ITEMS = ['daggerheart', 'dnd2024'];
-const ITEMS_INFO = ['daggerheart'];
+const ITEMS_INFO = ['daggerheart', 'dnd2024', 'dnd5'];
 const HOMEBREWED_PROVIDERS = ['daggerheart', 'dnd2024']
 
 export const Equipment = (props) => {
