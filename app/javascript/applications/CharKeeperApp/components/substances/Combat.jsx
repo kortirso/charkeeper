@@ -27,6 +27,11 @@ const TRANSLATION = {
       'far': 'Far',
       'very far': 'V Far'
     },
+    fallout: {
+      close: 'Close',
+      medium: 'Medium',
+      long: 'Long'
+    },
     squares: 'sq',
     feet: 'ft',
     meters: 'm'
@@ -48,6 +53,11 @@ const TRANSLATION = {
       'close': 'Средне',
       'far': 'Далеко',
       'very far': 'Оч далеко'
+    },
+    fallout: {
+      close: 'Близкая',
+      medium: 'Средняя',
+      long: 'Дальняя'
     },
     squares: 'кв',
     feet: 'фт',
@@ -165,10 +175,18 @@ export const Combat = (props) => {
       <Dice
         width="32"
         height="32"
-        text={modifier(skill.modifier + skill.attribute_modifier)}
+        text={skill.modifier + skill.attribute_modifier}
         onClick={() => props.openAttackRoll(`/check skill "${attack.name}"`, attack.name, skill.modifier + skill.attribute_modifier, (skill.expertise ? skill.modifier : 1), attack.damage, attack.id)}
       />
     )
+  }
+
+  const renderFalloutDistance = (attack) => {
+    if (!attack.distance) return '';
+
+    return (
+      <p class="text-sm">{localize(TRANSLATION, locale()).fallout[attack.distance]}</p>
+    );
   }
 
   const renderAttacksBox = (title, values) => {
@@ -204,9 +222,10 @@ export const Combat = (props) => {
                       }
                     >
                       <>
-                        <div class="weapon-damage">
+                        <div class="weapon-damage gap-x-2">
                           {renderFalloutAttackDice(attack)}
                           <Dice type="D6" width="32" height="32" text={attack.damage} />
+                          {renderFalloutDistance(attack)}
                         </div>
                       </>
                     </Show>
@@ -225,6 +244,9 @@ export const Combat = (props) => {
                   <p class="weapon-features">
                     {typeof attack.features[0] === 'string' ? attack.features.join(', ') : attack.features.map((item) => item[locale()]).join(', ')}
                   </p>
+                </Show>
+                <Show when={attack.notes}>
+                  <p class="equipment-item-notes">{attack.notes}</p>
                 </Show>
               </div>
             }

@@ -63,7 +63,8 @@
       "maneuver": "Maneuver",
       "states": "States",
       "craft": "Craft",
-      "campaignCharacters": "Characters"
+      "campaignCharacters": "Characters",
+      "perks": "Perks"
     },
     "campaignsPage": {
       "title": "Campaigns",

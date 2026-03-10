@@ -4,11 +4,11 @@ module Fallout
   class CharacterSerializer < ApplicationSerializer
     include Deps[cache: 'cache.avatars']
 
-    attributes :provider, :id, :name, :created_at, :avatar, :origin, :abilities, :load, :initiative, :max_health, :skills,
+    attributes :features, :provider, :id, :name, :created_at, :avatar, :origin, :abilities, :load, :initiative, :max_health,
                :ability_boosts, :tag_skill_boosts, :skill_boosts, :level, :guide_step, :max_abilities, :defense, :attacks,
-               :modified_abilities, :perks, :additional_perks, :perks_boosts
+               :modified_abilities, :perks, :additional_perks, :perks_boosts, :skills
 
-    delegate :load, :initiative, :max_health, :skills, :defense, :modified_abilities, :attacks, to: :decorator
+    delegate :load, :initiative, :max_health, :skills, :defense, :modified_abilities, :attacks, :features, to: :decorator
     delegate :data, to: :object
     delegate :origin, :abilities, :ability_boosts, :tag_skill_boosts, :skill_boosts, :level, :guide_step,
              :max_abilities, :perks, :additional_perks, :perks_boosts, to: :data
