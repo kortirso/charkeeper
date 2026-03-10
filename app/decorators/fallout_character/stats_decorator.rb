@@ -20,7 +20,7 @@ module FalloutCharacter
     end
 
     def attacks
-      @attacks ||= character_weapons.map { |item| calculate_attack(item) }
+      @attacks ||= [unarmed_attack] + character_weapons.map { |item| calculate_attack(item) }
     end
 
     private
@@ -38,6 +38,18 @@ module FalloutCharacter
       }
     end
 
+    def unarmed_attack
+      {
+        name: translate({ en: 'Unarmed Strike', ru: 'Безоружный удар' }),
+        kind: 'unarmed',
+        damage: 2,
+        notes: [],
+        damage_types: ['physical'],
+        ready_to_use: true,
+        tags: {}
+      }
+    end
+
     def calculate_attack(item)
       {
         id: item[:id],
@@ -46,7 +58,7 @@ module FalloutCharacter
         damage: item.dig(:items_info, 'rating'),
         distance: item.dig(:items_info, 'range'),
         notes: item[:notes] || [],
-        damage_types: [item.dig(:items_info, 'damage')],
+        damage_types: item.dig(:items_info, 'damage'),
         ready_to_use: item[:state] ? item[:state].in?(::Character::Item::HANDS) : true,
         tags: {}
       }
@@ -56,7 +68,7 @@ module FalloutCharacter
       parent
         .items
         .joins(:item)
-        .where(items: { kind: %w[melee_weapons small_guns] })
+        .where(items: { kind: %w[melee_weapons small_guns big_guns energy_weapon unarmed throwing explosive athletics] })
         .hashable_pluck('items.name', 'items.kind', 'items.info', :notes, :state, :id)
     end
   end

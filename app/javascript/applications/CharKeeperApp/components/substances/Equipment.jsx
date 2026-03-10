@@ -246,7 +246,7 @@ export const Equipment = (props) => {
 
     if (result.errors_list === undefined) {
       batch(() => {
-        if (item.kind.includes('weapon')) props.onReloadCharacter();
+        if (props.weaponsKinds && props.weaponsKinds.includes(item.kind) || item.kind.includes('weapon')) props.onReloadCharacter();
         reloadCharacterItems();
         renderNotice(t('alerts.itemIsAdded'));
       });

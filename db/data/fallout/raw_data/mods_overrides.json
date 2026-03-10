@@ -1,0 +1,199 @@
+{
+  "weapon_065": {
+    "Barrel": [
+      "mod_017", "mod_053", "mod_054", "mod_055"
+    ],
+    "Grip": ["mod_027"],
+    "Stock": ["mod_058", "mod_059"],
+    "Sights": ["mod_062", "mod_034"]
+  },
+  "weapon_067": {
+    "Capacitor": ["mod_043"],
+    "Grips": ["mod_027"],
+    "Sights": ["mod_062"]
+  },
+  "weapon_068": {
+    "Barrel": ["mod_053", "mod_052", "mod_054"],
+    "Sights": ["mod_062"]
+  },
+  "weapon_072": {
+    "Receiver": ["mod_009"],
+    "Barrel": ["mod_017"],
+    "Magazine": ["mod_023"]
+  },
+  "weapon_073": {
+    "Receiver": ["mod_007", "mod_004", "mod_009", "mod_005", "mod_006", "mod_002", "mod_010"],
+    "Barrel": ["mod_017", "mod_018"],
+    "Grip": ["mod_026", "mod_027"],
+    "Magazine": ["mod_023", "mod_024"],
+    "Sights": ["mod_033"],
+    "Muzzle": ["mod_042"]
+  },
+  "weapon_074": {
+    "Receiver": ["mod_004", "mod_005", "mod_002"],
+    "Grip": ["mod_028", "mod_030"],
+    "Magazine": ["mod_023"],
+    "Sights": ["mod_033"],
+    "Muzzle": ["mod_042"]
+  },
+  "weapon_075": {
+    "Receiver": ["mod_009"],
+    "Barrel": ["mod_017"],
+    "Magazine": ["mod_023"]
+  },
+  "weapon_076": {
+    "Receiver": ["mod_008", "mod_007", "mod_004", "mod_009", "mod_078"],
+    "Grip": ["mod_026"],
+    "Magazine": ["mod_023"],
+    "Sights": ["mod_033", "mod_034"],
+    "Muzzle": ["mod_042"]
+  },
+  "weapon_077": {
+    "Receiver": ["mod_004", "mod_005", "mod_009"],
+    "Magazine": ["mod_023"],
+    "Sights": ["mod_034", "mod_035", "mod_036", "mod_037", "mod_038"],
+    "Muzzle": ["mod_042"]
+  },
+  "weapon_078": {
+    "Receiver": ["mod_004", "mod_005", "mod_009"],
+    "Barrel": ["mod_017"],
+    "Sights": ["mod_033", "mod_034"],
+    "Muzzle": ["mod_039"]
+  },
+  "weapon_079": { 
+  },
+  "weapon_080": { 
+  },
+  "weapon_081": {
+    "Muzzle": ["mod_039"]
+  },
+  "weapon_082": {
+    "Barrel": ["mod_021"],
+    "Capacitors": ["mod_031", "mod_032"],
+    "Sights": ["mod_033"]
+  },
+  "weapon_083": {
+    "Barrel": ["mod_021"],
+    "Capacitors": ["mod_031", "mod_032"]
+  },
+  "weapon_084": {
+    "Receiver": ["mod_007", "mod_004", "mod_005", "mod_006", "mod_010", "mod_010"],
+    "Barrel": ["mod_017", "mod_018"],
+    "Stock": ["mod_028", "mod_029"],
+    "Sights": ["mod_033", "mod_034", "mod_035", "mod_036", "mod_037"],
+    "Muzzle": ["mod_042"]
+  },
+  "weapon_085": {
+    "Receiver": ["mod_007", "mod_004", "mod_005", "mod_011", "mod_010"],
+    "Barrel": ["mod_017", "mod_018", "mod_019"],
+    "Magazine": ["mod_023", "mod_024", "mod_025"],
+    "Stock": ["mod_028", "mod_030"],
+    "Sights": ["mod_033"],
+    "Muzzle": ["mod_040", "mod_041"]
+  },
+  "weapon_086": {
+    "Receiver": ["mod_007", "mod_009", "mod_004", "mod_005", "mod_006", "mod_010"],
+    "Barrel": ["mod_017", "mod_018"],
+    "Stock": ["mod_028", "mod_030"],
+    "Sights": ["mod_033"],
+    "Muzzle": ["mod_039", "mod_040", "mod_041", "mod_042"]
+  },
+  "weapon_087": {
+    "Receiver": ["mod_004", "mod_005", "mod_009"],
+    "Barrel": ["mod_017", "mod_018"],
+    "Stock": ["mod_028", "mod_030"],
+    "Sights": ["mod_033", "mod_034", "mod_035", "mod_036", "mod_037", "mod_038"],
+    "Muzzle": ["mod_039", "mod_040", "mod_041", "mod_042"]
+  },
+  "weapon_088": {
+    "Receiver": ["mod_004", "mod_005", "mod_009"],
+    "Barrel": ["mod_017", "mod_018"],
+    "Stock": ["mod_028", "mod_030"],
+    "Sights": ["mod_033", "mod_034", "mod_035", "mod_036", "mod_037", "mod_038"],
+    "Muzzle": ["mod_039", "mod_040", "mod_041", "mod_042"]
+  },
+  "weapon_089": {
+    "Receiver": ["mod_004", "mod_005", "mod_009"],
+    "Barrel": ["mod_017", "mod_018"],
+    "Stock": ["mod_028", "mod_030"],
+    "Sights": ["mod_033", "mod_034", "mod_035", "mod_036", "mod_037", "mod_038"],
+    "Muzzle": ["mod_039", "mod_040", "mod_041", "mod_042"]
+  },
+  "weapon_090": {
+    "Receiver": ["mod_004", "mod_005", "mod_009"],
+    "Barrel": ["mod_017", "mod_018"],
+    "Stock": ["mod_028", "mod_030"],
+    "Sights": ["mod_033", "mod_034", "mod_035", "mod_036", "mod_037", "mod_038"],
+    "Muzzle": ["mod_039", "mod_040", "mod_041", "mod_042"]
+  },
+  "weapon_091": {
+    "Receiver": ["mod_004", "mod_005", "mod_009"],
+    "Barrel": ["mod_017", "mod_018"],
+    "Stock": ["mod_028", "mod_030"],
+    "Sights": ["mod_033", "mod_034", "mod_035", "mod_036", "mod_037", "mod_038"],
+    "Muzzle": ["mod_039", "mod_040", "mod_041", "mod_042"]
+  },
+  "weapon_092": {
+    "Receiver": ["mod_004", "mod_005", "mod_009"],
+    "Barrel": ["mod_017", "mod_018"],
+    "Stock": ["mod_028", "mod_030"],
+    "Sights": ["mod_033", "mod_034", "mod_035", "mod_036", "mod_037", "mod_038"],
+    "Muzzle": ["mod_039", "mod_040", "mod_041", "mod_042"]
+  },
+  "weapon_093": {
+    "Receiver": ["mod_004", "mod_005", "mod_009"],
+    "Barrel": ["mod_017", "mod_018"],
+    "Stock": ["mod_028", "mod_030"],
+    "Sights": ["mod_033", "mod_034", "mod_035", "mod_036", "mod_037", "mod_038"],
+    "Muzzle": ["mod_039", "mod_040", "mod_041", "mod_042"]
+  },
+  "weapon_094": {
+    "Receiver": ["mod_004", "mod_005", "mod_009"],
+    "Barrel": ["mod_017", "mod_018"],
+    "Stock": ["mod_028", "mod_030"],
+    "Sights": ["mod_033", "mod_034", "mod_035", "mod_036", "mod_037", "mod_038"],
+    "Muzzle": ["mod_039", "mod_040", "mod_041", "mod_042"]
+  },
+  "weapon_095": {
+    "Receiver": ["mod_004", "mod_005", "mod_009"],
+    "Barrel": ["mod_017", "mod_018"],
+    "Stock": ["mod_028", "mod_030"],
+    "Sights": ["mod_033", "mod_034", "mod_035", "mod_036", "mod_037", "mod_038"],
+    "Muzzle": ["mod_039", "mod_040", "mod_041", "mod_042"]
+  },
+  "weapon_096": {
+    "Receiver": ["mod_004", "mod_005", "mod_009"],
+    "Barrel": ["mod_017", "mod_018"],
+    "Stock": ["mod_028", "mod_030"],
+    "Sights": ["mod_033", "mod_034", "mod_035", "mod_036", "mod_037", "mod_038"],
+    "Muzzle": ["mod_039", "mod_040", "mod_041", "mod_042"]
+  },
+  "weapon_097": {
+    "Receiver": ["mod_004", "mod_005", "mod_009"],
+    "Barrel": ["mod_017", "mod_018"],
+    "Stock": ["mod_028", "mod_030"],
+    "Sights": ["mod_033", "mod_034", "mod_035", "mod_036", "mod_037", "mod_038"],
+    "Muzzle": ["mod_039", "mod_040", "mod_041", "mod_042"]
+  },
+  "weapon_098": {
+    "Receiver": ["mod_004", "mod_005", "mod_009"],
+    "Barrel": ["mod_017", "mod_018"],
+    "Stock": ["mod_028", "mod_030"],
+    "Sights": ["mod_033", "mod_034", "mod_035", "mod_036", "mod_037", "mod_038"],
+    "Muzzle": ["mod_039", "mod_040", "mod_041", "mod_042"]
+  },
+  "weapon_099": {
+    "Receiver": ["mod_004", "mod_005", "mod_009"],
+    "Barrel": ["mod_017", "mod_018"],
+    "Stock": ["mod_028", "mod_030"],
+    "Sights": ["mod_033", "mod_034", "mod_035", "mod_036", "mod_037", "mod_038"],
+    "Muzzle": ["mod_039", "mod_040", "mod_041", "mod_042"]
+  },
+  "weapon_100": {
+    "Receiver": ["mod_004", "mod_005", "mod_009"],
+    "Barrel": ["mod_017", "mod_018"],
+    "Stock": ["mod_028", "mod_030"],
+    "Sights": ["mod_033", "mod_034", "mod_035", "mod_036", "mod_037", "mod_038"],
+    "Muzzle": ["mod_039", "mod_040", "mod_041", "mod_042"]
+  }
+}

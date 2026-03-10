@@ -1,0 +1,2676 @@
+[
+  {
+    "slug": ".44_pistol",
+    "kind": "small_guns",
+    "name": {
+      "en": ".44 Pistol",
+      "ru": "Револьвер .44"
+    },
+    "data": {
+      "weight": 4,
+      "price": 99,
+      "rarity": 2
+    },
+    "info": {
+      "rating": 6,
+      "effects": [
+        "vicious"
+      ],
+      "damage": [
+        "physical"
+      ],
+      "rate": 1,
+      "range": "close",
+      "qualities": [
+        "close_quarters"
+      ]
+    }
+  },
+  {
+    "slug": "10mm_pistol",
+    "kind": "small_guns",
+    "name": {
+      "en": "10mm Pistol",
+      "ru": "Пистолет 10мм"
+    },
+    "data": {
+      "weight": 4,
+      "price": 50,
+      "rarity": 1
+    },
+    "info": {
+      "rating": 4,
+      "effects": [],
+      "damage": [
+        "physical"
+      ],
+      "rate": 2,
+      "range": "close",
+      "qualities": [
+        "close_quarters",
+        "reliable"
+      ]
+    }
+  },
+  {
+    "slug": "flare_gun",
+    "kind": "small_guns",
+    "name": {
+      "en": "Flare Gun",
+      "ru": "Сигнальный пистолет"
+    },
+    "data": {
+      "weight": 2,
+      "price": 50,
+      "rarity": 1
+    },
+    "info": {
+      "rating": 3,
+      "effects": [],
+      "damage": [
+        "physical"
+      ],
+      "rate": 0,
+      "range": "medium",
+      "qualities": [
+        "reliable"
+      ]
+    }
+  },
+  {
+    "slug": "assault_rifle",
+    "kind": "small_guns",
+    "name": {
+      "en": "Assault Rifle",
+      "ru": "Штурмовая винтовка"
+    },
+    "data": {
+      "weight": 13,
+      "price": 144,
+      "rarity": 2
+    },
+    "info": {
+      "rating": 5,
+      "effects": [
+        "burst"
+      ],
+      "damage": [
+        "physical"
+      ],
+      "rate": 2,
+      "range": "medium",
+      "qualities": [
+        "two_handed"
+      ]
+    }
+  },
+  {
+    "slug": "combat_rifle",
+    "kind": "small_guns",
+    "name": {
+      "en": "Combat Rifle",
+      "ru": "Боевая винтовка"
+    },
+    "data": {
+      "weight": 11,
+      "price": 117,
+      "rarity": 2
+    },
+    "info": {
+      "rating": 5,
+      "effects": [],
+      "damage": [
+        "physical"
+      ],
+      "rate": 2,
+      "range": "medium",
+      "qualities": [
+        "two_handed"
+      ]
+    }
+  },
+  {
+    "slug": "gauss_rifle",
+    "kind": "small_guns",
+    "name": {
+      "en": "Gauss Rifle",
+      "ru": "Гаусс-винтовка"
+    },
+    "data": {
+      "weight": 16,
+      "price": 228,
+      "rarity": 5
+    },
+    "info": {
+      "rating": 10,
+      "effects": [
+        "piercing-1"
+      ],
+      "damage": [
+        "physical"
+      ],
+      "rate": 1,
+      "range": "long",
+      "qualities": [
+        "two_handed"
+      ]
+    }
+  },
+  {
+    "slug": "hunting_rifle",
+    "kind": "small_guns",
+    "name": {
+      "en": "Hunting Rifle",
+      "ru": "Охотничья винтовка"
+    },
+    "data": {
+      "weight": 10,
+      "price": 55,
+      "rarity": 2
+    },
+    "info": {
+      "rating": 6,
+      "effects": [
+        "piercing-1"
+      ],
+      "damage": [
+        "physical"
+      ],
+      "rate": 0,
+      "range": "medium",
+      "qualities": [
+        "two_handed"
+      ]
+    }
+  },
+  {
+    "slug": "submachine_gun",
+    "kind": "small_guns",
+    "name": {
+      "en": "Submachine Gun",
+      "ru": "Пистолет-пулемет"
+    },
+    "data": {
+      "weight": 12,
+      "price": 109,
+      "rarity": 1
+    },
+    "info": {
+      "rating": 3,
+      "effects": [
+        "burst"
+      ],
+      "damage": [
+        "physical"
+      ],
+      "rate": 3,
+      "range": "close",
+      "qualities": [
+        "inaccurate",
+        "two_handed"
+      ]
+    }
+  },
+  {
+    "slug": "combat_shotgun",
+    "kind": "small_guns",
+    "name": {
+      "en": "Combat Shotgun",
+      "ru": "Боевой дробовик"
+    },
+    "data": {
+      "weight": 11,
+      "price": 87,
+      "rarity": 2
+    },
+    "info": {
+      "rating": 5,
+      "effects": [
+        "spread"
+      ],
+      "damage": [
+        "physical"
+      ],
+      "rate": 2,
+      "range": "close",
+      "qualities": [
+        "inaccurate",
+        "two_handed"
+      ]
+    }
+  },
+  {
+    "slug": "double_barrel_shotgun",
+    "kind": "small_guns",
+    "name": {
+      "en": "Double-Barrel Shotgun",
+      "ru": "Двуствольный дробовик"
+    },
+    "data": {
+      "weight": 9,
+      "price": 39,
+      "rarity": 1
+    },
+    "info": {
+      "rating": 5,
+      "effects": [
+        "spread",
+        "vicious"
+      ],
+      "damage": [
+        "physical"
+      ],
+      "rate": 0,
+      "range": "close",
+      "qualities": [
+        "inaccurate",
+        "two_handed"
+      ]
+    }
+  },
+  {
+    "slug": "pipe_bolt_action",
+    "kind": "small_guns",
+    "name": {
+      "en": "Pipe Bolt-Action",
+      "ru": "Гладкоствол с болтовым затвором"
+    },
+    "data": {
+      "weight": 3,
+      "price": 30,
+      "rarity": 0
+    },
+    "info": {
+      "rating": 5,
+      "effects": [
+        "piercing-1"
+      ],
+      "damage": [
+        "physical"
+      ],
+      "rate": 0,
+      "range": "close",
+      "qualities": [
+        "unreliable"
+      ]
+    }
+  },
+  {
+    "slug": "pipe_gun",
+    "kind": "small_guns",
+    "name": {
+      "en": "Pipe Gun",
+      "ru": "Гладкоствольный пистолет"
+    },
+    "data": {
+      "weight": 2,
+      "price": 30,
+      "rarity": 0
+    },
+    "info": {
+      "rating": 3,
+      "effects": [],
+      "damage": [
+        "physical"
+      ],
+      "rate": 2,
+      "range": "close",
+      "qualities": [
+        "close_quarters",
+        "unreliable"
+      ]
+    }
+  },
+  {
+    "slug": "pipe_revolver",
+    "kind": "small_guns",
+    "name": {
+      "en": "Pipe Revolver",
+      "ru": "Гладкоствольный револьвер"
+    },
+    "data": {
+      "weight": 4,
+      "price": 25,
+      "rarity": 0
+    },
+    "info": {
+      "rating": 4,
+      "effects": [],
+      "damage": [
+        "physical"
+      ],
+      "rate": 1,
+      "range": "close",
+      "qualities": [
+        "close_quarters",
+        "unreliable"
+      ]
+    }
+  },
+  {
+    "slug": "railway_rifle",
+    "kind": "small_guns",
+    "name": {
+      "en": "Railway Rifle",
+      "ru": "Железнодорожная винтовка"
+    },
+    "data": {
+      "weight": 14,
+      "price": 290,
+      "rarity": 4
+    },
+    "info": {
+      "rating": 10,
+      "effects": [
+        "breaking"
+      ],
+      "damage": [
+        "physical"
+      ],
+      "rate": 0,
+      "range": "medium",
+      "qualities": [
+        "debilitating",
+        "two_handed",
+        "unreliable"
+      ]
+    }
+  },
+  {
+    "slug": "syringer",
+    "kind": "small_guns",
+    "name": {
+      "en": "Syringer",
+      "ru": "Инъекционный пистолет"
+    },
+    "data": {
+      "weight": 6,
+      "price": 132,
+      "rarity": 2
+    },
+    "info": {
+      "rating": 3,
+      "effects": [],
+      "damage": [
+        "physical"
+      ],
+      "rate": 0,
+      "range": "medium",
+      "qualities": [
+        "two_handed"
+      ]
+    }
+  },
+  {
+    "slug": "institute_laser",
+    "kind": "energy_weapon",
+    "name": {
+      "en": "Institute Laser",
+      "ru": "Лазер института"
+    },
+    "data": {
+      "weight": 4,
+      "price": 50,
+      "rarity": 2
+    },
+    "info": {
+      "rating": 3,
+      "effects": [
+        "burst"
+      ],
+      "damage": [
+        "energy"
+      ],
+      "rate": 3,
+      "range": "close",
+      "qualities": [
+        "close_quarters",
+        "inaccurate"
+      ]
+    }
+  },
+  {
+    "slug": "laser_musket",
+    "kind": "energy_weapon",
+    "name": {
+      "en": "Laser Musket",
+      "ru": "Лазерный мушкет"
+    },
+    "data": {
+      "weight": 13,
+      "price": 57,
+      "rarity": 1
+    },
+    "info": {
+      "rating": 5,
+      "effects": [
+        "piercing-1"
+      ],
+      "damage": [
+        "energy"
+      ],
+      "rate": 0,
+      "range": "medium",
+      "qualities": [
+        "two_handed",
+        "crank_2"
+      ]
+    }
+  },
+  {
+    "slug": "laser_gun",
+    "kind": "energy_weapon",
+    "name": {
+      "en": "Laser Gun",
+      "ru": "Лазерный пистолет"
+    },
+    "data": {
+      "weight": 4,
+      "price": 69,
+      "rarity": 2
+    },
+    "info": {
+      "rating": 4,
+      "effects": [
+        "piercing-1"
+      ],
+      "damage": [
+        "energy"
+      ],
+      "rate": 2,
+      "range": "close",
+      "qualities": [
+        "close_quarters"
+      ]
+    }
+  },
+  {
+    "slug": "plasma_gun",
+    "kind": "energy_weapon",
+    "name": {
+      "en": "Plasma Gun",
+      "ru": "Плазменный пистолет"
+    },
+    "data": {
+      "weight": 4,
+      "price": 123,
+      "rarity": 3
+    },
+    "info": {
+      "rating": 6,
+      "effects": [],
+      "damage": [
+        "physical",
+        "energy"
+      ],
+      "rate": 1,
+      "range": "close",
+      "qualities": [
+        "close_quarters"
+      ]
+    }
+  },
+  {
+    "slug": "gamma_gun",
+    "kind": "energy_weapon",
+    "name": {
+      "en": "Gamma Gun",
+      "ru": "Гамма-пушка"
+    },
+    "data": {
+      "weight": 3,
+      "price": 15,
+      "rarity": 5
+    },
+    "info": {
+      "rating": 3,
+      "effects": [
+        "piercing-1",
+        "stun"
+      ],
+      "damage": [
+        "radiation"
+      ],
+      "rate": 1,
+      "range": "medium",
+      "qualities": [
+        "blast",
+        "inaccurate"
+      ]
+    }
+  },
+  {
+    "slug": "fat_man",
+    "kind": "big_guns",
+    "name": {
+      "en": "Fat Man",
+      "ru": "Толстяк"
+    },
+    "data": {
+      "weight": 31,
+      "price": 512,
+      "rarity": 4
+    },
+    "info": {
+      "rating": 21,
+      "effects": [
+        "breaking",
+        "radioactive",
+        "vicious"
+      ],
+      "damage": [
+        "physical"
+      ],
+      "rate": 0,
+      "range": "medium",
+      "qualities": [
+        "blast",
+        "inaccurate",
+        "two_handed"
+      ]
+    }
+  },
+  {
+    "slug": "flamer",
+    "kind": "big_guns",
+    "name": {
+      "en": "Flamer",
+      "ru": "Огнемёт"
+    },
+    "data": {
+      "weight": 16,
+      "price": 137,
+      "rarity": 3
+    },
+    "info": {
+      "rating": 3,
+      "effects": [
+        "burst",
+        "persistent",
+        "spread"
+      ],
+      "damage": [
+        "energy"
+      ],
+      "rate": 4,
+      "range": "close",
+      "qualities": [
+        "debilitating",
+        "inaccurate",
+        "two_handed"
+      ]
+    }
+  },
+  {
+    "slug": "gatling_laser",
+    "kind": "big_guns",
+    "name": {
+      "en": "Gatling Laser",
+      "ru": "Лазер Гатлинга"
+    },
+    "data": {
+      "weight": 19,
+      "price": 804,
+      "rarity": 3
+    },
+    "info": {
+      "rating": 3,
+      "effects": [
+        "burst",
+        "piercing-1"
+      ],
+      "damage": [
+        "energy"
+      ],
+      "rate": 6,
+      "range": "medium",
+      "qualities": [
+        "gatling",
+        "inaccurate",
+        "two_handed"
+      ]
+    }
+  },
+  {
+    "slug": "heavy_incinerator",
+    "kind": "big_guns",
+    "name": {
+      "en": "Heavy Incinerator",
+      "ru": "Тяжелый инсинератор"
+    },
+    "data": {
+      "weight": 20,
+      "price": 350,
+      "rarity": 4
+    },
+    "info": {
+      "rating": 5,
+      "effects": [
+        "burst",
+        "persistent",
+        "spread"
+      ],
+      "damage": [
+        "energy"
+      ],
+      "rate": 3,
+      "range": "medium",
+      "qualities": [
+        "debilitating",
+        "two_handed"
+      ]
+    }
+  },
+  {
+    "slug": "junk_jet",
+    "kind": "big_guns",
+    "name": {
+      "en": "Junk Jet",
+      "ru": "Хламотрон"
+    },
+    "data": {
+      "weight": 30,
+      "price": 285,
+      "rarity": 3
+    },
+    "info": {
+      "rating": 6,
+      "effects": [],
+      "damage": [
+        "physical"
+      ],
+      "rate": 1,
+      "range": "medium",
+      "qualities": [
+        "two_handed"
+      ]
+    }
+  },
+  {
+    "slug": "minigun",
+    "kind": "big_guns",
+    "name": {
+      "en": "Minigun",
+      "ru": "Миниган"
+    },
+    "data": {
+      "weight": 27,
+      "price": 382,
+      "rarity": 2
+    },
+    "info": {
+      "rating": 3,
+      "effects": [
+        "burst",
+        "spread"
+      ],
+      "damage": [
+        "physical"
+      ],
+      "rate": 5,
+      "range": "medium",
+      "qualities": [
+        "gatling",
+        "inaccurate",
+        "two_handed"
+      ]
+    }
+  },
+  {
+    "slug": "missile_launcher",
+    "kind": "big_guns",
+    "name": {
+      "en": "Missile Launcher",
+      "ru": "Ракетная установка"
+    },
+    "data": {
+      "weight": 21,
+      "price": 314,
+      "rarity": 4
+    },
+    "info": {
+      "rating": 11,
+      "effects": [],
+      "damage": [
+        "physical"
+      ],
+      "rate": 0,
+      "range": "long",
+      "qualities": [
+        "blast",
+        "two_handed"
+      ]
+    }
+  },
+  {
+    "slug": "sword",
+    "kind": "melee_weapons",
+    "name": {
+      "en": "Sword",
+      "ru": "Меч"
+    },
+    "data": {
+      "weight": 3,
+      "price": 50,
+      "rarity": 2
+    },
+    "info": {
+      "rating": 4,
+      "effects": [
+        "piercing-1"
+      ],
+      "damage": [
+        "physical"
+      ],
+      "qualities": [
+        "parry"
+      ]
+    }
+  },
+  {
+    "slug": "combat_knife",
+    "kind": "melee_weapons",
+    "name": {
+      "en": "Combat Knife",
+      "ru": "Боевой нож"
+    },
+    "data": {
+      "weight": 1,
+      "price": 25,
+      "rarity": 1
+    },
+    "info": {
+      "rating": 3,
+      "effects": [
+        "piercing-1"
+      ],
+      "damage": [
+        "physical"
+      ],
+      "qualities": []
+    }
+  },
+  {
+    "slug": "machete",
+    "kind": "melee_weapons",
+    "name": {
+      "en": "Machete",
+      "ru": "Мачете"
+    },
+    "data": {
+      "weight": 2,
+      "price": 25,
+      "rarity": 1
+    },
+    "info": {
+      "rating": 3,
+      "effects": [
+        "piercing-1"
+      ],
+      "damage": [
+        "physical"
+      ],
+      "qualities": []
+    }
+  },
+  {
+    "slug": "ripper",
+    "kind": "melee_weapons",
+    "name": {
+      "en": "Ripper",
+      "ru": "Потрошитель"
+    },
+    "data": {
+      "weight": 6,
+      "price": 50,
+      "rarity": 2
+    },
+    "info": {
+      "rating": 4,
+      "effects": [
+        "vicious"
+      ],
+      "damage": [
+        "physical"
+      ],
+      "qualities": []
+    }
+  },
+  {
+    "slug": "shishkebab",
+    "kind": "melee_weapons",
+    "name": {
+      "en": "Shishkebab",
+      "ru": "Шишкебаб"
+    },
+    "data": {
+      "weight": 3,
+      "price": 200,
+      "rarity": 3
+    },
+    "info": {
+      "rating": 5,
+      "effects": [
+        "piercing-1"
+      ],
+      "damage": [
+        "energy"
+      ],
+      "qualities": [
+        "parry"
+      ]
+    }
+  },
+  {
+    "slug": "switchblade",
+    "kind": "melee_weapons",
+    "name": {
+      "en": "Switchblade",
+      "ru": "Складной нож"
+    },
+    "data": {
+      "weight": 1,
+      "price": 20,
+      "rarity": 0
+    },
+    "info": {
+      "rating": 2,
+      "effects": [
+        "piercing-1"
+      ],
+      "damage": [
+        "physical"
+      ],
+      "qualities": [
+        "concealed"
+      ]
+    }
+  },
+  {
+    "slug": "baseball_bat",
+    "kind": "melee_weapons",
+    "name": {
+      "en": "Baseball Bat",
+      "ru": "Бейсбольная бита"
+    },
+    "data": {
+      "weight": 3,
+      "price": 25,
+      "rarity": 1
+    },
+    "info": {
+      "rating": 4,
+      "effects": [],
+      "damage": [
+        "physical"
+      ],
+      "qualities": [
+        "two_handed"
+      ]
+    }
+  },
+  {
+    "slug": "aluminum_baseball_bat",
+    "kind": "melee_weapons",
+    "name": {
+      "en": "Aluminum Baseball Bat",
+      "ru": "Алюминиевая бита"
+    },
+    "data": {
+      "weight": 2,
+      "price": 32,
+      "rarity": 2
+    },
+    "info": {
+      "rating": 5,
+      "effects": [],
+      "damage": [
+        "physical"
+      ],
+      "qualities": [
+        "two_handed"
+      ]
+    }
+  },
+  {
+    "slug": "board",
+    "kind": "melee_weapons",
+    "name": {
+      "en": "Board",
+      "ru": "Дрын"
+    },
+    "data": {
+      "weight": 3,
+      "price": 20,
+      "rarity": 0
+    },
+    "info": {
+      "rating": 4,
+      "effects": [],
+      "damage": [
+        "physical"
+      ],
+      "qualities": [
+        "two_handed"
+      ]
+    }
+  },
+  {
+    "slug": "lead_pipe",
+    "kind": "melee_weapons",
+    "name": {
+      "en": "Lead Pipe",
+      "ru": "Свинцовая труба"
+    },
+    "data": {
+      "weight": 3,
+      "price": 15,
+      "rarity": 0
+    },
+    "info": {
+      "rating": 3,
+      "effects": [],
+      "damage": [
+        "physical"
+      ],
+      "qualities": []
+    }
+  },
+  {
+    "slug": "pipe_wrench",
+    "kind": "melee_weapons",
+    "name": {
+      "en": "Pipe Wrench",
+      "ru": "Разводной ключ"
+    },
+    "data": {
+      "weight": 2,
+      "price": 30,
+      "rarity": 1
+    },
+    "info": {
+      "rating": 3,
+      "effects": [],
+      "damage": [
+        "physical"
+      ],
+      "qualities": []
+    }
+  },
+  {
+    "slug": "pool_cue",
+    "kind": "melee_weapons",
+    "name": {
+      "en": "Pool Cue",
+      "ru": "Бильярдный кий"
+    },
+    "data": {
+      "weight": 1,
+      "price": 10,
+      "rarity": 0
+    },
+    "info": {
+      "rating": 3,
+      "effects": [],
+      "damage": [
+        "physical"
+      ],
+      "qualities": [
+        "two_handed"
+      ]
+    }
+  },
+  {
+    "slug": "rolling_pin",
+    "kind": "melee_weapons",
+    "name": {
+      "en": "Rolling Pin",
+      "ru": "Скалка"
+    },
+    "data": {
+      "weight": 1,
+      "price": 10,
+      "rarity": 0
+    },
+    "info": {
+      "rating": 3,
+      "effects": [],
+      "damage": [
+        "physical"
+      ],
+      "qualities": []
+    }
+  },
+  {
+    "slug": "baton",
+    "kind": "melee_weapons",
+    "name": {
+      "en": "Baton",
+      "ru": "Полицейская дубинка"
+    },
+    "data": {
+      "weight": 2,
+      "price": 15,
+      "rarity": 1
+    },
+    "info": {
+      "rating": 3,
+      "effects": [],
+      "damage": [
+        "physical"
+      ],
+      "qualities": []
+    }
+  },
+  {
+    "slug": "sledgehammer",
+    "kind": "melee_weapons",
+    "name": {
+      "en": "Sledgehammer",
+      "ru": "Кувалда"
+    },
+    "data": {
+      "weight": 12,
+      "price": 40,
+      "rarity": 2
+    },
+    "info": {
+      "rating": 5,
+      "effects": [],
+      "damage": [
+        "physical"
+      ],
+      "qualities": []
+    }
+  },
+  {
+    "slug": "super_sledge",
+    "kind": "melee_weapons",
+    "name": {
+      "en": "Super Sledge",
+      "ru": "Супер-кувалда"
+    },
+    "data": {
+      "weight": 20,
+      "price": 180,
+      "rarity": 3
+    },
+    "info": {
+      "rating": 6,
+      "effects": [
+        "breaking"
+      ],
+      "damage": [
+        "physical"
+      ],
+      "qualities": [
+        "two_handed"
+      ]
+    }
+  },
+  {
+    "slug": "tire_iron",
+    "kind": "melee_weapons",
+    "name": {
+      "en": "Tire Iron",
+      "ru": "Балонный ключ"
+    },
+    "data": {
+      "weight": 2,
+      "price": 25,
+      "rarity": 1
+    },
+    "info": {
+      "rating": 3,
+      "effects": [],
+      "damage": [
+        "physical"
+      ],
+      "qualities": []
+    }
+  },
+  {
+    "slug": "walking_cane",
+    "kind": "melee_weapons",
+    "name": {
+      "en": "Walking Cane",
+      "ru": "Трость"
+    },
+    "data": {
+      "weight": 2,
+      "price": 10,
+      "rarity": 0
+    },
+    "info": {
+      "rating": 3,
+      "effects": [],
+      "damage": [
+        "physical"
+      ],
+      "qualities": []
+    }
+  },
+  {
+    "slug": "boxing_glove",
+    "kind": "unarmed",
+    "name": {
+      "en": "Boxing Glove",
+      "ru": "Боксерские перчатки"
+    },
+    "data": {
+      "weight": 1,
+      "price": 10,
+      "rarity": 1
+    },
+    "info": {
+      "rating": 3,
+      "effects": [
+        "stun"
+      ],
+      "damage": [
+        "physical"
+      ],
+      "qualities": []
+    }
+  },
+  {
+    "slug": "deathclaw_gauntlet",
+    "kind": "unarmed",
+    "name": {
+      "en": "Deathclaw Gauntlet",
+      "ru": "Перчатка когтя смерти"
+    },
+    "data": {
+      "weight": 10,
+      "price": 75,
+      "rarity": 3
+    },
+    "info": {
+      "rating": 5,
+      "effects": [
+        "piercing-1"
+      ],
+      "damage": [
+        "physical"
+      ],
+      "qualities": []
+    }
+  },
+  {
+    "slug": "knuckles",
+    "kind": "unarmed",
+    "name": {
+      "en": "Knuckles",
+      "ru": "Кастет"
+    },
+    "data": {
+      "weight": 1,
+      "price": 10,
+      "rarity": 1
+    },
+    "info": {
+      "rating": 3,
+      "effects": [],
+      "damage": [
+        "physical"
+      ],
+      "qualities": [
+        "concealed"
+      ]
+    }
+  },
+  {
+    "slug": "power_fist",
+    "kind": "unarmed",
+    "name": {
+      "en": "Power Fist",
+      "ru": "Силовой кулак"
+    },
+    "data": {
+      "weight": 4,
+      "price": 100,
+      "rarity": 2
+    },
+    "info": {
+      "rating": 4,
+      "effects": [
+        "stun"
+      ],
+      "damage": [
+        "physical"
+      ],
+      "qualities": []
+    }
+  },
+  {
+    "slug": "throwing_knives",
+    "kind": "throwing",
+    "name": {
+      "en": "Throwing Knives",
+      "ru": "Метательные ножи"
+    },
+    "data": {
+      "weight": 1,
+      "price": 10,
+      "rarity": 1
+    },
+    "info": {
+      "rating": 3,
+      "effects": [
+        "piercing-1"
+      ],
+      "damage": [
+        "physical"
+      ],
+      "range": "close",
+      "qualities": [
+        "concealed",
+        "supressed"
+      ]
+    }
+  },
+  {
+    "slug": "tomahawk",
+    "kind": "throwing",
+    "name": {
+      "en": "Tomahawk",
+      "ru": "Томагавк"
+    },
+    "data": {
+      "weight": 1,
+      "price": 15,
+      "rarity": 2
+    },
+    "info": {
+      "rating": 4,
+      "effects": [
+        "piercing-1"
+      ],
+      "damage": [
+        "physical"
+      ],
+      "range": "close",
+      "qualities": [
+        "supressed"
+      ]
+    }
+  },
+  {
+    "slug": "javelin",
+    "kind": "throwing",
+    "name": {
+      "en": "Javelin",
+      "ru": "Дротик"
+    },
+    "data": {
+      "weight": 4,
+      "price": 10,
+      "rarity": 1
+    },
+    "info": {
+      "rating": 4,
+      "effects": [
+        "piercing-1"
+      ],
+      "damage": [
+        "physical"
+      ],
+      "range": "medium",
+      "qualities": [
+        "supressed"
+      ]
+    }
+  },
+  {
+    "slug": "baseball_grenade",
+    "kind": "explosive",
+    "name": {
+      "en": "Baseball Grenade",
+      "ru": "Бейсбольная граната"
+    },
+    "data": {
+      "weight": 1,
+      "price": 40,
+      "rarity": 1
+    },
+    "info": {
+      "rating": 5,
+      "effects": [],
+      "damage": [
+        "physical"
+      ],
+      "range": "medium",
+      "qualities": [
+        "blast"
+      ]
+    }
+  },
+  {
+    "slug": "frag_grenade",
+    "kind": "explosive",
+    "name": {
+      "en": "Frag Grenade",
+      "ru": "Осколочная граната"
+    },
+    "data": {
+      "weight": 1,
+      "price": 50,
+      "rarity": 2
+    },
+    "info": {
+      "rating": 6,
+      "effects": [],
+      "damage": [
+        "physical"
+      ],
+      "range": "medium",
+      "qualities": [
+        "blast"
+      ]
+    }
+  },
+  {
+    "slug": "molotov_cocktail",
+    "kind": "explosive",
+    "name": {
+      "en": "Molotov Cocktail",
+      "ru": "Коктейль Молотова"
+    },
+    "data": {
+      "weight": 1,
+      "price": 20,
+      "rarity": 1
+    },
+    "info": {
+      "rating": 4,
+      "effects": [
+        "persistent",
+        "breaking"
+      ],
+      "damage": [
+        "energy"
+      ],
+      "range": "medium",
+      "qualities": [
+        "blast"
+      ]
+    }
+  },
+  {
+    "slug": "nuka_grenade",
+    "kind": "explosive",
+    "name": {
+      "en": "Nuka Grenade",
+      "ru": "Ядерная граната"
+    },
+    "data": {
+      "weight": 1,
+      "price": 100,
+      "rarity": 4
+    },
+    "info": {
+      "rating": 9,
+      "effects": [
+        "radioactive",
+        "vicious"
+      ],
+      "damage": [
+        "energy"
+      ],
+      "range": "medium",
+      "qualities": [
+        "blast"
+      ]
+    }
+  },
+  {
+    "slug": "plasma_grenade",
+    "kind": "explosive",
+    "name": {
+      "en": "Plasma Grenade",
+      "ru": "Плазменная граната"
+    },
+    "data": {
+      "weight": 1,
+      "price": 135,
+      "rarity": 3
+    },
+    "info": {
+      "rating": 9,
+      "effects": [],
+      "damage": [
+        "energy"
+      ],
+      "range": "medium",
+      "qualities": [
+        "blast"
+      ]
+    }
+  },
+  {
+    "slug": "pulse_grenade",
+    "kind": "explosive",
+    "name": {
+      "en": "Pulse Grenade",
+      "ru": "Импульсная граната"
+    },
+    "data": {
+      "weight": 1,
+      "price": 100,
+      "rarity": 3
+    },
+    "info": {
+      "rating": 6,
+      "effects": [
+        "stun"
+      ],
+      "damage": [
+        "energy"
+      ],
+      "range": "medium",
+      "qualities": [
+        "blast"
+      ]
+    }
+  },
+  {
+    "slug": "bottlecap_mine",
+    "kind": "explosive",
+    "name": {
+      "en": "Bottlecap Mine",
+      "ru": "Крышкомина"
+    },
+    "data": {
+      "weight": 1,
+      "price": 75,
+      "rarity": 2
+    },
+    "info": {
+      "rating": 6,
+      "effects": [],
+      "damage": [
+        "physical"
+      ],
+      "qualities": [
+        "blast",
+        "mine"
+      ]
+    }
+  },
+  {
+    "slug": "frag_mine",
+    "kind": "explosive",
+    "name": {
+      "en": "Frag Mine",
+      "ru": "Осколочная мина"
+    },
+    "data": {
+      "weight": 1,
+      "price": 50,
+      "rarity": 2
+    },
+    "info": {
+      "rating": 6,
+      "effects": [],
+      "damage": [
+        "physical"
+      ],
+      "qualities": [
+        "blast",
+        "mine"
+      ]
+    }
+  },
+  {
+    "slug": "nuke_mine",
+    "kind": "explosive",
+    "name": {
+      "en": "Nuke Mine",
+      "ru": "Ядерная мина"
+    },
+    "data": {
+      "weight": 1,
+      "price": 100,
+      "rarity": 4
+    },
+    "info": {
+      "rating": 9,
+      "effects": [
+        "breaking",
+        "radioactive",
+        "vicious"
+      ],
+      "damage": [
+        "energy"
+      ],
+      "qualities": [
+        "blast"
+      ]
+    }
+  },
+  {
+    "slug": "plasma_mine",
+    "kind": "explosive",
+    "name": {
+      "en": "Plasma Mine",
+      "ru": "Плазменная мина"
+    },
+    "data": {
+      "weight": 1,
+      "price": 135,
+      "rarity": 3
+    },
+    "info": {
+      "rating": 9,
+      "effects": [],
+      "damage": [
+        "energy"
+      ],
+      "qualities": [
+        "blast"
+      ]
+    }
+  },
+  {
+    "slug": "m79_grenade_launcher",
+    "kind": "small_guns",
+    "name": {
+      "en": "M79 Grenade Launcher",
+      "ru": "Гранатомет M79"
+    },
+    "data": {
+      "weight": 6,
+      "price": 300,
+      "rarity": 3
+    },
+    "info": {
+      "rating": 6,
+      "effects": [
+        "blast"
+      ],
+      "damage": [
+        "physical"
+      ],
+      "rate": 0,
+      "range": "long",
+      "qualities": [
+        "blast",
+        "inaccurate",
+        "slow_load",
+        "two_handed"
+      ]
+    }
+  },
+  {
+    "slug": "acid_soaker",
+    "kind": "energy_weapon",
+    "name": {
+      "en": "Acid Soaker",
+      "ru": "Кислоплюй"
+    },
+    "data": {
+      "weight": 3,
+      "price": 125,
+      "rarity": 3
+    },
+    "info": {
+      "rating": 3,
+      "effects": [
+        "breaking",
+        "persistent"
+      ],
+      "damage": [
+        "poison"
+      ],
+      "rate": 2,
+      "range": "close",
+      "qualities": [
+        "debilitating",
+        "inaccurate"
+      ]
+    }
+  },
+  {
+    "slug": "alien_blaster",
+    "kind": "energy_weapon",
+    "name": {
+      "en": "Alien Blaster",
+      "ru": "Бластер пришельцев"
+    },
+    "data": {
+      "weight": 2,
+      "price": 90,
+      "rarity": 5
+    },
+    "info": {
+      "rating": 5,
+      "effects": [
+        "vicious"
+      ],
+      "damage": [
+        "energy",
+        "radiation"
+      ],
+      "rate": 2,
+      "range": "close",
+      "qualities": [
+        "close_quarters",
+        "inaccurate"
+      ]
+    }
+  },
+  {
+    "slug": "assaultron_head_laser",
+    "kind": "energy_weapon",
+    "name": {
+      "en": "Assaultron Head Laser",
+      "ru": "Головной лазер штурмотрона"
+    },
+    "data": {
+      "weight": 8,
+      "price": 115,
+      "rarity": 4
+    },
+    "info": {
+      "rating": 5,
+      "effects": [
+        "piercing-1"
+      ],
+      "damage": [
+        "energy"
+      ],
+      "rate": 0,
+      "range": "close",
+      "qualities": [
+        "crank_2"
+      ]
+    }
+  },
+  {
+    "slug": "mesmetron",
+    "kind": "energy_weapon",
+    "name": {
+      "en": "Mesmetron",
+      "ru": "Гипнотрон"
+    },
+    "data": {
+      "weight": 2,
+      "price": 120,
+      "rarity": 4
+    },
+    "info": {
+      "rating": 3,
+      "effects": [
+        "stun"
+      ],
+      "damage": [
+        "energy"
+      ],
+      "rate": 1,
+      "range": "medium",
+      "qualities": []
+    }
+  },
+  {
+    "slug": "tesla_rifle",
+    "kind": "energy_weapon",
+    "name": {
+      "en": "Tesla Rifle",
+      "ru": "Винтовка Теслы"
+    },
+    "data": {
+      "weight": 8,
+      "price": 180,
+      "rarity": 4
+    },
+    "info": {
+      "rating": 4,
+      "effects": [
+        "arc"
+      ],
+      "damage": [
+        "energy"
+      ],
+      "rate": 2,
+      "range": "medium",
+      "qualities": [
+        "two_handed"
+      ]
+    }
+  },
+  {
+    "slug": "broadsider",
+    "kind": "big_guns",
+    "name": {
+      "en": "Broadsider",
+      "ru": "Бортовое орудие"
+    },
+    "data": {
+      "weight": 16,
+      "price": 140,
+      "rarity": 5
+    },
+    "info": {
+      "rating": 10,
+      "effects": [
+        "breaking"
+      ],
+      "damage": [
+        "physical"
+      ],
+      "rate": 0,
+      "range": "medium",
+      "qualities": [
+        "blast",
+        "two_handed"
+      ]
+    }
+  },
+  {
+    "slug": "cryolator",
+    "kind": "big_guns",
+    "name": {
+      "en": "Cryolator",
+      "ru": "Криолятор"
+    },
+    "data": {
+      "weight": 14,
+      "price": 300,
+      "rarity": 4
+    },
+    "info": {
+      "rating": 4,
+      "effects": [
+        "burst",
+        "freeze",
+        "spread"
+      ],
+      "damage": [
+        "energy"
+      ],
+      "rate": 4,
+      "range": "close",
+      "qualities": [
+        "inaccurate",
+        "two_handed"
+      ]
+    }
+  },
+  {
+    "slug": "harpoon_gun",
+    "kind": "big_guns",
+    "name": {
+      "en": "Harpoon Gun",
+      "ru": "Гарпуномет"
+    },
+    "data": {
+      "weight": 16,
+      "price": 120,
+      "rarity": 5
+    },
+    "info": {
+      "rating": 12,
+      "effects": [
+        "piercing-1"
+      ],
+      "damage": [
+        "physical"
+      ],
+      "rate": 0,
+      "range": "medium",
+      "qualities": [
+        "debilitating",
+        "inaccurate",
+        "two_handed"
+      ]
+    }
+  },
+  {
+    "slug": ".357_magnum_revolver",
+    "kind": "small_guns",
+    "name": {
+      "en": ".357 Magnum Revolver",
+      "ru": "Револьвер .357 Магнум"
+    },
+    "data": {
+      "weight": 2,
+      "price": 110,
+      "rarity": 2
+    },
+    "info": {
+      "rating": 5,
+      "effects": [
+        "vicious"
+      ],
+      "damage": [
+        "physical"
+      ],
+      "rate": 1,
+      "range": "close",
+      "qualities": [
+        "close_quarters",
+        "reliable"
+      ]
+    }
+  },
+  {
+    "slug": "12.7mm_pistol",
+    "kind": "small_guns",
+    "name": {
+      "en": "12.7mm Pistol",
+      "ru": "Пистолет 12.7мм"
+    },
+    "data": {
+      "weight": 4,
+      "price": 400,
+      "rarity": 4
+    },
+    "info": {
+      "rating": 6,
+      "effects": [],
+      "damage": [
+        "physical"
+      ],
+      "rate": 1,
+      "range": "close",
+      "qualities": [
+        "close_quarters",
+        "recoil_7"
+      ]
+    }
+  },
+  {
+    "slug": "12.7mm_smg",
+    "kind": "small_guns",
+    "name": {
+      "en": "12.7mm SMG",
+      "ru": "Пистолет-пулемет 12.7мм"
+    },
+    "data": {
+      "weight": 5,
+      "price": 510,
+      "rarity": 4
+    },
+    "info": {
+      "rating": 5,
+      "effects": [
+        "burst"
+      ],
+      "damage": [
+        "physical"
+      ],
+      "rate": 3,
+      "range": "close",
+      "qualities": [
+        "inaccurate",
+        "recoil_7",
+        "two_handed"
+      ]
+    }
+  },
+  {
+    "slug": "25mm_grenade_apw",
+    "kind": "small_guns",
+    "name": {
+      "en": "25mm Grenade APW",
+      "ru": "Противопехотный 25-мм гранатомёт"
+    },
+    "data": {
+      "weight": 8,
+      "price": 420,
+      "rarity": 4
+    },
+    "info": {
+      "rating": 4,
+      "effects": [],
+      "damage": [
+        "physical"
+      ],
+      "rate": 1,
+      "range": "long",
+      "qualities": [
+        "blast",
+        "two_handed"
+      ]
+    }
+  },
+  {
+    "slug": "9mm_pistol",
+    "kind": "small_guns",
+    "name": {
+      "en": "9mm Pistol",
+      "ru": "Пистолет 9мм"
+    },
+    "data": {
+      "weight": 2,
+      "price": 50,
+      "rarity": 2
+    },
+    "info": {
+      "rating": 3,
+      "effects": [],
+      "damage": [
+        "physical"
+      ],
+      "rate": 2,
+      "range": "close",
+      "qualities": [
+        "close_quarters",
+        "concealed",
+        "reliable"
+      ]
+    }
+  },
+  {
+    "slug": "anti_materiel_rifle",
+    "kind": "small_guns",
+    "name": {
+      "en": "Anti-Materiel Rifle",
+      "ru": "Крупнокалиберная снайперская винтовка"
+    },
+    "data": {
+      "weight": 20,
+      "price": 560,
+      "rarity": 4
+    },
+    "info": {
+      "rating": 8,
+      "effects": [
+        "vicious"
+      ],
+      "damage": [
+        "physical"
+      ],
+      "rate": 0,
+      "range": "long",
+      "qualities": [
+        "reliable",
+        "two_handed",
+        "recoil_8"
+      ]
+    }
+  },
+  {
+    "slug": "battle_rifle",
+    "kind": "small_guns",
+    "name": {
+      "en": "Battle Rifle",
+      "ru": "Винтовка"
+    },
+    "data": {
+      "weight": 10,
+      "price": 150,
+      "rarity": 3
+    },
+    "info": {
+      "rating": 7,
+      "effects": [
+        "piercing-1"
+      ],
+      "damage": [
+        "physical"
+      ],
+      "rate": 1,
+      "range": "medium",
+      "qualities": [
+        "reliable",
+        "two_handed"
+      ]
+    }
+  },
+  {
+    "slug": "black_powder_blunderbuss",
+    "kind": "small_guns",
+    "name": {
+      "en": "Black Powder Blunderbuss",
+      "ru": "Пороховый бландербасс"
+    },
+    "data": {
+      "weight": 3,
+      "price": 90,
+      "rarity": 3
+    },
+    "info": {
+      "rating": 7,
+      "effects": [
+        "vicious"
+      ],
+      "damage": [
+        "physical"
+      ],
+      "rate": 0,
+      "range": "close",
+      "qualities": [
+        "close_quarters",
+        "inaccurate",
+        "recoil_7",
+        "slow_load"
+      ]
+    }
+  },
+  {
+    "slug": "black_powder_pistol",
+    "kind": "small_guns",
+    "name": {
+      "en": "Black Powder Pistol",
+      "ru": "Пороховой пистолет"
+    },
+    "data": {
+      "weight": 3,
+      "price": 60,
+      "rarity": 3
+    },
+    "info": {
+      "rating": 7,
+      "effects": [
+        "vicious"
+      ],
+      "damage": [
+        "physical"
+      ],
+      "rate": 0,
+      "range": "close",
+      "qualities": [
+        "recoil_7",
+        "slow_load"
+      ]
+    }
+  },
+  {
+    "slug": "black_powder_rifle",
+    "kind": "small_guns",
+    "name": {
+      "en": "Black Powder Rifle",
+      "ru": "Пороховой карабин"
+    },
+    "data": {
+      "weight": 6,
+      "price": 60,
+      "rarity": 3
+    },
+    "info": {
+      "rating": 8,
+      "effects": [
+        "vicious"
+      ],
+      "damage": [
+        "physical"
+      ],
+      "rate": 0,
+      "range": "medium",
+      "qualities": [
+        "recoil_7",
+        "slow_load"
+      ]
+    }
+  },
+  {
+    "slug": "gauss_pistol",
+    "kind": "small_guns",
+    "name": {
+      "en": "Gauss Pistol",
+      "ru": "Пистолет Гаусса"
+    },
+    "data": {
+      "weight": 6,
+      "price": 334,
+      "rarity": 5
+    },
+    "info": {
+      "rating": 8,
+      "effects": [
+        "piercing-1"
+      ],
+      "damage": [
+        "physical"
+      ],
+      "rate": 1,
+      "range": "medium",
+      "qualities": []
+    }
+  },
+  {
+    "slug": "gauss_shotgun",
+    "kind": "small_guns",
+    "name": {
+      "en": "Gauss Shotgun",
+      "ru": "Дробовик Гаусса"
+    },
+    "data": {
+      "weight": 14,
+      "price": 400,
+      "rarity": 5
+    },
+    "info": {
+      "rating": 7,
+      "effects": [
+        "piercing-1",
+        "spread"
+      ],
+      "damage": [
+        "physical"
+      ],
+      "rate": 0,
+      "range": "close",
+      "qualities": [
+        "ammo_hungry_10",
+        "two_handed"
+      ]
+    }
+  },
+  {
+    "slug": "lever_action_rifle",
+    "kind": "small_guns",
+    "name": {
+      "en": "Lever-Action Rifle",
+      "ru": "Карабин с рычажным затвором"
+    },
+    "data": {
+      "weight": 9,
+      "price": 201,
+      "rarity": 3
+    },
+    "info": {
+      "rating": 7,
+      "effects": [
+        "piercing-1"
+      ],
+      "damage": [
+        "physical"
+      ],
+      "rate": 0,
+      "range": "medium",
+      "qualities": []
+    }
+  },
+  {
+    "slug": "light_machine_gun",
+    "kind": "small_guns",
+    "name": {
+      "en": "Light Machine Gun",
+      "ru": "Легкий пулемет"
+    },
+    "data": {
+      "weight": 15,
+      "price": 150,
+      "rarity": 3
+    },
+    "info": {
+      "rating": 5,
+      "effects": [
+        "burst"
+      ],
+      "damage": [
+        "physical"
+      ],
+      "rate": 4,
+      "range": "medium",
+      "qualities": [
+        "inaccurate",
+        "recoil_8",
+        "two_handed"
+      ]
+    }
+  },
+  {
+    "slug": "pump_action_shotgun",
+    "kind": "small_guns",
+    "name": {
+      "en": "Pump-Action Shotgun",
+      "ru": "Помповый дробовик"
+    },
+    "data": {
+      "weight": 11,
+      "price": 70,
+      "rarity": 1
+    },
+    "info": {
+      "rating": 5,
+      "effects": [
+        "spread"
+      ],
+      "damage": [
+        "physical"
+      ],
+      "rate": 1,
+      "range": "close",
+      "qualities": [
+        "inaccurate",
+        "two_handed"
+      ]
+    }
+  },
+  {
+    "slug": "radium_rifle",
+    "kind": "small_guns",
+    "name": {
+      "en": "Radium Rifle",
+      "ru": "Радиевая винтовка"
+    },
+    "data": {
+      "weight": 11,
+      "price": 110,
+      "rarity": 3
+    },
+    "info": {
+      "rating": 4,
+      "effects": [
+        "radioactive"
+      ],
+      "damage": [
+        "physical"
+      ],
+      "rate": 3,
+      "range": "medium",
+      "qualities": [
+        "two_handed"
+      ]
+    }
+  },
+  {
+    "slug": "sniper_rifle",
+    "kind": "small_guns",
+    "name": {
+      "en": "Sniper Rifle",
+      "ru": "Снайперская винтовка"
+    },
+    "data": {
+      "weight": 10,
+      "price": 300,
+      "rarity": 4
+    },
+    "info": {
+      "rating": 7,
+      "effects": [
+        "piercing-1"
+      ],
+      "damage": [
+        "physical"
+      ],
+      "rate": 0,
+      "range": "long",
+      "qualities": [
+        "accurate",
+        "two_handed"
+      ]
+    }
+  },
+  {
+    "slug": "bow",
+    "kind": "athletics",
+    "name": {
+      "en": "Bow",
+      "ru": "Лук"
+    },
+    "data": {
+      "weight": 3,
+      "price": 44,
+      "rarity": 1
+    },
+    "info": {
+      "rating": 3,
+      "effects": [
+        "piercing-1"
+      ],
+      "damage": [
+        "physical"
+      ],
+      "rate": 2,
+      "range": "medium",
+      "qualities": [
+        "supressed",
+        "two_handed",
+        "recoil_6"
+      ]
+    }
+  },
+  {
+    "slug": "alien_atomizer",
+    "kind": "energy_weapon",
+    "name": {
+      "en": "Alien Atomizer",
+      "ru": "Атомайзер пришельцев"
+    },
+    "data": {
+      "weight": 3,
+      "price": 1536,
+      "rarity": 5
+    },
+    "info": {
+      "rating": 6,
+      "effects": [
+        "vicious"
+      ],
+      "damage": [
+        "energy"
+      ],
+      "rate": 3,
+      "range": "close",
+      "qualities": [
+        "close_quarters",
+        "reliable"
+      ]
+    }
+  },
+  {
+    "slug": "alien_disintegrator",
+    "kind": "energy_weapon",
+    "name": {
+      "en": "Alien Disintegrator",
+      "ru": "Дезинтегратор пришельцев"
+    },
+    "data": {
+      "weight": 7,
+      "price": 921,
+      "rarity": 5
+    },
+    "info": {
+      "rating": 8,
+      "effects": [
+        "vicious"
+      ],
+      "damage": [
+        "energy"
+      ],
+      "rate": 7,
+      "range": "medium",
+      "qualities": [
+        "two_handed",
+        "reliable"
+      ]
+    }
+  },
+  {
+    "slug": "arc_welder",
+    "kind": "energy_weapon",
+    "name": {
+      "en": "Arc Welder",
+      "ru": "Электросварка"
+    },
+    "data": {
+      "weight": 15,
+      "price": 370,
+      "rarity": 4
+    },
+    "info": {
+      "rating": 3,
+      "effects": [
+        "stun"
+      ],
+      "damage": [
+        "energy"
+      ],
+      "rate": 4,
+      "range": "close",
+      "qualities": [
+        "surge",
+        "two_handed"
+      ]
+    }
+  },
+  {
+    "slug": "microwave_emitter",
+    "kind": "energy_weapon",
+    "name": {
+      "en": "Microwave Emitter",
+      "ru": "Микроволновый эмиттер"
+    },
+    "data": {
+      "weight": 8,
+      "price": 500,
+      "rarity": 5
+    },
+    "info": {
+      "rating": 6,
+      "effects": [
+        "persistent",
+        "piercing-3"
+      ],
+      "damage": [
+        "energy"
+      ],
+      "rate": 1,
+      "range": "medium",
+      "qualities": [
+        "two_handed"
+      ]
+    }
+  },
+  {
+    "slug": ".50_cal_machine_gun",
+    "kind": "big_guns",
+    "name": {
+      "en": ".50 Cal Machine Gun",
+      "ru": "Пулемет калибра .50"
+    },
+    "data": {
+      "weight": 31,
+      "price": 350,
+      "rarity": 3
+    },
+    "info": {
+      "rating": 7,
+      "effects": [
+        "burst"
+      ],
+      "damage": [
+        "physical"
+      ],
+      "rate": 3,
+      "range": "medium",
+      "qualities": [
+        "two_handed",
+        "recoil_9"
+      ]
+    }
+  },
+  {
+    "slug": "auto_grenade_launcher",
+    "kind": "big_guns",
+    "name": {
+      "en": "Auto Grenade Launcher",
+      "ru": "Автоматический гранатомет"
+    },
+    "data": {
+      "weight": 30,
+      "price": 450,
+      "rarity": 4
+    },
+    "info": {
+      "rating": 6,
+      "effects": [
+        "breaking"
+      ],
+      "damage": [
+        "physical"
+      ],
+      "rate": 2,
+      "range": "long",
+      "qualities": [
+        "bombard",
+        "inaccurate"
+      ]
+    }
+  },
+  {
+    "slug": "drone_cannon",
+    "kind": "big_guns",
+    "name": {
+      "en": "Drone Cannon",
+      "ru": "Пушка робота"
+    },
+    "data": {
+      "weight": 18,
+      "price": 600,
+      "rarity": 5
+    },
+    "info": {
+      "rating": 8,
+      "effects": [
+        "breaking"
+      ],
+      "damage": [
+        "energy"
+      ],
+      "rate": 0,
+      "range": "medium",
+      "qualities": [
+        "ammo_hungry_20",
+        "blast",
+        "inaccurate",
+        "slow_load"
+      ]
+    }
+  },
+  {
+    "slug": "gatling_gun",
+    "kind": "big_guns",
+    "name": {
+      "en": "Gatling Gun",
+      "ru": "Пушка Гатлинга"
+    },
+    "data": {
+      "weight": 20,
+      "price": 350,
+      "rarity": 1
+    },
+    "info": {
+      "rating": 3,
+      "effects": [
+        "burst",
+        "spread"
+      ],
+      "damage": [
+        "physical"
+      ],
+      "rate": 3,
+      "range": "medium",
+      "qualities": [
+        "gatling",
+        "inaccurate",
+        "recoil_6",
+        "two_handed"
+      ]
+    }
+  },
+  {
+    "slug": "gatling_plasma",
+    "kind": "big_guns",
+    "name": {
+      "en": "Gatling Plasma",
+      "ru": "Гатлинг-плазма"
+    },
+    "data": {
+      "weight": 24,
+      "price": 1000,
+      "rarity": 4
+    },
+    "info": {
+      "rating": 4,
+      "effects": [
+        "burst"
+      ],
+      "damage": [
+        "physical",
+        "energy"
+      ],
+      "rate": 4,
+      "range": "medium",
+      "qualities": [
+        "gatling",
+        "inaccurate",
+        "two_handed"
+      ]
+    }
+  },
+  {
+    "slug": "gauss_minigun",
+    "kind": "big_guns",
+    "name": {
+      "en": "Gauss Minigun",
+      "ru": "Гаусс-миниган"
+    },
+    "data": {
+      "weight": 38,
+      "price": 912,
+      "rarity": 6
+    },
+    "info": {
+      "rating": 6,
+      "effects": [
+        "burst",
+        "piercing-1"
+      ],
+      "damage": [
+        "physical"
+      ],
+      "rate": 3,
+      "range": "long",
+      "qualities": [
+        "gatling",
+        "two_handed"
+      ]
+    }
+  },
+  {
+    "slug": "plasma_caster",
+    "kind": "big_guns",
+    "name": {
+      "en": "Plasma Caster",
+      "ru": "Плазмакастер"
+    },
+    "data": {
+      "weight": 30,
+      "price": 700,
+      "rarity": 5
+    },
+    "info": {
+      "rating": 8,
+      "effects": [
+        "burst"
+      ],
+      "damage": [
+        "physical",
+        "energy"
+      ],
+      "rate": 3,
+      "range": "medium",
+      "qualities": [
+        "inaccurate",
+        "recoil_8",
+        "two_handed"
+      ]
+    }
+  },
+  {
+    "slug": "tesla_cannon",
+    "kind": "big_guns",
+    "name": {
+      "en": "Tesla Cannon",
+      "ru": "Пушка Теслы"
+    },
+    "data": {
+      "weight": 24,
+      "price": 870,
+      "rarity": 5
+    },
+    "info": {
+      "rating": 8,
+      "effects": [
+        "arc",
+        "piercing-2"
+      ],
+      "damage": [
+        "energy"
+      ],
+      "rate": 0,
+      "range": "long",
+      "qualities": [
+        "accurate",
+        "ammo_hungry_5",
+        "surge",
+        "two_handed"
+      ]
+    }
+  }
+]
