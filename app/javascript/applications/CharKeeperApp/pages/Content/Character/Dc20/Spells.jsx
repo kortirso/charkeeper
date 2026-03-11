@@ -36,7 +36,8 @@ const TRANSLATION = {
     features: {
       'Long-Ranged': 'Long-Ranged'
     },
-    attack: 'Spell Check'
+    attack: 'Spell Check',
+    repeatable: 'Repeatable'
   },
   ru: {
     mana_spend_limit: 'Предел траты маны',
@@ -61,7 +62,8 @@ const TRANSLATION = {
     features: {
       'Long-Ranged': 'Дальнобойное'
     },
-    attack: 'Бонус атаки'
+    attack: 'Бонус атаки',
+    repeatable: 'Многократное'
   }
 }
 
@@ -129,12 +131,16 @@ export const Dc20Spells = (props) => {
     return spells().filter((spell) => characterSpellIds.includes(spell.id));
   });
 
-  const renderSpellPrice = (price) => {
-    return Object.entries(price).map(([slug, price]) => {
+  const renderSpellPrice = (object) => {
+    const result = Object.entries(object.price).map(([slug, price]) => {
       if (price === null) return `X ${localize(TRANSLATION, locale()).prices[slug]}`;
 
       return `${price} ${localize(TRANSLATION, locale()).prices[slug]}`;
-    }).join(', ');
+    });
+
+    if (object.repeatable) result.push(localize(TRANSLATION, locale()).repeatable);
+
+    return result.join(', ');
   }
 
   const renderSpellRange = (range) => {
@@ -221,7 +227,7 @@ export const Dc20Spells = (props) => {
                               </For>
                             </div>
                             <Show when={spell.price}>
-                              <p class="text-sm mb-1">{localize(TRANSLATION, locale()).price}: {renderSpellPrice(spell.price)}</p>
+                              <p class="text-sm mb-1">{localize(TRANSLATION, locale()).price}: {renderSpellPrice(spell)}</p>
                             </Show>
                             <p
                               class="feat-markdown text-xs"
@@ -311,7 +317,7 @@ export const Dc20Spells = (props) => {
                           </For>
                         </div>
                         <Show when={spell.price}>
-                          <p class="text-sm mt-1">{localize(TRANSLATION, locale()).price}: {renderSpellPrice(spell.price)}</p>
+                          <p class="text-sm mt-1">{localize(TRANSLATION, locale()).price}: {renderSpellPrice(spell)}</p>
                         </Show>
                         <Show when={spell.info.range}>
                           <p class="text-sm mt-1">{localize(TRANSLATION, locale()).range}: {renderSpellRange(spell.info.range)}</p>
@@ -331,7 +337,7 @@ export const Dc20Spells = (props) => {
                             {(enhancement) =>
                               <p class="feat-markdown text-sm mt-1">
                                 <span class="font-medium!">{enhancement.name[locale()]}</span>
-                                : ({renderSpellPrice(enhancement.price)}) {enhancement.description[locale()]}
+                                : ({renderSpellPrice(enhancement)}) {enhancement.description[locale()]}
                               </p>
                             }
                           </For>
