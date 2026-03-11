@@ -27,11 +27,11 @@ const TRANSLATION = {
     equipmentHelpMessage: 'На этой вкладке вы можете выбрать снаряжение для вашего персонажа.',
     levelingHelpMessage: 'В будущем на этой вкладке вы сможете указывать уровень вашего персонажа.',
     weaponFilters: {
-      meleeWeapons: 'Рукопашное оружие',
+      meleeWeapons: 'Оружие ближнего боя',
       smallGuns: 'Стрелковое оружие',
       bigGuns: 'Тяжёлое оружие',
       energyWeapon: 'Энергооружие',
-      unarmed: 'Оружие ближнего боя',
+      unarmed: 'Рукопашное оружие',
       throwing: 'Метательное оружие',
       explosive: 'Взрывчатка',
       athletics: 'Атлетичное'
