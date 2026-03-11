@@ -359,40 +359,82 @@ ru:
           volley: Залповое %{value}
     dc20:
       spell_tags:
-        Ailment: Болезнь
-        Blood: Кровь
-        Bludgeoning: Дробящее
-        Burning: Горение
-        Charmed: Очарование
-        Cleansing: Очищение
-        Cold: Холод
-        Corrosion: Кислота
-        Curse: Проклятье
-        Death: Смерть
-        Doomed: Обречение
-        Embolden: Воодушевление
-        Emotions: Эмоции
-        Enfeeble: Ослабление
-        Fire: Огонь
-        Healing: Лечение
-        Hindered: Затруднение
-        Illusion: Иллюзия
-        Immobilized: Обездвиживание
-        Invisible: Невидимость
-        Motion: Движение
-        Piercing: Колющее
-        Plants: Растения
-        Restrained: Сдерживание
-        Shadow: Тень
-        Slashing: Режущее
-        Slowed: Замедление
-        Stunned: Оглушение
-        Teleportation: Телепортация
-        Tethered: Связывание
-        Time: Время
-        Thoughts: Мысли
-        Umbral: Сумрак
-        Ward: Защита
+        aberration: Аберрация
+        ailment: Болезнь
+        air: Воздух
+        bleeding: Ранение
+        blinded: Ослепление
+        blood: Кровь
+        bludgeoning: Дробящий урон
+        burning: Горение
+        chaos: Хаос
+        charmed: Очарование
+        cleansing: Очищение
+        cold: Морозный урон
+        communication: Общение
+        corrosion: Кислотный урон
+        curse: Проклятье
+        dazed: Потрясение
+        deafened: Оглушение
+        death: Смерть
+        disoriented: Дезориентация
+        doomed: Обречение
+        earth: Земля
+        embolden: Воодушевление
+        emotion: Эмоция
+        emotions: Эмоции
+        enfeeble: Ослабление
+        exhaustion: Истощение
+        exposed: Раскрытие
+        fire: Огненный урон
+        frightened: Устрашение
+        gravity: Гравитация
+        healing: Лечение
+        hindered: Сковывание
+        illusion: Иллюзия
+        immobilized: Останавливание
+        impaired: Ослабление
+        incapacitated: Шокирование
+        intimidated: Запугивание
+        invisible: Невидимость
+        light: Свет
+        lightning: Электрический урон
+        madness: Безумие
+        metamorphosis: Метаформоза
+        motion: Движение
+        paralyzed: Парализовывание
+        piercing: Колющий урон
+        planes: Планы
+        plants: Растения
+        poison: Урон ядом
+        psychic: Психический урон
+        radiant: Сияющий урон
+        restrained: Обездвиживание
+        scent: Запах
+        sense: Чувство
+        shadow: Тень
+        slashing: Рубящий урон
+        slowed: Замедление
+        sound: Звук
+        spirit: Дух
+        strike: Удар
+        stunned: Ошеломление
+        summoning: Призыв
+        taunted: Провоцирование
+        teleportation: Телепортация
+        terrified: Устрашение
+        tethered: Привязывание
+        thoughts: Мысли
+        time: Время
+        trap: Ловушка
+        "true": Истинный урон
+        umbral: Сумрачный урон
+        unconscious: Вырубание
+        undead: Нежить
+        ward: Защита
+        water: Вода
+        weakened: Обессиливание
+        weapon: Оружие
       focus:
         Long-Ranged: Если заклинание имеет дальность больше 1, то эта дальность увеличивается на 5 квадратов.
       weapon:

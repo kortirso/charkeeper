@@ -213,7 +213,7 @@ export const Dc20Spells = (props) => {
                               <p class="font-normal! text-lg">{spell.title}</p>
                               <p>{schools()[spell.school].name[locale()]}</p>
                             </div>
-                            <div class="flex gap-x-2 flex-wrap mb-2">
+                            <div class="flex gap-2 flex-wrap mb-2">
                               <For each={spell.origin_values}>
                                 {(tag) =>
                                   <span class="text-sm tag">{tag}</span>
@@ -303,7 +303,7 @@ export const Dc20Spells = (props) => {
                       }
                     >
                       <div>
-                        <div class="flex gap-x-2 flex-wrap mb-1">
+                        <div class="flex gap-2 flex-wrap mb-1">
                           <For each={spell.origin_values}>
                             {(tag) =>
                               <span class="text-sm tag cursor-default!">{tag}</span>
@@ -324,17 +324,19 @@ export const Dc20Spells = (props) => {
                         class="feat-markdown text-xs mt-4"
                         innerHTML={spell.description} // eslint-disable-line solid/no-innerhtml
                       />
-                      <div class="mt-4">
-                        <p class="font-normal!">{localize(TRANSLATION, locale()).enhancements}</p>
-                        <For each={spell.info.enhancements}>
-                          {(enhancement) =>
-                            <p class="feat-markdown text-sm mt-1">
-                              <span class="font-medium!">{enhancement.name[locale()]}</span>
-                              : ({renderSpellPrice(enhancement.price)}) {enhancement.description[locale()]}
-                            </p>
-                          }
-                        </For>
-                      </div>
+                      <Show when={spell.info.enhancements.length > 0}>
+                        <div class="mt-4">
+                          <p class="font-normal!">{localize(TRANSLATION, locale()).enhancements}</p>
+                          <For each={spell.info.enhancements}>
+                            {(enhancement) =>
+                              <p class="feat-markdown text-sm mt-1">
+                                <span class="font-medium!">{enhancement.name[locale()]}</span>
+                                : ({renderSpellPrice(enhancement.price)}) {enhancement.description[locale()]}
+                              </p>
+                            }
+                          </For>
+                        </div>
+                      </Show>
                       <Show when={spell.notes}><p class="text-sm mt-2">{spell.notes}</p></Show>
                     </Toggle>
                   }

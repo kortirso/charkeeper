@@ -427,6 +427,10 @@ nav.pagy.nav a.gap {
   @apply dark:text-stone-200;
 }
 
+.feat-markdown p {
+  @apply mb-2;
+}
+
 .feat-markdown strong {
   @apply text-[15px] text-black;
   @apply dark:text-snow;
