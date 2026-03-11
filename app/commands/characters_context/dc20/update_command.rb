@@ -165,6 +165,8 @@ module CharactersContext
       end
 
       def refresh_points(character)
+        return if LEVELING[character.data.level].nil?
+
         character.data =
           character.data.attributes.merge(LEVELING[character.data.level]) { |_key, oldval, newval| newval + oldval }
         character.save
