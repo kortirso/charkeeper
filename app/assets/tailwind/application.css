@@ -544,6 +544,14 @@ body.web {
   @apply uppercase text-sm mb-2 text-center;
 }
 
+.dc20-stat-value-box {
+  @apply mx-auto flex items-center justify-center;
+}
+
+.dc20-stat-value {
+  @apply text-2xl font-normal! leading-10;
+}
+
 .weapon-title {
   @apply text-lg font-normal! mb-2;
 }
