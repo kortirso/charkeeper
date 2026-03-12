@@ -64,9 +64,7 @@ export const ItemsTable = (props) => {
                   <div class="flex-1">
                     <p class="equipment-item-name">
                       {item.name}
-                      <Show when={item.states[props.state] > 1}>
-                        <span> ({item.states[props.state]})</span>
-                      </Show>
+                      <Show when={item.states[props.state] > 1}><span> ({item.states[props.state]})</span></Show>
                     </p>
                     <Show when={item.notes}>
                       <p class="equipment-item-notes">{item.notes}</p>
@@ -83,6 +81,7 @@ export const ItemsTable = (props) => {
                     <Show when={size.width >= 1024}>
                       <div class="flex items-start gap-x-1 mr-2">
                         <ItemsTableItem
+                          size="small"
                           state={props.state}
                           item={item}
                           upgrades={props.upgrades}
@@ -102,6 +101,7 @@ export const ItemsTable = (props) => {
                           <Show when={size.width < 1024}>
                             <div class="dots-item flex gap-x-1">
                               <ItemsTableItem
+                                size="medium"
                                 state={props.state}
                                 item={item}
                                 upgrades={props.upgrades}
