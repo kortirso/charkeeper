@@ -48,7 +48,7 @@ export const Dc20Abilities = (props) => {
   }
 
   const increaseAbilityValue = (slug) => {
-    if (abilitiesData()[slug] === Math.round(character().level / 5) + 3) return;
+    if (abilitiesData()[slug] === Math.floor(character().level / 5) + 3) return;
 
     setAbilitiesData({ ...abilitiesData(), [slug]: abilitiesData()[slug] + 1 });
   }
