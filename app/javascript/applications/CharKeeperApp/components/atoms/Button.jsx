@@ -23,6 +23,7 @@ export const Button = (props) => {
       classList={{
         'default-button-size': props.size === undefined || props.size === 'default',
         'small-button-size': props.size === 'small',
+        'medium-button-size': props.size === 'medium',
         'default-button-color': props.default,
         'outlined-button-color': props.outlined,
         'px-2 py-1': props.textable,
