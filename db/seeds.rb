@@ -156,48 +156,48 @@ Dir[File.join(Rails.root.join('db/data/fallout/perks/*.json'))].each do |filenam
   end
 end
 
-file_content = File.read('db/data/daggerheart/domains-output.txt')
-file_content.lines.each do |line|
-  names = line.split('|')
-  en_name = names[1]
-  ru_name = names[2].strip
-  feat = Daggerheart::Feat.where(origin: 7).find_by("title ->> 'en' = ?", en_name)
-  next unless feat
+# file_content = File.read('db/data/daggerheart/domains-output.txt')
+# file_content.lines.each do |line|
+#   names = line.split('|')
+#   en_name = names[1]
+#   ru_name = names[2].strip
+#   feat = Daggerheart::Feat.where(origin: 7).find_by("title ->> 'en' = ?", en_name)
+#   next unless feat
 
-  feat.update(title: feat.title.merge('ru-DHM' => ru_name)) if ru_name != feat.title['ru']
-end
+#   feat.update(title: feat.title.merge('ru-DHM' => ru_name)) if ru_name != feat.title['ru']
+# end
 
-file_content = File.read('db/data/fallout/raw_data/weapons.json')
-data_hash = JSON.parse(file_content)
+# file_content = File.read('db/data/fallout/raw_data/weapons.json')
+# data_hash = JSON.parse(file_content)
 
-ranges = { 'C' => 'close', 'M' => 'medium', 'L' => 'long' }
+# ranges = { 'C' => 'close', 'M' => 'medium', 'L' => 'long' }
 
-data_hash = data_hash.map do |item|
-  {
-    slug: item['imageName'].underscore.gsub(' ', '_'),
-    kind: item['Weapon Type'].underscore.gsub(' ', '_'),
-    name: { en: item['imageName'], ru: item['Name'] },
-    data: {
-      weight: item['Weight'] == '<1' ? 1 : item['Weight'].to_i,
-      price: item['Cost'],
-      rarity: item['Rarity']
-    },
-    info: {
-      rating: item['Damage Rating'],
-      effects: item['Damage Effects'].split(', ').map { |item| item.underscore.gsub(' ', '-') },
-      damage: item['Damage Type'].split(' / ').map { |item| item.underscore },
-      rate: item['Rate of Fire'],
-      range: item['Range'].present? ? ranges[item['Range']] : nil,
-      qualities: item['Qualities'].split(', ').map { |item| item.underscore.gsub(' ', '_') },
-    }.compact
-  }
-end
+# data_hash = data_hash.map do |item|
+#   {
+#     slug: item['imageName'].underscore.gsub(' ', '_'),
+#     kind: item['Weapon Type'].underscore.gsub(' ', '_'),
+#     name: { en: item['imageName'], ru: item['Name'] },
+#     data: {
+#       weight: item['Weight'] == '<1' ? 1 : item['Weight'].to_i,
+#       price: item['Cost'],
+#       rarity: item['Rarity']
+#     },
+#     info: {
+#       rating: item['Damage Rating'],
+#       effects: item['Damage Effects'].split(', ').map { |item| item.underscore.gsub(' ', '-') },
+#       damage: item['Damage Type'].split(' / ').map { |item| item.underscore },
+#       rate: item['Rate of Fire'],
+#       range: item['Range'].present? ? ranges[item['Range']] : nil,
+#       qualities: item['Qualities'].split(', ').map { |item| item.underscore.gsub(' ', '_') },
+#     }.compact
+#   }
+# end
 
-beautified_json_string = JSON.pretty_generate(data_hash)
-# # Write the beautified JSON string to a file
-File.open('db/data/fallout/weapons.json', 'w') do |file|
-  file.write(beautified_json_string)
-end
+# beautified_json_string = JSON.pretty_generate(data_hash)
+# # # Write the beautified JSON string to a file
+# File.open('db/data/fallout/weapons.json', 'w') do |file|
+#   file.write(beautified_json_string)
+# end
 
 # file_content = File.read('db/data/daggerheart/spells-en.json')
 # data_hash_en = JSON.parse(file_content)['data']
@@ -318,123 +318,123 @@ Item::Recipe.create(
   info: { output_per_day: 1 }
 )
 
-client = HttpService::Client.new(url: 'https://sb.dccrit.com')
-response = client.post(path: 'rest/v1/rpc/get_spell_list_v3', body: { p_per_page: 50, p_page: 3, p_sort_asc: true, p_sort_by: 'name' }, headers: { 'apiKey' => 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFudnNkcXBieXVqcGZnaGdhcGxhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Mjc1NTI2MjAsImV4cCI6MjA0MzEyODYyMH0.2stuMtZD0DcrX3pbIjKTMV3pJ0rRGrP0aJvS6bydG9U', 'Accept-Encoding' => 'identity' })
+# client = HttpService::Client.new(url: 'https://sb.dccrit.com')
+# response = client.post(path: 'rest/v1/rpc/get_spell_list_v3', body: { p_per_page: 50, p_page: 3, p_sort_asc: true, p_sort_by: 'name' }, headers: { 'apiKey' => 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFudnNkcXBieXVqcGZnaGdhcGxhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Mjc1NTI2MjAsImV4cCI6MjA0MzEyODYyMH0.2stuMtZD0DcrX3pbIjKTMV3pJ0rRGrP0aJvS6bydG9U', 'Accept-Encoding' => 'identity' })
 
-def formatted_price(item)
-  price = item['cost'].except('mana')
-  if item['cost']['mana']
-    price['mp'] = item['cost']['mana'] if item['cost']['mana'].positive?
-    price['mp'] = nil if item['cost']['mana'].negative?
-  end
-  price
-end
+# def formatted_price(item)
+#   price = item['cost'].except('mana')
+#   if item['cost']['mana']
+#     price['mp'] = item['cost']['mana'] if item['cost']['mana'].positive?
+#     price['mp'] = nil if item['cost']['mana'].negative?
+#   end
+#   price
+# end
 
-def formatted_range(item)
-  return 0 if item['range'] == 'Self'
+# def formatted_range(item)
+#   return 0 if item['range'] == 'Self'
 
-  item['range'].split(' ')[0].to_i
-end
+#   item['range'].split(' ')[0].to_i
+# end
 
-def formatted_duration(item)
-  return 'instant' if item['duration'] == 'Instantaneous'
+# def formatted_duration(item)
+#   return 'instant' if item['duration'] == 'Instantaneous'
 
-  value = item['duration'].split(' ')[0]
-  return "#{value},m" if item['duration'].include?('Minute')
-  return "#{value},h" if item['duration'].include?('Hour')
-end
+#   value = item['duration'].split(' ')[0]
+#   return "#{value},m" if item['duration'].include?('Minute')
+#   return "#{value},h" if item['duration'].include?('Hour')
+# end
 
-def sustained(item)
-  item['duration'].include?('Sustained')
-end
+# def sustained(item)
+#   item['duration'].include?('Sustained')
+# end
 
-def enhancements(item)
-  item['enhancements']&.map do |enh|
-    {
-      name: { "en": enh['name'], "ru": enh['name'] },
-      price: formatted_price(enh),
-      sustained: enh['sustained'],
-      repeatable: enh['repeatable'],
-      description: { "en": enh['desc'], "ru": enh['desc'] }
-    }
-  end
-end
+# def enhancements(item)
+#   item['enhancements']&.map do |enh|
+#     {
+#       name: { "en": enh['name'], "ru": enh['name'] },
+#       price: formatted_price(enh),
+#       sustained: enh['sustained'],
+#       repeatable: enh['repeatable'],
+#       description: { "en": enh['desc'], "ru": enh['desc'] }
+#     }
+#   end
+# end
 
-data_hash = response['list'].filter_map do |data|
-  item = data['data']
-  next unless item['official']
+# data_hash = response['list'].filter_map do |data|
+#   item = data['data']
+#   next unless item['official']
 
-  {
-    slug: item['name'].underscore.gsub(' ', '_'),
-    kind: 'static',
-    title: { en: item['name'], ru: item['name'] },
-    description: { en: item['desc'], ru: item['desc'] },
-    origin: 'spell',
-    origin_value: item['sources'].join(','),
-    origin_values: item['tags'],
-    price: formatted_price(item),
-    triggers: item['triggers'],
-    reactions: item['reactions'],
-    passive: item['passive'],
-    info: {
-      school: item['schools'][0],
-      range: formatted_range(item),
-      duration: formatted_duration(item),
-      sustained: sustained(item),
-      enhancements: enhancements(item)
-    }.compact
-  }
-end
+#   {
+#     slug: item['name'].underscore.gsub(' ', '_'),
+#     kind: 'static',
+#     title: { en: item['name'], ru: item['name'] },
+#     description: { en: item['desc'], ru: item['desc'] },
+#     origin: 'spell',
+#     origin_value: item['sources'].join(','),
+#     origin_values: item['tags'],
+#     price: formatted_price(item),
+#     triggers: item['triggers'],
+#     reactions: item['reactions'],
+#     passive: item['passive'],
+#     info: {
+#       school: item['schools'][0],
+#       range: formatted_range(item),
+#       duration: formatted_duration(item),
+#       sustained: sustained(item),
+#       enhancements: enhancements(item)
+#     }.compact
+#   }
+# end
 
-beautified_json_string = JSON.pretty_generate(data_hash)
-# # Write the beautified JSON string to a file
-File.open('db/data/dc20/spells_3.json', 'w') do |file|
-  file.write(beautified_json_string)
-end
-
-
-client = HttpService::Client.new(url: 'https://sb.dccrit.com')
-response = client.post(path: 'rest/v1/rpc/get_maneuver_list_v3', body: { p_per_page: 50, p_page: 1, p_sort_asc: true, p_sort_by: 'name' }, headers: { 'apiKey' => 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFudnNkcXBieXVqcGZnaGdhcGxhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Mjc1NTI2MjAsImV4cCI6MjA0MzEyODYyMH0.2stuMtZD0DcrX3pbIjKTMV3pJ0rRGrP0aJvS6bydG9U', 'Accept-Encoding' => 'identity' })
+# beautified_json_string = JSON.pretty_generate(data_hash)
+# # # Write the beautified JSON string to a file
+# File.open('db/data/dc20/spells_3.json', 'w') do |file|
+#   file.write(beautified_json_string)
+# end
 
 
-def enhancements(item)
-  item['enhancements']&.map do |enh|
-    {
-      name: { "en": enh['name'], "ru": enh['name'] },
-      price: enh['cost'],
-      repeatable: enh['repeatable'],
-      description: { "en": enh['desc'], "ru": enh['desc'] }
-    }
-  end
-end
+# client = HttpService::Client.new(url: 'https://sb.dccrit.com')
+# response = client.post(path: 'rest/v1/rpc/get_maneuver_list_v3', body: { p_per_page: 50, p_page: 1, p_sort_asc: true, p_sort_by: 'name' }, headers: { 'apiKey' => 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFudnNkcXBieXVqcGZnaGdhcGxhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Mjc1NTI2MjAsImV4cCI6MjA0MzEyODYyMH0.2stuMtZD0DcrX3pbIjKTMV3pJ0rRGrP0aJvS6bydG9U', 'Accept-Encoding' => 'identity' })
 
-data_hash = response['list'].filter_map do |data|
-  item = data['data']
-  next unless item['official']
 
-  description = item['desc']
-  description = "#{description}\n\n**Trigger:** #{item['trigger']}" if item['trigger']
-  description = "#{description}\n\n**Reaction:** #{item['reaction']}" if item['reaction']
+# def enhancements(item)
+#   item['enhancements']&.map do |enh|
+#     {
+#       name: { "en": enh['name'], "ru": enh['name'] },
+#       price: enh['cost'],
+#       repeatable: enh['repeatable'],
+#       description: { "en": enh['desc'], "ru": enh['desc'] }
+#     }
+#   end
+# end
 
-  {
-    slug: item['name'].underscore.gsub(' ', '_'),
-    kind: 'static',
-    title: { en: item['name'], ru: item['name'] },
-    description: { en: description, ru: description },
-    origin: 'maneuver',
-    price: item['cost'],
-    origin_value: item['type'].split(' ')[0].underscore,
+# data_hash = response['list'].filter_map do |data|
+#   item = data['data']
+#   next unless item['official']
+
+#   description = item['desc']
+#   description = "#{description}\n\n**Trigger:** #{item['trigger']}" if item['trigger']
+#   description = "#{description}\n\n**Reaction:** #{item['reaction']}" if item['reaction']
+
+#   {
+#     slug: item['name'].underscore.gsub(' ', '_'),
+#     kind: 'static',
+#     title: { en: item['name'], ru: item['name'] },
+#     description: { en: description, ru: description },
+#     origin: 'maneuver',
+#     price: item['cost'],
+#     origin_value: item['type'].split(' ')[0].underscore,
     
-    info: {
-      range: { en: item['range'], ru: item['range'] },
-      enhancements: enhancements(item)
-    }.compact
-  }
-end
+#     info: {
+#       range: { en: item['range'], ru: item['range'] },
+#       enhancements: enhancements(item)
+#     }.compact
+#   }
+# end
 
-beautified_json_string = JSON.pretty_generate(data_hash)
-# # Write the beautified JSON string to a file
-File.open('db/data/dc20/maneuvers.json', 'w') do |file|
-  file.write(beautified_json_string)
-end
+# beautified_json_string = JSON.pretty_generate(data_hash)
+# # # Write the beautified JSON string to a file
+# File.open('db/data/dc20/maneuvers.json', 'w') do |file|
+#   file.write(beautified_json_string)
+# end
 

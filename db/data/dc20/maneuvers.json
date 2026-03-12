@@ -4,8 +4,8 @@
     "kind": "static",
     "title": { "en": "Body Block", "ru": "Body Block" },
     "description": {
-      "en": "You reposition a grappled creature to shield yourself from damage.\n\nDC Tip: If the triggering Attack involved a Save (as with a Dynamic Attack Save) that moves you or your Grapple target out of your reach, you can still perform this Maneuver to resolve the damage (as if it the Hit happens moments before the forced movement).\n\n**Trigger:** A creature that's not Grappled by you Hits you with an Attack.\n\n**Reaction:** Make a Martial Check against the Grappled target's Might Save. **Check Success:** The damage from the Attack is shared by you and the Grappled creature, and you can move the Grappled creature to any Space adjacent to you immediately afterwards.",
-      "ru": "You reposition a grappled creature to shield yourself from damage.\n\nDC Tip: If the triggering Attack involved a Save (as with a Dynamic Attack Save) that moves you or your Grapple target out of your reach, you can still perform this Maneuver to resolve the damage (as if it the Hit happens moments before the forced movement).\n\n**Trigger:** A creature that's not Grappled by you Hits you with an Attack.\n\n**Reaction:** Make a Martial Check against the Grappled target's Might Save. **Check Success:** The damage from the Attack is shared by you and the Grappled creature, and you can move the Grappled creature to any Space adjacent to you immediately afterwards."
+      "en": "You reposition a grappled creature to shield yourself from damage.\n\n**Trigger:** A creature that's not Grappled by you Hits you with an Attack.\n\n**Reaction:** Make a Martial Check against the Grappled target's Might Save. **Check Success:** The damage from the Attack is shared by you and the Grappled creature, and you can move the Grappled creature to any Space adjacent to you immediately afterwards.",
+      "ru": "You reposition a grappled creature to shield yourself from damage.\n\n**Trigger:** A creature that's not Grappled by you Hits you with an Attack.\n\n**Reaction:** Make a Martial Check against the Grappled target's Might Save. **Check Success:** The damage from the Attack is shared by you and the Grappled creature, and you can move the Grappled creature to any Space adjacent to you immediately afterwards."
     },
     "origin": "maneuver",
     "price": { "ap": 1, "sp": 1 },
@@ -218,8 +218,8 @@
       "ru": "Heroic Extend Jump"
     },
     "description": {
-      "en": "You perform a powerful jump.\n\nWhen you take the **Extend Jump** Action, you can add the following Maneuver Enhancements. When you add a Maneuver Enhancement (or perform the Action using SP), you are considered to be performing a Maneuver.\n\n**Stamina Action:** You can now spend **1 SP** instead of **1 AP** to perform the **Extend Jump** Action.\n\n*Extend Jump (Action)*\n\nWhen you perform a Jump, you can spend **1 AP** to increase your Jump Distance for the Jump. Make a **DC 10** Acrobatics Check. **Failure:** Your Jump Distance increases by 1. **Success:** Your Jump Distance increases by 2. **Success (each 5):** **+1** Jump Distance.\n\nDC Tip: Remember, your Long Jump Distance equals your Jump Distance in Spaces, and your High Jump distance equals your Jump Distance in feet.",
-      "ru": "You perform a powerful jump.\n\nWhen you take the **Extend Jump** Action, you can add the following Maneuver Enhancements. When you add a Maneuver Enhancement (or perform the Action using SP), you are considered to be performing a Maneuver.\n\n**Stamina Action:** You can now spend **1 SP** instead of **1 AP** to perform the **Extend Jump** Action.\n\n*Extend Jump (Action)*\n\nWhen you perform a Jump, you can spend **1 AP** to increase your Jump Distance for the Jump. Make a **DC 10** Acrobatics Check. **Failure:** Your Jump Distance increases by 1. **Success:** Your Jump Distance increases by 2. **Success (each 5):** **+1** Jump Distance.\n\nDC Tip: Remember, your Long Jump Distance equals your Jump Distance in Spaces, and your High Jump distance equals your Jump Distance in feet."
+      "en": "You perform a powerful jump.\n\nWhen you take the **Extend Jump** Action, you can add the following Maneuver Enhancements. When you add a Maneuver Enhancement (or perform the Action using SP), you are considered to be performing a Maneuver.\n\n**Stamina Action:** You can now spend **1 SP** instead of **1 AP** to perform the **Extend Jump** Action.\n\n*Extend Jump (Action)*\n\nWhen you perform a Jump, you can spend **1 AP** to increase your Jump Distance for the Jump. Make a **DC 10** Acrobatics Check. **Failure:** Your Jump Distance increases by 1. **Success:** Your Jump Distance increases by 2. **Success (each 5):** **+1** Jump Distance.",
+      "ru": "You perform a powerful jump.\n\nWhen you take the **Extend Jump** Action, you can add the following Maneuver Enhancements. When you add a Maneuver Enhancement (or perform the Action using SP), you are considered to be performing a Maneuver.\n\n**Stamina Action:** You can now spend **1 SP** instead of **1 AP** to perform the **Extend Jump** Action.\n\n*Extend Jump (Action)*\n\nWhen you perform a Jump, you can spend **1 AP** to increase your Jump Distance for the Jump. Make a **DC 10** Acrobatics Check. **Failure:** Your Jump Distance increases by 1. **Success:** Your Jump Distance increases by 2. **Success (each 5):** **+1** Jump Distance."
     },
     "origin": "maneuver",
     "price": { "ap": 1 },
@@ -371,8 +371,8 @@
       "ru": "Heroic Shove"
     },
     "description": {
-      "en": "You perform a powerful shove.\n\nWhen you take the Shove Action, you can add the following Maneuver Enhancements. When you add a Maneuver Enhancement, you are considered to be performing a Maneuver.\n\n*Shove (Action)*\n\nYou can spend **1 AP** to attempt to push a creature within 1 Space of you. Make an Athletics Check contested by the target's Martial Check. **Success:** You push the creature 1 Space away from you or to its left or right. **Success (each 5):** Push up to 1 additional Space.\n\n**Knock Prone:** After the result, you can choose to reduce the total distance the target is pushed by 1 Space to knock them Prone ****instead.\n\nDC Tip: If you shove a creature into a target, follow the rules for hitting the target in the **Collision** section.",
-      "ru": "You perform a powerful shove.\n\nWhen you take the Shove Action, you can add the following Maneuver Enhancements. When you add a Maneuver Enhancement, you are considered to be performing a Maneuver.\n\n*Shove (Action)*\n\nYou can spend **1 AP** to attempt to push a creature within 1 Space of you. Make an Athletics Check contested by the target's Martial Check. **Success:** You push the creature 1 Space away from you or to its left or right. **Success (each 5):** Push up to 1 additional Space.\n\n**Knock Prone:** After the result, you can choose to reduce the total distance the target is pushed by 1 Space to knock them Prone ****instead.\n\nDC Tip: If you shove a creature into a target, follow the rules for hitting the target in the **Collision** section."
+      "en": "You perform a powerful shove.\n\nWhen you take the Shove Action, you can add the following Maneuver Enhancements. When you add a Maneuver Enhancement, you are considered to be performing a Maneuver.\n\n*Shove (Action)*\n\nYou can spend **1 AP** to attempt to push a creature within 1 Space of you. Make an Athletics Check contested by the target's Martial Check. **Success:** You push the creature 1 Space away from you or to its left or right. **Success (each 5):** Push up to 1 additional Space.\n\n**Knock Prone:** After the result, you can choose to reduce the total distance the target is pushed by 1 Space to knock them Prone ****instead.",
+      "ru": "You perform a powerful shove.\n\nWhen you take the Shove Action, you can add the following Maneuver Enhancements. When you add a Maneuver Enhancement, you are considered to be performing a Maneuver.\n\n*Shove (Action)*\n\nYou can spend **1 AP** to attempt to push a creature within 1 Space of you. Make an Athletics Check contested by the target's Martial Check. **Success:** You push the creature 1 Space away from you or to its left or right. **Success (each 5):** Push up to 1 additional Space.\n\n**Knock Prone:** After the result, you can choose to reduce the total distance the target is pushed by 1 Space to knock them Prone ****instead."
     },
     "origin": "maneuver",
     "price": { "ap": 1 },
@@ -483,8 +483,8 @@
       "ru": "Line Run"
     },
     "description": {
-      "en": "You run through a line of enemies.\n\nYou move in a Line up to your Speed. Make a Martial Check. Each creature within the Line must make a Martial Check contested against your Check when you attempt to move through its Space. **Contest Success:** You can move through the creature's Space. **Contest Failure:** You are unable to move through the creature's Space, preventing you from moving any further.\n\nExample: You make a Martial Check with a result of 15. If your Speed is 5, you can move up to 5 Spaces in a straight Line. If there are 3 creatures in that Line, your Martial Check of 15 would be compared to a Martial Check each creature makes as you attempt to pass through their Space, one by one. If the first creature in your path gets a 15 or higher, you can't pass through their Space and stop moving.",
-      "ru": "You run through a line of enemies.\n\nYou move in a Line up to your Speed. Make a Martial Check. Each creature within the Line must make a Martial Check contested against your Check when you attempt to move through its Space. **Contest Success:** You can move through the creature's Space. **Contest Failure:** You are unable to move through the creature's Space, preventing you from moving any further.\n\nExample: You make a Martial Check with a result of 15. If your Speed is 5, you can move up to 5 Spaces in a straight Line. If there are 3 creatures in that Line, your Martial Check of 15 would be compared to a Martial Check each creature makes as you attempt to pass through their Space, one by one. If the first creature in your path gets a 15 or higher, you can't pass through their Space and stop moving."
+      "en": "You run through a line of enemies.\n\nYou move in a Line up to your Speed. Make a Martial Check. Each creature within the Line must make a Martial Check contested against your Check when you attempt to move through its Space. **Contest Success:** You can move through the creature's Space. **Contest Failure:** You are unable to move through the creature's Space, preventing you from moving any further.",
+      "ru": "You run through a line of enemies.\n\nYou move in a Line up to your Speed. Make a Martial Check. Each creature within the Line must make a Martial Check contested against your Check when you attempt to move through its Space. **Contest Success:** You can move through the creature's Space. **Contest Failure:** You are unable to move through the creature's Space, preventing you from moving any further."
     },
     "origin": "maneuver",
     "price": { "ap": 2 },
@@ -522,8 +522,8 @@
       "ru": "Meteor Strike"
     },
     "description": {
-      "en": "A mid air strike.\n\nYour Jump Distance increases by 2, you Jump up to your Jump Distance without spending movement (provided you can move), and make a Melee Martial Attack against a target within range at any point during your jump or where you land.\n\nDC Tip: Remember, your Long Jump Distance equals your Jump Distance in Spaces, and your High Jump distance equals your Jump Distance in feet.\n\n**Reaction:** You can spend an additional **1 SP** to perform this Maneuver as a Reaction to a creature being forcibly moved into a Space within your Jump Distance that's at least 1 Space above the ground.",
-      "ru": "A mid air strike.\n\nYour Jump Distance increases by 2, you Jump up to your Jump Distance without spending movement (provided you can move), and make a Melee Martial Attack against a target within range at any point during your jump or where you land.\n\nDC Tip: Remember, your Long Jump Distance equals your Jump Distance in Spaces, and your High Jump distance equals your Jump Distance in feet.\n\n**Reaction:** You can spend an additional **1 SP** to perform this Maneuver as a Reaction to a creature being forcibly moved into a Space within your Jump Distance that's at least 1 Space above the ground."
+      "en": "A mid air strike.\n\nYour Jump Distance increases by 2, you Jump up to your Jump Distance without spending movement (provided you can move), and make a Melee Martial Attack against a target within range at any point during your jump or where you land.\n\n**Reaction:** You can spend an additional **1 SP** to perform this Maneuver as a Reaction to a creature being forcibly moved into a Space within your Jump Distance that's at least 1 Space above the ground.",
+      "ru": "A mid air strike.\n\nYour Jump Distance increases by 2, you Jump up to your Jump Distance without spending movement (provided you can move), and make a Melee Martial Attack against a target within range at any point during your jump or where you land.\n\n**Reaction:** You can spend an additional **1 SP** to perform this Maneuver as a Reaction to a creature being forcibly moved into a Space within your Jump Distance that's at least 1 Space above the ground."
     },
     "origin": "maneuver",
     "price": { "ap": 1, "sp": 1 },
@@ -538,8 +538,8 @@
           "price": { "sp": 1 },
           "repeatable": true,
           "description": {
-            "en": "If the target is in the air, it makes a Physical Save against your Save DC. **Save Failure:** The creature is knocked downward 2 Spaces.\n\nDC Tip: This knockback completely changes the direction the target was moving.",
-            "ru": "If the target is in the air, it makes a Physical Save against your Save DC. **Save Failure:** The creature is knocked downward 2 Spaces.\n\nDC Tip: This knockback completely changes the direction the target was moving."
+            "en": "If the target is in the air, it makes a Physical Save against your Save DC. **Save Failure:** The creature is knocked downward 2 Spaces.",
+            "ru": "If the target is in the air, it makes a Physical Save against your Save DC. **Save Failure:** The creature is knocked downward 2 Spaces."
           }
         },
         {
@@ -849,8 +849,8 @@
     "kind": "static",
     "title": { "en": "Restrain", "ru": "Restrain" },
     "description": {
-      "en": "You restrain a grappled target.\n\nYou make a Martial Check against the target's Repeated Physical Save. **Contest Success:** The target is **Restrained** until the Grapple ends or they succeed on their Repeated Save.\n\nDC Tip: A creature can spend 1 AP to attempt to break a Grapple (see **Grapple Action** for more information).",
-      "ru": "You restrain a grappled target.\n\nYou make a Martial Check against the target's Repeated Physical Save. **Contest Success:** The target is **Restrained** until the Grapple ends or they succeed on their Repeated Save.\n\nDC Tip: A creature can spend 1 AP to attempt to break a Grapple (see **Grapple Action** for more information)."
+      "en": "You restrain a grappled target.\n\nYou make a Martial Check against the target's Repeated Physical Save. **Contest Success:** The target is **Restrained** until the Grapple ends or they succeed on their Repeated Save.",
+      "ru": "You restrain a grappled target.\n\nYou make a Martial Check against the target's Repeated Physical Save. **Contest Success:** The target is **Restrained** until the Grapple ends or they succeed on their Repeated Save."
     },
     "origin": "maneuver",
     "price": { "ap": 1, "sp": 1 },
@@ -998,8 +998,8 @@
           "price": { "ap": 1, "sp": 1 },
           "repeatable": true,
           "description": {
-            "en": "You slam 1 **Grappled** creature into a wall within 1 Space and move up to your Speed along the wall, ending your movement within 1 Space of the wall. The target makes a Repeated Might Save against your Save DC. **Save Failure:** They gain 1 stack of **Bleeding** per Space moved.\n\nDC Tip: Remember that you are **Slowed** while Grappling a creature, so you would move half as far. If you gain an ability that let's you move without being **Slowed**  while Grappling a creature, you could move the full distance.",
-            "ru": "You slam 1 **Grappled** creature into a wall within 1 Space and move up to your Speed along the wall, ending your movement within 1 Space of the wall. The target makes a Repeated Might Save against your Save DC. **Save Failure:** They gain 1 stack of **Bleeding** per Space moved.\n\nDC Tip: Remember that you are **Slowed** while Grappling a creature, so you would move half as far. If you gain an ability that let's you move without being **Slowed**  while Grappling a creature, you could move the full distance."
+            "en": "You slam 1 **Grappled** creature into a wall within 1 Space and move up to your Speed along the wall, ending your movement within 1 Space of the wall. The target makes a Repeated Might Save against your Save DC. **Save Failure:** They gain 1 stack of **Bleeding** per Space moved.",
+            "ru": "You slam 1 **Grappled** creature into a wall within 1 Space and move up to your Speed along the wall, ending your movement within 1 Space of the wall. The target makes a Repeated Might Save against your Save DC. **Save Failure:** They gain 1 stack of **Bleeding** per Space moved."
           }
         }
       ]
@@ -1119,8 +1119,8 @@
     "kind": "static",
     "title": { "en": "Throw Creature", "ru": "Throw Creature" },
     "description": {
-      "en": "When you throw a creature using the **Throwing** rules, you can add the following Maneuver Enhancements. When you do, you are considered to be performing a Maneuver.\n\nDC Tip: Remember, throwing a creature ends the Grapple.",
-      "ru": "When you throw a creature using the **Throwing** rules, you can add the following Maneuver Enhancements. When you do, you are considered to be performing a Maneuver.\n\nDC Tip: Remember, throwing a creature ends the Grapple."
+      "en": "When you throw a creature using the **Throwing** rules, you can add the following Maneuver Enhancements. When you do, you are considered to be performing a Maneuver.",
+      "ru": "When you throw a creature using the **Throwing** rules, you can add the following Maneuver Enhancements. When you do, you are considered to be performing a Maneuver."
     },
     "origin": "maneuver",
     "price": { "ap": 1 },
