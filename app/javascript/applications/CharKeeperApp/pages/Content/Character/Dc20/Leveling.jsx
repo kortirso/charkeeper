@@ -45,7 +45,8 @@ const TRANSLATION = {
     general: 'General',
     multiclass: 'Multiclass',
     selectAdditionalTalent: 'Select additional talent (if you need)',
-    updated: 'Character is updated'
+    updated: 'Character is updated',
+    showDescription: 'Show description'
   },
   ru: {
     currentLevel: 'уровень',
@@ -79,7 +80,8 @@ const TRANSLATION = {
     general: 'Общий',
     multiclass: 'Мультикласс',
     selectAdditionalTalent: 'Выберите дополнительную черту (если хотите)',
-    updated: 'Персонаж обновлён'
+    updated: 'Персонаж обновлён',
+    showDescription: 'Показывать описание'
   }
 }
 
@@ -91,6 +93,7 @@ export const Dc20Leveling = (props) => {
   const [additionalTalent, setAdditionalTalent] = createSignal(null);
   const [selectedMultiTalent, setSelectedMultiTalent] = createSignal(null);
   const [subclass, setSubclass] = createSignal(null);
+  const [showDescription, setShowDescription] = createSignal(false);
 
   const [maneuvers, setManeuvers] = createSignal(undefined);
   const [talents, setTalents] = createSignal(undefined);
@@ -295,6 +298,7 @@ export const Dc20Leveling = (props) => {
         </Toggle>
         <Show when={maneuvers()}>
           <Toggle
+            innerClassList="p-2!"
             title={
               <div class="flex justify-between">
                 <p>{localize(TRANSLATION, locale()).maneuvers}</p>
@@ -302,13 +306,20 @@ export const Dc20Leveling = (props) => {
               </div>
             }
           >
+            <Checkbox
+              labelText={localize(TRANSLATION, locale()).showDescription}
+              labelPosition="right"
+              labelClassList="ml-2"
+              checked={showDescription()}
+              classList="mb-2"
+              onToggle={() => setShowDescription(!showDescription())}
+            />
             <For each={['attack', 'defense', 'grapple', 'utility']}>
               {(item) =>
-                <div class="mb-4">
-                  <p class="mb-2">{localize(TRANSLATION, locale())[item].title}</p>
-                  <div class="flex flex-wrap gap-x-4 gap-y-2">
-                    <For each={maneuvers().filter((maneuver) => maneuver.origin_value === item)}>
-                      {(maneuver) =>
+                <Toggle innerClassList="p-2!" title={localize(TRANSLATION, locale())[item].title} >
+                  <For each={maneuvers().filter((maneuver) => maneuver.origin_value === item)}>
+                    {(maneuver) =>
+                      <div class="ancestry-item">
                         <Checkbox
                           labelText={maneuver.title}
                           labelPosition="right"
@@ -316,10 +327,16 @@ export const Dc20Leveling = (props) => {
                           checked={character().maneuvers.includes(maneuver.slug)}
                           onToggle={() => changeManeuver(maneuver.slug)}
                         />
-                      }
-                    </For>
-                  </div>
-                </div>
+                        <Show when={showDescription()}>
+                          <p
+                            class="feat-markdown text-xs! mt-1"
+                            innerHTML={maneuver.description} // eslint-disable-line solid/no-innerhtml
+                          />
+                        </Show>
+                      </div>
+                    }
+                  </For>
+                </Toggle>
               }
             </For>
           </Toggle>

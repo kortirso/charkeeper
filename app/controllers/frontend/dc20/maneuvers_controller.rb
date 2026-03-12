@@ -10,8 +10,8 @@ module Frontend
           ::Dc20::Feat.where(origin: 3),
           ::Dc20::FeatSerializer,
           :maneuvers,
-          cache_options: { key: "dc20_maneuvers/#{I18n.locale}/v2", expires_in: 24.hours },
-          serialized_fields: { except: %i[description price] }
+          cache_options: { key: "dc20_maneuvers/#{I18n.locale}/v3", expires_in: 24.hours },
+          serialized_fields: { except: %i[price] }
         )
       end
     end

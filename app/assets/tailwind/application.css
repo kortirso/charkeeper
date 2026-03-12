@@ -428,7 +428,7 @@ nav.pagy.nav a.gap {
 }
 
 .feat-markdown p {
-  @apply mb-2;
+  @apply mb-1;
 }
 
 .feat-markdown strong {
@@ -844,4 +844,12 @@ body.web {
 
 .dc20-ability-savebox {
   @apply absolute -bottom-2 -right-6;
+}
+
+.ancestry-item {
+  @apply even:bg-stone-100 dark:even:bg-dusty p-1;
+}
+
+.ancestry-item:nth-of-type(n+2) {
+  @apply border-t border-gray-200 dark:border-neutral-800;
 }
