@@ -3,7 +3,7 @@ import * as i18n from '@solid-primitives/i18n';
 import { createWindowSize } from '@solid-primitives/resize-observer';
 
 import {
-  Dc20Abilities, Dc20Skills, Dc20Saves, Dc20CombatStatic, Dc20Leveling, Dc20Resources, Dc20Spells, Dc20Rest,
+  Dc20Abilities, Dc20Skills, Dc20CombatStatic, Dc20Leveling, Dc20Resources, Dc20Spells, Dc20Rest,
   Dc20Bonuses, Dc20Damages, Dc20Conditions, Dc20Info
 } from '../../../pages';
 import {
@@ -85,9 +85,6 @@ export const Dc20 = (props) => {
                   onReplaceCharacter={props.onReplaceCharacter}
                   onReloadCharacter={props.onReloadCharacter}
                 />
-              </div>
-              <div class="mt-4">
-                <Dc20Saves character={character()} openDiceRoll={openDiceRoll} />
               </div>
               <div class="mt-4">
                 <Dc20Conditions character={character()} onReloadCharacter={props.onReloadCharacter} />
@@ -187,9 +184,6 @@ export const Dc20 = (props) => {
             onReplaceCharacter={props.onReplaceCharacter}
             onReloadCharacter={props.onReloadCharacter}
           />
-        </div>
-        <div class="mt-4">
-          <Dc20Saves character={character()} openDiceRoll={openDiceRoll} />
         </div>
         <div class="mt-4">
           <Dc20Conditions character={character()} onReloadCharacter={props.onReloadCharacter} />

@@ -9,6 +9,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - feats rendering for Fallout characters
 
 ### Modified
+- rendering saves for DC20 characters
+
+### Modified
 - clearing state for items while deleting
 - skills management for DC20 and Fallout characters
 - items description for D&D items
