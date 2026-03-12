@@ -90,6 +90,7 @@ module Dc20Character
         ) { |_key, oldval, newval| newval + oldval }
     end
 
+    # TODO: deprecated
     def physical_save
       @physical_save ||=
         attribute_saves.slice('mig', 'agi').values.max +
@@ -97,6 +98,7 @@ module Dc20Character
         sum(dynamic_bonuses.pluck('physical_save'))
     end
 
+    # TODO: deprecated
     def mental_save
       @mental_save ||=
         attribute_saves.slice('cha', 'int').values.max +

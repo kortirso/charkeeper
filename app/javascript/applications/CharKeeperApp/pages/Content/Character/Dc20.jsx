@@ -87,6 +87,9 @@ export const Dc20 = (props) => {
                 />
               </div>
               <div class="mt-4">
+                <Dc20CombatStatic character={character()} openDiceRoll={openDiceRoll} />
+              </div>
+              <div class="mt-4">
                 <Dc20Conditions character={character()} onReloadCharacter={props.onReloadCharacter} />
               </div>
               <div class="mt-4">
@@ -108,7 +111,6 @@ export const Dc20 = (props) => {
               </div>
             </Match>
             <Match when={activeMobileTab() === 'combat'}>
-              <Dc20CombatStatic character={character()} openDiceRoll={openDiceRoll} />
               <div class="mt-4">
                 <Dc20Resources character={character()} onReplaceCharacter={props.onReplaceCharacter} />
               </div>
@@ -186,6 +188,9 @@ export const Dc20 = (props) => {
           />
         </div>
         <div class="mt-4">
+          <Dc20CombatStatic character={character()} openDiceRoll={openDiceRoll} />
+        </div>
+        <div class="mt-4">
           <Dc20Conditions character={character()} onReloadCharacter={props.onReloadCharacter} />
         </div>
         <div class="mt-4">
@@ -216,7 +221,6 @@ export const Dc20 = (props) => {
         <div class="p-2 pb-16 flex-1">
           <Switch>
             <Match when={activeTab() === 'combat'}>
-              <Dc20CombatStatic character={character()} openDiceRoll={openDiceRoll} />
               <div class="mt-4">
                 <Dc20Resources character={character()} onReplaceCharacter={props.onReplaceCharacter} />
               </div>

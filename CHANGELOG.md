@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Modified
 - rendering saves for DC20 characters
+- rendering combat stats for DC20 characters
 
 ### Modified
 - clearing state for items while deleting
