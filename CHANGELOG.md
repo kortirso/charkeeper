@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## Unreleased
 ### Added
 - feats rendering for Fallout characters
+- rendering ancestry and maneuver features during selection for DC20 characters
 
 ### Modified
 - rendering saves for DC20 characters

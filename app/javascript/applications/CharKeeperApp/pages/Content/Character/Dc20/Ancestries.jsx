@@ -14,7 +14,8 @@ const TRANSLATION = {
     ancestryPoints: 'Points',
     manyAncestriesAlert: 'Maximum 2 ancestries',
     minorTraitsAlert: 'Maximum 1 minor trait',
-    negativeTraitsAlert: 'Maximum 2 negative traits'
+    negativeTraitsAlert: 'Maximum 2 negative traits',
+    showDescription: 'Show description'
   },
   ru: {
     saveButton: 'Сохранить',
@@ -22,7 +23,8 @@ const TRANSLATION = {
     ancestryPoints: 'Очков',
     manyAncestriesAlert: 'Максимум только 2 родословные',
     minorTraitsAlert: 'Максимум 1 малая черта',
-    negativeTraitsAlert: 'Максимум 2 отрицательные черты'
+    negativeTraitsAlert: 'Максимум 2 отрицательные черты',
+    showDescription: 'Показывать описание'
   }
 }
 
@@ -31,6 +33,7 @@ export const Dc20Ancestries = (props) => {
 
   const [ancestries, setAncestries] = createSignal(undefined);
   const [availableAncestries, setAvailableAncestries] = createSignal([]);
+  const [showDescription, setShowDescription] = createSignal(false);
 
   const [ancestriesForm, setAncestriesForm] = createSignal({ ancestry_feats: {}, ancestry_points: 5 });
   const [validations, setValidations] = createSignal({ negativeTraits: 0, minorTraits: 0 });
@@ -127,6 +130,7 @@ export const Dc20Ancestries = (props) => {
     <ErrorWrapper payload={{ character_id: character().id, key: 'Dc20Ancestries' }}>
       <Show when={ancestries()}>
         <Toggle
+          innerClassList="p-2!"
           title={
             <div class="flex justify-between">
               <p>{localize(TRANSLATION, locale()).ancestries}</p>
@@ -135,22 +139,38 @@ export const Dc20Ancestries = (props) => {
           }
         >
           <>
+            <Checkbox
+              labelText={localize(TRANSLATION, locale()).showDescription}
+              labelPosition="right"
+              labelClassList="ml-2"
+              checked={showDescription()}
+              classList="mb-2"
+              onToggle={() => setShowDescription(!showDescription())}
+            />
             <For each={Object.entries(config.ancestries).filter(([ancestry]) => availableAncestries().includes(ancestry))}>
               {([ancestry, values]) =>
                 <Show when={Object.keys(ancestriesForm().ancestry_feats).length < 2 || ancestriesForm().ancestry_feats[ancestry]}>
                   <Toggle
+                    innerClassList="p-2!"
                     title={<p>{values.name[locale()]}{ancestriesForm().ancestry_feats[ancestry] ? ` (${ancestriesForm().ancestry_feats[ancestry].length})` : ''}</p>}
                   >
                     <For each={ancestries().filter((item) => item.origin_value === ancestry).sort((a, b) => a.price < b.price)}>
                       {(item) =>
-                        <Checkbox
-                          labelText={`${item.title} (${item.price})`}
-                          labelPosition="right"
-                          labelClassList="ml-2"
-                          checked={ancestriesForm().ancestry_feats[ancestry]?.includes(item.slug)}
-                          classList="mr-1 mb-1"
-                          onToggle={() => selectDc20Ancestry(ancestry, item.slug, item.price)}
-                        />
+                        <div class="ancestry-item">
+                          <Checkbox
+                            labelText={`${item.title} (${item.price})`}
+                            labelPosition="right"
+                            labelClassList="ml-2"
+                            checked={ancestriesForm().ancestry_feats[ancestry]?.includes(item.slug)}
+                            onToggle={() => selectDc20Ancestry(ancestry, item.slug, item.price)}
+                          />
+                          <Show when={showDescription()}>
+                            <p
+                              class="feat-markdown text-xs! mt-1"
+                              innerHTML={item.description} // eslint-disable-line solid/no-innerhtml
+                            />
+                          </Show>
+                        </div>
                       }
                     </For>
                   </Toggle>

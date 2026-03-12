@@ -22,8 +22,8 @@ export const Toggle = (props) => {
       </div>
       <Show when={props.isOpenByParent !== undefined ? props.isOpenByParent : isOpen()}>
         <div
+          class={['toggle-inner-default', props.innerClassList].join(' ')}
           classList={{ 'toggle-inner': !props.noInnerPadding, 'p-2': props.noInnerPadding }}
-          class="toggle-inner-default"
         >
           {safeChildren()}
         </div>
