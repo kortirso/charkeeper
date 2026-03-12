@@ -19,7 +19,7 @@ export const Checkbox = (props) => {
         <Show when={props.checked && !props.filled}>
           <Stroke />
         </Show>
-        <Show when={!props.checked && !props.filled}>
+        <Show when={!props.checked && !props.filled && !props.disabled}>
           <Stroke currentColor="#EEE" />
         </Show>
       </div>

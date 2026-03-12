@@ -13,6 +13,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - rendering saves for DC20 characters
 - rendering combat stats for DC20 characters
 - rendering equipment action buttons
+- rendering skills editing for DC20 characters
 
 ### Modified
 - clearing state for items while deleting
