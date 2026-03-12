@@ -4,7 +4,6 @@ import { createStore } from 'solid-js/store';
 import { ErrorWrapper, Checkbox, Levelbox, EditWrapper, GuideWrapper, Input, Select, Button, Dice } from '../../../../components';
 import config from '../../../../data/dc20.json';
 import { useAppState, useAppLocale, useAppAlert } from '../../../../context';
-import { Minus, Plus } from '../../../../assets';
 import { updateCharacterRequest } from '../../../../requests/updateCharacterRequest';
 import { modifier, translate, localize, performResponse } from '../../../../helpers';
 
@@ -23,7 +22,8 @@ const TRANSLATION = {
     toTrades: 'to 2 trades',
     toLangs: 'to 2 langs',
     overQualified: 'Too many skill points spent',
-    overQualifiedTrades: 'Too many trade points spent'
+    overQualifiedTrades: 'Too many trade points spent',
+    fluent: 'Fluent'
   },
   ru: {
     helpMessage: 'Заполните данные по навыкам, ремёслам и языкам вашего персонажа. Конвертация очков необратима.',
@@ -39,7 +39,8 @@ const TRANSLATION = {
     toTrades: 'на 2 ремесла',
     toLangs: 'на 2 языка',
     overQualified: 'Потрачено много очков навыков',
-    overQualifiedTrades: 'Потрачено много очков ремёсел'
+    overQualifiedTrades: 'Потрачено много очков ремёсел',
+    fluent: 'Владение'
   }
 }
 
@@ -107,11 +108,40 @@ export const Dc20Skills = (props) => {
     );
   }
 
-  const updateSkill = (slug, modifier) => {
+  const renderSkillBoxes = (object, checkCallback, toggleCallback) => {
+    const maxValue = maxSkillLevel() + (object.expertise ? 1 : 0);
+    const disabled = 5 - maxValue;
+
+    return (
+      <div class="flex gap-0.5">
+        <For each={Array.from([...Array(maxValue).keys()], (x) => x + 1)}>
+          {(index) =>
+            <Checkbox filled checked={object.level >= index} onToggle={() => checkCallback(object.slug, index)} />
+          }
+        </For>
+        <Show when={disabled > 0}>
+          <For each={Array.from([...Array(disabled).keys()])}>
+            {() =>
+              <Checkbox disabled checked={false} />
+            }
+          </For>
+        </Show>
+        <Checkbox filled classList="ml-2 rotate-45" checked={object.expertise} onToggle={() => toggleCallback(object.slug)} />
+      </div>
+    );
+  }
+
+  const updateSkill = (slug, nextValue) => {
+    let modifier;
+
     const result = skillsData().slice().map((item) => {
       if (item.slug !== slug) return item;
 
-      return { ...item, level: item.level + modifier } 
+      if (nextValue === 1 && item.level === 1) {
+        modifier = -1;
+        nextValue = 0;
+      } else modifier = nextValue - item.level;
+      return { ...item, level: nextValue } 
     });
     batch(() => {
       setSkillPoints({ ...skillPoints, skillPoints: skillPoints.skillPoints - modifier });
@@ -145,11 +175,17 @@ export const Dc20Skills = (props) => {
     });
   }
 
-  const updateTrade = (slug, modifier) => {
+  const updateTrade = (slug, nextValue) => {
+    let modifier;
+
     const result = tradesData().slice().map((item) => {
       if (item.slug !== slug) return item;
 
-      return { ...item, level: item.level + modifier } 
+      if (nextValue === 1 && item.level === 1) {
+        modifier = -1;
+        nextValue = 0;
+      } else modifier = nextValue - item.level;
+      return { ...item, level: nextValue } 
     });
     batch(() => {
       setSkillPoints({ ...skillPoints, tradePoints: skillPoints.tradePoints - modifier });
@@ -183,14 +219,16 @@ export const Dc20Skills = (props) => {
     });
   }
 
-  const updateLanguage = (slug) => {
-    const currentLevel = languagesData()[slug];
-    const newValue = currentLevel === 2 ? 0 : (currentLevel === undefined ? 1 : (currentLevel + 1));
-    const difference = newValue - currentLevel
+  const updateLanguage = (slug, nextValue) => {
+    let modifier;
+    if (nextValue === 1 && languagesData()[slug] === 1) {
+      modifier = -1;
+      nextValue = 0;
+    } else modifier = nextValue - languagesData()[slug];
 
     batch(() => {
-      setSkillPoints({ ...skillPoints, languagePoints: skillPoints.languagePoints - difference });
-      setLanguagesData({ ...languagesData(), [slug]: newValue });
+      setSkillPoints({ ...skillPoints, languagePoints: skillPoints.languagePoints - modifier });
+      setLanguagesData({ ...languagesData(), [slug]: nextValue });
     });
   }
 
@@ -296,8 +334,8 @@ export const Dc20Skills = (props) => {
         onReloadCharacter={props.onReloadCharacter}
         onNextClick={props.onNextGuideStepClick}
       >
-        <div class="flex flex-col emd:flex-row emd:gap-2 mt-2">
-          <div class="flex-1">
+        <div class="grid grid-cols-1 emd:grid-cols-2 emd:gap-2 mt-2">
+          <div>
             <EditWrapper
               editMode={editSkillsMode()}
               onSetEditMode={setEditSkillsMode}
@@ -349,26 +387,11 @@ export const Dc20Skills = (props) => {
                       >
                         <For each={skillsData().filter((item) => item.ability === slug)}>
                           {(skill) =>
-                            <div class="dc20-skill">
-                              <Checkbox classList="mr-2" checked={skill.expertise} onToggle={() => toggleSkillExpertise(skill.slug)} />
-                              <p class="flex-1" classList={{ 'font-medium!': skill.expertise }}>
+                            <div class="dc20-skill justify-between">
+                              <p class="flex-1 text-sm md:text-base" classList={{ 'font-medium!': skill.expertise }}>
                                 {config.skills[skill.slug].name[locale()]}
                               </p>
-                              <div class="fallout-skill-actions">
-                                <Button
-                                  default
-                                  size="small"
-                                  disabled={skill.level === 0}
-                                  onClick={() => skill.level === 0 ? null : updateSkill(skill.slug, -1)}
-                                ><Minus /></Button>
-                                <p>{skill.level}</p>
-                                <Button
-                                  default
-                                  size="small"
-                                  disabled={skill.level >= maxSkillLevel() + (skill.expertise ? 1 : 0)}
-                                  onClick={() => skill.level >= maxSkillLevel() + (skill.expertise ? 1 : 0) ? null : updateSkill(skill.slug, 1)}
-                                ><Plus /></Button>
-                              </div>
+                              {renderSkillBoxes(skill, updateSkill, toggleSkillExpertise)}
                             </div>
                           }
                         </For>
@@ -379,7 +402,7 @@ export const Dc20Skills = (props) => {
               </div>
             </EditWrapper>
           </div>
-          <div class="flex-1">
+          <div>
             <EditWrapper
               editMode={editTradesMode()}
               onSetEditMode={setEditTradesMode}
@@ -432,25 +455,10 @@ export const Dc20Skills = (props) => {
                         <For each={tradesData().filter((item) => item.ability === slug)}>
                           {(trade) =>
                             <div class="dc20-skill">
-                              <Checkbox classList="mr-2" checked={trade.expertise} onToggle={() => toggleTradeExpertise(trade.slug)} />
-                              <p class="flex-1" classList={{ 'font-medium!': trade.expertise }}>
+                              <p class="flex-1 text-sm md:text-base" classList={{ 'font-medium!': trade.expertise }}>
                                 {config.trades[trade.slug] ? config.trades[trade.slug].name[locale()] : trade.slug}
                               </p>
-                              <div class="fallout-skill-actions">
-                                <Button
-                                  default
-                                  size="small"
-                                  disabled={trade.level === 0}
-                                  onClick={() => trade.level === 0 ? null : updateTrade(trade.slug, -1)}
-                                ><Minus /></Button>
-                                <p>{trade.level}</p>
-                                <Button
-                                  default
-                                  size="small"
-                                  disabled={trade.level >= maxSkillLevel() + (trade.expertise ? 1 : 0)}
-                                  onClick={() => trade.level >= maxSkillLevel() + (trade.expertise ? 1 : 0) ? null : updateTrade(trade.slug, 1)}
-                                ><Plus /></Button>
-                              </div>
+                              {renderSkillBoxes(trade, updateTrade, toggleTradeExpertise)}
                             </div>
                           }
                         </For>
@@ -489,31 +497,31 @@ export const Dc20Skills = (props) => {
                 </Show>
                 <For each={Object.entries(editLanguagesMode() ? languagesData() : character().language_levels)}>
                   {([name, level]) =>
-                    <div class="flex items-center mb-1">
+                    <div class="dc20-skill gap-x-1">
                       <Show
                         when={editLanguagesMode()}
-                        fallback={<Levelbox classList="mr-2" value={level} />}
-                      >
-                        <Levelbox
-                          classList="mr-2"
-                          value={level}
-                          onToggle={() => updateLanguage(name)}
-                        />
-                      </Show>
-                      <p class={`flex-1 flex ${level > 0 ? 'font-normal!' : ''}`}>{name}</p>
-                      <span>
-                        {level == 2 || level == 0 ? (
-                            '-'
-                          ) : (
-                            <Dice
-                              width="28"
-                              height="28"
-                              text={modifier(Math.max(...[character().modified_abilities.int, character().modified_abilities.cha]))}
-                              onClick={() => props.openDiceRoll(`/check language "${name}"`, Math.max(...[character().modified_abilities.int, character().modified_abilities.cha]))}
-                            />
-                          )
+                        fallback={
+                          <>
+                            <p class={`flex-1 ${level > 0 ? 'font-normal!' : ''}`}>{name}</p>
+                            <span>
+                              <Show when={level === 0}>-</Show>
+                              <Show when={level === 1}>
+                                <Dice
+                                  width="28"
+                                  height="28"
+                                  text={modifier(Math.max(...[character().modified_abilities.int, character().modified_abilities.cha]))}
+                                  onClick={() => props.openDiceRoll(`/check language "${name}"`, Math.max(...[character().modified_abilities.int, character().modified_abilities.cha]))}
+                                />
+                              </Show>
+                              <Show when={level === 2}>{localize(TRANSLATION, locale()).fluent}</Show>
+                            </span>
+                          </>
                         }
-                      </span>
+                      >
+                        <p class={`flex-1 flex ${level > 0 ? 'font-normal!' : ''}`}>{name}</p>
+                        <Checkbox filled checked={level >= 1} onToggle={() => updateLanguage(name, 1)} />
+                        <Checkbox filled checked={level >= 2} onToggle={() => updateLanguage(name, 2)} />
+                      </Show>
                     </div>
                   }
                 </For>

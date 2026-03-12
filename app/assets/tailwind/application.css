@@ -166,7 +166,7 @@
 }
 
 .toggle.disabled {
-  @apply bg-neutral-400;
+  @apply bg-neutral-300;
 }
 
 .toggle-inner {
@@ -790,7 +790,7 @@ body.web {
 }
 
 .dc20-skill {
-  @apply flex items-center py-1 p-1;
+  @apply flex items-center p-1;
   @apply even:bg-stone-100 even:dark:bg-dark-dusty;
 }
 
