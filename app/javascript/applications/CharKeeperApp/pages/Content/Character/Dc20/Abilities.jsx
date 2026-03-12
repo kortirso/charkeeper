@@ -10,11 +10,13 @@ import { modifier, localize } from '../../../../helpers';
 const TRANSLATION = {
   en: {
     attributePoints: 'Free attribute points',
-    helpMessage: 'You start with a -2 in all of your Attributes. You then gain Attribute Points to increase whichever Attributes you want, up to the Attribute Limit (3).'
+    helpMessage: 'You start with a -2 in all of your Attributes. You then gain Attribute Points to increase whichever Attributes you want, up to the Attribute Limit (3).',
+    save: 'Save'
   },
   ru: {
     attributePoints: 'Очки атрибутов для распределения',
-    helpMessage: 'Ваш персонаж начинает с -2 во всех атрибутах. Вы можете потратить Очки Атрибутов для увеличения любых атрибутов вплоть до максимума (3).'
+    helpMessage: 'Ваш персонаж начинает с -2 во всех атрибутах. Вы можете потратить Очки Атрибутов для увеличения любых атрибутов вплоть до максимума (3).',
+    save: 'Спас'
   }
 }
 
@@ -104,29 +106,33 @@ export const Dc20Abilities = (props) => {
               <For each={Object.entries(config.abilities).map(([key, values]) => [key, values.name[locale()]])}>
                 {([slug, ability]) =>
                   <div>
-                    <p class="text-sm uppercase text-center mb-2 dark:text-white">{ability}</p>
-                    <div class="mx-auto flex items-center justify-center">
+                    <p class="dc20-ability-title">{ability}</p>
+                    <div class="dc20-ability">
                       <p class="text-2xl font-normal!">
-                        {editMode() ?
-                          abilitiesData()[slug] :
-                          <Dice
-                            width="64"
-                            height="64"
-                            text={modifier(character().modified_abilities[slug])}
-                            textClassList="text-4xl"
-                            onClick={() => props.openDiceRoll(`/check attr ${slug}`, character().modified_abilities[slug])}
-                          />
-                        }
+                        <Show when={!editMode()} fallback={abilitiesData()[slug]}>
+                          <div class="relative pb-4">
+                            <Dice
+                              width="64"
+                              height="64"
+                              text={modifier(character().modified_abilities[slug])}
+                              textClassList="text-4xl"
+                              onClick={() => props.openDiceRoll(`/check attr ${slug}`, character().modified_abilities[slug])}
+                            />
+                            <div class="dc20-ability-savebox">
+                              <Dice
+                                text={modifier(character().attribute_saves[slug])}
+                                onClick={() => props.openDiceRoll(`/check save ${slug}`, character().attribute_saves[slug])}
+                              />
+                              <p class="text-xs text-center">{localize(TRANSLATION, locale()).save}</p>
+                            </div>
+                          </div>
+                        </Show>
                       </p>
                     </div>
                     <Show when={editMode()}>
                       <div class="mt-2 flex justify-center gap-2">
-                        <Button default size="small" onClick={() => decreaseAbilityValue(slug)}>
-                          <Minus />
-                        </Button>
-                        <Button default size="small" onClick={() => increaseAbilityValue(slug)}>
-                          <Plus />
-                        </Button>
+                        <Button default size="small" onClick={() => decreaseAbilityValue(slug)}><Minus /></Button>
+                        <Button default size="small" onClick={() => increaseAbilityValue(slug)}><Plus /></Button>
                       </div>
                     </Show>
                   </div>

@@ -821,3 +821,15 @@ body.web {
 .dice-text-box {
   @apply absolute top-0 left-0 w-full h-full flex justify-center items-center;
 }
+
+.dc20-ability-title {
+  @apply text-sm uppercase text-center mb-2 dark:text-white;
+}
+
+.dc20-ability {
+  @apply mx-auto flex items-center justify-center;
+}
+
+.dc20-ability-savebox {
+  @apply absolute -bottom-2 -right-6;
+}
