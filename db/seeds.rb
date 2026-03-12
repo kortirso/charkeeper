@@ -130,6 +130,17 @@ feats.each do |feat|
   ::Dc20::Feat.create!(feat)
 end
 
+markdown = ActiveMarkdown.new
+file_content = File.read('db/data/dc20/maneuvers.json')
+feats = JSON.parse(file_content)
+feats.each do |feat|
+  feat['info']['enhancements'].map! do |item|
+    item['description'].transform_values! { |value| markdown.call(value: value).strip }
+    item
+  end
+  ::Dc20::Feat.create!(feat)
+end
+
 
 Dir[File.join(Rails.root.join('db/data/pathfinder2/feats/*.json'))].each do |filename|
   puts "seeding - #{filename}"
@@ -378,6 +389,52 @@ end
 beautified_json_string = JSON.pretty_generate(data_hash)
 # # Write the beautified JSON string to a file
 File.open('db/data/dc20/spells_3.json', 'w') do |file|
+  file.write(beautified_json_string)
+end
+
+
+client = HttpService::Client.new(url: 'https://sb.dccrit.com')
+response = client.post(path: 'rest/v1/rpc/get_maneuver_list_v3', body: { p_per_page: 50, p_page: 1, p_sort_asc: true, p_sort_by: 'name' }, headers: { 'apiKey' => 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFudnNkcXBieXVqcGZnaGdhcGxhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Mjc1NTI2MjAsImV4cCI6MjA0MzEyODYyMH0.2stuMtZD0DcrX3pbIjKTMV3pJ0rRGrP0aJvS6bydG9U', 'Accept-Encoding' => 'identity' })
+
+
+def enhancements(item)
+  item['enhancements']&.map do |enh|
+    {
+      name: { "en": enh['name'], "ru": enh['name'] },
+      price: enh['cost'],
+      repeatable: enh['repeatable'],
+      description: { "en": enh['desc'], "ru": enh['desc'] }
+    }
+  end
+end
+
+data_hash = response['list'].filter_map do |data|
+  item = data['data']
+  next unless item['official']
+
+  description = item['desc']
+  description = "#{description}\n\n**Trigger:** #{item['trigger']}" if item['trigger']
+  description = "#{description}\n\n**Reaction:** #{item['reaction']}" if item['reaction']
+
+  {
+    slug: item['name'].underscore.gsub(' ', '_'),
+    kind: 'static',
+    title: { en: item['name'], ru: item['name'] },
+    description: { en: description, ru: description },
+    origin: 'maneuver',
+    price: item['cost'],
+    origin_value: item['type'].split(' ')[0].underscore,
+    
+    info: {
+      range: { en: item['range'], ru: item['range'] },
+      enhancements: enhancements(item)
+    }.compact
+  }
+end
+
+beautified_json_string = JSON.pretty_generate(data_hash)
+# # Write the beautified JSON string to a file
+File.open('db/data/dc20/maneuvers.json', 'w') do |file|
   file.write(beautified_json_string)
 end
 
