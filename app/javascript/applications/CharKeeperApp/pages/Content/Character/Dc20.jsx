@@ -111,9 +111,7 @@ export const Dc20 = (props) => {
               </div>
             </Match>
             <Match when={activeMobileTab() === 'combat'}>
-              <div class="mt-4">
-                <Dc20Resources character={character()} onReplaceCharacter={props.onReplaceCharacter} />
-              </div>
+              <Dc20Resources character={character()} onReplaceCharacter={props.onReplaceCharacter} />
               <div class="mt-4">
                 <Dc20Damages character={character()} onReloadCharacter={props.onReloadCharacter} />
               </div>
@@ -221,9 +219,7 @@ export const Dc20 = (props) => {
         <div class="p-2 pb-16 flex-1">
           <Switch>
             <Match when={activeTab() === 'combat'}>
-              <div class="mt-4">
-                <Dc20Resources character={character()} onReplaceCharacter={props.onReplaceCharacter} />
-              </div>
+              <Dc20Resources character={character()} onReplaceCharacter={props.onReplaceCharacter} />
               <div class="mt-4">
                 <Dc20Damages character={character()} onReloadCharacter={props.onReloadCharacter} />
               </div>

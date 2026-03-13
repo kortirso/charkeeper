@@ -215,31 +215,33 @@ export const Dc20Damages = (props) => {
                       </div>
                     }
                   </For>
-                  <div class="flex items-center gap-x-4 mt-2">
+                  <div class="flex flex-col md:flex-row items-start md:items-center gap-2 mt-2">
                     <Select
-                      containerClassList="flex-1"
+                      containerClassList="flex-1 w-full"
                       labelText={localize(TRANSLATION, locale()).impact}
                       items={localize(TRANSLATION, locale()).impacts}
                       selectedValue={impact()}
                       onSelect={setImpact}
                     />
                     <Select
-                      containerClassList="flex-1"
+                      containerClassList="flex-1 w-full"
                       labelText={localize(TRANSLATION, locale()).impactType}
                       items={impactTypes()}
                       selectedValue={impactType()}
                       onSelect={setImpactType}
                     />
-                    <Show when={impact() && impact() !== 'immune'}>
-                      <Select
-                        containerClassList="flex-1"
-                        labelText={localize(TRANSLATION, locale()).impactValue}
-                        items={impactValues()}
-                        selectedValue={impactValue()}
-                        onSelect={setImpactValue}
-                      />
-                    </Show>
-                    <Button default classList="mt-8" onClick={addImpact}><PlusSmall /></Button>
+                    <div class="flex justify-start items-end gap-2 flex-1 w-full">
+                      <Show when={impact() && impact() !== 'immune'}>
+                        <Select
+                          containerClassList="flex-1 w-full"
+                          labelText={localize(TRANSLATION, locale()).impactValue}
+                          items={impactValues()}
+                          selectedValue={impactValue()}
+                          onSelect={setImpactValue}
+                        />
+                      </Show>
+                      <Button default classList="md:mt-8" onClick={addImpact}><PlusSmall /></Button>
+                    </div>
                   </div>
                 </div>
               }

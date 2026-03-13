@@ -145,15 +145,13 @@ export const UsernameTab = (props) => {
             <Label labelText={localize(TRANSLATION, locale()).alternatives} />
             <For each={Object.entries(PROVIDER_LOCALES[locale()])}>
               {([provider, values]) =>
-                <div class="flex items-center mb-2">
-                  <span class="dark:text-snow">{localize(TRANSLATION, locale()).providers[provider]}</span>
-                  <Select
-                    containerClassList="ml-2 w-80"
-                    items={values}
-                    selectedValue={providerLocales()[provider] === null || providerLocales()[provider] === undefined ? 'ru' : providerLocales()[provider]}
-                    onSelect={(value) => setProviderLocales({ ...providerLocales(), [provider]: value })}
-                  />
-                </div>
+                <Select
+                  containerClassList="mb-2"
+                  labelText={localize(TRANSLATION, locale()).providers[provider]}
+                  items={values}
+                  selectedValue={providerLocales()[provider] === null || providerLocales()[provider] === undefined ? 'ru' : providerLocales()[provider]}
+                  onSelect={(value) => setProviderLocales({ ...providerLocales(), [provider]: value })}
+                />
               }
             </For>
           </div>

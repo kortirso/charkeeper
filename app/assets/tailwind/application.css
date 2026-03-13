@@ -203,10 +203,10 @@
 }
 
 .form-field .form-dropdown {
-  @apply absolute w-full bg-white border-r border-l border-gray-200 z-10 overflow-y-auto shadow;
+  @apply absolute w-full bg-white border-r border-l border-b border-gray-200 z-10 overflow-y-auto shadow;
   @apply dark:bg-neutral-800 dark:border-gray-500;
 
-  max-height: 7.5rem;
+  max-height: 9rem;
 }
 
 .form-field .form-dropdown.full {
@@ -220,6 +220,10 @@
 .form-field .form-dropdown li {
   @apply border-b border-gray-200 m-0 py-2 px-4;
   @apply dark:text-snow dark:border-gray-500;
+}
+
+.form-field .form-dropdown li:last-of-type {
+  @apply border-none;
 }
 
 .form-field .form-dropdown li:hover {

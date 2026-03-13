@@ -14,10 +14,10 @@ import { localize } from '../../helpers';
 
 const TRANSLATION = {
   en: {
-    askDm: 'Ask your DM for campaign ID'
+    askDm: 'Campaign ID'
   },
   ru: {
-    askDm: 'Узнайте у мастера ID кампании'
+    askDm: 'ID кампании'
   }
 }
 
