@@ -125,7 +125,7 @@ export const Dnd5Craft = (props) => {
             <Select
               containerClassList="w-full mb-2"
               labelText={localize(TRANSLATION, locale()).selectTool}
-              items={Object.fromEntries(tools().map((item) => [item.id, item.name[locale()]]))}
+              items={Object.fromEntries(tools().map((item) => [item.id, localize(item.name, locale())]))}
               selectedValue={toolId()}
               onSelect={changeTool}
             />
@@ -133,7 +133,7 @@ export const Dnd5Craft = (props) => {
               <Select
                 containerClassList="w-full mb-2"
                 labelText={localize(TRANSLATION, locale()).selectItem}
-                items={Object.fromEntries(craftItems().map((item) => [item.id, item.name[locale()]]))}
+                items={Object.fromEntries(craftItems().map((item) => [item.id, localize(item.name, locale())]))}
                 selectedValue={itemId()}
                 onSelect={changeCraftItem}
               />

@@ -173,13 +173,13 @@ export const FalloutSkills = (props) => {
                             <Levelbox classList="mr-2" value={skill.modifier} />
                             <p class="uppercase mr-4">{localize(config.abilities[skill.ability].shortName, locale())}</p>
                             <p class="flex-1" classList={{ 'font-medium!': skill.expertise }}>
-                              {config.skills[skill.slug].name[locale()]}
+                              {localize(config.skills[skill.slug].name, locale())}
                             </p>
                             <Dice
                               width="30"
                               height="30"
                               text={skill.modifier + skill.attribute_modifier}
-                              onClick={() => props.openDiceRoll(`/check skill "${config.skills[skill.slug].name[locale()]}"`, `${localize(TRANSLATION, locale()).check}, ${config.skills[skill.slug].name[locale()]}`, skill.modifier + skill.attribute_modifier, (skill.expertise ? skill.modifier : 1))}
+                              onClick={() => props.openDiceRoll(`/check skill "${localize(config.skills[skill.slug].name, locale())}"`, `${localize(TRANSLATION, locale()).check}, ${localize(config.skills[skill.slug].name, locale())}`, skill.modifier + skill.attribute_modifier, (skill.expertise ? skill.modifier : 1))}
                             />
                           </div>
                         }
@@ -191,7 +191,7 @@ export const FalloutSkills = (props) => {
                         <div class="fallout-skill">
                           <Checkbox classList="mr-2" checked={skill.expertise} onToggle={() => toggleSkillTag(skill.slug)} />
                           <p class="flex-1" classList={{ 'font-medium!': skill.expertise }}>
-                            {config.skills[skill.slug].name[locale()]}
+                            {localize(config.skills[skill.slug].name, locale())}
                           </p>
                           <div class="fallout-skill-actions">
                             <Button

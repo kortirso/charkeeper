@@ -4,7 +4,7 @@ import { ErrorWrapper, EditWrapper, Levelbox, Dice } from '../../../../component
 import config from '../../../../data/pathfinder2.json';
 import { useAppState, useAppLocale, useAppAlert } from '../../../../context';
 import { updateCharacterRequest } from '../../../../requests/updateCharacterRequest';
-import { modifier } from '../../../../helpers';
+import { modifier, localize } from '../../../../helpers';
 
 export const Pathfinder2SavingThrows = (props) => {
   const character = () => props.character;
@@ -54,7 +54,7 @@ export const Pathfinder2SavingThrows = (props) => {
             {([slug, savingName]) =>
               <div class="flex-1 flex flex-col items-center">
                 <p class="text-sm uppercase text-center mb-4">
-                  {savingName.name[locale()]}
+                  {localize(savingName.name, locale())}
                 </p>
                 <div class="flex items-center">
                   <Show

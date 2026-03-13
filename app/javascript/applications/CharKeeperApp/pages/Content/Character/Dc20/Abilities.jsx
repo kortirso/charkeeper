@@ -103,7 +103,7 @@ export const Dc20Abilities = (props) => {
         >
           <div class="blockable p-4">
             <div class="grid grid-cols-2 emd:grid-cols-4 gap-x-2 gap-y-4">
-              <For each={Object.entries(config.abilities).map(([key, values]) => [key, values.name[locale()]])}>
+              <For each={Object.entries(config.abilities).map(([key, values]) => [key, localize(values.name, locale())])}>
                 {([slug, ability]) =>
                   <div>
                     <p class="dc20-ability-title">{ability}</p>

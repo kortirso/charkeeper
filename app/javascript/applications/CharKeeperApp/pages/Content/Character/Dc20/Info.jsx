@@ -40,7 +40,7 @@ export const Dc20Info = (props) => {
               {(item) =>
                 <Text
                   containerClassList="character-info-item"
-                  labelText={TRANSLATION[locale()][item]}
+                  labelText={localize(TRANSLATION, locale())[item]}
                   labelClassList="character-info-text"
                   text={renderValue(item)}
                 />

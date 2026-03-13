@@ -234,11 +234,11 @@ export const Feats = (props) => {
                         <For each={feature().info.enhancements}>
                           {(enhancement) =>
                             <p class="feat-markdown text-sm mt-1">
-                              <span class="font-medium!">{enhancement.name[locale()]}</span>
+                              <span class="font-medium!">{localize(enhancement.name, locale())}</span>
                               <span>: ({renderFeatPrice(enhancement)}) </span>
                               <span
                                 class="feat-markdown"
-                                innerHTML={enhancement.description[locale()]} // eslint-disable-line solid/no-innerhtml
+                                innerHTML={localize(enhancement.description, locale())} // eslint-disable-line solid/no-innerhtml
                               />
                             </p>
                           }
@@ -269,7 +269,7 @@ export const Feats = (props) => {
                       <Select
                         withNull
                         containerClassList="w-full mt-2"
-                        items={Object.entries(feature().options).reduce((acc, [key, value]) => { acc[key] = value[locale()]; return acc; }, {})}
+                        items={Object.entries(feature().options).reduce((acc, [key, value]) => { acc[key] = localize(value, locale()); return acc; }, {})}
                         selectedValue={featValues()[feature().slug]}
                         onSelect={(option) => updateFeatureValue(feature(), option)}
                       />
@@ -278,7 +278,7 @@ export const Feats = (props) => {
                       <Select
                         multi
                         containerClassList="w-full mt-2"
-                        items={Object.entries(feature().options).reduce((acc, [key, value]) => { acc[key] = value[locale()]; return acc; }, {})}
+                        items={Object.entries(feature().options).reduce((acc, [key, value]) => { acc[key] = localize(value, locale()); return acc; }, {})}
                         selectedValues={featValues()[feature().slug] || []}
                         onSelect={(option) => updateMultiFeatureValue(feature(), option)}
                       />

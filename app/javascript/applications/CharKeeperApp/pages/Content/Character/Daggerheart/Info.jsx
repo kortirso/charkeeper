@@ -2,6 +2,7 @@ import { For } from 'solid-js';
 
 import { ErrorWrapper, GuideWrapper, Text } from '../../../../components';
 import { useAppLocale } from '../../../../context';
+import { localize } from '../../../../helpers';
 
 const TRANSLATION = {
   en: {
@@ -33,7 +34,7 @@ export const DaggerheartInfo = (props) => {
               {(item) =>
                 <Text
                   containerClassList="character-info-item"
-                  labelText={TRANSLATION[locale()][item]}
+                  labelText={localize(TRANSLATION, locale())[item]}
                   labelClassList="character-info-text"
                   text={character().names[item]}
                 />

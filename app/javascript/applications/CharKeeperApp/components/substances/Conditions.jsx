@@ -70,7 +70,7 @@ export const Conditions = (props) => {
           <Show when={selectedConditions().length > 0}>
             <For each={selectedConditions()}>
               {(condition) =>
-                <p class="mt-2 text-sm">{providerConfig().conditions[condition].description[locale()]}</p>
+                <p class="mt-2 text-sm">{localize(providerConfig().conditions[condition].description, locale())}</p>
               }
             </For>
           </Show>

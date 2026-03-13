@@ -31,12 +31,12 @@ export const Dnd2024WildShapes = (props) => {
   const [locale] = useAppLocale();
 
   const availableBeastforms = createMemo(() => {
-    const result = Object.entries(config.beastforms).map(([key, values]) => [key, values.name[locale()]]);
+    const result = Object.entries(config.beastforms).map(([key, values]) => [key, localize(values.name, locale())]);
     return Object.fromEntries(result);
   })
 
   const beastformsSelect = createMemo(() => {
-    const result = Object.entries(config.beastforms).filter(([key,]) => selectedBeastforms().includes(key)).map(([key, values]) => [key, values.name[locale()]]);
+    const result = Object.entries(config.beastforms).filter(([key,]) => selectedBeastforms().includes(key)).map(([key, values]) => [key, localize(values.name, locale())]);
     return Object.fromEntries([['null', localize(TRANSLATION, locale())['noShape']]].concat(result));
   });
 

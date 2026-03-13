@@ -101,7 +101,7 @@ export const FateStunts = (props) => {
         onSaveChanges={updateCharacter}
       >
         <div class="blockable p-4">
-          <h2 class="text-lg">{TRANSLATION[locale()].title}</h2>
+          <h2 class="text-lg">{localize(TRANSLATION, locale()).title}</h2>
           <Show
             when={editMode()}
             fallback={
@@ -131,33 +131,33 @@ export const FateStunts = (props) => {
                   <div class="mt-4">
                     <Input
                       containerClassList="mb-1"
-                      labelText={TRANSLATION[locale()].stuntTitle}
+                      labelText={localize(TRANSLATION, locale()).stuntTitle}
                       value={stunt().title}
                       onInput={(value) => changeStunt(stunt().id, 'title', value)}
                     />
                     <TextArea
                       rows="3"
                       containerClassList="mb-1"
-                      labelText={TRANSLATION[locale()].description}
+                      labelText={localize(TRANSLATION, locale()).description}
                       value={stunt().description}
                       onChange={(value) => changeStunt(stunt().id, 'description', value)}
                     />
                     <Select
-                      labelText={TRANSLATION[locale()].skill}
+                      labelText={localize(TRANSLATION, locale()).skill}
                       items={translate(config.skills, locale())}
                       selectedValue={stunt().skill}
                       onSelect={(value) => changeStunt(stunt().id, 'skill', value)}
                     />
                     <div class="flex justify-start mt-2">
                       <Button default classList="px-2" onClick={() => removeStunt(stunt().id)}>
-                        {TRANSLATION[locale()].removeStunt}
+                        {localize(TRANSLATION, locale()).removeStunt}
                       </Button>
                     </div>
                   </div>
                 }
               </Key>
               <div class="flex justify-start mt-4">
-                <Button default classList="px-2" onClick={addStunt}>{TRANSLATION[locale()].addStunt}</Button>
+                <Button default classList="px-2" onClick={addStunt}>{localize(TRANSLATION, locale()).addStunt}</Button>
               </div>
             </>
           </Show>

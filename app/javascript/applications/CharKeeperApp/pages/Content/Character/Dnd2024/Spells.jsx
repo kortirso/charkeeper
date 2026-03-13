@@ -296,7 +296,7 @@ export const Dnd2024Spells = (props) => {
               <div class="mb-4 flex">
                 <Select
                   labelText={localize(TRANSLATION, locale())['customSpellAbility']}
-                  items={{ 'null': localize(TRANSLATION, locale())['noValue'], 'int': config.abilities.int.name[locale()], 'wis': config.abilities.wis.name[locale()], 'cha': config.abilities.cha.name[locale()] }}
+                  items={{ 'null': localize(TRANSLATION, locale())['noValue'], 'int': localize(config.abilities.int.name, locale()), 'wis': localize(config.abilities.wis.name, locale()), 'cha': localize(config.abilities.cha.name, locale()) }}
                   selectedValue={spellAbility()}
                   onSelect={(value) => setSpellAbility(value === 'null' ? null : value)}
                 />
@@ -335,13 +335,13 @@ export const Dnd2024Spells = (props) => {
                                     fallback={
                                       <Show when={knownSpellIds().includes(spell.id) && !staticSpellIds().includes(spell.id)}>
                                         <p class="text-xs mt-1">
-                                          {config.classes[characterSpells().find((item) => item.feat_id === spell.id).prepared_by]['name'][locale()]}
+                                          {localize(config.classes[characterSpells().find((item) => item.feat_id === spell.id).prepared_by]['name'], locale())}
                                         </p>
                                       </Show>
                                     }
                                   >
                                     <p class="text-xs text-wrap">
-                                      {spell.origin_values.map((item) => config.classes[item]['name'][locale()]).join(' * ')}
+                                      {spell.origin_values.map((item) => localize(config.classes[item]['name'], locale())).join(' * ')}
                                     </p>
                                   </Show>
                                 </div>

@@ -84,7 +84,7 @@ export const Dnd5Abilities = (props) => {
       >
         <Show when={character().guide_step && character().ability_boosts.length > 0}>
           <div class="warning">
-            <p class="text-sm">{localize(TRANSLATION, locale())['abilityBoosts']} {Object.entries(config.abilities).filter(([slug]) => character().ability_boosts.includes(slug)).map(([, values]) => values.name[locale()]).join(', ')}</p>
+            <p class="text-sm">{localize(TRANSLATION, locale())['abilityBoosts']} {Object.entries(config.abilities).filter(([slug]) => character().ability_boosts.includes(slug)).map(([, values]) => localize(values.name, locale())).join(', ')}</p>
           </div>
         </Show>
         <Show when={character().leveling_ability_boosts > 0}>
@@ -94,7 +94,7 @@ export const Dnd5Abilities = (props) => {
               when={character().leveling_ability_boosts_list.length > 0}
               fallback={<p class="text-sm">{localize(TRANSLATION, locale())['anySplitBoosts']}</p>}
             >
-              <p class="text-sm">{localize(TRANSLATION, locale())['splitBoosts']} {Object.entries(config.abilities).filter(([slug]) => character().leveling_ability_boosts_list.includes(slug)).map(([, values]) => values.name[locale()]).join(', ')}</p>
+              <p class="text-sm">{localize(TRANSLATION, locale())['splitBoosts']} {Object.entries(config.abilities).filter(([slug]) => character().leveling_ability_boosts_list.includes(slug)).map(([, values]) => localize(values.name, locale())).join(', ')}</p>
             </Show>
           </div>
         </Show>
@@ -109,7 +109,7 @@ export const Dnd5Abilities = (props) => {
               <For each={Object.entries(config.abilities)}>
                 {([slug, values]) =>
                   <div>
-                    <p class="text-sm uppercase text-center mb-2">{values.name[locale()]}</p>
+                    <p class="text-sm uppercase text-center mb-2">{localize(values.name, locale())}</p>
                     <div class="dc20-ability">
                       <p class="text-2xl font-normal!">
                         <Show when={!editMode()} fallback={abilitiesData()[slug]}>
@@ -119,12 +119,12 @@ export const Dnd5Abilities = (props) => {
                               height="64"
                               text={modifier(character().modifiers[slug])}
                               textClassList="text-4xl"
-                              onClick={() => props.openDiceRoll(`/check attr ${slug}`, character().modifiers[slug], `${localize(TRANSLATION, locale()).check}, ${values.name[locale()]}`)}
+                              onClick={() => props.openDiceRoll(`/check attr ${slug}`, character().modifiers[slug], `${localize(TRANSLATION, locale()).check}, ${localize(values.name, locale())}`)}
                             />
                             <div class="dc20-ability-savebox">
                               <Dice
                                 text={modifier(character().save_dc[slug])}
-                                onClick={() => props.openDiceRoll(`/check save ${slug}`, character().save_dc[slug], `${localize(TRANSLATION, locale()).saveCheck}, ${values.name[locale()]}`)}
+                                onClick={() => props.openDiceRoll(`/check save ${slug}`, character().save_dc[slug], `${localize(TRANSLATION, locale()).saveCheck}, ${localize(values.name, locale())}`)}
                               />
                               <p class="text-xs text-center">{localize(TRANSLATION, locale()).save}</p>
                             </div>

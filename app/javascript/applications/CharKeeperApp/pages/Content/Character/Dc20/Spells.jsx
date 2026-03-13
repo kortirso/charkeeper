@@ -207,7 +207,7 @@ export const Dc20Spells = (props) => {
               </div>
               <For each={renderingLists()}>
                 {(list) =>
-                  <Toggle title={spellLists()[list].name[locale()]}>
+                  <Toggle title={localize(spellLists()[list].name, locale())}>
                     <div>
                       <For each={spells().filter((spell) => spell.origin_value.includes(list)).sort((a, b) => a.title.localeCompare(b.title))}>
                         {(spell) =>
@@ -217,7 +217,7 @@ export const Dc20Spells = (props) => {
                           >
                             <div class="flex items-center justify-between mb-1">
                               <p class="font-normal! text-lg">{spell.title}</p>
-                              <p>{schools()[spell.school].name[locale()]}</p>
+                              <p>{localize(schools()[spell.school].name, locale())}</p>
                             </div>
                             <div class="flex gap-2 flex-wrap mb-2">
                               <For each={spell.origin_values}>
@@ -304,7 +304,7 @@ export const Dc20Spells = (props) => {
                       title={
                         <div class="flex items-center justify-between">
                           <p>{spell.title}</p>
-                          <p>{schools()[spell.school].name[locale()]}</p>
+                          <p>{localize(schools()[spell.school].name, locale())}</p>
                         </div>
                       }
                     >
@@ -336,8 +336,8 @@ export const Dc20Spells = (props) => {
                           <For each={spell.info.enhancements}>
                             {(enhancement) =>
                               <p class="feat-markdown text-sm mt-1">
-                                <span class="font-medium!">{enhancement.name[locale()]}</span>
-                                : ({renderSpellPrice(enhancement)}) {enhancement.description[locale()]}
+                                <span class="font-medium!">{localize(enhancement.name, locale())}</span>
+                                : ({renderSpellPrice(enhancement)}) {localize(enhancement.description, locale())}
                               </p>
                             }
                           </For>

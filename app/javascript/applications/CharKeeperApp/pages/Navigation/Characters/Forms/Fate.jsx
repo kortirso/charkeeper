@@ -3,6 +3,7 @@ import { createStore } from 'solid-js/store';
 import { CharacterForm } from '../../../../pages';
 import { Input } from '../../../../components';
 import { useAppLocale } from '../../../../context';
+import { localize } from '../../../../helpers';
 
 const FATE_DEFAULT_FORM = { name: '' };
 const TRANSLATION = {
@@ -32,7 +33,7 @@ export const FateCharacterForm = (props) => {
     <CharacterForm setCurrentTab={props.setCurrentTab} onSaveCharacter={saveCharacter}>
       <Input
         containerClassList="mb-2"
-        labelText={TRANSLATION[locale()].name}
+        labelText={localize(TRANSLATION, locale()).name}
         value={characterForm.name}
         onInput={(value) => setCharacterForm({ ...characterForm, name: value })}
       />

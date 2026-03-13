@@ -4,6 +4,7 @@ import { ErrorWrapper, GuideWrapper, Text } from '../../../../components';
 import config from '../../../../data/dnd5.json';
 import configNext from '../../../../data/dnd2024.json';
 import { useAppLocale } from '../../../../context';
+import { localize } from '../../../../helpers';
 
 const TRANSLATION = {
   en: {
@@ -45,13 +46,13 @@ export const Dnd5Info = (props) => {
   })
 
   const renderValue = (item) => {
-    if (item === 'alignment') return configNext.alignments[character().alignment].name[locale()];
-    if (item === 'species') return configNext.species[character().species].name[locale()];
-    if (item === 'legacy' && character().legacy) return configNext.species[character().species].legacies[character().legacy].name[locale()];
-    if (item === 'background') return configNext.backgrounds[character().background].name[locale()];
+    if (item === 'alignment') return localize(configNext.alignments[character().alignment].name, locale());
+    if (item === 'species') return localize(configNext.species[character().species].name, locale());
+    if (item === 'legacy' && character().legacy) return localize(configNext.species[character().species].legacies[character().legacy].name, locale());
+    if (item === 'background') return localize(configNext.backgrounds[character().background].name, locale());
 
-    if (item === 'race') return config.races[character().race].name[locale()];
-    if (item === 'subrace' && character().subrace) return config.races[character().race].subraces[character().subrace].name[locale()];
+    if (item === 'race') return localize(config.races[character().race].name, locale());
+    if (item === 'subrace' && character().subrace) return localize(config.races[character().race].subraces[character().subrace].name, locale());
 
     return character()[item];
   }
@@ -66,7 +67,7 @@ export const Dnd5Info = (props) => {
               {(item) =>
                 <Show when={character()[item]}>
                   <Text
-                    labelText={TRANSLATION[locale()][item]}
+                    labelText={localize(TRANSLATION, locale())[item]}
                     labelClassList="character-info-text"
                     text={renderValue(item)}
                   />

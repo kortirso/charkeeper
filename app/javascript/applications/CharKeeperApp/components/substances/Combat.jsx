@@ -242,7 +242,7 @@ export const Combat = (props) => {
                 </Show>
                 <Show when={(attack.tags === undefined || character().provider === 'daggerheart') && attack.features && attack.features.length > 0}>
                   <p class="weapon-features">
-                    {typeof attack.features[0] === 'string' ? attack.features.join(', ') : attack.features.map((item) => item[locale()]).join(', ')}
+                    {typeof attack.features[0] === 'string' ? attack.features.join(', ') : attack.features.map((item) => localize(item, locale())).join(', ')}
                   </p>
                 </Show>
                 <Show when={attack.notes}>

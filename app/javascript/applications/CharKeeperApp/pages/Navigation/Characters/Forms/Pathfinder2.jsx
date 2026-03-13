@@ -7,7 +7,7 @@ import { Select, Input } from '../../../../components';
 import dnd2024Config from '../../../../data/dnd2024.json';
 import pathfinder2Config from '../../../../data/pathfinder2.json';
 import { useAppLocale } from '../../../../context';
-import { translate } from '../../../../helpers';
+import { translate, localize } from '../../../../helpers';
 
 const PATHFINDER2_DEFAULT_FORM = {
   name: '', race: undefined, subrace: undefined, main_class: undefined, subclass: undefined,
@@ -31,7 +31,7 @@ export const Pathfinder2CharacterForm = (props) => {
     }
     const allOptions = subclassOptions.concat(classOptions);
 
-    return Object.fromEntries(Object.entries(dnd2024Config.abilities).map(([key, values]) => [key, values.name[locale()]]).filter(([key,]) => allOptions.includes(key)));
+    return Object.fromEntries(Object.entries(dnd2024Config.abilities).map(([key, values]) => [key, localize(values.name, locale())]).filter(([key,]) => allOptions.includes(key)));
   });
 
   const saveCharacter = async () => {
@@ -86,7 +86,7 @@ export const Pathfinder2CharacterForm = (props) => {
       <Show when={pathfinder2Config.classes[characterPathfinder2Form.main_class]?.subclasses}>
         <Select
           containerClassList="mb-2"
-          labelText={pathfinder2Config.classes[characterPathfinder2Form.main_class].subclass_title[locale()]}
+          labelText={localize(pathfinder2Config.classes[characterPathfinder2Form.main_class].subclass_title, locale())}
           items={translate(pathfinder2Config.classes[characterPathfinder2Form.main_class].subclasses, locale())}
           selectedValue={characterPathfinder2Form.subclass}
           onSelect={(value) => setCharacterPathfinder2Form({ ...characterPathfinder2Form, subclass: value, main_ability: pathfinder2Config.classes[characterPathfinder2Form.main_class].main_ability_options[0] })}

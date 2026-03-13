@@ -3,6 +3,7 @@ import { createSignal, createEffect, Show, For, batch } from 'solid-js';
 import { ErrorWrapper, EditWrapper, Input, Text } from '../../../../components';
 import { useAppState, useAppAlert, useAppLocale } from '../../../../context';
 import { updateCharacterRequest } from '../../../../requests/updateCharacterRequest';
+import { localize } from '../../../../helpers';
 
 const TRANSLATION = {
   en: {
@@ -70,7 +71,7 @@ export const FateConsequences = (props) => {
         onSaveChanges={updateCharacter}
       >
         <div class="blockable p-4">
-          <h2 class="text-lg">{TRANSLATION[locale()].title}</h2>
+          <h2 class="text-lg">{localize(TRANSLATION, locale()).title}</h2>
           <Show
             when={editMode()}
             fallback={
@@ -78,7 +79,7 @@ export const FateConsequences = (props) => {
                 {(slug) =>
                   <Text
                     containerClassList="mt-4"
-                    labelText={TRANSLATION[locale()][slug]}
+                    labelText={localize(TRANSLATION, locale())[slug]}
                     labelClassList=""
                     text={cons()[slug] || '-'}
                   />
@@ -90,7 +91,7 @@ export const FateConsequences = (props) => {
               {(slug) =>
                 <Input
                   containerClassList="mt-4"
-                  labelText={TRANSLATION[locale()][slug]}
+                  labelText={localize(TRANSLATION, locale())[slug]}
                   labelClassList=""
                   value={cons()[slug] || ''}
                   onInput={(value) => setCons({ ...cons(), [slug]: value })}

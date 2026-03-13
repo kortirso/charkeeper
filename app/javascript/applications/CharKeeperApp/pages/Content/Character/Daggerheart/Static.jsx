@@ -2,6 +2,7 @@ import { For } from 'solid-js';
 
 import { ErrorWrapper, GuideWrapper } from '../../../../components';
 import { useAppLocale } from '../../../../context';
+import { localize } from '../../../../helpers';
 
 const TRANSLATION = {
   en: {
@@ -33,7 +34,7 @@ export const DaggerheartStatic = (props) => {
           <For each={['proficiency', 'evasion', 'armor_score']}>
             {(slug) =>
               <div class="flex-1">
-                <p class="dh-static-title">{TRANSLATION[locale()][slug]}</p>
+                <p class="dh-static-title">{localize(TRANSLATION, locale())[slug]}</p>
                 <p class="dh-static-value">{character()[slug]}</p>
               </div>
             }

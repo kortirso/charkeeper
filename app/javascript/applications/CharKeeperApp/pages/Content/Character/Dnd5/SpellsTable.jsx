@@ -121,7 +121,7 @@ export const SpellsTable = (props) => {
                     </Show>
                     <Show when={props.activeSpellClass === undefined}>
                       <p class="text-xs text-right">
-                        {spell.prepared_by ? config.classes[spell.prepared_by]['name'][locale()] : localize(TRANSLATION, locale())['static']}
+                        {spell.prepared_by ? localize(config.classes[spell.prepared_by]['name'], locale()) : localize(TRANSLATION, locale())['static']}
                       </p>
                     </Show>
                   </td>

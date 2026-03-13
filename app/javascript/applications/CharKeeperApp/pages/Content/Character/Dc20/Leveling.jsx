@@ -126,7 +126,7 @@ export const Dc20Leveling = (props) => {
     if (item.origin_value === 'general') return `${item.title} (${localize(TRANSLATION, locale()).general})`;
     if (item.origin_value === 'multiclass') return `${item.title} (${localize(TRANSLATION, locale()).multiclass})`;
 
-    return `${item.title} (${config.classes[item.origin_value].name[locale()]})`;
+    return `${item.title} (${localize(config.classes[item.origin_value].name, locale())})`;
   }
 
   const selectedTalentsCount = createMemo(() => {
@@ -239,9 +239,9 @@ export const Dc20Leveling = (props) => {
             <p>
               <Show
                 when={character().subclass}
-                fallback={config.classes[character().main_class].name[locale()]}
+                fallback={localize(config.classes[character().main_class].name, locale())}
               >
-                {character().subclass === 'paragon' ? localize(TRANSLATION, locale()).paragon : config.classes[character().main_class].subclasses[character().subclass].name[locale()]}
+                {character().subclass === 'paragon' ? localize(TRANSLATION, locale()).paragon : localize(config.classes[character().main_class].subclasses[character().subclass].name, locale())}
               </Show>
               {' '}- {character().level} {localize(TRANSLATION, locale()).currentLevel}
             </p>
@@ -378,7 +378,7 @@ export const Dc20Leveling = (props) => {
                     <Select
                       labelText={localize(TRANSLATION, locale()).selectMulticlassFeature}
                       containerClassList="flex-1 mt-1"
-                      items={talentFeatures().reduce((acc, item) => { acc[item.id] = `${item.title} (${config.classes[item.origin_value] ? config.classes[item.origin_value].name[locale()] : ''})`; return acc }, {})}
+                      items={talentFeatures().reduce((acc, item) => { acc[item.id] = `${item.title} (${config.classes[item.origin_value] ? localize(config.classes[item.origin_value].name, locale()) : ''})`; return acc }, {})}
                       selectedValue={selectedMultiTalent()?.id}
                       onSelect={modifySelectedMultiTalent}
                     />
@@ -406,7 +406,7 @@ export const Dc20Leveling = (props) => {
                 <Select
                   labelText={localize(TRANSLATION, locale()).selectMulticlassFeature}
                   containerClassList="flex-1 mt-1"
-                  items={talentFeatures().reduce((acc, item) => { acc[item.id] = `${item.title} (${config.classes[item.origin_value] ? config.classes[item.origin_value].name[locale()] : ''})`; return acc }, {})}
+                  items={talentFeatures().reduce((acc, item) => { acc[item.id] = `${item.title} (${config.classes[item.origin_value] ? localize(config.classes[item.origin_value].name, locale()) : ''})`; return acc }, {})}
                   selectedValue={selectedMultiTalent()?.id}
                   onSelect={modifySelectedMultiTalent}
                 />

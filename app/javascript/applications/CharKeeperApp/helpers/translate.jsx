@@ -4,7 +4,7 @@ const FALLBACKS = {
 
 export const translate = (obj, locale) => {
   return Object.fromEntries(
-    Object.entries(obj).map(([key, values]) => [key, values.name[locale] || values.name[FALLBACKS[locale]]])
+    Object.entries(obj).map(([key, values]) => [key, values.name[locale] || values.name[FALLBACKS[locale]] || values.name.en])
   );
 }
 

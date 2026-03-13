@@ -47,7 +47,7 @@ export const Pathfinder2Skills = (props) => {
     Object.keys(skillBoosts).forEach((key) => {
       if (key === 'free') return;
 
-      result.push(`${key.split('_').map((item) => config.skills[item].name[locale()]).join('/')} - ${skillBoosts[key]}`)
+      result.push(`${key.split('_').map((item) => localize(config.skills[item].name, locale())).join('/')} - ${skillBoosts[key]}`)
     });
     if (skillBoosts.free) result.push(`${localize(TRANSLATION, locale()).free} - ${skillBoosts.free}`);
 
@@ -140,7 +140,7 @@ export const Pathfinder2Skills = (props) => {
                     <p class={`flex-1 flex items-center ${skill().level > 0 ? 'font-medium!' : ''}`}>
                       <Show
                         when={editMode() && (skill().slug === 'lore1' || skill().slug === 'lore2')}
-                        fallback={skill().name || config.skills[skill().slug].name[locale()]}
+                        fallback={skill().name || localize(config.skills[skill().slug].name, locale())}
                       >
                         <Input
                           containerClassList="ml-2"

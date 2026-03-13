@@ -4,6 +4,7 @@ import { ErrorWrapper, EditWrapper, Text, Input, TextArea, Button } from '../../
 import { useAppState, useAppLocale, useAppAlert } from '../../../../context';
 import { Minus, PlusSmall } from '../../../../assets';
 import { updateCharacterRequest } from '../../../../requests/updateCharacterRequest';
+import { localize } from '../../../../helpers';
 
 const TRANSLATION = {
   en: {
@@ -96,14 +97,14 @@ export const FateAspects = (props) => {
       >
         <div class="blockable p-4">
           <div class="flex items-center mb-4">
-            <p class="text-lg mr-8">{TRANSLATION[locale()].points}</p>
+            <p class="text-lg mr-8">{localize(TRANSLATION, locale()).points}</p>
             <div class="flex items-center">
               <Button default size="small" onClick={() => updatePoints(-1)}><Minus /></Button>
               <p class="w-24 text-center">{character().fate_points} / {character().refresh_points}</p>
               <Button default size="small" onClick={() => updatePoints(1)}><PlusSmall /></Button>
             </div>
           </div>
-          <h2 class="text-lg">{TRANSLATION[locale()].title}</h2>
+          <h2 class="text-lg">{localize(TRANSLATION, locale()).title}</h2>
           <Show
             when={editMode()}
             fallback={
@@ -111,14 +112,14 @@ export const FateAspects = (props) => {
                 <Text
                   containerClassList="mt-4"
                   labelClassList="uppercase text-xs!"
-                  labelText={TRANSLATION[locale()].highConcept}
+                  labelText={localize(TRANSLATION, locale()).highConcept}
                   text={aspects().concept && aspects().concept.length > 0 ? aspects().concept : '-'}
                   textClassList="text-xl"
                 />
                 <Text
                   containerClassList="mt-4"
                   labelClassList="uppercase text-xs!"
-                  labelText={TRANSLATION[locale()].trouble}
+                  labelText={localize(TRANSLATION, locale()).trouble}
                   text={aspects().trouble && aspects().trouble.length > 0 ? aspects().trouble : '-'}
                   textClassList="text-xl"
                 />
@@ -143,14 +144,14 @@ export const FateAspects = (props) => {
           >
             <Input
               containerClassList="mt-4"
-              labelText={TRANSLATION[locale()].highConcept}
+              labelText={localize(TRANSLATION, locale()).highConcept}
               labelClassList="uppercase text-xs!"
               value={aspects().concept}
               onInput={(value) => setAspects({ ...aspects(), concept: value })}
             />
             <Input
               containerClassList="mt-2"
-              labelText={TRANSLATION[locale()].trouble}
+              labelText={localize(TRANSLATION, locale()).trouble}
               labelClassList="uppercase text-xs!"
               value={aspects().trouble}
               onInput={(value) => setAspects({ ...aspects(), trouble: value })}
@@ -160,7 +161,7 @@ export const FateAspects = (props) => {
                 <>
                   <Input
                     containerClassList="mt-2"
-                    labelText={TRANSLATION[locale()].aspect}
+                    labelText={localize(TRANSLATION, locale()).aspect}
                     labelClassList="uppercase text-xs!"
                     value={aspects()[item]}
                     onInput={(value) => setAspects({ ...aspects(), [item]: value })}
@@ -168,7 +169,7 @@ export const FateAspects = (props) => {
                   <TextArea
                     rows="4"
                     containerClassList="mt-1"
-                    labelText={TRANSLATION[locale()].description}
+                    labelText={localize(TRANSLATION, locale()).description}
                     labelClassList="uppercase text-xs!"
                     value={phaseTrio()[item]}
                     onChange={(value) => setPhaseTrio({ ...phaseTrio(), [item]: value })}

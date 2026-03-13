@@ -60,7 +60,7 @@ export const Pathfinder2Abilities = (props) => {
     Object.keys(ability_boosts).forEach((key) => {
       if (key === 'free') return;
 
-      result.push(`${key.split('_').map((item) => config.abilities[item].name[locale()]).join('/')} - ${ability_boosts[key]}`)
+      result.push(`${key.split('_').map((item) => localize(config.abilities[item].name, locale())).join('/')} - ${ability_boosts[key]}`)
     });
     if (ability_boosts.free) result.push(`${localize(TRANSLATION, locale()).free} - ${ability_boosts.free}`);
 
@@ -105,7 +105,7 @@ export const Pathfinder2Abilities = (props) => {
         </Show>
         <div class="blockable py-4">
           <div class="grid grid-cols-3 emd:grid-cols-6 elg:grid-cols-3 exl:grid-cols-6 gap-x-2 gap-y-4">
-            <For each={Object.entries(config.abilities).map(([key, values]) => [key, values.name[locale()]])}>
+            <For each={Object.entries(config.abilities).map(([key, values]) => [key, localize(values.name, locale())])}>
               {([slug, ability]) =>
                 <div>
                   <p class="text-sm uppercase text-center mb-2">{ability}</p>

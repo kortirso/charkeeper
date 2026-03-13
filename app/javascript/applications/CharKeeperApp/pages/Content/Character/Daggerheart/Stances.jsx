@@ -31,12 +31,12 @@ export const DaggerheartStances = (props) => {
   const [locale] = useAppLocale();
 
   const availableStances = createMemo(() => {
-    const result = Object.entries(config.stances).filter(([, values]) => values.tier <= character().tier).map(([key, values]) => [key, values.name[locale()]])
+    const result = Object.entries(config.stances).filter(([, values]) => values.tier <= character().tier).map(([key, values]) => [key, localize(values.name, locale())])
     return Object.fromEntries(result);
   })
 
   const stancesSelect = createMemo(() => {
-    const result = Object.entries(config.stances).filter(([key,]) => selectedStances().includes(key)).map(([key, values]) => [key, values.name[locale()]]);
+    const result = Object.entries(config.stances).filter(([key,]) => selectedStances().includes(key)).map(([key, values]) => [key, localize(values.name, locale())]);
     return Object.fromEntries([['null', localize(TRANSLATION, locale())['noStance']]].concat(result));
   });
 
@@ -81,7 +81,7 @@ export const DaggerheartStances = (props) => {
             onSelect={(value) => updateCharacter({ stance: value === 'null' ? null : value })}
           />
           <Show when={character().stance}>
-            <p class="mt-2 dark:text-snow">{config.stances[character().stance].feature[locale()]}</p>
+            <p class="mt-2 dark:text-snow">{localize(config.stances[character().stance].feature, locale())}</p>
           </Show>
         </div>
       </GuideWrapper>

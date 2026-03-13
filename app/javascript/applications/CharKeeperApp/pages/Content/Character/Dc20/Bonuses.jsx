@@ -88,7 +88,7 @@ export const Dc20Bonuses = (props) => {
                 {(slug) =>
                   <Show when={bonusSlug === slug}>
                     <p class="bonus">
-                      {modifier(value)} {MAPPING[locale()][slug]}
+                      {modifier(value)} {localize(MAPPING, locale())[slug]}
                     </p>
                   </Show>
                 }
@@ -99,7 +99,7 @@ export const Dc20Bonuses = (props) => {
               <For each={Object.entries(value)}>
                 {([slug, value]) =>
                   <p class="bonus">
-                    {modifier(value)} {config.abilities[slug].name[locale()]}
+                    {modifier(value)} {localize(config.abilities[slug].name, locale())}
                   </p>
                 }
               </For>
@@ -108,7 +108,7 @@ export const Dc20Bonuses = (props) => {
               <For each={Object.entries(value)}>
                 {([slug, value]) =>
                   <p class="bonus">
-                    {modifier(value)} {config.abilities[slug].name[locale()]} {localize(TRANSLATION, locale()).save}
+                    {modifier(value)} {localize(config.abilities[slug].name, locale())} {localize(TRANSLATION, locale()).save}
                   </p>
                 }
               </For>
@@ -127,7 +127,7 @@ export const Dc20Bonuses = (props) => {
                   {(slug) =>
                     <Show when={bonusSlug === slug}>
                       <p class="bonus">
-                        {`+[${MAPPING[locale()][value] ? MAPPING[locale()][value] : DYNAMIC_ITEMS[value].name[locale()]}]`} {MAPPING[locale()][slug]}
+                        {`+[${localize(MAPPING, locale())[value] ? localize(MAPPING, locale())[value] : localize(DYNAMIC_ITEMS[value].name, locale())}]`} {localize(MAPPING, locale())[slug]}
                       </p>
                     </Show>
                   }
@@ -138,7 +138,7 @@ export const Dc20Bonuses = (props) => {
                 <For each={Object.entries(value)}>
                   {([slug, value]) =>
                     <p class="bonus">
-                      {`+[${MAPPING[locale()][value] ? MAPPING[locale()][value] : DYNAMIC_ITEMS[value].name[locale()]}]`} {config.abilities[slug].name[locale()]}
+                      {`+[${localize(MAPPING, locale())[value] ? localize(MAPPING, locale())[value] : localize(DYNAMIC_ITEMS[value].name, locale())}]`} {localize(config.abilities[slug].name, locale())}
                     </p>
                   }
                 </For>
@@ -147,7 +147,7 @@ export const Dc20Bonuses = (props) => {
                 <For each={Object.entries(value)}>
                   {([slug, value]) =>
                     <p class="bonus">
-                      {`+[${MAPPING[locale()][value]}]`} {config.abilities[slug].name[locale()]} {localize(TRANSLATION, locale()).save}
+                      {`+[${localize(MAPPING, locale())[value]}]`} {localize(config.abilities[slug].name, locale())} {localize(TRANSLATION, locale()).save}
                     </p>
                   }
                 </For>
@@ -201,7 +201,7 @@ export const Dc20Bonuses = (props) => {
         <SharedBonuses
           character={character()}
           bonusComponent={BonusComponent}
-          mapping={MAPPING[locale()]}
+          mapping={localize(MAPPING, locale())}
           dynamicItems={DYNAMIC_ITEMS}
           proficiencyName="combat_mastery"
           onSaveBonus={saveBonus}

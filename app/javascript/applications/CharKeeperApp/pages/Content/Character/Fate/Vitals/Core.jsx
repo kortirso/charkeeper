@@ -2,6 +2,7 @@ import { For } from 'solid-js';
 
 import { Checkbox, Button } from '../../../../../components';
 import { useAppLocale } from '../../../../../context';
+import { localize } from '../../../../../helpers';
 
 const TRANSLATION = {
   en: {
@@ -69,11 +70,11 @@ export const FateCoreVitals = (props) => {
 
   return (
     <div class="blockable p-4">
-      <h2 class="text-lg">{TRANSLATION[locale()].title}</h2>
-      {renderAttribute(TRANSLATION[locale()].physical, props.maxStress.physical, 'physical')}
-      {renderAttribute(TRANSLATION[locale()].mental, props.maxStress.mental, 'mental')}
+      <h2 class="text-lg">{localize(TRANSLATION, locale()).title}</h2>
+      {renderAttribute(localize(TRANSLATION, locale()).physical, props.maxStress.physical, 'physical')}
+      {renderAttribute(localize(TRANSLATION, locale()).mental, props.maxStress.mental, 'mental')}
       <div class="flex justify-start">
-        <Button default classList="mt-4 px-2" onClick={clearStress}>{TRANSLATION[locale()].clear}</Button>
+        <Button default classList="mt-4 px-2" onClick={clearStress}>{localize(TRANSLATION, locale()).clear}</Button>
       </div>
     </div>
   );

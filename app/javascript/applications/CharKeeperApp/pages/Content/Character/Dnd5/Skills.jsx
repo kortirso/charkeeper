@@ -110,7 +110,7 @@ export const Dnd5Skills = (props) => {
                 <div class="mt-2" />
               </Show>
               <p class="text-sm">{localize(TRANSLATION, locale())['skillBoosts']} {character().skill_boosts}</p>
-              <p class="text-sm">{Object.entries(config.skills).filter(([slug]) => character().skill_boosts_list.includes(slug)).map(([, values]) => values.name[locale()]).join(', ')}</p>
+              <p class="text-sm">{Object.entries(config.skills).filter(([slug]) => character().skill_boosts_list.includes(slug)).map(([, values]) => localize(values.name, locale())).join(', ')}</p>
             </Show>
           </div>
         </Show>
@@ -148,13 +148,13 @@ export const Dnd5Skills = (props) => {
                         class="flex-1 flex items-center"
                         classList={{ 'font-medium!': skill.level > 0 || skill.selected }}
                       >
-                        {config.skills[skill.slug].name[locale()]}
+                        {localize(config.skills[skill.slug].name, locale())}
                       </p>
                       <Dice
                         width="28"
                         height="28"
                         text={modifier(skill.modifier)}
-                        onClick={() => props.openDiceRoll(`/check skill "${skill.slug}"`, skill.modifier, `${localize(TRANSLATION, locale())['check']}, ${config.skills[skill.slug].name[locale()]}`)}
+                        onClick={() => props.openDiceRoll(`/check skill "${skill.slug}"`, skill.modifier, `${localize(TRANSLATION, locale())['check']}, ${localize(config.skills[skill.slug].name, locale())}`)}
                       />
                     </div>
                   }

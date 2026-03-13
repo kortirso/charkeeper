@@ -4,6 +4,7 @@ import * as i18n from '@solid-primitives/i18n';
 import { Select, ErrorWrapper, GuideWrapper } from '../../../../components';
 import { useAppState, useAppLocale, useAppAlert } from '../../../../context';
 import { updateCharacterRequest } from '../../../../requests/updateCharacterRequest';
+import { localize } from '../../../../helpers';
 
 export const DaggerheartTransform = (props) => {
   const character = () => props.character;
@@ -15,7 +16,7 @@ export const DaggerheartTransform = (props) => {
   const t = i18n.translator(dict);
 
   const transformationsSelect = createMemo(() => {
-    const result = Object.entries(character().transformations).map(([key, values]) => [key, values.name[locale()]]);
+    const result = Object.entries(character().transformations).map(([key, values]) => [key, localize(values.name, locale())]);
     return Object.fromEntries([['none', t('daggerheart.transformation.naturalForm')]].concat(result));
   });
 

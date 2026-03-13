@@ -34,8 +34,8 @@ export const BeastFeatures = (props) => {
                 {(attack) =>
                   <tr class="dark:text-snow">
                     <td class="p-1">
-                      <p>{attack.name[locale()]}</p>
-                      <p class="text-sm mt-1">{attack.description[locale()]}</p>
+                      <p>{localize(attack.name, locale())}</p>
+                      <p class="text-sm mt-1">{localize(attack.description, locale())}</p>
                     </td>
                   </tr>
                 }

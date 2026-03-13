@@ -110,7 +110,7 @@ export const FalloutAbilities = (props) => {
               <For each={Object.entries(config.abilities)}>
                 {([slug, values]) =>
                   <div class="w-1/4">
-                    <p class="text-sm uppercase text-center mb-2">{values.name[locale()]}</p>
+                    <p class="text-sm uppercase text-center mb-2">{localize(values.name, locale())}</p>
                     <p class="text-lg text-center">{abilitiesData()[slug]}</p>
                     <Show when={editMode()}>
                       <div class="mt-2 flex justify-center gap-2">

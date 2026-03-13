@@ -152,7 +152,7 @@ export const Dc20Ancestries = (props) => {
                 <Show when={Object.keys(ancestriesForm().ancestry_feats).length < 2 || ancestriesForm().ancestry_feats[ancestry]}>
                   <Toggle
                     innerClassList="p-2!"
-                    title={<p>{values.name[locale()]}{ancestriesForm().ancestry_feats[ancestry] ? ` (${ancestriesForm().ancestry_feats[ancestry].length})` : ''}</p>}
+                    title={<p>{localize(values.name, locale())}{ancestriesForm().ancestry_feats[ancestry] ? ` (${ancestriesForm().ancestry_feats[ancestry].length})` : ''}</p>}
                   >
                     <For each={ancestries().filter((item) => item.origin_value === ancestry).sort((a, b) => a.price < b.price)}>
                       {(item) =>

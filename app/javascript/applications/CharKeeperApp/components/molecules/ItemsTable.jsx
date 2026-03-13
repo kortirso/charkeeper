@@ -72,7 +72,7 @@ export const ItemsTable = (props) => {
                     <Show when={item.info?.features && item.info.features.length > 0}>
                       <For each={item.info.features}>
                         {(item) =>
-                          <p class="equipment-item-notes">{item[locale()]}</p>
+                          <p class="equipment-item-notes">{localize(item, locale())}</p>
                         }
                       </For>
                     </Show>

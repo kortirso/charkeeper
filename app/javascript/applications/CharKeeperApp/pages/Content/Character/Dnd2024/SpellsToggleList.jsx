@@ -164,7 +164,7 @@ export const SpellsToggleList = (props) => {
                 </div>
                 <Show when={props.activeSpellClass === undefined}>
                   <p class="text-xs">
-                    {characterSpell.prepared_by ? config.classes[characterSpell.prepared_by]['name'][locale()] : localize(TRANSLATION, locale())['static']}
+                    {characterSpell.prepared_by ? localize(config.classes[characterSpell.prepared_by]['name'], locale()) : localize(TRANSLATION, locale())['static']}
                   </p>
                 </Show>
                 <div class="dnd2024-spell-tooltips">

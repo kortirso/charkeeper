@@ -3,7 +3,7 @@ import { Show } from 'solid-js';
 import { Dice } from '../../../../../components';
 import config from '../../../../../data/dnd2024.json';
 import { useAppLocale } from '../../../../../context';
-import { modifier } from '../../../../../helpers';
+import { modifier, localize } from '../../../../../helpers';
 
 export const SpellAttack = (props) => {
   const [locale] = useAppLocale();
@@ -50,7 +50,7 @@ export const SpellAttack = (props) => {
         </Show>
       </Show>
       <Show when={props.dc && (props.character.spell_classes[props.activeSpellClass] || props.alterDc)}>
-        {config.abilities[props.dc].shortName[locale()].toUpperCase()} {props.alterDc ? props.alterDc : props.character.spell_classes[props.activeSpellClass].save_dc}
+        {localize(config.abilities[props.dc].shortName, locale()).toUpperCase()} {props.alterDc ? props.alterDc : props.character.spell_classes[props.activeSpellClass].save_dc}
       </Show>
     </p>
   );

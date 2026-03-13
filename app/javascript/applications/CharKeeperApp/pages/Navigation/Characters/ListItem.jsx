@@ -90,19 +90,19 @@ export const CharactersListItem = (props) => {
 
   const secondText = createMemo(() => {
     if (character().provider === 'dnd5') {
-      return Object.keys(character().classes).map((item) => dnd5Config.classes[item].name[locale()]).join(' * ');
+      return Object.keys(character().classes).map((item) => localize(dnd5Config.classes[item].name, locale())).join(' * ');
     }
     if (character().provider === 'dnd2024') {
-      return Object.keys(character().classes).map((item) => dnd2024Config.classes[item].name[locale()]).join(' * ');
+      return Object.keys(character().classes).map((item) => localize(dnd2024Config.classes[item].name, locale())).join(' * ');
     }
     if (character().provider === 'pathfinder2') {
-      return Object.keys(character().classes).map((item) => pathfinder2Config.classes[item].name[locale()]).join(' * ');
+      return Object.keys(character().classes).map((item) => localize(pathfinder2Config.classes[item].name, locale())).join(' * ');
     }
     if (character().provider === 'daggerheart') {
       return Object.keys(character().names.subclass_names).join(' * ');
     }
     if (character().provider === 'dc20') {
-      return dc20Config.classes[character().main_class].name[locale()];
+      return localize(dc20Config.classes[character().main_class].name, locale());
     }
   });
 

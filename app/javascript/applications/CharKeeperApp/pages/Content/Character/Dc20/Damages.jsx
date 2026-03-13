@@ -86,13 +86,13 @@ export const Dc20Damages = (props) => {
     const current = Object.keys(character().damages);
 
     return Object.fromEntries(
-      Object.entries(config.damages).filter(([key]) => current.includes(key)).map(([key, values]) => [key, values.name[locale()]])
+      Object.entries(config.damages).filter(([key]) => current.includes(key)).map(([key, values]) => [key, localize(values.name, locale())])
     );
   });
 
   const impactTypes = createMemo(() => {
     return Object.fromEntries(
-      Object.entries({ ...config.damages, ...config.damageGroups }).map(([key, values]) => [key, values.name[locale()]])
+      Object.entries({ ...config.damages, ...config.damageGroups }).map(([key, values]) => [key, localize(values.name, locale())])
     );
   });
 

@@ -75,24 +75,24 @@ export const FateCoreSkills = (props) => {
       onSaveChanges={updateCharacter}
     >
       <div class="blockable p-4">
-        <h2 class="text-lg">{TRANSLATION[locale()].title}</h2>
+        <h2 class="text-lg">{localize(TRANSLATION, locale()).title}</h2>
         <Show
           when={editMode()}
           fallback={
             <For each={[[5, 'superb'], [4, 'great'], [3, 'good'], [2, 'fair'], [1, 'average']]}>
               {([level, ladder]) =>
                 <div class="mt-2">
-                  <Label labelText={TRANSLATION[locale()].ladder[ladder]} labelClassList="text-xs!" />
+                  <Label labelText={localize(TRANSLATION, locale()).ladder[ladder]} labelClassList="text-xs!" />
                   <div class="flex items-center gap-x-2 flex-wrap mt-1">
                     <For each={Object.entries(character().selected_skills).filter(([, value]) => value === parseInt(level))}>
                       {([slug, value]) =>
                         <p class="flex items-center gap-x-2 p-2">
-                          {config.skills[slug].name[locale()]}
+                          {localize(config.skills[slug].name, locale())}
                           <Dice
                             width="30"
                             height="30"
                             text={modifier(value)}
-                            onClick={() => props.openDiceRoll(`/check skill "${slug}"`, character().selected_skills[slug], `${localize(TRANSLATION, locale()).check}, ${config.skills[slug].name[locale()]}`)}
+                            onClick={() => props.openDiceRoll(`/check skill "${slug}"`, character().selected_skills[slug], `${localize(TRANSLATION, locale()).check}, ${localize(config.skills[slug].name, locale())}`)}
                           />
                         </p>
                       }
@@ -112,7 +112,7 @@ export const FateCoreSkills = (props) => {
                   onToggle={() => updateSkill(slug)}
                 />
                 <p class="flex-1 flex items-center">
-                  {values.name[locale()]}
+                  {localize(values.name, locale())}
                 </p>
               </div>
             }

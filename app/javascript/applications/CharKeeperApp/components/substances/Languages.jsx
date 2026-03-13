@@ -3,6 +3,7 @@ import { createSignal, createEffect, For, batch } from 'solid-js';
 import { Toggle, ErrorWrapper, Checkbox, Input, Button } from '../../components';
 import { useAppState, useAppLocale } from '../../context';
 import { updateCharacterRequest } from '../../requests/updateCharacterRequest';
+import { localize } from '../../helpers';
 
 const TRANSLATION = {
   en: {
@@ -64,12 +65,12 @@ export const Languages = (props) => {
 
   return (
     <ErrorWrapper payload={{ character_id: character().id, key: 'Languages' }}>
-      <Toggle title={TRANSLATION[locale()].title}>
+      <Toggle title={localize(TRANSLATION, locale()).title}>
         <For each={Object.entries(props.defaults)}>
           {([slug, language]) =>
             <div class="mb-1">
               <Checkbox
-                labelText={language.name[locale()]}
+                labelText={localize(language.name, locale())}
                 labelPosition="right"
                 labelClassList="text-sm ml-4"
                 checked={languages().includes(slug)}
@@ -97,7 +98,7 @@ export const Languages = (props) => {
             value={language()}
             onInput={setLanguage}
           />
-          <Button default textable onClick={saveLanguage}>{TRANSLATION[locale()].add}</Button>
+          <Button default textable onClick={saveLanguage}>{localize(TRANSLATION, locale()).add}</Button>
         </div>
       </Toggle>
     </ErrorWrapper>

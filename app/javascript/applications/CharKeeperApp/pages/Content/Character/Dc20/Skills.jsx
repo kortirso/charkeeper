@@ -372,7 +372,7 @@ export const Dc20Skills = (props) => {
                                 <Levelbox classList="mr-2" value={skill.level} />
                                 <p class="uppercase mr-4">{skill.ability === 'prime' ? 'prm' : skill.ability}</p>
                                 <p class="flex-1" classList={{ 'font-medium!': skill.expertise }}>
-                                  {config.skills[skill.slug].name[locale()]}
+                                  {localize(config.skills[skill.slug].name, locale())}
                                 </p>
                                 <Dice
                                   width="28"
@@ -389,7 +389,7 @@ export const Dc20Skills = (props) => {
                           {(skill) =>
                             <div class="dc20-skill justify-between">
                               <p class="flex-1 text-sm md:text-base" classList={{ 'font-medium!': skill.expertise }}>
-                                {config.skills[skill.slug].name[locale()]}
+                                {localize(config.skills[skill.slug].name, locale())}
                               </p>
                               {renderSkillBoxes(skill, updateSkill, toggleSkillExpertise)}
                             </div>
@@ -439,7 +439,7 @@ export const Dc20Skills = (props) => {
                                 <Levelbox classList="mr-2" value={trade.level} />
                                 <p class="uppercase mr-4">{trade.ability}</p>
                                 <p class="flex-1" classList={{ 'font-medium!': trade.expertise }}>
-                                  {config.trades[trade.slug] ? config.trades[trade.slug].name[locale()] : trade.slug}
+                                  {config.trades[trade.slug] ? localize(config.trades[trade.slug].name, locale()) : trade.slug}
                                 </p>
                                 <Dice
                                   width="28"
@@ -456,7 +456,7 @@ export const Dc20Skills = (props) => {
                           {(trade) =>
                             <div class="dc20-skill">
                               <p class="flex-1 text-sm md:text-base" classList={{ 'font-medium!': trade.expertise }}>
-                                {config.trades[trade.slug] ? config.trades[trade.slug].name[locale()] : trade.slug}
+                                {config.trades[trade.slug] ? localize(config.trades[trade.slug].name, locale()) : trade.slug}
                               </p>
                               {renderSkillBoxes(trade, updateTrade, toggleTradeExpertise)}
                             </div>

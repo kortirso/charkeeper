@@ -134,13 +134,13 @@ export const Notes = (props) => {
             <div class="flex-1">
               <Input
                 containerClassList="mb-2"
-                labelText={TRANSLATION[locale()].newNoteTitle}
+                labelText={localize(TRANSLATION, locale()).newNoteTitle}
                 value={noteForm.title}
                 onInput={(value) => setNoteForm({ ...noteForm, title: value })}
               />
               <TextArea
                 rows="5"
-                labelText={TRANSLATION[locale()].newNoteValue}
+                labelText={localize(TRANSLATION, locale()).newNoteValue}
                 value={noteForm.value}
                 onChange={(value) => setNoteForm({ ...noteForm, value: value })}
               />
@@ -156,7 +156,7 @@ export const Notes = (props) => {
         }
       >
         <Button default textable classList="mb-2 w-full uppercase" onClick={addNote}>
-          {TRANSLATION[locale()].newNote}
+          {localize(TRANSLATION, locale()).newNote}
         </Button>
         <Show when={notes() !== undefined}>
           <For each={notes()}>

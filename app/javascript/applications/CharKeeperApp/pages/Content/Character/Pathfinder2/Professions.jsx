@@ -5,6 +5,7 @@ import { ErrorWrapper, Toggle, Levelbox, Languages } from '../../../../component
 import config from '../../../../data/pathfinder2.json';
 import { useAppLocale, useAppState, useAppAlert } from '../../../../context';
 import { updateCharacterRequest } from '../../../../requests/updateCharacterRequest';
+import { localize } from '../../../../helpers';
 
 export const Pathfinder2Professions = (props) => {
   const character = () => props.character;
@@ -53,7 +54,7 @@ export const Pathfinder2Professions = (props) => {
               {([slug, skill]) =>
                 <div class="mb-1">
                   <Levelbox
-                    labelText={skill.name[locale()]}
+                    labelText={localize(skill.name, locale())}
                     labelPosition="right"
                     labelClassList="text-sm ml-4"
                     value={character().weapon_skills[slug]}
@@ -68,7 +69,7 @@ export const Pathfinder2Professions = (props) => {
               {([slug, skill]) =>
                 <div class="mb-1">
                   <Levelbox
-                    labelText={skill.name[locale()]}
+                    labelText={localize(skill.name, locale())}
                     labelPosition="right"
                     labelClassList="text-sm ml-4"
                     value={character().armor_skills[slug]}

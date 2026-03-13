@@ -95,7 +95,7 @@ export const Dnd5Professions = (props) => {
               {([slug, values]) =>
                 <div class="mb-1">
                   <Checkbox
-                    labelText={values.name[locale()]}
+                    labelText={localize(values.name, locale())}
                     labelPosition="right"
                     labelClassList="text-sm ml-4"
                     checked={character().selected_feats.includes(slug)}
@@ -113,7 +113,7 @@ export const Dnd5Professions = (props) => {
               {([slug, names]) =>
                 <div class="mb-1">
                   <Checkbox
-                    labelText={names.name[locale()]}
+                    labelText={localize(names.name, locale())}
                     labelPosition="right"
                     labelClassList="text-sm ml-4"
                     checked={character().weapon_mastery.includes(slug)}

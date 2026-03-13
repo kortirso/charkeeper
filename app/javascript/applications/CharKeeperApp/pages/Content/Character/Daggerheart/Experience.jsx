@@ -4,7 +4,7 @@ import { Button, Input, ErrorWrapper, Toggle, GuideWrapper } from '../../../../c
 import { useAppState, useAppLocale, useAppAlert } from '../../../../context';
 import { Plus, Minus, Close, Check } from '../../../../assets';
 import { updateCharacterRequest } from '../../../../requests/updateCharacterRequest';
-import { modifier } from '../../../../helpers';
+import { modifier, localize } from '../../../../helpers';
 
 const TRANSLATION = {
   en: {
@@ -108,7 +108,7 @@ export const DaggerheartExperience = (props) => {
       <GuideWrapper
         character={object()}
         guideStep={2}
-        helpMessage={TRANSLATION[locale()].helpMessage}
+        helpMessage={localize(TRANSLATION, locale()).helpMessage}
         onReloadCharacter={props.onReloadCharacter}
         onNextClick={props.onNextGuideStepClick}
       >
@@ -117,7 +117,7 @@ export const DaggerheartExperience = (props) => {
           isOpen
           title={
             <div class="experience-title-box">
-              <h2 class="experience-title">{TRANSLATION[locale()].title}</h2>
+              <h2 class="experience-title">{localize(TRANSLATION, locale()).title}</h2>
               <Show when={!editMode()}>
                 <Button default size="small" onClick={() => setEditMode(true)}><Plus /></Button>
               </Show>
