@@ -3,7 +3,7 @@ import * as i18n from '@solid-primitives/i18n';
 import { createWindowSize } from '@solid-primitives/resize-observer';
 
 import {
-  Dnd5Abilities, Dnd5Combat, Dnd5Rest, Dnd5ClassLevels, Dnd5Professions, Dnd5Spells, Dnd5Skills, Dnd5SavingThrows,
+  Dnd5Abilities, Dnd5Combat, Dnd5Rest, Dnd5ClassLevels, Dnd5Professions, Dnd5Spells, Dnd5Skills,
   Dnd5Proficiency, Dnd2024WildShapes, BeastFeatures, Dnd5Craft, Dnd5Bonuses, Dnd2024Exhaustion, Dnd2024Spells, Dnd5Info
 } from '../../../pages';
 import {
@@ -125,9 +125,6 @@ export const Dnd5 = (props) => {
               </div>
               <div class="mt-4">
                 <Dnd5Proficiency character={character()} onReplaceCharacter={props.onReplaceCharacter} />
-              </div>
-              <div class="mt-4">
-                <Dnd5SavingThrows character={character()} openDiceRoll={openDiceRoll} />
               </div>
               <div class="mt-4">
                 <Conditions character={character()} />
@@ -266,9 +263,6 @@ export const Dnd5 = (props) => {
             onReplaceCharacter={props.onReplaceCharacter}
             onReloadCharacter={props.onReloadCharacter}
           />
-        </div>
-        <div class="mt-4">
-          <Dnd5SavingThrows character={character()} openDiceRoll={openDiceRoll} />
         </div>
         <div class="mt-4">
           <Dnd5Proficiency character={character()} onReplaceCharacter={props.onReplaceCharacter} />
