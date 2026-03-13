@@ -27,7 +27,6 @@ export * from './Content/Character/Dnd5/Rest';
 export * from './Content/Character/Dnd5/ClassLevels';
 export * from './Content/Character/Dnd5/Professions';
 export * from './Content/Character/Dnd5/Skills';
-export * from './Content/Character/Dnd5/SavingThrows';
 export * from './Content/Character/Dnd5/Spells';
 export * from './Content/Character/Dnd5/SpellsTable';
 export * from './Content/Character/Dnd5/Proficiency';

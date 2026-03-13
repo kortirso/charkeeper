@@ -14,7 +14,9 @@ const TRANSLATION = {
     splitBoosts: 'Share boosts between:',
     anySplitBoosts: 'Share boosts between any abilities',
     helpMessage: 'Your character can start with a standard set of abilities, or you can generate them in any way according to the rules.',
-    check: 'Checking'
+    check: 'Checking',
+    save: 'Save',
+    saveCheck: 'Saving Throw'
   },
   ru: {
     abilityBoosts: 'Дополнительно распределите 3 очка по, как минимум, 2 характеристикам из списка:',
@@ -22,7 +24,9 @@ const TRANSLATION = {
     splitBoosts: 'Распределите повышения между:',
     anySplitBoosts: 'Распределите между любыми характеристиками',
     helpMessage: 'Ваш персонаж может начать со стандартным набором характеристик. Или вы можете сгенерировать их любым способом согласно правилам.',
-    check: 'Проверка'
+    check: 'Проверка',
+    save: 'Спас',
+    saveCheck: 'Спасбросок'
   }
 }
 
@@ -100,32 +104,38 @@ export const Dnd5Abilities = (props) => {
           onCancelEditing={cancelEditing}
           onSaveChanges={updateCharacter}
         >
-          <div class="blockable py-4">
+          <div class="blockable pt-4 pb-8">
             <div class="grid grid-cols-3 emd:grid-cols-6 elg:grid-cols-3 exl:grid-cols-6 gap-x-2 gap-y-4">
               <For each={Object.entries(config.abilities)}>
                 {([slug, values]) =>
                   <div>
                     <p class="text-sm uppercase text-center mb-2">{values.name[locale()]}</p>
-                    <div class="w-16 h-16 flex items-center justify-center mx-auto relative">
-                      <Dice
-                        width="64"
-                        height="64"
-                        text={modifier(character().modifiers[slug])}
-                        textClassList="text-4xl"
-                        onClick={() => props.openDiceRoll(`/check attr ${slug}`, character().modifiers[slug], `${localize(TRANSLATION, locale())['check']}, ${values.name[locale()]}`)}
-                      />
-                      <div class="absolute -right-4 -bottom-0 w-8 h-8 rounded-full border border-gray-200 bg-white flex items-center justify-center opacity-75 dark:text-neutral-800">
-                        <p class="text-xl">{editMode() ? abilitiesData()[slug] : character().modified_abilities[slug]}</p>
-                      </div>
+                    <div class="dc20-ability">
+                      <p class="text-2xl font-normal!">
+                        <Show when={!editMode()} fallback={abilitiesData()[slug]}>
+                          <div class="relative pb-4">
+                            <Dice
+                              width="64"
+                              height="64"
+                              text={modifier(character().modifiers[slug])}
+                              textClassList="text-4xl"
+                              onClick={() => props.openDiceRoll(`/check attr ${slug}`, character().modifiers[slug], `${localize(TRANSLATION, locale()).check}, ${values.name[locale()]}`)}
+                            />
+                            <div class="dc20-ability-savebox">
+                              <Dice
+                                text={modifier(character().save_dc[slug])}
+                                onClick={() => props.openDiceRoll(`/check save ${slug}`, character().save_dc[slug], `${localize(TRANSLATION, locale()).saveCheck}, ${values.name[locale()]}`)}
+                              />
+                              <p class="text-xs text-center">{localize(TRANSLATION, locale()).save}</p>
+                            </div>
+                          </div>
+                        </Show>
+                      </p>
                     </div>
                     <Show when={editMode()}>
                       <div class="mt-2 flex justify-center gap-2">
-                        <Button default size="small" onClick={() => decreaseAbilityValue(slug)}>
-                          <Minus />
-                        </Button>
-                        <Button default size="small" onClick={() => increaseAbilityValue(slug)}>
-                          <Plus />
-                        </Button>
+                        <Button default size="small" onClick={() => decreaseAbilityValue(slug)}><Minus /></Button>
+                        <Button default size="small" onClick={() => increaseAbilityValue(slug)}><Plus /></Button>
                       </div>
                     </Show>
                   </div>
