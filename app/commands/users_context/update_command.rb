@@ -5,7 +5,7 @@ module UsersContext
     use_contract do
       config.messages.namespace = :user
 
-      Locales = Dry::Types['strict.string'].enum(*I18n.available_locales.map(&:to_s))
+      Locales = Dry::Types['strict.string'].enum('en', 'ru', 'es')
       ColorSchemas = Dry::Types['strict.string'].enum(*User.color_schemas.keys)
 
       params do
