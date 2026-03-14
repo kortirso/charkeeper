@@ -23,6 +23,11 @@ const TRANSLATION = {
     helpMessage: "Вы можете выбрать двуручное оружие или одноручное основное и одноручное дополнительное оружие, а затем экипировать его. Вы можете выбрать набор брони и экипировать его. Вы также можете выбрать другие вещи.",
     domainHelpMessage: "В начале изучите все карты 1 уровня из двух доменов вашего класса и выберите 2 карты. Вы можете выбрать по карте из каждого домена или обе карты из одного домена.",
     levelingHelpMessage: "В будущем на этой вкладке вы сможете указывать уровень вашего персонажа."
+  },
+  es: {
+    helpMessage: "Puedes elegir un arma principal de dos manos, o un arma principal de una mano y un arma secundaria de una mano, luego equiparlos. Puedes elegir un conjunto de armadura y equiparlo. También puedes elegir otros objetos.",
+    domainHelpMessage: "Para empezar, mira todas las cartas de nivel 1 de los dos dominios de tu clase y elige dos cartas. Puedes elegir una de cada dominio o dos del mismo dominio.",
+    levelingHelpMessage: "En el futuro en esta pestaña podrás subir de nivel a tu personaje."
   }
 }
 

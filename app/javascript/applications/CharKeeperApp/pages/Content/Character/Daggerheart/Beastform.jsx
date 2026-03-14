@@ -39,19 +39,19 @@ const TRANSLATION = {
     settings: 'Настройка гибрида'
   },
   es: {
-    desc: 'While in Beastform, you cannot use weapons or cast spells from Domain Cards. You can still use class features, abilities, and Beastform-specific actions.',
-    examples: 'Examples: ',
-    adv: 'Advantages: ',
+    desc: 'Mientras estás en Forma Bestial, no puedes usar armas ni lanzar hechizos de las cartas de Dominio. Aún así, puedes usar características de clase, habilidades y acciones específicas la Forma Bestial.',
+    examples: 'Ejemplos: ',
+    adv: 'Ventajas: ',
     naturalForm: 'Forma natural',
     transformation: 'Transformación a bestia',
-    beast: 'Select base beastform',
-    hybridBeasts: 'Select base beastforms for hybrid',
-    legendaryHybridHelp: 'Choose a total of four advantages and two features from those options.',
-    myphicHybridHelp: 'Choose a total of five advantages and three features from those options.',
-    legendaryHybrid: 'To transform into this creature, mark an additional Stress. Choose any two Beastform options.',
-    myphicHybrid: 'To transform into this creature, mark 2 additional Stress. Choose any three Beastform options.',
-    updated: 'Character is updated',
-    settings: 'Hybrid settings'
+    beast: 'Seleccionar forma base de bestia',
+    hybridBeasts: 'Seleccionar formas base para híbrido',
+    legendaryHybridHelp: 'Elige un total de cuatro ventajas y dos características de esas opciones.',
+    myphicHybridHelp: 'Elige un total de cinco ventajas y tres características de esas opciones.',
+    legendaryHybrid: 'Para transformarte en esta criatura, marca un Estrés adicional. Elige dos opciones de la Forma Bestial.',
+    myphicHybrid: 'Para transformarte en esta criatura, marca 2 Estréses adicionales. Elige tres opciones de la Forma Bestial.',
+    updated: 'El personaje ha sido actualizado',
+    settings: 'Configuración de híbrido'
   }
 }
 

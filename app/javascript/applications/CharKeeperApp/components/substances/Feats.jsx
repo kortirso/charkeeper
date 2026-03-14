@@ -47,6 +47,24 @@ const TRANSLATION = {
       sp: 'ОВ',
       'ap/sp': 'ОД/ОВ'
     }
+  },
+  es: {
+    activeFeat: 'Activo',
+    allFeatures: 'Todas las habilidades',
+    personalFeats: 'Las habilidades personales pueden ser agregadas a través de homebrew',
+    settings: 'Configuración del filtro',
+    showPersonal: 'Mostrar personales',
+    groupFeatures: 'Agrupar características',
+    showPassive: 'Mostrar pasivas',
+    expandAll: 'Expandir todo',
+    dc20Range: 'Rango',
+    enhancements: 'Mejoras',
+    repeatable: 'Repetible',
+    prices: {
+      ap: 'PA',
+      sp: 'PE',
+      'ap/sp': 'PA/PE'
+    }
   }
 }
 

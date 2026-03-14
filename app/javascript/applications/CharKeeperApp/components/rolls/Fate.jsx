@@ -13,6 +13,9 @@ const TRANSLATION = {
   },
   ru: {
     roll: 'Бросить'
+  },
+  es: {
+    roll: 'Tirar'
   }
 }
 

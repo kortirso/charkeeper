@@ -31,6 +31,15 @@ const TRANSLATION = {
     ability: 'Способность',
     grimoire: 'Гримуар',
     level: 'Уровень'
+  },
+  es:{
+    loadoutLimit: 'Límite de equipamiento',
+    domainCardIsAdded: 'La carta de dominio se ha añadido',
+    onlyAvailableSpells: 'Solo disponibles',
+    spell: 'Hechizo',
+    ability: 'Habilidad',
+    grimoire: 'Grimorio',
+    level: 'Nivel'
   }
 }
 

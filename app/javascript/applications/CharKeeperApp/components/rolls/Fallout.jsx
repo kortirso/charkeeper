@@ -24,6 +24,15 @@ const TRANSLATION = {
     damage: 'Урон',
     damageResult: 'Нанесённый урон',
     burstTargets: 'Дополнительные цели от очереди'
+  },
+  es: {
+    roll: 'Tirar',
+    targetNumber: 'Número objetivo',
+    successes: 'Éxitos',
+    complications: 'Complicaciones',
+    damage: 'Daño',
+    damageResult: 'Resultado del daño',
+    burstTargets: 'Objetivos adicionales por ráfaga'
   }
 }
 

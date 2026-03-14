@@ -20,6 +20,10 @@ const TRANSLATION = {
   ru: {
     equipmentHelpMessage: 'На этой вкладке вы можете выбрать снаряжение для вашего персонажа.',
     levelingHelpMessage: 'В будущем на этой вкладке вы сможете указывать уровень вашего персонажа.'
+  },
+  es: {
+    equipmentHelpMessage: 'Aquí puedes seleccionar el equipo para tu personaje.',
+    levelingHelpMessage: 'En el futuro en esta pestaña podrás subir de nivel a tu personaje.'
   }
 }
 

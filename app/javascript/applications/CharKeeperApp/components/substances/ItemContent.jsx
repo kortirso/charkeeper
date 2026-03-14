@@ -93,6 +93,50 @@ const TRANSLATION = {
       stealth: 'Скрытность',
       disadv: 'помеха'
     }
+  },
+  es: {
+    'primary weapon': 'Arma principal',
+    'secondary weapon': 'Arma secundaria',
+    'tier': 'nivel',
+    'armor': 'Armadura',
+    'thresholds': 'Umbrales de daño',
+    'score': 'Puntuación de armadura',
+    'dnd': {
+      type: {
+        light: 'Ligero',
+        martial: 'Marcial'
+      },
+      armorType: {
+        light: 'Armadura ligera',
+        medium: 'Armadura media',
+        heavy: 'Armadura pesada'
+      },
+      melee: 'Arma cuerpo a cuerpo',
+      thrown: 'Arma cuerpo a cuerpo/Lanzada',
+      range: 'Arma a distancia',
+      weight: 'Peso',
+      price: 'Precio',
+      gold: 'oro',
+      silver: 'plata',
+      copper: 'cobre',
+      bludge: 'Contundente',
+      pierce: 'Perforante',
+      slash: 'Cortante',
+      damage: 'Daño',
+      reach: 'Alcance',
+      heavy: 'Pesada',
+      '2handed': 'A dos manos',
+      finesse: 'Fina',
+      light: 'Ligera',
+      versatile: 'Versátil',
+      reload: 'Recarga',
+      caption: 'Características',
+      ac: 'Clase de armadura',
+      maxDex: 'Destreza máxima',
+      strReq: 'Requisitos de fuerza',
+      stealth: 'Sigilo',
+      disadv: 'Desventaja'
+    }
   }
 };
 

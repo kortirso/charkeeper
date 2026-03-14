@@ -42,6 +42,23 @@ const TRANSLATION = {
     providers: {
       daggerheart: 'Daggerheart'
     }
+  },
+  es: {
+    existingIdentities: 'Identidades existentes',
+    availableIdentities: 'Identidades disponibles',
+    connected: 'Todo está conectado',
+    light: 'Claro',
+    dark: 'Oscuro',
+    username: 'Nombre de usuario',
+    locale: 'Idioma',
+    colorSchema: 'Esquema de colores',
+    profile: 'Perfil',
+    save: 'Guardar',
+    alternatives: 'Traducciones alternativas',
+    updated: 'Perfil actualizado',
+    providers: {
+      daggerheart: 'Daggerheart'
+    }
   }
 }
 

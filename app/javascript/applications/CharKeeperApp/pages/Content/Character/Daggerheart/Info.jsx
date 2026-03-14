@@ -14,8 +14,8 @@ const TRANSLATION = {
     'community_name': 'Общество'
   },
   es: {
-    'ancestry_name': 'Heritage',
-    'community_name': 'Community'
+    'ancestry_name': 'Ancestría',
+    'community_name': 'Comunidad'
   }
 }
 

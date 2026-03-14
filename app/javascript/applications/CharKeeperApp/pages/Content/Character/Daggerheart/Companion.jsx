@@ -89,6 +89,44 @@ const TRANSLATION = {
     meters: 'м',
     training: 'Обучение',
     availableTraining: 'Доступно опций для выбора для вашего компаньона'
+  },
+  es: {
+    name: 'Nombre del compañero',
+    evasion: 'Evasión',
+    damage: 'Daño',
+    distance: 'Distancia',
+    leveling: {
+      intelligent: 'Inteligente',
+      light: 'Luz en la oscuridad',
+      comfort: 'Consuelo',
+      armored: 'Blindado',
+      vicious: 'Vicioso',
+      resilient: 'Resciliente',
+      bonded: 'Vinculado',
+      aware: 'Consciente'
+    },
+    levelingDescriptions: {
+      intelligent: 'Tu compañero gana un bono permanente de +1 a una Experiencia de Compañero de tu elección.',
+      light: 'Tu personaje gana una Esperanza adicional.',
+      comfort: 'Una vez por descanso, cuando tomes un momento durante un momento tranquilo para darle a tu compañero amor y atención, puedes ganar una Esperanza o ambos pueden limpiar un Estrés.',
+      armored: 'Cuando tu compañero recibe daño, puedes marcar una de tus ranuras de Armadura en lugar de marcar una de sus ranuras de Estrés.',
+      vicious: 'Aumenta los dados de daño o el alcance de tu compañero en un avance.',
+      resilient: 'Tu compañero gana una ranura de Estrés adicional.',
+      bonded: 'Cuando tu personaje marca su último Punto de Vida, tu compañero se apresura a consolarte. Lanza tantos d6 iguales al número de ranuras de Estrés no marcadas de tu compañero, y marcalas. Si en algún dado sale 6, tu compañero te ayuda. Limpia el último Punto de Vida y regresa a la escena.',
+      aware: 'Tu compañero gana una bonificación permanente de +2 a la Evasión.'
+    },
+    distances: {
+      'melee': 'Cuerpo a cuerpo',
+      'very close': 'Muy cerca',
+      close: 'Cerca',
+      far: 'Lejos',
+      'very far': 'Muy lejos'
+    },
+    squares: 'cuad',
+    feet: 'ft',
+    meters: 'm',
+    training: 'Entrenamiento',
+    availableTraining: 'Opciones disponibles para tu compañero'
   }
 }
 const DISTANCE_SETTINGS_CACHE_NAME = 'DistanceSettings';

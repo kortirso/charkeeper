@@ -9,6 +9,9 @@ const TRANSLATION = {
   },
   ru: {
     loading: 'Загрузка данных'
+  },
+  es: {
+    loading: 'Cargando'
   }
 }
 

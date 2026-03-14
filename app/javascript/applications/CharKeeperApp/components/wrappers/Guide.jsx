@@ -16,6 +16,11 @@ const TRANSLATION = {
     skip: 'Пропустить',
     next: 'Дальше',
     finish: 'Закончить'
+  },
+  es: {
+    skip: 'Saltar',
+    next: 'Siguiente paso',
+    finish: 'Finalizar'
   }
 }
 

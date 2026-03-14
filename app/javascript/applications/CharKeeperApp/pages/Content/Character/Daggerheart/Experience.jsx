@@ -16,7 +16,7 @@ const TRANSLATION = {
     title: 'Опытность'
   },
   es: {
-    helpMessage: 'Your character starts with two Experiences (each with a +2 modifier).',
+    helpMessage: 'Tu personaje comienza con 2 experi6encias (cada una con un modificador de +2).',
     title: 'Experiencia'
   }
 }

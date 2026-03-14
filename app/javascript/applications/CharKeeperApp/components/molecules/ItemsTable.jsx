@@ -20,6 +20,11 @@ const TRANSLATION = {
     change: 'Изменить',
     delete: 'Убрать',
     info: 'Информация'
+  },
+  es: {
+    change: 'Editar',
+    delete: 'Eliminar',
+    info: 'Información'
   }
 }
 const ITEMS_INFO = ['daggerheart', 'dnd2024', 'dnd5'];

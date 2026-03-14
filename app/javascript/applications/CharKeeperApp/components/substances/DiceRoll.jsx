@@ -29,6 +29,17 @@ const TRANSLATION = {
     critFailure: 'Крит провал',
     attack: 'Атака',
     damage: 'Урон'
+  },
+  es: {
+    advantage: 'Ventaja',
+    disadvantage: 'Desventaja',
+    roll: 'Tirar',
+    crit: 'Crítico',
+    hope: 'Esperanza',
+    fear: 'Miedo',
+    critFailure: 'Fallo crítico',
+    attack: 'Ataque',
+    damage: 'Daño'
   }
 }
 

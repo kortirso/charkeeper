@@ -78,6 +78,36 @@ const TRANSLATION = {
     amount: 'Кол-во перемещаемого',
     was: 'Было',
     will: 'будет'
+  },
+  es: {
+    searchByName: 'Buscar por nombre (desde 3 caracteres)',
+    clear: 'Limpiar',
+    createHomebrew: 'Agregar item homebrew',
+    homebrewName: 'Nombre del item',
+    homebrewDescription: 'Descripción del item',
+    add: 'Agregar',
+    tooltip: "Una vez que hayas creado un item, puedes editarlo en la sección <a href='https://charkeeper.org/homebrews' class='underline' target='_blank' rel='noopener noreferrer'>Homebrews</a>, incluso convertirlo en un arma o armadura.",
+    in: {
+      hands: {
+        title: 'En las manos',
+        description: 'Objeto en tus manos'
+      },
+      equipment: {
+        title: 'En el cuerpo',
+        description: 'Armadura equipada, munición para arma, consumibles'
+      },
+      backpack: {
+        title: 'En la mochila',
+        description: 'Elementos en la mochila, no se pueden usar rápidamente'
+      },
+      storage: {
+        title: 'En el almacén',
+        description: 'Almacén externo de tus objetos'
+      }
+    },
+    amount: 'Cantidad a mover',
+    was: 'Era',
+    will: 'será'
   }
 }
 const CREATE_HOMEBREW_ITEMS = ['daggerheart', 'dnd2024'];

@@ -35,6 +35,19 @@ const TRANSLATION = {
     enabled: 'Модификатор активен',
     disabled: 'Модификатор не активен',
     noValues: 'Необходимо указать хотя бы один модификатор со значением'
+  },
+  es: {
+    cancel: 'Cancelar',
+    save: 'Guardar',
+    newBonus: 'Añadir modificador',
+    addBonus: 'Añadir bonificación',
+    bonusModify: 'Objetivo de la bonificación',
+    bonusType: 'Tipo de bonificación',
+    bonusValue: 'Valor de la bonificación',
+    newBonusComment: 'Nombre del modificador',
+    enabled: 'El modificador está activo',
+    disabled: 'El modificador no está activo',
+    noValues: 'Debe haber al menos un modificador'
   }
 }
 

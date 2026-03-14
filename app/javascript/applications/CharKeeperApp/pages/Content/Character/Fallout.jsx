@@ -36,6 +36,20 @@ const TRANSLATION = {
       explosive: 'Взрывчатка',
       athletics: 'Атлетичное'
     }
+  },
+  es: {
+    equipmentHelpMessage: 'Aquí puedes seleccionar el equipo para tu personaje.',
+    levelingHelpMessage: 'En el futuro en esta pestaña podrás subir de nivel a tu personaje.',
+    weaponFilters: {
+      meleeWeapons: 'Armas cuerpo a cuerpo',
+      smallGuns: 'Armas pequeñas',
+      bigGuns: 'Armas grandes',
+      energyWeapon: 'Armas de energía',
+      unarmed: 'Desarmado',
+      throwing: 'Armas de lanzamiento',
+      explosive: 'Armas explosivas',
+      athletics: 'Atletico'
+    }
   }
 }
 const WEAPON_KINDS = [

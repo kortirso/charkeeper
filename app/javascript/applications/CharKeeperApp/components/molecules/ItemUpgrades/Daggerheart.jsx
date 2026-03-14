@@ -29,7 +29,18 @@ const TRANSLATION = {
       armor_stone: 'Камень'
     },
     upgradeItem: 'Улучшить предмет'
-  }
+  },
+  es: {
+    title: 'Mejorando el objeto',
+    name: 'Nuevo nombre del objeto',
+    types: {
+      charm: 'Encanto',
+      stone: 'Piedra',
+      gem: 'Gema',
+      armor_stone: 'Piedra'
+    },
+    upgradeItem: 'Mejorar objeto'
+    }
 }
 
 export const DaggerheartItemUpgrade = (props) => {

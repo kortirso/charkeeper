@@ -28,7 +28,7 @@ const TRANSLATION = {
     textHelp: 'Puedes usar Markdown para editar la descripción.',
     newNote: 'Añadir nueva nota',
     newNoteTitle: 'Título',
-    newNoteValue: 'Texto de nota'
+    newNoteValue: 'Nota de texto'
   }
 }
 

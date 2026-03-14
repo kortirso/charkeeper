@@ -13,7 +13,10 @@ const TRANSLATION = {
   ru: {
     clear: 'Отменить выбор',
     search: 'Ввод для фильтра (от 3 символов)'
-  }
+  },
+  es: {
+    clear: 'Cancelar selección',
+    search: 'Escribe para filtrar (desde 3 caracteres)'}
 }
 
 export const Select = (props) => {

@@ -15,7 +15,7 @@ const TRANSLATION = {
     add: 'Добавить язык'
   },
   es: {
-    title: 'Languajes',
+    title: 'Lenguajes',
     add: 'Añadir idioma'
   }
 }

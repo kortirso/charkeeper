@@ -16,6 +16,11 @@ const TRANSLATION = {
     title: 'Шрамы',
     label: 'Описание нового шрама',
     placeholder: 'Значение надежды автоматически уменьшится на 1 за каждый шрам.'
+  },
+  es: {
+    title: 'Cicatrices',
+    label: 'Descripción de la nueva cicatriz',
+    placeholder: 'La esperanza máxima disminuirá automáticamente en 1 por cada cicatriz.'
   }
 }
 
