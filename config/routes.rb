@@ -232,6 +232,10 @@ Rails.application.routes.draw do
       resources :books, only: %i[index create update destroy] do
         resource :content, only: %i[create], module: :books
       end
+      resources :subclasses, only: %i[index show create update destroy] do
+        post :copy, on: :member
+      end
+      resources :feats, only: %i[index create update destroy]
     end
 
     namespace :users do

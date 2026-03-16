@@ -178,6 +178,14 @@ module Charkeeper
     register('commands.homebrew_context.dnd.change_item') { HomebrewContext::Dnd::Items::ChangeCommand.new }
     register('commands.homebrew_context.dnd.copy_item') { HomebrewContext::Dnd::Items::CopyCommand.new }
 
+    register('commands.homebrew_context.dnd.subclasses.add') { HomebrewContext::Dnd::Subclasses::AddCommand.new }
+    register('commands.homebrew_context.dnd.subclasses.change') { HomebrewContext::Dnd::Subclasses::ChangeCommand.new }
+    register('commands.homebrew_context.dnd.subclasses.copy') { HomebrewContext::Dnd::Subclasses::CopyCommand.new }
+
+    register('commands.homebrew_context.dnd.feats.add') { HomebrewContext::Dnd::Feats::AddCommand.new }
+    register('commands.homebrew_context.dnd.feats.change') { HomebrewContext::Dnd::Feats::ChangeCommand.new }
+    register('commands.homebrew_context.dnd.feats.copy') { HomebrewContext::Dnd::Feats::CopyCommand.new }
+
     register('commands.campaigns_context.add_campaign') { CampaignsContext::AddCampaignCommand.new }
     register('commands.campaigns_context.join_campaign') { CampaignsContext::JoinCampaignCommand.new }
     register('commands.campaigns_context.remove_campaign') { CampaignsContext::RemoveCampaignCommand.new }

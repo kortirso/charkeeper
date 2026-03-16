@@ -1,12 +1,11 @@
 import { createSignal, createEffect, createMemo, Show, For, batch } from 'solid-js';
 import { createStore } from 'solid-js/store';
 
-import config from '../../../../CharKeeperApp/data/daggerheart.json';
+import config from '../../../../CharKeeperApp/data/dnd2024.json';
 
 import { useAppState, useAppLocale, useAppAlert } from '../../../context';
-import { Button, Input, createModal, DaggerheartFeatForm, DaggerheartFeat, Select, Checkbox } from '../../../components';
-import { Edit, Trash, Stroke, Copy } from '../../../assets';
-import { fetchHomebrewsList } from '../../../requests/fetchHomebrewsList';
+import { Button, Input, createModal, Select, Checkbox, DndFeatForm, DndFeat } from '../../../components';
+import { Edit, Trash, Stroke, Copy, Plus } from '../../../assets';
 import { fetchBooksRequest } from '../../../requests/books/fetchBooksRequest';
 import { changeBookContent } from '../../../requests/changeBookContent';
 import { fetchSubclassesRequest } from '../../../requests/fetchSubclassesRequest';
@@ -16,6 +15,7 @@ import { updateSubclassRequest } from '../../../requests/updateSubclassRequest';
 import { deleteSubclassRequest } from '../../../requests/deleteSubclassRequest';
 import { copySubclassRequest } from '../../../requests/copySubclassRequest';
 import { createFeat } from '../../../requests/createFeat';
+import { changeFeat } from '../../../requests/changeFeat';
 import { removeFeat } from '../../../requests/removeFeat';
 import { translate } from '../../../helpers';
 
@@ -54,11 +54,9 @@ const TRANSLATION = {
   }
 }
 
-export const DaggerheartSubclasses = () => {
+export const DndSubclasses = () => {
   const [subclassForm, setSubclassForm] = createStore({
     name: '',
-    mechanics: [],
-    spellcast: null,
     class_name: null,
     public: false
   });
@@ -69,7 +67,6 @@ export const DaggerheartSubclasses = () => {
   const [books, setBooks] = createSignal(undefined);
   const [subclasses, setSubclasses] = createSignal(undefined);
   const [modalMode, setModalMode] = createSignal(undefined);
-  const [homebrews, setHomebrews] = createSignal(undefined);
   const [open, setOpen] = createSignal(false);
 
   const [appState] = useAppState();
@@ -77,21 +74,25 @@ export const DaggerheartSubclasses = () => {
   const [locale] = useAppLocale();
   const { Modal, openModal, closeModal } = createModal();
 
-  const fetchSubclasses = async () => await fetchSubclassesRequest(appState.accessToken, 'daggerheart');
+  const fetchSubclasses = async () => await fetchSubclassesRequest(appState.accessToken, 'dnd');
 
   createEffect(() => {
-    const fetchBooks = async () => await fetchBooksRequest(appState.accessToken, 'daggerheart');
-    const fetchHomebrews = async () => await fetchHomebrewsList(appState.accessToken, 'daggerheart');
+    const fetchBooks = async () => await fetchBooksRequest(appState.accessToken, 'dnd');
 
-    Promise.all([fetchSubclasses(), fetchHomebrews(), fetchBooks()]).then(
-      ([subclassesData, homebrewsData, booksData]) => {
+    Promise.all([fetchSubclasses(), fetchBooks()]).then(
+      ([subclassesData, booksData]) => {
         batch(() => {
           setBooks(booksData.books.filter((item) => item.own));
           setSubclasses(subclassesData.subclasses);
-          setHomebrews(homebrewsData);
         });
       }
     );
+  });
+
+  const availableBooks = createMemo(() => {
+    if (books() === undefined) return [];
+
+    return books().filter(({ shared }) => shared === null);
   });
 
   const filteredSubclasses = createMemo(() => {
@@ -100,16 +101,13 @@ export const DaggerheartSubclasses = () => {
     return subclasses().filter(({ own }) => open() ? !own : own);
   });
 
-  const daggerheartClasses = createMemo(() => {
-    const result = translate(config.classes, locale());
-    if (homebrews() === undefined) return result;
-
-    return { ...result, ...homebrews().classes.reduce((acc, item) => { acc[item.id] = item.name; return acc; }, {}) };
+  const dndClasses = createMemo(() => {
+    return translate(config.classes, locale());
   });
 
   const openCreateSubclassModal = () => {
     batch(() => {
-      setSubclassForm({ id: null, name: '', class_name: null, spellcast: null, mechanics: [], public: false });
+      setSubclassForm({ id: null, name: '', class_name: null, public: false });
       setModalMode('subclassForm');
       openModal();
     });
@@ -117,7 +115,7 @@ export const DaggerheartSubclasses = () => {
 
   const openChangeSubclassModal = (subclass) => {
     batch(() => {
-      setSubclassForm({ id: subclass.id, name: subclass.name, class_name: subclass.class_name, spellcast: subclass.spellcast, mechanics: subclass.mechanics, public: subclass.public });
+      setSubclassForm({ id: subclass.id, name: subclass.name, class_name: subclass.class_name, public: subclass.public });
       setModalMode('subclassForm');
       openModal();
     });
@@ -131,30 +129,24 @@ export const DaggerheartSubclasses = () => {
     });
   }
 
-  const updateMultiFeatureValue = (value) => {
-    const currentValues = subclassForm.mechanics;
-    const newValue = currentValues.includes(value) ? currentValues.filter((item) => item !== value) : currentValues.concat([value]);
-    setSubclassForm({ ...subclassForm, mechanics: newValue });
-  }
-
   const saveSubclass = () => {
     subclassForm.id === null ? createSubclass() : updateSubclass();
   }
 
   const createSubclass = async () => {
-    const result = await createSubclassRequest(appState.accessToken, 'daggerheart', { brewery: subclassForm });
+    const result = await createSubclassRequest(appState.accessToken, 'dnd', { brewery: subclassForm });
 
     if (result.errors_list === undefined) {
       batch(() => {
         setSubclasses([result.subclass].concat(subclasses()));
-        setSubclassForm({ id: null, name: '', mechanics: [], spellcast: null, class_name: null, public: false });
+        setSubclassForm({ id: null, name: '', class_name: null, public: false });
         closeModal();
       });
     } else renderAlerts(result.errors_list);
   }
 
   const updateSubclass = async () => {
-    const result = await updateSubclassRequest(appState.accessToken, 'daggerheart', subclassForm.id, { brewery: subclassForm, only_head: true });
+    const result = await updateSubclassRequest(appState.accessToken, 'dnd', subclassForm.id, { brewery: subclassForm, only_head: true });
 
     if (result.errors_list === undefined) {
       const newSubclasses = subclasses().map((item) => {
@@ -165,14 +157,14 @@ export const DaggerheartSubclasses = () => {
 
       batch(() => {
         setSubclasses(newSubclasses);
-        setSubclassForm({ id: null, name: '', mechanics: [], spellcast: null, class_name: null, public: false, own: true });
+        setSubclassForm({ id: null, name: '', class_name: null, public: false, own: true });
         closeModal();
       });
     } else renderAlerts(result.errors_list);
   }
 
   const removeSubclass = async (subclass) => {
-    const result = await deleteSubclassRequest(appState.accessToken, 'daggerheart', subclass.id);
+    const result = await deleteSubclassRequest(appState.accessToken, 'dnd', subclass.id);
 
     if (result.errors_list === undefined) {
       setSubclasses(subclasses().filter(({ id }) => id !== subclass.id ));
@@ -180,8 +172,8 @@ export const DaggerheartSubclasses = () => {
   }
 
   const copySubclass = async (subclassId) => {
-    const result = await copySubclassRequest(appState.accessToken, 'daggerheart', subclassId);
-    const subclass = await fetchSubclassRequest(appState.accessToken, 'daggerheart', result.subclass.id)
+    const result = await copySubclassRequest(appState.accessToken, 'dnd', subclassId);
+    const subclass = await fetchSubclassRequest(appState.accessToken, 'dnd', result.subclass.id)
     if (subclass.errors_list === undefined) {
       setSubclasses([subclass.subclass].concat(subclasses()));
       renderNotice(TRANSLATION[locale()].copyCompleted);
@@ -189,10 +181,10 @@ export const DaggerheartSubclasses = () => {
   }
 
   const createSubclassFeature = async (payload) => {
-    const result = await createFeat(appState.accessToken, 'daggerheart', payload);
+    const result = await createFeat(appState.accessToken, 'dnd', payload);
 
     if (result.errors_list === undefined) {
-      const subclass = await fetchSubclassRequest(appState.accessToken, 'daggerheart', featureSubclass().id)
+      const subclass = await fetchSubclassRequest(appState.accessToken, 'dnd', featureSubclass().id)
 
       if (subclass.errors_list === undefined) {
         const newSubclasses = subclasses().map((item) => {
@@ -211,11 +203,32 @@ export const DaggerheartSubclasses = () => {
     } else renderAlerts(result.errors_list);
   }
 
-  const removeFeature = async (feature) => {
-    const result = await removeFeat(appState.accessToken, 'daggerheart', feature.id);
+  const updateFeature = async (id, originId, payload) => {
+    const result = await changeFeat(appState.accessToken, 'dnd', id, payload);
 
     if (result.errors_list === undefined) {
-      const subclass = await fetchSubclassRequest(appState.accessToken, 'daggerheart', feature.origin_value)
+      const subclass = await fetchSubclassRequest(appState.accessToken, 'dnd', originId)
+
+      if (subclass.errors_list === undefined) {
+        const newSubclasses = subclasses().map((item) => {
+          if (originId !== item.id) return item;
+
+          return { ...item, ...subclass.subclass };
+        });
+
+        batch(() => {
+          setSubclasses(newSubclasses);
+          closeModal();
+        });
+      }
+    }
+  }
+
+  const removeFeature = async (feature) => {
+    const result = await removeFeat(appState.accessToken, 'dnd', feature.id);
+
+    if (result.errors_list === undefined) {
+      const subclass = await fetchSubclassRequest(appState.accessToken, 'dnd', feature.origin_value)
 
       if (subclass.errors_list === undefined) {
         const newSubclasses = subclasses().map((item) => {
@@ -248,44 +261,51 @@ export const DaggerheartSubclasses = () => {
         <Button default active={open()} classList="ml-4 mb-4 px-2 py-1" onClick={() => setOpen(!open())}>{TRANSLATION[locale()].showPublic}</Button>
       </div>
       <Show when={filteredSubclasses().length > 0}>
-        <div class="flex items-center">
-          <Select
-            containerClassList="w-40"
-            labelText={TRANSLATION[locale()].selectBook}
-            items={Object.fromEntries(books().filter(({ shared }) => shared === null).map((item) => [item.id, item.name]))}
-            selectedValue={book()}
-            onSelect={setBook}
-          />
-          <Show when={book() && selectedIds().length > 0}>
-            <Button default classList="px-2 py-1 mt-6 ml-4" onClick={addToBook}>
-              {TRANSLATION[locale()].save}
-            </Button>
-          </Show>
-        </div>
-        <p class="text-sm mt-1 mb-2">{TRANSLATION[locale()].selectBookHelp}</p>
-        <div class="grid grid-cols-3 gap-4">
+        <Show when={!open() && availableBooks.length > 0}>
+          <div class="flex items-center">
+            <Select
+              containerClassList="w-40"
+              labelText={TRANSLATION[locale()].selectBook}
+              items={Object.fromEntries(availableBooks().map((item) => [item.id, item.name]))}
+              selectedValue={book()}
+              onSelect={setBook}
+            />
+            <Show when={book() && selectedIds().length > 0}>
+              <Button default classList="px-2 py-1 mt-6 ml-4" onClick={addToBook}>
+                {TRANSLATION[locale()].save}
+              </Button>
+            </Show>
+          </div>
+          <p class="text-sm mt-1 mb-2">{TRANSLATION[locale()].selectBookHelp}</p>
+        </Show>
+        <div class="border border-gray-200 rounded border-b-0">
           <For each={filteredSubclasses()}>
             {(subclass) =>
-              <div class="blockable p-4 flex flex-col">
-                <div class="flex-1">
-                  <p class="font-medium! mb-2 text-xl">{subclass.name}</p>
-                  <p class="mb-1">{TRANSLATION[locale()].originClass} - {daggerheartClasses()[subclass.class_name]}</p>
-                  <Show when={subclass.spellcast}>
-                    <p class="mb-1">{TRANSLATION[locale()].spellcast} - {config.traits[subclass.spellcast].name[locale()]}</p>
-                  </Show>
-                  <Show when={subclass.mechanics.length > 0}>
-                    <p class="mb-1">{TRANSLATION[locale()].mechanics} - {subclass.mechanics.map((item) => config.mechanics[item].name[locale()]).join(', ')}</p>
-                  </Show>
-                  <Button default small classList="mt-3 mb-2 p-1" onClick={() => openCreateFeatureModal(subclass)}>
-                    {TRANSLATION[locale()].addFeature}
+              <div class="grid grid-cols-12 gap-4 p-4 border-b border-gray-200 rounded">
+                <div class="col-span-3">
+                  <p class="text-xl">{subclass.name}</p>
+                  <p class="mb-1">{TRANSLATION[locale()].originClass} - {dndClasses()[subclass.class_name]}</p>
+                </div>
+                <div class="col-span-7">
+                  <Button default small classList="mb-2 p-1" onClick={() => openCreateFeatureModal(subclass)}>
+                    <Plus width="20" height="20" />
                   </Button>
-                  <For each={subclass.features}>
-                    {(feature) =>
-                      <DaggerheartFeat feature={feature} onRemoveFeature={removeFeature} />
+                  <For each={subclass.features.sort((a, b) => a.conditions.level > b.conditions.level)}>
+                    {(feature, index) =>
+                      <div class="mb-2">
+                        <DndFeat
+                          open={open()}
+                          feature={feature}
+                          index={index()}
+                          originId={subclass.id}
+                          onRemoveFeature={removeFeature}
+                          updateFeature={updateFeature}
+                        />
+                      </div>
                     }
                   </For>
                 </div>
-                <div class="flex items-center justify-end gap-x-2 text-neutral-700">
+                <div class="col-span-2 flex items-start justify-end gap-2">
                   <Show
                     when={!open()}
                     fallback={
@@ -294,15 +314,17 @@ export const DaggerheartSubclasses = () => {
                       </Button>
                     }
                   >
-                    <Button
-                      default
-                      classList="p-2"
-                      onClick={() => selectedIds().includes(subclass.id) ? setSelectedIds(selectedIds().filter((id) => id !== subclass.id)) : setSelectedIds(selectedIds().concat(subclass.id))}
-                    >
-                      <span classList={{ 'opacity-25': !selectedIds().includes(subclass.id) }}>
-                        <Stroke width="16" height="12" />
-                      </span>
-                    </Button>
+                    <Show when={availableBooks().length > 0}>
+                      <Button
+                        default
+                        classList="p-2"
+                        onClick={() => selectedIds().includes(subclass.id) ? setSelectedIds(selectedIds().filter((id) => id !== subclass.id)) : setSelectedIds(selectedIds().concat(subclass.id))}
+                      >
+                        <span classList={{ 'opacity-25': !selectedIds().includes(subclass.id) }}>
+                          <Stroke width="16" height="12" />
+                        </span>
+                      </Button>
+                    </Show>
                     <Button default classList="px-2 py-1" onClick={() => openChangeSubclassModal(subclass)}>
                       <Edit width="20" height="20" />
                     </Button>
@@ -328,24 +350,9 @@ export const DaggerheartSubclasses = () => {
           <Select
             containerClassList="flex-1 mb-2"
             labelText={TRANSLATION[locale()].originClass}
-            items={daggerheartClasses()}
+            items={dndClasses()}
             selectedValue={subclassForm.class_name}
             onSelect={(value) => setSubclassForm({ ...subclassForm, class_name: value })}
-          />
-          <Select
-            containerClassList="flex-1 mb-2"
-            labelText={TRANSLATION[locale()].spellcast}
-            items={translate(config.traits, locale())}
-            selectedValue={subclassForm.spellcast}
-            onSelect={(value) => setSubclassForm({ ...subclassForm, spellcast: value })}
-          />
-          <Select
-            multi
-            containerClassList="mb-4"
-            labelText={TRANSLATION[locale()].mechanics}
-            items={translate(config.mechanics, locale())}
-            selectedValues={subclassForm.mechanics}
-            onSelect={(value) => updateMultiFeatureValue(value)}
           />
           <Checkbox
             labelText={TRANSLATION[locale()].public}
@@ -360,7 +367,7 @@ export const DaggerheartSubclasses = () => {
           </Button>
         </Show>
         <Show when={modalMode() === 'featureForm'}>
-          <DaggerheartFeatForm origin="subclass" originValue={featureSubclass().id} onSave={createSubclassFeature} onCancel={closeModal} />
+          <DndFeatForm origin="subclass" originValue={featureSubclass().id} onSave={createSubclassFeature} onCancel={closeModal} />
         </Show>
       </Modal>
     </Show>
