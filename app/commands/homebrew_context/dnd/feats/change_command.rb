@@ -9,7 +9,7 @@ module HomebrewContext
         use_contract do
           config.messages.namespace = :homebrew_feat
 
-          Kinds = Dry::Types['strict.string'].enum('static', 'text', 'hidden')
+          Kinds = Dry::Types['strict.string'].enum('static', 'text', 'update_result', 'hidden')
           Limits = Dry::Types['strict.string'].enum('short_rest', 'long_rest', 'one_at_short_rest')
 
           params do

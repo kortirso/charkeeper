@@ -9,6 +9,7 @@ import { PlusSmall, Minus } from '../../../../assets';
 import { updateCharacterRequest } from '../../../../requests/updateCharacterRequest';
 import { fetchTalentsRequest } from '../../../../requests/fetchTalentsRequest';
 import { createTalentRequest } from '../../../../requests/createTalentRequest';
+import { fetchHomebrewsRequest } from '../../../../requests/fetchHomebrewsRequest';
 import { translate, localize, performResponse } from '../../../../helpers';
 
 const TRANSLATION = {
@@ -41,6 +42,7 @@ export const Dnd5ClassLevels = (props) => {
   const currentConfig = () => character().provider === 'dnd5' ? dnd5Config : dnd2024Config;
 
   const [lastActiveCharacterId, setLastActiveCharacterId] = createSignal(undefined);
+  const [homebrews, setHomebrews] = createSignal(undefined);
   const [classesData, setClassesData] = createSignal(character().classes);
   const [subclassesData, setSubclassesData] = createSignal(character().subclasses);
 
@@ -75,6 +77,19 @@ export const Dnd5ClassLevels = (props) => {
     });
   });
 
+  createEffect(() => {
+    if (homebrews() !== undefined) return;
+    if (character().provider === 'dnd5') return;
+
+    const fetchHomebrews = async () => await fetchHomebrewsRequest(appState.accessToken);
+
+    Promise.all([fetchHomebrews()]).then(
+      ([homebrewsData]) => {
+        setHomebrews(homebrewsData);
+      }
+    );
+  });
+
   const availableTalents = createMemo(() => {
     if (talents() === undefined) return {};
 
@@ -85,7 +100,20 @@ export const Dnd5ClassLevels = (props) => {
     if (!character().selected_talents) return 0;
 
     return Object.values(character().selected_talents).reduce((acc, value) => acc + value, 0) - character().selected_additional_talents;
-  })
+  });
+
+  const classesWithHomebrews = createMemo(() => {
+    const result = currentConfig().classes;
+    if (character().provider === 'dnd5') return result;
+    if (homebrews() === undefined) return result;
+
+    return Object.fromEntries(Object.entries(result).map(([slug, values]) => {
+      const homebrewSubclasses = homebrews().dnd2024.subclasses[slug] || {};
+      const allSubclasses = { ...values.subclasses, ...homebrewSubclasses };
+
+      return [slug, { ...values, subclasses: allSubclasses }];
+    }));
+  });
 
   const classes = () => translate(currentConfig().classes, locale());
 
@@ -176,7 +204,7 @@ export const Dnd5ClassLevels = (props) => {
       >
         <div class="blockable p-4 flex flex-col">
           <div class="mb-1">
-            <p>{character().subclasses[character().main_class] ? `${classes()[character().main_class]} - ${translate(currentConfig().classes[character().main_class].subclasses, locale())[character().subclasses[character().main_class]]}` : classes()[character().main_class]}</p>
+            <p>{character().subclasses[character().main_class] ? `${classes()[character().main_class]} - ${translate(classesWithHomebrews()[character().main_class].subclasses, locale())[character().subclasses[character().main_class]]}` : classes()[character().main_class]}</p>
             <div class="my-2 flex items-center">
               <div class="flex justify-between items-center mr-4 w-24">
                 <Button default size="small" onClick={() => changeClassLevel(character().main_class, 'down')}>
@@ -189,12 +217,12 @@ export const Dnd5ClassLevels = (props) => {
               </div>
               <div class="flex-1">
                 <Show
-                  when={Object.keys(currentConfig().classes[character().main_class].subclasses).length > 0 && !character().subclasses[character().main_class]}
+                  when={Object.keys(classesWithHomebrews()[character().main_class].subclasses).length > 0 && !character().subclasses[character().main_class]}
                   fallback={<></>}
                 >
                   <Select
                     containerClassList="w-full"
-                    items={translate(currentConfig().classes[character().main_class].subclasses, locale())}
+                    items={translate(classesWithHomebrews()[character().main_class].subclasses, locale())}
                     selectedValue={subclassesData()[character().main_class]}
                     onSelect={(value) => setSubclassesData({ ...subclassesData(), [character().main_class]: value })}
                   />
@@ -206,7 +234,7 @@ export const Dnd5ClassLevels = (props) => {
             {([slug, className]) =>
               <div class="mb-1">
                 <Checkbox
-                  labelText={character().subclasses[slug] ? `${className} - ${translate(currentConfig().classes[slug].subclasses, locale())[character().subclasses[slug]]}` : className}
+                  labelText={character().subclasses[slug] ? `${className} - ${translate(classesWithHomebrews()[slug].subclasses, locale())[character().subclasses[slug]]}` : className}
                   labelPosition="right"
                   labelClassList="ml-4"
                   checked={classesData()[slug]}
@@ -226,12 +254,12 @@ export const Dnd5ClassLevels = (props) => {
                       </div>
                       <div class="flex-1">
                         <Show
-                          when={Object.keys(currentConfig().classes[slug].subclasses).length > 0 && !character().subclasses[slug]}
+                          when={Object.keys(classesWithHomebrews()[slug].subclasses).length > 0 && !character().subclasses[slug]}
                           fallback={<></>}
                         >
                           <Select
                             containerClassList="w-full"
-                            items={translate(currentConfig().classes[slug].subclasses, locale())}
+                            items={translate(classesWithHomebrews()[slug].subclasses, locale())}
                             selectedValue={subclassesData()[slug]}
                             onSelect={(value) => setSubclassesData({ ...subclassesData(), [slug]: value })}
                           />

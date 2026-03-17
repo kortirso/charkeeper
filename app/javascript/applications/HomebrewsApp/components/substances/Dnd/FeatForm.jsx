@@ -211,7 +211,7 @@ export const DndFeatForm = (props) => {
         <Select
           containerClassList="flex-1"
           labelText={TRANSLATION[locale()].kind}
-          items={translate({ "static": { "name": { "en": "Static text", "ru": "Простое описание" } }, "text": { "name": { "en": "Text area", "ru": "С вводом данных" } }, "hidden": { "name": { "en": "Hidden", "ru": "Не отображается" } } }, locale())}
+          items={translate({ "static": { "name": { "en": "Static text", "ru": "Простое описание" } }, "text": { "name": { "en": "Text area", "ru": "С вводом данных" } }, "update_result": { "name": { "en": "Update result", "ru": "Второстепенное" } }, "hidden": { "name": { "en": "Hidden", "ru": "Не отображается" } } }, locale())}
           selectedValue={featForm.kind}
           onSelect={(value) => setFeatForm({ ...featForm, kind: value })}
         />
