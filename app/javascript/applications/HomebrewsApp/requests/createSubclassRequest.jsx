@@ -1,8 +1,8 @@
 import { apiRequest, options } from '../helpers';
 
-export const createDaggerheartSubclass = async (accessToken, payload) => {
+export const createSubclassRequest = async (accessToken, provider, payload) => {
   return await apiRequest({
-    url: '/homebrews/daggerheart/subclasses.json',
+    url: `/homebrews/${provider}/subclasses.json`,
     options: options('POST', accessToken, payload)
   });
 }
