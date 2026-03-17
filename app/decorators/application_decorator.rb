@@ -3,11 +3,12 @@
 class ApplicationDecorator < SimpleDelegator
   include TranslateHelper
 
-  attr_accessor :logger
+  attr_accessor :logger, :formula
 
   def initialize(service)
     super
     @logger = Logger.new($stdout)
+    @formula = Charkeeper::Container.resolve('formula')
   end
 
   def method_missing(method, *_args)

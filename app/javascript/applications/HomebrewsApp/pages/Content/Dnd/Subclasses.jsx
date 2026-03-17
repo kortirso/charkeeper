@@ -17,6 +17,7 @@ import { copySubclassRequest } from '../../../requests/copySubclassRequest';
 import { createFeat } from '../../../requests/createFeat';
 import { changeFeat } from '../../../requests/changeFeat';
 import { removeFeat } from '../../../requests/removeFeat';
+import { fetchSpellsRequest } from '../../../requests/fetchSpellsRequest';
 import { translate } from '../../../helpers';
 
 const TRANSLATION = {
@@ -64,6 +65,7 @@ export const DndSubclasses = () => {
   const [selectedIds, setSelectedIds] = createSignal([]);
   const [book, setBook] = createSignal(null);
 
+  const [spells, setSpells] = createSignal(undefined);
   const [books, setBooks] = createSignal(undefined);
   const [subclasses, setSubclasses] = createSignal(undefined);
   const [modalMode, setModalMode] = createSignal(undefined);
@@ -75,15 +77,17 @@ export const DndSubclasses = () => {
   const { Modal, openModal, closeModal } = createModal();
 
   const fetchSubclasses = async () => await fetchSubclassesRequest(appState.accessToken, 'dnd');
+  const fetchSpells = async () => await fetchSpellsRequest(appState.accessToken, 'dnd2024');
 
   createEffect(() => {
     const fetchBooks = async () => await fetchBooksRequest(appState.accessToken, 'dnd');
 
-    Promise.all([fetchSubclasses(), fetchBooks()]).then(
-      ([subclassesData, booksData]) => {
+    Promise.all([fetchSubclasses(), fetchBooks(), fetchSpells()]).then(
+      ([subclassesData, booksData, spellsData]) => {
         batch(() => {
           setBooks(booksData.books.filter((item) => item.own));
           setSubclasses(subclassesData.subclasses);
+          setSpells(Object.fromEntries(spellsData.spells.map((item) => [item.slug, item.title])));
         });
       }
     );
@@ -243,7 +247,7 @@ export const DndSubclasses = () => {
   }
 
   const addToBook = async () => {
-    const result = await changeBookContent(appState.accessToken, book(), { ids: selectedIds(), only_head: true }, 'subclass');
+    const result = await changeBookContent(appState.accessToken, 'dnd', book(), { ids: selectedIds(), only_head: true }, 'subclass');
 
     if (result.errors_list === undefined) {
       batch(() => {
@@ -261,7 +265,7 @@ export const DndSubclasses = () => {
         <Button default active={open()} classList="ml-4 mb-4 px-2 py-1" onClick={() => setOpen(!open())}>{TRANSLATION[locale()].showPublic}</Button>
       </div>
       <Show when={filteredSubclasses().length > 0}>
-        <Show when={!open() && availableBooks.length > 0}>
+        <Show when={!open() && availableBooks().length > 0}>
           <div class="flex items-center">
             <Select
               containerClassList="w-40"
@@ -298,6 +302,7 @@ export const DndSubclasses = () => {
                           feature={feature}
                           index={index()}
                           originId={subclass.id}
+                          spells={spells()}
                           onRemoveFeature={removeFeature}
                           updateFeature={updateFeature}
                         />
@@ -366,8 +371,14 @@ export const DndSubclasses = () => {
             {TRANSLATION[locale()].save}
           </Button>
         </Show>
-        <Show when={modalMode() === 'featureForm'}>
-          <DndFeatForm origin="subclass" originValue={featureSubclass().id} onSave={createSubclassFeature} onCancel={closeModal} />
+        <Show when={modalMode() === 'featureForm' && spells()}>
+          <DndFeatForm
+            origin="subclass"
+            spells={spells()}
+            originValue={featureSubclass().id}
+            onSave={createSubclassFeature}
+            onCancel={closeModal}
+          />
         </Show>
       </Modal>
     </Show>

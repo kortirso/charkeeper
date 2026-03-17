@@ -6,10 +6,12 @@ import { Trash, Edit } from '../../../assets';
 
 const TRANSLATION = {
   en: {
-    level: 'Level'
+    level: 'Level',
+    staticSpells: 'Static spells'
   },
   ru: {
-    level: 'Уровень'
+    level: 'Уровень',
+    staticSpells: 'Врождённые заклинания'
   }
 }
 
@@ -23,6 +25,9 @@ export const DndFeat = (props) => {
         <div class="col-span-11">
           <p class="font-medium!">{props.feature.title.en}</p>
           <p class="mt-1">{TRANSLATION[locale()].level} {props.feature.conditions.level}</p>
+          <Show when={props.spells && props.feature.info.static_spells && Object.keys(props.feature.info.static_spells).length > 0}>
+            <p class="mt-1 text-sm">{TRANSLATION[locale()].staticSpells}: {Object.keys(props.feature.info.static_spells).map((item) => props.spells[item]).join(', ')}</p>
+          </Show>
           <p
             class="feat-markdown mt-1"
             innerHTML={props.feature.markdown_description.en} // eslint-disable-line solid/no-innerhtml
@@ -42,6 +47,7 @@ export const DndFeat = (props) => {
       <Modal>
         <DndFeatForm
           feature={props.feature}
+          spells={props.spells}
           onSave={(payload) => props.updateFeature(props.feature.id, props.originId, payload)}
           onCancel={closeModal}
         />

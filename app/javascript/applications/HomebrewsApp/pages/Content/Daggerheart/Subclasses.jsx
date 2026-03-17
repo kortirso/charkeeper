@@ -230,7 +230,7 @@ export const DaggerheartSubclasses = () => {
   }
 
   const addToBook = async () => {
-    const result = await changeBookContent(appState.accessToken, book(), { ids: selectedIds(), only_head: true }, 'subclass');
+    const result = await changeBookContent(appState.accessToken, 'daggerheart', book(), { ids: selectedIds(), only_head: true }, 'subclass');
 
     if (result.errors_list === undefined) {
       batch(() => {

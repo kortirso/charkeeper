@@ -28,10 +28,21 @@ module Dnd2024Character
         DEFAULT_SPEEDS.index_with { speed / 2 }.merge(__getobj__.speeds).transform_values { |value| value.zero? ? speed : value }
     end
 
-    def formatted_static_spells
+    def formatted_static_spells # rubocop: disable Metrics/AbcSize
       return @formatted_static_spells if defined?(@formatted_static_spells)
 
+      # [{"blade_ward" => {"modifier" => "int"}}]
+      custom_static_spells = available_features.pluck('feats.info').pluck('static_spells').compact
+
       formatted_static_spells = __getobj__.static_spells
+      custom_static_spells.each do |custom_static_spell|
+        custom_static_spell.each do |key, values|
+          formatted_static_spells[key] = {
+            'attack_bonus' => proficiency_bonus + modifiers[values['modifier']],
+            'save_dc' => 8 + proficiency_bonus + modifiers[values['modifier']]
+          }
+        end
+      end
       return [] if formatted_static_spells.blank?
 
       @formatted_static_spells = ::Dnd2024::Feat.where(origin: 6, slug: formatted_static_spells.keys).map do |spell|

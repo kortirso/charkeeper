@@ -3,7 +3,7 @@
 module Homebrews
   class FeatSerializer < ApplicationSerializer
     attributes :id, :title, :description, :markdown_description, :origin, :origin_value, :bonuses, :conditions, :limit,
-               :limit_refresh, :kind
+               :limit_refresh, :kind, :modifiers, :info
 
     def bonuses
       return [] unless context

@@ -158,7 +158,7 @@ export const Dnd2024Spells = (props) => {
 
   const spellClassesList = createMemo(() => {
     const result = Object.keys(character().spell_classes);
-    if (Object.keys(character().static_spells).length > 0 && !spellsSelectingMode()) result.push('static');
+    if (Object.keys(character().formatted_static_spells).length > 0 && !spellsSelectingMode()) result.push('static');
 
     return result;
   });

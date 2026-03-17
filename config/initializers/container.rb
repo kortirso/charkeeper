@@ -174,6 +174,8 @@ module Charkeeper
     }
     register('commands.homebrew_context.daggerheart.add_book_items') { HomebrewContext::Daggerheart::AddBookItemsCommand.new }
 
+    register('commands.homebrew_context.dnd.books.add_subclasses') { HomebrewContext::Dnd::Books::AddSubclassesCommand.new }
+
     register('commands.homebrew_context.dnd.add_item') { HomebrewContext::Dnd::Items::AddCommand.new }
     register('commands.homebrew_context.dnd.change_item') { HomebrewContext::Dnd::Items::ChangeCommand.new }
     register('commands.homebrew_context.dnd.copy_item') { HomebrewContext::Dnd::Items::CopyCommand.new }

@@ -14,6 +14,7 @@ const TRANSLATION = {
   en: {
     add: 'Add book',
     items: 'Items',
+    classes: 'Classes',
     enabled: 'Enabled',
     disabled: 'Disabled',
     newBookTitle: 'Book form',
@@ -26,6 +27,7 @@ const TRANSLATION = {
   ru: {
     add: 'Добавить книгу',
     items: 'Предметы',
+    classes: 'Классы',
     enabled: 'Подключено',
     disabled: 'Отключено',
     newBookTitle: 'Редактирование книги',
@@ -154,13 +156,29 @@ export const DndBooks = () => {
                   <p class="font-medium!">{TRANSLATION[locale()].official}</p>
                 </Show>
               </div>
-              <For each={['items']}>
+              <For each={['items', 'classes']}>
                 {(kind) =>
-                  <Show when={book.items[kind].length > 0}>
-                    <div class="mb-4">
-                      <p class="font-medium! mb-2">{TRANSLATION[locale()][kind]}</p>
-                      <p>{book.items[kind].join(', ')}</p>
-                    </div>
+                  <Show
+                    when={kind !== 'classes'}
+                    fallback={
+                      <Show when={Object.keys(book.items.classes).length > 0}>
+                        <div class="mb-4">
+                          <p class="font-medium! mb-2">{TRANSLATION[locale()][kind]}</p>
+                          <For each={Object.entries(book.items.classes)}>
+                            {([className, subclasses]) =>
+                              <p>{className} - {subclasses.join(', ')}</p>
+                            }
+                          </For>
+                        </div>
+                      </Show>
+                    }
+                  >
+                    <Show when={book.items[kind].length > 0}>
+                      <div class="mb-4">
+                        <p class="font-medium! mb-2">{TRANSLATION[locale()][kind]}</p>
+                        <p>{book.items[kind].join(', ')}</p>
+                      </div>
+                    </Show>
                   </Show>
                 }
               </For>

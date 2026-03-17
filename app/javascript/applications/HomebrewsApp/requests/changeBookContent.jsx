@@ -1,8 +1,8 @@
 import { apiRequest, options } from '../helpers';
 
-export const changeBookContent = async (accessToken, id, payload, type) => {
+export const changeBookContent = async (accessToken, provider, id, payload, type) => {
   return await apiRequest({
-    url: `/homebrews/daggerheart/books/${id}/content.json?type=${type}`,
+    url: `/homebrews/${provider}/books/${id}/content.json?type=${type}`,
     options: options('POST', accessToken, payload)
   });
 }

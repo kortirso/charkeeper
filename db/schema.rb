@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_03_07_091301) do
+ActiveRecord::Schema[8.1].define(version: 2026_03_17_065312) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
   enable_extension "pgcrypto"
@@ -172,6 +172,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_03_07_091301) do
     t.datetime "created_at", null: false
     t.jsonb "data", default: {}, null: false, comment: "Свойства персонажа"
     t.datetime "equipment_updated_at"
+    t.jsonb "modifiers", default: {}, null: false
     t.string "name", null: false
     t.string "type", null: false, comment: "Система, для которой создан персонаж"
     t.datetime "updated_at", null: false
@@ -279,6 +280,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_03_07_091301) do
     t.jsonb "info", default: {}, null: false
     t.integer "kind", limit: 2, null: false
     t.integer "limit_refresh", limit: 2, comment: "Событие для обновления лимита"
+    t.jsonb "modifiers", default: {}, null: false
     t.jsonb "options", comment: "Опции для выбора"
     t.integer "origin", limit: 2, null: false, comment: "Тип применимости навыка"
     t.string "origin_value", comment: "Значение применимости навыка"
@@ -490,6 +492,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_03_07_091301) do
     t.uuid "itemable_id"
     t.string "itemable_type"
     t.string "kind", null: false, comment: "Тип предмета"
+    t.jsonb "modifiers", default: {}, null: false
     t.jsonb "name", default: {}, null: false
     t.boolean "public", default: false, null: false, comment: "Открыть доступ для сторонних пользователей"
     t.string "slug"

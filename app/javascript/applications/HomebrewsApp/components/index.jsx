@@ -19,3 +19,5 @@ export * from './substances/Dnd/Bonuses';
 export * from './substances/Dnd/ItemBonuses';
 export * from './substances/Dnd/FeatForm';
 export * from './substances/Dnd/Feat';
+
+export * from './substances_v2/ModifiersForm';
