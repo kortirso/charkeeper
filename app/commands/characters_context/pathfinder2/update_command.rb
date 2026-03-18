@@ -20,6 +20,7 @@ module CharactersContext
 
         params do
           required(:character).filled(type?: ::Pathfinder2::Character)
+          optional(:level).filled(:integer)
           optional(:classes).hash
           optional(:abilities).hash do
             required(:str).filled(:integer)
@@ -107,9 +108,7 @@ module CharactersContext
       def lock_key(input) = "character_update_#{input[:character].id}"
       def lock_time = 0
 
-      # rubocop: disable Metrics/AbcSize, Metrics/PerceivedComplexity, Metrics/CyclomaticComplexity
-      def do_prepare(input)
-        input[:level] = input[:classes].values.sum(&:to_i) if input[:classes]
+      def do_prepare(input) # rubocop: disable Metrics/AbcSize, Metrics/PerceivedComplexity
         %i[classes abilities health saving_throws selected_skills coins].each do |key|
           input[key]&.transform_values!(&:to_i)
         end
@@ -146,15 +145,15 @@ module CharactersContext
 
         { result: input[:character] }
       end
-      # rubocop: enable Metrics/AbcSize, Metrics/PerceivedComplexity, Metrics/CyclomaticComplexity
 
       def upload_avatar(input) # rubocop: disable Metrics/AbcSize
         return if input.slice(:avatar_file, :avatar_url, :file).keys.blank?
 
         attach_avatar_by_file.call({ character: input[:character], file: input[:avatar_file] }) if input[:avatar_file]
         attach_avatar_by_url.call({ character: input[:character], url: input[:avatar_url] }) if input[:avatar_url]
-        input[:character].avatar.attach(input[:file]) if input[:file]
+        return unless input[:file]
 
+        input[:character].avatar.attach(input[:file])
         cache.push_item(item: input[:character].avatar)
       rescue StandardError => _e
       end

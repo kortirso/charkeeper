@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## Unreleased
 ### Added
 - editing homebrew subclasses for DND 2024 characters
+- selecting feats while leveling for Pathfinder2 characters
 
 ### Modified
 - rendering saving throws for D&D characters

@@ -244,6 +244,14 @@ en:
     commands: "You can use various bot commands both in this chat and include the bot in your groups and call commands there.\n\nA full list of commands can be found at https://charkeeper.org/bot_commands"
     help: "If you would like to help develop the app in any way, you can contact us with any questions using the contact information provided, or simply donate to cover expenses via:\n\nBoosty https://boosty.to/kortirso\ncrypto USDT (TRC20 | TRON) TT1T8m3ffwh9f8AVYqLkDB7miuJpAq1ji9"
   tags:
+    pathfinder:
+      general:
+        general: General
+        skill: Skill
+        orc: Orc
+        halfling: Halfling
+        fighter: Fighter
+        fortune: Fortune
     dnd:
       weapon:
         ammo: You can use a weapon that has the ammunition properly to make a ranged attack only if you have ammunition to fire from the weapon.

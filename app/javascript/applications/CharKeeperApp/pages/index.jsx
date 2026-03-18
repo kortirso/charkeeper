@@ -52,6 +52,7 @@ export * from './Content/Character/Pathfinder2/Professions';
 export * from './Content/Character/Pathfinder2/Static';
 export * from './Content/Character/Pathfinder2/Skills';
 export * from './Content/Character/Pathfinder2/SavingThrows';
+export * from './Content/Character/Pathfinder2/Leveling';
 
 export * from './Content/Character/Daggerheart';
 export * from './Content/Character/Daggerheart/Traits';

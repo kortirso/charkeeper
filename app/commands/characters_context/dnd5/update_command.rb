@@ -201,8 +201,9 @@ module CharactersContext
 
         attach_avatar_by_file.call({ character: input[:character], file: input[:avatar_file] }) if input[:avatar_file]
         attach_avatar_by_url.call({ character: input[:character], url: input[:avatar_url] }) if input[:avatar_url]
-        input[:character].avatar.attach(input[:file]) if input[:file]
+        return unless input[:file]
 
+        input[:character].avatar.attach(input[:file])
         cache.push_item(item: input[:character].avatar)
       rescue StandardError => _e
       end
