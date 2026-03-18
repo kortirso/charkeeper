@@ -30,8 +30,8 @@ export const Dc20CombatStatic = (props) => {
     <ErrorWrapper payload={{ character_id: character().id, key: 'Dc20CombatStatic' }}>
       <GuideWrapper character={character()}>
         <div class="blockable py-4">
-          <div class="grid grid-cols-1 emd:grid-cols-5 gap-2">
-            <div class="grid grid-cols-3 emd:col-span-3 gap-2">
+          <div class="grid grid-cols-1 gap-2">
+            <div class="grid grid-cols-3 gap-2">
               <For
                 each={[
                   { label: 'combatMastery', value: character().combat_mastery },
@@ -49,7 +49,7 @@ export const Dc20CombatStatic = (props) => {
                 }
               </For>
             </div>
-            <div class="grid grid-cols-2 emd:col-span-2 gap-2">
+            <div class="grid grid-cols-2 gap-2">
               <For
                 each={[
                   { label: 'initiative', value: character().initiative },
