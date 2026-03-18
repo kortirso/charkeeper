@@ -388,7 +388,7 @@ export const Dc20Skills = (props) => {
                         <For each={skillsData().filter((item) => item.ability === slug)}>
                           {(skill) =>
                             <div class="dc20-skill justify-between">
-                              <p class="flex-1 text-sm md:text-base" classList={{ 'font-medium!': skill.expertise }}>
+                              <p class="flex-1 text-sm line-clamp-1" classList={{ 'font-medium!': skill.expertise }}>
                                 {localize(config.skills[skill.slug].name, locale())}
                               </p>
                               {renderSkillBoxes(skill, updateSkill, toggleSkillExpertise)}

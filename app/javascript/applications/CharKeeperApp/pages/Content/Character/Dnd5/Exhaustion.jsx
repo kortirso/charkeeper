@@ -1,6 +1,6 @@
 import { Show } from 'solid-js';
 
-import { ErrorWrapper, GuideWrapper, Button } from '../../../../components';
+import { Button } from '../../../../components';
 import { useAppState, useAppLocale } from '../../../../context';
 import { PlusSmall, Minus } from '../../../../assets';
 import { updateCharacterRequest } from '../../../../requests/updateCharacterRequest';
@@ -52,31 +52,27 @@ export const Dnd2024Exhaustion = (props) => {
   }
 
   return (
-    <ErrorWrapper payload={{ character_id: character().id, key: 'Dnd2024Exhaustion' }}>
-      <GuideWrapper character={character()}>
-        <div class="blockable p-4">
-          <h2 class="text-lg">{localize(TRANSLATION, locale()).exhaustion}</h2>
-          <div class="flex justify-between items-center w-24 mt-2">
-            <Button default size="small" onClick={decreaseExhaustion}>
-              <Minus />
-            </Button>
-            <p>{character().exhaustion}</p>
-            <Button default size="small" onClick={increaseExhaustion}>
-              <PlusSmall />
-            </Button>
-          </div>
-          <Show
-            when={character().exhaustion > 0}
-            fallback={
-              <p class="text-sm mt-4">{localize(TRANSLATION, locale()).noPenalty}</p>
-            }
-          >
-            <p class="text-sm mt-4">{localize(TRANSLATION, locale()).speedPenalty} {character().exhaustion * 5}</p>
-            <p class="text-sm mt-2">{localize(TRANSLATION, locale()).rollPenalty} {character().exhaustion * 2}</p>
-            <p class="text-sm mt-2">{localize(TRANSLATION, locale()).death}</p>
-          </Show>
-        </div>
-      </GuideWrapper>
-    </ErrorWrapper>
+    <>
+      <h2 class="text-lg">{localize(TRANSLATION, locale()).exhaustion}</h2>
+      <div class="flex justify-between items-center w-24 mt-2">
+        <Button default size="small" onClick={decreaseExhaustion}>
+          <Minus />
+        </Button>
+        <p>{character().exhaustion}</p>
+        <Button default size="small" onClick={increaseExhaustion}>
+          <PlusSmall />
+        </Button>
+      </div>
+      <Show
+        when={character().exhaustion > 0}
+        fallback={
+          <p class="text-sm mt-4">{localize(TRANSLATION, locale()).noPenalty}</p>
+        }
+      >
+        <p class="text-sm mt-4">{localize(TRANSLATION, locale()).speedPenalty} {character().exhaustion * 5}</p>
+        <p class="text-sm mt-2">{localize(TRANSLATION, locale()).rollPenalty} {character().exhaustion * 2}</p>
+        <p class="text-sm mt-2">{localize(TRANSLATION, locale()).death}</p>
+      </Show>
+    </>
   );
 }

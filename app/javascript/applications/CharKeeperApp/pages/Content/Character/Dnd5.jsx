@@ -4,7 +4,7 @@ import { createWindowSize } from '@solid-primitives/resize-observer';
 
 import {
   Dnd5Abilities, Dnd5Combat, Dnd5Rest, Dnd5ClassLevels, Dnd5Professions, Dnd5Spells, Dnd5Skills,
-  Dnd5Proficiency, Dnd2024WildShapes, BeastFeatures, Dnd5Craft, Dnd5Bonuses, Dnd2024Exhaustion, Dnd2024Spells, Dnd5Info
+  Dnd5Proficiency, Dnd2024WildShapes, BeastFeatures, Dnd5Craft, Dnd5Bonuses, Dnd2024Spells, Dnd5Info
 } from '../../../pages';
 import {
   CharacterNavigation, Equipment, Notes, Avatar, ContentWrapper, Feats, createDiceRoll, Conditions, Combat, Gold
@@ -131,14 +131,6 @@ export const Dnd5 = (props) => {
                 <Dnd5Proficiency character={character()} onReplaceCharacter={props.onReplaceCharacter} />
               </div>
               <div class="mt-4">
-                <Conditions character={character()} />
-              </div>
-              <Show when={character().provider === 'dnd2024' && Object.keys(character().classes).includes('druid')}>
-                <div class="mt-4">
-                  <Dnd2024WildShapes character={character()} onReplaceCharacter={props.onReplaceCharacter} />
-                </div>
-              </Show>
-              <div class="mt-4">
                 <Dnd5Skills
                   character={character()}
                   openDiceRoll={openDiceRoll}
@@ -147,6 +139,14 @@ export const Dnd5 = (props) => {
                   onNextGuideStepClick={() => setActiveMobileTab('equipment')}
                 />
               </div>
+              <div class="mt-4">
+                <Conditions character={character()} />
+              </div>
+              <Show when={character().provider === 'dnd2024' && Object.keys(character().classes).includes('druid')}>
+                <div class="mt-4">
+                  <Dnd2024WildShapes character={character()} onReplaceCharacter={props.onReplaceCharacter} />
+                </div>
+              </Show>
               <div class="mt-4">
                 <Feats
                   character={character()}
@@ -271,30 +271,23 @@ export const Dnd5 = (props) => {
         <div class="mt-4">
           <Dnd5Proficiency character={character()} onReplaceCharacter={props.onReplaceCharacter} />
         </div>
-        <div class="emd:gap-4 emd:mt-4 grid grid-cols-1 emd:grid-cols-2">
-          <div class="mt-4 emd:mt-0">
-            <Show when={character().provider === 'dnd2024'}>
-              <div class="mb-4">
-                <Dnd2024Exhaustion character={character()} onReplaceCharacter={props.onReplaceCharacter} />
-              </div>
-            </Show>
-            <Conditions character={character()} />
-            <Show when={character().provider === 'dnd2024' && Object.keys(character().classes).includes('druid')}>
-              <div class="mt-4">
-                <Dnd2024WildShapes character={character()} onReplaceCharacter={props.onReplaceCharacter} />
-              </div>
-            </Show>
-          </div>
-          <div class="mt-4 emd:mt-0">
-            <Dnd5Skills
-              character={character()}
-              openDiceRoll={openDiceRoll}
-              onReplaceCharacter={props.onReplaceCharacter}
-              onReloadCharacter={props.onReloadCharacter}
-              onNextGuideStepClick={() => setActiveTab('equipment')}
-            />
-          </div>
+        <div class="mt-4">
+          <Dnd5Skills
+            character={character()}
+            openDiceRoll={openDiceRoll}
+            onReplaceCharacter={props.onReplaceCharacter}
+            onReloadCharacter={props.onReloadCharacter}
+            onNextGuideStepClick={() => setActiveTab('equipment')}
+          />
         </div>
+        <div class="mt-4">
+          <Conditions character={character()} />
+        </div>
+        <Show when={character().provider === 'dnd2024' && Object.keys(character().classes).includes('druid')}>
+          <div class="mt-4">
+            <Dnd2024WildShapes character={character()} onReplaceCharacter={props.onReplaceCharacter} />
+          </div>
+        </Show>
       </>
     );
   });

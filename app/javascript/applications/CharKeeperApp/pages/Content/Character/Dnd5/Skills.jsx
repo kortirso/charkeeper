@@ -1,8 +1,9 @@
 import { createSignal, createEffect, For, Show, batch, Switch, Match } from 'solid-js';
 
-import { ErrorWrapper, Levelbox, EditWrapper, Dice, GuideWrapper } from '../../../../components';
+import { ErrorWrapper, Levelbox, EditWrapper, Dice, GuideWrapper, Button, Checkbox } from '../../../../components';
 import config from '../../../../data/dnd2024.json';
 import { useAppState, useAppLocale, useAppAlert } from '../../../../context';
+import { Minus, Plus } from '../../../../assets';
 import { updateCharacterRequest } from '../../../../requests/updateCharacterRequest';
 import { modifier, localize } from '../../../../helpers';
 
@@ -11,13 +12,15 @@ const TRANSLATION = {
     helpMessage: 'Fill data about skills.',
     anySkillBoosts: 'You can learn any skills, amount - ',
     skillBoosts: 'You can learn skills from the following list, amount - ',
-    check: 'Skill'
+    check: 'Skill',
+    skills: 'Skills'
   },
   ru: {
     helpMessage: 'Заполните данные по умениям.',
     anySkillBoosts: 'Вы можете изучить любые умения, кол-во - ',
     skillBoosts: 'Вы можете изучить умения из следующего списка, кол-во - ',
-    check: 'Умение'
+    check: 'Умение',
+    skills: 'Умения'
   }
 }
 
@@ -49,17 +52,16 @@ export const Dnd5Skills = (props) => {
     const result = skillsData().slice().map((item) => {
       if (item.slug !== slug) return item;
 
-      return { ...item, selected: !item.selected } 
+      return { ...item, selected: !item.selected };
     });
     setSkillsData(result);
   }
 
-  const updateSkill = (slug) => {
+  const updateSkill = (slug, modifier) => {
     const result = skillsData().slice().map((item) => {
       if (item.slug !== slug) return item;
 
-      const newValue = item.level === 2 ? 0 : (item.level === undefined ? 1 : (item.level + 1));
-      return { ...item, level: newValue } 
+      return { ...item, level: item.level + modifier } 
     });
     setSkillsData(result);
   }
@@ -100,67 +102,95 @@ export const Dnd5Skills = (props) => {
         onReloadCharacter={props.onReloadCharacter}
         onNextClick={props.onNextGuideStepClick}
       >
-        <Show when={character().skill_boosts > 0 || character().any_skill_boosts > 0}>
-          <div class="warning">
-            <Show when={character().any_skill_boosts > 0}>
-              <p class="text-sm">{localize(TRANSLATION, locale())['anySkillBoosts']} {character().any_skill_boosts}</p>
-            </Show>
-            <Show when={character().skill_boosts > 0}>
-              <Show when={character().any_skill_boosts > 0}>
-                <div class="mt-2" />
-              </Show>
-              <p class="text-sm">{localize(TRANSLATION, locale())['skillBoosts']} {character().skill_boosts}</p>
-              <p class="text-sm">{Object.entries(config.skills).filter(([slug]) => character().skill_boosts_list.includes(slug)).map(([, values]) => localize(values.name, locale())).join(', ')}</p>
-            </Show>
-          </div>
-        </Show>
         <EditWrapper
           editMode={editMode()}
           onSetEditMode={setEditMode}
           onCancelEditing={cancelEditing}
           onSaveChanges={updateCharacter}
         >
-          <div class="blockable p-4 pb-8 mb-2">
-            <For each={Object.keys(config.abilities)}>
-              {(slug) =>
-                <For each={(editMode() ? skillsData() : character().skills).filter((item) => item.ability === slug)}>
-                  {(skill) =>
-                    <div class="flex items-center mb-1 dark:text-snow">
-                      <Show
-                        when={editMode()}
-                        fallback={
-                          <Show when={skill.level} fallback={<Levelbox classList="mr-2" value={skill.selected ? 1 : 0} />}>
-                            <Levelbox classList="mr-2" value={skill.level} />
-                          </Show>
+          <div class="blockable py-4 px-2 md:px-4 pb-8">
+            <p class="text-lg">{localize(TRANSLATION, locale()).skills}</p>
+            <Show when={character().skill_boosts > 0 || character().any_skill_boosts > 0}>
+              <div class="warning mt-2">
+                <Show when={character().any_skill_boosts > 0}>
+                  <p class="text-sm text-black!">{localize(TRANSLATION, locale())['anySkillBoosts']} {character().any_skill_boosts}</p>
+                </Show>
+                <Show when={character().skill_boosts > 0}>
+                  <Show when={character().any_skill_boosts > 0}>
+                    <div class="mt-2" />
+                  </Show>
+                  <p class="text-sm text-black!">{localize(TRANSLATION, locale())['skillBoosts']} {character().skill_boosts}</p>
+                  <p class="text-sm text-black!">{Object.entries(config.skills).filter(([slug]) => character().skill_boosts_list.includes(slug)).map(([, values]) => localize(values.name, locale())).join(', ')}</p>
+                </Show>
+              </div>
+            </Show>
+            <div class="fallout-skills">
+              <For each={Object.keys(config.abilities)}>
+                {(slug) =>
+                  <Show
+                    when={editMode()}
+                    fallback={
+                      <For each={character().skills.filter((item) => item.ability === slug)}>
+                        {(skill) =>
+                          <div class="fallout-skill">
+                            <Switch>
+                              <Match when={character().provider === 'dnd5'}>
+                                <Levelbox classList="mr-2" value={skill.selected ? 1 : 0} />
+                              </Match>
+                              <Match when={character().provider === 'dnd2024'}>
+                                <Levelbox classList="mr-2" value={skill.level} />
+                              </Match>
+                            </Switch>
+                            <p class="uppercase mr-4">{skill.ability}</p>
+                            <p class="flex-1 flex items-center" classList={{ 'font-medium!': skill.selected }}>
+                              {localize(config.skills[skill.slug].name, locale())}
+                            </p>
+                            <Dice
+                              width="28"
+                              height="28"
+                              text={modifier(skill.modifier)}
+                              onClick={() => props.openDiceRoll(`/check skill "${skill.slug}"`, skill.modifier, `${localize(TRANSLATION, locale())['check']}, ${localize(config.skills[skill.slug].name, locale())}`)}
+                            />
+                          </div>
                         }
-                      >
-                        <Switch>
-                          <Match when={character().provider === 'dnd5'}>
-                            <Levelbox classList="mr-2" value={skill.selected ? 1 : 0} onToggle={() => toggleSkill(skill.slug)} />
-                          </Match>
-                          <Match when={character().provider === 'dnd2024'}>
-                            <Levelbox classList="mr-2" value={skill.level} onToggle={() => updateSkill(skill.slug)} />
-                          </Match>
-                        </Switch>
-                      </Show>
-                      <p class="uppercase mr-4">{skill.ability}</p>
-                      <p
-                        class="flex-1 flex items-center"
-                        classList={{ 'font-medium!': skill.level > 0 || skill.selected }}
-                      >
-                        {localize(config.skills[skill.slug].name, locale())}
-                      </p>
-                      <Dice
-                        width="28"
-                        height="28"
-                        text={modifier(skill.modifier)}
-                        onClick={() => props.openDiceRoll(`/check skill "${skill.slug}"`, skill.modifier, `${localize(TRANSLATION, locale())['check']}, ${localize(config.skills[skill.slug].name, locale())}`)}
-                      />
-                    </div>
-                  }
-                </For>
-              }
-            </For>
+                      </For>
+                    }
+                  >
+                    <For each={skillsData().filter((item) => item.ability === slug)}>
+                      {(skill) =>
+                        <div class="fallout-skill">
+                          <p class={`flex-1 flex items-center ${skill.level > 0 ? 'font-medium!' : ''}`}>
+                            {localize(config.skills[skill.slug].name, locale())}
+                          </p>
+                          <div class="fallout-skill-actions">
+                            <Show
+                              when={character().provider === 'dnd2024'}
+                              fallback={
+                                <Checkbox classList="mr-2" checked={skill.selected} onToggle={() => toggleSkill(skill.slug)} />
+                              }
+                            >
+                              <Button
+                                default
+                                size="small"
+                                disabled={skill.level === 0}
+                                onClick={() => skill.level === 0 ? null : updateSkill(skill.slug, -1)}
+                              ><Minus /></Button>
+                              <p>{skill.level}</p>
+                              <Button
+                                default
+                                size="small"
+                                disabled={skill.level >= (character().provider === 'dnd5' ? 1 : 2)}
+                                onClick={() => skill.level >= (character().provider === 'dnd5' ? 1 : 2) ? null : updateSkill(skill.slug, 1)}
+                              ><Plus /></Button>
+                            </Show>
+                          </div>
+                        </div>
+                      }
+                    </For>
+                  </Show>
+                }
+              </For>
+            </div>
           </div>
         </EditWrapper>
       </GuideWrapper>

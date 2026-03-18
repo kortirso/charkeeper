@@ -213,7 +213,7 @@ export const Pathfinder2Leveling = (props) => {
           </Toggle>
         }
       </For>
-      <Modal classList="sm:min-w-2/3 sm:max-w-2/3! lg:min-w-1/3 lg:max-w-1/3!">
+      <Modal classList="min-w-9/10 max-w-9/10 sm:min-w-2/3 sm:max-w-2/3! lg:min-w-1/3 lg:max-w-1/3!">
         <Show when={featFilter()}>
           <p>{localize(TRANSLATION, locale()).newFeat}</p>
           <Select

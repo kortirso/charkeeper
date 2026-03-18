@@ -1,6 +1,7 @@
 import { createSignal, createEffect, For, Show, batch } from 'solid-js';
 import * as i18n from '@solid-primitives/i18n';
 
+import { Dnd2024Exhaustion } from '../../../../pages';
 import {
   createModal, StatsBlock, ErrorWrapper, Input, Toggle, Checkbox, Button, GuideWrapper, Dice
 } from '../../../../components';
@@ -172,50 +173,43 @@ export const Dnd5Combat = (props) => {
               {t('character.heal')}
             </Button>
           </div>
-          <div class="pt-0 p-4">
-            <p class="mb-2 dark:text-snow">{t('character.deathSavingThrows')}</p>
-            <div class="flex mb-2">
-              <p class="dark:text-snow w-20">{t('character.deathSuccess')}</p>
-              <div class="flex">
-                <For each={[...Array((character().death_saving_throws.success || 0))]}>
-                  {() =>
-                    <Checkbox
-                      checked
-                      classList="mr-1"
-                      onToggle={() => freeDeath('success')}
-                    />
-                  }
-                </For>
-                <For each={[...Array(3 - (character().death_saving_throws.success || 0))]}>
-                  {() =>
-                    <Checkbox
-                      classList="mr-1"
-                      onToggle={() => gainDeath('success')}
-                    />
-                  }
-                </For>
+          <div class="flex">
+            <Show when={character().provider === 'dnd2024'}>
+              <div class="flex-1 pt-0 p-4">
+                <Dnd2024Exhaustion character={character()} onReplaceCharacter={props.onReplaceCharacter} />
               </div>
-            </div>
-            <div class="flex">
-              <p class="dark:text-snow w-20">{t('character.deathFailure')}</p>
+            </Show>
+            <div class="flex-1 pt-0 p-4">
+              <p class="mb-2 dark:text-snow">{t('character.deathSavingThrows')}</p>
+              <div class="flex mb-2">
+                <p class="dark:text-snow w-20">{t('character.deathSuccess')}</p>
+                <div class="flex">
+                  <For each={[...Array((character().death_saving_throws.success || 0))]}>
+                    {() =>
+                      <Checkbox checked classList="mr-1" onToggle={() => freeDeath('success')} />
+                    }
+                  </For>
+                  <For each={[...Array(3 - (character().death_saving_throws.success || 0))]}>
+                    {() =>
+                      <Checkbox classList="mr-1" onToggle={() => gainDeath('success')} />
+                    }
+                  </For>
+                </div>
+              </div>
               <div class="flex">
-                <For each={[...Array((character().death_saving_throws.failure || 0))]}>
-                  {() =>
-                    <Checkbox
-                      checked
-                      classList="mr-1"
-                      onToggle={() => freeDeath('failure')}
-                    />
-                  }
-                </For>
-                <For each={[...Array(3 - (character().death_saving_throws.failure || 0))]}>
-                  {() =>
-                    <Checkbox
-                      classList="mr-1"
-                      onToggle={() => gainDeath('failure')}
-                    />
-                  }
-                </For>
+                <p class="dark:text-snow w-20">{t('character.deathFailure')}</p>
+                <div class="flex">
+                  <For each={[...Array((character().death_saving_throws.failure || 0))]}>
+                    {() =>
+                      <Checkbox checked classList="mr-1" onToggle={() => freeDeath('failure')} />
+                    }
+                  </For>
+                  <For each={[...Array(3 - (character().death_saving_throws.failure || 0))]}>
+                    {() =>
+                      <Checkbox classList="mr-1" onToggle={() => gainDeath('failure')} />
+                    }
+                  </For>
+                </div>
               </div>
             </div>
           </div>
