@@ -64,7 +64,9 @@
       "states": "Состояния",
       "craft": "Крафт",
       "campaignCharacters": "Персонажи",
-      "perks": "Перки"
+      "perks": "Перки",
+      "general": "Общие",
+      "skill": "Навыки"
     },
     "campaignsPage": {
       "title": "Кампании",

@@ -7,7 +7,7 @@ import {
   Pathfinder2SavingThrows, Pathfinder2Leveling
 } from '../../../pages';
 import {
-  CharacterNavigation, Equipment, Notes, Avatar, ContentWrapper, Conditions, Gold, createDiceRoll, Combat
+  CharacterNavigation, Equipment, Notes, Avatar, ContentWrapper, Conditions, Gold, createDiceRoll, Combat, Feats
 } from '../../../components';
 import { useAppLocale } from '../../../context';
 
@@ -25,6 +25,20 @@ export const Pathfinder2 = (props) => {
 
   const weaponFilter = (item) => item.kind === 'weapon';
   const armorFilter = (item) => item.kind === 'armor';
+
+  const ancestryFilter = (item) => item.origin === 'ancestry';
+  const classFilter = (item) => item.origin === 'class';
+  const generalFilter = (item) => item.origin === 'general';
+  const skillFilter = (item) => item.origin === 'skill';
+
+  const featFilters = createMemo(() => {
+    return [
+      { title: 'ancestry', callback: ancestryFilter },
+      { title: 'class', callback: classFilter },
+      { title: 'general', callback: generalFilter },
+      { title: 'skill', callback: skillFilter }
+    ];
+  });
 
   const mobileView = createMemo(() => {
     if (size.width >= 1152) return <></>;
@@ -73,6 +87,14 @@ export const Pathfinder2 = (props) => {
                   openDiceRoll={openDiceRoll}
                   openAttackRoll={openAttackRoll}
                   onReplaceCharacter={props.onReplaceCharacter}
+                />
+              </div>
+              <div class="mt-4">
+                <Feats
+                  character={character()}
+                  filters={featFilters()}
+                  onReplaceCharacter={props.onReplaceCharacter}
+                  onReloadCharacter={props.onReloadCharacter}
                 />
               </div>
             </Match>
@@ -169,6 +191,14 @@ export const Pathfinder2 = (props) => {
                   openDiceRoll={openDiceRoll}
                   openAttackRoll={openAttackRoll}
                   onReplaceCharacter={props.onReplaceCharacter}
+                />
+              </div>
+              <div class="mt-4">
+                <Feats
+                  character={character()}
+                  filters={featFilters()}
+                  onReplaceCharacter={props.onReplaceCharacter}
+                  onReloadCharacter={props.onReloadCharacter}
                 />
               </div>
             </Match>

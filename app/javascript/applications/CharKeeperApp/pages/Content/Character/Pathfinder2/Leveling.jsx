@@ -75,6 +75,8 @@ export const Pathfinder2Leveling = (props) => {
     setLastActiveCharacterId(character().id);
   });
 
+  const selectedFeatIds = createMemo(() => selectedFeats().map((item) => item.feat.id));
+
   const availableFeats = createMemo(() => {
     if (!feats()) return {};
     if (!featFilter()) return {};
@@ -83,6 +85,7 @@ export const Pathfinder2Leveling = (props) => {
 
     return Object.fromEntries(
       feats().filter((item) => {
+        if (selectedFeatIds().includes(item.id)) return false;
         if (item.conditions.level > featFilter().level) return false;
         if (featFilter().type === 'skill' && !item.origin_values.includes('skill')) return false;
         if (featFilter().type === 'general' && !item.origin_values.includes('general')) return false;
@@ -123,6 +126,7 @@ export const Pathfinder2Leveling = (props) => {
           setSelectedFeat(null);
         });
         closeModal();
+        refetchSelectedFeats();
       },
       function() { renderAlerts(result.errors_list) }
     );
@@ -130,6 +134,17 @@ export const Pathfinder2Leveling = (props) => {
 
   const levelUp = () => {
     updateCharacter({ level: character().level + 1 });
+  }
+
+  const refetchSelectedFeats = async () => {
+    const result = await fetchTalents();
+    performResponse(
+      result,
+      function() { // eslint-disable-line solid/reactivity
+        setSelectedFeats(result.character_feats);
+      },
+      function() { renderAlerts(result.errors_list) }
+    );
   }
 
   const updateCharacter = async (payload) => {

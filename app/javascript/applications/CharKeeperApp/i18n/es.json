@@ -64,7 +64,9 @@
       "states": "Estados",
       "craft": "Creación",
       "campaignCharacters": "Personajes",
-      "perks": "Perks"
+      "perks": "Perks",
+      "general": "General",
+      "skill": "Skill"
     },
     "campaignsPage": {
       "title": "Campañas",

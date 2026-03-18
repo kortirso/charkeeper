@@ -4,14 +4,14 @@ module Pathfinder2
   class CharacterSerializer < ApplicationSerializer
     include Deps[cache: 'cache.avatars']
 
-    attributes :provider, :id, :name, :level, :race, :subrace, :main_class, :classes, :languages, :health, :abilities, :money,
+    attributes :features, :id, :name, :level, :race, :subrace, :main_class, :classes, :languages, :health, :abilities, :money,
                :skills, :created_at, :subclasses, :background, :saving_throws_value, :saving_throws, :dying_condition_value,
                :avatar, :boosts, :weapon_skills, :armor_skills, :coins, :load, :armor_class, :speed, :perception, :conditions,
-               :ability_boosts_v2, :skill_boosts, :attacks
+               :ability_boosts_v2, :skill_boosts, :attacks, :provider
 
     delegate :id, :name, :level, :race, :subrace, :main_class, :classes, :languages, :health, :abilities, :skills, :subclasses,
              :background, :saving_throws_value, :saving_throws, :dying_condition_value, :boosts, :weapon_skills, :money,
-             :armor_skills, :coins, :load, :armor_class, :speed, :perception, :conditions, :attacks, to: :decorator
+             :armor_skills, :coins, :load, :armor_class, :speed, :perception, :conditions, :attacks, :features, to: :decorator
     delegate :data, :created_at, to: :object
     delegate :ability_boosts_v2, :skill_boosts, to: :data
 

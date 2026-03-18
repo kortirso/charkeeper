@@ -5,7 +5,7 @@ module CharactersContext
     module Feats
       class AddCommand < BaseCommand
         use_contract do
-          Types = Dry::Types['strict.string'].enum('ancestry')
+          Types = Dry::Types['strict.string'].enum('ancestry', 'skill', 'general', 'class')
 
           params do
             required(:character).filled(type?: ::Pathfinder2::Character)
