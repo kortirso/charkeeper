@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Pathfinder2Character
-  class BaseDecorator < SimpleDelegator
+  class BaseDecorator < ApplicationDecorator
     include TranslateHelper
 
     FLEXIBLE_SKILLS = %w[acrobatics athletics].freeze
@@ -9,7 +9,7 @@ module Pathfinder2Character
 
     delegate :id, :name, :data, :feats, to: :__getobj__
     delegate :race, :subrace, :main_class, :classes, :subclasses, :level, :languages, :health, :selected_skills,
-             :lore_skills, :background, :weapon_skills, :armor_skills, :main_ability, :class_dc, :conditions,
+             :lore_skills, :background, :weapon_skills, :armor_skills, :main_ability, :class_dc, :conditions, :lores,
              :saving_throws, :dying_condition_value, :ability_boosts, :skill_boosts, :coins, :money, to: :data
 
     def parent = __getobj__
@@ -26,13 +26,14 @@ module Pathfinder2Character
     end
 
     def skills
-      @skills ||= [
-        %w[acrobatics dex], %w[arcana int], %w[athletics str], %w[crafting int],
-        %w[deception cha], %w[diplomacy cha], %w[intimidation cha], %w[medicine wis],
-        %w[nature wis], %w[occultism int], %w[performance cha], %w[religion wis],
-        %w[society int], %w[stealth dex], %w[survival wis], %w[thievery dex],
-        %w[lore1 int], %w[lore2 int]
-      ].map { |item| skill_payload(item[0], item[1]) }
+      @skills ||= (
+        [
+          %w[acrobatics dex], %w[arcana int], %w[athletics str], %w[crafting int],
+          %w[deception cha], %w[diplomacy cha], %w[intimidation cha], %w[medicine wis],
+          %w[nature wis], %w[occultism int], %w[performance cha], %w[religion wis],
+          %w[society int], %w[stealth dex], %w[survival wis], %w[thievery dex]
+        ] + lores.keys.map { |item| [item, 'int'] }
+      ).map { |item| skill_payload(item[0], item[1]) }
     end
 
     def saving_throws_value
@@ -162,12 +163,10 @@ module Pathfinder2Character
         .hashable_pluck('items.slug', 'items.name', 'items.data', 'items.info', :notes, :state)
     end
 
-    def skill_payload(slug, ability) # rubocop: disable Metrics/AbcSize
-      proficiency_level = (lore_skills[slug] ? lore_skills.dig(slug, 'level') : selected_skills[slug]).to_i
-
+    def skill_payload(slug, ability)
+      proficiency_level = selected_skills[slug].to_i
       {
         slug: slug,
-        name: lore_skills[slug] ? lore_skills.dig(slug, 'name') : nil,
         ability: ability,
         level: proficiency_level,
         total_modifier: abilities[ability] + proficiency_bonus(proficiency_level) + armor_penalty(slug, ability),
