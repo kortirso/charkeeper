@@ -43,16 +43,7 @@ module CharactersContext
             required(:will).filled(:integer)
           end
           optional(:selected_skills).hash
-          optional(:lore_skills).hash do
-            required(:lore1).hash do
-              required(:name).maybe(:string)
-              required(:level).filled(:integer)
-            end
-            required(:lore2).hash do
-              required(:name).maybe(:string)
-              required(:level).filled(:integer)
-            end
-          end
+          optional(:lores).hash
           optional(:name).filled(:string, max_size?: 50)
           optional(:avatar_file).hash do
             required(:file_content).filled(:string)
@@ -69,6 +60,17 @@ module CharactersContext
           end
           optional(:money).filled(:integer, gteq?: 0)
           optional(:conditions).maybe(:array).each(:string)
+          # DEPRECATED
+          optional(:lore_skills).hash do
+            required(:lore1).hash do
+              required(:name).maybe(:string)
+              required(:level).filled(:integer)
+            end
+            required(:lore2).hash do
+              required(:name).maybe(:string)
+              required(:level).filled(:integer)
+            end
+          end
         end
 
         rule(:avatar_file, :avatar_url, :file).validate(:check_only_one_present)
@@ -83,13 +85,6 @@ module CharactersContext
         rule(:health) do
           next if value.nil?
           next if value.values.all? { |item| !item.negative? }
-
-          key.failure(:invalid_value)
-        end
-
-        rule(:selected_skills) do
-          next if value.nil?
-          next if (value.keys - SKILLS).empty?
 
           key.failure(:invalid_value)
         end

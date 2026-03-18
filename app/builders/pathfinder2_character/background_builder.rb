@@ -13,7 +13,10 @@ module Pathfinder2Character
 
       result[:ability_boosts].merge!({ :free => 1, config['ability_boosts'].to_sym => 1 }) { |_, oldval, newval| oldval + newval }
       result[:skill_boosts].merge!({ config['skill_boosts'].to_sym => 1 }) { |_, oldval, newval| oldval + newval }
-      result[:lore_skills][:lore1] = { name: config['lore_name'], level: 1 }
+
+      lore_id = SecureRandom.alphanumeric(10)
+      result[:lores] = { lore_id => config['lore_name'] }
+      result[:selected_skills] = { lore_id => 1 }
 
       result[:ability_boosts_v2][:background] = { config['ability_boosts'] => 1, 'free' => 1 }
 

@@ -12,12 +12,14 @@ const TRANSLATION = {
   en: {
     free: 'Free',
     skills: 'Skills',
-    skillBoosts: 'You can improve your skills:'
+    skillBoosts: 'You can improve your skills:',
+    add: 'Add skill'
   },
   ru: {
     free: 'Универсальное',
     skills: 'Навыки',
-    skillBoosts: 'Вы можете улучшить следующие умения:'
+    skillBoosts: 'Вы можете улучшить следующие умения:',
+    add: 'Добавить навык'
   }
 }
 
@@ -27,6 +29,9 @@ export const Pathfinder2Skills = (props) => {
   const [lastActiveCharacterId, setLastActiveCharacterId] = createSignal(undefined);
   const [editMode, setEditMode] = createSignal(false);
   const [skillsData, setSkillsData] = createSignal(character().skills);
+  const [loresData, setLoresData] = createSignal(character().lores);
+
+  const [newSkill, setNewSkill] = createSignal('');
 
   const [appState] = useAppState();
   const [{ renderAlerts }] = useAppAlert();
@@ -40,6 +45,7 @@ export const Pathfinder2Skills = (props) => {
 
     batch(() => {
       setSkillsData(character().skills);
+      setLoresData(character().lores);
       setEditMode(character().guide_step === 2);
       setLastActiveCharacterId(character().id);
     });
@@ -74,30 +80,30 @@ export const Pathfinder2Skills = (props) => {
   }
 
   const changeLoreSkill = (slug, value) => {
-    const result = skillsData().slice().map((item) => {
-      if (slug !== item.slug) return item;
+    setLoresData({ ...loresData(), [slug]: value });
+  }
 
-      return { ...item, name: value }
+  const saveNewSkill = () => {
+    if (newSkill().length === 0) return;
+
+    const id = Math.floor(Math.random() * 1000000).toString();
+    batch(() => {
+      setSkillsData(skillsData().concat({ slug: id, ability: 'int', level: 0 }));
+      setLoresData({ ...loresData(), [id]: newSkill() });
+      setNewSkill('');
     });
-    setSkillsData(result);
   }
 
   const updateCharacter = async () => {
     const payload = {
       selected_skills: skillsData()
-        .filter((item) => item.slug !== 'lore1' && item.slug !== 'lore2' && item.level > 0)
+        .filter((item) => item.level > 0)
         .reduce((acc, item) => {
           acc[item.slug] = item.level
 
           return acc
         }, {}),
-      lore_skills: skillsData()
-        .filter((item) => item.slug === 'lore1' || item.slug === 'lore2')
-        .reduce((acc, item) => {
-          acc[item.slug] = { name: item.name, level: item.level }
-
-          return acc
-        }, {})
+      lores: loresData()
     }
     const result = await updateCharacterRequest(appState.accessToken, character().provider, character().id, { character: payload });
 
@@ -137,7 +143,7 @@ export const Pathfinder2Skills = (props) => {
                           <Levelbox classList="mr-2" value={skill.level} />
                           <p class="uppercase mr-4">{skill.ability}</p>
                           <p class={`flex-1 flex items-center ${skill.level > 0 ? 'font-medium!' : ''}`}>
-                            {skill.name || localize(config.skills[skill.slug].name, locale())}
+                            {config.skills[skill.slug] ? localize(config.skills[skill.slug].name, locale()) : character().lores[skill.slug]}
                           </p>
                           <Dice
                             width="28"
@@ -155,11 +161,11 @@ export const Pathfinder2Skills = (props) => {
                       <div class="fallout-skill">
                         <p class={`flex-1 flex items-center ${skill().level > 0 ? 'font-medium!' : ''}`}>
                           <Show
-                            when={skill().slug === 'lore1' || skill().slug === 'lore2'}
+                            when={loresData()[skill().slug]}
                             fallback={localize(config.skills[skill().slug].name, locale())}
                           >
                             <Input
-                              value={skill().name}
+                              value={loresData()[skill().slug]}
                               onInput={(value) => changeLoreSkill(skill().slug, value)}
                             />
                           </Show>
@@ -185,6 +191,16 @@ export const Pathfinder2Skills = (props) => {
                 </Show>
               }
             </For>
+            <Show when={editMode()}>
+              <div class="flex flex-row items-center gap-x-2 mt-4">
+                <Input
+                  containerClassList="flex-1"
+                  value={newSkill()}
+                  onInput={setNewSkill}
+                />
+                <Button default textable onClick={saveNewSkill}>{localize(TRANSLATION, locale()).add}</Button>
+              </div>
+            </Show>
           </div>
         </div>
       </EditWrapper>
