@@ -4,7 +4,7 @@ import { createWindowSize } from '@solid-primitives/resize-observer';
 
 import {
   Pathfinder2Abilities, Pathfinder2Health, Pathfinder2Professions, Pathfinder2Static, Pathfinder2Skills,
-  Pathfinder2SavingThrows
+  Pathfinder2SavingThrows, Pathfinder2Leveling
 } from '../../../pages';
 import {
   CharacterNavigation, Equipment, Notes, Avatar, ContentWrapper, Conditions, Gold, createDiceRoll, Combat
@@ -32,7 +32,7 @@ export const Pathfinder2 = (props) => {
     return (
       <>
         <CharacterNavigation
-          tabsList={['abilities', 'combat', 'equipment', 'notes', 'professions', 'avatar']}
+          tabsList={['abilities', 'combat', 'equipment', 'classLevels', 'professions', 'notes', 'avatar']}
           activeTab={activeMobileTab()}
           setActiveTab={setActiveMobileTab}
         />
@@ -91,6 +91,13 @@ export const Pathfinder2 = (props) => {
                 <Gold character={character()} onReplaceCharacter={props.onReplaceCharacter} />
               </Equipment>
             </Match>
+            <Match when={activeMobileTab() === 'classLevels'}>
+              <Pathfinder2Leveling
+                character={character()}
+                onReplaceCharacter={props.onReplaceCharacter}
+                onReloadCharacter={props.onReloadCharacter}
+              />
+            </Match>
             <Match when={activeMobileTab() === 'notes'}>
               <Notes />
             </Match>
@@ -145,7 +152,7 @@ export const Pathfinder2 = (props) => {
     return (
       <>
         <CharacterNavigation
-          tabsList={['combat', 'equipment', 'notes', 'professions', 'avatar']}
+          tabsList={['combat', 'equipment', 'classLevels', 'professions', 'notes', 'avatar']}
           activeTab={activeTab()}
           setActiveTab={setActiveTab}
         />
@@ -179,6 +186,13 @@ export const Pathfinder2 = (props) => {
               >
                 <Gold character={character()} onReplaceCharacter={props.onReplaceCharacter} />
               </Equipment>
+            </Match>
+            <Match when={activeTab() === 'classLevels'}>
+              <Pathfinder2Leveling
+                character={character()}
+                onReplaceCharacter={props.onReplaceCharacter}
+                onReloadCharacter={props.onReloadCharacter}
+              />
             </Match>
             <Match when={activeTab() === 'notes'}>
               <Notes />

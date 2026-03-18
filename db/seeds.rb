@@ -142,7 +142,7 @@ feats.each do |feat|
 end
 
 
-Dir[File.join(Rails.root.join('db/data/pathfinder2/feats/*.json'))].each do |filename|
+Dir[File.join(Rails.root.join('db/data/pathfinder2/feats_v2/*.json'))].each do |filename|
   puts "seeding - #{filename}"
   JSON.parse(File.read(filename)).each do |feat|
     ::Pathfinder2::Feat.create!(feat)
@@ -438,3 +438,28 @@ Item::Recipe.create(
 #   file.write(beautified_json_string)
 # end
 
+file_content = File.read('db/data/pathfinder2/charkeeper.json')
+feats = JSON.parse(file_content)
+feats = feats.select { |item| item['rus_traits'].include?('Полурослик') }
+
+data_hash = feats.filter_map do |item|
+  {
+    slug: item['name'].underscore.gsub(' ', '_'),
+    kind: 'static',
+    title: { en: item['name'], ru: item['rus_name'] },
+    description: { en: item['rus_text'], ru: item['rus_text'] },
+    origin: 'ancestry',
+    origin_values: item['rus_traits'].split(', '),
+    conditions: { level: 1 },
+    description_eval_variables: {
+      limit: "1"
+    },
+    limit_refresh: "long_rest"
+  }
+end
+
+beautified_json_string = JSON.pretty_generate(data_hash)
+# # Write the beautified JSON string to a file
+File.open('db/data/pathfinder2/feats_v2/halflings.json', 'w') do |file|
+  file.write(beautified_json_string)
+end
