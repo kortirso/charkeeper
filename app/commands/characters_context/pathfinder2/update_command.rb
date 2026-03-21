@@ -4,6 +4,7 @@ module CharactersContext
   module Pathfinder2
     class UpdateCommand < BaseCommand
       include Deps[
+        add_feat: 'commands.characters_context.pathfinder2.feats.add',
         attach_avatar_by_url: 'commands.image_processing.attach_avatar_by_url',
         attach_avatar_by_file: 'commands.image_processing.attach_avatar_by_file',
         cache: 'cache.avatars'
@@ -60,6 +61,7 @@ module CharactersContext
           end
           optional(:money).filled(:integer, gteq?: 0)
           optional(:conditions).maybe(:array).each(:string)
+          optional(:selected_features).hash
           # DEPRECATED
           optional(:lore_skills).hash do
             required(:lore1).hash do
@@ -136,9 +138,19 @@ module CharactersContext
         input[:character].assign_attributes(input.slice(:name))
         input[:character].save!
 
+        add_feats(input) if input.key?(:selected_features)
         upload_avatar(input)
 
         { result: input[:character] }
+      end
+
+      def add_feats(input)
+        input[:selected_features].values.flatten.each do |slug|
+          feat = ::Pathfinder2::Feat.find_by(slug: slug)
+          next unless feat
+
+          add_feat.call(character: input[:character], id: feat.id, type: 'additional', level: input[:character].data.level)
+        end
       end
 
       def upload_avatar(input) # rubocop: disable Metrics/AbcSize

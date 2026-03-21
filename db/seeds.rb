@@ -141,8 +141,7 @@ feats.each do |feat|
   ::Dc20::Feat.create!(feat)
 end
 
-
-Dir[File.join(Rails.root.join('db/data/pathfinder2/feats_v2/*.json'))].each do |filename|
+Dir[File.join(Rails.root.join('db/data/pathfinder2/feats/**/*.json'))].each do |filename|
   puts "seeding - #{filename}"
   JSON.parse(File.read(filename)).each do |feat|
     ::Pathfinder2::Feat.create!(feat)
@@ -440,7 +439,7 @@ Item::Recipe.create(
 
 file_content = File.read('db/data/pathfinder2/charkeeper.json')
 feats = JSON.parse(file_content)
-feats = feats.select { |item| item['rus_traits'].include?('Полурослик') }
+feats = feats.select { |item| item['rus_traits'].include?('Орк') }
 
 data_hash = feats.filter_map do |item|
   {
@@ -460,6 +459,6 @@ end
 
 beautified_json_string = JSON.pretty_generate(data_hash)
 # # Write the beautified JSON string to a file
-File.open('db/data/pathfinder2/feats_v2/halflings.json', 'w') do |file|
+File.open('db/data/pathfinder2/feats/ancestries/orcs.json', 'w') do |file|
   file.write(beautified_json_string)
 end

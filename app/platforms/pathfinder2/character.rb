@@ -31,6 +31,7 @@ module Pathfinder2
     attribute :vision, :string, default: nil # low-light dark
     attribute :conditions, array: true, default: []
     attribute :selected_feats, array: true, default: {} # { 'id' => [{ type: '', level: '' }] }
+    attribute :selected_features, array: true, default: {} # { 'fighting_style' => ['fighting_style_defense'] }
     # только для 1 уровня
     attribute :ability_boosts, array: true # дополнительные повышения характеристик
     attribute :ability_boosts_v2, array: true # дополнительные повышения характеристик

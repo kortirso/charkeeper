@@ -5,7 +5,7 @@ module CharactersContext
     module Feats
       class AddCommand < BaseCommand
         use_contract do
-          Types = Dry::Types['strict.string'].enum('ancestry', 'skill', 'general', 'class')
+          Types = Dry::Types['strict.string'].enum('ancestry', 'skill', 'general', 'class', 'additional')
 
           params do
             required(:character).filled(type?: ::Pathfinder2::Character)
@@ -22,7 +22,10 @@ module CharactersContext
         end
 
         def do_persist(input)
-          ::Character::Feat.create_with(ready_to_use: true).find_or_create_by(input.slice(:character, :feat))
+          character_feat =
+            ::Character::Feat.create_with(ready_to_use: true, selected_count: 0).find_or_create_by(input.slice(:character, :feat))
+
+          character_feat.increment!(:selected_count)
           update_selected_feats(input)
 
           { result: :ok }

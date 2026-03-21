@@ -126,7 +126,7 @@ export const Pathfinder2Skills = (props) => {
         <div class="blockable p-4 pb-8">
           <p class="text-lg">{localize(TRANSLATION, locale()).skills}</p>
           <Show when={character().skill_boosts}>
-            <div class="warning">
+            <div class="warning mt-2">
               <p class="text-sm text-black!">{localize(TRANSLATION, locale()).skillBoosts}</p>
               <p class="text-sm text-black!">{renderSkillBoosts(character().skill_boosts)}</p>
             </div>

@@ -1,25 +1,13 @@
 [
   {
-    "slug": "dubious_knowledge",
-    "title": { "en": "Dubious Knowledge", "ru": "Сомнительные знания" },
+    "slug": "diehard",
+    "title": { "en": "Diehard", "ru": "Крепкий орешек" },
     "description": {
-      "en": "**Prerequisites:** trained in a skill with the **Recall Knowledge** action.\n\nYou're a treasure trove of information, but not all of it comes from reputable sources. When you fail (but don't critically fail) a Recall Knowledge check using any skill, you learn the correct answer and an erroneous answer, but you don't have any way to differentiate which is which. This can occur as knowing something is significant, but not whether it's good or bad.",
-      "ru": "**Требования:** хотя бы один изученный навык, позволяющий **Вспомнить информацию**.\n\nВы просто кладезь сомнительных сведений. При провале (но не критическом) попытки **Вспомнить информацию** с использованием любого навыка вы узнаёте правильный и неверный ответы, но не знаете, что из них что. Вы можете не осознать важность чего-либо, но отличите хорошее от плохого."
+      "en": "Вас так просто не убить. Вы умираете при значении состояния при смерти 5 (а не 4, как обычно).",
+      "ru": "Вас так просто не убить. Вы умираете при значении состояния при смерти 5 (а не 4, как обычно)."
     },
-    "origin": "skill",
-    "origin_values": ["general", "skill"],
-    "kind": "static",
-    "conditions": { "level": 1 }
-  },
-  {
-    "slug": "intimidating_prowess",
-    "title": { "en": "Intimidating Prowess", "ru": "Устрашающий вид" },
-    "description": {
-      "en": "**Prerequisites:** Strength +3; expert in Intimidation.\n\nIn situations where you can physically menace the target when you Coerce or Demoralize, you gain a +1 circumstance bonus to your Intimidation check and you ignore the penalty for not sharing a language. If your Strength modifier is +5 or higher and you are a master in Intimidation, this bonus increases to +2.",
-      "ru": "**Требования:** Сила +3; экспертное Запугивание.\n\nЕсли вы можете оказывать физическое давление на цель во время Деморализации или Угрозы, то получаете ситуативный бонус +1 к проверке Запугивания и игнорируете штраф за отсутствие общего языка. Если модификатор вашей Силы +5 или выше и вы мастер Запугивания, этот бонус увеличивается до +2."
-    },
-    "origin": "skill",
-    "origin_values": ["general", "skill"],
+    "origin": "general",
+    "origin_values": ["general"],
     "kind": "static",
     "conditions": { "level": 1 }
   }

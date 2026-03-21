@@ -64,7 +64,8 @@ class FeaturesDecorator
       active: feature.active,
       continious: feature.feat.continious,
       price: feature.feat.price,
-      info: feature.feat.info
+      info: feature.feat.info,
+      selected_count: feature.selected_count
     }.compact
   end
 

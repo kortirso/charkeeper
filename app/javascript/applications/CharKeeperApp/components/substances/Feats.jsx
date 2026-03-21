@@ -283,7 +283,7 @@ export const Feats = (props) => {
                         </Button>
                       </div>
                     </Match>
-                    <Match when={feature().kind === 'static_list' || feature().kind === 'one_from_list'}>
+                    <Match when={(feature().kind === 'static_list' || feature().kind === 'one_from_list') && feature().options}>
                       <Select
                         withNull
                         containerClassList="w-full mt-2"
@@ -292,11 +292,20 @@ export const Feats = (props) => {
                         onSelect={(option) => updateFeatureValue(feature(), option)}
                       />
                     </Match>
-                    <Match when={feature().kind === 'many_from_list'}>
+                    <Match when={feature().kind === 'many_from_list' && feature().options}>
                       <Select
                         multi
                         containerClassList="w-full mt-2"
                         items={Object.entries(feature().options).reduce((acc, [key, value]) => { acc[key] = localize(value, locale()); return acc; }, {})}
+                        selectedValues={featValues()[feature().slug] || []}
+                        onSelect={(option) => updateMultiFeatureValue(feature(), option)}
+                      />
+                    </Match>
+                    <Match when={(feature().kind === 'one_from_list' || feature().kind === 'many_from_list') && !feature().options && feature().info.options_list && props[feature().info.options_list]}>
+                      <Select
+                        multi={feature().kind === 'many_from_list'}
+                        containerClassList="w-full mt-2"
+                        items={props[feature().info.options_list]}
                         selectedValues={featValues()[feature().slug] || []}
                         onSelect={(option) => updateMultiFeatureValue(feature(), option)}
                       />

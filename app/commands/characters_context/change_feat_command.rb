@@ -7,6 +7,7 @@ module CharactersContext
       character_dnd2024_update: 'commands.characters_context.dnd2024.update',
       character_daggerheart_update: 'commands.characters_context.daggerheart.update',
       character_dc20_update: 'commands.characters_context.dc20.update',
+      character_pathfinder2_update: 'commands.characters_context.pathfinder2.update',
       refresh_daggerheart_feats: 'services.characters_context.daggerheart.refresh_feats'
     ]
 
@@ -29,7 +30,7 @@ module CharactersContext
       input[:key] =
         case input[:character_feat].character.type
         when 'Dnd5::Character' then :selected_feats
-        when 'Dnd2024::Character', 'Daggerheart::Character', 'Dc20::Character' then :selected_features
+        when 'Dnd2024::Character', 'Daggerheart::Character', 'Dc20::Character', 'Pathfinder2::Character' then :selected_features
         end
       return if input[:key].nil?
 
@@ -60,6 +61,7 @@ module CharactersContext
       when 'Dnd2024::Character' then character_dnd2024_update
       when 'Daggerheart::Character' then character_daggerheart_update
       when 'Dc20::Character' then character_dc20_update
+      when 'Pathfinder2::Character' then character_pathfinder2_update
       end
     end
 

@@ -20,7 +20,8 @@ const TRANSLATION = {
     newFeat: 'Choose feat',
     confirm: 'Confirm feat selection',
     notSelected: 'Not selected',
-    selectTags: 'Select tags'
+    selectTags: 'Select tags',
+    additionalFeat: 'Additional feat'
   },
   ru: {
     currentLevel: 'уровень',
@@ -33,7 +34,8 @@ const TRANSLATION = {
     newFeat: 'Выберите черту',
     confirm: 'Подтвердить выбор черты',
     notSelected: 'Не выбрана',
-    selectTags: 'Выбрать тэги'
+    selectTags: 'Выбрать тэги',
+    additionalFeat: 'Дополнительная черта'
   }
 }
 
@@ -41,6 +43,7 @@ const ANCESTRY_FEAT_LEVELS = [1, 5, 9, 13, 17];
 const CLASS_FEAT_LEVELS = [2, 4, 6, 8, 10, 12, 14, 16, 18, 20];
 const GENERAL_FEAT_LEVELS = [3, 7, 11, 15, 19];
 const SKILL_FEAT_LEVELS = [2, 4, 6, 8, 10, 12, 14, 16, 18, 20];
+const ADDITIONAL_SKILL_CLASSES = ['fighter', 'rogue', 'ranger'];
 
 export const Pathfinder2Leveling = (props) => {
   const character = () => props.character;
@@ -85,8 +88,9 @@ export const Pathfinder2Leveling = (props) => {
 
     return Object.fromEntries(
       feats().filter((item) => {
-        if (selectedFeatIds().includes(item.id)) return false;
+        if (!item.info.multiple && selectedFeatIds().includes(item.id)) return false;
         if (item.conditions.level > featFilter().level) return false;
+        if (item.conditions.selected_feature) return false;
         if (featFilter().type === 'skill' && !item.origin_values.includes('skill')) return false;
         if (featFilter().type === 'general' && !item.origin_values.includes('general')) return false;
         if (checkTags && !item.origin_values.some(element => selectedTags().includes(element))) return false;
@@ -99,6 +103,10 @@ export const Pathfinder2Leveling = (props) => {
   const selectFeat = (type, level) => {
     batch(() => {
       setFeatFilter({ type: type, level: level });
+      if (type === 'class') setSelectedTags([character().main_class]);
+      if (type === 'ancestry') setSelectedTags([character().race]);
+      if (type === 'skill') setSelectedTags(['skill']);
+      if (type === 'general') setSelectedTags(['general']);
       openModal();
     });
   }
@@ -161,21 +169,39 @@ export const Pathfinder2Leveling = (props) => {
   const renderSelectedFeatValue = (type, level) => {
     const value = selectedFeats().find((item) => item.type === type && item.level === level);
     return (
-      <div>
+      <Text
+        containerClassList={`${value ? '' : 'cursor-pointer'}`}
+        labelText={renderFeatLabel(type)}
+        text={value ? value.feat.title : localize(TRANSLATION, locale()).notSelected}
+        textClassList="text-lg"
+        onClick={() => value ? null : selectFeat(type, level)}
+      />
+    );
+  }
+
+  const renderAdditionalFeatValues = (level) => {
+    const values = selectedFeats().filter((item) => item.type === 'additional' && item.level === level);
+    return (
+      <>
+        <For each={values}>
+          {(value) =>
+            <div>
+              <Text
+                labelText={renderFeatLabel('additional')}
+                text={value.feat.title}
+                textClassList="text-lg"
+              />
+            </div>
+          }
+        </For>
         <Text
           containerClassList="cursor-pointer"
-          labelText={renderFeatLabel(type)}
-          text={value ? value.feat.title : localize(TRANSLATION, locale()).notSelected}
-          onClick={() => selectFeat(type, level)}
+          labelText={renderFeatLabel('additional')}
+          text={localize(TRANSLATION, locale()).notSelected}
+          onClick={() => selectFeat('additional', level)}
         />
-        <Show when={value}>
-          <div
-            class="feat-markdown mt-1 text-xs!"
-            innerHTML={value.feat.description} // eslint-disable-line solid/no-innerhtml
-          />
-        </Show>
-      </div>
-    )
+      </>
+    );
   }
 
   const renderFeatLabel = (type) => {
@@ -183,6 +209,7 @@ export const Pathfinder2Leveling = (props) => {
     if (type === 'class') return localize(TRANSLATION, locale()).classFeat;
     if (type === 'skill') return localize(TRANSLATION, locale()).skillFeat;
     if (type === 'general') return localize(TRANSLATION, locale()).generalFeat;
+    if (type === 'additional') return localize(TRANSLATION, locale()).additionalFeat;
   }
 
   return (
@@ -200,7 +227,7 @@ export const Pathfinder2Leveling = (props) => {
               <Show when={ANCESTRY_FEAT_LEVELS.includes(index)}>
                 {renderSelectedFeatValue('ancestry', index)}
               </Show>
-              <Show when={CLASS_FEAT_LEVELS.includes(index)}>
+              <Show when={CLASS_FEAT_LEVELS.includes(index) || index === 1 && ADDITIONAL_SKILL_CLASSES.includes(character().main_class)}>
                 {renderSelectedFeatValue('class', index)}
               </Show>
               <Show when={GENERAL_FEAT_LEVELS.includes(index)}>
@@ -209,6 +236,7 @@ export const Pathfinder2Leveling = (props) => {
               <Show when={SKILL_FEAT_LEVELS.includes(index)}>
                 {renderSelectedFeatValue('skill', index)}
               </Show>
+              {renderAdditionalFeatValues(index)}
             </div>
           </Toggle>
         }

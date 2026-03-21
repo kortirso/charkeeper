@@ -79,7 +79,7 @@ module CharactersContext
         feat = ::Pathfinder2::Feat.find_by(slug: background['feat'])
         return unless feat
 
-        add_feat.call(character: character, feat: feat)
+        add_feat.call(character: character, id: feat.id, type: 'additional', level: 1)
       end
     end
   end

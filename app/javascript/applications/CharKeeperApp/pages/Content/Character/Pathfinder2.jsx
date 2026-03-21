@@ -9,7 +9,9 @@ import {
 import {
   CharacterNavigation, Equipment, Notes, Avatar, ContentWrapper, Conditions, Gold, createDiceRoll, Combat, Feats
 } from '../../../components';
+import config from '../../../data/pathfinder2.json';
 import { useAppLocale } from '../../../context';
+import { translate } from '../../../helpers';
 
 export const Pathfinder2 = (props) => {
   const size = createWindowSize();
@@ -19,7 +21,7 @@ export const Pathfinder2 = (props) => {
   const [activeTab, setActiveTab] = createSignal('combat');
 
   const { DiceRoll, openDiceRoll, openAttackRoll } = createDiceRoll();
-  const [, dict] = useAppLocale();
+  const [locale, dict] = useAppLocale();
 
   const t = i18n.translator(dict);
 
@@ -39,6 +41,12 @@ export const Pathfinder2 = (props) => {
       { title: 'skill', callback: skillFilter }
     ];
   });
+
+  const configSkills = createMemo(() => {
+    const defaultSkills = translate(config.skills, locale());
+
+    return { ...defaultSkills, ...character().lores };
+  })
 
   const mobileView = createMemo(() => {
     if (size.width >= 1152) return <></>;
@@ -93,6 +101,7 @@ export const Pathfinder2 = (props) => {
                 <Feats
                   character={character()}
                   filters={featFilters()}
+                  skills={configSkills()}
                   onReplaceCharacter={props.onReplaceCharacter}
                   onReloadCharacter={props.onReloadCharacter}
                 />
@@ -195,6 +204,7 @@ export const Pathfinder2 = (props) => {
                 <Feats
                   character={character()}
                   filters={featFilters()}
+                  skills={configSkills()}
                   onReplaceCharacter={props.onReplaceCharacter}
                   onReloadCharacter={props.onReloadCharacter}
                 />

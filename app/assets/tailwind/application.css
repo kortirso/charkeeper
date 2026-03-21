@@ -203,7 +203,7 @@
 }
 
 .form-field .form-dropdown {
-  @apply absolute w-full bg-white border-r border-l border-b border-gray-200 z-10 overflow-y-auto shadow;
+  @apply relative w-full bg-white border-r border-l border-b border-gray-200 z-10 overflow-y-auto shadow;
   @apply dark:bg-neutral-800 dark:border-gray-500;
 
   max-height: 9rem;
