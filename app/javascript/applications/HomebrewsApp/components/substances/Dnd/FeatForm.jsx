@@ -1,7 +1,7 @@
 import { createSignal, createEffect, Show, For, batch } from 'solid-js';
 import { createStore } from 'solid-js/store';
 
-import { Input, Button, Select, TextArea, Checkbox } from '../../../components';
+import { Input, Button, Select, TextArea, Checkbox, ModifiersForm } from '../../../components';
 import { useAppLocale } from '../../../context';
 import { Trash } from '../../../assets';
 import { translate } from '../../../helpers';
@@ -59,78 +59,97 @@ const TRANSLATION = {
   }
 }
 
-// const MODIFIERS = {
-//   en: {
-//     str: 'Strength',
-//     dex: 'Dexterity',
-//     con: 'Constitution',
-//     int: 'Intelligence',
-//     wis: 'Wisdom',
-//     cha: 'Charisma',
-//     attacks: 'Attacks',
-//     unarmed_attack: 'Unarmed attack',
-//     melee_attacks: 'Melee attacks',
-//     thrown_attacks: 'Thrown attacks',
-//     range_attacks: 'Range attacks',
-//     damage: 'Damage',
-//     unarmed_damage: 'Unarmed attack damage',
-//     melee_damage: 'Melee attacks damage',
-//     thrown_damage: 'Thrown attacks damage',
-//     range_damage: 'Range attacks damage',
-//     initiative: 'Initiative',
-//     armor_class: 'Armor Class',
-//     speed: 'Speed'
-//   },
-//   ru: {
-//     str: 'Сила',
-//     dex: 'Ловкость',
-//     con: 'Телосложение',
-//     int: 'Интеллект',
-//     wis: 'Мудрость',
-//     cha: 'Харизма',
-//     attacks: 'Атаки',
-//     unarmed_attack: 'Безоружная атака',
-//     melee_attacks: 'Рукопашные атаки',
-//     thrown_attacks: 'Метательные атаки',
-//     range_attacks: 'Дистанционные атаки',
-//     damage: 'Урон',
-//     unarmed_damage: 'Урон безоружной атакой',
-//     melee_damage: 'Урон рукопашными атаками',
-//     thrown_damage: 'Урон метательными атаками',
-//     range_damage: 'Урон дистанционными атаками',
-//     initiative: 'Инициатива',
-//     armor_class: 'Класс доспеха',
-//     speed: 'Скорость'
-//   }
-// }
+const MAPPING = {
+  en: {
+    'str': 'Strength',
+    'dex': 'Dexterity',
+    'con': 'Constitution',
+    'int': 'Intelligence',
+    'wis': 'Wisdom',
+    'cha': 'Charisma',
+    'save_dc.str': 'Strength saving throw',
+    'save_dc.dex': 'Dexterity saving throw',
+    'save_dc.con': 'Constitution saving throw',
+    'save_dc.int': 'Intelligence saving throw',
+    'save_dc.wis': 'Wisdom saving throw',
+    'save_dc.cha': 'Charisma saving throw',
+    'armor_class': 'Armor Class',
+    'initiative': 'Initiative',
+    'speed': 'Speed',
+    'speeds.swim': 'Swim speed',
+    'speeds.flight': 'Flight speed',
+    'speeds.climb': 'Climb speed',
+    'attack': 'Attack',
+    'unarmed_attacks': 'Unarmed attacks',
+    'melee_attacks': 'Melee attacks',
+    'thrown_attacks': 'Thrown attacks',
+    'range_attacks': 'Range attacks',
+    'damage': 'Damage',
+    'unarmed_damage': 'Unarmed damage',
+    'melee_damage': 'Melee damage',
+    'thrown_damage': 'Thrown damage',
+    'range_damage': 'Range damage'
+  },
+  ru: {
+    'str': 'Сила',
+    'dex': 'Ловкость',
+    'con': 'Телосложение',
+    'int': 'Интеллект',
+    'wis': 'Мудрость',
+    'cha': 'Харизма',
+    'save_dc.str': 'Сила спасбросок',
+    'save_dc.dex': 'Ловкость спасбросок',
+    'save_dc.con': 'Телосложение спасбросок',
+    'save_dc.int': 'Интеллект спасбросок',
+    'save_dc.wis': 'Мудрость спасбросок',
+    'save_dc.cha': 'Харизма спасбросок',
+    'armor_class': 'Класс брони',
+    'initiative': 'Инициатива',
+    'speed': 'Скорость',
+    'speeds.swim': 'Скорость плавания',
+    'speeds.flight': 'Скорость полёта',
+    'speeds.climb': 'Скорость лазания',
+    'attack': 'Атака',
+    'unarmed_attacks': 'Безоружные атаки',
+    'melee_attacks': 'Рукопашные атаки',
+    'thrown_attacks': 'Метательные атаки',
+    'range_attacks': 'Дистанционные атаки',
+    'damage': 'Урон',
+    'unarmed_damage': 'Безоружный урон',
+    'melee_damage': 'Рукопашный урон',
+    'thrown_damage': 'Метательный урон',
+    'range_damage': 'Дистанционный урон'
+  }
+}
 
-// const ALLOWED_TO_SET = ['str', 'dex', 'con', 'int', 'wis', 'cha', 'initiative', 'armor_class', 'speed'];
-// const SELF_EXCLUDED = ['str', 'dex', 'con', 'int', 'wis', 'cha'];
+const ONLY_ADD = ['str', 'dex', 'con', 'int', 'wis', 'cha', 'attack', 'damage'];
 
-// const VARIABLES = {
-//   en: {
-//     str: 'Strength',
-//     dex: 'Dexterity',
-//     con: 'Constitution',
-//     int: 'Intelligence',
-//     wis: 'Wisdom',
-//     cha: 'Charisma',
-//     level: 'Level',
-//     proficiency_bonus: 'Proficiency bonus',
-//     class_level: 'Class level'
-//   },
-//   ru: {
-//     str: 'Сила',
-//     dex: 'Ловкость',
-//     con: 'Телосложение',
-//     int: 'Интеллект',
-//     wis: 'Мудрость',
-//     cha: 'Харизма',
-//     level: 'Уровень',
-//     proficiency_bonus: 'Бонус мастерства',
-//     class_level: 'Уровень класса'
-//   }
-// }
+const VARIABLES = {
+  en: {
+    str: 'Strength',
+    dex: 'Dexterity',
+    con: 'Constitution',
+    int: 'Intelligence',
+    wis: 'Wisdom',
+    cha: 'Charisma',
+    level: 'Level',
+    proficiency_bonus: 'Proficiency bonus',
+    no_body_armor: 'No body armor',
+    no_armor: 'No armor'
+  },
+  ru: {
+    str: 'Сила',
+    dex: 'Ловкость',
+    con: 'Телосложение',
+    int: 'Интеллект',
+    wis: 'Мудрость',
+    cha: 'Харизма',
+    level: 'Уровень',
+    proficiency_bonus: 'Бонус мастерства',
+    no_body_armor: 'Без доспеха',
+    no_armor: 'Без брони'
+  }
+}
 
 export const DndFeatForm = (props) => {
   const [featForm, setFeatForm] = createStore({
@@ -183,7 +202,7 @@ export const DndFeatForm = (props) => {
     setFeatForm({ ...featForm, static_spells: remainingObject });
   }
 
-  // const changeModifiers = (payload) => setFeatForm({ ...featForm, modifiers: payload });
+  const changeModifiers = (payload) => setFeatForm({ ...featForm, modifiers: payload });
 
   const save = () => {
     props.onSave({
@@ -216,14 +235,13 @@ export const DndFeatForm = (props) => {
           onSelect={(value) => setFeatForm({ ...featForm, kind: value })}
         />
       </div>
-      {/*<ModifiersForm
-        modifiers={props.feature.modifiers}
-        keys={MODIFIERS[locale()]}
-        allowedToSet={ALLOWED_TO_SET}
-        selfExcluded={SELF_EXCLUDED}
+      <ModifiersForm
+        modifiers={props.feature ? props.feature.modifiers : {}}
+        mapping={MAPPING[locale()]}
+        onlyAdd={ONLY_ADD}
         variables={VARIABLES[locale()]}
         onChange={changeModifiers}
-      />*/}
+      />
       <div class="flex gap-4 mt-4">
         <Input
           nemeric

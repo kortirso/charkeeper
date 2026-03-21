@@ -5,7 +5,6 @@ module HomebrewContext
     module Items
       class ChangeCommand < BaseCommand
         include Deps[
-          refresh_bonuses: 'commands.bonuses_context.refresh',
           formula: 'formula'
         ]
 
@@ -19,12 +18,9 @@ module HomebrewContext
             optional(:name).filled(:string, max_size?: 50)
             optional(:description).maybe(:string, max_size?: 250)
             optional(:data).hash
+            optional(:info).hash
             optional(:public).filled(:bool)
-            optional(:bonuses).maybe(:array).each(:hash) do
-              required(:id).filled(type_included_in?: [Integer, String])
-              optional(:type).filled(:string)
-              optional(:value)
-            end
+            optional(:modifiers).hash
             optional(:consume).maybe(:array).each(:hash) do
               required(:id).filled(type?: Integer)
               required(:attribute).filled(ConsumeAttributes)
@@ -35,7 +31,6 @@ module HomebrewContext
 
         private
 
-        # rubocop: disable Style/GuardClause
         def do_prepare(input)
           input[:name] = { en: input[:name], ru: input[:name] }
           input[:description] = { en: input[:description], ru: input[:description] }
@@ -50,12 +45,9 @@ module HomebrewContext
             input[:info] = { consume: consume_result } if consume_result.any?
           end
         end
-        # rubocop: enable Style/GuardClause
 
         def do_persist(input)
-          input[:item].update!(input.except(:item, :bonuses, :consume))
-
-          refresh_bonuses.call(bonusable: input[:item], bonuses: input[:bonuses]) if input[:bonuses]
+          input[:item].update!(input.except(:item, :consume))
 
           { result: input[:item] }
         end

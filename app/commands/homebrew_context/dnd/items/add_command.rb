@@ -5,7 +5,6 @@ module HomebrewContext
     module Items
       class AddCommand < BaseCommand
         include Deps[
-          refresh_bonuses: 'commands.bonuses_context.refresh',
           formula: 'formula'
         ]
 
@@ -25,11 +24,7 @@ module HomebrewContext
             optional(:itemable_id).maybe(:string, :uuid_v4?)
             optional(:data).hash
             optional(:info).hash
-            optional(:bonuses).maybe(:array).each(:hash) do
-              required(:id).filled(type_included_in?: [Integer, String])
-              required(:type).filled(:string)
-              required(:value)
-            end
+            optional(:modifiers).hash
             optional(:consume).maybe(:array).each(:hash) do
               required(:id).filled(type?: Integer)
               required(:attribute).filled(ConsumeAttributes)
@@ -41,8 +36,7 @@ module HomebrewContext
 
         private
 
-        # rubocop: disable Style/GuardClause, Metrics/AbcSize
-        def do_prepare(input)
+        def do_prepare(input) # rubocop: disable Metrics/AbcSize
           input[:name] = { en: input[:name], ru: input[:name] }
           input[:description] = { en: input[:description], ru: input[:description] }
 
@@ -61,12 +55,9 @@ module HomebrewContext
             input[:info] = { consume: consume_result } if consume_result.any?
           end
         end
-        # rubocop: enable Style/GuardClause, Metrics/AbcSize
 
         def do_persist(input)
-          result = ::Dnd5::Item.create!(input.except(:itemable_type, :itemable_id, :bonuses, :consume))
-
-          refresh_bonuses.call(bonusable: result, bonuses: input[:bonuses]) if input[:bonuses]
+          result = ::Dnd5::Item.create!(input.except(:itemable_type, :itemable_id, :consume))
 
           { result: result }
         end

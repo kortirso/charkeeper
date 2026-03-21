@@ -4,7 +4,7 @@ import { createStore } from 'solid-js/store';
 import config from '../../../../CharKeeperApp/data/dnd2024.json';
 
 import { useAppState, useAppLocale, useAppAlert } from '../../../context';
-import { Button, Input, TextArea, Select, createModal, Checkbox, DndItemBonuses, DndBonuses } from '../../../components';
+import { Button, Input, TextArea, Select, createModal, Checkbox, ModifiersForm } from '../../../components';
 import { Edit, Trash, Copy } from '../../../assets';
 import { fetchItemsRequest } from '../../../requests/fetchItemsRequest';
 import { createItemRequest } from '../../../requests/createItemRequest';
@@ -74,7 +74,7 @@ const TRANSLATION = {
     requiredName: 'Название оружия - обязательное поле',
     requiredDamage: 'Урон оружия - обязательное поле',
     showPublic: 'Показать общедоступные',
-    public: 'Общедоступная',
+    public: 'Общедоступное',
     copyCompleted: 'Копирование оружия завершено',
     skills: {
       light: 'Простое',
@@ -104,6 +104,98 @@ const TRANSLATION = {
   }
 }
 
+const MAPPING = {
+  en: {
+    'str': 'Strength',
+    'dex': 'Dexterity',
+    'con': 'Constitution',
+    'int': 'Intelligence',
+    'wis': 'Wisdom',
+    'cha': 'Charisma',
+    'save_dc.str': 'Strength saving throw',
+    'save_dc.dex': 'Dexterity saving throw',
+    'save_dc.con': 'Constitution saving throw',
+    'save_dc.int': 'Intelligence saving throw',
+    'save_dc.wis': 'Wisdom saving throw',
+    'save_dc.cha': 'Charisma saving throw',
+    'armor_class': 'Armor Class',
+    'initiative': 'Initiative',
+    'speed': 'Speed',
+    'speeds.swim': 'Swim speed',
+    'speeds.flight': 'Flight speed',
+    'speeds.climb': 'Climb speed',
+    'attack': 'Attack',
+    'unarmed_attacks': 'Unarmed attacks',
+    'melee_attacks': 'Melee attacks',
+    'thrown_attacks': 'Thrown attacks',
+    'range_attacks': 'Range attacks',
+    'damage': 'Damage',
+    'unarmed_damage': 'Unarmed damage',
+    'melee_damage': 'Melee damage',
+    'thrown_damage': 'Thrown damage',
+    'range_damage': 'Range damage'
+  },
+  ru: {
+    'str': 'Сила',
+    'dex': 'Ловкость',
+    'con': 'Телосложение',
+    'int': 'Интеллект',
+    'wis': 'Мудрость',
+    'cha': 'Харизма',
+    'save_dc.str': 'Сила спасбросок',
+    'save_dc.dex': 'Ловкость спасбросок',
+    'save_dc.con': 'Телосложение спасбросок',
+    'save_dc.int': 'Интеллект спасбросок',
+    'save_dc.wis': 'Мудрость спасбросок',
+    'save_dc.cha': 'Харизма спасбросок',
+    'armor_class': 'Класс брони',
+    'initiative': 'Инициатива',
+    'speed': 'Скорость',
+    'speeds.swim': 'Скорость плавания',
+    'speeds.flight': 'Скорость полёта',
+    'speeds.climb': 'Скорость лазания',
+    'attack': 'Атака',
+    'unarmed_attacks': 'Безоружные атаки',
+    'melee_attacks': 'Рукопашные атаки',
+    'thrown_attacks': 'Метательные атаки',
+    'range_attacks': 'Дистанционные атаки',
+    'damage': 'Урон',
+    'unarmed_damage': 'Безоружный урон',
+    'melee_damage': 'Рукопашный урон',
+    'thrown_damage': 'Метательный урон',
+    'range_damage': 'Дистанционный урон'
+  }
+}
+
+const ONLY_ADD = ['str', 'dex', 'con', 'int', 'wis', 'cha', 'attack', 'damage'];
+
+const VARIABLES = {
+  en: {
+    str: 'Strength',
+    dex: 'Dexterity',
+    con: 'Constitution',
+    int: 'Intelligence',
+    wis: 'Wisdom',
+    cha: 'Charisma',
+    level: 'Level',
+    proficiency_bonus: 'Proficiency bonus',
+    no_body_armor: 'No body armor',
+    no_armor: 'No armor'
+  },
+  ru: {
+    str: 'Сила',
+    dex: 'Ловкость',
+    con: 'Телосложение',
+    int: 'Интеллект',
+    wis: 'Мудрость',
+    cha: 'Харизма',
+    level: 'Уровень',
+    proficiency_bonus: 'Бонус мастерства',
+    no_body_armor: 'Без доспеха',
+    no_armor: 'Без брони'
+  }
+}
+
 export const DndWeapons = () => {
   const [itemForm, setItemForm] = createStore({
     name: '',
@@ -119,11 +211,9 @@ export const DndWeapons = () => {
     public: false,
     own: true,
     weight: 1,
-    price: 100
+    price: 100,
+    modifiers: {}
   });
-  const [itemBonuses, setItemBonuses] = createSignal([]);
-  const [bonuses, setBonuses] = createSignal([]);
-
   const [items, setItems] = createSignal(undefined);
   const [open, setOpen] = createSignal(false);
 
@@ -156,10 +246,11 @@ export const DndWeapons = () => {
   const openCreateItemModal = () => {
     batch(() => {
       setItemForm({ ...itemForm, id: null });
-      setItemBonuses([]);
       openModal();
     });
   }
+
+  const changeModifiers = (payload) => setItemForm({ ...itemForm, modifiers: payload });
 
   const openChangeItemModal = (item) => {
     batch(() => {
@@ -178,9 +269,9 @@ export const DndWeapons = () => {
         public: item.public,
         own: true,
         weight: item.data.weight,
-        price: item.data.price
+        price: item.data.price,
+        modifiers: item.modifiers
       });
-      setItemBonuses(item.bonuses);
       openModal();
     });
   }
@@ -206,27 +297,27 @@ export const DndWeapons = () => {
       data: {
         weight: itemForm.weight,
         price: itemForm.price
-      }
+      },
+      modifiers: itemForm.modifiers
     }
 
     itemForm.id === null ? createItem(formData) : updateItem(formData);
   }
 
   const createItem = async (formData) => {
-    const result = await createItemRequest(appState.accessToken, 'dnd', { brewery: formData, bonuses: bonuses() });
+    const result = await createItemRequest(appState.accessToken, 'dnd', { brewery: formData });
 
     if (result.errors_list === undefined) {
       batch(() => {
         setItems([result.item].concat(items()));
         setItemForm({ ...itemForm, id: null });
-        setItemBonuses([]);
         closeModal();
       });
     }
   }
 
   const updateItem = async (formData) => {
-    const result = await changeItemRequest(appState.accessToken, 'dnd', itemForm.id, { brewery: formData, bonuses: bonuses(), only_head: true });
+    const result = await changeItemRequest(appState.accessToken, 'dnd', itemForm.id, { brewery: formData, only_head: true });
 
     if (result.errors_list === undefined) {
       const newItems = items().map((item) => {
@@ -239,14 +330,13 @@ export const DndWeapons = () => {
           data: { weight: itemForm.weight, price: itemForm.price },
           own: true,
           public: itemForm.public,
-          bonuses: bonuses()
+          modifiers: itemForm.modifiers
         };
       });
 
       batch(() => {
         setItems(newItems);
         setItemForm({ ...itemForm, id: null });
-        setItemBonuses([]);
         closeModal();
       });
     }
@@ -288,7 +378,6 @@ export const DndWeapons = () => {
               <td class="p-1">{TRANSLATION[locale()].features}</td>
               <td class="p-1" />
               <td class="p-1" />
-              <td class="p-1" />
             </tr>
           </thead>
           <tbody>
@@ -313,7 +402,6 @@ export const DndWeapons = () => {
                       </For>
                     </div>
                   </td>
-                  <td class="minimum-width py-1"><DndBonuses bonuses={item.bonuses} /></td>
                   <td class="py-1">{item.description[locale()]}</td>
                   <td>
                     <div class="flex items-center justify-end gap-x-2 text-neutral-700">
@@ -403,10 +491,16 @@ export const DndWeapons = () => {
             onSelect={selectFeature}
           />
         </div>
-        <DndItemBonuses bonuses={itemBonuses()} onBonus={setBonuses} />
+        <ModifiersForm
+          modifiers={itemForm.modifiers}
+          mapping={MAPPING[locale()]}
+          onlyAdd={ONLY_ADD}
+          variables={VARIABLES[locale()]}
+          onChange={changeModifiers}
+        />
         <TextArea
           rows="5"
-          containerClassList="mb-2"
+          containerClassList="my-4"
           labelText={TRANSLATION[locale()].description}
           value={itemForm.description}
           onChange={(value) => setItemForm({ ...itemForm, description: value })}

@@ -139,7 +139,7 @@ module CharactersContext
           input[:trade_expertise_points] = data.trade_expertise_points - spent_expertise_points
         end
 
-        if input.key?(:language_levels) # rubocop: disable Style/GuardClause
+        if input.key?(:language_levels)
           input[:language_points] =
             [data.language_points - (input[:language_levels].values.sum - data.language_levels.values.sum), 0].max
         end

@@ -68,7 +68,7 @@ class FeaturesBaseDecorator
     (!feature.feat.continious && feature.ready_to_use) || feature.active
   end
 
-  # rubocop: disable Security/Eval, Style/MethodCalledOnDoEndBlock
+  # rubocop: disable Security/Eval
   def eval_variable(feat, variable)
     lambda do
       eval(variable)
@@ -87,5 +87,5 @@ class FeaturesBaseDecorator
       end.call
     end
   end
-  # rubocop: enable Security/Eval, Style/MethodCalledOnDoEndBlock
+  # rubocop: enable Security/Eval
 end

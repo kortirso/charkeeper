@@ -3,7 +3,9 @@ import { createStore } from 'solid-js/store';
 import { Key } from '@solid-primitives/keyed';
 
 import { useAppState, useAppLocale, useAppAlert } from '../../../context';
-import { Button, Input, TextArea, Select, createModal, DndItemBonuses, DndBonuses } from '../../../components';
+import {
+  Button, Input, TextArea, Select, createModal, ModifiersForm
+} from '../../../components';
 import { Edit, Trash } from '../../../assets';
 import { fetchBooksRequest } from '../../../requests/books/fetchBooksRequest';
 import { changeBookContent } from '../../../requests/changeBookContent';
@@ -76,13 +78,103 @@ const TRANSLATION = {
   }
 }
 
+const MAPPING = {
+  en: {
+    'str': 'Strength',
+    'dex': 'Dexterity',
+    'con': 'Constitution',
+    'int': 'Intelligence',
+    'wis': 'Wisdom',
+    'cha': 'Charisma',
+    'save_dc.str': 'Strength saving throw',
+    'save_dc.dex': 'Dexterity saving throw',
+    'save_dc.con': 'Constitution saving throw',
+    'save_dc.int': 'Intelligence saving throw',
+    'save_dc.wis': 'Wisdom saving throw',
+    'save_dc.cha': 'Charisma saving throw',
+    'armor_class': 'Armor Class',
+    'initiative': 'Initiative',
+    'speed': 'Speed',
+    'speeds.swim': 'Swim speed',
+    'speeds.flight': 'Flight speed',
+    'speeds.climb': 'Climb speed',
+    'attack': 'Attack',
+    'unarmed_attacks': 'Unarmed attacks',
+    'melee_attacks': 'Melee attacks',
+    'thrown_attacks': 'Thrown attacks',
+    'range_attacks': 'Range attacks',
+    'damage': 'Damage',
+    'unarmed_damage': 'Unarmed damage',
+    'melee_damage': 'Melee damage',
+    'thrown_damage': 'Thrown damage',
+    'range_damage': 'Range damage'
+  },
+  ru: {
+    'str': 'Сила',
+    'dex': 'Ловкость',
+    'con': 'Телосложение',
+    'int': 'Интеллект',
+    'wis': 'Мудрость',
+    'cha': 'Харизма',
+    'save_dc.str': 'Сила спасбросок',
+    'save_dc.dex': 'Ловкость спасбросок',
+    'save_dc.con': 'Телосложение спасбросок',
+    'save_dc.int': 'Интеллект спасбросок',
+    'save_dc.wis': 'Мудрость спасбросок',
+    'save_dc.cha': 'Харизма спасбросок',
+    'armor_class': 'Класс брони',
+    'initiative': 'Инициатива',
+    'speed': 'Скорость',
+    'speeds.swim': 'Скорость плавания',
+    'speeds.flight': 'Скорость полёта',
+    'speeds.climb': 'Скорость лазания',
+    'attack': 'Атака',
+    'unarmed_attacks': 'Безоружные атаки',
+    'melee_attacks': 'Рукопашные атаки',
+    'thrown_attacks': 'Метательные атаки',
+    'range_attacks': 'Дистанционные атаки',
+    'damage': 'Урон',
+    'unarmed_damage': 'Безоружный урон',
+    'melee_damage': 'Рукопашный урон',
+    'thrown_damage': 'Метательный урон',
+    'range_damage': 'Дистанционный урон'
+  }
+}
+
+const ONLY_ADD = ['str', 'dex', 'con', 'int', 'wis', 'cha', 'attack', 'damage'];
+
+const VARIABLES = {
+  en: {
+    str: 'Strength',
+    dex: 'Dexterity',
+    con: 'Constitution',
+    int: 'Intelligence',
+    wis: 'Wisdom',
+    cha: 'Charisma',
+    level: 'Level',
+    proficiency_bonus: 'Proficiency bonus',
+    no_body_armor: 'No body armor',
+    no_armor: 'No armor'
+  },
+  ru: {
+    str: 'Сила',
+    dex: 'Ловкость',
+    con: 'Телосложение',
+    int: 'Интеллект',
+    wis: 'Мудрость',
+    cha: 'Харизма',
+    level: 'Уровень',
+    proficiency_bonus: 'Бонус мастерства',
+    no_body_armor: 'Без доспеха',
+    no_armor: 'Без брони'
+  }
+}
+
 export const DndItems = () => {
-  const [itemForm, setItemForm] = createStore({ name: '', description: '', kind: 'item', weight: 1, price: 1 });
-  const [itemBonuses, setItemBonuses] = createSignal([]);
+  const [itemForm, setItemForm] = createStore({ name: '', description: '', kind: 'item', weight: 1, price: 1, modifiers: {} });
   const [selectedIds, setSelectedIds] = createSignal([]);
   const [book, setBook] = createSignal(null);
 
-  const [bonuses, setBonuses] = createSignal([]);
   const [consume, setConsume] = createSignal([]);
 
   const [books, setBooks] = createSignal(undefined); // eslint-disable-line no-unused-vars
@@ -109,8 +201,7 @@ export const DndItems = () => {
 
   const openCreateItemModal = () => {
     batch(() => {
-      setItemForm({ id: null, name: '', description: '', kind: 'item' });
-      setItemBonuses([]);
+      setItemForm({ id: null, name: '', description: '', kind: 'item', modifiers: {} });
       setConsume([]);
       openModal();
     });
@@ -118,8 +209,7 @@ export const DndItems = () => {
 
   const openChangeItemModal = (item) => {
     batch(() => {
-      setItemForm({ id: item.id, name: item.name.en, kind: item.kind, description: item.description.en, weight: item.data.weight, price: item.data.price });
-      setItemBonuses(item.bonuses);
+      setItemForm({ id: item.id, name: item.name.en, kind: item.kind, description: item.description.en, weight: item.data.weight, price: item.data.price, modifiers: item.modifiers });
       setConsume(item.info.consume || []);
       openModal();
     });
@@ -136,6 +226,8 @@ export const DndItems = () => {
     setConsume(result);
   }
 
+  const changeModifiers = (payload) => setItemForm({ ...itemForm, modifiers: payload });
+
   const saveItem = () => {
     if (itemForm.name.length === 0) return renderAlert(TRANSLATION[locale()].requiredName);
 
@@ -146,20 +238,20 @@ export const DndItems = () => {
       data: {
         weight: itemForm.weight,
         price: itemForm.price
-      }
+      },
+      modifiers: itemForm.modifiers
     }
 
     itemForm.id === null ? createItem(formData) : updateItem(formData);
   }
 
   const createItem = async (formData) => {
-    const result = await createItemRequest(appState.accessToken, 'dnd', { brewery: formData, bonuses: bonuses(), consume: consume().filter((item) => item.attribute !== null && item.formula.length > 0) });
+    const result = await createItemRequest(appState.accessToken, 'dnd', { brewery: formData, consume: consume().filter((item) => item.attribute !== null && item.formula.length > 0) });
 
     if (result.errors_list === undefined) {
       batch(() => {
         setItems([result.item].concat(items()));
-        setItemForm({ id: null, name: '', description: '', kind: 'item' });
-        setItemBonuses([]);
+        setItemForm({ id: null, name: '', description: '', kind: 'item', modifiers: {} });
         setConsume([]);
         closeModal();
       });
@@ -167,7 +259,7 @@ export const DndItems = () => {
   }
 
   const updateItem = async (formData) => {
-    const result = await changeItemRequest(appState.accessToken, 'dnd', itemForm.id, { brewery: formData, bonuses: bonuses(), consume: consume().filter((item) => item.attribute !== null && item.formula.length > 0), only_head: true });
+    const result = await changeItemRequest(appState.accessToken, 'dnd', itemForm.id, { brewery: formData, consume: consume().filter((item) => item.attribute !== null && item.formula.length > 0), only_head: true });
 
     if (result.errors_list === undefined) {
       const newItems = items().map((item) => {
@@ -178,15 +270,14 @@ export const DndItems = () => {
           name: { en: formData.name, ru: formData.name },
           description: { en: formData.description, ru: formData.description },
           data: { weight: formData.weight, price: formData.price },
-          bonuses: bonuses(),
+          modifiers: formData.modifiers,
           info: { consume: consume().filter((item) => item.attribute !== null && item.formula.length > 0) }
         };
       });
 
       batch(() => {
         setItems(newItems);
-        setItemForm({ id: null, name: '', description: '', kind: 'item' });
-        setItemBonuses([]);
+        setItemForm({ id: null, name: '', description: '', kind: 'item', modifiers: {} });
         setConsume([]);
         closeModal();
       });
@@ -232,8 +323,8 @@ export const DndItems = () => {
               {TRANSLATION[locale()].save}
             </Button>
           </Show>
-        </div>*/}
-        {/*<p class="text-sm mt-1 mb-2">{TRANSLATION[locale()].selectBookHelp}</p>*/}
+        </div>
+        <p class="text-sm mt-1 mb-2">{TRANSLATION[locale()].selectBookHelp}</p>*/}
         <table class="w-full table">
           <thead>
             <tr class="text-sm">
@@ -242,7 +333,6 @@ export const DndItems = () => {
               <td class="p-1">{TRANSLATION[locale()].kindTable}</td>
               <td class="p-1">{TRANSLATION[locale()].weight}</td>
               <td class="p-1 text-nowrap">{TRANSLATION[locale()].price}</td>
-              <td class="p-1" />
               <td class="p-1">{TRANSLATION[locale()].description}</td>
               <td class="p-1" />
             </tr>
@@ -263,7 +353,6 @@ export const DndItems = () => {
                   <td class="minimum-width py-1 text-sm">{TRANSLATION[locale()].kinds[item.kind]}</td>
                   <td class="minimum-width py-1">{item.data.weight}</td>
                   <td class="minimum-width py-1">{item.data.price}</td>
-                  <td class="minimum-width py-1"><DndBonuses bonuses={item.bonuses} /></td>
                   <td class="py-1">{item.description[locale()]}</td>
                   <td>
                     <div class="flex items-center justify-end gap-x-2 text-neutral-700">
@@ -307,7 +396,13 @@ export const DndItems = () => {
             onSelect={(value) => setItemForm({ ...itemForm, kind: value })}
           />
         </Show>
-        <DndItemBonuses bonuses={itemBonuses()} onBonus={setBonuses} />
+        <ModifiersForm
+          modifiers={itemForm.modifiers}
+          mapping={MAPPING[locale()]}
+          onlyAdd={ONLY_ADD}
+          variables={VARIABLES[locale()]}
+          onChange={changeModifiers}
+        />
         <div class="mt-2 flex gap-4">
           <Input
             numeric
@@ -324,7 +419,6 @@ export const DndItems = () => {
             onInput={(value) => setItemForm({ ...itemForm, price: parseInt(value) })}
           />
         </div>
-
         <Show when={itemForm.kind === 'potion'}>
           <Button default small classList="p-1 mt-2" onClick={addConsume}>{TRANSLATION[locale()].addConsume}</Button>
           <Show when={consume().length > 0}>
@@ -356,7 +450,6 @@ export const DndItems = () => {
             }
           </Key>
         </Show>
-
         <TextArea
           rows="5"
           containerClassList="mt-2"

@@ -109,6 +109,9 @@ es:
           comment:
             key?: Se requiere el comentario
             filled?: Se requiere el comentario
+          ability:
+            only_add: Only ADD type is available
+            invalid_formula: Invalid formula
       user:
         password_length: La contraseña debe ser igual o mayor a %{length} caracteres
         exists: El nombre de usuario ya existe

@@ -1,7 +1,7 @@
-import { createEffect, createSignal, Show } from 'solid-js';
+import { createEffect, createSignal, createMemo, Show, batch } from 'solid-js';
 import { Entries } from '@solid-primitives/keyed';
 
-import { Input, Button, Select } from '../../components';
+import { Input, Button, Select, Label } from '../../components';
 import { Trash } from '../../assets';
 import { useAppLocale } from '../../context';
 
@@ -20,86 +20,97 @@ const TRANSLATION = {
     attribute: 'Атрибут',
     type: 'Тип',
     value: 'Значение',
-    allowedVariables: 'Доступные формулы'
+    allowedVariables: 'Доступные переменные'
   }
 }
 
 export const ModifiersForm = (props) => {
-  const [modifiers, setModifiers] = createSignal({});
+  const [bonusesList, setBonusesList] = createSignal({});
+  const [newBonusMod, setNewBonusMod] = createSignal(null);
 
   const [locale] = useAppLocale();
 
   createEffect(() => {
-    setModifiers(props.modifiers);
+    setBonusesList(props.modifiers);
   });
 
-  const addModifier = () => updateModifiers({ ...modifiers(), unknown: { type: 'add', value: '' } });
+  const availableBonusMod = createMemo(() => {
+    const activeKeys = Object.keys(bonusesList());
 
-  const removeModifier = (keyToRemove) => {
-    const { [keyToRemove]: _removedProp, ...remainingObject } = modifiers(); // eslint-disable-line no-unused-vars
-    updateModifiers(remainingObject);
+    return Object.fromEntries(Object.entries(props.mapping).filter(([slug,]) => !activeKeys.includes(slug)));
+  });
+
+  const addNewBonus = () => {
+    if (!newBonusMod()) return;
+
+    batch(() => {
+      setBonusesList({ ...bonusesList(), [newBonusMod()]: { type: 'add', value: '' } });
+      setNewBonusMod(null);
+    });
   }
 
-  const changeModifierKey = (currentKey, newKey) => {
-    if (Object.keys(modifiers()).includes(newKey)) return;
-
-    const { [currentKey]: removedProp, ...remainingObject } = modifiers(); // eslint-disable-line no-unused-vars
-    updateModifiers({ ...remainingObject, [newKey]: { type: 'add', value: '' } });
+  const removeNewBonus = (keyToRemove) => {
+    const { [keyToRemove]: _removedProp, ...remainingObject } = bonusesList(); // eslint-disable-line no-unused-vars
+    setBonusesList(remainingObject);
   }
 
   const changeModifierType = (key, value) => {
-    updateModifiers({ ...modifiers(), [key]: { type: value, value: modifiers()[key].value } });
+    updateModifiers({ ...bonusesList(), [key]: { type: value, value: bonusesList()[key].value } });
   }
 
   const changeModifierValue = (key, value) => {
-    updateModifiers({ ...modifiers(), [key]: { type: modifiers()[key].type, value: value } });
+    updateModifiers({ ...bonusesList(), [key]: { type: bonusesList()[key].type, value: value } });
   }
 
   const updateModifiers = (payload) => {
-    setModifiers(payload);
+    setBonusesList(payload);
     props.onChange(payload)
   }
 
   return (
     <>
       <p class="mt-4">{TRANSLATION[locale()].title}</p>
-      <Button default small classList="p-1 mt-2" onClick={addModifier}>{TRANSLATION[locale()].addModifier}</Button>
-      <Entries of={modifiers()}>
+      <Entries of={bonusesList()}>
         {(key, values) =>
           <>
-            <div class="flex items-end gap-4 mt-2">
+            <Label
+              labelText={`${TRANSLATION[locale()].value}: ${props.mapping[key]}`}
+              labelClassList="mt-8 block!"
+            />
+            <div class="flex items-end gap-x-4 mt-1">
               <Select
                 containerClassList="flex-1"
-                labelText={TRANSLATION[locale()].attribute}
-                items={props.keys}
-                selectedValue={key}
-                onSelect={(item) => changeModifierKey(key, item)}
+                labelText={TRANSLATION[locale()].type}
+                items={props.onlyAdd.includes(key) ? { add: 'Add' } : { add: 'Add', set: 'Set' }}
+                selectedValue={values().type}
+                onSelect={(item) => changeModifierType(key, item)}
               />
-              <Show when={key !== 'unknown'}>
-                <Select
-                  containerClassList="flex-1"
-                  labelText={TRANSLATION[locale()].type}
-                  items={props.allowedToSet.includes(key) ? { add: 'Add', set: 'Set' } : { add: 'Add' }}
-                  selectedValue={values().type}
-                  onSelect={(item) => changeModifierType(key, item)}
-                />
-                <Input
-                  containerClassList="flex-1"
-                  labelText={TRANSLATION[locale()].value}
-                  value={values().value}
-                  onInput={(item) => changeModifierValue(key, item)}
-                />
-              </Show>
-              <Button default classList="px-2 py-1" onClick={() => removeModifier(key)}>
+              <Input
+                containerClassList="flex-1"
+                labelText={TRANSLATION[locale()].value}
+                value={values().value}
+                onInput={(item) => changeModifierValue(key, item)}
+              />
+              <Button default classList="px-2 py-1" onClick={() => removeNewBonus(key)}>
                 <Trash width="24" height="24" />
               </Button>
             </div>
-            <Show when={key !== 'unknown'}>
-              <p class="mt-2 text-xs">{TRANSLATION[locale()].allowedVariables}: {props.selfExcluded.includes(key) ? Object.entries(props.variables).filter(([itemKey,]) => !props.selfExcluded.includes(itemKey)).map(([itemKey, value]) => `${itemKey} - ${value}`).join('; ') : Object.entries(props.variables).map(([itemKey, value]) => `${itemKey} - ${value}`).join('; ')}</p>
-            </Show>
+            <p class="mt-2 text-xs">{TRANSLATION[locale()].allowedVariables}: {Object.entries(props.variables).map(([itemKey, value]) => `${itemKey} - ${value}`).join('; ')}</p>
           </>
         }
       </Entries>
+      <div class="flex items-end gap-x-4 mt-4">
+        <Select
+          containerClassList="flex-1"
+          labelText={TRANSLATION[locale()].attribute}
+          items={availableBonusMod()}
+          selectedValue={newBonusMod()}
+          onSelect={setNewBonusMod}
+        />
+        <Show when={newBonusMod()}>
+          <Button default small classList="p-1 mt-2" onClick={addNewBonus}>{TRANSLATION[locale()].addModifier}</Button>
+        </Show>
+      </div>
     </>
   );
 }

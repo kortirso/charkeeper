@@ -2,7 +2,9 @@
 
 module Characters
   class ItemSerializer < ApplicationSerializer
-    ATTRIBUTES = %i[id quantity ready_to_use notes name kind data state item_id has_description states info bonuses].freeze
+    ATTRIBUTES = %i[
+      id quantity ready_to_use notes name kind data state item_id has_description states info bonuses modifiers item_modifiers
+    ].freeze
     READY_TO_USE_STATES = %w[hands equipment].freeze
 
     attributes(*ATTRIBUTES)
@@ -19,7 +21,11 @@ module Characters
     end
 
     def name
-      translate(item.name)
+      object.name || translate(item.name)
+    end
+
+    def item_modifiers # rubocop: disable Rails/Delegate
+      item.modifiers
     end
 
     def has_description # rubocop: disable Naming/PredicateMethod, Naming/PredicatePrefix

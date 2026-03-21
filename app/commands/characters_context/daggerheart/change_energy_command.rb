@@ -44,7 +44,7 @@ module CharactersContext
 
       private
 
-      # rubocop: disable Metrics/AbcSize, Metrics/CyclomaticComplexity, Metrics/MethodLength, Metrics/PerceivedComplexity, Style/GuardClause
+      # rubocop: disable Metrics/AbcSize, Metrics/CyclomaticComplexity, Metrics/MethodLength, Metrics/PerceivedComplexity
       def do_prepare(input)
         return if input[:options].nil?
 
@@ -84,7 +84,7 @@ module CharactersContext
           input[:data]['hope_marked'] = [input[:data]['hope_marked'], input[:character].data.hope_max].min
         end
       end
-      # rubocop: enable Metrics/AbcSize, Metrics/CyclomaticComplexity, Metrics/MethodLength, Metrics/PerceivedComplexity, Style/GuardClause
+      # rubocop: enable Metrics/AbcSize, Metrics/CyclomaticComplexity, Metrics/MethodLength, Metrics/PerceivedComplexity
 
       def do_persist(input) # rubocop: disable Metrics/AbcSize
         refresh_feats_limit(input)

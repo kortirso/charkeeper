@@ -94,7 +94,7 @@ class FeaturesDecorator
     result
   end
 
-  # rubocop: disable Security/Eval, Style/MethodCalledOnDoEndBlock
+  # rubocop: disable Security/Eval
   def eval_variable(feat, variable)
     lambda do
       eval(variable)
@@ -103,7 +103,7 @@ class FeaturesDecorator
     monitoring_feat_error(e, feat)
     nil
   end
-  # rubocop: enable Security/Eval, Style/MethodCalledOnDoEndBlock
+  # rubocop: enable Security/Eval
 
   def monitoring_feat_error(exception, feat)
     Charkeeper::Container.resolve('monitoring.client').notify(

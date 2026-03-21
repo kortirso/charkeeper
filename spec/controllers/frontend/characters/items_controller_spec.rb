@@ -40,7 +40,7 @@ describe Frontend::Characters::ItemsController do
           expect(response_values.keys).to(
             contain_exactly(
               'id', 'quantity', 'ready_to_use', 'notes', 'name', 'kind', 'bonuses',
-              'data', 'state', 'has_description', 'item_id', 'states', 'info'
+              'data', 'state', 'has_description', 'item_id', 'states', 'info', 'modifiers', 'item_modifiers'
             )
           )
         end

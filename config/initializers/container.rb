@@ -79,6 +79,7 @@ module Charkeeper
     register('commands.characters_context.dnd2024.talents.add') { CharactersContext::Dnd2024::Talents::AddCommand.new }
 
     register('commands.characters_context.dnd2024.bonuses.add') { CharactersContext::Dnd2024::Bonuses::AddCommand.new }
+    register('commands.characters_context.dnd2024.bonuses.add_v3') { CharactersContext::Dnd2024::Bonuses::AddV3Command.new }
     register('commands.characters_context.daggerheart.bonuses.add') { CharactersContext::Daggerheart::Bonuses::AddCommand.new }
     register('commands.characters_context.dc20.bonuses.add') { CharactersContext::Dc20::Bonuses::AddCommand.new }
 
@@ -118,6 +119,9 @@ module Charkeeper
     }
     register('commands.characters_context.dnd2024.homebrew.add_item') {
       CharactersContext::Dnd2024::Homebrew::AddItemCommand.new
+    }
+    register('commands.characters_context.dnd2024.upgrade.perform') {
+      CharactersContext::Dnd2024::Upgrade::PerformCommand.new
     }
 
     register('commands.characters_context.daggerheart.projects.add') { CharactersContext::Daggerheart::Projects::AddCommand.new }

@@ -359,7 +359,7 @@ export const Equipment = (props) => {
   }
 
   const completeUpgrade = async (value) => {
-    setItems(items().concat([value.item]).sort((a, b) => a.name > b.name));
+    if (value) setItems(items().concat([value.item]).sort((a, b) => a.name > b.name));
     reloadCharacterItems();
     props.onReloadCharacter();
   }

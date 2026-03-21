@@ -44,6 +44,7 @@ export * from './Content/Character/Dnd2024/Spells/Attack';
 export * from './Content/Character/Dnd2024/Spells/Components';
 export * from './Content/Character/Dnd2024/Spells/Duration';
 export * from './Content/Character/Dnd2024/Spells/Effects';
+export * from './Content/Character/Dnd2024/Bonuses';
 
 export * from './Content/Character/Pathfinder2';
 export * from './Content/Character/Pathfinder2/Abilities';
