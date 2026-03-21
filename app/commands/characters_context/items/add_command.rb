@@ -8,6 +8,8 @@ module CharactersContext
           required(:character).filled(type?: ::Character)
           required(:item).filled(type?: ::Item)
           optional(:state).filled(:string)
+          optional(:name).filled(:string)
+          optional(:modifiers).hash
         end
       end
 
@@ -20,8 +22,8 @@ module CharactersContext
         input[:state] ||= 'backpack'
       end
 
-      def do_persist(input) # rubocop: disable Metrics/AbcSize
-        character_item = ::Character::Item.find_by(input.slice(:character, :item))
+      def do_persist(input) # rubocop: disable Metrics/AbcSize, Metrics/MethodLength
+        character_item = input.key?(:name) ? nil : ::Character::Item.find_by(input.slice(:character, :item).merge(name: nil))
 
         if character_item
           character_item.update!(
@@ -29,7 +31,8 @@ module CharactersContext
             state: character_item.states.slice('hands', 'equipment').values.sum.positive? ? 'hands' : 'backpack',
             states: (character_item.states.presence || ::Character::Item.default_states).merge({
               'backpack' => character_item.states['backpack'].to_i + 1
-            })
+            }),
+            modifiers: character_item.modifiers.to_h.merge(input[:modifiers].to_h)
           )
         else
           character_item =

@@ -1,0 +1,2216 @@
+[
+  {
+    "id": "4a3237c3-1d88-4f9b-b808-9ce8ff1ae7f5",
+    "slug": "dreadful_strikes",
+    "eval_variables": {},
+    "bonus_eval_variables": {},
+    "description_eval_variables": {
+      "value": "level >= 11 ? 6 : 4"
+    }
+  },
+  {
+    "id": "9988371d-1f8a-437c-bf77-f49728a2eaae",
+    "slug": "misty_wanderer",
+    "eval_variables": {},
+    "bonus_eval_variables": {},
+    "description_eval_variables": {
+      "limit": "[modifiers['wis'], 1].max"
+    }
+  },
+  {
+    "id": "232488db-e96a-486b-a8be-3b387fadd99d",
+    "slug": "umbral_sight",
+    "eval_variables": {},
+    "bonus_eval_variables": {},
+    "description_eval_variables": {},
+    "modifiers": {
+      "darkvision": { "type": "add", "value": 60 }
+    }
+  },
+  {
+    "id": "308a31ae-619b-4ac7-8750-b10f59fbb64f",
+    "slug": "radiance_of_the_dawn",
+    "eval_variables": {},
+    "bonus_eval_variables": {},
+    "description_eval_variables": {
+      "value": "classes['cleric']"
+    }
+  },
+  {
+    "id": "76884034-f3cf-4e22-8b5e-75172c821d84",
+    "slug": "war_priest",
+    "eval_variables": {},
+    "bonus_eval_variables": {},
+    "description_eval_variables": {
+      "limit": "[modifiers['wis'], 1].max"
+    }
+  },
+  {
+    "id": "40104114-998a-4f59-8a97-7cb4793ecc5c",
+    "slug": "warding_flare",
+    "eval_variables": {},
+    "bonus_eval_variables": {},
+    "description_eval_variables": {
+      "limit": "[modifiers['wis'], 1].max"
+    }
+  },
+  {
+    "id": "3fb871ff-71b3-480c-9c5b-d59739164526",
+    "slug": "hunter_prey",
+    "eval_variables": {},
+    "bonus_eval_variables": {},
+    "description_eval_variables": {
+      "limit": "1"
+    }
+  },
+  {
+    "id": "3d3a96ef-c79c-4707-8f29-ca01965c4531",
+    "slug": "blessing_of_the_trickster",
+    "eval_variables": {},
+    "bonus_eval_variables": {},
+    "description_eval_variables": {
+      "limit": "1"
+    }
+  },
+  {
+    "id": "0bec86ff-9181-4017-a17c-3f528c11aa18",
+    "slug": "death_strike",
+    "eval_variables": {},
+    "bonus_eval_variables": {},
+    "description_eval_variables": {
+      "value": "8 + modifiers['dex'] + proficiency_bonus"
+    }
+  },
+  {
+    "id": "f13a0216-ee76-4bd6-bb3b-832cb15d51cf",
+    "slug": "heightened_patient_defense",
+    "eval_variables": {},
+    "bonus_eval_variables": {},
+    "description_eval_variables": {
+      "value": "'2d' + (((((classes['monk'] + 1) / 6) + 2) * 2) + 2).to_s"
+    }
+  },
+  {
+    "id": "0b5f0edf-a0bd-4cb2-9ac9-1179b2b53f22",
+    "slug": "warping_implosion",
+    "eval_variables": {},
+    "bonus_eval_variables": {},
+    "description_eval_variables": {
+      "limit": "1"
+    }
+  },
+  {
+    "id": "bcdedc23-d98f-45d9-baf6-9ffe73c40cff",
+    "slug": "flurry_of_healing_and_harm",
+    "eval_variables": {},
+    "bonus_eval_variables": {},
+    "description_eval_variables": {
+      "limit": "[1, modifiers['wis']].max"
+    }
+  },
+  {
+    "id": "1ec76b07-aceb-4322-9825-c80b25a5bd42",
+    "slug": "rend_mind",
+    "eval_variables": {},
+    "bonus_eval_variables": {},
+    "description_eval_variables": {
+      "dc": "8 + modifiers['dex'] + proficiency_bonus",
+      "limit": "1"
+    }
+  },
+  {
+    "id": "f6c6da83-63db-4154-b25e-6f84cec87987",
+    "slug": "restore_balance",
+    "eval_variables": {},
+    "bonus_eval_variables": {},
+    "description_eval_variables": {
+      "limit": "[modifiers['cha'], 1].max"
+    }
+  },
+  {
+    "id": "8fecf9f4-d71e-4923-b4ee-65d15119e401",
+    "slug": "darkvision",
+    "eval_variables": {},
+    "bonus_eval_variables": {},
+    "description_eval_variables": {},
+    "modifiers": {
+      "darkvision": { "type": "add", "value": 60 }
+    }
+  },
+  {
+    "id": "f466db6d-cf0f-4d0c-9a7c-c271d390733e",
+    "slug": "bastion_of_law",
+    "eval_variables": {},
+    "bonus_eval_variables": {},
+    "description_eval_variables": {
+      "limit": "1"
+    }
+  },
+  {
+    "id": "af54bff3-79b0-463d-9fe5-7e437d2738bd",
+    "slug": "trance_of_order",
+    "eval_variables": {},
+    "bonus_eval_variables": {},
+    "description_eval_variables": {
+      "limit": "1"
+    }
+  },
+  {
+    "id": "9e68d3f0-a63a-4541-99e3-324f279d8df8",
+    "slug": "manipulate_elements",
+    "eval_variables": {
+      "static_spells": "static_spells.merge({ 'elementalism': { 'attack_bonus': proficiency_bonus + modifiers['wis'], 'save_dc': 8 + proficiency_bonus + modifiers['wis'] } })"
+    },
+    "bonus_eval_variables": {},
+    "description_eval_variables": {}
+  },
+  {
+    "id": "d8cb2923-2e22-4bbd-891b-a664d3a08556",
+    "slug": "clockwork_cavalcade",
+    "eval_variables": {},
+    "bonus_eval_variables": {},
+    "description_eval_variables": {
+      "limit": "1"
+    }
+  },
+  {
+    "id": "716b1ac8-5ef3-452c-8b31-ad5b2f607db8",
+    "slug": "draconic_resilience",
+    "eval_variables": {},
+    "bonus_eval_variables": {},
+    "description_eval_variables": {
+      "ac": "10 + modifiers['dex'] + modifiers['cha']"
+    },
+    "modifiers": {
+      "armor_class": { "type": "set", "value": "if (no_body_armor, MAX(armor_class, 10 + dex + cha), armor_class)" }
+    }
+  },
+  {
+    "id": "44ddd44f-8b43-44e8-9bfa-d7d15fcabbef",
+    "slug": "elemental_burst",
+    "eval_variables": {},
+    "bonus_eval_variables": {},
+    "description_eval_variables": {
+      "value": "'3d' + (((((classes['monk'] + 1) / 6) + 2) * 2) + 2).to_s"
+    }
+  },
+  {
+    "id": "55bc92fb-37f1-46f1-8422-3b4b389b46fe",
+    "slug": "dragon_wings",
+    "eval_variables": {},
+    "bonus_eval_variables": {},
+    "description_eval_variables": {
+      "limit": "1"
+    }
+  },
+  {
+    "id": "0d868abb-ca14-46f7-9caf-cd568e229324",
+    "slug": "tamed_surge",
+    "eval_variables": {},
+    "bonus_eval_variables": {},
+    "description_eval_variables": {
+      "limit": "1"
+    }
+  },
+  {
+    "id": "7b152dc0-e584-4aa4-a04a-c003c57d2bf0",
+    "slug": "beguiling_defenses",
+    "eval_variables": {},
+    "bonus_eval_variables": {},
+    "description_eval_variables": {
+      "limit": "1"
+    }
+  },
+  {
+    "id": "8fe7fb29-e9d2-4a37-b297-c5eabafdb4e6",
+    "slug": "indomitable",
+    "eval_variables": {},
+    "bonus_eval_variables": {},
+    "description_eval_variables": {
+      "limit": "fighter_level = classes['fighter']; fighter_level >= 17 ? 3 : (fighter_level >= 13 ? 2 : 1)",
+      "value": "classes['fighter']"
+    }
+  },
+  {
+    "id": "dfa53308-fd80-47e7-9868-d60142677968",
+    "slug": "celestial_resilience",
+    "eval_variables": {},
+    "bonus_eval_variables": {},
+    "description_eval_variables": {
+      "half": "(classes['warlock'] + modifiers['cha']) / 2",
+      "value": "classes['warlock'] + modifiers['cha']"
+    }
+  },
+  {
+    "id": "a8be5450-7a3e-4019-bc02-f53a3b36248b",
+    "slug": "additional_attack",
+    "eval_variables": {
+      "attacks_per_action": "class_level = classes['fighter']; class_level == 20 ? 4 : (class_level >= 11 ? 3 : (class_level >= 5 ? 2 : 1))"
+    },
+    "bonus_eval_variables": {},
+    "description_eval_variables": {}
+  },
+  {
+    "id": "075612ef-4fea-4a6d-b18c-53b69eeb3327",
+    "slug": "action_surge",
+    "eval_variables": {},
+    "bonus_eval_variables": {},
+    "description_eval_variables": {
+      "limit": "classes['fighter'] >= 17 ? 2 : 1"
+    }
+  },
+  {
+    "id": "50b5030b-8dae-46f7-90aa-9bff56796085",
+    "slug": "dark_one_blessing",
+    "eval_variables": {},
+    "bonus_eval_variables": {},
+    "description_eval_variables": {
+      "value": "[modifiers['cha'] + classes['warlock'], 1].max"
+    }
+  },
+  {
+    "id": "9d019cd4-b2af-4e94-ac1a-a158f601099a",
+    "slug": "alchemical_savant",
+    "eval_variables": {},
+    "bonus_eval_variables": {},
+    "description_eval_variables": {
+      "bonus": "[modifiers['int'], 1].max"
+    }
+  },
+  {
+    "id": "d48793a8-8b31-428a-bbb4-009c544d5010",
+    "slug": "fiendish_resilience",
+    "eval_variables": {},
+    "bonus_eval_variables": {},
+    "description_eval_variables": {
+      "limit": "1"
+    }
+  },
+  {
+    "id": "a429a628-3a7e-400b-9fc7-6fa78b00f2a5",
+    "slug": "restorative_reagents",
+    "eval_variables": {},
+    "bonus_eval_variables": {},
+    "description_eval_variables": {
+      "hp": "modifiers['int'] + classes['artificer']",
+      "limit": "[modifiers['int'], 1].max"
+    }
+  },
+  {
+    "id": "e388bf27-5625-450e-9d34-f638da2ed08a",
+    "slug": "resourceful",
+    "eval_variables": {},
+    "bonus_eval_variables": {},
+    "description_eval_variables": {
+      "limit": "1"
+    }
+  },
+  {
+    "id": "9e0f2f3a-e175-4d3b-b7e3-921f20ffd211",
+    "slug": "jask_of_all_trades",
+    "eval_variables": {
+      "skills": "bonus = proficiency_bonus / 2; skills.map { |skill| next skill if skill[:level].positive?; skill[:modifier] = modifiers[skill[:ability]] + bonus; skill }"
+    },
+    "bonus_eval_variables": {},
+    "description_eval_variables": {
+      "value": "proficiency_bonus / 2"
+    }
+  },
+  {
+    "id": "04f829ef-0e63-443f-b9fb-72c514d8eb07",
+    "slug": "psionic_power",
+    "eval_variables": {},
+    "bonus_eval_variables": {},
+    "description_eval_variables": {
+      "dice": "level = classes['fighter']; return 'd12' if level >= 17; return 'd10' if level >= 11; return 'd8' if level >= 5; 'd6'",
+      "limit": "level = classes['fighter']; return 12 if level >= 17; return 10 if level >= 13; return 8 if level >= 9; return 6 if level >= 5; 4"
+    }
+  },
+  {
+    "id": "097c226e-44ff-4559-a8fa-28215e2804e2",
+    "slug": "protective_field",
+    "eval_variables": {},
+    "bonus_eval_variables": {},
+    "description_eval_variables": {
+      "value": "[modifiers['int'], 1].max"
+    }
+  },
+  {
+    "id": "e141e87b-c1e9-4ba0-8194-a9ecf6f824a8",
+    "slug": "psionic_strike",
+    "eval_variables": {},
+    "bonus_eval_variables": {},
+    "description_eval_variables": {
+      "value": "[modifiers['int'], 1].max"
+    }
+  },
+  {
+    "id": "45b759fa-a34f-4416-829e-7a6469ac684b",
+    "slug": "telekinetic_movement",
+    "eval_variables": {},
+    "bonus_eval_variables": {},
+    "description_eval_variables": {
+      "limit": "1"
+    }
+  },
+  {
+    "id": "9adc1d01-7f01-4c60-aeff-f63656efbdc7",
+    "slug": "psi_powered_leap",
+    "eval_variables": {},
+    "bonus_eval_variables": {},
+    "description_eval_variables": {
+      "limit": "1"
+    }
+  },
+  {
+    "id": "20fa2a01-4a50-41b7-8524-768f99224a43",
+    "slug": "telekinetic_thrust",
+    "eval_variables": {},
+    "bonus_eval_variables": {},
+    "description_eval_variables": {
+      "dc": "8 + proficiency_bonus + modifiers['int']"
+    }
+  },
+  {
+    "id": "5ca9d403-318c-47ff-bf64-fe8c153fbdcb",
+    "slug": "bulwark_of_force",
+    "eval_variables": {},
+    "bonus_eval_variables": {},
+    "description_eval_variables": {
+      "limit": "1",
+      "value": "modifiers['int']"
+    }
+  },
+  {
+    "id": "4209e224-5e91-4a20-98ae-f82f878eb01f",
+    "slug": "telekinetic_master",
+    "eval_variables": {},
+    "bonus_eval_variables": {},
+    "description_eval_variables": {
+      "limit": "1"
+    }
+  },
+  {
+    "id": "6782554e-b070-47d2-bcbc-1c61bf7935ac",
+    "slug": "starry_form",
+    "eval_variables": {},
+    "bonus_eval_variables": {},
+    "description_eval_variables": {
+      "value": "modifiers['wis']"
+    }
+  },
+  {
+    "id": "013e14e4-4332-4521-80f3-ba3720d897f7",
+    "slug": "cosmic_omen",
+    "eval_variables": {},
+    "bonus_eval_variables": {},
+    "description_eval_variables": {
+      "limit": "modifiers['wis']"
+    }
+  },
+  {
+    "id": "ec767235-faa6-4f5d-8a66-b73305074ce7",
+    "slug": "twinkling_constellations",
+    "eval_variables": {},
+    "bonus_eval_variables": {},
+    "description_eval_variables": {
+      "value": "modifiers['wis']"
+    }
+  },
+  {
+    "id": "fce3b1b9-5427-41d7-a28f-d61a8317f378",
+    "slug": "improved_warding_flare",
+    "eval_variables": {},
+    "bonus_eval_variables": {},
+    "description_eval_variables": {
+      "limit": "[modifiers['wis'], 1].max",
+      "value": "modifiers['wis']"
+    }
+  },
+  {
+    "id": "e4d5bede-6e9b-406f-9fea-85a4033463ec",
+    "slug": "corona_of_light",
+    "eval_variables": {},
+    "bonus_eval_variables": {},
+    "description_eval_variables": {
+      "limit": "[modifiers['wis'], 1].max"
+    }
+  },
+  {
+    "id": "facf6148-0cfe-415c-9178-166c1e0dc348",
+    "slug": "steps_of_the_fey",
+    "eval_variables": {},
+    "bonus_eval_variables": {},
+    "description_eval_variables": {
+      "limit": "[modifiers['cha'], 1].max"
+    }
+  },
+  {
+    "id": "46901b8a-0695-474e-9c83-e8ed25cd080d",
+    "slug": "healing_light",
+    "eval_variables": {},
+    "bonus_eval_variables": {},
+    "description_eval_variables": {
+      "limit": "classes['warlock'] + 1",
+      "value": "[modifiers['cha'], 1].max"
+    }
+  },
+  {
+    "id": "1e91f991-08df-4c4f-8269-e542897c8744",
+    "slug": "searing_vengeance",
+    "eval_variables": {},
+    "bonus_eval_variables": {},
+    "description_eval_variables": {
+      "limit": "1",
+      "value": "modifiers['cha']"
+    }
+  },
+  {
+    "id": "e64eb40e-cd48-442b-bc90-939c2f9fe92c",
+    "slug": "dark_one_own_luck",
+    "eval_variables": {},
+    "bonus_eval_variables": {},
+    "description_eval_variables": {
+      "limit": "[modifiers['cha'], 1].max"
+    }
+  },
+  {
+    "id": "9bb76120-8dab-444f-898f-cb618b1e267e",
+    "slug": "hurl_through_hell",
+    "eval_variables": {},
+    "bonus_eval_variables": {},
+    "description_eval_variables": {
+      "limit": "1"
+    }
+  },
+  {
+    "id": "8af7111b-f3aa-4290-b1b0-0c02ca0addf4",
+    "slug": "awakened_mind",
+    "eval_variables": {},
+    "bonus_eval_variables": {},
+    "description_eval_variables": {
+      "value": "[modifiers['cha'], 1].max"
+    }
+  },
+  {
+    "id": "91381826-bb39-45cf-8501-aa8780c340f2",
+    "slug": "primal_companion",
+    "eval_variables": {},
+    "bonus_eval_variables": {},
+    "description_eval_variables": {
+      "limit": "1"
+    }
+  },
+  {
+    "id": "aa271c93-50b5-4fda-b27f-71995734526b",
+    "slug": "otherwordly_glamour",
+    "eval_variables": {},
+    "bonus_eval_variables": {},
+    "description_eval_variables": {
+      "value": "[modifiers['wis'], 1].max"
+    }
+  },
+  {
+    "id": "9fcf7337-44e4-4cd5-89c2-81bd4014d26e",
+    "slug": "clairvoyant_combatant",
+    "eval_variables": {},
+    "bonus_eval_variables": {},
+    "description_eval_variables": {
+      "limit": "1"
+    }
+  },
+  {
+    "id": "abf3dfb9-ccbe-414c-b948-277f975a5d9d",
+    "slug": "fey_reinforcements",
+    "eval_variables": {},
+    "bonus_eval_variables": {},
+    "description_eval_variables": {
+      "limit": "1"
+    }
+  },
+  {
+    "id": "f015076a-1a8e-4851-8e24-c84ea968518e",
+    "slug": "spell_thief",
+    "eval_variables": {},
+    "bonus_eval_variables": {},
+    "description_eval_variables": {
+      "level": "1"
+    }
+  },
+  {
+    "id": "36f46369-3354-42de-9af4-42c0b670007a",
+    "slug": "soulknife_psionic_power",
+    "eval_variables": {},
+    "bonus_eval_variables": {},
+    "description_eval_variables": {
+      "dice": "level = classes['rogue']; return 'd12' if level >= 17; return 'd10' if level >= 11; return 'd8' if level >= 5; 'd6'",
+      "limit": "level = classes['rogue']; return 12 if level >= 17; return 10 if level >= 13; return 8 if level >= 9; return 6 if level >= 5; 4"
+    }
+  },
+  {
+    "id": "f76f8cb1-d4a4-4fcb-a6ec-98a2aca2426b",
+    "slug": "dread_ambusher",
+    "eval_variables": {},
+    "bonus_eval_variables": {},
+    "description_eval_variables": {
+      "dice": "classes['ranger'] >= 11 ? '2d8' : '2d6'",
+      "limit": "[modifiers['wis'], 1].max",
+      "value": "[modifiers['wis'], 1].max"
+    },
+    "modifiers": {
+      "initiative": { "type": "add", "value": "wis" }
+    }
+  },
+  {
+    "id": "9d9185e1-bcce-40a5-8a1c-632b36cdfee9",
+    "slug": "psychic_whispers",
+    "eval_variables": {},
+    "bonus_eval_variables": {},
+    "description_eval_variables": {
+      "limit": "1"
+    }
+  },
+  {
+    "id": "eec2822b-b790-450b-a272-5591d3c4b244",
+    "slug": "defensive_tactics",
+    "eval_variables": {},
+    "bonus_eval_variables": {},
+    "description_eval_variables": {
+      "limit": "1"
+    }
+  },
+  {
+    "id": "66f09945-cbaa-4366-ac19-7e2aea6c8128",
+    "slug": "defense",
+    "eval_variables": {},
+    "bonus_eval_variables": {},
+    "description_eval_variables": {},
+    "modifiers": {
+      "initiative": { "type": "add", "value": "if (no_body_armor, 0, 1)" }
+    }
+  },
+  {
+    "id": "e18f583e-2750-4e24-9ea4-919bac170fda",
+    "slug": "psychic_veil",
+    "eval_variables": {},
+    "bonus_eval_variables": {},
+    "description_eval_variables": {
+      "limit": "1"
+    }
+  },
+  {
+    "id": "56f939b9-df6e-490b-8220-9476e5317e22",
+    "slug": "telepathic_speech",
+    "eval_variables": {},
+    "bonus_eval_variables": {},
+    "description_eval_variables": {
+      "value": "[modifiers['cha'], 1].max"
+    }
+  },
+  {
+    "id": "b2a6f757-13bd-4e96-8e90-3992c0d01963",
+    "slug": "dragon_companion",
+    "eval_variables": {},
+    "bonus_eval_variables": {},
+    "description_eval_variables": {
+      "limit": "1"
+    }
+  },
+  {
+    "id": "8651f7e9-da3b-4c15-a859-ae6a6495e2ab",
+    "slug": "tides_of_chaos",
+    "eval_variables": {},
+    "bonus_eval_variables": {},
+    "description_eval_variables": {
+      "limit": "1"
+    }
+  },
+  {
+    "id": "a253707a-3981-45a1-97fa-4baf5f9e37c1",
+    "slug": "magical_tinkering",
+    "eval_variables": {},
+    "bonus_eval_variables": {},
+    "description_eval_variables": {
+      "limit": "[modifiers['int'], 1].max"
+    }
+  },
+  {
+    "id": "f75fadcf-9181-4faa-99bc-c4bedf9faf05",
+    "slug": "replicate_magic_item",
+    "eval_variables": {},
+    "bonus_eval_variables": {},
+    "description_eval_variables": {
+      "value": "((classes['artificer'] + 2) / 4) + 3",
+      "amount": "((classes['artificer'] + 2) / 4) + 1"
+    }
+  },
+  {
+    "id": "9d99790d-0a9e-445e-b126-bfdefe0f6041",
+    "slug": "magic_item_tinker",
+    "eval_variables": {},
+    "bonus_eval_variables": {},
+    "description_eval_variables": {
+      "limit": "1"
+    }
+  },
+  {
+    "id": "a3793876-de04-497d-bf6d-527fd7f0ca82",
+    "slug": "flash_of_genius",
+    "eval_variables": {},
+    "bonus_eval_variables": {},
+    "description_eval_variables": {
+      "limit": "[modifiers['int'], 1].max",
+      "value": "modifiers['int']"
+    }
+  },
+  {
+    "id": "b32624df-14cd-47ac-8137-da290eb4c323",
+    "slug": "spell_storing_item",
+    "eval_variables": {},
+    "bonus_eval_variables": {},
+    "description_eval_variables": {
+      "value": "[2 * modifiers['int'], 2].max"
+    }
+  },
+  {
+    "id": "7f82e887-0697-4c90-8230-9b9317566bd0",
+    "slug": "additional_attack",
+    "eval_variables": {},
+    "bonus_eval_variables": {},
+    "description_eval_variables": {},
+    "modifiers": {
+      "attacks_per_action": { "type": "add", "value": "if (barbarian_level >= 5, 2, 1)" }
+    }
+  },
+  {
+    "id": "b8182b57-17ff-4d63-91c7-ab6af15e2119",
+    "slug": "experimental_elixir",
+    "eval_variables": {},
+    "bonus_eval_variables": {},
+    "description_eval_variables": {
+      "value": "classes['artificer'] >= 15 ? 5 : (classes['artificer'] >= 9 ? 4 : (classes['artificer'] >= 5 ? 3 : 2))"
+    }
+  },
+  {
+    "id": "67177fef-7cbe-4ceb-a340-274557b21e6e",
+    "slug": "chemical_mastery",
+    "eval_variables": {},
+    "bonus_eval_variables": {},
+    "description_eval_variables": {
+      "limit": "1"
+    }
+  },
+  {
+    "id": "ba12ee80-1d97-4165-bba2-2c2db9adbd9c",
+    "slug": "arcane_armor",
+    "eval_variables": {},
+    "bonus_eval_variables": {},
+    "description_eval_variables": {}
+  },
+  {
+    "id": "d0d92461-fd9c-4cd7-8963-6bf1f9230b6d",
+    "slug": "infiltrator",
+    "eval_variables": {},
+    "bonus_eval_variables": {},
+    "description_eval_variables": {},
+    "modifiers": {
+      "speed": { "type": "add", "value": 5 }
+    }
+  },
+  {
+    "id": "ea7eecaa-8d52-4cb0-86da-2ddaf4f13870",
+    "slug": "dreadnaught",
+    "eval_variables": {},
+    "bonus_eval_variables": {},
+    "description_eval_variables": {
+      "limit": "[modifiers['int'], 1].max"
+    }
+  },
+  {
+    "id": "2f54f113-69a7-48ee-bb1a-3b9fd3304af2",
+    "slug": "guardian_1",
+    "eval_variables": {},
+    "bonus_eval_variables": {},
+    "description_eval_variables": {
+      "limit": "[modifiers['int'], 1].max"
+    }
+  },
+  {
+    "id": "f3036b55-2da1-40be-a1e8-55e7f4f0abaf",
+    "slug": "infiltrator_1",
+    "eval_variables": {},
+    "bonus_eval_variables": {},
+    "description_eval_variables": {},
+    "modifiers": {
+      "speed": { "type": "add", "value": 5 }
+    }
+  },
+  {
+    "id": "8fdb9f06-f2d5-402f-a5a4-47dca25c5f15",
+    "slug": "dreadnaught_1",
+    "eval_variables": {},
+    "bonus_eval_variables": {},
+    "description_eval_variables": {
+      "limit": "[modifiers['int'], 1].max"
+    }
+  },
+  {
+    "id": "694f7d6c-a713-4dbd-9162-9cdc65fa2312",
+    "slug": "thaumaturge",
+    "eval_variables": {
+      "skills": "selected_skill = ['arcana', 'religion']; skills.map { |skill| next skill if skill[:slug] != selected_skill; skill[:modifier] += [1, modifiers['wis']].max; skill }",
+      "spell_classes": "spell_classes['cleric'][:cantrips_amount] += 1; spell_classes"
+    },
+    "bonus_eval_variables": {},
+    "description_eval_variables": {}
+  },
+  {
+    "id": "0b134255-37ff-460f-8a9e-956bfce70e1e",
+    "slug": "aspect_of_the_wilds_owl",
+    "eval_variables": {},
+    "bonus_eval_variables": {},
+    "description_eval_variables": {},
+    "modifiers": {
+      "darkvision": { "type": "add", "value": 60 }
+    }
+  },
+  {
+    "id": "c6d5107d-50f0-4410-be32-0f6e3d5f2579",
+    "slug": "aspect_of_the_wilds_panther",
+    "eval_variables": {},
+    "bonus_eval_variables": {},
+    "description_eval_variables": {},
+    "modifiers": {
+      "speeds.climb": { "type": "set", "value": 0 }
+    }
+  },
+  {
+    "id": "84ebeaf9-d0b2-4856-a2be-53f3ae6485d2",
+    "slug": "aspect_of_the_wilds_salmon",
+    "eval_variables": {},
+    "bonus_eval_variables": {},
+    "description_eval_variables": {},
+    "modifiers": {
+      "speeds.swim": { "type": "set", "value": 0 }
+    }
+  },
+  {
+    "id": "918a59a1-1973-4588-b393-0b9db8b28daf",
+    "slug": "power_of_the_wilds_falcon",
+    "eval_variables": {},
+    "bonus_eval_variables": {},
+    "description_eval_variables": {},
+    "modifiers": {
+      "speeds.flight": { "type": "set", "value": "if (no_body_armor, 0, -1)" }
+    }
+  },
+  {
+    "id": "ba8e9249-3e02-4f6c-9155-cf1fa42c25e3",
+    "slug": "wrath_of_the_sea_3",
+    "eval_variables": {},
+    "bonus_eval_variables": {},
+    "description_eval_variables": {
+      "dc": "8 + modifiers['wis'] + proficiency_bonus",
+      "dices": "[modifiers['wis'], 1].max"
+    },
+    "modifiers": {
+      "speeds.flight": { "type": "set", "value": 0 },
+      "speeds.swim": { "type": "set", "value": 0 }
+    }
+  },
+  {
+    "id": "59e16cd2-0822-4ead-9303-7a5091d0e2a9",
+    "slug": "rage_of_the_gods",
+    "eval_variables": {},
+    "bonus_eval_variables": {},
+    "description_eval_variables": {
+      "limit": "1"
+    },
+    "modifiers": {
+      "speeds.flight": { "type": "set", "value": 0 }
+    }
+  },
+  {
+    "id": "3367a8be-d394-4244-af9a-a52cbed54b4d",
+    "slug": "stroke_of_luck",
+    "eval_variables": {},
+    "bonus_eval_variables": {},
+    "description_eval_variables": {
+      "limit": "1"
+    }
+  },
+  {
+    "id": "10ba0832-5fd2-439e-87e6-3039d730c5fc",
+    "slug": "relentless_endurance",
+    "eval_variables": {},
+    "bonus_eval_variables": {},
+    "description_eval_variables": {
+      "limit": "1"
+    }
+  },
+  {
+    "id": "e1d113b6-50e7-4359-bc87-7dc74778798d",
+    "slug": "unbreakable_majesty",
+    "eval_variables": {},
+    "bonus_eval_variables": {},
+    "description_eval_variables": {
+      "limit": "1",
+      "value": "spell_classes['bard'][:save_dc]"
+    }
+  },
+  {
+    "id": "5a2d9b0d-cec3-4959-b841-9f7e5c4eb367",
+    "slug": "frenzy",
+    "eval_variables": {},
+    "bonus_eval_variables": {},
+    "description_eval_variables": {
+      "value": "class_level = classes['barbarian']; return 4 if class_level >= 16; return 3 if class_level >= 9; 2"
+    }
+  },
+  {
+    "id": "993714d9-4bce-4465-84e3-6c6b4920d487",
+    "slug": "savage_attacks",
+    "eval_variables": {},
+    "bonus_eval_variables": {},
+    "description_eval_variables": {
+      "limit": "proficiency_bonus",
+      "value": "proficiency_bonus"
+    }
+  },
+  {
+    "id": "23a54a6e-dcd9-4c92-b6a7-36670c81b3c3",
+    "slug": "natural_recovery_2",
+    "eval_variables": {},
+    "bonus_eval_variables": {},
+    "description_eval_variables": {
+      "limit": "1",
+      "value": "(classes['druid'] / 2.0).round"
+    }
+  },
+  {
+    "id": "6cd635bc-eb1e-4d6e-8127-a7a76a580ea9",
+    "slug": "empowered_evocation",
+    "eval_variables": {},
+    "bonus_eval_variables": {},
+    "description_eval_variables": {
+      "value": "modifiers['int']"
+    }
+  },
+  {
+    "id": "dfd656e5-1a00-4e65-a51b-cba618722332",
+    "slug": "magician",
+    "eval_variables": {
+      "skills": "selected_skill = ['arcana', 'nature']; skills.map { |skill| next skill if skill[:slug] != selected_skill; skill[:modifier] += [1, modifiers['wis']].max; skill }",
+      "spell_classes": "spell_classes['druid'][:cantrips_amount] += 1; spell_classes"
+    },
+    "bonus_eval_variables": {},
+    "description_eval_variables": {}
+  },
+  {
+    "id": "3c95ad18-4f36-4c4c-ac93-00377f896f33",
+    "slug": "iron_mind",
+    "eval_variables": {
+      "class_save_dc": "iron_mind = selected_features['iron_mind']; iron_mind ? [iron_mind].concat(class_save_dc).uniq : class_save_dc"
+    },
+    "bonus_eval_variables": {},
+    "description_eval_variables": {}
+  },
+  {
+    "id": "1cc38a84-768a-4dff-8c7d-91d9ed9b1a68",
+    "slug": "athlete",
+    "eval_variables": {},
+    "bonus_eval_variables": {},
+    "description_eval_variables": {},
+    "modifiers": {
+      "speeds.climb": { "type": "set", "value": 0 }
+    }
+  },
+  {
+    "id": "22253678-eece-4f82-838a-585ea531ec6a",
+    "slug": "survivor",
+    "eval_variables": {},
+    "bonus_eval_variables": {},
+    "description_eval_variables": {
+      "value": "5 + modifiers['con']"
+    }
+  },
+  {
+    "id": "4a0801b6-f409-4d78-86dc-e2481dc26ae9",
+    "slug": "lay_on_hands",
+    "eval_variables": {},
+    "bonus_eval_variables": {},
+    "description_eval_variables": {
+      "limit": "5 * classes['paladin']"
+    }
+  },
+  {
+    "id": "3ae577f0-c80f-40f2-9ef6-7f537751a0d0",
+    "slug": "inspiring_leader",
+    "eval_variables": {},
+    "bonus_eval_variables": {},
+    "description_eval_variables": {
+      "limit": "1"
+    }
+  },
+  {
+    "id": "48f6daac-a839-460f-b1fc-802fd48f363c",
+    "slug": "shadow-touched",
+    "eval_variables": {},
+    "bonus_eval_variables": {},
+    "description_eval_variables": {
+      "limit": "1"
+    }
+  },
+  {
+    "id": "b6fbe123-75c1-4f44-9abd-22ca286cc12e",
+    "slug": "fey-touched",
+    "eval_variables": {},
+    "bonus_eval_variables": {},
+    "description_eval_variables": {
+      "limit": "1"
+    }
+  },
+  {
+    "id": "4fad11e8-39c0-4471-9c7f-01e8451c53d5",
+    "slug": "great_weapon_master",
+    "eval_variables": {},
+    "bonus_eval_variables": {},
+    "description_eval_variables": {
+      "value": "proficiency_bonus"
+    }
+  },
+  {
+    "id": "35e99a4f-a997-4acb-9ec2-1f631f9cf510",
+    "slug": "shield_master",
+    "eval_variables": {},
+    "bonus_eval_variables": {},
+    "description_eval_variables": {
+      "value": "8 + modifiers['str'] + proficiency_bonus"
+    }
+  },
+  {
+    "id": "f43662d0-8900-4804-98a5-59f6c0ea9820",
+    "slug": "draconic_ancestry_red",
+    "eval_variables": {},
+    "bonus_eval_variables": {},
+    "description_eval_variables": {
+      "limit": "proficiency_bonus",
+      "damage": "level >= 17 ? '4d10' : (level >= 11 ? '3d10' : (level >= 5 ? '2d10' : '1d10'))",
+      "save_dc": "8 + modifiers['con'] + proficiency_bonus"
+    },
+    "modifiers": {
+      "resistance": { "type": "concat", "value": "fire" }
+    }
+  },
+  {
+    "id": "270c6f46-632f-47aa-83aa-e55dcfd19b80",
+    "slug": "speedy",
+    "eval_variables": {},
+    "bonus_eval_variables": {},
+    "description_eval_variables": {},
+    "modifiers": {
+      "speed": { "type": "add", "value": 10 }
+    }
+  },
+  {
+    "id": "88dc10f5-c36f-4993-83d7-14de2785fdf1",
+    "slug": "telepathic",
+    "eval_variables": {},
+    "bonus_eval_variables": {},
+    "description_eval_variables": {
+      "limit": "1"
+    }
+  },
+  {
+    "id": "f43581f6-7da1-4652-8fce-d2bb045b3204",
+    "slug": "channel_divinity",
+    "eval_variables": {},
+    "bonus_eval_variables": {},
+    "description_eval_variables": {
+      "limit": "classes['paladin'] >= 11 ? 3 : 2"
+    }
+  },
+  {
+    "id": "0ed1abc9-3bab-420f-8bb5-65c96c73bc5f",
+    "slug": "mage_slayer",
+    "eval_variables": {},
+    "bonus_eval_variables": {},
+    "description_eval_variables": {
+      "limit": "1"
+    }
+  },
+  {
+    "id": "b67129f7-6570-4378-8fee-61e91164555c",
+    "slug": "resilient",
+    "eval_variables": {
+      "class_save_dc": "selected_features.key?('resilient') ? [selected_features['resilient']].concat(class_save_dc).uniq : class_save_dc"
+    },
+    "bonus_eval_variables": {},
+    "description_eval_variables": {}
+  },
+  {
+    "id": "3e2bc5fe-295b-4a50-8318-427a0f48cd45",
+    "slug": "aura_of_protection",
+    "eval_variables": {},
+    "bonus_eval_variables": {},
+    "description_eval_variables": {
+      "value": "[1, modifiers['cha']].max"
+    }
+  },
+  {
+    "id": "c5c12cf1-bec8-47fd-b786-bd9b0f6fceff",
+    "slug": "boon of recovery",
+    "eval_variables": {},
+    "bonus_eval_variables": {},
+    "description_eval_variables": {
+      "limit": "10"
+    }
+  },
+  {
+    "id": "8bf576c6-b95b-42c9-8166-43d53b5d4ebf",
+    "slug": "nature_veil",
+    "eval_variables": {},
+    "bonus_eval_variables": {},
+    "description_eval_variables": {
+      "limit": "[1, modifiers['wis']].max"
+    }
+  },
+  {
+    "id": "46e04d7c-31d5-4c55-9b23-30c33a1e901a",
+    "slug": "boon_of_speed",
+    "eval_variables": {},
+    "bonus_eval_variables": {},
+    "description_eval_variables": {},
+    "modifiers": {
+      "speed": { "type": "add", "value": 30 }
+    }
+  },
+  {
+    "id": "76290c0f-ae68-42dd-abf9-7b1505d00729",
+    "slug": "boon_of_energy_resistance",
+    "eval_variables": {},
+    "bonus_eval_variables": {},
+    "description_eval_variables": {
+      "dc": "8 + modifiers['con'] + proficiency_bonus",
+      "damage": "modifiers['con']"
+    }
+  },
+  {
+    "id": "01a39fc5-da12-40dd-8883-9b412312a963",
+    "slug": "mantle_of_inspiration",
+    "eval_variables": {},
+    "bonus_eval_variables": {},
+    "description_eval_variables": {
+      "value": "[1, modifiers['cha']].max"
+    }
+  },
+  {
+    "id": "a0bb4dd1-7f30-469c-a603-8ec8c4b3b18b",
+    "slug": "aura_of_alacrity",
+    "eval_variables": {},
+    "bonus_eval_variables": {},
+    "description_eval_variables": {},
+    "modifiers": {
+      "speed": { "type": "add", "value": 10 }
+    }
+  },
+  {
+    "id": "698f06c2-6318-4edc-87a9-e7ff965580ef",
+    "slug": "beguiling_magic",
+    "eval_variables": {},
+    "bonus_eval_variables": {},
+    "description_eval_variables": {
+      "limit": "1"
+    }
+  },
+  {
+    "id": "b3f96b2b-17ff-482d-a3a4-ddd20e956bed",
+    "slug": "wrath_of_the_sea_1",
+    "eval_variables": {},
+    "bonus_eval_variables": {},
+    "description_eval_variables": {
+      "dc": "8 + modifiers['wis'] + proficiency_bonus",
+      "dices": "[modifiers['wis'], 1].max"
+    }
+  },
+  {
+    "id": "01513e7f-366b-4e1e-9e68-750496f505bc",
+    "slug": "monk_focus",
+    "eval_variables": {},
+    "bonus_eval_variables": {},
+    "description_eval_variables": {
+      "limit": "classes['monk']"
+    }
+  },
+  {
+    "id": "a1f34a48-4ec5-4688-ac2f-26c9a2256e84",
+    "slug": "slow_fall",
+    "eval_variables": {},
+    "bonus_eval_variables": {},
+    "description_eval_variables": {
+      "value": "classes['monk'] * 5"
+    }
+  },
+  {
+    "id": "718d2a21-a2f6-43fe-8212-67821fa6f371",
+    "slug": "stunning_strike",
+    "eval_variables": {},
+    "bonus_eval_variables": {},
+    "description_eval_variables": {
+      "value": "8 + proficiency_bonus + modifiers['wis']"
+    }
+  },
+  {
+    "id": "d5ec43a8-56d3-4af8-a646-f67ce32e312f",
+    "slug": "the_third_eye",
+    "eval_variables": {},
+    "bonus_eval_variables": {},
+    "description_eval_variables": {
+      "limit": "1"
+    }
+  },
+  {
+    "id": "882f3ac3-8c61-434e-9498-1015d3f9d8b6",
+    "slug": "uncanny_metabolism",
+    "eval_variables": {},
+    "bonus_eval_variables": {},
+    "description_eval_variables": {
+      "limit": "1",
+      "value": "'1d' + (((((classes['monk'] + 1) / 6) + 2) * 2) + 2).to_s + '+' + classes['monk'].to_s"
+    }
+  },
+  {
+    "id": "25e9bf30-e9ea-46c2-adef-f642b2919aac",
+    "slug": "hand_of_harm",
+    "eval_variables": {},
+    "bonus_eval_variables": {},
+    "description_eval_variables": {
+      "value": "'1d' + (((((classes['monk'] + 1) / 6) + 2) * 2) + 2).to_s + '+' + modifiers['wis'].to_s"
+    }
+  },
+  {
+    "id": "b60c2852-3e8e-40df-83b9-03584a610943",
+    "slug": "hand_of_ultimate_mercy",
+    "eval_variables": {},
+    "bonus_eval_variables": {},
+    "description_eval_variables": {
+      "limit": "1",
+      "value": "'4d10' + modifiers['wis'].to_s"
+    }
+  },
+  {
+    "id": "38eeaafa-342a-4630-953c-7689ab29b2fa",
+    "slug": "lay_on_hands_1",
+    "eval_variables": {},
+    "bonus_eval_variables": {},
+    "description_eval_variables": {
+      "limit": "5 * classes['paladin']"
+    }
+  },
+  {
+    "id": "1a33a6da-cdee-42f2-9fc7-1aa819208c7b",
+    "slug": "physician_hand_of_healing",
+    "eval_variables": {},
+    "bonus_eval_variables": {},
+    "description_eval_variables": {
+      "value": "'1d' + (((((classes['monk'] + 1) / 6) + 2) * 2) + 2).to_s + '+' + modifiers['wis'].to_s"
+    }
+  },
+  {
+    "id": "d6978986-6546-4c97-82e4-edfbbf4f73a3",
+    "slug": "physician_hand_of_harm",
+    "eval_variables": {},
+    "bonus_eval_variables": {},
+    "description_eval_variables": {
+      "value": "'1d' + (((((classes['monk'] + 1) / 6) + 2) * 2) + 2).to_s + '+' + modifiers['wis'].to_s"
+    }
+  },
+  {
+    "id": "6ef84fe1-62f0-41b6-b651-71fbf91a06a3",
+    "slug": "aura_of_protection_2",
+    "eval_variables": {},
+    "bonus_eval_variables": {},
+    "description_eval_variables": {
+      "value": "[1, modifiers['cha']].max"
+    }
+  },
+  {
+    "id": "4c8cc4d6-56fb-46a0-aa59-2ac154e095a6",
+    "slug": "wrath_of_the_sea_2",
+    "eval_variables": {},
+    "bonus_eval_variables": {},
+    "description_eval_variables": {
+      "dc": "8 + modifiers['wis'] + proficiency_bonus",
+      "dices": "[modifiers['wis'], 1].max"
+    },
+    "modifiers": {
+      "speeds.swim": { "type": "set", "value": 0 }
+    }
+  },
+  {
+    "id": "6df2a011-51d3-4e11-96f3-a422907175c9",
+    "slug": "shadowy_figments",
+    "eval_variables": {
+      "static_spells": "static_spells.merge({ 'minor_illusion': { 'attack_bonus': proficiency_bonus + modifiers['wis'], 'save_dc': 8 + proficiency_bonus + modifiers['wis'] } })"
+    },
+    "bonus_eval_variables": {},
+    "description_eval_variables": {}
+  },
+  {
+    "id": "dcaa06ed-a9ab-4bb0-a2a0-fb7edc4f0c9c",
+    "slug": "mantle_of_majesty",
+    "eval_variables": {},
+    "bonus_eval_variables": {},
+    "description_eval_variables": {
+      "limit": "1"
+    }
+  },
+  {
+    "id": "3550cbf8-8c53-41ab-8cfb-f987088ee25f",
+    "slug": "elemental_epitome",
+    "eval_variables": {},
+    "bonus_eval_variables": {},
+    "description_eval_variables": {
+      "value": "'1d' + (((((classes['monk'] + 1) / 6) + 2) * 2) + 2).to_s"
+    }
+  },
+  {
+    "id": "6358d066-2edf-49b3-9dc4-4a3e2987c0a5",
+    "slug": "agonizing_blast",
+    "eval_variables": {},
+    "bonus_eval_variables": {},
+    "description_eval_variables": {
+      "value": "modifiers['cha']"
+    }
+  },
+  {
+    "id": "8f287204-642d-413b-a0cc-68c88a868858",
+    "slug": "celestial_revelation",
+    "eval_variables": {},
+    "bonus_eval_variables": {},
+    "description_eval_variables": {
+      "limit": "1",
+      "value": "proficiency_bonus"
+    }
+  },
+  {
+    "id": "f6608bb1-0dd1-456e-9a5a-37ff84fe3848",
+    "slug": "illusory_self",
+    "eval_variables": {},
+    "bonus_eval_variables": {},
+    "description_eval_variables": {
+      "limit": "1"
+    }
+  },
+  {
+    "id": "7f7db212-e5ec-4f0e-97a2-0c4b1f314f0a",
+    "slug": "healing_hands",
+    "eval_variables": {},
+    "bonus_eval_variables": {},
+    "description_eval_variables": {
+      "limit": "1",
+      "value": "proficiency_bonus.to_s + 'd4'"
+    }
+  },
+  {
+    "id": "c11d5565-1af6-418a-baba-686722ba90bb",
+    "slug": "draconic_flight",
+    "eval_variables": {},
+    "bonus_eval_variables": {},
+    "description_eval_variables": {
+      "limit": "1"
+    }
+  },
+  {
+    "id": "6c3668fa-daab-48d8-baba-da9905e91b3f",
+    "slug": "draconic_ancestry_bronze",
+    "eval_variables": {},
+    "bonus_eval_variables": {},
+    "description_eval_variables": {
+      "limit": "proficiency_bonus",
+      "damage": "level >= 17 ? '4d10' : (level >= 11 ? '3d10' : (level >= 5 ? '2d10' : '1d10'))",
+      "save_dc": "8 + modifiers['con'] + proficiency_bonus"
+    },
+    "modifiers": {
+      "resistance": { "type": "concat", "value": "lightning" }
+    }
+  },
+  {
+    "id": "539ebeee-ed93-408d-b0d9-fe5ae08c0048",
+    "slug": "draconic_ancestry_copper",
+    "eval_variables": {},
+    "bonus_eval_variables": {},
+    "description_eval_variables": {
+      "limit": "proficiency_bonus",
+      "damage": "level >= 17 ? '4d10' : (level >= 11 ? '3d10' : (level >= 5 ? '2d10' : '1d10'))",
+      "save_dc": "8 + modifiers['con'] + proficiency_bonus"
+    },
+    "modifiers": {
+      "resistance": { "type": "concat", "value": "acid" }
+    }
+  },
+  {
+    "id": "1cb98977-21bc-4ee7-bd98-93e4d4972b64",
+    "slug": "draconic_ancestry_brass",
+    "eval_variables": {},
+    "bonus_eval_variables": {},
+    "description_eval_variables": {
+      "limit": "proficiency_bonus",
+      "damage": "level >= 17 ? '4d10' : (level >= 11 ? '3d10' : (level >= 5 ? '2d10' : '1d10'))",
+      "save_dc": "8 + modifiers['con'] + proficiency_bonus"
+    },
+    "modifiers": {
+      "resistance": { "type": "concat", "value": "fire" }
+    }
+  },
+  {
+    "id": "1a29faa0-46df-44fa-97bd-f275c264a09b",
+    "slug": "inspiring_smite",
+    "eval_variables": {},
+    "bonus_eval_variables": {},
+    "description_eval_variables": {
+      "value": "classes['paladin']"
+    }
+  },
+  {
+    "id": "70fa5297-d7ef-45e3-9409-1b6fe6da0504",
+    "slug": "elder_champion",
+    "eval_variables": {},
+    "bonus_eval_variables": {},
+    "description_eval_variables": {
+      "limit": "1"
+    }
+  },
+  {
+    "id": "557c7552-6205-4b22-91b7-e8d2e3569e2b",
+    "slug": "stoneсunning",
+    "eval_variables": {},
+    "bonus_eval_variables": {},
+    "description_eval_variables": {
+      "limit": "proficiency_bonus"
+    }
+  },
+  {
+    "id": "7a71b061-fe20-4443-80a9-8677f0a12e86",
+    "slug": "draconic_ancestry_silver",
+    "eval_variables": {},
+    "bonus_eval_variables": {},
+    "description_eval_variables": {
+      "limit": "proficiency_bonus",
+      "damage": "level >= 17 ? '4d10' : (level >= 11 ? '3d10' : (level >= 5 ? '2d10' : '1d10'))",
+      "save_dc": "8 + modifiers['con'] + proficiency_bonus"
+    },
+    "modifiers": {
+      "resistance": { "type": "concat", "value": "cold" }
+    }
+  },
+  {
+    "id": "5dc1ed4c-7af9-4d3f-9852-5c78430bdf84",
+    "slug": "alert",
+    "eval_variables": {},
+    "bonus_eval_variables": {},
+    "description_eval_variables": {},
+    "modifiers": {
+      "initiative": { "type": "add", "value": "proficiency_bonus" }
+    }
+  },
+  {
+    "id": "10fc2663-8428-47e3-9b1c-ac9181476ced",
+    "slug": "lucky",
+    "eval_variables": {},
+    "bonus_eval_variables": {},
+    "description_eval_variables": {
+      "limit": "proficiency_bonus"
+    }
+  },
+  {
+    "id": "b5e675bd-331e-409d-9eea-7e1de672de0d",
+    "slug": "large_form",
+    "eval_variables": {},
+    "bonus_eval_variables": {},
+    "description_eval_variables": {
+      "limit": "1"
+    }
+  },
+  {
+    "id": "3efdab6e-daee-4376-b722-bcc3f0af5842",
+    "slug": "superiority_dice",
+    "eval_variables": {},
+    "bonus_eval_variables": {},
+    "description_eval_variables": {
+      "limit": "classes['fighter'] >= 15 ? 6 : (classes['fighter'] >= 7 ? 5 : 4)",
+      "value": "classes['fighter'] >= 18 ? 12 : (classes['fighter'] >= 10 ? 10 : 8)"
+    }
+  },
+  {
+    "id": "ddf68b85-8ed6-4df9-a39f-b116f2bdc934",
+    "slug": "maneuvers",
+    "eval_variables": {},
+    "bonus_eval_variables": {},
+    "description_eval_variables": {
+      "value": "current_level = classes['fighter']; current_level >= 15 ? 9 : (current_level >= 10 ? 7 : (current_level >= 7 ? 5 : 3))"
+    }
+  },
+  {
+    "id": "65be208f-7537-46e4-b9ed-1c8445291679",
+    "slug": "metamagic",
+    "eval_variables": {},
+    "bonus_eval_variables": {},
+    "description_eval_variables": {
+      "value": "classes['sorcerer'] >= 17 ? 4 : (classes['sorcerer'] >= 10 ? 4 : 2)"
+    }
+  },
+  {
+    "id": "04d18cf3-734e-4a99-acbc-e63aa7e75d3f",
+    "slug": "sorcery_points",
+    "eval_variables": {},
+    "bonus_eval_variables": {},
+    "description_eval_variables": {
+      "limit": "classes['sorcerer']"
+    }
+  },
+  {
+    "id": "03ce09c0-009f-4044-aa08-ada2c79c78e6",
+    "slug": "sorcerous_restoration",
+    "eval_variables": {},
+    "bonus_eval_variables": {},
+    "description_eval_variables": {
+      "limit": "1",
+      "value": "classes['sorcerer'] / 2"
+    }
+  },
+  {
+    "id": "1f61c696-297d-4ac4-9426-4d745de41d6d",
+    "slug": "rage",
+    "eval_variables": {},
+    "bonus_eval_variables": {},
+    "description_eval_variables": {
+      "limit": "class_level = classes['barbarian']; return 6 if class_level >= 17; return 5 if class_level >= 12; return 4 if class_level >= 6; return 3 if class_level >= 3; 2",
+      "damage": "class_level = classes['barbarian']; return 4 if class_level >= 16; return 3 if class_level >= 9; 2"
+    }
+  },
+  {
+    "id": "5a2aab53-e8f9-42d0-87bc-489dac0167de",
+    "slug": "natural_recovery_2",
+    "eval_variables": {},
+    "bonus_eval_variables": {},
+    "description_eval_variables": {
+      "limit": "1",
+      "value": "(classes['druid'] / 2.0).round"
+    }
+  },
+  {
+    "id": "5d8e7577-4009-4fc3-8f5e-9795e15d4c96",
+    "slug": "weapon_mastery",
+    "eval_variables": {},
+    "bonus_eval_variables": {},
+    "description_eval_variables": {
+      "value": "class_level = classes['barbarian']; return 4 if class_level >= 10; return 3 if class_level >= 4; 2"
+    }
+  },
+  {
+    "id": "dcae1795-cbf1-436a-ad06-5367811274e2",
+    "slug": "life_giving_force",
+    "eval_variables": {},
+    "bonus_eval_variables": {},
+    "description_eval_variables": {
+      "value": "class_level = classes['barbarian']; return 4 if class_level >= 16; return 3 if class_level >= 9; 2"
+    }
+  },
+  {
+    "id": "c19b6780-a782-414a-a357-a5c30b2f03a1",
+    "slug": "persistent_rage",
+    "eval_variables": {},
+    "bonus_eval_variables": {},
+    "description_eval_variables": {
+      "limit": "1"
+    }
+  },
+  {
+    "id": "04600f1c-13ea-4278-ab43-42e8a41ca1eb",
+    "slug": "relentless_rage",
+    "eval_variables": {},
+    "bonus_eval_variables": {},
+    "description_eval_variables": {
+      "value": "classes['barbarian'] * 2"
+    }
+  },
+  {
+    "id": "b888418e-eafd-4a86-acfc-8b95451ce0f0",
+    "slug": "divine_fury",
+    "eval_variables": {},
+    "bonus_eval_variables": {},
+    "description_eval_variables": {
+      "value": "'1d6+' + (classes['barbarian'] / 2).to_s"
+    }
+  },
+  {
+    "id": "7f18a746-bfe8-48e3-9c77-0bd28182c66d",
+    "slug": "hand_of_healing",
+    "eval_variables": {},
+    "bonus_eval_variables": {},
+    "description_eval_variables": {
+      "value": "'1d' + (((((classes['monk'] + 1) / 6) + 2) * 2) + 2).to_s + '+' + modifiers['wis'].to_s"
+    }
+  },
+  {
+    "id": "36785f03-3bfe-4a2b-a022-e5be37f56c2f",
+    "slug": "expertise",
+    "eval_variables": {},
+    "bonus_eval_variables": {},
+    "description_eval_variables": {
+      "value": "classes['bard'] >= 9 ? 4 : 2"
+    }
+  },
+  {
+    "id": "590ecf6d-fe50-4f05-a419-3e77b881d916",
+    "slug": "implements_of_mercy",
+    "eval_variables": {},
+    "bonus_eval_variables": {},
+    "description_eval_variables": {},
+    "modifiers": {
+      "tools": { "type": "concat", "value": "herbalism" }
+    }
+  },
+  {
+    "id": "8dee96cb-9ee2-4f13-925b-4cec40bc1fe8",
+    "slug": "bardic_inspiration_1",
+    "eval_variables": {},
+    "bonus_eval_variables": {},
+    "description_eval_variables": {
+      "limit": "[1, modifiers['wis']].max",
+      "value": "current_level = classes['bard']; return 'd12' if current_level >= 15; return 'd10' if current_level >= 10; return 'd8' if current_level >= 5; 'd6'"
+    }
+  },
+  {
+    "id": "9cfcc834-ac31-48f4-a2f6-8295043dd89f",
+    "slug": "wild_resurgence",
+    "eval_variables": {},
+    "bonus_eval_variables": {},
+    "description_eval_variables": {
+      "limit": "1"
+    }
+  },
+  {
+    "id": "85470688-c2b7-4ea4-8474-603447052d8f",
+    "slug": "potent_spellcasting",
+    "eval_variables": {},
+    "bonus_eval_variables": {},
+    "description_eval_variables": {
+      "value": "modifiers['wis']"
+    }
+  },
+  {
+    "id": "377de1de-1b83-41a0-ae9f-8f8ba4f79bbc",
+    "slug": "improved_potent_spellcasting",
+    "eval_variables": {},
+    "bonus_eval_variables": {},
+    "description_eval_variables": {
+      "value": "modifiers['wis']"
+    }
+  },
+  {
+    "id": "76d65121-4fa9-4cfe-a1f0-78a7c3ea3cb1",
+    "slug": "channel_divinity",
+    "eval_variables": {},
+    "bonus_eval_variables": {},
+    "description_eval_variables": {
+      "limit": "class_level = classes['cleric']; return 4 if class_level >= 18; return 3 if class_level >= 6; 2"
+    }
+  },
+  {
+    "id": "4f16ebfd-b416-436e-813a-6242aff75125",
+    "slug": "turn_undead_0",
+    "eval_variables": {},
+    "bonus_eval_variables": {},
+    "description_eval_variables": {
+      "value": "spell_classes.dig('cleric', :save_dc)"
+    }
+  },
+  {
+    "id": "420a0e26-5419-4fc4-9237-a3cf08ca5d9c",
+    "slug": "sneak_attack_trip",
+    "eval_variables": {},
+    "bonus_eval_variables": {},
+    "description_eval_variables": {
+      "dc": "8 + modifiers['dex'] + proficiency_bonus"
+    }
+  },
+  {
+    "id": "9385ce5c-30c0-41d6-992b-463b31b90666",
+    "slug": "turn_undead_1",
+    "eval_variables": {},
+    "bonus_eval_variables": {},
+    "description_eval_variables": {
+      "dice": "[1, modifiers['wis']].max",
+      "value": "spell_classes.dig('cleric', :save_dc)"
+    }
+  },
+  {
+    "id": "ec57b30e-9299-4d14-9ca3-e5530adc3fcc",
+    "slug": "divine_spark",
+    "eval_variables": {},
+    "bonus_eval_variables": {},
+    "description_eval_variables": {
+      "dice": "class_level = classes['cleric']; return 4 if class_level >= 18; return 3 if class_level >= 13; return 2 if class_level >= 7; 1",
+      "save": "spell_classes.dig('cleric', :save_dc)",
+      "modifier": "modifiers['wis']"
+    }
+  },
+  {
+    "id": "f17e7104-90ab-4336-8faa-9ebd9d02a354",
+    "slug": "divine_intervention",
+    "eval_variables": {},
+    "bonus_eval_variables": {},
+    "description_eval_variables": {
+      "limit": "1"
+    }
+  },
+  {
+    "id": "b1b9551d-0bf3-49e8-aa9b-90e39d281150",
+    "slug": "cleric_potent_spellcasting",
+    "eval_variables": {},
+    "bonus_eval_variables": {},
+    "description_eval_variables": {
+      "value": "modifiers['wis']"
+    }
+  },
+  {
+    "id": "541a3ac8-acbf-4451-b46b-c5c7c7147a71",
+    "slug": "improved_cleric_potent_spellcasting",
+    "eval_variables": {},
+    "bonus_eval_variables": {},
+    "description_eval_variables": {
+      "hp": "2 * modifiers['wis']",
+      "value": "modifiers['wis']"
+    }
+  },
+  {
+    "id": "2dea38cd-e857-4291-816c-57651cd796f4",
+    "slug": "rogue_expertise",
+    "eval_variables": {},
+    "bonus_eval_variables": {},
+    "description_eval_variables": {
+      "value": "classes['rogue'] >= 6 ? 4 : 2"
+    }
+  },
+  {
+    "id": "5766edf5-1794-43e4-844a-82a3d5ce3cc0",
+    "slug": "temporary_hit_points",
+    "eval_variables": {},
+    "bonus_eval_variables": {},
+    "description_eval_variables": {
+      "limit": "[1, modifiers['wis']].max",
+      "value": "'1d8' + [1, modifiers['wis']].max.to_s"
+    }
+  },
+  {
+    "id": "d6034d4b-60c6-4f8d-9aea-6bf828f6712c",
+    "slug": "sneak_attack",
+    "eval_variables": {},
+    "bonus_eval_variables": {},
+    "description_eval_variables": {
+      "value": "(classes['rogue'] + 1) / 2"
+    }
+  },
+  {
+    "id": "71475585-0f50-4d95-a5f0-7907ceed5768",
+    "slug": "quivering_palm",
+    "eval_variables": {},
+    "bonus_eval_variables": {},
+    "description_eval_variables": {
+      "days": "classes['monk']"
+    }
+  },
+  {
+    "id": "ae85a027-dc44-40e9-8f07-1b1e5b50fdc9",
+    "slug": "sneak_attack_daze",
+    "eval_variables": {},
+    "bonus_eval_variables": {},
+    "description_eval_variables": {
+      "dc": "8 + modifiers['dex'] + proficiency_bonus"
+    }
+  },
+  {
+    "id": "3538de1f-bfe7-4353-b9b9-a752534aadb3",
+    "slug": "sneak_attack_obscure",
+    "eval_variables": {},
+    "bonus_eval_variables": {},
+    "description_eval_variables": {
+      "dc": "8 + modifiers['dex'] + proficiency_bonus"
+    }
+  },
+  {
+    "id": "bdec8605-3f33-4966-b4d2-908a3280b5db",
+    "slug": "eldritch_invocations",
+    "eval_variables": {},
+    "bonus_eval_variables": {},
+    "description_eval_variables": {
+      "value": "class_level = classes['warlock']; return ((class_level / 3) + 4) if class_level >= 9; return (((class_level + 1) / 2) + 2) if class_level >= 5; return 3 if class_level >= 2; 1"
+    }
+  },
+  {
+    "id": "7796f9fb-3847-44dd-aacb-4d4aede51a8a",
+    "slug": "eldritch_spear",
+    "eval_variables": {},
+    "bonus_eval_variables": {},
+    "description_eval_variables": {
+      "value": "30 * classes['warlock']"
+    }
+  },
+  {
+    "id": "bff3792b-2e14-473f-b33b-6fc8ecaa6282",
+    "slug": "gift_of_the_protectors",
+    "eval_variables": {},
+    "bonus_eval_variables": {},
+    "description_eval_variables": {
+      "value": "[1, modifiers['cha']].max"
+    }
+  },
+  {
+    "id": "064a5967-8319-4957-bf4e-794f437ece4f",
+    "slug": "lifedrinker",
+    "eval_variables": {},
+    "bonus_eval_variables": {},
+    "description_eval_variables": {
+      "value": "[1, modifiers['con']].max"
+    }
+  },
+  {
+    "id": "50645363-9006-424b-aa7a-09b2f41db1dc",
+    "slug": "interception",
+    "eval_variables": {},
+    "bonus_eval_variables": {},
+    "description_eval_variables": {
+      "value": "proficiency_bonus"
+    }
+  },
+  {
+    "id": "1a7422ae-b954-4f9f-8d97-92a9eb46f90f",
+    "slug": "unarmed fighting",
+    "eval_variables": {},
+    "bonus_eval_variables": {},
+    "description_eval_variables": {
+      "value": "modifiers['str']"
+    }
+  },
+  {
+    "id": "194e61ba-a1d8-497a-842a-bbddc7b81219",
+    "slug": "draconic_ancestry_black",
+    "eval_variables": {},
+    "bonus_eval_variables": {},
+    "description_eval_variables": {
+      "limit": "proficiency_bonus",
+      "damage": "level >= 17 ? '4d10' : (level >= 11 ? '3d10' : (level >= 5 ? '2d10' : '1d10'))",
+      "save_dc": "8 + modifiers['con'] + proficiency_bonus"
+    },
+    "modifiers": {
+      "resistance": { "type": "concat", "value": "acid" }
+    }
+  },
+  {
+    "id": "9d72f6ef-b429-4bbd-bd28-8de3395aaf7d",
+    "slug": "draconic_ancestry_white",
+    "eval_variables": {},
+    "bonus_eval_variables": {},
+    "description_eval_variables": {
+      "limit": "proficiency_bonus",
+      "damage": "level >= 17 ? '4d10' : (level >= 11 ? '3d10' : (level >= 5 ? '2d10' : '1d10'))",
+      "save_dc": "8 + modifiers['con'] + proficiency_bonus"
+    },
+    "modifiers": {
+      "resistance": { "type": "concat", "value": "cold" }
+    }
+  },
+  {
+    "id": "a211e846-7290-4e61-9076-50f85a4e8b6b",
+    "slug": "intimidating_presence",
+    "eval_variables": {},
+    "bonus_eval_variables": {},
+    "description_eval_variables": {
+      "dc": "8 + modifiers['str'] + proficiency_bonus",
+      "limit": "1"
+    }
+  },
+  {
+    "id": "1dc199ef-90d5-45fc-ae6b-374adc4cb286",
+    "slug": "vitality_surge",
+    "eval_variables": {},
+    "bonus_eval_variables": {},
+    "description_eval_variables": {
+      "value": "classes['barbarian']"
+    }
+  },
+  {
+    "id": "3fa1a339-19b6-4415-a840-fbfa8c31364a",
+    "slug": "zealous_presence",
+    "eval_variables": {},
+    "bonus_eval_variables": {},
+    "description_eval_variables": {
+      "limit": "1"
+    }
+  },
+  {
+    "id": "fa949ca7-809f-4fd5-87a7-729a20070b81",
+    "slug": "branches_of_the_tree",
+    "eval_variables": {},
+    "bonus_eval_variables": {},
+    "description_eval_variables": {
+      "value": "8 + modifiers['str'] + proficiency_bonus"
+    }
+  },
+  {
+    "id": "dcd4cfd0-77b3-460d-bcc9-13d99cb2d1a6",
+    "slug": "warrior_of_the_gods",
+    "eval_variables": {},
+    "bonus_eval_variables": {},
+    "description_eval_variables": {
+      "limit": "class_level = classes['barbarian']; return 7 if class_level >= 17; return 6 if class_level >= 12; return 5 if class_level >= 6; 4"
+    }
+  },
+  {
+    "id": "5c6d8035-9787-423b-9866-201fcdaee99e",
+    "slug": "draconic_ancestry_gold",
+    "eval_variables": {},
+    "bonus_eval_variables": {},
+    "description_eval_variables": {
+      "limit": "proficiency_bonus",
+      "damage": "level >= 17 ? '4d10' : (level >= 11 ? '3d10' : (level >= 5 ? '2d10' : '1d10'))",
+      "save_dc": "8 + modifiers['con'] + proficiency_bonus"
+    },
+    "modifiers": {
+      "resistance": { "type": "concat", "value": "fire" }
+    }
+  },
+  {
+    "id": "85783715-c3bc-4831-bea4-bd2676e6283e",
+    "slug": "draconic_ancestry_blue",
+    "eval_variables": {},
+    "bonus_eval_variables": {},
+    "description_eval_variables": {
+      "limit": "proficiency_bonus",
+      "damage": "level >= 17 ? '4d10' : (level >= 11 ? '3d10' : (level >= 5 ? '2d10' : '1d10'))",
+      "save_dc": "8 + modifiers['con'] + proficiency_bonus"
+    },
+    "modifiers": {
+      "resistance": { "type": "concat", "value": "lightning" }
+    }
+  },
+  {
+    "id": "8d3c4e82-2db5-42e3-90af-610c7fcfb80b",
+    "slug": "musician",
+    "eval_variables": {},
+    "bonus_eval_variables": {},
+    "description_eval_variables": {
+      "value": "proficiency_bonus"
+    }
+  },
+  {
+    "id": "d075ebc9-ef84-4fa2-aae4-5bc442e45f62",
+    "slug": "actor",
+    "eval_variables": {},
+    "bonus_eval_variables": {},
+    "description_eval_variables": {
+      "value": "8 + modifiers['cha'] + proficiency_bonus"
+    }
+  },
+  {
+    "id": "61f9eba7-817e-4469-b017-080596cad2e5",
+    "slug": "wholeness_of_body",
+    "eval_variables": {},
+    "bonus_eval_variables": {},
+    "description_eval_variables": {
+      "limit": "[1, modifiers['wis']].max",
+      "value": "'1d' + (((((classes['monk'] + 1) / 6) + 2) * 2) + 2).to_s + modifiers['wis'].to_s"
+    }
+  },
+  {
+    "id": "88412009-1356-4e88-8a7b-ada58fe04d46",
+    "slug": "draconic_ancestry_green",
+    "eval_variables": {},
+    "bonus_eval_variables": {},
+    "description_eval_variables": {
+      "limit": "proficiency_bonus",
+      "damage": "level >= 17 ? '4d10' : (level >= 11 ? '3d10' : (level >= 5 ? '2d10' : '1d10'))",
+      "save_dc": "8 + modifiers['con'] + proficiency_bonus"
+    },
+    "modifiers": {
+      "resistance": { "type": "concat", "value": "poison" }
+    }
+  },
+  {
+    "id": "e2ee71e1-9512-4bfc-9289-85068157ff64",
+    "slug": "glorious_defense",
+    "eval_variables": {},
+    "bonus_eval_variables": {},
+    "description_eval_variables": {
+      "limit": "[modifiers['cha'], 1].max",
+      "value": "[modifiers['cha'], 1].max"
+    }
+  },
+  {
+    "id": "7e99a935-2c93-47a2-9934-3e55d68603db",
+    "slug": "undying_sentinel",
+    "eval_variables": {},
+    "bonus_eval_variables": {},
+    "description_eval_variables": {
+      "limit": "1",
+      "value": "classes['palading'] * 3"
+    }
+  },
+  {
+    "id": "18aac392-0066-4d80-9e05-e86d0b5be053",
+    "slug": "living_legend",
+    "eval_variables": {},
+    "bonus_eval_variables": {},
+    "description_eval_variables": {
+      "limit": "1"
+    }
+  },
+  {
+    "id": "ea78023b-9c98-48fb-9721-376348bf18dc",
+    "slug": "avenging_angel",
+    "eval_variables": {},
+    "bonus_eval_variables": {},
+    "description_eval_variables": {
+      "limit": "1"
+    }
+  },
+  {
+    "id": "a998c04b-f979-4fb9-a7fd-d40d664e8eab",
+    "slug": "land_aid",
+    "eval_variables": {},
+    "bonus_eval_variables": {},
+    "description_eval_variables": {
+      "dc": "8 + modifiers['wis'] + proficiency_bonus",
+      "dices": "classes['druid'] >= 14 ? 4 : (classes['druid'] >= 10 ? 3 : 2)"
+    }
+  },
+  {
+    "id": "7692fb83-eab6-416d-b2aa-6c0f9d2acb47",
+    "slug": "holy_nimbus",
+    "eval_variables": {},
+    "bonus_eval_variables": {},
+    "description_eval_variables": {
+      "limit": "1",
+      "value": "modifiers['cha'] + proficiency_bonus"
+    }
+  },
+  {
+    "id": "f08c1c14-bf4e-4a19-82a0-ce2bd2824e2f",
+    "slug": "sacred_weapon",
+    "eval_variables": {},
+    "bonus_eval_variables": {},
+    "description_eval_variables": {
+      "value": "modifiers['cha']"
+    }
+  },
+  {
+    "id": "e1ed6456-78d8-4601-8136-0f10396bf1ca",
+    "slug": "improved_brutal_strike",
+    "eval_variables": {},
+    "bonus_eval_variables": {},
+    "description_eval_variables": {
+      "dice": "classes['barbarian'] >= 17 ? '2d10' : '1d10'",
+      "effects": "classes['barbarian'] >= 17 ? 2 : 1"
+    }
+  },
+  {
+    "id": "ace03e55-b181-4161-a714-09f670e648f0",
+    "slug": "bardic_inspiration",
+    "eval_variables": {},
+    "bonus_eval_variables": {},
+    "description_eval_variables": {
+      "limit": "[1, modifiers['wis']].max",
+      "value": "current_level = classes['bard']; return 'd12' if current_level >= 15; return 'd10' if current_level >= 10; return 'd8' if current_level >= 5; 'd6'"
+    }
+  },
+  {
+    "id": "43f250d9-9f8d-495f-8c12-3e650daa4b96",
+    "slug": "greater_divine_intervention",
+    "eval_variables": {},
+    "bonus_eval_variables": {},
+    "description_eval_variables": {
+      "limit": "1"
+    }
+  },
+  {
+    "id": "c1bddc79-7261-4619-9f50-8c027dcfd026",
+    "slug": "wild_shape",
+    "eval_variables": {},
+    "bonus_eval_variables": {},
+    "description_eval_variables": {
+      "limit": "classes['druid'] >= 10 ? 4 : (classes['druid'] >= 4 ? 3 : 2)"
+    }
+  },
+  {
+    "id": "7f9088d6-fa18-46ee-8331-14301120c834",
+    "slug": "wild_resurgence",
+    "eval_variables": {},
+    "bonus_eval_variables": {},
+    "description_eval_variables": {
+      "limit": "1"
+    }
+  },
+  {
+    "id": "317f3638-79b2-4143-acdf-f3b266c6da49",
+    "slug": "second_wind",
+    "eval_variables": {},
+    "bonus_eval_variables": {},
+    "description_eval_variables": {
+      "limit": "fighter_level = classes['fighter']; fighter_level >= 10 ? 4 : (fighter_level >= 4 ? 3 : 2)",
+      "value": "'1d10' + '+' + classes['fighter'].to_s"
+    }
+  },
+  {
+    "id": "ba6cd3c6-1bee-4526-9967-e6c118656e56",
+    "slug": "weapon_mastery",
+    "eval_variables": {},
+    "bonus_eval_variables": {},
+    "description_eval_variables": {
+      "value": "((classes['fighter'] + 2) / 6) + 3"
+    }
+  },
+  {
+    "id": "dc898381-5b68-4245-8458-5a2b390c730f",
+    "slug": "deflect_energy",
+    "eval_variables": {},
+    "bonus_eval_variables": {},
+    "description_eval_variables": {
+      "dc": "8 + proficiency_bonus + modifiers['wis']",
+      "value": "'1d10+' + (modifiers['dex'] + classes['monk']).to_s",
+      "damage": "'1d' + (((((classes['monk'] + 1) / 6) + 2) * 2) + 2).to_s + '+' + modifiers['dex'].to_s"
+    }
+  },
+  {
+    "id": "ad97e9ac-f1ca-41f9-a1fe-9af628d8a75f",
+    "slug": "deflect_attacks",
+    "eval_variables": {},
+    "bonus_eval_variables": {},
+    "description_eval_variables": {
+      "dc": "8 + proficiency_bonus + modifiers['wis']",
+      "value": "'1d10+' + (modifiers['dex'] + classes['monk']).to_s",
+      "damage": "'1d' + (((((classes['monk'] + 1) / 6) + 2) * 2) + 2).to_s + '+' + modifiers['dex'].to_s"
+    }
+  },
+  {
+    "id": "1e5deb33-50af-45e3-9db8-2436dfd4b231",
+    "slug": "aura_of_protection_1",
+    "eval_variables": {},
+    "bonus_eval_variables": {},
+    "description_eval_variables": {
+      "value": "[1, modifiers['cha']].max"
+    }
+  },
+  {
+    "id": "8aac8b32-73aa-475f-aec4-cde713d011d3",
+    "slug": "magical_cunning_1",
+    "eval_variables": {},
+    "bonus_eval_variables": {},
+    "description_eval_variables": {
+      "limit": "1"
+    }
+  },
+  {
+    "id": "82c7e72c-f698-4880-8dbb-e14617364cf5",
+    "slug": "abjure_foes",
+    "eval_variables": {},
+    "bonus_eval_variables": {},
+    "description_eval_variables": {
+      "dc": "8 + proficiency_bonus + modifiers['cha']",
+      "value": "[1, modifiers['cha']].max"
+    }
+  },
+  {
+    "id": "9bc2ab7e-9ed7-4dca-ad03-4b0dd20f1498",
+    "slug": "sneak_attack_knock_out",
+    "eval_variables": {},
+    "bonus_eval_variables": {},
+    "description_eval_variables": {
+      "dc": "8 + modifiers['dex'] + proficiency_bonus"
+    }
+  },
+  {
+    "id": "faf0bcbc-f16f-40f8-9727-c08887f93a02",
+    "slug": "sneak_attack_poison",
+    "eval_variables": {},
+    "bonus_eval_variables": {},
+    "description_eval_variables": {
+      "dc": "8 + modifiers['dex'] + proficiency_bonus"
+    }
+  },
+  {
+    "id": "77900e29-f08f-43d2-bc81-69c9ac3473d4",
+    "slug": "innate_sorcery",
+    "eval_variables": {},
+    "bonus_eval_variables": {},
+    "description_eval_variables": {
+      "limit": "2"
+    }
+  },
+  {
+    "id": "737e00b9-2cdc-4b08-b686-7bb128194dd5",
+    "slug": "magical_cunning",
+    "eval_variables": {},
+    "bonus_eval_variables": {},
+    "description_eval_variables": {
+      "limit": "1"
+    }
+  },
+  {
+    "id": "5ebe6da8-9001-4524-a36b-eb11a411a67d",
+    "slug": "arcane_recovery",
+    "eval_variables": {},
+    "bonus_eval_variables": {},
+    "description_eval_variables": {
+      "limit": "1",
+      "value": "(classes['wizard'] / 2.0).round"
+    }
+  },
+  {
+    "id": "640b2a41-5480-462c-ab66-35c5f2ec3473",
+    "slug": "arcane_ward",
+    "eval_variables": {},
+    "bonus_eval_variables": {},
+    "description_eval_variables": {
+      "limit": "1",
+      "value": "2 * classes['wizard'] + modifiers['int']"
+    }
+  },
+  {
+    "id": "adc6fe27-e6b1-466b-abf3-5844da754576",
+    "slug": "know_your_enemy",
+    "eval_variables": {},
+    "bonus_eval_variables": {},
+    "description_eval_variables": {
+      "limit": "1"
+    }
+  },
+  {
+    "id": "cf2a0aa9-0bb8-443f-a410-655e6dafb2a7",
+    "slug": "natural_recovery",
+    "eval_variables": {},
+    "bonus_eval_variables": {},
+    "description_eval_variables": {
+      "limit": "1"
+    }
+  },
+  {
+    "id": "f5f2fd55-ed30-4c3e-ad9b-987946b465e4",
+    "slug": "shillelagh",
+    "eval_variables": {},
+    "bonus_eval_variables": {},
+    "description_eval_variables": {
+      "value": "level >= 17 ? '2d6' : (level >= 11 ? 'd12' : (level >= 5 ? 'd10' : 'd8'))"
+    }
+  },
+  {
+    "id": "36454b09-9b51-4cd7-ac93-cdcec52c1d03",
+    "slug": "eldritch_blast",
+    "eval_variables": {},
+    "bonus_eval_variables": {},
+    "description_eval_variables": {
+      "value": "level >= 17 ? 4 : (level >= 11 ? 3 : (level >= 5 ? 2 : 1))"
+    }
+  }
+]

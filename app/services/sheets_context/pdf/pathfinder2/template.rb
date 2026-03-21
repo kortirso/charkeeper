@@ -55,7 +55,7 @@ module SheetsContext
           character.skills.map { |skill|
             skill[:name] = skill[:name] || translate(skills_names[skill[:slug]]['name'])
             skill
-          }.sort_by { |item| item[:name] }.each_with_index do |skill, index| # rubocop: disable Style/MultilineBlockChain
+          }.sort_by { |item| item[:name] }.each_with_index do |skill, index|
             text_box skill[:name], at: [52, 512 - (index * 20)], width: 140
             text_box "#{'+' if skill[:modifier].positive?}#{skill[:modifier]}", at: [200, 513 - (index * 20)], width: 38, align: :center
           end

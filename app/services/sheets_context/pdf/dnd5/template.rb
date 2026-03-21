@@ -21,7 +21,7 @@ module SheetsContext
             next "#{class_name(key)} #{character.classes[key]}" if value.nil?
 
             "#{class_name(key)} #{character.classes[key]} (#{subclass_name(key, value)})"
-          end.join(' / ') # rubocop: disable Style/MethodCalledOnDoEndBlock
+          end.join(' / ')
         end
 
         def race(character)

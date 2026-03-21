@@ -4,7 +4,7 @@ import { createWindowSize } from '@solid-primitives/resize-observer';
 
 import {
   Dnd5Abilities, Dnd5Combat, Dnd5Rest, Dnd5ClassLevels, Dnd5Professions, Dnd5Spells, Dnd5Skills,
-  Dnd5Proficiency, Dnd2024WildShapes, BeastFeatures, Dnd5Craft, Dnd5Bonuses, Dnd2024Spells, Dnd5Info
+  Dnd5Proficiency, Dnd2024WildShapes, BeastFeatures, Dnd5Craft, Dnd5Bonuses, Dnd2024Spells, Dnd5Info, Dnd2024Bonuses
 } from '../../../pages';
 import {
   CharacterNavigation, Equipment, Notes, Avatar, ContentWrapper, Feats, createDiceRoll, Conditions, Combat, Gold
@@ -179,12 +179,18 @@ export const Dnd5 = (props) => {
               <Dnd5Rest character={character()} onReloadCharacter={props.onReloadCharacter} />
             </Match>
             <Match when={activeMobileTab() === 'bonuses'}>
-              <Dnd5Bonuses character={character()} onReloadCharacter={props.onReloadCharacter} />
+              <Show
+                when={character().provider === 'dnd5'}
+                fallback={<Dnd2024Bonuses character={character()} onReloadCharacter={props.onReloadCharacter} />}
+              >
+                <Dnd5Bonuses character={character()} onReloadCharacter={props.onReloadCharacter} />
+              </Show>
             </Match>
             <Match when={activeMobileTab() === 'equipment'}>
               <Equipment
                 withWeight
                 withPrice
+                upgrades={character().provider === 'dnd2024' ? ['weapon', 'armor', 'shield', 'item'] : null}
                 character={character()}
                 itemFilters={[
                   { title: t('equipment.itemsList'), callback: itemFilter },
@@ -340,6 +346,7 @@ export const Dnd5 = (props) => {
               <Equipment
                 withWeight
                 withPrice
+                upgrades={character().provider === 'dnd2024' ? ['weapon', 'armor', 'shield', 'item'] : null}
                 character={character()}
                 itemFilters={[
                   { title: t('equipment.itemsList'), callback: itemFilter },
@@ -379,7 +386,12 @@ export const Dnd5 = (props) => {
               <Notes />
             </Match>
             <Match when={activeTab() === 'bonuses'}>
-              <Dnd5Bonuses character={character()} onReloadCharacter={props.onReloadCharacter} />
+              <Show
+                when={character().provider === 'dnd5'}
+                fallback={<Dnd2024Bonuses character={character()} onReloadCharacter={props.onReloadCharacter} />}
+              >
+                <Dnd5Bonuses character={character()} onReloadCharacter={props.onReloadCharacter} />
+              </Show>
             </Match>
             <Match when={activeTab() === 'classLevels'}>
               <Dnd5ClassLevels

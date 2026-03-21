@@ -24,6 +24,7 @@ export * from './molecules/DualityDice';
 export * from './molecules/Loading';
 
 export * from './molecules/ItemUpgrades/Daggerheart';
+export * from './molecules/ItemUpgrades/Dnd2024';
 
 export * from './rolls/Fate';
 export * from './rolls/Fallout';
@@ -31,6 +32,7 @@ export * from './rolls/Fallout';
 export * from './substances/Avatar';
 export * from './substances/Notes';
 export * from './substances/SharedBonuses';
+export * from './substances/SharedBonusesV2';
 export * from './substances/Equipment';
 export * from './substances/ItemContent';
 export * from './substances/Feats';

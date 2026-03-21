@@ -125,7 +125,7 @@ module DaggerheartCharacter
         subclasses.filter_map do |key, value|
           default = Daggerheart::Character.subclass_info(key, value)
           default ? default['spellcast'] : spellcast_for_homebrew_subclass(value)
-        end.uniq # rubocop: disable Style/MethodCalledOnDoEndBlock
+        end.uniq
     end
 
     def available_mechanics
@@ -133,7 +133,7 @@ module DaggerheartCharacter
         subclasses.filter_map do |key, value|
           default = Daggerheart::Character.subclass_info(key, value)
           default ? default['mechanics'] : mechanics_for_homebrew_subclass(value)
-        end.flatten.uniq # rubocop: disable Style/MethodCalledOnDoEndBlock
+        end.flatten.uniq
     end
 
     # TODO: DEPRECATED

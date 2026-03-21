@@ -42,7 +42,6 @@ module CharactersContext
       def lock_key(input) = "character_update_#{input[:character].id}"
       def lock_time = 0
 
-      # rubocop: disable Style/GuardClause
       def do_prepare(input) # rubocop: disable Metrics/AbcSize
         %i[abilities].each do |key|
           input[key]&.transform_values!(&:to_i)
@@ -66,7 +65,6 @@ module CharactersContext
           input[:tag_skill_boosts] = 0
         end
       end
-      # rubocop: enable Style/GuardClause
 
       def do_persist(input)
         input[:character].data = input[:character].data.attributes.merge(input.except(:character, :file, :name).stringify_keys)

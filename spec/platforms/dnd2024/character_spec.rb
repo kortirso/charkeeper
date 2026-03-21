@@ -24,11 +24,10 @@ describe Dnd2024::Character do
     end
 
     it 'calculates everything without errors', :aggregate_failures do
-      expect(decorator.id).to eq character.id
       expect(decorator.features.size).to eq 1
       expect(decorator.features.dig(0, :slug)).to eq 'bardic_inspiration'
       expect(decorator.class_save_dc).to eq %w[dex cha]
-      expect(decorator.spell_classes[:bard]).not_to be_nil
+      expect(decorator.spell_classes['bard']).not_to be_nil
       expect(decorator.spells_slots).not_to be_nil
       expect(decorator.attacks).not_to be_nil
       expect(decorator.attacks_per_action).not_to be_nil
@@ -39,6 +38,7 @@ describe Dnd2024::Character do
       before do
         character.data = character.data.merge(
           'level' => 7,
+          'main_class' => 'bard',
           'classes' => { 'bard' => 4, 'fighter' => 3 },
           'subclasses' => { 'bard' => nil, 'fighter' => 'eldritch_knight' }
         )
@@ -46,11 +46,10 @@ describe Dnd2024::Character do
       end
 
       it 'calculates everything without errors', :aggregate_failures do
-        expect(decorator.id).to eq character.id
         expect(decorator.class_save_dc).to eq %w[dex cha]
-        expect(decorator.spell_classes[:bard]).not_to be_nil
-        expect(decorator.spell_classes[:fighter]).not_to be_nil
-        expect(decorator.spell_classes.dig(:fighter, :save_dc)).to eq 11
+        expect(decorator.spell_classes['bard']).not_to be_nil
+        expect(decorator.spell_classes['fighter']).not_to be_nil
+        expect(decorator.spell_classes.dig('fighter', :save_dc)).to eq 11
         expect(decorator.spells_slots).not_to be_nil
       end
     end

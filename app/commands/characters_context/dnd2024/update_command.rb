@@ -155,7 +155,7 @@ module CharactersContext
           input[:leveling_ability_boosts] = 0
           input[:leveling_ability_boosts_list] = []
         end
-        if input.key?(:selected_skills) # rubocop: disable Style/GuardClause
+        if input.key?(:selected_skills)
           input[:any_skill_boosts] = 0
           input[:skill_boosts] = 0
           input[:skill_boosts_list] = []

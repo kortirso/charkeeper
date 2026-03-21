@@ -70,7 +70,7 @@ module SheetsContext
           character.skills.map { |skill|
             skill[:name] = translate(skills_names[skill[:slug]]['name'])
             skill
-          }.sort_by { |item| item[:name] }.each_with_index do |skill, index| # rubocop: disable Style/MultilineBlockChain
+          }.sort_by { |item| item[:name] }.each_with_index do |skill, index|
             text_box skill[:name], at: [52, 468 - (index * 20)], width: 140
             text_box "#{'+' if skill[:modifier].positive?}#{skill[:modifier]}", at: [200, 469 - (index * 20)], width: 38, align: :center
           end
@@ -173,7 +173,7 @@ module SheetsContext
             end
           end
 
-          if character.parent.is_a?(::Dnd2024::Character) # rubocop: disable Style/GuardClause
+          if character.parent.is_a?(::Dnd2024::Character)
             font_size 4
             fill_color '444444'
             text_box I18n.t('services.sheets_context.dnd.spells.action').upcase, at: [222, 693], width: 40, height: 10, align: :center
@@ -278,7 +278,6 @@ module SheetsContext
           ([I18n.t("services.sheets_context.dnd.areas.#{values[0]}")] + values[1..]).join(' ')
         end
 
-        # rubocop: disable Style/MethodCalledOnDoEndBlock
         def effects(character, spell)
           spell.info['effects'].map do |value|
             next I18n.t("services.sheets_context.dnd.effects.#{value}") if DIRECT_EFFECT_VALUES.include?(value)
@@ -290,7 +289,6 @@ module SheetsContext
             "#{I18n.t('services.sheets_context.dnd.effects.damage')} #{damage_value}"
           end.join(' / ')
         end
-        # rubocop: enable Style/MethodCalledOnDoEndBlock
       end
     end
   end

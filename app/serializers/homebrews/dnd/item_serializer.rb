@@ -3,20 +3,7 @@
 module Homebrews
   module Dnd
     class ItemSerializer < ApplicationSerializer
-      attributes :id, :name, :kind, :description, :bonuses, :info, :data, :public, :own
-
-      def bonuses
-        return [] unless context
-        return [] unless context[:bonuses]
-
-        context[:bonuses].select { |item| item.bonusable_id == object.id }.map do |item|
-          {
-            id: item.id,
-            value: item.value,
-            dynamic_value: item.dynamic_value
-          }
-        end
-      end
+      attributes :id, :name, :kind, :description, :info, :data, :public, :own, :modifiers
 
       def own # rubocop: disable Naming/PredicateMethod
         return false unless context

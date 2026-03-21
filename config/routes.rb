@@ -120,11 +120,16 @@ Rails.application.routes.draw do
 
     namespace :dnd2024 do
       resources :characters, only: %i[create update] do
-        resources :spells, only: %i[index create update destroy], module: 'characters'
-        resources :rest, only: %i[create], module: 'characters'
-        resources :craft, only: %i[index create], module: 'characters'
-        resources :talents, only: %i[index create], module: 'characters'
-        resources :homebrew_items, only: %i[create], module: 'characters'
+        scope module: :characters do
+          resources :spells, only: %i[index create update destroy]
+          resources :rest, only: %i[create]
+          resources :craft, only: %i[index create]
+          resources :talents, only: %i[index create]
+          resources :homebrew_items, only: %i[create]
+          resources :items, only: %i[] do
+            resources :upgrade, only: %i[create], module: :items
+          end
+        end
       end
       resources :spells, only: %i[index show]
     end

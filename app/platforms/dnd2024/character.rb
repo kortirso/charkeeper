@@ -154,17 +154,7 @@ module Dnd2024
     attribute :data, Dnd2024::CharacterData.to_type
 
     def decorator(simple: false, version: nil)
-      base_decorator = ::Dnd2024Character::BaseDecorator.new(self)
-      base_features_decorator = ::FeaturesBaseDecorator.new(base_decorator, exclude_feature_origins: [6])
-      base_features_decorator.features unless simple
-      stats_decorator = ::Dnd2024Character::StatsDecorator.new(base_features_decorator)
-      species_decorator = ::Dnd2024Character::SpeciesDecorateWrapper.new(stats_decorator)
-      legacy_decorator = ::Dnd2024Character::LegacyDecorateWrapper.new(species_decorator)
-      class_decorator = ::Dnd2024Character::ClassDecorateWrapper.new(legacy_decorator)
-      subclass_decorator = ::Dnd2024Character::SubclassDecorateWrapper.new(class_decorator)
-      features_decorator = ::FeaturesDecorator.new(subclass_decorator, version: version)
-      features_decorator.features unless simple
-      ::Dnd2024Character::OverallDecorator.new(features_decorator)
+      Dnd2024Decorator.new.call(character: self, simple: simple, exclude_feature_origins: [6], version: version)
     end
   end
 end

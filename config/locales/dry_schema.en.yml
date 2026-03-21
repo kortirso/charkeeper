@@ -109,6 +109,9 @@ en:
           comment:
             key?: Comment is required
             filled?: Comment is required
+          ability:
+            only_add: Only ADD type is available
+            invalid_formula: Invalid formula
       user:
         password_length: Password must be greater or equal %{length} characters
         exists: Username already exists

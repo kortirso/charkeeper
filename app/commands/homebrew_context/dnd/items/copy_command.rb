@@ -20,7 +20,7 @@ module HomebrewContext
         def do_persist(input)
           result = add_item.call(
             input[:item].attributes
-              .slice('kind', 'info')
+              .slice('kind', 'info', 'modifiers')
               .symbolize_keys
               .merge({
                 user: input[:user],

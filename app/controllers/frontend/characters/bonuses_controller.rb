@@ -8,6 +8,7 @@ module Frontend
         add_daggerheart_bonus: 'commands.characters_context.daggerheart.add_bonus',
         feature_requirement: 'feature_requirement',
         add_dnd_bonus_v2: 'commands.characters_context.dnd2024.bonuses.add',
+        add_dnd_bonus_v3: 'commands.characters_context.dnd2024.bonuses.add_v3',
         add_daggerheart_bonus_v2: 'commands.characters_context.daggerheart.bonuses.add',
         change_command: 'commands.bonuses_context.change',
         add_dc20_bonus: 'commands.characters_context.dc20.bonuses.add'
@@ -17,13 +18,15 @@ module Frontend
 
       before_action :find_character
       before_action :find_character_bonus, only: %i[update destroy]
+      before_action :find_bonus_command, only: %i[create]
+      before_action :validate_dnd2024_create_command, only: %i[create]
 
       def index
         serialize_relation(bonuses, ::Characters::BonusSerializer, :bonuses)
       end
 
       def create
-        case add_bonus_command.call(create_params.merge(bonusable: @character))
+        case @bonus_command.call(create_params.merge(bonusable: @character))
         in { errors: errors, errors_list: errors_list } then unprocessable_response(errors, errors_list)
         in { result: result }
           serialize_resource(result, ::Characters::BonusSerializer, :bonus, {}, :created)
@@ -66,19 +69,31 @@ module Frontend
         end
       end
 
-      def add_bonus_command
-        if feature_requirement.call(current: params[:version], initial: '0.3.23')
-          case params[:provider]
-          when 'dnd5', 'dnd2024' then add_dnd_bonus_v2
-          when 'daggerheart' then add_daggerheart_bonus_v2
-          when 'dc20' then add_dc20_bonus
+      def find_bonus_command # rubocop: disable Metrics/AbcSize, Metrics/CyclomaticComplexity
+        @bonus_command =
+          if feature_requirement.call(current: params[:version], initial: '0.4.16')
+            case params[:provider]
+            when 'dnd2024' then add_dnd_bonus_v3
+            when 'dnd5' then add_dnd_bonus_v2
+            when 'daggerheart' then add_daggerheart_bonus_v2
+            when 'dc20' then add_dc20_bonus
+            end
+          elsif feature_requirement.call(current: params[:version], initial: '0.3.23')
+            case params[:provider]
+            when 'dnd5' then add_dnd_bonus_v2
+            when 'daggerheart' then add_daggerheart_bonus_v2
+            when 'dc20' then add_dc20_bonus
+            end
+          else
+            case params[:provider]
+            when 'dnd5', 'dnd2024' then add_dnd_bonus
+            when 'daggerheart' then add_daggerheart_bonus
+            end
           end
-        else
-          case params[:provider]
-          when 'dnd5', 'dnd2024' then add_dnd_bonus
-          when 'daggerheart' then add_daggerheart_bonus
-          end
-        end
+      end
+
+      def validate_dnd2024_create_command
+        raise ActiveRecord::RecordNotFound if @bonus_command.nil?
       end
 
       def create_params

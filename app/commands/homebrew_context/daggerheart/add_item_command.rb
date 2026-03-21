@@ -46,8 +46,7 @@ module HomebrewContext
         [I18n.t('commands.homebrew_context.daggerheart.items.add.invalid_formula')]
       end
 
-      # rubocop: disable Style/GuardClause, Metrics/AbcSize
-      def do_prepare(input)
+      def do_prepare(input) # rubocop: disable Metrics/AbcSize
         input[:name] = { en: input[:name], ru: input[:name] }
         input[:description] = { en: input[:description], ru: input[:description] }
 
@@ -66,7 +65,6 @@ module HomebrewContext
             input[:itemable_type].constantize.where(user_id: input[:user].id).find_by(id: input[:itemable_id])
         end
       end
-      # rubocop: enable Style/GuardClause, Metrics/AbcSize
 
       def do_persist(input)
         result = ::Daggerheart::Item.create!(input.except(:itemable_type, :itemable_id, :bonuses, :consume))

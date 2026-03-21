@@ -125,7 +125,13 @@ Style/BlockDelimiters:
 # a useful return value are rare, assign the return
 # value to a local variable for those cases.
 Style/MethodCalledOnDoEndBlock:
-  Enabled: true
+  Enabled: false
+
+Style/MultilineBlockChain:
+  Enabled: false
+
+Style/GuardClause:
+  Enabled: false
 
 # Enforcing the names of variables? To single letter ones? Just no.
 Style/SingleLineBlockParams:

@@ -44,7 +44,6 @@ module HomebrewContext
         [I18n.t('commands.homebrew_context.daggerheart.items.add.invalid_formula')]
       end
 
-      # rubocop: disable Style/GuardClause
       def do_prepare(input)
         input[:name] = { en: input[:name], ru: input[:name] }
         input[:description] = { en: input[:description], ru: input[:description] }
@@ -59,7 +58,6 @@ module HomebrewContext
           input[:info] = { consume: consume_result } if consume_result.any?
         end
       end
-      # rubocop: enable Style/GuardClause
 
       def do_persist(input)
         input[:item].update!(input.except(:item, :bonuses, :convert, :consume))

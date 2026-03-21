@@ -106,6 +106,7 @@ export const Dnd5ClassLevels = (props) => {
     const result = currentConfig().classes;
     if (character().provider === 'dnd5') return result;
     if (homebrews() === undefined) return result;
+    if (!homebrews().dnd2024.subclasses) return result;
 
     return Object.fromEntries(Object.entries(result).map(([slug, values]) => {
       const homebrewSubclasses = homebrews().dnd2024.subclasses[slug] || {};

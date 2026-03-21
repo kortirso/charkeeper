@@ -20,8 +20,7 @@ module CharactersContext
 
       private
 
-      # rubocop: disable Metrics/AbcSize, Style/GuardClause
-      def do_prepare(input)
+      def do_prepare(input) # rubocop: disable Metrics/AbcSize
         return if input[:options].nil?
 
         input[:spent_hit_dice] = input[:options].stringify_keys.each_with_object({}) do |(key, value), acc|
@@ -42,7 +41,6 @@ module CharactersContext
           ].min
         end
       end
-      # rubocop: enable Metrics/AbcSize, Style/GuardClause
 
       def do_persist(input)
         input[:character].feats.where(limit_refresh: 0).update_all(used_count: 0)
