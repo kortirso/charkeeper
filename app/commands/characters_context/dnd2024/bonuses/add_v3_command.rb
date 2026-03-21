@@ -83,21 +83,21 @@ module CharactersContext
             NO_FORMULA_FIELDS.each do |key|
               next if value[key].blank?
 
-              key(:ability).failure(:only_add) unless value.dig(key, 'type') == 'add'
-              key(:ability).failure(:invalid_formula) if formula.call(formula: value.dig(key, 'value')).nil?
+              key(:ability).failure(:only_add) unless value.dig(key, :type) == 'add'
+              key(:ability).failure(:invalid_formula) if formula.call(formula: value.dig(key, :value)).nil?
             end
 
             ONLY_ADD_TYPE_FIELDS.each do |key|
               next if value[key].blank?
 
-              key(:ability).failure(:only_add) unless value.dig(key, 'type') == 'add'
-              key(:ability).failure(:invalid_formula) if formula.call(formula: value.dig(key, 'value'), variables: variables).nil?
+              key(:ability).failure(:only_add) unless value.dig(key, :type) == 'add'
+              key(:ability).failure(:invalid_formula) if formula.call(formula: value.dig(key, :value), variables: variables).nil?
             end
 
             ANY_VALUE_FIELDS.each do |key|
               next if value[key].blank?
 
-              key(:ability).failure(:invalid_formula) if formula.call(formula: value.dig(key, 'value'), variables: variables).nil?
+              key(:ability).failure(:invalid_formula) if formula.call(formula: value.dig(key, :value), variables: variables).nil?
             end
           end
         end
