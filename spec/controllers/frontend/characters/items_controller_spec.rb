@@ -39,7 +39,7 @@ describe Frontend::Characters::ItemsController do
           expect(response.parsed_body['items'].size).to eq 1
           expect(response_values.keys).to(
             contain_exactly(
-              'id', 'quantity', 'ready_to_use', 'notes', 'name', 'kind', 'bonuses',
+              'id', 'quantity', 'ready_to_use', 'notes', 'name', 'kind', 'bonuses', 'custom',
               'data', 'state', 'has_description', 'item_id', 'states', 'info', 'modifiers', 'item_modifiers'
             )
           )
@@ -150,6 +150,25 @@ describe Frontend::Characters::ItemsController do
             patch :update, params: {
               character_id: user_character.id,
               id: 'unexisting',
+              provider: 'dnd5',
+              character_item: { quantity: 100 },
+              charkeeper_access_token: access_token
+            }
+          }
+
+          it 'does not update character item' do
+            request
+
+            expect(response).to have_http_status :not_found
+          end
+        end
+
+        context 'for custom item' do
+          let!(:item) { create :character_item, character: user_character, name: 'Custom' }
+          let(:request) {
+            patch :update, params: {
+              character_id: user_character.id,
+              id: item.id,
               provider: 'dnd5',
               character_item: { quantity: 100 },
               charkeeper_access_token: access_token

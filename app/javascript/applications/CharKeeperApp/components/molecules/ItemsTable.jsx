@@ -117,7 +117,9 @@ export const ItemsTable = (props) => {
                               />
                             </div>
                           </Show>
-                          <p class="dots-item" onClick={() => props.onChangeItem(item)}>{localize(TRANSLATION, locale()).change}</p>
+                          <Show when={!item.custom}>
+                            <p class="dots-item" onClick={() => props.onChangeItem(item)}>{localize(TRANSLATION, locale()).change}</p>
+                          </Show>
                           <Show when={ITEMS_INFO.includes(props.provider)}>
                             <p class="dots-item" onClick={() => props.onInfoItem(item)}>{localize(TRANSLATION, locale()).info}</p>
                           </Show>
