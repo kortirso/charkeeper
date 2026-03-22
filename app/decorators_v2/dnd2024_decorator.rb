@@ -43,7 +43,7 @@ class Dnd2024Decorator < ApplicationDecoratorV2
     update_save_dc
     update_speeds
     @result['formatted_static_spells'] = format_static_spells
-    @result = @result.except('selected_features', 'static_spells', 'defense_gear')
+    @result = @result.except('selected_features', 'defense_gear')
 
     self
   end
@@ -51,6 +51,7 @@ class Dnd2024Decorator < ApplicationDecoratorV2
   private
 
   def generate_basis # rubocop: disable Metrics/AbcSize
+    @result['name'] = @character.name
     @result['available_talents'] = (level / 4) + 1 + (level >= 19 ? 1 : 0)
     @result['proficiency_bonus'] = 2 + ((level - 1) / 4)
     @result['static_spells'] = {}

@@ -53,7 +53,7 @@ module SheetsContext
 
           skills_names = ::Pathfinder2::Character.skills
           character.skills.map { |skill|
-            skill[:name] = skill[:name] || translate(skills_names[skill[:slug]]['name'])
+            skill[:name] = character.lores[skill[:slug]] || translate(skills_names[skill[:slug]]['name'])
             skill
           }.sort_by { |item| item[:name] }.each_with_index do |skill, index|
             text_box skill[:name], at: [52, 512 - (index * 20)], width: 140
@@ -82,7 +82,13 @@ module SheetsContext
         end
 
         def classes(character)
-          character.subclasses.map { |key, value| "#{class_name(key)} (#{subclass_name(key, value)})" }.join(' / ')
+          character.subclasses.map do |key, value|
+            class_name = find_class_name(key)
+            next class_name unless value
+
+            subclass_name = find_subclass_name(key, value)
+            "#{class_name} (#{subclass_name})"
+          end.join(' / ')
         end
 
         def subrace(character)
@@ -93,11 +99,11 @@ module SheetsContext
           translate(::Pathfinder2::Character.backgrounds.dig(character.background, 'name'))
         end
 
-        def class_name(class_slug)
+        def find_class_name(class_slug)
           translate(::Pathfinder2::Character.class_info(class_slug)['name'])
         end
 
-        def subclass_name(class_slug, subclass_slug)
+        def find_subclass_name(class_slug, subclass_slug)
           translate(::Pathfinder2::Character.subclass_info(class_slug, subclass_slug)['name'])
         end
       end

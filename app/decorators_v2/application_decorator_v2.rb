@@ -5,6 +5,9 @@ class ApplicationDecoratorV2
   include Deps[formula: 'formula', markdown: 'markdown']
 
   def method_missing(method, *_args)
+    return @character.data if method == :data && defined?(@character)
+    return @character if method == :parent && defined?(@character)
+
     @result[method.to_s]
   end
 end
