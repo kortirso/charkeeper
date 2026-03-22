@@ -4,6 +4,7 @@ module Characters
   class ItemSerializer < ApplicationSerializer
     ATTRIBUTES = %i[
       id quantity ready_to_use notes name kind data state item_id has_description states info bonuses modifiers item_modifiers
+      custom
     ].freeze
     READY_TO_USE_STATES = %w[hands equipment].freeze
 
@@ -39,6 +40,10 @@ module Characters
 
     def data
       item.data.attributes
+    end
+
+    def custom # rubocop: disable Naming/PredicateMethod
+      object.name.present?
     end
   end
 end

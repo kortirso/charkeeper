@@ -10,7 +10,8 @@ module Frontend
       include SerializeRelation
 
       before_action :find_character
-      before_action :find_character_item, only: %i[update destroy]
+      before_action :find_character_item, only: %i[update]
+      before_action :find_character_item_for_destroy, only: %i[destroy]
 
       def index
         serialize_relation_v2(items, ::Characters::ItemSerializer, :items, cache_options: cache_options)
@@ -48,6 +49,10 @@ module Frontend
       end
 
       def find_character_item
+        @character_item = @character.items.where(name: nil).find(params[:id])
+      end
+
+      def find_character_item_for_destroy
         @character_item = @character.items.find(params[:id])
       end
 
