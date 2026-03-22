@@ -191,6 +191,9 @@ ru:
       transformations:
         daggerheart:
           character_exists: Персонаж с такой трансформацией существует
+    characters:
+      bonuses:
+        need_update: Please update app version
   web:
     welcome:
       index_v2:

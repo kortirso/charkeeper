@@ -191,6 +191,9 @@ es:
       transformations:
         daggerheart:
           character_exists: Existe un personaje con tal transformación
+    characters:
+      bonuses:
+        need_update: Please update app version
   web:
     welcome:
       index_v2:

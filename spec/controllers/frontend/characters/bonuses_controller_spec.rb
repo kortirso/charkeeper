@@ -100,13 +100,33 @@ describe Frontend::Characters::BonusesController do
               character_id: user_character.id,
               provider: 'daggerheart',
               bonus: { value: { health: 1 }, comment: 'Comment' },
-              charkeeper_access_token: access_token
+              charkeeper_access_token: access_token,
+              version: '0.3.23'
             }
           }
 
           it 'creates character bonus', :aggregate_failures do
             expect { request }.to change(user_character.bonuses, :count).by(1)
             expect(response).to have_http_status :created
+          end
+
+          context 'for invalid version' do
+            let(:request) {
+              post :create, params: {
+                character_id: user_character.id,
+                provider: 'dnd2024',
+                bonus: { value: { str: { type: 'add', value: 1 } }, comment: 'Comment' },
+                charkeeper_access_token: access_token,
+                version: '0.3.23'
+              }
+            }
+
+            before { user_character.update(type: 'Dnd2024::Character') }
+
+            it 'creates character bonus', :aggregate_failures do
+              expect { request }.not_to change(user_character.bonuses, :count)
+              expect(response).to have_http_status :unprocessable_content
+            end
           end
         end
       end

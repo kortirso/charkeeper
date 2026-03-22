@@ -86,14 +86,19 @@ module Frontend
             end
           else
             case params[:provider]
-            when 'dnd5', 'dnd2024' then add_dnd_bonus
+            when 'dnd5' then add_dnd_bonus
             when 'daggerheart' then add_daggerheart_bonus
             end
           end
       end
 
       def validate_dnd2024_create_command
-        raise ActiveRecord::RecordNotFound if @bonus_command.nil?
+        return if @bonus_command
+
+        unprocessable_response(
+          [t('frontend.characters.bonuses.need_update')],
+          [t('frontend.characters.bonuses.need_update')]
+        )
       end
 
       def create_params
