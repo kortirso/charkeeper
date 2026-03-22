@@ -12,21 +12,21 @@ const TRANSLATION = {
     name: 'New item name',
     upgradeItem: 'Upgrade item',
     selectBonus: 'Select bonus from character list',
-    warning: 'Character bonus will be deleted'
+    warning: 'Character bonus will be deactivated'
   },
   ru: {
     title: 'Улучшение предмета',
     name: 'Новое название предмета',
     upgradeItem: 'Улучшить предмет',
     selectBonus: 'Выберите бонус из списка персонажа',
-    warning: 'Бонус персонажа будет удалён'
+    warning: 'Бонус персонажа будет выключен'
   },
   es: {
     title: 'Mejorando el objeto',
     name: 'Nuevo nombre del objeto',
     upgradeItem: 'Mejorar objeto',
     selectBonus: 'Select bonus from character list',
-    warning: 'Character bonus will be deleted'
+    warning: 'Character bonus will be deactivated'
   }
 }
 

@@ -37,7 +37,7 @@ module CharactersContext
           result = ActiveRecord::Base.transaction do
             character_item = add_character_item.call(input[:attributes])[:result]
             update_old_item(input)
-            remove_old_bonus(input)
+            deactivate_old_bonus(input)
             character_item.item
           end
 
@@ -50,8 +50,8 @@ module CharactersContext
           input[:character_item].update(states: input[:states])
         end
 
-        def remove_old_bonus(input)
-          input[:character_bonus].destroy
+        def deactivate_old_bonus(input)
+          input[:character_bonus].update(enabled: false)
         end
       end
     end
