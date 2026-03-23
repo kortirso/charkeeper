@@ -1,0 +1,30 @@
+{
+  "item": [
+    "premium_bedroll", "piper_whistle", "charging_quiver", "alistair_torch", "speaking_orbs",
+    "manacles", "arcane_clock", "woven_net", "fire_jar", "suspended_rod",
+    "glamour_stone", "empty_chest", "companion_case", "piercing_arrows", "valorstone",
+    "skeleton_key", "arcane_prism", "minor_stamina_potion_recipe", "minor_health_potion_recipe", "homing_compasses",
+    "corrector_sprite", "gecko_gloves", "lorekeeper", "vial_of_darksmore_recipe", "bloodstone",
+    "greatstone", "glider", "ring_of_silence", "calming_pendant", "dual_flask",
+    "bag_of_ficklesand", "ring_of_resistance", "phoenix_feather", "box_of_many_goods", "airblade_charm",
+    "portal_seed", "paragon_chain", "elusive_amulet", "hopekeeper_locket", "infinite_bag",
+    "stride_relic", "bolster_relic", "control_relic", "attune_relic", "charm_relic",
+    "enlighten_relic", "honing_relic", "flickerfly_pendant", "lakestrider_boots", "clay_companion",
+    "mythic_dust_recipe", "shard_of_memory", "gem_of_alacrity", "gem_of_might", "gem_of_precision",
+    "gem_of_insight", "gem_audacity", "gem_of_sagacity", "ring_of_unbreakable_resolve", "belt_of_unity"
+  ],
+  "consumables": [
+    "stride_potion", "bolster_potion", "control_potion", "attune_potion", "charm_potion",
+    "enlighten_potion", "minor_health_potion", "minor_stamina_potion", "grindletooth_vanom", "varik_leaves",
+    "vial_of_moondrip", "unstable_arcane_shard", "potion_of_stability", "improved_grindletooth_vanom", "morphing_clay",
+    "vial_of_darksmoke", "jumping_root", "snap_powder", "health_potion", "stamina_potion",
+    "armor_stitcher", "gill_salve", "replication_parchment", "improved_arcane_shard", "major_stride_potion",
+    "major_bolster_potion", "major_control_potion", "major_attune_potion", "major_charm_potion", "major_enlighten_potion",
+    "blood_of_the_yorgi", "homet_secret_potion", "redthorn_saliva", "channelstone", "mythic_dust",
+    "acidpaste", "hopehold_flare", "major_arcane_shard", "featherbone", "circle_of_the_void",
+    "sun_tree_sap", "dripfang_poison", "major_health_potion", "major_stamina_potion", "ogre_musk",
+    "wingsprout", "jar_of_lost_voices", "dragonbloom_tea", "bridge_seed", "sleeping_sap",
+    "feast_of_xuria", "bonding_honey", "shrinking_potion", "growing_potion", "knowledge_stone",
+    "sweet_moss", "blinding_orb", "death_tea", "mirror_of_marigold", "stardrop"
+  ]
+}

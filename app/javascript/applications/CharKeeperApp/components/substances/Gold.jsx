@@ -111,7 +111,7 @@ export const Gold = (props) => {
   return (
     <ErrorWrapper payload={{ character_id: character().id, key: 'Gold' }}>
       <GuideWrapper character={character()}>
-        <div class="blockable mb-2 p-4">
+        <div class="blockable px-2 py-4 md:px-4">
           <div
             classList={{
               'grid grid-cols-2 emd:grid-cols-4': goldFormat() === 'daggerheart',

@@ -5,7 +5,7 @@ import { createWindowSize } from '@solid-primitives/resize-observer';
 import {
   DaggerheartTraits, DaggerheartStatic, DaggerheartHealth, DaggerheartBeastform, DaggerheartCompanion,
   DaggerheartDomainCards, DaggerheartRest, DaggerheartLeveling, DaggerheartExperience, DaggerheartTransform,
-  DaggerheartStances, DaggerheartBonuses, DaggerheartCraft, DaggerheartScars, DaggerheartInfo
+  DaggerheartStances, DaggerheartBonuses, DaggerheartCraft, DaggerheartScars, DaggerheartInfo, DaggerheartLootTable
 } from '../../../pages';
 import {
   CharacterNavigation, Equipment, Notes, Avatar, ContentWrapper, Feats, createDiceRoll, Conditions, Combat, Gold
@@ -198,6 +198,7 @@ export const Daggerheart = (props) => {
                 guideStep={3}
                 helpMessage={localize(TRANSLATION, locale())['helpMessage']}
                 onNextGuideStepClick={() => setActiveMobileTab('domainCards')}
+                lootTableComponent={DaggerheartLootTable}
               >
                 <Gold character={character()} onReplaceCharacter={props.onReplaceCharacter} />
               </Equipment>
@@ -364,6 +365,7 @@ export const Daggerheart = (props) => {
                 guideStep={3}
                 helpMessage={localize(TRANSLATION, locale())['helpMessage']}
                 onNextGuideStepClick={() => setActiveTab('domainCards')}
+                lootTableComponent={DaggerheartLootTable}
               >
                 <Gold character={character()} onReplaceCharacter={props.onReplaceCharacter} />
               </Equipment>

@@ -72,6 +72,7 @@ export * from './Content/Character/Daggerheart/Bonuses';
 export * from './Content/Character/Daggerheart/Craft';
 export * from './Content/Character/Daggerheart/Scars';
 export * from './Content/Character/Daggerheart/Info';
+export * from './Content/Character/Daggerheart/LootTable';
 
 export * from './Content/Character/Dc20';
 export * from './Content/Character/Dc20/Abilities';

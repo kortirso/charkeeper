@@ -116,6 +116,7 @@ const HOMEBREWED_PROVIDERS = ['daggerheart', 'dnd2024']
 
 export const Equipment = (props) => {
   const safeChildren = children(() => props.children);
+  const LootTableComponent = props.lootTableComponent;
 
   const character = () => props.character;
 
@@ -444,8 +445,11 @@ export const Equipment = (props) => {
           }
         >
           {safeChildren()}
+          <Show when={props.lootTableComponent}>
+            <LootTableComponent buyItem={buyItem} />
+          </Show>
           <Show when={characterItems() !== undefined}>
-            <Button default textable classList="mb-2" onClick={() => setItemsSelectingMode(true)}>{t('equipment.addItems')}</Button>
+            <Button default textable classList="my-2" onClick={() => setItemsSelectingMode(true)}>{t('equipment.addItems')}</Button>
             <For each={['hands', 'equipment', 'backpack', 'storage']}>
               {(state) =>
                 <ItemsTable

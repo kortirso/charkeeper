@@ -135,7 +135,7 @@
   "equipment": {
     "weight": "Weight",
     "cost": "Cost",
-    "addItems": "Add items",
+    "addItems": "Find items",
     "itemNote": "Item note",
     "weaponsList": "Weapon",
     "primaryWeapon": "Primary weapon",
