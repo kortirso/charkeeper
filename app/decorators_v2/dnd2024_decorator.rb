@@ -89,7 +89,7 @@ class Dnd2024Decorator < ApplicationDecoratorV2
       beastform.blank? ? modifiers : modifiers.merge(beast_config['saves']) { |_key, oldval, newval| [newval, oldval].max }
   end
 
-  def apply_set_modifiers # rubocop: disable Metrics/AbcSize, Metrics/PerceivedComplexity
+  def apply_set_modifiers # rubocop: disable Metrics/AbcSize, Metrics/PerceivedComplexity, Metrics/CyclomaticComplexity
     res = all_modifiers.flat_map do |items|
       items.filter_map do |key, value|
         ONLY_ADD_MODIFIERS.exclude?(key) && WEAPON_MODIFIERS.exclude?(key) && value['type'] == 'set' && { key => value['value'] }
@@ -97,7 +97,8 @@ class Dnd2024Decorator < ApplicationDecoratorV2
     end.compact_blank.each_with_object({}) do |value, acc|
       key = value.keys[0]
       acc[key] ||= []
-      acc[key] << formula.call(formula: value[key], variables: formula_variables)
+      formula_result = formula.call(formula: value[key], variables: formula_variables)
+      formula_result ? (acc[key] << formula_result) : monitoring_dnd_2024_formula_error(formula)
     end
 
     res.each do |(key_name, values)|
@@ -119,7 +120,8 @@ class Dnd2024Decorator < ApplicationDecoratorV2
     end.compact_blank.each_with_object({}) do |value, acc|
       key = value.keys[0]
       acc[key] ||= []
-      acc[key] << formula.call(formula: value[key], variables: formula_variables)
+      formula_result = formula.call(formula: value[key], variables: formula_variables)
+      formula_result ? (acc[key] << formula_result) : monitoring_dnd_2024_formula_error(formula)
     end
   end
 
@@ -131,7 +133,8 @@ class Dnd2024Decorator < ApplicationDecoratorV2
     end.compact_blank.each_with_object({}) do |value, acc|
       key = value.keys[0]
       acc[key] ||= []
-      acc[key] << formula.call(formula: value[key], variables: formula_variables)
+      formula_result = formula.call(formula: value[key], variables: formula_variables)
+      formula_result ? (acc[key] << formula_result) : monitoring_dnd_2024_formula_error(formula)
     end
     res.values.flatten.sum + @general_attack_modifiers.slice(*modifiers).values.flatten.sum
   end
@@ -322,7 +325,8 @@ class Dnd2024Decorator < ApplicationDecoratorV2
     end.compact_blank.each_with_object({}) do |value, acc|
       key = value.keys[0]
       acc[key] ||= []
-      acc[key] << formula.call(formula: value[key], variables: formula_variables)
+      formula_result = formula.call(formula: value[key], variables: formula_variables)
+      formula_result ? (acc[key] << formula_result) : monitoring_dnd_2024_formula_error(formula)
     end
 
     res.each do |(key_name, values)|
@@ -439,13 +443,22 @@ class Dnd2024Decorator < ApplicationDecoratorV2
     )
   end
 
+  def monitoring_dnd_2024_formula_error(formula)
+    Charkeeper::Container.resolve('monitoring.client').notify(
+      exception: Monitoring::FormulaError.new('Formula error'),
+      metadata: { formula: formula },
+      severity: :info
+    )
+  end
+
   def formula_variables
     @formula_variables ||=
       {
         proficiency_bonus: proficiency_bonus,
         level: level,
         no_body_armor: no_body_armor,
-        no_armor: no_armor
+        no_armor: no_armor,
+        armor_class: armor_class
       }
       .merge(modifiers.symbolize_keys)
       .merge(DEFAULT_CLASSES.index_with(0).transform_keys { |key| "#{key}_level" }.symbolize_keys)

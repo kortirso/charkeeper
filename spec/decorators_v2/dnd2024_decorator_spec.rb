@@ -57,7 +57,14 @@ describe Dnd2024Decorator do
     create :character_item, character: character, item: thrown_weapon, states: Character::Item.default_states.merge('hands' => 1)
     create :character_item, character: character, item: range_weapon, states: Character::Item.default_states.merge('hands' => 1)
 
-    feat = create :feat, :dnd2024_bardic_inspiration, modifiers: { 'cha' => { 'type' => 'add', 'value' => 1 } }
+    feat = create :feat,
+                  :dnd2024_bardic_inspiration,
+                  modifiers: {
+                    'cha' => { 'type' => 'add', 'value' => 1 },
+                    'armor_class' => {
+                      'type' => 'set', 'value' => 'if (no_body_armor, MAX(armor_class, 10 + dex + cha), armor_class)'
+                    }
+                  }
     create :character_feat, feat: feat, character: character, ready_to_use: true
   end
 
