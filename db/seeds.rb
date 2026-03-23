@@ -155,6 +155,15 @@ Dir[File.join(Rails.root.join('db/data/fallout/perks/*.json'))].each do |filenam
   end
 end
 
+file_content = File.read('db/data/daggerheart/feats.json')
+feats = JSON.parse(file_content)
+feats.each do |feat|
+  item = ::Daggerheart::Feat.find_by(slug: feat['slug'])
+  next unless item
+
+  item.update(title: feat['title'].compact_blank, description: feat['description'].compact_blank)
+end
+
 # file_content = File.read('db/data/daggerheart/domains-output.txt')
 # file_content.lines.each do |line|
 #   names = line.split('|')
