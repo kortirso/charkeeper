@@ -264,6 +264,7 @@ export const Pathfinder2Leveling = (props) => {
           </Show>
           <Select
             searchable
+            formDropdownClassList="relative!"
             labelText={renderFeatLabel(featFilter().type)}
             containerClassList="mt-4"
             items={availableFeats()}

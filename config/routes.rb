@@ -197,6 +197,7 @@ Rails.application.routes.draw do
         end
       end
       resources :spells, only: %i[index]
+      resources :loots, only: %i[create]
     end
 
     resources :campaigns, only: %i[index show create destroy] do
