@@ -72,6 +72,25 @@ FactoryBot.define do
       # rubocop: enable Layout/LineLength
     end
 
+    trait :dnd2024 do
+      type { 'Dnd2024::Feat' }
+      sequence(:slug) { |i| "slug-#{i}" }
+      title {
+        {
+          en: 'Name',
+          ru: 'Название'
+        }
+      }
+      description {
+        {
+          en: 'Description',
+          ru: 'Описание'
+        }
+      }
+      origin { 2 }
+      kind { 0 }
+    end
+
     trait :dnd2024_bardic_inspiration do
       type { 'Dnd2024::Feat' }
       slug { 'bardic_inspiration' }

@@ -236,6 +236,9 @@ Rails.application.routes.draw do
       resources :items, only: %i[index show create update destroy] do
         post :copy, on: :member
       end
+      resources :spells, only: %i[index show create update destroy] do
+        post :copy, on: :member
+      end
       resources :books, only: %i[index create update destroy] do
         resource :content, only: %i[create], module: :books
       end

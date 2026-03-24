@@ -3,7 +3,7 @@
 module Homebrews
   class FeatSerializer < ApplicationSerializer
     attributes :id, :title, :description, :markdown_description, :origin, :origin_value, :bonuses, :conditions, :limit,
-               :limit_refresh, :kind, :modifiers, :info
+               :limit_refresh, :kind, :modifiers, :info, :own, :public
 
     def bonuses
       return [] unless context
@@ -16,6 +16,13 @@ module Homebrews
           dynamic_value: item.dynamic_value
         }
       end
+    end
+
+    def own # rubocop: disable Naming/PredicateMethod
+      return false unless context
+      return false unless context[:current_user_id]
+
+      object.user_id == context[:current_user_id]
     end
 
     def markdown_description
