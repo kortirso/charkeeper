@@ -1,0 +1,84 @@
+[
+  {
+    "slug": "inspired_eclipse",
+    "title": { "en": "Inspired Eclipse", "ru": "Вдохновляющее затмение" },
+    "description": {
+      "en": "When you take a bonus action to give a creature a Bardic Inspiration die, you can have the invisible condition and teleport up to 30 feet to an unoccupied space you can see as part of that bonus action. This invisibility lasts until the start of your next turn and ends early immediately after you make an attack roll, deal damage, or cast a spell.",
+      "ru": "Когда бонусным действием вы даёте существу кость бардовского вдохновения, вы можете получить состояние невидимый невидимый и телепортироваться частью этого бонусного действия на расстояние до 30 футов в свободное пространство, которое вы видите. Невидимость невидимость длится до начала вашего следующего хода и заканчивается раньше, если вы совершаете бросок атаки, наносите урон или накладываете заклинание."
+    },
+    "origin": "subclass",
+    "origin_value": "",
+    "kind": "static",
+    "conditions": { "level": 3 },
+    "info": { "static_spells": {} }
+  },
+  {
+    "slug": "lunar_vitality",
+    "title": { "en": "Lunar Vitality", "ru": "Жизненная сила луны" },
+    "description": {
+      "en": "Once per turn when you restore HP to a creature with a spell, you can expend a **Bardic Inspiration** die and increase the amount of HP restored by a number equal to a roll of the **Bardic Inspiration** die. The creature's speed also increases by 10 feet until the end of its next turn.",
+      "ru": "Один раз за ход, когда вы восстанавливаете хиты существу заклинанием, вы можете потратить кость бардовского вдохновения, чтобы увеличить количество восстановленных хитов на количество, равное броску этой кости. Скорость существа также увеличивается на 10 фт. до конца его следующего хода."
+    },
+    "origin": "subclass",
+    "origin_value": "",
+    "kind": "static",
+    "conditions": { "level": 3 },
+    "info": { "static_spells": {} }
+  },
+  {
+    "slug": "primal_lore",
+    "title": { "en": "Primal Lore", "ru": "Первобытные знания" },
+    "description": {
+      "en": "You learn druidic and one cantrip from the druid spell list. It counts as a bard spell for you but doesn't count against the number of cantrips you know. Whenever you gain a bard level, you can replace this cantrip with another cantrip of your choice from the druid spell list.\n\nAdditionally, choose one of the following skills: Animal Handling, Insight, Medicine, Nature, Perception, or Survival. You have proficiency in that skill.",
+      "ru": "Вы изучаете друидический язык и один заговор из списка заклинаний друида друида. Он считается для вас заклинанием барда, но не учитывается в общем числе известных вам заговоров. Каждый раз, когда вы получаете новый уровень барда, вы можете заменить этот заговор на другой из списка заклинаний друида по вашему выбору.\n\nКроме того, выберите один из следующих навыков: Уход за животными, Проницательность, Медицина, Природа, Внимательность или Выживание. Вы получаете владение этим навыком."
+    },
+    "origin": "subclass",
+    "origin_value": "",
+    "kind": "update_result",
+    "conditions": { "level": 3 },
+    "info": { "static_spells": {} }
+  },
+  {
+    "slug": "blessing_of_moonlight",
+    "title": { "en": "Blessing of Moonlight", "ru": "Благословение лунного света" },
+    "description": {
+      "en": "You always have the **Moonbeam** spell prepared.\n\nWhen you cast **Moonbeam**, you can modify the spell so that you glow faintly while the spell is active. While glowing, you shed Dim Light out to 5 feet, and whenever a creature fails its saving throw against the effects of this **Moonbeam**, another creature of your choice that you can see within 60 feet of yourself regains 2d4 Hit Points.",
+      "ru": "У вас всегда подготовлено заклинание **Лунный луч**.\n\nККогда вы накладываете заклинание **Лунный луч**, вы можете изменить это заклинание так, что во время его действия вы слабо светитесь. Пока вы светитесь, от вас исходит тусклый свет тусклый свет в пределах 5 фт., и каждый раз, когда существо проваливает спасбросок против эффекта этого **Лунного луча**, другое существо по вашему выбору, которое вы видите в пределах 60 футов, восстанавливает 2к4 хита."
+    },
+    "origin": "subclass",
+    "origin_value": "",
+    "kind": "update_result",
+    "conditions": { "level": 6 },
+    "info": { "static_spells": { "moonbeam": { "modifier": "cha" } } },
+    "description_eval_variables": {
+      "limit": "1"
+    },
+    "limit_refresh": "long_rest"
+  },
+  {
+    "slug": "shadow_of_the_new_moon",
+    "title": { "en": "Shadow of the New Moon", "ru": "Тень новолуния" },
+    "description": {
+      "en": "When you use **Inspired Eclipse**, the creature who received the **Bardic Inspiration** die can also have the invisible condition and immediately take a reaction to teleport up to 30 feet to an unoccupied space it can see. The creature remains invisible until the start of its next turn.",
+      "ru": "Когда вы используете **Вдохновляющее затмение**, существо, получившее кость бардовского вдохновения, также может стать невидимым и реакцией сразу же телепортироваться на расстояние до 30 футов в незанятое пространство, которое оно может видеть. Существо остаётся невидимым до начала своего следующего хода."
+    },
+    "origin": "subclass",
+    "origin_value": "",
+    "kind": "static",
+    "conditions": { "level": 14 },
+    "info": { "static_spells": {} }
+  },
+  {
+    "slug": "blessing_of_moonlight",
+    "title": { "en": "Blessing of Moonlight", "ru": "Сияние полнолуния" },
+    "description": {
+      "en": "When you use **Lunar Vitality**, you can roll 1d6 and use the number rolled in place of expending a **Bardic Inspiration** die.",
+      "ru": "Когда вы используете **Жизненную силу луны**, вы можете бросить 1к6 и использовать выпавшее число вместо траты кости бардовского вдохновения."
+    },
+    "origin": "subclass",
+    "origin_value": "",
+    "kind": "static",
+    "conditions": { "level": 14 },
+    "info": { "static_spells": {} }
+  }
+]

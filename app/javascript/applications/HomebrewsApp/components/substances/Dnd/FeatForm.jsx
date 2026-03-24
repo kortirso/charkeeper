@@ -179,7 +179,8 @@ export const DndFeatForm = (props) => {
           ...props.feature,
           title: props.feature.title.en,
           description: props.feature.description.en,
-          static_spells: props.feature.info.static_spells
+          static_spells: props.feature.info.static_spells,
+          level: props.feature.conditions.level
         });
         setFeatureId(props.feature.id)
       });

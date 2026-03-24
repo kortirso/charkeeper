@@ -1,0 +1,80 @@
+[
+  {
+    "slug": "knightly_envoy",
+    "title": { "en": "Knightly Envoy", "ru": "Рыцарский посланник" },
+    "description": {
+      "en": "You can cast the **Comprehend Languages** spell but only as a ritual.\n\nYou learn one language from the language tables. When you finish a Long Rest, you can replace a language learned from this benefit with another language you have heard, seen signed, or read in the past 24 hours.\n\nYou gain proficiency in one of the following skills of your choice: Insight, Intimidation, Persuasion, or Performance.",
+      "ru": "Вы можете сотворить заклинание **Понимание языков**, но только как ритуал.\n\nВы изучаете один язык из таблиц языков. Когда вы завершаете долгий отдых, вы можете заменить язык, изученный благодаря этому преимуществу, на другой язык, который вы слышали, видели в жестовой форме или читали за последние 24 часа.\n\nВы получаете владение одним из следующих навыков на ваш выбор: Проницательность, Запугивание, Убеждение или Выступление."
+    },
+    "origin": "subclass",
+    "origin_value": "",
+    "kind": "static",
+    "conditions": { "level": 3 },
+    "info": { "static_spells": {} }
+  },
+  {
+    "slug": "group_recovery",
+    "title": { "en": "Group Recovery", "ru": "Восстановление группы" },
+    "description": {
+      "en": "When you use your **Second Wind** to regain Hit Points, you can choose a number of allies within a 30-foot emanation originating from yourself, up to a number of allies equal to your charisma modifier (minimum of one). Each of those allies regains Hit Points equal to 1d4 plus your fighter level.",
+      "ru": "Когда вы применяете своё умение **Второе дыхание**, чтобы восстановить хиты, вы можете выбрать любое количество союзников в пределах эманации эманации с радиусом 30 фт., исходящей от вас, в количестве, равном вашему модификатору харизмы (минимум 1). Каждый выбранный союзник восстанавливает количество хитов, равное 1к4 + ваш уровень воина."
+    },
+    "origin": "subclass",
+    "origin_value": "",
+    "kind": "static",
+    "conditions": { "level": 3 },
+    "info": { "static_spells": {} },
+    "description_eval_variables": {
+      "limit": "1"
+    },
+    "limit_refresh": "short_rest"
+  },
+  {
+    "slug": "team_tactics",
+    "title": { "en": "Team Tactics", "ru": "Командная тактика" },
+    "description": {
+      "en": "When you use **Group Recovery**, each chosen ally has advantage on D20 tests until the start of your next turn.",
+      "ru": "Когда вы применяете умение **Восстановление группы**, каждый выбранный союзник получает преимущество на все тесты к20 до начала вашего следующего хода."
+    },
+    "origin": "subclass",
+    "origin_value": "",
+    "kind": "static",
+    "conditions": { "level": 7 }
+  },
+  {
+    "slug": "rallying_surge",
+    "title": { "en": "Rallying Surge", "ru": "Всплеск сплочения" },
+    "description": {
+      "en": " When you use your **Action Surge**, you can choose allies within a 30-foot emanation originating from yourself, up to a number of allies equal to your charisma modifier (minimum of one). Each of those allies can immediately take a reaction to use one of the following options.\n\n- The ally makes one attack with a weapon or an unarmed strike.\n\n- The ally moves up to half its speed without provoking opportunity attack action.",
+      "ru": "Когда вы применяете своё умение **Всплеск действий**, вы можете выбрать любое количество союзников в пределах эманации с радиусом 30 фт., исходящей от вас, в количестве, равном вашему модификатору Харизмы (минимум 1). Каждый выбранный союзник может немедленно совершить реакцией один из следующих вариантов:\n\n- Союзник совершает одну атаку оружием или безоружный удар безоружный удар.\n\n- Союзник перемещается на расстояние, равное половине своей скорости, не вызывая провоцированных атак атак."
+    },
+    "origin": "subclass",
+    "origin_value": "",
+    "kind": "static",
+    "conditions": { "level": 10 }
+  },
+  {
+    "slug": "shared_resilience",
+    "title": { "en": "Shared Resilience", "ru": "Распределённая устойчивость" },
+    "description": {
+      "en": "When an ally you can see within 60 feet of yourself fails a saving throw, you can take a reaction to expend a use of your **Indomitable** feature. The ally can immediately reroll the saving throw with a bonus equal to your fighter level; the ally must use the new roll.",
+      "ru": "Когда союзник, которого вы можете видеть в пределах 60 футов, проваливает спасбросок, вы можете реакцией потратить одно использование вашего умения **Упорный**. Союзник может немедленно перебросить этот спасбросок с бонусом, равным вашему уровню воина, и союзник должен использовать новый результат."
+    },
+    "origin": "subclass",
+    "origin_value": "",
+    "kind": "static",
+    "conditions": { "level": 15 }
+  },
+  {
+    "slug": "inspiring_commander",
+    "title": { "en": "Inspiring Commander", "ru": "Вдохновляющий лидер" },
+    "description": {
+      "en": "- The area of effect for both **Group Recovery** and **Rallying Surge** is now a 60-foot emanation.\n\n- You have immunity to the charmed and frightened conditions.",
+      "ru": "- Область действия способностей **Восстановление группы** и **Вдохновляющий натиск** увеличивается до эманации эманации с радиусом 60 фт.\n\n- Вы получаете иммунитет к состояниям очарованный очарованный и испуганный."
+    },
+    "origin": "subclass",
+    "origin_value": "",
+    "kind": "static",
+    "conditions": { "level": 18 }
+  }
+]

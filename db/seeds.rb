@@ -471,3 +471,24 @@ beautified_json_string = JSON.pretty_generate(data_hash)
 File.open('db/data/pathfinder2/feats/ancestries/orcs.json', 'w') do |file|
   file.write(beautified_json_string)
 end
+
+book = Homebrew::Book.create! name: 'Heroes of Faerun', provider: 'dnd', shared: true, public: true, user: User.first
+[
+  ['Коллегия Луны', 'bard', 'db/data/dnd2024/books/college_of_the_moon.json'],
+  # ['Домен знаний', 'cleric', 'db/data/dnd2024/books/knowledge_domain.json'],
+  ['Знаменосец', 'fighter', 'db/data/dnd2024/books/banneret.json'],
+  # ['Клятва благородных гениев', 'paladin', 'db/data/dnd2024/books/oath_of_the_noble_genies.json'],
+  # ['Зимний странник', 'ranger', 'db/data/dnd2024/books/winter_walker.json'],
+  # ['Наследник Трёх', 'rogue', 'db/data/dnd2024/books/scion_of_the_three.json'],
+  # ['Чародейство чаропламени', 'sorcerer', 'db/data/dnd2024/books/spellfire_sorcery.json'],
+  # ['Певец клинка', 'wizard', 'db/data/dnd2024/books/bladesinger.json'],
+].each do |values|
+  subclass = Dnd2024::Homebrew::Subclass.create name: values[0], class_name: values[1], user: User.first
+  Homebrew::Book::Item.create homebrew_book: book, itemable: subclass
+  file_content = File.read(values[2])
+  feats = JSON.parse(file_content)
+  feats.each do |feat|
+    feat['origin_value'] = subclass.id
+    ::Dnd2024::Feat.create!(feat)
+  end
+end
