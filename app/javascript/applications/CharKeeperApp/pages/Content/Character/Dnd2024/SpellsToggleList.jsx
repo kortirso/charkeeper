@@ -19,7 +19,8 @@ const TRANSLATION = {
     spellNote: 'Spell note',
     static: 'Static',
     save: 'Save',
-    damageUp: '<p>The damage increases by 1 dice when you reach levels 5, 11 and 17.</p>'
+    damageUp: '<p>The damage increases by 1 dice when you reach levels 5, 11 and 17.</p>',
+    noPrepared: 'No prepared spells'
   },
   ru: {
     ritual: 'Р',
@@ -31,7 +32,8 @@ const TRANSLATION = {
     spellNote: 'Заметка о заклинании',
     static: 'Врождённое',
     save: 'Сохранить',
-    damageUp: '<p>Урон увеличивается на 1 кость, когда вы достигаете 5, 11 и 17 уровня.</p>'
+    damageUp: '<p>Урон увеличивается на 1 кость, когда вы достигаете 5, 11 и 17 уровня.</p>',
+    noPrepared: 'Нет подготовленных заклинаний'
   }
 }
 
@@ -105,7 +107,7 @@ export const SpellsToggleList = (props) => {
 
   return (
     <>
-      <div class="mb-2 px-4 py-2">
+      <div class="mb-2 px-4 py-2 mt-4">
         <div class="flex justify-between items-center">
           <h2 class="text-lg dark:text-snow">
             <Show when={props.level !== 0} fallback={localize(TRANSLATION, locale())['cantrips']}>
@@ -128,81 +130,86 @@ export const SpellsToggleList = (props) => {
           </Show>
         </div>
       </div>
-      <For each={props.spells}>
-        {(characterSpell) =>
-          <Toggle
-            disabled
-            onParentClick={() => showInfo(characterSpell.spell)}
-            isOpenByParent={openDescriptions()[characterSpell.spell.id]}
-            containerClassList="mb-1!"
-            title={
-              <div class="dnd2024-spell">
-                <div class="dnd2024-spell-header">
-                  <div class="dnd2024-spell-titlebox">
-                    <p class="dnd2024-spell-title" onClick={(event) => characterSpell.data ? null : changeSpell(event, characterSpell)}>
-                      {characterSpell.spell.title}
-                    </p>
-                    <Show when={characterSpell.spell.ritual}><span>{localize(TRANSLATION, locale()).ritual}</span></Show>
-                    <Show when={characterSpell.spell.concentration}><span class="ml-1">{localize(TRANSLATION, locale()).concentration}</span></Show>
-                  </div>
-                  <div>
-                    <Show when={!characterSpell.data && props.canPrepareSpells}>
-                      <Show
-                        when={characterSpell.ready_to_use}
-                        fallback={
-                          <Button default size="small" onClick={(event) => enableSpell(event, characterSpell.id)}>
-                            <Plus width={20} height={20} />
+      <Show
+        when={props.spells.length > 0}
+        fallback={<p class="dark:text-snow px-4 text-sm">{localize(TRANSLATION, locale()).noPrepared}</p>}
+      >
+        <For each={props.spells}>
+          {(characterSpell) =>
+            <Toggle
+              disabled
+              onParentClick={() => showInfo(characterSpell.spell)}
+              isOpenByParent={openDescriptions()[characterSpell.spell.id]}
+              containerClassList="mb-1!"
+              title={
+                <div class="dnd2024-spell">
+                  <div class="dnd2024-spell-header">
+                    <div class="dnd2024-spell-titlebox">
+                      <p class="dnd2024-spell-title" onClick={(event) => characterSpell.data ? null : changeSpell(event, characterSpell)}>
+                        {characterSpell.spell.title}
+                      </p>
+                      <Show when={characterSpell.spell.ritual}><span>{localize(TRANSLATION, locale()).ritual}</span></Show>
+                      <Show when={characterSpell.spell.concentration}><span class="ml-1">{localize(TRANSLATION, locale()).concentration}</span></Show>
+                    </div>
+                    <div>
+                      <Show when={!props.preparedSpellFilter && !characterSpell.data && props.canPrepareSpells}>
+                        <Show
+                          when={characterSpell.ready_to_use}
+                          fallback={
+                            <Button default size="small" onClick={(event) => enableSpell(event, characterSpell.id)}>
+                              <Plus width={20} height={20} />
+                            </Button>
+                          }
+                        >
+                          <Button default size="small" onClick={(event) => disableSpell(event, characterSpell.id)}>
+                            <Minus width={20} height={20} />
                           </Button>
-                        }
-                      >
-                        <Button default size="small" onClick={(event) => disableSpell(event, characterSpell.id)}>
-                          <Minus width={20} height={20} />
-                        </Button>
+                        </Show>
                       </Show>
-                    </Show>
+                    </div>
                   </div>
-                </div>
-                <Show when={props.activeSpellClass === undefined}>
-                  <p class="text-xs">
-                    {characterSpell.prepared_by ? localize(config.classes[characterSpell.prepared_by]['name'], locale()) : localize(TRANSLATION, locale())['static']}
-                  </p>
-                </Show>
-                <div class="dnd2024-spell-tooltips">
-                  <SpellCastTime value={characterSpell.spell.time} />
-                  <SpellRange value={characterSpell.spell.range} />
-                  <SpellAttack
-                    withDice
-                    title={characterSpell.spell.title}
-                    hit={characterSpell.spell.hit}
-                    dc={characterSpell.spell.dc}
-                    effects={characterSpell.spell.effects}
-                    character={props.character}
-                    activeSpellClass={props.activeSpellClass || characterSpell.prepared_by}
-                    openDiceRoll={props.openDiceRoll}
-                    openAttackRoll={props.openAttackRoll}
-                    alterHit={characterSpell.spell.data?.attack_bonus}
-                    alterDc={characterSpell.spell.data?.save_dc}
-                  />
-                  <SpellEffects
-                    value={characterSpell.spell.effects}
-                    cantripsDamageDice={characterSpell.spell.damage_up ? cantripsDamageDice() : null}
-                  />
-                  <SpellComponents value={characterSpell.spell.components} />
-                  <SpellDuration value={characterSpell.spell.duration} />
-                </div>
+                  <Show when={props.activeSpellClass === undefined}>
+                    <p class="text-xs">
+                      {characterSpell.prepared_by ? localize(config.classes[characterSpell.prepared_by]['name'], locale()) : localize(TRANSLATION, locale())['static']}
+                    </p>
+                  </Show>
+                  <div class="dnd2024-spell-tooltips">
+                    <SpellCastTime value={characterSpell.spell.time} />
+                    <SpellRange value={characterSpell.spell.range} />
+                    <SpellAttack
+                      withDice
+                      title={characterSpell.spell.title}
+                      hit={characterSpell.spell.hit}
+                      dc={characterSpell.spell.dc}
+                      effects={characterSpell.spell.effects}
+                      character={props.character}
+                      activeSpellClass={props.activeSpellClass || characterSpell.prepared_by}
+                      openDiceRoll={props.openDiceRoll}
+                      openAttackRoll={props.openAttackRoll}
+                      alterHit={characterSpell.spell.data?.attack_bonus}
+                      alterDc={characterSpell.spell.data?.save_dc}
+                    />
+                    <SpellEffects
+                      value={characterSpell.spell.effects}
+                      cantripsDamageDice={characterSpell.spell.damage_up ? cantripsDamageDice() : null}
+                    />
+                    <SpellComponents value={characterSpell.spell.components} />
+                    <SpellDuration value={characterSpell.spell.duration} />
+                  </div>
 
-                <Show when={characterSpell.data}><p class="text-xs">{renderSpellData(characterSpell.data)}</p></Show>
-                <Show when={characterSpell.notes}><p class="text-xs mt-2">{characterSpell.notes}</p></Show>
-              </div>
-            }
-          >
-            <p
-              class="feat-markdown"
-              innerHTML={descriptions()[characterSpell.spell.id]} // eslint-disable-line solid/no-innerhtml
-            />
-          </Toggle>
-        }
-      </For>
+                  <Show when={characterSpell.data}><p class="text-xs">{renderSpellData(characterSpell.data)}</p></Show>
+                  <Show when={characterSpell.notes}><p class="text-xs mt-2">{characterSpell.notes}</p></Show>
+                </div>
+              }
+            >
+              <p
+                class="feat-markdown"
+                innerHTML={descriptions()[characterSpell.spell.id]} // eslint-disable-line solid/no-innerhtml
+              />
+            </Toggle>
+          }
+        </For>
+      </Show>
       <Modal>
         <Show when={changingSpell()}>
           <p class="flex-1 text-xl text-left dark:text-snow mb-2">{changingSpell().name}</p>

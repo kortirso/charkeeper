@@ -14,6 +14,7 @@ const TRANSLATION = {
   en: {
     add: 'Add book',
     items: 'Items',
+    spells: 'Spells',
     classes: 'Classes',
     enabled: 'Enabled',
     disabled: 'Disabled',
@@ -27,6 +28,7 @@ const TRANSLATION = {
   ru: {
     add: 'Добавить книгу',
     items: 'Предметы',
+    spells: 'Заклинания',
     classes: 'Классы',
     enabled: 'Подключено',
     disabled: 'Отключено',
@@ -156,7 +158,7 @@ export const DndBooks = () => {
                   <p class="font-medium!">{TRANSLATION[locale()].official}</p>
                 </Show>
               </div>
-              <For each={['items', 'classes']}>
+              <For each={['items', 'classes', 'spells']}>
                 {(kind) =>
                   <Show
                     when={kind !== 'classes'}

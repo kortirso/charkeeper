@@ -492,3 +492,29 @@ book = Homebrew::Book.create! name: 'Heroes of Faerun', provider: 'dnd', shared:
     ::Dnd2024::Feat.create!(feat)
   end
 end
+
+file_content = File.read('db/data/dnd2024/spells_v2.json')
+spells = JSON.parse(file_content)
+spells.each do |spell|
+  feat = ::Dnd2024::Feat.where(origin: 6).find_by(slug: spell['slug'])
+  next unless feat
+
+  feat.update(title: spell['title'])
+end
+
+user = User.first
+book = Homebrew::Book.create! name: "Player's Handbook", provider: 'dnd', shared: true, public: true, user: user
+slugs = %w[
+  aura_of_vitality aura_of_purity armor_of_agathys tasha_bubbling_cauldron swift_quiver witch_bolt yolande_regal_presence
+  destructive_wave arcane_vigor arcane_gate compelled_duel hunger_of_hadar hail_of_thorns thunderous_smite friends
+  beast_sense toll_the_dead banishing_smite crown_of_madness circle_of_power fount_of_moonlight word_of_radiance
+  blade_ward cloud_of_daggers cordon_of_arrows staggering_smite crusader_mantle conjure_barrage summon_aberration summon_fiend
+  summon_beast summon_construct summon_celestial summon_undead summon_fey summon_elemental conjure_volley mind_sliver
+  arms_of_hadar synaptic_static jallarzi_storm_of_radiance blinding_smite power_word_fortify elemental_weapon lightning_arrow
+  telepathy thorn_whip thunderclap steel_wind_strike feign_death grasping_vine wrathful_smite
+]
+phb_spells = ::Dnd2024::Feat.where(origin: 6, slug: slugs)
+phb_spells.each do |spell|
+  spell.update user: user
+  Homebrew::Book::Item.create homebrew_book: book, itemable: spell
+end

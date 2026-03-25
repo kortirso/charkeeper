@@ -1,0 +1,142 @@
+[
+  {
+    "slug": "otto_irresistible_dance",
+    "title": {
+      "en": "Irresistible Dance",
+      "ru": "Безудержная пляска"
+    }
+  },
+  {
+    "slug": "tasha_hideous_laughter",
+    "title": {
+      "en": "Tasha's Hideous Laughter",
+      "ru": "Безудержный смех"
+    }
+  },
+  {
+    "slug": "mordenkainen_magnificent_mansion",
+    "title": {
+      "en": "Magnificent Mansion",
+      "ru": "Великолепный особняк"
+    }
+  },
+  {
+    "slug": "mordenkainen_faithful_hound",
+    "title": {
+      "en": "Faithful Hound",
+      "ru": "Верный пёс"
+    }
+  },
+  {
+    "slug": "melf_acid_arrow",
+    "title": {
+      "en": "Acid Arrow",
+      "ru": "Кислотная стрела"
+    }
+  },
+  {
+    "slug": "mordenkainen_private_sanctum",
+    "title": {
+      "en": "Private Sanctum",
+      "ru": "Личное убежище"
+    }
+  },
+  {
+    "slug": "nystul_magic_aura",
+    "title": {
+      "en": "Magic Aura",
+      "ru": "Магическая аура заклинателя"
+    }
+  },
+  {
+    "slug": "drawmij_instant_summons",
+    "title": {
+      "en": "Instant Summons",
+      "ru": "Мгновенные призывы"
+    }
+  },
+  {
+    "slug": "mordenkainen_sword",
+    "title": {
+      "en": "Sword",
+      "ru": "Волшебный меч"
+    }
+  },
+  {
+    "slug": "otiluke_freezing_sphere",
+    "title": {
+      "en": "Freezing Sphere",
+      "ru": "Ледяной шар"
+    }
+  },
+  {
+    "slug": "tenser_floating_disk",
+    "title": {
+      "en": "Floating Disk",
+      "ru": "Парящий диск"
+    }
+  },
+  {
+    "slug": "bigby_hand",
+    "title": {
+      "en": "Hand",
+      "ru": "Рука архимага"
+    }
+  },
+  {
+    "slug": "otiluke_resilient_sphere",
+    "title": {
+      "en": "Resilient Sphere",
+      "ru": "Упругий шар"
+    }
+  },
+  {
+    "slug": "leomund_secret_chest",
+    "title": {
+      "en": "Secret Chest",
+      "ru": "Потайной сундук"
+    }
+  },
+  {
+    "slug": "rary_telepathic_bond",
+    "title": {
+      "en": "Telepathic Bond",
+      "ru": "Ментальная связь"
+    }
+  },
+  {
+    "slug": "leomund_tiny_hut",
+    "title": {
+      "en": "Tiny Hut",
+      "ru": "Хижина архимага"
+    }
+  },
+  {
+    "slug": "evard_black_tentacles",
+    "title": {
+      "en": "Black Tentacles",
+      "ru": "Чёрные щупальца"
+    }
+  },
+  {
+    "slug": "yolande_regal_presence",
+    "title": {
+      "en": "Regal Presence",
+      "ru": "Величественное присутствие"
+    }
+  },
+  {
+    "slug": "tasha_bubbling_cauldron",
+    "title": {
+      "en": "Bubbling Cauldron",
+      "ru": "Бурлящий котёл"
+    }
+  },
+  {
+    "slug": "jallarzi_storm_of_radiance",
+    "title": {
+      "en": "Storm of Radiance",
+      "ru": "Сияющий шторм"
+    }
+  }
+]
