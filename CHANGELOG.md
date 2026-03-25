@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Added
 - loot tables for DH characters
 - homebrew spells for D&D characters
+- uploading avatar for companion of DH characters
 
 ### Modified
 - disable update for custom items

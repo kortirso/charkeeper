@@ -2,9 +2,9 @@ import { createSignal, createEffect, Show, batch, For } from 'solid-js';
 import * as i18n from '@solid-primitives/i18n';
 
 import { DaggerheartExperience } from '../../../../pages';
-import { ErrorWrapper, Input, Button, EditWrapper, Checkbox, GuideWrapper } from '../../../../components';
+import { ErrorWrapper, Input, Button, EditWrapper, Checkbox, GuideWrapper, AvatarInput } from '../../../../components';
 import { useAppState, useAppLocale, useAppAlert } from '../../../../context';
-import { Minus, Plus } from '../../../../assets';
+import { Minus, Plus, Avatar } from '../../../../assets';
 import { fetchCompanionRequest } from '../../../../requests/fetchCompanionRequest';
 import { createCompanionRequest } from '../../../../requests/createCompanionRequest';
 import { updateCompanionRequest } from '../../../../requests/updateCompanionRequest';
@@ -146,6 +146,7 @@ export const DaggerheartCompanion = (props) => {
 
   const [companion, setCompanion] = createSignal(undefined);
   const [name, setName] = createSignal('');
+  const [selectedFile, setSelectedFile] = createSignal(null);
 
   const [editNameMode, setEditNameMode] = createSignal(false);
   const [editDamageMode, setEditDamageMode] = createSignal(false);
@@ -258,9 +259,18 @@ export const DaggerheartCompanion = (props) => {
     props.onReloadCharacter();
   }
 
-  const updateCompanion = async (payload, callback = null) => {
+  const changeCompanion = () => {
+    const formData = new FormData();
+    if (companion().name !== name()) formData.append('name', nameData());
+    if (selectedFile()) formData.append('file', selectedFile());
+
+    updateCompanion(formData, setEditNameMode, true);
+  }
+
+  const updateCompanion = async (payload, callback = null, asFormData = false) => {
+    const resultPayload = asFormData ? payload : { companion: payload };
     const result = await updateCompanionRequest(
-      appState.accessToken, character().provider, character().id, { companion: payload }
+      appState.accessToken, character().provider, character().id, resultPayload, asFormData
     );
 
     if (result.errors_list === undefined) {
@@ -278,48 +288,56 @@ export const DaggerheartCompanion = (props) => {
           when={companion()}
           fallback={
             <>
-              <Input
-                containerClassList="mb-4"
-                labelText={localize(TRANSLATION, locale()).name}
-                value={name()}
-                onInput={setName}
-              />
+              <Input containerClassList="mb-4" labelText={localize(TRANSLATION, locale()).name} value={name()} onInput={setName} />
               <Button default onClick={createCompanion}>{t('create')}</Button>
             </>
           }
         >
-          <div class="flex flex-col emd:flex-row gap-4">
+          <div class="flex flex-col emd:flex-row gap-x-4 gap-y-2">
             <div class="flex-1">
               <EditWrapper
                 editMode={editNameMode()}
                 onSetEditMode={setEditNameMode}
                 onCancelEditing={cancelNameEditing}
-                onSaveChanges={() => updateCompanion({ name: nameData() }, setEditNameMode)}
+                onSaveChanges={changeCompanion}
               >
-                <div class="p-4 blockable">
-                  <Show when={editNameMode()} fallback={<p class="text-xl">{companion().name}</p>}>
+                <div class="py-4 px-2 md:px-4 blockable">
+                  <Show
+                    when={editNameMode()}
+                    fallback={
+                      <>
+                        <div class="flex">
+                          <div class="avatar-block">
+                            <Show when={companion().avatar} fallback={<Avatar width={64} height={64} />}>
+                              <img src={companion().avatar} class="avatar" />
+                            </Show>
+                          </div>
+                          <p class="text-xl">{companion().name}</p>
+                        </div>
+                        <p class="text-sm/4 uppercase mb-1">{t('daggerheart.health.stress')}</p>
+                        <div class="flex">
+                          <For each={Array.from([...Array(companion().stress_max).keys()], (x) => x + 1)}>
+                            {(index) =>
+                              <Checkbox
+                                filled
+                                checked={companion().stress_marked >= index}
+                                classList="mr-1"
+                                onToggle={() => updateStress(index)}
+                              />
+                            }
+                          </For>
+                        </div>
+                      </>
+                    }
+                  >
                     <Input
-                      containerClassList="mb-4"
+                      containerClassList="mb-2"
                       labelText={localize(TRANSLATION, locale()).name}
                       value={nameData()}
                       onInput={setNameData}
                     />
+                    <AvatarInput onSelectedFile={setSelectedFile} />
                   </Show>
-                  <div class="mt-4">
-                    <p class="text-sm/4 uppercase mb-1">{t('daggerheart.health.stress')}</p>
-                    <div class="flex">
-                      <For each={Array.from([...Array(companion().stress_max).keys()], (x) => x + 1)}>
-                        {(index) =>
-                          <Checkbox
-                            filled
-                            checked={companion().stress_marked >= index}
-                            classList="mr-1"
-                            onToggle={() => updateStress(index)}
-                          />
-                        }
-                      </For>
-                    </div>
-                  </div>
                 </div>
               </EditWrapper>
               <EditWrapper
@@ -328,7 +346,7 @@ export const DaggerheartCompanion = (props) => {
                 onCancelEditing={cancelDamageEditing}
                 onSaveChanges={() => updateCompanion({ damage: damageData(), distance: distanceData() }, setEditDamageMode)}
               >
-                <div class="blockable p-4 mt-4">
+                <div class="blockable py-4 px-2 md:px-4 mt-4">
                   <div class="grid grid-cols-3 gap-2">
                     <div>
                       <p class="text-sm uppercase text-center mb-4">{localize(TRANSLATION, locale()).evasion}</p>
@@ -368,7 +386,7 @@ export const DaggerheartCompanion = (props) => {
               </div>
             </div>
             <div class="flex-1">
-              <div class="p-4 blockable">
+              <div class="py-4 px-2 md:px-4 blockable">
                 <h2 class="text-lg mb-2">{localize(TRANSLATION, locale()).training}</h2>
                 <p class="text-sm mb-4">{localize(TRANSLATION, locale()).availableTraining} - {character().level - 1}</p>
                 <For

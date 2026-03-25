@@ -3,8 +3,10 @@
 module Daggerheart
   module Characters
     class CompanionSerializer < ApplicationSerializer
+      include Deps[cache: 'cache.avatars']
+
       attributes :id, :name, :caption, :evasion, :stress_marked, :stress_max, :character_id, :damage, :distance, :experience,
-                 :leveling
+                 :leveling, :avatar
 
       delegate :stress_marked, :damage, :distance, :experience, :leveling, to: :data
       delegate :data, to: :object
@@ -15,6 +17,10 @@ module Daggerheart
 
       def stress_max
         data.stress_max + data.leveling['resilient'].to_i
+      end
+
+      def avatar
+        cache.fetch_item(id: object.id)
       end
     end
   end

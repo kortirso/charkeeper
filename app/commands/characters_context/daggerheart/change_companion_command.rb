@@ -4,7 +4,8 @@ module CharactersContext
   module Daggerheart
     class ChangeCompanionCommand < BaseCommand
       include Deps[
-        refresh_feats: 'services.characters_context.daggerheart.refresh_feats'
+        refresh_feats: 'services.characters_context.daggerheart.refresh_feats',
+        cache: 'cache.avatars'
       ]
 
       # rubocop: disable Metrics/BlockLength
@@ -36,6 +37,7 @@ module CharactersContext
           optional(:damage).filled(Damages)
           optional(:distance).filled(Distances)
           optional(:caption).filled(:string, max_size?: 100)
+          optional(:file)
         end
       end
       # rubocop: enable Metrics/BlockLength
@@ -43,7 +45,7 @@ module CharactersContext
       private
 
       def do_prepare(input)
-        input[:data_attributes] = input.except(:companion, :name, :caption).stringify_keys
+        input[:data_attributes] = input.except(:companion, :name, :caption, :file).stringify_keys
         input[:attributes] = input.slice(:name, :caption)
       end
 
@@ -53,8 +55,17 @@ module CharactersContext
         input[:companion].save!
 
         refresh_feats.call(character: input[:companion].character)
+        upload_avatar(input)
 
         { result: input[:companion] }
+      end
+
+      def upload_avatar(input)
+        return unless input[:file]
+
+        input[:companion].avatar.attach(input[:file])
+        cache.push_item(item: input[:companion].avatar)
+      rescue StandardError => _e
       end
     end
   end
