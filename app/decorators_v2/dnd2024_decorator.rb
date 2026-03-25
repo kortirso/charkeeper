@@ -86,7 +86,7 @@ class Dnd2024Decorator < ApplicationDecoratorV2
     @result['initiative'] = modifiers['dex']
     @result['armor_class'] = beastform.blank? ? find_armor_class : beast_config['ac']
     @result['save_dc'] =
-      beastform.blank? ? modifiers : modifiers.merge(beast_config['saves']) { |_key, oldval, newval| [newval, oldval].max }
+      beastform.blank? ? modifiers.clone : modifiers.merge(beast_config['saves']) { |_key, oldval, newval| [newval, oldval].max }
   end
 
   def apply_set_modifiers # rubocop: disable Metrics/AbcSize, Metrics/PerceivedComplexity, Metrics/CyclomaticComplexity

@@ -477,7 +477,7 @@ book = Homebrew::Book.create! name: 'Heroes of Faerun', provider: 'dnd', shared:
   ['Коллегия Луны', 'bard', 'db/data/dnd2024/books/college_of_the_moon.json'],
   # ['Домен знаний', 'cleric', 'db/data/dnd2024/books/knowledge_domain.json'],
   ['Знаменосец', 'fighter', 'db/data/dnd2024/books/banneret.json'],
-  # ['Клятва благородных гениев', 'paladin', 'db/data/dnd2024/books/oath_of_the_noble_genies.json'],
+  ['Клятва благородных гениев', 'paladin', 'db/data/dnd2024/books/oath_of_the_noble_genies.json'],
   # ['Зимний странник', 'ranger', 'db/data/dnd2024/books/winter_walker.json'],
   # ['Наследник Трёх', 'rogue', 'db/data/dnd2024/books/scion_of_the_three.json'],
   # ['Чародейство чаропламени', 'sorcerer', 'db/data/dnd2024/books/spellfire_sorcery.json'],

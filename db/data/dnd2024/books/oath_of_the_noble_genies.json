@@ -1,0 +1,132 @@
+[
+  {
+    "slug": "elemental_smite",
+    "title": { "en": "Elemental Smite", "ru": "Стихийная кара" },
+    "description": {
+      "en": "Immediately after you cast **Divine Smite**, you can expend one use of your **Channel Divinity** and invoke one of the following effects.\n\n- Earth rises up around the target of your **Divine Smite**. The target has the grappled condition (escape DC equal to your spell save DC). While grappled, the target has the restrained condition.\n\n- You teleport to an unoccupied space you can see within 30 feet of yourself and take on a semi-incorporeal form, which lasts until the end of your next turn. While in this form, you have resistance to bludgeoning, piercing, and slashing damage, and you have immunity to the grappled, prone, and restrained conditions.\n\n- The target of your **Divine Smite** takes an extra 2d4 fire damage, and fire jumps from the target to another creature you can see within 30 feet of yourself. The second creature also takes 2d4 fire damage.\n\n- The target of your **Divine Smite** and each creature of your choice in a 10-foot emanation originating from you make a strength saving throw against your spell save DC. On a failed save, a creature is pushed 15 feet straight away from you and has the prone condition.",
+      "ru": "Сразу после того, как вы накладываете заклинание **Божественная кара**, вы можете потратить одно применение своего **Божественного канала** и получить один из следующих эффектов:\n\n- Земля поднимается вокруг цели вашего заклинания **Божественная кара**. Цель получает состояние схваченный схваченный (УС спасброска для освобождения равна вашей Сл. спасброска заклинаний). Пока цель схвачена схвачена, она также опутана опутана.\n\n- Вы телепортируетесь в незанятое и видимое пространство в пределах 30 фт. и принимаете призрачную форму до конца вашего следующего хода. В этой форме вы имеете сопротивление к дробящему, колющему и рубящему урону и иммунитет к состояниям схваченный схваченный, лежащий ничком лежащий ничком и опутанный опутанный.\n\n- Цель вашего заклинания **Божественная кара** получает дополнительно 2к4 урона огнём, после чего пламя перепрыгивает на другое видимое вами существо в пределах 30 фт. Это второе существо также получает 2к4 урона огнём.\n\n- Цель вашего заклинания **Божественная кара** и все выбранные вами существа в пределах эманации с радиусом 10 фт., исходящей от вас, совершают спасбросок силы против вашей Сл. спасброска заклинаний. При провале существо отталкивается на 15 фт. от вас и ложится ничком."
+    },
+    "origin": "subclass",
+    "origin_value": "",
+    "kind": "static",
+    "conditions": { "level": 3 },
+    "info": { "static_spells": {} }
+  },
+  {
+    "slug": "genie_spells_3",
+    "title": { "en": "Genie Spells", "ru": "Заклинания гениев" },
+    "description": { "en": "", "ru": "" },
+    "origin": "subclass",
+    "origin_value": "",
+    "kind": "hidden",
+    "conditions": { "level": 3 },
+    "info": { "static_spells": { "chromatic_orb": { "modifier": "cha" }, "elementalism": { "modifier": "cha" }, "thunderous_smite": { "modifier": "cha" } } }
+  },
+  {
+    "slug": "genie_spells_5",
+    "title": { "en": "Genie Spells", "ru": "Заклинания гениев" },
+    "description": { "en": "", "ru": "" },
+    "origin": "subclass",
+    "origin_value": "",
+    "kind": "hidden",
+    "conditions": { "level": 5 },
+    "info": { "static_spells": { "mirror_image": { "modifier": "cha" }, "phantasmal_force": { "modifier": "cha" } } }
+  },
+  {
+    "slug": "genie_spells_9",
+    "title": { "en": "Genie Spells", "ru": "Заклинания гениев" },
+    "description": { "en": "", "ru": "" },
+    "origin": "subclass",
+    "origin_value": "",
+    "kind": "hidden",
+    "conditions": { "level": 9 },
+    "info": { "static_spells": { "fly": { "modifier": "cha" }, "gaseous_form": { "modifier": "cha" } } }
+  },
+  {
+    "slug": "genie_spells_13",
+    "title": { "en": "Genie Spells", "ru": "Заклинания гениев" },
+    "description": { "en": "", "ru": "" },
+    "origin": "subclass",
+    "origin_value": "",
+    "kind": "hidden",
+    "conditions": { "level": 13 },
+    "info": { "static_spells": { "conjure_minor_elementals": { "modifier": "cha" }, "summon_elemental": { "modifier": "cha" } } }
+  },
+  {
+    "slug": "genie_spells_17",
+    "title": { "en": "Genie Spells", "ru": "Заклинания гениев" },
+    "description": { "en": "", "ru": "" },
+    "origin": "subclass",
+    "origin_value": "",
+    "kind": "hidden",
+    "conditions": { "level": 17 },
+    "info": { "static_spells": { "banishing_smite": { "modifier": "cha" }, "contact_other_plane": { "modifier": "cha" } } }
+  },
+  {
+    "slug": "genie_splendor",
+    "title": { "en": "Genie's Splendor", "ru": "Величие гения" },
+    "description": {
+      "en": "When you aren't wearing any armor, your base Armor Class equals 10 plus your dexterity and charisma modifiers. You can use a shield and still gain this benefit.\n\nYou also gain proficiency in one of the following skills of your choice: Acrobatics, Intimidation, Performance, or Persuasion.",
+      "ru": "Когда вы не носите доспехов, ваш базовый КД равен 10 + ваш модификатор ловкости + ваш модификатор харизмы. Вы можете использовать щит и всё ещё получать этот эффект.\n\nКроме того, вы получаете владение одним из следующих навыков на ваш выбор: акробатика, запугивание, выступление или убеждение."
+    },
+    "origin": "subclass",
+    "origin_value": "",
+    "kind": "update_result",
+    "conditions": { "level": 3 },
+    "info": { "static_spells": {} },
+    "modifiers": {
+      "armor_class": { "type": "set", "value": "if (no_body_armor, MAX(armor_class, 10 + dex + cha), armor_class)" }
+    }
+  },
+  {
+    "slug": "aura_of_elemental_shielding",
+    "title": { "en": "Aura of Elemental Shielding", "ru": "Аура стихийной защиты" },
+    "description": {
+      "en": "Choose one of the following damage types: Acid, Cold, Fire, Lightning, or Thunder. You and your allies have resistance to that damage type while in your **Aura of Protection**.\n\nAt the start of each of your turns, you can change the damage type affected by this feature to one of the other listed options (no action required).",
+      "ru": "Выберите один из следующих типов урона: кислотный, холодный, огненный, электрический или звуковой. Вы и ваши союзники получаете сопротивление к этому типу урона, пока находятся в пределах вашей **Ауры защиты**.\n\nВ начале каждого вашего хода вы можете изменить тип урона, на который влияет это умение, выбрав один из других вариантов (действие не требуется)."
+    },
+    "origin": "subclass",
+    "origin_value": "",
+    "kind": "static",
+    "conditions": { "level": 7 },
+    "info": { "static_spells": {} }
+  },
+  {
+    "slug": "elemental_rebuke",
+    "title": { "en": "Elemental Rebuke", "ru": "Возмездие стихий" },
+    "description": {
+      "en": "When you are hit by an attack roll, you can take a reaction to halve the attack's damage against yourself (round down) and force the attacker to make a dexterity saving throw against your spell save DC. On a failed save, the attacker takes damage equal to 2d10 plus your charisma modifier of one of the following types (your choice): Acid, Cold, Fire, Lightning, or Thunder. On a successful save, the attacker takes half as much damage.",
+      "ru": "Когда по вам попадают броском атаки, вы можете реакцией уменьшить получаемый урон от этой атаки вдвое (округляя в меньшую сторону) и заставить нападающего совершить спасбросок Ловкости против вашей Сл. спасброска заклинаний.\n\nПри провале спасброска нападающий получает 2к10 + ваш модификатор Харизмы урона, выбранного вами типа: кислотный, холодный, огненный, электрический или звуковой. При успешном спасброске нападающий получает половину этого урона."
+    },
+    "origin": "subclass",
+    "origin_value": "",
+    "kind": "static",
+    "conditions": { "level": 15 },
+    "info": { "static_spells": {} },
+    "description_eval_variables": {
+      "limit": "[1, modifiers['cha']].max"
+    },
+    "limit_refresh": "long_rest"
+  },
+  {
+    "slug": "noble_scion",
+    "title": { "en": "Noble Scion", "ru": "Благородный наследник" },
+    "description": {
+      "en": "As a Bonus Action, you gain the benefits below for 10 minutes or until you end them (no action required). You can also restore your use of it by expending a level 5 spell slot (no action required).\n\n- You have a fly speed of 60 feet and can hover.\n\n- When you or an ally in your **Aura of Protection** fails a D20 test, you can take a reaction to make you or that ally succeed instead.",
+      "ru": "Бонусным действием вы получаете описанные ниже эффекты на 10 минут или пока не прекратите их (действие не требуется). Вы также можете восстановить применение этого умения, потратив ячейку заклинания 5 уровня (действие не требуется).\n\n- Вы получаете скорость полёта 60 фт. и можете парить парить в воздухе.\n\n- Когда вы или союзник в пределах вашей **Ауры защиты** проваливает тест к20, вы можете реакцией сделать проверку успешной вместо провала."
+    },
+    "origin": "subclass",
+    "origin_value": "",
+    "kind": "static",
+    "conditions": { "level": 20 },
+    "info": { "static_spells": {} },
+    "description_eval_variables": {
+      "limit": "1"
+    },
+    "limit_refresh": "long_rest",
+    "continious": true,
+    "modifiers": {
+      "speeds.fly": { "type": "set", "value": 60 }
+    }
+  }
+]

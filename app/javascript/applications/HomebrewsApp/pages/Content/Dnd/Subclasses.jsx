@@ -77,17 +77,21 @@ export const DndSubclasses = () => {
   const { Modal, openModal, closeModal } = createModal();
 
   const fetchSubclasses = async () => await fetchSubclassesRequest(appState.accessToken, 'dnd');
-  const fetchSpells = async () => await fetchSpellsRequest(appState.accessToken, 'dnd2024');
+  const fetchSpells = async (homebrew) => await fetchSpellsRequest(
+    appState.accessToken,
+    'dnd2024',
+    Object.fromEntries(Object.entries({ homebrew: homebrew, version: '0.4.17' }).filter(([, value]) => value))
+  );
 
   createEffect(() => {
     const fetchBooks = async () => await fetchBooksRequest(appState.accessToken, 'dnd');
 
-    Promise.all([fetchSubclasses(), fetchBooks(), fetchSpells()]).then(
-      ([subclassesData, booksData, spellsData]) => {
+    Promise.all([fetchSubclasses(), fetchBooks(), fetchSpells(), fetchSpells(true)]).then(
+      ([subclassesData, booksData, spellsData, homebrewSpellsData]) => {
         batch(() => {
           setBooks(booksData.books.filter((item) => item.own));
           setSubclasses(subclassesData.subclasses);
-          setSpells(Object.fromEntries(spellsData.spells.map((item) => [item.slug, item.title])));
+          setSpells(Object.fromEntries(spellsData.spells.concat(homebrewSpellsData.spells).map((item) => [item.slug, item.title])));
         });
       }
     );
