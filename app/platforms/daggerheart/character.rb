@@ -50,6 +50,7 @@ module Daggerheart
     attribute :guide_step, :integer # этап помощи при создании персонажа
     attribute :conditions, array: true, default: []
     attribute :scars, array: true, default: []
+    attribute :rally_dice, :integer
   end
 
   class Character < Character
