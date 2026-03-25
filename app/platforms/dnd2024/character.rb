@@ -173,6 +173,8 @@ module Dnd2024
     end
 
     def subclass_name(class_slug, subclass_slug)
+      return unless subclass_slug
+
       default = ::Dnd2024::Character.subclass_info(class_slug, subclass_slug)
       return translate(default['name']) if default
 

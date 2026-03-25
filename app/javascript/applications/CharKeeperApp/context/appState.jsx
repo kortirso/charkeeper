@@ -7,6 +7,7 @@ const AppStateContext = createContext();
 
 const CHARKEEPER_ACCESS_TOKEN = 'CharKeeperAccessToken';
 const COLOR_SCHEMA = 'ColorSchema';
+const SHOW_NAVIGATION = 'ShowNavigation';
 
 export const AppStateProvider = (props) => {
   const [appState, setAppState] = createStore({
@@ -22,7 +23,8 @@ export const AppStateProvider = (props) => {
     oauthLinks: props.oauthLinks, // eslint-disable-line solid/reactivity
     oauthCredentials: props.oauthCredentials, // eslint-disable-line solid/reactivity
     initialized: false,
-    rootHost: props.host || 'charkeeper.org' // eslint-disable-line solid/reactivity
+    rootHost: props.host || 'charkeeper.org', // eslint-disable-line solid/reactivity
+    showNavigation: 'show'
   });
 
   const setStatusBarColor = async (value) => await window.__TAURI__.core.invoke('plugin:m3|bar_color', { color: value });
@@ -43,6 +45,11 @@ export const AppStateProvider = (props) => {
     }
 
     setAppState({ ...appState, accessToken: stateValue, initialized: true });
+  });
+
+  createEffect(async () => {
+    const showNavigationValue = await readFromCache(SHOW_NAVIGATION);
+    setAppState({ ...appState, showNavigation: showNavigationValue || 'show' });
   });
 
   createEffect(() => {
@@ -74,6 +81,7 @@ export const AppStateProvider = (props) => {
     {
       changeUserInfo(payload) {
         if (payload.colorSchema) writeToCache(COLOR_SCHEMA, payload.colorSchema);
+        if (payload.showNavigation) writeToCache(SHOW_NAVIGATION, payload.showNavigation);
         setAppState({ ...appState, ...payload });
       },
       setAccessToken(value) {

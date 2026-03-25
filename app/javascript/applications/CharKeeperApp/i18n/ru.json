@@ -174,9 +174,7 @@
     "title": "Персонажи",
     "level": "Уровень",
     "new": "Добавить нового персонажа",
-    "onCopyCharacter": "Поделиться",
-    "download": "Скачать",
-    "sharePdf": "Поделиться PDF ссылкой"
+    "onCopyCharacter": "Поделиться"
   },
   "newCharacterPage": {
     "title": "Создание персонажа",
