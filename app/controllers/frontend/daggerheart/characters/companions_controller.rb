@@ -55,7 +55,7 @@ module Frontend
         end
 
         def companion_params
-          params.require(:companion).permit!.to_h
+          params[:companion] ? params.require(:companion).permit!.to_h : params.permit!.to_h
         end
       end
     end

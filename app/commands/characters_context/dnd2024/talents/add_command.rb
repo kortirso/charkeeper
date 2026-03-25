@@ -22,7 +22,6 @@ module CharactersContext
             selected_talents.key?(feat_id) ? selected_talents[feat_id] += 1 : selected_talents[feat_id] = 1
             input[:character].data.selected_talents = selected_talents
             input[:character].data.selected_additional_talents += 1 if input[:additional]
-            input[:character].data.selected_feats = []
 
             input[:character].feats.create_with(ready_to_use: true).find_or_create_by(feat_id: feat_id)
             input[:talent].info['rewrite']&.each { |key, value| input[:character].data[key] = value }
