@@ -72,6 +72,7 @@ module CharactersContext
           end
           optional(:heritage_name).filled(:string, max_size?: 50)
           optional(:community).filled(:string)
+          optional(:rally_dice).maybe(:integer)
         end
 
         rule(:avatar_file, :avatar_url, :file).validate(:check_only_one_present)

@@ -104,23 +104,23 @@ export const DaggerheartLootTable = (props) => {
     <ErrorWrapper payload={{ key: 'DaggerheartLootTable' }}>
       <div class="blockable px-2 py-4 md:px-4 mt-2">
         <h2 class="equipment-title">{localize(TRANSLATION, locale()).title}</h2>
-        <div class="flex items-center gap-x-2">
+        <div class="grid grid-cols-5 gap-x-2">
           <Select
-            containerClassList="flex-1"
+            containerClassList="col-span-2"
             labelText={localize(TRANSLATION, locale()).typeLabel}
             items={localize(TRANSLATION, locale()).types}
             selectedValue={type()}
             onSelect={setType}
           />
           <Select
-            containerClassList="flex-1"
+            containerClassList="col-span-2"
             labelText={localize(TRANSLATION, locale()).rarityLabel}
             items={localize(TRANSLATION, locale()).rarities}
             selectedValue={rarity()}
             onSelect={changeRarity}
           />
           <Select
-            containerClassList="flex-1"
+            containerClassList="col-span-1"
             labelText={localize(TRANSLATION, locale()).dicesLabel}
             items={RARITY_DICES[rarity()]}
             selectedValue={dices()}

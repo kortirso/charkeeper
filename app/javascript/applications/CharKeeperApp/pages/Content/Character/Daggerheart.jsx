@@ -145,7 +145,7 @@ export const Daggerheart = (props) => {
               </div>
             </Match>
             <Match when={activeMobileTab() === 'combat'}>
-              <DaggerheartStatic character={character()} />
+              <DaggerheartStatic character={character()} onReplaceCharacter={props.onReplaceCharacter} />
               <div class="mt-4">
                 <DaggerheartHealth character={character()} onReplaceCharacter={props.onReplaceCharacter} />
               </div>
@@ -273,7 +273,7 @@ export const Daggerheart = (props) => {
           />
         </div>
         <div class="mt-4">
-          <DaggerheartStatic character={character()} />
+          <DaggerheartStatic character={character()} onReplaceCharacter={props.onReplaceCharacter} />
         </div>
         <div class="mt-4">
           <DaggerheartExperience
