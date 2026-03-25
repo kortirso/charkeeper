@@ -156,5 +156,29 @@ module Dnd2024
     def decorator(simple: false, version: nil)
       Dnd2024Decorator.new.call(character: self, simple: simple, exclude_feature_origins: [6], version: version)
     end
+
+    def subclass_names
+      data.subclasses.each_with_object({}) do |(class_slug, subclass_slug), acc|
+        acc[class_name(class_slug)] = { level: data.classes[class_slug], subclass: subclass_name(class_slug, subclass_slug) }
+      end
+    end
+
+    private
+
+    def class_name(class_slug)
+      default = ::Dnd2024::Character.class_info(class_slug)
+      return translate(default['name']) if default
+
+      translate(dnd_names.fetch_item(key: :classes, id: class_slug)[:name])
+    end
+
+    def subclass_name(class_slug, subclass_slug)
+      default = ::Dnd2024::Character.subclass_info(class_slug, subclass_slug)
+      return translate(default['name']) if default
+
+      translate(dnd_names.fetch_item(key: :subclasses, id: subclass_slug)[:name])
+    end
+
+    def dnd_names = Charkeeper::Container.resolve('cache.dnd_names')
   end
 end

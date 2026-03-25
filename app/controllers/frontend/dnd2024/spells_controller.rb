@@ -28,15 +28,29 @@ module Frontend
       end
 
       def cache_options
-        { key: ["spells/dnd2024/#{I18n.locale}/v2", params[:max_level]].compact.join('/'), expires_in: 12.hours }
+        return {} if params[:homebrew]
+
+        { key: ["spells/dnd2024/#{I18n.locale}/v3", params[:max_level]].compact.join('/'), expires_in: 12.hours }
       end
 
-      def relation
+      def relation # rubocop: disable Metrics/AbcSize
         return [] unless feature_requirement.call(current: params[:version], initial: '0.4.5')
 
         result = ::Dnd2024::Feat.where(origin: 6)
         result = result.where("info ->> 'level' IN (?)", (0..params[:max_level].to_i).to_a.map(&:to_s)) if params[:max_level]
-        result
+
+        if params[:homebrew]
+          result.where(user_id: current_user.id).or(result.where(id: homebrew_item_ids))
+        else
+          result.where(user_id: nil)
+        end
+      end
+
+      def homebrew_item_ids
+        ::Homebrew::Book::Item
+          .where(homebrew_book_id: ::User::Book.where(user_id: current_user).select(:homebrew_book_id))
+          .where(itemable_type: 'Dnd2024::Feat')
+          .pluck(:itemable_id)
       end
     end
   end

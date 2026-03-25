@@ -17,6 +17,7 @@ module Charkeeper
 
     register('cache.avatars') { Cache::Avatars.new }
     register('cache.daggerheart_names') { Cache::DaggerheartNames.new }
+    register('cache.dnd_names') { Cache::DndNames.new }
     register('feature_requirement') { FeatureRequirement.new }
     register('markdown') { ActiveMarkdown.new }
     register('to_bool') { ToBool.new }
@@ -193,8 +194,8 @@ module Charkeeper
     register('commands.homebrew_context.dnd.feats.copy') { HomebrewContext::Dnd::Feats::CopyCommand.new }
 
     register('commands.homebrew_context.dnd.spells.add') { HomebrewContext::Dnd::Spells::AddCommand.new }
-    # register('commands.homebrew_context.dnd.spells.change') { HomebrewContext::Dnd::Spells::ChangeCommand.new }
-    # register('commands.homebrew_context.dnd.spells.copy') { HomebrewContext::Dnd::Spells::CopyCommand.new }
+    register('commands.homebrew_context.dnd.spells.change') { HomebrewContext::Dnd::Spells::ChangeCommand.new }
+    register('commands.homebrew_context.dnd.spells.copy') { HomebrewContext::Dnd::Spells::CopyCommand.new }
 
     register('commands.campaigns_context.add_campaign') { CampaignsContext::AddCampaignCommand.new }
     register('commands.campaigns_context.join_campaign') { CampaignsContext::JoinCampaignCommand.new }

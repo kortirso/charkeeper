@@ -17,10 +17,10 @@ module SheetsContext
         end
 
         def classes(character)
-          character.subclasses.map do |key, value|
-            next "#{class_name(key)} #{character.classes[key]}" if value.nil?
+          character.parent.subclass_names.map do |key, values|
+            next "#{key} #{values[:level]}" if values[:subclass].nil?
 
-            "#{class_name(key)} #{character.classes[key]} (#{subclass_name(key, value)})"
+            "#{key} #{values[:level]} (#{values[:subclass]})"
           end.join(' / ')
         end
 
@@ -39,14 +39,6 @@ module SheetsContext
           return unless character.background
 
           translate(::Dnd2024::Character.backgrounds.dig(character.background, 'name'))
-        end
-
-        def class_name(class_slug)
-          translate(::Dnd2024::Character.class_info(class_slug)['name'])
-        end
-
-        def subclass_name(class_slug, subclass_slug)
-          translate(::Dnd2024::Character.subclass_info(class_slug, subclass_slug)['name'])
         end
       end
     end

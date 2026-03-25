@@ -4,6 +4,8 @@ module HomebrewContext
   module Dnd
     module Subclasses
       class ChangeCommand < BaseCommand
+        include Deps[cache: 'cache.dnd_names']
+
         use_contract do
           config.messages.namespace = :homebrew_subclass
 
@@ -19,6 +21,8 @@ module HomebrewContext
         def do_persist(input)
           input[:subclass].assign_attributes(input.slice(:name, :public))
           input[:subclass].save!
+
+          cache.push_item(key: :subclasses, item: input[:subclass])
 
           { result: input[:subclass] }
         end
