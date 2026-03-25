@@ -174,9 +174,7 @@
     "title": "Lista de personajes",
     "level": "Nivel",
     "new": "Crear un nuevo personaje",
-    "onCopyCharacter": "Compartir",
-    "download": "Descargar",
-    "sharePdf": "Compartir enlace del PDF"
+    "onCopyCharacter": "Compartir"
   },
   "newCharacterPage": {
     "title": "Crear Personaje",

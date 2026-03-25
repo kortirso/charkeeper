@@ -174,9 +174,7 @@
     "title": "Characters list",
     "level": "Level",
     "new": "Create new character",
-    "onCopyCharacter": "Share",
-    "download": "Download",
-    "sharePdf": "Share PDF link"
+    "onCopyCharacter": "Share"
   },
   "newCharacterPage": {
     "title": "Create character",

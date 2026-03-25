@@ -11,7 +11,10 @@ export const ContentPage = (props) => {
   const [appState] = useAppState();
 
   return (
-    <div class="flex flex-col w-full md:w-[calc(100%-24rem)] bg-neutral-100 dark:bg-neutral-900">
+    <div
+      classList={{ 'md:w-[calc(100%-24rem)]': appState.activePage !== 'characterView' || appState.showNavigation === 'show' }}
+      class="flex flex-col w-full bg-neutral-100 dark:bg-neutral-900"
+    >
       <Switch fallback={<></>}>
         <Match when={appState.activePage === 'character'}>
           <CharacterTab onNavigate={props.onNavigate} />

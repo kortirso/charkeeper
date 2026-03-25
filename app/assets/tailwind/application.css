@@ -857,3 +857,11 @@ body.web {
 .ancestry-item:nth-of-type(n+2) {
   @apply border-t border-gray-200 dark:border-neutral-800;
 }
+
+.pdf-buttons {
+  @apply fixed top-4 left-4 right-8 flex flex-col sm:flex-row items-start sm:justify-between gap-4;
+}
+
+.pdf-button {
+  @apply rounded bg-blue-400 text-snow dark:bg-fuzzy-red px-2 py-1 cursor-pointer;
+}
