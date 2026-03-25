@@ -4,6 +4,8 @@ module HomebrewContext
   module Dnd
     module Subclasses
       class AddCommand < BaseCommand
+        include Deps[cache: 'cache.dnd_names']
+
         use_contract do
           config.messages.namespace = :homebrew_subclass
 
@@ -24,6 +26,8 @@ module HomebrewContext
 
         def do_persist(input)
           result = ::Dnd2024::Homebrew::Subclass.create!(input[:attributes].merge(input[:data]))
+
+          cache.push_item(key: :subclasses, item: result)
 
           { result: result }
         end

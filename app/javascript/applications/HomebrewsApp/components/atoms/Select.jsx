@@ -75,7 +75,7 @@ export const Select = (props) => {
           <Chevron rotated={isOpen()} />
         </div>
         <Show when={isOpen()}>
-          <ul class="form-dropdown" classList={{ 'relative': props.relative }}>
+          <ul class="form-dropdown" classList={{ 'relative!': props.relative }}>
             <For each={itemsForSelect()}>
               {([key, value]) =>
                 <Show when={!props.searchable || search().length < 3 || value.toLowerCase().includes(search().toLowerCase())}>

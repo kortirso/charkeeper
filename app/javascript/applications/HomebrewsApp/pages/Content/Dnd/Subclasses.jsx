@@ -353,6 +353,7 @@ export const DndSubclasses = () => {
             onInput={(value) => setSubclassForm({ ...subclassForm, name: value })}
           />
           <Select
+            relative
             containerClassList="flex-1 mb-2"
             labelText={TRANSLATION[locale()].originClass}
             items={dndClasses()}

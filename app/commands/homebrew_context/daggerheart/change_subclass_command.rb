@@ -3,6 +3,8 @@
 module HomebrewContext
   module Daggerheart
     class ChangeSubclassCommand < BaseCommand
+      include Deps[cache: 'cache.daggerheart_names']
+
       use_contract do
         config.messages.namespace = :homebrew_subclass
 
@@ -22,6 +24,8 @@ module HomebrewContext
           input[:subclass].data.attributes.merge(input.slice(:spellcast, :mechanics).stringify_keys)
         input[:subclass].assign_attributes(input.slice(:name, :public))
         input[:subclass].save!
+
+        cache.push_item(key: :subclasses, item: input[:subclass])
 
         { result: input[:subclass] }
       end

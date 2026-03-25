@@ -90,15 +90,25 @@ module CharactersContext
       def learn_spells_list(character, input)
         return if ::Dnd2024::Character::CLASSES_KNOW_SPELLS_LIST.exclude?(input[:main_class])
 
-        spells = ::Dnd2024::Feat.where(origin: 6).where('origin_values && ?', "{#{input[:main_class]}}").map do |feat|
-          {
-            character_id: character.id,
-            feat_id: feat.id,
-            ready_to_use: false,
-            value: { prepared_by: input[:main_class] }
-          }
-        end
+        relation = ::Dnd2024::Feat.where(origin: 6).where('origin_values && ?', "{#{input[:main_class]}}")
+        spells =
+          relation.where(user_id: [nil, input[:user].id]).or(relation.where(id: homebrew_item_ids(input)))
+          .map do |feat|
+            {
+              character_id: character.id,
+              feat_id: feat.id,
+              ready_to_use: false,
+              value: { prepared_by: input[:main_class] }
+            }
+          end
         ::Character::Feat.upsert_all(spells) if spells.any?
+      end
+
+      def homebrew_item_ids(input)
+        ::Homebrew::Book::Item
+          .where(homebrew_book_id: ::User::Book.where(user_id: input[:user]).select(:homebrew_book_id))
+          .where(itemable_type: 'Dnd2024::Feat')
+          .pluck(:itemable_id)
       end
     end
   end

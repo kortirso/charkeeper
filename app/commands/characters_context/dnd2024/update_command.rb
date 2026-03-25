@@ -179,24 +179,34 @@ module CharactersContext
         { result: input[:character] }
       end
 
-      def refresh_spells(input)
+      def refresh_spells(input) # rubocop: disable Metrics/AbcSize
         input[:added_classes].each do |added_class|
           next if ::Dnd2024::Character::CLASSES_KNOW_SPELLS_LIST.exclude?(added_class)
 
-          spells = ::Dnd2024::Feat.where(origin: 6).where('origin_values && ?', "{#{added_class}}").map do |feat|
-            {
-              character_id: input[:character].id,
-              feat_id: feat.id,
-              ready_to_use: false,
-              value: { prepared_by: added_class }
-            }
-          end
+          relation = ::Dnd2024::Feat.where(origin: 6).where('origin_values && ?', "{#{added_class}}")
+          spells =
+            relation.where(user_id: [nil, input[:character].user_id]).or(relation.where(id: homebrew_item_ids(input)))
+            .map do |feat|
+              {
+                character_id: input[:character].id,
+                feat_id: feat.id,
+                ready_to_use: false,
+                value: { prepared_by: added_class }
+              }
+            end
           ::Character::Feat.upsert_all(spells) if spells.any?
         end
 
         input[:removed_classes].each do |removed_class|
           input[:character].feats.where("value -> 'prepared_by' ? :prepared_by", prepared_by: removed_class).delete_all
         end
+      end
+
+      def homebrew_item_ids(input)
+        ::Homebrew::Book::Item
+          .where(homebrew_book_id: ::User::Book.where(user_id: input[:character].user).select(:homebrew_book_id))
+          .where(itemable_type: 'Dnd2024::Feat')
+          .pluck(:itemable_id)
       end
 
       def upload_avatar(input) # rubocop: disable Metrics/AbcSize

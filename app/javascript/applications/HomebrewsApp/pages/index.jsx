@@ -22,3 +22,4 @@ export * from './Content/Dnd/Books';
 export * from './Content/Dnd/Items';
 export * from './Content/Dnd/Weapons';
 export * from './Content/Dnd/Subclasses';
+export * from './Content/Dnd/Spells';

@@ -3,7 +3,7 @@
 module HomebrewContext
   module Dnd
     module Spells
-      class AddCommand < BaseCommand
+      class ChangeCommand < BaseCommand
         use_contract do
           config.messages.namespace = :homebrew_feat
 
@@ -11,7 +11,7 @@ module HomebrewContext
           Classes = Dry::Types['strict.string'].enum(*::Dnd2024::Character.classes_info.keys)
 
           params do
-            required(:user).filled(type?: ::User)
+            required(:spell).filled(type?: ::Dnd2024::Feat)
             required(:title).filled(:string, max_size?: 50)
             optional(:description).filled(:string, max_size?: 1000)
             required(:origin_values).filled(:array).each(Classes)
@@ -34,18 +34,15 @@ module HomebrewContext
         private
 
         def do_prepare(input)
-          input[:slug] = SecureRandom.alphanumeric(10)
-          input[:origin] = 6
-          input[:kind] = 'static'
           input[:title] = { en: sanitize(input[:title]), ru: sanitize(input[:title]) }
           input[:description] = { en: sanitize(input[:description]), ru: sanitize(input[:description]) }
           input[:info] = input[:info].compact_blank
         end
 
         def do_persist(input)
-          result = ::Dnd2024::Feat.create!(input)
+          input[:spell].update!(input.except(:spell))
 
-          { result: result }
+          { result: input[:spell] }
         end
       end
     end

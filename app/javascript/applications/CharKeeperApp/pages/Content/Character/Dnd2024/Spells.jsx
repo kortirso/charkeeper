@@ -95,20 +95,22 @@ export const Dnd2024Spells = (props) => {
 
     const spellLevels = Object.keys(character().spells_slots || {});
 
-    const fetchSpells = async () => await fetchSpellsRequest(
+    const fetchSpells = async (homebrew) => await fetchSpellsRequest(
       appState.accessToken,
       props.character.provider,
-      { max_level: spellLevels.length === 0 ? 3 : Math.max(...spellLevels) }
+      Object.fromEntries(Object.entries({
+        max_level: spellLevels.length === 0 ? 3 : Math.max(...spellLevels), homebrew: homebrew
+      }).filter(([, value]) => value))
     );
     const fetchCharacterSpells = async () => await fetchCharacterSpellsRequest(
       appState.accessToken, character().provider, character().id
     );
 
-    Promise.all([fetchCharacterSpells(), fetchSpells()]).then(
-      ([characterSpellsData, spellsData]) => {
+    Promise.all([fetchCharacterSpells(), fetchSpells(), fetchSpells(true)]).then(
+      ([characterSpellsData, spellsData, homebrewSpellsData]) => {
         batch(() => {
           setCharacterSpells(characterSpellsData.spells);
-          setSpells(spellsData.spells);
+          setSpells(spellsData.spells.concat(homebrewSpellsData.spells).sort((a, b) => a.title > b.title));
         });
       }
     );
