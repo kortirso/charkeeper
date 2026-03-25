@@ -80,7 +80,7 @@ export const DndSubclasses = () => {
   const fetchSpells = async (homebrew) => await fetchSpellsRequest(
     appState.accessToken,
     'dnd2024',
-    Object.fromEntries(Object.entries({ homebrew: homebrew, version: '0.4.17' }).filter(([, value]) => value))
+    Object.fromEntries(Object.entries({ homebrew: homebrew, version: '0.4.18' }).filter(([, value]) => value))
   );
 
   createEffect(() => {
