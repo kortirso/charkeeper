@@ -1,0 +1,30 @@
+{
+  "abilities": {
+    "str": { "name": { "en": "Strength", "ru": "Сила" }, "shortName": { "en": "Str", "ru": "Сил" } },
+    "spd": { "name": { "en": "Speed", "ru": "Скорость" }, "shortName": { "en": "Spd", "ru": "Скр" } },
+    "int": { "name": { "en": "Intellect", "ru": "Интеллект" }, "shortName": { "en": "Int", "ru": "Инт" } },
+    "wil": { "name": { "en": "Willpower", "ru": "Воля" }, "shortName": { "en": "Wil", "ru": "Вол" } },
+    "awa": { "name": { "en": "Awareness", "ru": "Восприятие" }, "shortName": { "en": "Awa", "ru": "Всп" } },
+    "pre": { "name": { "en": "Presence", "ru": "Харизма" }, "shortName": { "en": "Pre", "ru": "Хар" } }
+  },
+  "skills": {
+    "agility": { "name": { "en": "Agility", "ru": "Ловкость" } },
+    "athletics": { "name": { "en": "Athletics", "ru": "Атлетика" } },
+    "heavy_weaponry": { "name": { "en": "Heavy Weaponry", "ru": "Тяжёлое оружие" } },
+    "light_weaponry": { "name": { "en": "Light Weaponry", "ru": "Лёгкое оружие" } },
+    "stealth": { "name": { "en": "Stealth", "ru": "Скрытность" } },
+    "thievery": { "name": { "en": "Thievery", "ru": "Выровство" } },
+    "crafting": { "name": { "en": "Crafting", "ru": "Ремесло" } },
+    "deduction": { "name": { "en": "Deduction", "ru": "Дедукция" } },
+    "discipline": { "name": { "en": "Discipline", "ru": "Дисциплина" } },
+    "intimidation": { "name": { "en": "Intimidation", "ru": "Запугивание" } },
+    "lore": { "name": { "en": "Lore", "ru": "Знания" } },
+    "medicine": { "name": { "en": "Medicine", "ru": "Медицина" } },
+    "deception": { "name": { "en": "Deception", "ru": "Обман" } },
+    "insight": { "name": { "en": "Insight", "ru": "Проницательность" } },
+    "leadership": { "name": { "en": "Leadership", "ru": "Лидерство" } },
+    "perception": { "name": { "en": "Perception", "ru": "Внимательность" } },
+    "persuation": { "name": { "en": "Persuation", "ru": "Убеждение" } },
+    "survival": { "name": { "en": "Survival", "ru": "Выживание" } }
+  }
+}

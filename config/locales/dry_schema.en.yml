@@ -131,6 +131,11 @@ en:
           locale:
             filled?: Locale must be filled
             included_in?: Invalid locale value
+      cosmere_character:
+        rules:
+          name:
+            key?: Name is required
+            filled?: Name must be filled
       dnd5_character:
         rules:
           name:

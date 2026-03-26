@@ -20,6 +20,8 @@ export * from './Content/CampaignJoinTab';
 export * from './Content/Campaign/Characters';
 export * from './Content/Campaign/Page';
 
+export * from './Content/Character/Cosmere';
+
 export * from './Content/Character/Dnd5';
 export * from './Content/Character/Dnd5/Abilities';
 export * from './Content/Character/Dnd5/Combat';
@@ -109,4 +111,5 @@ export * from './Navigation/Characters/Forms/Dnd5';
 export * from './Navigation/Characters/Forms/Dnd2024';
 export * from './Navigation/Characters/Forms/Fate';
 export * from './Navigation/Characters/Forms/Fallout';
+export * from './Navigation/Characters/Forms/Cosmere';
 export * from './Navigation/Campaigns/ListItem';

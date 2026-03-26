@@ -59,8 +59,6 @@ class Dnd2024Decorator < ApplicationDecoratorV2
     @result['attacks_per_action'] = 1
     @result['features'] = []
     @result['speeds'] = {}
-    # @result['attack'] = 0
-    # @result['damage'] = 0
     @result['defense_gear'] = find_defense_gear
     @result['no_body_armor'] = defense_gear[:armor].nil?
     @result['no_armor'] = defense_gear.values.all?(&:nil?)

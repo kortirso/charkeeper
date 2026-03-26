@@ -83,6 +83,9 @@ export const CharactersListItem = (props) => {
     if (character().provider === 'fallout') {
       return `${t('charactersPage.level')} ${character().level} | ${localize(falloutConfig.origins[character().origin].name, locale())}`;
     }
+    if (character().provider === 'cosmere') {
+      return `${t('charactersPage.level')} ${character().level}`;
+    }
     if (character().provider === 'dc20') {
       return `${t('charactersPage.level')} ${character().level} | ${character().ancestries.map((item) => localize(dc20Config.ancestries[item].name, locale())).join(' * ')}`;
     }
