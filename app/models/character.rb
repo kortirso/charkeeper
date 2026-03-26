@@ -26,6 +26,7 @@ class Character < ApplicationRecord
   scope :dc20, -> { where(type: 'Dc20::Character') }
   scope :fate, -> { where(type: 'Fate::Character') }
   scope :fallout, -> { where(type: 'Fallout::Character') }
+  scope :cosmere, -> { where(type: 'Cosmere::Character') }
 
   def decorator = raise NotImplementedError
 end

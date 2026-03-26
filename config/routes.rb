@@ -145,6 +145,10 @@ Rails.application.routes.draw do
       resources :characters, only: %i[create update]
     end
 
+    namespace :cosmere do
+      resources :characters, only: %i[create]
+    end
+
     namespace :fallout do
       resources :characters, only: %i[create update] do
         resources :talents, only: %i[index create], module: 'characters'

@@ -131,6 +131,11 @@ ru:
           locale:
             filled?: Необходимо указать локаль
             included_in?: Недопустимое значение локали
+      cosmere_character:
+        rules:
+          name:
+            key?: Необходимо указать имя персонажа
+            filled?: Необходимо указать имя персонажа
       dnd5_character:
         rules:
           name:

@@ -9,6 +9,7 @@ module Frontend
     DC20_SERIALIZE_FIELDS = %i[id name level classes main_class ancestries provider avatar].freeze
     FATE_SERIALIZE_FIELDS = %i[id name provider avatar].freeze
     FALLOUT_SERIALIZE_FIELDS = %i[id name origin level provider avatar].freeze
+    COSMERE_SERIALIZE_FIELDS = %i[id name level provider avatar].freeze
 
     before_action :find_character, only: %i[show destroy]
     before_action :set_current_provider, only: %i[show]
@@ -64,6 +65,7 @@ module Frontend
       when 'Dc20::Character' then ::Dc20::CharacterSerializer
       when 'Fate::Character' then ::Fate::CharacterSerializer
       when 'Fallout::Character' then ::Fallout::CharacterSerializer
+      when 'Cosmere::Character' then ::Cosmere::CharacterSerializer
       end
     end
 
@@ -74,6 +76,7 @@ module Frontend
       when 'Dc20::Character' then DC20_SERIALIZE_FIELDS
       when 'Fate::Character' then FATE_SERIALIZE_FIELDS
       when 'Fallout::Character' then FALLOUT_SERIALIZE_FIELDS
+      when 'Cosmere::Character' then COSMERE_SERIALIZE_FIELDS
       end
     end
   end

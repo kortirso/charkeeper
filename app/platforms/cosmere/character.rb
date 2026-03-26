@@ -1,0 +1,27 @@
+# frozen_string_literal: true
+
+module Cosmere
+  class CharacterData
+    include StoreModel::Model
+
+    attribute :level, :integer, default: 1
+    attribute :abilities, array: true, default: { 'str' => 0, 'spd' => 0, 'int' => 0, 'wil' => 0, 'awa' => 0, 'pre' => 0 }
+    attribute :health, :integer, default: 10
+    attribute :focus, :integer, default: 2
+    attribute :investiture, :integer, default: 2
+    attribute :selected_skills, array: true, default: {} # { 'acrobatics' => 2, 'arcana' => 1, 'crafting' => 3, 'id' => 1 }
+    attribute :additional_skills, array: true, default: {} # { 'id' => { 'name' => '', 'attribute' => 'str' } }
+    # для левелинга
+    attribute :attribute_points, :integer
+    attribute :skill_points, :integer
+    attribute :guide_step, :integer # этап помощи при создании персонажа
+  end
+
+  class Character < Character
+    attribute :data, Cosmere::CharacterData.to_type
+
+    def decorator(simple: false, version: nil)
+      CosmereDecorator.new.call(character: self, simple: simple, version: version)
+    end
+  end
+end

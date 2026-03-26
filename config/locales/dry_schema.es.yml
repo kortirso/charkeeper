@@ -131,6 +131,11 @@ es:
           locale:
             filled?: Locale debe ser completado
             included_in?: Valor locale inválido
+      cosmere_character:
+        rules:
+          name:
+            key?: Se requiere un nombre
+            filled?: Se debe poner un nombre
       dnd5_character:
         rules:
           name:

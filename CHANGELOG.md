@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## Unreleased
 ### Added
 - changelogs page
+- base integration of Cosmere RPG
 
 ## [0.4.18] - 2026-03-25
 ### Added

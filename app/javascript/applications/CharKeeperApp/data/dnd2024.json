@@ -240,7 +240,7 @@
     "nature": { "name": { "en": "Nature", "ru": "Природа" } },
     "perception": { "name": { "en": "Perception", "ru": "Внимательность" } },
     "performance": { "name": { "en": "Performance", "ru": "Выступление" } },
-    "persuasion": { "name": { "en": "Persuasion", "ru": "Убеждение" } },
+    "persuasion": { "name": { "en": "Persuation", "ru": "Убеждение" } },
     "religion": { "name": { "en": "Religion", "ru": "Религия" } },
     "sleight": { "name": { "en": "Sleight of Hands", "ru": "Ловкость рук" } },
     "stealth": { "name": { "en": "Stealth", "ru": "Скрытность" } },

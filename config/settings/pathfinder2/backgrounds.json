@@ -10,7 +10,9 @@
   },
   "street_urchin": { "ability_boosts": "dex_con", "skill_boosts": "thievery", "lore_name": "Lore (City)" },
   "raised_by_belief": { "ability_boosts": "str_dex", "skill_boosts": "", "lore_name": "Lore (Deity)" },
-  "fortune_teller": { "ability_boosts": "int_cha", "skill_boosts": "occultism", "lore_name": "Lore (Fortune)-Telling" },
+  "fortune_teller": {
+    "ability_boosts": "int_cha", "skill_boosts": "occultism", "lore_name": "Lore (Fortune-Telling)", "feat": "oddity_identification"
+  },
   "gladiator": { "ability_boosts": "str_cha", "skill_boosts": "performance", "lore_name": "Lore (Gladiatorial)" },
   "animal_whisperer": { "ability_boosts": "wis_cha", "skill_boosts": "nature", "lore_name": "Lore (Terrain)" },
   "prisoner": { "ability_boosts": "str_con", "skill_boosts": "stealth", "lore_name": "Lore (Underworld)" },

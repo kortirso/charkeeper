@@ -114,6 +114,36 @@ describe Frontend::CharactersController do
           expect(response).to have_http_status :ok
         end
       end
+
+      context 'for dc20' do
+        let!(:character) { create :character, :dc20, user: user_session.user }
+
+        it 'returns data' do
+          get :show, params: { id: character.id, charkeeper_access_token: access_token }
+
+          expect(response).to have_http_status :ok
+        end
+      end
+
+      context 'for cosmere' do
+        let!(:character) { create :character, :cosmere, user: user_session.user }
+
+        it 'returns data' do
+          get :show, params: { id: character.id, charkeeper_access_token: access_token }
+
+          expect(response).to have_http_status :ok
+        end
+      end
+
+      context 'for fate' do
+        let!(:character) { create :character, :fate, user: user_session.user }
+
+        it 'returns data' do
+          get :show, params: { id: character.id, charkeeper_access_token: access_token }
+
+          expect(response).to have_http_status :ok
+        end
+      end
     end
   end
 

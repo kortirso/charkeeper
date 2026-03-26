@@ -98,5 +98,14 @@ FactoryBot.define do
       type { 'Dc20::Character' }
       data { {} }
     end
+
+    trait :cosmere do
+      type { 'Cosmere::Character' }
+      data {
+        {
+          'abilities' => { 'str' => 0, 'spd' => 0, 'int' => 0, 'wil' => 0, 'awa' => 0, 'pre' => 0 }
+        }
+      }
+    end
   end
 end
