@@ -865,3 +865,31 @@ body.web {
 .pdf-button {
   @apply rounded bg-blue-400 text-snow dark:bg-fuzzy-red px-2 py-1 cursor-pointer;
 }
+
+.changelog {
+  @apply py-8 px-4;
+}
+
+.changelog:nth-of-type(2n+1) {
+  @apply bg-cosmos;
+}
+
+.changelog-content {
+  @apply max-w-7xl mx-auto w-full;
+}
+
+.changelog h2 {
+  @apply font-medium! text-xl;
+}
+
+.changelog h3 {
+  @apply mt-4 font-medium! text-lg;
+}
+
+.changelog ul {
+  @apply mt-2;
+}
+
+.changelog ul li span {
+  @apply font-medium!;
+}
