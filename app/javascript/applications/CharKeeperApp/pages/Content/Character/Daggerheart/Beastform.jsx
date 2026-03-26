@@ -17,6 +17,11 @@ const TRANSLATION = {
     desc: 'Во время трансформации вы не можете использовать оружие или заклинания из карт домена, но вы по-прежнему можете использовать другие функции или способности, к которым у вас есть доступ.',
     examples: 'Примеры:',
     adv: 'Преимущества при:'
+  },
+  es: {
+    desc: 'Mientras estás en Forma Bestial, no puedes usar armas o lanzar hechizos de las cartas de dominio. Sin embargo, aún puedes usar otras caracteristicas de clase o habilidades especificas de la Forma Bestial.',
+    examples: 'Ejemplos: ',
+    adv: 'Ventajas en:'
   }
 }
 

@@ -13,6 +13,9 @@ const TRANSLATION = {
   },
   ru: {
     helpMessage: "Ваш персонаж начинает приключение с 2 опытами (каждый с модификатором +2)."
+  },
+  es: {
+    helpMessage: "Tu personaje comienza con 2 experiencias (cada una con un modificador de +2)."
   }
 }
 

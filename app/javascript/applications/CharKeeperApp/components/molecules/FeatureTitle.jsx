@@ -31,6 +31,17 @@ const TRANSLATION = {
     sp: 'ОВ',
     hope: 'Надежда',
     stress: 'Стресс'
+  },
+  es: {
+    one_at_short_rest: 'Corto - 1, largo - completo',
+    short_rest: 'Descanso corto',
+    long_rest: 'Descanso largo',
+    session: 'Descanso entre sesiones',
+    combat: 'Descanso entre combates',
+    ap: 'PA',
+    sp: 'EP',
+    hope: 'Esperanza',
+    stress: 'Estrés'
   }
 }
 

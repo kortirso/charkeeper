@@ -21,6 +21,14 @@ const TRANSLATION = {
     'armor': 'Доспех',
     'thresholds': 'Пороги урона',
     'score': 'Очки доспеха'
+  },
+  es: {
+    'primary weapon': 'Arma principal',
+    'secondary weapon': 'Arma secundaria',
+    'tier': 'Nivel',
+    'armor': 'Armadura',
+    'thresholds': 'umbrales de daño',
+    'score': 'Puntuación de armadura'
   }
 };
 

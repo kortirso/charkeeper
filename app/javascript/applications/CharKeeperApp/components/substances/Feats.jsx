@@ -31,6 +31,16 @@ const TRANSLATION = {
     groupFeatures: 'Группировать',
     showPassive: 'Показать пассивные',
     expandAll: 'Раскрывать все'
+  },
+  es: {
+    activeFeat: 'Activo',
+    allFeatures: 'Todas las características',
+    personalFeats: 'Las habilidades personales pueden ser creadas a través de homebrew',
+    settings: 'Configuración de filtros',
+    showPersonal: 'Mostrar características personales',
+    groupFeatures: 'Agrupar características',
+    showPassive: 'Mostrar pasivas',
+    expandAll: 'Expandir todo'
   }
 }
 

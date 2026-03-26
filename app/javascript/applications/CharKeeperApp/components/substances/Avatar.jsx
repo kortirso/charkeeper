@@ -24,6 +24,14 @@ const TRANSLATION = {
     avatarTransform: 'Изображение будет конфертировано в квадратный формат',
     heritageName: 'Название расы',
     communityName: 'Название общества'
+  },
+  es: {
+    fileSizeLimit: 'El tamaño del archivo debe ser menor a 1 MB',
+    avatarFile: 'Selecciona un archivo de avatar',
+    avatarUrl: 'o pega un enlace para la imagen',
+    avatarTransform: 'La imagen se convertirá a formato cuadrado',
+    heritageName: 'Nombre de ascendencia mezclada',
+    communityName: 'Nombre de la comunidad'
   }
 }
 

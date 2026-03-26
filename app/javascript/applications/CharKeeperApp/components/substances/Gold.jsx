@@ -40,6 +40,23 @@ const TRANSLATION = {
       silver: 'Серебро',
       gold: 'Золото'
     }
+  },
+  es: {
+    measure: 'Cambio de medida',
+    amount: 'Cantidad',
+    negativeMoney: 'El dinero no puede ser negativo',
+    tooMuchMoney: 'Demasiado dinero :)',
+    daggerheart: {
+      coins: 'Monedas',
+      handfuls: 'Puñados',
+      bags: 'Bolsas',
+      chests: 'Cofres'
+    },
+    dnd: {
+      copper: 'Cobre',
+      silver: 'Plata',
+      gold: 'Oro'
+    }
   }
 }
 

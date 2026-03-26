@@ -22,6 +22,14 @@ const TRANSLATION = {
     amount: 'Количество предметов',
     craft: 'Изготовить',
     crafted: 'Предметы изготовлены'
+  },
+  es: {
+    noTools: 'No tienes las recetas',
+    selectTool: 'Selecciona la receta para fabricar',
+    selectItem: 'Selecciona el objeto a fabricar',
+    amount: 'Cantidad del objeto',
+    craft: 'Fabricar',
+    crafted: 'Los objetos han sido fabricados'
   }
 }
 

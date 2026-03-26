@@ -17,6 +17,9 @@ const TRANSLATION = {
   },
   ru: {
     textHelp: 'Вы можете использовать Markdown для редактирования описания'
+  },
+  es: {
+    textHelp: 'Puedes usar Markdown para editar la descripción'
   }
 }
 

@@ -14,6 +14,12 @@ const TRANSLATION = {
     initiative: 'Инициатива',
     precision: 'Точечная защита',
     area: 'Площадная защита'
+  },
+  es: {
+    combatMastery: 'Maestría de combate',
+    initiative: 'Iniciativa',
+    precision: 'Defensa de precisión',
+    area: 'Defensa de área'
   }
 }
 

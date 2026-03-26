@@ -17,6 +17,12 @@ const TRANSLATION = {
     ability: 'Способность',
     grimoire: 'Гримуар',
     level: 'Уровень'
+  },
+  es: {
+    spell: 'Hechizo',
+    ability: 'Habilidad',
+    grimoire: 'Grimorio',
+    level: 'Nivel'
   }
 }
 

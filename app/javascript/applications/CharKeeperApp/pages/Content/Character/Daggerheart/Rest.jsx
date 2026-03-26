@@ -83,6 +83,42 @@ const TRANSLATION = {
     projectDc: 'Сложность проверки прогресса',
     projectRoll: 'Прогресс проекта',
     completed: ' (Завершён)'
+  },
+  es: {
+    values: {
+      short: 'Descanso corto',
+      long: 'Descanso largo',
+      session: 'Descanso entre sesiones'
+    },
+    description: 'Durante el descanso, el jugador puede mover libremente las cartas de dominio entre su carga y su bóveda, luego elegir dos opciones de la lista de descanso. También puedes ayudar a tus compañeros a limpiar Puntos de Vida y ranuras de armadura, pero estas opciones no son visibles aquí.',
+    makeRolls: 'Tiradas automáticas',
+    clear_health_short: 'Limpiar 1d4+{{tier}} Puntos de Vida para ti',
+    clear_stress_short: 'Limpiar 1d4+{{tier}} de Estrés',
+    clear_armor_slots_short: 'Limpiar 1d4+{{tier}} ranuras de armadura para ti',
+    clear_health_long: 'Limpiar todos los Puntos de Vida para ti',
+    clear_stress_long: 'Limpiar todo el Estrés',
+    clear_armor_slots_long: 'Limpiar todas las ranuras de armadura para ti',
+    gain_hope: 'Gana una Esperanza por prepararte',
+    gain_double_hope: 'Gana 2 Esperanzas por prepararte con un compañero',
+    title: 'Proyectos',
+    projectTitle: 'Título del proyecto',
+    projectDescription: 'Descripción del proyecto',
+    complexity: 'Complejidad del proyecto',
+    textHelp: 'Puedes usar Markdown para editar la descripción'
+    save: 'Guardar',
+    cancel: 'Cancelar',
+    newProject: 'AGREGAR NUEVO PROYECTO',
+    progress: 'Progreso del proyecto',
+    valueLabel: 'Selecciona el tipo de descanso',
+    rest: 'Descansar',
+    complete: 'Descanso completado',
+    firstAction: 'Primera acción de descanso',
+    secondAction: 'Segunda acción de descanso',
+    workOnProject: 'Trabajar en proyecto',
+    makeProjectRolls: 'Hacer tiradas de proyecto contra una dificultad',
+    projectDc: 'Dificultad de progreso del proyecto',
+    projectRoll: 'Progreso del proyecto',
+    completed: ' (Completado)'
   }
 }
 const DOWNTIME_ACTIONS = ['clear_health', 'clear_stress', 'clear_armor_slots', 'gain_hope', 'gain_double_hope'];

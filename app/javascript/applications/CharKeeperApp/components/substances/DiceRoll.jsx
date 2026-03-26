@@ -25,6 +25,15 @@ const TRANSLATION = {
     hope: 'Надежда',
     fear: 'Страх',
     critFailure: 'Крит провал'
+  },
+  es: {
+    advantage: 'Ventaja',
+    disadvantage: 'Desventaja',
+    roll: 'Tirar',
+    crit: 'Crítico',
+    hope: 'Esperanza',
+    fear: 'Miedo',
+    critFailure: 'Fallo crítico'
   }
 }
 

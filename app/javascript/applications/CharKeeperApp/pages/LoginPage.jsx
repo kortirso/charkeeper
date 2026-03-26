@@ -20,6 +20,12 @@ const TRANSLATION = {
     euRegion: 'Евро регион',
     ruRegion: 'РУ регион',
     regionHelp: 'Серверы работают независимо от друг друга.'
+  },
+  es: {
+    region: 'Región del servidor',
+    euRegion: 'Región EU',
+    ruRegion: 'Región RU',
+    regionHelp: 'Los servidores operan independientemente unos de otros.'
   }
 }
 

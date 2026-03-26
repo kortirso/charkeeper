@@ -56,6 +56,30 @@ const TRANSLATION = {
     multiclassTooltip: 'Сохранение выбора мультикласса необратимо, осторожно!',
     subclassTooltip: 'Сохранение выбора улучшения мастерства подкласса необратимо, осторожно!',
     warning: 'Отметьте все слоты повышения уровня'
+  },
+  es: {
+    currentLevel: 'Nivel actual',
+    title: 'Ranuras de subida de nivel disponibles',
+    traits: 'Bonificación +1 a dos atributos',
+    health: 'Ranuras de Puntos de Vida adicionales',
+    stress: 'Ranuras de Estrés adicionales',
+    experience: 'Bonificación +1 a dos experiencias',
+    domainCards: 'Cartas de dominio adicionales',
+    evasion: 'Bonificación +1 a la Evasión',
+    reset: 'Restablecer',
+    save: 'Guardar',
+    traitsSelect: 'Seleccionar atributos para este nivel',
+    classSelect: 'Seleccionar clase para multiclase',
+    subclassSelect: 'Seleccionar subclase para la nueva clase',
+    subclassMasterySelect: 'Seleccionar clase para mejorar la maestría de lasubclase',
+    selectDomain: 'Seleccionar dominio de la nueva clase',
+    proficiency: 'Bonificación +1 a la competencia',
+    subclass: 'Mejorar subclase',
+    multiclass: 'Elegir clase adicional',
+    levelTooltip: "Subir de nivel no es reversible, ¡ten cuidado! Pero puedes restablecer el progreso del personaje en el menú del personaje.",
+    multiclassTooltip: 'Guardar la selección de multiclase no es reversible, ¡ten cuidado!',
+    subclassTooltip: 'Guardar la selección de mejora de subclase no es reversible, ¡ten cuidado!',
+    warning: 'Marca todas las ranuras de subida de nivel antes de subir de nivel'
   }
 }
 

@@ -52,6 +52,29 @@ const TRANSLATION = {
     squares: 'кв',
     feet: 'фт',
     meters: 'м'
+  },
+  es: {
+    attack: 'Ataque',
+    damage: 'Daño',
+    distance: 'Rango',
+    primary: 'Listo para usar',
+    additional: 'Reserva',
+    showSquares: 'Mostrar distancia en cuadrados',
+    narrative: 'Distancia narrativa',
+    imperial: 'Sistema imperial',
+    metric: 'Sistema métrico',
+    settings: 'Configuración de distancia',
+    daggerheart: {
+      'melee': 'Cuerpo a cuerpo',
+      'very close': 'Muy cerca',
+      'close': 'Cerca',
+      'far': 'Lejos',
+      'very far': 'Muy lejos'
+    },
+    squares: 'cuad',
+    feet: 'ft',
+    meters: 'm'
+
   }
 }
 const DH_SQUARE_DISTANCES = {

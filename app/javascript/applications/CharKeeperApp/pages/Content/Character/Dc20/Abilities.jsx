@@ -15,6 +15,10 @@ const TRANSLATION = {
   ru: {
     attributePoints: 'Очки атрибутов для распределения',
     helpMessage: 'Ваш персонаж начинает с -2 во всех атрибутах. Вы можете потратить Очки Атрибутов для увеличения любых атрибутов вплоть до максимума (3).'
+  },
+  es: {
+    attributePoints: 'Puntos de atributo para distribuir',
+    helpMessage: 'Tu personaje comienza con -2 en todos los atributos. Puedes ganar Puntos de Atributo para aumentar cualquier atributo hasta el límite de atributo (3).'
   }
 }
 

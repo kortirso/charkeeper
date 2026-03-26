@@ -19,6 +19,12 @@ const TRANSLATION = {
     delete: 'Убрать',
     info: 'Информация',
     quantity: 'Кол-во'
+  },
+  es: {
+    change: 'Editar',
+    delete: 'Eliminar',
+    info: 'Información',
+    quantity: 'Cant.'
   }
 }
 const ITEMS_INFO = ['daggerheart'];

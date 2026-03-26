@@ -11,6 +11,9 @@ const TRANSLATION = {
   },
   ru: {
     clear: 'Отменить выбор'
+  },
+  es: {
+    clear: 'Cancelar selección'
   }
 }
 

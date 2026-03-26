@@ -17,6 +17,10 @@ const TRANSLATION = {
   ru: {
     conditions: 'Состояния',
     selectedStances: 'Активные состояния',
+  },
+  es: {
+    conditions: 'Condiciones',
+    selectedStances: 'Condiciones activas',
   }
 }
 
