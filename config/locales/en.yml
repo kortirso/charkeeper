@@ -1,4 +1,37 @@
 en:
+  changelogs:
+    '4018':
+      dh:
+        title1: Loot tables
+        title2: Companion avatars
+        title3: Rally dice
+        desc1: characters can get random items like specified in core roolbook
+        desc2: you can upload avatar for character's companion
+        desc3: you can specify current Rally Dice for your characters provided by party bard
+      dnd:
+        title1: Homebrew spells
+        desc1: you can create/copy/manage/share homebrew spells for any of your characters
+    '4016':
+      dnd:
+        title1: Homebrew subclasses
+        title2: Bonuses system
+        title3: Saving throws
+        desc1: you can create/copy/manage/share subclasses for any of your characters
+        desc2: bonuses system was totally modified for better character customization
+        desc3: rendering of saving throws was modified
+      pf:
+        title1: Leveling management
+        title2: Lore skills
+        desc1: characters can change their level and select general/skill/ancestry/class feats or any additional feats
+        desc2: you can manually manage lore skills for your characters
+    '4015':
+      dc20:
+        title1: 0.10 support
+        desc1: total rebuilding DC20 characters management for better support 0.10 rules
+    '4014':
+      fallout:
+        title1: Core integration
+        desc1: Fallout 2d20 compatible characters support was added
   forbidden: Forbidden
   not_found: Object is not found
   change_locale: Change locale

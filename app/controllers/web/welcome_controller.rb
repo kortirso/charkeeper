@@ -11,5 +11,7 @@ module Web
     def bot_commands; end
 
     def tips; end
+
+    def changelogs; end
   end
 end
