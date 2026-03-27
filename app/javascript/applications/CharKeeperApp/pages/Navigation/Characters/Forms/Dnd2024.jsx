@@ -1,4 +1,4 @@
-import { createEffect, Show } from 'solid-js';
+import { Show } from 'solid-js';
 import { createStore } from 'solid-js/store';
 import * as i18n from '@solid-primitives/i18n';
 
@@ -6,13 +6,12 @@ import { CharacterForm } from '../../../../pages';
 import { Select, Input, Checkbox } from '../../../../components';
 import dnd2024Config from '../../../../data/dnd2024.json';
 import { useAppLocale } from '../../../../context';
-import { translate, readFromCache, localize } from '../../../../helpers';
+import { translate, localize } from '../../../../helpers';
 
 const DND2024_DEFAULT_FORM = {
   name: '', species: undefined, legacy: undefined, size: undefined, background: undefined,
   main_class: undefined, alignment: 'neutral', skip_guide: false
 };
-const RENDER_GUIDE_CACHE_NAME = 'RenderGuideSettings';
 
 const TRANSLATION = {
   en: {
@@ -28,17 +27,6 @@ export const Dnd2024CharacterForm = (props) => {
 
   const [locale, dict] = useAppLocale();
   const t = i18n.translator(dict);
-
-  const readGuideSettings = async () => {
-    const cacheValue = await readFromCache(RENDER_GUIDE_CACHE_NAME);
-    const value = cacheValue === null || cacheValue === undefined ? {} : JSON.parse(cacheValue);
-
-    setCharacterDnd2024Form({ ...characterDnd2024Form, skip_guide: value.dnd2024 === false })
-  }
-
-  createEffect(() => {
-    readGuideSettings();
-  });
 
   const saveCharacter = async () => {
     const result = await props.onCreateCharacter(characterDnd2024Form);

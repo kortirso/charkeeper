@@ -1,11 +1,10 @@
-import { createEffect } from 'solid-js';
 import { createStore } from 'solid-js/store';
 
 import { CharacterForm } from '../../../../pages';
 import { Select, Input, Checkbox } from '../../../../components';
 import config from '../../../../data/fallout.json';
 import { useAppLocale } from '../../../../context';
-import { translate, readFromCache, localize } from '../../../../helpers';
+import { translate, localize } from '../../../../helpers';
 
 const TRANSLATION = {
   en: {
@@ -21,23 +20,11 @@ const TRANSLATION = {
 }
 
 const FALLOUT_DEFAULT_FORM = { name: '', origin: '', skip_guide: false };
-const RENDER_GUIDE_CACHE_NAME = 'RenderGuideSettings';
 
 export const FalloutCharacterForm = (props) => {
   const [characterFalloutForm, setCharacterFalloutForm] = createStore(FALLOUT_DEFAULT_FORM);
 
   const [locale] = useAppLocale();
-
-  const readGuideSettings = async () => {
-    const cacheValue = await readFromCache(RENDER_GUIDE_CACHE_NAME);
-    const value = cacheValue === null || cacheValue === undefined ? {} : JSON.parse(cacheValue);
-
-    setCharacterFalloutForm({ ...characterFalloutForm, skip_guide: value.fallout === false })
-  }
-
-  createEffect(() => {
-    readGuideSettings();
-  });
 
   const saveCharacter = async () => {
     const result = await props.onCreateCharacter(characterFalloutForm);

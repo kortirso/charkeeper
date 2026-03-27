@@ -1,10 +1,9 @@
-import { createEffect } from 'solid-js';
 import { createStore } from 'solid-js/store';
 
 import { CharacterForm } from '../../../../pages';
 import { Input, Checkbox } from '../../../../components';
 import { useAppLocale } from '../../../../context';
-import { readFromCache, localize } from '../../../../helpers';
+import { localize } from '../../../../helpers';
 
 const TRANSLATION = {
   en: {
@@ -17,23 +16,10 @@ const TRANSLATION = {
   }
 }
 
-const RENDER_GUIDE_CACHE_NAME = 'RenderGuideSettings';
-
 export const CosmereCharacterForm = (props) => {
   const [characterForm, setCharacterForm] = createStore({ name: '', skip_guide: false });
 
   const [locale] = useAppLocale();
-
-  const readGuideSettings = async () => {
-    const cacheValue = await readFromCache(RENDER_GUIDE_CACHE_NAME);
-    const value = cacheValue === null || cacheValue === undefined ? {} : JSON.parse(cacheValue);
-
-    setCharacterForm({ ...characterForm, skip_guide: value.cosmere === false })
-  }
-
-  createEffect(() => {
-    readGuideSettings();
-  });
 
   const saveCharacter = async () => {
     const result = await props.onCreateCharacter(characterForm);

@@ -1,4 +1,4 @@
-import { createSignal, createMemo, createEffect, Show } from 'solid-js';
+import { createSignal, createMemo, Show } from 'solid-js';
 import { createStore } from 'solid-js/store';
 import * as i18n from '@solid-primitives/i18n';
 
@@ -6,13 +6,12 @@ import { CharacterForm } from '../../../../pages';
 import { Select, Input, Checkbox } from '../../../../components';
 import daggerheartConfig from '../../../../data/daggerheart.json';
 import { useAppState, useAppLocale } from '../../../../context';
-import { translate, readFromCache, localize } from '../../../../helpers';
+import { translate, localize } from '../../../../helpers';
 
 const DAGGERHEART_DEFAULT_FORM = {
   name: '', heritage: undefined, heritage_name: '', heritage_features: [], main_feature: undefined,
   secondary_feature: undefined, community: undefined, main_class: undefined, subclass: undefined, skip_guide: false
 };
-const RENDER_GUIDE_CACHE_NAME = 'RenderGuideSettings';
 
 const TRANSLATION = {
   en: {
@@ -33,17 +32,6 @@ export const DaggerheartCharacterForm = (props) => {
   const [appState] = useAppState();
   const [locale, dict] = useAppLocale();
   const t = i18n.translator(dict);
-
-  const readGuideSettings = async () => {
-    const cacheValue = await readFromCache(RENDER_GUIDE_CACHE_NAME);
-    const value = cacheValue === null || cacheValue === undefined ? {} : JSON.parse(cacheValue);
-
-    setCharacterDaggerheartForm({ ...characterDaggerheartForm, skip_guide: value.daggerheart === false })
-  }
-
-  createEffect(() => {
-    readGuideSettings();
-  });
 
   const currentLocale = createMemo(() => {
     const providerLocale = appState.providerLocales['daggerheart'];

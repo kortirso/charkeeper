@@ -1,11 +1,11 @@
-import { createEffect, batch } from 'solid-js';
+import { batch } from 'solid-js';
 import { createStore } from 'solid-js/store';
 
 import { CharacterForm, Dc20Ancestries } from '../../../../pages';
 import { Select, Input, Checkbox } from '../../../../components';
 import config from '../../../../data/dc20.json';
 import { useAppLocale, useAppAlert } from '../../../../context';
-import { translate, readFromCache, localize } from '../../../../helpers';
+import { translate, localize } from '../../../../helpers';
 
 const TRANSLATION = {
   en: {
@@ -31,7 +31,6 @@ const TRANSLATION = {
 }
 
 const DC20_DEFAULT_FORM = { name: '', main_class: undefined, ancestry_feats: {}, ancestryPoints: 5, skip_guide: false };
-const RENDER_GUIDE_CACHE_NAME = 'RenderGuideSettings';
 
 export const Dc20CharacterForm = (props) => {
   const [characterDc20Form, setCharacterDc20Form] = createStore(DC20_DEFAULT_FORM);
@@ -39,17 +38,6 @@ export const Dc20CharacterForm = (props) => {
 
   const [{ renderAlert }] = useAppAlert();
   const [locale] = useAppLocale();
-
-  const readGuideSettings = async () => {
-    const cacheValue = await readFromCache(RENDER_GUIDE_CACHE_NAME);
-    const value = cacheValue === null || cacheValue === undefined ? {} : JSON.parse(cacheValue);
-
-    setCharacterDc20Form({ ...characterDc20Form, skip_guide: value.dc20 === false })
-  }
-
-  createEffect(() => {
-    readGuideSettings();
-  });
 
   const changeAncestries = (form, validationsForm) => {
     batch(() => {
