@@ -4,7 +4,8 @@ module Frontend
   module Cosmere
     class CharactersController < Frontend::BaseController
       include Deps[
-        character_create: 'commands.characters_context.cosmere.create'
+        character_create: 'commands.characters_context.cosmere.create',
+        character_update: 'commands.characters_context.cosmere.update'
       ]
       include SerializeResource
 
@@ -13,14 +14,21 @@ module Frontend
       def create
         case character_create.call(request_params.merge({ user: current_user }))
         in { errors: errors, errors_list: errors_list } then unprocessable_response(errors, errors_list)
-        in { result: result } then render_character(result)
+        in { result: result } then render_character(result, { only: CREATE_SERIALIZE_FIELDS }, :created)
+        end
+      end
+
+      def update
+        case character_update.call(request_params.merge({ character: character }))
+        in { errors: errors, errors_list: errors_list } then unprocessable_response(errors, errors_list)
+        else render_character(character, {}, :ok)
         end
       end
 
       private
 
-      def render_character(result)
-        serialize_resource(result, ::Cosmere::CharacterSerializer, :character, { only: CREATE_SERIALIZE_FIELDS }, :created)
+      def render_character(result, fields, status)
+        serialize_resource(result, ::Cosmere::CharacterSerializer, :character, fields, status)
       end
 
       def character

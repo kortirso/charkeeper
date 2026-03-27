@@ -18,6 +18,7 @@ class CosmereDecorator < ApplicationDecoratorV2
 
   def generate_basis
     @result['name'] = @character.name
+    @result['tier'] = find_tier
   end
 
   def calculate_secondary_abilities # rubocop: disable Metrics/AbcSize
@@ -27,6 +28,7 @@ class CosmereDecorator < ApplicationDecoratorV2
       'cognitive' => 10 + abilities['int'] + abilities['wil'],
       'spiritual' => 10 + abilities['awa'] + abilities['pre']
     }
+    @result['deflect'] = 0
     @result['health_max'] = 10 + abilities['str']
     @result['focus_max'] = 2 + abilities['wil']
     @result['investiture_max'] = 2 + [abilities['awa'], abilities['pre']].max
@@ -37,13 +39,15 @@ class CosmereDecorator < ApplicationDecoratorV2
   end
 
   def generate_skills_payload
-    [
-      %w[agility spd], %w[athletics str], %w[heavy_weaponry str], %w[light_weaponry spd],
-      %w[stealth spd], %w[thievery spd], %w[crafting int], %w[deduction int],
-      %w[discipline wil], %w[intimidation wil], %w[lore int], %w[medicine int],
-      %w[deception pre], %w[insight awa], %w[leadership pre], %w[perception awa],
-      %w[persuation pre], %w[survival awa]
-    ].map { |item| skill_payload(item[0], item[1]) }
+    (
+      [
+        %w[agility spd], %w[athletics str], %w[heavy_weaponry str], %w[light_weaponry spd],
+        %w[stealth spd], %w[thievery spd], %w[crafting int], %w[deduction int],
+        %w[discipline wil], %w[intimidation wil], %w[lore int], %w[medicine int],
+        %w[deception pre], %w[insight awa], %w[leadership pre], %w[perception awa],
+        %w[persuation pre], %w[survival awa]
+      ] + additional_skills.map { |(key, values)| [key, values['ability']] }
+    ).map { |item| skill_payload(item[0], item[1]) }
   end
 
   def skill_payload(slug, ability)
@@ -54,6 +58,15 @@ class CosmereDecorator < ApplicationDecoratorV2
       level: skill_level,
       modifier: skill_level + abilities[ability]
     }
+  end
+
+  def find_tier
+    return 5 if level >= 21
+    return 4 if level >= 16
+    return 3 if level >= 11
+    return 2 if level >= 6
+
+    1
   end
 
   def find_load

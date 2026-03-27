@@ -113,14 +113,14 @@ module Dc20Character
     def stamina_points
       @stamina_points ||=
         __getobj__.stamina_points.merge(
-          'max' => __getobj__.stamina_points['max'] + paths['martial'] + sum(bonuses.pluck('sp')) +
+          'max' => __getobj__.stamina_points['max'].to_i + paths['martial'] + sum(bonuses.pluck('sp')) +
                    sum(dynamic_bonuses.pluck('sp'))
         )
     end
 
     def mana_points
       @mana_points ||= __getobj__.mana_points.merge(
-        'max' => __getobj__.mana_points['max'] + (paths['spellcaster'] * 3) + sum(bonuses.pluck('mp')) +
+        'max' => __getobj__.mana_points['max'].to_i + (paths['spellcaster'] * 3) + sum(bonuses.pluck('mp')) +
                  sum(dynamic_bonuses.pluck('mp'))
       )
     end

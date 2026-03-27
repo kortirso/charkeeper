@@ -45,8 +45,8 @@ export const DaggerheartTraits = (props) => {
     return locale();
   });
 
-  const decreaseTraitValue = (slug) => setTraitsData({ ...traitsData(), [slug]: traitsData()[slug] - 1 });
-  const increaseTraitValue = (slug) => setTraitsData({ ...traitsData(), [slug]: traitsData()[slug] + 1 });
+  const decreaseValue = (slug) => setTraitsData({ ...traitsData(), [slug]: traitsData()[slug] - 1 });
+  const increaseValue = (slug) => setTraitsData({ ...traitsData(), [slug]: traitsData()[slug] + 1 });
 
   const cancelEditing = () => {
     batch(() => {
@@ -82,17 +82,17 @@ export const DaggerheartTraits = (props) => {
         <GuideWrapper
           character={character()}
           guideStep={1}
-          helpMessage={localize(TRANSLATION, locale())['helpMessage']}
+          helpMessage={localize(TRANSLATION, locale()).helpMessage}
           onReloadCharacter={props.onReloadCharacter}
         >
           <div class="blockable py-4">
-            <div class="grid grid-cols-3 emd:grid-cols-6 elg:grid-cols-3 exl:grid-cols-6 gap-x-2 gap-y-4">
+            <div class="abilities-box">
               <For each={Object.entries(config.traits).map(([key, values]) => [key, localize(values.name, currentLocale())])}>
                 {([slug, trait]) =>
                   <div>
-                    <p class="text-sm uppercase text-center mb-2">{trait}</p>
-                    <div class="mx-auto flex items-center justify-center">
-                      <p class="text-2xl font-normal!">
+                    <p class="ability-title">{trait}</p>
+                    <div class="ability-value-box">
+                      <p class="ability-value">
                         {editMode() ?
                           traitsData()[slug] :
                           <Dice
@@ -106,13 +106,9 @@ export const DaggerheartTraits = (props) => {
                       </p>
                     </div>
                     <Show when={editMode()}>
-                      <div class="mt-2 flex justify-center gap-2">
-                        <Button default size="small" onClick={() => decreaseTraitValue(slug)}>
-                          <Minus />
-                        </Button>
-                        <Button default size="small" onClick={() => increaseTraitValue(slug)}>
-                          <Plus />
-                        </Button>
+                      <div class="ability-changebox">
+                        <Button default size="small" onClick={() => decreaseValue(slug)}><Minus /></Button>
+                        <Button default size="small" onClick={() => increaseValue(slug)}><Plus /></Button>
                       </div>
                     </Show>
                   </div>
