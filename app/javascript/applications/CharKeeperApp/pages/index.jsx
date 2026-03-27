@@ -23,6 +23,8 @@ export * from './Content/Campaign/Page';
 export * from './Content/Character/Cosmere';
 export * from './Content/Character/Cosmere/Abilities';
 export * from './Content/Character/Cosmere/Skills';
+export * from './Content/Character/Cosmere/Defenses';
+export * from './Content/Character/Cosmere/Health';
 
 export * from './Content/Character/Dnd5';
 export * from './Content/Character/Dnd5/Abilities';

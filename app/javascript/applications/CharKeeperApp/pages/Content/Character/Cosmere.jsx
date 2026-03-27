@@ -1,7 +1,7 @@
 import { createSignal, createMemo, Switch, Match } from 'solid-js';
 import { createWindowSize } from '@solid-primitives/resize-observer';
 
-import { CosmereAbilities, CosmereSkills } from '../../../pages';
+import { CosmereAbilities, CosmereSkills, CosmereDefenses, CosmereHealth } from '../../../pages';
 import { CharacterNavigation, Notes, Avatar, ContentWrapper } from '../../../components';
 
 export const Cosmere = (props) => {
@@ -9,10 +9,10 @@ export const Cosmere = (props) => {
   const character = () => props.character;
 
   const [activeMobileTab, setActiveMobileTab] = createSignal('abilities');
-  const [activeTab, setActiveTab] = createSignal('notes');
+  const [activeTab, setActiveTab] = createSignal('combat');
 
   const characterTabs = createMemo(() => {
-    return ['notes', 'avatar'];
+    return ['combat', 'notes', 'avatar'];
   });
 
   const mobileView = createMemo(() => {
@@ -38,6 +38,12 @@ export const Cosmere = (props) => {
                   character={character()}
                   onReplaceCharacter={props.onReplaceCharacter}
                 />
+              </div>
+            </Match>
+            <Match when={activeMobileTab() === 'combat'}>
+              <CosmereDefenses character={character()} />
+              <div class="mt-4">
+                <CosmereHealth character={character()} />
               </div>
             </Match>
             <Match when={activeMobileTab() === 'notes'}>
@@ -84,6 +90,12 @@ export const Cosmere = (props) => {
         />
         <div class="p-2 pb-20 flex-1">
           <Switch>
+            <Match when={activeTab() === 'combat'}>
+              <CosmereDefenses character={character()} />
+              <div class="mt-4">
+                <CosmereHealth character={character()} />
+              </div>
+            </Match>
             <Match when={activeTab() === 'notes'}>
               <Notes />
             </Match>

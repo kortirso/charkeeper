@@ -16,7 +16,8 @@ const TRANSLATION = {
   },
   es: {
     clear: 'Cancelar selección',
-    search: 'Escribe para filtrar (desde 3 caracteres)'}
+    search: 'Escribe para filtrar (desde 3 caracteres)'
+  }
 }
 
 export const Select = (props) => {
