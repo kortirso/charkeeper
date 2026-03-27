@@ -1,5 +1,9 @@
 en:
   changelogs:
+    '4019':
+      cosmere:
+        title1: Core integration
+        desc1: Cosmere RPG compatible characters support was added
     '4018':
       dh:
         title1: Loot tables
