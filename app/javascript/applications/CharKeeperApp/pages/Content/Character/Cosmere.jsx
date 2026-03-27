@@ -1,6 +1,7 @@
 import { createSignal, createMemo, Switch, Match } from 'solid-js';
 import { createWindowSize } from '@solid-primitives/resize-observer';
 
+import { CosmereAbilities, CosmereSkills } from '../../../pages';
 import { CharacterNavigation, Notes, Avatar, ContentWrapper } from '../../../components';
 
 export const Cosmere = (props) => {
@@ -8,7 +9,7 @@ export const Cosmere = (props) => {
   const character = () => props.character;
 
   const [activeMobileTab, setActiveMobileTab] = createSignal('abilities');
-  const [activeTab, setActiveTab] = createSignal('skills');
+  const [activeTab, setActiveTab] = createSignal('notes');
 
   const characterTabs = createMemo(() => {
     return ['notes', 'avatar'];
@@ -26,6 +27,19 @@ export const Cosmere = (props) => {
         />
         <div class="p-2 pb-20 flex-1 overflow-y-auto">
           <Switch>
+            <Match when={activeMobileTab() === 'abilities'}>
+              <CosmereAbilities
+                character={character()}
+                onReplaceCharacter={props.onReplaceCharacter}
+                onReloadCharacter={props.onReloadCharacter}
+              />
+              <div class="mt-4">
+                <CosmereSkills
+                  character={character()}
+                  onReplaceCharacter={props.onReplaceCharacter}
+                />
+              </div>
+            </Match>
             <Match when={activeMobileTab() === 'notes'}>
               <Notes />
             </Match>
@@ -43,6 +57,17 @@ export const Cosmere = (props) => {
 
     return (
       <>
+        <CosmereAbilities
+          character={character()}
+          onReplaceCharacter={props.onReplaceCharacter}
+          onReloadCharacter={props.onReloadCharacter}
+        />
+        <div class="mt-4">
+          <CosmereSkills
+            character={character()}
+            onReplaceCharacter={props.onReplaceCharacter}
+          />
+        </div>
       </>
     );
   });

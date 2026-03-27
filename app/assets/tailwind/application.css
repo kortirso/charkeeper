@@ -893,3 +893,23 @@ body.web {
 .changelog ul li span {
   @apply font-medium!;
 }
+
+.abilities-box {
+  @apply grid grid-cols-3 emd:grid-cols-6 elg:grid-cols-3 exl:grid-cols-6 gap-x-2 gap-y-4;
+}
+
+.ability-title {
+  @apply text-sm uppercase text-center mb-2;
+}
+
+.ability-value-box {
+  @apply mx-auto flex items-center justify-center;
+}
+
+.ability-value {
+  @apply text-2xl font-normal!;
+}
+
+.ability-changebox {
+  @apply mt-2 flex justify-center gap-2;
+}

@@ -136,6 +136,11 @@ en:
           name:
             key?: Name is required
             filled?: Name must be filled
+            max_size?: Name's length cannot be more than 50
+          attribute_points:
+            gteq?: Attribute points value cannot be negative
+          skill_points:
+            gteq?: Skill points value cannot be negative
       dnd5_character:
         rules:
           name:

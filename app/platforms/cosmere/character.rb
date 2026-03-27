@@ -10,7 +10,7 @@ module Cosmere
     attribute :focus, :integer, default: 2
     attribute :investiture, :integer, default: 2
     attribute :selected_skills, array: true, default: {} # { 'acrobatics' => 2, 'arcana' => 1, 'crafting' => 3, 'id' => 1 }
-    attribute :additional_skills, array: true, default: {} # { 'id' => { 'name' => '', 'attribute' => 'str' } }
+    attribute :additional_skills, array: true, default: {} # { 'id' => { 'name' => '', 'ability' => 'str' } }
     # для левелинга
     attribute :attribute_points, :integer
     attribute :skill_points, :integer

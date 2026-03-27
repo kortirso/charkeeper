@@ -28,4 +28,44 @@ describe Frontend::Cosmere::CharactersController do
       end
     end
   end
+
+  describe 'PATCH#update' do
+    context 'for logged users' do
+      let!(:character) { create :character, :cosmere, user: user_session.user }
+      let(:params) do
+        { abilities: { str: 3, spd: 3, int: 1, wil: 1, awa: 2, pre: 2 }, attribute_points: 0 }
+      end
+
+      it 'updates character', :aggregate_failures do
+        patch :update, params: {
+          id: character.id, character: params, charkeeper_access_token: access_token
+        }
+
+        expect(response).to have_http_status :ok
+        expect(character.reload.data.attribute_points).to eq 0
+      end
+
+      context 'for not existing character' do
+        it 'returns error', :aggregate_failures do
+          patch :update, params: {
+            id: 'unexisting', character: params, charkeeper_access_token: access_token
+          }
+
+          expect(response).to have_http_status :not_found
+          expect(response.parsed_body['errors']).to eq(['Запись не найдена'])
+        end
+      end
+
+      context 'for invalid request' do
+        it 'returns error', :aggregate_failures do
+          patch :update, params: {
+            id: character.id, character: { attribute_points: -1 }, charkeeper_access_token: access_token
+          }
+
+          expect(response).to have_http_status :unprocessable_content
+          expect(response.parsed_body['errors']['attribute_points']).to eq(['Очки атрибутов не могут быть меньше 0'])
+        end
+      end
+    end
+  end
 end
