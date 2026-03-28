@@ -184,6 +184,11 @@ module Charkeeper
 
     register('commands.homebrew_context.dnd.books.add_subclasses') { HomebrewContext::Dnd::Books::AddSubclassesCommand.new }
     register('commands.homebrew_context.dnd.books.add_feats') { HomebrewContext::Dnd::Books::AddFeatsCommand.new }
+    register('commands.homebrew_context.dnd.books.add_backgrounds') { HomebrewContext::Dnd::Books::AddBackgroundsCommand.new }
+
+    register('commands.homebrew_context.dnd.backgrounds.add') { HomebrewContext::Dnd::Backgrounds::AddCommand.new }
+    register('commands.homebrew_context.dnd.backgrounds.change') { HomebrewContext::Dnd::Backgrounds::ChangeCommand.new }
+    register('commands.homebrew_context.dnd.backgrounds.copy') { HomebrewContext::Dnd::Backgrounds::CopyCommand.new }
 
     register('commands.homebrew_context.dnd.add_item') { HomebrewContext::Dnd::Items::AddCommand.new }
     register('commands.homebrew_context.dnd.change_item') { HomebrewContext::Dnd::Items::ChangeCommand.new }

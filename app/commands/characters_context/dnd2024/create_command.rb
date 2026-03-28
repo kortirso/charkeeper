@@ -14,7 +14,6 @@ module CharactersContext
 
         Classes = Dry::Types['strict.string'].enum(*::Dnd2024::Character.classes_info.keys)
         Alignments = Dry::Types['strict.string'].enum(*::Dnd2024::Character::ALIGNMENTS)
-        Backgrounds = Dry::Types['strict.string'].enum(*::Dnd2024::Character.backgrounds.keys)
 
         params do
           required(:user).filled(type?: User)
@@ -24,7 +23,7 @@ module CharactersContext
           required(:size).filled(:string)
           required(:main_class).filled(Classes)
           required(:alignment).filled(Alignments)
-          optional(:background).filled(Backgrounds)
+          optional(:background).filled(:string)
           optional(:skip_guide).filled(:bool)
         end
 
@@ -73,7 +72,12 @@ module CharactersContext
       def do_persist(input)
         character = ::Dnd2024::Character.create!(input.slice(:user, :name, :data))
         refresh_feats.call(character: character)
-        add_talent.call(character: character, talent: ::Dnd2024::Feat.find_by(slug: input.dig(:data, :selected_feats)))
+
+        talent = input.dig(:data, :selected_feats)
+        add_talent.call(
+          character: character,
+          talent: ::Dnd2024::Feat.find_by(slug: talent) || ::Dnd2024::Feat.find_by(id: talent)
+        )
         learn_spells_list(character, input)
 
         { result: character }

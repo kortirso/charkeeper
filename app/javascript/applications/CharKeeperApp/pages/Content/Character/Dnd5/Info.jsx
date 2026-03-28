@@ -49,7 +49,7 @@ export const Dnd5Info = (props) => {
     if (item === 'alignment') return localize(configNext.alignments[character().alignment].name, locale());
     if (item === 'species') return localize(configNext.species[character().species].name, locale());
     if (item === 'legacy' && character().legacy) return localize(configNext.species[character().species].legacies[character().legacy].name, locale());
-    if (item === 'background') return localize(configNext.backgrounds[character().background].name, locale());
+    if (item === 'background') return character().background_name;
 
     if (item === 'race') return localize(config.races[character().race].name, locale());
     if (item === 'subrace' && character().subrace) return localize(config.races[character().race].subraces[character().subrace].name, locale());

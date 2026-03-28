@@ -250,6 +250,10 @@ Rails.application.routes.draw do
         post :copy, on: :member
       end
       resources :feats, only: %i[index create update destroy]
+      resources :backgrounds, only: %i[index create update destroy] do
+        post :copy, on: :member
+        get :origin_feats, on: :collection
+      end
     end
 
     namespace :users do

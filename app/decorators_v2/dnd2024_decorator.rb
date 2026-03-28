@@ -52,6 +52,7 @@ class Dnd2024Decorator < ApplicationDecoratorV2
 
   def generate_basis # rubocop: disable Metrics/AbcSize
     @result['name'] = @character.name
+    @result['background_name'] = @character.background_name
     @result['available_talents'] = (level / 4) + 1 + (level >= 19 ? 1 : 0)
     @result['proficiency_bonus'] = 2 + ((level - 1) / 4)
     @result['static_spells'] = {}

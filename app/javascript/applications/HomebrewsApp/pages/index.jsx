@@ -24,3 +24,4 @@ export * from './Content/Dnd/Weapons';
 export * from './Content/Dnd/Subclasses';
 export * from './Content/Dnd/Spells';
 export * from './Content/Dnd/Feats';
+export * from './Content/Dnd/Backgrounds';

@@ -1,10 +1,10 @@
-import { Show } from 'solid-js';
+import { createMemo, Show } from 'solid-js';
 import { createStore } from 'solid-js/store';
 import * as i18n from '@solid-primitives/i18n';
 
 import { CharacterForm } from '../../../../pages';
 import { Select, Input, Checkbox } from '../../../../components';
-import dnd2024Config from '../../../../data/dnd2024.json';
+import config from '../../../../data/dnd2024.json';
 import { useAppLocale } from '../../../../context';
 import { translate, localize } from '../../../../helpers';
 
@@ -38,6 +38,12 @@ export const Dnd2024CharacterForm = (props) => {
       });
     }
   }
+
+  const dndBackgrounds = createMemo(() => {
+    if (props.homebrews() === undefined) return {};
+
+    return { ...config.backgrounds, ...props.homebrews().dnd2024.backgrounds };
+  });
 
   return (
     <CharacterForm setCurrentTab={props.setCurrentTab} onSaveCharacter={saveCharacter}>
@@ -75,20 +81,20 @@ export const Dnd2024CharacterForm = (props) => {
       <Select
         containerClassList="mb-2"
         labelText={t('newCharacterPage.pathfinder2.background')}
-        items={translate(dnd2024Config.backgrounds, locale())}
+        items={translate(dndBackgrounds(), locale())}
         selectedValue={characterDnd2024Form.background}
         onSelect={(value) => setCharacterDnd2024Form({ ...characterDnd2024Form, background: value })}
       />
       <Select
         containerClassList="mb-2"
         labelText={t('newCharacterPage.dnd2024.mainClass')}
-        items={translate(dnd2024Config.classes, locale())}
+        items={translate(config.classes, locale())}
         selectedValue={characterDnd2024Form.main_class}
         onSelect={(value) => setCharacterDnd2024Form({ ...characterDnd2024Form, main_class: value })}
       />
       <Select
         labelText={t('newCharacterPage.dnd2024.alignment')}
-        items={translate(dnd2024Config.alignments, locale())}
+        items={translate(config.alignments, locale())}
         selectedValue={characterDnd2024Form.alignment}
         onSelect={(value) => setCharacterDnd2024Form({ ...characterDnd2024Form, alignment: value })}
       />

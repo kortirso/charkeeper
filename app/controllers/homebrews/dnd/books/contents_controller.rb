@@ -6,7 +6,8 @@ module Homebrews
       class ContentsController < Homebrews::BaseController
         include Deps[
           add_book_subclasses_command: 'commands.homebrew_context.dnd.books.add_subclasses',
-          add_book_feats_command: 'commands.homebrew_context.dnd.books.add_feats'
+          add_book_feats_command: 'commands.homebrew_context.dnd.books.add_feats',
+          add_book_backgrounds_command: 'commands.homebrew_context.dnd.books.add_backgrounds'
         ]
 
         before_action :find_own_book, only: %i[create]
@@ -24,6 +25,7 @@ module Homebrews
           case params[:type]
           when 'subclass' then add_book_subclasses_command
           when 'spell', 'feat' then add_book_feats_command
+          when 'background' then add_book_backgrounds_command
           end
         end
 

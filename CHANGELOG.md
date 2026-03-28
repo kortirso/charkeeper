@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## Unreleased
 ### Added
 - creating homebrew feats for D&D characters
+- creating homebrew backgrounds for D&D characters
 
 ## [0.4.20] - 2026-03-28
 ### Added
