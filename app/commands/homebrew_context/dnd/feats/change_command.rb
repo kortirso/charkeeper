@@ -23,6 +23,8 @@ module HomebrewContext
             optional(:modifiers).hash
             optional(:continious).filled(:bool)
             optional(:static_spells).hash
+            optional(:ability_conditions).maybe(:array).each(:string)
+            optional(:leveling_ability_boosts).maybe(:array).each(:string)
           end
 
           rule(:limit, :limit_refresh).validate(:check_all_or_nothing_present)
@@ -37,16 +39,37 @@ module HomebrewContext
         #   [I18n.t('commands.homebrew_context.dnd.feats.add.invalid_formula')]
         # end
 
-        def do_prepare(input)
-          input[:conditions] = { level: input[:level] } if input.key?(:level)
-          input[:description_eval_variables] = { limit: input[:limit].to_s } if input.key?(:limit)
-          input[:title] = { en: sanitize(input[:title]) } if input.key?(:title)
-          input[:description] = { en: sanitize(input[:description]) } if input.key?(:description)
-          input[:info] = { static_spells: input[:static_spells] } if input.key?(:static_spells)
+        def do_prepare(input) # rubocop: disable Metrics/AbcSize, Metrics/MethodLength
+          if input.key?(:limit)
+            input[:description_eval_variables] =
+              input[:feat].description_eval_variables.symbolize_keys.merge({ limit: input[:limit].to_s })
+          end
+          if input.key?(:level)
+            input[:conditions] =
+              input[:feat].conditions.symbolize_keys.merge({ level: input[:level] })
+          end
+          if input.key?(:ability_conditions)
+            input[:conditions] =
+              input[:feat].conditions.symbolize_keys.merge({ ability: input[:ability_conditions] })
+          end
+          if input.key?(:static_spells)
+            input[:info] =
+              input[:feat].info.symbolize_keys.merge({ static_spells: input[:static_spells] })
+          end
+          if input.key?(:leveling_ability_boosts)
+            input[:info] =
+              input[:feat].info.symbolize_keys.deep_merge({
+                rewrite: { ability_boosts: input[:leveling_ability_boosts], leveling_ability_boosts: 1 }
+              })
+          end
+          if input.key?(:description)
+            input[:description] = { en: sanitize(input[:description]), ru: sanitize(input[:description]) }
+          end
+          input[:title] = { en: sanitize(input[:title]), ru: sanitize(input[:title]) } if input.key?(:title)
         end
 
         def do_persist(input)
-          input[:feat].update!(input.except(:feat, :limit, :level, :static_spells))
+          input[:feat].update!(input.except(:feat, :limit, :level, :static_spells, :ability_conditions, :leveling_ability_boosts))
 
           { result: input[:feat] }
         end

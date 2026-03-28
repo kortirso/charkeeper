@@ -174,7 +174,7 @@ export const DaggerheartDomains = () => {
   }
 
   const addToBook = async () => {
-    const result = await changeBookContent(appState.accessToken, book(), { ids: selectedIds(), only_head: true }, 'domain');
+    const result = await changeBookContent(appState.accessToken, 'daggerheart', book(), { ids: selectedIds(), only_head: true }, 'domain');
 
     if (result.errors_list === undefined) {
       batch(() => {

@@ -2,7 +2,7 @@ import { Show } from 'solid-js';
 
 import { Button, DndFeatForm, createModal } from '../../../components';
 import { useAppLocale } from '../../../context';
-import { Trash, Edit } from '../../../assets';
+import { Trash, Edit, Stroke } from '../../../assets';
 
 const TRANSLATION = {
   en: {
@@ -35,6 +35,13 @@ export const DndFeat = (props) => {
         </div>
         <div class="col-span-1 flex items-start justify-end gap-2">
           <Show when={props.open !== undefined && !props.open}>
+            <Show when={props.showBookSelect}>
+              <Button default classList="p-2" onClick={props.onSelect}>
+                <span classList={{ 'opacity-25': !props.selected }}>
+                  <Stroke width="16" height="12" />
+                </span>
+              </Button>
+            </Show>
             <Button default classList="p-1" onClick={openModal}>
               <Edit width="16" height="16" />
             </Button>

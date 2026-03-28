@@ -194,7 +194,7 @@ export const DaggerheartTransformations = () => {
   }
 
   const addToBook = async () => {
-    const result = await changeBookContent(appState.accessToken, book(), { ids: selectedIds(), only_head: true }, 'transformation');
+    const result = await changeBookContent(appState.accessToken, 'daggerheart', book(), { ids: selectedIds(), only_head: true }, 'transformation');
 
     if (result.errors_list === undefined) {
       batch(() => {

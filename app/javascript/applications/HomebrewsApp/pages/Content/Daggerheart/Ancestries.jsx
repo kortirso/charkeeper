@@ -217,7 +217,7 @@ export const DaggerheartAncestries = () => {
   }
 
   const addToBook = async () => {
-    const result = await changeBookContent(appState.accessToken, book(), { ids: selectedIds(), only_head: true }, 'ancestry');
+    const result = await changeBookContent(appState.accessToken, 'daggerheart', book(), { ids: selectedIds(), only_head: true }, 'ancestry');
 
     if (result.errors_list === undefined) {
       batch(() => {

@@ -5,13 +5,14 @@ module Homebrews
     class BookSerializer < ApplicationSerializer
       attributes :id, :name, :provider, :items, :shared, :public, :enabled, :own
 
-      def items
+      def items # rubocop: disable Metrics/AbcSize
         object_items = object.items.group_by(&:itemable_type).transform_values { |item| item.pluck(:itemable_id) }
 
         {
           items: ::Dnd5::Item.where(id: object_items['Dnd5::Item']).pluck(:name).map { |item| translate(item) },
           classes: subclasses_info(object_items),
-          spells: spells(object_items).pluck(:title).map { |item| translate(item) }
+          spells: feats(object_items, 6).pluck(:title).map { |item| translate(item) },
+          feats: feats(object_items, 4).pluck(:title).map { |item| translate(item) }
         }
       end
 
@@ -35,9 +36,9 @@ module Homebrews
           .transform_values { |value| value.map { |item| item[:name] } }
       end
 
-      def spells(object_items)
+      def feats(object_items, origin)
         ::Dnd2024::Feat
-          .where(origin: 6)
+          .where(origin: origin)
           .where(id: object_items['Dnd2024::Feat'].to_a + object_items['Feat'].to_a)
       end
     end

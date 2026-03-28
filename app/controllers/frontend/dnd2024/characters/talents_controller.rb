@@ -14,8 +14,12 @@ module Frontend
         before_action :find_talent, only: %i[create]
 
         def index
-          serialize_relation(
-            available_talents, ::Dnd2024::Characters::TalentSerializer, :talents, {}, { selected_talents: @selected_talents }
+          serialize_relation_v2(
+            available_talents,
+            ::Dnd2024::Characters::TalentSerializer,
+            :talents,
+            context: { selected_talents: @selected_talents },
+            order_options: { key: 'title' }
           )
         end
 
@@ -36,17 +40,24 @@ module Frontend
           @talent = ::Dnd2024::Feat.where(origin: 4).find(params[:talent_id])
         end
 
-        def available_talents # rubocop: disable Metrics/AbcSize
+        def available_talents
           @selected_talents = @character.data.selected_talents.keys
           data = @character.data
-
-          ::Dnd2024::Feat.where(origin: 4, origin_value: %w[origin general epic]).select do |talent|
-            next false if data.level < talent.conditions['level'].to_i
-            next true if talent.conditions['ability'].blank?
-            next false if data.abilities.slice(*talent.conditions['ability']).values.none? { |item| item >= 13 }
-
-            true
+          talents_relation.select do |talent|
+            data.level >= talent.conditions['level'].to_i
           end
+        end
+
+        def talents_relation
+          relation = ::Dnd2024::Feat.where(origin: 4, origin_value: %w[origin general epic])
+          relation.where(user_id: [current_user.id, nil]).or(relation.where(id: homebrew_item_ids))
+        end
+
+        def homebrew_item_ids
+          ::Homebrew::Book::Item
+            .where(homebrew_book_id: ::User::Book.where(user_id: current_user).select(:homebrew_book_id))
+            .where(itemable_type: 'Dnd2024::Feat')
+            .pluck(:itemable_id)
         end
       end
     end

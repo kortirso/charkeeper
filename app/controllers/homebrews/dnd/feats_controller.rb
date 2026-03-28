@@ -11,7 +11,7 @@ module Homebrews
       private
 
       def find_feats
-        @feats = ::Dnd2024::Feat.where(user_id: current_user.id)
+        @feats = ::Dnd2024::Feat.where(user_id: current_user.id, origin: 4)
       end
 
       def find_feat
