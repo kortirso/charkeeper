@@ -163,6 +163,15 @@ module Dnd2024
       end
     end
 
+    def background_name
+      return '' unless data.background
+
+      default = ::Dnd2024::Character.backgrounds[data.background]
+      return translate(default['name']) if default
+
+      translate(dnd_names.fetch_item(key: :backgrounds, id: data.background)[:name])
+    end
+
     private
 
     def class_name(class_slug)

@@ -1,7 +1,7 @@
 import { For, Switch, Match } from 'solid-js';
 
 import {
-  DndBooks, DndItems, DndWeapons, DndSubclasses, DndSpells, DndFeats
+  DndBooks, DndItems, DndWeapons, DndSubclasses, DndSpells, DndFeats, DndBackgrounds
 } from '../../pages';
 import { useAppState, useAppLocale } from '../../context';
 
@@ -12,7 +12,8 @@ const TRANSLATION = {
     weapons: 'Weapons',
     subclasses: 'Subclasses',
     spells: 'Spells',
-    feats: 'Feats'
+    feats: 'Feats',
+    backgrounds: 'Backgrounds'
   },
   ru: {
     books: 'Книги',
@@ -20,7 +21,8 @@ const TRANSLATION = {
     weapons: 'Оружие',
     subclasses: 'Подклассы',
     spells: 'Заклинания',
-    feats: 'Черты'
+    feats: 'Черты',
+    backgrounds: 'Происхождения'
   }
 }
 
@@ -32,7 +34,7 @@ export const Dnd2024 = () => {
   return (
     <>
       <div class="flex gap-x-4 my-4">
-        <For each={['books', 'items', 'weapons', 'subclasses', 'spells', 'feats']}>
+        <For each={['books', 'items', 'weapons', 'subclasses', 'spells', 'feats', 'backgrounds']}>
           {(item) =>
             <p
               class="homebrew-provider-nav"
@@ -45,7 +47,8 @@ export const Dnd2024 = () => {
       <Switch fallback={<></>}>
         <For each={
           Object.entries({
-            books: DndBooks, items: DndItems, weapons: DndWeapons, subclasses: DndSubclasses, spells: DndSpells, feats: DndFeats
+            books: DndBooks, items: DndItems, weapons: DndWeapons, subclasses: DndSubclasses, spells: DndSpells, feats: DndFeats,
+            backgrounds: DndBackgrounds
           })
         }>
           {([item, Component]) =>

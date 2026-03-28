@@ -12,7 +12,8 @@ module Homebrews
           items: ::Dnd5::Item.where(id: object_items['Dnd5::Item']).pluck(:name).map { |item| translate(item) },
           classes: subclasses_info(object_items),
           spells: feats(object_items, 6).pluck(:title).map { |item| translate(item) },
-          feats: feats(object_items, 4).pluck(:title).map { |item| translate(item) }
+          feats: feats(object_items, 4).pluck(:title).map { |item| translate(item) },
+          backgrounds: ::Dnd2024::Homebrew::Background.where(id: object_items['Dnd2024::Homebrew::Background']).pluck(:name)
         }
       end
 

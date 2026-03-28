@@ -11,7 +11,10 @@ module Dnd2024Character
     private
 
     def background_builder(background)
-      "Dnd2024Character::Backgrounds::#{background.camelize}Builder".constantize.new
+      default = ::Dnd2024::Character.backgrounds[background]
+      return "Dnd2024Character::Backgrounds::#{background.camelize}Builder".constantize.new if default
+
+      Dnd2024Character::Backgrounds::CustomBuilder.new
     rescue NameError => _e
       DummyBuilder.new
     end

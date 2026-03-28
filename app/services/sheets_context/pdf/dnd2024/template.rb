@@ -13,7 +13,7 @@ module SheetsContext
         private
 
         def heritage(character)
-          [subrace(character) || race(character), background(character)].compact.join(' / ')
+          [subrace(character) || race(character), character.parent.background_name].compact.join(' / ')
         end
 
         def classes(character)

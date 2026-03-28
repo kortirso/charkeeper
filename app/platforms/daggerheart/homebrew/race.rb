@@ -7,8 +7,6 @@ module Daggerheart
     end
 
     class Race < ::Homebrew::Race
-      include Discard::Model
-
       attribute :data, Daggerheart::Homebrew::RaceData.to_type
     end
   end

@@ -13,7 +13,7 @@ module Dnd2024
                :selected_beastforms, :beastform, :weapon_mastery, :speeds, :money, :guide_step, :ability_boosts,
                :any_skill_boosts, :skill_boosts, :skill_boosts_list, :heroic_inspiration, :bardic_inspiration, :selected_talents,
                :leveling_ability_boosts, :leveling_ability_boosts_list, :available_talents, :skills, :exhaustion, :alignment,
-               :selected_additional_talents
+               :selected_additional_talents, :background_name
 
     delegate :features, :level, :species, :legacy, :main_class, :classes, :subclasses, :abilities, :skills,
              :modifiers, :save_dc, :proficiency_bonus, :hit_dice, :armor_class, :initiative, :speed, :attacks_per_action,
@@ -21,7 +21,7 @@ module Dnd2024
              :spent_spell_slots, :coins, :load, :languages, :tools, :music, :weapon_core_skills, :weapon_skills,
              :armor_proficiency, :spell_classes, :spells_slots, :static_spells, :selected_feats, :darkvision,
              :modified_abilities, :available_spell_level, :formatted_static_spells, :selected_beastforms, :beastform,
-             :weapon_mastery, :speeds, :money, :available_talents, to: :decorator
+             :weapon_mastery, :speeds, :money, :available_talents, :background_name, to: :decorator
     delegate :created_at, :data, :id, :name, to: :object
     delegate :guide_step, :ability_boosts, :any_skill_boosts, :skill_boosts, :skill_boosts_list, :heroic_inspiration,
              :bardic_inspiration, :selected_talents, :leveling_ability_boosts, :leveling_ability_boosts_list, :exhaustion,

@@ -14,7 +14,8 @@ module HomebrewsContext
         },
         dnd2024: {
           races: dnd2024_races(user_id),
-          subclasses: dnd2024_subclasses(user_id)
+          subclasses: dnd2024_subclasses(user_id),
+          backgrounds: dnd2024_backgrounds(user_id)
         }
       }
     end
@@ -45,6 +46,19 @@ module HomebrewsContext
         .each_with_object({}) do |item, acc|
           acc[item.class_name] ||= {}
           acc[item.class_name][item.id] = { name: { en: item.name, ru: item.name } }
+        end
+    end
+
+    def dnd2024_backgrounds(user_id)
+      relation = ::Dnd2024::Homebrew::Background
+      relation.where(user_id: user_id)
+        .or(
+          relation.where(
+            id: available_books_data(user_id)['Dnd2024::Homebrew::Background'] || available_books_data(user_id)['Homebrew::Community']
+          )
+        )
+        .each_with_object({}) do |item, acc|
+          acc[item.id] = { name: { en: item.name, ru: item.name } }
         end
     end
 

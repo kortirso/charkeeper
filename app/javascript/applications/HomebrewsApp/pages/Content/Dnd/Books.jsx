@@ -24,7 +24,8 @@ const TRANSLATION = {
     save: 'Save',
     official: 'Approved',
     showPublic: 'Show public',
-    public: 'Public'
+    public: 'Public',
+    backgrounds: 'Backgrounds'
   },
   ru: {
     add: 'Добавить книгу',
@@ -39,7 +40,8 @@ const TRANSLATION = {
     save: 'Сохранить',
     official: 'Одобренная',
     showPublic: 'Показать общедоступные',
-    public: 'Общедоступная'
+    public: 'Общедоступная',
+    backgrounds: 'Предыстории'
   }
 }
 
@@ -160,7 +162,7 @@ export const DndBooks = () => {
                   <p class="font-medium!">{TRANSLATION[locale()].official}</p>
                 </Show>
               </div>
-              <For each={['items', 'classes', 'spells', 'feats']}>
+              <For each={['items', 'classes', 'spells', 'feats', 'backgrounds']}>
                 {(kind) =>
                   <Show
                     when={kind !== 'classes'}
