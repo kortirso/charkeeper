@@ -4,7 +4,7 @@ import { useAppState, useAppLocale, useAppAlert } from '../../../context';
 import { Button, createModal, DaggerheartFeatForm, Select } from '../../../components';
 import { Trash } from '../../../assets';
 import { translate } from '../../../helpers';
-import { fetchDaggerheartFeatures } from '../../../requests/fetchDaggerheartFeatures';
+import { fetchFeaturesRequest } from '../../../requests/fetchFeaturesRequest';
 import { createFeat } from '../../../requests/createFeat';
 import { removeFeat } from '../../../requests/removeFeat';
 
@@ -40,7 +40,7 @@ export const DaggerheartFeatures = () => {
   createEffect(() => {
     if (characters() !== undefined) return;
 
-    const fetchFeatures = async () => await fetchDaggerheartFeatures(appState.accessToken);
+    const fetchFeatures = async () => await fetchFeaturesRequest(appState.accessToken, 'daggerheart');
     const fetchCharacters = async () => await fetchCharactersRequest(appState.accessToken);
 
     Promise.all([fetchFeatures(), fetchCharacters()]).then(

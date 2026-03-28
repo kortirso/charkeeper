@@ -22,7 +22,10 @@ const TRANSLATION = {
     origin: 'Origin',
     general: 'General',
     epic: 'Epic',
-    selectAdditionalTalent: 'Select additional feat (if you need)'
+    selectAdditionalTalent: 'Select additional feat (if you need)',
+    requiredAbility: 'One of abilities should be 13+',
+    or: ' or ',
+    abilityBoost: 'Ability increase by 1'
   },
   ru: {
     talents: 'Черты',
@@ -33,7 +36,10 @@ const TRANSLATION = {
     origin: 'Происхождение',
     general: 'Общее',
     epic: 'Эпическая',
-    selectAdditionalTalent: 'Выберите дополнительную черту (если хотите)'
+    selectAdditionalTalent: 'Выберите дополнительную черту (если хотите)',
+    requiredAbility: 'Одна из характеристик должна быть 13+',
+    or: ' или ',
+    abilityBoost: 'Повышение характеристики на 1'
   }
 }
 
@@ -47,7 +53,6 @@ export const Dnd5ClassLevels = (props) => {
   const [subclassesData, setSubclassesData] = createSignal(character().subclasses);
 
   const [selectedTalent, setSelectedTalent] = createSignal(null);
-  const [additionalTalent, setAdditionalTalent] = createSignal(null);
 
   const [talents, setTalents] = createSignal(undefined);
 
@@ -101,6 +106,8 @@ export const Dnd5ClassLevels = (props) => {
 
     return Object.values(character().selected_talents).reduce((acc, value) => acc + value, 0) - character().selected_additional_talents;
   });
+
+  const defaultTalent = createMemo(() => character().available_talents > selectedTalentsCount());
 
   const classesWithHomebrews = createMemo(() => {
     const result = currentConfig().classes;
@@ -171,24 +178,12 @@ export const Dnd5ClassLevels = (props) => {
   }
 
   const saveTalent = async () => {
-    const result = await createTalentRequest(appState.accessToken, character().provider, character().id, { talent_id: selectedTalent().id });
+    const result = await createTalentRequest(appState.accessToken, character().provider, character().id, { talent_id: selectedTalent().id, additional: !defaultTalent() });
     performResponse(
       result,
       function() { // eslint-disable-line solid/reactivity
         props.onReloadCharacter();
         setSelectedTalent(null);
-      },
-      function() { renderAlerts(result.errors_list) }
-    );
-  }
-
-  const saveAdditionalTalent = async () => {
-    const result = await createTalentRequest(appState.accessToken, character().provider, character().id, { talent_id: additionalTalent().id, additional: true });
-    performResponse(
-      result,
-      function() { // eslint-disable-line solid/reactivity
-        props.onReloadCharacter();
-        setAdditionalTalent(null);
       },
       function() { renderAlerts(result.errors_list) }
     );
@@ -293,46 +288,32 @@ export const Dnd5ClassLevels = (props) => {
                 }
               </For>
             </Show>
-            <Show
-              when={character().available_talents > selectedTalentsCount()}
-              fallback={
-                <div class="mt-2">
-                  <Select
-                    labelText={localize(TRANSLATION, locale()).selectAdditionalTalent}
-                    items={availableTalents()}
-                    selectedValue={additionalTalent()?.id}
-                    onSelect={(value) => setAdditionalTalent(talents().find((item) => item.id === value))}
-                  />
-                  <Show when={additionalTalent()}>
-                    <p
-                      class="feat-markdown text-xs mt-1"
-                      innerHTML={additionalTalent().description} // eslint-disable-line solid/no-innerhtml
-                    />
-                    <Button default textable size="small" classList="inline-block mt-2" onClick={saveAdditionalTalent}>
-                      {localize(TRANSLATION, locale()).saveButton}
-                    </Button>
-                  </Show>
-                </div>
-              }
-            >
-              <div class="mt-2">
-                <Select
-                  labelText={localize(TRANSLATION, locale()).selectTalent}
-                  items={availableTalents()}
-                  selectedValue={selectedTalent()?.id}
-                  onSelect={(value) => setSelectedTalent(talents().find((item) => item.id === value))}
-                />
-                <Show when={selectedTalent()}>
-                  <p
-                    class="feat-markdown text-xs mt-1"
-                    innerHTML={selectedTalent().description} // eslint-disable-line solid/no-innerhtml
-                  />
-                  <Button default textable size="small" classList="inline-block mt-2" onClick={saveTalent}>
-                    {localize(TRANSLATION, locale()).saveButton}
-                  </Button>
+            <div class="mt-2">
+              <Select
+                searchable
+                labelText={localize(TRANSLATION, locale())[defaultTalent() ? 'selectTalent' : 'selectAdditionalTalent']}
+                items={availableTalents()}
+                selectedValue={selectedTalent()?.id}
+                onSelect={(value) => setSelectedTalent(talents().find((item) => item.id === value))}
+              />
+              <Show when={selectedTalent()}>
+                <Show when={selectedTalent().conditions.ability && selectedTalent().conditions.ability.length > 0}>
+                  <p class="text-sm mt-2">{localize(TRANSLATION, locale()).requiredAbility}: {selectedTalent().conditions.ability.map((item) => dnd2024Config.abilities[item].name[locale()]).join(localize(TRANSLATION, locale()).or)}</p>
                 </Show>
-              </div>
-            </Show>
+                <Show
+                  when={selectedTalent().info.rewrite?.ability_boosts && selectedTalent().info.rewrite.ability_boosts.length > 0}
+                >
+                  <p class="text-sm mt-2">{localize(TRANSLATION, locale()).abilityBoost}: {selectedTalent().info.rewrite.ability_boosts.map((item) => dnd2024Config.abilities[item].name[locale()]).join(localize(TRANSLATION, locale()).or)}</p>
+                </Show>
+                <p
+                  class="feat-markdown mt-2"
+                  innerHTML={selectedTalent().description} // eslint-disable-line solid/no-innerhtml
+                />
+                <Button default textable classList="inline-block mt-4" onClick={saveTalent}>
+                  {localize(TRANSLATION, locale()).saveButton}
+                </Button>
+              </Show>
+            </div>
           </Toggle>
         </Show>
       </GuideWrapper>

@@ -10,7 +10,7 @@ module HomebrewContext
         use_contract do
           config.messages.namespace = :homebrew_feat
 
-          Origins = Dry::Types['strict.string'].enum('subclass')
+          Origins = Dry::Types['strict.string'].enum('subclass', 'feat')
           Kinds = Dry::Types['strict.string'].enum('static', 'text', 'update_result', 'hidden')
           Limits = Dry::Types['strict.string'].enum('short_rest', 'long_rest', 'one_at_short_rest')
 
@@ -27,6 +27,8 @@ module HomebrewContext
             optional(:modifiers).hash
             optional(:continious).filled(:bool)
             optional(:static_spells).hash
+            optional(:ability_conditions).maybe(:array).each(:string)
+            optional(:leveling_ability_boosts).maybe(:array).each(:string)
           end
 
           rule(:limit, :limit_refresh).validate(:check_all_or_nothing_present)
@@ -35,6 +37,7 @@ module HomebrewContext
               case values[:origin]
               when 'subclass'
                 ::Dnd2024::Homebrew::Subclass.find_by(user_id: values[:user].id, id: values[:origin_value])
+              when 'feat' then true
               end
             next if origin
 
@@ -52,17 +55,24 @@ module HomebrewContext
         #   [I18n.t('commands.homebrew_context.dnd.feats.add.invalid_formula')]
         # end
 
-        def do_prepare(input)
+        def do_prepare(input) # rubocop: disable Metrics/AbcSize
           input[:origin_value] = sanitize(input[:origin_value])
           input[:conditions] = { level: input[:level] }
+          if input.key?(:ability_conditions) && input[:origin] == 'feat'
+            input[:conditions][:ability] = input[:ability_conditions]
+          end
           input[:description_eval_variables] = { limit: input[:limit].to_s } if input.key?(:limit)
-          input[:title] = { en: sanitize(input[:title]) }
-          input[:description] = { en: sanitize(input[:description]) }
           input[:info] = { static_spells: input[:static_spells] }
+          if input.key?(:leveling_ability_boosts) && input[:origin] == 'feat'
+            input[:info][:rewrite] = { ability_boosts: input[:leveling_ability_boosts], leveling_ability_boosts: 1 }
+          end
+          input[:title] = { en: sanitize(input[:title]), ru: sanitize(input[:title]) }
+          input[:description] = { en: sanitize(input[:description]), ru: sanitize(input[:description]) }
         end
 
         def do_persist(input)
-          result = ::Dnd2024::Feat.create!(input.except(:limit, :level, :static_spells))
+          result =
+            ::Dnd2024::Feat.create!(input.except(:limit, :level, :static_spells, :ability_conditions, :leveling_ability_boosts))
 
           { result: result }
         end

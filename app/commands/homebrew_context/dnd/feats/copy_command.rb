@@ -29,7 +29,7 @@ module HomebrewContext
         def feat_attributes(input, feat)
           feat
             .attributes
-            .slice('origin', 'kind', 'limit_refresh', 'modifiers', 'continious', 'info')
+            .slice('origin', 'kind', 'limit_refresh', 'modifiers', 'continious', 'info', 'conditions')
             .symbolize_keys
             .merge({
               origin_value: input[:origin_value],

@@ -221,7 +221,7 @@ export const DndSpells = () => {
   }
 
   const addToBook = async () => {
-    const result = await changeBookContent(appState.accessToken, book(), { ids: selectedIds(), only_head: true }, 'spell');
+    const result = await changeBookContent(appState.accessToken, 'dnd', book(), { ids: selectedIds(), only_head: true }, 'spell');
 
     if (result.errors_list === undefined) {
       batch(() => {

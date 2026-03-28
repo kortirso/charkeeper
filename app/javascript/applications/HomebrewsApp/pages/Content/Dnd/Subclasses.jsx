@@ -31,8 +31,6 @@ const TRANSLATION = {
     save: 'Save',
     addFeature: 'Add feature',
     originClass: 'Origin class',
-    spellcast: 'Spellcast trait',
-    mechanics: 'Mechanics',
     showPublic: 'Show public',
     public: 'Public',
     copyCompleted: 'Subclass copy is completed'
@@ -47,8 +45,6 @@ const TRANSLATION = {
     save: 'Сохранить',
     addFeature: 'Добавить способность',
     originClass: 'Класс',
-    spellcast: 'Магическая характеристика',
-    mechanics: 'Доступные механики',
     showPublic: 'Показать общедоступные',
     public: 'Общедоступный',
     copyCompleted: 'Копирование подкласса завершено'

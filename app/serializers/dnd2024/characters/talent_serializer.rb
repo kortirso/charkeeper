@@ -3,7 +3,7 @@
 module Dnd2024
   module Characters
     class TalentSerializer < ApplicationSerializer
-      ATTRIBUTES = %i[id title description origin_value multiple selected].freeze
+      ATTRIBUTES = %i[id title description origin_value multiple selected info conditions].freeze
 
       attributes(*ATTRIBUTES)
 

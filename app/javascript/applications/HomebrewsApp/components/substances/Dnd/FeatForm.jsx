@@ -1,6 +1,8 @@
 import { createSignal, createEffect, Show, For, batch } from 'solid-js';
 import { createStore } from 'solid-js/store';
 
+import config from '../../../../CharKeeperApp/data/dnd2024.json';
+
 import { Input, Button, Select, TextArea, Checkbox, ModifiersForm } from '../../../components';
 import { useAppLocale } from '../../../context';
 import { Trash } from '../../../assets';
@@ -30,7 +32,15 @@ const TRANSLATION = {
       wis: 'Wisdom',
       cha: 'Charisma'
     },
-    spellAbility: 'Ability'
+    spellAbility: 'Ability',
+    originValues: {
+      origin: 'Origin',
+      general: 'General',
+      epic: 'Epic'
+    },
+    originValue: 'Origin value',
+    requiredAbilities: 'Condition: one of abilities is 13+',
+    abilityBoost: 'Ability boost'
   },
   ru: {
     markdown: 'Вы можете использовать Markdown для редактирования описания',
@@ -55,7 +65,15 @@ const TRANSLATION = {
       wis: 'Мудрость',
       cha: 'Харизма'
     },
-    spellAbility: 'Характеристика'
+    spellAbility: 'Характеристика',
+    originValues: {
+      origin: 'Происхождение',
+      general: 'Общий',
+      epic: 'Эпический'
+    },
+    originValue: 'Принадлежность',
+    requiredAbilities: 'Условие: одна из характеристик 13+',
+    abilityBoost: 'Повышение характеристики'
   }
 }
 
@@ -155,8 +173,8 @@ export const DndFeatForm = (props) => {
   const [featForm, setFeatForm] = createStore({
     title: '',
     description: '',
-    origin: props.origin || '',
-    origin_value: props.originValue || '',
+    origin: props.origin || null,
+    origin_value: props.originValue || null,
     kind: 'static',
     limit: null,
     limit_refresh: null,
@@ -164,6 +182,8 @@ export const DndFeatForm = (props) => {
     modifiers: {},
     continious: false,
     static_spells: {},
+    ability_conditions: [],
+    leveling_ability_boosts: []
   });
 
   const [featureId, setFeatureId] = createSignal(undefined);
@@ -180,12 +200,20 @@ export const DndFeatForm = (props) => {
           title: props.feature.title.en,
           description: props.feature.description.en,
           static_spells: props.feature.info.static_spells,
-          level: props.feature.conditions.level
+          level: props.feature.conditions.level,
+          ability_conditions: props.feature.conditions.ability || [],
+          leveling_ability_boosts: props.feature.info.rewrite?.ability_boosts || []
         });
         setFeatureId(props.feature.id)
       });
     }
   });
+
+  const updateMultiFeatureValue = (value, key) => {
+    const currentValues = featForm[key];
+    const newValue = currentValues.includes(value) ? currentValues.filter((item) => item !== value) : currentValues.concat([value]);
+    setFeatForm({ ...featForm, [key]: newValue });
+  }
 
   const addSpell = () => {
     if (!spellSlug()) return;
@@ -214,12 +242,43 @@ export const DndFeatForm = (props) => {
   return (
     <div class="w-5xl">
       <p class="text-xl">{TRANSLATION[locale()].formTitle}</p>
-      <Input
-        containerClassList="mt-2"
-        labelText={TRANSLATION[locale()].title}
-        value={featForm.title}
-        onInput={(value) => setFeatForm({ ...featForm, title: value })}
-      />
+      <div class="flex gap-4 mt-2">
+        <Input
+          containerClassList="flex-1"
+          labelText={TRANSLATION[locale()].title}
+          value={featForm.title}
+          onInput={(value) => setFeatForm({ ...featForm, title: value })}
+        />
+        <Show when={!props.originValue}>
+          <Select
+            containerClassList="flex-1"
+            labelText={TRANSLATION[locale()].originValue}
+            items={TRANSLATION[locale()].originValues}
+            selectedValue={featForm.origin_value}
+            onSelect={(value) => setFeatForm({ ...featForm, origin_value: value })}
+          />
+        </Show>
+      </div>
+      <Show when={featForm.origin === 'feat'}>
+        <div class="flex gap-4 mt-2">
+          <Select
+            multi
+            containerClassList="flex-1"
+            labelText={TRANSLATION[locale()].requiredAbilities}
+            items={translate(config.abilities, locale())}
+            selectedValues={featForm.ability_conditions}
+            onSelect={(value) => updateMultiFeatureValue(value, 'ability_conditions')}
+          />
+          <Select
+            multi
+            containerClassList="flex-1"
+            labelText={TRANSLATION[locale()].abilityBoost}
+            items={translate(config.abilities, locale())}
+            selectedValues={featForm.leveling_ability_boosts}
+            onSelect={(value) => updateMultiFeatureValue(value, 'leveling_ability_boosts')}
+          />
+        </div>
+      </Show>
       <div class="flex gap-4 mt-2">
         <Input
           numeric
@@ -261,8 +320,8 @@ export const DndFeatForm = (props) => {
           />
         </Show>
       </div>
-      <p class="mt-4">{TRANSLATION[locale()].staticSpells}</p>
       <Show when={props.spells}>
+        <p class="mt-4">{TRANSLATION[locale()].staticSpells}</p>
         <Show when={featForm.static_spells}>
           <For each={Object.entries(featForm.static_spells)}>
             {([slug, value]) =>

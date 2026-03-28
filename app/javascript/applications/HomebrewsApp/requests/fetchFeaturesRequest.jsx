@@ -1,8 +1,8 @@
 import { apiRequest, options } from '../helpers';
 
-export const fetchDaggerheartFeatures = async (accessToken) => {
+export const fetchFeaturesRequest = async (accessToken, provider) => {
   return await apiRequest({
-    url: '/homebrews/daggerheart/feats.json',
+    url: `/homebrews/${provider}/feats.json`,
     options: options('GET', accessToken)
   });
 }
