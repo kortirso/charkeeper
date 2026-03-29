@@ -518,3 +518,22 @@ phb_spells.each do |spell|
   spell.update user: user
   Homebrew::Book::Item.create homebrew_book: book, itemable: spell
 end
+
+
+book = Homebrew::Book.find_by name: 'Heroes of Faerun', provider: 'dnd'
+file_content = File.read('db/data/dnd2024/books/background_feats.json')
+JSON.parse(file_content).each do |feat|
+  item = ::Dnd2024::Feat.create!(feat.merge(user_id: User.first.id))
+  Homebrew::Book::Item.create homebrew_book: book, itemable: item
+end
+
+file_content = File.read('db/data/dnd2024/books/backgrounds.json')
+ids = JSON.parse(file_content).map do |item|
+  feat_slug = item.dig('data', 'selected_feats')[0]
+  feat = Dnd2024::Feat.find_by(slug: feat_slug)
+  item['data']['selected_feats'] = [feat.id]
+
+  ::Dnd2024::Homebrew::Background.create!(item.merge(user_id: User.first.id)).id
+end
+
+HomebrewContext::Dnd::Books::AddBackgroundsCommand.new.call(user: User.first, book: book, ids: ids)

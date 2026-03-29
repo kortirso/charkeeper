@@ -1,0 +1,146 @@
+[
+  {
+    "name": "Chondathan Freebooter",
+    "data": {
+      "selected_feats": ["skilled"],
+      "selected_skills": { "athletics": 1, "sleight": 1 },
+      "ability_boosts": ["str", "dex", "wis"]
+    }
+  },
+  {
+    "name": "Dead Magic Dweller",
+    "data": {
+      "selected_feats": ["healer"],
+      "selected_skills": { "medicine": 1, "survival": 1 },
+      "ability_boosts": ["str", "con", "wis"]
+    }
+  },
+  {
+    "name": "Dragon Cultist",
+    "data": {
+      "selected_feats": ["cult_of_the_dragon_initiate"],
+      "selected_skills": { "deception": 1, "stealth": 1 },
+      "ability_boosts": ["dex", "con", "int"]
+    }
+  },
+  {
+    "name": "Emerald Enclave Caretaker",
+    "data": {
+      "selected_feats": ["emerald_enclave_fledgling"],
+      "selected_skills": { "nature": 1, "survival": 1 },
+      "ability_boosts": ["con", "int", "wis"]
+    }
+  },
+  {
+    "name": "Flaming Fist Mercenary",
+    "data": {
+      "selected_feats": ["tough"],
+      "selected_skills": { "intimidation": 1, "perception": 1 },
+      "ability_boosts": ["str", "con", "cha"]
+    }
+  },
+  {
+    "name": "Genie Touched",
+    "data": {
+      "selected_feats": ["wizard_magic_initiate"],
+      "selected_skills": { "perception": 1, "persuasion": 1 },
+      "ability_boosts": ["dex", "wis", "cha"]
+    }
+  },
+  {
+    "name": "Harper",
+    "data": {
+      "selected_feats": ["harper_agent"],
+      "selected_skills": { "performance": 1, "sleight": 1 },
+      "ability_boosts": ["dex", "int", "cha"]
+    }
+  },
+  {
+    "name": "Ice Fisher",
+    "data": {
+      "selected_feats": ["alert"],
+      "selected_skills": { "animal": 1, "athletics": 1 },
+      "ability_boosts": ["str", "dex", "con"]
+    }
+  },
+  {
+    "name": "Knight of the Gauntlet",
+    "data": {
+      "selected_feats": ["tyro_of_the_gauntlet"],
+      "selected_skills": { "athletics": 1, "medicine": 1 },
+      "ability_boosts": ["str", "int", "wis"]
+    }
+  },
+  {
+    "name": "Lords' Alliance Vassal",
+    "data": {
+      "selected_feats": ["lords_alliance_agent"],
+      "selected_skills": { "insight": 1, "persuasion": 1 },
+      "ability_boosts": ["str", "int", "cha"]
+    }
+  },
+  {
+    "name": "Moonwell Pilgrim",
+    "data": {
+      "selected_feats": ["druid_magic_initiate"],
+      "selected_skills": { "nature": 1, "performance": 1 },
+      "ability_boosts": ["con", "wis", "cha"]
+    }
+  },
+  {
+    "name": "Mulhorandi Tomb Raider",
+    "data": {
+      "selected_feats": ["lucky"],
+      "selected_skills": { "investigation": 1, "religion": 1 },
+      "ability_boosts": ["dex", "con", "int"]
+    }
+  },
+  {
+    "name": "Mythalkeeper",
+    "data": {
+      "selected_feats": ["crafter"],
+      "selected_skills": { "arcana": 1, "history": 1 },
+      "ability_boosts": ["int", "wis", "cha"]
+    }
+  },
+  {
+    "name": "Purple Dragon Squire",
+    "data": {
+      "selected_feats": ["purple_dragon_rook"],
+      "selected_skills": { "animal": 1, "insight": 1 },
+      "ability_boosts": ["str", "wis", "cha"]
+    }
+  },
+  {
+    "name": "Rashemi Wanderer",
+    "data": {
+      "selected_feats": ["tough"],
+      "selected_skills": { "intimidation": 1, "perception": 1 },
+      "ability_boosts": ["str", "con", "cha"]
+    }
+  },
+  {
+    "name": "Shadowmasters Exile",
+    "data": {
+      "selected_feats": ["savage_attacker"],
+      "selected_skills": { "acrobatics": 1, "stealth": 1 },
+      "ability_boosts": ["dex", "int", "cha"]
+    }
+  },
+  {
+    "name": "Spellfire Initiate",
+    "data": {
+      "selected_feats": ["spellfire_spark"],
+      "selected_skills": { "arcana": 1, "perception": 1 },
+      "ability_boosts": ["con", "int", "cha"]
+    }
+  },
+  {
+    "name": "Zhentarim Mercenary",
+    "data": {
+      "selected_feats": ["zhentarim_ruffian"],
+      "selected_skills": { "intimidation": 1, "perception": 1 },
+      "ability_boosts": ["str", "dex", "cha"]
+    }
+  }
+]

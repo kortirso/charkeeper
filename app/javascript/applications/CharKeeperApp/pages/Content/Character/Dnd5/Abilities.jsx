@@ -9,7 +9,7 @@ import { modifier, localize } from '../../../../helpers';
 
 const TRANSLATION = {
   en: {
-    abilityBoosts: 'Additionally, distribute 3 points across at least 2 abilities from the list:',
+    abilityBoosts: 'Distribute 3 points across at least 2 abilities from the list:',
     levelingAbilityBoosts: 'You have available ability boosts',
     splitBoosts: 'Share boosts between:',
     anySplitBoosts: 'Share boosts between any abilities',
@@ -19,7 +19,7 @@ const TRANSLATION = {
     saveCheck: 'Saving Throw'
   },
   ru: {
-    abilityBoosts: 'Дополнительно распределите 3 очка по, как минимум, 2 характеристикам из списка:',
+    abilityBoosts: 'Распределите 3 очка по, как минимум, 2 характеристикам из списка:',
     levelingAbilityBoosts: 'У вас есть доступные повышения характеристик',
     splitBoosts: 'Распределите повышения между:',
     anySplitBoosts: 'Распределите между любыми характеристиками',
@@ -82,7 +82,7 @@ export const Dnd5Abilities = (props) => {
         helpMessage={localize(TRANSLATION, locale())['helpMessage']}
         onReloadCharacter={props.onReloadCharacter}
       >
-        <Show when={character().guide_step && character().ability_boosts.length > 0}>
+        <Show when={character().ability_boosts.length > 0}>
           <div class="warning">
             <p class="text-sm">{localize(TRANSLATION, locale())['abilityBoosts']} {Object.entries(config.abilities).filter(([slug]) => character().ability_boosts.includes(slug)).map(([, values]) => localize(values.name, locale())).join(', ')}</p>
           </div>

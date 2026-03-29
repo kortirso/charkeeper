@@ -1,0 +1,113 @@
+[
+  {
+    "slug": "cult_of_the_dragon_initiate",
+    "title": { "en": "Cult of the Dragon Initiate", "ru": "Посвящённый Культа дракона" },
+    "description": {
+      "en": "- You know Draconic. If you already know Draconic when you select this feat, you instead learn one language of your choice.\n\n- You can take a Magic action to instill terror in a creature you can see within 30 feet of yourself. The target must succeed on a Wisdom saving throw (DC 8 plus your Wisdom modifier and Proficiency Bonus) or have the Frightened condition until the end of your next turn. If the target succeeds on the save or when the effect ends for a target, the target is immune to this effect for 24 hours.\n\n- When you cause a creature to have the Frightened condition and you are the source of its fear, you can gain Heroic Inspiration if you lack it. Once you use this benefit, you can't use it again until you finish a Short or Long Rest.",
+      "ru": "- Вы знаете драконий язык. Если вы уже владеете драконьим языком, когда выбираете эту черту, вместо этого изучаете один язык по вашему выбору.\n\n- Вы можете действием магия магия вселить ужас в видимое существо в пределах 30 футов. Цель должна преуспеть в спасброске Мудрости (УС 8 + ваш модификатор Мудрости + ваш бонус мастерства) или получить состояние испуганный испуганный до конца вашего следующего хода. Если цель преуспела в спасброске или когда эффект для неё заканчивается, то она становится имунна к этому умению на 24 часа.\n\n- Если вы накладываете на существо состояние испуганный испуганный и источником страха являетесь вы, то вы можете получить героическое вдохновение вдохновение, если у вас его нет. После применения этого умения вы не можете применить его снова, пока не завершите короткий короткий или продолжительный отдых."
+    },
+    "origin": "feat",
+    "origin_value": "origin",
+    "kind": "static",
+    "conditions": { "level": 1 },
+    "info": { "static_spells": {} },
+    "description_eval_variables": {
+      "limit": "1"
+    },
+    "limit_refresh": "short_rest"
+  },
+  {
+    "slug": "emerald_enclave_fledgling",
+    "title": { "en": "Emerald Enclave Fledgling", "ru": "Птенец Изумрудного анклава" },
+    "description": {
+      "en": "- You always have the **Speak with Animals** spell prepared and can cast it with any spell slots you have. When you cast this spell as a Ritual, its duration is 8 hours.\n\n- When you take the Help action, you can switch places with a willing ally within 5 feet of yourself as part of that same action. This movement doesn't provoke Opportunity Attack action. You can't use this benefit if the ally has the Incapacitated condition.",
+      "ru": "- У вас всегда подготовлено заклинание **Разговор с животными** и можете накладывать его, используя любые имеющиеся у вас ячейки заклинаний. Когда вы накладываете это заклинание ритуалом, его длительность составляет 8 часов.\n\n- Когда вы совершаете действие помощь помощь, вы можете поменяться местами с согласным союзником в пределах 5 футов от вас частью того же действия. Это перемещение не вызывает провоцированные атаки провоцированные атаки. Вы не можете применять это умение, если союзник недееспособен."
+    },
+    "origin": "feat",
+    "origin_value": "origin",
+    "kind": "static",
+    "conditions": { "level": 1 },
+    "info": { "static_spells": { "speak_with_animals": { "modifier": ["int", "wis", "cha"] } } }
+  },
+  {
+    "slug": "harper_agent",
+    "title": { "en": "Harper Agent", "ru": "Агент Арфистов" },
+    "description": {
+      "en": "- You know Thieves' Cant.\n\n- You gain proficiency with a Musical Instrument of your choice.\n\n- When you take the Help action to assist an ally's attack roll, the enemy you're distracting can be within 30 feet of you, rather than within 5 feet of you, provided the enemy can see or hear you.",
+      "ru": "- Вы знаете редкий язык — воровской жаргон.\n\n- Вы получаете владение одним музыкальным инструментом музыкальным инструментом по вашему выбору.\n\n- Если вы совершаете действие помощь помощь, чтобы помочь союзнику в броске атаки, то враг, которого вы отвлекаете, может находиться в пределах 30 футов от вас (вместо 5 футов), если он может вас видеть или слышать."
+    },
+    "origin": "feat",
+    "origin_value": "origin",
+    "kind": "static",
+    "conditions": { "level": 1 }
+  },
+  {
+    "slug": "lords_alliance_agent",
+    "title": { "en": "Lords' Alliance Agent", "ru": "Агент Альянса лордов" },
+    "description": {
+      "en": "- Once per turn when you score a Critical Hit against a creature, you can choose an ally within 30 feet of yourself who can see or hear you and who lacks Heroic Inspiration. That ally gains Heroic Inspiration.\n\n- When an enemy you can see deals damage to an ally of yours that is within 5 feet of you, you have Advantage on your next attack roll against that enemy before the end of your next turn.",
+      "ru": "- Один раз за ход, когда вы совершаете критическое попадание по существу, вы можете выбрать союзника в пределах 30 футов от себя, который может вас видеть или слышать и не обладает героическим вдохновением. Этот союзник получает героическое вдохновение.\n\n- Когда видимый враг наносит урон вашему союзнику, который находится в пределах 5 футов от вас, вы получаете преимущество на ваш следующий бросок атаки против этого врага до конца вашего следующего хода."
+    },
+    "origin": "feat",
+    "origin_value": "origin",
+    "kind": "static",
+    "conditions": { "level": 1 }
+  },
+  {
+    "slug": "purple_dragon_rook",
+    "title": { "en": "Purple Dragon Rook", "ru": "Посвящённый Пурпурного дракона" },
+    "description": {
+      "en": "- You gain proficiency in one of the following skills: Insight, Performance, or Persuasion.\n\n- When you roll Initiative and don’t have the Incapacitated condition, you can choose a number of creatures equal to your Proficiency Bonus that you can see within 30 feet of yourself. Those creatures gain Heroic Inspiration.",
+      "ru": "- Вы получаете владение одним из следующих навыков: Проницательность, Выступление или Убеждение.\n\n- Когда вы совершаете бросок инициативы и не имеете состояния недееспособнный недееспособнный, вы можете выбрать количество существ, равное вашему бонусу мастерства, которых вы видите в пределах 30 футов от себя. Эти существа получают героическое вдохновение."
+    },
+    "origin": "feat",
+    "origin_value": "origin",
+    "kind": "static",
+    "conditions": { "level": 1 },
+    "description_eval_variables": {
+      "limit": "1"
+    },
+    "limit_refresh": "long_rest"
+  },
+  {
+    "slug": "spellfire_spark",
+    "title": { "en": "Spellfire Spark", "ru": "Искра чаропламени" },
+    "description": {
+      "en": "- Once per turn, when you take damage from a spell or magical effect, you reduce the total damage taken by 1d4. You can’t use this benefit if you have the Incapacitated condition.\n\n- You learn the **Sacred Flame** cantrip. You can also cast this cantrip as a Bonus Action a number of times equal to your Proficiency Bonus, and you regain all expended uses when you finish a Long Rest.",
+      "ru": "- Один раз в ход, когда вы получаете урон от заклинания или магического эффекта, вы снижаете полученный урон на 1к4. Вы не можете применить это умение, если вы недееспособны.\n\n- Вы изучаете заговор **Священное пламя**. Вы также можете накладывать этот заговор бонусным действием в количестве раз, равном вашему бонусу мастерства, и восстанавливаете все потраченные применения после продолжительного отдыха."
+    },
+    "origin": "feat",
+    "origin_value": "origin",
+    "kind": "static",
+    "conditions": { "level": 1 },
+    "info": { "static_spells": { "sacred_flame": { "modifier": ["int", "wis", "cha"] } } },
+    "description_eval_variables": {
+      "limit": "proficiency_bonus"
+    },
+    "limit_refresh": "long_rest"
+  },
+  {
+    "slug": "tyro_of_the_gauntlet",
+    "title": { "en": "Tyro of the Gauntlet", "ru": "Неофит Перчатки" },
+    "description": {
+      "en": "- When an ally within 5 feet of you is subjected to an effect that would push or pull it, you can take a Reaction to prevent that ally from being pushed or pulled. To receive this benefit, the ally can’t have the Incapacitated condition.\n\n- When you take the Ready action, the next attack roll made against you has Disadvantage before the start of your next turn.",
+      "ru": "- Когда союзник в пределах 5 футов от вас подвергается эффекту, который должен оттолкнуть или притянуть его, вы можете реакцией предотвратить это. Союзник при применении этого умения не должен быть недееспособным.\n\n- Когда вы совершаете действие подготовка, следующий бросок атаки по вам совершается с помехой до начала вашего следующего хода."
+    },
+    "origin": "feat",
+    "origin_value": "origin",
+    "kind": "static",
+    "conditions": { "level": 1 }
+  },
+  {
+    "slug": "zhentarim_ruffian",
+    "title": { "en": "Zhentarim Ruffian", "ru": "Головорез Жентарима" },
+    "description": {
+      "en": "- When you roll damage for an Opportunity Attack action, you can roll the damage dice twice and use either roll against the target.\n\n- If you have Heroic Inspiration when you roll Initiative, you can expend it to give yourself and your allies Advantage on that Initiative roll. ",
+      "ru": "- Когда вы бросаете кости урона для провоцированной атаки провоцированной атаки, вы можете бросить кости урона дважды и выбрать любой результат для применения к цели.\n\n- Если у вас есть героическое вдохновение, когда вы совершаете бросок инициативы, то вы можете потратить его, чтобы вы и ваши союзники получили преимущество на этот бросок."
+    },
+    "origin": "feat",
+    "origin_value": "origin",
+    "kind": "static",
+    "conditions": { "level": 1 }
+  }
+]

@@ -169,7 +169,8 @@ module Dnd2024
       default = ::Dnd2024::Character.backgrounds[data.background]
       return translate(default['name']) if default
 
-      translate(dnd_names.fetch_item(key: :backgrounds, id: data.background)[:name])
+      custom_name = dnd_names.fetch_item(key: :backgrounds, id: data.background)
+      custom_name ? translate(custom_name[:name]) : '-'
     end
 
     private

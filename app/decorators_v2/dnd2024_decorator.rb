@@ -167,16 +167,18 @@ class Dnd2024Decorator < ApplicationDecoratorV2
     # TODO: remove negative values
   end
 
-  def format_static_spells # rubocop: disable Metrics/AbcSize
+  def format_static_spells # rubocop: disable Metrics/AbcSize, Metrics/MethodLength
     # [{"blade_ward" => {"modifier" => "int"}}]
     custom_static_spells = available_features.pluck('feats.info').pluck('static_spells').compact
 
     formatted_static_spells = static_spells
     custom_static_spells.each do |custom_static_spell|
       custom_static_spell.each do |key, values|
+        modifier =
+          values['modifier'].is_a?(Array) ? modifiers.slice(*values['modifier']).values.max : modifiers[values['modifier']]
         formatted_static_spells[key] = {
-          'attack_bonus' => proficiency_bonus + modifiers[values['modifier']],
-          'save_dc' => 8 + proficiency_bonus + modifiers[values['modifier']]
+          'attack_bonus' => proficiency_bonus + modifier,
+          'save_dc' => 8 + proficiency_bonus + modifier
         }
       end
     end
