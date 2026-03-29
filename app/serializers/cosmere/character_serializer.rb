@@ -10,7 +10,7 @@ module Cosmere
 
     delegate :skills, :defense, :health_max, :focus_max, :investiture_max, :load, :movement, :recovery_die, :senses_range,
              :abilities, :deflect, :tier, to: :decorator
-    delegate :data, to: :object
+    delegate :id, :data, to: :object
     delegate :attribute_points, :skill_points, :health, :focus, :investiture, :level, :guide_step, :additional_skills, to: :data
 
     def provider

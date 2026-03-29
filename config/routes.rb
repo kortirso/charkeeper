@@ -139,6 +139,7 @@ Rails.application.routes.draw do
         resources :health, only: %i[create], module: 'characters'
         resources :talents, only: %i[index create], module: 'characters'
       end
+      resources :spells, only: %i[index show]
     end
 
     namespace :fate do

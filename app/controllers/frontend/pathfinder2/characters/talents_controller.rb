@@ -61,7 +61,6 @@ module Frontend
 
         def relation
           ::Pathfinder2::Feat.all
-          # .where("conditions ->> 'level' IN (?)", (0..@character.data.level).to_a.map(&:to_s))
         end
 
         def create_params

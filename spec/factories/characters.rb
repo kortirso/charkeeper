@@ -60,6 +60,7 @@ FactoryBot.define do
           race: 'halfling',
           subrace: 'wildwood_halfling',
           main_class: 'witch',
+          main_ability: 'int',
           classes: { witch: 4 },
           subclasses: { witch: nil },
           abilities: { str: 13, dex: 16, con: 14, int: 11, wis: 16, cha: 10 },
