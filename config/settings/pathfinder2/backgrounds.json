@@ -28,7 +28,9 @@
   "hunter": { "ability_boosts": "dex_wis", "skill_boosts": "survival", "lore_name": "Lore (Tanning)" },
   "bounty_hunter": { "ability_boosts": "str_wis", "skill_boosts": "survival", "lore_name": "Lore (Legal)" },
   "cook": { "ability_boosts": "con_int", "skill_boosts": "survival", "lore_name": "Lore (Cooking)" },
-  "field_medic": { "ability_boosts": "con_wis", "skill_boosts": "medicine", "lore_name": "Lore (Warfare)" },
+  "field_medic": {
+    "ability_boosts": "con_wis", "skill_boosts": "medicine", "lore_name": "Lore (Warfare)", "feat": "battle_medicine"
+  },
   "emissary": { "ability_boosts": "int_cha", "skill_boosts": "society", "lore_name": "Lore (City)" },
   "acolyte": { "ability_boosts": "int_wis", "skill_boosts": "religion", "lore_name": "Lore (Scribing)" },
   "criminal": { "ability_boosts": "dex_int", "skill_boosts": "stealth", "lore_name": "Lore (Underworld)" },

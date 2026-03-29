@@ -241,7 +241,8 @@ en:
         switch_ru: Switch to RU
         switch_eu: Switch to EU
         ttrpgs: Support for various tabletop rpgs
-        ttrpgs_desc: "CharKeeper currently supports various tabletop game systems: D&D 2014 and 2024, Daggerheart, Pathfinder 2, Fate and DC20. You can save your character data without limitations."
+        ttrpgs_desc: "CharKeeper currently supports various tabletop game systems: D&D 2014 and 2024, Daggerheart, Pathfinder 2, Fate, DC20, Cosmere RPG and Fallout 2d20. You can save your character data without limitations."
+        ttrpgs_desc2: 'Data for Pathfinder 2 is provided by <a href="https://pf2.ru/" target="_blank" rel="noopener noreferrer" class="underline">Pathfinder 2E</a>'
         integrations: Integrations
         integrations_desc: CharKeeper has integration capabilities with Owlbear Rodeo and Telegram to display dice roll results within the app and execute various commands.
         cross: Cross-platform

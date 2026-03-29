@@ -448,7 +448,7 @@ Item::Recipe.create(
 
 file_content = File.read('db/data/pathfinder2/charkeeper.json')
 feats = JSON.parse(file_content)
-feats = feats.select { |item| item['rus_traits'].include?('Ведьма') }
+feats = feats.select { |item| item['rus_traits'].include?('Волшебник') }
 
 data_hash = feats.filter_map do |item|
   {
@@ -468,7 +468,7 @@ end
 
 beautified_json_string = JSON.pretty_generate(data_hash)
 # # Write the beautified JSON string to a file
-File.open('db/data/pathfinder2/feats/classes/witch.json', 'w') do |file|
+File.open('db/data/pathfinder2/feats/classes/wizard.json', 'w') do |file|
   file.write(beautified_json_string)
 end
 
