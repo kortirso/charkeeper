@@ -104,7 +104,7 @@ const TRANSLATION = {
     projectTitle: 'Título del proyecto',
     projectDescription: 'Descripción del proyecto',
     complexity: 'Complejidad del proyecto',
-    textHelp: 'Puedes usar Markdown para editar la descripción'
+    textHelp: 'Puedes usar Markdown para editar la descripción',
     save: 'Guardar',
     cancel: 'Cancelar',
     newProject: 'AGREGAR NUEVO PROYECTO',
