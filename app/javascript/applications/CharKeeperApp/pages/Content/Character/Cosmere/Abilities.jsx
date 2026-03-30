@@ -15,6 +15,10 @@ const TRANSLATION = {
   ru: {
     helpMessage: 'Распределите очки между характеристиками вашего персонажа.',
     attributeBoosts: 'У вас есть очки атрибутов для распределения'
+  },
+  es: {
+    helpMessage: "Distribuye puntos de atributo entre los atributos de tu personaje.",
+    attributeBoosts: 'Tienes puntos de atributo para gastar'
   }
 }
 
