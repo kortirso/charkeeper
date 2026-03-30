@@ -114,7 +114,11 @@ export const Pathfinder2 = (props) => {
               </div>
             </Match>
             <Match when={activeMobileTab() === 'spells'}>
-              <Pathfinder2Spells character={character()} openDiceRoll={openDiceRoll} />
+              <Pathfinder2Spells
+                character={character()}
+                openDiceRoll={openDiceRoll}
+                onReplaceCharacter={props.onReplaceCharacter}
+              />
             </Match>
             <Match when={activeMobileTab() === 'equipment'}>
               <Equipment
@@ -220,7 +224,11 @@ export const Pathfinder2 = (props) => {
               </div>
             </Match>
             <Match when={activeTab() === 'spells'}>
-              <Pathfinder2Spells character={character()} openDiceRoll={openDiceRoll} />
+              <Pathfinder2Spells
+                character={character()}
+                openDiceRoll={openDiceRoll}
+                onReplaceCharacter={props.onReplaceCharacter}
+              />
             </Match>
             <Match when={activeTab() === 'equipment'}>
               <Equipment

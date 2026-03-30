@@ -93,6 +93,11 @@ module Charkeeper
 
     register('commands.characters_context.pathfinder2.feats.add') { CharactersContext::Pathfinder2::Feats::AddCommand.new }
 
+    register('commands.characters_context.pathfinder2.spells.add') { CharactersContext::Pathfinder2::Spells::AddCommand.new }
+    register('commands.characters_context.pathfinder2.spells.change') {
+      CharactersContext::Pathfinder2::Spells::ChangeCommand.new
+    }
+
     register('commands.characters_context.fate.create') { CharactersContext::Fate::CreateCommand.new }
     register('commands.characters_context.fate.update') { CharactersContext::Fate::UpdateCommand.new }
 

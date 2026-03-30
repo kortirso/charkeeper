@@ -82,7 +82,7 @@ export const Dnd5Abilities = (props) => {
         helpMessage={localize(TRANSLATION, locale())['helpMessage']}
         onReloadCharacter={props.onReloadCharacter}
       >
-        <Show when={character().ability_boosts.length > 0}>
+        <Show when={character().ability_boosts && character().ability_boosts.length > 0}>
           <div class="warning">
             <p class="text-sm">{localize(TRANSLATION, locale())['abilityBoosts']} {Object.entries(config.abilities).filter(([slug]) => character().ability_boosts.includes(slug)).map(([, values]) => localize(values.name, locale())).join(', ')}</p>
           </div>

@@ -34,6 +34,7 @@ module Pathfinder2
     attribute :conditions, array: true, default: []
     attribute :selected_feats, array: true, default: {} # { 'id' => [{ type: '', level: '' }] }
     attribute :selected_features, array: true, default: {} # { 'fighting_style' => ['fighting_style_defense'] }
+    attribute :spent_spell_slots, array: true, default: {}
     # только для 1 уровня
     attribute :ability_boosts, array: true # дополнительные повышения характеристик
     attribute :ability_boosts_v2, array: true # дополнительные повышения характеристик
@@ -96,6 +97,9 @@ module Pathfinder2
     def self.saving_throws
       config['savingThrows']
     end
+
+    # не подготавливают заклинания
+    SPONTANEOUS_CASTERS = %w[bard].freeze
 
     attribute :data, Pathfinder2::CharacterData.to_type
 

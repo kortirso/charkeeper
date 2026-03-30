@@ -62,6 +62,7 @@ export * from './Content/Character/Pathfinder2/SavingThrows';
 export * from './Content/Character/Pathfinder2/Leveling';
 export * from './Content/Character/Pathfinder2/Spells';
 export * from './Content/Character/Pathfinder2/SpellBook';
+export * from './Content/Character/Pathfinder2/Spell';
 
 export * from './Content/Character/Daggerheart';
 export * from './Content/Character/Daggerheart/Traits';
