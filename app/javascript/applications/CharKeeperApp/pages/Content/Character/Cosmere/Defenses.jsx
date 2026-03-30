@@ -24,6 +24,16 @@ const TRANSLATION = {
     movement: 'Скорость',
     deflect: 'Отражение',
     senses_range: 'Чувства'
+  },
+  es: {
+    defenses: {
+      physical: 'Defensa física',
+      cognitive: 'Defensa cognitiva',
+      spiritual: 'Defensa espiritual'
+    },
+    movement: 'Movimiento',
+    deflect: 'Deflección',
+    senses_range: 'Sentidos'
   }
 }
 
