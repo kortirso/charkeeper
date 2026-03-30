@@ -19,6 +19,7 @@ class Pathfinder2Decorator < ApplicationDecoratorV2
     @result = Pathfinder2::ClassDecorator.new.call(result: @result)
 
     @result['features'] = apply_features
+    @result['formatted_static_spells'] = format_static_spells
     @result = @result.except('selected_features', 'defense_gear')
 
     self
@@ -28,7 +29,7 @@ class Pathfinder2Decorator < ApplicationDecoratorV2
 
   def generate_basis
     @result['abilities'] = abilities.transform_values { |value| calc_ability_modifier(value) }
-    @result['spells_info'] = {}
+    @result['spells_info'] = nil
     @result['defense_gear'] = find_defense_gear
     @result['no_body_armor'] = defense_gear[:armor].nil?
     @result['no_armor'] = defense_gear.values.all?(&:nil?)
@@ -231,6 +232,33 @@ class Pathfinder2Decorator < ApplicationDecoratorV2
       armor: armor.blank? ? nil : armor[0],
       shield: shield.blank? ? nil : shield[0]
     }
+  end
+
+  def format_static_spells # rubocop: disable Metrics/AbcSize, Metrics/MethodLength
+    # [{"blade_ward" => {"modifier" => "int"}}]
+    formatted_static_spells = {}
+    available_features.pluck('feats.info').pluck('static_spells').compact.each do |custom_static_spell|
+      custom_static_spell.each do |key, values|
+        modifier = values['modifier'] ? abilities[values['modifier']] : abilities['cha']
+        prof_bonus = level >= 12 ? proficiency_bonus(2) : proficiency_bonus(1)
+        formatted_static_spells[key] = {
+          'spell_attack' => prof_bonus + modifier,
+          'spell_dc' => 10 + prof_bonus + modifier,
+          'limit' => values['limit'] || 1
+        }
+      end
+    end
+    return [] if formatted_static_spells.blank?
+
+    ::Pathfinder2::Feat.where(origin: 4, slug: formatted_static_spells.keys).map do |spell|
+      static_spell = formatted_static_spells[spell.slug]
+
+      static_spell.merge({
+        ready_to_use: true,
+        feat_id: spell.id,
+        spell: ::Pathfinder2::SpellSerializer.new.serialize(spell)
+      })
+    end
   end
 
   def apply_features
