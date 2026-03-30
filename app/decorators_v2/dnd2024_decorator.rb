@@ -67,7 +67,11 @@ class Dnd2024Decorator < ApplicationDecoratorV2
 
   def apply_beastform_abilities
     @result['modified_abilities'] =
-      beastform.blank? ? abilities : abilities.merge(beast_config['abilities']) { |_key, oldval, newval| [newval, oldval].max }
+      if beastform.blank?
+        abilities.clone
+      else
+        abilities.merge(beast_config['abilities']) { |_key, oldval, newval| [newval, oldval].max }
+      end
   end
 
   def apply_add_bonuses_to_abilities

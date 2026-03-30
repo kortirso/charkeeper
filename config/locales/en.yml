@@ -294,6 +294,11 @@ en:
         fighter: Fighter
         fortune: Fortune
         concentrate: Concentrate
+        cantrip: Cantrip
+        attack: Attack
+        manipulate: Manipulate
+        healing: Healing
+        vitality: Vitality
     dnd:
       weapon:
         ammo: You can use a weapon that has the ammunition properly to make a ranged attack only if you have ammunition to fire from the weapon.

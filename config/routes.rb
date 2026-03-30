@@ -136,9 +136,13 @@ Rails.application.routes.draw do
 
     namespace :pathfinder2 do
       resources :characters, only: %i[create update] do
-        resources :health, only: %i[create], module: 'characters'
-        resources :talents, only: %i[index create], module: 'characters'
+        scope module: :characters do
+          resources :spells, only: %i[index create update destroy]
+          resources :health, only: %i[create]
+          resources :talents, only: %i[index create]
+        end
       end
+      resources :spells, only: %i[index show]
     end
 
     namespace :fate do

@@ -14,7 +14,10 @@ module Pathfinder2Character
         result[:saving_throws] = { fortitude: 1, reflex: 1, will: 2 }
         result[:perception] = 1
         result[:class_dc] = 1
+        result[:spell_dc] = 1
+        result[:spell_attack] = 1
         result[:spell_list] = 'divine'
+        result[:main_ability] = 'wis'
 
         result
       end

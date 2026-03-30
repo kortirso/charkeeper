@@ -294,6 +294,11 @@ es:
         fighter: Fighter
         fortune: Fortune
         concentrate: Concentrate
+        cantrip: Cantrip
+        attack: Attack
+        manipulate: Manipulate
+        healing: Healing
+        vitality: Vitality
     dnd:
       weapon:
         ammo: Solo puedes usar un arma que tenga la munición adecuada para realizar un ataque a distancia si tienes munición para disparar con el arma.

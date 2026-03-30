@@ -25,6 +25,8 @@ module Pathfinder2
     attribute :saving_throws, array: true, default: { fortitude: 0, reflex: 0, will: 0 }
     attribute :perception, :integer, default: 0
     attribute :class_dc, :integer, default: 0
+    attribute :spell_dc, :integer, default: 0
+    attribute :spell_attack, :integer, default: 0
     attribute :dying_condition_value, :integer, default: 0
     attribute :coins, array: true, default: { gold: 0, silver: 0, copper: 0 }
     attribute :money, :integer, default: 0
@@ -32,6 +34,7 @@ module Pathfinder2
     attribute :conditions, array: true, default: []
     attribute :selected_feats, array: true, default: {} # { 'id' => [{ type: '', level: '' }] }
     attribute :selected_features, array: true, default: {} # { 'fighting_style' => ['fighting_style_defense'] }
+    attribute :spent_spell_slots, array: true, default: {}
     # только для 1 уровня
     attribute :ability_boosts, array: true # дополнительные повышения характеристик
     attribute :ability_boosts_v2, array: true # дополнительные повышения характеристик
@@ -95,18 +98,13 @@ module Pathfinder2
       config['savingThrows']
     end
 
+    # не подготавливают заклинания
+    SPONTANEOUS_CASTERS = %w[bard].freeze
+
     attribute :data, Pathfinder2::CharacterData.to_type
 
     def decorator(simple: false, version: nil)
-      base_decorator = ::Pathfinder2Character::BaseDecorator.new(self)
-      base_features_decorator = ::FeaturesBaseDecorator.new(base_decorator)
-      base_features_decorator.features unless simple
-      race_decorator = ::Pathfinder2Character::RaceDecorateWrapper.new(base_features_decorator)
-      subrace_decorator = ::Pathfinder2Character::SubraceDecorateWrapper.new(race_decorator)
-      class_decorator = ::Pathfinder2Character::ClassDecorateWrapper.new(subrace_decorator)
-      features_decorator = ::FeaturesDecorator.new(class_decorator, version: version)
-      features_decorator.features unless simple
-      features_decorator
+      Pathfinder2Decorator.new.call(character: self, simple: simple, version: version)
     end
   end
 end

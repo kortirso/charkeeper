@@ -277,5 +277,11 @@
     "halfling": { "name": { "en": "Halfling", "ru": "Полуросличий", "es": "Mediano" } },
     "draconic": { "name": { "en": "Draconic", "ru": "Драконий", "es": "Draconico" } },
     "undercommon": { "name": { "en": "Undercommon", "ru": "Подземный", "es": "Infracomún" } }
+  },
+  "spellLists": {
+    "arcane": { "name": { "en": "Arcane", "ru": "Мистическая" } },
+    "divine": { "name": { "en": "Divine", "ru": "Сакральная" } },
+    "primal": { "name": { "en": "Primal", "ru": "Первобытная" } },
+    "occult": { "name": { "en": "Occult", "ru": "Оккультная" } }
   }
 }

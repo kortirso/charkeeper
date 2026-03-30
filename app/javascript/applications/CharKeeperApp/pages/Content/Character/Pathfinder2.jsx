@@ -4,7 +4,7 @@ import { createWindowSize } from '@solid-primitives/resize-observer';
 
 import {
   Pathfinder2Abilities, Pathfinder2Health, Pathfinder2Professions, Pathfinder2Static, Pathfinder2Skills,
-  Pathfinder2SavingThrows, Pathfinder2Leveling
+  Pathfinder2SavingThrows, Pathfinder2Leveling, Pathfinder2Spells
 } from '../../../pages';
 import {
   CharacterNavigation, Equipment, Notes, Avatar, ContentWrapper, Conditions, Gold, createDiceRoll, Combat, Feats
@@ -46,7 +46,13 @@ export const Pathfinder2 = (props) => {
     const defaultSkills = translate(config.skills, locale());
 
     return { ...defaultSkills, ...character().lores };
-  })
+  });
+
+  const characterTabs = createMemo(() => {
+    const result = ['combat', 'equipment'];
+    if (character().spell_attack > 0) result.push('spells');
+    return result.concat(['classLevels', 'professions', 'notes', 'avatar']);
+  });
 
   const mobileView = createMemo(() => {
     if (size.width >= 1152) return <></>;
@@ -54,7 +60,7 @@ export const Pathfinder2 = (props) => {
     return (
       <>
         <CharacterNavigation
-          tabsList={['abilities', 'combat', 'equipment', 'classLevels', 'professions', 'notes', 'avatar']}
+          tabsList={['abilities'].concat(characterTabs())}
           activeTab={activeMobileTab()}
           setActiveTab={setActiveMobileTab}
         />
@@ -106,6 +112,13 @@ export const Pathfinder2 = (props) => {
                   onReloadCharacter={props.onReloadCharacter}
                 />
               </div>
+            </Match>
+            <Match when={activeMobileTab() === 'spells'}>
+              <Pathfinder2Spells
+                character={character()}
+                openDiceRoll={openDiceRoll}
+                onReplaceCharacter={props.onReplaceCharacter}
+              />
             </Match>
             <Match when={activeMobileTab() === 'equipment'}>
               <Equipment
@@ -181,7 +194,7 @@ export const Pathfinder2 = (props) => {
     return (
       <>
         <CharacterNavigation
-          tabsList={['combat', 'equipment', 'classLevels', 'professions', 'notes', 'avatar']}
+          tabsList={characterTabs()}
           activeTab={activeTab()}
           setActiveTab={setActiveTab}
         />
@@ -209,6 +222,13 @@ export const Pathfinder2 = (props) => {
                   onReloadCharacter={props.onReloadCharacter}
                 />
               </div>
+            </Match>
+            <Match when={activeTab() === 'spells'}>
+              <Pathfinder2Spells
+                character={character()}
+                openDiceRoll={openDiceRoll}
+                onReplaceCharacter={props.onReplaceCharacter}
+              />
             </Match>
             <Match when={activeTab() === 'equipment'}>
               <Equipment

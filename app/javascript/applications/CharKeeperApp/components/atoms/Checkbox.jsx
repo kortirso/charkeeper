@@ -9,12 +9,12 @@ export const Checkbox = (props) => {
   return (
     <div class={[props.classList, 'flex items-center'].join(' ')} dataTestId={props.dataTestId}>
       <Show when={props.labelPosition === 'left'}>
-        <Label { ...labelProps } onClick={() => props.disabled ? null : props.onToggle()} />
+        <Label { ...labelProps } onClick={(e) => props.disabled ? null : props.onToggle(e)} />
       </Show>
       <div
         class="toggle"
         classList={{ 'checked': props.checked, 'outlined': props.outlined, 'disabled': props.disabled, 'big': props.big }}
-        onClick={() => props.disabled ? null : props.onToggle()}
+        onClick={(e) => props.disabled ? null : props.onToggle(e)}
       >
         <Show when={props.checked && !props.filled}>
           <Stroke />
@@ -24,7 +24,7 @@ export const Checkbox = (props) => {
         </Show>
       </div>
       <Show when={props.labelPosition === 'right'}>
-        <Label { ...labelProps } onClick={() => props.disabled ? null : props.onToggle()} />
+        <Label { ...labelProps } onClick={(e) => props.disabled ? null : props.onToggle(e)} />
       </Show>
     </div>
   );

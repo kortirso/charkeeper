@@ -11,10 +11,10 @@ export const Toggle = (props) => {
   return (
     <div
       class={['mb-2 flex flex-col', props.containerClassList].join(' ')}
-      classList={{ 'blockable': !props.noInnerPadding, '': props.noInnerPadding }}
+      classList={{ ...(props.classList || {}), 'blockable': !props.noInnerPadding }}
     >
       <div
-        classList={{ '': !props.noInnerPadding, 'blockable': props.noInnerPadding, 'cursor-pointer': !props.disabled }}
+        classList={{ 'blockable': props.noInnerPadding, 'cursor-pointer': !props.disabled }}
         class="toggle-title"
         onClick={() => props.disabled ? (props.onParentClick ? props.onParentClick() : null) : setIsOpen(!isOpen())}
       >

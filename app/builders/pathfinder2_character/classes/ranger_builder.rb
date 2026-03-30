@@ -3,8 +3,8 @@
 module Pathfinder2Character
   module Classes
     class RangerBuilder
-      # rubocop: disable Metrics/AbcSize
-      def call(result:)
+      def call(result:) # rubocop: disable Metrics/AbcSize
+        result[:main_ability] = 'dex' unless result[:main_ability]
         result[:health] = { current: result[:health] + 10, max: result[:health] + 10, temp: 0 }
         result[:abilities].merge!({ result[:main_ability].to_sym => 2 }) { |_, oldval, newval| oldval + newval }
         result[:skill_boosts].merge!({ nature: 1, survival: 1, free: 4 }) { |_, oldval, newval| oldval + newval }
@@ -17,7 +17,6 @@ module Pathfinder2Character
 
         result
       end
-      # rubocop: enable Metrics/AbcSize
     end
   end
 end
