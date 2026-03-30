@@ -1,19 +1,27 @@
 import { For, Show } from 'solid-js';
 
-import { Button, Toggle } from '../../../../components';
+import { Button, Toggle, Dice } from '../../../../components';
 import { useAppLocale } from '../../../../context';
-import { localize } from '../../../../helpers';
+import { localize, modifier } from '../../../../helpers';
 import { PlusSmall, Minus } from '../../../../assets';
 import config from '../../../../data/pathfinder2.json';
 
 const TRANSLATION = {
   en: {
     level: 'level',
-    traditions: 'Traditions'
+    traditions: 'Traditions',
+    innate: ' (Innate)',
+    check: 'Spell attack',
+    saveDC: 'Save DC',
+    limit: 'Limit'
   },
   ru: {
     level: 'уровень',
-    traditions: 'Традиции'
+    traditions: 'Традиции',
+    innate: ' (Врождённое)',
+    check: 'Атака заклинанием',
+    saveDC: 'Спасброски',
+    limit: 'Лимит'
   }
 }
 
@@ -46,6 +54,12 @@ export const Pathfinder2Spell = (props) => {
     props.onEnableSpell(props.characterSpellId, counter, spellLevel);
   }
 
+  const onInnateDiceRoll = (e) => {
+    e.stopPropagation();
+
+    props.onOpenDiceRoll('/check attack spell', props.spellAttack, localize(TRANSLATION, locale()).check)
+  }
+
   return (
     <Toggle
       containerClassList="mb-0!"
@@ -53,7 +67,18 @@ export const Pathfinder2Spell = (props) => {
       title={
         <>
           <div class="flex items-center justify-between">
-            <p>{spell().title}</p>
+            <p>
+              {spell().title}
+              <Show when={props.innate}>{localize(TRANSLATION, locale()).innate}</Show>
+            </p>
+            <Show when={props.innate}>
+              <Dice
+                width="36"
+                height="36"
+                text={modifier(props.spellAttack)}
+                onClick={onInnateDiceRoll}
+              />
+            </Show>
             <Show
               when={props.noLevel}
               fallback={
@@ -73,7 +98,7 @@ export const Pathfinder2Spell = (props) => {
               <Show
                 when={props.prepareMode}
                 fallback={
-                  <Show when={spell().info.level > 0}>
+                  <Show when={spell().info.level > 0 && props.children}>
                     {props.children}
                   </Show>
                 }
@@ -100,6 +125,12 @@ export const Pathfinder2Spell = (props) => {
               </Show>
             </Show>
           </div>
+          <Show when={props.innate}>
+            <div class="flex gap-x-4 mt-1 dark:text-snow text-sm">
+              <p>{localize(TRANSLATION, locale()).saveDC}: {props.spellDc}</p>
+              <p>{localize(TRANSLATION, locale()).limit}: {props.limit}</p>
+            </div>
+          </Show>
           <div class="flex gap-2 flex-wrap mt-1">
             <For each={spell().origin_values}>
               {(originValue) =>

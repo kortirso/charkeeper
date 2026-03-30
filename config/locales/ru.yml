@@ -287,18 +287,39 @@ ru:
   tags:
     pathfinder:
       general:
-        general: Общий
-        skill: Навык
-        orc: Орк
-        halfling: Полурослик
+        animist: Анимист
+        attack: Атака
+        bard: Бард
+        cantrip: Фокус
+        cleric: Жрец
+        concentrate: Концентрация
+        druid: Друид
+        dwarf: Дварф
+        earth: Земля
         fighter: Воин
         fortune: Удача
-        concentrate: Концентрация
-        cantrip: Фокус
-        attack: Атака
-        manipulate: Манипуляция
+        general: Общий
+        halfling: Полурослик
         healing: Исцеления
+        leshy: Леший
+        magus: Magus
+        manipulate: Манипуляция
+        oracle: Оракул
+        orc: Орк
+        plant: Растение
+        poison: Яд
+        polymorph: Полиморф
+        primal: Первобытный
+        psychic: Psychic
+        skill: Навык
+        sorcerer: Чародей
+        spellshape: Метамагия
+        thaumaturge: Thaumaturge
+        uncommon: Необычный
         vitality: Жизнь
+        witch: Ведьма
+        wizard: Волшебник
+        wood: Дерево
     dnd:
       weapon:
         ammo: Вы можете использовать оружие со свойством «боеприпас» для совершения дальнобойной атаки только если у вас есть боеприпасы для стрельбы.

@@ -63,12 +63,21 @@ export const Pathfinder2Spells = (props) => {
   createEffect(() => {
     if (lastActiveCharacterId() === character().id) return;
 
-    Promise.all([fetchSpells(), fetchCharacterSpells()]).then(
-      ([spellsData, characterSpellsData]) => {
-        setSpells(spellsData.spells);
-        setCharacterSpells(characterSpellsData.spells);
-      }
-    );
+    if (character().spells_info) {
+      Promise.all([fetchSpells(), fetchCharacterSpells()]).then(
+        ([spellsData, characterSpellsData]) => {
+          batch(() => {
+            setSpells(spellsData.spells);
+            setCharacterSpells(characterSpellsData.spells);
+          });
+        }
+      );
+    } else {
+      batch(() => {
+        setSpells([]);
+        setCharacterSpells([]);
+      });
+    }
 
     batch(() => {
       setLastActiveCharacterId(character().id);
@@ -87,19 +96,25 @@ export const Pathfinder2Spells = (props) => {
     }, {});
   });
 
-  // const characterCantrips = createMemo(() => {
-  //   if (!characterSpells()) return [];
-  //   if (!character().spells_info.prepare) return [];
+  const groupedStaticSpells = createMemo(() => {
+    if (character().formatted_static_spells.length === 0) return {};
 
-  //   return characterSpells().filter((item) => item.spell.info.level === 0);
-  // });
+    return character().formatted_static_spells.reduce((acc, item) => {
+      const currentLevel = item.spell.info.level
+      acc[currentLevel] = acc[currentLevel] ? acc[currentLevel].concat(item) : [item];
 
-  // const characterLevelSpells = createMemo(() => {
-  //   if (!characterSpells()) return [];
-  //   if (!character().spells_info.prepare) return [];
+      return acc;
+    }, {});
+  });
 
-  //   return characterSpells().filter((item) => item.spell.info.level !== 0);
-  // });
+  const maxSpellLevel = createMemo(() => {
+    const spellsMaxLevel = character().spells_info ? character().spells_info.max_spell_level : 0;
+
+    const formattedLevels = character().formatted_static_spells.length > 0 ? character().formatted_static_spells.map((item) => item.spell.info.level) : [0]
+    const staticMaxLevel = Math.max(...formattedLevels);
+
+    return Math.max(spellsMaxLevel, staticMaxLevel);
+  });
 
   const spendSpellSlot = async (level) => {
     let newValue;
@@ -207,35 +222,37 @@ export const Pathfinder2Spells = (props) => {
               />
             }
           >
-            <StatsBlock
-              items={[
-                {
-                  title: localize(TRANSLATION, locale()).spellAttack,
-                  value:
-                    <Dice
-                      width="36"
-                      height="36"
-                      text={modifier(character().spell_attack)}
-                      onClick={() => props.openDiceRoll('/check attack spell', character().spell_attack, localize(TRANSLATION, locale()).check)}
-                    />
-                },
-                { title: localize(TRANSLATION, locale()).saveDC, value: character().spell_dc }
-              ]}
-            />
-            <Button default textable classList="mb-2" onClick={() => setSpellsSelectingMode(true)}>
-              {localize(TRANSLATION, locale()).gotoSpellBook}
-            </Button>
-            <Show when={character().spells_info.prepare}>
-              <Checkbox
-                labelText={localize(TRANSLATION, locale()).renderMode}
-                labelPosition="right"
-                labelClassList="ml-2"
-                classList="mb-2"
-                checked={!renderMode()}
-                onToggle={() => setRenderMode(!renderMode())}
+            <Show when={character().spells_info}>
+              <StatsBlock
+                items={[
+                  {
+                    title: localize(TRANSLATION, locale()).spellAttack,
+                    value:
+                      <Dice
+                        width="36"
+                        height="36"
+                        text={modifier(character().spell_attack)}
+                        onClick={() => props.openDiceRoll('/check attack spell', character().spell_attack, localize(TRANSLATION, locale()).check)}
+                      />
+                  },
+                  { title: localize(TRANSLATION, locale()).saveDC, value: character().spell_dc }
+                ]}
               />
+              <Button default textable classList="mb-2" onClick={() => setSpellsSelectingMode(true)}>
+                {localize(TRANSLATION, locale()).gotoSpellBook}
+              </Button>
+              <Show when={character().spells_info.prepare}>
+                <Checkbox
+                  labelText={localize(TRANSLATION, locale()).renderMode}
+                  labelPosition="right"
+                  labelClassList="ml-2"
+                  classList="mb-2"
+                  checked={!renderMode()}
+                  onToggle={() => setRenderMode(!renderMode())}
+                />
+              </Show>
             </Show>
-            <For each={Array.from([...Array(character().spells_info.max_spell_level + 1).keys()])}>
+            <For each={Array.from([...Array(maxSpellLevel() + 1).keys()])}>
               {(level) =>
                 <>
                   <div class="flex justify-between items-center">
@@ -244,7 +261,7 @@ export const Pathfinder2Spells = (props) => {
                         {level} {localize(TRANSLATION, locale()).level}
                       </Show>
                     </h2>
-                    <Show when={level !== 0 && !character().spells_info.prepare}>
+                    <Show when={character().spells_info && level !== 0 && !character().spells_info.prepare}>
                       <div class="flex">
                         <For each={[...Array((character().spent_spell_slots[props.level] || 0)).keys()]}>
                           {() => <Checkbox filled checked classList="mr-1" onToggle={() => freeSpellSlot(props.level)} />}
@@ -254,62 +271,83 @@ export const Pathfinder2Spells = (props) => {
                         </For>
                       </div>
                     </Show>
-                    <Show when={character().spells_info.prepare && !renderMode()}>
+                    <Show when={character().spells_info?.prepare && !renderMode()}>
                       <p class="dark:text-snow">
                         {localize(TRANSLATION, locale()).prepareSlots} {level === 0 ? character().spells_info.cantrip_slots : character().spells_info.spells_slots[level]}
                       </p>
                     </Show>
                   </div>
-                  <Show
-                    when={character().spells_info.prepare && !renderMode()}
-                    fallback={
-                      <Show
-                        when={groupedCharacterSpells()[level] && groupedCharacterSpells()[level].filter((item) => item.ready_to_use).length > 0}
-                        fallback={<p class="dark:text-snow mb-4">
-                          {character().spells_info.prepare ? localize(TRANSLATION, locale()).noPreparedSpells : localize(TRANSLATION, locale()).noSpells}</p>
-                        }
-                      >
-                        {/* если не надо подготавливать (Бард) или включен режим отображения */}
-                        <div class="flex flex-col gap-2 mb-4">
-                          <For each={groupedCharacterSpells()[level].filter((item) => item.ready_to_use)}>
-                            {(characterSpell) =>
-                              <Pathfinder2Spell
-                                noLevel
-                                prepareMode={false}
-                                spell={characterSpell.spell}
-                                selectedCount={characterSpell.selected_count}
-                                usedCount={characterSpell.used_count}
-                              >
-                                <Show when={characterSpell.spell.info.level > 0}>
-                                  <div class="flex">
-                                    <For each={[...Array(characterSpell.used_count).keys()]}>
-                                      {() => <Checkbox filled checked classList="mr-1" onToggle={(e) => unuseSpellSlot(e, characterSpell)} />}
-                                    </For>
-                                    <For each={[...Array(characterSpell.selected_count - characterSpell.used_count).keys()]}>
-                                      {() => <Checkbox filled classList="mr-1" onToggle={(e) => useSpellSlot(e, characterSpell)} />}
-                                    </For>
-                                  </div>
-                                </Show>
-                              </Pathfinder2Spell>
-                            }
-                          </For>
-                        </div>
-                      </Show>
-                    }
-                  >
-                    {/* если надо подготавливать и включен режим подготовки */}
+                  <Show when={character().spells_info}>
+                    <Show
+                      when={character().spells_info.prepare && !renderMode()}
+                      fallback={
+                        <Show
+                          when={groupedCharacterSpells()[level] && groupedCharacterSpells()[level].filter((item) => item.ready_to_use).length > 0}
+                          fallback={<p class="dark:text-snow mb-4">
+                            {character().spells_info.prepare ? localize(TRANSLATION, locale()).noPreparedSpells : localize(TRANSLATION, locale()).noSpells}</p>
+                          }
+                        >
+                          {/* если не надо подготавливать (Бард) или включен режим отображения */}
+                          <div class="flex flex-col gap-2 mb-4">
+                            <For each={groupedCharacterSpells()[level].filter((item) => item.ready_to_use)}>
+                              {(characterSpell) =>
+                                <Pathfinder2Spell
+                                  noLevel
+                                  prepareMode={false}
+                                  spell={characterSpell.spell}
+                                  selectedCount={characterSpell.selected_count}
+                                  usedCount={characterSpell.used_count}
+                                >
+                                  <Show when={characterSpell.spell.info.level > 0}>
+                                    <div class="flex">
+                                      <For each={[...Array(characterSpell.used_count).keys()]}>
+                                        {() => <Checkbox filled checked classList="mr-1" onToggle={(e) => unuseSpellSlot(e, characterSpell)} />}
+                                      </For>
+                                      <For each={[...Array(characterSpell.selected_count - characterSpell.used_count).keys()]}>
+                                        {() => <Checkbox filled classList="mr-1" onToggle={(e) => useSpellSlot(e, characterSpell)} />}
+                                      </For>
+                                    </div>
+                                  </Show>
+                                </Pathfinder2Spell>
+                              }
+                            </For>
+                          </div>
+                        </Show>
+                      }
+                    >
+                      {/* если надо подготавливать и включен режим подготовки */}
+                      <div class="flex flex-col gap-2 mb-4">
+                        <For each={groupedCharacterSpells()[level]}>
+                          {(characterSpell) =>
+                            <Pathfinder2Spell
+                              noLevel
+                              prepareMode={true}
+                              characterSpellId={characterSpell.id}
+                              spell={characterSpell.spell}
+                              readyToUse={characterSpell.ready_to_use}
+                              selectedCount={characterSpell.selected_count}
+                              onDisableSpell={disableSpell}
+                              onEnableSpell={enableSpell}
+                            />
+                          }
+                        </For>
+                      </div>
+                    </Show>
+                  </Show>
+                  <Show when={groupedStaticSpells()[level]}>
+                    {/* если не надо подготавливать (Бард) или включен режим отображения */}
                     <div class="flex flex-col gap-2 mb-4">
-                      <For each={groupedCharacterSpells()[level]}>
+                      <For each={groupedStaticSpells()[level]}>
                         {(characterSpell) =>
                           <Pathfinder2Spell
+                            innate
                             noLevel
-                            prepareMode={true}
-                            characterSpellId={characterSpell.id}
+                            prepareMode={false}
                             spell={characterSpell.spell}
-                            readyToUse={characterSpell.ready_to_use}
-                            selectedCount={characterSpell.selected_count}
-                            onDisableSpell={disableSpell}
-                            onEnableSpell={enableSpell}
+                            spellAttack={characterSpell.spell_attack}
+                            spellDc={characterSpell.spell_dc}
+                            limit={characterSpell.limit}
+                            onOpenDiceRoll={props.openDiceRoll}
                           />
                         }
                       </For>

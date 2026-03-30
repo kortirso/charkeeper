@@ -3,8 +3,8 @@
     "slug": "telekinetic_projectile",
     "title": { "en": "Telekinetic Projectile", "ru": "Телекинетический снаряд" },
     "description": {
-      "en": "You hurl a loose, unattended object that is within range and that has 1 Bulk or less at the target. Make a spell attack roll against the target’s AC. If you hit, you deal 2d6 bludgeoning, piercing, or slashing damage—as appropriate for the object you hurled. No specific traits or magic properties of the hurled item affect the attack or the damage.",
-      "ru": "You hurl a loose, unattended object that is within range and that has 1 Bulk or less at the target. Make a spell attack roll against the target’s AC. If you hit, you deal 2d6 bludgeoning, piercing, or slashing damage—as appropriate for the object you hurled. No specific traits or magic properties of the hurled item affect the attack or the damage."
+      "en": "You hurl a loose, unattended object that is within range and that has 1 Bulk or less at the target. Make a spell attack roll against the target's AC. If you hit, you deal 2d6 bludgeoning, piercing, or slashing damage—as appropriate for the object you hurled. No specific traits or magic properties of the hurled item affect the attack or the damage.",
+      "ru": "You hurl a loose, unattended object that is within range and that has 1 Bulk or less at the target. Make a spell attack roll against the target's AC. If you hit, you deal 2d6 bludgeoning, piercing, or slashing damage—as appropriate for the object you hurled. No specific traits or magic properties of the hurled item affect the attack or the damage."
     },
     "origin": "spell",
     "origin_value": "arcane,occult",
@@ -84,8 +84,8 @@
           "time": "2a",
           "concentrate": true,
           "description": {
-            "en": "The spell has a range of 30 feet. If you’re healing a living creature, increase the Hit Points restored by 8.",
-            "ru": "The spell has a range of 30 feet. If you’re healing a living creature, increase the Hit Points restored by 8."
+            "en": "The spell has a range of 30 feet. If you're healing a living creature, increase the Hit Points restored by 8.",
+            "ru": "The spell has a range of 30 feet. If you're healing a living creature, increase the Hit Points restored by 8."
           }
         },
         {
@@ -101,6 +101,34 @@
           "description": {
             "en": "The amount of healing or damage increases by 1d8, and the extra healing for the 2-action version increases by 8.",
             "ru": "The amount of healing or damage increases by 1d8, and the extra healing for the 2-action version increases by 8."
+          }
+        }
+      ]
+    }
+  },
+  {
+    "slug": "oaken_resilience",
+    "title": { "en": "Oaken Resilience", "ru": "Дубовая кожа" },
+    "description": {
+      "en": "The target's skin becomes tough, with a consistency like bark or wood. The target gains resistance 2 to bludgeoning and piercing damage and weakness 3 to fire. After the target takes fire damage, it can Dismiss the spell as a free action triggered by taking the damage; doing so doesn't reduce the fire damage the target was dealt.",
+      "ru": "Кожа цели становится крепкой, словно кора или древесина. Цель получает устойчивость 2 к дробящему и колющему урону и уязвимость 3 к огню. После того как цель получает урон огнём, она может использовать Прекращение для этого заклинания в качестве свободного действия, спровоцированного уроном огнём, но это не снизит полученный урон огнём."
+    },
+    "origin": "spell",
+    "origin_value": "arcane,primal",
+    "origin_values": ["manipulate", "concentrate", "plant", "wood"],
+    "kind": "static",
+    "price": { "a": 2 },
+    "info": {
+      "level": 2,
+      "targets": "1,creature",
+      "range": "touch",
+      "duration": "10,m",
+      "enhancements": [
+        {
+          "name": { "en": "Heightened (+2)", "ru": "Повышенное (+2)" },
+          "description": {
+            "en": "The resistances increase by 2, and the weakness increases by 3.",
+            "ru": "Устойчивости увеличиваются на 2, уязвимость увеличивается на 3."
           }
         }
       ]

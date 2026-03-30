@@ -287,18 +287,39 @@ es:
   tags:
     pathfinder:
       general:
-        general: General
-        skill: Skill
-        orc: Orc
-        halfling: Halfling
+        animist: Animist
+        attack: Attack
+        bard: Bard
+        cantrip: Cantrip
+        cleric: Cleric
+        concentrate: Concentrate
+        druid: Druid
+        dwarf: Dwarf
+        earth: Earth
         fighter: Fighter
         fortune: Fortune
-        concentrate: Concentrate
-        cantrip: Cantrip
-        attack: Attack
-        manipulate: Manipulate
+        general: General
+        halfling: Halfling
         healing: Healing
+        leshy: Leshy
+        magus: Magus
+        manipulate: Manipulate
+        oracle: Oracle
+        orc: Orc
+        plant: Plant
+        poison: Poison
+        polymorph: Polymorph
+        primal: Primal
+        psychic: Psychic
+        skill: Skill
+        sorcerer: Sorcerer
+        spellshape: Spellshape
+        thaumaturge: Thaumaturge
+        uncommon: Uncommon
         vitality: Vitality
+        witch: Witch
+        wizard: Wizard
+        wood: Wood
     dnd:
       weapon:
         ammo: Solo puedes usar un arma que tenga la munición adecuada para realizar un ataque a distancia si tienes munición para disparar con el arma.
