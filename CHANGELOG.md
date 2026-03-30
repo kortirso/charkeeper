@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - creating homebrew backgrounds for D&D characters
 - managing spells for PF2 characters
 - rendering static spells for PF2 characters
+- extra feats provided by feats for PF2 characters
 
 ## [0.4.20] - 2026-03-28
 ### Added
