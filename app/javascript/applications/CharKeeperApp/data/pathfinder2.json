@@ -217,7 +217,7 @@
   "abilities": {
     "str": { "name": { "en": "Strength", "ru": "Сила" } },
     "dex": { "name": { "en": "Dexterity", "ru": "Ловкость" } },
-    "con": { "name": { "en": "Constitution", "ru": "Телосложение" } },
+    "con": { "name": { "en": "Constitution", "ru": "Выносливость" } },
     "int": { "name": { "en": "Intelligence", "ru": "Интеллект" } },
     "wis": { "name": { "en": "Wisdom", "ru": "Мудрость" } },
     "cha": { "name": { "en": "Charisma", "ru": "Обаяние" } }
@@ -254,7 +254,7 @@
   },
   "savingThrows": {
     "fortitude": { "name": { "en": "Fortitude", "ru": "Стойкость" } },
-    "reflex": { "name": { "en": "Reflex", "ru": "Рефлексы" } },
+    "reflex": { "name": { "en": "Reflex", "ru": "Реакция" } },
     "will": { "name": { "en": "Will", "ru": "Воля" } }
   },
   "conditions": {
