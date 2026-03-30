@@ -28,7 +28,7 @@ const TRANSLATION = {
     saveDC: 'Спасброски',
     back: 'Назад',
     check: 'Атака заклинанием',
-    gotoSpellBook: 'Spellbook management',
+    gotoSpellBook: 'Книга заклинаний',
     cantrips: 'Фокусы',
     level: 'уровень',
     noSpells: 'Нет изученных заклинаний',
@@ -335,7 +335,6 @@ export const Pathfinder2Spells = (props) => {
                     </Show>
                   </Show>
                   <Show when={groupedStaticSpells()[level]}>
-                    {/* если не надо подготавливать (Бард) или включен режим отображения */}
                     <div class="flex flex-col gap-2 mb-4">
                       <For each={groupedStaticSpells()[level]}>
                         {(characterSpell) =>

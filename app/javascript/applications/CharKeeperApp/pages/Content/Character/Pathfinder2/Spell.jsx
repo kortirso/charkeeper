@@ -1,5 +1,8 @@
 import { For, Show } from 'solid-js';
 
+import { SpellRange } from './Spells/Range';
+import { SpellDuration } from './Spells/Duration';
+import { SpellDefense } from './Spells/Defense';
 import { Button, Toggle, Dice } from '../../../../components';
 import { useAppLocale } from '../../../../context';
 import { localize, modifier } from '../../../../helpers';
@@ -58,6 +61,15 @@ export const Pathfinder2Spell = (props) => {
     e.stopPropagation();
 
     props.onOpenDiceRoll('/check attack spell', props.spellAttack, localize(TRANSLATION, locale()).check)
+  }
+
+  const renderEnhancementTitle = (enhancement) => {
+    const result = [];
+    if (enhancement.name) result.push(localize(enhancement.name, locale()));
+    if (enhancement.time) result.push(enhancement.time.toUpperCase());
+    if (enhancement.concentrate) result.push('C');
+
+    return <span class="font-medium!">{result.join(' ')}</span>;
   }
 
   return (
@@ -127,8 +139,8 @@ export const Pathfinder2Spell = (props) => {
           </div>
           <Show when={props.innate}>
             <div class="flex gap-x-4 mt-1 dark:text-snow text-sm">
-              <p>{localize(TRANSLATION, locale()).saveDC}: {props.spellDc}</p>
-              <p>{localize(TRANSLATION, locale()).limit}: {props.limit}</p>
+              <p><span class="font-medium!">{localize(TRANSLATION, locale()).saveDC}:</span> {props.spellDc}</p>
+              <p><span class="font-medium!">{localize(TRANSLATION, locale()).limit}:</span> {props.limit}</p>
             </div>
           </Show>
           <div class="flex gap-2 flex-wrap mt-1">
@@ -138,7 +150,12 @@ export const Pathfinder2Spell = (props) => {
               }
             </For>
           </div>
-          <p class="mt-1 text-sm">{localize(TRANSLATION, locale()).traditions}: {spell().origin_value.map((item) => config.spellLists[item].name[locale()]).join(', ')}</p>
+          <p class="mt-1 text-sm">
+            <span class="font-medium!">{localize(TRANSLATION, locale()).traditions}:</span> {spell().origin_value.map((item) => config.spellLists[item].name[locale()]).join(', ')}
+          </p>
+          <SpellRange value={spell().info.range} />
+          <SpellDuration value={spell().info.duration} />
+          <SpellDefense value={spell().info.defense} />
         </>
       }
     >
@@ -146,6 +163,17 @@ export const Pathfinder2Spell = (props) => {
         class="feat-markdown"
         innerHTML={spell().description} // eslint-disable-line solid/no-innerhtml
       />
+      <Show when={spell().info.enhancements && spell().info.enhancements.length > 0}>
+        <div class="mt-2">
+          <For each={spell().info.enhancements}>
+            {(enhancement) =>
+              <p class="feat-markdown text-sm mt-1">
+                {renderEnhancementTitle(enhancement)}: {localize(enhancement.description, locale())}
+              </p>
+            }
+          </For>
+        </div>
+      </Show>
     </Toggle>
   );
 }
