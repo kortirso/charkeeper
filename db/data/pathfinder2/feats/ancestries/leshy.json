@@ -27,7 +27,8 @@
     },
     "origin": "ancestry",
     "origin_values": ["leshy"],
-    "conditions": { "level": 1 }
+    "conditions": { "level": 1 },
+    "info": { "extra_feats": ["shameless_request"] }
   },
   {
     "slug": "leshy_lore",

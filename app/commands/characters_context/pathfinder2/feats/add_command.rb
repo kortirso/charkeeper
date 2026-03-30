@@ -27,6 +27,7 @@ module CharactersContext
 
           character_feat.increment!(:selected_count)
           update_selected_feats(input)
+          add_extra_feats(input)
 
           { result: :ok }
         end
@@ -40,6 +41,19 @@ module CharactersContext
 
           input[:character].data = input[:character].data.attributes.merge('selected_feats' => selected_feats)
           input[:character].save!
+        end
+
+        def add_extra_feats(input)
+          return if input[:feat].info['extra_feats'].blank?
+
+          ::Pathfinder2::Feat.where(slug: input[:feat].info['extra_feats']).ids.each do |id|
+            Charkeeper::Container.resolve('commands.characters_context.pathfinder2.feats.add').call(
+              character: input[:character],
+              id: id,
+              type: 'additional',
+              level: input[:level]
+            )
+          end
         end
       end
     end
