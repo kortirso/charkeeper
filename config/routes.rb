@@ -140,6 +140,7 @@ Rails.application.routes.draw do
           resources :spells, only: %i[index create update destroy]
           resources :health, only: %i[create]
           resources :talents, only: %i[index create]
+          resources :rest, only: %i[create]
         end
       end
       resources :spells, only: %i[index show]

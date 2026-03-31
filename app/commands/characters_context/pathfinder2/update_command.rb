@@ -22,7 +22,6 @@ module CharactersContext
         params do
           required(:character).filled(type?: ::Pathfinder2::Character)
           optional(:level).filled(:integer)
-          optional(:classes).hash
           optional(:abilities).hash do
             required(:str).filled(:integer)
             required(:dex).filled(:integer)
@@ -107,7 +106,7 @@ module CharactersContext
       def lock_time = 0
 
       def do_prepare(input) # rubocop: disable Metrics/AbcSize, Metrics/PerceivedComplexity
-        %i[classes abilities health saving_throws selected_skills coins].each do |key|
+        %i[abilities health saving_throws selected_skills coins].each do |key|
           input[key]&.transform_values!(&:to_i)
         end
 
