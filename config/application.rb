@@ -71,7 +71,7 @@ module Charkeeper
 
     # config.hosts << 'sklh4i-2001-41d0-800-4d0f--.nl.tuna.am'
 
-    config.skylight.environments << 'ru_production'
+    # config.skylight.environments << 'ru_production'
 
     # Catch 404s
     config.after_initialize do |app|
