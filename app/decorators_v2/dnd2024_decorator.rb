@@ -7,10 +7,7 @@ class Dnd2024Decorator < ApplicationDecoratorV2
   ARMOR_TYPES = %w[armor shield].freeze
   DEFAULT_SPEEDS = %w[swim climb flight].freeze
   ONLY_ADD_MODIFIERS = %w[str dex con wis int cha].freeze
-  WEAPON_MODIFIERS = %w[
-    attack unarmed_attacks melee_attacks range_attacks
-    damage unarmed_damage melee_damage range_damage
-  ].freeze
+  WEAPON_MODIFIERS = %w[attack unarmed_attacks melee_attacks range_attacks damage unarmed_damage melee_damage range_damage].freeze
   DEFAULT_CLASSES = %w[artificer barbarian bard cleric druid fighter monk paladin ranger rogue sorcerer warlock wizard].freeze
 
   def call(character:, exclude_feature_origins: [], simple: false, version: nil) # rubocop: disable Metrics/MethodLength, Metrics/AbcSize

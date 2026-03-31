@@ -4,6 +4,9 @@ class Pathfinder2Decorator < ApplicationDecoratorV2
   ARMOR_TYPES = %w[armor shield].freeze
   FLEXIBLE_SKILLS = %w[acrobatics athletics].freeze
   ARMOR_ABILITIES = %w[str dex].freeze
+  DEFAULT_CLASSES = %w[bard cleric druid fighter ranger rogue witch wizard].freeze
+  ONLY_ADD_MODIFIERS = %w[str dex con wis int cha].freeze
+  WEAPON_MODIFIERS = %w[attack unarmed_attacks melee_attacks range_attacks damage unarmed_damage melee_damage range_damage].freeze
 
   def call(character:, simple: false, version: nil)
     @character = character
@@ -13,10 +16,15 @@ class Pathfinder2Decorator < ApplicationDecoratorV2
     generate_basis
     return self if simple
 
+    apply_add_bonuses_to_abilities
     calculate_secondary_abilities
+    apply_set_modifiers
+    find_general_attack_modifiers
     find_attacks
 
     @result = Pathfinder2::ClassDecorator.new.call(result: @result)
+
+    apply_add_modifiers
 
     @result['features'] = apply_features
     @result['formatted_static_spells'] = format_static_spells
@@ -35,34 +43,129 @@ class Pathfinder2Decorator < ApplicationDecoratorV2
     @result['no_armor'] = defense_gear.values.all?(&:nil?)
   end
 
+  def apply_add_bonuses_to_abilities
+    @result['modified_abilities'] = abilities.to_h { |key, value| [key, value + find_modifiers(key, 'add').sum] }
+  end
+
   def calculate_secondary_abilities # rubocop: disable Metrics/AbcSize
     @result['skills'] = generate_skills_payload
     @result['saving_throws_value'] = {
-      fortitude: abilities['con'] + proficiency_bonus(saving_throws['fortitude']),
-      reflex: abilities['dex'] + proficiency_bonus(saving_throws['reflex']),
-      will: abilities['wis'] + proficiency_bonus(saving_throws['will'])
+      'fortitude' => modified_abilities['con'] + proficiency_bonus(saving_throws['fortitude']),
+      'reflex' => modified_abilities['dex'] + proficiency_bonus(saving_throws['reflex']),
+      'will' => modified_abilities['wis'] + proficiency_bonus(saving_throws['will'])
     }
     @result['armor_class'] = calc_armor_class
     @result['speed'] = calc_speed
-    @result['perception'] = abilities['wis'] + proficiency_bonus(perception)
-    @result['load'] = abilities['str'] + 5
-    @result['class_dc'] = 10 + abilities[main_ability] + proficiency_bonus(class_dc.to_i)
-    @result['spell_attack'] = spell_attack.to_i.positive? ? abilities[main_ability] + proficiency_bonus(spell_attack.to_i) : 0
-    @result['spell_dc'] = spell_dc.to_i.positive? ? 10 + abilities[main_ability] + proficiency_bonus(spell_dc.to_i) : 0
+    @result['perception'] = modified_abilities['wis'] + proficiency_bonus(perception)
+    @result['load'] = modified_abilities['str'] + 5
+    @result['class_dc'] = 10 + modified_abilities[main_ability] + proficiency_bonus(class_dc.to_i)
+    @result['spell_attack'] =
+      spell_attack.to_i.positive? ? modified_abilities[main_ability] + proficiency_bonus(spell_attack.to_i) : 0
+    @result['spell_dc'] = spell_dc.to_i.positive? ? 10 + modified_abilities[main_ability] + proficiency_bonus(spell_dc.to_i) : 0
+  end
+
+  def apply_set_modifiers # rubocop: disable Metrics/AbcSize, Metrics/PerceivedComplexity, Metrics/CyclomaticComplexity
+    res = all_modifiers.flat_map do |items|
+      items.filter_map do |key, value|
+        ONLY_ADD_MODIFIERS.exclude?(key) && WEAPON_MODIFIERS.exclude?(key) && value['type'] == 'set' && { key => value['value'] }
+      end
+    end.compact_blank.each_with_object({}) do |value, acc|
+      key = value.keys[0]
+      acc[key] ||= []
+      formula_result = formula.call(formula: value[key], variables: formula_variables)
+      formula_result ? (acc[key] << formula_result) : monitoring_formula_error(formula)
+    end
+
+    res.each do |(key_name, values)|
+      if key_name.include?('.')
+        primary, secondary = key_name.split('.')
+        @result[primary][secondary] = [@result[primary][secondary], *values].max
+      else
+        @result[key_name] = [@result[key_name], *values].max
+      end
+    end
+  end
+
+  # модификаторы атаки от обычных предметов, распространяются на всё оружие
+  def find_general_attack_modifiers # rubocop: disable Metrics/AbcSize
+    @general_attack_modifiers = modifiers_from_items.flat_map do |items|
+      items.filter_map do |key, value|
+        WEAPON_MODIFIERS.include?(key) && value['type'] == 'add' && { key => value['value'] }
+      end
+    end.compact_blank.each_with_object({}) do |value, acc|
+      key = value.keys[0]
+      acc[key] ||= []
+      formula_result = formula.call(formula: value[key], variables: formula_variables)
+      formula_result ? (acc[key] << formula_result) : monitoring_formula_error(formula)
+    end
+  end
+
+  def find_weapon_modifiers(item_list, base_list, modifiers) # rubocop: disable Metrics/AbcSize
+    res = [item_list, base_list].flat_map do |items|
+      items.filter_map do |key, value|
+        modifiers.include?(key) && value['type'] == 'add' && { key => value['value'] }
+      end
+    end.compact_blank.each_with_object({}) do |value, acc|
+      key = value.keys[0]
+      acc[key] ||= []
+      formula_result = formula.call(formula: value[key], variables: formula_variables)
+      formula_result ? (acc[key] << formula_result) : monitoring_formula_error(formula)
+    end
+    res.values.flatten.sum + @general_attack_modifiers.slice(*modifiers).values.flatten.sum
   end
 
   def find_attacks
     @result['attacks'] = [unarmed_attack] + weapon_attacks.compact
   end
 
+  def apply_add_modifiers # rubocop: disable Metrics/CyclomaticComplexity, Metrics/AbcSize, Metrics/MethodLength, Metrics/PerceivedComplexity
+    res = all_modifiers.flat_map do |items|
+      items.filter_map do |key, value|
+        ONLY_ADD_MODIFIERS.exclude?(key) && WEAPON_MODIFIERS.exclude?(key) && value['type'] == 'add' && { key => value['value'] }
+      end
+    end.compact_blank.each_with_object({}) do |value, acc|
+      key = value.keys[0]
+      acc[key] ||= []
+      formula_result = formula.call(formula: value[key], variables: formula_variables)
+      formula_result ? (acc[key] << formula_result) : monitoring_formula_error(formula)
+    end
+
+    res.each do |(key_name, values)|
+      values.each do |value|
+        if key_name.include?('.')
+          primary, secondary = key_name.split('.')
+          @result[primary][secondary] = @result[primary][secondary] + value
+        else
+          @result[key_name] = @result[key_name] + value
+        end
+      end
+    end
+
+    res = all_modifiers.flat_map do |items|
+      items.filter_map do |key, value|
+        ONLY_ADD_MODIFIERS.exclude?(key) && value['type'] == 'concat' && { key => value['value'] }
+      end
+    end.compact_blank.each_with_object({}) do |value, acc|
+      key = value.keys[0]
+      acc[key] ||= []
+      acc[key] << value[key]
+    end
+
+    res.each do |(key_name, values)|
+      @result[key_name] = (@result[key_name] + values).uniq
+    end
+  end
+
   def unarmed_attack
+    attack_bonus = find_weapon_modifiers({}, {}, %w[attack unarmed_attacks])
+    damage_bonus = find_weapon_modifiers({}, {}, %w[damage unarmed_damage])
     key_ability_bonus = find_key_ability_bonus('melee', ['finesse'])
     {
       slug: 'unarmed',
       name: translate({ en: 'Unarmed', ru: 'Безоружная' }),
-      attack_bonus: key_ability_bonus + proficiency_bonus(weapon_skills['unarmed']),
+      attack_bonus: key_ability_bonus + proficiency_bonus(weapon_skills['unarmed']) + attack_bonus,
       damage: '1d4',
-      damage_bonus: abilities['str'],
+      damage_bonus: modified_abilities['str'] + damage_bonus,
       tags: ['bludge'].index_with { |type| I18n.t("tags.pathfinder2.weapon.title.#{type}") }.merge(
         { 'agile' => nil, 'nonlethal' => nil }.to_h do |key, value|
           [key, I18n.t("tags.pathfinder2.weapon.title.#{key}", value: value)]
@@ -93,31 +196,39 @@ class Pathfinder2Decorator < ApplicationDecoratorV2
     end
   end
 
-  def melee_attack(item, tooltips)
+  def melee_attack(item, tooltips) # rubocop: disable Metrics/AbcSize
+    attack_bonus = find_weapon_modifiers(item[:modifiers], item[:items_modifiers], %w[attack melee_attacks])
+    damage_bonus = find_weapon_modifiers(item[:modifiers], item[:items_modifiers], %w[damage melee_damage])
+
     key_ability_bonus = find_key_ability_bonus('melee', tooltips.keys)
-    attack_values(item, key_ability_bonus, tooltips)
+    thrown_attack_bonus = tooltips.key?('thrown') ? modified_abilities['dex'] + proficiency_bonus(weapon_skills[item[:items_info]['weapon_skill']]) : nil # rubocop: disable Layout/LineLength
+
+    attack_values(item, key_ability_bonus, tooltips, attack_bonus)
       .merge({
-        thrown_attack_bonus: tooltips.key?('thrown') ? abilities['dex'] + proficiency_bonus(weapon_skills[item[:items_info]['weapon_skill']]) : nil, # rubocop: disable Layout/LineLength
+        thrown_attack_bonus: thrown_attack_bonus ? thrown_attack_bonus + attack_bonus : nil,
         distance: tooltips.key?('thrown') ? item[:items_info]['dist'] : (tooltips.key?('reach') ? 10 : nil), # rubocop: disable Style/NestedTernaryOperator
-        damage_bonus: abilities['str']
+        damage_bonus: modified_abilities['str'] + damage_bonus
       })
   end
 
-  def range_attack(item, tooltips)
+  def range_attack(item, tooltips) # rubocop: disable Metrics/AbcSize
+    attack_bonus = find_weapon_modifiers(item[:modifiers], item[:items_modifiers], %w[attack range_attacks])
+    damage_bonus = find_weapon_modifiers(item[:modifiers], item[:items_modifiers], %w[damage range_damage])
+
     key_ability_bonus = find_key_ability_bonus('range')
-    attack_values(item, key_ability_bonus, tooltips)
+    attack_values(item, key_ability_bonus, tooltips, attack_bonus)
       .merge({
         distance: item[:items_info]['dist'],
-        damage_bonus: tooltips.key?('propulsive') ? (abilities['str'].positive? ? (abilities['str'] / 2) : abilities['str']) : 0 # rubocop: disable Style/NestedTernaryOperator
+        damage_bonus: (tooltips.key?('propulsive') ? (modified_abilities['str'].positive? ? (modified_abilities['str'] / 2) : modified_abilities['str']) : 0) + damage_bonus # rubocop: disable Style/NestedTernaryOperator, Layout/LineLength
       })
   end
 
-  def attack_values(item, key_ability_bonus, tooltips) # rubocop: disable Metrics/AbcSize
+  def attack_values(item, key_ability_bonus, tooltips, attack_bonus) # rubocop: disable Metrics/AbcSize
     damage_types = item[:items_info]['damage_type'].split('-')
     {
       slug: item[:items_slug],
       name: translate(item[:items_name]),
-      attack_bonus: key_ability_bonus + proficiency_bonus(weapon_skills[item[:items_info]['weapon_skill']]),
+      attack_bonus: key_ability_bonus + proficiency_bonus(weapon_skills[item[:items_info]['weapon_skill']]) + attack_bonus,
       damage: item[:items_info]['damage'],
       notes: item[:notes],
       tags: damage_types.index_with { |type| I18n.t("tags.pathfinder2.weapon.title.#{type}") }.merge(
@@ -130,16 +241,20 @@ class Pathfinder2Decorator < ApplicationDecoratorV2
   end
 
   def find_key_ability_bonus(type, tooltips=[])
-    return [abilities['str'], abilities['dex']].max if tooltips.include?('finesse')
-    return abilities['str'] if type == 'melee'
+    return [modified_abilities['str'], modified_abilities['dex']].max if tooltips.include?('finesse')
+    return modified_abilities['str'] if type == 'melee'
 
-    abilities['dex']
+    modified_abilities['dex']
   end
 
   def proficiency_bonus(proficiency_level)
     return 0 if proficiency_level.to_i.zero?
 
     level + (proficiency_level * 2)
+  end
+
+  def find_modifiers(key, type)
+    all_modifiers.map { |item| item.dig(key, 'type') == type && item.dig(key, 'value') }.compact_blank.map(&:to_i)
   end
 
   def calc_ability_modifier(value)
@@ -163,8 +278,8 @@ class Pathfinder2Decorator < ApplicationDecoratorV2
       slug: slug,
       ability: ability,
       level: proficiency_level,
-      total_modifier: abilities[ability] + proficiency_bonus(proficiency_level) + armor_penalty(slug, ability),
-      modifier: abilities[ability],
+      total_modifier: modified_abilities[ability] + proficiency_bonus(proficiency_level) + armor_penalty(slug, ability),
+      modifier: modified_abilities[ability],
       prof: proficiency_bonus(proficiency_level),
       item: 0,
       armor: armor_penalty(slug, ability)
@@ -186,11 +301,11 @@ class Pathfinder2Decorator < ApplicationDecoratorV2
 
     result = 10
     if equiped_armor
-      result += [abilities['dex'], equiped_armor.dig(:items_info, 'dex_max')].compact.min # модификатор ловкости
+      result += [modified_abilities['dex'], equiped_armor.dig(:items_info, 'dex_max')].compact.min # модификатор ловкости
       result += proficiency_bonus(armor_skills[equiped_armor.dig(:items_info, 'armor_skill')]) # бонус мастерства
       result += equiped_armor.dig(:items_info, 'ac')
     else
-      result += abilities['dex'] # модификатор ловкости
+      result += modified_abilities['dex'] # модификатор ловкости
       result += proficiency_bonus(armor_skills['unarmored']) # бонус мастерства
     end
     result += equiped_shield.dig(:items_info, 'ac') if equiped_shield
@@ -217,7 +332,7 @@ class Pathfinder2Decorator < ApplicationDecoratorV2
     @armor_traits = {
       strength_enough: equiped_armor.nil? ||
                        equiped_armor.dig(:items_info, 'str_req').nil? ||
-                       abilities['str'] >= equiped_armor.dig(:items_info, 'str_req'),
+                       modified_abilities['str'] >= equiped_armor.dig(:items_info, 'str_req'),
       flexible: equiped_armor.nil? || equiped_armor.dig(:items_info, 'tooltips', 'flexible') || false,
       noisy: equiped_armor&.dig(:items_info, 'tooltips', 'noisy') || false
     }
@@ -239,7 +354,7 @@ class Pathfinder2Decorator < ApplicationDecoratorV2
     formatted_static_spells = {}
     available_features.pluck('feats.info').pluck('static_spells').compact.each do |custom_static_spell|
       custom_static_spell.each do |key, values|
-        modifier = values['modifier'] ? abilities[values['modifier']] : abilities['cha']
+        modifier = values['modifier'] ? modified_abilities[values['modifier']] : modified_abilities['cha']
         prof_bonus = level >= 12 ? proficiency_bonus(2) : proficiency_bonus(1)
         formatted_static_spells[key] = {
           'spell_attack' => prof_bonus + modifier,
@@ -348,6 +463,45 @@ class Pathfinder2Decorator < ApplicationDecoratorV2
     )
   end
 
+  # бонусы персонажа - bonus.value
+  # бонусы от надетых предметов и оружия в руках - modifiers
+  # бонусы Character::Item - modifiers
+  # бонусы навыков - modifiers
+  def all_modifiers
+    @all_modifiers ||=
+      character_modifiers +
+        active_items_with_weapon_in_hands.pluck(:items_modifiers).compact_blank +
+        active_items_with_weapon_in_hands.pluck(:modifiers).compact_blank +
+        feature_modifiers
+  end
+
+  def modifiers_from_items
+    character_modifiers +
+      active_items_without_weapon.pluck(:items_modifiers).compact_blank +
+      active_items_without_weapon.pluck(:modifiers).compact_blank +
+      feature_modifiers
+  end
+
+  def active_items_without_weapon
+    active_items.reject { |item| item[:items_kind] == 'weapon' }
+  end
+
+  def active_items_with_weapon_in_hands
+    active_items.select { |item| item[:items_kind] != 'weapon' || item[:states]['hands'].positive? }
+  end
+
+  def character_modifiers
+    @character.bonuses.where(enabled: true).pluck(:value).flatten
+  end
+
+  def feature_modifiers
+    available_features
+      .hashable_pluck(:ready_to_use, :active, 'feats.continious', 'feats.modifiers')
+      .select { |item| (!item[:feats_continious] && item[:ready_to_use]) || item[:active] }
+      .pluck(:feats_modifiers)
+      .compact_blank
+  end
+
   def available_features
     @available_features ||=
       @character
@@ -373,5 +527,24 @@ class Pathfinder2Decorator < ApplicationDecoratorV2
         .where("states->>'hands' != ? OR states->>'equipment' != ?", '0', '0')
         .joins(:item)
         .hashable_pluck('items.kind', 'items.data', 'items.info', 'items.modifiers', :states, :modifiers)
+  end
+
+  def formula_variables
+    @formula_variables ||=
+      {
+        level: level,
+        no_body_armor: no_body_armor,
+        no_armor: no_armor,
+        armor_class: armor_class
+      }
+      .merge(modified_abilities.symbolize_keys)
+  end
+
+  def monitoring_formula_error(formula)
+    Charkeeper::Container.resolve('monitoring.client').notify(
+      exception: Monitoring::FormulaError.new('Formula error'),
+      metadata: { formula: formula },
+      severity: :info
+    )
   end
 end
