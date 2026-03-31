@@ -106,6 +106,8 @@ module CharactersContext
       def lock_time = 0
 
       def do_prepare(input) # rubocop: disable Metrics/AbcSize, Metrics/PerceivedComplexity
+        input.merge!(apply_class_progression(input)) if input.key?(:level)
+
         %i[abilities health saving_throws selected_skills coins].each do |key|
           input[key]&.transform_values!(&:to_i)
         end
@@ -163,6 +165,12 @@ module CharactersContext
         input[:character].avatar.attach(input[:file])
         cache.push_item(item: input[:character].avatar)
       rescue StandardError => _e
+      end
+
+      def apply_class_progression(input)
+        "Pathfinder2Context::LevelProgressions::#{input[:character].data.main_class.camelize}".constantize.new.call(
+          character: input[:character]
+        )
       end
     end
   end

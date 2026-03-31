@@ -13,6 +13,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - extra feats provided by feats for PF2 characters
 - rest options for PF2 characters
 - bonuses for PF2 characters
+- class leveling progression for PF2 characters
 
 ## [0.4.20] - 2026-03-28
 ### Added

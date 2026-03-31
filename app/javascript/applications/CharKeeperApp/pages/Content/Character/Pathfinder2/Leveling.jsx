@@ -233,7 +233,7 @@ export const Pathfinder2Leveling = (props) => {
               <Show when={GENERAL_FEAT_LEVELS.includes(index)}>
                 {renderSelectedFeatValue('general', index)}
               </Show>
-              <Show when={SKILL_FEAT_LEVELS.includes(index)}>
+              <Show when={character().main_class === 'rogue' || SKILL_FEAT_LEVELS.includes(index)}>
                 {renderSelectedFeatValue('skill', index)}
               </Show>
               {renderAdditionalFeatValues(index)}

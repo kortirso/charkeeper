@@ -1,4 +1,4 @@
-import { createEffect, createSignal, For, Show, batch } from 'solid-js';
+import { createEffect, createSignal, createMemo, For, Show, batch } from 'solid-js';
 import { Key } from '@solid-primitives/keyed';
 
 import { ErrorWrapper, Levelbox, Input, EditWrapper, Dice, Button } from '../../../../components';
@@ -13,13 +13,15 @@ const TRANSLATION = {
     free: 'Free',
     skills: 'Skills',
     skillBoosts: 'You can improve your skills:',
-    add: 'Add skill'
+    add: 'Add skill',
+    maxSkillLevel: 'Maximum skill level for character: '
   },
   ru: {
     free: 'Универсальное',
     skills: 'Навыки',
     skillBoosts: 'Вы можете улучшить следующие умения:',
-    add: 'Добавить навык'
+    add: 'Добавить навык',
+    maxSkillLevel: 'Максимальный уровень владения навыком: '
   }
 }
 
@@ -49,6 +51,13 @@ export const Pathfinder2Skills = (props) => {
       setEditMode(character().guide_step === 2);
       setLastActiveCharacterId(character().id);
     });
+  });
+
+  const maxSkillLevel = createMemo(() => {
+    if (character().level >= 15) return 4;
+    if (character().level >= 7) return 3;
+
+    return character().level >= 3 ? 2 : 1;
   });
 
   const renderSkillBoosts = (skillBoosts) => {
@@ -129,6 +138,11 @@ export const Pathfinder2Skills = (props) => {
             <div class="warning mt-2">
               <p class="text-sm text-black!">{localize(TRANSLATION, locale()).skillBoosts}</p>
               <p class="text-sm text-black!">{renderSkillBoosts(character().skill_boosts)}</p>
+            </div>
+          </Show>
+          <Show when={editMode()}>
+            <div class="warning mt-2">
+              <p class="text-sm text-black!">{localize(TRANSLATION, locale()).maxSkillLevel} {maxSkillLevel()}</p>
             </div>
           </Show>
           <div class="fallout-skills">

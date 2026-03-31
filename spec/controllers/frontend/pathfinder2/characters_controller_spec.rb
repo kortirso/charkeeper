@@ -43,17 +43,34 @@ describe Frontend::Pathfinder2::CharactersController do
 
       it 'updates character', :aggregate_failures do
         patch :update, params: {
-          id: character.id, character: { level: 12 }, charkeeper_access_token: access_token
+          id: character.id, character: { level: 5 }, charkeeper_access_token: access_token
         }
 
         expect(response).to have_http_status :ok
-        expect(character.reload.data.level).to eq 12
+        expect(character.reload.data.level).to eq 5
+      end
+
+      context 'for rogue' do
+        before do
+          character.data['level'] = 5
+          character.data['main_class'] = 'rogue'
+          character.save
+        end
+
+        it 'updates character', :aggregate_failures do
+          patch :update, params: {
+            id: character.id, character: { level: 6 }, charkeeper_access_token: access_token
+          }
+
+          expect(response).to have_http_status :ok
+          expect(character.reload.data.level).to eq 6
+        end
       end
 
       context 'for not existing character' do
         it 'returns error', :aggregate_failures do
           patch :update, params: {
-            id: 'unexisting', character: { level: 12 }, charkeeper_access_token: access_token
+            id: 'unexisting', character: { level: 5 }, charkeeper_access_token: access_token
           }
 
           expect(response).to have_http_status :not_found

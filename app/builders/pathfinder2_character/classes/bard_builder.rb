@@ -3,8 +3,7 @@
 module Pathfinder2Character
   module Classes
     class BardBuilder
-      # rubocop: disable Metrics/AbcSize
-      def call(result:)
+      def call(result:) # rubocop: disable Metrics/AbcSize
         result[:health] = { current: result[:health] + 8, max: result[:health] + 8, temp: 0 }
         result[:abilities].merge!({ cha: 2 }) { |_, oldval, newval| oldval + newval }
         result[:skill_boosts].merge!({ occultism: 1, performance: 1, free: 4 }) { |_, oldval, newval| oldval + newval }
@@ -21,7 +20,6 @@ module Pathfinder2Character
 
         result
       end
-      # rubocop: enable Metrics/AbcSize
     end
   end
 end
