@@ -4,7 +4,7 @@ import { createWindowSize } from '@solid-primitives/resize-observer';
 
 import {
   Pathfinder2Abilities, Pathfinder2Health, Pathfinder2Professions, Pathfinder2Static, Pathfinder2Skills,
-  Pathfinder2SavingThrows, Pathfinder2Leveling, Pathfinder2Spells, Pathfinder2Rest
+  Pathfinder2SavingThrows, Pathfinder2Leveling, Pathfinder2Spells, Pathfinder2Rest, Pathfinder2Bonuses
 } from '../../../pages';
 import {
   CharacterNavigation, Equipment, Notes, Avatar, ContentWrapper, Conditions, Gold, createDiceRoll, Combat, Feats
@@ -51,7 +51,7 @@ export const Pathfinder2 = (props) => {
   const characterTabs = createMemo(() => {
     const result = ['combat', 'equipment'];
     if (character().spell_attack > 0 || character().formatted_static_spells.length > 0) result.push('spells');
-    return result.concat(['classLevels', 'professions', 'rest', 'notes', 'avatar']);
+    return result.concat(['classLevels', 'professions', 'rest', 'bonuses', 'notes', 'avatar']);
   });
 
   const mobileView = createMemo(() => {
@@ -144,6 +144,9 @@ export const Pathfinder2 = (props) => {
             </Match>
             <Match when={activeMobileTab() === 'rest'}>
               <Pathfinder2Rest character={character()} onReloadCharacter={props.onReloadCharacter} />
+            </Match>
+            <Match when={activeMobileTab() === 'bonuses'}>
+              <Pathfinder2Bonuses character={character()} onReloadCharacter={props.onReloadCharacter} />
             </Match>
             <Match when={activeMobileTab() === 'notes'}>
               <Notes />
@@ -257,6 +260,9 @@ export const Pathfinder2 = (props) => {
             </Match>
             <Match when={activeTab() === 'rest'}>
               <Pathfinder2Rest character={character()} onReloadCharacter={props.onReloadCharacter} />
+            </Match>
+            <Match when={activeTab() === 'bonuses'}>
+              <Pathfinder2Bonuses character={character()} onReloadCharacter={props.onReloadCharacter} />
             </Match>
             <Match when={activeTab() === 'notes'}>
               <Notes />

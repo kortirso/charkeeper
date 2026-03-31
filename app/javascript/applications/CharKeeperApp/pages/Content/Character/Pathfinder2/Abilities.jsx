@@ -116,21 +116,17 @@ export const Pathfinder2Abilities = (props) => {
                         <Dice
                           width="64"
                           height="64"
-                          text={modifier(character().abilities[slug])}
+                          text={modifier(character().modified_abilities[slug])}
                           textClassList="text-4xl"
-                          onClick={() => props.openDiceRoll(`/check attr ${slug}`, character().abilities[slug])}
+                          onClick={() => props.openDiceRoll(`/check attr ${slug}`, character().modified_abilities[slug])}
                         />
                       }
                     </p>
                   </div>
                   <Show when={editMode()}>
                     <div class="mt-2 flex justify-center gap-2">
-                      <Button default size="small" onClick={() => decreaseAbilityValue(slug)}>
-                        <Minus />
-                      </Button>
-                      <Button default size="small" onClick={() => increaseAbilityValue(slug)}>
-                        <Plus />
-                      </Button>
+                      <Button default size="small" onClick={() => decreaseAbilityValue(slug)}><Minus /></Button>
+                      <Button default size="small" onClick={() => increaseAbilityValue(slug)}><Plus /></Button>
                     </div>
                   </Show>
                 </div>

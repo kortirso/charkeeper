@@ -110,6 +110,44 @@ describe Frontend::Characters::BonusesController do
             expect(response).to have_http_status :created
           end
 
+          context 'for pathfinder 2' do
+            let(:request) {
+              post :create, params: {
+                character_id: user_character.id,
+                provider: 'pathfinder2',
+                bonus: { value: { str: { type: 'add', value: 1 } }, comment: 'Comment' },
+                charkeeper_access_token: access_token,
+                version: '0.4.20'
+              }
+            }
+
+            before { user_character.update(type: 'Pathfinder2::Character') }
+
+            it 'creates character bonus', :aggregate_failures do
+              expect { request }.to change(user_character.bonuses, :count).by(1)
+              expect(response).to have_http_status :created
+            end
+          end
+
+          context 'for dnd 2024' do
+            let(:request) {
+              post :create, params: {
+                character_id: user_character.id,
+                provider: 'dnd2024',
+                bonus: { value: { str: { type: 'add', value: 1 } }, comment: 'Comment' },
+                charkeeper_access_token: access_token,
+                version: '0.4.20'
+              }
+            }
+
+            before { user_character.update(type: 'Dnd2024::Character') }
+
+            it 'creates character bonus', :aggregate_failures do
+              expect { request }.to change(user_character.bonuses, :count).by(1)
+              expect(response).to have_http_status :created
+            end
+          end
+
           context 'for invalid version' do
             let(:request) {
               post :create, params: {

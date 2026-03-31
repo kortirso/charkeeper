@@ -11,7 +11,8 @@ module Frontend
         add_dnd_bonus_v3: 'commands.characters_context.dnd2024.bonuses.add_v3',
         add_daggerheart_bonus_v2: 'commands.characters_context.daggerheart.bonuses.add',
         change_command: 'commands.bonuses_context.change',
-        add_dc20_bonus: 'commands.characters_context.dc20.bonuses.add'
+        add_dc20_bonus: 'commands.characters_context.dc20.bonuses.add',
+        add_pathfinder2_bonus: 'commands.characters_context.pathfinder2.bonuses.add'
       ]
       include SerializeRelation
       include SerializeResource
@@ -19,7 +20,7 @@ module Frontend
       before_action :find_character
       before_action :find_character_bonus, only: %i[update destroy]
       before_action :find_bonus_command, only: %i[create]
-      before_action :validate_dnd2024_create_command, only: %i[create]
+      before_action :validate_create_command, only: %i[create]
 
       def index
         serialize_relation(bonuses, ::Characters::BonusSerializer, :bonuses)
@@ -69,7 +70,7 @@ module Frontend
         end
       end
 
-      def find_bonus_command # rubocop: disable Metrics/AbcSize, Metrics/CyclomaticComplexity
+      def find_bonus_command # rubocop: disable Metrics/AbcSize, Metrics/CyclomaticComplexity, Metrics/MethodLength
         @bonus_command =
           if feature_requirement.call(current: params[:version], initial: '0.4.16')
             case params[:provider]
@@ -77,6 +78,7 @@ module Frontend
             when 'dnd5' then add_dnd_bonus_v2
             when 'daggerheart' then add_daggerheart_bonus_v2
             when 'dc20' then add_dc20_bonus
+            when 'pathfinder2' then add_pathfinder2_bonus
             end
           elsif feature_requirement.call(current: params[:version], initial: '0.3.23')
             case params[:provider]
@@ -92,7 +94,7 @@ module Frontend
           end
       end
 
-      def validate_dnd2024_create_command
+      def validate_create_command
         return if @bonus_command
 
         unprocessable_response(
