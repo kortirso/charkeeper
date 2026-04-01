@@ -9,9 +9,7 @@ module Frontend
       before_action :find_spell, only: %i[show]
 
       def index
-        serialize_relation_v2(
-          relation, ::Pathfinder2::SpellSerializer, :spells, cache_options: cache_options, order_options: { key: 'title' }
-        )
+        serialize_relation_v2(relation, ::Pathfinder2::SpellSerializer, :spells, cache_options: cache_options)
       end
 
       def show
@@ -25,13 +23,13 @@ module Frontend
       end
 
       def cache_options
-        { key: ["spells/pathfinder2/#{I18n.locale}/v1", params[:max_level]].compact.join('/'), expires_in: 12.hours }
+        { key: ["spells/pathfinder2/#{I18n.locale}/v2", params[:max_level]].compact.join('/'), expires_in: 12.hours }
       end
 
       def relation
         result = ::Pathfinder2::Feat.where(origin: 4)
         result.where("info ->> 'level' IN (?)", (0..params[:max_level].to_i).to_a.map(&:to_s)) if params[:max_level]
-        result
+        result.where('? <> ALL(origin_values)', 'uncommon')
       end
     end
   end

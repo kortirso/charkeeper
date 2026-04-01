@@ -67,7 +67,12 @@ export const Pathfinder2Spells = (props) => {
       Promise.all([fetchSpells(), fetchCharacterSpells()]).then(
         ([spellsData, characterSpellsData]) => {
           batch(() => {
-            setSpells(spellsData.spells);
+            setSpells(
+              spellsData.spells.sort((a, b) => {
+                const levelCompare = a.info.level - b.info.level;
+                return levelCompare || a.title.localeCompare(b.title);
+              })
+            );
             setCharacterSpells(characterSpellsData.spells);
           });
         }
@@ -298,7 +303,12 @@ export const Pathfinder2Spells = (props) => {
                                   selectedCount={characterSpell.selected_count}
                                   usedCount={characterSpell.used_count}
                                 >
-                                  <Show when={characterSpell.spell.info.level > 0}>
+                                  <Show
+                                    when={characterSpell.spell.info.level > 0}
+                                    fallback={
+                                      <p>{Math.round(character().level / 2)} {localize(TRANSLATION, locale()).level}</p>
+                                    }
+                                  >
                                     <div class="flex">
                                       <For each={[...Array(characterSpell.used_count).keys()]}>
                                         {() => <Checkbox filled checked classList="mr-1" onToggle={(e) => unuseSpellSlot(e, characterSpell)} />}

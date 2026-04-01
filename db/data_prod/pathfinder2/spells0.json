@@ -1,0 +1,1706 @@
+[
+  {
+    "slug": "caustic_blast",
+    "kind": "static",
+    "title": {
+      "en": "Caustic Blast",
+      "ru": "Всплеск кислоты"
+    },
+    "description": {
+      "en": "You fling a large glob of acid that immediately detonates, spraying nearby creatures. Creatures in the area take 1d8 acid damage with a basic Reflex save; on a critical failure, the creature also takes 1 persistent acid damage.",
+      "ru": "Вы кидаете сгусток кислоты, который поражает существ. Существа в области получают 1d8 урона кислотой (обычное испытание Реакции). При критическом провале существо также получает 1 продолжительный урон кислотой."
+    },
+    "origin": "spell",
+    "origin_value": "arcane,primal",
+    "origin_values": [
+      "acid",
+      "cantrip",
+      "concentrate",
+      "manipulate"
+    ],
+    "price": {
+      "a": 2
+    },
+    "info": {
+      "level": 0,
+      "range": "30,ft",
+      "defense": "reflex",
+      "area": "burst,5",
+      "enhancements": [
+        {
+          "name": {
+            "en": "Heightened (+2)",
+            "ru": "Повышенное (+2)"
+          },
+          "description": {
+            "en": "The initial damage increases by 1d8, and the persistent damage on a critical failure increases by 1.",
+            "ru": "Начальный урон увеличивается на 1d8, продолжительный урон при критическом провале увеличивается на 1."
+          }
+        }
+      ]
+    }
+  },
+  {
+    "slug": "daze",
+    "kind": "static",
+    "title": {
+      "en": "Daze",
+      "ru": "Ступор"
+    },
+    "description": {
+      "en": "You push into the target's mind and daze it with a mental jolt. The jolt deals 1d6 mental damage, with a basic Will save. If the target critically fails the save, it is also stunned 1.",
+      "ru": "Это заклинание затуманивает разум цели и наполняет ментальной болью, нанося 1d6 ментального урона (обычное испытание Воли). В случае критического провала цель также получает шок 1."
+    },
+    "origin": "spell",
+    "origin_value": "arcane,divine,occult",
+    "origin_values": [
+      "cantrip",
+      "concentrate",
+      "manipulate",
+      "mental",
+      "nonlethal"
+    ],
+    "price": {
+      "a": 2
+    },
+    "info": {
+      "level": 0,
+      "range": "60,ft",
+      "defense": "will",
+      "time": "1,r",
+      "enhancements": [
+        {
+          "name": {
+            "en": "Heightened (+2)",
+            "ru": "Повышенное (+2)"
+          },
+          "description": {
+            "en": "The damage increases by 1d6.",
+            "ru": "Урон увеличивается на 1d6."
+          }
+        }
+      ]
+    }
+  },
+  {
+    "slug": "detect_magic",
+    "kind": "static",
+    "title": {
+      "en": "Detect Magic",
+      "ru": "Обнаружение магии"
+    },
+    "description": {
+      "en": "You send out a pulse that registers the presence of magic. You receive no information beyond the presence or absence of magic. You can choose to ignore magic you're fully aware of, such as the magic items and ongoing spells of you and your allies.\n\nYou detect illusion magic only if that magic's effect has a lower rank than the rank of your detect magic spell. However, items that have an illusion aura but aren't deceptive in appearance (such as an invisibility potion) typically are detected normally.",
+      "ru": "Вы испускаете импульс, выявляющий присутствие магии. Вы не получаете никаких сведений, кроме знания о наличии или отсутствии магии. Вы можете добровольно отказаться от обнаружения уже известной вам магии, например магических предметов и длящихся заклинаний вас и ваших союзников.\n\nВы обнаруживаете магию иллюзии лишь в случае, если круг эффекта ниже круга вашего обнаружения магии. Тем не менее предметы с аурой иллюзии, которые не обманчивы на вид (зелье невидимости, например), обычно обнаруживаются без проблем."
+    },
+    "origin": "spell",
+    "origin_value": "arcane,divine,occult,primal",
+    "origin_values": [
+      "cantrip",
+      "concentrate",
+      "detection",
+      "manipulate"
+    ],
+    "price": {
+      "a": 2
+    },
+    "info": {
+      "level": 0,
+      "area": "emanation,30",
+      "enhancements": [
+        {
+          "name": {
+            "en": "Heightened (3rd)",
+            "ru": "Повышенное (3 круг)"
+          },
+          "description": {
+            "en": "You learn the rank or level of the most powerful magical effect the spell detects, as determined by the GM.",
+            "ru": "Вы узнаёте круг или уровень самого могущественного магического эффекта, который заклинание обнаружило в области (по усмотрению ведущего)."
+          }
+        },
+        {
+          "name": {
+            "en": "Heightened (4th)",
+            "ru": "Повышенное (4 круг)"
+          },
+          "description": {
+            "en": "As 3rd rank, but you also pinpoint the source of the highest-rank magic. Like for an imprecise sense, you don't learn the exact location, but can narrow down the source to within a 5-foot cube (or the nearest if larger than that).",
+            "ru": "Аналогично 3 кругу, но вы обнаруживаете источник магии с самым высоким кругом или уровнем. Как и в случае со вспомогательными способами восприятия, это не позволяет определить точное местоположение, но позволяет сузить область местонахождения до 5-футового куба (или ближайшего подходящего размера, если источник крупнее)."
+          }
+        }
+      ]
+    }
+  },
+  {
+    "slug": "divine_lance",
+    "kind": "static",
+    "title": {
+      "en": "Divine Lance",
+      "ru": "Божественное копьё"
+    },
+    "description": {
+      "en": "You unleash a beam of divine energy. Make a ranged spell attack against the target's AC. On a hit, the target takes 2d4 spirit damage (double damage on a critical hit).",
+      "ru": "Вы выпускаете луч божественной энергии. Совершите проверку дистанционной атаки заклинанием против КБ цели. При попадании цель получает 2d4 урона духом (при критическом ударе урон удваивается)."
+    },
+    "origin": "spell",
+    "origin_value": "divine",
+    "origin_values": [
+      "attack",
+      "cantrip",
+      "concentrate",
+      "manipulate",
+      "sanctified",
+      "spirit"
+    ],
+    "price": {
+      "a": 2
+    },
+    "info": {
+      "level": 0,
+      "range": "60,ft",
+      "defense": "ac",
+      "enhancements": [
+        {
+          "name": {
+            "en": "Heightened (+1)",
+            "ru": "Повышенное (+1)"
+          },
+          "description": {
+            "en": "The damage increases by 1d4.",
+            "ru": "Урон увеличивается на 1d4."
+          }
+        }
+      ]
+    }
+  },
+  {
+    "slug": "electric_arc",
+    "kind": "static",
+    "title": {
+      "en": "Electric Arc",
+      "ru": "Электрическая дуга"
+    },
+    "description": {
+      "en": "An arc of lightning leaps from one target to another. Each target takes 2d4 electricity damage with a basic Reflex save.",
+      "ru": "Электрическая дуга перепрыгивает с одной цели на другую. Каждая цель получает 2d4 урона электричеством (обычное испытание Реакции)."
+    },
+    "origin": "spell",
+    "origin_value": "arcane,primal",
+    "origin_values": [
+      "cantrip",
+      "concentrate",
+      "electricity",
+      "manipulate"
+    ],
+    "price": {
+      "a": 2
+    },
+    "info": {
+      "level": 0,
+      "range": "30,ft",
+      "defense": "reflex",
+      "enhancements": [
+        {
+          "name": {
+            "en": "Heightened (+1)",
+            "ru": "Повышенное (+1)"
+          },
+          "description": {
+            "en": "The damage increases by 1d4.",
+            "ru": "Урон увеличивается на 1d4."
+          }
+        }
+      ]
+    }
+  },
+  {
+    "slug": "figment",
+    "kind": "static",
+    "title": {
+      "en": "Figment",
+      "ru": "Вымысел"
+    },
+    "description": {
+      "en": "You create a simple illusory sound or vision. A sound adds the auditory trait to the spell and the sound can't include intelligible words or elaborate music. A vision adds the visual trait, can be no larger than a 5-foot cube, and is clearly crude and undetailed if viewed from within 15 feet. When you Cast or Sustain the Spell, you can attempt to Create a Diversion with the illusion, gaining a +2 circumstance bonus to your Deception check. If the attempt fails against a creature, that creature disbelieves the figment.",
+      "ru": "Вы создаёте простую иллюзию с дескриптором «зрение» или «слух». Если это звук, добавьте заклинанию дескриптор «слух»,и он не может содержать различимые слова или сложную музыку. Если это зрительная иллюзия, добавьте дескриптор «зрение»; она не может быть крупнее, чем 5-футовый куб, и выглядит очевидно грубо и размыто с расстояния 15 футов и ближе. При сотворении или Поддержании этого заклинания вы можете попытаться сделать Отвлекающий манёвр с помощью иллюзии и получить ситуативный бонус +2 к проверке Обмана. При провале проверки против существа оно разоблачает вымысел."
+    },
+    "origin": "spell",
+    "origin_value": "arcane,occult",
+    "origin_values": [
+      "cantrip",
+      "concentrate",
+      "illusion",
+      "manipulate",
+      "subtle"
+    ],
+    "price": {
+      "a": 2
+    },
+    "info": {
+      "level": 0,
+      "range": "30,ft",
+      "sustained": true
+    }
+  },
+  {
+    "slug": "forbidding_ward",
+    "kind": "static",
+    "title": {
+      "en": "Forbidding Ward",
+      "ru": "Преграждающий оберег"
+    },
+    "description": {
+      "en": "You ward an ally against the attacks and hostile spells from the target enemy. The target ally gains a +1 status bonus to Armor Class and saving throws against the target enemy's attacks, spells, and other effects.",
+      "ru": "Вы защищаете союзника от атак и заклинаний одного противника. Цель-союзник получает бонус состояния +1 к КБ и испытаниям против атак, заклинаний и иных эффектов выбранного противника."
+    },
+    "origin": "spell",
+    "origin_value": "divine,occult",
+    "origin_values": [
+      "cantrip",
+      "concentrate",
+      "manipulate"
+    ],
+    "price": {
+      "a": 2
+    },
+    "info": {
+      "level": 0,
+      "range": "30,ft",
+      "defense": "",
+      "sustained": true,
+      "duration": "1,m",
+      "enhancements": [
+        {
+          "name": {
+            "en": "Heightened (6th)",
+            "ru": "Повышенное (6 круг)"
+          },
+          "description": {
+            "en": "The status bonus increases to +2.",
+            "ru": "Бонус состояния увеличивается до +2."
+          }
+        }
+      ]
+    }
+  },
+  {
+    "slug": "frostbite",
+    "kind": "static",
+    "title": {
+      "en": "Frostbite",
+      "ru": "Обморожение"
+    },
+    "description": {
+      "en": "An orb of biting cold coalesces around your target, freezing its body. The target takes 2d4 cold damage with a basic Fortitude save. On a critical failure, the target also gains weakness 1 to bludgeoning until the start of your next turn.",
+      "ru": "Вокруг вашей цели собирается сфера колючего холода, грозя заморозить её тело. Цель получает 2d4 урона холодом (обычное испытание Стойкости). При критическом провале цель также получает уязвимость 1 к дробящему урону до начала вашего следующего хода."
+    },
+    "origin": "spell",
+    "origin_value": "arcane,primal",
+    "origin_values": [
+      "cantrip",
+      "cold",
+      "concentrate",
+      "manipulate"
+    ],
+    "price": {
+      "a": 2
+    },
+    "info": {
+      "level": 0,
+      "range": "60,ft",
+      "defense": "fortitude",
+      "enhancements": [
+        {
+          "name": {
+            "en": "Heightened (+1)",
+            "ru": "Повышенное (+1)"
+          },
+          "description": {
+            "en": "The damage increases by 1d4 and the weakness on a critical failure increases by 1.",
+            "ru": "урон увеличивается на 1d4, а уязвимость при критическом провале увеличивается на 1."
+          }
+        }
+      ]
+    }
+  },
+  {
+    "slug": "gouging_claw",
+    "kind": "static",
+    "title": {
+      "en": "Gouging Claw",
+      "ru": "Терзающий коготь"
+    },
+    "description": {
+      "en": "You temporarily morph your limb into a clawed appendage. Make a melee spell attack roll against your target's AC. If you hit, you deal your choice of 2d6 slashing damage or 2d6 piercing damage, plus 2 persistent bleed damage. On a critical success, you deal double damage and double bleed damage.",
+      "ru": "Вы временно выращиваете на своей конечности острые когти. Совершите проверку атаки заклинанием в ближнем бою против КБ цели. При попадании вы нанесёте либо 2d6 колющего урона, либо 2d6 режущего урона на ваш выбор, а также 2 продолжительного урона от кровотечения. При критическом успехе вы нанесёте двойной урон и двойной продолжительный урон."
+    },
+    "origin": "spell",
+    "origin_value": "arcane,primal",
+    "origin_values": [
+      "attack",
+      "cantrip",
+      "concentrate",
+      "manipulate",
+      "morph"
+    ],
+    "price": {
+      "a": 2
+    },
+    "info": {
+      "level": 0,
+      "range": "touch",
+      "defense": "ac",
+      "enhancements": [
+        {
+          "name": {
+            "en": "Heightened (+1)",
+            "ru": "Повышенное (+1)"
+          },
+          "description": {
+            "en": "The damage increases by 1d6 and the persistent bleed damage increases by 1.",
+            "ru": "Урон увеличивается на 1d6, продолжительный урон от кровотечения увеличивается на 1."
+          }
+        }
+      ]
+    }
+  },
+  {
+    "slug": "guidance",
+    "kind": "static",
+    "title": {
+      "en": "Guidance",
+      "ru": "Наставление"
+    },
+    "description": {
+      "en": "You ask for the guidance of supernatural entities, granting the target a +1 status bonus to one attack roll, Perception check, saving throw, or skill check the target attempts before the duration ends. The target chooses which roll to use the bonus on before rolling. If the target uses the bonus, the spell ends. Either way, the target is then temporarily immune for 1 hour.",
+      "ru": "Вы просите наставления сверхъестественных сущностей и даруете цели бонус состояния +1 к одной проверке атаки, Внимания, навыка или испытанию, совершённым до истечения длительности. Цель решает, на что потратит бонус, перед броском. Когда цель использовала бонус, заклинание прекращается. В любом случае после этого цель получает временную невосприимчивость к этому эффекту на 1 час."
+    },
+    "origin": "spell",
+    "origin_value": "divine,occult,primal",
+    "origin_values": [
+      "cantrip",
+      "concentrate"
+    ],
+    "price": { "a": 1 },
+    "info": {
+      "level": 0,
+      "range": "30,ft",
+      "duration": "1,r"
+    }
+  },
+  {
+    "slug": "ignition",
+    "kind": "static",
+    "title": {
+      "en": "Ignition",
+      "ru": "Поджигание"
+    },
+    "description": {
+      "en": "You snap your fingers and point at a target, which begins to smolder. Make a spell attack roll against the target's AC, dealing 2d4 fire damage on a hit. If the target is within your melee reach, you can choose to make a melee spell attack with the flame instead of a ranged spell attack, which increases all the spell's damage dice to d6s.",
+      "ru": "Вы щёлкаете пальцами и указываете на цель, которая начинает тлеть. Совершите проверку атаки заклинанием против КБ цели. При попадании вы наносите 2d4 урона огнём. Если цель в вашей зоне досягаемости, вы можете совершить атаку заклинанием в ближнем бою, а не дистанционную. В этом случае все кости урона этого заклинания увеличиваются до d6."
+    },
+    "origin": "spell",
+    "origin_value": "arcane,primal",
+    "origin_values": [
+      "attack",
+      "cantrip",
+      "concentrate",
+      "fire",
+      "manipulate"
+    ],
+    "price": {
+      "a": 2
+    },
+    "info": {
+      "level": 0,
+      "range": "30,ft",
+      "defense": "ac",
+      "enhancements": [
+        {
+          "name": {
+            "en": "Critical Success",
+            "ru": "Критический успех"
+          },
+          "description": {
+            "en": "The target takes double damage and 1d4 persistent fire damage.",
+            "ru": "Цель получает двойной урон и 1d4 продолжительного урона огнём."
+          }
+        },
+        {
+          "name": {
+            "en": "Success",
+            "ru": "Успех"
+          },
+          "description": {
+            "en": "The target takes full damage.",
+            "ru": "Цель получает полный урон."
+          }
+        },
+        {
+          "name": {
+            "en": "Heightened (+1)",
+            "ru": "Повышенное (+1)"
+          },
+          "description": {
+            "en": "The initial damage increases by 1d4 and the persistent fire damage on a critical hit increases by 1d4.",
+            "ru": "Начальный урон увеличивается на 1d4, продолжительный урон огнём при критическом успехе увеличивается на 1d4."
+          }
+        }
+      ]
+    }
+  },
+  {
+    "slug": "know_the_way",
+    "kind": "static",
+    "title": {
+      "en": "Know the Way",
+      "ru": "Определение направления"
+    },
+    "description": {
+      "en": "In your mind's eye, you magically reorient yourself. You immediately know which direction is north (if it exists at your current location), and you can choose a location you were at within the last 24 hours and learn what direction it lies.",
+      "ru": "Вы мысленно ориентируетесь с помощью магии. Вы немедленно узнаёте направление на север (если в месте, где вы находитесь, есть север) и можете выбрать место, в котором побывали за последние 24 часа, и узнать, в каком направлении оно находится."
+    },
+    "origin": "spell",
+    "origin_value": "divine,occult,primal",
+    "origin_values": [
+      "cantrip",
+      "concentrate",
+      "detection",
+      "manipulate"
+    ],
+    "price": {
+      "a": 2
+    },
+    "info": {
+      "level": 0,
+      "enhancements": [
+        {
+          "name": {
+            "en": "Heightened (3rd)",
+            "ru": "Повышенное (3 круг)"
+          },
+          "description": {
+            "en": "You can choose a location you were at within the last week.",
+            "ru": "Вы можете выбрать место, в котором побывали за последнюю неделю."
+          }
+        },
+        {
+          "name": {
+            "en": "Heightened (7th)",
+            "ru": "Повышенное (7 круг)"
+          },
+          "description": {
+            "en": "You can choose a location you were at regardless of how long ago you were there.",
+            "ru": "Вы можете выбрать место, в котором побывали (неважно, насколько давно)."
+          }
+        }
+      ]
+    }
+  },
+  {
+    "slug": "light",
+    "kind": "static",
+    "title": {
+      "en": "Light",
+      "ru": "Свет"
+    },
+    "description": {
+      "en": "You create an orb of light that sheds bright light in a 20-foot radius (and dim light for the next 20 feet) in a color you choose. If you create the light in the same space as a willing creature, you can attach the light to the creature, causing it to float near that creature as it moves. You can Sustain the spell to move the light up to 60 feet; you can attach or detach it from a creature as part of this movement.\n\nYou can Dismiss the spell. If you Cast the Spell while you already have four **Light** spells active, you must choose one of the existing spells to end.",
+      "ru": "Вы создаёте сияющую сферу, которая испускает яркий свет выбранного вами цвета в радиусе 20 футов (и тусклый свет ещё на 20 футов). Если вы создаёте сферу в пространстве согласного существа, то можете прикрепить её к этому существу (в таком случае сфера будет парить около существа при его перемещении). Когда вы используете Поддержание этого заклинания, вы можете переместить свет на расстояние до 60 футов; вы можете прикрепить или открепить его от существа в качестве части этого движения.\n\nВы можете использовать Прекращение для этого заклинания. Если вы сотворяете это заклинание, когда у вас уже есть четыре активных заклинания **Свет**, одно из них по вашему выбору прекращаете."
+    },
+    "origin": "spell",
+    "origin_value": "arcane,divine,occult,primal",
+    "origin_values": [
+      "cantrip",
+      "concentrate",
+      "light",
+      "manipulate"
+    ],
+    "price": {
+      "a": 2
+    },
+    "info": {
+      "level": 0,
+      "range": "120,ft",
+      "duration": "1,d",
+      "enhancements": [
+        {
+          "name": {
+            "en": "Heightened (4th)",
+            "ru": "Повышенное (4 круг)"
+          },
+          "description": {
+            "en": "The orb sheds light in a 60-foot radius (and dim light for the next 60 feet).",
+            "ru": "Сфера испускает яркий свет в радиусе 60 футов (и тусклый свет ещё на 60 футов)."
+          }
+        }
+      ]
+    }
+  },
+  {
+    "slug": "message",
+    "kind": "static",
+    "title": {
+      "en": "Message",
+      "ru": "Сообщение"
+    },
+    "description": {
+      "en": "You mouth words quietly, but instead of coming out of your mouth, they're transferred directly to the ears of the target. While others can't hear your words any better than if you normally mouthed them, the target can hear your words as if they were standing next to you. The target can give a brief response as a reaction, or as a free action on their next turn if they wish, but they must be able to see you and be within range to do so. If they respond, their response is delivered directly to your ear, just like the original message.",
+      "ru": "Вы говорите почти беззвучно, но слова не покидают ваших уст, а звучат сразу в ушах цели. Для окружающих слова слышны как обычно, но цель слышит ваши слова так же хорошо, как если бы вы стояли рядом с ней. Цель при желании может кратко ответить вам в качестве ответного действия либо в качестве свободного действия в свой следующий ход, но для этого ей нужно видеть вас и находиться в пределах дистанции заклинания. Ответ цели также доставляется сразу же в ваши уши."
+    },
+    "origin": "spell",
+    "origin_value": "arcane,divine,occult",
+    "origin_values": [
+      "auditory",
+      "cantrip",
+      "concentrate",
+      "illusion",
+      "linguistic",
+      "mental",
+      "subtle"
+    ],
+    "price": { "a": 1 },
+    "info": {
+      "level": 0,
+      "range": "120,ft",
+      "enhancements": [
+        {
+          "name": {
+            "en": "Heightened (3rd)",
+            "ru": "Повышенное (3 круг)"
+          },
+          "description": {
+            "en": "The spell's range increases to 500 feet.",
+            "ru": "Дистанция заклинания увеличивается до 500 футов."
+          }
+        }
+      ]
+    }
+  },
+  {
+    "slug": "prestidigitation",
+    "kind": "static",
+    "title": {
+      "en": "Prestidigitation",
+      "ru": "Мелкие фокусы"
+    },
+    "description": {
+      "en": "The simplest magic does your bidding. You can perform simple magical effects for as long as you Sustain the spell. Each time you Sustain the spell, you can choose one of four options.\n\n- **Cook** Cool, warm, or flavor 1 pound of nonliving material.\n\n- **Lift** Slowly lift an unattended object of light Bulk or less 1 foot off the ground.\n\n- **Make** Create a temporary object of negligible Bulk, made of congealed magical substance. The object looks crude and artificial and is extremely fragile—it can't be used as a tool, weapon, or locus or cost for a spell.\n\n- **Tidy** Color, clean, or soil an object of light Bulk or less. You can affect an object of 1 Bulk with 10 rounds of concentration, and a larger object a 1 minute per Bulk.\n\n**Prestidigitation** can't deal damage or cause adverse conditions. Any actual change to an object (beyond what is noted above) persists only as long as you Sustain the spell.",
+      "ru": "Это простейшее заклинание позволяет производить мелкие магические эффекты, пока вы поддерживаете заклинание. Каждый раз, когда вы используете Поддержание заклинания, вы выбираете один из вариантов:\n\n- **Поднять** медленно поднять бесхозный объект лёгкого или меньшего веса на 1 фут от земли.\n\n- **Почистить** изменить цвет, очистить или запачкать объект лёгкого или меньшего веса. Если вы концентрируетесь в течение 10 раундов, то можете применить этот эффект к объекту весом 1. Если объект ещё больше, вам придётся потратить 1 минуту за каждую единицу веса.\n\n- **Приготовить** нагреть, остудить или наделить вкусом до 1 фунта неживой материи.\n\n- **Создать** создать из магической субстанции недолговечный объект незначительного веса. Он выглядит искусственным, грубо сделан и чрезвычайно хрупок — его нельзя применить в качестве инструмента, оружия, фокусирующего предмета или для оплаты стоимости заклинания.\n\nЭто заклинание не наносит урона и не налагает пагубных состояний. Любые реальные изменения в объектах (кроме описанных выше) сохраняются, лишь пока вы поддерживаете заклинание."
+    },
+    "origin": "spell",
+    "origin_value": "arcane,divine,occult,primal",
+    "origin_values": [
+      "cantrip",
+      "concentrate",
+      "manipulate"
+    ],
+    "price": {
+      "a": 2
+    },
+    "info": {
+      "level": 0,
+      "range": "10,ft",
+      "sustained": true
+    }
+  },
+  {
+    "slug": "read_aura",
+    "kind": "static",
+    "title": {
+      "en": "Read Aura",
+      "ru": "Чтение ауры"
+    },
+    "description": {
+      "en": "You focus on the target object, opening your mind to perceive magical auras. When the casting is complete, you know whether that item is magical. You or anyone you advise about the aura gains a +2 circumstance bonus to Identify Magic on the item. If the object is illusory, you detect this only if the effect's rank is lower than the rank of your **Read aura** spell.",
+      "ru": "Вы фокусируетесь на цели и воспринимаете разумом магические ауры. Когда Сотворение заклинания завершено, вы узнаёте, является ли предмет магическим. Вы и все, кому вы расскажете об ауре, получаете ситуативный бонус +2 к проверкам для Опознания магии предмета. Если объект иллюзорный, вы обнаруживаете это лишь в случае, если круг эффекта ниже круга этого заклинания."
+    },
+    "origin": "spell",
+    "origin_value": "arcane,divine,occult,primal",
+    "origin_values": [
+      "cantrip",
+      "concentrate",
+      "detection",
+      "manipulate"
+    ],
+    "price": {},
+    "info": {
+      "level": 0,
+      "range": "30,ft",
+      "time": "1,m",
+      "enhancements": [
+        {
+          "name": {
+            "en": "Heightened (3rd)",
+            "ru": "Повышенное (3 круг)"
+          },
+          "description": {
+            "en": "You can target up to 10 objects.",
+            "ru": "Вы можете выбрать целями 10 или менее объектов."
+          }
+        },
+        {
+          "name": {
+            "en": "Heightened (6th)",
+            "ru": "Повышенное (6 круг)"
+          },
+          "description": {
+            "en": "You can target any number of objects.",
+            "ru": "Вы можете выбрать целями любое количество объектов."
+          }
+        }
+      ]
+    }
+  },
+  {
+    "slug": "shield",
+    "kind": "static",
+    "title": {
+      "en": "Shield",
+      "ru": "Щит"
+    },
+    "description": {
+      "en": "You raise a magical shield of force. This counts as using the Raise a Shield action, giving you a +1 circumstance bonus to AC until the start of your next turn, but it doesn't require a hand to use.\n\nWhile the spell is in effect, you can use the Shield Block reaction with your magic shield. The shield has Hardness 5. You can use the spell's reaction to reduce damage from any spell or magical effect, even if it doesn't deal physical damage. After you use Shield Block, the spell ends and you can't cast it again for 10 minutes.",
+      "ru": "Вы создаёте магический силовой щит. Это считается Поднятием щита и даёт вам ситуативный бонус +1 к КБ до начала вашего следующего хода, но не требует для использования руки.\n\nПока заклинание действует, вы можете использовать ответное действие Блок щитом. Твёрдость щита равна 5. Ответное действие этого заклинания можно использовать для снижения урона любого заклинания или магического эффекта, даже если тот не наносит физический урон. После использования Блока щитом заклинание прекращается, и повторно вы можете сотворить его лишь через 10 минут."
+    },
+    "origin": "spell",
+    "origin_value": "arcane,divine,occult",
+    "origin_values": [
+      "cantrip",
+      "concentrate",
+      "force"
+    ],
+    "price": { "a": 1 },
+    "info": {
+      "level": 0,
+      "duration": "1,r",
+      "enhancements": [
+        {
+          "name": {
+            "en": "Heightened (+2)",
+            "ru": "Повышенное (+2)"
+          },
+          "description": {
+            "en": "The shield's Hardness increases by 5.",
+            "ru": "Твёрдость щита увеличивается на 5."
+          }
+        }
+      ]
+    }
+  },
+  {
+    "slug": "sigil",
+    "kind": "static",
+    "title": {
+      "en": "Sigil",
+      "ru": "Метка"
+    },
+    "description": {
+      "en": "You harmlessly place your unique magical sigil, which is about 1 square inch in size, on the targeted creature or object. The mark can be visible or invisible, and you can change it from one state to another by using an Interact action to touch the target. The mark can be scrubbed or scraped off with 5 minutes of work. If it's on a creature, it fades naturally over the course of a week. The time before the mark fades increases depending on your heightened rank.",
+      "ru": "Вы помечаете выбранное существо или объект безвредной уникальной магической меткой размерами около 1 квадратного дюйма. Метка может быть видимой или невидимой, и вы можете изменять её видимость, совершая Взаимодействие, чтобы коснуться цели. Метку можно смыть или соскрести, потратив на это 5 минут. С существа метка пропадает естественным образом по прошествии недели. Чем выше круг метки, тем позже она пропадает."
+    },
+    "origin": "spell",
+    "origin_value": "arcane,divine,occult,primal",
+    "origin_values": [
+      "cantrip",
+      "concentrate",
+      "manipulate"
+    ],
+    "price": { "a": 2 },
+    "info": {
+      "level": 0,
+      "range": "touch",
+      "enhancements": [
+        {
+          "name": {
+            "en": "Heightened (3rd)",
+            "ru": "Повышенное (3 круг)"
+          },
+          "description": {
+            "en": "The sigil instead fades after 1 month.",
+            "ru": "Метка пропадает через 1 месяц."
+          }
+        },
+        {
+          "name": {
+            "en": "Heightened (5th)",
+            "ru": "Повышенное (5 круг)"
+          },
+          "description": {
+            "en": "The sigil instead fades after 1 year.",
+            "ru": "Метка пропадает через 1 год."
+          }
+        },
+        {
+          "name": {
+            "en": "Heightened (7th)",
+            "ru": "Повышенное (7 круг)"
+          },
+          "description": {
+            "en": "The sigil never fades.",
+            "ru": "Метка не пропадает никогда."
+          }
+        }
+      ]
+    }
+  },
+  {
+    "slug": "stabilize",
+    "kind": "static",
+    "title": {
+      "en": "Stabilize",
+      "ru": "Стабилизация"
+    },
+    "description": {
+      "en": "Life energy shuts death's door. The target loses the dying condition, though it remains unconscious at 0 Hit Points.",
+      "ru": "Волна энергии жизни не даёт цели отойти в мир иной. Цель теряет состояние при смерти, но остаётся без сознания и с 0 ПЗ."
+    },
+    "origin": "spell",
+    "origin_value": "divine,primal",
+    "origin_values": [
+      "cantrip",
+      "concentrate",
+      "healing",
+      "manipulate",
+      "vitality"
+    ],
+    "price": { "a": 2 },
+    "info": {
+      "level": 0,
+      "range": "30,ft"
+    }
+  },
+  {
+    "slug": "summon_instrument",
+    "kind": "static",
+    "title": {
+      "en": "Summon Instrument",
+      "ru": "Призыв инструмента"
+    },
+    "description": {
+      "en": "You materialize a handheld musical instrument in your grasp. The instrument is typical for its type, but it plays for only you. It vanishes when the spell ends. If you cast **Summon instrument** again, any instrument you previously summoned disappears.",
+      "ru": "В ваших руках появляется ручной музыкальный инструмент. Он совершенно типичный, но извлечь из него звуки можете только вы. Когда заклинание прекращается, инструмент пропадает. При повторном сотворении этого заклинания предыдущий призванный инструмент исчезает."
+    },
+    "origin": "spell",
+    "origin_value": "arcane,divine,occult",
+    "origin_values": [
+      "cantrip",
+      "concentrate",
+      "manipulate"
+    ],
+    "price": { "a": 3 },
+    "info": {
+      "level": 0,
+      "duration": "1,h",
+      "enhancements": [
+        {
+          "name": {
+            "en": "Heightened (5th)",
+            "ru": "Повышенное (5 круг)"
+          },
+          "description": {
+            "en": "The instrument is instead a virtuoso handheld instrument.",
+            "ru": "Появляется искусно сделанный ручной музыкальный инструмент."
+          }
+        }
+      ]
+    }
+  },
+  {
+    "slug": "tangle_vine",
+    "kind": "static",
+    "title": {
+      "en": "Tangle Vine",
+      "ru": "Опутывающая лиана"
+    },
+    "description": {
+      "en": "A vine appears from thin air, flicking from your hand and lashing itself to the target. Attempt a spell attack roll against the target.",
+      "ru": "Из вашей ладони появляется покрытая липким соком лиана, которая обвивается вокруг цели. Совершите проверку атаки заклинанием по цели."
+    },
+    "origin": "spell",
+    "origin_value": "arcane,primal",
+    "origin_values": [
+      "attack",
+      "cantrip",
+      "concentrate",
+      "manipulate",
+      "plant",
+      "wood"
+    ],
+    "price": { "a": 2 },
+    "info": {
+      "level": 0,
+      "range": "30,ft",
+      "defense": "ac",
+      "enhancements": [
+        {
+          "name": {
+            "en": "Critical Success",
+            "ru": "Критический успех"
+          },
+          "description": {
+            "en": "The target gains the immobilized condition and takes a –10-foot circumstance penalty to its Speeds for 1 round. It can attempt to Escape against your spell DC to remove the penalty and the immobilized condition.",
+            "ru": "Цель получает состояние неподвижности, а также ситуативный штраф -10 футов ко всем своим скоростям на 1 раунд. Цель может использовать Освобождение (СЛ равна вашей СЛ заклинаний). При успехе она теряет штраф и неподвижность."
+          }
+        },
+        {
+          "name": {
+            "en": "Success",
+            "ru": "Успех"
+          },
+          "description": {
+            "en": "The target takes a –10-foot circumstance penalty to its Speeds for 1 round. It can attempt to Escape against your spell DC to remove the penalty.",
+            "ru": "Цель получает ситуативный штраф -10 футов ко всем своим скоростям на 1 раунд. Цель может использовать Освобождение (СЛ равна вашей СЛ заклинаний). При успехе она теряет штраф."
+          }
+        },
+        {
+          "name": {
+            "en": "Failure",
+            "ru": "Провал"
+          },
+          "description": {
+            "en": "The target is unaffected.",
+            "ru": "Цель избегает эффектов."
+          }
+        },
+        {
+          "name": {
+            "en": "Heightened (2nd)",
+            "ru": "Повышенное (2 круг)"
+          },
+          "description": {
+            "en": "The effects last for 2 rounds.",
+            "ru": "Эффекты длятся 2 раунда."
+          }
+        },
+         {
+          "name": {
+            "en": "Heightened (4nd)",
+            "ru": "Повышенное (4 круг)"
+          },
+          "description": {
+            "en": "The effects last for 1 minute.",
+            "ru": "Эффекты длятся 1 минуту."
+          }
+        }
+      ]
+    }
+  },
+  {
+    "slug": "telekinetic_hand",
+    "kind": "static",
+    "title": {
+      "en": "Telekinetic Hand",
+      "ru": "Телекинетическая рука"
+    },
+    "description": {
+      "en": "You create a floating, magical hand, either invisible or ghostlike, that grasps the target object and levitates it slowly up to 20 feet in any direction. When you Sustain the spell, you can move the object an additional 20 feet. If the object is in the air when the spell ends, the object falls.",
+      "ru": "Вы создаёте парящую магическую руку, невидимую или призрачную, которая хватает выбранный объект и медленно перемещает его на расстояние до 20 футов. Объект левитирует, поэтому перемещать его можно в любом направлении. Когда вы используете Поддержание заклинания, вы можете переместить объект ещё на 20 футов. Если объект в воздухе, когда заклинание прекращается, он падает."
+    },
+    "origin": "spell",
+    "origin_value": "arcane,occult",
+    "origin_values": [
+      "cantrip",
+      "concentrate",
+      "manipulate"
+    ],
+    "price": { "a": 2 },
+    "info": {
+      "level": 0,
+      "range": "30,ft",
+      "sustained": true,
+      "enhancements": [
+        {
+          "name": {
+            "en": "Heightened (3rd)",
+            "ru": "Повышенное (3 круг)"
+          },
+          "description": {
+            "en": "You can target an unattended object with a Bulk of 1 or less.",
+            "ru": "Вы можете выбрать целью бесхозный объект весом 1 или менее."
+          }
+        },
+        {
+          "name": {
+            "en": "Heightened (5th)",
+            "ru": "Повышенное (5 круг)"
+          },
+          "description": {
+            "en": "The range increases to 60 feet, and you can target an unattended object with a Bulk of 1 or less.",
+            "ru": "Вы можете выбрать целью бесхозный объект весом 1 или менее. Дистанция увеличивается до 60 футов."
+          }
+        },
+        {
+          "name": {
+            "en": "Heightened (7th)",
+            "ru": "Повышенное (7 круг)"
+          },
+          "description": {
+            "en": "The range increases to 60 feet, and you can target an unattended object with a Bulk of 2 or less.",
+            "ru": "Вы можете выбрать целью бесхозный объект весом 2 или менее. Дистанция увеличивается до 60 футов."
+          }
+        }
+      ]
+    }
+  },
+  {
+    "slug": "telekinetic_projectile",
+    "kind": "static",
+    "title": {
+      "en": "Telekinetic Projectile",
+      "ru": "Телекинетический снаряд"
+    },
+    "description": {
+      "en": "You hurl a loose, unattended object that is within range and that has 1 Bulk or less at the target. Make a spell attack roll against the target's AC. If you hit, you deal 2d6 bludgeoning, piercing, or slashing damage—as appropriate for the object you hurled. No specific traits or magic properties of the hurled item affect the attack or the damage.",
+      "ru": "Вы можете швырнуть в цель незакреплённый бесхозный объект весом 1 или менее, находящийся в пределах дистанции. Совершите проверку атаки заклинанием против КБ цели. При попадании вы наносите ей 2d6 дробящего, колющего или режущего урона (зависит от объекта). Дескрипторы и магические свойства брошенного объекта не влияют ни на проверку атаки, ни на урон."
+    },
+    "origin": "spell",
+    "origin_value": "arcane,occult",
+    "origin_values": [
+      "attack",
+      "cantrip",
+      "concentrate",
+      "manipulate"
+    ],
+    "price": { "a": 2 },
+    "info": {
+      "level": 0,
+      "range": "30,ft",
+      "defense": "ac",
+      "enhancements": [
+        {
+          "name": {
+            "en": "Critical Success",
+            "ru": "Критический успех"
+          },
+          "description": {
+            "en": "You deal double damage.",
+            "ru": "Вы наносите двойной урон."
+          }
+        },
+        {
+          "name": {
+            "en": "Success",
+            "ru": "Успех"
+          },
+          "description": {
+            "en": "You deal full damage.",
+            "ru": "Вы наносите полный урон."
+          }
+        },
+        {
+          "name": {
+            "en": "Heightened (+1)",
+            "ru": "Повышенное (+1)"
+          },
+          "description": {
+            "en": "The damage increases by 1d6.",
+            "ru": "Урон увеличивается на 1d6."
+          }
+        }
+      ]
+    }
+  },
+  {
+    "slug": "vitality_lash",
+    "kind": "static",
+    "title": {
+      "en": "Vitality Lash",
+      "ru": "Жизнетворный удар"
+    },
+    "description": {
+      "en": "You demolish the target's corrupted essence with energy from Creation's Forge. You deal 2d6 vitality damage with a basic Fortitude save. If the creature critically fails the save, it is also enfeebled 1 until the start of your next turn.",
+      "ru": "Вы пронзаете цель лучом энергии из Кузни Творения. Вы наносите 2d6 урона жизнью (обычное испытание Стойкости). При критическом провале цель дополнительно получает слабость 1 до начала вашего следующего хода."
+    },
+    "origin": "spell",
+    "origin_value": "divine,primal",
+    "origin_values": [
+      "cantrip",
+      "concentrate",
+      "manipulate",
+      "vitality"
+    ],
+    "price": { "a": 2 },
+    "info": {
+      "level": 0,
+      "range": "30,ft",
+      "defense": "fortitude",
+      "enhancements": [
+        {
+          "name": {
+            "en": "Heightened (+1)",
+            "ru": "Повышенное (+1)"
+          },
+          "description": {
+            "en": "The damage increases by 1d6.",
+            "ru": "Урон увеличивается на 1d6."
+          }
+        }
+      ]
+    }
+  },
+  {
+    "slug": "void_warp",
+    "kind": "static",
+    "title": {
+      "en": "Void Warp",
+      "ru": "Пустотное искажение"
+    },
+    "description": {
+      "en": "You call upon the Void to harm life force. The target takes 2d4 void damage with a basic Fortitude save. On a critical failure, the target is also enfeebled 1 until the start of your next turn.",
+      "ru": "Вы взываете к Пустоте, чтобы лишить врага жизненных сил. Цель получает 2d4 урона пустотой (обычное испытание Стойкости). При критическом провале цель дополнительно получает слабость 1 до начала вашего следующего хода."
+    },
+    "origin": "spell",
+    "origin_value": "arcane,divine,occult",
+    "origin_values": [
+      "cantrip",
+      "concentrate",
+      "manipulate",
+      "void"
+    ],
+    "price": { "a": 2 },
+    "info": {
+      "level": 0,
+      "range": "30,ft",
+      "defense": "fortitude",
+      "enhancements": [
+        {
+          "name": {
+            "en": "Heightened (+1)",
+            "ru": "Повышенное (+1)"
+          },
+          "description": {
+            "en": "The damage increases by 1d4.",
+            "ru": "Урон увеличивается на 1d4."
+          }
+        }
+      ]
+    }
+  },
+  {
+    "slug": "allegro",
+    "kind": "static",
+    "title": {
+      "en": "Allegro",
+      "ru": "Аллегро"
+    },
+    "description": {
+      "en": "You perform rapidly, speeding up your ally. The ally becomes quickened and can use the additional action to Strike, Stride, or Step.",
+      "ru": "Вы ускоряете темп, и ваш союзник начинает двигаться быстрее. Союзник получает состояние ускорения и может тратить дополнительное действие на Перемещение, Удар или Шаг."
+    },
+    "origin": "spell",
+    "origin_value": "",
+    "origin_values": [
+      "uncommon",
+      "bard",
+      "cantrip",
+      "composition",
+      "concentrate",
+      "emotion",
+      "mental"
+    ],
+    "price": { "a": 1 },
+    "info": {
+      "level": 0,
+      "range": "30,ft",
+      "duration": "1,r"
+    }
+  },
+  {
+    "slug": "courageous_anthem",
+    "kind": "static",
+    "title": {
+      "en": "Courageous Anthem",
+      "ru": "Песнь отваги"
+    },
+    "description": {
+      "en": "You inspire yourself and your allies with words or tunes of encouragement. You and all allies in the area gain a +1 status bonus to attack rolls, damage rolls, and saves against fear effects.",
+      "ru": "Вы вдохновляете себя и союзников ободряющими мелодиями. Вы и все союзники в области получаете бонус состояния +1 к проверкам атаки, броскам урона и испытаниям против эффектов ужаса."
+    },
+    "origin": "spell",
+    "origin_value": "",
+    "origin_values": [
+      "uncommon",
+      "bard",
+      "cantrip",
+      "composition",
+      "concentrate",
+      "emotion",
+      "mental"
+    ],
+    "price": { "a": 1 },
+    "info": {
+      "level": 0,
+      "duration": "1,r",
+      "area": "emanation,60"
+    }
+  },
+  {
+    "slug": "dirge_of_doom",
+    "kind": "static",
+    "title": {
+      "en": "Dirge of Doom",
+      "ru": "Погребальная песнь"
+    },
+    "description": {
+      "en": "Enemies within the area are frightened 1. They can't reduce their frightened value below 1 while they remain in the area.",
+      "ru": "Враги в области получают испуг 1 и не могут снизить значение испуга ниже 1, пока остаются в ней."
+    },
+    "origin": "spell",
+    "origin_value": "",
+    "origin_values": [
+      "uncommon",
+      "bard",
+      "cantrip",
+      "composition",
+      "concentrate",
+      "emotion",
+      "fear",
+      "mental"
+    ],
+    "price": { "a": 1 },
+    "info": {
+      "level": 0,
+      "duration": "1,r",
+      "area": "emanation,30"
+    }
+  },
+  {
+    "slug": "house_of_imaginary_walls",
+    "kind": "static",
+    "title": {
+      "en": "House of Imaginary Walls",
+      "ru": "Дом воображаемых стен"
+    },
+    "description": {
+      "en": "You mime an invisible 10-foot-by-10-foot wall adjacent to you and within your reach. The wall is solid to those creatures that don't disbelieve it, even incorporeal creatures. You and your allies can voluntarily believe the wall exists to continue to treat it as solid, for instance to climb onto it. A creature that disbelieves the illusion is temporarily immune to your **House of imaginary walls** for 1 minute. The wall doesn't block creatures that didn't see your visual performance, nor does it block objects. The wall has AC 10, Hardness equal to double the spell's rank, and HP equal to quadruple the spell's rank.",
+      "ru": "Вы изображаете создание невидимой стены размером 10 на 10 футов в вашей зоне досягаемости и рядом с вами. Если существо не смогло разоблачить стену, она считается для него твёрдой, даже если существо бестелесное. Вы и ваши союзники можете добровольно верить, что стена существует, чтобы она считалась для вас твёрдой (например, для лазания). Существо, разоблачившее иллюзию, временно невосприимчиво к этому вашему заклинанию на 1 минуту. Стена никак не препятствует объектам, а также существам, которые не видели вашего зримого выступления. У стены КБ 10; твёрдость, равная удвоенному кругу заклинания; ПЗ, равные четырёхкратному кругу заклинания."
+    },
+    "origin": "spell",
+    "origin_value": "",
+    "origin_values": [
+      "uncommon",
+      "bard",
+      "cantrip",
+      "composition",
+      "illusion",
+      "manipulate",
+      "visual"
+    ],
+    "price": { "a": 1 },
+    "info": {
+      "level": 0,
+      "duration": "1,r"
+    }
+  },
+  {
+    "slug": "rallying_anthem",
+    "kind": "static",
+    "title": {
+      "en": "Rallying Anthem",
+      "ru": "Песнь защиты"
+    },
+    "description": {
+      "en": "Your song moves allies to protect themselves more effectively. You and all allies in the area gain a +1 status bonus to AC and saving throws, as well as resistance equal to half the spell's rank to physical damage.",
+      "ru": "Вы вдохновляете себя и союзников, чтобы лучше обороняться. Вы и все союзники в области получаете бонус состояния +1 к КБ и испытаниям, а также устойчивость к физическому урону, равную половине круга заклинания."
+    },
+    "origin": "spell",
+    "origin_value": "",
+    "origin_values": [
+      "uncommon",
+      "bard",
+      "cantrip",
+      "composition",
+      "concentrate",
+      "emotion",
+      "mental"
+    ],
+    "price": { "a": 1 },
+    "info": {
+      "level": 0,
+      "duration": "1,r",
+      "area": "emanation,60"
+    }
+  },
+  {
+    "slug": "song_of_marching",
+    "kind": "static",
+    "title": {
+      "en": "Song of Marching",
+      "ru": "Походная песня"
+    },
+    "description": {
+      "en": "You maintain a brisk performance that keeps allies on the move. You and your allies in the area can Hustle for the spell's duration, in addition to your other exploration activities (your exploration activity is Sustaining this spell). You and your allies then become temporarily immune for 1 day.\n\nIf you enter an encounter while performing this song, you can use your Performance modifier for the initiative roll. You and your affected allies also receive a +1 status bonus to that initiative roll.",
+      "ru": "Вы подбадриваете своих союзников ритмичным выступлением, чтобы им было проще шагать. Вы и ваши союзники в области можете использовать Спешку на протяжении всей длительности заклинания в дополнение к другим занятиям исследования (ваше занятие исследования — Поддержание эффекта). После этого вы и ваши союзники временно невосприимчивы к эффекту на 1 день.\n\nЕсли вы становитесь участником сцены, пока поддерживаете эффект, вы можете использовать модификатор Исполнения для проверки инициативы. Вы и союзники под действием эффекта также получаете бонус состояния +1 к этой проверке инициативы."
+    },
+    "origin": "spell",
+    "origin_value": "",
+    "origin_values": [
+      "uncommon",
+      "bard",
+      "cantrip",
+      "composition",
+      "concentrate",
+      "mental"
+    ],
+    "price": { "a": 1 },
+    "info": {
+      "level": 0,
+      "sustained": true,
+      "duration": "1,h",
+      "area": "emanation,60",
+      "enhancements": [
+        {
+          "name": {
+            "en": "Heightened (6th)",
+            "ru": "Повышенное (6 круг)"
+          },
+          "description": {
+            "en": "You can Sustain the Spell for up to 2 hours.",
+            "ru": "длительность — поддерживаемое до 2 часов."
+          }
+        },
+        {
+          "name": {
+            "en": "Heightened (9th)",
+            "ru": "Повышенное (9 круг)"
+          },
+          "description": {
+            "en": "You can Sustain the Spell for up to 4 hours.",
+            "ru": "длительность — поддерживаемое до 4 часов."
+          }
+        }
+      ]
+    }
+  },
+  {
+    "slug": "song_of_strength",
+    "kind": "static",
+    "title": {
+      "en": "Song of Strength",
+      "ru": "Песнь силы"
+    },
+    "description": {
+      "en": "You bolster your allies' physical strength with a hearty exhortation. You and your allies gain a +1 status bonus to Athletics checks and to their DCs against Athletics skill actions such as Disarm, Reposition, Shove, and Trip.",
+      "ru": "Вы придаёте союзникам сил подбадривающими куплетами. Вы и ваши союзники получаете бонус состояния +1 к проверкам Атлетики, а также к СЛ против действий этого навыка, например Перестановки, Разоружения, Сбивания с ног или Толчка."
+    },
+    "origin": "spell",
+    "origin_value": "",
+    "origin_values": [
+      "uncommon",
+      "bard",
+      "cantrip",
+      "composition",
+      "concentrate",
+      "emotion",
+      "mental"
+    ],
+    "price": { "a": 1 },
+    "info": {
+      "level": 0,
+      "area": "emanation,60",
+      "duration": "1,r"
+    }
+  },
+  {
+    "slug": "triple_time",
+    "kind": "static",
+    "title": {
+      "en": "Triple Time",
+      "ru": "Три четверти"
+    },
+    "description": {
+      "en": "Your music sets a fast pace. You and all allies in the area gain a +10-foot status bonus to all Speeds for 1 round.",
+      "ru": "Музыка задаёт быстрый темп. Вы и все ваши союзники в области на 1 раунд получаете бонус состояния +10 футов ко всем скоростям."
+    },
+    "origin": "spell",
+    "origin_value": "",
+    "origin_values": [
+      "uncommon",
+      "bard",
+      "cantrip",
+      "composition",
+      "emotion",
+      "manipulate",
+      "mental"
+    ],
+    "price": { "a": 1 },
+    "info": {
+      "level": 0,
+      "area": "emanation,60",
+      "duration": "1,r"
+    }
+  },
+  {
+    "slug": "uplifting_overture",
+    "kind": "static",
+    "title": {
+      "en": "Uplifting Overture",
+      "ru": "Песнь мастерства"
+    },
+    "description": {
+      "en": "Your performance makes allies feel they can succeed at anything. This counts as having prepared to Aid your ally on a skill check of your choice. When you later use the Aid reaction, you can roll Performance instead of the normal skill check, and if you roll a failure, you get a success instead. If you are legendary in Performance, you automatically critically succeed.\n\nThe GM might rule that you can't use this ability if the act of encouraging your ally would interfere with the skill check (such as a check to Sneak quietly or maintain a disguise).",
+      "ru": "Ваше ободрение помогает союзнику преуспеть в начинаниях. Это заклинание считается достаточной подготовкой для Помощи товарищу с совершением выбранной вами проверки навыка. Когда вы впоследствии совершаете ответное действие для Помощи товарищу, вы можете использовать проверку Исполнения вместо проверки требуемого навыка, и если вы получаете провал, он считается для вас успехом. Если вы умелы в Исполнении на легендарном уровне, вы автоматически получаете критический успех.\n\nВедущий может постановить, что вы не можете использовать эту способность, если она помешает вашему союзнику в совершении проверки (например, если он старается избежать разоблачения маскировки или пытается Красться)."
+    },
+    "origin": "spell",
+    "origin_value": "",
+    "origin_values": [
+      "uncommon",
+      "bard",
+      "cantrip",
+      "composition",
+      "concentrate",
+      "emotion",
+      "mental"
+    ],
+    "price": { "a": 1 },
+    "info": {
+      "level": 0,
+      "range": "60,ft",
+      "duration": "1,r"
+    }
+  },
+  {
+    "slug": "clinging_ice",
+    "kind": "static",
+    "title": {
+      "en": "Clinging Ice",
+      "ru": "Липкий лёд"
+    },
+    "description": {
+      "en": "Freezing sleet and heavy snowfall collect on the target's feet and legs, dealing 1d4 cold damage and other effects depending on its Reflex save.",
+      "ru": "На ноги цели налипают мокрый снег и замерзающая слякоть, наносящие 1d4 урона холодом и снижающие её скорость в зависимости от результата испытания Реакции."
+    },
+    "origin": "spell",
+    "origin_value": "",
+    "origin_values": [
+      "uncommon",
+      "cantrip",
+      "cold",
+      "hex",
+      "manipulate",
+      "witch"
+    ],
+    "price": { "a": 1 },
+    "info": {
+      "level": 0,
+      "range": "30,ft",
+      "defense": "reflex",
+      "sustained": true,
+      "duration": "1,m",
+      "enhancements": [
+        {
+          "name": {
+            "en": "Critical Success",
+            "ru": "Критический успех"
+          },
+          "description": {
+            "en": "The target is unaffected.",
+            "ru": "Цель избегает эффекта."
+          }
+        },
+        {
+          "name": {
+            "en": "Success",
+            "ru": "Успех"
+          },
+          "description": {
+            "en": "The target takes half damage.",
+            "ru": "Цель получает половину урона."
+          }
+        },
+        {
+          "name": {
+            "en": "Failure",
+            "ru": "Провал"
+          },
+          "description": {
+            "en": "The target takes full damage and a –5-foot circumstance penalty to its Speeds until the spell ends.",
+            "ru": "Цель получает полный урон и ситуативный штраф -5 футов к своим скоростям, пока длится заклинание."
+          }
+        },
+        {
+          "name": {
+            "en": "Critical Failure",
+            "ru": "Критический провал"
+          },
+          "description": {
+            "en": "The target takes double damage and a –10-foot circumstance penalty to its Speeds until the spell ends.",
+            "ru": "Цель получает двойной урон и ситуативный штраф -10 футов к своим скоростям, пока длится заклинание."
+          }
+        },
+        {
+          "name": {
+            "en": "Heightened (+1)",
+            "ru": "Повышенное (+1)"
+          },
+          "description": {
+            "en": "The damage increases by 1d4.",
+            "ru": "Урон увеличивается на 1d4."
+          }
+        }
+      ]
+    }
+  },
+  {
+    "slug": "discern_secrets",
+    "kind": "static",
+    "title": {
+      "en": "Discern Secrets",
+      "ru": "Выявление тайн"
+    },
+    "description": {
+      "en": "Your patron deigns to whisper a few secrets. The target can Recall Knowledge, Seek, or Sense Motive as a free action. The target gains a +1 status bonus to the statistic used for the roll (a skill or Perception) on the roll and as long as you Sustain the spell. The target is temporarily immune to discern secrets for 1 minute.",
+      "ru": "Ваш покровитель делится некоторыми секретами. Цель может пройти проверку для Поиска, Проницательности или попытки Вспомнить информацию в качестве свободного действия. Цель получает бонус состояния +1 к используемому для проверки параметру (Вниманию или навыку) и сохраняет его, пока вы поддерживаете заклинание. После этого цель временно невосприимчива к этому заклинанию на 1 минуту."
+    },
+    "origin": "spell",
+    "origin_value": "",
+    "origin_values": [
+      "uncommon",
+      "cantrip",
+      "hex",
+      "manipulate",
+      "witch"
+    ],
+    "price": { "a": 1 },
+    "info": {
+      "level": 0,
+      "range": "30,ft",
+      "sustained": true,
+      "duration": "1,m",
+      "enhancements": [
+        {
+          "name": {
+            "en": "Heightened (5th)",
+            "ru": "Повышенное (5 круг)"
+          },
+          "description": {
+            "en": "You can target two creatures instead of one.",
+            "ru": "Вы можете выбрать целями сразу двух существ."
+          }
+        }
+      ]
+    }
+  },
+  {
+    "slug": "evil_eye",
+    "kind": "static",
+    "title": {
+      "en": "Evil Eye",
+      "ru": "Сглаз"
+    },
+    "description": {
+      "en": "Your patron's resentment manifests in a baleful, envious gaze. The target becomes sickened 1 if it fails a Will save (or sickened 2 on a critical failure). This condition value can't be reduced below 1 while the spell is active and you can see the target.",
+      "ru": "Недовольство покровителя проявляется в вашем пристальном зловещем взгляде. Цель проходит испытание Воли и при провале получает тошноту 1 (или тошноту 2 при критическом провале). Значение этого состояния нельзя уменьшить ниже 1, пока длится заклинание и вы можете видеть цель."
+    },
+    "origin": "spell",
+    "origin_value": "",
+    "origin_values": [
+      "uncommon",
+      "cantrip",
+      "curse",
+      "hex",
+      "manipulate",
+      "witch"
+    ],
+    "price": { "a": 1 },
+    "info": {
+      "level": 0,
+      "range": "30,ft",
+      "defense": "will",
+      "sustained": true,
+      "duration": "1,m"
+    }
+  },
+  {
+    "slug": "nudge_fate",
+    "kind": "static",
+    "title": {
+      "en": "Nudge Fate",
+      "ru": "Направление судьбы"
+    },
+    "description": {
+      "en": "The barest spin of your patron's spool is enough to alter fate. When the target fails an attack roll, skill check, or saving throw and a +1 status bonus would turn a critical failure into a failure, or failure into a success, you grant the target a +1 status bonus to the check retroactively, changing the outcome appropriately. The spell then ends.\n\nIf you cast <i>nudge fate</i> while a previous casting of this hex is still in effect, the previous effect ends.",
+      "ru": "Лёгкого влияния вашего покровителя достаточно, чтобы подтолкнуть судьбу в направлении желаемого вами результата. Когда цель проваливает проверку атаки, навыка или испытание и полученный ей бонус состояния +1 мог бы превратить критический провал в провал либо провал в успех, считается, что вы заблаговременно дали ей бонус состояния +1 к проверке, соответственно изменив результат. После этого заклинание прекращается.\n\nПри повторном сотворении этого заклинания до завершения длительности предыдущий эффект прекращается."
+    },
+    "origin": "spell",
+    "origin_value": "",
+    "origin_values": [
+      "uncommon",
+      "cantrip",
+      "concentrate",
+      "hex",
+      "witch"
+    ],
+    "price": { "a": 1 },
+    "info": {
+      "level": 0,
+      "range": "30,ft",
+      "duration": "1,m"
+    }
+  },
+  {
+    "slug": "shroud_of_night",
+    "kind": "static",
+    "title": {
+      "en": "Shroud of Night",
+      "ru": "Покров ночи"
+    },
+    "description": {
+      "en": "Your patron blankets the target's eyes in darkness. If you cast this hex on a willing ally (for instance, one with light blindness), the ally can choose which result it gets without rolling.",
+      "ru": "Ваш покровитель застилает глаза цели тьмой. Если цель наговора — согласный союзник (например, со световой слепотой), он может выбрать желаемый результат без испытания."
+    },
+    "origin": "spell",
+    "origin_value": "",
+    "origin_values": [
+      "uncommon",
+      "cantrip",
+      "darkness",
+      "hex",
+      "manipulate",
+      "witch"
+    ],
+    "price": { "a": 1 },
+    "info": {
+      "level": 0,
+      "range": "30,ft",
+      "defense": "will",
+      "sustained": true,
+      "duration": "1,m",
+      "enhancements": [
+        {
+          "name": {
+            "en": "Success",
+            "ru": "Успех"
+          },
+          "description": {
+            "en": "The target is unaffected.",
+            "ru": "Цель избегает эффекта."
+          }
+        },
+        {
+          "name": {
+            "en": "Failure",
+            "ru": "Провал"
+          },
+          "description": {
+            "en": "The target is shrouded in murky darkness. It treats bright light as dim light, and unless it has greater darkvision, all creatures are concealed to it.",
+            "ru": "Цель окутана клубящейся тьмой. Яркий свет для неё считается тусклым. Если цель не обладает острым ночным зрением, все остальные существа считаются для неё плохо видимыми."
+          }
+        }
+      ]
+    }
+  },
+  {
+    "slug": "stoke_the_heart",
+    "kind": "static",
+    "title": {
+      "en": "Stoke the Heart",
+      "ru": "Сердечный пламень"
+    },
+    "description": {
+      "en": "Your patron fills a creature with fervor, empowering their blows. The target gains a +2 status bonus to damage rolls.",
+      "ru": "Ваш покровитель наполняет цель пылом и рвением, усиливая удары. Цель получает бонус состояния +2 к броскам урона."
+    },
+    "origin": "spell",
+    "origin_value": "",
+    "origin_values": [
+      "uncommon",
+      "cantrip",
+      "concentrate",
+      "emotion",
+      "hex",
+      "witch"
+    ],
+    "price": { "a": 1 },
+    "info": {
+      "level": 0,
+      "range": "30,ft",
+      "sustained": true,
+      "duration": "1,m",
+      "enhancements": [
+        {
+          "name": {
+            "en": "Heightened (+2)",
+            "ru": "Повышенное (+2)"
+          },
+          "description": {
+            "en": "The status bonus to damage increases by 1.",
+            "ru": "Бонус состояния к урону увеличивается на 1."
+          }
+        }
+      ]
+    }
+  },
+  {
+    "slug": "wilding_word",
+    "kind": "static",
+    "title": {
+      "en": "Wilding Word",
+      "ru": "Дикое слово"
+    },
+    "description": {
+      "en": "Your patron's majesty—or their displeasure—comes in a growl from your throat, making other creatures reluctant to harm you. The target must attempt a Will save; if the creature is an animal, fungus, or plant, it takes a –1 circumstance penalty to its save.",
+      "ru": "Величие или недовольство вашего покровителя гасит в существе желание причинять вам вред. Цель проходит испытание Воли. Если она животное, гриб, или растение, то получает ситуативный штраф-1 к испытанию."
+    },
+    "origin": "spell",
+    "origin_value": "",
+    "origin_values": [
+      "uncommon",
+      "cantrip",
+      "hex",
+      "mental",
+      "witch"
+    ],
+    "price": { "a": 1 },
+    "info": {
+      "level": 0,
+      "range": "30,ft",
+      "defense": "will",
+      "sustained": true,
+      "duration": "1,m",
+      "enhancements": [
+        {
+          "name": {
+            "en": "Critical Success",
+            "ru": "Критический успех"
+          },
+          "description": {
+            "en": "The target is unaffected.",
+            "ru": "Цель избегает эффекта."
+          }
+        },
+        {
+          "name": {
+            "en": "Success",
+            "ru": "Успех"
+          },
+          "description": {
+            "en": "When the target attempts an attack roll or skill check that would harm you, it takes a –2 status penalty to its roll.",
+            "ru": "Когда цель совершает проверку атаки или навыка, которая может вам навредить, она получает штраф состояния -2 к этой проверке."
+          }
+        },
+        {
+          "name": {
+            "en": "Failure",
+            "ru": "Провал"
+          },
+          "description": {
+            "en": "As success, but the target also becomes sickened 1 each time it damages you.",
+            "ru": "Аналогичен успеху, но цель также получает тошноту 1 всякий раз, когда наносит вам урон."
+          }
+        },
+        {
+          "name": {
+            "en": "Critical Failure",
+            "ru": "Критический провал"
+          },
+          "description": {
+            "en": "As failure, but the sickened value is 2.",
+            "ru": "Аналогичен провалу, но но цель также получает тошноту 2 всякий раз, когда наносит вам урон."
+          }
+        }
+      ]
+    }
+  }
+]

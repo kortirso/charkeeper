@@ -287,23 +287,42 @@ en:
   tags:
     pathfinder:
       general:
+        acid: Acid
         animist: Animist
         attack: Attack
+        auditory: Auditory
         bard: Bard
         cantrip: Cantrip
         cleric: Cleric
+        cold: Cold
+        composition: Composition
         concentrate: Concentrate
+        curse: Curse
+        darkness: Darkness
+        detection: Detection
         druid: Druid
         dwarf: Dwarf
         earth: Earth
+        electricity: Electricity
+        emotion: Emotion
+        fear: Fear
         fighter: Fighter
+        fire: Fire
+        force: Force
         fortune: Fortune
         general: General
         halfling: Halfling
         healing: Healing
+        hex: Hex
+        illusion: Illusion
         leshy: Leshy
+        light: Light
+        linguistic: Linguistic
         magus: Magus
         manipulate: Manipulate
+        mental: Mental
+        morph: Morph
+        nonlethal: Nonlethal
         oracle: Oracle
         orc: Orc
         plant: Plant
@@ -311,12 +330,17 @@ en:
         polymorph: Polymorph
         primal: Primal
         psychic: Psychic
+        sanctified: Sanctified
         skill: Skill
         sorcerer: Sorcerer
         spellshape: Spellshape
+        spirit: Spirit
+        subtle: Subtle
         thaumaturge: Thaumaturge
         uncommon: Uncommon
+        visual: Visual
         vitality: Vitality
+        void: Void
         witch: Witch
         wizard: Wizard
         wood: Wood

@@ -16,7 +16,8 @@ const TRANSLATION = {
     innate: ' (Innate)',
     check: 'Spell attack',
     saveDC: 'Save DC',
-    limit: 'Limit'
+    limit: 'Limit',
+    cantrip: 'Cantrip'
   },
   ru: {
     level: 'уровень',
@@ -24,7 +25,8 @@ const TRANSLATION = {
     innate: ' (Врождённое)',
     check: 'Атака заклинанием',
     saveDC: 'Спасброски',
-    limit: 'Лимит'
+    limit: 'Лимит',
+    cantrip: 'Фокус'
   }
 }
 
@@ -79,9 +81,12 @@ export const Pathfinder2Spell = (props) => {
       title={
         <>
           <div class="flex items-center justify-between">
-            <p>
-              {spell().title}
-              <Show when={props.innate}>{localize(TRANSLATION, locale()).innate}</Show>
+            <p class="flex items-center gap-x-4">
+              <span>{spell().title}</span>
+              <Show when={Object.keys(spell().price).length > 0}><span>
+                {Object.entries(spell().price).map(([key, value]) => `${value}${key.toUpperCase()}`).join(' ')}
+              </span></Show>
+              <Show when={props.innate}><span>{localize(TRANSLATION, locale()).innate}</span></Show>
             </p>
             <Show when={props.innate}>
               <Dice
@@ -95,7 +100,7 @@ export const Pathfinder2Spell = (props) => {
               when={props.noLevel}
               fallback={
                 <div class="flex gap-2">
-                  <p>{spell().info.level} {localize(TRANSLATION, locale()).level}</p>
+                  <p>{spell().info.level > 0 ? `${spell().info.level} ${localize(TRANSLATION, locale()).level}` : localize(TRANSLATION, locale()).cantrip}</p>
                   <Show when={props.learnedSpellIds}>
                     <Show
                       when={!props.learnedSpellIds.includes(spell().id)}
@@ -110,9 +115,11 @@ export const Pathfinder2Spell = (props) => {
               <Show
                 when={props.prepareMode}
                 fallback={
-                  <Show when={spell().info.level > 0 && props.children}>
-                    {props.children}
-                  </Show>
+                  <>
+                    <Show when={props.children}>
+                      {props.children}
+                    </Show>
+                  </>
                 }
               >
                 <Show
