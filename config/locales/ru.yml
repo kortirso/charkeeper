@@ -287,23 +287,42 @@ ru:
   tags:
     pathfinder:
       general:
+        acid: Кислота
         animist: Анимист
         attack: Атака
+        auditory: Слух
         bard: Бард
         cantrip: Фокус
         cleric: Жрец
+        cold: Холод
+        composition: Композиция
         concentrate: Концентрация
+        curse: Проклятие
+        darkness: Тьма
+        detection: Обнаружение
         druid: Друид
         dwarf: Дварф
         earth: Земля
+        electricity: Электричество
+        emotion: Эмоции
+        fear: Страх
         fighter: Воин
+        fire: Огонь
+        force: Сила
         fortune: Удача
         general: Общий
         halfling: Полурослик
-        healing: Исцеления
+        healing: Исцеление
+        hex: Наговор
+        illusion: Иллюзия
         leshy: Леший
+        light: Свет
+        linguistic: Язык
         magus: Magus
         manipulate: Манипуляция
+        mental: Ментальный
+        morph: Метаморфоза
+        nonlethal: Несмертельное
         oracle: Оракул
         orc: Орк
         plant: Растение
@@ -311,12 +330,17 @@ ru:
         polymorph: Полиморф
         primal: Первобытный
         psychic: Psychic
+        sanctified: Освящённый
         skill: Навык
         sorcerer: Чародей
         spellshape: Метамагия
+        spirit: Дух
+        subtle: Незаметное
         thaumaturge: Thaumaturge
         uncommon: Необычный
+        visual: Зрение
         vitality: Жизнь
+        void: Пустота
         witch: Ведьма
         wizard: Волшебник
         wood: Дерево

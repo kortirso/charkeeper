@@ -2,12 +2,16 @@
 
 module Pathfinder2
   class SpellSerializer < ApplicationSerializer
-    ATTRIBUTES = %i[id slug title description origin_value origin_values price info].freeze
+    ATTRIBUTES = %i[id slug title description origin_value origin_values price info original_title].freeze
 
     attributes(*ATTRIBUTES)
 
     def title
       translate(object.title)
+    end
+
+    def original_title
+      object.title['en']
     end
 
     def description
