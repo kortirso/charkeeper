@@ -13,5 +13,10 @@ FactoryBot.define do
         }
       }
     end
+
+    trait :pathfinder2_pet do
+      type { 'Pathfinder2::Character::Pet' }
+      data { {} }
+    end
   end
 end
