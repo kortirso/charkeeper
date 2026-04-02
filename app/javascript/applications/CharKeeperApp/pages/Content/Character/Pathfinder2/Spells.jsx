@@ -1,4 +1,4 @@
-import { createSignal, createEffect, createMemo, Show, For, batch } from 'solid-js';
+import { createSignal, createEffect, createMemo, Show, For, Switch, Match, batch } from 'solid-js';
 
 import { Pathfinder2SpellBook, Pathfinder2Spell } from '../../../../pages';
 import { StatsBlock, ErrorWrapper, Button, GuideWrapper, Dice, Checkbox } from '../../../../components';
@@ -24,7 +24,10 @@ const TRANSLATION = {
     renderMode: 'Prepare mode',
     prepareSlots: 'Prepare slots',
     noSlots: 'No available spell slots',
-    cantripLevel: 'Cantrip level'
+    cantripLevel: 'Cantrip level',
+    focusSpellBook: 'Focus',
+    innateSpellBook: 'Innate',
+    focusSpells: 'Focus spells'
   },
   ru: {
     spellAttack: 'Бонус атаки',
@@ -39,7 +42,10 @@ const TRANSLATION = {
     renderMode: 'Режим подготовки',
     prepareSlots: 'Ячейки для подготовки',
     noSlots: 'Нет доступных слотов заклинаний',
-    cantripLevel: 'Круг фокусов'
+    cantripLevel: 'Круг фокусов',
+    focusSpellBook: 'Фокальные',
+    innateSpellBook: 'Врождённые',
+    focusSpells: 'Фокальные заклинания'
   }
 }
 
@@ -51,7 +57,7 @@ export const Pathfinder2Spells = (props) => {
   const [spells, setSpells] = createSignal(undefined);
   const [characterSpells, setCharacterSpells] = createSignal(undefined);
 
-  const [spellsSelectingMode, setSpellsSelectingMode] = createSignal(false);
+  const [spellsSelectingMode, setSpellsSelectingMode] = createSignal(null);
   const [renderMode, setRenderMode] = createSignal(true);
 
   const [appState] = useAppState();
@@ -61,42 +67,35 @@ export const Pathfinder2Spells = (props) => {
   const fetchSpells = async () => await fetchSpellsRequest(
     appState.accessToken,
     character().provider,
-    { max_level: character().spells_info.max_spell_level }
+    { max_level: character().spells_info?.max_spell_level || 10 }
   );
   const fetchCharacterSpells = async () => await fetchCharacterSpellsRequest(appState.accessToken, character().provider, character().id);
 
   createEffect(() => {
     if (lastActiveCharacterId() === character().id) return;
 
-    if (character().spells_info) {
-      Promise.all([fetchSpells(), fetchCharacterSpells()]).then(
-        ([spellsData, characterSpellsData]) => {
-          batch(() => {
-            setSpells(
-              spellsData.spells.sort((a, b) => {
-                const levelCompare = a.info.level - b.info.level;
-                return levelCompare || a.title.localeCompare(b.title);
-              })
-            );
-            setCharacterSpells(
-              characterSpellsData.spells.sort((a, b) => {
-                const levelCompare = a.spell.info.level - b.spell.info.level;
-                return levelCompare || a.spell.title.localeCompare(b.spell.title);
-              })
-            );
-          });
-        }
-      );
-    } else {
-      batch(() => {
-        setSpells([]);
-        setCharacterSpells([]);
-      });
-    }
+    Promise.all([fetchSpells(), fetchCharacterSpells()]).then(
+      ([spellsData, characterSpellsData]) => {
+        batch(() => {
+          setSpells(
+            spellsData.spells.sort((a, b) => {
+              const levelCompare = a.info.level - b.info.level;
+              return levelCompare || a.title.localeCompare(b.title);
+            })
+          );
+          setCharacterSpells(
+            characterSpellsData.spells.sort((a, b) => {
+              const levelCompare = a.spell.info.level - b.spell.info.level;
+              return levelCompare || a.spell.title.localeCompare(b.spell.title);
+            })
+          );
+        });
+      }
+    );
 
     batch(() => {
       setLastActiveCharacterId(character().id);
-      setSpellsSelectingMode(false);
+      setSpellsSelectingMode(null);
     });
   });
 
@@ -105,16 +104,10 @@ export const Pathfinder2Spells = (props) => {
 
     return characterSpells().reduce((acc, item) => {
       Object.entries(item.value).forEach(([level, values]) => {
-
-        // console.log(level)
-        // console.log(values)
-
-
         if (values.selected_count > 0) {
           acc[level] = acc[level] ? acc[level].concat(item) : [item];
         }
       });
-
       return acc;
     }, {});
   });
@@ -123,6 +116,8 @@ export const Pathfinder2Spells = (props) => {
     if (!characterSpells()) return {};
 
     return characterSpells().reduce((acc, item) => {
+      if (item.value.innate || item.value.focus) return acc;
+
       const level = item.spell.info.level;
       acc[level] = acc[level] ? acc[level].concat(item) : [item];
 
@@ -130,15 +125,32 @@ export const Pathfinder2Spells = (props) => {
     }, {});
   });
 
-  const groupedStaticSpells = createMemo(() => {
-    if (character().formatted_static_spells.length === 0) return {};
+  const proficiencyBonus = (level) => character().level + (level * 2);
 
-    return character().formatted_static_spells.reduce((acc, item) => {
+  const groupedStaticSpells = createMemo(() => {
+    if (!characterSpells()) return {};
+
+    const profBonus = character().level >= 12 ? proficiencyBonus(2) : proficiencyBonus(1);
+    const modifier = character().modified_abilities.cha
+
+    const manualSpells = characterSpells().reduce((acc, item) => {
+      if (!item.value.innate) return acc;
+
+      const currentLevel = item.spell.info.level;
+      const newItem = { ...item, spell_attack: profBonus + modifier, spell_dc: 10 + profBonus + modifier };
+      acc[currentLevel] = acc[currentLevel] ? acc[currentLevel].concat(newItem) : [newItem];
+
+      return acc;
+    }, {})
+
+    const autoSpells = character().formatted_static_spells.reduce((acc, item) => {
       const currentLevel = item.spell.info.level
       acc[currentLevel] = acc[currentLevel] ? acc[currentLevel].concat(item) : [item];
 
       return acc;
     }, {});
+
+    return { ...manualSpells, ...autoSpells };
   });
 
   const maxSpellLevel = createMemo(() => {
@@ -257,15 +269,39 @@ export const Pathfinder2Spells = (props) => {
       <GuideWrapper character={character()}>
         <Show when={spells()}>
           <Show
-            when={!spellsSelectingMode()}
+            when={spellsSelectingMode() === null}
             fallback={
-              <Pathfinder2SpellBook
-                character={character()}
-                spells={spells()}
-                characterSpells={characterSpells()}
-                onSetCharacterSpells={setCharacterSpells}
-                onBack={() => setSpellsSelectingMode(false)}
-              />
+              <Switch>
+                <Match when={spellsSelectingMode() == 'learnFocusSpell'}>
+                  <Pathfinder2SpellBook
+                    focus
+                    character={character()}
+                    spells={spells().filter((item) => item.focus_for === character().main_class)}
+                    characterSpells={characterSpells().filter((item) => !item.value.innate)}
+                    onSetCharacterSpells={setCharacterSpells}
+                    onBack={() => setSpellsSelectingMode(null)}
+                  />
+                </Match>
+                <Match when={spellsSelectingMode() == 'learnSpell'}>
+                  <Pathfinder2SpellBook
+                    character={character()}
+                    spells={spells().filter((item) => !item.focus_for)}
+                    characterSpells={characterSpells().filter((item) => !item.value.innate)}
+                    onSetCharacterSpells={setCharacterSpells}
+                    onBack={() => setSpellsSelectingMode(null)}
+                  />
+                </Match>
+                <Match when={spellsSelectingMode() == 'learnInnateSpell'}>
+                  <Pathfinder2SpellBook
+                    innate
+                    character={character()}
+                    spells={spells().filter((item) => !item.focus_for)}
+                    characterSpells={characterSpells().filter((item) => item.value.innate)}
+                    onSetCharacterSpells={setCharacterSpells}
+                    onBack={() => setSpellsSelectingMode(null)}
+                  />
+                </Match>
+              </Switch>
             }
           >
             <Show when={character().spells_info}>
@@ -285,19 +321,59 @@ export const Pathfinder2Spells = (props) => {
                   { title: localize(TRANSLATION, locale()).cantripLevel, value: Math.round(character().level / 2) }
                 ]}
               />
-              <Button default textable classList="mb-2" onClick={() => setSpellsSelectingMode(true)}>
-                {localize(TRANSLATION, locale()).gotoSpellBook}
-              </Button>
-              <Show when={character().spells_info.prepare}>
-                <Checkbox
-                  labelText={localize(TRANSLATION, locale()).renderMode}
-                  labelPosition="right"
-                  labelClassList="ml-2"
-                  classList="mb-2"
-                  checked={!renderMode()}
-                  onToggle={() => setRenderMode(!renderMode())}
-                />
-              </Show>
+            </Show>
+            <Show
+              when={character().spells_info}
+              fallback={
+                <Button default textable classList="mb-2" onClick={() => setSpellsSelectingMode('learnInnateSpell')}>
+                  {localize(TRANSLATION, locale()).innateSpellBook}
+                </Button>
+              }
+            >
+              <div class="grid grid-cols-1 lg:grid-cols-3 gap-2 mb-2">
+                <Button default textable onClick={() => setSpellsSelectingMode('learnFocusSpell')}>
+                  {localize(TRANSLATION, locale()).focusSpellBook}
+                </Button>
+                <Button default textable onClick={() => setSpellsSelectingMode('learnSpell')}>
+                  {localize(TRANSLATION, locale()).gotoSpellBook}
+                </Button>
+                <Button default textable onClick={() => setSpellsSelectingMode('learnInnateSpell')}>
+                  {localize(TRANSLATION, locale()).innateSpellBook}
+                </Button>
+              </div>
+            </Show>
+            <Show when={character().spells_info?.prepare}>
+              <Checkbox
+                labelText={localize(TRANSLATION, locale()).renderMode}
+                labelPosition="right"
+                labelClassList="ml-2"
+                classList="mb-2"
+                checked={!renderMode()}
+                onToggle={() => setRenderMode(!renderMode())}
+              />
+            </Show>
+            <Show when={character().spells_info}>
+              <div class="flex justify-between items-center">
+                <h2 class="text-lg dark:text-snow mb-2">
+                  {localize(TRANSLATION, locale()).focusSpells}
+                </h2>
+                {/* Фокальные ячейки заклинаний */}
+                <div class="flex">
+                  <For each={[...Array((character().spent_spell_slots.focus || 0)).keys()]}>
+                    {() => <Checkbox filled checked classList="mr-1" onToggle={() => freeSpellSlot('focus')} />}
+                  </For>
+                  <For each={[...Array((character().spells_info.spells_slots.focus || 3) - (character().spent_spell_slots.focus || 0)).keys()]}>
+                    {() => <Checkbox filled classList="mr-1" onToggle={() => spendSpellSlot('focus')} />}
+                  </For>
+                </div>
+              </div>
+              <div class="flex flex-col gap-2 mb-4">
+                <For each={characterSpells().filter((item) => item.value.focus)}>
+                  {(characterSpell) =>
+                    <Pathfinder2Spell noLevel spell={characterSpell.spell} cantripLevel={Math.round(character().level / 2)} />
+                  }
+                </For>
+              </div>
             </Show>
             <For each={Array.from([...Array(maxSpellLevel() + 1).keys()])}>
               {(level) =>
@@ -406,7 +482,7 @@ export const Pathfinder2Spells = (props) => {
                       </div>
                     </Show>
                   </Show>
-                  <Show when={groupedStaticSpells()[level]}>
+                  <Show when={renderMode() && groupedStaticSpells()[level]}>
                     <div class="flex flex-col gap-2 mb-4">
                       <For each={groupedStaticSpells()[level]}>
                         {(characterSpell) =>

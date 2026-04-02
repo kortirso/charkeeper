@@ -1520,7 +1520,7 @@
       "ru": "Направление судьбы"
     },
     "description": {
-      "en": "The barest spin of your patron's spool is enough to alter fate. When the target fails an attack roll, skill check, or saving throw and a +1 status bonus would turn a critical failure into a failure, or failure into a success, you grant the target a +1 status bonus to the check retroactively, changing the outcome appropriately. The spell then ends.\n\nIf you cast <i>nudge fate</i> while a previous casting of this hex is still in effect, the previous effect ends.",
+      "en": "The barest spin of your patron's spool is enough to alter fate. When the target fails an attack roll, skill check, or saving throw and a +1 status bonus would turn a critical failure into a failure, or failure into a success, you grant the target a +1 status bonus to the check retroactively, changing the outcome appropriately. The spell then ends.\n\nIf you cast **Nudge fate** while a previous casting of this hex is still in effect, the previous effect ends.",
       "ru": "Лёгкого влияния вашего покровителя достаточно, чтобы подтолкнуть судьбу в направлении желаемого вами результата. Когда цель проваливает проверку атаки, навыка или испытание и полученный ей бонус состояния +1 мог бы превратить критический провал в провал либо провал в успех, считается, что вы заблаговременно дали ей бонус состояния +1 к проверке, соответственно изменив результат. После этого заклинание прекращается.\n\nПри повторном сотворении этого заклинания до завершения длительности предыдущий эффект прекращается."
     },
     "origin": "spell",
