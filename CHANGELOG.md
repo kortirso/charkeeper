@@ -17,6 +17,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - spells filtering for PF2 characters
 - focus and innate spells management
 
+### Modified
+- builders for PF2 characters
+
 ## [0.4.20] - 2026-03-28
 ### Added
 - rendering/modification attributes and skills for Cosmere characters

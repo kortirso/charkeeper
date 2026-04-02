@@ -4,7 +4,8 @@ module CharactersContext
   module Pathfinder2
     class CreateCommand < BaseCommand
       include Deps[
-        add_feat: 'commands.characters_context.pathfinder2.feats.add'
+        add_feat: 'commands.characters_context.pathfinder2.feats.add',
+        add_spell: 'commands.characters_context.pathfinder2.spells.add'
       ]
 
       # rubocop: disable Metrics/BlockLength
@@ -53,12 +54,19 @@ module CharactersContext
           build_fresh_character(
             input.slice(:race, :subrace, :background, :main_class, :subclass, :main_ability).symbolize_keys
           )
+
+        input[:feats] = input[:data].delete(:feats)
+        input[:spells] = input[:data].delete(:spells)
+        input[:focus_spells] = input[:data].delete(:focus_spells)
       end
 
       def do_persist(input)
         character = ::Pathfinder2::Character.create!(input.slice(:user, :name, :data))
 
         add_background_feat(character)
+        add_feats(character, input) if input[:feats].any?
+        add_spells(character, input[:spells]) if input[:spells].any?
+        add_spells(character, input[:focus_spells], true) if input[:focus_spells].any?
 
         { result: character }
       end
@@ -80,6 +88,26 @@ module CharactersContext
         return unless feat
 
         add_feat.call(character: character, id: feat.id, type: 'additional', level: 1)
+      end
+
+      def add_feats(character, input)
+        input[:feats].each do |slug|
+          feat = ::Pathfinder2::Feat.find_by(slug: slug)
+          next unless feat
+
+          add_feat.call(character: character, id: feat.id, type: 'additional', level: 1)
+        end
+      end
+
+      def add_spells(character, spells, focus=nil)
+        spells.each do |slug|
+          spell = ::Pathfinder2::Feat.where(origin: 4).find_by(slug: slug)
+          next unless spell
+
+          add_spell.call({
+            character: character, feat: spell, level: spell.info['level'], focus: focus, additional: true
+          }.compact_blank)
+        end
       end
     end
   end

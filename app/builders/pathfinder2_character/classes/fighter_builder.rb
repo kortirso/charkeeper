@@ -15,6 +15,7 @@ module Pathfinder2Character
         result[:saving_throws] = { fortitude: 2, reflex: 2, will: 1 }
         result[:perception] = 2
         result[:class_dc] = 1
+        result[:feats] = result[:feats].push('shield_block').uniq
 
         result
       end

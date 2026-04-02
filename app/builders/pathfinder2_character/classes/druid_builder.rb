@@ -18,6 +18,7 @@ module Pathfinder2Character
         result[:spell_attack] = 1
         result[:spell_list] = 'primal'
         result[:main_ability] = 'wis'
+        result[:feats] = result[:feats].push('shield_block').uniq
 
         result
       end

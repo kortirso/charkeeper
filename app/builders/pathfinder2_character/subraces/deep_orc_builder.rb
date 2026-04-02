@@ -2,10 +2,9 @@
 
 module Pathfinder2Character
   module Subraces
-    class HoldScarredOrcBuilder
+    class DeepOrcBuilder
       def call(result:)
-        result[:health] = 12
-        result[:feats] = result[:feats].push('diehard').uniq
+        result[:feats] = result[:feats].push('combat_climber').uniq
 
         result
       end
