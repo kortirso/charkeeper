@@ -62,6 +62,7 @@ gem 'faraday', '~> 2.0'
 
 # performance metrics
 gem 'pghero'
+gem 'skylight'
 
 # bugs tracking
 gem 'solid_errors'
