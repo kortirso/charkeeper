@@ -1,0 +1,1641 @@
+[
+  {
+    "slug": "cantrip_expansion",
+    "kind": "static",
+    "title": {
+      "en": "Cantrip Expansion",
+      "ru": "Дополнительные фокусы"
+    },
+    "description": {
+      "en": "Prepared Caster: You can prepare two additional cantrips each day.\n\nSpontaneous Caster: Add two additional cantrips from your spell list to your repertoire.",
+      "ru": "Заклинатели, подготавливающие заклинания: каждый день вы можете подготавливать два дополнительных фокуса.\n\nСпонтанные заклинатели: добавьте два дополнительных фокуса из своего списка заклинаний в свой репертуар."
+    },
+    "origin": "class",
+    "origin_values": [
+      "bard",
+      "cleric",
+      "magus",
+      "oracle",
+      "psychic",
+      "sorcerer",
+      "witch",
+      "wizard"
+    ],
+    "conditions": { "level": 2 }
+  },
+  {
+    "slug": "directed_audience",
+    "kind": "static",
+    "title": {
+      "en": "Directed Audience",
+      "ru": "Охват публики"
+    },
+    "description": {
+      "en": "You can shape the area of your composition spells. Whenever you cast a composition spell whose area is an emanation, you can change the spell's area to a cone 10 feet larger, to a maximum of twice the original area. For example, you could modify a composition spell that affects a 30-foot emanation to affect a 40-foot cone, but a 5-foot emanation could only become a 10-foot cone.",
+      "ru": "Вы можете управлять областью ваших композиций. Когда вы творите заклинание-композицию с областью в виде эманации, вы можете вместо этого выбрать областью конус размером на 10 футов больше (но не более удвоенной начальной области). Например, вы можете выбрать 40-футовый конус вместо 30-футовой эманации. Однако 5-футовая эманация может стать только 10-футовым конусом."
+    },
+    "origin": "class",
+    "origin_values": ["bard"],
+    "conditions": { "level": 2 }
+  },
+  {
+    "slug": "emotional_push",
+    "kind": "static",
+    "title": {
+      "en": "Emotional Push",
+      "ru": "Эмоциональная дестабилизация"
+    },
+    "description": {
+      "en": "**Trigger** An enemy you're aware of fails its save against an emotion spell.\n\nYou prepare to take advantage of your enemy's sudden change in emotions. The target is off-guard against your next attack before the end of your next turn.",
+      "ru": "**Условие** враг, о котором вы осведомлены, проваливает испытание против заклинания с дескриптором «эмоции».\n\nВы готовы воспользоваться сменой эмоционального состояния врага. Цель застигнута врасплох для вашей следующей атаки до конца вашего следующего хода."
+    },
+    "origin": "class",
+    "origin_values": [
+      "bard",
+      "concentrate"
+    ],
+    "conditions": { "level": 2 }
+  },
+  {
+    "slug": "esoteric_polymath",
+    "kind": "static",
+    "title": {
+      "en": "Esoteric Polymath",
+      "ru": "Эзотерическая эрудиция"
+    },
+    "description": {
+      "en": "**Критерии** эрудит.\n\nВы обзавелись книгой оккультных заклинаний, аналогичной книге заклинаний волшебника. Вы можете использовать содержащиеся в книге заклинания, чтобы дополнить ими свой репертуар заклинаний. Вы бесплатно добавляете в книгу все заклинания из своего репертуара. Вы можете использовать Оккультизм для Изучения заклинания и добавлять их в свою книгу, заплатив соответствующую стоимость.\n\nВо время ежедневной подготовки вы выбираете одно любое заклинание из своей книги оккультных заклинаний. Если оно уже есть в вашем репертуаре заклинаний, в этот день оно считается дополнительным фирменным заклинанием. Если его в вашем репертуаре нет, то до следующей вашей ежедневной подготовки считается, что оно в вашем репертуаре.",
+      "ru": "**Критерии** эрудит.\n\nВы обзавелись книгой оккультных заклинаний, аналогичной книге заклинаний волшебника. Вы можете использовать содержащиеся в книге заклинания, чтобы дополнить ими свой репертуар заклинаний. Вы бесплатно добавляете в книгу все заклинания из своего репертуара. Вы можете использовать Оккультизм для Изучения заклинания и добавлять их в свою книгу, заплатив соответствующую стоимость.\n\nВо время ежедневной подготовки вы выбираете одно любое заклинание из своей книги оккультных заклинаний. Если оно уже есть в вашем репертуаре заклинаний, в этот день оно считается дополнительным фирменным заклинанием. Если его в вашем репертуаре нет, то до следующей вашей ежедневной подготовки считается, что оно в вашем репертуаре."
+    },
+    "origin": "class",
+    "origin_values": ["bard"],
+    "conditions": { "level": 2 }
+  },
+  {
+    "slug": "loremaster_etude",
+    "kind": "static",
+    "title": {
+      "en": "Loremaster's Etude",
+      "ru": "Этюд хранителя знаний"
+    },
+    "description": {
+      "en": "**Критерии** энигма.\n\nВы магическим образом подпитываете воспоминания, делая их чётче. Вы изучаете заклинание-композицию этюд хранителя знаний.",
+      "ru": "**Критерии** энигма.\n\nВы магическим образом подпитываете воспоминания, делая их чётче. Вы изучаете заклинание-композицию этюд хранителя знаний."
+    },
+    "origin": "class",
+    "origin_values": [
+      "bard",
+      "fortune"
+    ],
+    "conditions": { "level": 2 }
+  },
+  {
+    "slug": "multifarious_muse",
+    "kind": "static",
+    "title": {
+      "en": "Multifarious Muse",
+      "ru": "Многогранная муза"
+    },
+    "description": {
+      "en": "Ваша муза не ограничивает себя каким-то конкретным занятием. Выберите тип музы, отличающийся от вашей. Вы получаете черту 1 уровня, в критериях которой эта муза, и ваша муза теперь дополнительно считается и музой выбранного типа, что позволяет брать черты, в критериях которых указан новый тип музы. Прочих эффектов выбранной музы вы не получаете.",
+      "ru": "Ваша муза не ограничивает себя каким-то конкретным занятием. Выберите тип музы, отличающийся от вашей. Вы получаете черту 1 уровня, в критериях которой эта муза, и ваша муза теперь дополнительно считается и музой выбранного типа, что позволяет брать черты, в критериях которых указан новый тип музы. Прочих эффектов выбранной музы вы не получаете."
+    },
+    "origin": "class",
+    "origin_values": ["bard"],
+    "conditions": { "level": 2 },
+    "info": { "options_list": "subclasses" }
+  },
+  {
+    "slug": "song_of_strength",
+    "kind": "static",
+    "title": {
+      "en": "Song of Strength",
+      "ru": "Песнь силы"
+    },
+    "description": {
+      "en": "**Критерии** воитель.\n\nВаши выступления пробуждают силу в ваших союзниках. Вы изучаете фокус-композицию песнь силы.",
+      "ru": "**Критерии** воитель.\n\nВаши выступления пробуждают силу в ваших союзниках. Вы изучаете фокус-композицию песнь силы."
+    },
+    "origin": "class",
+    "origin_values": ["bard"],
+    "conditions": { "level": 2 }
+  },
+  {
+    "slug": "uplifting_overture",
+    "kind": "static",
+    "title": {
+      "en": "Uplifting Overture",
+      "ru": "Песнь мастерства"
+    },
+    "description": {
+      "en": "**Критерии** маэстро.\n\nВы изучаете фокус-композицию песнь мастерства, усиливающий способности союзников.",
+      "ru": "**Критерии** маэстро.\n\nВы изучаете фокус-композицию песнь мастерства, усиливающий способности союзников."
+    },
+    "origin": "class",
+    "origin_values": ["bard"],
+    "conditions": { "level": 2 }
+  },
+  {
+    "slug": "communal_healing",
+    "kind": "static",
+    "title": {
+      "en": "Communal Healing",
+      "ru": "Совместное лечение"
+    },
+    "description": {
+      "en": "You're an exceptional conduit for vitality and, as you channel it through you, you can divert some to heal yourself or another creature. When you cast the heal spell to heal a single creature, choose another willing living creature within range of your heal to regain Hit Points equal to the heal spell's rank.",
+      "ru": "Вы стали восприимчивее к энергии жизни, и всякий раз, когда вы проводите её через себя, она исцеляет ваши раны или раны другого существа. Когда вы сотворяете заклинание <b>излечение</b>, чтобы исцелить одно существо, выберите второе согласное живое существо в пределах дистанции излечения, которое восстановит ПЗ в количестве, равном кругу заклинания излечение."
+    },
+    "origin": "ancestry",
+    "origin_values": [
+      "cleric",
+      "healing",
+      "vitality"
+    ],
+    "conditions": { "level": 2 },
+    "description_eval_variables": {
+      "limit": "1"
+    },
+    "limit_refresh": "long_rest"
+  },
+  {
+    "slug": "emblazon_armament",
+    "kind": "static",
+    "title": {
+      "en": "Emblazon Armament",
+      "ru": "Эмблема на вооружении"
+    },
+    "description": {
+      "en": "Carefully etching a sacred image into a physical object, you steel yourself for battle. You can spend 10 minutes emblazoning a symbol of your deity upon a weapon or shield. The symbol doesn't fade until 1 year has passed, but if you Emblazon an Armament, any symbol you previously emblazoned, and any symbol already emblazoned on that item instantly disappears. The emblazoned item is a religious symbol of your deity in addition to its normal purpose, and it gains another benefit determined by the type of item. The benefit applies only to followers of the deity the symbol represents, but others can use the item normally.\n\n<ul><li><b>Shield</b> The shield gains a +1 status bonus to its Hardness. (This causes it to reduce more damage with the Shield Block reaction.).</li><li><b>Weapon</b> The wielder gains a +1 status bonus to damage rolls with the weapon.</li></ul>",
+      "ru": "Вы готовитесь к битве, тщательно нанося священный символ на материальном объекте. Вы можете потратить 10 минут, чтобы нанести на оружие или щит символ своего божества. Нанесённый вами символ существует в течение 1 года, но, когда вы снова используете эту черту, любой ранее нанесённый вами с её помощью символ, а также уже имеющийся на этом предмете символ немедленно исчезают.\n\nПредмет становится символом религии вашего божества в дополнение к основному назначению, а также получает дополнительное преимущество в зависимости от своего типа. Преимущество действует только для последователей божества, чей символ нанесён на предмете.\n<ul>\n<li><b>Оружие</b> существо, использующее оружие, получает бонус состояния +1 к броскам урона этим оружием.</li>\n<li><b>Щит</b> щит получает бонус состояния +1 к твёрдости (и благодаря этому сильнее снижает урон при использовании Блока щитом).</li></ul>"
+    },
+    "origin": "ancestry",
+    "origin_values": [
+      "cleric",
+      "exploration"
+    ],
+    "conditions": { "level": 2 },
+    "description_eval_variables": {
+      "limit": "1"
+    },
+    "limit_refresh": "long_rest"
+  },
+  {
+    "slug": "panic_the_dead",
+    "kind": "static",
+    "title": {
+      "en": "Panic the Dead",
+      "ru": "Изгнание нежити"
+    },
+    "description": {
+      "en": "Vitality strikes terror in the undead. When you use a heal spell to damage undead, any undead that fails its saving throw is also frightened 1. If it critically failed, the creature also gains the fleeing condition until the start of your next turn. Mindless undead are not immune to this effect due to being mindless.",
+      "ru": "Энергия жизни приводит нежить в ужас. Когда вы используете заклинание излечение, чтобы нанести урон нежити, каждое существо-нежить при провале получает испуг 1. При критическом провале нежить также получает панику до начала вашего следующего хода. Если нежить неразумная, это не даёт ей невосприимчивости к данному эффекту."
+    },
+    "origin": "ancestry",
+    "origin_values": [
+      "cleric",
+      "emotion",
+      "fear",
+      "mental"
+    ],
+    "conditions": { "level": 2 },
+    "description_eval_variables": {
+      "limit": "1"
+    },
+    "limit_refresh": "long_rest"
+  },
+  {
+    "slug": "rapid_response",
+    "kind": "static",
+    "title": {
+      "en": "Rapid Response",
+      "ru": "Быстрая реакция"
+    },
+    "description": {
+      "en": "**Trigger** An ally is reduced to 0 Hit Points.\n\nYou work quickly in emergencies. You Stride towards the triggering ally. You gain a +10-foot circumstance bonus to your Speed during this movement.",
+      "ru": "**Условие** ПЗ союзника снижаются до 0.\n\nВы быстро устремляетесь к тому, кому угрожает опасность. Вы совершаете Перемещение к спровоцировавшему союзнику с ситуативным бонусом +10 к вашей скорости."
+    },
+    "origin": "ancestry",
+    "origin_values": [
+      "cleric"
+    ],
+    "conditions": { "level": 2 },
+    "description_eval_variables": {
+      "limit": "1"
+    },
+    "limit_refresh": "long_rest"
+  },
+  {
+    "slug": "sap_life",
+    "kind": "static",
+    "title": {
+      "en": "Sap Life",
+      "ru": "Откачка жизни"
+    },
+    "description": {
+      "en": "You draw the life force out of your enemies. When you cast a harm spell and damage at least one living creature, you regain Hit Points equal to the spell rank of your harm spell. If you aren't a living creature, you gain no benefit from this feat.",
+      "ru": "Вы вытягиваете жизненные силы из врагов. Когда вы сотворяете заклинание повреждение и наносите им урон хотя бы одному живому существу, вы восстанавливаете ПЗ в количестве, равном кругу заклинания повреждение. Если вы не живое существо, то преимуществ этой черты не получаете."
+    },
+    "origin": "ancestry",
+    "origin_values": [
+      "cleric",
+      "healing"
+    ],
+    "conditions": { "level": 2 },
+    "description_eval_variables": {
+      "limit": "1"
+    },
+    "limit_refresh": "long_rest"
+  },
+  {
+    "slug": "versatile_font",
+    "kind": "static",
+    "title": {
+      "en": "Versatile Font",
+      "ru": "Универсальный источник"
+    },
+    "description": {
+      "en": "**Prerequisites** harmful font or healing font; deity that allows clerics to have both fonts.\n\nAs you explore your deity's aspects, you move beyond restrictions on healing or harming. You can prepare either harm or heal in the spell slots gained from the harmful font or healing font.",
+      "ru": "**Критерии** исцеляющий источник или повреждающий источник; божество, которое позволяет выбрать любой из источников.\n\nВы постигаете различные стороны вашего божества и выходите за рамки привычных ограничений. Вы можете использовать ячейки заклинаний исцеляющего или повреждающего источника для подготовки как заклинаний <i>излечение</i>, так и заклинаний <i>повреждение</i>."
+    },
+    "origin": "ancestry",
+    "origin_values": [
+      "cleric"
+    ],
+    "conditions": { "level": 2 },
+    "description_eval_variables": {
+      "limit": "1"
+    },
+    "limit_refresh": "long_rest"
+  },
+  {
+    "slug": "warpriest’s_armor",
+    "kind": "static",
+    "title": {
+      "en": "Warpriest’s Armor",
+      "ru": "Броня капеллана"
+    },
+    "description": {
+      "en": "**Prerequisites** warpriest doctrine.\n\nYour training has helped you adapt to ever-heavier armor. You are trained in heavy armor. Whenever you gain a class feature that grants you expert or greater proficiency in medium armor, you also gain that proficiency in heavy armor. You treat armor you wear of 2 Bulk or higher as though it were 1 Bulk lighter (to a minimum of 1 Bulk).",
+      "ru": "**Критерии** капеллан.\n\nТренировки помогли вам адаптироваться к более тяжёлой броне. Ваш уровень умения для тяжёлой брони повышается до изученного. Всякий раз, когда вы получаете классовую особенность, дающую умение в средней броне на экспертном или более высоком уровне, вы получаете такое же умение для тяжёлой брони. Если вес брони, которую вы носите, равен 2 или больше, он считается на 1 меньше (минимум 1)."
+    },
+    "origin": "ancestry",
+    "origin_values": [
+      "cleric"
+    ],
+    "conditions": { "level": 2 },
+    "description_eval_variables": {
+      "limit": "1"
+    },
+    "limit_refresh": "long_rest"
+  },
+  {
+    "slug": "call_of_the_wild",
+    "kind": "static",
+    "title": {
+      "en": "Call of the Wild",
+      "ru": "Зов природы"
+    },
+    "description": {
+      "en": "You call upon the creatures of nature to come to your aid. You can spend 10 minutes in concert with nature to replace a spell you've prepared in one of your druid spell slots with a summon animal or summon plant or fungus spell of the same rank.",
+      "ru": "Вы взываете к диким существам за помощью. Вы можете провести 10 минут в единении с природой, чтобы заменить одно из заклинаний, подготовленных в ячейке заклинания друида, призывом животного или призывом растения или гриба равного круга."
+    },
+    "origin": "ancestry",
+    "origin_values": [
+      "druid"
+    ],
+    "conditions": { "level": 2 },
+    "description_eval_variables": {
+      "limit": "1"
+    },
+    "limit_refresh": "long_rest"
+  },
+  {
+    "slug": "enhanced_familiar",
+    "kind": "static",
+    "title": {
+      "en": "Enhanced Familiar",
+      "ru": "Улучшенный фамильяр"
+    },
+    "description": {
+      "en": "<b>Source</b> Player Core , Player Core 2 <br><b>Archetypes</b> Elementalist*, Familiar Master*, Rivethun Emissary*, Shadowcaster*<br>**Prerequisites** a <u>familiar</u><br>* This archetype offers Enhanced Familiar at a different level than displayed here.\n\nYou infuse your familiar with additional primal energy, increasing its abilities. You can select four familiar or master abilities each day, instead of two.\n\n<b>Special</b> [Witch] Add the bonus familiar abilities you gain for being a witch to this amount. [Wizard] If your arcane thesis is improved familiar attunement, your familiar's base number of familiar abilities, before adding any extra abilities from the arcane thesis, is four.<h2 class=\"h2-header\">Archetype Use</h2>This feat can be used for one or more archetypes in addition to the listed classes. When selected this way, the feat does not have its class traits.",
+      "ru": "<b>Архетипы</b> Элементалист, Хозяин фамильяра, Shadowcaster<br>\n**Критерии** у вас есть фамильяр.\n\nВы передаёте фамильяру больше первобытной энергии. Вы можете выбирать четыре способности фамильяра или хозяина каждый день (а не две, как обычно).\n\n<b>Примечание</b> <br>\n[Ведьма] прибавьте дополнительные способности фамильяра, которые вы получаете благодаря классу ведьмы.\n\n[Волшебник] если ваша магическая диссертация — улучшенная связь с фамильяром, изначальное количество способностей вашего фамильяра (до добавления дополнительных способностей благодаря диссертации) равно четырём."
+    },
+    "origin": "ancestry",
+    "origin_values": [
+      "animist",
+      "druid",
+      "magus",
+      "sorcerer",
+      "thaumaturge",
+      "witch",
+      "wizard"
+    ],
+    "conditions": { "level": 2 },
+    "description_eval_variables": {
+      "limit": "1"
+    },
+    "limit_refresh": "long_rest"
+  },
+  {
+    "slug": "order_explorer",
+    "kind": "static",
+    "title": {
+      "en": "Order Explorer",
+      "ru": "Последователь ордена"
+    },
+    "description": {
+      "en": "You have learned the secrets of another druidic order, passing whatever rites of initiation that order requires and gaining access to its secrets. Choose an order other than your own. You gain a 1st-level feat that lists that order as a prerequisite, and you are now a member of that order for the purpose of meeting feat prerequisites. If you commit acts anathema to your new order, you lose all feats and abilities requiring that order but retain your other druid feats and abilities. You don't gain any of the other benefits of the order you chose.\n\n<b>Special</b> You can take this feat multiple times. Each time you do, you must choose a different order other than your own.",
+      "ru": "Её!\nВы изучили тайны другого друидического ордена и прошли все необходимые обряды инициации для вступления в него. Выберите другой друидический орден, кроме своего. Вы получаете черту 1 уровня, для которой выбранный орден указан как критерий. Вы считаетесь членом выбранного ордена при определении критериев соответствия для новых черт. Если вы нарушите табу нового ордена, то лишитесь всех черт и способностей, для которых он требуется, но сохраните остальные способности и черты друида. Вы не получаете никаких других преимуществ нового ордена.\n\n<b>Примечание</b> эту черту можно брать несколько раз, каждый раз выбирая новый орден."
+    },
+    "origin": "ancestry",
+    "origin_values": [
+      "druid"
+    ],
+    "conditions": { "level": 2 },
+    "description_eval_variables": {
+      "limit": "1"
+    },
+    "limit_refresh": "long_rest"
+  },
+  {
+    "slug": "poison_resistance",
+    "kind": "static",
+    "title": {
+      "en": "Poison Resistance",
+      "ru": "Устойчивость к яду"
+    },
+    "description": {
+      "en": "<b>Archetypes</b> Assassin*, Poisoner*<br>* This archetype offers Poison Resistance at a different level than displayed here.\n\nYour affinity for the natural world grants you protection against some of its dangers. You gain poison resistance equal to half your level, and you gain a +1 status bonus to saving throws against poisons.<h2 class=\"h2-header\">Archetype Use</h2>This feat can be used for one or more Archetypes in addition to the listed Classes. When selected this way, the feat is not considered to have its class traits.",
+      "ru": "<b>Архетипы</b> Ассасин, Отравитель.\n\nВаша связь с миром природы защищает от некоторых его опасностей. Вы получаете устойчивость к яду, равную половине вашего уровня, а также бонус состояния +1 к испытаниям против ядов."
+    },
+    "origin": "ancestry",
+    "origin_values": [
+      "alchemist",
+      "druid"
+    ],
+    "conditions": { "level": 2 },
+    "description_eval_variables": {
+      "limit": "1"
+    },
+    "limit_refresh": "long_rest"
+  },
+  {
+    "slug": "aggressive_block",
+    "kind": "static",
+    "title": {
+      "en": "Aggressive Block",
+      "ru": "Агрессивный блок"
+    },
+    "description": {
+      "en": "**Trigger** You use the Shield Block reaction, and the opponent that triggered Shield Block is adjacent to you and is your size or smaller.\n\nYou push back as you block, knocking your foe away or off balance. You use your shield to push the triggering creature, either automatically Shoving it 5 feet or causing it to become off-guard until the start of your next turn. The triggering creature chooses whether to be moved or become off-guard. If it chooses to be moved, you choose the direction. If the Shove would cause it to hit a solid object, enter a square of difficult terrain, or enter another creature's space, it must become off-guard instead of being moved.",
+      "ru": "**Условие** вы используете ответное действие Блок щитом; спровоцировавший его противник рядом с вами, и его размер не превышает ваш.\n\nВы блокируете атаку и сразу же отталкиваете противника или заставляете его покачнуться. Вы используете щит, чтобы толкнуть спровоцировавшее существо. Противник либо автоматически отталкивается на 5 футов (аналогично действию Толчок), либо становится застигнут врасплох до начала вашего следующего хода (по выбору противника). Если противник выберет Толчок, то вы выбираете направление перемещения. Если при этом противник должен натолкнуться на твёрдый объект, переместиться на клетку пересечённой местности или в пространство другого существа, он становится застигнутым врасплох вместо перемещения."
+    },
+    "origin": "ancestry",
+    "origin_values": [
+      "fighter"
+    ],
+    "conditions": { "level": 2 },
+    "description_eval_variables": {
+      "limit": "1"
+    },
+    "limit_refresh": "long_rest"
+  },
+  {
+    "slug": "assisting_shot",
+    "kind": "static",
+    "title": {
+      "en": "Assisting Shot",
+      "ru": "Содействующий выстрел"
+    },
+    "description": {
+      "en": "<b>Archetypes</b> Archer*, Sniping Duo*<br><b>Requirements</b> You are wielding a ranged weapon<br>* This archetype offers Assisting Shot at a different level than displayed here.\n\nUsing your last shot to gauge your accuracy, you can fire off a quick shot to interfere with a foe in combat. Make a Strike with a ranged weapon. If the Strike hits, the next creature other than you to attack the same target before the start of your next turn gains a +1 circumstance bonus to their roll, or a +2 circumstance bonus if your Strike was a critical hit.<h2 class=\"h2-header\">Archetype Use</h2>This feat can be used for one or more Archetypes in addition to the listed Classes. When selected this way, the feat is not considered to have its class traits.",
+      "ru": "<b>Архетипы</b> Лучник, Снайперская пара<br>\n<b>Требования</b> вы используете дистанционное оружие.\n\nВы быстро стреляете в противника, чтобы ему помешать. Совершите Удар дистанционным оружием. Если он попадает, то следующее существо, кроме вас, которое атакует ту же цель до начала вашего следующего хода, получает ситуативный бонус +1 к проверке атаки (или ситуативный бонус +2, если ваш Удар был критическим)."
+    },
+    "origin": "ancestry",
+    "origin_values": [
+      "fighter",
+      "press"
+    ],
+    "conditions": { "level": 2 },
+    "description_eval_variables": {
+      "limit": "1"
+    },
+    "limit_refresh": "long_rest"
+  },
+  {
+    "slug": "blade_brake",
+    "kind": "static",
+    "title": {
+      "en": "Blade Brake",
+      "ru": "Торможение клинком"
+    },
+    "description": {
+      "en": "**Trigger** You would be moved by a forced movement effect<br><b>Requirements</b> You are wielding a melee weapon and are within reach of a hard surface.\n\nYou plow your weapon into a floor, wall, or another sturdy surface, anchoring yourself in place. If you would be moved 20 feet or more, you are moved only 5 feet. Otherwise, you don't move at all.",
+      "ru": "**Условие** вы должны переместиться из-за эффекта вынужденного перемещения<br>\n<b>Требования</b> вы используете оружие ближнего боя и в вашей зоне досягаемости есть твёрдая поверхность.\n\nВы вонзаете своё оружие в пол, стену или иную твёрдую поверхность, тем самым закрепляясь на месте. Если вы должны были переместиться на 20 футов или больше, то перемещаетесь только на 5 футов. В противном случае вы не перемещаетесь вовсе."
+    },
+    "origin": "ancestry",
+    "origin_values": [
+      "fighter",
+      "manipulate"
+    ],
+    "conditions": { "level": 2 },
+    "description_eval_variables": {
+      "limit": "1"
+    },
+    "limit_refresh": "long_rest"
+  },
+  {
+    "slug": "brutish_shove",
+    "kind": "static",
+    "title": {
+      "en": "Brutish Shove",
+      "ru": "Жестокий толчок"
+    },
+    "description": {
+      "en": "<b>Requirements</b> You are wielding a two-handed melee weapon.\n\nUsing the momentum of your last attack to throw your weight into another, you make your opponent stumble back. Make a Strike with a two-handed melee weapon. If you hit a target that is your size or smaller, that creature is off-guard until the end of your current turn, and you can automatically Shove it, with the same benefits as the Shove action (including the critical success effect, if your Strike was a critical hit). If you move to follow the target, your movement doesn't trigger reactions. This Strike has the following failure effect.\n\n<b>Failure</b> The target becomes off-guard until the end of your current turn.",
+      "ru": "<b>Требования</b> вы используете двуручное оружие ближнего боя.\n\nВы вкладываете в атаку свой вес и бьёте так сильно, что враг отшатывается назад. Совершите Удар двуручным оружием ближнего боя. Если вы попадаете по цели и её размер не превышает ваш, она становится застигнутой врасплох до конца вашего текущего хода и вы можете автоматически совершить по ней Толчок с обычными преимуществами (включая эффект критического успеха, если ваш Удар был критическим). Если вы решите переместиться вслед за целью, ваше движение не провоцирует ответных действий.\n\nУдар получает следующий эффект провала.\n<br>\n\n<b>Провал</b> цель застигнута врасплох до конца вашего текущего хода."
+    },
+    "origin": "ancestry",
+    "origin_values": [
+      "fighter",
+      "press"
+    ],
+    "conditions": { "level": 2 },
+    "description_eval_variables": {
+      "limit": "1"
+    },
+    "limit_refresh": "long_rest"
+  },
+  {
+    "slug": "combat_grab",
+    "kind": "static",
+    "title": {
+      "en": "Combat Grab",
+      "ru": "Боевой захват"
+    },
+    "description": {
+      "en": "<b>Archetypes</b> Wrestler*, Zombie*<br><b>Requirements</b> You have one hand free, and your target is within reach of that hand<br>* This archetype offers Combat Grab at a different level than displayed here.\n\nUsing your prior attack to shift your opponent's guard, you take another swing and grab them. Make a melee Strike while keeping one hand free. If the Strike hits, you grab the target using your free hand. The creature remains grabbed until the end of your next turn or until it Escapes, whichever comes first.<h2 class=\"h2-header\">Archetype Use</h2>This feat can be used for one or more Archetypes in addition to the listed Classes. When selected this way, the feat is not considered to have its class traits.",
+      "ru": "<b>Архетипы</b> Борец, Zombie<br>\n<b>Требования</b> одна свободная рука; цель находится в зоне досягаемости этой руки.\n\nВы бьёте противника, а затем хватаете его. Совершите Удар в ближнем бою, оставляя одну руку свободной. Если Удар попадает, вы берёте цель в захват свободной рукой. Цель остаётся в захвате до конца вашего следующего хода или до Освобождения (в зависимости оттого, что случится раньше)."
+    },
+    "origin": "ancestry",
+    "origin_values": [
+      "fighter",
+      "press"
+    ],
+    "conditions": { "level": 2 },
+    "description_eval_variables": {
+      "limit": "1"
+    },
+    "limit_refresh": "long_rest"
+  },
+  {
+    "slug": "dueling_parry_(fighter)",
+    "kind": "static",
+    "title": {
+      "en": "Dueling Parry (Fighter)",
+      "ru": "Дуэльное парирование (воин)"
+    },
+    "description": {
+      "en": "<b>Archetypes</b> Duelist*<br><b>Requirements</b> You are wielding a single one-handed melee weapon and hold nothing else in your hands<br>* This archetype offers Dueling Parry (Fighter) at a different level than displayed here.\n\nYou can parry attacks against you with your one-handed weapon. You gain a +2 circumstance bonus to AC until the start of your next turn as long as you continue to meet the requirements.<h2 class=\"h2-header\">Archetype Use</h2>This feat can be used for one or more Archetypes in addition to the listed Classes. When selected this way, the feat is not considered to have its class traits.",
+      "ru": "<b>Архетип</b> Дуэлянт<br>\n<b>Требования</b> вы используете только одно одноручное оружие ближнего боя и больше ничего не держите в руках.\n\nВы можете парировать атаки по вам своим одноручным оружием. Вы получаете ситуативный бонус +2 к КБ до начала своего следующего хода, пока соответствуете требованиям этой черты."
+    },
+    "origin": "ancestry",
+    "origin_values": [
+      "fighter"
+    ],
+    "conditions": { "level": 2 },
+    "description_eval_variables": {
+      "limit": "1"
+    },
+    "limit_refresh": "long_rest"
+  },
+  {
+    "slug": "intimidating_strike",
+    "kind": "static",
+    "title": {
+      "en": "Intimidating Strike",
+      "ru": "Устрашающий удар"
+    },
+    "description": {
+      "en": "<b>Source</b> Player Core , Player Core 2 <br><b>Archetypes</b> Battle Harbinger*, Blackjacket*<br>* This archetype offers Intimidating Strike at a different level than displayed here.\n\nYour blow not only wounds creatures but also shatters their confidence. Make a melee Strike. If you hit and deal damage, the target is frightened 1, or frightened 2 on a critical hit.<h2 class=\"h2-header\">Archetype Use</h2>This feat can be used for one or more archetypes in addition to the listed classes. When selected this way, the feat does not have its class traits.",
+      "ru": "Ваши удары не только наносят раны, но и подрывают решимость цели. Совершите Удар в ближнем бою. Если он попадает и наносит урон, цель получает испуг 1 (или испуг 2 при критическом ударе)."
+    },
+    "origin": "ancestry",
+    "origin_values": [
+      "barbarian",
+      "emotion",
+      "fear",
+      "fighter",
+      "mental"
+    ],
+    "conditions": { "level": 2 },
+    "description_eval_variables": {
+      "limit": "1"
+    },
+    "limit_refresh": "long_rest"
+  },
+  {
+    "slug": "lightning_swap",
+    "kind": "static",
+    "title": {
+      "en": "Lightning Swap",
+      "ru": "Молниеносная смена"
+    },
+    "description": {
+      "en": "You have practiced quickly switching between combat styles and the equipment needed for them. You Interact to stow any number of items from your hands, then draw up to two weapons or a shield and a weapon.",
+      "ru": "Вы научились быстро менять боевые стили и нужное для них снаряжение. Вы совершаете Взаимодействие, чтобы убрать любое количество предметов из рук, а затем выхватить 1 или 2 оружия либо щит и оружие."
+    },
+    "origin": "ancestry",
+    "origin_values": [
+      "exemplar",
+      "fighter",
+      "flourish"
+    ],
+    "conditions": { "level": 2 },
+    "description_eval_variables": {
+      "limit": "1"
+    },
+    "limit_refresh": "long_rest"
+  },
+  {
+    "slug": "lunge",
+    "kind": "static",
+    "title": {
+      "en": "Lunge",
+      "ru": "Выпад"
+    },
+    "description": {
+      "en": "<b>Archetype</b> Thlipit Contestant*<br><b>Requirements</b> You are wielding a melee weapon<br>* This archetype offers Lunge at a different level than displayed here.\n\nYou attack an enemy at the edge of your reach. Make a Strike with a melee weapon, increasing your reach by 5 feet for that Strike. If the weapon has the disarm, shove, or trip trait, you can use the corresponding action instead of a Strike.<h2 class=\"h2-header\">Archetype Use</h2>This feat can be used for one or more Archetypes in addition to the listed Classes. When selected this way, the feat is not considered to have its class traits.",
+      "ru": "<b>Архетип</b> Игрок в тлипит<br>\n<b>Требования</b> вы используете оружие ближнего боя.\n\nВы вытягиваетесь до предела, чтобы атаковать врага вне обычной зоны досягаемости. Совершите Удар оружием ближнего боя; зона досягаемости для этого Удара увеличивается на 5 футов. Если у оружия есть дескрипторы «разоружающее», «сбивающее» или «толкающее», то вы можете вместо Удара использовать соответствующее дескриптору действие."
+    },
+    "origin": "ancestry",
+    "origin_values": [
+      "fighter"
+    ],
+    "conditions": { "level": 2 },
+    "description_eval_variables": {
+      "limit": "1"
+    },
+    "limit_refresh": "long_rest"
+  },
+  {
+    "slug": "rebounding_toss",
+    "kind": "static",
+    "title": {
+      "en": "Rebounding Toss",
+      "ru": "Отскакивающий бросок"
+    },
+    "description": {
+      "en": "<b>Requirements</b> You are wielding a thrown weapon.\n\nYou bounce your weapon off one foe to strike another. Make a ranged Strike with a thrown weapon. If this Strike hits, the weapon rebounds toward an enemy within 10 feet of the original target. Make an additional Strike against this second target. Both attacks count toward your multiple attack penalty, but the penalty doesn't increase until after you've made both attacks.",
+      "ru": "<b>Требования</b> вы используете метательное оружие.\n\nВы метаете ваше оружие так, чтобы оно отскочило от одного врага и попало в другого. Совершите дистанционный Удар метательным оружием. Если Удар успешен, то оружие отскочит во врага в пределах 10 футов от изначальной цели. Совершите дополнительный Удар по второй цели. Обе атаки учитываются при определении штрафа за последовательные атаки, но его значение не увеличивается, пока вы не совершите обе атаки."
+    },
+    "origin": "ancestry",
+    "origin_values": [
+      "fighter",
+      "flourish"
+    ],
+    "conditions": { "level": 2 },
+    "description_eval_variables": {
+      "limit": "1"
+    },
+    "limit_refresh": "long_rest"
+  },
+  {
+    "slug": "sleek_reposition",
+    "kind": "static",
+    "title": {
+      "en": "Sleek Reposition",
+      "ru": "Ловкая перестановка"
+    },
+    "description": {
+      "en": "<b>Requirements</b> You are wielding a finesse weapon or polearm.\n\nWhile your opponent is still recovering from your prior attack, you snag its armor, clothing, or flesh to move it as you please. Make a melee Strike with a finesse weapon or polearm. If you hit a target that is your size or smaller, you can automatically Reposition it, with the same benefits as the Reposition action (including the critical success effect, if your Strike was a critical hit). If you used a weapon with reach, use the weapon's reach for this Reposition.\n\nThis Strike has the following failure effect.\n\n<b>Failure</b> The target becomes off-guard until the end of your current turn.",
+      "ru": "<b>Требования</b> вы используете оружие с дескриптором «фехтовальное» или древковое оружие<hr>\nПока ваш противник всё ещё приходит в себя после вашей последней атаки, вы цепляетесь за его броню, одежду или плоть, чтобы передвинуть его так, как вам вздумается. Совершите Удар в ближнем бою оружием с дескриптором «фехтовальное» или древковым оружием. Если вы попадаете по цели и её размер не превышает ваш, вы можете автоматически совершить Перестановку с обычными преимуществами (включая эффект критического успеха, если ваш Удар был критическим). Если вы применяли оружие с дескриптором «длинное», используйте его зону досягаемости для этой Перестановки.\n\nУдар получает следующий эффект провала.\n<br>\n\n<b>Провал</b> цель застигнута врасплох до конца вашего текущего хода."
+    },
+    "origin": "ancestry",
+    "origin_values": [
+      "fighter",
+      "press"
+    ],
+    "conditions": { "level": 2 },
+    "description_eval_variables": {
+      "limit": "1"
+    },
+    "limit_refresh": "long_rest"
+  },
+  {
+    "slug": "animal_empathy_(ranger)",
+    "kind": "static",
+    "title": {
+      "en": "Animal Empathy (Ranger)",
+      "ru": "Понимание животных (следопыт)"
+    },
+    "description": {
+      "en": "<b>Archetypes</b> Beastmaster*, Wild Mimic*<br>* This archetype offers Animal Empathy (Ranger) at a different level than displayed here.\n\nYou have a connection to the creatures of the natural world that allows you to communicate with them on a rudimentary level. You can use Diplomacy to Make an Impression on animals and to make very simple Requests of them. In most cases, wild animals will give you time to make your case.<h2 class=\"h2-header\">Archetype Use</h2>This feat can be used for one or more Archetypes in addition to the listed Classes. When selected this way, the feat is not considered to have its class traits.",
+      "ru": "<b>Архетип</b> Зверомимик.\n\nВы чувствуете родство с обитателями живой природы и можете общаться с ними на базовом уровне. Вы можете использовать Дипломатию для Улучшения впечатления животного или попросить его выполнить очень простую Просьбу. В большинстве случаев дикие животные как минимум вас выслушают."
+    },
+    "origin": "ancestry",
+    "origin_values": [
+      "ranger"
+    ],
+    "conditions": { "level": 2 },
+    "description_eval_variables": {
+      "limit": "1"
+    },
+    "limit_refresh": "long_rest"
+  },
+  {
+    "slug": "favored_terrain",
+    "kind": "static",
+    "title": {
+      "en": "Favored Terrain",
+      "ru": "Излюбленная местность"
+    },
+    "description": {
+      "en": "You have studied a specific terrain to overcome its challenges. Choose aquatic, arctic, desert, forest, mountain, plains, sky, swamp, or underground as your favored terrain. When in that terrain, you can ignore the effects of non-magical difficult terrain. If you have the unimpeded journey class feature, you gain a second benefit while in your favored terrain, depending on your choice: <br><ul><li><b>Aquatic</b> You gain a swim Speed equal to your Speed. If you already had a swim Speed, you instead gain a +10-foot status bonus to your swim Speed.</li><li><b>Arctic</b> You need to eat and drink only one-tenth as much as usual, you aren't affected by severe or extreme cold, and you can walk across ice and snow at full Speed without needing to Balance.</li><li><b>Desert</b> You need to eat and drink only one-tenth as much as usual, you aren't affected by severe or extreme heat, and you can walk along sand at full Speed without needing to Balance.</li><li><b>Forest, Mountain, or Underground</b> You gain a climb Speed equal to your Speed. If you already had a climb Speed, you instead gain a +10-foot status bonus to your climb Speed.</li><li><b>Plains</b> You gain a +10-foot status bonus to your land Speed.</li><li><b>Sky</b> You gain a +10-foot status bonus to your fly Speed, if you have one.</li><li><b>Swamp</b> You can move across bogs at full Speed, even if they are deep enough to be greater difficult terrain or to normally require you to Swim.</li></ul>",
+      "ru": "Вы изучили определённую местность и её особенности. Выберите излюбленную местность одного из типов: болота, вода, горы, лес, небо, подземная местность, приполярье, пустыня или равнины. Находясь в выбранной местности, вы можете игнорировать эффекты немагической пересечённой местности. Если у вас есть классовая особенность на природе как дома, то вы получаете второе преимущество, когда находитесь в излюбленной местности:\n<ul>\n<li><b>Болота</b> вы можете перемещаться по топям с полной скоростью, даже если они достаточно глубокие, чтобы считаться сильно пересечённой местностью или обычно требовать Плавания. </li>\n<li><b>Вода</b> вы получаете скорость плавания, равную вашей наземной скорости. Если у вас уже есть скорость плавания, вы вместо этого получаете к ней бонус состояния +10 футов. </li>\n<li> <b>Горы, лес или подземная местность</b> вы получаете скорость лазания, равную вашей наземной корости. Если у вас уже есть скорость лазания, вы вместо этого получаете к ней бонус состояния +10 футов. </li>\n<li><b>Небо</b> вы получаете бонус состояния +10 футов к своей скорости полёта, если она у вас есть. </li>\n<li><b>Приполярье</b> вам надо есть и пить в десять раз меньше, чем обычно, на вас не влияет сильный и лютый холод, и вы можете с полной скоростью передвигаться по льду и снегу без необходимости Удержания равновесия. </li>\n<li><b>Пустыня</b> вам надо есть и пить в десять раз меньше, чем обычно, на вас не влияет сильная и лютая жара, и вы можете с полной скоростью передвигаться по песку без необходимости Удержания равновесия. </li>\n<li><b>Равнины</b> вы получаете бонус состояния +10 футов к своей наземной скорости. </li>\n</ul>"
+    },
+    "origin": "ancestry",
+    "origin_values": [
+      "ranger"
+    ],
+    "conditions": { "level": 2 },
+    "description_eval_variables": {
+      "limit": "1"
+    },
+    "limit_refresh": "long_rest"
+  },
+  {
+    "slug": "hunter's_aim",
+    "kind": "static",
+    "title": {
+      "en": "Hunter's Aim",
+      "ru": "Охотничья меткость"
+    },
+    "description": {
+      "en": "<b>Archetype</b> Game Hunter*<br>* This archetype offers Hunter's Aim at a different level than displayed here.\n\nWhen you focus on aiming, your attack becomes particularly accurate. Make a ranged weapon Strike against your hunted prey. On this Strike, you gain a +2 circumstance bonus to the attack roll and ignore your prey's concealed condition and any lesser cover.<h2 class=\"h2-header\">Archetype Use</h2>This feat can be used for one or more Archetypes in addition to the listed Classes. When selected this way, the feat is not considered to have its class traits.",
+      "ru": "<b>Архетип</b> Game Hunter.\n\nКогда вы сосредоточены, меткость намного возрастает. Совершите Удар дистанционным оружием по вашей добыче. Для этого Удара вы получаете ситуативный бонус +2 к проверке атаки и игнорируете плохую видимость и частичное укрытие цели."
+    },
+    "origin": "ancestry",
+    "origin_values": [
+      "concentrate",
+      "ranger"
+    ],
+    "conditions": { "level": 2 },
+    "description_eval_variables": {
+      "limit": "1"
+    },
+    "limit_refresh": "long_rest"
+  },
+  {
+    "slug": "monster_warden",
+    "kind": "static",
+    "title": {
+      "en": "Monster Warden",
+      "ru": "Защитник от чудовищ"
+    },
+    "description": {
+      "en": "**Prerequisites** Monster Hunter.\n\nYou understand how to defend against your prey. When you grant bonuses from Monster Hunter, each creature who benefits also gains a +2 circumstance bonus either to their AC the next time the creature attacks them or to their next saving throw against an effect from that particular creature (whichever comes first.)",
+      "ru": "\n**Критерии** Охотник на чудовищ.\n\n\nВы понимаете, как лучше защитить себя и окружающих от своей добычи. Когда вы даёте бонус Охотника на чудовищ, тот кто его принимает, дополнительно получает ситуативный бонус +2 к КБ против следующей атаки этого существа по нему или к следующему испытанию против эффекта, исходящего от этого существа - в зависимости от того, что случится раньше."
+    },
+    "origin": "ancestry",
+    "origin_values": [
+      "ranger"
+    ],
+    "conditions": { "level": 2 },
+    "description_eval_variables": {
+      "limit": "1"
+    },
+    "limit_refresh": "long_rest"
+  },
+  {
+    "slug": "quick_draw",
+    "kind": "static",
+    "title": {
+      "en": "Quick Draw",
+      "ru": "Быстрое выхватывание"
+    },
+    "description": {
+      "en": "<b>Archetypes</b> Alkenstar Agent*, Butterfly Blade*, Dual-Weapon Warrior*, Eagle Knight*, Red Mantis Assassin*, Vigilante*<br>* This archetype offers Quick Draw at a different level than displayed here.\n\nYou draw your weapon and attack with the same motion. You Interact to draw a weapon, then Strike with that weapon.<h2 class=\"h2-header\">Archetype Use</h2>This feat can be used for one or more Archetypes in addition to the listed Classes. When selected this way, the feat is not considered to have its class traits.",
+      "ru": "<b>Архетипы</b> Alkenstar Agent, Butterfly Blade, Вигилант.\n\nВы одним движением выхватываете оружие и сразу же атакуете им. Вы совершаете Взаимодействие, чтобы выхватить оружие, после чего наносите им Удар."
+    },
+    "origin": "ancestry",
+    "origin_values": [
+      "gunslinger",
+      "ranger",
+      "rogue"
+    ],
+    "conditions": { "level": 2 },
+    "description_eval_variables": {
+      "limit": "1"
+    },
+    "limit_refresh": "long_rest"
+  },
+  {
+    "slug": "brutal_beating",
+    "kind": "static",
+    "title": {
+      "en": "Brutal Beating",
+      "ru": "Жестокие побои"
+    },
+    "description": {
+      "en": "**Prerequisites** ruffian racket.\n\nYour critical hits shakes your foes' confidence. Whenever your Strike is a critical hit and deals damage, the target is frightened 1.",
+      "ru": "**Критерии** головорез.\n\nЖестокость ваших критических ударов ужасает врагов. Когда ваш Удар оказывается критическим и наносит урон, его цель получает испуг 1."
+    },
+    "origin": "ancestry",
+    "origin_values": [
+      "rogue"
+    ],
+    "conditions": { "level": 2 },
+    "description_eval_variables": {
+      "limit": "1"
+    },
+    "limit_refresh": "long_rest"
+  },
+  {
+    "slug": "clever_gambit",
+    "kind": "static",
+    "title": {
+      "en": "Clever Gambit",
+      "ru": "Хитрый гамбит"
+    },
+    "description": {
+      "en": "<b>Archetype</b> Butterfly Blade*<br>**Prerequisites** mastermind racket<br>**Trigger** Your Strike critically hits and deals damage to a creature you've identified with Recall Knowledge<br>* This archetype offers Clever Gambit at a different level than displayed here.\n\nYour battle tactics are aided by assessing your foe's capabilities and range. You Step or Stride; this movement doesn't trigger reactions from the triggering creature.<h2 class=\"h2-header\">Archetype Use</h2>This feat can be used for one or more Archetypes in addition to the listed Classes. When selected this way, the feat is not considered to have its class traits.",
+      "ru": "<b>Архетип</b> Butterfly Blade<br>\n**Критерии** организатор<br>\n**Условие** вы наносите урон критическим Ударом по существу, которое опознали с помощью попытки Вспомнить информацию.\n\nВы выбираете тактику в бою согласно сведениям о противнике. Вы совершаете Перемещение или Шаг; это движение не провоцирует ответных действий этого существа."
+    },
+    "origin": "ancestry",
+    "origin_values": [
+      "rogue"
+    ],
+    "conditions": { "level": 2 },
+    "description_eval_variables": {
+      "limit": "1"
+    },
+    "limit_refresh": "long_rest"
+  },
+  {
+    "slug": "distracting_feint",
+    "kind": "static",
+    "title": {
+      "en": "Distracting Feint",
+      "ru": "Отвлекающий финт"
+    },
+    "description": {
+      "en": "**Prerequisites** scoundrel racket.\n\nYour Feints are far more distracting than normal. While a creature is off-guard by your Feint, it also takes a –2 circumstance penalty to Perception checks and Reflex saves.",
+      "ru": "**Критерии** пройдоха.\n\nВаши Финты отвлекают врагов сильнее обычного. Когда существо становится застигнуто врасплох из-за вашего Финта, оно дополнительно получает ситуативный штраф -2 к проверкам Внимания и испытаниям Реакции."
+    },
+    "origin": "ancestry",
+    "origin_values": [
+      "rogue"
+    ],
+    "conditions": { "level": 2 },
+    "description_eval_variables": {
+      "limit": "1"
+    },
+    "limit_refresh": "long_rest"
+  },
+  {
+    "slug": "mobility",
+    "kind": "static",
+    "title": {
+      "en": "Mobility",
+      "ru": "Подвижность"
+    },
+    "description": {
+      "en": "You move without leaving an opening. When you Stride and move half your Speed or less, that movement does not trigger reactions. You can use Mobility when Climbing, Flying, or Swimming instead of Striding if you have the corresponding movement type.",
+      "ru": "Вы двигаетесь так, что врагам сложно на это реагировать. Когда вы совершаете Перемещение на расстояние, не превышающее половины вашей скорости, оно не провоцирует ответных действий. Вы можете использовать Подвижность при Лазании, Плавании или Полёте вместо Перемещения, если у вас есть соответствующий тип перемещения."
+    },
+    "origin": "ancestry",
+    "origin_values": [
+      "rogue"
+    ],
+    "conditions": { "level": 2 },
+    "description_eval_variables": {
+      "limit": "1"
+    },
+    "limit_refresh": "long_rest"
+  },
+  {
+    "slug": "strong_arm",
+    "kind": "static",
+    "title": {
+      "en": "Strong Arm",
+      "ru": "Сильная рука"
+    },
+    "description": {
+      "en": "When you Strike with a thrown weapon, the weapon's range increment increases by 10 feet.",
+      "ru": "Когда вы совершаете Удар метательным оружием, шаг дистанции оружия увеличивается на 10 футов."
+    },
+    "origin": "ancestry",
+    "origin_values": [
+      "rogue"
+    ],
+    "conditions": { "level": 2 },
+    "description_eval_variables": {
+      "limit": "1"
+    },
+    "limit_refresh": "long_rest"
+  },
+  {
+    "slug": "unbalancing_blow",
+    "kind": "static",
+    "title": {
+      "en": "Unbalancing Blow",
+      "ru": "Ошарашивающий удар"
+    },
+    "description": {
+      "en": "**Prerequisites** thief racket.\n\nInterweaving attacks, you unbalance your foes. Whenever your Strike is a critical hit and deals damage, the target is offguard against your attacks until the end of your next turn.",
+      "ru": "**Критерии** вор.\n\nВы наносите серию ударов, не давая опомниться. Когда ваш Удар оказывается критическим и наносит урон, цель считается застигнутой врасплох для ваших атак до конца вашего следующего хода."
+    },
+    "origin": "ancestry",
+    "origin_values": [
+      "rogue"
+    ],
+    "conditions": { "level": 2 },
+    "description_eval_variables": {
+      "limit": "1"
+    },
+    "limit_refresh": "long_rest"
+  },
+  {
+    "slug": "underhanded_assault",
+    "kind": "static",
+    "title": {
+      "en": "Underhanded Assault",
+      "ru": "Коварное нападение"
+    },
+    "description": {
+      "en": "<b>Archetype</b> Red Mantis Assassin*<br>**Prerequisites** trained in Stealth<br>* This archetype offers Underhanded Assault at a different level than displayed here.\n\nYou capitalize on the distraction provided by an ally. You Sneak up to a foe adjacent to one of your allies. You can roll against the foe you're Sneaking up on, even if it's currently observing you, as though you were hidden. You take a –2 penalty on your Stealth check. If your Stealth check against the chosen foe succeeds, you can make a melee Strike against that foe at the end of your Sneak.<h2 class=\"h2-header\">Archetype Use</h2>This feat can be used for one or more Archetypes in addition to the listed Classes. When selected this way, the feat is not considered to have its class traits.",
+      "ru": "**Критерии** изученная Скрытность.\n\nВы сполна пользуетесь тем, что ваш соратник отвлёк на себя чьё-то внимание. Вы пытаетесь Красться к врагу, который рядом с вашим союзником. Вы можете совершать проверку против этого врага, как если бы были спрятаны, даже если вы видимы для него. Вы получаете штраф -2 к этой проверке Скрытности. Если ваша проверка Скрытности против выбранного врага успешна, вы можете совершить Удар в ближнем бою по этому врагу в конце попытки Красться."
+    },
+    "origin": "ancestry",
+    "origin_values": [
+      "rogue"
+    ],
+    "conditions": { "level": 2 },
+    "description_eval_variables": {
+      "limit": "1"
+    },
+    "limit_refresh": "long_rest"
+  },
+  {
+    "slug": "basic_lesson",
+    "kind": "static",
+    "title": {
+      "en": "Basic Lesson",
+      "ru": "Простой урок"
+    },
+    "description": {
+      "en": "Your patron grants you a special lesson, revealing a hidden facet of its nature. Choose a basic lesson from the list here. You gain its associated hex, and your familiar learns the associated spell.",
+      "ru": "Ваш покровитель дарует вам особый урок, чем частично выдаёт свою суть. Выберите простой урок. Вы получаете связанный с ним наговор, а ваш фамильяр изучает указанное заклинание."
+    },
+    "origin": "ancestry",
+    "origin_values": [
+      "witch"
+    ],
+    "conditions": { "level": 2 },
+    "description_eval_variables": {
+      "limit": "1"
+    },
+    "limit_refresh": "long_rest"
+  },
+  {
+    "slug": "conceal_spell",
+    "kind": "static",
+    "title": {
+      "en": "Conceal Spell",
+      "ru": "Незаметное заклинание"
+    },
+    "description": {
+      "en": "Through sheer mental effort, you can simplify the incantations and gestures needed to spellcast, leaving them barely noticeable. If the next action you use is to Cast a Spell, the spell gains the subtle trait, hiding the shining runes, sparks of magic, and other manifestations that would usually give away your spellcasting. The trait hides only the spell's spellcasting actions and manifestations, not its effects, so an observer might still see a ray streak out from you or see you vanish into thin air.",
+      "ru": "Усилием разума вы пытаетесь скрыть Сотворение заклинания, упрощая слова силы и жесты и делая их почти незаметными. Если вашим следующим действием будет Сотворение заклинания, оно получает дескриптор «незаметное» (вы скрываете сияющие руны, волшебные искры и прочие явные признаки, указывающие на использование магии). Этот дескриптор маскирует только действия по сотворению заклинания и их проявления, а не сами эффекты заклинания, поэтому наблюдающие смогут увидеть, как вы выпускаете луч или растворяетесь в воздухе."
+    },
+    "origin": "ancestry",
+    "origin_values": [
+      "animist",
+      "concentrate",
+      "spellshape",
+      "witch",
+      "wizard"
+    ],
+    "conditions": { "level": 2 },
+    "description_eval_variables": {
+      "limit": "1"
+    },
+    "limit_refresh": "long_rest"
+  },
+  {
+    "slug": "familiar's_language",
+    "kind": "static",
+    "title": {
+      "en": "Familiar's Language",
+      "ru": "Язык фамильяра"
+    },
+    "description": {
+      "en": "**Prerequisites** a familiar.\n\nYou've learned to speak with your familiar and other creatures like it. You can ask questions of, receive answers from, and use the Diplomacy skill with creatures of the same family of animals as your familiar. For example, if your familiar were a cat, you could gain the effects of speak with animals for any felines (including leopards, lions, and tigers, among others). This ability doesn't make them more friendly than normal. If your familiar ever changes to a different creature, you can't use this ability for 1 week while you absorb your new familiar's language.\n\n<b>Special</b> This feat has the trait corresponding to the tradition of spells you cast (arcane, divine, occult, or primal).",
+      "ru": "**Критерии** у вас есть фамильяр.\n\n\nВы научились разговаривать со своим фамильяром и другими подобными ему существами. Вы можете общаться с существами того же семейства животных, что и ваш фамильяр: задавать им вопросы и получать ответы, а также применять Дипломатию при общении с ними. Например, если ваш фамильяр — кошка, вы получите эффекты разговора с животными для любых кошачьих (например, леопардов, львов и тигров). Эта способность не вынуждает их быть более дружелюбными по отношению к вам. Если вашим фамильяром станет другое существо, вы не сможете использовать эту способность 1 неделю — в это время вы будете познавать язык нового фамильяра.\n\n\n<b>Примечание</b> эта черта получает дескриптор вашей магической традиции (мистический, оккультный, первобытный или сакральный)."
+    },
+    "origin": "ancestry",
+    "origin_values": [
+      "witch"
+    ],
+    "conditions": { "level": 2 },
+    "description_eval_variables": {
+      "limit": "1"
+    },
+    "limit_refresh": "long_rest"
+  },
+  {
+    "slug": "energy_ablation",
+    "kind": "static",
+    "title": {
+      "en": "Energy Ablation",
+      "ru": "Размывание энергии"
+    },
+    "description": {
+      "en": "As you direct destructive energy at a foe, you can divert some of its power into a protective barrier that shields you from harm. If your next action is to Cast a Spell that deals at least one type of energy damage (acid, cold, electricity, fire, force, sonic, vitality, or void), you gain resistance to an energy damage type of your choice equal to the spell's rank. The resistance lasts until the end of your next turn. You get the resistance regardless of whether or not your spell dealt damage.",
+      "ru": "Когда вы творите энергетические заклинания, вы можете использовать остаточную энергию, чтобы та защитила вас подобно барьеру. Если вашим следующим действием будет Сотворение заклинания, которое наносит энергетический урон (жизнь, звук, кислота, огонь, пустота, сила, холод, электричество), то вне зависимости оттого, был ли нанесён урон, вы получаете устойчивость к одному из этих типов урона на ваш выбор, равную кругу заклинания, до конца вашего следующего хода."
+    },
+    "origin": "ancestry",
+    "origin_values": [
+      "spellshape",
+      "wizard"
+    ],
+    "conditions": { "level": 2 },
+    "description_eval_variables": {
+      "limit": "1"
+    },
+    "limit_refresh": "long_rest"
+  },
+  {
+    "slug": "nonlethal_spell",
+    "kind": "static",
+    "title": {
+      "en": "Nonlethal Spell",
+      "ru": "Несмертельное заклинание"
+    },
+    "description": {
+      "en": "You can alter offensive spells to be less deadly. If your next action is to Cast a Spell that deals damage and doesn't have the death or void trait, that spell gains the nonlethal trait (page 407).",
+      "ru": "Вы можете уменьшить смертоносность своих заклинаний. Если вашим следующим действием будет Сотворение заклинания без дескрипторов «пустота» и «смерть», которое наносит урон, это заклинание получает дескриптор «несмертельное»."
+    },
+    "origin": "ancestry",
+    "origin_values": [
+      "manipulate",
+      "spellshape",
+      "wizard"
+    ],
+    "conditions": { "level": 2 },
+    "description_eval_variables": {
+      "limit": "1"
+    },
+    "limit_refresh": "long_rest"
+  },
+  {
+    "slug": "bard_dedication",
+    "kind": "static",
+    "title": {
+      "en": "Bard Dedication",
+      "ru": "Посвящение в барды"
+    },
+    "description": {
+      "en": "<b>Archetype</b> Bard<br><b>Class</b> Bard<br>**Prerequisites** Charisma +2.\n\nYou cast spells like a bard and gain the Cast a Spell activity. You gain a spell repertoire with two common cantrips from the occult spell list or any other occult cantrips you've learned or discovered. You're trained in the spell attack modifier and spell DC statistics. Your key spellcasting attribute for bard archetype spells is Charisma, and they are occult bard spells. You become trained in Occultism and Performance; for each of these skills in which you were already trained, you instead become trained in a skill of your choice.\n\nChoose a muse as you would if you were a bard. You can take that muse's feats, but you don't gain the starting feat, spell or any other abilities the choice of muse grants.",
+      "ru": "<b>Архетип</b> Бард<br>\n**Критерии** Харизма +2.\n\nВы можете использовать занятие Сотворение заклинания и творить заклинания как бард. Вы получаете репертуар заклинаний, в который добавляете два обычных фокуса из списка оккультных заклинаний или из числа других фокусов этой магической традиции, которые вы изучаете или находите. Атака заклинанием и СЛ заклинаний становятся для вас изученными. Ключевой заклинательной характеристикой для заклинаний архетипа барда является Харизма; эти заклинания — оккультные заклинания барда. Навыки Исполнение и Оккультизм становятся для вас изученными. За каждый из этих навыков, который уже изучен, вы изучаете любой другой навык по своему выбору.\n\nВыберите музу, как если бы были бардом. Считается, что она у вас есть, и вы можете брать черты музы, но вы не получаете начальную черту, заклинание и других её способностей."
+    },
+    "origin": "ancestry",
+    "origin_values": [
+      "archetype",
+      "dedication",
+      "multiclass"
+    ],
+    "conditions": { "level": 2 },
+    "description_eval_variables": {
+      "limit": "1"
+    },
+    "limit_refresh": "long_rest"
+  },
+  {
+    "slug": "cleric_dedication",
+    "kind": "static",
+    "title": {
+      "en": "Cleric Dedication",
+      "ru": "Посвящение в жрецы"
+    },
+    "description": {
+      "en": "<b>Archetype</b> Cleric<br><b>Class</b> Cleric<br>**Prerequisites** Wisdom +2.\n\nYou cast spells like a cleric. You gain the Cast a Spell activity. You can prepare two common cantrips each day from the divine spell list or any other divine cantrips you have access to. You're trained in the spell attack modifier and spell DC statistics. Your key spellcasting attribute for cleric archetype spells is Wisdom, and they are divine cleric spells.\n\nChoose a deity as you would if you were a cleric. You become bound by that deity's anathema and can receive that deity's divine sanctification. You become trained in Religion and your deity's associated skill; for each of these skills in which you were already trained, you instead become trained in a skill of your choice. You don't gain any other abilities from your choice of deity.",
+      "ru": "<b>Архетип</b> Жрец<br>\n**Критерии** Мудрость +2.\n\nВы можете использовать занятие Сотворение заклинания и творить заклинания как жрец. Каждый день вы можете подготавливать два обычных фокуса из списка сакральных заклинаний или из числа других фокусов этой магической традиции, которые вы изучаете или находите. Атака заклинанием и СЛ заклинаний становятся для вас изученными. Ключевой заклинательной характеристикой для заклинаний архетипа жреца является Мудрость; эти заклинания — сакральные заклинания жреца.\n\nВыберите божество, как если бы были жрецом. Вы должны соблюдать табу своего божества и можете получить дескриптор, соответствующий божеству. Навык Религия и божественный навык вашего божества становятся для вас изученными. За каждый из этих навыков, который уже изучен, вы изучаете любой другой навык по своему выбору. Вы не получаете других способностей благодаря выбранному божеству."
+    },
+    "origin": "ancestry",
+    "origin_values": [
+      "archetype",
+      "dedication",
+      "multiclass"
+    ],
+    "conditions": { "level": 2 },
+    "description_eval_variables": {
+      "limit": "1"
+    },
+    "limit_refresh": "long_rest"
+  },
+  {
+    "slug": "druid_dedication",
+    "kind": "static",
+    "title": {
+      "en": "Druid Dedication",
+      "ru": "Посвящение в друиды"
+    },
+    "description": {
+      "en": "<b>Archetype</b> Druid<br><b>Class</b> Druid<br>**Prerequisites** Wisdom +2.\n\nYou cast spells like a druid. You gain the Cast a Spell activity. You can prepare two common cantrips each day from the primal spell list or any other primal cantrips you learn or discover. You're trained in the spell attack modifier and spell DC statistics. Your key spellcasting attribute for druid archetype spells is Wisdom, and they are primal druid spells.\n\nYou learn the Wildsong language, and you are bound by the druid's anathema. Choose a druidic order. You become a member of that order and are also bound by its specific anathema, allowing you to take the order's feats. You become trained in Nature and your order's associated skill; for each of these skills in which you were already trained, you become trained in a skill of your choice. You don't gain any other abilities from your choice of order.",
+      "ru": "<b>Архетип</b> Друид<br>\n**Критерии** Мудрость +2.\n\n\nВы можете использовать занятие Сотворение заклинания и творить заклинания как друид. Каждый день вы можете подготавливать два обычных фокуса из списка первобытных заклинаний или из числа других фокусов этой магической традиции, которые вы изучаете или находите. Атака заклинанием и СЛ заклинаний становятся для вас изученными. Ключевой заклинательной характеристикой для заклинаний архетипа друида является Мудрость; эти заклинания — первобытные заклинания друида.\n\nВы изучаете Дикую песнь и должны соблюдать табу друида.\n\nВыберите друидический орден. Вы становитесь членом этого ордена, должны соблюдать его табу и можете брать черты ордена. Навык Природа и навык вашего ордена становятся для вас изученными. За каждый из этих навыков, который уже изучен, вы изучаете любой другой навык по своему выбору. Вы не получаете других способностей благодаря выбранному ордену."
+    },
+    "origin": "ancestry",
+    "origin_values": [
+      "archetype",
+      "dedication",
+      "multiclass"
+    ],
+    "conditions": { "level": 2 },
+    "description_eval_variables": {
+      "limit": "1"
+    },
+    "limit_refresh": "long_rest"
+  },
+  {
+    "slug": "fighter_dedication",
+    "kind": "static",
+    "title": {
+      "en": "Fighter Dedication",
+      "ru": "Посвящение в воины"
+    },
+    "description": {
+      "en": "<b>Archetype</b> Fighter<br><b>Class</b> Fighter<br>**Prerequisites** Strength +2; Dexterity +2.\n\nYou become trained in martial weapons. You become trained in your choice of Acrobatics or Athletics; if you are already trained in both of these skills, you instead become trained in a skill of your choice. You become trained in fighter class DC.",
+      "ru": "<b>Архетип</b> Воин<br>\n**Критерии** Сила +2; Ловкость +2.\n\nОсобое оружие, классовая СЛ воина, а также навык Акробатика или Атлетика на ваш выбор становятся для вас изученными. Если и Акробатика, и Атлетика вами изучены, вы изучаете любой другой навык по своему выбору."
+    },
+    "origin": "ancestry",
+    "origin_values": [
+      "archetype",
+      "dedication",
+      "multiclass"
+    ],
+    "conditions": { "level": 2 },
+    "description_eval_variables": {
+      "limit": "1"
+    },
+    "limit_refresh": "long_rest"
+  },
+  {
+    "slug": "ranger_dedication",
+    "kind": "static",
+    "title": {
+      "en": "Ranger Dedication",
+      "ru": "Посвящение в следопыты"
+    },
+    "description": {
+      "en": "<b>Archetype</b> Ranger<br><b>Class</b> Ranger<br>**Prerequisites** Dexterity +2.\n\nYou become trained in Survival; if you were already trained in Survival, you instead become trained in another skill of your choice. You become trained in ranger class DC.\n\nIf you gain a warden spell through this archetype, you become trained in spell attacks and spell DCs. Your spellcasting attribute is Wisdom.\n\nYou can use the Hunt Prey action.",
+      "ru": "<b>Архетип</b> Следопыт<br>\n**Критерии** Ловкость +2.\n\nНавык Выживание и классовая СЛ следопыта становятся для вас изученными. Если Выживание уже изучено, вы изучаете любой другой навык по своему выбору.\n\nЕсли вы получите заклинание заступника благодаря этому архетипу, атака заклинанием и СЛ заклинаний станут для вас изученными, а заклинательной характеристикой будет Мудрость.\n\nВы можете использовать действие Охота на добычу."
+    },
+    "origin": "ancestry",
+    "origin_values": [
+      "archetype",
+      "dedication",
+      "multiclass"
+    ],
+    "conditions": { "level": 2 },
+    "description_eval_variables": {
+      "limit": "1"
+    },
+    "limit_refresh": "long_rest"
+  },
+  {
+    "slug": "rogue_dedication",
+    "kind": "static",
+    "title": {
+      "en": "Rogue Dedication",
+      "ru": "Посвящение в плуты"
+    },
+    "description": {
+      "en": "<b>Archetype</b> Rogue<br><b>Class</b> Rogue<br>**Prerequisites** Dexterity +2.\n\nYou gain a skill feat and the rogue's surprise attack class feature (page 167). You become trained in light armor. In addition, you become trained in Stealth or Thievery plus one skill of your choice; if you are already trained in both Stealth and Thievery, you become trained in an additional skill of your choice. You become trained in rogue class DC.",
+      "ru": "<b>Архетип</b> Плут<br>\n**Критерии** Ловкость +2.\n\nВы получаете черту навыка и классовую особенность плута внезапная атака. Лёгкая броня, классовая СЛ плута, навык Воровство или Скрытность, а также один навык по вашему выбору становятся для вас изученными. Если и Воровство, и Скрытность вами изучены, вы изучаете любой другой навык по своему выбору."
+    },
+    "origin": "ancestry",
+    "origin_values": [
+      "archetype",
+      "dedication",
+      "multiclass"
+    ],
+    "conditions": { "level": 2 },
+    "description_eval_variables": {
+      "limit": "1"
+    },
+    "limit_refresh": "long_rest"
+  },
+  {
+    "slug": "witch_dedication",
+    "kind": "static",
+    "title": {
+      "en": "Witch Dedication",
+      "ru": "Посвящение в ведьмы"
+    },
+    "description": {
+      "en": "<b>Archetype</b> Witch<br><b>Class</b> Witch<br>**Prerequisites** Intelligence +2.\n\nYou cast spells like a witch. Choose a patron; you gain a familiar with two common cantrips of your choice from your chosen patron's tradition, but aside from the tradition, you don't gain any other effects the patron would usually grant. Your familiar gains the normal number of abilities for a familiar instead of those a witch familiar normally gets. <br>You gain the Cast a Spell activity. You can prepare one cantrip each day from your familiar. You're trained in the spell attack modifier and spell DC statistics. Your key spellcasting attribute for witch archetype spells is Intelligence, and they are witch spells of your patron's tradition. You become trained in the skill associated with the patron's tradition; if you were already trained in it, you instead become trained in a skill of your choice",
+      "ru": "<b>Архетип</b> Ведьма<br>\n**Критерии** Интеллект +2.\n\nВы можете использовать занятие Сотворение заклинания и творить заклинания как ведьма. Выберите покровителя; вы получаете фамильяра с двумя обычными фокусами на ваш выбор из традиции вашего покровителя. Помимо традиции, вы не получаете никаких эффектов, которые обычно дарует покровитель. Число способностей у вашего фамильяра обычное (а не как у фамильяра ведьмы).\n\nКаждый день вы можете подготавливать один фокус с помощью своего фамильяра. Атака заклинанием и СЛ заклинаний становятся для вас изученными. Ключевой заклинательной характеристикой для заклинаний архетипа ведьмы является Интеллект; эти заклинания — заклинания ведьмы, принадлежащие к магической традиции вашего покровителя. Навык покровителя становится для вас изученным. Если он уже изучен, вы изучаете любой другой навык по своему выбору."
+    },
+    "origin": "ancestry",
+    "origin_values": [
+      "archetype",
+      "dedication",
+      "multiclass"
+    ],
+    "conditions": { "level": 2 },
+    "description_eval_variables": {
+      "limit": "1"
+    },
+    "limit_refresh": "long_rest"
+  },
+  {
+    "slug": "wizard_dedication",
+    "kind": "static",
+    "title": {
+      "en": "Wizard Dedication",
+      "ru": "Посвящение в волшебники"
+    },
+    "description": {
+      "en": "<b>Archetype</b> Wizard<br><b>Class</b> Wizard<br>**Prerequisites** Intelligence +2.\n\nYou cast spells like a wizard, gaining a spellbook with four common arcane cantrips of your choice. You gain the Cast a Spell activity. You can prepare two cantrips each day from your spellbook. You're trained in the spell attack modifier and spell DC statistics. Your key spellcasting attribute for wizard archetype spells is Intelligence, and they are arcane wizard spells. You become trained in Arcana; if you were already trained in Arcana, you instead become trained in a skill of your choice. Select a school; you don't gain any abilities from your choice of school, but qualify for feats as a member.",
+      "ru": "\n<b>Архетип</b> Волшебник<br>\n\n**Критерии** Интеллект +2.\n\n\nВы можете использовать занятие Сотворение заклинания и творить заклинания как волшебник. Вы получаете книгу заклинаний с четырьмя обычными мистическими фокусами по своему выбору. Каждый день вы можете подготавливать два фокуса из своей книги заклинаний. Атака заклинанием и СЛ заклинаний становятся для вас изученными. Ключевой  заклинательной характеристикой  для заклинаний архетипа волшебника является Интеллект;  эти заклинания - мистические заклинания волшебника. Мистицизм становится для вас изученным. Если Мистицизм  уже изучен, вы изучаете любой другой навык по своему  выбору. Также выберите школу магии (это не даёт вам дополнительных  способностей, но может понадобиться для взятия черт)."
+    },
+    "origin": "ancestry",
+    "origin_values": [
+      "archetype",
+      "dedication",
+      "multiclass"
+    ],
+    "conditions": { "level": 2 },
+    "description_eval_variables": {
+      "limit": "1"
+    },
+    "limit_refresh": "long_rest"
+  },
+  {
+    "slug": "automatic_knowledge",
+    "kind": "static",
+    "title": {
+      "en": "Automatic Knowledge",
+      "ru": "Заученные знания"
+    },
+    "description": {
+      "en": "**Prerequisites** expert in a skill with the Recall Knowledge action; Assurance in that skill.\n\nYou know basic facts off the top of your head. Choose a skill you're an expert in that has the Recall Knowledge action and for which you have the Assurance feat. You can use the Recall Knowledge action with that skill as a free action once per round. If you do, you must use Assurance on the skill check.\n\n<b>Special</b> You can select this feat multiple times, choosing a different skill each time. You can use Automatic Knowledge with any skills you have chosen, but you can still use Automatic Knowledge only once per round.",
+      "ru": "**Критерии** экспертный навык, позволяющий Вспомнить информацию, Уверенность для этого навык.\n\nБазовые понятия и факты вы знаете наизусть. Выберите один из своих экспертных навыков, позволяющих Вспомнить информацию, для которого вы взяли черту Уверенность. Один раз за раунд вы можете использовать этот навык, чтобы Вспомнить информацию в качестве свободного действия, но при этом обязаны применить Уверенность вместо проверки.\n\n<b>Примечание</b> эту черту можно брать несколько раз. Каждый раз вы выбираете новый навык. Вы можете использовать эту черту с любыми выбранными навыками, но не чаще одного раза за раунд."
+    },
+    "origin": "ancestry",
+    "origin_values": [
+      "general",
+      "skill"
+    ],
+    "conditions": { "level": 2 },
+    "description_eval_variables": {
+      "limit": "1"
+    },
+    "limit_refresh": "long_rest"
+  },
+  {
+    "slug": "bonded_animal",
+    "kind": "static",
+    "title": {
+      "en": "Bonded Animal",
+      "ru": "Приручение животного"
+    },
+    "description": {
+      "en": "**Prerequisites** expert in Nature.\n\nYou forge strong connections with animals. You can spend 7 days of downtime regularly interacting with a normal animal (not a companion or other special animal) that is friendly or helpful to you. After this duration, attempt a Nature check against the animal's Will DC. If successful, you bond with the animal. The animal is permanently bonded to you until you form a bond with a different animal or do something egregious to break your bond.\n\nA helpful animal is easier to direct, as described on page 242. If your bonded animal is level –1, it gains the minion trait (page 301), allowing you to command it more efficiently. The maximum level of creature that can be your minion increases to 3 if you're a master in Nature and to 11 if you're legendary.\n\n<b>Special</b> You can't have both a bonded animal and an animal companion (though you can have both a bonded animal and a pet or familiar).",
+      "ru": "**Критерии** экспертная Природа.\n\nВы устанавливаете с животными прочные узы. Вы можете потратить 7 дней свободного времени, общаясь с обычным животным (но не особым вроде верного зверя), которое дружелюбно или готово помочь. По прошествии этого времени совершите проверку Природы против его СЛ Воли. При успехе вам удаётся приручить животное. Оно постоянно приручено вами, пока вы не приручите другое животное или не сделаете что-то недопустимое и не разрушите связь.\n\nГотовым помочь животным гораздо проще управлять. Если его уровень равен -1, оно получает дескриптор «подручный», что делает это ещё легче. Максимальный уровень животного, которое может стать вам подручным, увеличивается до 3, если вы мастер Природы, и до 11 при легендарном уровне умения. <br>\n<b>Примечание</b> у вас не могут одновременно быть верный зверь и приручённое животное (хотя фамильяр или любимец и приручённое животное у вас быть могут)."
+    },
+    "origin": "ancestry",
+    "origin_values": [
+      "downtime",
+      "general",
+      "skill"
+    ],
+    "conditions": { "level": 2 },
+    "description_eval_variables": {
+      "limit": "1"
+    },
+    "limit_refresh": "long_rest"
+  },
+  {
+    "slug": "communal_crafting",
+    "kind": "static",
+    "title": {
+      "en": "Communal Crafting",
+      "ru": "Коллективное ремесло"
+    },
+    "description": {
+      "en": "**Prerequisites** expert in Crafting.\n\nYou can have other PCs help you Craft an item, under your direction. A helper PC rolls a check with a skill in which they're trained. The skill must be Crafting or another skill relevant to the item, as determined by the GM. For example, a PC might use Religion to help you Craft an item with the divine trait or Warfare Lore to help you Craft a weapon. Your roll still determines whether you successfully create the item. Any helper's roll contributes toward reducing the cost of raw materials using the numbers from the Earn Income table on page 229; this uses the ally PC's proficiency rank in the skill and their level – 1 for their level.\n\nHelping PCs must accompany you throughout the Craft activity (preventing them from pursuing other downtime activities) or the benefit is lost. The GM might determine that only a certain number of PCs can help depending on the circumstances.\n\nCommunal Crafting also allows you to take the role of a helper when someone else is crafting, provided they accept your help.",
+      "ru": "**Критерии** экспертное Ремесло.\n\nПод вашим руководством другие персонажи игроков могут помочь вам в Создании предмета. Помогающий герой совершает проверку изученного навыка: это либо Ремесло, либо другой относящийся к предмету навык по усмотрению ведущего. Например, персонаж игрока может использовать Религию при Создании предмета с дескриптором «сакральный» или Знание (военное дело), чтобы поучаствовать в создании оружия. Успешно ли создан предмет, всё ещё зависит от результата вашей проверки. Любой бросок помогающего персонажа идёт в счёт сокращения стоимости материалов в соответствии с таблицей «Заработанные деньги»; для этого используется уровень умения союзника в выбранном навыке и его уровень - 1.\n\nПомогающие персонажи должны находиться с вами во время Создания предмета (что мешает им заниматься чем-то ещё), иначе преимущество будет утеряно. Ведущий может решить, что помочь может только ограниченное число героев в зависимости от обстоятельств.\n\nЭта черта также позволяет вам самому занять роль помогающего, когда кто-то ещё создаёт предмет — им нужно лишь разрешить вам поучаствовать."
+    },
+    "origin": "ancestry",
+    "origin_values": [
+      "general",
+      "skill"
+    ],
+    "conditions": { "level": 2 },
+    "description_eval_variables": {
+      "limit": "1"
+    },
+    "limit_refresh": "long_rest"
+  },
+  {
+    "slug": "confabulator",
+    "kind": "static",
+    "title": {
+      "en": "Confabulator",
+      "ru": "Краснобай"
+    },
+    "description": {
+      "en": "**Prerequisites** expert in Deception.\n\nEven when caught in falsehoods, you pile lie upon lie. Reduce the circumstance bonus a target gains for your previous attempts to Create a Diversion or Lie to it from +4 to +2. If you're a master in Deception, reduce the bonus to +1, and if you're legendary, your targets don't get these bonuses at all.",
+      "ru": "**Критерии** экспертный Обман.\n\nДаже если вас уличили во лжи, вы продолжаете врать не краснея. Ситуативный бонус, получаемый собеседником за ваши предыдущие попытки Лжи или Отвлекающего манёвра, уменьшается с +4 до +2. Если вы мастер Обмана, бонус уменьшается до +1, а если умелы в нём на легендарном уровне, то ваши цели и вовсе не получают этих бонусов."
+    },
+    "origin": "ancestry",
+    "origin_values": [
+      "general",
+      "skill"
+    ],
+    "conditions": { "level": 2 },
+    "description_eval_variables": {
+      "limit": "1"
+    },
+    "limit_refresh": "long_rest"
+  },
+  {
+    "slug": "continual_recovery",
+    "kind": "static",
+    "title": {
+      "en": "Continual Recovery",
+      "ru": "Непрерывное восстановление"
+    },
+    "description": {
+      "en": "**Prerequisites** expert in Medicine.\n\nYou zealously monitor a patient's progress to administer treatment faster. When you Treat Wounds, your patient becomes immune for only 10 minutes instead of 1 hour. This applies only to your Treat Wounds activities, not any other the patient receives.",
+      "ru": "**Критерии** экспертная Медицина.\n\nВы ни на секунду не отходите от пациента и следите, чтобы он выздоравливал как можно быстрее. При Лечении ранений ваш пациент становится временно невосприимчив к последующему Лечению ранений лишь на 10 минут (а не на 1 час, как обычно). Эта черта действует только на ваши попытки Лечения ранений и ни на чьи другие."
+    },
+    "origin": "ancestry",
+    "origin_values": [
+      "general",
+      "skill"
+    ],
+    "conditions": { "level": 2 },
+    "description_eval_variables": {
+      "limit": "1"
+    },
+    "limit_refresh": "long_rest"
+  },
+  {
+    "slug": "glad_hand",
+    "kind": "static",
+    "title": {
+      "en": "Glad-Hand",
+      "ru": "Крепкое рукопожатие"
+    },
+    "description": {
+      "en": "**Prerequisites** expert in Diplomacy.\n\nFirst impressions are your strong suit. When you meet someone in a casual or social situation, you can immediately attempt a Diplomacy check to Make an Impression on that creature rather than needing to converse for 1 minute. If you fail, you can engage in 1 minute of conversation and attempt a new check at the end of that time rather than accepting the failure or critical failure result.",
+      "ru": "**Критерии** экспертная Дипломатия.\n\nВы умеете производить первое впечатление. Когда вы впервые встречаете кого-то в непринуждённой обстановке или требующей общения ситуации, то можете немедленно совершить проверку Дипломатии для Улучшения впечатления этого существа, не тратя 1 минуты на разговор. В случае провала (в том числе критического) вы можете не принимать этот результат и поговорить с целью 1 минуту, после чего совершить повторную проверку."
+    },
+    "origin": "ancestry",
+    "origin_values": [
+      "general",
+      "skill"
+    ],
+    "conditions": { "level": 2 },
+    "description_eval_variables": {
+      "limit": "1"
+    },
+    "limit_refresh": "long_rest"
+  },
+  {
+    "slug": "intimidating_prowess",
+    "kind": "static",
+    "title": {
+      "en": "Intimidating Prowess",
+      "ru": "Устрашающий вид"
+    },
+    "description": {
+      "en": "**Prerequisites** Strength +3; expert in Intimidation.\n\nIn situations where you can physically menace the target when you Coerce or Demoralize, you gain a +1 circumstance bonus to your Intimidation check and you ignore the penalty for not sharing a language. If your Strength modifier is +5 or higher and you are a master in Intimidation, this bonus increases to +2.",
+      "ru": "**Критерии** Сила +3; экспертное Запугивание.\n\nЕсли вы можете оказывать физическое давление на цель во время Деморализации или Угрозы, то получаете ситуативный бонус +1 к проверке Запугивания и игнорируете штраф за отсутствие общего языка. Если модификатор вашей Силы +5 или выше и вы мастер Запугивания, этот бонус увеличивается до +2."
+    },
+    "origin": "ancestry",
+    "origin_values": [
+      "general",
+      "skill"
+    ],
+    "conditions": { "level": 2 },
+    "description_eval_variables": {
+      "limit": "1"
+    },
+    "limit_refresh": "long_rest"
+  },
+  {
+    "slug": "inventor",
+    "kind": "static",
+    "title": {
+      "en": "Inventor",
+      "ru": "Изобретатель"
+    },
+    "description": {
+      "en": "**Prerequisites** expert in Crafting.\n\nYou are a genius at Crafting, easily able to determine how things are made and create new inventions. You can spend downtime to invent a common formula that you don't know. This works just like the Craft activity: you spend half the Price of the formula up front, attempt a Crafting check, and on a success either finish the formula by paying the difference or work for longer to decrease the Price. The difference is that you spend the additional time in research, design, and development, rather than in creating an item. Once it's complete, you add the new formula you invented to your formula book.\n\nThe GM might allow you to invent uncommon or rare formulas, typically with an increased DC. You need the Alchemical Crafting feat to invent alchemical formulas and the Magical Crafting feat to invent magical formulas.",
+      "ru": "**Критерии** экспертное Ремесло.\n\nВы настоящий гений Ремесла. Вы понимаете, как устроены вещи, и создаёте новые изобретения. В свободное время вы можете изобрести ещё неизвестную вам формулу обычного предмета. Процесс аналогичен Созданию предмета: вы платите половину цены формулы, совершаете проверку Ремесла и при успехе либо завершаете формулу, доплатив остаток, либо работаете дольше, чтобы снизить цену. Разница состоит лишь в том, что вы проводите время за исследованиями и разработкой, а не производством. Когда формула готова, вы добавляете её в свою книгу формул.\n\nВедущий может позволить вам изобрести формулу необычного или редкого предмета, установив более высокую СЛ. Для формул алхимических предметов вам нужна черта Алхимическое ремесло, а для формул магических предметов — Магическое ремесло."
+    },
+    "origin": "ancestry",
+    "origin_values": [
+      "downtime",
+      "general",
+      "skill"
+    ],
+    "conditions": { "level": 2 },
+    "description_eval_variables": {
+      "limit": "1"
+    },
+    "limit_refresh": "long_rest"
+  },
+  {
+    "slug": "lasting_coercion",
+    "kind": "static",
+    "title": {
+      "en": "Lasting Coercion",
+      "ru": "Продолжительная угроза"
+    },
+    "description": {
+      "en": "**Prerequisites** expert in Intimidation.\n\nWhen you successfully Coerce someone, the maximum time they comply increases to a week, still determined by the GM. If you're legendary, the maximum increases to a month.",
+      "ru": "**Критерии** экспертное Запугивание.\n\nПри успешной Угрозе максимальное время, в течение которого цель будет вас слушаться, увеличивается до 1 недели (на усмотрение ведущего), а если вы умелы на легендарном уровне — до 1 месяца."
+    },
+    "origin": "ancestry",
+    "origin_values": [
+      "general",
+      "skill"
+    ],
+    "conditions": { "level": 2 },
+    "description_eval_variables": {
+      "limit": "1"
+    },
+    "limit_refresh": "long_rest"
+  },
+  {
+    "slug": "magical_crafting",
+    "kind": "static",
+    "title": {
+      "en": "Magical Crafting",
+      "ru": "Магическое ремесло"
+    },
+    "description": {
+      "en": "**Prerequisites** expert in Crafting.\n\nYou can Craft magic items, though some have other requirements, as listed in GM Core. When you select this feat, you gain formulas for four common magic items of 2nd level or lower.",
+      "ru": "**Критерии** экспертное Ремесло.\n\nВы можете использовать Создание предмета для изготовления магических предметов, хотя для создания некоторых из них придётся соблюсти и другие требования, как указано в «Основной книге ведущего». При выборе этой черты вы получаете формулы четырёх обычных магических предметов 2 уровня или ниже."
+    },
+    "origin": "ancestry",
+    "origin_values": [
+      "general",
+      "skill"
+    ],
+    "conditions": { "level": 2 },
+    "description_eval_variables": {
+      "limit": "1"
+    },
+    "limit_refresh": "long_rest"
+  },
+  {
+    "slug": "magical_shorthand",
+    "kind": "static",
+    "title": {
+      "en": "Magical Shorthand",
+      "ru": "Магическая скоропись"
+    },
+    "description": {
+      "en": "**Prerequisites** expert in Arcana, Nature, Occultism, or Religion.\n\nLearning spells comes easily to you. When you succeed at Learning a Spell, it takes 10 minutes regardless of the spell's rank. If you would succeed on the check, you critically succeed instead. If you fail, you can try again after a week or after you gain a level, whichever is first.\n\nYou can use downtime to learn and inscribe new spells. This works as if you were using Earn Income with the tradition's associated skill, but instead of gaining money, you choose a spell available to you to learn and gain a discount on learning it, learning it for free if your earned income equals or exceeds its cost.",
+      "ru": "**Критерии** экспертный Мистицизм, Природа, Оккультизм, или Религия.\n\nВам очень просто учить заклинания. При успешном Изучении заклинания вам требуется лишь 10 минут независимо от круга. Если вы получаете успех в этой проверке, он считается для вас критическим успехом. При провале попытки изучения вы можете попробовать повторно через 1 неделю или после повышения в уровне (смотря что случится раньше).\n\nВы можете использовать свободное время, чтобы изучать и записывать новые заклинания. Процесс аналогичен Зарабатыванию денег при помощи навыка магической традиции, но вместо денег вы получаете скидку на изучение выбранного заклинания либо изучаете его бесплатно, если заработанная сумма равна или превышает его стоимость."
+    },
+    "origin": "ancestry",
+    "origin_values": [
+      "general",
+      "skill"
+    ],
+    "conditions": { "level": 2 },
+    "description_eval_variables": {
+      "limit": "1"
+    },
+    "limit_refresh": "long_rest"
+  },
+  {
+    "slug": "nimble_crawl",
+    "kind": "static",
+    "title": {
+      "en": "Nimble Crawl",
+      "ru": "Проворное ползание"
+    },
+    "description": {
+      "en": "**Prerequisites** expert in Acrobatics.\n\nYou can Crawl incredibly swiftly—up to half your Speed, rather than 5 feet. If you're a master in Acrobatics, you can Crawl at full Speed, and if you're legendary, you aren't offguard while prone.",
+      "ru": "**Критерии** экспертная Акробатика.\n\nВы необычайно быстро ползаете — со скоростью вплоть до половины обычной (а не на 5 футов, как без этой черты). Если вы мастер Акробатики, то можете ползти с полной скоростью, а если умелы в Акробатике на легендарном уровне, то не считаетесь застигнутым врасплох, когда распластаны."
+    },
+    "origin": "ancestry",
+    "origin_values": [
+      "general",
+      "skill"
+    ],
+    "conditions": { "level": 2 },
+    "description_eval_variables": {
+      "limit": "1"
+    },
+    "limit_refresh": "long_rest"
+  },
+  {
+    "slug": "powerful_leap",
+    "kind": "static",
+    "title": {
+      "en": "Powerful Leap",
+      "ru": "Могучий прыжок"
+    },
+    "description": {
+      "en": "**Prerequisites** expert in Athletics.\n\nYou can jump 5 feet up with a vertical Leap without making a High Jump. You also increase the horizontal distance when you Leap, including as part of a High Jump or Long Jump, by 5 feet.",
+      "ru": "**Критерии** экспертный Атлетика.\n\nПри Прыжке вы можете прыгать вертикально на 5 футов (без необходимости Прыжка в высоту), а максимальное расстояние при горизонтальном Прыжке (в том числе Прыжке в длину или Прыжке в высоту) увеличивается на 5 футов."
+    },
+    "origin": "ancestry",
+    "origin_values": [
+      "general",
+      "skill"
+    ],
+    "conditions": { "level": 2 },
+    "description_eval_variables": {
+      "limit": "1"
+    },
+    "limit_refresh": "long_rest"
+  },
+  {
+    "slug": "quick_disguise",
+    "kind": "static",
+    "title": {
+      "en": "Quick Disguise",
+      "ru": "Быстрая маскировка"
+    },
+    "description": {
+      "en": "**Prerequisites** expert in Deception.\n\nYou can set up a disguise in one-tenth the usual time (generally 1 minute). If you're a master in Deception, you can create a full disguise and Impersonate as a 3-action activity. If you're legendary, it takes a single action.",
+      "ru": "**Критерии** экспертный Обман.\n\nМаскировка занимает у вас в 10 раз меньше времени, чем обычно (как правило, 1 минуту). Если вы мастер Обмана, то полностью маскируетесь в качестве занятия на 3 действия. Если вы умелы на легендарном уровне, то это требует всего лишь одиночного действия."
+    },
+    "origin": "ancestry",
+    "origin_values": [
+      "general",
+      "skill"
+    ],
+    "conditions": { "level": 2 },
+    "description_eval_variables": {
+      "limit": "1"
+    },
+    "limit_refresh": "long_rest"
+  },
+  {
+    "slug": "quiet_allies",
+    "kind": "static",
+    "title": {
+      "en": "Quiet Allies",
+      "ru": "Тихие союзники"
+    },
+    "description": {
+      "en": "**Prerequisites** expert in Stealth.\n\nYou're skilled at moving with a group. When you are Avoiding Notice and your allies Follow the Expert, you and those allies can roll a single Stealth check, using the lowest modifier, instead of rolling separately. This doesn't apply for initiative rolls.",
+      "ru": "**Критерии** экспертная Скрытность.\n\nВы научились незаметно перемещаться группой. При вашем Незаметном перемещении, когда союзники используют Следование примеру, вы и эти союзники можете совершить одну проверку Скрытности на всех с наименьшим модификатором вместо проверок по отдельности. Эта черта не действует на проверки инициативы."
+    },
+    "origin": "ancestry",
+    "origin_values": [
+      "general",
+      "skill"
+    ],
+    "conditions": { "level": 2 },
+    "description_eval_variables": {
+      "limit": "1"
+    },
+    "limit_refresh": "long_rest"
+  },
+  {
+    "slug": "rapid_mantel",
+    "kind": "static",
+    "title": {
+      "en": "Rapid Mantel",
+      "ru": "Быстрое подтягивание"
+    },
+    "description": {
+      "en": "**Prerequisites** expert in Athletics.\n\nYou easily pull yourself onto ledges. When you Grab an Edge, you can pull yourself onto that surface and stand. You can use Athletics instead of a Reflex save to Grab an Edge. If you Climb or Leap to within 5 feet beneath the top of an edge, you can pull yourself onto the surface and stand as part of that action.",
+      "ru": "**Критерии** экспертный Атлетика.\n\nВы подтягиваетесь без малейших усилий. Совершив Хватание за уступ, вы можете подтянуться на него и сразу же встать. Кроме этого, вы можете совершить проверку Атлетики вместо испытания Реакции для Хватания за уступ. Если после Лазания или Прыжка вы оказываетесь в пределах 5 футов под краем уступа, вы можете подтянуться на него и сразу же встать в качестве части этого действия."
+    },
+    "origin": "ancestry",
+    "origin_values": [
+      "general",
+      "skill"
+    ],
+    "conditions": { "level": 2 },
+    "description_eval_variables": {
+      "limit": "1"
+    },
+    "limit_refresh": "long_rest"
+  },
+  {
+    "slug": "robust_recovery",
+    "kind": "static",
+    "title": {
+      "en": "Robust Recovery",
+      "ru": "Активное восстановление"
+    },
+    "description": {
+      "en": "**Prerequisites** expert in Medicine.\n\nYou learned folk medicine to help recover from diseases and poison, and using it diligently has made you especially resilient. When you Treat a Disease or a Poison, or someone else uses one of these actions on you, increase the circumstance bonus granted on a success to +4, and if the result of the patient's saving throw is a success, the patient gets a critical success.",
+      "ru": "**Критерии** экспертная Медицина.\n\nВы хорошо знаете народные способы лечения болезней и отравлений и активно их применяете, в результате чего укрепили свой иммунитет. Когда вы совершаете Лечение болезни или Лечение отравления (или кто-то другой использует эти действия на вас), в случае успеха ситуативный бонус увеличивается до +4, а если пациент получает успех в испытании, тот считается критическим успехом."
+    },
+    "origin": "ancestry",
+    "origin_values": [
+      "general",
+      "skill"
+    ],
+    "conditions": { "level": 2 },
+    "description_eval_variables": {
+      "limit": "1"
+    },
+    "limit_refresh": "long_rest"
+  },
+  {
+    "slug": "unmistakable_lore",
+    "kind": "static",
+    "title": {
+      "en": "Unmistakable Lore",
+      "ru": "Безукоризненные знания"
+    },
+    "description": {
+      "en": "**Prerequisites** expert in Lore.\n\nYou never get information about your areas of expertise wrong. When you Recall Knowledge using any Lore subcategory in which you're trained, if you roll a critical failure, you get a failure instead. If you're a master in a Lore subcategory, on a critical success, you gain even more information or context than usual.",
+      "ru": "**Критерии** экспертное Знание.\n\nВы безошибочно вспоминаете любую информацию по своей специальности. Когда вы пытаетесь Вспомнить информацию с применением изученного Знания, выпавший критический провал для вас считается провалом. Если вы мастер в Знании, при критическом успехе вы вспоминаете больше информации или контекста, чем обычно."
+    },
+    "origin": "ancestry",
+    "origin_values": [
+      "general",
+      "skill"
+    ],
+    "conditions": { "level": 2 },
+    "description_eval_variables": {
+      "limit": "1"
+    },
+    "limit_refresh": "long_rest"
+  },
+  {
+    "slug": "unusual_treatment",
+    "kind": "static",
+    "title": {
+      "en": "Unusual Treatment",
+      "ru": "Необычное излечение"
+    },
+    "description": {
+      "en": "**Prerequisites** expert in Medicine.\n\nYour medical training extends to less obvious conditions. When you succeed against a DC 20 check to Treat Wounds, you can also reduce the value of one clumsy, enfeebled, or stupefied condition on the patient by 1. If you're able to treat more than one creature at once, choose only one to gain this benefit. A creature can benefit from Unusual Treatment only once per day.\n\nIf the condition results from an affliction, the affliction isn't cured, though the condition is reduced as long as the affliction remains at that stage.\n\nIf you are a master in Medicine, add the drained condition to the list of conditions you can remove if you succeed at a DC 30 check. If you are legendary in Medicine, you reduce the chosen condition by 2 instead of by 1.",
+      "ru": "**Критерии** экспертная Медицина.\n\nВаше умение исцелять распространяется на более необычные состояния. Когда вы получаете успех в проверке со СЛ 20 для Лечения ранений, вы также можете снизить значение неуклюжести, ошеломления или слабости этого существа на 1. Если вы способны лечить более одного существа одновременно, выберите одно существо, которое получит это преимущество. Существо может получить Необычное излечение лишь один раз в день.\n\nЕсли одно из состояний является результатом недуга, эффект не исцеляет недуг, хотя значение состояния будет снижено, пока недуг остаётся на текущей стадии.\n\nЕсли вы мастер Медицины, то при успехе проверки со СЛ 30 вы можете вместо этого снизить значение истощения. Если же вы умелы в Медицине на легендарном уровне, вы снижаете значение состояния на 2, а не на 1."
+    },
+    "origin": "ancestry",
+    "origin_values": [
+      "general",
+      "skill"
+    ],
+    "conditions": { "level": 2 },
+    "description_eval_variables": {
+      "limit": "1"
+    },
+    "limit_refresh": "long_rest"
+  },
+  {
+    "slug": "ward_medic",
+    "kind": "static",
+    "title": {
+      "en": "Ward Medic",
+      "ru": "Дежурный медик"
+    },
+    "description": {
+      "en": "**Prerequisites** expert in Medicine.\n\nYou've studied in large medical wards, treating several patients at once and tending to all their needs. When you use Treat Disease or Treat Wounds, you can treat up to two targets. If you're a master in Medicine, you can treat up to four targets, and if you're legendary, you can treat up to eight targets.",
+      "ru": "**Критерии** экспертная Медицина.\n\nВы работали в крупных больницах, наблюдая и ухаживая сразу за несколькими пациентами. При Лечении болезни или Лечении ранений вы можете лечить до двух целей одновременно. Если вы мастер Медицины, то можете лечить до четырёх целей, а если умелы на легендарном уровне — до восьми."
+    },
+    "origin": "ancestry",
+    "origin_values": [
+      "general",
+      "skill"
+    ],
+    "conditions": { "level": 2 },
+    "description_eval_variables": {
+      "limit": "1"
+    },
+    "limit_refresh": "long_rest"
+  },
+  {
+    "slug": "wary_disarmament",
+    "kind": "static",
+    "title": {
+      "en": "Wary Disarmament",
+      "ru": "Осторожное обезвреживание"
+    },
+    "description": {
+      "en": "**Prerequisites** expert in Thievery.\n\nIf you trigger a device or set off a trap while disarming it, you gain a +2 circumstance bonus to your AC or saving throw against the device or trap. This applies only to attacks or effects triggered by your failed attempt, not to any later ones, such as additional attacks from a complex trap.",
+      "ru": "**Критерии** экспертное Воровство.\n\nЕсли во время обезвреживания ловушки или устройства вы вызовете его срабатывание, то получите ситуативный бонус +2 к КБ или испытанию против устройства или ловушки. Бонус применяется только против атак и эффектов, спровоцированных провалом, и не даёт преимуществ против последующих эффектов."
+    },
+    "origin": "ancestry",
+    "origin_values": [
+      "general",
+      "skill"
+    ],
+    "conditions": { "level": 2 },
+    "description_eval_variables": {
+      "limit": "1"
+    },
+    "limit_refresh": "long_rest"
+  }
+]

@@ -1,0 +1,655 @@
+[
+  {
+    "slug": "boulder_roll",
+    "kind": "static",
+    "title": {
+      "en": "Boulder Roll",
+      "ru": "Катящаяся глыба"
+    },
+    "description": {
+      "en": "**Критерии** Скальный бегун.\n\nВаше дварфийское телосложение позволяет вам расталкивать врагов подобно валуну, катящемуся по подземным переходам. Вы можете совершить Шаг на клетку, занятую противником, чей размер не больше вашего, при этом противник должен переместиться в незанятое пространство непосредственно за ним. Противник обязан переместиться, даже если это ему навредит, но может пройти испытание Стойкости против вашей СЛ Атлетики, чтобы не дать вам сделать Шаг. Если результат этого испытания хуже критического успеха, противник получает дробящий урон, равный вашему уровню + ваш модификатор Силы.\n\nЕсли противник не может переместиться в незанятое пространство (например, если он окружён другими существами или твёрдыми объектами), эта черта не действует.",
+      "ru": "**Критерии** Скальный бегун.\n\nВаше дварфийское телосложение позволяет вам расталкивать врагов подобно валуну, катящемуся по подземным переходам. Вы можете совершить Шаг на клетку, занятую противником, чей размер не больше вашего, при этом противник должен переместиться в незанятое пространство непосредственно за ним. Противник обязан переместиться, даже если это ему навредит, но может пройти испытание Стойкости против вашей СЛ Атлетики, чтобы не дать вам сделать Шаг. Если результат этого испытания хуже критического успеха, противник получает дробящий урон, равный вашему уровню + ваш модификатор Силы.\n\nЕсли противник не может переместиться в незанятое пространство (например, если он окружён другими существами или твёрдыми объектами), эта черта не действует."
+    },
+    "origin": "ancestry",
+    "origin_values": ["dwarf"],
+    "conditions": {
+      "level": 5
+    }
+  },
+  {
+    "slug": "defy_the_darkness",
+    "kind": "static",
+    "title": {
+      "en": "Defy the Darkness",
+      "ru": "Наперекор тьме"
+    },
+    "description": {
+      "en": "**Критерии** ночное зрение.\n\nВы изучили древние дварфийские приёмы сражения с врагами, которые используют магическую тьму, и отточили своё ночное зрение, дав клятву никогда не пользоваться подобной магией. Вы получаете острое ночное зрение, позволяющее вам видеть в магической тьме, которая обычно непроницаема для ночного зрения (как, например, та, что создаётся заклинанием тьма 4 круга). Вы не можете творить заклинания, активировать предметы или использовать любую другую способность с дескриптором «тьма».",
+      "ru": "**Критерии** ночное зрение.\n\nВы изучили древние дварфийские приёмы сражения с врагами, которые используют магическую тьму, и отточили своё ночное зрение, дав клятву никогда не пользоваться подобной магией. Вы получаете острое ночное зрение, позволяющее вам видеть в магической тьме, которая обычно непроницаема для ночного зрения (как, например, та, что создаётся заклинанием тьма 4 круга). Вы не можете творить заклинания, активировать предметы или использовать любую другую способность с дескриптором «тьма»."
+    },
+    "origin": "ancestry",
+    "origin_values": ["dwarf"],
+    "conditions": {
+      "level": 5
+    }
+  },
+  {
+    "slug": "dwarven_reinforcement",
+    "kind": "static",
+    "title": {
+      "en": "Dwarven Reinforcement",
+      "ru": "Дварфийское укрепление"
+    },
+    "description": {
+      "en": "**Критерии** экспертное Ремесло.\n\nВы можете использовать свои знания инженерного и кузнечного дела, чтобы временно укреплять строения или объекты достаточной толщины. Вы можете потратить 1 час, чтобы дать предмету ситуативный бонус +1 к твёрдости на 24 часа. Если вы мастер Ремесла, этот бонус увеличивается до +2, а если умелы в нём на легендарном уровне — до +3. Вы можете укрепить часть строения, хотя 1 часа вам хватит только на укрепление двери, нескольких окон или иной части здания, которую можно вписать в 10-футовый куб.",
+      "ru": "**Критерии** экспертное Ремесло.\n\nВы можете использовать свои знания инженерного и кузнечного дела, чтобы временно укреплять строения или объекты достаточной толщины. Вы можете потратить 1 час, чтобы дать предмету ситуативный бонус +1 к твёрдости на 24 часа. Если вы мастер Ремесла, этот бонус увеличивается до +2, а если умелы в нём на легендарном уровне — до +3. Вы можете укрепить часть строения, хотя 1 часа вам хватит только на укрепление двери, нескольких окон или иной части здания, которую можно вписать в 10-футовый куб."
+    },
+    "origin": "ancestry",
+    "origin_values": ["dwarf"],
+    "conditions": {
+      "level": 5
+    }
+  },
+  {
+    "slug": "ageless_patience",
+    "kind": "static",
+    "title": {
+      "en": "Ageless Patience",
+      "ru": "Вековое терпение"
+    },
+    "description": {
+      "en": "You work at a pace born from longevity that enhances your thoroughness. You can voluntarily spend twice as much time as normal on a Perception check or skill check that takes 1 action or longer. If you do, you gain a +2 circumstance bonus to the check and don't automatically reduce your degree of success on a natural 1 (you get a critical failure only if your result is 10 lower than the DC). For example, you could get these benefits if you spent 2 actions to Seek, which normally takes 1 action. You can get these benefits during exploration by taking twice as long exploring as normal, or in downtime by spending twice as much downtime.\n\nThe GM might determine a situation doesn't grant you a benefit if a delay would be directly counterproductive to your success, such as a tense negotiation with an impatient creature.",
+      "ru": "Из-за своего долголетия вы не привыкли работать в спешке и предпочитаете делать всё как можно более тщательно. При совершении проверки Внимания или навыка вы можете получить к ней ситуативный бонус +2, если решите потратить на неё в два раза больше времени, чем обычно. Также при этом вы не снижаете степень успешности при натуральной единице и получаете критический провал лишь в случае, если ваш результат меньше СЛ на 10 и более. Так, вы можете получить описанные преимущества, если потратите два действия на Поиск, который обычно требует лишь одного действия. Преимущества можно получить и во время исследования, если потратить вдвое больше времени, или в свободное время, потратив в два раза больше свободного времени.\n\nВедущий может решить, что в определённой ситуации эту черту применить нельзя, поскольку промедление негативно скажется на шансах, как, например, во время переговоров с крайне нетерпеливым существом."
+    },
+    "origin": "ancestry",
+    "origin_values": [
+      "elf"
+    ],
+    "conditions": { "level": 5 },
+    "description_eval_variables": {
+      "limit": "1"
+    },
+    "limit_refresh": "long_rest"
+  },
+  {
+    "slug": "ancestral_suspicion",
+    "kind": "static",
+    "title": {
+      "en": "Ancestral Suspicion",
+      "ru": "Древняя подозрительность"
+    },
+    "description": {
+      "en": "Long-lived elves have seen civilizations rise and fall, often at the hands of outside forces. As a result, they have developed a wariness of others who might seek to influence or control them. You've been trained to resist such manipulation, gaining a +2 circumstance bonus to saving throws against effects that would make you controlled, such as dominate, and to Perception checks to Sense Motive when trying to determine if a creature is under the influence of such an effect. When you roll a success on a saving throw against such an effect, you get a critical success instead.",
+      "ru": "\nЭльфы-долгожители воочию лицезрели восход и закат цивилизаций, зачастую из-за влияния извне. Они учли чужие ошибки и с подозрением относятся к попыткам манипуляции и контроля. Вы получаете ситуативный бонус +2 к испытаниям против эффектов, пытающихся взять вас под контроль, например подчинения, а также к проверкам Внимания для Проницательности при попытках определить, находится ли цель под действием подобного эффекта. Если вы получаете успех в испытании против такого эффекта, он считается для вас критическим успехом."
+    },
+    "origin": "ancestry",
+    "origin_values": [
+      "elf"
+    ],
+    "conditions": { "level": 5 },
+    "description_eval_variables": {
+      "limit": "1"
+    },
+    "limit_refresh": "long_rest"
+  },
+  {
+    "slug": "martial_experience",
+    "kind": "static",
+    "title": {
+      "en": "Martial Experience",
+      "ru": "Боевой опыт"
+    },
+    "description": {
+      "en": "You've crossed blades with a wide variety of foes wielding a wide variety of weapons, and you've learned the basics of fighting with nearly any of them. When wielding a weapon you aren't proficient with, treat your level as your proficiency bonus.\n\nAt 11th level, you become trained in all weapons.",
+      "ru": "Вы сходились в битве с врагами, владевшими самым разнообразным оружием, и получили общее представление о том, как с ним обращаться. Когда вы используете неизученное вами оружие, ваш бонус умения для него равен вашему уровню.\n\nНа 11 уровне вы становитесь умелы в обращении со всем оружием на изученном уровне."
+    },
+    "origin": "ancestry",
+    "origin_values": [
+      "elf"
+    ],
+    "conditions": { "level": 5 },
+    "description_eval_variables": {
+      "limit": "1"
+    },
+    "limit_refresh": "long_rest"
+  },
+  {
+    "slug": "energized_font",
+    "kind": "static",
+    "title": {
+      "en": "Energized Font",
+      "ru": "Энергия истока"
+    },
+    "description": {
+      "en": "<b>Frequency</b> once per day<br>**Prerequisites** focus pool, at least one innate spell from a gnome heritage or ancestry feat that shares a tradition with at least one of your focus spells.\n\nYou can focus your mind more quickly thanks to the magic that flows within you. You regain 1 Focus Point, up to your usual maximum.",
+      "ru": "<b>Частота</b> 1 в день<br>\n**Критерии** запас ФП; минимум одно полученное благодаря черте народа или родословной гномов врождённое заклинание; традиция этого заклинания должна совпадать с традицией хотя бы одного вашего фокального заклинания.\n\nПереполняющая вас магия подпитывает вашу связь с источником силы. Вы восстанавливаете 1 ФП (вплоть до обычного максимума)."
+    },
+    "origin": "ancestry",
+    "origin_values": ["gnome"],
+    "conditions": { "level": 5 },
+    "description_eval_variables": {
+      "limit": "1"
+    },
+    "limit_refresh": "long_rest"
+  },
+  {
+    "slug": "project_persona",
+    "kind": "static",
+    "title": {
+      "en": "Project Persona",
+      "ru": "Проекция индивидуальности"
+    },
+    "description": {
+      "en": "Where others etch their armor to serve as a conduit for their imaginations, your vivid mind and bold personality allow you to project a more fitting persona over your lackluster armor. You change the shape and appearance of your armor to appear as ordinary or fine clothes of your imagining. The armor's statistics don't change. This effect lasts as long as you remain conscious and are wearing the armor. A creature can disbelieve the illusion by Seeking or touching your armor. The DC equals your Will DC.",
+      "ru": "Те, у кого туго с воображением, ограничиваются нанесением различных рун на доспехи, но ваша живая фантазия и незаурядная личность позволяют вам придать яркую индивидуальность даже скромной броне. Вы изменяете форму и внешний вид своей брони так, что она выглядит как простая или парадная одежда на ваш вкус. Параметры брони при этом не изменяются. Эффект длится, пока вы носите броню и в сознании. Существо может разоблачить иллюзию, коснувшись брони или использовав Поиск (СЛ равна вашей СЛ Воли)."
+    },
+    "origin": "ancestry",
+    "origin_values": [
+      "concentrate",
+      "gnome",
+      "illusion",
+      "primal",
+      "visual"
+    ],
+    "conditions": { "level": 5 },
+    "description_eval_variables": {
+      "limit": "1"
+    },
+    "limit_refresh": "long_rest"
+  },
+  {
+    "slug": "kneecap",
+    "kind": "static",
+    "title": {
+      "en": "Kneecap",
+      "ru": "Коленодроб"
+    },
+    "description": {
+      "en": "You deliver a punishing blow to an enemy's knee, shin, or other vulnerable anatomy within your reach. Make a melee Strike with a melee weapons or melee unarmed attack. This attack doesn't deal damage. On a hit, the target takes a –10-foot status penalty to its Speed (or a –15-foot status penalty on a critical hit). The penalty lasts for 1 round. This penalty applies only if the target has a land Speed and depends on legs or other targetable appendages to use its land Speed. As with all penalties to Speed, this can't reduce a creature's Speed below 5 feet.",
+      "ru": "Вы наносите сокрушительный удар по вражьему колену, щиколотке или другому уязвимому месту, до которого дотянетесь. Совершите Удар в ближнем бою оружием ближнего боя или безоружной атакой ближнего боя. Атака не наносит урона, но при попадании даёт цели на 1 раунд штраф состояния -10 футов к скорости (-15 футов к скорости при критическом ударе). Штраф применяется, только если у цели есть наземная скорость и для её использования нужны ноги или иные конечности, которые можно выбрать целью. Как и прочие штрафы к скорости, он не может уменьшить скорость ниже 5 футов."
+    },
+    "origin": "ancestry",
+    "origin_values": [
+      "goblin"
+    ],
+    "conditions": { "level": 5 },
+    "description_eval_variables": {
+      "limit": "1"
+    },
+    "limit_refresh": "long_rest"
+  },
+  {
+    "slug": "loud_singer",
+    "kind": "static",
+    "title": {
+      "en": "Loud Singer",
+      "ru": "Горлопан"
+    },
+    "description": {
+      "en": "**Prerequisites** Goblin Song.\n\nStaying on pitch, proper breath control, and remembering the words are all less important than the real measure of a good singer: volume! The range of your Goblin Song is increased to 60 feet, and you can target one additional enemy when you use it.",
+      "ru": "**Критерии** Гоблинская песня.\n\nВы можете сколько угодно фальшивить, сбиваться с ритма и забывать слова, потому что обладаете главным для любого певца качеством — громким голосом! Дистанция вашей Гоблинской песни увеличивается до 60 футов, и при её применении вы можете выбрать целью на одного противника больше."
+    },
+    "origin": "ancestry",
+    "origin_values": [
+      "goblin"
+    ],
+    "conditions": { "level": 5 },
+    "description_eval_variables": {
+      "limit": "1"
+    },
+    "limit_refresh": "long_rest"
+  },
+  {
+    "slug": "vandal",
+    "kind": "static",
+    "title": {
+      "en": "Vandal",
+      "ru": "Вандал"
+    },
+    "description": {
+      "en": "You have a knack for breaking and dismantling things. Putting them back together is the boring part, so you largely don't bother with that. You become trained in Thievery. If you would automatically become trained in Thievery (from your background or class, for example), you instead become trained in a skill of your choice.\n\nIn addition, whenever you hit with a Strike against a trap or an unattended object, you ignore the first 5 points of the object's Hardness.",
+      "ru": "Вам нет равных в разламывании и разборке вещей на части. Собирать их обратно — скука смертная, так что этим вы особенно не заморачиваетесь. Навык Воровство становится для вас изученным. Если впоследствии он автоматически станет для вас изученным (например, из-за выбранного происхождения или класса), вы вместо этого изучаете другой навык по своему выбору.\n\nКроме того, ваши успешные Удары по ловушкам и бесхозным объектам игнорируют первые 5 пунктов их твёрдости."
+    },
+    "origin": "ancestry",
+    "origin_values": [
+      "goblin"
+    ],
+    "conditions": { "level": 5 },
+    "description_eval_variables": {
+      "limit": "1"
+    },
+    "limit_refresh": "long_rest"
+  },
+  {
+    "slug": "cultural_adaptability",
+    "kind": "update_result",
+    "title": {
+      "en": "Cultural Adaptability",
+      "ru": "Культурная адаптация"
+    },
+    "description": {
+      "en": "Во время своих странствий вы научились полностью перенимать культуру самого многочисленного народа в округе. Вы получаете общую черту **Воспитанник народа**, а также одну черту народа 1 уровня, соответствующую народу, выбранному для черты Воспитанник народа.",
+      "ru": "Во время своих странствий вы научились полностью перенимать культуру самого многочисленного народа в округе. Вы получаете общую черту **Воспитанник народа**, а также одну черту народа 1 уровня, соответствующую народу, выбранному для черты Воспитанник народа."
+    },
+    "origin": "ancestry",
+    "origin_values": [
+      "halfling"
+    ],
+    "conditions": {
+      "level": 5
+    }
+  },
+  {
+    "slug": "step_lively",
+    "kind": "static",
+    "title": {
+      "en": "Step Lively",
+      "ru": "Бодрый шаг"
+    },
+    "description": {
+      "en": "**Условие:** Враг размером не менее крупного заканчивает действие с дескриптором «движение» рядом с вами.\n\nВы научились ловко выворачиваться из-под ног неуклюжих великанов. Вы совершаете Шаг в другое пространство рядом с этим врагом.",
+      "ru": "**Условие:** Враг размером не менее крупного заканчивает действие с дескриптором «движение» рядом с вами.\n\nВы научились ловко выворачиваться из-под ног неуклюжих великанов. Вы совершаете Шаг в другое пространство рядом с этим врагом."
+    },
+    "origin": "ancestry",
+    "origin_values": [
+      "halfling"
+    ],
+    "conditions": {
+      "level": 5
+    }
+  },
+  {
+    "slug": "adaptive_adept",
+    "kind": "static",
+    "title": {
+      "en": "Adaptive Adept",
+      "ru": "Умелое заимствование"
+    },
+    "description": {
+      "en": "**Prerequisites** Adapted Cantrip; can cast 3rd-level spells.\n\nYou've continued adapting your magic to blend your class's tradition with your adapted tradition. Choose a cantrip or 1st-rank spell from the same magical tradition as your cantrip from Adapted Cantrip. You gain that spell, adding it to your spell options just like the cantrip from Adapted Cantrip. You can cast this spell as a spell of your class's magical tradition. If you choose a 1st-rank spell, you don't gain access to the heightened versions of that spell, meaning you can't prepare them if you prepare spells and you can't learn them or select the spell as a signature spell if you have a spell repertoire.",
+      "ru": "**Критерии** Заимствованный фокус; способность творить заклинания 3 круга.\n\nВы продолжили смешивать магическую традицию своего класса с заимствованной. Выберите один фокус или заклинание 1 круга из той же магической традиции, что и ваш фокус для черты Заимствованный фокус. Вы получаете это заклинание и добавляете его к доступным вариантам аналогично Заимствованному фокусу. Вы можете творить это заклинание как заклинание магической традиции своего класса. Если вы выбрали заклинание 1 круга, вы не получаете доступ к его повышенным версиям и, соответственно, не можете их подготавливать, изучать или выбирать в качестве фирменного заклинания, если у вас репертуар заклинаний."
+    },
+    "origin": "ancestry",
+    "origin_values": [
+      "human"
+    ],
+    "conditions": { "level": 5 },
+    "description_eval_variables": {
+      "limit": "1"
+    },
+    "limit_refresh": "long_rest"
+  },
+  {
+    "slug": "clever_improviser",
+    "kind": "static",
+    "title": {
+      "en": "Clever Improviser",
+      "ru": "Умный импровизатор"
+    },
+    "description": {
+      "en": "You've learned how to handle situations when you're out of your depth. You gain the Untrained Improvisation general feat. In addition, you can attempt skill actions that normally require you to be trained, even if you are untrained.",
+      "ru": "Вы способны найти выход из любой ситуации, даже если вам не хватает умений. Вы получаете общую черту Импровизация без изучения. Кроме этого, вы можете применять действия навыка, требующие изучения, даже если навык вами не изучен."
+    },
+    "origin": "ancestry",
+    "origin_values": [
+      "human"
+    ],
+    "conditions": { "level": 5 },
+    "description_eval_variables": {
+      "limit": "1"
+    },
+    "limit_refresh": "long_rest"
+  },
+  {
+    "slug": "sense_allies",
+    "kind": "static",
+    "title": {
+      "en": "Sense Allies",
+      "ru": "Чувство локтя"
+    },
+    "description": {
+      "en": "Like many humans raised in a close-knit community, you have always been strongly attuned to the presence of others. Willing allies that you are aware of within 60 feet that would otherwise be undetected by you are instead hidden from you. The flat check for you to target willing allies within 60 feet that are hidden from you is 5 instead of 11.",
+      "ru": "Вы, как и многие другие люди, выросшие в тесном соседстве с сородичами, чутко ощущаете их присутствие. Необнаруженные вами согласные союзники в пределах 60 футов от вас считаются для вас спрятанными, если вы знаете об их присутствии. При выборе спрятанных согласных союзников в качестве цели СЛ чистой проверки для вас равна 5 (а не 11, как обычно)."
+    },
+    "origin": "ancestry",
+    "origin_values": [
+      "human"
+    ],
+    "conditions": { "level": 5 },
+    "description_eval_variables": {
+      "limit": "1"
+    },
+    "limit_refresh": "long_rest"
+  },
+  {
+    "slug": "anchoring_roots",
+    "kind": "static",
+    "title": {
+      "en": "Anchoring Roots",
+      "ru": "Удерживающие корни"
+    },
+    "description": {
+      "en": "От ваших ступней отделяются небольшие корни, позволяющие вам удерживать равновесие при движении. Вы получаете черту навыка **Устойчивое равновесие**, даже если Акробатика вами не изучена, а также можете использовать действие Закрепление.\n\n**Закрепление:** 1 действие.\n\n**Требования:** вы на твёрдой поверхности.\n\n**Эффект:** ваши корни вцепляются в землю, из-за чего вам сложнее упасть. Пока вы не переместитесь, вы получаете ситуативный бонус +2 к СЛ Реакции и Стойкости против попыток Перестановки, Сбивания с ног и Толчка (или ситуативный бонус +4, если вы корневой леший). Этот бонус применяется и к испытаниям против заклинаний и эффектов, заставляющих вас переместиться или распластаться. Кроме этого, если какой-либо эффект заставляет вас переместиться, вы перемещаетесь лишь на половину этого расстояния, так как корни непросто вырвать.",
+      "ru": "От ваших ступней отделяются небольшие корни, позволяющие вам удерживать равновесие при движении. Вы получаете черту навыка **Устойчивое равновесие**, даже если Акробатика вами не изучена, а также можете использовать действие Закрепление.\n\n**Закрепление:** 1 действие.\n\n**Требования:** вы на твёрдой поверхности.\n\n**Эффект:** ваши корни вцепляются в землю, из-за чего вам сложнее упасть. Пока вы не переместитесь, вы получаете ситуативный бонус +2 к СЛ Реакции и Стойкости против попыток Перестановки, Сбивания с ног и Толчка (или ситуативный бонус +4, если вы корневой леший). Этот бонус применяется и к испытаниям против заклинаний и эффектов, заставляющих вас переместиться или распластаться. Кроме этого, если какой-либо эффект заставляет вас переместиться, вы перемещаетесь лишь на половину этого расстояния, так как корни непросто вырвать."
+    },
+    "origin": "ancestry",
+    "origin_values": ["leshy"],
+    "conditions": { "level": 5 }
+  },
+  {
+    "slug": "leshy_glide",
+    "kind": "static",
+    "title": {
+      "en": "Leshy Glide",
+      "ru": "Планирование лешего"
+    },
+    "description": {
+      "en": "**Критерии** Лиственный леший, или Кошачье приземление.\n\nБлагодаря листьям вы можете контролировать своё падение. Вы плавно планируете, снижаясь на 5 футов и пролетая до 25 футов вперёд. Если вы тратите на **Планирование лешего** хотя бы 1 действие в каждом раунде и ещё не достигли земли, то остаётесь в воздухе в конце каждого своего хода.",
+      "ru": "**Критерии** Лиственный леший, или Кошачье приземление.\n\nБлагодаря листьям вы можете контролировать своё падение. Вы плавно планируете, снижаясь на 5 футов и пролетая до 25 футов вперёд. Если вы тратите на **Планирование лешего** хотя бы 1 действие в каждом раунде и ещё не достигли земли, то остаётесь в воздухе в конце каждого своего хода."
+    },
+    "origin": "ancestry",
+    "origin_values": ["leshy"],
+    "conditions": { "level": 5 },
+    "info": { "time": "a" }
+  },
+  {
+    "slug": "ritual_reversion",
+    "kind": "static",
+    "title": {
+      "en": "Ritual Reversion",
+      "ru": "Обратный ритуал"
+    },
+    "description": {
+      "en": "Вы способны временно принять менее заметную форму, не жертвуя восприятием. Вы принимаете форму обычного растения или гриба, которые наиболее похожи на вас, возвращаясь к облику вашего тела до того, как дух занял его. В остальном эффект аналогичен слиянию с растениями, но ваш размер остаётся небольшим.",
+      "ru": "Вы способны временно принять менее заметную форму, не жертвуя восприятием. Вы принимаете форму обычного растения или гриба, которые наиболее похожи на вас, возвращаясь к облику вашего тела до того, как дух занял его. В остальном эффект аналогичен слиянию с растениями, но ваш размер остаётся небольшим."
+    },
+    "origin": "ancestry",
+    "origin_values": [
+      "leshy",
+      "polymorph",
+      "primal"
+    ],
+    "conditions": { "level": 5 },
+    "info": { "time": "2a" }
+  },
+  {
+    "slug": "speak_with_kindred",
+    "kind": "static",
+    "title": {
+      "en": "Speak with Kindred",
+      "ru": "Разговор с сородичами"
+    },
+    "description": {
+      "en": "У вас особая связь с существами, чья физиология похожа на вашу. Вы можете общаться с грибами и растениями: задавать им вопросы, получать ответы и использовать Дипломатию. Вы получаете ситуативный бонус +2 к проверкам Дипломатии при общении с грибами или растениями вашего типа. Обычно грибные лешие получают этот бонус при разговоре с грибами и лишайниками, лианные лешие — с лианами и вьющимися растениями, лиственные лешие — с лиственными деревьями, а тыквенные лешие — с тыквами, дынями и схожими растениями.",
+      "ru": "У вас особая связь с существами, чья физиология похожа на вашу. Вы можете общаться с грибами и растениями: задавать им вопросы, получать ответы и использовать Дипломатию. Вы получаете ситуативный бонус +2 к проверкам Дипломатии при общении с грибами или растениями вашего типа. Обычно грибные лешие получают этот бонус при разговоре с грибами и лишайниками, лианные лешие — с лианами и вьющимися растениями, лиственные лешие — с лиственными деревьями, а тыквенные лешие — с тыквами, дынями и схожими растениями."
+    },
+    "origin": "ancestry",
+    "origin_values": ["leshy"],
+    "conditions": { "level": 5 }
+  },
+  {
+    "slug": "athletic_might",
+    "kind": "static",
+    "title": {
+      "en": "Athletic Might",
+      "ru": "Атлетическая мощь"
+    },
+    "description": {
+      "en": "Если вы получаете успех в проверке Атлетики для Лазания или Плавания, он считается для вас критическим успехом.",
+      "ru": "Если вы получаете успех в проверке Атлетики для Лазания или Плавания, он считается для вас критическим успехом."
+    },
+    "origin": "ancestry",
+    "origin_values": [
+      "orc"
+    ],
+    "conditions": {
+      "level": 5
+    }
+  },
+  {
+    "slug": "bloody_blows",
+    "kind": "static",
+    "title": {
+      "en": "Bloody Blows",
+      "ru": "Кровавые удары"
+    },
+    "description": {
+      "en": "Ваши безоружные атаки без дескриптора «несмертельное» оставляют кровоточащие раны или вызывают внутреннее кровотечение. Когда вы наносите критический Удар безоружной атакой без дескриптора «несмертельное», цель получает 1d4 продолжительного урона от кровотечения. Такую атаку можно получить, взяв черту Бивни или аналогичную способность. Кроме того, вы можете сделать несмертельную безоружную атаку смертельной, получив штраф к проверке атаки.",
+      "ru": "Ваши безоружные атаки без дескриптора «несмертельное» оставляют кровоточащие раны или вызывают внутреннее кровотечение. Когда вы наносите критический Удар безоружной атакой без дескриптора «несмертельное», цель получает 1d4 продолжительного урона от кровотечения. Такую атаку можно получить, взяв черту Бивни или аналогичную способность. Кроме того, вы можете сделать несмертельную безоружную атаку смертельной, получив штраф к проверке атаки."
+    },
+    "origin": "ancestry",
+    "origin_values": [
+      "orc"
+    ],
+    "conditions": {
+      "level": 5
+    }
+  },
+  {
+    "slug": "defy_death",
+    "kind": "static",
+    "title": {
+      "en": "Defy Death",
+      "ru": "Противостояние смерти"
+    },
+    "description": {
+      "en": "*Критерии:** Орочья свирепость.\n\nВас чрезвычайно трудно убить. СЛ проверок восстановления для вас равна 9 + значение состояния при смерти или 8 + значение состояния при смерти, если у вас есть общая черта Живучесть. Кроме того, когда кто-то возвращает вас к жизни при помощи магии, после которой на вас неделю действуют вредоносные состояния (например, возвращение к жизни или ритуал воскрешения), эти состояния на вас не воздействуют.",
+      "ru": "*Критерии:** Орочья свирепость.\n\nВас чрезвычайно трудно убить. СЛ проверок восстановления для вас равна 9 + значение состояния при смерти или 8 + значение состояния при смерти, если у вас есть общая черта Живучесть. Кроме того, когда кто-то возвращает вас к жизни при помощи магии, после которой на вас неделю действуют вредоносные состояния (например, возвращение к жизни или ритуал воскрешения), эти состояния на вас не воздействуют."
+    },
+    "origin": "ancestry",
+    "origin_values": [
+      "orc"
+    ],
+    "conditions": {
+      "level": 5
+    }
+  },
+  {
+    "slug": "scar_thick_skin",
+    "kind": "static",
+    "title": {
+      "en": "Scar-Thick Skin",
+      "ru": "Шрамированная кожа"
+    },
+    "description": {
+      "en": "Великолепные шрамы, каждый со своей историей, покрывают большую часть вашего тела, защищая его своеобразной бронёй, которая способна выдержать любую рану, что слабее тех, которые вам уже удалось пережить. Ваша СЛ чистой проверки для снятия продолжительного урона от кровотечения снижается с 15 до 10 (или с 10 до 5, если другое существо помогает вам подходящим действием).",
+      "ru": "Великолепные шрамы, каждый со своей историей, покрывают большую часть вашего тела, защищая его своеобразной бронёй, которая способна выдержать любую рану, что слабее тех, которые вам уже удалось пережить. Ваша СЛ чистой проверки для снятия продолжительного урона от кровотечения снижается с 15 до 10 (или с 10 до 5, если другое существо помогает вам подходящим действием)."
+    },
+    "origin": "ancestry",
+    "origin_values": [
+      "orc"
+    ],
+    "conditions": {
+      "level": 5
+    }
+  },
+  {
+    "slug": "called",
+    "kind": "static",
+    "title": {
+      "en": "Called",
+      "ru": "Противящийся зову"
+    },
+    "description": {
+      "en": "You've heard the Call, and by resisting it, you've developed a bulwark against effects that target your mind. You gain a +1 circumstance bonus to Will saving throws against mental effects. If you roll a success on your saving throw against a mental effect that would make you controlled, you get a critical success instead.",
+      "ru": "Вы слышите Зов и из-за постоянного сопротивления его влиянию укрепили свой разум, защитив его от стороннего воздействия. Вы получаете ситуативный бонус +1 к испытаниям Воли против ментальных эффектов. Если вы получаете успех в испытании против ментального эффекта, берущего вас под контроль, он считается для вас критическим успехом."
+    },
+    "origin": "ancestry",
+    "origin_values": [
+      "changeling"
+    ],
+    "conditions": { "level": 5 },
+    "description_eval_variables": {
+      "limit": "1"
+    },
+    "limit_refresh": "long_rest"
+  },
+  {
+    "slug": "mist_child",
+    "kind": "static",
+    "title": {
+      "en": "Mist Child",
+      "ru": "Дитя мглы"
+    },
+    "description": {
+      "en": "You blend in with unnatural subtlety. When you are concealed or hidden, increase the DC of the flat check to target you to 6 if you're concealed or 12 if you're hidden.",
+      "ru": "Вы сливаетесь с окружением с неестественной лёгкостью. Когда вы плохо видимы или спрятаны, СЛ чистой проверки для выбора вас целью увеличивается до 6, если вы плохо видимы, и до 12, если вы спрятаны."
+    },
+    "origin": "ancestry",
+    "origin_values": [
+      "changeling"
+    ],
+    "conditions": { "level": 5 },
+    "description_eval_variables": {
+      "limit": "1"
+    },
+    "limit_refresh": "long_rest"
+  },
+  {
+    "slug": "blessed_blood_(nephilim)",
+    "kind": "static",
+    "title": {
+      "en": "Blessed Blood (Nephilim)",
+      "ru": "Благословенная кровь"
+    },
+    "description": {
+      "en": "Your spilled blood is sanctified, with effects similar to those of holy water. Whenever a fiend, undead, or creature with a weakness to holy drinks your blood or deals piercing or slashing damage to you with jaws, fangs, or a similar attack, that creature takes 1d6 spirit damage with the holy trait. You gain a +4 circumstance bonus to Crafting checks to Craft holy water using your blood as one of the ingredients.",
+      "ru": "Свежепролитая вами кровь считается освящённой и при употреблении внутрь даёт эффект аналогичный святой воде (см. «Основную книгу ведущего»). Когда бестия, нежить или существо с уязвимостью к священному пьёт вашу кровь или наносит вам колющий или режущий урон челюстями, клыками или аналогичной атакой, оно получает 1d6 урона духом с дескриптором «священный». Вы получаете ситуативный бонус +4 к проверкам Ремесла при создании святой воды, если используете для этого свою кровь."
+    },
+    "origin": "ancestry",
+    "origin_values": [
+      "nephilim"
+    ],
+    "conditions": { "level": 5 },
+    "description_eval_variables": {
+      "limit": "1"
+    },
+    "limit_refresh": "long_rest"
+  },
+  {
+    "slug": "extraplanar_supplication",
+    "kind": "static",
+    "title": {
+      "en": "Extraplanar Supplication",
+      "ru": "Экстрапланарная мольба"
+    },
+    "description": {
+      "en": "You call upon divine power to place a benediction upon your allies or a malediction upon your foes. Choose either bless or bane. You can cast the chosen spell once per day as a 1st-rank divine innate spell.",
+      "ru": "Вы благословляете союзников или проклинаете врагов, воззвав к сакральной силе. Выберите благословение или отповедь. Вы можете творить это заклинание один раз в день как врождённое сакральное заклинание 1 круга."
+    },
+    "origin": "ancestry",
+    "origin_values": [
+      "nephilim"
+    ],
+    "conditions": { "level": 5 },
+    "description_eval_variables": {
+      "limit": "1"
+    },
+    "limit_refresh": "long_rest"
+  },
+  {
+    "slug": "nephilim_resistance",
+    "kind": "static",
+    "title": {
+      "en": "Nephilim Resistance",
+      "ru": "Устойчивость нефилим"
+    },
+    "description": {
+      "en": "You resist energy like your extraplanar predecessors. Choose one of the following energy damage types: acid, cold, electricity, fire, or sonic. You gain resistance 5 to that damage type. The damage type typically matches an extraplanar entity associated with your bloodline. For instance, an angelkin might choose resistance to cold, while a hellspawn might choose resistance to fire.",
+      "ru": "Ваша связь с предками крепнет, наделяя вас их устойчивостью к энергии. Выберите один из следующих типов энергетического урона: кислота, холод, электричество, огонь, или звук. Вы получаете устойчивость 5 к выбранному типу урона.\n\nХотя вы можете выбрать любой тип урона из списка, он чаще всего соответствует устойчивости вашего предка. Так, ангелорождённый может выбрать устойчивость к холоду, а выходец из Преисподней — устойчивость к огню."
+    },
+    "origin": "ancestry",
+    "origin_values": [
+      "nephilim"
+    ],
+    "conditions": { "level": 5 },
+    "description_eval_variables": {
+      "limit": "1"
+    },
+    "limit_refresh": "long_rest"
+  },
+  {
+    "slug": "scion_of_many_planes",
+    "kind": "static",
+    "title": {
+      "en": "Scion of Many Planes",
+      "ru": "Наследие множества планов"
+    },
+    "description": {
+      "en": "The long and complicated history of your bloodline manifests in your ability to draw power from more planar sources than most other nephilim. Choose one nephilim lineage feat that you do not already possess; you gain that feat and all of its benefits, even if you already took a lineage feat at 1st level.",
+      "ru": "Долгая история вашего рода воплощена в способности брать силу у большего числа планарных источников в сравнении с прочими нефилим. Выберите одну черту подвида нефилим, которой у вас ещё нет. Вы получаете эту черту и все её преимущества, даже если уже выбрали черту подвида на 1 уровне."
+    },
+    "origin": "ancestry",
+    "origin_values": [
+      "nephilim"
+    ],
+    "conditions": { "level": 5 },
+    "description_eval_variables": {
+      "limit": "1"
+    },
+    "limit_refresh": "long_rest"
+  },
+  {
+    "slug": "skillful_tail",
+    "kind": "static",
+    "title": {
+      "en": "Skillful Tail",
+      "ru": "Ловкий хвост"
+    },
+    "description": {
+      "en": "You've always had a tail, but with practice, you've learned to use it for more than signaling your mood. You can perform simple Interact actions with your tail, such as opening an unlocked door. Your tail can't perform actions that require fingers or significant manual dexterity, including any action that would require a check to accomplish, and you can't use it to hold items.",
+      "ru": "Хвост был у вас всегда, но после усердных тренировок он перестал быть только лишь индикатором вашего настроения. Теперь вы можете использовать хвост для совершения простых Взаимодействий вроде открывания незапертых дверей. При помощи хвоста невозможно держать предметы и выполнять действия, требующие пальцев или мелкой моторики, включая любые действия, для которых нужны проверки."
+    },
+    "origin": "ancestry",
+    "origin_values": [
+      "nephilim"
+    ],
+    "conditions": { "level": 5 },
+    "description_eval_variables": {
+      "limit": "1"
+    },
+    "limit_refresh": "long_rest"
+  },
+  {
+    "slug": "inspire_imitation",
+    "kind": "static",
+    "title": {
+      "en": "Inspire Imitation",
+      "ru": "Воодушевляющий пример"
+    },
+    "description": {
+      "en": "Your actions inspire your allies to great achievements. Whenever you critically succeed at a skill check, you automatically qualify to use the Aid reaction when attempting to help an ally using the same skill, even without spending an action to prepare to do so.",
+      "ru": "Своими действиями вы вдохновляете союзников на великие свершения. Когда у вас критический успех при проверке навыка, вы автоматически можете использовать ответное действие Помощь товарищу с применением этого же навыка без необходимости тратить действие на подготовку."
+    },
+    "origin": "ancestry",
+    "origin_values": [
+      "aiuvarin"
+    ],
+    "conditions": { "level": 5 },
+    "description_eval_variables": {
+      "limit": "1"
+    },
+    "limit_refresh": "long_rest"
+  },
+  {
+    "slug": "supernatural_charm",
+    "kind": "static",
+    "title": {
+      "en": "Supernatural Charm",
+      "ru": "Сверхъестественное обаяние"
+    },
+    "description": {
+      "en": "The elven magic in your blood manifests as a force you can use to become more appealing or alluring. You can cast 1st-rank charm as an arcane innate spell once per day.",
+      "ru": "Вы можете использовать магию своей эльфийской крови, чтобы стать более привлекательным или очаровательным. Вы можете творить заклинание приворот 1 круга как врождённое мистическое заклинание один раз в день."
+    },
+    "origin": "ancestry",
+    "origin_values": [
+      "aiuvarin"
+    ],
+    "conditions": { "level": 5 },
+    "description_eval_variables": {
+      "limit": "1"
+    },
+    "limit_refresh": "long_rest"
+  }
+]

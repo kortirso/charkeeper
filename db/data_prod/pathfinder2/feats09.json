@@ -1,0 +1,709 @@
+[
+  {
+    "slug": "echoes_in_stone",
+    "kind": "static",
+    "title": {
+      "en": "Echoes in Stone",
+      "ru": "Отголоски тверди"
+    },
+    "description": {
+      "en": "**Требования:** вы стоите на каменной или земляной поверхности.\n\nВы на секунду замираете, настраиваясь на окружающий вас камень. До начала своего следующего хода вы получаете вспомогательный способ восприятия: виброчувствительность на расстоянии до 20 футов.",
+      "ru": "**Требования:** вы стоите на каменной или земляной поверхности.\n\nВы на секунду замираете, настраиваясь на окружающий вас камень. До начала своего следующего хода вы получаете вспомогательный способ восприятия: виброчувствительность на расстоянии до 20 футов."
+    },
+    "origin": "ancestry",
+    "origin_values": ["concentrate", "dwarf"],
+    "conditions": {
+      "level": 9
+    }
+  },
+  {
+    "slug": "mountain's_stoutness",
+    "kind": "static",
+    "title": {
+      "en": "Mountain's Stoutness",
+      "ru": "Незыблемость гор"
+    },
+    "description": {
+      "en": "Благодаря своей стойкости вы можете вынести куда больший урон, чем остальные. Ваш максимум ПЗ увеличивается на значение вашего уровня. Когда вы при смерти, СЛ проверок восстановления для вас равна 9 + значение состояния при смерти (вместо 10 + значение состояния при смерти, как обычно).\n\nЕсли у вас также есть черта Живучесть, дополнительные ПЗ от неё и от этой черты суммируются, а СЛ проверок восстановления для вас становится равна 6 + значение состояния при смерти.",
+      "ru": "Благодаря своей стойкости вы можете вынести куда больший урон, чем остальные. Ваш максимум ПЗ увеличивается на значение вашего уровня. Когда вы при смерти, СЛ проверок восстановления для вас равна 9 + значение состояния при смерти (вместо 10 + значение состояния при смерти, как обычно).\n\nЕсли у вас также есть черта Живучесть, дополнительные ПЗ от неё и от этой черты суммируются, а СЛ проверок восстановления для вас становится равна 6 + значение состояния при смерти."
+    },
+    "origin": "ancestry",
+    "origin_values": ["dwarf"],
+    "conditions": {
+      "level": 9
+    }
+  },
+  {
+    "slug": "stone_bones",
+    "kind": "static",
+    "title": {
+      "en": "Stone Bones",
+      "ru": "Каменные кости"
+    },
+    "description": {
+      "en": "**Условие:** вы получили критический удар, который наносит физический урон.\n\nВаша невероятная неподатливость позволяет переносить даже самые опасные раны. Совершите чистую проверку со СЛ 17. При успехе критический удар становится обычным попаданием.",
+      "ru": "**Условие:** вы получили критический удар, который наносит физический урон.\n\nВаша невероятная неподатливость позволяет переносить даже самые опасные раны. Совершите чистую проверку со СЛ 17. При успехе критический удар становится обычным попаданием."
+    },
+    "origin": "ancestry",
+    "origin_values": ["dwarf"],
+    "conditions": {
+      "level": 9
+    }
+  },
+  {
+    "slug": "stonewalker",
+    "kind": "static",
+    "title": {
+      "en": "Stonewalker",
+      "ru": "Камнеходец"
+    },
+    "description": {
+      "en": "Вы исполнены глубокого уважения к камню и чувствуете, как связаны с ним. Вы можете творить слияние с камнем как врождённое сакральное заклинание 3 круга один раз в день.\n\nЕсли у вас есть черта народа Знание камня, вы можете пытаться обнаружить необычную каменную кладку и каменные ловушки, которые требуют легендарного Внимания. Если у вас есть и Знание камня, и легендарное умение во Внимании, то, когда вы не занимаетесь Поиском и ведущий автоматически совершает тайную проверку для обнаружения необычной каменной кладки, вы сохраняете бонус от Знания камня.",
+      "ru": "Вы исполнены глубокого уважения к камню и чувствуете, как связаны с ним. Вы можете творить слияние с камнем как врождённое сакральное заклинание 3 круга один раз в день.\n\nЕсли у вас есть черта народа Знание камня, вы можете пытаться обнаружить необычную каменную кладку и каменные ловушки, которые требуют легендарного Внимания. Если у вас есть и Знание камня, и легендарное умение во Внимании, то, когда вы не занимаетесь Поиском и ведущий автоматически совершает тайную проверку для обнаружения необычной каменной кладки, вы сохраняете бонус от Знания камня."
+    },
+    "origin": "ancestry",
+    "origin_values": ["dwarf"],
+    "conditions": {
+      "level": 9
+    }
+  },
+  {
+    "slug": "elf_step",
+    "kind": "static",
+    "title": {
+      "en": "Elf Step",
+      "ru": "Эльфийская поступь"
+    },
+    "description": {
+      "en": "<hr>You move in a graceful dance, and even your steps are broad. You Step 5 feet twice.",
+      "ru": "Вы перемещаетесь широкими шагами, как будто в танце. Вы дважды совершаете Шаг на 5 футов."
+    },
+    "origin": "ancestry",
+    "origin_values": [
+      "elf"
+    ],
+    "conditions": { "level": 9 },
+    "description_eval_variables": {
+      "limit": "1"
+    },
+    "limit_refresh": "long_rest"
+  },
+  {
+    "slug": "expert_longevity",
+    "kind": "static",
+    "title": {
+      "en": "Expert Longevity",
+      "ru": "Долгожитель-эксперт"
+    },
+    "description": {
+      "en": "**Prerequisites** Ancestral Longevity.\n\nYou've continued to refine the knowledge and skills you've gained through your life. When you choose a skill in which to become trained with Ancestral Longevity, you can also choose a skill in which you are already trained and become an expert in that skill. This lasts until your Ancestral Longevity expires.\n\nWhen the effects of Ancestral Longevity and Expert Longevity expire, you can retrain one of your skill increases. The skill increase you gain from this retraining must either make you trained in the skill you chose with Ancestral Longevity or make you an expert in the skill you chose with Expert Longevity.",
+      "ru": "**Критерии** Долгожитель.\n\nВы продолжили оттачивать умения и расширять знания, полученные в ходе жизни. Когда вы используете черту Долгожитель, чтобы выбрать навык для временного изучения, вы также дополнительно можете выбрать уже изученный навык и временно стать в нём экспертом. Преимущество сохраняется на время действия черты Долгожитель.\n\nКогда эффекты черт Долгожитель и Долгожитель-эксперт завершаются, вы можете переместить одно повышение с одного навыка на другой путём переподготовки. Повышение нужно потратить либо на изучение навыка, выбранного для черты Долгожитель, либо чтобы стать экспертом в навыке, выбранном для черты Долгожитель-эксперт."
+    },
+    "origin": "ancestry",
+    "origin_values": [
+      "elf"
+    ],
+    "conditions": { "level": 9 },
+    "description_eval_variables": {
+      "limit": "1"
+    },
+    "limit_refresh": "long_rest"
+  },
+  {
+    "slug": "otherworldly_acumen",
+    "kind": "static",
+    "title": {
+      "en": "Otherworldly Acumen",
+      "ru": "Потустороннее усиление"
+    },
+    "description": {
+      "en": "**Prerequisites** at least one innate spell gained from an elf ancestry feat.\n\nThe arcane magic you possess grows in power and complexity. Choose one common 2nd-rank spell from the same tradition as an innate spell you previously gained from another elf ancestry feat (from the arcane list if you have Otherworldly Magic, for example). You can cast that spell as an innate spell once per day, using the same tradition as the list you chose the spell from.\n\nYour magic is adaptable. By spending 1 day of downtime, you can change the spell you chose to a different common 2nd-rank spell from the same tradition.",
+      "ru": "**Критерии** хотя бы одно врождённое заклинание, полученное благодаря черте народа эльфов.\n\nПодвластная вам магия усиливается. Выберите одно обычное заклинание 2 круга из списка той же традиции, что и ваше врождённое заклинание, полученное благодаря другой черте народа эльфов (например, мистической традиции в случае Потусторонней магии). Вы можете творить выбранное заклинание как врождённое заклинание этой традиции один раз в день.\n\nВаша магия изменчива. Вы можете потратить 1 день свободного времени, чтобы заменить выбранное заклинание другим обычным заклинанием 2 круга из списка заклинаний той же магической традиции."
+    },
+    "origin": "ancestry",
+    "origin_values": [
+      "elf"
+    ],
+    "conditions": { "level": 9 },
+    "description_eval_variables": {
+      "limit": "1"
+    },
+    "limit_refresh": "long_rest"
+  },
+  {
+    "slug": "tree_climber",
+    "kind": "static",
+    "title": {
+      "en": "Tree Climber",
+      "ru": "Древолаз"
+    },
+    "description": {
+      "en": "<hr>You've spent much of your life among the treetops and have become an expert at quickly and safely climbing them. You gain a climb Speed of 10 feet.",
+      "ru": "Вы провели большую часть жизни в кронах деревьев и научились быстро по ним взбираться. Вы получаете скорость лазания 10 футов."
+    },
+    "origin": "ancestry",
+    "origin_values": [
+      "elf"
+    ],
+    "conditions": { "level": 9 },
+    "description_eval_variables": {
+      "limit": "1"
+    },
+    "limit_refresh": "long_rest"
+  },
+  {
+    "slug": "cautious_curiosity",
+    "kind": "static",
+    "title": {
+      "en": "Cautious Curiosity",
+      "ru": "Осторожное любопытство"
+    },
+    "description": {
+      "en": "**Prerequisites** at least one arcane or occult innate spell gained from a gnome heritage or gnome ancestry feat.\n\nYou've learned a few magical techniques for getting yourself both into and out of trouble unnoticed. You gain disguise magic and silence as 2nd-rank arcane or occult innate spells. The tradition of these spells must match the tradition you use for your gnome ancestry options. You can cast each spell once per day and can target only yourself.",
+      "ru": "**Критерии** хотя бы одно мистическое или оккультное врождённое заклинание, полученное благодаря родословной гномов или черте народа гномов.\n\nВы освоили пару магических приёмов, позволяющих вам попадать п неприятности и выпутываться из них, оставаясь незамеченным. Вы получаете сокрытие магии и тишину в качестве врождённых мистических или оккультных заклинаний 2 круга. Вы можете творить каждое из этих заклинаний один раз в день, но в качестве цели можете выбрать только себя. Традиция заклинаний должна совпадать с традицией других врождённых заклинаний, полученных благодаря народу гномов."
+    },
+    "origin": "ancestry",
+    "origin_values": ["gnome"],
+    "conditions": { "level": 9 },
+    "description_eval_variables": {
+      "limit": "1"
+    },
+    "limit_refresh": "long_rest"
+  },
+  {
+    "slug": "first_world_adept",
+    "kind": "static",
+    "title": {
+      "en": "First World Adept",
+      "ru": "Искусство первого мира"
+    },
+    "description": {
+      "en": "**Prerequisites** at least one primal innate spell.\n\nOver time your fey magic has grown stronger. You gain invisibility and revealing light as 2nd-rank primal innate spells. You can cast each of these primal innate spells once per day.",
+      "ru": "**Критерии** хотя бы одно врождённое первобытное заклинание.\n\nВы лучше понимаете магию фей. Вы получаете невидимость и озаряющий свет в качестве врождённых первобытных заклинаний 2 круга. Вы можете творить каждое из этих врождённых заклинаний 1 раз в день."
+    },
+    "origin": "ancestry",
+    "origin_values": ["gnome"],
+    "conditions": { "level": 9 },
+    "description_eval_variables": {
+      "limit": "1"
+    },
+    "limit_refresh": "long_rest"
+  },
+  {
+    "slug": "life_leap",
+    "kind": "static",
+    "title": {
+      "en": "Life Leap",
+      "ru": "Путь сквозь жизнь"
+    },
+    "description": {
+      "en": "<b>Requirements</b> You must be adjacent to a living creature.\n\nYou phase through a space that a living creature occupies in a flash, spontaneously appearing on the opposite side of it in a vibrant display of colorful light. You move from your current location to another location that's still adjacent to the same living creature, but on the opposite side or corner of the creature's space. To determine whether a position is valid, use the same rules as for flanking: a line through the center of the two spaces must pass through opposite sides or corners of the creature's space.\n\nYou pass through the creature's life force, appearing in the selected location; this doesn't trigger reactions based on movement. You must be able to see your destination, and you can't move farther than your Speed would allow.",
+      "ru": "<b>Требования</b> вы рядом с живым существом.\n\nВы в мгновение ока проскакиваете через занимаемое живым существом пространство, возникая на противоположной его стороне в яркой цветной вспышке. Вы перемещаетесь с занимаемого вами места в другое рядом с тем же живым существом, находящееся с противоположной стороны или на противоположном углу его пространства. Для определения подходящего места используются те же правила, что и для взятия в тиски: линия между центрами пространств должна проходить через противоположные стороны либо углы занимаемого существом пространства.\n\nВы перемещаетесь через потоки жизненной силы существа и появляетесь в выбранном месте; это перемещение не провоцирует ответных действий, условием которых служит движение. Вы должны видеть место назначения и не можете переместиться на расстояние больше своей скорости."
+    },
+    "origin": "ancestry",
+    "origin_values": [
+      "gnome",
+      "move",
+      "teleportation"
+    ],
+    "conditions": { "level": 9 },
+    "description_eval_variables": {
+      "limit": "1"
+    },
+    "limit_refresh": "long_rest"
+  },
+  {
+    "slug": "vivacious_conduit",
+    "kind": "static",
+    "title": {
+      "en": "Vivacious Conduit",
+      "ru": "Воплощение бодрости"
+    },
+    "description": {
+      "en": "<hr>Your connection to the First World has grown, and its vital energy flows into you rapidly. If you rest for 10 minutes, you regain Hit Points equal to your Constitution modifier × half your level. This is a healing vitality effect and is cumulative with any healing you receive from Treat Wounds.",
+      "ru": "Ваша связь с Первым миром стала прочнее, и вас переполняет его энергия жизни. Если вы отдохнёте 10 минут, то восстановите ПЗ в количестве, равном модификатору вашей Выносливости * 1/2 вашего уровня. Это эффект с дескрипторами «жизнь» и «исцеление», он суммируется с исцелением благодаря Лечению ранений."
+    },
+    "origin": "ancestry",
+    "origin_values": ["gnome"],
+    "conditions": { "level": 9 },
+    "description_eval_variables": {
+      "limit": "1"
+    },
+    "limit_refresh": "long_rest"
+  },
+  {
+    "slug": "cave_climber",
+    "kind": "static",
+    "title": {
+      "en": "Cave Climber",
+      "ru": "Лазание в пещерах"
+    },
+    "description": {
+      "en": "<hr>After years of clambering through caverns, you can climb easily anywhere you go. You gain a climb Speed of 10 feet.",
+      "ru": "Вы провели годы, ползая в пещерах, поэтому с лёгкостью взбираетесь куда угодно. Вы получаете скорость лазания 10 футов."
+    },
+    "origin": "ancestry",
+    "origin_values": [
+      "goblin"
+    ],
+    "conditions": { "level": 9 },
+    "description_eval_variables": {
+      "limit": "1"
+    },
+    "limit_refresh": "long_rest"
+  },
+  {
+    "slug": "cling",
+    "kind": "static",
+    "title": {
+      "en": "Cling",
+      "ru": "Цепкость"
+    },
+    "description": {
+      "en": "<b>Requirements</b> Your last action was a successful Strike and you have a free hand.\n\nYou hang onto a foe to harry them into submission. If your target moves while you're hanging onto it, you can choose to move with the target. The target is released if you choose not to move with it, at the start of your next turn, or if the target Escapes. Attempts to Escape from a Cling are made against your Acrobatics DC and follow the rules on page 416, but they end the Cling instead of the conditions normally ended by the Escape action.\n\n<b>Special</b> You can use this action without a free hand if your preceding Strike was made with your jaws or a similar unarmed attack you could use to hang on. The GM determines which unarmed attacks apply. Hanging on in this way prevents you from using that unarmed attack.",
+      "ru": "<b>Требования</b> вашим последним действием был успешный Удар и у вас есть свободная рука.\n\nВы вцепляетесь во врага, чтобы причинить ему как можно больше неудобств. Если ваша цель перемещается, пока вы в неё вцепились, вы можете переместиться вместе с ней. Вы отпускаете цель, если решаете не перемещаться вместе с ней, в начале своего следующего хода либо после её успешного Освобождения. Освобождение от этой способности совершается по обычным правилам, но при этом используется ваша СЛ Акробатики и при успехе противник прекращает эффект этой способности, а не состояния, указанные в описании действия Освобождение.\n\n<b>Примечание</b> вы можете использовать это действие даже без свободной руки, если предшествующий Удар был совершён челюстями или аналогичной безоружной атакой, позволяющей вцепиться в цель. Решение о том, подходит ли безоружная атака, принимает ведущий. Применение этой способности препятствует дальнейшему использованию этой безоружной атаки."
+    },
+    "origin": "ancestry",
+    "origin_values": [
+      "goblin"
+    ],
+    "conditions": { "level": 9 },
+    "description_eval_variables": {
+      "limit": "1"
+    },
+    "limit_refresh": "long_rest"
+  },
+  {
+    "slug": "skittering_scuttle",
+    "kind": "static",
+    "title": {
+      "en": "Skittering Scuttle",
+      "ru": "Шустрая беготня"
+    },
+    "description": {
+      "en": "**Prerequisites** Goblin Scuttle.\n\nYou can scuttle farther and faster when maneuvering alongside allies. When you use Goblin Scuttle, you can Stride up to half your Speed instead of Stepping.",
+      "ru": "**Критерии** Гоблинская беготня.\n\nВы можете перемещаться дальше и быстрее, когда маневрируете рядом с союзниками. Применяя Гоблинскую беготню, вы можете вместо Шага совершить Перемещение на расстояние вплоть до половины вашей скорости."
+    },
+    "origin": "ancestry",
+    "origin_values": [
+      "goblin"
+    ],
+    "conditions": { "level": 9 },
+    "description_eval_variables": {
+      "limit": "1"
+    },
+    "limit_refresh": "long_rest"
+  },
+  {
+    "slug": "dance_underfoot",
+    "kind": "static",
+    "title": {
+      "en": "Dance Underfoot",
+      "ru": "Проскальзыание под ноги"
+    },
+    "description": {
+      "en": "**Критерии** Бодрый шаг.\n\nВ бою вы путаетесь под ногами врагов. Вы можете завершить успешный Перекат в пространстве врага размером не менее крупного. Кроме этого, при использовании черты Бодрый шаг вы можете сделать Шаг в пространство спровоцировавшего врага. Для этого у противника должны быть конечности либо достаточно места в его пространстве для подобного манёвра (по усмотрению ведущего). Так, вы можете находиться в пространстве великана или дракона, но не жижи.",
+      "ru": "**Критерии** Бодрый шаг.\n\nВ бою вы путаетесь под ногами врагов. Вы можете завершить успешный Перекат в пространстве врага размером не менее крупного. Кроме этого, при использовании черты Бодрый шаг вы можете сделать Шаг в пространство спровоцировавшего врага. Для этого у противника должны быть конечности либо достаточно места в его пространстве для подобного манёвра (по усмотрению ведущего). Так, вы можете находиться в пространстве великана или дракона, но не жижи."
+    },
+    "origin": "ancestry",
+    "origin_values": [
+      "halfling"
+    ],
+    "conditions": {
+      "level": 9
+    }
+  },
+  {
+    "slug": "guiding_luck",
+    "kind": "static",
+    "title": {
+      "en": "Guiding Luck",
+      "ru": "Путеводная удача"
+    },
+    "description": {
+      "en": "**Критерии** Удача полурослика.\n\nБлагодаря своей удачливости вы часто замечаете возможности и бьёте без промаха. Вы можете использовать Удачу полурослика два раза в день: один раз в ответ на обычное условие применения и ещё один раз, когда вы проваливаете проверку Внимания или атаки.",
+      "ru": "**Критерии** Удача полурослика.\n\nБлагодаря своей удачливости вы часто замечаете возможности и бьёте без промаха. Вы можете использовать Удачу полурослика два раза в день: один раз в ответ на обычное условие применения и ещё один раз, когда вы проваливаете проверку Внимания или атаки."
+    },
+    "origin": "ancestry",
+    "origin_values": [
+      "halfling"
+    ],
+    "conditions": {
+      "level": 9
+    }
+  },
+  {
+    "slug": "irrepressible",
+    "kind": "static",
+    "title": {
+      "en": "Irrepressible",
+      "ru": "Невозмутимость"
+    },
+    "description": {
+      "en": "Вы с лёгкостью пропускаете мимо ушей любые попытки сыграть на ваших страхах и чувствах. Если вы получаете успех в испытании против эффекта с дескриптором «эмоции», он считается для вас критическим успехом. Если вы отважный полурослик, то когда вы получаете критический провал в таком испытании, он считается для вас обычным провалом.",
+      "ru": "Вы с лёгкостью пропускаете мимо ушей любые попытки сыграть на ваших страхах и чувствах. Если вы получаете успех в испытании против эффекта с дескриптором «эмоции», он считается для вас критическим успехом. Если вы отважный полурослик, то когда вы получаете критический провал в таком испытании, он считается для вас обычным провалом."
+    },
+    "origin": "ancestry",
+    "origin_values": [
+      "halfling"
+    ],
+    "conditions": {
+      "level": 9
+    }
+  },
+  {
+    "slug": "unhampered_passage",
+    "kind": "static",
+    "title": {
+      "en": "Unhampered Passage",
+      "ru": "Беспрепятственный проход"
+    },
+    "description": {
+      "en": "Вы можете сотворить свободу движений на себя как врождённое первобытное заклинание.",
+      "ru": "Вы можете сотворить свободу движений на себя как врождённое первобытное заклинание."
+    },
+    "origin": "ancestry",
+    "origin_values": [
+      "halfling"
+    ],
+    "conditions": {
+      "level": 9
+    },
+    "description_eval_variables": {
+      "limit": "1"
+    },
+    "limit_refresh": "long_rest"
+  },
+  {
+    "slug": "cooperative_soul",
+    "kind": "static",
+    "title": {
+      "en": "Cooperative Soul",
+      "ru": "Единодушие"
+    },
+    "description": {
+      "en": "<hr>You have developed a soul-deep bond with your comrades and maintain an even greater degree of cooperation with them. If you are at least an expert in the skill you are Aiding, when you roll a failure or critical failure to Aid a skill check, you get a success instead.",
+      "ru": "С товарищами вас связывает редкое единодушие, поэтому вы отлично действуете сообща.\n\nЕсли вы как минимум эксперт в навыке, который используете для Помощи товарищу, и получаете провал или критический провал при Помощи товарищу в проверке навыка, результат считается для вас успехом."
+    },
+    "origin": "ancestry",
+    "origin_values": [
+      "human"
+    ],
+    "conditions": { "level": 9 },
+    "description_eval_variables": {
+      "limit": "1"
+    },
+    "limit_refresh": "long_rest"
+  },
+  {
+    "slug": "group_aid",
+    "kind": "static",
+    "title": {
+      "en": "Group Aid",
+      "ru": "Помощь группе"
+    },
+    "description": {
+      "en": "<hr>Your upbringing emphasized teamwork, and helping your allies comes naturally to you. After you Aid an ally at a skill check that doesn't have the attack trait, you can also Aid any other ally who attempts the same skill check for the same purpose that round. You do so as a free action rather than a reaction.\n\nThe preparation you did to help must still apply to the other allies, and you can Aid each ally only once. For example, if you helped lift up an ally to Aid them on an Athletics check to scale a wall, you could keep the same posture to give a boost to other allies attempting to scale the wall in the same round.",
+      "ru": "Вас учили, что друзьям важно помогать, поэтому для вас это несложно. После того как вы использовали Помощь товарищу для содействия союзнику в проверке навыка без дескриптора «атака», вы можете оказать аналогичную помощь любому другому союзнику, который в этом раунде проходит такую же проверку с той же целью. Дополнительная Помощь товарищу считается свободным действием (а не ответным действием, как обычно).\n\nСовершённая вами подготовка должна быть пригодна для помощи другим союзникам, и Помощь товарищу совершается для каждого союзника только единожды. Например, если вы подсадили союзника, оказав Помощь товарищу в проверке Атлетики, чтобы перебраться через стену, вы можете сохранить то же положение, чтобы помочь и другим союзникам перебраться через стену в этом же раунде."
+    },
+    "origin": "ancestry",
+    "origin_values": [
+      "human"
+    ],
+    "conditions": { "level": 9 },
+    "description_eval_variables": {
+      "limit": "1"
+    },
+    "limit_refresh": "long_rest"
+  },
+  {
+    "slug": "hardy_traveler",
+    "kind": "static",
+    "title": {
+      "en": "Hardy Traveler",
+      "ru": "Закалённый путешественник"
+    },
+    "description": {
+      "en": "<hr>There's no journey too far or burden too heavy when you have friends at your side or hope within your heart. Increase your maximum and encumbered Bulk limits by 1. In addition, you gain a +10-foot circumstance bonus to your Speed during overland travel.",
+      "ru": "Если вы вышли в путь с друзьями, то дорога кажется короче, а ноша — легче. Максимальный переносимый вес и вес, который вы можете переносить, не становясь нагруженным, увеличиваются на 1. Кроме этого, вы получаете ситуативный бонус +10 футов к скорости путешествия по земле."
+    },
+    "origin": "ancestry",
+    "origin_values": [
+      "human"
+    ],
+    "conditions": { "level": 9 },
+    "description_eval_variables": {
+      "limit": "1"
+    },
+    "limit_refresh": "long_rest"
+  },
+  {
+    "slug": "incredible_improvisation",
+    "kind": "static",
+    "title": {
+      "en": "Incredible Improvisation",
+      "ru": "Невероятная импровизация"
+    },
+    "description": {
+      "en": "<b>Frequency</b> once per day<br>**Trigger** You attempt a check using a skill you're untrained in.\n\nA stroke of brilliance gives you a major advantage with a skill despite your inexperience. Gain a +4 circumstance bonus to the triggering skill check.",
+      "ru": "<b>Частота</b> 1 в день<br>\n**Критерии** Умный импровизатор<br>\n**Условие** вы совершаете проверку неизученного навыка.\n\nНесмотря на неопытность, вы получаете преимущество благодаря внезапному озарению. Вы получаете ситуативный бонус +4 к спровоцировавшей проверке навыка."
+    },
+    "origin": "ancestry",
+    "origin_values": [
+      "human"
+    ],
+    "conditions": { "level": 9 },
+    "description_eval_variables": {
+      "limit": "1"
+    },
+    "limit_refresh": "long_rest"
+  },
+  {
+    "slug": "multitalented",
+    "kind": "static",
+    "title": {
+      "en": "Multitalented",
+      "ru": "Одарённый"
+    },
+    "description": {
+      "en": "<hr>You've learned to split your focus between multiple classes with ease. You gain a 2nd-level multiclass dedication feat, even if you normally couldn't take another dedication feat until you take more feats from your current archetype.\n\nIf you have the aiuvarin versatile heritage, you don't need to meet the feat's attribute modifier prerequisites.",
+      "ru": "Вы научились уделять достаточно своего внимания сразу нескольким классам. Вы получаете мультиклассовую черту посвящения 2 уровня, даже если согласно правилам не можете взять черту посвящения, пока не возьмёте ещё несколько черт текущего архетипа.\n\nЕсли у вас универсальная родословная аюварин, вам необязательно соответствовать критериям черты относительно модификаторов характеристик."
+    },
+    "origin": "ancestry",
+    "origin_values": [
+      "human"
+    ],
+    "conditions": { "level": 9 },
+    "description_eval_variables": {
+      "limit": "1"
+    },
+    "limit_refresh": "long_rest"
+  },
+  {
+    "slug": "bark_and_tendril",
+    "kind": "static",
+    "title": {
+      "en": "Bark and Tendril",
+      "ru": "Кора и стебли"
+    },
+    "description": {
+      "en": "Вы владеете первобытной магией. Вы получаете **дубовую кожу** и **опутывание** в качестве врождённых первобытных заклинаний 2 круга и можете творить каждое из них один раз в день.",
+      "ru": "Вы владеете первобытной магией. Вы получаете **дубовую кожу** и **опутывание** в качестве врождённых первобытных заклинаний 2 круга и можете творить каждое из них один раз в день."
+    },
+    "origin": "ancestry",
+    "origin_values": ["leshy"],
+    "conditions": { "level": 9 },
+    "info": { "static_spells": { "oaken_resilience": { "limit": 1 }, "entangle": { "limit": 1 } } }
+  },
+  {
+    "slug": "lucky_keepsake",
+    "kind": "static",
+    "title": {
+      "en": "Lucky Keepsake",
+      "ru": "Дар на удачу"
+    },
+    "description": {
+      "en": "**Критерии** Суеверия леших.\n\nВы обладаете неким памятным предметом, дарующим вам удачу. Вы всегда получаете ситуативный бонус +1 к испытаниям против заклинаний и магических эффектов (а не только когда используете **Суеверия леших**). Если вы потеряете этот предмет, то лишитесь и бонуса, пока не выберете новый — обычно это занимает неделю.",
+      "ru": "**Критерии** Суеверия леших.\n\nВы обладаете неким памятным предметом, дарующим вам удачу. Вы всегда получаете ситуативный бонус +1 к испытаниям против заклинаний и магических эффектов (а не только когда используете **Суеверия леших**). Если вы потеряете этот предмет, то лишитесь и бонуса, пока не выберете новый — обычно это занимает неделю."
+    },
+    "origin": "ancestry",
+    "origin_values": ["leshy"],
+    "conditions": { "level": 9 }
+  },
+  {
+    "slug": "solar_rejuvenation",
+    "kind": "static",
+    "title": {
+      "en": "Solar Rejuvenation",
+      "ru": "Солнечное обновление"
+    },
+    "description": {
+      "en": "Если днём вы отдохнёте вне помещений 10 минут, то восстановите ПЗ в количестве, равном вашему модификатору Выносливости, умноженному на половину вашего уровня. Вы получаете это преимущество в дополнение к исцелению от Лечения ранений. Тем лешим, чьё питание не зависит от фотосинтеза, требуются иные подходящие условия. Например, грибным лешим понадобится тёмное и влажное место, а также разлагающиеся растения.",
+      "ru": "Если днём вы отдохнёте вне помещений 10 минут, то восстановите ПЗ в количестве, равном вашему модификатору Выносливости, умноженному на половину вашего уровня. Вы получаете это преимущество в дополнение к исцелению от Лечения ранений. Тем лешим, чьё питание не зависит от фотосинтеза, требуются иные подходящие условия. Например, грибным лешим понадобится тёмное и влажное место, а также разлагающиеся растения."
+    },
+    "origin": "ancestry",
+    "origin_values": ["leshy"],
+    "conditions": { "level": 9 }
+  },
+  {
+    "slug": "thorned_seedpod",
+    "kind": "static",
+    "title": {
+      "en": "Thorned Seedpod",
+      "ru": "Колючие плоды"
+    },
+    "description": {
+      "en": "**Критерии** Плоды.\n\nИз ваших плодов могут вырваться опасные колючие лианы. При критическом успехе вашего **Удара плодом** лианы болезненно впиваются во врага, нанося ему 1d4 продолжительного колющего урона.",
+      "ru": "**Критерии** Плоды.\n\nИз ваших плодов могут вырваться опасные колючие лианы. При критическом успехе вашего **Удара плодом** лианы болезненно впиваются во врага, нанося ему 1d4 продолжительного колющего урона."
+    },
+    "origin": "ancestry",
+    "origin_values": ["leshy"],
+    "conditions": { "level": 9 }
+  },
+  {
+    "slug": "pervasive_superstition",
+    "kind": "static",
+    "title": {
+      "en": "Pervasive Superstition",
+      "ru": "Укоренившиеся суеверия"
+    },
+    "description": {
+      "en": "**Критерии** Орочьи суеверия.\n\nВы полностью погружены в суеверия и практикуете древнюю орочью ментальную гимнастику, чтобы отвести от себя магию. Вы всегда получаете ситуативный бонус +1 к испытаниям против заклинаний и магических эффектов.",
+      "ru": "**Критерии** Орочьи суеверия.\n\nВы полностью погружены в суеверия и практикуете древнюю орочью ментальную гимнастику, чтобы отвести от себя магию. Вы всегда получаете ситуативный бонус +1 к испытаниям против заклинаний и магических эффектов."
+    },
+    "origin": "ancestry",
+    "origin_values": [
+      "orc"
+    ],
+    "conditions": {
+      "level": 9
+    }
+  },
+  {
+    "slug": "undying_ferocity",
+    "kind": "static",
+    "title": {
+      "en": "Undying Ferocity",
+      "ru": "Неумолимая свирепость"
+    },
+    "description": {
+      "en": "**Критерии** Орочья свирепость.\n\nВы избегаете объятий смерти, демонстрируя сверхъестественную живучесть. Смерти пока ещё не суждено вас забрать. При использовании Орочьей свирепости вы получаете временные ПЗ в количестве, равном вашему уровню.",
+      "ru": "**Критерии** Орочья свирепость.\n\nВы избегаете объятий смерти, демонстрируя сверхъестественную живучесть. Смерти пока ещё не суждено вас забрать. При использовании Орочьей свирепости вы получаете временные ПЗ в количестве, равном вашему уровню."
+    },
+    "origin": "ancestry",
+    "origin_values": [
+      "orc"
+    ],
+    "conditions": {
+      "level": 9
+    }
+  },
+  {
+    "slug": "accursed_claws",
+    "kind": "static",
+    "title": {
+      "en": "Accursed Claws",
+      "ru": "Проклятые когти"
+    },
+    "description": {
+      "en": "**Prerequisites** claw unarmed attack.\n\nYour claws carry your mother's hag magic. When you critically hit with a claw Strike, the target takes an additional 1d4 persistent mental damage.",
+      "ru": "**Критерии** безоружная атака когтями.\n\nВаши когти пронизаны магией вашей матери. Когда вы наносите критический Удар когтями, цель дополнительно получает 1d4 продолжительного ментального урона."
+    },
+    "origin": "ancestry",
+    "origin_values": [
+      "changeling"
+    ],
+    "conditions": { "level": 9 },
+    "description_eval_variables": {
+      "limit": "1"
+    },
+    "limit_refresh": "long_rest"
+  },
+  {
+    "slug": "occult_resistance",
+    "kind": "static",
+    "title": {
+      "en": "Occult Resistance",
+      "ru": "Оккультная защита"
+    },
+    "description": {
+      "en": "**Prerequisites** expert in Occultism.\n\nYour study of occult practices has shown you how to best defend against them. You gain a +1 circumstance bonus to all saving throws against occult effects. ",
+      "ru": "**Критерии** экспертный Оккультизм.\n\nВаши познания в оккультных практиках позволяют вам лучше им противостоять. Вы получаете ситуативный бонус +1 ко всем испытаниям против эффектов с дескриптором «оккультный»."
+    },
+    "origin": "ancestry",
+    "origin_values": [
+      "changeling"
+    ],
+    "conditions": { "level": 9 },
+    "description_eval_variables": {
+      "limit": "1"
+    },
+    "limit_refresh": "long_rest"
+  },
+  {
+    "slug": "celestial_magic",
+    "kind": "static",
+    "title": {
+      "en": "Celestial Magic",
+      "ru": "Магия небожителей"
+    },
+    "description": {
+      "en": "**Prerequisites** Angelkin, Lawbringer, Musetouched, or another lineage feat associated with celestials.\n\nYou possess celestial magic. Choose two of the following spells: clear mind, everlight, humanoid form, revealing light, share life, or sure footing. You can use each of the chosen spells once per day as 2nd-rank divine innate spells. Angelkin typically take <i>clear mind</i> and <i>humanoid form</i>, lawbringers typically have <i>everlight</i> and <i>share life</i>, and musetouched typically have <i>revealing light</i> and <i>sure footing</i>.",
+      "ru": "**Критерии** Ангелорождённый, Законник, Вдохновенный, или другая черта подвида, связанная с небожителями.\n\nВам подвластна небесная магия. Выберите два заклинания из списка: очищение разума, вечный свет, форма гуманоида, озаряющий свет, кровные узы, или устойчивая опора. Вы можете творить каждое из них один раз в день как врождённое сакральное заклинание 2 круга.\n\nАнгелорождённые обычно выбирают <i>очищение разума</i> и <i>форму гуманоида</i>, вдохновенные — <i>озаряющий свет</i> и <i>устойчивую опору</i>, законники — <i>вечный свет</i> и <i>кровные узы</i>."
+    },
+    "origin": "ancestry",
+    "origin_values": [
+      "nephilim"
+    ],
+    "conditions": { "level": 9 },
+    "description_eval_variables": {
+      "limit": "1"
+    },
+    "limit_refresh": "long_rest"
+  },
+  {
+    "slug": "divine_countermeasures",
+    "kind": "static",
+    "title": {
+      "en": "Divine Countermeasures",
+      "ru": "Сакральное противодействие"
+    },
+    "description": {
+      "en": "<hr>You've studied your extraplanar heritage with the intent of better defending yourself, whether against creatures aligned with or opposed to your extraplanar lineage, and you've found that your techniques are equally powerful against celestials, fiends, and other divine entities. You gain a +1 circumstance bonus to all saving throws against divine effects.",
+      "ru": "Вы погрузились в изучение своего экстрапланарного наследия с целью лучше себя защитить и обнаружили, что разработанные вами методы одинаково эффективны и против небожителей, и против бестий, и против других сакральных сущностей. Вы получаете ситуативный бонус +1 ко всем испытаниям против эффектов с дескриптором «сакральный»."
+    },
+    "origin": "ancestry",
+    "origin_values": [
+      "nephilim"
+    ],
+    "conditions": { "level": 9 },
+    "description_eval_variables": {
+      "limit": "1"
+    },
+    "limit_refresh": "long_rest"
+  },
+  {
+    "slug": "divine_wings",
+    "kind": "static",
+    "title": {
+      "en": "Divine Wings",
+      "ru": "Сакральные крылья"
+    },
+    "description": {
+      "en": "**Trigger** once per day.\n\nWith effort, you can call forth magical wings from your back, similar in appearance to those of your extraplanar forebear, whether they be elegantly feathered wings or ominous bat wings. These wings remain for 10 minutes. You gain a fly Speed equal to your Speed while you've manifested your wings.",
+      "ru": "**Условие** 1 в день.\n\nУсилием воли вы воплощаете за спиной волшебные крылья, схожие с крыльями ваших экстрапланарных предков, будь то прекрасные пернатые крылья или зловещие крылья летучей мыши. Они существуют 10 минут. Вы получаете скорость полёта, равную вашей наземной скорости, пока крылья воплощены."
+    },
+    "origin": "ancestry",
+    "origin_values": [
+      "divine",
+      "morph",
+      "nephilim"
+    ],
+    "conditions": { "level": 9 },
+    "description_eval_variables": {
+      "limit": "1"
+    },
+    "limit_refresh": "long_rest"
+  },
+  {
+    "slug": "fiendish_magic",
+    "kind": "static",
+    "title": {
+      "en": "Fiendish Magic",
+      "ru": "Магия бестий"
+    },
+    "description": {
+      "en": "**Prerequisites** Grimspawn, Pitborn, or Hellspawn, or another lineage feat associated with fiends.\n\nYou possess fiendish magic. Choose two of the following spells: disguise magic, false vitality, invisibility, see the unseen, shatter, or paranoia. You can use each of the chosen spells once per day as 2nd-rank divine innate spells. Grimspawn typically take <i>false vitality</i> and <i>see the unseen</i>, pitborn typically take <i>paranoia</i> and <i>shatter</i>, and hellspawn typically take <i>invisibility</i> and <i>disguise</i>.",
+      "ru": "\n**Критерии** Выходец из мрака, Выходец из бездны, или Выходец из преисподней, или другая черта подвида, связанная с бестиями.\n\n\nВам подвластна магия бестий. Выберите два заклинания из списка: сокрытие магии, ложная жизнь, невидимость, видение невидимого, разбивающий звук, или паранойя. Вы можете творить каждое из них один раз в день как врождённое сакральное заклинание 2 круга.\n\n\nВыходцы из Бездны обычно выбирают <i>паранойю</i> и <i>разбивающий звук</i>, выходцы из мрака — <i>видение невидимого</i> и <i>ложную жизнь</i>, выходцы из Преисподней — <i>невидимость</i> и <i>сокрытие магии</i>."
+    },
+    "origin": "ancestry",
+    "origin_values": [
+      "nephilim"
+    ],
+    "conditions": { "level": 9 },
+    "description_eval_variables": {
+      "limit": "1"
+    },
+    "limit_refresh": "long_rest"
+  }
+]

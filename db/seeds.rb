@@ -446,12 +446,11 @@ Item::Recipe.create(
 #   file.write(beautified_json_string)
 # end
 
-file_content = File.read('db/data/pathfinder2/charkeeper_spell.json')
+file_content = File.read('db/data/pathfinder2/charkeeper_feat.json')
 feats = JSON.parse(file_content)
 # feats = feats.select { |item| item['rus_traits'].include?('Волшебник') }
 
 data_hash = feats.filter_map do |item|
-  next if item['traits'].include?('Cantrip')
   next if item['level'] != 10
 
   {
@@ -459,31 +458,17 @@ data_hash = feats.filter_map do |item|
     kind: 'static',
     title: { en: item['name'], ru: item['rus_name'] },
     description: { en: item['text'], ru: item['rus_text'] },
-    origin: 'spell',
-    origin_value: '',
+    origin: 'ancestry',
     origin_values: item['traits'].split(', ').map(&:underscore),
-    price: { a: 1 },
-    info: {
-      level: 10,
-      targets: "",
-      range: "",
-      defense: "",
-      enhancements: [
-        {
-          "name": { "en": "", "ru": "" },
-          "description": {
-            "en": "",
-            "ru": ""
-          }
-        }
-      ]
-    }
+    conditions: { level: 10 },
+    description_eval_variables: { limit: '1' },
+    limit_refresh: 'long_rest'
   }
 end
 
 beautified_json_string = JSON.pretty_generate(data_hash)
 # # Write the beautified JSON string to a file
-File.open('db/data_prod/pathfinder2/spells10.json', 'w') do |file|
+File.open('db/data_prod/pathfinder2/feats10.json', 'w') do |file|
   file.write(beautified_json_string)
 end
 
