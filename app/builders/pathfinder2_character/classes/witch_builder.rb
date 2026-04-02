@@ -16,6 +16,7 @@ module Pathfinder2Character
         result[:spell_dc] = 1
         result[:spell_attack] = 1
         result[:main_ability] = 'int'
+        result[:feats] = result[:feats].push('familiar').uniq
 
         result
       end

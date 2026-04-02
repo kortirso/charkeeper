@@ -13,6 +13,7 @@ module CharactersContext
             optional(:level).filled(:integer)
             optional(:innate).filled(:bool)
             optional(:focus).filled(:bool)
+            optional(:additional).filled(:bool)
           end
         end
 
@@ -22,6 +23,7 @@ module CharactersContext
           input[:value] = {}
           input[:value] = { 'innate' => input[:innate] } if input.key?(:innate)
           input[:value] = { 'focus' => input[:focus] } if input.key?(:focus)
+          input[:value][:additional] = true if input[:additional]
         end
 
         def do_persist(input)

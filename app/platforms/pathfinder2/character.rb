@@ -37,7 +37,7 @@ module Pathfinder2
     attribute :spent_spell_slots, array: true, default: {}
     # только для 1 уровня
     attribute :ability_boosts, array: true # дополнительные повышения характеристик
-    attribute :ability_boosts_v2, array: true # дополнительные повышения характеристик
+    attribute :ability_boosts_v2, array: true, default: {} # дополнительные повышения характеристик
     attribute :skill_boosts, array: true, default: {} # дополнительные повышения навыков
   end
 

@@ -352,7 +352,7 @@ export const Pathfinder2Spells = (props) => {
                 onToggle={() => setRenderMode(!renderMode())}
               />
             </Show>
-            <Show when={character().spells_info}>
+            <Show when={renderMode() && character().spells_info}>
               <div class="flex justify-between items-center">
                 <h2 class="text-lg dark:text-snow mb-2">
                   {localize(TRANSLATION, locale()).focusSpells}

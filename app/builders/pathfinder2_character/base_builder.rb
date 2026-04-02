@@ -12,7 +12,10 @@ module Pathfinder2Character
         lores: {},
         ability_boosts: { free: 4 },
         ability_boosts_v2: { base: { free: 4 } },
-        skill_boosts: { free: 0 }
+        skill_boosts: { free: 0 },
+        feats: [],
+        spells: [],
+        focus_spells: []
       })
     end
   end

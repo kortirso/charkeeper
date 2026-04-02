@@ -4,7 +4,7 @@
   "gambler": { "ability_boosts": "dex_cha", "skill_boosts": "deception", "lore_name": "Lore (Games)", "feat": "lie_to_me" },
   "acrobat": { "ability_boosts": "str_dex", "skill_boosts": "acrobatics", "lore_name": "Lore (Circus)", "feat": "steady_balance" },
   "entertainer": { "ability_boosts": "dex_cha", "skill_boosts": "performance", "lore_name": "Lore (Theater)", "feat": "fascinating_performance" },
-  "noble": { "ability_boosts": "int_cha", "skill_boosts": "society", "lore_name": "Lore (Genealogy) or Heraldry", "feat": "courtly_graces" },
+  "noble": { "ability_boosts": "int_cha", "skill_boosts": "society", "lore_name": "Lore (Genealogy or Heraldry)", "feat": "courtly_graces" },
   "warrior": {
     "ability_boosts": "str_con", "skill_boosts": "intimidation", "lore_name": "Lore (Warfare)", "feat": "intimidating_glare"
   },
