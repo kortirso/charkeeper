@@ -104,9 +104,9 @@ class Dnd2024Decorator < ApplicationDecoratorV2
     res.each do |(key_name, values)|
       if key_name.include?('.')
         primary, secondary = key_name.split('.')
-        @result[primary][secondary] = [@result[primary][secondary], *values].max
+        @result[primary][secondary] = [@result[primary][secondary], *values].compact.max
       else
-        @result[key_name] = [@result[key_name], *values].max
+        @result[key_name] = [@result[key_name], *values].compact.max
       end
     end
   end
