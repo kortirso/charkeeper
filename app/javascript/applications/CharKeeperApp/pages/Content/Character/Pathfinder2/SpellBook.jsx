@@ -6,6 +6,7 @@ import { useAppState, useAppLocale, useAppAlert } from '../../../../context';
 import { localize, performResponse, translate } from '../../../../helpers';
 import config from '../../../../data/pathfinder2.json';
 import { createCharacterSpellRequest } from '../../../../requests/createCharacterSpellRequest';
+import { updateCharacterSpellRequest } from '../../../../requests/updateCharacterSpellRequest';
 import { removeCharacterSpellRequest } from '../../../../requests/removeCharacterSpellRequest';
 
 const TRANSLATION = {
@@ -13,7 +14,8 @@ const TRANSLATION = {
     cantripsAmount: 'Cantrips amount',
     spellsAmount: 'Spells amount',
     spellIsLearned: 'Spell is learned',
-    back: 'Back to preparing spells',
+    spellIsForget: 'Spell is forget',
+    back: 'Back to using spells',
     filters: 'Show filters',
     tradition: 'Tradition',
     levels: 'Levels',
@@ -25,7 +27,8 @@ const TRANSLATION = {
     cantripsAmount: 'Лимит фокусов',
     spellsAmount: 'Лимит заклинаний',
     spellIsLearned: 'Заклинание выучено',
-    back: 'К подготовке заклинаний',
+    spellIsForget: 'Заклинание забыто',
+    back: 'К применению заклинаний',
     filters: 'Показать фильтры',
     tradition: 'Традиция',
     levels: 'Уровни',
@@ -74,9 +77,12 @@ export const Pathfinder2SpellBook = (props) => {
   });
 
   const learnedSpellIds = createMemo(() => {
-    if (props.characterSpells === undefined) return [];
+    if (props.characterSpells === undefined) return {};
 
-    return props.characterSpells.map((item) => item.spell.id);
+    return props.characterSpells.reduce((acc, item) => {
+      acc[item.spell.id] = { value: item.value, characterSpellId: item.id };
+      return acc;
+    }, {});
   });
 
   const learnedCantrips = createMemo(() => {
@@ -85,9 +91,11 @@ export const Pathfinder2SpellBook = (props) => {
     return props.characterSpells.filter((item) => item.spell.info.level === 0).length;
   });
 
-  const learnSpell = async (spellId) => {
-    const result = await createCharacterSpellRequest(appState.accessToken, character().provider, character().id, { spell_id: spellId });
+  // изучить заклинание
+  const learnSpell = async (e, spell) => {
+    e.stopPropagation();
 
+    const result = await createCharacterSpellRequest(appState.accessToken, character().provider, character().id, { spell_id: spell.id, spell: { level: spell.info.level } });
     performResponse(
       result,
       function() { // eslint-disable-line solid/reactivity
@@ -98,12 +106,77 @@ export const Pathfinder2SpellBook = (props) => {
     );
   }
 
-  const forgetSpell = async (spellId) => {
-    const result = await removeCharacterSpellRequest(appState.accessToken, character().provider, character().id, spellId);
+  // забыть заклинание
+  const forgetSpell = async (e, spell) => {
+    e.stopPropagation();
+
+    const result = await removeCharacterSpellRequest(appState.accessToken, character().provider, character().id, spell.id);
     performResponse(
       result,
       function() { // eslint-disable-line solid/reactivity
-        props.onSetCharacterSpells(props.characterSpells.filter((item) => item.spell.id !== spellId));
+        props.onSetCharacterSpells(props.characterSpells.filter((item) => item.spell.id !== spell.id));
+        renderNotice(localize(TRANSLATION, locale()).spellIsForget);
+      },
+      function() { renderAlerts(result.errors_list) }
+    );
+  }
+
+  // изучить спонтанное заклинание на определенный уровень
+  const learnSpellLevel = async (e, spell, level) => {
+    e.stopPropagation();
+
+    const payload = { spell_id: spell.id, spell: { level: level } };
+
+    const result = await createCharacterSpellRequest(appState.accessToken, character().provider, character().id, payload);
+    performResponse(
+      result,
+      function() { // eslint-disable-line solid/reactivity
+        props.onSetCharacterSpells([result.spell].concat(props.characterSpells));
+        renderNotice(localize(TRANSLATION, locale()).spellIsLearned);
+      },
+      function() { renderAlerts(result.errors_list) }
+    );
+  }
+
+  // изучить спонтанное заклинание на дополнительный уровень
+  const upgradeSpellLevel = async (e, spell, level) => {
+    e.stopPropagation();
+
+    const payload = { spell: { level: level, selected_count: 1 } };
+    const characterSpellId = learnedSpellIds()[spell.id].characterSpellId;
+
+    const result = await updateCharacterSpellRequest(appState.accessToken, character().provider, character().id, characterSpellId, payload);
+    performResponse(
+      result,
+      function() { // eslint-disable-line solid/reactivity
+        const newValue = props.characterSpells.slice().map((element) => {
+          if (element.id !== characterSpellId) return element;
+          return result.spell;
+        });
+        props.onSetCharacterSpells(newValue);
+        renderNotice(localize(TRANSLATION, locale()).spellIsLearned);
+      },
+      function() { renderAlerts(result.errors_list) }
+    );
+  }
+
+  // забыть спонтанное заклинание
+  const forgetSpellLevel = async (e, spell, level) => {
+    e.stopPropagation();
+
+    const payload = { spell: { level: level, selected_count: 0 } };
+    const characterSpellId = learnedSpellIds()[spell.id].characterSpellId;
+
+    const result = await updateCharacterSpellRequest(appState.accessToken, character().provider, character().id, characterSpellId, payload);
+    performResponse(
+      result,
+      function() { // eslint-disable-line solid/reactivity
+        const newValue = props.characterSpells.slice().map((element) => {
+          if (element.id !== characterSpellId) return element;
+          return result.spell;
+        });
+        props.onSetCharacterSpells(newValue);
+        renderNotice(localize(TRANSLATION, locale()).spellIsForget);
       },
       function() { renderAlerts(result.errors_list) }
     );
@@ -114,7 +187,7 @@ export const Pathfinder2SpellBook = (props) => {
       <StatsBlock
         items={[
           { title: localize(TRANSLATION, locale()).cantripsAmount, value: `${learnedCantrips()}/${character().spells_info.cantrips_amount}` },
-          { title: localize(TRANSLATION, locale()).spellsAmount, value: `${learnedSpellIds().length - learnedCantrips()}/${character().spells_info.spells_amount}` }
+          { title: localize(TRANSLATION, locale()).spellsAmount, value: `${Object.keys(learnedSpellIds()).length - learnedCantrips()}/${character().spells_info.spells_amount}` }
         ]}
       />
       <Button default textable classList="mb-2" onClick={props.onBack}>{localize(TRANSLATION, locale()).back}</Button>
@@ -153,12 +226,38 @@ export const Pathfinder2SpellBook = (props) => {
       <div class="flex flex-col gap-2">
         <For each={filteredSpells()}>
           {(spell) =>
-            <Pathfinder2Spell
-              spell={spell}
-              learnedSpellIds={learnedSpellIds()}
-              onForgetSpell={forgetSpell}
-              onLearnSpell={learnSpell}
-            />
+            <Pathfinder2Spell spell={spell}>
+              <Show
+                when={character().spells_info.prepare || spell.info.level === 0}
+                fallback={
+                  <div class="flex flex-col gap-2">
+                    {/* изучение спонтанного заклинания */}
+                    <For each={Object.keys(character().spells_info.spells_slots)}>
+                      {(level) =>
+                        <div class="flex gap-2">
+                          <span>{level} - </span>
+                          <Show
+                            when={learnedSpellIds()[spell.id]}
+                            fallback={<Checkbox checked={false} onToggle={(e) => learnSpellLevel(e, spell, level)} />}
+                          >
+                            <Checkbox
+                              checked={learnedSpellIds()[spell.id].value[level]?.selected_count !== 0}
+                              onToggle={(e) => learnedSpellIds()[spell.id].value[level]?.selected_count !== 0 ? forgetSpellLevel(e, spell, level) : upgradeSpellLevel(e, spell, level)}
+                            />
+                          </Show>
+                        </div>
+                      }
+                    </For>
+                  </div>
+                }
+              >
+                {/* изучение подготавливаемого заклинания или Заговора */}
+                <Checkbox
+                  checked={learnedSpellIds()[spell.id]}
+                  onToggle={(e) => learnedSpellIds()[spell.id] ? forgetSpell(e, spell) : learnSpell(e, spell)}
+                />
+              </Show>
+            </Pathfinder2Spell>
           }
         </For>
       </div>

@@ -22,7 +22,7 @@ module Frontend
         end
 
         def create
-          case add_spell.call(character: @character, feat: @spell)
+          case add_spell.call(spell_params.merge(character: @character, feat: @spell))
           in { errors: errors, errors_list: errors_list } then unprocessable_response(errors, errors_list)
           in { result: result }
             serialize_resource(result, ::Pathfinder2::Characters::SpellSerializer, :spell, {}, :created)
@@ -30,9 +30,10 @@ module Frontend
         end
 
         def update
-          case change_spell.call(update_params.merge(character_spell: @character_spell))
+          case change_spell.call(spell_params.merge(character_spell: @character_spell))
           in { errors: errors, errors_list: errors_list } then unprocessable_response(errors, errors_list)
-          else only_head_response
+          in { result: result }
+            serialize_resource(result, ::Pathfinder2::Characters::SpellSerializer, :spell, {}, :ok)
           end
         end
 
@@ -60,7 +61,7 @@ module Frontend
           @character.feats.includes(:feat).where(feats: { origin: 4 })
         end
 
-        def update_params
+        def spell_params
           params.require(:spell).permit!.to_h
         end
       end

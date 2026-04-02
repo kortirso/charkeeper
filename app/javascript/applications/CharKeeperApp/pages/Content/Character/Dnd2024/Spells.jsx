@@ -6,7 +6,7 @@ import { StatsBlock, ErrorWrapper, Button, Toggle, Checkbox, Select, GuideWrappe
 import config from '../../../../data/dnd2024.json';
 import { useAppState, useAppLocale } from '../../../../context';
 import {
-  Plus, Minus, Avatar, Artificer, Barbarian, Bard, Cleric, Druid, Fighter, Monk, Paladin, Ranger, Rogue, Sorcerer, Warlock,
+  Avatar, Artificer, Barbarian, Bard, Cleric, Druid, Fighter, Monk, Paladin, Ranger, Rogue, Sorcerer, Warlock,
   Wizard
 } from '../../../../assets';
 import { fetchSpellsRequest } from '../../../../requests/fetchSpellsRequest';
@@ -350,14 +350,10 @@ export const Dnd2024Spells = (props) => {
                                 <div>
                                   <Switch fallback={<></>}>
                                     <Match when={!knownSpellIds().includes(spell.id)}>
-                                      <Button default size="small" onClick={(event) => learnSpell(event, spell.id)}>
-                                        <Plus width={20} height={20} />
-                                      </Button>
+                                      <Checkbox checked={false} onToggle={(e) => learnSpell(e, spell.id)} />
                                     </Match>
                                     <Match when={!staticSpellIds().includes(spell.id)}>
-                                      <Button default size="small" onClick={(event) => forgetSpell(event, spell.id)}>
-                                        <Minus width={20} height={20} />
-                                      </Button>
+                                      <Checkbox checked onToggle={(e) => forgetSpell(e, spell.id)} />
                                     </Match>
                                   </Switch>
                                 </div>
