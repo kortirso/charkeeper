@@ -15,6 +15,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - bonuses for PF2 characters
 - class leveling progression for PF2 characters
 - spells filtering for PF2 characters
+- focus and innate spells management
 
 ## [0.4.20] - 2026-03-28
 ### Added

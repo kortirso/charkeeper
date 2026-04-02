@@ -33,7 +33,7 @@ const TRANSLATION = {
     tradition: 'Традиция',
     levels: 'Уровни',
     cantrips: 'Фокусы',
-    search: 'Search',
+    search: 'Поиск',
     searchByTitle: 'Поиск по названию'
   }
 }
@@ -44,7 +44,7 @@ export const Pathfinder2SpellBook = (props) => {
 
   const [showFilters, setShowFilters] = createSignal(false);
   const [traditionFilter, setTraditionFilter] = createSignal(props.character.spell_list ? [props.character.spell_list] : [])
-  const [levelFilter, setLevelFilter] = createSignal(Array.from([...Array(props.character.spells_info.max_spell_level).keys()], (x) => x.toString()));
+  const [levelFilter, setLevelFilter] = createSignal(props.character.spells_info ? Array.from([...Array(props.character.spells_info.max_spell_level).keys()], (x) => x.toString()) : ['0']);
   const [titleFilter, setTitleFilter] = createSignal('');
 
   const [appState] = useAppState();
@@ -64,9 +64,9 @@ export const Pathfinder2SpellBook = (props) => {
   const filteredSpells = createMemo(() => {
     if (!spells()) return [];
 
-    const traditionFilterSet = traditionFilter().length > 0 ? (new Set(traditionFilter())) : null;
-    const levelFilterSet = levelFilter().length > 0 ? levelFilter().map((item) => parseInt(item)) : null;
-    const searchPattern = titleFilter().length > 2 ? titleFilter().toLowerCase() : null;
+    const traditionFilterSet = traditionFilter().length > 0 && !props.focus ? (new Set(traditionFilter())) : null;
+    const levelFilterSet = levelFilter().length > 0 && !props.focus ? levelFilter().map((item) => parseInt(item)) : null;
+    const searchPattern = titleFilter().length > 2 && !props.focus ? titleFilter().toLowerCase() : null;
     return spells().filter((item) => {
       if (traditionFilterSet && !hasSharedElement(item.origin_value, traditionFilterSet)) return false;
       if (levelFilterSet && !levelFilterSet.includes(item.info.level)) return false;
@@ -95,7 +95,11 @@ export const Pathfinder2SpellBook = (props) => {
   const learnSpell = async (e, spell) => {
     e.stopPropagation();
 
-    const result = await createCharacterSpellRequest(appState.accessToken, character().provider, character().id, { spell_id: spell.id, spell: { level: spell.info.level } });
+    const payload = { level: spell.info.level };
+    if (props.innate) payload.innate = true;
+    if (props.focus) payload.focus = true;
+
+    const result = await createCharacterSpellRequest(appState.accessToken, character().provider, character().id, { spell_id: spell.id, spell: payload });
     performResponse(
       result,
       function() { // eslint-disable-line solid/reactivity
@@ -184,21 +188,25 @@ export const Pathfinder2SpellBook = (props) => {
 
   return (
     <>
-      <StatsBlock
-        items={[
-          { title: localize(TRANSLATION, locale()).cantripsAmount, value: `${learnedCantrips()}/${character().spells_info.cantrips_amount}` },
-          { title: localize(TRANSLATION, locale()).spellsAmount, value: `${Object.keys(learnedSpellIds()).length - learnedCantrips()}/${character().spells_info.spells_amount}` }
-        ]}
-      />
+      <Show when={!props.innate && !props.focus}>
+        <StatsBlock
+          items={[
+            { title: localize(TRANSLATION, locale()).cantripsAmount, value: `${learnedCantrips()}/${character().spells_info.cantrips_amount}` },
+            { title: localize(TRANSLATION, locale()).spellsAmount, value: `${Object.keys(learnedSpellIds()).length - learnedCantrips()}/${character().spells_info.spells_amount}` }
+          ]}
+        />
+      </Show>
       <Button default textable classList="mb-2" onClick={props.onBack}>{localize(TRANSLATION, locale()).back}</Button>
-      <Checkbox
-        labelText={localize(TRANSLATION, locale()).filters}
-        labelPosition="right"
-        labelClassList="ml-2"
-        classList="mb-2"
-        checked={showFilters()}
-        onToggle={() => setShowFilters(!showFilters())}
-      />
+      <Show when={!props.focus}>
+        <Checkbox
+          labelText={localize(TRANSLATION, locale()).filters}
+          labelPosition="right"
+          labelClassList="ml-2"
+          classList="mb-2"
+          checked={showFilters()}
+          onToggle={() => setShowFilters(!showFilters())}
+        />
+      </Show>
       <Show when={showFilters()}>
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-2 mb-2">
           <Select
@@ -228,7 +236,7 @@ export const Pathfinder2SpellBook = (props) => {
           {(spell) =>
             <Pathfinder2Spell spell={spell}>
               <Show
-                when={character().spells_info.prepare || spell.info.level === 0}
+                when={character().spells_info?.prepare || spell.info.level === 0 || props.innate}
                 fallback={
                   <div class="flex flex-col gap-2">
                     {/* изучение спонтанного заклинания */}

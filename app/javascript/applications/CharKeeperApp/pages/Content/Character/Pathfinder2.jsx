@@ -49,9 +49,8 @@ export const Pathfinder2 = (props) => {
   });
 
   const characterTabs = createMemo(() => {
-    const result = ['combat', 'equipment'];
-    if (character().spell_attack > 0 || character().formatted_static_spells.length > 0) result.push('spells');
-    return result.concat(['classLevels', 'professions', 'rest', 'bonuses', 'notes', 'avatar']);
+    const result = ['combat', 'equipment', 'spells', 'classLevels', 'professions', 'rest', 'bonuses', 'notes', 'avatar'];
+    return result;
   });
 
   const mobileView = createMemo(() => {
