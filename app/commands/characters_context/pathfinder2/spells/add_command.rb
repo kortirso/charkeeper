@@ -10,18 +10,20 @@ module CharactersContext
           params do
             required(:character).filled(type?: ::Pathfinder2::Character)
             required(:feat).filled(type?: ::Pathfinder2::Feat)
+            optional(:level).filled(:integer)
           end
         end
 
         private
 
         def do_persist(input)
+          spontaneous_caster = ::Pathfinder2::Character::SPONTANEOUS_CASTERS.include?(input[:character].data.main_class)
+
           result = ::Pathfinder2::Character::Feat.create!(
             character: input[:character],
             feat: input[:feat],
-            ready_to_use: ::Pathfinder2::Character::SPONTANEOUS_CASTERS.include?(input[:character].data.main_class),
-            selected_count: 0,
-            used_count: 0
+            ready_to_use: spontaneous_caster,
+            value: spontaneous_caster ? { input[:level].to_s => { 'selected_count' => 1 } } : {}
           )
 
           { result: result }

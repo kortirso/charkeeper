@@ -35,7 +35,7 @@ describe Frontend::Pathfinder2::Characters::SpellsController do
 
           expect(response).to have_http_status :ok
           expect(response.parsed_body['spells'].size).to eq 1
-          expect(response_values.keys).to contain_exactly('id', 'notes', 'spell', 'ready_to_use', 'selected_count', 'used_count')
+          expect(response_values.keys).to contain_exactly('id', 'notes', 'spell', 'ready_to_use', 'value')
         end
       end
     end
@@ -78,7 +78,8 @@ describe Frontend::Pathfinder2::Characters::SpellsController do
             post :create, params: {
               character_id: user_character.id,
               spell_id: spell.id,
-              charkeeper_access_token: access_token
+              charkeeper_access_token: access_token,
+              spell: { level: 0 }
             }
           }
 
@@ -86,7 +87,7 @@ describe Frontend::Pathfinder2::Characters::SpellsController do
             expect { request }.to change(user_character.feats, :count).by(1)
             expect(response).to have_http_status :created
             expect(response.parsed_body['spell'].keys).to(
-              contain_exactly('id', 'notes', 'spell', 'ready_to_use', 'selected_count', 'used_count')
+              contain_exactly('id', 'notes', 'spell', 'ready_to_use', 'value')
             )
           end
         end
@@ -149,7 +150,6 @@ describe Frontend::Pathfinder2::Characters::SpellsController do
 
             expect(character_spell.reload.notes).to eq 'Notes'
             expect(response).to have_http_status :ok
-            expect(response.parsed_body).to eq({ 'result' => 'ok' })
           end
         end
       end

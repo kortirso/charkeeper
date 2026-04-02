@@ -3,7 +3,6 @@ import { createSignal, createMemo, For, Show, batch } from 'solid-js';
 import { SpellCastTime, SpellRange, SpellAttack, SpellComponents, SpellDuration, SpellEffects } from '../../../../pages';
 import { Button, Checkbox, createModal, TextArea, Toggle } from '../../../../components';
 import config from '../../../../data/dnd2024.json';
-import { Minus, Plus } from '../../../../assets';
 import { useAppState, useAppLocale } from '../../../../context';
 import { fetchSpellRequest } from '../../../../requests/fetchSpellRequest';
 import { localize } from '../../../../helpers';
@@ -153,18 +152,10 @@ export const SpellsToggleList = (props) => {
                     </div>
                     <div>
                       <Show when={!props.preparedSpellFilter && !characterSpell.data && props.canPrepareSpells}>
-                        <Show
-                          when={characterSpell.ready_to_use}
-                          fallback={
-                            <Button default size="small" onClick={(event) => enableSpell(event, characterSpell.id)}>
-                              <Plus width={20} height={20} />
-                            </Button>
-                          }
-                        >
-                          <Button default size="small" onClick={(event) => disableSpell(event, characterSpell.id)}>
-                            <Minus width={20} height={20} />
-                          </Button>
-                        </Show>
+                        <Checkbox
+                          checked={characterSpell.ready_to_use}
+                          onToggle={(e) => characterSpell.ready_to_use ? disableSpell(e, characterSpell.id) : enableSpell(e, characterSpell.id)}
+                        />
                       </Show>
                     </div>
                   </div>
