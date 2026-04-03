@@ -3,7 +3,7 @@ import { createEffect, createSignal, For, Show, batch } from 'solid-js';
 import { ErrorWrapper, Button, EditWrapper, Dice } from '../../../../components';
 import config from '../../../../data/pathfinder2.json';
 import { useAppState, useAppLocale, useAppAlert } from '../../../../context';
-import { Minus, Plus } from '../../../../assets';
+import { Minus, Plus, Upgrade } from '../../../../assets';
 import { updateCharacterRequest } from '../../../../requests/updateCharacterRequest';
 import { modifier, localize } from '../../../../helpers';
 
@@ -29,7 +29,7 @@ export const Pathfinder2Abilities = (props) => {
 
   const [lastActiveCharacterId, setLastActiveCharacterId] = createSignal(undefined);
   const [editMode, setEditMode] = createSignal(false);
-  const [abilitiesData, setAbilitiesData] = createSignal(character().abilities);
+  const [abilitiesData, setAbilitiesData] = createSignal(character().raw_abilities);
 
   const [appState] = useAppState();
   const [{ renderAlerts }] = useAppAlert();
@@ -39,18 +39,26 @@ export const Pathfinder2Abilities = (props) => {
     if (lastActiveCharacterId() === character().id) return;
 
     batch(() => {
-      setAbilitiesData(character().abilities);
+      setAbilitiesData(character().raw_abilities);
       setEditMode(character().guide_step === 1);
       setLastActiveCharacterId(character().id);
     });
   });
 
-  const decreaseAbilityValue = (slug) => setAbilitiesData({ ...abilitiesData(), [slug]: abilitiesData()[slug] - 1 });
-  const increaseAbilityValue = (slug) => setAbilitiesData({ ...abilitiesData(), [slug]: abilitiesData()[slug] + 1 });
+  const bonusValue = (value) => Math.floor((value / 2) - 5);
+  const boosted = (value) => value % 2 === 1;
+
+  const decreaseAbilityValue = (slug) => {
+    setAbilitiesData({ ...abilitiesData(), [slug]: abilitiesData()[slug] - (abilitiesData()[slug] > 18 ? 1 : 2) });
+  }
+
+  const increaseAbilityValue = (slug) => {
+    setAbilitiesData({ ...abilitiesData(), [slug]: abilitiesData()[slug] + (abilitiesData()[slug] >= 18 ? 1 : 2) });
+  }
 
   const cancelEditing = () => {
     batch(() => {
-      setAbilitiesData(character().abilities);
+      setAbilitiesData(character().raw_abilities);
       setEditMode(false);
     });
   }
@@ -73,10 +81,7 @@ export const Pathfinder2Abilities = (props) => {
   }
 
   const updateCharacter = async () => {
-    const transformedAbilities = Object.fromEntries(
-      Object.entries(abilitiesData()).map(([key, value]) => [key, (value * 2) + 10])
-    );
-    const payload = { abilities: transformedAbilities }
+    const payload = { abilities: abilitiesData() }
     const result = await updateCharacterRequest(appState.accessToken, 'pathfinder2', character().id, { character: payload });
 
     if (result.errors_list === undefined) {
@@ -111,16 +116,27 @@ export const Pathfinder2Abilities = (props) => {
                   <p class="text-sm uppercase text-center mb-2">{ability}</p>
                   <div class="mx-auto flex items-center justify-center">
                     <p class="text-2xl font-normal!">
-                      {editMode() ?
-                        abilitiesData()[slug] :
-                        <Dice
-                          width="64"
-                          height="64"
-                          text={modifier(character().modified_abilities[slug])}
-                          textClassList="text-4xl"
-                          onClick={() => props.openDiceRoll(`/check attr ${slug}`, character().modified_abilities[slug])}
-                        />
-                      }
+                      <Show
+                        when={editMode()}
+                        fallback={
+                          <div class="relative">
+                            <Dice
+                              width="64"
+                              height="64"
+                              text={modifier(character().modified_abilities[slug])}
+                              textClassList="text-4xl"
+                              onClick={() => props.openDiceRoll(`/check attr ${slug}`, character().modified_abilities[slug])}
+                            />
+                            <Show when={boosted(abilitiesData()[slug])}>
+                              <div class="absolute -top-1 -right-3">
+                                <Upgrade width="24" height="24" />
+                              </div>
+                            </Show>
+                          </div>
+                        }
+                      >
+                        {bonusValue(abilitiesData()[slug])}{boosted(abilitiesData()[slug]) ? '+' : ''}
+                      </Show>
                     </p>
                   </div>
                   <Show when={editMode()}>
