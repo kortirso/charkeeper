@@ -7,6 +7,10 @@ module Pathfinder2
     SKILL_ORIGIN = 'skill'
     CLASS_ORIGIN = 'class'
     SPELL_ORIGIN = 'spell'
+    STATIC_RACE_ORIGIN = 'static_race'
+    STATIC_SUBRACE_ORIGIN = 'static_subrace'
+    STATIC_CLASS_ORIGIN = 'static_class'
+    STATIC_SUBCLASS_ORIGIN = 'static_subclass'
 
     STATIC = 'static' # рендерится текст
     UPDATE_RESULT = 'update_result' # рендерится, но затемняется
@@ -25,7 +29,11 @@ module Pathfinder2
       ANCESTRY_ORIGIN => 1,
       SKILL_ORIGIN => 2,
       CLASS_ORIGIN => 3,
-      SPELL_ORIGIN => 4
+      SPELL_ORIGIN => 4,
+      STATIC_RACE_ORIGIN => 5,
+      STATIC_SUBRACE_ORIGIN => 6,
+      STATIC_CLASS_ORIGIN => 7,
+      STATIC_SUBCLASS_ORIGIN => 8
     }
     enum :kind, { STATIC => 0, UPDATE_RESULT => 1, HIDDEN => 2, ONE_FROM_LIST => 3, MANY_FROM_LIST => 4, TEXT => 5 }
     enum :limit_refresh, { SHORT_REST => 0, LONG_REST => 1 }

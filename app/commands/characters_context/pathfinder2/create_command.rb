@@ -5,7 +5,8 @@ module CharactersContext
     class CreateCommand < BaseCommand
       include Deps[
         add_feat: 'commands.characters_context.pathfinder2.feats.add',
-        add_spell: 'commands.characters_context.pathfinder2.spells.add'
+        add_spell: 'commands.characters_context.pathfinder2.spells.add',
+        refresh_feats: 'services.characters_context.pathfinder2.refresh_feats'
       ]
 
       # rubocop: disable Metrics/BlockLength
@@ -67,6 +68,7 @@ module CharactersContext
         add_feats(character, input) if input[:feats].any?
         add_spells(character, input[:spells]) if input[:spells].any?
         add_spells(character, input[:focus_spells], true) if input[:focus_spells].any?
+        refresh_feats.call(character: character)
 
         { result: character }
       end
