@@ -16,6 +16,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - class leveling progression for PF2 characters
 - spells filtering for PF2 characters
 - focus and innate spells management
+- pet/familiar management for PF2 characters
 
 ### Modified
 - builders for PF2 characters

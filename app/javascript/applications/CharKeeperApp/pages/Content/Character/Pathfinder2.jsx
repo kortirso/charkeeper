@@ -3,7 +3,7 @@ import * as i18n from '@solid-primitives/i18n';
 import { createWindowSize } from '@solid-primitives/resize-observer';
 
 import {
-  Pathfinder2Abilities, Pathfinder2Health, Pathfinder2Professions, Pathfinder2Static, Pathfinder2Skills,
+  Pathfinder2Abilities, Pathfinder2Health, Pathfinder2Professions, Pathfinder2Static, Pathfinder2Skills, Pathfinder2Companion,
   Pathfinder2SavingThrows, Pathfinder2Leveling, Pathfinder2Spells, Pathfinder2Rest, Pathfinder2Bonuses
 } from '../../../pages';
 import {
@@ -49,8 +49,9 @@ export const Pathfinder2 = (props) => {
   });
 
   const characterTabs = createMemo(() => {
-    const result = ['combat', 'equipment', 'spells', 'classLevels', 'professions', 'rest', 'bonuses', 'notes', 'avatar'];
-    return result;
+    const result = ['combat', 'equipment', 'spells', 'classLevels'];
+    if (character().can_have_pet || character().can_have_familiar) result.push('companion');
+    return result.concat('professions', 'rest', 'bonuses', 'notes', 'avatar');
   });
 
   const mobileView = createMemo(() => {
@@ -140,6 +141,9 @@ export const Pathfinder2 = (props) => {
                 onReplaceCharacter={props.onReplaceCharacter}
                 onReloadCharacter={props.onReloadCharacter}
               />
+            </Match>
+            <Match when={activeMobileTab() === 'companion'}>
+              <Pathfinder2Companion character={character()} onReloadCharacter={props.onReloadCharacter} />
             </Match>
             <Match when={activeMobileTab() === 'rest'}>
               <Pathfinder2Rest character={character()} onReloadCharacter={props.onReloadCharacter} />
@@ -256,6 +260,9 @@ export const Pathfinder2 = (props) => {
                 onReplaceCharacter={props.onReplaceCharacter}
                 onReloadCharacter={props.onReloadCharacter}
               />
+            </Match>
+            <Match when={activeTab() === 'companion'}>
+              <Pathfinder2Companion character={character()} onReloadCharacter={props.onReloadCharacter} />
             </Match>
             <Match when={activeTab() === 'rest'}>
               <Pathfinder2Rest character={character()} onReloadCharacter={props.onReloadCharacter} />

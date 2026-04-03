@@ -103,6 +103,9 @@ module Pathfinder2
 
     attribute :data, Pathfinder2::CharacterData.to_type
 
+    has_one :pet, class_name: 'Pathfinder2::Character::Pet', dependent: :destroy
+    has_one :animal_companion, class_name: 'Pathfinder2::Character::AnimalCompanion', dependent: :destroy
+
     def decorator(simple: false, version: nil)
       Pathfinder2Decorator.new.call(character: self, simple: simple, version: version)
     end
