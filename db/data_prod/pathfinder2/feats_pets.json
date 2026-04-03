@@ -1,0 +1,160 @@
+[
+  {
+    "slug": "amphibious",
+    "kind": "static",
+    "title": {
+      "en": "Amphibious",
+      "ru": "Амфибия"
+    },
+    "description": {
+      "en": "It gains the amphibious trait, allowing it to breathe in both air and water, and has both a land Speed and a swim Speed, each equal to its highest land Speed or swim Speed.",
+      "ru": "Любимец получает дескриптор «амфибия», что позволяет ему дышать как под водой, так и в воздухе. Кроме того, у него есть как наземная скорость, так и скорость плавания; обе равны наивысшему значению из двух."
+    },
+    "origin": "pet"
+  },
+  {
+    "slug": "fast_movement",
+    "kind": "static",
+    "title": {
+      "en": "Fast Movement",
+      "ru": "Быстрое перемещение"
+    },
+    "description": {
+      "en": "Increase one of the pet's Speeds from 25 feet to 40 feet.",
+      "ru": "Одна из скоростей любимца увеличивается с 25 до 40 футов."
+    },
+    "origin": "pet"
+  },
+  {
+    "slug": "tough",
+    "kind": "hidden",
+    "title": {
+      "en": "Tough",
+      "ru": "Живучий"
+    },
+    "description": {
+      "en": "Your pet's max HP increase by 2 per level.",
+      "ru": "Максимальные ПЗ вашего любимца увеличиваются на 2 за уровень."
+    },
+    "origin": "pet",
+    "modifiers": { "health_max": { "type": "add", "value": "2 * level" } }
+  },
+  {
+    "slug": "climber",
+    "kind": "static",
+    "title": {
+      "en": "Climber",
+      "ru": "Лазание"
+    },
+    "description": {
+      "en": "It gains a climb Speed of 25 feet.",
+      "ru": "Любимец получает скорость лазания 25 футов."
+    },
+    "origin": "pet"
+  },
+  {
+    "slug": "manual_dexterity",
+    "kind": "static",
+    "title": {
+      "en": "Manual Dexterity",
+      "ru": "Мелкая моторика"
+    },
+    "description": {
+      "en": "It can use up to two of its limbs as if they were hands to perform manipulate actions.",
+      "ru": "Любимец может использовать до двух своих конечностей для совершения действий с дескриптором «манипуляция», как если бы это были руки."
+    },
+    "origin": "pet"
+  },
+  {
+    "slug": "darkvision",
+    "kind": "static",
+    "title": {
+      "en": "Darkvision",
+      "ru": "Ночное зрение"
+    },
+    "description": {
+      "en": "It gains darkvision.",
+      "ru": "Любимец получает ночное зрение."
+    },
+    "origin": "pet"
+  },
+  {
+    "slug": "scent",
+    "kind": "static",
+    "title": {
+      "en": "Scent",
+      "ru": "Нюх"
+    },
+    "description": {
+      "en": "Your pet can use scent as an imprecise sense within 30 feet.",
+      "ru": "Любимец получает нюх (вспомогательный) 30 футов."
+    },
+    "origin": "pet"
+  },
+  {
+    "slug": "flier",
+    "kind": "static",
+    "title": {
+      "en": "Flier",
+      "ru": "Полёт"
+    },
+    "description": {
+      "en": "It gains a fly Speed of 25 feet.",
+      "ru": "Любимец получает скорость полёта 25 футов."
+    },
+    "origin": "pet"
+  },
+  {
+    "slug": "burrower",
+    "kind": "static",
+    "title": {
+      "en": "Burrower",
+      "ru": "Рытьё"
+    },
+    "description": {
+      "en": "It gains a burrow Speed of 5 feet, allowing it to dig Tiny holes.",
+      "ru": "Любимец получает скорость рытья 5 футов и может рыть норы маленького размера."
+    },
+    "origin": "pet"
+  },
+  {
+    "slug": "echolocation",
+    "kind": "static",
+    "title": {
+      "en": "Echolocation",
+      "ru": "Эхолокация"
+    },
+    "description": {
+      "en": "Your pet can use hearing as a precise sense within 20 feet.",
+      "ru": "Слух вашего любимца становится точным способом восприятия в пределах 20 футов."
+    },
+    "origin": "pet"
+  },
+  {
+    "slug": "speech",
+    "kind": "static",
+    "title": {
+      "en": "Speech",
+      "ru": "Речь"
+    },
+    "description": {
+      "en": "Your familiar understands and speaks a language you know.",
+      "ru": "Фамильяр понимает один из известных вам языков и может на нём говорить."
+    },
+    "origin": "familiar"
+  },
+  {
+    "slug": "skilled",
+    "kind": "many_from_list",
+    "title": {
+      "en": "Skilled",
+      "ru": "Умелец"
+    },
+    "description": {
+      "en": "Choose a skill other than Acrobatics or Stealth. Your familiar's modifier for that skill is equal to your level plus your spellcasting attribute modifier, rather than just your level. You can select this ability repeatedly, choosing a different skill each time.",
+      "ru": "Выберите один навык, кроме Акробатики или Скрытности. Модификатор этого навыка вашего фамильяра равен не просто вашему уровню, а вашему уровню + ваш модификатор заклинательной характеристики. Эту способность можно выбрать несколько раз, каждый раз для нового навыка."
+    },
+    "origin": "familiar",
+    "info": { "options_list": "skills" }
+  }
+]

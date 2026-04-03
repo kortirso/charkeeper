@@ -2,7 +2,7 @@
 
 module Pathfinder2
   class FeatSerializer < ApplicationSerializer
-    ATTRIBUTES = %i[id slug title description origin_values conditions info].freeze
+    ATTRIBUTES = %i[id slug title description origin origin_values conditions info].freeze
 
     attributes(*ATTRIBUTES)
 

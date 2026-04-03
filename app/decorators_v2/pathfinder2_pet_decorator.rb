@@ -11,6 +11,7 @@ class Pathfinder2PetDecorator < ApplicationDecoratorV2
     @attributes = pet.character.data
 
     generate_basis
+    apply_add_modifiers
 
     self
   end
@@ -29,6 +30,37 @@ class Pathfinder2PetDecorator < ApplicationDecoratorV2
     @result['speed'] = 25
     @result['perception'] = find_perception
     @result['skills'] = generate_skills_payload
+  end
+
+  def apply_add_modifiers # rubocop: disable Metrics/AbcSize, Metrics/PerceivedComplexity
+    res = available_modifiers.flat_map do |items|
+      items.filter_map do |key, value|
+        value['type'] == 'add' && { key => value['value'] }
+      end
+    end.compact_blank.each_with_object({}) do |value, acc|
+      key = value.keys[0]
+      acc[key] ||= []
+      formula_result = formula.call(formula: value[key], variables: formula_variables)
+      acc[key] << formula_result if formula_result
+    end
+
+    res.each do |(key_name, values)|
+      values.each do |value|
+        if key_name.include?('.')
+          primary, secondary = key_name.split('.')
+          @result[primary][secondary] = @result[primary][secondary] + value
+        else
+          @result[key_name] = @result[key_name] + value
+        end
+      end
+    end
+  end
+
+  def formula_variables
+    @formula_variables ||=
+      {
+        level: level
+      }
   end
 
   def abilities
@@ -63,7 +95,7 @@ class Pathfinder2PetDecorator < ApplicationDecoratorV2
 
   def skill_payload(slug, ability)
     modifier =
-      if PET_SKILLS.include?(slug)
+      if PET_SKILLS.include?(slug) || @attributes.selected_features['skilled']&.include?(slug)
         for_pet = 3 + level
         @pet.data.kind == 'familiar' ? [abilities[@attributes.main_ability] + level, for_pet].max : for_pet
       else
@@ -115,5 +147,15 @@ class Pathfinder2PetDecorator < ApplicationDecoratorV2
       .where("states->>'hands' != ? OR states->>'equipment' != ?", '0', '0')
       .joins(:item)
       .hashable_pluck('items.kind', 'items.data', 'items.info', 'items.modifiers', :states, :modifiers)
+  end
+
+  def available_modifiers
+    @character
+      .feats.includes(:feat)
+      .order('feats.origin ASC, feats.created_at ASC')
+      .where(ready_to_use: [true, nil])
+      .where(feats: { origin: [9, 10] })
+      .pluck('feats.modifiers')
+      .compact_blank
   end
 end

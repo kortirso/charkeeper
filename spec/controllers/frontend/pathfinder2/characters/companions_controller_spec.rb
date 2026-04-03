@@ -47,7 +47,7 @@ describe Frontend::Pathfinder2::Characters::CompanionsController do
             expect(response.parsed_body['pet'].keys).to(
               contain_exactly(
                 'id', 'name', 'caption', 'avatar', 'data', 'armor_class', 'health', 'health_max', 'health_temp', 'level',
-                'perception', 'saving_throws_value', 'skills', 'speed'
+                'perception', 'saving_throws_value', 'skills', 'speed', 'selected_feats'
               )
             )
           end

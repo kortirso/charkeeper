@@ -2,11 +2,12 @@ import { createSignal, createEffect, Show, For, batch } from 'solid-js';
 import { createStore } from 'solid-js/store';
 
 import {
-  ErrorWrapper, Input, Button, EditWrapper, GuideWrapper, AvatarInput, TextArea, Dice, StatsBlock
+  ErrorWrapper, Input, Button, EditWrapper, GuideWrapper, AvatarInput, TextArea, Dice, StatsBlock, Toggle, Checkbox
 } from '../../../../components';
 import { useAppState, useAppLocale, useAppAlert } from '../../../../context';
 import { Avatar, Minus, Plus } from '../../../../assets';
 import config from '../../../../data/pathfinder2.json';
+import { fetchPetFeatsRequest } from '../../../../requests/fetchPetFeatsRequest';
 import { fetchCompanionRequest } from '../../../../requests/fetchCompanionRequest';
 import { createCompanionRequest } from '../../../../requests/createCompanionRequest';
 import { updateCompanionRequest } from '../../../../requests/updateCompanionRequest';
@@ -24,7 +25,9 @@ const TRANSLATION = {
     max: 'Max health',
     temp: 'Temp health',
     damage: 'Damage',
-    heal: 'Heal'
+    heal: 'Heal',
+    pets: 'Pets feats',
+    familiars: 'Familiar feats'
   },
   ru: {
     name: 'Имя любимца',
@@ -37,7 +40,9 @@ const TRANSLATION = {
     max: 'Макс хиты',
     temp: 'Врем хиты',
     damage: 'Урон',
-    heal: 'Лечение'
+    heal: 'Лечение',
+    pets: 'Черты любимца',
+    familiars: 'Черты фамильяра'
   },
   es: {
     name: 'Nombre del compañero',
@@ -50,7 +55,9 @@ const TRANSLATION = {
     max: 'Max health',
     temp: 'Temp health',
     damage: 'Damage',
-    heal: 'Heal'
+    heal: 'Heal',
+    pets: 'Pets feats',
+    familiars: 'Familiar feats'
   }
 }
 
@@ -60,6 +67,8 @@ export const Pathfinder2Companion = (props) => {
   const [lastActiveCharacterId, setLastActiveCharacterId] = createSignal(undefined);
 
   const [companion, setCompanion] = createSignal(undefined);
+  const [petFeats, setPetFeats] = createSignal([]);
+  const [familiarFeats, setFamiliarFeats] = createSignal([]);
   const [selectedFile, setSelectedFile] = createSignal(null);
   const [form, setForm] = createStore({ name: '', caption: '' });
 
@@ -75,17 +84,20 @@ export const Pathfinder2Companion = (props) => {
     if (lastActiveCharacterId() === character().id) return;
 
     const fetchCompanion = async () => await fetchCompanionRequest(appState.accessToken, character().provider, character().id);
+    const fetchPetFeats = async () => await fetchPetFeatsRequest(appState.accessToken, character().provider);
 
-    Promise.all([fetchCompanion()]).then(
-      ([companionData]) => {
-        if (companionData.errors) {
-          setCompanion(null);
-        } else {
-          batch(() => {
+    Promise.all([fetchCompanion(), fetchPetFeats()]).then(
+      ([companionData, featsData]) => {
+        batch(() => {
+          if (companionData.errors) {
+            setCompanion(null);
+          } else {
             setForm({ name: companionData.pet.name, caption: companionData.pet.caption, kind: companionData.pet.data.kind });
             setCompanion(companionData.pet);
-          });
-        }
+          }
+          setPetFeats(featsData.feats.filter((item) => item.origin === 'pet'));
+          if (character().can_have_familiar) setFamiliarFeats(featsData.feats.filter((item) => item.origin === 'familiar'));
+        });
       }
     );
 
@@ -104,7 +116,7 @@ export const Pathfinder2Companion = (props) => {
 
   const cancelNameEditing = () => setEditMode(false);
 
-  const changeHealth = async (coefficient) => {
+  const changeHealth = (coefficient) => {
     const damageValue = parseInt(damageHealValue()) || 0;
     if (damageValue === 0) return;
 
@@ -124,11 +136,19 @@ export const Pathfinder2Companion = (props) => {
     setCompanion({ ...companion(), ...payload })
   }
 
-  const changeTempHealth = async (value) => {
+  const changeTempHealth = (value) => {
     const payload = { health_temp: Math.max(companion().health_temp + value, 0) }
 
     updateCompanion({ data: payload }, null, false, true);
-    setCompanion({ ...companion(), ...payload })
+    setCompanion({ ...companion(), ...payload });
+  }
+
+  const toggleFeat = (slug) => {
+    const newValue = companion().selected_feats.includes(slug) ? companion().selected_feats.filter((item) => item !== slug) : companion().selected_feats.concat(slug);
+    const payload = { selected_feats: newValue };
+
+    updateCompanion({ data: payload });
+    props.onReloadCharacter();
   }
 
   const changeCompanion = () => {
@@ -250,12 +270,7 @@ export const Pathfinder2Companion = (props) => {
               <Button default textable classList="flex-1" onClick={() => changeHealth(-1)}>
                 {localize(TRANSLATION, locale()).damage}
               </Button>
-              <Input
-                numeric
-                containerClassList="w-20 mx-4"
-                value={damageHealValue()}
-                onInput={setDamageHealValue}
-              />
+              <Input numeric containerClassList="w-20 mx-4" value={damageHealValue()} onInput={setDamageHealValue} />
               <Button default textable classList="flex-1" onClick={() => changeHealth(1)}>
                 {localize(TRANSLATION, locale()).heal}
               </Button>
@@ -276,8 +291,8 @@ export const Pathfinder2Companion = (props) => {
               }
             </For>
           </div>
-          <div class="blockable py-4 px-2 md:px-4">
-            <div class="fallout-skills ">
+          <div class="blockable py-4 px-2 md:px-4 mb-2">
+            <div class="fallout-skills">
               <For each={Object.keys(config.abilities)}>
                 {(slug) =>
                   <For each={companion().skills.filter((item) => item.ability === slug)}>
@@ -300,6 +315,28 @@ export const Pathfinder2Companion = (props) => {
               </For>
             </div>
           </div>
+          <For each={[petFeats(), familiarFeats()]}>
+            {(list, index) => 
+              <Show when={list.length > 0}>
+                <Toggle title={index() === 0 ? localize(TRANSLATION, locale()).pets : localize(TRANSLATION, locale()).familiars} innerClassList="pet-feats">
+                  <For each={list}>
+                    {(feat) =>
+                      <div class="pet-feat">
+                        <div class="pet-feat-title">
+                          <p>{feat.title}</p>
+                          <Checkbox checked={companion().selected_feats.includes(feat.slug)} onToggle={() => toggleFeat(feat.slug)} />
+                        </div>
+                        <p
+                          class="feat-markdown"
+                          innerHTML={feat.description} // eslint-disable-line solid/no-innerhtml
+                        />
+                      </div>
+                    }
+                  </For>
+                </Toggle>
+              </Show>
+            }
+          </For>
         </Show>
       </GuideWrapper>
     </ErrorWrapper>

@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## Unreleased
 ### Added
 - creating additional spells for PF2 characters
+- selecting feats for companions for PF2 characters
 
 ## [0.4.21] - 2026-04-03
 ### Added

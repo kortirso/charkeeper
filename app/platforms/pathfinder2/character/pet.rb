@@ -8,7 +8,7 @@ module Pathfinder2
       attribute :kind, :string, default: 'pet' # pet, familiar
       attribute :health, :integer, default: 1
       attribute :health_temp, :integer, default: 0
-      attribute :selected_features, array: true, default: []
+      attribute :selected_feats, array: true, default: []
     end
 
     class Pet < Character::Companion

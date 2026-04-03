@@ -4,7 +4,10 @@ module CharactersContext
   module Pathfinder2
     module Pets
       class ChangeCommand < BaseCommand
-        include Deps[cache: 'cache.avatars']
+        include Deps[
+          cache: 'cache.avatars',
+          refresh_feats: 'services.characters_context.pathfinder2.refresh_feats'
+        ]
 
         use_contract do
           config.messages.namespace = :character_companion
@@ -16,6 +19,7 @@ module CharactersContext
             optional(:data).hash do
               optional(:health).filled(:integer)
               optional(:health_temp).filled(:integer)
+              optional(:selected_feats).maybe(:array)
             end
             optional(:file)
           end
@@ -31,6 +35,7 @@ module CharactersContext
           input[:pet].update!(input.except(:pet, :file))
 
           upload_avatar(input)
+          refresh_feats.call(character: input[:pet].character) if input.dig(:data, :selected_feats)
 
           { result: input[:pet] }
         end
