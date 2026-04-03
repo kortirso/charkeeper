@@ -6,6 +6,8 @@ module Pathfinder2
       include StoreModel::Model
 
       attribute :kind, :string, default: 'pet' # pet, familiar
+      attribute :health, :integer, default: 1
+      attribute :health_temp, :integer, default: 0
       attribute :selected_features, array: true, default: []
     end
 

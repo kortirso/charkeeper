@@ -143,7 +143,11 @@ export const Pathfinder2 = (props) => {
               />
             </Match>
             <Match when={activeMobileTab() === 'companion'}>
-              <Pathfinder2Companion character={character()} onReloadCharacter={props.onReloadCharacter} />
+              <Pathfinder2Companion
+                character={character()}
+                onReloadCharacter={props.onReloadCharacter}
+                openDiceRoll={openDiceRoll}
+              />
             </Match>
             <Match when={activeMobileTab() === 'rest'}>
               <Pathfinder2Rest character={character()} onReloadCharacter={props.onReloadCharacter} />
@@ -262,7 +266,11 @@ export const Pathfinder2 = (props) => {
               />
             </Match>
             <Match when={activeTab() === 'companion'}>
-              <Pathfinder2Companion character={character()} onReloadCharacter={props.onReloadCharacter} />
+              <Pathfinder2Companion
+                character={character()}
+                onReloadCharacter={props.onReloadCharacter}
+                openDiceRoll={openDiceRoll}
+              />
             </Match>
             <Match when={activeTab() === 'rest'}>
               <Pathfinder2Rest character={character()} onReloadCharacter={props.onReloadCharacter} />

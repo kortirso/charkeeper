@@ -13,11 +13,19 @@ module CharactersContext
             required(:pet).filled(type?: ::Pathfinder2::Character::Pet)
             optional(:name).filled(:string, max_size?: 50)
             optional(:caption).maybe(:string, max_size?: 1_000)
+            optional(:data).hash do
+              optional(:health).filled(:integer)
+              optional(:health_temp).filled(:integer)
+            end
             optional(:file)
           end
         end
 
         private
+
+        def do_prepare(input)
+          input[:data] = input[:pet].data.attributes.symbolize_keys.merge(input[:data]) if input.key?(:data)
+        end
 
         def do_persist(input)
           input[:pet].update!(input.except(:pet, :file))

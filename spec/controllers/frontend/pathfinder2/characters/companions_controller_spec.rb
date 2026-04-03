@@ -44,7 +44,12 @@ describe Frontend::Pathfinder2::Characters::CompanionsController do
             request
 
             expect(response).to have_http_status :ok
-            expect(response.parsed_body['pet'].keys).to contain_exactly('id', 'name', 'caption', 'avatar', 'data')
+            expect(response.parsed_body['pet'].keys).to(
+              contain_exactly(
+                'id', 'name', 'caption', 'avatar', 'data', 'armor_class', 'health', 'health_max', 'health_temp', 'level',
+                'perception', 'saving_throws_value', 'skills', 'speed'
+              )
+            )
           end
         end
       end
