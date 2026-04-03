@@ -11,6 +11,8 @@ module Pathfinder2
     STATIC_SUBRACE_ORIGIN = 'static_subrace'
     STATIC_CLASS_ORIGIN = 'static_class'
     STATIC_SUBCLASS_ORIGIN = 'static_subclass'
+    PET_ORIGIN = 'pet'
+    FAMILIAR_ORIGIN = 'familiar'
 
     STATIC = 'static' # рендерится текст
     UPDATE_RESULT = 'update_result' # рендерится, но затемняется
@@ -33,7 +35,9 @@ module Pathfinder2
       STATIC_RACE_ORIGIN => 5,
       STATIC_SUBRACE_ORIGIN => 6,
       STATIC_CLASS_ORIGIN => 7,
-      STATIC_SUBCLASS_ORIGIN => 8
+      STATIC_SUBCLASS_ORIGIN => 8,
+      PET_ORIGIN => 9,
+      FAMILIAR_ORIGIN => 10
     }
     enum :kind, { STATIC => 0, UPDATE_RESULT => 1, HIDDEN => 2, ONE_FROM_LIST => 3, MANY_FROM_LIST => 4, TEXT => 5 }
     enum :limit_refresh, { SHORT_REST => 0, LONG_REST => 1 }

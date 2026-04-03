@@ -913,3 +913,19 @@ body.web {
 .ability-changebox {
   @apply mt-2 flex justify-center gap-2;
 }
+
+.pet-feats {
+  @apply flex flex-col gap-2;
+}
+
+.pet-feat {
+  @apply py-2;
+}
+
+.pet-feat-title {
+  @apply flex items-center justify-between;
+}
+
+.pet-feat:nth-of-type(n+2) {
+  @apply border-t border-gray-200 dark:border-neutral-800;
+}

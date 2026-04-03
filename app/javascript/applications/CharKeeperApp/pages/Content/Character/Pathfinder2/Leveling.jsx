@@ -69,9 +69,11 @@ export const Pathfinder2Leveling = (props) => {
 
     Promise.all([fetchTalents()]).then(
       ([talentsData]) => {
-        setTags(Object.fromEntries(Object.entries(talentsData.tags).sort(([, a], [, b]) => a.localeCompare(b))));
-        setFeats(talentsData.feats);
-        setSelectedFeats(talentsData.character_feats);
+        batch(() => {
+          setTags(Object.fromEntries(Object.entries(talentsData.tags).sort(([, a], [, b]) => a.localeCompare(b))));
+          setFeats(talentsData.feats);
+          setSelectedFeats(talentsData.character_feats);
+        });
       }
     );
 

@@ -145,6 +145,7 @@ Rails.application.routes.draw do
         end
       end
       resources :spells, only: %i[index show]
+      resources :pet_feats, only: %i[index]
     end
 
     namespace :fate do

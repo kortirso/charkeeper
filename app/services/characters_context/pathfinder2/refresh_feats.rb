@@ -37,11 +37,17 @@ module CharactersContext
 
       def feats(character)
         data = character.data
-        ::Pathfinder2::Feat
-          .where(origin: [5, 6, 7, 8])
-          .where(
-            origin_value: [data.race, data.subrace, data.main_class, data.subclasses.values, character.id].flatten.compact.uniq
+        relation = ::Pathfinder2::Feat.where(origin: [5, 6, 7, 8]).where(
+          origin_value: [data.race, data.subrace, data.main_class, data.subclasses.values, character.id].flatten.compact.uniq
+        )
+
+        if character.pet
+          relation = relation.or(
+            ::Pathfinder2::Feat.where(origin: [9, 10]).where(slug: character.pet.data.selected_feats)
           )
+        end
+
+        relation
       end
     end
   end

@@ -7,6 +7,7 @@ class Pathfinder2Decorator < ApplicationDecoratorV2
   DEFAULT_CLASSES = %w[bard cleric druid fighter ranger rogue witch wizard].freeze
   ONLY_ADD_MODIFIERS = %w[str dex con wis int cha].freeze
   WEAPON_MODIFIERS = %w[attack unarmed_attacks melee_attacks range_attacks damage unarmed_damage melee_damage range_damage].freeze
+  PET_ORIGINS = [9, 10].freeze
 
   def call(character:, simple: false, version: nil)
     @character = character
@@ -503,8 +504,10 @@ class Pathfinder2Decorator < ApplicationDecoratorV2
 
   def feature_modifiers
     available_features
-      .hashable_pluck(:ready_to_use, :active, 'feats.continious', 'feats.modifiers')
-      .select { |item| (!item[:feats_continious] && item[:ready_to_use]) || item[:active] }
+      .hashable_pluck(:ready_to_use, :active, 'feats.continious', 'feats.modifiers', 'feats.origin')
+      .select { |item|
+        PET_ORIGINS.exclude?(item[:feats_origin]) && ((!item[:feats_continious] && item[:ready_to_use]) || item[:active])
+      }
       .pluck(:feats_modifiers)
       .compact_blank
   end
@@ -515,6 +518,7 @@ class Pathfinder2Decorator < ApplicationDecoratorV2
         .feats.includes(:feat)
         .order('feats.origin ASC, feats.created_at ASC')
         .where(ready_to_use: [true, nil])
+        .where.not(feats: { origin: 4 })
   end
 
   def weapons

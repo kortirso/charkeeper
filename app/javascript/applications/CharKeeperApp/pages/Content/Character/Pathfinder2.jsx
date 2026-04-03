@@ -32,14 +32,17 @@ export const Pathfinder2 = (props) => {
   const classFilter = (item) => item.origin === 'class' || item.origin === 'static_class' || item.origin === 'static_subclass';
   const generalFilter = (item) => item.origin === 'general';
   const skillFilter = (item) => item.origin === 'skill';
+  const companionFilter = (item) => item.origin === 'pet' || item.origin === 'familiar';
 
   const featFilters = createMemo(() => {
-    return [
+    const result = [
       { title: 'ancestry', callback: ancestryFilter },
       { title: 'class', callback: classFilter },
       { title: 'general', callback: generalFilter },
       { title: 'skill', callback: skillFilter }
     ];
+    if (character().can_have_pet || character().can_have_familiar) result.push({ title: 'companion', callback: companionFilter });
+    return result;
   });
 
   const configSkills = createMemo(() => {
