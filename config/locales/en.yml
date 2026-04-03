@@ -1,5 +1,22 @@
 en:
   changelogs:
+    '4021':
+      dnd:
+        title1: Homebrews
+        desc1: Added homebrew feats and subclasses
+      pf:
+        title1: Spells management
+        title2: Static feats
+        title3: Rest options
+        title4: Bonuses
+        title5: Pets
+        title6: Ability boosts
+        desc1: Added the ability to learn/prepare simple and spontaneous spells, and manage innate and focal spells (automatically and manually)
+        desc2: Added automatic feats progression for ancestries and classes based on level
+        desc3: Added the ability to start a rest with automatic application of rest effects
+        desc4: Added the ability to add static or dynamic bonuses to character stats
+        desc5: Added the basic ability to create pets/familiars
+        desc6: Improved management of primary stats
     '4019':
       cosmere:
         title1: Core integration

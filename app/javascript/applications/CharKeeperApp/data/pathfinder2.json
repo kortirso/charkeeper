@@ -124,13 +124,7 @@
     },
     "ranger": {
       "name": { "en": "Ranger", "ru": "Следопыт" },
-      "main_ability_options": ["str", "dex"],
-      "subclass_title": { "en": "Hunter's edge", "ru": "Преимущество охотника" },
-      "subclasses": {
-        "precision": { "name": { "en": "Precision", "ru": "Меткость" } },
-        "outwit": { "name": { "en": "Outwit", "ru": "Хитрость" } },
-        "flurry": { "name": { "en": "Flurry", "ru": "Шквал" } }
-      }
+      "main_ability_options": ["str", "dex"]
     },
     "rogue": {
       "name": { "en": "Rogue", "ru": "Плут" },
