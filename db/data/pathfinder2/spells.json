@@ -1,52 +1,5 @@
 [
   {
-    "slug": "heal",
-    "title": { "en": "Heal", "ru": "Лечение" },
-    "description": {
-      "en": "You ask for the guidance of supernatural entities, granting the target a +1 status bonus to one attack roll, Perception check, saving throw, or skill check the target attempts before the duration ends. The target chooses which roll to use the bonus on before rolling. If the target uses the bonus, the spell ends. Either way, the target is then temporarily immune for 1 hour.",
-      "ru": "You ask for the guidance of supernatural entities, granting the target a +1 status bonus to one attack roll, Perception check, saving throw, or skill check the target attempts before the duration ends. The target chooses which roll to use the bonus on before rolling. If the target uses the bonus, the spell ends. Either way, the target is then temporarily immune for 1 hour."
-    },
-    "origin": "spell",
-    "origin_value": "divine,primal",
-    "origin_values": ["healing", "manipulate", "vitality"],
-    "kind": "static",
-    "info": {
-      "level": 1,
-      "enhancements": [
-        {
-          "time": "1a",
-          "description": {
-            "en": "The spell has a range of touch.",
-            "ru": "The spell has a range of touch."
-          }
-        },
-        {
-          "time": "2a",
-          "concentrate": true,
-          "description": {
-            "en": "The spell has a range of 30 feet. If you're healing a living creature, increase the Hit Points restored by 8.",
-            "ru": "The spell has a range of 30 feet. If you're healing a living creature, increase the Hit Points restored by 8."
-          }
-        },
-        {
-          "time": "3a",
-          "concentrate": true,
-          "description": {
-            "en": "You disperse vital energy in a 30-foot emanation. This targets all living and undead creatures in the burst.",
-            "ru": "You disperse vital energy in a 30-foot emanation. This targets all living and undead creatures in the burst."
-          }
-        },
-        {
-          "name": { "en": "Heightened (+1)", "ru": "Heightened (+1)" },
-          "description": {
-            "en": "The amount of healing or damage increases by 1d8, and the extra healing for the 2-action version increases by 8.",
-            "ru": "The amount of healing or damage increases by 1d8, and the extra healing for the 2-action version increases by 8."
-          }
-        }
-      ]
-    }
-  },
-  {
     "slug": "oaken_resilience",
     "title": { "en": "Oaken Resilience", "ru": "Дубовая кожа" },
     "description": {

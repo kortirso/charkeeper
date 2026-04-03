@@ -1,4 +1,4 @@
-import { createSignal, createEffect, createMemo, Show, For, Switch, Match, batch } from 'solid-js';
+import { createSignal, createEffect, createMemo, Show, For, batch } from 'solid-js';
 
 import { Pathfinder2SpellBook, Pathfinder2Spell } from '../../../../pages';
 import { StatsBlock, ErrorWrapper, Button, GuideWrapper, Dice, Checkbox } from '../../../../components';
@@ -16,7 +16,8 @@ const TRANSLATION = {
     saveDC: 'Save DC',
     back: 'Back',
     check: 'Spell attack',
-    gotoSpellBook: 'Spellbook management',
+    gotoSpellBook: 'Spellbook',
+    gotoAdditionalBook: 'Additional',
     cantrips: 'Cantrips',
     level: 'level',
     noSpells: 'There are no learned spells',
@@ -27,7 +28,11 @@ const TRANSLATION = {
     cantripLevel: 'Cantrip level',
     focusSpellBook: 'Focus',
     innateSpellBook: 'Innate',
-    focusSpells: 'Focus spells'
+    focusSpells: 'Focus spells',
+    kinds: {
+      default: 'Default',
+      additional: 'Additional'
+    }
   },
   ru: {
     spellAttack: 'Бонус атаки',
@@ -35,6 +40,7 @@ const TRANSLATION = {
     back: 'Назад',
     check: 'Атака заклинанием',
     gotoSpellBook: 'Книга заклинаний',
+    gotoAdditionalBook: 'Дополнительные',
     cantrips: 'Фокусы',
     level: 'уровень',
     noSpells: 'Нет изученных заклинаний',
@@ -45,7 +51,11 @@ const TRANSLATION = {
     cantripLevel: 'Круг фокусов',
     focusSpellBook: 'Фокальные',
     innateSpellBook: 'Врождённые',
-    focusSpells: 'Фокальные заклинания'
+    focusSpells: 'Фокальные заклинания',
+    kinds: {
+      default: 'Default',
+      additional: 'Additional'
+    }
   }
 }
 
@@ -99,10 +109,27 @@ export const Pathfinder2Spells = (props) => {
     });
   });
 
+  const simpleSpells = createMemo(() => {
+    if (!spells()) return [];
+
+    return spells().filter((item) => !item.focus_for);
+  });
+
+  const characterSpellsGroupByKind = createMemo(() => {
+    if (!characterSpells()) return { default: [], additional: [], focus: [], innate: [] };
+
+    return characterSpells().reduce((acc, item) => {
+      acc[item.kind].push(item);
+      return acc;
+    }, { default: [], additional: [], focus: [], innate: [] });
+  });
+
   const groupedCharacterSpells = createMemo(() => {
     if (!characterSpells()) return {};
 
     return characterSpells().reduce((acc, item) => {
+      if (item.kind !== 'default' && item.kind !== 'additional') return acc;
+
       Object.entries(item.value).forEach(([level, values]) => {
         if (values.selected_count > 0) {
           acc[level] = acc[level] ? acc[level].concat(item) : [item];
@@ -116,7 +143,7 @@ export const Pathfinder2Spells = (props) => {
     if (!characterSpells()) return {};
 
     return characterSpells().reduce((acc, item) => {
-      if (item.value.innate || item.value.focus) return acc;
+      if (item.kind !== 'default' && item.kind !== 'additional') return acc;
 
       const level = item.spell.info.level;
       acc[level] = acc[level] ? acc[level].concat(item) : [item];
@@ -134,7 +161,7 @@ export const Pathfinder2Spells = (props) => {
     const modifier = character().modified_abilities.cha
 
     const manualSpells = characterSpells().reduce((acc, item) => {
-      if (!item.value.innate) return acc;
+      if (item.kind !== 'innate') return acc;
 
       const currentLevel = item.spell.info.level;
       const newItem = { ...item, spell_attack: profBonus + modifier, spell_dc: 10 + profBonus + modifier };
@@ -161,6 +188,16 @@ export const Pathfinder2Spells = (props) => {
 
     return Math.max(spellsMaxLevel, staticMaxLevel);
   });
+
+  const addCharacterSpell = (value) => setCharacterSpells([value].concat(characterSpells()));
+  const removeCharacterSpell = (value) => setCharacterSpells(characterSpells().filter((item) => item.id !== value));
+  const changeCharacterSpell = (value, result) => {
+    const newValue = characterSpells().slice().map((element) => {
+      if (element.id !== value) return element;
+      return result.spell;
+    });
+    setCharacterSpells(newValue);
+  }
 
   // использовать слот для сонтанного заклинание
   const spendSpellSlot = async (level) => {
@@ -200,17 +237,20 @@ export const Pathfinder2Spells = (props) => {
   }
 
   // подготовить заклинание
-  const enableSpell = (e, characterSpell, counter, spellLevel) => {
+  const enableSpell = (e, characterSpell, counter, spellLevel, kind) => {
     e.stopPropagation();
 
-    const totalSlots = spellLevel === 0 ? character().spells_info.cantrip_slots : character().spells_info.spells_slots[spellLevel];
-    const activeSpellSlots = characterSpells().reduce((acc, item) => {
-      if (!item.value[spellLevel]) return acc;
+    if (kind === 'default') {
+      const totalSlots = spellLevel === 0 ? character().spells_info.cantrip_slots : character().spells_info.spells_slots[spellLevel];
+      const activeSpellSlots = characterSpells().reduce((acc, item) => {
+        if (item.kind !== 'default') return acc;
+        if (!item.value[spellLevel]) return acc;
 
-      acc += item.value[spellLevel].selected_count;
-      return acc;
-    }, 0);
-    if (activeSpellSlots >= totalSlots) return renderAlert(localize(TRANSLATION, locale()).noSlots);
+        acc += item.value[spellLevel].selected_count;
+        return acc;
+      }, 0);
+      if (activeSpellSlots >= totalSlots) return renderAlert(localize(TRANSLATION, locale()).noSlots);
+    }
 
     updateCharacterSpell(characterSpell.id, { ready_to_use: true, level: spellLevel, selected_count: counter });
   }
@@ -271,37 +311,20 @@ export const Pathfinder2Spells = (props) => {
           <Show
             when={spellsSelectingMode() === null}
             fallback={
-              <Switch>
-                <Match when={spellsSelectingMode() == 'learnFocusSpell'}>
-                  <Pathfinder2SpellBook
-                    focus
-                    character={character()}
-                    spells={spells().filter((item) => item.focus_for === character().main_class)}
-                    characterSpells={characterSpells().filter((item) => !item.value.innate)}
-                    onSetCharacterSpells={setCharacterSpells}
-                    onBack={() => setSpellsSelectingMode(null)}
-                  />
-                </Match>
-                <Match when={spellsSelectingMode() == 'learnSpell'}>
-                  <Pathfinder2SpellBook
-                    character={character()}
-                    spells={spells().filter((item) => !item.focus_for)}
-                    characterSpells={characterSpells().filter((item) => !item.value.innate)}
-                    onSetCharacterSpells={setCharacterSpells}
-                    onBack={() => setSpellsSelectingMode(null)}
-                  />
-                </Match>
-                <Match when={spellsSelectingMode() == 'learnInnateSpell'}>
-                  <Pathfinder2SpellBook
-                    innate
-                    character={character()}
-                    spells={spells().filter((item) => !item.focus_for)}
-                    characterSpells={characterSpells().filter((item) => item.value.innate)}
-                    onSetCharacterSpells={setCharacterSpells}
-                    onBack={() => setSpellsSelectingMode(null)}
-                  />
-                </Match>
-              </Switch>
+              <Show when={spellsSelectingMode()}>
+                <Pathfinder2SpellBook
+                  kind={spellsSelectingMode()}
+                  character={character()}
+                  spells={
+                    spellsSelectingMode() == 'focus' ? spells().filter((item) => item.focus_for === character().main_class) : simpleSpells()
+                  }
+                  characterSpells={characterSpellsGroupByKind()[spellsSelectingMode()]}
+                  onAddCharacterSpell={addCharacterSpell}
+                  onUpdateCharacterSpell={changeCharacterSpell}
+                  onRemoveCharacterSpell={removeCharacterSpell}
+                  onBack={() => setSpellsSelectingMode(null)}
+                />
+              </Show>
             }
           >
             <Show when={character().spells_info}>
@@ -325,19 +348,22 @@ export const Pathfinder2Spells = (props) => {
             <Show
               when={character().spells_info}
               fallback={
-                <Button default textable classList="mb-2" onClick={() => setSpellsSelectingMode('learnInnateSpell')}>
+                <Button default textable classList="mb-2" onClick={() => setSpellsSelectingMode('innate')}>
                   {localize(TRANSLATION, locale()).innateSpellBook}
                 </Button>
               }
             >
-              <div class="grid grid-cols-1 lg:grid-cols-3 gap-2 mb-2">
-                <Button default textable onClick={() => setSpellsSelectingMode('learnFocusSpell')}>
+              <div class="grid grid-cols-2 gap-2 mb-2">
+                <Button default textable onClick={() => setSpellsSelectingMode('focus')}>
                   {localize(TRANSLATION, locale()).focusSpellBook}
                 </Button>
-                <Button default textable onClick={() => setSpellsSelectingMode('learnSpell')}>
+                <Button default textable onClick={() => setSpellsSelectingMode('default')}>
                   {localize(TRANSLATION, locale()).gotoSpellBook}
                 </Button>
-                <Button default textable onClick={() => setSpellsSelectingMode('learnInnateSpell')}>
+                <Button default textable onClick={() => setSpellsSelectingMode('additional')}>
+                  {localize(TRANSLATION, locale()).gotoAdditionalBook}
+                </Button>
+                <Button default textable onClick={() => setSpellsSelectingMode('innate')}>
                   {localize(TRANSLATION, locale()).innateSpellBook}
                 </Button>
               </div>
@@ -368,7 +394,7 @@ export const Pathfinder2Spells = (props) => {
                 </div>
               </div>
               <div class="flex flex-col gap-2 mb-4">
-                <For each={characterSpells().filter((item) => item.value.focus)}>
+                <For each={characterSpells().filter((item) => item.kind === 'focus')}>
                   {(characterSpell) =>
                     <Pathfinder2Spell noLevel spell={characterSpell.spell} cantripLevel={Math.round(character().level / 2)} />
                   }
@@ -417,6 +443,7 @@ export const Pathfinder2Spells = (props) => {
                               {(characterSpell) =>
                                 <Pathfinder2Spell
                                   noLevel
+                                  kind={characterSpell.kind}
                                   spell={characterSpell.spell}
                                   cantripLevel={Math.round(character().level / 2)}
                                   level={level}
@@ -454,24 +481,35 @@ export const Pathfinder2Spells = (props) => {
                                   <div class="flex flex-col">
                                     <Checkbox
                                       checked={characterSpell.ready_to_use}
-                                      onToggle={(e) => characterSpell.ready_to_use ? disableSpell(e, characterSpell, 0, 0) : enableSpell(e, characterSpell, 1, 0)}
+                                      onToggle={(e) => characterSpell.ready_to_use ? disableSpell(e, characterSpell, 0, 0) : enableSpell(e, characterSpell, 1, 0, characterSpell.kind)}
                                     />
                                   </div>
                                 }
                               >
-                                <div class="flex flex-col gap-2">
+                                <div class="flex flex-col items-end gap-2">
+                                  <p class="text-sm">{localize(TRANSLATION, locale()).kinds[characterSpell.kind]}</p>
                                   <For each={Object.entries(character().spells_info.spells_slots)}>
                                     {([level,]) =>
-                                      <div class="flex gap-2">
-                                        <span>{level} - </span>
-                                        <Button default size="small" onClick={(e) => characterSpell.value[level]?.selected_count === 0 ? null : disableSpell(e, characterSpell, characterSpell.value[level]?.selected_count - 1, level)}>
-                                          <Minus />
-                                        </Button>
-                                        <p>{characterSpell.value[level]?.selected_count || 0}</p>
-                                        <Button default size="small" onClick={(e) => enableSpell(e, characterSpell, (characterSpell.value[level]?.selected_count || 0) + 1, level)}>
-                                          <PlusSmall />
-                                        </Button>
-                                      </div>
+                                      <Show when={level >= characterSpell.spell.info.level}>
+                                        <div class="flex gap-2">
+                                          <span>{level} - </span>
+                                          <Button
+                                            default
+                                            size="small"
+                                            onClick={(e) => characterSpell.value[level]?.selected_count === 0 ? null : disableSpell(e, characterSpell, characterSpell.value[level]?.selected_count - 1, level)}
+                                          >
+                                            <Minus />
+                                          </Button>
+                                          <p>{characterSpell.value[level]?.selected_count || 0}</p>
+                                          <Button
+                                            default
+                                            size="small"
+                                            onClick={(e) => enableSpell(e, characterSpell, (characterSpell.value[level]?.selected_count || 0) + 1, level, characterSpell.kind)}
+                                          >
+                                            <PlusSmall />
+                                          </Button>
+                                        </div>
+                                      </Show>
                                     }
                                   </For>
                                 </div>
@@ -487,8 +525,8 @@ export const Pathfinder2Spells = (props) => {
                       <For each={groupedStaticSpells()[level]}>
                         {(characterSpell) =>
                           <Pathfinder2Spell
-                            innate
                             noLevel
+                            kind="innate"
                             spell={characterSpell.spell}
                             spellAttack={characterSpell.spell_attack}
                             spellDc={characterSpell.spell_dc}

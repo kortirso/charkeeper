@@ -11,6 +11,7 @@ const TRANSLATION = {
   en: {
     level: 'level',
     innate: ' (Innate)',
+    additional: ' (Additional)',
     check: 'Spell attack',
     saveDC: 'Save DC',
     limit: 'Limit',
@@ -20,6 +21,7 @@ const TRANSLATION = {
   ru: {
     level: 'уровень',
     innate: ' (Врождённое)',
+    additional: ' (Дополнительное)',
     check: 'Атака заклинанием',
     saveDC: 'Спасброски',
     limit: 'Лимит',
@@ -55,8 +57,8 @@ export const Pathfinder2Spell = (props) => {
       title={
         <div class="flex">
           <div class="flex-1">
-            <div class="flex items-center justify-between">
-              <p class="flex items-center gap-x-4">
+            <div class="flex justify-between">
+              <p class="flex gap-x-4">
                 <span>{spell().title}</span>
                 <Show when={Object.keys(spell().price).length > 0}><span>
                   {Object.entries(spell().price).map(([key, value]) => `${value}${key.toUpperCase()}`).join(' ')}
@@ -64,9 +66,10 @@ export const Pathfinder2Spell = (props) => {
                 <Show when={!props.noLevel && spell().info.level > 0}>
                   <p>{spell().info.level} {localize(TRANSLATION, locale()).level}</p>
                 </Show>
-                <Show when={props.innate}><span>{localize(TRANSLATION, locale()).innate}</span></Show>
+                <Show when={props.kind === "innate"}><span>{localize(TRANSLATION, locale()).innate}</span></Show>
+                <Show when={props.kind === "additional"}><span>{localize(TRANSLATION, locale()).additional}</span></Show>
               </p>
-              <Show when={props.innate}>
+              <Show when={props.kind === "innate"}>
                 <Dice
                   width="36"
                   height="36"
@@ -87,10 +90,12 @@ export const Pathfinder2Spell = (props) => {
                   {localize(TRANSLATION, locale()).heightened} +{props.cantripLevel - 1}
                 </p>
               </Show>
-              <Show when={props.innate}>
+              <Show when={props.kind === "innate"}>
                 <div class="flex gap-x-4 mt-1 text-sm">
                   <p><span class="font-medium!">{localize(TRANSLATION, locale()).saveDC}:</span> {props.spellDc}</p>
-                  <p><span class="font-medium!">{localize(TRANSLATION, locale()).limit}:</span> {props.limit}</p>
+                  <Show when={props.limit}>
+                    <p><span class="font-medium!">{localize(TRANSLATION, locale()).limit}:</span> {props.limit}</p>
+                  </Show>
                 </div>
               </Show>
               <div class="flex gap-2 flex-wrap mt-1">

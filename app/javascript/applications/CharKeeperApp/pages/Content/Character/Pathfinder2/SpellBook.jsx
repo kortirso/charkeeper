@@ -43,8 +43,8 @@ export const Pathfinder2SpellBook = (props) => {
   const character = () => props.character;
 
   const [showFilters, setShowFilters] = createSignal(false);
-  const [traditionFilter, setTraditionFilter] = createSignal(props.character.spell_list ? [props.character.spell_list] : [])
-  const [levelFilter, setLevelFilter] = createSignal(props.character.spells_info ? Array.from([...Array(props.character.spells_info.max_spell_level).keys()], (x) => x.toString()) : ['0']);
+  const [traditionFilter, setTraditionFilter] = createSignal(character().spell_list ? [character().spell_list] : [])
+  const [levelFilter, setLevelFilter] = createSignal(character().spells_info ? Array.from([...Array(character().spells_info.max_spell_level + 1).keys()], (x) => x.toString()) : ['0']);
   const [titleFilter, setTitleFilter] = createSignal('');
 
   const [appState] = useAppState();
@@ -64,9 +64,9 @@ export const Pathfinder2SpellBook = (props) => {
   const filteredSpells = createMemo(() => {
     if (!spells()) return [];
 
-    const traditionFilterSet = traditionFilter().length > 0 && !props.focus ? (new Set(traditionFilter())) : null;
-    const levelFilterSet = levelFilter().length > 0 && !props.focus ? levelFilter().map((item) => parseInt(item)) : null;
-    const searchPattern = titleFilter().length > 2 && !props.focus ? titleFilter().toLowerCase() : null;
+    const traditionFilterSet = traditionFilter().length > 0 && props.kind !== 'focus' ? (new Set(traditionFilter())) : null;
+    const levelFilterSet = levelFilter().length > 0 && props.kind !== 'focus' ? levelFilter().map((item) => parseInt(item)) : null;
+    const searchPattern = titleFilter().length > 2 && props.kind !== 'focus' ? titleFilter().toLowerCase() : null;
     return spells().filter((item) => {
       if (traditionFilterSet && !hasSharedElement(item.origin_value, traditionFilterSet)) return false;
       if (levelFilterSet && !levelFilterSet.includes(item.info.level)) return false;
@@ -76,34 +76,38 @@ export const Pathfinder2SpellBook = (props) => {
     });
   });
 
+  const learnedDefaultSpells = createMemo(() => {
+    if (props.characterSpells === undefined) return 0;
+
+    return props.characterSpells.filter((item) => item.kind === 'default' && item.spell.info.level !== 0).length;
+  });
+
+  const learnedDefaultCantrips = createMemo(() => {
+    if (props.characterSpells === undefined) return 0;
+
+    return props.characterSpells.filter((item) => item.kind === 'default' && item.spell.info.level === 0).length;
+  });
+
   const learnedSpellIds = createMemo(() => {
     if (props.characterSpells === undefined) return {};
 
     return props.characterSpells.reduce((acc, item) => {
-      acc[item.spell.id] = { value: item.value, characterSpellId: item.id };
+      acc[item.spell.id] = { value: item.value, characterSpellId: item.id, kind: item.kind };
       return acc;
     }, {});
-  });
-
-  const learnedCantrips = createMemo(() => {
-    if (props.characterSpells === undefined) return 0;
-
-    return props.characterSpells.filter((item) => item.spell.info.level === 0).length;
   });
 
   // изучить заклинание
   const learnSpell = async (e, spell) => {
     e.stopPropagation();
 
-    const payload = { level: spell.info.level };
-    if (props.innate) payload.innate = true;
-    if (props.focus) payload.focus = true;
+    const payload = { level: spell.info.level, kind: props.kind };
 
     const result = await createCharacterSpellRequest(appState.accessToken, character().provider, character().id, { spell_id: spell.id, spell: payload });
     performResponse(
       result,
       function() { // eslint-disable-line solid/reactivity
-        props.onSetCharacterSpells([result.spell].concat(props.characterSpells));
+        props.onAddCharacterSpell(result.spell);
         renderNotice(localize(TRANSLATION, locale()).spellIsLearned);
       },
       function() { renderAlerts(result.errors_list) }
@@ -114,11 +118,12 @@ export const Pathfinder2SpellBook = (props) => {
   const forgetSpell = async (e, spell) => {
     e.stopPropagation();
 
-    const result = await removeCharacterSpellRequest(appState.accessToken, character().provider, character().id, spell.id);
+    const characterSpellId = learnedSpellIds()[spell.id].characterSpellId;
+    const result = await removeCharacterSpellRequest(appState.accessToken, character().provider, character().id, characterSpellId);
     performResponse(
       result,
       function() { // eslint-disable-line solid/reactivity
-        props.onSetCharacterSpells(props.characterSpells.filter((item) => item.spell.id !== spell.id));
+        props.onRemoveCharacterSpell(characterSpellId);
         renderNotice(localize(TRANSLATION, locale()).spellIsForget);
       },
       function() { renderAlerts(result.errors_list) }
@@ -129,13 +134,13 @@ export const Pathfinder2SpellBook = (props) => {
   const learnSpellLevel = async (e, spell, level) => {
     e.stopPropagation();
 
-    const payload = { spell_id: spell.id, spell: { level: level } };
+    const payload = { spell_id: spell.id, spell: { level: level, kind: props.kind } };
 
     const result = await createCharacterSpellRequest(appState.accessToken, character().provider, character().id, payload);
     performResponse(
       result,
       function() { // eslint-disable-line solid/reactivity
-        props.onSetCharacterSpells([result.spell].concat(props.characterSpells));
+        props.onAddCharacterSpell(result.spell);
         renderNotice(localize(TRANSLATION, locale()).spellIsLearned);
       },
       function() { renderAlerts(result.errors_list) }
@@ -153,11 +158,7 @@ export const Pathfinder2SpellBook = (props) => {
     performResponse(
       result,
       function() { // eslint-disable-line solid/reactivity
-        const newValue = props.characterSpells.slice().map((element) => {
-          if (element.id !== characterSpellId) return element;
-          return result.spell;
-        });
-        props.onSetCharacterSpells(newValue);
+        props.onUpdateCharacterSpell(characterSpellId, result);
         renderNotice(localize(TRANSLATION, locale()).spellIsLearned);
       },
       function() { renderAlerts(result.errors_list) }
@@ -175,11 +176,7 @@ export const Pathfinder2SpellBook = (props) => {
     performResponse(
       result,
       function() { // eslint-disable-line solid/reactivity
-        const newValue = props.characterSpells.slice().map((element) => {
-          if (element.id !== characterSpellId) return element;
-          return result.spell;
-        });
-        props.onSetCharacterSpells(newValue);
+        props.onUpdateCharacterSpell(characterSpellId, result);
         renderNotice(localize(TRANSLATION, locale()).spellIsForget);
       },
       function() { renderAlerts(result.errors_list) }
@@ -188,16 +185,16 @@ export const Pathfinder2SpellBook = (props) => {
 
   return (
     <>
-      <Show when={!props.innate && !props.focus}>
+      <Show when={props.kind === 'default'}>
         <StatsBlock
           items={[
-            { title: localize(TRANSLATION, locale()).cantripsAmount, value: `${learnedCantrips()}/${character().spells_info.cantrips_amount}` },
-            { title: localize(TRANSLATION, locale()).spellsAmount, value: `${Object.keys(learnedSpellIds()).length - learnedCantrips()}/${character().spells_info.spells_amount}` }
+            { title: localize(TRANSLATION, locale()).cantripsAmount, value: `${learnedDefaultCantrips()}/${character().spells_info.cantrips_amount}` },
+            { title: localize(TRANSLATION, locale()).spellsAmount, value: `${learnedDefaultSpells()}/${character().spells_info.spells_amount}` }
           ]}
         />
       </Show>
       <Button default textable classList="mb-2" onClick={props.onBack}>{localize(TRANSLATION, locale()).back}</Button>
-      <Show when={!props.focus}>
+      <Show when={props.kind !== 'focus'}>
         <Checkbox
           labelText={localize(TRANSLATION, locale()).filters}
           labelPosition="right"
@@ -236,7 +233,7 @@ export const Pathfinder2SpellBook = (props) => {
           {(spell) =>
             <Pathfinder2Spell spell={spell}>
               <Show
-                when={character().spells_info?.prepare || spell.info.level === 0 || props.innate}
+                when={character().spells_info?.prepare || spell.info.level === 0 || props.kind === 'innate'}
                 fallback={
                   <div class="flex flex-col gap-2">
                     {/* изучение спонтанного заклинания */}

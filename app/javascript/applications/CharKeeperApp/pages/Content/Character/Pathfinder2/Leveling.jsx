@@ -148,7 +148,7 @@ export const Pathfinder2Leveling = (props) => {
     const result = await fetchTalents();
     performResponse(
       result,
-      function() { // eslint-disable-line solid/reactivity
+      function() {
         setSelectedFeats(result.character_feats);
       },
       function() { renderAlerts(result.errors_list) }

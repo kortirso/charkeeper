@@ -924,39 +924,46 @@
   },
   {
     "slug": "heal",
-    "kind": "static",
-    "title": {
-      "en": "Heal",
-      "ru": "Излечение"
-    },
+    "title": { "en": "Heal", "ru": "Лечение" },
     "description": {
-      "en": "<b>Traditions</b> <u>divine</u>, <u>primal</u><br><b>Bloodline</b> Angelic <br><b>Catalysts</b> Healer's Gel<br><b>Range</b> varies; <b>Targets</b> 1 willing living creature or 1 undead creature<hr>You channel vital energy to heal the living or damage the undead. If the target is a willing living creature, you restore 1d8 Hit Points. If the target is undead, you deal that amount of vitality damage to it, and it gets a basic Fortitude save. The number of actions you spend when Casting this Spell determines its targets, range, area, and other parameters.\n\n [one-action]  The spell has a range of touch.\n\n [two-actions]  (concentrate) The spell has a range of 30 feet. If you're healing a living creature, increase the Hit Points restored by 8.\n\n [three-actions]  (concentrate) You disperse vital energy in a 30-foot emanation. This targets all living and undead creatures in the burst.<hr><b>Heightened (+1)</b> The amount of healing or damage increases by 1d8, and the extra healing for the 2-action version increases by 8.",
-      "ru": "<b>Традиции</b> сакральная, первобытная<br>\n<b>Наследие</b> ангельское<br>\n<b>Сотворение</b> от [one-action] до [three-actions] <br>\n<b>Дистанция</b> варьируется; <b>Цели</b> 1 согласное живое существо или 1 существо-нежить.\n\nВы проводите энергию жизни, которая наносит урон нежити и исцеляет живых. Если цель — согласное живое существо, вы восстанавливаете ему 1d8 ПЗ. Если цель — нежить, вы наносите ей такой же урон жизнью и она проходит обычное испытание Стойкости. Количество потраченных на Сотворение заклинания действий определяет его цели, дистанцию, область и иные параметры.\n[one-action] : дистанция заклинания — касание.\n[two-actions] (концентрация): дистанция заклинания — 30 футов. При исцелении живого существа вы восстанавливаете ему на 8 ПЗ больше.\n[three-actions]  (концентрация): вы излучаете энергию жизни в 30-футовой эманации. Цели заклинания — все живые существа и нежить в области.\n\n<b>Повышенное (+1)</b> урон или исцеление увеличивается на 1d8. При сотворении за 2 действия дополнительное исцеление увеличивается на 8."
+      "en": "You channel vital energy to heal the living or damage the undead. If the target is a willing living creature, you restore 1d8 Hit Points. If the target is undead, you deal that amount of vitality damage to it, and it gets a basic Fortitude save.",
+      "ru": "Вы проводите энергию жизни, которая наносит урон нежити и исцеляет живых. Если цель — согласное живое существо, вы восстанавливаете ему 1d8 ПЗ. Если цель — нежить, вы наносите ей такой же урон жизнью и она проходит обычное испытание Стойкости."
     },
     "origin": "spell",
-    "origin_value": "",
-    "origin_values": [
-      "healing",
-      "manipulate",
-      "vitality"
-    ],
-    "price": {
-      "a": 1
-    },
+    "origin_value": "divine,primal",
+    "origin_values": ["healing", "manipulate", "vitality"],
+    "kind": "static",
     "info": {
       "level": 1,
-      "targets": "",
-      "range": "",
-      "defense": "",
       "enhancements": [
         {
-          "name": {
-            "en": "",
-            "ru": ""
-          },
+          "time": "1a",
           "description": {
-            "en": "",
-            "ru": ""
+            "en": "The spell has a range of touch.",
+            "ru": "Дистанция заклинания — касание."
+          }
+        },
+        {
+          "time": "2a",
+          "concentrate": true,
+          "description": {
+            "en": "The spell has a range of 30 feet. If you're healing a living creature, increase the Hit Points restored by 8.",
+            "ru": "Дистанция заклинания — 30 футов. При исцелении живого существа вы восстанавливаете ему на 8 ПЗ больше."
+          }
+        },
+        {
+          "time": "3a",
+          "concentrate": true,
+          "description": {
+            "en": "You disperse vital energy in a 30-foot emanation. This targets all living and undead creatures in the burst.",
+            "ru": "Вы излучаете энергию жизни в 30-футовой эманации. Цели заклинания — все живые существа и нежить в области."
+          }
+        },
+        {
+          "name": { "en": "Повышенное (+1)", "ru": "Heightened (+1)" },
+          "description": {
+            "en": "The amount of healing or damage increases by 1d8, and the extra healing for the 2-action version increases by 8.",
+            "ru": "Урон или исцеление увеличивается на 1d8. При сотворении за 2 действия дополнительное исцеление увеличивается на 8."
           }
         }
       ]
