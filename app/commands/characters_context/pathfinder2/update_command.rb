@@ -7,7 +7,8 @@ module CharactersContext
         add_feat: 'commands.characters_context.pathfinder2.feats.add',
         attach_avatar_by_url: 'commands.image_processing.attach_avatar_by_url',
         attach_avatar_by_file: 'commands.image_processing.attach_avatar_by_file',
-        cache: 'cache.avatars'
+        cache: 'cache.avatars',
+        refresh_feats: 'services.characters_context.pathfinder2.refresh_feats'
       ]
 
       SKILLS = %w[
@@ -132,7 +133,7 @@ module CharactersContext
         end
       end
 
-      def do_persist(input)
+      def do_persist(input) # rubocop: disable Metrics/AbcSize
         input[:character].data =
           input[:character].data.attributes.merge(
             input.except(:character, :avatar_file, :avatar_url, :file, :name).stringify_keys
@@ -141,6 +142,7 @@ module CharactersContext
         input[:character].save!
 
         add_feats(input) if input.key?(:selected_features)
+        refresh_feats.call(character: input[:character]) if input.key?(:level)
         upload_avatar(input)
 
         { result: input[:character] }

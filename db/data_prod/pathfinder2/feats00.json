@@ -1,0 +1,44 @@
+[
+  {
+    "slug": "keen_eyes",
+    "kind": "static",
+    "title": {
+      "en": "Keen Eyes",
+      "ru": "Остроглазый"
+    },
+    "description": {
+      "en": "Your eyes are sharp, allowing you to make out small details about concealed or even invisible creatures that others might miss. You gain a +2 circumstance bonus when using the Seek action to find hidden or undetected creatures within 30 feet of you. When you target an opponent that is concealed from you or hidden from you, reduce the DC of the flat check to 3 for a concealed target or 9 for a hidden one.",
+      "ru": "У вас замечательное зрение, и вы можете подмечать недоступные окружающим мельчайшие детали присутствия плохо видимых и даже невидимых вовсе существ. Вы получаете ситуативный бонус +2, когда применяете действие Поиск, чтобы найти спрятанных или необнаруженных существ в пределах 30 футов от вас. Когда вы выбираете целью плохо видимого вами или спрятанного от вас противника, СЛ чистой проверки снижается до 3, если существо плохо видимо, и до 9, если оно спрятанное."
+    },
+    "origin": "static_race",
+    "origin_value": "halfling"
+  },
+  {
+    "slug": "gutsy_halfling",
+    "kind": "static",
+    "title": {
+      "en": "Gutsy Halfling",
+      "ru": "Отважный полурослик"
+    },
+    "description": {
+      "en": "Your eyes are sharp, allowing you to make out small details about concealed or even invisible creatures that others might miss. You gain a +2 circumstance bonus when using the Seek action to find hidden or undetected creatures within 30 feet of you. When you target an opponent that is concealed from you or hidden from you, reduce the DC of the flat check to 3 for a concealed target or 9 for a hidden one.",
+      "ru": "Ваш род славится умением не терять присутствия духа в критической ситуации. Если вы получаете успех в испытании против эффекта с дескриптором «эмоции», он считается для вас критическим успехом."
+    },
+    "origin": "static_subrace",
+    "origin_value": "gutsy_halfling"
+  },
+  {
+    "slug": "familiar_of_restored_spirit",
+    "kind": "static",
+    "title": {
+      "en": "Familiar of Restored Spirit",
+      "ru": "Фамильяр воспрявшего духа"
+    },
+    "description": {
+      "en": "Your familiar is pleasantly warm and soft, seeming to wash away worries with its mere presence. When you Cast or Sustain a hex, one willing creature within 15 feet of your familiar gains temporary Hit Points equal to 2 + half your level, which last until the start of your next turn.",
+      "ru": "Ваш фамильяр мягкий и тёплый на ощупь, а его присутствие будто развеивает все невзгоды. Когда вы сотворяете наговор или применяете для него Поддержание, одно согласное существо в пределах 15 футов от вашего фамильяра до начала вашего следующего хода получает временные ПЗ в количестве, равном половине вашего уровня + 2."
+    },
+    "origin": "static_subclass",
+    "origin_value": "faith_flamekeeper"
+  }
+]

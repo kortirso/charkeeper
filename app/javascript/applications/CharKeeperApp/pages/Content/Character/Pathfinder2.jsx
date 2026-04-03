@@ -28,8 +28,8 @@ export const Pathfinder2 = (props) => {
   const weaponFilter = (item) => item.kind === 'weapon';
   const armorFilter = (item) => item.kind === 'armor';
 
-  const ancestryFilter = (item) => item.origin === 'ancestry';
-  const classFilter = (item) => item.origin === 'class';
+  const ancestryFilter = (item) => item.origin === 'ancestry' || item.origin === 'static_race' || item.origin === 'static_subrace';
+  const classFilter = (item) => item.origin === 'class' || item.origin === 'static_class' || item.origin === 'static_subclass';
   const generalFilter = (item) => item.origin === 'general';
   const skillFilter = (item) => item.origin === 'skill';
 
