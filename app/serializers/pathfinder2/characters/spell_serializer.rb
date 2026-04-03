@@ -3,7 +3,7 @@
 module Pathfinder2
   module Characters
     class SpellSerializer < ApplicationSerializer
-      ATTRIBUTES = %i[id ready_to_use value notes spell].freeze
+      ATTRIBUTES = %i[id ready_to_use value notes spell kind].freeze
 
       attributes(*ATTRIBUTES)
 

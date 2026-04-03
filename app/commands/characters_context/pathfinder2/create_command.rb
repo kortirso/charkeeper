@@ -66,8 +66,8 @@ module CharactersContext
 
         add_background_feat(character)
         add_feats(character, input) if input[:feats].any?
-        add_spells(character, input[:spells]) if input[:spells].any?
-        add_spells(character, input[:focus_spells], true) if input[:focus_spells].any?
+        add_spells(character, input[:spells], 'additional') if input[:spells].any?
+        add_spells(character, input[:focus_spells], 'focus') if input[:focus_spells].any?
         refresh_feats.call(character: character)
 
         { result: character }
@@ -101,13 +101,13 @@ module CharactersContext
         end
       end
 
-      def add_spells(character, spells, focus=nil)
+      def add_spells(character, spells, kind)
         spells.each do |slug|
           spell = ::Pathfinder2::Feat.where(origin: 4).find_by(slug: slug)
           next unless spell
 
           add_spell.call({
-            character: character, feat: spell, level: spell.info['level'], focus: focus, additional: true
+            character: character, feat: spell, level: spell.info['level'], kind: kind
           }.compact_blank)
         end
       end

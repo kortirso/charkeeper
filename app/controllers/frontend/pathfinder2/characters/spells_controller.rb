@@ -13,7 +13,7 @@ module Frontend
 
         before_action :find_character
         before_action :find_spell, only: %i[create]
-        before_action :find_character_spell, only: %i[update]
+        before_action :find_character_spell, only: %i[update destroy]
 
         def index
           serialize_relation_v2(
@@ -38,8 +38,7 @@ module Frontend
         end
 
         def destroy
-          character_spell = @character.feats.find_by!(feat_id: params[:id])
-          character_spell.destroy
+          @character_spell.destroy
           only_head_response
         end
 

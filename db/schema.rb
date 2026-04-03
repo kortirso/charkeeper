@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_03_28_174731) do
+ActiveRecord::Schema[8.1].define(version: 2026_04_03_111534) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
   enable_extension "pgcrypto"
@@ -126,6 +126,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_03_28_174731) do
     t.uuid "character_id", null: false
     t.datetime "created_at", null: false
     t.uuid "feat_id", null: false
+    t.string "kind", default: "default", null: false
     t.integer "limit_refresh", limit: 2, comment: "Событие для обновления лимита"
     t.text "notes"
     t.boolean "ready_to_use"
@@ -133,7 +134,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_03_28_174731) do
     t.datetime "updated_at", null: false
     t.integer "used_count", comment: "Кол-во использований"
     t.jsonb "value", comment: "Выбранные опции навыка, либо введенный текст"
-    t.index ["character_id", "feat_id"], name: "index_character_feats_on_character_id_and_feat_id", unique: true
+    t.index ["character_id", "feat_id", "kind"], name: "index_character_feats_on_character_id_and_feat_id_and_kind", unique: true
   end
 
   create_table "character_items", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|

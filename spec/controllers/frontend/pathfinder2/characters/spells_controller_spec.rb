@@ -35,7 +35,7 @@ describe Frontend::Pathfinder2::Characters::SpellsController do
 
           expect(response).to have_http_status :ok
           expect(response.parsed_body['spells'].size).to eq 1
-          expect(response_values.keys).to contain_exactly('id', 'notes', 'spell', 'ready_to_use', 'value')
+          expect(response_values.keys).to contain_exactly('id', 'notes', 'spell', 'ready_to_use', 'value', 'kind')
         end
       end
     end
@@ -87,7 +87,7 @@ describe Frontend::Pathfinder2::Characters::SpellsController do
             expect { request }.to change(user_character.feats, :count).by(1)
             expect(response).to have_http_status :created
             expect(response.parsed_body['spell'].keys).to(
-              contain_exactly('id', 'notes', 'spell', 'ready_to_use', 'value')
+              contain_exactly('id', 'notes', 'spell', 'ready_to_use', 'value', 'kind')
             )
           end
         end
@@ -187,11 +187,12 @@ describe Frontend::Pathfinder2::Characters::SpellsController do
         end
 
         context 'for existing spell' do
+          let!(:character_spell) { create :character_feat, feat: spell, character: user_character }
           let(:request) {
-            delete :destroy, params: { character_id: user_character.id, id: spell.id, charkeeper_access_token: access_token }
+            delete :destroy, params: {
+              character_id: user_character.id, id: character_spell.id, charkeeper_access_token: access_token
+            }
           }
-
-          before { create :character_feat, feat: spell, character: user_character }
 
           it 'deletes character spell', :aggregate_failures do
             expect { request }.to change(user_character.feats, :count).by(-1)

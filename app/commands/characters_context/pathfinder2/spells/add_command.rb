@@ -7,23 +7,20 @@ module CharactersContext
         use_contract do
           config.messages.namespace = :pathfinder2_character
 
+          Kinds = Dry::Types['strict.string'].enum('default', 'innate', 'focus', 'additional')
+
           params do
             required(:character).filled(type?: ::Pathfinder2::Character)
             required(:feat).filled(type?: ::Pathfinder2::Feat)
+            optional(:kind).filled(Kinds)
             optional(:level).filled(:integer)
-            optional(:innate).filled(:bool)
-            optional(:focus).filled(:bool)
-            optional(:additional).filled(:bool)
           end
         end
 
         private
 
         def do_prepare(input)
-          input[:value] = {}
-          input[:value] = { 'innate' => input[:innate] } if input.key?(:innate)
-          input[:value] = { 'focus' => input[:focus] } if input.key?(:focus)
-          input[:value][:additional] = true if input[:additional]
+          input[:kind] = 'default' unless input.key?(:kind)
         end
 
         def do_persist(input)
@@ -32,8 +29,9 @@ module CharactersContext
           result = ::Pathfinder2::Character::Feat.create!(
             character: input[:character],
             feat: input[:feat],
+            kind: input[:kind],
             ready_to_use: spontaneous_caster,
-            value: spontaneous_caster ? input[:value].merge({ input[:level].to_s => { 'selected_count' => 1 } }) : input[:value]
+            value: spontaneous_caster ? { input[:level].to_s => { 'selected_count' => 1 } } : {}
           )
 
           { result: result }

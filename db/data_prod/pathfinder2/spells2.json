@@ -287,11 +287,11 @@
       "ru": "Спокойствие"
     },
     "description": {
-      "en": "<b>Traditions</b> <u>divine</u>, <u>occult</u><br><b>Range</b> 120 feet; <b>Area</b> 10-foot burst<br><b>Defense</b> Will; <b>Duration</b> sustained up to 1 minute<hr>You forcibly calm creatures in the area, soothing them into a nonviolent state; each creature must attempt a Will save.\n\n<b>Critical Success</b> The creature is unaffected.\n\n<b>Success</b> Calming urges impose a –1 status penalty to the creature's attack rolls.\n\n<b>Failure</b> Any emotion effects that would affect the creature are suppressed and the creature can't use hostile actions. If the target is subject to hostility from any other creature, it ceases to be affected by <i>calm</i>.\n\n<b>Critical Failure</b> As failure, but hostility doesn't end the effect.",
-      "ru": "<b>Традиции</b> сакральная, оккультная<br>\n<b>Сотворение</b> [two-actions] <br>\n<b>Дистанция</b> 120 футов; <b>Область</b> 10-футовый взрыв<br>\n<b>Защита</b> Воля; <b>Длительность</b> поддерживаемое до 1 минуты.\n\nВы заставляете успокоиться существ в области, делая их неагрессивными. Каждое существо проходит испытание Воли.\n<br>\n<b>Критический успех</b> существо избегает эффекта.\n<br>\n<b>Успех</b> проверки атак существа получают штраф состояния -1.\n<br>\n<b>Провал</b> все действующие на существо эффекты с дескриптором «эмоции» подавляются, существо не может совершать враждебные действия. Если существо подвергнется враждебным действиям любого другого существа, действие заклинания прекращается.\n<br>\n<b>Критический провал</b> аналогичен провалу, но враждебные действия не прекращают эффект."
+      "en": "You forcibly calm creatures in the area, soothing them into a nonviolent state; each creature must attempt a Will save.",
+      "ru": "Вы заставляете успокоиться существ в области, делая их неагрессивными. Каждое существо проходит испытание Воли."
     },
     "origin": "spell",
-    "origin_value": "",
+    "origin_value": "divine,occult",
     "origin_values": [
       "concentrate",
       "emotion",
@@ -300,22 +300,55 @@
       "mental"
     ],
     "price": {
-      "a": 1
+      "a": 2
     },
     "info": {
       "level": 2,
       "targets": "",
-      "range": "",
-      "defense": "",
+      "range": "120,ft",
+      "area": "burst,10",
+      "defense": "will",
+      "sustained": true,
+      "duration": "1,m",
       "enhancements": [
         {
           "name": {
-            "en": "",
-            "ru": ""
+            "en": "Critical Success",
+            "ru": "Критический успех"
           },
           "description": {
-            "en": "",
-            "ru": ""
+            "en": "The creature is unaffected.",
+            "ru": "Существо избегает эффекта."
+          }
+        },
+        {
+          "name": {
+            "en": "Success",
+            "ru": "Успех"
+          },
+          "description": {
+            "en": "Calming urges impose a –1 status penalty to the creature's attack rolls.",
+            "ru": "Проверки атак существа получают штраф состояния -1."
+          }
+        },
+        {
+          "name": {
+            "en": "Failure",
+            "ru": "Провал"
+          },
+          "description": {
+            "en": "Any emotion effects that would affect the creature are suppressed and the creature can't use hostile actions. If the target is subject to hostility from any other creature, it ceases to be affected by **Calm**.",
+            "ru": "Все действующие на существо эффекты с дескриптором «эмоции» подавляются, существо не может совершать враждебные действия. Если существо подвергнется враждебным действиям любого другого существа, действие заклинания прекращается."
+          }
+        },
+        {
+          "name": {
+            "en": "Critical Failure",
+            "ru": "Критический провал"
+          },
+          "description": {
+            "en": "As failure, but hostility doesn't end the effect.",
+            "ru": "Аналогичен провалу, но враждебные действия не прекращают эффект."
           }
         }
       ]
