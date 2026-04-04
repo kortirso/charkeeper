@@ -197,6 +197,7 @@ export const Combat = (props) => {
 
   const renderFalloutAttackDice = (attack) => {
     const skill = character().skills.find(({ slug }) => attack.kind === slug);
+    if (!skill) return '';
 
     return (
       <Dice
