@@ -5,7 +5,6 @@ module Pathfinder2Character
     class DruidBuilder
       # rubocop: disable Metrics/AbcSize
       def call(result:)
-        result[:health] = { current: result[:health] + 6, max: result[:health] + 6, temp: 0 }
         result[:abilities].merge!({ wis: 2 }) { |_, oldval, newval| oldval + newval }
         result[:skill_boosts].merge!({ nature: 1, free: 2 }) { |_, oldval, newval| oldval + newval }
 

@@ -1,47 +1,56 @@
-import { createSignal, For, batch } from 'solid-js';
-import * as i18n from '@solid-primitives/i18n';
+import { For } from 'solid-js';
 
-import { createModal, StatsBlock, ErrorWrapper, Input, Checkbox, Button } from '../../../../components';
+import { Pathfinder2SharedHealth } from '../../../../pages';
+import { ErrorWrapper, Checkbox } from '../../../../components';
 import { useAppState, useAppLocale, useAppAlert } from '../../../../context';
 import { updateCharacterRequest } from '../../../../requests/updateCharacterRequest';
-import { createCharacterHealthRequest } from '../../../../requests/createCharacterHealthRequest';
+import { localize, performResponse } from '../../../../helpers';
+
+const TRANSLATION = {
+  en: {
+    dyingConditionValue: 'Dying condition value'
+  },
+  ru: {
+    dyingConditionValue: 'Состояние при смерти'
+  },
+  es: {
+    dyingConditionValue: 'Valor de la condición de muerte'
+  }
+}
 
 export const Pathfinder2Health = (props) => {
   const character = () => props.character;
 
-  // changeable data
-  const [damageHealValue, setDamageHealValue] = createSignal(0);
-  const [healthData, setHealthData] = createSignal(character().health);
-
   const [appState] = useAppState();
   const [{ renderAlerts }] = useAppAlert();
-  const { Modal, openModal, closeModal } = createModal();
-  const [, dict] = useAppLocale();
+  const [locale] = useAppLocale();
 
-  const t = i18n.translator(dict);
+  const changeHealth = (coefficient, value) => {
+    const damageValue = parseInt(value) || 0;
+    if (damageValue === 0) return;
 
-  // submits
-  const updateHealth = () => replaceCharacter({ health: healthData() });
-
-  const changeHealth = async (coefficient) => {
-    const result = await createCharacterHealthRequest(
-      appState.accessToken,
-      character().provider,
-      character().id,
-      { value: damageHealValue() * coefficient, only: 'health,dying_condition_value' }
-    );
-
-    if (result.errors_list === undefined) {
-      props.onReplaceCharacter({
-        health: result.character.health,
-        dying_condition_value: result.character.dying_condition_value
-      });
-    } else renderAlerts(result.errors_list);
+    const payload = { health: { ...character().health } };
+    if (coefficient === 1) {
+      payload.health.current = Math.min(character().health.current + damageValue, character().health.max)
+    } else {
+      if (character().health.temp >= damageValue) {
+        payload.health.temp = character().health.temp - damageValue;
+      } else {
+        const realDamage = damageValue - character().health.temp;
+        payload.health.temp = 0;
+        payload.health.current = Math.max(character().health.current - realDamage, 0);
+      }
+    }
+    replaceCharacter(payload);
   }
 
-  const gainDying = () => {
-    replaceCharacter({ dying_condition_value: character().dying_condition_value + 1 });
+  const changeTempHealth = (value) => {
+    const payload = { health: { ...character().health, temp: character().health.temp + value } };
+
+    replaceCharacter(payload);
   }
+
+  const gainDying = () => replaceCharacter({ dying_condition_value: character().dying_condition_value + 1 });
 
   const restoreDying = () => {
     const newValue = character().dying_condition_value > 0 ? (character().dying_condition_value - 1) : 0;
@@ -54,75 +63,40 @@ export const Pathfinder2Health = (props) => {
     const result = await updateCharacterRequest(
       appState.accessToken, character().provider, character().id, { character: payload, only_head: true }
     );
-
-    if (result.errors_list === undefined) {
-      batch(() => {
+    performResponse(
+      result,
+      function() { // eslint-disable-line solid/reactivity
         props.onReplaceCharacter(payload);
-        closeModal();
-      });
-    } else renderAlerts(result.errors_list);
+      },
+      function() { renderAlerts(result.errors_list) }
+    );
   }
 
   return (
-    <ErrorWrapper payload={{ character_id: character().id, key: 'Pathfinder2Combat' }}>
-      <StatsBlock
-        items={[
-          { title: t('terms.health.current'), value: character().health.current },
-          { title: t('terms.health.max'), value: character().health.max },
-          { title: t('terms.health.temp'), value: character().health.temp }
-        ]}
-        onClick={openModal}
+    <ErrorWrapper payload={{ character_id: character().id, key: 'Pathfinder2Health' }}>
+      <Pathfinder2SharedHealth
+        currentHealth={character().health.current}
+        maxHealth={character().health.max}
+        tempHealth={character().health.temp}
+        onChangeHealth={changeHealth}
+        onChangeTempHealth={changeTempHealth}
       >
         <div class="flex items-center pt-0 p-4">
-          <Button default textable classList="flex-1" onClick={() => changeHealth(-1)}>
-            {t('character.damage')}
-          </Button>
-          <Input
-            numeric
-            containerClassList="w-20 mx-4"
-            value={damageHealValue()}
-            onInput={(value) => setDamageHealValue(Number(value))}
-          />
-          <Button default textable classList="flex-1" onClick={() => changeHealth(1)}>
-            {t('character.heal')}
-          </Button>
-        </div>
-        <div class="pt-0 p-4">
-          <div class="flex items-center">
-            <p class="mr-2 dark:text-snow">{t('character.dyingConditionValue')}</p>
-            <div class="flex">
-              <For each={[...Array((character().dying_condition_value || 0))]}>
-                {() =>
-                  <Checkbox checked classList="mr-1" onToggle={restoreDying} />
-                }
-              </For>
-              <For each={[...Array(4 - (character().dying_condition_value || 0))]}>
-                {() =>
-                  <Checkbox classList="mr-1" onToggle={gainDying} />
-                }
-              </For>
-            </div>
+          <p class="mr-2">{localize(TRANSLATION, locale()).dyingConditionValue}</p>
+          <div class="flex">
+            <For each={[...Array((character().dying_condition_value || 0))]}>
+              {() =>
+                <Checkbox checked classList="mr-1" onToggle={restoreDying} />
+              }
+            </For>
+            <For each={[...Array(character().max_dying - (character().dying_condition_value || 0))]}>
+              {() =>
+                <Checkbox classList="mr-1" onToggle={gainDying} />
+              }
+            </For>
           </div>
         </div>
-      </StatsBlock>
-      <Modal>
-        <div class="flex flex-col">
-          <For each={['max', 'temp']}>
-            {(health) =>
-              <div class="mb-4 flex items-center">
-                <p class="flex-1 text-sm text-left dark:text-snow">{t(`terms.health.${health}`)}</p>
-                <Input
-                  numeric
-                  containerClassList="w-20 ml-8"
-                  value={healthData()[health]}
-                  onInput={(value) => setHealthData({ ...healthData(), [health]: Number(value) })}
-                />
-              </div>
-            }
-          </For>
-          <Button default textable onClick={updateHealth}>{t('save')}</Button>
-        </div>
-      </Modal>
+      </Pathfinder2SharedHealth>
     </ErrorWrapper>
   );
 }

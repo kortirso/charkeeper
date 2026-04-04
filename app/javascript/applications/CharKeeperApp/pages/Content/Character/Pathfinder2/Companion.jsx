@@ -1,11 +1,12 @@
 import { createSignal, createEffect, Show, For, batch } from 'solid-js';
 import { createStore } from 'solid-js/store';
 
+import { Pathfinder2SharedHealth } from '../../../../pages';
 import {
   ErrorWrapper, Input, Button, EditWrapper, GuideWrapper, AvatarInput, TextArea, Dice, StatsBlock, Toggle, Checkbox
 } from '../../../../components';
 import { useAppState, useAppLocale, useAppAlert } from '../../../../context';
-import { Avatar, Minus, Plus } from '../../../../assets';
+import { Avatar } from '../../../../assets';
 import config from '../../../../data/pathfinder2.json';
 import { fetchPetFeatsRequest } from '../../../../requests/fetchPetFeatsRequest';
 import { fetchCompanionRequest } from '../../../../requests/fetchCompanionRequest';
@@ -73,7 +74,6 @@ export const Pathfinder2Companion = (props) => {
   const [form, setForm] = createStore({ name: '', caption: '' });
 
   const [editMode, setEditMode] = createSignal(false);
-  const [damageHealValue, setDamageHealValue] = createSignal(0);
 
   const [appState] = useAppState();
   const [{ renderAlerts }] = useAppAlert();
@@ -116,8 +116,8 @@ export const Pathfinder2Companion = (props) => {
 
   const cancelNameEditing = () => setEditMode(false);
 
-  const changeHealth = (coefficient) => {
-    const damageValue = parseInt(damageHealValue()) || 0;
+  const changeHealth = (coefficient, value) => {
+    const damageValue = parseInt(value) || 0;
     if (damageValue === 0) return;
 
     const payload = {};
@@ -251,31 +251,13 @@ export const Pathfinder2Companion = (props) => {
               { title: localize(TRANSLATION, locale()).speed, value: companion().speed }
             ]}
           />
-          <StatsBlock
-            items={[
-              { title: localize(TRANSLATION, locale()).current, value: companion().health },
-              { title: localize(TRANSLATION, locale()).max, value: companion().health_max },
-              {
-                title: localize(TRANSLATION, locale()).temp,
-                value:
-                  <div class="flex items-center gap-4">
-                    <Button default size="small" disabled={companion().health_temp === 0} onClick={() => companion().health_temp ? null : changeTempHealth(-1)}><Minus /></Button>
-                    {companion().health_temp}
-                    <Button default size="small" onClick={() => changeTempHealth(1)} ><Plus /></Button>
-                  </div>
-              }
-            ]}
-          >
-            <div class="flex items-center pt-0 p-4">
-              <Button default textable classList="flex-1" onClick={() => changeHealth(-1)}>
-                {localize(TRANSLATION, locale()).damage}
-              </Button>
-              <Input numeric containerClassList="w-20 mx-4" value={damageHealValue()} onInput={setDamageHealValue} />
-              <Button default textable classList="flex-1" onClick={() => changeHealth(1)}>
-                {localize(TRANSLATION, locale()).heal}
-              </Button>
-            </div>
-          </StatsBlock>
+          <Pathfinder2SharedHealth
+            currentHealth={companion().health}
+            maxHealth={companion().health_max}
+            tempHealth={companion().health_temp}
+            onChangeHealth={changeHealth}
+            onChangeTempHealth={changeTempHealth}
+          />
           <div class="blockable py-4 px-2 md:px-4 flex mb-2">
             <For each={Object.entries(config.savingThrows)}>
               {([slug, savingName]) =>

@@ -8,6 +8,12 @@ class Pathfinder2Decorator < ApplicationDecoratorV2
   ONLY_ADD_MODIFIERS = %w[str dex con wis int cha].freeze
   WEAPON_MODIFIERS = %w[attack unarmed_attacks melee_attacks range_attacks damage unarmed_damage melee_damage range_damage].freeze
   PET_ORIGINS = [9, 10].freeze
+  RACE_HP = {
+    'gnome' => 8, 'goblin' => 6, 'dwarf' => 10, 'leshy' => 8, 'orc' => 10, 'halfling' => 6, 'human' => 8, 'elf' => 6
+  }.freeze
+  CLASS_HP = {
+    'bard' => 8, 'witch' => 6, 'fighter' => 10, 'wizard' => 6, 'druid' => 8, 'cleric' => 8, 'rogue' => 8, 'ranger' => 10
+  }.freeze
 
   def call(character:, simple: false, version: nil)
     @character = character
@@ -44,13 +50,19 @@ class Pathfinder2Decorator < ApplicationDecoratorV2
     @result['defense_gear'] = find_defense_gear
     @result['no_body_armor'] = defense_gear[:armor].nil?
     @result['no_armor'] = defense_gear.values.all?(&:nil?)
+    @result['max_dying'] = 4
   end
 
   def apply_add_bonuses_to_abilities
     @result['modified_abilities'] = abilities.to_h { |key, value| [key, value + find_modifiers(key, 'add').sum] }
   end
 
-  def calculate_secondary_abilities # rubocop: disable Metrics/AbcSize
+  def calculate_secondary_abilities # rubocop: disable Metrics/AbcSize, Metrics/MethodLength
+    @result['health'] = {
+      'current' => health_current,
+      'temp' => health_temp,
+      'max' => RACE_HP[race] + (CLASS_HP[main_class] * level) + (modified_abilities['con'] * level)
+    }
     @result['skills'] = generate_skills_payload
     @result['saving_throws_value'] = {
       'fortitude' => modified_abilities['con'] + proficiency_bonus(saving_throws['fortitude']),
@@ -139,7 +151,7 @@ class Pathfinder2Decorator < ApplicationDecoratorV2
       values.each do |value|
         if key_name.include?('.')
           primary, secondary = key_name.split('.')
-          @result[primary][secondary] = @result[primary][secondary] + value
+          @result[primary][secondary] += value
         else
           @result[key_name] = @result[key_name] + value
         end
