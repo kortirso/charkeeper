@@ -1171,32 +1171,52 @@
       "ru": "Дурное знамение"
     },
     "description": {
-      "en": "<b>Source</b> Player Core , Gods & Magic <br><b>Traditions</b> <u>occult</u><br><b>Deities</b> Ahriman, Azathoth, Bifrons, Chamiaholom, Dammar, Fortune's Fate, Gyronna, Imot, Lubaiko, Mestama, Sifkesh, The Tides of Chaos, Zeaki, Zyphus <br><b>Mystery</b> ancestors<br><b>Range</b> 30 feet; <b>Targets</b> 1 creature<br><b>Defense</b> Will; <b>Duration</b> 1 round<hr>The target is struck with misfortune, which throws it off balance. The target must attempt a Will save.\n\n<b>Success</b> The target is unaffected.\n\n<b>Failure</b> The first time during the duration that the target attempts an attack roll or skill check, it must roll twice and use the worse result.\n\n<b>Critical Failure</b> Every time during the duration that the target attempts an attack roll or skill check, it must roll twice and use the worse result.",
-      "ru": "<b>Традиции</b> оккультная<br>\n<b>Божества</b> Ариман, Азатот, Бифронс, Чамиахолом, Даммар, Судьбоносная удача, Гиронна, Imot, Lubaiko, Местама, Сифкеш, The Tides of Chaos, Zeaki, Зифус <br>\n<b>Сотворение</b> [two-actions] <br>\n<b>Дистанция</b> 30 футов; <b>Защита</b> Воля; <b>Цели</b> 1 существо<br>\n<b>Длительность</b> 1 раунд.\n\nЦели не везёт, и это выводит её из равновесия. Цель проходит испытание Воли.\n<br>\n<b>Успех</b> цель избегает эффекта.\n<br>\n<b>Провал</b> цель совершает двойной бросок и берёт худший результат при первой проверке атаки или навыка в течение длительности заклинания.\n<br>\n<b>Критический провал</b> цель совершает двойной бросок и берёт худший результат при всех проверках атак и навыков в течение длительности заклинания."
+      "en": "The target is struck with misfortune, which throws it off balance. The target must attempt a Will save.",
+      "ru": "Цели не везёт, и это выводит её из равновесия. Цель проходит испытание Воли."
     },
     "origin": "spell",
-    "origin_value": "",
+    "origin_value": "occult",
     "origin_values": [
       "concentrate",
       "curse",
       "manipulate",
       "misfortune"
     ],
-    "price": { "a": 1 },
+    "price": { "a": 2 },
     "info": {
       "level": 1,
-      "range": "",
-      "defense": "",
-      "duration": "",
+      "range": "30,f",
+      "defense": "will",
+      "duration": "1,r",
       "enhancements": [
         {
           "name": {
-            "en": "",
-            "ru": ""
+            "en": "Success",
+            "ru": "Успех"
           },
           "description": {
-            "en": "",
-            "ru": ""
+            "en": "The target is unaffected.",
+            "ru": "Цель избегает эффекта."
+          }
+        },
+        {
+          "name": {
+            "en": "Failure",
+            "ru": "Провал"
+          },
+          "description": {
+            "en": "The first time during the duration that the target attempts an attack roll or skill check, it must roll twice and use the worse result.",
+            "ru": "Цель совершает двойной бросок и берёт худший результат при первой проверке атаки или навыка в течение длительности заклинания."
+          }
+        },
+        {
+          "name": {
+            "en": "Critical Failure",
+            "ru": "Критический провал"
+          },
+          "description": {
+            "en": "Every time during the duration that the target attempts an attack roll or skill check, it must roll twice and use the worse result.",
+            "ru": "Цель совершает двойной бросок и берёт худший результат при всех проверках атак и навыков в течение длительности заклинания."
           }
         }
       ]
