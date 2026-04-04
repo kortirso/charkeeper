@@ -37,6 +37,7 @@ class Pathfinder2Decorator < ApplicationDecoratorV2
   private
 
   def generate_basis
+    @result['name'] = @character.name
     @result['raw_abilities'] = abilities.clone
     @result['abilities'] = abilities.transform_values { |value| calc_ability_modifier(value) }
     @result['spells_info'] = nil

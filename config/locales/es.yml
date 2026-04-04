@@ -308,6 +308,7 @@ es:
         animist: Animist
         attack: Attack
         auditory: Auditory
+        barbarian: Barbarian
         bard: Bard
         cantrip: Cantrip
         cleric: Cleric
@@ -317,21 +318,31 @@ es:
         curse: Curse
         darkness: Darkness
         detection: Detection
+        divine: Divine
+        downtime: Downtime
         druid: Druid
         dwarf: Dwarf
         earth: Earth
         electricity: Electricity
+        elf: Elf
         emotion: Emotion
+        exploration: Exploration
         fear: Fear
         fighter: Fighter
         fire: Fire
+        flourish: Flourish
         force: Force
         fortune: Fortune
         general: General
+        gnome: Gnome
+        goblin: Goblin
         halfling: Halfling
         healing: Healing
         hex: Hex
+        human: Human
         illusion: Illusion
+        incapacitation: Incapacitation
+        investigator: Investigator
         leshy: Leshy
         light: Light
         linguistic: Linguistic
@@ -343,16 +354,23 @@ es:
         oracle: Oracle
         orc: Orc
         plant: Plant
+        prediction: Prediction
+        press: Press
         poison: Poison
         polymorph: Polymorph
         primal: Primal
         psychic: Psychic
+        ranger: Ranger
+        rogue: Rogue
         sanctified: Sanctified
+        secret: Secret
         skill: Skill
         sorcerer: Sorcerer
         spellshape: Spellshape
         spirit: Spirit
+        stance: Stance
         subtle: Subtle
+        swashbuckler: Swashbuckler
         thaumaturge: Thaumaturge
         uncommon: Uncommon
         visual: Visual

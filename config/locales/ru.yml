@@ -308,6 +308,7 @@ ru:
         animist: Анимист
         attack: Атака
         auditory: Слух
+        barbarian: Варвар
         bard: Бард
         cantrip: Фокус
         cleric: Жрец
@@ -317,21 +318,31 @@ ru:
         curse: Проклятие
         darkness: Тьма
         detection: Обнаружение
+        divine: Сакральный
+        downtime: Свободное время
         druid: Друид
         dwarf: Дварф
         earth: Земля
         electricity: Электричество
+        elf: Эльф
         emotion: Эмоции
+        exploration: Исследование
         fear: Страх
         fighter: Воин
         fire: Огонь
+        flourish: 
         force: Сила
         fortune: Удача
         general: Общий
+        gnome: Гном
+        goblin: Гоблин
         halfling: Полурослик
         healing: Исцеление
         hex: Наговор
+        human: Человек
         illusion: Иллюзия
+        incapacitation: Устранение
+        investigator: Следователь
         leshy: Леший
         light: Свет
         linguistic: Язык
@@ -343,16 +354,23 @@ ru:
         oracle: Оракул
         orc: Орк
         plant: Растение
+        prediction: Предсказание
+        press: Напор
         poison: Яд
         polymorph: Полиморф
         primal: Первобытный
         psychic: Psychic
+        ranger: Следопыт
+        rogue: Плут
         sanctified: Освящённый
+        secret: Тайна
         skill: Навык
         sorcerer: Чародей
         spellshape: Метамагия
         spirit: Дух
+        stance: Стойка
         subtle: Незаметное
+        swashbuckler: Сорвиголова
         thaumaturge: Thaumaturge
         uncommon: Необычный
         visual: Зрение

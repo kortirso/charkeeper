@@ -7,35 +7,20 @@
       "ru": "Воздушный пузырь"
     },
     "description": {
-      "en": "<b>Traditions</b> <u>arcane</u>, <u>divine</u>, <u>primal</u><br>**Trigger** A creature within range enters an environment where it can't breathe.\n\n<b>Range</b> 60 feet; <b>Targets</b> the triggering creature<br><b>Duration</b> 1 minute<hr>A bubble of pure air appears around the target's head, allowing it to breathe normally. The effect ends as soon as the target returns to an environment where it can breathe normally.",
-      "ru": "<b>Традиции</b> мистическая, сакральная, первобытная<br>\n<b>Сотворение</b> [reaction]; **Условие** существо в пределах дистанции попадает в среду, где не может дышать.\n\n<b>Дистанция</b> 60 футов; <b>Цели</b> спровоцировавшее существо<br>\n<b>Длительность</b> 1 минута.\n\nВокруг головы цели возникает пузырь чистого воздуха, позволяя нормально дышать. Эффект завершается сразу же, как только цель вернётся в среду, где может дышать обычным образом."
+      "en": "**Trigger** A creature within range enters an environment where it can't breathe.\n\nA bubble of pure air appears around the target's head, allowing it to breathe normally. The effect ends as soon as the target returns to an environment where it can breathe normally.",
+      "ru": "**Условие** существо в пределах дистанции попадает в среду, где не может дышать.\n\nВокруг головы цели возникает пузырь чистого воздуха, позволяя нормально дышать. Эффект завершается сразу же, как только цель вернётся в среду, где может дышать обычным образом."
     },
     "origin": "spell",
-    "origin_value": "",
+    "origin_value": "arcane,divine,primal",
     "origin_values": [
       "air",
       "concentrate"
     ],
-    "price": {
-      "a": 1
-    },
+    "price": { "r": 1 },
     "info": {
       "level": 1,
-      "targets": "",
-      "range": "",
-      "defense": "",
-      "enhancements": [
-        {
-          "name": {
-            "en": "",
-            "ru": ""
-          },
-          "description": {
-            "en": "",
-            "ru": ""
-          }
-        }
-      ]
+      "range": "60,ft",
+      "duration": "1,m"
     }
   },
   {
@@ -46,32 +31,30 @@
       "ru": "Сигнал тревоги"
     },
     "description": {
-      "en": "<b>Traditions</b> <u>arcane</u>, <u>divine</u>, <u>occult</u>, <u>primal</u><br><b>Cast</b>  10 minutes<br><b>Range</b> touch; <b>Area</b> 20-foot burst<br><b>Duration</b> 8 hours<hr>You ward an area to alert you when creatures enter without your permission. When you cast alarm, select a password. Whenever a Small or larger corporeal creature enters the spell's area without speaking the password, alarm sends your choice of a mental alert (in which case the spell gains the mental trait) or an audible alarm with the sound and volume of a hand bell (in which case the spell gains the auditory trait). Either option automatically awakens you, and the bell allows each creature in the area to attempt a DC 15 Perception check to wake up. A creature aware of the alarm must succeed at a Stealth check against the spell's DC or trigger the spell when moving into the area.<hr><b>Heightened (3rd)</b> You can specify a trigger for which types of creatures sound the alarm spell, as described in Setting Triggers on page 303.",
-      "ru": "<b>Традиции</b> мистическая, сакральная, оккультная, первобытная<br>\n<b>Сотворение</b>  10 минут<br>\n<b>Дистанция</b> касание; <b>Область</b> 20-футовый взрыв<br>\n<b>Длительность</b> 8 часов.\n\nВы защищаете область, чтобы узнать, когда существа входят в неё без вашего позволения. Когда вы сотворяете это заклинание, вы устанавливаете пароль. Когда небестелесное существо размером не менее небольшого входит в область заклинания, не произнеся пароля, заклинание по вашему выбору оповещает вас об этом либо мысленно (в этом случае заклинание получает дескриптор «ментальный»), либо слышимым сигналом, звук и громкость которого такие же, как у ручного колокольчика (в этом случае заклинание получает дескриптор «слух»). Любой из сигналов автоматически будит вас, а звук колокольчика позволяет каждому существу в области совершить проверку Внимания со СЛ 15, чтобы проснуться. Если существо осведомлено о заклинании, то при перемещении в область оно должно пройти проверку Скрытности против СЛ заклинания, чтобы не вызвать срабатывание.\n\n<b>Повышенное (3 круг)</b> вы можете установить условие, на какие типы существ будет реагировать заклинание."
+      "en": "You ward an area to alert you when creatures enter without your permission. When you cast alarm, select a password. Whenever a Small or larger corporeal creature enters the spell's area without speaking the password, alarm sends your choice of a mental alert (in which case the spell gains the mental trait) or an audible alarm with the sound and volume of a hand bell (in which case the spell gains the auditory trait). Either option automatically awakens you, and the bell allows each creature in the area to attempt a DC 15 Perception check to wake up. A creature aware of the alarm must succeed at a Stealth check against the spell's DC or trigger the spell when moving into the area.",
+      "ru": "Вы защищаете область, чтобы узнать, когда существа входят в неё без вашего позволения. Когда вы сотворяете это заклинание, вы устанавливаете пароль. Когда небестелесное существо размером не менее небольшого входит в область заклинания, не произнеся пароля, заклинание по вашему выбору оповещает вас об этом либо мысленно (в этом случае заклинание получает дескриптор «ментальный»), либо слышимым сигналом, звук и громкость которого такие же, как у ручного колокольчика (в этом случае заклинание получает дескриптор «слух»). Любой из сигналов автоматически будит вас, а звук колокольчика позволяет каждому существу в области совершить проверку Внимания со СЛ 15, чтобы проснуться. Если существо осведомлено о заклинании, то при перемещении в область оно должно пройти проверку Скрытности против СЛ заклинания, чтобы не вызвать срабатывание."
     },
     "origin": "spell",
-    "origin_value": "",
+    "origin_value": "arcane,divine,occult,primal",
     "origin_values": [
       "concentrate",
       "manipulate"
     ],
-    "price": {
-      "a": 1
-    },
     "info": {
       "level": 1,
-      "targets": "",
-      "range": "",
-      "defense": "",
+      "time": "10,m",
+      "range": "touch",
+      "area": "burst,20",
+      "duration": "8,h",
       "enhancements": [
         {
           "name": {
-            "en": "",
-            "ru": ""
+            "en": "Heightened (3rd)",
+            "ru": "Повышенное (3 круг)"
           },
           "description": {
-            "en": "",
-            "ru": ""
+            "en": "You can specify a trigger for which types of creatures sound the alarm spell",
+            "ru": "Вы можете установить условие, на какие типы существ будет реагировать заклинание."
           }
         }
       ]
@@ -85,35 +68,20 @@
       "ru": "Муравьиная грузоподъёмность"
     },
     "description": {
-      "en": "<b>Traditions</b> <u>arcane</u>, <u>primal</u><br><b>Deities</b> Aakriti, Balumbdar, Belech, Dolok Darkfur, Droskar, Hearth and Harvest, Jukha, Kurgess, Stone's Blood <br><b>Range</b> touch; <b>Targets</b> 1 creature<br><b>Duration</b> 8 hours<hr>You reinforce the target's musculoskeletal system to bear more weight. The target can carry 3 more Bulk than normal before becoming encumbered and up to a maximum of 6 more Bulk.",
-      "ru": "<b>Традиции</b> мистическая, первобытная<br>\n<b>Божества</b> Aakriti, Balumbdar, Belech, Долок темношкурый, Дроскар, Hearth and Harvest, Юка, Кургесс, Кровь камня <br>\n<b>Сотворение</b> [two-actions] <br>\n<b>Дистанция</b> касание; <b>Цели</b> 1 существо<br>\n<b>Длительность</b> 8 часов.\n\nВы укрепляете мускулы и скелет цели, позволяя переносить больший вес. Значение веса, при котором цель становится нагруженной, увеличивается на 3, а максимальный переносимый вес — на 6."
+      "en": "You reinforce the target's musculoskeletal system to bear more weight. The target can carry 3 more Bulk than normal before becoming encumbered and up to a maximum of 6 more Bulk.",
+      "ru": "Вы укрепляете мускулы и скелет цели, позволяя переносить больший вес. Значение веса, при котором цель становится нагруженной, увеличивается на 3, а максимальный переносимый вес — на 6."
     },
     "origin": "spell",
-    "origin_value": "",
+    "origin_value": "arcane,primal",
     "origin_values": [
       "concentrate",
       "manipulate"
     ],
-    "price": {
-      "a": 1
-    },
+    "price": { "a": 2 },
     "info": {
       "level": 1,
-      "targets": "",
-      "range": "",
-      "defense": "",
-      "enhancements": [
-        {
-          "name": {
-            "en": "",
-            "ru": ""
-          },
-          "description": {
-            "en": "",
-            "ru": ""
-          }
-        }
-      ]
+      "range": "touch",
+      "duration": "8,h"
     }
   },
   {
@@ -124,37 +92,23 @@
       "ru": "Отповедь"
     },
     "description": {
-      "en": "<b>Traditions</b> <u>divine</u>, <u>occult</u><br><b>Area</b> 10-foot emanation<br><b>Defense</b> Will; <b>Duration</b> 1 minute<hr>You fill the minds of your enemies with doubt. Enemies in the area must succeed at a Will save or take a –1 status penalty to attack rolls as long as they are in the area. Once per round on subsequent turns, you can Sustain the spell to increase the emanation's radius by 10 feet and force enemies in the area that weren't yet affected to attempt another saving throw. <i>Bane</i> can counteract bless.",
-      "ru": "<b>Традиции</b> сакральная, оккультная<br>\n<b>Сотворение</b> [two-actions] <br>\n<b>Область</b> 10-футовая эманация<br>\n<b>Защита</b> Воля; <b>Длительность</b> 1 минута.\n\nВы затуманиваете разум врагов сомнениями. Противники в области, провалившие испытание Воли, получают штраф состояния -1 к проверкам атак, пока находятся в области. Начиная со следующего после сотворения этого заклинания хода вы можете один раз в ход совершить одиночное действие с дескриптором «концентрация» чтобы увеличить радиус эманации на 5 футов и заставить противников в области, на которых ещё не подействовало заклинание, повторно пройти испытание. <i>Отповедь</i> может нейтрализовать благословение."
+      "en": "You fill the minds of your enemies with doubt. Enemies in the area must succeed at a Will save or take a –1 status penalty to attack rolls as long as they are in the area. Once per round on subsequent turns, you can Sustain the spell to increase the emanation's radius by 10 feet and force enemies in the area that weren't yet affected to attempt another saving throw. **Bane** can counteract bless.",
+      "ru": "Вы затуманиваете разум врагов сомнениями. Противники в области, провалившие испытание Воли, получают штраф состояния -1 к проверкам атак, пока находятся в области. Начиная со следующего после сотворения этого заклинания хода вы можете один раз в ход совершить одиночное действие с дескриптором «концентрация» чтобы увеличить радиус эманации на 5 футов и заставить противников в области, на которых ещё не подействовало заклинание, повторно пройти испытание. **Отповедь** может нейтрализовать благословение."
     },
     "origin": "spell",
-    "origin_value": "",
+    "origin_value": "divine,occult",
     "origin_values": [
       "aura",
       "concentrate",
       "manipulate",
       "mental"
     ],
-    "price": {
-      "a": 1
-    },
+    "price": { "a": 2 },
     "info": {
       "level": 1,
-      "targets": "",
-      "range": "",
-      "defense": "",
-      "enhancements": [
-        {
-          "name": {
-            "en": "",
-            "ru": ""
-          },
-          "description": {
-            "en": "",
-            "ru": ""
-          }
-        }
-      ]
+      "area": "emanation,10",
+      "defense": "will",
+      "duration": "1,m"
     }
   },
   {
@@ -165,37 +119,22 @@
       "ru": "Благословение"
     },
     "description": {
-      "en": "<b>Traditions</b> <u>divine</u>, <u>occult</u><br><b>Area</b> 15-foot emanation<br><b>Duration</b> 1 minute<hr>Blessings from beyond help your companions strike true. You and your allies gain a +1 status bonus to attack rolls while within the emanation. Once per round on subsequent turns, you can Sustain the spell to increase the emanation's radius by 10 feet. <i>Bless</i> can counteract bane.",
-      "ru": "<b>Традиции</b> сакральная, оккультная<br>\n<b>Сотворение</b> [two-actions] <br>\n<b>Область</b> 15-футовая эманация<br>\n<b>Длительность</b> 1 минута.\n\nБлагословение из иного мира направляет удары ваших союзников. Вы и все ваши союзники получаете бонус состояния +1 к проверкам атаки, пока находитесь в области. Начиная со следующего после сотворения этого заклинания хода вы можете один раз в ход применить Поддержание, чтобы увеличить радиус эманации на 10 футов. Благословение может нейтрализовать отповедь."
+      "en": "Blessings from beyond help your companions strike true. You and your allies gain a +1 status bonus to attack rolls while within the emanation. Once per round on subsequent turns, you can Sustain the spell to increase the emanation's radius by 10 feet. **Bless** can counteract bane.",
+      "ru": "Благословение из иного мира направляет удары ваших союзников. Вы и все ваши союзники получаете бонус состояния +1 к проверкам атаки, пока находитесь в области. Начиная со следующего после сотворения этого заклинания хода вы можете один раз в ход применить Поддержание, чтобы увеличить радиус эманации на 10 футов. **Благословение** может нейтрализовать отповедь."
     },
     "origin": "spell",
-    "origin_value": "",
+    "origin_value": "divine,occult",
     "origin_values": [
       "aura",
       "concentrate",
       "manipulate",
       "mental"
     ],
-    "price": {
-      "a": 1
-    },
+    "price": { "a": 2 },
     "info": {
       "level": 1,
-      "targets": "",
-      "range": "",
-      "defense": "",
-      "enhancements": [
-        {
-          "name": {
-            "en": "",
-            "ru": ""
-          },
-          "description": {
-            "en": "",
-            "ru": ""
-          }
-        }
-      ]
+      "area": "emanation,15",
+      "duration": "1,m"
     }
   },
   {
@@ -206,33 +145,30 @@
       "ru": "Огненное дыхание"
     },
     "description": {
-      "en": "<b>Traditions</b> <u>arcane</u>, <u>primal</u><br><b>Deities</b> Angradd, Chavazvug, Chohar, Dahak, Lady Nanbyo, Light of the Everlasting Flame, Mahja Firehair, Moloch, Nephthys, Nurgal, Ra, Rovagug, Sarenrae, Szuriel, Walkena, Ymeri, Zelishkar, Zursvaater <br><b>Mysteries</b> flames, ash<br><b>Area</b> 15-foot cone<br><b>Defense</b> basic Reflex<hr>A gout of flame sprays from your mouth. You deal 2d6 fire damage to creatures in the area with a basic Reflex save.<hr><b>Heightened (+1)</b> The damage increases by 2d6.",
-      "ru": "<b>Традиции</b> мистическая, первобытная<br>\n<b>Божества</b> Анградд, Чавазвуг, Chohar, Дахак, Леди Нанбё (вдова страданий), Свет неугасимого пламени, Махжа Огнегривая, Молох (пепельный бык), Nephthys, Нургал, Ра, Ровагуг, Саренрэй, Зуриэль, Walkena, Имери, Зелишкар, Зурсваатер <br>\n<b>Сотворение</b> [two-actions] <br>\n<b>Область</b> 15-футовый конус<br>\n<b>Защита</b> обычное испытание Реакции.\n\nИз вашего рта вырывается пламя. Вы наносите 2d6 урона огнём существам в области (обычное испытание Реакции).\n\n<b>Повышенное (+1)</b> урон увеличивается на 2d6."
+      "en": "A gout of flame sprays from your mouth. You deal 2d6 fire damage to creatures in the area with a basic Reflex save.",
+      "ru": "Из вашего рта вырывается пламя. Вы наносите 2d6 урона огнём существам в области (обычное испытание Реакции)."
     },
     "origin": "spell",
-    "origin_value": "",
+    "origin_value": "arcane,primal",
     "origin_values": [
       "concentrate",
       "fire",
       "manipulate"
     ],
-    "price": {
-      "a": 1
-    },
+    "price": { "a": 2 },
     "info": {
       "level": 1,
-      "targets": "",
-      "range": "",
-      "defense": "",
+      "area": "cone,15",
+      "defense": "reflex",
       "enhancements": [
         {
           "name": {
-            "en": "",
-            "ru": ""
+            "en": "Heightened (+1)",
+            "ru": "The damage increases by 2d6."
           },
           "description": {
-            "en": "",
-            "ru": ""
+            "en": "Повышенное (+1)",
+            "ru": "Урон увеличивается на 2d6."
           }
         }
       ]
@@ -259,14 +195,12 @@
       "mental",
       "subtle"
     ],
-    "price": {
-      "a": 1
-    },
+    "price": { "a": 1 },
     "info": {
       "level": 1,
-      "targets": "",
       "range": "",
       "defense": "",
+      "duration": "",
       "enhancements": [
         {
           "name": {
@@ -289,32 +223,29 @@
       "ru": "Очищение провизии"
     },
     "description": {
-      "en": "<b>Traditions</b> <u>divine</u>, <u>primal</u><br><b>Range</b> 10 feet; <b>Area</b> 1 cubic foot<hr>You transform all food and beverages in the area into delicious fare, changing water into wine or another fine beverage, or enhancing the food's taste and ingredients to make it a gourmet treat. You can also choose to remove all toxins and contaminations from the food. This spell doesn't prevent future contamination, natural decay, or spoilage, nor does it make the food any more nutritious.<hr><b>Heightened (+2)</b> Add another cubic foot to the area, which must be contiguous with the rest.",
-      "ru": "<b>Традиции</b> сакральная, первобытная<br>\n<b>Сотворение</b> [two-actions] <br>\n<b>Дистанция</b> 10 футов; <b>Область</b> 1 кубический фут.\n\nВы превращаете всю еду и питьё в области в изысканное яство: вода становится вином или иным благородным напитком, а пища на вкус и по составу превращается в кулинарный шедевр. Вы также можете очистить пищу от токсинов и загрязнений. От последующей порчи или загрязнения заклинание не защищает. Оно не делает пищу более питательной.\n\n<b>Повышенное (+2)</b> добавьте к области 1 кубический фут (область должна быть непрерывной)."
+      "en": "You transform all food and beverages in the area into delicious fare, changing water into wine or another fine beverage, or enhancing the food's taste and ingredients to make it a gourmet treat. You can also choose to remove all toxins and contaminations from the food. This spell doesn't prevent future contamination, natural decay, or spoilage, nor does it make the food any more nutritious.",
+      "ru": "Вы превращаете всю еду и питьё в области в изысканное яство: вода становится вином или иным благородным напитком, а пища на вкус и по составу превращается в кулинарный шедевр. Вы также можете очистить пищу от токсинов и загрязнений. От последующей порчи или загрязнения заклинание не защищает. Оно не делает пищу более питательной."
     },
     "origin": "spell",
-    "origin_value": "",
+    "origin_value": "divine,primal",
     "origin_values": [
       "concentrate",
       "manipulate"
     ],
-    "price": {
-      "a": 1
-    },
+    "price": { "a": 2 },
     "info": {
       "level": 1,
-      "targets": "",
-      "range": "",
-      "defense": "",
+      "range": "10,f",
+      "area": "cube,1",
       "enhancements": [
         {
           "name": {
-            "en": "",
-            "ru": ""
+            "en": "Heightened (+2)",
+            "ru": "Повышенное (+2)"
           },
           "description": {
-            "en": "",
-            "ru": ""
+            "en": "Add another cubic foot to the area, which must be contiguous with the rest.",
+            "ru": "Добавьте к области 1 кубический фут (область должна быть непрерывной)."
           }
         }
       ]
@@ -328,11 +259,11 @@
       "ru": "Приказ"
     },
     "description": {
-      "en": "<b>Traditions</b> <u>arcane</u>, <u>divine</u>, <u>occult</u><br><b>Patron Themes</b> Faith's Flamekeeper, The Unseen Broker <br><b>Range</b> 30 feet; <b>Targets</b> 1 creature<br><b>Defense</b> Will; <b>Duration</b> until the end of the target's next turn<hr>You shout a command that's hard to ignore. You can command the target to approach you, run away (as if it had the fleeing condition), release what it's holding, drop prone, or stand in place. It can't Delay or take any reactions until it has obeyed your command. The effects depend on the target's Will save.\n\n<b>Success</b> The creature is unaffected.\n\n<b>Failure</b> The creature must spend the first action on its next turn to obey your command.\n\n<b>Critical Failure</b> The target must use all its actions on its next turn to obey your command.<hr><b>Heightened (5th)</b> You can target up to 10 creatures.",
-      "ru": "<b>Традиции</b> мистическая, сакральная, оккультная<br>\n<b>Покровитель</b> хранитель пламени веры, незримый посредник <br>\n<b>Сотворение</b> [two-actions] <br>\n<b>Дистанция</b> 30 футов; <b>Цели</b> 1 существо<br>\n<b>Защита</b> Воля; <b>Длительность</b> до конца следующего хода цели.\n\nВы выкрикиваете приказание, которому сложно не подчиниться. Вы можете приказать цели приблизиться к вам, бежать прочь (как при состоянии паники), уронить то, что она держит, распластаться или стоять на месте. Существо не может использовать Выжидание или совершать ответные действия, пока не выполнило приказ. Эффекты зависят от результата испытания Воли цели.\n<br>\n<b>Успех</b> существо избегает эффекта.\n<br>\n<b>Провал</b> существо должно потратить первое действие в свой следующий ход на выполнение приказа.\n<br>\n<b>Критический провал</b> существо должно потратить все свои действия в свой следующий ход на выполнение приказа.\n\n<b>Повышенное (5 круг)</b> вы можете выбрать целями 10 или менее существ."
+      "en": "You shout a command that's hard to ignore. You can command the target to approach you, run away (as if it had the fleeing condition), release what it's holding, drop prone, or stand in place. It can't Delay or take any reactions until it has obeyed your command. The effects depend on the target's Will save.",
+      "ru": "Вы выкрикиваете приказание, которому сложно не подчиниться. Вы можете приказать цели приблизиться к вам, бежать прочь (как при состоянии паники), уронить то, что она держит, распластаться или стоять на месте. Существо не может использовать Выжидание или совершать ответные действия, пока не выполнило приказ. Эффекты зависят от результата испытания Воли цели."
     },
     "origin": "spell",
-    "origin_value": "",
+    "origin_value": "arcane,divine,occult",
     "origin_values": [
       "auditory",
       "concentrate",
@@ -340,23 +271,51 @@
       "manipulate",
       "mental"
     ],
-    "price": {
-      "a": 1
-    },
+    "price": { "a": 2 },
     "info": {
       "level": 1,
-      "targets": "",
-      "range": "",
-      "defense": "",
+      "range": "30,f",
+      "defense": "will",
+      "duration": "1,r",
       "enhancements": [
         {
           "name": {
-            "en": "",
-            "ru": ""
+            "en": "Success",
+            "ru": "Успех"
           },
           "description": {
-            "en": "",
-            "ru": ""
+            "en": "The creature is unaffected.",
+            "ru": "Существо избегает эффекта."
+          }
+        },
+        {
+          "name": {
+            "en": "Failure",
+            "ru": "Провал"
+          },
+          "description": {
+            "en": "The creature must spend the first action on its next turn to obey your command.",
+            "ru": "Существо должно потратить первое действие в свой следующий ход на выполнение приказа."
+          }
+        },
+        {
+          "name": {
+            "en": "Critical Failure",
+            "ru": "Критический провал"
+          },
+          "description": {
+            "en": "The target must use all its actions on its next turn to obey your command.",
+            "ru": "Существо должно потратить первое действие в свой следующий ход на выполнение приказа."
+          }
+        },
+        {
+          "name": {
+            "en": "Heightened (5th)",
+            "ru": "Повышенное (5 круг)"
+          },
+          "description": {
+            "en": "You can target up to 10 creatures.",
+            "ru": "Вы можете выбрать целями 10 или менее существ."
           }
         }
       ]
@@ -370,36 +329,20 @@
       "ru": "Создание воды"
     },
     "description": {
-      "en": "<b>Traditions</b> <u>arcane</u>, <u>divine</u>, <u>primal</u><br><b>Range</b> 0 feet<hr>As you cup your hands, water begins to flow forth from them. You create 2 gallons of water. If no one drinks it, it evaporates after 1 day.",
-      "ru": "<b>Традиции</b> мистическая, сакральная, первобытная<br>\n<b>Сотворение</b> [two-actions] <br>\n<b>Дистанция</b> 0 футов.\n\nВы складываете руки горстью, и из них начинает струиться вода. Вы создаёте 2 галлона воды. Если никто их не выпьет, они испарятся через 1 день."
+      "en": "<As you cup your hands, water begins to flow forth from them. You create 2 gallons of water. If no one drinks it, it evaporates after 1 day.",
+      "ru": "Вы складываете руки горстью, и из них начинает струиться вода. Вы создаёте 2 галлона воды. Если никто их не выпьет, они испарятся через 1 день."
     },
     "origin": "spell",
-    "origin_value": "",
+    "origin_value": "arcane,divine,primal",
     "origin_values": [
       "concentrate",
       "manipulate",
       "water"
     ],
-    "price": {
-      "a": 1
-    },
+    "price": { "a": 2 },
     "info": {
       "level": 1,
-      "targets": "",
-      "range": "",
-      "defense": "",
-      "enhancements": [
-        {
-          "name": {
-            "en": "",
-            "ru": ""
-          },
-          "description": {
-            "en": "",
-            "ru": ""
-          }
-        }
-      ]
+      "range": "0,f"
     }
   },
   {
@@ -410,34 +353,30 @@
       "ru": "Обнаружение ядов"
     },
     "description": {
-      "en": "<b>Traditions</b> <u>divine</u>, <u>primal</u><br><b>Range</b> 30 feet; <b>Targets</b> 1 object or creature<hr>You detect whether a creature is venomous or poisonous, or if an object is poison or has been poisoned. You do not ascertain whether the target is poisonous in multiple ways, nor do you learn the type or types of poison. Certain substances, like lead and alcohol, are poisons and so mask other poisons.<hr><b>Heightened (2nd)</b> You learn the number and types of poison.",
-      "ru": "<b>Традиции</b> сакральная, первобытная<br>\n<b>Сотворение</b> [two-actions] <br>\n<b>Дистанция</b> 30 футов; <b>Цели</b> 1 объект или существо.\n\nВы определяете, является ли некое существо ядовитым либо является ли объект ядом или отравленным. Вы не узнаёте, может ли цель отравить вас несколькими способами, и не определяете типы ядов. Некоторые вещества, такие как свинец и алкоголь, тоже определяются как яды и поэтому маскируют остальные яды.\n\n<b>Повышенное (2 круг)</b> вы узнаёте количество ядов и их типы."
+      "en": "You detect whether a creature is venomous or poisonous, or if an object is poison or has been poisoned. You do not ascertain whether the target is poisonous in multiple ways, nor do you learn the type or types of poison. Certain substances, like lead and alcohol, are poisons and so mask other poisons.",
+      "ru": "Вы определяете, является ли некое существо ядовитым либо является ли объект ядом или отравленным. Вы не узнаёте, может ли цель отравить вас несколькими способами, и не определяете типы ядов. Некоторые вещества, такие как свинец и алкоголь, тоже определяются как яды и поэтому маскируют остальные яды."
     },
     "origin": "spell",
-    "origin_value": "",
+    "origin_value": "divine,primal",
     "origin_values": [
       "uncommon",
       "concentrate",
       "detection",
       "manipulate"
     ],
-    "price": {
-      "a": 1
-    },
+    "price": { "a": 2 },
     "info": {
       "level": 1,
-      "targets": "",
-      "range": "",
-      "defense": "",
+      "range": "30,f",
       "enhancements": [
         {
           "name": {
-            "en": "",
-            "ru": ""
+            "en": "Heightened (2nd)",
+            "ru": "Повышенное (2 круг)"
           },
           "description": {
-            "en": "",
-            "ru": ""
+            "en": "You learn the number and types of poison.",
+            "ru": "Вы узнаёте количество ядов и их типы."
           }
         }
       ]
@@ -461,14 +400,12 @@
       "illusion",
       "manipulate"
     ],
-    "price": {
-      "a": 1
-    },
+    "price": { "a": 1 },
     "info": {
       "level": 1,
-      "targets": "",
       "range": "",
       "defense": "",
+      "duration": "",
       "enhancements": [
         {
           "name": {
@@ -491,11 +428,11 @@
       "ru": "Цветные брызги"
     },
     "description": {
-      "en": "<b>Traditions</b> <u>arcane</u>, <u>occult</u><br><b>Catalysts</b> Seventh Prism<br><b>Deities</b> Lady Jingxi, Lalaci, Pulura, Shelyn, Thisamet <br><b>Mystery</b> cosmos<br><b>Area</b> 15-foot cone<br><b>Defense</b> Will; <b>Duration</b> 1 or more rounds (see below)<hr>You unleash a swirling multitude of colors that overwhelms creatures based on their Will saves.\n\n<b>Critical Success</b> The creature is unaffected.\n\n<b>Success</b> The creature is dazzled for 1 round.\n\n<b>Failure</b> The creature is stunned 1, blinded for 1 round, and dazzled for 1 minute.\n\n<b>Critical Failure</b> The creature is stunned for 1 round and blinded for 1 minute.",
-      "ru": "<b>Традиции</b> мистическая, оккультная<br>\n<b>Божества</b> Леди Цзинси (поэт рассвета и сумерек), Лалаци, Пулура, Шелин, Thisamet <br>\n<b>Сотворение</b> [two-actions] <br>\n<b>Область</b> 15-футовый конус<br>\n<b>Защита</b> Воля; <b>Длительность</b> 1 или более раундов (см. ниже).\n\nВихрь ярких цветов поражает существ, заставляя пройти испытание Воли.\n<br>\n<b>Критический успех</b> существо избегает эффекта.\n<br>\n<b>Успех</b> существо получает растерянность на 1 раунд.\n<br>\n<b>Провал</b> существо получает шок 1, слепоту на 1 раунд и растерянность на 1 минуту.\n<br>\n<b>Критический провал</b> существо получает шок на 1 раунд и слепоту на 1 минуту."
+      "en": "You unleash a swirling multitude of colors that overwhelms creatures based on their Will saves.",
+      "ru": "Вихрь ярких цветов поражает существ, заставляя пройти испытание Воли."
     },
     "origin": "spell",
-    "origin_value": "",
+    "origin_value": "arcane,occult",
     "origin_values": [
       "concentrate",
       "illusion",
@@ -503,23 +440,50 @@
       "manipulate",
       "visual"
     ],
-    "price": {
-      "a": 1
-    },
+    "price": { "a": 2 },
     "info": {
       "level": 1,
-      "targets": "",
-      "range": "",
-      "defense": "",
+      "area": "code,15",
+      "defense": "will",
       "enhancements": [
         {
           "name": {
-            "en": "",
-            "ru": ""
+            "en": "Critical Success",
+            "ru": "Критический успех"
           },
           "description": {
-            "en": "",
-            "ru": ""
+            "en": "The creature is unaffected.",
+            "ru": "Существо избегает эффекта."
+          }
+        },
+        {
+          "name": {
+            "en": "Success",
+            "ru": "Успех"
+          },
+          "description": {
+            "en": "The creature is dazzled for 1 round.",
+            "ru": "Существо получает растерянность на 1 раунд."
+          }
+        },
+        {
+          "name": {
+            "en": "Failure",
+            "ru": "Провал"
+          },
+          "description": {
+            "en": "The creature is stunned 1, blinded for 1 round, and dazzled for 1 minute.",
+            "ru": "Существо получает шок 1, слепоту на 1 раунд и растерянность на 1 минуту."
+          }
+        },
+        {
+          "name": {
+            "en": "Critical Failure",
+            "ru": "Критический провал"
+          },
+          "description": {
+            "en": "The creature is stunned for 1 round and blinded for 1 minute.",
+            "ru": "Существо получает шок на 1 раунд и слепоту на 1 минуту."
           }
         }
       ]
@@ -533,32 +497,59 @@
       "ru": "Слабость"
     },
     "description": {
-      "en": "<b>Traditions</b> <u>arcane</u>, <u>divine</u>, <u>occult</u><br><b>Catalysts</b> Vulture's Wing<br><b>Patron Themes</b> Devourer of Decay, The Resentment <br><b>Range</b> 30 feet; <b>Targets</b> 1 creature<br><b>Defense</b> Fortitude; <b>Duration</b> varies<hr>You sap the target's strength, depending on its Fortitude save.\n\n<b>Critical Success</b> The target is unaffected.\n\n<b>Success</b> The target is enfeebled 1 until the start of your next turn.\n\n<b>Failure</b> The target is enfeebled 2 for 1 minute.\n\n<b>Critical Failure</b> The target is enfeebled 3 for 1 minute.",
-      "ru": "<b>Традиции</b> мистическая, сакральная, оккультная<br>\n<b>Покровитель</b> пожиратель разложения, горечь <br>\n<b>Сотворение</b> [two-actions] <br>\n<b>Дистанция</b> 30 футов; <b>Цели</b> 1 существо<br>\n<b>Защита</b> Стойкость; <b>Длительность</b> варьируется.\n\nВы вытягиваете силу существа в зависимости от его результата испытания Стойкости.\n<br>\n<b>Критический успех</b> цель избегает эффекта.\n<br>\n<b>Успех</b> цель получает слабость 1 до начала вашего следующего хода.\n<br>\n<b>Провал</b> цель получает слабость 2 на 1 минуту.\n<br>\n<b>Критический провал</b> цель получает слабость 3 на 1 минуту."
+      "en": "You sap the target's strength, depending on its Fortitude save.",
+      "ru": "Вы вытягиваете силу существа в зависимости от его результата испытания Стойкости."
     },
     "origin": "spell",
-    "origin_value": "",
+    "origin_value": "arcane,divine,occult",
     "origin_values": [
       "concentrate",
       "manipulate"
     ],
-    "price": {
-      "a": 1
-    },
+    "price": { "a": 2 },
     "info": {
       "level": 1,
-      "targets": "",
-      "range": "",
-      "defense": "",
+      "range": "30,f",
+      "defense": "fortitude",
       "enhancements": [
         {
           "name": {
-            "en": "",
-            "ru": ""
+            "en": "Critical Success",
+            "ru": "Критический успех"
           },
           "description": {
-            "en": "",
-            "ru": ""
+            "en": "The target is unaffected.",
+            "ru": "Цель избегает эффекта."
+          }
+        },
+        {
+          "name": {
+            "en": "Success",
+            "ru": "Успех"
+          },
+          "description": {
+            "en": "The target is enfeebled 1 until the start of your next turn.",
+            "ru": "Цель получает слабость 1 до начала вашего следующего хода."
+          }
+        },
+        {
+          "name": {
+            "en": "Failure",
+            "ru": "Провал"
+          },
+          "description": {
+            "en": "The target is enfeebled 2 for 1 minute.",
+            "ru": "Цель получает слабость 2 на 1 минуту."
+          }
+        },
+        {
+          "name": {
+            "en": "Critical Failure",
+            "ru": "Критический провал"
+          },
+          "description": {
+            "en": "The target is enfeebled 3 for 1 minute.",
+            "ru": "Цель получает слабость 3 на 1 минуту."
           }
         }
       ]
@@ -584,14 +575,12 @@
       "manipulate",
       "mental"
     ],
-    "price": {
-      "a": 1
-    },
+    "price": { "a": 1 },
     "info": {
       "level": 1,
-      "targets": "",
       "range": "",
       "defense": "",
+      "duration": "",
       "enhancements": [
         {
           "name": {
@@ -623,14 +612,12 @@
       "concentrate",
       "manipulate"
     ],
-    "price": {
-      "a": 1
-    },
+    "price": { "a": 1 },
     "info": {
       "level": 1,
-      "targets": "",
       "range": "",
       "defense": "",
+      "duration": "",
       "enhancements": [
         {
           "name": {
@@ -663,14 +650,12 @@
       "force",
       "manipulate"
     ],
-    "price": {
-      "a": 1
-    },
+    "price": { "a": 1 },
     "info": {
       "level": 1,
-      "targets": "",
       "range": "",
       "defense": "",
+      "duration": "",
       "enhancements": [
         {
           "name": {
@@ -702,14 +687,12 @@
       "air",
       "concentrate"
     ],
-    "price": {
-      "a": 1
-    },
+    "price": { "a": 1 },
     "info": {
       "level": 1,
-      "targets": "",
       "range": "",
       "defense": "",
+      "duration": "",
       "enhancements": [
         {
           "name": {
@@ -742,14 +725,12 @@
       "disease",
       "manipulate"
     ],
-    "price": {
-      "a": 1
-    },
+    "price": { "a": 1 },
     "info": {
       "level": 1,
-      "targets": "",
       "range": "",
       "defense": "",
+      "duration": "",
       "enhancements": [
         {
           "name": {
@@ -781,14 +762,12 @@
       "concentrate",
       "manipulate"
     ],
-    "price": {
-      "a": 1
-    },
+    "price": { "a": 1 },
     "info": {
       "level": 1,
-      "targets": "",
       "range": "",
       "defense": "",
+      "duration": "",
       "enhancements": [
         {
           "name": {
@@ -821,14 +800,12 @@
       "manipulate",
       "void"
     ],
-    "price": {
-      "a": 1
-    },
+    "price": { "a": 1 },
     "info": {
       "level": 1,
-      "targets": "",
       "range": "",
       "defense": "",
+      "duration": "",
       "enhancements": [
         {
           "name": {
@@ -861,14 +838,12 @@
       "concentrate",
       "manipulate"
     ],
-    "price": {
-      "a": 1
-    },
+    "price": { "a": 1 },
     "info": {
       "level": 1,
-      "targets": "",
       "range": "",
       "defense": "",
+      "duration": "",
       "enhancements": [
         {
           "name": {
@@ -900,14 +875,12 @@
       "manipulate",
       "void"
     ],
-    "price": {
-      "a": 1
-    },
+    "price": { "a": 1 },
     "info": {
       "level": 1,
-      "targets": "",
       "range": "",
       "defense": "",
+      "duration": "",
       "enhancements": [
         {
           "name": {
@@ -988,14 +961,12 @@
       "manipulate",
       "water"
     ],
-    "price": {
-      "a": 1
-    },
+    "price": { "a": 1 },
     "info": {
       "level": 1,
-      "targets": "",
       "range": "",
       "defense": "",
+      "duration": "",
       "enhancements": [
         {
           "name": {
@@ -1029,14 +1000,12 @@
       "manipulate",
       "misfortune"
     ],
-    "price": {
-      "a": 1
-    },
+    "price": { "a": 1 },
     "info": {
       "level": 1,
-      "targets": "",
       "range": "",
       "defense": "",
+      "duration": "",
       "enhancements": [
         {
           "name": {
@@ -1070,14 +1039,12 @@
       "manipulate",
       "visual"
     ],
-    "price": {
-      "a": 1
-    },
+    "price": { "a": 1 },
     "info": {
       "level": 1,
-      "targets": "",
       "range": "",
       "defense": "",
+      "duration": "",
       "enhancements": [
         {
           "name": {
@@ -1111,14 +1078,12 @@
       "manipulate",
       "visual"
     ],
-    "price": {
-      "a": 1
-    },
+    "price": { "a": 1 },
     "info": {
       "level": 1,
-      "targets": "",
       "range": "",
       "defense": "",
+      "duration": "",
       "enhancements": [
         {
           "name": {
@@ -1151,14 +1116,12 @@
       "manipulate",
       "vitality"
     ],
-    "price": {
-      "a": 1
-    },
+    "price": { "a": 1 },
     "info": {
       "level": 1,
-      "targets": "",
       "range": "",
       "defense": "",
+      "duration": "",
       "enhancements": [
         {
           "name": {
@@ -1192,14 +1155,12 @@
       "manipulate",
       "visual"
     ],
-    "price": {
-      "a": 1
-    },
+    "price": { "a": 1 },
     "info": {
       "level": 1,
-      "targets": "",
       "range": "",
       "defense": "",
+      "duration": "",
       "enhancements": [
         {
           "name": {
@@ -1231,14 +1192,12 @@
       "manipulate",
       "move"
     ],
-    "price": {
-      "a": 1
-    },
+    "price": { "a": 1 },
     "info": {
       "level": 1,
-      "targets": "",
       "range": "",
       "defense": "",
+      "duration": "",
       "enhancements": [
         {
           "name": {
@@ -1270,14 +1229,12 @@
       "concentrate",
       "manipulate"
     ],
-    "price": {
-      "a": 1
-    },
+    "price": { "a": 1 },
     "info": {
       "level": 1,
-      "targets": "",
       "range": "",
       "defense": "",
+      "duration": "",
       "enhancements": [
         {
           "name": {
@@ -1309,14 +1266,12 @@
       "concentrate",
       "manipulate"
     ],
-    "price": {
-      "a": 1
-    },
+    "price": { "a": 1 },
     "info": {
       "level": 1,
-      "targets": "",
       "range": "",
       "defense": "",
+      "duration": "",
       "enhancements": [
         {
           "name": {
@@ -1349,14 +1304,12 @@
       "manipulate",
       "mental"
     ],
-    "price": {
-      "a": 1
-    },
+    "price": { "a": 1 },
     "info": {
       "level": 1,
-      "targets": "",
       "range": "",
       "defense": "",
+      "duration": "",
       "enhancements": [
         {
           "name": {
@@ -1388,14 +1341,12 @@
       "concentrate",
       "manipulate"
     ],
-    "price": {
-      "a": 1
-    },
+    "price": { "a": 1 },
     "info": {
       "level": 1,
-      "targets": "",
       "range": "",
       "defense": "",
+      "duration": "",
       "enhancements": [
         {
           "name": {
@@ -1428,14 +1379,12 @@
       "manipulate",
       "polymorph"
     ],
-    "price": {
-      "a": 1
-    },
+    "price": { "a": 1 },
     "info": {
       "level": 1,
-      "targets": "",
       "range": "",
       "defense": "",
+      "duration": "",
       "enhancements": [
         {
           "name": {
@@ -1467,14 +1416,12 @@
       "extradimensional",
       "manipulate"
     ],
-    "price": {
-      "a": 1
-    },
+    "price": { "a": 1 },
     "info": {
       "level": 1,
-      "targets": "",
       "range": "",
       "defense": "",
+      "duration": "",
       "enhancements": [
         {
           "name": {
@@ -1507,14 +1454,12 @@
       "manipulate",
       "summon"
     ],
-    "price": {
-      "a": 1
-    },
+    "price": { "a": 1 },
     "info": {
       "level": 1,
-      "targets": "",
       "range": "",
       "defense": "",
+      "duration": "",
       "enhancements": [
         {
           "name": {
@@ -1549,14 +1494,12 @@
       "mental",
       "nonlethal"
     ],
-    "price": {
-      "a": 1
-    },
+    "price": { "a": 1 },
     "info": {
       "level": 1,
-      "targets": "",
       "range": "",
       "defense": "",
+      "duration": "",
       "enhancements": [
         {
           "name": {
@@ -1588,14 +1531,12 @@
       "concentrate",
       "manipulate"
     ],
-    "price": {
-      "a": 1
-    },
+    "price": { "a": 1 },
     "info": {
       "level": 1,
-      "targets": "",
       "range": "",
       "defense": "",
+      "duration": "",
       "enhancements": [
         {
           "name": {
@@ -1628,14 +1569,12 @@
       "earth",
       "manipulate"
     ],
-    "price": {
-      "a": 1
-    },
+    "price": { "a": 1 },
     "info": {
       "level": 1,
-      "targets": "",
       "range": "",
       "defense": "",
+      "duration": "",
       "enhancements": [
         {
           "name": {
@@ -1667,14 +1606,12 @@
       "concentrate",
       "manipulate"
     ],
-    "price": {
-      "a": 1
-    },
+    "price": { "a": 1 },
     "info": {
       "level": 1,
-      "targets": "",
       "range": "",
       "defense": "",
+      "duration": "",
       "enhancements": [
         {
           "name": {
@@ -1706,14 +1643,12 @@
       "concentrate",
       "manipulate"
     ],
-    "price": {
-      "a": 1
-    },
+    "price": { "a": 1 },
     "info": {
       "level": 1,
-      "targets": "",
       "range": "",
       "defense": "",
+      "duration": "",
       "enhancements": [
         {
           "name": {
@@ -1745,14 +1680,12 @@
       "concentrate",
       "manipulate"
     ],
-    "price": {
-      "a": 1
-    },
+    "price": { "a": 1 },
     "info": {
       "level": 1,
-      "targets": "",
       "range": "",
       "defense": "",
+      "duration": "",
       "enhancements": [
         {
           "name": {
@@ -1787,14 +1720,12 @@
       "mental",
       "sleep"
     ],
-    "price": {
-      "a": 1
-    },
+    "price": { "a": 1 },
     "info": {
       "level": 1,
-      "targets": "",
       "range": "",
       "defense": "",
+      "duration": "",
       "enhancements": [
         {
           "name": {
@@ -1829,14 +1760,12 @@
       "manipulate",
       "mental"
     ],
-    "price": {
-      "a": 1
-    },
+    "price": { "a": 1 },
     "info": {
       "level": 1,
-      "targets": "",
       "range": "",
       "defense": "",
+      "duration": "",
       "enhancements": [
         {
           "name": {
@@ -1869,14 +1798,12 @@
       "manipulate",
       "poison"
     ],
-    "price": {
-      "a": 1
-    },
+    "price": { "a": 1 },
     "info": {
       "level": 1,
-      "targets": "",
       "range": "",
       "defense": "",
+      "duration": "",
       "enhancements": [
         {
           "name": {
@@ -1910,14 +1837,12 @@
       "manipulate",
       "spirit"
     ],
-    "price": {
-      "a": 1
-    },
+    "price": { "a": 1 },
     "info": {
       "level": 1,
-      "targets": "",
       "range": "",
       "defense": "",
+      "duration": "",
       "enhancements": [
         {
           "name": {
@@ -1950,14 +1875,12 @@
       "manipulate",
       "summon"
     ],
-    "price": {
-      "a": 1
-    },
+    "price": { "a": 1 },
     "info": {
       "level": 1,
-      "targets": "",
       "range": "",
       "defense": "",
+      "duration": "",
       "enhancements": [
         {
           "name": {
@@ -1990,14 +1913,12 @@
       "manipulate",
       "summon"
     ],
-    "price": {
-      "a": 1
-    },
+    "price": { "a": 1 },
     "info": {
       "level": 1,
-      "targets": "",
       "range": "",
       "defense": "",
+      "duration": "",
       "enhancements": [
         {
           "name": {
@@ -2030,14 +1951,12 @@
       "manipulate",
       "summon"
     ],
-    "price": {
-      "a": 1
-    },
+    "price": { "a": 1 },
     "info": {
       "level": 1,
-      "targets": "",
       "range": "",
       "defense": "",
+      "duration": "",
       "enhancements": [
         {
           "name": {
@@ -2070,14 +1989,12 @@
       "manipulate",
       "summon"
     ],
-    "price": {
-      "a": 1
-    },
+    "price": { "a": 1 },
     "info": {
       "level": 1,
-      "targets": "",
       "range": "",
       "defense": "",
+      "duration": "",
       "enhancements": [
         {
           "name": {
@@ -2110,14 +2027,12 @@
       "manipulate",
       "summon"
     ],
-    "price": {
-      "a": 1
-    },
+    "price": { "a": 1 },
     "info": {
       "level": 1,
-      "targets": "",
       "range": "",
       "defense": "",
+      "duration": "",
       "enhancements": [
         {
           "name": {
@@ -2149,14 +2064,12 @@
       "concentrate",
       "fortune"
     ],
-    "price": {
-      "a": 1
-    },
+    "price": { "a": 1 },
     "info": {
       "level": 1,
-      "targets": "",
       "range": "",
       "defense": "",
+      "duration": "",
       "enhancements": [
         {
           "name": {
@@ -2189,14 +2102,12 @@
       "concentrate",
       "manipulate"
     ],
-    "price": {
-      "a": 1
-    },
+    "price": { "a": 1 },
     "info": {
       "level": 1,
-      "targets": "",
       "range": "",
       "defense": "",
+      "duration": "",
       "enhancements": [
         {
           "name": {
@@ -2230,14 +2141,12 @@
       "manipulate",
       "sonic"
     ],
-    "price": {
-      "a": 1
-    },
+    "price": { "a": 1 },
     "info": {
       "level": 1,
-      "targets": "",
       "range": "",
       "defense": "",
+      "duration": "",
       "enhancements": [
         {
           "name": {
@@ -2269,14 +2178,12 @@
       "concentrate",
       "manipulate"
     ],
-    "price": {
-      "a": 1
-    },
+    "price": { "a": 1 },
     "info": {
       "level": 1,
-      "targets": "",
       "range": "",
       "defense": "",
+      "duration": "",
       "enhancements": [
         {
           "name": {
@@ -2310,14 +2217,12 @@
       "illusion",
       "manipulate"
     ],
-    "price": {
-      "a": 1
-    },
+    "price": { "a": 1 },
     "info": {
       "level": 1,
-      "targets": "",
       "range": "",
       "defense": "",
+      "duration": "",
       "enhancements": [
         {
           "name": {
@@ -2354,14 +2259,12 @@
       "fortune",
       "mental"
     ],
-    "price": {
-      "a": 1
-    },
+    "price": { "a": 1 },
     "info": {
       "level": 1,
-      "targets": "",
       "range": "",
       "defense": "",
+      "duration": "",
       "enhancements": [
         {
           "name": {
@@ -2398,14 +2301,12 @@
       "healing",
       "vitality"
     ],
-    "price": {
-      "a": 1
-    },
+    "price": { "a": 1 },
     "info": {
       "level": 1,
-      "targets": "",
       "range": "",
       "defense": "",
+      "duration": "",
       "enhancements": [
         {
           "name": {
@@ -2440,14 +2341,12 @@
       "focus",
       "spellshape"
     ],
-    "price": {
-      "a": 1
-    },
+    "price": { "a": 1 },
     "info": {
       "level": 1,
-      "targets": "",
       "range": "",
       "defense": "",
+      "duration": "",
       "enhancements": [
         {
           "name": {
@@ -2482,14 +2381,12 @@
       "fortune",
       "manipulate"
     ],
-    "price": {
-      "a": 1
-    },
+    "price": { "a": 1 },
     "info": {
       "level": 1,
-      "targets": "",
       "range": "",
       "defense": "",
+      "duration": "",
       "enhancements": [
         {
           "name": {
@@ -2525,14 +2422,12 @@
       "focus",
       "manipulate"
     ],
-    "price": {
-      "a": 1
-    },
+    "price": { "a": 1 },
     "info": {
       "level": 1,
-      "targets": "",
       "range": "",
       "defense": "",
+      "duration": "",
       "enhancements": [
         {
           "name": {
@@ -2569,14 +2464,12 @@
       "mental",
       "subtle"
     ],
-    "price": {
-      "a": 1
-    },
+    "price": { "a": 1 },
     "info": {
       "level": 1,
-      "targets": "",
       "range": "",
       "defense": "",
+      "duration": "",
       "enhancements": [
         {
           "name": {
@@ -2611,14 +2504,12 @@
       "manipulate",
       "visual"
     ],
-    "price": {
-      "a": 1
-    },
+    "price": { "a": 1 },
     "info": {
       "level": 1,
-      "targets": "",
       "range": "",
       "defense": "",
+      "duration": "",
       "enhancements": [
         {
           "name": {
@@ -2653,14 +2544,12 @@
       "focus",
       "mental"
     ],
-    "price": {
-      "a": 1
-    },
+    "price": { "a": 1 },
     "info": {
       "level": 1,
-      "targets": "",
       "range": "",
       "defense": "",
+      "duration": "",
       "enhancements": [
         {
           "name": {
@@ -2697,14 +2586,12 @@
       "manipulate",
       "visual"
     ],
-    "price": {
-      "a": 1
-    },
+    "price": { "a": 1 },
     "info": {
       "level": 1,
-      "targets": "",
       "range": "",
       "defense": "",
+      "duration": "",
       "enhancements": [
         {
           "name": {
@@ -2741,14 +2628,12 @@
       "manipulate",
       "shadow"
     ],
-    "price": {
-      "a": 1
-    },
+    "price": { "a": 1 },
     "info": {
       "level": 1,
-      "targets": "",
       "range": "",
       "defense": "",
+      "duration": "",
       "enhancements": [
         {
           "name": {
@@ -2782,14 +2667,12 @@
       "concentrate",
       "focus"
     ],
-    "price": {
-      "a": 1
-    },
+    "price": { "a": 1 },
     "info": {
       "level": 1,
-      "targets": "",
       "range": "",
       "defense": "",
+      "duration": "",
       "enhancements": [
         {
           "name": {
@@ -2825,14 +2708,12 @@
       "manipulate",
       "sonic"
     ],
-    "price": {
-      "a": 1
-    },
+    "price": { "a": 1 },
     "info": {
       "level": 1,
-      "targets": "",
       "range": "",
       "defense": "",
+      "duration": "",
       "enhancements": [
         {
           "name": {
@@ -2871,14 +2752,12 @@
       "mental",
       "sleep"
     ],
-    "price": {
-      "a": 1
-    },
+    "price": { "a": 1 },
     "info": {
       "level": 1,
-      "targets": "",
       "range": "",
       "defense": "",
+      "duration": "",
       "enhancements": [
         {
           "name": {
@@ -2914,14 +2793,12 @@
       "focus",
       "manipulate"
     ],
-    "price": {
-      "a": 1
-    },
+    "price": { "a": 1 },
     "info": {
       "level": 1,
-      "targets": "",
       "range": "",
       "defense": "",
+      "duration": "",
       "enhancements": [
         {
           "name": {
@@ -2957,14 +2834,12 @@
       "focus",
       "mental"
     ],
-    "price": {
-      "a": 1
-    },
+    "price": { "a": 1 },
     "info": {
       "level": 1,
-      "targets": "",
       "range": "",
       "defense": "",
+      "duration": "",
       "enhancements": [
         {
           "name": {
@@ -3000,14 +2875,12 @@
       "manipulate",
       "prediction"
     ],
-    "price": {
-      "a": 1
-    },
+    "price": { "a": 1 },
     "info": {
       "level": 1,
-      "targets": "",
       "range": "",
       "defense": "",
+      "duration": "",
       "enhancements": [
         {
           "name": {
@@ -3044,14 +2917,12 @@
       "focus",
       "manipulate"
     ],
-    "price": {
-      "a": 1
-    },
+    "price": { "a": 1 },
     "info": {
       "level": 1,
-      "targets": "",
       "range": "",
       "defense": "",
+      "duration": "",
       "enhancements": [
         {
           "name": {
@@ -3085,14 +2956,12 @@
       "focus",
       "manipulate"
     ],
-    "price": {
-      "a": 1
-    },
+    "price": { "a": 1 },
     "info": {
       "level": 1,
-      "targets": "",
       "range": "",
       "defense": "",
+      "duration": "",
       "enhancements": [
         {
           "name": {
@@ -3126,14 +2995,12 @@
       "concentrate",
       "focus"
     ],
-    "price": {
-      "a": 1
-    },
+    "price": { "a": 1 },
     "info": {
       "level": 1,
-      "targets": "",
       "range": "",
       "defense": "",
+      "duration": "",
       "enhancements": [
         {
           "name": {
@@ -3168,14 +3035,12 @@
       "focus",
       "manipulate"
     ],
-    "price": {
-      "a": 1
-    },
+    "price": { "a": 1 },
     "info": {
       "level": 1,
-      "targets": "",
       "range": "",
       "defense": "",
+      "duration": "",
       "enhancements": [
         {
           "name": {
@@ -3209,14 +3074,12 @@
       "focus",
       "fortune"
     ],
-    "price": {
-      "a": 1
-    },
+    "price": { "a": 1 },
     "info": {
       "level": 1,
-      "targets": "",
       "range": "",
       "defense": "",
+      "duration": "",
       "enhancements": [
         {
           "name": {
@@ -3252,14 +3115,12 @@
       "fortune",
       "manipulate"
     ],
-    "price": {
-      "a": 1
-    },
+    "price": { "a": 1 },
     "info": {
       "level": 1,
-      "targets": "",
       "range": "",
       "defense": "",
+      "duration": "",
       "enhancements": [
         {
           "name": {
@@ -3293,14 +3154,12 @@
       "focus",
       "manipulate"
     ],
-    "price": {
-      "a": 1
-    },
+    "price": { "a": 1 },
     "info": {
       "level": 1,
-      "targets": "",
       "range": "",
       "defense": "",
+      "duration": "",
       "enhancements": [
         {
           "name": {
@@ -3334,14 +3193,12 @@
       "focus",
       "manipulate"
     ],
-    "price": {
-      "a": 1
-    },
+    "price": { "a": 1 },
     "info": {
       "level": 1,
-      "targets": "",
       "range": "",
       "defense": "",
+      "duration": "",
       "enhancements": [
         {
           "name": {
@@ -3379,14 +3236,12 @@
       "light",
       "manipulate"
     ],
-    "price": {
-      "a": 1
-    },
+    "price": { "a": 1 },
     "info": {
       "level": 1,
-      "targets": "",
       "range": "",
       "defense": "",
+      "duration": "",
       "enhancements": [
         {
           "name": {
@@ -3423,14 +3278,12 @@
       "plant",
       "wood"
     ],
-    "price": {
-      "a": 1
-    },
+    "price": { "a": 1 },
     "info": {
       "level": 1,
-      "targets": "",
       "range": "",
       "defense": "",
+      "duration": "",
       "enhancements": [
         {
           "name": {
@@ -3468,14 +3321,12 @@
       "manipulate",
       "mental"
     ],
-    "price": {
-      "a": 1
-    },
+    "price": { "a": 1 },
     "info": {
       "level": 1,
-      "targets": "",
       "range": "",
       "defense": "",
+      "duration": "",
       "enhancements": [
         {
           "name": {
@@ -3511,14 +3362,12 @@
       "mental",
       "nonlethal"
     ],
-    "price": {
-      "a": 1
-    },
+    "price": { "a": 1 },
     "info": {
       "level": 1,
-      "targets": "",
       "range": "",
       "defense": "",
+      "duration": "",
       "enhancements": [
         {
           "name": {
@@ -3555,14 +3404,12 @@
       "manipulate",
       "mental"
     ],
-    "price": {
-      "a": 1
-    },
+    "price": { "a": 1 },
     "info": {
       "level": 1,
-      "targets": "",
       "range": "",
       "defense": "",
+      "duration": "",
       "enhancements": [
         {
           "name": {
@@ -3596,14 +3443,12 @@
       "concentrate",
       "focus"
     ],
-    "price": {
-      "a": 1
-    },
+    "price": { "a": 1 },
     "info": {
       "level": 1,
-      "targets": "",
       "range": "",
       "defense": "",
+      "duration": "",
       "enhancements": [
         {
           "name": {
@@ -3637,14 +3482,12 @@
       "focus",
       "manipulate"
     ],
-    "price": {
-      "a": 1
-    },
+    "price": { "a": 1 },
     "info": {
       "level": 1,
-      "targets": "",
       "range": "",
       "defense": "",
+      "duration": "",
       "enhancements": [
         {
           "name": {
@@ -3679,14 +3522,12 @@
       "manipulate",
       "sonic"
     ],
-    "price": {
-      "a": 1
-    },
+    "price": { "a": 1 },
     "info": {
       "level": 1,
-      "targets": "",
       "range": "",
       "defense": "",
+      "duration": "",
       "enhancements": [
         {
           "name": {
@@ -3723,14 +3564,12 @@
       "manipulate",
       "visual"
     ],
-    "price": {
-      "a": 1
-    },
+    "price": { "a": 1 },
     "info": {
       "level": 1,
-      "targets": "",
       "range": "",
       "defense": "",
+      "duration": "",
       "enhancements": [
         {
           "name": {
@@ -3764,14 +3603,12 @@
       "focus",
       "manipulate"
     ],
-    "price": {
-      "a": 1
-    },
+    "price": { "a": 1 },
     "info": {
       "level": 1,
-      "targets": "",
       "range": "",
       "defense": "",
+      "duration": "",
       "enhancements": [
         {
           "name": {
@@ -3805,14 +3642,12 @@
       "focus",
       "manipulate"
     ],
-    "price": {
-      "a": 1
-    },
+    "price": { "a": 1 },
     "info": {
       "level": 1,
-      "targets": "",
       "range": "",
       "defense": "",
+      "duration": "",
       "enhancements": [
         {
           "name": {
@@ -3846,14 +3681,12 @@
       "concentrate",
       "focus"
     ],
-    "price": {
-      "a": 1
-    },
+    "price": { "a": 1 },
     "info": {
       "level": 1,
-      "targets": "",
       "range": "",
       "defense": "",
+      "duration": "",
       "enhancements": [
         {
           "name": {
@@ -3888,14 +3721,12 @@
       "manipulate",
       "mental"
     ],
-    "price": {
-      "a": 1
-    },
+    "price": { "a": 1 },
     "info": {
       "level": 1,
-      "targets": "",
       "range": "",
       "defense": "",
+      "duration": "",
       "enhancements": [
         {
           "name": {
@@ -3930,14 +3761,12 @@
       "manipulate",
       "void"
     ],
-    "price": {
-      "a": 1
-    },
+    "price": { "a": 1 },
     "info": {
       "level": 1,
-      "targets": "",
       "range": "",
       "defense": "",
+      "duration": "",
       "enhancements": [
         {
           "name": {
@@ -3972,14 +3801,12 @@
       "manipulate",
       "water"
     ],
-    "price": {
-      "a": 1
-    },
+    "price": { "a": 1 },
     "info": {
       "level": 1,
-      "targets": "",
       "range": "",
       "defense": "",
+      "duration": "",
       "enhancements": [
         {
           "name": {
@@ -4015,14 +3842,12 @@
       "illusion",
       "manipulate"
     ],
-    "price": {
-      "a": 1
-    },
+    "price": { "a": 1 },
     "info": {
       "level": 1,
-      "targets": "",
       "range": "",
       "defense": "",
+      "duration": "",
       "enhancements": [
         {
           "name": {
@@ -4057,14 +3882,12 @@
       "manipulate",
       "sanctified"
     ],
-    "price": {
-      "a": 1
-    },
+    "price": { "a": 1 },
     "info": {
       "level": 1,
-      "targets": "",
       "range": "",
       "defense": "",
+      "duration": "",
       "enhancements": [
         {
           "name": {
@@ -4100,14 +3923,12 @@
       "manipulate",
       "vitality"
     ],
-    "price": {
-      "a": 1
-    },
+    "price": { "a": 1 },
     "info": {
       "level": 1,
-      "targets": "",
       "range": "",
       "defense": "",
+      "duration": "",
       "enhancements": [
         {
           "name": {
@@ -4145,14 +3966,12 @@
       "plant",
       "vitality"
     ],
-    "price": {
-      "a": 1
-    },
+    "price": { "a": 1 },
     "info": {
       "level": 1,
-      "targets": "",
       "range": "",
       "defense": "",
+      "duration": "",
       "enhancements": [
         {
           "name": {
@@ -4189,14 +4008,12 @@
       "focus",
       "manipulate"
     ],
-    "price": {
-      "a": 1
-    },
+    "price": { "a": 1 },
     "info": {
       "level": 1,
-      "targets": "",
       "range": "",
       "defense": "",
+      "duration": "",
       "enhancements": [
         {
           "name": {
@@ -4232,14 +4049,12 @@
       "manipulate",
       "polymorph"
     ],
-    "price": {
-      "a": 1
-    },
+    "price": { "a": 1 },
     "info": {
       "level": 1,
-      "targets": "",
       "range": "",
       "defense": "",
+      "duration": "",
       "enhancements": [
         {
           "name": {
@@ -4275,14 +4090,12 @@
       "manipulate",
       "morph"
     ],
-    "price": {
-      "a": 1
-    },
+    "price": { "a": 1 },
     "info": {
       "level": 1,
-      "targets": "",
       "range": "",
       "defense": "",
+      "duration": "",
       "enhancements": [
         {
           "name": {
@@ -4315,14 +4128,12 @@
       "focus",
       "ranger"
     ],
-    "price": {
-      "a": 1
-    },
+    "price": { "a": 1 },
     "info": {
       "level": 1,
-      "targets": "",
       "range": "",
       "defense": "",
+      "duration": "",
       "enhancements": [
         {
           "name": {
@@ -4357,14 +4168,12 @@
       "ranger",
       "vitality"
     ],
-    "price": {
-      "a": 1
-    },
+    "price": { "a": 1 },
     "info": {
       "level": 1,
-      "targets": "",
       "range": "",
       "defense": "",
+      "duration": "",
       "enhancements": [
         {
           "name": {
@@ -4398,14 +4207,12 @@
       "manipulate",
       "ranger"
     ],
-    "price": {
-      "a": 1
-    },
+    "price": { "a": 1 },
     "info": {
       "level": 1,
-      "targets": "",
       "range": "",
       "defense": "",
+      "duration": "",
       "enhancements": [
         {
           "name": {
@@ -4440,14 +4247,12 @@
       "manipulate",
       "witch"
     ],
-    "price": {
-      "a": 1
-    },
+    "price": { "a": 1 },
     "info": {
       "level": 1,
-      "targets": "",
       "range": "",
       "defense": "",
+      "duration": "",
       "enhancements": [
         {
           "name": {
@@ -4482,14 +4287,12 @@
       "hex",
       "witch"
     ],
-    "price": {
-      "a": 1
-    },
+    "price": { "a": 1 },
     "info": {
       "level": 1,
-      "targets": "",
       "range": "",
       "defense": "",
+      "duration": "",
       "enhancements": [
         {
           "name": {
@@ -4524,14 +4327,12 @@
       "hex",
       "witch"
     ],
-    "price": {
-      "a": 1
-    },
+    "price": { "a": 1 },
     "info": {
       "level": 1,
-      "targets": "",
       "range": "",
       "defense": "",
+      "duration": "",
       "enhancements": [
         {
           "name": {
@@ -4568,14 +4369,12 @@
       "vitality",
       "witch"
     ],
-    "price": {
-      "a": 1
-    },
+    "price": { "a": 1 },
     "info": {
       "level": 1,
-      "targets": "",
       "range": "",
       "defense": "",
+      "duration": "",
       "enhancements": [
         {
           "name": {
@@ -4611,14 +4410,12 @@
       "mental",
       "witch"
     ],
-    "price": {
-      "a": 1
-    },
+    "price": { "a": 1 },
     "info": {
       "level": 1,
-      "targets": "",
       "range": "",
       "defense": "",
+      "duration": "",
       "enhancements": [
         {
           "name": {
@@ -4652,14 +4449,12 @@
       "hex",
       "witch"
     ],
-    "price": {
-      "a": 1
-    },
+    "price": { "a": 1 },
     "info": {
       "level": 1,
-      "targets": "",
       "range": "",
       "defense": "",
+      "duration": "",
       "enhancements": [
         {
           "name": {
@@ -4694,14 +4489,12 @@
       "manipulate",
       "witch"
     ],
-    "price": {
-      "a": 1
-    },
+    "price": { "a": 1 },
     "info": {
       "level": 1,
-      "targets": "",
       "range": "",
       "defense": "",
+      "duration": "",
       "enhancements": [
         {
           "name": {
@@ -4737,14 +4530,12 @@
       "mental",
       "witch"
     ],
-    "price": {
-      "a": 1
-    },
+    "price": { "a": 1 },
     "info": {
       "level": 1,
-      "targets": "",
       "range": "",
       "defense": "",
+      "duration": "",
       "enhancements": [
         {
           "name": {
@@ -4779,14 +4570,12 @@
       "manipulate",
       "wizard"
     ],
-    "price": {
-      "a": 1
-    },
+    "price": { "a": 1 },
     "info": {
       "level": 1,
-      "targets": "",
       "range": "",
       "defense": "",
+      "duration": "",
       "enhancements": [
         {
           "name": {
@@ -4821,14 +4610,12 @@
       "manipulate",
       "wizard"
     ],
-    "price": {
-      "a": 1
-    },
+    "price": { "a": 1 },
     "info": {
       "level": 1,
-      "targets": "",
       "range": "",
       "defense": "",
+      "duration": "",
       "enhancements": [
         {
           "name": {
@@ -4862,14 +4649,12 @@
       "focus",
       "wizard"
     ],
-    "price": {
-      "a": 1
-    },
+    "price": { "a": 1 },
     "info": {
       "level": 1,
-      "targets": "",
       "range": "",
       "defense": "",
+      "duration": "",
       "enhancements": [
         {
           "name": {
@@ -4905,14 +4690,12 @@
       "manipulate",
       "wizard"
     ],
-    "price": {
-      "a": 1
-    },
+    "price": { "a": 1 },
     "info": {
       "level": 1,
-      "targets": "",
       "range": "",
       "defense": "",
+      "duration": "",
       "enhancements": [
         {
           "name": {
@@ -4948,14 +4731,12 @@
       "mental",
       "wizard"
     ],
-    "price": {
-      "a": 1
-    },
+    "price": { "a": 1 },
     "info": {
       "level": 1,
-      "targets": "",
       "range": "",
       "defense": "",
+      "duration": "",
       "enhancements": [
         {
           "name": {
@@ -4990,14 +4771,12 @@
       "manipulate",
       "wizard"
     ],
-    "price": {
-      "a": 1
-    },
+    "price": { "a": 1 },
     "info": {
       "level": 1,
-      "targets": "",
       "range": "",
       "defense": "",
+      "duration": "",
       "enhancements": [
         {
           "name": {
@@ -5032,14 +4811,12 @@
       "manipulate",
       "wizard"
     ],
-    "price": {
-      "a": 1
-    },
+    "price": { "a": 1 },
     "info": {
       "level": 1,
-      "targets": "",
       "range": "",
       "defense": "",
+      "duration": "",
       "enhancements": [
         {
           "name": {

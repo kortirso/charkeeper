@@ -35,7 +35,7 @@ module SheetsContext
           end
 
           %w[fortitude reflex will].each_with_index do |item, index|
-            value = "#{'+' if character.saving_throws_value[item.to_sym].positive?}#{character.saving_throws_value[item.to_sym]}"
+            value = "#{'+' if character.saving_throws_value[item].positive?}#{character.saving_throws_value[item]}"
             text_box value, at: [368 + (index * 54), 621], width: 30, align: :center
           end
 
