@@ -238,8 +238,7 @@
     "itemNote": "Nota de objeto",
     "deathSavingThrows": "Tiradas de salvación contra la muerte",
     "deathSuccess": "Éxito",
-    "deathFailure": "Fallo",
-    "dyingConditionValue": "Valor de la condición de muerte"
+    "deathFailure": "Fallo"
   },
   "professionsPage": {
     "fightingFeats": "Estilo de pelea",

@@ -2126,7 +2126,8 @@
     "origin": "general",
     "origin_values": ["general"],
     "kind": "static",
-    "conditions": { "level": 1 }
+    "conditions": { "level": 1 },
+    "modifiers": { "max_dying": { "type": "add", "value": 1 } }
   },
   {
     "slug": "dubious_knowledge",
@@ -2847,7 +2848,8 @@
     },
     "origin": "general",
     "origin_values": ["general"],
-    "conditions": { "level": 1 }
+    "conditions": { "level": 1 },
+    "modifiers": { "health.max": { "type": "add", "value": "level" } }
   },
   {
     "slug": "train_animal",

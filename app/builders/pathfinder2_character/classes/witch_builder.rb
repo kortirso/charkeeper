@@ -4,7 +4,6 @@ module Pathfinder2Character
   module Classes
     class WitchBuilder
       def call(result:) # rubocop: disable Metrics/AbcSize
-        result[:health] = { current: result[:health] + 6, max: result[:health] + 6, temp: 0 }
         result[:abilities].merge!({ int: 2 }) { |_, oldval, newval| oldval + newval }
         result[:skill_boosts].merge!({ free: 3 }) { |_, oldval, newval| oldval + newval }
 

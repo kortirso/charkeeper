@@ -11,11 +11,6 @@ module CharactersContext
         refresh_feats: 'services.characters_context.pathfinder2.refresh_feats'
       ]
 
-      SKILLS = %w[
-        acrobatics arcana athletics crafting deception diplomacy intimidation medicine nature
-        occultism performance religion society stealth survival thievery
-      ].freeze
-
       # rubocop: disable Metrics/BlockLength
       use_contract do
         config.messages.namespace = :pathfinder2_character
@@ -32,9 +27,8 @@ module CharactersContext
             required(:cha).filled(:integer)
           end
           optional(:health).hash do
-            required(:current).filled(:integer)
-            required(:max).filled(:integer)
-            required(:temp).filled(:integer)
+            optional(:current).filled(:integer)
+            optional(:temp).filled(:integer)
           end
           optional(:dying_condition_value).filled(:integer)
           optional(:languages).maybe(:array).each(:string)
@@ -107,7 +101,7 @@ module CharactersContext
       def lock_key(input) = "character_update_#{input[:character].id}"
       def lock_time = 0
 
-      def do_prepare(input) # rubocop: disable Metrics/AbcSize, Metrics/PerceivedComplexity
+      def do_prepare(input) # rubocop: disable Metrics/AbcSize, Metrics/PerceivedComplexity, Metrics/CyclomaticComplexity, Metrics/MethodLength
         input.merge!(apply_class_progression(input)) if input.key?(:level)
 
         %i[abilities health saving_throws selected_skills coins].each do |key|
@@ -132,12 +126,15 @@ module CharactersContext
         elsif input.key?(:coins)
           input[:money] = (input.dig(:coins, :gold) * 100) + (input.dig(:coins, :silver) * 10) + input.dig(:coins, :copper)
         end
+
+        input[:health_current] = input.dig(:health, :current) if input.dig(:health, :current)
+        input[:health_temp] = input.dig(:health, :temp) if input.dig(:health, :temp)
       end
 
       def do_persist(input) # rubocop: disable Metrics/AbcSize
         input[:character].data =
           input[:character].data.attributes.merge(
-            input.except(:character, :avatar_file, :avatar_url, :file, :name).stringify_keys
+            input.except(:character, :avatar_file, :avatar_url, :file, :name, :health).stringify_keys
           )
         input[:character].assign_attributes(input.slice(:name))
         input[:character].save!

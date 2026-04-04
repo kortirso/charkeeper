@@ -238,8 +238,7 @@
     "itemNote": "Item note",
     "deathSavingThrows": "Death saving throws",
     "deathSuccess": "Success",
-    "deathFailure": "Failure",
-    "dyingConditionValue": "Dying condition value"
+    "deathFailure": "Failure"
   },
   "professionsPage": {
     "fightingFeats": "Fighting style",

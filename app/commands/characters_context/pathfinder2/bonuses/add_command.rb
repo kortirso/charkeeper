@@ -6,7 +6,7 @@ module CharactersContext
       class AddCommand < BaseCommand
         NO_FORMULA_FIELDS = %i[str dex con wis int cha].freeze
         ONLY_ADD_TYPE_FIELDS = %i[
-          attack unarmed_attacks melee_attacks range_attacks damage unarmed_damage melee_damage range_damage
+          attack unarmed_attacks melee_attacks range_attacks damage unarmed_damage melee_damage range_damage 'health.max'
         ].freeze
         ANY_VALUE_FIELDS = %i[
           'saving_throws_value.fortitude' 'saving_throws_value.reflex' 'saving_throws_value.will' perception armor_class speed
@@ -36,6 +36,7 @@ module CharactersContext
               optional(:unarmed_damage).hash
               optional(:melee_damage).hash
               optional(:range_damage).hash
+              optional(:'health.max').hash
               # with add/set type
               optional(:'saving_throws_value.fortitude').hash
               optional(:'saving_throws_value.reflex').hash

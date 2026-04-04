@@ -10,6 +10,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - selecting feats for companions for PF2 characters
 - counting experience for PF2 characters
 
+### Modified
+- hp calculations for PF2 characters
+
 ## [0.4.21] - 2026-04-03
 ### Added
 - creating homebrew feats for D&D characters

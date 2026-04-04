@@ -238,8 +238,7 @@
     "itemNote": "Заметка о предмете",
     "deathSavingThrows": "Спасброски от смерти",
     "deathSuccess": "Успехи",
-    "deathFailure": "Провалы",
-    "dyingConditionValue": "Состояние при смерти"
+    "deathFailure": "Провалы"
   },
   "professionsPage": {
     "fightingFeats": "Боевые стили",

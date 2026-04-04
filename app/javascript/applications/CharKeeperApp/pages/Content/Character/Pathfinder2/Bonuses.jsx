@@ -35,7 +35,8 @@ const MAPPING = {
     'unarmed_damage': 'Unarmed damage',
     'melee_damage': 'Melee damage',
     'thrown_damage': 'Thrown damage',
-    'range_damage': 'Range damage'
+    'range_damage': 'Range damage',
+    'health.max': 'Health'
   },
   ru: {
     'str': 'Сила',
@@ -59,11 +60,12 @@ const MAPPING = {
     'unarmed_damage': 'Безоружный урон',
     'melee_damage': 'Рукопашный урон',
     'thrown_damage': 'Метательный урон',
-    'range_damage': 'Дистанционный урон'
+    'range_damage': 'Дистанционный урон',
+    'health.max': 'Здоровье'
   }
 }
 const NO_VARIABLES = ['str', 'dex', 'con', 'int', 'wis', 'cha'];
-const ONLY_ADD = ['str', 'dex', 'con', 'int', 'wis', 'cha', 'attack', 'damage'];
+const ONLY_ADD = ['str', 'dex', 'con', 'int', 'wis', 'cha', 'attack', 'damage', 'health.max'];
 const VARIABLES_LIST = ['str', 'dex', 'con', 'int', 'wis', 'cha', 'level', 'no_body_armor', 'no_armor'];
 
 export const Pathfinder2Bonuses = (props) => {

@@ -6,7 +6,6 @@ module Pathfinder2Character
       # rubocop: disable Metrics/AbcSize
       def call(result:)
         result[:main_ability] = 'str' unless result[:main_ability]
-        result[:health] = { current: result[:health] + 10, max: result[:health] + 10, temp: 0 }
         result[:abilities].merge!({ result[:main_ability].to_sym => 2 }) { |_, oldval, newval| oldval + newval }
         result[:skill_boosts].merge!({ acrobatics_athletics: 1, free: 3 }) { |_, oldval, newval| oldval + newval }
 
