@@ -3,7 +3,7 @@ import { createSignal, createEffect, createMemo, Show, For, batch } from 'solid-
 import { Button, ErrorWrapper, GuideWrapper, Toggle, Checkbox, Select } from '../../../../components';
 import config from '../../../../data/fallout.json';
 import { useAppState, useAppLocale, useAppAlert } from '../../../../context';
-import { Arrow } from '../../../../assets';
+import { Upgrade } from '../../../../assets';
 import { updateCharacterRequest } from '../../../../requests/updateCharacterRequest';
 import { fetchTalentsRequest } from '../../../../requests/fetchTalentsRequest';
 import { createTalentRequest } from '../../../../requests/createTalentRequest';
@@ -150,7 +150,7 @@ export const FalloutLeveling = (props) => {
       >
         <div class="blockable py-4 px-2 md:px-4 mb-2">
           <div class="flex items-center">
-            <Button default classList="rounded mr-4" onClick={levelUp}><Arrow top /></Button>
+            <Button default classList="rounded mr-4" onClick={levelUp}><Upgrade width="24" height="24" /></Button>
             <p>{character().level} {localize(TRANSLATION, locale()).currentLevel}</p>
           </div>
         </div>

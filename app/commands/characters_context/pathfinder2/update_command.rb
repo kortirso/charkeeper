@@ -63,6 +63,7 @@ module CharactersContext
           optional(:conditions).maybe(:array).each(:string)
           optional(:selected_features).hash
           optional(:spent_spell_slots).hash
+          optional(:experience).filled(:integer, gteq?: 0)
           # DEPRECATED
           optional(:lore_skills).hash do
             required(:lore1).hash do

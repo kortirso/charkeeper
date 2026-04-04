@@ -40,7 +40,10 @@ module Frontend
         def character_feats
           feats = ::Pathfinder2::Feat.where(id: @character.data.selected_feats.keys).to_a
           @character.data.selected_feats.flat_map do |(key, values)|
-            feat = ::Pathfinder2::FeatSerializer.new.serialize(feats.find { |item| item.id == key })
+            feat = feats.find { |item| item.id == key }
+            next [] unless feat
+
+            feat = ::Pathfinder2::FeatSerializer.new.serialize(feat)
             values.map do |value|
               {
                 level: value['level'],
