@@ -1,8 +1,8 @@
 import { createSignal, createEffect, createMemo, Show, For, batch } from 'solid-js';
 
-import { Button, ErrorWrapper, Toggle, Select, createModal, Text } from '../../../../components';
+import { Button, ErrorWrapper, Toggle, Select, createModal, Text, Input } from '../../../../components';
 import { useAppState, useAppLocale, useAppAlert } from '../../../../context';
-import { Arrow } from '../../../../assets';
+import { Upgrade, Check } from '../../../../assets';
 import { updateCharacterRequest } from '../../../../requests/updateCharacterRequest';
 import { fetchTalentsRequest } from '../../../../requests/fetchTalentsRequest';
 import { createTalentRequest } from '../../../../requests/createTalentRequest';
@@ -21,7 +21,8 @@ const TRANSLATION = {
     confirm: 'Confirm feat selection',
     notSelected: 'Not selected',
     selectTags: 'Select tags',
-    additionalFeat: 'Additional feat'
+    additionalFeat: 'Additional feat',
+    experience: 'Experience'
   },
   ru: {
     currentLevel: 'уровень',
@@ -35,7 +36,8 @@ const TRANSLATION = {
     confirm: 'Подтвердить выбор черты',
     notSelected: 'Не выбрана',
     selectTags: 'Выбрать тэги',
-    additionalFeat: 'Дополнительная черта'
+    additionalFeat: 'Дополнительная черта',
+    experience: 'Опыт'
   }
 }
 
@@ -56,9 +58,10 @@ export const Pathfinder2Leveling = (props) => {
   const [featFilter, setFeatFilter] = createSignal(null);
   const [selectedFeat, setSelectedFeat] = createSignal(null);
   const [selectedTags, setSelectedTags] = createSignal([]);
+  const [experience, setExperience] = createSignal(0);
 
   const [appState] = useAppState();
-  const [{ renderAlerts }] = useAppAlert();
+  const [{ renderAlerts, renderNotice }] = useAppAlert();
   const { Modal, openModal, closeModal } = createModal();
   const [locale] = useAppLocale();
 
@@ -73,6 +76,7 @@ export const Pathfinder2Leveling = (props) => {
           setTags(Object.fromEntries(Object.entries(talentsData.tags).sort(([, a], [, b]) => a.localeCompare(b))));
           setFeats(talentsData.feats);
           setSelectedFeats(talentsData.character_feats);
+          setExperience(character().experience)
         });
       }
     );
@@ -142,10 +146,6 @@ export const Pathfinder2Leveling = (props) => {
     );
   }
 
-  const levelUp = () => {
-    updateCharacter({ level: character().level + 1 });
-  }
-
   const refetchSelectedFeats = async () => {
     const result = await fetchTalents();
     performResponse(
@@ -157,12 +157,21 @@ export const Pathfinder2Leveling = (props) => {
     );
   }
 
-  const updateCharacter = async (payload) => {
-    const result = await updateCharacterRequest(appState.accessToken, character().provider, character().id, { character: payload });
+  const changeExperience = () => {
+    const value = parseInt(experience());
+    if (!(value >= 0)) return;
+
+    updateCharacter({ experience: value }, true);
+  }
+
+  const updateCharacter = async (payload, onlyHead = false) => {
+    const requestPayload = { character: payload, only_head: onlyHead }
+    const result = await updateCharacterRequest(appState.accessToken, character().provider, character().id, requestPayload);
     performResponse(
       result,
       function() { // eslint-disable-line solid/reactivity
-        props.onReplaceCharacter(result.character);
+        props.onReplaceCharacter(onlyHead ? payload : result.character);
+        renderNotice(localize(TRANSLATION, locale()).updated)
       },
       function() { renderAlerts(result.errors_list) }
     );
@@ -200,6 +209,7 @@ export const Pathfinder2Leveling = (props) => {
           containerClassList="cursor-pointer"
           labelText={renderFeatLabel('additional')}
           text={localize(TRANSLATION, locale()).notSelected}
+          textClassList="text-lg"
           onClick={() => selectFeat('additional', level)}
         />
       </>
@@ -216,10 +226,22 @@ export const Pathfinder2Leveling = (props) => {
 
   return (
     <ErrorWrapper payload={{ character_id: character().id, key: 'Pathfinder2Leveling' }}>
-      <div class="blockable py-4 px-2 md:px-4 mb-2">
+      <div class="blockable py-4 px-2 md:px-4 mb-2 flex flex-col md:flex-row md:justify-between md:items-center gap-y-2">
         <div class="flex items-center">
-          <Button default classList="rounded mr-4" onClick={levelUp}><Arrow top /></Button>
+          <Button default classList="rounded mr-4" onClick={() => updateCharacter({ level: character().level + 1 })}>
+            <Upgrade width="24" height="24" />
+          </Button>
           <p>{character().level} {localize(TRANSLATION, locale()).currentLevel}</p>
+        </div>
+        <div class="flex justify-between items-end gap-2">
+          <Input
+            numeric
+            containerClassList="flex-1"
+            labelText={localize(TRANSLATION, locale()).experience}
+            value={experience()}
+            onInput={setExperience}
+          />
+          <Button default onClick={changeExperience}><Check width="20" height="20" /></Button>
         </div>
       </div>
       <For each={Array.from([...Array(character().level).keys()], (x) => x + 1)}>

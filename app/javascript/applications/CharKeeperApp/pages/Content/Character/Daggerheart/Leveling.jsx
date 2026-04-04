@@ -3,7 +3,7 @@ import { createMemo, createSignal, createEffect, For, Show, batch } from 'solid-
 import { Select, Checkbox, Button, ErrorWrapper, GuideWrapper } from '../../../../components';
 import config from '../../../../data/daggerheart.json';
 import { useAppState, useAppLocale, useAppAlert } from '../../../../context';
-import { Arrow } from '../../../../assets';
+import { Upgrade } from '../../../../assets';
 import { updateCharacterRequest } from '../../../../requests/updateCharacterRequest';
 import { fetchHomebrewsRequest } from '../../../../requests/fetchHomebrewsRequest';
 import { translate, localize } from '../../../../helpers';
@@ -263,9 +263,7 @@ export const DaggerheartLeveling = (props) => {
       >
         <div class="blockable p-4 px-2 md:px-4 flex flex-col mb-4">
           <div class="flex items-center mb-2">
-            <Button default classList="rounded mr-4" onClick={levelUp}>
-              <Arrow top />
-            </Button>
+            <Button default classList="rounded mr-4" onClick={levelUp}><Upgrade width="24" height="24" /></Button>
             <p>{localize(TRANSLATION, locale())['currentLevel']} - {character().level}</p>
           </div>
           <p class="text-sm mb-4">{localize(TRANSLATION, locale()).levelTooltip}</p>
