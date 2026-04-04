@@ -156,5 +156,399 @@
     },
     "origin": "familiar",
     "info": { "options_list": "skills" }
+  },
+  {
+    "slug": "accompanist",
+    "kind": "static",
+    "title": {
+      "en": "Accompanist",
+      "ru": "Аккомпаниатор"
+    },
+    "description": {
+      "en": "Your familiar helps you perform. Whenever you attempt a Performance check, if your familiar is nearby and can act, it accompanies you with chirps, claps, or its own miniature instrument. This grants you a +1 circumstance bonus, or +2 if you're a master in Performance.",
+      "ru": "Фамильяр содействует вашему исполнению. Когда вы совершаете проверку Исполнения, если ваш фамильяр поблизости и может действовать, он будет аккомпанировать вам трелями, хлопками или даже на собственном миниатюрном инструменте. Вы получаете ситуативный бонус +1 или +2, если вы мастер Исполнения."
+    },
+    "origin": "familiar"
+  },
+  {
+    "slug": "major_resistance",
+    "kind": "static",
+    "title": {
+      "en": "Major Resistance",
+      "ru": "Высшая устойчивость"
+    },
+    "description": {
+      "en": "Your familiar increases the resistance it gains from its resistance familiar ability to a value equal to your level. To select this you must be at least 8th level.",
+      "ru": "Устойчивость, получаемая от способности фамильяра устойчивость, увеличивается до значения вашего уровня. Эту способность можно выбрать лишь в случае, если вы достигли 8 уровня."
+    },
+    "origin": "familiar"
+  },
+  {
+    "slug": "fungus",
+    "kind": "static",
+    "title": {
+      "en": "Fungus",
+      "ru": "Гриб"
+    },
+    "description": {
+      "en": "Your familiar has the fungus trait instead of the animal trait.",
+      "ru": "У вашего фамильяра дескриптор «гриб» вместо дескриптора «животное»."
+    },
+    "origin": "familiar"
+  },
+  {
+    "slug": "dragon",
+    "kind": "static",
+    "title": {
+      "en": "Dragon",
+      "ru": "Дракон"
+    },
+    "description": {
+      "en": "Your familiar has the dragon trait instead of the animal trait.",
+      "ru": "У вашего фамильяра дескриптор «дракон» вместо дескриптора «животное»."
+    },
+    "origin": "familiar"
+  },
+  {
+    "slug": "spellcasting",
+    "kind": "static",
+    "title": {
+      "en": "Spellcasting",
+      "ru": "Заклинание"
+    },
+    "description": {
+      "en": "Choose a spell in your repertoire or that you prepared today at least 5 levels lower than your highest-rank spell slot. Your familiar can Cast that Spell once per day using your magical tradition, spell attack modifier, and spell DC. If the spell has a drawback that affects the caster, both you and your familiar are affected. You must be able to cast 6th-rank spells using spell slots to select this.",
+      "ru": "Выберите заклинание из вашего репертуара либо из подготовленных в этот день заклинаний. Круг заклинания должен быть хотя бы на 5 ниже наивысшего доступного вам круга ячейки. Фамильяр может сотворить это заклинание один раз в день, используя вашу магическую традицию, модификатор атаки заклинанием и СЛ заклинаний. Если заклинание обладает вредоносным эффектом, влияющим на заклинателя, он действует и на вас, и на фамильяра. Эту способность можно выбрать лишь в случае, если вы можете творить заклинания 6 круга с помощью ячеек."
+    },
+    "origin": "familiar"
+  },
+  {
+    "slug": "damage_avoidance",
+    "kind": "text",
+    "title": {
+      "en": "Damage Avoidance",
+      "ru": "Защита от урона"
+    },
+    "description": {
+      "en": "Choose one type of save. Your familiar takes no damage when it rolls a success on that type of save; this doesn't prevent effects other than damage.",
+      "ru": "Выберите одно из испытаний. Фамильяр не получает урона при успехе в испытании выбранного типа; эта способность защищает только от урона, но не от прочих эффектов."
+    },
+    "origin": "familiar"
+  },
+  {
+    "slug": "construct",
+    "kind": "static",
+    "title": {
+      "en": "Construct",
+      "ru": "Конструкция"
+    },
+    "description": {
+      "en": "Your familiar has the construct trait instead of the animal trait. The familiar is immune to death effects, disease, doomed, drained, fatigued, healing, nonlethal attacks, paralyzed, poison, sickened, spirit, unconscious, vitality and void. Your familiar must have the **Tough** pet ability to select this.",
+      "ru": "У вашего фамильяра дескриптор «конструкция» вместо дескриптора «животное». Он невосприимчив к состояниям: эффектам с дескриптором «смерть», болезнь, обречённость, истощение, утомление, исцеление, несмертельные атаки, паралич, яд, тошнота, дух, без сознания, жизнь и пустота. Эту способность можно выбрать лишь в случае, если фамильяр обладает способностью **Живучий**."
+    },
+    "origin": "familiar",
+    "info": { "required": ["tough"] }
+  },
+  {
+    "slug": "independent",
+    "kind": "static",
+    "title": {
+      "en": "Independent",
+      "ru": "Независимый"
+    },
+    "description": {
+      "en": "In an encounter, if you don't Command your familiar, it still gains 1 action each round. Typically, you still decide how it spends that action, but, the GM might determine that your familiar chooses its own tactics rather than performing your preferred action. This doesn't work with valet or similar abilities that require a command, if you're capable of riding your familiar, or similar situations.",
+      "ru": "Если вы не отдаёте вашему фамильяру Команду животному во время сцены, он всё ещё получает 1 действие каждый раунд. Обычно вы всё ещё должны выбирать, как он потратит это действие, но ведущий может решить, что ваш фамильяр действует в соответствии с собственной тактикой, а не вашими пожеланиями. Эффект не действует совместно со способностью прислужник и схожими способностями, требующими Команды животному, если вы способны ехать верхом на фамильяре, или в схожих ситуациях."
+    },
+    "origin": "familiar"
+  },
+  {
+    "slug": "toolbearer",
+    "kind": "static",
+    "title": {
+      "en": "Toolbearer",
+      "ru": "Носитель инструментов"
+    },
+    "description": {
+      "en": "Your familiar can carry a toolkit of up to light Bulk. So long as your familiar is adjacent to you, you can draw and replace the tools as part of the action that uses them as if you were wearing them. Your familiar must have the manual dexterity ability to select this.",
+      "ru": "Ваш фамильяр может нести набор инструментов лёгкого или незначительного веса. Пока ваш фамильяр рядом с вами, вы можете выхватить и вернуть их на место в качестве части действия, которое их использует, как если бы носили их. Эту способность можно выбрать лишь в случае, если фамильяр обладает способностью **Мелкая моторика**."
+    },
+    "origin": "familiar"
+  },
+  {
+    "slug": "valet",
+    "kind": "static",
+    "title": {
+      "en": "Valet",
+      "ru": "Прислужник"
+    },
+    "description": {
+      "en": "You can command your familiar to deliver you items more efficiently. Your familiar doesn't use its 2 actions immediately upon your command. Instead, up to twice before the end of your turn, you can have your familiar Interact to retrieve an item of light or negligible Bulk you are wearing and place it into one of your free hands. The familiar can't use this ability to retrieve stowed items. If the familiar has a different number of actions, it can retrieve one item for each action it has when commanded this way.",
+      "ru": "Ваш фамильяр более эффективно выполняет ваши команды принести предмет. Он не использует 2 действия немедленно после того, как вы отдали команду, — вместо этого вы можете до двух раз до конца вашего хода приказать ему совершить Взаимодействие, чтобы достать предмет лёгкого или незначительного веса, который вы носите, и поместить его в одну из ваших свободных рук. Фамильяр не может использовать эту способность, чтобы доставать убранные предметы. Если у вашего фамильяра другое количество действий, после команды он может достать по одному предмету за каждое действие."
+    },
+    "origin": "familiar"
+  },
+  {
+    "slug": "kinspeech",
+    "kind": "static",
+    "title": {
+      "en": "Kinspeech",
+      "ru": "Разговор с сородичами"
+    },
+    "description": {
+      "en": "Your familiar can understand and speak with animals of the same species. To select this, your familiar must be an animal, it must have the **Speech** ability, and you must be at least 6th level.",
+      "ru": "Фамильяр может понимать животных своего вида и общаться с ними. Эту способность можно выбрать лишь в случае, если вы достигли 6 уровня, а ваш фамильяр — животное и обладает способностью **Речь**."
+    },
+    "origin": "familiar"
+  },
+  {
+    "slug": "plant",
+    "kind": "static",
+    "title": {
+      "en": "Plant",
+      "ru": "Растение"
+    },
+    "description": {
+      "en": "Your familiar has the plant trait instead of the animal trait.",
+      "ru": "У вашего фамильяра дескриптор «растение» вместо дескриптора «животное»."
+    },
+    "origin": "familiar"
+  },
+  {
+    "slug": "partner_in_crime",
+    "kind": "static",
+    "title": {
+      "en": "Partner in Crime",
+      "ru": "Соучастник"
+    },
+    "description": {
+      "en": "Your familiar is your criminal associate. Despite being a minion, your familiar gains 1 reaction at the start of its turns, which it can use only to Aid you on a Deception or Thievery skill check (it still has to prepare to help you as normal for the Aid reaction). It automatically succeeds at its check to Aid you with those skills or automatically critically succeeds if you're a master of the skill in question.",
+      "ru": "Фамильяр служит вам преступным сообщником. Хотя фамильяр является подручным, он получает 1 ответное действие в начале каждого своего хода, но может потратить его только на Помощь товарищу (только вам) в проверке Воровства или Обмана (он всё ещё должен подготовиться к оказанию помощи, как обычно). Его проверка для такой Помощи товарищу автоматически успешна (или критически успешна, если вы умелы в соответствующем навыке на мастерском уровне)."
+    },
+    "origin": "familiar"
+  },
+  {
+    "slug": "focused_rejuvenation",
+    "kind": "static",
+    "title": {
+      "en": "Focused Rejuvenation",
+      "ru": "Сфокусированное восстановление"
+    },
+    "description": {
+      "en": "When you Refocus, you generate magical energy that heals your familiar. Your familiar regains 1 Hit Point per level whenever you Refocus.",
+      "ru": "Когда вы совершаете Фокусировку, вы источаете магическую энергию, исцеляющую вашего фамильяра. Ваш фамильяр восстанавливает по 1 ПЗ за уровень при каждой вашей Фокусировке."
+    },
+    "origin": "familiar"
+  },
+  {
+    "slug": "touch_telepathy",
+    "kind": "static",
+    "title": {
+      "en": "Touch Telepathy",
+      "ru": "Телепатическое касание"
+    },
+    "description": {
+      "en": "Your familiar can telepathically communicate with you via touch. If it also has the **Speech** ability, it can telepathically communicate via touch with any creature if they share a language.",
+      "ru": "Ваш фамильяр умеет телепатически общаться с вами посредством касания. Если он обладает способностью **Речь**, он также может телепатически общаться посредством касания с любым существом, с которым у него есть общий язык."
+    },
+    "origin": "familiar"
+  },
+  {
+    "slug": "resistance",
+    "kind": "static",
+    "title": {
+      "en": "Resistance",
+      "ru": "Устойчивость"
+    },
+    "description": {
+      "en": "Choose two of the following: acid, cold, electricity, fire, poison, or sonic. Your familiar gains resistance equal to half your level (minimum resistance 1) against the chosen damage types.",
+      "ru": "Выберите два типа урона из следующего списка: звук, кислота, огонь, холод, электричество, яд. Ваш фамильяр получает устойчивость к этим типам урона, равную половине вашего уровня (минимум 1)."
+    },
+    "origin": "familiar"
+  },
+  {
+    "slug": "plant_form",
+    "kind": "static",
+    "title": {
+      "en": "Plant Form",
+      "ru": "Форма растения"
+    },
+    "description": {
+      "en": "Your plant familiar can change shape as a single action, transforming into a Tiny plant of a type roughly similar to the familiar's nature. This otherwise uses the effects of one with plants. You must have a familiar with the plant trait to select this ability.",
+      "ru": "Ваш фамильяр может сменить облик в качестве одиночного действия, превращаясь в растение маленького размера и типа, отдалённо похожего на фамильяра. В остальном эффект аналогичен слиянию с растениями. Эту способность можно выбрать лишь в случае, если у фамильяра есть дескриптор «растение»."
+    },
+    "origin": "familiar"
+  },
+  {
+    "slug": "master_form",
+    "kind": "static",
+    "title": {
+      "en": "Master's Form",
+      "ru": "Форма хозяина"
+    },
+    "description": {
+      "en": "Your familiar can change shape as a single action, transforming into a humanoid of your ancestry with the same age, gender, and build of its true form, though it always maintains a clearly unnatural remnant of its nature, such as a cat's eyes or a serpent's tongue. This form is always the same each time it uses this ability. This otherwise uses the effects of humanoid form, except the change is purely cosmetic. It only appears humanoid and gains no new capabilities. Your familiar must have the **Manual dexterity** and **Speech** abilities to select this.",
+      "ru": "Ваш фамильяр может сменить облик в качестве одиночного действия, превращаясь в гуманоида вашего народа, однако сохраняет возраст, пол и примерное телосложение истинной формы. Кроме того, он всегда будет обладать очевидно неестественной чертой внешности: например, кошачьими зрачками или змеиным языком. Форма всегда остаётся одной и той же при каждом использовании этой способности. В остальном эффект аналогичен форме гуманоида, но фамильяр лишь выглядит гуманоидом и не получает новых возможностей. Эту способность можно выбрать лишь в случае, если фамильяр обладает способностями **Мелкая моторика** и **Речь**."
+    },
+    "origin": "familiar"
+  },
+  {
+    "slug": "elemental",
+    "kind": "static",
+    "title": {
+      "en": "Elemental",
+      "ru": "Элементаль"
+    },
+    "description": {
+      "en": "Your familiar has the elemental trait instead of the animal trait. Choose air, earth, fire, metal, water, or wood. Your familiar gains that trait. The familiar is immune to bleed, paralyzed, poison, sleep, and the element matching its trait. Your familiar must have the **Resistance** familiar ability to select this.",
+      "ru": "У вашего фамильяра дескриптор «элементаль» вместо дескриптора «животное». Выберите дескриптор воздух, земля, огонь, металл, вода или дерево. Ваш фамильяр получает этот дескриптор. Он невосприимчив к кровотечению, параличу, сну и ядам, а также соответствующему дескриптору. Эту способность можно выбрать лишь в случае, если фамильяр обладает способностью **Устойчивость**."
+    },
+    "origin": "familiar"
+  },
+  {
+    "slug": "recall_familiar",
+    "kind": "static",
+    "title": {
+      "en": "Recall Familiar",
+      "ru": "Возвращение фамильяра"
+    },
+    "description": {
+      "en": "You can use a 3-action activity, which has the concentrate trait, to teleport your familiar to your space. Your familiar must be within 1 mile or the attempt to summon it fails. This is a teleportation effect.",
+      "ru": "Вы можете использовать занятие на 3 действия с дескриптором «концентрация», чтобы телепортировать своего фамильяра в ваше пространство. Для этого фамильяр должен быть в пределах 1 мили. Это эффект телепортации."
+    },
+    "origin": "familiar",
+    "description_eval_variables": {
+      "limit": "1"
+    },
+    "limit_refresh": "long_rest"
+  },
+  {
+    "slug": "spell_delivery",
+    "kind": "static",
+    "title": {
+      "en": "Spell Delivery",
+      "ru": "Доставка заклинаний"
+    },
+    "description": {
+      "en": "If your familiar is in your space, you can cast a spell with a range of touch, transfer its power to your familiar, and command the familiar to deliver the spell. If you do, the familiar uses its 2 actions for the round to move to a target of your choice and touch that target. If it doesn't reach the target to touch it this turn, the spell has no effect.",
+      "ru": "Если фамильяр в вашем пространстве, вы можете сотворить заклинание с дистанцией «касание», передать его фамильяру и приказать ему доставить заклинание к цели. После этого фамильяр использует 2 своих действия в раунд, чтобы переместиться к выбранной вам цели и коснуться её. Если он не успеет добраться до цели в течение этого хода, заклинание не подействует."
+    },
+    "origin": "familiar"
+  },
+  {
+    "slug": "spell_battery",
+    "kind": "static",
+    "title": {
+      "en": "Spell Battery",
+      "ru": "Запасное заклинание"
+    },
+    "description": {
+      "en": "You gain one additional spell slot at least 3 ranks lower than your highest-rank spell slot; you must be able to cast 4th-rank spells using spell slots to select this master ability.",
+      "ru": "Вы получаете одну дополнительную ячейку заклинания, круг которой должен быть как минимум на 3 ниже, чем наивысший круг ваших ячеек заклинаний. Эту способность хозяина можно выбрать лишь в случае, если вы можете творить заклинания 4 круга с помощью ячеек."
+    },
+    "origin": "familiar"
+  },
+  {
+    "slug": "cantrip_connection",
+    "kind": "static",
+    "title": {
+      "en": "Cantrip Connection",
+      "ru": "Запасной фокус"
+    },
+    "description": {
+      "en": "You can prepare an additional cantrip or, if you have a repertoire, designate a cantrip to add to your repertoire every time you select this ability; you can retrain it but can't otherwise change it. You must be able to prepare cantrips or add them to your repertoire to select this.",
+      "ru": "Вы можете подготовить дополнительный фокус или, если у вас есть репертуар заклинаний, вместо этого выбрать фокус, который будет добавляться в ваш репертуар заклинаний всякий раз, когда вы будете брать эту способность; вы можете пройти переподготовку для замены фокуса, но больше никак изменить его не сможете. Эту способность можно выбрать лишь в случае, если вы можете подготавливать фокусы или добавлять их в свой репертуар заклинаний."
+    },
+    "origin": "familiar"
+  },
+  {
+    "slug": "restorative_familiar",
+    "kind": "static",
+    "title": {
+      "en": "Restorative Familiar",
+      "ru": "Исцеляющий фамильяр"
+    },
+    "description": {
+      "en": "Once per day, your familiar can use 2 actions with the concentrate trait to give up some of its energy and heal you. It must be in your space to do so. You restore a number of Hit Points equal to 1d8 times half your level (minimum 1d8).",
+      "ru": "Один раз в день ваш фамильяр может использовать 2 действия с дескриптором «концентрация», чтобы исцелить вас, отдав часть своей энергии. Для этого он должен быть в вашем пространстве. Вы восстанавливаете по 1d8 ПЗ за каждые два ваших уровня (минимум 1d8)."
+    },
+    "origin": "familiar",
+    "description_eval_variables": {
+      "limit": "1"
+    },
+    "limit_refresh": "long_rest"
+  },
+  {
+    "slug": "share_senses",
+    "kind": "static",
+    "title": {
+      "en": "Share Senses",
+      "ru": "Общее восприятие"
+    },
+    "description": {
+      "en": "Once every 10 minutes, you can use a single action with the concentrate trait to project your senses into your familiar. When you do, you lose all sensory information from your own body, but can sense through your familiar's body for up to 1 minute. You can Dismiss this effect.",
+      "ru": "Один раз в 10 минут вы можете использовать одиночное действие с дескриптором «концентрация», чтобы воспринимать происходящее через фамильяра. При этом вы теряете восприятие собственного тела, но зато можете воспринимать всё через тело фамильяра вплоть до 1 минуты. Вы можете использовать Прекращение для этого эффекта."
+    },
+    "origin": "familiar"
+  },
+  {
+    "slug": "absorb_familiar",
+    "kind": "static",
+    "title": {
+      "en": "Absorb Familiar",
+      "ru": "Поглощение фамильяра"
+    },
+    "description": {
+      "en": "Your familiar can transform into a mark you carry on your flesh, typically seeming like a birthmark, tattoo, or gem that vaguely resembles its normal form. When transformed, the familiar can't act except to turn back into a familiar. It isn't affected by area effects and must be targeted separately to affect it, which requires knowledge that it's a creature. This means you and your allies can heal or assist the familiar while most enemies stay unaware of its true nature. Creatures must attempt a DC 20 Perception check to Seek to realize a it is actually a familiar. Your familiar can still communicate its feelings empathically. Transforming the familiar between forms is a 1-minute activity that has the concentrate trait.",
+      "ru": "Ваш фамильяр может превратиться в метку на вашей коже — родимое пятно, татуировку или иную отметину, отдалённо напоминающую его обычный облик. После превращения фамильяр не может действовать (кроме превращения в обычную форму). На него не действуют эффекты с областью. Его нужно выбирать целью отдельно, для чего нужно знать, что метка — это существо. Это означает, что вы и ваши союзники можете исцелять фамильяра или помогать ему, а большинству врагов будет неведома его истинная природа. Существа должны успешно пройти проверку Внимания со СЛ 20 для Поиска, чтобы понять, что это фамильяр. Он всё ещё может эмпатически общаться. Для превращения фамильяра из одной формы в другую требуется занятие на 1 минуту с дескриптором «концентрация»."
+    },
+    "origin": "familiar"
+  },
+  {
+    "slug": "innate_surge",
+    "kind": "static",
+    "title": {
+      "en": "Innate Surge",
+      "ru": "Прилив врождённых сил"
+    },
+    "description": {
+      "en": "Once per day, you can draw upon your familiar's innate magic to replenish your own. You can cast one innate spell gained from an ancestry feat that you have already cast today. You must still Cast the Spell and meet the spell's other requirements.",
+      "ru": "Один раз в день вы можете восполнить свои запасы магии с помощью врождённой магии фамильяра. Вы можете сотворить одно врождённое заклинание, полученное от черты народа, которое уже использовали в этот день. При этом вы всё равно должны применить занятие Сотворение заклинания и выполнить прочие требования заклинания."
+    },
+    "origin": "familiar",
+    "description_eval_variables": {
+      "limit": "1"
+    },
+    "limit_refresh": "long_rest"
+  },
+  {
+    "slug": "familiar_focus",
+    "kind": "static",
+    "title": {
+      "en": "Familiar Focus",
+      "ru": "Сила фамильяра"
+    },
+    "description": {
+      "en": "Once per day, your familiar can use 2 actions with the concentrate trait to restore 1 Focus Point to your focus pool, up to your usual maximum. You must have a focus pool to select this.",
+      "ru": "Один раз в день ваш фамильяр может использовать 2 действия с дескриптором «концентрация», чтобы восстановить вам 1 ФП, но не выше вашего максимума. Эту способность можно выбрать лишь в случае, если у вас есть запас ФП."
+    },
+    "origin": "familiar",
+    "description_eval_variables": {
+      "limit": "1"
+    },
+    "limit_refresh": "long_rest"
+  },
+  {
+    "slug": "lifelink",
+    "kind": "static",
+    "title": {
+      "en": "Lifelink",
+      "ru": "Узы жизни"
+    },
+    "description": {
+      "en": "If your familiar would be reduced to 0 HP by damage, as a reaction with the concentrate trait, you can take all the damage, and your familiar takes none. However, special effects that would occur due to that damage (such as snake venom) still apply.",
+      "ru": "Если после получения урона ПЗ вашего фамильяра снижаются до 0, вы можете совершить ответное действие с дескриптором «концентрация», чтобы принять этот урон на себя. В этом случае вы получаете весь урон, а фамильяр не получает его. Тем не менее все особые эффекты при нанесении урона по фамильяру (например, змеиный яд) действуют на него."
+    },
+    "origin": "familiar"
   }
 ]

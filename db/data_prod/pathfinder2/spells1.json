@@ -1230,32 +1230,51 @@
       "ru": "Иллюзорный облик"
     },
     "description": {
-      "en": "<b>Traditions</b> <u>arcane</u>, <u>occult</u><br><b>Bloodline</b> Hag <br><b>Deities</b> Children of the Night, Cormion, Hastur, Likha, Mahathallah, Nivi Rhombodazzle, Norgorber, Shadow Cabinet, Sivanah, Skrymir, The Lantern King, Venkelvore <br><b>Range</b> 30 feet; <b>Targets</b> 1 willing creature<br><b>Duration</b> 1 hour<hr>You create an illusion that causes the target to appear as another creature of the same body shape, and with roughly similar height (within 6 inches) and weight (within 50 pounds). The disguise is typically good enough to hide their identity, but not to impersonate a specific individual. The spell changes their appearance and voice, but not mannerisms. You can change the appearance of its clothing and worn items, such as making its armor look like a dress. Held items are unaffected, and any worn item removed from the creature returns to its true appearance.\n\n Casting <i>illusory disguise</i> counts as setting up a disguise for the Impersonate use of Deception; it ignores any circumstance penalties the target might take for disguising itself as a dissimilar creature, gives a +4 status bonus to Deception checks to prevent others from seeing through the disguise, and lets the target add its level to such Deception checks even if untrained. You can Dismiss this spell. <hr><b>Heightened (3rd)</b> The target can appear as any creature of the same size, even a specific individual. You must have seen an individual to replicate its appearance, and must have heard its voice to replicate its voice.\n\n<b>Heightened (4th)</b> You can target up to 10 willing creatures. If you target multiple creatures, you can choose a different disguise for each target, but none can impersonate a specific individual. You can Dismiss each disguise individually or all collectively.\n\n<b>Heightened (7th)</b> As 4th, but you can choose disguises that impersonate specific individuals. You must have seen an individual to replicate its appearance, and must have heard its voice to replicate its voice.",
-      "ru": "<b>Традиции</b> мистическая, оккультная<br>\n<b>Наследие</b> наследие карги<br>\n<b>Божества</b> Дети ночи, Cormion, Хастур, Лиха, Махаталла, Ниви Ромбодаззл, Норгорбер, Теневой кабинет, Сивана, Скримир, Сияющий король, Венкелвор <br>\n<b>Сотворение</b> [two-actions] <br>\n<b>Дистанция</b> 30 футов; <b>Цели</b> 1 согласное существо<br>\n<b>Длительность</b> 1 час.\n\nВы создаёте иллюзорный облик, придавая цели внешность любого другого существа примерно той же формы тела, роста (в пределах 6 дюймов) и веса (в пределах 50 фунтов). Маскировка может сделать цель неузнаваемой, но для изображения кого-то конкретного не подойдёт. Заклинание изменяет голос и внешность, но не особенности поведения. Вы можете изменить внешний вид одежды и предметов, которые цель носит, например сделать так, чтобы броня выглядела как обычная одежда. Предметы, которые держат, не изменяются. Если забрать носимый предмет, он примет свой обычный внешний вид.\n\nСотворение этого заклинания считается подготовкой для Маскировки с помощью Обмана. Оно позволяет игнорировать возможные ситуативные штрафы за маскировку под непохожее существо, даёт бонус состояния +4 к проверкам Обмана против попыток окружающих разоблачить маскировку и позволяет цели добавлять значение уровня атакой проверке Обмана, даже если навык ей не изучен. Вы можете использовать Прекращение для этого заклинания.\n\n<b>Повышенное (3 круг)</b> цель может выглядеть как любое другое существо того же размера, в том числе конкретная личность. Для воссоздания облика конкретного существа вам нужно увидеть его, а также ранее слышать его голос, чтобы воспроизвести.\n<br>\n<b>Повышенное (4 круг)</b> вы можете выбрать целями 10 или менее согласных существ. Если у вас несколько целей, вы можете выбрать отдельный облик для каждой, но они не могут выглядеть как конкретные личности. Вы можете использовать Прекращение для каждого облика отдельно или для всех сразу.\n<br>\n<b>Повышенное (7 круг)</b> аналогично версии 4 круга, но цели могут выглядеть как конкретные личности. Для воссоздания облика конкретного существа вам нужно увидеть его, а также ранее слышать его голос, чтобы воспроизвести."
+      "en": "You create an illusion that causes the target to appear as another creature of the same body shape, and with roughly similar height (within 6 inches) and weight (within 50 pounds). The disguise is typically good enough to hide their identity, but not to impersonate a specific individual. The spell changes their appearance and voice, but not mannerisms. You can change the appearance of its clothing and worn items, such as making its armor look like a dress. Held items are unaffected, and any worn item removed from the creature returns to its true appearance.\n\n Casting **Illusory disguise** counts as setting up a disguise for the Impersonate use of Deception; it ignores any circumstance penalties the target might take for disguising itself as a dissimilar creature, gives a +4 status bonus to Deception checks to prevent others from seeing through the disguise, and lets the target add its level to such Deception checks even if untrained. You can Dismiss this spell.",
+      "ru": "Вы создаёте иллюзорный облик, придавая цели внешность любого другого существа примерно той же формы тела, роста (в пределах 6 дюймов) и веса (в пределах 50 фунтов). Маскировка может сделать цель неузнаваемой, но для изображения кого-то конкретного не подойдёт. Заклинание изменяет голос и внешность, но не особенности поведения. Вы можете изменить внешний вид одежды и предметов, которые цель носит, например сделать так, чтобы броня выглядела как обычная одежда. Предметы, которые держат, не изменяются. Если забрать носимый предмет, он примет свой обычный внешний вид.\n\nСотворение этого заклинания считается подготовкой для Маскировки с помощью Обмана. Оно позволяет игнорировать возможные ситуативные штрафы за маскировку под непохожее существо, даёт бонус состояния +4 к проверкам Обмана против попыток окружающих разоблачить маскировку и позволяет цели добавлять значение уровня атакой проверке Обмана, даже если навык ей не изучен. Вы можете использовать Прекращение для этого заклинания."
     },
     "origin": "spell",
-    "origin_value": "",
+    "origin_value": "arcane,occult",
     "origin_values": [
       "concentrate",
       "illusion",
       "manipulate",
       "visual"
     ],
-    "price": { "a": 1 },
+    "price": { "a": 2 },
     "info": {
       "level": 1,
-      "range": "",
-      "defense": "",
-      "duration": "",
+      "range": "30,f",
+      "duration": "1,h",
       "enhancements": [
         {
           "name": {
-            "en": "",
-            "ru": ""
+            "en": "Heightened (3rd)",
+            "ru": "Повышенное (3 круг)"
           },
           "description": {
-            "en": "",
-            "ru": ""
+            "en": "The target can appear as any creature of the same size, even a specific individual. You must have seen an individual to replicate its appearance, and must have heard its voice to replicate its voice.",
+            "ru": "Цель может выглядеть как любое другое существо того же размера, в том числе конкретная личность. Для воссоздания облика конкретного существа вам нужно увидеть его, а также ранее слышать его голос, чтобы воспроизвести."
+          }
+        },
+        {
+          "name": {
+            "en": "Heightened (4th)",
+            "ru": "Повышенное (4 круг)"
+          },
+          "description": {
+            "en": "You can target up to 10 willing creatures. If you target multiple creatures, you can choose a different disguise for each target, but none can impersonate a specific individual. You can Dismiss each disguise individually or all collectively.",
+            "ru": "Вы можете выбрать целями 10 или менее согласных существ. Если у вас несколько целей, вы можете выбрать отдельный облик для каждой, но они не могут выглядеть как конкретные личности. Вы можете использовать Прекращение для каждого облика отдельно или для всех сразу."
+          }
+        },
+        {
+          "name": {
+            "en": "Heightened (7th)",
+            "ru": "Повышенное (7 круг)"
+          },
+          "description": {
+            "en": "As 4th, but you can choose disguises that impersonate specific individuals. You must have seen an individual to replicate its appearance, and must have heard its voice to replicate its voice.",
+            "ru": "Аналогично версии 4 круга, но цели могут выглядеть как конкретные личности. Для воссоздания облика конкретного существа вам нужно увидеть его, а также ранее слышать его голос, чтобы воспроизвести."
           }
         }
       ]

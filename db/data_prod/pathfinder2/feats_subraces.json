@@ -1,0 +1,45 @@
+[
+  {
+    "slug": "call_on_ancient_blood",
+    "kind": "static",
+    "title": {
+      "en": "Call on Ancient Blood",
+      "ru": "Воззвание к древней крови"
+    },
+    "description": {
+      "en": "**Trigger** You attempt a saving throw against a magical effect, but you haven't rolled yet.\n\nYour ancestors' innate resistance to magic surges, before slowly ebbing down. You gain a +1 circumstance bonus until the end of this turn. This bonus also applies to the triggering save.",
+      "ru": "**Условие** вы проходите испытание против магического эффекта, но ещё не совершили бросок.\n\nВы чувствуете, как в вас пробуждается и медленно затухает искра древней стойкости к магии. Вы получаете ситуативный бонус +1 к испытаниям против магических эффектов до конца этого хода, он действует и на спровоцировавшее испытание."
+    },
+    "origin": "static_subrace",
+    "origin_value": "ancient_blooded_dwarf",
+    "price": { "r": 1 }
+  },
+  {
+    "slug": "gutsy_halfling",
+    "kind": "static",
+    "title": {
+      "en": "Gutsy Halfling",
+      "ru": "Отважный полурослик"
+    },
+    "description": {
+      "en": "Your family line is known for keeping a level head and staving off fear when the chips were down. When you roll a success on a saving throw against an emotion effect, you get a critical success instead.",
+      "ru": "Ваш род славится умением не терять присутствия духа в критической ситуации. Если вы получаете успех в испытании против эффекта с дескриптором «эмоции», он считается для вас критическим успехом."
+    },
+    "origin": "static_subrace",
+    "origin_value": "gutsy_halfling"
+  },
+  {
+    "slug": "fruit_leshy",
+    "kind": "static",
+    "title": {
+      "en": "Fruit Leshy",
+      "ru": "Фруктовый леший"
+    },
+    "description": {
+      "en": "Your body continually produces small fruits imbued with primal magic. At dawn each day, a new fruit ripens. You or an ally can remove this fruit as an Interact action. If a living creature that can derive sustenance from fruit consumes it as an Interact action within the next hour, they regain 1d8 Hit Points, plus an additional 1d8 Hit Points for every 2 of your levels beyond 1st. This effect has the healing and vitality traits.",
+      "ru": "На вашем теле растут небольшие фрукты, пропитанные первобытной магией. На заре каждого дня созревает один фрукт. Вы или ваш союзник можете сорвать этот фрукт Взаимодействием. Если живое существо, способное питаться таким фруктом, съест его в течение следующего часа в качестве Взаимодействия, оно восстановит 1d8 ПЗ + дополнительные 1d8 ПЗ за каждые 2 ваших уровня после первого. Это эффект с дескрипторами «жизнь» и «исцеление»."
+    },
+    "origin": "static_subrace",
+    "origin_value": "fruit_leshy"
+  }
+]

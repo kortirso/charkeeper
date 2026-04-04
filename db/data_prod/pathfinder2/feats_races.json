@@ -1,0 +1,44 @@
+[
+  {
+    "slug": "clan_dagger",
+    "kind": "static",
+    "title": {
+      "en": "Clan Dagger",
+      "ru": "Клановый кинжал"
+    },
+    "description": {
+      "en": "You get one clan dagger for free, as it was given to you at birth. Selling this clan dagger is a terrible taboo and earns you the disdain of other dwarves.",
+      "ru": "Вы бесплатно получаете один клановый кинжал, он подарен вам ещё при рождении. Продажа этого кинжала — страшное табу, подобное опозорит вас в глазах прочих дварфов."
+    },
+    "origin": "static_race",
+    "origin_value": "dwarf"
+  },
+  {
+    "slug": "keen_eyes",
+    "kind": "static",
+    "title": {
+      "en": "Keen Eyes",
+      "ru": "Остроглазый"
+    },
+    "description": {
+      "en": "Your eyes are sharp, allowing you to make out small details about concealed or even invisible creatures that others might miss. You gain a +2 circumstance bonus when using the Seek action to find hidden or undetected creatures within 30 feet of you. When you target an opponent that is concealed from you or hidden from you, reduce the DC of the flat check to 3 for a concealed target or 9 for a hidden one.",
+      "ru": "У вас замечательное зрение, и вы можете подмечать недоступные окружающим мельчайшие детали присутствия плохо видимых и даже невидимых вовсе существ. Вы получаете ситуативный бонус +2, когда применяете действие Поиск, чтобы найти спрятанных или необнаруженных существ в пределах 30 футов от вас. Когда вы выбираете целью плохо видимого вами или спрятанного от вас противника, СЛ чистой проверки снижается до 3, если существо плохо видимо, и до 9, если оно спрятанное."
+    },
+    "origin": "static_race",
+    "origin_value": "halfling"
+  },
+  {
+    "slug": "plant_nourishment",
+    "kind": "static",
+    "title": {
+      "en": "Plant Nourishment",
+      "ru": "Питание растения"
+    },
+    "description": {
+      "en": "You gain nourishment in the same way that the plants or fungi that match your body type normally do, through some combination of photosynthesis, absorbing minerals with your roots, or scavenging decaying matter. You typically do not need to pay for food. If you normally rely on photosynthesis and go without sunlight for 1 week, you begin to starve. You can derive nourishment from specially formulated bottles of sunlight instead of natural sunlight, but these bottles cost 10 times as much as standard rations.",
+      "ru": "Вы получаете питание так же, как обычно это делают растения или грибы, соответствующие вашему типу тела: посредством комбинации фотосинтеза, поглощения минералов корнями и фильтрации продуктов разложения. Обычно вам не нужно платить за пищу. Если, полагаясь на фотосинтез в качестве основного источника питания, вы проведёте 1 неделю без солнечного света, то начнёте голодать. Вы способны питаться специально бутилированным солнечным светом вместо естественного, однако его цена в 10 раз выше обычных сухих пайков."
+    },
+    "origin": "static_race",
+    "origin_value": "leshy"
+  }
+]

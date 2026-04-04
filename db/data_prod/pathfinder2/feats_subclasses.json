@@ -1,0 +1,16 @@
+[
+  {
+    "slug": "familiar_of_restored_spirit",
+    "kind": "static",
+    "title": {
+      "en": "Familiar of Restored Spirit",
+      "ru": "Фамильяр воспрявшего духа"
+    },
+    "description": {
+      "en": "Your familiar is pleasantly warm and soft, seeming to wash away worries with its mere presence. When you Cast or Sustain a hex, one willing creature within 15 feet of your familiar gains temporary Hit Points equal to 2 + half your level, which last until the start of your next turn.",
+      "ru": "Ваш фамильяр мягкий и тёплый на ощупь, а его присутствие будто развеивает все невзгоды. Когда вы сотворяете наговор или применяете для него Поддержание, одно согласное существо в пределах 15 футов от вашего фамильяра до начала вашего следующего хода получает временные ПЗ в количестве, равном половине вашего уровня + 2."
+    },
+    "origin": "static_subclass",
+    "origin_value": "faith_flamekeeper"
+  }
+]
