@@ -182,11 +182,11 @@
       "ru": "Приворот"
     },
     "description": {
-      "en": "<b>Traditions</b> <u>arcane</u>, <u>occult</u>, <u>primal</u><br><b>Bloodlines</b> Diabolic, Fey <br><b>Catalysts</b> Euphoric Loop<br><b>Deities</b> Ardad Lili, Asmodeus, Belial, Calistria, Conqueror Worm, Corosbel, Hathor, Nalinivati, Nyarlathotep (The Faceless Sphinx), Ozranvial, Ravithra, Razmir, Sturovenen, The Green Mother, Ussharassim, Velgaas, Zura <br><b>Range</b> 30 feet; <b>Targets</b> 1 creature<br><b>Defense</b> Will; <b>Duration</b> 1 hour<hr>To the target, your words are honey and your visage seems bathed in a dreamy haze. It must attempt a Will save, with a +4 circumstance bonus if you or your allies recently threatened it or used hostile actions against it.\n\n You can Dismiss the spell. If you use hostile actions against the target, the spell ends. When the spell ends, the target doesn't necessarily realize it was charmed unless its friendship with you or the actions you convinced it to take clash with its expectations, meaning you could potentially convince the target to continue being your friend via mundane means.\n\n<b>Critical Success</b> The target is unaffected and aware you tried to charm it.\n\n<b>Success</b> The target is unaffected but thinks your spell was something harmless instead of <i>charm</i>, unless it identifies the spell.\n\n<b>Failure</b> The target's attitude becomes friendly toward you. If it was friendly, it becomes helpful. It can't use hostile actions against you.\n\n<b>Critical Failure</b> The target's attitude becomes helpful toward you, and it can't use hostile actions against you.<hr><b>Heightened (4th)</b> The duration lasts until your next daily preparations.\n\n<b>Heightened (8th)</b> The duration lasts until your next daily preparations, and you can target up to 10 creatures.",
-      "ru": "<b>Традиции</b> мистическая, оккультная, первобытная<br>\n<b>Наследие</b> дьявольское, наследие фей<br>\n<b>Божества</b> Ардад Лили, Асмодей, Белиал, Калистрия, Conqueror Worm, Коросбел, Hathor, Налинивати (змеиный поцелуй), Ньярлатхотеп (безликий сфинкс), Озранвиаль, Равитхра, Размир, Стуровенен, Зелёная матерь, Ушшарассим, Вельгаас, Зура (королева вампиров) <br>\n<b>Сотворение</b> [two-actions] <br>\n<b>Дистанция</b> 30 футов; <b>Цели</b> 1 существо<br>\n<b>Защита</b> Воля; <b>Длительность</b> 1 час.\n\nДля цели ваши речи льются будто сладкий мёд, а ваш образ будто подёрнут дымкой грёз. Цель проходит испытание Воли, получая ситуативный бонус +4, если вы или ваши союзники недавно угрожали ей или совершали по отношению к ней враждебные действия.\n\nВы можете использовать Прекращение для этого заклинания. Если вы совершаете враждебные действия против цели, заклинание прекращается. Когда заклинание прекращается, цель не поймёт, что была приворожена, если только её дружба с вами или действия, которые вы убедили её совершить, не идут вразрез с её ожиданиями, поэтому впоследствии вы вполне можете совершенно обычными методами убедить цель дружить с вами и дальше. \n<br>\n<b>Критический успех</b> цель избегает эффекта и понимает, что вы пытались её приворожить.\n<br>\n<b>Успех</b> цель избегает эффекта, но думает, что ваше заклинание было не приворотом, а чем-то безобидным, если, конечно, не опознает заклинание (см. «Опознание заклинания»).\n<br>\n<b>Провал</b> цель становится дружелюбной по отношению к вам. Если она была дружелюбна, то становится готова вам помочь. Она не может совершать враждебных действий по отношению к вам.\n<br>\n<b>Критический провал</b> цель становится готова вам помочь и не может совершать враждебных действий по отношению к вам.\n\n<b>Повышенное (4 круг)</b> длительность заклинания — до следующей вашей ежедневной подготовки.\n<br>\n<b>Повышенное (8 круг)</b> длительность заклинания — до следующей вашей ежедневной подготовки, целями заклинания могут стать 10 или менее существ одновременно."
+      "en": "To the target, your words are honey and your visage seems bathed in a dreamy haze. It must attempt a Will save, with a +4 circumstance bonus if you or your allies recently threatened it or used hostile actions against it.\n\n You can Dismiss the spell. If you use hostile actions against the target, the spell ends. When the spell ends, the target doesn't necessarily realize it was charmed unless its friendship with you or the actions you convinced it to take clash with its expectations, meaning you could potentially convince the target to continue being your friend via mundane means.",
+      "ru": "Для цели ваши речи льются будто сладкий мёд, а ваш образ будто подёрнут дымкой грёз. Цель проходит испытание Воли, получая ситуативный бонус +4, если вы или ваши союзники недавно угрожали ей или совершали по отношению к ней враждебные действия.\n\nВы можете использовать Прекращение для этого заклинания. Если вы совершаете враждебные действия против цели, заклинание прекращается. Когда заклинание прекращается, цель не поймёт, что была приворожена, если только её дружба с вами или действия, которые вы убедили её совершить, не идут вразрез с её ожиданиями, поэтому впоследствии вы вполне можете совершенно обычными методами убедить цель дружить с вами и дальше."
     },
     "origin": "spell",
-    "origin_value": "",
+    "origin_value": "arcane,occult,primal",
     "origin_values": [
       "concentrate",
       "emotion",
@@ -195,21 +195,71 @@
       "mental",
       "subtle"
     ],
-    "price": { "a": 1 },
+    "price": { "a": 2 },
     "info": {
       "level": 1,
-      "range": "",
-      "defense": "",
-      "duration": "",
+      "range": "30,f",
+      "defense": "will",
+      "duration": "1,h",
       "enhancements": [
         {
           "name": {
-            "en": "",
-            "ru": ""
+            "en": "Critical Success",
+            "ru": "Критический успех"
           },
           "description": {
-            "en": "",
-            "ru": ""
+            "en": "The target is unaffected and aware you tried to charm it.",
+            "ru": "Цель избегает эффекта и понимает, что вы пытались её приворожить."
+          }
+        },
+        {
+          "name": {
+            "en": "Success",
+            "ru": "Успех"
+          },
+          "description": {
+            "en": "The target is unaffected but thinks your spell was something harmless instead of charm, unless it identifies the spell.",
+            "ru": "Цель избегает эффекта, но думает, что ваше заклинание было не приворотом, а чем-то безобидным, если, конечно, не опознает заклинание."
+          }
+        },
+        {
+          "name": {
+            "en": "Failure",
+            "ru": "Провал"
+          },
+          "description": {
+            "en": "The target's attitude becomes friendly toward you. If it was friendly, it becomes helpful. It can't use hostile actions against you.",
+            "ru": "Цель становится дружелюбной по отношению к вам. Если она была дружелюбна, то становится готова вам помочь. Она не может совершать враждебных действий по отношению к вам."
+          }
+        },
+        {
+          "name": {
+            "en": "Critical Failure",
+            "ru": "Критический провал"
+          },
+          "description": {
+            "en": "The target's attitude becomes helpful toward you, and it can't use hostile actions against you.",
+            "ru": "Цель становится готова вам помочь и не может совершать враждебных действий по отношению к вам."
+          }
+        },
+        {
+          "name": {
+            "en": "Heightened (4th)",
+            "ru": "Повышенное (4 круг)"
+          },
+          "description": {
+            "en": "The duration lasts until your next daily preparations.",
+            "ru": "Длительность заклинания — до следующей вашей ежедневной подготовки."
+          }
+        },
+        {
+          "name": {
+            "en": "Heightened (8th)",
+            "ru": "Повышенное (8 круг)"
+          },
+          "description": {
+            "en": "The duration lasts until your next daily preparations, and you can target up to 10 creatures.",
+            "ru": "Длительность заклинания — до следующей вашей ежедневной подготовки, целями заклинания могут стать 10 или менее существ одновременно."
           }
         }
       ]
@@ -390,31 +440,30 @@
       "ru": "Сокрытие магии"
     },
     "description": {
-      "en": "<b>Traditions</b> <u>arcane</u>, <u>occult</u><br><b>Deity</b> Adanye <br><b>Cast</b>  1 minute<br><b>Range</b> 30 feet; <b>Targets</b> 1 item or spell effect<br><b>Duration</b> until your next daily preparations<hr>You alter how an item's or spell's magical aura appears to effects like detect magic. You can hide the auras entirely, have an item register as a common item of lower level, or make a spell register as a common spell of the same or lower rank. You can Dismiss the spell.\n\n A caster using <i>detect magic</i> or read aura of a higher rank than <i>disguise magic</i> can attempt to disbelieve the illusion using the skill matching the tradition of the spell (Arcana for arcane, Religion for divine, Occultism for occult, or Nature for primal). Further attempts by the same caster get the same result as the initial check to disbelieve.<hr><b>Heightened (2nd)</b> You can Cast this Spell on a creature, disguising all items and spell effects on it.",
-      "ru": "<b>Традиции</b> мистическая, оккультная<br>\n<b>Божество</b> Adanye<br>\n<b>Сотворение</b>  1 минута<br>\n<b>Дистанция</b> 30 футов; <b>Цели</b> 1 объект или эффект заклинания<br>\n<b>Длительность</b> до следующей вашей ежедневной подготовки.\n\nВы меняете вид магической ауры предмета или заклинания для эффектов вроде обнаружения магии. Вы можете полностью скрыть ауры либо сделать, чтобы предмет казался обычным магическим предметом более низкого уровня или чтобы заклинание казалось обычным заклинанием того же или более низкого круга. Вы можете использовать Прекращение для этого заклинания.\n\nЗаклинатель, использующий обнаружение магии или чтение ауры большего круга, может попытаться разоблачить иллюзию, применяя навык, соответствующий магической традиции заклинания (Мистицизм для мистической, Религия для сакральной, Оккультизм для оккультной, или Природа для первобытной). Повторные попытки того же заклинателя получают тот же результат, что и первая проверка для разоблачения.\n\n<b>Повышенное (2 круг)</b> вы можете сотворить это заклинание на существо, маскируя все предметы и эффекты заклинаний на нём."
+      "en": "You alter how an item's or spell's magical aura appears to effects like detect magic. You can hide the auras entirely, have an item register as a common item of lower level, or make a spell register as a common spell of the same or lower rank. You can Dismiss the spell.\n\n A caster using <i>detect magic</i> or read aura of a higher rank than <i>disguise magic</i> can attempt to disbelieve the illusion using the skill matching the tradition of the spell (Arcana for arcane, Religion for divine, Occultism for occult, or Nature for primal). Further attempts by the same caster get the same result as the initial check to disbelieve.",
+      "ru": "Вы меняете вид магической ауры предмета или заклинания для эффектов вроде обнаружения магии. Вы можете полностью скрыть ауры либо сделать, чтобы предмет казался обычным магическим предметом более низкого уровня или чтобы заклинание казалось обычным заклинанием того же или более низкого круга. Вы можете использовать Прекращение для этого заклинания.\n\nЗаклинатель, использующий обнаружение магии или чтение ауры большего круга, может попытаться разоблачить иллюзию, применяя навык, соответствующий магической традиции заклинания (Мистицизм для мистической, Религия для сакральной, Оккультизм для оккультной, или Природа для первобытной). Повторные попытки того же заклинателя получают тот же результат, что и первая проверка для разоблачения."
     },
     "origin": "spell",
-    "origin_value": "",
+    "origin_value": "arcane,occult",
     "origin_values": [
       "concentrate",
       "illusion",
       "manipulate"
     ],
-    "price": { "a": 1 },
     "info": {
       "level": 1,
-      "range": "",
-      "defense": "",
-      "duration": "",
+      "time": "1,m",
+      "range": "30,f",
+      "duration": "1,d",
       "enhancements": [
         {
           "name": {
-            "en": "",
-            "ru": ""
+            "en": "Heightened (2nd)",
+            "ru": "Повышенное (2 круг)"
           },
           "description": {
-            "en": "",
-            "ru": ""
+            "en": "You can Cast this Spell on a creature, disguising all items and spell effects on it.",
+            "ru": "Вы можете сотворить это заклинание на существо, маскируя все предметы и эффекты заклинаний на нём."
           }
         }
       ]
@@ -563,11 +612,11 @@
       "ru": "Ужас"
     },
     "description": {
-      "en": "<b>Traditions</b> <u>arcane</u>, <u>divine</u>, <u>occult</u>, <u>primal</u><br><b>Bloodlines</b> Demonic, Draconic <br><b>Deity</b> Dhalavei <br><b>Patron Theme</b> Starless Shadow <br><b>Range</b> 30 feet; <b>Targets</b> 1 creature<br><b>Defense</b> Will; <b>Duration</b> varies<hr>You plant fear in the target; it must attempt a Will save.\n\n<b>Critical Success</b> The target is unaffected.\n\n<b>Success</b> The target is frightened 1.\n\n<b>Failure</b> The target is frightened 2.\n\n<b>Critical Failure</b> The target is frightened 3 and fleeing for 1 round.<hr><b>Heightened (3rd)</b> You can target up to five creatures.",
-      "ru": "<b>Традиции</b> мистическая, сакральная, оккультная, первобытная<br>\n<b>Наследие</b> демоническое, драконье<br>\n<b>Божество</b> Дхалавей <br>\n<b>Покровитель</b> беззвёздная тень <br>\n<b>Сотворение</b> [two-actions] <br>\n<b>Дистанция</b> 30 футов; <b>Цели</b> 1 существо<br>\n<b>Защита</b> Воля; <b>Длительность</b> варьируется.\n\nВы вселяете в цель истинный ужас. Цель проходит испытание Воли.\n<br>\n<b>Критический успех</b> цель избегает эффекта.\n<br>\n<b>Успех</b> цель получает испуг 1.\n<br>\n<b>Провал</b> цель получает испуг 2.\n<br>\n<b>Критический провал</b> цель получает испуг 3 и в панике в течение\n1 раунда.\n\n<b>Повышенное (3 круг)</b> вы можете выбрать целями 5 или менее существ."
+      "en": "You plant fear in the target; it must attempt a Will save.",
+      "ru": "Вы вселяете в цель истинный ужас. Цель проходит испытание Воли."
     },
     "origin": "spell",
-    "origin_value": "",
+    "origin_value": "arcane,divine,occult,primal",
     "origin_values": [
       "concentrate",
       "emotion",
@@ -575,21 +624,60 @@
       "manipulate",
       "mental"
     ],
-    "price": { "a": 1 },
+    "price": { "a": 2 },
     "info": {
       "level": 1,
-      "range": "",
-      "defense": "",
-      "duration": "",
+      "range": "30,f",
+      "defense": "will",
       "enhancements": [
         {
           "name": {
-            "en": "",
-            "ru": ""
+            "en": "Critical Success",
+            "ru": "Критический успех"
           },
           "description": {
-            "en": "",
-            "ru": ""
+            "en": "The target is unaffected.",
+            "ru": "Цель избегает эффекта."
+          }
+        },
+        {
+          "name": {
+            "en": "Success",
+            "ru": "Успех"
+          },
+          "description": {
+            "en": "The target is frightened 1.",
+            "ru": "Цель получает испуг 1."
+          }
+        },
+        {
+          "name": {
+            "en": "Failure",
+            "ru": "Провал"
+          },
+          "description": {
+            "en": "The target is frightened 2.",
+            "ru": "Цель получает испуг 2."
+          }
+        },
+        {
+          "name": {
+            "en": "Critical Failure",
+            "ru": "Критический провал"
+          },
+          "description": {
+            "en": "The target is frightened 3 and fleeing for 1 round.",
+            "ru": "Цель получает испуг 3 и в панике в течение 1 раунда."
+          }
+        },
+        {
+          "name": {
+            "en": "Heightened (3rd)",
+            "ru": "Повышенное (3 круг)"
+          },
+          "description": {
+            "en": "You can target up to five creatures.",
+            "ru": "Вы можете выбрать целями 5 или менее существ."
           }
         }
       ]
@@ -603,33 +691,19 @@
       "ru": "Легконогость"
     },
     "description": {
-      "en": "<b>Traditions</b> <u>arcane</u>, <u>primal</u><br><b>Deities</b> Aroden, Baalzebul, Cayden Cailean, Chaldira, Drokalion, Guardians of the Sacred Self, Hadregash, Jezelda, Lahkgya, Rokoga Gin, The Laborer's Bastion, Uvuko, Yog-Sothoth, Yrmidar <br><b>Duration</b> 1 minute<hr>You gain a +30-foot status bonus to your Speed.",
-      "ru": "<b>Традиции</b> мистическая, первобытная<br>\n<b>Божества</b> Ароден, Вельзевул, Кайден кайлин, Чалдира, Drokalion, Хранители истинной сущности, Хадрегаш, Джезельда, Лахкгья, Rokoga Gin, The Laborer's Bastion, Uvuko, Yog-Sothoth, Ирмидар <br>\n<b>Сотворение</b> [two-actions] <br>\n<b>Длительность</b> 1 минута.\n\nВы получаете бонус состояния +30 футов к своей скорости."
+      "en": "You gain a +30-foot status bonus to your Speed.",
+      "ru": "Вы получаете бонус состояния +30 футов к своей скорости."
     },
     "origin": "spell",
-    "origin_value": "",
+    "origin_value": "arcane,primal",
     "origin_values": [
       "concentrate",
       "manipulate"
     ],
-    "price": { "a": 1 },
+    "price": { "a": 2 },
     "info": {
       "level": 1,
-      "range": "",
-      "defense": "",
-      "duration": "",
-      "enhancements": [
-        {
-          "name": {
-            "en": "",
-            "ru": ""
-          },
-          "description": {
-            "en": "",
-            "ru": ""
-          }
-        }
-      ]
+      "duration": "1,m"
     }
   },
   {
@@ -640,11 +714,11 @@
       "ru": "Силовой залп"
     },
     "description": {
-      "en": "<b>Traditions</b> <u>arcane</u>, <u>occult</u><br><b>Bloodline</b> Imperial <br><b>Catalysts</b> Dragon Breath Scale<br><b>Deities</b> Gravelady's Guard, Lorthact, Nethys <br><b>Range</b> 120 feet; <b>Targets</b> 1 creature<hr>You fire a shard of solidified magic toward a creature that you can see. It automatically hits and deals 1d4+1 force damage. For each additional action you use when Casting the Spell, increase the number of shards you shoot by one, to a maximum of three shards for 3 actions. You choose the target for each shard individually. If you shoot more than one shard at the same target, combine the damage before applying bonuses or penalties to damage, resistances, weaknesses, and so forth.<hr><b>Heightened (+2)</b> You fire one additional shard with each action you spend.",
-      "ru": "<b>Традиции</b> мистическая, оккультная<br>\n<b>Наследие</b> наследие древнего рода<br>\n<b>Божества</b> Gravelady's Guard, Лортакт, Нефис <br>\n<b>Сотворение</b> от [one-action] до [three-actions] <br>\n<b>Дистанция</b> 120 футов; <b>Цели</b> 1 существо.\n\nВы выпускаете в существо, которое можете видеть, осколок застывшей магии. Он автоматически попадает и наносит 1d4 + 1 урона силой. За каждое дополнительное использованное при Сотворении заклинания действие увеличьте количество осколков на 1, вплоть до максимума в 3 осколка за 3 действия. Цель каждого вы выбираете отдельно. Если вы выпустили в одну цель несколько осколков, сложите их урон до применения бонусов или штрафов к урону, устойчивостей, уязвимостей и так далее.\n\n<b>Повышенное (+2)</b> за каждое потраченное действие вы выпускаете по одному дополнительному осколку."
+      "en": "You fire a shard of solidified magic toward a creature that you can see. It automatically hits and deals 1d4+1 force damage. For each additional action you use when Casting the Spell, increase the number of shards you shoot by one, to a maximum of three shards for 3 actions. You choose the target for each shard individually. If you shoot more than one shard at the same target, combine the damage before applying bonuses or penalties to damage, resistances, weaknesses, and so forth.",
+      "ru": "Вы выпускаете в существо, которое можете видеть, осколок застывшей магии. Он автоматически попадает и наносит 1d4 + 1 урона силой. За каждое дополнительное использованное при Сотворении заклинания действие увеличьте количество осколков на 1, вплоть до максимума в 3 осколка за 3 действия. Цель каждого вы выбираете отдельно. Если вы выпустили в одну цель несколько осколков, сложите их урон до применения бонусов или штрафов к урону, устойчивостей, уязвимостей и так далее."
     },
     "origin": "spell",
-    "origin_value": "",
+    "origin_value": "arcane,occult",
     "origin_values": [
       "concentrate",
       "force",
@@ -653,18 +727,18 @@
     "price": { "a": 1 },
     "info": {
       "level": 1,
-      "range": "",
+      "range": "120,f",
       "defense": "",
       "duration": "",
       "enhancements": [
         {
           "name": {
-            "en": "",
-            "ru": ""
+            "en": "Heightened (+2)",
+            "ru": "Повышенное (+2)"
           },
           "description": {
-            "en": "",
-            "ru": ""
+            "en": "You fire one additional shard with each action you spend.",
+            "ru": "За каждое потраченное действие вы выпускаете по одному дополнительному осколку."
           }
         }
       ]
@@ -678,33 +752,20 @@
       "ru": "Плавное падение"
     },
     "description": {
-      "en": "<b>Traditions</b> <u>arcane</u>, <u>primal</u><br><b>Deities</b> Adanye, Andoletta, Ma'at, Ma’at, Malthus, Ylimancha <br><b>Patron Theme</b> Whisper of Wings <br>**Trigger** A creature within range is falling<br><b>Range</b> 60 feet; <b>Targets</b> 1 falling creature<br><b>Duration</b> 1 minute<hr>You raise a magical updraft to arrest a fall. The target's fall slows to 60 feet per round, and the portion of the fall during the spell's duration doesn't count when calculating falling damage. If the target reaches the ground while the spell is in effect, it takes no damage from the fall. The spell ends as soon as the target lands.",
-      "ru": "<b>Традиции</b> мистическая, первобытная<br>\n<b>Божества</b> Adanye, Андолетта, Ma'at, Ma’at, Мальтус, Илиманча <br>\n<b>Покровитель</b> шёпот крыльев <br>\n<b>Сотворение</b> [reaction]; **Условие** существо в пределах дистанции падает<br>\n<b>Дистанция</b> 60 футов; <b>Цели</b> 1 падающее существо<br>\n<b>Длительность</b> 1 минута.\n\nВы заставляете восходящий воздушный поток замедлить падение. Падение существа замедляется до 60 футов за раунд. Часть падения во время длительности заклинания не считается при определении урона от падения. Если цель достигнет земли, пока действует заклинание, она не получит урона от падения. Заклинание прекращается сразу же, как только цель приземлилась."
+      "en": "**Trigger** A creature within range is falling.\n\nYou raise a magical updraft to arrest a fall. The target's fall slows to 60 feet per round, and the portion of the fall during the spell's duration doesn't count when calculating falling damage. If the target reaches the ground while the spell is in effect, it takes no damage from the fall. The spell ends as soon as the target lands.",
+      "ru": "**Условие** существо в пределах дистанции падает.\n\nВы заставляете восходящий воздушный поток замедлить падение. Падение существа замедляется до 60 футов за раунд. Часть падения во время длительности заклинания не считается при определении урона от падения. Если цель достигнет земли, пока действует заклинание, она не получит урона от падения. Заклинание прекращается сразу же, как только цель приземлилась."
     },
     "origin": "spell",
-    "origin_value": "",
+    "origin_value": "arcane,primal",
     "origin_values": [
       "air",
       "concentrate"
     ],
-    "price": { "a": 1 },
+    "price": { "r": 1 },
     "info": {
       "level": 1,
-      "range": "",
-      "defense": "",
-      "duration": "",
-      "enhancements": [
-        {
-          "name": {
-            "en": "",
-            "ru": ""
-          },
-          "description": {
-            "en": "",
-            "ru": ""
-          }
-        }
-      ]
+      "range": "60,f",
+      "duration": "1,m"
     }
   },
   {
@@ -715,31 +776,60 @@
       "ru": "Гоблинская оспа"
     },
     "description": {
-      "en": "<b>Traditions</b> <u>arcane</u>, <u>primal</u><br><b>Deities</b> Apollyon, Ghlaunder, Isph-Aun-Vuln, Kzininn, Urgathoa, Xsistaid <br><b>Range</b> touch; <b>Targets</b> 1 creature<br><b>Defense</b> Fortitude<hr>Your touch afflicts the target with goblin pox, an irritating allergenic rash. The target must attempt a Fortitude save. <br><b>Critical Success</b> The target is unaffected.\n\n<b>Success</b> The target is sickened 1.\n\n<b>Failure</b> The target is afflicted with goblin pox at stage 1.\n\n<b>Critical Failure</b> The target is afflicted with goblin pox at stage 2. <br><b>Goblin Pox</b> (disease) Level 1; Creatures that have the goblin trait and goblin dogs are immune; <b>Stage 1</b> sickened 1 (1 round); <b>Stage 2</b> sickened 1 and slowed 1 (1 round); <b>Stage 3</b> sickened 1 and the creature can't reduce its sickened value below 1 (1 day)",
-      "ru": "<b>Традиции</b> мистическая, первобытная<br>\n<b>Божества</b> Аполлион, Глаундер, Isph-Aun-Vuln, Kzininn, Ургатоа, Ксистайд <br>\n<b>Сотворение</b> [two-actions] <br>\n<b>Дистанция</b> касание; <b>Цели</b> 1 существо<br>\n<b>Защита</b> Стойкость.\n\nВаше прикосновение заражает цель гоблинской оспой, она покрывается зудящей сыпью. Цель проходит испытание Стойкости. \n<br>\n<b>Критический успех</b> цель избегает эффекта.\n<br>\n<b>Успех</b> цель получает тошноту 1.\n<br>\n<b>Провал</b> цель заражается гоблинской оспой на стадии 1.\n<br>\n<b>Критический провал</b> цель заражается гоблинской оспой на стадии 2.\n<br>\n<b>Гоблинская оспа</b> (болезнь). <b>Уровень</b> 1. Существа с дескриптором «гоблин» и гоблиновы собаки невосприимчивы. <b>Стадия 1</b> тошнота 1 (1 раунд). <b>Стадия 2</b> замедление 1 и тошнота 1 (1 раунд). <b>Стадия 3</b> тошнота 1 и существо не может снизить значение тошноты ниже 1 (1 день)."
+      "en": "Your touch afflicts the target with goblin pox, an irritating allergenic rash. The target must attempt a Fortitude save.",
+      "ru": "Ваше прикосновение заражает цель гоблинской оспой, она покрывается зудящей сыпью. Цель проходит испытание Стойкости."
     },
     "origin": "spell",
-    "origin_value": "",
+    "origin_value": "arcane,primal",
     "origin_values": [
       "concentrate",
       "disease",
       "manipulate"
     ],
-    "price": { "a": 1 },
+    "price": { "a": 2 },
     "info": {
       "level": 1,
-      "range": "",
-      "defense": "",
-      "duration": "",
+      "range": "touch",
+      "defense": "fortitude",
       "enhancements": [
         {
           "name": {
-            "en": "",
-            "ru": ""
+            "en": "Critical Success",
+            "ru": "Критический успех"
           },
           "description": {
-            "en": "",
-            "ru": ""
+            "en": "The target is unaffected.",
+            "ru": "Цель избегает эффекта."
+          }
+        },
+        {
+          "name": {
+            "en": "Success",
+            "ru": "Успех"
+          },
+          "description": {
+            "en": "The target is sickened 1.",
+            "ru": "Цель получает тошноту 1."
+          }
+        },
+        {
+          "name": {
+            "en": "Failure",
+            "ru": "Провал"
+          },
+          "description": {
+            "en": "The target is afflicted with goblin pox at stage 1 - sickened 1 (1 round).",
+            "ru": "Цель заражается гоблинской оспой на стадии 1 - тошнота 1 (1 раунд)."
+          }
+        },
+        {
+          "name": {
+            "en": "Critical Failure",
+            "ru": "Критический провал"
+          },
+          "description": {
+            "en": "The target is afflicted with goblin pox at stage 2 - sickened 1 and slowed 1 (1 round).",
+            "ru": "Цель заражается гоблинской оспой на стадии 2 - замедление 1 и тошнота 1 (1 раунд)."
           }
         }
       ]
@@ -753,33 +843,20 @@
       "ru": "Масло"
     },
     "description": {
-      "en": "<b>Traditions</b> <u>arcane</u>, <u>primal</u><br><b>Catalysts</b> Waterproofing Wax<br><b>Deities</b> Cong, Lurlup, Picoperi, The Perplexing Jest, Trelmarixian <br><b>Range</b> 30 feet; <b>Area</b> 4 contiguous 5-foot squares or; <b>Targets</b> 1 object of 1 Bulk or less<br><b>Duration</b> 1 minute<hr>You conjure grease, choosing an area or target. <ul><li><b>Area</b> All solid ground in the area is covered with grease. Each creature standing on the greasy surface must succeed at a Reflex save or an Acrobatics check against your spell DC or fall prone. Creatures using an action to move onto the greasy surface during the spell's duration must attempt either a Reflex save or an Acrobatics check to Balance. A creature that Steps or Crawls doesn't have to attempt a check or save.</li><li><b>Target</b> If you Cast the Spell on an unattended object, anyone trying to pick up the object must succeed at an Acrobatics check or Reflex save against your spell DC to do so. If you target an attended object, the creature that has the object must attempt an Acrobatics check or Reflex save. On a failure, the holder or wielder takes a –2 circumstance penalty to all checks that involve using the object; on a critical failure, the holder or wielder releases the item. The object lands in an adjacent square of the GM's choice. If you Cast this Spell on a worn object, the wearer gains a +2 circumstance bonus to Fortitude saves against attempts to grapple them.</li></ul>",
-      "ru": "<b>Традиции</b> мистическая, первобытная<br>\n<b>Божества</b> Конг, Лурлуп, Picoperi, The Perplexing Jest, Трелмариксиан <br>\n<b>Сотворение</b> [two-actions] <br>\n<b>Дистанция</b> 30 футов; <b>Область</b> 4 последовательные 5-футовые клетки или <b>Цели</b> один объект весом не более 1.\n\n<b>Длительность</b> 1 минута.\n\nВы создаёте скользкое масло. Эффект заклинания зависит от того, применяете ли вы его на цель или на область.\n<ul>\n<li><b>Область</b> вся твёрдая поверхность в области покрывается скользким маслом. Все существа, стоящие на скользкой поверхности, должны пройти испытание Реакции или проверку Акробатики против вашей СЛ заклинаний и при провале распластываются. Если существо использует действие, чтобы переместиться на скользкую поверхность, пока длится заклинание, оно должно пройти либо испытание Реакции, либо проверку Акробатики для Удержания равновесия. При Шаге или Ползании существу не нужно совершать проверку или испытание. </li>\n<li><b>Цель</b> если вы сотворили заклинание на бесхозный объект, то любой, кто попытается его поднять, должен для этого пройти испытание Реакции или проверку Акробатики против вашей СЛ заклинаний. Если же объект в распоряжении существа, оно должно пройти испытание Реакции или проверку Акробатики. При провале существо, держащее или использующее объект, получает ситуативный штраф -2 ко всем проверкам с его применением; при критическом провале существо выпускает объект из рук, он падает в соседней клетке по выбору ведущего. Если вы сотворили это заклинание на объект, который носят, его носитель получает ситуативный бонус +2 к испытаниям Стойкости против попыток захвата. </li>\n</ul>"
+      "en": "4 contiguous 5-foot squares or 1 object of 1 Bulk or less.\n\nAll solid ground in the area is covered with grease. Each creature standing on the greasy surface must succeed at a Reflex save or an Acrobatics check against your spell DC or fall prone. Creatures using an action to move onto the greasy surface during the spell's duration must attempt either a Reflex save or an Acrobatics check to Balance. A creature that Steps or Crawls doesn't have to attempt a check or save.\n\n**Target** If you Cast the Spell on an unattended object, anyone trying to pick up the object must succeed at an Acrobatics check or Reflex save against your spell DC to do so. If you target an attended object, the creature that has the object must attempt an Acrobatics check or Reflex save. On a failure, the holder or wielder takes a –2 circumstance penalty to all checks that involve using the object; on a critical failure, the holder or wielder releases the item. The object lands in an adjacent square of the GM's choice. If you Cast this Spell on a worn object, the wearer gains a +2 circumstance bonus to Fortitude saves against attempts to grapple them.",
+      "ru": "4 последовательные 5-футовые клетки или один объект весом не более 1.\n\n**Область** вся твёрдая поверхность в области покрывается скользким маслом. Все существа, стоящие на скользкой поверхности, должны пройти испытание Реакции или проверку Акробатики против вашей СЛ заклинаний и при провале распластываются. Если существо использует действие, чтобы переместиться на скользкую поверхность, пока длится заклинание, оно должно пройти либо испытание Реакции, либо проверку Акробатики для Удержания равновесия. При Шаге или Ползании существу не нужно совершать проверку или испытание.\n\n**Цель** если вы сотворили заклинание на бесхозный объект, то любой, кто попытается его поднять, должен для этого пройти испытание Реакции или проверку Акробатики против вашей СЛ заклинаний. Если же объект в распоряжении существа, оно должно пройти испытание Реакции или проверку Акробатики. При провале существо, держащее или использующее объект, получает ситуативный штраф -2 ко всем проверкам с его применением; при критическом провале существо выпускает объект из рук, он падает в соседней клетке по выбору ведущего. Если вы сотворили это заклинание на объект, который носят, его носитель получает ситуативный бонус +2 к испытаниям Стойкости против попыток захвата."
     },
     "origin": "spell",
-    "origin_value": "",
+    "origin_value": "arcane,primal",
     "origin_values": [
       "concentrate",
       "manipulate"
     ],
-    "price": { "a": 1 },
+    "price": { "a": 2 },
     "info": {
       "level": 1,
-      "range": "",
-      "defense": "",
-      "duration": "",
-      "enhancements": [
-        {
-          "name": {
-            "en": "",
-            "ru": ""
-          },
-          "description": {
-            "en": "",
-            "ru": ""
-          }
-        }
-      ]
+      "range": "30,f",
+      "duration": "1,m"
     }
   },
   {
@@ -790,31 +867,71 @@
       "ru": "Тёмные нити"
     },
     "description": {
-      "en": "<b>Traditions</b> <u>arcane</u>, <u>occult</u><br><b>Catalysts</b> Void Salts<br><b>Deities</b> Ah Pook, Aonaurious, Apep, Charon, Cthulhu, Dajermube, Fumeiyoshi, Iggeret, Neshen, Nhimbaloth, Nulgreth, Nyarlathotep (Haunter in the Dark), Orcus, Treerazer <br><b>Mystery</b> bones<br><b>Area</b> 30-foot line<br><b>Defense</b> Fortitude<hr>Tendrils of darkness curl out from your fingertips and race through the air. You deal 2d4 void damage and 1 persistent bleed damage to living creatures in the line. Each living creature in the line must attempt a Fortitude save.\n\n<b>Critical Success</b> The creature is unaffected.\n\n<b>Success</b> The creature takes half the void damage and no persistent bleed damage.\n\n<b>Failure</b> The creature takes full damage.\n\n<b>Critical Failure</b> The creature takes double void damage and double persistent bleed damage.<hr><b>Heightened (+1)</b> The void damage increases by 2d4, and the persistent bleed damage increases by 1.",
-      "ru": "<b>Традиции</b> мистическая, оккультная<br>\n<b>Божества</b> Ах Пук, Аонаурий, Apep, Харон, Ктулху, Даджермуб, Фумэйёши (владыка зависти), Иггерет, Нешен, Нимбалот, Нулгрет, Nyarlathotep (Haunter In The Dark)(haunter in the dark), Orcus, Древотёс <br>\n<b>Сотворение</b> [two-actions] <br>\n<b>Область</b> 30-футовая линия<br>\n<b>Защита</b> Стойкость.\n\nИз кончиков ваших пальцев вырываются тонкие нити чистой тьмы. Вы наносите всем живым существам на линии 2d4 урона пустотой и 1 продолжительный урон от кровотечения. Каждое живое существо на линии проходит испытание Стойкости.\n<br>\n<b>Критический успех</b> существо избегает эффекта.\n<br>\n<b>Успех</b> существо получает половину урона пустотой и избегает продолжительного урона от кровотечения.\n<br>\n<b>Провал</b> существо получает полный урон.\n<br>\n<b>Критический провал</b> существо получает двойной урон пустотой и двойной продолжительный урон от кровотечения.\n\n<b>Повышенное (+1)</b> урон пустотой увеличивается на 2d4, продолжительный урон от кровотечения увеличивается на 1."
+      "en": "Tendrils of darkness curl out from your fingertips and race through the air. You deal 2d4 void damage and 1 persistent bleed damage to living creatures in the line. Each living creature in the line must attempt a Fortitude save.",
+      "ru": "Из кончиков ваших пальцев вырываются тонкие нити чистой тьмы. Вы наносите всем живым существам на линии 2d4 урона пустотой и 1 продолжительный урон от кровотечения. Каждое живое существо на линии проходит испытание Стойкости."
     },
     "origin": "spell",
-    "origin_value": "",
+    "origin_value": "arcane,occult",
     "origin_values": [
       "concentrate",
       "manipulate",
       "void"
     ],
-    "price": { "a": 1 },
+    "price": { "a": 2 },
     "info": {
       "level": 1,
-      "range": "",
-      "defense": "",
+      "area": "line,30",
+      "defense": "fortitude",
       "duration": "",
       "enhancements": [
         {
           "name": {
-            "en": "",
-            "ru": ""
+            "en": "Critical Success",
+            "ru": "Критический успех"
           },
           "description": {
-            "en": "",
-            "ru": ""
+            "en": "The creature is unaffected.",
+            "ru": "Существо избегает эффекта."
+          }
+        },
+        {
+          "name": {
+            "en": "Success",
+            "ru": "Успех"
+          },
+          "description": {
+            "en": "The creature takes half the void damage and no persistent bleed damage.",
+            "ru": "Существо получает половину урона пустотой и избегает продолжительного урона от кровотечения."
+          }
+        },
+        {
+          "name": {
+            "en": "Failure",
+            "ru": "Провал"
+          },
+          "description": {
+            "en": "The creature takes full damage.",
+            "ru": "Существо получает полный урон."
+          }
+        },
+        {
+          "name": {
+            "en": "Critical Failure",
+            "ru": "Критический провал"
+          },
+          "description": {
+            "en": "The creature takes double void damage and double persistent bleed damage.",
+            "ru": "Существо получает двойной урон пустотой и двойной продолжительный урон от кровотечения."
+          }
+        },
+        {
+          "name": {
+            "en": "Heightened (+1)",
+            "ru": "Повышенное (+1)"
+          },
+          "description": {
+            "en": "The void damage increases by 2d4, and the persistent bleed damage increases by 1.",
+            "ru": "Урон пустотой увеличивается на 2d4, продолжительный урон от кровотечения увеличивается на 1."
           }
         }
       ]
@@ -828,31 +945,61 @@
       "ru": "Порыв ветра"
     },
     "description": {
-      "en": "<b>Traditions</b> <u>arcane</u>, <u>primal</u><br><b>Catalysts</b> Kirin Echo Chime<br><b>Deities</b> Aegirran, Breath of the Endless Sky, Gozreh, Hei Feng, Hshurha, Onos, Pazuzu, Seafarer's Hope, Sky Keepers, Umarik, Weight of the World, Xiquiripat <br><b>Patron Theme</b> Silence in Snow <br><b>Area</b> 60-foot line<br><b>Defense</b> Fortitude; <b>Duration</b> until the start of your next turn<hr>A violent wind issues forth from your palm, blowing from the point where you are when you Cast the Spell to the line's opposite end. The wind extinguishes small non-magical fires, disperses fog and mist, blows objects of light Bulk or less around, and pushes larger objects. Large or smaller creatures in the area must attempt a Fortitude save. Large or smaller creatures that later move into the gust must attempt the save on entering.\n\n<b>Critical Success</b> The creature is unaffected.\n\n<b>Success</b> The creature can't move against the wind.\n\n<b>Failure</b> The creature is knocked prone. If it was flying, it takes the effects of critical failure instead.\n\n<b>Critical Failure</b> The creature is pushed 30 feet in the wind's direction, knocked prone, and takes 2d6 bludgeoning damage.",
-      "ru": "<b>Традиции</b> мистическая, первобытная<br>\n<b>Божества</b> Эгирран, Дыхание бесконечного неба, Гозрей, Хэй Фэнь, Хшурха, Онос, Пазузу, Seafarer's Hope, Sky Keepers, Umarik, Тяжесть мира, Xiquiripat <br>\n<b>Покровитель</b> молчание снегов <br>\n<b>Сотворение</b> [two-actions] <br>\n<b>Область</b> 60-футовая линия<br>\n<b>Защита</b> Стойкость; <b>Длительность</b> до начала вашего следующего хода.\n\nИз вашей ладони вырывается резкий порыв ветра, который дует из точки, где вы находились при Сотворении заклинания, в направлении противоположного конца линии. Ветер гасит небольшое немагическое пламя, разгоняет лёгкий и плотный туман, сдувает прочь объекты лёгкого и меньшего веса и толкает более крупные объекты. Существа крупного и меньшего размера в области проходят испытание Стойкости. Существа крупного и меньшего размера, которые перемещаются в область позднее, также проходят испытание при входе.\n<br>\n<b>Критический успех</b> существо избегает эффекта.\n<br>\n<b>Успех</b> существо не может перемещаться против ветра.\n<br>\n<b>Провал</b> существо распластывается. Если оно летало, оно вместо этого получает эффекты критического провала.\n<br>\n<b>Критический провал</b> существо отталкивает на 30 футов в направлении ветра. Оно распластывается и получает 2d6 дробящего урона."
+      "en": "A violent wind issues forth from your palm, blowing from the point where you are when you Cast the Spell to the line's opposite end. The wind extinguishes small non-magical fires, disperses fog and mist, blows objects of light Bulk or less around, and pushes larger objects. Large or smaller creatures in the area must attempt a Fortitude save. Large or smaller creatures that later move into the gust must attempt the save on entering.",
+      "ru": "Из вашей ладони вырывается резкий порыв ветра, который дует из точки, где вы находились при Сотворении заклинания, в направлении противоположного конца линии. Ветер гасит небольшое немагическое пламя, разгоняет лёгкий и плотный туман, сдувает прочь объекты лёгкого и меньшего веса и толкает более крупные объекты. Существа крупного и меньшего размера в области проходят испытание Стойкости. Существа крупного и меньшего размера, которые перемещаются в область позднее, также проходят испытание при входе."
     },
     "origin": "spell",
-    "origin_value": "",
+    "origin_value": "arcane,primal",
     "origin_values": [
       "air",
       "concentrate",
       "manipulate"
     ],
-    "price": { "a": 1 },
+    "price": { "a": 2 },
     "info": {
       "level": 1,
-      "range": "",
-      "defense": "",
-      "duration": "",
+      "area": "line,60",
+      "defense": "fortitude",
+      "duration": "1,r",
       "enhancements": [
         {
           "name": {
-            "en": "",
-            "ru": ""
+            "en": "Critical Success",
+            "ru": "Критический успех"
           },
           "description": {
-            "en": "",
-            "ru": ""
+            "en": "The creature is unaffected.",
+            "ru": "Существо избегает эффекта."
+          }
+        },
+        {
+          "name": {
+            "en": "Success",
+            "ru": "Успех"
+          },
+          "description": {
+            "en": "The creature can't move against the wind.",
+            "ru": "Существо не может перемещаться против ветра."
+          }
+        },
+        {
+          "name": {
+            "en": "Failure",
+            "ru": "Провал"
+          },
+          "description": {
+            "en": "The creature is knocked prone. If it was flying, it takes the effects of critical failure instead.",
+            "ru": "Существо распластывается. Если оно летало, оно вместо этого получает эффекты критического провала."
+          }
+        },
+        {
+          "name": {
+            "en": "Critical Failure",
+            "ru": "Критический провал"
+          },
+          "description": {
+            "en": "The creature is pushed 30 feet in the wind's direction, knocked prone, and takes 2d6 bludgeoning damage.",
+            "ru": "Существо отталкивает на 30 футов в направлении ветра. Оно распластывается и получает 2d6 дробящего урона."
           }
         }
       ]
@@ -866,30 +1013,46 @@
       "ru": "Повреждение"
     },
     "description": {
-      "en": "<b>Traditions</b> <u>divine</u><br><b>Bloodline</b> Undead <br><b>Catalysts</b> Grave Token<br><b>Range</b> varies; <b>Targets</b> 1 living creature or 1 willing undead creature<hr>You channel void energy to harm the living or heal the undead. If the target is a living creature, you deal 1d8 void damage to it, and it gets a basic Fortitude save. If the target is a willing undead creature, you restore that amount of Hit Points. The number of actions you spend when Casting this Spell determines its targets, range, area, and other parameters.\n\n [one-action]  The spell has a range of touch.\n\n [two-actions] (concentrate) The spell has a range of 30 feet. If you're healing an undead creature, increase the Hit Points restored by 8.\n\n [three-actions]  (concentrate) You disperse void energy in a 30-foot emanation. This targets all living and undead creatures in the area.<hr><b>Heightened (+1)</b> The amount of healing or damage increases by 1d8, and the extra healing for the 2-action version increases by 8.",
-      "ru": "<b>Традиции</b> сакральная<br>\n<b>Наследие</b> загробное<br>\n<b>Сотворение</b> от [one-action] до [three-actions] <br>\n<b>Дистанция</b> варьируется; <b>Цели</b> 1 живое существо или 1 согласное существо-нежить.\n\nВы проводите энергию пустоты, которая наносит урон живым и исцеляет нежить. Если цель — живое существо, вы наносите ему 1d8 урона пустотой (обычное испытание Стойкости). Если цель — согласное существо-нежить, вы восстанавливаете ему такое же количество ПЗ. Количество потраченных на Сотворение заклинания действий определяет его цели, дистанцию, область и иные параметры.\n[one-action]: дистанция заклинания — касание.\n[two-actions](концентрация): дистанция заклинания — 30 футов. При исцелении нежити вы восстанавливаете ей на 8 ПЗ больше.\n[three-actions] (концентрация): вы излучаете энергию пустоты в области 30-футовой эманации. Цели заклинания — все живые существа и нежить в области.\n\n<b>Повышенное (+1)</b> урон или исцеление увеличивается на 1d8. При сотворении за 2 действия дополнительное исцеление увеличивается на 8."
+      "en": "You channel void energy to harm the living or heal the undead. If the target is a living creature, you deal 1d8 void damage to it, and it gets a basic Fortitude save. If the target is a willing undead creature, you restore that amount of Hit Points.",
+      "ru": "Вы проводите энергию пустоты, которая наносит урон живым и исцеляет нежить. Если цель — живое существо, вы наносите ему 1d8 урона пустотой (обычное испытание Стойкости). Если цель — согласное существо-нежить, вы восстанавливаете ему такое же количество ПЗ."
     },
     "origin": "spell",
-    "origin_value": "",
+    "origin_value": "divine",
     "origin_values": [
       "manipulate",
       "void"
     ],
-    "price": { "a": 1 },
     "info": {
       "level": 1,
-      "range": "",
-      "defense": "",
-      "duration": "",
       "enhancements": [
         {
-          "name": {
-            "en": "",
-            "ru": ""
-          },
+          "time": "1a",
           "description": {
-            "en": "",
-            "ru": ""
+            "en": "The spell has a range of touch.",
+            "ru": "Дистанция заклинания — касание."
+          }
+        },
+        {
+          "time": "2a",
+          "concentrate": true,
+          "description": {
+            "en": "The spell has a range of 30 feet. If you're healing an undead creature, increase the Hit Points restored by 8.",
+            "ru": "Дистанция заклинания — 30 футов. При исцелении нежити вы восстанавливаете ей на 8 ПЗ больше."
+          }
+        },
+        {
+          "time": "3a",
+          "concentrate": true,
+          "description": {
+            "en": "You disperse void energy in a 30-foot emanation. This targets all living and undead creatures in the area.",
+            "ru": "Вы излучаете энергию пустоты в области 30-футовой эманации. Цели заклинания — все живые существа и нежить в области."
+          }
+        },
+        {
+          "name": { "en": "Повышенное (+1)", "ru": "Heightened (+1)" },
+          "description": {
+            "en": "The amount of healing or damage increases by 1d8, and the extra healing for the 2-action version increases by 8.",
+            "ru": "Урон или исцеление увеличивается на 1d8. При сотворении за 2 действия дополнительное исцеление увеличивается на 8."
           }
         }
       ]
@@ -950,32 +1113,51 @@
       "ru": "Гидравлический толчок"
     },
     "description": {
-      "en": "<b>Traditions</b> <u>arcane</u>, <u>primal</u><br><b>Deities</b> Besmara, Bokrug, Dagon, Hanspur, Hataam, Kelizandri, Lysianassa, Ragadahn, Sobek, Wadjet, Waves of the Boundless Sea, Ytildos <br><b>Range</b> 60 feet; <b>Targets</b> 1 creature or unattended object<br><b>Defense</b> AC<hr>You call forth a powerful blast of pressurized water that bludgeons the target and knocks it back. Make a ranged spell attack roll.\n\n<b>Critical Success</b> The target takes 6d6 bludgeoning damage and is knocked back 10 feet.\n\n<b>Success</b> The target takes 3d6 bludgeoning damage and is knocked back 5 feet.<hr><b>Heightened (+1)</b> The bludgeoning damage increases by 2d6.",
-      "ru": "<b>Традиции</b> мистическая, первобытная<br>\n<b>Божества</b> Бесмара, Бокруг, Дагон, Ханспур, Хатаам, Келизандри, Лисианасса, Рагадан, Sobek, Wadjet, Волны безграничного моря, Ytildos <br>\n<b>Сотворение</b> [two-actions] <br>\n<b>Дистанция</b> 60 футов; <b>Цели</b> 1 существо или бесхозный объект<br>\n<b>Защита</b> КБ.\n\nВы создаёте мощную струю воды, которая с силой ударяет в цель и отталкивает её. Совершите проверку дистанционной атаки заклинанием.\n<br>\n<b>Критический успех</b> цель получает 6d6 дробящего урона и отталкивается назад на 10 футов.\n<br>\n<b>Успех</b> цель получает 3d6 дробящего урона и отталкивается назад на 5 футов.\n\n<b>Повышенное (+1)</b> дробящий урон увеличивается на 2d6."
+      "en": "You call forth a powerful blast of pressurized water that bludgeons the target and knocks it back. Make a ranged spell attack roll.",
+      "ru": "Вы создаёте мощную струю воды, которая с силой ударяет в цель и отталкивает её. Совершите проверку дистанционной атаки заклинанием."
     },
     "origin": "spell",
-    "origin_value": "",
+    "origin_value": "arcane,primal",
     "origin_values": [
       "attack",
       "concentrate",
       "manipulate",
       "water"
     ],
-    "price": { "a": 1 },
+    "price": { "a": 2 },
     "info": {
       "level": 1,
-      "range": "",
-      "defense": "",
-      "duration": "",
+      "range": "60,f",
+      "defense": "ac",
       "enhancements": [
         {
           "name": {
-            "en": "",
-            "ru": ""
+            "en": "Critical Success",
+            "ru": "Критический успех"
           },
           "description": {
-            "en": "",
-            "ru": ""
+            "en": "The target takes 6d6 bludgeoning damage and is knocked back 10 feet.",
+            "ru": "Цель получает 6d6 дробящего урона и отталкивается назад на 10 футов."
+          }
+        },
+        {
+          "name": {
+            "en": "Success",
+            "ru": "Успех"
+          },
+          "description": {
+            "en": "The target takes 3d6 bludgeoning damage and is knocked back 5 feet.",
+            "ru": "Цель получает 3d6 дробящего урона и отталкивается назад на 5 футов."
+          }
+        },
+        {
+          "name": {
+            "en": "Heightened (+1)",
+            "ru": "Повышенное (+1)"
+          },
+          "description": {
+            "en": "The bludgeoning damage increases by 2d6.",
+            "ru": "Дробящий урон увеличивается на 2d6."
           }
         }
       ]
