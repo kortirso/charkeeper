@@ -1,5 +1,17 @@
 es:
   changelogs:
+    '4023':
+      pf:
+        title1: Pet Feats
+        title2: Experience Calculation
+        title3: Secondary Speeds
+        title4: Hero Points
+        title5: Health
+        desc1: Added the ability to manage pet/familiar feats with automatic bonuses
+        desc2: Added the ability to take character experience into account
+        desc3: Added the display of secondary speeds with the ability to add bonuses to them
+        desc4: Added the ability to take Hero Points into account
+        desc5: Added automatic calculation of maximum health
     '4021':
       dnd:
         title1: Homebrews

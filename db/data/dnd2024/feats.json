@@ -1955,7 +1955,7 @@
     "bonus_eval_variables": {},
     "description_eval_variables": {
       "limit": "1",
-      "value": "classes['palading'] * 3"
+      "value": "classes['paladin'] * 3"
     }
   },
   {
