@@ -24,7 +24,7 @@ export const Pathfinder2Rest = (props) => {
   const [locale] = useAppLocale();
 
   const performRest = async () => {
-    const result = await createCharacterRestRequest(appState.accessToken, character().provider, character().id, { constitution: character().abilities.con });
+    const result = await createCharacterRestRequest(appState.accessToken, character().provider, character().id, { constitution: character().abilities.con, health_limit: character().health.max });
     performResponse(
       result,
       function() { // eslint-disable-line solid/reactivity
