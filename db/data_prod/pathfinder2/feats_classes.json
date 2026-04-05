@@ -1,0 +1,30 @@
+[
+  {
+    "slug": "weapon_specialization",
+    "kind": "static",
+    "title": {
+      "en": "Weapon Specialization",
+      "ru": "Привычное оружие"
+    },
+    "description": {
+      "en": "You deal 2 additional damage with weapons and unarmed attacks in which you're an expert. This damage increases to 3 if you're a master, and 4 if you're legendary.",
+      "ru": "Ваши безоружные атаки и атаки оружием, в которых вы умелы на экспертном уровне, дополнительно наносят 2 урона. Дополнительный урон увеличивается до 3, если вы мастер, и до 4 при легендарном уровне умения."
+    },
+    "origin": "class",
+    "origin_values": []
+  },
+  {
+    "slug": "greater_weapon_specialization",
+    "kind": "static",
+    "title": {
+      "en": "Greater Weapon Specialization",
+      "ru": "Улучшенное привычное оружие"
+    },
+    "description": {
+      "en": "You deal 4 additional damage with weapons and unarmed attacks in which you're an expert. This damage increases to 6 if you're a master, and 8 if you're legendary",
+      "ru": "Ваши безоружные атаки и атаки оружием, в которых вы умелы на экспертном уровне, дополнительно наносят 4 урона. Дополнительный урон увеличивается до 6, если вы мастер, и до 8 при легендарном уровне умения."
+    },
+    "origin": "class",
+    "origin_values": []
+  }
+]

@@ -27,6 +27,7 @@ module Pathfinder2Context
         end
 
         if level == 13
+          @result[:selected_features] = { 'weapon' => 'weapon_specialization' }
           @result[:armor_skills] =
             character.data.armor_skills.merge({ 'unarmored' => 2, 'light' => 2, 'medium' => 2 }, &merge_resolver)
         end

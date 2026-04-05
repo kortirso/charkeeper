@@ -13,6 +13,7 @@ module Pathfinder2Context
 
         if level == 7
           @result[:perception] = [character.data.perception, 3].max
+          @result[:selected_features] = { 'weapon' => 'weapon_specialization' }
         end
 
         if level == 9
@@ -34,6 +35,7 @@ module Pathfinder2Context
 
         if level == 15
           @result[:saving_throws] = character.data.saving_throws.merge({ 'reflex' => 3 }, &merge_resolver)
+          @result[:selected_features] = { 'weapon' => 'greater_weapon_specialization' }
         end
 
         if level == 17

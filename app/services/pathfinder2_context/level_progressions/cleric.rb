@@ -48,6 +48,7 @@ module Pathfinder2Context
 
         if level == 13
           @result[:armor_skills] = character.data.armor_skills.merge({ 'unarmored' => 2 }, &merge_resolver)
+          @result[:selected_features] = { 'weapon' => 'weapon_specialization' }
         end
 
         if level == 15 && character.data.subclasses['cleric'] == 'cloistered_cleric'

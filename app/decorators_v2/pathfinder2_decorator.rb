@@ -180,7 +180,7 @@ class Pathfinder2Decorator < ApplicationDecoratorV2
     @result['speeds'] = speeds.transform_values { |value| value.zero? ? speed : value }.delete_if { |_, v| v.negative? }
   end
 
-  def unarmed_attack
+  def unarmed_attack # rubocop: disable Metrics/AbcSize
     attack_bonus = find_weapon_modifiers({}, {}, %w[attack unarmed_attacks])
     damage_bonus = find_weapon_modifiers({}, {}, %w[damage unarmed_damage])
     key_ability_bonus = find_key_ability_bonus('melee', ['finesse'])
@@ -189,7 +189,7 @@ class Pathfinder2Decorator < ApplicationDecoratorV2
       name: translate({ en: 'Unarmed', ru: 'Безоружная' }),
       attack_bonus: key_ability_bonus + proficiency_bonus(weapon_skills['unarmed']) + attack_bonus,
       damage: '1d4',
-      damage_bonus: modified_abilities['str'] + damage_bonus,
+      damage_bonus: modified_abilities['str'] + damage_bonus + damage_bonuses['unarmed'].to_i,
       tags: ['bludge'].index_with { |type| I18n.t("tags.pathfinder2.weapon.title.#{type}") }.merge(
         { 'agile' => nil, 'nonlethal' => nil }.to_h do |key, value|
           [key, I18n.t("tags.pathfinder2.weapon.title.#{key}", value: value)]
@@ -243,7 +243,7 @@ class Pathfinder2Decorator < ApplicationDecoratorV2
     attack_values(item, key_ability_bonus, tooltips, attack_bonus)
       .merge({
         distance: item[:items_info]['dist'],
-        damage_bonus: (tooltips.key?('propulsive') ? (modified_abilities['str'].positive? ? (modified_abilities['str'] / 2) : modified_abilities['str']) : 0) + damage_bonus # rubocop: disable Style/NestedTernaryOperator, Layout/LineLength
+        damage_bonus: (tooltips.key?('propulsive') ? (modified_abilities['str'].positive? ? (modified_abilities['str'] / 2) : modified_abilities['str']) : 0) + damage_bonus + damage_bonuses[weapon_skills[item[:items_info]['weapon_skill']]].to_i # rubocop: disable Style/NestedTernaryOperator, Layout/LineLength
       })
   end
 
@@ -593,5 +593,27 @@ class Pathfinder2Decorator < ApplicationDecoratorV2
     return if subclasses[main_class].blank?
 
     translate(::Pathfinder2::Character.subclass_info(main_class, subclasses[main_class])['name'])
+  end
+
+  def damage_bonuses # rubocop: disable Metrics/AbcSize, Metrics/PerceivedComplexity
+    return @damage_bonuses if defined?(@damage_bonuses)
+
+    multiplier =
+      if available_features_slugs.include?('greater_weapon_specialization')
+        2
+      elsif available_features_slugs.include?('weapon_specialization')
+        1
+      else
+        0
+      end
+    return {} if multiplier.zero?
+
+    @damage_bonuses =
+      {
+        'unarmed' => weapon_skills['unarmed'] <= 1 ? 0 : (multiplier * weapon_skills['unarmed']),
+        'simple' => weapon_skills['simple'] <= 1 ? 0 : (multiplier * weapon_skills['simple']),
+        'martial' => weapon_skills['martial'] <= 1 ? 0 : (multiplier * weapon_skills['martial']),
+        'advanced' => weapon_skills['advanced'] <= 1 ? 0 : (multiplier * weapon_skills['advanced'])
+      }
   end
 end
