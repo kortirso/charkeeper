@@ -52,6 +52,7 @@ class Pathfinder2Decorator < ApplicationDecoratorV2
     @result['no_body_armor'] = defense_gear[:armor].nil?
     @result['no_armor'] = defense_gear.values.all?(&:nil?)
     @result['max_dying'] = 4
+    @result['info'] = find_info
   end
 
   def apply_add_bonuses_to_abilities
@@ -576,5 +577,21 @@ class Pathfinder2Decorator < ApplicationDecoratorV2
       metadata: { formula: formula },
       severity: :info
     )
+  end
+
+  def find_info
+    {
+      'race' => translate(::Pathfinder2::Character.race_info(race)['name']),
+      'subrace' => translate(::Pathfinder2::Character.subrace_info(race, subrace)['name']),
+      'background' => translate(::Pathfinder2::Character.backgrounds.dig(background, 'name')),
+      'class' => translate(::Pathfinder2::Character.class_info(main_class)['name']),
+      'subclass' => find_subclass_name
+    }
+  end
+
+  def find_subclass_name
+    return if subclasses[main_class].blank?
+
+    translate(::Pathfinder2::Character.subclass_info(main_class, subclasses[main_class])['name'])
   end
 end

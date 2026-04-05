@@ -66,6 +66,7 @@ export * from './Content/Character/Pathfinder2/Spell';
 export * from './Content/Character/Pathfinder2/Rest';
 export * from './Content/Character/Pathfinder2/Bonuses';
 export * from './Content/Character/Pathfinder2/Companion';
+export * from './Content/Character/Pathfinder2/Info';
 export * from './Content/Character/Pathfinder2/Shared/Health';
 export * from './Content/Character/Pathfinder2/Shared/Senses';
 

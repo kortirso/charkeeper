@@ -4,7 +4,7 @@ import { createWindowSize } from '@solid-primitives/resize-observer';
 
 import {
   Pathfinder2Abilities, Pathfinder2Health, Pathfinder2Professions, Pathfinder2Static, Pathfinder2Skills, Pathfinder2Companion,
-  Pathfinder2SavingThrows, Pathfinder2Leveling, Pathfinder2Spells, Pathfinder2Rest, Pathfinder2Bonuses
+  Pathfinder2SavingThrows, Pathfinder2Leveling, Pathfinder2Spells, Pathfinder2Rest, Pathfinder2Bonuses, Pathfinder2Info
 } from '../../../pages';
 import {
   CharacterNavigation, Equipment, Notes, Avatar, ContentWrapper, Conditions, Gold, createDiceRoll, Combat, Feats
@@ -70,11 +70,14 @@ export const Pathfinder2 = (props) => {
         <div class="p-2 pb-16 flex-1 overflow-y-auto">
           <Switch>
             <Match when={activeMobileTab() === 'abilities'}>
-              <Pathfinder2Abilities
-                character={character()}
-                openDiceRoll={openDiceRoll}
-                onReplaceCharacter={props.onReplaceCharacter}
-              />
+              <Pathfinder2Info character={character()} onReplaceCharacter={props.onReplaceCharacter} />
+              <div class="mt-4">
+                <Pathfinder2Abilities
+                  character={character()}
+                  openDiceRoll={openDiceRoll}
+                  onReplaceCharacter={props.onReplaceCharacter}
+                />
+              </div>
               <div class="mt-4">
                 <Pathfinder2SavingThrows
                   character={character()}
@@ -178,11 +181,14 @@ export const Pathfinder2 = (props) => {
 
     return (
       <>
-        <Pathfinder2Abilities
-          character={character()}
-          openDiceRoll={openDiceRoll}
-          onReplaceCharacter={props.onReplaceCharacter}
-        />
+        <Pathfinder2Info character={character()} onReplaceCharacter={props.onReplaceCharacter} />
+        <div class="mt-4">
+          <Pathfinder2Abilities
+            character={character()}
+            openDiceRoll={openDiceRoll}
+            onReplaceCharacter={props.onReplaceCharacter}
+          />
+        </div>
         <div class="mt-4">
           <Pathfinder2SavingThrows
             character={character()}
