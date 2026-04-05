@@ -12,5 +12,89 @@
     },
     "origin": "static_subclass",
     "origin_value": "faith_flamekeeper"
+  },
+  {
+    "slug": "familiar_of_stalking_night",
+    "kind": "static",
+    "title": {
+      "en": "Familiar of Stalking Night",
+      "ru": "Фамильяр преследующей ночи"
+    },
+    "description": {
+      "en": "Your familiar is dark of fur or feather, and light seems to disappear into it. When you Cast or Sustain a hex, and your familiar is adjacent to an enemy to which it's concealed, hidden, or undetected, the enemy becomes frightened 1.",
+      "ru": "Шерсть или перья вашего фамильяра настолько черны, что будто бы поглощают свет. Когда вы сотворяете наговор или применяете для него Поддержание и ваш фамильяр находится рядом с врагом, для которого он плохо видим, спрятан или необнаружен, этот враг получает испуг 1."
+    },
+    "origin": "static_subclass",
+    "origin_value": "starless_shadow"
+  },
+  {
+    "slug": "familiar_of_ongoing_misery",
+    "kind": "static",
+    "title": {
+      "en": "Familiar of Ongoing Misery",
+      "ru": "Фамильяр продолжительных страданий"
+    },
+    "description": {
+      "en": "Your familiar seems hostile to all creatures other than you, hissing at them if they get too near. When you Cast or Sustain a hex, your familiar can curse a creature within 15 feet of it, prolonging the duration of any negative conditions affecting it by 1 round. This is a curse effect. This prolongs only conditions with a timed duration (such as *1 round* or *until the end of your next turn*) and doesn't prevent conditions from being removed by other means.",
+      "ru": "Ваш фамильяр ведёт себя враждебно по отношению к прочим существам, кроме вас, и шипит на тех, кто оказывается слишком близко. Когда вы сотворяете наговор или применяете для него Поддержание, ваш фамильяр может проклясть существо в пределах 15 футов от себя, продлевая для него длительность всех негативных состояний на 1 раунд. Это эффект с дескриптором «проклятие». Таким образом можно продлить лишь состояния с указанной длительностью (например, *1 раунд* или *до конца вашего следующего хода*). Эффект не мешает избавиться от состояний иными способами."
+    },
+    "origin": "static_subclass",
+    "origin_value": "the_resentment"
+  },
+  {
+    "slug": "familiar_of_freezing_rime",
+    "kind": "static",
+    "title": {
+      "en": "Familiar of Freezing Rime",
+      "ru": "Фамильяр ледяного инея"
+    },
+    "description": {
+      "en": "Your familiar is cold to the touch, its breath always visible. When you Cast or Sustain a hex, you can cause ice to form in a 5-foot burst centered on a square of your familiar's space. Those squares are difficult terrain until the start of your next turn.",
+      "ru": "Ваш фамильяр холоден на ощупь, а его дыхание всегда заметно в воздухе. Когда вы сотворяете наговор или применяете для него Поддержание, вы можете создать лёд в 5-футовом взрыве с центром в клетке пространства вашего фамильяра. Эти клетки считаются пересечённой местностью до начала вашего следующего хода."
+    },
+    "origin": "static_subclass",
+    "origin_value": "silence_in_snow"
+  },
+  {
+    "slug": "familiar_of_flowing_script",
+    "kind": "static",
+    "title": {
+      "en": "Familiar of Flowing Script",
+      "ru": "Фамильяр извергающегося писания"
+    },
+    "description": {
+      "en": "Your familiar is covered in a pattern that looks similar to letters in an unknown language, one that seems to draw attention even as it eludes understanding. When you Cast or Sustain a hex, the letters begin to rapidly change, causing a distraction. Until the start of your next turn, your familiar can provide flanking for you and your allies as though it were able to attack and had a reach of 5 feet; this is a visual effect.",
+      "ru": "Ваш фамильяр покрыт узором, напоминающим буквы неведомого языка, который привлекает внимание, даже несмотря на непонятность. Когда вы сотворяете наговор или применяете для него Поддержание, эти символы начинают стремительно меняться, отвлекая внимание. До начала вашего следующего хода ваш фамильяр может помогать вам и вашим союзникам брать врага в тиски, как если бы мог атаковать и имел зону досягаемости 5 футов. Это эффект с дескриптором «зрение»."
+    },
+    "origin": "static_subclass",
+    "origin_value": "the_inscribed_one"
+  },
+  {
+    "slug": "familiar_of_keen_senses",
+    "kind": "static",
+    "title": {
+      "en": "Familiar of Keen Senses",
+      "ru": "Фамильяр острого восприятия"
+    },
+    "description": {
+      "en": "Your familiar has glinting eyes, twitching ears, or some other sign of a beast's powerful senses. When you Cast or Sustain a hex, your familiar gains your choice of an imprecise scent, tremorsense, or wavesense, with a range of 60 feet until the start of your next turn, and it can immediately Point Out as a free action.",
+      "ru": "У вашего фамильяра ясные глаза, вздрагивающие уши или любой другой признак чувствительного звериного восприятия. Когда вы сотворяете наговор или применяете для него Поддержание, фамильяр по вашему выбору получает нюх (вспомогательный), виброчувствительность или волночувствительность с дистанцией 60 футов до начала вашего следующего хода, а также может немедленно применить Указание в качестве свободного действия."
+    },
+    "origin": "static_subclass",
+    "origin_value": "wilding_steward"
+  },
+  {
+    "slug": "familiar_of_balanced_luck",
+    "kind": "static",
+    "title": {
+      "en": "Familiar of Balanced Luck",
+      "ru": "Фамильяр сбалансированной удачи"
+    },
+    "description": {
+      "en": "Your familiar has a spot on its body that looks like a good luck charm or a bad omen, depending on the angle. When you Cast or Sustain a hex, one creature within 15 feet of your familiar gets your choice of either a +1 status bonus to its AC or a -1 status penalty to its AC until the start of your next turn.",
+      "ru": "На теле вашего фамильяра есть отметка, которая в зависимости от ракурса выглядит так, будто приносит либо удачу, либо неудачу. Когда вы сотворяете наговор или применяете для него Поддержание, одно существо в пределах 15 футов от вашего фамильяра по вашему выбору может получить либо бонус состояния +1 к КБ, либо штраф состояния -1 к КБ до начала вашего следующего хода."
+    },
+    "origin": "static_subclass",
+    "origin_value": "spinner_of_threads"
   }
 ]
