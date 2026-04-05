@@ -12,6 +12,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Modified
 - hp calculations for PF2 characters
+- rest options for PF2 characters
 
 ## [0.4.21] - 2026-04-03
 ### Added

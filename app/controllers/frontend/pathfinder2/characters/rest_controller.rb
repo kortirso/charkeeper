@@ -9,7 +9,7 @@ module Frontend
         before_action :find_character
 
         def create
-          case perform_rest.call(character: @character, constitution: params[:constitution])
+          case perform_rest.call(character: @character, constitution: params[:constitution], health_limit: params[:health_limit])
           in { errors: errors, errors_list: errors_list } then unprocessable_response(errors, errors_list)
           else only_head_response
           end
