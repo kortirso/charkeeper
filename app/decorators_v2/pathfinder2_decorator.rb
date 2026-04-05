@@ -81,7 +81,8 @@ class Pathfinder2Decorator < ApplicationDecoratorV2
       spell_attack.to_i.positive? ? modified_abilities[main_ability] + proficiency_bonus(spell_attack.to_i) : 0
     @result['spell_dc'] = spell_dc.to_i.positive? ? 10 + modified_abilities[main_ability] + proficiency_bonus(spell_dc.to_i) : 0
     @result['can_have_pet'] = available_features_slugs.include?('pet')
-    @result['can_have_familiar'] = available_features_slugs.include?('familiar')
+    @result['can_have_familiar'] =
+      available_features_slugs.include?('familiar') || available_features_slugs.include?('leshy_familiar')
   end
 
   def apply_set_modifiers # rubocop: disable Metrics/AbcSize, Metrics/PerceivedComplexity, Metrics/CyclomaticComplexity
