@@ -22,7 +22,6 @@ const TRANSLATION = {
     showPassive: 'Show passive',
     expandAll: 'Expand all',
     dc20Range: 'Range',
-    enhancements: 'Enhancements',
     repeatable: 'Repeatable',
     prices: {
       ap: 'AP',
@@ -40,7 +39,6 @@ const TRANSLATION = {
     showPassive: 'Показать пассивные',
     expandAll: 'Раскрывать все',
     dc20Range: 'Дальность',
-    enhancements: 'Улучшения',
     repeatable: 'Многократное',
     prices: {
       ap: 'ОД',
@@ -58,7 +56,6 @@ const TRANSLATION = {
     showPassive: 'Mostrar pasivas',
     expandAll: 'Expandir todo',
     dc20Range: 'Rango',
-    enhancements: 'Mejoras',
     repeatable: 'Repetible',
     prices: {
       ap: 'PA',
@@ -246,23 +243,6 @@ export const Feats = (props) => {
                     <Show when={feature().info.range}>
                       <p class="text-sm mt-2">{localize(TRANSLATION, locale()).dc20Range}: {localize(feature().info.range, locale())}</p>
                     </Show>
-                    <Show when={feature().info.enhancements && feature().info.enhancements.length > 0}>
-                      <div class="mt-2">
-                        <p class="font-normal!">{localize(TRANSLATION, locale()).enhancements}</p>
-                        <For each={feature().info.enhancements}>
-                          {(enhancement) =>
-                            <p class="feat-markdown text-sm mt-1">
-                              <span class="font-medium!">{localize(enhancement.name, locale())}</span>
-                              <span>: ({renderFeatPrice(enhancement)}) </span>
-                              <span
-                                class="feat-markdown"
-                                innerHTML={localize(enhancement.description, locale())} // eslint-disable-line solid/no-innerhtml
-                              />
-                            </p>
-                          }
-                        </For>
-                      </div>
-                    </Show>
                   </Show>
                   <Switch fallback={<></>}>
                     <Match when={feature().kind === 'text'}>
@@ -323,6 +303,22 @@ export const Feats = (props) => {
                       </div>
                     </Match>
                   </Switch>
+                  <Show when={feature().info.enhancements && feature().info.enhancements.length > 0}>
+                    <div class="mt-2">
+                      <For each={feature().info.enhancements}>
+                        {(enhancement) =>
+                          <p class="feat-markdown text-sm mt-1">
+                            <span class="font-medium!">{localize(enhancement.name, locale())} </span>
+                            <Show when={enhancement.price}><span>: ({renderFeatPrice(enhancement)}) </span></Show>
+                            <span
+                              class="feat-markdown"
+                              innerHTML={localize(enhancement.description, locale())} // eslint-disable-line solid/no-innerhtml
+                            />
+                          </p>
+                        }
+                      </For>
+                    </div>
+                  </Show>
                 </Toggle>
               }
             </Key>

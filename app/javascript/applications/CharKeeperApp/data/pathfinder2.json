@@ -23,11 +23,11 @@
     "dwarf": {
       "name": { "en": "Dwarf", "ru": "Дварф" },
       "subraces": {
-        "ancient_blooded_dwarf": { "name": { "en": "Ancient-Blooded Dwarf", "ru": "Дварф древней крови" } },
-        "death_warden_dwarf": { "name": { "en": "Death Warden Dwarf", "ru": "Дварф страж гробниц" } },
-        "forge_dwarf": { "name": { "en": "Forge Dwarf", "ru": "Дварф кузницы" } },
-        "rock_dwarf": { "name": { "en": "Rock Dwarf", "ru": "Каменный дварф" } },
-        "strong_blooded_dwarf": { "name": { "en": "Strong-Blooded Dwarf", "ru": "Дварф сильной крови" } }
+        "ancient_blooded_dwarf": { "name": { "en": "Ancient-Blooded Dwarf", "ru": "Дварф древних кровей" } },
+        "death_warden_dwarf": { "name": { "en": "Death Warden Dwarf", "ru": "Дварф - страж мёртвых" } },
+        "forge_dwarf": { "name": { "en": "Forge Dwarf", "ru": "Дварф кузни" } },
+        "rock_dwarf": { "name": { "en": "Rock Dwarf", "ru": "Скальный дварф" } },
+        "strong_blooded_dwarf": { "name": { "en": "Strong-Blooded Dwarf", "ru": "Полнокровный дварф" } }
       }
     },
     "leshy": {

@@ -114,6 +114,8 @@ export const Pathfinder2 = (props) => {
                   character={character()}
                   filters={featFilters()}
                   skills={configSkills()}
+                  spellLists={translate(config.skills, locale())}
+                  classes={translate(config.classes, locale())}
                   onReplaceCharacter={props.onReplaceCharacter}
                   onReloadCharacter={props.onReloadCharacter}
                 />
@@ -240,6 +242,8 @@ export const Pathfinder2 = (props) => {
                   character={character()}
                   filters={featFilters()}
                   skills={configSkills()}
+                  spellLists={translate(config.spellLists, locale())}
+                  classes={translate(config.classes, locale())}
                   onReplaceCharacter={props.onReplaceCharacter}
                   onReloadCharacter={props.onReloadCharacter}
                 />

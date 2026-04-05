@@ -1,5 +1,147 @@
 [
   {
+    "slug": "wellspring_gnome",
+    "kind": "one_from_list",
+    "title": {
+      "en": "Wellspring gnome",
+      "ru": "Гном истока"
+    },
+    "description": {
+      "en": "Choose arcane, divine, or occult. You gain one cantrip from that magical tradition's spell list. You can cast this spell as an innate spell at will, as a spell of your chosen tradition. Whenever you gain a primal innate spell from a gnome ancestry feat, change its tradition from primal to your chosen tradition.",
+      "ru": "Выберите мистическую, оккультную или сакральную традицию. Вы получаете один фокус из списка заклинаний этой магической традиции. Вы можете неограниченно творить выбранный фокус как врождённое заклинание выбранной традиции. Каждый раз, когда вы получаете врождённое первобытное заклинание благодаря черте народа гномов, измените его традицию с первобытной на выбранную ранее."
+    },
+    "origin": "static_subrace",
+    "origin_value": "wellspring",
+    "info": { "options_list": "spellLists" }
+  },
+  {
+    "slug": "sensate_gnome",
+    "kind": "static",
+    "title": {
+      "en": "Sensate gnome",
+      "ru": "Гном-сенсат"
+    },
+    "description": {
+      "en": "You see all colors as brighter, hear all sounds as richer, and especially smell all scents with incredible detail. You gain a special sense: imprecise scent with a range of 30 feet. This means you can use your sense of smell to determine the exact location of a creature. The GM will usually double the range if you're downwind from the creature or halve the range if you're upwind.\n\nIn addition, you gain a +2 circumstance bonus to Perception checks whenever you're trying to locate an undetected creature that is within the range of your scent.",
+      "ru": "Вы воспринимаете все цвета ярче, звуки — насыщеннее и способны уловить тончайшие нюансы любого запаха. Вы получаете особый вспомогательный способ восприятия: нюх на расстоянии до 30 футов. Это означает, что вы можете по запаху определять точное местоположение существ. Скорее всего, ведущий удвоит это расстояние, если ветер дует со стороны цели, и сократит его вдвое, если ветер дует с вашей стороны.\n\nВы также получаете ситуативный бонус +2 к проверкам Внимания при попытках найти необнаруженных существ в радиусе действия вашего нюха."
+    },
+    "origin": "static_subrace",
+    "origin_value": "sensate"
+  },
+  {
+    "slug": "chameleon_gnome",
+    "kind": "static",
+    "title": {
+      "en": "Chameleon gnome",
+      "ru": "Гном-хамелеон"
+    },
+    "description": {
+      "en": "The color of your hair and skin is mutable, possibly due to latent magic from First World influences or lingering illusion effects. You can slowly change the vibrancy and the exact color, and the coloration can be different across your body, allowing you to create patterns or other colorful designs. It takes a single action for minor localized shifts and up to an hour for dramatic shifts throughout your body. While you're asleep, the colors shift on their own in tune with your dreams, giving you an unusual coloration each morning. When you're in an area where your coloration is roughly similar to the environment (for instance, forest green in a forest), you can use the single action to make minor localized shifts designed to help you blend into your surroundings. This grants you a +2 circumstance bonus to Stealth checks until your surroundings shift in coloration or pattern.",
+      "ru": "Цвет вашей кожи и волос непостоянен — возможно, виной тому влияние Первого мира или эффекты иллюзий. Вы можете медленно изменять оттенок и яркость цвета на любом участке своего тела, создавая узоры и цветные переливы. Незначительное изменение небольшого участка требует одиночного действия, а для более существенных изменений, затрагивающих всю поверхность тела, может потребоваться до часа. Пока вы спите, цвета меняются сами по себе в соответствии со сновидениями, наутро принимая необычные оттенки. Когда вы находитесь в местности, основной цвет которой примерно совпадает с вашим (например, зелёный цвет в лесу), вы можете использовать одиночное действие для незначительных изменений, чтобы лучше слиться с обстановкой. При этом вы получите ситуативный бонус +2 к проверкам Скрытности, пока окружение не изменит оттенки или узор."
+    },
+    "origin": "static_subrace",
+    "origin_value": "chameleon"
+  },
+  {
+    "slug": "umbral_gnome",
+    "kind": "static",
+    "title": {
+      "en": "Umbral gnome",
+      "ru": "Теневой гном"
+    },
+    "description": {
+      "en": "Whether from a connection to dark or shadowy fey, from the underground gnomes known as drathnelar, or from another source, you can see in complete darkness. You gain darkvision.",
+      "ru": "Возможно, вы связаны с тёмными или теневыми феями или среди ваших предков были глубинные гномы, поэтому вы можете видеть в кромешной тьме. Вы получаете ночное зрение."
+    },
+    "origin": "static_subrace",
+    "origin_value": "umbral"
+  },
+  {
+    "slug": "fey_touched_gnome",
+    "kind": "static",
+    "title": {
+      "en": "Fey-touched gnome",
+      "ru": "Фееподобный гном"
+    },
+    "description": {
+      "en": "The blood of the fey flows through your veins, saturating you with their magic and making you truly one of them. You gain the fey trait, in addition to the gnome and humanoid traits. Choose one cantrip from the primal spell list. You can cast this spell as a primal innate spell at will. You can change this cantrip to a different one from the same list once per day by meditating to realign yourself with the First World; this is a 10-minute activity that has the concentrate trait.",
+      "ru": "Кровь фей так сильно наполняет вас магией, что вы относитесь к их числу. Помимо дескрипторов «гном» и «гуманоид», вы получаете дескриптор «фея». Выберите один фокус из списка первобытных заклинаний. Вы можете неограниченно творить этот фокус как врождённое первобытное заклинание. Один раз в день вы можете изменить выбранный фокус другим из того же списка, помедитировав, чтобы связаться с Первым миром; это занятие с дескриптором «концентрация» занимает 10 минут."
+    },
+    "origin": "static_subrace",
+    "origin_value": "fey_touched"
+  },
+  {
+    "slug": "irongut_goblin",
+    "kind": "static",
+    "title": {
+      "en": "Irongut Goblin",
+      "ru": "Железнобрюхий гоблин"
+    },
+    "description": {
+      "en": "You can subsist on food that most folks would consider spoiled. You can keep yourself fed with poor meals in a settlement as long as garbage is readily available, without using the Subsist downtime activity. You can eat and drink things when you are sickened.\n\nYou gain a +2 circumstance bonus to saving throws against afflictions, against gaining the sickened condition, and to remove the sickened condition. When you roll a success on a Fortitude save affected by this bonus, you get a critical success instead. All these benefits apply only when the affliction or condition resulted from something you ingested.",
+      "ru": "Вы можете есть даже то, что другие посчитают гнильём. Если в поселении достаточно мусора, вы можете обеспечить себе скромную трапезу, не занимаясь Самообеспечением в свободное время. Вы можете есть и пить, даже когда мучимы тошнотой.\n\nВы получаете ситуативный бонус +2 к испытаниям против недугов, против получения состояния тошноты и при попытках снять состояние тошноты. Когда вы получаете успех в испытании Стойкости с использованием этого бонуса, он считается для вас критическим успехом. Все описанные преимущества действуют только в случае, если недуг или состояние были получены вследствие употребления чего-либо в пищу."
+    },
+    "origin": "static_subrace",
+    "origin_value": "irongut"
+  },
+  {
+    "slug": "unbreakable_goblin",
+    "kind": "static",
+    "title": {
+      "en": "Unbreakable Goblin",
+      "ru": "Небьющийся гоблин"
+    },
+    "description": {
+      "en": "You're able to bounce back from injuries easily due to an exceptionally thick skull, cartilaginous bones, or some other mixed blessing. You gain 10 Hit Points from your ancestry instead of 6. When you fall, reduce the falling damage you take as though you had fallen half the distance.",
+      "ru": "Вы быстро оправляетесь от ранений благодаря толстому черепу, хрящам вместо костей или чему-то подобному. Вы получаете 10 ПЗ от народа вместо 6. При падении вы уменьшаете урон от падения, как если бы упали с вдвое меньшей высоты."
+    },
+    "origin": "static_subrace",
+    "origin_value": "unbreakable",
+    "modifiers": { "health.max": { "type": "add", "value": 4 } }
+  },
+  {
+    "slug": "razortooth_goblin",
+    "kind": "static",
+    "title": {
+      "en": "Razortooth Goblin",
+      "ru": "Острозубый гоблин"
+    },
+    "description": {
+      "en": "Your family's teeth are formidable weapons. You gain a jaws unarmed attack that deals 1d6 piercing damage. Your jaws are in the brawling group and have the finesse and unarmed traits.",
+      "ru": "Ваши фамильные зубы — грозное оружие. Вы получаете безоружную атаку челюстями, наносящую 1d6 колющего урона. Челюсти относятся к кулачному оружию и обладают дескрипторами «безоружное» и «фехтовальное»."
+    },
+    "origin": "static_subrace",
+    "origin_value": "razortooth"
+  },
+  {
+    "slug": "charhide_goblin",
+    "kind": "static",
+    "title": {
+      "en": "Charhide Goblin",
+      "ru": "Палёный гоблин"
+    },
+    "description": {
+      "en": "Your ancestors have always had a connection to fire and a thicker skin, which allows you to resist burning. You gain fire resistance equal to half your level minimum 1). You can also recover from being on fire more easily. Your flat check to remove persistent fire damage is DC 10 instead of DC 15, which is reduced to DC 5 if another creature uses a particularly appropriate action to help.",
+      "ru": "Ваши предки питали особую любовь к огню, были толстокожи и не боялись ожогов. Вы получаете устойчивость к огню, равную половине вашего уровня (минимум 1), и гораздо быстрее тушите себя, если загорелись. СЛ чистой проверки для снятия продолжительного урона огнём для вас равна 10 (вместо 15, как обычно) и снижается до 5, если другое существо помогает вам себя потушить подходящим действием."
+    },
+    "origin": "static_subrace",
+    "origin_value": "charhide"
+  },
+  {
+    "slug": "snow_goblin",
+    "kind": "static",
+    "title": {
+      "en": "Snow Goblin",
+      "ru": "Снежный гоблин"
+    },
+    "description": {
+      "en": "You are acclimated to living in frigid lands and have skin ranging from sky blue to navy in color, as well as blue fur. You gain cold resistance equal to half your level (minimum 1). You treat environmental cold effects as if they were one step less extreme (incredible cold becomes extreme, extreme cold becomes severe, and so on).",
+      "ru": "Вы приспособились к жизни в заснеженных землях и покрыты синей шерстью, а цвет вашей кожи варьируется от небесно-синего до цвета морской волны. Вы получаете устойчивость к холоду, равную половине вашего уровня (минимум 1), а холодные эффекты окружающей среды для вас считаются на одну категорию менее опасными (например, невыносимый холод считается лютым)."
+    },
+    "origin": "static_subrace",
+    "origin_value": "snow"
+  },
+  {
     "slug": "call_on_ancient_blood",
     "kind": "static",
     "title": {
@@ -13,6 +155,261 @@
     "origin": "static_subrace",
     "origin_value": "ancient_blooded_dwarf",
     "price": { "r": 1 }
+  },
+  {
+    "slug": "forge_dwarf",
+    "kind": "static",
+    "title": {
+      "en": "Forge Dwarf",
+      "ru": "Дварф кузни"
+    },
+    "description": {
+      "en": "You have a remarkable adaptation to hot environments. This grants you fire resistance equal to half your level (minimum 1), and you treat environmental heat effects as if they were one step less extreme (incredible heat becomes extreme, extreme heat becomes severe, and so on).",
+      "ru": "Вы прекрасно чувствуете себя в жаре и духоте. Вы получаете устойчивость к огню, равную половине вашего уровня (минимум 1), а жаркие эффекты окружающей среды для вас считаются на одну категорию менее опасными (например, невыносимая жара считается лютой)."
+    },
+    "origin": "static_subrace",
+    "origin_value": "forge_dwarf"
+  },
+  {
+    "slug": "death_warden_dwarf",
+    "kind": "static",
+    "title": {
+      "en": "Death Warden Dwarf",
+      "ru": "Дварф - страж мёртвых"
+    },
+    "description": {
+      "en": "Your ancestors were tomb guardians, and their power to ward off death passed on to you. If you roll a success on a saving throw against an effect that has the void trait or was created by an undead creature, you get a critical success instead.",
+      "ru": "Целые поколения ваших предков несли стражу возле усыпальниц, и их умение сопротивляться некромантии передалось и вам. Если вы получаете успех в испытании против эффекта с дескриптором «пустота» или эффекта, созданного существом-нежитью, он считается для вас критическим успехом."
+    },
+    "origin": "static_subrace",
+    "origin_value": "death_warden_dwarf"
+  },
+  {
+    "slug": "strong_blooded_dwarf",
+    "kind": "static",
+    "title": {
+      "en": "Strong-Blooded Dwarf",
+      "ru": "Полнокровный дварф"
+    },
+    "description": {
+      "en": "Your blood runs hearty and strong, and you can shake off toxins. You gain poison resistance equal to half your level (minimum 1), and each of your successful saving throws against a poison affliction reduces its stage by 2, or by 1 for a virulent poison. Each critical success against an ongoing poison reduces its stage by 3, or by 2 for a virulent poison.",
+      "ru": "Вы здоровяк, и вам не страшны токсины. Вы получаете устойчивость к яду, равную половине вашего уровня (минимум 1), и каждое из ваших успешных испытаний против недуга с дескриптором «яд» снижает его стадию на 2 (или на 1 для вирулентных ядов). Каждый критический успех против длящегося яда снижает его стадию на 3 (или на 2 для вирулентных ядов)."
+    },
+    "origin": "static_subrace",
+    "origin_value": "strong_blooded_dwarf"
+  },
+  {
+    "slug": "rock_dwarf",
+    "kind": "static",
+    "title": {
+      "en": "Rock Dwarf",
+      "ru": "Скальный дварф"
+    },
+    "description": {
+      "en": "Your ancestors lived and worked among the ancient stones of the mountains or the depths of the earth. This makes you solid as a rock when you plant your feet. You gain a +2 circumstance bonus to your Fortitude or Reflex DC against attempts to Reposition, Shove, or Trip you. This bonus also applies to saving throws against spells or effects that attempt to force you to move or knock you prone.\n\nIn addition, if any effect would force you to move 10 feet or more, you are moved only half the distance.",
+      "ru": "Ваши предки жили и трудились в древних горах или в каменистых глубинах под землёй, поэтому вы устойчивы, как скала. Вы получаете ситуативный бонус +2 к СЛ Реакции и Стойкости против попыток Перестановки, Сбивания с ног и Толчка. Этот бонус применяется и к испытаниям против заклинаний и эффектов, заставляющих вас переместиться или распластаться.\n\nКроме этого, если какой-либо эффект заставляет вас переместиться на 10 и более футов, вы перемещаетесь лишь на половину этого расстояния."
+    },
+    "origin": "static_subrace",
+    "origin_value": "rock_dwarf"
+  },
+  {
+    "slug": "fruit_leshy",
+    "kind": "static",
+    "title": {
+      "en": "Fruit Leshy",
+      "ru": "Фруктовый леший"
+    },
+    "description": {
+      "en": "Your body continually produces small fruits imbued with primal magic. At dawn each day, a new fruit ripens. You or an ally can remove this fruit as an Interact action. If a living creature that can derive sustenance from fruit consumes it as an Interact action within the next hour, they regain 1d8 Hit Points, plus an additional 1d8 Hit Points for every 2 of your levels beyond 1st. This effect has the healing and vitality traits.",
+      "ru": "На вашем теле растут небольшие фрукты, пропитанные первобытной магией. На заре каждого дня созревает один фрукт. Вы или ваш союзник можете сорвать этот фрукт Взаимодействием. Если живое существо, способное питаться таким фруктом, съест его в течение следующего часа в качестве Взаимодействия, оно восстановит 1d8 ПЗ + дополнительные 1d8 ПЗ за каждые 2 ваших уровня после первого. Это эффект с дескрипторами «жизнь» и «исцеление»."
+    },
+    "origin": "static_subrace",
+    "origin_value": "fruit_leshy"
+  },
+  {
+    "slug": "seaweed_leshy",
+    "kind": "update_result",
+    "title": {
+      "en": "Seaweed Leshy",
+      "ru": "Водорослевый леший"
+    },
+    "description": {
+      "en": "Your body is made from woven seaweed, and you're just as comfortable underwater as on land. You gain a swim Speed of 20 feet, and you can always breathe underwater. However, your land Speed is reduced by 5 feet (to 20 feet for most seaweed leshies).",
+      "ru": "Ваше тело сплетено из водорослей, и под водой вам настолько же комфортно, как и на земле. Вы получаете скорость плавания 20 футов и всегда способны дышать под водой. Однако ваша наземная скорость уменьшается на 5 футов (до 20 футов для большинства водорослевых леших)."
+    },
+    "origin": "static_subrace",
+    "origin_value": "seaweed_leshy",
+    "modifiers": { "speeds.swim": { "type": "set", "value": 20 }, "speed": { "type": "add", "value": "-5" } }
+  },
+  {
+    "slug": "fungus_leshy",
+    "kind": "static",
+    "title": {
+      "en": "Fungus Leshy",
+      "ru": "Грибной леший"
+    },
+    "description": {
+      "en": "Your body was made from fungi that grows in the shade of caves and trees, and you are at home in dark caverns and warrens. You gain darkvision. You lose the plant trait and gain the fungus trait.",
+      "ru": "Ваше тело было создано из грибов, растущих во мраке пещер и тени деревьев, и вы чувствуете себя как дома в тёмных гротах и норах. Вы получаете ночное зрение. Вы теряете дескриптор «растение» и получаете дескриптор «гриб»."
+    },
+    "origin": "static_subrace",
+    "origin_value": "fungus_leshy"
+  },
+  {
+    "slug": "cactus_leshy",
+    "kind": "static",
+    "title": {
+      "en": "Cactus Leshy",
+      "ru": "Кактусовый леший"
+    },
+    "description": {
+      "en": "Spines cover your body. You gain a spine unarmed attack that deals 1d6 piercing damage. Your spines are in the brawling group and have the finesse and unarmed traits.",
+      "ru": "Ваше тело усеяно шипами. Вы получаете безоружную атаку шипами, которая наносит 1d6 колющего урона. Шипы относятся к кулачному оружию и обладают дескрипторами «безоружное» и «фехтовальное»."
+    },
+    "origin": "static_subrace",
+    "origin_value": "cactus_leshy"
+  },
+  {
+    "slug": "root_leshy",
+    "kind": "static",
+    "title": {
+      "en": "Root Leshy",
+      "ru": "Корневой леший"
+    },
+    "description": {
+      "en": "Your body is made from hardy roots that attach you firmly to the ground. You gain 10 Hit Points from your ancestry instead of 8. You can go without sunlight for 2 weeks before you begin to starve. You gain a +2 circumstance bonus to your Fortitude or Reflex DC against attempts to Reposition, Shove, or Trip you. This bonus also applies to saving throws against spells or effects that attempt to move you or knock you prone.",
+      "ru": "Ваше тело свито из крепких корней, надёжно удерживающих вас на земле. Вы получаете 10 ПЗ от народа вместо 8. Вы можете существовать без солнечного света 2 недели, прежде чем начнёте голодать. Вы получаете ситуативный бонус +2 к СЛ Реакции и Стойкости против попыток Перестановки, Сбивания с ног и Толчка. Этот бонус применяется и к испытаниям против заклинаний и эффектов, заставляющих вас переместиться или распластаться."
+    },
+    "origin": "static_subrace",
+    "origin_value": "root_leshy",
+    "modifiers": { "health.max": { "type": "add", "value": 2 } }
+  },
+  {
+    "slug": "vine_leshy",
+    "kind": "static",
+    "title": {
+      "en": "Vine Leshy",
+      "ru": "Лианный леший"
+    },
+    "description": {
+      "en": "Your prehensile vines grant you unmatched skill at climbing. You do not need to have any hands free to Climb. Additionally, if you roll a success on an Athletics check to Climb, you get a critical success instead.",
+      "ru": "Лианы, служащие вам вспомогательными конечностями, даруют вам бесподобное умение лазать. Вам не нужны свободные руки для Лазания. Кроме того, если вы получили успех в проверке Атлетики для Лазания, он считается для вас критическим успехом."
+    },
+    "origin": "static_subrace",
+    "origin_value": "vine_leshy"
+  },
+  {
+    "slug": "leaf_leshy",
+    "kind": "static",
+    "title": {
+      "en": "Leaf Leshy",
+      "ru": "Лиственный леший"
+    },
+    "description": {
+      "en": "Your body is made mostly from natural foliage, and like a leaf tumbling from a tree, you land from falls with particular grace. You take no damage from falling, regardless of the distance you fall.",
+      "ru": "Ваше тело создано в основном из естественной листвы. Подобно опадающим листьям, вы всегда приземляетесь с определённой грацией. Вы не получаете урона от падения вне зависимости от его высоты."
+    },
+    "origin": "static_subrace",
+    "origin_value": "leaf_leshy"
+  },
+  {
+    "slug": "lotus_leshy",
+    "kind": "static",
+    "title": {
+      "en": "Lotus Leshy",
+      "ru": "Лотосовый леший"
+    },
+    "description": {
+      "en": "You effortlessly float on the surface of water. You can walk on the surface of still water and other non-damaging liquids, moving at half your normal Speed. You can also attempt to Balance to move across the surface of flowing water, using the DC of a Swim check to move through the water. When you do this, you can't move faster than half your Speed, and if you fail or critically fail, you fall into the water rather than the normal effects.",
+      "ru": "Вы непринуждённо удерживаетесь на поверхности воды. Вы можете ходить по поверхности стоячей воды и других не наносящих урона жидкостей с половиной обычной скорости. Вы также можете совершить попытку Удержания равновесия, чтобы перемещаться по поверхности текущей воды (СЛ равна СЛ соответствующей проверки Плавания). Вы не можете перемещаться таким образом быстрее, чем с половиной обычной скорости. Если вы провалите или критически провалите проверку, то погрузитесь в воду вместо обычных эффектов."
+    },
+    "origin": "static_subrace",
+    "origin_value": "lotus_leshy"
+  },
+  {
+    "slug": "gourd_leshy",
+    "kind": "static",
+    "title": {
+      "en": "Gourd Leshy",
+      "ru": "Тыквенный леший"
+    },
+    "description": {
+      "en": "You have a large gourd for a skull, and since you don't have a physical brain, you can use the space inside your head. You can store a collection of up to 1 Bulk of objects within your head. The DC of checks to Steal objects from inside your head increases by 4. Additionally, if you store only one object within your head, you can draw it effortlessly into your hand as part of another action to use the object. Drawing the item grants this other action the manipulate trait.",
+      "ru": "Вместо черепа у вас большая тыква. Так как материального мозга у вас нет, вы можете прятать в ней разные предметы. Вы можете хранить объекты общим весом до 1 в вашей голове. СЛ попыток Кражи таких объектов повышается на 4. Кроме того, если в вашей голове находится лишь один объект, вы можете без труда выхватить его в качестве части другого действия для его применения. Когда вы выхватываете предмет таким образом, это действие получает дескриптор «манипуляция»."
+    },
+    "origin": "static_subrace",
+    "origin_value": "gourd_leshy"
+  },
+  {
+    "slug": "winter_orc",
+    "kind": "static",
+    "title": {
+      "en": "Winter Orc",
+      "ru": "Зимний орк"
+    },
+    "description": {
+      "en": "Your ancestors survived in cold climates. You become trained in Survival, and you treat environmental cold effects as if they were one step less extreme (incredible cold becomes extreme, extreme cold becomes severe, and so on).",
+      "ru": "Ваши предки жили в холодном климате. Навык Выживание становится для вас изученным, а холодные эффекты окружающей среды для вас считаются на одну категорию менее опасными (например, невыносимый холод считается лютым)."
+    },
+    "origin": "static_subrace",
+    "origin_value": "winter_orc"
+  },
+  {
+    "slug": "rainfall_orc",
+    "kind": "static",
+    "title": {
+      "en": "Rainfall Orc",
+      "ru": "Ливневый орк"
+    },
+    "description": {
+      "en": "You were born in a rain forest with only tangles of trees providing protection from torrential rainstorms and flash floods. You've learned to move adeptly through jungle terrain and resist the various ailments common in humid environs. You gain a +2 circumstance bonus to Athletics checks to Climb or Swim and a +1 circumstance bonus to saving throws against diseases.",
+      "ru": "Вы росли в тропических лесах, где только хитросплетения древесных стволов и ветвей защищали вас от ливневых дождей и потопов. Вы научились ловко пробираться через джунгли и выработали устойчивость к ряду тропических болезней. Вы получаете ситуативный бонус +2 к проверкам Атлетики для Лазания и Плавания, а также ситуативный бонус +1 к испытаниям против болезней."
+    },
+    "origin": "static_subrace",
+    "origin_value": "rainfall_orc"
+  },
+  {
+    "slug": "grave_orc",
+    "kind": "static",
+    "title": {
+      "en": "Grave Orc",
+      "ru": "Могильный орк"
+    },
+    "description": {
+      "en": "You were exposed to powerful necromantic energies that should have killed you—but you survived. Your skin is cold, clammy, and gray. You gain resistance to void damage equal to half your level (minimum 1). You also gain a +1 circumstance bonus to saving throws against effects with the death or void trait.",
+      "ru": "Вы подверглись воздействию смертоносной энергии некромантии, но сумели выжить. Ваша кожа холодная и серая. Вы получаете устойчивость к урону пустотой, равную половине вашего уровня (минимум 1), а также ситуативный бонус +1 к испытаниям против эффектов с дескриптором «пустота» или «смерть»."
+    },
+    "origin": "static_subrace",
+    "origin_value": "grave_orc"
+  },
+  {
+    "slug": "badlands_orc",
+    "kind": "static",
+    "title": {
+      "en": "Badlands Orc",
+      "ru": "Орк пустошей"
+    },
+    "description": {
+      "en": "You come from sun-scorched badlands, where long legs and an ability to withstand the elements helped you thrive. You can Hustle twice as long while exploring before you have to stop, and you treat environmental heat effects as if they were one step less extreme (incredible heat becomes extreme, extreme heat becomes severe, and so on).",
+      "ru": "Вы родом с выжженных палящим солнцем пустошей, и выжить вам помогли длинные ноги и способность стойко переносить зной. Во время исследования максимальная продолжительность Спешки для вас удваивается, а жаркие эффекты окружающей среды для вас считаются на одну категорию менее опасными (например, невыносимая жара считается лютой)."
+    },
+    "origin": "static_subrace",
+    "origin_value": "badlands_orc"
+  },
+  {
+    "slug": "hold_scarred_orc",
+    "kind": "update_result",
+    "title": {
+      "en": "Hold-Scarred Orc",
+      "ru": "Шрамированный орк"
+    },
+    "description": {
+      "en": "You are part of an orc community that participates in ritual scarification or tattooing. The marks on your skin show your exceptional hardiness and vitality. You gain 12 Hit Points from your ancestry instead of 10. You also gain the **Diehard** feat.",
+      "ru": "Вы росли в сообществе, которое практиковало нанесение ритуальных татуировок или шрамов, поэтому ваша кожа покрыта яркими доказательствами исключительной крепости и выдержки. Вы получаете 12 ПЗ от народа вместо 10 и черту **Крепкий орешек**."
+    },
+    "origin": "static_subrace",
+    "origin_value": "hold_scarred_orc",
+    "modifiers": { "health.max": { "type": "add", "value": 2 } }
   },
   {
     "slug": "gutsy_halfling",
@@ -29,17 +426,227 @@
     "origin_value": "gutsy_halfling"
   },
   {
-    "slug": "fruit_leshy",
+    "slug": "nomadic_halfling",
     "kind": "static",
     "title": {
-      "en": "Fruit Leshy",
-      "ru": "Фруктовый леший"
+      "en": "Nomadic Halfling",
+      "ru": "Странствующий полурослик"
     },
     "description": {
-      "en": "Your body continually produces small fruits imbued with primal magic. At dawn each day, a new fruit ripens. You or an ally can remove this fruit as an Interact action. If a living creature that can derive sustenance from fruit consumes it as an Interact action within the next hour, they regain 1d8 Hit Points, plus an additional 1d8 Hit Points for every 2 of your levels beyond 1st. This effect has the healing and vitality traits.",
-      "ru": "На вашем теле растут небольшие фрукты, пропитанные первобытной магией. На заре каждого дня созревает один фрукт. Вы или ваш союзник можете сорвать этот фрукт Взаимодействием. Если живое существо, способное питаться таким фруктом, съест его в течение следующего часа в качестве Взаимодействия, оно восстановит 1d8 ПЗ + дополнительные 1d8 ПЗ за каждые 2 ваших уровня после первого. Это эффект с дескрипторами «жизнь» и «исцеление»."
+      "en": "Your ancestors have traveled from place to place for generations, never content to settle down. You gain two additional languages of your choice, chosen from among the common and uncommon languages available to you, and every time you take the **Multilingual** feat, you gain another new language.",
+      "ru": "Целые поколения ваших предков жили кочевой жизнью и нигде надолго не задерживались. Вы получаете два дополнительных языка, выбрав их из списка доступных вам обычных и необычных языков. Кроме этого, каждый раз, когда вы берёте черту **Обучение языкам**, вы дополнительно получаете один новый язык."
     },
     "origin": "static_subrace",
-    "origin_value": "fruit_leshy"
+    "origin_value": "nomadic_halfling"
+  },
+  {
+    "slug": "twilight_halfling",
+    "kind": "static",
+    "title": {
+      "en": "Twilight Halfling",
+      "ru": "Сумеречный полурослик"
+    },
+    "description": {
+      "en": "Your ancestors performed many secret acts under the concealing cover of dusk, whether for good or ill, and over time they developed the ability to see in twilight beyond even the usual keen sight of halflings. You gain low-light vision.",
+      "ru": "Ваши предки вели в сумерках тайную жизнь, творя благие или недобрые дела, и со временем стали видеть в полумраке даже лучше, чем их и без того зоркие собратья. Вы получаете сумеречное зрение."
+    },
+    "origin": "static_subrace",
+    "origin_value": "twilight_halfling"
+  },
+  {
+    "slug": "jinxed_halfling",
+    "kind": "static",
+    "title": {
+      "en": "Jinx",
+      "ru": "Проклятие неуклюжести"
+    },
+    "description": {
+      "en": "You can never take the **Halfling Luck** feat. You can curse another creature with clumsiness. This curse has a range of 30 feet, and you must be able to see your target. The target gets a Will saving throw against your class DC or spell DC, whichever is higher.",
+      "ru": "Вы ни при каких обстоятельствах не можете взять черту **Удача полурослика**. Вы можете проклясть другое существо, которое видите в пределах 30 футов от себя, сделав его неуклюжим. Цель проходит испытание Воли против вашей классовой СЛ или СЛ заклинаний."
+    },
+    "origin": "static_subrace",
+    "origin_value": "jinxed_halfling",
+    "price": { "a": 2 },
+    "description_eval_variables": {
+      "limit": "1"
+    },
+    "limit_refresh": "long_rest",
+    "info": {
+      "enhancements": [
+        {
+          "name": {
+            "en": "Success",
+            "ru": "Успех"
+          },
+          "description": {
+            "en": "The target is unaffected and temporarily immune for 24 hours.",
+            "ru": "Цель избегает эффекта и временно невосприимчива к этой способности на 24 часа."
+          }
+        },
+        {
+          "name": {
+            "en": "Failure",
+            "ru": "Провал"
+          },
+          "description": {
+            "en": "The target is clumsy 1 for 1 minute.",
+            "ru": "Цель получает неуклюжесть 1 на 1 минуту."
+          }
+        },
+        {
+          "name": {
+            "en": "Critical Failure",
+            "ru": "Критический провал"
+          },
+          "description": {
+            "en": "The target is clumsy 2 for 1 minute.",
+            "ru": "Цель получает неуклюжесть 2 на 1 минуту."
+          }
+        }
+      ]
+    }
+  },
+  {
+    "slug": "hillock_halfling",
+    "kind": "static",
+    "title": {
+      "en": "Hillock Halfling",
+      "ru": "Холмовой полурослик"
+    },
+    "description": {
+      "en": "Accustomed to a calm life in the hills, your people find rest and relaxation especially replenishing, particularly when indulging in creature comforts. When you regain Hit Points overnight, add your level to the Hit Points regained. When anyone uses the Medicine skill to Treat your Wounds, you can eat a snack to add your level to the Hit Points you regain from their treatment.",
+      "ru": "Ваши предки привыкли к размеренной жизни среди холмов и умеют отдыхать, как никто другой, особенно в комфортной обстановке. При восстановлении ПЗ во время полноценного отдыха ночью вы дополнительно восстанавливаете ПЗ в количестве, равном вашему уровню. Когда кто-либо использует Медицину для Лечения ваших ранений, вы можете чем-нибудь подкрепиться, чтобы дополнительно восстановить ПЗ от лечения в количестве, равном вашему уровню. "
+    },
+    "origin": "static_subrace",
+    "origin_value": "hillock_halfling"
+  },
+  {
+    "slug": "wildwood_halfling",
+    "kind": "static",
+    "title": {
+      "en": "Wildwood Halfling",
+      "ru": "Чащобный полурослик"
+    },
+    "description": {
+      "en": "You hail from deep within a jungle or forest, and you've learned how to use your small size to wriggle through undergrowth and other obstacles. You ignore any difficult terrain caused by plants and fungi, such as bushes, vines, and undergrowth.",
+      "ru": "Вы родом из глубин лесов или джунглей и научились использовать свой небольшой размер, чтобы пробираться через подлесок и прочие препятствия. Вы игнорируете пересечённую местность, образованную грибами и растениями, например кустами, лианами и подлеском."
+    },
+    "origin": "static_subrace",
+    "origin_value": "wildwood_halfling"
+  },
+  {
+    "slug": "versatile_human",
+    "kind": "update_result",
+    "title": {
+      "en": "Versatile human",
+      "ru": "Разносторонний человек"
+    },
+    "description": {
+      "en": "Select a general feat of your choice for which you meet the prerequisites (as with your ancestry feat, you can select this general feat at any point during character creation).",
+      "ru": "Выберите общую черту, критериям которой соответствуете (эту черту, как и черту народа, вы можете выбрать на любом этапе создания персонажа)."
+    },
+    "origin": "static_subrace",
+    "origin_value": "versatile_human"
+  },
+  {
+    "slug": "skilled_human",
+    "kind": "one_from_list",
+    "title": {
+      "en": "Skilled human",
+      "ru": "Умелый человек"
+    },
+    "description": {
+      "en": "Your ingenuity allows you to train in a wide variety of skills. You become trained in one skill of your choice. At 5th level, you become an expert in the chosen skill.",
+      "ru": "Ваша предприимчивость позволяет изучить самые разные навыки. Вы изучаете один навык по своему выбору. На 5 уровне этот навык становится экспертным."
+    },
+    "origin": "static_subrace",
+    "origin_value": "skilled_human",
+    "info": { "options_list": "skills" }
+  },
+  {
+    "slug": "ancient_elf",
+    "kind": "one_from_list",
+    "title": {
+      "en": "Ancient Elf",
+      "ru": "Древний эльф"
+    },
+    "description": {
+      "en": "Choose a class other than your own. You gain the multiclass dedication feat for that class, even though you don't meet its level prerequisite. You must still meet its other prerequisites to gain the feat.",
+      "ru": "Выберите класс (кроме своего). Вы получаете мультиклассовую черту посвящения для этого класса, хотя и не соответствуете критериям по уровню. Вы всё ещё должны соответствовать прочим критериям этой черты."
+    },
+    "origin": "static_subrace",
+    "origin_value": "ancient_elf",
+    "info": { "options_list": "classes" }
+  },
+  {
+    "slug": "woodland_elf",
+    "kind": "static",
+    "title": {
+      "en": "Woodland Elf",
+      "ru": "Лесной эльф"
+    },
+    "description": {
+      "en": "You're adapted to life in the forest, the deep jungle, or a similar environment, and you know how to climb trees and use foliage to your advantage. When Climbing trees, vines, and other foliage, you move at half your Speed on a success and at full Speed on a critical success (and you move at full Speed on a success if you have Quick Climb). This doesn't affect you if you're using a climb Speed.\n\nYou can always use the Take Cover action when you are within forest terrain to gain cover, even if you're not next to an obstacle you can Take Cover behind. ",
+      "ru": "Вы приспособились к жизни в лесу, непролазных джунглях или иной подобной местности и знаете, как залезать на деревья и использовать растительность для обеспечения преимущества. При Лазании по деревьям, лианам и другим растениям вы передвигаетесь с половиной обычной скорости при успехе проверки и с полной скоростью при критическом успехе (если у вас есть Быстрое лазание, то при успехе вы передвигаетесь с полной скоростью). Особенность не влияет на вас, если вы используете скорость лазания.\n\nНаходясь в лесной местности, вы всегда можете совершить действие Укрытие, даже если рядом с вами нет препятствий, за которыми можно было бы укрыться."
+    },
+    "origin": "static_subrace",
+    "origin_value": "woodland_elf"
+  },
+  {
+    "slug": "cavern_elf",
+    "kind": "static",
+    "title": {
+      "en": "Cavern Elf",
+      "ru": "Пещерный эльф"
+    },
+    "description": {
+      "en": "You were born or spent many years in underground tunnels or caverns where light is scarce. You gain darkvision.",
+      "ru": "Вы были рождены или провели многие годы в подземных туннелях или пещерах, где света совсем немного. Вы получаете ночное зрение."
+    },
+    "origin": "static_subrace",
+    "origin_value": "cavern_elf"
+  },
+  {
+    "slug": "arctic_elf",
+    "kind": "static",
+    "title": {
+      "en": "Arctic Elf",
+      "ru": "Полярный эльф"
+    },
+    "description": {
+      "en": "You dwell deep in the frozen north and have gained incredible resilience against cold environments, granting you cold resistance equal to half your level (minimum 1). You treat environmental cold effects as if they were one step less extreme (incredible cold becomes extreme, extreme cold becomes severe, and so on).",
+      "ru": "Вы живёте на далёком севере, и холода вам не страшны. Вы получаете устойчивость к холоду, равную половине вашего уровня (минимум 1), а холодные эффекты окружающей среды для вас считаются на одну категорию менее опасными (например, невыносимый холод считается лютым)."
+    },
+    "origin": "static_subrace",
+    "origin_value": "arctic_elf"
+  },
+  {
+    "slug": "whisper_elf",
+    "kind": "static",
+    "title": {
+      "en": "Whisper Elf",
+      "ru": "Шепчущий эльф"
+    },
+    "description": {
+      "en": "Your ears are finely tuned, able to detect even the slightest whispers of sound. You gain a +2 circumstance bonus when using the Seek action to find hidden or undetected creatures within 30 feet of you. When you target an opponent that is concealed from you or hidden from you, reduce the DC of the flat check to 3 for a concealed target or 9 for a hidden one. This benefit doesn't apply if you can't hear or if the creature is incapable of making sound (for example, if it's affected by a silence spell).",
+      "ru": "Ваши уши крайне чувствительны и способны уловить малейший звук. Вы получаете ситуативный бонус +2, когда применяете действие Поиск, чтобы найти спрятанных или необнаруженных существ в пределах 30 футов от вас. Когда вы выбираете целью плохо видимого вами или спрятанного от вас противника, СЛ чистой проверки снижается до 3, если существо плохо видимо, и до 9, если оно спрятанное. Преимущество не применяется, если вы не можете слышать или если существо не может издавать звуки (например, находится под действием заклинания тишина)."
+    },
+    "origin": "static_subrace",
+    "origin_value": "whisper_elf"
+  },
+  {
+    "slug": "seer_elf",
+    "kind": "static",
+    "title": {
+      "en": "Seer Elf",
+      "ru": "Эльф-провидец"
+    },
+    "description": {
+      "en": "You have an inborn ability to detect and understand magical phenomena. You can cast the detect magic cantrip as an arcane innate spell at will. A cantrip is heightened to a spell rank equal to half your level rounded up. In addition, you gain a +1 circumstance bonus to checks to Identify Magic and to Decipher Writing of a magical nature. These skill actions typically use the Arcana, Nature, Occultism, or Religion skill.",
+      "ru": "Вы понимаете магические явления и способны их обнаруживать. Вы можете неограниченно творить фокус обнаружение магии как врождённое мистическое заклинание. Кроме этого, вы получаете ситуативный бонус +1 к проверкам для Опознания магии и Расшифровки магических надписей. Для этих действий обычно используются навыки Мистицизм, Оккультизм, Природа или Религия."
+    },
+    "origin": "static_subrace",
+    "origin_value": "",
+    "info": { "static_spells": { "detect_magic": { "limit": null } } }
   }
 ]
