@@ -78,33 +78,15 @@ module SheetsContext
         private
 
         def heritage(character)
-          "#{subrace(character)} / #{background(character)}"
+          "#{character.info['subrace']} / #{character.info['background']}"
         end
 
         def classes(character)
-          character.subclasses.map do |key, value|
-            class_name = find_class_name(key)
-            next class_name unless value
+          class_name = character.info['class']
+          subclass_name = character.info['subclass']
+          return class_name unless subclass_name
 
-            subclass_name = find_subclass_name(key, value)
-            "#{class_name} (#{subclass_name})"
-          end.join(' / ')
-        end
-
-        def subrace(character)
-          translate(::Pathfinder2::Character.subrace_info(character.race, character.subrace)['name'])
-        end
-
-        def background(character)
-          translate(::Pathfinder2::Character.backgrounds.dig(character.background, 'name'))
-        end
-
-        def find_class_name(class_slug)
-          translate(::Pathfinder2::Character.class_info(class_slug)['name'])
-        end
-
-        def find_subclass_name(class_slug, subclass_slug)
-          translate(::Pathfinder2::Character.subclass_info(class_slug, subclass_slug)['name'])
+          "#{class_name} (#{subclass_name})"
         end
       end
     end
