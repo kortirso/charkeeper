@@ -10,7 +10,8 @@
       "en": "It gains the amphibious trait, allowing it to breathe in both air and water, and has both a land Speed and a swim Speed, each equal to its highest land Speed or swim Speed.",
       "ru": "Любимец получает дескриптор «амфибия», что позволяет ему дышать как под водой, так и в воздухе. Кроме того, у него есть как наземная скорость, так и скорость плавания; обе равны наивысшему значению из двух."
     },
-    "origin": "pet"
+    "origin": "pet",
+    "modifiers": { "speeds.swim": { "type": "set", "value": 0 } }
   },
   {
     "slug": "fast_movement",
@@ -50,7 +51,8 @@
       "en": "It gains a climb Speed of 25 feet.",
       "ru": "Любимец получает скорость лазания 25 футов."
     },
-    "origin": "pet"
+    "origin": "pet",
+    "modifiers": { "speeds.climb": { "type": "set", "value": 25 } }
   },
   {
     "slug": "manual_dexterity",
@@ -102,7 +104,8 @@
       "en": "It gains a fly Speed of 25 feet.",
       "ru": "Любимец получает скорость полёта 25 футов."
     },
-    "origin": "pet"
+    "origin": "pet",
+    "modifiers": { "speeds.fly": { "type": "set", "value": 25 } }
   },
   {
     "slug": "burrower",
@@ -115,7 +118,8 @@
       "en": "It gains a burrow Speed of 5 feet, allowing it to dig Tiny holes.",
       "ru": "Любимец получает скорость рытья 5 футов и может рыть норы маленького размера."
     },
-    "origin": "pet"
+    "origin": "pet",
+    "modifiers": { "speeds.burrow": { "type": "set", "value": 5 } }
   },
   {
     "slug": "echolocation",

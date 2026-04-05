@@ -11,7 +11,9 @@ class Pathfinder2PetDecorator < ApplicationDecoratorV2
     @attributes = pet.character.data
 
     generate_basis
+    apply_set_modifiers
     apply_add_modifiers
+    update_speeds
 
     self
   end
@@ -28,8 +30,31 @@ class Pathfinder2PetDecorator < ApplicationDecoratorV2
     @result['health_max'] = 5 * level
     @result['armor_class'] = calc_armor_class
     @result['speed'] = 25
+    @result['speeds'] = { 'fly' => -1, 'swim' => -1, 'climb' => -1, 'burrow' => -1 }
     @result['perception'] = find_perception
     @result['skills'] = generate_skills_payload
+  end
+
+  def apply_set_modifiers # rubocop: disable Metrics/AbcSize, Metrics/PerceivedComplexity
+    res = available_modifiers.flat_map do |items|
+      items.filter_map do |key, value|
+        value['type'] == 'set' && { key => value['value'] }
+      end
+    end.compact_blank.each_with_object({}) do |value, acc|
+      key = value.keys[0]
+      acc[key] ||= []
+      formula_result = formula.call(formula: value[key], variables: formula_variables)
+      acc[key] << formula_result if formula_result
+    end
+
+    res.each do |(key_name, values)|
+      if key_name.include?('.')
+        primary, secondary = key_name.split('.')
+        @result[primary][secondary] = [@result[primary][secondary], *values].compact.max
+      else
+        @result[key_name] = [@result[key_name], *values].compact.max
+      end
+    end
   end
 
   def apply_add_modifiers # rubocop: disable Metrics/AbcSize, Metrics/PerceivedComplexity
@@ -54,6 +79,10 @@ class Pathfinder2PetDecorator < ApplicationDecoratorV2
         end
       end
     end
+  end
+
+  def update_speeds
+    @result['speeds'] = speeds.transform_values { |value| value.zero? ? speed : value }.delete_if { |_, v| v.negative? }
   end
 
   def formula_variables

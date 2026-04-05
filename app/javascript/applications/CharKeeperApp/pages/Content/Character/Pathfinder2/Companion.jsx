@@ -1,9 +1,9 @@
 import { createSignal, createEffect, Show, For, batch } from 'solid-js';
 import { createStore } from 'solid-js/store';
 
-import { Pathfinder2SharedHealth } from '../../../../pages';
+import { Pathfinder2SharedHealth, Pathfinder2SharedSenses } from '../../../../pages';
 import {
-  ErrorWrapper, Input, Button, EditWrapper, GuideWrapper, AvatarInput, TextArea, Dice, StatsBlock, Toggle, Checkbox
+  ErrorWrapper, Input, Button, EditWrapper, GuideWrapper, AvatarInput, TextArea, Dice, Toggle, Checkbox
 } from '../../../../components';
 import { useAppState, useAppLocale, useAppAlert } from '../../../../context';
 import { Avatar } from '../../../../assets';
@@ -19,14 +19,6 @@ const TRANSLATION = {
     name: "Companion's name",
     create: 'Create',
     caption: 'Caption',
-    armorClass: 'Armor Class',
-    perception: 'Perception',
-    speed: 'Speed',
-    current: 'Health',
-    max: 'Max health',
-    temp: 'Temp health',
-    damage: 'Damage',
-    heal: 'Heal',
     pets: 'Pets feats',
     familiars: 'Familiar feats'
   },
@@ -34,14 +26,6 @@ const TRANSLATION = {
     name: 'Имя любимца',
     create: 'Добавить',
     caption: 'Описание',
-    armorClass: 'Класс брони',
-    perception: 'Восприятие',
-    speed: 'Скорость',
-    current: 'Хиты',
-    max: 'Макс хиты',
-    temp: 'Врем хиты',
-    damage: 'Урон',
-    heal: 'Лечение',
     pets: 'Черты любимца',
     familiars: 'Черты фамильяра'
   },
@@ -49,14 +33,6 @@ const TRANSLATION = {
     name: 'Nombre del compañero',
     create: 'Create',
     caption: 'Caption',
-    armorClass: 'Armor Class',
-    perception: 'Perception',
-    speed: 'Speed',
-    current: 'Health',
-    max: 'Max health',
-    temp: 'Temp health',
-    damage: 'Damage',
-    heal: 'Heal',
     pets: 'Pets feats',
     familiars: 'Familiar feats'
   }
@@ -235,21 +211,12 @@ export const Pathfinder2Companion = (props) => {
               </Show>
             </div>
           </EditWrapper>
-          <StatsBlock
-            items={[
-              { title: localize(TRANSLATION, locale()).armorClass, value: companion().armor_class },
-              {
-                title: localize(TRANSLATION, locale()).perception,
-                value:
-                  <Dice
-                    width="36"
-                    height="36"
-                    text={modifier(companion().perception)}
-                    onClick={() => props.openDiceRoll('/check initiative empty', companion().perception)}
-                  />
-              },
-              { title: localize(TRANSLATION, locale()).speed, value: companion().speed }
-            ]}
+          <Pathfinder2SharedSenses
+            armorClass={companion().armor_class}
+            perception={companion().perception}
+            speed={companion().speed}
+            speeds={companion().speeds}
+            openDiceRoll={props.openDiceRoll}
           />
           <Pathfinder2SharedHealth
             currentHealth={companion().health}

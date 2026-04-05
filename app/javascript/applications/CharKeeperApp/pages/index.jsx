@@ -67,6 +67,7 @@ export * from './Content/Character/Pathfinder2/Rest';
 export * from './Content/Character/Pathfinder2/Bonuses';
 export * from './Content/Character/Pathfinder2/Companion';
 export * from './Content/Character/Pathfinder2/Shared/Health';
+export * from './Content/Character/Pathfinder2/Shared/Senses';
 
 export * from './Content/Character/Daggerheart';
 export * from './Content/Character/Daggerheart/Traits';
