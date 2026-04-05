@@ -38,7 +38,7 @@
       "ru": "Максимальные ПЗ вашего любимца увеличиваются на 2 за уровень."
     },
     "origin": "pet",
-    "modifiers": { "health.max": { "type": "add", "value": "2 * level" } }
+    "modifiers": { "health_max": { "type": "add", "value": "2 * level" } }
   },
   {
     "slug": "climber",
