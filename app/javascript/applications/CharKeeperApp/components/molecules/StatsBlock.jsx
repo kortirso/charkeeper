@@ -6,7 +6,7 @@ export const StatsBlock = (props) => {
   return (
     <div class="blockable mb-2">
       <div
-        class='p-4 flex'
+        class="p-4 flex"
         classList={{ 'cursor-pointer': props.onClick }}
         onClick={props.onClick} // eslint-disable-line solid/reactivity
       >

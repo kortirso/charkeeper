@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - creating additional spells for PF2 characters
 - selecting feats for companions for PF2 characters
 - counting experience for PF2 characters
+- speed modifications for PF2 characters
 
 ### Modified
 - hp calculations for PF2 characters

@@ -10,6 +10,7 @@ module CharactersContext
         ].freeze
         ANY_VALUE_FIELDS = %i[
           'saving_throws_value.fortitude' 'saving_throws_value.reflex' 'saving_throws_value.will' perception armor_class speed
+          'speeds.swim' 'speeds.fly' 'speeds.climb' 'speeds.burrow'
         ].freeze
 
         # rubocop: disable Metrics/BlockLength
@@ -44,6 +45,10 @@ module CharactersContext
               optional(:perception).hash
               optional(:armor_class).hash
               optional(:speed).hash
+              optional(:'speeds.swim').hash
+              optional(:'speeds.fly').hash
+              optional(:'speeds.climb').hash
+              optional(:'speeds.burrow').hash
               # with concat type
               optional(:resistance).hash
               optional(:immunity).hash

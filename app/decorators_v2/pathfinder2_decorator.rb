@@ -32,6 +32,7 @@ class Pathfinder2Decorator < ApplicationDecoratorV2
     @result = Pathfinder2::ClassDecorator.new.call(result: @result)
 
     apply_add_modifiers
+    update_speeds
 
     @result['features'] = apply_features
     @result['formatted_static_spells'] = format_static_spells
@@ -71,6 +72,7 @@ class Pathfinder2Decorator < ApplicationDecoratorV2
     }
     @result['armor_class'] = calc_armor_class
     @result['speed'] = calc_speed
+    @result['speeds'] = { 'fly' => -1, 'swim' => -1, 'climb' => -1, 'burrow' => -1 }
     @result['perception'] = modified_abilities['wis'] + proficiency_bonus(perception)
     @result['load'] = modified_abilities['str'] + 5
     @result['class_dc'] = 10 + modified_abilities[main_ability] + proficiency_bonus(class_dc.to_i)
@@ -171,6 +173,10 @@ class Pathfinder2Decorator < ApplicationDecoratorV2
     res.each do |(key_name, values)|
       @result[key_name] = (@result[key_name] + values).uniq
     end
+  end
+
+  def update_speeds
+    @result['speeds'] = speeds.transform_values { |value| value.zero? ? speed : value }.delete_if { |_, v| v.negative? }
   end
 
   def unarmed_attack

@@ -6,9 +6,9 @@ module Pathfinder2
       include Deps[cache: 'cache.avatars']
 
       attributes :id, :name, :caption, :avatar, :data, :level, :saving_throws_value, :health_max, :armor_class, :speed,
-                 :perception, :skills, :health, :health_temp, :selected_feats
+                 :perception, :skills, :health, :health_temp, :selected_feats, :speeds
 
-      delegate :level, :saving_throws_value, :health_max, :armor_class, :speed, :perception, :skills, to: :decorator
+      delegate :level, :saving_throws_value, :health_max, :armor_class, :speed, :perception, :skills, :speeds, to: :decorator
       delegate :data, to: :object
       delegate :health, :health_temp, :selected_feats, to: :data
 
