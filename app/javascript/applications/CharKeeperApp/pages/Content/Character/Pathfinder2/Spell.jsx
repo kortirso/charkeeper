@@ -16,7 +16,8 @@ const TRANSLATION = {
     saveDC: 'Save DC',
     limit: 'Limit',
     cantrip: 'Cantrip',
-    heightened: 'Heightened'
+    heightened: 'Heightened',
+    sustained: 'Sustained'
   },
   ru: {
     level: 'уровень',
@@ -26,7 +27,8 @@ const TRANSLATION = {
     saveDC: 'Спасброски',
     limit: 'Лимит',
     cantrip: 'Фокус',
-    heightened: 'Повышенное'
+    heightened: 'Повышенное',
+    sustained: 'Поддерживаемое'
   }
 }
 
@@ -106,16 +108,19 @@ export const Pathfinder2Spell = (props) => {
                 </For>
               </div>
             </Show>
-            <SpellRange value={spell().info.range} />
-            <SpellDuration value={spell().info.duration} />
-            <SpellDefense value={spell().info.defense} />
           </div>
           <Show when={props.prepareMode && props.children}>{props.children}</Show>
         </div>
       }
     >
+      <SpellRange value={spell().info.range} />
+      <SpellDuration value={spell().info.duration} />
+      <SpellDefense value={spell().info.defense} />
+      <Show when={spell().info.sustained}>
+        <p class="text-sm mt-1 font-medium!">{localize(TRANSLATION, locale()).sustained}</p>
+      </Show>
       <p
-        class="feat-markdown"
+        class="feat-markdown mt-1"
         innerHTML={spell().description} // eslint-disable-line solid/no-innerhtml
       />
       <Show when={spell().info.enhancements && spell().info.enhancements.length > 0}>

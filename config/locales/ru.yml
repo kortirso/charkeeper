@@ -342,10 +342,12 @@ ru:
         elf: Эльф
         emotion: Эмоции
         exploration: Исследование
+        extradimensional: Межпространственный
         fear: Страх
         fighter: Воин
         fire: Огонь
-        flourish: 
+        flourish: Усилие
+        focus: Фокальное
         force: Сила
         fortune: Удача
         general: Общий
@@ -366,6 +368,7 @@ ru:
         mental: Ментальный
         misfortune: Неудача
         morph: Метаморфоза
+        move: Движение
         nonlethal: Несмертельное
         oracle: Оракул
         orc: Орк
@@ -380,12 +383,16 @@ ru:
         rogue: Плут
         sanctified: Освящённый
         secret: Тайна
+        shadow: Тень
         skill: Навык
+        sleep: Сон
+        sonic: Звук
         sorcerer: Чародей
         spellshape: Метамагия
         spirit: Дух
         stance: Стойка
         subtle: Незаметное
+        summon: Призыв
         swashbuckler: Сорвиголова
         thaumaturge: Thaumaturge
         uncommon: Необычный

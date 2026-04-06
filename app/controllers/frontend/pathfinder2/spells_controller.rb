@@ -23,7 +23,7 @@ module Frontend
       end
 
       def cache_options
-        { key: ["spells/pathfinder2/#{I18n.locale}/v1.5", params[:max_level]].compact.join('/'), expires_in: 12.hours }
+        { key: ["spells/pathfinder2/#{I18n.locale}/v2.5", params[:max_level]].compact.join('/'), expires_in: 12.hours }
       end
 
       def relation

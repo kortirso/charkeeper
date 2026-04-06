@@ -2804,20 +2804,23 @@
   },
   {
     "slug": "terrain_stalker",
-    "kind": "text",
+    "kind": "many_from_list",
     "title": {
       "en": "Terrain Stalker",
       "ru": "Скрытность на местности"
     },
     "description": {
-      "en": "**Prerequisites** trained in Stealth.\n\nSelect one type of difficult terrain from the following list: rubble, snow, or underbrush. While undetected by all non-allies in that type of terrain, you can Sneak without attempting a Stealth check as long as you move no more than 5 feet and do not pass within 10 feet of an enemy during your movement.\n\nDuring exploration, this also allows you to automatically approach within 15 feet of other creatures while Avoiding their Notice, as long as they aren't actively Searching or on guard.",
-      "ru": "**Критерии** изученная Скрытность.\n\nВыберите один из следующих типов пересечённой местности: камни, подлесок или снег. Если вы находитесь в такой местности и не обнаружены никем, кроме союзников, то можете Красться без проверок Скрытности при условии, что перемещаетесь не более чем на 5 футов и при этом не оказываетесь ближе 10 футов от противника. При Незаметном перемещении во время исследования черта позволяет вам автоматически приблизиться к существу на расстояние до 15 футов, если оно не совершает Обыск и не находится настороже."
+      "en": "**Prerequisites** trained in Stealth.\n\nSelect one type of difficult terrain from the following list. While undetected by all non-allies in that type of terrain, you can Sneak without attempting a Stealth check as long as you move no more than 5 feet and do not pass within 10 feet of an enemy during your movement.\n\nDuring exploration, this also allows you to automatically approach within 15 feet of other creatures while Avoiding their Notice, as long as they aren't actively Searching or on guard.",
+      "ru": "**Критерии** изученная Скрытность.\n\nВыберите один из следующих типов пересечённой местности. Если вы находитесь в такой местности и не обнаружены никем, кроме союзников, то можете Красться без проверок Скрытности при условии, что перемещаетесь не более чем на 5 футов и при этом не оказываетесь ближе 10 футов от противника. При Незаметном перемещении во время исследования черта позволяет вам автоматически приблизиться к существу на расстояние до 15 футов, если оно не совершает Обыск и не находится настороже."
     },
     "origin": "skill",
     "origin_values": ["general", "skill"],
     "conditions": { "level": 1 },
-    "info": {
-      "multiple": true
+    "info": { "multiple": true },
+    "options": {
+      "rubble": { "en": "Rubble", "ru": "Камни" },
+      "snow": { "en": "Snow", "ru": "Снег" },
+      "underbrush": { "en": "Underbrush", "ru": "Подлесок" }
     }
   },
   {
@@ -2907,18 +2910,29 @@
   },
   {
     "slug": "virtuosic_performer",
-    "kind": "text",
+    "kind": "one_from_list",
     "title": {
       "en": "Virtuosic Performer",
       "ru": "Исполнитель-виртуоз"
     },
     "description": {
       "en": "**Prerequisites** trained in Performance.\n\nYou have exceptional talent with one type of performance. You gain a +1 circumstance bonus when making a certain type of performance. If you are a master in Performance, this bonus increases to +2.",
-      "ru": "**Критерии** изученное Исполнение.\n\nУ вас дар в одном из типов исполнения. Выберите один из следующих типов. Вы получаете ситуативный бонус +1 при проверках Исполнения с соответствующим типом. Если вы мастер Исполнения, бонус увеличивается до +2."
+      "ru": "**Критерии** изученное Исполнение.\n\nУ вас дар в одном из типов исполнения. Вы получаете ситуативный бонус +1 при проверках Исполнения с соответствующим типом. Если вы мастер Исполнения, бонус увеличивается до +2."
     },
     "origin": "skill",
     "origin_values": ["general", "skill"],
-    "conditions": { "level": 1 }
+    "conditions": { "level": 1 },
+    "options": {
+      "acting": { "en": "Acting", "ru": "Лицедейство" },
+      "comedy": { "en": "Comedy", "ru": "Шутовство" },
+      "dance": { "en": "Dance", "ru": "Танец" },
+      "keyboards": { "en": "Keyboards", "ru": "Клавишные инструменты" },
+      "oratory": { "en": "Oratory", "ru": "Красноречие" },
+      "percussion": { "en": "Percussion", "ru": "Ударные инструменты" },
+      "singing": { "en": "Singing", "ru": "Пение" },
+      "strings": { "en": "Strings", "ru": "Струнные инструменты" },
+      "winds": { "en": "Winds", "ru": "Духовые инструменты" }
+    }
   },
   {
     "slug": "weapon_proficiency",

@@ -342,10 +342,12 @@ en:
         elf: Elf
         emotion: Emotion
         exploration: Exploration
+        extradimensional: Extradimensional
         fear: Fear
         fighter: Fighter
         fire: Fire
         flourish: Flourish
+        focus: Focus
         force: Force
         fortune: Fortune
         general: General
@@ -366,6 +368,7 @@ en:
         mental: Mental
         misfortune: Misfortune
         morph: Morph
+        move: Move
         nonlethal: Nonlethal
         oracle: Oracle
         orc: Orc
@@ -380,12 +383,16 @@ en:
         rogue: Rogue
         sanctified: Sanctified
         secret: Secret
+        shadow: Shadow
         skill: Skill
+        sleep: Sleep
+        sonic: Sonic
         sorcerer: Sorcerer
         spellshape: Spellshape
         spirit: Spirit
         stance: Stance
         subtle: Subtle
+        summon: Summon
         swashbuckler: Swashbuckler
         thaumaturge: Thaumaturge
         uncommon: Uncommon
