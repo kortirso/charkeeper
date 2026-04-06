@@ -8,7 +8,7 @@ module Pathfinder2
       attributes(*ATTRIBUTES)
 
       def spell
-        Pathfinder2::SpellSerializer.new.serialize(object.feat)
+        Pathfinder2::SpellSerializer.new(context: context).serialize(object.feat)
       end
     end
   end
