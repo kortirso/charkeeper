@@ -198,7 +198,7 @@
     "price": { "a": 2 },
     "info": {
       "level": 1,
-      "range": "30,f",
+      "range": "30,ft",
       "defense": "will",
       "duration": "1,h",
       "enhancements": [
@@ -285,7 +285,7 @@
     "price": { "a": 2 },
     "info": {
       "level": 1,
-      "range": "10,f",
+      "range": "10,ft",
       "area": "cube,1",
       "enhancements": [
         {
@@ -324,7 +324,7 @@
     "price": { "a": 2 },
     "info": {
       "level": 1,
-      "range": "30,f",
+      "range": "30,ft",
       "defense": "will",
       "duration": "1,r",
       "enhancements": [
@@ -417,7 +417,7 @@
     "price": { "a": 2 },
     "info": {
       "level": 1,
-      "range": "30,f",
+      "range": "30,ft",
       "enhancements": [
         {
           "name": {
@@ -453,7 +453,7 @@
     "info": {
       "level": 1,
       "time": "1,m",
-      "range": "30,f",
+      "range": "30,ft",
       "duration": "1,d",
       "enhancements": [
         {
@@ -558,7 +558,7 @@
     "price": { "a": 2 },
     "info": {
       "level": 1,
-      "range": "30,f",
+      "range": "30,ft",
       "defense": "fortitude",
       "enhancements": [
         {
@@ -627,7 +627,7 @@
     "price": { "a": 2 },
     "info": {
       "level": 1,
-      "range": "30,f",
+      "range": "30,ft",
       "defense": "will",
       "enhancements": [
         {
@@ -727,7 +727,7 @@
     "price": { "a": 1 },
     "info": {
       "level": 1,
-      "range": "120,f",
+      "range": "120,ft",
       "defense": "",
       "duration": "",
       "enhancements": [
@@ -764,7 +764,7 @@
     "price": { "r": 1 },
     "info": {
       "level": 1,
-      "range": "60,f",
+      "range": "60,ft",
       "duration": "1,m"
     }
   },
@@ -855,7 +855,7 @@
     "price": { "a": 2 },
     "info": {
       "level": 1,
-      "range": "30,f",
+      "range": "30,ft",
       "duration": "1,m"
     }
   },
@@ -1127,7 +1127,7 @@
     "price": { "a": 2 },
     "info": {
       "level": 1,
-      "range": "60,f",
+      "range": "60,ft",
       "defense": "ac",
       "enhancements": [
         {
@@ -1185,7 +1185,7 @@
     "price": { "a": 2 },
     "info": {
       "level": 1,
-      "range": "30,f",
+      "range": "30,ft",
       "defense": "will",
       "duration": "1,r",
       "enhancements": [
@@ -1244,7 +1244,7 @@
     "price": { "a": 2 },
     "info": {
       "level": 1,
-      "range": "30,f",
+      "range": "30,ft",
       "duration": "1,h",
       "enhancements": [
         {

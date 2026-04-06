@@ -317,9 +317,11 @@ es:
     pathfinder:
       general:
         acid: Acid
+        air: Air
         animist: Animist
         attack: Attack
         auditory: Auditory
+        aura: Aura
         barbarian: Barbarian
         bard: Bard
         cantrip: Cantrip
@@ -330,6 +332,7 @@ es:
         curse: Curse
         darkness: Darkness
         detection: Detection
+        disease: Disease
         divine: Divine
         downtime: Downtime
         druid: Druid
@@ -361,6 +364,7 @@ es:
         magus: Magus
         manipulate: Manipulate
         mental: Mental
+        misfortune: Misfortune
         morph: Morph
         nonlethal: Nonlethal
         oracle: Oracle
@@ -388,6 +392,7 @@ es:
         visual: Visual
         vitality: Vitality
         void: Void
+        water: Water
         witch: Witch
         wizard: Wizard
         wood: Wood

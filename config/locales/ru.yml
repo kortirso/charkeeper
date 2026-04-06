@@ -317,9 +317,11 @@ ru:
     pathfinder:
       general:
         acid: Кислота
+        air: Воздух
         animist: Анимист
         attack: Атака
         auditory: Слух
+        aura: Аура
         barbarian: Варвар
         bard: Бард
         cantrip: Фокус
@@ -330,6 +332,7 @@ ru:
         curse: Проклятие
         darkness: Тьма
         detection: Обнаружение
+        disease: Болезнь
         divine: Сакральный
         downtime: Свободное время
         druid: Друид
@@ -361,6 +364,7 @@ ru:
         magus: Magus
         manipulate: Манипуляция
         mental: Ментальный
+        misfortune: Неудача
         morph: Метаморфоза
         nonlethal: Несмертельное
         oracle: Оракул
@@ -388,6 +392,7 @@ ru:
         visual: Зрение
         vitality: Жизнь
         void: Пустота
+        water: Вода
         witch: Ведьма
         wizard: Волшебник
         wood: Дерево
