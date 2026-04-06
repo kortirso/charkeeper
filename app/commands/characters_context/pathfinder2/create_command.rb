@@ -40,8 +40,9 @@ module CharactersContext
         rule(:main_class, :subclass) do
           next if values[:subclass].nil?
 
-          subclasses = ::Pathfinder2::Character.subclasses_info(values[:main_class]).keys
-          next if subclasses&.include?(values[:subclass])
+          subclasses_info = ::Pathfinder2::Character.subclasses_info(values[:main_class])
+          next if subclasses_info.nil?
+          next if subclasses_info.key?(values[:subclass])
 
           key(:subclass).failure(:invalid)
         end
