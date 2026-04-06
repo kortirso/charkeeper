@@ -13,10 +13,11 @@ module Pathfinder2Context
       @level = character.data.level + 1
 
       if skill_boost_levels.include?(level)
-        @result[:skill_boosts] = character.data.skill_boosts.merge({ 'free' => 1 }, &merge_sum)
+        @result[:skill_boosts] = (character.data.skill_boosts || {}).merge({ 'free' => 1 }, &merge_sum)
       end
       if ABILITY_BOOST_LEVEL.include?(level)
-        @result[:ability_boosts_v2] = character.data.ability_boosts_v2.deep_merge({ 'base' => { 'free' => 4 } }, &merge_sum)
+        @result[:ability_boosts_v2] =
+          (character.data.ability_boosts_v2 || {}).deep_merge({ 'base' => { 'free' => 4 } }, &merge_sum)
       end
     end
 
