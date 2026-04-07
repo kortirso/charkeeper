@@ -489,6 +489,7 @@ es:
         trip: "Puedes usar esta arma para derribar con la habilidad Atletismo aunque no tengas una mano libre. Esto usa el alcance del arma (si es diferente al tuyo) y añade la bonificación del arma a las tiradas de ataque como bonificación de objeto a la tirada de Atletismo. Si fallas críticamente una tirada para derribar usando el arma, puedes soltar el arma para sufrir los efectos de un fallo en lugar de un fallo crítico"
         twin: "Cuando atacas con un arma gemela, añades una bonificación circunstancial a la tirada de daño igual al número de dados de daño del arma si has atacado previamente con un arma diferente del mismo tipo en este turno. Las armas deben ser del mismo tipo, pero no es necesario que tengan las mismas runas"
         two_hand: "Esta arma se puede empuñar con las dos manos para cambiar su dado de daño al valor indicado. Este cambio se aplica a todos los dados de daño del arma."
+        unarmed: An unarmed attack uses your body rather than a manufactured weapon.
         volley: Tus ataques contra objetivos que se encuentran a una distancia dentro del rango indicado reciben una penalización de -2.
         title:
           bludge: Contundente
@@ -515,6 +516,7 @@ es:
           trip: Derribar
           twin: Gemela
           two_hand: A dos manos %{value}
+          unarmed: Unarmed
           volley: Volley %{value}
     dc20:
       spell_tags:

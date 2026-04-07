@@ -14,6 +14,7 @@ class Pathfinder2Decorator < ApplicationDecoratorV2
   CLASS_HP = {
     'bard' => 8, 'witch' => 6, 'fighter' => 10, 'wizard' => 6, 'druid' => 8, 'cleric' => 8, 'rogue' => 8, 'ranger' => 10
   }.freeze
+  FAMILIAR_FEATS = %w[animal_accomplice leshy_familiar familiar].freeze
 
   def call(character:, simple: false, version: nil)
     @character = character
@@ -81,8 +82,7 @@ class Pathfinder2Decorator < ApplicationDecoratorV2
       spell_attack.to_i.positive? ? modified_abilities[main_ability] + proficiency_bonus(spell_attack.to_i) : 0
     @result['spell_dc'] = spell_dc.to_i.positive? ? 10 + modified_abilities[main_ability] + proficiency_bonus(spell_dc.to_i) : 0
     @result['can_have_pet'] = available_features_slugs.include?('pet')
-    @result['can_have_familiar'] =
-      available_features_slugs.include?('familiar') || available_features_slugs.include?('leshy_familiar')
+    @result['can_have_familiar'] = available_features_slugs.intersect?(FAMILIAR_FEATS)
   end
 
   def apply_set_modifiers # rubocop: disable Metrics/AbcSize, Metrics/PerceivedComplexity, Metrics/CyclomaticComplexity
@@ -122,7 +122,7 @@ class Pathfinder2Decorator < ApplicationDecoratorV2
   end
 
   def find_weapon_modifiers(item_list, base_list, modifiers) # rubocop: disable Metrics/AbcSize
-    res = [item_list, base_list].flat_map do |items|
+    res = [item_list, base_list].compact.flat_map do |items|
       items.filter_map do |key, value|
         modifiers.include?(key) && value['type'] == 'add' && { key => value['value'] }
       end
@@ -136,7 +136,15 @@ class Pathfinder2Decorator < ApplicationDecoratorV2
   end
 
   def find_attacks
-    @result['attacks'] = [unarmed_attack] + weapon_attacks.compact
+    @result['attacks'] =
+      (feature_weapons + [unarmed_weapon] + weapons).flat_map do |item|
+        tooltips = parse_tooltips(item)
+
+        case item[:items_info]['type']
+        when 'unarmed', 'melee' then melee_attack(item, tooltips)
+        when 'range' then range_attack(item, tooltips)
+        end
+      end
   end
 
   def apply_add_modifiers # rubocop: disable Metrics/CyclomaticComplexity, Metrics/AbcSize, Metrics/MethodLength, Metrics/PerceivedComplexity
@@ -181,34 +189,19 @@ class Pathfinder2Decorator < ApplicationDecoratorV2
     @result['speeds'] = speeds.transform_values { |value| value.zero? ? speed : value }.delete_if { |_, v| v.negative? }
   end
 
-  def unarmed_attack # rubocop: disable Metrics/AbcSize
-    attack_bonus = find_weapon_modifiers({}, {}, %w[attack unarmed_attacks])
-    damage_bonus = find_weapon_modifiers({}, {}, %w[damage unarmed_damage])
-    key_ability_bonus = find_key_ability_bonus('melee', ['finesse'])
+  def unarmed_weapon
     {
-      slug: 'unarmed',
-      name: translate({ en: 'Unarmed', ru: 'Безоружная' }),
-      attack_bonus: key_ability_bonus + proficiency_bonus(weapon_skills['unarmed']) + attack_bonus,
-      damage: '1d4',
-      damage_bonus: modified_abilities['str'] + damage_bonus + damage_bonuses['unarmed'].to_i,
-      tags: ['bludge'].index_with { |type| I18n.t("tags.pathfinder2.weapon.title.#{type}") }.merge(
-        { 'agile' => nil, 'nonlethal' => nil }.to_h do |key, value|
-          [key, I18n.t("tags.pathfinder2.weapon.title.#{key}", value: value)]
-        end
-      ),
-      ready_to_use: true
+      items_slug: 'unarmed',
+      items_name: { 'en' => 'Unarmed', 'ru' => 'Безоружная' },
+      items_info: {
+        'group' => 'brawling',
+        'weapon_skill' => 'unarmed',
+        'type' => 'melee',
+        'damage' => '1d4',
+        'damage_type' => 'bludge',
+        'tooltips' => %w[agile nonlethal unarmed finesse]
+      }
     }
-  end
-
-  def weapon_attacks
-    weapons.flat_map do |item|
-      tooltips = parse_tooltips(item)
-
-      case item[:items_info]['type']
-      when 'melee' then melee_attack(item, tooltips)
-      when 'range' then range_attack(item, tooltips)
-      end
-    end
   end
 
   def parse_tooltips(item)
@@ -550,6 +543,22 @@ class Pathfinder2Decorator < ApplicationDecoratorV2
       .hashable_pluck(
         'items.slug', 'items.name', 'items.kind', 'items.info', 'items.modifiers', :quantity, :notes, :states, :modifiers, :name
       )
+  end
+
+  def feature_weapons
+    available_features
+      .hashable_pluck(:ready_to_use, :active, 'feats.continious', 'feats.info', 'feats.origin')
+      .select { |item|
+        next false if PET_ORIGINS.include?(item[:feats_origin])
+        next false if item[:feats_info]['weapons'].blank?
+
+        (!item[:feats_continious] && item[:ready_to_use]) || item[:active]
+      }
+      .pluck(:feats_info)
+      .compact_blank
+      .pluck('weapons')
+      .flatten
+      .map(&:symbolize_keys)
   end
 
   def active_items
