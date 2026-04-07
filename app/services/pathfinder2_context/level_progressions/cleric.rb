@@ -31,6 +31,7 @@ module Pathfinder2Context
 
         if level == 9
           @result[:saving_throws] = character.data.saving_throws.merge({ 'will' => 3 }, &merge_resolver)
+          @result[:selected_features] = { 'weapon' => 'perseverance' }
         end
 
         if level == 11
@@ -58,6 +59,7 @@ module Pathfinder2Context
 
         if level == 15 && character.data.subclasses['cleric'] == 'warpriest'
           @result[:saving_throws] = character.data.saving_throws.merge({ 'fortitude' => 3 }, &merge_resolver)
+          @result[:selected_features] = { 'weapon' => 'battle_hardened' }
         end
 
         if level == 19 && character.data.subclasses['cleric'] == 'cloistered_cleric'

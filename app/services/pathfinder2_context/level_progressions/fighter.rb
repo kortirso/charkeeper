@@ -18,6 +18,7 @@ module Pathfinder2Context
 
         if level == 9
           @result[:saving_throws] = character.data.saving_throws.merge({ 'fortitude' => 3 }, &merge_resolver)
+          @result[:selected_features] = { 'weapon' => 'battle_hardened' }
         end
 
         if level == 11
@@ -35,7 +36,7 @@ module Pathfinder2Context
 
         if level == 15
           @result[:saving_throws] = character.data.saving_throws.merge({ 'reflex' => 3 }, &merge_resolver)
-          @result[:selected_features] = { 'weapon' => 'greater_weapon_specialization' }
+          @result[:selected_features] = { 'weapon' => 'greater_weapon_specialization', 'defense' => 'tempered_reflexes' }
         end
 
         if level == 17

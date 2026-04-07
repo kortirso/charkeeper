@@ -248,7 +248,7 @@ class Pathfinder2Decorator < ApplicationDecoratorV2
       .merge({
         thrown_attack_bonus: thrown_attack_bonus ? thrown_attack_bonus + attack_bonus : nil,
         distance: tooltips.key?('thrown') ? item[:items_info]['dist'] : (tooltips.key?('reach') ? 10 : nil), # rubocop: disable Style/NestedTernaryOperator
-        damage_bonus: modified_abilities['str'] + damage_bonus
+        damage_bonus: modified_abilities['str'] + damage_bonus + damage_bonuses[item[:items_info]['weapon_skill']].to_i
       })
   end
 
@@ -260,7 +260,7 @@ class Pathfinder2Decorator < ApplicationDecoratorV2
     attack_values(item, key_ability_bonus, tooltips, attack_bonus)
       .merge({
         distance: item[:items_info]['dist'],
-        damage_bonus: (tooltips.key?('propulsive') ? (modified_abilities['str'].positive? ? (modified_abilities['str'] / 2) : modified_abilities['str']) : 0) + damage_bonus + damage_bonuses[weapon_skills[item[:items_info]['weapon_skill']]].to_i # rubocop: disable Style/NestedTernaryOperator, Layout/LineLength
+        damage_bonus: (tooltips.key?('propulsive') ? (modified_abilities['str'].positive? ? (modified_abilities['str'] / 2) : modified_abilities['str']) : 0) + damage_bonus + damage_bonuses[item[:items_info]['weapon_skill']].to_i # rubocop: disable Style/NestedTernaryOperator, Layout/LineLength
       })
   end
 

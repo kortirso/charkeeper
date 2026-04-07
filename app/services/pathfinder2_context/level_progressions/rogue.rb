@@ -17,7 +17,7 @@ module Pathfinder2Context
         if level == 7
           @result[:perception] = [character.data.perception, 3].max
           @result[:saving_throws] = character.data.saving_throws.merge({ 'reflex' => 3 }, &merge_resolver)
-          @result[:selected_features] = { 'weapon' => 'weapon_specialization' }
+          @result[:selected_features] = { 'weapon' => 'weapon_specialization', 'defense' => 'tempered_reflexes' }
         end
 
         if level == 9
@@ -34,6 +34,7 @@ module Pathfinder2Context
           @result[:armor_skills] = character.data.armor_skills.merge({ 'unarmored' => 2, 'light' => 2 }, &merge_resolver)
           @result[:weapon_skills] =
             character.data.weapon_skills.merge({ 'unarmed' => 3, 'simple' => 3, 'martial' => 3 }, &merge_resolver)
+          @result[:selected_features] = { 'defense' => 'greater_tempered_reflexes' }
         end
 
         if level == 15
@@ -42,6 +43,7 @@ module Pathfinder2Context
 
         if level == 17
           @result[:saving_throws] = character.data.saving_throws.merge({ 'will' => 3 }, &merge_resolver)
+          @result[:selected_features] = { 'defense' => 'perseverance' }
         end
 
         if level == 19

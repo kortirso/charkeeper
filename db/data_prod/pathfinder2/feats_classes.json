@@ -137,5 +137,123 @@
     "origin_value": "wizard",
     "conditions": { "selected_feature": "improved_familiar_attunement" },
     "info": { "extra_feats": ["familiar"] }
+  },
+  {
+    "slug": "divine_font",
+    "kind": "one_from_list",
+    "title": {
+      "en": "Divine Font",
+      "ru": "Божественный источник"
+    },
+    "description": {
+      "en": "Through your deity's blessing, you gain additional spells that channel either the life force called vitality or its counterforce, the void.",
+      "ru": "Ваше божество благословляет вас, даруя дополнительные заклинания, проводящие либо энергию жизни, либо её противоположность — энергию пустоты."
+    },
+    "origin": "static_class",
+    "origin_value": "cleric",
+    "options": {
+      "healing_font": { "en": "Healing Font", "ru": "Исцеляющий источник" },
+      "harmful_font": { "en": "Harmful Font", "ru": "Повреждающий источник" }
+    }
+  },
+  {
+    "slug": "healing_font",
+    "kind": "static",
+    "title": {
+      "en": "Healing Font",
+      "ru": "Исцеляющий источник"
+    },
+    "description": {
+      "en": "You gain 4 additional spell slots each day at your highest rank of cleric spell slots. You can prepare only **Heal** spells in these slots. At 5th level, the number of additional slots increases to 5, and at 15th level, the total number of additional slots increases to 6. ",
+      "ru": "Каждый день вы получаете 4 дополнительные ячейки заклинаний жреца самого высокого доступного вам круга. В этих ячейках вы можете подготовить только **Излечение**. На 5 уровне число дополнительных ячеек повысится до 5, а на 15 уровне — до 6."
+    },
+    "origin": "static_class",
+    "origin_value": "cleric",
+    "conditions": { "selected_feature": "healing_font" }
+  },
+  {
+    "slug": "harmful_font",
+    "kind": "static",
+    "title": {
+      "en": "Harmful Font",
+      "ru": "Повреждающий источник"
+    },
+    "description": {
+      "en": "You gain 4 additional spell slots each day at your highest rank of cleric spell slots. You can prepare only **Harm** spells in these slots. At 5th level, the number of additional slots increases to 5, and at 15th level, the total number of additional slots increases to 6.",
+      "ru": "Каждый день вы получаете 4 дополнительные ячейки заклинаний жреца самого высокого доступного вам круга. В этих ячейках вы можете подготовить только излечение. На 5 уровне число дополнительных ячеек повысится до 5, а на 15 уровне — до 6."
+    },
+    "origin": "static_class",
+    "origin_value": "cleric",
+    "conditions": { "selected_feature": "harmful_font" }
+  },
+  {
+    "slug": "perseverance",
+    "kind": "static",
+    "title": {
+      "en": "Perseverance",
+      "ru": "Непоколебимость"
+    },
+    "description": {
+      "en": "When you roll a success on a Will save, you get a critical success instead.",
+      "ru": "Когда вы получаете успех в испытании Воли, он считается для вас критическим успехом."
+    },
+    "origin": "class",
+    "origin_values": []
+  },
+  {
+    "slug": "greater_perseverance",
+    "kind": "static",
+    "title": {
+      "en": "Greater Perseverance",
+      "ru": "Улучшенная непоколебимость"
+    },
+    "description": {
+      "en": "When you roll a critical failure on a Will save, you get a failure instead. When you fail a Will save against an effect that deals damage, you take half damage.",
+      "ru": "Когда вы получаете критический провал в испытании Воли, он считается для вас обычным провалом. Когда вы получаете провал (но не критический провал) в испытании Воли против наносящего урон эффекта, получаемый вами урон уменьшается вдвое."
+    },
+    "origin": "class",
+    "origin_values": []
+  },
+  {
+    "slug": "battle_hardened",
+    "kind": "static",
+    "title": {
+      "en": "Battle Hardened",
+      "ru": "Джаггернаут"
+    },
+    "description": {
+      "en": "When you roll a success on a Fortitude save, you get a critical success instead.",
+      "ru": "Когда вы получаете успех в испытании Стойкости, он считается для вас критическим успехом."
+    },
+    "origin": "class",
+    "origin_values": []
+  },
+  {
+    "slug": "tempered_reflexes",
+    "kind": "static",
+    "title": {
+      "en": "Tempered Reflexes",
+      "ru": "Уклонение"
+    },
+    "description": {
+      "en": "When you roll a success on a Reflex save, you get a critical success instead.",
+      "ru": "Когда вы получаете успех в испытании Реакции, он считается для вас критическим успехом."
+    },
+    "origin": "class",
+    "origin_values": []
+  },
+  {
+    "slug": "greater_tempered_reflexes",
+    "kind": "static",
+    "title": {
+      "en": "Greater Tempered Reflexes",
+      "ru": "Улучшенное уклонение"
+    },
+    "description": {
+      "en": "When you roll a critical failure on a Reflex save, you get a failure instead. When you roll a failure on a Reflex save against a damaging effect, you take half damage.",
+      "ru": "Когда вы получаете критический провал в испытании Реакции, он считается для вас обычным провалом. Когда вы получаете провал (но не критический провал) в испытании Реакции против наносящего урон эффекта, получаемый вами урон уменьшается вдвое."
+    },
+    "origin": "class",
+    "origin_values": []
   }
 ]
