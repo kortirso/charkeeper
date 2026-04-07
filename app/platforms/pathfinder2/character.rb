@@ -38,6 +38,7 @@ module Pathfinder2
     attribute :health_current, :integer, default: 6
     attribute :health_temp, :integer, default: 0
     attribute :hero_points, :integer, default: 0
+    attribute :damage_reduction, array: true, default: { 'immune' => {}, 'weakness' => {}, 'resistance' => {} }
     # только для 1 уровня
     attribute :ability_boosts, array: true # дополнительные повышения характеристик
     attribute :ability_boosts_v2, array: true, default: {} # дополнительные повышения характеристик

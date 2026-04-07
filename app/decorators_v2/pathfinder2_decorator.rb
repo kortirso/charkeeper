@@ -83,6 +83,29 @@ class Pathfinder2Decorator < ApplicationDecoratorV2
     @result['spell_dc'] = spell_dc.to_i.positive? ? 10 + modified_abilities[main_ability] + proficiency_bonus(spell_dc.to_i) : 0
     @result['can_have_pet'] = available_features_slugs.include?('pet')
     @result['can_have_familiar'] = available_features_slugs.intersect?(FAMILIAR_FEATS)
+    @result['total_damage_reduction'] = calc_total_damage_reduction
+  end
+
+  def calc_total_damage_reduction # rubocop: disable Metrics/AbcSize, Metrics/PerceivedComplexity
+    reductions = {}
+    damage_reduction.each do |impact, values|
+      values.each do |impact_type, value|
+        reductions[impact_type] ||= {}
+        reductions[impact_type][impact] = value.to_i
+      end
+    end
+    all_modifiers.flat_map do |items|
+      items.filter_map { |key, value| value['type'] == 'damage_reduction' && { key => value['value'] } }
+    end.compact_blank.each do |value|
+      key = value.keys[0]
+      formula_result = formula.call(formula: value[key], variables: formula_variables)
+      next unless formula_result
+
+      impact, impact_type = key.split('.')
+      reductions[impact_type] ||= {}
+      reductions[impact_type][impact] = [formula_result, reductions[impact_type][impact]].compact.max
+    end
+    reductions
   end
 
   def apply_set_modifiers # rubocop: disable Metrics/AbcSize, Metrics/PerceivedComplexity, Metrics/CyclomaticComplexity

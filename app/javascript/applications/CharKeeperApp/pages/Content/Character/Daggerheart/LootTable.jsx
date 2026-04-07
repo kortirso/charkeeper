@@ -88,7 +88,7 @@ export const DaggerheartLootTable = (props) => {
     const result = await createDaggerheartLootRequest(appState.accessToken, 'daggerheart', type(), dices());
     performResponse(
       result,
-      function() { // eslint-disable-line solid/reactivity
+      function() {
         setLootedItem(result.item)
       },
       function() { renderAlerts(result.errors_list) }
