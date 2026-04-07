@@ -17,7 +17,7 @@ module Frontend
 
     def index
       render json: Panko::Response.new(
-        characters: characters.flatten.sort_by { |item| item['created_at'] }.reverse
+        characters: characters.flatten.sort_by { |item| item['name'] }
       ), status: :ok
     end
 

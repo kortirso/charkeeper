@@ -90,7 +90,7 @@ export const Pathfinder2Leveling = (props) => {
     if (!feats()) return {};
     if (!featFilter()) return {};
 
-    const checkTags = (featFilter().type === 'ancestry' || featFilter().type === 'class') && selectedTags().length > 0;
+    const checkTags = selectedTags().length > 0;
 
     return Object.fromEntries(
       feats().filter((item) => {
@@ -110,9 +110,11 @@ export const Pathfinder2Leveling = (props) => {
     batch(() => {
       setFeatFilter({ type: type, level: level });
       if (type === 'class') setSelectedTags([character().main_class]);
-      if (type === 'ancestry') setSelectedTags([character().race]);
-      if (type === 'skill') setSelectedTags(['skill']);
-      if (type === 'general') setSelectedTags(['general']);
+      else if (type === 'ancestry') setSelectedTags([character().race]);
+      else if (type === 'skill') setSelectedTags(['skill']);
+      else if (type === 'general') setSelectedTags(['general']);
+      else setSelectedTags([]);
+      setSelectedFeat(null);
       openModal();
     });
   }

@@ -4,6 +4,10 @@ module CharactersContext
   module Pathfinder2
     module Feats
       class AddCommand < BaseCommand
+        include Deps[
+          add_spell: 'commands.characters_context.pathfinder2.spells.add'
+        ]
+
         use_contract do
           Types = Dry::Types['strict.string'].enum('ancestry', 'skill', 'general', 'class', 'additional')
 
@@ -28,6 +32,7 @@ module CharactersContext
           character_feat.increment!(:selected_count)
           update_selected_feats(input)
           add_extra_feats(input)
+          add_focus_spells(input)
 
           { result: :ok }
         end
@@ -53,6 +58,19 @@ module CharactersContext
               type: 'additional',
               level: input[:level]
             )
+          end
+        end
+
+        def add_focus_spells(input)
+          return if input[:feat].info['focus_spells'].blank?
+
+          input[:feat].info['focus_spells'].each do |slug|
+            spell = ::Pathfinder2::Feat.where(origin: 4).find_by(slug: slug)
+            next unless spell
+
+            add_spell.call({
+              character: input[:character], feat: spell, level: spell.info['level'], kind: 'focus'
+            }.compact_blank)
           end
         end
       end
