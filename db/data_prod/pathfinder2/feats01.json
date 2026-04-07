@@ -813,7 +813,8 @@
     },
     "origin": "ancestry",
     "origin_values": ["leshy"],
-    "conditions": { "level": 1 }
+    "conditions": { "level": 1 },
+    "info": { "weapons": [{ "items_slug": "seedpod", "items_name": { "en": "Seedpod", "ru": "Побег" }, "items_info": { "weapon_skill": "unarmed", "type": "range", "damage": "1d4", "damage_type": "bludge", "tooltips": ["unarmed"], "dist": 30 } }] }
   },
   {
     "slug": "shadow_of_the_wilds",
@@ -1049,7 +1050,8 @@
     },
     "origin": "ancestry",
     "origin_values": ["orc"],
-    "conditions": { "level": 1 }
+    "conditions": { "level": 1 },
+    "info": { "weapons": [{ "items_slug": "tusks", "items_name": { "en": "Tusks", "ru": "Бивни" }, "items_info": { "group": "brawling", "weapon_skill": "unarmed", "type": "melee", "damage": "1d6", "damage_type": "pierce", "tooltips": ["finesse", "unarmed"] } }] }
   },
   {
     "slug": "bardic_lore",
@@ -1285,8 +1287,8 @@
       "ru": "Верный зверь"
     },
     "description": {
-      "en": "When you Hunt Prey, your animal companion gains the action's benefits and your hunter's edge benefit if you have one.",
-      "ru": "При совершении действия Охота на добычу ваш верный зверь получает его преимущества и ваше преимущество охотника, если оно у вас есть."
+      "en": "You gain the service of a young animal companion that travels with you on your adventures and obeys any simple commands you give it to the best of its abilities. See Animal Companions for more information.\n\nWhen you Hunt Prey, your animal companion gains the action's benefits and your hunter's edge benefit if you have one.",
+      "ru": "Вам служит молодой верный зверь, который сопровождает вас в странствиях и выполняет ваши простые команды в меру своих возможностей.\n\nПри совершении действия Охота на добычу ваш верный зверь получает его преимущества и ваше преимущество охотника, если оно у вас есть."
     },
     "origin": "class",
     "origin_values": ["ranger"],
@@ -1813,57 +1815,60 @@
   },
   {
     "slug": "witch_armaments_1",
-    "kind": "static",
+    "kind": "hidden",
     "title": {
       "en": "Iron Teeth",
       "ru": "Железные зубы"
     },
     "description": {
-      "en": "With a click of your jaw, your teeth transform into long metallic points. You gain a jaws unarmed attack that deals 1d8 piercing damage and is in the brawling group.",
-      "ru": "Вы клацаете зубами, и они становятся заострёнными и металлическими. Вы получаете безоружную атаку челюстями, которая наносит 1d8 колющего урона и относится к кулачному оружию."
+      "en": "With a click of your jaw, your teeth transform into long metallic points. You gain a jaws unarmed attack.",
+      "ru": "Вы клацаете зубами, и они становятся заострёнными и металлическими. Вы получаете безоружную атаку челюстями."
     },
     "origin": "class",
     "origin_values": ["witch"],
     "conditions": {
       "level": 1,
       "selected_feature": "witch_armaments_1"
-    }
+    },
+    "info": { "weapons": [{ "items_slug": "witch_armaments_1", "items_name": { "en": "Iron Teeth", "ru": "Железные зубы" }, "items_info": { "group": "brawling", "weapon_skill": "unarmed", "type": "melee", "damage": "1d8", "damage_type": "pierce", "tooltips": ["unarmed"] } }] }
   },
   {
     "slug": "witch_armaments_2",
-    "kind": "static",
+    "kind": "hidden",
     "title": {
       "en": "Eldritch Nails",
       "ru": "Жуткие ногти"
     },
     "description": {
-      "en": "Your nails are supernaturally long and sharp. You gain a nails unarmed attack that deals 1d6 slashing damage, is in the brawling group, and has the agile and unarmed traits.",
-      "ru": "Ваши ногти необыкновенно длинные и острые. Вы получаете безоружную атаку ногтями, которая наносит 1d6 режущего урона, относится к кулачному оружию и обладает дескрипторами «безоружное» и «быстрое»."
+      "en": "Your nails are supernaturally long and sharp. You gain a nails unarmed attack.",
+      "ru": "Ваши ногти необыкновенно длинные и острые. Вы получаете безоружную атаку ногтями."
     },
     "origin": "class",
     "origin_values": ["witch"],
     "conditions": {
       "level": 1,
       "selected_feature": "witch_armaments_2"
-    }
+    },
+    "info": { "weapons": [{ "items_slug": "witch_armaments_2", "items_name": { "en": "Eldritch Nails", "ru": "Жуткие ногти" }, "items_info": { "group": "brawling", "weapon_skill": "unarmed", "type": "melee", "damage": "1d6", "damage_type": "slash", "tooltips": ["agile", "unarmed"] } }] }
   },
   {
     "slug": "witch_armaments_3",
-    "kind": "static",
+    "kind": "hidden",
     "title": {
       "en": "Living Hair",
       "ru": "Ожившие волосы"
     },
     "description": {
-      "en": "You can instantly grow or shrink your hair, eyebrows, beard, or mustache by up to several feet and manipulate your hair for use as a weapon, though your control isn't fine enough for more dexterous tasks. You gain a hair unarmed attack that deals 1d4 bludgeoning damage; is in the brawling group; and has the agile, disarm, finesse, trip, and unarmed traits.",
-      "ru": "Вы способны немедленно отрастить или укоротить свои волосы, брови, бороду или усы на несколько футов и использовать их в качестве оружия (но не для более сложных задач, требующих ловкости, — ваш контроль над волосами не настолько отточен). Вы получаете безоружную атаку волосами, которая наносит 1d4 дробящего урона, относится к кулачному оружию и обладает дескрипторами «безоружное», «быстрое», «разоружающее», «сбивающее» и «фехтовальное»."
+      "en": "You can instantly grow or shrink your hair, eyebrows, beard, or mustache by up to several feet and manipulate your hair for use as a weapon, though your control isn't fine enough for more dexterous tasks. You gain a hair unarmed attacks.",
+      "ru": "Вы способны немедленно отрастить или укоротить свои волосы, брови, бороду или усы на несколько футов и использовать их в качестве оружия (но не для более сложных задач, требующих ловкости, — ваш контроль над волосами не настолько отточен). Вы получаете безоружную атаку волосами."
     },
     "origin": "class",
     "origin_values": ["witch"],
     "conditions": {
       "level": 1,
       "selected_feature": "witch_armaments_3"
-    }
+    },
+    "info": { "weapons": [{ "items_slug": "witch_armaments_3", "items_name": { "en": "Living Hair", "ru": "Ожившие волосы" }, "items_info": { "group": "brawling", "weapon_skill": "unarmed", "type": "melee", "damage": "1d4", "damage_type": "bludge", "tooltips": ["agile", "unarmed", "disarm", "finesse", "trip"] } }] }
   },
   {
     "slug": "familiar",
@@ -1919,7 +1924,7 @@
   },
   {
     "slug": "adopted_ancestry",
-    "kind": "static",
+    "kind": "one_from_list",
     "title": {
       "en": "Adopted Ancestry",
       "ru": "Воспитанник народа"
@@ -1930,7 +1935,8 @@
     },
     "origin": "general",
     "origin_values": ["general"],
-    "conditions": { "level": 1 }
+    "conditions": { "level": 1 },
+    "info": { "options_list": "races" }
   },
   {
     "slug": "alchemical_crafting",
@@ -1940,7 +1946,7 @@
       "ru": "Алхимическое ремесло"
     },
     "description": {
-      "en": "**Prerequisites** trained in Crafting.\n\nYou can use the Craft activity to create alchemical items. When you select this feat, you immediately add the formulas for four common 1st-level alchemical items to your formula book (page 288).",
+      "en": "**Prerequisites** trained in Crafting.\n\nYou can use the Craft activity to create alchemical items. When you select this feat, you immediately add the formulas for four common 1st-level alchemical items to your formula book.",
       "ru": "**Критерии** изученное Ремесло.\n\nВы можете использовать занятие Создание предмета для изготовления алхимических предметов. При выборе этой черты вы немедленно добавляете в свою книгу формул формулы четырёх обычных алхимических предметов 1 уровня."
     },
     "origin": "skill",

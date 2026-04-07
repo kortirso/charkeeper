@@ -101,7 +101,7 @@
   },
   {
     "slug": "razortooth_goblin",
-    "kind": "static",
+    "kind": "hidden",
     "title": {
       "en": "Razortooth Goblin",
       "ru": "Острозубый гоблин"
@@ -111,7 +111,8 @@
       "ru": "Ваши фамильные зубы — грозное оружие. Вы получаете безоружную атаку челюстями, наносящую 1d6 колющего урона. Челюсти относятся к кулачному оружию и обладают дескрипторами «безоружное» и «фехтовальное»."
     },
     "origin": "static_subrace",
-    "origin_value": "razortooth"
+    "origin_value": "razortooth",
+    "info": { "weapons": [{ "items_slug": "razortooth", "items_name": { "en": "Jaws", "ru": "Челюсти" }, "items_info": { "group": "brawling", "weapon_skill": "unarmed", "type": "melee", "damage": "1d6", "damage_type": "pierce", "tooltips": ["finesse", "unarmed"] } }] }
   },
   {
     "slug": "charhide_goblin",
@@ -267,7 +268,8 @@
       "ru": "Ваше тело усеяно шипами. Вы получаете безоружную атаку шипами, которая наносит 1d6 колющего урона. Шипы относятся к кулачному оружию и обладают дескрипторами «безоружное» и «фехтовальное»."
     },
     "origin": "static_subrace",
-    "origin_value": "cactus_leshy"
+    "origin_value": "cactus_leshy",
+    "info": { "weapons": [{ "items_slug": "spine", "items_name": { "en": "Spines", "ru": "Шипы" }, "items_info": { "group": "brawling", "weapon_skill": "unarmed", "type": "melee", "damage": "1d6", "damage_type": "pierce", "tooltips": ["finesse", "unarmed"] } }] }
   },
   {
     "slug": "root_leshy",

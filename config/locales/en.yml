@@ -489,6 +489,7 @@ en:
         trip: "You can use this weapon to Trip with the Athletics skill even if you don't have a free hand. This uses the weapon's reach (if different from your own) and adds the weapon's item bonus to attack rolls as an item bonus to the Athletics check. If you critically fail a check to Trip using the weapon, you can drop the weapon to take the effects of a failure instead of a critical failure."
         twin: "When you attack with a twin weapon, you add a circumstance bonus to the damage roll equal to the weapon's number of damage dice if you have previously attacked with a different weapon of the same type this turn. The weapons must be of the same type, but they don't need to have the same runes."
         two_hand: "This weapon can be wielded with two hands to change its weapon damage die to the indicated value. This change applies to all the weapon's damage dice."
+        unarmed: An unarmed attack uses your body rather than a manufactured weapon.
         volley: Your attacks against targets that are at a distance within the range listed take a –2 penalty.
         title:
           bludge: Bludgeoning
@@ -515,6 +516,7 @@ en:
           trip: Trip
           twin: Twin
           two_hand: Two-Hand %{value}
+          unarmed: Unarmed
           volley: Volley %{value}
     dc20:
       spell_tags:
