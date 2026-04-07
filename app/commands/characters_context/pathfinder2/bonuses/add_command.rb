@@ -49,10 +49,6 @@ module CharactersContext
               optional(:'speeds.fly').hash
               optional(:'speeds.climb').hash
               optional(:'speeds.burrow').hash
-              # with concat type
-              optional(:resistance).hash
-              optional(:immunity).hash
-              optional(:vulnerability).hash
             end
           end
 

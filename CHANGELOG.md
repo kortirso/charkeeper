@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## Unreleased
 ### Added
 - rendering innate weapon attacks for PF2 characters
+- rendering damage reductions for PF2 characters
 
 ## [0.4.23] - 2026-04-05
 ### Added

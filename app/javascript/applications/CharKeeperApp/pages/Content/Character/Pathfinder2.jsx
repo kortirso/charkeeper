@@ -4,7 +4,8 @@ import { createWindowSize } from '@solid-primitives/resize-observer';
 
 import {
   Pathfinder2Abilities, Pathfinder2Health, Pathfinder2Professions, Pathfinder2Static, Pathfinder2Skills, Pathfinder2Companion,
-  Pathfinder2SavingThrows, Pathfinder2Leveling, Pathfinder2Spells, Pathfinder2Rest, Pathfinder2Bonuses, Pathfinder2Info
+  Pathfinder2SavingThrows, Pathfinder2Leveling, Pathfinder2Spells, Pathfinder2Rest, Pathfinder2Bonuses, Pathfinder2Info,
+  Pathfinder2Damages
 } from '../../../pages';
 import {
   CharacterNavigation, Equipment, Notes, Avatar, ContentWrapper, Conditions, Gold, createDiceRoll, Combat, Feats
@@ -100,6 +101,9 @@ export const Pathfinder2 = (props) => {
               <Pathfinder2Static character={character()} openDiceRoll={openDiceRoll} />
               <div class="mt-4">
                 <Pathfinder2Health character={character()} onReplaceCharacter={props.onReplaceCharacter} />
+              </div>
+              <div class="mt-4">
+                <Pathfinder2Damages character={character()} />
               </div>
               <div class="mt-4">
                 <Combat
@@ -228,6 +232,9 @@ export const Pathfinder2 = (props) => {
               <Pathfinder2Static character={character()} openDiceRoll={openDiceRoll} />
               <div class="mt-4">
                 <Pathfinder2Health character={character()} onReplaceCharacter={props.onReplaceCharacter} />
+              </div>
+              <div class="mt-4">
+                <Pathfinder2Damages character={character()} />
               </div>
               <div class="mt-4">
                 <Combat
