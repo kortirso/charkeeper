@@ -2,7 +2,10 @@
 
 module Pathfinder2
   class CharacterSerializer < ApplicationSerializer
-    include Deps[cache: 'cache.avatars']
+    include Deps[
+      cache: 'cache.avatars',
+      feature_requirement: 'feature_requirement'
+    ]
 
     attributes :features, :id, :name, :level, :race, :subrace, :main_class, :classes, :languages, :health, :abilities, :money,
                :skills, :created_at, :subclasses, :background, :saving_throws_value, :saving_throws, :dying_condition_value,
@@ -17,7 +20,7 @@ module Pathfinder2
              :features, :spells_info, :class_dc, :spell_attack, :spell_dc, :formatted_static_spells, :modified_abilities,
              :can_have_pet, :can_have_familiar, :info, :total_damage_reduction, to: :decorator
     delegate :name, :id, :data, :created_at, to: :object
-    delegate :level, :ability_boosts_v2, :skill_boosts, :selected_features, :race, :subrace, :main_class, :classes, :languages,
+    delegate :level, :skill_boosts, :selected_features, :race, :subrace, :main_class, :classes, :languages,
              :background, :saving_throws, :spent_spell_slots, :spell_list, :experience, :dying_condition_value, :hero_points,
              :damage_reduction, to: :data
 
@@ -27,6 +30,13 @@ module Pathfinder2
 
     def avatar
       cache.fetch_item(id: object.id)
+    end
+
+    def ability_boosts_v2
+      return data.ability_boosts_v2 if data.ability_boosts_v2.nil?
+      return data.ability_boosts_v2 if context && feature_requirement.call(current: context[:version], initial: '0.4.25')
+
+      { base: {}, race: {}, background: {} }.deep_merge(data.ability_boosts_v2)
     end
 
     def decorator

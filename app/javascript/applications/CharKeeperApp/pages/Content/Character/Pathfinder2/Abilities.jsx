@@ -63,16 +63,16 @@ export const Pathfinder2Abilities = (props) => {
     });
   }
 
-  const renderAbilityBoost = (ability_boosts, source) => {
-    if (!ability_boosts) return '';
+  const renderAbilityBoost = (abilityBoosts, source) => {
+    if (!abilityBoosts) return '';
 
     const result = [];
-    Object.keys(ability_boosts).forEach((key) => {
+    Object.keys(abilityBoosts).forEach((key) => {
       if (key === 'free') return;
 
-      result.push(`${key.split('_').map((item) => localize(config.abilities[item].name, locale())).join('/')} - ${ability_boosts[key]}`)
+      result.push(`${key.split('_').map((item) => localize(config.abilities[item].name, locale())).join('/')} - ${abilityBoosts[key]}`)
     });
-    if (ability_boosts.free) result.push(`${localize(TRANSLATION, locale()).free} - ${ability_boosts.free}`);
+    if (abilityBoosts.free) result.push(`${localize(TRANSLATION, locale()).free} - ${abilityBoosts.free}`);
 
     return (
       <p class="text-sm">
@@ -105,9 +105,13 @@ export const Pathfinder2Abilities = (props) => {
         <Show when={character().ability_boosts_v2}>
           <div class="warning">
             <p class="text-sm">{localize(TRANSLATION, locale()).abilityBoosts}</p>
-            {renderAbilityBoost(character().ability_boosts_v2.background, 'background')}
-            {renderAbilityBoost(character().ability_boosts_v2.race, 'race')}
-            {renderAbilityBoost(character().ability_boosts_v2.base, 'base')}
+            <For each={['background', 'race', 'base']}>
+              {(item) =>
+                <Show when={character().ability_boosts_v2[item] && Object.keys(character().ability_boosts_v2[item]).length > 0}>
+                  {renderAbilityBoost(character().ability_boosts_v2[item], item)}
+                </Show>
+              }
+            </For>
           </div>
         </Show>
         <div class="blockable py-4">
