@@ -1,11 +1,12 @@
 import { createSignal, createEffect, createMemo, Show, For, batch } from 'solid-js';
 
-import { Button, ErrorWrapper, Toggle, Select, createModal, Text, Input } from '../../../../components';
+import { Button, ErrorWrapper, Toggle, Select, createModal, Text, Input, Label } from '../../../../components';
 import { useAppState, useAppLocale, useAppAlert } from '../../../../context';
-import { Upgrade, Check } from '../../../../assets';
+import { Upgrade, Check, Close } from '../../../../assets';
 import { updateCharacterRequest } from '../../../../requests/updateCharacterRequest';
 import { fetchTalentsRequest } from '../../../../requests/fetchTalentsRequest';
 import { createTalentRequest } from '../../../../requests/createTalentRequest';
+import { removeTalentRequest } from '../../../../requests/removeTalentRequest';
 import { localize, performResponse } from '../../../../helpers';
 
 const TRANSLATION = {
@@ -148,6 +149,18 @@ export const Pathfinder2Leveling = (props) => {
     );
   }
 
+  const removeTalent = async (value) => {
+    const result = await removeTalentRequest(appState.accessToken, character().provider, character().id, value.id);
+    performResponse(
+      result,
+      function() { // eslint-disable-line solid/reactivity
+        props.onReloadCharacter();
+        setSelectedFeats(selectedFeats().filter((item) => item.id !== value.id));
+      },
+      function() { renderAlerts(result.errors_list) }
+    );
+  }
+
   const refetchSelectedFeats = async () => {
     const result = await fetchTalents();
     performResponse(
@@ -182,13 +195,22 @@ export const Pathfinder2Leveling = (props) => {
   const renderSelectedFeatValue = (type, level) => {
     const value = selectedFeats().find((item) => item.type === type && item.level === level);
     return (
-      <Text
-        containerClassList={`${value ? '' : 'cursor-pointer'}`}
-        labelText={renderFeatLabel(type)}
-        text={value ? value.feat.title : localize(TRANSLATION, locale()).notSelected}
-        textClassList="text-lg"
-        onClick={() => value ? null : selectFeat(type, level)}
-      />
+      <div>
+        <Label labelText={renderFeatLabel(type)} />
+        <div class="flex gap-2 mt-1">
+          <Show when={value}>
+            <Button default size="small" classList="opacity-75" onClick={() => removeTalent(value)}>
+              <Close />
+            </Button>
+          </Show>
+          <Text
+            containerClassList={`${value ? '' : 'cursor-pointer'}`}
+            text={value ? value.feat.title : localize(TRANSLATION, locale()).notSelected}
+            textClassList="text-lg"
+            onClick={() => value ? null : selectFeat(type, level)}
+          />
+        </div>
+      </div>
     );
   }
 
@@ -199,11 +221,19 @@ export const Pathfinder2Leveling = (props) => {
         <For each={values}>
           {(value) =>
             <div>
-              <Text
-                labelText={renderFeatLabel('additional')}
-                text={value.feat.title}
-                textClassList="text-lg"
-              />
+              <Label labelText={renderFeatLabel('additional')} />
+              <div class="flex gap-2 mt-1">
+                <Show when={value}>
+                  <Button default size="small" classList="opacity-75" onClick={() => removeTalent(value)}>
+                    <Close />
+                  </Button>
+                </Show>
+                <Text
+                  containerClassList={`${value ? '' : 'cursor-pointer'}`}
+                  text={value.feat.title}
+                  textClassList="text-lg"
+                />
+              </div>
             </div>
           }
         </For>
@@ -249,7 +279,7 @@ export const Pathfinder2Leveling = (props) => {
       <For each={Array.from([...Array(character().level).keys()], (x) => x + 1)}>
         {(index) =>
           <Toggle title={`${index} ${localize(TRANSLATION, locale()).currentLevel}`}>
-            <div class="flex flex-col gap-y-4">
+            <div class="flex flex-col gap-y-2">
               <Show when={ANCESTRY_FEAT_LEVELS.includes(index)}>
                 {renderSelectedFeatValue('ancestry', index)}
               </Show>

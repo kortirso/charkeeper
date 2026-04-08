@@ -11,6 +11,7 @@ module Frontend
         include SerializeResource
 
         before_action :find_character
+        before_action :find_character_feat, only: %i[destroy]
 
         def index
           render json: {
@@ -27,6 +28,11 @@ module Frontend
           end
         end
 
+        def destroy
+          @character_feat.destroy
+          only_head_response
+        end
+
         private
 
         def cache_options
@@ -37,21 +43,29 @@ module Frontend
           @character = authorized_scope(Character.all).pathfinder2.find(params[:character_id])
         end
 
-        def character_feats
-          feats = ::Pathfinder2::Feat.where(id: @character.data.selected_feats.keys).to_a
-          @character.data.selected_feats.flat_map do |(key, values)|
-            feat = feats.find { |item| item.id == key }
-            next [] unless feat
+        def find_character_feat
+          @character_feat = @character.feats.find(params[:id])
+        end
 
-            feat = ::Pathfinder2::FeatSerializer.new.serialize(feat)
-            values.map do |value|
+        def character_feats
+          keys = @character.data.selected_feats.keys
+          selected_feats = @character.data.selected_feats
+
+          @character
+            .feats.joins(:feat)
+            .where(feats: { origin: [0, 1, 2, 3] })
+            .filter_map do |character_feat|
+              next if keys.exclude?(character_feat.feat_id)
+
+              value = selected_feats.dig(character_feat.feat_id, 0)
+              feat = ::Pathfinder2::FeatSerializer.new.serialize(character_feat.feat)
               {
+                id: character_feat.id,
                 level: value['level'],
                 type: value['type'],
                 feat: feat
               }
             end
-          end
         end
 
         def tags
