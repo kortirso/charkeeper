@@ -2,14 +2,12 @@
 
 module Pathfinder2
   module Classes
-    class WizardDecorator < ApplicationDecoratorV2
+    class DruidDecorator < ApplicationDecoratorV2
       def call(result:)
         @result = result
         @result['spells_info'] = {
           'prepare' => true,
-          'learn' => true,
-          'cantrips_amount' => 10,
-          'spells_amount' => (level * 2) + 3,
+          'learn' => false,
           'cantrip_slots' => 5,
           'spells_slots' => spells_slots,
           'max_spell_level' => spells_slots.keys.max

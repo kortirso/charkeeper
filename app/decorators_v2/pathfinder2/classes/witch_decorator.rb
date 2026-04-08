@@ -7,6 +7,7 @@ module Pathfinder2
         @result = result
         @result['spells_info'] = {
           'prepare' => true,
+          'learn' => true,
           'cantrips_amount' => 10,
           'spells_amount' => (level * 2) + 3,
           'cantrip_slots' => 5,

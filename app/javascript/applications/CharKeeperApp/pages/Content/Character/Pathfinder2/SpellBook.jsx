@@ -185,7 +185,7 @@ export const Pathfinder2SpellBook = (props) => {
 
   return (
     <>
-      <Show when={props.kind === 'default'}>
+      <Show when={props.kind === 'default' && character().spells_info.learn}>
         <StatsBlock
           items={[
             { title: localize(TRANSLATION, locale()).cantripsAmount, value: `${learnedDefaultCantrips()}/${character().spells_info.cantrips_amount}` },

@@ -7,6 +7,7 @@ module Pathfinder2
         @result = result
         @result['spells_info'] = {
           'prepare' => false,
+          'learn' => true,
           'cantrips_amount' => 5,
           'spells_amount' => spells_slots.values.sum,
           'spells_slots' => spells_slots,
