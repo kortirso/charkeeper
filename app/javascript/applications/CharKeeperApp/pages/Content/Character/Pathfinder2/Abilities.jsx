@@ -64,6 +64,8 @@ export const Pathfinder2Abilities = (props) => {
   }
 
   const renderAbilityBoost = (ability_boosts, source) => {
+    if (!ability_boosts) return '';
+
     const result = [];
     Object.keys(ability_boosts).forEach((key) => {
       if (key === 'free') return;
