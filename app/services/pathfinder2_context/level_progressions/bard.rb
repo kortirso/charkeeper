@@ -43,8 +43,8 @@ module Pathfinder2Context
         end
 
         if level == 19
-          @result[:spell_dc] = [character.data.spell_dc, 4].max
-          @result[:spell_attack] = [character.data.spell_attack, 4].max
+          @result[:spell_dc] = 4
+          @result[:spell_attack] = 4
         end
 
         @result

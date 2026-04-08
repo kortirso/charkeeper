@@ -444,17 +444,13 @@ class Pathfinder2Decorator < ApplicationDecoratorV2
   end
 
   def perform_feature(feature)
-    # добавлять статические бонусы или включенные
-    if feature_bonuses_enabled?(feature)
-      feature.feat.eval_variables.each do |method_name, variable|
-        result = eval_variable(feature.feat, variable)
-        @result[method_name] = result if result
-      end
-    end
     return if feature.feat.kind == 'hidden'
 
     feature.feat.description_eval_variables.transform_values! do |value|
-      eval_variable(feature.feat, value) || value
+      formula_result = formula.call(formula: value, variables: formula_variables)
+      next unless formula_result
+
+      formula_result
     end
 
     result = feature_payload(feature)
@@ -500,25 +496,6 @@ class Pathfinder2Decorator < ApplicationDecoratorV2
     result = markdown.call(value: description, version: @version)
     feature.feat.description_eval_variables.each { |key, value| result.gsub!("{{#{key}}}", value.to_s) }
     result
-  end
-
-  # rubocop: disable Security/Eval
-  def eval_variable(feat, variable)
-    lambda do
-      eval(variable)
-    end.call
-  rescue StandardError, SyntaxError => e
-    monitoring_feat_error(e, feat)
-    nil
-  end
-  # rubocop: enable Security/Eval
-
-  def monitoring_feat_error(exception, feat)
-    Charkeeper::Container.resolve('monitoring.client').notify(
-      exception: Monitoring::FeatVariableError.new('Feat variable error'),
-      metadata: { slug: feat.slug, message: exception.message },
-      severity: :info
-    )
   end
 
   # бонусы персонажа - bonus.value

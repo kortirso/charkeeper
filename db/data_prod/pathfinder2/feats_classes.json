@@ -10,7 +10,7 @@
       "en": "You deal 2 additional damage with weapons and unarmed attacks in which you're an expert. This damage increases to 3 if you're a master, and 4 if you're legendary.",
       "ru": "Ваши безоружные атаки и атаки оружием, в которых вы умелы на экспертном уровне, дополнительно наносят 2 урона. Дополнительный урон увеличивается до 3, если вы мастер, и до 4 при легендарном уровне умения."
     },
-    "origin": "class",
+    "origin": "static_class",
     "origin_values": []
   },
   {
@@ -24,7 +24,7 @@
       "en": "You deal 4 additional damage with weapons and unarmed attacks in which you're an expert. This damage increases to 6 if you're a master, and 8 if you're legendary",
       "ru": "Ваши безоружные атаки и атаки оружием, в которых вы умелы на экспертном уровне, дополнительно наносят 4 урона. Дополнительный урон увеличивается до 6, если вы мастер, и до 8 при легендарном уровне умения."
     },
-    "origin": "class",
+    "origin": "static_class",
     "origin_values": []
   },
   {
@@ -197,7 +197,7 @@
       "en": "When you roll a success on a Will save, you get a critical success instead.",
       "ru": "Когда вы получаете успех в испытании Воли, он считается для вас критическим успехом."
     },
-    "origin": "class",
+    "origin": "static_class",
     "origin_values": []
   },
   {
@@ -211,7 +211,7 @@
       "en": "When you roll a critical failure on a Will save, you get a failure instead. When you fail a Will save against an effect that deals damage, you take half damage.",
       "ru": "Когда вы получаете критический провал в испытании Воли, он считается для вас обычным провалом. Когда вы получаете провал (но не критический провал) в испытании Воли против наносящего урон эффекта, получаемый вами урон уменьшается вдвое."
     },
-    "origin": "class",
+    "origin": "static_class",
     "origin_values": []
   },
   {
@@ -225,7 +225,7 @@
       "en": "When you roll a success on a Fortitude save, you get a critical success instead.",
       "ru": "Когда вы получаете успех в испытании Стойкости, он считается для вас критическим успехом."
     },
-    "origin": "class",
+    "origin": "static_class",
     "origin_values": []
   },
   {
@@ -239,7 +239,7 @@
       "en": "When you roll a success on a Reflex save, you get a critical success instead.",
       "ru": "Когда вы получаете успех в испытании Реакции, он считается для вас критическим успехом."
     },
-    "origin": "class",
+    "origin": "static_class",
     "origin_values": []
   },
   {
@@ -253,7 +253,357 @@
       "en": "When you roll a critical failure on a Reflex save, you get a failure instead. When you roll a failure on a Reflex save against a damaging effect, you take half damage.",
       "ru": "Когда вы получаете критический провал в испытании Реакции, он считается для вас обычным провалом. Когда вы получаете провал (но не критический провал) в испытании Реакции против наносящего урон эффекта, получаемый вами урон уменьшается вдвое."
     },
-    "origin": "class",
+    "origin": "static_class",
     "origin_values": []
+  },
+  {
+    "slug": "bard_weapon_expertise",
+    "kind": "static",
+    "title": {
+      "en": "Bard Weapon Expertise",
+      "ru": "Эксперт бардовского оружия"
+    },
+    "description": {
+      "en": "When you critically succeed at an attack roll using simple or martial weapons or an unarmed attack while one of your compositions is active, you apply the critical specialization effect for that weapon or unarmed attack.",
+      "ru": "Когда вы наносите критический удар простым или особым оружием или безоружной атакой, пока активна одна из ваших композиций, вы применяете критический эффект этого оружия или безоружной атаки."
+    },
+    "origin": "static_class",
+    "origin_value": "bard",
+    "origin_values": [],
+    "conditions": { "level": 11 }
+  },
+  {
+    "slug": "drain_bonded_item",
+    "kind": "static",
+    "title": {
+      "en": "Drain Bonded Item",
+      "ru": "Опустошение предмета силы"
+    },
+    "description": {
+      "en": "**Requirements** Your bonded item is on your person.\n\nYou expend the magical power stored in your bonded item. During the current turn, you can cast one spell you prepared today and already cast, without spending a spell slot. You must still Cast the Spell and meet the spell's other requirements.",
+      "ru": "**Требования** предмет силы при вас.\n\nВы расходуете заключённую в предмете силы магию. Во время этого хода вы получаете возможность без затрат ячейки сотворить одно заклинание, которое вы в этот день уже подготовили и использовали. При этом вы всё равно должны использовать занятие Сотворение заклинания и выполнить прочие требования заклинания."
+    },
+    "origin": "static_class",
+    "origin_value": "wizard",
+    "origin_values": ["wizard", "arcane"],
+    "description_eval_variables": {
+      "limit": "1"
+    },
+    "limit_refresh": "long_rest"
+  },
+  {
+    "slug": "sneak_attack",
+    "kind": "static",
+    "title": {
+      "en": "Sneak Attack",
+      "ru": "Атака исподтишка"
+    },
+    "description": {
+      "en": "If you Strike a creature that has the off-guard condition with an agile or finesse melee weapon, an agile or finesse unarmed attack, a ranged weapon attack, or a ranged unarmed attack, you deal an extra {{dice}}d6 precision damage. For a ranged attack with a thrown melee weapon, that weapon must also be agile or finesse.",
+      "ru": "Если вы совершаете удар по застигнутому врасплох существу, используя оружие ближнего боя (или безоружную атаку) с дескрипторами *быстрое* или *фехтовальное*, дистанционную атаку оружием или дистанционную безоружную атаку, то дополнительно наносите {{dice}}d6 урона за точность. Если вы совершаете дистанционную атаку метательным оружием ближнего боя, оно также должно обладать дескрипторами *быстрое* или *фехтовальное*."
+    },
+    "origin": "static_class",
+    "origin_value": "rogue",
+    "origin_values": [],
+    "description_eval_variables": {
+      "dice": "if (level >= 17, 4, (if (level >= 11, 3, (if (level >= 5, 2, 1)))))"
+    }
+  },
+  {
+    "slug": "surprise_attack",
+    "kind": "static",
+    "title": {
+      "en": "Surprise Attack",
+      "ru": "Внезапная атака"
+    },
+    "description": {
+      "en": "On the first round of combat, if you roll Deception or Stealth for initiative, creatures that haven't acted are off-guard to you. ",
+      "ru": "В первом раунде боя, если вы совершали проверку инициативы, используя Обман или Скрытность, все существа, которые ещё не действовали, считаются для вас застигнутыми врасплох."
+    },
+    "origin": "static_class",
+    "origin_value": "rogue",
+    "origin_values": []
+  },
+  {
+    "slug": "deny_advantage",
+    "kind": "static",
+    "title": {
+      "en": "Deny Advantage",
+      "ru": "Манёвренность"
+    },
+    "description": {
+      "en": "As someone who takes advantage of openings, you are careful not to leave such gaps yourself. You aren't off-guard to hidden, undetected, or flanking creatures of your level or lower, or creatures of your level or lower using surprise attack. However, they can still help their allies flank.",
+      "ru": "Вы не считаетесь застигнутым врасплох для спрятанных, необнаруженных или взявших вас в тиски существ с уровнем не выше вашего и для внезапных атак существ с уровнем не выше вашего. Тем не менее эти существа по-прежнему могут помогать союзникам брать вас в тиски."
+    },
+    "origin": "static_class",
+    "origin_value": "rogue",
+    "origin_values": [],
+    "conditions": { "level": 3 }
+  },
+  {
+    "slug": "weapon_tricks",
+    "kind": "static",
+    "title": {
+      "en": "Weapon Tricks",
+      "ru": "Оружейные приёмы"
+    },
+    "description": {
+      "en": "When you critically succeed at an attack roll against an off-guard creature while using an agile or finesse weapon or an agile or finesse unarmed attack, you apply the critical specialization effect for that weapon or unarmed attack.",
+      "ru": "При критическом успехе в проверке атаки оружием либо безоружной атакой с дескрипторами *быстрое* или *фехтовальное* по существу, которое застигнуто врасплох, вы применяете критический эффект используемого оружия или безоружной атаки."
+    },
+    "origin": "static_class",
+    "origin_value": "rogue",
+    "origin_values": ["rogue"],
+    "conditions": { "level": 5 }
+  },
+  {
+    "slug": "debilitating_strike",
+    "kind": "static",
+    "title": {
+      "en": "Debilitating Strike",
+      "ru": "Контузящий удар"
+    },
+    "description": {
+      "en": "**Trigger** Your Strike hits an off-guard creature and deals damage.\n\nYou apply one of the following debilitations, which lasts until the end of your next turn.\n\n- **Debilitation** The target takes a –10-foot status penalty to its Speeds.\n\n- **Debilitation** The target becomes enfeebled 1.\n\nFrom 15-th level you can apply two debilitations simultaneously; removing one removes both.",
+      "ru": "**Условие** Ваш удар попадает по застигнутому врасплох существу и наносит урон.\n\nВы налагаете на цель одну из описанных контузий до конца своего следующего хода.\n\n- **Контузия** Цель получает штраф состояния -10 футов ко всем скоростям.\n\n- **Контузия** Цель получает слабость 1.\n\nС 15 уровня вы можете наложить на цель сразу две контузий одновременно; при снятии одной из них отменяется и вторая."
+    },
+    "origin": "static_class",
+    "origin_value": "rogue",
+    "origin_values": ["rogue"],
+    "conditions": { "level": 9 }
+  },
+  {
+    "slug": "master_strike",
+    "kind": "static",
+    "title": {
+      "en": "Master Strike",
+      "ru": "Мастерский удар"
+    },
+    "description": {
+      "en": "**Trigger** Your Strike hits an off-guard creature and deals damage.\n\nThe target attempts a Fortitude save against your class DC. It then becomes temporarily immune to your Master Strike for 1 day.\n\n**Critical Success** The target is unaffected.\n\n**Success** The target is enfeebled 2 until the end of your next turn.\n\n**Failure** The target is paralyzed for 4 rounds.\n\n**Critical Failure** The target is paralyzed for 4 rounds, knocked unconscious for 2 hours, or killed (your choice).",
+      "ru": "**Условие** Ваш удар попадает по застигнутому врасплох существу и наносит урон.\n\nЦель проходит испытание Стойкости против вашей классовой СЛ. После этого цель становится временно невосприимчива к вашему Мастерскому удару на 1 день.\n\n**Критический успех** цель избегает эффекта.\n\n**Успех** Цель получает слабость 2 до конца вашего следующего хода.\n\n**Провал** Цель парализована на 4 раунда.\n\n**Критический провал** Цель парализована на 4 раунда, без сознания на 2 часа или убита (на ваш выбор)."
+    },
+    "origin": "static_class",
+    "origin_value": "rogue",
+    "origin_values": ["rogue", "incapacitation"],
+    "conditions": { "level": 19 }
+  },
+  {
+    "slug": "reactive_strike",
+    "kind": "static",
+    "title": {
+      "en": "Reactive Strike",
+      "ru": "Внеочередная атака"
+    },
+    "description": {
+      "en": "**Trigger** A creature within your reach uses a manipulate action or a move action, makes a ranged attack, or leaves a square during a move action it's using.\n\nYou lash out at a foe that leaves an opening. Make a melee Strike against the triggering creature. If your attack is a critical hit and the trigger was a manipulate action, you disrupt that action. This Strike doesn't count toward your multiple attack penalty, and your multiple attack penalty doesn't apply to this Strike.",
+      "ru": "**Условие** Существо в вашей зоне досягаемости использует действие с дескриптором «движение» или «манипуляция», совершает дистанционную атаку или покидает клетку в ходе совершаемого им действия с дескриптором «движение».\n\nВы замечаете, что враг уязвим, и атакуете его. Совершите Удар в ближнем бою по существу, спровоцировавшему его своими действиями. Если это критический удар, а спровоцировало его действие с дескриптором «манипуляция», вы срываете это действие. Данный Удар не учитывается при определении штрафа за последовательные атаки, также к нему не применяется этот штраф."
+    },
+    "origin": "static_class",
+    "origin_value": "fighter",
+    "price": { "r": 1 }
+  },
+  {
+    "slug": "bravery",
+    "kind": "static",
+    "title": {
+      "en": "Bravery",
+      "ru": "Храбрость"
+    },
+    "description": {
+      "en": "When you roll a success at a Will save against a fear effect, you get a critical success instead. In addition, anytime you gain the frightened condition, reduce its value by 1.",
+      "ru": "Когда вы получаете успех в испытании Воли против эффекта с дескриптором «ужас», он считается для вас критическим успехом. Кроме этого, когда вы получаете состояние испуга, вы снижаете значение этого состояния на 1."
+    },
+    "origin": "static_class",
+    "origin_value": "fighter",
+    "conditions": { "level": 3 }
+  },
+  {
+    "slug": "battlefield_surveyor",
+    "kind": "static",
+    "title": {
+      "en": "Battlefield Surveyor",
+      "ru": "Боевая наблюдательность"
+    },
+    "description": {
+      "en": "You gain a +2 circumstance bonus to Perception checks for initiative, making you faster to react during combat.",
+      "ru": "Вы получаете ситуативный бонус +2 к проверкам Внимания при определении инициативы, что позволяет быстрее действовать в бою."
+    },
+    "origin": "static_class",
+    "origin_value": "fighter",
+    "conditions": { "level": 7 }
+  },
+  {
+    "slug": "combat_flexibility",
+    "kind": "static",
+    "title": {
+      "en": "Combat Flexibility",
+      "ru": "Боевая гибкость"
+    },
+    "description": {
+      "en": "When you make your daily preparations, you gain one fighter feat of 8th level or lower that you meet the prerequisites for and don't already have. You can use that feat until your next daily preparations.\n\nFrom 15-th level you can gain two fighter feats instead of one. While the first feat must still be 8th level or lower, the second feat can be up to 14th level, and you can use the first feat to meet the prerequisites of the second feat. You must meet all of the feats' prerequisites.",
+      "ru": "Во время вашей ежедневной подготовки вы можете получить одну черту воина 8 или меньшего уровня, которой у вас ещё нет и прочим критериям которой вы соответствуете. Вы можете использовать эту черту вплоть до следующей вашей ежедневной подготовки.\n\nС 15 уровня вы можете получить две черты воина вместо одной. Первая черта должна быть 8 или меньшего уровня, а вторая — 14 или меньшего уровня, причём первую черту можно использовать для выполнения критериев второй. Вы по-прежнему должны соответствовать критериям обеих черт."
+    },
+    "origin": "static_class",
+    "origin_value": "fighter",
+    "conditions": { "level": 9 }
+  },
+  {
+    "slug": "hunt_prey",
+    "kind": "static",
+    "title": {
+      "en": "Hunt Prey",
+      "ru": "Охота на добычу"
+    },
+    "description": {
+      "en": "You designate a single creature as your prey and focus your attacks against that creature. You must be able to see or hear the prey, or you must be tracking the prey during exploration.\n\nYou gain a +2 circumstance bonus to Perception checks when you Seek your prey and a +2 circumstance bonus to Survival checks when you Track your prey. You also ignore the penalty for making ranged attacks within your second range increment against the prey you're hunting.\n\nYou can have only one creature designated as your prey at a time. If you use Hunt Prey against a creature when you already have a creature designated, the prior creature loses the designation and the new prey gains the designation. Your designation lasts until your next daily preparations.\n\nFrom 19-th level you can use **Hunt Prey** as a free action if it's your first action of your turn.",
+      "ru": "Вы выбираете одно существо в качестве добычи и сосредотачиваете на нём свои атаки. Вы должны видеть или слышать добычу или выслеживать её во время исследования.\n\nВы получаете ситуативный бонус +2 к проверкам Внимания при Поиске вашей добычи и ситуативный бонус +2 к проверкам Выживания при её Выслеживании. Кроме того, вы игнорируете штраф за дистанцию для дистанционных атак по добыче в пределах второго шага дистанции вашего оружия.\n\nВашей добычей может одновременно быть только одно существо. Если вы используете **Охоту на добычу** против другого существа, когда у вас уже есть добыча, оно станет вашей добычей, а предыдущая цель добычей быть перестанет. Существо остаётся добычей до вашей следующей ежедневной подготовки.\n\nС 19 уровня вы можете использовать **Охоту на добычу** в качестве свободного действия, если это первое действие в ваш ход."
+    },
+    "origin": "static_class",
+    "origin_value": "ranger",
+    "origin_values": ["ranger", "concentrate"],
+    "price": { "a": 1 }
+  },
+  {
+    "slug": "hunter_edge",
+    "kind": "one_from_list",
+    "title": {
+      "en": "Hunter's Edge",
+      "ru": "Преимущество охотника"
+    },
+    "description": {
+      "en": "Choose a hunter's edge.",
+      "ru": "Выберите одно из перечисленных преимуществ охотника."
+    },
+    "origin": "static_class",
+    "origin_value": "ranger",
+    "options": {
+      "hunter_edge_precision": { "en": "Precision", "ru": "Меткость" },
+      "hunter_edge_outwit": { "en": "Outwit", "ru": "Хитрость" },
+      "hunter_edge_flurry": { "en": "Flurry", "ru": "Шквал" }
+    }
+  },
+  {
+    "slug": "hunter_edge_precision",
+    "kind": "static",
+    "title": {
+      "en": "Precision",
+      "ru": "Меткость"
+    },
+    "description": {
+      "en": "The first time you hit your hunted prey in a round, you also deal {{dice}}d8 additional precision damage (Precision damage increases the damage you already deal, using the same type, but is ineffective against creatures that lack vital organs or weak points).\n\n**Masterful Hunter Upgrade** The second time in a round you hit your hunted prey, you also deal 1d8 precision damage. At 19th level, your second hit in a round against your hunted prey deals 2d8 precision damage, and your third hit in a round against your hunted prey deals 1d8 precision damage.",
+      "ru": "Когда вы впервые за раунд успешно атакуете выбранную добычу вы дополнительно наносите {{dice}}d8 урона за точность (урон за точность увеличивает обычный урон атаки с сохранением типа, но не может быть нанесён существам без уязвимых органов).\n\n**Охотничье мастерство** Когда вы второй раз за раунд успешно атакуете свою добычу, вы дополнительно наносите 1d8 урона за точность. На 19 уровне вторая успешная атака по добыче за раунд дополнительно наносит 2d8 урона за точность, а третья успешная атака по добыче за раунд — 1d8 урона за точность."
+    },
+    "origin": "static_class",
+    "origin_value": "ranger",
+    "conditions": { "selected_feature": "hunter_edge_precision" },
+    "description_eval_variables": {
+      "dice": "if (level >= 19, 3, (if (level >= 11, 2, 1)))"
+    }
+  },
+  {
+    "slug": "hunter_edge_outwit",
+    "kind": "static",
+    "title": {
+      "en": "Outwit",
+      "ru": "Хитрость"
+    },
+    "description": {
+      "en": "You gain a +2 circumstance bonus to Deception checks, Intimidation checks, Stealth checks, and any checks to Recall Knowledge about the prey, and a +1 circumstance bonus to AC against your prey's attacks.\n\n**Masterful Hunter Upgrade** If you have master proficiency in Deception, Intimidation, Stealth, or the skill you use to Recall Knowledge about your prey, increase the circumstance bonus against the prey with that skill from +2 to +4. If you have master proficiency with your armor, increase the circumstance bonus to AC against the prey from +1 to +2.",
+      "ru": "Вы получаете ситуативный бонус +1 к КБ против атак добычи. Вы также получаете ситуативный бонус +2 к проверкам Запугивания, Обмана и Скрытности против добычи, а также ко всем проверкам, чтобы Вспомнить информацию о добыче.\n\n**Охотничье мастерство** Если вы умелы на мастерском уровне в Запугивании, Обмане, Скрытности или навыке, используемом, чтобы Вспомнить информацию о добыче, получаемый вами против добычи ситуативный бонус к этому навыку увеличивается с +2 до +4. Если вы умелы в вашей броне на мастерском уровне, ваш ситуативный бонус к КБ против атак добычи увеличивается с +1 до +2."
+    },
+    "origin": "static_class",
+    "origin_value": "ranger",
+    "conditions": { "selected_feature": "hunter_edge_outwit" }
+  },
+  {
+    "slug": "hunter_edge_flurry",
+    "kind": "static",
+    "title": {
+      "en": "Flurry",
+      "ru": "Шквал"
+    },
+    "description": {
+      "en": "Your multiple attack penalty for attacks against your hunted prey is -3 (-2 with an agile weapon) on your second attack of the turn instead of -5, and -6 (-4 with an agile weapon) on your third or subsequent attack of the turn, instead of -10.\n\n**Masterful Hunter Upgrade** If you have master proficiency with your weapon, your multiple attack penalty for attacks against your hunted prey is -2 (-1 with an agile weapon) on your second attack of the turn, and -4 (-2 with an agile weapon) on your third and subsequent attacks of the turn.",
+      "ru": "Штраф за последовательные атаки по выбранной добыче уменьшается до -3 (-2 для быстрых атак) для второй атаки за ход (вместо -5) и до -6 (-4 для быстрых атак) для третьей и последующих атак (вместо -10).\n\n**Охотничье мастерство** Если вы умелы в своём оружии на мастерском уровне, штраф за последовательные атаки по выбранной добыче уменьшается до -2 (-1 для быстрых атак) для второй атаки за ход и до -4 (-2 для быстрых атак) для третьей и последующих атак."
+    },
+    "origin": "static_class",
+    "origin_value": "ranger",
+    "conditions": { "selected_feature": "hunter_edge_flurry" }
+  },
+  {
+    "slug": "ranger_weapon_expertise",
+    "kind": "static",
+    "title": {
+      "en": "Ranger Weapon Expertise",
+      "ru": "Эксперт оружия следопытов"
+    },
+    "description": {
+      "en": "You gain access to the critical specialization effects of all such weapons and unarmed attacks when attacking your hunted prey.",
+      "ru": "Вы получаете доступ к критическим эффектам всего простого и особого оружия, а также безоружных атак, когда атакуете свою добычу."
+    },
+    "origin": "static_class",
+    "origin_value": "ranger",
+    "conditions": { "level": 5 }
+  },
+  {
+    "slug": "trackless_journey",
+    "kind": "static",
+    "title": {
+      "en": "Trackless Journey",
+      "ru": "Тайные тропы"
+    },
+    "description": {
+      "en": "When you move through natural terrains, you are hard to track. You always gain the benefits of the Cover Tracks action in such terrains, without moving at half your Speed.",
+      "ru": "При перемещении по природной местности вас очень сложно выследить. Вы всегда получаете преимущества занятия Заметание следов в такой местности, даже если идёте с полной скоростью."
+    },
+    "origin": "static_class",
+    "origin_value": "ranger",
+    "conditions": { "level": 5 }
+  },
+  {
+    "slug": "nature_edge",
+    "kind": "static",
+    "title": {
+      "en": "Nature's Edge",
+      "ru": "Природное преимущество"
+    },
+    "description": {
+      "en": "You always find the weak points in your foes' defenses when they're on unfavorable terrain. Enemies are off-guard to you if they're in difficult terrain.",
+      "ru": "Вы всегда замечаете уязвимые места противника, когда он находится в непривычных условиях. Противники считаются для вас застигнутыми врасплох, когда находятся на пересечённой местности."
+    },
+    "origin": "static_class",
+    "origin_value": "ranger",
+    "conditions": { "level": 9 }
+  },
+  {
+    "slug": "unimpeded_journey",
+    "kind": "static",
+    "title": {
+      "en": "Unimpeded Journey",
+      "ru": "На природе как дома"
+    },
+    "description": {
+      "en": "You move quickly through obstacles, whether they're tumbled stone or tangled undergrowth. You can ignore the effects of difficult terrain. As normal for ignoring difficult terrain, this also lets you treat the hindrances of greater difficult terrain as those of difficult terrain.",
+      "ru": "Вы быстро преодолеваете препятствия вне зависимости от того, завалы это или густой подлесок. Вы можете игнорировать эффекты пересечённой местности. Согласно обычным правилам, эта особенность также позволяет перемещаться по сильно пересечённой местности, считая её обычной пересечённой местностью."
+    },
+    "origin": "static_class",
+    "origin_value": "ranger",
+    "conditions": { "level": 11 }
+  },
+  {
+    "slug": "masterful_hunter",
+    "kind": "static",
+    "title": {
+      "en": "Masterful Hunter",
+      "ru": "Охотничье мастерство"
+    },
+    "description": {
+      "en": "When using a ranged weapon that you have master proficiency in, you can ignore the penalty if attacking your hunted prey within the weapon's second and third range increments.\n\nIf you have master proficiency in Perception, you gain a +4 circumstance bonus to Perception checks when you Seek your prey, and if you have master proficiency in Survival, you gain a +4 circumstance bonus to Survival checks when you Track your prey.",
+      "ru": "Когда вы используете дистанционное оружие, в котором умелы на мастерском уровне, вы игнорируете штраф за дистанцию для дистанционных атак по добыче в пределах второго и третьего шага дистанции оружия.\n\nЕсли вы умелы во Внимании на мастерском уровне, вы получаете ситуативный бонус +4 к проверкам Внимания при Поиске вашей добычи, а если вы умелы в Выживании на мастерском уровне, то получаете ситуативный бонус +4 к проверкам Выживания при её Выслеживании."
+    },
+    "origin": "static_class",
+    "origin_value": "ranger",
+    "conditions": { "level": 17 }
   }
 ]

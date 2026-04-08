@@ -3,10 +3,10 @@
 module Pathfinder2Character
   module Classes
     class DruidBuilder
-      # rubocop: disable Metrics/AbcSize
-      def call(result:)
+      def call(result:) # rubocop: disable Metrics/AbcSize
         result[:abilities].merge!({ wis: 2 }) { |_, oldval, newval| oldval + newval }
         result[:skill_boosts].merge!({ nature: 1, free: 2 }) { |_, oldval, newval| oldval + newval }
+        result[:languages] = result[:languages].push('Wildsong').uniq
 
         result[:weapon_skills] = { unarmed: 1, simple: 1, martial: 0, advanced: 0 }
         result[:armor_skills] = { unarmored: 1, light: 1, medium: 1, heavy: 0 }
@@ -21,7 +21,6 @@ module Pathfinder2Character
 
         result
       end
-      # rubocop: enable Metrics/AbcSize
     end
   end
 end
