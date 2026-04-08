@@ -625,7 +625,10 @@ class Pathfinder2Decorator < ApplicationDecoratorV2
   def find_subclass_name
     return if subclasses[main_class].blank?
 
-    translate(::Pathfinder2::Character.subclass_info(main_class, subclasses[main_class])['name'])
+    subclass = ::Pathfinder2::Character.subclass_info(main_class, subclasses[main_class])
+    return unless subclass
+
+    translate(subclass['name'])
   end
 
   def damage_bonuses # rubocop: disable Metrics/AbcSize, Metrics/PerceivedComplexity

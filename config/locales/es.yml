@@ -318,6 +318,7 @@ es:
       general:
         acid: Acid
         air: Air
+        alchemist: Alchemist
         animist: Animist
         attack: Attack
         auditory: Auditory
@@ -341,6 +342,7 @@ es:
         electricity: Electricity
         elf: Elf
         emotion: Emotion
+        exemplar: Exemplar
         exploration: Exploration
         extradimensional: Extradimensional
         fear: Fear
@@ -353,6 +355,7 @@ es:
         general: General
         gnome: Gnome
         goblin: Goblin
+        gunslinger: Gunslinger
         halfling: Halfling
         healing: Healing
         hex: Hex

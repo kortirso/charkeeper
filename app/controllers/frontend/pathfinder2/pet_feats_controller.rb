@@ -19,7 +19,7 @@ module Frontend
       private
 
       def cache_options
-        { key: "pet_feats/pathfinder2/#{I18n.locale}/v2", expires_in: 24.hours }
+        { key: "pet_feats/pathfinder2/#{I18n.locale}/v0.4.24", expires_in: 24.hours }
       end
 
       def relation

@@ -318,6 +318,7 @@ ru:
       general:
         acid: Кислота
         air: Воздух
+        alchemist: Алхимик
         animist: Анимист
         attack: Атака
         auditory: Слух
@@ -341,6 +342,7 @@ ru:
         electricity: Электричество
         elf: Эльф
         emotion: Эмоции
+        exemplar: Экземплар
         exploration: Исследование
         extradimensional: Межпространственный
         fear: Страх
@@ -353,6 +355,7 @@ ru:
         general: Общий
         gnome: Гном
         goblin: Гоблин
+        gunslinger: Стрелок
         halfling: Полурослик
         healing: Исцеление
         hex: Наговор
