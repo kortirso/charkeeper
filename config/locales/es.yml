@@ -478,6 +478,7 @@ es:
         deadly: "En un golpe crítico, el arma añade un dado de daño de arma del tamaño indicado. Tira este dado después de duplicar el daño del arma. Esto aumenta a dos dados si el arma tiene una runa de golpe grandioso y a tres dados si el arma tiene una runa de golpe mayor"
         disarm: "Puedes usar esta arma para desarmar con la habilidad Atletismo aunque no tengas una mano libre. Esto utiliza el alcance del arma (si es diferente al tuyo) y añade la bonificación del arma a las tiradas de ataque (si la hay) como bonificación a la tirada de Atletismo. Si fallas críticamente una tirada para desarmar usando el arma, puedes soltar el arma para sufrir los efectos de un fallo en lugar de un fallo crítico. En caso de éxito crítico, seguirás necesitando una mano libre si quieres coger el objeto."
         fatal: El rasgo fatal incluye un tamaño de dado. En caso de golpe crítico, el dado de daño del arma aumenta a ese tamaño de dado en lugar del tamaño normal, y el arma añade un dado de daño adicional del tamaño indicado.
+        finesse: You can use your Dexterity modifier instead of your Strength modifier on attack rolls using this melee weapon.
         forceful: Cuando atacas con ella más de una vez en tu turno, el segundo ataque obtiene una bonificación circunstancial al daño igual al número de dados de daño del arma, y cada ataque posterior obtiene una bonificación circunstancial al daño igual al doble del número de dados de daño.
         free_hand: "Esta arma no ocupa tu mano, normalmente porque está integrada en tu armadura. Un arma de mano libre no puede ser desarmada. Puedes usar la mano cubierta por tu arma de mano libre para empuñar otros objetos, realizar acciones de manipulación, etc. No puedes atacar con un arma de mano libre si estás empuñando algo con esa mano o utilizándola para otra cosa. Cuando no estás empuñando nada y no estás utilizando la mano para otra cosa, puedes usar habilidades que requieran tener una mano libre, así como aquellas que requieran empuñar un arma con esa mano. Cada una de tus manos solo puede tener un arma de mano libre."
         grapple: "Puedes usar esta arma para agarrar con la habilidad Atletismo aunque no tengas una mano libre. Esto usa el alcance del arma (si es diferente al tuyo) y añade la bonificación del arma a las tiradas de ataque como bonificación a la tirade de Atletismo. Si fallas críticamente una tirada para agarrar usando el arma, puedes soltar el arma para sufrir los efectos de un fallo en lugar de un fallo crítico."
@@ -494,6 +495,7 @@ es:
         two_hand: "Esta arma se puede empuñar con las dos manos para cambiar su dado de daño al valor indicado. Este cambio se aplica a todos los dados de daño del arma."
         unarmed: An unarmed attack uses your body rather than a manufactured weapon.
         volley: Tus ataques contra objetivos que se encuentran a una distancia dentro del rango indicado reciben una penalización de -2.
+        dwarf: Member of the dwarf ancestry
         title:
           bludge: Contundente
           pierce: Perforante
@@ -505,6 +507,7 @@ es:
           deadly: Mortal %{value}
           disarm: Desarmar
           fatal: Fatal %{value}
+          finesse: Finesse
           forceful: Forzoso
           free_hand: Mano libre
           grapple: Agarre
@@ -521,6 +524,7 @@ es:
           two_hand: A dos manos %{value}
           unarmed: Unarmed
           volley: Volley %{value}
+          dwarf: Dwarf
     dc20:
       spell_tags:
         aberration: Aberration

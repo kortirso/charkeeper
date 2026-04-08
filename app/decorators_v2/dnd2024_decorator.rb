@@ -258,7 +258,7 @@ class Dnd2024Decorator < ApplicationDecoratorV2
       ).merge(
         weapon_mastery.include?(mastery) ? { mastery => I18n.t("tags.dnd.weapon.title.#{mastery}") } : {}
       ),
-      ready_to_use: item[:state] ? item[:state].in?(::Character::Item::HANDS) : true,
+      ready_to_use: item[:states] ? item[:states]['hands'].positive? : true,
       # для обратной совместимости
       damage_type: damage_type,
       action_type: 'action',
@@ -296,7 +296,7 @@ class Dnd2024Decorator < ApplicationDecoratorV2
       ).merge(
         weapon_mastery.include?(mastery) ? { mastery => I18n.t("tags.dnd.weapon.title.#{mastery}") } : {}
       ),
-      ready_to_use: item[:state] ? item[:state].in?(::Character::Item::HANDS) : true,
+      ready_to_use: item[:states] ? item[:states]['hands'].positive? : true,
       # для обратной совместимости
       damage_type: damage_type,
       action_type: 'action',

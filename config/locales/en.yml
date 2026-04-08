@@ -478,6 +478,7 @@ en:
         deadly: "On a critical hit, the weapon adds a weapon damage die of the listed size. Roll this after doubling the weapon's damage. This increases to two dice if the weapon has a greater striking rune and three dice if the weapon has a major striking rune."
         disarm: "You can use this weapon to Disarm with the Athletics skill even if you don't have a free hand. This uses the weapon's reach (if different from your own) and adds the weapon's item bonus to attack rolls (if any) as an item bonus to the Athletics check. If you critically fail a check to Disarm using the weapon, you can drop the weapon to take the effects of a failure instead of a critical failure. On a critical success, you still need a free hand if you want to take the item."
         fatal: The fatal trait includes a die size. On a critical hit, the weapon's damage die increases to that die size instead of the normal die size, and the weapon adds one additional damage die of the listed size.
+        finesse: You can use your Dexterity modifier instead of your Strength modifier on attack rolls using this melee weapon.
         forceful: When you attack with it more than once on your turn, the second attack gains a circumstance bonus to damage equal to the number of weapon damage dice, and each later attack gains a circumstance bonus to damage equal to double the number of damage dice.
         free_hand: "This weapon doesn't take up your hand, usually because it is built into your armor. A free-hand weapon can't be Disarmed. You can use the hand covered by your free-hand weapon to wield other items, perform manipulate actions, and so on. You can't attack with a free-hand weapon if you're wielding anything in that hand or otherwise using that hand. When you're not wielding anything and not otherwise using the hand, you can use abilities that require you to have a hand free as well as those that require you to be wielding a weapon in that hand. Each of your hands can have only one free-hand weapon on it."
         grapple: "You can use this weapon to Grapple with the Athletics skill even if you don't have a free hand. This uses the weapon's reach (if different from your own) and adds the weapon's item bonus to attack rolls as an item bonus to the Athletics check. If you critically fail a check to Grapple using the weapon, you can drop the weapon to take the effects of a failure instead of a critical failure."
@@ -494,6 +495,7 @@ en:
         two_hand: "This weapon can be wielded with two hands to change its weapon damage die to the indicated value. This change applies to all the weapon's damage dice."
         unarmed: An unarmed attack uses your body rather than a manufactured weapon.
         volley: Your attacks against targets that are at a distance within the range listed take a –2 penalty.
+        dwarf: Member of the dwarf ancestry
         title:
           bludge: Bludgeoning
           pierce: Piercing
@@ -505,6 +507,7 @@ en:
           deadly: Deadly %{value}
           disarm: Disarm
           fatal: Fatal %{value}
+          finesse: Finesse
           forceful: Forceful
           free_hand: Free-Hand
           grapple: Grapple
@@ -521,6 +524,7 @@ en:
           two_hand: Two-Hand %{value}
           unarmed: Unarmed
           volley: Volley %{value}
+          dwarf: Dwarf
     dc20:
       spell_tags:
         aberration: Aberration

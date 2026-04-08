@@ -162,12 +162,29 @@ class Pathfinder2Decorator < ApplicationDecoratorV2
     @result['attacks'] =
       (feature_weapons + [unarmed_weapon] + weapons).flat_map do |item|
         tooltips = parse_tooltips(item)
-
+        item[:items_info]['weapon_skill'] = update_weapon_skill(item, tooltips, item[:items_info]['weapon_skill'])
         case item[:items_info]['type']
         when 'unarmed', 'melee' then melee_attack(item, tooltips)
         when 'range' then range_attack(item, tooltips)
         end
       end
+  end
+
+  def update_weapon_skill(weapon, tooltips, current) # rubocop: disable Metrics/AbcSize, Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity
+    return current if race_weapons_skills.empty?
+    return current if current == 'unarmed'
+    return current if current == 'simple'
+
+    if current == 'advanced' && race_weapons_skills.any? { |item| tooltips.include?(item['lower_weapon_skill_tags']) }
+      return 'martial'
+    end
+
+    if current == 'martial'
+      return 'simple' if race_weapons_skills.any? { |item| tooltips.include?(item['lower_weapon_skill_tags']) }
+      return 'simple' if race_weapons_skills.any? { |item| item['lower_weapon_skill_slugs'].include?(weapon[:items_slug]) }
+    end
+
+    current
   end
 
   def apply_add_modifiers # rubocop: disable Metrics/CyclomaticComplexity, Metrics/AbcSize, Metrics/MethodLength, Metrics/PerceivedComplexity
@@ -273,11 +290,11 @@ class Pathfinder2Decorator < ApplicationDecoratorV2
       damage: item[:items_info]['damage'],
       notes: item[:notes],
       tags: damage_types.index_with { |type| I18n.t("tags.pathfinder2.weapon.title.#{type}") }.merge(
-        tooltips.except('finesse', 'versatile', 'reach', 'propulsive').to_h do |key, value|
+        tooltips.except('versatile', 'reach', 'propulsive').to_h do |key, value|
           [key, I18n.t("tags.pathfinder2.weapon.title.#{key}", value: value)]
         end
       ),
-      ready_to_use: item[:state] ? item[:state].in?(::Character::Item::HANDS) : true
+      ready_to_use: item[:states] ? item[:states]['hands'].positive? : true
     }.compact
   end
 
@@ -541,9 +558,9 @@ class Pathfinder2Decorator < ApplicationDecoratorV2
 
   def feature_modifiers
     available_features
-      .hashable_pluck(:ready_to_use, :active, 'feats.continious', 'feats.modifiers', 'feats.origin')
+      .hashable_pluck(:active, 'feats.continious', 'feats.modifiers', 'feats.origin')
       .select { |item|
-        PET_ORIGINS.exclude?(item[:feats_origin]) && ((!item[:feats_continious] && item[:ready_to_use]) || item[:active])
+        PET_ORIGINS.exclude?(item[:feats_origin]) && (!item[:feats_continious] || item[:active])
       }
       .pluck(:feats_modifiers)
       .compact_blank
@@ -570,18 +587,30 @@ class Pathfinder2Decorator < ApplicationDecoratorV2
 
   def feature_weapons
     available_features
-      .hashable_pluck(:ready_to_use, :active, 'feats.continious', 'feats.info', 'feats.origin')
+      .hashable_pluck(:active, 'feats.continious', 'feats.info', 'feats.origin')
       .select { |item|
         next false if PET_ORIGINS.include?(item[:feats_origin])
         next false if item[:feats_info]['weapons'].blank?
 
-        (!item[:feats_continious] && item[:ready_to_use]) || item[:active]
+        !item[:feats_continious] || item[:active]
       }
       .pluck(:feats_info)
       .compact_blank
       .pluck('weapons')
       .flatten
       .map(&:symbolize_keys)
+  end
+
+  def race_weapons_skills
+    @race_weapons_skills ||=
+      available_features
+        .where(feats: { origin: 1 })
+        .hashable_pluck('feats.info')
+        .reject { |item|
+          item[:feats_info]['lower_weapon_skill_tags'].blank? && item[:feats_info]['lower_weapon_skill_slugs'].blank?
+        }
+        .pluck(:feats_info)
+        .compact_blank
   end
 
   def active_items

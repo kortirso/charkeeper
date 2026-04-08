@@ -43,7 +43,8 @@
     },
     "origin": "ancestry",
     "origin_values": ["dwarf"],
-    "conditions": { "level": 1 }
+    "conditions": { "level": 1 },
+    "info": { "lower_weapon_skill_tags": "dwarf", "lower_weapon_skill_slugs": ["battle_axe", "pick", "warhammer"] }
   },
   {
     "slug": "mountain_strategy",
@@ -149,7 +150,8 @@
     },
     "origin": "ancestry",
     "origin_values": ["elf"],
-    "conditions": { "level": 1 }
+    "conditions": { "level": 1 },
+    "info": { "lower_weapon_skill_tags": "elf", "lower_weapon_skill_slugs": ["longbow", "composite_longbow", "shortbow", "composite_shortbow", "rapier"] }
   },
   {
     "slug": "forlorn",
@@ -301,7 +303,8 @@
     },
     "origin": "ancestry",
     "origin_values": ["gnome"],
-    "conditions": { "level": 1 }
+    "conditions": { "level": 1 },
+    "info": { "lower_weapon_skill_tags": "gnome", "lower_weapon_skill_slugs": ["glaive", "kukri"] }
   },
   {
     "slug": "illusion_sense",
@@ -422,7 +425,8 @@
     },
     "origin": "ancestry",
     "origin_values": ["goblin"],
-    "conditions": { "level": 1 }
+    "conditions": { "level": 1 },
+    "info": { "lower_weapon_skill_tags": "goblin" }
   },
   {
     "slug": "junk_tinker",
@@ -551,7 +555,8 @@
     },
     "origin": "ancestry",
     "origin_values": ["halfling"],
-    "conditions": { "level": 1 }
+    "conditions": { "level": 1 },
+    "info": { "lower_weapon_skill_tags": "halfling", "lower_weapon_skill_slugs": ["shortsword"] }
   },
   {
     "slug": "prairie_rider",
@@ -1035,7 +1040,8 @@
     },
     "origin": "ancestry",
     "origin_values": ["orc"],
-    "conditions": { "level": 1 }
+    "conditions": { "level": 1 },
+    "info": { "lower_weapon_skill_tags": "orc", "lower_weapon_skill_slugs": ["falchion", "greataxe"] }
   },
   {
     "slug": "tusks",
