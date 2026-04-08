@@ -139,7 +139,7 @@ Rails.application.routes.draw do
         scope module: :characters do
           resources :spells, only: %i[index create update destroy]
           resources :health, only: %i[create]
-          resources :talents, only: %i[index create]
+          resources :talents, only: %i[index create destroy]
           resources :rest, only: %i[create]
           resource :companions, only: %i[show create update destroy]
         end
