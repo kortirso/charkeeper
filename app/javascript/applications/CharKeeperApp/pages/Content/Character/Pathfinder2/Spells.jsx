@@ -285,6 +285,12 @@ export const Pathfinder2Spells = (props) => {
     updateCharacterSpell(spell.id, { used_count: spell.value[level].used_count + 1, level: level });
   }
 
+  const toggleSignature = (e, spell, value) => {
+    e.stopPropagation();
+
+    updateCharacterSpell(spell.id, { signature: value });
+  }
+
   const updateCharacterSpell = async (spellId, payload) => {
     const result = await updateCharacterSpellRequest(
       appState.accessToken, character().provider, character().id, spellId, { spell: payload }
@@ -443,10 +449,13 @@ export const Pathfinder2Spells = (props) => {
                               {(characterSpell) =>
                                 <Pathfinder2Spell
                                   noLevel
+                                  signature={character().can_have_signature_spells && level > 0 && (characterSpell.kind === 'default' || characterSpell.kind === 'additional')}
                                   kind={characterSpell.kind}
                                   spell={characterSpell.spell}
+                                  value={characterSpell.value}
                                   cantripLevel={Math.round(character().level / 2)}
                                   level={level}
+                                  onSignature={(e, value) => toggleSignature(e, characterSpell, value)}
                                 >
                                   <Show when={character().spells_info.prepare && characterSpell.spell.info.level > 0}>
                                     {/* Ячейки заклинаний подготавливающих заклинателей */}

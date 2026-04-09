@@ -9,9 +9,7 @@ module CharactersContext
 
       def remove_redundant_feats(...); end
 
-      def exclude_origins_from_remove
-        ::Pathfinder2::Feat::SELECTABLE_ORIGINS
-      end
+      def remove_not_available_feats(...); end
 
       def filter_available_feats(character)
         selected_feats = find_selected_feats(character)
@@ -52,7 +50,7 @@ module CharactersContext
       def feats(character)
         data = character.data
         relation = ::Pathfinder2::Feat.where(origin: [5, 6, 7, 8]).where(
-          origin_value: [data.race, data.subrace, data.main_class, data.subclasses.values, character.id].flatten.compact.uniq
+          origin_value: [data.race, data.subrace, data.main_class, data.subclasses.values].flatten.compact.uniq
         )
 
         if character.pet

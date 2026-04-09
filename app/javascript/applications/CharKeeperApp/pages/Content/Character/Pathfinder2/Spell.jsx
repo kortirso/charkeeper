@@ -3,9 +3,10 @@ import { For, Show } from 'solid-js';
 import { SpellRange } from './Spells/Range';
 import { SpellDuration } from './Spells/Duration';
 import { SpellDefense } from './Spells/Defense';
-import { Toggle, Dice } from '../../../../components';
+import { Toggle, Dice, IconButton } from '../../../../components';
 import { useAppLocale } from '../../../../context';
 import { localize, modifier } from '../../../../helpers';
+import { Star } from '../../../../assets';
 
 const TRANSLATION = {
   en: {
@@ -61,6 +62,13 @@ export const Pathfinder2Spell = (props) => {
           <div class="flex-1">
             <div class="flex justify-between">
               <p class="flex gap-x-4">
+                <Show when={props.signature}>
+                  <IconButton onClick={(e) => props.onSignature(e, !props.value.signature)}>
+                    <Show when={props.value.signature} fallback={<Star width="20" height="20" />}>
+                      <Star filled width="20" height="20" />
+                    </Show>
+                  </IconButton>
+                </Show>
                 <span>{spell().title}</span>
                 <Show when={Object.keys(spell().price).length > 0}><span>
                   {Object.entries(spell().price).map(([key, value]) => `${value}${key.toUpperCase()}`).join(' ')}

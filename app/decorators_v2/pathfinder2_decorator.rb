@@ -81,6 +81,7 @@ class Pathfinder2Decorator < ApplicationDecoratorV2
     @result['spell_attack'] =
       spell_attack.to_i.positive? ? modified_abilities[main_ability] + proficiency_bonus(spell_attack.to_i) : 0
     @result['spell_dc'] = spell_dc.to_i.positive? ? 10 + modified_abilities[main_ability] + proficiency_bonus(spell_dc.to_i) : 0
+    @result['can_have_signature_spells'] = available_features_slugs.include?('signature_spells')
     @result['can_have_pet'] = available_features_slugs.include?('pet')
     @result['can_have_familiar'] = available_features_slugs.intersect?(FAMILIAR_FEATS)
     @result['total_damage_reduction'] = calc_total_damage_reduction

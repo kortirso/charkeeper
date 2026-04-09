@@ -22,7 +22,7 @@ module CharactersContext
         private
 
         def do_prepare(input)
-          input[:feat] = ::Pathfinder2::Feat.find(input[:id])
+          input[:feat] = ::Pathfinder2::Feat.where.not(origin: 4).find(input[:id])
         end
 
         def do_persist(input)

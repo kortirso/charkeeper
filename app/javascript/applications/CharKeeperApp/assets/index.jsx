@@ -36,6 +36,7 @@ export * from './Buff';
 export * from './Debuff';
 export * from './Damage';
 export * from './Upgrade';
+export * from './Star';
 export * from './socials/Discord';
 export * from './socials/Telegram';
 export * from './socials/Vk';

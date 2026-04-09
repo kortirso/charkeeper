@@ -95,7 +95,7 @@ module CharactersContext
 
       def add_feats(character, input)
         input[:feats].each do |slug|
-          feat = ::Pathfinder2::Feat.find_by(slug: slug)
+          feat = ::Pathfinder2::Feat.where.not(origin: 4).find_by(slug: slug)
           next unless feat
 
           add_feat.call(character: character, id: feat.id, type: 'additional', level: 1)

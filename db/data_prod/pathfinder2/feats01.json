@@ -1075,7 +1075,7 @@
     "conditions": { "level": 1 }
   },
   {
-    "slug": "hymn_of_healing",
+    "slug": "bard_hymn_of_healing",
     "kind": "static",
     "title": {
       "en": "Hymn of Healing",
@@ -1091,7 +1091,7 @@
     "info": { "focus_spells": ["hymn_of_healing"] }
   },
   {
-    "slug": "lingering_composition",
+    "slug": "bard_lingering_composition",
     "kind": "static",
     "title": {
       "en": "Lingering Composition",
@@ -1361,7 +1361,7 @@
     "conditions": { "level": 1 }
   },
   {
-    "slug": "untamed_form",
+    "slug": "druid_untamed_form",
     "kind": "static",
     "title": {
       "en": "Untamed Form",
@@ -1746,7 +1746,7 @@
     "conditions": { "level": 1 }
   },
   {
-    "slug": "cackle",
+    "slug": "witch_cackle",
     "kind": "static",
     "title": {
       "en": "Cackle",

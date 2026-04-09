@@ -605,5 +605,19 @@
     "origin": "static_class",
     "origin_value": "ranger",
     "conditions": { "level": 17 }
+  },
+  {
+    "slug": "signature_spells",
+    "kind": "static",
+    "title": {
+      "en": "Signature Spells",
+      "ru": "Фирменные заклинания"
+    },
+    "description": {
+      "en": "For each spell rank you have access to, choose one spell of that rank to be a signature spell. You don't need to learn heightened versions of signature spells separately; instead, you can heighten these spells freely. If you've learned a signature spell at a higher rank than its minimum, you can also cast all its lower-rank versions without learning those separately.",
+      "ru": "Вы выбираете по одному заклинанию на каждом доступном вам круге. Эти заклинания становятся вашими фирменными заклинаниями, и вам больше не требуется изучать их варианты более высокого круга — вместо этого вы можете повышать их совершенно свободно. Если вы изучили фирменное заклинание на круге выше минимального, вы можете применять и все его варианты более низких кругов без необходимости отдельно их изучать."
+    },
+    "origin": "static_class",
+    "origin_values": []
   }
 ]

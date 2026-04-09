@@ -104,7 +104,7 @@ module CharactersContext
       def lock_time = 0
 
       def do_prepare(input) # rubocop: disable Metrics/AbcSize, Metrics/PerceivedComplexity, Metrics/CyclomaticComplexity, Metrics/MethodLength
-        input.merge!(apply_class_progression(input)) if input.key?(:level)
+        input.deep_merge!(apply_class_progression(input)) if input.key?(:level)
 
         %i[abilities health saving_throws selected_skills coins].each do |key|
           input[key]&.transform_values!(&:to_i)
@@ -150,7 +150,7 @@ module CharactersContext
 
       def add_feats(input)
         input[:selected_features].values.flatten.each do |slug|
-          feat = ::Pathfinder2::Feat.find_by(slug: slug)
+          feat = ::Pathfinder2::Feat.where.not(origin: 4).find_by(slug: slug)
           next unless feat
 
           add_feat.call(character: input[:character], id: feat.id, type: 'additional', level: input[:character].data.level)

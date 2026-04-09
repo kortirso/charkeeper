@@ -9,6 +9,7 @@ module Pathfinder2Context
 
         if level == 3
           @result[:saving_throws] = character.data.saving_throws.merge({ 'reflex' => 2 }, &merge_resolver)
+          @result[:selected_features] = { 'spells' => 'signature_spells' }
         end
 
         if level == 7

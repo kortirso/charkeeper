@@ -72,7 +72,7 @@
     "conditions": { "level": 2 }
   },
   {
-    "slug": "loremaster_etude",
+    "slug": "bard_loremaster_etude",
     "kind": "hidden",
     "title": {
       "en": "Loremaster's Etude",
@@ -107,7 +107,7 @@
     "info": { "multiple": true, "options_list": "subclasses" }
   },
   {
-    "slug": "song_of_strength",
+    "slug": "bard_song_of_strength",
     "kind": "hidden",
     "title": {
       "en": "Song of Strength",
@@ -123,7 +123,7 @@
     "info": { "focus_spells": ["song_of_strength"] }
   },
   {
-    "slug": "uplifting_overture",
+    "slug": "bard_uplifting_overture",
     "kind": "hidden",
     "title": {
       "en": "Uplifting Overture",
