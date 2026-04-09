@@ -175,6 +175,7 @@ export const Equipment = (props) => {
     batch(() => {
       setChangingItem(item);
       setItemInfo(null);
+      setMovingItem(null);
       openModal();
     });
   }
@@ -215,6 +216,7 @@ export const Equipment = (props) => {
       await updateCharacterItem(item, { character_item: { states: payload } });
     } else {
       batch(() => {
+        setChangingItem(null);
         setMovingItem({ item: item, fromState: fromState, toState: toState, amount: 1 });
         openModal();
       });

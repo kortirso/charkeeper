@@ -496,6 +496,14 @@ en:
         unarmed: An unarmed attack uses your body rather than a manufactured weapon.
         volley: Your attacks against targets that are at a distance within the range listed take a –2 penalty.
         dwarf: Member of the dwarf ancestry
+        elf: Member of the elf ancestry
+        uncommon: Uncommon
+        versatile: A versatile weapon can be used to deal a different type of damage than its listed type.
+        orc: Member of the orc ancestry
+        gnome: Member of the gnome ancestry
+        goblin: Member of the goblin ancestry
+        halfling: Member of the halfling ancestry
+        propulsive: You add half your Strength modifier (if positive) to damage rolls with a propulsive ranged weapon.
         title:
           bludge: Bludgeoning
           pierce: Piercing
@@ -525,6 +533,14 @@ en:
           unarmed: Unarmed
           volley: Volley %{value}
           dwarf: Dwarf
+          elf: Elf
+          uncommon: Uncommon
+          versatile: Versatile
+          orc: Orc
+          gnome: Gnome
+          goblin: Goblin
+          halfling: Halfling
+          propulsive: Propulsive
     dc20:
       spell_tags:
         aberration: Aberration
@@ -622,6 +638,7 @@ en:
         Cumbersome: It takes 1 AP to draw, stow, or pick up this Weapon.
         Deft: Ranged Attacks with this Weapon don't have DisADV as a result of you being Prone.
         Guard: You gain +1 PD while wielding the weapon.
+        Heavy: The Weapon's damage increases by 1.
         Impact: You deal +1 situational damage on Heavy Hits.
         Multi-Faceted: You must choose which weapon Style to use. The chosen weapon Style determines the Attack's damage type.
         Reach: This weapon adds 1 Space to your Melee Range when you Attack with it.
@@ -655,6 +672,7 @@ en:
           Cumbersome: Cumbersome
           Deft: Deft
           Guard: Guard
+          Heavy: Heavy
           Impact: Impact
           Multi-Faceted: Multi-Faceted
           Reach: Reach

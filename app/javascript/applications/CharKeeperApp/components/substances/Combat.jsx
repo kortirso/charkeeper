@@ -186,13 +186,26 @@ export const Combat = (props) => {
       }
     }
 
-    const squares = provider === 'daggerheart' ? DH_SQUARE_DISTANCES[attack.range] : (attack.distance || attack.range);
-    if (!squares) return '';
+    let distance = attack.distance || attack.range;
+    if (!distance) return '';
 
-    if (settings()[provider] === 'imperial') return `${squares * 5} ${localize(TRANSLATION, locale()).feet}`;
-    if (settings()[provider] === 'metric') return `${squares * 1.5} ${localize(TRANSLATION, locale()).meters}`;
+    console.log(distance)
 
-    return `${squares} ${localize(TRANSLATION, locale()).squares}`;
+    if (provider === 'daggerheart') distance = [DH_SQUARE_DISTANCES[attack.range] * 5];
+    if (provider === 'pathfinder2') distance = [distance];
+    if (provider === 'dnd5' || provider === 'dnd2024' || provider === 'dc20') distance = distance.toString().includes('/') ? distance.split('/').map((item) => parseInt(item)) : [distance];
+
+    const result = distance.map((item) => {
+      if (settings()[provider] === 'imperial') return item;
+      if (settings()[provider] === 'metric') return item * 0.3;
+
+      return item / 5;
+    }).join('/');
+
+    if (settings()[provider] === 'imperial') return `${result} ${localize(TRANSLATION, locale()).feet}`;
+    if (settings()[provider] === 'metric') return `${result} ${localize(TRANSLATION, locale()).meters}`;
+
+    return `${result} ${localize(TRANSLATION, locale()).squares}`;
   }
 
   const renderFalloutAttackDice = (attack) => {
@@ -305,7 +318,7 @@ export const Combat = (props) => {
         </div>
         <Modal classList="md:max-w-md!">
           <p class="mb-3 text-xl">{tagInfo()[0]}</p>
-          <p>{tagInfo()[1]}</p>
+          <p class="text-sm">{tagInfo()[1]}</p>
         </Modal>
       </GuideWrapper>
     </ErrorWrapper>

@@ -384,7 +384,7 @@ class Pathfinder2Decorator < ApplicationDecoratorV2
     0
   end
 
-  def armor_traits
+  def armor_traits # rubocop: disable Metrics/PerceivedComplexity
     return @armor_traits if defined?(@armor_traits)
 
     equiped_armor = defense_gear[:armor]
@@ -392,8 +392,8 @@ class Pathfinder2Decorator < ApplicationDecoratorV2
       strength_enough: equiped_armor.nil? ||
                        equiped_armor.dig(:items_info, 'str_req').nil? ||
                        modified_abilities['str'] >= equiped_armor.dig(:items_info, 'str_req'),
-      flexible: equiped_armor.nil? || equiped_armor.dig(:items_info, 'tooltips', 'flexible') || false,
-      noisy: equiped_armor&.dig(:items_info, 'tooltips', 'noisy') || false
+      flexible: equiped_armor.nil? || equiped_armor.dig(:items_info, 'tooltips')&.include?('flexible') || false,
+      noisy: equiped_armor&.dig(:items_info, 'tooltips')&.include?('noisy') || false
     }
   end
 

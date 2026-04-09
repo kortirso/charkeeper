@@ -446,29 +446,51 @@ Item::Recipe.create(
 #   file.write(beautified_json_string)
 # end
 
-file_content = File.read('db/data/pathfinder2/charkeeper_feat.json')
-feats = JSON.parse(file_content)
+file_content = File.read('db/data/pathfinder2/charkeeper_armor.json')
+weapons = JSON.parse(file_content)
 # feats = feats.select { |item| item['rus_traits'].include?('Волшебник') }
 
-data_hash = feats.filter_map do |item|
-  next if item['level'] != 10
+data_hash = weapons.filter_map do |item|
+  {
+    slug: item['name'].underscore.gsub(' ', '_'),
+    kind: "weapon",
+    name: { en: item['name'], ru: item['rus_name'] },
+    data: { weight: 0, price: 0 },
+    info: {
+      group: group,
+      weapon_skill: category,
+      type: "melee",
+      damage: damages[0],
+      damage_type: damage_type,
+      burden: item['rus_bulk'].to_i,
+      tooltips: item['traits'].underscore.split(', ')
+    }
+  }
 
   {
     slug: item['name'].underscore.gsub(' ', '_'),
-    kind: 'static',
-    title: { en: item['name'], ru: item['rus_name'] },
-    description: { en: item['text'], ru: item['rus_text'] },
-    origin: 'ancestry',
-    origin_values: item['traits'].split(', ').map(&:underscore),
-    conditions: { level: 10 },
-    description_eval_variables: { limit: '1' },
-    limit_refresh: 'long_rest'
+    kind: "armor",
+    name: { en: item['name'], ru: item['rus_name'] },
+    data: {
+      weight: 0,
+      price: 10
+    },
+    info: {
+      group: "cloth",
+      armor_skill: "unarmored",
+      ac: 0,
+      str_req: null,
+      dex_max: 5,
+      skills_penalty: null,
+      speed_penalty: null,
+      tooltips: item['traits'].underscore.split(', ')
+    }
   }
 end
 
 beautified_json_string = JSON.pretty_generate(data_hash)
 # # Write the beautified JSON string to a file
-File.open('db/data_prod/pathfinder2/feats10.json', 'w') do |file|
+File.open('db/data_prod/pathfinder2/armor.json', 'w') do |file|
   file.write(beautified_json_string)
 end
 

@@ -1,0 +1,1980 @@
+[
+  {
+    "slug": "club",
+    "kind": "weapon",
+    "name": {
+      "en": "Club",
+      "ru": "Дубинка"
+    },
+    "data": {
+      "weight": 1,
+      "price": 0
+    },
+    "info": {
+      "group": "club",
+      "weapon_skill": "simple",
+      "type": "melee",
+      "damage": "1d6",
+      "damage_type": "bludge",
+      "burden": 1,
+      "tooltips": [
+        "thrown"
+      ],
+      "dist": 10
+    }
+  },
+  {
+    "slug": "dagger",
+    "kind": "weapon",
+    "name": {
+      "en": "Dagger",
+      "ru": "Кинжал"
+    },
+    "data": {
+      "weight": 0,
+      "price": 20
+    },
+    "info": {
+      "group": "knife",
+      "weapon_skill": "simple",
+      "type": "melee",
+      "damage": "1d4",
+      "damage_type": "pierce-slash",
+      "burden": 1,
+      "tooltips": [
+        "agile",
+        "finesse",
+        "thrown",
+        "versatile"
+      ],
+      "dist": 10
+    }
+  },
+  {
+    "slug": "gauntlet",
+    "kind": "weapon",
+    "name": {
+      "en": "Gauntlet",
+      "ru": "Латная рукавица"
+    },
+    "data": {
+      "weight": 0,
+      "price": 20
+    },
+    "info": {
+      "group": "brawling",
+      "weapon_skill": "simple",
+      "type": "melee",
+      "damage": "1d4",
+      "damage_type": "bludge",
+      "burden": 1,
+      "tooltips": [
+        "agile",
+        "free_hand"
+      ]
+    }
+  },
+  {
+    "slug": "light_mace",
+    "kind": "weapon",
+    "name": {
+      "en": "Light Mace",
+      "ru": "Лёгкая булава"
+    },
+    "data": {
+      "weight": 0,
+      "price": 40
+    },
+    "info": {
+      "group": "club",
+      "weapon_skill": "simple",
+      "type": "melee",
+      "damage": "1d4",
+      "damage_type": "bludge",
+      "burden": 1,
+      "tooltips": [
+        "agile",
+        "finesse",
+        "shove"
+      ]
+    }
+  },
+  {
+    "slug": "longspear",
+    "kind": "weapon",
+    "name": {
+      "en": "Longspear",
+      "ru": "Длинное копьё"
+    },
+    "data": {
+      "weight": 2,
+      "price": 50
+    },
+    "info": {
+      "group": "spear",
+      "weapon_skill": "simple",
+      "type": "melee",
+      "damage": "1d8",
+      "damage_type": "pierce",
+      "burden": 2,
+      "tooltips": [
+        "reach"
+      ]
+    }
+  },
+  {
+    "slug": "mace",
+    "kind": "weapon",
+    "name": {
+      "en": "Mace",
+      "ru": "Булава"
+    },
+    "data": {
+      "weight": 1,
+      "price": 100
+    },
+    "info": {
+      "group": "club",
+      "weapon_skill": "simple",
+      "type": "melee",
+      "damage": "1d6",
+      "damage_type": "bludge",
+      "burden": 1,
+      "tooltips": [
+        "shove"
+      ]
+    }
+  },
+  {
+    "slug": "morningstar",
+    "kind": "weapon",
+    "name": {
+      "en": "Morningstar",
+      "ru": "Моргенштерн"
+    },
+    "data": {
+      "weight": 1,
+      "price": 100
+    },
+    "info": {
+      "group": "club",
+      "weapon_skill": "simple",
+      "type": "melee",
+      "damage": "1d6",
+      "damage_type": "bludge-pierce",
+      "burden": 1,
+      "tooltips": []
+    }
+  },
+  {
+    "slug": "sickle",
+    "kind": "weapon",
+    "name": {
+      "en": "Sickle",
+      "ru": "Серп"
+    },
+    "data": {
+      "weight": 0,
+      "price": 20
+    },
+    "info": {
+      "group": "knife",
+      "weapon_skill": "simple",
+      "type": "melee",
+      "damage": "1d4",
+      "damage_type": "slash",
+      "burden": 1,
+      "tooltips": [
+        "agile",
+        "finesse",
+        "trip"
+      ]
+    }
+  },
+  {
+    "slug": "spear",
+    "kind": "weapon",
+    "name": {
+      "en": "Spear",
+      "ru": "Копьё"
+    },
+    "data": {
+      "weight": 1,
+      "price": 10
+    },
+    "info": {
+      "group": "spear",
+      "weapon_skill": "simple",
+      "type": "melee",
+      "damage": "1d6",
+      "damage_type": "pierce",
+      "burden": 1,
+      "tooltips": [
+        "monk",
+        "thrown"
+      ],
+      "dist": 20
+    }
+  },
+  {
+    "slug": "spiked_gauntlet",
+    "kind": "weapon",
+    "name": {
+      "en": "Spiked Gauntlet",
+      "ru": "Шипованная латная рукавица"
+    },
+    "data": {
+      "weight": 0,
+      "price": 30
+    },
+    "info": {
+      "group": "brawling",
+      "weapon_skill": "simple",
+      "type": "melee",
+      "damage": "1d4",
+      "damage_type": "pierce",
+      "burden": 1,
+      "tooltips": [
+        "agile",
+        "free_hand"
+      ]
+    }
+  },
+  {
+    "slug": "staff",
+    "kind": "weapon",
+    "name": {
+      "en": "Staff",
+      "ru": "Посох"
+    },
+    "data": {
+      "weight": 1,
+      "price": 0
+    },
+    "info": {
+      "group": "club",
+      "weapon_skill": "simple",
+      "type": "melee",
+      "damage": "1d4",
+      "damage_type": "bludge",
+      "burden": 1,
+      "tooltips": [
+        "monk",
+        "two_hand-1d8"
+      ]
+    }
+  },
+  {
+    "slug": "clan_dagger",
+    "kind": "weapon",
+    "name": {
+      "en": "Clan Dagger",
+      "ru": "Клановый кинжал"
+    },
+    "data": {
+      "weight": 0,
+      "price": 200
+    },
+    "info": {
+      "group": "knife",
+      "weapon_skill": "simple",
+      "type": "melee",
+      "damage": "1d4",
+      "damage_type": "pierce-bludge",
+      "burden": 1,
+      "tooltips": [
+        "uncommon",
+        "agile",
+        "dwarf",
+        "parry",
+        "versatile"
+      ]
+    }
+  },
+  {
+    "slug": "katar",
+    "kind": "weapon",
+    "name": {
+      "en": "Katar",
+      "ru": "Катар"
+    },
+    "data": {
+      "weight": 0,
+      "price": 30
+    },
+    "info": {
+      "group": "knife",
+      "weapon_skill": "simple",
+      "type": "melee",
+      "damage": "1d4",
+      "damage_type": "pierce",
+      "burden": 1,
+      "tooltips": [
+        "uncommon",
+        "agile",
+        "deadly-1d6",
+        "monk"
+      ]
+    }
+  },
+  {
+    "slug": "bastard_sword",
+    "kind": "weapon",
+    "name": {
+      "en": "Bastard Sword",
+      "ru": "Меч-бастард"
+    },
+    "data": {
+      "weight": 1,
+      "price": 400
+    },
+    "info": {
+      "group": "sword",
+      "weapon_skill": "martial",
+      "type": "melee",
+      "damage": "1d8",
+      "damage_type": "slash",
+      "burden": 1,
+      "tooltips": [
+        "two_hand-1d12"
+      ]
+    }
+  },
+  {
+    "slug": "battle_axe",
+    "kind": "weapon",
+    "name": {
+      "en": "Battle Axe",
+      "ru": "Боевой топор"
+    },
+    "data": {
+      "weight": 1,
+      "price": 100
+    },
+    "info": {
+      "group": "axe",
+      "weapon_skill": "martial",
+      "type": "melee",
+      "damage": "1d8",
+      "damage_type": "slash",
+      "burden": 1,
+      "tooltips": [
+        "sweep"
+      ]
+    }
+  },
+  {
+    "slug": "bo_staff",
+    "kind": "weapon",
+    "name": {
+      "en": "Bo Staff",
+      "ru": "Бо"
+    },
+    "data": {
+      "weight": 2,
+      "price": 20
+    },
+    "info": {
+      "group": "club",
+      "weapon_skill": "martial",
+      "type": "melee",
+      "damage": "1d8",
+      "damage_type": "bludge",
+      "burden": 2,
+      "tooltips": [
+        "monk",
+        "parry",
+        "reach",
+        "trip"
+      ]
+    }
+  },
+  {
+    "slug": "falchion",
+    "kind": "weapon",
+    "name": {
+      "en": "Falchion",
+      "ru": "Фальшион"
+    },
+    "data": {
+      "weight": 2,
+      "price": 300
+    },
+    "info": {
+      "group": "sword",
+      "weapon_skill": "martial",
+      "type": "melee",
+      "damage": "1d10",
+      "damage_type": "slash",
+      "burden": 2,
+      "tooltips": [
+        "forceful",
+        "sweep"
+      ]
+    }
+  },
+  {
+    "slug": "flail",
+    "kind": "weapon",
+    "name": {
+      "en": "Flail",
+      "ru": "Цеп"
+    },
+    "data": {
+      "weight": 1,
+      "price": 80
+    },
+    "info": {
+      "group": "flail",
+      "weapon_skill": "martial",
+      "type": "melee",
+      "damage": "1d6",
+      "damage_type": "bludge",
+      "burden": 1,
+      "tooltips": [
+        "disarm",
+        "sweep",
+        "trip"
+      ]
+    }
+  },
+  {
+    "slug": "glaive",
+    "kind": "weapon",
+    "name": {
+      "en": "Glaive",
+      "ru": "Глефа"
+    },
+    "data": {
+      "weight": 2,
+      "price": 100
+    },
+    "info": {
+      "group": "polearm",
+      "weapon_skill": "martial",
+      "type": "melee",
+      "damage": "1d8",
+      "damage_type": "slash",
+      "burden": 2,
+      "tooltips": [
+        "deadly-d8",
+        "forceful",
+        "reach"
+      ]
+    }
+  },
+  {
+    "slug": "greataxe",
+    "kind": "weapon",
+    "name": {
+      "en": "Greataxe",
+      "ru": "Двуручный топор"
+    },
+    "data": {
+      "weight": 2,
+      "price": 200
+    },
+    "info": {
+      "group": "axe",
+      "weapon_skill": "martial",
+      "type": "melee",
+      "damage": "1d12",
+      "damage_type": "slash",
+      "burden": 2,
+      "tooltips": [
+        "sweep"
+      ]
+    }
+  },
+  {
+    "slug": "greatclub",
+    "kind": "weapon",
+    "name": {
+      "en": "Greatclub",
+      "ru": "Двуручная дубина"
+    },
+    "data": {
+      "weight": 2,
+      "price": 100
+    },
+    "info": {
+      "group": "club",
+      "weapon_skill": "martial",
+      "type": "melee",
+      "damage": "1d10",
+      "damage_type": "bludge",
+      "burden": 2,
+      "tooltips": [
+        "backswing",
+        "shove"
+      ]
+    }
+  },
+  {
+    "slug": "greatpick",
+    "kind": "weapon",
+    "name": {
+      "en": "Greatpick",
+      "ru": "Двуручный клевец"
+    },
+    "data": {
+      "weight": 2,
+      "price": 100
+    },
+    "info": {
+      "group": "pick",
+      "weapon_skill": "martial",
+      "type": "melee",
+      "damage": "1d10",
+      "damage_type": "pierce",
+      "burden": 2,
+      "tooltips": [
+        "fatal-1d12"
+      ]
+    }
+  },
+  {
+    "slug": "greatsword",
+    "kind": "weapon",
+    "name": {
+      "en": "Greatsword",
+      "ru": "Двуручный меч"
+    },
+    "data": {
+      "weight": 2,
+      "price": 200
+    },
+    "info": {
+      "group": "sword",
+      "weapon_skill": "martial",
+      "type": "melee",
+      "damage": "1d12",
+      "damage_type": "slash-pierce",
+      "burden": 2,
+      "tooltips": []
+    }
+  },
+  {
+    "slug": "guisarme",
+    "kind": "weapon",
+    "name": {
+      "en": "Guisarme",
+      "ru": "Гвизарма"
+    },
+    "data": {
+      "weight": 2,
+      "price": 200
+    },
+    "info": {
+      "group": "polearm",
+      "weapon_skill": "martial",
+      "type": "melee",
+      "damage": "1d10",
+      "damage_type": "slash",
+      "burden": 2,
+      "tooltips": [
+        "reach",
+        "trip"
+      ]
+    }
+  },
+  {
+    "slug": "halberd",
+    "kind": "weapon",
+    "name": {
+      "en": "Halberd",
+      "ru": "Алебарда"
+    },
+    "data": {
+      "weight": 2,
+      "price": 200
+    },
+    "info": {
+      "group": "polearm",
+      "weapon_skill": "martial",
+      "type": "melee",
+      "damage": "1d10",
+      "damage_type": "pierce-slash",
+      "burden": 2,
+      "tooltips": [
+        "reach"
+      ]
+    }
+  },
+  {
+    "slug": "hatchet",
+    "kind": "weapon",
+    "name": {
+      "en": "Hatchet",
+      "ru": "Топорик"
+    },
+    "data": {
+      "weight": 0,
+      "price": 40
+    },
+    "info": {
+      "group": "axe",
+      "weapon_skill": "martial",
+      "type": "melee",
+      "damage": "1d6",
+      "damage_type": "slash",
+      "burden": 1,
+      "tooltips": [
+        "agile",
+        "sweep",
+        "thrown"
+      ],
+      "dist": 10
+    }
+  },
+  {
+    "slug": "lance",
+    "kind": "weapon",
+    "name": {
+      "en": "Lance",
+      "ru": "Кавалерийская пика"
+    },
+    "data": {
+      "weight": 2,
+      "price": 100
+    },
+    "info": {
+      "group": "spear",
+      "weapon_skill": "martial",
+      "type": "melee",
+      "damage": "1d8",
+      "damage_type": "pierce",
+      "burden": 2,
+      "tooltips": [
+        "deadly-d8",
+        "jousting-1d6",
+        "reach"
+      ]
+    }
+  },
+  {
+    "slug": "light_hammer",
+    "kind": "weapon",
+    "name": {
+      "en": "Light Hammer",
+      "ru": "Лёгкий молот"
+    },
+    "data": {
+      "weight": 0,
+      "price": 30
+    },
+    "info": {
+      "group": "hammer",
+      "weapon_skill": "martial",
+      "type": "melee",
+      "damage": "1d6",
+      "damage_type": "bludge",
+      "burden": 1,
+      "tooltips": [
+        "agile",
+        "thrown"
+      ],
+      "dist": 20
+    }
+  },
+  {
+    "slug": "light_pick",
+    "kind": "weapon",
+    "name": {
+      "en": "Light Pick",
+      "ru": "Лёгкий клевец"
+    },
+    "data": {
+      "weight": 0,
+      "price": 40
+    },
+    "info": {
+      "group": "pick",
+      "weapon_skill": "martial",
+      "type": "melee",
+      "damage": "1d4",
+      "damage_type": "pierce",
+      "burden": 1,
+      "tooltips": [
+        "agile",
+        "fatal-1d8"
+      ]
+    }
+  },
+  {
+    "slug": "longsword",
+    "kind": "weapon",
+    "name": {
+      "en": "Longsword",
+      "ru": "Длинный меч"
+    },
+    "data": {
+      "weight": 1,
+      "price": 100
+    },
+    "info": {
+      "group": "sword",
+      "weapon_skill": "martial",
+      "type": "melee",
+      "damage": "1d8",
+      "damage_type": "slash-pierce",
+      "burden": 1,
+      "tooltips": []
+    }
+  },
+  {
+    "slug": "main_gauche",
+    "kind": "weapon",
+    "name": {
+      "en": "Main-gauche",
+      "ru": "Дага"
+    },
+    "data": {
+      "weight": 0,
+      "price": 50
+    },
+    "info": {
+      "group": "knife",
+      "weapon_skill": "martial",
+      "type": "melee",
+      "damage": "1d4",
+      "damage_type": "pierce-slash",
+      "burden": 1,
+      "tooltips": [
+        "agile",
+        "disarm",
+        "finesse",
+        "parry"
+      ]
+    }
+  },
+  {
+    "slug": "maul",
+    "kind": "weapon",
+    "name": {
+      "en": "Maul",
+      "ru": "Двуручный молот"
+    },
+    "data": {
+      "weight": 2,
+      "price": 300
+    },
+    "info": {
+      "group": "hammer",
+      "weapon_skill": "martial",
+      "type": "melee",
+      "damage": "1d12",
+      "damage_type": "bludge",
+      "burden": 2,
+      "tooltips": [
+        "shove"
+      ]
+    }
+  },
+  {
+    "slug": "pick",
+    "kind": "weapon",
+    "name": {
+      "en": "Pick",
+      "ru": "Клевец"
+    },
+    "data": {
+      "weight": 1,
+      "price": 70
+    },
+    "info": {
+      "group": "pick",
+      "weapon_skill": "martial",
+      "type": "melee",
+      "damage": "1d6",
+      "damage_type": "pierce",
+      "burden": 1,
+      "tooltips": [
+        "fatal-1d10"
+      ]
+    }
+  },
+  {
+    "slug": "ranseur",
+    "kind": "weapon",
+    "name": {
+      "en": "Ranseur",
+      "ru": "Рунка"
+    },
+    "data": {
+      "weight": 2,
+      "price": 200
+    },
+    "info": {
+      "group": "polearm",
+      "weapon_skill": "martial",
+      "type": "melee",
+      "damage": "1d10",
+      "damage_type": "pierce",
+      "burden": 2,
+      "tooltips": [
+        "disarm",
+        "reach"
+      ]
+    }
+  },
+  {
+    "slug": "rapier",
+    "kind": "weapon",
+    "name": {
+      "en": "Rapier",
+      "ru": "Рапира"
+    },
+    "data": {
+      "weight": 1,
+      "price": 200
+    },
+    "info": {
+      "group": "sword",
+      "weapon_skill": "martial",
+      "type": "melee",
+      "damage": "1d6",
+      "damage_type": "pierce",
+      "burden": 1,
+      "tooltips": [
+        "deadly-d8",
+        "disarm",
+        "finesse"
+      ]
+    }
+  },
+  {
+    "slug": "sap",
+    "kind": "weapon",
+    "name": {
+      "en": "Sap",
+      "ru": "Мягкая дубинка"
+    },
+    "data": {
+      "weight": 0,
+      "price": 10
+    },
+    "info": {
+      "group": "club",
+      "weapon_skill": "martial",
+      "type": "melee",
+      "damage": "1d6",
+      "damage_type": "bludge",
+      "burden": 1,
+      "tooltips": [
+        "agile",
+        "nonlethal"
+      ]
+    }
+  },
+  {
+    "slug": "scimitar",
+    "kind": "weapon",
+    "name": {
+      "en": "Scimitar",
+      "ru": "Скимитар"
+    },
+    "data": {
+      "weight": 1,
+      "price": 100
+    },
+    "info": {
+      "group": "sword",
+      "weapon_skill": "martial",
+      "type": "melee",
+      "damage": "1d6",
+      "damage_type": "slash",
+      "burden": 1,
+      "tooltips": [
+        "forceful",
+        "sweep"
+      ]
+    }
+  },
+  {
+    "slug": "scythe",
+    "kind": "weapon",
+    "name": {
+      "en": "Scythe",
+      "ru": "Коса"
+    },
+    "data": {
+      "weight": 2,
+      "price": 200
+    },
+    "info": {
+      "group": "polearm",
+      "weapon_skill": "martial",
+      "type": "melee",
+      "damage": "1d10",
+      "damage_type": "slash",
+      "burden": 2,
+      "tooltips": [
+        "deadly-d10",
+        "trip"
+      ]
+    }
+  },
+  {
+    "slug": "shortsword",
+    "kind": "weapon",
+    "name": {
+      "en": "Shortsword",
+      "ru": "Короткий меч"
+    },
+    "data": {
+      "weight": 0,
+      "price": 90
+    },
+    "info": {
+      "group": "sword",
+      "weapon_skill": "martial",
+      "type": "melee",
+      "damage": "1d6",
+      "damage_type": "pierce-slash",
+      "burden": 1,
+      "tooltips": [
+        "agile",
+        "finesse"
+      ]
+    }
+  },
+  {
+    "slug": "starknife",
+    "kind": "weapon",
+    "name": {
+      "en": "Starknife",
+      "ru": "Нож-звезда"
+    },
+    "data": {
+      "weight": 0,
+      "price": 200
+    },
+    "info": {
+      "group": "knife",
+      "weapon_skill": "martial",
+      "type": "melee",
+      "damage": "1d4",
+      "damage_type": "pierce-slash",
+      "burden": 1,
+      "tooltips": [
+        "agile",
+        "deadly-d6",
+        "finesse",
+        "thrown"
+      ],
+      "dist": 20
+    }
+  },
+  {
+    "slug": "sword_cane",
+    "kind": "weapon",
+    "name": {
+      "en": "Sword Cane",
+      "ru": "Меч-трость"
+    },
+    "data": {
+      "weight": 1,
+      "price": 500
+    },
+    "info": {
+      "group": "sword",
+      "weapon_skill": "martial",
+      "type": "melee",
+      "damage": "1d6",
+      "damage_type": "pierce",
+      "burden": 1,
+      "tooltips": [
+        "agile",
+        "concealable",
+        "finesse"
+      ]
+    }
+  },
+  {
+    "slug": "trident",
+    "kind": "weapon",
+    "name": {
+      "en": "Trident",
+      "ru": "Трезубец"
+    },
+    "data": {
+      "weight": 1,
+      "price": 100
+    },
+    "info": {
+      "group": "spear",
+      "weapon_skill": "martial",
+      "type": "melee",
+      "damage": "1d8",
+      "damage_type": "pierce",
+      "burden": 1,
+      "tooltips": [
+        "thrown"
+      ],
+      "dist": 20
+    }
+  },
+  {
+    "slug": "war_flail",
+    "kind": "weapon",
+    "name": {
+      "en": "War Flail",
+      "ru": "Боевой цеп"
+    },
+    "data": {
+      "weight": 2,
+      "price": 200
+    },
+    "info": {
+      "group": "flail",
+      "weapon_skill": "martial",
+      "type": "melee",
+      "damage": "1d10",
+      "damage_type": "bludge",
+      "burden": 2,
+      "tooltips": [
+        "disarm",
+        "sweep",
+        "trip"
+      ]
+    }
+  },
+  {
+    "slug": "warhammer",
+    "kind": "weapon",
+    "name": {
+      "en": "Warhammer",
+      "ru": "Боевой молот"
+    },
+    "data": {
+      "weight": 1,
+      "price": 100
+    },
+    "info": {
+      "group": "hammer",
+      "weapon_skill": "martial",
+      "type": "melee",
+      "damage": "1d8",
+      "damage_type": "bludge",
+      "burden": 1,
+      "tooltips": [
+        "shove"
+      ]
+    }
+  },
+  {
+    "slug": "whip",
+    "kind": "weapon",
+    "name": {
+      "en": "Whip",
+      "ru": "Кнут"
+    },
+    "data": {
+      "weight": 1,
+      "price": 10
+    },
+    "info": {
+      "group": "flail",
+      "weapon_skill": "martial",
+      "type": "melee",
+      "damage": "1d4",
+      "damage_type": "slash",
+      "burden": 1,
+      "tooltips": [
+        "disarm",
+        "finesse",
+        "nonlethal",
+        "reach",
+        "trip"
+      ]
+    }
+  },
+  {
+    "slug": "dogslicer",
+    "kind": "weapon",
+    "name": {
+      "en": "Dogslicer",
+      "ru": "Собачий тесак"
+    },
+    "data": {
+      "weight": 0,
+      "price": 10
+    },
+    "info": {
+      "group": "sword",
+      "weapon_skill": "martial",
+      "type": "melee",
+      "damage": "1d6",
+      "damage_type": "slash",
+      "burden": 1,
+      "tooltips": [
+        "uncommon",
+        "agile",
+        "backstabber",
+        "finesse",
+        "goblin"
+      ]
+    }
+  },
+  {
+    "slug": "elven_curve_blade",
+    "kind": "weapon",
+    "name": {
+      "en": "Elven Curve Blade",
+      "ru": "Эльфийская сабля"
+    },
+    "data": {
+      "weight": 2,
+      "price": 400
+    },
+    "info": {
+      "group": "sword",
+      "weapon_skill": "martial",
+      "type": "melee",
+      "damage": "1d8",
+      "damage_type": "slash",
+      "burden": 2,
+      "tooltips": [
+        "uncommon",
+        "elf",
+        "finesse",
+        "forceful"
+      ]
+    }
+  },
+  {
+    "slug": "filcher_fork",
+    "kind": "weapon",
+    "name": {
+      "en": "Filcher's Fork",
+      "ru": "Плутовская вилка"
+    },
+    "data": {
+      "weight": 0,
+      "price": 100
+    },
+    "info": {
+      "group": "spear",
+      "weapon_skill": "martial",
+      "type": "melee",
+      "damage": "1d4",
+      "damage_type": "pierce",
+      "burden": 1,
+      "tooltips": [
+        "uncommon",
+        "agile",
+        "backstabber",
+        "deadly-d6",
+        "finesse",
+        "halfling",
+        "thrown"
+      ],
+      "dist": 20
+    }
+  },
+  {
+    "slug": "gnome_hooked_hammer",
+    "kind": "weapon",
+    "name": {
+      "en": "Gnome Hooked Hammer",
+      "ru": "Гномий чекан"
+    },
+    "data": {
+      "weight": 1,
+      "price": 200
+    },
+    "info": {
+      "group": "axe",
+      "weapon_skill": "martial",
+      "type": "melee",
+      "damage": "1d6",
+      "damage_type": "bludge-pierce",
+      "burden": 1,
+      "tooltips": [
+        "uncommon",
+        "gnome",
+        "trip",
+        "two_hand-1d10"
+      ]
+    }
+  },
+  {
+    "slug": "horsechopper",
+    "kind": "weapon",
+    "name": {
+      "en": "Horsechopper",
+      "ru": "Лошадиный тесак"
+    },
+    "data": {
+      "weight": 2,
+      "price": 90
+    },
+    "info": {
+      "group": "polearm",
+      "weapon_skill": "martial",
+      "type": "melee",
+      "damage": "1d8",
+      "damage_type": "slash-pierce",
+      "burden": 2,
+      "tooltips": [
+        "uncommon",
+        "goblin",
+        "reach",
+        "trip"
+      ]
+    }
+  },
+  {
+    "slug": "kama",
+    "kind": "weapon",
+    "name": {
+      "en": "Kama",
+      "ru": "Кама"
+    },
+    "data": {
+      "weight": 0,
+      "price": 100
+    },
+    "info": {
+      "group": "knife",
+      "weapon_skill": "martial",
+      "type": "melee",
+      "damage": "1d6",
+      "damage_type": "slash",
+      "burden": 1,
+      "tooltips": [
+        "uncommon",
+        "agile",
+        "monk",
+        "trip"
+      ]
+    }
+  },
+  {
+    "slug": "katana",
+    "kind": "weapon",
+    "name": {
+      "en": "Katana",
+      "ru": "Катана"
+    },
+    "data": {
+      "weight": 1,
+      "price": 200
+    },
+    "info": {
+      "group": "sword",
+      "weapon_skill": "martial",
+      "type": "melee",
+      "damage": "1d6",
+      "damage_type": "slash-pierce",
+      "burden": 1,
+      "tooltips": [
+        "uncommon",
+        "deadly-d8",
+        "two_hand-1d10"
+      ]
+    }
+  },
+  {
+    "slug": "khakkara",
+    "kind": "weapon",
+    "name": {
+      "en": "Khakkara",
+      "ru": "Хаккара"
+    },
+    "data": {
+      "weight": 1,
+      "price": 200
+    },
+    "info": {
+      "group": "knife",
+      "weapon_skill": "martial",
+      "type": "melee",
+      "damage": "1d6",
+      "damage_type": "bludge-pierce",
+      "burden": 1,
+      "tooltips": [
+        "uncommon",
+        "monk",
+        "shove",
+        "two_hand-d10"
+      ]
+    }
+  },
+  {
+    "slug": "kukri",
+    "kind": "weapon",
+    "name": {
+      "en": "Kukri",
+      "ru": "Кукри"
+    },
+    "data": {
+      "weight": 0,
+      "price": 60
+    },
+    "info": {
+      "group": "knife",
+      "weapon_skill": "martial",
+      "type": "melee",
+      "damage": "1d6",
+      "damage_type": "slash",
+      "burden": 1,
+      "tooltips": [
+        "uncommon",
+        "agile",
+        "finesse",
+        "trip"
+      ]
+    }
+  },
+  {
+    "slug": "nunchaku",
+    "kind": "weapon",
+    "name": {
+      "en": "Nunchaku",
+      "ru": "Нунчаки"
+    },
+    "data": {
+      "weight": 0,
+      "price": 20
+    },
+    "info": {
+      "group": "club",
+      "weapon_skill": "martial",
+      "type": "melee",
+      "damage": "1d6",
+      "damage_type": "bludge",
+      "burden": 1,
+      "tooltips": [
+        "uncommon",
+        "backswing",
+        "disarm",
+        "finesse",
+        "monk"
+      ]
+    }
+  },
+  {
+    "slug": "orc_knuckle_dagger",
+    "kind": "weapon",
+    "name": {
+      "en": "Orc Knuckle Dagger",
+      "ru": "Орочий кинжал-кастет"
+    },
+    "data": {
+      "weight": 0,
+      "price": 70
+    },
+    "info": {
+      "group": "knife",
+      "weapon_skill": "martial",
+      "type": "melee",
+      "damage": "1d6",
+      "damage_type": "pierce",
+      "burden": 1,
+      "tooltips": [
+        "uncommon",
+        "agile",
+        "disarm",
+        "orc"
+      ]
+    }
+  },
+  {
+    "slug": "sai",
+    "kind": "weapon",
+    "name": {
+      "en": "Sai",
+      "ru": "Сай"
+    },
+    "data": {
+      "weight": 0,
+      "price": 60
+    },
+    "info": {
+      "group": "knife",
+      "weapon_skill": "martial",
+      "type": "melee",
+      "damage": "1d4",
+      "damage_type": "pierce-bludge",
+      "burden": 1,
+      "tooltips": [
+        "uncommon",
+        "agile",
+        "disarm",
+        "finesse",
+        "monk"
+      ]
+    }
+  },
+  {
+    "slug": "spiked_chain",
+    "kind": "weapon",
+    "name": {
+      "en": "Spiked Chain",
+      "ru": "Шипастая цепь"
+    },
+    "data": {
+      "weight": 1,
+      "price": 300
+    },
+    "info": {
+      "group": "flail",
+      "weapon_skill": "martial",
+      "type": "melee",
+      "damage": "1d8",
+      "damage_type": "slash",
+      "burden": 1,
+      "tooltips": [
+        "uncommon",
+        "disarm",
+        "finesse",
+        "trip"
+      ]
+    }
+  },
+  {
+    "slug": "temple_sword",
+    "kind": "weapon",
+    "name": {
+      "en": "Temple Sword",
+      "ru": "Храмовый меч"
+    },
+    "data": {
+      "weight": 1,
+      "price": 200
+    },
+    "info": {
+      "group": "sword",
+      "weapon_skill": "martial",
+      "type": "melee",
+      "damage": "1d8",
+      "damage_type": "slash",
+      "burden": 1,
+      "tooltips": [
+        "uncommon",
+        "monk",
+        "trip"
+      ]
+    }
+  },
+  {
+    "slug": "wakizashi",
+    "kind": "weapon",
+    "name": {
+      "en": "Wakizashi",
+      "ru": "Вакидзаси"
+    },
+    "data": {
+      "weight": 0,
+      "price": 100
+    },
+    "info": {
+      "group": "sword",
+      "weapon_skill": "martial",
+      "type": "melee",
+      "damage": "1d4",
+      "damage_type": "slash-pierce",
+      "burden": 1,
+      "tooltips": [
+        "uncommon",
+        "agile",
+        "deadly-1d8",
+        "finesse"
+      ]
+    }
+  },
+  {
+    "slug": "dwarven_waraxe",
+    "kind": "weapon",
+    "name": {
+      "en": "Dwarven Waraxe",
+      "ru": "Дварфийская секира"
+    },
+    "data": {
+      "weight": 2,
+      "price": 300
+    },
+    "info": {
+      "group": "axe",
+      "weapon_skill": "advanced",
+      "type": "melee",
+      "damage": "1d8",
+      "damage_type": "slash",
+      "burden": 2,
+      "tooltips": [
+        "uncommon",
+        "dwarf",
+        "sweep",
+        "two_hand-1d12"
+      ]
+    }
+  },
+  {
+    "slug": "gnome_flickmace",
+    "kind": "weapon",
+    "name": {
+      "en": "Gnome Flickmace",
+      "ru": "Гномий кистень"
+    },
+    "data": {
+      "weight": 1,
+      "price": 300
+    },
+    "info": {
+      "group": "flail",
+      "weapon_skill": "advanced",
+      "type": "melee",
+      "damage": "1d6",
+      "damage_type": "bludge",
+      "burden": 1,
+      "tooltips": [
+        "uncommon",
+        "gnome",
+        "reach",
+        "sweep"
+      ]
+    }
+  },
+  {
+    "slug": "orc_necksplitter",
+    "kind": "weapon",
+    "name": {
+      "en": "Orc Necksplitter",
+      "ru": "Орочий шееруб"
+    },
+    "data": {
+      "weight": 1,
+      "price": 200
+    },
+    "info": {
+      "group": "axe",
+      "weapon_skill": "advanced",
+      "type": "melee",
+      "damage": "1d8",
+      "damage_type": "slash",
+      "burden": 1,
+      "tooltips": [
+        "uncommon",
+        "forceful",
+        "orc",
+        "sweep"
+      ]
+    }
+  },
+  {
+    "slug": "sawtooth_saber",
+    "kind": "weapon",
+    "name": {
+      "en": "Sawtooth Saber",
+      "ru": "Зазубренная сабля"
+    },
+    "data": {
+      "weight": 0,
+      "price": 500
+    },
+    "info": {
+      "group": "sword",
+      "weapon_skill": "advanced",
+      "type": "melee",
+      "damage": "1d6",
+      "damage_type": "slash",
+      "burden": 1,
+      "tooltips": [
+        "uncommon",
+        "agile",
+        "finesse",
+        "twin"
+      ]
+    }
+  },
+  {
+    "slug": "blowgun",
+    "kind": "weapon",
+    "name": {
+      "en": "Blowgun",
+      "ru": "Духовая трубка"
+    },
+    "data": {
+      "weight": 0,
+      "price": 10
+    },
+    "info": {
+      "group": "dart",
+      "weapon_skill": "simple",
+      "type": "range",
+      "damage": "1",
+      "damage_type": "pierce",
+      "burden": 1,
+      "tooltips": [
+        "agile",
+        "nonlethal"
+      ],
+      "dist": 20
+    }
+  },
+  {
+    "slug": "crossbow",
+    "kind": "weapon",
+    "name": {
+      "en": "Crossbow",
+      "ru": "Арбалет"
+    },
+    "data": {
+      "weight": 1,
+      "price": 300
+    },
+    "info": {
+      "group": "crossbow",
+      "weapon_skill": "simple",
+      "type": "range",
+      "damage": "1d8",
+      "damage_type": "pierce",
+      "burden": 2,
+      "tooltips": [],
+      "dist": 120
+    }
+  },
+  {
+    "slug": "dart",
+    "kind": "weapon",
+    "name": {
+      "en": "Dart",
+      "ru": "Дротик"
+    },
+    "data": {
+      "weight": 0,
+      "price": 1
+    },
+    "info": {
+      "group": "dart",
+      "weapon_skill": "simple",
+      "type": "range",
+      "damage": "1d4",
+      "damage_type": "pierce",
+      "burden": 1,
+      "tooltips": [
+        "agile",
+        "thrown"
+      ],
+      "dist": 20
+    }
+  },
+  {
+    "slug": "hand_crossbow",
+    "kind": "weapon",
+    "name": {
+      "en": "Hand Crossbow",
+      "ru": "Ручной арбалет"
+    },
+    "data": {
+      "weight": 0,
+      "price": 300
+    },
+    "info": {
+      "group": "crossbow",
+      "weapon_skill": "simple",
+      "type": "range",
+      "damage": "1d6",
+      "damage_type": "pierce",
+      "burden": 1,
+      "tooltips": [],
+      "dist": 60
+    }
+  },
+  {
+    "slug": "heavy_crossbow",
+    "kind": "weapon",
+    "name": {
+      "en": "Heavy Crossbow",
+      "ru": "Тяжёлый арбалет"
+    },
+    "data": {
+      "weight": 2,
+      "price": 400
+    },
+    "info": {
+      "group": "crossbow",
+      "weapon_skill": "simple",
+      "type": "range",
+      "damage": "1d10",
+      "damage_type": "pierce",
+      "burden": 2,
+      "tooltips": [],
+      "dist": 120
+    }
+  },
+  {
+    "slug": "javelin",
+    "kind": "weapon",
+    "name": {
+      "en": "Javelin",
+      "ru": "Пилум"
+    },
+    "data": {
+      "weight": 0,
+      "price": 10
+    },
+    "info": {
+      "group": "dart",
+      "weapon_skill": "simple",
+      "type": "range",
+      "damage": "1d6",
+      "damage_type": "pierce",
+      "burden": 1,
+      "tooltips": [
+        "thrown"
+      ],
+      "dist": 30
+    }
+  },
+  {
+    "slug": "sling",
+    "kind": "weapon",
+    "name": {
+      "en": "Sling",
+      "ru": "Праща"
+    },
+    "data": {
+      "weight": 0,
+      "price": 0
+    },
+    "info": {
+      "group": "sling",
+      "weapon_skill": "simple",
+      "type": "range",
+      "damage": "1d6",
+      "damage_type": "bludge",
+      "burden": 1,
+      "tooltips": [
+        "propulsive"
+      ],
+      "dist": 50
+    }
+  },
+  {
+    "slug": "arbalest",
+    "kind": "weapon",
+    "name": {
+      "en": "Arbalest",
+      "ru": "Осадный арбалет"
+    },
+    "data": {
+      "weight": 2,
+      "price": 800
+    },
+    "info": {
+      "group": "crossbow",
+      "weapon_skill": "martial",
+      "type": "range",
+      "damage": "1d10",
+      "damage_type": "pierce",
+      "burden": 2,
+      "tooltips": [
+        "backstabber"
+      ],
+      "dist": 110
+    }
+  },
+  {
+    "slug": "bola",
+    "kind": "weapon",
+    "name": {
+      "en": "Bola",
+      "ru": "Болас"
+    },
+    "data": {
+      "weight": 0,
+      "price": 50
+    },
+    "info": {
+      "group": "sling",
+      "weapon_skill": "martial",
+      "type": "range",
+      "damage": "1d6",
+      "damage_type": "bludge",
+      "burden": 1,
+      "tooltips": [
+        "nonlethal",
+        "ranged_trip",
+        "thrown"
+      ],
+      "dist": 20
+    }
+  },
+  {
+    "slug": "composite_longbow",
+    "kind": "weapon",
+    "name": {
+      "en": "Composite Longbow",
+      "ru": "Композитный длинный лук"
+    },
+    "data": {
+      "weight": 2,
+      "price": 2000
+    },
+    "info": {
+      "group": "bow",
+      "weapon_skill": "martial",
+      "type": "range",
+      "damage": "1d8",
+      "damage_type": "pierce",
+      "burden": 2,
+      "tooltips": [
+        "deadly-d10",
+        "propulsive",
+        "volley-30"
+      ],
+      "dist": 100
+    }
+  },
+  {
+    "slug": "composite_shortbow",
+    "kind": "weapon",
+    "name": {
+      "en": "Composite Shortbow",
+      "ru": "Композитный короткий лук"
+    },
+    "data": {
+      "weight": 1,
+      "price": 1400
+    },
+    "info": {
+      "group": "bow",
+      "weapon_skill": "martial",
+      "type": "range",
+      "damage": "1d6",
+      "damage_type": "pierce",
+      "burden": 1,
+      "tooltips": [
+        "deadly-d10",
+        "propulsive"
+      ]
+    }
+  },
+  {
+    "slug": "longbow",
+    "kind": "weapon",
+    "name": {
+      "en": "Longbow",
+      "ru": "Длинный лук"
+    },
+    "data": {
+      "weight": 2,
+      "price": 600
+    },
+    "info": {
+      "group": "bow",
+      "weapon_skill": "martial",
+      "type": "range",
+      "damage": "1d8",
+      "damage_type": "pierce",
+      "burden": 2,
+      "tooltips": [
+        "deadly-d10",
+        "volley-30"
+      ]
+    }
+  },
+  {
+    "slug": "shortbow",
+    "kind": "weapon",
+    "name": {
+      "en": "Shortbow",
+      "ru": "Короткий лук"
+    },
+    "data": {
+      "weight": 1,
+      "price": 300
+    },
+    "info": {
+      "group": "bow",
+      "weapon_skill": "martial",
+      "type": "range",
+      "damage": "1d6",
+      "damage_type": "pierce",
+      "burden": 1,
+      "tooltips": [
+        "deadly-d10"
+      ]
+    }
+  },
+  {
+    "slug": "halfling_sling_staff",
+    "kind": "weapon",
+    "name": {
+      "en": "Halfling Sling Staff",
+      "ru": "Полуросличий посох-праща"
+    },
+    "data": {
+      "weight": 1,
+      "price": 500
+    },
+    "info": {
+      "group": "sling",
+      "weapon_skill": "martial",
+      "type": "range",
+      "damage": "1d10",
+      "damage_type": "bludge",
+      "burden": 1,
+      "tooltips": [
+        "uncommon",
+        "halfling",
+        "propulsive"
+      ]
+    }
+  },
+  {
+    "slug": "shuriken",
+    "kind": "weapon",
+    "name": {
+      "en": "Shuriken",
+      "ru": "Сюрикен"
+    },
+    "data": {
+      "weight": 0,
+      "price": 1
+    },
+    "info": {
+      "group": "dart",
+      "weapon_skill": "martial",
+      "type": "range",
+      "damage": "1d4",
+      "damage_type": "pierce",
+      "burden": 1,
+      "tooltips": [
+        "uncommon",
+        "agile",
+        "monk",
+        "thrown"
+      ]
+    }
+  },
+  {
+    "slug": "daikyu",
+    "kind": "weapon",
+    "name": {
+      "en": "Daikyu",
+      "ru": "Дайкю"
+    },
+    "data": {
+      "weight": 2,
+      "price": 800
+    },
+    "info": {
+      "group": "bow",
+      "weapon_skill": "advanced",
+      "type": "range",
+      "damage": "1d8",
+      "damage_type": "pierce",
+      "burden": 2,
+      "tooltips": [
+        "uncommon",
+        "forceful",
+        "propulsive"
+      ],
+      "dist": 80
+    }
+  }
+]

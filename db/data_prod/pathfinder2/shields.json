@@ -1,0 +1,62 @@
+[
+  {
+    "slug": "buckler",
+    "kind": "shield",
+    "name": {
+      "en": "Buckler",
+      "ru": "Баклер"
+    },
+    "data": {
+      "weight": 0,
+      "price": 100
+    },
+    "info": {
+      "ac": 1
+    }
+  },
+  {
+    "slug": "tower_shield",
+    "kind": "shield",
+    "name": {
+      "en": "Tower Shield",
+      "ru": "Башенный щит"
+    },
+    "data": {
+      "weight": 2,
+      "price": 1000
+    },
+    "info": {
+      "ac": 2
+    }
+  },
+  {
+    "slug": "wooden_shield",
+    "kind": "shield",
+    "name": {
+      "en": "Wooden Shield",
+      "ru": "Деревянный щит"
+    },
+    "data": {
+      "weight": 1,
+      "price": 100
+    },
+    "info": {
+      "ac": 2
+    }
+  },
+  {
+    "slug": "steel_shield",
+    "kind": "shield",
+    "name": {
+      "en": "Steel Shield",
+      "ru": "Стальной щит"
+    },
+    "data": {
+      "weight": 1,
+      "price": 200
+    },
+    "info": {
+      "ac": 2
+    }
+  }
+]

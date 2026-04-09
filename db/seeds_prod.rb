@@ -15,3 +15,10 @@
     feat ? feat.update!(item) : ::Pathfinder2::Feat.create!(item)
   end
 end
+
+['weapon.json', 'armor.json', 'shields.json'].each do |filename|
+  JSON.parse(File.read("db/data_prod/pathfinder2/#{filename}")).each do |data|
+    item = ::Pathfinder2::Item.find_by(slug: data['slug'])
+    item ? item.update!(data) : ::Pathfinder2::Item.create!(data)
+  end
+end
