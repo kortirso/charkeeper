@@ -29,7 +29,7 @@ describe CharactersContext::Items::UpdateCommand do
     end
 
     context 'when sends states' do
-      let(:params) { { states: { hands: 2, backpack: 2 }.stringify_keys } }
+      let(:params) { { states: { hands: 2, backpack: 2, storage: nil }.stringify_keys } }
 
       it 'updates weapon', :aggregate_failures do
         command_call

@@ -38,6 +38,7 @@ module CharactersContext
 
       def do_prepare(input) # rubocop: disable Metrics/AbcSize
         if input.key?(:states)
+          input[:states].transform_values!(&:to_i)
           input[:state] = input[:states].slice('hands', 'equipment').values.sum.positive? ? 'hands' : 'backpack'
           input[:quantity] = input[:states].values.sum
         elsif input.key?(:state)
