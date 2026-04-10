@@ -320,6 +320,8 @@ en:
         air: Air
         alchemist: Alchemist
         animist: Animist
+        arcane: Arcane
+        archetype: Archetype
         attack: Attack
         auditory: Auditory
         aura: Aura
@@ -332,6 +334,7 @@ en:
         concentrate: Concentrate
         curse: Curse
         darkness: Darkness
+        dedication: Dedication
         detection: Detection
         disease: Disease
         divine: Divine
@@ -372,14 +375,15 @@ en:
         misfortune: Misfortune
         morph: Morph
         move: Move
+        multiclass: Multiclass
         nonlethal: Nonlethal
         oracle: Oracle
         orc: Orc
         plant: Plant
-        prediction: Prediction
-        press: Press
         poison: Poison
         polymorph: Polymorph
+        prediction: Prediction
+        press: Press
         primal: Primal
         psychic: Psychic
         ranger: Ranger

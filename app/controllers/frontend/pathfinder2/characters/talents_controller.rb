@@ -36,7 +36,7 @@ module Frontend
         private
 
         def cache_options
-          { key: "feats/#{params[:provider]}/#{I18n.locale}/v0.4.24", expires_in: 1.day }
+          { key: "feats/#{params[:provider]}/#{I18n.locale}/v0.4.25", expires_in: 1.day }
         end
 
         def find_character
@@ -53,7 +53,7 @@ module Frontend
 
           @character
             .feats.joins(:feat)
-            .where(feats: { origin: [0, 1, 2, 3] })
+            .where(feats: { origin: [0, 1, 2, 3, 11] })
             .filter_map do |character_feat|
               next if keys.exclude?(character_feat.feat_id)
 
@@ -69,15 +69,15 @@ module Frontend
         end
 
         def tags
-          check_cache_value({ key: "feat_tags/#{params[:provider]}/#{I18n.locale}/v0.4.24", expires_in: 1.day }) do
-            ::Pathfinder2::Feat.where(origin: [0, 1, 2, 3]).pluck(:origin_values).flatten.uniq.index_with do |item|
+          check_cache_value({ key: "feat_tags/#{params[:provider]}/#{I18n.locale}/v0.4.25", expires_in: 1.day }) do
+            ::Pathfinder2::Feat.where(origin: [0, 1, 2, 3, 11]).pluck(:origin_values).flatten.uniq.index_with do |item|
               I18n.t("tags.pathfinder.general.#{item}")
             end
           end
         end
 
         def relation
-          ::Pathfinder2::Feat.where(origin: [0, 1, 2, 3])
+          ::Pathfinder2::Feat.where(origin: [0, 1, 2, 3, 11])
         end
 
         def create_params

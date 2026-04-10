@@ -9,7 +9,7 @@ module CharactersContext
         ]
 
         use_contract do
-          Types = Dry::Types['strict.string'].enum('ancestry', 'skill', 'general', 'class', 'additional')
+          Types = Dry::Types['strict.string'].enum('ancestry', 'skill', 'general', 'class', 'additional', 'archetype')
 
           params do
             required(:character).filled(type?: ::Pathfinder2::Character)
@@ -33,6 +33,7 @@ module CharactersContext
           update_selected_feats(input)
           add_extra_feats(input)
           add_focus_spells(input)
+          change_character(input) if input[:feat].info['change_character']
 
           { result: :ok }
         end
@@ -73,6 +74,32 @@ module CharactersContext
             }.compact_blank)
           end
         end
+
+        def change_character(input) # rubocop: disable Metrics/AbcSize
+          input[:feat].info['change_character'].each do |change|
+            case change['type']
+            when 'max'
+              input[:character].data[change['attr']] = [input[:character].data[change['attr']], change['value']].max
+            when 'push'
+              input[:character].data[change['attr']] = input[:character].data[change['attr']].push(change['value']).uniq
+            when 'merge'
+              attribute, key = change['attr'].split('.')
+              input[:character].data[attribute] = input[:character].data[attribute].merge({ key => change['value'] })
+            when 'merge_with_sum'
+              attribute, key = change['attr'].split('.')
+              input[:character].data[attribute] =
+                input[:character].data[attribute].merge({ key => change['value'] }, &merge_with_sum)
+            when 'merge_with_max'
+              attribute, key = change['attr'].split('.')
+              input[:character].data[attribute] =
+                input[:character].data[attribute].merge({ key => change['value'] }, &merge_with_max)
+            end
+          end
+          input[:character].save
+        end
+
+        def merge_with_sum = proc { |_, oldval, newval| oldval + newval }
+        def merge_with_max = proc { |_, oldval, newval| [oldval, newval].max }
       end
     end
   end

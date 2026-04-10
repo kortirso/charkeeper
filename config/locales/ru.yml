@@ -320,6 +320,8 @@ ru:
         air: Воздух
         alchemist: Алхимик
         animist: Анимист
+        arcane: Мистический
+        archetype: Архетип
         attack: Атака
         auditory: Слух
         aura: Аура
@@ -332,6 +334,7 @@ ru:
         concentrate: Концентрация
         curse: Проклятие
         darkness: Тьма
+        dedication: Посвящение
         detection: Обнаружение
         disease: Болезнь
         divine: Сакральный
@@ -372,6 +375,7 @@ ru:
         misfortune: Неудача
         morph: Метаморфоза
         move: Движение
+        multiclass: Мультикласс
         nonlethal: Несмертельное
         oracle: Оракул
         orc: Орк

@@ -1305,5 +1305,199 @@
     "origin": "skill",
     "origin_values": ["general", "skill"],
     "conditions": { "level": 2 }
+  },
+  {
+    "slug": "bard_dedication",
+    "kind": "static",
+    "title": {
+      "en": "Bard Dedication",
+      "ru": "Посвящение в барды"
+    },
+    "description": {
+      "en": "**Prerequisites** Charisma +2.\n\nYou cast spells like a bard and gain the Cast a Spell activity. You gain a spell repertoire with two common cantrips from the occult spell list or any other occult cantrips you've learned or discovered. You're trained in the spell attack modifier and spell DC statistics. Your key spellcasting attribute for bard archetype spells is Charisma, and they are occult bard spells. You become trained in Occultism and Performance; for each of these skills in which you were already trained, you instead become trained in a skill of your choice.\n\nChoose a muse as you would if you were a bard. You can take that muse's feats, but you don't gain the starting feat, spell or any other abilities the choice of muse grants.",
+      "ru": "**Критерии** Харизма +2.\n\nВы можете использовать занятие Сотворение заклинания и творить заклинания как бард. Вы получаете репертуар заклинаний, в который добавляете два обычных фокуса из списка оккультных заклинаний или из числа других фокусов этой магической традиции, которые вы изучаете или находите. Атака заклинанием и СЛ заклинаний становятся для вас изученными. Ключевой заклинательной характеристикой для заклинаний архетипа барда является Харизма; эти заклинания — оккультные заклинания барда. Навыки Исполнение и Оккультизм становятся для вас изученными. За каждый из этих навыков, который уже изучен, вы изучаете любой другой навык по своему выбору.\n\nВыберите музу, как если бы были бардом. Считается, что она у вас есть, и вы можете брать черты музы, но вы не получаете начальную черту, заклинание и других её способностей."
+    },
+    "origin": "archetype",
+    "origin_values": ["archetype", "dedication", "multiclass"],
+    "conditions": { "level": 2, "exclude_class": "bard" },
+    "info": {
+      "change_character": [
+        { "type": "push", "attr": "archetypes", "value": "bard" },
+        { "type": "merge", "attr": "subclasses.bard", "value": null },
+        { "type": "max", "attr": "spell_dc", "value": 1 },
+        { "type": "max", "attr": "spell_attack", "value": 1 },
+        { "type": "merge_with_sum", "attr": "skill_boosts.performance", "value": 1 },
+        { "type": "merge_with_sum", "attr": "skill_boosts.occultism", "value": 1 }
+      ]
+    }
+  },
+  {
+    "slug": "cleric_dedication",
+    "kind": "static",
+    "title": {
+      "en": "Cleric Dedication",
+      "ru": "Посвящение в жрецы"
+    },
+    "description": {
+      "en": "**Prerequisites** Wisdom +2.\n\nYou cast spells like a cleric. You gain the Cast a Spell activity. You can prepare two common cantrips each day from the divine spell list or any other divine cantrips you have access to. You're trained in the spell attack modifier and spell DC statistics. Your key spellcasting attribute for cleric archetype spells is Wisdom, and they are divine cleric spells.\n\nChoose a deity as you would if you were a cleric. You become bound by that deity's anathema and can receive that deity's divine sanctification. You become trained in Religion and your deity's associated skill; for each of these skills in which you were already trained, you instead become trained in a skill of your choice. You don't gain any other abilities from your choice of deity.",
+      "ru": "**Критерии** Мудрость +2.\n\nВы можете использовать занятие Сотворение заклинания и творить заклинания как жрец. Каждый день вы можете подготавливать два обычных фокуса из списка сакральных заклинаний или из числа других фокусов этой магической традиции, которые вы изучаете или находите. Атака заклинанием и СЛ заклинаний становятся для вас изученными. Ключевой заклинательной характеристикой для заклинаний архетипа жреца является Мудрость; эти заклинания — сакральные заклинания жреца.\n\nВыберите божество, как если бы были жрецом. Вы должны соблюдать табу своего божества и можете получить дескриптор, соответствующий божеству. Навык Религия и божественный навык вашего божества становятся для вас изученными. За каждый из этих навыков, который уже изучен, вы изучаете любой другой навык по своему выбору. Вы не получаете других способностей благодаря выбранному божеству."
+    },
+    "origin": "archetype",
+    "origin_values": ["archetype", "dedication", "multiclass"],
+    "conditions": { "level": 2, "exclude_class": "cleric" },
+    "info": {
+      "change_character": [
+        { "type": "push", "attr": "archetypes", "value": "cleric" },
+        { "type": "merge", "attr": "subclasses.cleric", "value": null },
+        { "type": "max", "attr": "spell_dc", "value": 1 },
+        { "type": "max", "attr": "spell_attack", "value": 1 },
+        { "type": "merge_with_sum", "attr": "skill_boosts.religion", "value": 1 },
+        { "type": "merge_with_sum", "attr": "skill_boosts.free", "value": 1 }
+      ]
+    }
+  },
+  {
+    "slug": "druid_dedication",
+    "kind": "static",
+    "title": {
+      "en": "Druid Dedication",
+      "ru": "Посвящение в друиды"
+    },
+    "description": {
+      "en": "**Prerequisites** Wisdom +2.\n\nYou cast spells like a druid. You gain the Cast a Spell activity. You can prepare two common cantrips each day from the primal spell list or any other primal cantrips you learn or discover. You're trained in the spell attack modifier and spell DC statistics. Your key spellcasting attribute for druid archetype spells is Wisdom, and they are primal druid spells.\n\nYou learn the Wildsong language, and you are bound by the druid's anathema. Choose a druidic order. You become a member of that order and are also bound by its specific anathema, allowing you to take the order's feats. You become trained in Nature and your order's associated skill; for each of these skills in which you were already trained, you become trained in a skill of your choice. You don't gain any other abilities from your choice of order.",
+      "ru": "**Критерии** Мудрость +2.\n\nВы можете использовать занятие Сотворение заклинания и творить заклинания как друид. Каждый день вы можете подготавливать два обычных фокуса из списка первобытных заклинаний или из числа других фокусов этой магической традиции, которые вы изучаете или находите. Атака заклинанием и СЛ заклинаний становятся для вас изученными. Ключевой заклинательной характеристикой для заклинаний архетипа друида является Мудрость; эти заклинания — первобытные заклинания друида.\n\nВы изучаете Дикую песнь и должны соблюдать табу друида.\n\nВыберите друидический орден. Вы становитесь членом этого ордена, должны соблюдать его табу и можете брать черты ордена. Навык Природа и навык вашего ордена становятся для вас изученными. За каждый из этих навыков, который уже изучен, вы изучаете любой другой навык по своему выбору. Вы не получаете других способностей благодаря выбранному ордену."
+    },
+    "origin": "archetype",
+    "origin_values": ["archetype", "dedication", "multiclass"],
+    "conditions": { "level": 2, "exclude_class": "druid" },
+    "info": {
+      "change_character": [
+        { "type": "push", "attr": "languages", "value": "Wildsong" },
+        { "type": "push", "attr": "archetypes", "value": "druid" },
+        { "type": "merge", "attr": "subclasses.druid", "value": null },
+        { "type": "max", "attr": "spell_dc", "value": 1 },
+        { "type": "max", "attr": "spell_attack", "value": 1 },
+        { "type": "merge_with_sum", "attr": "skill_boosts.nature", "value": 1 },
+        { "type": "merge_with_sum", "attr": "skill_boosts.free", "value": 1 }
+      ]
+    }
+  },
+  {
+    "slug": "fighter_dedication",
+    "kind": "static",
+    "title": {
+      "en": "Fighter Dedication",
+      "ru": "Посвящение в воины"
+    },
+    "description": {
+      "en": "**Prerequisites** Strength +2; Dexterity +2.\n\nYou become trained in martial weapons. You become trained in your choice of Acrobatics or Athletics; if you are already trained in both of these skills, you instead become trained in a skill of your choice. You become trained in fighter class DC.",
+      "ru": "**Критерии** Сила +2; Ловкость +2.\n\nОсобое оружие, классовая СЛ воина, а также навык Акробатика или Атлетика на ваш выбор становятся для вас изученными. Если и Акробатика, и Атлетика вами изучены, вы изучаете любой другой навык по своему выбору."
+    },
+    "origin": "archetype",
+    "origin_values": ["archetype", "dedication", "multiclass"],
+    "conditions": { "level": 2, "exclude_class": "fighter" },
+    "info": {
+      "change_character": [
+        { "type": "push", "attr": "archetypes", "value": "fighter" },
+        { "type": "merge_with_max", "attr": "weapon_skills.martial", "value": 1 },
+        { "type": "merge_with_sum", "attr": "skill_boosts.free", "value": 1 }
+      ]
+    }
+  },
+  {
+    "slug": "ranger_dedication",
+    "kind": "static",
+    "title": {
+      "en": "Ranger Dedication",
+      "ru": "Посвящение в следопыты"
+    },
+    "description": {
+      "en": "**Prerequisites** Dexterity +2.\n\nYou become trained in Survival; if you were already trained in Survival, you instead become trained in another skill of your choice. You become trained in ranger class DC.\n\nIf you gain a warden spell through this archetype, you become trained in spell attacks and spell DCs. Your spellcasting attribute is Wisdom.\n\nYou can use the **Hunt Prey** action.",
+      "ru": "**Критерии** Ловкость +2.\n\nНавык Выживание и классовая СЛ следопыта становятся для вас изученными. Если Выживание уже изучено, вы изучаете любой другой навык по своему выбору.\n\nЕсли вы получите заклинание заступника благодаря этому архетипу, атака заклинанием и СЛ заклинаний станут для вас изученными, а заклинательной характеристикой будет Мудрость.\n\nВы можете использовать действие **Охота на добычу**."
+    },
+    "origin": "archetype",
+    "origin_values": ["archetype", "dedication", "multiclass"],
+    "conditions": { "level": 2, "exclude_class": "ranger" },
+    "info": {
+      "extra_feats": ["hunt_prey"],
+      "change_character": [
+        { "type": "push", "attr": "archetypes", "value": "ranger" },
+        { "type": "merge_with_sum", "attr": "skill_boosts.survival", "value": 1 }
+      ]
+    }
+  },
+  {
+    "slug": "rogue_dedication",
+    "kind": "static",
+    "title": {
+      "en": "Rogue Dedication",
+      "ru": "Посвящение в плуты"
+    },
+    "description": {
+      "en": "**Prerequisites** Dexterity +2.\n\nYou gain a skill feat and the rogue's **Surprise attack** class feature. You become trained in light armor. In addition, you become trained in Stealth or Thievery plus one skill of your choice; if you are already trained in both Stealth and Thievery, you become trained in an additional skill of your choice. You become trained in rogue class DC.",
+      "ru": "**Критерии** Ловкость +2.\n\nВы получаете черту навыка и классовую особенность плута **Внезапная атака**. Лёгкая броня, классовая СЛ плута, навык Воровство или Скрытность, а также один навык по вашему выбору становятся для вас изученными. Если и Воровство, и Скрытность вами изучены, вы изучаете любой другой навык по своему выбору."
+    },
+    "origin": "archetype",
+    "origin_values": ["archetype", "dedication", "multiclass"],
+    "conditions": { "level": 2, "exclude_class": "rogue" },
+    "info": {
+      "extra_feats": ["surprise_attack"],
+      "change_character": [
+        { "type": "push", "attr": "archetypes", "value": "rogue" },
+        { "type": "merge_with_max", "attr": "armor_skills.light", "value": 1 },
+        { "type": "merge_with_sum", "attr": "skill_boosts.stealth", "value": 1 },
+        { "type": "merge_with_sum", "attr": "skill_boosts.thievery", "value": 1 },
+        { "type": "merge_with_sum", "attr": "skill_boosts.free", "value": 1 }
+      ]
+    }
+  },
+  {
+    "slug": "witch_dedication",
+    "kind": "static",
+    "title": {
+      "en": "Witch Dedication",
+      "ru": "Посвящение в ведьмы"
+    },
+    "description": {
+      "en": "**Prerequisites** Intelligence +2.\n\nYou cast spells like a witch. Choose a patron; you gain a familiar with two common cantrips of your choice from your chosen patron's tradition, but aside from the tradition, you don't gain any other effects the patron would usually grant. Your familiar gains the normal number of abilities for a familiar instead of those a witch familiar normally gets.\n\nYou gain the Cast a Spell activity. You can prepare one cantrip each day from your familiar. You're trained in the spell attack modifier and spell DC statistics. Your key spellcasting attribute for witch archetype spells is Intelligence, and they are witch spells of your patron's tradition. You become trained in the skill associated with the patron's tradition; if you were already trained in it, you instead become trained in a skill of your choice.",
+      "ru": "**Критерии** Интеллект +2.\n\nВы можете использовать занятие Сотворение заклинания и творить заклинания как ведьма. Выберите покровителя; вы получаете фамильяра с двумя обычными фокусами на ваш выбор из традиции вашего покровителя. Помимо традиции, вы не получаете никаких эффектов, которые обычно дарует покровитель. Число способностей у вашего фамильяра обычное (а не как у фамильяра ведьмы).\n\nКаждый день вы можете подготавливать один фокус с помощью своего фамильяра. Атака заклинанием и СЛ заклинаний становятся для вас изученными. Ключевой заклинательной характеристикой для заклинаний архетипа ведьмы является Интеллект; эти заклинания — заклинания ведьмы, принадлежащие к магической традиции вашего покровителя. Навык покровителя становится для вас изученным. Если он уже изучен, вы изучаете любой другой навык по своему выбору."
+    },
+    "origin": "archetype",
+    "origin_values": ["archetype", "dedication", "multiclass"],
+    "conditions": { "level": 2, "exclude_class": "witch" },
+    "info": {
+      "extra_feats": ["familiar"],
+      "change_character": [
+        { "type": "push", "attr": "archetypes", "value": "witch" },
+        { "type": "merge", "attr": "subclasses.witch", "value": null },
+        { "type": "max", "attr": "spell_dc", "value": 1 },
+        { "type": "max", "attr": "spell_attack", "value": 1 },
+        { "type": "merge_with_sum", "attr": "skill_boosts.free", "value": 1 }
+      ]
+    }
+  },
+  {
+    "slug": "wizard_dedication",
+    "kind": "static",
+    "title": {
+      "en": "Wizard Dedication",
+      "ru": "Посвящение в волшебники"
+    },
+    "description": {
+      "en": "**Prerequisites** Intelligence +2.\n\nYou cast spells like a wizard, gaining a spellbook with four common arcane cantrips of your choice. You gain the Cast a Spell activity. You can prepare two cantrips each day from your spellbook. You're trained in the spell attack modifier and spell DC statistics. Your key spellcasting attribute for wizard archetype spells is Intelligence, and they are arcane wizard spells. You become trained in Arcana; if you were already trained in Arcana, you instead become trained in a skill of your choice. Select a school; you don't gain any abilities from your choice of school, but qualify for feats as a member.",
+      "ru": "**Критерии** Интеллект +2.\n\nВы можете использовать занятие Сотворение заклинания и творить заклинания как волшебник. Вы получаете книгу заклинаний с четырьмя обычными мистическими фокусами по своему выбору. Каждый день вы можете подготавливать два фокуса из своей книги заклинаний. Атака заклинанием и СЛ заклинаний становятся для вас изученными. Ключевой  заклинательной характеристикой  для заклинаний архетипа волшебника является Интеллект; эти заклинания - мистические заклинания волшебника. Мистицизм становится для вас изученным. Если Мистицизм  уже изучен, вы изучаете любой другой навык по своему  выбору. Также выберите школу магии (это не даёт вам дополнительных способностей, но может понадобиться для взятия черт)."
+    },
+    "origin": "archetype",
+    "origin_values": ["archetype", "dedication", "multiclass"],
+    "conditions": { "level": 2, "exclude_class": "wizard" },
+    "info": {
+      "change_character": [
+        { "type": "push", "attr": "archetypes", "value": "wizard" },
+        { "type": "merge", "attr": "subclasses.wizard", "value": null },
+        { "type": "max", "attr": "spell_dc", "value": 1 },
+        { "type": "max", "attr": "spell_attack", "value": 1 },
+        { "type": "merge_with_sum", "attr": "skill_boosts.arcana", "value": 1 }
+      ]
+    }
   }
 ]
