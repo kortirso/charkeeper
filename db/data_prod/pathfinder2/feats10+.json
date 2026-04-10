@@ -77,8 +77,8 @@
       "ru": "Стена из камня"
     },
     "description": {
-      "en": "<b>Frequency</b> once per day<br>**Trigger** An enemy or hazard's effect hits you or you fail a Fortitude save against one.\n\nThe strength of stone overcomes you so strongly that it replaces your stout body. You become petrified until the end of the current turn. You don't take any damage from the triggering effect or any other ill effects that couldn't affect stone.",
-      "ru": "<b>Частота</b> 1 в день<br>\n**Условие** эффект врага или опасности попадает по вам или же вы проваливаете испытание Стойкости против такого эффекта.\n\nСила камня в вашем теле столь велика, что она заменяет его. Вы получаете окаменение до конца этого хода. Вы не получаете урон от спровоцировавшего эффекта или других вредоносных эффектов, которые не могут воздействовать на камень."
+      "en": "**Frequency** once per day<br>**Trigger** An enemy or hazard's effect hits you or you fail a Fortitude save against one.\n\nThe strength of stone overcomes you so strongly that it replaces your stout body. You become petrified until the end of the current turn. You don't take any damage from the triggering effect or any other ill effects that couldn't affect stone.",
+      "ru": "**Частота** 1 в день<br>\n**Условие** эффект врага или опасности попадает по вам или же вы проваливаете испытание Стойкости против такого эффекта.\n\nСила камня в вашем теле столь велика, что она заменяет его. Вы получаете окаменение до конца этого хода. Вы не получаете урон от спровоцировавшего эффекта или других вредоносных эффектов, которые не могут воздействовать на камень."
     },
     "origin": "ancestry",
     "origin_values": [
@@ -102,8 +102,8 @@
       "ru": "Месть за союзника"
     },
     "description": {
-      "en": "<b>Frequency</b> once every 10 minutes<br>**Requirements** You are within 30 feet of an ally with the dying condition.\n\nThough you know that you will eventually outlive your companions, seeing them at death's door brings clarity to your attacks. Make a Strike. Roll twice on the attack roll and use the higher result.",
-      "ru": "<b>Частота</b> 1 в 10 минут<br>\n<b>Требования</b> вы в пределах 30 футов от союзника при смерти.\n\nХоть вы и знаете, что вам отведено куда большее время, чем вашим спутникам, и жизнь их оборвётся раньше вашей, вид умирающего товарища придаёт вашим атакам уверенности. Нанесите Удар. При этом вы совершаете проверку атаки дважды и берёте лучший результат."
+      "en": "**Frequency** once every 10 minutes<br>**Requirements** You are within 30 feet of an ally with the dying condition.\n\nThough you know that you will eventually outlive your companions, seeing them at death's door brings clarity to your attacks. Make a Strike. Roll twice on the attack roll and use the higher result.",
+      "ru": "**Частота** 1 в 10 минут<br>\n**Требования** вы в пределах 30 футов от союзника при смерти.\n\nХоть вы и знаете, что вам отведено куда большее время, чем вашим спутникам, и жизнь их оборвётся раньше вашей, вид умирающего товарища придаёт вашим атакам уверенности. Нанесите Удар. При этом вы совершаете проверку атаки дважды и берёте лучший результат."
     },
     "origin": "ancestry",
     "origin_values": [
@@ -126,8 +126,8 @@
       "ru": "Многоопытный долгожитель"
     },
     "description": {
-      "en": "<b>Frequency</b> once per day<br>**Prerequisites** Expert Longevity.\n\nYou've perfected your ability to keep up with all the skills you've learned over your long life, so you're almost never truly untrained at a skill. You reflect on your life experiences, changing the skill you selected with Ancestral Longevity (and the skill you selected with Expert Longevity if you have that feat).",
-      "ru": "<b>Частота</b> 1 в день<br>\n**Критерии** Долгожитель-эксперт.\n\nВам удаётся постоянно освежать освоенные в ходе долгой жизни навыки, поддерживая их в актуальном состоянии. Вы вспоминаете былое, изменяя навыки, выбранные для черт Долгожитель и Долгожитель-эксперт (если у вас есть эта черта)."
+      "en": "**Frequency** once per day<br>**Prerequisites** Expert Longevity.\n\nYou've perfected your ability to keep up with all the skills you've learned over your long life, so you're almost never truly untrained at a skill. You reflect on your life experiences, changing the skill you selected with Ancestral Longevity (and the skill you selected with Expert Longevity if you have that feat).",
+      "ru": "**Частота** 1 в день<br>\n**Критерии** Долгожитель-эксперт.\n\nВам удаётся постоянно освежать освоенные в ходе долгой жизни навыки, поддерживая их в актуальном состоянии. Вы вспоминаете былое, изменяя навыки, выбранные для черт Долгожитель и Долгожитель-эксперт (если у вас есть эта черта)."
     },
     "origin": "ancestry",
     "origin_values": [
@@ -172,8 +172,8 @@
       "ru": "Инстинктивный морок"
     },
     "description": {
-      "en": "<b>Frequency</b> once per hour<br>**Prerequisites** at least one arcane or occult innate spell gained from a gnome heritage or gnome ancestry feat<br>**Trigger** You are attacked by a foe, but they haven't rolled yet.\n\nThe magic within you manifests as a natural reaction to threats. An illusory double of you appears in your space for a brief moment. The triggering attacker must roll a DC 10 flat check; on a success, the attack targets you normally; if they fail, the attack targets the double and destroys it. The tradition of this action matches the tradition of your gnome ancestry options.",
-      "ru": "<b>Частота</b> 1 в час<br>\n**Критерии** хотя бы одно мистическое или оккультное врождённое заклинание, полученное благодаря родословной гномов или черте народа гномов.\n\n**Условие** вы становитесь целью атаки противника, но он ещё не совершил проверку.\n\nВы инстинктивно используете наполняющую вас магию в ответ на угрозу. Вы ненадолго создаёте своё иллюзорное отражение в вашем пространстве. Спровоцировавший противник совершает чистую проверку со СЛ 10. При успехе атака выбирает вас целью как обычно. При провале атака попадает в двойника и уничтожает его. Традиция этого действия совпадает с традицией других врождённых заклинаний, полученных благодаря народу гномов."
+      "en": "**Frequency** once per hour<br>**Prerequisites** at least one arcane or occult innate spell gained from a gnome heritage or gnome ancestry feat<br>**Trigger** You are attacked by a foe, but they haven't rolled yet.\n\nThe magic within you manifests as a natural reaction to threats. An illusory double of you appears in your space for a brief moment. The triggering attacker must roll a DC 10 flat check; on a success, the attack targets you normally; if they fail, the attack targets the double and destroys it. The tradition of this action matches the tradition of your gnome ancestry options.",
+      "ru": "**Частота** 1 в час<br>\n**Критерии** хотя бы одно мистическое или оккультное врождённое заклинание, полученное благодаря родословной гномов или черте народа гномов.\n\n**Условие** вы становитесь целью атаки противника, но он ещё не совершил проверку.\n\nВы инстинктивно используете наполняющую вас магию в ответ на угрозу. Вы ненадолго создаёте своё иллюзорное отражение в вашем пространстве. Спровоцировавший противник совершает чистую проверку со СЛ 10. При успехе атака выбирает вас целью как обычно. При провале атака попадает в двойника и уничтожает его. Традиция этого действия совпадает с традицией других врождённых заклинаний, полученных благодаря народу гномов."
     },
     "origin": "ancestry",
     "origin_values": [
@@ -197,8 +197,8 @@
       "ru": "Путь домой"
     },
     "description": {
-      "en": "<b>Frequency</b> twice per week.\n\nThe connection between you and the First World resonates within your body stronger than it does for most gnomes, allowing you to cross the threshold between the Universe and the First World. You gain interplanar teleport as a primal innate spell. You can cast it twice per week. This can be used only to travel back and forth between the First World and the Universe. Due to your body's natural resonance, you can act as a locus for the spell, and you don't require a specially attuned planar key.",
-      "ru": "<b>Частота</b> 2 в неделю.\n\nСвязь с Первым миром резонирует в вашем теле куда сильнее, чем у прочих гномов, позволяя вам пересекать границу между Вселенной и Первым миром. Вы получаете межпланарную телепортацию как врождённое первобытное заклинание и можете творить его два раза в неделю. Заклинание может быть использовано только для перемещения между Первым миром и Вселенной и наоборот. Из-за естественного резонанса вашего организма вам не нужен планарный ключ — в качестве фокусирующего предмета выступает ваше тело."
+      "en": "**Frequency** twice per week.\n\nThe connection between you and the First World resonates within your body stronger than it does for most gnomes, allowing you to cross the threshold between the Universe and the First World. You gain interplanar teleport as a primal innate spell. You can cast it twice per week. This can be used only to travel back and forth between the First World and the Universe. Due to your body's natural resonance, you can act as a locus for the spell, and you don't require a specially attuned planar key.",
+      "ru": "**Частота** 2 в неделю.\n\nСвязь с Первым миром резонирует в вашем теле куда сильнее, чем у прочих гномов, позволяя вам пересекать границу между Вселенной и Первым миром. Вы получаете межпланарную телепортацию как врождённое первобытное заклинание и можете творить его два раза в неделю. Заклинание может быть использовано только для перемещения между Первым миром и Вселенной и наоборот. Из-за естественного резонанса вашего организма вам не нужен планарный ключ — в качестве фокусирующего предмета выступает ваше тело."
     },
     "origin": "ancestry",
     "origin_values": [
@@ -244,8 +244,8 @@
       "ru": "Безумство храбрых"
     },
     "description": {
-      "en": "<b>Frequency</b> once per day.\n\nDespite a lifetime filled with questionable decisions, you've managed to survive, as though you have uncanny luck that lets you avoid the consequences of your own actions. For the remainder of your turn, if you roll a failure or critical failure on a saving throw against a harmful effect, you get a success instead. Further, if you would take damage from an enemy or hazard this turn you take the minimum possible damage.\n\nThese benefits apply only to harmful effects incurred entirely during your turn in which you activate Reckless Abandon, such as running through a wall of fire. Persistent damage and conditions that were applied prior to your turn proceed normally, and as soon as your turn ends you are subject to the full consequences of any dangers still threatening you.",
-      "ru": "<b>Источник</b> Основная книга игрока, Основная книга правил <br>\n<b>Частота</b> 1 в день.\n\nНесмотря на кучу неудачных решений, вам каким-то чудом удалось выжить — возможно, в этом вам помогло невероятное везение. До конца вашего хода все провалы и критические провалы испытаний против вредоносных эффектов считаются для вас успехами. Более того, враги и опасности, которые должны нанести вам урон в этот ход, наносят вам минимальный урон.\n\nОписанные преимущества применяются только к вредоносным эффектам, которые полностью подействовали на вас в ход, во время которого вы использовали эту способность, например к пересечению огненной стены. Продолжительный урон и состояния, полученные до начала вашего хода, действуют на вас обычным образом, а по окончании вашего хода вы подвергаетесь обычным эффектам всех угроз."
+      "en": "**Frequency** once per day.\n\nDespite a lifetime filled with questionable decisions, you've managed to survive, as though you have uncanny luck that lets you avoid the consequences of your own actions. For the remainder of your turn, if you roll a failure or critical failure on a saving throw against a harmful effect, you get a success instead. Further, if you would take damage from an enemy or hazard this turn you take the minimum possible damage.\n\nThese benefits apply only to harmful effects incurred entirely during your turn in which you activate Reckless Abandon, such as running through a wall of fire. Persistent damage and conditions that were applied prior to your turn proceed normally, and as soon as your turn ends you are subject to the full consequences of any dangers still threatening you.",
+      "ru": "**Источник** Основная книга игрока, Основная книга правил <br>\n**Частота** 1 в день.\n\nНесмотря на кучу неудачных решений, вам каким-то чудом удалось выжить — возможно, в этом вам помогло невероятное везение. До конца вашего хода все провалы и критические провалы испытаний против вредоносных эффектов считаются для вас успехами. Более того, враги и опасности, которые должны нанести вам урон в этот ход, наносят вам минимальный урон.\n\nОписанные преимущества применяются только к вредоносным эффектам, которые полностью подействовали на вас в ход, во время которого вы использовали эту способность, например к пересечению огненной стены. Продолжительный урон и состояния, полученные до начала вашего хода, действуют на вас обычным образом, а по окончании вашего хода вы подвергаетесь обычным эффектам всех угроз."
     },
     "origin": "ancestry",
     "origin_values": [
@@ -314,8 +314,8 @@
       "ru": "Тень присутствия"
     },
     "description": {
-      "en": "<b>Frequency</b> once per hour<br>**Prerequisites** legendary in Stealth<br>**Trigger** You successfully use Stealth to Hide and become hidden from all your current foes, or use Stealth to Sneak and become undetected to all your current foes.\n\nYou slip from your adversaries' notice and appear to be somewhere else. You become invisible for 1 minute or until you take a hostile action, whichever comes first. Choose a location within 10 feet of you. Until your invisibility ends, you appear to be hidden in that location to anyone trying to find you. If the searcher gets clear evidence that you're not there, they no longer think you're hidden there, but they don't discover your actual location.",
-      "ru": "<b>Частота</b> 1 в час<br>\n**Критерии** легендарная Скрытность<br>\n**Условие** вы успешно используете Скрытность, чтобы Спрятаться, и становитесь спрятанным для всех текущих противников либо используете Скрытность, чтобы Красться, и становитесь необнаруженным для всех текущих противников.\n\nВы скрываетесь от глаз противников столь незаметно, что кажется, что вы в другом месте. Вы становитесь невидимым на 1 минуту либо пока не совершите враждебное действие (смотря что раньше). Выберите место в пределах 10 футов от себя. Пока длится невидимость, все, кто пытается вас найти, считают, что вы спрятаны в этом месте. Если существо обнаружит явные доказательства вашего отсутствия там, то перестанет считать, что вы там спрятаны, но истинного вашего местоположения не узнает."
+      "en": "**Frequency** once per hour<br>**Prerequisites** legendary in Stealth<br>**Trigger** You successfully use Stealth to Hide and become hidden from all your current foes, or use Stealth to Sneak and become undetected to all your current foes.\n\nYou slip from your adversaries' notice and appear to be somewhere else. You become invisible for 1 minute or until you take a hostile action, whichever comes first. Choose a location within 10 feet of you. Until your invisibility ends, you appear to be hidden in that location to anyone trying to find you. If the searcher gets clear evidence that you're not there, they no longer think you're hidden there, but they don't discover your actual location.",
+      "ru": "**Частота** 1 в час<br>\n**Критерии** легендарная Скрытность<br>\n**Условие** вы успешно используете Скрытность, чтобы Спрятаться, и становитесь спрятанным для всех текущих противников либо используете Скрытность, чтобы Красться, и становитесь необнаруженным для всех текущих противников.\n\nВы скрываетесь от глаз противников столь незаметно, что кажется, что вы в другом месте. Вы становитесь невидимым на 1 минуту либо пока не совершите враждебное действие (смотря что раньше). Выберите место в пределах 10 футов от себя. Пока длится невидимость, все, кто пытается вас найти, считают, что вы спрятаны в этом месте. Если существо обнаружит явные доказательства вашего отсутствия там, то перестанет считать, что вы там спрятаны, но истинного вашего местоположения не узнает."
     },
     "origin": "ancestry",
     "origin_values": [
@@ -337,8 +337,8 @@
       "ru": "Продвинутая общая подготовка"
     },
     "description": {
-      "en": "Over the long course of your adventuring life, your adaptability has let you pick up numerous useful abilities. You gain a  general feat of 7th level or lower. You must meet the feat's prerequisites.\n\n<b>Special</b> You can select this feat multiple times, choosing a different feat each time.",
-      "ru": "Во время странствий умение приспосабливаться позволило вам получить несколько полезных способностей. Вы получаете общую черту 7 уровня или ниже. Вы должны соответствовать её критериям.\n\n<b>Примечание</b> эту черту можно брать несколько раз. Каждый раз вы выбираете другую общую черту."
+      "en": "Over the long course of your adventuring life, your adaptability has let you pick up numerous useful abilities. You gain a  general feat of 7th level or lower. You must meet the feat's prerequisites.\n\n**Special** You can select this feat multiple times, choosing a different feat each time.",
+      "ru": "Во время странствий умение приспосабливаться позволило вам получить несколько полезных способностей. Вы получаете общую черту 7 уровня или ниже. Вы должны соответствовать её критериям.\n\n**Примечание** эту черту можно брать несколько раз. Каждый раз вы выбираете другую общую черту."
     },
     "origin": "ancestry",
     "origin_values": [
@@ -360,8 +360,8 @@
       "ru": "Возвращение в норму"
     },
     "description": {
-      "en": "<b>Frequency</b> once per day<br>**Trigger** You lose the dying condition.\n\nYou recover from near-death experiences with astounding resilience. Don't increase the value of your wounded condition due to losing the dying condition.",
-      "ru": "<b>Частота</b> 1 в день<br>\n**Условие** вы теряете состояние при смерти.\n\nВы невероятно быстро восстанавливаетесь, побывав при смерти. Вы не увеличиваете значение состояния ранения из-за потери состояния при смерти."
+      "en": "**Frequency** once per day<br>**Trigger** You lose the dying condition.\n\nYou recover from near-death experiences with astounding resilience. Don't increase the value of your wounded condition due to losing the dying condition.",
+      "ru": "**Частота** 1 в день<br>\n**Условие** вы теряете состояние при смерти.\n\nВы невероятно быстро восстанавливаетесь, побывав при смерти. Вы не увеличиваете значение состояния ранения из-за потери состояния при смерти."
     },
     "origin": "ancestry",
     "origin_values": [
@@ -406,8 +406,8 @@
       "ru": "Героическое присутствие"
     },
     "description": {
-      "en": "<b>Frequency</b> once per day.\n\nThe blood of heroes courses through your veins, and you inspire your allies to dig deep and find a new level of resolve. You grant up to 10 willing creatures within 30 feet the effects of a 6th-rank zealous conviction, though the effect automatically ends on a target if you give that target a command they would normally find repugnant. This action has the auditory trait or visual trait, depending on how you inspire your allies.",
-      "ru": "<b>Частота</b> 1 в день.\n\nВ вас течёт кровь истинных героев, и вы способны вдохновить союзников. Вы можете наделить 10 или менее согласных существ в пределах 30 футов от себя эффектами фанатичной приверженности 6 круга. Эффект автоматически перестаёт действовать на цель, если вы отдадите ей приказ, который она обычно посчитала бы неприемлемым. Это действие получает дескриптор «зрение» или «слух» в зависимости от того, каким образом вы вдохновляете союзников."
+      "en": "**Frequency** once per day.\n\nThe blood of heroes courses through your veins, and you inspire your allies to dig deep and find a new level of resolve. You grant up to 10 willing creatures within 30 feet the effects of a 6th-rank zealous conviction, though the effect automatically ends on a target if you give that target a command they would normally find repugnant. This action has the auditory trait or visual trait, depending on how you inspire your allies.",
+      "ru": "**Частота** 1 в день.\n\nВ вас течёт кровь истинных героев, и вы способны вдохновить союзников. Вы можете наделить 10 или менее согласных существ в пределах 30 футов от себя эффектами фанатичной приверженности 6 круга. Эффект автоматически перестаёт действовать на цель, если вы отдадите ей приказ, который она обычно посчитала бы неприемлемым. Это действие получает дескриптор «зрение» или «слух» в зависимости от того, каким образом вы вдохновляете союзников."
     },
     "origin": "ancestry",
     "origin_values": [
@@ -454,8 +454,8 @@
       "ru": "Покров яда"
     },
     "description": {
-      "en": "<b>Frequency</b> once per day.\n\nYou secrete a cloak of concentrated poison that harms any who dare attack you. For 1 minute, any creature that touches you or damages you with an unarmed attack or melee weapon without the reach trait takes 3d6 poison damage.",
-      "ru": "<b>Частота</b> 1 в день.\n\nВы покрываетесь концентрированным ядом, который навредит любому, кто попытается атаковать вас.\nВ течение 1 минуты любое существо, которое коснётся вас или нанесёт вам урон безоружной атакой либо оружием ближнего боя без дескриптора «длинное», получит 3d6 урона ядом."
+      "en": "**Frequency** once per day.\n\nYou secrete a cloak of concentrated poison that harms any who dare attack you. For 1 minute, any creature that touches you or damages you with an unarmed attack or melee weapon without the reach trait takes 3d6 poison damage.",
+      "ru": "**Частота** 1 в день.\n\nВы покрываетесь концентрированным ядом, который навредит любому, кто попытается атаковать вас.\nВ течение 1 минуты любое существо, которое коснётся вас или нанесёт вам урон безоружной атакой либо оружием ближнего боя без дескриптора «длинное», получит 3d6 урона ядом."
     },
     "origin": "ancestry",
     "origin_values": [
@@ -616,8 +616,8 @@
       "ru": "Магия карги"
     },
     "description": {
-      "en": "Through your heritage, you can replicate a hag's magic. Choose one common spell of 4th rank or lower from those available to a coven, including the spells contributed to a coven by a hag of your mother's type. You can cast this spell once per day as a 4th-rank occult innate spell.\n\nSpells available to all covens are augury, charm, clairaudience, clairvoyance, dream message, and illusory disguise. The eligible spells granted by the most prominent types of hag are: <b>Cuckoo Hag</b> nightmare, spellwrack; <b>Iron Hag</b> earthbind, <i>spellwrack</i>; <b>Sea Hag</b> humanoid form, mariner's curse, water walk; <b>Sweet Hag</b> <i>charm</i>, honeyed words, outcast's curse",
-      "ru": "Ваша родословная позволяет вам воспроизводить некоторые из используемых каргами заклинаний. Выберите одно обычное заклинание не выше 4 круга из списка доступных ковену заклинаний, включая и заклинания, которые добавила бы туда ваша мать-карга. Вы можете один раз в день творить это заклинание как врождённое оккультное заклинание 4 круга.\n\nСледующие заклинания доступны всем ковенам: гадание, приворот, яснослышание, ясновидение, сообщение во сне, и иллюзорный облик. Заклинания, которые добавляют в список карги самых распространённых видов: железная карга — <i>деформация заклинаний</i>, приземление; <b>морская карга</b> — проклятие моряка, форма гуманоида, хождение по воде; <b>обманчивая карга</b> — деформация заклинаний, кошмар; <b>пряничная карга</b> — <i>приворот</i>, проклятие изгоя, сладкие слова."
+      "en": "Through your heritage, you can replicate a hag's magic. Choose one common spell of 4th rank or lower from those available to a coven, including the spells contributed to a coven by a hag of your mother's type. You can cast this spell once per day as a 4th-rank occult innate spell.\n\nSpells available to all covens are augury, charm, clairaudience, clairvoyance, dream message, and illusory disguise. The eligible spells granted by the most prominent types of hag are: **Cuckoo Hag** nightmare, spellwrack; **Iron Hag** earthbind, <i>spellwrack</i>; **Sea Hag** humanoid form, mariner's curse, water walk; **Sweet Hag** <i>charm</i>, honeyed words, outcast's curse",
+      "ru": "Ваша родословная позволяет вам воспроизводить некоторые из используемых каргами заклинаний. Выберите одно обычное заклинание не выше 4 круга из списка доступных ковену заклинаний, включая и заклинания, которые добавила бы туда ваша мать-карга. Вы можете один раз в день творить это заклинание как врождённое оккультное заклинание 4 круга.\n\nСледующие заклинания доступны всем ковенам: гадание, приворот, яснослышание, ясновидение, сообщение во сне, и иллюзорный облик. Заклинания, которые добавляют в список карги самых распространённых видов: железная карга — <i>деформация заклинаний</i>, приземление; **морская карга** — проклятие моряка, форма гуманоида, хождение по воде; **обманчивая карга** — деформация заклинаний, кошмар; **пряничная карга** — <i>приворот</i>, проклятие изгоя, сладкие слова."
     },
     "origin": "ancestry",
     "origin_values": [
@@ -777,8 +777,8 @@
       "ru": "Познания энигмы"
     },
     "description": {
-      "en": "<b>Archetype</b> Loremaster*<br>**Prerequisites** Assured Knowledge<br>* This archetype offers Enigma's Knowledge at a different level than displayed here.\n\nYour muse whispers knowledge to you at all the right times. You gain the benefits of the Automatic Knowledge skill feat with any skill you can use to Recall Knowledge. As per the special clause in the Automatic Knowledge feat, you can still only use Automatic Knowledge once per round.<h2 class=\"h2-header\">Archetype Use</h2>This feat can be used for one or more Archetypes in addition to the listed Classes. When selected this way, the feat is not considered to have its class traits.",
-      "ru": "<b>Архетип</b> Хранитель знаний<br>\n**Критерии** Точное знание.\n\nМуза нашёптывает вам подсказки, когда вы в них нуждаетесь. Вы получаете преимущества черты навыка Заученные знания для всех навыков, которые можно использовать, чтобы Вспомнить информацию. Вы всё ещё можете использовать эту черту навыка только 1 раз в раунд."
+      "en": "**Archetype** Loremaster*<br>**Prerequisites** Assured Knowledge<br>* This archetype offers Enigma's Knowledge at a different level than displayed here.\n\nYour muse whispers knowledge to you at all the right times. You gain the benefits of the Automatic Knowledge skill feat with any skill you can use to Recall Knowledge. As per the special clause in the Automatic Knowledge feat, you can still only use Automatic Knowledge once per round.<h2 class=\"h2-header\">Archetype Use</h2>This feat can be used for one or more Archetypes in addition to the listed Classes. When selected this way, the feat is not considered to have its class traits.",
+      "ru": "**Архетип** Хранитель знаний<br>\n**Критерии** Точное знание.\n\nМуза нашёптывает вам подсказки, когда вы в них нуждаетесь. Вы получаете преимущества черты навыка Заученные знания для всех навыков, которые можно использовать, чтобы Вспомнить информацию. Вы всё ещё можете использовать эту черту навыка только 1 раз в раунд."
     },
     "origin": "ancestry",
     "origin_values": [
@@ -823,8 +823,8 @@
       "ru": "Реверберация"
     },
     "description": {
-      "en": "**Trigger** A creature or hazard would deal sonic damage to you.\n\nYou can manipulate the acoustics around you to deflect sonic damage back at its source. Attempt a Performance check against the Will DC of the creature or Fortitude DC of a hazard. If the damage came from a spell, use the creature's spell DC if it's lower.\n\n<b>Critical Success</b> You reduce the triggering damage by an amount up to four times your level. The caster takes sonic damage equal to the amount of damage you reduced in this way.\n\n<b>Success</b> As critical success, but you reduce the triggering damage by an amount up to twice your level.\n\n<b>Critical Failure</b> You misdirect the sonic waves at yourself, taking twice the triggering damage.",
-      "ru": "**Условие** существо или опасность должно нанести вам урон звуком.\n\nВы управляете звуками вокруг, чтобы отразить урон обратно. Совершите проверку Исполнения против СЛ Воли существа или СЛ Стойкости опасности. Если урон нанесён заклинанием, используйте СЛ заклинаний существа, если она ниже.\n<br>\n\n<b>Критический успех</b> вы уменьшаете спровоцировавший урон на величину вплоть до вашего уровня, умноженного на четыре. Существо получает урон звуком, равный величине уменьшения урона.\n<br>\n\n<b>Успех</b> аналогичен критическому успеху, но вы уменьшаете этот урон звуком на величину вплоть до удвоенного вашего уровня."
+      "en": "**Trigger** A creature or hazard would deal sonic damage to you.\n\nYou can manipulate the acoustics around you to deflect sonic damage back at its source. Attempt a Performance check against the Will DC of the creature or Fortitude DC of a hazard. If the damage came from a spell, use the creature's spell DC if it's lower.\n\n**Critical Success** You reduce the triggering damage by an amount up to four times your level. The caster takes sonic damage equal to the amount of damage you reduced in this way.\n\n**Success** As critical success, but you reduce the triggering damage by an amount up to twice your level.\n\n**Critical Failure** You misdirect the sonic waves at yourself, taking twice the triggering damage.",
+      "ru": "**Условие** существо или опасность должно нанести вам урон звуком.\n\nВы управляете звуками вокруг, чтобы отразить урон обратно. Совершите проверку Исполнения против СЛ Воли существа или СЛ Стойкости опасности. Если урон нанесён заклинанием, используйте СЛ заклинаний существа, если она ниже.\n\n**Критический успех** вы уменьшаете спровоцировавший урон на величину вплоть до вашего уровня, умноженного на четыре. Существо получает урон звуком, равный величине уменьшения урона.\n\n**Успех** аналогичен критическому успеху, но вы уменьшаете этот урон звуком на величину вплоть до удвоенного вашего уровня."
     },
     "origin": "ancestry",
     "origin_values": [
@@ -962,8 +962,8 @@
       "ru": "Истинное гиперпознание"
     },
     "description": {
-      "en": "<b>Archetype</b> Loremaster*<br>**Prerequisites** enigma muse<br>* This archetype offers True Hypercognition at a different level than displayed here.\n\nYour mind works at an incredible pace. You instantly use up to five Recall Knowledge actions. If you have any special abilities or free actions that would normally be triggered when you Recall Knowledge, you can't use them for these actions.<h2 class=\"h2-header\">Archetype Use</h2>This feat can be used for one or more Archetypes in addition to the listed Classes. When selected this way, the feat is not considered to have its class traits.",
-      "ru": "<b>Архетип</b> Хранитель знаний<br>\n**Критерии** энигма.\n\nВаш ум работаете немыслимой скоростью. Вы можете моментально совершить до 5 действий, чтобы Вспомнить информацию. При совершении этих действий вы не можете использовать никакие особые способности, а также свободные действия, условием для срабатывания которых служит ваша попытка Вспомнить информацию."
+      "en": "**Archetype** Loremaster*<br>**Prerequisites** enigma muse<br>* This archetype offers True Hypercognition at a different level than displayed here.\n\nYour mind works at an incredible pace. You instantly use up to five Recall Knowledge actions. If you have any special abilities or free actions that would normally be triggered when you Recall Knowledge, you can't use them for these actions.<h2 class=\"h2-header\">Archetype Use</h2>This feat can be used for one or more Archetypes in addition to the listed Classes. When selected this way, the feat is not considered to have its class traits.",
+      "ru": "**Архетип** Хранитель знаний<br>\n**Критерии** энигма.\n\nВаш ум работаете немыслимой скоростью. Вы можете моментально совершить до 5 действий, чтобы Вспомнить информацию. При совершении этих действий вы не можете использовать никакие особые способности, а также свободные действия, условием для срабатывания которых служит ваша попытка Вспомнить информацию."
     },
     "origin": "ancestry",
     "origin_values": [
@@ -1037,7 +1037,7 @@
       "ru": "Непринуждённая концентрация"
     },
     "description": {
-      "en": "<b>Source</b> Player Core , Player Core 2 <br>**Trigger** Your turn begins.\n\nYou can maintain a spell with hardly a thought. You immediately gain the effects of the Sustain action, allowing you to extend the duration of one of your active spells.\n\n<b>Special</b> This can only be used on a cantrip or spell from the class matching the one you gained this feat from.",
+      "en": "**Source** Player Core , Player Core 2 <br>**Trigger** Your turn begins.\n\nYou can maintain a spell with hardly a thought. You immediately gain the effects of the Sustain action, allowing you to extend the duration of one of your active spells.\n\n**Special** This can only be used on a cantrip or spell from the class matching the one you gained this feat from.",
       "ru": "**Условие** начинается ваш ход.\n\nВы можете поддерживать заклинания малейшим усилием воли. Вы немедленно получаете эффекты действия Поддержание для одного из ваших активных заклинаний."
     },
     "origin": "ancestry",
@@ -1393,8 +1393,8 @@
       "ru": "Антимагическая эмблема"
     },
     "description": {
-      "en": "**Prerequisites** Emblazon Armament.\n\nYour deity's symbol protects against offensive magic. When you Emblazon an Armament, you can choose from the following effects instead of the effects listed in that feat. These effects have the same restrictions as the base options.\n\n<ul><li><b>Shield</b> When the wielder has the shield raised, they gain the shield's circumstance bonus to saving throws against magic, and they can use Shield Block against damage from their enemies' spells.</li><li><b>Weapon</b> When the weapon's wielder critically hits with the weapon, they can attempt to counteract a spell on their target, using half their level, rounded up, as the counteract rank. After the attempt, the emblazoned symbol immediately disappears.</li></ul>",
-      "ru": "**Критерии** Эмблема на вооружении.\n\nСимвол вашего божества защищает от вредоносной магии. При применении черты Эмблема на вооружении вы можете использовать следующие эффекты вместо тех, что указаны в её описании. На перечисленные эффекты распространяются те же ограничения, что и на основные.<ul>\n<li><b>Оружие</b> когда использующий это оружие наносит им критический удар, он может попытаться нейтрализовать одно из действующих на цель заклинаний, используя половину своего уровня (с округлением вверх) в качестве круга нейтрализации. Если он решает так поступить, нанесённый символ исчезает после попытки. </li>\n<li><b>Щит</b> когда щит поднят, тот, кто его использует, получает его ситуативный бонус к испытаниям против магии и может применять действие Блок щитом против урона вражеских заклинаний. </li>\n</ul>"
+      "en": "**Prerequisites** Emblazon Armament.\n\nYour deity's symbol protects against offensive magic. When you Emblazon an Armament, you can choose from the following effects instead of the effects listed in that feat. These effects have the same restrictions as the base options.\n\n<ul><li>**Shield** When the wielder has the shield raised, they gain the shield's circumstance bonus to saving throws against magic, and they can use Shield Block against damage from their enemies' spells.</li><li>**Weapon** When the weapon's wielder critically hits with the weapon, they can attempt to counteract a spell on their target, using half their level, rounded up, as the counteract rank. After the attempt, the emblazoned symbol immediately disappears.</li></ul>",
+      "ru": "**Критерии** Эмблема на вооружении.\n\nСимвол вашего божества защищает от вредоносной магии. При применении черты Эмблема на вооружении вы можете использовать следующие эффекты вместо тех, что указаны в её описании. На перечисленные эффекты распространяются те же ограничения, что и на основные.<ul>\n<li>**Оружие** когда использующий это оружие наносит им критический удар, он может попытаться нейтрализовать одно из действующих на цель заклинаний, используя половину своего уровня (с округлением вверх) в качестве круга нейтрализации. Если он решает так поступить, нанесённый символ исчезает после попытки. </li>\n<li>**Щит** когда щит поднят, тот, кто его использует, получает его ситуативный бонус к испытаниям против магии и может применять действие Блок щитом против урона вражеских заклинаний. </li>\n</ul>"
     },
     "origin": "ancestry",
     "origin_values": [
@@ -1440,8 +1440,8 @@
       "ru": "Ослабляющий символ"
     },
     "description": {
-      "en": "**Prerequisites** Raise Symbol<br>**Trigger** While you have your symbol raised, you are about to take damage from a melee attack.\n\nYour religious symbol glows with sacred energy, turning the attacker's strength to weakness. Attempt a Religion check against the triggering creature's Will DC. Regardless of the result, the creature is temporarily immune for 1 minute.\n\n<b>Critical Success</b> The creature is enfeebled 2 until it spends at least 1 action moving away from you.\n\n<b>Success</b> As critical success, but enfeebled 1.",
-      "ru": "**Критерии** Поднятие символа<br>\n**Условие** вы должны получить урон от атаки в ближнем бою, пока ваш символ поднят.\n\nВаш символ религии светится божественной энергией, обращая силу атакующего в слабость. Пройдите проверку Религии против СЛ Воли спровоцировавшего существа. Вне зависимости от результата существо временно невосприимчиво к этому эффекту на 1 минуту.\n<br>\n\n<b>Критический успех</b> существо получает слабость 2, пока не потратит хотя бы 1 действие, чтобы отойти от вас.\n<br>\n\n<b>Успех</b> аналогичен критическому успеху, но слабость 1."
+      "en": "**Prerequisites** Raise Symbol<br>**Trigger** While you have your symbol raised, you are about to take damage from a melee attack.\n\nYour religious symbol glows with sacred energy, turning the attacker's strength to weakness. Attempt a Religion check against the triggering creature's Will DC. Regardless of the result, the creature is temporarily immune for 1 minute.\n\n**Critical Success** The creature is enfeebled 2 until it spends at least 1 action moving away from you.\n\n**Success** As critical success, but enfeebled 1.",
+      "ru": "**Критерии** Поднятие символа<br>\n**Условие** вы должны получить урон от атаки в ближнем бою, пока ваш символ поднят.\n\nВаш символ религии светится божественной энергией, обращая силу атакующего в слабость. Пройдите проверку Религии против СЛ Воли спровоцировавшего существа. Вне зависимости от результата существо временно невосприимчиво к этому эффекту на 1 минуту.\n\n**Критический успех** существо получает слабость 2, пока не потратит хотя бы 1 действие, чтобы отойти от вас.\n\n**Успех** аналогичен критическому успеху, но слабость 1."
     },
     "origin": "ancestry",
     "origin_values": [
@@ -1604,8 +1604,8 @@
       "ru": "Ясное предостережение"
     },
     "description": {
-      "en": "<b>Archetypes</b> Mortal Herald*, Seneschal*<br><b>Frequency</b>  once per hour<br>**Trigger** You fail a saving throw against a mental effect<br>* This archetype offers Premonition of Clarity at a different level than displayed here.\n\nYour deity sends you a vision of faith to steel you against mental attacks. Reroll the triggering saving throw with a +2 circumstance bonus. You must use the second result, even if it's worse.<h2 class=\"h2-header\">Archetype Use</h2>This feat can be used for one or more Archetypes in addition to the listed Classes. When selected this way, the feat is not considered to have its class traits.",
-      "ru": "<b>Частота</b>  1 в час<br>\n**Условие** вы проваливаете испытание против ментального эффекта.\n\nВаше божество ниспосылает вам видение, ограждающее разум от ментальных атак. Перебросьте спровоцировавшее испытание с ситуативным бонусом +2 и используйте новый результат, даже если он хуже."
+      "en": "**Archetypes** Mortal Herald*, Seneschal*<br>**Frequency**  once per hour<br>**Trigger** You fail a saving throw against a mental effect<br>* This archetype offers Premonition of Clarity at a different level than displayed here.\n\nYour deity sends you a vision of faith to steel you against mental attacks. Reroll the triggering saving throw with a +2 circumstance bonus. You must use the second result, even if it's worse.<h2 class=\"h2-header\">Archetype Use</h2>This feat can be used for one or more Archetypes in addition to the listed Classes. When selected this way, the feat is not considered to have its class traits.",
+      "ru": "**Частота**  1 в час<br>\n**Условие** вы проваливаете испытание против ментального эффекта.\n\nВаше божество ниспосылает вам видение, ограждающее разум от ментальных атак. Перебросьте спровоцировавшее испытание с ситуативным бонусом +2 и используйте новый результат, даже если он хуже."
     },
     "origin": "ancestry",
     "origin_values": [
@@ -1629,7 +1629,7 @@
     },
     "description": {
       "en": "**Trigger** You critically hit a creature that is not on its home plane<br>**Requirements** You have a banishment spell prepared.\n\nThe force of your blow sends your victim back to its home plane. You expend a banishment spell you have prepared, affecting the creature you critically hit without needing to cast the spell. The creature can attempt to resist the spell as normal.",
-      "ru": "**Условие** вы наносите критический удар существу, которое не на своём родном плане<br>\n<b>Требования</b> у вас есть подготовленное заклинание изгнание.\n\nМощь вашего удара столь сильна, что отправляет жертву обратно на родной план. Вы тратите подготовленное заклинание изгнание на цель вашего критического удара без необходимости его сотворения. Существо может пройти испытание против заклинания согласно обычным правилам."
+      "ru": "**Условие** вы наносите критический удар существу, которое не на своём родном плане<br>\n**Требования** у вас есть подготовленное заклинание изгнание.\n\nМощь вашего удара столь сильна, что отправляет жертву обратно на родной план. Вы тратите подготовленное заклинание изгнание на цель вашего критического удара без необходимости его сотворения. Существо может пройти испытание против заклинания согласно обычным правилам."
     },
     "origin": "ancestry",
     "origin_values": [
@@ -1651,7 +1651,7 @@
       "ru": "Вечная отповедь"
     },
     "description": {
-      "en": "<b>Archetype</b> Mortal Herald*<br>**Prerequisites** unholy<br>* This archetype offers Eternal Bane at a different level than displayed here.\n\nYour life has made you a nexus for your deity's vile power. You're continuously surrounded by a bane spell, with a spell rank equal to half your level (rounded up). The radius is 15 feet, and you can't increase it. You can Dismiss the spell; if you do, it returns automatically after 1 minute.<h2 class=\"h2-header\">Archetype Use</h2>This feat can be used for one or more Archetypes in addition to the listed Classes. When selected this way, the feat is not considered to have its class traits.",
+      "en": "**Archetype** Mortal Herald*<br>**Prerequisites** unholy<br>* This archetype offers Eternal Bane at a different level than displayed here.\n\nYour life has made you a nexus for your deity's vile power. You're continuously surrounded by a bane spell, with a spell rank equal to half your level (rounded up). The radius is 15 feet, and you can't increase it. You can Dismiss the spell; if you do, it returns automatically after 1 minute.<h2 class=\"h2-header\">Archetype Use</h2>This feat can be used for one or more Archetypes in addition to the listed Classes. When selected this way, the feat is not considered to have its class traits.",
       "ru": "**Критерии** дескриптор «нечестивый».\n\nПреданное служение злу превратило вас в настоящее средоточие нечестивой силы вашего божества. Вас постоянно окружает эффект заклинания отповедь, круг которого равен половине вашего уровня (с округлением вверх). Радиус эффекта — 15 футов, вы не можете его увеличить. Вы можете использовать действие Прекращение для этого заклинания, но в этом случае оно автоматически восстановится через 1 минуту."
     },
     "origin": "ancestry",
@@ -1674,7 +1674,7 @@
       "ru": "Вечное благословение"
     },
     "description": {
-      "en": "<b>Archetype</b> Mortal Herald*<br>**Prerequisites** holy<br>* This archetype offers Eternal Blessing at a different level than displayed here.\n\nYour deeds have brought your deity's grace to you for all of eternity. You're continuously surrounded by a bless spell, with a spell rank equal to half your level (rounded up). The radius is 15 feet, and you can't increase it. You can Dismiss the spell; if you do, it returns automatically after 1 minute.<h2 class=\"h2-header\">Archetype Use</h2>This feat can be used for one or more Archetypes in addition to the listed Classes. When selected this way, the feat is not considered to have its class traits.",
+      "en": "**Archetype** Mortal Herald*<br>**Prerequisites** holy<br>* This archetype offers Eternal Blessing at a different level than displayed here.\n\nYour deeds have brought your deity's grace to you for all of eternity. You're continuously surrounded by a bless spell, with a spell rank equal to half your level (rounded up). The radius is 15 feet, and you can't increase it. You can Dismiss the spell; if you do, it returns automatically after 1 minute.<h2 class=\"h2-header\">Archetype Use</h2>This feat can be used for one or more Archetypes in addition to the listed Classes. When selected this way, the feat is not considered to have its class traits.",
       "ru": "**Критерии** дескриптор «священный».\n\nВаши добрые дела не остались незамеченными, и божество ниспослало вам свою вечную милость. Вас постоянно окружает эффект заклинания благословение, круг которого равен половине вашего уровня (с округлением вверх). Радиус эффекта — 15 футов, вы не можете его увеличить. Вы можете использовать действие Прекращение для этого заклинания, но в этом случае оно автоматически восстановится через 1 минуту."
     },
     "origin": "ancestry",
@@ -1720,8 +1720,8 @@
       "ru": "Уравновешивание"
     },
     "description": {
-      "en": "<b>Frequency</b> once per hour.\n\nIf your next action is to use your divine font to cast a 3-action heal or harm spell, you can harness the residual energy to counterbalance opposing forces. In addition to its normal effects, you use your heal or harm spell to attempt to counteract one divine effect in the spell's area.",
-      "ru": "<b>Частота</b> 1 в час.\n\nЕсли вашим следующим действием будет сотворение излечения или повреждения за 3 действия благодаря божественному источнику, вы можете вобрать остаточную энергию заклинания, чтобы уравновесить противоборствующие силы. В дополнение к обычным эффектам вы используете ваше излечение или повреждение, чтобы попытаться нейтрализовать один сакральный эффект в области заклинания."
+      "en": "**Frequency** once per hour.\n\nIf your next action is to use your divine font to cast a 3-action heal or harm spell, you can harness the residual energy to counterbalance opposing forces. In addition to its normal effects, you use your heal or harm spell to attempt to counteract one divine effect in the spell's area.",
+      "ru": "**Частота** 1 в час.\n\nЕсли вашим следующим действием будет сотворение излечения или повреждения за 3 действия благодаря божественному источнику, вы можете вобрать остаточную энергию заклинания, чтобы уравновесить противоборствующие силы. В дополнение к обычным эффектам вы используете ваше излечение или повреждение, чтобы попытаться нейтрализовать один сакральный эффект в области заклинания."
     },
     "origin": "ancestry",
     "origin_values": [
@@ -1745,7 +1745,7 @@
       "ru": "Воскреситель"
     },
     "description": {
-      "en": "<b>Archetype</b> Mortal Herald*<br>* This archetype offers Resurrectionist at a different level than displayed here.\n\nYou can cause a creature you bring back from the brink of death to thrive and continue healing. When you restore Hit Points to a dying creature or bring a dead creature back to life and restore Hit Points to it, you grant that creature fast healing 5 for 1 minute. This fast healing ends if the creature is knocked unconscious. <h2 class=\"h2-header\">Archetype Use</h2>This feat can be used for one or more Archetypes in addition to the listed Classes. When selected this way, the feat is not considered to have its class traits.",
+      "en": "**Archetype** Mortal Herald*<br>* This archetype offers Resurrectionist at a different level than displayed here.\n\nYou can cause a creature you bring back from the brink of death to thrive and continue healing. When you restore Hit Points to a dying creature or bring a dead creature back to life and restore Hit Points to it, you grant that creature fast healing 5 for 1 minute. This fast healing ends if the creature is knocked unconscious. <h2 class=\"h2-header\">Archetype Use</h2>This feat can be used for one or more Archetypes in addition to the listed Classes. When selected this way, the feat is not considered to have its class traits.",
       "ru": "Вы можете запустить восстановительные процессы в организме существа, которое вытащили с того света. Когда вы восстанавливаете ПЗ существу, которое при смерти, или возвращаете к жизни умершее существо и восстанавливаете ему ПЗ, вы даёте ему быстрое исцеление 5 на 1 минуту. Быстрое исцеление прекращается, если существо теряет сознание."
     },
     "origin": "ancestry",
@@ -1768,7 +1768,7 @@
       "ru": "Божественное возвышение"
     },
     "description": {
-      "en": "<b>Archetype</b> Mortal Herald*<br>* This archetype offers Divine Apex at a different level than displayed here.\n\nYou can pour divine power into an item, letting the wearer exceed their limits. When you complete your daily preparations, you can touch one worn magical item that doesn't have the apex trait. It gains the apex trait until your next preparations (GM Core 270), and you choose one of your deity's divine attributes (page 35). The item increases that attribute modifier by 1 or to +4, whichever is higher. A character can benefit from only one apex item at a time, as normal.<h2 class=\"h2-header\">Archetype Use</h2>This feat can be used for one or more Archetypes in addition to the listed Classes. When selected this way, the feat is not considered to have its class traits.",
+      "en": "**Archetype** Mortal Herald*<br>* This archetype offers Divine Apex at a different level than displayed here.\n\nYou can pour divine power into an item, letting the wearer exceed their limits. When you complete your daily preparations, you can touch one worn magical item that doesn't have the apex trait. It gains the apex trait until your next preparations (GM Core 270), and you choose one of your deity's divine attributes (page 35). The item increases that attribute modifier by 1 or to +4, whichever is higher. A character can benefit from only one apex item at a time, as normal.<h2 class=\"h2-header\">Archetype Use</h2>This feat can be used for one or more Archetypes in addition to the listed Classes. When selected this way, the feat is not considered to have its class traits.",
       "ru": "Вы можете наполнить предмет божественной силой, позволяя носителю превзойти свои пределы. Когда вы завершаете вашу ежедневную подготовку, вы можете прикоснуться к одному носимому магическому предмету без дескриптора «возвышающий». Этот предмет получает дескриптор «возвышающий» до вашей следующей ежедневной подготовки (см. «Основную книгу ведущего»), и вы выбираете одну из божественных характеристик вашего божества. Предмет увеличивает модификатор этой характеристики на 1 или до +4 (смотря что выше). Персонаж может получить преимущество только от одного возвышающего предмета, как обычно."
     },
     "origin": "ancestry",
@@ -1791,7 +1791,7 @@
       "ru": "Эхо проведения"
     },
     "description": {
-      "en": "**Prerequisites** [Animist] Embodiment Of The Balance.\n\nWhen you pull forth vitality or void energy, you also create a smaller pocket of that energy. If the next action you use is to cast a 2-action harm or heal to heal or damage a single creature, choose one additional creature in range. Target that creature with a 1-action version of the same spell. This spell is the same rank as the 2-action harm or heal you cast and doesn't cost another spell slot.\n\n<b>Special</b> When taken by an animist, this feat has the apparition trait.",
+      "en": "**Prerequisites** [Animist] Embodiment Of The Balance.\n\nWhen you pull forth vitality or void energy, you also create a smaller pocket of that energy. If the next action you use is to cast a 2-action harm or heal to heal or damage a single creature, choose one additional creature in range. Target that creature with a 1-action version of the same spell. This spell is the same rank as the 2-action harm or heal you cast and doesn't cost another spell slot.\n\n**Special** When taken by an animist, this feat has the apparition trait.",
       "ru": "При проведении энергии жизни или пустоты вы создаёте небольшое её завихрение. Если вашим следующим действием будет сотворение излечения или повреждения за 2 действия и вы при этом будете наносить урон одному существу или исцелять одно существо, выберите одно дополнительное существо в пределах дистанции. Дополнительное существо становится целью того же заклинания, но в варианте за 1 действие. Вы не тратите ячейку на дополнительное заклинание, его круг равен кругу сотворённого вами заклинания."
     },
     "origin": "ancestry",
@@ -1840,7 +1840,7 @@
       "ru": "Неосквернимость"
     },
     "description": {
-      "en": "<b>Archetype</b> Seneschal.\n\nYour deity punishes creatures that harm you. Creatures that hit you with an attack take 3d6 spirit damage every time they do. If you have the holy or unholy trait, you can apply it to this damage.<h2 class=\"h2-header\">Archetype Use</h2>This feat can be used for one or more Archetypes in addition to the listed Classes. When selected this way, the feat is not considered to have its class traits.",
+      "en": "**Archetype** Seneschal.\n\nYour deity punishes creatures that harm you. Creatures that hit you with an attack take 3d6 spirit damage every time they do. If you have the holy or unholy trait, you can apply it to this damage.<h2 class=\"h2-header\">Archetype Use</h2>This feat can be used for one or more Archetypes in addition to the listed Classes. When selected this way, the feat is not considered to have its class traits.",
       "ru": "Ваше божество карает существ, что вредят вам. Существа, которые попадают по вам атакой, получают 3d6 урона духом. Если у вас есть дескриптор «нечестивый» или «священный», вы можете применить его к этому урону."
     },
     "origin": "ancestry",
@@ -1886,7 +1886,7 @@
       "ru": "Общая ясность"
     },
     "description": {
-      "en": "<b>Archetype</b> Mortal Herald*<br>**Prerequisites** Premonition of Clarity<br>* This archetype offers Shared Clarity at a different level than displayed here.\n\nYou can project your premonitions of clarity to your allies. When you use Premonition of Clarity, allies within 15 feet of you who failed the same saving throw against the same mental effect can also spend their reactions to reroll the failed saving throw with a +2 circumstance bonus.<h2 class=\"h2-header\">Archetype Use</h2>This feat can be used for one or more Archetypes in addition to the listed Classes. When selected this way, the feat is not considered to have its class traits.",
+      "en": "**Archetype** Mortal Herald*<br>**Prerequisites** Premonition of Clarity<br>* This archetype offers Shared Clarity at a different level than displayed here.\n\nYou can project your premonitions of clarity to your allies. When you use Premonition of Clarity, allies within 15 feet of you who failed the same saving throw against the same mental effect can also spend their reactions to reroll the failed saving throw with a +2 circumstance bonus.<h2 class=\"h2-header\">Archetype Use</h2>This feat can be used for one or more Archetypes in addition to the listed Classes. When selected this way, the feat is not considered to have its class traits.",
       "ru": "**Критерии** ясное предостережение.\n\nВы способны разделить своё предчувствие с союзниками. Когда вы используете Ясное предостережение, союзники в пределах 15 футов от вас, провалившие то же испытание против того же ментального эффекта, также могут потратить ответные действия, чтобы перебросить это испытание с ситуативным бонусом +2."
     },
     "origin": "ancestry",
@@ -1933,7 +1933,7 @@
     },
     "description": {
       "en": "**Trigger** You are critically hit by an enemy<br>**Requirements** You have an avatar spell prepared.\n\nIn moments of danger, you can call upon your god's form in an instant. You cast avatar from your spell slots. The triggering critical hit is reduced to a normal hit, and its damage is applied after gaining the avatar spell's temporary Hit Points. ",
-      "ru": "**Условие** враг попадает по вам критическим ударом<br>\n<b>Требования</b> у вас есть подготовленное заклинание аватар.\n\nВ случае опасности вы мгновенно обретаете облик вашего божества. Вы творите заклинание аватар из своей ячейки заклинания. Спровоцировавший критический удар становится обычным попаданием и наносит урон после того, как вы получите временные ПЗ от заклинания аватар."
+      "ru": "**Условие** враг попадает по вам критическим ударом<br>\n**Требования** у вас есть подготовленное заклинание аватар.\n\nВ случае опасности вы мгновенно обретаете облик вашего божества. Вы творите заклинание аватар из своей ячейки заклинания. Спровоцировавший критический удар становится обычным попаданием и наносит урон после того, как вы получите временные ПЗ от заклинания аватар."
     },
     "origin": "ancestry",
     "origin_values": [
@@ -2119,8 +2119,8 @@
       "ru": "Рефлекторное превращение"
     },
     "description": {
-      "en": "**Prerequisites** Untamed Form; Dragon Shape, Elemental Shape, Plant Shape, or Soaring Shape<br>**Trigger** varies.\n\nYou transform reflexively when in danger. You cast untamed form to transform into one shape granted by one of the prerequisite feats you have, depending on the trigger. Your shape's resistances and weaknesses apply against the triggering damage.<ul><li>**Trigger** You fall 10 feet or more; <b>Effect</b> Choose a shape from aerial form.</li><li>**Trigger** You take bludgeoning or poison damage; <b>Effect</b> Choose a shape from dragon form that resists the triggering damage.</li><li>**Trigger** You take fire damage; <b>Effect</b> Choose a fire elemental shape from elemental form.</li><li>**Trigger** You take poison damage; <b>Effect</b> Choose a shape from plant form.</li></ul>",
-      "ru": "**Критерии** Дикий облик; Облик дракона, Облик элементаля, Облик растения, или Крылатый облик<br>\n**Условие** варьируется.\n\nВы рефлекторно меняете облик, столкнувшись с опасностью. Вы творите дикий облик и, в зависимости оттого, что вас спровоцировало, превращаетесь в одно из существ, чья форма доступна вам благодаря одной из черт, указанных в критериях. Устойчивости и уязвимости формы применяются против спровоцировавшего урона.\n<ul>\n<li>**Условие** вы падаете с высоты 10 футов и более. <b>Эффект</b> выберите форму от крылатой формы. </li>\n<li>**Условие** Условие вы получаете дробящий урон или урон ядом. <b>Эффект</b> выберите первобытную форму от формы дракона с устойчивостью к спровоцировавшему урону.  </li>\n<li>**Условие** вы получаете урон огнём. <b>Эффект</b> выберите форму элементаля огня от формы элементаля. </li>\n<li>**Условие** вы получаете урон ядом. <b>Эффект</b> выберите форму от формы растения. </li>\n</ul>"
+      "en": "**Prerequisites** Untamed Form; Dragon Shape, Elemental Shape, Plant Shape, or Soaring Shape<br>**Trigger** varies.\n\nYou transform reflexively when in danger. You cast untamed form to transform into one shape granted by one of the prerequisite feats you have, depending on the trigger. Your shape's resistances and weaknesses apply against the triggering damage.<ul><li>**Trigger** You fall 10 feet or more; **Effect** Choose a shape from aerial form.</li><li>**Trigger** You take bludgeoning or poison damage; **Effect** Choose a shape from dragon form that resists the triggering damage.</li><li>**Trigger** You take fire damage; **Effect** Choose a fire elemental shape from elemental form.</li><li>**Trigger** You take poison damage; **Effect** Choose a shape from plant form.</li></ul>",
+      "ru": "**Критерии** Дикий облик; Облик дракона, Облик элементаля, Облик растения, или Крылатый облик<br>\n**Условие** варьируется.\n\nВы рефлекторно меняете облик, столкнувшись с опасностью. Вы творите дикий облик и, в зависимости оттого, что вас спровоцировало, превращаетесь в одно из существ, чья форма доступна вам благодаря одной из черт, указанных в критериях. Устойчивости и уязвимости формы применяются против спровоцировавшего урона.\n<ul>\n<li>**Условие** вы падаете с высоты 10 футов и более. **Эффект** выберите форму от крылатой формы. </li>\n<li>**Условие** Условие вы получаете дробящий урон или урон ядом. **Эффект** выберите первобытную форму от формы дракона с устойчивостью к спровоцировавшему урону.  </li>\n<li>**Условие** вы получаете урон огнём. **Эффект** выберите форму элементаля огня от формы элементаля. </li>\n<li>**Условие** вы получаете урон ядом. **Эффект** выберите форму от формы растения. </li>\n</ul>"
     },
     "origin": "ancestry",
     "origin_values": [
@@ -2167,8 +2167,8 @@
       "ru": "Специализированный зверь (Друид)"
     },
     "description": {
-      "en": "**Prerequisites** Incredible Companion (Druid).\n\nYour animal companion continues to grow in power and ability. It gains one specialization of your choice (page 211.)<br><b>Special</b> You can select this feat up to three times. Each time, add a different specialization to your companion.",
-      "ru": "**Критерии** Невероятный зверь.\n\nВаш верный зверь продолжает развиваться. Ваш верный зверь получает одну выбранную вами специализацию.\n\n<b>Примечание</b> вы можете взять эту черту до трёх раз, каждый раз выбирая верному зверю новую специализацию."
+      "en": "**Prerequisites** Incredible Companion (Druid).\n\nYour animal companion continues to grow in power and ability. It gains one specialization of your choice (page 211.)<br>**Special** You can select this feat up to three times. Each time, add a different specialization to your companion.",
+      "ru": "**Критерии** Невероятный зверь.\n\nВаш верный зверь продолжает развиваться. Ваш верный зверь получает одну выбранную вами специализацию.\n\n**Примечание** вы можете взять эту черту до трёх раз, каждый раз выбирая верному зверю новую специализацию."
     },
     "origin": "ancestry",
     "origin_values": [
@@ -2213,8 +2213,8 @@
       "ru": "Растительная метаморфоза"
     },
     "description": {
-      "en": "**Prerequisites** leaf order.\n\nYou have turned into a plant version of yourself, gaining the plant trait and losing traits inappropriate for your new form (typically humanoid). You also gain the Verdant Rest action.\n\n<b>Verdant Rest</b> [one-action]  (concentrate) You turn into a tree or other noncreature plant. This has the effect of using one with plants to turn into a plant, except that your AC is 30. You can Dismiss this effect to turn back. If you rest for 10 minutes in this form in natural sunlight, you recover half your maximum Hit Points. If you take your daily rest in this form, the rest restores you to maximum Hit Points and removes all non-permanent drained, enfeebled, clumsy, and stupefied conditions, as well as all poisons and diseases of 19th level or lower.",
-      "ru": "**Критерии** орден листа.\n\nВы превращаетесь в растительную версию себя самого. Вы получаете дескриптор «растение» и теряете все неподходящие новой форме дескрипторы (обычно для персонажей игроков это дескриптор «гуманоид»). Вы также получаете следующее действие.\n\n<b>Древесный отдых</b> [one-action] (концентрация): вы превращаетесь в дерево или другое растение (не существо). Эффект аналогичен превращению с помощью слияния с растениями, но ваш КБ становится равен 30. Вы можете использовать Прекращение для эффекта, чтобы превратиться обратно. Если вы отдохнёте в этой форме на естественном солнечном свету 10 минут, то восстановите ПЗ в количестве, равном половине максимума. Кроме этого, вы таким образом можете и полноценно отдохнуть, чтобы полностью восстановить ПЗ и снять все непостоянные состояния: истощение, слабость, неуклюжесть, и ошеломление, а также избавиться от всех болезней и ядов с уровнем не выше 19."
+      "en": "**Prerequisites** leaf order.\n\nYou have turned into a plant version of yourself, gaining the plant trait and losing traits inappropriate for your new form (typically humanoid). You also gain the Verdant Rest action.\n\n**Verdant Rest** [one-action]  (concentrate) You turn into a tree or other noncreature plant. This has the effect of using one with plants to turn into a plant, except that your AC is 30. You can Dismiss this effect to turn back. If you rest for 10 minutes in this form in natural sunlight, you recover half your maximum Hit Points. If you take your daily rest in this form, the rest restores you to maximum Hit Points and removes all non-permanent drained, enfeebled, clumsy, and stupefied conditions, as well as all poisons and diseases of 19th level or lower.",
+      "ru": "**Критерии** орден листа.\n\nВы превращаетесь в растительную версию себя самого. Вы получаете дескриптор «растение» и теряете все неподходящие новой форме дескрипторы (обычно для персонажей игроков это дескриптор «гуманоид»). Вы также получаете следующее действие.\n\n**Древесный отдых** [one-action] (концентрация): вы превращаетесь в дерево или другое растение (не существо). Эффект аналогичен превращению с помощью слияния с растениями, но ваш КБ становится равен 30. Вы можете использовать Прекращение для эффекта, чтобы превратиться обратно. Если вы отдохнёте в этой форме на естественном солнечном свету 10 минут, то восстановите ПЗ в количестве, равном половине максимума. Кроме этого, вы таким образом можете и полноценно отдохнуть, чтобы полностью восстановить ПЗ и снять все непостоянные состояния: истощение, слабость, неуклюжесть, и ошеломление, а также избавиться от всех болезней и ядов с уровнем не выше 19."
     },
     "origin": "ancestry",
     "origin_values": [
@@ -2397,8 +2397,8 @@
       "ru": "Проводник лей-линий"
     },
     "description": {
-      "en": "<b>Frequency</b> once per minute.\n\nYou can draw magic from the ley lines of the world. If your next action is to Cast a Spell of 5th rank or lower that has no duration, you don't expend the prepared spell as you cast it.",
-      "ru": "<b>Частота</b> 1 в минуту.\n\nВы можете творить заклинания без малейших усилий, черпая силу из пронизывающих мир лей-линий. Если вашим следующим действием будет Сотворение заклинания 5 круга или ниже без длительности, вы не расходуете подготовленное заклинание при сотворении."
+      "en": "**Frequency** once per minute.\n\nYou can draw magic from the ley lines of the world. If your next action is to Cast a Spell of 5th rank or lower that has no duration, you don't expend the prepared spell as you cast it.",
+      "ru": "**Частота** 1 в минуту.\n\nВы можете творить заклинания без малейших усилий, черпая силу из пронизывающих мир лей-линий. Если вашим следующим действием будет Сотворение заклинания 5 круга или ниже без длительности, вы не расходуете подготовленное заклинание при сотворении."
     },
     "origin": "ancestry",
     "origin_values": [
@@ -2423,8 +2423,8 @@
       "ru": "Истинный перевертыш"
     },
     "description": {
-      "en": "**Prerequisites** Dragon Shape; Untamed Form.\n\nYou transcend the limitations of form. Once per day you can cast nature incarnate, even if you don't have it prepared, to transform into a kaiju. If you have Plant Shape, you can choose to transform into a green man instead. You also gain the True Shapeshift activity.\n\n<b>True Shapeshift</b> [two-actions]  (concentrate) **Requirements** You're under the effects of untamed form; <b>Effect</b> You change into any other shape on your untamed form list. If the duration of that shape is different from the one you were previously in, use the shorter duration to determine your duration remaining.",
-      "ru": "**Критерии** Облик дракона; Дикий облик.\n\nВы выходите за рамки возможного. Один раз в день вы можете сотворить воплощение природы, чтобы превратиться в кайдзю, даже если оно вами не подготовлено; если у вас есть черта Облик растения, вы вместо этого можете превратиться в зелёного человека. Вы также получаете следующее занятие.\n\n<b>Истинное превращение</b> [two-actions]  (концентрация). <b>Требования</b> вы под действием дикого облика. <b>Эффект</b> вы перевоплощаетесь в любую другую форму из вашего списка дикого облика; в случае если у форм разная длительность, используйте меньшую для определения оставшейся длительности."
+      "en": "**Prerequisites** Dragon Shape; Untamed Form.\n\nYou transcend the limitations of form. Once per day you can cast nature incarnate, even if you don't have it prepared, to transform into a kaiju. If you have Plant Shape, you can choose to transform into a green man instead. You also gain the True Shapeshift activity.\n\n**True Shapeshift** [two-actions]  (concentrate) **Requirements** You're under the effects of untamed form; **Effect** You change into any other shape on your untamed form list. If the duration of that shape is different from the one you were previously in, use the shorter duration to determine your duration remaining.",
+      "ru": "**Критерии** Облик дракона; Дикий облик.\n\nВы выходите за рамки возможного. Один раз в день вы можете сотворить воплощение природы, чтобы превратиться в кайдзю, даже если оно вами не подготовлено; если у вас есть черта Облик растения, вы вместо этого можете превратиться в зелёного человека. Вы также получаете следующее занятие.\n\n**Истинное превращение** [two-actions]  (концентрация). **Требования** вы под действием дикого облика. **Эффект** вы перевоплощаетесь в любую другую форму из вашего списка дикого облика; в случае если у форм разная длительность, используйте меньшую для определения оставшейся длительности."
     },
     "origin": "ancestry",
     "origin_values": [
@@ -2447,8 +2447,8 @@
       "ru": "Жестокое добивание"
     },
     "description": {
-      "en": "<b>Archetypes</b> Mauler*<br>**Requirements** You are wielding a melee weapon in two hands<br>* This archetype offers Brutal Finish at a different level than displayed here.\n\nYour final blow can make an impact even if it rebounds off a foe's defenses. Make a Strike with a melee weapon you're wielding in two hands. After the Strike, your turn ends. The Strike deals one additional weapon damage die, or two additional weapon damage dice if you're at least 18th level. The Strike also gains the following failure effect.\n\n<b>Failure</b> You deal damage equal to one weapon damage die of the required weapon. Increase this to two dice if you're at least 18th level.<h2 class=\"h2-header\">Archetype Use</h2>This feat can be used for one or more Archetypes in addition to the listed Classes. When selected this way, the feat is not considered to have its class traits.",
-      "ru": "<b>Архетип</b> Громила<br>\n<b>Требования</b> вы используете оружие ближнего боя двумя руками.\n\nВаш завершающий удар настолько силён, что не останется незамеченным, даже если придётся на броню. Совершите Удар оружием ближнего боя, которое используете двумя руками; после этого ваш ход завершается. Удар наносит одну дополнительную кость урона оружия (или две кости урона начиная с 18 уровня). Удар получает следующий эффект провала.\n<br>\n\n<b>Провал</b> вы наносите урон, равный одной кости урона требуемого оружия (двум костям урона начиная с 18 уровня)."
+      "en": "**Archetypes** Mauler*<br>**Requirements** You are wielding a melee weapon in two hands<br>* This archetype offers Brutal Finish at a different level than displayed here.\n\nYour final blow can make an impact even if it rebounds off a foe's defenses. Make a Strike with a melee weapon you're wielding in two hands. After the Strike, your turn ends. The Strike deals one additional weapon damage die, or two additional weapon damage dice if you're at least 18th level. The Strike also gains the following failure effect.\n\n**Failure** You deal damage equal to one weapon damage die of the required weapon. Increase this to two dice if you're at least 18th level.<h2 class=\"h2-header\">Archetype Use</h2>This feat can be used for one or more Archetypes in addition to the listed Classes. When selected this way, the feat is not considered to have its class traits.",
+      "ru": "**Архетип** Громила<br>\n**Требования** вы используете оружие ближнего боя двумя руками.\n\nВаш завершающий удар настолько силён, что не останется незамеченным, даже если придётся на броню. Совершите Удар оружием ближнего боя, которое используете двумя руками; после этого ваш ход завершается. Удар наносит одну дополнительную кость урона оружия (или две кости урона начиная с 18 уровня). Удар получает следующий эффект провала.\n\n**Провал** вы наносите урон, равный одной кости урона требуемого оружия (двум костям урона начиная с 18 уровня)."
     },
     "origin": "ancestry",
     "origin_values": [
@@ -2472,7 +2472,7 @@
     },
     "description": {
       "en": "**Requirements** You are adjacent to an enemy.\n\nSpringing away from one foe, you Strike at another. Stride up to your Speed, but you must end that movement within melee reach of a different enemy. At the end of your movement, make a melee Strike against an enemy now within reach. You can use Dashing Strike while Burrowing, Climbing, Flying, or Swimming instead of Striding if you have the corresponding movement type.",
-      "ru": "<b>Требования</b> вы рядом с противником.\n\nВы отскакиваете от одного противника, чтобы нанести Удар по другому. Совершите Перемещение на расстояние вплоть до значения своей скорости, завершив его так, чтобы в вашей зоне досягаемости был другой противник. В конце движения нанесите Удар в ближнем бою противнику, который теперь в зоне досягаемости. Вы можете использовать эту черту во время Лазания, Плавания, Полёта или Рытья вместо Перемещения, если у вас есть соответствующий тип перемещения."
+      "ru": "**Требования** вы рядом с противником.\n\nВы отскакиваете от одного противника, чтобы нанести Удар по другому. Совершите Перемещение на расстояние вплоть до значения своей скорости, завершив его так, чтобы в вашей зоне досягаемости был другой противник. В конце движения нанесите Удар в ближнем бою противнику, который теперь в зоне досягаемости. Вы можете использовать эту черту во время Лазания, Плавания, Полёта или Рытья вместо Перемещения, если у вас есть соответствующий тип перемещения."
     },
     "origin": "ancestry",
     "origin_values": [
@@ -2495,8 +2495,8 @@
       "ru": "Дуэльный танец (воин)"
     },
     "description": {
-      "en": "<b>Archetypes</b> Duelist*<br>**Prerequisites** Dueling Parry (Fighter)<br>**Requirements** You are wielding a single one-handed melee weapon and hold nothing else in your hands<br>* This archetype offers Dueling Dance (Fighter) at a different level than displayed here.\n\nUsing a free hand as pivot and balance, you both attack and defend with your weapon. While you are in this stance, you constantly have the benefits of Dueling Parry<h2 class=\"h2-header\">Archetype Use</h2>This feat can be used for one or more Archetypes in addition to the listed Classes. When selected this way, the feat is not considered to have its class traits.",
-      "ru": "<b>Архетип</b> Дуэлянт<br>\n**Критерии** Дуэльное парирование (воин)<br>\n<b>Требования</b> вы используете только одно одноручное оружие ближнего боя и больше ничего не держите в руках.\n\nВы атакуете и парируете удары своим оружием, используя свободную руку для удержания равновесия. Пока вы в этой стойке, вы постоянно получаете преимущество Дуэльного парирования."
+      "en": "**Archetypes** Duelist*<br>**Prerequisites** Dueling Parry (Fighter)<br>**Requirements** You are wielding a single one-handed melee weapon and hold nothing else in your hands<br>* This archetype offers Dueling Dance (Fighter) at a different level than displayed here.\n\nUsing a free hand as pivot and balance, you both attack and defend with your weapon. While you are in this stance, you constantly have the benefits of Dueling Parry<h2 class=\"h2-header\">Archetype Use</h2>This feat can be used for one or more Archetypes in addition to the listed Classes. When selected this way, the feat is not considered to have its class traits.",
+      "ru": "**Архетип** Дуэлянт<br>\n**Критерии** Дуэльное парирование (воин)<br>\n**Требования** вы используете только одно одноручное оружие ближнего боя и больше ничего не держите в руках.\n\nВы атакуете и парируете удары своим оружием, используя свободную руку для удержания равновесия. Пока вы в этой стойке, вы постоянно получаете преимущество Дуэльного парирования."
     },
     "origin": "ancestry",
     "origin_values": [
@@ -2542,8 +2542,8 @@
       "ru": "Улучшенная дуэльная контратака"
     },
     "description": {
-      "en": "<b>Archetypes</b> Duelist*<br>**Prerequisites** Dueling Riposte<br>* This archetype offers Improved Dueling Riposte at a different level than displayed here.\n\nYour weapon whirls and darts, striking foes whenever the slightest opening or moment of weakness presents itself. You can use Dueling Riposte even if you aren't benefiting from Dueling Parry. At the start of each of your turns, you gain an additional reaction that you can use only to make a Dueling Riposte.<h2 class=\"h2-header\">Archetype Use</h2>This feat can be used for one or more Archetypes in addition to the listed Classes. When selected this way, the feat is not considered to have its class traits.",
-      "ru": "<b>Архетип</b> Дуэлянт<br>\n**Критерии** Дуэльная контратака.\n\nВаше оружие пляшет, нанося удары, когда вы замечаете брешь в защите. Вы можете совершать Дуэльную контратаку, даже если у вас нет преимущества Дуэльного парирования. В начале каждого своего хода вы получаете дополнительное ответное действие, которое можете использовать только для Дуэльной контратаки."
+      "en": "**Archetypes** Duelist*<br>**Prerequisites** Dueling Riposte<br>* This archetype offers Improved Dueling Riposte at a different level than displayed here.\n\nYour weapon whirls and darts, striking foes whenever the slightest opening or moment of weakness presents itself. You can use Dueling Riposte even if you aren't benefiting from Dueling Parry. At the start of each of your turns, you gain an additional reaction that you can use only to make a Dueling Riposte.<h2 class=\"h2-header\">Archetype Use</h2>This feat can be used for one or more Archetypes in addition to the listed Classes. When selected this way, the feat is not considered to have its class traits.",
+      "ru": "**Архетип** Дуэлянт<br>\n**Критерии** Дуэльная контратака.\n\nВаше оружие пляшет, нанося удары, когда вы замечаете брешь в защите. Вы можете совершать Дуэльную контратаку, даже если у вас нет преимущества Дуэльного парирования. В начале каждого своего хода вы получаете дополнительное ответное действие, которое можете использовать только для Дуэльной контратаки."
     },
     "origin": "ancestry",
     "origin_values": [
@@ -2591,7 +2591,7 @@
     },
     "description": {
       "en": "**Prerequisites** Reactive Strike; Lunge<br>**Requirements** You are wielding a melee weapon.\n\nYour body coiled to strike, you can lash out at distant enemies. While you are in this stance, you can use Reactive Strike against a creature that is outside your reach but within the reach you would have with a Lunge. If you do, you increase your range with the Strike by 5 feet.",
-      "ru": "**Критерии** Внеочередная атака; Выпад<br>\n<b>Требования</b> вы используете оружие ближнего боя.\n\nВы сжимаетесь как пружина, чтобы распрямиться и поразить далёких противников. Пока вы в этой стойке, вы можете использовать Внеочередную атаку по противникам вне вашей зоны досягаемости, но в зоне досягаемости вашего Выпада; при этом дистанция вашего Удара увеличивается на 5 футов."
+      "ru": "**Критерии** Внеочередная атака; Выпад<br>\n**Требования** вы используете оружие ближнего боя.\n\nВы сжимаетесь как пружина, чтобы распрямиться и поразить далёких противников. Пока вы в этой стойке, вы можете использовать Внеочередную атаку по противникам вне вашей зоны досягаемости, но в зоне досягаемости вашего Выпада; при этом дистанция вашего Удара увеличивается на 5 футов."
     },
     "origin": "ancestry",
     "origin_values": [
@@ -2615,7 +2615,7 @@
     },
     "description": {
       "en": "**Requirements** You are wielding a shield.\n\nOnce you've had a moment to set your stance, you always have your shield ready without a thought. While you are in this stance, you constantly have your shield raised as if you'd used the Raise a Shield action.",
-      "ru": "<b>Требования</b> вы используете щит.\n\nКогда вы заняли защитную стойку, ваш щит всегда наготове. Пока вы в этой стойке, ваш щит постоянно поднят (аналогично Поднятию щита)."
+      "ru": "**Требования** вы используете щит.\n\nКогда вы заняли защитную стойку, ваш щит всегда наготове. Пока вы в этой стойке, ваш щит постоянно поднят (аналогично Поднятию щита)."
     },
     "origin": "ancestry",
     "origin_values": [
@@ -2662,8 +2662,8 @@
       "ru": "Решимость"
     },
     "description": {
-      "en": "<b>Archetype</b> Eagle Knight*<br><b>Frequency</b> once per day<br>* This archetype offers Determination at a different level than displayed here.\n\nYour training allows you to shrug off your foes' spells and conditions when the need is dire. Choose a single nonpermanent condition, spell, or magical effect that is affecting you. If you chose a condition, its effect on you ends. If you chose a spell or other magical effect, attempt to counteract the spell (your counteract rank is equal to half your level, rounded up, and you attempt a Will save as your counteract check).\n\nThis doesn't remove any Hit Point damage you already took from the spell or condition, and it removes the effect from only you, not from other creatures or the environment around you. It can't remove an ongoing affliction or prevent such an affliction from inflicting conditions on you later. It can't remove conditions occurring automatically due to your situation or positioning (such as prone or flanked).<h2 class=\"h2-header\">Archetype Use</h2>This feat can be used for one or more Archetypes in addition to the listed Classes. When selected this way, the feat is not considered to have its class traits.",
-      "ru": "<b>Частота</b> 1 в день.\n\nТренировка помогает вам в экстремальной ситуации превозмогать заклинания противников и состояния. Выберите одно из действующих на вас заклинаний, состояний или магических эффектов (кроме постоянных). Если вы выбрали состояние, его эффект для вас прекращается. Если вы выбрали заклинание или магический эффект, совершите проверку нейтрализации (ваш круг нейтрализации равен половине вашего уровня с округлением вверх, а проверкой нейтрализации служит испытание Воли).\n\nЭто действие не восстанавливает утраченные из-за заклинания или состояния ПЗ и снимает эффект только с вас, а не с других существ и окружения. Решимость не избавляет вас от длящихся недугов и не защищает от состояний, налагаемых недугами в дальнейшем. Она также не избавит вас от состояний, которые возникают автоматически из-за ситуации или местоположения (если вы, например, распластаны или взяты в тиски)."
+      "en": "**Archetype** Eagle Knight*<br>**Frequency** once per day<br>* This archetype offers Determination at a different level than displayed here.\n\nYour training allows you to shrug off your foes' spells and conditions when the need is dire. Choose a single nonpermanent condition, spell, or magical effect that is affecting you. If you chose a condition, its effect on you ends. If you chose a spell or other magical effect, attempt to counteract the spell (your counteract rank is equal to half your level, rounded up, and you attempt a Will save as your counteract check).\n\nThis doesn't remove any Hit Point damage you already took from the spell or condition, and it removes the effect from only you, not from other creatures or the environment around you. It can't remove an ongoing affliction or prevent such an affliction from inflicting conditions on you later. It can't remove conditions occurring automatically due to your situation or positioning (such as prone or flanked).<h2 class=\"h2-header\">Archetype Use</h2>This feat can be used for one or more Archetypes in addition to the listed Classes. When selected this way, the feat is not considered to have its class traits.",
+      "ru": "**Частота** 1 в день.\n\nТренировка помогает вам в экстремальной ситуации превозмогать заклинания противников и состояния. Выберите одно из действующих на вас заклинаний, состояний или магических эффектов (кроме постоянных). Если вы выбрали состояние, его эффект для вас прекращается. Если вы выбрали заклинание или магический эффект, совершите проверку нейтрализации (ваш круг нейтрализации равен половине вашего уровня с округлением вверх, а проверкой нейтрализации служит испытание Воли).\n\nЭто действие не восстанавливает утраченные из-за заклинания или состояния ПЗ и снимает эффект только с вас, а не с других существ и окружения. Решимость не избавляет вас от длящихся недугов и не защищает от состояний, налагаемых недугами в дальнейшем. Она также не избавит вас от состояний, которые возникают автоматически из-за ситуации или местоположения (если вы, например, распластаны или взяты в тиски)."
     },
     "origin": "ancestry",
     "origin_values": [
@@ -2686,8 +2686,8 @@
       "ru": "Смещающее добивание"
     },
     "description": {
-      "en": "**Requirements** You are wielding a single one-handed melee weapon and hold nothing else in your hands.\n\nUsing your weapon as a lever, you force your opponent to end up right where you want them. Make a Strike with a onehanded melee weapon. If the Strike hits, you can Reposition the target up to 10 feet. You can move the target through your space during this movement. Your Strike gains the following failure effect.\n\n<b>Failure</b> You can force the creature to move as you would on a success, but you can move the target only 5 feet.",
-      "ru": "<b>Требования</b> вы используете только одно одноручное оружие ближнего боя и больше ничего не держите в руках.\n\nВы используете оружие как рычаг, чтобы переместить противника туда, куда вам нужно. Совершите Удар одноручным оружием ближнего боя. Если он попадает, вы можете сделать Перестановку цели на 10 или менее футов, в том числе и через занимаемое вами пространство. Удар получает следующий эффект провала.\n<br>\n\n<b>Провал</b> вы можете принудительно переместить цель как при успехе, но только на 5 футов."
+      "en": "**Requirements** You are wielding a single one-handed melee weapon and hold nothing else in your hands.\n\nUsing your weapon as a lever, you force your opponent to end up right where you want them. Make a Strike with a onehanded melee weapon. If the Strike hits, you can Reposition the target up to 10 feet. You can move the target through your space during this movement. Your Strike gains the following failure effect.\n\n**Failure** You can force the creature to move as you would on a success, but you can move the target only 5 feet.",
+      "ru": "**Требования** вы используете только одно одноручное оружие ближнего боя и больше ничего не держите в руках.\n\nВы используете оружие как рычаг, чтобы переместить противника туда, куда вам нужно. Совершите Удар одноручным оружием ближнего боя. Если он попадает, вы можете сделать Перестановку цели на 10 или менее футов, в том числе и через занимаемое вами пространство. Удар получает следующий эффект провала.\n\n**Провал** вы можете принудительно переместить цель как при успехе, но только на 5 футов."
     },
     "origin": "ancestry",
     "origin_values": [
@@ -2710,8 +2710,8 @@
       "ru": "Смещающая контратака"
     },
     "description": {
-      "en": "<b>Archetypes</b> Duelist*<br>**Prerequisites** Dueling Riposte<br>* This archetype offers Guiding Riposte at a different level than displayed here.\n\nBy shifting your weight and angling your weapon, you guide your opponent to a more favorable position. When you use Dueling Riposte to Strike and you hit, you can Reposition up to 10 feet.<h2 class=\"h2-header\">Archetype Use</h2>This feat can be used for one or more Archetypes in addition to the listed Classes. When selected this way, the feat is not considered to have its class traits.",
-      "ru": "<b>Архетип</b> Дуэлянт<br>\n**Критерии** Дуэльная контратака.\n\nВы ловко переносите вес с одной ноги на другую и наносите удары под разными углами, чтобы направить противника туда, куда вам нужно. Когда вы используете Дуэльную контратаку для Удара и Удар попадает, вы можете сделать Перестановку цели на 10 или менее футов."
+      "en": "**Archetypes** Duelist*<br>**Prerequisites** Dueling Riposte<br>* This archetype offers Guiding Riposte at a different level than displayed here.\n\nBy shifting your weight and angling your weapon, you guide your opponent to a more favorable position. When you use Dueling Riposte to Strike and you hit, you can Reposition up to 10 feet.<h2 class=\"h2-header\">Archetype Use</h2>This feat can be used for one or more Archetypes in addition to the listed Classes. When selected this way, the feat is not considered to have its class traits.",
+      "ru": "**Архетип** Дуэлянт<br>\n**Критерии** Дуэльная контратака.\n\nВы ловко переносите вес с одной ноги на другую и наносите удары под разными углами, чтобы направить противника туда, куда вам нужно. Когда вы используете Дуэльную контратаку для Удара и Удар попадает, вы можете сделать Перестановку цели на 10 или менее футов."
     },
     "origin": "ancestry",
     "origin_values": [
@@ -2733,8 +2733,8 @@
       "ru": "Улучшенная парная контратака (Воин)"
     },
     "description": {
-      "en": "<b>Archetypes</b> Avenger*, Dual-Weapon Warrior*<br>**Prerequisites** Twin Riposte<br>* This archetype offers Improved Twin Riposte (Fighter) at a different level than displayed here.\n\nYour weapons are a blur, blocking and biting at your foes. You can use Twin Riposte even if you aren't benefiting from Twin Parry. At the start of each of your turns, you gain an additional reaction that you can use only to make a Twin Riposte.<h2 class=\"h2-header\">Archetype Use</h2>This feat can be used for one or more Archetypes in addition to the listed Classes. When selected this way, the feat is not considered to have its class traits.",
-      "ru": "<b>Архетип</b> Боец парным оружием<br>\n**Критерии** Парная контратака.\n\nВидны лишь размытые очертания вашего оружия, блокирующие удары и разящие врагов. Вы можете совершать Парную контратаку, даже если у вас нет преимущества Парного парирования. В начале каждого своего хода вы получаете дополнительное ответное действие, которое можете использовать только для Парной контратаки."
+      "en": "**Archetypes** Avenger*, Dual-Weapon Warrior*<br>**Prerequisites** Twin Riposte<br>* This archetype offers Improved Twin Riposte (Fighter) at a different level than displayed here.\n\nYour weapons are a blur, blocking and biting at your foes. You can use Twin Riposte even if you aren't benefiting from Twin Parry. At the start of each of your turns, you gain an additional reaction that you can use only to make a Twin Riposte.<h2 class=\"h2-header\">Archetype Use</h2>This feat can be used for one or more Archetypes in addition to the listed Classes. When selected this way, the feat is not considered to have its class traits.",
+      "ru": "**Архетип** Боец парным оружием<br>\n**Критерии** Парная контратака.\n\nВидны лишь размытые очертания вашего оружия, блокирующие удары и разящие врагов. Вы можете совершать Парную контратаку, даже если у вас нет преимущества Парного парирования. В начале каждого своего хода вы получаете дополнительное ответное действие, которое можете использовать только для Парной контратаки."
     },
     "origin": "ancestry",
     "origin_values": [
@@ -2779,8 +2779,8 @@
       "ru": "Парный шквал"
     },
     "description": {
-      "en": "<b>Archetypes</b> Dual-Weapon Warrior*<br>**Requirements** You are wielding two weapons, each in a different hand<br>* This archetype offers Two-Weapon Flurry at a different level than displayed here.\n\nUsing the momentum of your prior attack, you lash out with both your weapons in a sudden frenzy. Strike twice, once with each weapon.<h2 class=\"h2-header\">Archetype Use</h2>This feat can be used for one or more Archetypes in addition to the listed Classes. When selected this way, the feat is not considered to have its class traits.",
-      "ru": "<b>Архетип</b> Боец парным оружием<br>\n<b>Требования</b> вы используете два оружия, каждое в отдельной руке.\n\nВы внезапно атакуете врага двумя руками, используя инерцию от прошлой атаки. Совершите два Удара, по одному каждым оружием."
+      "en": "**Archetypes** Dual-Weapon Warrior*<br>**Requirements** You are wielding two weapons, each in a different hand<br>* This archetype offers Two-Weapon Flurry at a different level than displayed here.\n\nUsing the momentum of your prior attack, you lash out with both your weapons in a sudden frenzy. Strike twice, once with each weapon.<h2 class=\"h2-header\">Archetype Use</h2>This feat can be used for one or more Archetypes in addition to the listed Classes. When selected this way, the feat is not considered to have its class traits.",
+      "ru": "**Архетип** Боец парным оружием<br>\n**Требования** вы используете два оружия, каждое в отдельной руке.\n\nВы внезапно атакуете врага двумя руками, используя инерцию от прошлой атаки. Совершите два Удара, по одному каждым оружием."
     },
     "origin": "ancestry",
     "origin_values": [
@@ -2828,7 +2828,7 @@
       "ru": "Улучшенная реакция щитоносца"
     },
     "description": {
-      "en": "<b>Archetype</b> Bastion*<br>**Prerequisites** Reflexive Shield<br>* This archetype offers Improved Reflexive Shield at a different level than displayed here.\n\nYour shield can help save nearby allies. When you use Shield Block against damage resulting from a Reflex save, adjacent allies who would take damage due to Reflex saves against the same effect also benefit from the damage reduction.<h2 class=\"h2-header\">Archetype Use</h2>This feat can be used for one or more Archetypes in addition to the listed Classes. When selected this way, the feat is not considered to have its class traits.",
+      "en": "**Archetype** Bastion*<br>**Prerequisites** Reflexive Shield<br>* This archetype offers Improved Reflexive Shield at a different level than displayed here.\n\nYour shield can help save nearby allies. When you use Shield Block against damage resulting from a Reflex save, adjacent allies who would take damage due to Reflex saves against the same effect also benefit from the damage reduction.<h2 class=\"h2-header\">Archetype Use</h2>This feat can be used for one or more Archetypes in addition to the listed Classes. When selected this way, the feat is not considered to have its class traits.",
       "ru": "**Критерии** Реакция щитоносца.\n\nВаш щит может спасти союзников. Когда вы используете Блок щитом для защиты от урона, получаемого в результате испытания Реакции, союзники рядом с вами, получающие урон в результате испытания Реакции против того же эффекта, уменьшают урон на ту же величину."
     },
     "origin": "ancestry",
@@ -2851,8 +2851,8 @@
       "ru": "Мастер множества стилей"
     },
     "description": {
-      "en": "<b>Source</b> Player Core , Core Rulebook , Player Core 2 <br>**Prerequisites** [Fighter] Opening Stance (Fighter); [Monk] Reflexive Stance<br>**Trigger** Your turn begins.\n\nYou move fluidly between stances, using your mastery of combat to always adopt the best tactics. You use an action with the stance trait.",
-      "ru": "<b>Источник</b> Основная книга игрока, Основная книга правил <br>\n**Критерии** Начальная стойка<br>\n**Условие** начинается ваш ход.\n\nВы с лёгкостью меняете стойки, используя боевое мастерство для выбора лучшей тактики. Используйте действие с дескриптором «стойка»."
+      "en": "**Source** Player Core , Core Rulebook , Player Core 2 <br>**Prerequisites** [Fighter] Opening Stance (Fighter); [Monk] Reflexive Stance<br>**Trigger** Your turn begins.\n\nYou move fluidly between stances, using your mastery of combat to always adopt the best tactics. You use an action with the stance trait.",
+      "ru": "**Источник** Основная книга игрока, Основная книга правил <br>\n**Критерии** Начальная стойка<br>\n**Условие** начинается ваш ход.\n\nВы с лёгкостью меняете стойки, используя боевое мастерство для выбора лучшей тактики. Используйте действие с дескриптором «стойка»."
     },
     "origin": "ancestry",
     "origin_values": [
@@ -2875,8 +2875,8 @@
       "ru": "Скорострельная стойка"
     },
     "description": {
-      "en": "<b>Archetypes</b> Archer*<br>**Prerequisites** Triple Shot<br>**Requirements** You are wielding a ranged weapon with reload 0<br>* This archetype offers Multishot Stance at a different level than displayed here.\n\nYou lock yourself in a stable position so you can fire swiftly and accurately. While you are in this stance, your penalty for Double Shot is reduced to –1. If you move from your position, this stance ends.\n\n<b>Special</b> If you have Triple Shot, when you use Double Shot to make three Strikes, the penalty is –2.<h2 class=\"h2-header\">Archetype Use</h2>This feat can be used for one or more Archetypes in addition to the listed Classes. When selected this way, the feat is not considered to have its class traits.",
-      "ru": "<b>Архетип</b> Лучник<br>\n**Критерии** Тройной выстрел<br>\n<b>Требования</b> вы используете дистанционное оружие с перезарядкой 0.\n\nВы занимаете устойчивую стойку, чтобы быстрее и точнее стрелять. Пока вы в этой стойке, штраф при использовании Двойного выстрела снижается до -1. Если вы переместитесь с занимаемого места, стойка завершается."
+      "en": "**Archetypes** Archer*<br>**Prerequisites** Triple Shot<br>**Requirements** You are wielding a ranged weapon with reload 0<br>* This archetype offers Multishot Stance at a different level than displayed here.\n\nYou lock yourself in a stable position so you can fire swiftly and accurately. While you are in this stance, your penalty for Double Shot is reduced to –1. If you move from your position, this stance ends.\n\n**Special** If you have Triple Shot, when you use Double Shot to make three Strikes, the penalty is –2.<h2 class=\"h2-header\">Archetype Use</h2>This feat can be used for one or more Archetypes in addition to the listed Classes. When selected this way, the feat is not considered to have its class traits.",
+      "ru": "**Архетип** Лучник<br>\n**Критерии** Тройной выстрел<br>\n**Требования** вы используете дистанционное оружие с перезарядкой 0.\n\nВы занимаете устойчивую стойку, чтобы быстрее и точнее стрелять. Пока вы в этой стойке, штраф при использовании Двойного выстрела снижается до -1. Если вы переместитесь с занимаемого места, стойка завершается."
     },
     "origin": "ancestry",
     "origin_values": [
@@ -2922,8 +2922,8 @@
       "ru": "Парная защита (воин)"
     },
     "description": {
-      "en": "<b>Archetypes</b> Dual-Weapon Warrior*<br>**Prerequisites** Twin Parry<br>**Requirements** You are wielding two melee weapons, one in each hand<br>* This archetype offers Twinned Defense (Fighter) at a different level than displayed here.\n\nYou're always ready to use your off-hand weapon to interfere with attacks against you. While you are in this stance, you constantly gain the benefits of the Twin Parry action.<h2 class=\"h2-header\">Archetype Use</h2>This feat can be used for one or more Archetypes in addition to the listed Classes. When selected this way, the feat is not considered to have its class traits.",
-      "ru": "<b>Архетип</b> Боец парным оружием<br>\n**Критерии** Парное парирование<br>\n<b>Требования</b> вы используете два оружия ближнего боя, каждое в отдельной руке.\n\nВы всегда готовы отбить атаку оружием во второй руке. Пока вы в этой стойке, вы постоянно получаете преимущество Парного парирования."
+      "en": "**Archetypes** Dual-Weapon Warrior*<br>**Prerequisites** Twin Parry<br>**Requirements** You are wielding two melee weapons, one in each hand<br>* This archetype offers Twinned Defense (Fighter) at a different level than displayed here.\n\nYou're always ready to use your off-hand weapon to interfere with attacks against you. While you are in this stance, you constantly gain the benefits of the Twin Parry action.<h2 class=\"h2-header\">Archetype Use</h2>This feat can be used for one or more Archetypes in addition to the listed Classes. When selected this way, the feat is not considered to have its class traits.",
+      "ru": "**Архетип** Боец парным оружием<br>\n**Критерии** Парное парирование<br>\n**Требования** вы используете два оружия ближнего боя, каждое в отдельной руке.\n\nВы всегда готовы отбить атаку оружием во второй руке. Пока вы в этой стойке, вы постоянно получаете преимущество Парного парирования."
     },
     "origin": "ancestry",
     "origin_values": [
@@ -2946,8 +2946,8 @@
       "ru": "Невероятный залп"
     },
     "description": {
-      "en": "<b>Archetypes</b> Archer*, Eldritch Archer*<br>**Requirements** You are wielding a ranged weapon with the volley trait and reload 0<br>* This archetype offers Impossible Volley at a different level than displayed here.\n\nYou fire a volley at all foes in an area. Make one Strike with a –2 penalty against each enemy within a 10-foot-radius burst centered at or beyond your weapon's volley range. Roll the damage only once for all targets.\n\nEach attack counts toward your multiple attack penalty, but do not increase your penalty until you have made all your attacks.<h2 class=\"h2-header\">Archetype Use</h2>This feat can be used for one or more Archetypes in addition to the listed Classes. When selected this way, the feat is not considered to have its class traits.",
-      "ru": "<b>Архетип</b> Мистический лучник<br>\n<b>Требования</b> вы используете дистанционное оружие с дескриптором «залповое» и перезарядкой 0.\n\nВы поражаете залпом всех врагов в области. Совершите один Удар со штрафом -2 по каждому противнику в области взрыва радиусом 10 футов с центром на залповой дистанции вашего оружия или за её пределами. Совершите один бросок урона для всех целей. Каждая атака учитывается при определении штрафа за последовательные атаки, но его значение не увеличивается, пока вы не совершите все атаки."
+      "en": "**Archetypes** Archer*, Eldritch Archer*<br>**Requirements** You are wielding a ranged weapon with the volley trait and reload 0<br>* This archetype offers Impossible Volley at a different level than displayed here.\n\nYou fire a volley at all foes in an area. Make one Strike with a –2 penalty against each enemy within a 10-foot-radius burst centered at or beyond your weapon's volley range. Roll the damage only once for all targets.\n\nEach attack counts toward your multiple attack penalty, but do not increase your penalty until you have made all your attacks.<h2 class=\"h2-header\">Archetype Use</h2>This feat can be used for one or more Archetypes in addition to the listed Classes. When selected this way, the feat is not considered to have its class traits.",
+      "ru": "**Архетип** Мистический лучник<br>\n**Требования** вы используете дистанционное оружие с дескриптором «залповое» и перезарядкой 0.\n\nВы поражаете залпом всех врагов в области. Совершите один Удар со штрафом -2 по каждому противнику в области взрыва радиусом 10 футов с центром на залповой дистанции вашего оружия или за её пределами. Совершите один бросок урона для всех целей. Каждая атака учитывается при определении штрафа за последовательные атаки, но его значение не увеличивается, пока вы не совершите все атаки."
     },
     "origin": "ancestry",
     "origin_values": [
@@ -3040,7 +3040,7 @@
       "ru": "Высочайшая боевая гибкость"
     },
     "description": {
-      "en": "<b>Source</b> Player Core , Pathfinder #150: Broken Promises<br>**Prerequisites** improved flexibility.\n\nYour experience keeps you on your toes, helping you adopt complex strategies on the fly and face the most dangerous challenges. When you gain a fighter feat using combat flexibility, you gain three fighter feats instead of two. While the first feat must still be 8th level or lower, the second feat can be up to 14th level, and the third feat can be up to 18th level.\n\nYou can use the first feat to meet the prerequisites of the second or third feats and the second feat to meet the prerequisites of the third feat. You must meet all three feats' other prerequisites normally.\n\nIn addition, you can adapt to the battlefield's challenges by spending 1 hour to train. If you do, you can reselect the feats chosen with combat flexibility as if you had made your daily preparations. You can't trade out limited-use abilities that you've already used, such as Determination.",
+      "en": "**Source** Player Core , Pathfinder #150: Broken Promises<br>**Prerequisites** improved flexibility.\n\nYour experience keeps you on your toes, helping you adopt complex strategies on the fly and face the most dangerous challenges. When you gain a fighter feat using combat flexibility, you gain three fighter feats instead of two. While the first feat must still be 8th level or lower, the second feat can be up to 14th level, and the third feat can be up to 18th level.\n\nYou can use the first feat to meet the prerequisites of the second or third feats and the second feat to meet the prerequisites of the third feat. You must meet all three feats' other prerequisites normally.\n\nIn addition, you can adapt to the battlefield's challenges by spending 1 hour to train. If you do, you can reselect the feats chosen with combat flexibility as if you had made your daily preparations. You can't trade out limited-use abilities that you've already used, such as Determination.",
       "ru": "**Критерии** улучшенная боевая гибкость.\n\nБлагодаря боевой закалке вы вечно настороже и готовы в любой момент схлестнуться с самыми опасными врагами, быстро адаптируясь. При использовании боевой гибкости вы можете получить три черты воина вместо двух. Первая черта должна быть 8 или меньшего уровня, вторая — 14 или меньшего уровня, а третья — 18 или меньшего уровня.\n\nПервую черту можно использовать для выполнения критериев второй, и, соответственно, вторую черту можно использовать для выполнения критериев третьей. Вы должны соответствовать критериям всех трёх черт.\n\nКроме того, вы можете адаптироваться к новым условиям, проведя 1 час в тренировках. В этом случае вы можете выбрать другие черты для боевой гибкости, как во время вашей ежедневной подготовки. Вы не можете заменить черты с ограниченным числом применений, которые уже использовали, например Решимость."
     },
     "origin": "ancestry",
@@ -3109,8 +3109,8 @@
       "ru": "Вторая добыча"
     },
     "description": {
-      "en": "<b>Archetypes</b> Bounty Hunter*, Game Hunter*<br>* This archetype offers Double Prey at a different level than displayed here.\n\nYou can focus on two foes at once, hunting both of them down. When you use the Hunt Prey action, you can pick two creatures as your prey.<h2 class=\"h2-header\">Archetype Use</h2>This feat can be used for one or more Archetypes in addition to the listed Classes. When selected this way, the feat is not considered to have its class traits.",
-      "ru": "<b>Архетипы</b> Охотник за головами, Game Hunter.\n\nВы можете преследовать сразу двух врагов. При использовании Охоты на добычу вы можете выбрать в качестве добычи двух существ."
+      "en": "**Archetypes** Bounty Hunter*, Game Hunter*<br>* This archetype offers Double Prey at a different level than displayed here.\n\nYou can focus on two foes at once, hunting both of them down. When you use the Hunt Prey action, you can pick two creatures as your prey.<h2 class=\"h2-header\">Archetype Use</h2>This feat can be used for one or more Archetypes in addition to the listed Classes. When selected this way, the feat is not considered to have its class traits.",
+      "ru": "**Архетипы** Охотник за головами, Game Hunter.\n\nВы можете преследовать сразу двух врагов. При использовании Охоты на добычу вы можете выбрать в качестве добычи двух существ."
     },
     "origin": "ancestry",
     "origin_values": [
@@ -3132,8 +3132,8 @@
       "ru": "Повторный укол"
     },
     "description": {
-      "en": "<b>Archetype</b> Avenger*<br>**Requirements** You are wielding two melee weapons, each in a different hand<br>* This archetype offers Second Sting at a different level than displayed here.\n\nYou read your prey's movements and transform them into openings, so failures with one weapon set up glancing blows with the other. Make a melee Strike with one of the required weapons against your hunted prey. The Strike gains the following failure effect. <br><b>Failure</b> You deal the damage the other required weapon would have dealt on a hit, excluding all damage dice. (This removes dice from weapon runes, spells, and special abilities, not just weapon damage dice.)<h2 class=\"h2-header\">Archetype Use</h2>This feat can be used for one or more Archetypes in addition to the listed Classes. When selected this way, the feat is not considered to have its class traits.",
-      "ru": "<b>Требования</b> вы используете два оружия ближнего боя, каждое в отдельной руке.\n\nВы предугадываете движения добычи и пользуетесь этим, чтобы после ложной атаки одним оружием зацепить её вторым. Совершите по своей добыче Удар в ближнем бою с использованием одного требуемого оружия. Он получает следующий эффект провала. \n<br>\n\n<b>Провал</b> вы наносите цели урон, который второе требуемое оружие нанесло бы при попадании, но без учёта всех костей урона (вы не учитываете не только кости урона оружия, но и все дополнительные кости урона от рун, заклинаний и особых способностей)."
+      "en": "**Archetype** Avenger*<br>**Requirements** You are wielding two melee weapons, each in a different hand<br>* This archetype offers Second Sting at a different level than displayed here.\n\nYou read your prey's movements and transform them into openings, so failures with one weapon set up glancing blows with the other. Make a melee Strike with one of the required weapons against your hunted prey. The Strike gains the following failure effect. <br>**Failure** You deal the damage the other required weapon would have dealt on a hit, excluding all damage dice. (This removes dice from weapon runes, spells, and special abilities, not just weapon damage dice.)<h2 class=\"h2-header\">Archetype Use</h2>This feat can be used for one or more Archetypes in addition to the listed Classes. When selected this way, the feat is not considered to have its class traits.",
+      "ru": "**Требования** вы используете два оружия ближнего боя, каждое в отдельной руке.\n\nВы предугадываете движения добычи и пользуетесь этим, чтобы после ложной атаки одним оружием зацепить её вторым. Совершите по своей добыче Удар в ближнем бою с использованием одного требуемого оружия. Он получает следующий эффект провала. \n<br>\n\n**Провал** вы наносите цели урон, который второе требуемое оружие нанесло бы при попадании, но без учёта всех костей урона (вы не учитываете не только кости урона оружия, но и все дополнительные кости урона от рун, заклинаний и особых способностей)."
     },
     "origin": "ancestry",
     "origin_values": [
@@ -3202,8 +3202,8 @@
       "ru": "Чутьё на незримое"
     },
     "description": {
-      "en": "<b>Source</b> Player Core , Player Core 2 <br><b>Archetypes</b> Exorcist*, Shadowdancer*<br>**Trigger** You fail a check to Seek<br>* This archetype offers Sense the Unseen at a different level than displayed here.\n\nWhen you look for foes, you can catch even the slightest cues, such as their minute movements or the shifting of air currents on your skin. Even though you failed at the triggering check, you automatically sense any undetected creatures in the area where you're Seeking, making them merely hidden to you.<h2 class=\"h2-header\">Archetype Use</h2>This feat can be used for one or more archetypes in addition to the listed classes. When selected this way, the feat does not have its class traits.",
-      "ru": "<b>Архетипы</b> Exorcist, Танцор теней<br>\n**Условие** вы провалили проверку для Поиска.\n\nВысматривая врагов, вы обращаете внимание на мельчайшие детали. Хотя вы провалили проверку, вы автоматически чувствуете всех необнаруженных существ в области вашего Поиска и они становятся для вас спрятанными."
+      "en": "**Source** Player Core , Player Core 2 <br>**Archetypes** Exorcist*, Shadowdancer*<br>**Trigger** You fail a check to Seek<br>* This archetype offers Sense the Unseen at a different level than displayed here.\n\nWhen you look for foes, you can catch even the slightest cues, such as their minute movements or the shifting of air currents on your skin. Even though you failed at the triggering check, you automatically sense any undetected creatures in the area where you're Seeking, making them merely hidden to you.<h2 class=\"h2-header\">Archetype Use</h2>This feat can be used for one or more archetypes in addition to the listed classes. When selected this way, the feat does not have its class traits.",
+      "ru": "**Архетипы** Exorcist, Танцор теней<br>\n**Условие** вы провалили проверку для Поиска.\n\nВысматривая врагов, вы обращаете внимание на мельчайшие детали. Хотя вы провалили проверку, вы автоматически чувствуете всех необнаруженных существ в области вашего Поиска и они становятся для вас спрятанными."
     },
     "origin": "ancestry",
     "origin_values": [
@@ -3365,8 +3365,8 @@
       "ru": "Специализированный зверь (Следопыт)"
     },
     "description": {
-      "en": "<b>Archetype</b> Wylderheart<br>**Prerequisites** Incredible Companion (Ranger).\n\nYour animal companion continues to grow in power and ability, and it is now cunning enough to become specialized. Your animal companion gains one specialization of your choice (page 211.\n\n<b>Special</b> You can select this feat up to three times. Each time, add a different specialization to your companion.<h2 class=\"h2-header\">Archetype Use</h2>This feat can be used for one or more Archetypes in addition to the listed Classes. When selected this way, the feat is not considered to have its class traits.",
-      "ru": "**Критерии** Невероятный зверь.\n\nВаш верный зверь продолжает развиваться. Ваш верный зверь получает одну выбранную вами специализацию.\n\n<b>Примечание</b> вы можете взять эту черту до трёх раз, каждый раз выбирая верному зверю новую специализацию."
+      "en": "**Archetype** Wylderheart<br>**Prerequisites** Incredible Companion (Ranger).\n\nYour animal companion continues to grow in power and ability, and it is now cunning enough to become specialized. Your animal companion gains one specialization of your choice (page 211.\n\n**Special** You can select this feat up to three times. Each time, add a different specialization to your companion.<h2 class=\"h2-header\">Archetype Use</h2>This feat can be used for one or more Archetypes in addition to the listed Classes. When selected this way, the feat is not considered to have its class traits.",
+      "ru": "**Критерии** Невероятный зверь.\n\nВаш верный зверь продолжает развиваться. Ваш верный зверь получает одну выбранную вами специализацию.\n\n**Примечание** вы можете взять эту черту до трёх раз, каждый раз выбирая верному зверю новую специализацию."
     },
     "origin": "ancestry",
     "origin_values": [
@@ -3388,8 +3388,8 @@
       "ru": "Перезарядка заступника"
     },
     "description": {
-      "en": "<b>Frequency</b> once per round<br>**Requirements** Your last action or activity this turn was to cast a warden spell.\n\nYour mastery of magic and weapons like the crossbow allow you to wield both with equal ease. Interact to reload a weapon you are currently wielding.",
-      "ru": "<b>Частота</b> 1 в раунд<br>\n<b>Требования</b> вашим последним действием или занятием в этот ход было сотворение заклинания заступника.\n\nВы умело овладели магией и оружием вроде арбалетов, применяя их с равным мастерством.\n\nСовершите Взаимодействие для перезарядки оружия, которое сейчас используете."
+      "en": "**Frequency** once per round<br>**Requirements** Your last action or activity this turn was to cast a warden spell.\n\nYour mastery of magic and weapons like the crossbow allow you to wield both with equal ease. Interact to reload a weapon you are currently wielding.",
+      "ru": "**Частота** 1 в раунд<br>\n**Требования** вашим последним действием или занятием в этот ход было сотворение заклинания заступника.\n\nВы умело овладели магией и оружием вроде арбалетов, применяя их с равным мастерством.\n\nСовершите Взаимодействие для перезарядки оружия, которое сейчас используете."
     },
     "origin": "ancestry",
     "origin_values": [
@@ -3412,7 +3412,7 @@
     },
     "description": {
       "en": "**Requirements** You are wielding two melee weapons, each in a different hand.\n\nYou forgo precision to attack at an impossible speed. Make three melee Strikes with each of the required weapons. Your first attack with each weapon takes the multiple attack penalty as though you had already made one attack this turn. All of the remaining Strikes take the maximum multiple attack penalty.",
-      "ru": "<b>Требования</b> вы используете два оружия ближнего боя, каждое в отдельной руке.\n\nВы атакуете с невероятной скоростью, пренебрегая точностью. Совершите по три Удара в ближнем бою каждым требуемым оружием. Штраф за последовательные атаки для первой атаки каждым оружием такой, как если бы вы уже совершили одну атаку в этот ход. Все прочие Удары совершаются с максимальным штрафом за последовательные атаки."
+      "ru": "**Требования** вы используете два оружия ближнего боя, каждое в отдельной руке.\n\nВы атакуете с невероятной скоростью, пренебрегая точностью. Совершите по три Удара в ближнем бою каждым требуемым оружием. Штраф за последовательные атаки для первой атаки каждым оружием такой, как если бы вы уже совершили одну атаку в этот ход. Все прочие Удары совершаются с максимальным штрафом за последовательные атаки."
     },
     "origin": "ancestry",
     "origin_values": [
@@ -3482,7 +3482,7 @@
     },
     "description": {
       "en": "**Requirements** You are wielding a loaded ranged weapon with reload 1 or more, and you have not reloaded your weapon since your last turn.\n\nAfter watching the motions of combat with incredible intensity and precision, you fire at your prey at the perfect moment to deliver maximum pain. Make a ranged Strike with the required weapon against your hunted prey. If you hit, the Strike deals maximum damage. After the Strike, your turn ends.",
-      "ru": "<b>Требования</b> вы используете заряженное дистанционное оружие с перезарядкой 1 или более и не перезаряжали его с последнего хода.\n\nВы крайне внимательно следите за ходом боя и в подходящий момент стреляете, целясь в самое слабое место цели. Совершите по своей добыче дистанционный Удар требуемым оружием. При попадании Удар наносит максимальный урон. После этого Удара ваш ход завершается."
+      "ru": "**Требования** вы используете заряженное дистанционное оружие с перезарядкой 1 или более и не перезаряжали его с последнего хода.\n\nВы крайне внимательно следите за ходом боя и в подходящий момент стреляете, целясь в самое слабое место цели. Совершите по своей добыче дистанционный Удар требуемым оружием. При попадании Удар наносит максимальный урон. После этого Удара ваш ход завершается."
     },
     "origin": "ancestry",
     "origin_values": [
@@ -3620,8 +3620,8 @@
       "ru": "Кровавая контузия"
     },
     "description": {
-      "en": "**Prerequisites** trained in Medicine; Debilitating Strike.\n\nYour attacks slice arteries and veins. Add the following debilitation to the list you can choose from when you use Debilitating Strike. <br><ul><li><b>Debilitation</b> The target takes 3d6 persistent bleed damage.</li></ul>",
-      "ru": "**Критерии** изученная Медицина; Контузящий удар.\n\nВаши удары перерезают артерии и вены. Добавьте следующую контузию в список доступных для Контузящего удара.<ul>\n<li> <b>Контузия</b> цель получает 3d6 продолжительного урона от кровотечения.</li>\n</ul>"
+      "en": "**Prerequisites** trained in Medicine; Debilitating Strike.\n\nYour attacks slice arteries and veins. Add the following debilitation to the list you can choose from when you use Debilitating Strike. <br><ul><li>**Debilitation** The target takes 3d6 persistent bleed damage.</li></ul>",
+      "ru": "**Критерии** изученная Медицина; Контузящий удар.\n\nВаши удары перерезают артерии и вены. Добавьте следующую контузию в список доступных для Контузящего удара.<ul>\n<li> **Контузия** цель получает 3d6 продолжительного урона от кровотечения.</li>\n</ul>"
     },
     "origin": "ancestry",
     "origin_values": [
@@ -3643,8 +3643,8 @@
       "ru": "Критическая контузия"
     },
     "description": {
-      "en": "**Prerequisites** Debilitating Strike.\n\nYour debilitations are especially effective on your most powerful attacks. Whenever you critically succeed at an attack roll against an enemy and use Debilitating Strike, add the following debilitation to the list you can choose from. <br><ul><li><b>Debilitation</b> The target attempts a Fortitude save against your class DC with the following effects.</li></ul><br><b>Critical Success</b> The target is unaffected.\n\n<b>Success</b> The target is slowed 1 until the end of your next turn.\n\n<b>Failure</b> The target is slowed 2 until the end of your next turn.\n\n<b>Critical Failure</b> The target is paralyzed until the end of your next turn.",
-      "ru": "**Критерии** Контузящий удар.\n\nВаши мощные атаки выводят из строя цель. Когда вы получаете критический успех проверки атаки по врагу при использовании Контузящего удара, добавьте следующую контузию в список доступных для него.<ul>\n<li><b>Контузия</b> цель проходит испытание Стойкости против вашей классовой СЛ со следующими эффектами.\n<br>\n\n<b>Критический успех</b> цель избегает эффекта.\n<br>\n\n<b>Успех</b> цель получает замедление 1 до конца вашего следующего хода.\n<br>\n\n<b>Провал</b> цель получает замедление 2 до конца вашего следующего хода.\n<br>\n\n<b>Критический провал</b> цель парализована до конца вашего следующего хода.\n</li></ul>"
+      "en": "**Prerequisites** Debilitating Strike.\n\nYour debilitations are especially effective on your most powerful attacks. Whenever you critically succeed at an attack roll against an enemy and use Debilitating Strike, add the following debilitation to the list you can choose from. <br><ul><li>**Debilitation** The target attempts a Fortitude save against your class DC with the following effects.</li></ul><br>**Critical Success** The target is unaffected.\n\n**Success** The target is slowed 1 until the end of your next turn.\n\n**Failure** The target is slowed 2 until the end of your next turn.\n\n**Critical Failure** The target is paralyzed until the end of your next turn.",
+      "ru": "**Критерии** Контузящий удар.\n\nВаши мощные атаки выводят из строя цель. Когда вы получаете критический успех проверки атаки по врагу при использовании Контузящего удара, добавьте следующую контузию в список доступных для него.<ul>\n<li>**Контузия** цель проходит испытание Стойкости против вашей классовой СЛ со следующими эффектами.\n\n**Критический успех** цель избегает эффекта.\n\n**Успех** цель получает замедление 1 до конца вашего следующего хода.\n\n**Провал** цель получает замедление 2 до конца вашего следующего хода.\n\n**Критический провал** цель парализована до конца вашего следующего хода.\n</li></ul>"
     },
     "origin": "ancestry",
     "origin_values": [
@@ -3690,8 +3690,8 @@
       "ru": "Валящий выстрел"
     },
     "description": {
-      "en": "Your ranged attacks can shoot an unprepared foe right out of the air. Make a ranged Strike against an off-guard creature. If the Strike is a success and deals damage, the target must attempt a Reflex save against your class DC.\n\n<b>Success</b> The target is unaffected.\n\n<b>Failure</b> The target falls up to 120 feet. If it hits the ground, it takes no damage from the fall.\n\n<b>Critical Failure</b> As failure, and the target can't fly, jump, levitate, or otherwise leave the ground until the end of your next turn.",
-      "ru": "Вы способны подстрелить зазевавшегося в воздухе противника. Совершите дистанционный Удар по застигнутому врасплох существу. Если Удар окажется успешным и нанесёт урон, цель проходит испытание Реакции против вашей классовой СЛ со следующими эффектами.\n<br>\n\n<b>Успех</b> цель избегает эффекта.\n<br>\n\n<b>Провал</b> цель падает на 120 или менее футов. Если при этом она падает на землю, то не получает урона от падения.\n<br>\n\n<b>Критический провал</b> аналогичен провалу, но цель до конца вашего следующего хода лишается возможности прыгать, летать, левитировать и иным способом отрываться от земли."
+      "en": "Your ranged attacks can shoot an unprepared foe right out of the air. Make a ranged Strike against an off-guard creature. If the Strike is a success and deals damage, the target must attempt a Reflex save against your class DC.\n\n**Success** The target is unaffected.\n\n**Failure** The target falls up to 120 feet. If it hits the ground, it takes no damage from the fall.\n\n**Critical Failure** As failure, and the target can't fly, jump, levitate, or otherwise leave the ground until the end of your next turn.",
+      "ru": "Вы способны подстрелить зазевавшегося в воздухе противника. Совершите дистанционный Удар по застигнутому врасплох существу. Если Удар окажется успешным и нанесёт урон, цель проходит испытание Реакции против вашей классовой СЛ со следующими эффектами.\n\n**Успех** цель избегает эффекта.\n\n**Провал** цель падает на 120 или менее футов. Если при этом она падает на землю, то не получает урона от падения.\n\n**Критический провал** аналогичен провалу, но цель до конца вашего следующего хода лишается возможности прыгать, летать, левитировать и иным способом отрываться от земли."
     },
     "origin": "ancestry",
     "origin_values": [
@@ -3783,8 +3783,8 @@
       "ru": "Нападение из теней"
     },
     "description": {
-      "en": "<b>Archetype</b> Shadowdancer*<br>* This archetype offers Spring from the Shadows at a different level than displayed here.\n\nYou leap from hiding and assail your target. You Stride up to your Speed, but you must end your movement next to an enemy you're hidden from or undetected by. You then Strike that enemy; you remain hidden from or undetected by that creature until after you Strike. You can use Spring from the Shadows while Burrowing, Climbing, Flying, or Swimming instead of Striding if you have the corresponding movement type.<h2 class=\"h2-header\">Archetype Use</h2>This feat can be used for one or more Archetypes in addition to the listed Classes. When selected this way, the feat is not considered to have its class traits.",
-      "ru": "<b>Архетип</b> Танцор теней.\n\nВы выскакиваете из засады, нападая на цель в самый неподходящий для неё момент. Вы совершаете Перемещение на расстояние вплоть до своей скорости, но должны завершить перемещение рядом с противником, для которого считаетесь спрятанным или необнаруженным. После этого вы наносите по противнику Удар; вы остаётесь спрятанным или необнаруженным для него, пока не завершите Удар. Вы можете использовать эту черту при Лазании, Плавании, Полёте или Рытье вместо Перемещения, если у вас есть соответствующий тип перемещения."
+      "en": "**Archetype** Shadowdancer*<br>* This archetype offers Spring from the Shadows at a different level than displayed here.\n\nYou leap from hiding and assail your target. You Stride up to your Speed, but you must end your movement next to an enemy you're hidden from or undetected by. You then Strike that enemy; you remain hidden from or undetected by that creature until after you Strike. You can use Spring from the Shadows while Burrowing, Climbing, Flying, or Swimming instead of Striding if you have the corresponding movement type.<h2 class=\"h2-header\">Archetype Use</h2>This feat can be used for one or more Archetypes in addition to the listed Classes. When selected this way, the feat is not considered to have its class traits.",
+      "ru": "**Архетип** Танцор теней.\n\nВы выскакиваете из засады, нападая на цель в самый неподходящий для неё момент. Вы совершаете Перемещение на расстояние вплоть до своей скорости, но должны завершить перемещение рядом с противником, для которого считаетесь спрятанным или необнаруженным. После этого вы наносите по противнику Удар; вы остаётесь спрятанным или необнаруженным для него, пока не завершите Удар. Вы можете использовать эту черту при Лазании, Плавании, Полёте или Рытье вместо Перемещения, если у вас есть соответствующий тип перемещения."
     },
     "origin": "ancestry",
     "origin_values": [
@@ -3807,8 +3807,8 @@
       "ru": "Защитный перекат"
     },
     "description": {
-      "en": "<b>Frequency</b> once per 10 minutes<br>**Trigger** A physical attack would reduce you to 0 Hit Points.\n\nDropping into a roll to disperse the force of the blow, you can partially evade a lethal attack and stay conscious. You take half damage from the triggering attack.",
-      "ru": "<b>Частота</b> 1 в 10 минут<br>\n**Условие** физическая атака должна снизить ваши ПЗ до 0.\n\nВы перекатываетесь, чтобы смягчить полученный удар и остаться в сознании, избежав смерти. Вы получаете только половину урона от спровоцировавшей атаки."
+      "en": "**Frequency** once per 10 minutes<br>**Trigger** A physical attack would reduce you to 0 Hit Points.\n\nDropping into a roll to disperse the force of the blow, you can partially evade a lethal attack and stay conscious. You take half damage from the triggering attack.",
+      "ru": "**Частота** 1 в 10 минут<br>\n**Условие** физическая атака должна снизить ваши ПЗ до 0.\n\nВы перекатываетесь, чтобы смягчить полученный удар и остаться в сознании, избежав смерти. Вы получаете только половину урона от спровоцировавшей атаки."
     },
     "origin": "ancestry",
     "origin_values": [
@@ -3830,8 +3830,8 @@
       "ru": "Секундное отвлечение"
     },
     "description": {
-      "en": "<b>Archetype</b> Alkenstar Agent*<br>* This archetype offers Instant Opening at a different level than displayed here.\n\nYou distract your opponent with a few choice words or a rude gesture. Choose a target within 30 feet. It's off-guard against your attacks until the end of your next turn. Depending on the way you describe your distraction, this action gains either the auditory or visual trait.<h2 class=\"h2-header\">Archetype Use</h2>This feat can be used for one or more Archetypes in addition to the listed Classes. When selected this way, the feat is not considered to have its class traits.",
-      "ru": "<b>Архетип</b> Alkenstar Agent.\n\nВы отвлекаете противника крепким словцом или грубым жестом. Выберите цель в пределах 30 футов от вас. До конца вашего следующего хода она застигнута врасплох для ваших атак. Это действие получает дескриптор «зрение» или «слух» в зависимости от того, как именно вы отвлекаете противника."
+      "en": "**Archetype** Alkenstar Agent*<br>* This archetype offers Instant Opening at a different level than displayed here.\n\nYou distract your opponent with a few choice words or a rude gesture. Choose a target within 30 feet. It's off-guard against your attacks until the end of your next turn. Depending on the way you describe your distraction, this action gains either the auditory or visual trait.<h2 class=\"h2-header\">Archetype Use</h2>This feat can be used for one or more Archetypes in addition to the listed Classes. When selected this way, the feat is not considered to have its class traits.",
+      "ru": "**Архетип** Alkenstar Agent.\n\nВы отвлекаете противника крепким словцом или грубым жестом. Выберите цель в пределах 30 футов от вас. До конца вашего следующего хода она застигнута врасплох для ваших атак. Это действие получает дескриптор «зрение» или «слух» в зависимости от того, как именно вы отвлекаете противника."
     },
     "origin": "ancestry",
     "origin_values": [
@@ -3946,8 +3946,8 @@
       "ru": "Психологическая лазейка"
     },
     "description": {
-      "en": "<b>Archetype</b> Shadowdancer*<br>**Trigger** Your turn ends<br>**Requirements** You are currently affected by a mental effect<br>* This archetype offers Cognitive Loophole at a different level than displayed here.\n\nYou can find a loophole in a mental effect to temporarily overcome it. Until the end of your next turn, you ignore a single mental effect. You can suppress a particular effect using Cognitive Loophole only once. You can't use Cognitive Loophole to suppress an effect you chose to have affect you.\n\n<b>Special</b> You can use this reaction even if the mental effect is preventing you from using reactions.<h2 class=\"h2-header\">Archetype Use</h2>This feat can be used for one or more Archetypes in addition to the listed Classes. When selected this way, the feat is not considered to have its class traits.",
-      "ru": "<b>Архетип</b> Танцор теней<br>\n**Условие** ваш ход завершается<br>\n<b>Требования</b> вы находитесь под действием ментального эффекта.\n\nВы можете отыскать лазейку в ментальном эффекте, чтобы временно его подавить. До конца своего следующего хода вы игнорируете один ментальный эффект. Каждый эффект с помощью этой черты можно подавить лишь единожды. Вы не можете подавить эффект с помощью этой черты, если добровольно решили, что он на вас подействует.\n\n<b>Примечание</b> вы можете совершить это ответное действие, даже если ментальный эффект не позволяет вам использовать ответные действия."
+      "en": "**Archetype** Shadowdancer*<br>**Trigger** Your turn ends<br>**Requirements** You are currently affected by a mental effect<br>* This archetype offers Cognitive Loophole at a different level than displayed here.\n\nYou can find a loophole in a mental effect to temporarily overcome it. Until the end of your next turn, you ignore a single mental effect. You can suppress a particular effect using Cognitive Loophole only once. You can't use Cognitive Loophole to suppress an effect you chose to have affect you.\n\n**Special** You can use this reaction even if the mental effect is preventing you from using reactions.<h2 class=\"h2-header\">Archetype Use</h2>This feat can be used for one or more Archetypes in addition to the listed Classes. When selected this way, the feat is not considered to have its class traits.",
+      "ru": "**Архетип** Танцор теней<br>\n**Условие** ваш ход завершается<br>\n**Требования** вы находитесь под действием ментального эффекта.\n\nВы можете отыскать лазейку в ментальном эффекте, чтобы временно его подавить. До конца своего следующего хода вы игнорируете один ментальный эффект. Каждый эффект с помощью этой черты можно подавить лишь единожды. Вы не можете подавить эффект с помощью этой черты, если добровольно решили, что он на вас подействует.\n\n**Примечание** вы можете совершить это ответное действие, даже если ментальный эффект не позволяет вам использовать ответные действия."
     },
     "origin": "ancestry",
     "origin_values": [
@@ -4015,7 +4015,7 @@
       "ru": "Реконструкция сцены"
     },
     "description": {
-      "en": "<b>Source</b> Player Core , Player Core 2 .\n\nYou spend 1 minute surveying a small location (such as a single room) to get an impression of events that occurred there in the last day. This involves moving about the area and studying footprints, spilled drinks or blood, and so forth. You get an indistinct mental impression of significant events that happened there. This gives you clues and details of the past, including the overall events and their time frame, but it's not a perfect record. This also isn't enough to identify who was involved in these events if you weren't already aware the person was there. As determined by the GM, you also pick out various seemingly small details that could serve as important clues, like a memorable weapon someone used for a murder or the type of cloak someone wore when passing through.",
+      "en": "**Source** Player Core , Player Core 2 .\n\nYou spend 1 minute surveying a small location (such as a single room) to get an impression of events that occurred there in the last day. This involves moving about the area and studying footprints, spilled drinks or blood, and so forth. You get an indistinct mental impression of significant events that happened there. This gives you clues and details of the past, including the overall events and their time frame, but it's not a perfect record. This also isn't enough to identify who was involved in these events if you weren't already aware the person was there. As determined by the GM, you also pick out various seemingly small details that could serve as important clues, like a memorable weapon someone used for a murder or the type of cloak someone wore when passing through.",
       "ru": "Вы тратите 1 минуту на осмотр небольшого места (например, одной комнаты), чтобы примерно понять, какие события произошли там за последний день. Вам нужно будет перемещаться по области, изучать следы ног, расположение объектов, пятна крови или пролитых напитков и так далее. У вас складывается смутное мысленное впечатление о произошедших там значимых событиях. Таким образом, вы узнаёте улики и детали из прошлого, включая понимание того, что и когда здесь произошло, но это понимание не идеально. Кроме того, этого недостаточно, чтобы понять, кто именно участвовал в этих событиях, если вы не знаете заранее, что этот персонаж был здесь. По решению ведущего вы также можете заметить мелкие на первый взгляд детали, которые в итоге могут оказаться важными уликами: например, запоминающееся оружие, которым было совершено убийство, или особенный плащ, который был на том, кто здесь побывал."
     },
     "origin": "ancestry",
@@ -4064,7 +4064,7 @@
     },
     "description": {
       "en": "**Prerequisites** legendary in Acrobatics; Quick Squeeze<br>**Requirements** You are adjacent to a floor or vertical wall.\n\nYou find tiny imperfections and somehow fit yourself through them, possibly moving directly through the wall or floor. Your movement attempt fails if the wall or floor is made of something other than wood, plaster, or stone; is thicker than 10 feet; or contains even a thin layer of metal. If you have a climb Speed, you can use this ability to attempt to move through a ceiling.",
-      "ru": "**Критерии** легендарная Акробатика; Быстрое протискивание<br>\n<b>Требования</b> вы рядом с полом или вертикальной стеной.\n\nВы находите крошечные щели и отверстия и каким-то совершенно немыслимым образом просачиваетесь сквозь них, оказываясь по ту сторону стены или проваливаясь под пол. Подобное перемещение не удаётся, если стена или пол сделаны не из дерева, гипса или камня, если они толще 10 футов или если в них есть хотя бы тончайший слой металла. Если у вас есть скорость лазания, то вы можете использовать эту способность, чтобы просачиваться сквозь потолки."
+      "ru": "**Критерии** легендарная Акробатика; Быстрое протискивание<br>\n**Требования** вы рядом с полом или вертикальной стеной.\n\nВы находите крошечные щели и отверстия и каким-то совершенно немыслимым образом просачиваетесь сквозь них, оказываясь по ту сторону стены или проваливаясь под пол. Подобное перемещение не удаётся, если стена или пол сделаны не из дерева, гипса или камня, если они толще 10 футов или если в них есть хотя бы тончайший слой металла. Если у вас есть скорость лазания, то вы можете использовать эту способность, чтобы просачиваться сквозь потолки."
     },
     "origin": "ancestry",
     "origin_values": [
@@ -4134,8 +4134,8 @@
       "ru": "Эталон незаметности"
     },
     "description": {
-      "en": "<b>Frequency</b> once per hour<br>**Prerequisites** legendary in Stealth<br>**Trigger** You successfully use Stealth to Hide and become hidden from all of your current foes, or use Stealth to Sneak and become undetected to all your current foes.\n\nWhen you slip out of sight, you disappear. You become invisible for 1 minute, even if you use a hostile action. Not even revealing light, see the unseen, or similar effects can reveal you, though creatures can still use the Seek action to locate you as normal.",
-      "ru": "<b>Частота</b> 1 в час<br>\n**Критерии** легендарная Скрытность<br>\n**Условие** вы успешно используете Скрытность, чтобы Спрятаться, и становитесь спрятанным для всех текущих противников либо вы используете Скрытность, чтобы Красться, и становитесь необнаруженным для всех текущих противников.\n\nЕсли уж вы решили спрятаться, то полностью пропадаете из виду. Вы становитесь невидимым на 1 минуту и сохраняете невидимость даже при совершении враждебных действий. Видение невидимого, озаряющий свети другие подобные эффекты не могут сделать вас видимым, но существа по-прежнему могут использовать действие Поиск, чтобы вас обнаружить."
+      "en": "**Frequency** once per hour<br>**Prerequisites** legendary in Stealth<br>**Trigger** You successfully use Stealth to Hide and become hidden from all of your current foes, or use Stealth to Sneak and become undetected to all your current foes.\n\nWhen you slip out of sight, you disappear. You become invisible for 1 minute, even if you use a hostile action. Not even revealing light, see the unseen, or similar effects can reveal you, though creatures can still use the Seek action to locate you as normal.",
+      "ru": "**Частота** 1 в час<br>\n**Критерии** легендарная Скрытность<br>\n**Условие** вы успешно используете Скрытность, чтобы Спрятаться, и становитесь спрятанным для всех текущих противников либо вы используете Скрытность, чтобы Красться, и становитесь необнаруженным для всех текущих противников.\n\nЕсли уж вы решили спрятаться, то полностью пропадаете из виду. Вы становитесь невидимым на 1 минуту и сохраняете невидимость даже при совершении враждебных действий. Видение невидимого, озаряющий свети другие подобные эффекты не могут сделать вас видимым, но существа по-прежнему могут использовать действие Поиск, чтобы вас обнаружить."
     },
     "origin": "ancestry",
     "origin_values": [
@@ -4181,7 +4181,7 @@
     },
     "description": {
       "en": "**Prerequisites** legendary in Deception; Perfect Distraction<br>**Trigger** You would be hit by an attack or targeted by an effect, or you are within an effect's area<br>**Requirements** You have Perfect Distraction ready to use.\n\nYou reactively switch with your decoy to foil your foe. You use Perfect Distraction, even if you were observed, as long as you end the movement of your Sneak while concealed or in a location with cover or greater cover. Your decoy is targeted by the attack or effect instead of you. In the case of an area effect, if your Sneak doesn't move you out of the area, both you and the decoy are targeted by the effect.",
-      "ru": "**Критерии** легендарный Обман; Идеальная уловка<br>\n**Условие** по вам попадают атакой, выбирают вас целью эффекта или вы находитесь в области эффекта<br>\n<b>Требования</b> у вас готова для применения Идеальная уловка.\n\nВы рефлекторно меняетесь местами с двойником, разрушая планы врага. Вы используете Идеальную уловку, даже если вы видимы, при условии, что по завершении попытки Красться станете плохо видимы или окажетесь в укрытии или надёжном укрытии. Целью атаки или эффекта вместо вас становится ваш двойник. Если у эффекта есть область, то, если по завершении попытки Красться вы её не покинете, целями эффекта станете и вы, и ваш двойник."
+      "ru": "**Критерии** легендарный Обман; Идеальная уловка<br>\n**Условие** по вам попадают атакой, выбирают вас целью эффекта или вы находитесь в области эффекта<br>\n**Требования** у вас готова для применения Идеальная уловка.\n\nВы рефлекторно меняетесь местами с двойником, разрушая планы врага. Вы используете Идеальную уловку, даже если вы видимы, при условии, что по завершении попытки Красться станете плохо видимы или окажетесь в укрытии или надёжном укрытии. Целью атаки или эффекта вместо вас становится ваш двойник. Если у эффекта есть область, то, если по завершении попытки Красться вы её не покинете, целями эффекта станете и вы, и ваш двойник."
     },
     "origin": "ancestry",
     "origin_values": [
@@ -4275,8 +4275,8 @@
       "ru": "Присутствие покровителя"
     },
     "description": {
-      "en": "Your patron can direct its attention through your familiar, and its mere presence becomes an ominous weight on the minds of other beings to distract them and blot out their magic. Your familiar gains the following activity.\n\n<b>Patron's Presence</b> [two-actions]  (aura) <b>Frequency</b> once per hour; <b>Effect</b> A palpable weight extends from your familiar in a 15-foot emanation. Enemies who enter or start their turn within the aura must succeed at a Will save against your spell DC or become stupefied 2 as long as they remain within the aura, or stupefied 3 on a critical failure. The aura lasts until the end of your next turn, but the familiar can Sustain it up to 1 minute.",
-      "ru": "Ваш покровитель способен надзирать за вами через вашего фамильяра, и одно только его присутствие невероятным грузом ложится на разумы других существ, подавляя их магию. Ваш фамильяр получает следующее занятие.\n\n<b>Присутствие покровителя</b> [two-actions] (аура). <b>Частота</b> 1 в час. <b>Эффект</b> осязаемая тяжесть ложится на плечи тех, кто находится в 15-футовой эманации вокруг вашего фамильяра. Враги, входящие в область или начинающие в ней свой ход, проходят испытание Воли против вашей СЛ заклинаний и при провале получают ошеломление 2 (ошеломление 3 при критическом провале), пока находятся в ауре. Аура существует до конца вашего следующего хода, но фамильяр может использовать Поддержание для неё до 1 минуты."
+      "en": "Your patron can direct its attention through your familiar, and its mere presence becomes an ominous weight on the minds of other beings to distract them and blot out their magic. Your familiar gains the following activity.\n\n**Patron's Presence** [two-actions]  (aura) **Frequency** once per hour; **Effect** A palpable weight extends from your familiar in a 15-foot emanation. Enemies who enter or start their turn within the aura must succeed at a Will save against your spell DC or become stupefied 2 as long as they remain within the aura, or stupefied 3 on a critical failure. The aura lasts until the end of your next turn, but the familiar can Sustain it up to 1 minute.",
+      "ru": "Ваш покровитель способен надзирать за вами через вашего фамильяра, и одно только его присутствие невероятным грузом ложится на разумы других существ, подавляя их магию. Ваш фамильяр получает следующее занятие.\n\n**Присутствие покровителя** [two-actions] (аура). **Частота** 1 в час. **Эффект** осязаемая тяжесть ложится на плечи тех, кто находится в 15-футовой эманации вокруг вашего фамильяра. Враги, входящие в область или начинающие в ней свой ход, проходят испытание Воли против вашей СЛ заклинаний и при провале получают ошеломление 2 (ошеломление 3 при критическом провале), пока находятся в ауре. Аура существует до конца вашего следующего хода, но фамильяр может использовать Поддержание для неё до 1 минуты."
     },
     "origin": "ancestry",
     "origin_values": [
@@ -4345,8 +4345,8 @@
       "ru": "Опустошение силы"
     },
     "description": {
-      "en": "**Trigger** once per day<br>**Requirements** You haven't acted yet on your turn.\n\nYou draw upon the reservoir of your patron's magic that resides within your familiar. During your turn, you can cast one spell your familiar knows that was granted by your patron or lessons without spending a spell slot to do so (or even having it prepared). The spell must be at least 1 rank lower than your highest-rank witch spell slot.\n\n<b>Special</b> This feat has the trait corresponding to the tradition of spells you cast (arcane, divine, occult, or primal).",
-      "ru": "**Условие** 1 в день<br>\n<b>Требования</b> вы ещё не действовали в свой ход.\n\nВы извлекаете силу своего покровителя из вместилища магии, воплощённого в вашем фамильяре. Во время своего хода вы можете без затрат ячейки и подготовки сотворить одно известное вашему фамильяру заклинание, дарованное покровителем или уроками. Это заклинание должно быть хотя бы на один круг ниже наивысшего доступного вам круга ячейки заклинаний ведьмы.\n\n<b>Примечание</b> эта черта получает дескриптор вашей магической традиции (мистический, оккультный, первобытный или сакральный)."
+      "en": "**Trigger** once per day<br>**Requirements** You haven't acted yet on your turn.\n\nYou draw upon the reservoir of your patron's magic that resides within your familiar. During your turn, you can cast one spell your familiar knows that was granted by your patron or lessons without spending a spell slot to do so (or even having it prepared). The spell must be at least 1 rank lower than your highest-rank witch spell slot.\n\n**Special** This feat has the trait corresponding to the tradition of spells you cast (arcane, divine, occult, or primal).",
+      "ru": "**Условие** 1 в день<br>\n**Требования** вы ещё не действовали в свой ход.\n\nВы извлекаете силу своего покровителя из вместилища магии, воплощённого в вашем фамильяре. Во время своего хода вы можете без затрат ячейки и подготовки сотворить одно известное вашему фамильяру заклинание, дарованное покровителем или уроками. Это заклинание должно быть хотя бы на один круг ниже наивысшего доступного вам круга ячейки заклинаний ведьмы.\n\n**Примечание** эта черта получает дескриптор вашей магической традиции (мистический, оккультный, первобытный или сакральный)."
     },
     "origin": "ancestry",
     "origin_values": [
@@ -4368,8 +4368,8 @@
       "ru": "Притязания покровителя"
     },
     "description": {
-      "en": "Your patron partially manifests itself through your familiar to claim a foe's power for its own. Your familiar gains the following activity.\n\n<b>Patron's Claim</b> [two-actions] <b>Frequency</b> once per hour; <b>Effect</b> Your familiar's mouth opens impossibly wide before your patron's grasping limb stretches forth from it at a creature within 30 feet, dealing 10d10 spirit damage with a basic Fortitude save against your spell DC. If the creature fails its save and takes damage, it is also drained 2 (or drained 4 on a critical failure) and you regain 1 Focus Point, up to your usual maximum, as your patron grants you additional magic in exchange for your gift of your opponent's spirit.",
-      "ru": "Ваш покровитель частично являет себя через вашего фамильяра и захватывает мощь вашего врага. Ваш фамильяр получает следующее занятие.\n\n<b>Притязания покровителя</b> [two-actions]. <b>Частота</b> 1 в час. <b>Эффект</b> пасть вашего фамильяра открывается неестественно широко, и алчная длань вашего покровителя протягивается оттуда к одному существу в пределах 30 футов, нанося 10сП 0 урона духом (обычное испытание Стойкости против вашей СЛ заклинаний). Если существо проваливает испытание и получает урон, оно также получает истощение 2 (истощение 4 при критическом провале), а вы восстанавливаете 1 ФП вплоть до обычного максимума — ваш покровитель ниспосылает вам силы взамен за дарованную частицу духа противника."
+      "en": "Your patron partially manifests itself through your familiar to claim a foe's power for its own. Your familiar gains the following activity.\n\n**Patron's Claim** [two-actions] **Frequency** once per hour; **Effect** Your familiar's mouth opens impossibly wide before your patron's grasping limb stretches forth from it at a creature within 30 feet, dealing 10d10 spirit damage with a basic Fortitude save against your spell DC. If the creature fails its save and takes damage, it is also drained 2 (or drained 4 on a critical failure) and you regain 1 Focus Point, up to your usual maximum, as your patron grants you additional magic in exchange for your gift of your opponent's spirit.",
+      "ru": "Ваш покровитель частично являет себя через вашего фамильяра и захватывает мощь вашего врага. Ваш фамильяр получает следующее занятие.\n\n**Притязания покровителя** [two-actions]. **Частота** 1 в час. **Эффект** пасть вашего фамильяра открывается неестественно широко, и алчная длань вашего покровителя протягивается оттуда к одному существу в пределах 30 футов, нанося 10сП 0 урона духом (обычное испытание Стойкости против вашей СЛ заклинаний). Если существо проваливает испытание и получает урон, оно также получает истощение 2 (истощение 4 при критическом провале), а вы восстанавливаете 1 ФП вплоть до обычного максимума — ваш покровитель ниспосылает вам силы взамен за дарованную частицу духа противника."
     },
     "origin": "ancestry",
     "origin_values": [
@@ -4462,8 +4462,8 @@
       "ru": "Хижина ведьмы"
     },
     "description": {
-      "en": "Your home is an animated structure that obeys your commands. By performing a rite that takes 1 day, you create an animated object from a hut, small house, covered wagon, tent, or similar construction of up to Huge size.\n\nThe hut uses your AC, saving throw modifiers, and Perception modifier and has 150 HP and Hardness 10. It has the construct armor ability, meaning once it's reduced to less than half its Hit Points, or immediately upon being damaged by a critical hit, its AC is reduced by 4 until it is repaired.\n\nThe hut can't attack or attempt skill checks. You can give the hut a command as a single action, which has the auditory and concentrate traits; after 1 round of reconfiguring itself, the hut then follows that command until you give it a different command. <br><ul><li><b>Guard</b> The hut watches for trespassers within 120 feet using your Perception modifier and screams if it spots any.</li><li><b>Hide</b> The hut appears to be a normal, mundane object of its type. This is a 10th-rank illusion effect.</li><li><b>Leap</b> The hut spins around or leaps into the air, then casts 10th rank teleport, transporting itself and all creatures within it.</li><li><b>Lock</b> With a slam, each entrance to the hut becomes sealed with a lock spell. You can give this command again to unlock its entrances.</li><li><b>Move</b> The hut gains a Speed of 60 feet, growing giant bird or bone legs, if necessary, and follows an extremely basic movement command you give it, such as “follow me” or “move that direction.” While perfectly suitable for overland travel, the hut's broad movements and 1-round delay on response time are too imprecise to predictably direct in a combat encounter or other situation where seconds and precise locations count.</li></ul><br>You can have only one witch's hut at a time. If you animate a new hut, your previous hut immediately reverts to its original, mundane form. If you die, the hut continues following the last order you gave it indefinitely.",
-      "ru": "Ваш дом — живое строение, которое подчиняется вашим приказам. Потратив 1 день на сотворение обряда, вы можете создать живой предмет из хижины, небольшого дома, крытой повозки, палатки или схожего строения размером не более огромного.\n\nУ хижины ведьмы ваш КБ, модификаторы испытаний и Внимания, а также 150 ПЗ и твёрдость 10. Она обладает способностью броня конструкций: когда у неё остаётся менее половины ПЗ (или сразу же после получения урона от критического удара), её КБ уменьшается на 4, пока она не будет починена.\n\nХижина не может атаковать или совершать проверки навыков. Вы можете отдать ей приказ в качестве одиночного действия с дескрипторами «концентрация» и «слух»; после 1 раунда, во время которого хижина изменяет конфигурацию, она будет следовать вашему приказу, пока вы не отдадите другой.\n<ul>\n<li><b>Двигайся</b> хижина получает скорость 60 футов (если понадобится, она отращивает гигантские птичьи или костяные ноги) и следует простейшему приказу, такому как «следуй за мной» или «иди туда». Хотя хижина прекрасно подходит для путешествий, неточные перемещения хижины и задержка в 1 раунд перед исполнением приказов мешают безошибочно управлять ей в бою или в другой ситуации, где важна каждая секунда и точное местоположение. </li>\n<li><b>Запрись</b> входы в хижину захлопываются и запечатываются заклинанием замок. Можно повторить приказ, чтобы их отпереть. </li>\n<li><b>Охраняй</b> хижина пытается заметить чужаков в пределах 120 футов, используя ваш модификатор Внимания, и кричит, если заметит кого-либо. </li>\n<li><b>Прыгни</b> хижина вращается вокруг своей оси или прыгает ввысь, а затем творит телепортацию 10 круга, перенося себя и всех существ внутри. </li>\n<li><b>Спрячься</b> хижина притворяется обычным немагическим объектом своего типа. Это эффект иллюзии 10 круга. </li>\n</ul>\nУ вас может быть только одна хижина одновременно. Если вы оживляете новую хижину, ваша прежняя хижина немедленно возвращается к своей обычной немагической форме. Если вы умираете, хижина бесконечно продолжает следовать последнему приказу."
+      "en": "Your home is an animated structure that obeys your commands. By performing a rite that takes 1 day, you create an animated object from a hut, small house, covered wagon, tent, or similar construction of up to Huge size.\n\nThe hut uses your AC, saving throw modifiers, and Perception modifier and has 150 HP and Hardness 10. It has the construct armor ability, meaning once it's reduced to less than half its Hit Points, or immediately upon being damaged by a critical hit, its AC is reduced by 4 until it is repaired.\n\nThe hut can't attack or attempt skill checks. You can give the hut a command as a single action, which has the auditory and concentrate traits; after 1 round of reconfiguring itself, the hut then follows that command until you give it a different command. <br><ul><li>**Guard** The hut watches for trespassers within 120 feet using your Perception modifier and screams if it spots any.</li><li>**Hide** The hut appears to be a normal, mundane object of its type. This is a 10th-rank illusion effect.</li><li>**Leap** The hut spins around or leaps into the air, then casts 10th rank teleport, transporting itself and all creatures within it.</li><li>**Lock** With a slam, each entrance to the hut becomes sealed with a lock spell. You can give this command again to unlock its entrances.</li><li>**Move** The hut gains a Speed of 60 feet, growing giant bird or bone legs, if necessary, and follows an extremely basic movement command you give it, such as “follow me” or “move that direction.” While perfectly suitable for overland travel, the hut's broad movements and 1-round delay on response time are too imprecise to predictably direct in a combat encounter or other situation where seconds and precise locations count.</li></ul><br>You can have only one witch's hut at a time. If you animate a new hut, your previous hut immediately reverts to its original, mundane form. If you die, the hut continues following the last order you gave it indefinitely.",
+      "ru": "Ваш дом — живое строение, которое подчиняется вашим приказам. Потратив 1 день на сотворение обряда, вы можете создать живой предмет из хижины, небольшого дома, крытой повозки, палатки или схожего строения размером не более огромного.\n\nУ хижины ведьмы ваш КБ, модификаторы испытаний и Внимания, а также 150 ПЗ и твёрдость 10. Она обладает способностью броня конструкций: когда у неё остаётся менее половины ПЗ (или сразу же после получения урона от критического удара), её КБ уменьшается на 4, пока она не будет починена.\n\nХижина не может атаковать или совершать проверки навыков. Вы можете отдать ей приказ в качестве одиночного действия с дескрипторами «концентрация» и «слух»; после 1 раунда, во время которого хижина изменяет конфигурацию, она будет следовать вашему приказу, пока вы не отдадите другой.\n<ul>\n<li>**Двигайся** хижина получает скорость 60 футов (если понадобится, она отращивает гигантские птичьи или костяные ноги) и следует простейшему приказу, такому как «следуй за мной» или «иди туда». Хотя хижина прекрасно подходит для путешествий, неточные перемещения хижины и задержка в 1 раунд перед исполнением приказов мешают безошибочно управлять ей в бою или в другой ситуации, где важна каждая секунда и точное местоположение. </li>\n<li>**Запрись** входы в хижину захлопываются и запечатываются заклинанием замок. Можно повторить приказ, чтобы их отпереть. </li>\n<li>**Охраняй** хижина пытается заметить чужаков в пределах 120 футов, используя ваш модификатор Внимания, и кричит, если заметит кого-либо. </li>\n<li>**Прыгни** хижина вращается вокруг своей оси или прыгает ввысь, а затем творит телепортацию 10 круга, перенося себя и всех существ внутри. </li>\n<li>**Спрячься** хижина притворяется обычным немагическим объектом своего типа. Это эффект иллюзии 10 круга. </li>\n</ul>\nУ вас может быть только одна хижина одновременно. Если вы оживляете новую хижину, ваша прежняя хижина немедленно возвращается к своей обычной немагической форме. Если вы умираете, хижина бесконечно продолжает следовать последнему приказу."
     },
     "origin": "ancestry",
     "origin_values": [
@@ -4557,8 +4557,8 @@
       "ru": "Магическое чутьё"
     },
     "description": {
-      "en": "<b>Source</b> Player Core , Player Core 2 <br><b>Archetype</b> Lich*<br>* This archetype offers Magic Sense at a different level than displayed here.\n\nYou have a literal sixth sense for ambient magic in your vicinity. You can sense the presence of magic auras as though you were always using a 1st-rank detect magic spell. This detects magic in your field of vision only. When you Seek, you gain the benefits of a 3rd-rank detect magic spell on things you see (in addition to the normal benefits of Seeking). You can turn this sense off and on with a free action at the start or the end of your turn.<h2 class=\"h2-header\">Archetype Use</h2>This feat can be used for one or more archetypes in addition to the listed classes. When selected this way, the feat does not have its class traits.",
-      "ru": "<b>Архетип</b> Lich.\n\nВы шестым чувством ощущаете присутствие магии поблизости. Вы способны определять присутствие магических аур, как если бы всегда использовали обнаружение магии 1 круга. Вы способны обнаруживать магию только в своём поле зрения. При Поиске вы получаете преимущества обнаружения магии 3 круга для всего, что видите (помимо обычных преимуществ Поиска). Вы можете активировать и подавлять магическое чутьё в качестве свободного действия в начале или в конце своего хода."
+      "en": "**Source** Player Core , Player Core 2 <br>**Archetype** Lich*<br>* This archetype offers Magic Sense at a different level than displayed here.\n\nYou have a literal sixth sense for ambient magic in your vicinity. You can sense the presence of magic auras as though you were always using a 1st-rank detect magic spell. This detects magic in your field of vision only. When you Seek, you gain the benefits of a 3rd-rank detect magic spell on things you see (in addition to the normal benefits of Seeking). You can turn this sense off and on with a free action at the start or the end of your turn.<h2 class=\"h2-header\">Archetype Use</h2>This feat can be used for one or more archetypes in addition to the listed classes. When selected this way, the feat does not have its class traits.",
+      "ru": "**Архетип** Lich.\n\nВы шестым чувством ощущаете присутствие магии поблизости. Вы способны определять присутствие магических аур, как если бы всегда использовали обнаружение магии 1 круга. Вы способны обнаруживать магию только в своём поле зрения. При Поиске вы получаете преимущества обнаружения магии 3 круга для всего, что видите (помимо обычных преимуществ Поиска). Вы можете активировать и подавлять магическое чутьё в качестве свободного действия в начале или в конце своего хода."
     },
     "origin": "ancestry",
     "origin_values": [
@@ -4656,8 +4656,8 @@
       "ru": "Блистающее заклинание"
     },
     "description": {
-      "en": "<b>Source</b> Player Core , Player Core 2 <br><b>Archetype</b> Wellspring Mage.\n\nYour spells become a radiant display of light and color. If your next action is to Cast a Spell that doesn't have the darkness trait, has no duration, and requires creatures to attempt a Reflex save, the spell explodes in a spray of scintillating lights, in addition to its other effects. Each creature that failed its Reflex save against the spell is dazzled for 1 round, and those who critically failed are instead blinded for 1 round.<h2 class=\"h2-header\">Archetype Use</h2>This feat can be used for one or more archetypes in addition to the listed classes. When selected this way, the feat does not have its class traits.",
-      "ru": "<b>Архетип</b> Wellspring Mage.\n\nВаши заклинания чаруют яркой игрой цвета и света. Если вашим следующим действием будет Сотворение заклинания без длительности и дескриптора «тьма», которое требует от существ пройти испытание Реакции, это заклинание, помимо прочих своих эффектов, взрывается блистающей вспышкой. Каждое существо, провалившее испытание Реакции против заклинания, получает растерянность на 1 раунд (либо слепоту на 1 раунд при критическом провале)."
+      "en": "**Source** Player Core , Player Core 2 <br>**Archetype** Wellspring Mage.\n\nYour spells become a radiant display of light and color. If your next action is to Cast a Spell that doesn't have the darkness trait, has no duration, and requires creatures to attempt a Reflex save, the spell explodes in a spray of scintillating lights, in addition to its other effects. Each creature that failed its Reflex save against the spell is dazzled for 1 round, and those who critically failed are instead blinded for 1 round.<h2 class=\"h2-header\">Archetype Use</h2>This feat can be used for one or more archetypes in addition to the listed classes. When selected this way, the feat does not have its class traits.",
+      "ru": "**Архетип** Wellspring Mage.\n\nВаши заклинания чаруют яркой игрой цвета и света. Если вашим следующим действием будет Сотворение заклинания без длительности и дескриптора «тьма», которое требует от существ пройти испытание Реакции, это заклинание, помимо прочих своих эффектов, взрывается блистающей вспышкой. Каждое существо, провалившее испытание Реакции против заклинания, получает растерянность на 1 раунд (либо слепоту на 1 раунд при критическом провале)."
     },
     "origin": "ancestry",
     "origin_values": [
@@ -4824,7 +4824,7 @@
       "ru": "Мастер заклинаний"
     },
     "description": {
-      "en": "<b>Source</b> Player Core , Pathfinder #150: Broken Promises.\n\nYou have mastered a handful of spells to such a degree that you can cast them even if you haven't prepared them in advance. Select any four spells of 9th rank or lower that are in your spellbook; each spell you select must be of a different rank. These spells are automatically prepared when you make your daily preparations, and you gain an extra spell slot for each spell. You can select a different combination of spells by spending 1 week of downtime studying your spellbook and retraining your mastered spells.",
+      "en": "**Source** Player Core , Pathfinder #150: Broken Promises.\n\nYou have mastered a handful of spells to such a degree that you can cast them even if you haven't prepared them in advance. Select any four spells of 9th rank or lower that are in your spellbook; each spell you select must be of a different rank. These spells are automatically prepared when you make your daily preparations, and you gain an extra spell slot for each spell. You can select a different combination of spells by spending 1 week of downtime studying your spellbook and retraining your mastered spells.",
       "ru": "Вы настолько отточили мастерство владения некоторыми заклинаниями, что можете творить их даже без подготовки. Выберите четыре любых заклинания 9 круга или ниже из своей книги заклинаний; все заклинания должны быть разных кругов. Выбранные заклинания автоматически подготавливаются во время вашей ежедневной подготовки и обладают собственными ячейками. Вы можете заменить этот набор заклинаний, потратив 1 неделю свободного времени на переподготовку и изучение книги заклинаний."
     },
     "origin": "ancestry",
@@ -4847,7 +4847,7 @@
       "ru": "Мастер метамагии"
     },
     "description": {
-      "en": "<b>Source</b> Player Core , Player Core 2 .\n\nYour mastery of magic ensures that you can alter your spells just as easily as you can cast them normally. You can use spellshape single actions as free actions.",
+      "en": "**Source** Player Core , Player Core 2 .\n\nYour mastery of magic ensures that you can alter your spells just as easily as you can cast them normally. You can use spellshape single actions as free actions.",
       "ru": "Изменение ваших заклинаний более не требует дополнительных затрат времени. Вы можете использовать одиночные действия с дескриптором «метамагия» как свободные действия."
     },
     "origin": "ancestry",
@@ -4871,8 +4871,8 @@
       "ru": "Экспертные заклинания барда"
     },
     "description": {
-      "en": "<b>Archetype</b> Bard<br><b>Class</b> Bard<br>**Prerequisites** Basic Bard Spellcasting; master in Occultism.\n\nYou gain the expert spellcasting benefits.",
-      "ru": "<b>Архетип</b> Бард<br>\n**Критерии** Простые заклинания барда; мастерский Оккультизм.\n\nВы получаете преимущества экспертных заклинаний."
+      "en": "**Archetype** Bard<br>**Class** Bard<br>**Prerequisites** Basic Bard Spellcasting; master in Occultism.\n\nYou gain the expert spellcasting benefits.",
+      "ru": "**Архетип** Бард<br>\n**Критерии** Простые заклинания барда; мастерский Оккультизм.\n\nВы получаете преимущества экспертных заклинаний."
     },
     "origin": "ancestry",
     "origin_values": [
@@ -4894,8 +4894,8 @@
       "ru": "Мастерские заклинания барда"
     },
     "description": {
-      "en": "<b>Archetype</b> Bard<br><b>Class</b> Bard<br>**Prerequisites** Expert Bard Spellcasting; legendary in Occultism.\n\nYou gain the master spellcasting benefits.",
-      "ru": "<b>Архетип</b> Бард<br>\n**Критерии** Экспертные заклинания барда; легендарный Оккультизм.\n\nВы получаете преимущества мастерских заклинаний."
+      "en": "**Archetype** Bard<br>**Class** Bard<br>**Prerequisites** Expert Bard Spellcasting; legendary in Occultism.\n\nYou gain the master spellcasting benefits.",
+      "ru": "**Архетип** Бард<br>\n**Критерии** Экспертные заклинания барда; легендарный Оккультизм.\n\nВы получаете преимущества мастерских заклинаний."
     },
     "origin": "ancestry",
     "origin_values": [
@@ -4917,8 +4917,8 @@
       "ru": "Экспертные заклинания жреца"
     },
     "description": {
-      "en": "<b>Archetype</b> Cleric<br><b>Class</b> Cleric<br>**Prerequisites** Basic Cleric Spellcasting; master in Religion.\n\nYou gain the expert spellcasting benefits.",
-      "ru": "<b>Архетип</b> Жрец<br>\n**Критерии** Простые заклинания жреца; мастерская Религия.\n\nВы получаете преимущества экспертных заклинаний."
+      "en": "**Archetype** Cleric<br>**Class** Cleric<br>**Prerequisites** Basic Cleric Spellcasting; master in Religion.\n\nYou gain the expert spellcasting benefits.",
+      "ru": "**Архетип** Жрец<br>\n**Критерии** Простые заклинания жреца; мастерская Религия.\n\nВы получаете преимущества экспертных заклинаний."
     },
     "origin": "ancestry",
     "origin_values": [
@@ -4940,8 +4940,8 @@
       "ru": "Мастерские заклинания жреца"
     },
     "description": {
-      "en": "<b>Archetype</b> Cleric<br><b>Class</b> Cleric<br>**Prerequisites** Expert Cleric Spellcasting; legendary in Religion.\n\nYou gain the master spellcasting benefits.",
-      "ru": "<b>Архетип</b> Жрец<br>\n**Критерии** Экспертные заклинания жреца; легендарная Религия.\n\nВы получаете преимущества мастерских заклинаний."
+      "en": "**Archetype** Cleric<br>**Class** Cleric<br>**Prerequisites** Expert Cleric Spellcasting; legendary in Religion.\n\nYou gain the master spellcasting benefits.",
+      "ru": "**Архетип** Жрец<br>\n**Критерии** Экспертные заклинания жреца; легендарная Религия.\n\nВы получаете преимущества мастерских заклинаний."
     },
     "origin": "ancestry",
     "origin_values": [
@@ -4963,8 +4963,8 @@
       "ru": "Экспертные заклинания друида"
     },
     "description": {
-      "en": "<b>Archetype</b> Druid<br><b>Class</b> Druid<br>**Prerequisites** Basic Druid Spellcasting; master in Nature.\n\nYou gain the expert spellcasting benefits.",
-      "ru": "<b>Архетип</b> Друид<br>\n**Критерии** Простые заклинания друида; мастерская Природа.\n\nВы получаете преимущества экспертных заклинаний."
+      "en": "**Archetype** Druid<br>**Class** Druid<br>**Prerequisites** Basic Druid Spellcasting; master in Nature.\n\nYou gain the expert spellcasting benefits.",
+      "ru": "**Архетип** Друид<br>\n**Критерии** Простые заклинания друида; мастерская Природа.\n\nВы получаете преимущества экспертных заклинаний."
     },
     "origin": "ancestry",
     "origin_values": [
@@ -4986,8 +4986,8 @@
       "ru": "Мастерские заклинания друида"
     },
     "description": {
-      "en": "<b>Archetype</b> Druid<br><b>Class</b> Druid<br>**Prerequisites** Expert Druid Spellcasting; legendary in Nature.\n\nYou gain the master spellcasting benefits.",
-      "ru": "<b>Архетип</b> Друид<br>\n**Критерии** Экспертные заклинания друида; легендарная Природа.\n\nВы получаете преимущества мастерских заклинаний."
+      "en": "**Archetype** Druid<br>**Class** Druid<br>**Prerequisites** Expert Druid Spellcasting; legendary in Nature.\n\nYou gain the master spellcasting benefits.",
+      "ru": "**Архетип** Друид<br>\n**Критерии** Экспертные заклинания друида; легендарная Природа.\n\nВы получаете преимущества мастерских заклинаний."
     },
     "origin": "ancestry",
     "origin_values": [
@@ -5009,8 +5009,8 @@
       "ru": "Разносторонний эксперт оружия"
     },
     "description": {
-      "en": "<b>Archetype</b> Fighter<br><b>Class</b> Fighter<br>**Prerequisites** Fighter Dedication; expert in any kind of weapon or unarmed attack.\n\nYour proficiency ranks for simple weapons and martial weapons increase to expert, and your proficiency rank for advanced weapons increases to trained.",
-      "ru": "<b>Архетип</b> Воин<br>\n**Критерии** Посвящение в воины; эксперт в любом оружии или безоружной атаке.\n\nВаш уровень умения для простого оружия и особого оружия повышается до экспертного. Экзотическое оружие становится для вас изученным."
+      "en": "**Archetype** Fighter<br>**Class** Fighter<br>**Prerequisites** Fighter Dedication; expert in any kind of weapon or unarmed attack.\n\nYour proficiency ranks for simple weapons and martial weapons increase to expert, and your proficiency rank for advanced weapons increases to trained.",
+      "ru": "**Архетип** Воин<br>\n**Критерии** Посвящение в воины; эксперт в любом оружии или безоружной атаке.\n\nВаш уровень умения для простого оружия и особого оружия повышается до экспертного. Экзотическое оружие становится для вас изученным."
     },
     "origin": "ancestry",
     "origin_values": [
@@ -5032,8 +5032,8 @@
       "ru": "Мастер зоркости"
     },
     "description": {
-      "en": "<b>Archetype</b> Ranger<br><b>Class</b> Ranger<br>**Prerequisites** Ranger Dedication; expert in Perception.\n\nYour proficiency rank in Perception increases to master.",
-      "ru": "<b>Архетип</b> Следопыт<br>\n**Критерии** Посвящение в следопыты; экспертное Внимание.\n\nВаш уровень умения во Внимании повышается до мастерского."
+      "en": "**Archetype** Ranger<br>**Class** Ranger<br>**Prerequisites** Ranger Dedication; expert in Perception.\n\nYour proficiency rank in Perception increases to master.",
+      "ru": "**Архетип** Следопыт<br>\n**Критерии** Посвящение в следопыты; экспертное Внимание.\n\nВаш уровень умения во Внимании повышается до мастерского."
     },
     "origin": "ancestry",
     "origin_values": [
@@ -5055,8 +5055,8 @@
       "ru": "Увёртливость (плут)"
     },
     "description": {
-      "en": "<b>Archetype</b> Rogue<br><b>Class</b> Rogue<br>**Prerequisites** Rogue Dedication; expert in Reflex saves.\n\nYour proficiency rank for Reflex saves increases to master.",
-      "ru": "<b>Архетип</b> Плут<br>\n**Критерии** Посвящение в плуты; эксперт в испытаниях Реакции.\n\nВаш уровень умения в испытаниях Реакции повышается до мастерского."
+      "en": "**Archetype** Rogue<br>**Class** Rogue<br>**Prerequisites** Rogue Dedication; expert in Reflex saves.\n\nYour proficiency rank for Reflex saves increases to master.",
+      "ru": "**Архетип** Плут<br>\n**Критерии** Посвящение в плуты; эксперт в испытаниях Реакции.\n\nВаш уровень умения в испытаниях Реакции повышается до мастерского."
     },
     "origin": "ancestry",
     "origin_values": [
@@ -5078,8 +5078,8 @@
       "ru": "Экспертные заклинания ведьмы"
     },
     "description": {
-      "en": "<b>Archetype</b> Witch<br><b>Class</b> Witch<br>**Prerequisites** Basic Witch Spellcasting; master in the skill associated with your patron's tradition.\n\nYou gain the expert spellcasting benefits.",
-      "ru": "<b>Архетип</b> Ведьма<br>\n**Критерии** Простые заклинания ведьмы; мастерский навык покровителя.\n\nВы получаете преимущества экспертных заклинаний."
+      "en": "**Archetype** Witch<br>**Class** Witch<br>**Prerequisites** Basic Witch Spellcasting; master in the skill associated with your patron's tradition.\n\nYou gain the expert spellcasting benefits.",
+      "ru": "**Архетип** Ведьма<br>\n**Критерии** Простые заклинания ведьмы; мастерский навык покровителя.\n\nВы получаете преимущества экспертных заклинаний."
     },
     "origin": "ancestry",
     "origin_values": [
@@ -5101,8 +5101,8 @@
       "ru": "Мастерские заклинания ведьмы"
     },
     "description": {
-      "en": "<b>Archetype</b> Witch<br><b>Class</b> Witch<br>**Prerequisites** Expert Witch Spellcasting; legendary in the skill associated with your patron's tradition.\n\nYou gain the master spellcasting benefits.",
-      "ru": "<b>Архетип</b> Ведьма<br>\n**Критерии** Экспертные заклинания ведьмы; легендарный навык покровителя.\n\nВы получаете преимущества мастерских заклинаний."
+      "en": "**Archetype** Witch<br>**Class** Witch<br>**Prerequisites** Expert Witch Spellcasting; legendary in the skill associated with your patron's tradition.\n\nYou gain the master spellcasting benefits.",
+      "ru": "**Архетип** Ведьма<br>\n**Критерии** Экспертные заклинания ведьмы; легендарный навык покровителя.\n\nВы получаете преимущества мастерских заклинаний."
     },
     "origin": "ancestry",
     "origin_values": [
@@ -5124,8 +5124,8 @@
       "ru": "Экспертные заклинания волшебника"
     },
     "description": {
-      "en": "<b>Archetypes</b> Wizard, Spellshot<br><b>Class</b> Wizard<br>**Prerequisites** Basic Wizard Spellcasting; master in Arcana.\n\nYou gain the expert spellcasting benefits.",
-      "ru": "<b>Архетипы</b> Стрелок-заклинатель, Волшебник<br>\n**Критерии** Простые заклинания волшебника; мастерский Мистицизм.\n\nВы получаете преимущества экспертных заклинаний."
+      "en": "**Archetypes** Wizard, Spellshot<br>**Class** Wizard<br>**Prerequisites** Basic Wizard Spellcasting; master in Arcana.\n\nYou gain the expert spellcasting benefits.",
+      "ru": "**Архетипы** Стрелок-заклинатель, Волшебник<br>\n**Критерии** Простые заклинания волшебника; мастерский Мистицизм.\n\nВы получаете преимущества экспертных заклинаний."
     },
     "origin": "ancestry",
     "origin_values": [
@@ -5147,8 +5147,8 @@
       "ru": "Мастерские заклинания волшебника"
     },
     "description": {
-      "en": "<b>Archetype</b> Wizard<br><b>Class</b> Wizard<br>**Prerequisites** Expert Wizard Spellcasting; legendary in Arcana.\n\nYou gain the master spellcasting benefits.",
-      "ru": "<b>Архетип</b> Волшебник<br>\n**Критерии** Экспертные заклинания волшебника; легендарный Мистицизм.\n\nВы получаете преимущества мастерских заклинаний."
+      "en": "**Archetype** Wizard<br>**Class** Wizard<br>**Prerequisites** Expert Wizard Spellcasting; legendary in Arcana.\n\nYou gain the master spellcasting benefits.",
+      "ru": "**Архетип** Волшебник<br>\n**Критерии** Экспертные заклинания волшебника; легендарный Мистицизм.\n\nВы получаете преимущества мастерских заклинаний."
     },
     "origin": "ancestry",
     "origin_values": [
@@ -5481,8 +5481,8 @@
       "ru": "Смертельный испуг"
     },
     "description": {
-      "en": "**Prerequisites** legendary in Intimidation.\n\nYou can frighten foes so much, they might die. Attempt an Intimidation check against the Will DC of a living creature within 30 feet of you that you sense or observe and who can sense or observe you. If the target can't hear you or doesn't understand the language you are speaking, you take a –4 circumstance penalty. The creature is temporarily immune for 1 minute.\n\n<b>Critical Success</b> The target must attempt a Fortitude save against your Intimidation DC. On a critical failure, it dies. On any other result, it becomes frightened 2 and is fleeing for 1 round. The critical failure effect has the death trait.\n\n<b>Success</b> The target becomes frightened 2.\n\n<b>Failure</b> The target becomes frightened 1.\n\n<b>Critical Failure</b> The target is unaffected.",
-      "ru": "**Критерии** легендарное Запугивание.\n\nВы можете настолько сильно испугать противника, что он умрёт. Совершите проверку Запугивания против СЛ Воли живого существа в пределах 30 футов от вас, которое вы можете видеть или воспринимать и которое может видеть или воспринимать вас. Если цель вас не слышит или не понимает язык, на котором вы говорите, вы получаете ситуативный штраф -4. После применения этой способности цель временно невосприимчива к ней на 1 минуту.\n<br>\n\n<b>Критический успех</b> цель проходит испытание Стойкости против вашей СЛ Запугивания и при критическом провале умирает (эффект с дескриптором «смерть»). При ином результате цель получает испуг 2 и в панике на 1 раунд.\n<br>\n\n<b>Успех</b> цель получает испуг 2.\n<br>\n\n<b>Провал</b> цель получает испуг 1.\n<br>\n\n<b>Критический провал</b> без эффекта."
+      "en": "**Prerequisites** legendary in Intimidation.\n\nYou can frighten foes so much, they might die. Attempt an Intimidation check against the Will DC of a living creature within 30 feet of you that you sense or observe and who can sense or observe you. If the target can't hear you or doesn't understand the language you are speaking, you take a –4 circumstance penalty. The creature is temporarily immune for 1 minute.\n\n**Critical Success** The target must attempt a Fortitude save against your Intimidation DC. On a critical failure, it dies. On any other result, it becomes frightened 2 and is fleeing for 1 round. The critical failure effect has the death trait.\n\n**Success** The target becomes frightened 2.\n\n**Failure** The target becomes frightened 1.\n\n**Critical Failure** The target is unaffected.",
+      "ru": "**Критерии** легендарное Запугивание.\n\nВы можете настолько сильно испугать противника, что он умрёт. Совершите проверку Запугивания против СЛ Воли живого существа в пределах 30 футов от вас, которое вы можете видеть или воспринимать и которое может видеть или воспринимать вас. Если цель вас не слышит или не понимает язык, на котором вы говорите, вы получаете ситуативный штраф -4. После применения этой способности цель временно невосприимчива к ней на 1 минуту.\n\n**Критический успех** цель проходит испытание Стойкости против вашей СЛ Запугивания и при критическом провале умирает (эффект с дескриптором «смерть»). При ином результате цель получает испуг 2 и в панике на 1 раунд.\n\n**Успех** цель получает испуг 2.\n\n**Провал** цель получает испуг 1.\n\n**Критический провал** без эффекта."
     },
     "origin": "ancestry",
     "origin_values": [
@@ -5532,7 +5532,7 @@
       "ru": "Вихрь ударов"
     },
     "description": {
-      "en": "<b>Source</b> Player Core , Player Core 2 <br><b>Archetype</b> Wylderheart*<br>* This archetype offers Whirlwind Strike at a different level than displayed here.\n\nYou lash out in a blur of motion, attacking all nearby adversaries. Make a melee Strike against each enemy within your melee reach. Each attack counts toward your multiple attack penalty, but you do not increase your penalty until you have made all your attacks.<h2 class=\"h2-header\">Archetype Use</h2>This feat can be used for one or more archetypes in addition to the listed classes. When selected this way, the feat does not have its class traits.",
+      "en": "**Source** Player Core , Player Core 2 <br>**Archetype** Wylderheart*<br>* This archetype offers Whirlwind Strike at a different level than displayed here.\n\nYou lash out in a blur of motion, attacking all nearby adversaries. Make a melee Strike against each enemy within your melee reach. Each attack counts toward your multiple attack penalty, but you do not increase your penalty until you have made all your attacks.<h2 class=\"h2-header\">Archetype Use</h2>This feat can be used for one or more archetypes in addition to the listed classes. When selected this way, the feat does not have its class traits.",
       "ru": "Вы атакуете всех стоящих рядом противников в размытом вихре. Совершите Удар в ближнем бою по каждому противнику в вашей зоне досягаемости в ближнем бою. Каждая атака учитывается при определении штрафа за последовательные атаки, но его значение не увеличивается, пока вы не совершите все атаки."
     },
     "origin": "ancestry",

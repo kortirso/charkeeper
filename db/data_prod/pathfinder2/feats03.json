@@ -14,11 +14,7 @@
     "origin_values": [
       "general"
     ],
-    "conditions": { "level": 3 },
-    "description_eval_variables": {
-      "limit": "1"
-    },
-    "limit_refresh": "long_rest"
+    "conditions": { "level": 3 }
   },
   {
     "slug": "prescient_planner",
@@ -28,18 +24,12 @@
       "ru": "Прозорливое планирование"
     },
     "description": {
-      "en": "<b>Cost</b> the Price of the chosen item<br><b>Requirements</b> You haven't used this ability since the last time you were able to purchase goods.\n\nYou regularly create convoluted plans and contingencies, using your resources to enact them. You take 1 minute to remove your backpack, then carefully remove an item you hadn't previously declared that you purchased—you intuited that you would come to need the item and purchased it at the latest opportunity. The item must be a piece of adventuring gear (from the table on page 291 or other sources of adventuring gear), and can't be a weapon, armor, alchemical item, magic item, or other treasure. It must be common with a level no higher than half your level, and its Bulk must be low enough that carrying it wouldn't have made you encumbered.",
-      "ru": "<b>Стоимость</b> цена выбранного предмета<br>\n<b>Требования</b> вы не пользовались этой способностью с последней возможности совершить покупки.\n\nВы регулярно составляете многоступенчатые планы и постоянно перестраховываетесь, используя для этого собственные средства. Вы можете потратить 1 минуту, чтобы снять рюкзак и осторожно извлечь из него предмет, который до этого явно не приобретали, — вы почувствовали, что он вам пригодится, и купили его в самый последний момент. Это должен быть предмет снаряжения искателей приключений, не являющийся оружием, бронёй, алхимическим или магическим предметом либо любым другим сокровищем. Это должен быть предмет обычной редкости с уровнем не выше половины вашего, с таким весом, при переноске которого вы не стали бы нагруженным."
+      "en": "**Cost** the Price of the chosen item.\n\n**Requirements** You haven't used this ability since the last time you were able to purchase goods.\n\nYou regularly create convoluted plans and contingencies, using your resources to enact them. You take 1 minute to remove your backpack, then carefully remove an item you hadn't previously declared that you purchased—you intuited that you would come to need the item and purchased it at the latest opportunity. The item must be a piece of adventuring gear, and can't be a weapon, armor, alchemical item, magic item, or other treasure. It must be common with a level no higher than half your level, and its Bulk must be low enough that carrying it wouldn't have made you encumbered.",
+      "ru": "**Стоимость** цена выбранного предмета.\n\n**Требования** вы не пользовались этой способностью с последней возможности совершить покупки.\n\nВы регулярно составляете многоступенчатые планы и постоянно перестраховываетесь, используя для этого собственные средства. Вы можете потратить 1 минуту, чтобы снять рюкзак и осторожно извлечь из него предмет, который до этого явно не приобретали, — вы почувствовали, что он вам пригодится, и купили его в самый последний момент. Это должен быть предмет снаряжения искателей приключений, не являющийся оружием, бронёй, алхимическим или магическим предметом либо любым другим сокровищем. Это должен быть предмет обычной редкости с уровнем не выше половины вашего, с таким весом, при переноске которого вы не стали бы нагруженным."
     },
-    "origin": "ancestry",
-    "origin_values": [
-      "general"
-    ],
-    "conditions": { "level": 3 },
-    "description_eval_variables": {
-      "limit": "1"
-    },
-    "limit_refresh": "long_rest"
+    "origin": "general",
+    "origin_values": ["general"],
+    "conditions": { "level": 3 }
   },
   {
     "slug": "untrained_improvisation",
@@ -49,17 +39,11 @@
       "ru": "Импровизация без изучения"
     },
     "description": {
-      "en": "You've learned how to handle situations when you're out of your depth. Your proficiency bonus to untrained skill checks is equal to your level –2. This improves to your level –1 at 5th level and your full level at 7th level. This doesn't allow you to use the skill's trained actions.",
+      "en": "You've learned how to handle situations when you're out of your depth. Your proficiency bonus to untrained skill checks is equal to your level – 2. This improves to your level – 1 at 5th level and your full level at 7th level. This doesn't allow you to use the skill's trained actions.",
       "ru": "Вы многое знаете и умеете делать даже то, в чём не особо разбираетесь. Ваш бонус умения при проверках неизученных навыков равен вашему уровню - 2. По достижении вами 5 уровня бонус увеличивается до значения вашего уровня - 1, а по достижении вами 7 уровня — до полного значения вашего уровня. Обратите внимание, что при этом вы по-прежнему не можете совершать действия, требующие изучения навыка."
     },
-    "origin": "ancestry",
-    "origin_values": [
-      "general"
-    ],
-    "conditions": { "level": 3 },
-    "description_eval_variables": {
-      "limit": "1"
-    },
-    "limit_refresh": "long_rest"
+    "origin": "general",
+    "origin_values": ["general"],
+    "conditions": { "level": 3 }
   }
 ]

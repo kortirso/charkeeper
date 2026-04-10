@@ -349,16 +349,32 @@ class Pathfinder2Decorator < ApplicationDecoratorV2
 
   def skill_payload(slug, ability)
     proficiency_level = selected_skills[slug].to_i
+    prof_bonus = proficiency_bonus(proficiency_level)
+    prof_bonus = untrained_improvisation_bonus if prof_bonus.zero?
     {
       slug: slug,
       ability: ability,
       level: proficiency_level,
-      total_modifier: modified_abilities[ability] + proficiency_bonus(proficiency_level) + armor_penalty(slug, ability),
       modifier: modified_abilities[ability],
-      prof: proficiency_bonus(proficiency_level),
+      prof: prof_bonus,
       item: 0,
-      armor: armor_penalty(slug, ability)
+      armor: armor_penalty(slug, ability),
+      total_modifier: modified_abilities[ability] + prof_bonus + armor_penalty(slug, ability)
     }.compact
+  end
+
+  def untrained_improvisation_bonus
+    return @untrained_improvisation_bonus if defined?(@untrained_improvisation_bonus)
+
+    @untrained_improvisation_bonus =
+      if available_features_slugs.exclude?('untrained_improvisation')
+        0
+      elsif level >= 7
+        level
+      else
+        level >= 5 ? (level - 1) : (level - 2)
+      end
+    @untrained_improvisation_bonus
   end
 
   def calc_speed
@@ -570,8 +586,7 @@ class Pathfinder2Decorator < ApplicationDecoratorV2
   end
 
   def available_features_values
-    @available_features_values ||=
-      @available_features.pluck(:slug, :value).to_h.compact_blank
+    @available_features_values ||= @available_features.pluck(:slug, :value).to_h.compact_blank
   end
 
   def weapons

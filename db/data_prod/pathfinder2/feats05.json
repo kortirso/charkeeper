@@ -121,8 +121,8 @@
       "ru": "Энергия истока"
     },
     "description": {
-      "en": "<b>Frequency</b> once per day<br>**Prerequisites** focus pool, at least one innate spell from a gnome heritage or ancestry feat that shares a tradition with at least one of your focus spells.\n\nYou can focus your mind more quickly thanks to the magic that flows within you. You regain 1 Focus Point, up to your usual maximum.",
-      "ru": "<b>Частота</b> 1 в день<br>\n**Критерии** запас ФП; минимум одно полученное благодаря черте народа или родословной гномов врождённое заклинание; традиция этого заклинания должна совпадать с традицией хотя бы одного вашего фокального заклинания.\n\nПереполняющая вас магия подпитывает вашу связь с источником силы. Вы восстанавливаете 1 ФП (вплоть до обычного максимума)."
+      "en": "**Frequency** once per day<br>**Prerequisites** focus pool, at least one innate spell from a gnome heritage or ancestry feat that shares a tradition with at least one of your focus spells.\n\nYou can focus your mind more quickly thanks to the magic that flows within you. You regain 1 Focus Point, up to your usual maximum.",
+      "ru": "**Частота** 1 в день<br>\n**Критерии** запас ФП; минимум одно полученное благодаря черте народа или родословной гномов врождённое заклинание; традиция этого заклинания должна совпадать с традицией хотя бы одного вашего фокального заклинания.\n\nПереполняющая вас магия подпитывает вашу связь с источником силы. Вы восстанавливаете 1 ФП (вплоть до обычного максимума)."
     },
     "origin": "ancestry",
     "origin_values": ["gnome"],

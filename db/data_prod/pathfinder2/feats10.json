@@ -96,8 +96,8 @@
       "ru": "Быстрое заклинание"
     },
     "description": {
-      "en": "<b>Source</b> Player Core , Player Core 2 <br><b>Archetype</b> Time Mage*<br><b>Frequency</b> once per day<br>* This archetype offers Quickened Casting at a different level than displayed here.\n\nIf your next action is to cast a cantrip or a spell that is at least 2 ranks lower than the highest-rank spell slot you have, reduce the number of actions to cast it by 1 (minimum 1 action).\n\n<b>Special</b> This can only be used on a cantrip or spell from the class matching the one you gained this feat from.<h2 class=\"h2-header\">Archetype Use</h2>This feat can be used for one or more archetypes in addition to the listed classes. When selected this way, the feat does not have its class traits.",
-      "ru": "<b>Архетип</b> Time Mage<br>\n<b>Частота</b> 1 в день.\n\nЕсли вашим следующим действием будет сотворение фокуса или заклинания, круг которого как минимум на 2 ниже наивысшего доступного вам круга ячейки заклинания, вы уменьшаете количество требуемых для его сотворения действий на 1 (вплоть до минимума в 1 действие).\n<br>\n\n<b>Примечание</b> это может может быть использовано только для фокуса или заклинания того класса, для которого вы взяли эту черту."
+      "en": "**Source** Player Core , Player Core 2 <br>**Archetype** Time Mage*<br>**Frequency** once per day<br>* This archetype offers Quickened Casting at a different level than displayed here.\n\nIf your next action is to cast a cantrip or a spell that is at least 2 ranks lower than the highest-rank spell slot you have, reduce the number of actions to cast it by 1 (minimum 1 action).\n\n**Special** This can only be used on a cantrip or spell from the class matching the one you gained this feat from.<h2 class=\"h2-header\">Archetype Use</h2>This feat can be used for one or more archetypes in addition to the listed classes. When selected this way, the feat does not have its class traits.",
+      "ru": "**Архетип** Time Mage<br>\n**Частота** 1 в день.\n\nЕсли вашим следующим действием будет сотворение фокуса или заклинания, круг которого как минимум на 2 ниже наивысшего доступного вам круга ячейки заклинания, вы уменьшаете количество требуемых для его сотворения действий на 1 (вплоть до минимума в 1 действие).\n\n**Примечание** это может может быть использовано только для фокуса или заклинания того класса, для которого вы взяли эту черту."
     },
     "origin": "ancestry",
     "origin_values": [
@@ -318,7 +318,7 @@
       "ru": "Проникающая энергия"
     },
     "description": {
-      "en": "<b>Source</b> Player Core , Player Core 2 .\n\nWith a complex gesture, you call upon the primal power of your spell to overcome enemies' resistances. If the next action you use is to Cast a Spell, the spell ignores an amount of the target's resistance to acid, cold, electricity, fire, or sonic damage equal to your level. This applies to all damage the spell deals, including persistent damage and damage caused by an ongoing effect of the spell, such as the wall created by wall of fire. A creature's immunities are unaffected.",
+      "en": "**Source** Player Core , Player Core 2 .\n\nWith a complex gesture, you call upon the primal power of your spell to overcome enemies' resistances. If the next action you use is to Cast a Spell, the spell ignores an amount of the target's resistance to acid, cold, electricity, fire, or sonic damage equal to your level. This applies to all damage the spell deals, including persistent damage and damage caused by an ongoing effect of the spell, such as the wall created by wall of fire. A creature's immunities are unaffected.",
       "ru": "При помощи сложных жестов вы перенастраиваете первобытную энергию вашего заклинания так, что оно преодолевает устойчивость цели. Если вашим следующим действием будет Сотворение заклинания, это заклинание будет частично игнорировать устойчивость цели к звуку, кислоте, огню, холоду или электричеству. Величина игнорируемой устойчивости равна вашему уровню. Черта применяется ко всему наносимому заклинанием урону, в том числе продолжительному, а также урону, наносимому длящимися эффектами заклинания, например огненной стеной. На невосприимчивости существа черта не влияет."
     },
     "origin": "ancestry",
@@ -364,8 +364,8 @@
       "ru": "Первобытный вой"
     },
     "description": {
-      "en": "**Prerequisites** Incredible Companion (Druid).\n\nYour companion can let out a howl laced with your primal magic. It gains the following advanced maneuver, in addition to any advanced maneuvers it already knows. <br><b>Primal Howl</b> [two-actions]  (primal, sonic) <b>Frequency</b> once per hour; <b>Effect</b> Your animal companion screeches and howls, empowered with natural magic. All creatures in a 30-foot cone take 1d6 sonic damage for every 2 levels your companion has, with a basic Fortitude save against your spell DC. Creatures that fail become frightened 1, and creatures that critically fail become frightened 2. The fright is an emotion, fear, and mental effect.",
-      "ru": "**Критерии** Невероятный зверь<hr>\nВаш верный зверь может издать вой, пропитанный вашей первобытной магией. Он получает следующий особый манёвр вдобавок к любым особым манёврам, которые ему уже известны.\n\n<b>Первобытный вой</b> [two-actions] (первобытный, звук). <b>Частота</b> 1 в час. <b>Эффект</b> ваш зверь воет, усиленный магией природы. Все существа в 30-футовом конусе получают 1d6 урона звуком за каждые 2 уровня вашего зверя (обычное испытание Стойкости против вашей СЛ заклинаний). При провале существа получают испуг 1, а при критическом провале — испуг 2 (это дополнительный эффект с дескрипторами эмоции, ужас, и ментальный)."
+      "en": "**Prerequisites** Incredible Companion (Druid).\n\nYour companion can let out a howl laced with your primal magic. It gains the following advanced maneuver, in addition to any advanced maneuvers it already knows. <br>**Primal Howl** [two-actions]  (primal, sonic) **Frequency** once per hour; **Effect** Your animal companion screeches and howls, empowered with natural magic. All creatures in a 30-foot cone take 1d6 sonic damage for every 2 levels your companion has, with a basic Fortitude save against your spell DC. Creatures that fail become frightened 1, and creatures that critically fail become frightened 2. The fright is an emotion, fear, and mental effect.",
+      "ru": "**Критерии** Невероятный зверь<hr>\nВаш верный зверь может издать вой, пропитанный вашей первобытной магией. Он получает следующий особый манёвр вдобавок к любым особым манёврам, которые ему уже известны.\n\n**Первобытный вой** [two-actions] (первобытный, звук). **Частота** 1 в час. **Эффект** ваш зверь воет, усиленный магией природы. Все существа в 30-футовом конусе получают 1d6 урона звуком за каждые 2 уровня вашего зверя (обычное испытание Стойкости против вашей СЛ заклинаний). При провале существа получают испуг 1, а при критическом провале — испуг 2 (это дополнительный эффект с дескрипторами эмоции, ужас, и ментальный)."
     },
     "origin": "ancestry",
     "origin_values": [
@@ -406,8 +406,8 @@
       "ru": "Бок о бок (друид)"
     },
     "description": {
-      "en": "<b>Archetypes</b> Beastmaster*<br>**Prerequisites** Animal Companion<br>* This archetype offers Side by Side (Druid) at a different level than displayed here.\n\nYou and your animal companion fight in tandem, distracting your foes and keeping them off balance. Whenever you and your animal companion are adjacent to the same foe, you are both flanking that foe with each other, regardless of your actual positions.<h2 class=\"h2-header\">Archetype Use</h2>This feat can be used for one or more Archetypes in addition to the listed Classes. When selected this way, the feat is not considered to have its class traits.",
-      "ru": "<b>Архетип</b> Повелитель зверей<br>\n**Критерии** Верный зверь.\n\nВ сражении вы координируете действия с верным зверем, попеременно отвлекая врагов и не давая им передышки. Когда вы и ваш верный зверь находитесь рядом с одним противником, вы оба берёте его в тиски вне зависимости от местоположения относительно него."
+      "en": "**Archetypes** Beastmaster*<br>**Prerequisites** Animal Companion<br>* This archetype offers Side by Side (Druid) at a different level than displayed here.\n\nYou and your animal companion fight in tandem, distracting your foes and keeping them off balance. Whenever you and your animal companion are adjacent to the same foe, you are both flanking that foe with each other, regardless of your actual positions.<h2 class=\"h2-header\">Archetype Use</h2>This feat can be used for one or more Archetypes in addition to the listed Classes. When selected this way, the feat is not considered to have its class traits.",
+      "ru": "**Архетип** Повелитель зверей<br>\n**Критерии** Верный зверь.\n\nВ сражении вы координируете действия с верным зверем, попеременно отвлекая врагов и не давая им передышки. Когда вы и ваш верный зверь находитесь рядом с одним противником, вы оба берёте его в тиски вне зависимости от местоположения относительно него."
     },
     "origin": "ancestry",
     "origin_values": [
@@ -471,8 +471,8 @@
       "ru": "Надёжный удар"
     },
     "description": {
-      "en": "<hr>Even when you don't hit squarely, you can still score a glancing blow. Make a melee Strike. It gains the following failure effect.\n\n<b>Failure</b> Your attack deals any damage it would have dealt on a hit, excluding all damage dice. (This removes damage dice from weapon runes, spells, and special abilities, in addition to weapon damage dice.)",
-      "ru": "Даже если ваш удар пришёлся не туда, куда вы метили, вам всё равно удаётся зацепить цель. Совершите Удар в ближнем бою. Он получает следующий эффект провала.\n<br>\n\n<b>Провал</b> ваша атака наносит цели урон, который она нанесла бы при попадании, но без учёта всех костей урона (вы не учитываете не только кости урона оружия, но и дополнительные кости урона от рун, заклинаний и особых способностей)."
+      "en": "<hr>Even when you don't hit squarely, you can still score a glancing blow. Make a melee Strike. It gains the following failure effect.\n\n**Failure** Your attack deals any damage it would have dealt on a hit, excluding all damage dice. (This removes damage dice from weapon runes, spells, and special abilities, in addition to weapon damage dice.)",
+      "ru": "Даже если ваш удар пришёлся не туда, куда вы метили, вам всё равно удаётся зацепить цель. Совершите Удар в ближнем бою. Он получает следующий эффект провала.\n\n**Провал** ваша атака наносит цели урон, который она нанесла бы при попадании, но без учёта всех костей урона (вы не учитываете не только кости урона оружия, но и дополнительные кости урона от рун, заклинаний и особых способностей)."
     },
     "origin": "ancestry",
     "origin_values": [
@@ -493,8 +493,8 @@
       "ru": "Улучшенный нокдаун"
     },
     "description": {
-      "en": "<b>Archetypes</b> Mauler*, Rivethun Invoker*, Thlipit Contestant*<br>**Prerequisites** Slam Down<br>* This archetype offers Crashing Slam at a different level than displayed here.\n\nYou can dash your foe to the ground with a single blow. When you use Slam Down, instead of making a Strike followed by a Trip, you can attempt a single Strike. If you do and your Strike hits, instead of rolling a check for your Trip attempt, you automatically apply the critical success effect of a Trip. If you used a two-handed melee weapon for the Strike, you can use the weapon's damage die size instead of the regular die size for the damage from a critical Trip.<h2 class=\"h2-header\">Archetype Use</h2>This feat can be used for one or more Archetypes in addition to the listed Classes. When selected this way, the feat is not considered to have its class traits.",
-      "ru": "<b>Архетипы</b> Громила, Игрок в тлипит<br>\n**Критерии** Нокдаун.\n\nВы способны уложить противника одним ударом. При использовании Нокдауна вы можете попытаться совершить только один Удар (а не Удар и затем Сбивание с ног, как обычно). Если этот Удар попадает, вместо проверки для Сбивания с ног вы автоматически применяете эффект критического успеха Сбивания с ног. Если для этого Удара вы использовали двуручное оружие ближнего боя, то для расчёта урона критического Сбивания с ног вы можете использовать не обычную величину кости урона, а величину кости урона этого оружия."
+      "en": "**Archetypes** Mauler*, Rivethun Invoker*, Thlipit Contestant*<br>**Prerequisites** Slam Down<br>* This archetype offers Crashing Slam at a different level than displayed here.\n\nYou can dash your foe to the ground with a single blow. When you use Slam Down, instead of making a Strike followed by a Trip, you can attempt a single Strike. If you do and your Strike hits, instead of rolling a check for your Trip attempt, you automatically apply the critical success effect of a Trip. If you used a two-handed melee weapon for the Strike, you can use the weapon's damage die size instead of the regular die size for the damage from a critical Trip.<h2 class=\"h2-header\">Archetype Use</h2>This feat can be used for one or more Archetypes in addition to the listed Classes. When selected this way, the feat is not considered to have its class traits.",
+      "ru": "**Архетипы** Громила, Игрок в тлипит<br>\n**Критерии** Нокдаун.\n\nВы способны уложить противника одним ударом. При использовании Нокдауна вы можете попытаться совершить только один Удар (а не Удар и затем Сбивание с ног, как обычно). Если этот Удар попадает, вместо проверки для Сбивания с ног вы автоматически применяете эффект критического успеха Сбивания с ног. Если для этого Удара вы использовали двуручное оружие ближнего боя, то для расчёта урона критического Сбивания с ног вы можете использовать не обычную величину кости урона, а величину кости урона этого оружия."
     },
     "origin": "ancestry",
     "origin_values": [
@@ -514,8 +514,8 @@
       "ru": "Сбивание в воздухе"
     },
     "description": {
-      "en": "**Trigger** You are the target of a physical ranged Strike<br><b>Requirements</b> You're aware of the attack, not off-guard against it, and either have a hand free or are wielding a melee weapon.\n\nYou can knock aside ranged attacks. You gain a +4 circumstance bonus to AC against the triggering attack. If the attack misses, you knocked or cut it out of the air.",
-      "ru": "**Условие** вы стали целью физического дистанционного Удара<br>\n<b>Требования</b> вы осведомлены об атаке, не считаетесь для неё застигнутым врасплох, у вас есть свободная рука или вы используете оружие ближнего боя.\n\nВы умеете отбивать дистанционные атаки. Вы получаете ситуативный бонус +4 к КБ против спровоцировавшей атаки. Если она промахивается, вы сбили снаряд в воздухе или разрубили его."
+      "en": "**Trigger** You are the target of a physical ranged Strike<br>**Requirements** You're aware of the attack, not off-guard against it, and either have a hand free or are wielding a melee weapon.\n\nYou can knock aside ranged attacks. You gain a +4 circumstance bonus to AC against the triggering attack. If the attack misses, you knocked or cut it out of the air.",
+      "ru": "**Условие** вы стали целью физического дистанционного Удара<br>\n**Требования** вы осведомлены об атаке, не считаетесь для неё застигнутым врасплох, у вас есть свободная рука или вы используете оружие ближнего боя.\n\nВы умеете отбивать дистанционные атаки. Вы получаете ситуативный бонус +4 к КБ против спровоцировавшей атаки. Если она промахивается, вы сбили снаряд в воздухе или разрубили его."
     },
     "origin": "ancestry",
     "origin_values": [
@@ -557,8 +557,8 @@
       "ru": "Разоружающий залом"
     },
     "description": {
-      "en": "<b>Archetypes</b> Duelist*<br>**Prerequisites** trained in Athletics<br><b>Requirements</b> You are wielding a single one-handed melee weapon and hold nothing else in your hands<br>* This archetype offers Disarming Twist at a different level than displayed here.\n\nAfter your initial attack redirects your foe's defenses, your follow-up wrests their weapon from their grasp. Make a melee Strike with a one-handed melee weapon. In addition to its other effects, this Strike gains the success and critical success effects of the Disarm action. The Strike also has the following failure effect. <br><b>Failure</b> The target becomes off-guard until the end of your current turn.\n\n<b>Special</b> If you're in Disarming Stance, you gain a +1 circumstance bonus to the attack roll.<h2 class=\"h2-header\">Archetype Use</h2>This feat can be used for one or more Archetypes in addition to the listed Classes. When selected this way, the feat is not considered to have its class traits.",
-      "ru": "<b>Архетип</b> Дуэлянт<br>\n**Критерии** изученная Атлетика<br>\n<b>Требования</b> вы используете только одно одноручное оружие ближнего боя и больше ничего не держите в руках.\n\nКогда враг отвлёкся на вашу атаку, вы разоружаете его, заламывая руку. Совершите Удар в ближнем бою одноручным оружием ближнего боя. Этот Удар в дополнение к обычным эффектам получает эффекты успеха и критического успеха действия Разоружение. Удар также получает следующий эффект провала.\n<br>\n\n<b>Провал</b> цель застигнута врасплох до конца вашего текущего хода. <br>\nПримечание: если вы в Разоружающей стойке, то получаете ситуативный бонус +1 к этой проверке атаки."
+      "en": "**Archetypes** Duelist*<br>**Prerequisites** trained in Athletics<br>**Requirements** You are wielding a single one-handed melee weapon and hold nothing else in your hands<br>* This archetype offers Disarming Twist at a different level than displayed here.\n\nAfter your initial attack redirects your foe's defenses, your follow-up wrests their weapon from their grasp. Make a melee Strike with a one-handed melee weapon. In addition to its other effects, this Strike gains the success and critical success effects of the Disarm action. The Strike also has the following failure effect. <br>**Failure** The target becomes off-guard until the end of your current turn.\n\n**Special** If you're in Disarming Stance, you gain a +1 circumstance bonus to the attack roll.<h2 class=\"h2-header\">Archetype Use</h2>This feat can be used for one or more Archetypes in addition to the listed Classes. When selected this way, the feat is not considered to have its class traits.",
+      "ru": "**Архетип** Дуэлянт<br>\n**Критерии** изученная Атлетика<br>\n**Требования** вы используете только одно одноручное оружие ближнего боя и больше ничего не держите в руках.\n\nКогда враг отвлёкся на вашу атаку, вы разоружаете его, заламывая руку. Совершите Удар в ближнем бою одноручным оружием ближнего боя. Этот Удар в дополнение к обычным эффектам получает эффекты успеха и критического успеха действия Разоружение. Удар также получает следующий эффект провала.\n\n**Провал** цель застигнута врасплох до конца вашего текущего хода. <br>\nПримечание: если вы в Разоружающей стойке, то получаете ситуативный бонус +1 к этой проверке атаки."
     },
     "origin": "ancestry",
     "origin_values": [
@@ -644,8 +644,8 @@
       "ru": "Зеркальный щит"
     },
     "description": {
-      "en": "<b>Archetypes</b> Bastion*, Knight Vigilant*<br>**Trigger** An opponent casting a spell that targets you critically fails a spell attack roll against your AC<br><b>Requirements</b> You have a shield raised<br>* This archetype offers Mirror Shield at a different level than displayed here.\n\nYou reflect the spell back against its caster. Make a ranged attack against the attacker using your highest proficiency with a ranged weapon. If you can cast spells, you can choose to make a spell attack roll instead. If you succeed, your opponent takes the effects of a successful spell attack roll for their own spell (or the effects of a critical success if your attack roll was a critical success).<h2 class=\"h2-header\">Archetype Use</h2>This feat can be used for one or more Archetypes in addition to the listed Classes. When selected this way, the feat is not considered to have its class traits.",
-      "ru": "<b>Архетипы</b> Бастион, Knight Vigilant<br>\n**Условие** противник творит заклинание с вами в качестве цели и критически проваливает проверку атаки заклинанием по вашему КБ<br>\n<b>Требования</b> ваш щит поднят.\n\nВы отражаете заклинание обратно в противника. Совершите дистанционную атаку по спровоцировавшему это ответное действие существу, используя ваш наивысший уровень умения для дистанционного оружия. Если вы способны творить заклинания, вы можете вместо этого совершить проверку атаки заклинанием. При успехе противник подвергается эффектам успешной атаки своим заклинанием (или эффектам критического успеха, если ваша проверка атаки критически успешная)."
+      "en": "**Archetypes** Bastion*, Knight Vigilant*<br>**Trigger** An opponent casting a spell that targets you critically fails a spell attack roll against your AC<br>**Requirements** You have a shield raised<br>* This archetype offers Mirror Shield at a different level than displayed here.\n\nYou reflect the spell back against its caster. Make a ranged attack against the attacker using your highest proficiency with a ranged weapon. If you can cast spells, you can choose to make a spell attack roll instead. If you succeed, your opponent takes the effects of a successful spell attack roll for their own spell (or the effects of a critical success if your attack roll was a critical success).<h2 class=\"h2-header\">Archetype Use</h2>This feat can be used for one or more Archetypes in addition to the listed Classes. When selected this way, the feat is not considered to have its class traits.",
+      "ru": "**Архетипы** Бастион, Knight Vigilant<br>\n**Условие** противник творит заклинание с вами в качестве цели и критически проваливает проверку атаки заклинанием по вашему КБ<br>\n**Требования** ваш щит поднят.\n\nВы отражаете заклинание обратно в противника. Совершите дистанционную атаку по спровоцировавшему это ответное действие существу, используя ваш наивысший уровень умения для дистанционного оружия. Если вы способны творить заклинания, вы можете вместо этого совершить проверку атаки заклинанием. При успехе противник подвергается эффектам успешной атаки своим заклинанием (или эффектам критического успеха, если ваша проверка атаки критически успешная)."
     },
     "origin": "ancestry",
     "origin_values": [
@@ -665,7 +665,7 @@
       "ru": "Подавляющий натиск"
     },
     "description": {
-      "en": "<b>Source</b> Player Core , Player Core 2 <br><b>Archetype</b> Rivethun Invoker*<br>**Prerequisites** Barreling Charge<br>* This archetype offers Overpowering Charge at a different level than displayed here.\n\nYou trample foes as you charge past. When you use Barreling Charge and successfully move through a creature's space, that creature takes bludgeoning damage equal to your Strength modifier. On a critical success, the creature takes double damage and is off-guard until the end of your next turn.<h2 class=\"h2-header\">Archetype Use</h2>This feat can be used for one or more archetypes in addition to the listed classes. When selected this way, the feat does not have its class traits.",
+      "en": "**Source** Player Core , Player Core 2 <br>**Archetype** Rivethun Invoker*<br>**Prerequisites** Barreling Charge<br>* This archetype offers Overpowering Charge at a different level than displayed here.\n\nYou trample foes as you charge past. When you use Barreling Charge and successfully move through a creature's space, that creature takes bludgeoning damage equal to your Strength modifier. On a critical success, the creature takes double damage and is off-guard until the end of your next turn.<h2 class=\"h2-header\">Archetype Use</h2>This feat can be used for one or more archetypes in addition to the listed classes. When selected this way, the feat does not have its class traits.",
       "ru": "**Критерии** Разбрасывающий натиск.\n\nВы буквально затаптываете врагов, продираясь среди них. Когда вы используете Разбрасывающий натиск и успешно передвигаетесь через пространство существа, это существо получает дробящий урон, равный вашему модификатору Силы. При критическом успехе существо получает двойной урон и становится застигнутым врасплох до конца вашего следующего хода."
     },
     "origin": "ancestry",
@@ -687,7 +687,7 @@
       "ru": "Боевые рефлексы"
     },
     "description": {
-      "en": "<b>Archetype</b> Eagle Knight*<br>* This archetype offers Tactical Reflexes at a different level than displayed here.\n\nYou are particularly swift at punishing foes who leave you openings. At the start of each of your turns when you regain your actions, you gain an additional reaction that can be used only to make a Reactive Strike.<h2 class=\"h2-header\">Archetype Use</h2>This feat can be used for one or more Archetypes in addition to the listed Classes. When selected this way, the feat is not considered to have its class traits.",
+      "en": "**Archetype** Eagle Knight*<br>* This archetype offers Tactical Reflexes at a different level than displayed here.\n\nYou are particularly swift at punishing foes who leave you openings. At the start of each of your turns when you regain your actions, you gain an additional reaction that can be used only to make a Reactive Strike.<h2 class=\"h2-header\">Archetype Use</h2>This feat can be used for one or more Archetypes in addition to the listed Classes. When selected this way, the feat is not considered to have its class traits.",
       "ru": "Вы не оставляете беспечность врагов безнаказанной, немедленно атакуя их при любой возможности. В начале каждого своего хода при восстановлении действий вы получаете дополнительное ответное действие, которое можете использовать только для Внеочередной атаки."
     },
     "origin": "ancestry",
@@ -708,8 +708,8 @@
       "ru": "Парная контратака"
     },
     "description": {
-      "en": "<b>Archetypes</b> Avenger*, Dual-Weapon Warrior*<br>**Trigger** A creature within your reach critically fails to Strike you<br><b>Requirements</b> You are benefiting from Twin Parry<br>* This archetype offers Twin Riposte at a different level than displayed here.\n\nA clever parry with one weapon leaves your opponent open to an attack with the other weapon. Make a melee Strike or Disarm action against the triggering opponent.<h2 class=\"h2-header\">Archetype Use</h2>This feat can be used for one or more Archetypes in addition to the listed Classes. When selected this way, the feat is not considered to have its class traits.",
-      "ru": "<b>Архетип</b> Боец парным оружием<br>\n**Условие** существо в вашей зоне досягаемости критически проваливает Удар по вам.\n\n<b>Требования</b> у вас есть преимущество Парного парирования.\n\nВы ловко парируете удар противника одним оружием и бьёте его другим. Совершите действие Разоружение или Удар в ближнем бою против спровоцировавшего это ответное действие противника."
+      "en": "**Archetypes** Avenger*, Dual-Weapon Warrior*<br>**Trigger** A creature within your reach critically fails to Strike you<br>**Requirements** You are benefiting from Twin Parry<br>* This archetype offers Twin Riposte at a different level than displayed here.\n\nA clever parry with one weapon leaves your opponent open to an attack with the other weapon. Make a melee Strike or Disarm action against the triggering opponent.<h2 class=\"h2-header\">Archetype Use</h2>This feat can be used for one or more Archetypes in addition to the listed Classes. When selected this way, the feat is not considered to have its class traits.",
+      "ru": "**Архетип** Боец парным оружием<br>\n**Условие** существо в вашей зоне досягаемости критически проваливает Удар по вам.\n\n**Требования** у вас есть преимущество Парного парирования.\n\nВы ловко парируете удар противника одним оружием и бьёте его другим. Совершите действие Разоружение или Удар в ближнем бою против спровоцировавшего это ответное действие противника."
     },
     "origin": "ancestry",
     "origin_values": [
@@ -730,8 +730,8 @@
       "ru": "Камуфляж"
     },
     "description": {
-      "en": "<b>Archetypes</b> Knight Reclaimant*, Scout*, Verduran Shadow*<br>**Prerequisites** master in Stealth<br>* This archetype offers Camouflage at a different level than displayed here.\n\nYou alter your appearance to blend in to the wilderness. In natural terrain, you can Hide and Sneak even without cover or being concealed.<h2 class=\"h2-header\">Archetype Use</h2>This feat can be used for one or more Archetypes in addition to the listed Classes. When selected this way, the feat is not considered to have its class traits.",
-      "ru": "<b>Архетипы</b> Knight Reclaimant, Разведчик<br>\n**Критерии** мастерская Скрытность.\n\nВы изменяете свою внешность, чтобы слиться с пейзажем. Находясь в природной местности, вы можете Спрятаться и Красться даже без укрытия или плохой видимости."
+      "en": "**Archetypes** Knight Reclaimant*, Scout*, Verduran Shadow*<br>**Prerequisites** master in Stealth<br>* This archetype offers Camouflage at a different level than displayed here.\n\nYou alter your appearance to blend in to the wilderness. In natural terrain, you can Hide and Sneak even without cover or being concealed.<h2 class=\"h2-header\">Archetype Use</h2>This feat can be used for one or more Archetypes in addition to the listed Classes. When selected this way, the feat is not considered to have its class traits.",
+      "ru": "**Архетипы** Knight Reclaimant, Разведчик<br>\n**Критерии** мастерская Скрытность.\n\nВы изменяете свою внешность, чтобы слиться с пейзажем. Находясь в природной местности, вы можете Спрятаться и Красться даже без укрытия или плохой видимости."
     },
     "origin": "ancestry",
     "origin_values": [
@@ -751,7 +751,7 @@
       "ru": "Невероятный зверь"
     },
     "description": {
-      "en": "<b>Archetype</b> Wylderheart<br>**Prerequisites** Mature Animal Companion (Ranger).\n\nYour animal companion continues to grow and develop. It becomes a nimble or savage animal companion (your choice), gaining additional capabilities determined by the type of companion (page 211).<h2 class=\"h2-header\">Archetype Use</h2>This feat can be used for one or more Archetypes in addition to the listed Classes. When selected this way, the feat is not considered to have its class traits.",
+      "en": "**Archetype** Wylderheart<br>**Prerequisites** Mature Animal Companion (Ranger).\n\nYour animal companion continues to grow and develop. It becomes a nimble or savage animal companion (your choice), gaining additional capabilities determined by the type of companion (page 211).<h2 class=\"h2-header\">Archetype Use</h2>This feat can be used for one or more Archetypes in addition to the listed Classes. When selected this way, the feat is not considered to have its class traits.",
       "ru": "**Критерии** Взрослый верный зверь (следопыт).\n\nВаш верный зверь продолжает расти и развиваться и становится ловким или лютым верным зверем (на ваш выбор), получая дополнительные возможности в зависимости от своего типа."
     },
     "origin": "ancestry",
@@ -793,8 +793,8 @@
       "ru": "Безупречное заклинание заступника"
     },
     "description": {
-      "en": "**Prerequisites** Initiate Warden.\n\nYour mastery of primal magic has given you access to the greatest secrets of warden magic. You gain your choice of one warden spell from the peerless warden spells (or another you have access to).\n\n<b>Special</b> You can take this feat multiple times, choosing a different peerless warden spell each time. ",
-      "ru": "**Критерии** Начальное заклинание заступника.\n\nВам ведомы величайшие тайны магии заступников. Вы получаете одно заклинание заступника на ваш выбор из безупречных заклинаний заступника (или других безупречных заклинаний заступника, к которым у вас есть доступ).\n\n<b>Примечание</b> эту черту можно брать несколько раз, каждый раз выбирая другое безупречное заклинание заступника."
+      "en": "**Prerequisites** Initiate Warden.\n\nYour mastery of primal magic has given you access to the greatest secrets of warden magic. You gain your choice of one warden spell from the peerless warden spells (or another you have access to).\n\n**Special** You can take this feat multiple times, choosing a different peerless warden spell each time. ",
+      "ru": "**Критерии** Начальное заклинание заступника.\n\nВам ведомы величайшие тайны магии заступников. Вы получаете одно заклинание заступника на ваш выбор из безупречных заклинаний заступника (или других безупречных заклинаний заступника, к которым у вас есть доступ).\n\n**Примечание** эту черту можно брать несколько раз, каждый раз выбирая другое безупречное заклинание заступника."
     },
     "origin": "ancestry",
     "origin_values": [
@@ -814,8 +814,8 @@
       "ru": "Пронзающий выстрел"
     },
     "description": {
-      "en": "<b>Requirements</b> You are wielding a ranged weapon.\n\nYou shoot clear through an intervening creature to hit your prey. Choose a target that is giving lesser cover to your hunted prey. Make a single ranged Strike with the required weapon against the chosen target and your hunted prey. This attack ignores any lesser cover the chosen target provides your hunted prey. Roll damage only once, and apply it to each creature you hit. A Penetrating Shot counts as two attacks for your multiple attack penalty",
-      "ru": "<b>Требования</b> вы используете дистанционное оружие.\n\nЕсли какое-то существо прикрывает собой вашу добычу, вы можете прострелить его насквозь. Выберите цель, которая даёт частичное укрытие вашей добыче. Совершите один дистанционный Удар требуемым оружием по выбранной цели и по своей добыче. Эта атака игнорирует частичное укрытие, которое выбранная цель даёт вашей добыче. Совершите один бросок урона и примените его результат к каждому существу, по которому попали. При определении штрафа за последовательные атаки Пронзающий выстрел считается двумя атаками."
+      "en": "**Requirements** You are wielding a ranged weapon.\n\nYou shoot clear through an intervening creature to hit your prey. Choose a target that is giving lesser cover to your hunted prey. Make a single ranged Strike with the required weapon against the chosen target and your hunted prey. This attack ignores any lesser cover the chosen target provides your hunted prey. Roll damage only once, and apply it to each creature you hit. A Penetrating Shot counts as two attacks for your multiple attack penalty",
+      "ru": "**Требования** вы используете дистанционное оружие.\n\nЕсли какое-то существо прикрывает собой вашу добычу, вы можете прострелить его насквозь. Выберите цель, которая даёт частичное укрытие вашей добыче. Совершите один дистанционный Удар требуемым оружием по выбранной цели и по своей добыче. Эта атака игнорирует частичное укрытие, которое выбранная цель даёт вашей добыче. Совершите один бросок урона и примените его результат к каждому существу, по которому попали. При определении штрафа за последовательные атаки Пронзающий выстрел считается двумя атаками."
     },
     "origin": "ancestry",
     "origin_values": [
@@ -835,8 +835,8 @@
       "ru": "Поступь заступника"
     },
     "description": {
-      "en": "<b>Archetype</b> Horizon Walker*<br>**Prerequisites** master in Stealth<br>* This archetype offers Warden's Step at a different level than displayed here.\n\nYou can guide your allies to move quietly through the wilderness. When you Avoid Notice during exploration in natural terrain, you can designate any number of your allies to gain the benefits as if they were using that activity during that exploration. This requires no action on their part<h2 class=\"h2-header\">Archetype Use</h2>This feat can be used for one or more Archetypes in addition to the listed Classes. When selected this way, the feat is not considered to have its class traits.",
-      "ru": "<b>Архетип</b> Идущий за горизонт<br>\n**Критерии** мастерская Скрытность.\n\nВы можете неслышно вести своих союзников сквозь дикую местность. Когда вы совершаете Незаметное перемещение по природной местности во время исследования, вы можете дать любому количеству своих союзников преимущества, как если бы они использовали это занятие. Это не требует действий с их стороны."
+      "en": "**Archetype** Horizon Walker*<br>**Prerequisites** master in Stealth<br>* This archetype offers Warden's Step at a different level than displayed here.\n\nYou can guide your allies to move quietly through the wilderness. When you Avoid Notice during exploration in natural terrain, you can designate any number of your allies to gain the benefits as if they were using that activity during that exploration. This requires no action on their part<h2 class=\"h2-header\">Archetype Use</h2>This feat can be used for one or more Archetypes in addition to the listed Classes. When selected this way, the feat is not considered to have its class traits.",
+      "ru": "**Архетип** Идущий за горизонт<br>\n**Критерии** мастерская Скрытность.\n\nВы можете неслышно вести своих союзников сквозь дикую местность. Когда вы совершаете Незаметное перемещение по природной местности во время исследования, вы можете дать любому количеству своих союзников преимущества, как если бы они использовали это занятие. Это не требует действий с их стороны."
     },
     "origin": "ancestry",
     "origin_values": [
@@ -856,8 +856,8 @@
       "ru": "Методичная контузия"
     },
     "description": {
-      "en": "**Prerequisites** mastermind racket; Debilitating Strike.\n\nYou strategically craft your debilitations to lessen or negate an enemy's tactical advantages. Add the following debilitations to the list you can choose from when you use Debilitating Strike.\n\n<ul><li><b>Debilitation</b> The target can't flank or contribute to allies' flanking.</li><li><b>Debilitation</b> The target doesn't gain a circumstance bonus to AC from Raising a Shield, lesser cover, or standard cover; it gains a +2 circumstance bonus to AC only from greater cover or Taking Cover.</li></ul>",
-      "ru": "**Критерии** организатор; Контузящий удар.\n\nВы подходите к вопросу контузий стратегически, лишая врага преимуществ. Добавьте перечисленные далее контузии в список доступных для Контузящего удара.<ul>\n<li><b>Контузия</b> цель не может брать кого-либо в тиски или помогать союзникам это сделать. </li>\n<li><b>Контузия</b> цель не получает ситуативный бонус к КБ за Поднятие щита, частичное укрытие или обычное укрытие. Она получает только ситуативный бонус +2 к КБ за надёжное укрытие или действие Укрытие. </li>\n</ul>"
+      "en": "**Prerequisites** mastermind racket; Debilitating Strike.\n\nYou strategically craft your debilitations to lessen or negate an enemy's tactical advantages. Add the following debilitations to the list you can choose from when you use Debilitating Strike.\n\n<ul><li>**Debilitation** The target can't flank or contribute to allies' flanking.</li><li>**Debilitation** The target doesn't gain a circumstance bonus to AC from Raising a Shield, lesser cover, or standard cover; it gains a +2 circumstance bonus to AC only from greater cover or Taking Cover.</li></ul>",
+      "ru": "**Критерии** организатор; Контузящий удар.\n\nВы подходите к вопросу контузий стратегически, лишая врага преимуществ. Добавьте перечисленные далее контузии в список доступных для Контузящего удара.<ul>\n<li>**Контузия** цель не может брать кого-либо в тиски или помогать союзникам это сделать. </li>\n<li>**Контузия** цель не получает ситуативный бонус к КБ за Поднятие щита, частичное укрытие или обычное укрытие. Она получает только ситуативный бонус +2 к КБ за надёжное укрытие или действие Укрытие. </li>\n</ul>"
     },
     "origin": "ancestry",
     "origin_values": [
@@ -898,8 +898,8 @@
       "ru": "Прицельная контузия"
     },
     "description": {
-      "en": "**Prerequisites** thief racket; Debilitating Strike.\n\nYou attack with great precision. Add the following debilitations to the list you can choose from when you use Debilitating Strike.\n\n<ul><li><b>Debilitation</b> The target takes an additional 2d6 precision damage from your attacks.</li><li><b>Debilitation</b> The target becomes off-guard.</li></ul>",
-      "ru": "**Критерии** вор; Контузящий удар.\n\nВы тщательно целитесь и изящно атакуете. Добавьте перечисленные далее контузии в список доступных для Контузящего удара.\n<ul>\n<li><b>Контузия</b> цель дополнительно получает 2d6 урона за точность от ваших атак.</li>\n<li><b>Контузия</b> цель становится застигнутой врасплох.</li>\n</ul>"
+      "en": "**Prerequisites** thief racket; Debilitating Strike.\n\nYou attack with great precision. Add the following debilitations to the list you can choose from when you use Debilitating Strike.\n\n<ul><li>**Debilitation** The target takes an additional 2d6 precision damage from your attacks.</li><li>**Debilitation** The target becomes off-guard.</li></ul>",
+      "ru": "**Критерии** вор; Контузящий удар.\n\nВы тщательно целитесь и изящно атакуете. Добавьте перечисленные далее контузии в список доступных для Контузящего удара.\n<ul>\n<li>**Контузия** цель дополнительно получает 2d6 урона за точность от ваших атак.</li>\n<li>**Контузия** цель становится застигнутой врасплох.</li>\n</ul>"
     },
     "origin": "ancestry",
     "origin_values": [
@@ -919,8 +919,8 @@
       "ru": "Знаток скрытности"
     },
     "description": {
-      "en": "<b>Archetypes</b> Knight Reclaimant*, Verduran Shadow*<br>**Prerequisites** master in Stealth<br>* This archetype offers Sneak Adept at a different level than displayed here.\n\nIt's almost impossible to spot you. When you roll a failure on a Sneak action, you get a success instead. You can still critically fail.<h2 class=\"h2-header\">Archetype Use</h2>This feat can be used for one or more Archetypes in addition to the listed Classes. When selected this way, the feat is not considered to have its class traits.",
-      "ru": "<b>Архетип</b> Knight Reclaimant<br>\n**Критерии** мастерская Скрытность.\n\nВас почти невозможно заметить. Когда вы получаете провал при проверке, чтобы Красться, он считается для вас успехом. На критические провалы черта не влияет."
+      "en": "**Archetypes** Knight Reclaimant*, Verduran Shadow*<br>**Prerequisites** master in Stealth<br>* This archetype offers Sneak Adept at a different level than displayed here.\n\nIt's almost impossible to spot you. When you roll a failure on a Sneak action, you get a success instead. You can still critically fail.<h2 class=\"h2-header\">Archetype Use</h2>This feat can be used for one or more Archetypes in addition to the listed Classes. When selected this way, the feat is not considered to have its class traits.",
+      "ru": "**Архетип** Knight Reclaimant<br>\n**Критерии** мастерская Скрытность.\n\nВас почти невозможно заметить. Когда вы получаете провал при проверке, чтобы Красться, он считается для вас успехом. На критические провалы черта не влияет."
     },
     "origin": "ancestry",
     "origin_values": [
@@ -940,8 +940,8 @@
       "ru": "Тактическая контузия"
     },
     "description": {
-      "en": "**Prerequisites** scoundrel racket; Debilitating Strike.\n\nYou learn new debilitations that grant you tactical advantages against your foes. Add the following debilitations to the list you can choose from when you use Debilitating Strike. <br><ul><li><b>Debilitation</b> The target can't use reactions.</li><li><b>Debilitation</b> The target can't flank or contribute to allies' flanking.</li></ul>",
-      "ru": "**Критерии** пройдоха; Контузящий удар.\n\nВаши приёмы открывают новые тактические возможности. Добавьте перечисленные далее контузии в список доступных для Контузящего удара.<ul>\n<li><b>Контузия</b> цель не может использовать ответные действия.</li>\n<li><b>Контузия</b> цель не может брать кого-либо в тиски или помогать союзникам это сделать.</li>\n</ul>"
+      "en": "**Prerequisites** scoundrel racket; Debilitating Strike.\n\nYou learn new debilitations that grant you tactical advantages against your foes. Add the following debilitations to the list you can choose from when you use Debilitating Strike. <br><ul><li>**Debilitation** The target can't use reactions.</li><li>**Debilitation** The target can't flank or contribute to allies' flanking.</li></ul>",
+      "ru": "**Критерии** пройдоха; Контузящий удар.\n\nВаши приёмы открывают новые тактические возможности. Добавьте перечисленные далее контузии в список доступных для Контузящего удара.<ul>\n<li>**Контузия** цель не может использовать ответные действия.</li>\n<li>**Контузия** цель не может брать кого-либо в тиски или помогать союзникам это сделать.</li>\n</ul>"
     },
     "origin": "ancestry",
     "origin_values": [
@@ -961,8 +961,8 @@
       "ru": "Жестокая контузия"
     },
     "description": {
-      "en": "**Prerequisites** ruffian racket; Debilitating Strike.\n\nThe debilitations you dish out seriously impair your foes. Add the following debilitations to the list you can choose from when you use Debilitating Strike. <br><ul><li><b>Debilitation</b> The target gains weakness 5 to your choice of bludgeoning, piercing, or slashing damage.</li><li><b>Debilitation</b> The target becomes clumsy 1.</li></ul>",
-      "ru": "**Критерии** головорез; Контузящий удар.\n\nНаносимые вами контузии калечат врагов. Добавьте перечисленные далее контузии в список доступных для Контузящего удара.<ul>\n<li><b>Контузия</b> цель получает уязвимость 5 к дробящему, колющему или режущему урону (на ваш выбор).</li>\n<li><b>Контузия</b> цель получает неуклюжесть 1.</li>\n</ul>"
+      "en": "**Prerequisites** ruffian racket; Debilitating Strike.\n\nThe debilitations you dish out seriously impair your foes. Add the following debilitations to the list you can choose from when you use Debilitating Strike. <br><ul><li>**Debilitation** The target gains weakness 5 to your choice of bludgeoning, piercing, or slashing damage.</li><li>**Debilitation** The target becomes clumsy 1.</li></ul>",
+      "ru": "**Критерии** головорез; Контузящий удар.\n\nНаносимые вами контузии калечат врагов. Добавьте перечисленные далее контузии в список доступных для Контузящего удара.<ul>\n<li>**Контузия** цель получает уязвимость 5 к дробящему, колющему или режущему урону (на ваш выбор).</li>\n<li>**Контузия** цель получает неуклюжесть 1.</li>\n</ul>"
     },
     "origin": "ancestry",
     "origin_values": [
@@ -1003,8 +1003,8 @@
       "ru": "Высший урок"
     },
     "description": {
-      "en": "<hr>Your patron grants you even greater secrets. Choose a major, greater, or basic lesson from the list here. You gain its associated hex, and your familiar learns the associated spell.\n\n<b>Special</b> You can select this feat a second time if you're 14th level or higher, and a third time if you're 18th level or higher. Choose a different lesson each time.",
-      "ru": "Ваш покровитель открывает вам суть самых важных тайн. Выберите высший, улучшенный или простой урок. Вы получаете связанный с ним наговор, а ваш фамильяр изучает указанное заклинание.\n\n<b>Примечание</b> вы можете взять эту черту второй раз на 14 уровне или выше и третий раз на 18 уровне или выше, каждый раз выбирая новые уроки."
+      "en": "<hr>Your patron grants you even greater secrets. Choose a major, greater, or basic lesson from the list here. You gain its associated hex, and your familiar learns the associated spell.\n\n**Special** You can select this feat a second time if you're 14th level or higher, and a third time if you're 18th level or higher. Choose a different lesson each time.",
+      "ru": "Ваш покровитель открывает вам суть самых важных тайн. Выберите высший, улучшенный или простой урок. Вы получаете связанный с ним наговор, а ваш фамильяр изучает указанное заклинание.\n\n**Примечание** вы можете взять эту черту второй раз на 14 уровне или выше и третий раз на 18 уровне или выше, каждый раз выбирая новые уроки."
     },
     "origin": "ancestry",
     "origin_values": [
@@ -1066,8 +1066,8 @@
       "ru": "Невероятное уклонение"
     },
     "description": {
-      "en": "<b>Archetypes</b> Rogue, Shadowdancer<br><b>Class</b> Rogue<br>**Prerequisites** Rogue Dedication.\n\nYou gain the deny advantage class feature (page 167).",
-      "ru": "<b>Архетипы</b> Плут, Танцор теней<br>\n**Критерии** Посвящение в плуты.\n\nВы получаете классовую особенность манёвренность."
+      "en": "**Archetypes** Rogue, Shadowdancer<br>**Class** Rogue<br>**Prerequisites** Rogue Dedication.\n\nYou gain the deny advantage class feature (page 167).",
+      "ru": "**Архетипы** Плут, Танцор теней<br>\n**Критерии** Посвящение в плуты.\n\nВы получаете классовую особенность манёвренность."
     },
     "origin": "ancestry",
     "origin_values": [
