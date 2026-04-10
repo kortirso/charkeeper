@@ -277,5 +277,21 @@
     "divine": { "name": { "en": "Divine", "ru": "Сакральная" } },
     "primal": { "name": { "en": "Primal", "ru": "Первобытная" } },
     "occult": { "name": { "en": "Occult", "ru": "Оккультная" } }
+  },
+  "weaponGroups": {
+    "axe": { "name": { "en": "Axe", "ru": "Топоры" } },
+    "bow": { "name": { "en": "Bow", "ru": "Луки" } },
+    "brawling": { "name": { "en": "Brawling", "ru": "Кулачное" } },
+    "club": { "name": { "en": "Club", "ru": "Дубины" } },
+    "crossbow": { "name": { "en": "Crossbow", "ru": "Арбалеты" } },
+    "dart": { "name": { "en": "Dart", "ru": "Дротики" } },
+    "flail": { "name": { "en": "Flail", "ru": "Цепы" } },
+    "hammer": { "name": { "en": "Hammer", "ru": "Молоты" } },
+    "knife": { "name": { "en": "Knife", "ru": "Ножи" } },
+    "pick": { "name": { "en": "Pick", "ru": "Клевцы" } },
+    "polearm": { "name": { "en": "Polearm", "ru": "Древковое" } },
+    "sling": { "name": { "en": "Sling", "ru": "Пращи" } },
+    "spear": { "name": { "en": "Spear", "ru": "Копья" } },
+    "sword": { "name": { "en": "Sword", "ru": "Мечи" } }
   }
 }

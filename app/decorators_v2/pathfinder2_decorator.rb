@@ -164,9 +164,11 @@ class Pathfinder2Decorator < ApplicationDecoratorV2
       (feature_weapons + [unarmed_weapon] + weapons).flat_map do |item|
         tooltips = parse_tooltips(item)
         item[:items_info]['weapon_skill'] = update_weapon_skill(item, tooltips, item[:items_info]['weapon_skill'])
+        weapon_skill_training = find_weapon_skill_training(item)
+
         case item[:items_info]['type']
-        when 'unarmed', 'melee' then melee_attack(item, tooltips)
-        when 'range' then range_attack(item, tooltips)
+        when 'unarmed', 'melee' then melee_attack(item, tooltips, weapon_skill_training)
+        when 'range' then range_attack(item, tooltips, weapon_skill_training)
         end
       end
   end
@@ -187,6 +189,18 @@ class Pathfinder2Decorator < ApplicationDecoratorV2
 
     current
   end
+
+  def find_weapon_skill_training(item)
+    if available_features_values['weapon_legend']&.first == item.dig(:items_info, 'group')
+      weapon_skills.merge({ 'unarmed' => 4, 'simple' => 4, 'martial' => 4, 'advanced' => 3 }, &merge_max)
+    elsif available_features_values['fighter_weapon_mastery']&.first == item.dig(:items_info, 'group')
+      weapon_skills.merge({ 'unarmed' => 3, 'simple' => 3, 'martial' => 3, 'advanced' => 2 }, &merge_max)
+    else
+      weapon_skills.clone
+    end
+  end
+
+  def merge_max = proc { |_, oldval, newval| [oldval, newval].max }
 
   def apply_add_modifiers # rubocop: disable Metrics/CyclomaticComplexity, Metrics/AbcSize, Metrics/MethodLength, Metrics/PerceivedComplexity
     res = all_modifiers.flat_map do |items|
@@ -255,39 +269,41 @@ class Pathfinder2Decorator < ApplicationDecoratorV2
     end
   end
 
-  def melee_attack(item, tooltips) # rubocop: disable Metrics/AbcSize
+  def melee_attack(item, tooltips, weapon_skill_training) # rubocop: disable Metrics/AbcSize
     attack_bonus = find_weapon_modifiers(item[:modifiers], item[:items_modifiers], %w[attack melee_attacks])
     damage_bonus = find_weapon_modifiers(item[:modifiers], item[:items_modifiers], %w[damage melee_damage])
 
     key_ability_bonus = find_key_ability_bonus('melee', tooltips.keys)
-    thrown_attack_bonus = tooltips.key?('thrown') ? modified_abilities['dex'] + proficiency_bonus(weapon_skills[item[:items_info]['weapon_skill']]) : nil # rubocop: disable Layout/LineLength
+    thrown_attack_bonus = tooltips.key?('thrown') ? modified_abilities['dex'] + proficiency_bonus(weapon_skill_training[item[:items_info]['weapon_skill']]) : nil # rubocop: disable Layout/LineLength
 
-    attack_values(item, key_ability_bonus, tooltips, attack_bonus)
+    attack_values(item, key_ability_bonus, tooltips, attack_bonus, weapon_skill_training)
       .merge({
         thrown_attack_bonus: thrown_attack_bonus ? thrown_attack_bonus + attack_bonus : nil,
         distance: tooltips.key?('thrown') ? item[:items_info]['dist'] : (tooltips.key?('reach') ? 10 : nil), # rubocop: disable Style/NestedTernaryOperator
-        damage_bonus: modified_abilities['str'] + damage_bonus + damage_bonuses[item[:items_info]['weapon_skill']].to_i
+        damage_bonus: modified_abilities['str'] + damage_bonus + damage_bonuses(weapon_skill_training, item[:items_info]['weapon_skill']).to_i # rubocop: disable Layout/LineLength
       })
   end
 
-  def range_attack(item, tooltips) # rubocop: disable Metrics/AbcSize
+  def range_attack(item, tooltips, weapon_skill_training) # rubocop: disable Metrics/AbcSize
     attack_bonus = find_weapon_modifiers(item[:modifiers], item[:items_modifiers], %w[attack range_attacks])
     damage_bonus = find_weapon_modifiers(item[:modifiers], item[:items_modifiers], %w[damage range_damage])
 
     key_ability_bonus = find_key_ability_bonus('range')
-    attack_values(item, key_ability_bonus, tooltips, attack_bonus)
+    attack_values(item, key_ability_bonus, tooltips, attack_bonus, weapon_skill_training)
       .merge({
         distance: item[:items_info]['dist'],
-        damage_bonus: (tooltips.key?('propulsive') ? (modified_abilities['str'].positive? ? (modified_abilities['str'] / 2) : modified_abilities['str']) : 0) + damage_bonus + damage_bonuses[item[:items_info]['weapon_skill']].to_i # rubocop: disable Style/NestedTernaryOperator, Layout/LineLength
+        damage_bonus: (tooltips.key?('propulsive') ? (modified_abilities['str'].positive? ? (modified_abilities['str'] / 2) : modified_abilities['str']) : 0) + damage_bonus + damage_bonuses(weapon_skill_training, item[:items_info]['weapon_skill']).to_i # rubocop: disable Style/NestedTernaryOperator, Layout/LineLength
       })
   end
 
-  def attack_values(item, key_ability_bonus, tooltips, attack_bonus) # rubocop: disable Metrics/AbcSize
+  def attack_values(item, key_ability_bonus, tooltips, attack_bonus, weapon_skill_training) # rubocop: disable Metrics/AbcSize
+    weapon_legend_attack = proficiency_bonus(weapon_skill_training[item[:items_info]['weapon_skill']])
     damage_types = item[:items_info]['damage_type'].split('-')
+
     {
       slug: item[:items_slug],
       name: translate(item[:items_name]),
-      attack_bonus: key_ability_bonus + proficiency_bonus(weapon_skills[item[:items_info]['weapon_skill']]) + attack_bonus,
+      attack_bonus: key_ability_bonus + weapon_legend_attack + attack_bonus,
       damage: item[:items_info]['damage'],
       notes: item[:notes],
       tags: damage_types.index_with { |type| I18n.t("tags.pathfinder2.weapon.title.#{type}") }.merge(
@@ -553,6 +569,11 @@ class Pathfinder2Decorator < ApplicationDecoratorV2
         .where.not(feats: { origin: 4 })
   end
 
+  def available_features_values
+    @available_features_values ||=
+      @available_features.pluck(:slug, :value).to_h.compact_blank
+  end
+
   def weapons
     @character
       .items
@@ -638,8 +659,9 @@ class Pathfinder2Decorator < ApplicationDecoratorV2
     translate(subclass['name'])
   end
 
-  def damage_bonuses # rubocop: disable Metrics/AbcSize, Metrics/PerceivedComplexity
-    return @damage_bonuses if defined?(@damage_bonuses)
+  def damage_bonuses(weapon_skill_training, skill)
+    return 0 unless weapon_skill_training
+    return 0 if weapon_skill_training[skill].to_i <= 1
 
     multiplier =
       if available_features_slugs.include?('greater_weapon_specialization')
@@ -649,14 +671,8 @@ class Pathfinder2Decorator < ApplicationDecoratorV2
       else
         0
       end
-    return {} if multiplier.zero?
+    return 0 if multiplier.zero?
 
-    @damage_bonuses =
-      {
-        'unarmed' => weapon_skills['unarmed'] <= 1 ? 0 : (multiplier * weapon_skills['unarmed']),
-        'simple' => weapon_skills['simple'] <= 1 ? 0 : (multiplier * weapon_skills['simple']),
-        'martial' => weapon_skills['martial'] <= 1 ? 0 : (multiplier * weapon_skills['martial']),
-        'advanced' => weapon_skills['advanced'] <= 1 ? 0 : (multiplier * weapon_skills['advanced'])
-      }
+    multiplier * weapon_skill_training[skill]
   end
 end

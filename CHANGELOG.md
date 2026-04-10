@@ -9,6 +9,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - removing talents for PF2 characters
 
 ### Modified
+- static classes progression for PF2 characters
+
+### Modified
 - counting race weapon feats for PF2 characters
 
 ## [0.4.24] - 2026-04-08

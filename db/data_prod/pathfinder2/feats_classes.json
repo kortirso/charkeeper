@@ -619,5 +619,37 @@
     },
     "origin": "static_class",
     "origin_values": []
+  },
+  {
+    "slug": "fighter_weapon_mastery",
+    "kind": "one_from_list",
+    "title": {
+      "en": "Fighter Weapon Mastery",
+      "ru": "Воинское оружейное мастерство"
+    },
+    "description": {
+      "en": "Choose one weapon group. Your proficiency rank increases to master with the simple weapons, martial weapons, and unarmed attacks in that group, and to expert with the advanced weapons in that group.\n\nYou gain access to the critical specialization effects of all weapons and unarmed attacks for which you have master proficiency.",
+      "ru": "Выберите одну группу оружия. Ваш уровень умения для простого и особого оружия и безоружных атак этой группы повышается до мастерского, а уровень умения для экзотического оружия этой группы — до экспертного.\n\nВы получаете доступ к критическим эффектам всего оружия и безоружных атак, в которых умелы на мастерском уровне."
+    },
+    "origin": "static_class",
+    "origin_value": "fighter",
+    "conditions": { "level": 5 },
+    "info": { "options_list": "weaponGroups" }
+  },
+  {
+    "slug": "weapon_legend",
+    "kind": "one_from_list",
+    "title": {
+      "en": "Weapon Legend",
+      "ru": "Легенда оружия"
+    },
+    "description": {
+      "en": "You can select one weapon group and increase your proficiency ranks to legendary for all simple weapons, martial weapons, and unarmed attacks in that weapon group, and to master for all advanced weapons in that weapon group.",
+      "ru": "Вы можете выбрать одну группу оружия. Ваш уровень умения для простого и особого оружия и безоружных атак этой группы повышается до легендарного, а уровень умения для экзотического оружия этой группы — до мастерского."
+    },
+    "origin": "static_class",
+    "origin_value": "fighter",
+    "conditions": { "level": 13 },
+    "info": { "options_list": "weaponGroups" }
   }
 ]
