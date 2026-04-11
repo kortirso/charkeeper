@@ -20,6 +20,13 @@ const TRANSLATION = {
     rollPenalty: 'Броски теста D20 уменьшаются на',
     noPenalty: 'Никаких штрафов не применяется',
     death: 'Степень истощения 6 - смерть. Длительный отдых снимает 1 степень истощения.'
+  },
+  es: {
+    exhaustion: 'Agotamiento',
+    speedPenalty: 'Tu velocidad disminuye en',
+    rollPenalty: 'Las tiradas de prueba D20 disminuyen en',
+    noPenalty: 'No hay penalización para esta condición',
+    death: 'Agotamiento 6 - muerte. Un descanso largo elimina un nivel de agotamiento.'
   }
 }
 

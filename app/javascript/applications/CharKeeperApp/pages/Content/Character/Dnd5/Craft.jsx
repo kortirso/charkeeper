@@ -26,6 +26,16 @@ const TRANSLATION = {
     craftTime: 'Время изготовления (рабочих дней)',
     craft: 'Изготовить',
     crafted: 'Предметы изготовлены'
+  },
+  es: {
+    noTools: "No tienes las herramientas que sabes usar",
+    selectTool: 'Selecciona la herramienta para fabricar',
+    selectItem: 'Selecciona el objeto a fabricar',
+    amount: 'Cantidad de objetos',
+    price: 'Precio (cobre)',
+    craftTime: 'Tiempo de fabricación (días de trabajo)',
+    craft: 'Fabricar',
+    crafted: 'Objetos fabricados'
   }
 }
 

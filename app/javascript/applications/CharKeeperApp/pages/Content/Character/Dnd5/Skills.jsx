@@ -21,6 +21,13 @@ const TRANSLATION = {
     skillBoosts: 'Вы можете изучить умения из следующего списка, кол-во - ',
     check: 'Умение',
     skills: 'Умения'
+  },
+  es: {
+    helpMessage: 'Rellena los datos sobre las habilidades.',
+    anySkillBoosts: 'Puedes aprender cualquier habilidad, cantidad - ',
+    skillBoosts: 'Puedes aprender habilidades de la siguiente lista, cantidad - ',
+    check: 'Habilidad',
+    skills: 'Habilidades'
   }
 }
 

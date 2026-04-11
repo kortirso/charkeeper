@@ -33,6 +33,18 @@ const TRANSLATION = {
     updated: 'Персонаж обновлён',
     onlyAvailable: 'Только доступные перки',
     requirements: 'Требования'
+  },
+  es: {
+    currentLevel: 'nivel',
+    perks: 'Ventajas',
+    existingPerkPoints: 'Ventajas disponibles',
+    selectedPerks: 'Ventajas seleccionadas',
+    saveButton: 'Guardar',
+    selectPerk: 'Selecciona una nueva ventaja',
+    selectAdditionalPerk: 'Selecciona una ventaja adicional (si lo necesitas)',
+    updated: 'El personaje ha sido actualizado',
+    onlyAvailable: 'Solo ventajas disponibles',
+    requirements: 'Requisitos'
   }
 }
 

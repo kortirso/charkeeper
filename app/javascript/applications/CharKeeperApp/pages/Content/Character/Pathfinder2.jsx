@@ -25,6 +25,18 @@ const TRANSLATION = {
     mediumArmor: 'Средняя броня',
     heavyArmor: 'Тяжёлая броня',
     shields: 'Щиты'
+  },
+  es: {
+    simpleM: 'Arma cuerpo a cuerpo simple',
+    martialM: 'Arma cuerpo a cuerpo marcial',
+    advancedM: 'Arma cuerpo a cuerpo avanzada',
+    simpleR: 'Arma a distancia simple',
+    martialR: 'Arma a distancia marcial',
+    unarmored: 'Ropa',
+    lightArmor: 'Armadura ligera',
+    mediumArmor: 'Armadura media',
+    heavyArmor: 'Armadura pesada',
+    shields: 'Escudos'
   }
 }
 

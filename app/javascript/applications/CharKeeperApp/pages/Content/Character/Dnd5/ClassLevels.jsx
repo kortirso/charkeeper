@@ -40,6 +40,20 @@ const TRANSLATION = {
     requiredAbility: 'Одна из характеристик должна быть 13+',
     or: ' или ',
     abilityBoost: 'Повышение характеристики на 1'
+  },
+  es: {
+    talents: 'Hazañas',
+    existingTalentPoints: 'Hazañas disponibles',
+    selectTalent: 'Selecciona una nueva hazaña',
+    saveButton: 'Guardar',
+    selectedTalents: 'Hazañas seleccionadas',
+    origin: 'Origen',
+    general: 'General',
+    epic: 'Épica',
+    selectAdditionalTalent: 'Selecciona una hazaña adicional (si lo necesitas)',
+    requiredAbility: 'Una de las habilidades debe ser 13+',
+    or: ' o ',
+    abilityBoost: 'Aumento de habilidad en 1'
   }
 }
 

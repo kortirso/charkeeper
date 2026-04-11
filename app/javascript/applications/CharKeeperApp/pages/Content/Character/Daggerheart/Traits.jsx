@@ -15,6 +15,10 @@ const TRANSLATION = {
   ru: {
     helpMessage: "Распределите следующие модификаторы между характеристиками вашего персонажа в любом порядке: +2, +1, +1, 0, 0, −1.",
     check: 'Характеристика'
+  },
+  es: {
+    helpMessage: "Distribuye los siguientes modificadores iniciales entre los atributos de tu personaje en el orden que desees: +2, +1, +1, 0, 0, −1.",
+    check: 'Atributo'
   }
 }
 

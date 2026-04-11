@@ -41,6 +41,23 @@ const TRANSLATION = {
     overQualified: 'Потрачено много очков навыков',
     overQualifiedTrades: 'Потрачено много очков ремёсел',
     fluent: 'Владение'
+  },
+  es: {
+    helpMessage: 'Complete los datos sobre las habilidades, oficios y idiomas de tu personaje. La conversión de puntos no es reversible.',
+    skillPoints: 'Puntos de habilidad',
+    expertisePoints: 'Puntos de experiencia',
+    tradePoints: 'Puntos de oficio',
+    langPoints: 'Puntos de lenguaje',
+    add: 'Agregar',
+    skills: 'Habilidades',
+    trades: 'Oficios',
+    languages: 'Idiomas',
+    convert: 'Convertir',
+    toTrades: 'a 2 oficios',
+    toLangs: 'a 2 idiomas',
+    overQualified: 'Demasiados puntos de habilidad gastados',
+    overQualifiedTrades: 'Demasiados puntos de oficio gastados',
+    fluent: 'Fluido'
   }
 }
 

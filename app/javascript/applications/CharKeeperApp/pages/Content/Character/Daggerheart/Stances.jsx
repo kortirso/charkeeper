@@ -18,6 +18,12 @@ const TRANSLATION = {
     stances: 'Боевые стойки',
     selectedStances: 'Доступные стойки',
     activeStance: 'Активная стойка'
+  },
+  es: {
+    noStance: 'Sin postura',
+    stances: 'Posturas',
+    selectedStances: 'Posturas disponibles',
+    activeStance: 'Postura activa'
   }
 }
 

@@ -60,6 +60,33 @@ const TRANSLATION = {
     },
     jump: 'Дальность прыжка',
     breath: 'Запас дыхания'
+  },
+  es: {
+    title: 'Recursos',
+    health: 'Puntos de salud',
+    stamina_points: 'Puntos de estamina',
+    mana_points: 'Puntos de maná',
+    rest_points: 'Puntos de descanso',
+    grit_points: 'Puntos de temple',
+    temp: {
+      health: 'Puntos de salud temporales',
+    },
+    healthy: 'Saludable',
+    bloodied: 'Sangrando',
+    wellBloodied: 'Desangrado',
+    door: 'A punto de morir',
+    dead: 'Muerto',
+    environment: 'Entorno',
+    speedTitle: 'Velocidad',
+    speeds: {
+      ground: 'Terrestre',
+      swim: 'Nado',
+      climb: 'Trepar',
+      flight: 'Vuelo',
+      glide: 'Planeo'
+    },
+    jump: 'Distancia de salto',
+    breath: 'Duración de la respiración'
   }
 }
 

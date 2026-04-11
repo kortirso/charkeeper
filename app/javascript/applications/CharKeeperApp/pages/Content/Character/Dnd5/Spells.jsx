@@ -55,6 +55,21 @@ const TRANSLATION = {
     back: 'Назад',
     noValue: 'Стандартная',
     filterByClass: 'Фильтр по классам'
+  },
+  es: {
+    cantrips: 'Trucos',
+    level: 'nivel',
+    knownSpells: 'Aprender hechizos',
+    prepared: 'Preparados',
+    known: 'Conocidos',
+    spellAttack: 'Ataque de hechizo',
+    saveDC: 'DC de salvación',
+    onlyAvailableSpells: 'Solo disponibles',
+    onlyPreparedSpells: 'Solo preparados',
+    customSpellAbility: 'Aprender con habilidad de hechizo personalizada',
+    back: 'Volver',
+    noValue: 'Predeterminado',
+    filterByClass: 'Filtrar por clase'
   }
 }
 

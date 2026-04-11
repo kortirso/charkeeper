@@ -60,6 +60,23 @@ const TRANSLATION = {
     filterByClass: 'Фильтр по классам',
     damageUp: '<p>Урон увеличивается на 1 кость, когда вы достигаете 5, 11 и 17 уровня.</p>',
     check: 'Атака заклинанием'
+  },
+  es: {
+    cantrips: 'Trucos',
+    level: 'nivel',
+    knownSpells: 'Aprender conjuros',
+    prepared: 'Preparados',
+    known: 'Conocidos',
+    spellAttack: 'Ataque de hechizo',
+    saveDC: 'DC de salvación',
+    onlyAvailableSpells: 'Solo disponibles',
+    onlyPreparedSpells: 'Solo preparados',
+    customSpellAbility: 'Aprender con habilidad de hechizo personalizada',
+    back: 'Volver',
+    noValue: 'Predeterminado',
+    filterByClass: 'Filtrar por clase',
+    damageUp: '<p>El daño aumenta en 1 dado cuando alcanzas los niveles 5, 11 y 17.</p>',
+    check: 'Tirada de hechizo'
   }
 }
 

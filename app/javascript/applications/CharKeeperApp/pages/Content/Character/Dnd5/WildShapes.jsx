@@ -18,6 +18,12 @@ const TRANSLATION = {
     beastforms: 'Дикие формы',
     selectedBeastforms: 'Доступные дикие формы',
     activeBeastform: 'Активная дикая форма'
+  },
+  es: {
+    noShape: 'Forma natural',
+    beastforms: 'Formas salvajes',
+    selectedBeastforms: 'Formas salvajes disponibles',
+    activeBeastform: 'Forma salvaje activa'
   }
 }
 

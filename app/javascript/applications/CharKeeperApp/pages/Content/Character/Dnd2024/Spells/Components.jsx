@@ -11,6 +11,11 @@ const TRANSLATION = {
     'v': 'В',
     's': 'С',
     'm': 'М',
+  },
+  es: {
+    'v': 'Vis',
+    's': 'S',
+    'm': 'Voc',
   }
 };
 

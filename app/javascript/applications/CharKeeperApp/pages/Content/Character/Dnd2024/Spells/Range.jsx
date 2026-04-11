@@ -19,7 +19,14 @@ const TRANSLATION = {
     'none': '',
     'ft': 'фт',
     'mile': 'мл'
-  }
+  },
+  es:{
+    'self': 'A sí mismo',
+    'touch': 'Toque',
+    'none': '',
+    'ft': 'ft',
+    'mile': 'milla(s)'
+    }
 };
 
 export const SpellRange = (props) => {

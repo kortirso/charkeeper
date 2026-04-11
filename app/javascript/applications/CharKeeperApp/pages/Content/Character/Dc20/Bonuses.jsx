@@ -59,6 +59,9 @@ const TRANSLATION = {
   },
   ru: {
     save: 'спас'
+  },
+  es: {
+    save: 'Guardar'
   }
 };
 const ABILITIES = ['mig', 'agi', 'int', 'cha'];

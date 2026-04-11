@@ -27,6 +27,16 @@ const TRANSLATION = {
     check: 'Проверка',
     save: 'Спас',
     saveCheck: 'Спасбросок'
+  },
+  es: {
+    abilityBoosts: 'Distribuye 3 puntos entre al menos 2 habilidades de la lista:',
+    levelingAbilityBoosts: 'Tienes mejoras de habilidad disponibles',
+    splitBoosts: 'Comparte las mejoras entre:',
+    anySplitBoosts: 'Comparte las mejoras entre cualquier habilidad',
+    helpMessage: 'Tu personaje puede comenzar con un conjunto estándar de habilidades, o puedes generarlas de cualquier manera según las reglas.',
+    check: 'Verificando',
+    save: 'Guardar',
+    saveCheck: 'Tirada de Salvación'
   }
 }
 

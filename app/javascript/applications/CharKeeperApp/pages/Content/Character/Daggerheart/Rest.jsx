@@ -83,6 +83,42 @@ const TRANSLATION = {
     projectDc: 'Сложность проверки прогресса',
     projectRoll: 'Прогресс проекта',
     completed: ' (Завершён)'
+  },
+  es: {
+    values: {
+      short: 'Descanso corto',
+      long: 'Descanso largo',
+      session: 'Descanso entre sesiones'
+    },
+    description: 'Durante el descanso, el jugador puede mover libremente las cartas de dominio entre su equipo y su bóveda, luego elegir dos veces de la lista de movimientos de descanso. También puedes ayudar a tus compañeros a limpiar PV y ranuras de armadura, pero estas opciones no se tienen en cuenta aquí.',
+    makeRolls: 'Hacer tiradas automáticas',
+    clear_health_short: 'Limpiar 1d4+{{tier}} de Puntos de Vida para ti mismo',
+    clear_stress_short: 'Limpiar 1d4+{{tier}} de ranuras de Estrés',
+    clear_armor_slots_short: 'Limpiar 1d4+{{tier}} de ranuras de armadura para ti mismo',
+    clear_health_long: 'Limpiar todos los Puntos de Vida para ti mismo',
+    clear_stress_long: 'Limpiar todas las ranuras de Estrés',
+    clear_armor_slots_long: 'Limpiar todas las ranuras de armadura para ti mismo',
+    gain_hope: 'Gana una Esperanza por prepararse',
+    gain_double_hope: 'Gana 2 Esperanzas por prepararse con un compañero',
+    title: 'Proyectos',
+    projectTitle: 'Título del proyecto',
+    projectDescription: 'Descripción del proyecto',
+    complexity: 'Complejidad del proyecto',
+    textHelp: 'Puedes usar Markdown para editar la descripción',
+    save: 'Guardar',
+    cancel: 'Cancelar',
+    newProject: 'AGREGAR NUEVO PROYECTO',
+    progress: 'Progreso del proyecto',
+    valueLabel: 'Selecciona el tipo de descanso',
+    rest: 'Tomar descanso',
+    complete: 'Descanso completado',
+    firstAction: 'Primera acción de descanso',
+    secondAction: 'Segunda acción de descanso',
+    workOnProject: 'Trabajar en el proyecto',
+    makeProjectRolls: 'Hacer tiradas de proyecto contra la dificultad',
+    projectDc: 'Dificultad de la prueba de progreso',
+    projectRoll: 'Progreso del proyecto',
+    completed: ' (Completado)'
   }
 }
 const DOWNTIME_ACTIONS = ['clear_health', 'clear_stress', 'clear_armor_slots', 'gain_hope', 'gain_double_hope'];

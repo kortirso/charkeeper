@@ -13,6 +13,9 @@ const TRANSLATION = {
   },
   ru: {
     title: 'Состояния'
+  },
+  es: {
+    title: 'Condiciones'
   }
 }
 

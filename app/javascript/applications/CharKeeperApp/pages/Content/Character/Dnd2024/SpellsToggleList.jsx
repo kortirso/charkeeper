@@ -33,6 +33,19 @@ const TRANSLATION = {
     save: 'Сохранить',
     damageUp: '<p>Урон увеличивается на 1 кость, когда вы достигаете 5, 11 и 17 уровня.</p>',
     noPrepared: 'Нет подготовленных заклинаний'
+  },
+  es: {
+    ritual: 'R',
+    concentration: 'C',
+    perDay: 'por día',
+    spellLevel: 'al nivel',
+    cantrips: 'Trucos',
+    level: 'nivel',
+    spellNote: 'Nota de hechizo',
+    static: 'Estático',
+    save: 'Salvación',
+    damageUp: '<p>El daño aumenta en 1 dado cuando alcanzas los niveles 5, 11 y 17.</p>',
+    noPrepared: 'No hay hechizos preparados'
   }
 }
 
