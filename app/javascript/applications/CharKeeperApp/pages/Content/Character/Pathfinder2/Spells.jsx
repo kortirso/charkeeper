@@ -359,7 +359,7 @@ export const Pathfinder2Spells = (props) => {
               </Show>
             }
           >
-            <Show when={props.spellsInfo}>
+            <Show when={props.spellsInfo && !props.spellsInfo.only_focus}>
               <StatsBlock
                 items={[
                   {
@@ -389,12 +389,14 @@ export const Pathfinder2Spells = (props) => {
                 <Button default textable onClick={() => setSpellsSelectingMode('focus')}>
                   {localize(TRANSLATION, locale()).focusSpellBook}
                 </Button>
-                <Button default textable onClick={() => setSpellsSelectingMode('default')}>
-                  {localize(TRANSLATION, locale()).gotoSpellBook}
-                </Button>
-                <Button default textable onClick={() => setSpellsSelectingMode('additional')}>
-                  {localize(TRANSLATION, locale()).gotoAdditionalBook}
-                </Button>
+                <Show when={!props.spellsInfo.only_focus}>
+                  <Button default textable onClick={() => setSpellsSelectingMode('default')}>
+                    {localize(TRANSLATION, locale()).gotoSpellBook}
+                  </Button>
+                  <Button default textable onClick={() => setSpellsSelectingMode('additional')}>
+                    {localize(TRANSLATION, locale()).gotoAdditionalBook}
+                  </Button>
+                </Show>
                 <Button default textable onClick={() => setSpellsSelectingMode('innate')}>
                   {localize(TRANSLATION, locale()).innateSpellBook}
                 </Button>
@@ -443,7 +445,7 @@ export const Pathfinder2Spells = (props) => {
                       </Show>
                     </h2>
                     {/* Ячейки заклинаний спонтанных заклинателей */}
-                    <Show when={props.spellsInfo && level !== 0 && !props.spellsInfo.prepare}>
+                    <Show when={props.spellsInfo && level !== 0 && props.spellsInfo.prepare === false}>
                       <div class="flex">
                         <For each={[...Array((props.spentSpellSlots[level] || 0)).keys()]}>
                           {() => <Checkbox filled checked classList="mr-1" onToggle={() => freeSpellSlot(level)} />}

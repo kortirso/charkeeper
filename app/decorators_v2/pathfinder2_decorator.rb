@@ -40,7 +40,8 @@ class Pathfinder2Decorator < ApplicationDecoratorV2
 
     @result['features'] = apply_features
     @result['formatted_static_spells'] = format_static_spells
-    @result = @result.except('selected_features', 'defense_gear', 'base_spell_attack', 'base_spell_dc')
+    @result =
+      @result.except('selected_features', 'defense_gear', 'base_spell_attack', 'base_spell_dc', 'available_features_slugs')
 
     self
   end
@@ -92,6 +93,7 @@ class Pathfinder2Decorator < ApplicationDecoratorV2
     @result['can_have_pet'] = available_features_slugs.include?('pet')
     @result['can_have_familiar'] = available_features_slugs.intersect?(FAMILIAR_FEATS)
     @result['total_damage_reduction'] = calc_total_damage_reduction
+    @result['available_features_slugs'] = available_features_slugs
   end
 
   def calc_total_damage_reduction # rubocop: disable Metrics/AbcSize, Metrics/PerceivedComplexity

@@ -3,15 +3,13 @@
 module Pathfinder2
   class ArchetypesDecorator
     def call(result:)
-      result['archetypes'].each do |name, features_count|
-        archetype_decorator(result, name, features_count)
+      result['archetypes'].keys.each do |key|
+        archetype_decorator(result, key)
       end
     end
 
-    def archetype_decorator(result, name, features_count)
-      "Pathfinder2::Archetypes::#{name.camelize}Decorator".constantize
-        .new
-        .call(result: result, features_count: features_count)
+    def archetype_decorator(result, key)
+      "Pathfinder2::Archetypes::#{key.camelize}Decorator".constantize.new.call(result: result)
     rescue NameError => _e
     end
   end

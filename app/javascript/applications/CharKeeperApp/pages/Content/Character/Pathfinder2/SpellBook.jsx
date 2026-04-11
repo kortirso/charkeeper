@@ -233,7 +233,7 @@ export const Pathfinder2SpellBook = (props) => {
           {(spell) =>
             <Pathfinder2Spell spell={spell}>
               <Show
-                when={props.spellsInfo?.prepare || spell.info.level === 0 || props.kind === 'innate'}
+                when={props.spellsInfo?.prepare || spell.info.level === 0 || props.kind === 'innate' || props.kind === 'focus'}
                 fallback={
                   <div class="flex flex-col gap-2">
                     {/* изучение спонтанного заклинания */}
