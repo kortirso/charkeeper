@@ -12,8 +12,8 @@ module Pathfinder2
     attribute :subrace, :string
     attribute :background, :string
     attribute :main_class, :string
-    attribute :classes, array: true
-    attribute :subclasses, array: true
+    attribute :classes, array: true, default: {}
+    attribute :subclasses, array: true, default: {}
     attribute :abilities, array: true, default: { 'str' => 10, 'dex' => 10, 'con' => 10, 'int' => 10, 'wis' => 10, 'cha' => 10 }
     attribute :languages, array: true, default: []
     attribute :selected_skills, array: true, default: {} # { 'acrobatics' => 2, 'arcana' => 1, 'crafting' => 3 }
@@ -34,11 +34,13 @@ module Pathfinder2
     attribute :selected_feats, array: true, default: {} # { 'id' => [{ type: '', level: '' }] }
     attribute :selected_features, array: true, default: {} # { 'fighting_style' => ['fighting_style_defense'] }
     attribute :spent_spell_slots, array: true, default: {}
+    attribute :spent_archetype_spell_slots, array: true, default: {}
     attribute :experience, :integer, default: 0
     attribute :health_current, :integer, default: 6
     attribute :health_temp, :integer, default: 0
     attribute :hero_points, :integer, default: 0
     attribute :damage_reduction, array: true, default: { 'immune' => {}, 'weakness' => {}, 'resistance' => {} }
+    attribute :archetypes, array: true, default: {} # { 'archetype' => 1 }
     # только для 1 уровня
     attribute :ability_boosts, array: true # дополнительные повышения характеристик
     attribute :ability_boosts_v2, array: true, default: {} # дополнительные повышения характеристик

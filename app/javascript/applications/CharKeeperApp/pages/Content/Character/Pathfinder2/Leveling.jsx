@@ -96,11 +96,15 @@ export const Pathfinder2Leveling = (props) => {
     return Object.fromEntries(
       feats().filter((item) => {
         if (!item.info.multiple && selectedFeatIds().includes(item.id)) return false;
+
         if (item.conditions.level > featFilter().level) return false;
         if (item.conditions.selected_feature) return false;
+        if (item.conditions.exclude_class === character().main_class) return false;
+
         if (featFilter().type === 'skill' && !item.origin_values.includes('skill')) return false;
         if (featFilter().type === 'general' && !item.origin_values.includes('general')) return false;
-        if (checkTags && !item.origin_values.some(element => selectedTags().includes(element))) return false;
+
+        if (checkTags && !selectedTags().every(element => item.origin_values.includes(element))) return false;
 
         return true;
       }).map((item) => [item.id, item.title])

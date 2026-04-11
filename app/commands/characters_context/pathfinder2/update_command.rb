@@ -57,6 +57,7 @@ module CharactersContext
           optional(:conditions).maybe(:array).each(:string)
           optional(:selected_features).hash
           optional(:spent_spell_slots).hash
+          optional(:spent_archetype_spell_slots).hash
           optional(:experience).filled(:integer, gteq?: 0)
           optional(:hero_points).filled(:integer, gteq?: 0)
           optional(:damage_reduction).maybe(:hash)

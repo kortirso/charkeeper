@@ -8,7 +8,7 @@ import {
 import { useAppState, useAppLocale, useAppAlert } from '../../context';
 import { Edit } from '../../assets';
 import { updateCharacterFeatRequest } from '../../requests/updateCharacterFeatRequest';
-import { readFromCache, writeToCache, localize } from '../../helpers';
+import { readFromCache, writeToCache, localize, translate } from '../../helpers';
 
 const FEATURES_FILTER_NAME = 'FeaturesFiltersStatus';
 const TRANSLATION = {
@@ -181,6 +181,20 @@ export const Feats = (props) => {
     return result.join(', ');
   }
 
+  const renderFeatureOptions = (feature) => {
+    if (props[feature.info.options_list]) return props[feature.info.options_list];
+    if (!props.config[feature.info.options_list]) {
+      if (feature.info.options_parent) {
+        const items = feature.info.options_parent.split('.')
+        return translate(props.config[items[0]][items[1]][feature.info.options_list], locale());
+      } else {
+        return {};
+      }
+    }
+
+    return translate(props.config[feature.info.options_list], locale());
+  }
+
   return (
     <ErrorWrapper payload={{ character_id: character().id, key: 'Feats' }}>
       <GuideWrapper character={character()}>
@@ -281,14 +295,26 @@ export const Feats = (props) => {
                         onSelect={(option) => updateMultiFeatureValue(feature(), option)}
                       />
                     </Match>
-                    <Match when={(feature().kind === 'one_from_list' || feature().kind === 'many_from_list') && !feature().options && feature().info.options_list && props[feature().info.options_list]}>
-                      <Select
-                        multi={feature().kind === 'many_from_list'}
-                        containerClassList="w-full mt-2"
-                        items={props[feature().info.options_list]}
-                        selectedValues={featValues()[feature().slug] || []}
-                        onSelect={(option) => updateMultiFeatureValue(feature(), option)}
-                      />
+                    <Match when={(feature().kind === 'one_from_list' || feature().kind === 'many_from_list') && !feature().options && feature().info.options_list}>
+                      <Show
+                        when={feature().kind === 'many_from_list'}
+                        fallback={
+                          <Select
+                            containerClassList="w-full mt-2"
+                            items={renderFeatureOptions(feature())}
+                            selectedValue={featValues()[feature().slug] || []}
+                            onSelect={(option) => updateFeatureValue(feature(), option)}
+                          />
+                        }
+                      >
+                        <Select
+                          multi
+                          containerClassList="w-full mt-2"
+                          items={renderFeatureOptions(feature())}
+                          selectedValues={featValues()[feature().slug] || []}
+                          onSelect={(option) => updateMultiFeatureValue(feature(), option)}
+                        />
+                      </Show>
                     </Match>
                     <Match when={feature().continious}>
                       <div class="mt-2 flex justify-end">

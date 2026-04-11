@@ -19,6 +19,8 @@ module CharactersContext
 
           # полное восстановление спонтанных ячеек заклинаний
           data.spent_spell_slots.transform_values! { 0 }
+          data.spent_archetype_spell_slots =
+            data.spent_archetype_spell_slots.to_h { |key, value| [key, value.transform_values { 0 }] }
 
           # восстановление здоровья
           data.health_current =

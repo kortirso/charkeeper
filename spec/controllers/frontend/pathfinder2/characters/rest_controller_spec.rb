@@ -8,7 +8,11 @@ describe Frontend::Pathfinder2::Characters::RestController do
            :pathfinder2,
            user: user_session.user,
            data: {
-             main_class: 'bard', health_current: 1, spent_spell_slots: { '1': 2 }, level: 3
+             main_class: 'bard',
+             health_current: 1,
+             spent_spell_slots: { 'focus' => 1, '1' => 2 },
+             spent_archetype_spell_slots: { 'druid' => { '1' => 1 } },
+             level: 3
            }
   }
   let!(:feat) { create :feat, :pathfinder2, origin: 1, origin_value: 'dwarf', origin_values: [] }
@@ -38,7 +42,8 @@ describe Frontend::Pathfinder2::Characters::RestController do
 
           expect(response).to have_http_status :ok
           expect(user_character.reload.data.health_current).to eq 7
-          expect(user_character.data.spent_spell_slots).to eq({ '1' => 0 })
+          expect(user_character.data.spent_spell_slots).to eq({ 'focus' => 0, '1' => 0 })
+          expect(user_character.data.spent_archetype_spell_slots).to eq({ 'druid' => { '1' => 0 } })
           expect(character_feat.reload.used_count).to eq 0
           expect(character_spell.reload.value.dig('1', 'selected_count')).to eq 2
           expect(character_spell.value.dig('1', 'used_count')).to eq 0
@@ -58,7 +63,8 @@ describe Frontend::Pathfinder2::Characters::RestController do
 
             expect(response).to have_http_status :ok
             expect(user_character.reload.data.health_current).to eq 6
-            expect(user_character.data.spent_spell_slots).to eq({ '1' => 0 })
+            expect(user_character.data.spent_spell_slots).to eq({ 'focus' => 0, '1' => 0 })
+            expect(user_character.data.spent_archetype_spell_slots).to eq({ 'druid' => { '1' => 0 } })
             expect(character_feat.reload.used_count).to eq 0
             expect(character_spell.reload.value.dig('1', 'selected_count')).to eq 2
             expect(character_spell.value.dig('1', 'used_count')).to eq 0

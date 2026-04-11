@@ -21,6 +21,8 @@ $ yarn remove cypress
 ### Info options for PF2 characters
 
 ```bash
+"info": { "change_character": { "attr": "archetypes", "type": "push", "value": "bard" } }
+
 "info": { "options_list": "skills" }
 "info": { "options_list": "classes" }
 "info": { "options_list": "subclasses" }

@@ -3,9 +3,11 @@
 module Pathfinder2Character
   module Subclasses
     class StarlessShadowBuilder
+      SPELL_LIST = 'occult'
+
       def call(result:)
         result[:skill_boosts].merge!({ occultism: 1 }) { |_, oldval, newval| oldval + newval }
-        result[:spell_list] = 'occult'
+        result[:spell_list] = SPELL_LIST
         result[:focus_spells] = result[:focus_spells].push('shroud_of_night').uniq
         result[:spells] = result[:spells].push('fear').uniq
 

@@ -320,6 +320,8 @@ es:
         air: Air
         alchemist: Alchemist
         animist: Animist
+        arcane: Arcane
+        archetype: Archetype
         attack: Attack
         auditory: Auditory
         aura: Aura
@@ -332,6 +334,7 @@ es:
         concentrate: Concentrate
         curse: Curse
         darkness: Darkness
+        dedication: Dedication
         detection: Detection
         disease: Disease
         divine: Divine
@@ -372,6 +375,7 @@ es:
         misfortune: Misfortune
         morph: Morph
         move: Move
+        multiclass: Multiclass
         nonlethal: Nonlethal
         oracle: Oracle
         orc: Orc
@@ -397,6 +401,7 @@ es:
         subtle: Subtle
         summon: Summon
         swashbuckler: Swashbuckler
+        teleportation: Teleportation
         thaumaturge: Thaumaturge
         uncommon: Uncommon
         visual: Visual

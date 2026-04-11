@@ -10,6 +10,7 @@ export const Pathfinder2Static = (props) => {
         armorClass={character().armor_class}
         perception={character().perception}
         speed={character().speed}
+        classDc={character().class_dc}
         speeds={character().speeds}
         openDiceRoll={props.openDiceRoll}
       />

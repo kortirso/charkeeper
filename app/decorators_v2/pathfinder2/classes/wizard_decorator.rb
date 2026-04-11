@@ -12,9 +12,11 @@ module Pathfinder2
           'spells_amount' => (level * 2) + 3,
           'cantrip_slots' => 5,
           'spells_slots' => spells_slots,
-          'max_spell_level' => spells_slots.keys.max
+          'max_spell_level' => spells_slots.keys.max,
+          'class_dc' => class_dc,
+          'spell_attack' => spell_attack,
+          'spell_dc' => spell_dc
         }
-        @result
       end
 
       private

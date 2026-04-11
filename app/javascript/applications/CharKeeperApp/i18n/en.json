@@ -67,7 +67,8 @@
       "campaignCharacters": "Characters",
       "perks": "Perks",
       "general": "General",
-      "skill": "Skill"
+      "skill": "Skill",
+      "archetype": "Archetype"
     },
     "campaignsPage": {
       "title": "Campaigns",
