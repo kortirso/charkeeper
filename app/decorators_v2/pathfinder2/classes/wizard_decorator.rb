@@ -14,7 +14,6 @@ module Pathfinder2
           'spells_slots' => spells_slots,
           'max_spell_level' => spells_slots.keys.max
         }
-        @result
       end
 
       private

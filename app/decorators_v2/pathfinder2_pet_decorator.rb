@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class Pathfinder2PetDecorator < ApplicationDecoratorV2
+  include Pathfinder2::Concerns
+
   ARMOR_TYPES = %w[armor shield].freeze
   PET_SKILLS = %w[acrobatics athletics].freeze
 
@@ -101,12 +103,6 @@ class Pathfinder2PetDecorator < ApplicationDecoratorV2
     return for_pet if @pet.data.kind == 'pet'
 
     [abilities[@attributes.main_ability] + level, for_pet].max
-  end
-
-  def proficiency_bonus(proficiency_level)
-    return 0 if proficiency_level.to_i.zero?
-
-    level + (proficiency_level * 2)
   end
 
   def calc_ability_modifier(value)

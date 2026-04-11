@@ -43,8 +43,10 @@ export const Pathfinder2SpellBook = (props) => {
   const character = () => props.character;
 
   const [showFilters, setShowFilters] = createSignal(false);
-  const [traditionFilter, setTraditionFilter] = createSignal(character().spell_list ? [character().spell_list] : [])
-  const [levelFilter, setLevelFilter] = createSignal(character().spells_info ? Array.from([...Array(character().spells_info.max_spell_level + 1).keys()], (x) => x.toString()) : ['0']);
+  const [traditionFilter, setTraditionFilter] = createSignal(
+    props.spellsInfo?.spell_list ? [props.spellsInfo?.spell_list] : (character().spell_list ? [character().spell_list] : [])
+  );
+  const [levelFilter, setLevelFilter] = createSignal(props.spellsInfo ? Array.from([...Array(props.spellsInfo.max_spell_level + 1).keys()], (x) => x.toString()) : ['0']);
   const [titleFilter, setTitleFilter] = createSignal('');
 
   const [appState] = useAppState();
@@ -57,9 +59,7 @@ export const Pathfinder2SpellBook = (props) => {
     );
   }
 
-  const hasSharedElement = (initialList, filterSet) => {
-    return initialList.some(item => filterSet.has(item)); // O(n) time complexity
-  }
+  const hasSharedElement = (initialList, filterSet) => initialList.some(item => filterSet.has(item));
 
   const filteredSpells = createMemo(() => {
     if (!spells()) return [];
@@ -101,7 +101,7 @@ export const Pathfinder2SpellBook = (props) => {
   const learnSpell = async (e, spell) => {
     e.stopPropagation();
 
-    const payload = { level: spell.info.level, kind: props.kind };
+    const payload = { level: spell.info.level, kind: props.kind, prepared_by: props.preparedBy };
 
     const result = await createCharacterSpellRequest(appState.accessToken, character().provider, character().id, { spell_id: spell.id, spell: payload });
     performResponse(
@@ -134,7 +134,7 @@ export const Pathfinder2SpellBook = (props) => {
   const learnSpellLevel = async (e, spell, level) => {
     e.stopPropagation();
 
-    const payload = { spell_id: spell.id, spell: { level: level, kind: props.kind } };
+    const payload = { spell_id: spell.id, spell: { level: level, kind: props.kind, prepared_by: props.preparedBy } };
 
     const result = await createCharacterSpellRequest(appState.accessToken, character().provider, character().id, payload);
     performResponse(
@@ -185,11 +185,11 @@ export const Pathfinder2SpellBook = (props) => {
 
   return (
     <>
-      <Show when={props.kind === 'default' && character().spells_info.learn}>
+      <Show when={props.kind === 'default' && props.spellsInfo.learn}>
         <StatsBlock
           items={[
-            { title: localize(TRANSLATION, locale()).cantripsAmount, value: `${learnedDefaultCantrips()}/${character().spells_info.cantrips_amount}` },
-            { title: localize(TRANSLATION, locale()).spellsAmount, value: `${learnedDefaultSpells()}/${character().spells_info.spells_amount}` }
+            { title: localize(TRANSLATION, locale()).cantripsAmount, value: `${learnedDefaultCantrips()}/${props.spellsInfo.cantrips_amount}` },
+            { title: localize(TRANSLATION, locale()).spellsAmount, value: `${learnedDefaultSpells()}/${props.spellsInfo.spells_amount}` }
           ]}
         />
       </Show>
@@ -233,11 +233,11 @@ export const Pathfinder2SpellBook = (props) => {
           {(spell) =>
             <Pathfinder2Spell spell={spell}>
               <Show
-                when={character().spells_info?.prepare || spell.info.level === 0 || props.kind === 'innate'}
+                when={props.spellsInfo?.prepare || spell.info.level === 0 || props.kind === 'innate'}
                 fallback={
                   <div class="flex flex-col gap-2">
                     {/* изучение спонтанного заклинания */}
-                    <For each={Object.keys(character().spells_info.spells_slots)}>
+                    <For each={Object.keys(props.spellsInfo.spells_slots)}>
                       {(level) =>
                         <div class="flex gap-2">
                           <span>{level} - </span>

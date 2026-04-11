@@ -409,6 +409,15 @@ nav.pagy.nav a.gap {
   @apply dark:bg-neutral-800 dark:border-neutral-800 dark:text-snow;
 }
 
+.archetype-key {
+  @apply px-1 border rounded bg-neutral-800 border-neutral-800 cursor-pointer text-sm md:text-base text-snow;
+  @apply dark:bg-white dark:border-gray-500 dark:text-black;
+}
+
+.archetype-key.active {
+  @apply dark:bg-fuzzy-red dark:text-snow;
+}
+
 .dots {
   @apply absolute z-9 right-0 border border-gray-200 rounded overflow-hidden;
 }

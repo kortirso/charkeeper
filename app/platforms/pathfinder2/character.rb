@@ -34,6 +34,7 @@ module Pathfinder2
     attribute :selected_feats, array: true, default: {} # { 'id' => [{ type: '', level: '' }] }
     attribute :selected_features, array: true, default: {} # { 'fighting_style' => ['fighting_style_defense'] }
     attribute :spent_spell_slots, array: true, default: {}
+    attribute :spent_archetype_spell_slots, array: true, default: {}
     attribute :experience, :integer, default: 0
     attribute :health_current, :integer, default: 6
     attribute :health_temp, :integer, default: 0

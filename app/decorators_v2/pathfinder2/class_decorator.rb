@@ -26,11 +26,10 @@ module Pathfinder2
     }.freeze
 
     def call(result:)
-      return result unless result['main_class']
+      return unless result['main_class']
 
       "Pathfinder2::Classes::#{result['main_class'].camelize}Decorator".constantize.new.call(result: result)
     rescue NameError => _e
-      result
     end
   end
 end

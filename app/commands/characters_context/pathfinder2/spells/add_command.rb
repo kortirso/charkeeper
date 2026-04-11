@@ -14,6 +14,7 @@ module CharactersContext
             required(:feat).filled(type?: ::Pathfinder2::Feat)
             optional(:kind).filled(Kinds)
             optional(:level).filled(:integer)
+            optional(:prepared_by).maybe(:string)
           end
         end
 
@@ -31,7 +32,8 @@ module CharactersContext
             feat: input[:feat],
             kind: input[:kind],
             ready_to_use: spontaneous_caster,
-            value: spontaneous_caster ? { input[:level].to_s => { 'selected_count' => 1 } } : {}
+            value: spontaneous_caster ? { input[:level].to_s => { 'selected_count' => 1 } } : {},
+            prepared_by: input[:prepared_by]
           )
 
           { result: result }

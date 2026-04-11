@@ -30,7 +30,7 @@ const TRANSLATION = {
 
 import {
   Pathfinder2Abilities, Pathfinder2Health, Pathfinder2Professions, Pathfinder2Static, Pathfinder2Skills, Pathfinder2Companion,
-  Pathfinder2SavingThrows, Pathfinder2Leveling, Pathfinder2Spells, Pathfinder2Rest, Pathfinder2Bonuses, Pathfinder2Info,
+  Pathfinder2SavingThrows, Pathfinder2Leveling, Pathfinder2ArchetypeSpells, Pathfinder2Rest, Pathfinder2Bonuses, Pathfinder2Info,
   Pathfinder2Damages
 } from '../../../pages';
 import {
@@ -159,7 +159,7 @@ export const Pathfinder2 = (props) => {
               </div>
             </Match>
             <Match when={activeMobileTab() === 'spells'}>
-              <Pathfinder2Spells
+              <Pathfinder2ArchetypeSpells
                 character={character()}
                 openDiceRoll={openDiceRoll}
                 onReplaceCharacter={props.onReplaceCharacter}
@@ -297,7 +297,7 @@ export const Pathfinder2 = (props) => {
               </div>
             </Match>
             <Match when={activeTab() === 'spells'}>
-              <Pathfinder2Spells
+              <Pathfinder2ArchetypeSpells
                 character={character()}
                 openDiceRoll={openDiceRoll}
                 onReplaceCharacter={props.onReplaceCharacter}

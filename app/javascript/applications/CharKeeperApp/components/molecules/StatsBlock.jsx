@@ -10,6 +10,7 @@ export const StatsBlock = (props) => {
         classList={{
           'grid-cols-2 md:grid-cols-4 gap-2': props.items.length === 4,
           'grid-cols-3 gap-x-2': props.items.length === 3,
+          'grid-cols-2 gap-x-2': props.items.length === 2,
           'cursor-pointer': props.onClick
         }}
         onClick={props.onClick} // eslint-disable-line solid/reactivity

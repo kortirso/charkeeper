@@ -77,7 +77,7 @@ export const Pathfinder2Spells = (props) => {
   const fetchSpells = async () => await fetchSpellsRequest(
     appState.accessToken,
     character().provider,
-    { max_level: character().spells_info?.max_spell_level || 10 }
+    { max_level: props.spellsInfo?.max_spell_level || 10 }
   );
   const fetchCharacterSpells = async () => await fetchCharacterSpellsRequest(appState.accessToken, character().provider, character().id);
 
@@ -109,6 +109,12 @@ export const Pathfinder2Spells = (props) => {
     });
   });
 
+  const classCharacterSpells = createMemo(() => {
+    if (!characterSpells()) return [];
+
+    return characterSpells().filter((item) => item.prepared_by === props.preparedBy);
+  })
+
   const simpleSpells = createMemo(() => {
     if (!spells()) return [];
 
@@ -116,18 +122,14 @@ export const Pathfinder2Spells = (props) => {
   });
 
   const characterSpellsGroupByKind = createMemo(() => {
-    if (!characterSpells()) return { default: [], additional: [], focus: [], innate: [] };
-
-    return characterSpells().reduce((acc, item) => {
+    return classCharacterSpells().reduce((acc, item) => {
       acc[item.kind].push(item);
       return acc;
     }, { default: [], additional: [], focus: [], innate: [] });
   });
 
   const groupedCharacterSpells = createMemo(() => {
-    if (!characterSpells()) return {};
-
-    return characterSpells().reduce((acc, item) => {
+    return classCharacterSpells().reduce((acc, item) => {
       if (item.kind !== 'default' && item.kind !== 'additional') return acc;
 
       Object.entries(item.value).forEach(([level, values]) => {
@@ -140,9 +142,7 @@ export const Pathfinder2Spells = (props) => {
   });
 
   const preparedCharacterSpells = createMemo(() => {
-    if (!characterSpells()) return {};
-
-    return characterSpells().reduce((acc, item) => {
+    return classCharacterSpells().reduce((acc, item) => {
       if (item.kind !== 'default' && item.kind !== 'additional') return acc;
 
       const level = item.spell.info.level;
@@ -155,12 +155,10 @@ export const Pathfinder2Spells = (props) => {
   const proficiencyBonus = (level) => character().level + (level * 2);
 
   const groupedStaticSpells = createMemo(() => {
-    if (!characterSpells()) return {};
-
     const profBonus = character().level >= 12 ? proficiencyBonus(2) : proficiencyBonus(1);
     const modifier = character().modified_abilities.cha
 
-    const manualSpells = characterSpells().reduce((acc, item) => {
+    const manualSpells = classCharacterSpells().reduce((acc, item) => {
       if (item.kind !== 'innate') return acc;
 
       const currentLevel = item.spell.info.level;
@@ -181,7 +179,7 @@ export const Pathfinder2Spells = (props) => {
   });
 
   const maxSpellLevel = createMemo(() => {
-    const spellsMaxLevel = character().spells_info ? character().spells_info.max_spell_level : 0;
+    const spellsMaxLevel = props.spellsInfo ? props.spellsInfo.max_spell_level : 0;
 
     const formattedLevels = character().formatted_static_spells.length > 0 ? character().formatted_static_spells.map((item) => item.spell.info.level) : [0]
     const staticMaxLevel = Math.max(...formattedLevels);
@@ -202,35 +200,61 @@ export const Pathfinder2Spells = (props) => {
   // использовать слот для сонтанного заклинание
   const spendSpellSlot = async (level) => {
     let newValue;
-    if (character().spent_spell_slots[level]) {
-      newValue = { ...character().spent_spell_slots, [level]: character().spent_spell_slots[level] + 1 };
+    if (props.spentSpellSlots[level]) {
+      newValue = { ...props.spentSpellSlots, [level]: props.spentSpellSlots[level] + 1 };
     } else {
-      newValue = { ...character().spent_spell_slots, [level]: 1 };
+      newValue = { ...props.spentSpellSlots, [level]: 1 };
     }
 
-    const result = await updateCharacterRequest(
-      appState.accessToken, character().provider, character().id, { character: { spent_spell_slots: newValue }, only_head: true }
-    );
-    performResponse(
-      result,
-      function() { // eslint-disable-line solid/reactivity
-        props.onReplaceCharacter({ spent_spell_slots: newValue });
-      },
-      function() { renderAlerts(result.errors_list) }
-    );
+    let payloadValue = { spent_spell_slots: newValue };
+    if (level !== 'focus' && props.preparedBy) {
+      payloadValue = {
+        spent_archetype_spell_slots: { ...character().spent_archetype_spell_slots, [props.preparedBy]: newValue }
+      }
+    }
+    updateSpellSlots(payloadValue);
+  }
+
+  const spendFocusSlot = async () => {
+    let newValue;
+    if (character().spent_spell_slots.focus) {
+      newValue = { ...character().spent_spell_slots, 'focus': character().spent_spell_slots.focus + 1 };
+    } else {
+      newValue = { ...character().spent_spell_slots, 'focus': 1 };
+    }
+
+    const payloadValue = { spent_spell_slots: newValue };
+    updateSpellSlots(payloadValue);
   }
 
   // освободить слот для сонтанного заклинание
   const freeSpellSlot = async (level) => {
-    const newValue = { ...character().spent_spell_slots, [level]: character().spent_spell_slots[level] - 1 };
+    const newValue = { ...props.spentSpellSlots, [level]: props.spentSpellSlots[level] - 1 };
 
+    let payloadValue = { spent_spell_slots: newValue };
+    if (level !== 'focus' && props.preparedBy) {
+      payloadValue = {
+        spent_archetype_spell_slots: { ...character().spent_archetype_spell_slots, [props.preparedBy]: newValue }
+      }
+    }
+    updateSpellSlots(payloadValue);
+  }
+
+  const freeFocusSlot = async () => {
+    const newValue = { ...character().spent_spell_slots, 'focus': character().spent_spell_slots.focus - 1 };
+
+    const payloadValue = { spent_spell_slots: newValue };
+    updateSpellSlots(payloadValue);
+  }
+
+  const updateSpellSlots = async (payloadValue) => {
     const result = await updateCharacterRequest(
-      appState.accessToken, character().provider, character().id, { character: { spent_spell_slots: newValue }, only_head: true }
+      appState.accessToken, character().provider, character().id, { character: payloadValue, only_head: true }
     );
     performResponse(
       result,
       function() { // eslint-disable-line solid/reactivity
-        props.onReplaceCharacter({ spent_spell_slots: newValue });
+        props.onReplaceCharacter(payloadValue);
       },
       function() { renderAlerts(result.errors_list) }
     );
@@ -241,7 +265,7 @@ export const Pathfinder2Spells = (props) => {
     e.stopPropagation();
 
     if (kind === 'default') {
-      const totalSlots = spellLevel === 0 ? character().spells_info.cantrip_slots : character().spells_info.spells_slots[spellLevel];
+      const totalSlots = spellLevel === 0 ? props.spellsInfo.cantrip_slots : props.spellsInfo.spells_slots[spellLevel];
       const activeSpellSlots = characterSpells().reduce((acc, item) => {
         if (item.kind !== 'default') return acc;
         if (!item.value[spellLevel]) return acc;
@@ -321,8 +345,10 @@ export const Pathfinder2Spells = (props) => {
                 <Pathfinder2SpellBook
                   kind={spellsSelectingMode()}
                   character={character()}
+                  spellsInfo={props.spellsInfo}
+                  preparedBy={props.preparedBy}
                   spells={
-                    spellsSelectingMode() == 'focus' ? spells().filter((item) => item.focus_for === character().main_class) : simpleSpells()
+                    spellsSelectingMode() === 'focus' ? spells().filter((item) => item.focus_for === (props.preparedBy || character().main_class)) : simpleSpells()
                   }
                   characterSpells={characterSpellsGroupByKind()[spellsSelectingMode()]}
                   onAddCharacterSpell={addCharacterSpell}
@@ -333,7 +359,7 @@ export const Pathfinder2Spells = (props) => {
               </Show>
             }
           >
-            <Show when={character().spells_info}>
+            <Show when={props.spellsInfo}>
               <StatsBlock
                 items={[
                   {
@@ -342,17 +368,17 @@ export const Pathfinder2Spells = (props) => {
                       <Dice
                         width="36"
                         height="36"
-                        text={modifier(character().spell_attack)}
-                        onClick={() => props.openDiceRoll('/check attack spell', character().spell_attack, localize(TRANSLATION, locale()).check)}
+                        text={modifier(props.spellsInfo.spell_attack)}
+                        onClick={() => props.openDiceRoll('/check attack spell', props.spellsInfo.spell_attack, localize(TRANSLATION, locale()).check)}
                       />
                   },
-                  { title: localize(TRANSLATION, locale()).saveDC, value: character().spell_dc },
+                  { title: localize(TRANSLATION, locale()).saveDC, value: props.spellsInfo.spell_dc },
                   { title: localize(TRANSLATION, locale()).cantripLevel, value: Math.round(character().level / 2) }
                 ]}
               />
             </Show>
             <Show
-              when={character().spells_info}
+              when={props.spellsInfo}
               fallback={
                 <Button default textable classList="mb-2" onClick={() => setSpellsSelectingMode('innate')}>
                   {localize(TRANSLATION, locale()).innateSpellBook}
@@ -374,7 +400,7 @@ export const Pathfinder2Spells = (props) => {
                 </Button>
               </div>
             </Show>
-            <Show when={character().spells_info?.prepare}>
+            <Show when={props.spellsInfo?.prepare}>
               <Checkbox
                 labelText={localize(TRANSLATION, locale()).renderMode}
                 labelPosition="right"
@@ -384,23 +410,23 @@ export const Pathfinder2Spells = (props) => {
                 onToggle={() => setRenderMode(!renderMode())}
               />
             </Show>
-            <Show when={renderMode() && character().spells_info}>
+            <Show when={renderMode() && props.spellsInfo}>
               <div class="flex justify-between items-center">
                 <h2 class="text-lg dark:text-snow mb-2">
                   {localize(TRANSLATION, locale()).focusSpells}
                 </h2>
                 {/* Фокальные ячейки заклинаний */}
                 <div class="flex">
-                  <For each={[...Array((character().spent_spell_slots.focus || 0)).keys()]}>
-                    {() => <Checkbox filled checked classList="mr-1" onToggle={() => freeSpellSlot('focus')} />}
+                  <For each={[...Array(props.spentFocusSlots).keys()]}>
+                    {() => <Checkbox filled checked classList="mr-1" onToggle={freeFocusSlot} />}
                   </For>
-                  <For each={[...Array((character().spells_info.spells_slots.focus || 3) - (character().spent_spell_slots.focus || 0)).keys()]}>
-                    {() => <Checkbox filled classList="mr-1" onToggle={() => spendSpellSlot('focus')} />}
+                  <For each={[...Array(3 - props.spentFocusSlots).keys()]}>
+                    {() => <Checkbox filled classList="mr-1" onToggle={spendFocusSlot} />}
                   </For>
                 </div>
               </div>
               <div class="flex flex-col gap-2 mb-4">
-                <For each={characterSpells().filter((item) => item.kind === 'focus')}>
+                <For each={classCharacterSpells().filter((item) => item.kind === 'focus')}>
                   {(characterSpell) =>
                     <Pathfinder2Spell noLevel spell={characterSpell.spell} cantripLevel={Math.round(character().level / 2)} />
                   }
@@ -417,30 +443,30 @@ export const Pathfinder2Spells = (props) => {
                       </Show>
                     </h2>
                     {/* Ячейки заклинаний спонтанных заклинателей */}
-                    <Show when={character().spells_info && level !== 0 && !character().spells_info.prepare}>
+                    <Show when={props.spellsInfo && level !== 0 && !props.spellsInfo.prepare}>
                       <div class="flex">
-                        <For each={[...Array((character().spent_spell_slots[level] || 0)).keys()]}>
+                        <For each={[...Array((props.spentSpellSlots[level] || 0)).keys()]}>
                           {() => <Checkbox filled checked classList="mr-1" onToggle={() => freeSpellSlot(level)} />}
                         </For>
-                        <For each={[...Array(character().spells_info.spells_slots[level] - (character().spent_spell_slots[level] || 0)).keys()]}>
+                        <For each={[...Array(props.spellsInfo.spells_slots[level] - (props.spentSpellSlots[level] || 0)).keys()]}>
                           {() => <Checkbox filled classList="mr-1" onToggle={() => spendSpellSlot(level)} />}
                         </For>
                       </div>
                     </Show>
-                    <Show when={character().spells_info?.prepare && !renderMode()}>
+                    <Show when={props.spellsInfo?.prepare && !renderMode()}>
                       <p class="dark:text-snow">
-                        {localize(TRANSLATION, locale()).prepareSlots} {level === 0 ? character().spells_info.cantrip_slots : character().spells_info.spells_slots[level]}
+                        {localize(TRANSLATION, locale()).prepareSlots} {level === 0 ? props.spellsInfo.cantrip_slots : props.spellsInfo.spells_slots[level]}
                       </p>
                     </Show>
                   </div>
-                  <Show when={character().spells_info}>
+                  <Show when={props.spellsInfo}>
                     <Show
-                      when={character().spells_info.prepare && !renderMode()}
+                      when={props.spellsInfo.prepare && !renderMode()}
                       fallback={
                         <Show
                           when={groupedCharacterSpells()[level] && groupedCharacterSpells()[level].filter((item) => item.value[level].selected_count !== 0).length > 0}
                           fallback={<p class="dark:text-snow mb-4">
-                            {character().spells_info.prepare ? localize(TRANSLATION, locale()).noPreparedSpells : localize(TRANSLATION, locale()).noSpells}</p>
+                            {props.spellsInfo.prepare ? localize(TRANSLATION, locale()).noPreparedSpells : localize(TRANSLATION, locale()).noSpells}</p>
                           }
                         >
                           {/* если спонтанный заклинатель (Бард) или включен режим отображения */}
@@ -457,7 +483,7 @@ export const Pathfinder2Spells = (props) => {
                                   level={level}
                                   onSignature={(e, value) => toggleSignature(e, characterSpell, value)}
                                 >
-                                  <Show when={character().spells_info.prepare && characterSpell.spell.info.level > 0}>
+                                  <Show when={props.spellsInfo.prepare && characterSpell.spell.info.level > 0}>
                                     {/* Ячейки заклинаний подготавливающих заклинателей */}
                                     <div class="flex">
                                       <For each={[...Array((characterSpell.value[level].used_count || 0)).keys()]}>
@@ -497,7 +523,7 @@ export const Pathfinder2Spells = (props) => {
                               >
                                 <div class="flex flex-col items-end gap-2">
                                   <p class="text-sm">{localize(TRANSLATION, locale()).kinds[characterSpell.kind]}</p>
-                                  <For each={Object.entries(character().spells_info.spells_slots)}>
+                                  <For each={Object.entries(props.spellsInfo.spells_slots)}>
                                     {([level,]) =>
                                       <Show when={level >= characterSpell.spell.info.level}>
                                         <div class="flex gap-2">

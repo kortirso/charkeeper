@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class Pathfinder2Decorator < ApplicationDecoratorV2
+  include Pathfinder2::Concerns
+
   ARMOR_TYPES = %w[armor shield].freeze
   FLEXIBLE_SKILLS = %w[acrobatics athletics].freeze
   ARMOR_ABILITIES = %w[str dex].freeze
@@ -30,14 +32,15 @@ class Pathfinder2Decorator < ApplicationDecoratorV2
     find_general_attack_modifiers
     find_attacks
 
-    @result = Pathfinder2::ClassDecorator.new.call(result: @result)
+    Pathfinder2::ClassDecorator.new.call(result: @result)
+    Pathfinder2::ArchetypesDecorator.new.call(result: @result)
 
     apply_add_modifiers
     update_speeds
 
     @result['features'] = apply_features
     @result['formatted_static_spells'] = format_static_spells
-    @result = @result.except('selected_features', 'defense_gear')
+    @result = @result.except('selected_features', 'defense_gear', 'base_spell_attack', 'base_spell_dc')
 
     self
   end
@@ -54,6 +57,10 @@ class Pathfinder2Decorator < ApplicationDecoratorV2
     @result['no_armor'] = defense_gear.values.all?(&:nil?)
     @result['max_dying'] = 4
     @result['info'] = find_info
+    @result['archetypes'] = archetypes
+    @result['archetype_spells'] = {}
+    @result['base_spell_attack'] = spell_attack
+    @result['base_spell_dc'] = spell_dc
   end
 
   def apply_add_bonuses_to_abilities
@@ -320,12 +327,6 @@ class Pathfinder2Decorator < ApplicationDecoratorV2
     return modified_abilities['str'] if type == 'melee'
 
     modified_abilities['dex']
-  end
-
-  def proficiency_bonus(proficiency_level)
-    return 0 if proficiency_level.to_i.zero?
-
-    level + (proficiency_level * 2)
   end
 
   def find_modifiers(key, type)
