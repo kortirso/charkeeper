@@ -992,7 +992,12 @@
     },
     "origin": "archetype",
     "origin_values": ["archetype"],
-    "conditions": { "level": 4 }
+    "conditions": { "level": 4 },
+    "info": {
+      "change_character": [
+        { "type": "merge_with_sum", "attr": "archetypes.bard", "value": 1 }
+      ]
+    }
   },
   {
     "slug": "basic_muse's_whispers",
@@ -1007,7 +1012,12 @@
     },
     "origin": "archetype",
     "origin_values": ["archetype"],
-    "conditions": { "level": 4 }
+    "conditions": { "level": 4 },
+    "info": {
+      "change_character": [
+        { "type": "merge_with_sum", "attr": "archetypes.bard", "value": 1 }
+      ]
+    }
   },
   {
     "slug": "basic_cleric_spellcasting",
@@ -1022,7 +1032,12 @@
     },
     "origin": "archetype",
     "origin_values": ["archetype"],
-    "conditions": { "level": 4 }
+    "conditions": { "level": 4 },
+    "info": {
+      "change_character": [
+        { "type": "merge_with_sum", "attr": "archetypes.cleric", "value": 1 }
+      ]
+    }
   },
   {
     "slug": "basic_dogma",
@@ -1037,7 +1052,12 @@
     },
     "origin": "archetype",
     "origin_values": ["archetype"],
-    "conditions": { "level": 4 }
+    "conditions": { "level": 4 },
+    "info": {
+      "change_character": [
+        { "type": "merge_with_sum", "attr": "archetypes.cleric", "value": 1 }
+      ]
+    }
   },
   {
     "slug": "basic_druid_spellcasting",
@@ -1052,7 +1072,12 @@
     },
     "origin": "archetype",
     "origin_values": ["archetype"],
-    "conditions": { "level": 4 }
+    "conditions": { "level": 4 },
+    "info": {
+      "change_character": [
+        { "type": "merge_with_sum", "attr": "archetypes.druid", "value": 1 }
+      ]
+    }
   },
   {
     "slug": "basic_wilding",
@@ -1067,7 +1092,12 @@
     },
     "origin": "archetype",
     "origin_values": ["archetype"],
-    "conditions": { "level": 4 }
+    "conditions": { "level": 4 },
+    "info": {
+      "change_character": [
+        { "type": "merge_with_sum", "attr": "archetypes.druid", "value": 1 }
+      ]
+    }
   },
   {
     "slug": "order_spell",
@@ -1082,7 +1112,12 @@
     },
     "origin": "archetype",
     "origin_values": ["archetype"],
-    "conditions": { "level": 4 }
+    "conditions": { "level": 4 },
+    "info": {
+      "change_character": [
+        { "type": "merge_with_sum", "attr": "archetypes.druid", "value": 1 }
+      ]
+    }
   },
   {
     "slug": "basic_maneuver",
@@ -1097,7 +1132,12 @@
     },
     "origin": "archetype",
     "origin_values": ["archetype"],
-    "conditions": { "level": 4 }
+    "conditions": { "level": 4 },
+    "info": {
+      "change_character": [
+        { "type": "merge_with_sum", "attr": "archetypes.fighter", "value": 1 }
+      ]
+    }
   },
   {
     "slug": "fighter_resiliency",
@@ -1112,7 +1152,12 @@
     },
     "origin": "archetype",
     "origin_values": ["archetype"],
-    "conditions": { "level": 4 }
+    "conditions": { "level": 4 },
+    "info": {
+      "change_character": [
+        { "type": "merge_with_sum", "attr": "archetypes.fighter", "value": 1 }
+      ]
+    }
   },
   {
     "slug": "reactive_striker",
@@ -1128,7 +1173,12 @@
     "origin": "archetype",
     "origin_values": ["archetype"],
     "conditions": { "level": 4 },
-    "info": { "extra_feats": ["reactive_strike"] }
+    "info": {
+      "extra_feats": ["reactive_strike"],
+      "change_character": [
+        { "type": "merge_with_sum", "attr": "archetypes.fighter", "value": 1 }
+      ]
+    }
   },
   {
     "slug": "basic_hunter's_trick",
@@ -1143,7 +1193,12 @@
     },
     "origin": "archetype",
     "origin_values": ["archetype"],
-    "conditions": { "level": 4 }
+    "conditions": { "level": 4 },
+    "info": {
+      "change_character": [
+        { "type": "merge_with_sum", "attr": "archetypes.ranger", "value": 1 }
+      ]
+    }
   },
   {
     "slug": "ranger_resiliency",
@@ -1158,7 +1213,12 @@
     },
     "origin": "archetype",
     "origin_values": ["archetype"],
-    "conditions": { "level": 4 }
+    "conditions": { "level": 4 },
+    "info": {
+      "change_character": [
+        { "type": "merge_with_sum", "attr": "archetypes.ranger", "value": 1 }
+      ]
+    }
   },
   {
     "slug": "basic_trickery",
@@ -1173,7 +1233,12 @@
     },
     "origin": "archetype",
     "origin_values": ["archetype"],
-    "conditions": { "level": 4 }
+    "conditions": { "level": 4 },
+    "info": {
+      "change_character": [
+        { "type": "merge_with_sum", "attr": "archetypes.rogue", "value": 1 }
+      ]
+    }
   },
   {
     "slug": "sneak_attacker",
@@ -1189,7 +1254,12 @@
     "origin": "archetype",
     "origin_values": ["archetype"],
     "conditions": { "level": 4 },
-    "info": { "extra_feats": ["sneak_attack"] }
+    "info": {
+      "extra_feats": ["sneak_attack"],
+      "change_character": [
+        { "type": "merge_with_sum", "attr": "archetypes.rogue", "value": 1 }
+      ]
+    }
   },
   {
     "slug": "basic_witch_spellcasting",
@@ -1204,7 +1274,12 @@
     },
     "origin": "archetype",
     "origin_values": ["archetype"],
-    "conditions": { "level": 4 }
+    "conditions": { "level": 4 },
+    "info": {
+      "change_character": [
+        { "type": "merge_with_sum", "attr": "archetypes.witch", "value": 1 }
+      ]
+    }
   },
   {
     "slug": "basic_witchcraft",
@@ -1219,7 +1294,12 @@
     },
     "origin": "archetype",
     "origin_values": ["archetype"],
-    "conditions": { "level": 4 }
+    "conditions": { "level": 4 },
+    "info": {
+      "change_character": [
+        { "type": "merge_with_sum", "attr": "archetypes.witch", "value": 1 }
+      ]
+    }
   },
   {
     "slug": "arcane_school_spell",
@@ -1234,7 +1314,12 @@
     },
     "origin": "archetype",
     "origin_values": ["archetype"],
-    "conditions": { "level": 4 }
+    "conditions": { "level": 4 },
+    "info": {
+      "change_character": [
+        { "type": "merge_with_sum", "attr": "archetypes.wizard", "value": 1 }
+      ]
+    }
   },
   {
     "slug": "basic_arcana",
@@ -1249,7 +1334,12 @@
     },
     "origin": "archetype",
     "origin_values": ["archetype"],
-    "conditions": { "level": 4 }
+    "conditions": { "level": 4 },
+    "info": {
+      "change_character": [
+        { "type": "merge_with_sum", "attr": "archetypes.wizard", "value": 1 }
+      ]
+    }
   },
   {
     "slug": "basic_wizard_spellcasting",
@@ -1264,6 +1354,11 @@
     },
     "origin": "archetype",
     "origin_values": ["archetype"],
-    "conditions": { "level": 4 }
+    "conditions": { "level": 4 },
+    "info": {
+      "change_character": [
+        { "type": "merge_with_sum", "attr": "archetypes.wizard", "value": 1 }
+      ]
+    }
   }
 ]

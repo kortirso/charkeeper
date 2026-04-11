@@ -14,7 +14,7 @@ module Pathfinder2
         return if available_features_slugs.exclude?('ranger_resiliency')
         return if Pathfinder2Decorator::CLASS_HP[main_class] > 8
 
-        @result['health']['max'] += 3 * archetypes['ranger'].values.size
+        @result['health']['max'] += 3 * archetypes['ranger']
       end
     end
   end
