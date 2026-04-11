@@ -13,6 +13,9 @@ const TRANSLATION = {
   },
   ru: {
     weaponMastery: 'Оружейное мастерство'
+  },
+  es: {
+    weaponMastery: 'Maestría de armas'
   }
 }
 

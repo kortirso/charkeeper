@@ -18,6 +18,11 @@ const TRANSLATION = {
     skills: 'Навыки',
     skillBoosts: 'У вас есть очки навыков для распределения',
     add: 'Добавить навык'
+  },
+  es: {
+    skills: 'Habilidades',
+    skillBoosts: 'Tienes puntos de habilidad para gastar',
+    add: 'Agregar habilidad'
   }
 }
 

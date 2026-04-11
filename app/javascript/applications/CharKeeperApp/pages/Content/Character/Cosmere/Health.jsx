@@ -14,6 +14,11 @@ const TRANSLATION = {
     health: 'Здоровье',
     focus: 'Фокус',
     investiture: 'Инвеститура',
+  },
+  es: {
+    health: 'Salud',
+    focus: 'Enfoque',
+    investiture: 'Investidura',
   }
 }
 

@@ -15,8 +15,8 @@ const TRANSLATION = {
     'size': 'Размер'
   },
   es: {
-    'ancestry': 'Ancestry',
-    'size': 'Size'
+    'ancestry': 'Ancestría',
+    'size': 'Tamaño'
   }
 }
 

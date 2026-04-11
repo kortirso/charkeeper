@@ -17,6 +17,11 @@ const TRANSLATION = {
     attributePoints: 'Очки атрибутов для распределения',
     helpMessage: 'Ваш персонаж начинает с -2 во всех атрибутах. Вы можете потратить Очки Атрибутов для увеличения любых атрибутов вплоть до максимума (3).',
     save: 'Спас'
+  },
+  es: {
+    attributePoints: 'Puntos de atributo gratis',
+    helpMessage: 'Comienzas con un -2 en todos tus Atributos. Luego ganas Puntos de Atributo para aumentar los Atributos que quieras, hasta el Límite de Atributo (3).',
+    save: 'Guardar'
   }
 }
 

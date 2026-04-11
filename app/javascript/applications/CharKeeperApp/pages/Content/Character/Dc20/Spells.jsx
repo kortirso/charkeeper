@@ -64,6 +64,32 @@ const TRANSLATION = {
     },
     attack: 'Бонус атаки',
     repeatable: 'Многократное'
+  },
+  es: {
+    mana_spend_limit: 'Límite de gasto de maná',
+    spells: 'Hechizos',
+    selectSpells: 'Seleccionar hechizos',
+    back: 'Atrás',
+    spellIsLearned: 'Hechizo aprendido',
+    range: 'Alcance',
+    price: 'Precio',
+    duration: 'Duración',
+    instant: 'Instantáneo',
+    hours: 'horas',
+    minutes: 'minutos',
+    self: 'a sí mismo',
+    squares: 'espacios',
+    enhancements: 'Mejoras',
+    onlyAvailableSpells: 'Solo hechizos disponibles',
+    prices: {
+      ap: 'PA',
+      mp: 'PM'
+    },
+    features: {
+      'Long-Ranged': 'Largo Alcance'
+    },
+    attack: 'Tirada de Hechizo',
+    repeatable: 'Repetible'
   }
 }
 

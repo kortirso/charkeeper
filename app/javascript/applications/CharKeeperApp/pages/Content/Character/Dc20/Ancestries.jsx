@@ -25,6 +25,15 @@ const TRANSLATION = {
     minorTraitsAlert: 'Максимум 1 малая черта',
     negativeTraitsAlert: 'Максимум 2 отрицательные черты',
     showDescription: 'Показывать описание'
+  },
+  es: {
+    saveButton: 'Guardar',
+    ancestries: 'Ancestrías',
+    ancestryPoints: 'Puntos',
+    manyAncestriesAlert: 'Máximo 2 ancestrías',
+    minorTraitsAlert: 'Máximo 1 rasgo menor',
+    negativeTraitsAlert: 'Máximo 2 rasgos negativos',
+    showDescription: 'Mostrar descripción'
   }
 }
 

@@ -24,12 +24,12 @@ const TRANSLATION = {
     subrace: 'Подраса'
   },
   es: {
-    alignment: 'Alignment',
-    background: 'Background',
-    species: 'Species',
-    legacy: 'Legacy',
-    race: 'Race',
-    subrace: 'Subrace'
+    alignment: 'Alineamiento',
+    background: 'Trasfondo',
+    species: 'Especies',
+    legacy: 'Legado',
+    race: 'Raza',
+    subrace: 'Subrazа'
   }
 }
 

@@ -21,6 +21,13 @@ const TRANSLATION = {
     shortDesc: 'В конце короткого отдыха персонаж может потратить одну или несколько Костей Хитов. Каждая потраченная кость позволяет совершить бросок соответствующей кости, добавить к ней модификатор Телосложения и восстановить получившееся количество хитов.',
     longDesc: 'В конце продолжительного отдыха персонаж восстанавливает все потраченные хиты, а также половину от максимума Костей Хитов и все потраченные ячейки заклинаний.',
     makeRolls: 'Автоматические броски'
+  },
+  es: {
+    short: 'Descanso corto',
+    long: 'Descanso largo',
+    shortDesc: "Al final de un descanso corto, un personaje puede gastar uno o más Dados de Golpe. Cada dado gastado permite al personaje tirar el dado correspondiente, agregar el modificador de Constitución del personaje y recuperar la cantidad resultante de puntos de vida.",
+    longDesc: 'Al final de un descanso largo, el personaje recupera todos los puntos de salud gastados, además de la mitad de los Dados de Golpe máximos y todas las ranuras de hechizos gastadas.',
+    makeRolls: 'Hacer tiradas automáticas'
   }
 }
 

@@ -82,6 +82,41 @@ const TRANSLATION = {
     selectAdditionalTalent: 'Выберите дополнительную черту (если хотите)',
     updated: 'Персонаж обновлён',
     showDescription: 'Показывать описание'
+  },
+  es: {
+    currentLevel: 'nivel',
+    paths: 'Trayectorias del personaje',
+    existingPoints: 'Puntos de trayectoria',
+    martialPathLevel: 'Nivel de trayectoria marcial',
+    spellcasterPathLevel: 'Nivel de trayectoria de lanzador de conjuros',
+    title: 'Obtienes beneficios adicionales de un Talento de Trayectoria: Trayectoria Marcial o Trayectoria de Lanzador de Conjuros',
+    maneuvers: 'Maniobras',
+    maneuverPoints: 'Maniobras disponibles',
+    attack: {
+      title: 'Maniobras de ataque'
+    },
+    defense: {
+      title: 'Maniobras de defensa'
+    },
+    grapple: {
+      title: 'Maniobras de agarre'
+    },
+    utility: {
+      title: 'Maniobras de utilidad'
+    },
+    talents: 'Talentos',
+    existingTalentPoints: 'Talentos disponibles',
+    selectedTalents: 'Talentos seleccionados',
+    saveButton: 'Guardar',
+    selectTalent: 'Selecciona un nuevo talento',
+    selectMulticlassFeature: 'Selecciona una característica de multiclase',
+    selectSubclass: 'Selecciona una subclase',
+    paragon: 'Paragón',
+    general: 'General',
+    multiclass: 'Multiclase',
+    selectAdditionalTalent: 'Selecciona un talento adicional (si lo necesitas)',
+    updated: 'Personaje actualizado',
+    showDescription: 'Mostrar descripción'
   }
 }
 

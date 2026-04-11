@@ -51,6 +51,28 @@ const TRANSLATION = {
     impact: 'Тип воздействия',
     impactType: 'Тип урона',
     impactValue: 'Значение'
+  },
+  es: {
+    title: 'Impacto de daño',
+    immune: 'Inmunidad',
+    vulner: 'Vulnerable',
+    resist: 'Resistencia',
+    nothing: 'El personaje no tiene ninguna resistencia o vulnerabilidad',
+    damageCalculator: 'Calculadora de daño',
+    damageValue: 'Daño entrante',
+    damageType: 'Tipo de daño',
+    damageResult: 'Resultado',
+    half: 'Mitad',
+    double: 'Doble',
+    impacts: {
+      immune: 'Inmunidad',
+      resist: 'Resistencia',
+      vulner: 'Vulnerabilidad'
+    },
+    manual: 'Valores manuales',
+    impact: 'Impacto de daño',
+    impactType: 'Tipo de daño',
+    impactValue: 'Valor'
   }
 }
 

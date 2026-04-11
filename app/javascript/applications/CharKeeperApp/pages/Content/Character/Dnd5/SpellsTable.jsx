@@ -28,6 +28,17 @@ const TRANSLATION = {
     spellNote: 'Заметка о заклинании',
     static: 'Врождённое',
     save: 'Сохранить'
+  },
+  es: {
+    attackBonus: 'bonificación de ataque',
+    saveDC: 'DC de salvación',
+    perDay: ' veces por día',
+    spellLevel: 'a nivel',
+    cantrips: 'Trucos',
+    level: 'nivel',
+    spellNote: 'Nota del hechizo',
+    static: 'Estático',
+    save: 'Guardar'
   }
 }
 

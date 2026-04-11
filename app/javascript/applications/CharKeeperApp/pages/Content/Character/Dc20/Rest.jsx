@@ -35,6 +35,21 @@ const TRANSLATION = {
     description: 'Это происходит во время исследования, но это определенные моменты, когда персонажи останавливаются, чтобы отдохнуть и восстановить свои ресурсы.',
     complete: 'Отдых завершён',
     rest: 'Провести отдых'
+  },
+  es: {
+    values: {
+      combat: 'Después del combate',
+      quick: 'Rápido',
+      short: 'Corto',
+      half_long: 'Medio Largo',
+      complete_long: 'Largo',
+      full: 'Completo'
+    },
+    valueLabel: 'Seleccionar tipo de descanso',
+    pointsLabel: 'Gastar Puntos de Descanso',
+    description: 'Esto sucede durante la Exploración pero son momentos específicos cuando los jugadores se detienen a descansar y recuperar sus recursos.',
+    complete: 'El descanso fue completado',
+    rest: 'Tomar descanso'
   }
 }
 

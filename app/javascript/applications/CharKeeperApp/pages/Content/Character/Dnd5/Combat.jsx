@@ -22,6 +22,12 @@ const TRANSLATION = {
     swim: 'Скорость плавания',
     climb: 'Скорость лазания',
     check: 'Инициатива'
+  },
+  es: {
+    flight: 'Velocidad de vuelo',
+    swim: 'Velocidad de nado',
+    climb: 'Velocidad de trepar',
+    check: 'Iniciativa'
   }
 }
 

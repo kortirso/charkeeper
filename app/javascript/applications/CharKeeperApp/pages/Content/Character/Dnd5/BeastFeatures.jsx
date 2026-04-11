@@ -10,6 +10,9 @@ const TRANSLATION = {
   },
   ru: {
     title: 'Способности облика'
+  },
+  es: {
+    title: 'Características de forma salvaje'
   }
 }
 

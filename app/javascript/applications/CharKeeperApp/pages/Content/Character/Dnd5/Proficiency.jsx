@@ -18,6 +18,12 @@ const TRANSLATION = {
     hitDices: 'Кости хитов',
     heroic: 'Героическое вдохновение',
     bardic: 'Бардовское вдохновение'
+  },
+  es: {
+    proficiencyBonus: 'Bonificación de competencia',
+    hitDices: 'Dados de golpe',
+    heroic: 'Inspiración heroica',
+    bardic: 'Inspiración bardica'
   }
 }
 

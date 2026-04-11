@@ -30,6 +30,17 @@ const TRANSLATION = {
     overLeveled: 'Потрачено много очков навыков на навыки на 1 уровне',
     check: 'Навык',
     warning: 'Максимальный ранг на 1 уровне - 3, на остальных - 6, обученность навыку даёт +2 к рангу.'
+  },
+  es: {
+    helpMessage: 'Rellena los datos sobre las habilidades.',
+    skillBoosts: 'Puntos de habilidad',
+    skillTagBoosts: 'Etiquetas de habilidad',
+    skills: 'Habilidades',
+    needSpend: 'Necesitas gastar todos los puntos de habilidad',
+    overQualified: 'Demasiados puntos de habilidad gastados por habilidad',
+    overLeveled: 'Demasiados puntos de habilidad gastados por habilidad en el nivel 1',
+    check: 'Habilidad',
+    warning: 'El rango máxim0 en el nivel 1 es 3, en los demás es 6, aprender una habilidad da +2 al rango.'
   }
 }
 

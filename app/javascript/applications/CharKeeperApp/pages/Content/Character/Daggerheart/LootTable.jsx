@@ -42,19 +42,19 @@ const TRANSLATION = {
     loot: 'Полутать'
   },
   es: {
-    title: 'Loot tables',
-    typeLabel: 'Type',
-    rarityLabel: 'Rarity',
-    dicesLabel: 'Dices',
+    title: 'Tabla de loot',
+    typeLabel: 'Tipo',
+    rarityLabel: 'Rareza',
+    dicesLabel: 'Dados',
     types: {
-      item: 'Items table',
-      consumables: 'Consumables table'
+      item: 'Tabla de items',
+      consumables: 'Tabla de consumibles'
     },
     rarities: {
-      common: 'Common',
-      uncommon: 'Uncommon',
-      rare: 'Rare',
-      legendary: 'Legendary'
+      common: 'Común',
+      uncommon: 'Poco común',
+      rare: 'Raro',
+      legendary: 'Legendario'
     },
     loot: 'Loot'
   }

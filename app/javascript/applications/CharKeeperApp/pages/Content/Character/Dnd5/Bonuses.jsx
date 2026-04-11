@@ -56,6 +56,9 @@ const TRANSLATION = {
   },
   ru: {
     save: 'спасбросок'
+  },
+  es: {
+    save: 'tirada de salvación'
   }
 };
 const ABILITIES = ['str', 'dex', 'con', 'int', 'wis', 'cha'];

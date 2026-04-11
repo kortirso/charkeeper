@@ -17,6 +17,11 @@ const TRANSLATION = {
     abilityBoosts: 'У вас есть очки атрибутов для распределения',
     helpMessage: 'Ваш персонаж может начать со стандартным набором характеристик.',
     needSpend: 'Необходимо потратить все очки атрибутов'
+  },
+  es: {
+    abilityBoosts: 'Tienes puntos de atributo para distribuir',
+    helpMessage: 'Tu personaje puede comenzar con un conjunto estándar de habilidades.',
+    needSpend: 'Por favor, gasta todos los puntos de habilidad'
   }
 }
 
