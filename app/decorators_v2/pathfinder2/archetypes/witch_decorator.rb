@@ -5,9 +5,15 @@ module Pathfinder2
     class WitchDecorator < ApplicationDecoratorV2
       include Pathfinder2::Concerns
 
-      def call(result:) # rubocop: disable Metrics/AbcSize
+      def call(result:)
         @result = result
-        @result['archetype_spells']['witch'] = {
+        @result['archetype_spells']['witch'] = find_spells_info if selected_features['witch_dedication']
+      end
+
+      private
+
+      def find_spells_info
+        {
           'prepare' => true,
           'learn' => true,
           'cantrips_amount' => 2,
@@ -17,11 +23,13 @@ module Pathfinder2
           'max_spell_level' => spells_slots.keys.max.to_i,
           'spell_attack' => modified_abilities['int'] + proficiency_bonus(base_spell_attack.to_i),
           'spell_dc' => 10 + modified_abilities['int'] + proficiency_bonus(base_spell_dc.to_i),
-          'spell_list' => 'arcane' # ?
+          'spell_list' => spell_list
         }
       end
 
-      private
+      def spell_list
+        "Pathfinder2Character::Subclasses::#{selected_features['witch_dedication'].camelize}Builder".constantize::SPELL_LIST
+      end
 
       def spells_amount
         spells_slots.keys.max.to_i * 2
