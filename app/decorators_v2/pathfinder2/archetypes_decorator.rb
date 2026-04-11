@@ -8,6 +8,8 @@ module Pathfinder2
       end
     end
 
+    private
+
     def archetype_decorator(result, key)
       "Pathfinder2::Archetypes::#{key.camelize}Decorator".constantize.new.call(result: result)
     rescue NameError => _e
