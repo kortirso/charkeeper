@@ -66,6 +66,7 @@ export const Pathfinder2 = (props) => {
   const generalFilter = (item) => item.origin === 'general';
   const skillFilter = (item) => item.origin === 'skill';
   const companionFilter = (item) => item.origin === 'pet' || item.origin === 'familiar';
+  const archetypeFilter = (item) => item.origin === 'archetype';
 
   const featFilters = createMemo(() => {
     const result = [
@@ -74,6 +75,7 @@ export const Pathfinder2 = (props) => {
       { title: 'general', callback: generalFilter },
       { title: 'skill', callback: skillFilter }
     ];
+    if (Object.keys(character().archetypes).length > 0) result.push({ title: 'archetype', callback: archetypeFilter });
     if (character().can_have_pet || character().can_have_familiar) result.push({ title: 'companion', callback: companionFilter });
     return result;
   });
@@ -149,12 +151,8 @@ export const Pathfinder2 = (props) => {
                 <Feats
                   character={character()}
                   filters={featFilters()}
+                  config={config}
                   skills={configSkills()}
-                  spellLists={translate(config.skills, locale())}
-                  classes={translate(config.classes, locale())}
-                  races={translate(config.races, locale())}
-                  weaponGroups={translate(config.weaponGroups, locale())}
-                  subclasses={translate((config.classes[character().main_class].subclasses || {}), locale())}
                   onReplaceCharacter={props.onReplaceCharacter}
                   onReloadCharacter={props.onReloadCharacter}
                 />
@@ -291,12 +289,8 @@ export const Pathfinder2 = (props) => {
                 <Feats
                   character={character()}
                   filters={featFilters()}
+                  config={config}
                   skills={configSkills()}
-                  spellLists={translate(config.spellLists, locale())}
-                  classes={translate(config.classes, locale())}
-                  races={translate(config.races, locale())}
-                  weaponGroups={translate(config.weaponGroups, locale())}
-                  subclasses={translate((config.classes[character().main_class].subclasses || {}), locale())}
                   onReplaceCharacter={props.onReplaceCharacter}
                   onReloadCharacter={props.onReloadCharacter}
                 />

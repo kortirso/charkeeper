@@ -6,8 +6,12 @@ export const StatsBlock = (props) => {
   return (
     <div class="blockable mb-2">
       <div
-        class="p-4 flex"
-        classList={{ 'cursor-pointer': props.onClick }}
+        class="py-4 grid"
+        classList={{
+          'grid-cols-2 md:grid-cols-4 gap-2': props.items.length === 4,
+          'grid-cols-3 gap-x-2': props.items.length === 3,
+          'cursor-pointer': props.onClick
+        }}
         onClick={props.onClick} // eslint-disable-line solid/reactivity
       >
         <For each={props.items}>

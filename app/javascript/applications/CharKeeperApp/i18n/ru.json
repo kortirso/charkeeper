@@ -67,7 +67,8 @@
       "campaignCharacters": "Персонажи",
       "perks": "Перки",
       "general": "Общие",
-      "skill": "Навыки"
+      "skill": "Навыки",
+      "archetype": "Архетип"
     },
     "campaignsPage": {
       "title": "Кампании",
