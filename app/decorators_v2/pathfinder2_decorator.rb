@@ -17,6 +17,7 @@ class Pathfinder2Decorator < ApplicationDecoratorV2
     'bard' => 8, 'witch' => 6, 'fighter' => 10, 'wizard' => 6, 'druid' => 8, 'cleric' => 8, 'rogue' => 8, 'ranger' => 10
   }.freeze
   FAMILIAR_FEATS = %w[animal_accomplice leshy_familiar familiar].freeze
+  ANIMAL_FEATS = %w[druid_animal_companion ranger_animal_companion].freeze
 
   def call(character:, simple: false, version: nil)
     @character = character
@@ -92,6 +93,7 @@ class Pathfinder2Decorator < ApplicationDecoratorV2
     @result['can_have_signature_spells'] = available_features_slugs.include?('signature_spells')
     @result['can_have_pet'] = available_features_slugs.include?('pet')
     @result['can_have_familiar'] = available_features_slugs.intersect?(FAMILIAR_FEATS)
+    @result['can_have_animal'] = available_features_slugs.intersect?(ANIMAL_FEATS)
     @result['total_damage_reduction'] = calc_total_damage_reduction
     @result['available_features_slugs'] = available_features_slugs
   end

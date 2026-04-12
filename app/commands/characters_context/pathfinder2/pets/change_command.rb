@@ -10,7 +10,7 @@ module CharactersContext
         ]
 
         use_contract do
-          config.messages.namespace = :character_companion
+          config.messages.namespace = :pathfinder2_pet
 
           params do
             required(:pet).filled(type?: ::Pathfinder2::Character::Pet)

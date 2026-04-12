@@ -1,0 +1,451 @@
+{
+  "wolf": {
+    "size": "small",
+    "abilities": { "str": 2, "dex": 3, "con": 2, "int": -4, "wis": 1, "cha": 0 },
+    "health": 6,
+    "skill": "survival",
+    "speeds": { "default": 40 },
+    "vision": "low-light",
+    "attacks": [
+      {
+        "slug": "jaws",
+        "name": { "en": "Jaws", "ru": "Челюсти" },
+        "type": "melee",
+        "damage": "1d8",
+        "damage_type": "pierce",
+        "tooltips": ["finesse"],
+        "weapon_skill": "unarmed"
+      }
+    ],
+    "support": {
+      "en": "Your wolf tears tendons with each opening. Until the start of your next turn, your Strikes that damage creatures your wolf threatens give the target a –5-foot status penalty to its Speeds for 1 minute (–10 on a critical success).",
+      "ru": "Волк вцепляется в сухожилия противника при каждой возможности. До начала вашего следующего хода все ваши Удары, которые наносят урон цели в зоне досягаемости волка, налагают на цель штраф состояния -5 футов ко всем скоростям на 1 минуту (-10 при критическом ударе)."
+    }
+  },
+  "bird": {
+    "size": "small",
+    "abilities": { "str": 2, "dex": 3, "con": 1, "int": -4, "wis": 2, "cha": 0 },
+    "health": 4,
+    "skill": "stealth",
+    "speeds": { "default": 10, "fly": 60 },
+    "vision": "low-light",
+    "attacks": [
+      {
+        "slug": "jaws",
+        "name": { "en": "Jaws", "ru": "Челюсти" },
+        "type": "melee",
+        "damage": "1d6",
+        "damage_type": "pierce",
+        "tooltips": ["finesse"],
+        "weapon_skill": "unarmed"
+      },
+      {
+        "slug": "talon",
+        "name": { "en": "Talon", "ru": "Лапы" },
+        "type": "melee",
+        "damage": "1d4",
+        "damage_type": "slash",
+        "tooltips": ["agile", "finesse"],
+        "weapon_skill": "unarmed"
+      }
+    ],
+    "support": {
+      "en": "The bird pecks at your foes' eyes when you create an opening. Until the start of your next turn, your Strikes that damage a creature that your bird threatens also deal 1d4 persistent bleed damage, and the target is dazzled until it removes the bleed damage. If your bird is nimble or savage, the persistent bleed damage increases to 2d4.",
+      "ru": "Когда вы отвлекаете противника, птица пытается выклевать ему глаза. До начала вашего следующего хода ваши Удары, которые наносят урон цели в зоне досягаемости вашей птицы, дополнительно наносят 1d4 продолжительного урона от кровотечения. Цель получает растерянность, пока не избавится от этого продолжительного урона. Если ваша птица ловкая или лютая, продолжительный урон от кровотечения увеличивается до 2d4."
+    }
+  },
+  "shark": {
+    "size": "small",
+    "abilities": { "str": 3, "dex": 2, "con": 2, "int": -4, "wis": 1, "cha": 0 },
+    "health": 6,
+    "skill": "stealth",
+    "speeds": { "swim": 40 },
+    "vision": null,
+    "attacks": [
+      {
+        "slug": "jaws",
+        "name": { "en": "Jaws", "ru": "Челюсти" },
+        "type": "melee",
+        "damage": "1d8",
+        "damage_type": "pierce",
+        "tooltips": [],
+        "weapon_skill": "unarmed"
+      }
+    ],
+    "support": {
+      "en": "When your shark senses blood, it tears into your enemies. Until the start of your next turn, each time you hit a creature in the shark's reach with a Strike and deal slashing or piercing damage, the creature takes 1d8 slashing damage from the shark. If your shark is nimble or savage, the slashing damage increases to 2d8.",
+      "ru": "Почуяв кровь, ваша акула вгрызается во врага. До начала вашего следующего хода, каждый раз, когда вы попадаете Ударом по существу в зоне досягаемости акулы и наносите колющий или режущий урон, оно получает 1d8 режущего урона от акулы. Если ваша акула ловкая или лютая, режущий урон увеличивается до 2d8."
+    }
+  },
+  "badger": {
+    "size": "small",
+    "abilities": { "str": 2, "dex": 2, "con": 2, "int": -4, "wis": 2, "cha": 0 },
+    "health": 8,
+    "skill": "survival",
+    "speeds": { "default": 25, "climb": 10, "burrow": 10 },
+    "vision": "low-light",
+    "attacks": [
+      {
+        "slug": "jaws",
+        "name": { "en": "Jaws", "ru": "Челюсти" },
+        "type": "melee",
+        "damage": "1d8",
+        "damage_type": "pierce",
+        "tooltips": [],
+        "weapon_skill": "unarmed"
+      },
+      {
+        "slug": "claw",
+        "name": { "en": "Claw", "ru": "Когти" },
+        "type": "melee",
+        "damage": "1d6",
+        "damage_type": "slash",
+        "tooltips": ["agile"],
+        "weapon_skill": "unarmed"
+      }
+    ],
+    "support": {
+      "en": "Your badger digs around your foe's position, interfering with its footing. Until the start of your next turn, if you hit and deal damage to a creature your badger threatens, the target can't use a Step action (unless it can Step through difficult terrain) until it moves from its current position.",
+      "ru": "Ваш барсук роет землю вокруг противника, мешая ему перемещаться. Если вы до начала своего следующего хода атакуете и нанесёте урон противнику, который в зоне досягаемости вашего барсука, цель не может использовать Шаг (если не обладает способностью, позволяющей сделать Шаг на пересечённую местность), пока не переместится с занимаемого места."
+    }
+  },
+  "dromaeosaur": {
+    "size": "small",
+    "abilities": { "str": 2, "dex": 3, "con": 2, "int": -4, "wis": 1, "cha": 0 },
+    "health": 6,
+    "skill": "stealth",
+    "speeds": { "default": 50 },
+    "vision": "low-light",
+    "attacks": [
+      {
+        "slug": "jaws",
+        "name": { "en": "Jaws", "ru": "Челюсти" },
+        "type": "melee",
+        "damage": "1d8",
+        "damage_type": "pierce",
+        "tooltips": ["finesse"],
+        "weapon_skill": "unarmed"
+      },
+      {
+        "slug": "talon",
+        "name": { "en": "Talon", "ru": "Лапы" },
+        "type": "melee",
+        "damage": "1d6",
+        "damage_type": "slash",
+        "tooltips": ["agile", "finesse"],
+        "weapon_skill": "unarmed"
+      }
+    ],
+    "support": {
+      "en": "Your raptor constantly darts into flanking position. Until the start of your next turn, it counts as being in its space or an empty space of your choice within 10 feet when determining whether you and your companion are flanking; you can choose a different space for each of your attacks.",
+      "ru": "Ваш раптор постоянно старается зайти цели за спину. До начала вашего следующего хода при определении, взяли ли вы с верным зверем цель в тиски или нет, считается, что ваш раптор находится либо в своём пространстве, либо в незанятом пространстве по вашему выбору в пределах 10 футов; вы можете выбирать новое пространство для раптора для каждой своей атаки."
+    }
+  },
+  "riding_drake": {
+    "size": "large",
+    "abilities": { "str": 2, "dex": 1, "con": 2, "int": -4, "wis": 1, "cha": 2 },
+    "health": 8,
+    "skill": "intimidation",
+    "speeds": { "default": 45 },
+    "vision": "dark",
+    "attacks": [
+      {
+        "slug": "jaws",
+        "name": { "en": "Jaws", "ru": "Челюсти" },
+        "type": "melee",
+        "damage": "1d8",
+        "damage_type": "pierce",
+        "tooltips": [],
+        "weapon_skill": "unarmed"
+      },
+      {
+        "slug": "tail",
+        "name": { "en": "Tail", "ru": "Хвост" },
+        "type": "melee",
+        "damage": "1d6",
+        "damage_type": "bludge",
+        "tooltips": [],
+        "weapon_skill": "unarmed"
+      }
+    ],
+    "support": {
+      "en": "Your drake snorts fire in your foes' faces. Until the start of your next turn, each time you Strike while riding the drake and hit a creature in the drake's reach, the creature takes 1d4 fire damage from the drake. If your drake is nimble or savage, the fire damage increases to 2d4.",
+      "ru": "Ваш дрейк плюётся огнём прямо в лица врагов. До начала вашего следующего хода, каждый раз, когда вы совершаете Удар верхом на дрейке и попадаете по существу в его зоне досягаемости, это существо получает 1d4 урона огнём от дрейка. Если ваш дрейк ловкий или лютый, урон огнём увеличивается до 2d4."
+    }
+  },
+  "snake": {
+    "size": "small",
+    "abilities": { "str": 3, "dex": 3, "con": 1, "int": -4, "wis": 1, "cha": 0 },
+    "health": 6,
+    "skill": "stealth",
+    "speeds": { "default": 20, "climb": 20, "swim": 20 },
+    "vision": "low-light",
+    "attacks": [
+      {
+        "slug": "jaws",
+        "name": { "en": "Jaws", "ru": "Челюсти" },
+        "type": "melee",
+        "damage": "1d8",
+        "damage_type": "pierce",
+        "tooltips": ["finesse"],
+        "weapon_skill": "unarmed"
+      }
+    ],
+    "support": {
+      "en": "Your snake holds your enemies with its coils, interfering with reactions. Until the start of your next turn, any creature your snake threatens can't use reactions triggered by your actions unless its level is higher than yours.",
+      "ru": "Ваша змея обвивает противников, мешая им совершать ответные действия. До начала вашего следующего хода существа в зоне досягаемости вашей змеи не могут совершать ответные действия, спровоцированные вашими действиями, если уровень существа не превышает ваш."
+    }
+  },
+  "boar": {
+    "size": "small",
+    "abilities": { "str": 3, "dex": 1, "con": 2, "int": -4, "wis": 2, "cha": 0 },
+    "health": 8,
+    "skill": "survival",
+    "speeds": { "default": 35 },
+    "vision": "low-light",
+    "attacks": [
+      {
+        "slug": "tusk",
+        "name": { "en": "Tusk", "ru": "Бивень" },
+        "type": "melee",
+        "damage": "1d8",
+        "damage_type": "pierce",
+        "tooltips": [],
+        "weapon_skill": "unarmed"
+      }
+    ],
+    "support": {
+      "en": "Your boar gores your foes. Until the start of your next turn, your Strikes that damage a creature in your boar's reach also deal 1d6 persistent bleed damage. If your boar is nimble or savage, the persistent bleed damage increases to 2d6.",
+      "ru": "Ваш кабан пронзает врагов. До начала вашего следующего хода ваши Удары, которые наносят урон существу в зоне досягаемости вашего кабана, также наносят 1d6 продолжительного урона от кровотечения. Если ваш кабан ловкий или лютый, продолжительный урон от кровотечения увеличивается до 2d6."
+    }
+  },
+  "cat": {
+    "size": "small",
+    "abilities": { "str": 2, "dex": 3, "con": 1, "int": -4, "wis": 2, "cha": 0 },
+    "health": 4,
+    "skill": "stealth",
+    "speeds": { "default": 35 },
+    "vision": "low-light",
+    "attacks": [
+      {
+        "slug": "jaws",
+        "name": { "en": "Jaws", "ru": "Челюсти" },
+        "type": "melee",
+        "damage": "1d8",
+        "damage_type": "pierce",
+        "tooltips": ["finesse"],
+        "weapon_skill": "unarmed"
+      },
+      {
+        "slug": "claw",
+        "name": { "en": "Claw", "ru": "Когти" },
+        "type": "melee",
+        "damage": "1d6",
+        "damage_type": "slash",
+        "tooltips": ["agile", "finesse"],
+        "weapon_skill": "unarmed"
+      }
+    ],
+    "support": {
+      "en": "Your cat throws your enemies off-balance when you create an opening. Until the start of your next turn, your Strikes that deal damage to a creature within your cat's reach make the target off-guard until the end of your next turn.",
+      "ru": "Когда вы отвлекаете противника, кошка выводит его из равновесия. До начала вашего следующего хода ваши Удары, которые наносят урон существу в зоне досягаемости кошки, делают цель застигнутой врасплох до конца вашего следующего хода."
+    }
+  },
+  "crocodile": {
+    "size": "small",
+    "abilities": { "str": 3, "dex": 2, "con": 2, "int": -4, "wis": 1, "cha": 0 },
+    "health": 6,
+    "skill": "stealth",
+    "speeds": { "default": 20, "swim": 25 },
+    "vision": "low-light",
+    "attacks": [
+      {
+        "slug": "jaws",
+        "name": { "en": "Jaws", "ru": "Челюсти" },
+        "type": "melee",
+        "damage": "1d8",
+        "damage_type": "pierce",
+        "tooltips": [],
+        "weapon_skill": "unarmed"
+      },
+      {
+        "slug": "claw",
+        "name": { "en": "Claw", "ru": "Хвост" },
+        "type": "melee",
+        "damage": "1d6",
+        "damage_type": "bludge",
+        "tooltips": ["finesse"],
+        "weapon_skill": "unarmed"
+      }
+    ],
+    "support": {
+      "en": "Your crocodile clamps its jaws on your foe, refusing to let go. Until the start of your next turn, if your Strike damages a creature in your crocodile's reach, your crocodile can latch onto the creature. While thus attached, the crocodile can move along with the target whenever the target moves until the end of your next turn. Your crocodile can latch onto only one creature in this way, and it must release the creature to make a jaws Strike. If the target is smaller than the crocodile, it takes a –10-foot circumstance penalty to its Speeds and can't Fly while the crocodile is latched on.",
+      "ru": "Ваш крокодил крепко стискивает челюсти, не отпуская врага. До начала вашего следующего хода, если ваш Удар наносит урон существу в зоне досягаемости вашего крокодила, он может вцепиться в это существо. Вцепившись, крокодил может перемещаться вместе с целью при её перемещении до конца вашего следующего хода. Ваш крокодил может вцепиться таким образом только в одно существо, и он должен отпустить его, чтобы совершить Удар челюстями. Если цель меньше крокодила, она получает ситуативный штраф -10 футов к своим скоростям и не может использовать Полёт, пока крокодил вцепился в неё."
+    }
+  },
+  "bear": {
+    "size": "small",
+    "abilities": { "str": 3, "dex": 2, "con": 2, "int": -4, "wis": 1, "cha": 0 },
+    "health": 8,
+    "skill": "intimidation",
+    "speeds": { "default": 35 },
+    "vision": "low-light",
+    "attacks": [
+      {
+        "slug": "jaws",
+        "name": { "en": "Jaws", "ru": "Челюсти" },
+        "type": "melee",
+        "damage": "1d8",
+        "damage_type": "pierce",
+        "tooltips": [],
+        "weapon_skill": "unarmed"
+      },
+      {
+        "slug": "claw",
+        "name": { "en": "Claw", "ru": "Когти" },
+        "type": "melee",
+        "damage": "1d6",
+        "damage_type": "slash",
+        "tooltips": ["agile"],
+        "weapon_skill": "unarmed"
+      }
+    ],
+    "support": {
+      "en": "Your bear mauls your enemies when you create an opening. Until the start of your next turn, each time you hit a creature in the bear's reach with a Strike, the creature takes 1d8 slashing damage from the bear. If your bear is nimble or savage, the slashing damage increases to 2d8.",
+      "ru": "Ваш медведь бьёт врагов, когда вы создаёте для этого подходящие условия. До начала вашего следующего хода, каждый раз, когда вы попадаете Ударом по существу в зоне досягаемости медведя, оно получает 1d8 режущего урона от медведя. Если ваш медведь ловкий или лютый, режущий урон увеличивается до 2d8."
+    }
+  },
+  "bat": {
+    "size": "small",
+    "abilities": { "str": 2, "dex": 3, "con": 2, "int": -4, "wis": 1, "cha": 0 },
+    "health": 6,
+    "skill": "stealth",
+    "speeds": { "default": 15, "fly": 30 },
+    "vision": "low-light",
+    "attacks": [
+      {
+        "slug": "jaws",
+        "name": { "en": "Jaws", "ru": "Челюсти" },
+        "type": "melee",
+        "damage": "1d6",
+        "damage_type": "pierce",
+        "tooltips": ["finesse"],
+        "weapon_skill": "unarmed"
+      },
+      {
+        "slug": "talon",
+        "name": { "en": "Talon", "ru": "Лапы" },
+        "type": "melee",
+        "damage": "1d4",
+        "damage_type": "slash",
+        "tooltips": ["agile", "finesse"],
+        "weapon_skill": "unarmed"
+      }
+    ],
+    "support": {
+      "en": "Your bat flaps around your foes' arms and faces, getting in the way of their attacks. Until the start of your next turn, creatures in your bat's reach that you damage with Strikes take a –1 circumstance penalty to their attack rolls.",
+      "ru": "Ваша летучая мышь набрасывается на врагов, мешая им атаковать. До начала вашего следующего хода существа в зоне досягаемости вашей летучей мыши, которым вы наносите урон Ударами, получают ситуативный штраф -1 к проверкам атак."
+    }
+  },
+  "arboreal_sapling": {
+    "size": "small",
+    "abilities": { "str": 3, "dex": 1, "con": 2, "int": -4, "wis": 2, "cha": 0 },
+    "health": 8,
+    "skill": "stealth",
+    "speeds": { "default": 25 },
+    "vision": "low-light",
+    "attacks": [
+      {
+        "slug": " branch",
+        "name": { "en": "Branch", "ru": "Ветвь" },
+        "type": "melee",
+        "damage": "1d8",
+        "damage_type": "bludge",
+        "tooltips": [],
+        "weapon_skill": "unarmed"
+      }
+    ],
+    "support": {
+      "en": "Your arboreal sapling plants roots around your foe, impeding its movement. Until the start of your next turn, if you hit and deal damage to a creature in your arboreal sapling's reach, the first square the creature moves into after taking that damage is difficult terrain.",
+      "ru": "Лесовик-росток проращивает корни вокруг врага, мешая ему двигаться. До начала вашего следующего хода, если вы попадаете и наносите урон существу в зоне досягаемости вашего лесовика-ростка, первая клетка, в которую оно перемещается после получения урона, считается пересечённой местностью."
+    }
+  },
+  "horse": {
+    "size": "medium",
+    "abilities": { "str": 3, "dex": 2, "con": 2, "int": -4, "wis": 1, "cha": 0 },
+    "health": 8,
+    "skill": "survival",
+    "speeds": { "default": 40 },
+    "vision": "low-light",
+    "attacks": [
+      {
+        "slug": "hoof",
+        "name": { "en": "Hoof", "ru": "Копыто" },
+        "type": "melee",
+        "damage": "1d6",
+        "damage_type": "bludge",
+        "tooltips": ["agile"],
+        "weapon_skill": "unarmed"
+      }
+    ],
+    "support": {
+      "en": "Until the start of your next turn, if you're mounted on your horse and moved 10 feet or more on the action before a melee Strike, add a circumstance bonus to damage for that Strike equal to twice the number of weapon damage dice. If your weapon already has the jousting weapon trait, increase the trait's damage bonus by 2 per die instead.",
+      "ru": "Если до начала вашего следующего хода вы в качестве действия перед Ударом в ближнем бою переместились верхом на лошади хотя бы на 10 футов, вы получаете ситуативный бонус к урону этого Удара, равный удвоенному количеству костей урона оружия. Если у оружия дескриптор «кавалерийское», его бонус урона от этого дескриптора вместо этого увеличивается на 2 за каждую кость урона."
+    }
+  },
+  "ape": {
+    "size": "medium",
+    "abilities": { "str": 3, "dex": 1, "con": 2, "int": -4, "wis": 2, "cha": 0 },
+    "health": 8,
+    "skill": "intimidation",
+    "speeds": { "default": 25, "climb": 25 },
+    "vision": "low-light",
+    "attacks": [
+      {
+        "slug": "fist",
+        "name": { "en": "Fist", "ru": "Кулак" },
+        "type": "melee",
+        "damage": "1d8",
+        "damage_type": "bludge",
+        "tooltips": [],
+        "weapon_skill": "unarmed"
+      }
+    ],
+    "support": {
+      "en": "Your ape threatens your foes with menacing growls. Until the start of your next turn, if you hit and deal damage to a creature in your ape's reach, the creature becomes frightened 1.",
+      "ru": "Ваш примат запугивает врагов угрожающим рыком. До начала вашего следующего хода, если вы попадаете и наносите урон существу в зоне досягаемости вашего примата, это существо получает испуг 1."
+    }
+  },
+  "scorpion": {
+    "size": "small",
+    "abilities": { "str": 3, "dex": 3, "con": 1, "int": -4, "wis": 1, "cha": 0 },
+    "health": 6,
+    "skill": "stealth",
+    "speeds": { "default": 30 },
+    "vision": "dark",
+    "attacks": [
+      {
+        "slug": "stinger",
+        "name": { "en": "Stinger", "ru": "Жало" },
+        "type": "melee",
+        "damage": "1d6",
+        "damage_type": "pierce-acid",
+        "tooltips": [],
+        "weapon_skill": "unarmed"
+      },
+      {
+        "slug": "pincer",
+        "name": { "en": "Pincer", "ru": "Клешня" },
+        "type": "melee",
+        "damage": "1d6",
+        "damage_type": "slash",
+        "tooltips": ["agile"],
+        "weapon_skill": "unarmed"
+      }
+    ],
+    "support": {
+      "en": "Your scorpion drips poison from its stinger when you create an opening. Until the start of your next turn, your Strikes that damage a creature in your scorpion's reach also deal 1d6 persistent poison damage. If your scorpion is nimble or savage, the persistent poison damage increases to 2d6.\n\nThe scorpion's stinger attack deals an additional 1d4 poison damage or 2d4 poison damage if the scorpion is a specialized companion.",
+      "ru": "Пользуясь созданной вами возможностью, скорпион готовится атаковать ядовитым жалом. До начала вашего следующего хода ваши Удары, которые наносят урон существу в зоне досягаемости вашего скорпиона, также наносят 1d6 продолжительного урона ядом. Если ваш скорпион ловкий или лютый, продолжительный урон ядом увеличивается до 2d6.\n\nАтака жалом скорпиона дополнительно наносит 1d4 урона ядом или 2d4 урона ядом, если скорпион — специализированный верный зверь. "
+    }
+  }
+}

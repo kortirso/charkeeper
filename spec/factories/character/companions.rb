@@ -18,5 +18,14 @@ FactoryBot.define do
       type { 'Pathfinder2::Character::Pet' }
       data { {} }
     end
+
+    trait :pathfinder2_animal_companion do
+      type { 'Pathfinder2::Character::AnimalCompanion' }
+      data {
+        {
+          kind: 'wolf'
+        }
+      }
+    end
   end
 end

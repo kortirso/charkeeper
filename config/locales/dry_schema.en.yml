@@ -8,6 +8,23 @@ en:
       unexpected_key: Unknown param
       included_in?: Unknown value
       max_size?: Too long value
+      filled?: There is required field
+      pathfinder2_animal_companion:
+        rules:
+          name:
+            filled?: Name is required
+            max_size?: The name cannot be longer than 50 characters
+          caption:
+            max_size?: The caption cannot be longer than 50 characters
+          kind:
+            filled?: Kind is required
+      pathfinder2_pet:
+        rules:
+          name:
+            filled?: Name is required
+            max_size?: The name cannot be longer than 50 characters
+          caption:
+            max_size?: The caption cannot be longer than 50 characters
       daggerheart_item_upgrade:
         rules:
           name:

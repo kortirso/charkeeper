@@ -473,6 +473,7 @@ en:
           secondary_weapon: Secondary
     pathfinder2:
       weapon:
+        acid: Acid damage.
         bludge: Things that bludgeon you, like a hammer or fist.
         pierce: Things that pierce you, like an arrow or fangs.
         slash: Things that slash you, like a blade or claw.
@@ -510,6 +511,7 @@ en:
         halfling: Member of the halfling ancestry
         propulsive: You add half your Strength modifier (if positive) to damage rolls with a propulsive ranged weapon.
         title:
+          acid: Acid
           bludge: Bludgeoning
           pierce: Piercing
           slash: Slashing
