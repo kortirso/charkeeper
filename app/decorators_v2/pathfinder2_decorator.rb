@@ -182,6 +182,7 @@ class Pathfinder2Decorator < ApplicationDecoratorV2
       end
   end
 
+  # изменение типа оружия в зависимости от расы
   def update_weapon_skill(weapon, tooltips, current) # rubocop: disable Metrics/AbcSize, Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity
     return current if race_weapons_skills.empty?
     return current if current == 'unarmed'
@@ -199,11 +200,13 @@ class Pathfinder2Decorator < ApplicationDecoratorV2
     current
   end
 
-  def find_weapon_skill_training(item)
+  def find_weapon_skill_training(item) # rubocop: disable Metrics/AbcSize, Metrics/PerceivedComplexity
     if available_features_values['weapon_legend']&.first == item.dig(:items_info, 'group')
       weapon_skills.merge({ 'unarmed' => 4, 'simple' => 4, 'martial' => 4, 'advanced' => 3 }, &merge_max)
     elsif available_features_values['fighter_weapon_mastery']&.first == item.dig(:items_info, 'group')
       weapon_skills.merge({ 'unarmed' => 3, 'simple' => 3, 'martial' => 3, 'advanced' => 2 }, &merge_max)
+    elsif level >= 11 && available_features_slugs.include?('elf_martial_experience')
+      weapon_skills.merge({ 'unarmed' => 1, 'simple' => 1, 'martial' => 1, 'advanced' => 1 }, &merge_max)
     else
       weapon_skills.clone
     end
@@ -306,13 +309,14 @@ class Pathfinder2Decorator < ApplicationDecoratorV2
   end
 
   def attack_values(item, key_ability_bonus, tooltips, attack_bonus, weapon_skill_training) # rubocop: disable Metrics/AbcSize
-    weapon_legend_attack = proficiency_bonus(weapon_skill_training[item[:items_info]['weapon_skill']])
+    proficiency_attack_bonus = proficiency_bonus(weapon_skill_training[item[:items_info]['weapon_skill']])
+    proficiency_attack_bonus = elf_martial_experience(proficiency_attack_bonus)
     damage_types = item[:items_info]['damage_type'].split('-')
 
     {
       slug: item[:items_slug],
       name: translate(item[:items_name]),
-      attack_bonus: key_ability_bonus + weapon_legend_attack + attack_bonus,
+      attack_bonus: key_ability_bonus + proficiency_attack_bonus + attack_bonus,
       damage: item[:items_info]['damage'],
       notes: item[:notes],
       tags: damage_types.index_with { |type| I18n.t("tags.pathfinder2.weapon.title.#{type}") }.merge(
@@ -322,6 +326,13 @@ class Pathfinder2Decorator < ApplicationDecoratorV2
       ),
       ready_to_use: item[:states] ? item[:states]['hands'].positive? : true
     }.compact
+  end
+
+  def elf_martial_experience(proficiency_attack_bonus)
+    return proficiency_attack_bonus if available_features_slugs.exclude?('elf_martial_experience')
+    return proficiency_attack_bonus if proficiency_attack_bonus.positive?
+
+    level
   end
 
   def find_key_ability_bonus(type, tooltips=[])

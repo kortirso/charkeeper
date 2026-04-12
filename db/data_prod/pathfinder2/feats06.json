@@ -15,11 +15,7 @@
       "bard",
       "fortune"
     ],
-    "conditions": { "level": 6 },
-    "description_eval_variables": {
-      "limit": "1"
-    },
-    "limit_refresh": "long_rest"
+    "conditions": { "level": 6 }
   },
   {
     "slug": "defensive_coordination",
@@ -39,11 +35,7 @@
       "concentrate",
       "spellshape"
     ],
-    "conditions": { "level": 6 },
-    "description_eval_variables": {
-      "limit": "1"
-    },
-    "limit_refresh": "long_rest"
+    "conditions": { "level": 6 }
   },
   {
     "slug": "dirge_of_doom",
@@ -60,11 +52,7 @@
     "origin_values": [
       "bard"
     ],
-    "conditions": { "level": 6 },
-    "description_eval_variables": {
-      "limit": "1"
-    },
-    "limit_refresh": "long_rest"
+    "conditions": { "level": 6 }
   },
   {
     "slug": "educate_allies",
@@ -82,11 +70,7 @@
       "bard",
       "concentrate"
     ],
-    "conditions": { "level": 6 },
-    "description_eval_variables": {
-      "limit": "1"
-    },
-    "limit_refresh": "long_rest"
+    "conditions": { "level": 6 }
   },
   {
     "slug": "harmonize",
@@ -106,11 +90,7 @@
       "manipulate",
       "spellshape"
     ],
-    "conditions": { "level": 6 },
-    "description_eval_variables": {
-      "limit": "1"
-    },
-    "limit_refresh": "long_rest"
+    "conditions": { "level": 6 }
   },
   {
     "slug": "song_of_marching",
@@ -127,11 +107,7 @@
     "origin_values": [
       "bard"
     ],
-    "conditions": { "level": 6 },
-    "description_eval_variables": {
-      "limit": "1"
-    },
-    "limit_refresh": "long_rest"
+    "conditions": { "level": 6 }
   },
   {
     "slug": "steady_spellcasting",
@@ -155,11 +131,7 @@
       "witch",
       "wizard"
     ],
-    "conditions": { "level": 6 },
-    "description_eval_variables": {
-      "limit": "1"
-    },
-    "limit_refresh": "long_rest"
+    "conditions": { "level": 6 }
   },
   {
     "slug": "cast_down",
@@ -178,11 +150,7 @@
       "concentrate",
       "spellshape"
     ],
-    "conditions": { "level": 6 },
-    "description_eval_variables": {
-      "limit": "1"
-    },
-    "limit_refresh": "long_rest"
+    "conditions": { "level": 6 }
   },
   {
     "slug": "divine_rebuttal",
@@ -200,11 +168,7 @@
       "cleric",
       "divine"
     ],
-    "conditions": { "level": 6 },
-    "description_eval_variables": {
-      "limit": "1"
-    },
-    "limit_refresh": "long_rest"
+    "conditions": { "level": 6 }
   },
   {
     "slug": "divine_weapon",
@@ -221,11 +185,7 @@
     "origin_values": [
       "cleric"
     ],
-    "conditions": { "level": 6 },
-    "description_eval_variables": {
-      "limit": "1"
-    },
-    "limit_refresh": "long_rest"
+    "conditions": { "level": 6 }
   },
   {
     "slug": "magic_hands",
@@ -242,11 +202,7 @@
     "origin_values": [
       "cleric"
     ],
-    "conditions": { "level": 6 },
-    "description_eval_variables": {
-      "limit": "1"
-    },
-    "limit_refresh": "long_rest"
+    "conditions": { "level": 6 }
   },
   {
     "slug": "selective_energy",
@@ -263,11 +219,7 @@
     "origin_values": [
       "cleric"
     ],
-    "conditions": { "level": 6 },
-    "description_eval_variables": {
-      "limit": "1"
-    },
-    "limit_refresh": "long_rest"
+    "conditions": { "level": 6 }
   },
   {
     "slug": "current_spell",
@@ -286,11 +238,7 @@
       "druid",
       "spellshape"
     ],
-    "conditions": { "level": 6 },
-    "description_eval_variables": {
-      "limit": "1"
-    },
-    "limit_refresh": "long_rest"
+    "conditions": { "level": 6 }
   },
   {
     "slug": "grown_of_oak",
@@ -307,11 +255,7 @@
     "origin_values": [
       "druid"
     ],
-    "conditions": { "level": 6 },
-    "description_eval_variables": {
-      "limit": "1"
-    },
-    "limit_refresh": "long_rest"
+    "conditions": { "level": 6 }
   },
   {
     "slug": "insect_shape",
@@ -328,11 +272,7 @@
     "origin_values": [
       "druid"
     ],
-    "conditions": { "level": 6 },
-    "description_eval_variables": {
-      "limit": "1"
-    },
-    "limit_refresh": "long_rest"
+    "conditions": { "level": 6 }
   },
   {
     "slug": "instinctive_support",
@@ -349,11 +289,7 @@
     "origin_values": [
       "druid"
     ],
-    "conditions": { "level": 6 },
-    "description_eval_variables": {
-      "limit": "1"
-    },
-    "limit_refresh": "long_rest"
+    "conditions": { "level": 6 }
   },
   {
     "slug": "storm_retribution",
@@ -370,11 +306,7 @@
     "origin_values": [
       "druid"
     ],
-    "conditions": { "level": 6 },
-    "description_eval_variables": {
-      "limit": "1"
-    },
-    "limit_refresh": "long_rest"
+    "conditions": { "level": 6 }
   },
   {
     "slug": "advanced_weapon_training",
@@ -391,11 +323,7 @@
     "origin_values": [
       "fighter"
     ],
-    "conditions": { "level": 6 },
-    "description_eval_variables": {
-      "limit": "1"
-    },
-    "limit_refresh": "long_rest"
+    "conditions": { "level": 6 }
   },
   {
     "slug": "advantageous_assault",
@@ -413,11 +341,7 @@
       "fighter",
       "press"
     ],
-    "conditions": { "level": 6 },
-    "description_eval_variables": {
-      "limit": "1"
-    },
-    "limit_refresh": "long_rest"
+    "conditions": { "level": 6 }
   },
   {
     "slug": "dazing_blow",
@@ -435,11 +359,7 @@
       "fighter",
       "press"
     ],
-    "conditions": { "level": 6 },
-    "description_eval_variables": {
-      "limit": "1"
-    },
-    "limit_refresh": "long_rest"
+    "conditions": { "level": 6 }
   },
   {
     "slug": "disarming_stance",
@@ -457,11 +377,7 @@
       "fighter",
       "stance"
     ],
-    "conditions": { "level": 6 },
-    "description_eval_variables": {
-      "limit": "1"
-    },
-    "limit_refresh": "long_rest"
+    "conditions": { "level": 6 }
   },
   {
     "slug": "furious_focus",
@@ -478,11 +394,7 @@
     "origin_values": [
       "fighter"
     ],
-    "conditions": { "level": 6 },
-    "description_eval_variables": {
-      "limit": "1"
-    },
-    "limit_refresh": "long_rest"
+    "conditions": { "level": 6 }
   },
   {
     "slug": "guardian's_deflection_(fighter)",
@@ -499,11 +411,7 @@
     "origin_values": [
       "fighter"
     ],
-    "conditions": { "level": 6 },
-    "description_eval_variables": {
-      "limit": "1"
-    },
-    "limit_refresh": "long_rest"
+    "conditions": { "level": 6 }
   },
   {
     "slug": "reflexive_shield",
@@ -520,11 +428,7 @@
     "origin_values": [
       "fighter"
     ],
-    "conditions": { "level": 6 },
-    "description_eval_variables": {
-      "limit": "1"
-    },
-    "limit_refresh": "long_rest"
+    "conditions": { "level": 6 }
   },
   {
     "slug": "revealing_stab",
@@ -541,11 +445,7 @@
     "origin_values": [
       "fighter"
     ],
-    "conditions": { "level": 6 },
-    "description_eval_variables": {
-      "limit": "1"
-    },
-    "limit_refresh": "long_rest"
+    "conditions": { "level": 6 }
   },
   {
     "slug": "ricochet_stance_(fighter)",
@@ -563,11 +463,7 @@
       "fighter",
       "stance"
     ],
-    "conditions": { "level": 6 },
-    "description_eval_variables": {
-      "limit": "1"
-    },
-    "limit_refresh": "long_rest"
+    "conditions": { "level": 6 }
   },
   {
     "slug": "shatter_defenses",
@@ -585,11 +481,7 @@
       "fighter",
       "press"
     ],
-    "conditions": { "level": 6 },
-    "description_eval_variables": {
-      "limit": "1"
-    },
-    "limit_refresh": "long_rest"
+    "conditions": { "level": 6 }
   },
   {
     "slug": "shield_warden",
@@ -608,11 +500,7 @@
       "commander",
       "fighter"
     ],
-    "conditions": { "level": 6 },
-    "description_eval_variables": {
-      "limit": "1"
-    },
-    "limit_refresh": "long_rest"
+    "conditions": { "level": 6 }
   },
   {
     "slug": "triple_shot",
@@ -629,11 +517,7 @@
     "origin_values": [
       "fighter"
     ],
-    "conditions": { "level": 6 },
-    "description_eval_variables": {
-      "limit": "1"
-    },
-    "limit_refresh": "long_rest"
+    "conditions": { "level": 6 }
   },
   {
     "slug": "additional_recollection",
@@ -650,11 +534,7 @@
     "origin_values": [
       "ranger"
     ],
-    "conditions": { "level": 6 },
-    "description_eval_variables": {
-      "limit": "1"
-    },
-    "limit_refresh": "long_rest"
+    "conditions": { "level": 6 }
   },
   {
     "slug": "masterful_warden",
@@ -671,11 +551,7 @@
     "origin_values": [
       "ranger"
     ],
-    "conditions": { "level": 6 },
-    "description_eval_variables": {
-      "limit": "1"
-    },
-    "limit_refresh": "long_rest"
+    "conditions": { "level": 6 }
   },
   {
     "slug": "mature_animal_companion_(ranger)",
@@ -692,11 +568,7 @@
     "origin_values": [
       "ranger"
     ],
-    "conditions": { "level": 6 },
-    "description_eval_variables": {
-      "limit": "1"
-    },
-    "limit_refresh": "long_rest"
+    "conditions": { "level": 6 }
   },
   {
     "slug": "skirmish_strike",
@@ -715,11 +587,7 @@
       "ranger",
       "rogue"
     ],
-    "conditions": { "level": 6 },
-    "description_eval_variables": {
-      "limit": "1"
-    },
-    "limit_refresh": "long_rest"
+    "conditions": { "level": 6 }
   },
   {
     "slug": "snap_shot",
@@ -736,11 +604,7 @@
     "origin_values": [
       "ranger"
     ],
-    "conditions": { "level": 6 },
-    "description_eval_variables": {
-      "limit": "1"
-    },
-    "limit_refresh": "long_rest"
+    "conditions": { "level": 6 }
   },
   {
     "slug": "swift_tracker",
@@ -757,11 +621,7 @@
     "origin_values": [
       "ranger"
     ],
-    "conditions": { "level": 6 },
-    "description_eval_variables": {
-      "limit": "1"
-    },
-    "limit_refresh": "long_rest"
+    "conditions": { "level": 6 }
   },
   {
     "slug": "analyze_weakness",
@@ -778,11 +638,7 @@
     "origin_values": [
       "rogue"
     ],
-    "conditions": { "level": 6 },
-    "description_eval_variables": {
-      "limit": "1"
-    },
-    "limit_refresh": "long_rest"
+    "conditions": { "level": 6 }
   },
   {
     "slug": "anticipate_ambush",
@@ -800,11 +656,7 @@
       "exploration",
       "rogue"
     ],
-    "conditions": { "level": 6 },
-    "description_eval_variables": {
-      "limit": "1"
-    },
-    "limit_refresh": "long_rest"
+    "conditions": { "level": 6 }
   },
   {
     "slug": "far_throw",
@@ -821,11 +673,7 @@
     "origin_values": [
       "rogue"
     ],
-    "conditions": { "level": 6 },
-    "description_eval_variables": {
-      "limit": "1"
-    },
-    "limit_refresh": "long_rest"
+    "conditions": { "level": 6 }
   },
   {
     "slug": "gang_up",
@@ -842,11 +690,7 @@
     "origin_values": [
       "rogue"
     ],
-    "conditions": { "level": 6 },
-    "description_eval_variables": {
-      "limit": "1"
-    },
-    "limit_refresh": "long_rest"
+    "conditions": { "level": 6 }
   },
   {
     "slug": "light_step",
@@ -863,11 +707,7 @@
     "origin_values": [
       "rogue"
     ],
-    "conditions": { "level": 6 },
-    "description_eval_variables": {
-      "limit": "1"
-    },
-    "limit_refresh": "long_rest"
+    "conditions": { "level": 6 }
   },
   {
     "slug": "shove_down",
@@ -884,11 +724,7 @@
     "origin_values": [
       "rogue"
     ],
-    "conditions": { "level": 6 },
-    "description_eval_variables": {
-      "limit": "1"
-    },
-    "limit_refresh": "long_rest"
+    "conditions": { "level": 6 }
   },
   {
     "slug": "sly_disarm",
@@ -905,11 +741,7 @@
     "origin_values": [
       "rogue"
     ],
-    "conditions": { "level": 6 },
-    "description_eval_variables": {
-      "limit": "1"
-    },
-    "limit_refresh": "long_rest"
+    "conditions": { "level": 6 }
   },
   {
     "slug": "twist_the_knife",
@@ -926,11 +758,7 @@
     "origin_values": [
       "rogue"
     ],
-    "conditions": { "level": 6 },
-    "description_eval_variables": {
-      "limit": "1"
-    },
-    "limit_refresh": "long_rest"
+    "conditions": { "level": 6 }
   },
   {
     "slug": "watch_your_back",
@@ -950,11 +778,7 @@
       "mental",
       "rogue"
     ],
-    "conditions": { "level": 6 },
-    "description_eval_variables": {
-      "limit": "1"
-    },
-    "limit_refresh": "long_rest"
+    "conditions": { "level": 6 }
   },
   {
     "slug": "ceremonial_knife",
@@ -971,11 +795,7 @@
     "origin_values": [
       "witch"
     ],
-    "conditions": { "level": 6 },
-    "description_eval_variables": {
-      "limit": "1"
-    },
-    "limit_refresh": "long_rest"
+    "conditions": { "level": 6 }
   },
   {
     "slug": "greater_lesson",
@@ -992,11 +812,7 @@
     "origin_values": [
       "witch"
     ],
-    "conditions": { "level": 6 },
-    "description_eval_variables": {
-      "limit": "1"
-    },
-    "limit_refresh": "long_rest"
+    "conditions": { "level": 6 }
   },
   {
     "slug": "witch's_charge",
@@ -1014,11 +830,7 @@
       "detection",
       "witch"
     ],
-    "conditions": { "level": 6 },
-    "description_eval_variables": {
-      "limit": "1"
-    },
-    "limit_refresh": "long_rest"
+    "conditions": { "level": 6 }
   },
   {
     "slug": "convincing_illusion",
@@ -1035,11 +847,7 @@
     "origin_values": [
       "wizard"
     ],
-    "conditions": { "level": 6 },
-    "description_eval_variables": {
-      "limit": "1"
-    },
-    "limit_refresh": "long_rest"
+    "conditions": { "level": 6 }
   },
   {
     "slug": "explosive_arrival",
@@ -1059,11 +867,7 @@
       "spellshape",
       "wizard"
     ],
-    "conditions": { "level": 6 },
-    "description_eval_variables": {
-      "limit": "1"
-    },
-    "limit_refresh": "long_rest"
+    "conditions": { "level": 6 }
   },
   {
     "slug": "irresistible_magic",
@@ -1080,11 +884,7 @@
     "origin_values": [
       "wizard"
     ],
-    "conditions": { "level": 6 },
-    "description_eval_variables": {
-      "limit": "1"
-    },
-    "limit_refresh": "long_rest"
+    "conditions": { "level": 6 }
   },
   {
     "slug": "split_slot",
@@ -1101,11 +901,7 @@
     "origin_values": [
       "wizard"
     ],
-    "conditions": { "level": 6 },
-    "description_eval_variables": {
-      "limit": "1"
-    },
-    "limit_refresh": "long_rest"
+    "conditions": { "level": 6 }
   },
   {
     "slug": "advanced_muse's_whispers",
@@ -1119,14 +915,8 @@
       "ru": "**Архетип** Бард<br>\n**Критерии** простой шёпот музы.\n\n\nВы получаете одну черту барда. При определении соответствия её критериям ваш уровень барда считается равным половине уровня персонажа.\n\n**Примечание** эту черту можно брать несколько раз, каждый раз выбирая новую черту барда."
     },
     "origin": "ancestry",
-    "origin_values": [
-      "archetype"
-    ],
-    "conditions": { "level": 6 },
-    "description_eval_variables": {
-      "limit": "1"
-    },
-    "limit_refresh": "long_rest"
+    "origin_values": ["archetype"],
+    "conditions": { "level": 6 }
   },
   {
     "slug": "counter_perform",
@@ -1140,14 +930,8 @@
       "ru": "**Архетип** Бард<br>\n**Критерии** Посвящение в барды.\n\nВы получаете заклинание-композицию контрисполнение. Это фокальное заклинание, которое даёт вам запас ФП или увеличивает его. Вы можете совершить действие Фокусировка, чтобы установить контакт со своей музой."
     },
     "origin": "ancestry",
-    "origin_values": [
-      "archetype"
-    ],
-    "conditions": { "level": 6 },
-    "description_eval_variables": {
-      "limit": "1"
-    },
-    "limit_refresh": "long_rest"
+    "origin_values": ["archetype"],
+    "conditions": { "level": 6 }
   },
   {
     "slug": "advanced_dogma",
@@ -1161,14 +945,8 @@
       "ru": "**Архетип** Жрец<br>\n**Критерии** Простое вероучение.\n\nВы получаете одну черту жреца. При определении соответствия её критериям ваш уровень жреца считается равным половине уровня персонажа.\n\n**Примечание** эту черту можно брать несколько раз, каждый раз выбирая новую черту жреца."
     },
     "origin": "ancestry",
-    "origin_values": [
-      "archetype"
-    ],
-    "conditions": { "level": 6 },
-    "description_eval_variables": {
-      "limit": "1"
-    },
-    "limit_refresh": "long_rest"
+    "origin_values": ["archetype"],
+    "conditions": { "level": 6 }
   },
   {
     "slug": "advanced_wilding",
@@ -1182,14 +960,8 @@
       "ru": "**Архетип** Друид<br>\n**Критерии** Простая связь с природой.\n\nВы получаете одну черту друида. При определении соответствия её критериям ваш уровень друида считается равным половине уровня персонажа.\n\n**Примечание** эту черту можно брать несколько раз, каждый раз выбирая новую черту друида."
     },
     "origin": "ancestry",
-    "origin_values": [
-      "archetype"
-    ],
-    "conditions": { "level": 6 },
-    "description_eval_variables": {
-      "limit": "1"
-    },
-    "limit_refresh": "long_rest"
+    "origin_values": ["archetype"],
+    "conditions": { "level": 6 }
   },
   {
     "slug": "advanced_maneuver",
@@ -1203,14 +975,8 @@
       "ru": "**Архетип** Воин<br>\n**Критерии** Простой манёвр.\n\nВы получаете одну черту воина. При определении соответствия её критериям ваш уровень воина считается равным половине уровня персонажа.\n\n**Примечание** эту черту можно брать несколько раз, каждый раз выбирая новую черту воина."
     },
     "origin": "ancestry",
-    "origin_values": [
-      "archetype"
-    ],
-    "conditions": { "level": 6 },
-    "description_eval_variables": {
-      "limit": "1"
-    },
-    "limit_refresh": "long_rest"
+    "origin_values": ["archetype"],
+    "conditions": { "level": 6 }
   },
   {
     "slug": "advanced_hunter's_trick",
@@ -1224,14 +990,8 @@
       "ru": "**Архетип** Следопыт<br>\n**Критерии** простой охотничий приём.\n\nВы получаете одну черту следопыта. При определении соответствия её критериям ваш уровень следопыта считается равным половине уровня персонажа.\n\n**Примечание** эту черту можно брать несколько раз, каждый раз выбирая новую черту следопыта."
     },
     "origin": "ancestry",
-    "origin_values": [
-      "archetype"
-    ],
-    "conditions": { "level": 6 },
-    "description_eval_variables": {
-      "limit": "1"
-    },
-    "limit_refresh": "long_rest"
+    "origin_values": ["archetype"],
+    "conditions": { "level": 6 }
   },
   {
     "slug": "advanced_trickery",
@@ -1245,14 +1005,8 @@
       "ru": "**Архетип** Плут<br>\n**Критерии** Простые трюки.\n\nВы получаете одну черту плута. При определении соответствия её критериям ваш уровень плута считается равным половине уровня персонажа. <br>\n**Примечание** эту черту можно брать несколько раз, каждый раз выбирая новую черту плута."
     },
     "origin": "ancestry",
-    "origin_values": [
-      "archetype"
-    ],
-    "conditions": { "level": 6 },
-    "description_eval_variables": {
-      "limit": "1"
-    },
-    "limit_refresh": "long_rest"
+    "origin_values": ["archetype"],
+    "conditions": { "level": 6 }
   },
   {
     "slug": "advanced_witchcraft",
@@ -1266,14 +1020,8 @@
       "ru": "**Архетип** Ведьма<br>\n**Критерии** Простое ведовство.\n\nВы получаете одну черту ведьмы. При определении соответствия её критериям ваш уровень ведьмы считается равным половине уровня персонажа.\n\n**Примечание** эту черту можно брать несколько раз, каждый раз выбирая новую черту ведьмы."
     },
     "origin": "ancestry",
-    "origin_values": [
-      "archetype"
-    ],
-    "conditions": { "level": 6 },
-    "description_eval_variables": {
-      "limit": "1"
-    },
-    "limit_refresh": "long_rest"
+    "origin_values": ["archetype"],
+    "conditions": { "level": 6 }
   },
   {
     "slug": "advanced_arcana",
@@ -1287,13 +1035,7 @@
       "ru": "**Архетипы** Стрелок-заклинатель, Волшебник<br>\n**Критерии** Простой мистицизм.\n\nВы получаете одну черту волшебника. При определении соответствия  её критериям ваш уровень волшебника считается  равным половине уровня персонажа.\n\n**Примечание** эту черту можно брать несколько раз, каждый  раз выбирая новую черту волшебника."
     },
     "origin": "ancestry",
-    "origin_values": [
-      "archetype"
-    ],
-    "conditions": { "level": 6 },
-    "description_eval_variables": {
-      "limit": "1"
-    },
-    "limit_refresh": "long_rest"
+    "origin_values": ["archetype"],
+    "conditions": { "level": 6 }
   }
 ]
