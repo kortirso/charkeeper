@@ -5,7 +5,6 @@ module Pathfinder2
     class AnimalCompanionData
       include StoreModel::Model
 
-      attribute :level, :integer, default: 1
       attribute :kind, :string
       attribute :age, :string, default: 'young'
       attribute :speeds, array: true, default: {}

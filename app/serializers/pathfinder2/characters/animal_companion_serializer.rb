@@ -8,9 +8,10 @@ module Pathfinder2
       attributes :id, :name, :caption, :avatar, :level, :saving_throws_value, :health_max, :armor_class, :speed, :perception,
                  :skills, :health, :health_temp, :speeds, :abilities, :attacks, :support, :kind, :age, :size, :vision
 
-      delegate :saving_throws_value, :health_max, :armor_class, :speed, :skills, :speeds, :attacks, :support, to: :decorator
+      delegate :saving_throws_value, :health_max, :armor_class, :speed, :skills, :speeds, :attacks, :support, :level,
+               to: :decorator
       delegate :data, to: :object
-      delegate :level, :health, :health_temp, :perception, :abilities, :kind, :age, :size, :vision, to: :data
+      delegate :health, :health_temp, :perception, :abilities, :kind, :age, :size, :vision, to: :data
 
       def avatar
         cache.fetch_item(id: object.id)

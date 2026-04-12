@@ -104,6 +104,9 @@ module Charkeeper
     register('commands.characters_context.pathfinder2.animals.change') {
       CharactersContext::Pathfinder2::Animals::ChangeCommand.new
     }
+    register('commands.characters_context.pathfinder2.animals.upgrade') {
+      CharactersContext::Pathfinder2::Animals::UpgradeCommand.new
+    }
 
     register('commands.characters_context.pathfinder2.rest.perform') { CharactersContext::Pathfinder2::Rest::PerformCommand.new }
     register('commands.characters_context.pathfinder2.bonuses.add') { CharactersContext::Pathfinder2::Bonuses::AddCommand.new }

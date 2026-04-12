@@ -6,13 +6,14 @@ module Frontend
       class AnimalsController < Frontend::BaseController
         include Deps[
           add_animal_companion: 'commands.characters_context.pathfinder2.animals.add',
-          change_animal_companion: 'commands.characters_context.pathfinder2.animals.change'
+          change_animal_companion: 'commands.characters_context.pathfinder2.animals.change',
+          upgrade_animal_companion: 'commands.characters_context.pathfinder2.animals.upgrade'
         ]
         include SerializeResource
 
         before_action :find_character
         before_action :find_existing_animal_companion, only: %i[create]
-        before_action :find_animal_companion, only: %i[show update destroy]
+        before_action :find_animal_companion, only: %i[show update destroy upgrade]
 
         def show
           serialize_resource(@animal, ::Pathfinder2::Characters::AnimalCompanionSerializer, :animal, {})
@@ -37,6 +38,14 @@ module Frontend
         def destroy
           @animal.destroy
           only_head_response
+        end
+
+        def upgrade
+          case upgrade_animal_companion.call(animal: @animal)
+          in { errors: errors, errors_list: errors_list } then unprocessable_response(errors, errors_list)
+          in { result: result }
+            serialize_resource(result, ::Pathfinder2::Characters::AnimalCompanionSerializer, :animal, {})
+          end
         end
 
         private

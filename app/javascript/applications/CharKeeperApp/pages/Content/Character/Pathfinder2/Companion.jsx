@@ -6,13 +6,14 @@ import {
   ErrorWrapper, Input, Button, EditWrapper, GuideWrapper, AvatarInput, TextArea, Dice, Toggle, Checkbox, Select
 } from '../../../../components';
 import { useAppState, useAppLocale, useAppAlert } from '../../../../context';
-import { Avatar, Close } from '../../../../assets';
+import { Avatar, Close, Upgrade } from '../../../../assets';
 import config from '../../../../data/pathfinder2.json';
 import { fetchPetFeatsRequest } from '../../../../requests/fetchPetFeatsRequest';
 import { fetchCompanionRequest } from '../../../../requests/fetchCompanionRequest';
 import { createCompanionRequest } from '../../../../requests/createCompanionRequest';
 import { updateCompanionRequest } from '../../../../requests/updateCompanionRequest';
 import { removeCompanionRequest } from '../../../../requests/removeCompanionRequest';
+import { upgradeCompanionRequest } from '../../../../requests/upgradeCompanionRequest';
 import { localize, modifier } from '../../../../helpers';
 
 const TRANSLATION = {
@@ -50,7 +51,8 @@ const TRANSLATION = {
       large: 'Large size'
     },
     ages: {
-      young: 'Young animal'
+      young: 'Young animal',
+      mature: 'Mature animal'
     }
   },
   ru: {
@@ -87,7 +89,8 @@ const TRANSLATION = {
       large: 'Крупный размер'
     },
     ages: {
-      young: 'Молодой зверь'
+      young: 'Молодой зверь',
+      mature: 'Взрослый зверь'
     }
   },
   es: {
@@ -124,7 +127,8 @@ const TRANSLATION = {
       large: 'Tamaño grande'
     },
     ages: {
-      young: 'Animal joven'
+      young: 'Animal joven',
+      mature: 'Animal adulto'
     }
   }
 }
@@ -146,13 +150,13 @@ export const Pathfinder2Companion = (props) => {
   const [{ renderAlerts }] = useAppAlert();
   const [locale] = useAppLocale();
 
+  const fetchAnimal = async () => await fetchCompanionRequest(appState.accessToken, character().provider, character().id, 'animals');
+  const fetchCompanion = async () => await fetchCompanionRequest(appState.accessToken, character().provider, character().id);
+  const fetchPetFeats = async () => await fetchPetFeatsRequest(appState.accessToken, character().provider);
+
   createEffect(() => {
     if (!character().can_have_pet && !character().can_have_familiar) return;
     if (lastActiveCharacterId() === character().id) return;
-
-    const fetchAnimal = async () => await fetchCompanionRequest(appState.accessToken, character().provider, character().id, 'animals');
-    const fetchCompanion = async () => await fetchCompanionRequest(appState.accessToken, character().provider, character().id);
-    const fetchPetFeats = async () => await fetchPetFeatsRequest(appState.accessToken, character().provider);
 
     if (props.type === 'pet') {
       Promise.all([fetchCompanion(), fetchPetFeats()]).then(
@@ -265,11 +269,17 @@ export const Pathfinder2Companion = (props) => {
     );
 
     if (result.errors_list === undefined) {
-      batch(() => {
-        setCompanion(undefined);
-        setForm({ name: '', caption: '', kind: null });
-        setEditMode(false)
-      });
+      setCompanion(undefined);
+    } else renderAlerts(result.errors_list);
+  }
+
+  const upgradeCompanion = async () => {
+    const result = await upgradeCompanionRequest(
+      appState.accessToken, character().provider, character().id, (props.type === 'pet' ? 'companions' : 'animals')
+    );
+
+    if (result.errors_list === undefined) {
+      setCompanion(result.animal);
     } else renderAlerts(result.errors_list);
   }
 
@@ -342,9 +352,16 @@ export const Pathfinder2Companion = (props) => {
                 />
                 <AvatarInput onSelectedFile={setSelectedFile} />
               </Show>
-              <Button default classList="absolute top-0 right-0 rounded min-w-6 min-h-6 opacity-50" onClick={removeCompanion}>
-                <Close />
-              </Button>
+              <Show when={!editMode()}>
+                <Button default classList="absolute top-0 right-0 rounded min-w-6 min-h-6 opacity-50" onClick={removeCompanion}>
+                  <Close />
+                </Button>
+              </Show>
+              <Show when={props.type === 'animal' && !editMode() && companion().age === 'young'}>
+                <Button default classList="absolute bottom-0 right-10 rounded min-w-6 min-h-6 opacity-50" onClick={upgradeCompanion}>
+                  <Upgrade />
+                </Button>
+              </Show>
             </div>
           </EditWrapper>
           <Pathfinder2SharedSenses
@@ -368,7 +385,7 @@ export const Pathfinder2Companion = (props) => {
                 <For each={companion().attacks}>
                   {(attack) =>
                     <div class="weapon-item">
-                      <div class="weapon-item-header">
+                      <div class="weapon-item-header flex-row! justify-between! items-center!">
                         <p class="weapon-item-name">{attack.name}</p>
                         <div class="weapon-item-stats">
                           <div class="weapon-damage">
@@ -391,7 +408,7 @@ export const Pathfinder2Companion = (props) => {
                 </For>
               </div>
               <h2 class="weapon-title">{localize(TRANSLATION, locale()).support}</h2>
-              <p class="text-sm">{companion().support}</p>
+              <p class="text-xs md:text-sm">{companion().support}</p>
             </div>
             <div class="blockable py-4 mb-2">
               <div class="grid grid-cols-3 gap-2">

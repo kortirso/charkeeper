@@ -5,6 +5,7 @@ module Pathfinder2
     include Pathfinder2::Concerns
 
     def call(animal:)
+      @animal = animal
       @result = animal.data.attributes
 
       generate_basis
@@ -15,6 +16,7 @@ module Pathfinder2
     private
 
     def generate_basis # rubocop: disable Metrics/AbcSize
+      @result['level'] = @animal.character.data.level
       @result['saving_throws_value'] = {
         'fortitude' => abilities['con'] + proficiency_bonus(saving_throws['fortitude']),
         'reflex' => abilities['dex'] + proficiency_bonus(saving_throws['reflex']),
@@ -36,10 +38,18 @@ module Pathfinder2
         slug: attack['slug'],
         name: translate(attack['name']),
         attack_bonus: key_ability_bonus + proficiency_bonus(weapon_skills[attack['weapon_skill']]),
-        damage: attack['damage'],
+        damage: attack['damage'].gsub('1d', damage_dice),
         damage_bonus: abilities['str'],
         tags: (damage_types + attack['tooltips']).index_with { |type| I18n.t("tags.pathfinder2.weapon.title.#{type}") }
       }
+    end
+
+    def damage_dice
+      case age
+      when 'young' then '1d'
+      when 'specialized' then '3d'
+      else '2d'
+      end
     end
 
     def find_key_ability_bonus(type, tooltips=[])

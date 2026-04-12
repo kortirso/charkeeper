@@ -24,7 +24,6 @@ module CharactersContext
             config
               .slice('size', 'abilities', 'speeds', 'vision')
               .merge({
-                'level' => 1,
                 'age' => 'young',
                 'selected_skills' => { 'acrobatics' => 1, 'athletics' => 1, config['skill'] => 1 },
                 'health' => 6 + config.dig('abilities', 'con') + config['health'],
