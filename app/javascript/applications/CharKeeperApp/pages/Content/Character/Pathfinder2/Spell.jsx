@@ -30,6 +30,17 @@ const TRANSLATION = {
     cantrip: 'Фокус',
     heightened: 'Повышенное',
     sustained: 'Поддерживаемое'
+  },
+  es: {
+    level: 'nivel',
+    innate: ' (Ínnato)',
+    additional: ' (Adicional)',
+    check: 'Ataque de hechizo',
+    saveDC: 'DC de salvación',
+    limit: 'Límite',
+    cantrip: 'Truco',
+    heightened: 'Aumentado',
+    sustained: 'Sostenido'
   }
 }
 

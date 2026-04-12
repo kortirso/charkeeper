@@ -12,6 +12,10 @@ const TRANSLATION = {
   ru: {
     level: 'Уровень',
     staticSpells: 'Врождённые заклинания'
+  },
+  es: {
+    level: 'Nivel',
+    staticSpells: 'Hechizos estáticos'
   }
 }
 

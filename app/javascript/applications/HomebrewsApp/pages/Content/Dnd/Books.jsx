@@ -42,6 +42,22 @@ const TRANSLATION = {
     showPublic: 'Показать общедоступные',
     public: 'Общедоступная',
     backgrounds: 'Предыстории'
+  },
+  es: {
+    add: 'Agregar libro',
+    items: 'Objetos',
+    spells: 'Hechizos',
+    classes: 'Clases',
+    feats: 'Proesas',
+    enabled: 'Habilitado',
+    disabled: 'Deshabilitado',
+    newBookTitle: 'Forma de libro',
+    name: 'Nombre del libro',
+    save: 'Guardar',
+    official: 'Aprobado',
+    showPublic: 'Mostrar públicos',
+    public: 'Público',
+    backgrounds: 'Trasfondos'
   }
 }
 

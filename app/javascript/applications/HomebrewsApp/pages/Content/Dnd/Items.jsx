@@ -138,6 +138,36 @@ const MAPPING = {
     'melee_damage': 'Рукопашный урон',
     'thrown_damage': 'Метательный урон',
     'range_damage': 'Дистанционный урон'
+  },
+  es:{
+    added: 'Contenido agregado al libro',
+    selectBook: 'Seleccionar libro',
+    selectBookHelp: 'Seleccione los elementos necesarios para agregar al libro',
+    add: 'Agregar objeto',
+    newItemTitle: 'Forma de objeto',
+    name: 'Nombre del objeto',
+    description: 'Descripción',
+    kind: 'Tipo de objeto',
+    kindTable: 'Tipo',
+    save: 'Guardar',
+    requiredName: 'El nombre del objeto es obligatorio',
+    weight: 'Peso',
+    price: 'Precio, cc',
+    kinds: {
+      item: 'Objeto',
+      potion: 'Poción',
+      tools: 'Herramientas',
+      music: 'Instrumento musical',
+      focus: 'Foco',
+      ammo: 'Munición'
+    },
+    convert: 'Convertir',
+    addConsume: 'Agregar efecto de consumo',
+    consumeAttribute: 'Atributo a cambiar',
+    consumeFormula: 'Fórmula',
+    formulas1: 'La fórmula puede contener expresiones matemáticas.',
+    formulas2: 'Para lanzar dados use D(x), donde x - cantidad de dados.',
+    formulas3: "Por ejemplo, 'D(4)+2', '-1 * 2 * D(4) + 3'."
   }
 }
 

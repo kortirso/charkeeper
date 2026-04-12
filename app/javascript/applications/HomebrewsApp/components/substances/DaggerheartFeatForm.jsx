@@ -75,6 +75,40 @@ const TRANSLATION = {
       'attack': 'Атаки',
       'proficiency': 'Мастерство'
     }
+  },
+  es: {
+    markdown: 'Puedes usar Markdown para editar la descripción',
+    save: 'Guardar',
+    cancel: 'Cancelar',
+    formTitle: 'Edición de característica',
+    title: 'Título de característica',
+    description: 'Descripción',
+    kind: 'Tipo de característica',
+    limit: 'Límite de uso',
+    limitRefresh: 'Recarga de límite',
+    addBonus: 'Agregar bonificación',
+    bonusModify: 'Modificar',
+    bonusType: 'Tipo de bonificación',
+    bonusValue: 'Valor de bonificación',
+    mastery: 'Maestría de subclase',
+    domainLevel: 'Nivel de dominio',
+    modifies: {
+      'str': 'Fuerza',
+      'agi': 'Agilidad',
+      'fin': 'Fineza',
+      'ins': 'Instinto',
+      'pre': 'Presencia',
+      'know': 'Conocimiento',
+      'health': 'Salud',
+      'stress': 'Estrés',
+      'hope': 'Esperanza',
+      'evasion': 'Evasión',
+      'armor_score': 'Puntuación de armadura',
+      'major': 'Umbral mayor',
+      'severe': 'Umbral severo',
+      'attack': 'Ataques',
+      'proficiency': 'Competencia'
+    }
   }
 }
 const TRAITS = ['str', 'agi', 'fin', 'ins', 'pre', 'know'];

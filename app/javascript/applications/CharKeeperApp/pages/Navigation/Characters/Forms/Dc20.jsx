@@ -27,6 +27,16 @@ const TRANSLATION = {
     minorTraitsAlert: 'Максимум 1 малая черта',
     negativeTraitsAlert: 'Максимум 2 отрицательные черты',
     skipGuide: 'Пропустить настройку нового персонажа'
+  },
+  es: {
+    name: 'Nombre',
+    ancestry: 'Ancestría',
+    pointsLeft: 'Puntos restantes',
+    class: 'Clase',
+    manyAncestriesAlert: 'Máximo 2 ancestrias',
+    minorTraitsAlert: 'Máximo 1 rasgo menor',
+    negativeTraitsAlert: 'Máximo 2 rasgos negativos',
+    skipGuide: 'Omitir guía de personaje nuevo'
   }
 }
 

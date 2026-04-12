@@ -18,6 +18,9 @@ const TRANSLATION = {
   },
   ru: {
     askDm: 'ID кампании'
+  },
+  es: {
+    askDm: 'ID de campaña'
   }
 }
 

@@ -51,6 +51,22 @@ const TRANSLATION = {
     showPublic: 'Показать общедоступные',
     public: 'Общедоступная',
     copyCompleted: 'Копирование подкласса завершено'
+  },
+  es: {
+    added: 'El contenido se ha agregado al libro',
+    selectBook: 'Seleccionar libro',
+    selectBookHelp: 'Seleccione los elementos necesarios para agregar al libro',
+    add: 'Agregar subclase',
+    newSubclassTitle: 'Forma de subclase',
+    name: 'Nombre de la subclase',
+    save: 'Guardar',
+    addFeature: 'Agregar característica',
+    originClass: 'Clase de origen',
+    spellcast: 'Atributo de lanzamiento de hechizos',
+    mechanics: 'Mecánicas',
+    showPublic: 'Mostrar públicas',
+    public: 'Pública',
+    copyCompleted: 'Copia de la subclase completada'
   }
 }
 

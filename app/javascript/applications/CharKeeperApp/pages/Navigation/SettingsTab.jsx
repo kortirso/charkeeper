@@ -15,6 +15,9 @@ const TRANSLATION = {
   },
   ru: {
     baseHost: 'Текущий сервер'
+  },
+  es: {
+    baseHost: 'Servidor actual'
   }
 }
 

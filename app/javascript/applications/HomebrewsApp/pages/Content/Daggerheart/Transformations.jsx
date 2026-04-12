@@ -33,6 +33,15 @@ const TRANSLATION = {
     newTransformationTitle: 'Редактирование трансформации',
     name: 'Название трансформации',
     save: 'Сохранить'
+  },
+  es: {
+    added: 'El contenido se ha agregado al libro',
+    selectBook: 'Seleccionar libro',
+    selectBookHelp: 'Seleccione los elementos necesarios para agregar al libro',
+    add: 'Agregar transformación',
+    newTransformationTitle: 'Forma de transformación',
+    name: 'Nombre de la transformación',
+    save: 'Guardar'
   }
 }
 

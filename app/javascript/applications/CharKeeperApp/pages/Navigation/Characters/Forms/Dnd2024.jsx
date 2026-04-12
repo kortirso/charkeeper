@@ -19,6 +19,9 @@ const TRANSLATION = {
   },
   ru: {
     skipGuide: 'Пропустить настройку нового персонажа'
+  },
+  es: {
+    skipGuide: 'Omitir guía de personaje nuevo'
   }
 }
 

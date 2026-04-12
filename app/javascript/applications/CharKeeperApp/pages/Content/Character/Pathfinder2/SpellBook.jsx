@@ -35,6 +35,19 @@ const TRANSLATION = {
     cantrips: 'Фокусы',
     search: 'Поиск',
     searchByTitle: 'Поиск по названию'
+  },
+  es: {
+    cantripsAmount: 'Cantidad de trucos',
+    spellsAmount: 'Cantidad de hechizos',
+    spellIsLearned: 'Hechizo aprendido',
+    spellIsForget: 'Hechizo olvidado',
+    back: 'Volver a usar hechizos',
+    filters: 'Mostrar filtros',
+    tradition: 'Tradición',
+    levels: 'Niveles',
+    cantrips: 'Trucos',
+    search: 'Buscar',
+    searchByTitle: 'Buscar por título'
   }
 }
 

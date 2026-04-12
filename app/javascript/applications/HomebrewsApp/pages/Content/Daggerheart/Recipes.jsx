@@ -30,6 +30,16 @@ const TRANSLATION = {
     showPublic: 'Показать общедоступные',
     public: 'Общедоступный',
     copyCompleted: 'Копирование рецепта завершено'
+  },
+  es: {
+    add: 'Agregar receta',
+    newItemTitle: 'Forma de receta',
+    tool: 'Herramienta',
+    item: 'Objeto',
+    save: 'Guardar',
+    showPublic: 'Mostrar públicos',
+    public: 'Público',
+    copyCompleted: 'Copia de la receta completada'
   }
 }
 

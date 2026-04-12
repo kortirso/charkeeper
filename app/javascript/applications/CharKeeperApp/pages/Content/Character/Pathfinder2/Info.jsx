@@ -20,9 +20,9 @@ const TRANSLATION = {
   },
   es: {
     subrace: 'Ancestría',
-    background: 'Background',
-    class: 'Class',
-    heroPoints: 'Hero points'
+    background: 'Trasfondo',
+    class: 'Clase',
+    heroPoints: 'Puntos de héroe'
   }
 }
 

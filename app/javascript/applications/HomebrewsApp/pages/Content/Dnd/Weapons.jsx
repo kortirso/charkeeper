@@ -101,6 +101,50 @@ const TRANSLATION = {
     },
     weight: 'Вес',
     price: 'Цена, медяки'
+  },
+  es: {
+      add: 'Agregar arma',
+      newItemTitle: 'Forma de arma',
+      name: 'Nombre del arma',
+      weaponSkill: 'Categoría',
+      damageType: 'Tipo de daño',
+      damage: 'Daño',
+      mastery: 'Maestría',
+      type: 'Tipo',
+      range: 'Alcance',
+      features: 'Características',
+      description: 'Descripción',
+      save: 'Guardar',
+      requiredName: 'El nombre del arma es obligatorio',
+      requiredDamage: 'El daño del arma es obligatorio',
+      showPublic: 'Mostrar públicas',
+      public: 'Público',
+      copyCompleted: 'La copia del arma se ha completado',
+      skills: {
+        light: 'Ligera',
+        martial: 'Marcial'
+      },
+      damageTypes: {
+        bludge: 'Contundente',
+        pierce: 'Perforante',
+        slash: 'Cortante'
+      },
+      types: {
+        melee: 'Cuerpo a cuerpo',
+        range: 'A distancia',
+        thrown: 'Lanzable'
+      },
+      featuresList: {
+        finesse: 'Fineza',
+        reload: 'Recarga',
+        '2handed': 'a dos manos',
+        heavy: 'Pesado',
+        light: 'Ligera',
+        versatile: 'Versátil',
+        reach: 'Alcance'
+      },
+      weight: 'Peso',
+      price: 'Precio, monedas de cobre'
   }
 }
 

@@ -22,6 +22,13 @@ const TRANSLATION = {
     skillBoosts: 'Вы можете улучшить следующие умения:',
     add: 'Добавить навык',
     maxSkillLevel: 'Максимальный уровень владения навыком: '
+  },
+  es: {
+    free: 'Libre',
+    skills: 'Habilidades',
+    skillBoosts: 'Puedes mejorar tus habilidades:',
+    add: 'Agregar habilidad',
+    maxSkillLevel: 'Nivel máximo de habilidad para el personaje: '
   }
 }
 

@@ -48,6 +48,20 @@ const TRANSLATION = {
     showPublic: 'Показать общедоступные',
     public: 'Общедоступный',
     copyCompleted: 'Копирование подкласса завершено'
+  },
+  es: {
+    added: 'El contenido se ha añadido al libro',
+    selectBook: 'Seleccionar libro',
+    selectBookHelp: 'Seleccione los elementos necesarios para agregar al libro',
+    add: 'Agregar subclase',
+    newSubclassTitle: 'Forma de subclase',
+    name: 'Nombre de la subclase',
+    save: 'Guardar',
+    addFeature: 'Agregar característica',
+    originClass: 'Clase de origen',
+    showPublic: 'Mostrar públicas',
+    public: 'Público',
+    copyCompleted: 'Copia de subclase se ha completada'
   }
 }
 

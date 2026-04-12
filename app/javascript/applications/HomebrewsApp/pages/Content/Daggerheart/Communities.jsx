@@ -40,6 +40,18 @@ const TRANSLATION = {
     showPublic: 'Показать общедоступные',
     public: 'Общедоступная',
     copyCompleted: 'Копирование общества завершено'
+  },
+  es: {
+    added: 'Contenido agregado al libro',
+    selectBook: 'Seleccionar libro',
+    selectBookHelp: 'Seleccione los elementos necesarios para agregar al libro',
+    add: 'Agregar comunidad',
+    newCommunityTitle: 'Forma de comunidad',
+    name: 'Nombre de la comunidad',
+    save: 'Guardar',
+    showPublic: 'Mostrar públicas',
+    public: 'Pública',
+    copyCompleted: 'Copia de la comunidad se ha completada'
   }
 }
 

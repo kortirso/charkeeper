@@ -70,6 +70,35 @@ const MAPPING = {
     'thrown_damage': 'Метательный урон',
     'range_damage': 'Дистанционный урон',
     'health.max': 'Здоровье'
+  },
+  es: {
+    'str': 'Fuerza',
+    'dex': 'Destreza',
+    'con': 'Constitución',
+    'int': 'Inteligencia',
+    'wis': 'Sabiduría',
+    'cha': 'Carisma',
+    'saving_throws_value.fortitude': 'Fortaleza',
+    'saving_throws_value.reflex': 'Reflejos',
+    'saving_throws_value.will': 'Voluntad',
+    'armor_class': 'Clase de armadura',
+    'perception': 'Percepción',
+    'speed': 'Velocidad',
+    'speeds.swim': 'Velocidad de nado',
+    'speeds.fly': 'Velocidad de vuelo',
+    'speeds.climb': 'Velocidad de trepar',
+    'speeds.burrow': 'Velocidad de excavar',
+    'attack': 'Ataque',
+    'unarmed_attacks': 'Ataques desarmados',
+    'melee_attacks': 'Ataques cuerpo a cuerpo',
+    'thrown_attacks': 'Ataques con arma arrojadiza',
+    'range_attacks': 'Ataques a distancia',
+    'damage': 'Daño',
+    'unarmed_damage': 'Daño sin armas',
+    'melee_damage': 'Daño cuerpo a cuerpo',
+    'thrown_damage': 'Daño con arma arrojadiza',
+    'range_damage': 'Daño a distancia',
+    'health.max': 'Salud'
   }
 }
 const NO_VARIABLES = ['str', 'dex', 'con', 'int', 'wis', 'cha'];

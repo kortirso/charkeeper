@@ -13,6 +13,10 @@ const TRANSLATION = {
   ru: {
     name: 'Имя',
     skipGuide: 'Пропустить настройку нового персонажа'
+  },
+  es: {
+    name: 'Nombre',
+    skipGuide: 'Omitir guía de personaje nuevo'
   }
 }
 

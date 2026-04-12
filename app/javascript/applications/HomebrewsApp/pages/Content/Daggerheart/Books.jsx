@@ -44,6 +44,23 @@ const TRANSLATION = {
     official: 'Одобренная',
     showPublic: 'Показать общедоступные',
     public: 'Общедоступная'
+  },
+  es: {
+    add: 'Agregar libro',
+    races: 'Ancestrías',
+    communities: 'Comunidades',
+    classes: 'Clases',
+    items: 'Objetos',
+    transformations: 'Transformaciones',
+    domains: 'Dominios',
+    enabled: 'Habilitado',
+    disabled: 'Deshabilitado',
+    newBookTitle: 'Forma de libro',
+    name: 'Nombre del libro',
+    save: 'Guardar',
+    official: 'Aprobado',
+    showPublic: 'Mostrar públicos',
+    public: 'Público'
   }
 }
 

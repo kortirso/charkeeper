@@ -79,6 +79,37 @@ const TRANSLATION = {
     showPublic: 'Показать общедоступные',
     public: 'Общедоступная',
     copyCompleted: 'Копирование оружия завершено'
+  },
+  es: {
+    added: 'Contenido agregado al libro',
+    selectBook: 'Seleccionar libro',
+    selectBookHelp: 'Seleccione los elementos necesarios para agregar al libro',
+    add: 'Agregar arma',
+    newItemTitle: 'Forma de arma',
+    name: 'Nombre del arma',
+    tier: 'Rango',
+    trait: 'Atributo',
+    damageType: 'Tipo de daño',
+    burden: 'Carga',
+    range: 'Alcance',
+    damage: 'Daño',
+    damageBonus: 'Bonificación de daño',
+    features: 'Características',
+    description: 'Descripción',
+    kind: 'Tipo de arma',
+    save: 'Guardar',
+    requiredName: 'El nombre del arma es obligatorio',
+    requiredDamage: 'El daño del arma es obligatorio',
+    requiredItemable: 'Establezca el objeto adjunto',
+    itemOrigin: 'Adjuntar objeto a',
+    itemOriginValue: 'Objeto adjunto',
+    kinds: {
+      'primary weapon': 'Principal',
+      'secondary weapon': 'Secundaria'
+    },
+    showPublic: 'Mostrar públicas',
+    public: 'Pública',
+    copyCompleted: 'Copia del arma completada'
   }
 }
 

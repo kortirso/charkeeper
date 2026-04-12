@@ -22,6 +22,12 @@ const TRANSLATION = {
     add: 'Добавить способность',
     origin: 'Принадлежность способности',
     selectCharacter: 'Выберите персонажа'
+  },
+  es: {
+    newFeatureTitle: 'Seleccionando origen de la característica',
+    add: 'Agregar característica',
+    origin: 'Origen de la característica',
+    selectCharacter: 'Seleccionar personaje'
   }
 }
 

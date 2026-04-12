@@ -35,6 +35,20 @@ const TRANSLATION = {
     transformations: 'Трансформации',
     recipes: 'Рецепты',
     features: 'Способности'
+  },
+  es: {
+    books: 'Libros',
+    ancestries: 'Ancestrías',
+    communities: 'Comunidades',
+    classes: 'Clases',
+    subclasses: 'Subclases',
+    items: 'Objetos',
+    weapons: 'Armas',
+    armor: 'Armadura',
+    domains: 'Dominios',
+    transformations: 'Transformaciones',
+    recipes: 'Recetas',
+    features: 'Características'
   }
 }
 

@@ -21,11 +21,11 @@ const TRANSLATION = {
     heal: 'Лечение'
   },
   es: {
-    current: 'Health',
-    max: 'Max health',
-    temp: 'Temp health',
-    damage: 'Damage',
-    heal: 'Heal'
+    current: 'Salud',
+    max: 'Salud máxima',
+    temp: 'Salud temporal',
+    damage: 'Daño',
+    heal: 'Curación'
   }
 }
 

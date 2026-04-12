@@ -55,6 +55,26 @@ const TRANSLATION = {
     showPublic: 'Показать общедоступные',
     public: 'Общедоступная',
     copyCompleted: 'Копирование доспеха завершено'
+  },
+  es: {
+    added: 'Contenido agregado al libro',
+    selectBook: 'Seleccionar libro',
+    selectBookHelp: 'Seleccione los elementos necesarios para agregar al libro',
+    add: 'Agregar armadura',
+    newItemTitle: 'Forma de armadura',
+    name: 'Nombre de la armadura',
+    tier: 'Rango',
+    baseScore: 'Puntuación de armadura',
+    features: 'Características',
+    description: 'Descripción',
+    save: 'Guardar',
+    requiredName: 'El nombre de la armadura es obligatorio',
+    thresholds: 'Umbrales de daño',
+    major: 'Umbral mayor',
+    severe: 'Umbral severo',
+    showPublic: 'Mostrar públicas',
+    public: 'Pública',
+    copyCompleted: 'La copia de la armadura se ha completado'
   }
 }
 

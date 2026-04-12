@@ -35,6 +35,15 @@ const TRANSLATION = {
     resetCharacterConfirm2: "Только снаряжение персонажа не будет сброшено.",
     resetCharacterTitle: 'Сброс персонажа',
     reset: 'Сбросить'
+  },
+  es: {
+    deleteCharacterConfirm: '¿Estás seguro de que quieres eliminar este personaje?',
+    deleteCharacterTitle: 'Eliminando personaje',
+    delete: 'Eliminar',
+    resetCharacterConfirm1: '¿Estás seguro de que quieres restablecer este personaje a nivel 1?',
+    resetCharacterConfirm2: "Solo el equipo del personaje no será restablecido.",
+    resetCharacterTitle: 'Restableciendo personaje',
+    reset: 'Restablecer'
   }
 }
 

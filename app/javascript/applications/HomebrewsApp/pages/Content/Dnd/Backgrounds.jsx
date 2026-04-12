@@ -50,6 +50,23 @@ const TRANSLATION = {
     save: 'Сохранить',
     selectedAbilities: 'Характеристики для повышения',
     selectedSkills: 'Владение навыками'
+  },
+  es: {
+    added: 'El contenido se ha añadido al libro',
+    selectBook: 'Seleccionar libro',
+    selectBookHelp: 'Seleccione los elementos necesarios para agregar al libro',
+    add: 'Agregar trasfondo',
+    newItemTitle: 'Forma de trasfondo',
+    name: 'Nombre del trasfondo',
+    showPublic: 'Mostrar públicos',
+    public: 'Público',
+    copyCompleted: 'Copia de trasfondo completada',
+    abilities: 'Habilidades para mejorar (seleccione 3)',
+    skills: 'Maestría en habilidades (seleccione 2)',
+    feats: 'Proesa',
+    save: 'Guardar',
+    selectedAbilities: 'Habilidades para mejorar',
+    selectedSkills: 'Maestría en habilidades'
   }
 }
 
