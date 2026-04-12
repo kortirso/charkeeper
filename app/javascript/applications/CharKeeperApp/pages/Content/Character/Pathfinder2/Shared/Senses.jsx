@@ -24,6 +24,16 @@ const TRANSLATION = {
     climb: 'Скорость лазания',
     burrow: 'Скорость рытья',
     classDc: 'Классовая СЛ'
+  },
+  es: {
+    armorClass: 'Clase de armadura',
+    perception: 'Percepción',
+    speed: 'Velocidad',
+    swim: 'Velocidad de nado',
+    fly: 'Velocidad de vuelo',
+    climb: 'Velocidad de trepar',
+    burrow: 'Velocidad de excavar',
+    classDc: 'DC de clase'
   }
 }
 

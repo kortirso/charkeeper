@@ -56,6 +56,29 @@ const TRANSLATION = {
       default: 'Default',
       additional: 'Additional'
     }
+  },
+  es: {
+    spellAttack: 'Ataque de hechizo',
+    saveDC: 'DC de salvación',
+    back: 'Volver',
+    check: 'Ataque de hechizo',
+    gotoSpellBook: 'Libro de hechizos',
+    gotoAdditionalBook: 'Adicionales',
+    cantrips: 'Trucos',
+    level: 'nivel',
+    noSpells: 'No hay hechizos aprendidos',
+    noPreparedSpells: 'No hay hechizos preparados',
+    renderMode: 'Modo de preparación',
+    prepareSlots: 'Espacios de preparación',
+    noSlots: 'No hay espacios disponibles para hechizos',
+    cantripLevel: 'Nivel de truco',
+    focusSpellBook: 'Concentración',
+    innateSpellBook: 'Innatos',
+    focusSpells: 'Hechizos de concentración',
+    kinds: {
+      default: 'Predeterminado',
+      additional: 'Adicional'
+    }
   }
 }
 

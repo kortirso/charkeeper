@@ -17,6 +17,13 @@ const TRANSLATION = {
     reflex: 'Реакция',
     will: 'Воля',
     defense: 'Защита: '
+  },
+  es: {
+    ac: 'CA',
+    fortitude: 'Fortaleza',
+    reflex: 'Reflejos',
+    will: 'Voluntad',
+    defense: 'Defensa: '
   }
 };
 

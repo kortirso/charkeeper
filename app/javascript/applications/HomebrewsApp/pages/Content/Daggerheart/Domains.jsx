@@ -34,6 +34,16 @@ const TRANSLATION = {
     name: 'Название домена',
     save: 'Сохранить',
     addFeature: 'Добавить способность'
+  },
+  es: {
+    added: 'Contenido agregado al libro',
+    selectBook: 'Seleccionar libro',
+    selectBookHelp: 'Seleccione los elementos necesarios para agregar al libro',
+    add: 'Agregar dominio',
+    newDomainTitle: 'Forma de dominio',
+    name: 'Nombre del dominio',
+    save: 'Guardar',
+    addFeature: 'Agregar característica',
   }
 }
 

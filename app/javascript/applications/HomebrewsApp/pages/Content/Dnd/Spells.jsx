@@ -87,6 +87,42 @@ const TRANSLATION = {
     showPublic: 'Показать общедоступные',
     public: 'Общедоступный',
     copyCompleted: 'Копирование заклинания завершено'
+  },
+  es: {
+    added: 'El contenido se ha añadido al libro',
+    selectBook: 'Seleccionar libro',
+    selectBookHelp: 'Seleccione los elementos necesarios para agregar al libro',
+    add: 'Agregar hechizo',
+    newItemTitle: 'Forma de hechizo',
+    name: 'Nombre del hechizo',
+    description: 'Descripción',
+    save: 'Guardar',
+    classes: 'Clases disponibles',
+    schools: {
+      abjuration: 'Abjuración',
+      conjuration: 'Conjuración',
+      divination: 'Adivinación',
+      enchantment: 'Encantamiento',
+      evocation: 'Evocación',
+      illusion: 'Ilusión',
+      necromancy: 'Nigromancia',
+      transmutation: 'Transmutación'
+    },
+    school: 'Escuela de magia',
+    level: 'Nivel del hechizo',
+    time: 'Tiempo',
+    range: 'Alcance',
+    duration: 'Duración',
+    component: 'Componentes',
+    components: {
+      v: 'Verbal',
+      s: 'Somatico',
+      m: 'Material'
+    },
+    dc: 'Tirada de salvación',
+    showPublic: 'Mostrar públicos',
+    public: 'Público',
+    copyCompleted: 'La copia del hechizo se ha completado'
   }
 }
 

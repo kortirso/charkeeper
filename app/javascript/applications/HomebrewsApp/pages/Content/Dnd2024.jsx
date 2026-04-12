@@ -23,6 +23,15 @@ const TRANSLATION = {
     spells: 'Заклинания',
     feats: 'Черты',
     backgrounds: 'Происхождения'
+  },
+  es: {
+    books: 'Libros',
+    items: 'Objetos',
+    weapons: 'Armas',
+    subclasses: 'Subclases',
+    spells: 'Hechizos',
+    feats: 'Proezas',
+    backgrounds: 'Trasfondos'
   }
 }
 

@@ -23,6 +23,13 @@ const TRANSLATION = {
     selectBookHelp: 'Выберите необходимые элементы для добавления в книгу',
     add: 'Добавить черту',
     save: 'Сохранить'
+  },
+  es: {
+    added: 'Contenido agregado al libro',
+    selectBook: 'Seleccionar libro',
+    selectBookHelp: 'Seleccione los elementos necesarios para agregar al libro',
+    add: 'Agregar proesa',
+    save: 'Guardar'
   }
 }
 

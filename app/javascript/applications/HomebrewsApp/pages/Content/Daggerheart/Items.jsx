@@ -71,6 +71,34 @@ const TRANSLATION = {
     formulas1: 'Формула может содержать математические выражения.',
     formulas2: 'Для броска кубика используёте D(x), где x - кол-во граней.',
     formulas3: "Например, 'D(4)+2', '-1 * 2 * D(4) + 3', '3', '-2'."
+  },
+  es:{
+    added: 'Contenido agregado al libro',
+    selectBook: 'Seleccionar libro',
+    selectBookHelp: 'Seleccione los elementos necesarios para agregar al libro',
+    add: 'Agregar objeto',
+    newItemTitle: 'Forma de objeto',
+    name: 'Nombre del objeto',
+    description: 'Descripción',
+    kind: 'Tipo de objeto',
+    kindTable: 'Tipo',
+    save: 'Guardar',
+    requiredName: 'El nombre del objeto es obligatorio',
+    kinds: {
+      item: 'Objeto',
+      consumables: 'Consumible',
+      recipe: 'Receta'
+    },
+    convert: 'Convertir',
+    showPublic: 'Mostrar públicos',
+    public: 'Público',
+    copyCompleted: 'Copia del objeto se ha completada',
+    addConsume: 'Agregar efecto de consumo',
+    consumeAttribute: 'Atributo a cambiar',
+    consumeFormula: 'Fórmula',
+    formulas1: 'La fórmula puede contener expresiones matemáticas.',
+    formulas2: 'Para tirar dados use D(x), donde x - cantidad de dados.',
+    formulas3: "Por ejemplo, 'D(4)+2', '-1 * 2 * D(4) + 3', '3', '-2'."
   }
 }
 

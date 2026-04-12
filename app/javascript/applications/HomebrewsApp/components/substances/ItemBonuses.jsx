@@ -52,6 +52,29 @@ const TRANSLATION = {
       'attack': 'Атаки',
       'proficiency': 'Мастерство'
     }
+  },
+  es: {
+    addBonus: 'Agregar bonificación',
+    bonusModify: 'Modificar',
+    bonusType: 'Tipo de bonificación',
+    bonusValue: 'Valor de la bonificación',
+    modifies: {
+      'str': 'Fuerza',
+      'agi': 'Agilidad',
+      'fin': 'Fineza',
+      'ins': 'Instinto',
+      'pre': 'Presencia',
+      'know': 'Conocimiento',
+      'health': 'Salud',
+      'stress': 'Estrés',
+      'hope': 'Esperanza',
+      'evasion': 'Evasión',
+      'armor_score': 'Puntuación de armadura',
+      'major': 'Umbral mayor',
+      'severe': 'Umbral severo',
+      'attack': 'Ataques',
+      'proficiency': 'Competencia'
+    }
   }
 }
 const TRAITS = ['str', 'agi', 'fin', 'ins', 'pre', 'know'];

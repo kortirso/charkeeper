@@ -21,6 +21,14 @@ const TRANSLATION = {
     type: 'Тип',
     value: 'Значение',
     allowedVariables: 'Доступные переменные'
+  },
+  es: {
+    title: 'Modificadores',
+    addModifier: 'Agregar modificador',
+    attribute: 'Atributo',
+    type: 'Tipo',
+    value: 'Valor',
+    allowedVariables: 'Variables permitidas'
   }
 }
 

@@ -39,6 +39,21 @@ const TRANSLATION = {
     selectTags: 'Выбрать тэги',
     additionalFeat: 'Дополнительная черта',
     experience: 'Опыт'
+  },
+  es: {
+    currentLevel: 'nivel',
+    saveButton: 'Guardar',
+    updated: 'Personaje actualizado',
+    ancestryFeat: 'Proesa de ancestría',
+    classFeat: 'Proesa de clase',
+    skillFeat: 'Proesa de habilidad',
+    generalFeat: 'Proesa general',
+    newFeat: 'Elegir proesa',
+    confirm: 'Confirmar selección de proesa',
+    notSelected: 'No seleccionada',
+    selectTags: 'Seleccionar etiquetas',
+    additionalFeat: 'Proesa adicional',
+    experience: 'Experiencia'
   }
 }
 

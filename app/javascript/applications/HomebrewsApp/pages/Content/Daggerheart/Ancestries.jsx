@@ -40,6 +40,18 @@ const TRANSLATION = {
     showPublic: 'Показать общедоступные',
     public: 'Общедоступная',
     copyCompleted: 'Копирование расы завершено'
+  },
+  es: {
+    added: 'Contenido agregado al libro',
+    selectBook: 'Seleccionar libro',
+    selectBookHelp: 'Seleccione los elementos necesarios para agregar al libro',
+    add: 'Agregar ancestría',
+    newAncestryTitle: 'Forma de la ancestría',
+    name: 'Nombre de la ancestría',
+    save: 'Guardar',
+    showPublic: 'Mostrar públicas',
+    public: 'Pública',
+    copyCompleted: 'La copia de la ancestría se ha completado'
   }
 }
 

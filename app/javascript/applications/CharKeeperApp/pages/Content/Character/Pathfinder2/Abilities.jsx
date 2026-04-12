@@ -21,6 +21,13 @@ const TRANSLATION = {
     background: 'Происхождение',
     free: 'Универсальное',
     abilityBoosts: 'Вы можете улучшить следующие характеристики:'
+  },
+  es: {
+    base: 'Base',
+    race: 'Ancestría',
+    background: 'Trasfondo',
+    free: 'Libre',
+    abilityBoosts: 'Puedes mejorar las siguientes características:'
   }
 }
 

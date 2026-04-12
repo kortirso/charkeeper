@@ -29,15 +29,15 @@ const TRANSLATION = {
     check: 'Навык'
   },
   es: {
-    title: 'Skills',
+    title: 'Habilidades',
     ladder: {
-      superb: 'Superb',
-      great: 'Great',
-      good: 'Good',
-      fair: 'Fair',
-      average: 'Average'
+      superb: 'Magnífico',
+      great: 'Excelente',
+      good: 'Bueno',
+      fair: 'Regular',
+      average: 'Promedio'
     },
-    check: 'Skill'
+    check: 'Habilidad'
   }
 }
 

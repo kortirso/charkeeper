@@ -13,6 +13,11 @@ const TRANSLATION = {
     description: 'Вы можете полноценно отдохнуть (обычно на протяжении 8 часов) и после этого благодаря естественному исцелению восстанавливаете ПЗ. Заклинатели восстанавливают ячейки заклинаний. Вы восстанавливаете способности, обновляемые во время подготовки, а также ежедневное количество использований способностей и магических предметов.',
     perform: 'Отдохнуть',
     restIsFinished: 'Отдых выполнен'
+  },
+  es: {
+    description: 'Puedes tomar un período de descanso (típicamente 8 horas), durante el cual te curas naturalmente, recuperando Puntos de Vida. Los lanzadores de conjuros recuperan espacios de conjuro. Las habilidades que se actualizan durante las preparaciones, y las habilidades que solo se pueden usar un cierto número de veces por día, incluyendo los usos de objetos mágicos, se restablecen.',
+    perform: 'Tomar descanso',
+    restIsFinished: 'Descanso completado'
   }
 }
 

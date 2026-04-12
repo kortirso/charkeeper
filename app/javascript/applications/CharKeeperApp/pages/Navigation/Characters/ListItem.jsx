@@ -22,6 +22,10 @@ const TRANSLATION = {
   ru: {
     delete: 'Удалить',
     reset: 'Сбросить'
+  },
+  es: {
+    delete: 'Eliminar',
+    reset: 'Restablecer'
   }
 }
 

@@ -36,6 +36,16 @@ const TRANSLATION = {
     evasion: 'Уклонение',
     healthMax: 'Здоровье',
     domains: 'Домены'
+  },
+  es: {
+    add: 'Agregar clase',
+    newspecialityTitle: 'Forma de clase',
+    name: 'Nombre de la clase',
+    save: 'Guardar',
+    addFeature: 'Agregar característica',
+    evasion: 'Evasión',
+    healthMax: 'Salud inicial',
+    domains: 'Dominios'
   }
 }
 

@@ -74,6 +74,39 @@ const TRANSLATION = {
     originValue: 'Принадлежность',
     requiredAbilities: 'Условие: одна из характеристик 13+',
     abilityBoost: 'Повышение характеристики'
+  },
+  es: {
+    markdown: 'Puedes usar Markdown para editar la descripción',
+    save: 'Guardar',
+    cancel: 'Cancelar',
+    formTitle: 'Edición de característica',
+    title: 'Nombre de la característica',
+    description: 'Descripción de característica',
+    kind: 'Tipo de característica',
+    limit: 'Límite de uso',
+    limitRefresh: 'Actualización del límite',
+    level: 'Nivel',
+    continious: 'Activable',
+    staticSpells: 'Hechizos estáticos',
+    addSpell: 'Agregar hechizo',
+    spells: 'Hechizos',
+    spellAbilities: {
+      str: 'Fuerza',
+      dex: 'Destreza',
+      con: 'Constitución',
+      int: 'Inteligencia',
+      wis: 'Sabiduría',
+      cha: 'Carisma'
+    },
+    spellAbility: 'Habilidad',
+    originValues: {
+      origin: 'Origen',
+      general: 'General',
+      epic: 'Épico'
+    },
+    originValue: 'Valor de origen',
+    requiredAbilities: 'Condición: una de las habilidades es 13+',
+    abilityBoost: 'Mejora de habilidad'
   }
 }
 

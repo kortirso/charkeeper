@@ -43,6 +43,25 @@ const TRANSLATION = {
     'proficiency': 'Мастерство',
     'level': 'Уровень',
     'tier': 'Ранг'
+  },
+  es: {
+    'str': 'Fuerza',
+    'agi': 'Agilidad',
+    'fin': 'Fineza',
+    'ins': 'Instinto',
+    'pre': 'Presencia',
+    'know': 'Conocimiento',
+    'health': 'Salud',
+    'stress': 'Estrés',
+    'hope': 'Esperanza',
+    'evasion': 'Evasión',
+    'armor_score': 'Puntuación de armadura',
+    'major': 'Umbral mayor',
+    'severe': 'Umbral severo',
+    'attack': 'Ataques',
+    'proficiency': 'Competencia',
+    'level': 'Nivel',
+    'tier': 'Rango'
   }
 }
 

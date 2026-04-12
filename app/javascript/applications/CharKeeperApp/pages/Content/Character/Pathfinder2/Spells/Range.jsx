@@ -21,6 +21,14 @@ const TRANSLATION = {
     'ft': 'фт',
     'mile': 'мл',
     distance: 'Дистанция: '
+  },
+  es: {
+    'self': 'A sí mismo',
+    'touch': 'Toque',
+    'none': '',
+    'ft': 'pies',
+    'mile': 'milla',
+    distance: 'Distancia: '
   }
 };
 

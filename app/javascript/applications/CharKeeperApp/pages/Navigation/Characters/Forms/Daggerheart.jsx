@@ -21,6 +21,10 @@ const TRANSLATION = {
   ru: {
     options: 'В разделе Homebrews/Модули доступны книги для расширения возможных вариантов при создании персонажа.',
     skipGuide: 'Пропустить настройку нового персонажа'
+  },
+  es: {
+    options: 'Hay libros disponibles en la sección Homebrews/Módulos para opciones adicionales para la creación de personajes.',
+    skipGuide: 'Omitir guía de personaje nuevo'
   }
 }
 

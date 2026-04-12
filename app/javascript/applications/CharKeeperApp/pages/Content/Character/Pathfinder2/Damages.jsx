@@ -64,6 +64,35 @@ const TRANSLATION = {
     },
     impactType: 'Урон',
     impactValue: 'Значение'
+  },
+  es: {
+    title: 'Impacto de daño',
+    impacts: {
+      immune: 'Inmunidad',
+      resistance: 'Resistencia',
+      weakness: 'Debilidad'
+    },
+    impact: 'Impacto',
+    damages: {
+      bludge: 'Contundente',
+      pierce: 'Perforante',
+      slash: 'Cortante',
+      acid: 'Ácido',
+      cold: 'Frio',
+      electricity: 'Eléctrico',
+      fire: 'Fuego',
+      sonic: 'Sónico',
+      vitality: 'Vitalidad',
+      void: 'Vacío',
+      force: 'Fuerza',
+      spirit: 'Espíritu',
+      mental: 'Mental',
+      poison: 'Veneno',
+      bleed: 'Sangrado',
+      precision: 'Precisión'
+    },
+    impactType: 'Daño',
+    impactValue: 'Valor'
   }
 }
 

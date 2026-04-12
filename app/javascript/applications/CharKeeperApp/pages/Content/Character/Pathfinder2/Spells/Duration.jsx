@@ -21,6 +21,14 @@ const TRANSLATION = {
     'h': 'ч',
     'd': 'д',
     duration: 'Длительность: '
+  },
+  es: {
+    'instant': 'Instantáneo',
+    'r': 'ronda',
+    'm': 'min',
+    'h': 'hr',
+    'd': 'día',
+    duration: 'Duración: '
   }
 };
 
