@@ -5,7 +5,7 @@ module CharactersContext
     module Animals
       class AddCommand < BaseCommand
         use_contract do
-          config.messages.namespace = :character_animal_companion
+          config.messages.namespace = :pathfinder2_animal_companion
 
           Kinds = Dry::Types['strict.string'].enum(*Config.data('pathfinder2', 'animals').keys)
 

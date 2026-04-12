@@ -293,8 +293,5 @@
     "sling": { "name": { "en": "Sling", "ru": "Пращи" } },
     "spear": { "name": { "en": "Spear", "ru": "Копья" } },
     "sword": { "name": { "en": "Sword", "ru": "Мечи" } }
-  },
-  "animals": {
-    "wolf": { "name": { "en": "Wolf", "ru": "Волк" } }
   }
 }

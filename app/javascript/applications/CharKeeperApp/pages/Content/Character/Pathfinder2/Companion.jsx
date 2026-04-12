@@ -6,13 +6,14 @@ import {
   ErrorWrapper, Input, Button, EditWrapper, GuideWrapper, AvatarInput, TextArea, Dice, Toggle, Checkbox, Select
 } from '../../../../components';
 import { useAppState, useAppLocale, useAppAlert } from '../../../../context';
-import { Avatar } from '../../../../assets';
+import { Avatar, Close } from '../../../../assets';
 import config from '../../../../data/pathfinder2.json';
 import { fetchPetFeatsRequest } from '../../../../requests/fetchPetFeatsRequest';
 import { fetchCompanionRequest } from '../../../../requests/fetchCompanionRequest';
 import { createCompanionRequest } from '../../../../requests/createCompanionRequest';
 import { updateCompanionRequest } from '../../../../requests/updateCompanionRequest';
-import { localize, modifier, translate } from '../../../../helpers';
+import { removeCompanionRequest } from '../../../../requests/removeCompanionRequest';
+import { localize, modifier } from '../../../../helpers';
 
 const TRANSLATION = {
   en: {
@@ -22,7 +23,35 @@ const TRANSLATION = {
     pets: 'Pets feats',
     familiars: 'Familiar feats',
     animalName: "Animal companion's name",
-    kind: 'Animal kind'
+    kind: 'Animal kind',
+    attacks: 'Attacks',
+    support: 'Support',
+    animals: {
+      ape: 'Ape',
+      arboreal_sapling: 'Arboreal Sapling',
+      badger: 'Badger',
+      bat: 'Bat',
+      bear: 'Bear',
+      bird: 'Bird',
+      boar: 'Boar',
+      cat: 'Cat',
+      crocodile: 'Crocodile',
+      dromaeosaur: 'Dromaeosaur',
+      horse: 'Horse',
+      riding_drake: 'Riding Drake',
+      scorpion: 'Scorpion',
+      shark: 'Shark',
+      snake: 'Snake',
+      wolf: 'Wolf'
+    },
+    sizes: {
+      small: 'Small size',
+      medium: 'Medium size',
+      large: 'Large size'
+    },
+    ages: {
+      young: 'Young animal'
+    }
   },
   ru: {
     name: 'Имя любимца',
@@ -31,7 +60,35 @@ const TRANSLATION = {
     pets: 'Черты любимца',
     familiars: 'Черты фамильяра',
     animalName: 'Имя верного зверя',
-    kind: 'Вид верного зверя'
+    kind: 'Вид верного зверя',
+    attacks: 'Атаки',
+    support: 'Поддержка',
+    animals: {
+      shark: 'Акула',
+      badger: 'Барсук',
+      wolf: 'Волк',
+      dromaeosaur: 'Дромеозавр',
+      riding_drake: 'Ездовой дрейк',
+      snake: 'Змея',
+      boar: 'Кабан',
+      cat: 'Кошка',
+      crocodile: 'Крокодил',
+      arboreal_sapling: 'Лесовик-росток',
+      bat: 'Летучая мышь',
+      horse: 'Лошадь',
+      bear: 'Медведь',
+      ape: 'Примат',
+      bird: 'Птица',
+      scorpion: 'Скорпион'
+    },
+    sizes: {
+      small: 'Небольшой размер',
+      medium: 'Средний размер',
+      large: 'Крупный размер'
+    },
+    ages: {
+      young: 'Молодой зверь'
+    }
   },
   es: {
     name: 'Nombre del compañero',
@@ -40,7 +97,35 @@ const TRANSLATION = {
     pets: 'Pets feats',
     familiars: 'Familiar feats',
     animalName: 'Nombre del animal',
-    kind: 'Especie animal'
+    kind: 'Especie animal',
+    attacks: 'Ataques',
+    support: 'Apoyo',
+    animals: {
+      ape: 'Ape',
+      arboreal_sapling: 'Arboreal Sapling',
+      badger: 'Badger',
+      bat: 'Bat',
+      bear: 'Bear',
+      bird: 'Bird',
+      boar: 'Boar',
+      cat: 'Cat',
+      crocodile: 'Crocodile',
+      dromaeosaur: 'Dromaeosaur',
+      horse: 'Horse',
+      riding_drake: 'Riding Drake',
+      scorpion: 'Scorpion',
+      shark: 'Shark',
+      snake: 'Snake',
+      wolf: 'Wolf'
+    },
+    sizes: {
+      small: 'Tamaño pequeño',
+      medium: 'Tamaño mediano',
+      large: 'Tamaño grande'
+    },
+    ages: {
+      young: 'Animal joven'
+    }
   }
 }
 
@@ -174,6 +259,20 @@ export const Pathfinder2Companion = (props) => {
     } else renderAlerts(result.errors_list);
   }
 
+  const removeCompanion = async () => {
+    const result = await removeCompanionRequest(
+      appState.accessToken, character().provider, character().id, (props.type === 'pet' ? 'companions' : 'animals')
+    );
+
+    if (result.errors_list === undefined) {
+      batch(() => {
+        setCompanion(undefined);
+        setForm({ name: '', caption: '', kind: null });
+        setEditMode(false)
+      });
+    } else renderAlerts(result.errors_list);
+  }
+
   return (
     <ErrorWrapper payload={{ character_id: character().id, key: 'Pathfinder2Companion' }}>
       <GuideWrapper character={character()}>
@@ -191,7 +290,7 @@ export const Pathfinder2Companion = (props) => {
                 <Select
                   containerClassList="mb-4"
                   labelText={localize(TRANSLATION, locale()).kind}
-                  items={translate(config.animals, locale())}
+                  items={localize(TRANSLATION, locale()).animals}
                   selectedValue={form.kind}
                   onSelect={(value) => setForm({ ...form, kind: value })}
                 />
@@ -206,7 +305,7 @@ export const Pathfinder2Companion = (props) => {
             onCancelEditing={cancelNameEditing}
             onSaveChanges={changeCompanion}
           >
-            <div class="blockable py-4 px-2 md:px-4 mb-2">
+            <div class="blockable py-4 px-2 md:px-4 mb-2 relative">
               <Show
                 when={editMode()}
                 fallback={
@@ -219,6 +318,9 @@ export const Pathfinder2Companion = (props) => {
                       </div>
                       <div class="flex-1">
                         <p class="text-xl">{companion().name}</p>
+                        <Show when={props.type === 'animal'}>
+                          <p class="text-sm mt-2">{localize(TRANSLATION, locale()).ages[companion().age]}, {localize(TRANSLATION, locale()).animals[companion().kind]}, {localize(TRANSLATION, locale()).sizes[companion().size]}</p>
+                        </Show>
                         <p class="mt-2">{companion().caption}</p>
                       </div>
                     </div>
@@ -240,6 +342,9 @@ export const Pathfinder2Companion = (props) => {
                 />
                 <AvatarInput onSelectedFile={setSelectedFile} />
               </Show>
+              <Button default classList="absolute top-0 right-0 rounded min-w-6 min-h-6 opacity-50" onClick={removeCompanion}>
+                <Close />
+              </Button>
             </div>
           </EditWrapper>
           <Pathfinder2SharedSenses
@@ -257,6 +362,37 @@ export const Pathfinder2Companion = (props) => {
             onChangeTempHealth={changeTempHealth}
           />
           <Show when={props.type === 'animal'}>
+            <div class="blockable py-4 px-2 md:px-4 mb-2">
+              <h2 class="weapon-title">{localize(TRANSLATION, locale()).attacks}</h2>
+              <div class="mb-4">
+                <For each={companion().attacks}>
+                  {(attack) =>
+                    <div class="weapon-item">
+                      <div class="weapon-item-header">
+                        <p class="weapon-item-name">{attack.name}</p>
+                        <div class="weapon-item-stats">
+                          <div class="weapon-damage">
+                            <Dice width="28" height="28" text={modifier(attack.attack_bonus)} onClick={() => props.openDiceRoll(`/check attack "${attack.name}"`, attack.attack_bonus)} />
+                          </div>
+                          <p>{attack.damage}{attack.damage_bonus !== 0 ? modifier(attack.damage_bonus) : ''}</p>
+                        </div>
+                      </div>
+                      <Show when={attack.tags && Object.keys(attack.tags).length > 0}>
+                        <div class="weapon-tags">
+                          <For each={Object.entries(attack.tags)}>
+                            {([, value]) =>
+                              <p class="tag">{value}</p>
+                            }
+                          </For>
+                        </div>
+                      </Show>
+                    </div>
+                  }
+                </For>
+              </div>
+              <h2 class="weapon-title">{localize(TRANSLATION, locale()).support}</h2>
+              <p class="text-sm">{companion().support}</p>
+            </div>
             <div class="blockable py-4 mb-2">
               <div class="grid grid-cols-3 gap-2">
                 <For each={Object.entries(config.abilities).map(([key, values]) => [key, localize(values.name, locale())])}>

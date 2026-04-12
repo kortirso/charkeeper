@@ -7,7 +7,7 @@ module CharactersContext
         include Deps[cache: 'cache.avatars']
 
         use_contract do
-          config.messages.namespace = :character_animal_companion
+          config.messages.namespace = :pathfinder2_animal_companion
 
           params do
             required(:animal).filled(type?: ::Pathfinder2::Character::AnimalCompanion)

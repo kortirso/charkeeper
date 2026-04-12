@@ -22,9 +22,31 @@ module Pathfinder2
       }
       @result['health_max'] = config['health'] + ((6 + abilities['con']) * level)
       @result['armor_class'] = calc_armor_class
-      @result['speed'] = speeds['default'] || speeds.first.to_h
+      @result['speed'] = speeds['default'] || 0
       @result['speeds'] = speeds.except('default')
       @result['skills'] = generate_skills_payload
+      @result['attacks'] = config['attacks'].map { |attack| attack_payload(attack) }
+      @result['support'] = translate(config['support'])
+    end
+
+    def attack_payload(attack) # rubocop: disable Metrics/AbcSize
+      key_ability_bonus = find_key_ability_bonus(attack['type'], attack['tooltips'])
+      damage_types = attack['damage_type'].split('-')
+      {
+        slug: attack['slug'],
+        name: translate(attack['name']),
+        attack_bonus: key_ability_bonus + proficiency_bonus(weapon_skills[attack['weapon_skill']]),
+        damage: attack['damage'],
+        damage_bonus: abilities['str'],
+        tags: (damage_types + attack['tooltips']).index_with { |type| I18n.t("tags.pathfinder2.weapon.title.#{type}") }
+      }
+    end
+
+    def find_key_ability_bonus(type, tooltips=[])
+      return [abilities['str'], abilities['dex']].max if tooltips.include?('finesse')
+      return abilities['str'] if type == 'melee'
+
+      abilities['dex']
     end
 
     def generate_skills_payload

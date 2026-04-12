@@ -8,6 +8,23 @@ ru:
       unexpected_key: Неизвестный параметр
       included_in?: Неизвестное значение
       max_size?: Размер превышен
+      filled?: Есть обязательное поле
+      pathfinder2_animal_companion:
+        rules:
+          name:
+            filled?: Необходимо указать имя
+            max_size?: Имя не может быть длиннее, чем 50 символов
+          caption:
+            max_size?: Описание не может быть длиннее, чем 1000 символов
+          kind:
+            filled?: Необходимо указать тип
+      pathfinder2_pet:
+        rules:
+          name:
+            filled?: Необходимо указать имя
+            max_size?: Имя не может быть длиннее, чем 50 символов
+          caption:
+            max_size?: Описание не может быть длиннее, чем 1000 символов
       daggerheart_item_upgrade:
         rules:
           name:
