@@ -142,6 +142,7 @@ Rails.application.routes.draw do
           resources :talents, only: %i[index create destroy]
           resources :rest, only: %i[create]
           resource :companions, only: %i[show create update destroy]
+          resource :animals, only: %i[show create update destroy]
         end
       end
       resources :spells, only: %i[index show]

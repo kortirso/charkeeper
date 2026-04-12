@@ -1,0 +1,23 @@
+{
+  "wolf": {
+    "size": "small",
+    "abilities": { "str": 2, "dex": 3, "con": 2, "int": -4, "wis": 1, "cha": 0 },
+    "health": 6,
+    "skill": "survival",
+    "speeds": { "default": 40 },
+    "vision": "low-light",
+    "attacks": [
+      {
+        "name": { "en": "Jaws", "ru": "Челюсти" },
+        "type": "melee",
+        "damage": "1d8",
+        "damage_type": "pierce",
+        "tooltips": ["finesse"]
+      }
+    ],
+    "support": {
+      "en": "Your wolf tears tendons with each opening. Until the start of your next turn, your Strikes that damage creatures your wolf threatens give the target a –5-foot status penalty to its Speeds for 1 minute (–10 on a critical success).",
+      "ru": "Волк вцепляется в сухожилия противника при каждой возможности. До начала вашего следующего хода все ваши Удары, которые наносят урон цели в зоне досягаемости волка, налагают на цель штраф состояния -5 футов ко всем скоростям на 1 минуту (-10 при критическом ударе)."
+    }
+  }
+}

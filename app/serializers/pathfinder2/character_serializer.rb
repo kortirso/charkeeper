@@ -14,13 +14,13 @@ module Pathfinder2
                :spell_attack, :spell_dc, :spent_spell_slots, :formatted_static_spells, :modified_abilities, :spell_list,
                :can_have_pet, :can_have_familiar, :raw_abilities, :experience, :max_dying, :speeds, :info, :hero_points,
                :total_damage_reduction, :damage_reduction, :can_have_signature_spells, :archetypes, :archetype_spells,
-               :spent_archetype_spell_slots
+               :spent_archetype_spell_slots, :can_have_animal
 
     delegate :health, :abilities, :skills, :subclasses, :saving_throws_value, :weapon_skills, :raw_abilities, :max_dying,
              :money, :lores, :armor_skills, :coins, :load, :armor_class, :speed, :perception, :conditions, :attacks, :speeds,
              :features, :spells_info, :class_dc, :spell_attack, :spell_dc, :formatted_static_spells, :modified_abilities,
              :can_have_pet, :can_have_familiar, :info, :total_damage_reduction, :can_have_signature_spells, :archetype_spells,
-             to: :decorator
+             :can_have_animal, to: :decorator
     delegate :name, :id, :data, :created_at, to: :object
     delegate :level, :skill_boosts, :selected_features, :race, :subrace, :main_class, :classes, :languages, :archetypes,
              :background, :saving_throws, :spent_spell_slots, :spell_list, :experience, :dying_condition_value, :hero_points,
