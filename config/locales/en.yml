@@ -1,5 +1,15 @@
 en:
   changelogs:
+    '4026':
+      pf:
+        title1: Archetypes
+        title2: Animal companions
+        title3: Damage reduction
+        title4: Static classes progression
+        desc1: Added selecting archetypes
+        desc2: Added editing animal companions
+        desc3: Added auto and manual counting of damage reduction
+        desc4: Added auto attach static class feats by levels
     '4023':
       pf:
         title1: Pet Feats
