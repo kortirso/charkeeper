@@ -23,6 +23,7 @@ module Pathfinder2
       @result['health_max'] = config['health'] + ((6 + abilities['con']) * level)
       @result['armor_class'] = calc_armor_class
       @result['speed'] = speeds['default'] || speeds.first.to_h
+      @result['speeds'] = speeds.except('default')
       @result['skills'] = generate_skills_payload
     end
 

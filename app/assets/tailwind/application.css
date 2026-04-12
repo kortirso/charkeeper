@@ -938,3 +938,11 @@ body.web {
 .pet-feat:nth-of-type(n+2) {
   @apply border-t border-gray-200 dark:border-neutral-800;
 }
+
+.companion-ability-title {
+  @apply text-sm uppercase text-center mb-2;
+}
+
+.companion-ability-dice {
+  @apply text-2xl font-normal!;
+}

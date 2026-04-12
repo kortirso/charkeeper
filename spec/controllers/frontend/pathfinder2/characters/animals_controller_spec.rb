@@ -47,7 +47,7 @@ describe Frontend::Pathfinder2::Characters::AnimalsController do
             expect(response.parsed_body['animal'].keys).to(
               contain_exactly(
                 'id', 'name', 'caption', 'avatar', 'armor_class', 'health', 'health_max', 'health_temp', 'level',
-                'perception', 'saving_throws_value', 'skills', 'speed', 'speeds'
+                'perception', 'saving_throws_value', 'skills', 'speed', 'speeds', 'abilities'
               )
             )
           end

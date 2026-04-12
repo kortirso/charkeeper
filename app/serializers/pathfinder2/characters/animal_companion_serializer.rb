@@ -6,11 +6,11 @@ module Pathfinder2
       include Deps[cache: 'cache.avatars']
 
       attributes :id, :name, :caption, :avatar, :level, :saving_throws_value, :health_max, :armor_class, :speed, :perception,
-                 :skills, :health, :health_temp, :speeds
+                 :skills, :health, :health_temp, :speeds, :abilities
 
-      delegate :saving_throws_value, :health_max, :armor_class, :speed, :skills, to: :decorator
+      delegate :saving_throws_value, :health_max, :armor_class, :speed, :skills, :speeds, to: :decorator
       delegate :data, to: :object
-      delegate :level, :health, :health_temp, :perception, :speeds, to: :data
+      delegate :level, :health, :health_temp, :perception, :abilities, to: :data
 
       def avatar
         cache.fetch_item(id: object.id)

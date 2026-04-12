@@ -100,6 +100,7 @@ export const Pathfinder2 = (props) => {
 
   const characterTabs = createMemo(() => {
     const result = ['combat', 'equipment', 'spells', 'classLevels'];
+    if (character().can_have_animal) result.push('animalCompanion');
     if (character().can_have_pet || character().can_have_familiar) result.push('companion');
     return result.concat('professions', 'rest', 'bonuses', 'notes', 'avatar');
   });
@@ -207,8 +208,17 @@ export const Pathfinder2 = (props) => {
                 onReloadCharacter={props.onReloadCharacter}
               />
             </Match>
+            <Match when={activeMobileTab() === 'animalCompanion'}>
+              <Pathfinder2Companion
+                type="animal"
+                character={character()}
+                onReloadCharacter={props.onReloadCharacter}
+                openDiceRoll={openDiceRoll}
+              />
+            </Match>
             <Match when={activeMobileTab() === 'companion'}>
               <Pathfinder2Companion
+                type="pet"
                 character={character()}
                 onReloadCharacter={props.onReloadCharacter}
                 openDiceRoll={openDiceRoll}
@@ -345,8 +355,17 @@ export const Pathfinder2 = (props) => {
                 onReloadCharacter={props.onReloadCharacter}
               />
             </Match>
+            <Match when={activeTab() === 'animalCompanion'}>
+              <Pathfinder2Companion
+                type="animal"
+                character={character()}
+                onReloadCharacter={props.onReloadCharacter}
+                openDiceRoll={openDiceRoll}
+              />
+            </Match>
             <Match when={activeTab() === 'companion'}>
               <Pathfinder2Companion
+                type="pet"
                 character={character()}
                 onReloadCharacter={props.onReloadCharacter}
                 openDiceRoll={openDiceRoll}
