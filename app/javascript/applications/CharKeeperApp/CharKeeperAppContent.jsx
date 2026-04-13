@@ -5,6 +5,7 @@ import { createWindowSize } from '@solid-primitives/resize-observer';
 import { NavigationPage, ContentPage, LoginPage } from './pages';
 import { useAppState, useAppLocale } from './context';
 import { useTelegram } from './hooks';
+import { performResponse } from './helpers';
 
 import { fetchAccessTokenRequest } from './requests/fetchAccessTokenRequest';
 import { fetchUnreadNotificationsCountRequest } from './requests/fetchUnreadNotificationsCountRequest';
@@ -83,16 +84,22 @@ export const CharKeeperAppContent = () => {
 
     Promise.all([fetchUserInfo()]).then(
       ([userInfoData]) => {
-        if (userInfoData.errors_list === undefined) {
-          batch(() => {
-            setLocale(userInfoData.locale);
-            changeUserInfo({
-              username: userInfoData.username,
-              isAdmin: userInfoData.admin,
-              colorSchema: userInfoData.color_schema
+        performResponse(
+          userInfoData,
+          function() { // eslint-disable-line solid/reactivity
+            batch(() => {
+              setLocale(userInfoData.locale);
+              changeUserInfo({
+                username: userInfoData.username,
+                isAdmin: userInfoData.admin,
+                colorSchema: userInfoData.color_schema
+              });
             });
-          });
-        }
+          },
+          function() {
+            setAccessToken(null);
+          }
+        );
       }
     );
   });

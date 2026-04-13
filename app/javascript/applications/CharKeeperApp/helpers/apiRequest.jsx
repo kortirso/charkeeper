@@ -27,9 +27,19 @@ export const apiRequest = async ({ url, options }) => {
   }
 
   return fetch(url, options)
-    .then((response) => response.json())
+    .then((response) => {
+      if (response.status === 401) {
+        const error = new Error('Unauthorized');
+        error.status = response.status;
+        throw error;
+      }
+
+      return response.json();
+    })
     .then((data) => data)
-    .catch(() => { return { errors_list: ['Internal server error, an error report has been sent to the developer!'] } });
+    .catch((error) => {
+      return { status: 401, errors_list: ['Internal server error, an error report has been sent to the developer!'] }
+    });
 }
 
 export const apiBlobRequest = async ({ url, options }) => {
