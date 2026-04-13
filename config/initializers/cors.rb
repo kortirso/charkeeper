@@ -7,11 +7,4 @@ Rails.application.config.middleware.insert_before 0, Rack::Cors do
     resource '/characters/*', headers: :any, methods: %i[get], credentials: false
     resource '/owlbear/*', headers: :any, methods: %i[get], credentials: false
   end
-
-  allow do
-    origins 'http://tauri.localhost'
-    resource '/frontend/*', headers: :any, methods: %i[get post put patch delete options head], credentials: false
-    resource '/characters/*', headers: :any, methods: %i[get], credentials: false
-    resource '/owlbear/*', headers: :any, methods: %i[get], credentials: false
-  end
 end

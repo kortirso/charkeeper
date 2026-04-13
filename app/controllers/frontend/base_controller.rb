@@ -8,6 +8,10 @@ module Frontend
 
     private
 
+    def authentication_error
+      unauthorized_access
+    end
+
     def set_active_storage_url_options
       return if Rails.env.production?
       return if Rails.env.ru_production?
@@ -21,6 +25,10 @@ module Frontend
 
     def only_head_response
       render json: { result: :ok }, status: :ok
+    end
+
+    def unauthorized_access
+      render json: { errors: [t('forbidden')], errors_list: [t('forbidden')] }, status: :unauthorized, formats: [:json] # 401
     end
 
     def access_denied
