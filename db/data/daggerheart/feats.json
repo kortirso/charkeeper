@@ -5,13 +5,13 @@
     "title": {
       "en": "Efficient",
       "ru": "Эффективность",
-      "es": "",
+      "es": "Eficiente",
       "ru-DHM": "Эффективный"
     },
     "description": {
       "en": "When you take a short rest, you can choose a long rest move instead of a short rest move.",
       "ru": "Когда вы совершаете короткий отдых, вы можете заменить один из ваших ходов короткого отдыха на ход продолжительного отдыха.",
-      "es": "",
+      "es": "Cuando tomas un descanso corto, puedes elegir una opción de descanso largo en lugar de una opción descanso roto.",
       "ru-DHM": "Во время короткого отдыха вы можете заменить один из своих ходов на ход из списка долгого отдыха."
     }
   },
@@ -21,12 +21,12 @@
     "title": {
       "en": "Internal Compass",
       "ru": "Внутренний компас",
-      "es": ""
+      "es": "Compás interno"
     },
     "description": {
       "en": "When you roll a 1 on your Hope Die, you can reroll it.",
       "ru": "Когда вы выбрасываете 1 на кости Надежды, вы можете перебросить его.",
-      "es": "",
+      "es": "Cuando te sale 1 en tu dado de Esperanza, puedes volver a tirar.",
       "ru-DHM": "Если вы выбросили 1 на кости Надежды, можете её перебросить."
     }
   },
@@ -36,13 +36,13 @@
     "title": {
       "en": "Fragile",
       "ru": "Хрупкость",
-      "es": "",
+      "es": "Fragíl",
       "ru-DHM": "Хрупкий"
     },
     "description": {
       "en": "When you take Major or greater damage, you drop out of Beastform.",
       "ru": "Когда вы получаете ощутимый урон или больше, вы теряете звериный облик.",
-      "es": "",
+      "es": "Cuando sufres daño Mayor o peor, tu Forma Bestial deshace.",
       "ru-DHM": "При получении ощутимого урона или выше вы немедленно выходите из звериной формы."
     }
   },
@@ -52,12 +52,12 @@
     "title": {
       "en": "Hobbling Strike",
       "ru": "Калечащий удар",
-      "es": ""
+      "es": "Golpe debilitador"
     },
     "description": {
       "en": "When you succeed on an attack against a target within Melee range, you can **mark a Stress** to make the target temporarily *Vulnerable*.",
       "ru": "Когда вы успешно атакуете цель вплотную, вы можете **отметить Стресс**, чтобы сделать цель временно *уязвимой*.",
-      "es": ""
+      "es": "Cuando tienes éxito en un ataque cuerpo a cuerpo, puedes **Marcar un estrés** para hacer que el objetivo sea **Vulnerable** temporalmente."
     }
   },
   {
@@ -66,13 +66,13 @@
     "title": {
       "en": "Aquatic",
       "ru": "Водное",
-      "es": "",
+      "es": "Acuático",
       "ru-DHM": "Водный"
     },
     "description": {
       "en": "You can breathe and move naturally underwater.",
       "ru": "Вы дышите и естественно передвигаетесь под водой.",
-      "es": "",
+      "es": "Puedes respirar y moverte de manera natural bajo el agua.",
       "ru-DHM": "Вы можете свободно передвигаться и дышать под водой."
     }
   },
@@ -82,12 +82,12 @@
     "title": {
       "en": "Fleet",
       "ru": "Проворство",
-      "es": ""
+      "es": "Raudo"
     },
     "description": {
       "en": "**Spend a Hope** to move up to Far range without rolling.",
       "ru": "**Потратьте Надежду** чтобы передвинуться вплоть до далёкой дистанции не совершая бросок.",
-      "es": ""
+      "es": "**Gasta una Esperanza** para moverte hasta una distancia Lejana sin tirar"
     }
   },
   {
@@ -96,13 +96,13 @@
     "title": {
       "en": "At Ease",
       "ru": "Спокойствие",
-      "es": "",
+      "es": "Relajado",
       "ru-DHM": "Хладнокровие"
     },
     "description": {
-      "en": "Gain an calculated Stress slot.",
+      "en": "Gain a calculated Stress slot.",
       "ru": "Получите добавленную ячейку Стресса.",
-      "es": "",
+      "es": "Gana una casilla de Estrés adicional (ya calculada).",
       "ru-DHM": "Получите дополнительную ячейку Стресса."
     }
   },
@@ -112,13 +112,13 @@
     "title": {
       "en": "Hold Them Off",
       "ru": "Задержи их",
-      "es": "",
+      "es": "Manténlos a raya",
       "ru-DHM": "Сдержать натиск"
     },
     "description": {
       "en": "**Spend 3 Hope** when you succeed on an attack with a weapon to use that same roll against two additional adversaries within range of the attack.",
       "ru": "**Потратьте 3 Надежды** когда вы успешно атакуете оружием, чтобы использовать тот же бросок атаки против двух дополнительных противников в пределах досягаемости атаки.",
-      "es": "",
+      "es": "**Gasta 3 Esperanzas** cuando atacas éxitosamente con un arma para usar el mismo resultado contra dos adversarios adicionales dentro del rango del ataque.",
       "ru-DHM": "**Потратьте 3 Надежды** при успешной атаке оружием, чтобы применить тот же бросок против двух дополнительных противников в пределах дистанции атаки."
     }
   },
@@ -128,12 +128,12 @@
     "title": {
       "en": "Adrenaline",
       "ru": "Адреналин",
-      "es": ""
+      "es": "Adrenalina"
     },
     "description": {
       "en": "While you're *Vulnerable*, add +{{value}} situative bonus to your damage rolls.",
       "ru": "Пока вы *уязвимы*, добавьте ситуативный бонус +{{value}} к броскам урона.",
-      "es": "",
+      "es": "Mientras estés *Vulnerable*, añade una bonificación situacional de +{{value}} a tus tiradas de daño.",
       "ru-DHM": "Пока вы *уязвимы*, добавляйте ситуативный бонус +{{value}} к броскам урона."
     }
   },
@@ -143,12 +143,12 @@
     "title": {
       "en": "Blood Maledict",
       "ru": "Кровавое проклятье",
-      "es": ""
+      "es": "Maledicto de sangre"
     },
     "description": {
       "en": "**Spend 3 Hope** to target a creature within Far range or in a vision from your Grim Psychometry. Until you finish a rest, take Severe damage, or use this feature again, you have advantage on all action rolls against the target.",
       "ru": "**Потратьте 3 Надежды**, чтобы выбрать целью существо в пределах дальней дистанции или в видении вашей мрачной психометрии. Пока вы не завершите отдых, не получите тяжёлый урон или не используете эту способность снова, вы получаете преимущество на все броски действий против цели.",
-      "es": ""
+      "es": "**Gasta 3 puntos de Esperanza** para elegir como objetivo a una criatura que se encuentre a una distancia Lejana o dentro del campo de visión de tu Psicometría sombría. Hasta que termines un descanso, sufras daño severo o vuelvas a usar esta habilidad, tendrás ventaja en todas las tiradas de acción contra el objetivo."
     }
   },
   {
@@ -157,12 +157,12 @@
     "title": {
       "en": "I am the Weapon",
       "ru": "Я и есть оружие",
-      "es": ""
+      "es": "Yo soy el arma"
     },
     "description": {
       "en": "While you don't have any equipped weapons you gain a +1 calculated bonus to Evasion.",
       "ru": "Пока у вас не экипировано любое оружие вы получаете +1 добавленный бонус к уклонению.",
-      "es": ""
+      "es": "Mientras no tengas armas equipadas, ganas una bonificación (ya calculada) de +1 a tu Evasión."
     }
   },
   {
@@ -171,12 +171,12 @@
     "title": {
       "en": "Prestidigitation",
       "ru": "Фокусы",
-      "es": ""
+      "es": "Prestidigitación"
     },
     "description": {
       "en": "You can perform harmless, subtle magical effects at will.",
       "ru": "Вы можете создавать безобидные, незначительные магические эффекты по своему желанию.",
-      "es": "",
+      "es": "Puedes realizar efectos mágicos sútiles e inofensios cuando quieras.",
       "ru-DHM": "Вы можете по своему желанию творить безвредные, едва заметные магические эффекты."
     }
   },
@@ -186,12 +186,12 @@
     "title": {
       "en": "Battlemage",
       "ru": "Боевой маг",
-      "es": ""
+      "es": "Mago de batalla"
     },
     "description": {
-      "en": "Gain an calculated Hit Point slot.",
+      "en": "Gain a calculated Hit Point slot.",
       "ru": "Получите добавленную ячейку ран.",
-      "es": "",
+      "es": "Gana un Punto de Vida adicional (ya calculado).",
       "ru-DHM": "Увеличьте максимум ран на 1."
     }
   },
@@ -202,12 +202,12 @@
       "en": "Vitality",
       "ru": "Живучесть",
       "ru-DHM": "Жизненная сила",
-      "es": ""
+      "es": "Vitalidad"
     },
     "description": {
       "en": "You gain Hit point slot and bonus to thresholds +2.",
       "ru": "Вы получаете одну ячейку ран и +2 к вашим порогам урона.",
-      "es": ""
+      "es": "Ganas un Punto de Vida y una bonificación de +2 a tus Umbrales"
     }
   },
   {
@@ -216,13 +216,13 @@
     "title": {
       "en": "Vitality",
       "ru": "Живучесть",
-      "es": "",
+      "es": "Vitalidad",
       "ru-DHM": "Жизненная сила"
     },
     "description": {
       "en": "You gain Stress slot and Hit point slot.",
       "ru": "Вы получаете одну ячейку стресса и одну ячейку ран.",
-      "es": ""
+      "es": "Ganas una casilla de estrés adicional y un Punto de Vida."
     }
   },
   {
@@ -231,13 +231,13 @@
     "title": {
       "en": "Vitality",
       "ru": "Живучесть",
-      "es": "",
+      "es": "Vitalidad",
       "ru-DHM": "Жизненная сила"
     },
     "description": {
       "en": "You gain Stress slot and bonus to thresholds +2.",
       "ru": "Вы получаете одну ячейку стресса и +2 к вашим порогам урона.",
-      "es": ""
+      "es": "Ganas una casilla de Estrés adicional y una bonificación de +2 a tus Umbrales."
     }
   },
   {
@@ -246,12 +246,12 @@
     "title": {
       "en": "Astral Projection",
       "ru": "Астральная проекция",
-      "es": ""
+      "es": "Proyección astral"
     },
     "description": {
       "en": "**Mark a Stress** to create a projected copy of yourself that can appear anywhere you've been before. You can see and hear through the projection as though it were you and affect the world as though you were there. A creature investigating the projection can tell it's of magical origin. This effect lasts until your next rest or your projection takes any damage.",
       "ru": "**Отметьте Стресс**, чтобы создать проекцию себя, которая может появиться в любом месте, где вы были ранее.\n\nВы можете видеть и слышать через проекцию, как если бы это были вы, и влиять на мир, как если бы вы были там. Существо, исследующее проекцию, может определить, что она имеет магическое происхождение. Этот эффект длится до вашего следующего отдыха или до тех пор, пока ваша проекция не получит какой-либо урон.",
-      "es": "",
+      "es": "**Marca un Estrés** para crea una copia proyectada de ti mismo/a que puede aparecer donde sea que hayas estado antes. Puedes ver y oír a través de la proyección como si fueras tú y afectar el mundo como si estuvieras ahí. Una criatura investigando la proyección podra ver su origen mágico. Este efecto dura hasta tú próximo descanso o tu proyección sufra daño.",
       "ru-DHM": "**Получите Стресс**, чтобы спроецировать свою копию в любое место, где вы уже бывали.\n\nЧерез проекцию вы можете видеть, слышать и взаимодействовать с миром, словно вы сами там находитесь. Существо, исследующее проекцию, может определить её магическую природу. Эффект заканчивается, когда проекция получает урон или в конце отдыха."
     }
   },
@@ -261,12 +261,12 @@
     "title": {
       "en": "Book of Ava",
       "ru": "Книга Авы",
-      "es": ""
+      "es": "Libro de Ava"
     },
     "description": {
       "en": "You gain Power Push, Tava's Armor and Ice Spike spells.",
       "ru": "Вы получаете заклинания Силовой толчок, Доспехи Тавы и Ледяной шип.",
-      "es": "",
+      "es": "Ganas los hechizos: Empuje poderoso, Armadura de Tava y Pico de hielo.",
       "ru-DHM": "Вы получаете заклинания Отталкивающий импульс, Броня Тавы и Ледяной шип."
     }
   },
@@ -276,12 +276,12 @@
     "title": {
       "en": "Book of Illiat",
       "ru": "Книга Иллиата",
-      "es": ""
+      "es": "Libro de Illiat"
     },
     "description": {
       "en": "You gain Slumber, Arcane Barrage and Telepathy spells.",
       "ru": "Вы получаете заклинания Дрёма, Шквал арканы и Телепатия.",
-      "es": "",
+      "es": "Ganas los hechizos: Sueño, Barrera Arcana, Telepatía.",
       "ru-DHM": "Вы получаете заклинания Дрёма, Магический залп и Телепатия."
     }
   },
@@ -291,12 +291,12 @@
     "title": {
       "en": "Book of Vagras",
       "ru": "Книга Ваграса",
-      "es": ""
+      "es": "Libro de Vagras"
     },
     "description": {
       "en": "You gain Runic Lock, Arcane Door and Reveal spells.",
       "ru": "Вы получаете заклинания Руническая печать, Мистическая дверь и Раскрытие.",
-      "es": "",
+      "es": "Ganas los hechizos: Candado Rúnico, Puerta Arcana, Revelar.",
       "ru-DHM": "Вы получаете заклинания Рунический замок, Арканная дверь и Выявление."
     }
   },
@@ -306,12 +306,12 @@
     "title": {
       "en": "Physical Defense",
       "ru": "Толстая чешуя",
-      "es": ""
+      "es": "Defensa Física"
     },
     "description": {
       "en": "You gain a +3 calculated bonus to your damage thresholds.",
       "ru": "Вы получаете добавленный бонус +3 к вашим порогам урона.",
-      "es": ""
+      "es": "Ganas una bonificación de +3 (ya calculados) a tus Umbrales de daño."
     }
   },
   {
@@ -320,12 +320,12 @@
     "title": {
       "en": "Carrier",
       "ru": "Перевозчик",
-      "es": ""
+      "es": "Tren de carga"
     },
     "description": {
       "en": "You can carry up to two willing allies with you when you move.",
       "ru": "Вы можете перевозить на себе до двух согласных союзников.",
-      "es": ""
+      "es": "Puedes cargar contigo hasta dos aliados que estén dispuestos cuando te muevas."
     }
   },
   {
@@ -334,12 +334,12 @@
     "title": {
       "en": "Book of Korvax",
       "ru": "Книга Корвакса",
-      "es": ""
+      "es": "Libro de Korvax"
     },
     "description": {
       "en": "You gain Levitation, Recant and Rune Circle spells.",
       "ru": "Вы получаете заклинания Левитация, Забывчивость и Круг рун.",
-      "es": "",
+      "es": "Ganas los hechizos: Levitación, Retractar, Círculo Rúnico.",
       "ru-DHM": "Вы получаете заклинания Левитация, Забвение и Рунический круг."
     }
   },
@@ -349,12 +349,12 @@
     "title": {
       "en": "Snapping Strike",
       "ru": "Мощный укус",
-      "es": ""
+      "es": "Golpe Quebrador"
     },
     "description": {
       "en": "When you succeed on an attack against a target within Melee range, you can **spend a Hope** to clamp that opponent in your jaws, making them temporarily *Restrained* and *Vulnerable*.",
       "ru": "Когда вы успешно атакуете цель, находящуюся вплотную к вам, вы можете **потратить Надежду**, чтобы захватить цель в вашей челюсти, сделав её временно *уязвимой* и *обездвиженной*.",
-      "es": ""
+      "es": "Cuando atacas éxitosamente a un objetivo dentro de una distancia cuerpo a cuerpo, puedes **Gastar una Esperanza** para amordazar ese oponente en tu mandíbula, haciendo que estén *Restringidos* y *Vulnerables*."
     }
   },
   {
