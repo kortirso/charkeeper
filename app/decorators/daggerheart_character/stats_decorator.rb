@@ -176,7 +176,9 @@ module DaggerheartCharacter
         name: translate({ en: 'Unarmed', ru: 'Безоружная' }),
         range: 'melee',
         trait: use_max_trait_for_attack ? max_trait : max_unarmed_trait,
-        attack_bonus: (use_max_trait_for_attack ? max_trait_value : [modified_traits['str'], modified_traits['fin']].max) + attack_bonuses + stance_attack_bonus, # rubocop: disable Layout/LineLength
+        attack_bonus: calculate_attack_bonus(
+          (use_max_trait_for_attack ? max_trait_value : [modified_traits['str'], modified_traits['fin']].max) + attack_bonuses + stance_attack_bonus # rubocop: disable Layout/LineLength
+        ),
         damage: "#{proficiency}d4",
         damage_bonus: calculate_damage_bonus(0, 'physical'),
         damage_type: 'physical',
@@ -193,8 +195,10 @@ module DaggerheartCharacter
         name: translate(item[:items_name]),
         range: item[:items_info]['range'],
         trait: use_max_trait_for_attack ? max_trait : item[:items_info]['trait'],
-        attack_bonus: (use_max_trait_for_attack ? max_trait_value : trait_bonus(item)) + attack_bonuses + stance_attack_bonus +
-                      item.dig(:items_info, 'bonuses', 'attack').to_i,
+        attack_bonus: calculate_attack_bonus(
+          (use_max_trait_for_attack ? max_trait_value : trait_bonus(item)) + attack_bonuses + stance_attack_bonus +
+                              item.dig(:items_info, 'bonuses', 'attack').to_i
+        ),
         damage: item[:items_info]['damage']&.gsub('d', "#{proficiency}d"),
         damage_bonus: calculate_damage_bonus(item[:items_info]['damage_bonus'], item[:items_info]['damage_type']),
         damage_type: item[:items_info]['damage_type'],
@@ -224,6 +228,11 @@ module DaggerheartCharacter
       end
 
       response
+    end
+
+    def calculate_attack_bonus(attack_bonus)
+      attack_bonus += 1 if available_feature_slugs.include?('no_mercy')
+      attack_bonus
     end
 
     def calculate_damage_bonus(damage_bonus, damage_type)
@@ -378,10 +387,6 @@ module DaggerheartCharacter
 
     def homebrew_subclass(subclass)
       @homebrew_subclass ||= Daggerheart::Homebrew::Subclass.find(subclass)
-    end
-
-    def available_feature_slugs
-      @available_feature_slugs ||= available_features.pluck('feats.slug')
     end
   end
 end

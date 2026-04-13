@@ -21,7 +21,7 @@ class FeaturesDecorator
 
   def features # rubocop: disable Metrics/PerceivedComplexity
     @features ||=
-      available_features.filter_map { |feature| perform_feature(feature, available_features) } +
+      available_features.filter_map { |feature| perform_feature(feature) } +
       (
         equiped_items_info&.flat_map { |item|
           item[0]['features']&.map { |feature| item_feature_payload(item, feature) }
@@ -31,7 +31,7 @@ class FeaturesDecorator
 
   private
 
-  def perform_feature(feature, available_features)
+  def perform_feature(feature)
     # добавлять статические бонусы или включенные
     if feature_bonuses_enabled?(feature)
       feature.feat.eval_variables.each do |method_name, variable|
@@ -45,11 +45,11 @@ class FeaturesDecorator
       eval_variable(feature.feat, value) || value
     end
 
-    result = feature_payload(feature, available_features)
+    result = feature_payload(feature)
     result.merge(used_count: feature.used_count)
   end
 
-  def feature_payload(feature, available_features) # rubocop: disable Metrics/AbcSize
+  def feature_payload(feature) # rubocop: disable Metrics/AbcSize
     {
       id: feature.id,
       slug: feature.feat.slug || feature.id,

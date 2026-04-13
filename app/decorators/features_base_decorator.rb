@@ -35,6 +35,15 @@ class FeaturesBaseDecorator
     end
   end
 
+  def available_feature_slugs
+    @available_feature_slugs ||=
+      available_features.filter_map do |feature|
+        next unless feature_bonuses_enabled?(feature)
+
+        feature.feat.slug || feature.feat.id
+      end
+  end
+
   def dynamic_bonuses
     @dynamic_bonuses ||=
       wrapped.dynamic_bonuses&.filter_map do |hash|
