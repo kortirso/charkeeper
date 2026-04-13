@@ -178,7 +178,7 @@ module DaggerheartCharacter
         trait: use_max_trait_for_attack ? max_trait : max_unarmed_trait,
         attack_bonus: (use_max_trait_for_attack ? max_trait_value : [modified_traits['str'], modified_traits['fin']].max) + attack_bonuses + stance_attack_bonus, # rubocop: disable Layout/LineLength
         damage: "#{proficiency}d4",
-        damage_bonus: 0,
+        damage_bonus: calculate_damage_bonus(0, 'physical'),
         damage_type: 'physical',
         kind: 'primary weapon',
         features: [],
@@ -196,7 +196,7 @@ module DaggerheartCharacter
         attack_bonus: (use_max_trait_for_attack ? max_trait_value : trait_bonus(item)) + attack_bonuses + stance_attack_bonus +
                       item.dig(:items_info, 'bonuses', 'attack').to_i,
         damage: item[:items_info]['damage']&.gsub('d', "#{proficiency}d"),
-        damage_bonus: item[:items_info]['damage_bonus'],
+        damage_bonus: calculate_damage_bonus(item[:items_info]['damage_bonus'], item[:items_info]['damage_type']),
         damage_type: item[:items_info]['damage_type'],
         kind: item[:items_kind],
         features: item[:items_info]['features'] || [],
@@ -224,6 +224,11 @@ module DaggerheartCharacter
       end
 
       response
+    end
+
+    def calculate_damage_bonus(damage_bonus, damage_type)
+      damage_bonus += level if available_feature_slugs.include?('combat_training') && damage_type == 'physical'
+      damage_bonus
     end
 
     def trait_bonus(item)
@@ -272,11 +277,11 @@ module DaggerheartCharacter
 
     def feat_weapons
       Item
-        .where(itemable_type: 'Feat', itemable_id: features)
+        .where(itemable_type: 'Feat', itemable_id: feature_ids)
         .hashable_pluck('items.slug', 'items.name', 'items.kind', 'items.data', 'items.info')
     end
 
-    def features
+    def feature_ids
       feats.joins(:feat).pluck('feats.id')
     end
 
@@ -373,6 +378,10 @@ module DaggerheartCharacter
 
     def homebrew_subclass(subclass)
       @homebrew_subclass ||= Daggerheart::Homebrew::Subclass.find(subclass)
+    end
+
+    def available_feature_slugs
+      @available_feature_slugs ||= available_features.pluck('feats.slug')
     end
   end
 end
