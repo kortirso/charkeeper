@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## Unreleased
+### modified
+- counting Combar mastery for damage bonuses for DH characters
+
 ## [0.4.26] - 2026-04-12
 ### Added
 - archetypes for PF2 characters
