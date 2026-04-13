@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## Unreleased
 ### modified
 - counting Combar mastery for damage bonuses for DH characters
+- counting No mercy for attack bonuses for DH characters
 
 ## [0.4.26] - 2026-04-12
 ### Added
