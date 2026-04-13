@@ -86,7 +86,7 @@ export const CharKeeperAppContent = () => {
       ([userInfoData]) => {
         performResponse(
           userInfoData,
-          function() { // eslint-disable-line solid/reactivity
+          function() {
             batch(() => {
               setLocale(userInfoData.locale);
               changeUserInfo({

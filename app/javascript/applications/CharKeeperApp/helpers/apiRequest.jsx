@@ -38,7 +38,7 @@ export const apiRequest = async ({ url, options }) => {
     })
     .then((data) => data)
     .catch((error) => {
-      return { status: 401, errors_list: ['Internal server error, an error report has been sent to the developer!'] }
+      return { status: error.status, errors_list: ['Internal server error, an error report has been sent to the developer!'] }
     });
 }
 
