@@ -4,7 +4,7 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
-## Unreleased
+## [0.4.27] - 2026-04-12
 ### modified
 - counting Combar mastery for damage bonuses for DH characters
 - counting No mercy for attack bonuses for DH characters
