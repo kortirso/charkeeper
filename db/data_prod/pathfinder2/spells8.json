@@ -7,8 +7,8 @@
       "ru": "Полярный разлом"
     },
     "description": {
-      "en": "**Traditions** <u>arcane</u>, <u>primal</u><br>**Area** 120-foot line<br>**Defense** Fortitude<hr>A jagged crack opens in the air, dealing 12d8 cold damage as it draws away warmth. Each creature along the rift must attempt a Fortitude save.\n\n**Critical Success** The creature is unaffected.\n\n**Success** The creature takes half damage.\n\n**Failure** The creature takes full damage and is slowed 1 until the start of your next turn.\n\n**Critical Failure** The creature takes double damage, is immobilized by a layer of ice, and is slowed 1 as long as its immobilized. The ice is an object with 60 Hit Points, Hardness 5, immunity to cold damage, and vulnerability 10 to fire. It has object immunities (page 269) and is destroyed if the target Escapes.<hr>**Heightened (+1)** The damage increases by 1d8 and the ice's Hit Points increase by 5.",
-      "ru": "**Традиции** мистическая, первобытная<br>\n**Сотворение** [two-actions] <br>\n**Область** 120-футовая линия<br>\n**Защита** Стойкость.\n\nВ воздухе открывается зубчатый разлом, буквально всасывающий тепло: он наносит 12d8 урона холодом. Каждое существо на линии проходит испытание Стойкости.\n<br>\n**Критический успех** существо избегает эффекта.\n<br>\n**Успех** существо получает половину урона.\n<br>\n**Провал** существо получает полный урон и замедление 1 до начала вашего следующего хода.\n<br>\n**Критический провал** существо неподвижно из-за слоя льда, получает двойной урон и замедление 1, пока длится неподвижность. Лёд считается объектом с 60 ПЗ, твёрдостью 5, невосприимчивостью к холоду и уязвимостью 10 к огню. Он обладает невосприимчивостями объектов и уничтожается при успешном Освобождении цели.\n\n**Повышенное (+1)** урон увеличивается на 1d8, а ПЗ льда — на 5."
+      "en": "**Traditions** <u>arcane</u>, <u>primal</u><br>**Area** 120-foot line<br>**Defense** Fortitude<hr>A jagged crack opens in the air, dealing 12d8 cold damage as it draws away warmth. Each creature along the rift must attempt a Fortitude save.\n\n**Critical Success** The creature is unaffected.\n\n**Success** The creature takes half damage.\n\n**Failure** The creature takes full damage and is slowed 1 until the start of your next turn.\n\n**Critical Failure** The creature takes double damage, is immobilized by a layer of ice, and is slowed 1 as long as its immobilized. The ice is an object with 60 Hit Points, Hardness 5, immunity to cold damage, and vulnerability 10 to fire. It has object immunities (page 269) and is destroyed if the target Escapes.\n\n**Heightened (+1)** The damage increases by 1d8 and the ice's Hit Points increase by 5.",
+      "ru": "**Традиции** мистическая, первобытная<br>\n**Сотворение** [two-actions] <br>\n**Область** 120-футовая линия<br>\n**Защита** Стойкость.\n\nВ воздухе открывается зубчатый разлом, буквально всасывающий тепло: он наносит 12d8 урона холодом. Каждое существо на линии проходит испытание Стойкости.\n\n**Критический успех** существо избегает эффекта.\n\n**Успех** существо получает половину урона.\n\n**Провал** существо получает полный урон и замедление 1 до начала вашего следующего хода.\n\n**Критический провал** существо неподвижно из-за слоя льда, получает двойной урон и замедление 1, пока длится неподвижность. Лёд считается объектом с 60 ПЗ, твёрдостью 5, невосприимчивостью к холоду и уязвимостью 10 к огню. Он обладает невосприимчивостями объектов и уничтожается при успешном Освобождении цели.\n\n**Повышенное (+1)** урон увеличивается на 1d8, а ПЗ льда — на 5."
     },
     "origin": "spell",
     "origin_value": "",
@@ -17,26 +17,11 @@
       "concentrate",
       "manipulate"
     ],
-    "price": {
-      "a": 1
-    },
+    "price": { "a": 1 },
     "info": {
       "level": 8,
-      "targets": "",
       "range": "",
-      "defense": "",
-      "enhancements": [
-        {
-          "name": {
-            "en": "",
-            "ru": ""
-          },
-          "description": {
-            "en": "",
-            "ru": ""
-          }
-        }
-      ]
+      "defense": ""
     }
   },
   {
@@ -48,7 +33,7 @@
     },
     "description": {
       "en": "**Traditions** <u>divine</u>, <u>occult</u><br>**Bloodlines** Demonic, Undead <br>**Range** 120 feet; **Targets** 1 creature<br>**Defense** Will; **Duration** varies<hr>You create a melody distilled from pure grief, conveying the inevitable loss of everything your target cherishes, audible to only them. The target takes 10d6 mental damage depending on its Will save. A creature cursed by this spell can't benefit from circumstance or status bonuses, for the duration noted in the degree of success.\n\n**Critical Success** The target is unaffected.\n\n**Success** The target takes half damage, is frightened 1, and is cursed for 1 round.\n\n**Failure** The target takes full damage, is frightened 3, and is cursed for 1 week.\n\n**Critical Failure** The target takes double damage, is frightened 4, and is cursed for an unlimited duration. While the curse remains, the target's allies are also affected by the curse while within 15 feet of the creature.",
-      "ru": "**Традиции** сакральная, оккультная<br>\n**Наследие** демоническое, загробное<br>\n**Сотворение** [two-actions] <br>\n**Дистанция** 120 футов; **Цели** 1 существо<br>\n**Защита** Воля; **Длительность** варьируется.\n\nВы создаёте мелодию чистейшей скорби, в которой звеняще звучит неотвратимая потеря всего, что ценно вашей цели, — и слышна она только для неё. Цель получает 10d6 ментального урона в зависимости от успешности испытания Воли. Существо, проклятое этим заклинанием, не может получить преимущества от ситуативных бонусов или бонусов состояния в теччение длительности.\n<br>\n**Критический успех** цель избегает эффекта.\n<br>\n**Успех** цель получает половину урона, испуг 1 и проклятие на 1 раунд.\n<br>\n**Провал** цель получает полный урон, испуг 3 и проклятие на 1 неделю.\n<br>\n**Критический провал** цель получает двойной урон, испуг 4 и проклятие с неограниченной длительностью. Пока проклятие длится, союзники цели также попадают под его эффект, пока находятся"
+      "ru": "**Традиции** сакральная, оккультная<br>\n**Наследие** демоническое, загробное<br>\n**Сотворение** [two-actions] <br>\n**Дистанция** 120 футов; **Цели** 1 существо<br>\n**Защита** Воля; **Длительность** варьируется.\n\nВы создаёте мелодию чистейшей скорби, в которой звеняще звучит неотвратимая потеря всего, что ценно вашей цели, — и слышна она только для неё. Цель получает 10d6 ментального урона в зависимости от успешности испытания Воли. Существо, проклятое этим заклинанием, не может получить преимущества от ситуативных бонусов или бонусов состояния в теччение длительности.\n\n**Критический успех** цель избегает эффекта.\n\n**Успех** цель получает половину урона, испуг 1 и проклятие на 1 раунд.\n\n**Провал** цель получает полный урон, испуг 3 и проклятие на 1 неделю.\n\n**Критический провал** цель получает двойной урон, испуг 4 и проклятие с неограниченной длительностью. Пока проклятие длится, союзники цели также попадают под его эффект, пока находятся"
     },
     "origin": "spell",
     "origin_value": "",
@@ -61,26 +46,11 @@
       "manipulate",
       "mental"
     ],
-    "price": {
-      "a": 1
-    },
+    "price": { "a": 1 },
     "info": {
       "level": 8,
-      "targets": "",
       "range": "",
-      "defense": "",
-      "enhancements": [
-        {
-          "name": {
-            "en": "",
-            "ru": ""
-          },
-          "description": {
-            "en": "",
-            "ru": ""
-          }
-        }
-      ]
+      "defense": ""
     }
   },
   {
@@ -91,7 +61,7 @@
       "ru": "Жуткое иссушение"
     },
     "description": {
-      "en": "**Traditions** <u>arcane</u>, <u>primal</u><br>**Deity** Tresmalvos <br>**Range** 500 feet; **Targets** any number of living creatures<br>**Defense** basic Fortitude<hr>You pull the moisture from the targets' bodies, dealing 10d10 void damage. Creatures made of water (such as water elementals) and plant creatures use the outcome for one degree of success worse than the result of their saving throw. Creatures whose bodies contain no significant moisture (such as earth elementals) are immune to <i>desiccate</i>.<hr>**Heightened (+1)** The damage increases by 1d10.",
+      "en": "**Traditions** <u>arcane</u>, <u>primal</u><br>**Deity** Tresmalvos <br>**Range** 500 feet; **Targets** any number of living creatures<br>**Defense** basic Fortitude<hr>You pull the moisture from the targets' bodies, dealing 10d10 void damage. Creatures made of water (such as water elementals) and plant creatures use the outcome for one degree of success worse than the result of their saving throw. Creatures whose bodies contain no significant moisture (such as earth elementals) are immune to <i>desiccate</i>.\n\n**Heightened (+1)** The damage increases by 1d10.",
       "ru": "**Традиции** мистическая, первобытная<br>\n**Божество** Тресмальвос<br>\n**Сотворение** [two-actions] <br>\n**Дистанция** 500 футов; **Цели** любое количество живых существ<br>\n**Защита** обычное испытание Стойкости.\n\nВы испаряете влагу из тел целей, нанося 10d10 урона пустотой. Для существ, состоящих из воды (например, элементалей воды), и существ-растений степень успешности испытания считается на одну ступень хуже. Если в теле существа почти нет жидкости (как у элементалей земли), оно невосприимчиво к этому заклинанию.\n\n**Повышенное (+1)** урон увеличивается на 1d10."
     },
     "origin": "spell",
@@ -101,26 +71,11 @@
       "manipulate",
       "void"
     ],
-    "price": {
-      "a": 1
-    },
+    "price": { "a": 1 },
     "info": {
       "level": 8,
-      "targets": "",
       "range": "",
-      "defense": "",
-      "enhancements": [
-        {
-          "name": {
-            "en": "",
-            "ru": ""
-          },
-          "description": {
-            "en": "",
-            "ru": ""
-          }
-        }
-      ]
+      "defense": ""
     }
   },
   {
@@ -141,26 +96,11 @@
       "manipulate",
       "subtle"
     ],
-    "price": {
-      "a": 1
-    },
+    "price": { "a": 1 },
     "info": {
       "level": 8,
-      "targets": "",
       "range": "",
-      "defense": "",
-      "enhancements": [
-        {
-          "name": {
-            "en": "",
-            "ru": ""
-          },
-          "description": {
-            "en": "",
-            "ru": ""
-          }
-        }
-      ]
+      "defense": ""
     }
   },
   {
@@ -181,26 +121,11 @@
       "manipulate",
       "mental"
     ],
-    "price": {
-      "a": 1
-    },
+    "price": { "a": 1 },
     "info": {
       "level": 8,
-      "targets": "",
       "range": "",
-      "defense": "",
-      "enhancements": [
-        {
-          "name": {
-            "en": "",
-            "ru": ""
-          },
-          "description": {
-            "en": "",
-            "ru": ""
-          }
-        }
-      ]
+      "defense": ""
     }
   },
   {
@@ -221,26 +146,11 @@
       "earth",
       "manipulate"
     ],
-    "price": {
-      "a": 1
-    },
+    "price": { "a": 1 },
     "info": {
       "level": 8,
-      "targets": "",
       "range": "",
-      "defense": "",
-      "enhancements": [
-        {
-          "name": {
-            "en": "",
-            "ru": ""
-          },
-          "description": {
-            "en": "",
-            "ru": ""
-          }
-        }
-      ]
+      "defense": ""
     }
   },
   {
@@ -261,26 +171,11 @@
       "concentrate",
       "manipulate"
     ],
-    "price": {
-      "a": 1
-    },
+    "price": { "a": 1 },
     "info": {
       "level": 8,
-      "targets": "",
       "range": "",
-      "defense": "",
-      "enhancements": [
-        {
-          "name": {
-            "en": "",
-            "ru": ""
-          },
-          "description": {
-            "en": "",
-            "ru": ""
-          }
-        }
-      ]
+      "defense": ""
     }
   },
   {
@@ -301,26 +196,11 @@
       "manipulate",
       "polymorph"
     ],
-    "price": {
-      "a": 1
-    },
+    "price": { "a": 1 },
     "info": {
       "level": 8,
-      "targets": "",
       "range": "",
-      "defense": "",
-      "enhancements": [
-        {
-          "name": {
-            "en": "",
-            "ru": ""
-          },
-          "description": {
-            "en": "",
-            "ru": ""
-          }
-        }
-      ]
+      "defense": ""
     }
   },
   {
@@ -341,26 +221,11 @@
       "healing",
       "manipulate"
     ],
-    "price": {
-      "a": 1
-    },
+    "price": { "a": 1 },
     "info": {
       "level": 8,
-      "targets": "",
       "range": "",
-      "defense": "",
-      "enhancements": [
-        {
-          "name": {
-            "en": "",
-            "ru": ""
-          },
-          "description": {
-            "en": "",
-            "ru": ""
-          }
-        }
-      ]
+      "defense": ""
     }
   },
   {
@@ -381,26 +246,11 @@
       "manipulate",
       "polymorph"
     ],
-    "price": {
-      "a": 1
-    },
+    "price": { "a": 1 },
     "info": {
       "level": 8,
-      "targets": "",
       "range": "",
-      "defense": "",
-      "enhancements": [
-        {
-          "name": {
-            "en": "",
-            "ru": ""
-          },
-          "description": {
-            "en": "",
-            "ru": ""
-          }
-        }
-      ]
+      "defense": ""
     }
   },
   {
@@ -422,26 +272,11 @@
       "detection",
       "manipulate"
     ],
-    "price": {
-      "a": 1
-    },
+    "price": { "a": 1 },
     "info": {
       "level": 8,
-      "targets": "",
       "range": "",
-      "defense": "",
-      "enhancements": [
-        {
-          "name": {
-            "en": "",
-            "ru": ""
-          },
-          "description": {
-            "en": "",
-            "ru": ""
-          }
-        }
-      ]
+      "defense": ""
     }
   },
   {
@@ -462,26 +297,11 @@
       "concentrate",
       "manipulate"
     ],
-    "price": {
-      "a": 1
-    },
+    "price": { "a": 1 },
     "info": {
       "level": 8,
-      "targets": "",
       "range": "",
-      "defense": "",
-      "enhancements": [
-        {
-          "name": {
-            "en": "",
-            "ru": ""
-          },
-          "description": {
-            "en": "",
-            "ru": ""
-          }
-        }
-      ]
+      "defense": ""
     }
   },
   {
@@ -493,7 +313,7 @@
     },
     "description": {
       "en": "**Traditions** <u>arcane</u>, <u>occult</u><br>**Bloodlines** Hag, Imperial <br>**Deities** Baphomet, Nethys, Tolte Coatl <br>**Range** 30 feet; **Targets** 1 creature<br>**Duration** sustained<hr>You transport the target into an extraplanar puzzle room of mysterious origin, locking them there. Once each turn as a single action, the target can attempt an Occultism check,  Perception check, or Thievery check against your spell DC to solve the puzzle. Teleportation effects can't carry the target outside the puzzle room unless they can also traverse the planes, such as interplanar teleport. When the spell ends, the target returns to the space it occupied when it was banished, or to the nearest space if the original is now filled.\n\n**Critical Success** The target solves the puzzle and escapes.\n\n**Success** The target is on the right path to the solution. If it was already on the right path, it solves the puzzle and escapes.\n\n**Failure** The target makes no progress toward a solution.\n\n**Critical Failure** The target makes no progress and, if it was on the right path, it no longer is.",
-      "ru": "**Традиции** мистическая, оккультная<br>\n**Наследие** наследие карги, наследие древнего рода<br>\n**Божества** Бафомёт, Нефис, Тольте коатль <br>\n**Сотворение** [two-actions] <br>\n**Дистанция** 30 футов; **Цели** 1 существо<br>\n**Длительность** поддерживаемое.\n\nВы отправляете существо в загадочную межпространственную комнату-головоломку и оставляете его там. Один раз за каждый ход цель может потратить 1 действие, чтобы совершить проверку Внимания, Воровства или Оккультизма против вашей СЛ заклинаний и разгадать головоломку. Эффекты телепортации не в состоянии помочь существу освободиться, если неспособны переместить его с одного плана на другой, как межпланарная телепортация. Когда заклинание прекращается, цель возвращается в пространство, где была в момент изгнания, или в ближайшее свободное пространство, если это место занято. \n<br>\n**Критический успех** цель освобождается, разгадав головоломку. \n<br>\n**Успех** цель на верном пути к разгадке. Если она уже была на верном пути, она освобождается, разгадав головоломку.\n<br>\n**Провал** цель не приближается к разгадке.\n<br>\n**Критический провал** цель не приближается к разгадке и если уже была на верном пути, то сбивается с него."
+      "ru": "**Традиции** мистическая, оккультная<br>\n**Наследие** наследие карги, наследие древнего рода<br>\n**Божества** Бафомёт, Нефис, Тольте коатль <br>\n**Сотворение** [two-actions] <br>\n**Дистанция** 30 футов; **Цели** 1 существо<br>\n**Длительность** поддерживаемое.\n\nВы отправляете существо в загадочную межпространственную комнату-головоломку и оставляете его там. Один раз за каждый ход цель может потратить 1 действие, чтобы совершить проверку Внимания, Воровства или Оккультизма против вашей СЛ заклинаний и разгадать головоломку. Эффекты телепортации не в состоянии помочь существу освободиться, если неспособны переместить его с одного плана на другой, как межпланарная телепортация. Когда заклинание прекращается, цель возвращается в пространство, где была в момент изгнания, или в ближайшее свободное пространство, если это место занято.\n\n**Критический успех** цель освобождается, разгадав головоломку.\n\n**Успех** цель на верном пути к разгадке. Если она уже была на верном пути, она освобождается, разгадав головоломку.\n\n**Провал** цель не приближается к разгадке.\n\n**Критический провал** цель не приближается к разгадке и если уже была на верном пути, то сбивается с него."
     },
     "origin": "spell",
     "origin_value": "",
@@ -503,26 +323,11 @@
       "manipulate",
       "teleportation"
     ],
-    "price": {
-      "a": 1
-    },
+    "price": { "a": 1 },
     "info": {
       "level": 8,
-      "targets": "",
       "range": "",
-      "defense": "",
-      "enhancements": [
-        {
-          "name": {
-            "en": "",
-            "ru": ""
-          },
-          "description": {
-            "en": "",
-            "ru": ""
-          }
-        }
-      ]
+      "defense": ""
     }
   },
   {
@@ -534,7 +339,7 @@
     },
     "description": {
       "en": "**Traditions** <u>arcane</u>, <u>occult</u><br>**Bloodlines** Aberrant, Fey <br>**Deities** Ashava, Hathor, Kofusachi, The Perplexing Jest <br>**Range** touch; **Targets** 1 creature<br>**Defense** Will; **Duration** varies<hr>The target is overcome with an all-consuming urge to dance. For the duration of the spell, the target is off-guard and can't use reactions. It also can't use move actions except to dance, using the Stride action to move up to half its Speed.\n\n**Critical Success** The target is unaffected.\n\n**Success** The spell's duration is 3 rounds, and the target must spend at least 1 action each turn dancing.\n\n**Failure** The spell's duration is 1 minute, and the target must spend at least 2 actions each turn dancing.\n\n**Critical Failure** The spell's duration is 1 minute, and the target must spend all its actions each turn dancing.",
-      "ru": "**Традиции** мистическая, оккультная<br>\n**Наследие** противоестественное, наследие фей<br>\n**Божества** Ашава, Hathor, Кофусати (смеющийся бог), The Perplexing Jest <br>\n**Сотворение** [two-actions] <br>\n**Дистанция** касание; **Цели** 1 существо<br>\n**Защита** Воля; **Длительность** варьируется.\n\nСущество испытывает непреодолимое желание танцевать. Пока длится заклинание, цель становится застигнутой врасплох и не может совершать ответных действий. Кроме этого, она может использовать действия с дескриптором «движение» только для того, чтобы танцевать (совершая Перемещение, чтобы переместиться на расстояние вплоть до половины своей скорости).\n<br>\n**Критический успех** цель избегает эффекта.\n<br>\n**Успех** длительность заклинания — 3 раунда, и в каждый свой ход цель должна потратить хотя бы 1 действие, чтобы танцевать.\n<br>\n**Провал** длительность заклинания — 1 минута, и в каждый свой ход цель должна потратить хотя бы 2 действия, чтобы танцевать.\n<br>\n**Критический провал** длительность заклинания — 1 минута, и в каждый свой ход цель должна тратить все свои действия, чтобы танцевать."
+      "ru": "**Традиции** мистическая, оккультная<br>\n**Наследие** противоестественное, наследие фей<br>\n**Божества** Ашава, Hathor, Кофусати (смеющийся бог), The Perplexing Jest <br>\n**Сотворение** [two-actions] <br>\n**Дистанция** касание; **Цели** 1 существо<br>\n**Защита** Воля; **Длительность** варьируется.\n\nСущество испытывает непреодолимое желание танцевать. Пока длится заклинание, цель становится застигнутой врасплох и не может совершать ответных действий. Кроме этого, она может использовать действия с дескриптором «движение» только для того, чтобы танцевать (совершая Перемещение, чтобы переместиться на расстояние вплоть до половины своей скорости).\n\n**Критический успех** цель избегает эффекта.\n\n**Успех** длительность заклинания — 3 раунда, и в каждый свой ход цель должна потратить хотя бы 1 действие, чтобы танцевать.\n\n**Провал** длительность заклинания — 1 минута, и в каждый свой ход цель должна потратить хотя бы 2 действия, чтобы танцевать.\n\n**Критический провал** длительность заклинания — 1 минута, и в каждый свой ход цель должна тратить все свои действия, чтобы танцевать."
     },
     "origin": "spell",
     "origin_value": "",
@@ -544,26 +349,11 @@
       "manipulate",
       "mental"
     ],
-    "price": {
-      "a": 1
-    },
+    "price": { "a": 1 },
     "info": {
       "level": 8,
-      "targets": "",
       "range": "",
-      "defense": "",
-      "enhancements": [
-        {
-          "name": {
-            "en": "",
-            "ru": ""
-          },
-          "description": {
-            "en": "",
-            "ru": ""
-          }
-        }
-      ]
+      "defense": ""
     }
   },
   {
@@ -575,7 +365,7 @@
     },
     "description": {
       "en": "**Traditions** <u>arcane</u>, <u>occult</u><br>**Deities** Abraxas, Kols <br>**Range** 100 feet; **Area** 20-foot burst; **Targets** 1 creature of object tracked and up to 5 other willing creatures<br>**Duration** varies<hr>This spell grants perfect sight based on scrying, allowing several willing targets to track the exact movements or position of one creature or object. Choose one target creature or object in the area to be tracked. It becomes the sensor for the spell. Up to five willing creatures of your choice in the area can see a ghostly image of this creature or object when it's out of their sight. They can perceive the creature or object perfectly, allowing them to ignore the concealed or invisible condition, though physical barriers still provide cover.\n\n The tracking creatures can see the tracked creature or object through all barriers other than lead or running water, which block their vision. Distance doesn't matter, though the creature or object might move so far away it becomes too small to perceive. The tracking creatures don't see any of the environment around the target, though they do see any gear a creature is wearing or holding, and they can tell if it removes objects from its person.\n\n If the target to be tracked is willing, the duration is 1 hour. If they're unwilling, the target must attempt a Will save.\n\n**Critical Success** The creature or object is unaffected.\n\n**Success** As described, and the duration is 1 minute.\n\n**Failure** As described, and the duration is 1 hour.",
-      "ru": "**Традиции** мистическая, оккультная<br>\n**Божества** Абраксас, Колс <br>\n**Сотворение** [two-actions] <br>\n**Дистанция** 100 футов; **Область** 20-футовый взрыв; **Цели** 1 существо или объект, за которым следят, и 5 или менее других согласных существ.\n\n**Длительность** варьируется.\n\nЭто заклинание тайновидения даёт идеальное зрение, позволяя нескольким согласным существам точно отслеживать перемещение или местоположение одного существа или объекта. Выберите одно существо или объект в области, за которым хотите следить; оно становится сенсором для заклинания. Вы также выбираете пять или менее согласных существ в области: они видят это существо или объект как призрачную фигуру, когда те вне их линии видимости. Они идеально воспринимают это существо или объект, что позволяет им игнорировать невидимость или плохую видимость, но физические преграды по-прежнему дают тем укрытие.\n\nСледящие могут видеть это существо или объект через любые преграды, кроме свинца или проточной воды, которые блокируют зрение. Дистанция при этом неважна, но существо или объект могут удалиться так сильно, что станут слишком малы для восприятия. Следящие не видят окружения цели, но видят снаряжение, которое существо носит или держит, и замечают, если оно сняло что-либо с себя.\nЕсли цель согласна на слежку, длительность составляет 1 час. Если же цель не согласна, чтобы за ней следили, она проходит испытание Воли.\n<br>\n**Критический успех** существо или объект избегают эффекта.\n<br>\n**Успех** заклинание действует, как описано выше, но длительность составляет 1 минуту.\n<br>\n**Провал** заклинание действует, как описано выше, но длительность составляет 1 час."
+      "ru": "**Традиции** мистическая, оккультная<br>\n**Божества** Абраксас, Колс <br>\n**Сотворение** [two-actions] <br>\n**Дистанция** 100 футов; **Область** 20-футовый взрыв; **Цели** 1 существо или объект, за которым следят, и 5 или менее других согласных существ.\n\n**Длительность** варьируется.\n\nЭто заклинание тайновидения даёт идеальное зрение, позволяя нескольким согласным существам точно отслеживать перемещение или местоположение одного существа или объекта. Выберите одно существо или объект в области, за которым хотите следить; оно становится сенсором для заклинания. Вы также выбираете пять или менее согласных существ в области: они видят это существо или объект как призрачную фигуру, когда те вне их линии видимости. Они идеально воспринимают это существо или объект, что позволяет им игнорировать невидимость или плохую видимость, но физические преграды по-прежнему дают тем укрытие.\n\nСледящие могут видеть это существо или объект через любые преграды, кроме свинца или проточной воды, которые блокируют зрение. Дистанция при этом неважна, но существо или объект могут удалиться так сильно, что станут слишком малы для восприятия. Следящие не видят окружения цели, но видят снаряжение, которое существо носит или держит, и замечают, если оно сняло что-либо с себя.\nЕсли цель согласна на слежку, длительность составляет 1 час. Если же цель не согласна, чтобы за ней следили, она проходит испытание Воли.\n\n**Критический успех** существо или объект избегают эффекта.\n\n**Успех** заклинание действует, как описано выше, но длительность составляет 1 минуту.\n\n**Провал** заклинание действует, как описано выше, но длительность составляет 1 час."
     },
     "origin": "spell",
     "origin_value": "",
@@ -584,26 +374,11 @@
       "manipulate",
       "scrying"
     ],
-    "price": {
-      "a": 1
-    },
+    "price": { "a": 1 },
     "info": {
       "level": 8,
-      "targets": "",
       "range": "",
-      "defense": "",
-      "enhancements": [
-        {
-          "name": {
-            "en": "",
-            "ru": ""
-          },
-          "description": {
-            "en": "",
-            "ru": ""
-          }
-        }
-      ]
+      "defense": ""
     }
   },
   {
@@ -628,26 +403,11 @@
       "plant",
       "wood"
     ],
-    "price": {
-      "a": 1
-    },
+    "price": { "a": 1 },
     "info": {
       "level": 8,
-      "targets": "",
       "range": "",
-      "defense": "",
-      "enhancements": [
-        {
-          "name": {
-            "en": "",
-            "ru": ""
-          },
-          "description": {
-            "en": "",
-            "ru": ""
-          }
-        }
-      ]
+      "defense": ""
     }
   }
 ]

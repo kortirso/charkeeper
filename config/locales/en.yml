@@ -342,8 +342,10 @@ en:
         cold: Cold
         composition: Composition
         concentrate: Concentrate
+        consecration: Consecration
         curse: Curse
         darkness: Darkness
+        death: Death
         dedication: Dedication
         detection: Detection
         disease: Disease
@@ -372,6 +374,7 @@ en:
         halfling: Halfling
         healing: Healing
         hex: Hex
+        holy: Holy
         human: Human
         illusion: Illusion
         incapacitation: Incapacitation
@@ -387,6 +390,7 @@ en:
         move: Move
         multiclass: Multiclass
         nonlethal: Nonlethal
+        olfactory: Olfactory
         oracle: Oracle
         orc: Orc
         plant: Plant
@@ -397,8 +401,10 @@ en:
         primal: Primal
         psychic: Psychic
         ranger: Ranger
+        revelation: Revelation
         rogue: Rogue
         sanctified: Sanctified
+        scrying: Scrying
         secret: Secret
         shadow: Shadow
         skill: Skill
@@ -414,6 +420,7 @@ en:
         teleportation: Teleportation
         thaumaturge: Thaumaturge
         uncommon: Uncommon
+        unholy: Unholy
         visual: Visual
         vitality: Vitality
         void: Void

@@ -7,36 +7,23 @@
       "ru": "Водная сфера"
     },
     "description": {
-      "en": "**Traditions** <u>arcane</u>, <u>primal</u><br>**Deities** Aegirran, Gogunta, Hanspur, Hataam, Lysianassa, Obari, Ristrentho, Waves of the Boundless Sea <br>**Range** 60 feet<br>**Defense** Reflex; **Duration** sustained up to 1 minute<hr>A sphere of water 10 feet in diameter forms in an unoccupied space in range, either on the ground or on the surface of a liquid. When you Cast this Spell and each time you Sustain it, you can roll the orb, moving it up to 10 feet along the ground or the surface of a liquid. The orb can move through the spaces of any creatures or obstacles that wouldn't stop the flow of water. It extinguishes non-magical fires it moves through of its size or smaller, and it attempts to counteract any magical fires it moves through. If it fails to counteract a given fire, it can't counteract that fire for the duration of the spell.\n\n The orb can engulf Large or smaller creatures it moves through, and it can contain as many creatures as fit in its space. The orb can try to engulf the same creature only once per turn, even if you roll it onto a creature's space more than once. Any Large or smaller creature whose space the orb tries to move through can attempt a Reflex save.\n\n**Success** The creature can either let the orb pass (remaining in its space or moving out of the orb's path into a space of the creature's choice) or allow itself to be pushed in front of the orb to the end of the orb's movement.\n\n**Failure** The creature is engulfed in the orb. It moves along with the orb and must hold its breath or begin suffocating (unless it can breathe in water). An engulfed Medium or smaller creature and anyone trying to affect that creature follow the normal rules for aquatic battles. An engulfed Large creature is usually big enough that parts of it stick out from the water, and it can reach out of the water.\n\n The creature can get free either by Swimming with a successful DC 10 Athletics check or by Escaping against your spell DC. A freed creature exits the orb's space and can immediately breathe.\n\n**Critical Failure** As failure, but the creature can't Swim to get free.",
-      "ru": "**Традиции** мистическая, первобытная<br>\n**Божества** Эгирран, Гогунта, Ханспур, Хатаам, Лисианасса, Обари, Ристренто, Волны безграничного моря <br>\n**Сотворение** [two-actions] <br>\n**Дистанция** 60 футов<br>\n**Защита** Реакция; **Длительность** поддерживаемое до 1 минуты.\n\nВы создаёте водную сферу диаметром 10 футов в незанятом пространстве на поверхности земли или жидкости в пределах дистанции. При Сотворении заклинания и всякий раз при его Поддержании вы можете перекатить сферу, перемещая её на 10 или менее футов вдоль поверхности земли или жидкости. Сфера способна перемещаться через пространства, занятые существами и препятствиями, которые не способны остановить текущую воду. Сфера автоматически гасит немагическое пламя равного или меньшего размера, через которое перемещается, а магическое пламя пытается нейтрализовать. В случае провала нейтрализации конкретного источника пламени сфера не может нейтрализовать его, пока длится заклинание.\n\nКогда сфера перемещается через пространство, занятое существом крупного или меньшего размера, она может затянуть это существо. Ёмкость сферы ограничена количеством существ, способных уместиться в её пространстве. Сфера может пытаться поглотить существо только один раз за ход, при этом неважно, сколько раз она перемещалась в его пространство. Существо крупного или меньшего размера, через пространство которого перемещается сфера, может пройти испытание Реакции.\n<br>\n**Успех** существо может либо позволить сфере переместиться мимо (и при этом либо остаётся на своём месте, либо смещается с траектории сферы в пространство по своему выбору), либо позволить сфере оттолкнуть себя (и при этом остаётся перед сферой до завершения её перемещения).\n<br>\n**Провал** существо затягивает в сферу. Оно перемещается вместе со сферой и должно задерживать дыхание, чтобы не начать задыхаться (если, конечно, не способно дышать под водой). Взаимодействия между поглощёнными сферой существами среднего и меньшего размера и всеми другими существами проходят по правилам подводного боя. Существа крупного размера, как правило, достаточно велики, чтобы не вмещаться в сферу целиком, и могут дотянуться до целей за её пределами.\n\nПоглощённое существо может выбраться из сферы, совершив проверку Атлетики для Плавания со СЛ 10 либо совершив Освобождение (СЛ равна вашей СЛ заклинаний). Выбравшись из сферы, существо покидает её пространство и сразу может дышать.\n<br>\n**Критический провал** аналогичен провалу, но существо не способно выбраться Плаванием."
+      "en": "A sphere of water 10 feet in diameter forms in an unoccupied space in range, either on the ground or on the surface of a liquid. When you Cast this Spell and each time you Sustain it, you can roll the orb, moving it up to 10 feet along the ground or the surface of a liquid. The orb can move through the spaces of any creatures or obstacles that wouldn't stop the flow of water. It extinguishes non-magical fires it moves through of its size or smaller, and it attempts to counteract any magical fires it moves through. If it fails to counteract a given fire, it can't counteract that fire for the duration of the spell.\n\nThe orb can engulf Large or smaller creatures it moves through, and it can contain as many creatures as fit in its space. The orb can try to engulf the same creature only once per turn, even if you roll it onto a creature's space more than once. Any Large or smaller creature whose space the orb tries to move through can attempt a Reflex save.\n\n**Success** The creature can either let the orb pass (remaining in its space or moving out of the orb's path into a space of the creature's choice) or allow itself to be pushed in front of the orb to the end of the orb's movement.\n\n**Failure** The creature is engulfed in the orb. It moves along with the orb and must hold its breath or begin suffocating (unless it can breathe in water). An engulfed Medium or smaller creature and anyone trying to affect that creature follow the normal rules for aquatic battles. An engulfed Large creature is usually big enough that parts of it stick out from the water, and it can reach out of the water.\n\nThe creature can get free either by Swimming with a successful DC 10 Athletics check or by Escaping against your spell DC. A freed creature exits the orb's space and can immediately breathe.\n\n**Critical Failure** As failure, but the creature can't Swim to get free.",
+      "ru": "Вы создаёте водную сферу диаметром 10 футов в незанятом пространстве на поверхности земли или жидкости в пределах дистанции. При Сотворении заклинания и всякий раз при его Поддержании вы можете перекатить сферу, перемещая её на 10 или менее футов вдоль поверхности земли или жидкости. Сфера способна перемещаться через пространства, занятые существами и препятствиями, которые не способны остановить текущую воду. Сфера автоматически гасит немагическое пламя равного или меньшего размера, через которое перемещается, а магическое пламя пытается нейтрализовать. В случае провала нейтрализации конкретного источника пламени сфера не может нейтрализовать его, пока длится заклинание.\n\nКогда сфера перемещается через пространство, занятое существом крупного или меньшего размера, она может затянуть это существо. Ёмкость сферы ограничена количеством существ, способных уместиться в её пространстве. Сфера может пытаться поглотить существо только один раз за ход, при этом неважно, сколько раз она перемещалась в его пространство. Существо крупного или меньшего размера, через пространство которого перемещается сфера, может пройти испытание Реакции.\n\n**Успех** существо может либо позволить сфере переместиться мимо (и при этом либо остаётся на своём месте, либо смещается с траектории сферы в пространство по своему выбору), либо позволить сфере оттолкнуть себя (и при этом остаётся перед сферой до завершения её перемещения).\n\n**Провал** существо затягивает в сферу. Оно перемещается вместе со сферой и должно задерживать дыхание, чтобы не начать задыхаться (если, конечно, не способно дышать под водой). Взаимодействия между поглощёнными сферой существами среднего и меньшего размера и всеми другими существами проходят по правилам подводного боя. Существа крупного размера, как правило, достаточно велики, чтобы не вмещаться в сферу целиком, и могут дотянуться до целей за её пределами.\n\nПоглощённое существо может выбраться из сферы, совершив проверку Атлетики для Плавания со СЛ 10 либо совершив Освобождение (СЛ равна вашей СЛ заклинаний). Выбравшись из сферы, существо покидает её пространство и сразу может дышать.\n\n**Критический провал** аналогичен провалу, но существо не способно выбраться Плаванием."
     },
     "origin": "spell",
-    "origin_value": "",
+    "origin_value": "arcane,primal",
     "origin_values": [
       "concentrate",
       "manipulate",
       "water"
     ],
-    "price": {
-      "a": 1
-    },
+    "price": { "a": 2 },
     "info": {
       "level": 3,
-      "targets": "",
-      "range": "",
-      "defense": "",
-      "enhancements": [
-        {
-          "name": {
-            "en": "",
-            "ru": ""
-          },
-          "description": {
-            "en": "",
-            "ru": ""
-          }
-        }
-      ]
+      "range": "60,ft",
+      "defense": "reflex",
+      "sustained": true,
+      "duration": "1,m"
     }
   },
   {
@@ -47,35 +34,20 @@
       "ru": "Управление нежитью"
     },
     "description": {
-      "en": "**Traditions** <u>arcane</u>, <u>divine</u>, <u>occult</u><br>**Bloodline** Undead <br>**Range** 30 feet; **Targets** 1 mindless undead creature with a level no greater than <i>bind undead</i>'s spell rank<br>**Duration** 1 day<hr>With a word of power, you seize control of the target. It gains the minion trait. If you or an ally uses any hostile actions against the target, the spell ends.",
-      "ru": "**Традиции** мистическая, сакральная, оккультная<br>\n**Наследие** загробное<br>\n**Сотворение** [two-actions] <br>\n**Дистанция** 30 футов; **Цели** 1 неразумное существо-нежить с уровнем, не превышающим круг этого заклинания.\n\n**Длительность** 1 день.\n\nПроизнеся слово силы, вы берёте цель под контроль. Она получает дескриптор «подручный». Если вы или ваши союзники совершите любое враждебное действие против цели, заклинание прекращается."
+      "en": "**Targets** 1 mindless undead creature with a level no greater than **Bind undead**'s spell rank.\n\nWith a word of power, you seize control of the target. It gains the minion trait. If you or an ally uses any hostile actions against the target, the spell ends.",
+      "ru": "**Цели** 1 неразумное существо-нежить с уровнем, не превышающим круг этого заклинания.\n\nПроизнеся слово силы, вы берёте цель под контроль. Она получает дескриптор «подручный». Если вы или ваши союзники совершите любое враждебное действие против цели, заклинание прекращается."
     },
     "origin": "spell",
-    "origin_value": "",
+    "origin_value": "arcane,divine,occult",
     "origin_values": [
       "concentrate",
       "manipulate"
     ],
-    "price": {
-      "a": 1
-    },
+    "price": { "a": 2 },
     "info": {
       "level": 3,
-      "targets": "",
-      "range": "",
-      "defense": "",
-      "enhancements": [
-        {
-          "name": {
-            "en": "",
-            "ru": ""
-          },
-          "description": {
-            "en": "",
-            "ru": ""
-          }
-        }
-      ]
+      "range": "30,ft",
+      "duration": "1,d"
     }
   },
   {
@@ -86,36 +58,21 @@
       "ru": "Слепота"
     },
     "description": {
-      "en": "**Traditions** <u>arcane</u>, <u>divine</u>, <u>occult</u>, <u>primal</u><br>**Bloodline** Hag <br>**Range** 30 feet; **Targets** 1 creature<br>**Defense** Fortitude<hr>You blind the target. The effect is determined by the target's Fortitude save. The target then becomes temporarily immune for 1 minute.\n\n**Critical Success** The target is unaffected.\n\n**Success** The target is blinded until its next turn begins.\n\n**Failure** The target is blinded for 1 minute.\n\n**Critical Failure** The target is blinded permanently.",
-      "ru": "**Традиции** мистическая, сакральная, оккультная, первобытная<br>\n**Наследие** наследие карги<br>\n**Сотворение** [two-actions] <br>\n**Дистанция** 30 футов; **Цели** 1 существо<br>\n**Защита** Стойкость.\n\nВы ослепляете цель. Эффект зависит от результата испытания Стойкости цели, после чего цель временно невосприимчива к этому эффекту на 1 минуту.\n<br>\n**Критический успех** цель избегает эффекта.\n<br>\n**Успех** цель получает слепоту до начала своего следующего хода.\n<br>\n**Провал** цель получает слепоту на 1 минуту.\n<br>\n**Критический провал** цель получает слепоту навсегда."
+      "en": "You blind the target. The effect is determined by the target's Fortitude save. The target then becomes temporarily immune for 1 minute.\n\n**Critical Success** The target is unaffected.\n\n**Success** The target is blinded until its next turn begins.\n\n**Failure** The target is blinded for 1 minute.\n\n**Critical Failure** The target is blinded permanently.",
+      "ru": "Вы ослепляете цель. Эффект зависит от результата испытания Стойкости цели, после чего цель временно невосприимчива к этому эффекту на 1 минуту.\n\n**Критический успех** цель избегает эффекта.\n\n**Успех** цель получает слепоту до начала своего следующего хода.\n\n**Провал** цель получает слепоту на 1 минуту.\n\n**Критический провал** цель получает слепоту навсегда."
     },
     "origin": "spell",
-    "origin_value": "",
+    "origin_value": "arcane,divine,occult,primal",
     "origin_values": [
       "concentrate",
       "incapacitation",
       "manipulate"
     ],
-    "price": {
-      "a": 1
-    },
+    "price": { "a": 2 },
     "info": {
       "level": 3,
-      "targets": "",
-      "range": "",
-      "defense": "",
-      "enhancements": [
-        {
-          "name": {
-            "en": "",
-            "ru": ""
-          },
-          "description": {
-            "en": "",
-            "ru": ""
-          }
-        }
-      ]
+      "range": "30,ft",
+      "defense": "fortitude"
     }
   },
   {
@@ -126,11 +83,11 @@
       "ru": "Леденящая тьма"
     },
     "description": {
-      "en": "**Traditions** <u>divine</u><br>**Lesson** Lesson of Shadow <br>**Range** 120 feet; **Targets** 1 creature<br>**Defense** AC<hr>You shoot an utterly cold ray of darkness tinged with unholy energy. Make a ranged spell attack. The ray deals 5d6 cold damage. If the target has the holy trait, you deal an extra 5d6 spirit damage.\n\n**Critical Success** The target takes double damage.\n\n**Success** The target takes full damage.\n\nIf the ray passes through an area of magical light or targets a creature affected by magical light, <i>chilling darkness</i> attempts to counteract the light. If you need to determine whether the ray passes through an area of light, draw a line between yourself and the spell's target.<hr>**Heightened (+1)** The cold damage increases by 2d6, and the spirit damage against holy creatures increases by 2d6.",
-      "ru": "**Традиции** сакральная<br>\n**Урок** урок о тенях <br>\n**Сотворение** [two-actions] <br>\n**Дистанция** 120 футов; **Цели** 1 существо<br>\n**Защита** КБ.\n\nВы выпускаете в цель луч леденящей тьмы, пронизанный нечестивой энергией. Совершите дистанционную атаку заклинанием по цели. Вы наносите 5d6 урона холодом, а также 5d6 урона духом, если у цели дескриптор «священный».\n<br>\n**Критический успех** цель получает двойной урон.\n<br>\n**Успех** цель получает полный урон.\n<br>\nЕсли луч проходит через область магического света или его цель под действием магического света, это заклинание пытается нейтрализовать свет. Если вы не уверены, проходит ли луч через область, проведите линию между собой и целью заклинания.\n\n**Повышенное (+1)** урон холодом увеличивается на 2d6, урон духом по существам с дескриптором «священный» также увеличивается на 2d6."
+      "en": "You shoot an utterly cold ray of darkness tinged with unholy energy. Make a ranged spell attack. The ray deals 5d6 cold damage. If the target has the holy trait, you deal an extra 5d6 spirit damage.\n\n**Critical Success** The target takes double damage.\n\n**Success** The target takes full damage.\n\nIf the ray passes through an area of magical light or targets a creature affected by magical light, **Chilling darkness** attempts to counteract the light. If you need to determine whether the ray passes through an area of light, draw a line between yourself and the spell's target.\n\n**Heightened (+1)** The cold damage increases by 2d6, and the spirit damage against holy creatures increases by 2d6.",
+      "ru": "Вы выпускаете в цель луч леденящей тьмы, пронизанный нечестивой энергией. Совершите дистанционную атаку заклинанием по цели. Вы наносите 5d6 урона холодом, а также 5d6 урона духом, если у цели дескриптор «священный».\n\n**Критический успех** цель получает двойной урон.\n\n**Успех** цель получает полный урон.\n\nЕсли луч проходит через область магического света или его цель под действием магического света, это заклинание пытается нейтрализовать свет. Если вы не уверены, проходит ли луч через область, проведите линию между собой и целью заклинания.\n\n**Повышенное (+1)** урон холодом увеличивается на 2d6, урон духом по существам с дескриптором «священный» также увеличивается на 2d6."
     },
     "origin": "spell",
-    "origin_value": "",
+    "origin_value": "divine",
     "origin_values": [
       "attack",
       "cold",
@@ -139,26 +96,11 @@
       "manipulate",
       "unholy"
     ],
-    "price": {
-      "a": 1
-    },
+    "price": { "a": 2 },
     "info": {
       "level": 3,
-      "targets": "",
-      "range": "",
-      "defense": "",
-      "enhancements": [
-        {
-          "name": {
-            "en": "",
-            "ru": ""
-          },
-          "description": {
-            "en": "",
-            "ru": ""
-          }
-        }
-      ]
+      "range": "120,ft",
+      "defense": "ac"
     }
   },
   {
@@ -169,36 +111,21 @@
       "ru": "Яснослышание"
     },
     "description": {
-      "en": "**Traditions** <u>arcane</u>, <u>occult</u><br>**Deity** Nameless <br>**Cast**  1 minute<br>**Range** 500 feet<br>**Duration** 10 minutes<hr>You create an invisible floating ear at a location within range (even if it's outside your line of sight or line of effect). It can't move, but you can hear through the ear as if using your normal auditory senses.",
-      "ru": "**Традиции** мистическая, оккультная<br>\n**Божество** Безымянный<br>\n**Сотворение**  1 минута<br>\n**Дистанция** 500 футов<br>\n**Длительность** 10 минут.\n\nВы создаёте невидимое парящее ухо в месте в пределах дистанции, причём место для уха не обязано быть для вас на линии видимости или досягаемости. Ухо не может перемещаться, но вы можете слышать через него, как будто используете обычный собственный слух."
+      "en": "You create an invisible floating ear at a location within range (even if it's outside your line of sight or line of effect). It can't move, but you can hear through the ear as if using your normal auditory senses.",
+      "ru": "Вы создаёте невидимое парящее ухо в месте в пределах дистанции, причём место для уха не обязано быть для вас на линии видимости или досягаемости. Ухо не может перемещаться, но вы можете слышать через него, как будто используете обычный собственный слух."
     },
     "origin": "spell",
-    "origin_value": "",
+    "origin_value": "arcane,occult",
     "origin_values": [
       "concentrate",
       "manipulate",
       "scrying"
     ],
-    "price": {
-      "a": 1
-    },
     "info": {
       "level": 3,
-      "targets": "",
-      "range": "",
-      "defense": "",
-      "enhancements": [
-        {
-          "name": {
-            "en": "",
-            "ru": ""
-          },
-          "description": {
-            "en": "",
-            "ru": ""
-          }
-        }
-      ]
+      "time": "1,m",
+      "range": "500,ft",
+      "duration": "10,m"
     }
   },
   {
@@ -209,36 +136,22 @@
       "ru": "Уютная хижина"
     },
     "description": {
-      "en": "**Traditions** <u>arcane</u>, <u>occult</u><br>**Deities** Aminara, Elion, Emmeton Galardaria, Good Neighbors, Immonhiel, Malthus, The Offering Plate, The Spirit Wall, Uskyeria, Yelayne <br>**Cast**  1 minute<br>**Range** 30 feet<br>**Duration** 12 hours<hr>You shape a cabin 20 feet on each side and 10 feet high. This cabin has the structure trait and the same restrictions as magic items that create structures. The walls of the hut are simple and wooden, with small, square glass windows, and it has one wooden door. It doesn't include its own lock, but it has a fastener to which a lock can be applied.\n\n The interior contains three cots, one chamber pot, and a small fireplace holding a magical fire. The interior is lit with a small magical light that you can light or extinguish at will using a Sustain action. The climate inside the hut is comfortable and allows creatures inside it to withstand most hostile weather conditions, but incredible heat or cold, powerful storms, and winds of hurricane force or greater destroy the hut. Other creatures can freely enter and exit the hut without damaging it, but if you exit the hut, the spell ends. You can Dismiss the spell.",
-      "ru": "**Традиции** мистическая, оккультная<br>\n**Божества** Aminara, Элион, Эмметон Галардария, Добрые соседи, Immonhiel, Мальтус, The Offering Plate, Духовная стена, Ускири, Yelayne <br>\n**Сотворение**  1 минута<br>\n**Дистанция** 30 футов<br>\n**Длительность** 12 hours.\n\nВы создаёте квадратную хижину со стенами длиной 20 и высотой 10 футов. Хижина обладает дескриптором «строение» и следует тем же ограничениям, что и магические предметы, позволяющие создавать строения. У хижины простые деревянные стены с небольшими квадратными застеклёнными окнами, а войти в неё можно через единственную деревянную дверь. Замка на двери нет, но есть крепления, куда его можно установить.\n\nВнутри хижины есть три спальных места, один ночной горшок и небольшой очаг, в котором горит магическое пламя. Освещает хижину магический свет, который можно неограниченно зажигать или гасить, используя действие Поддержание. Климат в помещении комфортный, и в нём можно укрыться почти от любых враждебных погодных условий, но невыносимая жара, невыносимый холод, особо сильные бури, а также порывы ураганного или более сильного ветра уничтожают хижину. Другие существа могут входить в хижину и выходить из неё, не повреждая, но когда вы выходите из хижины, заклинание завершается. Вы можете использовать Прекращение для этого заклинания."
+      "en": "You shape a cabin 20 feet on each side and 10 feet high. This cabin has the structure trait and the same restrictions as magic items that create structures. The walls of the hut are simple and wooden, with small, square glass windows, and it has one wooden door. It doesn't include its own lock, but it has a fastener to which a lock can be applied.\n\nThe interior contains three cots, one chamber pot, and a small fireplace holding a magical fire. The interior is lit with a small magical light that you can light or extinguish at will using a Sustain action. The climate inside the hut is comfortable and allows creatures inside it to withstand most hostile weather conditions, but incredible heat or cold, powerful storms, and winds of hurricane force or greater destroy the hut. Other creatures can freely enter and exit the hut without damaging it, but if you exit the hut, the spell ends. You can Dismiss the spell.",
+      "ru": "Вы создаёте квадратную хижину со стенами длиной 20 и высотой 10 футов. Хижина обладает дескриптором «строение» и следует тем же ограничениям, что и магические предметы, позволяющие создавать строения. У хижины простые деревянные стены с небольшими квадратными застеклёнными окнами, а войти в неё можно через единственную деревянную дверь. Замка на двери нет, но есть крепления, куда его можно установить.\n\nВнутри хижины есть три спальных места, один ночной горшок и небольшой очаг, в котором горит магическое пламя. Освещает хижину магический свет, который можно неограниченно зажигать или гасить, используя действие Поддержание. Климат в помещении комфортный, и в нём можно укрыться почти от любых враждебных погодных условий, но невыносимая жара, невыносимый холод, особо сильные бури, а также порывы ураганного или более сильного ветра уничтожают хижину. Другие существа могут входить в хижину и выходить из неё, не повреждая, но когда вы выходите из хижины, заклинание завершается. Вы можете использовать Прекращение для этого заклинания."
     },
     "origin": "spell",
-    "origin_value": "",
+    "origin_value": "arcane,occult",
     "origin_values": [
       "concentrate",
       "manipulate",
       "wood"
     ],
-    "price": {
-      "a": 1
-    },
+    "price": { "a": 1 },
     "info": {
       "level": 3,
-      "targets": "",
-      "range": "",
-      "defense": "",
-      "enhancements": [
-        {
-          "name": {
-            "en": "",
-            "ru": ""
-          },
-          "description": {
-            "en": "",
-            "ru": ""
-          }
-        }
-      ]
+      "range": "30,ft",
+      "duration": "12,h",
+      "time": "1,m"
     }
   },
   {
@@ -249,36 +162,21 @@
       "ru": "Кризис веры"
     },
     "description": {
-      "en": "**Traditions** <u>divine</u><br>**Range** 30 feet; **Targets** 1 creature<br>**Defense** Will<hr>You assault the target's faith, riddling the creature with doubt and mental turmoil that deal 6d6 mental damage, or 6d8 mental damage if it can cast divine spells. The effects are determined by its Will save. <br>**Critical Success** The target is unaffected.\n\n**Success** The target takes half damage.\n\n**Failure** The target takes full damage; if the target can cast divine spells, it's stupefied 1 for 1 round.\n\n**Critical Failure** The target takes double damage, is stupefied 1 for 1 round, and can't cast divine spells for 1 round.\n\n To many deities, casting this spell on a follower of your own deity without significant cause is anathema.<hr>**Heightened (+1)** The damage increases by 2d6 (or by 2d8 if the target is a divine spellcaster).",
-      "ru": "**Традиции** сакральная<br>\n**Сотворение** [two-actions] <br>\n**Дистанция** 30 футов; **Цели** 1 существо<br>\n**Защита** Воля.\n\nВы заставляете существо усомниться в собственной вере, его разум разрывают сомнения, нанося 6d6 ментального урона (6d8 ментального урона, если существо способно творить сакральные заклинания). Эффекты заклинания определяются результатом испытания Воли цели.\n<br>\n**Критический успех** цель избегает эффекта.\n<br>\n**Успех** цель получает половину урона.\n<br>\n**Провал** цель получает полный урон; если цель способна творить сакральные заклинания, она получает ошеломление 1 на 1 раунд.\n<br>\n**Критический провал** цель получает двойной урон, ошеломление 1 на 1 раунд и в течение 1 раунда не может творить сакральные заклинания. Многие божества считают сотворение этого заклинания на собрата по вере без весомых причин нарушением табу.\n\n**Повышенное (+1)** урон увеличивается на 2d6 (или на 2d8, если цель — сакральный заклинатель)."
+      "en": "You assault the target's faith, riddling the creature with doubt and mental turmoil that deal 6d6 mental damage, or 6d8 mental damage if it can cast divine spells. The effects are determined by its Will save. <br>**Critical Success** The target is unaffected.\n\n**Success** The target takes half damage.\n\n**Failure** The target takes full damage; if the target can cast divine spells, it's stupefied 1 for 1 round.\n\n**Critical Failure** The target takes double damage, is stupefied 1 for 1 round, and can't cast divine spells for 1 round.\n\nTo many deities, casting this spell on a follower of your own deity without significant cause is anathema.\n\n**Heightened (+1)** The damage increases by 2d6 (or by 2d8 if the target is a divine spellcaster).",
+      "ru": "Вы заставляете существо усомниться в собственной вере, его разум разрывают сомнения, нанося 6d6 ментального урона (6d8 ментального урона, если существо способно творить сакральные заклинания). Эффекты заклинания определяются результатом испытания Воли цели.\n\n**Критический успех** цель избегает эффекта.\n\n**Успех** цель получает половину урона.\n\n**Провал** цель получает полный урон; если цель способна творить сакральные заклинания, она получает ошеломление 1 на 1 раунд.\n\n**Критический провал** цель получает двойной урон, ошеломление 1 на 1 раунд и в течение 1 раунда не может творить сакральные заклинания. Многие божества считают сотворение этого заклинания на собрата по вере без весомых причин нарушением табу.\n\n**Повышенное (+1)** урон увеличивается на 2d6 (или на 2d8, если цель — сакральный заклинатель)."
     },
     "origin": "spell",
-    "origin_value": "",
+    "origin_value": "divine",
     "origin_values": [
       "concentrate",
       "manipulate",
       "mental"
     ],
-    "price": {
-      "a": 1
-    },
+    "price": { "a": 2 },
     "info": {
       "level": 3,
-      "targets": "",
-      "range": "",
-      "defense": "",
-      "enhancements": [
-        {
-          "name": {
-            "en": "",
-            "ru": ""
-          },
-          "description": {
-            "en": "",
-            "ru": ""
-          }
-        }
-      ]
+      "range": "30,ft",
+      "defense": "will"
     }
   },
   {
@@ -289,36 +187,21 @@
       "ru": "Сообщение во сне"
     },
     "description": {
-      "en": "**Traditions** <u>arcane</u>, <u>divine</u>, <u>occult</u><br>**Cast**  10 minutes<br>**Range** planetary; **Targets** 1 creature you know by name and have met in person<br>**Duration** until your next daily preparations<hr>You send a message to your target's dream. The message is one-way, up to 1 minute of speech (roughly 150 words). If the  target is asleep, they receive the message instantly. If not, they receive it the next time they sleep. As soon as they receive it, the spell ends, and you know the message was sent.<hr>**Heightened (4th)** You can target up to 10 creatures you know by name and have met in person. You must send the same message to all of them; the spell ends for each creature individually.",
-      "ru": "**Традиции** мистическая, сакральная, оккультная<br>\n**Сотворение**  10 минут<br>\n**Дистанция** планета; **Цели** 1 существо, которое вы встречали лично и знаете по имени<br>\n**Длительность** до следующей вашей ежедневной подготовки.\n\nВы посылаете сообщение в сновидение цели. Длина сообщения не должна превышать одной минуты (порядка 150 слов), ответ вы не получаете. Если цель спит, она получает послание мгновенно, если бодрствует — сразу же, как только уснёт. Как только цель получила сообщение, заклинание прекращается, а вы узнаёте, что сообщение было доставлено.\n\n**Повышенное (4 круг)** вы можете выбрать целями 10 или менее существ, которых вы встречали лично и знаете по имени. Вы должны послать всем целям одно и то же сообщение; заклинание прекращается отдельно для каждой цели."
+      "en": "You send a message to your target's dream. The message is one-way, up to 1 minute of speech (roughly 150 words). If the  target is asleep, they receive the message instantly. If not, they receive it the next time they sleep. As soon as they receive it, the spell ends, and you know the message was sent.\n\n**Heightened (4th)** You can target up to 10 creatures you know by name and have met in person. You must send the same message to all of them; the spell ends for each creature individually.",
+      "ru": "Вы посылаете сообщение в сновидение цели. Длина сообщения не должна превышать одной минуты (порядка 150 слов), ответ вы не получаете. Если цель спит, она получает послание мгновенно, если бодрствует — сразу же, как только уснёт. Как только цель получила сообщение, заклинание прекращается, а вы узнаёте, что сообщение было доставлено.\n\n**Повышенное (4 круг)** вы можете выбрать целями 10 или менее существ, которых вы встречали лично и знаете по имени. Вы должны послать всем целям одно и то же сообщение; заклинание прекращается отдельно для каждой цели."
     },
     "origin": "spell",
-    "origin_value": "",
+    "origin_value": "arcane,divine,occult",
     "origin_values": [
       "concentrate",
       "manipulate",
       "mental"
     ],
-    "price": {
-      "a": 1
-    },
+    "price": { "a": 1 },
     "info": {
       "level": 3,
-      "targets": "",
-      "range": "",
-      "defense": "",
-      "enhancements": [
-        {
-          "name": {
-            "en": "",
-            "ru": ""
-          },
-          "description": {
-            "en": "",
-            "ru": ""
-          }
-        }
-      ]
+      "time": "10,m",
+      "duration": "1,d"
     }
   },
   {
@@ -329,36 +212,21 @@
       "ru": "Приземление"
     },
     "description": {
-      "en": "**Traditions** <u>arcane</u>, <u>primal</u><br>**Deities** Doloras, Jukha, Torag, Treasures of the Eternal Delve <br>**Range** 120 feet; **Targets** 1 flying creature<br>**Defense** Fortitude; **Duration** varies<hr>Using the weight of earth, you hamper a target's flight, with effects based on its Fortitude save. If the creature reaches the ground safely, it doesn't take falling damage.\n\n**Critical Success** The target is unaffected.\n\n**Success** The target falls safely up to 120 feet.\n\n**Failure** The target falls safely up to 120 feet. If it hits the ground, it can't Fly, levitate, or otherwise leave the ground for 1 round.\n\n**Critical Failure** The target falls safely up to 120 feet. If it hits the ground, it can't Fly, <i>levitate</i>, or otherwise leave the ground for 1 minute.",
-      "ru": "**Традиции** мистическая, первобытная<br>\n**Божества** Долорас, Юка, Тораг, Сокровища вечных недр <br>\n**Сотворение** [two-actions] <br>\n**Дистанция** 120 футов; **Цели** 1 летающее существо<br>\n**Защита** Стойкость; **Длительность** варьируется.\n\nВы используете силу земли, чтобы помешать цели летать. Эффект заклинания зависит от результата испытания Стойкости цели. Если существо безопасно опускается на землю, оно не получает урона от падения.\n<br>\n**Критический успех** цель избегает эффекта.\n<br>\n**Успех** цель безопасно опускается на расстояние до 120 футов.\n<br>\n**Провал** цель безопасно опускается на расстояние до 120 футов. Если она оказывается на земле, то в течение 1 раунда не может использовать ПолётПолёт]], левитацию и иными способами отрываться от земли.\n<br>\n**Критический провал** цель безопасно опускается на расстояние до 120 футов. Если она оказывается на земле, то в течение 1 минуты не может использовать Полёт, левитацию и иными способами отрываться от земли."
+      "en": "Using the weight of earth, you hamper a target's flight, with effects based on its Fortitude save. If the creature reaches the ground safely, it doesn't take falling damage.\n\n**Critical Success** The target is unaffected.\n\n**Success** The target falls safely up to 120 feet.\n\n**Failure** The target falls safely up to 120 feet. If it hits the ground, it can't Fly, levitate, or otherwise leave the ground for 1 round.\n\n**Critical Failure** The target falls safely up to 120 feet. If it hits the ground, it can't Fly, levitate, or otherwise leave the ground for 1 minute.",
+      "ru": "Вы используете силу земли, чтобы помешать цели летать. Эффект заклинания зависит от результата испытания Стойкости цели. Если существо безопасно опускается на землю, оно не получает урона от падения.\n\n**Критический успех** цель избегает эффекта.\n\n**Успех** цель безопасно опускается на расстояние до 120 футов.\n\n**Провал** цель безопасно опускается на расстояние до 120 футов. Если она оказывается на земле, то в течение 1 раунда не может использовать Полёт, левитацию и иными способами отрываться от земли.\n\n**Критический провал** цель безопасно опускается на расстояние до 120 футов. Если она оказывается на земле, то в течение 1 минуты не может использовать Полёт, левитацию и иными способами отрываться от земли."
     },
     "origin": "spell",
-    "origin_value": "",
+    "origin_value": "arcane,primal",
     "origin_values": [
       "concentrate",
       "earth",
       "manipulate"
     ],
-    "price": {
-      "a": 1
-    },
+    "price": { "a": 2 },
     "info": {
       "level": 3,
-      "targets": "",
-      "range": "",
-      "defense": "",
-      "enhancements": [
-        {
-          "name": {
-            "en": "",
-            "ru": ""
-          },
-          "description": {
-            "en": "",
-            "ru": ""
-          }
-        }
-      ]
+      "range": "120,ft",
+      "defense": "fortitude"
     }
   },
   {
@@ -369,37 +237,23 @@
       "ru": "Захватывающая речь"
     },
     "description": {
-      "en": "**Traditions** <u>arcane</u>, <u>occult</u><br>**Bloodlines** Diabolic, Fey <br>**Deities** Ardad Lili, Belial, Bes, Calistria, Deshto, Eritrice, Grask Uldeth, Lady Jingxi, Laivatiniel, Likha, Lissala, Milani, Nyarlathotep (The Crawling Chaos), Nyarlathotep (The Faceless Sphinx), Ozranvial, Shelyn, Thisamet, Tlehar <br>**Range** 120 feet; **Targets** all creatures in range<br>**Defense** Will; **Duration** sustained<hr>Your words fascinate your targets. You speak or sing without interruption throughout the casting and duration. Targets who notice your speech or song might give their undivided attention; each target must attempt a Will save. The GM might grant a circumstance bonus (to a maximum of +4) if the target is of an opposing religion, ancestry, or political leaning, or is otherwise unlikely to agree with what you're saying.\n\n Each creature that comes within range has to attempt a save when you Sustain the spell. If you're speaking, <i>enthrall</i> gains the linguistic trait.\n\n**Critical Success** The target is unaffected and notices that you tried to use magic.\n\n**Success** The target needn't pay attention but doesn't notice you tried to use magic (it might notice others are enthralled).\n\n**Failure** The target is fascinated with you. It can attempt another Will save if it witnesses actions or speech with which it disagrees. If it succeeds, it's no longer fascinated and is temporarily immune for 1 hour. If the target is subject to a hostile act, or if another creature succeeds at a Diplomacy or Intimidation check against it, the fascination ends immediately.\n\n**Critical Failure** As failure, but the target can't attempt a save to end the fascination if it disagrees with you.",
-      "ru": "**Традиции** мистическая, оккультная<br>\n**Наследие** дьявольское, наследие фей<br>\n**Божества** Ардад Лили, Белиал, Bes, Калистрия, Deshto, Эритрице, Граск Ульдет, Леди Цзинси (поэт рассвета и сумерек), Лайватиниэль, Лиха, Лиссала, Милани, Ньярлатхотеп (ползучий хаос), Ньярлатхотеп (безликий сфинкс), Озранвиаль, Шелин, Thisamet, Tlehar <br>\n**Сотворение** [two-actions] <br>\n**Дистанция** 120 футов; **Цели** все существа в пределах дистанции<br>\n**Защита** Воля; **Длительность** поддерживаемое.\n\nВаши слова завораживают слушателей. При сотворении заклинания и в течение всей его длительности вы говорите или поёте без перерывов. Цели, заметившие вашу речь или песню, могут обратить всё своё внимание на вас; каждая цель проходит испытание Воли. Ведущий может дать цели ситуативный бонус (максимум +4), если цель придерживается иных политических взглядов, принадлежит к противостоящей религии или по иной причине не согласна с вашими словами.\n\nКаждое существо в пределах дистанции должно проходить испытание, когда вы используете Поддержание заклинания. Если вы говорите, заклинание получает дескриптор «язык».\n<br>\n**Критический успех** цель избегает эффекта и замечает, что вы пытались использовать магию.\n<br>\n**Успех** цель не обязана обращать на вас внимание, но не замечает, что вы пытались использовать магию (хотя может заметить, что окружающие заворожены).\n<br>\n**Провал** цель заворожена вами. Если она заметит действия или слова, с которыми не согласна, то может пройти испытание Воли повторно и при успехе перестаёт быть заворожена и получает временную невосприимчивость на 1 час. Если цель подвергнется враждебному действию или если другое существо успешно совершит против неё проверку Дипломатии или Запугивания, заворожённость немедленно прекращается.\n<br>\n**Критический провал** аналогичен провалу, но цель не может пройти повторное испытание, если с вами не согласна."
+      "en": "Your words fascinate your targets. You speak or sing without interruption throughout the casting and duration. Targets who notice your speech or song might give their undivided attention; each target must attempt a Will save. The GM might grant a circumstance bonus (to a maximum of +4) if the target is of an opposing religion, ancestry, or political leaning, or is otherwise unlikely to agree with what you're saying.\n\nEach creature that comes within range has to attempt a save when you Sustain the spell. If you're speaking, **Enthrall** gains the linguistic trait.\n\n**Critical Success** The target is unaffected and notices that you tried to use magic.\n\n**Success** The target needn't pay attention but doesn't notice you tried to use magic (it might notice others are enthralled).\n\n**Failure** The target is fascinated with you. It can attempt another Will save if it witnesses actions or speech with which it disagrees. If it succeeds, it's no longer fascinated and is temporarily immune for 1 hour. If the target is subject to a hostile act, or if another creature succeeds at a Diplomacy or Intimidation check against it, the fascination ends immediately.\n\n**Critical Failure** As failure, but the target can't attempt a save to end the fascination if it disagrees with you.",
+      "ru": "Ваши слова завораживают слушателей. При сотворении заклинания и в течение всей его длительности вы говорите или поёте без перерывов. Цели, заметившие вашу речь или песню, могут обратить всё своё внимание на вас; каждая цель проходит испытание Воли. Ведущий может дать цели ситуативный бонус (максимум +4), если цель придерживается иных политических взглядов, принадлежит к противостоящей религии или по иной причине не согласна с вашими словами.\n\nКаждое существо в пределах дистанции должно проходить испытание, когда вы используете Поддержание заклинания. Если вы говорите, заклинание получает дескриптор «язык».\n\n**Критический успех** цель избегает эффекта и замечает, что вы пытались использовать магию.\n\n**Успех** цель не обязана обращать на вас внимание, но не замечает, что вы пытались использовать магию (хотя может заметить, что окружающие заворожены).\n\n**Провал** цель заворожена вами. Если она заметит действия или слова, с которыми не согласна, то может пройти испытание Воли повторно и при успехе перестаёт быть заворожена и получает временную невосприимчивость на 1 час. Если цель подвергнется враждебному действию или если другое существо успешно совершит против неё проверку Дипломатии или Запугивания, заворожённость немедленно прекращается.\n\n**Критический провал** аналогичен провалу, но цель не может пройти повторное испытание, если с вами не согласна."
     },
     "origin": "spell",
-    "origin_value": "",
+    "origin_value": "arcane,occult",
     "origin_values": [
       "auditory",
       "concentrate",
       "emotion",
       "manipulate"
     ],
-    "price": {
-      "a": 1
-    },
+    "price": { "a": 2 },
     "info": {
       "level": 3,
-      "targets": "",
-      "range": "",
-      "defense": "",
-      "enhancements": [
-        {
-          "name": {
-            "en": "",
-            "ru": ""
-          },
-          "description": {
-            "en": "",
-            "ru": ""
-          }
-        }
-      ]
+      "range": "120,ft",
+      "defense": "will",
+      "sustained": true
     }
   },
   {
@@ -410,36 +264,21 @@
       "ru": "Ноги-ласты"
     },
     "description": {
-      "en": "**Traditions** <u>arcane</u>, <u>primal</u><br>**Deities** Besmara, Dagon, Jin Li, Picoperi, Ragadahn, Seafarer's Hope, Sobek, Telastmar, Ylimancha, Zeaki <br>**Lesson** Lesson of the Shark <br>**Range** touch; **Targets** 1 willing creature<br>**Duration** 10 minutes<hr>The target's feet transform into fins, improving mobility in the water but reducing it on land. The target gains a swim Speed equal to its normal land Speed, but its land Speed becomes 5 feet.<hr>**Heightened (6th)** The spell lasts until your next daily preparations.",
-      "ru": "**Традиции** мистическая, первобытная<br>\n**Божества** Бесмара, Дагон, Дзин Ли (золотой дракон-карп), Picoperi, Рагадан, Seafarer's Hope, Sobek, Теластмар, Илиманча, Zeaki <br>\n**Урок** урок акулы <br>\n**Сотворение** [two-actions] <br>\n**Дистанция** касание; **Цели** 1 согласное существо<br>\n**Длительность** 10 минут.\n\nСтупни цели превращаются в ласты, увеличивая подвижность в воде, но мешая перемещаться по суше. Цель получает скорость плавания, равную её обычной наземной скорости, но её наземная скорость становится равной 5 футам.\n\n**Повышенное (6 круг)** заклинание длится до следующей вашей ежедневной подготовки."
+      "en": "The target's feet transform into fins, improving mobility in the water but reducing it on land. The target gains a swim Speed equal to its normal land Speed, but its land Speed becomes 5 feet.\n\n**Heightened (6th)** The spell lasts until your next daily preparations.",
+      "ru": "Ступни цели превращаются в ласты, увеличивая подвижность в воде, но мешая перемещаться по суше. Цель получает скорость плавания, равную её обычной наземной скорости, но её наземная скорость становится равной 5 футам.\n\n**Повышенное (6 круг)** заклинание длится до следующей вашей ежедневной подготовки."
     },
     "origin": "spell",
-    "origin_value": "",
+    "origin_value": "arcane,primal",
     "origin_values": [
       "concentrate",
       "manipulate",
       "morph"
     ],
-    "price": {
-      "a": 1
-    },
+    "price": { "a": 2 },
     "info": {
       "level": 3,
-      "targets": "",
-      "range": "",
-      "defense": "",
-      "enhancements": [
-        {
-          "name": {
-            "en": "",
-            "ru": ""
-          },
-          "description": {
-            "en": "",
-            "ru": ""
-          }
-        }
-      ]
+      "range": "touch",
+      "duration": "10,m"
     }
   },
   {
@@ -450,36 +289,22 @@
       "ru": "Огненный шар"
     },
     "description": {
-      "en": "**Traditions** <u>arcane</u>, <u>primal</u><br>**Catalysts** Firestarter Pellets<br>**Deities** Angradd, Chohar, Dahak, Eiseth, Furcas, Inna, Radiant Prism, Sarenrae, The Freeing Flame, Walkena, Zarongel <br>**Mystery** flames<br>**Range** 500 feet; **Area** 20-foot burst<br>**Defense** basic Reflex<hr>A roaring blast of fire detonates at a spot you designate, dealing 6d6 fire damage.<hr>**Heightened (+1)** The damage increases by 2d6.",
-      "ru": "**Традиции** мистическая, первобытная<br>\n**Божества** Анградд, Chohar, Дахак, Эйсет, Фуркас, Инна, Сияющая призма, Саренрэй, The Freeing Flame, Walkena, Заронгель <br>\n**Сотворение** [two-actions] <br>\n**Дистанция** 500 футов; **Область** 20-футовый взрыв<br>\n**Защита** обычное испытание Реакции.\n\nВ указанной вами точке происходит огненный взрыв, наносящий 6d6 урона огнём.\n\n**Повышенное (+1)** урон увеличивается на 2d6."
+      "en": "A roaring blast of fire detonates at a spot you designate, dealing 6d6 fire damage.\n\n**Heightened (+1)** The damage increases by 2d6.",
+      "ru": "В указанной вами точке происходит огненный взрыв, наносящий 6d6 урона огнём.\n\n**Повышенное (+1)** урон увеличивается на 2d6."
     },
     "origin": "spell",
-    "origin_value": "",
+    "origin_value": "arcane,primal",
     "origin_values": [
       "concentrate",
       "fire",
       "manipulate"
     ],
-    "price": {
-      "a": 1
-    },
+    "price": { "a": 2 },
     "info": {
       "level": 3,
-      "targets": "",
-      "range": "",
-      "defense": "",
-      "enhancements": [
-        {
-          "name": {
-            "en": "",
-            "ru": ""
-          },
-          "description": {
-            "en": "",
-            "ru": ""
-          }
-        }
-      ]
+      "range": "500,ft",
+      "defense": "reflex",
+      "area": "burst,20"
     }
   },
   {
@@ -490,35 +315,20 @@
       "ru": "Оружие против призраков"
     },
     "description": {
-      "en": "**Traditions** <u>arcane</u>, <u>occult</u><br>**Deities** Atreia, Falayna, Gravelady's Guard, Minderhal, Pharasma, The Pale Horse, Zjar-Tovan <br>**Mystery** bones<br>**Range** touch; **Targets** 1 weapon that is either unattended or wielded by you or a willing ally<br>**Duration** 5 minutes<hr>The target weapon becomes translucent and ghostly, and it can affect material and incorporeal creatures and objects. It gains the effects of the ghost touch property rune, meaning it is magical if it wasn't already, is especially effective against incorporeal creatures, and can be wielded by a corporeal or incorporeal creature.",
-      "ru": "**Традиции** мистическая, оккультная<br>\n**Божества** Атрейя, Фалайна (кольцо воина), Gravelady's Guard, Миндерхал, Фаразма, Конь бледный, Zjar-Tovan <br>\n**Сотворение** [two-actions] <br>\n**Дистанция** касание; **Цели** 1 оружие (либо бесхозное, либо используемое вами или согласным союзником).\n\n**Длительность** 5 минут.\n\nВыбранное оружие становится полупрозрачным и призрачным и способно действовать как на материальных, так и на бестелесных существ и объекты. Оружие получает эффекты атрибутивной руны призрачного касания (см. «Основную книгу ведущего») и становится магическим, если ещё не было таковым. Оно особенно эффективно против бестелесных. Его может использовать как небестелесное, так и бестелесное существо."
+      "en": "The target weapon becomes translucent and ghostly, and it can affect material and incorporeal creatures and objects. It gains the effects of the ghost touch property rune, meaning it is magical if it wasn't already, is especially effective against incorporeal creatures, and can be wielded by a corporeal or incorporeal creature.",
+      "ru": "Выбранное оружие становится полупрозрачным и призрачным и способно действовать как на материальных, так и на бестелесных существ и объекты. Оружие получает эффекты атрибутивной руны призрачного касания (см. «Основную книгу ведущего») и становится магическим, если ещё не было таковым. Оно особенно эффективно против бестелесных. Его может использовать как небестелесное, так и бестелесное существо."
     },
     "origin": "spell",
-    "origin_value": "",
+    "origin_value": "arcane,occult",
     "origin_values": [
       "concentrate",
       "manipulate"
     ],
-    "price": {
-      "a": 1
-    },
+    "price": { "a": 2 },
     "info": {
       "level": 3,
-      "targets": "",
-      "range": "",
-      "defense": "",
-      "enhancements": [
-        {
-          "name": {
-            "en": "",
-            "ru": ""
-          },
-          "description": {
-            "en": "",
-            "ru": ""
-          }
-        }
-      ]
+      "range": "touch",
+      "duration": "5,m"
     }
   },
   {
@@ -529,35 +339,20 @@
       "ru": "Ускорение"
     },
     "description": {
-      "en": "**Traditions** <u>arcane</u>, <u>occult</u>, <u>primal</u><br>**Bloodlines** Draconic, Imperial <br>**Deities** Aonaurious, Droskar, Irori, Izuyaku, Jaidz, Kurgess, Ragathiel, Rokoga Gin, Shax, Shyka, Skode, Srikalis, Sritaming, and Sribaril, Szuriel, The Divine Dare, Tjasse, Trudd, Uvuko <br>**Range** 30 feet; **Targets** 1 creature<br>**Duration** 1 minute<hr>Magic empowers the target to act faster. It gains the quickened condition and can use the extra action each round for only Strike and Stride actions.<hr>**Heightened (7th)** You can target up to 6 creatures.",
-      "ru": "**Традиции** мистическая, оккультная, первобытная<br>\n**Наследие** драконье, наследие древнего рода<br>\n**Божества** Аонаурий, Дроскар, Ирори, Изуйяку, Jaidz, Кургесс, Рагатиэль, Rokoga Gin, Шакс, Шика, Скади, Шрикалис, Шритаминг и Шрибарил (трёхглавый бог набегов и войны), Зуриэль, The Divine Dare, Тьяссе, Трудд, Uvuko <br>\n**Сотворение** [two-actions] <br>\n**Дистанция** 30 футов; **Цели** 1 существо<br>\n**Длительность** 1 минута.\n\nМагия ускоряет движения цели. Цель получает состояние ускорения и может в каждом раунде тратить дополнительное действие только на Удар или Перемещение.\n\n**Повышенное (7 круг)** вы можете выбрать целями 6 или менее существ."
+      "en": "Magic empowers the target to act faster. It gains the quickened condition and can use the extra action each round for only Strike and Stride actions.\n\n**Heightened (7th)** You can target up to 6 creatures.",
+      "ru": "Магия ускоряет движения цели. Цель получает состояние ускорения и может в каждом раунде тратить дополнительное действие только на Удар или Перемещение.\n\n**Повышенное (7 круг)** вы можете выбрать целями 6 или менее существ."
     },
     "origin": "spell",
-    "origin_value": "",
+    "origin_value": "arcane,occult,primal",
     "origin_values": [
       "concentrate",
       "manipulate"
     ],
-    "price": {
-      "a": 1
-    },
+    "price": { "a": 2 },
     "info": {
       "level": 3,
-      "targets": "",
-      "range": "",
-      "defense": "",
-      "enhancements": [
-        {
-          "name": {
-            "en": "",
-            "ru": ""
-          },
-          "description": {
-            "en": "",
-            "ru": ""
-          }
-        }
-      ]
+      "range": "30,ft",
+      "duration": "1,m"
     }
   },
   {
@@ -568,36 +363,21 @@
       "ru": "Героизм"
     },
     "description": {
-      "en": "**Traditions** <u>divine</u>, <u>occult</u><br>**Bloodline** Aesir<br>**Range** touch; **Targets** 1 creature<br>**Duration** 10 minutes<hr>You unlock the target's inner heroism, granting it a +1 status bonus to attack rolls, Perception checks, saving throws, and skill checks.<hr>**Heightened (6th)** The status bonus increases to +2.\n\n**Heightened (9th)** The status bonus increases to +3.",
-      "ru": "**Традиции** сакральная, оккультная<br>\n**Наследие** Aesir<br>\n**Сотворение** [two-actions] <br>\n**Дистанция** касание; **Цели** 1 существо<br>\n**Длительность** 10 минут.\n\nВы подпитываете героические стремления цели, давая ей бонус состояния +1 к проверкам атак, Внимания, навыков и испытаниям.\n\n**Повышенное (6 круг)** бонус состояния увеличивается до +2. \n<br>\n**Повышенное (9 круг)** бонус состояния увеличивается до +3."
+      "en": "You unlock the target's inner heroism, granting it a +1 status bonus to attack rolls, Perception checks, saving throws, and skill checks.\n\n**Heightened (6th)** The status bonus increases to +2.\n\n**Heightened (9th)** The status bonus increases to +3.",
+      "ru": "Вы подпитываете героические стремления цели, давая ей бонус состояния +1 к проверкам атак, Внимания, навыков и испытаниям.\n\n**Повышенное (6 круг)** бонус состояния увеличивается до +2.\n\n**Повышенное (9 круг)** бонус состояния увеличивается до +3."
     },
     "origin": "spell",
-    "origin_value": "",
+    "origin_value": "divine,occult",
     "origin_values": [
       "concentrate",
       "manipulate",
       "mental"
     ],
-    "price": {
-      "a": 1
-    },
+    "price": { "a": 2 },
     "info": {
       "level": 3,
-      "targets": "",
-      "range": "",
-      "defense": "",
-      "enhancements": [
-        {
-          "name": {
-            "en": "",
-            "ru": ""
-          },
-          "description": {
-            "en": "",
-            "ru": ""
-          }
-        }
-      ]
+      "range": "touch",
+      "duration": "10,m"
     }
   },
   {
@@ -608,11 +388,11 @@
       "ru": "Священный свет"
     },
     "description": {
-      "en": "**Traditions** <u>divine</u>, <u>primal</u><br>**Bloodline** Angelic <br>**Range** 120 feet; **Targets** 1 creature<br>**Defense** AC<hr>You shine a blazing ray of light tinged with holy energy. Make a ranged spell attack. The ray deals 5d6 fire damage. If the target has the unholy trait, you deal an extra 5d6 spirit damage. <br>**Critical Success** The target takes double damage.\n\n**Success** The target takes full damage.\n\n If the light passes through an area of magical darkness or targets a creature affected by magical darkness, <i>holy light</i> attempts to counteract the darkness. If you need to determine whether the light passes through an area of darkness, draw a line between yourself and the spell's target.<hr>**Heightened (+1)** The fire damage increases by 2d6, and the spirit damage against unholy creatures increases by 2d6.",
-      "ru": "**Традиции** сакральная, первобытная<br>\n**Наследие** ангельское<br>\n**Сотворение** [two-actions] <br>\n**Дистанция** 120 футов; **Цели** 1 существо<br>\n**Защита** КБ.\n\nВы выпускаете луч священного света. Совершите дистанционную атаку заклинанием. Луч наносит 5d6 урона огнём. Если у цели дескриптор «нечестивый», вы дополнительно наносите 5d6 урона духом. <br>\n**Критический успех** цель получает двойной урон.\n<br>\n**Успех** цель получает полный урон.\nЕсли луч проходит через область магической тьмы или его цель под действием магической тьмы, заклинание пытается нейтрализовать тьму. Если вы не уверены, проходит ли луч через область, проведите линию между собой и целью заклинания.\n\n**Повышенное (+1)** урон огнём увеличивается на 2d6, урон духом по нечестивым существам увеличивается на 2d6."
+      "en": "You shine a blazing ray of light tinged with holy energy. Make a ranged spell attack. The ray deals 5d6 fire damage. If the target has the unholy trait, you deal an extra 5d6 spirit damage. <br>**Critical Success** The target takes double damage.\n\n**Success** The target takes full damage.\n\n If the light passes through an area of magical darkness or targets a creature affected by magical darkness, **Holy light** attempts to counteract the darkness. If you need to determine whether the light passes through an area of darkness, draw a line between yourself and the spell's target.\n\n**Heightened (+1)** The fire damage increases by 2d6, and the spirit damage against unholy creatures increases by 2d6.",
+      "ru": "Вы выпускаете луч священного света. Совершите дистанционную атаку заклинанием. Луч наносит 5d6 урона огнём. Если у цели дескриптор «нечестивый», вы дополнительно наносите 5d6 урона духом.\n\n**Критический успех** цель получает двойной урон.\n\n**Успех** цель получает полный урон.\nЕсли луч проходит через область магической тьмы или его цель под действием магической тьмы, заклинание пытается нейтрализовать тьму. Если вы не уверены, проходит ли луч через область, проведите линию между собой и целью заклинания.\n\n**Повышенное (+1)** урон огнём увеличивается на 2d6, урон духом по нечестивым существам увеличивается на 2d6."
     },
     "origin": "spell",
-    "origin_value": "",
+    "origin_value": "divine,primal",
     "origin_values": [
       "attack",
       "concentrate",
@@ -621,26 +401,11 @@
       "light",
       "manipulate"
     ],
-    "price": {
-      "a": 1
-    },
+    "price": { "a": 2 },
     "info": {
       "level": 3,
-      "targets": "",
-      "range": "",
-      "defense": "",
-      "enhancements": [
-        {
-          "name": {
-            "en": "",
-            "ru": ""
-          },
-          "description": {
-            "en": "",
-            "ru": ""
-          }
-        }
-      ]
+      "range": "120,ft",
+      "defense": "ac"
     }
   },
   {
@@ -651,34 +416,17 @@
       "ru": "Гиперпознание"
     },
     "description": {
-      "en": "**Traditions** <u>occult</u><br>**Deities** Abraxas, Aroden, Bergelmir, Casandalee, Genzaeri, Geryon, Gruhastha, Nyarlathotep (The Veiled Voice), Pahti Coatl, Pillars of Knowledge, Saloc, Shei, Tolte Coatl, Vale, Zohls <br>**Lesson** Lesson of Memory <br>**Mystery** lore<hr>You rapidly catalog and collate information relevant to your current situation. You can instantly use up to 6 Recall Knowledge actions as part of Casting this Spell. For these actions, you can't use any special abilities, reactions, or free actions that trigger when you Recall Knowledge.",
-      "ru": "**Традиции** оккультная<br>\n**Урок** Lesson of Memory<br>\n**Божества** Абраксас, Ароден, Бергельмир, Касандали, Гензэри, Герион, Грухаста, Ньярлатхотеп (скрытый голос), Пахти коатль, Pillars of Knowledge, Салок, Shei, Тольте коатль, Вейл, Золс <br>\n**Сотворение** [one-action].\n\nВы быстро каталогизируете и собираете сведения касательно текущей ситуации. Вы можете мгновенно применить до 6 действий, чтобы Вспомнить информацию в качестве части Сотворения заклинания. При совершении этих действий вы не можете использовать никакие особые способности, а также ответные или свободные действия, условием для которых служит ваша попытка Вспомнить информацию."
+      "en": "You rapidly catalog and collate information relevant to your current situation. You can instantly use up to 6 Recall Knowledge actions as part of Casting this Spell. For these actions, you can't use any special abilities, reactions, or free actions that trigger when you Recall Knowledge.",
+      "ru": "Вы быстро каталогизируете и собираете сведения касательно текущей ситуации. Вы можете мгновенно применить до 6 действий, чтобы Вспомнить информацию в качестве части Сотворения заклинания. При совершении этих действий вы не можете использовать никакие особые способности, а также ответные или свободные действия, условием для которых служит ваша попытка Вспомнить информацию."
     },
     "origin": "spell",
-    "origin_value": "",
+    "origin_value": "occult",
     "origin_values": [
       "concentrate"
     ],
-    "price": {
-      "a": 1
-    },
+    "price": { "a": 1 },
     "info": {
-      "level": 3,
-      "targets": "",
-      "range": "",
-      "defense": "",
-      "enhancements": [
-        {
-          "name": {
-            "en": "",
-            "ru": ""
-          },
-          "description": {
-            "en": "",
-            "ru": ""
-          }
-        }
-      ]
+      "level": 3
     }
   },
   {
@@ -689,37 +437,25 @@
       "ru": "Гипноз"
     },
     "description": {
-      "en": "**Traditions** <u>arcane</u>, <u>occult</u><br>**Deities** Charg, Lalaci, Mugura and Nrithu, The Pandemonia <br>**Range** 120 feet; **Area** 10-foot burst<br>**Defense** Will; **Duration** sustained up to 1 minute<hr>You create a cloud of mesmerizing patterns and colors that hovers in the air. Creatures are dazzled while inside the cloud. In addition, a creature must attempt a Will saving throw if it is inside the cloud when you cast it, when it enters the cloud, when it ends its turn within the cloud, or if it uses a Seek or Interact action on the cloud. A creature currently fascinated by <i>hypnotize</i> doesn't attempt new saves.\n\n**Success** The target is unaffected.\n\n**Failure** The target is fascinated by the cloud.\n\n**Critical Failure** The target is fascinated by the cloud. While it remains fascinated, it can't use reactions.",
-      "ru": "**Традиции** мистическая, оккультная<br>\n**Божество** Чарг, Лалаци, Мугура и Нриту (божественные танцоры), Пандемония <br>\n**Сотворение** [two-actions] <br>\n**Дистанция** 120 футов; **Область** 10-футовый взрыв<br>\n**Защита** Воля; **Длительность** поддерживаемое до 1 минуты.\n\nВы создаёте в воздухе облако завораживающих узоров и цветов. Существа получают растерянность, пока находятся в области. Кроме того, существо проходит испытание Воли, если оказывается в области, когда вы сотворяете заклинание, перемещается в область или завершает в ней свой ход, а также если использует Поиск или Взаимодействие применительно к облаку. Если существо заворожено заклинанием, оно не проходит новых испытаний. \n<br>\n**Успех** существо избегает эффекта.\n<br>\n**Провал** существо заворожено облаком.\n<br>\n**Критический провал** существо заворожено облаком и не может совершать ответных действий, пока заворожено."
+      "en": "You create a cloud of mesmerizing patterns and colors that hovers in the air. Creatures are dazzled while inside the cloud. In addition, a creature must attempt a Will saving throw if it is inside the cloud when you cast it, when it enters the cloud, when it ends its turn within the cloud, or if it uses a Seek or Interact action on the cloud. A creature currently fascinated by **Hypnotize** doesn't attempt new saves.\n\n**Success** The target is unaffected.\n\n**Failure** The target is fascinated by the cloud.\n\n**Critical Failure** The target is fascinated by the cloud. While it remains fascinated, it can't use reactions.",
+      "ru": "Вы создаёте в воздухе облако завораживающих узоров и цветов. Существа получают растерянность, пока находятся в области. Кроме того, существо проходит испытание Воли, если оказывается в области, когда вы сотворяете заклинание, перемещается в область или завершает в ней свой ход, а также если использует Поиск или Взаимодействие применительно к облаку. Если существо заворожено заклинанием, оно не проходит новых испытаний.\n\n**Успех** существо избегает эффекта.\n\n**Провал** существо заворожено облаком.\n\n**Критический провал** существо заворожено облаком и не может совершать ответных действий, пока заворожено."
     },
     "origin": "spell",
-    "origin_value": "",
+    "origin_value": "arcane,occult",
     "origin_values": [
       "illusion",
       "manipulate",
       "subtle",
       "visual"
     ],
-    "price": {
-      "a": 1
-    },
+    "price": { "a": 2 },
     "info": {
       "level": 3,
-      "targets": "",
-      "range": "",
-      "defense": "",
-      "enhancements": [
-        {
-          "name": {
-            "en": "",
-            "ru": ""
-          },
-          "description": {
-            "en": "",
-            "ru": ""
-          }
-        }
-      ]
+      "range": "120,ft",
+      "defense": "will",
+      "area": "burst,10",
+      "sustained": true,
+      "duration": "1,m"
     }
   },
   {
@@ -730,36 +466,20 @@
       "ru": "Форма насекомого"
     },
     "description": {
-      "en": "**Traditions** <u>arcane</u>, <u>primal</u><br>**Deities** Aakriti, Dammar, Ghlaunder, Kitumu <br>**Lesson** Lesson of Decay <br>**Duration** 1 minute<hr>You envision a simple bug and transform into a Medium animal battle form. When you Cast this Spell, choose a listed battle form. You can decide the specific type of animal (such as such as a ladybug or scarab for beetle), but this has no effect on the form's Size or statistics. While in this form, you gain the animal trait. You can Dismiss this spell.\n\n You gain the following statistics and abilities regardless of which battle form you choose: <ul><li>AC = 18 + your level. Ignore your armor's check penalty and Speed reduction.</li><li>10 temporary Hit Points.</li><li>Low-light vision.</li><li>One or more attacks specific to the battle form you choose, which are the only attacks you can Strike with. You're trained with them. Your attack modifier is +13, and your damage bonus is +2. These attacks are Strength based (for the purpose of the enfeebled condition). If your unarmed attack modifier is higher, you can use it instead.</li><li>Athletics modifier of +13, unless your own is higher.</li></ul> You gain specific abilities based on the form you choose:<ul><li>**Ant** Speed 30 feet, climb 30 feet; **Melee** [one-action]  mandibles, **Damage** 2d6 bludgeoning.</li><li>**Beetle** Speed 25 feet; **Melee** [one-action]  mandibles, **Damage** 2d10 bludgeoning.</li><li>**Centipede** Speed 25 feet, climb 25 feet; darkvision; **Melee** [one-action]  mandibles, **Damage** 1d8 piercing plus 1d4 persistent poison.</li><li>**Mantis** Speed 40 feet; imprecise scent 30 feet; **Melee** [one-action]  foreleg, **Damage** 2d8 piercing.</li><li>**Scorpion** Speed 40 feet; darkvision, imprecise tremorsense 60 feet; **Melee** [one-action]  stinger, **Damage** 1d8 piercing plus 1d4 persistent poison; **Melee** [one-action]  pincer (agile), **Damage** 1d6 bludgeoning.</li><li>**Spider** Speed 25 feet, climb 25 feet; darkvision; **Melee** [one-action]  fangs, **Damage** 1d6 piercing plus 1d4 persistent poison; **Ranged** [one-action]  web (range increment 20 feet), **Damage** immobilizes the target for 1 round or until it Escapes.</li></ul><hr>**Heightened (4th)** Your battle form is Large, and your attacks have 10-foot reach. You instead gain 15 temporary HP, attack modifier +16, damage bonus +6, and Athletics +16.\n\n**Heightened (5th)** Your battle form is Huge, and your attacks have 15-foot reach. You instead gain 20 temporary HP, attack modifier +18, damage bonus +2 and double damage dice (including persistent damage), and Athletics +20.",
-      "ru": "**Традиции** мистическая, первобытная<br>\n**Божества** Aakriti, Даммар, Глаундер, Kitumu <br>\n**Урок** урок разложения <br>\n**Сотворение** [two-actions] <br>\n**Длительность** 1 минута.\n\nПредставив простое насекомое, вы принимаете боевую форму животного среднего размера. Когда вы сотворяете это заклинание, выберите одну из перечисленных далее боевых форм. Вы можете выбрать конкретный вид животного (например, обращаясь жуком, вы можете стать божьей коровкой или скарабеем), но на размер или параметры формы это не повлияет. Пока вы в этой форме, вы Получаете дескриптор «животное». Вы можете использовать Прекращение для этого заклинания.\n\nВне зависимости от принятой формы вы получаете следующие параметры и способности.\n<ul>\n<li> КБ = 18 +ваш уровень. Вы игнорируете штрафы за броню к навыкам и скорости. </li>\n<li> 10 временных ПЗ. </li>\n<li> Сумеречное зрение. </li>\n<li> Одна или несколько атак, зависящих от выбранной формы. Эти атаки считаются для вас изученными, и вы не можете использовать другие атаки. Ваш модификатор атаки +13, бонус урона +2. Атаки зависят от Силы (это важно учитывать, например, для состояния слабости). Если ваш модификатор атаки для безоружных атак выше, вы можете использовать его. </li>\n<li> Модификатор Атлетики +13 (если ваш собственный выше, используйте его). </li>\n</ul>\nКроме этого, вы получаете особые способности в зависимости от выбранной формы:\n<ul>\n<li>**Богомол** скорость 40 футов; нюх (вспомогательный) 30 футов.\n    **В ближнем бою** [one-action]: передние ноги, урон 2d8 (дробящий).</li>\n<li>**Жук** скорость 25 футов. **В ближнем бою** [one-action]: жвалы, урон 2d10    (дробящий).</li>\n<li>**Многоножка** скорость 25 футов, скорость лазания 25 футов; ночное\n    зрение. **В ближнем бою** [one-action]: жвалы, урон 1d8 (колющий) и 1d4 (продолжительный    урон ядом).</li>\n<li>**Муравей** скорость 30 футов, скорость лазания 30 футов. **В ближнем    бою** [one-action]: жвалы, урон 2d6 (дробящий).</li>\n<li>**Паук** скорость 25 футов, скорость лазания 25 футов; ночное зрение.\n    **В ближнем бою** [one-action]: клыки, урон 1d6 (колющий) и 1d4 (продолжительный урон ядом). **Дистанционная** [one-action]: паутина (шаг дистанции 20 футов), урон накладывает на цель неподвижность на один раунд или до тех пор, пока она не освободится.</li>\n<li>**Скорпион** скорость 40 футов; виброчувствительность (вспомогательная)\n    60 футов, ночное зрение. **В ближнем бою** [one-action]: жало, урон 1d8 (колющий) и 1d4 (продолжительный урон ядом). **В ближнем бою** [one-action]: клешни (быстрое), урон 1d6 (дробящий).</li>\n</ul>.\n\n**Повышенное (4 круг)** у боевой формы крупный размер, и ваши атаки обладают зоной досягаемости 10 футов. Вместо описанных преимуществ вы получаете 15 временных ПЗ, модификатор атаки +16, бонус урона +6, модификатор Атлетики +16.\n<br>\n**Повышенное (5 круг)** у боевой формы огромный размер, и ваши атаки обладают зоной досягаемости 15 футов. Вместо описанных преимуществ вы получаете 20 временных ПЗ, модификатор атаки +18, бонус урона +2 и удвоенное количество костей урона (в том числе продолжительного), модификатор Атлетики +20."
+      "en": "You envision a simple bug and transform into a Medium animal battle form. When you Cast this Spell, choose a listed battle form. You can decide the specific type of animal (such as such as a ladybug or scarab for beetle), but this has no effect on the form's Size or statistics. While in this form, you gain the animal trait. You can Dismiss this spell.\n\n You gain the following statistics and abilities regardless of which battle form you choose:\n\n- AC = 18 + your level. Ignore your armor's check penalty and Speed reduction.\n\n- 10 temporary Hit Points.\n\n- Low-light vision.\n\n- One or more attacks specific to the battle form you choose, which are the only attacks you can Strike with. You're trained with them. Your attack modifier is +13, and your damage bonus is +2. These attacks are Strength based (for the purpose of the enfeebled condition). If your unarmed attack modifier is higher, you can use it instead.\n\n- Athletics modifier of +13, unless your own is higher.\n\nYou gain specific abilities based on the form you choose:\n\n- **Ant** Speed 30 feet, climb 30 feet; **Melee** 1A: mandibles, **Damage** 2d6 bludgeoning.\n\n- **Beetle** Speed 25 feet; **Melee** 1A: mandibles, **Damage** 2d10 bludgeoning.\n\n- **Centipede** Speed 25 feet, climb 25 feet; darkvision; **Melee** 1A: mandibles, **Damage** 1d8 piercing plus 1d4 persistent poison.\n\n- **Mantis** Speed 40 feet; imprecise scent 30 feet; **Melee** 1A: foreleg, **Damage** 2d8 piercing.\n\n- **Scorpion** Speed 40 feet; darkvision, imprecise tremorsense 60 feet; **Melee** 1A: stinger, **Damage** 1d8 piercing plus 1d4 persistent poison; **Melee** 1A: pincer (agile), **Damage** 1d6 bludgeoning.\n\n- **Spider** Speed 25 feet, climb 25 feet; darkvision; **Melee** 1A: fangs, **Damage** 1d6 piercing plus 1d4 persistent poison; **Ranged** 1A: web (range increment 20 feet), **Damage** immobilizes the target for 1 round or until it Escapes.\n\n**Heightened (4th)** Your battle form is Large, and your attacks have 10-foot reach. You instead gain 15 temporary HP, attack modifier +16, damage bonus +6, and Athletics +16.\n\n**Heightened (5th)** Your battle form is Huge, and your attacks have 15-foot reach. You instead gain 20 temporary HP, attack modifier +18, damage bonus +2 and double damage dice (including persistent damage), and Athletics +20.",
+      "ru": "Представив простое насекомое, вы принимаете боевую форму животного среднего размера. Когда вы сотворяете это заклинание, выберите одну из перечисленных далее боевых форм. Вы можете выбрать конкретный вид животного (например, обращаясь жуком, вы можете стать божьей коровкой или скарабеем), но на размер или параметры формы это не повлияет. Пока вы в этой форме, вы Получаете дескриптор «животное». Вы можете использовать Прекращение для этого заклинания.\n\nВне зависимости от принятой формы вы получаете следующие параметры и способности.\n\n- КБ = 18 +ваш уровень. Вы игнорируете штрафы за броню к навыкам и скорости.\n\n- 10 временных ПЗ.\n\n- Сумеречное зрение.\n\n- Одна или несколько атак, зависящих от выбранной формы. Эти атаки считаются для вас изученными, и вы не можете использовать другие атаки. Ваш модификатор атаки +13, бонус урона +2. Атаки зависят от Силы (это важно учитывать, например, для состояния слабости). Если ваш модификатор атаки для безоружных атак выше, вы можете использовать его.\n\n- Модификатор Атлетики +13 (если ваш собственный выше, используйте его).\n\nКроме этого, вы получаете особые способности в зависимости от выбранной формы:\n\n- **Богомол** скорость 40 футов; нюх (вспомогательный) 30 футов. **В ближнем бою** 1A: передние ноги, урон 2d8 (дробящий).\n\n- **Жук** скорость 25 футов. **В ближнем бою** 1A: жвалы, урон 2d10 (дробящий).\n\n- **Многоножка** скорость 25 футов, скорость лазания 25 футов; ночное зрение. **В ближнем бою** 1A: жвалы, урон 1d8 (колющий) и 1d4 (продолжительный урон ядом).\n\n- **Муравей** скорость 30 футов, скорость лазания 30 футов. **В ближнем бою** 1A: жвалы, урон 2d6 (дробящий).\n\n- **Паук** скорость 25 футов, скорость лазания 25 футов; ночное зрение. **В ближнем бою** 1A: клыки, урон 1d6 (колющий) и 1d4 (продолжительный урон ядом). **Дистанционная** 1A: паутина (шаг дистанции 20 футов), урон накладывает на цель неподвижность на один раунд или до тех пор, пока она не освободится.\n\n- **Скорпион** скорость 40 футов; виброчувствительность (вспомогательная) 60 футов, ночное зрение. **В ближнем бою** 1A: жало, урон 1d8 (колющий) и 1d4 (продолжительный урон ядом). **В ближнем бою** 1A: клешни (быстрое), урон 1d6 (дробящий).\n\n**Повышенное (4 круг)** у боевой формы крупный размер, и ваши атаки обладают зоной досягаемости 10 футов. Вместо описанных преимуществ вы получаете 15 временных ПЗ, модификатор атаки +16, бонус урона +6, модификатор Атлетики +16.\n\n**Повышенное (5 круг)** у боевой формы огромный размер, и ваши атаки обладают зоной досягаемости 15 футов. Вместо описанных преимуществ вы получаете 20 временных ПЗ, модификатор атаки +18, бонус урона +2 и удвоенное количество костей урона (в том числе продолжительного), модификатор Атлетики +20."
     },
     "origin": "spell",
-    "origin_value": "",
+    "origin_value": "arcane,primal",
     "origin_values": [
       "concentrate",
       "manipulate",
       "polymorph"
     ],
-    "price": {
-      "a": 1
-    },
+    "price": { "a": 2 },
     "info": {
       "level": 3,
-      "targets": "",
-      "range": "",
-      "defense": "",
-      "enhancements": [
-        {
-          "name": {
-            "en": "",
-            "ru": ""
-          },
-          "description": {
-            "en": "",
-            "ru": ""
-          }
-        }
-      ]
+      "duration": "1,m"
     }
   },
   {
@@ -770,35 +490,20 @@
       "ru": "Левитация"
     },
     "description": {
-      "en": "**Traditions** <u>arcane</u>, <u>occult</u><br>**Spell List** <u>elemental</u><br>**Deity** Nethys <br>**Lesson** Lesson of the Flock <br>**Range** touch; **Targets** 1 unattended object or willing creature<br>**Duration** 5 minutes<hr>You defy gravity and levitate the target 5 feet off the ground. You can Sustain the spell to move the target up or down 10 feet. A creature floating in the air from <i>levitate</i> takes a –2 circumstance penalty to attack rolls. A floating creature can spend an Interact action to stabilize itself and negate this penalty for the remainder of its turn. If the target is adjacent to a fixed object or terrain of suitable stability, it can move across the surface by climbing (if the surface is vertical, like a wall) or crawling (if the surface is horizontal, such as a ceiling). The GM determines which surfaces can be climbed or crawled across.",
-      "ru": "**Традиции** мистическая, оккультная<br>\n<!--**Магическая традиция** <u>elemental</u><br>\n -->\n**Божество** Нефис <br>\n**Урок** урок стаи <br>\n**Сотворение** [two-actions] <br>\n**Дистанция** касание; **Цели** 1 бесхозный объект или согласное существо.\n\n**Длительность** 5 минут.\n\nВопреки гравитации вы поднимаете цель на 5 футов над землёй. Вы можете использовать Поддержание заклинания, чтобы поднять или опустить цель на 10 футов. Парящее под действием этого заклинания существо получает ситуативный штраф -2 к проверкам атак, но может потратить Взаимодействие, чтобы уравновесить себя и до конца своего хода отменить этот штраф. Если цель рядом с закреплённым объектом или достаточно надёжной поверхностью, она может перемещаться по ним либо лазанием (если поверхность вертикальная, например стена), либо ползанием (если поверхность горизонтальная, например потолок). Ведущий решает, по каким поверхностям можно лазать или ползти."
+      "en": "You defy gravity and levitate the target 5 feet off the ground. You can Sustain the spell to move the target up or down 10 feet. A creature floating in the air from <i>levitate</i> takes a –2 circumstance penalty to attack rolls. A floating creature can spend an Interact action to stabilize itself and negate this penalty for the remainder of its turn. If the target is adjacent to a fixed object or terrain of suitable stability, it can move across the surface by climbing (if the surface is vertical, like a wall) or crawling (if the surface is horizontal, such as a ceiling). The GM determines which surfaces can be climbed or crawled across.",
+      "ru": "Вопреки гравитации вы поднимаете цель на 5 футов над землёй. Вы можете использовать Поддержание заклинания, чтобы поднять или опустить цель на 10 футов. Парящее под действием этого заклинания существо получает ситуативный штраф -2 к проверкам атак, но может потратить Взаимодействие, чтобы уравновесить себя и до конца своего хода отменить этот штраф. Если цель рядом с закреплённым объектом или достаточно надёжной поверхностью, она может перемещаться по ним либо лазанием (если поверхность вертикальная, например стена), либо ползанием (если поверхность горизонтальная, например потолок). Ведущий решает, по каким поверхностям можно лазать или ползти."
     },
     "origin": "spell",
-    "origin_value": "",
+    "origin_value": "arcane,occult",
     "origin_values": [
       "concentrate",
       "manipulate"
     ],
-    "price": {
-      "a": 1
-    },
+    "price": { "a": 2 },
     "info": {
       "level": 3,
-      "targets": "",
-      "range": "",
-      "defense": "",
-      "enhancements": [
-        {
-          "name": {
-            "en": "",
-            "ru": ""
-          },
-          "description": {
-            "en": "",
-            "ru": ""
-          }
-        }
-      ]
+      "range": "touch",
+      "duration": "5,m"
     }
   },
   {
@@ -809,36 +514,21 @@
       "ru": "Удар молнии"
     },
     "description": {
-      "en": "**Traditions** <u>arcane</u>, <u>primal</u><br>**Deities** Cernunnos, Chamidu, Gozreh, Nalinivati, Rull <br>**Area** 120-foot line<br>**Defense** basic Reflex<hr>A bolt of lightning strikes outward from your hand, dealing 4d12 electricity damage with a basic Reflex save.<hr>**Heightened (+1)** The damage increases by 1d12.",
-      "ru": "**Традиции** мистическая, первобытная<br>\n**Божества** Кернунн, Чамиду, Гозрей, Налинивати (змеиный поцелуй), Рулл Громовержец <br>\n**Сотворение** [two-actions] <br>\n**Область** 120-футовая линия<br>\n**Защита** обычное испытание Реакции.\n\nС вашей ладони срывается молния, нанося 4d12 урона электричеством (обычное испытание Реакции).\n\n**Повышенное (+1)** урон увеличивается на 1d12."
+      "en": "A bolt of lightning strikes outward from your hand, dealing 4d12 electricity damage with a basic Reflex save.\n\n**Heightened (+1)** The damage increases by 1d12.",
+      "ru": "С вашей ладони срывается молния, нанося 4d12 урона электричеством (обычное испытание Реакции).\n\n**Повышенное (+1)** урон увеличивается на 1d12."
     },
     "origin": "spell",
-    "origin_value": "",
+    "origin_value": "arcane,primal",
     "origin_values": [
       "concentrate",
       "electricity",
       "manipulate"
     ],
-    "price": {
-      "a": 1
-    },
+    "price": { "a": 2 },
     "info": {
       "level": 3,
-      "targets": "",
-      "range": "",
-      "defense": "",
-      "enhancements": [
-        {
-          "name": {
-            "en": "",
-            "ru": ""
-          },
-          "description": {
-            "en": "",
-            "ru": ""
-          }
-        }
-      ]
+      "area": "line,120",
+      "defense": "reflex"
     }
   },
   {
@@ -849,37 +539,22 @@
       "ru": "Указатель"
     },
     "description": {
-      "en": "**Traditions** <u>arcane</u>, <u>divine</u>, <u>occult</u><br>**Cast**  10 minutes<br>**Range** 500 feet; **Targets** 1 specific object or type of object<br>**Duration** sustained<hr>You learn the direction to the target (if you picked a specific object, such as “my mother's sword”) or the nearest target (if you picked a type of object, such as “swords”). If the target is a specific object, you must have observed it directly with your own senses. If it's a type of object, you still need to have an accurate mental image of the type of object. If there's lead or running water between you and the target, this spell can't locate the object. This means you might find a type of object farther away if the nearest one is behind lead or running water.<hr>**Heightened (5th)** You can target a specific creature or ancestry instead of an object, but you must have met or seen up close the creature or ancestry you want to target.",
-      "ru": "**Традиции** мистическая, сакральная, оккультная<br>\n**Сотворение**  10 минут<br>\n**Дистанция** 500 футов; **Цели** 1 конкретный объект или тип объекта.\n\n**Длительность** поддерживаемое.\n\nВы узнаёте направление на цель (если вы выбрали конкретный объект, например «меч моей матери») или ближайшую цель (если вы выбрали тип объекта, например «мечи»). Если цель — конкретный объект, вы должны были хотя бы раз сами наблюдать его. Если это тип объекта, у вас должен быть его точный мысленный образ. Если между вами и целью есть преграды в виде проточной воды или свинца, заклинание не может указать на объект. При этом вы можете обнаружить более далёкий объект нужного типа, потому что ближайший отделён от вас проточной водой или свинцом.\n\n**Повышенное (5 круг)** вы можете выбрать целью конкретное существо или народ вместо объекта, но для этого должны были встречать ранее или видеть вблизи это существо или представителя народа."
+      "en": "You learn the direction to the target (if you picked a specific object, such as «my mother's sword») or the nearest target (if you picked a type of object, such as «swords»). If the target is a specific object, you must have observed it directly with your own senses. If it's a type of object, you still need to have an accurate mental image of the type of object. If there's lead or running water between you and the target, this spell can't locate the object. This means you might find a type of object farther away if the nearest one is behind lead or running water.\n\n**Heightened (5th)** You can target a specific creature or ancestry instead of an object, but you must have met or seen up close the creature or ancestry you want to target.",
+      "ru": "Вы узнаёте направление на цель (если вы выбрали конкретный объект, например «меч моей матери») или ближайшую цель (если вы выбрали тип объекта, например «мечи»). Если цель — конкретный объект, вы должны были хотя бы раз сами наблюдать его. Если это тип объекта, у вас должен быть его точный мысленный образ. Если между вами и целью есть преграды в виде проточной воды или свинца, заклинание не может указать на объект. При этом вы можете обнаружить более далёкий объект нужного типа, потому что ближайший отделён от вас проточной водой или свинцом.\n\n**Повышенное (5 круг)** вы можете выбрать целью конкретное существо или народ вместо объекта, но для этого должны были встречать ранее или видеть вблизи это существо или представителя народа."
     },
     "origin": "spell",
-    "origin_value": "",
+    "origin_value": "arcane,divine,occult",
     "origin_values": [
       "uncommon",
       "concentrate",
       "detection",
       "manipulate"
     ],
-    "price": {
-      "a": 1
-    },
     "info": {
       "level": 3,
-      "targets": "",
-      "range": "",
-      "defense": "",
-      "enhancements": [
-        {
-          "name": {
-            "en": "",
-            "ru": ""
-          },
-          "description": {
-            "en": "",
-            "ru": ""
-          }
-        }
-      ]
+      "range": "500,ft",
+      "time": "10,m",
+      "sustained": true
     }
   },
   {
@@ -890,35 +565,22 @@
       "ru": "Дикие обезьяны"
     },
     "description": {
-      "en": "**Traditions** <u>primal</u><br>**Deities** Cong, Lahkgya, Ragdya, Sun Wukong <br>**Lesson** Lesson of Mischief <br>**Range** 30 feet; **Area** 5-foot burst<br>**Duration** sustained up to 1 minute<hr>Magical monkey spirits fill the area as they pile and climb on top of one another. Because the monkeys are magical spirits, they can't be attacked or hurt. Casting calm or a similar effect over the monkeys makes them docile, causing them to cease making mischief for the duration of <i>mad monkeys</i>.\n\n Choose the kind of mischief your monkeys make when you Cast the Spell. They produce the effect listed for that mischief when you Cast the Spell and the first time each round when you Sustain the spell. The first time each round when you Sustain the spell, you can move the area of the monkeys by 5 feet.<ul><li>**Flagrant Burglary** The monkeys try to Steal any one item from one creature in the area. Use your spell DC – 10 as the monkeys' Thievery modifier. Their attempt relies more on distraction than subtlety, so the victim knows what item the monkeys were trying to take and whether it was taken. Getting a stolen item from the monkeys— even for the caster—requires Stealing it from them or Disarming them, using your spell DC. When the spell ends, any stolen items fall to the ground in any square of the spell's area you choose.</li><li>**Raucous Din** The monkeys screech loudly, potentially deafening creatures in the spell's area. Each creature in the spell's area must attempt a Fortitude save.\n\n**Critical Success** The creature is unaffected and is temporarily immune for 10 minutes.\n\n**Success** The creature is unaffected.\n\n**Failure** The creature is deafened for 1 round.\n\n**Critical Failure** The creature is deafened for 1 minute.</li><li>**Tumultuous Gymnastics** The monkeys jump and climb all over creatures in the spell's area, interfering with complex movements. Each creature in the spell's area must attempt a Reflex save.\n\n**Critical Success** The creature is unaffected and is temporarily immune for 10 minutes.\n\n**Success** The creature is unaffected.\n\n**Failure** For 1 round, the creature must succeed at a DC 5 flat check whenever it attempts a manipulate action. If it fails this check, the action is disrupted.\n\n**Critical Failure** As failure, but the monkeys cling to the creature tenaciously, and the effect lasts until the spell ends, even if the creature leaves the spell's area.</li></ul>",
-      "ru": "**Традиции** первобытная<br>\n**Божества** Конг, Лахкгья, Рагдья, Сунь Укун (царь обезьян) <br>\n**Урок** урок об озорстве <br>\n**Сотворение** [two-actions] <br>\n**Дистанция** 30 футов; **Область** 5-футовый взрыв<br>\n**Длительность** поддерживаемое до 1 минуты.\n\nВы заполняете область духами магических обезьян, которые сбиваются в кучу и забираются друг на друга. Обезьяны — магические духи, их нельзя атаковать или нанести им урон. Под действием спокойствия или аналогичного эффекта обезьяны ведут себя смирно и не шалят, пока длится заклинание.\n\nПри сотворении заклинания вы выбираете один из эффектов — он будет применяться при Сотворении заклинания и при первом его Поддержании в каждом раунде. Когда вы впервые в каждом раунде используете Поддержание заклинания, вы можете переместить область заклинания на 5 футов.\n<ul>\n<li> **Наглый грабёж** обезьяны совершают попытку Кражи одного любого предмета у одного из существ в области. Модификатор Воровства обезьян равен вашей СЛ заклинаний 10. Обезьяны не полагаются на скрытность, вместо этого пытаясь отвлечь жертву, поэтому она всегда знает, что именно они пытаются похитить и удалось ли им это сделать. Чтобы отнять у обезьян похищенное, всем (даже заклинателю) нужно прибегнуть к Краже или Разоружению (СЛ равна вашей СЛ заклинаний). Когда заклинание прекращается, украденные предметы падают на землю в любой выбранной вами клетке области. </li>\n<li> **Оглушительный галдёж** обезьяны оглушительно вопят. Существа в области проходят испытание Стойкости.\n<br>\n**Критический успех** существо избегает эффекта и временно невосприимчиво к нему на 10 минут.\n<br>\n**Успех** существо избегает эффекта.\n<br>\n**Провал** существо получает глухоту на 1 раунд.\n<br>\n**Критический провал** существо получает глухоту на 1 минуту. </li>\n<li> **Суматошное лазание** обезьяны беснуются, ползая по существам и перескакивая между ними. Они мешают совершать сложные действия. Существа в области проходят испытание Реакции.\n    <br>\n**Критический успех** существо избегает эффекта и временно невосприимчиво к нему на 10 минут.\n    <br>\n**Успех** существо избегает эффекта.\n    <br>\n**Провал** в течение 1 раунда существо должно проходить чистую проверку со СЛ 5, когда пытается совершить действие с дескриптором «манипуляция»; при провале действие срывается.\n    <br>\n**Критический провал** аналогичен провалу, но обезьяны цепко держатся за существо и эффект сохраняется, пока длится заклинание, даже если существо покинет его область.</li>\n</ul>"
+      "en": "Magical monkey spirits fill the area as they pile and climb on top of one another. Because the monkeys are magical spirits, they can't be attacked or hurt. Casting calm or a similar effect over the monkeys makes them docile, causing them to cease making mischief for the duration of **Mad monkeys**.\n\nChoose the kind of mischief your monkeys make when you Cast the Spell. They produce the effect listed for that mischief when you Cast the Spell and the first time each round when you Sustain the spell. The first time each round when you Sustain the spell, you can move the area of the monkeys by 5 feet.\n\n- **Flagrant Burglary** The monkeys try to Steal any one item from one creature in the area. Use your spell DC – 10 as the monkeys' Thievery modifier. Their attempt relies more on distraction than subtlety, so the victim knows what item the monkeys were trying to take and whether it was taken. Getting a stolen item from the monkeys— even for the caster—requires Stealing it from them or Disarming them, using your spell DC. When the spell ends, any stolen items fall to the ground in any square of the spell's area you choose.\n\n- **Raucous Din** The monkeys screech loudly, potentially deafening creatures in the spell's area. Each creature in the spell's area must attempt a Fortitude save.\n\n**Critical Success** The creature is unaffected and is temporarily immune for 10 minutes.\n\n**Success** The creature is unaffected.\n\n**Failure** The creature is deafened for 1 round.\n\n**Critical Failure** The creature is deafened for 1 minute.\n\n- **Tumultuous Gymnastics** The monkeys jump and climb all over creatures in the spell's area, interfering with complex movements. Each creature in the spell's area must attempt a Reflex save.\n\n**Critical Success** The creature is unaffected and is temporarily immune for 10 minutes.\n\n**Success** The creature is unaffected.\n\n**Failure** For 1 round, the creature must succeed at a DC 5 flat check whenever it attempts a manipulate action. If it fails this check, the action is disrupted.\n\n**Critical Failure** As failure, but the monkeys cling to the creature tenaciously, and the effect lasts until the spell ends, even if the creature leaves the spell's area.",
+      "ru": "Вы заполняете область духами магических обезьян, которые сбиваются в кучу и забираются друг на друга. Обезьяны — магические духи, их нельзя атаковать или нанести им урон. Под действием спокойствия или аналогичного эффекта обезьяны ведут себя смирно и не шалят, пока длится заклинание.\n\nПри сотворении заклинания вы выбираете один из эффектов — он будет применяться при Сотворении заклинания и при первом его Поддержании в каждом раунде. Когда вы впервые в каждом раунде используете Поддержание заклинания, вы можете переместить область заклинания на 5 футов.\n\n- **Наглый грабёж** обезьяны совершают попытку Кражи одного любого предмета у одного из существ в области. Модификатор Воровства обезьян равен вашей СЛ заклинаний 10. Обезьяны не полагаются на скрытность, вместо этого пытаясь отвлечь жертву, поэтому она всегда знает, что именно они пытаются похитить и удалось ли им это сделать. Чтобы отнять у обезьян похищенное, всем (даже заклинателю) нужно прибегнуть к Краже или Разоружению (СЛ равна вашей СЛ заклинаний). Когда заклинание прекращается, украденные предметы падают на землю в любой выбранной вами клетке области.\n\n- **Оглушительный галдёж** обезьяны оглушительно вопят. Существа в области проходят испытание Стойкости.\n\n**Критический успех** существо избегает эффекта и временно невосприимчиво к нему на 10 минут.\n\n**Успех** существо избегает эффекта.\n\n**Провал** существо получает глухоту на 1 раунд.\n\n**Критический провал** существо получает глухоту на 1 минуту.\n\n- **Суматошное лазание** обезьяны беснуются, ползая по существам и перескакивая между ними. Они мешают совершать сложные действия. Существа в области проходят испытание Реакции.\n\n**Критический успех** существо избегает эффекта и временно невосприимчиво к нему на 10 минут.\n\n**Успех** существо избегает эффекта.\n\n**Провал** в течение 1 раунда существо должно проходить чистую проверку со СЛ 5, когда пытается совершить действие с дескриптором «манипуляция»; при провале действие срывается.\n\n**Критический провал** аналогичен провалу, но обезьяны цепко держатся за существо и эффект сохраняется, пока длится заклинание, даже если существо покинет его область."
     },
     "origin": "spell",
-    "origin_value": "",
+    "origin_value": "primal",
     "origin_values": [
       "concentrate",
       "manipulate"
     ],
-    "price": {
-      "a": 1
-    },
+    "price": { "a": 2 },
     "info": {
       "level": 3,
-      "targets": "",
-      "range": "",
-      "defense": "",
-      "enhancements": [
-        {
-          "name": {
-            "en": "",
-            "ru": ""
-          },
-          "description": {
-            "en": "",
-            "ru": ""
-          }
-        }
-      ]
+      "range": "30,ft",
+      "area": "burst,5",
+      "sustained": true,
+      "duration": "1,m"
     }
   },
   {
@@ -929,11 +591,11 @@
       "ru": "Чтение мыслей"
     },
     "description": {
-      "en": "**Traditions** <u>arcane</u>, <u>occult</u><br>**Deities** Enkaar, Eyes That Watch, Grasping Iovett, Husk, Razmir, Reshmit of the Heavy Voice <br>**Range** 30 feet; **Targets** 1 creature<br>**Defense** Will; **Duration** 1 round or sustained up to 1 minute<hr>With a cursory mental touch, you attempt to read the target's mind. It must attempt a Will save. The target then becomes temporarily immune to your <i>mind reading</i> for 1 hour.\n\n**Critical Success** The target perceives vague surface thoughts from you when you Cast the Spell.\n\n**Success** You find out whether the target's Intelligence modifier is higher than, equal to, or lower than yours.\n\n**Failure** You perceive vague surface thoughts from the target when you Cast the Spell, and you find out whether its Intelligence is higher than, equal to, or lower than yours.\n\n**Critical Failure** As failure, and for the duration of the spell, you can Sustain the spell to detect the target's surface thoughts again. The target doesn't receive any additional saves.",
-      "ru": "**Традиции** мистическая, оккультная<br>\n**Божество** Enkaar, Eyes That Watch, Grasping Iovett, Husk, Размир, Reshmit Of The Heavy Voice<br>\n**Сотворение** [two-actions] <br>\n**Дистанция** 30 футов; **Цели** 1 существо<br>\n**Защита** Воля; **Длительность** 1 раунд или поддерживаемое до 1 минуты.\n\nВы легко касаетесь разума цели в попытке прочесть её мысли. Цель проходит испытание Воли, после чего становится временно невосприимчива к вашему чтению мыслей на 1 час. \n<br>\n**Критический успех** цель воспринимает ваши размытые поверхностные мысли при вашем Сотворении заклинания.\n<br>\n**Успех** вы узнаёте, равен ли модификатор Интеллекта цели вашему, больше ли он или меньше.\n<br>\n**Провал** вы воспринимаете размытые поверхностные мысли цели при Сотворении заклинания и узнаёте, равен ли модификатор Интеллекта цели вашему, больше ли он или меньше.\n<br>\n**Критический провал** аналогичен провалу, также в течение длительности заклинания вы можете использовать Поддержание заклинания, чтобы снова прочитать поверхностные мысли цели. Цель не проходит дополнительных испытаний."
+      "en": "**Duration** 1 round or sustained up to 1 minute.\n\nWith a cursory mental touch, you attempt to read the target's mind. It must attempt a Will save. The target then becomes temporarily immune to your **Mind reading** for 1 hour.\n\n**Critical Success** The target perceives vague surface thoughts from you when you Cast the Spell.\n\n**Success** You find out whether the target's Intelligence modifier is higher than, equal to, or lower than yours.\n\n**Failure** You perceive vague surface thoughts from the target when you Cast the Spell, and you find out whether its Intelligence is higher than, equal to, or lower than yours.\n\n**Critical Failure** As failure, and for the duration of the spell, you can Sustain the spell to detect the target's surface thoughts again. The target doesn't receive any additional saves.",
+      "ru": "**Длительность** 1 раунд или поддерживаемое до 1 минуты.\n\nВы легко касаетесь разума цели в попытке прочесть её мысли. Цель проходит испытание Воли, после чего становится временно невосприимчива к вашему чтению мыслей на 1 час.\n\n**Критический успех** цель воспринимает ваши размытые поверхностные мысли при вашем Сотворении заклинания.\n\n**Успех** вы узнаёте, равен ли модификатор Интеллекта цели вашему, больше ли он или меньше.\n\n**Провал** вы воспринимаете размытые поверхностные мысли цели при Сотворении заклинания и узнаёте, равен ли модификатор Интеллекта цели вашему, больше ли он или меньше.\n\n**Критический провал** аналогичен провалу, также в течение длительности заклинания вы можете использовать Поддержание заклинания, чтобы снова прочитать поверхностные мысли цели. Цель не проходит дополнительных испытаний."
     },
     "origin": "spell",
-    "origin_value": "",
+    "origin_value": "arcane,occult",
     "origin_values": [
       "uncommon",
       "concentrate",
@@ -941,26 +603,11 @@
       "manipulate",
       "mental"
     ],
-    "price": {
-      "a": 1
-    },
+    "price": { "a": 2 },
     "info": {
       "level": 3,
-      "targets": "",
-      "range": "",
-      "defense": "",
-      "enhancements": [
-        {
-          "name": {
-            "en": "",
-            "ru": ""
-          },
-          "description": {
-            "en": "",
-            "ru": ""
-          }
-        }
-      ]
+      "range": "30,ft",
+      "defense": "will"
     }
   },
   {
@@ -971,37 +618,20 @@
       "ru": "Слияние с камнем"
     },
     "description": {
-      "en": "**Traditions** <u>arcane</u>, <u>primal</u><br>**Deities** Granduncle Taproot, Onos, Rhan-Tegoth, Soralyon, Yuelral <br>**Duration** 10 minutes or 8 hours<hr>You can either transform into a stone or merge with stone. This spell has the same effects as one with plants, but lets you merge with or turn into stone. A stone you turn into has AC 23. You can Dismiss this spell.",
-      "ru": "**Традиции** мистическая, первобытная<br>\n**Божества** Granduncle Taproot, Онос, Rhan-Tegoth, Соралион, Юэлрал <br>\n**Сотворение** [two-actions] <br>\n**Длительность** 10 минут или 8 часов.\n\nВы можете превратиться в камень или слиться с камнем. Эффект аналогичен слиянию с растениями, но позволяет слиться с камнем или превратиться в него. В форме камня у вас КБ 23. Вы можете использовать Прекращение для этого заклинания."
+      "en": "**Duration** 10 minutes or 8 hours.\n\nYou can either transform into a stone or merge with stone. This spell has the same effects as one with plants, but lets you merge with or turn into stone. A stone you turn into has AC 23. You can Dismiss this spell.",
+      "ru": "**Длительность** 10 минут или 8 часов.\n\nВы можете превратиться в камень или слиться с камнем. Эффект аналогичен слиянию с растениями, но позволяет слиться с камнем или превратиться в него. В форме камня у вас КБ 23. Вы можете использовать Прекращение для этого заклинания."
     },
     "origin": "spell",
-    "origin_value": "",
+    "origin_value": "arcane,primal",
     "origin_values": [
       "concentrate",
       "earth",
       "manipulate",
       "polymorph"
     ],
-    "price": {
-      "a": 1
-    },
+    "price": { "a": 2 },
     "info": {
-      "level": 3,
-      "targets": "",
-      "range": "",
-      "defense": "",
-      "enhancements": [
-        {
-          "name": {
-            "en": "",
-            "ru": ""
-          },
-          "description": {
-            "en": "",
-            "ru": ""
-          }
-        }
-      ]
+      "level": 3
     }
   },
   {
@@ -1012,37 +642,22 @@
       "ru": "Паралич"
     },
     "description": {
-      "en": "**Traditions** <u>arcane</u>, <u>occult</u><br>**Deities** Barbatos, Chamiaholom, Dammerich, Kabriri, Kalekot, Selket <br>**Range** 30 feet; **Targets** 1 creature<br>**Defense** Will; **Duration** varies<hr>You block the target's motor impulses before they can leave its mind, freezing target in place. The target must attempt a Will save.\n\n**Critical Success** The target is unaffected.\n\n**Success** The target is stunned 1.\n\n**Failure** The target is paralyzed for 1 round.\n\n**Critical Failure** The target is paralyzed for 4 rounds. At the end of each of its turns, it can attempt a new Will save to reduce the remaining duration by 1 round, or end it entirely on a critical success.<hr>**Heightened (7th)** You can target up to 10 creatures.",
-      "ru": "**Традиции** мистическая, оккультная<br>\n**Божества** Барбатос, Чамиахолом, Dammerich, Кабрири, Kalekot, Selket <br>\n**Сотворение** [two-actions] <br>\n**Дистанция** 30 футов; **Цели** 1 существо<br>\n**Защита** Воля; **Длительность** варьируется.\n\nВы блокируете двигательные импульсы цели, не давая им покидать разум, из-за чего она может застыть на месте. Цель проходит испытание Воли.\n<br>\n**Критический успех** цель избегает эффекта.\n<br>\n**Успех** цель получает шок 1.\n<br>\n**Провал** цель парализована на 1 раунд.\n<br>\n**Критический провал** цель парализована на 4 раунда. В конце каждого своего хода она может пройти испытание Воли повторно, чтобы при успехе снизить оставшуюся длительность на 1 раунд, а при критическом успехе прекратить эффект.\n\n**Повышенное (7 круг)** вы можете выбрать целями 10 или менее существ."
+      "en": "You block the target's motor impulses before they can leave its mind, freezing target in place. The target must attempt a Will save.\n\n**Critical Success** The target is unaffected.\n\n**Success** The target is stunned 1.\n\n**Failure** The target is paralyzed for 1 round.\n\n**Critical Failure** The target is paralyzed for 4 rounds. At the end of each of its turns, it can attempt a new Will save to reduce the remaining duration by 1 round, or end it entirely on a critical success.\n\n**Heightened (7th)** You can target up to 10 creatures.",
+      "ru": "Вы блокируете двигательные импульсы цели, не давая им покидать разум, из-за чего она может застыть на месте. Цель проходит испытание Воли.\n\n**Критический успех** цель избегает эффекта.\n\n**Успех** цель получает шок 1.\n\n**Провал** цель парализована на 1 раунд.\n\n**Критический провал** цель парализована на 4 раунда. В конце каждого своего хода она может пройти испытание Воли повторно, чтобы при успехе снизить оставшуюся длительность на 1 раунд, а при критическом успехе прекратить эффект.\n\n**Повышенное (7 круг)** вы можете выбрать целями 10 или менее существ."
     },
     "origin": "spell",
-    "origin_value": "",
+    "origin_value": "arcane,occult",
     "origin_values": [
       "concentrate",
       "incapacitation",
       "manipulate",
       "mental"
     ],
-    "price": {
-      "a": 1
-    },
+    "price": { "a": 2 },
     "info": {
       "level": 3,
-      "targets": "",
-      "range": "",
-      "defense": "",
-      "enhancements": [
-        {
-          "name": {
-            "en": "",
-            "ru": ""
-          },
-          "description": {
-            "en": "",
-            "ru": ""
-          }
-        }
-      ]
+      "range": "30,ft",
+      "defense": "will"
     }
   },
   {
@@ -1053,11 +668,11 @@
       "ru": "Кольцо истины"
     },
     "description": {
-      "en": "**Traditions** <u>divine</u>, <u>occult</u><br>**Lesson** Lesson of Vows <br>**Cast** <br>**Range** 30 feet; **Area** 20-foot burst<br>**Defense** Will; **Duration** 10 minutes<hr>You designate an area in which lies are revealed. Creatures in the area also take a –2 status penalty to Deception checks. Each time a creature in the area speaks a true statement, the soft ring of a bell sounds in the area. Creatures are aware of the magic; therefore, they can avoid answering questions to which they would normally respond with a lie, or they can be evasive as long as they remain within the boundaries of the truth. If a creature is in the area when the spell is cast or later enters the area, that creature attempts a Will save. It uses the results of this initial save if it leaves and reenters the area.\n\n**Critical Success** The target is so convincing that the bell rings even if they lie.\n\n**Success** If the target lies and succeeds at their Deception check against all targets, the bell still rings.\n\n**Failure** The bell accurately sees through their deception and will never ring if they lie.",
-      "ru": "**Традиции** сакральная, оккультная<br>\n**Урок** Lesson of Vows<br>\n**Сотворение**  10 минут<br>\n**Дистанция** 30 футов; **Область** 20-футовый взрыв<br>\n**Защита** Воля; **Длительность** 10 минут.\n\nВы выбираете область, в которой ложь становится явной. Существа в области также получают штраф состояния -2 к проверкам Обмана. Когда существо в области произносит правдивое высказывание, там звучит тихий звон колокольчика. Существа знают о заклинании, поэтому могут отказаться отвечать на вопросы, на которые предпочли бы солгать, или увиливать от ответа, говоря неполную правду. Если существо находится в области при сотворении заклинания или входит в неё, оно должно пройти испытание Воли. Если существо покинуло область и вернулось, оно использует результат начального испытания.\n<br>\n**Критический успех** цель настолько убедительна, что колокольчик звенит, даже если она лжёт.\n<br>\n**Успех** если цель лжёт и успешно проходит проверку Обмана против всех целей, колокольчик всё ещё звенит.\n<br>\n**Провал** ложь цели ощутима, и когда она лжёт, колокольчик не звенит."
+      "en": "You designate an area in which lies are revealed. Creatures in the area also take a –2 status penalty to Deception checks. Each time a creature in the area speaks a true statement, the soft ring of a bell sounds in the area. Creatures are aware of the magic; therefore, they can avoid answering questions to which they would normally respond with a lie, or they can be evasive as long as they remain within the boundaries of the truth. If a creature is in the area when the spell is cast or later enters the area, that creature attempts a Will save. It uses the results of this initial save if it leaves and reenters the area.\n\n**Critical Success** The target is so convincing that the bell rings even if they lie.\n\n**Success** If the target lies and succeeds at their Deception check against all targets, the bell still rings.\n\n**Failure** The bell accurately sees through their deception and will never ring if they lie.",
+      "ru": "Вы выбираете область, в которой ложь становится явной. Существа в области также получают штраф состояния -2 к проверкам Обмана. Когда существо в области произносит правдивое высказывание, там звучит тихий звон колокольчика. Существа знают о заклинании, поэтому могут отказаться отвечать на вопросы, на которые предпочли бы солгать, или увиливать от ответа, говоря неполную правду. Если существо находится в области при сотворении заклинания или входит в неё, оно должно пройти испытание Воли. Если существо покинуло область и вернулось, оно использует результат начального испытания.\n\n**Критический успех** цель настолько убедительна, что колокольчик звенит, даже если она лжёт.\n\n**Успех** если цель лжёт и успешно проходит проверку Обмана против всех целей, колокольчик всё ещё звенит.\n\n**Провал** ложь цели ощутима, и когда она лжёт, колокольчик не звенит."
     },
     "origin": "spell",
-    "origin_value": "",
+    "origin_value": "divine,occult",
     "origin_values": [
       "uncommon",
       "concentrate",
@@ -1065,26 +680,13 @@
       "manipulate",
       "mental"
     ],
-    "price": {
-      "a": 1
-    },
     "info": {
       "level": 3,
-      "targets": "",
-      "range": "",
-      "defense": "",
-      "enhancements": [
-        {
-          "name": {
-            "en": "",
-            "ru": ""
-          },
-          "description": {
-            "en": "",
-            "ru": ""
-          }
-        }
-      ]
+      "range": "30,ft",
+      "time": "10,m",
+      "defense": "will",
+      "area": "burst,20",
+      "duration": "10,m"
     }
   },
   {
@@ -1095,35 +697,21 @@
       "ru": "Безопасный проход"
     },
     "description": {
-      "en": "**Traditions** <u>arcane</u>, <u>divine</u>, <u>primal</u><br>**Spell List** <u>elemental</u><br>**Range** touch; **Area** 10-foot-wide, 10-foot-tall 60-foot-long section of terrain<br>**Duration** sustained up to 1 minute<hr>You make passage through the area safe for a brief amount of time. Anyone passing through the area gains the following benefits against harmful effects of the terrain and environment, including environmental damage, hazardous terrain, and hazards in the area. The spell grants a +2 status bonus to AC and saves against such effects, and resistance 5 to all damage from such effects. Furthermore, the spell prevents anything in the area that's prone to collapse, such as a rickety bridge or an unstable ceiling, from collapsing, except under extreme strain that would collapse a normal structure of its type.\n\n <i>Safe passage</i> protects only against harm, not inconvenience, and it doesn't reduce difficult terrain, remove the concealed condition caused by precipitation, or the like, nor does it protect against creatures within the spell's area.<hr>**Heightened (5th)** The granted resistance increases to 10, and the area can be 120 feet long.\n\n**Heightened (8th)** The granted resistance increases to 15, and the area can be 500 feet long.",
-      "ru": "**Традиции** мистическая, сакральная, оккультная<br>\n<!--**Магическая традиция** <u>elemental</u><br>\n -->\n**Сотворение** [three-actions] <br>\n**Дистанция** касание; **Область** участок местности 10 футов в ширину, 10 футов в высоту и 60 футов в длину<br>\n**Длительность** поддерживаемое до 1 минуты.\n\nВы на короткое время делаете область безопасной для перемещения. Все проходящие через область получают следующие преимущества против вредоносных эффектов местности и окружения, в том числе против урона от окружающей среды, опасной местности и опасностей в области: бонус состояния +2 к КБ и испытаниям против подобных эффектов и устойчивость 5 ко всему урону от них. Более того, заклинание удерживает все ненадёжные строения (вроде шатких мостов или осыпающихся потолков) от обрушения, за исключением случаев, когда действующая на них чрезмерная нагрузка могла бы обвалить обычное строение этого же типа.\n\nЗаклинание уберегает только от вреда, не добавляя удобства, и потому не влияет на пересечённую местность, плохую видимость от осадков и подобных явлений и никак не защищает от существ в области.\n\n**Повышенное (5 круг)** устойчивость 10, длина участка до 120 футов. \n<br>\n**Повышенное (8 круг)** устойчивость 15, длина участка до 500 футов."
+      "en": "**Area** 10-foot-wide, 10-foot-tall 60-foot-long section of terrain.\n\nYou make passage through the area safe for a brief amount of time. Anyone passing through the area gains the following benefits against harmful effects of the terrain and environment, including environmental damage, hazardous terrain, and hazards in the area. The spell grants a +2 status bonus to AC and saves against such effects, and resistance 5 to all damage from such effects. Furthermore, the spell prevents anything in the area that's prone to collapse, such as a rickety bridge or an unstable ceiling, from collapsing, except under extreme strain that would collapse a normal structure of its type.\n\n**Safe passage** protects only against harm, not inconvenience, and it doesn't reduce difficult terrain, remove the concealed condition caused by precipitation, or the like, nor does it protect against creatures within the spell's area.\n\n**Heightened (5th)** The granted resistance increases to 10, and the area can be 120 feet long.\n\n**Heightened (8th)** The granted resistance increases to 15, and the area can be 500 feet long.",
+      "ru": "**Область** участок местности 10 футов в ширину, 10 футов в высоту и 60 футов в длину.\n\nВы на короткое время делаете область безопасной для перемещения. Все проходящие через область получают следующие преимущества против вредоносных эффектов местности и окружения, в том числе против урона от окружающей среды, опасной местности и опасностей в области: бонус состояния +2 к КБ и испытаниям против подобных эффектов и устойчивость 5 ко всему урону от них. Более того, заклинание удерживает все ненадёжные строения (вроде шатких мостов или осыпающихся потолков) от обрушения, за исключением случаев, когда действующая на них чрезмерная нагрузка могла бы обвалить обычное строение этого же типа.\n\nЗаклинание уберегает только от вреда, не добавляя удобства, и потому не влияет на пересечённую местность, плохую видимость от осадков и подобных явлений и никак не защищает от существ в области.\n\n**Повышенное (5 круг)** устойчивость 10, длина участка до 120 футов.\n\n**Повышенное (8 круг)** устойчивость 15, длина участка до 500 футов."
     },
     "origin": "spell",
-    "origin_value": "",
+    "origin_value": "arcane,divine,primal",
     "origin_values": [
       "concentrate",
       "manipulate"
     ],
-    "price": {
-      "a": 1
-    },
+    "price": { "a": 3 },
     "info": {
       "level": 3,
-      "targets": "",
-      "range": "",
-      "defense": "",
-      "enhancements": [
-        {
-          "name": {
-            "en": "",
-            "ru": ""
-          },
-          "description": {
-            "en": "",
-            "ru": ""
-          }
-        }
-      ]
+      "range": "touch",
+      "sustained": true,
+      "duration": "1,m"
     }
   },
   {
@@ -1134,35 +722,20 @@
       "ru": "Замедление"
     },
     "description": {
-      "en": "**Traditions** <u>arcane</u>, <u>occult</u>, <u>primal</u><br>**Bloodline** Demonic <br>**Deities** Embaral, Korada, Lorthact, Matravash, Sithhud, Thalaphyrr <br>**Range** 30 feet; **Targets** 1 creature<br>**Defense** Fortitude; **Duration** varies<hr>You dilate the flow of time around the target, slowing its actions.\n\n**Critical Success** The target is unaffected.\n\n**Success** The target is slowed 1 for 1 round.\n\n**Failure** The target is slowed 1 for 1 minute.\n\n**Critical Failure** The target is slowed 2 for 1 minute.<hr>**Heightened (6th)** You can target up to 10 creatures.",
-      "ru": "**Традиции** мистическая, оккультная, первобытная<br>\n**Наследие** демоническое<br>\n**Божества** Эмбарал, Корада, Лортакт, Матраваш, Ситххуд, Thalaphyrr <br>\n**Сотворение** [two-actions] <br>\n**Дистанция** 30 футов; **Цели** 1 существо<br>\n**Защита** Стойкость; **Длительность** варьируется.\n\nВы искажаете течение времени вокруг цели, замедляя её.\n<br>\n**Критический успех** цель избегает эффекта.\n<br>\n**Успех** цель получает замедление 1 на 1 раунд.\n<br>\n**Провал** цель получает замедление 1 на 1 минуту.\n<br>\n**Критический провал** цель получает замедление 2 на 1 минуту.\n\n**Повышенное (6 круг)** вы можете выбрать целями 10 или менее существ."
+      "en": "You dilate the flow of time around the target, slowing its actions.\n\n**Critical Success** The target is unaffected.\n\n**Success** The target is slowed 1 for 1 round.\n\n**Failure** The target is slowed 1 for 1 minute.\n\n**Critical Failure** The target is slowed 2 for 1 minute.\n\n**Heightened (6th)** You can target up to 10 creatures.",
+      "ru": "Вы искажаете течение времени вокруг цели, замедляя её.\n\n**Критический успех** цель избегает эффекта.\n\n**Успех** цель получает замедление 1 на 1 раунд.\n\n**Провал** цель получает замедление 1 на 1 минуту.\n\n**Критический провал** цель получает замедление 2 на 1 минуту.\n\n**Повышенное (6 круг)** вы можете выбрать целями 10 или менее существ."
     },
     "origin": "spell",
-    "origin_value": "",
+    "origin_value": "arcane,occult,primal",
     "origin_values": [
       "concentrate",
       "manipulate"
     ],
-    "price": {
-      "a": 1
-    },
+    "price": { "a": 2 },
     "info": {
       "level": 3,
-      "targets": "",
-      "range": "",
-      "defense": "",
-      "enhancements": [
-        {
-          "name": {
-            "en": "",
-            "ru": ""
-          },
-          "description": {
-            "en": "",
-            "ru": ""
-          }
-        }
-      ]
+      "range": "30,ft",
+      "defense": "fortitude"
     }
   },
   {
@@ -1173,37 +746,21 @@
       "ru": "Разговор с растениями"
     },
     "description": {
-      "en": "**Traditions** <u>divine</u>, <u>occult</u>, <u>primal</u><br>**Deities** Hearth and Harvest <br>**Duration** 1 hour<hr>You can ask questions of and receive answers from plants and fungi, but the spell doesn't make them more friendly or intelligent than normal. Most normal plants and fungi have a distinctive view of the world around them, so they don't recognize details about creatures or know anything about the world beyond their immediate vicinity. Cunning plant or fungus monsters are likely to be terse and evasive, while less intelligent ones often make inane comments.<hr>**Heightened (4th)** The duration is 8 hours.",
-      "ru": "**Традиции** сакральная, оккультная, первобытная<br>\n**Божества** Hearth and Harvest <br>\n**Сотворение** [two-actions] <br>\n**Длительность** 1 час.\n\nВы можете задавать растениям и грибам вопросы и получать ответы, но заклинание не делает их более разумными или дружелюбными. У большинства обычных растений и грибов особый взгляд на окружающий мир, они обычно не знают подробностей о существах и о мире за пределами ближайшего окружения. Осторожные существа-растения и существа-грибы могут быть неразговорчивы или уклончивы, а недалёкие часто несут всякую чепуху.\n\n**Повышенное (4 круг)** длительность заклинания — 8 часов."
+      "en": "You can ask questions of and receive answers from plants and fungi, but the spell doesn't make them more friendly or intelligent than normal. Most normal plants and fungi have a distinctive view of the world around them, so they don't recognize details about creatures or know anything about the world beyond their immediate vicinity. Cunning plant or fungus monsters are likely to be terse and evasive, while less intelligent ones often make inane comments.\n\n**Heightened (4th)** The duration is 8 hours.",
+      "ru": "Вы можете задавать растениям и грибам вопросы и получать ответы, но заклинание не делает их более разумными или дружелюбными. У большинства обычных растений и грибов особый взгляд на окружающий мир, они обычно не знают подробностей о существах и о мире за пределами ближайшего окружения. Осторожные существа-растения и существа-грибы могут быть неразговорчивы или уклончивы, а недалёкие часто несут всякую чепуху.\n\n**Повышенное (4 круг)** длительность заклинания — 8 часов."
     },
     "origin": "spell",
-    "origin_value": "",
+    "origin_value": "divine,occult,primal",
     "origin_values": [
       "concentrate",
       "manipulate",
       "plant",
       "wood"
     ],
-    "price": {
-      "a": 1
-    },
+    "price": { "a": 2 },
     "info": {
       "level": 3,
-      "targets": "",
-      "range": "",
-      "defense": "",
-      "enhancements": [
-        {
-          "name": {
-            "en": "",
-            "ru": ""
-          },
-          "description": {
-            "en": "",
-            "ru": ""
-          }
-        }
-      ]
+      "duration": "1,h"
     }
   },
   {
@@ -1214,37 +771,22 @@
       "ru": "Касание вампира"
     },
     "description": {
-      "en": "**Traditions** <u>arcane</u>, <u>divine</u>, <u>occult</u><br>**Bloodline** Aberrant <br>**Catalysts** Unsullied Blood<br>**Range** touch; **Targets** 1 living creature<br>**Defense** basic Fortitude<hr>Your touch leeches the lifeblood out of a target to empower yourself. You deal 6d6 void damage to the target. You gain temporary Hit Points equal to half the void damage the target takes (after applying resistances and the like). You lose any remaining temporary Hit Points after 1 minute.<hr>**Heightened (+1)** The damage increases by 2d6.",
-      "ru": "**Традиции** мистическая, сакральная, оккультная<br>\n**Наследие** противоестественное<br>\n**Сотворение** [two-actions] <br>\n**Дистанция** касание; **Цели** 1 живое существо<br>\n**Защита** обычное испытание Стойкости.\n\nВаше прикосновение вытягивает жизненную энергию цели и передаёт её вам. Вы наносите цели 6d6 урона пустотой и получаете временные ПЗ в количестве половины полученного целью урона пустотой (после применения устойчивостей и тому подобного). Временные ПЗ исчезают через 1 минуту.\n\n**Повышенное (+1)** урон увеличивается на 2d6."
+      "en": "Your touch leeches the lifeblood out of a target to empower yourself. You deal 6d6 void damage to the target. You gain temporary Hit Points equal to half the void damage the target takes (after applying resistances and the like). You lose any remaining temporary Hit Points after 1 minute.\n\n**Heightened (+1)** The damage increases by 2d6.",
+      "ru": "Ваше прикосновение вытягивает жизненную энергию цели и передаёт её вам. Вы наносите цели 6d6 урона пустотой и получаете временные ПЗ в количестве половины полученного целью урона пустотой (после применения устойчивостей и тому подобного). Временные ПЗ исчезают через 1 минуту.\n\n**Повышенное (+1)** урон увеличивается на 2d6."
     },
     "origin": "spell",
-    "origin_value": "",
+    "origin_value": "arcane,divine,occult",
     "origin_values": [
       "concentrate",
       "death",
       "manipulate",
       "void"
     ],
-    "price": {
-      "a": 1
-    },
+    "price": { "a": 2 },
     "info": {
       "level": 3,
-      "targets": "",
-      "range": "",
-      "defense": "",
-      "enhancements": [
-        {
-          "name": {
-            "en": "",
-            "ru": ""
-          },
-          "description": {
-            "en": "",
-            "ru": ""
-          }
-        }
-      ]
+      "range": "touch",
+      "defense": "fortitude"
     }
   },
   {
@@ -1255,36 +797,21 @@
       "ru": "Покров необнаружимости"
     },
     "description": {
-      "en": "**Traditions** <u>arcane</u>, <u>occult</u>, <u>primal</u><br>**Deities** Lao Shu Po, Naderi, Nocticula, Winlas <br>**Cast**  10 minutes<br>**Range** touch; **Targets** 1 creature or object<br>**Duration** 8 hours<hr>You erect protective wards that make the target difficult to detect via magic. <i>Veil of privacy</i> attempts to counteract all detection, revelation, and scrying effects used against the target or the target's gear throughout the duration, counting cantrips as 1st-rank spells for this purpose. Successfully counteracting a spell that targets an area or multiple targets negates the effects for only <i>veil of privacy's</i> target.",
-      "ru": "**Традиции** мистическая, оккультная, первобытная<br>\n**Божества** Лао Шу По (старая крыса), Naderi, Ноктикула, Winlas <br>\n**Сотворение**  10 минут<br>\n**Дистанция** касание; **Цели** 1 существо или объект<br>\n**Длительность** 8 часов.\n\nВы защищаете цель оберегами, чтобы её было сложнее обнаружить магией. Это заклинание пытается нейтрализовать все эффекты с дескрипторами «обнаружение», «разоблачение» или «тайновидение», направленные против цели или её снаряжения в течение его длительности; фокусы для нейтрализации считаются заклинаниями 1 круга. Нейтрализация эффекта, направленного на несколько целей или область, отменяет эффект только для цели этого заклинания."
+      "en": "You erect protective wards that make the target difficult to detect via magic. <i>Veil of privacy</i> attempts to counteract all detection, revelation, and scrying effects used against the target or the target's gear throughout the duration, counting cantrips as 1st-rank spells for this purpose. Successfully counteracting a spell that targets an area or multiple targets negates the effects for only **Veil of privacy's** target.",
+      "ru": "Вы защищаете цель оберегами, чтобы её было сложнее обнаружить магией. Это заклинание пытается нейтрализовать все эффекты с дескрипторами «обнаружение», «разоблачение» или «тайновидение», направленные против цели или её снаряжения в течение его длительности; фокусы для нейтрализации считаются заклинаниями 1 круга. Нейтрализация эффекта, направленного на несколько целей или область, отменяет эффект только для цели этого заклинания."
     },
     "origin": "spell",
-    "origin_value": "",
+    "origin_value": "arcane,occult,primal",
     "origin_values": [
       "uncommon",
       "concentrate",
       "manipulate"
     ],
-    "price": {
-      "a": 1
-    },
     "info": {
       "level": 3,
-      "targets": "",
-      "range": "",
-      "defense": "",
-      "enhancements": [
-        {
-          "name": {
-            "en": "",
-            "ru": ""
-          },
-          "description": {
-            "en": "",
-            "ru": ""
-          }
-        }
-      ]
+      "range": "touch",
+      "time": "10,m",
+      "duration": "8,h"
     }
   },
   {
@@ -1295,37 +822,22 @@
       "ru": "Терновая стена"
     },
     "description": {
-      "en": "**Traditions** <u>arcane</u>, <u>primal</u><br>**Catalysts** Black Ash<br>**Deities** Erastil, Fandarra, Green Faith, Jaidi, Kzininn, Treerazer, Vermilion Mother, Xhamen-Dor, Zon-Kuthon <br>**Range** 60 feet<br>**Duration** 1 minute<hr>You grow a wall of thorny brambles from the ground. You create a 5-foot-thick wall of brambles and thorns in a straight line up to 60 feet long and 10 feet high. You must create the wall in an unbroken open space so its edges don't pass through any creatures or objects, or the spell is lost. The wall stands vertically. If you wish, the wall can be of a shorter length or height. Everything on each side of the wall has cover from creatures on the opposite side, and the wall's spaces are difficult terrain. For every move action a creature uses to enter at least one of the wall's spaces, that creature takes 3d4 piercing damage. <br>Each 10-foot-by-10-foot section of the wall has AC 10, Hardness 10, and 20 Hit Points. It's immune to critical hits and precision damage. A destroyed section can be moved through freely.<hr>**Heightened (+1)** The Hit Points of each section of the wall increase by 5, and the piercing damage increases by 1d4.",
-      "ru": "**Традиции** мистическая, первобытная<br>\n**Божества** Эрастил, Фандарра, Зелёная вера, Джайди, Kzininn, Древотёс, Vermilion Mother, Xhamen-Dor, Zon-Kuthon <br>\n**Сотворение** [three-actions] <br>\n**Дистанция** 60 футов<br>\n**Длительность** 1 минута.\n\nВы на минуту выращиваете толстую стену из очень густого колючего кустарника. Вы создаёте на прямой линии вертикальную стену толщиной в 5 футов, до 10 футов в высоту и до 60 футов в длину. Вы можете сделать стену короче или ниже, если пожелаете. Стену можно создать только в непрерывном свободном пространстве, её края не должны проходить через объекты или существ, в противном случае заклинание тратится впустую. Всё с противоположной стороны стены получает укрытие, а клетки стены считаются пересечённой местностью. Всякий раз, когда существо совершает действие с дескриптором «движение», чтобы войти в одну из клеток стены, оно получает 3d4 колющего урона.\n\nУ каждого участка стены размерами 10 на 10 футов КБ 10, твёрдость 10 и 20 ПЗ, а также невосприимчивость к критическим ударам и урону за точность. Через уничтоженный участок можно свободно перемещаться.\n\n**Повышенное (+1)** ПЗ каждого участка стены увеличиваются на 5, колющий урон увеличивается на 1d4."
+      "en": "You grow a wall of thorny brambles from the ground. You create a 5-foot-thick wall of brambles and thorns in a straight line up to 60 feet long and 10 feet high. You must create the wall in an unbroken open space so its edges don't pass through any creatures or objects, or the spell is lost. The wall stands vertically. If you wish, the wall can be of a shorter length or height. Everything on each side of the wall has cover from creatures on the opposite side, and the wall's spaces are difficult terrain. For every move action a creature uses to enter at least one of the wall's spaces, that creature takes 3d4 piercing damage.\n\nEach 10-foot-by-10-foot section of the wall has AC 10, Hardness 10, and 20 Hit Points. It's immune to critical hits and precision damage. A destroyed section can be moved through freely.\n\n**Heightened (+1)** The Hit Points of each section of the wall increase by 5, and the piercing damage increases by 1d4.",
+      "ru": "Вы на минуту выращиваете толстую стену из очень густого колючего кустарника. Вы создаёте на прямой линии вертикальную стену толщиной в 5 футов, до 10 футов в высоту и до 60 футов в длину. Вы можете сделать стену короче или ниже, если пожелаете. Стену можно создать только в непрерывном свободном пространстве, её края не должны проходить через объекты или существ, в противном случае заклинание тратится впустую. Всё с противоположной стороны стены получает укрытие, а клетки стены считаются пересечённой местностью. Всякий раз, когда существо совершает действие с дескриптором «движение», чтобы войти в одну из клеток стены, оно получает 3d4 колющего урона.\n\nУ каждого участка стены размерами 10 на 10 футов КБ 10, твёрдость 10 и 20 ПЗ, а также невосприимчивость к критическим ударам и урону за точность. Через уничтоженный участок можно свободно перемещаться.\n\n**Повышенное (+1)** ПЗ каждого участка стены увеличиваются на 5, колющий урон увеличивается на 1d4."
     },
     "origin": "spell",
-    "origin_value": "",
+    "origin_value": "arcane,primal",
     "origin_values": [
       "concentrate",
       "manipulate",
       "plant",
       "wood"
     ],
-    "price": {
-      "a": 1
-    },
+    "price": { "a": 3 },
     "info": {
       "level": 3,
-      "targets": "",
-      "range": "",
-      "defense": "",
-      "enhancements": [
-        {
-          "name": {
-            "en": "",
-            "ru": ""
-          },
-          "description": {
-            "en": "",
-            "ru": ""
-          }
-        }
-      ]
+      "range": "60,ft",
+      "duration": "1,m"
     }
   },
   {
@@ -1336,36 +848,21 @@
       "ru": "Стена ветра"
     },
     "description": {
-      "en": "**Traditions** <u>arcane</u>, <u>primal</u><br>**Deities** Anras, Breath of the Endless Sky, General Susumu, Horus <br>**Lesson** Lesson of Snow <br>**Range** 120 feet<br>**Duration** 1 minute<hr>You create a barrier of gusting winds that hinders anything moving through it. The wall of swirling winds is 5 feet thick, 60 feet long, and 30 feet high. The wall stands vertically, but you can shape its path. Though the wall of wind distorts the air, it does not hamper sight. The wall has the following effects. <ul><li>Ammunition from physical ranged attacks—such as arrows, bolts, sling bullets, and other objects of similar size—can't pass through the wall. Attacks with bigger ranged weapons, such as javelins, take a –2 circumstance penalty to their attack rolls if their paths pass through the wall. Massive ranged weapons and spell effects that don't create physical objects pass through the wall with no penalty.</li><li>The wall is difficult terrain to creatures attempting to move overland through it. Gases, including creatures in vapor form, can't pass through the wall.</li><li>A creature that attempts to fly through the wall using a move action must attempt a Fortitude save.</li></ul><br>**Critical Success** The creature can move through the wall normally this turn.\n\n**Success** The flying creature can move through the wall this turn, but the wall is difficult terrain.\n\n**Failure** The wall stops the movement of the flying creature, and any remaining movement from its current action is wasted.\n\n**Critical Failure** As failure, and the creature is pushed 10 feet away from the wall.",
-      "ru": "**Традиции** мистическая, первобытная<br>\n**Божества** Anras, Дыхание бесконечного неба, Генерал Сусуму (чёрный даймё), Гор <br>\n**Урок** урок о стуже <br>\n**Сотворение** [three-actions] <br>\n**Дистанция** 120 футов<br>\n**Длительность** 1 минута.\n\nВы создаёте преграду из бушующих ветров, через которую сложно пройти. Это стена ветра толщиной в 5 футов, 60 футов в длину, 30 футов в высоту. Стена вертикальная, но в остальном её можно сформировать как угодно. Стена искажает воздух, но не мешает зрению. Стена обладает следующими эффектами.\n<ul>\n<li> Боеприпасы физических дистанционных атак — стрелы, болты, пращные ядра и иные объекты сопоставимого размера — не могут пролететь сквозь стену. Более тяжёлое дистанционное оружие, такое как пилумы, получает ситуативный штраф -2 к проверке атаки, если пролетает сквозь стену. Массивное дистанционное оружие и эффекты заклинаний, не создающие физических объектов, проходят сквозь стену без штрафов. </li>\n<li>\nСтена считается пересечённой местностью для существ, пытающихся переместиться через неё по земле. Газы и существа под эффектом газообразности сквозь стену пройти не могут. </li>\n<li>\nСущества, пытающиеся пролететь сквозь стену, используя действие с дескриптором «движение», проходят испытание Стойкости.\n<br>\n**Критический успех** в этот ход летающее существо может перемещаться через стену без помех.\n<br>\n**Успех** в этот ход летающее существо может перемещаться через стену, но она считается пересечённой местностью.\n<br>\n**Провал** стена останавливает перемещение летающего существа, и весь остаток перемещения от его текущего действия теряется.\n<br>\n**Критический провал** аналогичен провалу, но существо отталкивается отртены на 10 футов. </li>\n</ul>"
+      "en": "You create a barrier of gusting winds that hinders anything moving through it. The wall of swirling winds is 5 feet thick, 60 feet long, and 30 feet high. The wall stands vertically, but you can shape its path. Though the wall of wind distorts the air, it does not hamper sight. The wall has the following effects.\n\n- Ammunition from physical ranged attacks—such as arrows, bolts, sling bullets, and other objects of similar size—can't pass through the wall. Attacks with bigger ranged weapons, such as javelins, take a –2 circumstance penalty to their attack rolls if their paths pass through the wall. Massive ranged weapons and spell effects that don't create physical objects pass through the wall with no penalty.\n\n- The wall is difficult terrain to creatures attempting to move overland through it. Gases, including creatures in vapor form, can't pass through the wall.\n\n- A creature that attempts to fly through the wall using a move action must attempt a Fortitude save.\n\n**Critical Success** The creature can move through the wall normally this turn.\n\n**Success** The flying creature can move through the wall this turn, but the wall is difficult terrain.\n\n**Failure** The wall stops the movement of the flying creature, and any remaining movement from its current action is wasted.\n\n**Critical Failure** As failure, and the creature is pushed 10 feet away from the wall.",
+      "ru": "Вы создаёте преграду из бушующих ветров, через которую сложно пройти. Это стена ветра толщиной в 5 футов, 60 футов в длину, 30 футов в высоту. Стена вертикальная, но в остальном её можно сформировать как угодно. Стена искажает воздух, но не мешает зрению. Стена обладает следующими эффектами.\n\n- Боеприпасы физических дистанционных атак — стрелы, болты, пращные ядра и иные объекты сопоставимого размера — не могут пролететь сквозь стену. Более тяжёлое дистанционное оружие, такое как пилумы, получает ситуативный штраф -2 к проверке атаки, если пролетает сквозь стену. Массивное дистанционное оружие и эффекты заклинаний, не создающие физических объектов, проходят сквозь стену без штрафов.\n\n- Стена считается пересечённой местностью для существ, пытающихся переместиться через неё по земле. Газы и существа под эффектом газообразности сквозь стену пройти не могут.\n\n- Существа, пытающиеся пролететь сквозь стену, используя действие с дескриптором «движение», проходят испытание Стойкости.\n\n**Критический успех** в этот ход летающее существо может перемещаться через стену без помех.\n\n**Успех** в этот ход летающее существо может перемещаться через стену, но она считается пересечённой местностью.\n\n**Провал** стена останавливает перемещение летающего существа, и весь остаток перемещения от его текущего действия теряется.\n\n**Критический провал** аналогичен провалу, но существо отталкивается отртены на 10 футов."
     },
     "origin": "spell",
-    "origin_value": "",
+    "origin_value": "arcane,primal",
     "origin_values": [
       "air",
       "concentrate",
       "manipulate"
     ],
-    "price": {
-      "a": 1
-    },
+    "price": { "a": 3 },
     "info": {
       "level": 3,
-      "targets": "",
-      "range": "",
-      "defense": "",
-      "enhancements": [
-        {
-          "name": {
-            "en": "",
-            "ru": ""
-          },
-          "description": {
-            "en": "",
-            "ru": ""
-          }
-        }
-      ]
+      "range": "120,ft",
+      "duration": "1,m"
     }
   },
   {
@@ -1376,8 +873,8 @@
       "ru": "Эфемерные следы"
     },
     "description": {
-      "en": "**Duration** 1 hour<hr>You can look at currents in the air and water and see tracks that you can follow just as you would on land. You can use Survival to Track through both air and water, noticing aerial or aquatic “tracks” of all creatures who passed nearby in the last hour. It's more difficult to Track in this way: the DC to Track through air or water is always at least 30, or higher after precipitation or wind (in the air) or heavy tides or currents (in the water). It's possible to Cover Tracks against this spell, but creatures might not realize they need to do so.",
-      "ru": "**Сотворение** [two-actions] <br>\n**Длительность** 1 час.\n\nВы можете всмотреться в воздушные или водяные потоки, чтобы разглядеть след и пойти по нему точно так же, как по следу на земле. Вы можете использовать Выживание для Выслеживания целей в воде и воздухе, замечая воздушные или водные «следы» всех существ, проходивших неподалёку за последний час. Идти по такому следу гораздо сложнее: СЛ Выслеживания обычно не менее 30 или даже выше после осадков или ветра (в воздухе) либо сильных течений или прилива (в воде). Заметание следов помогает против этого заклинания, но многие существа не знают об этом."
+      "en": "You can look at currents in the air and water and see tracks that you can follow just as you would on land. You can use Survival to Track through both air and water, noticing aerial or aquatic “tracks” of all creatures who passed nearby in the last hour. It's more difficult to Track in this way: the DC to Track through air or water is always at least 30, or higher after precipitation or wind (in the air) or heavy tides or currents (in the water). It's possible to Cover Tracks against this spell, but creatures might not realize they need to do so.",
+      "ru": "Вы можете всмотреться в воздушные или водяные потоки, чтобы разглядеть след и пойти по нему точно так же, как по следу на земле. Вы можете использовать Выживание для Выслеживания целей в воде и воздухе, замечая воздушные или водные «следы» всех существ, проходивших неподалёку за последний час. Идти по такому следу гораздо сложнее: СЛ Выслеживания обычно не менее 30 или даже выше после осадков или ветра (в воздухе) либо сильных течений или прилива (в воде). Заметание следов помогает против этого заклинания, но многие существа не знают об этом."
     },
     "origin": "spell",
     "origin_value": "",
@@ -1388,38 +885,22 @@
       "manipulate",
       "ranger"
     ],
-    "price": {
-      "a": 1
-    },
+    "price": { "a": 2 },
     "info": {
       "level": 3,
-      "targets": "",
-      "range": "",
-      "defense": "",
-      "enhancements": [
-        {
-          "name": {
-            "en": "",
-            "ru": ""
-          },
-          "description": {
-            "en": "",
-            "ru": ""
-          }
-        }
-      ]
+      "duration": "1,h"
     }
   },
   {
-    "slug": "ranger's_bramble",
+    "slug": "ranger_bramble",
     "kind": "static",
     "title": {
       "en": "Ranger's Bramble",
       "ru": "Следопытские тернии"
     },
     "description": {
-      "en": "**Range** 100 feet; **Area** all squares that contain plants in a 5-foot burst<br>**Duration** 1 minute<hr>You cause plants in the area to entangle your foes, with the effects of entangling flora. A creature that critically fails the save takes 2d4 persistent bleed damage in addition to being immobilized. Escaping your bramble doesn't end the bleed damage.<hr>**Heightened (+1)** The bleed damage on a critical failure increases by 1d4.",
-      "ru": "**Сотворение** [two-actions] <br>\n**Дистанция** 100 футов; **Область** все клетки с растениями в 5-футовом взрыве<br>\n**Длительность** 1 минута.\n\nВы заставляете растения в области опутать врагов; эффект аналогичен заклинанию опутывание.\n\nПри критическом провале испытания существо дополнительно получает 2d4 продолжительного урона от кровотечения (а не только неподвижность, как обычно). Освобождение не прекращает урона от кровотечения.\n\n**Повышенное (+1)** продолжительный урон от кровотечения при критическом провале увеличивается на 1d4."
+      "en": "**Area** all squares that contain plants in a 5-foot burst.\n\nYou cause plants in the area to entangle your foes, with the effects of entangling flora. A creature that critically fails the save takes 2d4 persistent bleed damage in addition to being immobilized. Escaping your bramble doesn't end the bleed damage.\n\n**Heightened (+1)** The bleed damage on a critical failure increases by 1d4.",
+      "ru": "**Область** все клетки с растениями в 5-футовом взрыве.\n\nВы заставляете растения в области опутать врагов; эффект аналогичен заклинанию опутывание.\n\nПри критическом провале испытания существо дополнительно получает 2d4 продолжительного урона от кровотечения (а не только неподвижность, как обычно). Освобождение не прекращает урона от кровотечения.\n\n**Повышенное (+1)** продолжительный урон от кровотечения при критическом провале увеличивается на 1d4."
     },
     "origin": "spell",
     "origin_value": "",
@@ -1431,38 +912,23 @@
       "plant",
       "ranger"
     ],
-    "price": {
-      "a": 1
-    },
+    "price": { "a": 2 },
     "info": {
       "level": 3,
-      "targets": "",
-      "range": "",
-      "defense": "",
-      "enhancements": [
-        {
-          "name": {
-            "en": "",
-            "ru": ""
-          },
-          "description": {
-            "en": "",
-            "ru": ""
-          }
-        }
-      ]
+      "range": "100,ft",
+      "duration": "1,m"
     }
   },
   {
-    "slug": "deceiver's_cloak",
+    "slug": "deceiver_cloak",
     "kind": "static",
     "title": {
       "en": "Deceiver's Cloak",
       "ru": "Плащ обманщика"
     },
     "description": {
-      "en": "**Lesson** Lesson of Mischief <br>**Duration** 1 hour<hr>Your patron drapes a cloak of illusion about you, making you appear as another creature of the same body shape with roughly similar height and weight as yourself. This has the effects of 3rd-rank illusory disguise.<hr>**Heightened (6th)** You can appear as any creature of the same size, even with a completely different body shape.",
-      "ru": "**Урок** урок об озорстве <br>\n**Сотворение** [two-actions] <br>\n**Длительность** 1 час.\n\nБлагодаря покровителю вы окутываете себя плащом иллюзий, принимая облик другого существа приблизительно такой же формы, роста и веса, как вы сами. Эффект данного заклинания аналогичен иллюзорному облику 3 круга.\n\n**Повышенное (6 круг)** вы можете принять облик существа вашего размера вне зависимости от формы его тела."
+      "en": "Your patron drapes a cloak of illusion about you, making you appear as another creature of the same body shape with roughly similar height and weight as yourself. This has the effects of 3rd-rank illusory disguise.\n\n**Heightened (6th)** You can appear as any creature of the same size, even with a completely different body shape.",
+      "ru": "Благодаря покровителю вы окутываете себя плащом иллюзий, принимая облик другого существа приблизительно такой же формы, роста и веса, как вы сами. Эффект данного заклинания аналогичен иллюзорному облику 3 круга.\n\n**Повышенное (6 круг)** вы можете принять облик существа вашего размера вне зависимости от формы его тела."
     },
     "origin": "spell",
     "origin_value": "",
@@ -1475,26 +941,10 @@
       "manipulate",
       "witch"
     ],
-    "price": {
-      "a": 1
-    },
+    "price": { "a": 2 },
     "info": {
       "level": 3,
-      "targets": "",
-      "range": "",
-      "defense": "",
-      "enhancements": [
-        {
-          "name": {
-            "en": "",
-            "ru": ""
-          },
-          "description": {
-            "en": "",
-            "ru": ""
-          }
-        }
-      ]
+      "duration": "1,h"
     }
   },
   {
@@ -1505,8 +955,8 @@
       "ru": "Злобная тень"
     },
     "description": {
-      "en": "**Lesson** Lesson of Shadow <br>**Range** 30 feet; **Targets** 1 creature<br>**Defense** AC; **Duration** sustained up to 1 minute<hr>Your patron warps the target's shadow into a deadly form, such as strangling hands, a dangerous weapon, harrying runes, or the like. The shadow moves along with the target, always remaining within reach. When you Cast the Spell, and each time you Sustain it, the shadow Strikes the target. The shadow's Strikes are melee spell attacks that deal damage equal to 1d10 plus your spellcasting attribute modifier. You choose the type of damage (bludgeoning, piercing, or slashing) when you Cast the Spell. The shadow uses and contributes to your multiple attack penalty. The shadow doesn't take up space, grant flanking, or have any other attributes a creature would. The shadow can't make any attacks other than its Strike.\n\n The shadow vanishes if the target ceases to cast a shadow (usually if it moves into complete darkness or light). If another effect is controlling the target's shadow when you cast <i>malicious shadow</i>, you can attempt to counteract that effect to temporarily take control of the shadow for <i>malicious shadow's</i> duration.<hr>**Heightened (+2)** The Strike damage increases by 1d10.",
-      "ru": "**Урок** урок о тенях <br>\n**Сотворение** [two-actions] <br>\n**Дистанция** 30 футов; **Цели** 1 существо<br>\n**Защита** КБ; **Длительность** поддерживаемое до 1 минуты.\n\nВаш покровитель искажает тень цели, превращая её во что-то смертоносное (цепкие лапы, опасное оружие, изнуряющие руны и тому подобное). Тень перемещается вместе с целью, всегда оставаясь в зоне досягаемости. При Сотворении заклинания и каждом Поддержании заклинания тень совершает Удар по цели. Удары тени — атаки заклинанием в ближнем бою, которые наносят урон, равный 1d10 + модификатор вашей заклинательной характеристики. Тип урона — дробящий, колющий или режущий (вы выбираете его при Сотворении заклинания). На атаки цели влияет ваш штраф за последовательные атаки, также каждая атака тени увеличивает этот штраф для вас. Тень не занимает пространство, не учитывается при взятии в тиски и не имеет других параметров существа. Удар — единственный способ, которым тень может атаковать.\n\nТень пропадает, если цель перестаёт её отбрасывать (например, перемещается в область темноты либо в область, освещённую со всех сторон). Если при сотворении этого заклинания тень существа под контролем другого эффекта, вы можете попытаться его нейтрализовать, чтобы получить временный контроль над тенью, пока длится ваше заклинание.\n\n**Повышенное (+2)** урон Удара увеличивается на 1d10."
+      "en": "Your patron warps the target's shadow into a deadly form, such as strangling hands, a dangerous weapon, harrying runes, or the like. The shadow moves along with the target, always remaining within reach. When you Cast the Spell, and each time you Sustain it, the shadow Strikes the target. The shadow's Strikes are melee spell attacks that deal damage equal to 1d10 plus your spellcasting attribute modifier. You choose the type of damage (bludgeoning, piercing, or slashing) when you Cast the Spell. The shadow uses and contributes to your multiple attack penalty. The shadow doesn't take up space, grant flanking, or have any other attributes a creature would. The shadow can't make any attacks other than its Strike.\n\nThe shadow vanishes if the target ceases to cast a shadow (usually if it moves into complete darkness or light). If another effect is controlling the target's shadow when you cast <i>malicious shadow</i>, you can attempt to counteract that effect to temporarily take control of the shadow for <i>malicious shadow's</i> duration.\n\n**Heightened (+2)** The Strike damage increases by 1d10.",
+      "ru": "Ваш покровитель искажает тень цели, превращая её во что-то смертоносное (цепкие лапы, опасное оружие, изнуряющие руны и тому подобное). Тень перемещается вместе с целью, всегда оставаясь в зоне досягаемости. При Сотворении заклинания и каждом Поддержании заклинания тень совершает Удар по цели. Удары тени — атаки заклинанием в ближнем бою, которые наносят урон, равный 1d10 + модификатор вашей заклинательной характеристики. Тип урона — дробящий, колющий или режущий (вы выбираете его при Сотворении заклинания). На атаки цели влияет ваш штраф за последовательные атаки, также каждая атака тени увеличивает этот штраф для вас. Тень не занимает пространство, не учитывается при взятии в тиски и не имеет других параметров существа. Удар — единственный способ, которым тень может атаковать.\n\nТень пропадает, если цель перестаёт её отбрасывать (например, перемещается в область темноты либо в область, освещённую со всех сторон). Если при сотворении этого заклинания тень существа под контролем другого эффекта, вы можете попытаться его нейтрализовать, чтобы получить временный контроль над тенью, пока длится ваше заклинание.\n\n**Повышенное (+2)** урон Удара увеличивается на 1d10."
     },
     "origin": "spell",
     "origin_value": "",
@@ -1519,26 +969,13 @@
       "shadow",
       "witch"
     ],
-    "price": {
-      "a": 1
-    },
+    "price": { "a": 2 },
     "info": {
       "level": 3,
-      "targets": "",
-      "range": "",
-      "defense": "",
-      "enhancements": [
-        {
-          "name": {
-            "en": "",
-            "ru": ""
-          },
-          "description": {
-            "en": "",
-            "ru": ""
-          }
-        }
-      ]
+      "range": "30,ft",
+      "defense": "ac",
+      "sustained": true,
+      "duration": "1,m"
     }
   },
   {
@@ -1549,8 +986,8 @@
       "ru": "Личная вьюга"
     },
     "description": {
-      "en": "**Lesson** Lesson of Snow <br>**Range** 30 feet; **Targets** 1 creature<br>**Defense** Fortitude; **Duration** sustained up to 1 minute<hr>Your patron's breath becomes a blizzard of obscuring, scouring ice that follows your target. The target attempts a Fortitude save.\n\n**Critical Success** The target is unaffected.\n\n**Success** The target takes 1d6 cold damage, and the spell ends.\n\n**Failure** The target takes 1d6 cold damage and 1d6 persistent cold damage. The persistent damage automatically ends when the spell ends. It is concealed to other creatures, and other creatures are concealed to it.\n\n**Critical Failure** As failure, but both the cold damage and the persistent cold damage are 2d6.<hr>**Heightened (+1)** The cold damage and persistent cold damage increase by 1 (2 on a critical failure).",
-      "ru": "**Урок** урок о стуже <br>\n**Сотворение** [one-action] <br>\n**Дистанция** 30 футов; **Цели** 1 существо<br>\n**Защита** Стойкость; **Длительность** поддерживаемое до 1 минуты.\n\nДыхание вашего покровителя обращается в вихрь застилающих взор острых льдинок, который преследует вашу цель. Цель проходит испытание Стойкости.\n<br>\n**Критический успех** цель избегает эффекта.\n<br>\n**Успех** цель получает 1d6 урона холодом, затем заклинание завершается.\n<br>\n**Провал** цель получает 1d6 урона холодом и 1d6 продолжительного урона холодом (продолжительный урон автоматически прекращается по завершении заклинания). Существо становится плохо видимым для остальных существ, а прочие существа — плохо видимыми для него.\n<br>\n**Критический провал** аналогичен провалу, но урон холодом и продолжительный урон холодом увеличиваются до 2d6.\n\n**Повышенное (+1)** урон холодом и продолжительный урон холодом увеличиваются на 1 (на 2 при критическом провале)."
+      "en": "Your patron's breath becomes a blizzard of obscuring, scouring ice that follows your target. The target attempts a Fortitude save.\n\n**Critical Success** The target is unaffected.\n\n**Success** The target takes 1d6 cold damage, and the spell ends.\n\n**Failure** The target takes 1d6 cold damage and 1d6 persistent cold damage. The persistent damage automatically ends when the spell ends. It is concealed to other creatures, and other creatures are concealed to it.\n\n**Critical Failure** As failure, but both the cold damage and the persistent cold damage are 2d6.\n\n**Heightened (+1)** The cold damage and persistent cold damage increase by 1 (2 on a critical failure).",
+      "ru": "Дыхание вашего покровителя обращается в вихрь застилающих взор острых льдинок, который преследует вашу цель. Цель проходит испытание Стойкости.\n\n**Критический успех** цель избегает эффекта.\n\n**Успех** цель получает 1d6 урона холодом, затем заклинание завершается.\n\n**Провал** цель получает 1d6 урона холодом и 1d6 продолжительного урона холодом (продолжительный урон автоматически прекращается по завершении заклинания). Существо становится плохо видимым для остальных существ, а прочие существа — плохо видимыми для него.\n\n**Критический провал** аналогичен провалу, но урон холодом и продолжительный урон холодом увеличиваются до 2d6.\n\n**Повышенное (+1)** урон холодом и продолжительный урон холодом увеличиваются на 1 (на 2 при критическом провале)."
     },
     "origin": "spell",
     "origin_value": "",
@@ -1561,26 +998,13 @@
       "hex",
       "witch"
     ],
-    "price": {
-      "a": 1
-    },
+    "price": { "a": 1 },
     "info": {
       "level": 3,
-      "targets": "",
-      "range": "",
-      "defense": "",
-      "enhancements": [
-        {
-          "name": {
-            "en": "",
-            "ru": ""
-          },
-          "description": {
-            "en": "",
-            "ru": ""
-          }
-        }
-      ]
+      "range": "30,ft",
+      "defense": "fortitude",
+      "sustained": true,
+      "duration": "1,m"
     }
   }
 ]

@@ -17,26 +17,11 @@
       "concentrate",
       "manipulate"
     ],
-    "price": {
-      "a": 1
-    },
+    "price": { "a": 1 },
     "info": {
       "level": 9,
-      "targets": "",
       "range": "",
-      "defense": "",
-      "enhancements": [
-        {
-          "name": {
-            "en": "",
-            "ru": ""
-          },
-          "description": {
-            "en": "",
-            "ru": ""
-          }
-        }
-      ]
+      "defense": ""
     }
   },
   {
@@ -47,7 +32,7 @@
       "ru": "Метеориты"
     },
     "description": {
-      "en": "**Traditions** <u>arcane</u>, <u>primal</u><br>**Bloodline** Diabolic <br>**Deities** Apsu, Cosmic Caravan <br>**Range** 500 feet; **Area** 4 40-foot bursts<br>**Defense** basic Reflex<hr>You reach into the skies and call down an array of falling stars that explode upon colliding with the ground. Choose for the falling stars to be airbursts (sonic), asteroids (fire), comets (cold), or plasma (electricity). The spell gains the trait of the falling star type you chose. The four stars' central 10-foot bursts can't overlap. Each falling star deals 6d10 bludgeoning damage to each creature in the 10-foot burst at the center of its area of effect before exploding, dealing 14d6 energy damage of the type you chose to each creature in its 40-foot burst. A creature in any of the areas attempts one basic Reflex save against the spell no matter how many overlapping explosions it's caught in and can take each type of damage only once.<hr>**Heightened (+1)** The bludgeoning damage increases by 1d10, and the energy damage increases by 2d6.",
+      "en": "**Traditions** <u>arcane</u>, <u>primal</u><br>**Bloodline** Diabolic <br>**Deities** Apsu, Cosmic Caravan <br>**Range** 500 feet; **Area** 4 40-foot bursts<br>**Defense** basic Reflex<hr>You reach into the skies and call down an array of falling stars that explode upon colliding with the ground. Choose for the falling stars to be airbursts (sonic), asteroids (fire), comets (cold), or plasma (electricity). The spell gains the trait of the falling star type you chose. The four stars' central 10-foot bursts can't overlap. Each falling star deals 6d10 bludgeoning damage to each creature in the 10-foot burst at the center of its area of effect before exploding, dealing 14d6 energy damage of the type you chose to each creature in its 40-foot burst. A creature in any of the areas attempts one basic Reflex save against the spell no matter how many overlapping explosions it's caught in and can take each type of damage only once.\n\n**Heightened (+1)** The bludgeoning damage increases by 1d10, and the energy damage increases by 2d6.",
       "ru": "**Традиции** мистическая, первобытная<br>\n**Божество** Апсу, Небесный караван<br>\n**Наследие** дьявольское<br>\n**Сотворение** [two-actions] <br>\n**Дистанция** 500 футов; **Область** 4 40-футовых взрыва<br>\n**Защита** обычное испытание Реакции.\n\nВы обрушиваете вниз четыре метеорита, которые взрываются, ударив в землю. Выберите тип урона: звук, огонь, холод или электричество. Заклинание получает соответствующий дескриптор. Каждый метеорит наносит 6d10 дробящего урона всем существам в 10-футовом взрыве в центре области, а затем взрывается, нанося 14d6 урона выбранного типа всем существам в 40-футовом взрыве. Центральные 10-футовые взрывы не могут пересекаться, существа проходят испытание только один раз, даже если находятся в пересечении областей нескольких взрывов, и получают урон каждого типа только один раз.\n\n**Повышенное (+1)** дробящий урон увеличивается на 1d10, энергетический урон увеличивается на 2d6."
     },
     "origin": "spell",
@@ -56,26 +41,11 @@
       "concentrate",
       "manipulate"
     ],
-    "price": {
-      "a": 1
-    },
+    "price": { "a": 1 },
     "info": {
       "level": 9,
-      "targets": "",
       "range": "",
-      "defense": "",
-      "enhancements": [
-        {
-          "name": {
-            "en": "",
-            "ru": ""
-          },
-          "description": {
-            "en": "",
-            "ru": ""
-          }
-        }
-      ]
+      "defense": ""
     }
   },
   {
@@ -97,26 +67,11 @@
       "mental",
       "prediction"
     ],
-    "price": {
-      "a": 1
-    },
+    "price": { "a": 1 },
     "info": {
       "level": 9,
-      "targets": "",
       "range": "",
-      "defense": "",
-      "enhancements": [
-        {
-          "name": {
-            "en": "",
-            "ru": ""
-          },
-          "description": {
-            "en": "",
-            "ru": ""
-          }
-        }
-      ]
+      "defense": ""
     }
   },
   {
@@ -127,7 +82,7 @@
       "ru": "Схлопывание"
     },
     "description": {
-      "en": "**Traditions** <u>arcane</u>, <u>primal</u><br>**Bloodlines** Demonic, Imperial <br>**Deities** Dahak, Nulgreth <br>**Range** 30 feet; **Targets** 1 corporeal creature<br>**Defense** basic Fortitude; **Duration** sustained up to 1 minute<hr>You crush the target by causing it to collapse in on itself, dealing 75 damage. The first time each round you Sustain the spell, you must choose a new target to be subject to the same effect; the same creature can never be targeted more than once with a single casting of this spell. You also can't affect more than one creature per turn with <i>implosion</i>. You can't target a creature that's incorporeal, gaseous, or liquid, or otherwise lacking a solid form.<hr>**Heightened (+1)** The damage increases by 10.",
+      "en": "**Traditions** <u>arcane</u>, <u>primal</u><br>**Bloodlines** Demonic, Imperial <br>**Deities** Dahak, Nulgreth <br>**Range** 30 feet; **Targets** 1 corporeal creature<br>**Defense** basic Fortitude; **Duration** sustained up to 1 minute<hr>You crush the target by causing it to collapse in on itself, dealing 75 damage. The first time each round you Sustain the spell, you must choose a new target to be subject to the same effect; the same creature can never be targeted more than once with a single casting of this spell. You also can't affect more than one creature per turn with <i>implosion</i>. You can't target a creature that's incorporeal, gaseous, or liquid, or otherwise lacking a solid form.\n\n**Heightened (+1)** The damage increases by 10.",
       "ru": "**Традиции** мистическая, первобытная<br>\n**Божество** Дахак, Нулгрет<br>\n**Наследие** демоническое, наследие древнего рода<br>\n**Сотворение** [two-actions] <br>\n**Дистанция** 30 футов; **Цели** 1 небестелесное существо<br>\n**Защита** обычное испытание Стойкости; **Длительность** поддерживаемое до 1 минуты.\n\nВы заставляете тело цели схлопнуться, нанося 75 урона. Когда вы первый раз за раунд используете Поддержание заклинания, вы должны выбрать новую цель, на которую подействует тот же эффект. Вы не можете выбрать целью одно и то же существо повторно, если не сотворите заклинание снова. Вы также не можете воздействовать этим заклинанием более чем на одно существо за ход. Вы не можете выбрать целью бестелесное, газообразное, жидкое или не имеющее твёрдой формы существо.\n\n**Повышенное (+1)** урон увеличивается на 10."
     },
     "origin": "spell",
@@ -136,26 +91,11 @@
       "concentrate",
       "manipulate"
     ],
-    "price": {
-      "a": 1
-    },
+    "price": { "a": 1 },
     "info": {
       "level": 9,
-      "targets": "",
       "range": "",
-      "defense": "",
-      "enhancements": [
-        {
-          "name": {
-            "en": "",
-            "ru": ""
-          },
-          "description": {
-            "en": "",
-            "ru": ""
-          }
-        }
-      ]
+      "defense": ""
     }
   },
   {
@@ -166,8 +106,8 @@
       "ru": "Расправа"
     },
     "description": {
-      "en": "**Traditions** <u>arcane</u>, <u>divine</u>, <u>primal</u><br>**Bloodline** Aesir<br>**Area** 60-foot line<br>**Defense** Fortitude<hr>You unleash a wave of death to snuff out the life force of those in its path. Each living creature of 17th level or lower in the line  must attempt a Fortitude save. If the damage from <i>massacre</i> reduces a creature to 0 Hit Points, that creature dies instantly. If <i>massacre</i> doesn't kill even a single creature, the void energy hungrily turns backward toward you, dealing an additional 30 void damage to every living creature in the line (even those above 17th level) and 30 void damage to you.\n\n**Critical Success** The creature is unaffected.\n\n**Success** The creature takes 9d6 void damage.\n\n**Failure** The creature takes 100 void damage.\n\n**Critical Failure** The creature dies.<hr>**Heightened (10th)** The spell can affect living creatures up to 19th level. Increase the damage to 10d6 on a success, and to 115 on a failure.",
-      "ru": "**Традиции** мистическая, сакральная, первобытная<br>\n**Наследие** Aesir<br>\n**Сотворение** [two-actions] <br>\n**Область** 60-футовая линия<br>\n**Защита** Стойкость.\n\nВы выпускаете волну энергии смерти, которая гасит жизненную силу в каждом на её пути. Каждое живое существо 17 уровня или ниже на линии проходит испытание Стойкости. Если урон заклинания снижает ПЗ существа до 0, оно немедленно умирает. Если заклинание не убило ни одного существа, его энергия пустоты оборачивается вспять, дополнительно нанося 30 урона пустотой всем живым существам на линии (даже тем, кто выше 17 уровня) и 30 урона пустотой вам.\n<br>\n**Критический успех** существо избегает эффекта.\n<br>\n**Успех** существо получает 9d6 урона пустотой.\n<br>\n**Провал** существо получает 100 урона пустотой.\n<br>\n**Критический провал** существо умирает.\n\n**Повышенное (10 круг)** заклинание действует на живых существ 19 уровня и ниже. Урон при успешном испытании увеличивается до 10d6, при провале — до 115."
+      "en": "**Traditions** <u>arcane</u>, <u>divine</u>, <u>primal</u><br>**Bloodline** Aesir<br>**Area** 60-foot line<br>**Defense** Fortitude<hr>You unleash a wave of death to snuff out the life force of those in its path. Each living creature of 17th level or lower in the line  must attempt a Fortitude save. If the damage from <i>massacre</i> reduces a creature to 0 Hit Points, that creature dies instantly. If <i>massacre</i> doesn't kill even a single creature, the void energy hungrily turns backward toward you, dealing an additional 30 void damage to every living creature in the line (even those above 17th level) and 30 void damage to you.\n\n**Critical Success** The creature is unaffected.\n\n**Success** The creature takes 9d6 void damage.\n\n**Failure** The creature takes 100 void damage.\n\n**Critical Failure** The creature dies.\n\n**Heightened (10th)** The spell can affect living creatures up to 19th level. Increase the damage to 10d6 on a success, and to 115 on a failure.",
+      "ru": "**Традиции** мистическая, сакральная, первобытная<br>\n**Наследие** Aesir<br>\n**Сотворение** [two-actions] <br>\n**Область** 60-футовая линия<br>\n**Защита** Стойкость.\n\nВы выпускаете волну энергии смерти, которая гасит жизненную силу в каждом на её пути. Каждое живое существо 17 уровня или ниже на линии проходит испытание Стойкости. Если урон заклинания снижает ПЗ существа до 0, оно немедленно умирает. Если заклинание не убило ни одного существа, его энергия пустоты оборачивается вспять, дополнительно нанося 30 урона пустотой всем живым существам на линии (даже тем, кто выше 17 уровня) и 30 урона пустотой вам.\n\n**Критический успех** существо избегает эффекта.\n\n**Успех** существо получает 9d6 урона пустотой.\n\n**Провал** существо получает 100 урона пустотой.\n\n**Критический провал** существо умирает.\n\n**Повышенное (10 круг)** заклинание действует на живых существ 19 уровня и ниже. Урон при успешном испытании увеличивается до 10d6, при провале — до 115."
     },
     "origin": "spell",
     "origin_value": "",
@@ -177,26 +117,11 @@
       "manipulate",
       "void"
     ],
-    "price": {
-      "a": 1
-    },
+    "price": { "a": 1 },
     "info": {
       "level": 9,
-      "targets": "",
       "range": "",
-      "defense": "",
-      "enhancements": [
-        {
-          "name": {
-            "en": "",
-            "ru": ""
-          },
-          "description": {
-            "en": "",
-            "ru": ""
-          }
-        }
-      ]
+      "defense": ""
     }
   },
   {
@@ -217,26 +142,11 @@
       "manipulate",
       "polymorph"
     ],
-    "price": {
-      "a": 1
-    },
+    "price": { "a": 1 },
     "info": {
       "level": 9,
-      "targets": "",
       "range": "",
-      "defense": "",
-      "enhancements": [
-        {
-          "name": {
-            "en": "",
-            "ru": ""
-          },
-          "description": {
-            "en": "",
-            "ru": ""
-          }
-        }
-      ]
+      "defense": ""
     }
   },
   {
@@ -248,7 +158,7 @@
     },
     "description": {
       "en": "**Traditions** <u>divine</u>, <u>occult</u><br>**Bloodline** Draconic <br>**Area** 40-foot burst; **Targets** any number of creatures<br>**Defense** Will; **Duration** until full tribute is paid<hr>You surround yourself with supernatural splendor, appearing to be a god or similarly majestic being, with an appearance, regalia, and iconography of your choice. Targets must attempt a Will save. Regardless of the outcome, the target is then temporarily immune for 1 minute.\n\n**Critical Success** The target is unaffected.\n\n**Success** The target must pay tribute to you two times. Paying tribute requires that the target spend a single action, which has either the move trait (as they bow) or manipulate trait (as they offer up a token in their hands). They must pay tribute at least once on each of their turns, if possible. While affected, the target is fascinated by you and can't use hostile actions against you.\n\n**Failure** As success, but the target must pay tribute a total of six times.\n\n**Critical Failure** As failure, but the target must spend all its actions paying tribute, and they cannot take other actions until the tribute is fully paid.",
-      "ru": "**Традиции** сакральная, оккультная<br>\n**Наследие** драконье<br>\n**Сотворение** [two-actions] <br>\n**Область** 40-футовый взрыв; **Цели** любое количество существ<br>\n**Защита** Воля; **Длительность** пока все должные почести не оказаны.\n\nВы становитесь сверхъестественно великолепны, представая в облике божества или другого величественного создания. Вы сами выбираете детали своего великолепного облика. Цели проходят испытание Воли. В любом случае после этого цели становятся временно невосприимчивы на 1 минуту.\n<br>\n**Критический успех** цель избегает эффекта.\n<br>\n**Успех** цель должна воздать вам почести дважды. Воздание почести — одиночное действие с дескриптором «движение» (цель кланяется) или «манипуляция» (цель воздевает к вам руки). Находящиеся под действием заклинания цели должны хотя бы раз за ход воздать вам почести, если это возможно. Пока заклинание действует на них, они заворожены вами и не могут совершать против вас никаких враждебных действий.\n<br>\n**Провал** аналогичен успеху, но цель должна воздать вам почести шесть раз.\n<br>\n**Критический провал** аналогичен провалу, но цель должна тратить все свои действия на воздание почестей, если это возможно, и не может совершать других действий, пока не воздала все почести."
+      "ru": "**Традиции** сакральная, оккультная<br>\n**Наследие** драконье<br>\n**Сотворение** [two-actions] <br>\n**Область** 40-футовый взрыв; **Цели** любое количество существ<br>\n**Защита** Воля; **Длительность** пока все должные почести не оказаны.\n\nВы становитесь сверхъестественно великолепны, представая в облике божества или другого величественного создания. Вы сами выбираете детали своего великолепного облика. Цели проходят испытание Воли. В любом случае после этого цели становятся временно невосприимчивы на 1 минуту.\n\n**Критический успех** цель избегает эффекта.\n\n**Успех** цель должна воздать вам почести дважды. Воздание почести — одиночное действие с дескриптором «движение» (цель кланяется) или «манипуляция» (цель воздевает к вам руки). Находящиеся под действием заклинания цели должны хотя бы раз за ход воздать вам почести, если это возможно. Пока заклинание действует на них, они заворожены вами и не могут совершать против вас никаких враждебных действий.\n\n**Провал** аналогичен успеху, но цель должна воздать вам почести шесть раз.\n\n**Критический провал** аналогичен провалу, но цель должна тратить все свои действия на воздание почестей, если это возможно, и не может совершать других действий, пока не воздала все почести."
     },
     "origin": "spell",
     "origin_value": "",
@@ -260,26 +170,11 @@
       "mental",
       "visual"
     ],
-    "price": {
-      "a": 1
-    },
+    "price": { "a": 1 },
     "info": {
       "level": 9,
-      "targets": "",
       "range": "",
-      "defense": "",
-      "enhancements": [
-        {
-          "name": {
-            "en": "",
-            "ru": ""
-          },
-          "description": {
-            "en": "",
-            "ru": ""
-          }
-        }
-      ]
+      "defense": ""
     }
   },
   {
@@ -291,7 +186,7 @@
     },
     "description": {
       "en": "**Traditions** <u>arcane</u>, <u>occult</u><br>**Bloodline** Hag <br>**Deities** Charon, Nyarlathotep (The Crawling Chaos), Nyarlathotep (The Faceless Sphinx), Nyarlathotep (The Veiled Voice) <br>**Range** 120 feet; **Targets** any number of creatures<br>**Defense** Will<hr>You fill the targets' minds with endless images, like countless dreams and lives colliding with each other. The onrushing information deals 16d6 mental damage to each target, depending on its Will save.\n\n**Critical Success** The target is unaffected.\n\n**Success** The target takes half damage and can't use reactions until the start of your next turn.\n\n**Failure** The target takes full damage and is confused until the start of your next turn.\n\n**Critical Failure** The target takes double damage and is confused for 1 minute.",
-      "ru": "**Традиции** мистическая, оккультная<br>\n**Наследие** наследие карги<br>\n**Божества** Харон, Ньярлатхотеп (ползучий хаос), Ньярлатхотеп (безликий сфинкс), Ньярлатхотеп (скрытый голос) <br>\n**Сотворение** [two-actions] <br>\n**Дистанция** 120 футов; **Цели** любое количество существ<br>\n**Защита** Воля.\n\nВы наполняете разум целей бесконечными образами из множества противоречивых сновидений и реальностей. Каждая цель получает 16d6 ментального урона в зависимости от результата испытания Воли. \n<br>\n**Критический успех** цель избегает эффекта.\n<br>\n**Успех** цель получает половину урона и не может использовать ответные действия до начала вашего следующего хода.\n<br>\n**Провал** цель получает полный урон и замешательство до начала вашего следующего хода.\n<br>\n**Критический провал** цель получает двойной урон и замешательство на 1 минуту."
+      "ru": "**Традиции** мистическая, оккультная<br>\n**Наследие** наследие карги<br>\n**Божества** Харон, Ньярлатхотеп (ползучий хаос), Ньярлатхотеп (безликий сфинкс), Ньярлатхотеп (скрытый голос) <br>\n**Сотворение** [two-actions] <br>\n**Дистанция** 120 футов; **Цели** любое количество существ<br>\n**Защита** Воля.\n\nВы наполняете разум целей бесконечными образами из множества противоречивых сновидений и реальностей. Каждая цель получает 16d6 ментального урона в зависимости от результата испытания Воли.\n\n**Критический успех** цель избегает эффекта.\n\n**Успех** цель получает половину урона и не может использовать ответные действия до начала вашего следующего хода.\n\n**Провал** цель получает полный урон и замешательство до начала вашего следующего хода.\n\n**Критический провал** цель получает двойной урон и замешательство на 1 минуту."
     },
     "origin": "spell",
     "origin_value": "",
@@ -302,26 +197,11 @@
       "manipulate",
       "mental"
     ],
-    "price": {
-      "a": 1
-    },
+    "price": { "a": 1 },
     "info": {
       "level": 9,
-      "targets": "",
       "range": "",
-      "defense": "",
-      "enhancements": [
-        {
-          "name": {
-            "en": "",
-            "ru": ""
-          },
-          "description": {
-            "en": "",
-            "ru": ""
-          }
-        }
-      ]
+      "defense": ""
     }
   },
   {
@@ -333,7 +213,7 @@
     },
     "description": {
       "en": "**Traditions** <u>divine</u>, <u>occult</u><br>**Requirements** item worth at least the target's level × 100 gp<br>**Range** 30 feet; **Targets** 1 creature that died within the last minute<br>**Duration** unlimited<hr>You trap the target's soul in the item before the soul can pass on to the afterlife. The item used to contain the soul can be anything as long as it's of the appropriate value. The item has AC 16 and its normal Hardness and HP. Destroying (not just breaking) an item or counteracting <i>seize soul</i> releases the soul to the afterlife. While the soul is in the item, the target can't be returned to life through any means, even powerful magic such as a <i>wish</i> ritual. If the item is destroyed or seize soul is counteracted on the item, the soul is freed. An item can't hold more than one soul, and any attempt wastes the spell.\n\n You can also target an item that has had a soul trapped it in with a second casting of <i>seize soul</i>, which destroys the item and either releases the soul or relocates it to a different item, whichever you choose. This fails if the target is an artifact or the trapped soul is a creature of 19th level or higher.",
-      "ru": "**Традиции** сакральная, оккультная<br>\n**Сотворение** [two-actions]; **Требования** предмет стоимостью не менее 100 зм за каждый уровень цели.\n\n**Дистанция** 30 футов; **Цели** 1 существо, умершее не более минуты назад<br>\n**Длительность** неограниченная.\n\nВы ловите отлетающую в загробный мир душу цели и заточаете её в предмет. Предмет может быть любым, если он подходит по стоимости. У него КБ 16, а также обычная твёрдость и ПЗ. Уничтожение (не просто поломка) предмета или нейтрализация этого заклинания освобождают душу в посмертие.\n\nПока душа в предмете, цель нельзя вернуть к жизни никакими способами, даже желанием. В предмет нельзя заточить более одной души, при подобной попытке заклинание будет потрачено впустую. <br>\nВы также можете выбрать целью предмет, в котором заточена душа, сотворив заклинание повторно: предмет будет уничтожен, адуша по вашему выбору либо освобождается, либо перемещается в другой предмет. Это нельзя сделать, если цель — артефакт или если заточённая душа принадлежала существу 19 уровня или выше."
+      "ru": "**Традиции** сакральная, оккультная<br>\n**Сотворение** [two-actions]; **Требования** предмет стоимостью не менее 100 зм за каждый уровень цели.\n\n**Дистанция** 30 футов; **Цели** 1 существо, умершее не более минуты назад<br>\n**Длительность** неограниченная.\n\nВы ловите отлетающую в загробный мир душу цели и заточаете её в предмет. Предмет может быть любым, если он подходит по стоимости. У него КБ 16, а также обычная твёрдость и ПЗ. Уничтожение (не просто поломка) предмета или нейтрализация этого заклинания освобождают душу в посмертие.\n\nПока душа в предмете, цель нельзя вернуть к жизни никакими способами, даже желанием. В предмет нельзя заточить более одной души, при подобной попытке заклинание будет потрачено впустую.\n\nВы также можете выбрать целью предмет, в котором заточена душа, сотворив заклинание повторно: предмет будет уничтожен, адуша по вашему выбору либо освобождается, либо перемещается в другой предмет. Это нельзя сделать, если цель — артефакт или если заточённая душа принадлежала существу 19 уровня или выше."
     },
     "origin": "spell",
     "origin_value": "",
@@ -343,26 +223,11 @@
       "manipulate",
       "unholy"
     ],
-    "price": {
-      "a": 1
-    },
+    "price": { "a": 1 },
     "info": {
       "level": 9,
-      "targets": "",
       "range": "",
-      "defense": "",
-      "enhancements": [
-        {
-          "name": {
-            "en": "",
-            "ru": ""
-          },
-          "description": {
-            "en": "",
-            "ru": ""
-          }
-        }
-      ]
+      "defense": ""
     }
   },
   {
@@ -374,7 +239,7 @@
     },
     "description": {
       "en": "**Traditions** <u>occult</u><br>**Bloodline** Aberrant <br>**Deities** Azathoth, Cormigus <br>**Range** 120 feet; **Targets** up to 5 creatures<br>**Defense** Will; **Duration** sustained up to 1 minute<hr>Fleeting notes of a strange and unnatural song fill the air, overtaking the mind. Each target must attempt a Will save when you Cast the Spell, and again the first time you Sustain the spell each round. A creature needs to attempt only one save against the song each round, and you have to keep the same targets when you Sustain the spell.\n\n**Critical Success** The target is unaffected, can't be affected on subsequent rounds, and is temporarily immune for 1 minute.\n\n**Success** The target is unaffected this round, but it can be affected on subsequent rounds.\n\n**Failure** Roll 1d4 on the following table.\n\n**Critical Failure** Roll 1d4+1 on the following table.<h2>Unfathomable Song</h2><table class=\"inner\"> <tbody><tr><td>**Result**</td><td>**Effect**</td></tr> <tr><td>1</td><td>The target is frightened 2.</td></tr> <tr><td>2</td><td>The target is confused for 1 round.</td></tr> <tr><td>3</td><td>The target is stupefied 4 for 1 round.</td></tr> <tr><td>4</td><td>The target is blinded for 1 round.</td></tr> <tr><td>5</td><td>The target is stunned for 1 round and stupefied 1 for an unlimited duration.</td></tr> </tbody></table>",
-      "ru": "**Традиции** оккультная<br>\n**Наследие** противоестественное<br>\n**Божество** Азатот, Cormigus <br>\n**Сотворение** [one-action] <br>\n**Дистанция** 120 футов; **Цели** 5 или менее существ<br>\n**Защита** Воля; **Длительность** поддерживаемое до 1 минуты.\n\nВоздух наполняется странной и неестественной мелодией, проникающей в разум. Цели заклинания проходят испытание Воли при его сотворении и всякий раз, когда вы впервые используете его Поддержание каждый раунд. Существо проходит не более одного испытания против песни за раунд, и вы должны сохранять те же цели, когда используете Поддержание заклинания.\n<br>\n**Критический успех** цель избегает эффекта в этом раунде и последующих и становится временно невосприимчива на 1 минуту.\n<br>\n**Успех** цель избегает эффекта в этом раунде, но может быть подвержена ему в последующих раундах.\n<br>\n**Провал** бросьте 1d4 и сверьте результат с таблицей ниже.\n<br>\n**Критический провал** бросьте 1d4 + 1 и сверьте результат с таблицей ниже.\n<h5 class=\"h5-header\">Непостижимая песнь</h5>\n<table class=\"inner\">\n<tbody>\n<tr>\n<td>**Результат**</td>\n<td>**Эффект**</td>\n</tr>\n<tr>\n<td>1</td>\n<td>Цель получает испуг 2.</td>\n</tr>\n<tr>\n<td>2</td>\n<td>Цель в замешательстве на 1 раунд.</td>\n</tr>\n<tr>\n<td>3</td>\n<td>Цель получает ошеломление 4 на 1 раунд.</td>\n</tr>\n<tr>\n<td>4</td>\n<td>Цель получает слепоту на 1 раунд.</td>\n</tr>\n<tr>\n<td>5</td>\n<td>Цель получает шок на 1 раунд и ошеломление 1 с неограниченной длительностью.</td>\n</tr>\n</tbody>\n</table>"
+      "ru": "**Традиции** оккультная<br>\n**Наследие** противоестественное<br>\n**Божество** Азатот, Cormigus <br>\n**Сотворение** [one-action] <br>\n**Дистанция** 120 футов; **Цели** 5 или менее существ<br>\n**Защита** Воля; **Длительность** поддерживаемое до 1 минуты.\n\nВоздух наполняется странной и неестественной мелодией, проникающей в разум. Цели заклинания проходят испытание Воли при его сотворении и всякий раз, когда вы впервые используете его Поддержание каждый раунд. Существо проходит не более одного испытания против песни за раунд, и вы должны сохранять те же цели, когда используете Поддержание заклинания.\n\n**Критический успех** цель избегает эффекта в этом раунде и последующих и становится временно невосприимчива на 1 минуту.\n\n**Успех** цель избегает эффекта в этом раунде, но может быть подвержена ему в последующих раундах.\n\n**Провал** бросьте 1d4 и сверьте результат с таблицей ниже.\n\n**Критический провал** бросьте 1d4 + 1 и сверьте результат с таблицей ниже.\n<h5 class=\"h5-header\">Непостижимая песнь</h5>\n<table class=\"inner\">\n<tbody>\n<tr>\n<td>**Результат**</td>\n<td>**Эффект**</td>\n</tr>\n<tr>\n<td>1</td>\n<td>Цель получает испуг 2.</td>\n</tr>\n<tr>\n<td>2</td>\n<td>Цель в замешательстве на 1 раунд.</td>\n</tr>\n<tr>\n<td>3</td>\n<td>Цель получает ошеломление 4 на 1 раунд.</td>\n</tr>\n<tr>\n<td>4</td>\n<td>Цель получает слепоту на 1 раунд.</td>\n</tr>\n<tr>\n<td>5</td>\n<td>Цель получает шок на 1 раунд и ошеломление 1 с неограниченной длительностью.</td>\n</tr>\n</tbody>\n</table>"
     },
     "origin": "spell",
     "origin_value": "",
@@ -387,26 +252,11 @@
       "manipulate",
       "mental"
     ],
-    "price": {
-      "a": 1
-    },
+    "price": { "a": 1 },
     "info": {
       "level": 9,
-      "targets": "",
       "range": "",
-      "defense": "",
-      "enhancements": [
-        {
-          "name": {
-            "en": "",
-            "ru": ""
-          },
-          "description": {
-            "en": "",
-            "ru": ""
-          }
-        }
-      ]
+      "defense": ""
     }
   },
   {
@@ -418,7 +268,7 @@
     },
     "description": {
       "en": "**Traditions** <u>divine</u>, <u>occult</u><br>**Bloodline** Undead <br>**Area** 40-foot emanation<br>**Defense** Fortitude<hr>You howl a lament of damned souls. Each living enemy in the area takes 8d10 void damage depending on its Fortitude save.\n\n**Critical Success** The creature is unaffected.\n\n**Success** The creature takes full damage.\n\n**Failure** The creature takes full damage and is drained 1d4.\n\n**Critical Failure** The creature takes double damage and is drained 4.",
-      "ru": "**Традиции** сакральная, оккультная<br>\n**Наследие** загробное<br>\n**Сотворение** [two-actions] <br>\n**Область** 40-футовая эманация<br>\n**Защита** Стойкость.\n\nВы издаёте вой проклятых душ. Все живые враги в области получают 8d10 урона пустотой в зависимости от испытания Стойкости. \n<br>\n**Критический успех** существо избегает эффекта.\n<br>\n**Успех** существо получает полный урон.\n<br>\n**Провал** существо получает полный урон и истощение 1d4.\n<br>\n**Критический провал** существо получает двойной урон и истощение 4."
+      "ru": "**Традиции** сакральная, оккультная<br>\n**Наследие** загробное<br>\n**Сотворение** [two-actions] <br>\n**Область** 40-футовая эманация<br>\n**Защита** Стойкость.\n\nВы издаёте вой проклятых душ. Все живые враги в области получают 8d10 урона пустотой в зависимости от испытания Стойкости.\n\n**Критический успех** существо избегает эффекта.\n\n**Успех** существо получает полный урон.\n\n**Провал** существо получает полный урон и истощение 1d4.\n\n**Критический провал** существо получает двойной урон и истощение 4."
     },
     "origin": "spell",
     "origin_value": "",
@@ -429,26 +279,11 @@
       "manipulate",
       "void"
     ],
-    "price": {
-      "a": 1
-    },
+    "price": { "a": 1 },
     "info": {
       "level": 9,
-      "targets": "",
       "range": "",
-      "defense": "",
-      "enhancements": [
-        {
-          "name": {
-            "en": "",
-            "ru": ""
-          },
-          "description": {
-            "en": "",
-            "ru": ""
-          }
-        }
-      ]
+      "defense": ""
     }
   },
   {
@@ -470,26 +305,11 @@
       "electricity",
       "manipulate"
     ],
-    "price": {
-      "a": 1
-    },
+    "price": { "a": 1 },
     "info": {
       "level": 9,
-      "targets": "",
       "range": "",
-      "defense": "",
-      "enhancements": [
-        {
-          "name": {
-            "en": "",
-            "ru": ""
-          },
-          "description": {
-            "en": "",
-            "ru": ""
-          }
-        }
-      ]
+      "defense": ""
     }
   },
   {
@@ -514,26 +334,11 @@
       "focus",
       "manipulate"
     ],
-    "price": {
-      "a": 1
-    },
+    "price": { "a": 1 },
     "info": {
       "level": 9,
-      "targets": "",
       "range": "",
-      "defense": "",
-      "enhancements": [
-        {
-          "name": {
-            "en": "",
-            "ru": ""
-          },
-          "description": {
-            "en": "",
-            "ru": ""
-          }
-        }
-      ]
+      "defense": ""
     }
   }
 ]

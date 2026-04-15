@@ -342,8 +342,10 @@ ru:
         cold: Холод
         composition: Композиция
         concentrate: Концентрация
+        consecration: Освящение
         curse: Проклятие
         darkness: Тьма
+        death: Смерть
         dedication: Посвящение
         detection: Обнаружение
         disease: Болезнь
@@ -372,6 +374,7 @@ ru:
         halfling: Полурослик
         healing: Исцеление
         hex: Наговор
+        holy: Священный
         human: Человек
         illusion: Иллюзия
         incapacitation: Устранение
@@ -387,6 +390,7 @@ ru:
         move: Движение
         multiclass: Мультикласс
         nonlethal: Несмертельное
+        olfactory: Обоняние
         oracle: Оракул
         orc: Орк
         plant: Растение
@@ -397,8 +401,10 @@ ru:
         primal: Первобытный
         psychic: Psychic
         ranger: Следопыт
+        revelation: Разоблачение
         rogue: Плут
         sanctified: Освящённый
+        scrying: Тайноведение
         secret: Тайна
         shadow: Тень
         skill: Навык
@@ -414,6 +420,7 @@ ru:
         teleportation: Телепортация
         thaumaturge: Thaumaturge
         uncommon: Необычный
+        unholy: Нечестивый
         visual: Зрение
         vitality: Жизнь
         void: Пустота
