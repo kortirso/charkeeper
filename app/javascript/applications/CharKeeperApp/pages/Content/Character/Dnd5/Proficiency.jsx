@@ -1,40 +1,72 @@
-import { createSignal, For } from 'solid-js';
+import { createSignal, createEffect, For, Show, batch } from 'solid-js';
 
-import { ErrorWrapper, Button, GuideWrapper } from '../../../../components';
+import { ErrorWrapper, GuideWrapper, Button, Select } from '../../../../components';
 import { useAppState, useAppLocale, useAppAlert } from '../../../../context';
 import { updateCharacterRequest } from '../../../../requests/updateCharacterRequest';
-import { Minus, Plus } from '../../../../assets';
-import { modifier, localize } from '../../../../helpers';
+import { Minus, Plus, Edit } from '../../../../assets';
+import { modifier, localize, readFromCache, writeToCache } from '../../../../helpers';
 
 const TRANSLATION = {
   en: {
     proficiencyBonus: 'Proficiency bonus',
     hitDices: 'Hit dices',
     heroic: 'Heroic inspiration',
-    bardic: 'Bardic inspiration'
+    bardic: 'Bardic inspiration',
+    settings: 'Settings',
+    showBardic: 'Show Bardic inspire'
   },
   ru: {
     proficiencyBonus: 'Бонус мастерства',
     hitDices: 'Кости хитов',
     heroic: 'Героическое вдохновение',
-    bardic: 'Бардовское вдохновение'
+    bardic: 'Бардовское вдохновение',
+    settings: 'Настройки',
+    showBardic: 'Показывать вдохновение барда'
   },
   es: {
     proficiencyBonus: 'Bonificación de competencia',
     hitDices: 'Dados de golpe',
     heroic: 'Inspiración heroica',
-    bardic: 'Inspiración bardica'
+    bardic: 'Inspiración bardica',
+    settings: 'Configuración',
+    showBardic: 'Mostrar inspiración bardica'
   }
 }
+const SETTINGS_CACHE_NAME = 'DndStaticSettings';
 
 export const Dnd5Proficiency = (props) => {
   const character = () => props.character;
 
+  const [lastActiveCharacterId, setLastActiveCharacterId] = createSignal(undefined);
+
   const [bardic, setBardic] = createSignal(props.character.bardic_inspiration || 6);
+
+  const [showSettings, setShowSettings] = createSignal(false);
+  const [settings, setSettings] = createSignal([]);
 
   const [appState] = useAppState();
   const [{ renderAlerts }] = useAppAlert();
   const [locale] = useAppLocale();
+
+  const readSettings = async () => {
+    const cacheValue = await readFromCache(SETTINGS_CACHE_NAME);
+    setSettings(cacheValue === null || cacheValue === undefined ? ['showBardic'] : cacheValue.split(','));
+  }
+
+  const updateSettings = (value) => {
+    const newValue = settings().includes(value) ? settings().filter((item) => item !== value) : settings().concat([value]);
+    batch(() => {
+      writeToCache(SETTINGS_CACHE_NAME, newValue.join(','));
+      setSettings(newValue);
+    })
+  }
+
+  createEffect(() => {
+    if (lastActiveCharacterId() === character().id) return;
+
+    setLastActiveCharacterId(character().id);
+    readSettings();
+  });
 
   const spendDice = (dice, limit) => {
     let newValue;
@@ -65,47 +97,59 @@ export const Dnd5Proficiency = (props) => {
   return (
     <ErrorWrapper payload={{ character_id: character().id, key: 'Dnd5Proficiency' }}>
       <GuideWrapper character={character()}>
-        <div class="blockable mb-2 p-4 dark:text-snow">
-          <div class="grid grid-cols-2 emd:grid-cols-4 gap-2">
-            <div>
-              <p class="text-sm mb-2 text-center h-10">{localize(TRANSLATION, locale())['heroic']}</p>
-              <div class="flex justify-center items-center">
-                <p
-                  class="leading-12 mx-2 text-center uppercase text-lg cursor-pointer"
-                  classList={{ 'opacity-50': !character().heroic_inspiration }}
-                  onClick={() => updateCharacter({ heroic_inspiration: (character().heroic_inspiration ? false : true) })}
-                >
-                  HEROIC
-                </p>
+        <div class="blockable mb-2 py-4 px-2 md:px-4 relative">
+          <Show when={showSettings()}>
+            <Select
+              multi
+              containerClassList="w-full md:w-1/2 mb-4"
+              labelText={localize(TRANSLATION, locale()).settings}
+              items={{
+                'showBardic': localize(TRANSLATION, locale()).showBardic
+              }}
+              selectedValues={settings()}
+              onSelect={updateSettings}
+            />
+          </Show>
+          <div class="dnd-static-box" classList={{ 'four-columns': settings().includes('showBardic') }}>
+            <div class="dnd-static-box-item">
+              <p class="dnd-static-box-item-title">{localize(TRANSLATION, locale()).heroic}</p>
+              <p
+                class="dnd-static-value cursor-pointer"
+                classList={{ 'opacity-50': !character().heroic_inspiration }}
+                onClick={() => updateCharacter({ heroic_inspiration: (character().heroic_inspiration ? false : true) })}
+              >
+                HEROIC
+              </p>
+            </div>
+            <Show when={settings().includes('showBardic')}>
+              <div class="dnd-static-box-item">
+                <p class="dnd-static-box-item-title">{localize(TRANSLATION, locale()).bardic}</p>
+                <div class="flex justify-center items-center gap-x-2">
+                  <Button default size="small" onClick={() => bardic() === 6 ? null : setBardic(bardic() - 2)}>
+                    <Minus />
+                  </Button>
+                  <p
+                    class="w-12 dnd-static-value cursor-pointer"
+                    classList={{ 'opacity-50': character().bardic_inspiration === null }}
+                    onClick={() => updateCharacter({ bardic_inspiration: (character().bardic_inspiration ? null : bardic()) })}
+                  >
+                    D{character().bardic_inspiration || bardic()}
+                  </p>
+                  <Button default size="small" onClick={() => bardic() === 12 ? null : setBardic(bardic() + 2)}>
+                    <Plus />
+                  </Button>
+                </div>
               </div>
+            </Show>
+            <div class="dnd-static-box-item">
+              <p class="dnd-static-box-item-title">{localize(TRANSLATION, locale()).proficiencyBonus}</p>
+              <p class="dnd-static-value">{modifier(character().proficiency_bonus)}</p>
             </div>
-            <div>
-              <p class="text-sm mb-2 text-center h-10">{localize(TRANSLATION, locale())['bardic']}</p>
-              <div class="flex justify-center items-center">
-                <Button default size="small" onClick={() => bardic() === 6 ? null : setBardic(bardic() - 2)}>
-                  <Minus />
-                </Button>
-                <p
-                  class="w-12 leading-12 mx-2 text-center uppercase text-lg cursor-pointer"
-                  classList={{ 'opacity-50': character().bardic_inspiration === null }}
-                  onClick={() => updateCharacter({ bardic_inspiration: (character().bardic_inspiration ? null : bardic()) })}
-                >
-                  D{character().bardic_inspiration || bardic()}
-                </p>
-                <Button default size="small" onClick={() => bardic() === 12 ? null : setBardic(bardic() + 2)}>
-                  <Plus />
-                </Button>
-              </div>
-            </div>
-            <div class="flex flex-col items-center">
-              <p class="text-sm mb-2 text-center h-10">{localize(TRANSLATION, locale())['proficiencyBonus']}</p>
-              <p class="text-2xl leading-12">{modifier(character().proficiency_bonus)}</p>
-            </div>
-            <div>
-              <p class="text-sm mb-2 text-center h-10">{localize(TRANSLATION, locale())['hitDices']}</p>
+            <div class="dnd-static-box-item">
+              <p class="dnd-static-box-item-title">{localize(TRANSLATION, locale()).hitDices}</p>
               <For each={Object.entries(character().hit_dice).filter(([, value]) => value > 0)}>
                 {([dice, maxValue]) =>
-                  <div class="flex justify-center items-center min-h-12">
+                  <div class="flex justify-center items-center">
                     <Button default size="small" onClick={() => character().spent_hit_dice[dice] !== maxValue ? spendDice(dice, maxValue) : null}>
                       <Minus />
                     </Button>
@@ -121,6 +165,7 @@ export const Dnd5Proficiency = (props) => {
               </For>
             </div>
           </div>
+          <Button default classList="weapon-settings min-w-6 min-h-6" onClick={() => setShowSettings(!showSettings())}><Edit /></Button>
         </div>
       </GuideWrapper>
     </ErrorWrapper>
