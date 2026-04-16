@@ -685,8 +685,36 @@ body.web {
   @apply text-xs mb-1;
 }
 
+.dnd-static-box {
+  @apply grid grid-cols-1 md:grid-cols-3 gap-4;
+}
+
+.dnd-static-box.four-columns {
+  @apply md:grid-cols-2 lg:grid-cols-4 gap-x-2 gap-y-4;
+}
+
+.dnd-static-box-item {
+  @apply flex justify-between items-center md:flex-col md:gap-4;
+}
+
+.dnd-static-box-item-title {
+  @apply text-sm uppercase md:text-center;
+}
+
+.dnd-static-box.four-columns .dnd-static-box-item-title {
+  @apply lg:h-10;
+}
+
+.dnd-static-value {
+  @apply text-center uppercase text-lg;
+}
+
 .dh-static-box {
-  @apply blockable py-4 px-2 md:px-4 grid grid-cols-2 md:grid-cols-4 gap-x-2 gap-y-4;
+  @apply grid grid-cols-3 gap-2;
+}
+
+.dh-static-box.four-columns {
+  @apply grid-cols-2 md:grid-cols-4 gap-x-2 gap-y-4;
 }
 
 .dh-static-title {
