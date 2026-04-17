@@ -1,9 +1,10 @@
-import { Show, For } from 'solid-js';
+import { createMemo, Show, For } from 'solid-js';
 
 import { Button } from '../../components';
-import { useAppLocale } from '../../context';
+import { useAppLocale, useAppAlert, useAppState } from '../../context';
+import { updateCharacterRequest } from '../../requests/updateCharacterRequest';
 import { PlusSmall, Minus, Campfire, LongCampfire, Moon, Picnic, Combat, Ability, Spell, Grimoire } from '../../assets';
-import { localize } from '../../helpers';
+import { localize, performResponse } from '../../helpers';
 
 const FEATURE_ICONS = {
   'one_at_short_rest': Picnic, 'short_rest': Campfire, 'long_rest': LongCampfire, 'session': Moon, 'combat': Combat
@@ -20,7 +21,8 @@ const TRANSLATION = {
     sp: 'SP',
     mp: 'MP',
     hope: 'Hope',
-    stress: 'Stress'
+    stress: 'Stress',
+    spent: 'Resource is spent'
   },
   ru: {
     one_at_short_rest: 'Короткий - 1, длинный - все',
@@ -32,7 +34,8 @@ const TRANSLATION = {
     sp: 'ОВ',
     mp: 'ОМ',
     hope: 'Надежда',
-    stress: 'Стресс'
+    stress: 'Стресс',
+    spent: 'Ресурс потрачен'
   },
   es: {
     one_at_short_rest: 'Corto - 1, largo - todo',
@@ -44,16 +47,62 @@ const TRANSLATION = {
     sp: 'PE',
     mp: 'PM',
     hope: 'Esperanza',
-    stress: 'Estrés'
+    stress: 'Estrés',
+    spent: 'Resource is spent'
   }
 }
+const SPENDING_RESOURCES_PROVIDERS = ['daggerheart'];
 
 export const FeatureTitle = (props) => {
+  const character = () => props.character;
   const feature = () => props.feature;
-  const IconComponent = FEATURE_ICONS[props.feature.limit_refresh]; // eslint-disable-line solid/reactivity
-  const InfoComponent = props.provider === 'daggerheart' ? TYPE_ICONS[props.feature.info.type] : null; // eslint-disable-line solid/reactivity
 
+  const IconComponent = FEATURE_ICONS[feature().limit_refresh]; // eslint-disable-line solid/reactivity
+  const InfoComponent = character().provider === 'daggerheart' ? TYPE_ICONS[feature().info.type] : null; // eslint-disable-line solid/reactivity
+
+  const [appState] = useAppState();
+  const [{ renderAlerts, renderNotice }] = useAppAlert();
   const [locale] = useAppLocale();
+
+  const daggerheartResource = () => {
+    return {
+      hope: { free: character().hope_marked, attribute: 'hope_marked', modifier: -1 },
+      stress: { free: character().stress_max - character().stress_marked, attribute: 'stress_marked', modifier: 1 }
+    }
+  }
+
+  const resources = createMemo(() => {
+    if (character().provider === 'daggerheart') return daggerheartResource();
+
+    return {};
+  });
+
+  const enoughResources = createMemo(() => {
+    if (Object.keys(resources()).length === 0) return false;
+
+    return Object.entries(feature().price).filter(([slug, value]) => resources()[slug].free < value).length === 0;
+  });
+
+  const spendResources = async (e) => {
+    e.stopPropagation();
+
+    const payload = Object.entries(feature().price).reduce((acc, [slug, value]) => {
+      acc[resources()[slug].attribute] = character()[resources()[slug].attribute] + value * resources()[slug].modifier;
+      return acc;
+    }, {});
+
+    const result = await updateCharacterRequest(
+      appState.accessToken, character().provider, character().id, { character: payload, only_head: true }
+    );
+    performResponse(
+      result,
+      function() { // eslint-disable-line solid/reactivity
+        props.onReplaceCharacter(payload);
+        renderNotice(localize(TRANSLATION, locale()).spent);
+      },
+      function() { renderAlerts(result.errors_list) }
+    );
+  }
 
   return (
     <div class="flex">
@@ -65,15 +114,34 @@ export const FeatureTitle = (props) => {
           {feature().title}
         </p>
         <Show when={Object.keys(feature().price).length > 0}>
-          <div class="flex gap-x-2">
-            <For each={Object.entries(feature().price)}>
-              {([slug, value]) =>
-                <Show when={localize(TRANSLATION, locale())[slug]}>
-                  <p class="text-xs">{localize(TRANSLATION, locale())[slug]} {value}</p>
-                </Show>
-              }
-            </For>
-          </div>
+          <Show
+            when={SPENDING_RESOURCES_PROVIDERS.includes(character().provider)}
+            fallback={
+              <div class="flex gap-x-2">
+                <For each={Object.entries(feature().price)}>
+                  {([slug, value]) =>
+                    <Show when={localize(TRANSLATION, locale())[slug]}>
+                      <p class="text-xs">{localize(TRANSLATION, locale())[slug]} {value}</p>
+                    </Show>
+                  }
+                </For>
+              </div>
+            }
+          >
+            <div
+              class="resource"
+              classList={{ 'enough': enoughResources() }}
+              onClick={(e) => enoughResources() ? spendResources(e) : null}
+            >
+              <For each={Object.entries(feature().price)}>
+                {([slug, value]) =>
+                  <Show when={localize(TRANSLATION, locale())[slug]}>
+                    <p class="text-xs">{localize(TRANSLATION, locale())[slug]} {value}</p>
+                  </Show>
+                }
+              </For>
+            </div>
+          </Show>
         </Show>
       </div>
       <div class="flex items-center gap-x-4">

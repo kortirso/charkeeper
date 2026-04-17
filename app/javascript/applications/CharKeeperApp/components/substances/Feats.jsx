@@ -247,7 +247,7 @@ export const Feats = (props) => {
                 <Toggle
                   containerClassList={feature().kind === 'update_result' ? 'opacity-50' : ''}
                   isOpen={filtering().includes('expandAll')}
-                  title={<FeatureTitle feature={feature()} provider={character().provider} onSpendEnergy={spendEnergy} onRestoreEnergy={restoreEnergy} />}
+                  title={<FeatureTitle feature={feature()} character={character()} onSpendEnergy={spendEnergy} onRestoreEnergy={restoreEnergy} onReplaceCharacter={props.onReplaceCharacter} />}
                 >
                   <div
                     class="feat-markdown"
