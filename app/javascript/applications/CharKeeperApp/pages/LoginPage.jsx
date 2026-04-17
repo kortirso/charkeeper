@@ -1,4 +1,4 @@
-import { createSignal, createEffect, Show, For, batch } from 'solid-js';
+import { createSignal, createEffect, Show, batch } from 'solid-js';
 
 import { Input, Button, Select, Checkbox } from '../components';
 import { useAppState, useAppLocale, useAppAlert } from '../context';

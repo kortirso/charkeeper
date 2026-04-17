@@ -36,20 +36,28 @@ export const AppStateProvider = (props) => {
     bodyElement.style.paddingBottom = `${result.adjustedInsetBottom}px`;
   }
 
-  createEffect(async () => {
-    if (appState.accessToken !== undefined) return;
-
+  const readAccessTokenFromCache = async () => {
     const stateValue = await readFromCache(CHARKEEPER_ACCESS_TOKEN);
     if (stateValue === null || stateValue === undefined) {
       return setAppState({ ...appState, initialized: true });
     }
 
     setAppState({ ...appState, accessToken: stateValue, initialized: true });
-  });
+  }
 
-  createEffect(async () => {
+  const readNavigationFromCache = async () => {
     const showNavigationValue = await readFromCache(SHOW_NAVIGATION);
     setAppState({ ...appState, showNavigation: showNavigationValue || 'show' });
+  }
+
+  createEffect(() => {
+    if (appState.accessToken !== undefined) return;
+
+    readAccessTokenFromCache();
+  });
+
+  createEffect(() => {
+    readNavigationFromCache();
   });
 
   createEffect(() => {
