@@ -1,27 +1,14 @@
 {
   "loading": "Pantalla de carga",
   "pages": {
-    "loginPage": {
-      "signin": "Iniciar sesión",
-      "signup": "Registrarse",
-      "username": "Nombre de usuario",
-      "password": "Contraseña (al menos 10 caracteres)",
-      "passwordConfirmation": "Confirmación de contraseña",
-      "haveAccount": "¿Ya tienes una cuenta?",
-      "noAccount": "¿No tienes una cuenta?"
-    },
     "settingsPage": {
       "logout": "Cerrar sesion",
       "version": "Version",
       "title": "Configuración",
-      "changePassword": "Contraseña",
       "feedback": "Recomendaciones",
       "profile": "Perfil",
       "socials": "Enlaces de la comunidad",
-      "notifications": "Notificaciones",
-      "profileDeleting": "Borrando perfil",
-      "deleteProfileConfirm1": "¿Estás seguro de que deseas eliminar tu perfil?",
-      "deleteProfileConfirm2": "Esta acción no es reversible, los datos añadidos se eliminarán."
+      "notifications": "Notificaciones"
     },
     "characterNavigation": {
       "allFilter": "Todos",
@@ -161,7 +148,6 @@
   "find": "Encontrar",
   "saving": "Guardando",
   "cancel": "Cancelar",
-  "delete": "Borrar",
   "copy": "Copiar",
   "alerts": {
     "error": "Se ha producido un error al procesar los datos. ¡Se ha enviado un informe de error al desarrollador!",
@@ -170,7 +156,6 @@
     "characterIsUpdated": "El personaje fue actulizado",
     "invalidSubclassesList": "Debes seleccionar subclases para todas las clases.",
     "feedbackIsAdded": "Se ha añadido la recomendación. ¡Muchas gracias por utilizar CharKeeper!",
-    "userIsUpdated": "El usuario fue actualizado",
     "copied": "Copiado, puedes compartir el valor copiado."
   },
   "charactersPage": {

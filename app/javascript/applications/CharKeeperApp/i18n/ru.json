@@ -14,14 +14,10 @@
       "logout": "Выход",
       "version": "Версия",
       "title": "Настройки",
-      "changePassword": "Пароль",
       "feedback": "Отзыв",
       "profile": "Профиль",
       "socials": "Общество",
-      "notifications": "Уведомления",
-      "profileDeleting": "Удаление профиля",
-      "deleteProfileConfirm1": "Вы точно хотите удалить свой профиль?",
-      "deleteProfileConfirm2": "Это действие нельзя отменить, все данные будут удалены."
+      "notifications": "Уведомления"
     },
     "characterNavigation": {
       "allFilter": "Все",
@@ -161,7 +157,6 @@
   "find": "Найти",
   "saving": "Сохранение",
   "cancel": "Отменить",
-  "delete": "Удалить",
   "copy": "Копировать",
   "alerts": {
     "error": "Произошла ошибка рендеринга данных, отчет с ошибкой отправлен разработчику!",
@@ -170,7 +165,6 @@
     "characterIsUpdated": "Персонаж обновлён",
     "invalidSubclassesList": "Необходимо выбрать все подклассы для классов",
     "feedbackIsAdded": "Отзыв отправлен, большое спасибо за использование ЧарКипера!",
-    "userIsUpdated": "Пользователь обновлён",
     "copied": "Скопировано, можете передать это значение"
   },
   "charactersPage": {

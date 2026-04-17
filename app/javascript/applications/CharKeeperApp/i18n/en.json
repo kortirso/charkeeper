@@ -1,27 +1,14 @@
 {
   "loading": "Loading screen",
   "pages": {
-    "loginPage": {
-      "signin": "Sign in",
-      "signup": "Sign up",
-      "username": "Username",
-      "password": "Password (minimum 10 characters)",
-      "passwordConfirmation": "Password confirmation",
-      "haveAccount": "Already have account?",
-      "noAccount": "Don't have account?"
-    },
     "settingsPage": {
       "logout": "Logout",
       "version": "Version",
       "title": "Settings",
-      "changePassword": "Password",
       "feedback": "Feedback",
       "profile": "Profile",
       "socials": "Community links",
-      "notifications": "Notifications",
-      "profileDeleting": "Deleting profile",
-      "deleteProfileConfirm1": "Are you sure you want to remove your profile?",
-      "deleteProfileConfirm2": "This action is not revertable, add data will be removed."
+      "notifications": "Notifications"
     },
     "characterNavigation": {
       "allFilter": "All",
@@ -161,7 +148,6 @@
   "find": "Find",
   "saving": "Saving",
   "cancel": "Cancel",
-  "delete": "Delete",
   "copy": "Copy",
   "alerts": {
     "error": "An error occurred while rendering data, an error report has been sent to the developer!",
@@ -170,7 +156,6 @@
     "characterIsUpdated": "Character is updated",
     "invalidSubclassesList": "You need to select subclasses for all classes",
     "feedbackIsAdded": "Feedback is added, thank you very much for using CharKeeper!",
-    "userIsUpdated": "User is updated",
     "copied": "Copied, you can share copied value"
   },
   "charactersPage": {

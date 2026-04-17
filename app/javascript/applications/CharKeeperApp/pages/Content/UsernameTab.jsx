@@ -6,8 +6,9 @@ import { Arrow, Google, Discord, Telegram, Close } from '../../assets';
 import { useAppState, useAppLocale, useAppAlert } from '../../context';
 import { updateUserRequest } from '../../requests/updateUserRequest';
 import { removeIdentityRequest } from '../../requests/removeIdentityRequest';
-import { localize, performResponse } from '../../helpers';
+import { localize, performResponse, writeToCache, readFromCache } from '../../helpers';
 
+const USER_CREDENTIALS_CACHE_NAME = 'UserCredentials';
 const TRANSLATION = {
   en: {
     existingIdentities: 'Existing identities',
@@ -92,6 +93,17 @@ export const UsernameTab = (props) => {
     });
   });
 
+  const refreshCredentials = async () => {
+    const cacheValue = await readFromCache(USER_CREDENTIALS_CACHE_NAME);
+    if (cacheValue) {
+      const credentials = JSON.parse(cacheValue);
+      writeToCache(
+        USER_CREDENTIALS_CACHE_NAME,
+        JSON.stringify({ username:username(), password: credentials.password })
+      );
+    }
+  }
+
   const identityProviders = createMemo(() => {
     if (appState.identities === undefined) return [];
 
@@ -108,6 +120,7 @@ export const UsernameTab = (props) => {
     performResponse(
       result,
       function() { // eslint-disable-line solid/reactivity
+        if (username() !== appState.username) refreshCredentials();
         batch(() => {
           changeUserInfo({ username: username(), colorSchema: colorSchema(), providerLocales: providerLocales() });
           setLocale(localeValue());

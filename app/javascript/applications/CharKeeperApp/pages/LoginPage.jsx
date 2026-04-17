@@ -1,31 +1,55 @@
-import { createSignal, Switch, Match, Show, batch } from 'solid-js';
-import * as i18n from '@solid-primitives/i18n';
+import { createSignal, createEffect, Show, For, batch } from 'solid-js';
 
-import { Input, Button, Select } from '../components';
+import { Input, Button, Select, Checkbox } from '../components';
 import { useAppState, useAppLocale, useAppAlert } from '../context';
 import { signUpRequest } from '../requests/signUpRequest';
 import { signInRequest } from '../requests/signInRequest';
-import { writeToCache, localize } from '../helpers';
+import { writeToCache, readFromCache, localize } from '../helpers';
 
 const CHARKEEPER_HOST_CACHE_NAME = 'CharKeeperHost';
+const USER_CREDENTIALS_CACHE_NAME = 'UserCredentials';
 const TRANSLATION = {
   en: {
     region: 'Server region',
     euRegion: 'EU region',
     ruRegion: 'RU region',
-    regionHelp: 'The servers operate independently of each other.'
+    regionHelp: 'The servers operate independently of each other.',
+    signin: 'Sign in',
+    signup: 'Sign up',
+    username: 'Username',
+    password: 'Password (minimum 10 characters)',
+    passwordConfirmation: 'Password confirmation',
+    haveAccount: 'Already have account?',
+    noAccount: "Don't have account?",
+    remember: 'Remember password'
   },
   ru: {
     region: 'Регион сервера',
     euRegion: 'Евро регион',
     ruRegion: 'РУ регион',
-    regionHelp: 'Серверы работают независимо от друг друга.'
+    regionHelp: 'Серверы работают независимо от друг друга.',
+    signin: 'Вход',
+    signup: 'Регистрация',
+    username: 'Имя пользователя',
+    password: 'Пароль (минимум 10 символов)',
+    passwordConfirmation: 'Подтверждение пароля',
+    haveAccount: 'Уже есть аккаунт?',
+    noAccount: 'Еще нет аккаунта?',
+    remember: 'Запомнить пароль'
   },
   es: {
     region: 'Región del servidor',
     euRegion: 'Región EU',
     ruRegion: 'Región RU',
-    regionHelp: 'Los servidores funcionan de forma independiente entre sí.'
+    regionHelp: 'Los servidores funcionan de forma independiente entre sí.',
+    signin: 'Iniciar sesión',
+    signup: 'Registrarse',
+    username: 'Nombre de usuario',
+    password: 'Contraseña (al menos 10 caracteres)',
+    passwordConfirmation: 'Confirmación de contraseña',
+    haveAccount: '¿Ya tienes una cuenta?',
+    noAccount: '¿No tienes una cuenta?',
+    remember: 'Remember password'
   }
 }
 
@@ -35,12 +59,32 @@ export const LoginPage = () => {
   const [password, setPassword] = createSignal('');
   const [passwordConfirmation, setPasswordConfirmation] = createSignal('');
   const [region, setRegion] = createSignal('charkeeper.org');
+  const [remember, setRemember] = createSignal(true);
 
   const [, { changeUserInfo, setAccessToken }] = useAppState();
   const [{ renderAlerts }] = useAppAlert();
-  const [locale, dict, { setLocale }] = useAppLocale();
+  const [locale,, { setLocale }] = useAppLocale();
 
-  const t = i18n.translator(dict);
+  const readUserCredentials = async () => {
+    const cacheValue = await readFromCache(USER_CREDENTIALS_CACHE_NAME);
+    if (cacheValue) {
+      const credentials = JSON.parse(cacheValue);
+      batch(() => {
+        setUsername(credentials.username || '');
+        setPassword(credentials.password || '');
+      });
+    }
+  }
+
+  const readRegion = async () => {
+    const cacheValue = await readFromCache(CHARKEEPER_HOST_CACHE_NAME);
+    if (cacheValue) setRegion(cacheValue);
+  }
+
+  createEffect(() => {
+    readUserCredentials();
+    readRegion();
+  });
 
   const fetchPlatformData = () => {
     if (!window.__TAURI_INTERNALS__) return null;
@@ -55,7 +99,13 @@ export const LoginPage = () => {
   }
 
   const signUp = async () => {
-    if (window.__TAURI_INTERNALS__) writeToCache(CHARKEEPER_HOST_CACHE_NAME, region());
+    if (window.__TAURI_INTERNALS__) {
+      writeToCache(CHARKEEPER_HOST_CACHE_NAME, region());
+      writeToCache(
+        USER_CREDENTIALS_CACHE_NAME,
+        JSON.stringify(remember() ? { username: username(), password: password() } : {})
+      );
+    }
 
     const platformData = fetchPlatformData();
     const result = await signUpRequest(
@@ -68,7 +118,13 @@ export const LoginPage = () => {
   }
 
   const signIn = async () => {
-    if (window.__TAURI_INTERNALS__) writeToCache(CHARKEEPER_HOST_CACHE_NAME, region());
+    if (window.__TAURI_INTERNALS__) {
+      writeToCache(CHARKEEPER_HOST_CACHE_NAME, region());
+      writeToCache(
+        USER_CREDENTIALS_CACHE_NAME,
+        JSON.stringify(remember() ? { username: username(), password: password() } : {})
+      );
+    }
 
     const platformData = fetchPlatformData();
     const result = await signInRequest({ user: { username: username(), password: password() }, platform: platformData });
@@ -94,14 +150,7 @@ export const LoginPage = () => {
   return (
     <div class="min-h-screen flex flex-col justify-center items-center">
       <div class="max-w-sm w-full p-4">
-        <Switch>
-          <Match when={page() === 'signin'}>
-            <h2 class="text-2xl mb-4">{t('pages.loginPage.signin')}</h2>
-          </Match>
-          <Match when={page() === 'signup'}>
-            <h2 class="text-2xl mb-4">{t('pages.loginPage.signup')}</h2>
-          </Match>
-        </Switch>
+        <h2 class="text-2xl mb-4">{localize(TRANSLATION, locale())[page()]}</h2>
         <Show when={window.__TAURI_INTERNALS__}>
           <Select
             containerClassList="mb-1"
@@ -117,44 +166,55 @@ export const LoginPage = () => {
         </Show>
         <Input
           containerClassList="form-field mb-2"
-          labelText={t('pages.loginPage.username')}
+          labelText={localize(TRANSLATION, locale()).username}
           value={username()}
           onInput={setUsername}
         />
         <Input
           password
           containerClassList="form-field mb-2"
-          labelText={t('pages.loginPage.password')}
+          labelText={localize(TRANSLATION, locale()).password}
           value={password()}
           onInput={setPassword}
         />
-        <Switch>
-          <Match when={page() === 'signin'}>
+        <Show when={page() === 'signup'}>
+          <Input
+            password
+            containerClassList="form-field mb-2"
+            labelText={localize(TRANSLATION, locale()).passwordConfirmation}
+            value={passwordConfirmation()}
+            onInput={setPasswordConfirmation}
+          />
+        </Show>
+        <Checkbox
+          labelText={localize(TRANSLATION, locale()).remember}
+          labelPosition="right"
+          labelClassList="text-sm ml-4"
+          classList="mb-2"
+          checked={remember()}
+          onToggle={() => setRemember(!remember())}
+        />
+        <Show
+          when={page() === 'signin'}
+          fallback={
             <p>
-              {t('pages.loginPage.noAccount')}
-              <span class="ml-4 underline text-blue-600 cursor-pointer" onClick={() => setPage('signup')}>
-                {t('pages.loginPage.signup')}
-              </span>
-            </p>
-            <Button default textable classList="mt-2" onClick={signIn}>{t('pages.loginPage.signin')}</Button>
-          </Match>
-          <Match when={page() === 'signup'}>
-            <Input
-              password
-              containerClassList="form-field mb-2"
-              labelText={t('pages.loginPage.passwordConfirmation')}
-              value={passwordConfirmation()}
-              onInput={setPasswordConfirmation}
-            />
-            <p>
-              {t('pages.loginPage.haveAccount')}
+              {localize(TRANSLATION, locale()).haveAccount}
               <span class="ml-4 underline text-blue-600 cursor-pointer" onClick={() => setPage('signin')}>
-                {t('pages.loginPage.signin')}
+                {localize(TRANSLATION, locale()).signin}
               </span>
             </p>
-            <Button default textable classList="mt-2" onClick={signUp}>{t('pages.loginPage.signup')}</Button>
-          </Match>
-        </Switch>
+          }
+        >
+          <p>
+            {localize(TRANSLATION, locale()).noAccount}
+            <span class="ml-4 underline text-blue-600 cursor-pointer" onClick={() => setPage('signup')}>
+              {localize(TRANSLATION, locale()).signup}
+            </span>
+          </p>
+        </Show>
+        <Button default textable classList="mt-2" onClick={page() === 'signin' ? signIn : signUp}>
+          {localize(TRANSLATION, locale())[page()]}
+        </Button>
       </div>
     </div>
   );

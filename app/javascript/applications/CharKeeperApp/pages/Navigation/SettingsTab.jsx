@@ -11,13 +11,19 @@ import { useTelegram } from '../../hooks';
 const CHARKEEPER_HOST_CACHE_NAME = 'CharKeeperHost';
 const TRANSLATION = {
   en: {
-    baseHost: 'Current server'
+    baseHost: 'Current server',
+    changePassword: 'Password',
+    profileDeleting: 'Deleting profile'
   },
   ru: {
-    baseHost: 'Текущий сервер'
+    baseHost: 'Текущий сервер',
+    changePassword: 'Пароль',
+    profileDeleting: 'Удаление профиля'
   },
   es: {
-    baseHost: 'Servidor actual'
+    baseHost: 'Servidor actual',
+    changePassword: 'Contraseña',
+    profileDeleting: 'Borrando perfil'
   }
 }
 
@@ -77,8 +83,8 @@ export const SettingsTab = () => {
             <p class="mb-4 dark:text-snow">{localize(TRANSLATION, locale()).baseHost} - {host()}</p>
           </Show>
           {renderSettingsLink(t('pages.settingsPage.profile'), 'profile')}
-          {renderSettingsLink(t('pages.settingsPage.profileDeleting'), 'profileDeleting')}
-          {renderSettingsLink(t('pages.settingsPage.changePassword'), 'passwords')}
+          {renderSettingsLink(localize(TRANSLATION, locale()).profileDeleting, 'profileDeleting')}
+          {renderSettingsLink(localize(TRANSLATION, locale()).changePassword, 'passwords')}
           {renderSettingsLink(t('pages.settingsPage.notifications'), 'notifications')}
           {renderSettingsLink(t('pages.settingsPage.feedback'), 'feedback')}
           <div class="flex py-3 px-4 gap-4 dark:text-snow">

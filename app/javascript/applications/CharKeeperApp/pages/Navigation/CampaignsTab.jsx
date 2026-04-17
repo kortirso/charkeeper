@@ -14,13 +14,16 @@ import { localize } from '../../helpers';
 
 const TRANSLATION = {
   en: {
-    askDm: 'Campaign ID'
+    askDm: 'Campaign ID',
+    delete: 'Delete'
   },
   ru: {
-    askDm: 'ID кампании'
+    askDm: 'ID кампании',
+    delete: 'Удалить'
   },
   es: {
-    askDm: 'ID de campaña'
+    askDm: 'ID de campaña',
+    delete: 'Borrar'
   }
 }
 
@@ -204,7 +207,7 @@ export const CampaignsTab = () => {
         <p class="mb-3">{t('pages.campaignsPage.confirmDeleting')}</p>
         <div class="flex w-full">
           <Button outlined classList='flex-1 mr-2' onClick={closeModal}>{t('cancel')}</Button>
-          <Button default classList='flex-1 ml-2' onClick={confirmCampaignDeleting}>{t('delete')}</Button>
+          <Button default classList='flex-1 ml-2' onClick={confirmCampaignDeleting}>{localize(TRANSLATION, locale()).delete}</Button>
         </div>
       </Modal>
     </>
