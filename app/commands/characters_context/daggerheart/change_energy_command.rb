@@ -44,8 +44,8 @@ module CharactersContext
 
       private
 
-      # rubocop: disable Metrics/AbcSize, Metrics/CyclomaticComplexity, Metrics/MethodLength, Metrics/PerceivedComplexity
-      def do_prepare(input)
+      def do_prepare(input) # rubocop: disable Metrics/AbcSize, Metrics/CyclomaticComplexity, Metrics/MethodLength, Metrics/PerceivedComplexity
+        input[:rolls] = {}
         return if input[:options].nil?
 
         companion = input[:character].companion
@@ -56,9 +56,12 @@ module CharactersContext
           }.each do |key, value|
             next unless input.dig(:options, key).positive?
 
-            rolled_value = roll.call(dice: "#{input.dig(:options, key)}d4", modifier: input[:character].tier)
+            rolled_value =
+              roll.call(dice: "#{input.dig(:options, key)}d4", modifier: input[:character].tier * input.dig(:options, key))
             input[:data][value] = input[:character].data[value] - rolled_value
             input[:data][value] = [input[:data][value], 0].max
+            input[:rolls][key] =
+              { roll: "#{input.dig(:options, key)}d4+#{input[:character].tier * input.dig(:options, key)}", total: rolled_value }
 
             if companion && companion.data.stress_marked != companion.data.stress_max
               input[:companion_stress_marked] = [companion.data.stress_marked - rolled_value, 0].max
@@ -84,7 +87,6 @@ module CharactersContext
           input[:data]['hope_marked'] = [input[:data]['hope_marked'], input[:character].data.hope_max].min
         end
       end
-      # rubocop: enable Metrics/AbcSize, Metrics/CyclomaticComplexity, Metrics/MethodLength, Metrics/PerceivedComplexity
 
       def do_persist(input) # rubocop: disable Metrics/AbcSize
         refresh_feats_limit(input)
@@ -99,7 +101,7 @@ module CharactersContext
 
         refresh_feats.call(character: input[:character])
 
-        { result: input[:character] }
+        { result: input[:character], rolls: input[:rolls] }
       end
 
       def refresh_companion(input)
@@ -157,8 +159,10 @@ module CharactersContext
           change_project.call(project: project, progress: project.progress + input.dig(:project, :manual_roll))
         elsif input.dig(:project, :dc)
           total = 0
+          input[:rolls][:project] = []
           input.dig(:options, :project).times do
             result = duality_roll.call
+            input[:rolls][:project].push({ total: result[:total], hope: result[:hope], fear: result[:fear] })
 
             next total += 4 if result[:hope] == result[:fear]
             next total += 3 if result[:total] >= input.dig(:project, :dc) && result[:hope] > result[:fear]
@@ -166,6 +170,7 @@ module CharactersContext
 
             total += 1
           end
+          input[:rolls][:project_total] = total
           change_project.call(project: project, progress: project.progress + total)
         end
       end

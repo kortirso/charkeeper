@@ -46,7 +46,15 @@ const TRANSLATION = {
     makeProjectRolls: 'Make project rolls against difficulty',
     projectDc: "Progress check difficulty",
     projectRoll: 'Project progress',
-    completed: ' (Completed)'
+    completed: ' (Completed)',
+    clearHealth: 'Clearing Hit Points, roll {{roll}}, result - {{result}}',
+    clearStress: 'Clearing Stress, roll {{roll}}, result - {{result}}',
+    clearArmor: 'Clearing Armor Slots, roll {{roll}}, result - {{result}}',
+    projectProgress: 'Project progress {{result}}',
+    projectRollRes: '{{total}} with {{duality}}',
+    crit: 'crit',
+    hope: 'hope',
+    fear: 'fear'
   },
   ru: {
     values: {
@@ -82,7 +90,15 @@ const TRANSLATION = {
     makeProjectRolls: 'Авто броски против сложности',
     projectDc: 'Сложность проверки прогресса',
     projectRoll: 'Прогресс проекта',
-    completed: ' (Завершён)'
+    completed: ' (Завершён)',
+    clearHealth: 'Очистка ран, бросок {{roll}}, результат - {{result}}',
+    clearStress: 'Очистка ячеек стресса, бросок {{roll}}, результат - {{result}}',
+    clearArmor: 'Очистка слотов доспеха, бросок {{roll}}, результат - {{result}}',
+    projectProgress: 'Прогресс проекта {{result}}',
+    projectRollRes: '{{total}} {{duality}}',
+    crit: 'крит успех',
+    hope: 'надежда',
+    fear: 'страх'
   },
   es: {
     values: {
@@ -118,7 +134,15 @@ const TRANSLATION = {
     makeProjectRolls: 'Hacer tiradas de proyecto contra la dificultad',
     projectDc: 'Dificultad de la prueba de progreso',
     projectRoll: 'Progreso del proyecto',
-    completed: ' (Completado)'
+    completed: ' (Completado)',
+    clearHealth: 'Clearing Hit Points, roll {{roll}}, result - {{result}}',
+    clearStress: 'Clearing Stress, roll {{roll}}, result - {{result}}',
+    clearArmor: 'Clearing Armor Slots, roll {{roll}}, result - {{result}}',
+    projectProgress: 'Project progress {{result}}',
+    projectRollRes: '{{total}} with {{duality}}',
+    crit: 'crit',
+    hope: 'hope',
+    fear: 'fear'
   }
 }
 const DOWNTIME_ACTIONS = ['clear_health', 'clear_stress', 'clear_armor_slots', 'gain_hope', 'gain_double_hope'];
@@ -194,13 +218,37 @@ export const DaggerheartRest = (props) => {
       { value: value(), options: restOptions, make_rolls: makeRolls(), project: projectOptions }
     );
     if (isSuccessResponse(result)) {
+      const rollResults = Object.entries(result.rolls).filter(([key,]) => key !== 'project_total').map(([key, value]) => {
+        if (key === 'clear_health') {
+          return replace(localize(TRANSLATION, locale()).clearHealth, { roll: value.roll, result: value.total });
+        }
+        if (key === 'clear_stress') {
+          return replace(localize(TRANSLATION, locale()).clearStress, { roll: value.roll, result: value.total });
+        }
+        if (key === 'clear_armor_slots') {
+          return replace(localize(TRANSLATION, locale()).clearArmor, { roll: value.roll, result: value.total });
+        }
+        if (key === 'project') {
+          const rolls = value.map((item) => {
+            let duality;
+            if (item.hope === item.feat) duality = localize(TRANSLATION, locale()).crit;
+            else if (item.hope > item.fear) duality = localize(TRANSLATION, locale()).hope;
+            else duality = localize(TRANSLATION, locale()).fear;
+
+            return replace(localize(TRANSLATION, locale()).projectRollRes, { total: item.total, duality: duality });
+          }).join(', ');
+
+          return `${replace(localize(TRANSLATION, locale()).projectProgress, { result: result.rolls.project_total })}, ${rolls}`
+        }
+      });
       batch(() => {
         props.onReloadCharacter();
         setFirstAction(null);
         setSecondAction(null);
         workOnProject(null);
         setMakeRolls(false);
-        renderNotice(localize(TRANSLATION, locale()).complete);
+        if (rollResults.length > 0) renderNotice(rollResults.join(', '));
+        else renderNotice(localize(TRANSLATION, locale()).complete);
       });
       if (workOnProject()) {
         const projectsData = await fetchProjects();

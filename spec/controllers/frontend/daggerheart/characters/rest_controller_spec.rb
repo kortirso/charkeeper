@@ -40,11 +40,10 @@ describe Frontend::Daggerheart::Characters::RestController do
             post :create, params: { character_id: user_character.id, value: 'short', charkeeper_access_token: access_token }
           }
 
-          it 'calls service', :aggregate_failures do
+          it 'calls service' do
             request
 
             expect(response).to have_http_status :ok
-            expect(response.parsed_body).to eq({ 'result' => 'ok' })
           end
         end
       end

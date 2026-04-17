@@ -5,7 +5,7 @@ const AppAlertContext = createContext();
 export function AppAlertProvider(props) {
   const [alerts, setAlerts] = createSignal(undefined);
 
-  const clearAlerts = () => setTimeout(() => setAlerts(undefined), 2500);
+  const clearAlerts = () => setTimeout(() => setAlerts(undefined), 4000);
 
   const store = [
     {

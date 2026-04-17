@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Modified
 - make rendering bardic inspiration/rally dice as optional
+- rendering rest result for DH characters
 
 ## [0.4.27] - 2026-04-12
 ### modified
