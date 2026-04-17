@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## Unreleased
 ### Added
 - saving user credentials for mobile app
+- spending resources for activating feats
 
 ### Modified
 - make rendering bardic inspiration/rally dice as optional

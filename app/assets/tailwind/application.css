@@ -409,6 +409,15 @@ nav.pagy.nav a.gap {
   @apply dark:bg-neutral-800 dark:border-neutral-800 dark:text-snow;
 }
 
+.resource {
+  @apply flex gap-x-2 inline-block rounded mt-1;
+}
+
+.resource.enough {
+  @apply cursor-pointer p-1;
+  @apply bg-blue-400 text-snow dark:bg-fuzzy-red;
+}
+
 .archetype-key {
   @apply px-1 border rounded bg-neutral-800 border-neutral-800 cursor-pointer text-sm md:text-base text-snow;
   @apply dark:bg-white dark:border-gray-500 dark:text-black;
