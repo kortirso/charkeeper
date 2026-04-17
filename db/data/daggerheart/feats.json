@@ -320,7 +320,7 @@
     "title": {
       "en": "Carrier",
       "ru": "Перевозчик",
-      "es": "Tren de carga"
+      "es": "Transportador"
     },
     "description": {
       "en": "You can carry up to two willing allies with you when you move.",
@@ -363,12 +363,12 @@
     "title": {
       "en": "Vicious Maul",
       "ru": "Свирепость",
-      "es": ""
+      "es": "Páliza brutal"
     },
     "description": {
       "en": "When you succeed on an attack against a target, you can **spend a Hope** to make them temporarily Vulnerable and gain a +1 situation bonus to your Proficiency for this attack.",
       "ru": "Когда вы успешно совершаете атаку по цели, вы можете **потратить Надежду** чтобы сделать её *уязвимой* и получить ситуативный бонус +1 к вашему мастерству для этой атаки.",
-      "es": ""
+      "es": "Cuanto atacas éxitosamentde a un obejtivo, puedes **Gasta una Esperanza** para hacer que sean Vulnerables temporalmente y ganar una bonificación situacional de +1 a tu Competencia para *este ataque*."
     }
   },
   {
@@ -377,12 +377,12 @@
     "title": {
       "en": "Carrier",
       "ru": "Перевозчик",
-      "es": ""
+      "es": "Transportador"
     },
     "description": {
       "en": "You can carry up to four willing allies with you when you move.",
       "ru": "Вы можете перевозить на себе до четырёх согласных союзников.",
-      "es": ""
+      "es": "Puedes cargar contigo hasta cuatro aliados, que estén dispuestos, cuando te muevas."
     }
   },
   {
@@ -391,12 +391,12 @@
     "title": {
       "en": "Undaunted",
       "ru": "Непоколебимый",
-      "es": ""
+      "es": "Intrépido"
     },
     "description": {
       "en": "You gain a +2 calculated bonus to all your damage thresholds.",
       "ru": "Вы получаете добавленный бонус +2 к вашим порогам урона.",
-      "es": ""
+      "es": "Ganas una bonificación de +2 (ya calculada) a todos los Umbrales de daño"
     }
   },
   {
@@ -405,12 +405,12 @@
     "title": {
       "en": "Massive Stride",
       "ru": "Широкий шаг",
-      "es": ""
+      "es": "Zancada másiva"
     },
     "description": {
       "en": "You can move up to Far range without rolling. You ignore rough terrain (at the GM's discretion) due to your size.",
       "ru": "Вы можете перемещаться вплоть до далёкой дистанции без бросков. Вы игнорируете труднопроходимую местность (с позволения Мастера) благодаря вашему размеру.",
-      "es": ""
+      "es": "Puedes moverte hasta una distancia Lejanda sin hacer una tirada. Ignoras el terreno difícil (a discreción del GM) debido a tu tamaño."
     }
   },
   {
@@ -419,12 +419,12 @@
     "title": {
       "en": "Carrier",
       "ru": "Перевозчик",
-      "es": ""
+      "es": "Transportador"
     },
     "description": {
       "en": "You can carry up to three willing allies with you when you move.",
       "ru": "Вы можете перевозить на себе до трёх согласных союзников.",
-      "es": ""
+      "es": "Puedes cargar contigo hasta tres aliados, que estén dispuestos, cuando te muevas."
     }
   },
   {
@@ -433,12 +433,12 @@
     "title": {
       "en": "Demolish",
       "ru": "Снос",
-      "es": ""
+      "es": "Demoler"
     },
     "description": {
       "en": "**Spend a Hope** to move up to Far range in a straight line and make an attack against all targets within Melee range of the line. Targets you succeed against take **d8+10** physical damage using your Proficiency and are temporarily *Vulnerable*.",
       "ru": "**Потратьте Надежду**, чтобы передвинуться вплоть до далёкой дистанции по прямой линии и совершить атаку против всех целей вплотную на вашем пути. Успешно пораженные цели получают **d8+10** физического урона с использованием вашего мастерства и становятся временно *уязвимы*.",
-      "es": ""
+      "es": "**Gasta una Esperanza** para moverte hasta una distancia Lejana en una línea recta y hacer un ataqued contra todos los objetivos que estuvieran cuerpo a cuerpo durante el recorrido. Objetivos contra los qu tengas éxito sufren **d8+10** de daño físico usando tu Competencia y son *Vulnerables* Temporalmente."
     }
   },
   {
@@ -447,12 +447,12 @@
     "title": {
       "en": "Vicious Maul",
       "ru": "Свирепость",
-      "es": ""
+      "es": "Páliza brutal"
     },
     "description": {
       "en": "When you succeed on an attack against a target, you can **spend a Hope** to make them Vulnerable and gain a +1 situation bonus to your Proficiency for this attack.",
       "ru": "Когда вы успешно совершаете атаку по цели, вы можете **потратить Надежду** чтобы сделать её *уязвимой* и получить ситуативный бонус +1 к вашему мастерству для этой атаки.",
-      "es": ""
+      "es": "Cuanto atacas éxitosamentde a un obejtivo, puedes **Gasta una Esperanza** para hacer que sean Vulnerables temporalmente y ganar una bonificación situacional de +1 a tu Competencia para *este ataque*."
     }
   },
   {
@@ -461,12 +461,12 @@
     "title": {
       "en": "Devastating Strikes",
       "ru": "Сокрушительный удар",
-      "es": ""
+      "es": "Golpes devastadores"
     },
     "description": {
       "en": "When you deal Severe damage to a target within Melee range, you can **mark a Stress** to force them to mark an additional Hit Point.",
       "ru": "Когда вы наносите тяжёлый урон по цели, находящейся вплотную к вам, вы можете **отметить Стресс** чтобы заставить цель отметить дополнительную рану.",
-      "es": ""
+      "es": "Cuando inflinges daño Severo a un objetivo a una distancia Cuerpo a cuerpo, puedes **Marca un Estrés** para forzarlos a marca un Punto de Vida adicional."
     }
   },
   {
@@ -475,12 +475,12 @@
     "title": {
       "en": "Deadly Raptor",
       "ru": "Смертоносные когти",
-      "es": ""
+      "es": "Ave letal"
     },
     "description": {
       "en": "You can fly at will and move up to Far range as part of your action. When you move in a straight line into Melee range of a target from at least Close range and make an attack against that target in the same action, you can reroll all damage dice that rolled a result lower than your Proficiency.",
       "ru": "Вы можете летать и передвигаться вплоть до далёкой дистанции как часть вашего действия. Когда вы перемещаетесь вплотную к цели по прямой линии со средней дистанции или дальше и совершаете по ней атаку частью этого же действия, вы можете перебросить все кости урона, результат которых ниже вашего мастерства.",
-      "es": ""
+      "es": "Puedes volar y moverte hasta distancia Lejana como parte de  tu acción. Cuando te mueves en una línea recta hasta estar Cuerpo a cuerpo de un objetivo que estuviera al menos a una distancia Cercana y haces un ataque contra ese objetivo en la misma acción, puedes volver a tirar todos los dados de daño que tuvieran un resultado menor a tu competencia."
     }
   },
   {
@@ -489,12 +489,12 @@
     "title": {
       "en": "Unyielding",
       "ru": "Непоколебимый",
-      "es": ""
+      "es": "implacable"
     },
     "description": {
       "en": "When you would mark an Armor Slot, roll a **d6**. On a result of 5 or higher, reduce the severity by one threshold without marking an Armor Slot.",
       "ru": "Когда вы собираетесь отметить ячейку брони, бросьте **d6**. Если выпадет 5 или больше, снизьте тяжесть урона на один порог не отмечая ячейку брони.",
-      "es": ""
+      "es": "Cuando fueras a marcar una Ranura de Armardura, tira un **d6**. Si obtienes un 5 o más, reduce la severidad en un Umbral sin marcar una Ranura de Armadura."
     }
   },
   {
@@ -503,12 +503,12 @@
     "title": {
       "en": "Rune Ward",
       "ru": "Рунный оберег",
-      "es": ""
+      "es": "Guardia Rúnica"
     },
     "description": {
       "en": "You have a deeply personal trinket that can be infused with protective magic and held as a ward by you or an ally. The ward's holder can **spend a Hope** to reduce incoming damage by **1d8**. If the Ward Die result is 8, the ward's power ends after it reduces damage this turn. It can be recharged for free on your next rest.",
       "ru": "У вас есть очень ценная для вас безделушка, которая может быть пропитана охранной магией и служить оберегом для вас или вашего союзника. Когда носитель оберега получает урон, он может **потратить Надежду**, чтобы уменьшить этот урон на **1d8**.\n\nЕсли на кости Оберега выпадет 8, то сила оберега временно прекращается после того, как он снизит урон в этот ход. Его можно бесплатно перезарядить во время следующего отдыха.",
-      "es": "",
+      "es": "Tienes un amuleto profundamente personal que esta influído con magia protectora y puede estar sujeto como guardia por ti o un alidado. Quién tenga la guardia puede **Gastar una Esperanza** para reducir el daño que vaya a recibir por **1d8**. Si el resultado del Dado de Guardia es un 8, el poder de la guardia se acaba después de reducir el daño este turno. Se puede recargar sin costo en tu próximo descanso.",
       "ru-DHM": "У вас есть личная вещица, заряженная защитной магией, которая может служить оберегом для вас или союзника. Опишите, как она выглядит и почему так важна для вас. Держатель оберега может **потратить Надежду**, чтобы снизить входящий урон на **1d8**.\n\nПри результате 8 после снижения урона магическая сила оберега временно иссякает. Его можно восстановить без дополнительных затрат во время следующего отдыха."
     }
   },
@@ -518,12 +518,12 @@
     "title": {
       "en": "Wall Walk",
       "ru": "Хождение по стенам",
-      "es": ""
+      "es": "Caminar por las paredes"
     },
     "description": {
       "en": "**Spend a Hope** to allow a creature you can touch to climb on walls and ceilings as easily as walking on the ground. This lasts until the end of the scene or you cast Wall Walk again.",
       "ru": "**Потратьте Надежду**, чтобы позволить существу, до которого вы можете коснуться, взбираться по стенам и потолкам так же легко, как ходить по земле. Это длится до конца сцены или пока вы не используете **Хождение по стенам** снова.",
-      "es": "",
+      "es": "**Gasta una Esperanza** para permitir que una criatura que puedas tocar pueda escalar por paredes o techos tan fácil como si estuvieran caminado por el piso. Esto dura hasta el final de la escena o vuelvas conjurar 'Caminar por las paredes'.",
       "ru-DHM": "**Потратьте Надежду**, чтобы наделить существо, к которому вы прикасаетесь, способностью передвигаться по стенам и потолку с такой же лёгкостью, как по земле. Эффект сохраняется до конца сцены или до следующего использования заклинания **Хождение по стенам**."
     }
   },
