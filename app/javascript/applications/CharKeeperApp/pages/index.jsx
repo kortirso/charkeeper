@@ -19,6 +19,7 @@ export * from './Content/CampaignJoinTab';
 
 export * from './Content/Campaign/Characters';
 export * from './Content/Campaign/Page';
+export * from './Content/Campaign/Rolls';
 
 export * from './Content/Character/Cosmere';
 export * from './Content/Character/Cosmere/Abilities';
